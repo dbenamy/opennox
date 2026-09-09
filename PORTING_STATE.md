@@ -125,3 +125,8 @@ replay validation, sanitizer compatibility and performance work remain pending.
   propagate. Focused 386 tests pass; all three targets build into build/infra-bin.
   A real headless client with a deliberately wrong-size golden exits 2 with a
   screen mismatch (build/screen-negative), confirming integration fails visibly.
+- Source-rewriting blobs tests now copy src into t.TempDir and restore the global
+  tool path afterward. Token diagnostics also go into t.TempDir. Package execution
+  left tracked engine files untouched. Token tests pass; blobs retains the known
+  obsolete memmap.go-path and formatter parse failures (tests-isolated.log).
+  Those failures are not skipped or relabeled as passing.

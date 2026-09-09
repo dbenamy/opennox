@@ -8,7 +8,7 @@ import (
 )
 
 func TestReadMemmap(t *testing.T) {
-	SetPath("../../")
+	sourceCopy(t)
 	m, err := ReadMemmap()
 	require.NoError(t, err)
 	const varCnt = 1396

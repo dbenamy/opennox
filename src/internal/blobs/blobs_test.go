@@ -7,7 +7,7 @@ import (
 )
 
 func TestReadBlobs(t *testing.T) {
-	SetPath("../../")
+	sourceCopy(t)
 	bl, err := ReadBlobs()
 	require.NoError(t, err)
 	const blobCnt = 3

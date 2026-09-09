@@ -7,7 +7,7 @@ import (
 )
 
 func TestFormatAccesses(t *testing.T) {
-	SetPath("../../")
+	sourceCopy(t)
 	err := FormatAccesses()
 	require.NoError(t, err)
 }

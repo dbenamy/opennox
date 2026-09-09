@@ -13,7 +13,7 @@ func TestSplitBlob(t *testing.T) {
 	if os.Getenv("NOX_DO_SPLIT") == "" {
 		t.SkipNow()
 	}
-	SetPath("../../")
+	sourceCopy(t)
 	sub := strings.Split(os.Getenv("NOX_DO_SPLIT"), ",")
 	blob, err := strconv.ParseUint(sub[0], 0, 64)
 	require.NoError(t, err)
