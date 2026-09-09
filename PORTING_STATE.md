@@ -2,12 +2,21 @@
 
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
+## Current status after infrastructure repairs
+
+Plan and infrastructure changes are committed. Screenshot checks now fail
+reliably, automatic test writes are isolated, and stale API/vet failures are
+repaired. Full default suite with assets is down from seven failing packages to
+three: blobs tooling, renderer goldens and audio goldens. None are suppressed.
+No C-to-Go conversion has begun. Historical baseline results below remain useful;
+see the final infrastructure section for the latest checks.
+
 ## Repository and environment
 
 - dev at b184030e76be2b681a7f6d2bcdef52b091d94b9b; origin is the user's fork,
   https://github.com/dbenamy/opennox.git.
 - No pre-existing tracked changes. Only the handoff and media archive were
-  untracked initially. No engine edits have been retained or porting begun.
+  untracked initially. No C-to-Go porting has begun; subsequent infrastructure edits are committed.
 - Ubuntu 26.04.1 x86_64, Go 1.26.0, multilib GCC, i386 SDL2/OpenAL dev packages.
   Current Codex sandbox is disabled at the user's request. Stay within this host.
 - Added archive/headless tools; bsdtar, 7z, unsquashfs, Xvfb and xdotool available.
@@ -104,11 +113,9 @@ Indirect callbacks, retained symbols and subsystem classification remain pending
 
 ## Next work
 
-1. Repair E2E screenshot failure handling and isolate source-rewriting tests.
-2. Fix stale API/test compile errors in scoped changes; retain baseline logs.
-3. Diagnose PNG/PCM goldens without masking real behavior changes. Investigate
+1. Diagnose PNG/PCM goldens without masking real behavior changes. Investigate
    Player.plr nondeterminism and add a save-load scenario.
-4. Use build graphs for a bounded dependency audit; choose a cohesive C leaf and
+2. Use build graphs for a bounded dependency audit; choose a cohesive C leaf and
    establish differential coverage before porting it.
 
 Do not call the suite green. Dedicated-server map/tick scenarios, multiplayer,
@@ -147,3 +154,8 @@ replay validation, sanitizer compatibility and performance work remain pending.
   are internal/blobs, client/noxrender, and legacy/client/audio/ail, already known
   from baseline. See logs/tests-infra-default.*. Final test-isolation follow-up
   above was validated separately after this full run.
+- Tagged follow-up: the movie command lacked !server even though its movie library
+  is client-only. Added that matching constraint; it is omitted by server go list
+  ./... and still compiles for default/highres. Focused server root/netstr/offalign/
+  e2etest checks pass; highres focused checks pass. Initial variant logs preserve
+  this discovered setup failure (their shell's final exit reflected highres only).

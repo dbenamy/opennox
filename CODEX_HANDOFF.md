@@ -247,16 +247,18 @@ Reuse these existing tests and harnesses:
 - `src/e2e.go`, `src/e2e_platform.go`, `src/e2e_seat.go`: YAML input, simulated
   time, seeded platform RNG, screenshots and save hashes. Two fresh standard-client
   warrior scenarios have matched decoded pixels at both gameplay checkpoints.
-  Screen's mismatch branch passes a nil error, and missing goldens are generated
-  automatically: use an independent strict comparator until this is repaired.
+  The screenshot oracle has since been repaired: missing or mismatched goldens
+  fail, and updates require NOX_E2E_OVERRIDE=true. Preserve the independent
+  comparator as a cross-check.
 - `src/replay.go`: additional scenario mechanism, not yet validated.
 
 ### Per-conversion loop
 
-Run full suites in disposable source copies: existing blobs and memmap tests
-rewrite repository files, and token tests emit files. Recreate the copy for each
-variant so one run's mutations cannot contaminate another. Keep the checkout
-used to build baseline binaries clean.
+Source-rewriting blobs and noxfactor tests now use temporary source copies;
+normal token and PNG diagnostics also use temporary paths. Verify the working
+checkout remains unchanged after broader checks. When investigating unknown
+source tools, use disposable copies, freshly created per variant. Keep the
+checkout used to build baseline binaries clean.
 
 1. Choose a small cohesive leaf; identify callers, callbacks, shared state and
    observable behavior. Add tests before replacing its C implementation.
@@ -328,8 +330,8 @@ repeatable standard-client gameplay scenario are established. The full test suit
 is red with documented baseline failures; do not treat these as port regressions
 or regenerate goldens to hide them.
 
-Next, repair the E2E screenshot oracle and isolate source-rewriting tests, then
-address stale test/tool API compilation failures in scoped changes. Diagnose
+The E2E screenshot oracle, source-rewriting test isolation and stale test/tool
+API compilation failures have been repaired in separate commits. Next, diagnose
 rendering and audio golden mismatches separately (pixel/PCM behavior versus
 encoding/toolchain/asset differences). Establish save-load checks: map save bytes
 matched across the two runs, but Player.plr bytes did not.
