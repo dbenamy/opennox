@@ -130,3 +130,9 @@ replay validation, sanitizer compatibility and performance work remain pending.
   left tracked engine files untouched. Token tests pass; blobs retains the known
   obsolete memmap.go-path and formatter parse failures (tests-isolated.log).
   Those failures are not skipped or relabeled as passing.
+- Full-suite follow-up identified internal/noxfactor/TestNoxFactor as another
+  source rewriter. Its generated enum substitutions were saved to
+  logs/noxfactor-generated.patch and restored; the test now uses a temporary
+  source copy. Default rendering/heatmap PNGs also use temporary output paths.
+  Focused noxfactor, memmap and primitive-render tests pass on 386 and leave
+  engine source untouched (tests-isolation-followup.log).
