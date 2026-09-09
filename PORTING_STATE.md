@@ -136,3 +136,14 @@ replay validation, sanitizer compatibility and performance work remain pending.
   source copy. Default rendering/heatmap PNGs also use temporary output paths.
   Focused noxfactor, memmap and primitive-render tests pass on 386 and leave
   engine source untouched (tests-isolation-followup.log).
+- Updated obsolete movie-player SDL call, offalign fixture integer types, and
+  maps.go's invalid logging format. Reworked the netstr test for current typed
+  callbacks, synchronous server binding, loopback payload verification, a bounded
+  wait and goroutine cleanup. Target tests pass, including five repeated netstr
+  runs; supplementary amd64 netstr race test passes. Root package passes default
+  vet/compilation. No production network behavior changed.
+- Full default suite with assets now has 14 passing packages, 3 failing packages,
+  32 packages without tests, and no compilation/vet failures. Remaining failures
+  are internal/blobs, client/noxrender, and legacy/client/audio/ail, already known
+  from baseline. See logs/tests-infra-default.*. Final test-isolation follow-up
+  above was validated separately after this full run.
