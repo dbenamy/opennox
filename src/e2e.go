@@ -1,12 +1,10 @@
 package opennox
 
 import (
-	"bytes"
 	"encoding/hex"
 	"fmt"
 	"hash"
 	"image"
-	"image/png"
 	"io"
 	"io/fs"
 	"math"
@@ -14,6 +12,8 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+
+	"github.com/opennox/opennox/v1/internal/e2etest"
 
 	"github.com/opennox/libs/datapath"
 	"github.com/opennox/libs/ifs"
@@ -241,25 +241,6 @@ func (sc *e2eScenario) Melee(ang float64, name string) {
 	sc.Input(1, "", &seat.MouseButtonEvent{Button: seat.MouseButtonLeft, Pressed: false})
 }
 
-func imageDiff(pix1, pix2 []byte) []byte {
-	out := make([]byte, len(pix1))
-	for i := range out {
-		dp := int16(pix1[i]) - int16(pix2[i])
-		if dp < 0 {
-			dp = -dp
-		}
-		dp *= 10
-		if dp > 0xff {
-			dp = 0xff
-		}
-		if i%4 == 3 { // alpha
-			dp = 0xff - dp
-		}
-		out[i] = byte(dp)
-	}
-	return out
-}
-
 type e2eCheckSave struct {
 	Name   string
 	Hashes map[string]string
@@ -275,57 +256,8 @@ func (sc *e2eScenario) Screen(name string) {
 	sc.add(0, name, func() {
 		fname := strings.ReplaceAll(strings.ToLower(name), " ", "_")
 		fname = filepath.Join(e2e.path, "testdata", fname)
-		img := noxClient.r.CopyPixBuffer()
-		var ibuf bytes.Buffer
-		if err := png.Encode(&ibuf, img); err != nil {
-			panic(err)
-		}
-		if e2eOverride {
-			_ = os.WriteFile(fname+".png", ibuf.Bytes(), 0644)
-			return
-		}
-		gotName := fname + "_got.png"
-		diffName := fname + "_diff.png"
-		if _, err := os.Stat(gotName); err == nil {
-			if err = os.Remove(gotName); err != nil {
-				e2eLog.Println(err)
-			}
-		}
-		if _, err := os.Stat(diffName); err == nil {
-			if err = os.Remove(diffName); err != nil {
-				e2eLog.Println(err)
-			}
-		}
-		if data, err := os.ReadFile(fname + ".png"); err == nil {
-			exp, err := png.Decode(bytes.NewReader(data))
-			if err != nil {
-				panic(err)
-			}
-			var edata []byte
-			switch exp := exp.(type) {
-			case *image.RGBA:
-				edata = exp.Pix
-			case *image.NRGBA:
-				edata = exp.Pix
-			default:
-				panic(exp)
-			}
-			if !bytes.Equal(img.Pix, edata) {
-				_ = os.WriteFile(gotName, ibuf.Bytes(), 0644)
-
-				diff := imageDiff(img.Pix, edata)
-				ibuf.Reset()
-				img.Pix = diff
-				if err := png.Encode(&ibuf, img); err != nil {
-					panic(err)
-				}
-				_ = os.WriteFile(diffName, ibuf.Bytes(), 0644)
-				e2eError(err)
-			}
-		} else if os.IsNotExist(err) {
-			_ = os.WriteFile(fname+".png", ibuf.Bytes(), 0644)
-		} else {
-			panic(err)
+		if err := e2etest.CheckScreen(fname+".png", noxClient.r.CopyPixBuffer(), e2eOverride); err != nil {
+			e2eError(err)
 		}
 	})
 }

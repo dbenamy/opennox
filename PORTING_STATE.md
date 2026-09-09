@@ -113,3 +113,15 @@ Indirect callbacks, retained symbols and subsystem classification remain pending
 
 Do not call the suite green. Dedicated-server map/tick scenarios, multiplayer,
 replay validation, sanitizer compatibility and performance work remain pending.
+
+## Infrastructure changes after baseline
+
+- Plan/checkpoint committed as af08739d; repository-local Git author configured
+  from the user's supplied identity.
+- Screenshot oracle: moved comparison into internal/e2etest. Normal checks fail
+  for missing goldens, pixel differences and dimension differences; only explicit
+  NOX_E2E_OVERRIDE updates goldens. Decoder formats/origins are normalized, actual
+  and diff frames are retained, input buffers are not mutated, and file errors
+  propagate. Focused 386 tests pass; all three targets build into build/infra-bin.
+  A real headless client with a deliberately wrong-size golden exits 2 with a
+  screen mismatch (build/screen-negative), confirming integration fails visibly.
