@@ -159,3 +159,15 @@ replay validation, sanitizer compatibility and performance work remain pending.
   ./... and still compiles for default/highres. Focused server root/netstr/offalign/
   e2etest checks pass; highres focused checks pass. Initial variant logs preserve
   this discovered setup failure (their shell's final exit reflected highres only).
+- Final production validation: all three targets build after infrastructure/API
+  changes (logs/build-infra-final.log). The patched standard client completed
+  the fresh warrior scenario against both pre-existing baseline goldens with
+  NOX_E2E_OVERRIDE=false and exit 0 in 38.9s (runs/infra-positive). This exercises
+  the repaired in-engine screenshot oracle's success path; screen-negative
+  exercises its failure path. Only the original media archive remains untracked.
+
+Next session should start with the bounded active-C dependency audit and select
+an independent leaf whose relevant tests pass. The remaining blob-tool and
+render/audio failures need diagnosis before touching those areas, but are not a
+blanket blocker for unrelated conversions. Baseline Player.plr differences also
+remain unexplained. No C implementation has been replaced yet.
