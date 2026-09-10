@@ -139,18 +139,6 @@ int sub_554300() {
 	}
 }
 
-//----- (0057A160) --------------------------------------------------------
-int nox_xxx_playerCanTalkMB_57A160(int a1) {
-	int result; // eax
-
-	if (a1 && nox_common_gameFlags_check_40A5C0(2)) {
-		result = (*(uint32_t*)(a1 + 3680) >> 3) & 1;
-	} else {
-		result = 0;
-	}
-	return result;
-}
-
 //----- (0057ADF0) --------------------------------------------------------
 int* sub_57ADF0(int* a1) {
 	int* result; // eax
@@ -166,29 +154,6 @@ int* sub_57ADF0(int* a1) {
 			free(v2);
 			v2 = v3;
 		} while (v3);
-	}
-	return result;
-}
-
-//----- (0057AEA0) --------------------------------------------------------
-int nox_xxx_playerCheckSpellClass_57AEA0(int a1, int a2) {
-	int v2;     // eax
-	int result; // eax
-	int v4;     // ecx
-
-	v2 = nox_xxx_spellFlags_424A70(a2);
-	if (a1 == 1) {
-		v4 = 0x2000000;
-	} else {
-		if (a1 != 2) {
-			return 9;
-		}
-		v4 = 0x4000000;
-	}
-	if (v2 & 0x1000000 || v4 & v2) {
-		result = 0;
-	} else {
-		result = 9;
 	}
 	return result;
 }

@@ -5,36 +5,33 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-10
 
-Latest completed chunk: command-rule loading/dispatch 57A950/4D0550/4D0670/57AE30.
-Production C is **141,215 physical lines** in 153 files, zero reference C. See
-[command rules](docs/porting/COMMAND_RULES.md) and [counts](docs/porting/C_LOC.md).
-Original-C baseline: b803c933. Only 57A950 retains a live C bridge; header lookup,
-file reader and nullable path selection are private Go helpers. The writer's
-user-approved online fix is complete; no user decision remains pending.
+Latest completed chunk: spell-class eligibility 57AEA0, plus retirement of the
+unused C chat predicate 57A160. Production C is **141,180 physical lines** in 153
+files, zero reference C. See [spell class](docs/porting/SPELL_CLASS.md) and
+[counts](docs/porting/C_LOC.md). Original-C baseline: 2970e5e9, 38,016 ABI calls.
+The writer's user-approved online fix is complete; no user decision is pending.
 
-All accumulated protection/network/waypoint/rule tests pass on 386 default/server/
-highres. All three binaries build, rule-command-port passes both preserved
-gameplay screenshots with overrides disabled, and full-suite failure entries
-exactly match the writer milestone: 15 passing, 3 known failing, 32 skipped/no-test
-packages and the same 1,553 failures. Local artifacts: build/port-rule-command.
+All accumulated protection/network/waypoint/rules/spell-class tests pass on 386
+default/server/highres. All three binaries build. Fresh spell-class-port gameplay
+passes both preserved screenshots with overrides disabled. Local artifacts:
+build/port-spell-class. Full suite last repeated at the immediately preceding
+command-rule milestone: 15 passing, 3 known failing, 32 skipped/no-test packages,
+with exactly the same 1,553 failure entries as the writer milestone.
 
-Next: spell-class eligibility 57AEA0. Original-C baseline passes 38,016 ABI cases. Fixtures and independent tests are
-installed; local artifacts are under build/port-spell-class. Use the real Spells.Flags
-lookup with synthetic definitions, invalid definitions, missing/nonpositive IDs,
-all 256 byte classes plus raw 32-bit invalid classes. Class 1 accepts 0x01000000 or
-0x02000000, class 2 accepts 0x01000000 or 0x04000000; all other classes return 9,
-including warrior 0. Exact 0/9 results matter to callers; do not narrow raw int
-classes to an enum byte or add an IsValid check. Primary writes independent tests.
+Next: ping aggregates 554290/554300. Only Go wrappers call them, so their C bodies
+and symbols can be retired after original-C fixture validation. Preserve active
+player order, exclusion of index 31, signed-positive first timing read and a
+separate second read for each qualifying player. Minimum compares second values
+unsigned; average sums with 32-bit wrapping then divides signed, exposing uint32
+bits through the existing wrapper. cgo uses -fno-strict-overflow. Terra is drafting
+C-owned player-list/callback fixtures under ignored build/port-ping-aggregate;
+primary writes independent oracles and reviews integration.
 
-The C playerCanTalkMB57A160 has no callers and duplicates the existing live root
-Go playerCantTalkMB57A160; retire its body/prototype in the player-helper chunk.
-Do not treat 57ADF0 as an unused bridge: it still serves GUI options teardown,
-which propagates its first freed pointer as a raw return value. Keep that cleanup
-for a cohesive GUI-owner port instead of silently changing its ABI.
+Keep 57ADF0 list cleanup with its future GUI-owner port: it still serves GUI
+options teardown and returns the first freed pointer. Do not silently change ABI.
 
-Test command from src with baseline environment: `go test -tags porttest -count=1
--run '^Test(Protection|Network|Waypoint|Rules)' .`; add the new spell-class tests
-when installed and repeat with server/highres tags.
+Test from src with baseline environment: `go test -tags porttest -count=1
+-run '^Test(Protection|Network|Waypoint|Rules|SpellClass)' .`; repeat server/highres.
 
 Continue through tests, docs/C LOC, commit, push and a user update per chunk,
 then onward until a substantive question or rate limit. Terra handles bounded
@@ -635,3 +632,10 @@ undefined short-path/read-error cases. All targeted variants, all binaries and
 rule-command-port gameplay pass; full-suite failure multiset remains exactly
 unchanged. Production C: **141,215 (−125)** physical lines, 153 files, zero
 reference C. See COMMAND_RULES.md.
+
+## Spell-class eligibility completed — 2026-09-10
+
+Ported 57AEA0 with original-C baseline 2970e5e9, preserving full-width class input,
+real spell flag lookup and exact 0/9 returns. Removed unused C chat predicate.
+All three accumulated test variants, builds and fresh gameplay checks pass.
+Production C: **141,180 lines (−35)**; details in docs/porting/SPELL_CLASS.md.

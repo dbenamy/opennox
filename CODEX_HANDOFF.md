@@ -3,12 +3,10 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-10
 
-Command-rule loading/dispatch is complete. Production C is 141,215 physical
-lines (−125 in this chunk). The writer’s approved online fix remains complete.
-Next assess spell-class eligibility 57AEA0 with original-C flag/class fixtures
-under build/port-spell-class. The unused C chat predicate 57A160 can be retired
-alongside this player-helper work after confirming callers; the live root Go
-predicate already exists. Keep 57ADF0 list cleanup with its future GUI-owner port.
+Spell-class eligibility 57AEA0 is complete, with the live C ABI retained and the
+unused C chat predicate 57A160 retired. Production C is 141,180 physical lines
+(−35 in this chunk). Next port the two player-ping aggregates 554290/554300 after
+original-C callback/overflow fixtures. Keep 57ADF0 for its future GUI-owner port.
 Use PORTING_STATE.md's top resume section for current verification and next steps.
 Continue autonomously one reviewed/tested/documented/committed/pushed chunk at a
 time, with bounded Terra work and primary review. Stop for a substantive user
