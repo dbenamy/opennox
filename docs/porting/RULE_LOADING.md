@@ -60,3 +60,40 @@ Six additional directive cases passed against C before integration: Unicode
 lookalikes must not become ASCII command keywords, while byte narrowing of
 header/spell names can introduce a terminating NUL. These distinguish wide
 keyword comparisons from the separate legacy narrow-name conversion.
+
+## Go conversion
+
+Original-C checkpoints: `2bf05750` (main baseline), `9c86046c` (wide/narrow
+character distinctions). The loader now lives in `legacy/rules.go`. Only the
+header-pointer and top-level loader C bridges remain because other C code calls
+them. File reading, parsing and dispatch are private Go functions, and the old
+C context global is replaced by private Go state. The Go caller bypasses C while
+preserving filename NUL truncation and the distinction between an empty filename
+and the C nil pointer that selects `user.rul`.
+
+Typed Settings2 fields replace offsets for resets, spell bits and equipment.
+Header strings still come from the existing table to preserve pointer identity.
+Rejected nodes remain calloc-owned for the C writer and generic list cleanup.
+The pure Go token slices are not exposed to C. Existing typed server methods
+continue to handle spell and item lookup. Review corrected the draft's blank-line
+handling and wide-keyword comparison before final validation.
+
+Read errors now stop the loop, including an explicit empty filename opening a
+map directory. Two Go-only regression cases cover the live C entry and Go caller;
+this is a termination improvement, not a claim that the nonterminating C case
+produced equivalent output. Ordinary file behavior remains baseline-compatible.
+
+Production C: **141,455 physical lines (−290)** in 153 files; test-reference C:
+**0**. No test-only C copy is retained. The 290-line reduction includes the five
+functions and obsolete C context declaration/definition; generated live bridges
+remain outside this physical C-file count.
+
+All accumulated protection/network/waypoint/rule tests, including the new read
+error termination case, pass on 386 default, server and highres after conversion.
+
+All three production binaries build. Symbol inspection confirms the two live
+bridges plus native Go loader/parser and no retired internal symbols/context.
+`rules-port` passes the preserved headless gameplay scenario with both screenshot
+checks and overrides disabled. The full suite exactly matches the waypoint
+milestone: 15 passing, 3 known failing, 32 skipped/no-test packages, with the same
+1,553 failure entries and no additions or removals.

@@ -3,15 +3,15 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-10
 
-Waypoint allocation/link/predicate helpers are the latest completed chunk;
-production C is 141,745 physical lines (see C_LOC.md). Next assess the cohesive
-map-rule loader pipeline with original-C file/settings/parser baselines and
-isolated semantic registries. Keep rule writing/removal outside that chunk.
-Use PORTING_STATE.md's top resume section for current verification and next steps;
-the milestones later in these documents are historical. Continue autonomously
-one reviewed/tested/documented/committed/pushed chunk at a time. Use Terra for
-bounded tasks with primary review; stop only for a substantive user decision or
-rate limit. Preserve the asset archive and the documented baseline failures.
+Map-rule loading/parsing is the latest completed chunk; production C is 141,455
+physical lines (see C_LOC.md). Next establish a baseline for rule writing and
+removal. Audit the writer's online temporary-buffer layout against compiled code:
+its decompiler-split arrays may not match the current compiler's layout. Do not
+assume comments establish correct storage or preserve undefined memory reads.
+Use PORTING_STATE.md's top resume section for current verification and next steps.
+Continue autonomously one reviewed/tested/documented/committed/pushed chunk at a
+time, with bounded Terra work and primary review. Stop for a substantive user
+decision or rate limit. Preserve the asset archive and known baseline failures.
 <!-- /current-focus -->
 
 ## Current plan — revised 2026-09-10

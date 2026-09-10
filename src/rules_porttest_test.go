@@ -533,3 +533,28 @@ func TestRulesFileBytesABI(t *testing.T) {
 		}
 	}
 }
+
+// This is a Go-only termination regression, not an original-C equivalence
+// claim: C's feof-only loop never finishes when a directory read returns EISDIR.
+func TestRulesReadErrorTerminates(t *testing.T) {
+	for _, wrapper := range []bool{false, true} {
+		spec := legacy.PortTestRulesSpec{Kind: "load", Initial: ruleTestInitial(81), Selection: 3, Flags: 256, Context: 0xdeadbeef, Host: true, WithRejected: true, User: "", UserNil: false, Wrapper: wrapper, Dir: t.TempDir(), Files: map[string]string{
+			"maps/porttst1/user.rul":     "unknown user\n",
+			"maps/porttst1/porttst1.rul": "unknown map\n",
+		}, SeedRejected: []string{"old"}}
+		got, err := legacy.PortTestRules(spec)
+		if err != nil {
+			t.Fatal(err)
+		}
+		want := spec.Initial
+		for i := 24; i < 52; i++ {
+			want[i] = 255
+		}
+		if len(got.Steps) != 1 || !got.FilesUnchanged {
+			t.Fatal("file mutation or missing snapshot")
+		}
+		// Empty non-nil filename opens the map directory, not user.rul. An
+		// opened input counts as selected even when reading it subsequently fails.
+		ruleTestAssert(t, "directory read", got.Steps[0], want, 6128, 0, nil)
+	}
+}

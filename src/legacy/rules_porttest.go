@@ -7,7 +7,6 @@ package legacy
 #include "GAME1_1.h"
 #include "GAME5_2.h"
 extern unsigned int dword_5d4594_2650652;
-extern uint32_t dword_5d4594_2523764;
 */
 import "C"
 
@@ -16,6 +15,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"unicode/utf16"
 	"unsafe"
 
@@ -147,9 +147,9 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 	defer restoreTable()
 	table := unsafe.Slice((*byte)(memmap.PtrOff(0x587000, 312208)), 56)
 	tableBefore := append([]byte(nil), table...)
-	oldOnline, oldContext := C.dword_5d4594_2650652, C.dword_5d4594_2523764
-	C.dword_5d4594_2650652, C.dword_5d4594_2523764 = C.uint32_t(spec.Online), C.uint32_t(spec.Context)
-	defer func() { C.dword_5d4594_2650652, C.dword_5d4594_2523764 = oldOnline, oldContext }()
+	oldOnline, oldContext := C.dword_5d4594_2650652, ruleLoaderContext
+	C.dword_5d4594_2650652, ruleLoaderContext = C.uint32_t(spec.Online), spec.Context
+	defer func() { C.dword_5d4594_2650652, ruleLoaderContext = oldOnline, oldContext }()
 
 	buf, freeBuf := alloc.Make([]byte{}, 76)
 	defer freeBuf()
@@ -183,7 +183,7 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 	beforeHandles := len(files.byHandle)
 	files.RUnlock()
 	snapshot := func(result uint8) PortTestRulesState {
-		s := PortTestRulesState{Context: uint32(C.dword_5d4594_2523764), Result: result, LinksValid: true, GuardsValid: true, TableUnchanged: bytes.Equal(table, tableBefore)}
+		s := PortTestRulesState{Context: uint32(ruleLoaderContext), Result: result, LinksValid: true, GuardsValid: true, TableUnchanged: bytes.Equal(table, tableBefore)}
 		copy(s.Settings[:], buf[8:68])
 		for _, v := range append(append([]byte(nil), buf[:8]...), buf[68:]...) {
 			s.GuardsValid = s.GuardsValid && v == 0xa5
@@ -223,15 +223,12 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 		}
 		out.Steps = append(out.Steps, snapshot(result))
 	case "file":
-		path, free := alloc.CString(spec.Path)
-		defer free()
-		result := uint8(C.sub_57A3F0((*C.char)(unsafe.Pointer(path)), C.int(uintptr(unsafe.Pointer(settings))), C.int(uintptr(unsafe.Pointer(head))), C.int(spec.Flags)))
+		result := uint8(ruleReadFile(ruleTestPath(spec.Path), settings, head, uint32(spec.Flags)))
 		out.Steps = append(out.Steps, snapshot(result))
 	case "lines":
 		for _, line := range spec.Lines {
-			p, free := alloc.CString16(line)
-			C.sub_57A4D0((*C.wchar2_t)(unsafe.Pointer(p)), C.int(uintptr(unsafe.Pointer(settings))), C.int(uintptr(unsafe.Pointer(head))), C.int(spec.Flags))
-			free()
+			wide := utf16.Encode([]rune(ruleTestPath(line)))
+			ruleParseLine(wide, settings, head, uint32(spec.Flags))
 			out.Steps = append(out.Steps, snapshot(0))
 		}
 	case "tokens":
@@ -239,18 +236,11 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 			if len(tokens) == 0 || len(tokens) > 32 {
 				return out, fmt.Errorf("invalid fixture token count")
 			}
-			ptrs, freePtrs := alloc.Make([]*C.wchar2_t{}, len(tokens))
-			var frees []func()
+			wide := make([][]uint16, len(tokens))
 			for i, token := range tokens {
-				p, free := alloc.CString16(token)
-				frees = append(frees, free)
-				ptrs[i] = (*C.wchar2_t)(unsafe.Pointer(p))
+				wide[i] = utf16.Encode([]rune(ruleTestPath(token)))
 			}
-			result := uint8(C.sub_57A620(C.uchar(len(tokens)), (**C.wchar2_t)(unsafe.Pointer(&ptrs[0])), C.int(uintptr(unsafe.Pointer(settings))), C.int(spec.Flags)))
-			for _, free := range frees {
-				free()
-			}
-			freePtrs()
+			result := uint8(ruleApply(wide, settings, uint32(spec.Flags)))
 			out.Steps = append(out.Steps, snapshot(result))
 		}
 	default:
@@ -262,4 +252,11 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 		out.FilesUnchanged = out.FilesUnchanged && e == nil && bytes.Equal(got, []byte(data))
 	}
 	return out, nil
+}
+
+func ruleTestPath(s string) string {
+	if i := strings.IndexByte(s, 0); i >= 0 {
+		return s[:i]
+	}
+	return s
 }

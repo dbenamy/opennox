@@ -5,39 +5,35 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-10
 
-Latest completed chunk: waypoint allocation/link/predicate helpers. Production C
-is **141,745 physical lines** in 153 files, with zero test-reference C lines. See
-[counts](docs/porting/C_LOC.md) and [waypoint port](docs/porting/WAYPOINT_HELPERS.md).
-Completed chunks are committed and pushed to `dbenamy/opennox`, branch `dev`.
+Latest completed chunk: map-rule loading/parsing. Production C is **141,455
+physical lines** in 153 files, with zero test-reference C lines. See
+[counts](docs/porting/C_LOC.md) and [rule loading](docs/porting/RULE_LOADING.md).
+Original-C baselines are at 2bf05750 and 9c86046c. The five-function pipeline now
+runs Go with two live C bridges; rejected nodes retain C allocation/list ownership.
 
-In progress: original-C baseline for the map-rule loader pipeline 57A1B0/57A1E0/57A3F0/
-57A4D0/57A620 (about 286 C lines). Establish original-C fixtures for Settings2,
-file selection, byte-widened UTF-16/quote parsing, mode headers and rejected-line
-lists. Use hermetic typed spell/type/equipment registries to exercise the existing
-Go semantic dependencies; gameplay covers actual asset loading. Save/restore
-filesystem root, flags, current mode and all list/state ownership. Do not include
-rule saving/removal yet. The C playerCanTalkMB57A160 is an unused duplicate of the
-live root Go helper and may be retired in a later cleanup.
+All accumulated protection/network/waypoint/rule tests pass on 386 default/server/
+highres, and all three binaries build. `rules-port` passes the preserved gameplay
+scenario with both screenshots and overrides disabled. The full suite exactly
+matches the waypoint milestone: 15 passing, 3 known failing, 32 skipped/no-test
+packages; all 1,553 failure entries unchanged. Targeted command from src with the
+baseline environment: `go test -tags porttest -count=1 -run
+'^Test(Protection|Network|Waypoint|Rules)' .`; repeat with server/highres tags.
+Local artifacts are under build/port-rules; they are not committed.
 
-Parser gotchas: nox_fs_fgets consumes a complete physical line then truncates to
-255 bytes (not libc chunking); CRLF is normalized; final no-newline data is
-processed. Narrow-to-wide conversion widens bytes to U+00xx, not UTF-8 decoding.
-sub_416580 only reads an ignored value. C token storage allows 32 pointers; avoid
-undefined overflow cases in the baseline. Fixtures and independent models are in rules_porttest files; see
-[rule loading](docs/porting/RULE_LOADING.md). Production is still C. Draft
-implementation and local logs are under build/port-rules.
+Next: establish rule writer/removal baselines before replacing 57AAA0/57A9F0.
+57A950 delegates to a larger map/rule-file operation and may need separate scope.
+The writer's online branch declares split 24/36-byte arrays and passes the
+24-byte portions as Settings2. Decompiler comments suggest contiguous pairs,
+but actual GCC stack offsets appear different. Verify observable behavior with
+isolated original-C writer fixtures; do not mistake intended layout for compiled
+behavior. If correcting a confirmed behavior bug requires a user choice, ask.
+Keep generic 57ADF0 list cleanup outside this chunk. The unused C playerCanTalkMB
+57A160 duplicate can be retired later.
 
-All accumulated tests pass on 386 default/server/highres; all binaries build;
-`waypoint-port` passes both preserved screenshots. The waypoint full suite
-exactly matches known failures: 15 passing, 3 known failing, 32 skipped/no-test
-packages, with all 1,553 failure entries unchanged. Targeted regression command
-from src with the baseline environment: `go test -tags porttest -count=1 -run
-'^Test(Protection|Network|Waypoint)' .`; repeat with server/highres added to tags.
-
-Continue one chunk at a time through tests, docs/C LOC, commit, push and a user
-update, then onward until a substantive question or rate limit. Terra handles
-bounded drafts/audits; primary review owns correctness, test oracles and final
-integration. Historical milestones follow below; early status is not current.
+Continue through tests, docs/C LOC, commit, push and a user update per chunk,
+then onward until a substantive question or rate limit. Terra handles bounded
+drafts/audits; primary review owns correctness, test oracles and integration.
+Historical milestones below are not the current checkpoint.
 <!-- /current-checkpoint -->
 
 ## GitHub backup and recovery
@@ -587,3 +583,13 @@ Ported allocation, duplicate next-link entries and composite flag predicate,
 retiring its sole-use mask bridge after 459,008 predicate cases and byte-level
 link/allocation baselines. See [details](docs/porting/WAYPOINT_HELPERS.md).
 Production C: **141,745 physical lines (−41)**; test-reference C: **0**.
+
+## Completed — map-rule loading/parsing (2026-09-10)
+
+Ported 57A1B0/57A1E0/57A3F0/57A4D0/57A620 after original-C baselines at
+2bf05750 and 9c86046c. Go owns context, file reading, tokenization and directive
+application; only header lookup and top-level loader retain live C bridges.
+Independent file/selection/settings/encoding/list tests pass in all variants.
+All binaries build, rules-port gameplay passes, and the full-suite failure
+multiset exactly matches the prior milestone. Production C: **141,455 (−290)**,
+153 files, zero test-reference C. See docs/porting/RULE_LOADING.md.
