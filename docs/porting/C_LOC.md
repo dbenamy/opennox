@@ -37,6 +37,7 @@ target build selection and linker evidence.
 | Map-rule loading/parsing (2026-09-10) | 153 | 141,455 | −290 | 0 |
 | Rule writing/online buffer fix (2026-09-10) | 153 | 141,351 | −104 | 0 |
 | Rule-file deletion (2026-09-10) | 153 | 141,340 | −11 | 0 |
+| Command-rule loading/dispatch (2026-09-10) | 153 | 141,215 | −125 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

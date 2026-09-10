@@ -5,35 +5,36 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-10
 
-Latest completed chunk: rule-file deletion 57A9F0. Production C is **141,340
-physical lines** in 153 files, zero test-reference C. See
-[removal](docs/porting/RULE_REMOVAL.md) and [counts](docs/porting/C_LOC.md).
-Original-C baseline: b861ab46; the live C entry now calls the existing native
-case-insensitive filesystem removal through Go. The writer’s user-approved
-online fix is already completed/pushed at f3efc10b; no decision remains pending.
+Latest completed chunk: command-rule loading/dispatch 57A950/4D0550/4D0670/57AE30.
+Production C is **141,215 physical lines** in 153 files, zero reference C. See
+[command rules](docs/porting/COMMAND_RULES.md) and [counts](docs/porting/C_LOC.md).
+Original-C baseline: b803c933. Only 57A950 retains a live C bridge; header lookup,
+file reader and nullable path selection are private Go helpers. The writer's
+user-approved online fix is complete; no user decision remains pending.
 
 All accumulated protection/network/waypoint/rule tests pass on 386 default/server/
-highres, including ten exact-return/full-tree deletion cases. All three binaries
-build; rule-remove-port passes the preserved gameplay scenario and both screenshot
-checks with overrides disabled. The latest full-suite milestone is the writer
-port: 15 passing, 3 known failing, 32 skipped/no-test packages and the same 1,553
-failure entries. Local artifacts for this chunk: build/port-rule-remove.
+highres. All three binaries build, rule-command-port passes both preserved
+gameplay screenshots with overrides disabled, and full-suite failure entries
+exactly match the writer milestone: 15 passing, 3 known failing, 32 skipped/no-test
+packages and the same 1,553 failures. Local artifacts: build/port-rule-command.
 
-Next: assess command-rule group 57A950/4D0550/4D0670/57AE30. Original-C fixture and independent header/file/selection tests are installed
-and pass on 386. See docs/porting/COMMAND_RULES.md; production is still C.
-Reviewed draft implementation is under build/port-rule-command. ExecConsoleCmd
-can be replaced by a recorder; save/restore flags, table, filename blob ranges,
-working directory and handles. Constants at 587000+191748/191760 are user.rul/.rul.
-Hosted text fgets consumes the whole physical line, normalizes CRLF, then copies
-at most 254 bytes for this reader. Mode eligibility is ANY matching game bit.
-4D0550 recognizes only backslashes when finding the parent: foo.map tries
-foouser.rul first, then foo.rul; do not silently normalize this into user.rul.
-Headers match the entire case-sensitive line, unlike the separate settings parser.
-Avoid malformed short-path underflow and directory-read hangs in original-C tests.
-Generic 57ADF0 list cleanup remains outside scope.
+Next: spell-class eligibility 57AEA0. Ignored server/legacy fixture drafts are
+under build/port-spell-class; not installed or run yet. Use the real Spells.Flags
+lookup with synthetic definitions, invalid definitions, missing/nonpositive IDs,
+all 256 byte classes plus raw 32-bit invalid classes. Class 1 accepts 0x01000000 or
+0x02000000, class 2 accepts 0x01000000 or 0x04000000; all other classes return 9,
+including warrior 0. Exact 0/9 results matter to callers; do not narrow raw int
+classes to an enum byte or add an IsValid check. Primary writes independent tests.
+
+The C playerCanTalkMB57A160 has no callers and duplicates the existing live root
+Go playerCantTalkMB57A160; retire its body/prototype in the player-helper chunk.
+Do not treat 57ADF0 as an unused bridge: it still serves GUI options teardown,
+which propagates its first freed pointer as a raw return value. Keep that cleanup
+for a cohesive GUI-owner port instead of silently changing its ABI.
 
 Test command from src with baseline environment: `go test -tags porttest -count=1
--run '^Test(Protection|Network|Waypoint|Rules)' .`; repeat with server/highres tags.
+-run '^Test(Protection|Network|Waypoint|Rules)' .`; add the new spell-class tests
+when installed and repeat with server/highres tags.
 
 Continue through tests, docs/C LOC, commit, push and a user update per chunk,
 then onward until a substantive question or rate limit. Terra handles bounded
@@ -624,3 +625,13 @@ and all accumulated ABI tests pass on 386 default/server/highres; all binaries
 build and rule-remove-port passes both gameplay screenshots. Production C:
 **141,340 (−11)** physical lines, 153 files, zero test-reference C. Full-suite
 milestone remains the immediately preceding writer chunk. See RULE_REMOVAL.md.
+
+## Completed — command-rule loading/dispatch (2026-09-10)
+
+Ported 57A950/4D0550/4D0670/57AE30 after original-C baseline b803c933. Preserved
+any-bit mode checks, exact headers, byte widening/254-byte physical-line copies,
+callback effects, literal path quirks and file precedence. Added guards only for
+undefined short-path/read-error cases. All targeted variants, all binaries and
+rule-command-port gameplay pass; full-suite failure multiset remains exactly
+unchanged. Production C: **141,215 (−125)** physical lines, 153 files, zero
+reference C. See COMMAND_RULES.md.

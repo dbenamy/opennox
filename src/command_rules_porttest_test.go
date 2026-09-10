@@ -243,3 +243,44 @@ func TestRulesCommandSelectionABI(t *testing.T) {
 	}
 	commandRulesAssert(t, got, 0, nil)
 }
+
+// These inputs formerly underflowed a C buffer or caused a non-EOF read loop;
+// test their bounded Go behavior without executing the undefined C cases.
+func TestRulesCommandInputGuards(t *testing.T) {
+	for _, mode := range []string{"path", "wrapper"} {
+		for _, path := range []string{"", "a", "ab", "abc"} {
+			got, err := legacy.PortTestCommandRules(legacy.PortTestCommandRulesSpec{Mode: mode, Dir: t.TempDir(), Path: path, Flags: 256, Files: map[string]string{"user.rul": "must not run\n"}})
+			if err != nil {
+				t.Fatal(err)
+			}
+			commandRulesAssert(t, got, 0, nil)
+		}
+	}
+	got, err := legacy.PortTestCommandRules(legacy.PortTestCommandRulesSpec{Mode: "map", Dir: t.TempDir(), Map: "", Flags: 256})
+	if err != nil {
+		t.Fatal(err)
+	}
+	commandRulesAssert(t, got, 0, nil)
+	for _, mode := range []string{"file", "path"} {
+		spec := legacy.PortTestCommandRulesSpec{Mode: mode, Dir: t.TempDir(), Flags: 256}
+		if mode == "file" {
+			spec.Path = "rulesdir"
+			spec.Files = map[string]string{"rulesdir/keep": "unchanged"}
+		} else {
+			spec.Path = `maps\Arena\Arena.map`
+			spec.Files = map[string]string{"maps/Arena/user.rul/keep": "unchanged", "maps/Arena/Arena.rul": "must not run\n"}
+		}
+		got, err := legacy.PortTestCommandRules(spec)
+		if err != nil {
+			t.Fatal(err)
+		}
+		commandRulesAssert(t, got, 1, nil)
+	}
+	// Input truncation occurs before removing four bytes, so the fallback name
+	// has 251 x's followed by .rul, within the filesystem's filename limit.
+	got, err = legacy.PortTestCommandRules(legacy.PortTestCommandRulesSpec{Mode: "path", Dir: t.TempDir(), Path: strings.Repeat("x", 300), Flags: 256, Files: map[string]string{strings.Repeat("x", 251) + ".rul": "bounded fallback\n"}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	commandRulesAssert(t, got, 1, []string{"bounded fallback"})
+}

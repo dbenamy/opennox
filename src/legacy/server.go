@@ -400,7 +400,7 @@ func Sub_481410() {
 	C.sub_481410()
 }
 func Sub_4D0550(a1 string) {
-	C.sub_4D0550(internCStr(a1))
+	commandRulesPath(&a1)
 }
 func Sub_4165F0(a1 int, a2 int) {
 	C.sub_4165F0(C.int(a1), C.int(a2))

@@ -3,11 +3,12 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-10
 
-Rule-file deletion is complete. Production C is 141,340 physical lines
-(−11 in this chunk). The writer’s approved online fix is complete at f3efc10b.
-Next assess the command-rule loader group 57A950/4D0550/4D0670/57AE30 with original-
-C callback/file baselines. Its draft fixture is under build/port-rule-command.
-Preserve hosted fgets truncation, any-bit mode checks and literal path quirks.
+Command-rule loading/dispatch is complete. Production C is 141,215 physical
+lines (−125 in this chunk). The writer’s approved online fix remains complete.
+Next assess spell-class eligibility 57AEA0 with original-C flag/class fixtures
+under build/port-spell-class. The unused C chat predicate 57A160 can be retired
+alongside this player-helper work after confirming callers; the live root Go
+predicate already exists. Keep 57ADF0 list cleanup with its future GUI-owner port.
 Use PORTING_STATE.md's top resume section for current verification and next steps.
 Continue autonomously one reviewed/tested/documented/committed/pushed chunk at a
 time, with bounded Terra work and primary review. Stop for a substantive user

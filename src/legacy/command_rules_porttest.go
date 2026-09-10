@@ -149,24 +149,19 @@ func PortTestCommandRules(spec PortTestCommandRulesSpec) (out PortTestCommandRul
 	switch spec.Mode {
 	case "header":
 		for _, header := range spec.Headers {
-			p := C.CString(header)
-			out.HeaderValues = append(out.HeaderValues, uint32(C.sub_57AE30(p)))
-			C.free(unsafe.Pointer(p))
+			out.HeaderValues = append(out.HeaderValues, commandRuleHeader(header))
 		}
-	case "file", "path":
-		if spec.Mode == "file" && spec.NilPath {
+	case "file":
+		if spec.NilPath {
 			return out, fmt.Errorf("nil path is only valid for path mode")
 		}
-		var p *C.char
+		out.Result = commandRulesFile(spec.Path)
+	case "path":
+		var path *string
 		if !spec.NilPath {
-			p = C.CString(spec.Path)
-			defer C.free(unsafe.Pointer(p))
+			path = &spec.Path
 		}
-		if spec.Mode == "file" {
-			out.Result = int(C.sub_4D0670(p))
-		} else {
-			out.Result = int(C.sub_4D0550(p))
-		}
+		out.Result = commandRulesPath(path)
 	case "map":
 		p := C.CString(spec.Map)
 		defer C.free(unsafe.Pointer(p))

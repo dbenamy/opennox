@@ -41,3 +41,29 @@ All original-C cases pass on 386 before replacement. Inputs that underflow the C
 path buffer or cause a non-EOF read-error loop are excluded from that baseline.
 Production C before conversion: **141,340 physical lines**, 153 files, zero
 reference C lines. Local artifacts: `build/port-rule-command/`.
+
+## Go conversion
+
+Original-C baseline: `b803c933`. The four-function group now executes native Go.
+Only 57A950 retains a C bridge, for its live UI caller; the other three C symbols
+and declarations are retired. The existing Go map-load wrapper calls the nullable
+native path helper directly. The command reader keeps its section local and
+queries current game flags for each line, preserving callback changes.
+
+Review corrected byte widening and the map adapter's full-prefix extension
+removal before final integration. The file reader uses the existing text-file
+implementation and closes it with defer. Twelve Go-only cases cover formerly
+undefined short path/empty map input, terminating directory read errors and
+bounded long-input truncation. They do not assert equivalence to C corruption or
+nontermination. The original-C cases remain in the suite.
+
+Production C: **141,215 physical lines (−125)** in 153 files; reference C: **0**.
+The original C implementations are recoverable from the baseline commit; none
+is retained solely for tests. Local artifacts: `build/port-rule-command/`.
+
+Final validation: accumulated ABI tests pass on 386 default/server/highres; all
+three production binaries build. The map entry is Go-backed and the three retired
+C symbols are absent. `rule-command-port` passes both preserved gameplay
+screenshots with overrides disabled. The full suite exactly matches the writer
+milestone: 15 passing, 3 known failing, 32 skipped/no-test packages and the same
+1,553 failure entries, with no additions or removals.

@@ -151,18 +151,6 @@ int nox_xxx_playerCanTalkMB_57A160(int a1) {
 	return result;
 }
 
-//----- (0057A950) --------------------------------------------------------
-int sub_57A950(char* a1) {
-	char v2[256]; // [esp+Ch] [ebp-100h]
-
-	strcpy(v2, "maps\\");
-	strncat(v2, a1, 256 - 6);
-	v2[strlen(v2) - 4] = 0;
-	strncat(v2, "\\", 256 - 4);
-	strcat(v2, a1);
-	return sub_4D0550(v2);
-}
-
 //----- (0057ADF0) --------------------------------------------------------
 int* sub_57ADF0(int* a1) {
 	int* result; // eax
@@ -180,23 +168,6 @@ int* sub_57ADF0(int* a1) {
 		} while (v3);
 	}
 	return result;
-}
-
-//----- (0057AE30) --------------------------------------------------------
-int sub_57AE30(const char* a1) {
-	int v1;          // ebp
-	const char** v2; // edi
-
-	v1 = 0;
-	v2 = (const char**)getMemAt(0x587000, 312208);
-	while (strcmp(*v2, a1)) {
-		v2 += 2;
-		++v1;
-		if ((int)v2 >= (int)getMemAt(0x587000, 312264)) {
-			return 0;
-		}
-	}
-	return *getMemU32Ptr(0x587000, 312212 + 8 * v1);
 }
 
 //----- (0057AEA0) --------------------------------------------------------
