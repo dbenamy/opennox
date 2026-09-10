@@ -18,8 +18,8 @@ gameplay screenshots with overrides disabled, and full-suite failure entries
 exactly match the writer milestone: 15 passing, 3 known failing, 32 skipped/no-test
 packages and the same 1,553 failures. Local artifacts: build/port-rule-command.
 
-Next: spell-class eligibility 57AEA0. Ignored server/legacy fixture drafts are
-under build/port-spell-class; not installed or run yet. Use the real Spells.Flags
+Next: spell-class eligibility 57AEA0. Original-C baseline passes 38,016 ABI cases. Fixtures and independent tests are
+installed; local artifacts are under build/port-spell-class. Use the real Spells.Flags
 lookup with synthetic definitions, invalid definitions, missing/nonpositive IDs,
 all 256 byte classes plus raw 32-bit invalid classes. Class 1 accepts 0x01000000 or
 0x02000000, class 2 accepts 0x01000000 or 0x04000000; all other classes return 9,
