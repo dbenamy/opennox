@@ -1,9 +1,9 @@
 # Rule-writer baseline and online bug — 2026-09-10
 
-The loader port is completed at `0a2766f7`. The next candidate, C rule writer
-57AAA0, has an existing online-mode memory-layout bug. No writer production code
-has been changed. Production C remains **141,455 physical lines**, 153 files,
-zero test-reference C.
+The rule writer 57AAA0 now runs Go after offline baseline `36d8fa66`. Its
+online memory-layout bug is corrected with the user’s explicit approval. The
+original-C evidence below explains the intended behavior change; conversion
+and final counts are recorded at the end.
 
 ## Concrete finding
 
@@ -40,12 +40,12 @@ with both input files disabling both spells emitted only the header in trials0/1
 but emitted both spell directives in trial2. This is observable output instability,
 not merely a theoretical C-language concern.
 
-## Reproduction and next decision
+## Historical reproduction
 
 An asset-free diagnostic is preserved at
 [writer_online_probe_test.go.txt](probes/writer_online_probe_test.go.txt). Copy it
 to src/rules_writer_probe_test.go, load the documented 386 baseline environment,
-then run from src:
+then run from src at original-C checkpoint `36d8fa66`:
 
 ```
 go test -tags porttest -count=1 -v -run '^TestRulesWriterProbe$' .
@@ -58,10 +58,9 @@ The fixture isolates files, server registries, settings, flags, list ownership,
 handle arena and current rule context. Local observed output is in
 build/port-rules/writer-probe.log; no raw environment logs are committed.
 
-The user has been asked whether to correct this while porting the writer
-(recommended), using two explicit Settings2 buffers and independent intended-
-filter tests, or postpone the writer and port another section. The online
-behavior change is pending that answer. Offline baseline work is independent.
+The user explicitly approved correcting this during the writer port. The fix
+uses two complete Settings2 values and independent intended-filter tests. The
+garbage-dependent online output is not a compatibility target.
 
 ## Offline baseline
 
@@ -76,6 +75,34 @@ that defined behavior is represented in the baseline. Rejected UTF-16 text is
 narrowed byte-wise, including a low-byte NUL that can suppress the following LF.
 
 All accumulated protection/network/waypoint/rule tests, including the 81 offline
-writer cases, pass on 386 default, server and highres. Production files are
-unchanged since the fully built/gameplay-validated loader commit; this checkpoint
-adds fixtures, baseline tests and recovery documentation only.
+writer cases, pass on 386 default, server and highres. At baseline checkpoint `36d8fa66`, production files were
+unchanged since the fully built/gameplay-validated loader commit; that checkpoint
+added fixtures, baseline tests and recovery documentation only.
+
+## Go conversion and approved fix
+
+The user approved the online fix explicitly. `legacy/rules_writer.go` replaces
+57AAA0 with Go, retaining its live C bridge; the root Go caller now enters the
+native writer directly. The signed low-byte Field52 gate and historical zero
+return on success or failed creation remain unchanged. The writer creates the
+output before loading comparison rules, preserving truncation behavior when
+saving directly over user.rul. Rejected nodes remain owned by the caller's C list.
+
+Two complete independent Settings2 values replace the split arrays. Online
+filtering is tested using the intended condition rather than the old invalid
+stack reads. 576 cases independently vary internet restrictions, local
+restrictions, current restrictions, user/map/empty-user selection and repetition;
+they exercise both the live C ABI and direct Go caller. Eight additional cases
+cover missing inputs, saving over user.rul, blocked saves and failed creation
+through both callers. The 81 original-C offline cases remain unchanged.
+
+Production C after conversion: **141,351 physical lines (−104)** in 153 files,
+zero test-reference C. Local artifacts: `build/port-writer/`.
+
+
+Final validation: all accumulated ABI tests pass on386 default/server/highres;
+all three binaries build; writer-port passes both preserved gameplay screenshots
+with overrides disabled. Full-suite results exactly match the loader milestone:
+15 passing,3 known failing,32 skipped/no-test packages and the same1,553 failure
+entries. Symbol inspection confirms the live57AAA0 bridge and native ruleWrite.
+No C writer implementation is retained solely for tests.

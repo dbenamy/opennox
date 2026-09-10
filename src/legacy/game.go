@@ -681,7 +681,7 @@ func Sub_57A1E0(a1 *server.Settings2, a2 string, a3 unsafe.Pointer, a4 int, a5 n
 	ruleLoad(a1, ruleCString(a2), (*C.nox_list_item_t)(a3), byte(a4), uint16(a5))
 }
 func Sub_57AAA0(a1 string, a2 *server.Settings2, a3 unsafe.Pointer) {
-	C.sub_57AAA0(internCStr(a1), (*C.char)(unsafe.Pointer(a2)), (*C.int)(a3))
+	ruleWrite(ruleCString(a1), a2, (*C.nox_list_item_t)(a3))
 }
 func Sub_4EF660(a1 *server.Object) {
 	C.sub_4EF660(asObjectC(a1))

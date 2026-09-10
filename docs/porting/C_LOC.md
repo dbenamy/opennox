@@ -35,6 +35,7 @@ target build selection and linker evidence.
 | Dynamic unit-code/extent lookup (2026-09-10) | 153 | 141,786 | −35 | 0 |
 | Waypoint allocation/link/predicates (2026-09-10) | 153 | 141,745 | −41 | 0 |
 | Map-rule loading/parsing (2026-09-10) | 153 | 141,455 | −290 | 0 |
+| Rule writing/online buffer fix (2026-09-10) | 153 | 141,351 | −104 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

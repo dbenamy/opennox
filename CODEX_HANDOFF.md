@@ -3,13 +3,12 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-10
 
-Map-rule loading/parsing is completed and pushed at 0a2766f7; production C is
-141,455 physical lines (see C_LOC.md). The next chunk is paused for a user choice:
-correct the confirmed online rule-writer buffer bug while porting, or postpone
-that writer and continue elsewhere. See docs/porting/RULE_WRITER.md for compiled
-layout evidence, an asset-free reproduction and the independent offline baseline.
-No writer production code has changed. The pending question is substantive:
-online saves currently have unstable spell output due to uninitialized storage.
+Rule writing and the approved online-save fix are complete. Production C is
+141,351 physical lines (−104 in this chunk). The Go writer uses independent
+settings buffers; offline behavior and intended online filtering are tested.
+Next port the small rule-file deletion helper 57A9F0, starting with the prepared
+original-C fixture under build/port-rule-remove. Keep 57A950/4D0550 separate
+because they invoke the broader rule/config loader.
 Use PORTING_STATE.md's top resume section for current verification and next steps.
 Continue autonomously one reviewed/tested/documented/committed/pushed chunk at a
 time, with bounded Terra work and primary review. Stop for a substantive user

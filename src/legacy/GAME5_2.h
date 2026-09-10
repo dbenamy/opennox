@@ -66,7 +66,7 @@ char* sub_57A1B0(short a1);
 char sub_57A1E0(int* a1, char* a2, int* a3, char a4, short a5);
 int sub_57A950(char* a1);
 int sub_57A9F0(const char* a1, const char* a2);
-char sub_57AAA0(const char* a1, char* a2, int* a3);
+char sub_57AAA0(char* a1, char* a2, int* a3);
 int* sub_57ADF0(int* a1);
 int sub_57AE30(const char* a1);
 int nox_xxx_playerCheckSpellClass_57AEA0(int a1, int a2);

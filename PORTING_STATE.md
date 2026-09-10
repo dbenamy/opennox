@@ -5,36 +5,29 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-10
 
-Latest completed chunk: map-rule loading/parsing. Production C is **141,455
-physical lines** in 153 files, with zero test-reference C lines. See
-[counts](docs/porting/C_LOC.md) and [rule loading](docs/porting/RULE_LOADING.md).
-Original-C baselines are at 2bf05750 and 9c86046c. The five-function pipeline now
-runs Go with two live C bridges; rejected nodes retain C allocation/list ownership.
+Latest completed chunk: rule writing 57AAA0 and the user-approved online buffer
+fix. Production C is **141,351 physical lines** in 153 files, with zero test-
+reference C. See [counts](docs/porting/C_LOC.md) and
+[writer port](docs/porting/RULE_WRITER.md). Offline baseline:36d8fa66. The writer
+uses independent Settings2 values and copies only the input name, preserving
+legacy-sized caller buffers. Its live C bridge remains; the Go caller is direct.
+No user decision remains pending.
 
 All accumulated protection/network/waypoint/rule tests pass on 386 default/server/
-highres, and all three binaries build. `rules-port` passes the preserved gameplay
-scenario with both screenshots and overrides disabled. The full suite exactly
-matches the waypoint milestone: 15 passing, 3 known failing, 32 skipped/no-test
-packages; all 1,553 failure entries unchanged. Targeted command from src with the
-baseline environment: `go test -tags porttest -count=1 -run
+highres, including 81 original-C offline writer cases, 576 intended online
+filtering cases and eight file/error/caller cases. All three binaries build;
+writer-port passes the preserved gameplay scenario and both screenshots with
+overrides disabled. Full-suite results exactly match the loader milestone:
+15 passing, 3 known failing, 32 skipped/no-test packages and the same 1,553
+failure entries. Local artifacts are under build/port-writer.
+
+Next: port rule-file deletion57A9F0 after original-C baseline. Draft fixture and
+nine independent filesystem cases are under build/port-rule-remove; they have
+not yet been installed or executed. Primary review added directory and NUL cases.
+57A950 delegates to4D0550, a broader rule/config loader, and stays separate.
+Generic57ADF0 list cleanup remains C and has other consumers. Test command from
+src with baseline environment: `go test -tags porttest -count=1 -run
 '^Test(Protection|Network|Waypoint|Rules)' .`; repeat with server/highres tags.
-Local artifacts are under build/port-rules; they are not committed.
-
-Current stopping point: user choice pending for the next writer chunk. Original
-C 57AAA0 has a confirmed online-mode buffer-layout bug; its saved spell directives
-vary across repeated identical inputs. The two loader destinations overlap and
-the internet spell-mask check reads uninitialized storage. See
-[writer findings](docs/porting/RULE_WRITER.md) for actual GCC offsets, reproduction,
-and the intended online predicate. Ask whether to fix this during the writer port
-(recommended) or postpone the writer and port another section. Do not silently
-preserve garbage-dependent output or claim it is the intended rule behavior.
-
-Writer production code is unchanged. A separate offline baseline covers 80
-flag/mask/list combinations plus failed creation, using exact output-byte and
-settings/list/handle checks. The fixture now supports Kind="write"; the diagnostic
-online probe is stored as .go.txt under docs/porting/probes so it does not assert
-broken behavior in the suite. Generic 57ADF0 cleanup remains out of scope.
-57A950 delegates to a larger map/rule-file operation and needs separate assessment.
 
 Continue through tests, docs/C LOC, commit, push and a user update per chunk,
 then onward until a substantive question or rate limit. Terra handles bounded
@@ -608,3 +601,12 @@ Added 81 stable offline baseline cases. All accumulated ABI tests pass on 386
 default/server/highres with those cases. No writer production changes; C remains
 **141,455** physical lines. Pending user choice: fix the online bug as part of the
 writer port, or postpone that chunk and continue elsewhere.
+
+## Completed — rule writer and approved online fix (2026-09-10)
+
+Ported57AAA0, replacing overlapping decompiler-split temporaries with two full
+Settings2 values. The user explicitly approved fixing the unstable online output.
+All665 writer cases and accumulated ABI tests pass in all variants; three builds,
+writer-port gameplay and exact known-failure full-suite comparison pass. C is
+**141,351 (−104)** physical lines,153 files, zero test-reference C. See
+RULE_WRITER.md for independent online expectations and original offline baseline.

@@ -212,7 +212,12 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 	switch spec.Kind {
 	case "write":
 		name, free := alloc.CString(spec.User)
-		result := uint8(C.sub_57AAA0((*C.char)(unsafe.Pointer(name)), (*C.char)(unsafe.Pointer(settings)), (*C.int)(unsafe.Pointer(head))))
+		var result uint8
+		if spec.Wrapper {
+			Sub_57AAA0(spec.User, settings, unsafe.Pointer(head))
+		} else {
+			result = uint8(C.sub_57AAA0((*C.char)(unsafe.Pointer(name)), (*C.char)(unsafe.Pointer(settings)), (*C.int)(unsafe.Pointer(head))))
+		}
 		free()
 		out.Steps = append(out.Steps, snapshot(result))
 		data, e := os.ReadFile(filepath.Join(spec.Dir, filepath.FromSlash(spec.Path)))
