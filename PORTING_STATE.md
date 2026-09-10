@@ -209,3 +209,29 @@ remain unexplained. No C implementation has been replaced yet.
   to dimensioned, little-endian framebuffer-word SHA-256 hashes; pixel/size
   mutation and subimage-stride checks pass, as do particle tests on 386/amd64.
   No production rendering behavior or sprite goldens were changed.
+- Sprite diagnosis: the exact golden-era revision c62202f5 passes the sampled
+  APA00001/default case with the same assets. In a disposable current dependency
+  copy, restoring only historical color/rgba5551.go makes the entire sprite test
+  matrix pass. Export-only normalization was insufficient because the conversion
+  also affects intermediate inputs. Keep sprite goldens unchanged pending an
+  explicit color-behavior decision before porting that path.
+- Audio diagnosis: three dialogue files have equal sample counts on 386/amd64;
+  only 206/205/52 samples differ respectively, each by at most one int16 unit.
+  Diagnostic 386 SSE floating-point flags produce byte-identical amd64 PCM and
+  original hashes. Production flags and goldens remain unchanged. This finding
+  covers these samples, not all audio. See the tracked detailed report below.
+- Final full default 386/CGO suite with assets: 14 passing packages, 3 failing
+  packages, 32 without tests, with no compilation/vet failures. Remaining failing
+  packages are blobs (only TestReadBlobs), noxrender (sprite references), and ail
+  (audio references). Log: build/diagnosis/final-suite.jsonl. Tracked engine files
+  remained unchanged by execution. No new game behavior was introduced, so the
+  previously verified three builds and gameplay baseline were not rerun for
+  these formatter/test-only changes.
+
+The bounded diagnosis is complete. Durable findings, measurements, reproduction
+commands and follow-up decisions are in
+[docs/porting/FAILURE_DIAGNOSIS.md](docs/porting/FAILURE_DIAGNOSIS.md).
+Next: use the saved build graphs for a bounded compiled/linked C inventory,
+choose an independent leaf, and establish its C-reference differential tests
+before conversion. Do not require the entire baseline suite to be green, and do
+not use obsolete blob writers or unresolved render/audio goldens as port oracles.

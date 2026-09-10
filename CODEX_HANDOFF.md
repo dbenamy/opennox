@@ -332,9 +332,11 @@ is red with documented baseline failures; do not treat these as port regressions
 or regenerate goldens to hide them.
 
 The E2E screenshot oracle, source-rewriting test isolation and stale test/tool
-API compilation failures have been repaired in separate commits. Next, diagnose
-rendering and audio golden mismatches separately (pixel/PCM behavior versus
-encoding/toolchain/asset differences). Establish save-load checks: map save bytes
+API compilation failures have been repaired in separate commits. The bounded rendering, audio and blob-tool diagnosis is complete; see
+[the findings](docs/porting/FAILURE_DIAGNOSIS.md). Formatter and particle tests
+have verified fixes; sprite color semantics, target-dependent PCM references and
+blob storage modernization remain explicit follow-ups before touching those paths.
+Establish save-load checks: map save bytes
 matched across the two runs, but Player.plr bytes did not.
 
 Use the saved build graphs for a bounded C dependency audit and choose the first
