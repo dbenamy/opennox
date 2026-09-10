@@ -61,3 +61,7 @@ used as differential inputs.
 Larger alternatives inspected (XP/health, item-name formatting, memfile reads)
 have floating-point/global-state dependencies, callbacks, or mismatched existing
 Go EOF semantics. Those need different test boundaries and were deferred.
+
+After successful conversion validation, the checksum C reference was retired at
+the user’s request. It is recoverable from `66fa7bd4`. Permanent Go value/property
+tests and tagged C ABI checks remain; see PROTECTION_CHECKSUM.md.

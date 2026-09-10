@@ -9,7 +9,7 @@ import "C"
 import "unsafe"
 
 // PortTestProtectionChecksum exercises the actual C ABI, including its signed
-// return value. The historical reference is tested in a separate package.
+// return value. No historical C implementation is needed for these ABI checks.
 func PortTestProtectionChecksum(data []byte, nullable bool) uint32 {
 	p := (*C.int)(unsafe.Pointer(unsafe.SliceData(data)))
 	if nullable {

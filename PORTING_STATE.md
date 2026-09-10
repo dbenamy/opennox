@@ -266,3 +266,18 @@ no broad protection-manager or render/audio conversion has been attempted.
 
 Conversion commit: 66fa7bd4; pushed to dbenamy/opennox dev with the preceding
 reference-test commit 00228a81. Only the original media archive is untracked.
+
+## Retire checksum C test reference — 2026-09-10
+
+At the user's request, removed internal/protectionref after the completed
+conversion comparisons. The historical C implementation and differential harness
+remain recoverable from 66fa7bd4. Keep the permanent Go fixed-value/property tests
+and tagged ABI tests; the latter now calculate expected results independently by
+byte lane, preserving alignment, chunk, mutation and nullable-length coverage.
+The benchmark retains direct Go and C-to-Go paths only. Production code is unchanged.
+
+Validation: 386 Go unit tests and TestProtectionABI pass; a five-second ABI fuzz
+run passes 551,441 cases. Logs: build/port-checksum/retire-{unit,abi,fuzz}.log.
+Production C count stays 142,637 lines across 153 files; test-reference C drops
+from 33 to 0. C_LOC.md and the handoff reflect this retirement. No engine rebuild
+or gameplay rerun was needed for this test-only removal.

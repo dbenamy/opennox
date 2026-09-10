@@ -347,3 +347,7 @@ using the checksum conversion as the first proven differential-test pattern. Upd
 with commands, outcomes, artifact locations and remaining work at each checkpoint.
 The first conversion is the protection byte checksum; see PORTING_STATE.md for
 validation and [C source-size checkpoints](docs/porting/C_LOC.md) for its reduction.
+
+The checksum C reference was retired at the user’s request after validation.
+Use its retained Go and tagged ABI tests; recover the original differential
+harness from commit 66fa7bd4 if needed.

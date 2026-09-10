@@ -8,25 +8,30 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/opennox/opennox/v1/internal/protectionref"
 	"github.com/opennox/opennox/v1/legacy"
 )
 
-func TestProtectionCReference(t *testing.T) {
+// Compute each byte lane independently of the production word-reading loop.
+func expectedProtectionChecksum(data []byte) uint32 {
+	var lanes [4]byte
+	for i, b := range data[:len(data)&^3] {
+		lanes[i%4] ^= b
+	}
+	return uint32(lanes[0]) | uint32(lanes[1])<<8 | uint32(lanes[2])<<16 | uint32(lanes[3])<<24
+}
+
+func TestProtectionABI(t *testing.T) {
 	rng := rand.New(rand.NewSource(0x56fac0))
 	check := func(data []byte) {
 		t.Helper()
 		before := append([]byte(nil), data...)
-		want := protectionref.Checksum(data)
+		want := expectedProtectionChecksum(data)
 		if got := protectBytes(data); got != want {
-			t.Fatalf("length %d: Go=%08x C=%08x", len(data), got, want)
-		}
-		if got := protectionref.Nullable(data); got != want {
-			t.Fatalf("nullable reference=%08x, direct=%08x", got, want)
+			t.Fatalf("length %d: Go=%08x expected=%08x", len(data), got, want)
 		}
 		for _, nullable := range []bool{false, true} {
 			if got := legacy.PortTestProtectionChecksum(data, nullable); got != want {
-				t.Fatalf("C ABI nullable=%v length=%d: Go=%08x C=%08x", nullable, len(data), got, want)
+				t.Fatalf("C ABI nullable=%v length=%d: Go=%08x expected=%08x", nullable, len(data), got, want)
 			}
 		}
 		if !bytes.Equal(data, before) {
@@ -54,23 +59,23 @@ func TestProtectionCReference(t *testing.T) {
 		check(buf)
 	}
 	for _, n := range []uint32{0, 1, 3, 4, 1024, 0x7fffffff, 0xffffffff} {
-		if got := protectionref.NullWithLength(n) | legacy.PortTestProtectionNull(n); got != 0 {
+		if got := legacy.PortTestProtectionNull(n); got != 0 {
 			t.Fatalf("null with length %d: %08x", n, got)
 		}
 	}
 }
 
-func FuzzProtectionCReference(f *testing.F) {
+func FuzzProtectionABI(f *testing.F) {
 	f.Add([]byte{})
 	f.Add([]byte{1, 2, 3, 128, 9, 8, 7})
 	f.Fuzz(func(t *testing.T, data []byte) {
-		want := protectionref.Checksum(data)
+		want := expectedProtectionChecksum(data)
 		if got := protectBytes(data); got != want {
-			t.Fatalf("Go=%08x C=%08x", got, want)
+			t.Fatalf("Go=%08x expected=%08x", got, want)
 		}
 		for _, nullable := range []bool{false, true} {
 			if got := legacy.PortTestProtectionChecksum(data, nullable); got != want {
-				t.Fatalf("ABI nullable=%v Go=%08x C=%08x", nullable, got, want)
+				t.Fatalf("ABI nullable=%v Go=%08x expected=%08x", nullable, got, want)
 			}
 		}
 	})
@@ -89,7 +94,6 @@ func BenchmarkProtectionChecksum(b *testing.B) {
 			fn   func([]byte) uint32
 		}{
 			{"Go", protectBytes},
-			{"CReference", protectionref.Checksum},
 			{"CToGo", func(p []byte) uint32 { return legacy.PortTestProtectionChecksum(p, false) }},
 		} {
 			b.Run(fmt.Sprintf("%d/%s", n, impl.name), func(b *testing.B) {

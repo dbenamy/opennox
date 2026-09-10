@@ -19,7 +19,15 @@ outside the old contract; no attempt is made to preserve undefined C reads.
 The inventory and pre-conversion reference tests were committed as `00228a81`.
 The reference functions in `internal/protectionref/reference.c` match revision
 `0e9d2e1f` exactly apart from symbol names; provenance/build-tag comments were
-added. They compile only with `porttest` and remain callable for future tests.
+added. They were initially compiled only with `porttest`. After successful
+validation, the user requested removal of this small reference. It is now retained
+only in Git at `66fa7bd4`, not in the working source tree.
+
+Permanent Go fixed-value/property tests remain. The tagged ABI tests still cover
+the actual exported entry points, generated buffers, alignment, chunk boundaries,
+null lengths and input mutation, using an independent byte-lane calculation
+instead of the retired C implementation. Historical differential results below
+refer to the conversion revision; current commands run the retained ABI tests.
 
 - Existing Go versus original C passed before replacing the C definitions.
 - Fixed expected-value tests and deterministic differential tests pass on 386.
@@ -45,11 +53,11 @@ Commands below run from src with the environment in RECOVERY.md:
 
 ```bash
 go test -count=1 ./internal/protection
-go test -tags porttest -count=1 -run 'TestProtectionCReference|FuzzProtectionCReference' .
-go test -tags 'server porttest' -count=1 -run 'TestProtectionCReference|FuzzProtectionCReference' .
-go test -tags 'highres porttest' -count=1 -run 'TestProtectionCReference|FuzzProtectionCReference' .
+go test -tags porttest -count=1 -run 'TestProtectionABI|FuzzProtectionABI' .
+go test -tags 'server porttest' -count=1 -run 'TestProtectionABI|FuzzProtectionABI' .
+go test -tags 'highres porttest' -count=1 -run 'TestProtectionABI|FuzzProtectionABI' .
 go test -run '^$' -fuzz '^FuzzChecksum$' -fuzztime 5s -parallel 2 ./internal/protection
-go test -tags porttest -run '^$' -fuzz '^FuzzProtectionCReference$' -fuzztime 5s -parallel 2 .
+go test -tags porttest -run '^$' -fuzz '^FuzzProtectionABI$' -fuzztime 5s -parallel 2 .
 go run ./internal/noxbuild -o ../build/port-checksum/bin
 ```
 
@@ -74,13 +82,14 @@ not measure whole-game impact or direct C-to-C cost; both C columns include an
 outer Go-to-C call from the benchmark. VM timings vary. This is a recorded cost
 of the small migration boundary, not a performance improvement. Porting cohesive
 callers can remove boundary crossings; profile relevant workloads before doing
-that solely for speed. Reproduce with
+that solely for speed. Reproduce at
+conversion revision `66fa7bd4` with
 `go test -tags porttest -run '^$' -bench '^BenchmarkProtectionChecksum$' -benchtime 200ms -count 3 .`.
 
 ## Source-size checkpoint and next work
 
 Production C: **142,637 physical lines**, down **28**, across 153 `.c` files.
-Test-reference C: 33 lines, separately counted. See [C_LOC.md](C_LOC.md).
+Test-reference C: **0 lines** after retirement (33 at conversion). See [C_LOC.md](C_LOC.md).
 
 Next select another cohesive leaf using caller/state evidence. Do not infer that
 the surrounding protection manager is equally simple: it owns global keys,
