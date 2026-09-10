@@ -3,10 +3,10 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-10
 
-Protection RNG/state is the latest completed chunk; production C is 141,844
-physical lines (see C_LOC.md). Next port client unit-code encoding and bit
-helpers (578B00/30/70), then the dynamic extent resolver with isolated server
-fixtures. Protection behavior preserves hosted x87 PC53 and the legacy v-v RNG.
+Client unit-code encoding and bit helpers are the latest completed chunk;
+production C is 141,821 physical lines (see C_LOC.md). Next port dynamic extent
+resolution and its C lookup through the existing typed server API, after isolated
+C-backed server-list baselines. Protection RNG/state is already native Go.
 Use PORTING_STATE.md's top resume section for current verification and next steps;
 the milestones later in these documents are historical. Continue autonomously
 one reviewed/tested/documented/committed/pushed chunk at a time. Use Terra for

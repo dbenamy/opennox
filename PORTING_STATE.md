@@ -5,22 +5,23 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-10
 
-Latest completed chunk: protection floating RNG and owned Go state. Production C
-is **141,844 physical lines** in 153 files, with zero test-reference C lines. See
-[the count history](docs/porting/C_LOC.md) and [RNG port](docs/porting/PROTECTION_RANDOM.md).
+Latest completed chunk: client unit-code encoding and bit helpers. Production C
+is **141,821 physical lines** in 153 files, with zero test-reference C lines. See
+[the count history](docs/porting/C_LOC.md) and [network-code port](docs/porting/NETWORK_CODE.md).
 Completed chunks are committed and pushed to `dbenamy/opennox`, branch `dev`.
 
-Next: client unit-code encoder and bit helpers (578B00/30/70). Use actual C ABI
-baselines: exhaustive 16-bit masks, upper-word inputs and typed Drawable class/
-netcode cases. Keep the dynamic extent resolver (578B40) as the following chunk,
-with isolated server-list fixtures and destroyed/duplicate/missing extents.
-The code at 578B00 takes a client.Drawable, not a server.Object.
+Next: dynamic extent resolution (578B40) and the underlying C lookup (4ED020),
+reusing server.Objs.GetObjectByInd. Establish original-C tests with C-allocated
+server objects, first live match amid destroyed/duplicate entries, missing
+extents, full raw32 returns/upper bits and no-server passthrough when bit15 is
+clear. Draft fixtures/tests are ignored under build/port-extent and need review
+before installation. C pointers must not reference a Go-linked object list.
 
 The protection algorithms are now Go, including startup and floating RNG state;
 records still use C allocation while live C consumers remain. Hosted x87 PC53
 semantics and the literal discarded-floor/v-v RNG behavior are preserved.
-All protection tests pass on 386 default/server/highres, all three binaries build,
-and `rng-port` passes both preserved gameplay screenshots. The RNG full suite
+All protection/network-code tests pass on 386 default/server/highres, all three binaries build,
+and `netcode-port` passes both preserved gameplay screenshots. The RNG full suite
 exactly matches the known failures: 15 passing, 3 known failing, 32 skipped/no-test
 packages, with all 1,553 failure entries unchanged.
 
@@ -557,3 +558,9 @@ Ported the remaining four helpers and moved their private state to Go after
 46,046 original-C snapshots and independent arbitrary-precision tests. Retired
 all four C bridges and both C range globals. See [details](docs/porting/PROTECTION_RANDOM.md).
 Production C: **141,844 physical lines (−70)**; test-reference C: **0**.
+
+## Client unit-code/bit helpers completed — 2026-09-10
+
+Ported three C entries after exhaustive low-word/upper-pattern bit tests and
+2,988 read-only drawable cases. See [details](docs/porting/NETWORK_CODE.md).
+Production C: **141,821 physical lines (−23)**; test-reference C: **0**.

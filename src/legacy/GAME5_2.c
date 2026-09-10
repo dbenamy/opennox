@@ -140,26 +140,6 @@ int sub_554300() {
 	}
 }
 
-//----- (00578B00) --------------------------------------------------------
-unsigned int nox_xxx_netGetUnitCodeCli_578B00(int a1) {
-	unsigned int result; // eax
-
-	if (!a1) {
-		return 0;
-	}
-	result = *(uint32_t*)(a1 + 128);
-	if (result >= 0x8000) {
-		return 0;
-	}
-	if (*(uint32_t*)(a1 + 112) & 0x20400000) {
-		BYTE1(result) |= 0x80u;
-	}
-	return result;
-}
-
-//----- (00578B30) --------------------------------------------------------
-int nox_xxx_netClearHighBit_578B30(short a1) { return a1 & 0x7FFF; }
-
 //----- (00578B40) --------------------------------------------------------
 int nox_xxx_packetDynamicUnitCode_578B40(int a1) {
 	int result; // eax
@@ -177,9 +157,6 @@ int nox_xxx_packetDynamicUnitCode_578B40(int a1) {
 	}
 	return result;
 }
-
-//----- (00578B70) --------------------------------------------------------
-unsigned int nox_xxx_netTestHighBit_578B70(unsigned int a1) { return (a1 >> 15) & 1; }
 
 //----- (00579870) --------------------------------------------------------
 int nox_xxx_waypointNext_579870(int a1) {

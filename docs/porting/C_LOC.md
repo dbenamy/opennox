@@ -31,6 +31,7 @@ target build selection and linker evidence.
 | Protection float updates (2026-09-10) | 153 | 141,941 | −43 | 0 |
 | Protection initialization (2026-09-10) | 153 | 141,914 | −27 | 0 |
 | Protection floating RNG/state (2026-09-10) | 153 | 141,844 | −70 | 0 |
+| Client unit-code/bit helpers (2026-09-10) | 153 | 141,821 | −23 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
