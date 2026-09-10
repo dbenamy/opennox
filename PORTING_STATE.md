@@ -10,7 +10,7 @@ is **141,745 physical lines** in 153 files, with zero test-reference C lines. Se
 [counts](docs/porting/C_LOC.md) and [waypoint port](docs/porting/WAYPOINT_HELPERS.md).
 Completed chunks are committed and pushed to `dbenamy/opennox`, branch `dev`.
 
-Next: consider the cohesive map-rule loader pipeline 57A1B0/57A1E0/57A3F0/
+In progress: original-C baseline for the map-rule loader pipeline 57A1B0/57A1E0/57A3F0/
 57A4D0/57A620 (about 286 C lines). Establish original-C fixtures for Settings2,
 file selection, byte-widened UTF-16/quote parsing, mode headers and rejected-line
 lists. Use hermetic typed spell/type/equipment registries to exercise the existing
@@ -23,7 +23,9 @@ Parser gotchas: nox_fs_fgets consumes a complete physical line then truncates to
 255 bytes (not libc chunking); CRLF is normalized; final no-newline data is
 processed. Narrow-to-wide conversion widens bytes to U+00xx, not UTF-8 decoding.
 sub_416580 only reads an ignored value. C token storage allows 32 pointers; avoid
-undefined overflow cases in the baseline. Draft setup work is under build/port-rules.
+undefined overflow cases in the baseline. Fixtures and independent models are in rules_porttest files; see
+[rule loading](docs/porting/RULE_LOADING.md). Production is still C. Draft
+implementation and local logs are under build/port-rules.
 
 All accumulated tests pass on 386 default/server/highres; all binaries build;
 `waypoint-port` passes both preserved screenshots. The waypoint full suite
