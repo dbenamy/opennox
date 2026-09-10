@@ -19,9 +19,9 @@ checks with overrides disabled. The latest full-suite milestone is the writer
 port: 15 passing, 3 known failing, 32 skipped/no-test packages and the same 1,553
 failure entries. Local artifacts for this chunk: build/port-rule-remove.
 
-Next: assess command-rule group 57A950/4D0550/4D0670/57AE30. Draft fixture only is
-under build/port-rule-command/command_rules_porttest.go; not yet installed/tested.
-Primary must write independent callback/file-selection/header tests. ExecConsoleCmd
+Next: assess command-rule group 57A950/4D0550/4D0670/57AE30. Original-C fixture and independent header/file/selection tests are installed
+and pass on 386. See docs/porting/COMMAND_RULES.md; production is still C.
+Reviewed draft implementation is under build/port-rule-command. ExecConsoleCmd
 can be replaced by a recorder; save/restore flags, table, filename blob ranges,
 working directory and handles. Constants at 587000+191748/191760 are user.rul/.rul.
 Hosted text fgets consumes the whole physical line, normalizes CRLF, then copies
