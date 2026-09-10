@@ -201,3 +201,11 @@ remain unexplained. No C implementation has been replaced yet.
   changing paths to cgo_blobs.c would incorrectly treat initialized data as zero.
   Updating the split/write tool to that format is separate work, not needed for
   the initial dependency inventory. Do not use it to rewrite current blobs yet.
+- Particle rendering diagnosis: 386 and amd64 produce identical pixels for all
+  six particle cases. Current PNGs re-encode identically with Go 1.19.13, 1.23.12
+  and 1.26.0. The old color library used RGB max 248; the pinned current library
+  expands that value to 255. Applying the old expansion reproduces all six
+  original PNG goldens exactly. Migrated ONLY those independently verified cases
+  to dimensioned, little-endian framebuffer-word SHA-256 hashes; pixel/size
+  mutation and subimage-stride checks pass, as do particle tests on 386/amd64.
+  No production rendering behavior or sprite goldens were changed.

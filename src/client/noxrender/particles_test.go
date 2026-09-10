@@ -1,13 +1,8 @@
 package noxrender
 
 import (
-	"bytes"
-	"crypto/md5"
-	"encoding/hex"
 	"image"
-	"image/draw"
 	"image/png"
-	"io"
 	"log/slog"
 	"os"
 	"path/filepath"
@@ -16,6 +11,9 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+// Each raw-pixel reference was verified against the original PNG golden using
+// the historical color expansion (maximum 5-bit channel -> 248, now 255).
+// Hashing framebuffer words avoids depending on that presentation conversion.
 var particleCases = []struct {
 	name string
 	opt  particleOpt
@@ -24,41 +22,37 @@ var particleCases = []struct {
 	{
 		name: "white",
 		opt:  particleOpt{rad: 10, blur: 0, intens: 0xff, color: RGB{0xff, 0xff, 0xff}},
-		exp:  "6e3837c001f5a381cbd4782670c720b3",
+		exp:  "caf0fc32de5d0bde3e66c9a50e72e20b93d0ead6da35dced8adc971b22cbca11",
 	},
 	{
 		name: "green",
 		opt:  particleOpt{rad: 10, blur: 0, intens: 0xff, color: RGB{140, 220, 80}},
-		exp:  "1b05032774d7e7844c344a7407d110b0",
+		exp:  "008838a9f38d9ab29138eab6160f9af8508051dec7eb5fc72c78f865b96039ab",
 	},
 	{
 		name: "white3",
 		opt:  particleOpt{rad: 10, blur: 3, intens: 0xff, color: RGB{0xff, 0xff, 0xff}},
-		exp:  "e142606bc079722e906ca7dcfd6ec028",
+		exp:  "90c857d2064a533ae876627558ae810699e5cc9c17d8981a1837cd01e070134a",
 	},
 	{
 		name: "green3",
 		opt:  particleOpt{rad: 10, blur: 3, intens: 0xff, color: RGB{140, 220, 80}},
-		exp:  "ddc81813a16118c94748af5b238dcea0",
+		exp:  "80e175e68b0386ece3466f49f7213869715161ef7dee257e7ddd12104596d5cb",
 	},
 	{
 		name: "white32",
 		opt:  particleOpt{rad: 10, blur: 32, intens: 0x80, color: RGB{0xff, 0xff, 0xff}},
-		exp:  "67112c5925f52475b777284ae29f754b",
+		exp:  "38c023c57b5f38c158c6c55fc0ce4aecbcca0c22c9f06bfa738094c092c282fe",
 	},
 	{
 		name: "green32",
 		opt:  particleOpt{rad: 10, blur: 32, intens: 0x80, color: RGB{140, 220, 80}},
-		exp:  "d3edce3ebc525291df9b7a610c9bfd38",
+		exp:  "8a337a925f21eef4c0757818fa0a903dc0310ec0258b34f79bbcc92090f61484",
 	},
 }
 
 func TestDrawParticle(t *testing.T) {
 	debug := os.Getenv("NOX_RENDER_DEBUG") == "true"
-	var (
-		h   = md5.New()
-		buf bytes.Buffer
-	)
 	const outDir = ".testOut"
 	if debug {
 		err := os.MkdirAll(outDir, 0755)
@@ -83,39 +77,16 @@ func TestDrawParticle(t *testing.T) {
 
 			r.DrawImage16(img, pos)
 
-			h.Reset()
-			buf.Reset()
-
-			var w io.Writer = h
 			if debug {
 				fname := filepath.Join(outDir, "part_"+c.name+".png")
 				out, err := os.Create(fname)
 				require.NoError(t, err)
-				defer out.Close()
-				w = io.MultiWriter(w, out)
+				err = png.Encode(out, pix)
+				closeErr := out.Close()
+				require.NoError(t, err)
+				require.NoError(t, closeErr)
 			}
-			err := png.Encode(w, pix)
-			require.NoError(t, err)
-
-			got := hex.EncodeToString(h.Sum(nil))
-			skip := false
-			if c.exp == "" {
-				skip = true
-				t.Logf("%q", got)
-			} else {
-				require.Equal(t, c.exp, got)
-			}
-			if debug {
-				rgba := image.NewNRGBA(pix.Rect)
-				draw.Draw(rgba, pix.Rect, pix, image.Pt(0, 0), draw.Src)
-				h.Reset()
-				h.Write(rgba.Pix)
-				rgbaHex := hex.EncodeToString(h.Sum(nil))
-				t.Logf("RGBA32: %q", rgbaHex)
-			}
-			if skip {
-				t.SkipNow()
-			}
+			require.Equal(t, c.exp, pixelHash16(pix))
 		})
 	}
 }
