@@ -163,17 +163,6 @@ int sub_57A950(char* a1) {
 	return sub_4D0550(v2);
 }
 
-//----- (0057A9F0) --------------------------------------------------------
-int sub_57A9F0(const char* a1, const char* a2) {
-	char FileName[256]; // [esp+Ch] [ebp-100h]
-
-	strcpy(FileName, "maps\\");
-	strcat(FileName, a1);
-	strcat(FileName, "\\");
-	strcat(FileName, a2);
-	return nox_fs_remove(FileName);
-}
-
 //----- (0057ADF0) --------------------------------------------------------
 int* sub_57ADF0(int* a1) {
 	int* result; // eax

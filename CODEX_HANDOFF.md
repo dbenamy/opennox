@@ -3,12 +3,11 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-10
 
-Rule writing and the approved online-save fix are complete. Production C is
-141,351 physical lines (−104 in this chunk). The Go writer uses independent
-settings buffers; offline behavior and intended online filtering are tested.
-Next port the small rule-file deletion helper 57A9F0, starting with the prepared
-original-C fixture under build/port-rule-remove. Keep 57A950/4D0550 separate
-because they invoke the broader rule/config loader.
+Rule-file deletion is complete. Production C is 141,340 physical lines
+(−11 in this chunk). The writer’s approved online fix is complete at f3efc10b.
+Next assess the command-rule loader group 57A950/4D0550/4D0670/57AE30 with original-
+C callback/file baselines. Its draft fixture is under build/port-rule-command.
+Preserve hosted fgets truncation, any-bit mode checks and literal path quirks.
 Use PORTING_STATE.md's top resume section for current verification and next steps.
 Continue autonomously one reviewed/tested/documented/committed/pushed chunk at a
 time, with bounded Terra work and primary review. Stop for a substantive user

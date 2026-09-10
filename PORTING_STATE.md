@@ -5,29 +5,35 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-10
 
-Latest completed chunk: rule writing 57AAA0 and the user-approved online buffer
-fix. Production C is **141,351 physical lines** in 153 files, with zero test-
-reference C. See [counts](docs/porting/C_LOC.md) and
-[writer port](docs/porting/RULE_WRITER.md). Offline baseline: 36d8fa66. The writer
-uses independent Settings2 values and copies only the input name, preserving
-legacy-sized caller buffers. Its live C bridge remains; the Go caller is direct.
-No user decision remains pending.
+Latest completed chunk: rule-file deletion 57A9F0. Production C is **141,340
+physical lines** in 153 files, zero test-reference C. See
+[removal](docs/porting/RULE_REMOVAL.md) and [counts](docs/porting/C_LOC.md).
+Original-C baseline: b861ab46; the live C entry now calls the existing native
+case-insensitive filesystem removal through Go. The writer’s user-approved
+online fix is already completed/pushed at f3efc10b; no decision remains pending.
 
 All accumulated protection/network/waypoint/rule tests pass on 386 default/server/
-highres, including 81 original-C offline writer cases, 576 intended online
-filtering cases and eight file/error/caller cases. All three binaries build;
-writer-port passes the preserved gameplay scenario and both screenshots with
-overrides disabled. Full-suite results exactly match the loader milestone:
-15 passing, 3 known failing, 32 skipped/no-test packages and the same 1,553
-failure entries. Local artifacts are under build/port-writer.
+highres, including ten exact-return/full-tree deletion cases. All three binaries
+build; rule-remove-port passes the preserved gameplay scenario and both screenshot
+checks with overrides disabled. The latest full-suite milestone is the writer
+port: 15 passing, 3 known failing, 32 skipped/no-test packages and the same 1,553
+failure entries. Local artifacts for this chunk: build/port-rule-remove.
 
-Next: port rule-file deletion 57A9F0 after original-C baseline. The fixture and ten independent filesystem cases are installed; all pass
-against original C on 386. Primary review added directory, NUL, long-filename
-and exact ABI-return checks. See docs/porting/RULE_REMOVAL.md.
-57A950 delegates to 4D0550, a broader rule/config loader, and stays separate.
-Generic 57ADF0 list cleanup remains C and has other consumers. Test command from
-src with baseline environment: `go test -tags porttest -count=1 -run
-'^Test(Protection|Network|Waypoint|Rules)' .`; repeat with server/highres tags.
+Next: assess command-rule group 57A950/4D0550/4D0670/57AE30. Draft fixture only is
+under build/port-rule-command/command_rules_porttest.go; not yet installed/tested.
+Primary must write independent callback/file-selection/header tests. ExecConsoleCmd
+can be replaced by a recorder; save/restore flags, table, filename blob ranges,
+working directory and handles. Constants at 587000+191748/191760 are user.rul/.rul.
+Hosted text fgets consumes the whole physical line, normalizes CRLF, then copies
+at most 254 bytes for this reader. Mode eligibility is ANY matching game bit.
+4D0550 recognizes only backslashes when finding the parent: foo.map tries
+foouser.rul first, then foo.rul; do not silently normalize this into user.rul.
+Headers match the entire case-sensitive line, unlike the separate settings parser.
+Avoid malformed short-path underflow and directory-read hangs in original-C tests.
+Generic 57ADF0 list cleanup remains outside scope.
+
+Test command from src with baseline environment: `go test -tags porttest -count=1
+-run '^Test(Protection|Network|Waypoint|Rules)' .`; repeat with server/highres tags.
 
 Continue through tests, docs/C LOC, commit, push and a user update per chunk,
 then onward until a substantive question or rate limit. Terra handles bounded
@@ -610,3 +616,11 @@ All 665 writer cases and accumulated ABI tests pass in all variants; three build
 writer-port gameplay and exact known-failure full-suite comparison pass. C is
 **141,351 (−104)** physical lines, 153 files, zero test-reference C. See
 RULE_WRITER.md for independent online expectations and original offline baseline.
+
+## Completed — rule-file deletion (2026-09-10)
+
+Ported 57A9F0 after original-C baseline b861ab46. Ten full-tree/exact-return cases
+and all accumulated ABI tests pass on 386 default/server/highres; all binaries
+build and rule-remove-port passes both gameplay screenshots. Production C:
+**141,340 (−11)** physical lines, 153 files, zero test-reference C. Full-suite
+milestone remains the immediately preceding writer chunk. See RULE_REMOVAL.md.

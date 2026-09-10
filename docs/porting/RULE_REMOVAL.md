@@ -19,3 +19,21 @@ reference C lines. Local artifacts: `build/port-rule-remove/`.
 
 All ten original-C cases pass on 386 before replacement. No production changes
 are part of the baseline checkpoint.
+
+## Go conversion
+
+Original-C baseline: `b861ab46`. The live 57A9F0 bridge now performs native Go
+path concatenation and calls the same ifs.Remove implementation. C strings still
+terminate at NUL; paths retain the original backslashes and case-insensitive
+lookup behavior. There is no temporary fixed-size C path buffer or test-only
+C implementation. 57A950 and the command-rule loader remain outside this chunk.
+
+Production C: **141,340 physical lines (−11)** in 153 files; test-reference C: **0**.
+All accumulated protection/network/waypoint/rule tests pass on 386 default,
+server and highres. Symbol inspection confirms the Go-backed live C entry.
+The latest full-suite milestone remains the writer conversion, whose 1,553
+failure entries exactly matched the known baseline; this isolated deletion
+helper does not require another full-suite run immediately afterward.
+
+All three production binaries build. `rule-remove-port` passes the preserved
+headless gameplay scenario with both screenshot checks and overrides disabled.
