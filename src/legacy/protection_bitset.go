@@ -12,11 +12,6 @@ import (
 	"github.com/opennox/opennox/v1/internal/protection"
 )
 
-//export sub_56FCB0
-func sub_56FCB0(index, enabled C.int) C.int {
-	return C.int(protection.Bit(int32(index), int32(enabled)))
-}
-
 //export nox_xxx_playerAwardSpellProtectionCRC_56FCE0
 func nox_xxx_playerAwardSpellProtectionCRC_56FCE0(id, index, enabled C.int) C.int {
 	if id < 657757279 {

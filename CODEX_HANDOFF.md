@@ -386,3 +386,7 @@ while leaving its floating-point random generator unchanged.
 Rekey/shuffle is converted; see [its checkpoint](docs/porting/PROTECTION_REKEY.md).
 Index and swap C bridges are retired as their last C caller is gone. Next remove
 the now-unused integer struct-constructor C bridge and continue validation.
+
+The unused integer-constructor and single-bit C bridges are retired; see
+[the checkpoint](docs/porting/PROTECTION_BRIDGES.md). Continue with protected-value
+setters, validating their scalar return bits and rekey/RNG side effects.

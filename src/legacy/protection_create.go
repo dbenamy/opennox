@@ -20,8 +20,3 @@ func createProtectionRecord(id, value uint32) C.int {
 	}
 	return insertProtectionRecord(r)
 }
-
-//export nox_xxx_protectionCreateStructForInt_56F280
-func nox_xxx_protectionCreateStructForInt_56F280(id, value C.int) C.int {
-	return createProtectionRecord(uint32(id), uint32(value))
-}

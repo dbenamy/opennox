@@ -13,11 +13,12 @@ import (
 	"slices"
 	"unsafe"
 
+	"github.com/opennox/opennox/v1/internal/protection"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 )
 
 func PortTestProtectionBit(index, enabled int32) uint32 {
-	return uint32(C.sub_56FCB0(C.int(index), C.int(enabled)))
+	return protection.Bit(index, enabled)
 }
 
 type PortTestBitsetResult struct {

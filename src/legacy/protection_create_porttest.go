@@ -3,8 +3,8 @@
 package legacy
 
 /*
+#include <stdint.h>
 #include <stdlib.h>
-#include "GAME5_2.h"
 extern uint32_t dword_5d4594_2516344;
 extern uint32_t dword_5d4594_2516352;
 extern uint32_t dword_5d4594_2516348;
@@ -41,11 +41,9 @@ func PortTestCreate(id, bits, key, sum uint32, mode int) PortTestCreateResult {
 	var result int
 	switch mode {
 	case 0:
-		result = int(C.nox_xxx_protectionCreateStructForInt_56F280(C.int(id), C.int(bits)))
+		result = Nox_xxx_protectionCreateStructForInt_56F280(int(id), int(bits))
 	case 1:
 		result = Nox_xxx_protectionCreateStructForFloat_56F480(int(id), math.Float32frombits(bits))
-	case 2:
-		result = Nox_xxx_protectionCreateStructForInt_56F280(int(id), int(bits))
 	default:
 		panic(mode)
 	}

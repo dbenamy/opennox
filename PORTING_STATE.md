@@ -421,3 +421,15 @@ Production C: 142,265 lines (−62), 153 files; reference C: 0. See
 docs/porting/PROTECTION_REKEY.md and build/port-rekey. Next retire the now-unused
 integer struct-constructor C bridge (remaining production callers are native Go),
 then continue protected-value validation/mutation.
+
+## Unused protection bridge cleanup — completed, 2026-09-10
+
+Retired integer struct-constructor and single-bit C exports/prototypes after
+caller audits found only native Go production paths. Go APIs and behavior tests
+remain; constructor cases now number 8,112 across its two live paths. All
+accumulated protection tests pass under three tags, all binaries build with
+expected symbols, and bridges-port exits 0 against both screenshots. Production
+C remains 142,265 lines (delta 0), 153 files; references 0. See
+docs/porting/PROTECTION_BRIDGES.md and build/port-bridges. Next: integer/byte/word
+protected-value setters; their decompiled pointer returns are raw scalar bits.
+Caller audit found no dereferences, so uint32 C return declarations are suitable.
