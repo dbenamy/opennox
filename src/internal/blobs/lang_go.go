@@ -161,7 +161,7 @@ func (vs *blobAccessVisitor) getStatic(n ast.Node) (*AddrPos, *StringPos) {
 				r = xr
 			} else {
 				// merge the two, no position though
-				r = &StringPos{Val: xr.Val + yr.Val}
+				r = &StringPos{Val: xr.Val + " + " + yr.Val}
 			}
 			return v, r
 		}

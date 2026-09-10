@@ -187,3 +187,17 @@ an independent leaf whose relevant tests pass. The remaining blob-tool and
 render/audio failures need diagnosis before touching those areas, but are not a
 blanket blocker for unrelated conversions. Baseline Player.plr differences also
 remain unexplained. No C implementation has been replaced yet.
+
+## Bounded failure diagnosis — 2026-09-10
+
+- Blob formatter: combining two dynamic Go offset terms dropped the joining +,
+  e.g. uintptr(x)*13+71276+uintptr(y) became invalid Go. Added regression cases
+  covering operand order, nested sums, subtraction and zero offsets, checking
+  parsing, idempotence and independently evaluated arithmetic. Tests fail before
+  the fix and pass afterward; TestFormatAccesses now passes on the source copy.
+- Remaining ReadBlobs failure is a separate obsolete storage-format assumption:
+  it expects root memmap.go/memmap.c/GAME_data.c, while current code uses legacy
+  shims plus embedded .dat files and generated pointer initialization. Simply
+  changing paths to cgo_blobs.c would incorrectly treat initialized data as zero.
+  Updating the split/write tool to that format is separate work, not needed for
+  the initial dependency inventory. Do not use it to rewrite current blobs yet.
