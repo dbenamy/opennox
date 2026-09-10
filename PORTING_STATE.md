@@ -281,3 +281,15 @@ run passes 551,441 cases. Logs: build/port-checksum/retire-{unit,abi,fuzz}.log.
 Production C count stays 142,637 lines across 153 files; test-reference C drops
 from 33 to 0. C_LOC.md and the handoff reflect this retirement. No engine rebuild
 or gameplay rerun was needed for this test-only removal.
+
+## Protection record helpers — in progress, 2026-09-10
+
+Selected sub_56F590 (decoded-ID lookup), sub_56F6F0 (index lookup), and
+sub_56F720 (payload swap). All are retained in the standard baseline binary.
+Their only diagnostic callback, nullsub_31, is an empty C function. Tests execute
+2,000 deterministic scenarios against current C, with temporary C-heap records
+and restored globals: empty/single/multiple lists, duplicates, high-bit keys/IDs,
+missing and extreme indices, null/self/adjacent/non-adjacent swaps, preserved
+links and modulo-32-bit counter increments. Current C and new pure Go helpers
+pass separately before rewiring the ABI. Logs: build/port-records/c-before.log
+and unit.log. Production C count is still 142,637; no extra C reference is needed.
