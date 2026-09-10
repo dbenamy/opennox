@@ -471,3 +471,12 @@ against both screenshots. Production C: 142,130 lines (−59), 153 files; refere
 C: 0. See docs/porting/PROTECTION_ADD.md and build/port-add. Next: buffer checksum
 validation (sub_56FB00), including signed eligibility, first-match lookup,
 partial-word handling and proof that rejected/missing IDs never read the buffer.
+
+## Protection buffer validation — in progress, 2026-09-10
+
+Original C passes 515 validation cases: aligned/unaligned buffers and trailing
+bytes, first-match duplicates, signed eligibility, missing IDs, nil huge lengths,
+and PROT_NONE guard pages proving short-circuit/no-partial-word reads. Full
+manager/RNG state and readable input bytes stay unchanged. Final baseline:
+build/port-validate/c-before-final.log (zero-key cases include live matches).
+Production C remains 142,130 lines; draft and tests were reviewed before port.
