@@ -23,9 +23,10 @@ and symbols can be retired after original-C fixture validation. Preserve active
 player order, exclusion of index 31, signed-positive first timing read and a
 separate second read for each qualifying player. Minimum compares second values
 unsigned; average sums with 32-bit wrapping then divides signed, exposing uint32
-bits through the existing wrapper. cgo uses -fno-strict-overflow. Terra is drafting
-C-owned player-list/callback fixtures under ignored build/port-ping-aggregate;
-primary writes independent oracles and reviews integration.
+bits through the existing wrapper. cgo uses -fno-strict-overflow. C-owned player-list/callback fixtures and independent tests are installed.
+Original-C baseline passes 2,136 results across 267 datasets, with callback trace
+and player-storage checks; see docs/porting/PING_AGGREGATES.md. Local artifacts:
+build/port-ping-aggregate. Ready for native conversion.
 
 Keep 57ADF0 list cleanup with its future GUI-owner port: it still serves GUI
 options teardown and returns the first freed pointer. Do not silently change ABI.
