@@ -2,6 +2,30 @@
 
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
+<!-- current-checkpoint -->
+## Resume here — 2026-09-10
+
+Latest completed chunk: protection buffer validation. Production C is **142,115
+physical lines** in 153 files, with zero test-reference C lines. See
+[the count history](docs/porting/C_LOC.md). Completed chunks are committed and
+pushed to `dbenamy/opennox`, branch `dev`, using the explicit SSH push URL below.
+
+Next: object checksum and its two toggles. Audit confirms the toggles return the
+original ID on both ineligible and missing handles; successful calls return the
+updated manager checksum. Preserve read-only object behavior, signed init-data
+size checks, and retire getter bridges whose last C caller disappears.
+
+All accumulated protection tests pass on 386 for default/server/highres, all
+three binaries build, and the latest warrior scenario (`validate-port`) passes
+both preserved screenshots. The latest full suite at rekey matches the prior
+failure set exactly: 15 passing, 3 known failing, 32 no-test packages.
+
+Continue one chunk at a time through tests, docs/C LOC, commit, push and a user
+update, then onward until a substantive question or rate limit. Terra handles
+bounded drafts/audits; primary review owns correctness, test oracles and final
+integration. Historical milestones follow below; early status is not current.
+<!-- /current-checkpoint -->
+
 ## GitHub backup and recovery
 
 On 2026-09-10, SSH authentication to GitHub succeeded as dbenamytravis and all
@@ -17,7 +41,7 @@ are not on GitHub. Provision SSH credentials separately; no private key or token
 is recorded here. The SSH push URL is git@github.com:dbenamy/opennox.git; origin
 still uses HTTPS, so an explicit SSH URL was used for the push.
 
-## Current status after infrastructure repairs
+## Historical status after infrastructure repairs
 
 Plan and infrastructure changes are committed. Screenshot checks now fail
 reliably, automatic test writes are isolated, and stale API/vet failures are
@@ -480,3 +504,10 @@ and PROT_NONE guard pages proving short-circuit/no-partial-word reads. Full
 manager/RNG state and readable input bytes stay unchanged. Final baseline:
 build/port-validate/c-before-final.log (zero-key cases include live matches).
 Production C remains 142,130 lines; draft and tests were reviewed before port.
+
+Buffer validation completed: all protection tests and production builds pass
+in three configurations; the C entry is Go-backed and validate-port exits 0
+against both screenshots. Production C: 142,115 lines (−15), 153 files; reference
+C: 0. See docs/porting/PROTECTION_VALIDATE.md and build/port-validate. Next object
+checksum/toggles require object/type fixtures and preserve raw-ID returns on
+missing records, unlike the setter functions.

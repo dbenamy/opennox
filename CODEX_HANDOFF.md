@@ -1,5 +1,17 @@
 # OpenNox x86 Porting Handoff
 
+<!-- current-focus -->
+## Resume focus — 2026-09-10
+
+Buffer validation is the latest completed chunk; production C is 142,115 physical
+lines (see C_LOC.md). Next port object checksum/toggles with object/type fixtures.
+Use PORTING_STATE.md's top resume section for current verification and next steps;
+the milestones later in these documents are historical. Continue autonomously
+one reviewed/tested/documented/committed/pushed chunk at a time. Use Terra for
+bounded tasks with primary review; stop only for a substantive user decision or
+rate limit. Preserve the asset archive and the documented baseline failures.
+<!-- /current-focus -->
+
 ## Current plan — revised 2026-09-10
 
 This document is the working plan. Read PORTING_STATE.md for completed checks,

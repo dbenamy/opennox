@@ -215,21 +215,6 @@ uint32_t* sub_56FA40(int a1, float a2) {
 	return result;
 }
 
-//----- (0056FB00) --------------------------------------------------------
-int sub_56FB00(int* a1, unsigned int a2, int a3) {
-	uint32_t* v3; // esi
-
-	if (a3 >= 657757279) {
-		v3 = sub_56F590(a3);
-		if (v3 && (dword_5d4594_2516348 ^ nox_xxx_protectionStringCRCLen_56FAE0(a1, a2)) == v3[1]) {
-			return 1;
-		}
-		nullsub_31(1);
-	}
-	return 0;
-}
-// 560840: using guessed type void  nullsub_31(uint32_t);
-
 //----- (0056FB60) --------------------------------------------------------
 int sub_56FB60(nox_object_t* item) {
 	int result; // eax
