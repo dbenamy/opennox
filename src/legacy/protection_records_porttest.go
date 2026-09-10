@@ -12,6 +12,7 @@ import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/common/memmap"
+	"github.com/opennox/opennox/v1/internal/protection"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 )
 
@@ -64,9 +65,9 @@ func PortTestRecords(values [][2]uint32, key uint32, id, index, a, b int, counte
 	}
 	out := PortTestRecordResult{
 		Lookup: findIndex(unsafe.Pointer(C.sub_56F590(C.int(id)))),
-		At:     findIndex(unsafe.Pointer(C.sub_56F6F0(C.int(index)))),
+		At:     findIndex(unsafe.Pointer(protection.At(protectionHead(), int32(index)))),
 	}
-	C.sub_56F720(ptr(a), ptr(b))
+	swapProtectionRecords((*protection.Record)(unsafe.Pointer(ptr(a))), (*protection.Record)(unsafe.Pointer(ptr(b))))
 	out.Counter = *count
 	out.LinksUnchanged = C.dword_5d4594_2516344 == C.uint(uintptr(unsafe.Pointer(ptr(0)))) && C.dword_5d4594_2516348 == C.uint(key)
 	for i, r := range records {

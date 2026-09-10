@@ -304,7 +304,7 @@ func Sub_4E76C0() {
 	C.sub_4E76C0()
 }
 func Nox_xxx_protectData_56F5C0() {
-	C.nox_xxx_protectData_56F5C0()
+	nox_xxx_protectData_56F5C0()
 }
 func Sub_57B140() bool {
 	return bool(C.sub_57B140())

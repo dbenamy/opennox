@@ -38,14 +38,8 @@ func sub_56F590(id C.int) *C.uint32_t {
 	return (*C.uint32_t)(unsafe.Pointer(p))
 }
 
-//export sub_56F6F0
-func sub_56F6F0(index C.int) *C.uint32_t {
-	return (*C.uint32_t)(unsafe.Pointer(protection.At(protectionHead(), int32(index))))
-}
-
-//export sub_56F720
-func sub_56F720(a, b *C.int) {
-	if protection.Swap((*protection.Record)(unsafe.Pointer(a)), (*protection.Record)(unsafe.Pointer(b))) {
+func swapProtectionRecords(a, b *protection.Record) {
+	if protection.Swap(a, b) {
 		*memmap.PtrUint32(0x5D4594, 2516360)++
 	}
 }

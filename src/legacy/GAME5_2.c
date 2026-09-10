@@ -172,68 +172,6 @@ int sub_56F1C0() {
 //----- (0056F240) --------------------------------------------------------
 int nox_xxx_protect_56F240() { return sub_56FF80(1, -1); }
 
-//----- (0056F5C0) --------------------------------------------------------
-int nox_xxx_protectData_56F5C0() {
-	int v0;          // ebx
-	int v1;          // edi
-	int v2;          // ebx
-	int v3;          // edi
-	unsigned int v4; // eax
-	int i;           // ebp
-	int v6;          // esi
-	int v7;          // eax
-	int* v8;         // eax
-	int* v9;         // eax
-	int v10;         // ecx
-	int v11;         // ebp
-	bool v12;        // zf
-	int result;      // eax
-	int* v14;        // [esp-14h] [ebp-14h]
-
-	if (!dword_5d4594_2516348) {
-		nullsub_31(1);
-	}
-	v0 = gameFrame();
-	v1 = dword_5d4594_2516348;
-	v2 = nox_xxx_protect_56F240() ^ v0;
-	v3 = v2 ^ v1;
-	dword_5d4594_2516328 = ~v2;
-	v4 = *getMemU16Ptr(0x587000, 311204);
-	for (i = 0; i < (*getMemU16Ptr(0x587000, 311204) >> 2); v4 = *getMemU16Ptr(0x587000, 311204)) {
-		v6 = nox_common_randomInt_415FA0(0, v4 >> 1);
-		v7 = nox_common_randomInt_415FA0((*getMemU16Ptr(0x587000, 311204) >> 1) + 1,
-										 *getMemU16Ptr(0x587000, 311204) - 1);
-		if (v6 != v7) {
-			v14 = sub_56F6F0(v7);
-			v8 = sub_56F6F0(v6);
-			sub_56F720(v8, v14);
-		}
-		++i;
-	}
-	v9 = *(int**)&dword_5d4594_2516344;
-	dword_5d4594_2516348 = 0;
-	if (dword_5d4594_2516344) {
-		do {
-			v10 = v3 ^ *v9;
-			v11 = v3 ^ v9[1];
-			*v9 = v10;
-			v9[1] = v11;
-			dword_5d4594_2516328 ^= v10;
-			dword_5d4594_2516328 ^= v9[1];
-			v9 = (int*)v9[2];
-		} while (v9);
-	}
-	result = v2 ^ dword_5d4594_2516348;
-	v12 = v2 == dword_5d4594_2516348;
-	++*getMemU32Ptr(0x5D4594, 2516364);
-	dword_5d4594_2516348 ^= v2;
-	if (v12) {
-		nullsub_31(1);
-	}
-	return result;
-}
-// 560840: using guessed type void  nullsub_31(uint32_t);
-
 //----- (0056F780) --------------------------------------------------------
 uint32_t* sub_56F780(int a1, int a2) {
 	uint32_t* result; // eax

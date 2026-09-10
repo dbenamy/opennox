@@ -382,3 +382,7 @@ a time until a substantive question or rate limit needs their attention.
 Reserved records and handle allocation are converted; see
 [their checkpoint](docs/porting/PROTECTION_HANDLES.md). Next validate rekey/shuffle
 while leaving its floating-point random generator unchanged.
+
+Rekey/shuffle is converted; see [its checkpoint](docs/porting/PROTECTION_REKEY.md).
+Index and swap C bridges are retired as their last C caller is gone. Next remove
+the now-unused integer struct-constructor C bridge and continue validation.

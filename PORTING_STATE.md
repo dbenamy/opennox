@@ -411,3 +411,13 @@ the expected draw and raw post-state; the fixture restores pre-state before
 calling rekey. Range vardefs are saved via their C addresses, not blob offsets.
 Pure Rekey tests pass on 386/amd64. Evidence: build/port-rekey/c-before.log and
 unit-*.log. C is still 142,327 lines; no reference copy is added.
+
+Rekey/shuffle completed: all accumulated protection tests pass in three target
+configurations, pure helpers pass on 386/amd64, and all three binaries build with
+expected exports. rekey-port exits 0 against both preserved screenshots. Full
+default suite: 15 passing / 3 known failing / 32 no-test packages, with the exact
+same failing package/test entries as the accepted constructor checkpoint.
+Production C: 142,265 lines (−62), 153 files; reference C: 0. See
+docs/porting/PROTECTION_REKEY.md and build/port-rekey. Next retire the now-unused
+integer struct-constructor C bridge (remaining production callers are native Go),
+then continue protected-value validation/mutation.

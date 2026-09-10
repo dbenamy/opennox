@@ -22,6 +22,7 @@ target build selection and linker evidence.
 | Protection deletion/cleanup (2026-09-10) | 153 | 142,393 | −65 | 0 |
 | Protection randomized insertion (2026-09-10) | 153 | 142,351 | −42 | 0 |
 | Protection reserved records/handles (2026-09-10) | 153 | 142,327 | −24 | 0 |
+| Protection rekey/shuffle (2026-09-10) | 153 | 142,265 | −62 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
