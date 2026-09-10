@@ -433,3 +433,15 @@ C remains 142,265 lines (delta 0), 153 files; references 0. See
 docs/porting/PROTECTION_BRIDGES.md and build/port-bridges. Next: integer/byte/word
 protected-value setters; their decompiled pointer returns are raw scalar bits.
 Caller audit found no dereferences, so uint32 C return declarations are suitable.
+
+## Protection integer/byte/word setters — in progress, 2026-09-10
+
+Original C passes 2,500 setter calls (500 scenarios × four C entries and one
+Go-wrapper path), plus the rekey regression checks after shared fixture reuse.
+Tests cover signed eligibility, misses/duplicates, truncation/return bits and full
+manager/RNG post-state, with unchanged-state assertions on unsuccessful paths.
+Baseline: build/port-setters/c-before.log. Caller audit confirms pointer-typed
+returns are scalar bits, with no dereferences/function-pointer uses, so correct
+these four declarations to uint32_t while preserving 386 return behavior.
+Production C remains 142,265 lines. Terra's bounded Go draft and primary-owned
+tests both passed review; no production replacement has been made yet.

@@ -25,18 +25,28 @@ import (
 )
 
 type PortTestRekeySnapshot struct {
-	Result, ExpectedRandom          uint32
-	Values                          [][2]uint32
-	Sum, Key, Sequence              uint32
-	SwapCount, RekeyCount           uint32
-	Count                           uint16
-	LogicIndex, OtherIndex          int
-	FloatState, ExpectedFloatState  [40]byte
-	FloatRange, ExpectedFloatRange  [3]uint32
-	LinksValid, NodesAndLinksStable bool
+	Result, ExpectedRandom                           uint32
+	Values                                           [][2]uint32
+	Sum, Key, Sequence                               uint32
+	SwapCount, RekeyCount                            uint32
+	Count                                            uint16
+	LogicIndex, OtherIndex                           int
+	FloatState, ExpectedFloatState, BeforeFloatState [40]byte
+	FloatRange, ExpectedFloatRange, BeforeFloatRange [3]uint32
+	LinksValid, NodesAndLinksStable                  bool
 }
 
 func PortTestRekey(initial [][2]uint32, key, sum, sequence, swapCount, rekeyCount, frame, floatSeed uint32, seed int, wrapper bool) PortTestRekeySnapshot {
+	return portTestRekeyOperation(initial, key, sum, sequence, swapCount, rekeyCount, frame, floatSeed, seed, func() uint32 {
+		if wrapper {
+			Nox_xxx_protectData_56F5C0()
+			return 0
+		}
+		return uint32(C.nox_xxx_protectData_56F5C0())
+	})
+}
+
+func portTestRekeyOperation(initial [][2]uint32, key, sum, sequence, swapCount, rekeyCount, frame, floatSeed uint32, seed int, run func() uint32) PortTestRekeySnapshot {
 	oldGet := GetServer
 	core := new(server.Server)
 	core.SetFrame(frame)
@@ -90,14 +100,9 @@ func PortTestRekey(initial [][2]uint32, key, sum, sequence, swapCount, rekeyCoun
 	expectedRange := [3]uint32{uint32(C.dword_5d4594_2516372), *floatMax, uint32(C.dword_5d4594_2516380)}
 	copy(unsafe.Slice((*byte)(floatState), 40), beforeFloat)
 	C.dword_5d4594_2516372, *floatMax, C.dword_5d4594_2516380 = C.uint32_t(beforeRange[0]), beforeRange[1], C.uint32_t(beforeRange[2])
-	var result C.int
-	if wrapper {
-		Nox_xxx_protectData_56F5C0()
-	} else {
-		result = C.nox_xxx_protectData_56F5C0()
-	}
+	result := run()
 	out := PortTestRekeySnapshot{
-		Result:             uint32(result),
+		Result:             result,
 		ExpectedRandom:     expectedRandom,
 		Sum:                uint32(C.dword_5d4594_2516328),
 		Key:                uint32(C.dword_5d4594_2516348),
@@ -109,8 +114,10 @@ func PortTestRekey(initial [][2]uint32, key, sum, sequence, swapCount, rekeyCoun
 		OtherIndex:         core.Rand.Other.Index(),
 		ExpectedFloatState: expectedFloat,
 		ExpectedFloatRange: expectedRange,
+		BeforeFloatRange:   beforeRange,
 		LinksValid:         true,
 	}
+	copy(out.BeforeFloatState[:], beforeFloat)
 	copy(out.FloatState[:], unsafe.Slice((*byte)(floatState), 40))
 	out.FloatRange = [3]uint32{uint32(C.dword_5d4594_2516372), *floatMax, uint32(C.dword_5d4594_2516380)}
 	p := protectionHead()
