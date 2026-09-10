@@ -382,3 +382,13 @@ symbols, and insertion-port exits 0 against both screenshots. Evidence:
 build/port-insert. Production C: 142,351 lines (−42), 153 files; C references: 0.
 See docs/porting/PROTECTION_INSERT.md. Next: reserved-record initialization and
 handle allocation, including uint32 sequence wrap and return-value semantics.
+
+## Protection reserved records/handles — in progress, 2026-09-10
+
+Original C passes 400 deterministic mixed operation sequences against full list,
+checksum, handle sequence, return-value and RNG snapshots. Cases include empty
+and prepopulated lists, zero/high-bit IDs, the threshold and uint32 wraparound.
+Final pre-port evidence: build/port-handles/c-before.log. Both C entries remain
+needed by sub_56F1C0. Reserved initialization increments the sequence after each
+attempt; ordinary allocation increments only on success. Allocator exhaustion is
+not injected. Production C remains 142,351 lines; reference C remains zero.
