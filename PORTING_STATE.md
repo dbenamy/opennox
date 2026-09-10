@@ -302,3 +302,12 @@ Production C: 142,570 lines (−67 this chunk), 153 files; test-reference C: 0.
 See docs/porting/PROTECTION_RECORDS.md for scope, commands and limitations.
 Next chunk: inspect and test the protection spell/ability bitset operations;
 keep allocation, rekeying and floating-point state outside that scope.
+
+## Protection bitset operations — in progress, 2026-09-10
+
+Current C passes 5,000 deterministic state scenarios plus 12,291 direct bit
+checks before conversion. Tests cover signed handle thresholds, empty/missing
+records, key zero/high bits, enabled/disabled awards, checksum deltas, successful
+and failed validation, ignored entry zero, modulo-32 collisions, signed truthy
+values and count <= 1 with null data. Inputs and non-payload state stay unchanged.
+Logs: build/port-bitset/c-before.log and unit.log. No C reference is copied.
