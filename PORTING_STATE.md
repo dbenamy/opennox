@@ -363,3 +363,14 @@ symbols. remove-port exits 0 against both preserved screenshots. Production C
 is 142,393 lines (−65 this chunk), 153 files; C references remain zero.
 See docs/porting/PROTECTION_REMOVE.md. Next: randomized record insertion, with
 explicit comparison of list order and RNG index/consumption under fixed seeds.
+
+## Protection randomized insertion — in progress, 2026-09-10
+
+Original C passes 500 deterministic insertion sequences plus prepopulated
+32,768/65,535-record boundaries. Tests compare exact list order, back links,
+endpoints, checksum, count wrapping, both constructor paths and Logic/Other RNG
+indices. Pure Go InsertBefore tests pass separately. Logs:
+build/port-insert/c-before-final.log and unit.log. Production C remains 142,393
+lines. The sole production caller is the Go constructor; remove the obsolete C
+entry point after equivalence validation. Trial delegation: Terra implements
+this bounded conversion; the primary agent reviews and runs integration checks.
