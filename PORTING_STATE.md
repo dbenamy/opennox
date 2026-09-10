@@ -5,23 +5,22 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-10
 
-Latest completed chunk: client unit-code encoding and bit helpers. Production C
-is **141,821 physical lines** in 153 files, with zero test-reference C lines. See
-[the count history](docs/porting/C_LOC.md) and [network-code port](docs/porting/NETWORK_CODE.md).
+Latest completed chunk: dynamic unit-code resolution and extent lookup.
+Production C is **141,786 physical lines** in 153 files, with zero test-reference
+C lines. See [counts](docs/porting/C_LOC.md) and [extent port](docs/porting/NETWORK_EXTENT.md).
 Completed chunks are committed and pushed to `dbenamy/opennox`, branch `dev`.
 
-Next: dynamic extent resolution (578B40) and the underlying C lookup (4ED020),
-reusing server.Objs.GetObjectByInd. Establish original-C tests with C-allocated
-server objects, first live match amid destroyed/duplicate entries, missing
-extents, full raw32 returns/upper bits and no-server passthrough when bit15 is
-clear. Draft fixtures/tests are ignored under build/port-extent and need review
-before installation. C pointers must not reference a Go-linked object list.
+Next: waypoint helpers 579870/5798A0 (nil-safe next), 579E70 (raw calloc516),
+579EE0 (mask) and composite 547EE0 (nil/enabled/mask). Preserve allocation-failure
+nil behavior; alloc.New would panic, so use raw C.calloc. Retire sole-use 579EE0
+bridge after its composite caller moves to Go. Draft code/fixtures/tests under
+build/port-waypoint still need review and original-C baseline validation.
 
 The protection algorithms are now Go, including startup and floating RNG state;
 records still use C allocation while live C consumers remain. Hosted x87 PC53
 semantics and the literal discarded-floor/v-v RNG behavior are preserved.
 All protection/network-code tests pass on 386 default/server/highres, all three binaries build,
-and `netcode-port` passes both preserved gameplay screenshots. The RNG full suite
+and `extent-port` passes both preserved gameplay screenshots. The RNG full suite
 exactly matches the known failures: 15 passing, 3 known failing, 32 skipped/no-test
 packages, with all 1,553 failure entries unchanged.
 
@@ -564,3 +563,10 @@ Production C: **141,844 physical lines (−70)**; test-reference C: **0**.
 Ported three C entries after exhaustive low-word/upper-pattern bit tests and
 2,988 read-only drawable cases. See [details](docs/porting/NETWORK_CODE.md).
 Production C: **141,821 physical lines (−23)**; test-reference C: **0**.
+
+## Dynamic unit-code/extent lookup completed — 2026-09-10
+
+Ported two C entries through the existing typed server lookup after exhaustive
+unmarked-code bypass and randomized C-backed object-list baselines. See
+[details](docs/porting/NETWORK_EXTENT.md).
+Production C: **141,786 physical lines (−35)**; test-reference C: **0**.

@@ -140,24 +140,6 @@ int sub_554300() {
 	}
 }
 
-//----- (00578B40) --------------------------------------------------------
-int nox_xxx_packetDynamicUnitCode_578B40(int a1) {
-	int result; // eax
-	int v2;     // eax
-
-	result = a1;
-	if ((a1 & 0x8000) == 0x8000) {
-		BYTE1(result) &= 0x7Fu;
-		v2 = nox_xxx_netGetUnitByExtent_4ED020(result);
-		if (v2) {
-			result = *(uint32_t*)(v2 + 36);
-		} else {
-			result = 0;
-		}
-	}
-	return result;
-}
-
 //----- (00579870) --------------------------------------------------------
 int nox_xxx_waypointNext_579870(int a1) {
 	int result; // eax

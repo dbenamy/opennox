@@ -3,10 +3,10 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-10
 
-Client unit-code encoding and bit helpers are the latest completed chunk;
-production C is 141,821 physical lines (see C_LOC.md). Next port dynamic extent
-resolution and its C lookup through the existing typed server API, after isolated
-C-backed server-list baselines. Protection RNG/state is already native Go.
+Dynamic unit-code resolution and extent lookup are the latest completed chunk;
+production C is 141,786 physical lines (see C_LOC.md). Next port the remaining
+waypoint allocation/link/predicate helpers with original-C tests, retaining raw
+calloc failure behavior. Protection RNG/state is already native Go.
 Use PORTING_STATE.md's top resume section for current verification and next steps;
 the milestones later in these documents are historical. Continue autonomously
 one reviewed/tested/documented/committed/pushed chunk at a time. Use Terra for

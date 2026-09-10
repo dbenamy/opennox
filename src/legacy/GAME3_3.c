@@ -6213,23 +6213,6 @@ int sub_4ECFE0() {
 	return result;
 }
 
-//----- (004ED020) --------------------------------------------------------
-int nox_xxx_netGetUnitByExtent_4ED020(int a1) {
-	int result; // eax
-
-	result = nox_server_getFirstObject_4DA790();
-	if (!result) {
-		return 0;
-	}
-	while (*(uint8_t*)(result + 16) & 0x20 || *(uint32_t*)(result + 40) != a1) {
-		result = nox_server_getNextObject_4DA7A0(result);
-		if (!result) {
-			return 0;
-		}
-	}
-	return result;
-}
-
 //----- (004ED050) --------------------------------------------------------
 void sub_4ED050(int a1, int a2) {
 	int v2; // eax
