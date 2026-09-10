@@ -39,6 +39,7 @@ target build selection and linker evidence.
 | Rule-file deletion (2026-09-10) | 153 | 141,340 | −11 | 0 |
 | Command-rule loading/dispatch (2026-09-10) | 153 | 141,215 | −125 | 0 |
 | Spell-class eligibility / unused chat predicate (2026-09-10) | 153 | 141,180 | −35 | 0 |
+| Player-ping minimum/average (2026-09-10) | 153 | 141,126 | −54 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

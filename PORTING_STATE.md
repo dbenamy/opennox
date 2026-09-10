@@ -5,34 +5,37 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-10
 
-Latest completed chunk: spell-class eligibility 57AEA0, plus retirement of the
-unused C chat predicate 57A160. Production C is **141,180 physical lines** in 153
-files, zero reference C. See [spell class](docs/porting/SPELL_CLASS.md) and
-[counts](docs/porting/C_LOC.md). Original-C baseline: 2970e5e9, 38,016 ABI calls.
-The writer's user-approved online fix is complete; no user decision is pending.
+Latest completed chunk: player-ping minimum/average 554290/554300. Existing Go
+wrappers now call native helpers; both unused C bridges are retired. Production
+C is **141,126 physical lines** in 153 files, zero reference C. Original-C
+baseline: fea6ca7b, 2,136 aggregate results with exact callback traces and storage
+checks. See [ping aggregates](docs/porting/PING_AGGREGATES.md) and
+[counts](docs/porting/C_LOC.md). The earlier approved writer fix remains complete.
 
-All accumulated protection/network/waypoint/rules/spell-class tests pass on 386
-default/server/highres. All three binaries build. Fresh spell-class-port gameplay
-passes both preserved screenshots with overrides disabled. Local artifacts:
-build/port-spell-class. Full suite last repeated at the immediately preceding
-command-rule milestone: 15 passing, 3 known failing, 32 skipped/no-test packages,
-with exactly the same 1,553 failure entries as the writer milestone.
+All accumulated protection/network/waypoint/rules/spell-class/ping tests pass on
+386 default/server/highres. All three binaries build. Fresh ping-aggregate-port
+gameplay passes both preserved screenshots with overrides disabled. Artifacts:
+build/port-ping-aggregate. Full suite last repeated at the command-rule milestone:
+15 passing, 3 known failing, 32 skipped/no-test packages, with exactly the same
+1,553 failure entries as the writer milestone. No tests/builds remain running.
 
-Next: ping aggregates 554290/554300. Only Go wrappers call them, so their C bodies
-and symbols can be retired after original-C fixture validation. Preserve active
-player order, exclusion of index 31, signed-positive first timing read and a
-separate second read for each qualifying player. Minimum compares second values
-unsigned; average sums with 32-bit wrapping then divides signed, exposing uint32
-bits through the existing wrapper. cgo uses -fno-strict-overflow. C-owned player-list/callback fixtures and independent tests are installed.
-Original-C baseline passes 2,136 results across 267 datasets, with callback trace
-and player-storage checks; see docs/porting/PING_AGGREGATES.md. Local artifacts:
-build/port-ping-aggregate. Ready for native conversion.
+Next: network alias reset/select/write 57B920/57B9A0/57BA10. No production alias
+changes or baseline fixtures yet. A substantive user decision is pending via
+asynchronous question: fix confirmed exhaustion bug during port (recommended),
+or defer? Both C callers assign the signed-char selector to unsigned char v24
+then compare v24 != -1, so full-table sentinel 255 causes an eight-byte write
+past the table and invalid alias announcement. Disassembly confirms the checks
+are optimized away. Proposed fix: compare to byte 255 and skip write/announcement
+on exhaustion while continuing normal packet processing. See the detailed
+[alias investigation and fixture plan](docs/porting/NETWORK_ALIASES.md).
+Do not confuse the existing outbound lookup 57B930 with incoming slot allocation.
 
 Keep 57ADF0 list cleanup with its future GUI-owner port: it still serves GUI
 options teardown and returns the first freed pointer. Do not silently change ABI.
 
 Test from src with baseline environment: `go test -tags porttest -count=1
--run '^Test(Protection|Network|Waypoint|Rules|SpellClass)' .`; repeat server/highres.
+-run '^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates)' .`;
+repeat server/highres. Preserve untracked asset archive.
 
 Continue through tests, docs/C LOC, commit, push and a user update per chunk,
 then onward until a substantive question or rate limit. Terra handles bounded
@@ -640,3 +643,12 @@ Ported 57AEA0 with original-C baseline 2970e5e9, preserving full-width class inp
 real spell flag lookup and exact 0/9 returns. Removed unused C chat predicate.
 All three accumulated test variants, builds and fresh gameplay checks pass.
 Production C: **141,180 lines (−35)**; details in docs/porting/SPELL_CLASS.md.
+
+## Player-ping aggregates completed — 2026-09-10
+
+Ported 554290/554300 with original-C baseline fea6ca7b. Preserved active-player
+order, host exclusion, two timing reads per qualifying player, unsigned minimum,
+32-bit wrapped sum and signed average division. Retired both unused C bridges.
+All three accumulated test variants, builds and fresh gameplay checks pass.
+Production C: **141,126 lines (−54)**; see docs/porting/PING_AGGREGATES.md.
+Next alias-table work has a pending user decision documented in the top checkpoint.

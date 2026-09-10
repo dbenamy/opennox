@@ -164,10 +164,10 @@ func Nox_xxx_game_4DCCB0() int {
 	return int(C.nox_xxx_game_4DCCB0())
 }
 func Sub_554290() uint32 {
-	return uint32(C.sub_554290())
+	return pingMinimum()
 }
 func Sub_554300() uint32 {
-	return uint32(C.sub_554300())
+	return pingAverage()
 }
 func Nox_client_mousePriKey_430AF0() int {
 	return int(C.nox_client_mousePriKey_430AF0())

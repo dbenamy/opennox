@@ -85,60 +85,6 @@ unsigned int nox_server_makeServerInfoPacket_554040(const char* inBuf, int inSz,
 	return 72 + strlen(srvName) + 1;
 }
 
-unsigned int sub_554290() {
-	unsigned int v0;     // edi
-	int v1;              // ebx
-	char* v2;            // esi
-	unsigned int v3;     // eax
-
-	v0 = -1;
-	v1 = 0;
-	v2 = nox_common_playerInfoGetFirst_416EA0();
-	if (!v2) {
-		return 0;
-	}
-	do {
-		if (v2[2064] != 31 && sub_554240((unsigned char)v2[2064]) > 0) {
-			v3 = sub_554240((unsigned char)v2[2064]);
-			if (v3 < v0) {
-				v0 = v3;
-			}
-			++v1;
-		}
-		v2 = nox_common_playerInfoGetNext_416EE0((int)v2);
-	} while (v2);
-	if (v1) {
-		return v0;
-	} else {
-		return 0;
-	}
-}
-
-int sub_554300() {
-	int v0;     // ebx
-	int v1;     // edi
-	char* v2;   // esi
-
-	v0 = 0;
-	v1 = 0;
-	v2 = nox_common_playerInfoGetFirst_416EA0();
-	if (!v2) {
-		return 0;
-	}
-	do {
-		if (v2[2064] != 31 && (int)sub_554240((unsigned char)v2[2064]) > 0) {
-			v0 += sub_554240((unsigned char)v2[2064]);
-			++v1;
-		}
-		v2 = nox_common_playerInfoGetNext_416EE0((int)v2);
-	} while (v2);
-	if (v1) {
-		return v0 / v1;
-	} else {
-		return 0;
-	}
-}
-
 //----- (0057ADF0) --------------------------------------------------------
 int* sub_57ADF0(int* a1) {
 	int* result; // eax

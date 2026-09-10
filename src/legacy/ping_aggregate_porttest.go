@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"fmt"
@@ -17,7 +12,7 @@ import (
 
 type PortTestPingAggregateCall struct {
 	Kind    string // min or average
-	Wrapper bool   // exercise the public Go wrapper rather than direct C
+	Wrapper bool   // exercise the public Go wrapper rather than the private helper
 }
 
 type PortTestPingTrace struct {
@@ -31,7 +26,7 @@ type PortTestPingAggregateResult struct {
 	PlayersUnchanged bool
 }
 
-// PortTestPingAggregates invokes either C aggregate independently, with each
+// PortTestPingAggregates invokes either aggregate independently, with each
 // Sub_554240 callback consuming its next per-player value. Exhausted sequences
 // return zero, which makes repeated-read behavior explicit in test inputs.
 func PortTestPingAggregates(slots []int, timings map[int][]int, calls []PortTestPingAggregateCall) ([]PortTestPingAggregateResult, error) {
@@ -64,13 +59,13 @@ func PortTestPingAggregates(slots []int, timings map[int][]int, calls []PortTest
 			if call.Wrapper {
 				value = Sub_554290()
 			} else {
-				value = uint32(C.sub_554290())
+				value = pingMinimum()
 			}
 		case "average":
 			if call.Wrapper {
 				value = Sub_554300()
 			} else {
-				value = uint32(C.sub_554300())
+				value = pingAverage()
 			}
 		default:
 			return nil, fmt.Errorf("unknown aggregate %q", call.Kind)
