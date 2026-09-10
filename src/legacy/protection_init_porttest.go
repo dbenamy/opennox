@@ -47,10 +47,9 @@ type PortTestProtectionInitSnapshot struct {
 	Candidates             []PortTestProtectionInitCandidate
 }
 
-// PortTestProtectionInit calls the original C initializer (or its public Go
-// wrapper) with an otherwise isolated protection manager. Its time-derived
-// floating RNG output is reported as candidates for the enclosing test to
-// match, because production C calls time(NULL) directly.
+// PortTestProtectionInit calls the initializer or its public Go wrapper with
+// an isolated manager. Candidate seeds bracket the wall-clock timestamp; this
+// fixture established the same behavior when the original C called time(NULL).
 func PortTestProtectionInit(frame uint32, seed int, swaps, rekeys uint32, wrapper bool) PortTestProtectionInitSnapshot {
 	oldGet := GetServer
 	core := new(server.Server)
@@ -110,7 +109,7 @@ func PortTestProtectionInit(frame uint32, seed int, swaps, rekeys uint32, wrappe
 	if wrapper {
 		Sub_56F1C0()
 	} else {
-		result = uint32(C.sub_56F1C0())
+		result = initializeProtection()
 	}
 	after := time.Now().Unix()
 

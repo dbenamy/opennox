@@ -27,7 +27,6 @@ int nox_xxx_createSocketLocal_554B40(uint16_t hostshort);
 int sub_554D10();
 int sub_5550D0(int a1, uint16_t hostshort, char* buf);
 void nullsub_31(uint32_t a1);
-int sub_56F1C0();
 int nox_xxx_protect_56F240();
 int sub_56F250();
 int nox_xxx_protectionCreateInt_56F400(int a1);

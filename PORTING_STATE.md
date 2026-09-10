@@ -5,23 +5,26 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-10
 
-Latest completed chunk: protection float setter/addition. Production C is
-**141,941 physical lines** in 153 files, with zero test-reference C lines. See
-[the count history](docs/porting/C_LOC.md) and [float port](docs/porting/PROTECTION_FLOAT.md).
+Latest completed chunk: protection initialization. Production C is **141,914
+physical lines** in 153 files, with zero test-reference C lines. See
+[the count history](docs/porting/C_LOC.md) and [startup port](docs/porting/PROTECTION_STARTUP.md).
 Completed chunks are committed and pushed to `dbenamy/opennox`, branch `dev`.
 
-Next: protection initialization (56F1C0). Establish the nine-record startup,
-reserved handle slots, eight list-order draws and seeded floating state against
-original C. Bracket the wall-clock seed in the test fixture; preserve all globals.
-Use the shipped five floating RNG constants in isolated fixture state: ordinary
-unit-test setup does not initialize blob data. Then port the initializer and
-retire its sole-use C bridge if no C callers remain.
+Next: the four remaining floating RNG helpers and their state. Only Go manager
+initialization/rekey call them now; no external C caller or external state writer
+remains. Establish original-C byte-state tests with shipped constants, including
+seeding, warmups, range wrapping and eventual underflow. Preserve the literal
+legacy discarded-floor/v-v behavior (normal draws are zero); this is a port,
+not an RNG repair. Production state is always finite and seeded; arbitrary
+huge/nonfinite injected states can expose x87 extended-exponent differences
+but are not reachable through the game. Draft pure code/tests are ignored under
+build/port-rng and still need review/baseline validation before wiring in.
 
 The float baseline corrected an initial standalone-probe assumption: the actual
 Go-hosted game uses x87 precision 53, not 64 significant bits. Plain float64
 addition plus explicit signed-int64 conversion guards matches the actual C ABI.
 All accumulated protection tests pass on 386 default/server/highres, all three
-binaries build, and `float-port` passes both preserved gameplay screenshots.
+binaries build, and `init-port` passes both preserved gameplay screenshots.
 The latest full suite (object chunk) exactly matched known failures: 15 passing,
 3 known failing, 32 skipped/no-test packages.
 
@@ -545,3 +548,9 @@ Ported both float updates after 3,600 original-C ABI calls and independent
 precision-53 arbitrary-precision tests. Actual hosted x87 precision corrected
 the standalone C probe assumption before the port. See [details](docs/porting/PROTECTION_FLOAT.md).
 Production C: **141,941 physical lines (−43)**; test-reference C: **0**.
+
+## Initialization completed — 2026-09-10
+
+Ported startup after 400 original-C/wrapper baseline runs with the shipped
+floating constants; retired the sole-use C bridge. See [details](docs/porting/PROTECTION_STARTUP.md).
+Production C: **141,914 physical lines (−27)**; test-reference C: **0**.

@@ -3,10 +3,10 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-10
 
-Float setter/addition is the latest completed chunk; production C is 141,941
-physical lines (see C_LOC.md). Next establish original-C startup tests and port
-protection initialization. Hosted x87 precision is 53 bits (verified in the real
-C ABI), superseding the initial standalone probe's 64-bit assumption.
+Protection initialization is the latest completed chunk; production C is
+141,914 physical lines (see C_LOC.md). Next establish byte-state RNG baselines
+and port the remaining four protection floating helpers and state. Preserve the
+legacy v-v behavior; production uses finite seeded state and hosted x87 PC53.
 Use PORTING_STATE.md's top resume section for current verification and next steps;
 the milestones later in these documents are historical. Continue autonomously
 one reviewed/tested/documented/committed/pushed chunk at a time. Use Terra for

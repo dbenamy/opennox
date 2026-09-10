@@ -330,9 +330,6 @@ func Sub_4D7B40() {
 func Sub_41E4B0(a1 int) {
 	C.sub_41E4B0(C.int(a1))
 }
-func Sub_56F1C0() {
-	C.sub_56F1C0()
-}
 func Sub_4E4ED0() {
 	C.sub_4E4ED0()
 }

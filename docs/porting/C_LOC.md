@@ -29,6 +29,7 @@ target build selection and linker evidence.
 | Protection buffer validation (2026-09-10) | 153 | 142,115 | −15 | 0 |
 | Protection object checksum/toggles (2026-09-10) | 153 | 141,984 | −131 | 0 |
 | Protection float updates (2026-09-10) | 153 | 141,941 | −43 | 0 |
+| Protection initialization (2026-09-10) | 153 | 141,914 | −27 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

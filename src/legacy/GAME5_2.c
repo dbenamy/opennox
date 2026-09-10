@@ -1,6 +1,5 @@
 #include <float.h>
 #include <math.h>
-#include <time.h>
 
 #include "GAME1.h"
 #include "GAME1_1.h"
@@ -33,18 +32,13 @@
 #include "common__magic__speltree.h"
 #include "operators.h"
 
-extern uint32_t dword_5d4594_2516352;
 extern uint32_t dword_5d4594_2516380;
 extern uint32_t dword_5d4594_2523804;
 extern uint32_t dword_5d4594_2516372;
 extern uint32_t dword_5d4594_2523764;
 extern uint32_t dword_5d4594_2523776;
-extern uint32_t dword_5d4594_2516356;
 extern uint64_t qword_581450_9544;
 extern uint32_t dword_5d4594_2523780;
-extern uint32_t dword_5d4594_2516344;
-extern uint32_t dword_5d4594_2516328;
-extern uint32_t dword_5d4594_2516348;
 extern uint32_t dword_5d4594_2650652;
 extern uint32_t dword_8531A0_2576;
 
@@ -146,27 +140,6 @@ int sub_554300() {
 	} else {
 		return 0;
 	}
-}
-
-//----- (0056F1C0) --------------------------------------------------------
-int sub_56F1C0() {
-	int v0;     // eax
-	int result; // eax
-
-	v0 = time(0);
-	sub_56FF00(v0);
-	dword_5d4594_2516352 = 0;
-	dword_5d4594_2516348 = gameFrame();
-	dword_5d4594_2516344 = 0;
-	*getMemU16Ptr(0x587000, 311204) = 0;
-	dword_5d4594_2516356 = 657757279;
-	dword_5d4594_2516348 ^= nox_xxx_protect_56F240();
-	dword_5d4594_2516328 = ~dword_5d4594_2516348;
-	*getMemU32Ptr(0x5D4594, 2516340) = nox_xxx_protectionCreateInt_56F400(0);
-	sub_56F250();
-	result = nox_xxx_protectionCreateInt_56F400(1);
-	*getMemU32Ptr(0x5D4594, 2516332) = result;
-	return result;
 }
 
 //----- (0056F240) --------------------------------------------------------
