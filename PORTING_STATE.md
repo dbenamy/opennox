@@ -319,3 +319,13 @@ screenshots. Existing Go wrappers avoid a C round trip. Production C is 142,503
 lines (−67 this chunk), 153 files, with zero C reference lines. Details:
 docs/porting/PROTECTION_BITSET.md. Next inspect integer/float record construction,
 including exact float bit patterns and allocation-failure state handling.
+
+## Protection constructors — in progress, 2026-09-10
+
+Current C constructors pass 16,224 cases (1,014 bit patterns × four keys × four
+C/Go integer/float call paths) before replacement. Patterns include signed zero,
+subnormal boundaries, infinities and NaN payloads plus seeded random values.
+Tests use an empty C-owned manager, verify exact words/checksum/list endpoints,
+and restore globals/free records. Empty insertion draws no randomness. The new
+pure Go initializer separately checks nil-allocation state and reset links.
+Logs: build/port-create/c-before.log and unit.log. No C reference is copied.
