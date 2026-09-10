@@ -400,3 +400,14 @@ against both preserved screenshots. Production C: 142,327 lines (−24), 153
 files; reference C: 0. Evidence: build/port-handles; see
 docs/porting/PROTECTION_HANDLES.md. Next: record rekey/shuffle, testing exact
 payload order, unchanged links, checksum resets and RNG/counter consumption.
+
+## Protection rekey/shuffle — in progress, 2026-09-10
+
+Original C passes 400 deterministic scenarios in C-export and Go-wrapper modes.
+Checks compare exact shuffled decoded values, unchanged node identities/links,
+checksum reset, raw key/return, count/sequence, wrapping counters and both server
+RNG indices. An independently called unchanged C floating-RNG helper supplies
+the expected draw and raw post-state; the fixture restores pre-state before
+calling rekey. Range vardefs are saved via their C addresses, not blob offsets.
+Pure Rekey tests pass on 386/amd64. Evidence: build/port-rekey/c-before.log and
+unit-*.log. C is still 142,327 lines; no reference copy is added.
