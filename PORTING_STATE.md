@@ -1,6 +1,21 @@
-# Porting checkpoint — 2026-09-09
+# Porting checkpoint — 2026-09-10
 
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
+
+## GitHub backup and recovery
+
+On 2026-09-10, SSH authentication to GitHub succeeded as dbenamytravis and all
+seven commits through e694e1ac were pushed to dbenamy/opennox, branch dev. The
+remote branch was verified at e694e1ac40ab12da869cccb50248881fd537b3f4 before this
+checkpoint update. The plan and this log were already included in that push.
+
+See [recovery instructions](docs/porting/RECOVERY.md) and the tracked
+[warrior smoke scenario](docs/porting/warrior-smoke.yaml). They preserve the
+asset-free setup needed to resume without the ignored build/ directory. Original
+assets still require a separate user backup; raw logs, binaries and screenshots
+are not on GitHub. Provision SSH credentials separately; no private key or token
+is recorded here. The SSH push URL is git@github.com:dbenamy/opennox.git; origin
+still uses HTTPS, so an explicit SSH URL was used for the push.
 
 ## Current status after infrastructure repairs
 
@@ -13,7 +28,7 @@ see the final infrastructure section for the latest checks.
 
 ## Repository and environment
 
-- dev at b184030e76be2b681a7f6d2bcdef52b091d94b9b; origin is the user's fork,
+- Original baseline: b184030e76be2b681a7f6d2bcdef52b091d94b9b on dev; origin is the user's fork,
   https://github.com/dbenamy/opennox.git.
 - No pre-existing tracked changes. Only the handoff and media archive were
   untracked initially. No C-to-Go porting has begun; subsequent infrastructure edits are committed.
@@ -95,8 +110,9 @@ and the original archive.
   not broad gameplay correctness or physical audio/display quality.
 - compare-frames.go and its binary perform independent decoded-pixel comparison.
   It correctly rejects a deliberately replaced frame (comparator-negative/).
-- Why independent? src/e2e.go Screen passes nil to e2eError on a mismatch, and
-  auto-creates missing goldens. Harness exit status alone is insufficient.
+- Why independent at baseline? The original Screen passed nil to e2eError on a
+  mismatch and auto-created missing goldens. This was repaired in 3575f443; current
+  checks require explicit golden updates and reject mismatches.
 - HD client also completed the same fresh scenario with exit 0 in 39.3 seconds.
   Both captured frames match the standard-client pixels at this 1024x768 game
   resolution (hd-comparison.json); higher resolutions are not covered.

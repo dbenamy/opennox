@@ -1,0 +1,53 @@
+steps:
+  - action: click
+    name: dismiss title
+    x: 320
+    y: 240
+    dt: 300
+  - action: click
+    name: solo
+    x: 480
+    y: 220
+    dt: 100
+  - action: click
+    name: new game
+    x: 360
+    y: 760
+    dt: 100
+  - action: click
+    name: warrior
+    x: 320
+    y: 260
+    dt: 100
+  - action: click
+    name: accept class
+    x: 640
+    y: 820
+    dt: 30
+  - action: click
+    name: accept appearance
+    x: 460
+    y: 760
+    dt: 100
+  - action: click
+    name: dismiss chapter
+    x: 640
+    y: 480
+    dt: 500
+  - action: screen
+    name: gameplay
+    dt: 300
+  - action: click
+    name: close captain dialogue
+    x: 970
+    y: 940
+    dt: 20
+  - action: walk
+    name: short walk
+    ang: 0.7
+    dt: 30
+  - action: screen
+    name: after walk
+    dt: 40
+  - action: quit
+    dt: 20

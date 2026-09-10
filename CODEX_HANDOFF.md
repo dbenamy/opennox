@@ -1,10 +1,12 @@
 # OpenNox x86 Porting Handoff
 
-## Current plan — revised 2026-09-09
+## Current plan — revised 2026-09-10
 
 This document is the working plan. Read PORTING_STATE.md for completed checks,
 exact environment failures, and the next unfinished step. Update that checkpoint
-at meaningful milestones so a lost session does not lose progress.
+at meaningful milestones so a lost session does not lose progress. For a lost
+VM, follow [the recovery instructions](docs/porting/RECOVERY.md); the scenario is
+tracked, while assets and generated outputs need separate backup or regeneration.
 
 The user approved the revised approach: establish a 386 baseline and one
 repeatable gameplay scenario, then port small cohesive leaves with tests chosen
@@ -13,7 +15,7 @@ call graph is not a prerequisite to the first conversion.
 
 The current VM has no local screen; use headless X. The UTM hardware/network
 information below is historical and must not be assumed to describe this VM.
-TigerVNC is installed; Xvfb was not found during the review. The user confirmed
+TigerVNC is installed; Xvfb was subsequently installed and used for baseline tests. The user confirmed
 that the existing nox-iso-from-archive-org.7z contains ISO asset media for testing.
 Extract the needed data into a separate local data directory, preserve the
 archive, and keep assets and non-redistributable outputs out of Git.
@@ -81,7 +83,6 @@ Known configuration/state:
 - One emulated CPU, chosen because SMP had stability concerns
 - 8 GiB RAM and a 2 GiB JIT cache
 - VirtIO disk, network, and display devices
-- Shared-network address was `192.168.65.5`
 - Xfce/lightdm desktop installed and working
 - SSH works from a normal macOS terminal, but the Codex desktop app was not
   granted macOS Local Network access. Do not depend on host-side Codex SSH.
