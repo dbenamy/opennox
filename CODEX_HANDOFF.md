@@ -274,7 +274,10 @@ checkout used to build baseline binaries clean.
 4. Run the scenario relevant to the change and compare against the preserved
    baseline. Only remove the C reference after equivalence checks pass; retain
    useful fixtures and a recoverable reference revision. Keep changes scoped and
-   record exactly what was verified and what remains untested.
+   record exactly what was verified and what remains untested. After each completed
+   conversion chunk, run `tools/porting/c_loc.py` and update
+   `docs/porting/C_LOC.md` with the new production C line count and delta, keeping
+   test-reference C separate. The user explicitly requested this ongoing checkpoint.
 
 ### Headless integration loop
 
@@ -342,4 +345,5 @@ matched across the two runs, but Player.plr bytes did not.
 Use the saved build graphs for a bounded C dependency audit and choose the first
 cohesive leaf once its relevant test loop is trustworthy. Update PORTING_STATE.md
 with commands, outcomes, artifact locations and remaining work at each checkpoint.
-No engine code has been ported as of this plan revision.
+The first conversion is the protection byte checksum; see PORTING_STATE.md for
+validation and [C source-size checkpoints](docs/porting/C_LOC.md) for its reduction.

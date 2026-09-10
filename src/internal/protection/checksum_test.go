@@ -1,8 +1,8 @@
-package opennox
+package protection
 
 import "testing"
 
-func TestProtectBytes(t *testing.T) {
+func TestChecksum(t *testing.T) {
 	for _, tc := range []struct {
 		name string
 		data []byte
@@ -20,25 +20,25 @@ func TestProtectBytes(t *testing.T) {
 		{"cancel", []byte{1, 2, 3, 4, 1, 2, 3, 4}, 0},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			if got := protectBytes(tc.data); got != tc.want {
+			if got := Checksum(tc.data); got != tc.want {
 				t.Fatalf("got %08x, want %08x", got, tc.want)
 			}
 		})
 	}
 }
 
-func FuzzProtectBytes(f *testing.F) {
+func FuzzChecksum(f *testing.F) {
 	f.Add([]byte{})
 	f.Add([]byte{1, 2, 3, 128, 9, 8, 7})
 	f.Fuzz(func(t *testing.T, data []byte) {
 		whole := len(data) &^ 3
-		got := protectBytes(data)
-		if got != protectBytes(data[:whole]) {
+		got := Checksum(data)
+		if got != Checksum(data[:whole]) {
 			t.Fatal("trailing partial word affected checksum")
 		}
 		// XORing a word twice must cancel, including high-bit values.
 		pair := append(append([]byte{}, data[:whole]...), 0x01, 0x80, 0xfe, 0xff, 0x01, 0x80, 0xfe, 0xff)
-		if protectBytes(pair) != got {
+		if Checksum(pair) != got {
 			t.Fatal("duplicate word did not cancel")
 		}
 	})

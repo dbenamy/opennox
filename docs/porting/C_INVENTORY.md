@@ -16,8 +16,8 @@ linker retention is a separate measurement. No runtime execution coverage is
 inferred from either count.
 
 Reproduce the selection with the target environment from RECOVERY.md:
-`go list -deps -json ./cmd/opennox` from src, adding `-tags highres` or
-`-tags server` before the package argument for variants. Feed the JSON and the
+`go list -deps -json ./cmd/opennox` from src, adding `-tags highres` or `-tags server` before the package argument
+for variants (the build driver uses `cmd/opennox` for all three). Feed the JSON and the
 corresponding built binary to `tools/porting/c_inventory.py`. For example, from
 the repository root:
 

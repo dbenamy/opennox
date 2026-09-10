@@ -235,3 +235,31 @@ Next: use the saved build graphs for a bounded compiled/linked C inventory,
 choose an independent leaf, and establish its C-reference differential tests
 before conversion. Do not require the entire baseline suite to be green, and do
 not use obsolete blob writers or unresolved render/audio goldens as port oracles.
+
+## First conversion: protection checksum — 2026-09-10
+
+- Bounded build inventory: standard/highres select 152 repository C translation
+  units, server 151. Both checksum symbols are retained in all baseline binaries.
+  Read-only reproduction tool and dependency scope: docs/porting/C_INVENTORY.md.
+- Committed pre-conversion reference tests and inventory as 00228a81. Existing
+  Go checksum agrees with the untouched historical C functions on 386.
+- Replaced the two production C checksum definitions with Go exports calling a
+  shared internal/protection implementation. Retained the original C only behind
+  porttest. C ABI width, return bits, null handling, word/tail boundaries,
+  unaligned buffers, chunk boundaries and non-mutation checks pass. Differential
+  tests pass for default/server/highres; both bounded fuzz runs pass.
+- All three production builds succeed. Test reference symbols are absent from
+  their binaries. Fresh warrior scenario checksum-port exits 0 against both
+  preserved screenshots with overrides disabled. Full suite has 15 passing,
+  3 known failing, 32 no-test packages, with no compile/vet failures.
+- Remaining C-to-Go calls have measurable overhead; the local benchmark and
+  interpretation are recorded in docs/porting/PROTECTION_CHECKSUM.md. Do not claim
+  this conversion improves performance or covers every surrounding caller.
+- Production .c physical LOC is now 142,637 (−28), 153 files. Test-only reference
+  is 33 lines separately. The user requested counts after EVERY conversion chunk;
+  tools/porting/c_loc.py and docs/porting/C_LOC.md define and track this measure.
+
+Next session: read docs/porting/PROTECTION_CHECKSUM.md, retain its differential
+reference tests, and select the next cohesive leaf with caller/state evidence.
+One checksum implementation plus its nullable wrapper has now moved out of C;
+no broad protection-manager or render/audio conversion has been attempted.

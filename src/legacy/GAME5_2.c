@@ -634,34 +634,6 @@ uint32_t* sub_56FA40(int a1, float a2) {
 	return result;
 }
 
-//----- (0056FAC0) --------------------------------------------------------
-int nox_xxx_protectionStringCRC_56FAC0(int* a1, unsigned int a2) {
-	int* v2;        // ecx
-	int result;     // eax
-	unsigned int i; // edx
-	int v5;         // esi
-
-	v2 = a1;
-	result = 0;
-	for (i = a2 >> 2; i; --i) {
-		v5 = *v2;
-		++v2;
-		result ^= v5;
-	}
-	return result;
-}
-
-//----- (0056FAE0) --------------------------------------------------------
-int nox_xxx_protectionStringCRCLen_56FAE0(int* a1, unsigned int a2) {
-	int result; // eax
-
-	result = 0;
-	if (a1) {
-		result = nox_xxx_protectionStringCRC_56FAC0(a1, a2);
-	}
-	return result;
-}
-
 //----- (0056FB00) --------------------------------------------------------
 int sub_56FB00(int* a1, unsigned int a2, int a3) {
 	uint32_t* v3; // esi
