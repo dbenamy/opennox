@@ -392,3 +392,11 @@ Final pre-port evidence: build/port-handles/c-before.log. Both C entries remain
 needed by sub_56F1C0. Reserved initialization increments the sequence after each
 attempt; ordinary allocation increments only on success. Allocator exhaustion is
 not injected. Production C remains 142,351 lines; reference C remains zero.
+
+Reserved records/handles completed: original-C and Go-after sequences pass,
+including all accumulated protection tests for default/server/highres. All three
+production builds have the required Go-backed C exports. handles-port exits 0
+against both preserved screenshots. Production C: 142,327 lines (−24), 153
+files; reference C: 0. Evidence: build/port-handles; see
+docs/porting/PROTECTION_HANDLES.md. Next: record rekey/shuffle, testing exact
+payload order, unchanged links, checksum resets and RNG/counter consumption.

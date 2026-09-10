@@ -378,3 +378,7 @@ Randomized insertion is converted; see
 initialization and handle allocation. The user approved bounded cheaper-agent
 delegation with primary review, and reiterated continuing one completed chunk at
 a time until a substantive question or rate limit needs their attention.
+
+Reserved records and handle allocation are converted; see
+[their checkpoint](docs/porting/PROTECTION_HANDLES.md). Next validate rekey/shuffle
+while leaving its floating-point random generator unchanged.
