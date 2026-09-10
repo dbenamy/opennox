@@ -1,0 +1,42 @@
+//go:build porttest
+
+package opennox
+
+import (
+	"encoding/binary"
+	"github.com/opennox/opennox/v1/legacy"
+	"testing"
+)
+
+func TestRulesWriterProbe(t *testing.T) {
+	for trial := 0; trial < 3; trial++ {
+		for _, online := range []uint32{0, 1} {
+			for _, internetOff := range []bool{false, true} {
+				for _, userOff := range []bool{false, true} {
+					initial := ruleTestInitial(83)
+					for i := 24; i < 52; i++ {
+						initial[i] = 255
+					}
+					// FIREBALL=27, BLINK=4; disable only those valid rule spells.
+					initial[24] &^= 16
+					initial[27] &^= 8
+					binary.LittleEndian.PutUint16(initial[52:54], 256)
+					internet := "[COMMON]\n"
+					if internetOff {
+						internet += "set spell SPELL_FIREBALL off\nset spell SPELL_BLINK off\n"
+					}
+					user := "[COMMON]\n"
+					if userOff {
+						user += "set spell SPELL_FIREBALL off\nset spell SPELL_BLINK off\n"
+					}
+					spec := legacy.PortTestRulesSpec{Kind: "write", Initial: initial, Flags: 256, Context: 1234, Online: online, Host: true, WithRejected: true, Dir: t.TempDir(), User: "saved.rul", Path: "maps/porttst1/saved.rul", Files: map[string]string{"internet.rul": internet, "maps/porttst1/user.rul": user}}
+					got, err := legacy.PortTestRules(spec)
+					if err != nil {
+						t.Fatal(err)
+					}
+					t.Logf("trial=%d online=%d internetOff=%v userOff=%v exists=%v output=%q", trial, online, internetOff, userOff, got.WriteExists, got.Written)
+				}
+			}
+		}
+	}
+}

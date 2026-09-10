@@ -56,7 +56,7 @@ func portTestRuleTable() func() {
 }
 
 type PortTestRulesSpec struct {
-	Kind                                 string // load, file, lines, or tokens
+	Kind                                 string // load, file, lines, tokens, or write
 	Initial                              [60]byte
 	Selection                            uint8
 	Flags                                uint16
@@ -81,6 +81,8 @@ type PortTestRulesResult struct {
 	Catalog        server.PortTestRuleServer
 	Steps          []PortTestRulesState
 	FilesUnchanged bool
+	Written        string
+	WriteExists    bool
 }
 
 func PortTestRuleHeaders(values []uint16) []int {
@@ -105,7 +107,7 @@ func PortTestRuleHeaders(values []uint16) []int {
 }
 
 func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) {
-	if spec.Kind == "load" || spec.Kind == "file" {
+	if spec.Kind == "load" || spec.Kind == "file" || spec.Kind == "write" {
 		restoreHandles := handles.PortTestInit()
 		defer restoreHandles()
 	}
@@ -208,6 +210,13 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 		return s
 	}
 	switch spec.Kind {
+	case "write":
+		name, free := alloc.CString(spec.User)
+		result := uint8(C.sub_57AAA0((*C.char)(unsafe.Pointer(name)), (*C.char)(unsafe.Pointer(settings)), (*C.int)(unsafe.Pointer(head))))
+		free()
+		out.Steps = append(out.Steps, snapshot(result))
+		data, e := os.ReadFile(filepath.Join(spec.Dir, filepath.FromSlash(spec.Path)))
+		out.Written, out.WriteExists = string(data), e == nil
 	case "load":
 		var user *C.char
 		if !spec.UserNil {

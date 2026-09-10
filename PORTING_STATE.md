@@ -20,15 +20,21 @@ baseline environment: `go test -tags porttest -count=1 -run
 '^Test(Protection|Network|Waypoint|Rules)' .`; repeat with server/highres tags.
 Local artifacts are under build/port-rules; they are not committed.
 
-Next: establish rule writer/removal baselines before replacing 57AAA0/57A9F0.
-57A950 delegates to a larger map/rule-file operation and may need separate scope.
-The writer's online branch declares split 24/36-byte arrays and passes the
-24-byte portions as Settings2. Decompiler comments suggest contiguous pairs,
-but actual GCC stack offsets appear different. Verify observable behavior with
-isolated original-C writer fixtures; do not mistake intended layout for compiled
-behavior. If correcting a confirmed behavior bug requires a user choice, ask.
-Keep generic 57ADF0 list cleanup outside this chunk. The unused C playerCanTalkMB
-57A160 duplicate can be retired later.
+Current stopping point: user choice pending for the next writer chunk. Original
+C 57AAA0 has a confirmed online-mode buffer-layout bug; its saved spell directives
+vary across repeated identical inputs. The two loader destinations overlap and
+the internet spell-mask check reads uninitialized storage. See
+[writer findings](docs/porting/RULE_WRITER.md) for actual GCC offsets, reproduction,
+and the intended online predicate. Ask whether to fix this during the writer port
+(recommended) or postpone the writer and port another section. Do not silently
+preserve garbage-dependent output or claim it is the intended rule behavior.
+
+Writer production code is unchanged. A separate offline baseline covers 80
+flag/mask/list combinations plus failed creation, using exact output-byte and
+settings/list/handle checks. The fixture now supports Kind="write"; the diagnostic
+online probe is stored as .go.txt under docs/porting/probes so it does not assert
+broken behavior in the suite. Generic 57ADF0 cleanup remains out of scope.
+57A950 delegates to a larger map/rule-file operation and needs separate assessment.
 
 Continue through tests, docs/C LOC, commit, push and a user update per chunk,
 then onward until a substantive question or rate limit. Terra handles bounded
@@ -593,3 +599,12 @@ Independent file/selection/settings/encoding/list tests pass in all variants.
 All binaries build, rules-port gameplay passes, and the full-suite failure
 multiset exactly matches the prior milestone. Production C: **141,455 (−290)**,
 153 files, zero test-reference C. See docs/porting/RULE_LOADING.md.
+
+## Next chunk baseline — writer decision pending (2026-09-10)
+
+Confirmed original online writer memory-layout/output instability; saved the
+asset-free diagnostic and compiled-offset analysis in docs/porting/RULE_WRITER.md.
+Added 81 stable offline baseline cases. All accumulated ABI tests pass on 386
+default/server/highres with those cases. No writer production changes; C remains
+**141,455** physical lines. Pending user choice: fix the online bug as part of the
+writer port, or postpone that chunk and continue elsewhere.

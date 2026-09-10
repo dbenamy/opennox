@@ -3,11 +3,13 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-10
 
-Map-rule loading/parsing is the latest completed chunk; production C is 141,455
-physical lines (see C_LOC.md). Next establish a baseline for rule writing and
-removal. Audit the writer's online temporary-buffer layout against compiled code:
-its decompiler-split arrays may not match the current compiler's layout. Do not
-assume comments establish correct storage or preserve undefined memory reads.
+Map-rule loading/parsing is completed and pushed at 0a2766f7; production C is
+141,455 physical lines (see C_LOC.md). The next chunk is paused for a user choice:
+correct the confirmed online rule-writer buffer bug while porting, or postpone
+that writer and continue elsewhere. See docs/porting/RULE_WRITER.md for compiled
+layout evidence, an asset-free reproduction and the independent offline baseline.
+No writer production code has changed. The pending question is substantive:
+online saves currently have unstable spell output due to uninitialized storage.
 Use PORTING_STATE.md's top resume section for current verification and next steps.
 Continue autonomously one reviewed/tested/documented/committed/pushed chunk at a
 time, with bounded Terra work and primary review. Stop for a substantive user
