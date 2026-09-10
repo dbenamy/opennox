@@ -55,3 +55,8 @@ physical lines**, 153 files, zero test-reference C lines.
 
 All accumulated protection/network/waypoint/rule ABI tests passed against the
 original loader on 386 default, server and highres before replacement.
+
+Six additional directive cases passed against C before integration: Unicode
+lookalikes must not become ASCII command keywords, while byte narrowing of
+header/spell names can introduce a terminating NUL. These distinguish wide
+keyword comparisons from the separate legacy narrow-name conversion.

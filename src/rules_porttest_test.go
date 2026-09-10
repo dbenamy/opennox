@@ -181,6 +181,14 @@ func TestRulesModeHeadersABI(t *testing.T) {
 func TestRulesDirectivesABI(t *testing.T) {
 	_, catalog := server.PortTestRuleServerSetup()
 	commands := [][]string{{"unknown"}, {"set"}, {"set", "spell"}, {"set", "spell", "SPELL_FIREBALL"}, {"set", "spell", "SPELL_FIREBALL", "off", "extra"}, {"set", "other", "thing", "off"}, {"[deathmatch]"}, {"set", "spell", "missing", "off"}, {"set", "weapon", "missing", "off"}, {"set", "armor", "missing", "off"}}
+	commands = append(commands,
+		[]string{"ſet", "spell", "SPELL_FIREBALL", "off"},
+		[]string{"\u0173et", "spell", "SPELL_FIREBALL", "off"},
+		[]string{"set", "ſpell", "SPELL_FIREBALL", "off"},
+		[]string{"set", "spell", "SPELL_FIREBALL", "\u016fff"},
+		[]string{"[COMMON]\u0100suffix"},
+		[]string{"set", "spell", "SPELL_FIREBALL\u0100suffix", "off"},
+	)
 	for _, m := range ruleTestModes {
 		commands = append(commands, []string{m.Name}, []string{m.Name, "ignored"})
 	}
