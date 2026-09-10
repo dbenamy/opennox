@@ -342,8 +342,8 @@ blob storage modernization remain explicit follow-ups before touching those path
 Establish save-load checks: map save bytes
 matched across the two runs, but Player.plr bytes did not.
 
-Use the saved build graphs for a bounded C dependency audit and choose the first
-cohesive leaf once its relevant test loop is trustworthy. Update PORTING_STATE.md
+Continue the bounded C dependency audit and choose the next cohesive leaf,
+using the checksum conversion as the first proven differential-test pattern. Update PORTING_STATE.md
 with commands, outcomes, artifact locations and remaining work at each checkpoint.
 The first conversion is the protection byte checksum; see PORTING_STATE.md for
 validation and [C source-size checkpoints](docs/porting/C_LOC.md) for its reduction.

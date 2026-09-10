@@ -14,7 +14,7 @@ target build selection and linker evidence.
 | Completed chunk | Production .c files | Production C lines | Change | Test-reference C lines |
 | --- | ---: | ---: | ---: | ---: |
 | Before conversions (`0e9d2e1f`) | 153 | 142,665 | — | 0 |
-| Protection checksum (2026-09-10) | 153 | 142,637 | −28 | 33 |
+| Protection checksum (`66fa7bd4`, 2026-09-10) | 153 | 142,637 | −28 | 33 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

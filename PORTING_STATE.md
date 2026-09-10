@@ -263,3 +263,6 @@ Next session: read docs/porting/PROTECTION_CHECKSUM.md, retain its differential
 reference tests, and select the next cohesive leaf with caller/state evidence.
 One checksum implementation plus its nullable wrapper has now moved out of C;
 no broad protection-manager or render/audio conversion has been attempted.
+
+Conversion commit: 66fa7bd4; pushed to dbenamy/opennox dev with the preceding
+reference-test commit 00228a81. Only the original media archive is untracked.
