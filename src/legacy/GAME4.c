@@ -1863,7 +1863,7 @@ uint32_t* nox_xxx_playerAddGold_4FA590(int a1, int a2) {
 
 	v2 = *(uint32_t*)(a1 + 748);
 	*(uint32_t*)(*(uint32_t*)(v2 + 276) + 2164) += a2;
-	return sub_56F920(*(uint32_t*)(*(uint32_t*)(v2 + 276) + 4588), a2);
+	return (uint32_t*)(uintptr_t)sub_56F920(*(uint32_t*)(*(uint32_t*)(v2 + 276) + 4588), a2);
 }
 
 //----- (004FA5D0) --------------------------------------------------------
@@ -1880,7 +1880,7 @@ uint32_t* nox_xxx_playerSubGold_4FA5D0(int a1, unsigned int a2) {
 	} else {
 		*(uint32_t*)(v3 + 2164) = 0;
 	}
-	return sub_56F920(*(uint32_t*)(*(uint32_t*)(v2 + 276) + 4588), -a2);
+	return (uint32_t*)(uintptr_t)sub_56F920(*(uint32_t*)(*(uint32_t*)(v2 + 276) + 4588), -a2);
 }
 
 //----- (004FA620) --------------------------------------------------------

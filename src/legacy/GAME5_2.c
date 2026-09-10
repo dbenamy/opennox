@@ -193,44 +193,6 @@ uint32_t* sub_56F8C0(int a1, float a2) {
 	return result;
 }
 
-//----- (0056F920) --------------------------------------------------------
-uint32_t* sub_56F920(int a1, int a2) {
-	uint32_t* result; // eax
-	int v3;           // ecx
-
-	result = (uint32_t*)a1;
-	if (a1 >= 657757279) {
-		result = sub_56F590(a1);
-		if (result) {
-			dword_5d4594_2516328 ^= result[1];
-			v3 = dword_5d4594_2516348 ^ (a2 + (dword_5d4594_2516348 ^ result[1]));
-			result[1] = v3;
-			dword_5d4594_2516328 ^= v3;
-			result = (uint32_t*)nox_xxx_protectData_56F5C0();
-		}
-	}
-	return result;
-}
-
-//----- (0056F9E0) --------------------------------------------------------
-uint32_t* nox_xxx_protectMana_56F9E0(int a1, short a2) {
-	uint32_t* result; // eax
-	int v3;           // ecx
-
-	result = (uint32_t*)a1;
-	if (a1 >= 657757279) {
-		result = sub_56F590(a1);
-		if (result) {
-			dword_5d4594_2516328 ^= result[1];
-			v3 = dword_5d4594_2516348 ^ (a2 + (dword_5d4594_2516348 ^ result[1]));
-			result[1] = v3;
-			dword_5d4594_2516328 ^= v3;
-			result = (uint32_t*)nox_xxx_protectData_56F5C0();
-		}
-	}
-	return result;
-}
-
 //----- (0056FA40) --------------------------------------------------------
 uint32_t* sub_56FA40(int a1, float a2) {
 	uint32_t* result; // eax

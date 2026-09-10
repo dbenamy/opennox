@@ -7518,9 +7518,9 @@ uint32_t* nox_xxx_playerManaSub_4EEBF0(int unit, int amount) {
 				}
 
 				if (*((unsigned short*)result + 2) > amount) {
-					result = nox_xxx_protectMana_56F9E0(*(uint32_t*)(result[69] + 4596), -(short)amount);
+					result = (uint32_t*)(uintptr_t)nox_xxx_protectMana_56F9E0(*(uint32_t*)(result[69] + 4596), -(short)amount);
 				} else {
-					result = nox_xxx_protectMana_56F9E0(*(uint32_t*)(result[69] + 4596), -*((uint16_t*)result + 2));
+					result = (uint32_t*)(uintptr_t)nox_xxx_protectMana_56F9E0(*(uint32_t*)(result[69] + 4596), -*((uint16_t*)result + 2));
 				}
 			}
 		}
@@ -7584,7 +7584,7 @@ uint32_t* nox_xxx_playerManaRefresh_4EECF0(int unit) {
 			*(uint16_t*)(manaData + 6) = *(uint16_t*)(manaData + 4);
 			v4 = *(uint16_t*)(manaData + 8);
 			*(uint16_t*)(manaData + 4) = v4;
-			result = nox_xxx_protectMana_56F9E0(*(uint32_t*)(v3 + 4596), v4);
+			result = (uint32_t*)(uintptr_t)nox_xxx_protectMana_56F9E0(*(uint32_t*)(v3 + 4596), v4);
 		}
 	}
 	return result;

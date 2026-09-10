@@ -463,3 +463,11 @@ Baseline evidence: build/port-add/c-before.log. C is still 142,189 lines.
 The missing F980 declaration is added to its existing header for test access.
 After conversion, scalar return declarations require five explicit C casts at
 existing pointer-typed surrounding results; these do not change caller APIs.
+
+Additive updates completed: original-C and Go-after arithmetic/state expectations
+pass along with accumulated protection tests in all three configurations. All
+production builds have the expected three Go-backed C entries; add-port exits 0
+against both screenshots. Production C: 142,130 lines (−59), 153 files; reference
+C: 0. See docs/porting/PROTECTION_ADD.md and build/port-add. Next: buffer checksum
+validation (sub_56FB00), including signed eligibility, first-match lookup,
+partial-word handling and proof that rejected/missing IDs never read the buffer.

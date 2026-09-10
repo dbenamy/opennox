@@ -25,6 +25,7 @@ target build selection and linker evidence.
 | Protection rekey/shuffle (2026-09-10) | 153 | 142,265 | −62 | 0 |
 | Retire unused protection C bridges (2026-09-10) | 153 | 142,265 | 0 | 0 |
 | Protection integer/byte/word setters (2026-09-10) | 153 | 142,189 | −76 | 0 |
+| Protection additive updates (2026-09-10) | 153 | 142,130 | −59 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

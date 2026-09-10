@@ -394,3 +394,6 @@ setters, validating their scalar return bits and rekey/RNG side effects.
 Integer/byte/word setters are converted; see
 [their checkpoint](docs/porting/PROTECTION_SET.md). Continue with additive updates,
 covering modular arithmetic and signed/truncated deltas before replacement.
+
+Additive updates are converted; see [their checkpoint](docs/porting/PROTECTION_ADD.md).
+Continue with buffer checksum validation, then the remaining object/float paths.
