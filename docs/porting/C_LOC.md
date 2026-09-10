@@ -17,6 +17,7 @@ target build selection and linker evidence.
 | Protection checksum (`66fa7bd4`, 2026-09-10) | 153 | 142,637 | −28 | 33 |
 | Retire checksum C test reference (2026-09-10) | 153 | 142,637 | 0 | 0 |
 | Protection record lookup/index/swap (2026-09-10) | 153 | 142,570 | −67 | 0 |
+| Protection spell/ability bitsets (2026-09-10) | 153 | 142,503 | −67 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

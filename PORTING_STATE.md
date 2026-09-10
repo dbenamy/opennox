@@ -311,3 +311,11 @@ records, key zero/high bits, enabled/disabled awards, checksum deltas, successfu
 and failed validation, ignored entry zero, modulo-32 collisions, signed truthy
 values and count <= 1 with null data. Inputs and non-payload state stay unchanged.
 Logs: build/port-bitset/c-before.log and unit.log. No C reference is copied.
+
+Protection bitset conversion completed: the same C-before/Go-after ABI checks
+pass for default/server/highres; pure Go tests pass on 386/amd64. All three
+binaries build with the Go exports, and bitset-port exits 0 against both preserved
+screenshots. Existing Go wrappers avoid a C round trip. Production C is 142,503
+lines (−67 this chunk), 153 files, with zero C reference lines. Details:
+docs/porting/PROTECTION_BITSET.md. Next inspect integer/float record construction,
+including exact float bit patterns and allocation-failure state handling.

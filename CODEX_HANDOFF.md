@@ -357,3 +357,7 @@ Protection record lookup/index/swap is also converted; see
 bounded section, committing/pushing and reporting each completed chunk. The user
 authorized continuing onward without waiting for a new “go” unless a substantive
 decision needs their input.
+
+Protection spell/ability bitsets are converted too; see
+[the checkpoint](docs/porting/PROTECTION_BITSET.md). Latest source counts are in
+C_LOC.md. Next candidate is record construction, with exact float-bit tests.
