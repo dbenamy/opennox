@@ -3,10 +3,10 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-10
 
-Dynamic unit-code resolution and extent lookup are the latest completed chunk;
-production C is 141,786 physical lines (see C_LOC.md). Next port the remaining
-waypoint allocation/link/predicate helpers with original-C tests, retaining raw
-calloc failure behavior. Protection RNG/state is already native Go.
+Waypoint allocation/link/predicate helpers are the latest completed chunk;
+production C is 141,745 physical lines (see C_LOC.md). Next assess the cohesive
+map-rule loader pipeline with original-C file/settings/parser baselines and
+isolated semantic registries. Keep rule writing/removal outside that chunk.
 Use PORTING_STATE.md's top resume section for current verification and next steps;
 the milestones later in these documents are historical. Continue autonomously
 one reviewed/tested/documented/committed/pushed chunk at a time. Use Terra for

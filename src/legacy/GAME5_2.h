@@ -61,7 +61,6 @@ nox_waypoint_t* nox_server_getWaypointById_579C40(int a1);
 nox_waypoint_t* sub_579C60(unsigned int a1);
 int sub_579CA0();
 uint32_t* sub_579E70();
-int sub_579EE0(nox_waypoint_t* a1, unsigned char a2);
 int nox_xxx_playerCanTalkMB_57A160(int a1);
 char* sub_57A1B0(short a1);
 char sub_57A1E0(int* a1, const char* a2, int* a3, char a4, short a5);

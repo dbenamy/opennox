@@ -41,7 +41,10 @@ func PortTestWaypointMasks(specs []PortTestWaypointMask) []PortTestWaypointMaskR
 		}
 		mask := -1
 		if !spec.Nil {
-			mask = int(C.sub_579EE0((*nox_waypoint_t)(unsafe.Pointer(wp)), C.uchar(spec.Mask)))
+			mask = 0
+			if wp.HasFlag2Mask(spec.Mask) {
+				mask = 1
+			}
 		}
 		enabled := int(C.sub_547EE0(arg, C.uchar(spec.Mask)))
 		out = append(out, PortTestWaypointMaskResult{Mask: mask, EnabledMask: enabled, Unchanged: bytes.Equal(raw, before)})

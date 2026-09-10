@@ -5,24 +5,32 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-10
 
-Latest completed chunk: dynamic unit-code resolution and extent lookup.
-Production C is **141,786 physical lines** in 153 files, with zero test-reference
-C lines. See [counts](docs/porting/C_LOC.md) and [extent port](docs/porting/NETWORK_EXTENT.md).
+Latest completed chunk: waypoint allocation/link/predicate helpers. Production C
+is **141,745 physical lines** in 153 files, with zero test-reference C lines. See
+[counts](docs/porting/C_LOC.md) and [waypoint port](docs/porting/WAYPOINT_HELPERS.md).
 Completed chunks are committed and pushed to `dbenamy/opennox`, branch `dev`.
 
-Next: waypoint helpers 579870/5798A0 (nil-safe next), 579E70 (raw calloc516),
-579EE0 (mask) and composite 547EE0 (nil/enabled/mask). Preserve allocation-failure
-nil behavior; alloc.New would panic, so use raw C.calloc. Retire sole-use 579EE0
-bridge after its composite caller moves to Go. Draft code/fixtures/tests under
-build/port-waypoint still need review and original-C baseline validation.
+Next: consider the cohesive map-rule loader pipeline 57A1B0/57A1E0/57A3F0/
+57A4D0/57A620 (about 286 C lines). Establish original-C fixtures for Settings2,
+file selection, byte-widened UTF-16/quote parsing, mode headers and rejected-line
+lists. Use hermetic typed spell/type/equipment registries to exercise the existing
+Go semantic dependencies; gameplay covers actual asset loading. Save/restore
+filesystem root, flags, current mode and all list/state ownership. Do not include
+rule saving/removal yet. The C playerCanTalkMB57A160 is an unused duplicate of the
+live root Go helper and may be retired in a later cleanup.
 
-The protection algorithms are now Go, including startup and floating RNG state;
-records still use C allocation while live C consumers remain. Hosted x87 PC53
-semantics and the literal discarded-floor/v-v RNG behavior are preserved.
-All protection/network-code tests pass on 386 default/server/highres, all three binaries build,
-and `extent-port` passes both preserved gameplay screenshots. The RNG full suite
-exactly matches the known failures: 15 passing, 3 known failing, 32 skipped/no-test
-packages, with all 1,553 failure entries unchanged.
+Parser gotchas: nox_fs_fgets consumes a complete physical line then truncates to
+255 bytes (not libc chunking); CRLF is normalized; final no-newline data is
+processed. Narrow-to-wide conversion widens bytes to U+00xx, not UTF-8 decoding.
+sub_416580 only reads an ignored value. C token storage allows 32 pointers; avoid
+undefined overflow cases in the baseline. Draft setup work is under build/port-rules.
+
+All accumulated tests pass on 386 default/server/highres; all binaries build;
+`waypoint-port` passes both preserved screenshots. The waypoint full suite
+exactly matches known failures: 15 passing, 3 known failing, 32 skipped/no-test
+packages, with all 1,553 failure entries unchanged. Targeted regression command
+from src with the baseline environment: `go test -tags porttest -count=1 -run
+'^Test(Protection|Network|Waypoint)' .`; repeat with server/highres added to tags.
 
 Continue one chunk at a time through tests, docs/C LOC, commit, push and a user
 update, then onward until a substantive question or rate limit. Terra handles
@@ -570,3 +578,10 @@ Ported two C entries through the existing typed server lookup after exhaustive
 unmarked-code bypass and randomized C-backed object-list baselines. See
 [details](docs/porting/NETWORK_EXTENT.md).
 Production C: **141,786 physical lines (−35)**; test-reference C: **0**.
+
+## Waypoint helpers completed — 2026-09-10
+
+Ported allocation, duplicate next-link entries and composite flag predicate,
+retiring its sole-use mask bridge after 459,008 predicate cases and byte-level
+link/allocation baselines. See [details](docs/porting/WAYPOINT_HELPERS.md).
+Production C: **141,745 physical lines (−41)**; test-reference C: **0**.

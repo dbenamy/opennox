@@ -140,44 +140,6 @@ int sub_554300() {
 	}
 }
 
-//----- (00579870) --------------------------------------------------------
-int nox_xxx_waypointNext_579870(int a1) {
-	int result; // eax
-
-	if (a1) {
-		result = *(uint32_t*)(a1 + 484);
-	} else {
-		result = 0;
-	}
-	return result;
-}
-
-//----- (005798A0) --------------------------------------------------------
-int sub_5798A0(int a1) {
-	int result; // eax
-
-	if (a1) {
-		result = *(uint32_t*)(a1 + 484);
-	} else {
-		result = 0;
-	}
-	return result;
-}
-
-//----- (00579E70) --------------------------------------------------------
-uint32_t* sub_579E70() {
-	uint32_t* result; // eax
-
-	result = calloc(1u, 0x204u);
-	if (result) {
-		result[120] |= 0x1000000u;
-	}
-	return result;
-}
-
-//----- (00579EE0) --------------------------------------------------------
-int sub_579EE0(nox_waypoint_t* a1, unsigned char a2) { return (a2 & *(uint8_t*)((uint32_t)a1 + 477)) != 0; }
-
 //----- (0057A160) --------------------------------------------------------
 int nox_xxx_playerCanTalkMB_57A160(int a1) {
 	int result; // eax
