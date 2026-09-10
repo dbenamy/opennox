@@ -4,7 +4,6 @@ package legacy
 #include <stdint.h>
 extern uint32_t dword_5d4594_2516348;
 extern uint32_t dword_5d4594_2516328;
-int nox_xxx_protect_56F240(void);
 */
 import "C"
 import (
@@ -16,7 +15,7 @@ import (
 func nox_xxx_protectData_56F5C0() C.int {
 	frame := GetServer().S().Frame()
 	oldKey := uint32(C.dword_5d4594_2516348)
-	newKey := uint32(C.nox_xxx_protect_56F240()) ^ frame
+	newKey := protectionRandom.Draw() ^ frame
 	C.dword_5d4594_2516328 = C.uint32_t(^newKey)
 	count := int(*memmap.PtrUint16(0x587000, 311204))
 	head := protectionHead()

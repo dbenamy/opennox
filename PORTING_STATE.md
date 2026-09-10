@@ -5,28 +5,24 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-10
 
-Latest completed chunk: protection initialization. Production C is **141,914
-physical lines** in 153 files, with zero test-reference C lines. See
-[the count history](docs/porting/C_LOC.md) and [startup port](docs/porting/PROTECTION_STARTUP.md).
+Latest completed chunk: protection floating RNG and owned Go state. Production C
+is **141,844 physical lines** in 153 files, with zero test-reference C lines. See
+[the count history](docs/porting/C_LOC.md) and [RNG port](docs/porting/PROTECTION_RANDOM.md).
 Completed chunks are committed and pushed to `dbenamy/opennox`, branch `dev`.
 
-Next: the four remaining floating RNG helpers and their state. Only Go manager
-initialization/rekey call them now; no external C caller or external state writer
-remains. Establish original-C byte-state tests with shipped constants, including
-seeding, warmups, range wrapping and eventual underflow. Preserve the literal
-legacy discarded-floor/v-v behavior (normal draws are zero); this is a port,
-not an RNG repair. Production state is always finite and seeded; arbitrary
-huge/nonfinite injected states can expose x87 extended-exponent differences
-but are not reachable through the game. Draft pure code/tests are ignored under
-build/port-rng and still need review/baseline validation before wiring in.
+Next: client unit-code encoder and bit helpers (578B00/30/70). Use actual C ABI
+baselines: exhaustive 16-bit masks, upper-word inputs and typed Drawable class/
+netcode cases. Keep the dynamic extent resolver (578B40) as the following chunk,
+with isolated server-list fixtures and destroyed/duplicate/missing extents.
+The code at 578B00 takes a client.Drawable, not a server.Object.
 
-The float baseline corrected an initial standalone-probe assumption: the actual
-Go-hosted game uses x87 precision 53, not 64 significant bits. Plain float64
-addition plus explicit signed-int64 conversion guards matches the actual C ABI.
-All accumulated protection tests pass on 386 default/server/highres, all three
-binaries build, and `init-port` passes both preserved gameplay screenshots.
-The latest full suite (object chunk) exactly matched known failures: 15 passing,
-3 known failing, 32 skipped/no-test packages.
+The protection algorithms are now Go, including startup and floating RNG state;
+records still use C allocation while live C consumers remain. Hosted x87 PC53
+semantics and the literal discarded-floor/v-v RNG behavior are preserved.
+All protection tests pass on 386 default/server/highres, all three binaries build,
+and `rng-port` passes both preserved gameplay screenshots. The RNG full suite
+exactly matches the known failures: 15 passing, 3 known failing, 32 skipped/no-test
+packages, with all 1,553 failure entries unchanged.
 
 Continue one chunk at a time through tests, docs/C LOC, commit, push and a user
 update, then onward until a substantive question or rate limit. Terra handles
@@ -554,3 +550,10 @@ Production C: **141,941 physical lines (−43)**; test-reference C: **0**.
 Ported startup after 400 original-C/wrapper baseline runs with the shipped
 floating constants; retired the sole-use C bridge. See [details](docs/porting/PROTECTION_STARTUP.md).
 Production C: **141,914 physical lines (−27)**; test-reference C: **0**.
+
+## Floating RNG/state completed — 2026-09-10
+
+Ported the remaining four helpers and moved their private state to Go after
+46,046 original-C snapshots and independent arbitrary-precision tests. Retired
+all four C bridges and both C range globals. See [details](docs/porting/PROTECTION_RANDOM.md).
+Production C: **141,844 physical lines (−70)**; test-reference C: **0**.

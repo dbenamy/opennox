@@ -32,9 +32,7 @@
 #include "common__magic__speltree.h"
 #include "operators.h"
 
-extern uint32_t dword_5d4594_2516380;
 extern uint32_t dword_5d4594_2523804;
-extern uint32_t dword_5d4594_2516372;
 extern uint32_t dword_5d4594_2523764;
 extern uint32_t dword_5d4594_2523776;
 extern uint64_t qword_581450_9544;
@@ -140,72 +138,6 @@ int sub_554300() {
 	} else {
 		return 0;
 	}
-}
-
-//----- (0056F240) --------------------------------------------------------
-int nox_xxx_protect_56F240() { return sub_56FF80(1, -1); }
-
-//----- (0056FE30) --------------------------------------------------------
-double nox_xxx_unkDoubleSmth_56FE30() {
-	double v0; // st7
-
-	*getMemU64Ptr(0x5D4594, 2516412) = *getMemU64Ptr(0x5D4594, 2516404);
-	*getMemU64Ptr(0x5D4594, 2516404) = *getMemU64Ptr(0x5D4594, 2516396);
-	*getMemU32Ptr(0x5D4594, 2516396) = *getMemU32Ptr(0x5D4594, 2516388);
-	*getMemU32Ptr(0x5D4594, 2516400) = *getMemU32Ptr(0x5D4594, 2516392);
-	v0 = *getMemDoublePtr(0x5D4594, 2516388) * *getMemDoublePtr(0x581450, 11376) +
-		 *getMemDoublePtr(0x5D4594, 2516404) * *getMemDoublePtr(0x581450, 11368) +
-		 *getMemDoublePtr(0x5D4594, 2516412) * *getMemDoublePtr(0x581450, 11360) +
-		 *getMemDoublePtr(0x5D4594, 2516412) * *getMemDoublePtr(0x581450, 11352) + *getMemDoublePtr(0x5D4594, 2516420);
-	floor(v0);
-	*getMemDoublePtr(0x5D4594, 2516388) = v0 - v0;
-	*getMemDoublePtr(0x5D4594, 2516420) = v0 * *getMemDoublePtr(0x581450, 11344);
-	return *getMemDoublePtr(0x5D4594, 2516388);
-}
-
-//----- (0056FF00) --------------------------------------------------------
-void sub_56FF00(int a1) {
-	int v1;            // eax
-	unsigned char* v2; // ecx
-	unsigned int v3;   // eax
-	int v4;            // esi
-
-	v1 = a1;
-	if (!a1) {
-		v1 = -1;
-	}
-	v2 = getMemAt(0x5D4594, 2516388);
-	do {
-		v2 += 8;
-		v3 = (((v1 << 13) ^ (unsigned int)v1) >> 17) ^ (v1 << 13) ^ v1;
-		v1 = (32 * v3) ^ v3;
-		*((double*)v2 - 1) = (double)(unsigned int)v1 * *getMemDoublePtr(0x581450, 11344);
-	} while ((int)v2 < (int)getMemAt(0x5D4594, 2516428));
-	v4 = 19;
-	do {
-		nox_xxx_unkDoubleSmth_56FE30();
-		--v4;
-	} while (v4);
-	dword_5d4594_2516380 = 0;
-	*getMemU32Ptr(0x5D4594, 2516376) = 99;
-	dword_5d4594_2516372 = 100;
-}
-
-//----- (0056FF80) --------------------------------------------------------
-int sub_56FF80(int a1, int a2) {
-	long long v2; // rax
-	int result;   // eax
-
-	*getMemU32Ptr(0x5D4594, 2516376) = a2;
-	dword_5d4594_2516380 = a1;
-	dword_5d4594_2516372 = a2 - a1 + 1;
-	v2 = (long long)(nox_xxx_unkDoubleSmth_56FE30() * (double)*(unsigned int*)&dword_5d4594_2516372);
-	if ((unsigned int)v2 < *(int*)&dword_5d4594_2516372) {
-		result = dword_5d4594_2516380 + v2;
-	} else {
-		result = dword_5d4594_2516372 + dword_5d4594_2516380;
-	}
-	return result;
 }
 
 //----- (00578B00) --------------------------------------------------------

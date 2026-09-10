@@ -3,10 +3,10 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-10
 
-Protection initialization is the latest completed chunk; production C is
-141,914 physical lines (see C_LOC.md). Next establish byte-state RNG baselines
-and port the remaining four protection floating helpers and state. Preserve the
-legacy v-v behavior; production uses finite seeded state and hosted x87 PC53.
+Protection RNG/state is the latest completed chunk; production C is 141,844
+physical lines (see C_LOC.md). Next port client unit-code encoding and bit
+helpers (578B00/30/70), then the dynamic extent resolver with isolated server
+fixtures. Protection behavior preserves hosted x87 PC53 and the legacy v-v RNG.
 Use PORTING_STATE.md's top resume section for current verification and next steps;
 the milestones later in these documents are historical. Continue autonomously
 one reviewed/tested/documented/committed/pushed chunk at a time. Use Terra for

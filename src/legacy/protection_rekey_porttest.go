@@ -11,8 +11,6 @@ extern uint32_t dword_5d4594_2516352;
 extern uint32_t dword_5d4594_2516348;
 extern uint32_t dword_5d4594_2516328;
 extern uint32_t dword_5d4594_2516356;
-extern uint32_t dword_5d4594_2516372;
-extern uint32_t dword_5d4594_2516380;
 */
 import "C"
 import (
@@ -57,17 +55,13 @@ func portTestRekeyOperation(initial [][2]uint32, key, sum, sequence, swapCount, 
 	oldCount := *count
 	swaps, rekeys := memmap.PtrUint32(0x5D4594, 2516360), memmap.PtrUint32(0x5D4594, 2516364)
 	oldSwaps, oldRekeys := *swaps, *rekeys
-	floatState := memmap.PtrOff(0x5D4594, 2516388)
-	oldFloat := append([]byte(nil), unsafe.Slice((*byte)(floatState), 40)...)
-	floatMax := memmap.PtrUint32(0x5D4594, 2516376)
-	oldRange := [3]uint32{uint32(C.dword_5d4594_2516372), *floatMax, uint32(C.dword_5d4594_2516380)}
+	oldRandom := protectionRandom
 	defer func() {
 		Sub_56F3B0()
 		C.dword_5d4594_2516344, C.dword_5d4594_2516352 = head, tail
 		C.dword_5d4594_2516348, C.dword_5d4594_2516328, C.dword_5d4594_2516356 = oldKey, oldSum, oldSequence
 		*count, *swaps, *rekeys = oldCount, oldSwaps, oldRekeys
-		copy(unsafe.Slice((*byte)(floatState), 40), oldFloat)
-		C.dword_5d4594_2516372, *floatMax, C.dword_5d4594_2516380 = C.uint32_t(oldRange[0]), oldRange[1], C.uint32_t(oldRange[2])
+		protectionRandom = oldRandom
 		GetServer = oldGet
 	}()
 	C.dword_5d4594_2516344, C.dword_5d4594_2516352 = 0, 0
@@ -91,15 +85,12 @@ func portTestRekeyOperation(initial [][2]uint32, key, sum, sequence, swapCount, 
 	}
 	C.dword_5d4594_2516344 = C.uint(uintptr(unsafe.Pointer(first)))
 	C.dword_5d4594_2516352 = C.uint(uintptr(unsafe.Pointer(last)))
-	C.sub_56FF00(C.int(floatSeed))
-	beforeFloat := append([]byte(nil), unsafe.Slice((*byte)(floatState), 40)...)
-	beforeRange := [3]uint32{uint32(C.dword_5d4594_2516372), *floatMax, uint32(C.dword_5d4594_2516380)}
-	expectedRandom := uint32(C.nox_xxx_protect_56F240())
-	var expectedFloat [40]byte
-	copy(expectedFloat[:], unsafe.Slice((*byte)(floatState), 40))
-	expectedRange := [3]uint32{uint32(C.dword_5d4594_2516372), *floatMax, uint32(C.dword_5d4594_2516380)}
-	copy(unsafe.Slice((*byte)(floatState), 40), beforeFloat)
-	C.dword_5d4594_2516372, *floatMax, C.dword_5d4594_2516380 = C.uint32_t(beforeRange[0]), beforeRange[1], C.uint32_t(beforeRange[2])
+	protectionRandom.Seed(floatSeed)
+	beforeRandom := protectionRandom
+	beforeFloat, beforeRange := portTestRandomState(protectionRandom)
+	expectedRandom := protectionRandom.Draw()
+	expectedFloat, expectedRange := portTestRandomState(protectionRandom)
+	protectionRandom = beforeRandom
 	result := run()
 	out := PortTestRekeySnapshot{
 		Result:             result,
@@ -117,9 +108,8 @@ func portTestRekeyOperation(initial [][2]uint32, key, sum, sequence, swapCount, 
 		BeforeFloatRange:   beforeRange,
 		LinksValid:         true,
 	}
-	copy(out.BeforeFloatState[:], beforeFloat)
-	copy(out.FloatState[:], unsafe.Slice((*byte)(floatState), 40))
-	out.FloatRange = [3]uint32{uint32(C.dword_5d4594_2516372), *floatMax, uint32(C.dword_5d4594_2516380)}
+	out.BeforeFloatState = beforeFloat
+	out.FloatState, out.FloatRange = portTestRandomState(protectionRandom)
 	p := protectionHead()
 	for i, want := range nodes {
 		var prev, next *protection.Record
