@@ -100,9 +100,9 @@ Production C after conversion: **141,351 physical lines (−104)** in 153 files,
 zero test-reference C. Local artifacts: `build/port-writer/`.
 
 
-Final validation: all accumulated ABI tests pass on386 default/server/highres;
+Final validation: all accumulated ABI tests pass on 386 default/server/highres;
 all three binaries build; writer-port passes both preserved gameplay screenshots
 with overrides disabled. Full-suite results exactly match the loader milestone:
-15 passing,3 known failing,32 skipped/no-test packages and the same1,553 failure
-entries. Symbol inspection confirms the live57AAA0 bridge and native ruleWrite.
+15 passing, 3 known failing, 32 skipped/no-test packages and the same 1,553 failure
+entries. Symbol inspection confirms the live 57AAA0 bridge and native ruleWrite.
 No C writer implementation is retained solely for tests.

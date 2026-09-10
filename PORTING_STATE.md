@@ -8,7 +8,7 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 Latest completed chunk: rule writing 57AAA0 and the user-approved online buffer
 fix. Production C is **141,351 physical lines** in 153 files, with zero test-
 reference C. See [counts](docs/porting/C_LOC.md) and
-[writer port](docs/porting/RULE_WRITER.md). Offline baseline:36d8fa66. The writer
+[writer port](docs/porting/RULE_WRITER.md). Offline baseline: 36d8fa66. The writer
 uses independent Settings2 values and copies only the input name, preserving
 legacy-sized caller buffers. Its live C bridge remains; the Go caller is direct.
 No user decision remains pending.
@@ -21,11 +21,11 @@ overrides disabled. Full-suite results exactly match the loader milestone:
 15 passing, 3 known failing, 32 skipped/no-test packages and the same 1,553
 failure entries. Local artifacts are under build/port-writer.
 
-Next: port rule-file deletion57A9F0 after original-C baseline. Draft fixture and
-nine independent filesystem cases are under build/port-rule-remove; they have
-not yet been installed or executed. Primary review added directory and NUL cases.
-57A950 delegates to4D0550, a broader rule/config loader, and stays separate.
-Generic57ADF0 list cleanup remains C and has other consumers. Test command from
+Next: port rule-file deletion 57A9F0 after original-C baseline. The fixture and ten independent filesystem cases are installed; all pass
+against original C on 386. Primary review added directory, NUL, long-filename
+and exact ABI-return checks. See docs/porting/RULE_REMOVAL.md.
+57A950 delegates to 4D0550, a broader rule/config loader, and stays separate.
+Generic 57ADF0 list cleanup remains C and has other consumers. Test command from
 src with baseline environment: `go test -tags porttest -count=1 -run
 '^Test(Protection|Network|Waypoint|Rules)' .`; repeat with server/highres tags.
 
@@ -604,9 +604,9 @@ writer port, or postpone that chunk and continue elsewhere.
 
 ## Completed — rule writer and approved online fix (2026-09-10)
 
-Ported57AAA0, replacing overlapping decompiler-split temporaries with two full
+Ported 57AAA0, replacing overlapping decompiler-split temporaries with two full
 Settings2 values. The user explicitly approved fixing the unstable online output.
-All665 writer cases and accumulated ABI tests pass in all variants; three builds,
+All 665 writer cases and accumulated ABI tests pass in all variants; three builds,
 writer-port gameplay and exact known-failure full-suite comparison pass. C is
-**141,351 (−104)** physical lines,153 files, zero test-reference C. See
+**141,351 (−104)** physical lines, 153 files, zero test-reference C. See
 RULE_WRITER.md for independent online expectations and original offline baseline.
