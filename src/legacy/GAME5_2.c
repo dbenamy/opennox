@@ -348,27 +348,6 @@ int sub_56F510(int a1) {
 	return 1;
 }
 
-//----- (0056F590) --------------------------------------------------------
-uint32_t* sub_56F590(int a1) {
-	uint32_t* result; // eax
-
-	result = *(uint32_t**)&dword_5d4594_2516344;
-	if (dword_5d4594_2516344) {
-		while (*result != (a1 ^ dword_5d4594_2516348)) {
-			result = (uint32_t*)result[2];
-			if (!result) {
-				nullsub_31(1);
-				return 0;
-			}
-		}
-	} else {
-		nullsub_31(1);
-		return 0;
-	}
-	return result;
-}
-// 560840: using guessed type void  nullsub_31(uint32_t);
-
 //----- (0056F5C0) --------------------------------------------------------
 int nox_xxx_protectData_56F5C0() {
 	int v0;          // ebx
@@ -428,52 +407,6 @@ int nox_xxx_protectData_56F5C0() {
 		nullsub_31(1);
 	}
 	return result;
-}
-// 560840: using guessed type void  nullsub_31(uint32_t);
-
-//----- (0056F6F0) --------------------------------------------------------
-uint32_t* sub_56F6F0(int a1) {
-	uint32_t* result; // eax
-	int v2;           // ecx
-
-	result = *(uint32_t**)&dword_5d4594_2516344;
-	v2 = 0;
-	if (dword_5d4594_2516344) {
-		while (v2 != a1) {
-			result = (uint32_t*)result[2];
-			++v2;
-			if (!result) {
-				nullsub_31(1);
-				return 0;
-			}
-		}
-	} else {
-		nullsub_31(1);
-		return 0;
-	}
-	return result;
-}
-// 560840: using guessed type void  nullsub_31(uint32_t);
-
-//----- (0056F720) --------------------------------------------------------
-void sub_56F720(int* a1, int* a2) {
-	int v2; // edx
-	int v3; // esi
-
-	if (!a1 || !a2) {
-		nullsub_31(1);
-		return;
-	}
-	v2 = *a1;
-	v3 = a1[1];
-	*a1 = *a2;
-	a1[1] = a2[1];
-	*a2 = v2;
-	a2[1] = v3;
-	++*getMemU32Ptr(0x5D4594, 2516360);
-	if (!dword_5d4594_2516348) {
-		nullsub_31(1);
-	}
 }
 // 560840: using guessed type void  nullsub_31(uint32_t);
 

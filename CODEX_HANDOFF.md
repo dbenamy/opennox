@@ -351,3 +351,9 @@ validation and [C source-size checkpoints](docs/porting/C_LOC.md) for its reduct
 The checksum C reference was retired at the user’s request after validation.
 Use its retained Go and tagged ABI tests; recover the original differential
 harness from commit 66fa7bd4 if needed.
+
+Protection record lookup/index/swap is also converted; see
+[its validation](docs/porting/PROTECTION_RECORDS.md). Continue with the next
+bounded section, committing/pushing and reporting each completed chunk. The user
+authorized continuing onward without waiting for a new “go” unless a substantive
+decision needs their input.

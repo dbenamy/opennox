@@ -293,3 +293,12 @@ missing and extreme indices, null/self/adjacent/non-adjacent swaps, preserved
 links and modulo-32-bit counter increments. Current C and new pure Go helpers
 pass separately before rewiring the ABI. Logs: build/port-records/c-before.log
 and unit.log. Production C count is still 142,637; no extra C reference is needed.
+
+Protection record helper conversion completed: the same ABI scenarios pass on
+386 for default/server/highres; pure Go tests pass on 386/amd64, all three targets
+build with Go export bridges, and records-port exits 0 against both preserved
+screenshots. The global layout assertions pass. No C reference was added.
+Production C: 142,570 lines (−67 this chunk), 153 files; test-reference C: 0.
+See docs/porting/PROTECTION_RECORDS.md for scope, commands and limitations.
+Next chunk: inspect and test the protection spell/ability bitset operations;
+keep allocation, rekeying and floating-point state outside that scope.
