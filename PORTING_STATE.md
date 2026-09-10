@@ -453,3 +453,13 @@ declarations now reflect scalar bits; call-site uses remain compatible.
 Production C: 142,189 lines (−76), 153 files; reference C: 0. See
 docs/porting/PROTECTION_SET.md and build/port-setters. Next: additive protection
 updates (int32, signed int16 mana, unsigned uint8 level), with wraparound tests.
+
+## Protection additive updates — in progress, 2026-09-10
+
+Original C passes 2,000 calls across integer, signed-short mana, unsigned-byte
+level and Go mana-wrapper paths. A widened signed oracle checks modulo addition;
+full manager/RNG snapshots cover boundary/random values and failed lookups.
+Baseline evidence: build/port-add/c-before.log. C is still 142,189 lines.
+The missing F980 declaration is added to its existing header for test access.
+After conversion, scalar return declarations require five explicit C casts at
+existing pointer-typed surrounding results; these do not change caller APIs.
