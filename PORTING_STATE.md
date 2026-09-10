@@ -344,3 +344,14 @@ Production C is 142,458 lines (−45), 153 files; test-reference C is zero.
 See docs/porting/PROTECTION_CREATE.md. Next: record deletion and manager cleanup;
 only the delete-and-clear operation has remaining C callers, so preserve that
 ABI while routing existing Go cleanup directly to Go.
+
+## Protection deletion/cleanup — in progress, 2026-09-10
+
+Current C passes 1,000 deterministic removal/cleanup sequences, including exact
+surviving payloads/links/endpoints, head/middle/tail and duplicate-ID removal,
+misses/repeated deletion, zero and UINT_MAX IDs, checksum updates, uint16 count
+wrap and cleanup resets. The handle sequence remains unchanged. Fixtures own
+individual C allocations, call the public cleanup wrapper and restore globals.
+Pure Go unlink tests pass separately. Final pre-port log:
+build/port-remove/c-before-final.log. Only delete-and-clear has remaining C
+callers; cleanup and the internal delete-by-ID entry can become direct Go.
