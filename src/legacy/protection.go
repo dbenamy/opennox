@@ -5,20 +5,20 @@ _Static_assert(sizeof(int) == 4, "protection ABI requires 32-bit int");
 _Static_assert(sizeof(unsigned int) == 4, "protection ABI requires 32-bit unsigned int");
 extern unsigned int dword_5d4594_2516356;
 int nox_xxx_protectionCreateStructForInt_56F280(int a1, int a2);
-int nox_xxx_protectionCreateStructForFloat_56F480(int a1, float a2);
 */
 import "C"
 import (
+	"math"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/internal/protection"
 )
 
 func Nox_xxx_protectionCreateStructForInt_56F280(a1 int, a2 int) int {
-	return int(C.nox_xxx_protectionCreateStructForInt_56F280(C.int(a1), C.int(a2)))
+	return int(nox_xxx_protectionCreateStructForInt_56F280(C.int(a1), C.int(a2)))
 }
 func Nox_xxx_protectionCreateStructForFloat_56F480(a1 int, a2 float32) int {
-	return int(C.nox_xxx_protectionCreateStructForFloat_56F480(C.int(a1), C.float(a2)))
+	return int(createProtectionRecord(uint32(a1), math.Float32bits(a2)))
 }
 
 //export nox_xxx_protectionStringCRC_56FAC0

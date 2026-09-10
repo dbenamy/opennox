@@ -329,3 +329,18 @@ Tests use an empty C-owned manager, verify exact words/checksum/list endpoints,
 and restore globals/free records. Empty insertion draws no randomness. The new
 pure Go initializer separately checks nil-allocation state and reset links.
 Logs: build/port-create/c-before.log and unit.log. No C reference is copied.
+
+Protection construction completed. A generated C-to-Go float export failed the
+signaling-NaN test (7f800001 became 7fc00001); no expected values were relaxed.
+A caller audit showed no remaining C caller for the float constructor once its
+Go wrapper calls the shared initializer directly. Removed that unused C entry
+point/declarations rather than retaining a float shim. Integer C entry remains.
+All 12,168 live-path constructor cases and earlier ABI tests pass under all three
+tags; pure Go tests pass on 386/amd64. All accepted binaries build and have the
+expected symbols. The create-port scenario exits 0 against both screenshots.
+Full suite: 15 passing, 3 known failing, 32 no-test packages, no compile/vet errors.
+Use build/port-create/accepted-* artifacts; earlier outputs are diagnostics.
+Production C is 142,458 lines (−45), 153 files; test-reference C is zero.
+See docs/porting/PROTECTION_CREATE.md. Next: record deletion and manager cleanup;
+only the delete-and-clear operation has remaining C callers, so preserve that
+ABI while routing existing Go cleanup directly to Go.

@@ -4,17 +4,11 @@ package legacy
 
 /*
 #include <stdlib.h>
-#include <string.h>
 #include "GAME5_2.h"
 extern uint32_t dword_5d4594_2516344;
 extern uint32_t dword_5d4594_2516352;
 extern uint32_t dword_5d4594_2516348;
 extern uint32_t dword_5d4594_2516328;
-static int porttest_create_float_bits(int id, uint32_t bits) {
-    float value;
-    memcpy(&value, &bits, sizeof(value));
-    return nox_xxx_protectionCreateStructForFloat_56F480(id, value);
-}
 */
 import "C"
 import (
@@ -49,10 +43,8 @@ func PortTestCreate(id, bits, key, sum uint32, mode int) PortTestCreateResult {
 	case 0:
 		result = int(C.nox_xxx_protectionCreateStructForInt_56F280(C.int(id), C.int(bits)))
 	case 1:
-		result = int(C.porttest_create_float_bits(C.int(id), C.uint(bits)))
-	case 2:
 		result = Nox_xxx_protectionCreateStructForFloat_56F480(int(id), math.Float32frombits(bits))
-	case 3:
+	case 2:
 		result = Nox_xxx_protectionCreateStructForInt_56F280(int(id), int(bits))
 	default:
 		panic(mode)

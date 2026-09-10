@@ -262,7 +262,9 @@ source tools, use disposable copies, freshly created per variant. Keep the
 checkout used to build baseline binaries clean.
 
 1. Choose a small cohesive leaf; identify callers, callbacks, shared state and
-   observable behavior. Add tests before replacing its C implementation.
+   observable behavior. Add tests before replacing its C implementation. Retain
+   C exports only where remaining C callers need them; do not create an ABI
+   boundary solely to keep a test calling a retired internal entry point.
 2. Keep a callable C reference while comparing C and Go on identical inputs.
    Cover boundary cases, return values, mutations, signedness/overflow,
    serialization, RNG consumption and timing effects where applicable. Reset
@@ -361,3 +363,8 @@ decision needs their input.
 Protection spell/ability bitsets are converted too; see
 [the checkpoint](docs/porting/PROTECTION_BITSET.md). Latest source counts are in
 C_LOC.md. Next candidate is record construction, with exact float-bit tests.
+
+Integer/float record construction is converted;
+[its checkpoint](docs/porting/PROTECTION_CREATE.md) records the NaN ABI finding
+and removed unused float entry point. Continue with deletion and cleanup,
+retaining only the C entry points that have actual remaining callers.

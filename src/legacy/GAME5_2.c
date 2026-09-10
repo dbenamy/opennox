@@ -186,28 +186,6 @@ int sub_56F250() {
 	return result;
 }
 
-//----- (0056F280) --------------------------------------------------------
-int nox_xxx_protectionCreateStructForInt_56F280(int a1, int a2) {
-	uint32_t* v2; // eax
-	int v3;       // ecx
-	int v4;       // ecx
-
-	v2 = calloc(1u, 0x10u);
-	if (!v2) {
-		return 0;
-	}
-	v2[3] = 0;
-	v2[2] = 0;
-	v3 = a1 ^ dword_5d4594_2516348;
-	*v2 = a1 ^ dword_5d4594_2516348;
-	dword_5d4594_2516328 ^= v3;
-	v2[1] = a2;
-	v4 = a2 ^ dword_5d4594_2516348;
-	v2[1] = a2 ^ dword_5d4594_2516348;
-	dword_5d4594_2516328 ^= v4;
-	return sub_56F2F0(v2);
-}
-
 //----- (0056F2F0) --------------------------------------------------------
 int sub_56F2F0(uint32_t* a1) {
 	int v1;     // esi
@@ -280,29 +258,6 @@ int nox_xxx_protectionCreateInt_56F400(int a1) {
 	return 0;
 }
 // 560840: using guessed type void  nullsub_31(uint32_t);
-
-//----- (0056F480) --------------------------------------------------------
-int nox_xxx_protectionCreateStructForFloat_56F480(int a1, float val) {
-	int a2 = *(int*)&val;
-	uint32_t* v2; // eax
-	int v3;       // ecx
-	int v4;       // ecx
-
-	v2 = calloc(1u, 0x10u);
-	if (!v2) {
-		return 0;
-	}
-	v2[3] = 0;
-	v2[2] = 0;
-	v3 = a1 ^ dword_5d4594_2516348;
-	*v2 = a1 ^ dword_5d4594_2516348;
-	dword_5d4594_2516328 ^= v3;
-	v2[1] = a2;
-	v4 = a2 ^ dword_5d4594_2516348;
-	v2[1] = a2 ^ dword_5d4594_2516348;
-	dword_5d4594_2516328 ^= v4;
-	return sub_56F2F0(v2);
-}
 
 //----- (0056F4F0) --------------------------------------------------------
 int sub_56F4F0(int* a1) {
