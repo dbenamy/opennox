@@ -5,20 +5,24 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-10
 
-Latest completed chunk: protection object checksum and toggles. Production C is
-**141,984 physical lines** in 153 files, with zero test-reference C lines. See
-[the count history](docs/porting/C_LOC.md) and [object port](docs/porting/PROTECTION_OBJECT.md).
+Latest completed chunk: protection float setter/addition. Production C is
+**141,941 physical lines** in 153 files, with zero test-reference C lines. See
+[the count history](docs/porting/C_LOC.md) and [float port](docs/porting/PROTECTION_FLOAT.md).
 Completed chunks are committed and pushed to `dbenamy/opennox`, branch `dev`.
 
-Next: float setter/addition (56F8C0/56FA40). Establish original-C tests for x87
-64-bit-significand rounding before signed integer truncation, including tiny
-negative deltas, nonfinite values and signed-64-bit overflow. A standalone 386
-probe confirms that naive float64 addition would change results. No production
-FPU control/exception handling was found; default x87 control word is 037f.
+Next: protection initialization (56F1C0). Establish the nine-record startup,
+reserved handle slots, eight list-order draws and seeded floating state against
+original C. Bracket the wall-clock seed in the test fixture; preserve all globals.
+Use the shipped five floating RNG constants in isolated fixture state: ordinary
+unit-test setup does not initialize blob data. Then port the initializer and
+retire its sole-use C bridge if no C callers remain.
 
+The float baseline corrected an initial standalone-probe assumption: the actual
+Go-hosted game uses x87 precision 53, not 64 significant bits. Plain float64
+addition plus explicit signed-int64 conversion guards matches the actual C ABI.
 All accumulated protection tests pass on 386 default/server/highres, all three
-binaries build, and `object-port` passes both preserved gameplay screenshots.
-The object full suite exactly matches the known failure set: 15 passing,
+binaries build, and `float-port` passes both preserved gameplay screenshots.
+The latest full suite (object chunk) exactly matched known failures: 15 passing,
 3 known failing, 32 skipped/no-test packages.
 
 Continue one chunk at a time through tests, docs/C LOC, commit, push and a user
@@ -534,3 +538,10 @@ bridges, and preserved missing-ID return behavior and read-only object access.
 Original-C baseline is `e4127e22`; 1,040 toggle scenarios plus direct digest and
 guard-page checks pass after the port. See [details](docs/porting/PROTECTION_OBJECT.md).
 Production C: **141,984 physical lines (−131)**; test-reference C: **0**.
+
+## Float updates completed — 2026-09-10
+
+Ported both float updates after 3,600 original-C ABI calls and independent
+precision-53 arbitrary-precision tests. Actual hosted x87 precision corrected
+the standalone C probe assumption before the port. See [details](docs/porting/PROTECTION_FLOAT.md).
+Production C: **141,941 physical lines (−43)**; test-reference C: **0**.

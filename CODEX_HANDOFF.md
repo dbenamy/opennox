@@ -3,9 +3,10 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-10
 
-Object checksum/toggles are the latest completed chunk; production C is 141,984
-physical lines (see C_LOC.md). Next establish x87 float-update baselines and port
-the float setter/addition with explicit legacy rounding semantics.
+Float setter/addition is the latest completed chunk; production C is 141,941
+physical lines (see C_LOC.md). Next establish original-C startup tests and port
+protection initialization. Hosted x87 precision is 53 bits (verified in the real
+C ABI), superseding the initial standalone probe's 64-bit assumption.
 Use PORTING_STATE.md's top resume section for current verification and next steps;
 the milestones later in these documents are historical. Continue autonomously
 one reviewed/tested/documented/committed/pushed chunk at a time. Use Terra for
