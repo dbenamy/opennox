@@ -368,3 +368,7 @@ Integer/float record construction is converted;
 [its checkpoint](docs/porting/PROTECTION_CREATE.md) records the NaN ABI finding
 and removed unused float entry point. Continue with deletion and cleanup,
 retaining only the C entry points that have actual remaining callers.
+
+Deletion and cleanup are converted; see
+[their checkpoint](docs/porting/PROTECTION_REMOVE.md). Next validate randomized
+insertion against list order and RNG consumption before replacing it.

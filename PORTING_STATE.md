@@ -355,3 +355,11 @@ individual C allocations, call the public cleanup wrapper and restore globals.
 Pure Go unlink tests pass separately. Final pre-port log:
 build/port-remove/c-before-final.log. Only delete-and-clear has remaining C
 callers; cleanup and the internal delete-by-ID entry can become direct Go.
+
+Protection deletion/cleanup completed: original-C and Go-after state sequences
+pass, all accumulated ABI checks pass for default/server/highres, and pure Go
+checks pass on 386/amd64. All three builds have the expected retained/removed
+symbols. remove-port exits 0 against both preserved screenshots. Production C
+is 142,393 lines (−65 this chunk), 153 files; C references remain zero.
+See docs/porting/PROTECTION_REMOVE.md. Next: randomized record insertion, with
+explicit comparison of list order and RNG index/consumption under fixed seeds.

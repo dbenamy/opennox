@@ -228,27 +228,6 @@ int sub_56F2F0(uint32_t* a1) {
 }
 // 560840: using guessed type void  nullsub_31(uint32_t);
 
-//----- (0056F3B0) --------------------------------------------------------
-uint32_t* sub_56F3B0() {
-	uint32_t* result; // eax
-	uint32_t* v1;     // esi
-
-	result = *(uint32_t**)&dword_5d4594_2516344;
-	if (dword_5d4594_2516344) {
-		do {
-			v1 = (uint32_t*)result[2];
-			free(result);
-			result = v1;
-		} while (v1);
-	}
-	dword_5d4594_2516328 = 0;
-	*getMemU16Ptr(0x587000, 311204) = 0;
-	dword_5d4594_2516348 = 0;
-	dword_5d4594_2516352 = 0;
-	dword_5d4594_2516344 = 0;
-	return result;
-}
-
 //----- (0056F400) --------------------------------------------------------
 int nox_xxx_protectionCreateInt_56F400(int a1) {
 	if (nox_xxx_protectionCreateStructForInt_56F280(dword_5d4594_2516356, a1)) {
@@ -258,50 +237,6 @@ int nox_xxx_protectionCreateInt_56F400(int a1) {
 	return 0;
 }
 // 560840: using guessed type void  nullsub_31(uint32_t);
-
-//----- (0056F4F0) --------------------------------------------------------
-int sub_56F4F0(int* a1) {
-	int result; // eax
-
-	result = sub_56F510(*a1);
-	if (result) {
-		*a1 = 0;
-	}
-	return result;
-}
-
-//----- (0056F510) --------------------------------------------------------
-int sub_56F510(int a1) {
-	uint32_t* v1; // eax
-	int v2;       // ecx
-	int v3;       // ecx
-	int v4;       // ecx
-	int v5;       // ecx
-
-	v1 = sub_56F590(a1);
-	if (!v1) {
-		return 0;
-	}
-	v2 = v1[3];
-	if (v2) {
-		*(uint32_t*)(v2 + 8) = v1[2];
-	} else {
-		dword_5d4594_2516344 = v1[2];
-	}
-	v3 = v1[2];
-	if (v3) {
-		*(uint32_t*)(v3 + 12) = v1[3];
-	} else {
-		dword_5d4594_2516352 = v1[3];
-	}
-	v4 = *v1 ^ dword_5d4594_2516328;
-	dword_5d4594_2516328 = v4;
-	v5 = v1[1] ^ v4;
-	--*getMemU16Ptr(0x587000, 311204);
-	dword_5d4594_2516328 = v5;
-	free(v1);
-	return 1;
-}
 
 //----- (0056F5C0) --------------------------------------------------------
 int nox_xxx_protectData_56F5C0() {

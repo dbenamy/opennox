@@ -391,7 +391,7 @@ func Sub_416950() {
 	C.sub_416950()
 }
 func Sub_56F3B0() {
-	C.sub_56F3B0()
+	freeProtectionRecords()
 }
 func Sub_51D0E0() {
 	C.sub_51D0E0()
