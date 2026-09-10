@@ -511,3 +511,17 @@ against both screenshots. Production C: 142,115 lines (−15), 153 files; refere
 C: 0. See docs/porting/PROTECTION_VALIDATE.md and build/port-validate. Next object
 checksum/toggles require object/type fixtures and preserve raw-ID returns on
 missing records, unlike the setter functions.
+
+## Protection object checksum/toggles — in progress, 2026-09-10
+
+Final original C passes 520 scenarios through both toggle entries (1,040 runs),
+with direct checksum comparisons and 1–3 repeated toggles per run. Fixtures use
+C-allocated objects/data and a porttest-only temporary type table. They compare
+object/health/init/name bytes, manager/list/RNG state, raw-ID returns on misses,
+and XOR restoration. Guards prove no object reads on rejected/missing IDs and
+no init-data reads for absent types, nonpositive signed sizes or partial words.
+Type index zero with positive init data has an explicit case. Evidence:
+build/port-object/c-before-final.log. Production C remains 142,115 lines.
+Retire CRC/getter bridges with no remaining C callers; the length-aware checksum
+entry still has a C caller. FC50's const parameter becomes non-const in the
+internal declaration to match the generated Go export; behavior remains read-only.
