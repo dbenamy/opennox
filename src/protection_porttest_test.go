@@ -29,10 +29,8 @@ func TestProtectionABI(t *testing.T) {
 		if got := protectBytes(data); got != want {
 			t.Fatalf("length %d: Go=%08x expected=%08x", len(data), got, want)
 		}
-		for _, nullable := range []bool{false, true} {
-			if got := legacy.PortTestProtectionChecksum(data, nullable); got != want {
-				t.Fatalf("C ABI nullable=%v length=%d: Go=%08x expected=%08x", nullable, len(data), got, want)
-			}
+		if got := legacy.PortTestProtectionChecksum(data); got != want {
+			t.Fatalf("C ABI length=%d: Go=%08x expected=%08x", len(data), got, want)
 		}
 		if !bytes.Equal(data, before) {
 			t.Fatal("input mutated")
@@ -73,10 +71,8 @@ func FuzzProtectionABI(f *testing.F) {
 		if got := protectBytes(data); got != want {
 			t.Fatalf("Go=%08x expected=%08x", got, want)
 		}
-		for _, nullable := range []bool{false, true} {
-			if got := legacy.PortTestProtectionChecksum(data, nullable); got != want {
-				t.Fatalf("ABI nullable=%v Go=%08x expected=%08x", nullable, got, want)
-			}
+		if got := legacy.PortTestProtectionChecksum(data); got != want {
+			t.Fatalf("ABI Go=%08x expected=%08x", got, want)
 		}
 	})
 }
@@ -94,7 +90,7 @@ func BenchmarkProtectionChecksum(b *testing.B) {
 			fn   func([]byte) uint32
 		}{
 			{"Go", protectBytes},
-			{"CToGo", func(p []byte) uint32 { return legacy.PortTestProtectionChecksum(p, false) }},
+			{"CToGo", legacy.PortTestProtectionChecksum},
 		} {
 			b.Run(fmt.Sprintf("%d/%s", n, impl.name), func(b *testing.B) {
 				b.SetBytes(int64(n))

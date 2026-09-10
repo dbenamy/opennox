@@ -1393,55 +1393,6 @@ LABEL_9:
 	return result;
 }
 
-//----- (004E4C00) --------------------------------------------------------
-int sub_4E4C00(nox_object_t* item) {
-	int result; // eax
-
-	if (item) {
-		result = item->net_code;
-	} else {
-		result = 0;
-	}
-	return result;
-}
-
-//----- (004E4C10) --------------------------------------------------------
-int sub_4E4C10(nox_object_t* item) {
-	int result; // eax
-
-	if (item) {
-		result = item->typ_ind;
-	} else {
-		result = 0;
-	}
-	return result;
-}
-
-//----- (004E4C30) --------------------------------------------------------
-int nox_object_getInitData_4E4C30(nox_object_t* item) {
-	int result; // eax
-
-	if (item) {
-		result = item->init_data;
-	} else {
-		result = 0;
-	}
-	return result;
-}
-
-//----- (004E4C80) --------------------------------------------------------
-int sub_4E4C80(nox_object_t* item) {
-	const int* a1 = (int*)item;
-	int result; // eax
-
-	if (item) {
-		result = *a1; // item->id?
-	} else {
-		result = 0;
-	}
-	return result;
-}
-
 //----- (004E4DE0) --------------------------------------------------------
 int sub_4E4DE0() {
 	int v0;            // edi

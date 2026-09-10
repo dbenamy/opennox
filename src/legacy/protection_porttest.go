@@ -10,12 +10,9 @@ import "unsafe"
 
 // PortTestProtectionChecksum exercises the actual C ABI, including its signed
 // return value. No historical C implementation is needed for these ABI checks.
-func PortTestProtectionChecksum(data []byte, nullable bool) uint32 {
+func PortTestProtectionChecksum(data []byte) uint32 {
 	p := (*C.int)(unsafe.Pointer(unsafe.SliceData(data)))
-	if nullable {
-		return uint32(C.nox_xxx_protectionStringCRCLen_56FAE0(p, C.uint(len(data))))
-	}
-	return uint32(C.nox_xxx_protectionStringCRC_56FAC0(p, C.uint(len(data))))
+	return uint32(C.nox_xxx_protectionStringCRCLen_56FAE0(p, C.uint(len(data))))
 }
 
 func PortTestProtectionNull(n uint32) uint32 {

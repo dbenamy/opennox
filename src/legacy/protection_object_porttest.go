@@ -81,7 +81,7 @@ func PortTestObjectProtection(initial [][2]uint32, key, sum, id uint32, spec Por
 			defer restore()
 		}
 		if !spec.GuardObject {
-			out.Digest = uint32(C.sub_56FB60(asObjectC(obj)))
+			out.Digest = objectProtectionChecksum(obj)
 		}
 		var result uint32
 		for i := 0; i < repeat; i++ {

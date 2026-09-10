@@ -5,20 +5,21 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-10
 
-Latest completed chunk: protection buffer validation. Production C is **142,115
-physical lines** in 153 files, with zero test-reference C lines. See
-[the count history](docs/porting/C_LOC.md). Completed chunks are committed and
-pushed to `dbenamy/opennox`, branch `dev`, using the explicit SSH push URL below.
+Latest completed chunk: protection object checksum and toggles. Production C is
+**141,984 physical lines** in 153 files, with zero test-reference C lines. See
+[the count history](docs/porting/C_LOC.md) and [object port](docs/porting/PROTECTION_OBJECT.md).
+Completed chunks are committed and pushed to `dbenamy/opennox`, branch `dev`.
 
-Next: object checksum and its two toggles. Audit confirms the toggles return the
-original ID on both ineligible and missing handles; successful calls return the
-updated manager checksum. Preserve read-only object behavior, signed init-data
-size checks, and retire getter bridges whose last C caller disappears.
+Next: float setter/addition (56F8C0/56FA40). Establish original-C tests for x87
+64-bit-significand rounding before signed integer truncation, including tiny
+negative deltas, nonfinite values and signed-64-bit overflow. A standalone 386
+probe confirms that naive float64 addition would change results. No production
+FPU control/exception handling was found; default x87 control word is 037f.
 
-All accumulated protection tests pass on 386 for default/server/highres, all
-three binaries build, and the latest warrior scenario (`validate-port`) passes
-both preserved screenshots. The latest full suite at rekey matches the prior
-failure set exactly: 15 passing, 3 known failing, 32 no-test packages.
+All accumulated protection tests pass on 386 default/server/highres, all three
+binaries build, and `object-port` passes both preserved gameplay screenshots.
+The object full suite exactly matches the known failure set: 15 passing,
+3 known failing, 32 skipped/no-test packages.
 
 Continue one chunk at a time through tests, docs/C LOC, commit, push and a user
 update, then onward until a substantive question or rate limit. Terra handles
@@ -525,3 +526,11 @@ build/port-object/c-before-final.log. Production C remains 142,115 lines.
 Retire CRC/getter bridges with no remaining C callers; the length-aware checksum
 entry still has a C caller. FC50's const parameter becomes non-const in the
 internal declaration to match the generated Go export; behavior remains read-only.
+
+## Object checksum/toggles completed — 2026-09-10
+
+Ported the digest and both toggles, removed sole-use object getter and checksum
+bridges, and preserved missing-ID return behavior and read-only object access.
+Original-C baseline is `e4127e22`; 1,040 toggle scenarios plus direct digest and
+guard-page checks pass after the port. See [details](docs/porting/PROTECTION_OBJECT.md).
+Production C: **141,984 physical lines (−131)**; test-reference C: **0**.

@@ -3,8 +3,9 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-10
 
-Buffer validation is the latest completed chunk; production C is 142,115 physical
-lines (see C_LOC.md). Next port object checksum/toggles with object/type fixtures.
+Object checksum/toggles are the latest completed chunk; production C is 141,984
+physical lines (see C_LOC.md). Next establish x87 float-update baselines and port
+the float setter/addition with explicit legacy rounding semantics.
 Use PORTING_STATE.md's top resume section for current verification and next steps;
 the milestones later in these documents are historical. Continue autonomously
 one reviewed/tested/documented/committed/pushed chunk at a time. Use Terra for

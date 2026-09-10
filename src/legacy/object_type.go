@@ -66,19 +66,6 @@ func nox_xxx_objectTypeByIndHealthData(ind int) unsafe.Pointer {
 	return t.Health().C()
 }
 
-//export sub_4E4C50
-func sub_4E4C50(cobj *nox_object_t) int {
-	item := asObjectS(cobj)
-	if item == nil {
-		return 0
-	}
-	typ := GetServer().S().Types.ByInd(int(item.TypeInd))
-	if typ == nil {
-		return 0
-	}
-	return int(typ.InitDataSize)
-}
-
 //export sub_4F40A0
 func sub_4F40A0(a1 *nox_object_t) C.char { return C.char(GetServer().S().Sub_4F40A0(asObjectS(a1))) }
 

@@ -19,11 +19,6 @@ func Nox_xxx_protectionCreateStructForFloat_56F480(a1 int, a2 float32) int {
 	return int(createProtectionRecord(uint32(a1), math.Float32bits(a2)))
 }
 
-//export nox_xxx_protectionStringCRC_56FAC0
-func nox_xxx_protectionStringCRC_56FAC0(data *C.int, size C.uint) C.int {
-	return nox_xxx_protectionStringCRCLen_56FAE0(data, size)
-}
-
 //export nox_xxx_protectionStringCRCLen_56FAE0
 func nox_xxx_protectionStringCRCLen_56FAE0(data *C.int, size C.uint) C.int {
 	if data == nil {
