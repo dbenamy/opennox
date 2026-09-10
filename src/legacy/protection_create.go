@@ -5,7 +5,6 @@ package legacy
 #include <stdlib.h>
 extern uint32_t dword_5d4594_2516348;
 extern uint32_t dword_5d4594_2516328;
-int sub_56F2F0(uint32_t* record);
 */
 import "C"
 import (
@@ -19,8 +18,7 @@ func createProtectionRecord(id, value uint32) C.int {
 	if !protection.Initialize(r, id, value, uint32(C.dword_5d4594_2516348), (*uint32)(unsafe.Pointer(&C.dword_5d4594_2516328))) {
 		return 0
 	}
-	// The existing C insertion routine takes ownership and preserves RNG use.
-	return C.sub_56F2F0((*C.uint32_t)(unsafe.Pointer(r)))
+	return insertProtectionRecord(r)
 }
 
 //export nox_xxx_protectionCreateStructForInt_56F280

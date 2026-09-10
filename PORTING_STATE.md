@@ -374,3 +374,11 @@ build/port-insert/c-before-final.log and unit.log. Production C remains 142,393
 lines. The sole production caller is the Go constructor; remove the obsolete C
 entry point after equivalence validation. Trial delegation: Terra implements
 this bounded conversion; the primary agent reviews and runs integration checks.
+
+Randomized insertion completed: primary review accepted Terra's implementation
+without corrections. All accumulated protection ABI tests pass under three tags,
+pure helpers pass on 386/amd64, all production binaries build with expected
+symbols, and insertion-port exits 0 against both screenshots. Evidence:
+build/port-insert. Production C: 142,351 lines (−42), 153 files; C references: 0.
+See docs/porting/PROTECTION_INSERT.md. Next: reserved-record initialization and
+handle allocation, including uint32 sequence wrap and return-value semantics.

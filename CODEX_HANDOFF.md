@@ -372,3 +372,9 @@ retaining only the C entry points that have actual remaining callers.
 Deletion and cleanup are converted; see
 [their checkpoint](docs/porting/PROTECTION_REMOVE.md). Next validate randomized
 insertion against list order and RNG consumption before replacing it.
+
+Randomized insertion is converted; see
+[its checkpoint](docs/porting/PROTECTION_INSERT.md). Continue with reserved-record
+initialization and handle allocation. The user approved bounded cheaper-agent
+delegation with primary review, and reiterated continuing one completed chunk at
+a time until a substantive question or rate limit needs their attention.

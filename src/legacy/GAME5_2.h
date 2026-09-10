@@ -31,7 +31,6 @@ int sub_56F1C0();
 int nox_xxx_protect_56F240();
 int sub_56F250();
 int nox_xxx_protectionCreateStructForInt_56F280(int a1, int a2);
-int sub_56F2F0(uint32_t* a1);
 int nox_xxx_protectionCreateInt_56F400(int a1);
 int sub_56F4F0(int* a1);
 uint32_t* sub_56F590(int a1);

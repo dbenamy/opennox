@@ -186,48 +186,6 @@ int sub_56F250() {
 	return result;
 }
 
-//----- (0056F2F0) --------------------------------------------------------
-int sub_56F2F0(uint32_t* a1) {
-	int v1;     // esi
-	short v2;   // di
-	int result; // eax
-	short i;    // ax
-	int v5;     // eax
-
-	v1 = dword_5d4594_2516344;
-	v2 = 0;
-	if (*getMemU16Ptr(0x587000, 311204)) {
-		for (i = nox_common_randomInt_415FA0(0, *getMemU16Ptr(0x587000, 311204) - 1); v1; ++v2) {
-			if (v2 == i) {
-				break;
-			}
-			v1 = *(uint32_t*)(v1 + 8);
-		}
-		a1[3] = *(uint32_t*)(v1 + 12);
-		if (!dword_5d4594_2516348) {
-			nullsub_31(1);
-		}
-		a1[2] = v1;
-		*(uint32_t*)(v1 + 12) = a1;
-		v5 = a1[3];
-		if (v5) {
-			*(uint32_t*)(v5 + 8) = a1;
-			++*getMemU16Ptr(0x587000, 311204);
-		} else {
-			++*getMemU16Ptr(0x587000, 311204);
-			dword_5d4594_2516344 = a1;
-		}
-		result = 1;
-	} else {
-		++*getMemU16Ptr(0x587000, 311204);
-		dword_5d4594_2516352 = a1;
-		dword_5d4594_2516344 = a1;
-		result = 1;
-	}
-	return result;
-}
-// 560840: using guessed type void  nullsub_31(uint32_t);
-
 //----- (0056F400) --------------------------------------------------------
 int nox_xxx_protectionCreateInt_56F400(int a1) {
 	if (nox_xxx_protectionCreateStructForInt_56F280(dword_5d4594_2516356, a1)) {
