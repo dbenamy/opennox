@@ -390,3 +390,7 @@ the now-unused integer struct-constructor C bridge and continue validation.
 The unused integer-constructor and single-bit C bridges are retired; see
 [the checkpoint](docs/porting/PROTECTION_BRIDGES.md). Continue with protected-value
 setters, validating their scalar return bits and rekey/RNG side effects.
+
+Integer/byte/word setters are converted; see
+[their checkpoint](docs/porting/PROTECTION_SET.md). Continue with additive updates,
+covering modular arithmetic and signed/truncated deltas before replacement.

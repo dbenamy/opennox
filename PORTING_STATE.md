@@ -445,3 +445,11 @@ returns are scalar bits, with no dereferences/function-pointer uses, so correct
 these four declarations to uint32_t while preserving 386 return behavior.
 Production C remains 142,265 lines. Terra's bounded Go draft and primary-owned
 tests both passed review; no production replacement has been made yet.
+
+Integer/byte/word setters completed: all accumulated protection checks pass for
+three configurations, all production targets build with the four Go-backed C
+exports, and setters-port exits 0 against both preserved screenshots. C return
+declarations now reflect scalar bits; call-site uses remain compatible.
+Production C: 142,189 lines (−76), 153 files; reference C: 0. See
+docs/porting/PROTECTION_SET.md and build/port-setters. Next: additive protection
+updates (int32, signed int16 mana, unsigned uint8 level), with wraparound tests.

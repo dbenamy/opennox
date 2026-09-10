@@ -246,7 +246,7 @@ func Nox_xxx_spellCastByBook_4FCB80() {
 	C.nox_xxx_spellCastByBook_4FCB80()
 }
 func Nox_xxx_playerResetProtectionCRC_56F7D0(a1 uint32, a2 int) {
-	C.nox_xxx_playerResetProtectionCRC_56F7D0(C.int(a1), C.int(a2))
+	nox_xxx_playerResetProtectionCRC_56F7D0(C.int(a1), C.int(a2))
 }
 func Nox_xxx_playerAwardSpellProtectionCRC_56FCE0(a1 uint32, a2 int, a3 int) {
 	nox_xxx_playerAwardSpellProtectionCRC_56FCE0(C.int(a1), C.int(a2), C.int(a3))
