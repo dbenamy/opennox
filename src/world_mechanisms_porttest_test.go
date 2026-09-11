@@ -10,6 +10,7 @@ import (
 )
 
 var worldHashes = map[string]string{
+	"world-float-filters":      "1f21fc8c565e4ffc31d74bc3f76c8950e4eb73b4d62e3913d4e99355c79c8b43",
 	"world-triggers":           "3eda70793786918cbff9b809dfa644a019b9142891f062eef40c9a23901642d1",
 	"world-doors":              "8c19f174e2689b53ea240937bef4ef42a8755e1a4547a757f80def6b48f1896f",
 	"world-switches":           "01cc9faf133235c33fc1fc97138c528bb4a01d0873a0844eebbaa420c539eb01",
@@ -489,4 +490,35 @@ func TestWorldOwnerIntegration(t *testing.T) {
 		t.Fatalf("blow owner force: %x,%x", o[22], o[23])
 	}
 	callbackHash(t, "world-owner-integration", r, worldHashes["world-owner-integration"])
+}
+
+func TestWorldFloatFilters(t *testing.T) {
+	var cases []legacy.PortTestRoamSpec
+	for _, flags := range []uint32{4, 0x24, 0x1000004, 0x1000024, 0x42000000, 0x42800000} {
+		for _, class := range []uint32{1, 0x400000, 0x4a800000, 0x4b000000} {
+			s := worldBase()
+			p := s.Callbacks.Shop
+			p.Items[1].Flags = flags
+			p.Items[1].Class = class
+			p.TemporaryUpdates.ItemWords[1][56] = math.Float32bits(532)
+			p.Sequence = []legacy.PortTestShopAction{{Op: legacy.PortTestWorld53C240}}
+			cases = append(cases, s)
+		}
+	}
+	r := effectsTimedRun(t, cases)
+	// 0x24 as a float truncates to zero: the source's numeric conversion does not
+	// reject the ordinary destroyed bit. A float encoding of 32 does reject it.
+	for _, i := range []int{0, 4, 8, 12} {
+		o := worldObject(t, r[i], 0, 70001)
+		if !(math.Float32frombits(o[22]) > 0) {
+			t.Fatalf("numeric flag filter case %d did not apply force", i)
+		}
+	}
+	for _, i := range []int{2, 6, 10, 14, 16, 17, 18, 19} {
+		o := worldObject(t, r[i], 0, 70001)
+		if o[22] != 0 || o[23] != 0 {
+			t.Fatalf("numeric filter case %d applied force", i)
+		}
+	}
+	callbackHash(t, "world-float-filters", r, worldHashes["world-float-filters"])
 }

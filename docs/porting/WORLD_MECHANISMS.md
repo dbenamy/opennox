@@ -95,3 +95,14 @@ Temporary/projectile conversion is pushed as `8f96bbc6`. Production C is still
 conversion. Next: translate the connected family and private angle helpers,
 route Go callers, compare all full captures, qualify once at the boundary, update
 C_LOC/docs, commit/push, summarize and continue.
+
+### Additional original-C float-filter audit
+
+Review identified that the blow-force callback converts the float interpretation
+of both class and flags. A direct integer dead-flag test would change behavior.
+Added 24 cases with independent allow/reject assertions at original-C revision
+55524613, including ordinary dead flags and float encodings of filter masks.
+Two C captures repeat exactly (0.119s / 0.117s), and native-reviewed matches their
+full bytes. Original 14 capture groups remain byte-identical as well. Total:
+**2,003 cases / 15 groups**. Evidence: c-filter-{first,repeat}-world-float-filters.json.
+The additional contract is committed before the production conversion.
