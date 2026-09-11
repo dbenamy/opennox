@@ -27,5 +27,5 @@ line): **140,442 lines**, 153 production C files, zero reference C. Default, ser
 accumulated checks and all three ELF32/80386 production builds pass. Fresh
 floor-eligibility-port gameplay passed both preserved screenshot checks with
 overrides disabled. The immediately preceding grid
-chunk matched the exact full-suite baseline; this small owner change will use
-accumulated targeted checks and gameplay rather than repeating that full suite.
+chunk matched the exact full-suite baseline; this small owner change used
+accumulated targeted checks and gameplay without repeating that full suite.

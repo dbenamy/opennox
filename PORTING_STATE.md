@@ -20,9 +20,11 @@ overrides off. Artifacts: build/port-floor-eligibility. No validation is running
 The preceding grid chunk matched the exact known full-suite baseline: 1,553
 failure entries, 15 passing/3 known failing/32 skipped-no-test packages.
 
-Next: review the random-walk direction 545090 baseline draft under ignored
-build/port-walk-direction. A bounded agent is drafting tests and a C-caller
-benchmark; production remains C. Verify RNG consumption, signed direction wrap,
+Next: follow the throughput revision in CODEX_HANDOFF.md: select a connected
+behavior batch rather than another isolated helper. Review the direction
+545090 baseline draft under ignored
+build/port-walk-direction. The bounded agent finished its fixture/test draft; primary review remains,
+and the C-caller benchmark is not yet implemented. Production remains C. Verify RNG consumption, signed direction wrap,
 PC53 point arithmetic, flag short circuit, tile-6 rotation and state restoration.
 Measure caller cost before adopting the port. One remaining C caller is
 mobActionRandomWalk545020. No user question pending. Keep separate

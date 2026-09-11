@@ -18,9 +18,10 @@ overrides off. Artifacts: build/port-floor-eligibility. No validation is running
 The preceding grid chunk matched the exact known full-suite baseline: 1,553
 failure entries, 15 passing/3 known failing/32 skipped-no-test packages.
 
-Next: review the random-walk direction 545090 baseline draft under ignored
-build/port-walk-direction. A bounded agent is drafting tests and a C-caller
-benchmark; production remains C. Verify RNG consumption, signed direction wrap,
+Next: apply the throughput revision below; review the random-walk direction
+545090 baseline draft under ignored
+build/port-walk-direction. The bounded agent finished its fixture/test draft; primary review remains,
+and the C-caller benchmark is not yet implemented. Production remains C. Verify RNG consumption, signed direction wrap,
 PC53 point arithmetic, flag short circuit, tile-6 rotation and state restoration.
 Measure caller cost before adopting the port. One remaining C caller is
 mobActionRandomWalk545020. No user question pending. Keep separate
@@ -32,6 +33,40 @@ with porttest, server porttest, highres porttest from src. Continue one reviewed
 tested, documented, committed and pushed chunk at a time until a substantive
 question or rate limit. Bounded agent drafts require primary review.
 <!-- /current-focus -->
+
+## Throughput revision — 2026-09-11
+
+The user challenged the rate of progress. Recorded production C reduction is
+2,223 physical lines (142,665 to 140,442), but helper-by-helper qualification has
+too much fixed overhead. This revision supersedes the earlier default of treating
+each leaf as a separately qualified conversion chunk.
+
+- Select connected behavior batches, normally several hundred C lines (roughly
+  300–1,000 when dependencies permit), rather than a LOC quota or isolated leaves.
+  Move callers with helpers where practical to retire internal C/Go boundaries.
+- Establish a recoverable C baseline at the batch boundary. Reuse one stateful
+  fixture across related functions. Keep discriminating boundary, mutation, RNG,
+  layout and arithmetic checks; case count alone is not a quality measure.
+- During implementation, run focused tests for affected behavior. At the completed
+  batch boundary, run accumulated port tests, relevant variants, all production
+  builds and the relevant gameplay scenario. Run the full suite at subsystem
+  milestones or when shared infrastructure changes. Broaden sooner for evidence
+  of risk; do not repeat the complete matrix for each tiny internal helper.
+- Keep small reviewable commits and push recovery checkpoints. One batch-level
+  document/checkpoint/count update replaces repeated long helper reports. Report
+  C LOC after every completed batch, as requested.
+- Benchmark meaningful caller paths when a batch changes boundaries or hot math.
+  Do not block every tiny helper on a separate benchmark or optimize unused ABIs.
+- Use the primary agent and at most one bounded helper when it saves work. Avoid
+  parallel agent fleets and count draft correction/review as part of their cost.
+- Pilot this on the next connected batch. Record C removed, boundaries retired,
+  implementation/review/validation effort and failures found before projecting
+  throughput. Do not promise a completion date from raw physical LOC.
+
+Next selection: assess the connected random-walk/confusion and facing-action
+family, including its registration/caller boundaries. The existing walk-direction
+draft is reusable evidence, not a requirement to ship another isolated helper.
+Do not build a general test framework before demonstrating reuse in this batch.
 
 ## Current plan — revised 2026-09-10
 
