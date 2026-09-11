@@ -3,10 +3,12 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-11
 
-Collision reflection 57B810 and containment 57B850 are complete. Production C
-is 141,000 physical lines (−42), with exact original-386 raw-bit/precision tests.
-Next assess line projection 57C790/57C8A0 using the ignored raw fixture draft and
-disassembly under build/port-line-projection; neither fixture nor port is installed.
+Line projection 57C790/57C8A0 is complete. Production C is 140,903 physical
+lines (−97), with 21,656 exact original-386 cases including raw floating-point
+bits and overlapping buffers. All three test/build variants, fresh gameplay,
+and exact full-suite baseline comparison pass.
+Next install/review the ignored durability classifier 57B190 fixture draft
+under build/port-durability, establish its original-C baseline, then port it.
 Both approved writer/alias fixes are complete; no user decision is pending.
 Keep 57ADF0 list cleanup with its future GUI-owner port.
 Use PORTING_STATE.md's top resume section for current verification and next steps.

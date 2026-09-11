@@ -34,3 +34,31 @@ Disassembly, rather than decompiler local types, determines intermediate roundin
 
 All cases pass against original C before replacement. Production C before this
 chunk: **141,000 physical lines**, 153 files, zero reference C.
+
+## Native implementation
+
+The two C entries now bridge to Go. Finite arithmetic follows the verified PC53
+stages above. Narrow private arithmetic/load/store helpers preserve x87 NaN sign
+and payload: float32 loads quiet signaling NaNs; two NaNs select the larger
+significand and positive sign on ties; invalid operations produce negative
+canonical quiet NaN. This matters with this environment's GO386=softfloat,
+whose ordinary conversions/arithmetic canonicalize NaNs to positive zero-payload
+quiet NaN. An independent local x87 instruction probe verified propagation and
+invalid-operation results under control word 0x027f.
+
+Before this compatibility handling, all 6,681 differing output words were NaN
+representations: no finite numeric value or return differed. Afterward all 21,656
+cases match the unchanged original-C fixture exactly. No tolerance or fixture
+regeneration was used. Original-C baseline is recoverable at `7947f8ca`.
+
+## Validation and source size
+
+Accumulated protection/network/waypoint/rules/spell-class/ping/glyph/collision/
+projection tests pass in default, server, and highres 386 variants. All three
+production ELF32 binaries build. Fresh `line-projection-port` headless gameplay
+passes both preserved screenshot checks with overrides disabled. The full suite
+has the exact prior 1,553 failure-entry multiset (15 passing, 3 known failing,
+32 skipped/no-test packages). Logs/binaries are under build/port-line-projection.
+
+Production C: **140,903 physical lines**, 153 files, **−97** from 141,000.
+Reference C: **0**. Both remaining C callers keep their ABI bridges.

@@ -5,48 +5,29 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-11
 
-Latest completed chunk: collision reflection 57B810 and containment 57B850.
-Both live C entries now execute private Go helpers. Production C is **141,000
-physical lines** in 153 files, zero reference C. Original-C baseline: f85e37ee,
-127,684 operations. Reflection checks exact bits/overlap/NaN quieting; containment
-uses analytic cases and an asset-free 6,713-byte original-C bitset. A float32
-intermediate model mismatches 42 random cases; the float64 port matches all.
-See [collision primitives](docs/porting/COLLISION_PRIMITIVES.md) and
-[counts](docs/porting/C_LOC.md). No user decision is pending.
+Latest completed chunk: line projection 57C790/57C8A0. Original-C baseline `7947f8ca`
+contains 21,656 analytic/IEEE/raw/overlap cases and a 259,872-byte asset-free
+fixture. Native implementation now matches every return and output bit.
+Production C: **140,903 physical lines** (−97), 153 files,
+zero reference C. Previous chunk: collision `910ecbab`.
 
-All accumulated protection/network/waypoint/rules/spell-class/ping/glyph/collision
-tests pass on 386 default/server/highres. All three binaries build. Fresh
-collision-primitives-port gameplay passes both preserved screenshots with
-overrides disabled. Full suite exactly matches the known baseline: 15 passing,
-3 known failing, 32 skipped/no-test packages and identical 1,553 failure entries.
-Artifacts: build/port-collision-primitives. No validation processes remain running.
+Finite arithmetic follows disassembled PC53 spill points, with output/input
+aliasing preserved. Explicit NaN load/store/propagation preserves x87 behavior
+under GO386=softfloat. See [projection](docs/porting/LINE_PROJECTION.md).
+The full suite exactly matches the known baseline: 15 passing, 3 known failing,
+32 skipped/no-test packages, identical 1,553 failure entries. Artifacts:
+build/port-line-projection. All three accumulated test variants and production builds pass. Fresh
+line-projection-port gameplay passes both preserved screenshot checks with
+overrides disabled. No validation processes remain running.
 
-Next: line projection 57C790/57C8A0. Fixtures and independent tests are installed. Original-C baseline passes
-21,656 cases; exact return/output bits are saved in asset-free
-src/testdata/porting/line_projection.bin. Local artifacts: build/port-line-projection. Disassembly: projection.asm and point_on_line.asm in its
-parent artifact directory. C790 sole caller GAME5.c:2154 supplies length32;
-C8A0 sole C caller GAME4_1.c:2941. Keep both C entries. Existing server.PointOnTheLine
-has different rounding and separate Go callers; do not silently substitute it.
-
-Primary disassembly notes: C790 computes dx/dy/dot and length squared at PC53;
-rounds dx*dot/length² to float32 before adding old X, stores output X as float32
-but retains its wider sum for clamp comparison. Computes Y using line Y reloaded
-AFTER storing output X, rounds the final Y before storing and comparing. Bounds
-reload endpoints after both output stores, so output/line overlap is observable.
-C8A0 rounds denominator dx²+dy² to float32, computes output X with full dot,
-rounds/reloads/stores X, then rounds dot to float32 for Y multiplication. Y adds
-line Y reloaded after output X and stores float32 while retaining the wider Y
-for its inclusive bounds test. Validate this stack interpretation with original
-C outputs; don't rely only on decompiler float declarations. Include aliasing,
-degenerate segments, zero length, signed zeros, nonfinite/extreme inputs and exact
-output bits/return values; snapshots must verify only the two output words change.
-
-Keep 57ADF0 list cleanup with its future GUI-owner port: GUI options teardown
-still propagates its first freed pointer. Preserve existing separate Go reflection
-and object containment behavior during these C-caller conversions.
+Next candidate: durability classifier sub_57B190. Bounded fixture draft is available under ignored build/port-durability. Preserve its live C callers and
+shared threshold reads; cover all uint16 maxima at quarter/half/equality edges.
+No user decision is pending. Both approved writer/alias fixes are complete.
+Keep 57ADF0 list cleanup with its future GUI-owner port, and preserve existing
+separate server.PointOnTheLine behavior.
 
 Test from src with baseline environment: `go test -tags porttest -count=1
--run '^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision)' .`;
+-run '^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection)' .`;
 repeat server/highres. Preserve untracked asset archive.
 
 Continue through tests, docs/C LOC, commit, push and a user update per chunk,

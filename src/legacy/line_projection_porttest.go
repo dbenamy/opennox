@@ -50,7 +50,7 @@ func portTestProjectionWords(words []uint32) (all, data, guards []uint32, free f
 	return all, data, guards, free
 }
 
-// PortTestLineProjection calls the original C helpers and returns raw storage
+// PortTestLineProjection calls the live C ABI entries and returns raw storage
 // after the call. It deliberately supplies no numeric oracle.
 func PortTestLineProjection(specs []PortTestLineProjectionSpec) []PortTestLineProjectionSnapshot {
 	out := make([]PortTestLineProjectionSnapshot, 0, len(specs))
