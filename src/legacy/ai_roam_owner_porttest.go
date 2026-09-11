@@ -20,13 +20,15 @@ type PortTestRoamOwnerSpec struct {
 
 type portTestRoamOwnerServer struct {
 	portTestRandomServer
-	pathEndpoints [2]*server.Waypoint
-	endpointCall  int
-	generator     int
-	mode          byte
-	precheck      bool
-	fallback      *server.Waypoint
-	trace         []uint32
+	combat           *portTestCombatState
+	combatProjectile *server.Object
+	pathEndpoints    [2]*server.Waypoint
+	endpointCall     int
+	generator        int
+	mode             byte
+	precheck         bool
+	fallback         *server.Waypoint
+	trace            []uint32
 }
 
 func (s *portTestRoamOwnerServer) Nox_xxx_creatureSetDetailedPath_50D220(u *server.Object, p *types.Pointf) {

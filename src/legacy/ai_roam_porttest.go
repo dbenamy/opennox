@@ -20,6 +20,7 @@ import (
 )
 
 type PortTestRoamSpec struct {
+	Combat                     *PortTestCombatSpec
 	Path                       *PortTestPathSpec
 	Navigation                 *PortTestNavigationSpec
 	GuardEscort                *PortTestGuardEscortSpec
@@ -33,8 +34,9 @@ type PortTestRoamSpec struct {
 	Enabled                    [34]bool
 }
 type PortTestRoamResult struct {
-	Nanos              int64    `json:"-"`
-	Trace              []uint32 `json:",omitempty"`
+	Combat             *PortTestCombatResult `json:",omitempty"`
+	Nanos              int64                 `json:"-"`
+	Trace              []uint32              `json:",omitempty"`
 	History            [16]byte
 	Index, Arg, Field2 uint32
 	Return             int
@@ -87,6 +89,13 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 	defer restoreTypes()
 	oldGet, oldFlags := GetServer, noxflags.GetEngine()
 	proxy := &portTestRoamOwnerServer{portTestRandomServer: portTestRandomServer{core: core}}
+	for _, sp := range specs {
+		if sp.Combat != nil {
+			restore := portTestCombatEnvironment(proxy)
+			defer restore()
+			break
+		}
+	}
 	GetServer = func() Server { return proxy }
 	noxflags.UnsetEngine(noxflags.EngineShowAI)
 	defer func() { GetServer = oldGet; noxflags.ResetEngine(); noxflags.SetEngine(oldFlags) }()
@@ -114,6 +123,13 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		return uint32(uintptr(unsafe.Pointer(&wb[int(id)*stride+8])))
 	}
 	ids := map[uint32]uint32{0: 0, uint32(uintptr(unsafe.Pointer(target))): 100}
+	if proxy.combat != nil {
+		ids[uint32(uintptr(unsafe.Pointer(obj)))] = 101
+		ids[uint32(uintptr(unsafe.Pointer(proxy.combat.weapon)))] = 102
+		for i, b := range proxy.combat.extra {
+			ids[uint32(uintptr(unsafe.Pointer(&b[8])))] = uint32(400 + i)
+		}
+	}
 	var configurePlayers func(int)
 	playersUnchanged := func() bool { return true }
 	for _, sp := range specs {
@@ -257,6 +273,10 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		if sp.Navigation != nil {
 			portTestNavigationPrepare(proxy, obj, target, health, sp.Navigation)
 		}
+		if sp.Combat != nil {
+			portTestCombatPrepare(proxy, obj, target, health, sp.Combat)
+			configureWalls(sp.Combat.Wall)
+		}
 		if sp.Path != nil {
 			configureWalls(sp.Path.Wall)
 			portTestPathPrepare(proxy, obj, sp.Path, raw)
@@ -269,7 +289,11 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		beforeH := bytes.Clone(hb)
 		ret := 0
 		var nanos int64
+		var combatResult *PortTestCombatResult
 		switch sp.Op {
+		case 10:
+			portTestCombatCall(obj, sp.Combat)
+			combatResult = portTestCombatTrace(proxy, normalize)
 		case 0:
 			server.GetAIAction(ai.ACTION_ROAM).Start(obj)
 		case 1:
@@ -305,7 +329,7 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		default:
 			panic("invalid roam operation")
 		}
-		if sp.Navigation != nil && !bytes.Equal(tb, beforeT) {
+		if (sp.Navigation != nil || sp.Combat != nil) && !bytes.Equal(tb, beforeT) {
 			for j := 8; j < len(tb)-8; j += 4 {
 				if get(tb, j) != get(beforeT, j) {
 					proxy.trace = append(proxy.trace, 0xff000000+uint32(j-8), get(tb, j))
@@ -326,11 +350,14 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 				}
 			}
 		}
-		r := PortTestRoamResult{Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT) && playersUnchanged() && bytes.Equal(scriptName, beforeName) && bytes.Equal(hb, beforeH)}
+		r := PortTestRoamResult{Combat: combatResult, Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT) && playersUnchanged() && bytes.Equal(scriptName, beforeName) && bytes.Equal(hb, beforeH)}
 		if sp.Navigation != nil || sp.Path != nil {
 			for _, off := range offsets {
 				r.Trace = append(r.Trace, uint32(off), normalize(*memmap.PtrUint32(0x5D4594, off)))
 			}
+		}
+		if combatResult != nil {
+			r.Intact = r.Intact && combatResult.Intact && wallsUnchanged()
 		}
 		if sp.Path != nil {
 			r.Changes = append(r.Changes, pathChanges...)

@@ -81,6 +81,9 @@ and ELF32/SSE2 builds pass in all three configurations. Full suite matches
 exactly 1,553 known failures. Fresh ai-path-execution-port gameplay passes both
 preserved screenshots, overrides off. No validation remains. Next: grouped
 combat actions with recorded script/audio/strike/projectile effects.
+Combat original C now passes 17,408 generated cases and 170 independent contracts.
+See docs/porting/AI_COMBAT.md. Native draft is in build/port-ai-combat/ai_combat.go;
+next install native registry, remove the 18 C bodies, and qualify the full batch.
 See docs/porting/AI_GUARD_ESCORT.md; ignored drafts/audits are in
 build/port-guard-escort. User approved this more aggressive grouping. The roaming
 update is fully qualified, committed and pushed as fdb075f6. No question pending.
