@@ -21,9 +21,9 @@ overrides disabled. Full suite exactly matches the known baseline: 15 passing,
 3 known failing, 32 skipped/no-test packages and identical 1,553 failure entries.
 Artifacts: build/port-collision-primitives. No validation processes remain running.
 
-Next: line projection 57C790/57C8A0. Ignored fixture draft is under
-build/port-line-projection/draft/src/legacy/line_projection_porttest.go; not
-installed/tested yet. Disassembly: projection.asm and point_on_line.asm in its
+Next: line projection 57C790/57C8A0. Fixtures and independent tests are installed. Original-C baseline passes
+21,656 cases; exact return/output bits are saved in asset-free
+src/testdata/porting/line_projection.bin. Local artifacts: build/port-line-projection. Disassembly: projection.asm and point_on_line.asm in its
 parent artifact directory. C790 sole caller GAME5.c:2154 supplies length32;
 C8A0 sole C caller GAME4_1.c:2941. Keep both C entries. Existing server.PointOnTheLine
 has different rounding and separate Go callers; do not silently substitute it.
