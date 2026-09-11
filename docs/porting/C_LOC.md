@@ -78,6 +78,7 @@ target build selection and linker evidence.
 | Weapon/armor equipment, modifier dispatch and shield selection (2026-09-11) | 149 | 128,081 | −972 | 0 |
 | Modifier effects, recharge and wand use (2026-09-11) | 149 | 127,104 | −977 | 0 |
 | Temporary objects, projectile updates and Spark creation (2026-09-11) | 149 | 126,124 | −980 | 0 |
+| World mechanisms, elevators/teleports and directional force (2026-09-11) | 149 | 125,303 | −821 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

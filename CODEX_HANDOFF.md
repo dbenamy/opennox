@@ -17,30 +17,38 @@ SSE2, CGO enabled. Full-suite failure multiset unchanged (1,553 entries; 15 pass
 captures/logs/builds: build/port-temporary-updates; gameplay run: temporary-updates-port.
 Completed and pushed as `8f96bbc6`; summary delivered. Continue the next batch.
 
-### Active — world-object mechanism baseline locked
+### Completed — world mechanisms
 
-21 functions / 821 C lines, still original C: door and queued angle helpers,
-toggle/trigger/switch, elevator/shaft movement and audio, pentagrams/teleport
-callbacks, push/blow, phantom and trap-door updates. See
-[WORLD_MECHANISMS.md](docs/porting/WORLD_MECHANISMS.md).
+Original-C baselines `55524613` and `3b82ae2f` preceded conversion. 21 functions /
+821 C lines now live in legacy/world_states.go, world_movement.go and
+world_exports.go. Production C: **125,303 lines / 149 files / zero reference C**.
+All **2,003 cases / 15 full capture groups** match original C (6.774s final).
+See [WORLD_MECHANISMS.md](docs/porting/WORLD_MECHANISMS.md) for scope and findings.
 
-**1,979 cases / 14 groups** repeated byte-for-byte in C (5.533s / 5.167s); hashes
-locked. Prior **20,314** focused contracts unchanged (58.421s). Final locked test
-in build/port-world-mechanisms/c-locked.log; commit/push baseline BEFORE converting.
-Stable full captures: c-locked-{source,repeat}-world-*.json; original C bodies:
-build/port-world-mechanisms/scope.json (all addresses also tracked in the doc).
+Accumulated default/server/highres tests, including all 22,317 focused cases,
+pass (139.079s / 119.557s / 119.801s). Three production builds verified ELF32/i386,
+SSE2, CGO enabled. Full-suite failures unchanged (1,553 entries; 15 packages pass,
+3 fail, 32 skip). Fresh unchanged repeat-a gameplay passes in 56.701s. Evidence:
+build/port-world-mechanisms and baseline/runs/world-mechanisms-port.
+Commit/push completed conversion, summarize and CONTINUE; no pending question.
 
-Fixture review supplies finite mass, real platform coordinates, indexed ordinary
-objects for circle callbacks, real player data, guarded collision storage, saved
-queues/type caches, and original absolute-value scratch relocation. Positive
-assertions cover script identities, actual direct/owner movement, teleportation
-and force. Aligned callback recorder stabilizes pointer-derived char returns.
+### Next — objective objects and obelisk recharge
 
-Next: port the complete family and private helpers, preserve original observable
-float casts and return words, compare all captures/previous contracts. Qualify
-once, update C_LOC, commit/push, summarize and CONTINUE. No pending user question;
-no new agents. Preserve archive and stable evidence; full-suite raw output can
-contain secrets, so print only action/package/test metadata.
+Audited 12 functions / 732 C lines, still original C: obelisk, flag, ball, crown
+updates; flag pickup/identity; ball owner, pickup, home-base scoring and reset;
+crown pickup dispatch. Scope/plan: build/port-objectives/{scope.json,plan.md}.
+Keep unrelated map-mode initialization in its own later family.
+
+Reuse guarded player/item, team, event, spatial and creation fixtures. Add
+optional objective state/list/type setup and a restored PlatformTicks override.
+Its C ABI is unsigned 32-bit although ball UD stores uint64; test widening,
+20,000ms boundary and wrap. Obelisk requires FPS>=2. Include positive score,
+possession, spawn, movement and energy/mana-transfer assertions.
+
+Repeat/lock/push original C captures BEFORE conversion. Convert callers/helpers
+together, qualify once at the boundary, update C_LOC, commit/push and continue.
+No new agents; preserve archive and stable evidence. Full-suite raw output may
+contain secrets; print only action/package/test metadata.
 
 <!-- /current-focus -->
 

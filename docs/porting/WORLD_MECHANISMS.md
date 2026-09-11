@@ -106,3 +106,25 @@ Two C captures repeat exactly (0.119s / 0.117s), and native-reviewed matches the
 full bytes. Original 14 capture groups remain byte-identical as well. Total:
 **2,003 cases / 15 groups**. Evidence: c-filter-{first,repeat}-world-float-filters.json.
 The additional contract is committed before the production conversion.
+
+## Native implementation and qualification
+
+All 21 functions now live in legacy/world_states.go and world_movement.go.
+Private door-angle queue calls and spatial callbacks invoke Go directly; thin
+exports preserve all original C entry points and registration identities.
+The conversion removes **821 C lines**, leaving **125,303 lines / 149 files /
+zero reference C**. Original C remains recoverable from the baseline commits.
+
+Final native captures match every original-C byte for all 2,003 cases / 15 groups
+(6.774s). Review preserved the blow filter's numeric float-to-byte conversion,
+float-to-uint32 class filters, unsigned-short angle wrapping, byte/int returns,
+and the shaft's height reload after movement. The original absolute-value helper
+remains a real dependency, including its observable scratch storage.
+
+All three production binaries built and were verified as ELF32/i386, SSE2,
+CGO enabled. The full-suite failure multiset is unchanged: 1,553 entries,
+15 packages pass, 3 fail, 32 skip. Fresh unchanged repeat-a gameplay passed in
+56.701s using Xvfb, null audio, and overrides disabled. Accumulated default tests
+and server/highres tests passed in 139.079s / 119.557s / 119.801s,
+including all 22,317 focused family cases. Local evidence is in
+build/port-world-mechanisms and build/baseline/runs/world-mechanisms-port.
