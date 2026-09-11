@@ -21,9 +21,9 @@ known 1,553 failure-entry multiset: 15 passing/3 known failing/32 skipped-no-tes
 packages. Artifacts: build/port-waypoint-append. No validation processes remain
 running.
 
-Next: tile-selection quartet 51D4D0/51D540/51D570/51D5C0 in GAME4_1.c. Fixture
-is being drafted under ignored build/port-tile-selection; a native draft is
-also there. Neither is installed. Name lookup scans all 176 physical entries,
+Next: tile-selection quartet 51D4D0/51D540/51D570/51D5C0 in GAME4_1.c. Reviewed fixture/tests are installed; original-C baseline passes
+459,124 checks (build/port-tile-selection/c-baseline.log). Native draft remains
+ignored and not installed yet. Name lookup scans all 176 physical entries,
 not nox_tile_def_cnt, last duplicate wins, NONE overrides selection to 255.
 Preserve the shared C locale-aware nox_strcmpi dependency in this chunk. Numeric
 selection accepts 0..175; variation accepts negative values if <=width*height−1,
