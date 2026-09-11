@@ -27,6 +27,8 @@ const portTestEdgeMapBase, portTestEdgeMapWords = 282736, 144
 type PortTestEdgeDirectSpec struct {
 	Width, Height byte
 	Edge          int32
+	Index         int32
+	Normalize     bool
 }
 type PortTestEdgeMapSpec struct {
 	Width, Height                        byte
@@ -112,9 +114,19 @@ func PortTestEdgeMapping(seed int, direct []PortTestEdgeDirectSpec, mapped []Por
 	}
 	out.LogicBefore, out.OtherBefore = core.Rand.Logic.Index(), core.Rand.Other.Index()
 	for _, s := range direct {
-		table[52], table[53] = s.Width, s.Height
-		wantTable[52], wantTable[53] = s.Width, s.Height
-		out.Direct = append(out.Direct, PortTestEdgeResult{Result: int32(C.nox_xxx_mapGenEdge_543EB0(0, C.int(s.Edge))), LogicIndex: core.Rand.Logic.Index(), OtherIndex: core.Rand.Other.Index()})
+		if s.Index < 0 || s.Index >= portTestEdgeRows {
+			panic("invalid edge row")
+		}
+		off := int(s.Index) * portTestEdgeRowSize
+		table[off+52], table[off+53] = s.Width, s.Height
+		wantTable[off+52], wantTable[off+53] = s.Width, s.Height
+		var result C.int
+		if s.Normalize {
+			result = C.sub_411490(C.int(s.Index), C.int(s.Edge))
+		} else {
+			result = C.nox_xxx_mapGenEdge_543EB0(C.int(s.Index), C.int(s.Edge))
+		}
+		out.Direct = append(out.Direct, PortTestEdgeResult{Result: int32(result), LogicIndex: core.Rand.Logic.Index(), OtherIndex: core.Rand.Other.Index()})
 		check()
 	}
 	for _, s := range mapped {

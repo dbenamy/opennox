@@ -41,7 +41,7 @@ Both live ABI entries now execute Go. The generator preserves the existing Logic
 RNG helper and fixed int32 arithmetic; merge retains the C normalization call,
 sentinel early return, and writes only when the value changes. Production
 C is **140,613 physical lines (−59)**, 153 files, zero reference C. All 1,145,856 focused calls match the C baseline. Accumulated default/server/
-highres tests pass, all three production binaries build as ELF32 Intel80386,
+highres tests pass, all three production binaries build as ELF32 Intel 80386,
 and fresh edge-mapping-port gameplay passes both preserved screenshot checks
 with overrides off. The preceding border chunk verified the full suite's exact
-known1,553 failure-entry multiset; this immediately following chunk did not repeat it.
+known 1,553 failure-entry multiset; this immediately following chunk did not repeat it.
