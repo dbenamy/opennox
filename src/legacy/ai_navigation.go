@@ -164,14 +164,14 @@ func navigationFlee(u *server.Object) {
 			ud.Field2 = 0
 		}
 		if monsterCanCast(u) && !u.HasEnchant(29) && !monsterAggressionLow(u) && !u.Sub_534440() {
-			var cast C.int
+			var cast bool
 			if ud.HasAction(ai.ACTION_RETREAT) {
-				cast = C.nox_xxx_mobCastRelated_541050(C.int(uintptr(u.CObj())))
+				cast = monsterCastRelated(u)
 			} else {
-				cast = C.nox_xxx_monsterBuffSelf_540B90(C.int(uintptr(u.CObj())))
+				cast = monsterBuffSelf(u)
 			}
-			if cast == 0 && core.CanInteract(u, ud.CurrentEnemy, 0) {
-				C.nox_xxx_monsterCastOffensive_540F20(C.int(uintptr(u.CObj())), C.int(uintptr(ud.CurrentEnemy.CObj())))
+			if !cast && core.CanInteract(u, ud.CurrentEnemy, 0) {
+				monsterCastOffensive(u, ud.CurrentEnemy)
 			}
 		}
 	}
@@ -217,7 +217,7 @@ func navigationRetreat(u *server.Object) {
 		return
 	}
 	if ud.CurrentEnemy != nil {
-		if u.HasEnchant(29) || C.nox_xxx_mobCastRelated_541050(C.int(uintptr(u.CObj()))) == 0 {
+		if u.HasEnchant(29) || !monsterCastRelated(u) {
 			core := GetServer().S()
 			if st := u.MonsterPushAction(ai.ActionType(41)); st != nil {
 				st.Args[0] = uintptr(core.Frame() + uint32(nox_common_randomInt_415FA0(int(4*core.TickRate()), int(6*core.TickRate()))))

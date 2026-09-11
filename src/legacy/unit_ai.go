@@ -152,8 +152,8 @@ func Sub_5466F0(a1 *server.Object) int {
 	return investigateHeardSound(a1)
 }
 func Nox_xxx_mobHealSomeone_5411A0(a1 *server.Object) {
-	C.nox_xxx_mobHealSomeone_5411A0(asObjectC(a1))
+	monsterHealSomeone(a1)
 }
 func Nox_xxx_mobActionCast_5413B0(a1 *server.Object, a2 int) {
-	C.nox_xxx_mobActionCast_5413B0(asObjectC(a1), C.int(a2))
+	monsterActionCast(a1, a2)
 }

@@ -14,6 +14,7 @@ import (
 	"unsafe"
 
 	"github.com/opennox/libs/object"
+	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -194,44 +195,51 @@ func portTestAISpellPrepare(proxy *portTestRoamOwnerServer, u *server.Object, sp
 	}
 }
 func portTestAISpellCall(proxy *portTestRoamOwnerServer, u *server.Object, sp *PortTestAISpellSpec) uint32 {
-	p, t := combatPtr(u), combatPtr(proxy.combat.target)
+	t := proxy.combat.target
 	if sp.SelfTarget {
-		t = p
+		t = u
 	}
-	a := &proxy.spells.words[1]
-	out := &proxy.spells.words[5]
+	a := (*[3]uint32)(unsafe.Pointer(&proxy.spells.words[1]))
+	out := (*types.Pointf)(unsafe.Pointer(&proxy.spells.words[5]))
+	asWord := func(v bool) uint32 {
+		if v {
+			return 1
+		}
+		return 0
+	}
 	switch sp.Op {
 	case 0:
-		return uint32(C.sub_5408A0(p))
+		return asWord(monsterCastBusy(u))
 	case 1:
-		return uint32(C.nox_xxx_mobCastInversion_5408D0(p))
+		return asWord(monsterCastInversion(u))
 	case 2:
-		C.nox_xxx_unitIsMagicMissile_540B60(t, p)
+		monsterMagicMissile(t, u)
 	case 3:
-		return uint32(C.nox_xxx_monsterBuffSelf_540B90(p))
+		return asWord(monsterBuffSelf(u))
 	case 4:
-		return uint32(C.sub_540CE0(p, C.int(sp.Spell)))
+		return asWord(monsterSpellEnchantActive(u, spell.ID(sp.Spell)))
 	case 5:
-		return uint32(C.sub_540D20(C.int(sp.Spell)))
+		return asWord(monsterSummonSpell(spell.ID(sp.Spell)))
 	case 6:
-		return uint32(C.sub_540D40(p))
+		return asWord(monsterSummonActive(u))
 	case 7:
-		return uint32(C.nox_xxx_mobCastRelated2_540D90(p, t))
+		return asWord(monsterCastRelated2(u, t))
 	case 8:
-		return uint32(C.nox_xxx_monsterCastOffensive_540F20(p, t))
+		return asWord(monsterCastOffensive(u, t))
 	case 9:
-		return uint32(C.nox_xxx_mobCastRelated_541050(p))
+		return asWord(monsterCastRelated(u))
 	case 10:
-		return uint32(C.nox_xxx_mobHealSomeone_5411A0(asObjectC(u)))
+		return asWord(monsterHealSomeone(u))
 	case 11:
-		C.nox_xxx_mobMayHealThis_5412A0((*C.float)(unsafe.Pointer(uintptr(t))), p)
+		monsterHealCandidate(t, u)
 	case 12:
-		C.nox_xxx_mobCast_541300(C.int(sp.Spell), (*C.uint32_t)(u.CObj()), C.int(uintptr(unsafe.Pointer(a))))
+		monsterCastSpell(sp.Spell, u, a)
 	case 13:
-		C.nox_xxx_mobActionCast_5413B0(asObjectC(u), C.int(sp.Mode))
+		monsterActionCast(u, sp.Mode)
 	case 14:
-		C.nox_xxx_mobCastRandomRecoil_541490(p, (*C.float)(unsafe.Pointer(uintptr(t))), (*C.float2)(unsafe.Pointer(out)))
+		monsterCastRecoil(u, t, out)
 	}
+
 	return 0 // private char/pointer scratch results are unused by every caller.
 }
 func portTestAISpellTrace(proxy *portTestRoamOwnerServer, u *server.Object, rv uint32, normalize func(uint32) uint32) *PortTestAISpellResult {

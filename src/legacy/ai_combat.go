@@ -115,7 +115,7 @@ func combatMissileChain(u, t *server.Object) {
 	}
 }
 func combatChoose(u, t *server.Object) {
-	if u.Buffs&(1<<29) == 0 && C.nox_xxx_mobCastRelated2_540D90(combatPtr(u), combatPtr(t)) != 0 {
+	if u.Buffs&(1<<29) == 0 && monsterCastRelated2(u, t) {
 		return
 	}
 	if monsterCanShoot(u) {
@@ -153,7 +153,7 @@ func combatFight(u *server.Object) {
 			u.MonsterPopAction()
 			return
 		}
-		if u.Buffs&(1<<29) != 0 || (C.nox_xxx_monsterBuffSelf_540B90(combatPtr(u)) == 0 && C.nox_xxx_monsterCastOffensive_540F20(combatPtr(u), combatPtr(t)) == 0) {
+		if u.Buffs&(1<<29) != 0 || (!monsterBuffSelf(u) && !monsterCastOffensive(u, t)) {
 			combatChoose(u, t)
 		}
 		return

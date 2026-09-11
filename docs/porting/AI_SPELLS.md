@@ -33,3 +33,30 @@ Reproduce with build/baseline/env.sh loaded, from src:
 OPENNOX_SPELL_CAPTURE writes optional ignored snapshots; OPENNOX_SPELL_CASE narrows
 generated cases. Artifacts and assembly: build/port-ai-spells. Production C at this
 checkpoint is unchanged: **136,741 physical lines**, 153 files, zero reference C.
+
+## Native conversion
+
+Original-C checkpoint: `326f2a08`. All fifteen C bodies and their prototypes are
+removed; `legacy/ai_spells.go` owns selection, scans, healing and cast execution.
+Main-AI, combat, navigation and action wrappers call Go directly. No C exports or
+reference C were needed. The shared selector preserves candidate order and the
+post-callback cooldown reads. Cast arguments remain C-owned across retained
+engine callbacks. Healing retains its shared selected-target global and original
+integer half-health comparison and last-qualifying-target behavior.
+
+The native focused run matches both locked hashes and all 172 contracts,
+including every recoil bit pattern. Production C is **136,242 physical lines**,
+a reduction of **499**, across 153 files; zero test-reference C remains.
+
+## Qualification
+
+Accumulated port tests pass in default (70.907s), server (41.240s) and highres
+(42.561s) configurations. All three production binaries build and report ELF32,
+Intel 80386 and GO386=sse2. The full-suite comparison has exactly the same 1,553
+failure entries as baseline: 15 passing, 3 failing and 32 skipped packages, with
+no added or removed failures. Fresh headless `ai-spell-port` gameplay exits 0
+against both preserved screenshots with overrides disabled and null audio.
+
+Next larger batch: MonsterDef callback loading, strikes, death effects and loot,
+GAME5 549040–54A950 (948 physical C lines, stopping before geometry 54A990).
+Use separate focused contract groups within one final qualification cycle.

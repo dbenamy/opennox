@@ -184,7 +184,7 @@ func monsterMainAI(u *server.Object) {
 		head = u.MonsterPushAction(ai.ActionType(62), 3)
 		u.MonsterPushAction(ai.ActionType(36))
 	}
-	if !u.HasEnchant(29) && C.nox_xxx_mobCastInversion_5408D0(combatPtr(u)) != 0 {
+	if !u.HasEnchant(29) && monsterCastInversion(u) {
 		return
 	}
 	if u.HasEnchant(11) && monsterMoving(u) && !ud.HasAction(24) {
@@ -202,7 +202,7 @@ func monsterMainAI(u *server.Object) {
 			u.Frame134 = core.Frame()
 		}
 	}
-	if !monsterAggressionRetreat(u) && monsterMoving(u) && C.sub_5408A0(combatPtr(u)) == 0 && !u.HasEnchant(3) && !monsterMoveAttempt(u) {
+	if !monsterAggressionRetreat(u) && monsterMoving(u) && !monsterCastBusy(u) && !u.HasEnchant(3) && !monsterMoveAttempt(u) {
 		if enemy := ud.CurrentEnemy; enemy != nil {
 			dist := float64(C.nox_xxx_calcDistance_4E6C00(asObjectC(u), asObjectC(enemy)))
 			if dist < float64(ud.FleeRange) {
@@ -211,7 +211,7 @@ func monsterMainAI(u *server.Object) {
 					// Keep it C-owned across that callback boundary.
 					args, freeArgs := alloc.New([3]uint32{})
 					*args = [3]uint32{uint32(uintptr(u.CObj())), math.Float32bits(u.PosVec.X), math.Float32bits(u.PosVec.Y)}
-					C.nox_xxx_mobCast_541300(4, (*C.uint32_t)(u.CObj()), C.int(uintptr(unsafe.Pointer(&args[0]))))
+					monsterCastSpell(4, u, args)
 					freeArgs()
 					ud.Field371 = core.Frame() + uint32(nox_common_randomInt_415FA0(int(ud.Field370_0), int(ud.Field370_2)))
 					return
