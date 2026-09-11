@@ -16,12 +16,16 @@ off. Full suite matches the exact known 1,553 failure-entry multiset:
 15 passing/3 known failing/32 skipped-no-test packages. No validation is running.
 Artifacts: build/port-tile-worklist.
 
-Next investigate border-selection 543FB0/544020/544070/5440A0. Ignored drafts
-under build/port-border-selection are not integrated or tested yet. Byte4 appears
-to validate against the input variation's row rather than the selected border's
-row. Reproduce false rejection/acceptance with realistic loader limits, prepare
-a reviewed repair, and ask the user about that behavior change if confirmed.
-No user decision has been requested yet; no border repair has been applied.
+Next: user decision on the confirmed border-selection wrong-row bug.
+Original-C baseline `dd4a9f69` reproduces false rejection and false acceptance
+through primary-then-variation calls. The repair passes focused border tests in
+all three variants, including 25,600 boundary calls, but is NOT adopted. Source
+and live tests are restored to original-C behavior. Reviewable patch and resume
+instructions: [border selection](docs/porting/BORDER_SELECTION.md). Ask whether
+to fix the behavior before porting; recommend the prepared selected-row repair.
+This question changes map-placement validation behavior. No user answer yet.
+No validation processes remain running. The prior ignored agent patch is only
+a draft; use the reviewed tracked docs/porting/proposals patch instead.
 Both previously approved writer/alias fixes are complete. Keep 57ADF0 cleanup
 with its GUI owner and preserve separate server.PointOnTheLine behavior.
 

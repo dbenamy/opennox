@@ -34,6 +34,22 @@ validate the selected row against positive signed active count and physical
 64-row capacity, then compare the nonnegative variation to that selected row's
 limit. This also avoids indexing the table with large variation arguments.
 
+Original-C baseline: `dd4a9f69`. The proposed regression fails against original
+C on the valid-variation case, demonstrating that it detects the wrong-row bug.
+The reviewable [repair patch](proposals/border-selection-selected-row.patch)
+contains the C repair, changed expectations for both reproductions, and 25,600
+boundary calls across active counts, selected IDs, flag values, row limits and
+variation values. The fixture's input/table/state/guard checks remain enabled.
+The proposed repair passes all focused border tests in default/server/highres
+386 variants. It was then removed from the working source; only the proposal
+patch is retained. Production builds, gameplay and full-suite validation are
+still required when adopting the repair and completing the port.
+
 The repair changes existing behavior and needs the user's decision before being
-adopted. Prepare and test a separate patch, retaining this original-C baseline.
-No repair is applied in this checkpoint. Local artifacts: build/port-border-selection.
+adopted. The tracked C implementation and live tests retain the original baseline;
+the patch is a proposal only. If approved, apply it with `git apply`, qualify the
+repair, then port the quartet. Broaden lookup and selection tests before the Go
+conversion; retire lookup's C bridge once its last C caller is converted. If the
+user prefers exact legacy behavior, retain the existing wrong-row reproduction
+expectations and port that behavior explicitly. Local artifacts:
+build/port-border-selection.
