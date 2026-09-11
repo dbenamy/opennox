@@ -18,17 +18,30 @@ overrides off. Artifacts: build/port-floor-eligibility. No validation is running
 The preceding grid chunk matched the exact known full-suite baseline: 1,553
 failure entries, 15 passing/3 known failing/32 skipped-no-test packages.
 
-Next: apply the throughput revision below; review the random-walk direction
-545090 baseline draft under ignored
-build/port-walk-direction. The bounded agent finished its fixture/test draft; primary review remains,
-and the C-caller benchmark is not yet implemented. Production remains C. Verify RNG consumption, signed direction wrap,
-PC53 point arithmetic, flag short circuit, tile-6 rotation and state restoration.
-Measure caller cost before adopting the port. One remaining C caller is
-mobActionRandomWalk545020. No user question pending. Keep separate
-server.PointOnTheLine behavior and preserve the asset archive.
+Completed batch: six native Go AI movement actions plus private helpers. C
+baseline 425e9c78 and native registry match 209,783 cases and two 200,000-update
+state/checksum runs; two additional dot-product spill discriminators pass.
+All eight C bodies/declarations and the temporary test dispatcher are removed.
+Production C: **140,260 physical lines (minus 182)**, 153 files, zero reference C.
+User confirmed old CPUs need not be supported; build driver/recovery select
+GO386=sse2, leaving C x87 flags unchanged. All accumulated tests and builds pass
+in default/server/highres; binary metadata confirms SSE2 and ELF32/80386.
+Full suite matches the exact 1,553 known failures. Fresh ai-movement-port gameplay
+exits 0 against both preserved screenshots, overrides off. A latent waypoint
+fixture initialization defect was repaired separately in d931b7ca and passes
+GOGC=10. Paired update microbenchmarks favor native Go under SSE2; ccache showed
+no reuse, so direct GCC/G++ remain configured. See docs/porting/AI_MOVEMENT.md.
+
+Next: roaming history, successor selection and start/cancel/dead-end handling
+(545790/5457C0/545B00/545B60/545BB0/545C60). Keep the larger roam-update owner in
+C for this bounded batch. Preserve start's single-slot clear, history ordering,
+duplicate candidate weighting, RNG consumption and zero-neighbor short circuit.
+Audit notes: build/port-roam-history/audit.md (ignored; source remains in GAME5.c).
+Next work is a shared original-C fixture with normalized waypoint pointer IDs.
+No tests/builds are running and no user question is pending.
 
 Use build/baseline/env.sh and accumulated regex
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility)`
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions)`
 with porttest, server porttest, highres porttest from src. Continue one reviewed,
 tested, documented, committed and pushed chunk at a time until a substantive
 question or rate limit. Bounded agent drafts require primary review.

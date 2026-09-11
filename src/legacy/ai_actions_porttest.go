@@ -4,22 +4,8 @@ package legacy
 
 /*
 #include "GAME1.h"
-#include "GAME5.h"
 #include "GAME4_3.h"
 extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
-static void porttest_ai_original(int action, int mode, void* p) {
- int u = (int)p;
- if (mode == 3) { if (action < 4) nox_ai_action_pop_532100(u); return; }
- if (mode != 0) return;
- switch(action) {
- case 0: sub_545210(u); break;
- case 1: sub_545300(u); break;
- case 2: sub_545340(u); break;
- case 3: sub_5453E0(u); break;
- case 4: nox_xxx_mobActionRandomWalk_545020(u); break;
- case 5: nox_xxx_mobActionConfuse_545140(u); break;
- }
-}
 */
 import "C"
 
@@ -41,6 +27,7 @@ import (
 )
 
 type PortTestAIActionSpec struct {
+	Repeat             int
 	Action, Mode       int
 	Seed               int
 	Direction, Desired uint16
@@ -75,7 +62,7 @@ func portTestAIDir(d int) (float32, float32) {
 	return x, y
 }
 
-func PortTestAIActions(specs []PortTestAIActionSpec, registered bool) (out []PortTestAIActionResult, restored bool) {
+func PortTestAIActions(specs []PortTestAIActionSpec) (out []PortTestAIActionResult, restored bool) {
 	core := new(server.Server)
 	core.SetFrame(123)
 	oldGet, oldFlags := GetServer, noxflags.GetEngine()
@@ -196,7 +183,8 @@ func PortTestAIActions(specs []PortTestAIActionSpec, registered bool) (out []Por
 		core.AI.StackChanged = false
 		beforeO, beforeU := bytes.Clone(ob), bytes.Clone(ub)
 		beforeD, beforeT := bytes.Clone(db), bytes.Clone(tb)
-		if registered {
+		var checksum uint32
+		for repeat := 0; repeat < max(1, sp.Repeat); repeat++ {
 			a := server.GetAIAction(portTestAITypes[sp.Action])
 			switch sp.Mode {
 			case 0:
@@ -208,10 +196,13 @@ func PortTestAIActions(specs []PortTestAIActionSpec, registered bool) (out []Por
 			case 3:
 				a.Cancel(obj)
 			}
-		} else {
-			C.porttest_ai_original(C.int(sp.Action), C.int(sp.Mode), unsafe.Pointer(obj))
+			checksum += uint32(obj.Direction1)
 		}
+
 		r := PortTestAIActionResult{Direction: uint16(obj.Direction1), Desired: uint16(obj.Direction2), LogicIndex: core.Rand.Logic.Index(), OtherIndex: core.Rand.Other.Index(), Stack: ud.AIStackInd, StackChanged: core.AI.StackChanged, GuardsOK: true, ReadOnlyOK: bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT)}
+		if sp.Repeat > 0 {
+			r.Changes = append(r.Changes, 0xffffffff, checksum)
+		}
 		for region, pair := range [][2][]byte{{beforeO, ob}, {beforeU, ub}} {
 			for j := 8; j < len(pair[0])-8; j += 4 {
 				v := binary.LittleEndian.Uint32(pair[1][j:])
@@ -232,4 +223,20 @@ func PortTestAIActions(specs []PortTestAIActionSpec, registered bool) (out []Por
 		panic("AI fixture grid/table mutated")
 	}
 	return out, false
+}
+
+// PortTestAIDot compares the native private helper with 534120, whose original
+// C implementation still serves other production callers.
+func PortTestAIDot(bits [4]uint32) (original, native, unchanged bool) {
+	table := unsafe.Slice(memmap.PtrUint32(0x587000, 194136), 2)
+	old := [2]uint32{table[0], table[1]}
+	defer func() { table[0], table[1] = old[0], old[1] }()
+	table[0], table[1] = bits[0], bits[1]
+	obj, free := alloc.New(server.Object{})
+	defer free()
+	point := types.Pointf{X: math.Float32frombits(bits[2]), Y: math.Float32frombits(bits[3])}
+	original = C.sub_534120(C.int(uintptr(unsafe.Pointer(obj))), (*C.float2)(unsafe.Pointer(&point))) != 0
+	native = facingDot(obj, point)
+	unchanged = table[0] == bits[0] && table[1] == bits[1] && obj.Direction1 == 0 && math.Float32bits(point.X) == bits[2] && math.Float32bits(point.Y) == bits[3]
+	return
 }

@@ -36,7 +36,7 @@ From the repository root, configure caches and target settings in your shell:
 export NOX_PORT_ROOT="$PWD"
 export GOMODCACHE="$NOX_PORT_ROOT/build/cache/gomod"
 export GOCACHE="$NOX_PORT_ROOT/build/cache/go-build"
-export GOARCH=386 CGO_ENABLED=1 CC=gcc CXX=g++
+export GOARCH=386 GO386=sse2 CGO_ENABLED=1 CC=gcc CXX=g++
 export CGO_CFLAGS_ALLOW='(-fshort-wchar)|(-fno-strict-aliasing)|(-fno-strict-overflow)'
 export PKG_CONFIG_LIBDIR=/usr/lib/i386-linux-gnu/pkgconfig:/usr/share/pkgconfig
 mkdir -p build/cache/gomod build/cache/go-build build/recovery/bin build/recovery/logs

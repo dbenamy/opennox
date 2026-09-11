@@ -7,8 +7,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"math"
-	"reflect"
 	"testing"
+	"time"
 
 	"github.com/opennox/libs/prand"
 	"github.com/opennox/opennox/v1/legacy"
@@ -105,17 +105,13 @@ func aiActionCorpus() map[string][]legacy.PortTestAIActionSpec {
 func TestAIActions(t *testing.T) {
 	for name, specs := range aiActionCorpus() {
 		t.Run(name, func(t *testing.T) {
-			original, restored := legacy.PortTestAIActions(specs, false)
-			got, restored2 := legacy.PortTestAIActions(specs, true)
-			if !restored || !restored2 || len(got) != len(specs) {
+			got, restored := legacy.PortTestAIActions(specs)
+			if !restored || len(got) != len(specs) {
 				t.Fatal("fixture restoration/count")
 			}
 			for i, r := range got {
 				if !r.GuardsOK || !r.ReadOnlyOK {
 					t.Fatalf("case %d: guard/read-only state changed", i)
-				}
-				if !reflect.DeepEqual(r, original[i]) {
-					t.Fatalf("case %d input=%+v\noriginal=%+v\nregistered=%+v", i, specs[i], original[i], r)
 				}
 				if name == "set-angle" && (r.Direction != uint16(specs[i].TX&255) || r.Desired != r.Direction) {
 					t.Fatalf("set-angle %d: %+v", i, r)
@@ -131,10 +127,10 @@ func TestAIActions(t *testing.T) {
 			if name == "precision" && got[0].Direction != 0 {
 				t.Fatal("complete-expression rounding must reject probe before water lookup")
 			}
-			data, _ := json.Marshal(original)
-			t.Logf("cases=%d original-state-sha256=%x", len(specs), sha256.Sum256(data))
+			data, _ := json.Marshal(got)
+			t.Logf("cases=%d state-sha256=%x", len(specs), sha256.Sum256(data))
 			if hash := fmt.Sprintf("%x", sha256.Sum256(data)); hash != aiActionBaseline[name] {
-				t.Fatalf("original state hash changed: %s", hash)
+				t.Fatalf("state differs from C baseline: %s", hash)
 			}
 		})
 	}
@@ -148,4 +144,43 @@ var aiActionBaseline = map[string]string{
 	"precision": "c381b3ed1cac4cd325a267e4a38bd7f6fab087950b915d6885cc1eb4c6062c8c",
 	"set-angle": "5115c1c9828b3b065d17e4da1596c2a67702aa3a657a63c8fa4c887a8244ef59",
 	"walk":      "bd84ef08990300ca0a6f48f162e5dec7f27987c21b42b24ab03ce223a509244d",
+}
+
+func TestAIActionsRepeated(t *testing.T) {
+	hashes := map[uint32]string{0: "5aefd65b696871018962826a18e0ed2468dbfa476769140f2788e7bea0def4b9", 0x400: "a57e2e9217256931783b5fa9ae86a2c38bd61a6ba21cb1eae0ecf7587ed4d21e"}
+	for _, flags := range []uint32{0, 0x400} {
+		sp := aiSpec(4)
+		sp.Repeat = 200000
+		sp.Flags = flags
+		start := time.Now()
+		got, ok := legacy.PortTestAIActions([]legacy.PortTestAIActionSpec{sp})
+		elapsed := time.Since(start)
+		data, _ := json.Marshal(got)
+		if !ok || fmt.Sprintf("%x", sha256.Sum256(data)) != hashes[flags] {
+			t.Fatalf("repeated-update state differs from C baseline flags=%x: %+v", flags, got)
+		}
+		t.Logf("flags=%x updates=%d registered=%.1f ns/update checksum=%d", flags, sp.Repeat, float64(elapsed.Nanoseconds())/float64(sp.Repeat), got[0].Changes[1])
+	}
+}
+
+func TestAIActionsDotPrecision(t *testing.T) {
+	for _, tc := range []struct {
+		bits [4]uint32
+		want bool
+	}{
+		{[4]uint32{0xbf69997e, 0xbd442556, 0xbfd613e9, 0x4151344e}, false},
+		{[4]uint32{0xbf25230c, 0xbfdaf717, 0xbffa5971, 0x3e587c67}, true},
+	} {
+		c, goResult, unchanged := legacy.PortTestAIDot(tc.bits)
+		if c != tc.want || goResult != tc.want || !unchanged {
+			t.Fatalf("bits=%x C=%t Go=%t want=%t unchanged=%t", tc.bits, c, goResult, tc.want, unchanged)
+		}
+		v := [4]float64{}
+		for i, b := range tc.bits {
+			v[i] = float64(math.Float32frombits(b))
+		}
+		if (v[0]*v[2]+v[1]*v[3] > .89999998) == tc.want {
+			t.Fatal("case must distinguish the first-product float32 spill")
+		}
+	}
 }
