@@ -3,47 +3,33 @@
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
-## Resume here — spawn policy completed, 2026-09-11
+## In progress — shop/trade original-C baseline
 
-Continue the x86 C-to-Go port on dev in connected, reviewed, tested, documented,
-committed and pushed batches until a substantive question or rate limit. User
-approved more aggressive batching and one bounded helper. Preserve the untracked
-asset archive. No question is pending.
+Spawn policy is complete and pushed as `e1b62d01`: 16 bodies / 564 C lines
+removed. Production C is **133,272 physical lines**, 152 files, zero reference C.
+Its original-C contracts, all three accumulated variants/builds, exact known
+full-suite failures and fresh headless gameplay pass. See SPAWN_POLICY.md.
 
-Latest qualified chunk: spawn ownership, admission, culling, glyph cleanup and
-periodic tick, 16 functions / 564 physical C lines removed. Original-C baseline
-`518b9e72` is committed and pushed; all 1,582 spawn-policy cases and 2,264
-generator cases plus 128 tile checks match native Go (8.523s combined).
-Production C: **133,272 physical lines**, **152 files**, **zero reference C**.
-See docs/porting/SPAWN_POLICY.md. Only E140 and E1E0 retain C exports; other
-family callers route directly to Go. C-owned pool layouts remain 12/148 bytes.
+Current connected batch: GAME4_1 50E2A0 through 510E20, 36 bodies / 1,337 C
+lines. No shop production C has been removed. The first 3,389 C cases in
+13 groups repeat byte-exactly and are locked; locked shop plus adjacent
+regressions pass in 25.396s. See docs/porting/SHOP.md and build/port-shop.
+Commit/push these test-only changes if still uncommitted, then extend the C
+baseline for stock loading, repair, sales, quest-cached cleanup and additional
+offer sequences. Add independent gold/inventory assertions. Commit the expanded
+baseline before conversion. Keep this one connected qualification batch.
 
-Accumulated default/server/highres contracts pass (67.794s/57.408s/57.752s).
-Three production binaries verify ELF32/i386/SSE2. Full suite matches exactly
-1,553 known failures (15 pass/3 fail/32 skip packages). Fresh spawn-policy-port
-headless gameplay exits 0 against preserved screenshots, overrides off, null
-audio. Artifacts/scripts: build/port-spawn-policy; original-C captures under
-build/port-generator/spawn-*. Commit/push native changes if still uncommitted.
+The fixture owns real 64-session/500-item pools and a 768-object factory pool,
+full guarded query records, saved players, protected gold and actual packet
+queues. Bulk reset's existing orphaned gold allocations are observed, then
+cleaned up by the fixture. All thirteen current hashes must remain locked.
 
-Next candidate: connected shop/trade subsystem, GAME4_1 50E2A0 through 510E20
-(before 510E50), 36 functions / 1,337 physical C lines. Assess the full boundary
-and reuse shared player, gold, inventory, modifier, packet and allocator fixtures.
-Lock and commit original-C behavior before conversion. Cover price arithmetic,
-stock ordering/matching, pool exhaustion, session cleanup, offers and gold,
-packet bytes, repairs/sales and stock creation. Do not turn every helper into a
-separately qualified chunk. Helper insert_port is auditing external callers and
-fixture reuse in ignored build/port-shop/caller-audit.md; primary verifies claims.
-
-Use build/baseline/env.sh: Go 1.26, GOARCH=386, GO386=sse2, CGO enabled, GCC;
-keep remaining C x87 flags unchanged. Run focused contracts while implementing;
-qualify accumulated variants, production builds and gameplay at the batch boundary.
-Compare full-suite failures by metadata only. Update docs/porting/C_LOC.md each
-conversion, commit/push the recovery checkpoint and continue immediately.
-
-Previous native chunks: generator192c458f, generic death fefc0445, quest penalty
-ab9fc939, initialization7ac58eed, callbacks6f0a291e, spells51dd2621,
-mainAIf674ad3a, monsterstate29b6e5d3, lifecyclee3ee0c9c, combate37039e5.
-Their original-C contracts remain locked.
+Helper insert_port is idle. Its ignored draft build/port-shop/price-draft.go
+needs corrections recorded in SHOP.md; primary found extra float32 spills,
+wrong quest/NaN clamps and an invented string limit. Primary caller inventory
+is build/port-shop/callers.json; keep shopExit/tradeAccept exports, which the
+helper table omitted. No question is pending. Continue autonomously after each
+reviewed, tested, documented, committed and pushed batch. Preserve the archive.
 
 <!-- /current-checkpoint -->
 
