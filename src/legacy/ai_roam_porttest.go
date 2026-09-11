@@ -10,10 +10,13 @@ import "C"
 import (
 	"bytes"
 	"encoding/binary"
+	"math"
+	"time"
 	"unsafe"
 
 	"github.com/opennox/libs/object"
 	"github.com/opennox/libs/prand"
+	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/unit/ai"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -21,6 +24,7 @@ import (
 )
 
 type PortTestRoamSpec struct {
+	Owner                      *PortTestRoamOwnerSpec
 	Op, Seed                   int
 	Index, Insert, Count, Mask byte
 	Stack                      int8
@@ -30,6 +34,8 @@ type PortTestRoamSpec struct {
 	Enabled                    [34]bool
 }
 type PortTestRoamResult struct {
+	Nanos              int64    `json:"-"`
+	Trace              []uint32 `json:",omitempty"`
 	History            [16]byte
 	Index, Arg, Field2 uint32
 	Return             int
@@ -48,7 +54,8 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 	restoreTypes := core.PortTestObjectInitSize(1, 0)
 	defer restoreTypes()
 	oldGet, oldFlags := GetServer, noxflags.GetEngine()
-	GetServer = func() Server { return &portTestRandomServer{core: core} }
+	proxy := &portTestRoamOwnerServer{portTestRandomServer: portTestRandomServer{core: core}}
+	GetServer = func() Server { return proxy }
 	noxflags.UnsetEngine(noxflags.EngineShowAI)
 	defer func() { GetServer = oldGet; noxflags.ResetEngine(); noxflags.SetEngine(oldFlags) }()
 	ob, fo := alloc.Make([]byte{}, int(unsafe.Sizeof(server.Object{}))+16)
@@ -58,9 +65,15 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 	stride := int(unsafe.Sizeof(server.Waypoint{})) + 16
 	wb, fw := alloc.Make([]byte{}, 34*stride)
 	defer fw()
+	db, fd := alloc.Make([]byte{}, int(unsafe.Sizeof(server.MonsterDef{}))+16)
+	defer fd()
+	tb, ft := alloc.Make([]byte{}, int(unsafe.Sizeof(server.Object{}))+16)
+	defer ft()
+	def := (*server.MonsterDef)(unsafe.Pointer(&db[8]))
+	target := (*server.Object)(unsafe.Pointer(&tb[8]))
 	obj := (*server.Object)(unsafe.Pointer(&ob[8]))
 	ud := (*server.MonsterUpdateData)(unsafe.Pointer(&ub[8]))
-	detach := server.PortTestAttachAI(core, obj)
+	detach := server.PortTestAttachAI(core, obj, target)
 	defer detach()
 	raw := func(id byte) uint32 {
 		if id == 0 {
@@ -99,6 +112,11 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		clear(ob[8:780])
 		clear(ub)
 		clear(wb)
+		clear(db)
+		clear(tb[8:780])
+		guard(db)
+		guard(tb)
+		proxy.trace = nil
 		guard(ob)
 		guard(ub)
 		for i := 0; i < 34; i++ {
@@ -132,11 +150,49 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		for i, id := range sp.Neighbors {
 			put(root, 92+i*8, raw(id))
 		}
+		if owner := sp.Owner; owner != nil {
+			core.SetFrame(owner.Frame)
+			core.SetTickRate(owner.FPS)
+			core.PortTestAIEmptyMap()
+			obj.PosVec = types.Pointf{X: math.Float32frombits(owner.X), Y: math.Float32frombits(owner.Y)}
+			obj.Buffs = owner.Buffs
+			obj.Frame134 = 1
+			ud.Aggression = math.Float32frombits(owner.Aggression)
+			ud.StatusFlags = object.MonsterStatus(owner.Status)
+			ud.MonsterDef = def
+			def.MoveSndFrameA100 = 250
+			def.MoveSndFrameB104 = 251
+			target.PosVec = types.Pointf{X: 321, Y: 654}
+			if owner.Enemy {
+				ud.CurrentEnemy = target
+			}
+			ud.Field2 = 0
+			if owner.ExistingPath {
+				ud.Field2 = 1
+				ud.Field67 = 1
+			}
+			head.Args[0] = uintptr(raw(owner.Current))
+			for id := byte(1); id < 34; id++ {
+				wp := roamWaypoint(raw(id))
+				wp.PosVec = types.Pointf{X: math.Float32frombits(owner.WX) + float32(id-1)*40, Y: math.Float32frombits(owner.WY)}
+				wp.PointsCnt = sp.Count
+				for j, n := range sp.Neighbors {
+					wp.Points[j].Waypoint = roamWaypoint(raw(n))
+				}
+			}
+			if owner.Register {
+				core.Map.Nox_xxx_waypointMapRegister_5179B0(roamWaypoint(raw(1)))
+			}
+			proxy.mode = owner.PathMode
+			proxy.fallback = roamWaypoint(raw(owner.Fallback))
+		}
 		core.Rand.Logic, core.Rand.Other = prand.New(sp.Seed), prand.New(sp.Seed+1)
 		core.AI.StackChanged = false
 		beforeO, beforeU, beforeW := bytes.Clone(ob), bytes.Clone(ub), bytes.Clone(wb)
+		beforeD, beforeT := bytes.Clone(db), bytes.Clone(tb)
 		op, up, wp := C.int(uintptr(unsafe.Pointer(obj))), C.int(uintptr(unsafe.Pointer(ud))), C.int(uintptr(unsafe.Pointer(&root[0])))
 		ret := 0
+		var nanos int64
 		switch sp.Op {
 		case 0:
 			server.GetAIAction(ai.ACTION_ROAM).Start(obj)
@@ -150,10 +206,16 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 			ret = int(normalize(roamWaypointWord(roamSuccessor(ud, (*server.Waypoint)(unsafe.Pointer(&root[0])), sp.Mask))))
 		case 5:
 			ret = int(C.nox_xxx_monsterRoamDeadEnd_545BB0(op, wp))
+		case 6:
+			start := time.Now()
+			for repeat := 0; repeat < max(1, sp.Owner.Repeat); repeat++ {
+				server.GetAIAction(ai.ACTION_ROAM).Update(obj)
+			}
+			nanos = time.Since(start).Nanoseconds()
 		default:
 			panic("invalid roam operation")
 		}
-		r := PortTestRoamResult{Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW)}
+		r := PortTestRoamResult{Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT)}
 		for i := range r.History {
 			r.History[i] = byte(normalize(get(ub, 8+300+4*i)))
 		}
