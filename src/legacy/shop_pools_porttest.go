@@ -507,7 +507,9 @@ func (p *portTestShopPools) run() {
 			}
 			C.sub_510E20(C.int(a.Item))
 		default:
-			if a.Op >= 600 {
+			if a.Op >= 700 {
+				rv = p.worldAction(a)
+			} else if a.Op >= 600 {
 				rv = p.temporaryAction(a)
 			} else if a.Op >= 500 {
 				rv = p.effectsUseAction(a)

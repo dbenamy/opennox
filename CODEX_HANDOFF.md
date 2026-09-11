@@ -15,22 +15,32 @@ highres: 153.927s / 112.748s / 112.020s. All three production builds are ELF32/i
 SSE2, CGO enabled. Full-suite failure multiset unchanged (1,553 entries; 15 pass,
 3 fail, 32 skip). Fresh unchanged repeat-a gameplay passed in 52.442s. Local
 captures/logs/builds: build/port-temporary-updates; gameplay run: temporary-updates-port.
-No pending user question. Commit/push this completed batch, summarize and CONTINUE.
+Completed and pushed as `8f96bbc6`; summary delivered. Continue the next batch.
 
-### Next — connected world-object mechanisms
+### Active — world-object mechanism baseline locked
 
-Audited 21 functions / 821 C lines: door/angle queue helpers, toggle/trigger/switch,
-elevator/shaft movement and audio helpers, visible/invisible pentagrams and
-teleport callbacks, push/blow and directional force, phantom and trap-door updates.
-Original scope and fixture plan: build/port-world-mechanisms/{scope.json,plan.md}.
-Still entirely C. Track the scope/plan and reuse the guarded temporary/effects/
-inventory fixture, existing script recorder, spatial paths and checked clock.
-Add only optional mechanism state/actions, keeping prior hashes unchanged.
+21 functions / 821 C lines, still original C: door and queued angle helpers,
+toggle/trigger/switch, elevator/shaft movement and audio, pentagrams/teleport
+callbacks, push/blow, phantom and trap-door updates. See
+[WORLD_MECHANISMS.md](docs/porting/WORLD_MECHANISMS.md).
 
-Repeat/lock/push the original-C baseline BEFORE conversion. Convert the connected
-family together, qualify once at its boundary, update C_LOC, commit/push and
-continue. No new agents. Preserve the user archive and stable captures. Raw
-full-suite output may contain secrets; report only action/package/test metadata.
+**1,979 cases / 14 groups** repeated byte-for-byte in C (5.533s / 5.167s); hashes
+locked. Prior **20,314** focused contracts unchanged (58.421s). Final locked test
+in build/port-world-mechanisms/c-locked.log; commit/push baseline BEFORE converting.
+Stable full captures: c-locked-{source,repeat}-world-*.json; original C bodies:
+build/port-world-mechanisms/scope.json (all addresses also tracked in the doc).
+
+Fixture review supplies finite mass, real platform coordinates, indexed ordinary
+objects for circle callbacks, real player data, guarded collision storage, saved
+queues/type caches, and original absolute-value scratch relocation. Positive
+assertions cover script identities, actual direct/owner movement, teleportation
+and force. Aligned callback recorder stabilizes pointer-derived char returns.
+
+Next: port the complete family and private helpers, preserve original observable
+float casts and return words, compare all captures/previous contracts. Qualify
+once, update C_LOC, commit/push, summarize and CONTINUE. No pending user question;
+no new agents. Preserve archive and stable evidence; full-suite raw output can
+contain secrets, so print only action/package/test metadata.
 
 <!-- /current-focus -->
 

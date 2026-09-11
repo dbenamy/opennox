@@ -157,6 +157,7 @@ const (
 var PortTestTemporaryServer func(*server.Server) func()
 
 type PortTestTemporaryUpdatesSpec struct {
+	World                  *PortTestWorldSpec
 	ItemWords, UpdateWords []map[int]uint32
 	ItemRefs, UpdateRefs   []map[int]int
 	Indexed                []int
@@ -167,6 +168,7 @@ type PortTestTemporaryUpdatesSpec struct {
 	MissingTypes           []string
 }
 type portTestTemporaryUpdates struct {
+	world   *portTestWorld
 	result  uint32
 	indexed []*server.Object
 }
@@ -211,6 +213,7 @@ func (p *portTestShopPools) temporaryPrepare() func() {
 	*memmap.PtrUint32(0x5d4594, 2488672) = 1287568416 // Actual initial nearest-search bound.
 	// SetPos queues collision updates in these retained C lists. Isolate
 	// their lifetime too, so later cases cannot follow freed fixture objects.
+	restoreWorld := p.worldPrepare()
 	oldCollisionHead, oldCollisionTail := C.dword_5d4594_2488604, C.dword_5d4594_2488608
 	C.dword_5d4594_2488604, C.dword_5d4594_2488608 = 0, 0
 	oldUpdatable := p.proxy.core.Objs.UpdatableList
@@ -218,6 +221,7 @@ func (p *portTestShopPools) temporaryPrepare() func() {
 	p.proxy.core.Objs.DeletedList = nil
 	C.tempReset(C.int(sp.CollideReturn))
 	return func() {
+		restoreWorld()
 		for _, it := range p.items {
 			p.temporaryUnindex(it.u)
 		}
@@ -311,6 +315,7 @@ func (p *portTestShopPools) temporaryItems() {
 			u.Death = C.tempDiePtr()
 		}
 	}
+	p.worldItems()
 	if sp.Updatable != 0 {
 		u := p.temporaryRef(sp.Updatable)
 		u.IsUpdatable = 1
@@ -319,7 +324,9 @@ func (p *portTestShopPools) temporaryItems() {
 	for _, i := range sp.Indexed {
 		u := p.temporaryRef(i)
 		u.NewPos = u.PosVec
-		u.Shape.Kind = server.ShapeKindCenter
+		if sp.World == nil {
+			u.Shape.Kind = server.ShapeKindCenter
+		}
 		p.proxy.core.Map.AddObjectToIndex(u)
 		p.temporary.indexed = append(p.temporary.indexed, u)
 	}
@@ -345,5 +352,5 @@ func (p *portTestShopPools) temporarySnapshot() []uint32 {
 			out = append(out, p.normalize(v))
 		}
 	}
-	return out
+	return p.worldSnapshot(out)
 }
