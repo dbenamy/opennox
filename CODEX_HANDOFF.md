@@ -1,41 +1,36 @@
 # OpenNox x86 Porting Handoff
 
 <!-- current-focus -->
-## Complete — shop/trade core; next — remaining trade engine
+## Complete — trade engine; next — health, poison, mana and gold
 
-All 36 shop/trade core C bodies are ported: 1,337 C lines removed, 17 private
-C declarations retired, 19 ABI roots retained. Production C is **131,935**
-physical lines, 152 files, zero reference C. Native contracts match all 4,238
-original-C cases locked at `ace4bb15`, with unchanged hashes (11.367s).
-Accumulated default/server/highres tests pass (94.124s/65.972s/67.922s); all
-three production builds are ELF32/i386/SSE2. Full suite exactly matches the
-1,553 known failure entries (15 pass / 3 fail / 32 skip packages). Fresh
-shop-port headless gameplay exits zero against unchanged repeat-a goldens,
-overrides disabled and null audio. Details: docs/porting/SHOP.md.
+The remaining trade engine is ported: eighteen functions / 815 C lines removed,
+including the entire server__system__trade.c file. Six decoder roots remain;
+eight earlier shop-core exports are retired. Production C is **131,120 physical
+lines / 151 files / zero reference C**. Original-C baseline is pushed dd85dbd8.
 
-Next batch: all 18 functions in src/legacy/server__system__trade.c (815 physical
-lines): trade opening, offer admission, purchases and sales. Twelve functions
-have only internal callers; six roots serve the packet decoder. Caller audit
-is build/port-shop/trade-engine-callers.json. Extend the existing shop fixture
-and lock/repeat the new original-C contracts before replacing this whole file.
-Audit previously retained core roots again afterward to retire further bridges.
+All 4,986 locked cases (748 engine + 4,238 shop core) pass natively with unchanged
+hashes (20.238s). Accumulated default/server/highres tests pass in
+116.681s / 76.253s / 76.967s. All three production builds are ELF32/i386/SSE2.
+The full suite matches exactly 1,553 known failure entries (15 pass, 3 fail,
+32 skip packages). Fresh trade-engine-port gameplay exits zero against unchanged
+repeat-a goldens, overrides disabled and null audio. See TRADE_ENGINE.md for
+precise coverage and undefined-packet-tail exclusions. No C algorithm is kept
+solely for testing. Artifacts/scripts: build/port-trade-engine.
 
-No question is pending. Continue autonomously in reviewed, tested, documented,
-committed and pushed connected batches. Use build/baseline/env.sh (386/SSE2,
-CGO, Go 1.26), retain C x87 flags, preserve the untracked asset archive. Raw
-captures, binaries and logs stay ignored in build/port-shop. No reference C
-algorithms are retained solely for testing.
+Next connected batch: 25 resource functions / 646 physical C lines:
+GAME3_3 4E4560..before4E4670 (HP setter), 4EE460..before4EED40
+(health, poison, mana), GAME4 4FA590..before4FA700 (gold operations), plus
+server__object__pickdrop__pickup.c. Scope audit: next-resource-scope.json in the
+trade-engine artifact directory. Assess callers and extend the existing guarded
+player/protection/packet/callback fixtures; lock and repeat original-C contracts
+before conversion. Keep owner paths together, qualify once for the full batch,
+update C_LOC/docs/checkpoints, commit/push, summarize and continue.
 
-Trade-engine original-C baseline is complete: 748 cases / twelve groups,
-byte-exact repeated; hashes locked in src/shop_engine_porttest_test.go. C run
-8.647s; locked engine plus all 4,238 old shop cases pass in 20.147s with unchanged
-old hashes. Artifacts: build/port-trade-engine/c-seventh*, c-repeat*, locked.log.
-Production engine C remains intact. Commit/push this baseline if uncommitted,
-then replace the eighteen engine bodies and retire eight now-private shop-core
-exports (core-caller-audit.json). See TRADE_ENGINE.md for coverage/exclusions.
-The VM disk filled during duplicate capture writes; reproducible Go cache files
-over twelve hours old were trimmed, leaving about 8 GiB free. Asset archive and
-scenario evidence are untouched. No user question is pending.
+No user question is pending. Use build/baseline/env.sh (386/SSE2, CGO, Go1.26)
+and retain C x87 flags. The disk filled with duplicate captures during baseline
+work; reproducible Go cache files over twelve hours old were trimmed. About
+7 GiB is free. Preserve the user asset archive and gameplay evidence; avoid
+unnecessary duplicate captures. All 4,238 prior shop hashes remained unchanged.
 
 <!-- /current-focus -->
 

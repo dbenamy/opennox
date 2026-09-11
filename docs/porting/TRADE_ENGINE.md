@@ -48,8 +48,9 @@ types in an existing offer list. Cover all valid list sizes, matches, modified
 items and rejection of a fifth type; do not feed overflowing invalid lists to
 the C baseline. This does not relax the public add-offer capacity checks.
 
-No production C has been removed in this batch yet. Current count remains
-131,935 physical C lines / 152 files / zero test-reference C lines.
+All eighteen engine bodies are now native. Removing the complete C file reduces
+production C by **815 lines**, to **131,120 physical lines / 151 files**, with
+zero test-reference C.
 
 The pickup dependency is a recording C callback: every invocation preserves
 unit/item identity, both arguments and order. Its algorithm is outside this
@@ -79,10 +80,28 @@ archive and gameplay evidence were preserved. The full combined run then
 passed without duplicate capture output. This was an artifact-write failure,
 not a test-behavior mismatch.
 
-## Conversion next
+## Native conversion and qualification
 
-Replace all eighteen engine bodies and remove the now-empty C file. Preserve
-six packet-decoder roots and retire eight shop-core exports whose last C
-callers disappear. Route internal and fixture calls directly to Go. Re-run all
-locked cases, accumulated variants, production builds, full-suite comparison
-and fresh headless gameplay once for the completed connected batch.
+All eighteen engine functions are replaced by trade_engine.go. Six decoder ABI
+roots remain in trade_exports.go. Eight earlier shop-core exports lose their
+last C callers and are retired; internal and fixture calls go directly to Go.
+The original C remains recoverable at `dd85dbd8`.
+
+All **4,986 locked cases** (748 engine + 4,238 shop core) pass natively with
+unchanged hashes in 20.238s. The native implementation passed the first build
+and contract comparison. Name-packet stack tails are initialized to zero.
+The peer-start allocation path now returns nil for allocation failure, where
+the original C dereferenced a null session; the ordinary defined paths match.
+
+All three production binaries build and metadata confirms ELF32/Intel 80386,
+GO386=sse2. The full suite exactly matches the baseline multiset of 1,553
+failure entries (15 passing packages, 3 failing, 32 skipped), with no additions.
+Accumulated port tests pass for default (116.681s), server (76.253s) and
+highres (76.967s). Fresh `trade-engine-port` gameplay exits zero with unchanged
+repeat-a screenshot goldens, NOX_E2E_OVERRIDE=false, Xvfb and null audio.
+All scripts, logs and binary metadata are in build/port-trade-engine. These run times include
+concurrent validation load and are not runtime performance benchmarks.
+
+Next selection: assess the connected health, poison, mana and gold operations,
+reusing player/protection/packet and callback fixtures. Keep their owner paths
+with private helpers where practical; lock original-C contracts before removal.

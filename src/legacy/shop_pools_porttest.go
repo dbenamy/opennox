@@ -286,7 +286,7 @@ func (p *portTestShopPools) run() {
 		}
 		switch a.Op {
 		case PortTestShopCreate:
-			q = unsafe.Pointer(C.nox_xxx_createShopStruct_50E870())
+			q = unsafe.Pointer(shopCreate())
 			p.sessions = append(p.sessions, q)
 			if q != nil {
 				id := uint32(60000 + len(p.sessions) - 1)
@@ -353,15 +353,15 @@ func (p *portTestShopPools) run() {
 		case PortTestShopTotal:
 			rv = uint32(shopTotal((*shopSession)(q), (*server.Object)(shopTestPointer(words[2+a.Side]))))
 		case PortTestShopBalance:
-			rv = uint32(uintptr(unsafe.Pointer(C.sub_50FB90((*C.uint32_t)(q)))))
+			rv = shopBalance((*shopSession)(q))
 		case PortTestShopPacket:
 			player := C.int(words[2+a.Side])
 			item := C.int(uintptr(s.item().CObj()))
 			switch a.Item {
 			case 0:
-				rv = uint32(C.sub_50E820(player, item))
+				rv = shopSendCode(objectFromInt(player), objectFromInt(item), 2505)
 			case 1:
-				rv = uint32(C.sub_50F2B0(player, (*C.uint32_t)(s.ptr(9))))
+				rv = shopSendItem(objectFromInt(player), (*shopItem)(s.ptr(9)))
 			case 2:
 				rv = uint32(shopSendShort(objectFromInt(player), 457, 0))
 			case 3:
@@ -369,9 +369,9 @@ func (p *portTestShopPools) run() {
 			case 4:
 				rv = uint32(shopSendShort(objectFromInt(player), 1993, 1))
 			case 5:
-				rv = uint32(C.sub_50F720(player, (*C.uint32_t)(q)))
+				rv = shopSendAcceptance(objectFromInt(player), (*shopSession)(q))
 			case 6:
-				rv = uint32(C.nox_xxx_tradeP2PUpdStuff_50FA00(player, (*C.uint32_t)(q)))
+				rv = shopSendGold(objectFromInt(player), (*shopSession)(q))
 			case 7:
 				rv = uint32(shopSendCode(objectFromInt(player), objectFromInt(item), 1481))
 			default:
@@ -398,7 +398,7 @@ func (p *portTestShopPools) run() {
 		case PortTestShopDetach:
 			rv = uint32(shopDetach((*shopSession)(q), (*server.Object)(shopTestPointer(words[2+a.Side]))))
 		case PortTestShopLoad:
-			C.nox_xxx_loadShopItems_50E970(C.int(uintptr(q)))
+			shopLoad((*shopSession)(q))
 			for n := words[5]; n != 0; {
 				w := shopTestWords(shopTestPointer(n), 4)
 				if _, ok := p.ids[w[0]]; !ok {

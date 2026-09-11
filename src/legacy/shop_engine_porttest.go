@@ -6,18 +6,6 @@ package legacy
 #include <string.h>
 #include "GAME4_1.h"
 #include "server__system__trade.h"
-int sub_50E7A0(uint32_t* a1, int a2);
-uint32_t* nox_xxx_createPlayerShopSession_50E8F0(int a1, int a2);
-int sub_50F0F0(int a1, int a2);
-int sub_50F1A0(int a1, int a2);
-int nox_xxx_servSendShopItems_50F280(int a1, int a2);
-uint32_t* nox_xxx_tradeSetPlayer_50F370(uint32_t* a1, int a2);
-int sub_50FAE0(int a1, int a2, int a3, int a4, int a5);
-int sub_50FD60(uint32_t* a1, int a2);
-void sub_510320(int a1, int a2);
-int sub_5104F0(int a1, short a2);
-int sub_510540(int a1);
-int sub_5105D0(int a1);
 extern uint32_t dword_5d4594_2488728;
 static uint32_t portTestTradePickupTrace[2049];
 static uint32_t* portTestTradePickupData(void) {return portTestTradePickupTrace;}
@@ -183,9 +171,9 @@ func (p *portTestShopPools) engineAction(a PortTestShopAction, q unsafe.Pointer)
 	}
 	switch a.Op {
 	case PortTestTradeRemove:
-		return uint32(C.sub_50E7A0((*C.uint32_t)(q), C.int(uintptr(item.CObj()))))
+		return tradeRemoveStock((*shopSession)(q), item)
 	case PortTestTradeCreatePlayer:
-		return p.engineAdopt(unsafe.Pointer(C.nox_xxx_createPlayerShopSession_50E8F0(C.int(uintptr(p.proxy.life.players[0].CObj())), C.int(uintptr(p.proxy.callbacks.shop.npc().CObj())))))
+		return p.engineAdopt(unsafe.Pointer(tradeCreatePlayer(&p.proxy.life.players[0], p.proxy.callbacks.shop.npc())))
 	case PortTestTradeStart:
 		left, right := &p.proxy.life.players[0], p.proxy.callbacks.shop.npc()
 		if p.proxy.callbacks.shop.spec.Peer {
@@ -202,25 +190,25 @@ func (p *portTestShopPools) engineAction(a PortTestShopAction, q unsafe.Pointer)
 		}
 		return p.engineAdopt(unsafe.Pointer(C.nox_xxx_servShopStart_50EF10_trade(C.int(uintptr(left.CObj())), C.int(uintptr(right.CObj())))))
 	case PortTestTradeIntro:
-		return uint32(C.sub_50F0F0(unit, session))
+		return tradeIntro((*shopSession)(q))
 	case PortTestTradePeerIntro:
-		return uint32(C.sub_50F1A0(unit, session))
+		return tradePeerIntro(u, (*shopSession)(q))
 	case PortTestTradeSendStock:
-		return uint32(C.nox_xxx_servSendShopItems_50F280(unit, session))
+		return tradeSendStock(u, (*shopSession)(q))
 	case PortTestTradeSetPlayer:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_tradeSetPlayer_50F370((*C.uint32_t)(q), unit))))
+		return uint32(uintptr(unsafe.Pointer(tradeSetPlayer((*shopSession)(q), u))))
 	case PortTestTradeOfferPacket:
-		return uint32(C.sub_50FAE0(unit, C.int(w[2+a.Value%2]), session, C.int(uintptr(item.CObj())), C.int(item.Worth)))
+		return tradeOfferPacket(u, (*server.Object)(shopTestPointer(w[2+a.Value%2])), item, item.Worth)
 	case PortTestTradeOfferAllowed:
-		return uint32(C.sub_50FD60((*C.uint32_t)(shopTestPointer(w[8+a.Side])), C.int(uintptr(item.CObj()))))
+		return uint32(bool2int(tradeOfferAllowed((*shopItem)(shopTestPointer(w[8+a.Side])), item)))
 	case PortTestTradeStockDecrement:
-		C.sub_510320(C.int(uintptr(item.CObj())), session)
+		tradeStockDecrement(item, (*shopSession)(q))
 	case PortTestTradeShortfall:
-		return uint32(C.sub_5104F0(unit, C.short(a.Value)))
+		return tradeShortfall(u, a.Value)
 	case PortTestTradeStockRemovable:
-		return uint32(C.sub_510540(C.int(uintptr(item.CObj()))))
+		return uint32(bool2int(tradeStockRemovable(item)))
 	case PortTestTradeIsGem:
-		return uint32(C.sub_5105D0(C.int(uintptr(item.CObj()))))
+		return uint32(bool2int(tradeIsGem(item)))
 	case PortTestTradeAddOffer:
 		return uint32(C.portTestTradeOffer(session, unit, item.CObj()))
 	case PortTestTradeBuy:
