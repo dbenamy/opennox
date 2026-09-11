@@ -274,7 +274,6 @@ void sub_543BC0(int a1, int a2, int a3, int a4, int a5, int a6);
 int nox_xxx_tile_543C50(uint32_t* a1, int a2, int a3, int a4, int a5, int a6);
 int sub_543E60(int a1, int a2);
 int nox_xxx_mapGenEdge_543EB0(int a1, int a2);
-int sub_543FB0(const char* a1);
 int sub_544020(char* a1);
 int nox_xxx_tileCheckByte3_544070(int a1);
 int nox_xxx_tileCheckByte4_5440A0(int a1);

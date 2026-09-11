@@ -68,7 +68,7 @@ func portTestBorderTable() []byte {
 	return unsafe.Slice(memmap.PtrUint8(0x85B3FC, portTestBorderBase), portTestBorderRows*portTestBorderRowSize)
 }
 
-// PortTestBorderSelection invokes only the live C quartet over a bounded 64-row
+// PortTestBorderSelection invokes the native lookup and three live C ABI entries over a bounded 64-row
 // physical table. Count remains raw: tests may supply signed-negative words,
 // but deliberately do not call a positive count beyond this physical table.
 func PortTestBorderSelection(initial PortTestBorderState, rows []PortTestBorderRow, specs []PortTestBorderSpec) (snap PortTestBorderSnapshot) {
@@ -111,9 +111,9 @@ func PortTestBorderSelection(initial PortTestBorderState, rows []PortTestBorderR
 		switch s.Mode {
 		case 0:
 			if s.NilName {
-				ret = C.sub_543FB0(nil)
+				ret = C.int(findBorderName(nil))
 			} else {
-				ret = C.sub_543FB0((*C.char)(unsafe.Pointer(unsafe.SliceData(input))))
+				ret = C.int(findBorderName((*C.char)(unsafe.Pointer(unsafe.SliceData(input)))))
 			}
 		case 1:
 			if s.NilName {

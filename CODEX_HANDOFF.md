@@ -1,37 +1,34 @@
 # OpenNox x86 Porting Handoff
 
 <!-- current-focus -->
-## Resume focus — 2026-09-11
+## Resume here — 2026-09-11
 
-Tile-fill worklist push/pop 51DD50/51DE30 is complete. Original-C baseline
-`c4117ac3` and native Go pass 9,000 operations, including signed/unsigned count,
-capacity/overflow, full flags, exact grid keys and output aliasing. Both ABI
-entries remain for the C tile-fill owner. See
-[worklist validation](docs/porting/TILE_WORKLIST.md).
-Production C: **140,730 physical lines** (−55), 153 files, zero reference C.
+Border-selection quartet 543FB0/544020/544070/5440A0 is complete, including the
+user-approved selected-row variation fix. Original-C bug baseline dd4a9f69;
+repaired/expanded C baseline e226f189. Native Go passes 33,280 lookup/name checks,
+25,600 variation boundaries, 63 primary boundaries and focused regressions.
+The lookup C bridge is retired; three ABI entries remain for C callers.
+See [border selection](docs/porting/BORDER_SELECTION.md).
+Production C: **140,672 physical lines (−58)**, 153 files, zero reference C.
 
-Accumulated default/server/highres tests and all three production builds pass.
-Fresh tile-worklist-port gameplay passes both preserved screenshots, overrides
-off. Full suite matches the exact known 1,553 failure-entry multiset:
-15 passing/3 known failing/32 skipped-no-test packages. No validation is running.
-Artifacts: build/port-tile-worklist.
+All accumulated default/server/highres test variants and production builds pass.
+Fresh border-selection-port gameplay passes both preserved screenshot checks,
+overrides off. Full suite matches the exact known 1,553 failure-entry multiset,
+15 passing/3 known failing/32 skipped-no-test packages. No processes remain running.
+Artifacts: build/port-border-selection.
 
-Current: user approved border-selection repair on 2026-09-11. Applied the
-tracked proposal to C and expanded qualification before porting: 33,280 exact
-lookup/name selection checks, 25,600 variation boundaries, 63 primary boundaries
-and focused regressions pass. See docs/porting/BORDER_SELECTION.md. Port quartet
-543FB0/544020/544070/5440A0 next, retire lookup C bridge, then run accumulated
-variants, builds, gameplay and full-suite comparison. Temporary repaired C count
-140,733 (+3); next completed chunk must report final count relative to 140,730.
-No user question is pending. No validation processes remain running.
-Both previously approved writer/alias fixes are complete. Keep 57ADF0 cleanup
-with its GUI owner and preserve separate server.PointOnTheLine behavior.
+Next: edge mapping pair 543E60/543EB0, owned by C tile-list routine543C50.
+Agent drafting ignored fixtures under build/port-edge-mapping; review before
+integration. Preserve exact RNG consumption, including width/height==2 zero-draw
+IntClamp cases and exact3x3 shortcut. Keep normalization sub_411490 in C for this
+chunk. No user question pending; writer, alias and border fixes are approved.
+Keep 57ADF0 cleanup with its GUI owner and separate server.PointOnTheLine behavior.
 
-Test from src with build/baseline/env.sh: accumulated regex
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist)`
-and porttest, server porttest, highres porttest tags. Preserve the asset archive.
+Use build/baseline/env.sh and accumulated regex
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection)`
+with porttest, server porttest, highres porttest tags from src. Preserve assets.
 Continue one reviewed/tested/documented/committed/pushed chunk at a time until
-a substantive question or rate limit. Bounded Terra drafts require primary review.
+substantive question or rate limit. Bounded Terra drafts require primary review.
 <!-- /current-focus -->
 
 ## Current plan — revised 2026-09-10

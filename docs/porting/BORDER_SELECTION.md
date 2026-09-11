@@ -1,11 +1,9 @@
-# Border selection investigation — 2026-09-11
+# Border selection — 2026-09-11
 
-The next port is 543FB0/544020/544070/5440A0. Production C remains **140,730
-physical lines**, 153 files, zero reference C; this baseline removes no C.
-The original-C fixture passes direct lookup, name selection, primary selection,
-secondary selection and signed-count checks. It saves and verifies actual table,
-guards and four shared state words, restores them, and checks inputs unchanged.
-This is an investigation baseline, not yet exhaustive port qualification.
+Scope: 543FB0/544020/544070/5440A0. The Go replacement preserves the three
+ABI entries with remaining C callers; the private lookup no longer has a C
+bridge. Production C after conversion: **140,672 physical lines (−58)** from
+the preceding completed chunk, 153 files, zero reference C.
 
 ## Reproduced behavior defect
 
@@ -27,7 +25,7 @@ these exact records. Existing placement callers ignore the validation return,
 so false rejection can leave a stale variation. No visual defect has been
 reproduced in gameplay.
 
-## Proposed repair
+## Approved repair
 
 Preserve the disabled flag's success/no-write short circuit. For active selection,
 validate the selected row against positive signed active count and physical
@@ -36,14 +34,9 @@ limit. This also avoids indexing the table with large variation arguments.
 
 Original-C baseline: `dd4a9f69`. The proposed regression fails against original
 C on the valid-variation case, demonstrating that it detects the wrong-row bug.
-The reviewable [repair patch](proposals/border-selection-selected-row.patch)
-contains the C repair, changed expectations for both reproductions, and 25,600
-boundary calls across active counts, selected IDs, flag values, row limits and
-variation values. The fixture's input/table/state/guard checks remain enabled.
-The proposed repair passes all focused border tests in default/server/highres
-386 variants. It was then removed from the working source; only the proposal
-patch is retained. Production builds, gameplay and full-suite validation are
-still required when adopting the repair and completing the port.
+The historical [repair patch](proposals/border-selection-selected-row.patch)
+records the C change approved by the user on 2026-09-11. It was applied and
+qualified before porting. Do not reapply it over the completed Go replacement.
 
 ## Approved repair baseline
 
@@ -57,5 +50,21 @@ when count exceeds the physical table because it does not access that table.
 No new clamp is imposed there. Local artifacts: build/port-border-selection.
 
 Temporary repaired C count: **140,733 (+3)**, 153 files, zero reference C.
-Next port the quartet, retaining only the three ABI entries with C callers.
-Full chunk validation, source count, documentation, commit and push follow.
+Repaired/expanded C baseline commit: `e226f189`.
+
+## Native implementation
+
+`legacy/border_selection.go` preserves signed count and input behavior, the
+first exact case-sensitive name match, C NUL semantics, and raw non-ASCII bytes.
+Only NONE uses the shared C locale comparator. Name selection disables the flag
+before lookup; misses preserve the previous primary and secondary. Numeric
+primary selection rejects negative/out-of-count values without touching state.
+Variation checks preserve any-nonzero flag activation and disabled success with
+no writes, and include the approved selected-row bounds repair.
+
+All expanded C checks pass against Go. Accumulated tests pass in default,
+server and highres 386 variants; all three production binaries build as ELF32
+Intel 80386. Fresh border-selection-port gameplay passes both preserved screenshot
+checks with overrides disabled. Full suite matches the exact known 1,553 failure
+entries (15 passing/3 known failing/32 skipped-no-test packages), with no added or
+removed entries. Local artifacts: build/port-border-selection.

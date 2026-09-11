@@ -9388,67 +9388,6 @@ int nox_xxx_mapGenEdge_543EB0(int a1, int a2) {
 	return result;
 }
 
-//----- (00543FB0) --------------------------------------------------------
-int sub_543FB0(const char* a1) {
-	int v1;        // ebp
-	const char* i; // edi
-
-	if (!a1) {
-		return -1;
-	}
-	v1 = 0;
-	if (*(int*)&dword_5d4594_251572 <= 0) {
-		return -1;
-	}
-	for (i = (const char*)getMemAt(0x85B3FC, 28644); strcmp(i, a1); i += 60) {
-		if (++v1 >= *(int*)&dword_5d4594_251572) {
-			return -1;
-		}
-	}
-	return v1;
-}
-
-//----- (00544020) --------------------------------------------------------
-int sub_544020(char* a1) {
-	int v1;     // eax
-	int result; // eax
-
-	dword_5d4594_2489436 = 0;
-	if (nox_strcmpi("NONE", a1)) {
-		v1 = sub_543FB0(a1);
-		result = nox_xxx_tileCheckByte3_544070(v1);
-	} else {
-		dword_5d4594_3835356 = 255;
-		result = 1;
-	}
-	return result;
-}
-
-//----- (00544070) --------------------------------------------------------
-int nox_xxx_tileCheckByte3_544070(int a1) {
-	if (a1 < 0 || a1 >= *(int*)&dword_5d4594_251572) {
-		return 0;
-	}
-	dword_5d4594_3835356 = a1;
-	dword_5d4594_2489436 = 1;
-	return 1;
-}
-
-//----- (005440A0) --------------------------------------------------------
-int nox_xxx_tileCheckByte4_5440A0(int a1) {
-	if (!dword_5d4594_2489436) {
-		return 1;
-	}
-	int active = *(int*)&dword_5d4594_251572;
-	uint32_t selected = dword_5d4594_3835356;
-	if (active <= 0 || selected >= (uint32_t)active || selected >= 64 || a1 < 0 ||
-		a1 >= *getMemU16Ptr(0x85B3FC, 28688 + 60 * selected)) {
-		return 0;
-	}
-	dword_5d4594_3835360 = a1;
-	return 1;
-}
-
 //----- (00544310) --------------------------------------------------------
 int nox_xxx_tileSubtile_544310(float2* a1) {
 	double v1;  // st7
