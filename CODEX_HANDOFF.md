@@ -5,38 +5,40 @@
 
 We are porting the x86 engine C to native Go on branch `dev`, one connected,
 reviewed/tested/documented/committed/pushed batch at a time. The user authorized
-continued work until a substantive question or rate limit, and approved larger
-batches. Do not stop after each push. Use at most one bounded helper when useful;
-primary review remains necessary. Preserve the untracked asset archive.
+continued work until a substantive question or rate limit and requested more
+aggressive batching. Do not stop after a push. Use at most one bounded helper
+when useful; review drafts against actual C, layouts and compiled arithmetic.
+Preserve the untracked asset archive.
 
-Latest fully qualified native batch: six combat AI action families plus private
-builders/callbacks. Original-C baseline `e1cf21bf`: 17,408 generated cases and
-170 independent contracts. The native port matches both hashes, adds 192 lifecycle
-checks and 2 C-verified precision discriminators, and removes 18 C bodies:
-**138,212 physical C lines (minus 612)**, 153 files, zero reference C.
-See docs/porting/AI_COMBAT.md. Accumulated default/server/highres tests and all
-three ELF32/SSE2 production builds pass. The full suite matches exactly 1,553
-known failure entries. Fresh `ai-combat-port` gameplay exits 0 against both
-preserved screenshots, overrides off. No validation remains running.
+Latest fully qualified native batch: the five remaining C-registered AI actions,
+plus revival, soul creation, burn deletion, reset and item searches. Original-C
+checkpoint `8bae3340`; 5,632 generated cases and 174 contracts match exactly.
+Sixteen C bodies and the obsolete C action adapter are removed. Production C:
+**137,882 physical lines (minus 330)**, 153 files, zero reference C.
+See docs/porting/AI_LIFECYCLE.md. Accumulated default/server/highres tests and
+all three ELF32/SSE2 production builds pass. Full suite matches exactly 1,553
+known failure entries. Fresh `ai-lifecycle-port` gameplay exits 0 against both
+preserved screenshots, overrides off. Artifacts: build/port-ai-lifecycle.
 
-Previous fully qualified/pushed batches: path execution/graph `01a9ec4d`,
-guard/escort/sound `2bd0b90d`, navigation/retreat `e32982f7`. The C_LOC.md table
-and per-batch documents preserve the history. Artifacts: build/port-ai-combat.
-No user question is pending. Next: remaining registered AI actions plus connected
-death/soul/raise/reset and food/item searches, about 329 C lines. Caller/fixture
-audit: build/port-ai-lifecycle/expanded-audit.md. Raise and both search entry points
-still have C callers and need retained ABI exports. Object +744 is Update (the
-callback); +748 is UpdateData. Do not confuse these in the dead-update port.
+Previous qualified/pushed batches: combat `e37039e5`, path `01a9ec4d`, navigation
+`e32982f7`, guard/escort `2bd0b90d`. The C_LOC.md table preserves the history.
+No user question is pending. Next connected batch: monster commands, animation
+selection, capability/state predicates and shared Mimic/Plant/Zombie caches
+around 533790–534A40. Audit: build/port-ai-lifecycle/next-batch-audit.md;
+ignored fixture drafts may be under build/port-ai-state. Read actual C: audit
+incorrectly says 534750/780 return original flags; they return the modified word
+when a mutation occurs. Retain live C ABIs and use native routes for Go callers.
+Do not split every predicate into a separately qualified conversion.
 
 Use build/baseline/env.sh: Go1.26, GOARCH=386, GO386=sse2, CGO enabled, direct GCC.
-The user explicitly dropped old-CPU support. Keep existing C x87 flags unchanged.
-Run the accumulated test regex with porttest, server porttest, highres porttest:
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort|AINavigation|AIPath|AICombat)`
-Once per connected batch: all three production builds, ELF32/SSE2 metadata,
-full-suite comparison (exact 1,553 known failure entries, 15 pass/3 fail/32 skip
-packages) at shared boundaries, and a fresh isolated headless gameplay run against
-the preserved screenshots with overrides off. Never print raw full-suite output;
-compare only Action/Package/Test metadata. Update C LOC after each conversion.
+The user dropped old-CPU support. Keep existing C x87 flags unchanged.
+Accumulated port-test regex with porttest, server porttest, highres porttest:
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort|AINavigation|AIPath|AICombat|AILifecycle)`
+Once per connected batch: production builds, ELF32/SSE2 metadata, relevant fresh
+headless gameplay against preserved screenshots with overrides off. Full-suite
+comparison at subsystem/shared boundaries: exact 1,553 known failure entries,
+15 pass/3 fail/32 skip packages. Never print raw full-suite output; compare only
+Action/Package/Test metadata. Update C LOC after each conversion.
 
 Push authorized using:
 `git -c core.sshCommand='ssh -o BatchMode=yes' push git@github.com:dbenamy/opennox.git dev:dev`

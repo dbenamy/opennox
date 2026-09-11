@@ -20,7 +20,6 @@ import (
 
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/unit/ai"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -31,53 +30,6 @@ var (
 
 type Nox_player_polygon_check_data struct {
 	Field_0 [35]uint32
-}
-
-func init() {
-	for typ, a := range map[ai.ActionType]struct {
-		Start, Update, End, Cancel unsafe.Pointer
-	}{
-		ai.ACTION_HUNT:          {Update: C.nox_xxx_mobActionHunt_5449D0},
-		ai.ACTION_PICKUP_OBJECT: {Update: C.nox_xxx_mobActionPickupObject_544B90},
-		ai.ACTION_DYING:         {Start: C.nox_xxx_mobGenericDeath_544C40, Update: C.sub_544D60, End: C.nox_xxx_zombieBurnDeleteCheck_544CA0},
-		ai.ACTION_DEAD:          {Start: C.nox_xxx_mobActionDead1_544D80, Update: C.nox_xxx_mobActionDead2_544EC0},
-		ai.ACTION_GET_UP:        {Update: C.nox_xxx_mobActionGetUp_534A90},
-	} {
-		server.RegisterAIAction(cgoAIAction{typ: typ, start: a.Start, update: a.Update, end: a.End, cancel: a.Cancel})
-	}
-}
-
-type cgoAIAction struct {
-	typ                        ai.ActionType
-	start, update, end, cancel unsafe.Pointer
-}
-
-func (a cgoAIAction) Type() ai.ActionType {
-	return a.typ
-}
-
-func (a cgoAIAction) Start(u *server.Object) {
-	if a.start != nil {
-		ccall.CallVoidPtr(a.start, u.CObj())
-	}
-}
-
-func (a cgoAIAction) Update(u *server.Object) {
-	if a.update != nil {
-		ccall.CallVoidPtr(a.update, u.CObj())
-	}
-}
-
-func (a cgoAIAction) End(u *server.Object) {
-	if a.end != nil {
-		ccall.CallVoidPtr(a.end, u.CObj())
-	}
-}
-
-func (a cgoAIAction) Cancel(u *server.Object) {
-	if a.cancel != nil {
-		ccall.CallVoidPtr(a.cancel, u.CObj())
-	}
 }
 
 //export nox_ai_debug_print
@@ -149,7 +101,10 @@ func sub_50CB10() unsafe.Pointer {
 }
 
 func Nox_xxx_mobSearchEdible_544A00(a1 *server.Object, a2 float32) int {
-	return int(C.nox_xxx_mobSearchEdible_544A00(asObjectC(a1), C.float(a2)))
+	if u := lifecycleFoodSearch(a1, a2, false); u != nil {
+		return int(uintptr(u.CObj()))
+	}
+	return 0
 }
 func Nox_xxx_weaponGetStaminaByType_4F7E80(a1 int) int {
 	return int(C.nox_xxx_weaponGetStaminaByType_4F7E80(C.int(a1)))

@@ -36,3 +36,28 @@ stored minimum is float32. Original compiled x87 instructions confirm this.
 Artifacts are ignored under `build/port-ai-lifecycle`. At the baseline checkpoint,
 production remains unchanged: **138,212 physical C lines**, 153 files, zero
 reference C. Native conversion and batch qualification follow this checkpoint.
+
+## Native conversion
+
+Original-C checkpoint: `8bae3340`. Native action registration replaces the last
+five C registrations and removes the obsolete C action adapter. The three live
+C entry points use generated Go exports; native navigation calls food search
+directly. Shared zombie classification remains C-backed to preserve the original
+cache words until its caller family is ported. Packet/reward/scorch engines and
+the float-to-int conversion remain shared callees.
+
+Production C is now **137,882 physical lines (minus 330)**, 153 files, zero
+reference C. The port uses typed velocity/force fields and the existing audio,
+map, action, allocation and minimap APIs. Review corrected shared-cache and ABI
+return handling; parity tests caught an inverted poison filter in the draft.
+Repeated baseline testing also caught an unnormalized optional metadata pointer;
+the fixture now records its identity and frees that allocation explicitly.
+
+## Qualification
+
+Both original-state hashes match. Accumulated port tests pass in default,
+server and highres. All three production binaries build as ELF32/Intel80386
+with GO386=sse2. The full suite matches exactly 1,553 known failure entries
+(15 pass, 3 fail, 32 skip packages; no added or removed failures).
+Fresh `ai-lifecycle-port` gameplay exits 0 against both preserved screenshots,
+with overrides off under Xvfb/OpenAL null. All qualification is complete.

@@ -268,11 +268,11 @@ func portTestLifecycleCall(u *server.Object, sp *PortTestLifecycleSpec) int {
 	case 5:
 		return int(C.nox_xxx_mobRaiseZombie_534AB0(p))
 	case 6:
-		C.sub_544F70(p)
+		lifecycleReset(u)
 	case 7:
-		C.nox_xxx_createReleasedSoul_544E60(p)
+		lifecycleReleasedSoul(u)
 	case 8:
-		C.nox_xxx_zombieBurnDelete_544CE0((*C.uint32_t)(u.CObj()))
+		lifecycleBurnDelete(u)
 	case 9:
 		return int(C.nox_xxx_mobSearchEdible_544A00(asObjectC(u), C.float(math.Float32frombits(sp.Range))))
 	case 10:

@@ -80,7 +80,6 @@ int nox_xxx_unitIsMimic_534840(int a1);
 void nox_xxx_monsterMimicCheckMorph_534950(nox_object_t* a1);
 int nox_xxx_unitIsPlant_534A10(int a1);
 int nox_xxx_unitIsZombie_534A40(int a1);
-char nox_xxx_mobActionGetUp_534A90(int a1);
 unsigned int nox_xxx_mobRaiseZombie_534AB0(int a1);
 int nox_xxx_damageToMap_534BC0(int a1, int a2, int a3, int a4, nox_object_t* a5);
 int nox_xxx_wallPreDestroy_534DA0(int* a1);
@@ -260,19 +259,7 @@ int sub_544020(char* a1);
 int nox_xxx_tileCheckByte3_544070(int a1);
 int nox_xxx_tileCheckByte4_5440A0(int a1);
 int nox_xxx_tileSubtile_544310(float2* a1);
-int* nox_xxx_mobActionHunt_5449D0(int a1);
 int nox_xxx_mobSearchEdible_544A00(nox_object_t* a1, float a2);
-void nox_xxx_mobSearchEdible2_544A40(int a1, int a2);
 int sub_544AE0(int a1, float a2);
-void sub_544B20(int a1, int a2);
-char nox_xxx_mobActionPickupObject_544B90(int a1);
-int nox_xxx_mobGenericDeath_544C40(int a1);
-void nox_xxx_zombieBurnDeleteCheck_544CA0(uint32_t* a1);
-void nox_xxx_zombieBurnDelete_544CE0(uint32_t* a1);
-char sub_544D60(int a1);
-char nox_xxx_mobActionDead1_544D80(uint32_t* a1);
-void nox_xxx_createReleasedSoul_544E60(int a1);
-int sub_544F70(int a1);
-void nox_xxx_mobActionDead2_544EC0(int a1);
 
 #endif // NOX_PORT_GAME4_3
