@@ -112,7 +112,7 @@ func portTestCreationCall(u *server.Object, op int) uint32 {
 	case 1:
 		return uint32(C.nox_xxx_createWeapon_54C710(p))
 	case 2:
-		return uint32(uintptr(unsafe.Pointer(C.sub_54C950(p))))
+		return uint32(C.sub_54C950(p))
 	case 3:
 		return uint32(C.nox_xxx_createFnObelisk_54CA10(p))
 	case 4:

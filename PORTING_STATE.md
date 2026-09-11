@@ -3,16 +3,6 @@
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
-## In progress — object creation baseline
-
-Callback batch `6f0a291e` is committed and pushed. Locked the original-C
-baseline for GAME5 54C0C0–54CBB0 (11 functions, 340 lines) using new
-object_creation_porttest files and extensions to the shared callback fixture.
-3,372 cases are locked; callback/spell/main regression hashes pass (6.646s).
-No C in this next family has been removed. See docs/porting/OBJECT_CREATION.md.
-Ignored captures/logs are under build/port-object-creation. Convert the full family next.
-Current C remains 135,294 lines. No user question is pending.
-
 ## Resume here — 2026-09-11
 
 Continue the x86 C-to-Go port on `dev`, one connected, reviewed, tested,
@@ -20,41 +10,50 @@ documented, committed and pushed family at a time, until a substantive user
 question or rate limit. User approved more aggressive batching and at most one
 bounded helper. Preserve the untracked asset archive. No question is pending.
 
-Latest fully qualified batch: MonsterDef callback registration, strikes, death
-effects and loot, GAME5 549040–54A950. Original-C baseline `6923e2ac` is pushed.
-All 36 C bodies are removed; 28 parser/table ABI entries remain generated Go
-bridges and eight private helpers are Go-only. All locked C hashes match:
-4,224 generated cases plus 33 smoke, 172 loot, 100 strike, 36 poison, 48 debris,
-2 precision, 20 cloud and 88 loader checks. See docs/porting/AI_CALLBACKS.md.
-Production C: **135,294 physical lines (minus 948)**, 153 files, zero reference C.
+Latest fully qualified batch: object initialization and small death callbacks,
+GAME5 54C0C0–54CBB0. Original-C baseline `b50fa476` is committed and pushed.
+Eleven C bodies removed; generated ABI entries remain for the live C auto-spell
+caller and ten registered callbacks. The Go auto-spell wrapper calls Go directly.
+All 3,372 locked cases match. Armor's mixed address/integer result uses uintptr_t
+with the same 32-bit ABI bits, avoiding fake pointers on the Go stack.
+See docs/porting/OBJECT_CREATION.md for hashes and compiled arithmetic.
+Production C: **134,954 physical lines (minus 340)**, 153 files, zero reference C.
 
-Accumulated default/server/highres tests pass (55.763s/43.408s/44.000s). Three
+Accumulated default/server/highres tests pass (49.338s/44.875s/46.351s). Three
 production binaries pass and are ELF32/i386/SSE2. Full suite matches exactly
 1,553 known failure entries (15 pass/3 fail/32 skip packages). Fresh
-`ai-callback-port` headless gameplay exits 0 against preserved screenshots,
-overrides off, null audio. Artifacts: build/port-ai-callbacks.
+`object-creation-port` headless gameplay exits 0 against preserved screenshots,
+overrides off, null audio. Artifacts: build/port-object-creation.
 
-Previous qualified/pushed batches: spells `51dd2621`, main AI `f674ad3a`,
-monster state `29b6e5d3`, lifecycle `e3ee0c9c`, combat `e37039e5`, path
-`01a9ec4d`, navigation `e32982f7`, guard/escort `2bd0b90d`. C_LOC.md records counts.
+Previous qualified/pushed: callback family `6f0a291e` (minus 948), spells
+`51dd2621`, main AI `f674ad3a`, monster state `29b6e5d3`, lifecycle `e3ee0c9c`,
+combat `e37039e5`, path `01a9ec4d`, navigation `e32982f7`, guard/escort
+`2bd0b90d`. C_LOC.md records every physical count.
 
-Next: object initialization and small death callbacks, GAME5 54C0C0–54CBB0,
-**340 physical C lines / 11 functions**, stopping before player death-inventory
-cleanup 54CBD0. Capture original-C baseline with the existing callback fixture,
-then convert and qualify the complete family. Reuse modifier/health/cloud and
-creation fixtures; add the nine auto-spell type names, three Oblivion names,
-weapon/armor Modifier lists, larger guarded InitData/UseData, balance overlay
-and ToxicCloud update data. Inspect compiled arithmetic for durability/staff
-scaling. Audits and helper's server-fixture draft are ignored under
-build/port-ai-callbacks. Review actual source before applying helper drafts.
-Mapgen room connections 54B2D0–54BF20 are a later 530-line candidate requiring
-a separate room-graph fixture; do not expand this batch across that boundary.
+Next: quest death-penalty policy, GAME5 54CBD0–54D080, **385 physical C lines /
+seven functions**, stopping before PlayerDie 54D2B0. It is LIVE: registered
+PlayerDie calls 54CBD0 when quest lives reach zero. Port the complete penalty
+family, retaining its root C ABI for this caller; private helpers can be Go-only.
+The larger PlayerDie/score engine is a later batch, not a prerequisite.
+Reuse callback/lifecycle player+packet fixtures. Add guarded inventory objects,
+Diamond/Emerald/Ruby types, real Armor bit lookup, controlled real eligibility
+blob tables, and capture/restore full player/owner/update memory. Gem prices can
+use the real shop helper with simple-class objects, Worth and nil HealthData;
+no price hook is needed. Save shop caches 2386504/08/12 as well as penalty gem
+caches. Existing player-class item eligibility seam can record per-item choices.
+Gold handle zero safely uses the retained gold routines without a protection
+record; valid-record tests are optional if straightforward with existing helpers.
+
+Read actual C; helper audit mislabeled some knowledge as abilities and originally
+missed the live root call. Independent review caught both. Audits and server
+fixture draft are ignored under build/port-object-creation. After the original-C
+baseline is locked and committed, convert/qualify the whole family once.
 
 Use build/baseline/env.sh: Go1.26, GOARCH=386, GO386=sse2, CGO enabled, GCC.
 User dropped old-CPU support. Keep C x87 flags unchanged; inspect compiled spills
 where needed. Both random APIs 415FA0 and 416030 use Logic, never Other.
 Accumulated regex with porttest, server porttest, highres porttest:
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort|AINavigation|AIPath|AICombat|AILifecycle|AIMonsterState|AIMain|AISpell|AICallback)`
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort|AINavigation|AIPath|AICombat|AILifecycle|AIMonsterState|AIMain|AISpell|AICallback|ObjectCreation)`
 Once per connected batch: accumulated tests, three production builds/metadata,
 fresh headless gameplay with preserved screenshots and overrides off. Full-suite
 comparison at subsystem/shared boundaries; never print raw full-suite logs,

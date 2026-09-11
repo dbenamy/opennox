@@ -7,7 +7,7 @@ player death-inventory cleanup 54CBD0. The auto-spell initializer has a live C
 caller and a Go wrapper. The ten other callbacks are registered by Go and still
 require their C ABI addresses.
 
-## Original-C baseline
+## Original-C baseline (`b50fa476`)
 
 The shared callback fixture uses guarded C-owned actor, update, initializer,
 use and health buffers, real type/weapon/armor/effect lookups, real balance
@@ -18,7 +18,7 @@ Existing callback hashes pass unchanged after extending the fixture.
 
 There are 2,048 generated cases, 11 smoke cases, 200 auto-spell cases,
 640 equipment cases, 388 independent contracts, 84 cloud cases and one compiled
-precision discriminator (3,372 total). Coverage includes cold/warm/partial/aliased
+precision discriminator (3,372 total). Coverage includes cold/warm/partial/overridden
 caches, type matches, absent modifier definitions, nil health, game modes,
 16-bit FPS/durability wrap, byte ammo/charge writes, raw float32 bit patterns,
 negative/NaN/infinite balance values and signed cloud FPS conversion.
@@ -43,5 +43,20 @@ Hashes are locked in src/object_creation_porttest_test.go:
 - creation-corpus: `6bf58d5246c63bef4e22f9be339513b53df6ac01280234d1545235ec310b9ee9`.
 - creation-precision: `cdbbad34bf6bf71b987296520e88aa6bc54a5b5b3158532305081cd002eff176`.
 
-Production C remains 135,294 lines, 153 files, zero reference C.
-Next: convert all eleven owners, compare the locked hashes, then qualify once.
+## Native conversion
+
+All eleven bodies move to object_creation.go. The live auto-spell C caller and
+ten registered callbacks retain generated C ABI entries; the Go auto-spell
+wrapper now calls native Go directly. Armor's old pointer-typed result mixes a
+definition address with integer conversion bits. Its bridge now returns uintptr_t
+(the same 32-bit ABI value), keeping non-address results out of Go pointer slots.
+The no-op nullsub_35 call disappears; actual sync/status effects use shared Go.
+All 3,372 locked cases match unchanged (1.929s).
+
+Production C is **134,954 physical lines**, down **340**, across 153 files;
+zero reference C. Accumulated tests pass on default (49.338s), server (44.875s)
+and highres (46.351s). Three production builds pass and are ELF32/i386/SSE2.
+Full-suite metadata matches all 1,553 known failures exactly (15 pass, 3 fail,
+32 skip packages), with no added/removed entries. Fresh `object-creation-port`
+headless gameplay exits 0 against preserved screenshots, overrides off, null
+audio. Artifacts are under build/port-object-creation.
