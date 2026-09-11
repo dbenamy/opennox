@@ -50,3 +50,11 @@ binaries build. Fresh `waypoint-append-port` gameplay passes both preserved
 screenshots with overrides disabled. The full suite exactly matches the known
 1,553 failure-entry multiset: 15 passing, 3 known failing, 32 skipped/no-test
 packages. Artifacts: build/port-waypoint-append.
+
+## Fixture initialization repair — 2026-09-11
+
+The broader SSE2 qualification exposed a GC write-barrier failure in this test
+fixture: poisoned pointer slots were overwritten by typed Go stores. Initialize
+those slots to zero bytes first, then install the real C-owned waypoint pointers.
+All padding/guard and production behavior checks remain. The focused append
+corpus passes with GOGC=10; production code is unchanged.

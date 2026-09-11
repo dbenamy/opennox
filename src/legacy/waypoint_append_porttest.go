@@ -9,6 +9,7 @@ import "C"
 
 import (
 	"bytes"
+	"encoding/binary"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -104,6 +105,11 @@ func PortTestWaypointAppend(specs []PortTestWaypointAppendSpec) (snap PortTestWa
 		}
 		for i := range raw[4*wpSize:] {
 			raw[4*wpSize+i] = 0xc3
+		}
+		// Pointer slots must contain valid old values before typed Go stores:
+		// the GC write barrier can inspect them even though this storage is C-owned.
+		for i := 0; i < 32; i++ {
+			binary.LittleEndian.PutUint32(raw[srcOff+92+8*i:], 0)
 		}
 		source := &data[1]
 		// Equal indices make pointer identity, rather than a convenient index
