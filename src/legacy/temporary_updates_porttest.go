@@ -5,6 +5,8 @@ package legacy
 /*
 #include "GAME4_3.h"
 #include "GAME5.h"
+extern uint32_t dword_5d4594_2488604;
+extern uint32_t dword_5d4594_2488608;
 void nox_xxx_updateSpark_53ADC0(int a1);
 float* nox_xxx_updateProjTrail_53AEC0(int a1);
 void nox_xxx_updateLifetime_53B8F0(int unit);
@@ -207,6 +209,10 @@ func (p *portTestShopPools) temporaryPrepare() func() {
 	}
 	*memmap.PtrUint32(0x5d4594, 2488636) = 1
 	*memmap.PtrUint32(0x5d4594, 2488672) = 1287568416 // Actual initial nearest-search bound.
+	// SetPos queues collision updates in these retained C lists. Isolate
+	// their lifetime too, so later cases cannot follow freed fixture objects.
+	oldCollisionHead, oldCollisionTail := C.dword_5d4594_2488604, C.dword_5d4594_2488608
+	C.dword_5d4594_2488604, C.dword_5d4594_2488608 = 0, 0
 	oldUpdatable := p.proxy.core.Objs.UpdatableList
 	oldDeleted := p.proxy.core.Objs.DeletedList
 	p.proxy.core.Objs.DeletedList = nil
@@ -218,6 +224,7 @@ func (p *portTestShopPools) temporaryPrepare() func() {
 		for _, u := range p.temporary.indexed {
 			p.temporaryUnindex(u)
 		}
+		C.dword_5d4594_2488604, C.dword_5d4594_2488608 = oldCollisionHead, oldCollisionTail
 		p.proxy.core.Objs.UpdatableList = oldUpdatable
 		p.proxy.core.Objs.DeletedList = oldDeleted
 		for i, off := range temporaryCacheOffsets {

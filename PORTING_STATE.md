@@ -4,43 +4,35 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Active — temporary/projectile-update baseline locked
+### Completed — temporary objects and projectile updates
 
-Effects/use conversion and corrected timing contracts are pushed as `86fb7552`
-and `96b89ce7`. Production C count remains **127,104 / 149 files / zero reference
-C**. The next **31-function / 980-line** family is still entirely original C.
-See [TEMPORARY_UPDATES.md](docs/porting/TEMPORARY_UPDATES.md).
+Original-C baseline `14eb6ed2` preceded conversion. All 31 functions / 980 C lines
+are now native; production C is **126,124 lines / 149 files / zero reference C**.
+All 2,571 cases / 16 full captures match original C byte-for-byte. The fixture
+collision-list cleanup also reproduces every original hash unchanged in C.
+See [TEMPORARY_UPDATES.md](docs/porting/TEMPORARY_UPDATES.md) for findings/evidence.
 
-The baseline now contains **2,571 cases / 16 groups**, locked after two full C
-captures matched byte-for-byte (6.126s / 5.901s). All prior **17,743** contracts
-remain unchanged (52.968s). Check c-locked.log, then commit/push this baseline
-BEFORE production conversion. Stable captures:
-build/port-temporary-updates/c-locked-{source,repeat}-temporary-*.json.
+Accumulated tests (including all 20,314 focused cases) pass in default/server/
+highres: 153.927s / 112.748s / 112.020s. All three production builds are ELF32/i386,
+SSE2, CGO enabled. Full-suite failure multiset unchanged (1,553 entries; 15 pass,
+3 fail, 32 skip). Fresh unchanged repeat-a gameplay passed in 52.442s. Local
+captures/logs/builds: build/port-temporary-updates; gameplay run: temporary-updates-port.
+No pending user question. Commit/push this completed batch, summarize and CONTINUE.
 
-Fixture files: legacy/temporary_updates_porttest.go, server/temporary_updates_porttest.go
-and temporary_updates_porttest_test.go, plus optional shared shop fields and
-exact creation-owner tracing. Action IDs 600..630 cover the audited scope in
-build/port-temporary-updates/scope.json and the tracked doc's address list.
-The clock helper synchronizes both setup inputs and asserts actual frame/FPS.
-Independent assertions cover positive water/nearest/damage behavior, exact spawn
-counts, collision returns and seeded randomness; tick rates 1/4/30/60 are included.
-Spatial-node identities are normalized. Actual retained movement/expiry paths use
-the fixture's outer server and core.ExtServer; restore both, index nodes,
-deleted/updatable lists and caches/types on exit. Lifecycle owns all creations,
-even after delayed deletion; buffer and exact leak checks remain enabled.
+### Next — connected world-object mechanisms
 
-Next: convert the complete family, compare full native captures, qualify once
-at its boundary (accumulated default/server/highres, three builds, full-suite
-failure multiset, fresh gameplay), update C_LOC/docs, commit/push, summarize and
-CONTINUE. Combined focused corpus will be 20,314 cases. No pending question;
-no new agents. Use build/baseline/env.sh. Preserve user archive and stable
-baseline/native/gameplay evidence. Full-suite raw logs can contain secrets:
-report only action/package/test metadata.
+Audited 21 functions / 821 C lines: door/angle queue helpers, toggle/trigger/switch,
+elevator/shaft movement and audio helpers, visible/invisible pentagrams and
+teleport callbacks, push/blow and directional force, phantom and trap-door updates.
+Original scope and fixture plan: build/port-world-mechanisms/{scope.json,plan.md}.
+Still entirely C. Track the scope/plan and reuse the guarded temporary/effects/
+inventory fixture, existing script recorder, spatial paths and checked clock.
+Add only optional mechanism state/actions, keeping prior hashes unchanged.
 
-The effects timing audit is complete: 1,001 additional cases / 8 groups match
-original C at 0738dbed, no production fix needed. The isolated C checkout was
-removed after verifying its two edited files are identical to pushed 96b89ce7.
-Its stable captures remain in build/port-effects-timing/. See EFFECTS_USE.md.
+Repeat/lock/push the original-C baseline BEFORE conversion. Convert the connected
+family together, qualify once at its boundary, update C_LOC, commit/push and
+continue. No new agents. Preserve the user archive and stable captures. Raw
+full-suite output may contain secrets; report only action/package/test metadata.
 
 <!-- /current-checkpoint -->
 

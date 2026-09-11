@@ -149,7 +149,7 @@ func effectsFireWand(u, it *server.Object) int {
 	vx := float32(rng.FloatClamp(-2, 2) + float64(speed)*float64(dx))
 	vy := float32(rng.FloatClamp(-2, 2) + float64(speed)*float64(dy))
 	pos := types.Pointf{X: float32(float64(x) + float64(u.PosVec.X)), Y: float32(float64(y) + float64(u.PosVec.Y))}
-	C.nox_xxx_createSpark_54FD80(C.float(pos.X), C.float(pos.Y), 1, 20, C.float(vx), C.float(vy), 0, 0)
+	temporarySpark(pos, types.Ptf(vx, vy), 1, 20, 0, nil)
 	frame := GetServer().S().Frame()
 	timestamp := equipmentWord(it.CObj(), 136)
 	if frame-*timestamp > uint32(GetServer().S().TickRate()) {

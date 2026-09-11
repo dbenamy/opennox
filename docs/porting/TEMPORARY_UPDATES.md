@@ -114,3 +114,33 @@ all 16 hashes are locked. Local evidence is in
 build/port-temporary-updates/c-locked-{source,repeat}-temporary-*.json and associated
 logs. Earlier 15 groups repeated byte-for-byte and remain unchanged after adding
 the tick-rate group. Commit/push the locked baseline before production conversion.
+
+## Native conversion
+
+The 31 implementations now live in legacy/temporary_projectiles.go and
+legacy/temporary_effects.go. Thin exports retain all original entry points for
+C registrations and callers; the projectile callbacks and Spark-producing Go
+callers invoke Go directly. No production C implementation remains as a test
+reference. Removed 980 physical C lines: **126,124 / 149 files / zero reference C**.
+
+All 2,571 cases pass (5.742s), and the 16 native-second full captures are
+byte-identical to the locked original C. The first comparison detected a typed-nil
+owner interface in Spark creation, corrected before qualification (also audited
+for spider creation). Meteor impact retains the original nonpositive-height
+comparison, including its NaN branch semantics. Integer wrap, raw callback return
+words, RNG order, and original float spills remain explicit in the implementation.
+
+The owner-loss test also exposed a fixture lifetime problem: SetPos can queue an
+object in the retained C collision-update list. Both list globals are now
+saved, cleared for the case, and restored before freeing its objects. Original C
+at 14eb6ed2 with this cleanup passes all existing hashes unchanged (5.647s), with
+full c-isolated captures byte-identical to c-locked-source. No hash was relaxed
+or regenerated to match native behavior.
+
+Qualification evidence is in build/port-temporary-updates. All three production
+binaries built and were checked as ELF32/i386, GO386=sse2, CGO enabled. The full
+suite exactly matches the baseline failure multiset: 1,553 failure entries,
+15 packages pass, 3 fail, 32 skip; no added or removed failures. Fresh unchanged
+repeat-a gameplay passed in 52.442s under Xvfb with null audio and overrides
+disabled. Accumulated port tests, including all 20,314 focused family cases, passed in
+default/server/highres (153.927s / 112.748s / 112.020s).
