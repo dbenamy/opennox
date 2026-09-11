@@ -88,7 +88,7 @@ func Nox_xxx_playerRespawnItem_4EF750(a1 *server.Object, a2 string, a3 unsafe.Po
 	return asObjectS(C.nox_xxx_playerRespawnItem_4EF750(asObjectC(a1), internCStr(a2), (*C.int)(a3), C.int(a4), C.int(a5)))
 }
 func Nox_xxx_modifSetItemAttrs_4E4990(a1 *server.Object, a2 unsafe.Pointer) {
-	C.nox_xxx_modifSetItemAttrs_4E4990(asObjectC(a1), (*C.int)(a2))
+	stateAttributes(a1, a2)
 }
 func Sub_4184D0(a1 unsafe.Pointer) {
 	C.sub_4184D0((*nox_team_t)(a1))

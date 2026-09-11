@@ -1,6 +1,6 @@
 # Object state, geometry and ownership
 
-44 functions in 43 address blocks / 1,134 C lines to remove in GAME3_3.c. Two adjacent forward declarations remain in C; the unmarked
+Ported 44 functions in 43 address blocks / 1,134 C lines from GAME3_3.c. Two adjacent forward declarations remain in C; the unmarked
 `nox_objectCollideDefault` no-op is included. Include sync
 bit updates, animation/elevation/buffs/item attributes, spawned-object cleanup,
 unit classification, distance/direction/front tests, coordinate updates,
@@ -21,8 +21,8 @@ commit/push first. Preserve every prior capture hash. Convert the connected
 batch, qualify once across variants/builds/full-suite/headless gameplay, update
 physical tracked C_LOC and recovery docs, commit/push, summarize and continue.
 
-The original-C baseline is complete. Damage conversion was pushed as
-`54fdeca8`. Production object-state conversion follows the baseline commit.
+The batch is complete. Original-C baseline `c300fd2d` was committed and pushed
+before conversion.
 
 ## Candidate address blocks
 
@@ -72,7 +72,7 @@ The original-C baseline is complete. Damage conversion was pushed as
 
 ## Original-C baseline
 
-All 44 functions remain original C. **2,757 cases / 53 complete capture groups**
+Before conversion, all 44 functions were original C. **2,757 cases / 53 complete capture groups**
 repeat byte-for-byte in separate processes and are locked in
 `src/object_state_porttest_test.go`. Local captures: `build/port-object-state/`
 with `c-final-*`, `c-confirm-*` and `baseline-hashes.json`.
@@ -103,7 +103,37 @@ Fixture findings:
 - Two forward declarations stay in C. The unmarked `nox_objectCollideDefault`
   no-op is included, making 44 functions and 1,134 C lines to remove.
 
-Production C remains **120,952 lines / 149 files / zero reference C**. Commit and
-push this original-C baseline before converting the batch.
+At the original-C baseline, production C was **120,952 lines / 149 files /
+zero reference C**. This baseline was committed and pushed before conversion.
 
 Locked combined regression: **34,380 cases / 315 groups**, passed in 105.687s.
+
+## Native conversion
+
+All 44 functions are implemented in five Go files (sync, geometry, ownership,
+collisions and C ABI exports). Existing Object methods own sync updates,
+collider bounds and AI stack changes. Original C bodies are removed; the two
+adjacent forward declarations remain. No C reference algorithms are retained.
+All 2,757 cases / 53 hashes match on the first native run (9.310s).
+Physical tracked production C: **119,818 lines / 149 files** (−1,134).
+
+The broad regression caught a C bridge ownership issue in ShopStockLoading:
+the no-change modifier return points into a temporary Go input array. Shop,
+generator and quest callers now call the native attribute helper directly.
+The targeted rerun passes all object-state cases plus the 129-case shop stock
+baseline (10.551s); no expected captures changed. Final qualification below includes this caller change.
+
+## Qualification
+
+Accumulated port tests, including 34,380 focused cases / 315 groups, pass in
+default/server/highres: 178.994s / 161.251s / 162.972s. All 53 final native captures match the
+original-C files byte-for-byte (8.755s). Three production binaries
+are verified ELF32/i386, GO386=sse2 and CGO enabled. Full-suite failure identities
+and multiplicities match exactly: 1,553 entries; 15 packages pass, 3 fail and
+32 skip. Fresh unchanged repeat-a headless gameplay passes in
+37.775s using Xvfb and null audio, without updating expectations.
+
+Local evidence: build/port-object-state (native-final captures, variant logs,
+binaries and qualification.json), and baseline/runs/object-state-final.
+Next: [object initialization and reward generation](REWARD_GENERATION.md),
+21 address blocks / 1,862 C lines in one connected batch.

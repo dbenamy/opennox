@@ -100,19 +100,34 @@ Fresh unchanged repeat-a headless gameplay passes in 52.560s. Evidence:
 build/port-damage-dispatch and baseline/runs/damage-dispatch-port.
 Completed and pushed as `54fdeca8`; summary delivered.
 
-### Active — object-state original-C baseline preparation
+### Completed — object state, geometry and ownership
 
-Candidate: 44 functions / 1,134 C lines (two forward declarations retained).
-Still original C. The 2,757-case / 53-group baseline repeats exactly and hashes
-are locked. Accumulated regression is running; commit/push baseline before
-conversion. No production object-state conversion started. See
-[OBJECT_STATE.md](docs/porting/OBJECT_STATE.md). Local scope/source audit:
-build/port-object-state. Reuse guarded world/owner/attack slabs and existing
-native Object methods where appropriate. Repeat/lock/commit/push original-C
-captures before conversion, then qualify at the connected batch boundary.
-Continue after damage commit/push; no pending question or new agents. Preserve
-archive and stable evidence. Full-suite raw logs may contain secrets; print only
-action/package/test metadata.
+Original-C baseline `c300fd2d` was pushed before conversion. All 44 functions /
+1,134 C lines are native. All 2,757 cases / 53 complete captures match original C
+byte-for-byte. Production C: **119,818 lines / 149 files / zero reference C**.
+See [OBJECT_STATE.md](docs/porting/OBJECT_STATE.md). Existing native Object
+methods own sync/collider/AI changes. Broad regression caught the modifier
+C bridge returning a pointer into a temporary Go input; shop/generator/quest
+call the native helper directly. Expected captures are unchanged.
+
+Accumulated default/server/highres tests, including all 34,380 focused cases,
+pass in 178.994s / 161.251s / 162.972s. Three production binaries verified ELF32/i386/SSE2/CGO.
+Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip).
+Fresh unchanged repeat-a headless gameplay passes in 37.775s. Evidence:
+build/port-object-state and baseline/runs/object-state-final.
+
+### Active — reward-generation original-C baseline preparation
+
+Candidate: 21 address blocks / 1,862 physical C lines in GAME3_3.c, addresses
+004F0390 through 004F2210. Still original C; no baseline or conversion completed.
+See [REWARD_GENERATION.md](docs/porting/REWARD_GENERATION.md). Local scope/source
+audit and fixture drafts (not yet applied): build/port-reward-generation.
+Reuse guarded object/type/owner/RNG fixtures; successful books/equipment/modifiers
+and placement must be exercised alongside filters and no-op paths. Repeat,
+lock, commit and push original-C captures before conversion. Continue after
+object-state commit/push; no question pending and no new agents. Preserve archive
+and stable evidence. Full-suite raw logs may contain secrets; print only
+package/test/action metadata.
 
 ## GitHub backup and recovery
 

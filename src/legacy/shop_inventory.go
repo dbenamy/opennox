@@ -160,7 +160,7 @@ func shopLoad(s *shopSession) {
 				for k, p := range e.Modifiers {
 					mods[k] = uint32(uintptr(unsafe.Pointer(p)))
 				}
-				C.nox_xxx_modifSetItemAttrs_4E4990(asObjectC(u), (*C.int)(unsafe.Pointer(&mods[0])))
+				stateAttributes(u, unsafe.Pointer(&mods[0]))
 			}
 			if u.Xfer == C.nox_xxx_XFerSpellReward_4F5F30 {
 				*(*byte)(u.UseData.Ptr) = byte(e.Reward)

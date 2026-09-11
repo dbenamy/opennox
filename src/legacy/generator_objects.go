@@ -57,7 +57,7 @@ func generatorCopy(src, dst *server.Object) {
 				continue
 			}
 			if clone.ObjClass&0x13001000 != 0 {
-				C.nox_xxx_modifSetItemAttrs_4E4990(asObjectC(clone), (*C.int)(it.InitData))
+				stateAttributes(clone, it.InitData)
 			}
 			inventoryInsert(dst, clone, 0)
 			if it.ObjFlags&0x100 != 0 {
