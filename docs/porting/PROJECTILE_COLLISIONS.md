@@ -1,4 +1,4 @@
-# Candidate next batch: projectile collisions
+# Projectile collisions
 
 27 connected handlers/helpers, 1,006 physical C lines in GAME3_3.c. Keep arrow
 and chakram collisions with their helpers; include generic/spark/fireball,
@@ -79,11 +79,11 @@ Fixture audit:
 
 ## Original-C baseline
 
-All 27 candidate production functions remain C. A 1,704-case / 49-group corpus
+Original-C baseline `42fdbc86` was committed and pushed before conversion. A 1,704-case / 49-group corpus
 passes against them; first and repeat full captures are byte-identical (5.401s
 and 5.841s). Hashes are locked in projectile_collisions_porttest_test.go. The accumulated
 regression passes all 28,041 focused cases / 220 groups in 81.843s, including
-every earlier locked hash. This checkpoint must be pushed before conversion.
+every earlier locked hash. Every earlier locked hash was unchanged.
 
 Coverage includes accepted/rejected damage (including low-byte versus full-word
 return tests), named projectile damage, wall normals and contact, game modes,
@@ -106,3 +106,33 @@ Local evidence: build/port-projectile-collisions/{candidate-scope.json,
 c-first.log,c-repeat.log,c-first-projectile-*.json,c-repeat-projectile-*.json,
 baseline-hashes.json,c-regression.log}. No C algorithm is retained for tests.
 Current production C remains 123,290 lines / 149 files / zero reference C.
+
+## Native conversion
+
+All 27 functions / 1,006 C lines now live in projectile_collisions.go,
+projectile_collisions_effects.go, projectile_collisions_weapons.go and thin
+projectile_collisions_exports.go. All 49 full native captures match original C
+on the first run (1,704 cases, 6.175s). Production C is 122,284 lines /
+149 files / zero test-reference C.
+
+Handlers call native attack/equipment/inventory/resource/reflection helpers
+directly. Arrow and chakram damage records preserve the original callback and
+mutation order; rejected-hit low-byte/full-word distinctions remain explicit.
+Chakram candidate filtering retains the original numeric conversion of float
+interpretations of class/flag words, including its unusual behavior. Spatial
+selection, fallback RNG, signed-short mana timestamps, splash falloff, trap
+creation and inventory-return effects match the captured C behavior.
+
+## Qualification
+
+All accumulated port tests, including 28,041 focused cases / 220 groups, pass in
+default/server/highres: 151.165s / 137.223s / 142.355s. All three production binaries are
+verified ELF32/i386, GO386=sse2 and CGO enabled. Full-suite failure identities and
+multiplicities match the baseline exactly: 1,553 entries; 15 packages pass,
+3 fail and 32 skip. Fresh unchanged repeat-a headless gameplay passes in
+36.421s using Xvfb and null audio, without updating expected captures.
+
+Local evidence: build/port-projectile-collisions (native-first captures,
+variant logs, binaries and qualification.json), and
+build/baseline/runs/projectile-collisions-port. Next:
+[damage dispatch and durability](DAMAGE_DISPATCH.md), one connected batch.

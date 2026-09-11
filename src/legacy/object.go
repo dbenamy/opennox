@@ -539,7 +539,7 @@ func Nox_xxx_orderUnit_533900(owner, obj *server.Object, order uint32) {
 }
 
 func Sub_4E9A30(a1, a2 *server.Object) bool {
-	return C.sub_4E9A30(asObjectC(a1), asObjectC(a2)) != 0
+	return projectileTrapEligible(a1, a2)
 }
 
 func Nox_xxx_unitsHaveSameTeam_4EC520(a1, a2 *server.Object) bool {

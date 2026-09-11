@@ -63,18 +63,35 @@ pass in 146.770s / 127.486s / 134.713s. Three production binaries verified ELF32
 Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip).
 Fresh unchanged repeat-a headless gameplay passes in 39.677s. Evidence:
 build/port-player-attack and baseline/runs/player-attack-port.
+Completed/pushed as `875a49a2`; summary delivered.
 
-### Active — projectile collision original-C baseline preparation
+### Completed — projectile collisions, arrows/chakrams and traps
 
-Candidate: 27 connected handlers/helpers / 1,006 C lines; still original C,
-1,704 cases / 49 full captures repeat exactly and hashes are locked. All 28,041
-focused cases / 220 groups pass in 81.843s. Push this baseline before conversion. See [PROJECTILE_COLLISIONS.md](docs/porting/PROJECTILE_COLLISIONS.md).
-Scope/source/audit: build/port-projectile-collisions. Reuse the guarded attack,
-world, projectile and inventory fixtures; repeat/lock/commit/push original-C
-captures before conversion. Qualify once for the completed connected batch.
-Player attack was committed/pushed as `875a49a2`; summary delivered. No pending question or new
-agents. Preserve archive and stable evidence. Full-suite raw logs may contain
-secrets; print only action/package/test metadata.
+Baseline `42fdbc86` was pushed before conversion. All 27 functions / 1,006 C
+lines are native. All 1,704 cases / 49 complete captures match original C on
+the first native run (6.175s). Production C: **122,284 lines / 149 files / zero
+reference C**. See [PROJECTILE_COLLISIONS.md](docs/porting/PROJECTILE_COLLISIONS.md).
+Handlers use native attack/equipment/inventory/resource/reflection helpers;
+callback order, byte/full-word damage returns and unusual float flag conversions
+retain original behavior.
+
+Accumulated default/server/highres tests, including all 28,041 focused cases,
+pass in 151.165s / 137.223s / 142.355s. Three production binaries verified ELF32/i386/SSE2/CGO.
+Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip).
+Fresh unchanged repeat-a headless gameplay passes in 36.421s. Evidence:
+build/port-projectile-collisions and baseline/runs/projectile-collisions-port.
+
+### Active — damage-dispatch original-C baseline preparation
+
+Candidate: 26 connected functions / 1,331 C lines, still original C. No baseline
+hashes locked yet. See [DAMAGE_DISPATCH.md](docs/porting/DAMAGE_DISPATCH.md).
+Scope/source/audit: build/port-damage-dispatch. Reuse guarded health, equipment,
+attack and collision fixtures; repeat/lock/commit/push original-C captures before
+converting default/player damage and their armor/durability/defense helpers.
+Qualify once at the connected batch boundary. Continue after committing/pushing
+projectile collisions; no pending question or new agents. Preserve archive and
+stable evidence. Full-suite raw logs may contain secrets; print only
+action/package/test metadata.
 
 <!-- /current-focus -->
 
