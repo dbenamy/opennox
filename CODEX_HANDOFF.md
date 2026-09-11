@@ -115,27 +115,33 @@ Completed and pushed as `04b6d580`; summary delivered.
 Fresh unchanged repeat-a headless gameplay passes in 37.775s. Evidence:
 build/port-object-state and baseline/runs/object-state-final.
 
-### Active — reward-generation original-C baseline
+### Completed — reward generation and object initialization
 
-All 21 functions / 1,862 physical C lines remain original C. The 6,974-case /
-49-group corpus repeats byte-for-byte and hashes are locked. Combined regression
-passes 41,306 cases / 363 groups (122.877s); locked reward-only rerun passes (20.166s).
-Baseline `9b211b92` is pushed. A 48-case gold-rounding addendum repeats and is
-locked; commit/push the addendum before C cutover. Two unexported Go reward
-helper files are drafted; production C bodies remain unchanged. See
-[REWARD_GENERATION.md](docs/porting/REWARD_GENERATION.md). Evidence and source
-scope: build/port-reward-generation (c-final/c-confirm, baseline-hashes.json,
-positive-coverage.json). Factories return allocations without placement; the
-fixture now captures/frees those returns. Created update storage matches the
-existing guarded 64-byte payload convention. Positive coverage includes all
-reward families, all four modifier slots and actual placement/deletion.
+Baselines `9b211b92` and `9caa2c85` were pushed before cutover. All 21 functions /
+1,862 C lines are native. All 6,974 cases / 49 complete captures match original C
+byte-for-byte on the first native run (21.068s). Production C: **117,956 lines /
+149 files / zero reference C**. See [REWARD_GENERATION.md](docs/porting/REWARD_GENERATION.md).
 
-Production C remains 119,818 lines / 149 files / zero reference C. Continue with
-the entire connected batch after baseline push. No question pending and no new
-agents. Preserve archive and stable evidence. Full-suite raw logs may contain
-secrets; print only package/test/action metadata. Obsolete regenerable compiler
-cache files over 16 MB and older than two hours were pruned (40 files, 1.063 GB)
-to keep working space available; stable assets/evidence/binaries were preserved.
+Accumulated default/server/highres tests, including 41,354 focused cases / 364
+groups, pass in 193.708s / 169.508s / 178.540s. Three production binaries verified ELF32/i386/SSE2/CGO.
+Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip).
+Fresh unchanged repeat-a headless gameplay passes in 34.990s.
+Evidence: build/port-reward-generation and baseline/runs/reward-generation-port.
+Confirmation/preliminary captures are losslessly compressed as .json.gz;
+c-final/native-first remain raw. No reference C algorithms retained.
+
+### Active — player-controls original-C baseline preparation
+
+Next scope: 56 functions / 1,971 removable C lines in
+[PLAYER_CONTROLS.md](docs/porting/PLAYER_CONTROLS.md); source audit at
+build/port-player-controls/candidate-scope.json and candidate-source.txt.
+Two adjacent C declarations stay in place. All candidate functions remain C;
+no fixtures or conversion applied yet. Reuse guarded players/owners/AI fixtures,
+require positive creation/respawn/observer coverage, repeat and lock original-C
+captures, commit/push baseline before conversion. Continue autonomously after
+reward commit/push; no question pending and no new agents. Preserve archive
+and stable evidence. Full-suite raw logs may contain secrets; print only
+package/test/action metadata.
 
 <!-- /current-focus -->
 

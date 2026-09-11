@@ -1,10 +1,10 @@
 # Object initialization and reward generation
 
-Next connected batch: 21 address blocks / 1,862 physical C lines in
+Completed connected batch: 21 address blocks / 1,862 physical C lines in
 GAME3_3.c, from 004F0390 through 004F2210. Includes simple object initializers,
 generator setup, weighted reward categories and tiers, spell/ability/field-guide
 books, armor/weapon modifiers, potions/gold/gems and marker selection/placement.
-All candidate production functions remain original C.
+All candidate production functions are now native Go; baseline history follows.
 
 Use the existing guarded object/owner fixture and real object allocator, type
 registry and RNG. Add guarded reward-marker data, definition and modifier-table
@@ -70,3 +70,34 @@ averages and large-plus-small XP sums, repeated against the still-original C
 (0.282s / 0.223s), with a locked hash. Total: **6,974 cases / 49 groups**.
 The two draft Go reward helpers are not yet exported or called by production C;
 all 21 C bodies remain unchanged until this addendum is committed and pushed.
+
+## Native conversion
+
+Baseline `9b211b92` and gold-rounding addendum `9caa2c85` were pushed before
+C cutover. All 21 functions are now native: weighted selection, book/item
+factories, modifier filtering, marker placement and object initializers.
+Shared helpers preserve table order, original RNG draws, odd-tier overwrite,
+modifier fallback and ID-based duplicate suppression. Shop callers use the
+native marker helper directly. The first native run matches all **6,974 cases /
+49 complete captures** byte-for-byte (21.068s), including gold rounding.
+
+Exactly **1,862 C lines** are removed, leaving **117,956 / 149 files / zero
+reference C**. Full qualification passed as recorded below.
+Confirmation and preliminary baseline JSON files were losslessly compressed to
+`.json.gz` to save space; c-final and native-first captures remain directly
+readable. compare-captures.py supports the compressed confirmation files.
+Next planned batch: [player controls, respawning and observers](PLAYER_CONTROLS.md).
+
+## Qualification
+
+All 6,974 cases / 49 complete captures match original C byte-for-byte (21.068s).
+Accumulated tests, including 41,354 focused cases / 364 groups, pass in
+default/server/highres: 193.708s / 169.508s / 178.540s. Three production binaries are verified
+ELF32/i386, GO386=sse2 and CGO enabled. Full-suite failure identities and
+multiplicities match exactly: 1,553 entries; 15 packages pass, 3 fail, 32 skip.
+Fresh unchanged repeat-a headless gameplay passes in 34.990s
+using Xvfb and null audio, without updating expectations.
+
+Evidence: build/port-reward-generation/qualification.json and sibling captures,
+logs and binaries; build/baseline/runs/reward-generation-port. Next batch:
+[player controls, respawning and observers](PLAYER_CONTROLS.md).

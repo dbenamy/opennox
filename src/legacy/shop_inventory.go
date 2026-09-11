@@ -129,13 +129,13 @@ func shopLoad(s *shopSession) {
 		stage := uint32(Nox_game_getQuestStage_4E3CC0()) + 2
 		for _, category := range [...]uint32{8, 8, 8, 8, 16, 16, 16, 16, 1, 1, 1, 1, 1, 1, 4, 4, 4} {
 			*(*uint32)(marker.InitData) = category
-			if u := (*server.Object)(unsafe.Pointer(C.nox_server_rewardgen_activateMarker_4F0720(C.int(uintptr(marker.CObj())), C.uint(stage)))); u != nil {
+			if u := rewardMarker(marker, stage); u != nil {
 				shopAdd(s, u)
 			}
 		}
 		if core.Rand.Logic.Int(0, 100) > 90 {
 			*(*uint32)(marker.InitData) = 2
-			if u := (*server.Object)(unsafe.Pointer(C.nox_server_rewardgen_activateMarker_4F0720(C.int(uintptr(marker.CObj())), C.uint(stage)))); u != nil {
+			if u := rewardMarker(marker, stage); u != nil {
 				shopAdd(s, u)
 			}
 		}
