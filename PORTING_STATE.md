@@ -132,7 +132,7 @@ Evidence: build/port-reward-generation and baseline/runs/reward-generation-port.
 Confirmation/preliminary captures are losslessly compressed as .json.gz;
 c-final/native-first remain raw. No reference C algorithms retained.
 
-### Active — player-controls original-C baseline preparation
+### Active — player-controls baseline audit; message-padding decision pending
 
 Next scope: 56 functions / 1,971 removable C lines in
 [PLAYER_CONTROLS.md](docs/porting/PLAYER_CONTROLS.md); source audit at
@@ -141,7 +141,10 @@ Two adjacent C declarations stay in place. All candidate functions remain C;
 no fixtures or conversion applied yet. Reuse guarded players/owners/AI fixtures,
 require positive creation/respawn/observer coverage, repeat and lock original-C
 captures, commit/push baseline before conversion. Continue autonomously after
-reward commit/push; no question pending and no new agents. Preserve archive
+reward commit/push (completed as `58eca54d`). No new agents.
+Pending user choice: zero the undefined padding in locked-door messages or defer
+that one routine. Source/disassembly and concrete test plan are recorded in
+PLAYER_CONTROLS.md; no controls production changes or locked baselines yet. Preserve archive
 and stable evidence. Full-suite raw logs may contain secrets; print only
 package/test/action metadata.
 
