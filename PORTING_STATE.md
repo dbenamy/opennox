@@ -3,35 +3,38 @@
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
-## Resume here — 2026-09-10
+## Resume here — 2026-09-11
 
-Latest completed chunk: player-ping minimum/average 554290/554300. Existing Go
-wrappers now call native helpers; both unused C bridges are retired. Production
-C is **141,126 physical lines** in 153 files, zero reference C. Original-C
-baseline: fea6ca7b, 2,136 aggregate results with exact callback traces and storage
-checks. See [ping aggregates](docs/porting/PING_AGGREGATES.md) and
-[counts](docs/porting/C_LOC.md). The earlier approved writer fix remains complete.
+Latest completed chunk: network alias reset/select/write 57B920/57B9A0/57BA10,
+plus the user-approved fix in both C packet callers. Production C is **141,082
+physical lines** in 153 files, zero reference C. Original-C helper baseline:
+19d02832, 28,656 operations. Another 1,530 real-caller cases cover full tables and
+every usable slot across frame boundaries, with packet processing, guard bytes
+and exact queued announcements checked. The regression reproduced exactly six
+full-table failures before changing the caller checks. See
+[network aliases](docs/porting/NETWORK_ALIASES.md) and [counts](docs/porting/C_LOC.md).
+No user decision remains pending; both approved writer/alias fixes are complete.
 
 All accumulated protection/network/waypoint/rules/spell-class/ping tests pass on
-386 default/server/highres. All three binaries build. Fresh ping-aggregate-port
-gameplay passes both preserved screenshots with overrides disabled. Artifacts:
-build/port-ping-aggregate. Full suite last repeated at the command-rule milestone:
-15 passing, 3 known failing, 32 skipped/no-test packages, with exactly the same
-1,553 failure entries as the writer milestone. No tests/builds remain running.
+386 default/server/highres. All three binaries build. Fresh network-alias-port
+gameplay passes both preserved screenshots with overrides disabled. Full suite
+exactly matches the command-rule milestone: 15 passing, 3 known failing and 32
+skipped/no-test packages, identical 1,553 failure entries (zero added/removed).
+Artifacts: build/port-network-alias. No validation processes remain running.
 
-Next: network alias reset/select/write 57B920/57B9A0/57BA10. No production alias
-changes yet. Original-C helper baseline passes 28,656 operations; actual-caller
-regression fixture is being drafted under build/port-network-alias. User approved fixing exhaustion during this
-port on 2026-09-11; no decision remains pending. Both C callers assign the signed-char selector to unsigned char v24
-then compare v24 != -1, so full-table sentinel 255 causes an eight-byte write
-past the table and invalid alias announcement. Disassembly confirms the checks
-are optimized away. Proposed fix: compare to byte 255 and skip write/announcement
-on exhaustion while continuing normal packet processing. See the detailed
-[alias investigation and fixture plan](docs/porting/NETWORK_ALIASES.md).
-Do not confuse the existing outbound lookup 57B930 with incoming slot allocation.
+Next: glyph/item eligibility 57B400/57B450. Ignored draft fixture is under
+build/port-glyph-eligibility/draft; not installed or tested yet. Agent is adding
+positive uncached Glyph lookup via a minimal client-porttest registry helper.
+Primary must independently test cache fill/reuse/zero retry and independence,
+missing drawable/current-player/local-player gates, glyph wizard restriction,
+cheat ordering, class-mask callback arguments/trace and readonly storage. Preserve
+full C ABI for 57B400's live C caller; recheck callers before retiring 57B450 bridge.
+Keep C nox_cheat_allowall: it also serves GAME3_3.c. Audit raw class-shift semantics
+before deciding coverage beyond legitimate class values; don't silently change
+existing behavior. Existing root item helper is related but has different gates.
 
-Keep 57ADF0 list cleanup with its future GUI-owner port: it still serves GUI
-options teardown and returns the first freed pointer. Do not silently change ABI.
+Keep 57ADF0 list cleanup with its future GUI-owner port: GUI options teardown
+still propagates its first freed pointer. Do not silently change that ABI.
 
 Test from src with baseline environment: `go test -tags porttest -count=1
 -run '^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates)' .`;
@@ -652,3 +655,12 @@ order, host exclusion, two timing reads per qualifying player, unsigned minimum,
 All three accumulated test variants, builds and fresh gameplay checks pass.
 Production C: **141,126 lines (−54)**; see docs/porting/PING_AGGREGATES.md.
 Next alias-table work has a pending user decision documented in the top checkpoint.
+
+## Network aliases and exhaustion fix completed — 2026-09-11
+
+Ported reset/select/write with original-C helper baseline 19d02832. Actual-caller
+regressions reproduced the approved bug and now pass with both sentinel checks
+fixed. Exact packet/sprite/camera behavior continues on exhausted tables. All
+three accumulated test variants/builds and fresh gameplay pass; full-suite
+failure multiset exactly matches baseline (1,553 entries). Production C:
+**141,082 lines (−44)**. Details: docs/porting/NETWORK_ALIASES.md.

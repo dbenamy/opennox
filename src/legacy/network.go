@@ -232,7 +232,7 @@ func Nox_xxx_netClientSend2_4E53C0(a1 int, a2 unsafe.Pointer, a3 int, a4 int, a5
 	C.nox_xxx_netClientSend2_4E53C0(C.int(a1), a2, C.int(a3), C.int(a4), C.int(a5))
 }
 func Sub_57B920(a1 unsafe.Pointer) {
-	C.sub_57B920(a1)
+	resetNetworkAliases((*[255]server.PlayerNetData)(a1))
 }
 func Nox_xxx_cliSetSettingsAcquired_4169D0(a1 int) {
 	C.nox_xxx_cliSetSettingsAcquired_4169D0(C.int(a1))

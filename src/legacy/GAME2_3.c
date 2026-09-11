@@ -1522,7 +1522,7 @@ int nox_xxx_netCliProcUpdateStream_494A60(unsigned char* a1, int a2, uint32_t* a
 		v5 = a1 + 5;
 		v6 = *(unsigned short*)(a1 + 3);
 		v24 = nox_xxx_cliGenerateAlias_57B9A0((int)getMemAt(0x5D4594, 1198020), v3, v6, gameFrame());
-		if (v24 != -1) {
+		if (v24 != 0xFFu) {
 			sub_57BA10((int)getMemAt(0x5D4594, 1198020 + 8 * v24), v3, v6, -1);
 			v23[0] = 0xA5; // MSG_NEW_ALIAS
 			v23[1] = v24;
@@ -1622,7 +1622,7 @@ unsigned char* nox_xxx_netCliUpdateStream2_494C30(unsigned char* a1, int a2, int
 		v9 = *v7;
 		v10 = v7 + 1;
 		v24 = nox_xxx_cliGenerateAlias_57B9A0((int)getMemAt(0x5D4594, 1198020), v6, v9, gameFrame());
-		if (v24 != -1) {
+		if (v24 != 0xFFu) {
 			sub_57BA10((int)getMemAt(0x5D4594, 1198020 + 8 * v24), v6, v9, gameFrame() + 60);
 			v26[0] = 0xA5; // MSG_NEW_ALIAS
 			v26[1] = v24;

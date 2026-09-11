@@ -1,8 +1,8 @@
-# Network alias table: next-chunk investigation — 2026-09-10
+# Network alias table and exhaustion fix — 2026-09-11
 
-Proposed scope: reset 57B920, slot selection 57B9A0 and record write 57BA10.
-Original-C helper fixtures are installed and pass on 386; no production alias
-changes yet.
+Scope: reset 57B920, slot selection 57B9A0 and record write 57BA10.
+Original-C helper baseline: 19d02832. Native helpers and the approved caller
+fix are complete and validated.
 The table has 255 eight-byte records: two uint16 keys and a uint32 frame.
 Storage belongs to the client blob or embedded Player.NetData16, not these helpers.
 
@@ -37,10 +37,10 @@ The proposed fix compares against the byte sentinel 255 and skips the table
 write and alias announcement when full, while continuing packet processing.
 Proceed with the fix and actual-caller regression coverage.
 
-Planned tests: original-C selection across every start byte, full-width and
+Helper coverage: original-C selection across every start byte, full-width and
 negative keys, matching versus expired records, exact frame equality, wrap and
 full-table failure; guarded C-owned storage for exact reset/write extents, key
-truncation and return bits. If fixing exhaustion, add actual caller coverage for
+truncation and return bits. Actual caller coverage includes
 full tables and successful aliases including 128..254, checking no write or
 announcement on failure and unchanged normal packet processing.
 
@@ -56,3 +56,34 @@ returned pointer bits, all table bytes, and 16-byte guards on both sides.
 All **28,656 helper operations** pass against original C before replacement.
 Production C remains **141,126 physical lines**, 153 files, zero reference C.
 Local artifacts: `build/port-network-alias/`.
+
+## Actual-caller regression and approved fix
+
+1,530 cases call the real C packet handlers (both streams × three frame values ×
+full-table plus each of 254 usable slots). A minimal server owns a real NetList;
+a C-owned drawable proxy records sprite creation and subsequent frame/animation
+updates. Check exact consumed lengths, decoded positions, camera calls, sprite
+updates, full table bytes, the adjacent eight-byte guard and exact queued messages.
+Fixtures restore globals and blob bytes and release netlist/drawable allocations.
+
+Before changing the callers, all 1,524 successful-slot cases passed. Exactly the
+six exhausted-table cases failed: the guard became the attempted record and
+MSG_NEW_ALIAS advertised 255. The normal packet-processing assertions still
+passed. Example stream 1 guard: 01340900ffffffff; message: a5ff01340900ffffffff.
+Stream 2 also reproduced frame+60 rollover at frame 0xffffffef. Evidence is in
+build/port-network-alias/caller-before-fix.log (local, not committed).
+
+The two checks now compare the unsigned byte to 0xFFu. Exhaustion skips only
+the table write and alias announcement; packet processing continues. Successful
+slots 128..254 stay accepted. The original helper ABI remains live for C callers,
+while the existing Go reset wrapper calls the native reset directly. No reference
+C implementation is retained. The outbound lookup remains unchanged.
+
+Production C: **141,082 physical lines (−44)** in 153 files; reference C: **0**.
+All accumulated protection/network/waypoint/rules/spell-class/ping tests pass on
+386 default/server/highres. All three production binaries build. Fresh
+network-alias-port gameplay passes both preserved screenshots with overrides
+disabled. The full suite exactly matches the command-rule baseline: 15 passing,
+3 known failing and 32 skipped/no-test packages; the same multiset of 1,553
+failure entries, with zero added or removed. Local comparison metadata:
+build/port-network-alias/full-suite-comparison.json.
