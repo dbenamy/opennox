@@ -21,6 +21,7 @@ type PortTestRoamOwnerSpec struct {
 type portTestRoamOwnerServer struct {
 	portTestRandomServer
 	mode     byte
+	precheck bool
 	fallback *server.Waypoint
 	trace    []uint32
 }
@@ -45,4 +46,9 @@ func (s *portTestRoamOwnerServer) Nox_xxx_creatureSetDetailedPath_50D220(u *serv
 func (s *portTestRoamOwnerServer) Sub_50CB20(u *server.Object, p *types.Pointf) *server.Waypoint {
 	s.trace = append(s.trace, 2, math.Float32bits(p.X), math.Float32bits(p.Y))
 	return s.fallback
+}
+
+func (s *portTestRoamOwnerServer) Sub_50B810(u *server.Object, p *types.Pointf) bool {
+	s.trace = append(s.trace, 3, math.Float32bits(p.X), math.Float32bits(p.Y))
+	return s.precheck
 }

@@ -19,6 +19,7 @@ import (
 )
 
 type PortTestRoamSpec struct {
+	GuardEscort                *PortTestGuardEscortSpec
 	Owner                      *PortTestRoamOwnerSpec
 	Op, Seed                   int
 	Index, Insert, Count, Mask byte
@@ -44,6 +45,13 @@ type PortTestRoamResult struct {
 // PortTestRoam runs a shared guarded fixture through registered actions and native helpers.
 // Pointer-bearing output is normalized to stable waypoint IDs before hashing.
 func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
+	for _, sp := range specs {
+		if sp.GuardEscort != nil {
+			restore := portTestGuardEscortEnvironment()
+			defer restore()
+			break
+		}
+	}
 	core := new(server.Server)
 	core.SetFrame(123)
 	restoreTypes := core.PortTestObjectInitSize(1, 0)
@@ -76,7 +84,23 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		}
 		return uint32(uintptr(unsafe.Pointer(&wb[int(id)*stride+8])))
 	}
-	ids := map[uint32]uint32{0: 0}
+	ids := map[uint32]uint32{0: 0, uint32(uintptr(unsafe.Pointer(target))): 100}
+	var configurePlayers func(int)
+	playersUnchanged := func() bool { return true }
+	for _, sp := range specs {
+		if sp.GuardEscort != nil {
+			units, configure, unchanged, free := core.PortTestEscortPlayers()
+			defer free()
+			configurePlayers, playersUnchanged = configure, unchanged
+			for i := range units {
+				ids[uint32(uintptr(unsafe.Pointer(&units[i])))] = uint32(200 + i)
+			}
+			break
+		}
+	}
+	scriptName, freeScriptName := alloc.Make([]byte{}, 128)
+	defer freeScriptName()
+
 	for id := byte(1); id < 34; id++ {
 		ids[raw(id)] = uint32(id)
 	}
@@ -181,10 +205,27 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 			proxy.mode = owner.PathMode
 			proxy.fallback = roamWaypoint(raw(owner.Fallback))
 		}
+		if sp.GuardEscort != nil {
+			portTestGuardEscortPrepare(proxy, obj, target, sp.GuardEscort)
+			configurePlayers(sp.GuardEscort.Players)
+			clear(scriptName)
+			copy(scriptName, sp.GuardEscort.ScriptName)
+			core.Objs.List = nil
+			core.Objs.Pending = nil
+			if sp.GuardEscort.ScriptName != "" {
+				target.IDPtr = unsafe.Pointer(&scriptName[0])
+				if sp.GuardEscort.Pending {
+					core.Objs.Pending = target
+				} else {
+					core.Objs.List = target
+				}
+			}
+		}
 		core.Rand.Logic, core.Rand.Other = prand.New(sp.Seed), prand.New(sp.Seed+1)
 		core.AI.StackChanged = false
 		beforeO, beforeU, beforeW := bytes.Clone(ob), bytes.Clone(ub), bytes.Clone(wb)
 		beforeD, beforeT := bytes.Clone(db), bytes.Clone(tb)
+		beforeName := bytes.Clone(scriptName)
 		ret := 0
 		var nanos int64
 		switch sp.Op {
@@ -206,10 +247,16 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 				server.GetAIAction(ai.ACTION_ROAM).Update(obj)
 			}
 			nanos = time.Since(start).Nanoseconds()
+		case 7:
+			start := time.Now()
+			for repeat := 0; repeat < max(1, sp.Owner.Repeat); repeat++ {
+				ret = int(normalize(portTestGuardEscortCall(obj, sp.GuardEscort)))
+			}
+			nanos = time.Since(start).Nanoseconds()
 		default:
 			panic("invalid roam operation")
 		}
-		r := PortTestRoamResult{Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT)}
+		r := PortTestRoamResult{Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT) && playersUnchanged() && bytes.Equal(scriptName, beforeName)}
 		for i := range r.History {
 			r.History[i] = byte(normalize(get(ub, 8+300+4*i)))
 		}
