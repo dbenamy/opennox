@@ -39,3 +39,23 @@ Production C before conversion: **141,042 physical lines**, 153 files, zero
 reference C. Do not replace the containment expression with float32 locals or
 algebraically reassociate its additions merely because source declarations say
 float; the actual compiled precision and operation order are the contract here.
+
+## Go conversion
+
+Original-C baseline: `f85e37ee`. Both live C entries now execute private Go
+helpers. Reflection explicitly preserves x87 signaling-NaN quieting, raw swap
+bits, overlap behavior and the original pointer return. Containment uses float64
+intermediates in the original order, with the double constant retained.
+
+All 127,684 targeted operations pass with native Go. An independent Python
+precision probe over the 50,000 random cases found zero mismatches using float64
+and 42 mismatches using float32 intermediates, confirming that the saved baseline
+actually detects this precision regression. Probe: local check-precision.py.
+
+Production C: **141,000 physical lines (−42)** in 153 files; reference C: **0**.
+All accumulated protection/network/waypoint/rules/spell-class/ping/glyph/collision
+tests pass on 386 default/server/highres. All three binaries build. Fresh
+collision-primitives-port gameplay passes both preserved screenshots with
+overrides disabled. Full suite exactly matches the known baseline: 15 passing,
+3 known failing, 32 skipped/no-test packages and the same 1,553 failure entries,
+with none added or removed. Comparison metadata is under the local artifact dir.

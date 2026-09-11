@@ -3,10 +3,10 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-11
 
-Glyph/item eligibility 57B400/57B450 is complete, including private Go caches
-and retirement of the unused item C bridge. Production C is 141,042 physical
-lines (−40). Next assess collision reflection 57B810 and containment 57B850 with
-original-386 raw-bit fixtures and disassembly under build/port-collision-primitives.
+Collision reflection 57B810 and containment 57B850 are complete. Production C
+is 141,000 physical lines (−42), with exact original-386 raw-bit/precision tests.
+Next assess line projection 57C790/57C8A0 using the ignored raw fixture draft and
+disassembly under build/port-line-projection; neither fixture nor port is installed.
 Both approved writer/alias fixes are complete; no user decision is pending.
 Keep 57ADF0 list cleanup with its future GUI-owner port.
 Use PORTING_STATE.md's top resume section for current verification and next steps.

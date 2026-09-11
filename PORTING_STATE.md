@@ -5,43 +5,48 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-11
 
-Latest completed chunk: glyph/item eligibility 57B400/57B450. Both predicates
-execute Go with independent private lazy caches; only the live 57B400 C bridge
-remains. Production C is **141,042 physical lines** in 153 files, zero reference
-C. Original-C baseline: d6d7c136, 8,556 calls. See
-[glyph eligibility](docs/porting/GLYPH_ELIGIBILITY.md) and [counts](docs/porting/C_LOC.md).
-Both approved writer/alias fixes are complete; no user decision is pending.
+Latest completed chunk: collision reflection 57B810 and containment 57B850.
+Both live C entries now execute private Go helpers. Production C is **141,000
+physical lines** in 153 files, zero reference C. Original-C baseline: f85e37ee,
+127,684 operations. Reflection checks exact bits/overlap/NaN quieting; containment
+uses analytic cases and an asset-free 6,713-byte original-C bitset. A float32
+intermediate model mismatches 42 random cases; the float64 port matches all.
+See [collision primitives](docs/porting/COLLISION_PRIMITIVES.md) and
+[counts](docs/porting/C_LOC.md). No user decision is pending.
 
-All accumulated protection/network/waypoint/rules/spell-class/ping/glyph tests
-pass on 386 default/server/highres. All three binaries build. Fresh
-glyph-eligibility-port gameplay passes both preserved screenshots with overrides
-disabled. Artifacts: build/port-glyph-eligibility. Full suite last repeated at the
-immediately preceding alias milestone: 15 passing, 3 known failing, 32 skipped/
-no-test packages and identical 1,553 failure entries. No validation is running.
+All accumulated protection/network/waypoint/rules/spell-class/ping/glyph/collision
+tests pass on 386 default/server/highres. All three binaries build. Fresh
+collision-primitives-port gameplay passes both preserved screenshots with
+overrides disabled. Full suite exactly matches the known baseline: 15 passing,
+3 known failing, 32 skipped/no-test packages and identical 1,553 failure entries.
+Artifacts: build/port-collision-primitives. No validation processes remain running.
 
-Next: collision reflection 57B810 and point containment 57B850. Original-C fixtures and tests are installed and pass 127,684 operations.
-Containment expected results are a compact asset-free bitset in
-src/testdata/porting/collision_containment.bin. Primary saved original production disassembly in reflect.asm
-and contains.asm in that directory's parent. Reflection uses double-width product
-without float32 rounding; x87 loads/stores can quiet signaling NaNs, while its
-nonpositive swap copies old Y as raw bits. Test signed zeros, subnormals, NaNs,
-infinities, overlapping inputs and exact returned pointer bits before conversion.
-Containment keeps all additions/subtractions at x87 PC53 (no float32 spills),
-with an unsuffixed DOUBLE literal 0.70709997. Float64 operations in the exact
-original order should match; verify strict boundaries and adversarial values
-against original C rather than trusting decompiler float local types.
+Next: line projection 57C790/57C8A0. Ignored fixture draft is under
+build/port-line-projection/draft/src/legacy/line_projection_porttest.go; not
+installed/tested yet. Disassembly: projection.asm and point_on_line.asm in its
+parent artifact directory. C790 sole caller GAME5.c:2154 supplies length32;
+C8A0 sole C caller GAME4_1.c:2941. Keep both C entries. Existing server.PointOnTheLine
+has different rounding and separate Go callers; do not silently substitute it.
 
-Existing root reflection object_death_ball.go uses float32 multiplication;
-server/object.go around1783 has an analogous float32 containment branch. They
-are not automatically interchangeable with the C precision. Avoid silently
-changing those existing Go paths while porting live C callers. Both target C
-functions have live C callers and need their ABI retained.
+Primary disassembly notes: C790 computes dx/dy/dot and length squared at PC53;
+rounds dx*dot/length² to float32 before adding old X, stores output X as float32
+but retains its wider sum for clamp comparison. Computes Y using line Y reloaded
+AFTER storing output X, rounds the final Y before storing and comparing. Bounds
+reload endpoints after both output stores, so output/line overlap is observable.
+C8A0 rounds denominator dx²+dy² to float32, computes output X with full dot,
+rounds/reloads/stores X, then rounds dot to float32 for Y multiplication. Y adds
+line Y reloaded after output X and stores float32 while retaining the wider Y
+for its inclusive bounds test. Validate this stack interpretation with original
+C outputs; don't rely only on decompiler float declarations. Include aliasing,
+degenerate segments, zero length, signed zeros, nonfinite/extreme inputs and exact
+output bits/return values; snapshots must verify only the two output words change.
 
 Keep 57ADF0 list cleanup with its future GUI-owner port: GUI options teardown
-still propagates its first freed pointer. Do not silently change that ABI.
+still propagates its first freed pointer. Preserve existing separate Go reflection
+and object containment behavior during these C-caller conversions.
 
 Test from src with baseline environment: `go test -tags porttest -count=1
--run '^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility)' .`;
+-run '^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision)' .`;
 repeat server/highres. Preserve untracked asset archive.
 
 Continue through tests, docs/C LOC, commit, push and a user update per chunk,
@@ -676,3 +681,12 @@ Preserved lookup-before-gates, glyph restriction before cheat, callback ordering
 and observed 386 class-shift behavior. Retired unused item C bridge; shared C
 cheat flag remains live. All three accumulated test variants/builds and gameplay
 pass. Production C: **141,042 lines (−40)**. Details: docs/porting/GLYPH_ELIGIBILITY.md.
+
+## Collision primitives completed — 2026-09-11
+
+Ported reflection/containment with original-C baseline f85e37ee, exact raw-bit
+reflection and compact containment result fixture. Preserved PC53 arithmetic,
+strict boundaries, NaN quieting, overlapping inputs and live C ABI. All three
+accumulated test variants/builds, fresh gameplay and full-suite comparison pass;
+same 1,553 known failure entries. Production C: **141,000 lines (−42)**.
+Details: docs/porting/COLLISION_PRIMITIVES.md.

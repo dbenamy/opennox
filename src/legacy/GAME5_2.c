@@ -166,48 +166,6 @@ int sub_57B190(unsigned short a1, unsigned short a2) {
 //----- (0057B3D0) --------------------------------------------------------
 int nox_cheat_allowall = 0;
 
-//----- (0057B810) --------------------------------------------------------
-int nox_xxx_collideReflect_57B810(float* a1, int a2) {
-	int result; // eax
-	double v3;  // st7
-	int v4;     // ecx
-
-	result = a2;
-	v3 = *(float*)a2;
-	if (a1[1] * *a1 <= 0.0) {
-		v4 = *(uint32_t*)(a2 + 4);
-		*(float*)(a2 + 4) = *(float*)a2;
-		*(uint32_t*)a2 = v4;
-	} else {
-		*(float*)a2 = -*(float*)(a2 + 4);
-		*(float*)(a2 + 4) = -v3;
-	}
-	return result;
-}
-
-//----- (0057B850) --------------------------------------------------------
-int nox_xxx_map_57B850(float2* a1, float* a2, float2* a3) {
-	int result; // eax
-	float v4;   // [esp+0h] [ebp-10h]
-	float v5;   // [esp+4h] [ebp-Ch]
-	float v6;   // [esp+8h] [ebp-8h]
-	float v7;   // [esp+Ch] [ebp-4h]
-
-	v4 = a2[5] + a1->field_0;
-	v5 = a2[6] + a1->field_4;
-	result = 0;
-	if ((v5 - v4 + a3->field_0 - a3->field_4) * 0.70709997 < 0.0 &&
-		(a2[8] + a1->field_4 - (a2[7] + a1->field_0) + a3->field_0 - a3->field_4) * 0.70709997 > 0.0) {
-		v6 = a2[9] + a1->field_0;
-		v7 = a2[10] + a1->field_4;
-		if ((v7 + v6 - a3->field_0 - a3->field_4) * 0.70709997 > 0.0 &&
-			(v5 + v4 - a3->field_0 - a3->field_4) * 0.70709997 < 0.0) {
-			result = 1;
-		}
-	}
-	return result;
-}
-
 //----- (0057C090) --------------------------------------------------------
 int nox_server_getNextMapGroup_57C090(int a1) {
 	int result; // eax
