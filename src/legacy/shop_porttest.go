@@ -42,6 +42,7 @@ type PortTestShopStock struct {
 }
 type PortTestShopSpec struct {
 	Equipment         *PortTestEquipmentSpec
+	EffectsUse        *PortTestEffectsUseSpec
 	Inventory         *PortTestInventorySpec
 	Resources         *PortTestResourceSpec
 	Engine            *PortTestShopEngineSpec

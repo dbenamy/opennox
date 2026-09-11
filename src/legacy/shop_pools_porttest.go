@@ -66,6 +66,7 @@ type PortTestShopPacketResult struct {
 	Data               []byte
 }
 type PortTestShopStep struct {
+	EffectsUseData           []uint32   `json:",omitempty"`
 	EquipmentData            []uint32   `json:",omitempty"`
 	InventoryData            []uint32   `json:",omitempty"`
 	ResourceData             [][]uint32 `json:",omitempty"`
@@ -93,6 +94,7 @@ type portTestShopOwned struct {
 }
 type portTestShopPools struct {
 	equipment           *portTestEquipment
+	effectsUse          *portTestEffectsUse
 	inventory           *portTestInventory
 	resources           *portTestResources
 	engineStateRequests []uint32
@@ -225,7 +227,24 @@ func (p *portTestShopPools) cleanup() {
 			alloc.FreePtr(o.health)
 		}
 	}
-	if p.proxy.core.Objs.Alive != p.initialAlive {
+	expected := p.initialAlive
+	if p.proxy.callbacks.shop.spec.EffectsUse != nil {
+		// Projectiles are captured and freed later by the enclosing lifecycle trace.
+		seen := make(map[*server.Object]bool)
+		for _, u := range p.proxy.life.created {
+			if seen[u] {
+				panic("effects fixture duplicate created object")
+			}
+			seen[u] = true
+			for _, o := range p.owned {
+				if o.u == u {
+					panic("effects fixture duplicate ownership")
+				}
+			}
+			expected++
+		}
+	}
+	if p.proxy.core.Objs.Alive != expected {
 		panic("shop fixture object leak")
 	}
 	p.owned, p.items, p.sessions, p.ids = nil, nil, nil, nil
@@ -255,6 +274,7 @@ func (p *portTestShopPools) run() {
 	defer p.resourcePrepare()()
 	defer p.inventoryPrepare()()
 	defer p.equipmentPrepare()()
+	defer p.effectsUsePrepare()()
 	for i, spec := range s.spec.Items {
 		// Actual allocator objects let destruction execute the retained object
 		// free path. Price/charge/modifier arithmetic has guarded query fixtures.
@@ -283,6 +303,7 @@ func (p *portTestShopPools) run() {
 	}
 	p.inventoryItems()
 	p.equipmentItems()
+	p.effectsUseItems()
 	for _, a := range s.spec.Sequence {
 		var q unsafe.Pointer
 		if a.Op != PortTestShopCreate && a.Op != PortTestShopReset && a.Op != PortTestShopPlayerCleanup && a.Op != PortTestTradeCreatePlayer && a.Op != PortTestTradeStart && a.Op < 200 {
@@ -474,7 +495,9 @@ func (p *portTestShopPools) run() {
 			}
 			C.sub_510E20(C.int(a.Item))
 		default:
-			if a.Op >= 400 {
+			if a.Op >= 500 {
+				rv = p.effectsUseAction(a)
+			} else if a.Op >= 400 {
 				rv = p.equipmentAction(a)
 			} else if a.Op >= 300 {
 				rv = p.inventoryAction(a)
@@ -494,6 +517,7 @@ func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 	r.ResourceData, r.ResourceMessages = p.resourceSnapshot()
 	r.InventoryData = p.inventorySnapshot()
 	r.EquipmentData = p.equipmentSnapshot()
+	r.EffectsUseData = p.effectsUseSnapshot()
 	var sessions, nodes []unsafe.Pointer
 	seen := make(map[unsafe.Pointer]bool)
 	for q := shopTestPointer(uint32(C.dword_5d4594_2386500)); q != nil; {

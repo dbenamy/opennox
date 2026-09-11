@@ -315,7 +315,16 @@ func portTestLifecycleTrace(proxy *portTestRoamOwnerServer, h *server.HealthData
 			p.HealthData = nil
 		}
 
+		if proxy.callbacks != nil && proxy.callbacks.shop != nil && proxy.callbacks.shop.spec.EffectsUse != nil && p.CollideData != nil {
+			alloc.FreePtr(p.CollideData)
+			p.CollideData = nil
+		}
 		proxy.core.Objs.FreeObject(p)
+	}
+	if proxy.callbacks != nil && proxy.callbacks.shop != nil && proxy.callbacks.shop.spec.EffectsUse != nil {
+		if proxy.core.Objs.Alive != proxy.callbacks.shop.pools.initialAlive {
+			panic("effects fixture projectile leak")
+		}
 	}
 	for p := uint32(C.dword_5d4594_1565512); p != 0; {
 		b := unsafe.Slice((*byte)(unsafe.Pointer(uintptr(p))), 416)

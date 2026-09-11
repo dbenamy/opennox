@@ -1,4 +1,4 @@
-# Modifier effects and weapon use (planned)
+# Modifier effects and weapon use (baseline in progress)
 
 Connected next batch: **41 functions / 977 physical C lines**. Production is
 still original C for this family. Equipment is the preceding batch; starting
@@ -43,3 +43,70 @@ headless gameplay. Record actual C_LOC, commit/push, summarize and continue.
 
 Detailed local audit: build/port-equipment/next-effects-use-scope.json and
 build/port-effects-use/fixture-plan.md. No user question is pending.
+
+## Original-C baseline
+
+The equipment conversion is committed/pushed as `dec9b1ec`. Production C for
+this family remains unchanged. **4,733 cases / 19 groups** are now locked in
+`effects_use_porttest_test.go`. Full captures c-tables and c-repeat match
+byte-for-byte in every group (11.054s / 10.557s). All prior **12,009** equipment,
+inventory, resource, shop and trade cases remain unchanged (37.208s).
+
+- flags: 576 cases.
+- arithmetic: 400 cases.
+- grip-inversion: 246 cases.
+- readiness-recharge: 240 cases.
+- recharge-percent: 200 cases.
+- protection: 936 cases.
+- regeneration: 288 cases.
+- replenishment: 160 cases.
+- resource-transfers: 324 cases.
+- wand-acceptance: 192 cases.
+- use-dispatch: 16 cases.
+- status-force: 120 cases.
+- projectiles: 204 cases.
+- fire-wand: 84 cases.
+- inventory-lookup: 600 cases.
+- speed-rounding: 63 cases.
+- wand-classes: 64 cases.
+- null-guards: 17 cases.
+- fireball-wall: 3 cases.
+
+Fixture files: legacy/effects_use_porttest.go, server/effects_use_porttest.go,
+and blobdata/effects_use_porttest.go, with optional shared-fixture fields.
+Action IDs 500..540 call all original functions through a thin dispatcher.
+There are no copied production algorithms in the fixture.
+
+The fixture supplies actual balance arrays and ForceWand/projectile/Spark
+lookup definitions. Spark update/collision allocations have checked tail guards.
+The spell-acceptance service observer records exact arguments and configurable
+accept/reject outcomes. Player damage uses the existing recording callback.
+Per-step captures include target and created object data, scalar arguments,
+modifier descriptors and callback tables, packets/audio, cache words and state.
+
+New projectiles belong to the enclosing lifecycle fixture: shop cleanup accounts
+for exactly those objects, rejects duplicate ownership, and lifecycle cleanup
+asserts zero leftovers. The fixture saves/restores the ForceWand/buff lookup
+caches and the original six-row inventory modifier table at 587000+200160,
+relocating exactly the six callback addresses used by production initialization.
+An independent lookup assertion caught missing initialization during fixture
+construction; the locked baseline includes working positive/negative lookups.
+
+Independent assertions also check exact projectile origins for clear, blocked
+and transparent walls. Regeneration includes successful non-armor healing at
+frames 90/180. Readiness does not accept nil: its C code dereferences item data
+before its apparent null check. Null tests cover supported inputs. Regeneration
+and replenishment use nonzero divisors. Missing Spark lookup is exercised;
+invalid type IDs are not used to simulate allocation failure because the retained
+Go indexed allocator requires a valid definition and does not return a recoverable
+nil allocation. The C wand-shot null-result branch is retained behavior to port,
+but has no safely reachable fixture input through that existing allocator.
+
+Local evidence: build/port-effects-use/{scope.json,original-c.txt,callers.txt,
+c-tables.log,c-repeat.log,c-locked.log,c-dependencies.log} and corresponding
+c-tables/c-repeat JSON captures. Obsolete intermediate captures were removed
+for disk space; logs, final evidence and user assets remain intact.
+
+Commit/push this original-C baseline before conversion. Then port all 41
+functions, compare native full captures, qualify once for the connected batch,
+update C_LOC/docs, commit/push, summarize and continue.

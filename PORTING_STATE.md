@@ -4,6 +4,18 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
+### Active — effects/use baseline locked; conversion next
+
+Equipment is committed/pushed as `dec9b1ec`. The 41-function / 977-line effects
+and weapon-use batch remains original C. **4,733 cases / 19 groups** are locked;
+two full original-C captures match byte-for-byte. All prior 12,009 equipment /
+inventory / resource / shop / trade contracts remain unchanged (37.208s).
+Read [EFFECTS_USE.md](docs/porting/EFFECTS_USE.md) for exact scope and fixture
+preconditions. Stable captures: build/port-effects-use/c-{tables,repeat}-effects-*.json.
+Check c-locked.log, then commit/push baseline BEFORE native conversion.
+After converting, qualify once at the connected batch boundary, update C_LOC/docs,
+commit/push, summarize and continue. No pending question; no new agents.
+
 ## Complete — equipment; next — modifier effects and weapon use
 
 The 33-function equipment batch is converted and qualified: **972 C lines
