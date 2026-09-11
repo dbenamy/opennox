@@ -32,24 +32,30 @@ SSE2, CGO enabled. Full-suite failures unchanged (1,553 entries; 15 packages pas
 build/port-world-mechanisms and baseline/runs/world-mechanisms-port.
 Completed and pushed as `5d25bd84`; summary delivered. Continue the next batch.
 
-### Active — objective-object conversion (baseline locked)
+### Completed — objective objects and obelisk recharge
 
-Audited 15 functions / 908 C lines, still original C: obelisk, flag, ball, crown
-updates; flag pickup/identity; ball owner, pickup, home-base scoring and reset;
-crown pickup dispatch, flag-mode dispatch and pickup buff removal. See
-[OBJECTIVES.md](docs/porting/OBJECTIVES.md). Baseline now locks 1,920 cases / 19 repeated full captures;
-24,237 accumulated focused cases pass in 70.385s. Production still C. Scope/plan: build/port-objectives/{scope.json,plan.md}.
-Keep unrelated map-mode initialization in its own later family.
+Baseline `d0094d3a` was pushed before conversion. All 15 functions / 908 C lines
+are now native; all 1,920 cases / 19 complete captures match original C exactly
+(6.585s). Production C: **124,395 lines / 149 files / zero reference C**. See
+[OBJECTIVES.md](docs/porting/OBJECTIVES.md). Retained team-score notification
+uses its original transport path; native objective helpers call one another
+and the converted inventory/effects owners directly.
 
-Reuse guarded player/item, team, event, spatial and creation fixtures. Add
-optional objective state/list/type setup and a restored PlatformTicks override.
-Its C ABI is unsigned 32-bit although ball UD stores uint64; test widening,
-20,000ms boundary and wrap. Obelisk requires FPS>=2. Include positive score,
-possession, spawn, movement and energy/mana-transfer assertions.
+Accumulated default/server/highres tests, including all 24,237 focused cases,
+pass in 145.833s / 122.632s / 124.291s. Three production binaries verified
+ELF32/i386/SSE2/CGO. Full-suite failure multiset unchanged (1,553 entries; 15
+packages pass, 3 fail, 32 skip). Fresh unchanged repeat-a headless gameplay
+passes in 57.464s. Evidence: build/port-objectives and baseline/runs/objectives-port.
+Commit/push this completed conversion, summarize and CONTINUE; no pending question.
 
-Repeat/lock/push original C captures BEFORE conversion. Convert callers/helpers
-together, qualify once at the boundary, update C_LOC, commit/push and continue.
-No new agents; preserve archive and stable evidence. Full-suite raw output may
+### Next — player attacks, hit callbacks, shooting and reload
+
+Candidate: 12 connected functions / 1,105 C lines. Scope, plan and fixture audit:
+build/port-player-attack/{scope.json,plan.md,fixture-design.md}. Reuse existing
+player/equipment/animation/spatial fixtures, add guarded attack records and
+arrow/bolt/chakram definitions with 8-byte collision payloads. Lock and push
+repeated original-C captures before conversion, then qualify the whole batch.
+No new agents; preserve archive and stable evidence. Full-suite raw logs may
 contain secrets; print only action/package/test metadata.
 
 <!-- /current-focus -->

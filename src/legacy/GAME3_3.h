@@ -208,7 +208,7 @@ void sub_4EC6A0(int a1);
 int nox_xxx_allocItemRespawnArray_4ECA60();
 void sub_4ECA90();
 int sub_4ECBD0(int a1);
-int sub_4ECC00(const char** a1);
+int sub_4ECC00(char** a1);
 nox_object_t* nox_server_getObjectFromNetCode_4ECCB0(int a1);
 int nox_server_netCodeCache_lookupObj_4ECD90(int a1);
 int sub_4ECDE0(uint32_t* a1, int a2);

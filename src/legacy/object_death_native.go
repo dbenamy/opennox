@@ -176,7 +176,7 @@ func nox_xxx_dieMarker_54E460(a C.int) { objectDeathMarker(objectFromInt(a)) }
 func nox_xxx_dieBoulder_54E4B0(a C.int) { objectDeathBoulder(objectFromInt(a)) }
 
 //export nox_xxx_dieGameBall_54E620
-func nox_xxx_dieGameBall_54E620(a C.int) C.int { return C.sub_417F50(a) }
+func nox_xxx_dieGameBall_54E620(a C.int) C.int { return C.int(objectiveBallReset(objectFromInt(a))) }
 
 //export nox_xxx_dieArmor_54E170_obj_die
 func nox_xxx_dieArmor_54E170_obj_die(a C.int) { objectDeathArmor(objectFromInt(a)) }

@@ -53,7 +53,7 @@ update C_LOC/docs, commit/push, summarize and continue.
 
 ## Original-C baseline
 
-Production is still C. Nineteen complete capture groups, 1,920 cases, repeat
+Before conversion, nineteen complete capture groups, 1,920 cases, repeat
 byte-for-byte in independent runs. Hashes are locked in
 `src/objectives_porttest_test.go`. The original-C regression run passes all
 24,237 accumulated focused cases in 70.385s, including the previous 22,317.
@@ -77,6 +77,29 @@ narrowing before uint64 subtraction. Independent assertions check mana/energy
 conservation, ownership, flag position/deadline, CTF score increments and return,
 line-of-sight denial, and removal versus preservation of configured buffs.
 
-Next: convert all 15 functions together, compare every full capture, then run
-one qualification matrix and gameplay check. C count remains 125,303 / 149
-files / zero reference C until conversion is complete.
+## Native conversion
+
+Original-C baseline commit `d0094d3a` was pushed before conversion. All 15
+functions now live in `legacy/objectives_update.go`, `objectives_scoring.go` and
+`objectives_exports.go`; the ball-death handler calls the Go reset owner directly.
+The string-table helper's C declaration drops const to match the exported Go ABI;
+the pointer representation and read-only behavior are unchanged.
+
+All 1,920 cases / 19 full captures match the original C byte-for-byte in
+`native-final-objectives-*.json` (6.585s). The first comparison caught routing of
+team-score notification through an existing Go transport entry point; retaining
+the original C team-score dependency preserves the exact notification path and
+ordering. Native callers use the converted inventory/effects owners directly.
+
+The conversion removes 908 physical C lines: 124,395 production C lines / 149
+files / zero reference C. Accumulated port tests, including all 24,237 focused cases, pass in default,
+server and high-resolution variants: 145.833s / 122.632s / 124.291s. All three
+production binaries verified ELF32/i386, SSE2, CGO enabled. Full-suite failure
+multiset exactly matches the existing baseline: 1,553 entries, 15 packages pass,
+3 fail, 32 skip. A fresh unchanged repeat-a headless gameplay replay passed in
+57.464s. Evidence: `build/port-objectives/qualification.json`, variant logs,
+production binaries and `build/baseline/runs/objectives-port`.
+
+Next candidate: the connected player-attack, hit, shooting and reload family;
+12 functions / 1,105 C lines. Preserve the same baseline-before-conversion and
+one-qualification-per-batch process.

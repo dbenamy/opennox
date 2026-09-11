@@ -84,3 +84,4 @@ The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
 because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful
 differential validation; they remain recoverable from Git at `66fa7bd4`.
+| Objective objects, scoring and obelisk recharge | 149 | 124,395 | −908 | 0 |
