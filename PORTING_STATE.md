@@ -3,6 +3,17 @@
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
+## In progress — quest penalty baseline
+
+Initialization batch `7ac58eed` is committed and pushed. Original-C quest
+penalty baseline now has 2,293 locked cases, including real inventory removal,
+packets, gem pricing and a valid gold-protection record. See
+[QUEST_PENALTY.md](docs/porting/QUEST_PENALTY.md). No penalty C has been removed;
+production C remains 134,954 lines. Callback/initialization/protection
+regressions pass unchanged (13.611s). Commit/push the baseline, then convert
+all seven policy functions.
+Artifacts: build/port-quest-penalty. No user question is pending.
+
 ## Resume here — 2026-09-11
 
 Continue the x86 C-to-Go port on `dev`, one connected, reviewed, tested,

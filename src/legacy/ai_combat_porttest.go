@@ -114,6 +114,9 @@ func (s *portTestRoamOwnerServer) CreateObjectAt(obj, owner server.Obj, p types.
 func (s *portTestRoamOwnerServer) DelayedDelete(u *server.Object) {
 	if s.life != nil {
 		s.trace = append(s.trace, 32, s.life.ids[uint32(uintptr(u.CObj()))])
+		if s.callbacks != nil && s.callbacks.penalty != nil && s.callbacks.spec.Penalty != nil {
+			s.portTestRandomServer.Server.DelayedDelete(u)
+		}
 		return
 	}
 	s.trace = append(s.trace, 12)

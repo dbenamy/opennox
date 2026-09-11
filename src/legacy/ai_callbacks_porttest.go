@@ -38,6 +38,7 @@ import (
 var PortTestCallbackServer func(*server.Server) (Server, func())
 
 type PortTestAICallbackSpec struct {
+	Penalty                                                                *PortTestPenaltySpec
 	Creation                                                               *PortTestCreationSpec
 	MutateOnDamage                                                         bool
 	ForceAfterDamage                                                       uint32
@@ -52,6 +53,7 @@ type PortTestAICallbackSpec struct {
 	LootName                                                               string
 }
 type PortTestAICallbackResult struct {
+	Penalty                              *PortTestPenaltyResult  `json:",omitempty"`
 	Creation                             *PortTestCreationResult `json:",omitempty"`
 	PlayerStatus                         uint32
 	Modifiers                            []uint32
@@ -61,6 +63,7 @@ type PortTestAICallbackResult struct {
 	Intact                               bool
 }
 type portTestAICallbackState struct {
+	penalty      *portTestPenaltyState
 	creation     *portTestCreationState
 	playerStatus uint32
 	modifiers    server.PortTestAICallbackModifiers
@@ -162,12 +165,18 @@ func portTestAICallbackPrepare(proxy *portTestRoamOwnerServer, u *server.Object,
 	if sp.Creation != nil {
 		portTestCreationPrepare(proxy, u, sp.Creation)
 	}
+	if sp.Penalty != nil {
+		portTestPenaltyPrepare(proxy, sp.Penalty)
+	}
 	// Snapshot allowed target/extra writes only after all callback inputs are installed.
 	for i, b := range proxy.combat.extra {
 		proxy.combat.before[i] = bytes.Clone(b)
 	}
 }
 func portTestAICallbackCall(proxy *portTestRoamOwnerServer, u *server.Object, sp *PortTestAICallbackSpec) uint32 {
+	if sp.Penalty != nil {
+		return portTestPenaltyCall(proxy, sp.Op-44)
+	}
 	if sp.Creation != nil {
 		return portTestCreationCall(u, sp.Op-33)
 	}
@@ -210,6 +219,10 @@ func portTestAICallbackTrace(proxy *portTestRoamOwnerServer, rv uint32, normaliz
 	if proxy.callbacks.spec.Creation != nil {
 		r.Creation = portTestCreationTrace(proxy, normalize)
 		r.Intact = r.Creation.Intact
+	}
+	if proxy.callbacks.spec.Penalty != nil {
+		r.Penalty = portTestPenaltyTrace(proxy, normalize)
+		r.Intact = r.Intact && r.Penalty.Intact
 	}
 	status := (*uint32)(unsafe.Add(unsafe.Pointer(proxy.life.players[0].UpdateDataPlayer().Player), 3680))
 	r.PlayerStatus = *status
