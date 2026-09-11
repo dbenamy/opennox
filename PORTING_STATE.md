@@ -19,9 +19,9 @@ disabled. Artifacts: build/port-glyph-eligibility. Full suite last repeated at t
 immediately preceding alias milestone: 15 passing, 3 known failing, 32 skipped/
 no-test packages and identical 1,553 failure entries. No validation is running.
 
-Next: collision reflection 57B810 and point containment 57B850. Agent is drafting
-raw-bit C fixtures under ignored build/port-collision-primitives/draft; not
-installed/tested yet. Primary saved original production disassembly in reflect.asm
+Next: collision reflection 57B810 and point containment 57B850. Original-C fixtures and tests are installed and pass 127,684 operations.
+Containment expected results are a compact asset-free bitset in
+src/testdata/porting/collision_containment.bin. Primary saved original production disassembly in reflect.asm
 and contains.asm in that directory's parent. Reflection uses double-width product
 without float32 rounding; x87 loads/stores can quiet signaling NaNs, while its
 nonpositive swap copies old Y as raw bits. Test signed zeros, subnormals, NaNs,
