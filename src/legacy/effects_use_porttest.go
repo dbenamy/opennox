@@ -130,6 +130,7 @@ type PortTestEffectsModifier struct {
 	Words                                      map[int]uint32 // Byte offsets into the actual 144-byte descriptor.
 }
 type PortTestEffectsUseSpec struct {
+	ExpectedClock                                *[2]uint32 // Optional assertion after all shared setup has run.
 	Balance                                      map[string][]float64
 	Projectiles, DisableProjectiles, AcceptSpell bool
 	ProjectileSpeed                              uint32
@@ -196,6 +197,9 @@ func (p *portTestShopPools) effectsUseItems() {
 	sp := p.proxy.callbacks.shop.spec.EffectsUse
 	if sp == nil {
 		return
+	}
+	if clock := sp.ExpectedClock; clock != nil && (p.proxy.core.Frame() != clock[0] || uint32(p.proxy.core.TickRate()) != clock[1]) {
+		panic("effects fixture clock was overwritten")
 	}
 	if p.equipment == nil {
 		panic("effects fixture requires equipment")
@@ -349,6 +353,9 @@ func (p *portTestShopPools) effectsUseSnapshot() []uint32 {
 			}
 			appendWords(u.CollideData, 5)
 		}
+	}
+	if p.proxy.callbacks.shop.spec.EffectsUse.ExpectedClock != nil {
+		out = append(out, p.proxy.core.Frame(), uint32(p.proxy.core.TickRate()))
 	}
 	return out
 }

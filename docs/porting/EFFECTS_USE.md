@@ -95,7 +95,7 @@ An independent lookup assertion caught missing initialization during fixture
 construction; the locked baseline includes working positive/negative lookups.
 
 Independent assertions also check exact projectile origins for clear, blocked
-and transparent walls. Regeneration includes successful non-armor healing at
+and transparent walls. The corrected timing corpus below verifies successful non-armor healing at
 frames 90/180. Readiness does not accept nil: its C code dereferences item data
 before its apparent null check. Null tests cover supported inputs. Regeneration
 and replenishment use nonzero divisors. Missing Spark lookup is exercised;
@@ -145,3 +145,35 @@ native-dependencies.log, ports-*.log, binary-checks.json, full-suite-comparison.
 and build/baseline/runs/effects-use-port/result.json. Obsolete intermediate
 captures and old regenerable build-cache entries were removed for disk space;
 stable baseline/native captures, logs, gameplay evidence and user assets remain.
+
+## Corrected timing coverage
+
+While constructing the next temporary-object baseline, an independent positive
+water-barrel assertion exposed a shared-fixture setup issue: MonsterState setup
+sets the clock after Owner setup. Existing effects tests varied Owner.Frame but
+inherited a fixed MonsterState.Frame, so those variations did not exercise the
+claimed timing boundaries. Existing captures remain valid for their actual clock;
+they do not establish all the timing coverage previously described above.
+
+A separate corrected timing corpus synchronizes both inputs and asserts the
+actual frame/tick rate after setup and in every captured step. **1,001 additional
+cases / 8 groups** are locked in effects_timing_porttest_test.go: regeneration,
+replenishment, wand acceptance, projectiles, fire-wand sound timing, wand classes,
+fireball walls and independent positive regeneration checks. The latter assert
+healing at frames 90/180 and none immediately before/after those boundaries.
+
+These contracts were generated from an isolated original-C checkout at `0738dbed`.
+Full C captures repeated byte-for-byte (2.977s / 2.665s); all native captures match
+exactly (2.770s). The original 4,733 contracts are retained unchanged. **No
+production-code change was needed**. C count remains **127,104 / 149 files**.
+The new optional clock assertion affects only tests that request it. Production
+build/gameplay qualification above remains applicable; this correction adds test
+coverage rather than changing gameplay behavior.
+
+To reproduce the original C comparison, check out 0738dbed and apply only the
+seven-line ExpectedClock fixture extension plus effects_timing_porttest_test.go
+from this correction, then run TestEffectsTiming with build/baseline/env.sh.
+Local evidence: build/port-effects-timing/{c-first,c-repeat,native-first}-effects-
+timing-*.json, c-locked.log and capture-comparison.json. Combined **17,743** effects/equipment/inventory/resource/shop/trade contracts
+pass with all older hashes unchanged (56.833s). The new timing groups also pass
+server/highres variants (2.534s / 2.889s).

@@ -4,38 +4,42 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-## Complete — modifier effects and weapon use
+### Complete — effects timing-coverage correction
 
-The 41-function batch removes **977 C lines**, leaving **127,104 physical C
-lines / 149 files / zero reference C**. Original-C baseline `0738dbed` was
-committed/pushed before conversion. All **4,733 cases / 19 groups** match full
-original-C captures byte-for-byte (10.836s). Combined **16,742** effects/equipment/
-inventory/resource/shop/trade contracts pass with prior hashes unchanged (48.932s).
-See [EFFECTS_USE.md](docs/porting/EFFECTS_USE.md).
+Effects/use production is committed/pushed as `86fb7552`; **127,104 C lines /
+149 files / zero reference C**. A positive temporary-object assertion found that
+MonsterState setup overwrites Owner.Frame. Added **1,001 timing cases / 8 groups**
+that synchronize both clocks, assert actual frame/FPS and independently verify
+regeneration at frames 90/180 and adjacent non-healing frames. The original 4,733
+effects contracts remain unchanged. New full captures from original C at 0738dbed
+repeat and match native byte-for-byte; no production fix was needed.
+Combined **17,743** contracts pass (56.833s); server/highres timing tests pass
+(2.534s / 2.889s). See EFFECTS_USE.md. Stable evidence: build/port-effects-timing/.
+The isolated c-source checkout contains only the fixture extension and timing
+corpus; both are included in this correction and can be reapplied at 0738dbed.
+It can be removed after this correction is committed/pushed.
 
-Accumulated default/server/highres pass in 121.800s / 105.062s / 104.722s.
-Three production builds are ELF32/i386/SSE2/CGO. Full-suite failures exactly match
-baseline: 1,553 entries; 15 pass / 3 fail / 32 skip packages. Fresh effects-use-port
-gameplay passes unchanged repeat-a goldens in 57.062s, overrides disabled, Xvfb
-and null audio. No qualification processes remain running.
+### Active — temporary/projectile-update original-C fixture
 
-Native files: legacy/effects_modifiers.go, effects_weapon_use.go, effects_exports.go.
-Go callers and three wand registrations route natively; callback identities remain
-for retained C. The original compiler spills X projectile velocity but keeps Y
-until the final addition; explicit Go rounding preserves both. No C algorithm is
-retained solely for tests. Stable evidence: build/port-effects-use/c-{tables,repeat}
-and native-final captures plus logs. Intermediate captures and old regenerable
-cache entries were removed for disk space; preserve assets and stable evidence.
+The next **31-function / 980-line** family remains entirely original C. See
+TEMPORARY_UPDATES.md. Local fixture files temporary_updates_porttest.go (legacy
+and server), temporary_updates_porttest_test.go, and optional shared shop fields
+are still in progress; they are not part of the timing-correction commit.
+The corrected c-clock-reviewed run passes **2,260 cases / 12 groups**, including
+independent positive water/nearest/damage assertions and eight-Spark trail counts.
+Finish coverage review (multiple RNG streams and acquisition/tie/filter paths),
+repeat full C captures, lock contracts, verify prior 17,743 contracts unchanged,
+then commit/push the baseline BEFORE converting production code.
 
-Next: [TEMPORARY_UPDATES.md](docs/porting/TEMPORARY_UPDATES.md), **31 functions /
-980 C lines** covering temporary objects, projectile updates and area callbacks.
-Production remains original C for this next family. Reuse the existing fixture,
-repeat/lock original-C contracts, verify previous contracts and commit/push the
-baseline before conversion. Qualify once at the connected family boundary,
-update C_LOC/docs, commit/push, summarize and CONTINUE. No pending user question;
-no new agents. Use build/baseline/env.sh. Full-suite raw logs can contain secrets;
-report only action/package/test metadata. Push over SSH to
- git@github.com:dbenamy/opennox.git dev:dev.
+Fixture supplies core.ExtServer and the outer noxServer only for these tests so
+actual retained movement/expiry paths run. Save/restore deleted/updatable lists,
+spatial nodes and cache/type tables. Lifecycle owns all created objects, including
+ones later scheduled for deletion; checked buffers remain enabled. Exact creation
+owner IDs are recorded in the optional temporary fixture. Scope/evidence is under
+build/port-temporary-updates/. No user question pending; no new agents. Continue
+at connected family boundaries: qualify, update C_LOC/docs, commit/push, summarize
+and CONTINUE. Preserve assets/stable evidence. Full-suite raw logs can contain
+secrets: report action/package/test metadata only.
 
 <!-- /current-checkpoint -->
 
