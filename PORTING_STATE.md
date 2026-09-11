@@ -22,9 +22,9 @@ exactly matches the command-rule milestone: 15 passing, 3 known failing and 32
 skipped/no-test packages, identical 1,553 failure entries (zero added/removed).
 Artifacts: build/port-network-alias. No validation processes remain running.
 
-Next: glyph/item eligibility 57B400/57B450. Ignored draft fixture is under
-build/port-glyph-eligibility/draft; not installed or tested yet. Agent is adding
-positive uncached Glyph lookup via a minimal client-porttest registry helper.
+Next: glyph/item eligibility 57B400/57B450. Fixtures and independent tests are installed. Original-C baseline passes
+8,556 calls, including positive/zero lookup, all byte classes and every mask for
+the actual classes. Local artifacts: build/port-glyph-eligibility.
 Primary must independently test cache fill/reuse/zero retry and independence,
 missing drawable/current-player/local-player gates, glyph wizard restriction,
 cheat ordering, class-mask callback arguments/trace and readonly storage. Preserve
