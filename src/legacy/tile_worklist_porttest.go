@@ -194,3 +194,35 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 	}
 	return snap
 }
+
+// portTestMainGrid provides real C/Go tile lookups for dodge decisions.
+func portTestMainGrid() (configure func(uint32), intact func() bool, free func()) {
+	old := C.portTestWorklistGridGet()
+	grid, expected := C.portTestWorklistGridNew(), C.portTestWorklistGridNew()
+	if grid == nil || expected == nil {
+		panic("main fixture grid allocation")
+	}
+	C.portTestWorklistGridSet(grid)
+	last := ^uint32(0)
+	configure = func(tile uint32) {
+		if tile == last {
+			return
+		}
+		last = tile
+		for x := 0; x < 128; x++ {
+			for y := 0; y < 128; y++ {
+				C.portTestWorklistCellSet(grid, C.int(x), C.int(y), C.uint32_t(tile), C.uint32_t(tile))
+				C.portTestWorklistCellSet(expected, C.int(x), C.int(y), C.uint32_t(tile), C.uint32_t(tile))
+			}
+		}
+	}
+	intact = func() bool {
+		return C.portTestWorklistGridGet() == grid && C.portTestWorklistGridEqual(grid, expected) != 0
+	}
+	free = func() {
+		C.portTestWorklistGridSet(old)
+		C.portTestWorklistGridFree(grid)
+		C.portTestWorklistGridFree(expected)
+	}
+	return
+}

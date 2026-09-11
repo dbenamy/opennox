@@ -32,6 +32,14 @@ The helper's build/port-ai-main/native.patch is only a note, NOT an implementati
 Establish the original-C baseline before replacing these bodies. Review actual C
 and layouts; several earlier helper drafts missed side effects and exact arithmetic.
 
+Current in-progress main-AI batch: original C passes 1,792 generated cases and
+119 independent contracts with locked repeatable hashes; previous AI hashes pass.
+See docs/porting/AI_MAIN.md and the tracked ai_main_porttest files. C is unchanged
+at this baseline. Primary's native draft is build/port-ai-main/ai_main.go; review,
+apply, qualify and remove original bodies next. Do not apply the helper's notes
+as a patch. Shield assembly proves double deltas/distance until the angular test;
+only normalized X spills early, then distance spills before interaction/nearest.
+
 Use build/baseline/env.sh: Go1.26, GOARCH=386, GO386=sse2, CGO enabled, direct GCC.
 The user dropped old-CPU support. Keep existing C x87 flags unchanged.
 Accumulated port-test regex with porttest, server porttest, highres porttest:
