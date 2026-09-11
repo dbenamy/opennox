@@ -32,3 +32,22 @@ entry overhead. This microbenchmark is not a whole-game performance measurement.
 Production C baseline: **140,455 physical lines**, 153 files, zero reference C.
 Artifacts: build/port-float-int. Native correctness and boundary-cost comparison
 are next; keep the port order open until that evidence is available.
+
+## Measured port-order change
+
+Baseline commit: `eb23d4b2`. The Go-export experiment passes all conversion and
+CW checks, but repeated C-caller benchmarks measure 222.9/245.1/285.1 ns/op
+(first run 237.9), roughly 60–80× the original C microbenchmark. This does not
+establish a whole-game slowdown, but adding that crossing at hundreds of
+remaining C call sites is avoidable. Do not adopt those exports yet.
+
+The [tested export experiment](proposals/float-int-go-exports.patch) is saved for
+review/reuse. It is not applied to production. Keep the tiny production C
+converters for C owners; use the tested native conversion helper when porting
+Go owners, starting with grid lookup 411160. Retire the C implementations when
+their remaining callers have moved. This is production dependency retention,
+not keeping C solely as a test oracle. Production C remains **140,455 lines**.
+
+The next grid audit found `i-1 <= 0` can overflow for INT32_MIN, the observed
+invalid-conversion result. Reproduce the caller bug and prepare a bounds repair
+before asking the user about the behavior change.

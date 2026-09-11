@@ -1,0 +1,59 @@
+diff --git a/src/legacy/GAME1_1.c b/src/legacy/GAME1_1.c
+index f739669f..19956984 100644
+--- a/src/legacy/GAME1_1.c
++++ b/src/legacy/GAME1_1.c
+@@ -665,15 +665,6 @@ unsigned int sub_419A30(float a1) {
+ 	return result;
+ }
+ 
+-//----- (00419A70) --------------------------------------------------------
+-int nox_float2int(float a1) { return (int)a1; }
+-
+-//----- (00419A90) --------------------------------------------------------
+-short nox_float2int16(float a1) { return (int)a1; }
+-
+-//----- (00419AB0) --------------------------------------------------------
+-short nox_float2int16_abs(float a1) { return (int)fabs(a1); }
+-
+ //----- (00419AF0) --------------------------------------------------------
+ float nox_double2float(double a1) { return (float)a1; }
+ 
+diff --git a/src/legacy/float_int.go b/src/legacy/float_int.go
+new file mode 100644
+index 00000000..5d7855f6
+--- /dev/null
++++ b/src/legacy/float_int.go
+@@ -0,0 +1,33 @@
++package legacy
++
++/*
++#include "GAME1_1.h"
++*/
++import "C"
++
++import "math"
++
++func floatToInt32(value float32) int32 {
++	// Preserve the masked x87 invalid-conversion result for NaN, infinity
++	// and out-of-range values instead of relying on Go's target conversion.
++	if !(value >= -2147483648 && value < 2147483648) {
++		return -2147483648
++	}
++	return int32(value)
++}
++
++//export nox_float2int
++func nox_float2int(value C.float) C.int {
++	return C.int(floatToInt32(float32(value)))
++}
++
++//export nox_float2int16
++func nox_float2int16(value C.float) C.short {
++	return C.short(int16(floatToInt32(float32(value))))
++}
++
++//export nox_float2int16_abs
++func nox_float2int16_abs(value C.float) C.short {
++	abs := math.Float32frombits(math.Float32bits(float32(value)) & 0x7fffffff)
++	return C.short(int16(floatToInt32(abs)))
++}
