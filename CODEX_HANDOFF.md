@@ -1,6 +1,17 @@
 # OpenNox x86 Porting Handoff
 
 <!-- current-focus -->
+
+### Active — equipment baseline locked; conversion next
+
+Scope: 33 functions / 972 C lines, including all MixPatch.c. Production is still
+129,053 C lines / 150 files. See [EQUIPMENT.md](docs/porting/EQUIPMENT.md).
+The original-C corpus has 1,144 cases / 17 groups; two full captures match
+byte-for-byte, with hashes locked in equipment_porttest_test.go. Commit/push
+baseline and verify prior inventory/resource/shop contracts before conversion.
+Then convert the whole connected family, qualify once, update counts/docs,
+commit/push and continue autonomously. No pending user question.
+
 ## Complete — inventory; next — connected equipment owners
 
 The 33-function inventory pickup/drop batch is converted and qualified:

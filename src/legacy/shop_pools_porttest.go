@@ -66,6 +66,7 @@ type PortTestShopPacketResult struct {
 	Data               []byte
 }
 type PortTestShopStep struct {
+	EquipmentData            []uint32   `json:",omitempty"`
 	InventoryData            []uint32   `json:",omitempty"`
 	ResourceData             [][]uint32 `json:",omitempty"`
 	ResourceMessages         [][]byte   `json:",omitempty"`
@@ -91,6 +92,7 @@ type portTestShopOwned struct {
 	alive             bool
 }
 type portTestShopPools struct {
+	equipment           *portTestEquipment
 	inventory           *portTestInventory
 	resources           *portTestResources
 	engineStateRequests []uint32
@@ -252,6 +254,7 @@ func (p *portTestShopPools) run() {
 	defer p.enginePrepare()()
 	defer p.resourcePrepare()()
 	defer p.inventoryPrepare()()
+	defer p.equipmentPrepare()()
 	for i, spec := range s.spec.Items {
 		// Actual allocator objects let destruction execute the retained object
 		// free path. Price/charge/modifier arithmetic has guarded query fixtures.
@@ -279,6 +282,7 @@ func (p *portTestShopPools) run() {
 		p.items = append(p.items, o)
 	}
 	p.inventoryItems()
+	p.equipmentItems()
 	for _, a := range s.spec.Sequence {
 		var q unsafe.Pointer
 		if a.Op != PortTestShopCreate && a.Op != PortTestShopReset && a.Op != PortTestShopPlayerCleanup && a.Op != PortTestTradeCreatePlayer && a.Op != PortTestTradeStart && a.Op < 200 {
@@ -470,7 +474,9 @@ func (p *portTestShopPools) run() {
 			}
 			C.sub_510E20(C.int(a.Item))
 		default:
-			if a.Op >= 300 {
+			if a.Op >= 400 {
+				rv = p.equipmentAction(a)
+			} else if a.Op >= 300 {
 				rv = p.inventoryAction(a)
 			} else if a.Op >= 200 {
 				rv = p.resourceAction(a)
@@ -487,6 +493,7 @@ func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 	r := PortTestShopStep{Alive: p.proxy.core.Objs.Alive - p.initialAlive}
 	r.ResourceData, r.ResourceMessages = p.resourceSnapshot()
 	r.InventoryData = p.inventorySnapshot()
+	r.EquipmentData = p.equipmentSnapshot()
 	var sessions, nodes []unsafe.Pointer
 	seen := make(map[unsafe.Pointer]bool)
 	for q := shopTestPointer(uint32(C.dword_5d4594_2386500)); q != nil; {
