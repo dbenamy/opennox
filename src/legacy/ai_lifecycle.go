@@ -186,7 +186,7 @@ func lifecycleRaiseZombie(u *server.Object) uint32 {
 	u.MonsterPushAction(ai.DEPENDENCY_UNINTERRUPTABLE)
 	u.MonsterPushAction(ai.ACTION_GET_UP)
 	GetServer().S().Audio.EventObj(469, u, 0, 0)
-	C.nox_xxx_unitHPsetOnMax_4EE6F0(C.int(uintptr(u.CObj())))
+	resourceRestoreHP(u)
 	u.ObjFlags &= 0xffff7fa7
 	return uint32(u.ObjFlags)
 }

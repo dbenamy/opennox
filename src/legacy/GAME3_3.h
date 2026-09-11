@@ -239,7 +239,6 @@ void nox_xxx_chest_4EDF00(int a1, int a2);
 double sub_4EE2A0(int a1);
 int nox_xxx_dropAnkhTradable_4EE370(int a1, int a2, int* a3);
 void nox_xxx_unitAdjustHP_4EE460(nox_object_t* unit, int dv);
-void nox_xxx_mobInformOwnerHP_4EE4C0(nox_object_t* obj);
 void nox_xxx_unitDamageClear_4EE5E0(nox_object_t* unit, int damageAmount);
 void nox_xxx_unitHPsetOnMax_4EE6F0(int unit);
 void nox_xxx_playerHP_4EE730(int a1);

@@ -3,43 +3,41 @@
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
-## Complete — trade engine; next — health, poison, mana and gold
+## Complete — resources; next — inventory pickup/drop batch
 
-The remaining trade engine is ported: eighteen functions / 815 C lines removed,
-including the entire server__system__trade.c file. Six decoder roots remain;
-eight earlier shop-core exports are retired. Production C is **131,120 physical
-lines / 151 files / zero reference C**. Original-C baseline is pushed dd85dbd8.
+The 25-function health/poison/mana/gold batch is ported: 646 C lines and the
+entire server__object__pickdrop__pickup.c file removed. Production C:
+**130,474 physical lines / 150 files / zero reference C**. Original-C baseline
+is pushed `0393b17c`. 23 C entry points remain, two private bridges are retired,
+and native Go callers/GoldPickup registration route directly.
 
-All 4,986 locked cases (748 engine + 4,238 shop core) pass natively with unchanged
-hashes (20.238s). Accumulated default/server/highres tests pass in
-116.681s / 76.253s / 76.967s. All three production builds are ELF32/i386/SSE2.
-The full suite matches exactly 1,553 known failure entries (15 pass, 3 fail,
-32 skip packages). Fresh trade-engine-port gameplay exits zero against unchanged
-repeat-a goldens, overrides disabled and null audio. See TRADE_ENGINE.md for
-precise coverage and undefined-packet-tail exclusions. No C algorithm is kept
-solely for testing. Artifacts/scripts: build/port-trade-engine.
+All 3,591 resource cases match unchanged original-C hashes and complete capture
+files byte-for-byte (9.392s). Accumulated default/server/highres port tests pass
+in 114.993s / 87.221s / 88.604s. All three production builds are ELF32/i386/SSE2.
+Full-suite failure multiset is exactly unchanged: 1,553 entries, 15 pass / 3 fail /
+32 skip packages. Fresh resources-port gameplay exits zero against unchanged
+repeat-a goldens, overrides disabled, Xvfb and null audio. See RESOURCES.md.
 
-Next connected batch: 25 resource functions / 646 physical C lines:
-GAME3_3 4E4560..before4E4670 (HP setter), 4EE460..before4EED40
-(health, poison, mana), GAME4 4FA590..before4FA700 (gold operations), plus
-server__object__pickdrop__pickup.c. Scope audit: next-resource-scope.json in the
-trade-engine artifact directory. Assess callers and extend the existing guarded
-player/protection/packet/callback fixtures; lock and repeat original-C contracts
-before conversion. Keep owner paths together, qualify once for the full batch,
-update C_LOC/docs/checkpoints, commit/push, summarize and continue.
+Qualification exposed a prior weapon initializer's write barrier inspecting
+uninitialized C modifier slots. It now stores the C descriptor's address bits
+without scanning old bytes as Go pointers. The unchanged original-C creation
+corpus passes three repetitions at GOGC=20 (25.862s); all accumulated checks also
+pass. See OBJECT_CREATION.md. No C algorithm is retained solely for tests.
 
-No user question is pending. Use build/baseline/env.sh (386/SSE2, CGO, Go1.26)
-and retain C x87 flags. The disk filled with duplicate captures during baseline
-work; reproducible Go cache files over twelve hours old were trimmed. About
-7 GiB is free. Preserve the user asset archive and gameplay evidence; avoid
-unnecessary duplicate captures. All 4,238 prior shop hashes remained unchanged.
+Next connected candidate: 33 inventory removal, insertion, drop, chest and
+specialized pickup functions / 1,421 C lines across GAME3_3 and GAME4_3. No next
+production edits or hashes exist yet. Review exact scope/callers and extend the
+existing shop/player/item/protection/packet fixture; lock and repeat original-C
+contracts, commit/push baseline, then convert and qualify once for the batch.
+Ignored scope/review/fixture notes: build/port-resources/next-inventory-*. Avoid
+changing object ownership during create-at capture for borrowed dropped items.
+Keep all previous 8,577 resource/shop/trade contracts unchanged.
 
-Resource original-C baseline: 3,591 cases / eleven groups repeat byte-for-byte.
-Production C is intact. Fixtures and locked hashes are in resources_porttest*.go;
-details in docs/porting/RESOURCES.md. All 4,986 prior shop/trade cases also pass
-with the final fixture (28.933s). Next: convert the audited 25-function /
-646-line batch, qualify accumulated variants/builds/full-suite/gameplay, update
-count and docs, commit/push, then continue. No user question is pending.
+Continue autonomously: complete C_LOC/docs, commit/push, summarize, then proceed
+with the next connected batch. No user question is pending. Use
+build/baseline/env.sh (386/SSE2, CGO, Go1.26), retain C x87 flags. Preserve the
+user asset archive and gameplay evidence; avoid duplicate captures. Full-suite
+logs may contain secrets: report action/package/test metadata only.
 
 <!-- /current-checkpoint -->
 

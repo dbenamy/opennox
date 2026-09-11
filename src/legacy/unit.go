@@ -33,10 +33,10 @@ func nox_xxx_unitMove_4E7010(a1 *nox_object_t, pos *C.float2) {
 	Nox_xxx_unitMove_4E7010(asObjectS(a1), AsPointf(unsafe.Pointer(pos)))
 }
 func Nox_xxx_unitSetHP_4E4560(a1 *server.Object, a2 uint16) {
-	C.nox_xxx_unitSetHP_4E4560(asObjectC(a1), C.ushort(a2))
+	resourceSetHP(a1, a2)
 }
 func Nox_xxx_mobInformOwnerHP_4EE4C0(a1 *server.Object) {
-	C.nox_xxx_mobInformOwnerHP_4EE4C0(asObjectC(a1))
+	resourceInformOwner(a1)
 }
 func Nox_xxx_protectMana_56F9E0(a1 int, a2 int16) {
 	nox_xxx_protectMana_56F9E0(C.int(a1), C.short(a2))
@@ -69,8 +69,8 @@ func Nox_xxx_unitHunt_5157A0(a1 *server.Object) {
 	C.nox_xxx_unitHunt_5157A0(asObjectC(a1))
 }
 func Nox_xxx_playerSubGold_4FA5D0(a1 *server.Object, a2 int) {
-	C.nox_xxx_playerSubGold_4FA5D0(C.int(uintptr(a1.CObj())), C.uint(a2))
+	resourceSubGold(a1, uint32(a2))
 }
 func Nox_xxx_playerAddGold_4FA590(a1 *server.Object, a2 int) {
-	C.nox_xxx_playerAddGold_4FA590(C.int(uintptr(a1.CObj())), C.int(a2))
+	resourceAddGold(a1, uint32(a2))
 }

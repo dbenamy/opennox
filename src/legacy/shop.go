@@ -214,13 +214,13 @@ func shopLookup(u *server.Object, code uint32) uint32 {
 	return 0
 }
 func shopAddGold(u *server.Object, value uint32) uint32 {
-	return uint32(uintptr(unsafe.Pointer(C.nox_xxx_playerAddGold_4FA590(C.int(uintptr(u.CObj())), C.int(value)))))
+	return resourceAddGold(u, value)
 }
 func shopSubGold(u *server.Object, value uint32) uint32 {
-	return uint32(uintptr(unsafe.Pointer(C.nox_xxx_playerSubGold_4FA5D0(C.int(uintptr(u.CObj())), C.uint(value)))))
+	return resourceSubGold(u, value)
 }
 func shopGetGold(u *server.Object) uint32 {
-	return uint32(C.nox_xxx_playerGetGold_4FA6B0(C.int(uintptr(u.CObj()))))
+	return resourceGetGold(u)
 }
 func shopPut(u, item *server.Object) {
 	C.nox_xxx_inventoryPutImpl_4F3070(asObjectC(u), asObjectC(item), 1)

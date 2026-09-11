@@ -93,7 +93,7 @@ func monsterMeleePoison(u, t *server.Object) bool {
 	if GetServer().S().Rand.Logic.IntClamp(1, 100) > int(int32(d.MeleeAttackPoisonChange136)) {
 		return false
 	}
-	return C.nox_xxx_activatePoison_4EE7E0(combatPtr(t), C.int(d.MeleeAttackPoisonStrength140), C.int(d.MeleeAttackPoisonMax144)) != 0
+	return resourcePoison(t, int32(d.MeleeAttackPoisonStrength140), int32(d.MeleeAttackPoisonMax144))
 }
 func monsterPoisonMessage(u, t *server.Object, kind int) {
 	if !monsterMeleePoison(u, t) {

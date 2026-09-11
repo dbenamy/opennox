@@ -229,7 +229,7 @@ func (p *portTestShopPools) resourceAction(a PortTestShopAction) uint32 {
 	case PortTestResourceAdjustHP:
 		C.nox_xxx_unitAdjustHP_4EE460(asObjectC(u), value)
 	case PortTestResourceInformOwner:
-		C.nox_xxx_mobInformOwnerHP_4EE4C0(asObjectC(u))
+		resourceInformOwner(u)
 	case PortTestResourceDamage:
 		C.nox_xxx_unitDamageClear_4EE5E0(asObjectC(u), value)
 	case PortTestResourceRestoreHP:
@@ -275,7 +275,7 @@ func (p *portTestShopPools) resourceAction(a PortTestShopAction) uint32 {
 	case PortTestResourceGoldSub:
 		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_playerSubGold_4FA5D0(unit, C.uint(a.Value)))))
 	case PortTestResourceGoldSet:
-		C.nox_object_setGold_4FA620(asObjectC(u), value)
+		resourceSetGold(u, int32(value))
 	case PortTestResourceGetGold:
 		return uint32(C.nox_xxx_playerGetGold_4FA6B0(unit))
 	case PortTestResourceObjectGold:

@@ -314,11 +314,11 @@ func Nox_xxx_plrReadVals_4EEDC0(obj *server.Object, a2 int) {
 }
 
 func Nox_xxx_playerManaAdd_4EEB80(obj *server.Object, v int) {
-	C.nox_xxx_playerManaAdd_4EEB80(asObjectC(obj), C.short(v))
+	resourceAddMana(obj, int16(v))
 }
 
 func Nox_xxx_removePoison_4EE9D0(obj *server.Object) {
-	C.nox_xxx_removePoison_4EE9D0(asObjectC(obj))
+	resourceRemovePoison(obj)
 }
 
 func Sub_4FD0E0(obj *server.Object, sp spell.ID) int {

@@ -136,7 +136,10 @@ func createWeapon(u *server.Object) int32 {
 		creationScaleDurability(u, d)
 	}
 	setMod := func(off uintptr, name string) {
-		*(*unsafe.Pointer)(unsafe.Add(init, off)) = unsafe.Pointer(core.Modif.Nox_xxx_modifGetDescById413330(core.Modif.Nox_xxx_modifGetIdByName413290(name)))
+		// Both the initialization buffer and modifier descriptors are C-owned.
+		// Store address bits without a Go write barrier: the old slot may still
+		// contain uninitialized bytes, which must not be scanned as a Go pointer.
+		*(*uintptr)(unsafe.Add(init, off)) = uintptr(unsafe.Pointer(core.Modif.Nox_xxx_modifGetDescById413330(core.Modif.Nox_xxx_modifGetIdByName413290(name))))
 	}
 	if uint32(u.TypeInd) == *memmap.PtrUint32(0x5D4594, 2491660) {
 		setMod(8, "Lightning4")

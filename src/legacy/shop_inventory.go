@@ -58,7 +58,7 @@ func shopRepair(u *server.Object, s *shopSession, code uint32) uint32 {
 		return code
 	}
 	shopSubGold(u, uint32(shopPrice(2, s, item)))
-	C.nox_xxx_unitSetHP_4E4560(asObjectC(item), C.ushort(item.HealthData.Max))
+	resourceSetHP(item, item.HealthData.Max)
 	ind := C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd))
 	C.nox_xxx_itemReportHealth_4D87A0(ind, asObjectC(item))
 	if item.ObjClass&0x1000 != 0 && item.ObjSubClass&0x47f0000 != 0 {

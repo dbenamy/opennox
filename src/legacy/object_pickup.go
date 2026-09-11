@@ -37,7 +37,7 @@ func init() {
 	server.RegisterObjectPickup("PotionPickup", C.nox_xxx_pickupPotion_4F37D0, func(who, it *server.Object, a3, a4 int) bool {
 		return Nox_xxx_pickupPotion_4F37D0(who, it, a3, a4)
 	})
-	server.RegisterObjectPickupC("GoldPickup", C.nox_xxx_pickupGold_4F3A60_obj_pickup)
+	server.RegisterObjectPickup("GoldPickup", C.nox_xxx_pickupGold_4F3A60_obj_pickup, func(who, it *server.Object, a3, a4 int) bool { return resourceGoldPickup(who, it, a3) })
 	server.RegisterObjectPickupC("AmmoPickup", C.nox_xxx_pickupAmmo_4F3B00)
 	server.RegisterObjectPickupC("SpellBookPickup", C.nox_xxx_pickupSpellbook_4F3C60)
 	server.RegisterObjectPickupC("AbilityBookPickup", C.nox_xxx_pickupAbilitybook_4F3CE0)

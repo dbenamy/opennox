@@ -60,3 +60,14 @@ Full-suite metadata matches all 1,553 known failures exactly (15 pass, 3 fail,
 32 skip packages), with no added/removed entries. Fresh `object-creation-port`
 headless gameplay exits 0 against preserved screenshots, overrides off, null
 audio. Artifacts are under build/port-object-creation.
+
+## C-owned modifier-slot writes
+
+During resource-batch qualification, the full accumulated corpus exposed a Go
+write-barrier failure when createWeapon overwrote an uninitialized modifier
+slot in its C-owned InitData. The barrier attempted to scan the old filler
+0x1a1a1a1a as a Go pointer. Store the C-owned descriptor address through uintptr
+instead, preserving the exact bytes without treating the previous slot as a
+Go heap reference. Both allocations remain C-owned and separately managed.
+The original-C hashes and inputs are unchanged; repeated GC-stress and full
+qualification results are recorded with the resource batch.

@@ -1857,66 +1857,6 @@ int nox_xxx_checkInversionEffect_4FA4F0(int a1, int a2) {
 	}
 }
 
-//----- (004FA590) --------------------------------------------------------
-uint32_t* nox_xxx_playerAddGold_4FA590(int a1, int a2) {
-	int v2; // eax
-
-	v2 = *(uint32_t*)(a1 + 748);
-	*(uint32_t*)(*(uint32_t*)(v2 + 276) + 2164) += a2;
-	return (uint32_t*)(uintptr_t)sub_56F920(*(uint32_t*)(*(uint32_t*)(v2 + 276) + 4588), a2);
-}
-
-//----- (004FA5D0) --------------------------------------------------------
-uint32_t* nox_xxx_playerSubGold_4FA5D0(int a1, unsigned int a2) {
-	int v2;          // esi
-	int v3;          // edx
-	unsigned int v4; // eax
-
-	v2 = *(uint32_t*)(a1 + 748);
-	v3 = *(uint32_t*)(v2 + 276);
-	v4 = *(uint32_t*)(v3 + 2164);
-	if (v4 >= a2) {
-		*(uint32_t*)(v3 + 2164) = v4 - a2;
-	} else {
-		*(uint32_t*)(v3 + 2164) = 0;
-	}
-	return (uint32_t*)(uintptr_t)sub_56F920(*(uint32_t*)(*(uint32_t*)(v2 + 276) + 4588), -a2);
-}
-
-//----- (004FA620) --------------------------------------------------------
-void nox_object_setGold_4FA620(nox_object_t* a1p, int a2) {
-	int a1 = a1p;
-	int v3;           // eax
-	int v4;           // edx
-
-	if (a1 && *(uint8_t*)(a1 + 8) & 4) {
-		v3 = *(uint32_t*)(a1 + 748);
-		if (a2 >= 0 || (v4 = *(uint32_t*)(v3 + 276), *(uint32_t*)(v4 + 2164) >= (unsigned int)-a2)) {
-			*(uint32_t*)(*(uint32_t*)(v3 + 276) + 2164) += a2;
-			sub_56F920(*(uint32_t*)(*(uint32_t*)(v3 + 276) + 4588), a2);
-		} else {
-			*(uint32_t*)(v4 + 2164) = 0;
-			nox_xxx_playerResetProtectionCRC_56F7D0(*(uint32_t*)(*(uint32_t*)(v3 + 276) + 4588), 0);
-		}
-	}
-}
-
-//----- (004FA6B0) --------------------------------------------------------
-int nox_xxx_playerGetGold_4FA6B0(int a1) { return *(uint32_t*)(*(uint32_t*)(*(uint32_t*)(a1 + 748) + 276) + 2164); }
-
-//----- (004FA6D0) --------------------------------------------------------
-int nox_object_getGold_4FA6D0(nox_object_t* a1p) {
-	int a1 = a1p;
-	int result; // eax
-
-	if (a1 && *(uint8_t*)(a1 + 8) & 4) {
-		result = *(uint32_t*)(*(uint32_t*)(*(uint32_t*)(a1 + 748) + 276) + 2164);
-	} else {
-		result = 0;
-	}
-	return result;
-}
-
 //----- (004FA700) --------------------------------------------------------
 int nox_xxx_playerBotCreate_4FA700(nox_object_t* a1p) {
 	int a1 = a1p;
