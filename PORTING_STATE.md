@@ -3,14 +3,6 @@
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
-## In progress — generic object death baseline
-
-Quest penalty native commit `ab9fc939` is pushed. Eight generic death callbacks
-now have 1,704 locked original-C cases; repeat hashes and callback/creation/penalty
-regressions pass (7.659s). See docs/porting/OBJECT_DEATH.md. C remains 134,569
-lines; commit/push baseline before conversion. Native draft is ignored under
-build/port-object-death/object_death_native.go. No user question is pending.
-
 ## Resume here — 2026-09-11
 
 Continue the x86 C-to-Go port on `dev`, one connected, reviewed, tested,
@@ -18,46 +10,47 @@ documented, committed and pushed family at a time, until a substantive user
 question or rate limit. User approved more aggressive batching and at most one
 bounded helper. Preserve the untracked asset archive. No question is pending.
 
-Latest qualified batch: quest death-penalty policy, GAME5 54CBD0–54D080.
-Original-C baseline `37fc7a41` was committed and pushed before conversion.
-All seven functions are native Go; root ABI remains for registered PlayerDie.
-All 2,293 original-C cases match, including real inventory unlink/dequip,
-packets, gem pricing and gold-protection records. See
-[QUEST_PENALTY.md](docs/porting/QUEST_PENALTY.md).
-Production C: **134,569 physical lines (minus 385)**, 153 files, zero reference C.
+Latest qualified batch: eight generic object death callbacks across GAME5
+54DFA0–54E620 and server__object__die__die.c, which is now removed.
+Original-C baseline `29780767` was committed and pushed before conversion.
+All 1,704 cases match, including creation failures, marker duplicates, rotating
+boulder debris, equipment material/plural messages and real packet encoding.
+See docs/porting/OBJECT_DEATH.md for contracts, hashes and scope limits.
+Production C: **134,304 physical lines (minus 265)**, **152 files**, zero reference C.
 
-Accumulated default/server/highres tests pass (58.585s/47.780s/47.163s).
+Accumulated default/server/highres tests pass (60.128s/49.661s/49.157s).
 Three production binaries verify ELF32/i386/SSE2. Full suite matches exactly
 1,553 known failure entries (15 pass/3 fail/32 skip packages). Fresh
-`quest-penalty-port` headless gameplay exits 0 against preserved screenshots,
-overrides off, null audio. Artifacts: build/port-quest-penalty.
+`object-death-port` headless gameplay exits 0 against preserved screenshots,
+overrides off, null audio. Artifacts: build/port-object-death.
 
-Previous qualified/pushed: initialization `7ac58eed`, callbacks `6f0a291e`,
-spells `51dd2621`, main AI `f674ad3a`, monster state `29b6e5d3`, lifecycle
-`e3ee0c9c`, combat `e37039e5`, path `01a9ec4d`, navigation `e32982f7`,
-guard/escort `2bd0b90d`. C_LOC.md records every physical count.
+Previous qualified/pushed: quest penalty `ab9fc939`, initialization `7ac58eed`,
+callbacks `6f0a291e`, spells `51dd2621`, main AI `f674ad3a`, monster state
+`29b6e5d3`, lifecycle `e3ee0c9c`, combat `e37039e5`, path `01a9ec4d`, navigation
+`e32982f7`, guard/escort `2bd0b90d`. C_LOC.md records each physical count.
 
-Next: batch remaining generic non-player death callbacks across GAME5
-54DFA0–54E620 and server__object__die__die.c (ArmorDie/WeaponDie).
-Include MonsterGeneratorDie with its update family if its script/score fixture
-would otherwise dominate this batch. PlayerDie/score handlers remain later.
-Reuse callback creation/audio/FX, guarded player and inventory fixtures.
-Read actual C: Create/Spawn DeathData contains an INLINE 128-byte name then
-sound, not a name pointer. Boulder allocation failure skips actor deletion;
-both RNG APIs use Logic. Armor generic passes position bits as a sound ID.
-Helper audit under build/port-quest-penalty is advisory and has errors;
-verify implementation and compiled arithmetic independently.
-Lock and commit original-C hashes before native conversion; qualify each
-connected batch once. Keep boundary/branch coverage thorough while amortizing
-build and fixture costs over multiple related functions.
+Next: generator death/update/selection/placement/spawn/copy, **nine functions /
+468 physical C lines**: GAME5 54E630..beforeE6F0 (27) and E930..beforeF740 (441).
+Four interleaved visibility helpers remain shared C. Creation54CA90 is already
+Go. Establish original-C baseline with shared callback/map/script/player fixtures,
+real tile grid and SpawnClass lifecycle, then commit before conversion.
+Primary notes: build/port-object-death/generator-next.md. Helper audits and
+requested tile fixture draft are in that directory; review independently.
+
+Map is already initialized by shared PortTestAIEmptyMap. Circle shape is Kind2
+and uses PosVec2/radius squared; helper audit incorrectly called it a rectangle.
+Killer pointer is Obj130(+520), distinct from ObjOwner(+508). Preserve full
+164-byte generator/2200-byte creature data, real spawn references and inventory,
+player state, quest caches, script offsets, packets and random indices.
+Radial fallback passes an unrounded double sum to cos but stored float angle
+to sin; inspect compiled x87 arithmetic before choosing native expressions.
+Both RNG APIs use Logic. No reason to ask the user before this bounded work.
 
 Use build/baseline/env.sh: Go1.26, GOARCH=386, GO386=sse2, CGO enabled, GCC.
-User dropped old-CPU support. Keep C x87 flags unchanged; inspect compiled
-spills where needed. Both random APIs 415FA0 and 416030 use Logic, never Other.
-Accumulated tests: build/port-quest-penalty/check-ports.sh (includes QuestPenalty).
-Full-suite comparison: build/port-quest-penalty/compare-suite.py; compare only
-Action/Package/Test metadata, never raw suite output. Scenario runner uses
-preserved repeat-a screenshots with overrides disabled and null audio.
+Keep C x87 flags unchanged. Accumulated tests:
+build/port-object-death/check-ports.sh (includes ObjectDeath). Full-suite
+comparison script compares only Action/Package/Test, never raw output.
+Scenario runner uses preserved repeat-a screenshots, overrides off, null audio.
 
 <!-- /current-checkpoint -->
 

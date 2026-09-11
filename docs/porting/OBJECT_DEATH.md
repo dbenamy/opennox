@@ -35,5 +35,22 @@ Marker preserves raw four-slot access. Armor generic passes position pointer bit
 as an audio ID; deferred audio captures this behavior. The Create/Spawn record
 contains inline bytes, not a name pointer.
 
-Artifacts: build/port-object-death. Production C remains 134,569 lines,
-153 files, zero reference C. Next: convert all eight callbacks and qualify once.
+## Native conversion and qualification
+
+Original-C baseline `29780767` was committed and pushed before conversion.
+All eight callbacks now live in src/legacy/object_death_native.go, with generated
+ABI entries for registration. server__object__die__die.c is removed entirely.
+The remaining static C helper only forwards a variadic message call; it contains
+no translated policy or test oracle. All 1,704 locked cases match (1.335s).
+
+Accumulated default/server/highres tests pass (60.128s/49.661s/49.157s).
+Three production binaries build and verify ELF32/i386/GO386=sse2. Full-suite
+failure entries match exactly (1,553; 15 pass/3 fail/32 skip packages).
+Fresh `object-death-port` headless gameplay exits 0 against preserved screenshots,
+overrides disabled, null audio.
+
+Production C: **134,304 physical lines**, **152 files**, zero reference C:
+**265 lines and one translation unit removed**. Artifacts: build/port-object-death.
+The retained barrel loot engine's uppercase-name table branch is outside this
+policy conversion; these fixtures exercise its other table. Both engine table
+branches should be distinguished when that shared loot engine is ported.
