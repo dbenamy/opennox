@@ -32,6 +32,7 @@ type portTestRoamOwnerServer struct {
 	life             *portTestLifecycleState
 	state            *portTestMonsterState
 	main             *portTestMainState
+	spells           *portTestAISpellState
 }
 
 func (s *portTestRoamOwnerServer) Nox_xxx_creatureSetDetailedPath_50D220(u *server.Object, p *types.Pointf) {

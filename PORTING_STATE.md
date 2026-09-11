@@ -3,6 +3,14 @@
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
+## In progress — monster spell batch
+
+Original-C spell baseline is locked: 3,840 generated cases and 172 contracts;
+main-AI and monster-state hashes also pass unchanged. See docs/porting/AI_SPELLS.md.
+Production C remains 136,741 lines. Next: replace all fifteen 5408A0–541490 bodies
+and reroute native callers, then qualify the connected batch and update C LOC.
+Continue onward after committing/pushing; no user question is pending.
+
 ## Resume here — 2026-09-11
 
 We are porting the x86 engine C to native Go on branch `dev`, one connected,

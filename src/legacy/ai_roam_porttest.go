@@ -20,6 +20,7 @@ import (
 )
 
 type PortTestRoamSpec struct {
+	Spells                     *PortTestAISpellSpec
 	Main                       *PortTestMainSpec
 	MonsterState               *PortTestMonsterStateSpec
 	Lifecycle                  *PortTestLifecycleSpec
@@ -37,6 +38,7 @@ type PortTestRoamSpec struct {
 	Enabled                    [34]bool
 }
 type PortTestRoamResult struct {
+	Spells             *PortTestAISpellResult      `json:",omitempty"`
 	Main               *PortTestMainResult         `json:",omitempty"`
 	MonsterState       *PortTestMonsterStateResult `json:",omitempty"`
 	Lifecycle          *PortTestLifecycleResult    `json:",omitempty"`
@@ -118,6 +120,12 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 	for _, sp := range specs {
 		if sp.Main != nil {
 			defer portTestMainEnvironment(proxy)()
+			break
+		}
+	}
+	for _, sp := range specs {
+		if sp.Spells != nil {
+			defer portTestAISpellEnvironment(proxy)()
 			break
 		}
 	}
@@ -317,6 +325,9 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		if sp.Main != nil {
 			portTestMainPrepare(proxy, obj, sp.Main)
 		}
+		if sp.Spells != nil {
+			portTestAISpellPrepare(proxy, obj, sp.Spells)
+		}
 		if sp.Path != nil {
 			configureWalls(sp.Path.Wall)
 			portTestPathPrepare(proxy, obj, sp.Path, raw)
@@ -330,10 +341,20 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		ret := 0
 		var nanos int64
 		var combatResult *PortTestCombatResult
+		var spellResult *PortTestAISpellResult
 		var mainResult *PortTestMainResult
 		var stateResult *PortTestMonsterStateResult
 		var lifeResult *PortTestLifecycleResult
 		switch sp.Op {
+		case 14:
+			rv := portTestAISpellCall(proxy, obj, sp.Spells)
+			spellResult = portTestAISpellTrace(proxy, obj, rv, normalize)
+			mainResult = portTestMainTrace(proxy, 0, normalize)
+			stateResult = portTestMonsterStateTrace(proxy, obj, 0, normalize)
+			copy(beforeT[8:len(beforeT)-8], tb[8:len(tb)-8])
+			lifeResult = portTestLifecycleTrace(proxy, health, normalize)
+			combatResult = portTestCombatTrace(proxy, normalize)
+			copy(beforeH[8:len(beforeH)-8], hb[8:len(hb)-8])
 		case 13:
 			rv := portTestMainCall(proxy, obj, sp.Main)
 			mainResult = portTestMainTrace(proxy, rv, normalize)
@@ -413,7 +434,7 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 				}
 			}
 		}
-		r := PortTestRoamResult{Main: mainResult, MonsterState: stateResult, Lifecycle: lifeResult, Combat: combatResult, Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT) && playersUnchanged() && bytes.Equal(scriptName, beforeName) && bytes.Equal(hb, beforeH)}
+		r := PortTestRoamResult{Spells: spellResult, Main: mainResult, MonsterState: stateResult, Lifecycle: lifeResult, Combat: combatResult, Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT) && playersUnchanged() && bytes.Equal(scriptName, beforeName) && bytes.Equal(hb, beforeH)}
 		if sp.Navigation != nil || sp.Path != nil {
 			for _, off := range offsets {
 				r.Trace = append(r.Trace, uint32(off), normalize(*memmap.PtrUint32(0x5D4594, off)))

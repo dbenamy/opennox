@@ -72,6 +72,9 @@ func portTestMainEnvironment(proxy *portTestRoamOwnerServer) func() {
 			}
 			proxy.trace = append(proxy.trace, v)
 		}
+		if proxy.spells != nil {
+			proxy.trace = append(proxy.trace, 46, uint32(u.Class()), uint32(u.SubClass()), uint32(u.Direction2))
+		}
 		return 1
 	}
 	proxy.main = &portTestMainState{host: host, grid: grid, gridIntact: gridIntact}
