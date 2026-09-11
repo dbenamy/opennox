@@ -15,14 +15,20 @@ off. No validation processes running. Artifacts: build/port-subtile-lookup.
 Last full suite: preceding normalization commit 3253ef53 matched the exact known
 1,553 failure entries, 15 passing/3 known failing/32 skipped-no-test packages.
 
-Next: shared float-to-int helpers 419A70/419A90/419AB0 before grid owner 411160.
-Primary prepared ignored fixture/tests under build/port-float-int; review/install
-and run original C before porting. Audit/disassembly shows forced truncation
-with saved/restored x87 CW. Tests cover raw IEEE patterns, integer boundaries,
-short promotion/wrapping, invalid conversion results and PC/RC preservation.
-Keep generated C ABI exports for remaining C callers, remove original bodies.
-Grid lookup's scaled and unscaled intermediates spill to float32; preserve those
-when subsequently porting it. No question pending; all three fixes approved.
+Current: float-to-int C baseline eb23d4b2 passes 4,193,481 conversions plus
+684 PC/RC cases. Go exports matched results but cost roughly 60–80× more per
+C call (3.5–3.8 ns vs 223–285 ns). Experiment saved in FLOAT_INT.md/proposals;
+original C helpers are restored for remaining C callers. Use the tested native
+helper when porting Go owners, avoiding extra crossings. No C LOC removed.
+
+Grid lookup 411160 has a confirmed lower-bound overflow: INT32_MIN-1 wraps
+and bypasses checks. Original-C crash baseline 4ec260c8 uses six isolated child
+processes. The user said continue after the defect/fix explanation. The direct
+comparison repair is now adopted and focused grid/float tests pass all three
+variants. See docs/porting/GRID_BOUNDS.md. Next establish full repaired-C grid
+lookup baseline, port it using native conversion and float32 spill boundaries,
+then complete accumulated checks, docs/count, commit/push. Production C remains
+140,455 lines. No validation processes running and no user question pending.
 Keep 57ADF0 cleanup with GUI owner and separate server.PointOnTheLine behavior.
 
 Use build/baseline/env.sh and accumulated regex

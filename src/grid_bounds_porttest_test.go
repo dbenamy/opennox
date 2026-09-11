@@ -3,7 +3,6 @@
 package opennox
 
 import (
-	"bytes"
 	"context"
 	"github.com/opennox/opennox/v1/legacy"
 	"os"
@@ -14,7 +13,7 @@ import (
 	"time"
 )
 
-func TestGridBoundsOriginalC(t *testing.T) {
+func TestGridBoundsRejectInvalid(t *testing.T) {
 	if raw := os.Getenv("OPENNOX_PORT_GRID_BOUNDS_CHILD"); raw != "" {
 		values := strings.Split(raw, ",")
 		x, e1 := strconv.ParseUint(values[0], 16, 32)
@@ -33,17 +32,16 @@ func TestGridBoundsOriginalC(t *testing.T) {
 			t.Fatalf("ordinary bounds %x: %d", pair, got)
 		}
 	}
-	// Original C converts these coordinates to INT32_MIN. Its subtraction-based
-	// lower-bound guard wraps and incorrectly permits a grid access.
+	// These inputs convert to INT32_MIN. Reject them before any grid access.
 	for _, raw := range []string{"7fc12345,43000000", "43000000,7fc12345", "7f800000,43000000", "43000000,ff800000", "7f7fffff,43000000", "ff7fffff,43000000"} {
 		ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
-		cmd := exec.CommandContext(ctx, os.Args[0], "-test.run=^TestGridBoundsOriginalC$", "-test.count=1")
+		cmd := exec.CommandContext(ctx, os.Args[0], "-test.run=^TestGridBoundsRejectInvalid$", "-test.count=1")
 		cmd.Env = append(os.Environ(), "OPENNOX_PORT_GRID_BOUNDS_CHILD="+raw)
-		output, err := cmd.CombinedOutput()
+		_, err := cmd.CombinedOutput()
 		timedOut := ctx.Err() != nil
 		cancel()
-		if timedOut || err == nil || !bytes.Contains(output, []byte("SIGSEGV")) || !bytes.Contains(output, []byte("_Cfunc_nox_xxx_tileNFromPoint_411160")) {
-			t.Fatalf("expected isolated C bounds crash for %s (timeout=%v err=%v)", raw, timedOut, err)
+		if timedOut || err != nil {
+			t.Fatalf("expected safe bounds rejection for %s (timeout=%v err=%v)", raw, timedOut, err)
 		}
 	}
 }

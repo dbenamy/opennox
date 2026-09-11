@@ -854,7 +854,7 @@ int nox_xxx_tileNFromPoint_411160(float2* a1) {
 	int v4 = nox_float2int(v14) % 46;
 	int v5 = nox_float2int(v15) % 46;
 
-	if (i - 1 <= 0 || i >= 127 || j - 1 <= 0 || j >= 127) {
+	if (i <= 1 || i >= 127 || j <= 1 || j >= 127) {
 		return -1;
 	}
 
