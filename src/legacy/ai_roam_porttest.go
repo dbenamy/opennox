@@ -156,6 +156,13 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		}
 	}
 
+	for _, sp := range specs {
+		if sp.Callbacks != nil && sp.Callbacks.Generator != nil {
+			defer portTestGeneratorEnvironment(proxy)()
+			break
+		}
+	}
+
 	GetServer = func() Server { return proxy }
 	noxflags.UnsetEngine(noxflags.EngineShowAI)
 	defer func() { GetServer = oldGet; noxflags.ResetEngine(); noxflags.SetEngine(oldFlags) }()
@@ -477,6 +484,12 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 			}
 		}
 		r := PortTestRoamResult{Callbacks: callbackResult, Spells: spellResult, Main: mainResult, MonsterState: stateResult, Lifecycle: lifeResult, Combat: combatResult, Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT) && playersUnchanged() && bytes.Equal(scriptName, beforeName) && bytes.Equal(hb, beforeH)}
+		if sp.Callbacks != nil && sp.Callbacks.Generator != nil {
+			// Generator data overlays the roam field with a source-object pointer.
+			if id, ok := proxy.life.ids[r.Field2]; ok {
+				r.Field2 = id
+			}
+		}
 		if sp.Navigation != nil || sp.Path != nil {
 			for _, off := range offsets {
 				r.Trace = append(r.Trace, uint32(off), normalize(*memmap.PtrUint32(0x5D4594, off)))

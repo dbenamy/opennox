@@ -1,6 +1,21 @@
 # OpenNox x86 Porting Handoff
 
 <!-- current-focus -->
+## In progress — generator original-C baseline
+
+Generic death native `fefc0445` is committed and pushed. Generator C remains
+intact at 134,304 physical lines. The fixture now covers 2,264 generator cases
+plus 128 tile known answers, including real spawn registration, health, player
+selection, modifier copying and weapon/armor equipment. See
+[generator contracts](docs/porting/GENERATOR.md).
+
+The 12 hash groups repeat exactly; locked generator and adjacent regressions
+pass (11.291s). Commit this baseline before converting the
+nine-function, 468-line family. Native drafts are ignored under
+build/port-generator; independently review before integrating. One helper is
+available as insert_port. No user question is pending; continue through native
+qualification, documentation, commit and push, then the next connected batch.
+
 ## Resume here — 2026-09-11
 
 Continue the x86 C-to-Go port on `dev`, one connected, reviewed, tested,

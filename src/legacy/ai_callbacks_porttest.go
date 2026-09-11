@@ -38,6 +38,7 @@ import (
 var PortTestCallbackServer func(*server.Server) (Server, func())
 
 type PortTestAICallbackSpec struct {
+	Generator                                                              *PortTestGeneratorSpec
 	Death                                                                  *PortTestDeathSpec
 	Penalty                                                                *PortTestPenaltySpec
 	Creation                                                               *PortTestCreationSpec
@@ -54,9 +55,10 @@ type PortTestAICallbackSpec struct {
 	LootName                                                               string
 }
 type PortTestAICallbackResult struct {
-	Death                                *PortTestDeathResult    `json:",omitempty"`
-	Penalty                              *PortTestPenaltyResult  `json:",omitempty"`
-	Creation                             *PortTestCreationResult `json:",omitempty"`
+	Generator                            *PortTestGeneratorResult `json:",omitempty"`
+	Death                                *PortTestDeathResult     `json:",omitempty"`
+	Penalty                              *PortTestPenaltyResult   `json:",omitempty"`
+	Creation                             *PortTestCreationResult  `json:",omitempty"`
 	PlayerStatus                         uint32
 	Modifiers                            []uint32
 	Definition                           []uint32
@@ -65,6 +67,7 @@ type PortTestAICallbackResult struct {
 	Intact                               bool
 }
 type portTestAICallbackState struct {
+	generation   *portTestGeneratorState
 	death        *portTestDeathState
 	penalty      *portTestPenaltyState
 	creation     *portTestCreationState
@@ -165,6 +168,9 @@ func portTestAICallbackPrepare(proxy *portTestRoamOwnerServer, u *server.Object,
 		t.Shape.Circle.R = math.Float32frombits(sp.TargetRadius)
 	}
 	proxy.life.ids[uint32(uintptr(C.pt_callback_hit_ptr()))] = 960
+	if sp.Generator != nil {
+		portTestGeneratorPrepare(proxy, u, sp.Generator)
+	}
 	if sp.Death != nil {
 		portTestDeathPrepare(proxy, u, sp.Death)
 	}
@@ -180,6 +186,9 @@ func portTestAICallbackPrepare(proxy *portTestRoamOwnerServer, u *server.Object,
 	}
 }
 func portTestAICallbackCall(proxy *portTestRoamOwnerServer, u *server.Object, sp *PortTestAICallbackSpec) uint32 {
+	if sp.Generator != nil {
+		return portTestGeneratorCall(proxy, u)
+	}
 	if sp.Death != nil {
 		return portTestDeathCall(u, sp.Op-51)
 	}
@@ -225,6 +234,10 @@ func portTestAICallbackCall(proxy *portTestRoamOwnerServer, u *server.Object, sp
 }
 func portTestAICallbackTrace(proxy *portTestRoamOwnerServer, rv uint32, normalize func(uint32) uint32) *PortTestAICallbackResult {
 	r := &PortTestAICallbackResult{Return: normalize(rv), Intact: true}
+	if proxy.callbacks.spec.Generator != nil {
+		r.Generator = portTestGeneratorTrace(proxy, normalize)
+		r.Intact = r.Generator.Intact
+	}
 	if proxy.callbacks.spec.Death != nil {
 		r.Death = portTestDeathTrace(proxy, normalize)
 		r.Intact = r.Death.Intact
