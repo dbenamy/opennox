@@ -20,9 +20,9 @@ chunk f498e1cf ran the full suite: exact known 1,553 failure-entry multiset,
 15 passing/3 known failing/32 skipped-no-test packages. This small chunk did
 not repeat it. Projection's 21,656 exact-bit cases remain in accumulated tests.
 
-Next: waypoint edge append sub_51D2C0/sub_51D300 in GAME4_1.c. A bounded fixture
-is being drafted under ignored build/port-waypoint-append; no baseline or port
-is installed yet. Capacity is 31, not the physical 32 slots. Preserve pointer
+Next: waypoint edge append sub_51D2C0/sub_51D300 in GAME4_1.c. Reviewed fixtures/tests are installed, with 532,480 cases;
+original-C baseline passes under build/port-waypoint-append. No production
+append code has changed yet. Capacity is 31, not the physical 32 slots. Preserve pointer
 identity, padding, count checks and duplicate scan. Compiled C sign-extends the
 incoming char but zero-extends stored Ind: kinds 128..255 never match duplicates.
 Preserve this behavior, with all-byte tests for direct and blob-kind wrapper routes.
