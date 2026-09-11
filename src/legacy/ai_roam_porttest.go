@@ -20,6 +20,7 @@ import (
 )
 
 type PortTestRoamSpec struct {
+	MonsterState               *PortTestMonsterStateSpec
 	Lifecycle                  *PortTestLifecycleSpec
 	Combat                     *PortTestCombatSpec
 	Path                       *PortTestPathSpec
@@ -35,10 +36,11 @@ type PortTestRoamSpec struct {
 	Enabled                    [34]bool
 }
 type PortTestRoamResult struct {
-	Lifecycle          *PortTestLifecycleResult `json:",omitempty"`
-	Combat             *PortTestCombatResult    `json:",omitempty"`
-	Nanos              int64                    `json:"-"`
-	Trace              []uint32                 `json:",omitempty"`
+	MonsterState       *PortTestMonsterStateResult `json:",omitempty"`
+	Lifecycle          *PortTestLifecycleResult    `json:",omitempty"`
+	Combat             *PortTestCombatResult       `json:",omitempty"`
+	Nanos              int64                       `json:"-"`
+	Trace              []uint32                    `json:",omitempty"`
 	History            [16]byte
 	Index, Arg, Field2 uint32
 	Return             int
@@ -102,6 +104,12 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		if sp.Lifecycle != nil {
 			restore := portTestLifecycleEnvironment(proxy)
 			defer restore()
+			break
+		}
+	}
+	for _, sp := range specs {
+		if sp.MonsterState != nil {
+			defer portTestMonsterStateEnvironment(proxy)()
 			break
 		}
 	}
@@ -295,6 +303,9 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		if sp.Lifecycle != nil {
 			portTestLifecyclePrepare(proxy, obj, target, health, sp.Lifecycle)
 		}
+		if sp.MonsterState != nil {
+			portTestMonsterStatePrepare(proxy, obj, health, sp.MonsterState)
+		}
 		if sp.Path != nil {
 			configureWalls(sp.Path.Wall)
 			portTestPathPrepare(proxy, obj, sp.Path, raw)
@@ -308,8 +319,16 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		ret := 0
 		var nanos int64
 		var combatResult *PortTestCombatResult
+		var stateResult *PortTestMonsterStateResult
 		var lifeResult *PortTestLifecycleResult
 		switch sp.Op {
+		case 12:
+			rv := portTestMonsterStateCall(proxy, obj, sp.MonsterState)
+			stateResult = portTestMonsterStateTrace(proxy, obj, rv, normalize)
+			copy(beforeT[8:len(beforeT)-8], tb[8:len(tb)-8])
+			lifeResult = portTestLifecycleTrace(proxy, health, normalize)
+			combatResult = portTestCombatTrace(proxy, normalize)
+			copy(beforeH[8:len(beforeH)-8], hb[8:len(hb)-8])
 		case 11:
 			ret = int(normalize(uint32(portTestLifecycleCall(obj, sp.Lifecycle))))
 			lifeResult = portTestLifecycleTrace(proxy, health, normalize)
@@ -374,11 +393,14 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 				}
 			}
 		}
-		r := PortTestRoamResult{Lifecycle: lifeResult, Combat: combatResult, Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT) && playersUnchanged() && bytes.Equal(scriptName, beforeName) && bytes.Equal(hb, beforeH)}
+		r := PortTestRoamResult{MonsterState: stateResult, Lifecycle: lifeResult, Combat: combatResult, Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT) && playersUnchanged() && bytes.Equal(scriptName, beforeName) && bytes.Equal(hb, beforeH)}
 		if sp.Navigation != nil || sp.Path != nil {
 			for _, off := range offsets {
 				r.Trace = append(r.Trace, uint32(off), normalize(*memmap.PtrUint32(0x5D4594, off)))
 			}
+		}
+		if stateResult != nil {
+			r.Intact = r.Intact && stateResult.Intact
 		}
 		if lifeResult != nil {
 			r.Intact = r.Intact && proxy.life.playersUnchanged()

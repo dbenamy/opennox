@@ -30,6 +30,7 @@ type portTestRoamOwnerServer struct {
 	fallback         *server.Waypoint
 	trace            []uint32
 	life             *portTestLifecycleState
+	state            *portTestMonsterState
 }
 
 func (s *portTestRoamOwnerServer) Nox_xxx_creatureSetDetailedPath_50D220(u *server.Object, p *types.Pointf) {

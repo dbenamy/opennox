@@ -71,6 +71,16 @@ type portTestCombatState struct {
 
 func (s *portTestRoamOwnerServer) NoxScriptC() NoxScript { return s.combat }
 func (s *portTestCombatState) ScriptCallback(b *server.ScriptCallback, caller, trigger *server.Object, event server.ScriptEventType) unsafe.Pointer {
+	if s.proxy.state != nil {
+		id := func(u *server.Object) uint32 {
+			if u == nil {
+				return 0
+			}
+			return s.proxy.life.ids[uint32(uintptr(u.CObj()))]
+		}
+		s.proxy.trace = append(s.proxy.trace, 10, uint32(event), uint32(uintptr(unsafe.Pointer(b))-uintptr(trigger.UpdateData)), id(caller), id(trigger))
+		return nil
+	}
 	s.proxy.trace = append(s.proxy.trace, 10, uint32(event), uint32(uintptr(unsafe.Pointer(b))-uintptr(s.actor.UpdateData)), uint32(bool2int(caller == s.target)), uint32(bool2int(trigger == s.actor)))
 	return nil
 }
@@ -114,7 +124,7 @@ func portTestCombatEnvironment(proxy *portTestRoamOwnerServer) func() {
 		oldTables[off] = bytes.Clone(dst)
 		copy(dst, b)
 	}
-	sounds, freeSounds := alloc.Make([]uint32{}, 16)
+	sounds, freeSounds := alloc.Make([]uint32{}, 19)
 	for i := range sounds {
 		sounds[i] = uint32(300 + i)
 	}
