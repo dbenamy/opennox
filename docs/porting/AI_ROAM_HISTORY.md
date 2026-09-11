@@ -52,3 +52,6 @@ Go aggression predicates compare float32 against rounded constants whereas the C
 predicates compare against double literals; check threshold neighbors against
 actual compiled C before reusing those helpers. No behavior change is approved
 merely by this audit. Do not let the next batch become a pathfinder rewrite.
+
+The follow-up main-update port now retires all three history exports; see
+[AI_ROAM_UPDATE.md](AI_ROAM_UPDATE.md) for its separate baseline and qualification.

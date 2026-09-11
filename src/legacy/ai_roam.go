@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME5.h"
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -13,7 +8,11 @@ import (
 	"github.com/opennox/opennox/v1/server"
 )
 
-type roamAIAction struct{ cgoAIAction }
+type roamAIAction struct{}
+
+func (roamAIAction) Type() ai.ActionType     { return ai.ACTION_ROAM }
+func (roamAIAction) End(*server.Object)      {}
+func (roamAIAction) Update(u *server.Object) { roamUpdate(u) }
 
 func (a roamAIAction) Start(u *server.Object) {
 	ud := u.UpdateDataMonster()
@@ -23,7 +22,7 @@ func (a roamAIAction) Start(u *server.Object) {
 }
 func (a roamAIAction) Cancel(u *server.Object) { u.UpdateDataMonster().AIStackHead().Args[0] = 0 }
 func init() {
-	server.RegisterAIAction(roamAIAction{cgoAIAction{typ: ai.ACTION_ROAM, update: C.nox_xxx_mobActionRoam_5457E0}})
+	server.RegisterAIAction(roamAIAction{})
 }
 
 // The shared monster layout stores these C-owned waypoint addresses as words.
@@ -128,19 +127,4 @@ func roamDeadEnd(u *server.Object, wp *server.Waypoint) bool {
 	}
 	u.MonsterPopAction()
 	return false
-}
-
-//export sub_545B00
-func sub_545B00(a1, a2 C.int) {
-	roamInsert((*server.MonsterUpdateData)(unsafe.Pointer(uintptr(uint32(a1)))), roamWaypoint(uint32(a2)))
-}
-
-//export sub_545B60
-func sub_545B60(a1 C.int, mask C.uchar) C.int {
-	return C.int(roamWaypointWord(roamPrevious((*server.MonsterUpdateData)(unsafe.Pointer(uintptr(uint32(a1)))), byte(mask))))
-}
-
-//export nox_xxx_monsterRoamDeadEnd_545BB0
-func nox_xxx_monsterRoamDeadEnd_545BB0(a1, a2 C.int) C.int {
-	return C.int(bool2int(roamDeadEnd((*server.Object)(unsafe.Pointer(uintptr(uint32(a1)))), roamWaypoint(uint32(a2)))))
 }

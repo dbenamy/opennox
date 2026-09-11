@@ -43,10 +43,20 @@ roam-update owner. Accumulated tests and all ELF32/SSE2 builds pass in all three
 variants. Fresh roam-history-port gameplay exits 0 against both preserved
 screenshots, overrides off. See docs/porting/AI_ROAM_HISTORY.md. The prior six-action
 batch was committed and pushed as 2bf36c01. No user question is pending.
-Next assess the full roaming update 5457E0, reusing this fixture and accounting
-for acquisition, attack interrupts, detailed-path results and movement/audio.
-All validation has completed. Owner audit is recorded in that document and in
-build/port-roam-history/owner-audit.md (ignored).
+Completed batch: full roaming update 5457E0. Original-C baseline 3a9480b2 passes
+12,289 owner cases plus the 98,304 history cases, and two 200,000-update runs with
+full state/call traces. Native Go matches all hashes and independent assertions;
+three unused history exports and the owner C entry are removed. Production C is
+139,951 physical lines (minus 131), 153 files, zero reference C. First paired
+update measurements favor native Go. See docs/porting/AI_ROAM_UPDATE.md.
+Accumulated tests and all ELF32/SSE2 builds pass in three configurations. The
+full suite matches exactly 1,553 known failures. Fresh roam-update-port gameplay
+exits 0 against both preserved screenshots, overrides off. No validation remains.
+Next: assess guard/escort updates together with their connected helpers as one
+larger behavior batch. The user explicitly approved more aggressive batching
+after this roaming update; avoid qualifying each helper separately. Bounded
+read-only audit: build/port-guard-escort/audit.md when available. No question is
+pending.
 
 Use build/baseline/env.sh and accumulated regex
 `^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam)`

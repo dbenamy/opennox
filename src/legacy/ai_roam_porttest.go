@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -46,7 +41,7 @@ type PortTestRoamResult struct {
 	Intact             bool
 }
 
-// PortTestRoam runs a shared guarded fixture through the live C entries and Go owners.
+// PortTestRoam runs a shared guarded fixture through registered actions and native helpers.
 // Pointer-bearing output is normalized to stable waypoint IDs before hashing.
 func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 	core := new(server.Server)
@@ -190,7 +185,6 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		core.AI.StackChanged = false
 		beforeO, beforeU, beforeW := bytes.Clone(ob), bytes.Clone(ub), bytes.Clone(wb)
 		beforeD, beforeT := bytes.Clone(db), bytes.Clone(tb)
-		op, up, wp := C.int(uintptr(unsafe.Pointer(obj))), C.int(uintptr(unsafe.Pointer(ud))), C.int(uintptr(unsafe.Pointer(&root[0])))
 		ret := 0
 		var nanos int64
 		switch sp.Op {
@@ -199,13 +193,13 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		case 1:
 			server.GetAIAction(ai.ACTION_ROAM).Cancel(obj)
 		case 2:
-			C.sub_545B00(up, C.int(raw(sp.Insert)))
+			roamInsert(ud, roamWaypoint(raw(sp.Insert)))
 		case 3:
-			ret = int(normalize(uint32(C.sub_545B60(up, C.uchar(sp.Mask)))))
+			ret = int(normalize(roamWaypointWord(roamPrevious(ud, sp.Mask))))
 		case 4:
 			ret = int(normalize(roamWaypointWord(roamSuccessor(ud, (*server.Waypoint)(unsafe.Pointer(&root[0])), sp.Mask))))
 		case 5:
-			ret = int(C.nox_xxx_monsterRoamDeadEnd_545BB0(op, wp))
+			ret = bool2int(roamDeadEnd(obj, (*server.Waypoint)(unsafe.Pointer(&root[0]))))
 		case 6:
 			start := time.Now()
 			for repeat := 0; repeat < max(1, sp.Owner.Repeat); repeat++ {
