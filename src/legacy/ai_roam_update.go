@@ -3,7 +3,6 @@ package legacy
 /*
 #include "GAME4_1.h"
 #include "GAME4_3.h"
-#include "GAME5.h"
 */
 import "C"
 
@@ -48,7 +47,7 @@ func roamUpdate(u *server.Object) {
 			}
 			return
 		}
-		if C.sub_5466F0(asObjectC(u)) != 0 {
+		if investigateHeardSound(u) != 0 {
 			return
 		}
 	}

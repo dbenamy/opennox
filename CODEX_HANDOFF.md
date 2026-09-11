@@ -50,18 +50,23 @@ update measurements favor native Go. See docs/porting/AI_ROAM_UPDATE.md.
 Accumulated tests and all ELF32/SSE2 builds pass in three configurations. The
 full suite matches exactly 1,553 known failures. Fresh roam-update-port gameplay
 exits 0 against both preserved screenshots, overrides off. No validation remains.
-Current larger batch: guard/escort updates, lifecycle, target resolution, damager
+Completed larger batch: guard/escort updates, lifecycle, target resolution, damager
 look-at and sound investigation (545DA0, 546010, 546410/420/430, 546600,
 5466B0, 5466F0). Original C passes 22,723 shared-fixture cases and two 200,000-call
 idle-update baselines, with independent resolver/RNG, wrap and precision checks.
-Existing roaming checks still pass. C is unchanged at 139,951 lines. Production
-conversion is next, followed by one final qualification cycle for the whole family.
+Baseline commit: 54614975. The native port matches every hash, removes eight C
+bodies, and routes roam/idle sound calls natively. Existing roaming checks pass.
+C is now 139,549 physical lines (minus 402), 153 files, zero reference C.
+Accumulated tests and ELF32/SSE2 builds pass in all three configurations. The full
+suite matches exactly 1,553 known failures. Fresh guard-escort-port gameplay exits
+0 against both preserved screenshots, overrides off. No validation remains.
+Next: group navigation actions and retreat policies in one connected batch.
 See docs/porting/AI_GUARD_ESCORT.md; ignored drafts/audits are in
 build/port-guard-escort. User approved this more aggressive grouping. The roaming
 update is fully qualified, committed and pushed as fdb075f6. No question pending.
 
 Use build/baseline/env.sh and accumulated regex
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam)`
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort)`
 with porttest, server porttest, highres porttest from src. Continue one reviewed,
 tested, documented, committed and pushed chunk at a time until a substantive
 question or rate limit. Bounded agent drafts require primary review.

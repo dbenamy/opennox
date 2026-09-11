@@ -37,8 +37,6 @@ func init() {
 	for typ, a := range map[ai.ActionType]struct {
 		Start, Update, End, Cancel unsafe.Pointer
 	}{
-		ai.ACTION_ESCORT:            {Update: C.nox_xxx_mobActionEscort_546430, End: C.sub_546410, Cancel: C.sub_546420},
-		ai.ACTION_GUARD:             {Update: C.nox_xxx_mobActionGuard_546010},
 		ai.ACTION_HUNT:              {Update: C.nox_xxx_mobActionHunt_5449D0},
 		ai.ACTION_RETREAT:           {Update: C.nox_xxx_mobActionRetreat_545440},
 		ai.ACTION_MOVE_TO:           {Update: C.nox_xxx_mobActionMoveTo_5443F0},
@@ -224,7 +222,7 @@ func Nox_xxx_monsterMimicCheckMorph_534950(a1 *server.Object) {
 	C.nox_xxx_monsterMimicCheckMorph_534950(asObjectC(a1))
 }
 func Sub_5466F0(a1 *server.Object) int {
-	return int(C.sub_5466F0(asObjectC(a1)))
+	return investigateHeardSound(a1)
 }
 func Nox_xxx_mobHealSomeone_5411A0(a1 *server.Object) {
 	C.nox_xxx_mobHealSomeone_5411A0(asObjectC(a1))

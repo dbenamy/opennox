@@ -33,3 +33,36 @@ Debug logging and deeper healing/combat behavior remain outside this fixture.
 Artifacts: build/port-guard-escort. Source C remains 139,951 physical lines,
 153 files, zero test-reference C. A bounded helper supplied audit and a sound-only
 draft; primary owns integration, arithmetic/state review and qualification.
+
+Native conversion (baseline commit 54614975): all eight C bodies and their unused
+entry declarations are removed. Guard/escort register native actions, their
+lifecycle and resolution helpers are private Go, and native roam/idle call native
+sound investigation. All 22,723 state hashes and independent checks match, as do
+the existing roaming corpus and repeated-update hashes. Private type checks read
+the same authoritative mimic/plant caches; the C predicates remain for their real
+C callers. Native guard uses the already-tested Go facing-dot helper, while its
+C counterpart remains for other production callers. No test-only C body remains.
+
+Primary review retained the live heard-point pointer at the precheck boundary
+and lazy frame access/deadline reads from the C caller. Disassembly-guided guard
+normalization and explicit double aggression/distance arithmetic preserve the
+baseline. First native quiet-update measurements were 211 ns/guard and 148
+ns/escort, versus 752/160 in the original run; guard improved substantially,
+while the escort difference is small relative to observed VM timing variation.
+
+Production C: **139,549 physical lines (minus 402)**, 153 files, zero reference C.
+One accumulated three-configuration test/build cycle, full-suite comparison and
+fresh gameplay qualify this entire connected batch. Accumulated tests now pass
+for default/server/highres. The full suite exactly matches the known baseline
+(1,553 failure entries; 15 passing/3 failing/32 skipped-no-test packages).
+All three production builds pass and identify as ELF32/80386 with GO386=sse2.
+Fresh guard-escort-port gameplay exits 0 against both preserved screenshots,
+overrides off. Qualification is complete.
+
+Next grouping: move-to/far-move/dodge/flee/home and retreat/master lifecycle and
+private policy helpers (about 347 C lines). Keep actual path/movement engines,
+cast/heal policy and generic food lookup outside scope. Extend the shared fixture
+with health, preceding action, one-shot movement flag, retreat-generator results
+and edible object/map state. Audit: build/port-ai-navigation/audit.md (ignored).
+Preserve negated resume eligibility for NaNs, byte-only roam-mask initialization,
+and actual compiler spill order for dodge/movement radii.

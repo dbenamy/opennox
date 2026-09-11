@@ -3,7 +3,6 @@
 package legacy
 
 /*
-#include "GAME5.h"
 #include "GAME1.h"
 extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
 */
@@ -142,7 +141,6 @@ func portTestGuardEscortPrepare(proxy *portTestRoamOwnerServer, u, target *serve
 	proxy.precheck = sp.Precheck
 }
 func portTestGuardEscortCall(u *server.Object, sp *PortTestGuardEscortSpec) uint32 {
-	p := C.int(uintptr(unsafe.Pointer(u)))
 	switch sp.Op {
 	case 0:
 		server.GetAIAction(ai.ACTION_GUARD).Update(u)
@@ -153,13 +151,13 @@ func portTestGuardEscortCall(u *server.Object, sp *PortTestGuardEscortSpec) uint
 	case 3:
 		server.GetAIAction(ai.ACTION_ESCORT).Cancel(u)
 	case 4:
-		return uint32(C.sub_545DA0(p))
+		return uint32(heardSoundAction(u))
 	case 5:
-		return uint32(C.sub_5466F0(asObjectC(u)))
+		return uint32(investigateHeardSound(u))
 	case 6:
-		return uint32(C.nox_xxx_monsterGetObjEscortName_546600(p))
+		return uint32(uintptr(unsafe.Pointer(escortResolve(u))))
 	case 7:
-		return uint32(C.nox_xxx_monsterLookAtDamager_5466B0(p))
+		return uint32(bool2int(u.MonsterLookAtDamager()))
 	default:
 		panic("invalid guard/escort operation")
 	}
