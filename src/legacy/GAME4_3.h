@@ -47,8 +47,6 @@ int nox_xxx_mobActionToAnimation_533790(int a1);
 void nox_xxx_orderUnit_533900(nox_object_t* owner, nox_object_t* creature, int orderType);
 void nox_xxx_mobCalcDir_533CC0(int a1, float* a2);
 unsigned char* nox_xxx_unitNPCActionToAnim_533D00(int a1);
-int nox_xxx_monsterTestBlockShield_533E70(nox_object_t* a1);
-void sub_533EB0(int a1, int a2);
 int sub_534020(int a1);
 void nox_ai_debug_printf_5341A0(char* a1, ...);
 int nox_xxx_monsterCanMelee_534220(int a1);

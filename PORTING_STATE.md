@@ -12,38 +12,35 @@ aggressive batching. Do not stop after a push. Use at most one bounded helper
 when useful; review drafts against actual C, layouts and compiled arithmetic.
 Preserve the untracked asset archive.
 
-Latest fully qualified native batch: monster commands, animation and state.
-Original-C checkpoint `6aadf8ef`; 14,336 generated cases and 212 contracts match
-exactly. Twenty-nine C bodies removed, native callers use shared Go helpers,
-and movement actions no longer use cgo. Production C: **137,297 physical lines
-(minus 585)**, 153 files, zero reference C. See docs/porting/AI_MONSTER_STATE.md.
+Latest fully qualified native batch: main monster AI and defensive reactions.
+Original-C checkpoint `ee96e478`; 1,792 generated cases and 119 contracts match
+exactly. Seven C bodies removed, including the main loop and shield scan; native
+unit-AI and combat callers use shared Go helpers. Production C: **136,741 physical
+lines (minus 556)**, 153 files, zero reference C. See docs/porting/AI_MAIN.md.
 Accumulated default/server/highres tests and all three ELF32/SSE2 production
 builds pass. Full suite matches exactly 1,553 known failure entries. Fresh
-`ai-monster-state-port` gameplay exits 0 against both preserved screenshots,
-overrides off. Artifacts: build/port-ai-state.
+`ai-main-port` gameplay exits 0 against both preserved screenshots, overrides off.
+Artifacts: build/port-ai-main. The cast argument buffer is C-owned across callbacks.
 
-Previous qualified/pushed batches: lifecycle `e3ee0c9c`, combat `e37039e5`, path
-`01a9ec4d`, navigation `e32982f7`, guard/escort `2bd0b90d`. C_LOC.md records history.
-No user question is pending. Continue with main monster AI orchestration and
-its private defensive helpers: GAME5 5469B0, 547120, 5471B0, 547210, 547C50 plus
-GAME4_3 533E70/533EB0. Qualify their shared action ordering as one connected batch.
-Retain casting, damage and map engines. Audit: build/port-ai-state/next-batch-audit.md.
-The helper's build/port-ai-main/native.patch is only a note, NOT an implementation.
-Establish the original-C baseline before replacing these bodies. Review actual C
-and layouts; several earlier helper drafts missed side effects and exact arithmetic.
+Previous qualified/pushed batches: monster state `29b6e5d3`, lifecycle `e3ee0c9c`,
+combat `e37039e5`, path `01a9ec4d`, navigation `e32982f7`, guard/escort `2bd0b90d`.
+C_LOC.md records the history. No user question is pending. Continue with the
+connected monster spell-decision/cast-action family GAME4_3 5408A0–541490,
+including selectors, their private helpers, heal callback and recoil. Audit:
+build/port-ai-main/next-batch-audit.md. Ignored server fixture draft:
+build/port-ai-spells/server_fixture.go. Establish original-C tests before removal.
 
-Current in-progress main-AI batch: original C passes 1,792 generated cases and
-119 independent contracts with locked repeatable hashes; previous AI hashes pass.
-See docs/porting/AI_MAIN.md and the tracked ai_main_porttest files. C is unchanged
-at this baseline. Primary's native draft is build/port-ai-main/ai_main.go; review,
-apply, qualify and remove original bodies next. Do not apply the helper's notes
-as a patch. Shield assembly proves double deltas/distance until the angular test;
-only normalized X spills early, then distance spills before interaction/nearest.
+Read actual declarations and compiled arithmetic when needed. Cooldown loads
+cast to uint32 when compared to uint32 gameFrame(), despite decompiled int loads.
+There are 136 permission words for IDs 1–136 (1492 through 2032), versus 137-slot
+local candidate arrays. Both 415FA0 and 416030 use Logic RNG. Several earlier
+helper audits got these wrong; review drafts before applying. Shield precision
+contracts document why decompiled float declarations alone are insufficient.
 
 Use build/baseline/env.sh: Go1.26, GOARCH=386, GO386=sse2, CGO enabled, direct GCC.
 The user dropped old-CPU support. Keep existing C x87 flags unchanged.
 Accumulated port-test regex with porttest, server porttest, highres porttest:
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort|AINavigation|AIPath|AICombat|AILifecycle|AIMonsterState)`
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort|AINavigation|AIPath|AICombat|AILifecycle|AIMonsterState|AIMain)`
 Once per connected batch: production builds, ELF32/SSE2 metadata, relevant fresh
 headless gameplay against preserved screenshots with overrides off. Full-suite
 comparison at subsystem/shared boundaries: exact 1,553 known failure entries,

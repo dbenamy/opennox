@@ -60,3 +60,31 @@ placement, guard aggro, and started-action cancellation. Production C is unchang
 at this checkpoint. From src with the baseline environment loaded, run
 `go test -tags porttest -run '^TestAIMain' .`. OPENNOX_MAIN_CAPTURE optionally
 writes ignored JSON snapshots; OPENNOX_MAIN_CASE narrows generated-case debugging.
+
+## Native conversion
+
+The seven C bodies are replaced by legacy/ai_main.go. Production C falls by
+**556 physical lines** to **136,741**, across 153 files with zero reference C.
+The unit-AI and public shield wrappers, plus the combat block handler, call Go
+directly. Obsolete C declarations are removed; no test-only C algorithm remains.
+
+Both locked hashes match natively. The main loop preserves the captured action
+pointer, including rebinding it to the pushed confusion dependency, and the
+original sound-set pointer. Cast arguments use C-owned temporary storage across
+the retained engine's Go callback. Native enemy aggro and existing state/food
+helpers replace unnecessary C round trips. Shield arithmetic follows the compiled
+spills recorded above. The completed batch qualification is recorded below.
+
+## Qualification
+
+Original-C checkpoint: `ee96e478`. Accumulated port tests pass for default
+(69.604s), server (37.968s) and highres (41.370s). All three production binaries
+build and report ELF32, Intel 80386 and GO386=sse2. The full asset-backed suite
+matches exactly the established 1,553 failure entries: 15 passing / 3 failing /
+32 skipped packages, no added failures. Fresh `ai-main-port` headless gameplay
+exits 0 against both preserved screenshots, overrides disabled.
+
+Next: the connected spell-decision/cast-action family 5408A0–541490. Permission
+slots are 136 words for spell IDs 1–136; the temporary candidate arrays merely
+have capacity 137. Frame comparisons use uint32 conversion under C's usual
+arithmetic rules. Reuse the main fixture's cast/morph/map/health boundaries.

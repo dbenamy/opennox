@@ -1668,65 +1668,6 @@ int nox_xxx_projAddVelocitySmth_533080(int a1, int a2, float a3, int a4) {
 	return result;
 }
 
-//----- (00533E70) --------------------------------------------------------
-int nox_xxx_monsterTestBlockShield_533E70(nox_object_t* a1) {
-	*getMemU32Ptr(0x5D4594, 2487956) = 0;
-	*getMemU32Ptr(0x5D4594, 2487988) = 1315859240; // fp32 100
-	nox_xxx_getMissilesInCircle_518170((int)a1 + 56, 100.0, sub_533EB0, a1);
-	return *getMemU32Ptr(0x5D4594, 2487956);
-}
-
-//----- (00533EB0) --------------------------------------------------------
-void sub_533EB0(int a1, int a2) {
-	int v2;         // esi
-	float v3;       // ecx
-	int v4;         // ecx
-	double v5;      // st7
-	double v6;      // st6
-	float* v7;      // ecx
-	double v8;      // st7
-	long double v9; // st5
-	float v10;      // [esp+Ch] [ebp-18h]
-	float v11;      // [esp+10h] [ebp-14h]
-	float2 a3;      // [esp+14h] [ebp-10h]
-	float v13;      // [esp+1Ch] [ebp-8h]
-	float v14;      // [esp+28h] [ebp+4h]
-
-	v2 = a1;
-	v3 = *(float*)(a1 + 76);
-	a3.field_0 = *(float*)(a1 + 72);
-	a3.field_4 = v3;
-	if (sub_54E6F0(a2, a1)) {
-		if (nox_server_testTwoPointsAndDirection_4E6E50((float2*)(a2 + 56), *(short*)(a2 + 124), &a3) & 1) {
-			v4 = *(short*)(a2 + 124);
-			v5 = *(float*)(a1 + 80) * *getMemFloatPtr(0x587000, 194136 + 8 * v4);
-			v6 = *(float*)(a1 + 84) * *getMemFloatPtr(0x587000, 194140 + 8 * v4);
-			v7 = getMemFloatPtr(0x587000, 194136 + 8 * v4);
-			if (v5 + v6 < 0.0) {
-				v10 = *(float*)(a1 + 56) - *(float*)(a2 + 56);
-				v11 = *(float*)(a1 + 60) - *(float*)(a2 + 60);
-				v8 = *v7 * v11 + -v7[1] * v10;
-				if (v8 < 0.0) {
-					v8 = -v8;
-				}
-				if (v8 < 20.0) {
-					v9 = sqrt(*(float*)(a1 + 80) * *(float*)(a1 + 80) + *(float*)(a1 + 84) * *(float*)(a1 + 84));
-					v13 = *(float*)(a1 + 80) / v9;
-					v14 = sqrt(v11 * v11 + v10 * v10);
-					if (*(float*)(v2 + 84) / v9 * -(v11 / v14) + v13 * -(v10 / v14) > 0.69999999) {
-						if (nox_xxx_unitCanInteractWith_5370E0(a2, v2, 0)) {
-							if (v14 < (double)*getMemFloatPtr(0x5D4594, 2487988)) {
-								*getMemU32Ptr(0x5D4594, 2487956) = v2;
-								*getMemFloatPtr(0x5D4594, 2487988) = v14;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
 //----- (00534020) --------------------------------------------------------
 int sub_534020(int a1) { return (*(uint32_t*)(a1 + 12) >> 10) & 1; }
 

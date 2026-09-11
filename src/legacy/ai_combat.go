@@ -189,7 +189,7 @@ func combatFight(u *server.Object) {
 func combatBlock(u *server.Object) {
 	s := GetServer().S()
 	h := u.UpdateDataMonster().AIStackHead()
-	if C.nox_xxx_monsterTestBlockShield_533E70(asObjectC(u)) != 0 {
+	if monsterShieldThreat(u) != nil {
 		h.Args[0] = uintptr(s.Frame() + s.TickRate()/2)
 	}
 	if s.Frame() > uint32(h.Args[0]) {

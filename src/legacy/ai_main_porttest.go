@@ -182,19 +182,19 @@ func portTestMainPrepare(proxy *portTestRoamOwnerServer, u *server.Object, sp *P
 func portTestMainCall(proxy *portTestRoamOwnerServer, u *server.Object, sp *PortTestMainSpec) uint32 {
 	switch sp.Op {
 	case 0:
-		C.nox_xxx_mobAction_5469B0(asObjectC(u))
+		monsterIdleAudio(u)
 	case 1:
-		return uint32(int32(C.nox_xxx_unitIsDangerous_547120(asObjectC(proxy.combat.target), asObjectC(u))))
+		return uint32(int32(monsterDangerous(proxy.combat.target, u)))
 	case 2:
-		C.nox_xxx_monsterPopAttackActions_5471B0(C.int(uintptr(u.CObj())))
+		monsterUnwindAttacks(u)
 	case 3:
-		C.nox_xxx_monsterMainAIFn_547210(asObjectC(u))
+		monsterMainAI(u)
 	case 4:
-		return uint32(C.nox_xxx_monsterCheckDodgeables_547C50(C.int(uintptr(u.CObj()))))
+		return uint32(bool2int(monsterDodge(u)))
 	case 5:
-		return uint32(C.nox_xxx_monsterTestBlockShield_533E70(asObjectC(u)))
+		return uint32(uintptr(unsafe.Pointer(monsterShieldThreat(u))))
 	case 6:
-		C.sub_533EB0(C.int(uintptr(proxy.combat.target.CObj())), C.int(uintptr(u.CObj())))
+		monsterShieldCandidate(proxy.combat.target, u)
 	}
 	return 0
 }

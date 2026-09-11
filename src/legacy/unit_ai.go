@@ -113,7 +113,7 @@ func Nox_xxx_mobGetMoveAttemptTime_534810(a1 *server.Object) int {
 	return bool2int(monsterMoveAttempt(a1))
 }
 func Nox_xxx_unitIsDangerous_547120(a1 *server.Object, a2 *server.Object) {
-	C.nox_xxx_unitIsDangerous_547120(asObjectC(a1), asObjectC(a2))
+	monsterDangerous(a1, a2)
 }
 func Nox_xxx_checkIsKillable_528190(a1 *server.Object) int {
 	return int(C.nox_xxx_checkIsKillable_528190(asObjectC(a1)))
@@ -131,13 +131,13 @@ func Nox_xxx_monsterPlayHurtSound_532800(a1 *server.Object) {
 	C.nox_xxx_monsterPlayHurtSound_532800(asObjectC(a1))
 }
 func Nox_xxx_mobAction_5469B0(a1 *server.Object) {
-	C.nox_xxx_mobAction_5469B0(asObjectC(a1))
+	monsterIdleAudio(a1)
 }
 func Nox_xxx_unitUpdateSightMB_5281F0(a1 *server.Object) {
 	C.nox_xxx_unitUpdateSightMB_5281F0(asObjectC(a1))
 }
 func Nox_xxx_monsterMainAIFn_547210(a1 *server.Object) {
-	C.nox_xxx_monsterMainAIFn_547210(asObjectC(a1))
+	monsterMainAI(a1)
 }
 func Nox_xxx_updateNPCAnimData_50A850(a1 *server.Object) {
 	C.nox_xxx_updateNPCAnimData_50A850(asObjectC(a1))

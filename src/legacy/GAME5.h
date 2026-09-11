@@ -4,11 +4,6 @@
 #include "defs.h"
 
 int sub_545E60(nox_object_t* a1);
-void nox_xxx_mobAction_5469B0(nox_object_t* a1);
-short nox_xxx_unitIsDangerous_547120(nox_object_t* a1, nox_object_t* a2);
-void nox_xxx_monsterPopAttackActions_5471B0(int a1);
-void nox_xxx_monsterMainAIFn_547210(nox_object_t* a1);
-int nox_xxx_monsterCheckDodgeables_547C50(int a1);
 int sub_547DB0(int a1, float2* a2);
 void sub_548100(int2* a1, int a2);
 void sub_5481C0(int a1);
