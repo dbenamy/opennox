@@ -21,8 +21,9 @@ ran the full suite and matched the known exact 1,553 failure-entry multiset:
 15 passing/3 known failing/32 skipped-no-test packages. This chunk did not repeat it.
 
 Next: tile-fill worklist push/pop 51DD50/51DE30 in GAME4_2.c, sole owner 5437E0.
-Ignored fixture/test draft is being prepared under build/port-tile-worklist;
-ignored native draft tile_worklist.go is there too. Neither is installed.
+Reviewed fixtures/tests are installed and all 9,000 original-C operations pass
+(build/port-tile-worklist/c-baseline.log). Native draft tile_worklist.go remains
+ignored there; next install it after recording this baseline.
 Queue is 500×12 bytes at 0x973F18+16200, overflow at +22200; count is shared C
 word dword_5d4594_2487248. Scan/empty checks use signed count, but enqueue capacity
 uses unsigned count: high-bit counts skip scan then set overflow if gates pass.
