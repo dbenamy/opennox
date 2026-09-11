@@ -2,42 +2,43 @@
 
 <!-- current-focus -->
 
-### Complete — effects timing-coverage correction
+### Active — temporary/projectile-update baseline locked
 
-Effects/use production is committed/pushed as `86fb7552`; **127,104 C lines /
-149 files / zero reference C**. A positive temporary-object assertion found that
-MonsterState setup overwrites Owner.Frame. Added **1,001 timing cases / 8 groups**
-that synchronize both clocks, assert actual frame/FPS and independently verify
-regeneration at frames 90/180 and adjacent non-healing frames. The original 4,733
-effects contracts remain unchanged. New full captures from original C at 0738dbed
-repeat and match native byte-for-byte; no production fix was needed.
-Combined **17,743** contracts pass (56.833s); server/highres timing tests pass
-(2.534s / 2.889s). See EFFECTS_USE.md. Stable evidence: build/port-effects-timing/.
-The isolated c-source checkout contains only the fixture extension and timing
-corpus; both are included in this correction and can be reapplied at 0738dbed.
-It can be removed after this correction is committed/pushed.
+Effects/use conversion and corrected timing contracts are pushed as `86fb7552`
+and `96b89ce7`. Production C count remains **127,104 / 149 files / zero reference
+C**. The next **31-function / 980-line** family is still entirely original C.
+See [TEMPORARY_UPDATES.md](docs/porting/TEMPORARY_UPDATES.md).
 
-### Active — temporary/projectile-update original-C fixture
+The baseline now contains **2,571 cases / 16 groups**, locked after two full C
+captures matched byte-for-byte (6.126s / 5.901s). All prior **17,743** contracts
+remain unchanged (52.968s). Check c-locked.log, then commit/push this baseline
+BEFORE production conversion. Stable captures:
+build/port-temporary-updates/c-locked-{source,repeat}-temporary-*.json.
 
-The next **31-function / 980-line** family remains entirely original C. See
-TEMPORARY_UPDATES.md. Local fixture files temporary_updates_porttest.go (legacy
-and server), temporary_updates_porttest_test.go, and optional shared shop fields
-are still in progress; they are not part of the timing-correction commit.
-The corrected c-clock-reviewed run passes **2,260 cases / 12 groups**, including
-independent positive water/nearest/damage assertions and eight-Spark trail counts.
-Finish coverage review (multiple RNG streams and acquisition/tie/filter paths),
-repeat full C captures, lock contracts, verify prior 17,743 contracts unchanged,
-then commit/push the baseline BEFORE converting production code.
+Fixture files: legacy/temporary_updates_porttest.go, server/temporary_updates_porttest.go
+and temporary_updates_porttest_test.go, plus optional shared shop fields and
+exact creation-owner tracing. Action IDs 600..630 cover the audited scope in
+build/port-temporary-updates/scope.json and the tracked doc's address list.
+The clock helper synchronizes both setup inputs and asserts actual frame/FPS.
+Independent assertions cover positive water/nearest/damage behavior, exact spawn
+counts, collision returns and seeded randomness; tick rates 1/4/30/60 are included.
+Spatial-node identities are normalized. Actual retained movement/expiry paths use
+the fixture's outer server and core.ExtServer; restore both, index nodes,
+deleted/updatable lists and caches/types on exit. Lifecycle owns all creations,
+even after delayed deletion; buffer and exact leak checks remain enabled.
 
-Fixture supplies core.ExtServer and the outer noxServer only for these tests so
-actual retained movement/expiry paths run. Save/restore deleted/updatable lists,
-spatial nodes and cache/type tables. Lifecycle owns all created objects, including
-ones later scheduled for deletion; checked buffers remain enabled. Exact creation
-owner IDs are recorded in the optional temporary fixture. Scope/evidence is under
-build/port-temporary-updates/. No user question pending; no new agents. Continue
-at connected family boundaries: qualify, update C_LOC/docs, commit/push, summarize
-and CONTINUE. Preserve assets/stable evidence. Full-suite raw logs can contain
-secrets: report action/package/test metadata only.
+Next: convert the complete family, compare full native captures, qualify once
+at its boundary (accumulated default/server/highres, three builds, full-suite
+failure multiset, fresh gameplay), update C_LOC/docs, commit/push, summarize and
+CONTINUE. Combined focused corpus will be 20,314 cases. No pending question;
+no new agents. Use build/baseline/env.sh. Preserve user archive and stable
+baseline/native/gameplay evidence. Full-suite raw logs can contain secrets:
+report only action/package/test metadata.
+
+The effects timing audit is complete: 1,001 additional cases / 8 groups match
+original C at 0738dbed, no production fix needed. The isolated C checkout was
+removed after verifying its two edited files are identical to pushed 96b89ce7.
+Its stable captures remain in build/port-effects-timing/. See EFFECTS_USE.md.
 
 <!-- /current-focus -->
 

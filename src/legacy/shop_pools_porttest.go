@@ -67,6 +67,7 @@ type PortTestShopPacketResult struct {
 }
 type PortTestShopStep struct {
 	EffectsUseData           []uint32   `json:",omitempty"`
+	TemporaryUpdatesData     []uint32   `json:",omitempty"`
 	EquipmentData            []uint32   `json:",omitempty"`
 	InventoryData            []uint32   `json:",omitempty"`
 	ResourceData             [][]uint32 `json:",omitempty"`
@@ -95,6 +96,7 @@ type portTestShopOwned struct {
 type portTestShopPools struct {
 	equipment           *portTestEquipment
 	effectsUse          *portTestEffectsUse
+	temporary           *portTestTemporaryUpdates
 	inventory           *portTestInventory
 	resources           *portTestResources
 	engineStateRequests []uint32
@@ -172,6 +174,14 @@ func (p *portTestShopPools) own(u *server.Object, id uint32) *portTestShopOwned 
 	return o
 }
 func (p *portTestShopPools) observeDelete(u *server.Object) {
+	// Creations remain owned by the enclosing lifecycle fixture after deletion.
+	if p.proxy.callbacks.shop.spec.TemporaryUpdates != nil {
+		for _, created := range p.proxy.life.created {
+			if created == u {
+				return
+			}
+		}
+	}
 	if _, ok := p.ids[uint32(uintptr(u.CObj()))]; !ok {
 		p.own(u, uint32(75000+len(p.owned)))
 	}
@@ -275,6 +285,7 @@ func (p *portTestShopPools) run() {
 	defer p.inventoryPrepare()()
 	defer p.equipmentPrepare()()
 	defer p.effectsUsePrepare()()
+	defer p.temporaryPrepare()()
 	for i, spec := range s.spec.Items {
 		// Actual allocator objects let destruction execute the retained object
 		// free path. Price/charge/modifier arithmetic has guarded query fixtures.
@@ -304,6 +315,7 @@ func (p *portTestShopPools) run() {
 	p.inventoryItems()
 	p.equipmentItems()
 	p.effectsUseItems()
+	p.temporaryItems()
 	for _, a := range s.spec.Sequence {
 		var q unsafe.Pointer
 		if a.Op != PortTestShopCreate && a.Op != PortTestShopReset && a.Op != PortTestShopPlayerCleanup && a.Op != PortTestTradeCreatePlayer && a.Op != PortTestTradeStart && a.Op < 200 {
@@ -495,7 +507,9 @@ func (p *portTestShopPools) run() {
 			}
 			C.sub_510E20(C.int(a.Item))
 		default:
-			if a.Op >= 500 {
+			if a.Op >= 600 {
+				rv = p.temporaryAction(a)
+			} else if a.Op >= 500 {
 				rv = p.effectsUseAction(a)
 			} else if a.Op >= 400 {
 				rv = p.equipmentAction(a)
@@ -518,6 +532,7 @@ func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 	r.InventoryData = p.inventorySnapshot()
 	r.EquipmentData = p.equipmentSnapshot()
 	r.EffectsUseData = p.effectsUseSnapshot()
+	r.TemporaryUpdatesData = p.temporarySnapshot()
 	var sessions, nodes []unsafe.Pointer
 	seen := make(map[unsafe.Pointer]bool)
 	for q := shopTestPointer(uint32(C.dword_5d4594_2386500)); q != nil; {

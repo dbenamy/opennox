@@ -97,6 +97,10 @@ func (s *portTestRoamOwnerServer) CreateObjectAt(obj, owner server.Obj, p types.
 		}
 	}
 	if s.life != nil {
+		if s.callbacks != nil && s.callbacks.shop != nil && s.callbacks.shop.spec.TemporaryUpdates != nil {
+			p := s.callbacks.shop.pools
+			s.trace = append(s.trace, 680, p.normalize(uint32(uintptr(server.ToObject(owner).CObj()))))
+		}
 		s.life.created = append(s.life.created, u)
 		s.life.ids[uint32(uintptr(u.CObj()))] = uint32(1000 + len(s.life.created))
 		if s.callbacks != nil {

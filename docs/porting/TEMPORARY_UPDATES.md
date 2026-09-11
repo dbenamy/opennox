@@ -1,4 +1,4 @@
-# Proposed next batch: temporary objects and projectile updates
+# Temporary objects and projectile updates
 
 31 connected functions / 980 C lines (scope.json addresses audited): Spark creation,
 Spark/trail/lifetime, homing spell/anti-spell/magic missile, temporary barrels,
@@ -70,3 +70,47 @@ comparison at this projectile/shared-fixture milestone. Record C_LOC and push.
 - src/legacy/GAME4_3.c: 0053DC30 — void nox_xxx_updateBreakAndRemove_53DC30.
 - src/legacy/GAME4_3.c: 0053DCC0 — void nox_xxx_updateChakramInMotion_53DCC0.
 - src/legacy/GAME5.c: 0054FD80 — float* nox_xxx_createSpark_54FD80.
+
+## Original-C baseline
+
+The effects conversion and timing correction are pushed as `86fb7552` and
+`96b89ce7`. This 31-function family remains original C; the starting count is
+**127,104 C lines / 149 files / zero reference C**. The reusable optional fixture
+now exercises **2,571 cases / 16 groups**:
+
+- lifetime: 480; break/open states: 450; Spark creation: 56; trails: 28.
+- homing: 288; owner effects: 144; spawners: 144.
+- area callbacks: 224; area owners: 210; independent positive callbacks: 5.
+- frame wrap: 216; missing definitions/owners: 15; RNG streams: 35.
+- acquisition/filter/ties: 96; collision/impact boundaries: 20; tick rates: 160.
+
+The clock helper synchronizes Owner and MonsterState inputs and asserts the
+actual frame/FPS after setup and after each action. Tests cover signed/unsigned
+frame-wrap behavior, exact/strict deadlines, tick rates 1/4/30/60, callback returns,
+state combinations, owner/target loss, direction wrap, nearest-target selection,
+parent/class/dead filtering, ties and scan order, all Spark stages, seven RNG
+seeds, and clear/blocked rays. Independent checks verify water extinguishing,
+nearest candidate identity, actual damage callback delivery, exact eight-Spark
+trails, exact random-spawn counts and preserved collision return words.
+
+The fixture uses actual retained movement, ray, target-search, area-damage,
+scorch and deletion paths. It supplies core.ExtServer and the outer server only
+for the temporary tests; previous contracts are unaffected. It saves/restores
+spatial nodes, updatable/deleted lists, caches and type tables. Scorch uses valid
+already-initialized type IDs. Flame, meteor, spider and scorch definitions use
+real allocator templates with checked update/collision guards. Missing named
+Spark lookup is covered; invalid indexed definitions are not used as an allocator
+failure simulation. Pointer inputs retain the original nonnull preconditions.
+
+Creation tracing records exact owner identity. Spatial-list nodes have stable
+identities across ASLR. Lifecycle retains ownership of every created object,
+including objects later scheduled for deletion, with exact zero-leak checks.
+The fixture's C code consists only of dispatch and event recorders; no production
+algorithm is copied into a test reference implementation.
+
+Prior **17,743** effects/timing/equipment/inventory/resource/shop/trade contracts
+remain unchanged (52.968s). The full original-C captures pass and match byte-for-byte (6.126s / 5.901s);
+all 16 hashes are locked. Local evidence is in
+build/port-temporary-updates/c-locked-{source,repeat}-temporary-*.json and associated
+logs. Earlier 15 groups repeated byte-for-byte and remain unchanged after adding
+the tick-rate group. Commit/push the locked baseline before production conversion.
