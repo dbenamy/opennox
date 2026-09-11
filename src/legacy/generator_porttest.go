@@ -18,6 +18,7 @@ import (
 )
 
 type PortTestGeneratorSpec struct {
+	SpawnPolicy                                      *PortTestGeneratorSpawnPolicySpec
 	Inventory                                        *PortTestGeneratorInventorySpec
 	Frame                                            uint32
 	Sources                                          byte

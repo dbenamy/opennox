@@ -20,12 +20,17 @@ import (
 )
 
 type PortTestGeneratorObjectsResult struct {
-	Inventory                                                                                   *PortTestGeneratorInventoryResult `json:",omitempty"`
+	SpawnPolicy                                                                                 []PortTestGeneratorSpawnPolicyResult `json:",omitempty"`
+	PolicyPlayers                                                                               [][]uint32                           `json:",omitempty"`
+	Inventory                                                                                   *PortTestGeneratorInventoryResult    `json:",omitempty"`
 	Source, Destination, SourceData, DestinationData, Player, CreatedData, CreatedHealth, Spawn []uint32
 	DeathFrame, QuestState                                                                      uint32
 	Intact                                                                                      bool
 }
 type portTestGeneratorObjects struct {
+	policy                               *portTestGeneratorSpawnPolicy
+	policyResults                        []PortTestGeneratorSpawnPolicyResult
+	policyPlayers                        [][]uint32
 	inventory                            *portTestGeneratorInventoryFixture
 	beforePlayerObject, beforePlayerData []byte
 	source, destination                  *server.Object
@@ -70,6 +75,7 @@ func portTestGeneratorObjectsEnvironment(proxy *portTestRoamOwnerServer) func() 
 func portTestGeneratorObjectsPrepare(proxy *portTestRoamOwnerServer, u *server.Object, sp *PortTestGeneratorSpec) {
 	st := proxy.callbacks.generation.objects
 	st.resetSpawn()
+	st.policyResults, st.policyPlayers = nil, nil
 	for _, b := range st.raw {
 		clear(b)
 		for i := 0; i < 8; i++ {
@@ -177,6 +183,12 @@ func portTestGeneratorObjectsCall(proxy *portTestRoamOwnerServer, u *server.Obje
 	o := st.objects
 	p := unsafe.Pointer(&st.point[2])
 	switch sp.Op {
+	case 9:
+		snapshot, restore := portTestSpawnPlayers(proxy, sp.SpawnPolicy.Players)
+		defer restore()
+		o.policyResults = o.policy.run(u, *sp.SpawnPolicy)
+		o.policyPlayers = snapshot()
+		return 0
 	case 4:
 		C.nox_xxx_dieMonsterGen_54E630(combatPtr(u))
 	case 5:
@@ -217,7 +229,7 @@ func portTestGeneratorObjectsTrace(proxy *portTestRoamOwnerServer, normalize fun
 		}
 		return v
 	}
-	r := &PortTestGeneratorObjectsResult{Inventory: inventory, Intact: inventory == nil || inventory.Intact, Source: words(st.source.CObj(), 772), Destination: words(st.destination.CObj(), 772), SourceData: words(st.source.UpdateData, 2200), DestinationData: words(st.destination.UpdateData, 2200), DeathFrame: uint32(C.dword_5d4594_1556136), QuestState: *memmap.PtrUint32(0x5D4594, 1556120)}
+	r := &PortTestGeneratorObjectsResult{SpawnPolicy: st.policyResults, PolicyPlayers: st.policyPlayers, Inventory: inventory, Intact: inventory == nil || inventory.Intact, Source: words(st.source.CObj(), 772), Destination: words(st.destination.CObj(), 772), SourceData: words(st.source.UpdateData, 2200), DestinationData: words(st.destination.UpdateData, 2200), DeathFrame: uint32(C.dword_5d4594_1556136), QuestState: *memmap.PtrUint32(0x5D4594, 1556120)}
 	for _, b := range st.raw {
 		for i := 0; i < 8; i++ {
 			r.Intact = r.Intact && b[i] == 0xa5 && b[len(b)-8+i] == 0x5a

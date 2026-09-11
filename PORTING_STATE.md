@@ -3,6 +3,21 @@
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
+## In progress — spawn-policy original-C baseline
+
+Generator native `192c458f` is committed and pushed. Spawn-policy C remains
+intact at133,836 physical C lines. The 16-body/564-line next batch has1,582
+original-C cases in twelve groups, including pool exhaustion, overlapping player
+views, glyph cleanup and tick gates. See docs/porting/SPAWN_POLICY.md.
+
+All twelve groups repeat exactly; all1,582 locked cases pass (4.532s).
+Generator/adjacent regressions also pass (16.035s).
+Commit/push the completed original-C baseline before removing any C. Native
+lifetime/culling drafts are ignored under build/port-generator; primary already
+corrected the helper's reversed unlink logic in spawn-native-lifetime.go.draft.
+Review before integration. No user question is pending; continue to native
+qualification, docs, commit/push, and the next connected batch.
+
 ## Resume here — 2026-09-11
 
 Continue the x86 C-to-Go port on dev in connected, reviewed, tested, documented,

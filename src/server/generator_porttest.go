@@ -15,7 +15,7 @@ import (
 // callback fixture's 23-entry registry. Beholder is resolved through the C
 // generator cache; Monster is the ordinary source TypeInd used for spawning.
 type PortTestGeneratorTypeIDs struct {
-	DestroyedGenerator, Beholder, Monster uint16
+	DestroyedGenerator, Beholder, Monster, Glyph uint16
 }
 
 // PortTestGeneratorEnvironment extends PortTestAICallbackTypes with the
@@ -42,14 +42,14 @@ func (s *Server) PortTestGeneratorEnvironment() (ids PortTestGeneratorTypeIDs, c
 	s.Armor.table[0] = armorRecord{TypeInd: 16, Bit: 0x1000000}
 	s.Armor.ready = true
 	byInd := append([]*ObjectType(nil), oldTypes.byInd...)
-	byID := make(map[string]*ObjectType, len(oldTypes.byID)+3)
+	byID := make(map[string]*ObjectType, len(oldTypes.byID)+4)
 	for k, v := range oldTypes.byID {
 		byID[k] = v
 	}
-	s.Types.byInd = append(byInd, make([]*ObjectType, 3)...)
+	s.Types.byInd = append(byInd, make([]*ObjectType, 4)...)
 	s.Types.byID = byID
 
-	ids = PortTestGeneratorTypeIDs{DestroyedGenerator: 23, Beholder: 24, Monster: 25}
+	ids = PortTestGeneratorTypeIDs{DestroyedGenerator: 23, Beholder: 24, Monster: 25, Glyph: 26}
 	destroyed := &ObjectType{
 		s: &s.Types, ind: ids.DestroyedGenerator, ind2: ids.DestroyedGenerator,
 		id: "destroyedgenerator", class: object.ClassSimple, allowed: true, Mass: 1,
@@ -68,7 +68,9 @@ func (s *Server) PortTestGeneratorEnvironment() (ids PortTestGeneratorTypeIDs, c
 	}
 	beholder, freeBeholder := makeMonster(ids.Beholder, "beholder")
 	monster, freeMonster := makeMonster(ids.Monster, "porttestgeneratormonster")
-	for _, typ := range []*ObjectType{destroyed, beholder, monster} {
+	glyphInit, freeGlyph := alloc.Make([]byte{}, 64)
+	glyph := &ObjectType{s: &s.Types, ind: ids.Glyph, ind2: ids.Glyph, id: "glyph", class: object.ClassSimple, allowed: true, Mass: 1, InitData: unsafe.Pointer(&glyphInit[0]), InitDataSize: 64}
+	for _, typ := range []*ObjectType{destroyed, beholder, monster, glyph} {
 		s.Types.byInd[int(typ.ind)] = typ
 		s.Types.byID[typ.id] = typ
 	}
@@ -86,6 +88,7 @@ func (s *Server) PortTestGeneratorEnvironment() (ids PortTestGeneratorTypeIDs, c
 		s.Types = oldTypes
 		s.Weapons, s.Armor = oldWeapons, oldArmor
 		s.Balance.file = oldBalance
+		freeGlyph()
 		freeMonster()
 		freeBeholder()
 	}
