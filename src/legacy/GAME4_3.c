@@ -9439,7 +9439,10 @@ int nox_xxx_tileCheckByte4_5440A0(int a1) {
 	if (!dword_5d4594_2489436) {
 		return 1;
 	}
-	if (*(int*)&dword_5d4594_3835356 == -1 || a1 < 0 || a1 >= *getMemU16Ptr(0x85B3FC, 28688 + 60 * a1)) {
+	int active = *(int*)&dword_5d4594_251572;
+	uint32_t selected = dword_5d4594_3835356;
+	if (active <= 0 || selected >= (uint32_t)active || selected >= 64 || a1 < 0 ||
+		a1 >= *getMemU16Ptr(0x85B3FC, 28688 + 60 * selected)) {
 		return 0;
 	}
 	dword_5d4594_3835360 = a1;

@@ -45,11 +45,17 @@ The proposed repair passes all focused border tests in default/server/highres
 patch is retained. Production builds, gameplay and full-suite validation are
 still required when adopting the repair and completing the port.
 
-The repair changes existing behavior and needs the user's decision before being
-adopted. The tracked C implementation and live tests retain the original baseline;
-the patch is a proposal only. If approved, apply it with `git apply`, qualify the
-repair, then port the quartet. Broaden lookup and selection tests before the Go
-conversion; retire lookup's C bridge once its last C caller is converted. If the
-user prefers exact legacy behavior, retain the existing wrong-row reproduction
-expectations and port that behavior explicitly. Local artifacts:
-build/port-border-selection.
+## Approved repair baseline
+
+The user approved the prepared repair on 2026-09-11. It is now applied to C,
+and expanded qualification passes before Go replacement: 33,280 exact lookup/
+name-selection checks, 25,600 repaired variation boundary calls, 63 primary
+boundary checks and the original focused regressions. Lookup covers every active
+count 0..64 and every physical row, first duplicates, empty names, non-ASCII
+bytes and embedded NUL. Primary selection preserves signed count behavior even
+when count exceeds the physical table because it does not access that table.
+No new clamp is imposed there. Local artifacts: build/port-border-selection.
+
+Temporary repaired C count: **140,733 (+3)**, 153 files, zero reference C.
+Next port the quartet, retaining only the three ABI entries with C callers.
+Full chunk validation, source count, documentation, commit and push follow.

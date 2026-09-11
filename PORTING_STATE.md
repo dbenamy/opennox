@@ -18,16 +18,14 @@ off. Full suite matches the exact known 1,553 failure-entry multiset:
 15 passing/3 known failing/32 skipped-no-test packages. No validation is running.
 Artifacts: build/port-tile-worklist.
 
-Next: user decision on the confirmed border-selection wrong-row bug.
-Original-C baseline `dd4a9f69` reproduces false rejection and false acceptance
-through primary-then-variation calls. The repair passes focused border tests in
-all three variants, including 25,600 boundary calls, but is NOT adopted. Source
-and live tests are restored to original-C behavior. Reviewable patch and resume
-instructions: [border selection](docs/porting/BORDER_SELECTION.md). Ask whether
-to fix the behavior before porting; recommend the prepared selected-row repair.
-This question changes map-placement validation behavior. No user answer yet.
-No validation processes remain running. The prior ignored agent patch is only
-a draft; use the reviewed tracked docs/porting/proposals patch instead.
+Current: user approved border-selection repair on 2026-09-11. Applied the
+tracked proposal to C and expanded qualification before porting: 33,280 exact
+lookup/name selection checks, 25,600 variation boundaries, 63 primary boundaries
+and focused regressions pass. See docs/porting/BORDER_SELECTION.md. Port quartet
+543FB0/544020/544070/5440A0 next, retire lookup C bridge, then run accumulated
+variants, builds, gameplay and full-suite comparison. Temporary repaired C count
+140,733 (+3); next completed chunk must report final count relative to 140,730.
+No user question is pending. No validation processes remain running.
 Both previously approved writer/alias fixes are complete. Keep 57ADF0 cleanup
 with its GUI owner and preserve separate server.PointOnTheLine behavior.
 

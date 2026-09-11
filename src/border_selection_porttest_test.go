@@ -65,7 +65,7 @@ func TestBorderSelectionCABI(t *testing.T) {
 	}
 
 	// Any nonzero flag, rather than only 1, enables Byte4. Its comparison uses
-	// the input row's +44 u16 count, as the original C currently does.
+	// the selected row's +44 u16 count.
 	got = checkBorder(t, legacy.PortTestBorderState{Count: 64, Flag: 0x80, Primary: 7, Secondary: 0x55}, []legacy.PortTestBorderSpec{
 		{Mode: 3, Value: -1}, {Mode: 3, Value: 0}, {Mode: 3, Value: 1}, {Mode: 3, Value: 2},
 	})
@@ -81,9 +81,9 @@ func TestBorderSelectionCABI(t *testing.T) {
 	}
 }
 
-func TestBorderSelectionByte4WrongRowOriginalC(t *testing.T) {
-	// The loader stores border count at row+44. C currently checks the input
-	// variation's row, not selected primary row. Both examples use plausible
+func TestBorderSelectionByte4UsesSelectedRow(t *testing.T) {
+	// The loader stores border count at row+44. Validate the selected primary
+	// row, independently of the input variation's row. Both examples use plausible
 	// even counts 20 (5+5) and 12 (3+3).
 	rows := []legacy.PortTestBorderRow{
 		legacy.NewPortTestBorderRow(7, []byte("Selected"), 20),
@@ -102,15 +102,15 @@ func TestBorderSelectionByte4WrongRowOriginalC(t *testing.T) {
 		}
 		return s.Results[1]
 	}
-	// Selected row7 allows variation16 (<20), but input row16 limit12 rejects.
-	if r := run(legacy.PortTestBorderState{Count: 64, Flag: 2, Primary: 7, Secondary: 0xa5}); r.Return != 0 || r.State.Secondary != 0xa5 {
-		t.Fatalf("wrong-row reject changed: %+v", r)
+	// Selected row7 allows variation16 (<20), despite input row16 limit12.
+	if r := run(legacy.PortTestBorderState{Count: 64, Flag: 2, Primary: 7, Secondary: 0xa5}); r.Return != 1 || r.State.Secondary != 16 {
+		t.Fatalf("selected-row accept: %+v", r)
 	}
-	// Selected row7 rejects variation16 (>=12), but input row16 limit20 accepts.
+	// Selected row7 rejects variation16 (>=12), despite input row16 limit20.
 	rows[0] = legacy.NewPortTestBorderRow(7, []byte("Selected"), 12)
 	rows[1] = legacy.NewPortTestBorderRow(16, []byte("Variation"), 20)
-	if r := run(legacy.PortTestBorderState{Count: 64, Flag: 0xff, Primary: 7, Secondary: 0xa5}); r.Return != 1 || r.State.Secondary != 16 {
-		t.Fatalf("wrong-row accept changed: %+v", r)
+	if r := run(legacy.PortTestBorderState{Count: 64, Flag: 0xff, Primary: 7, Secondary: 0xa5}); r.Return != 0 || r.State.Secondary != 0xa5 {
+		t.Fatalf("selected-row reject: %+v", r)
 	}
 }
 
@@ -126,6 +126,107 @@ func TestBorderSelectionSignedCount(t *testing.T) {
 		}
 		if got[0].Return != lookup || got[0].State != initial || got[1].Return != selectRet || got[1].State != selected {
 			t.Fatalf("count %08x: %+v", count, got)
+		}
+	}
+}
+
+// These boundary calls include inputs unsafe to evaluate with the old C lookup.
+func TestBorderSelectionByte4RepairBoundaries(t *testing.T) {
+	checks := 0
+	for _, count := range []uint32{0, 1, 8, 64, 65, 0x7fffffff, 0x80000000, 0xffffffff} {
+		for _, primary := range []uint32{0, 7, 63, 64, 255, 0x7fffffff, 0x80000000, 0xffffffff} {
+			for _, flag := range []uint32{0, 1, 2, 0x80000000, 0xffffffff} {
+				for _, limit := range []uint16{0, 1, 12, 20, 64, 65, 1020, 65535} {
+					values := []int32{-2147483648, -1, 0, int32(limit) - 1, int32(limit), int32(limit) + 1, 63, 64, 65535, 2147483647}
+					initial := legacy.PortTestBorderState{Count: count, Flag: flag, Primary: primary, Secondary: 0xa5a5a5a5}
+					var rows []legacy.PortTestBorderRow
+					if primary < 64 {
+						rows = []legacy.PortTestBorderRow{legacy.NewPortTestBorderRow(int(primary), []byte("Selected"), limit)}
+					}
+					specs := make([]legacy.PortTestBorderSpec, len(values))
+					for i, value := range values {
+						specs[i] = legacy.PortTestBorderSpec{Mode: 3, Value: value}
+					}
+					snap := legacy.PortTestBorderSelection(initial, rows, specs)
+					if snap.Before != snap.AfterRestore || !snap.TableRestored || !snap.GuardsRestored {
+						t.Fatal("fixture restore")
+					}
+					wantState := initial
+					for i, value := range values {
+						wantRet := 0
+						if flag == 0 {
+							wantRet = 1
+						} else if int32(count) > 0 && primary < count && primary < 64 && value >= 0 && uint32(value) < uint32(limit) {
+							wantRet = 1
+							wantState.Secondary = uint32(value)
+						}
+						r := snap.Results[i]
+						if r.Return != wantRet || r.State != wantState || !r.TableUnchanged || !r.InputUnchanged || !r.GuardsUnchanged {
+							t.Fatalf("count=%08x primary=%08x flag=%08x limit=%d value=%d: got %+v want return=%d state=%+v", count, primary, flag, limit, value, r, wantRet, wantState)
+						}
+						checks++
+					}
+				}
+			}
+		}
+	}
+	t.Logf("%d repaired validation boundary calls", checks)
+}
+
+func TestBorderSelectionLookupMatrix(t *testing.T) {
+	checks := 0
+	for count := uint32(0); count <= 64; count++ {
+		for index := 0; index < 64; index++ {
+			for _, name := range [][]byte{[]byte("Target"), []byte(""), {0xff, 0x80, 'x'}, []byte("Target\x00suffix")} {
+				rows := make([]legacy.PortTestBorderRow, 64)
+				for i := range rows {
+					rows[i] = legacy.NewPortTestBorderRow(i, []byte("Other"), 12)
+				}
+				rows[index] = legacy.NewPortTestBorderRow(index, name, 20)
+				if index+1 < 64 {
+					rows[index+1] = legacy.NewPortTestBorderRow(index+1, name, 12)
+				}
+				initial := legacy.PortTestBorderState{Count: count, Flag: 0x80000000, Primary: 0xa5a5a5a5, Secondary: 0x5a5a5a5a}
+				specs := []legacy.PortTestBorderSpec{{Mode: 0, Name: name}, {Mode: 1, Name: name}}
+				snap := legacy.PortTestBorderSelection(initial, rows, specs)
+				if snap.Before != snap.AfterRestore || !snap.TableRestored || !snap.GuardsRestored {
+					t.Fatal("fixture restore")
+				}
+				lookup, accepted := -1, 0
+				selected := initial
+				selected.Flag = 0
+				if uint32(index) < count {
+					lookup, accepted = index, 1
+					selected.Flag, selected.Primary = 1, uint32(index)
+				}
+				for i, r := range snap.Results {
+					wantRet, wantState := lookup, initial
+					if i == 1 {
+						wantRet, wantState = accepted, selected
+					}
+					if r.Return != wantRet || r.State != wantState || !r.TableUnchanged || !r.InputUnchanged || !r.GuardsUnchanged {
+						t.Fatalf("count=%d index=%d name=%x mode=%d got=%+v expected=%d %+v", count, index, name, i, r, wantRet, wantState)
+					}
+					checks++
+				}
+			}
+		}
+	}
+	t.Logf("%d exact lookup/name selection checks", checks)
+}
+
+func TestBorderSelectionPrimaryMatrix(t *testing.T) {
+	for _, count := range []uint32{0, 1, 64, 65, 0x7fffffff, 0x80000000, 0xffffffff} {
+		initial := legacy.PortTestBorderState{Count: count, Flag: 2, Primary: 255, Secondary: 0xa5}
+		for _, value := range []int32{-2147483648, -1, 0, 1, 63, 64, 65, 2147483646, 2147483647} {
+			r := checkBorder(t, initial, []legacy.PortTestBorderSpec{{Mode: 2, Value: value}})[0]
+			wantRet, want := 0, initial
+			if value >= 0 && value < int32(count) {
+				wantRet, want.Flag, want.Primary = 1, 1, uint32(value)
+			}
+			if r.Return != wantRet || r.State != want {
+				t.Fatalf("count=%08x value=%d got=%+v want=%d %+v", count, value, r, wantRet, want)
+			}
 		}
 	}
 }
