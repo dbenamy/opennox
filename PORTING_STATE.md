@@ -5,38 +5,37 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-11
 
-Latest completed chunk: waypoint link insertion sub_51D2C0/sub_51D300.
-Original-C baseline `23f32960` and native Go pass 532,480 cases covering all
-count/kind bytes, both routes, every link slot, nil/self/equal-ID targets,
-padding/guards and blob state preservation. Keep the original signed-char
-comparison: high-bit kinds do not match stored byte duplicates. Capacity stays
-31, with the final physical slot unused. See
-[waypoint insertion](docs/porting/WAYPOINT_APPEND.md).
-Production C: **140,845 physical lines** (−34), 153 files, zero reference C.
+Latest completed chunk: tile-selection quartet 51D4D0/51D540/51D570/51D5C0.
+Original-C baseline `375fc1b3` and native Go pass 459,124 checks. Name lookup
+preserves full physical 176-entry scan, last duplicate/NONE precedence, shared
+C locale comparator and raw-string semantics. Numeric selection/variation/flag
+boundaries and restoration of table/count/state/guards pass. See
+[tile selection](docs/porting/TILE_SELECTION.md).
+Production C: **140,785 physical lines** (−60), 153 files, zero reference C.
 
 All accumulated tests pass in default/server/highres 386 variants. All three
-production binaries build; fresh waypoint-append-port gameplay passes both
-preserved screenshots with overrides disabled. Full suite matches the exact
-known 1,553 failure-entry multiset: 15 passing/3 known failing/32 skipped-no-test
-packages. Artifacts: build/port-waypoint-append. No validation processes remain
-running.
+production binaries build; fresh tile-selection-port gameplay passes both
+preserved screenshots with overrides disabled. Artifacts: build/port-tile-selection.
+No validation processes remain running. The preceding waypoint chunk c29f0a71
+ran the full suite and matched the known exact 1,553 failure-entry multiset:
+15 passing/3 known failing/32 skipped-no-test packages. This chunk did not repeat it.
 
-Next: tile-selection quartet 51D4D0/51D540/51D570/51D5C0 in GAME4_1.c. Reviewed fixture/tests are installed; original-C baseline passes
-459,124 checks (build/port-tile-selection/c-baseline.log). Native draft remains
-ignored and not installed yet. Name lookup scans all 176 physical entries,
-not nox_tile_def_cnt, last duplicate wins, NONE overrides selection to 255.
-Preserve the shared C locale-aware nox_strcmpi dependency in this chunk. Numeric
-selection accepts 0..175; variation accepts negative values if <=width*height−1,
-and requires valid selected tile 0..175 (calling after NONE is C undefined behavior).
-Actual variation callers first call image selection, resetting invalid input to 0.
-Boolean setter accepts only 0/1, leaving state unchanged otherwise. Keep larger
-map-placement consumers with their owner. See pending fixture notes when ready.
+Next: tile-fill worklist push/pop 51DD50/51DE30 in GAME4_2.c, sole owner 5437E0.
+Ignored fixture/test draft is being prepared under build/port-tile-worklist;
+ignored native draft tile_worklist.go is there too. Neither is installed.
+Queue is 500×12 bytes at 0x973F18+16200, overflow at +22200; count is shared C
+word dword_5d4594_2487248. Scan/empty checks use signed count, but enqueue capacity
+uses unsigned count: high-bit counts skip scan then set overflow if gates pass.
+Pop must reload count/queue fields after each output write to preserve safe
+output aliasing. Push gate uses tile grid keys at +4/+24, full raw flags, coordinate
+bounds 1..126, and rejects appropriate x/y==1 edges. Duplicates at capacity do not
+set overflow. Keep the actual tile-fill/map-placement owner in C for now.
 No user decision is pending. Both approved writer/alias fixes are complete.
 Keep 57ADF0 list cleanup with its future GUI-owner port, and preserve existing
 separate server.PointOnTheLine behavior.
 
 Test from src with baseline environment: `go test -tags porttest -count=1
--run '^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability)' .`;
+-run '^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection)' .`;
 repeat server/highres. Preserve untracked asset archive.
 
 Continue through tests, docs/C LOC, commit, push and a user update per chunk,

@@ -3,13 +3,13 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-11
 
-Waypoint link insertion 51D2C0/51D300 is complete. Production C is 140,845
-physical lines (−34), with 532,480 original-C/native checks. All three test/build
-variants, fresh gameplay, and exact full-suite failure comparison pass.
-Next review/install the ignored tile-selection quartet fixture under
-build/port-tile-selection, establish its original-C baseline, then port
-51D4D0/51D540/51D570/51D5C0. Preserve the shared string comparator, full physical
-tile table scan, and existing numeric boundary behavior.
+Tile selection state 51D4D0/51D540/51D570/51D5C0 is complete. Production C is
+140,785 physical lines (−60), with 459,124 original-C/native checks. All three
+test/build variants and fresh gameplay pass. Last full-suite comparison was
+the preceding waypoint chunk, with the exact known failure multiset unchanged.
+Next review/install the ignored tile-fill worklist fixture under
+build/port-tile-worklist, establish its original-C baseline, then port
+51DD50/51DE30. Preserve signed/unsigned count tests and output aliasing.
 Both approved writer/alias fixes are complete; no user decision is pending.
 Keep 57ADF0 list cleanup with its future GUI-owner port.
 Use PORTING_STATE.md's top resume section for current verification and next steps.

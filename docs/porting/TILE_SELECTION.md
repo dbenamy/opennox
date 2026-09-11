@@ -40,3 +40,15 @@ assets are used. Local artifacts: build/port-tile-selection.
 
 Production C before this chunk:
 **140,845 physical lines**, 153 files, zero reference C.
+
+## Native implementation
+
+All four C entries now bridge to private Go state helpers. The same 459,124
+checks pass after conversion. Name comparison continues to call the shared
+production C nox_strcmpi; no new C reference implementation is retained.
+Original-C baseline: `375fc1b3`. Production C: **140,785 physical lines**
+(−60), 153 files, zero reference C. Accumulated default/server/highres 386 tests
+pass, all three ELF32 binaries build, and fresh `tile-selection-port` headless
+gameplay passes both preserved screenshots with overrides disabled. The
+immediately preceding waypoint chunk ran the full suite with the exact known
+1,553 failure entries unchanged; this small chunk does not repeat that run.
