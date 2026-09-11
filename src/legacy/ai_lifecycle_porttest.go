@@ -319,6 +319,14 @@ func portTestLifecycleTrace(proxy *portTestRoamOwnerServer, h *server.HealthData
 			alloc.FreePtr(p.CollideData)
 			p.CollideData = nil
 		}
+		if proxy.callbacks != nil && proxy.callbacks.shop != nil {
+			sp := proxy.callbacks.shop.spec.TemporaryUpdates
+			if sp != nil && sp.World != nil && sp.World.Objectives != nil && sp.World.Objectives.Attack != nil {
+				// The full created prefix above retains the transferred inventory head.
+				// Shop teardown already freed its items; created objects are freed separately.
+				p.InvFirstItem = nil
+			}
+		}
 		proxy.core.Objs.FreeObject(p)
 	}
 	if proxy.callbacks != nil && proxy.callbacks.shop != nil && proxy.callbacks.shop.spec.EffectsUse != nil {

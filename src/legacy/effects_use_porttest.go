@@ -346,12 +346,16 @@ func (p *portTestShopPools) effectsUseSnapshot() []uint32 {
 			appendWords(u.UpdateData, 20)
 		}
 		if u.CollideData != nil {
-			for _, v := range unsafe.Slice((*byte)(u.CollideData), 20)[4:] {
+			size := 20
+			if typ := p.proxy.core.Types.ByInd(int(u.TypeInd)); typ != nil && typ.CollideDataSize >= 16 {
+				size = int(typ.CollideDataSize)
+			}
+			for _, v := range unsafe.Slice((*byte)(u.CollideData), size)[size-16:] {
 				if v != 0x5a {
 					panic("effects Spark collide guard")
 				}
 			}
-			appendWords(u.CollideData, 5)
+			appendWords(u.CollideData, size/4)
 		}
 	}
 	if p.proxy.callbacks.shop.spec.EffectsUse.ExpectedClock != nil {

@@ -84,6 +84,7 @@ import (
 )
 
 type PortTestEquipmentDef struct {
+	Words    map[int]uint32
 	Type     uint16
 	Armor    bool
 	Strength uint16
@@ -141,6 +142,12 @@ func (p *portTestShopPools) equipmentPrepare() func() {
 		m.TypeInd = uint32(d.Type)
 		m.ReqStrength60 = d.Strength
 		m.DamageCoeffOrArmor64 = math.Float32frombits(d.Coeff)
+		for off, v := range d.Words {
+			if off < 36 || off > 76 || off%4 != 0 {
+				panic("equipment definition word offset")
+			}
+			*(*uint32)(unsafe.Add(ptr, off)) = v
+		}
 		head := &core.Modif.Dword_5d4594_251600
 		if d.Armor {
 			head = &core.Modif.Dword_5d4594_251608

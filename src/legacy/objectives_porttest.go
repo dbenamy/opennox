@@ -93,6 +93,7 @@ const (
 
 // References 100..102 address the existing three real fixture players.
 type PortTestObjectivesSpec struct {
+	Attack                                          *PortTestAttackSpec
 	SpellDefinitions                                []server.PortTestSpellClassDef
 	Ticks                                           []uint64
 	Players                                         int
@@ -106,6 +107,7 @@ type PortTestObjectivesSpec struct {
 	ScoreLimit                                      uint16
 }
 type portTestObjectives struct {
+	attack    *portTestAttack
 	packets   []uint32
 	ticks     []uint64
 	blocks    [][]byte
@@ -219,7 +221,9 @@ func (p *portTestShopPools) objectivesPrepare() func() {
 		u.NetCode = uint32(3000 + i)
 		pl.NetCodeVal = u.NetCode
 	}
+	restoreAttack := p.attackPrepare()
 	return func() {
+		restoreAttack()
 		core.Objs.List = oldList
 		C.nox_server_netCodeCache, C.nox_server_needInitNetCodeCache = oldNetCache, oldNetInit
 		C.dword_5d4594_1567988 = oldStart
@@ -317,6 +321,7 @@ func (p *portTestShopPools) objectivesItems() {
 		u.ObjNext = p.proxy.core.Objs.List
 		p.proxy.core.Objs.List = u
 	}
+	p.attackItems()
 }
 func (p *portTestShopPools) objectivesAction(a PortTestShopAction) uint32 {
 	sp := p.proxy.callbacks.shop.spec.TemporaryUpdates
@@ -362,5 +367,5 @@ func (p *portTestShopPools) objectivesSnapshot(out []uint32) []uint32 {
 		words(unsafe.Pointer(&b[8]), (len(b)-16)/4)
 	}
 	out = append(out, math.Float32bits(p.proxy.core.Players.Mult.Warrior.Mana), math.Float32bits(p.proxy.core.Players.Mult.Wizard.Mana), math.Float32bits(p.proxy.core.Players.Mult.Conjurer.Mana))
-	return out
+	return p.attackSnapshot(out)
 }

@@ -48,16 +48,15 @@ packages pass, 3 fail, 32 skip). Fresh unchanged repeat-a headless gameplay
 passes in 57.464s. Evidence: build/port-objectives and baseline/runs/objectives-port.
 Completed and pushed as `ca0f193c`; summary delivered. Continue; no pending question.
 
-### Active — player-attack original-C baseline preparation
+### Active — player-attack original-C baseline
 
-Candidate: 12 connected functions / 1,105 C lines; still C, no baseline hashes
-locked yet. See [PLAYER_ATTACK.md](docs/porting/PLAYER_ATTACK.md). Scope/fixture audit:
-build/port-player-attack/{scope.json,plan.md,fixture-design.md}. Reuse existing
-player/equipment/animation/spatial fixtures, add guarded attack records and
-arrow/bolt/chakram definitions with 8-byte collision payloads. Lock and push
-repeated original-C captures before conversion, then qualify the whole batch.
-No new agents; preserve archive and stable evidence. Full-suite raw logs may
-contain secrets; print only action/package/test metadata.
+12 connected functions / 1,105 C lines remain original C. All 2,100 cases / 16
+full capture groups repeat byte-for-byte; hashes are locked in the root attack
+tests. See [PLAYER_ATTACK.md](docs/porting/PLAYER_ATTACK.md). All 26,337 accumulated focused cases pass against C (76.006s).
+This checkpoint must be pushed before production conversion.
+Convert the whole connected batch, compare captures, then qualify once. No new
+agents or pending question. Preserve archive and stable evidence. Full-suite raw
+logs may contain secrets; print only action/package/test metadata.
 
 <!-- /current-focus -->
 

@@ -55,6 +55,30 @@ Fixture audit notes:
 - 00539FB0: `int sub_539FB0(uint32_t* a1)` (17 lines).
 - 00539FF0: `int nox_xxx_playerTryReloadQuiver_539FF0(uint32_t* a1)` (17 lines).
 
-Production is still C; baseline fixture work begins after conversion `ca0f193c`.
-No original-C hashes are locked yet. Current C count: 124,395 / 149 files / zero
-reference C.
+## Original-C baseline
+
+All 12 production functions remain C. The guarded fixture covers 2,100 cases
+in 16 groups: unarmed timing, hit filters, nearest target, modifier effects,
+projectiles, weapon dispatch, reloads, spatial traces, warcry, positive outcomes,
+NPC attacks, abilities, projectile modifiers/failures, chakram depletion and
+NPC/player ammo consumption. Two independent runs produced byte-identical full
+captures. SHA-256 expectations are committed in player_attack_porttest_test.go.
+
+Independent assertions verify damage amounts, projectile position/velocity,
+warcry duration, round-chakram inventory transfer, modifier changes to damage,
+ammo consumption even when object creation fails, and fan-chakram deletion
+requests plus replacement equipment. The delete hook observes requests; it does
+not execute deletion. Fixture teardown detaches already-captured transferred
+items before freeing created objects, avoiding duplicate frees.
+
+Only unused attack-record padding and relocated object/function addresses are
+normalized. The warcry short return can contain the low 16 bits of an input
+pointer; that known pointer relationship is normalized before comparison.
+No C gameplay algorithm is copied into the fixture.
+
+Local evidence: build/port-player-attack/{complete-first.log,complete-repeat.log,
+c-first-attack-*.json,c-repeat-attack-*.json,baseline-hashes.json,c-regression.log}.
+Current production C count remains 124,395 / 149 files / zero reference C.
+
+Accumulated focused regression: all 26,337 cases / 171 groups pass against
+original C in 76.006s, with every earlier locked hash unchanged.
