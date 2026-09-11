@@ -1,17 +1,6 @@
 # OpenNox x86 Porting Handoff
 
 <!-- current-focus -->
-## In progress — quest penalty baseline
-
-Initialization batch `7ac58eed` is committed and pushed. Original-C quest
-penalty baseline now has 2,293 locked cases, including real inventory removal,
-packets, gem pricing and a valid gold-protection record. See
-[QUEST_PENALTY.md](docs/porting/QUEST_PENALTY.md). No penalty C has been removed;
-production C remains 134,954 lines. Callback/initialization/protection
-regressions pass unchanged (13.611s). Commit/push the baseline, then convert
-all seven policy functions.
-Artifacts: build/port-quest-penalty. No user question is pending.
-
 ## Resume here — 2026-09-11
 
 Continue the x86 C-to-Go port on `dev`, one connected, reviewed, tested,
@@ -19,58 +8,47 @@ documented, committed and pushed family at a time, until a substantive user
 question or rate limit. User approved more aggressive batching and at most one
 bounded helper. Preserve the untracked asset archive. No question is pending.
 
-Latest fully qualified batch: object initialization and small death callbacks,
-GAME5 54C0C0–54CBB0. Original-C baseline `b50fa476` is committed and pushed.
-Eleven C bodies removed; generated ABI entries remain for the live C auto-spell
-caller and ten registered callbacks. The Go auto-spell wrapper calls Go directly.
-All 3,372 locked cases match. Armor's mixed address/integer result uses uintptr_t
-with the same 32-bit ABI bits, avoiding fake pointers on the Go stack.
-See docs/porting/OBJECT_CREATION.md for hashes and compiled arithmetic.
-Production C: **134,954 physical lines (minus 340)**, 153 files, zero reference C.
+Latest qualified batch: quest death-penalty policy, GAME5 54CBD0–54D080.
+Original-C baseline `37fc7a41` was committed and pushed before conversion.
+All seven functions are native Go; root ABI remains for registered PlayerDie.
+All 2,293 original-C cases match, including real inventory unlink/dequip,
+packets, gem pricing and gold-protection records. See
+[QUEST_PENALTY.md](docs/porting/QUEST_PENALTY.md).
+Production C: **134,569 physical lines (minus 385)**, 153 files, zero reference C.
 
-Accumulated default/server/highres tests pass (49.338s/44.875s/46.351s). Three
-production binaries pass and are ELF32/i386/SSE2. Full suite matches exactly
+Accumulated default/server/highres tests pass (58.585s/47.780s/47.163s).
+Three production binaries verify ELF32/i386/SSE2. Full suite matches exactly
 1,553 known failure entries (15 pass/3 fail/32 skip packages). Fresh
-`object-creation-port` headless gameplay exits 0 against preserved screenshots,
-overrides off, null audio. Artifacts: build/port-object-creation.
+`quest-penalty-port` headless gameplay exits 0 against preserved screenshots,
+overrides off, null audio. Artifacts: build/port-quest-penalty.
 
-Previous qualified/pushed: callback family `6f0a291e` (minus 948), spells
-`51dd2621`, main AI `f674ad3a`, monster state `29b6e5d3`, lifecycle `e3ee0c9c`,
-combat `e37039e5`, path `01a9ec4d`, navigation `e32982f7`, guard/escort
-`2bd0b90d`. C_LOC.md records every physical count.
+Previous qualified/pushed: initialization `7ac58eed`, callbacks `6f0a291e`,
+spells `51dd2621`, main AI `f674ad3a`, monster state `29b6e5d3`, lifecycle
+`e3ee0c9c`, combat `e37039e5`, path `01a9ec4d`, navigation `e32982f7`,
+guard/escort `2bd0b90d`. C_LOC.md records every physical count.
 
-Next: quest death-penalty policy, GAME5 54CBD0–54D080, **385 physical C lines /
-seven functions**, stopping before PlayerDie 54D2B0. It is LIVE: registered
-PlayerDie calls 54CBD0 when quest lives reach zero. Port the complete penalty
-family, retaining its root C ABI for this caller; private helpers can be Go-only.
-The larger PlayerDie/score engine is a later batch, not a prerequisite.
-Reuse callback/lifecycle player+packet fixtures. Add guarded inventory objects,
-Diamond/Emerald/Ruby types, real Armor bit lookup, controlled real eligibility
-blob tables, and capture/restore full player/owner/update memory. Gem prices can
-use the real shop helper with simple-class objects, Worth and nil HealthData;
-no price hook is needed. Save shop caches 2386504/08/12 as well as penalty gem
-caches. Existing player-class item eligibility seam can record per-item choices.
-Gold handle zero safely uses the retained gold routines without a protection
-record; valid-record tests are optional if straightforward with existing helpers.
-
-Read actual C; helper audit mislabeled some knowledge as abilities and originally
-missed the live root call. Independent review caught both. Audits and server
-fixture draft are ignored under build/port-object-creation. After the original-C
-baseline is locked and committed, convert/qualify the whole family once.
+Next: batch remaining generic non-player death callbacks across GAME5
+54DFA0–54E620 and server__object__die__die.c (ArmorDie/WeaponDie).
+Include MonsterGeneratorDie with its update family if its script/score fixture
+would otherwise dominate this batch. PlayerDie/score handlers remain later.
+Reuse callback creation/audio/FX, guarded player and inventory fixtures.
+Read actual C: Create/Spawn DeathData contains an INLINE 128-byte name then
+sound, not a name pointer. Boulder allocation failure skips actor deletion;
+both RNG APIs use Logic. Armor generic passes position bits as a sound ID.
+Helper audit under build/port-quest-penalty is advisory and has errors;
+verify implementation and compiled arithmetic independently.
+Lock and commit original-C hashes before native conversion; qualify each
+connected batch once. Keep boundary/branch coverage thorough while amortizing
+build and fixture costs over multiple related functions.
 
 Use build/baseline/env.sh: Go1.26, GOARCH=386, GO386=sse2, CGO enabled, GCC.
-User dropped old-CPU support. Keep C x87 flags unchanged; inspect compiled spills
-where needed. Both random APIs 415FA0 and 416030 use Logic, never Other.
-Accumulated regex with porttest, server porttest, highres porttest:
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort|AINavigation|AIPath|AICombat|AILifecycle|AIMonsterState|AIMain|AISpell|AICallback|ObjectCreation)`
-Once per connected batch: accumulated tests, three production builds/metadata,
-fresh headless gameplay with preserved screenshots and overrides off. Full-suite
-comparison at subsystem/shared boundaries; never print raw full-suite logs,
-compare only Action/Package/Test metadata. Update C LOC after every conversion.
+User dropped old-CPU support. Keep C x87 flags unchanged; inspect compiled
+spills where needed. Both random APIs 415FA0 and 416030 use Logic, never Other.
+Accumulated tests: build/port-quest-penalty/check-ports.sh (includes QuestPenalty).
+Full-suite comparison: build/port-quest-penalty/compare-suite.py; compare only
+Action/Package/Test metadata, never raw suite output. Scenario runner uses
+preserved repeat-a screenshots with overrides disabled and null audio.
 
-Push authorized:
-`git -c core.sshCommand='ssh -o BatchMode=yes' push git@github.com:dbenamy/opennox.git dev:dev`
-Git identity: Daniel Benamy <daniel@benamy.info>.
 <!-- /current-focus -->
 
 ## Throughput revision — 2026-09-11

@@ -46,6 +46,23 @@ Hashes are locked in src/quest_penalty_porttest_test.go:
 - penalty-corpus: `9cb2754bde579826b7486dedb7b222c6ce60bb172a8159db5d13818275942c15`.
 - penalty-protection: `682c54b2ea10f9335abf9d55cde4669ed874cb5cac1140ebf66774773e9cfd15`.
 
-C bodies remain intact: 134,954 production lines, 153 files, zero reference C.
-Ignored logs and captures are under build/port-quest-penalty. Next: native
-conversion of the complete family, followed by one qualification cycle.
+## Native conversion and qualification
+
+Original-C baseline: `37fc7a41`, committed and pushed before conversion.
+All seven policy bodies now live in `src/legacy/quest_penalty.go`; the root
+retains its generated C ABI for PlayerDie, and six private helpers are Go-only.
+No C algorithms remain for testing. All 2,293 original hashes match (1.855s).
+Real inventory deletion, gold protection, pricing and eligibility services
+remain shared with the game. Empty knowledge ranges still call the original
+Logic RNG policy; weapon eligibility still visits every candidate after a match.
+
+Accumulated default/server/highres port regressions pass
+(58.585s / 47.780s / 47.163s). Three production binaries build and verify as
+ELF32/i386 with GO386=sse2. The full suite has exactly the baseline's 1,553
+failure entries (15 pass / 3 fail / 32 skip packages), with none added or removed.
+Fresh `quest-penalty-port` headless gameplay exits 0 against preserved
+screenshots, overrides disabled, null audio.
+
+Production C: **134,569 physical lines**, 153 files, zero reference C:
+**385 lines removed**. Ignored logs, captures, build metadata and suite comparison
+are under `build/port-quest-penalty`.

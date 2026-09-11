@@ -183,22 +183,22 @@ func portTestPenaltyPrepare(proxy *portTestRoamOwnerServer, sp *PortTestPenaltyS
 	}
 }
 func portTestPenaltyCall(proxy *portTestRoamOwnerServer, op int) uint32 {
-	p := combatPtr(&proxy.life.players[0])
+	u := &proxy.life.players[0]
 	switch op {
 	case 0:
-		C.sub_54CBD0(p)
+		C.sub_54CBD0(combatPtr(u))
 	case 1:
-		C.sub_54CC40(p)
+		questLoseWeapon(u)
 	case 2:
-		C.sub_54CD30(p)
+		questLoseArmor(u)
 	case 3:
-		C.sub_54CE00(p)
+		questLoseSpell(u)
 	case 4:
-		C.sub_54CEE0(p)
+		questLoseBeastScroll(u)
 	case 5:
-		return uint32(int32(C.sub_54CFB0(p)))
+		return uint32(int32(questLoseWarriorAbility(u)))
 	case 6:
-		C.sub_54D080(p)
+		questLoseGems(u)
 	default:
 		panic("penalty operation")
 	}

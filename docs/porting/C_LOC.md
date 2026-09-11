@@ -67,6 +67,7 @@ target build selection and linker evidence.
 | Monster spell decisions and cast actions (2026-09-11) | 153 | 136,242 | −499 | 0 |
 | Monster callback registration, strikes, death effects and loot (2026-09-11) | 153 | 135,294 | −948 | 0 |
 | Object initialization and small death callbacks (2026-09-11) | 153 | 134,954 | −340 | 0 |
+| Quest death-penalty policy and six private helpers (2026-09-11) | 153 | 134,569 | −385 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
