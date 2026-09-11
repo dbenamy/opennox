@@ -32,6 +32,13 @@ work; reproducible Go cache files over twelve hours old were trimmed. About
 7 GiB is free. Preserve the user asset archive and gameplay evidence; avoid
 unnecessary duplicate captures. All 4,238 prior shop hashes remained unchanged.
 
+Resource original-C baseline: 3,591 cases / eleven groups repeat byte-for-byte.
+Production C is intact. Fixtures and locked hashes are in resources_porttest*.go;
+details in docs/porting/RESOURCES.md. All 4,986 prior shop/trade cases also pass
+with the final fixture (28.933s). Next: convert the audited 25-function /
+646-line batch, qualify accumulated variants/builds/full-suite/gameplay, update
+count and docs, commit/push, then continue. No user question is pending.
+
 <!-- /current-focus -->
 
 ## Throughput revision — 2026-09-11

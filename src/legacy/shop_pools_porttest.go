@@ -66,6 +66,8 @@ type PortTestShopPacketResult struct {
 	Data               []byte
 }
 type PortTestShopStep struct {
+	ResourceData             [][]uint32 `json:",omitempty"`
+	ResourceMessages         [][]byte   `json:",omitempty"`
 	EngineStateRequests      []uint32   `json:",omitempty"`
 	EngineMessages           [][]byte   `json:",omitempty"`
 	EngineState              []uint32   `json:",omitempty"`
@@ -88,6 +90,7 @@ type portTestShopOwned struct {
 	alive             bool
 }
 type portTestShopPools struct {
+	resources           *portTestResources
 	engineStateRequests []uint32
 	proxy               *portTestRoamOwnerServer
 	restore             func()
@@ -245,6 +248,7 @@ func (p *portTestShopPools) run() {
 		p.proxy.life.players[0].UpdateDataPlayer().Player.ProtPlayerGold = 0x40000001
 	}
 	defer p.enginePrepare()()
+	defer p.resourcePrepare()()
 	for i, spec := range s.spec.Items {
 		// Actual allocator objects let destruction execute the retained object
 		// free path. Price/charge/modifier arithmetic has guarded query fixtures.
@@ -273,7 +277,7 @@ func (p *portTestShopPools) run() {
 	}
 	for _, a := range s.spec.Sequence {
 		var q unsafe.Pointer
-		if a.Op != PortTestShopCreate && a.Op != PortTestShopReset && a.Op != PortTestShopPlayerCleanup && a.Op != PortTestTradeCreatePlayer && a.Op != PortTestTradeStart {
+		if a.Op != PortTestShopCreate && a.Op != PortTestShopReset && a.Op != PortTestShopPlayerCleanup && a.Op != PortTestTradeCreatePlayer && a.Op != PortTestTradeStart && a.Op < 200 {
 			q = p.sessions[a.Session]
 			if q == nil {
 				panic("shop fixture stale session")
@@ -462,7 +466,11 @@ func (p *portTestShopPools) run() {
 			}
 			C.sub_510E20(C.int(a.Item))
 		default:
-			rv = p.engineAction(a, q)
+			if a.Op >= 200 {
+				rv = p.resourceAction(a)
+			} else {
+				rv = p.engineAction(a, q)
+			}
 		}
 		p.engineDiscover()
 		p.steps = append(p.steps, p.snapshot(rv))
@@ -471,6 +479,7 @@ func (p *portTestShopPools) run() {
 
 func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 	r := PortTestShopStep{Alive: p.proxy.core.Objs.Alive - p.initialAlive}
+	r.ResourceData, r.ResourceMessages = p.resourceSnapshot()
 	var sessions, nodes []unsafe.Pointer
 	seen := make(map[unsafe.Pointer]bool)
 	for q := shopTestPointer(uint32(C.dword_5d4594_2386500)); q != nil; {

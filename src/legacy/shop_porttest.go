@@ -41,6 +41,7 @@ type PortTestShopStock struct {
 	Mods         [4]bool
 }
 type PortTestShopSpec struct {
+	Resources         *PortTestResourceSpec
 	Engine            *PortTestShopEngineSpec
 	CaptureData       bool
 	Load              *PortTestShopLoadSpec
@@ -223,7 +224,7 @@ func portTestShopTrace(proxy *portTestRoamOwnerServer, normalize func(uint32) ui
 	r := &PortTestShopResult{Intact: true, Sequence: s.pools.steps}
 	defer s.pools.cleanup()
 	for i, b := range s.blocks {
-		if s.spec.Engine == nil {
+		if s.spec.Engine == nil && s.spec.Resources == nil {
 			r.Intact = r.Intact && bytes.Equal(b, s.before[i])
 		} else {
 			r.Intact = r.Intact && bytes.Equal(b[:8], s.before[i][:8]) && bytes.Equal(b[len(b)-8:], s.before[i][len(b)-8:])

@@ -28,6 +28,7 @@ func (s *Server) PortTestTradeStrings() func() {
 			{"Trade.c:CantSellQuestItem", "CANNOT_SELL_QUEST"},
 			{"Trade.c:CantSellItem", "CANNOT_SELL_ITEM"},
 			{"pickup.c:MaxSameItem", "TOO_MANY_ITEMS"},
+			{"pickup.c:GoldPickup", "GOLD:%d"},
 		} {
 			entries = append(entries, strman.Entry{ID: strman.ID(v[0]), Vals: []strman.Variant{{Str: v[1]}}})
 		}
