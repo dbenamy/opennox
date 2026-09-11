@@ -3,6 +3,16 @@
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
+## In progress — callback baseline locked
+
+Native spell batch `51dd2621` is fully qualified and pushed. Current original-C
+callback baseline covers the full 948-line/36-function family with 4,224 generated
+cases and targeted loader/strike/poison/loot/debris/precision/cloud contracts.
+See docs/porting/AI_CALLBACKS.md for hashes, arithmetic and reserved modifier word
+handling. Existing spell/main/state hashes pass unchanged. Production C is still
+136,242 lines. Next: native conversion, one final qualification, commit/push and
+continue. No substantive question is pending.
+
 ## Resume here — 2026-09-11
 
 Port the x86 C engine to Go on branch `dev`. User authorizes continued connected,

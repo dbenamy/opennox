@@ -296,6 +296,20 @@ func portTestLifecycleTrace(proxy *portTestRoamOwnerServer, h *server.HealthData
 			alloc.FreePtr(p.Field189)
 			p.Field189 = nil
 		}
+		if proxy.callbacks != nil {
+			if p.InitData != nil {
+				alloc.FreePtr(p.InitData)
+				p.InitData = nil
+			}
+			if p.UseData.Ptr != nil {
+				alloc.FreePtr(p.UseData.Ptr)
+				p.UseData.Ptr = nil
+			}
+		}
+		if proxy.callbacks != nil && p.UpdateData != nil {
+			alloc.FreePtr(p.UpdateData)
+			p.UpdateData = nil
+		}
 		proxy.core.Objs.FreeObject(p)
 	}
 	for p := uint32(C.dword_5d4594_1565512); p != 0; {

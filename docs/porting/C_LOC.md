@@ -64,10 +64,9 @@ target build selection and linker evidence.
 | AI lifecycle, revival and item searches (2026-09-11) | 153 | 137,882 | −330 | 0 |
 | Monster commands, animation and state (2026-09-11) | 153 | 137,297 | −585 | 0 |
 | Main monster AI and defensive reactions (2026-09-11) | 153 | 136,741 | −556 | 0 |
+| Monster spell decisions and cast actions (2026-09-11) | 153 | 136,242 | −499 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
 because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful
 differential validation; they remain recoverable from Git at `66fa7bd4`.
-
-| Monster spell decisions and cast actions (2026-09-11) | 153 | 136,242 | −499 | 0 |

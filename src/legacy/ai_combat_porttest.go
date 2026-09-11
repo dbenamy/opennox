@@ -89,6 +89,17 @@ func (s *portTestRoamOwnerServer) CreateObjectAt(obj, owner server.Obj, p types.
 	if s.life != nil {
 		s.life.created = append(s.life.created, u)
 		s.life.ids[uint32(uintptr(u.CObj()))] = uint32(1000 + len(s.life.created))
+		if s.callbacks != nil {
+			if u.InitData != nil {
+				s.life.ids[uint32(uintptr(u.InitData))] = uint32(4000 + len(s.life.created))
+			}
+			if u.UseData.Ptr != nil {
+				s.life.ids[uint32(uintptr(u.UseData.Ptr))] = uint32(5000 + len(s.life.created))
+			}
+		}
+		if s.callbacks != nil && u.UpdateData != nil {
+			s.life.ids[uint32(uintptr(u.UpdateData))] = uint32(3000 + len(s.life.created))
+		}
 		if u.Field189 != nil {
 			s.life.ids[uint32(uintptr(u.Field189))] = uint32(2000 + len(s.life.created))
 		}
