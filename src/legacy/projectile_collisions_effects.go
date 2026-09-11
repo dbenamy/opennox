@@ -82,7 +82,7 @@ func projectileFireball(u, t *server.Object) {
 	data := u.CollideData
 	active := true
 	if t != nil && t.HasEnchant(27) && projectileFront(t, u) {
-		C.nox_xxx_projectileReflect_4E0A70(inventoryInt(u), inventoryInt(t))
+		damageReflect(u, t)
 		core := GetServer().S()
 		core.ObjClearOwner(u)
 		core.ObjSetOwner(t, u)

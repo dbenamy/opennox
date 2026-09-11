@@ -168,7 +168,7 @@ func attackTrace(u *server.Object, r *attackRecord) int {
 	if r.Weapon != nil && C.dword_5d4594_2488656 != 0 {
 		damage := float32(float64(C.nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamagePercentage"))) * float64(r.Damage))
 		target := C.int(C.dword_5d4594_2488660)
-		C.nox_xxx_playerDamageWeapon_4E1560(inventoryInt(r.Weapon), inventoryInt(r.Owner), target, target, C.float(damage), C.int(r.Type))
+		damageDurability(r.Weapon, r.Owner, objectFromInt(target), objectFromInt(target), damage, int32(r.Type), true)
 	}
 	return int(C.dword_5d4594_2488656)
 }

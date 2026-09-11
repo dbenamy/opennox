@@ -2,7 +2,7 @@
 
 ## Original-C baseline — 2026-09-11
 
-All 26 candidate functions remain original C. The guarded fixture covers
+Baseline commit `7a3fbb46` was pushed before changing any production owner. The guarded fixture covers
 **3,582 cases / 42 complete capture groups**, repeated byte-for-byte in separate
 processes (12.074s confirmation). Hashes are locked in
 `src/damage_dispatch_porttest_test.go`; full local evidence is in
@@ -34,39 +34,17 @@ Fixture details discovered before locking:
 - Recorders only observe dependency calls and optionally return configured
   values. No production algorithm has been copied into test C.
 
-Production C remains **122,284 lines / 149 files / zero reference C**.
+Production C at baseline was **122,284 lines / 149 files / zero reference C**.
 All 31,623 accumulated focused cases / 262 capture groups pass with locked
 hashes (95.765s), including all 28,041 prior cases unchanged.
-Commit/push this baseline before converting the connected batch.
+The baseline was committed and pushed before conversion.
 
-Candidate: 26 connected functions / 1,331 C lines spanning GAME3_2.c and
-GAME3_3.c, addresses 004E0A00 through 004E27D0. Group default/player damage,
-armor/weapon durability, defense modifiers, special damage wrappers, HP/mana
-sharing, projectile reflection and damage-type parsing. Audit callee boundaries
-before locking the scope. Reuse native resource/equipment/inventory/objective
-owners and the guarded attack/collision fixture.
+The connected scope covers default/player damage, armor/weapon durability,
+defense modifiers, specialized damage wrappers, fractional damage carry,
+projectile reflection and damage-type parsing. Native resource, equipment,
+inventory and objective owners remain shared dependencies.
 
-Create the original-C baseline first; repeat complete captures, lock hashes,
-commit and push before converting production. Preserve all earlier hashes.
-Use actual player/NPC slabs, health/protection records, modifier definitions,
-team/owner chains and callback identities. Add a damage fixture spec and dispatch
-range 1100+, guarded in/out damage values, defense-effect recorders and explicit
-float-return capture. Type parsing should use a saved/restored pointer table of
-real C strings if the original relocated name table needs fixture setup.
-
-Exercise nil/admission returns, dead/zombie/invulnerable states, friendly fire
-and game modes, elemental resistances, armor/shield absorption, defense/pre-hit
-effects, HP/mana sharing, durability/destruction, damage-source selection,
-ball-carrier behavior, NPC scripting and specialized damage wrappers. Include
-integer/floating boundaries, clock wrap, low-byte returns and seeded randomness.
-Assert actual HP/mana/durability deltas, blocked damage, modified callback values,
-destruction requests and successful downstream behavior. No copied C algorithms.
-
-After the connected batch matches the C baseline, qualify once with accumulated
-port tests/default/server/highres, production builds and headless gameplay.
-Update C_LOC and recovery docs, commit/push, summarize, continue. No new agents.
-
-## Candidate scope
+## Original-C scope
 
 - 004E0A00: `int nox_xxx_parseDamageTypeByName_4E0A00(const char* a1)` (17 lines).
 - 004E0A70: `int nox_xxx_projectileReflect_4E0A70(int a1, int a2)` (38 lines).
@@ -97,3 +75,36 @@ Update C_LOC and recovery docs, commit/push, summarize, continue. No new agents.
 
 Status: scope/fixture audit only. All candidate functions remain C; no
 original-C hashes for this batch are locked yet.
+
+## Native conversion
+
+All 26 owners now live in `legacy/damage_dispatch.go`, `damage_player.go`,
+`damage_helpers.go` and `damage_exports.go`. All 3,582 cases / 42 full captures
+match original C byte-for-byte (11.692s). Production C is now **120,952 lines /
+149 files / zero reference C**: 1,331 function lines and one trailing blank line
+removed.
+
+The shared native durability helper preserves weapon-only exclusions and the
+armor path's holder requirement. Native melee/projectile owners call it and
+reflection directly; registrations and remaining C callers use ABI exports.
+Damage/type records passed to external modifier callbacks use explicitly
+initialized C-heap storage. The first comparison caught omitted initialization
+(the repository allocator takes a type exemplar, not an initial value).
+
+Float32 stores, signed-short direction wrapping, damage-kind numeric/bit
+conversions, modifier ordering, minimum-one damage, and callback-dependent
+health checks retain their original behavior. The parser declaration uses
+`char*` to match cgo's generated export; it does not mutate the input.
+
+## Qualification
+
+All accumulated port tests, including 31,623 focused cases / 262 groups, pass in
+default/server/highres: 172.196s / 150.338s / 152.211s. All three production binaries are
+verified ELF32/i386, GO386=sse2 and CGO enabled. Full-suite failure identities and
+multiplicities match the baseline exactly: 1,553 entries; 15 packages pass,
+3 fail and 32 skip. Fresh unchanged repeat-a headless gameplay passes in
+52.560s using Xvfb and null audio, without updating expected captures.
+
+Local evidence: build/port-damage-dispatch (native-second captures, variant logs,
+binaries and qualification.json), and baseline/runs/damage-dispatch-port.
+Next: [object state, geometry and ownership](OBJECT_STATE.md), one connected batch.

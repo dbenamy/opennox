@@ -82,6 +82,7 @@ target build selection and linker evidence.
 | Objective objects, scoring and obelisk recharge | 149 | 124,395 | −908 | 0 |
 | Player attack, melee/ranged helpers and reload (2026-09-11) | 149 | 123,290 | −1,105 | 0 |
 | Projectile collisions, arrows/chakrams and traps (2026-09-11) | 149 | 122,284 | −1,006 | 0 |
+| Damage dispatch, defense effects and durability (2026-09-11) | 149 | 120,952 | −1,332 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

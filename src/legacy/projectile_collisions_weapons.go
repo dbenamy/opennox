@@ -223,7 +223,7 @@ func projectileChakram(u, t *server.Object, n *types.Pointf) {
 		*temporaryRefWord(ud, 12) = t
 	}
 	if *count != 0 {
-		C.nox_xxx_projectileReflect_4E0A70(inventoryInt(u), inventoryInt(t))
+		damageReflect(u, t)
 	} else {
 		projectileChakramFallback(u)
 	}

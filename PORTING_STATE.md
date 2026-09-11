@@ -83,17 +83,32 @@ Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip)
 Fresh unchanged repeat-a headless gameplay passes in 36.421s. Evidence:
 build/port-projectile-collisions and baseline/runs/projectile-collisions-port.
 
-### Active — damage-dispatch original-C baseline preparation
+### Completed — damage dispatch, defense effects and durability
 
-Candidate: 26 connected functions / 1,331 C lines, still original C. The 3,582-case / 42-group original-C baseline now repeats exactly;
-hashes are locked in damage_dispatch_porttest_test.go. All 31,623 accumulated
-focused cases / 262 groups pass (95.765s). Production is unchanged. See [DAMAGE_DISPATCH.md](docs/porting/DAMAGE_DISPATCH.md).
-Scope/source/audit: build/port-damage-dispatch. Reuse guarded health, equipment,
-attack and collision fixtures; repeat/lock/commit/push original-C captures before
-converting default/player damage and their armor/durability/defense helpers.
-Qualify once at the connected batch boundary. Continue after committing/pushing
-projectile collisions; no pending question or new agents. Preserve archive and
-stable evidence. Full-suite raw logs may contain secrets; print only
+Baseline `7a3fbb46` was pushed before conversion. All 26 functions / 1,331 C
+function lines are native, plus one trailing blank removed. All 3,582 cases /
+42 complete captures match original C byte-for-byte (11.692s). Production C:
+**120,952 lines / 149 files / zero reference C**. See
+[DAMAGE_DISPATCH.md](docs/porting/DAMAGE_DISPATCH.md). Native melee/projectile
+callers use the shared durability/reflection helpers directly. Differential
+checks caught missing initialization of C-heap temporary damage records.
+
+Accumulated default/server/highres tests, including all 31,623 focused cases,
+pass in 172.196s / 150.338s / 152.211s. Three production binaries verified ELF32/i386/SSE2/CGO.
+Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip).
+Fresh unchanged repeat-a headless gameplay passes in 52.560s. Evidence:
+build/port-damage-dispatch and baseline/runs/damage-dispatch-port.
+
+### Active — object-state original-C baseline preparation
+
+Candidate: 43 address blocks / 1,136 physical C lines before adjacent-declaration
+audit. Still original C; no baseline or conversion started. See
+[OBJECT_STATE.md](docs/porting/OBJECT_STATE.md). Local scope/source audit:
+build/port-object-state. Reuse guarded world/owner/attack slabs and existing
+native Object methods where appropriate. Repeat/lock/commit/push original-C
+captures before conversion, then qualify at the connected batch boundary.
+Continue after damage commit/push; no pending question or new agents. Preserve
+archive and stable evidence. Full-suite raw logs may contain secrets; print only
 action/package/test metadata.
 
 ## GitHub backup and recovery

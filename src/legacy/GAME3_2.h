@@ -285,7 +285,7 @@ void nox_xxx_recoilEffect_4E0640(int a1, int a2, int a3, int a4);
 void nox_xxx_lightngEffect_4E06F0(int a1, int a2, int a3, int a4);
 int nox_xxx_itemCheckReadinessEffect_4E0960(int a1);
 int nox_xxx_effectProjectileSpeed_4E09B0(int a1, int a2, int a3, int a4, int a5);
-int nox_xxx_parseDamageTypeByName_4E0A00(const char* a1);
+int nox_xxx_parseDamageTypeByName_4E0A00(char* a1);
 int nox_xxx_projectileReflect_4E0A70(int a1, int a2);
 int nox_xxx_damageDefaultProc_4E0B30(int a1, int a2, int a3, int a4, int a5);
 void nox_xxx_gameballOnPlayerDamage_4E1230(int a1, int a2, int a3);
