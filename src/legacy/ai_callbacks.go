@@ -247,7 +247,7 @@ func monsterDeathExplosion(u *server.Object, big bool) {
 func monsterDebrisPlace(u, t *server.Object, radius float32) {
 	p, free := alloc.New(types.Pointf{})
 	defer free()
-	C.sub_4ED970(C.float(radius), (*C.float2)(unsafe.Pointer(&u.PosVec)), (*C.float2)(unsafe.Pointer(p)))
+	inventoryRandomPlacement(radius, &u.PosVec, p)
 	GetServer().CreateObjectAt(t, nil, *p)
 }
 func monsterDebrisRaise(t *server.Object, lo, hi float64, field29 float32) {

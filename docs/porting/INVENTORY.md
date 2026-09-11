@@ -1,87 +1,96 @@
-# Inventory insertion, removal, pickup and drop
+# Inventory pickup and drop port
 
-## Connected scope in progress
+Completed 2026-09-11: 33 functions / 1,421 physical C lines removed.
+Production C: **129,053 lines / 150 files / zero test-reference C**.
+Original-C baselines are pushed as `0763837a` and `d71388bd`.
 
-33 original C functions / 1,421 physical C lines. Production is unchanged from
-resource commit `0f74e2b3`: 130,474 C lines / 150 files / zero reference C.
+## Scope and implementation
 
-The scope includes removal owner 4ED0C0; drop policy/dispatch/placement and chest
-handling from 4ED290 through 4EE370 (excluding already native intervening roots);
-insertion 4F3070; specialized pickups 4F3350..4F3DD0; weapon pickup 53A720,
-Oblivion pickup 53A9C0, weapon drop 53AB10, armor pickup/drop 53E7F0/53EB70 and
-droppable predicate 53EBF0. Neighboring cheat storage and equipment sweeps are
-outside the scope. Exact caller audit and function list: ignored
-build/port-inventory/scope.json and callers.txt, recoverable from these addresses.
+The owners now live in legacy/inventory.go, inventory_drop.go,
+inventory_placement.go, inventory_pickup.go, inventory_equipment.go and
+inventory_objectives.go. inventory_exports.go retains 31 ABI entry points for
+C callers and callback addresses. Private eligibility and shape-radius bridges
+are retired; their fixture actions call Go directly. Native pickup/drop
+registrations and callers in shop, trade, spawn and monster debris code call Go
+directly. Unknown C drop callbacks still use the existing ABI.
 
-## Original-C fixture work
+Converted addresses:
 
-inventory_porttest.go and inventory_porttest_test.go extend the existing shop
-and resource fixture. The C dispatcher only invokes original functions; it
-contains no replacement algorithms. Item use/drop callbacks record arguments
-and controlled outcomes at retained service boundaries. Default pickup records
-its inputs and optionally executes the actual insertion owner for integration
-sequences. Full resource/player/object/init/use records and packet/protection
-traces remain observable, alongside placement results, caches and callbacks.
+- src/legacy/GAME3_3.c: 004ED0C0, 004ED290, 004ED500, 004ED580, 004ED5E0, 004ED710, 004ED790, 004ED810, 004ED930, 004ED970, 004EDA40, 004EDCD0, 004EDDE0, 004EDE50, 004EDF00, 004EE2A0, 004EE370, 004F3070, 004F3350, 004F3400, 004F34D0, 004F3510, 004F3580, 004F3B00, 004F3C60, 004F3CE0, 004F3DD0.
+- src/legacy/GAME4_3.c: 0053A720, 0053A9C0, 0053AB10, 0053E7F0, 0053EB70, 0053EBF0.
 
-Create-at capture treats existing pool-owned items as borrowed: moving an item
-does not allocate it again, change its identity or transfer cleanup ownership.
-This branch is confined to inventory cases; earlier fixtures retain their
-previous behavior and locked hashes.
+Neighboring cheat storage, equipment sweeps, table initialization, and retained
+map/equipment/root services are outside this batch. The next connected candidate
+is the weapon/armor equip/dequip family and its helpers.
 
-The original-C baseline covers 2,198 cases in 16 groups. Complete captures match
-byte-for-byte across separate processes. The combined inventory/shop/resource
-run passes in 34.072s with all 8,577 existing contracts unchanged; the focused
-inventory run takes 5.030s. Hashes are locked in inventory_porttest_test.go.
-No inventory production code has been converted yet.
+## Original-C contracts
 
-Recovery: source build/baseline/env.sh, cd src, then run
+The fixture reuses the shop/resource player, object, item, network and protection
+snapshots. All 2,288 cases in 17 groups match complete original-C capture files
+byte-for-byte. Coverage includes linked-list insertion/removal and ownership;
+weight/protection updates; drop admission and rejection; use/pickup outcomes;
+default and specialized drops; ray/placement/chest sequences; drop-all fallback;
+ammo merging/byte overflow/modifier matching; food audio tables; equipment and
+armor replacement; crown, treasure, and team membership; shape radius including
+signed zero, subnormals, infinities, and quiet/signaling NaNs.
+
+Item init/use/health/update buffers are guarded. Minimap state covers all 32
+player-info slots, including active slots without units. Complete packets,
+player/item memory, callback/RNG/deletion/creation effects and caches are compared.
+No new packet-byte exclusions were introduced: the actual serializer initializes
+both leading bytes of the crown/flag messages.
+
+The first 2,198 original-C cases were repeated before conversion. A native
+mismatch exposed an incorrect simplification of team comparison: 419180 validates
+list membership as well as the numeric ID. The port calls that retained service.
+The additional 90 actual-membership cases were captured and repeated in an
+isolated original-C checkout before their hash was locked in `d71388bd`. The
+original numeric-ID-without-membership cases remain unchanged.
+
+The fixture position now uses C-owned memory, preserving all locked outputs
+while permitting exported C functions to return its address. Borrowed player
+slabs are attached to the isolated server; runtime server handles are checked
+unchanged and normalized as identities. No cgo checks are disabled. Owned-item
+links are explicit fixture inputs, not setup-time ownership notifications.
+
+Retained service boundaries: create-at records movement without reallocating
+borrowed items; default pickup records admission and optionally invokes real
+inventory insertion; the root player-state hook records requests. Oblivion's
+retained pause effect is configured already busy, avoiding unrelated time/root
+setup. Original food tables occupy exactly 40 bytes each and are restored.
+
+Preserved details include callback/list ordering, ammo byte wrapping, armor
+replacement priority, full minimap/player state changes, drop-all spiral state,
+food-table priority and floating-point spill points. Placement retains libc
+sin/cos as mathematical primitives, not C placement algorithms. Drop-all's C
+fallback `v1 + 7` uses float2 pointer arithmetic: position at byte 56.
+
+## Qualification
+
+- All 10,865 inventory/resource/shop/trade contracts pass in 37.646s, with all
+  prior 8,577 hashes unchanged. Final inventory captures match original C exactly.
+- Accumulated default/server/highres port tests pass in 89.586s / 90.305s / 88.066s.
+- All three production builds pass: ELF32/Intel 80386, GO386=sse2, CGO enabled.
+- Full-suite failure multiset is exactly unchanged: 1,553 entries; 15 pass,
+  3 fail and 32 skipped packages.
+- Fresh inventory-port gameplay passes in 36.485s against unchanged repeat-a
+  goldens, overrides disabled, Xvfb and null audio.
+
+Reproduce with build/baseline/env.sh, then from src:
 `go test -tags porttest -run '^Test(Inventory|Shop|Resources)' -count=1 .`.
-Set OPENNOX_CALLBACK_CAPTURE to an ignored absolute prefix to regenerate full
-JSON captures; original algorithm sources are present in this baseline commit.
-After conversion keep these hashes unchanged, qualify the connected batch,
-update C_LOC/recovery checkpoints and commit/push. No C algorithm is retained
-solely for tests after conversion.
+Original sources and fixtures are recoverable at the baseline commits. Stable
+local captures are build/port-inventory/c-members-inventory-*.json and
+native-final-inventory-*.json. Qualification scripts/results live in that ignored
+artifact directory; full-suite logs may contain secrets, so report metadata only.
+No C algorithm remains solely for tests.
 
-### Expanded baseline review
+## Separate retained map-ray issue
 
-The corpus now covers all 33 entry points, including real drop-all/insertion
-sequences, ammo byte overflow and modifier matching, original food audio tables,
-special item classes, armor replacement, and crown/treasure team objectives.
-Owned-item links are explicit initial inputs. Borrowed player slabs are attached
-to the isolated server so retained ownership/minimap services execute normally;
-the runtime-only server handle is checked unchanged and normalized to an identity.
-Minimap state covers all 32 player-info slots, including active slots without a
-unit. Guarded init/use/health/update buffers detect writes beyond their allocation.
-Crown/flag packet headers are filled by the actual serializer, so every transmitted
-byte is compared; no new undefined-packet exclusions are needed.
-
-Retained services: create-at records movement without reallocating existing
-items, default pickup records admission and optionally calls real inventory
-insertion, and the root player-state hook records requests. Oblivion's retained
-pause effect is configured already busy, avoiding unrelated real-time/root-server
-setup. Original food lookup tables occupy exactly 40 bytes each and are restored.
-
-Geometry limitation found during original-C capture: the retained Go map-ray
-implementation can loop while traversing from (100,100) to approximately
-(317.9601,-34.2735), reached by radius 256 placement. The stack remained in
-server/wall.go mapTraceRayImpl line 1055. This predates the inventory conversion;
-random-placement boundary cases use origins far enough inside the map to keep
-these rays valid. Track the negative-coordinate traversal issue separately;
-do not silently change the ray service as part of this behavior-preserving port.
-Pure shape-radius cases still cover signed zero, subnormal values, infinities,
-and quiet/signaling NaNs. The 2,198 cases in 16 groups match byte-for-byte across two separate original-C runs. Hashes are locked in inventory_porttest_test.go.
-
-### Additional original-C checkpoint
-
-The native comparison caught a team-membership mistake: 419180 validates list
-membership as well as the numeric ID. Inventory continues to call that retained
-service. Added 90 cases with actual team membership, complementing the existing
-90 cases with matching IDs but no membership. These additions were captured in
-an isolated checkout of original-C commit 0763837a before locking the new hash.
-All 2,288 cases / 17 groups match complete original-C captures byte-for-byte.
-The isolated original-C run takes 4.863s; native comparison takes 4.346s.
-
-The fixture position is now allocated in C memory. Returning a Go-owned interior
-position pointer through an exported C ABI was rejected by cgo; changing storage
-preserves all previously locked outputs. No cgo checks are disabled. Native
-callback registration and direct Go callers remove avoidable crossings.
+Original-C testing exposed a loop in the retained Go map-ray traversal when a
+ray from (100,100) crossed into negative coordinates, approximately
+(317.9601,-34.2735), during radius-256 placement. The stack remained in
+server/wall.go mapTraceRayImpl, called by MapTraceRayAt. This predates inventory
+conversion. Random-placement cases use origins far enough inside the map to keep
+rays valid; drop-all fallback cases with out-of-map origins also pass. Track the
+negative-coordinate traversal issue separately rather than change map semantics
+inside this behavior-preserving port. It remains unresolved.

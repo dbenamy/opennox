@@ -38,11 +38,9 @@ static uint64_t invCall(int op,nox_object_t* u,nox_object_t* it,int value,int ar
  case 8: return (uint32_t)(uintptr_t)nox_xxx_invForceDropItem_4ED930(up,(uint32_t*)it);
  case 9: return (uint32_t)(uintptr_t)sub_4ED970(radius,(float2*)((char*)u+56),pos);
  case 10: return (uint32_t)(uintptr_t)nox_xxx_dropAllItems_4EDA40((uint32_t*)u);
- case 11: return (uint32_t)(uintptr_t)nox_xxx_unitDropCheckSome_4EDCD0(up,ip);
  case 12: return (uint32_t)(uintptr_t)sub_4EDDE0(up,(uint32_t*)it,(int*)pos);
  case 13: return (uint32_t)(uintptr_t)nox_xxx_dropFood_4EDE50(up,ip,(int*)pos);
  case 14: nox_xxx_chest_4EDF00(up,ip);return 0;
- case 15: {double d=sub_4EE2A0(up);uint64_t bits;memcpy(&bits,&d,8);return bits;}
  case 16: return (uint32_t)(uintptr_t)nox_xxx_dropAnkhTradable_4EE370(up,ip,(int*)pos);
  case 17: nox_xxx_inventoryPutImpl_4F3070(u,it,value);return 0;
  case 18: return (uint32_t)(uintptr_t)nox_xxx_pickupFood_4F3350(up,ip,value);
@@ -438,7 +436,15 @@ func (p *portTestShopPools) inventoryAction(a PortTestShopAction) uint32 {
 	if sp.NilPos {
 		pos = nil
 	}
-	out := uint64(C.invCall(C.int(a.Op-300), asObjectC(u), asObjectC(it), C.int(a.Value), C.int(a.Side), C.float(sp.Radius), pos))
+	var out uint64
+	switch a.Op {
+	case PortTestInventory4EDCD0:
+		out = uint64(bool2int(inventoryDropEligible(u, it)))
+	case PortTestInventory4EE2A0:
+		out = math.Float64bits(inventoryShapeRadius(u))
+	default:
+		out = uint64(C.invCall(C.int(a.Op-300), asObjectC(u), asObjectC(it), C.int(a.Value), C.int(a.Side), C.float(sp.Radius), pos))
+	}
 	p.inventory.result = out
 	if a.Op == PortTestInventory4ED970 {
 		if uint32(out) != uint32(uintptr(unsafe.Pointer(pos))) {

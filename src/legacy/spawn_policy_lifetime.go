@@ -153,7 +153,7 @@ func spawnPolicyRegister(generator, child *server.Object) int {
 			}
 			*(*byte)(unsafe.Add(gd, 20)) = cnt
 		}
-		C.nox_xxx_inventoryPutImpl_4F3070(asObjectC(child), asObjectC(glyph), 1)
+		inventoryInsert(child, glyph, 1)
 	}
 	return 1
 }

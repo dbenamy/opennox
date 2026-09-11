@@ -487,7 +487,7 @@ func tradeBuyMany(u *server.Object, s *shopSession, typ int32, count uint32) uin
 }
 func tradeSaleBlocked(u, item *server.Object, glyph uint32) bool {
 	var key string
-	if C.nox_xxx_ItemIsDroppable_53EBF0(C.int(uintptr(item.CObj()))) == 1 {
+	if inventoryDroppable(item) {
 		key = "CantSellQuestItem"
 	} else if uint32(item.TypeInd) == glyph {
 		key = "CantSellItem"
@@ -533,7 +533,7 @@ func tradeSell(u *server.Object, s *shopSession, code uint32) uint32 {
 		if tradeSaleBlocked(u, item, uint32(C.dword_5d4594_2386560)) {
 			return code
 		}
-		C.sub_4ED0C0(asObjectC(u), asObjectC(item))
+		inventoryRemove(u, item)
 		GetServer().DelayedDelete(item)
 		shopAddGold(u, uint32(shopPrice(0, s, item)))
 		tradeReportGold(u)

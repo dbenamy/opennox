@@ -223,5 +223,5 @@ func shopGetGold(u *server.Object) uint32 {
 	return resourceGetGold(u)
 }
 func shopPut(u, item *server.Object) {
-	C.nox_xxx_inventoryPutImpl_4F3070(asObjectC(u), asObjectC(item), 1)
+	inventoryInsert(u, item, 1)
 }

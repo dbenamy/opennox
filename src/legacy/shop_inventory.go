@@ -83,7 +83,7 @@ func shopSell(u *server.Object, s *shopSession, typ int32, count uint32) {
 		if item == nil {
 			return
 		}
-		C.sub_4ED0C0(asObjectC(u), asObjectC(item))
+		inventoryRemove(u, item)
 		GetServer().DelayedDelete(item)
 		shopAddGold(u, uint32(shopPrice(0, s, item)))
 		C.sub_4D8870(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), C.int(uintptr(u.CObj())))

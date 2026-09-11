@@ -3,39 +3,50 @@
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
-## Inventory original-C baseline — ready for conversion
+## Complete — inventory; next — connected equipment owners
 
-Current batch: 33 inventory removal/insertion, drop/placement/chest and specialized
-pickup functions, 1,421 C lines across GAME3_3.c and GAME4_3.c. See
-[INVENTORY.md](docs/porting/INVENTORY.md) for exact addresses and service boundaries.
-No inventory production C has been removed. Last completed/pushed conversion:
-`0f74e2b3` resources, leaving **130,474 physical C lines / 150 files / zero reference C**.
+The 33-function inventory pickup/drop batch is converted and qualified:
+**1,421 C lines removed; 129,053 physical C lines / 150 files / zero reference C**.
+Original-C baselines: `0763837a`, `d71388bd` (pushed). See
+[INVENTORY.md](docs/porting/INVENTORY.md). 31 ABI entry points remain for retained
+C callers/callback addresses; two private bridges are retired. Native registrations
+and Go callers route directly. No C algorithm remains solely for tests.
 
-The expanded fixture has 2,198 cases in 16 groups, with locked original-C hashes.
-Full captures match byte-for-byte across separate processes. The combined prior
-8,577 shop/trade/resource contracts plus inventory pass in 34.072s. Original
-captures: build/port-inventory/c-reviewed-inventory-*.json and c-repeat-inventory-*.json.
-Fixture snapshots include guarded item buffers, player state, complete packets,
-minimap nodes for all 32 slots, RNG/callback/ownership/creation/deletion effects.
-Borrowed player server handles are asserted intact and identity-normalized.
+All 2,288 inventory cases / 17 groups match full original-C captures byte-for-byte.
+The combined 10,865 inventory/resource/shop/trade contracts pass in 37.646s with
+all prior hashes unchanged. Accumulated default/server/highres tests pass in
+89.586s / 90.305s / 88.066s. Three production builds are ELF32/i386/SSE2. Full-suite
+failures exactly match baseline: 1,553 entries; 15 pass / 3 fail / 32 skip packages.
+Fresh inventory-port gameplay passes unchanged repeat-a goldens in 36.485s,
+overrides disabled, Xvfb and null audio.
 
-Next: push this original-C baseline before conversion; implement all 33 owners in
-Go, retire unnecessary internal bridges, compare unchanged hashes/full captures.
-Then accumulated default/server/highres port tests, three production builds,
-full-suite failure metadata comparison and fresh inventory-port gameplay. Reuse
-build/port-resources scripts, replacing directory and adding Inventory to regex.
-Update C_LOC/docs/commit/push, summarize and continue with the next connected batch.
-No user question is pending. Preserve user archive and existing gameplay evidence.
+Next connected candidate: 31 functions / 924 C lines, weapon/armor equip/dequip,
+modifier callbacks, inventory/strength helpers and both shield-selection helpers
+in the entire MixPatch.c file. Ignored reviewed candidate list/notes:
+build/port-inventory/next-equipment-scope.json and next-equipment-plan.md.
+GAME4_3 roots 53A030/0F0/140/2C0/3D0/420/680/6C0/AAB0/AB90,
+53E2D0/300/3A0/430/520/600/650/7B0/AE0/EC40/EC80;
+GAME3_3 roots 4E4B20, 4E7D30/EC0, 4F2F70/FB0/FF0, 4F3030/3180;
+MixPatch roots sub_980523 and sub_9805EB. Recheck exact scope/callers before locking.
+Reuse inventory fixture, supply actual equipment definitions so strength checks
+can succeed, cover player/NPC switching, modifier callbacks, armor recomputation,
+shield interactions and enabled/disabled gameex_flags community behavior.
 
-Original-C testing exposed a retained map-ray loop for some rays crossing negative
-coordinates. Documented in INVENTORY.md; placement tests use in-map origins,
-while drop-all fallback tests with out-of-map origins also pass. Keep this separate
-from inventory behavior conversion. Important review correction: drop-all's C
-fallback `v1 + 7` uses float2* arithmetic, so it means position at byte 56.
+Continue autonomously: repeat/lock original-C contracts, commit/push baseline,
+convert the connected family, qualify once at its boundary, update C_LOC/docs,
+commit/push, summarize and continue. No question is pending. Do not spawn agents.
+Use build/baseline/env.sh: Go1.26, 386/SSE2, CGO; retain C x87 flags. Preserve user
+archive and existing gameplay evidence. Full-suite raw logs may contain secrets;
+report action/package/test metadata only. Push over SSH to
+ git@github.com:dbenamy/opennox.git dev:dev.
 
-Use build/baseline/env.sh: Go1.26, 386/SSE2, CGO; retain existing C x87 flags.
-Full-suite logs can contain secrets: report only action/package/test metadata.
-No new subagents. Push via SSH git@github.com:dbenamy/opennox.git dev:dev.
+An existing retained map-ray loop on negative-coordinate traversal is documented
+in INVENTORY.md and remains a separate issue. Team comparison is membership
+validation, not numeric-ID equality. Fixture position buffers crossing return
+ABIs use C-owned memory; no cgo checks are disabled. Stable inventory captures:
+build/port-inventory/c-members-inventory-*.json and native-final-inventory-*.json.
+The isolated original-C checkout was removed after its edits were preserved in
+pushed d71388bd. No qualification processes remain running.
 
 <!-- /current-checkpoint -->
 

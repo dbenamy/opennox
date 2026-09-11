@@ -374,7 +374,7 @@ func Nox_xxx_monsterRemoveMonitors_4E7B60(a1 *server.Object, a2 *server.Object) 
 	C.nox_xxx_monsterRemoveMonitors_4E7B60(asObjectC(a1), asObjectC(a2))
 }
 func Sub_4ED0C0(a1 *server.Object, a2 *server.Object) {
-	C.sub_4ED0C0(asObjectC(a1), asObjectC(a2))
+	inventoryRemove(a1, a2)
 }
 func Nox_xxx_playerCancelSpells_4FEAE0(a1 *server.Object) {
 	C.nox_xxx_playerCancelSpells_4FEAE0(asObjectC(a1))
@@ -443,10 +443,10 @@ func Nox_xxx_drop_4ED790(a1 *server.Object, a2 *server.Object, pos types.Pointf)
 	cpos, free := alloc.New(types.Pointf{})
 	defer free()
 	*cpos = pos
-	return int(C.nox_xxx_drop_4ED790(asObjectC(a1), asObjectC(a2), (*C.float2)(unsafe.Pointer(cpos))))
+	return inventoryDrop(a1, a2, cpos)
 }
 func Nox_xxx_dropAllItems_4EDA40(a1 *server.Object) {
-	C.nox_xxx_dropAllItems_4EDA40((*C.uint)(a1.CObj()))
+	inventoryDropAll(a1)
 }
 
 func Get_nox_objectDropAudEvent_4EE2F0() unsafe.Pointer {
@@ -531,7 +531,7 @@ func Nox_xxx_playerTryDequip_4F2FB0(obj, item *server.Object) bool {
 }
 
 func Nox_xxx_inventoryPutImpl_4F3070(obj, item *server.Object, a3 int) {
-	C.nox_xxx_inventoryPutImpl_4F3070(asObjectC(obj), asObjectC(item), C.int(a3))
+	inventoryInsert(obj, item, a3)
 }
 
 func Nox_xxx_orderUnit_533900(owner, obj *server.Object, order uint32) {
