@@ -38,6 +38,7 @@ import (
 var PortTestCallbackServer func(*server.Server) (Server, func())
 
 type PortTestAICallbackSpec struct {
+	Creation                                                               *PortTestCreationSpec
 	MutateOnDamage                                                         bool
 	ForceAfterDamage                                                       uint32
 	Op                                                                     int
@@ -51,6 +52,7 @@ type PortTestAICallbackSpec struct {
 	LootName                                                               string
 }
 type PortTestAICallbackResult struct {
+	Creation                             *PortTestCreationResult `json:",omitempty"`
 	PlayerStatus                         uint32
 	Modifiers                            []uint32
 	Definition                           []uint32
@@ -59,6 +61,7 @@ type PortTestAICallbackResult struct {
 	Intact                               bool
 }
 type portTestAICallbackState struct {
+	creation     *portTestCreationState
 	playerStatus uint32
 	modifiers    server.PortTestAICallbackModifiers
 	configure    func(map[string]bool)
@@ -156,12 +159,18 @@ func portTestAICallbackPrepare(proxy *portTestRoamOwnerServer, u *server.Object,
 		t.Shape.Circle.R = math.Float32frombits(sp.TargetRadius)
 	}
 	proxy.life.ids[uint32(uintptr(C.pt_callback_hit_ptr()))] = 960
+	if sp.Creation != nil {
+		portTestCreationPrepare(proxy, u, sp.Creation)
+	}
 	// Snapshot allowed target/extra writes only after all callback inputs are installed.
 	for i, b := range proxy.combat.extra {
 		proxy.combat.before[i] = bytes.Clone(b)
 	}
 }
 func portTestAICallbackCall(proxy *portTestRoamOwnerServer, u *server.Object, sp *PortTestAICallbackSpec) uint32 {
+	if sp.Creation != nil {
+		return portTestCreationCall(u, sp.Op-33)
+	}
 	t := proxy.combat.target
 	if sp.SelfTarget {
 		t = u
@@ -198,10 +207,14 @@ func portTestAICallbackCall(proxy *portTestRoamOwnerServer, u *server.Object, sp
 }
 func portTestAICallbackTrace(proxy *portTestRoamOwnerServer, rv uint32, normalize func(uint32) uint32) *PortTestAICallbackResult {
 	r := &PortTestAICallbackResult{Return: normalize(rv), Intact: true}
+	if proxy.callbacks.spec.Creation != nil {
+		r.Creation = portTestCreationTrace(proxy, normalize)
+		r.Intact = r.Creation.Intact
+	}
 	status := (*uint32)(unsafe.Add(unsafe.Pointer(proxy.life.players[0].UpdateDataPlayer().Player), 3680))
 	r.PlayerStatus = *status
 	*status = proxy.callbacks.playerStatus
-	d := proxy.combat.actor.UpdateDataMonster().MonsterDef
+	d := (*server.MonsterUpdateData)(proxy.combat.actor.UpdateData).MonsterDef
 	for off := uintptr(0); off < unsafe.Sizeof(*d); off += 4 {
 		r.Definition = append(r.Definition, normalize(*(*uint32)(unsafe.Add(unsafe.Pointer(d), off))))
 	}

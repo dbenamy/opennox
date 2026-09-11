@@ -3,6 +3,16 @@
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
+## In progress — object creation baseline
+
+Callback batch `6f0a291e` is committed and pushed. Locked the original-C
+baseline for GAME5 54C0C0–54CBB0 (11 functions, 340 lines) using new
+object_creation_porttest files and extensions to the shared callback fixture.
+3,372 cases are locked; callback/spell/main regression hashes pass (6.646s).
+No C in this next family has been removed. See docs/porting/OBJECT_CREATION.md.
+Ignored captures/logs are under build/port-object-creation. Convert the full family next.
+Current C remains 135,294 lines. No user question is pending.
+
 ## Resume here — 2026-09-11
 
 Continue the x86 C-to-Go port on `dev`, one connected, reviewed, tested,

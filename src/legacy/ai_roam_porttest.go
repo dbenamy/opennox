@@ -137,6 +137,12 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 			break
 		}
 	}
+	for _, sp := range specs {
+		if sp.Callbacks != nil && sp.Callbacks.Creation != nil {
+			defer portTestCreationEnvironment(proxy)()
+			break
+		}
+	}
 	GetServer = func() Server { return proxy }
 	noxflags.UnsetEngine(noxflags.EngineShowAI)
 	defer func() { GetServer = oldGet; noxflags.ResetEngine(); noxflags.SetEngine(oldFlags) }()

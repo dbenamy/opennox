@@ -309,7 +309,8 @@ func portTestCombatCall(u *server.Object, sp *PortTestCombatSpec) {
 	}
 }
 func portTestCombatTrace(proxy *portTestRoamOwnerServer, normalize func(uint32) uint32) *PortTestCombatResult {
-	ud := proxy.combat.actor.UpdateDataMonster()
+	// The shared fixture always allocates this layout, including non-monster creation cases.
+	ud := (*server.MonsterUpdateData)(proxy.combat.actor.UpdateData)
 	r := &PortTestCombatResult{Intact: true, Strikes: int(C.pt_combat_count()), Selected: normalize(uint32(C.dword_5d4594_2487948)), Nearest: *memmap.PtrUint32(0x5D4594, 2487952), Cooldown: ud.Field128, Status: uint32(ud.StatusFlags), Stamina: ud.Field282_0}
 	r.Actions = append([]server.AIStackItem(nil), ud.AIStack[:ud.AIStackInd+1]...)
 	for i := range r.Actions {
