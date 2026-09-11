@@ -40,7 +40,7 @@ type PortTestRoamResult struct {
 	Intact             bool
 }
 
-// PortTestRoam runs a shared guarded fixture against the original C family.
+// PortTestRoam runs a shared guarded fixture through the live C entries and Go owners.
 // Pointer-bearing output is normalized to stable waypoint IDs before hashing.
 func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 	core := new(server.Server)
@@ -139,15 +139,15 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		ret := 0
 		switch sp.Op {
 		case 0:
-			C.sub_545790(op)
+			server.GetAIAction(ai.ACTION_ROAM).Start(obj)
 		case 1:
-			C.sub_5457C0(op)
+			server.GetAIAction(ai.ACTION_ROAM).Cancel(obj)
 		case 2:
 			C.sub_545B00(up, C.int(raw(sp.Insert)))
 		case 3:
 			ret = int(normalize(uint32(C.sub_545B60(up, C.uchar(sp.Mask)))))
 		case 4:
-			ret = int(normalize(uint32(C.sub_545C60(up, wp, C.uchar(sp.Mask)))))
+			ret = int(normalize(roamWaypointWord(roamSuccessor(ud, (*server.Waypoint)(unsafe.Pointer(&root[0])), sp.Mask))))
 		case 5:
 			ret = int(C.nox_xxx_monsterRoamDeadEnd_545BB0(op, wp))
 		default:

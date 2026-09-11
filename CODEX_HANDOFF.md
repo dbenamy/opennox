@@ -32,16 +32,22 @@ fixture initialization defect was repaired separately in d931b7ca and passes
 GOGC=10. Paired update microbenchmarks favor native Go under SSE2; ccache showed
 no reuse, so direct GCC/G++ remain configured. See docs/porting/AI_MOVEMENT.md.
 
-Next: roaming history, successor selection and start/cancel/dead-end handling
-(545790/5457C0/545B00/545B60/545BB0/545C60). Keep the larger roam-update owner in
-C for this bounded batch. Preserve start's single-slot clear, history ordering,
-duplicate candidate weighting, RNG consumption and zero-neighbor short circuit.
-Audit notes: build/port-roam-history/audit.md (ignored; source remains in GAME5.c).
-Next work is a shared original-C fixture with normalized waypoint pointer IDs.
-No tests/builds are running and no user question is pending.
+Completed batch: roaming history, successor selection and start/cancel/dead-end
+handling (545790/5457C0/545B00/545B60/545BB0/545C60). Original-C baseline 9c70753d
+passes 98,304 cases against an independent model and complete normalized state
+hashes. The native port passes those same checks and removes six C bodies;
+production C is now 140,082 (minus 178). Three exports remain for the larger C
+roam-update owner. Accumulated tests and all ELF32/SSE2 builds pass in all three
+variants. Fresh roam-history-port gameplay exits 0 against both preserved
+screenshots, overrides off. See docs/porting/AI_ROAM_HISTORY.md. The prior six-action
+batch was committed and pushed as 2bf36c01. No user question is pending.
+Next assess the full roaming update 5457E0, reusing this fixture and accounting
+for acquisition, attack interrupts, detailed-path results and movement/audio.
+All validation has completed. Owner audit is recorded in that document and in
+build/port-roam-history/owner-audit.md (ignored).
 
 Use build/baseline/env.sh and accumulated regex
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions)`
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam)`
 with porttest, server porttest, highres porttest from src. Continue one reviewed,
 tested, documented, committed and pushed chunk at a time until a substantive
 question or rate limit. Bounded agent drafts require primary review.

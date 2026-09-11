@@ -44,7 +44,6 @@ func init() {
 		ai.ACTION_MOVE_TO:           {Update: C.nox_xxx_mobActionMoveTo_5443F0},
 		ai.ACTION_FAR_MOVE_TO:       {Update: C.nox_xxx_mobActionMoveToFar_5445C0},
 		ai.ACTION_DODGE:             {Update: C.nox_xxx_mobActionDodge_544640},
-		ai.ACTION_ROAM:              {Start: C.sub_545790, Update: C.nox_xxx_mobActionRoam_5457E0, Cancel: C.sub_5457C0},
 		ai.ACTION_PICKUP_OBJECT:     {Update: C.nox_xxx_mobActionPickupObject_544B90},
 		ai.ACTION_RETREAT_TO_MASTER: {Start: C.sub_5456B0, Update: C.sub_5456D0, End: C.sub_5456C0},
 		ai.ACTION_FIGHT:             {Start: C.nox_xxx_mobActionFightStart_531E20, Update: C.nox_xxx_mobActionFight_531EC0, End: C.sub_531E90},
