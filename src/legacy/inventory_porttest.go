@@ -78,9 +78,10 @@ import (
 )
 
 type PortTestInventorySpec struct {
-	NilDrop    bool
-	Teams      [4]byte // Three players, then the first item.
-	CrownTimes [3]uint32
+	NilDrop     bool
+	TeamMembers bool
+	Teams       [4]byte // Three players, then the first item.
+	CrownTimes  [3]uint32
 
 	ServerFlags, Gameplay, Treasure, TreasureMax uint32
 	DropTable                                    [][3]uint32
@@ -107,7 +108,7 @@ type portTestInventory struct {
 	frees        []func()
 
 	calls  []uint32
-	pos    types.Pointf
+	pos    *types.Pointf
 	result uint64
 }
 
@@ -153,7 +154,9 @@ func (p *portTestShopPools) inventoryPrepare() func() {
 	if p.resources == nil {
 		panic("inventory fixture requires resources")
 	}
-	p.inventory = &portTestInventory{pos: sp.Target}
+	pos, freePos := alloc.New(types.Pointf{})
+	*pos = sp.Target
+	p.inventory = &portTestInventory{pos: pos, frees: []func(){freePos}}
 	// Borrowed player slabs need the same server association as pool objects
 	// when retained ownership code evaluates hostility and minimap visibility.
 	var units []*server.Object
@@ -164,9 +167,23 @@ func (p *portTestShopPools) inventoryPrepare() func() {
 	p.inventory.playerHandle = *(*uint32)(unsafe.Add(units[0].CObj(), 772))
 	for i, u := range units {
 		u.TeamVal.ID = server.TeamID(sp.Teams[i])
+
+		if sp.TeamMembers {
+			p.identify(unsafe.Pointer(&u.TeamVal), 620000+uint32(i))
+		}
 		*(*uint32)(unsafe.Add(u.UpdateData, 264)) = sp.CrownTimes[i]
 	}
 	restoreServer := p.proxy.core.PortTestInventoryEnvironment(sp.Blocked, sp.WeaponBits, sp.ArmorBits)
+	if sp.TeamMembers {
+		for _, u := range units {
+			if team := p.proxy.core.Teams.ByID(u.TeamVal.ID); team != nil {
+				head := (*uint32)(unsafe.Add(unsafe.Pointer(team), 44))
+				u.TeamVal.Field0 = *head
+				*head = uint32(uintptr(unsafe.Pointer(&u.TeamVal)))
+			}
+		}
+	}
+
 	walls, unchanged, freeWalls := p.proxy.core.PortTestPathWalls()
 	walls(sp.WallMode)
 	oldDecay := C.dword_5d4594_2386576
@@ -417,7 +434,7 @@ func (p *portTestShopPools) inventoryAction(a PortTestShopAction) uint32 {
 	if !sp.NilItem && a.Item >= 0 {
 		it = p.items[a.Item].u
 	}
-	pos := (*C.float2)(unsafe.Pointer(&p.inventory.pos))
+	pos := (*C.float2)(unsafe.Pointer(p.inventory.pos))
 	if sp.NilPos {
 		pos = nil
 	}

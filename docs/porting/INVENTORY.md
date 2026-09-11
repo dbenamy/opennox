@@ -70,3 +70,18 @@ these rays valid. Track the negative-coordinate traversal issue separately;
 do not silently change the ray service as part of this behavior-preserving port.
 Pure shape-radius cases still cover signed zero, subnormal values, infinities,
 and quiet/signaling NaNs. The 2,198 cases in 16 groups match byte-for-byte across two separate original-C runs. Hashes are locked in inventory_porttest_test.go.
+
+### Additional original-C checkpoint
+
+The native comparison caught a team-membership mistake: 419180 validates list
+membership as well as the numeric ID. Inventory continues to call that retained
+service. Added 90 cases with actual team membership, complementing the existing
+90 cases with matching IDs but no membership. These additions were captured in
+an isolated checkout of original-C commit 0763837a before locking the new hash.
+All 2,288 cases / 17 groups match complete original-C captures byte-for-byte.
+The isolated original-C run takes 4.863s; native comparison takes 4.346s.
+
+The fixture position is now allocated in C memory. Returning a Go-owned interior
+position pointer through an exported C ABI was rejected by cgo; changing storage
+preserves all previously locked outputs. No cgo checks are disabled. Native
+callback registration and direct Go callers remove avoidable crossings.

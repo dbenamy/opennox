@@ -10,6 +10,7 @@ import (
 
 // Locked from repeated original-C captures before conversion.
 var inventoryHashes = map[string]string{
+	"inventory-team-members":         "041bc138a731c8780f34a350212d874c25abadad419dd08c5f20697e0138117a",
 	"inventory-links":                "1edf30144b9c04c839998e201dead78cd0ce74154be62b36e031e5156d9256e1",
 	"inventory-drop-eligibility":     "307f6239ef734594d372da5bc4af1914310ba4b97f441dfb4d804feafeaaf66a",
 	"inventory-pickup-boundaries":    "d53014d23cc948e63362559a6523c3cf7b24a6e107c43c53e82c3d1ae4a13f4e",
@@ -465,4 +466,31 @@ func TestInventoryTeamObjectives(t *testing.T) {
 		}
 	}
 	callbackHash(t, "inventory-team-objectives", legacy.PortTestRoam(specs), inventoryHashes["inventory-team-objectives"])
+}
+
+func TestInventoryTeamMembers(t *testing.T) {
+	var specs []legacy.PortTestRoamSpec
+	for _, teams := range [][4]byte{{}, {1, 1, 2, 1}, {1, 2, 1, 1}, {2, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 2, 3}} {
+		for _, op := range []int{legacy.PortTestInventory4F3400, legacy.PortTestInventory4ED5E0, legacy.PortTestInventory4F3580} {
+			for _, treasure := range []uint32{0, 1, 2, 3, 0xffffffff} {
+				s := inventoryBase()
+				p := s.Callbacks.Shop
+				p.Inventory.Teams = teams
+				p.Inventory.TeamMembers = true
+				p.Inventory.CrownTimes = [3]uint32{30, 20, 10}
+				p.Inventory.Gameplay = 4
+				p.Inventory.Treasure = treasure
+				p.Inventory.TreasureMax = 3
+				s.Lifecycle.GameFlags = 16 | 64
+				p.Inventory.PickupInsert = true
+				if op == legacy.PortTestInventory4ED5E0 {
+					p.Inventory.Linked = []int{0}
+					p.Inventory.Owned = []int{0}
+				}
+				p.Sequence = []legacy.PortTestShopAction{{Op: op, Value: 1}}
+				specs = append(specs, s)
+			}
+		}
+	}
+	callbackHash(t, "inventory-team-members", legacy.PortTestRoam(specs), inventoryHashes["inventory-team-members"])
 }
