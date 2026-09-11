@@ -25,3 +25,15 @@ Production C baseline: **140,578 physical lines**, 153 files, zero reference C.
 Artifacts: build/port-subtile-lookup. Original-C qualification passed; port and
 accumulated validation remain. Predicate's only C caller is lookup, so retire
 its C bridge after porting both; keep lookup's ABI for grid owner 411160.
+
+## Native implementation
+
+Original-C baseline: `8cfa832a`. Both routines now execute Go over the existing
+C-owned nodes and point storage. The 411350 ABI remains for the grid owner;
+4113A0 is private because its last C caller moved. Production C:
+**140,455 physical lines (−123)**, 153 files, zero reference C. All focused checks
+pass against Go. Accumulated default/server/highres suites and all three
+production builds pass (ELF32 Intel 80386). Fresh subtile-lookup-port gameplay
+passes both preserved screenshots with overrides off. The immediately preceding
+normalization chunk verified the exact known 1,553 full-suite failure entries;
+this chunk did not repeat that full comparison.

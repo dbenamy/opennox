@@ -46,7 +46,7 @@ func portTestSubtileTable() []byte {
 	return unsafe.Slice(memmap.PtrUint8(0x85B3FC, portTestSubtileBase), portTestSubtileRows*portTestSubtileRowSize)
 }
 
-// PortTestSubtileLookup exercises original C 4113A0 and 411350. Nodes and the
+// PortTestSubtileLookup exercises the native point helper and live 411350 ABI. Nodes and the
 // two-word point are C allocations, so C link pointers never point into Go.
 func PortTestSubtileLookup(specs []PortTestSubtileLookupSpec) (out PortTestSubtileLookupSnapshot) {
 	table := portTestSubtileTable()
@@ -113,7 +113,7 @@ func PortTestSubtileLookup(specs []PortTestSubtileLookupSpec) (out PortTestSubti
 		beforeNodes := append([]C.int(nil), nw...)
 		var ret C.int
 		if s.Mode == 0 {
-			ret = C.sub_4113A0(&pw[1], C.int(s.Category))
+			ret = C.int(bool2int(subtileContains((*[2]int32)(unsafe.Pointer(&pw[1])), s.Category)))
 		} else if s.Mode == 1 {
 			if s.NilPoint && !s.NilList {
 				panic("nonnull C list with nil point faults")

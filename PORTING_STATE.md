@@ -5,32 +5,33 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-11
 
-Edge normalization 411490 is complete. Original-C baseline b549e8fc and Go pass
-1,299,167 normalization calls plus 1,145,856 edge-mapping calls. The C ABI entry
-remains for C owners; Go merge calls the native helper directly. See
-[edge normalization](docs/porting/EDGE_NORMALIZATION.md).
-Production C: **140,578 physical lines (−35)**, 153 files, zero reference C.
+Subtile predicate 4113A0 and list lookup 411350 are complete. Original-C baseline
+8cfa832a and Go pass 39,200 predicate checks and 2,180 list lookups. Point helper
+is private; lookup keeps its ABI for grid owner 411160. See
+[subtile lookup](docs/porting/SUBTILE_LOOKUP.md).
+Production C: **140,455 physical lines (−123)**, 153 files, zero reference C.
 
 Accumulated default/server/highres tests and all three production builds pass.
-Fresh edge-normalization-port gameplay passes both preserved screenshots,
-overrides off. Full suite matches the exact known 1,553 failure-entry multiset:
-15 passing/3 known failing/32 skipped-no-test packages. No processes running.
-Artifacts: build/port-edge-normalization.
+Fresh subtile-lookup-port gameplay passes both preserved screenshots, overrides
+off. No validation processes running. Artifacts: build/port-subtile-lookup.
+Last full suite: preceding normalization commit 3253ef53 matched the exact known
+1,553 failure entries, 15 passing/3 known failing/32 skipped-no-test packages.
 
-Next: 411350 subtile list lookup plus 4113A0 point predicate. Use the corrected
-ignored fixtures under build/port-subtile-lookup/reviewed, not the agent draft.
-Primary repaired poisoned tail link, point guards, restored blob guards and
-address conversion; expanded list last-match and predicate boundary coverage.
-Still review/install/run original C, commit baseline, then port. Lookup keeps
-its ABI for grid owner 411160; predicate can become private once lookup moves.
-No question pending; all three fixes approved. Keep 57ADF0 cleanup with GUI
-owner and separate server.PointOnTheLine behavior. Preserve the asset archive.
+Next: shared float-to-int helpers 419A70/419A90/419AB0 before grid owner 411160.
+Primary prepared ignored fixture/tests under build/port-float-int; review/install
+and run original C before porting. Audit/disassembly shows forced truncation
+with saved/restored x87 CW. Tests cover raw IEEE patterns, integer boundaries,
+short promotion/wrapping, invalid conversion results and PC/RC preservation.
+Keep generated C ABI exports for remaining C callers, remove original bodies.
+Grid lookup's scaled and unscaled intermediates spill to float32; preserve those
+when subsequently porting it. No question pending; all three fixes approved.
+Keep 57ADF0 cleanup with GUI owner and separate server.PointOnTheLine behavior.
 
 Use build/baseline/env.sh and accumulated regex
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization)`
-with porttest, server porttest, highres porttest from src. Continue one reviewed,
-tested, documented, committed and pushed chunk at a time until a substantive
-question or rate limit. Bounded Terra drafts require primary review.
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile)`
+with porttest, server porttest, highres porttest from src. Preserve asset archive.
+Continue one reviewed/tested/documented/committed/pushed chunk at a time until a
+substantive question or rate limit. Bounded Terra drafts require primary review.
 <!-- /current-checkpoint -->
 
 ## GitHub backup and recovery
