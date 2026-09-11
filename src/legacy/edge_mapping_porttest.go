@@ -60,7 +60,7 @@ func portTestEdgeMap() []uint32 {
 	return unsafe.Slice(memmap.PtrUint32(0x587000, portTestEdgeMapBase), portTestEdgeMapWords)
 }
 
-// PortTestEdgeMapping batches direct 543EB0 and dependent 543E60 C calls.
+// PortTestEdgeMapping batches direct 543EB0 and dependent 543E60 live C ABI calls.
 func PortTestEdgeMapping(seed int, direct []PortTestEdgeDirectSpec, mapped []PortTestEdgeMapSpec) (out PortTestEdgeSnapshot) {
 	oldGet := GetServer
 	core := new(server.Server)

@@ -49,6 +49,7 @@ target build selection and linker evidence.
 | Tile selection state (2026-09-11) | 153 | 140,785 | −60 | 0 |
 | Tile-fill worklist (2026-09-11) | 153 | 140,730 | −55 | 0 |
 | Border selection / approved variation fix (2026-09-11) | 153 | 140,672 | −58 | 0 |
+| Border edge mapping (2026-09-11) | 153 | 140,613 | −59 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

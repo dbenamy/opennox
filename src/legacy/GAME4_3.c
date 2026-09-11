@@ -9329,65 +9329,6 @@ int nox_xxx_tile_543C50(uint32_t* a1, int a2, int a3, int a4, int a5, int a6) {
 	}
 }
 
-//----- (00543E60) --------------------------------------------------------
-int sub_543E60(int a1, int a2) {
-	int v2; // ecx
-	int v4; // eax
-
-	v2 = a2 + 12 * sub_411490(*(uint32_t*)(a1 + 8), *(uint32_t*)(a1 + 12));
-	if (*getMemU32Ptr(0x587000, 282736 + 4 * v2) == 255) {
-		return 0;
-	}
-	v4 = nox_xxx_mapGenEdge_543EB0(*(uint32_t*)(a1 + 8), *getMemU32Ptr(0x587000, 282736 + 4 * v2));
-	if (v4 != *(uint32_t*)(a1 + 12)) {
-		*(uint32_t*)(a1 + 12) = v4;
-	}
-	return 1;
-}
-
-//----- (00543EB0) --------------------------------------------------------
-int nox_xxx_mapGenEdge_543EB0(int a1, int a2) {
-	int v2;     // esi
-	int v3;     // edi
-	int result; // eax
-
-	v2 = getMemByte(0x85B3FC, 28696 + 60 * a1);
-	v3 = getMemByte(0x85B3FC, 28697 + 60 * a1);
-	if (v2 == 3 && v3 == getMemByte(0x85B3FC, 28696 + 60 * a1)) {
-		return a2;
-	}
-	result = a2;
-	if (a2) {
-		switch (a2) {
-		case 1:
-			result = nox_common_randomInt_415FA0(1, v2 - 2);
-			break;
-		case 2:
-			result = v2 - 1;
-			break;
-		case 3:
-			result = v2 + 2 * nox_common_randomInt_415FA0(0, v3 - 3);
-			break;
-		case 4:
-			result = v2 + 2 * nox_common_randomInt_415FA0(0, v3 - 3) + 1;
-			break;
-		case 5:
-			result = v2 + 2 * v3 - 4;
-			break;
-		case 6:
-			result = nox_common_randomInt_415FA0(1, v2 - 2) + v2 + 2 * v3 - 4;
-			break;
-		case 7:
-			result = 2 * (v2 + v3) - 5;
-			break;
-		default:
-			result = a2 + 2 * (v2 + v3) - 12;
-			break;
-		}
-	}
-	return result;
-}
-
 //----- (00544310) --------------------------------------------------------
 int nox_xxx_tileSubtile_544310(float2* a1) {
 	double v1;  // st7

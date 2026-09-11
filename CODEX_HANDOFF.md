@@ -3,30 +3,30 @@
 <!-- current-focus -->
 ## Resume here — 2026-09-11
 
-Border-selection quartet 543FB0/544020/544070/5440A0 is complete, including the
-user-approved selected-row variation fix. Original-C bug baseline dd4a9f69;
-repaired/expanded C baseline e226f189. Native Go passes 33,280 lookup/name checks,
-25,600 variation boundaries, 63 primary boundaries and focused regressions.
-The lookup C bridge is retired; three ABI entries remain for C callers.
-See [border selection](docs/porting/BORDER_SELECTION.md).
-Production C: **140,672 physical lines (−58)**, 153 files, zero reference C.
+Border edge mapping 543E60/543EB0 is complete. Original-C baseline606f5aa7 and
+Go pass 1,145,856 operations: all dimension bytes, branches, signed extremes,
+all physical rows/mapping classes/columns, exact RNG positions and memory guards.
+Both C ABI entries remain for the tile-list owner. See
+[edge mapping](docs/porting/EDGE_MAPPING.md).
+Production C: **140,613 physical lines (−59)**, 153 files, zero reference C.
 
-All accumulated default/server/highres test variants and production builds pass.
-Fresh border-selection-port gameplay passes both preserved screenshot checks,
-overrides off. Full suite matches the exact known 1,553 failure-entry multiset,
-15 passing/3 known failing/32 skipped-no-test packages. No processes remain running.
-Artifacts: build/port-border-selection.
+Accumulated default/server/highres tests and all three production builds pass.
+Fresh edge-mapping-port gameplay passes both preserved screenshots, overrides
+off. No processes remain running. Artifacts: build/port-edge-mapping.
+Last full suite: preceding border chunk199e59ee matched the exact known1,553
+failure-entry multiset,15 passing/3 known failing/32 skipped-no-test packages.
 
-Next: edge mapping pair 543E60/543EB0, owned by C tile-list routine543C50.
-Agent drafting ignored fixtures under build/port-edge-mapping; review before
-integration. Preserve exact RNG consumption, including width/height==2 zero-draw
-IntClamp cases and exact3x3 shortcut. Keep normalization sub_411490 in C for this
-chunk. No user question pending; writer, alias and border fixes are approved.
-Keep 57ADF0 cleanup with its GUI owner and separate server.PointOnTheLine behavior.
+Next: inverse edge normalization411490. Ignored prepared fixture extension,
+threshold tests and notes under build/port-edge-normalization; review/install,
+run original C, commit baseline, then port. Preserve signed branch ordering,
+3×3 identity, default wrapping, low-byte parity and zero RNG use. Later candidate:
+411350 list lookup plus4113A0 point predicate; agent drafting ignored fixtures
+under build/port-subtile-lookup. No user question pending; all three fixes approved.
+Keep57ADF0 cleanup with GUI owner and separate server.PointOnTheLine behavior.
 
 Use build/baseline/env.sh and accumulated regex
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection)`
-with porttest, server porttest, highres porttest tags from src. Preserve assets.
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping)`
+with porttest, server porttest, highres porttest from src. Preserve asset archive.
 Continue one reviewed/tested/documented/committed/pushed chunk at a time until
 substantive question or rate limit. Bounded Terra drafts require primary review.
 <!-- /current-focus -->
