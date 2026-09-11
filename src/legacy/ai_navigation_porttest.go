@@ -19,6 +19,8 @@ import (
 )
 
 type PortTestNavigationSpec struct {
+	BaseSpeed                                               uint32
+	SplitSpeed                                              bool
 	Op, Phase                                               int
 	Speed, Multiplier, TX, TY, Follow, Resume, FleeRange    uint32
 	Cur, Max                                                uint16
@@ -36,6 +38,10 @@ func portTestNavigationPrepare(proxy *portTestRoamOwnerServer, u, target *server
 	u.HealthData = health
 	health.Cur, health.Max = sp.Cur, sp.Max
 	u.SpeedCur = math.Float32frombits(sp.Speed)
+	u.SpeedBase = math.Float32frombits(sp.Speed)
+	if sp.SplitSpeed {
+		u.SpeedBase = math.Float32frombits(sp.BaseSpeed)
+	}
 	u.Frame134 = 0
 	u.ObjOwner = target
 	if sp.NoOwner {

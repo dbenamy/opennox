@@ -100,6 +100,11 @@ func navigationCorpus() []legacy.PortTestRoamSpec {
 		}
 		out = append(out, sp)
 	}
+	for _, base := range []uint32{0, bits(.01), bits(.01) + 1, bits(1), 0x7fc12345} {
+		for _, speed := range []uint32{0, bits(.01), bits(1), bits(3), 0x7fc12345} {
+			out = append(out, legacy.PortTestRoamSpec{Op: 8, Seed: 1, Stack: 1, Owner: &legacy.PortTestRoamOwnerSpec{FPS: 30}, Navigation: &legacy.PortTestNavigationSpec{Op: 2, SplitSpeed: true, BaseSpeed: base, Speed: speed, Multiplier: bits(1.3), TX: bits(12), TY: bits(9)}})
+		}
+	}
 	return out
 }
 
@@ -155,10 +160,34 @@ func TestAINavigationBaseline(t *testing.T) {
 			t.Fatalf("case %d policy=%d want=%d", i, r.Return, want)
 		}
 	}
+	// These cases specifically distinguish PC53 comparison and the inner-radius spill.
+	precision := len(got) - 25 - 4096
+	if got[precision].Stack != 0 {
+		t.Fatal("dodge must pop below unrounded distance 8")
+	}
+	status := uint32(0x4000)
+	for j := 0; j < len(got[precision+2].Changes); j += 2 {
+		if got[precision+2].Changes[j] == 4096+1440 {
+			status = got[precision+2].Changes[j+1]
+		}
+	}
+	if status&0x4000 == 0 {
+		t.Fatal("inner radius equality must preserve running")
+	}
+	for i := len(got) - 25; i < len(got); i++ {
+		g := specs[i].Navigation
+		want := int8(0)
+		if float64(math.Float32frombits(g.BaseSpeed)) >= .0099999998 {
+			want = 1
+		}
+		if got[i].Stack != want {
+			t.Fatalf("base/current speed discriminator %d", i)
+		}
+	}
 	data, _ := json.Marshal(got)
 	hash := fmt.Sprintf("%x", sha256.Sum256(data))
 	t.Logf("cases=%d complete-state-sha256=%s", len(got), hash)
-	const baseline = "7996e036ac64ebdf8c2786f48052d3f3dadfd0f5fab36c2e6113907a17134f3d"
+	const baseline = "da04bc226da4f9ac86c754c3a62d1c2b219f3f91f1f43d98cb0e7d7681bfe7e2"
 	if baseline != "" && hash != baseline {
 		t.Fatal("original C state differs", hash)
 	}
