@@ -46,11 +46,12 @@ pass in 145.833s / 122.632s / 124.291s. Three production binaries verified
 ELF32/i386/SSE2/CGO. Full-suite failure multiset unchanged (1,553 entries; 15
 packages pass, 3 fail, 32 skip). Fresh unchanged repeat-a headless gameplay
 passes in 57.464s. Evidence: build/port-objectives and baseline/runs/objectives-port.
-Commit/push this completed conversion, summarize and CONTINUE; no pending question.
+Completed and pushed as `ca0f193c`; summary delivered. Continue; no pending question.
 
-### Next — player attacks, hit callbacks, shooting and reload
+### Active — player-attack original-C baseline preparation
 
-Candidate: 12 connected functions / 1,105 C lines. Scope, plan and fixture audit:
+Candidate: 12 connected functions / 1,105 C lines; still C, no baseline hashes
+locked yet. See [PLAYER_ATTACK.md](docs/porting/PLAYER_ATTACK.md). Scope/fixture audit:
 build/port-player-attack/{scope.json,plan.md,fixture-design.md}. Reuse existing
 player/equipment/animation/spatial fixtures, add guarded attack records and
 arrow/bolt/chakram definitions with 8-byte collision payloads. Lock and push

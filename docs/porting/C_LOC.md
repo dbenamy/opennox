@@ -79,9 +79,9 @@ target build selection and linker evidence.
 | Modifier effects, recharge and wand use (2026-09-11) | 149 | 127,104 | −977 | 0 |
 | Temporary objects, projectile updates and Spark creation (2026-09-11) | 149 | 126,124 | −980 | 0 |
 | World mechanisms, elevators/teleports and directional force (2026-09-11) | 149 | 125,303 | −821 | 0 |
+| Objective objects, scoring and obelisk recharge | 149 | 124,395 | −908 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
 because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful
 differential validation; they remain recoverable from Git at `66fa7bd4`.
-| Objective objects, scoring and obelisk recharge | 149 | 124,395 | −908 | 0 |
