@@ -1,7 +1,7 @@
-# Candidate next batch: object state, geometry and ownership
+# Object state, geometry and ownership
 
-43 candidate address blocks / 1,136 physical C lines in GAME3_3.c. Audit adjacent
-forward declarations before locking the final function-only count. Include sync
+44 functions in 43 address blocks / 1,134 C lines to remove in GAME3_3.c. Two adjacent forward declarations remain in C; the unmarked
+`nox_objectCollideDefault` no-op is included. Include sync
 bit updates, animation/elevation/buffs/item attributes, spawned-object cleanup,
 unit classification, distance/direction/front tests, coordinate updates,
 on/off/freeze/pet state, ownership notifications and nearby-door collisions.
@@ -21,8 +21,8 @@ commit/push first. Preserve every prior capture hash. Convert the connected
 batch, qualify once across variants/builds/full-suite/headless gameplay, update
 physical tracked C_LOC and recovery docs, commit/push, summarize and continue.
 
-No production object-state conversion has started. Current damage qualification
-is independent and must finish before changing source for this next fixture.
+The original-C baseline is complete. Damage conversion was pushed as
+`54fdeca8`. Production object-state conversion follows the baseline commit.
 
 ## Candidate address blocks
 
@@ -69,3 +69,41 @@ is independent and must finish before changing source for this next fixture.
 - 004E83B0: `unsigned char* nox_xxx_collideMonsterEventProc_4E83B0(int a1, int a2)` (5 lines).
 - 004E83D0: `unsigned char* nox_xxx_collideMimic_4E83D0(int a1, int a2)` (25 lines).
 - 004E8460: `void nox_xxx_collidePlayer_4E8460(int a1, int a2)` (105 lines).
+
+## Original-C baseline
+
+All 44 functions remain original C. **2,757 cases / 53 complete capture groups**
+repeat byte-for-byte in separate processes and are locked in
+`src/object_state_porttest_test.go`. Local captures: `build/port-object-state/`
+with `c-final-*`, `c-confirm-*` and `baseline-hashes.json`.
+
+Coverage includes every synchronization bit and all 32 output words; class and
+default-state branches; elevation/animation/buff/modifier updates; all checksum
+inputs, signed shorts and health presence; shape distances and direction edges;
+teleport admission; inventory/owner chains, cleanup, pet monitoring and special
+owned items; freeze/unfreeze; shipped barrel/crate loot tables across 200 seeded
+cases; door state and monster/player collision events. Explicit assertions check
+sync/on flags and animation. Captures include successful loot creation and
+berserker impacts that reduce actor health from 50 to 38.
+
+Fixture findings:
+
+- Freeze returns a signed char containing the low byte of the actual action-stack
+  pointer. The fixture verifies that byte against the post-call stack address
+  before replacing it with stable identity 89400. Four otherwise-identical cases
+  exposed this address dependence during the first repeat. No production return
+  behavior is changed.
+- Player collision targets receive guarded health records and the existing
+  damage recorder. Ability-disable requests are recorded and forwarded to the
+  real fixture server's ability-state owner; the application-global network
+  transport is outside this caller's scope.
+- Loot tables and strings come from the shipped blob, with the same 26 pointer
+  relocations as runtime initialization. Actor-name setup preserves the
+  case-sensitive Barrel prefix.
+- Two forward declarations stay in C. The unmarked `nox_objectCollideDefault`
+  no-op is included, making 44 functions and 1,134 C lines to remove.
+
+Production C remains **120,952 lines / 149 files / zero reference C**. Commit and
+push this original-C baseline before converting the batch.
+
+Locked combined regression: **34,380 cases / 315 groups**, passed in 105.687s.

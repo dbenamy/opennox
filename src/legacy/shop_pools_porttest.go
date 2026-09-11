@@ -507,7 +507,9 @@ func (p *portTestShopPools) run() {
 			}
 			C.sub_510E20(C.int(a.Item))
 		default:
-			if a.Op >= 1100 {
+			if a.Op >= 1200 {
+				rv = p.objectStateAction(a)
+			} else if a.Op >= 1100 {
 				rv = p.damageAction(a)
 			} else if a.Op >= 1000 {
 				rv = p.projectileCollisionAction(a)

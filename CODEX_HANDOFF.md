@@ -96,11 +96,14 @@ pass in 172.196s / 150.338s / 152.211s. Three production binaries verified ELF32
 Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip).
 Fresh unchanged repeat-a headless gameplay passes in 52.560s. Evidence:
 build/port-damage-dispatch and baseline/runs/damage-dispatch-port.
+Completed and pushed as `54fdeca8`; summary delivered.
 
 ### Active — object-state original-C baseline preparation
 
-Candidate: 43 address blocks / 1,136 physical C lines before adjacent-declaration
-audit. Still original C; no baseline or conversion started. See
+Candidate: 44 functions / 1,134 C lines (two forward declarations retained).
+Still original C. The 2,757-case / 53-group baseline repeats exactly and hashes
+are locked. Accumulated regression is running; commit/push baseline before
+conversion. No production object-state conversion started. See
 [OBJECT_STATE.md](docs/porting/OBJECT_STATE.md). Local scope/source audit:
 build/port-object-state. Reuse guarded world/owner/attack slabs and existing
 native Object methods where appropriate. Repeat/lock/commit/push original-C
