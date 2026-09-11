@@ -5,10 +5,9 @@
 
 Player-ping minimum/average 554290/554300 is complete; its two unused C bridges
 are retired. Production C is 141,126 physical lines (−54 in this chunk).
-Next scope is network alias reset/select/write 57B920/57B9A0/57BA10. A confirmed
-caller exhaustion bug needs the user's decision: fix the out-of-bounds write and
-invalid alias announcement during the port, or defer. An asynchronous question
-is pending. See docs/porting/NETWORK_ALIASES.md; no alias production changes yet.
+Next scope is network alias reset/select/write 57B920/57B9A0/57BA10. The user approved fixing the confirmed caller exhaustion bug on 2026-09-11:
+skip out-of-bounds write and invalid alias announcement when the table is full.
+See docs/porting/NETWORK_ALIASES.md; no alias production changes yet.
 Keep 57ADF0 list cleanup with its future GUI-owner port.
 Use PORTING_STATE.md's top resume section for current verification and next steps.
 Continue autonomously one reviewed/tested/documented/committed/pushed chunk at a

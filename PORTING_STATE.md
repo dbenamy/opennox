@@ -20,9 +20,9 @@ build/port-ping-aggregate. Full suite last repeated at the command-rule mileston
 1,553 failure entries as the writer milestone. No tests/builds remain running.
 
 Next: network alias reset/select/write 57B920/57B9A0/57BA10. No production alias
-changes or baseline fixtures yet. A substantive user decision is pending via
-asynchronous question: fix confirmed exhaustion bug during port (recommended),
-or defer? Both C callers assign the signed-char selector to unsigned char v24
+changes yet. Original-C helper baseline passes 28,656 operations; actual-caller
+regression fixture is being drafted under build/port-network-alias. User approved fixing exhaustion during this
+port on 2026-09-11; no decision remains pending. Both C callers assign the signed-char selector to unsigned char v24
 then compare v24 != -1, so full-table sentinel 255 causes an eight-byte write
 past the table and invalid alias announcement. Disassembly confirms the checks
 are optimized away. Proposed fix: compare to byte 255 and skip write/announcement
