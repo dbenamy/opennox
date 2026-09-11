@@ -74,7 +74,7 @@ func portTestWaypointAppendIndex(data []server.Waypoint, source, p *server.Waypo
 	return -2
 }
 
-// PortTestWaypointAppend invokes both original-C routes against C-owned
+// PortTestWaypointAppend invokes both live C ABI routes against C-owned
 // waypoints. Each source starts with poisoned padding and real pointer values
 // in every slot, so accidental reads/writes outside the documented fields are
 // observable without placing Go pointers in C-visible storage.

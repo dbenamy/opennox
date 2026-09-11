@@ -3,13 +3,13 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-11
 
-Durability classification 57B190 is complete. Production C is 140,879 physical
-lines (−24), with 13,369,208 original-C/native checks. All three test/build
-variants and fresh gameplay pass. Last full-suite check was the preceding
-projection chunk, with the exact known failure multiset unchanged.
-Next review/install the ignored waypoint edge append fixture under
-build/port-waypoint-append, establish its original-C baseline, then port
-sub_51D2C0/sub_51D300. Preserve the signed-char duplicate comparison behavior.
+Waypoint link insertion 51D2C0/51D300 is complete. Production C is 140,845
+physical lines (−34), with 532,480 original-C/native checks. All three test/build
+variants, fresh gameplay, and exact full-suite failure comparison pass.
+Next review/install the ignored tile-selection quartet fixture under
+build/port-tile-selection, establish its original-C baseline, then port
+51D4D0/51D540/51D570/51D5C0. Preserve the shared string comparator, full physical
+tile table scan, and existing numeric boundary behavior.
 Both approved writer/alias fixes are complete; no user decision is pending.
 Keep 57ADF0 list cleanup with its future GUI-owner port.
 Use PORTING_STATE.md's top resume section for current verification and next steps.

@@ -5,27 +5,32 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-11
 
-Latest completed chunk: durability classifier sub_57B190. Original-C baseline
-`d64dc414` and the Go port each pass 13,369,208 classifications: every uint16
-maximum at quarter/half/equality/endpoint boundaries, with default and sixteen
-altered shared threshold pairs. The default oracle uses integer rational checks.
-See [durability](docs/porting/DURABILITY.md). Production C: **140,879 physical
-lines** (−24), 153 files, zero reference C.
+Latest completed chunk: waypoint link insertion sub_51D2C0/sub_51D300.
+Original-C baseline `23f32960` and native Go pass 532,480 cases covering all
+count/kind bytes, both routes, every link slot, nil/self/equal-ID targets,
+padding/guards and blob state preservation. Keep the original signed-char
+comparison: high-bit kinds do not match stored byte duplicates. Capacity stays
+31, with the final physical slot unused. See
+[waypoint insertion](docs/porting/WAYPOINT_APPEND.md).
+Production C: **140,845 physical lines** (−34), 153 files, zero reference C.
 
 All accumulated tests pass in default/server/highres 386 variants. All three
-production binaries build; fresh durability-port gameplay passes both preserved
-screenshots with overrides disabled. Artifacts: build/port-durability.
-No validation processes remain running. The immediately preceding projection
-chunk f498e1cf ran the full suite: exact known 1,553 failure-entry multiset,
-15 passing/3 known failing/32 skipped-no-test packages. This small chunk did
-not repeat it. Projection's 21,656 exact-bit cases remain in accumulated tests.
+production binaries build; fresh waypoint-append-port gameplay passes both
+preserved screenshots with overrides disabled. Full suite matches the exact
+known 1,553 failure-entry multiset: 15 passing/3 known failing/32 skipped-no-test
+packages. Artifacts: build/port-waypoint-append. No validation processes remain
+running.
 
-Next: waypoint edge append sub_51D2C0/sub_51D300 in GAME4_1.c. Reviewed fixtures/tests are installed, with 532,480 cases;
-original-C baseline passes under build/port-waypoint-append. No production
-append code has changed yet. Capacity is 31, not the physical 32 slots. Preserve pointer
-identity, padding, count checks and duplicate scan. Compiled C sign-extends the
-incoming char but zero-extends stored Ind: kinds 128..255 never match duplicates.
-Preserve this behavior, with all-byte tests for direct and blob-kind wrapper routes.
+Next: tile-selection quartet 51D4D0/51D540/51D570/51D5C0 in GAME4_1.c. Fixture
+is being drafted under ignored build/port-tile-selection; a native draft is
+also there. Neither is installed. Name lookup scans all 176 physical entries,
+not nox_tile_def_cnt, last duplicate wins, NONE overrides selection to 255.
+Preserve the shared C locale-aware nox_strcmpi dependency in this chunk. Numeric
+selection accepts 0..175; variation accepts negative values if <=width*height−1,
+and requires valid selected tile 0..175 (calling after NONE is C undefined behavior).
+Actual variation callers first call image selection, resetting invalid input to 0.
+Boolean setter accepts only 0/1, leaving state unchanged otherwise. Keep larger
+map-placement consumers with their owner. See pending fixture notes when ready.
 No user decision is pending. Both approved writer/alias fixes are complete.
 Keep 57ADF0 list cleanup with its future GUI-owner port, and preserve existing
 separate server.PointOnTheLine behavior.

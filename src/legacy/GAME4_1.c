@@ -4965,40 +4965,6 @@ float* sub_51D1A0(float2* a1) {
 	return result;
 }
 
-//----- (0051D2C0) --------------------------------------------------------
-int sub_51D2C0(int a1, int a2) { return sub_51D300(a1, a2, getMemByte(0x973F18, 35972)); }
-
-//----- (0051D300) --------------------------------------------------------
-int sub_51D300(int a1, int a2, char a3) {
-	unsigned char v3; // al
-	int v4;           // ecx
-	int v5;           // esi
-	uint8_t* v6;      // eax
-
-	v3 = *(uint8_t*)(a1 + 476);
-	if (v3 >= 0x1Fu || a1 == a2) {
-		return 0;
-	}
-	v4 = 0;
-	v5 = v3;
-	if ((int)v3 > 0) {
-		v6 = (uint8_t*)(a1 + 96);
-		do {
-			if (*((uint32_t*)v6 - 1) == a2 && *v6 == a3) {
-				break;
-			}
-			++v4;
-			v6 += 8;
-		} while (v4 < v5);
-	}
-	if (v4 != v5) {
-		return 0;
-	}
-	*(uint32_t*)(a1 + 8 * v5 + 92) = a2;
-	*(uint8_t*)(a1 + 8 * (unsigned char)(*(uint8_t*)(a1 + 476))++ + 96) = a3;
-	return 1;
-}
-
 //----- (0051D3F0) --------------------------------------------------------
 float2* sub_51D3F0(float2* a1, float2* a2) {
 	float2* result; // eax

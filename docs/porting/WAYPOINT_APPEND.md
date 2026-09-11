@@ -36,3 +36,17 @@ pointer/kind offsets. All cases pass against original C before replacement.
 
 Production C before this chunk: **140,879 physical lines**, 153 files, zero
 reference C. No copied C reference implementation is needed.
+
+## Native implementation
+
+Both C entries now bridge to a private Go helper using the existing typed
+Waypoint layout. It assigns pointer and kind fields separately, preserving
+padding, and keeps the original signed comparison. The same 532,480 cases pass
+after conversion. Original-C baseline: `23f32960`.
+
+Production C: **140,845 physical lines** (−34), 153 files, zero reference
+C. All accumulated default/server/highres 386 tests pass and all three ELF32
+binaries build. Fresh `waypoint-append-port` gameplay passes both preserved
+screenshots with overrides disabled. The full suite exactly matches the known
+1,553 failure-entry multiset: 15 passing, 3 known failing, 32 skipped/no-test
+packages. Artifacts: build/port-waypoint-append.
