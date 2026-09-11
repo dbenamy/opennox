@@ -19,8 +19,10 @@ Intel 80386). The full suite matches all 1,553 known failure entries exactly:
 15 passing, 3 known failing and 32 skipped/no-test packages. Fresh gameplay passed
 both preserved screenshot checks with overrides disabled under
 build/baseline/runs/grid-lookup-port; artifacts: build/port-grid-lookup.
-The grid chunk is qualified. Next baseline and port floor-rendering eligibility
-475810_draw_B, a Go-only caller that can use the native lookup without an ABI. No user question
+The grid chunk is committed and pushed as fed20f33. Floor-rendering eligibility
+475810_draw_B passes the 22,083-case original-C fixture; evidence is in
+build/port-floor-eligibility/c-baseline.log. Next replace the Go-only wrapper
+with native logic and qualify the port. See docs/porting/FLOOR_ELIGIBILITY.md. No user question
 pending. Preserve the asset archive and separate server.PointOnTheLine behavior.
 
 Use build/baseline/env.sh and accumulated regex
