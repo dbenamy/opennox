@@ -23,6 +23,7 @@ import (
 
 	"github.com/opennox/libs/object"
 	"github.com/opennox/opennox/v1/common/memmap"
+	"github.com/opennox/opennox/v1/common/ntype"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 )
@@ -65,6 +66,9 @@ type PortTestShopPacketResult struct {
 	Data               []byte
 }
 type PortTestShopStep struct {
+	EngineStateRequests      []uint32   `json:",omitempty"`
+	EngineMessages           [][]byte   `json:",omitempty"`
+	EngineState              []uint32   `json:",omitempty"`
 	ObjectData               [][]uint32 `json:",omitempty"`
 	Cached                   [32]uint32
 	Return, Head             uint32
@@ -84,18 +88,19 @@ type portTestShopOwned struct {
 	alive             bool
 }
 type portTestShopPools struct {
-	proxy              *portTestRoamOwnerServer
-	restore            func()
-	sessions           []unsafe.Pointer
-	owned              []*portTestShopOwned
-	items              []*portTestShopOwned
-	ids                map[uint32]uint32
-	steps              []PortTestShopStep
-	initialAlive       int
-	players            func() [][]uint32
-	freePlayers        func()
-	prepareProtection  func(uint32)
-	snapshotProtection func() ([]uint32, bool)
+	engineStateRequests []uint32
+	proxy               *portTestRoamOwnerServer
+	restore             func()
+	sessions            []unsafe.Pointer
+	owned               []*portTestShopOwned
+	items               []*portTestShopOwned
+	ids                 map[uint32]uint32
+	steps               []PortTestShopStep
+	initialAlive        int
+	players             func() [][]uint32
+	freePlayers         func()
+	prepareProtection   func(uint32)
+	snapshotProtection  func() ([]uint32, bool)
 }
 
 func portTestShopPoolsEnvironment(proxy *portTestRoamOwnerServer) *portTestShopPools {
@@ -226,7 +231,11 @@ func (p *portTestShopPools) prepare() {
 }
 func (p *portTestShopPools) run() {
 	s := p.proxy.callbacks.shop
-	p.players, p.freePlayers = portTestSpawnPlayers(p.proxy, []PortTestSpawnPlayer{{Flags: 4}, {Flags: 4}})
+	players := []PortTestSpawnPlayer{{Flags: 4}, {Flags: 4}}
+	if s.spec.Engine != nil {
+		players = append(players, PortTestSpawnPlayer{Flags: 4})
+	}
+	p.players, p.freePlayers = portTestSpawnPlayers(p.proxy, players)
 	for i := 0; i < 2; i++ {
 		pl := p.proxy.life.players[i].UpdateDataPlayer().Player
 		pl.GoldVal, pl.ProtPlayerGold = s.spec.Gold[i], 0
@@ -235,6 +244,7 @@ func (p *portTestShopPools) run() {
 	if s.spec.ProtectedGold {
 		p.proxy.life.players[0].UpdateDataPlayer().Player.ProtPlayerGold = 0x40000001
 	}
+	defer p.enginePrepare()()
 	for i, spec := range s.spec.Items {
 		// Actual allocator objects let destruction execute the retained object
 		// free path. Price/charge/modifier arithmetic has guarded query fixtures.
@@ -253,6 +263,7 @@ func (p *portTestShopPools) run() {
 			copy(data, spec.Use[:])
 			u.UseData.Ptr = unsafe.Pointer(&data[0])
 		}
+		p.engineItem(u, spec)
 		o := p.own(u, uint32(70000+i))
 		o.initSize = 20
 		if u.UseData.Ptr != nil {
@@ -262,7 +273,7 @@ func (p *portTestShopPools) run() {
 	}
 	for _, a := range s.spec.Sequence {
 		var q unsafe.Pointer
-		if a.Op != PortTestShopCreate && a.Op != PortTestShopReset && a.Op != PortTestShopPlayerCleanup {
+		if a.Op != PortTestShopCreate && a.Op != PortTestShopReset && a.Op != PortTestShopPlayerCleanup && a.Op != PortTestTradeCreatePlayer && a.Op != PortTestTradeStart {
 			q = p.sessions[a.Session]
 			if q == nil {
 				panic("shop fixture stale session")
@@ -451,8 +462,9 @@ func (p *portTestShopPools) run() {
 			}
 			C.sub_510E20(C.int(a.Item))
 		default:
-			panic("shop fixture sequence operation")
+			rv = p.engineAction(a, q)
 		}
+		p.engineDiscover()
 		p.steps = append(p.steps, p.snapshot(rv))
 	}
 }
@@ -543,8 +555,21 @@ func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 		for i := range packet.Sequence {
 			packet.Sequence[i] = binary.LittleEndian.Uint16(b[186+2*i:])
 		}
+		if p.proxy.callbacks.shop.spec.Engine != nil {
+			portTestTradePacketDefined(packet.Data)
+		}
 		r.Packets = append(r.Packets, packet)
 		q = binary.LittleEndian.Uint32(b[408:])
+	}
+	if p.proxy.callbacks.shop.spec.Engine != nil {
+		r.EngineStateRequests = append([]uint32(nil), p.engineStateRequests...)
+		cache := portTestTradeCache()
+		r.EngineState = append(r.EngineState, cache[:]...)
+		r.EngineState = append(r.EngineState, p.enginePickupTrace()...)
+		for _, ind := range []ntype.PlayerInd{1, 7, 31} {
+			r.EngineMessages = append(r.EngineMessages, p.proxy.core.NetList.CopyPacketsA(ind, 1))
+		}
+		r.EngineState = append(r.EngineState, normalized(p.proxy.callbacks.shop.npc().InitData, 431)...)
 	}
 	r.Return, r.Head = p.normalize(rv), p.normalize(uint32(C.dword_5d4594_2386500))
 	for i := range r.Cached {

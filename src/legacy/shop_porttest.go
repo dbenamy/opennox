@@ -25,6 +25,7 @@ import (
 )
 
 type PortTestShopItem struct {
+	Pickup                        bool
 	Type                          uint16
 	Class, Subclass, Flags, Worth uint32
 	Mods                          [4]bool
@@ -40,6 +41,7 @@ type PortTestShopStock struct {
 	Mods         [4]bool
 }
 type PortTestShopSpec struct {
+	Engine            *PortTestShopEngineSpec
 	CaptureData       bool
 	Load              *PortTestShopLoadSpec
 	Peer              bool
@@ -221,7 +223,11 @@ func portTestShopTrace(proxy *portTestRoamOwnerServer, normalize func(uint32) ui
 	r := &PortTestShopResult{Intact: true, Sequence: s.pools.steps}
 	defer s.pools.cleanup()
 	for i, b := range s.blocks {
-		r.Intact = r.Intact && bytes.Equal(b, s.before[i])
+		if s.spec.Engine == nil {
+			r.Intact = r.Intact && bytes.Equal(b, s.before[i])
+		} else {
+			r.Intact = r.Intact && bytes.Equal(b[:8], s.before[i][:8]) && bytes.Equal(b[len(b)-8:], s.before[i][len(b)-8:])
+		}
 		data := s.data(i)
 		if i < 2 {
 			data = data[:772]

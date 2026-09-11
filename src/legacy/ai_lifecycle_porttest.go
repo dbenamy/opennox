@@ -319,7 +319,11 @@ func portTestLifecycleTrace(proxy *portTestRoamOwnerServer, h *server.HealthData
 	}
 	for p := uint32(C.dword_5d4594_1565512); p != 0; {
 		b := unsafe.Slice((*byte)(unsafe.Pointer(uintptr(p))), 416)
-		r.Packets = append(r.Packets, bytes.Clone(b[251:251+int(b[401])]))
+		packet := bytes.Clone(b[251 : 251+int(b[401])])
+		if proxy.callbacks != nil && proxy.callbacks.shop != nil && proxy.callbacks.shop.spec != nil && proxy.callbacks.shop.spec.Engine != nil {
+			portTestTradePacketDefined(packet)
+		}
+		r.Packets = append(r.Packets, packet)
 		p = binary.LittleEndian.Uint32(b[408:])
 	}
 	r.Packets = append(r.Packets, proxy.core.NetList.CopyPacketsA(1, netlist.Kind1))

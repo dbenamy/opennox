@@ -28,6 +28,17 @@ CGO, Go 1.26), retain C x87 flags, preserve the untracked asset archive. Raw
 captures, binaries and logs stay ignored in build/port-shop. No reference C
 algorithms are retained solely for testing.
 
+Trade-engine original-C baseline is complete: 748 cases / twelve groups,
+byte-exact repeated; hashes locked in src/shop_engine_porttest_test.go. C run
+8.647s; locked engine plus all 4,238 old shop cases pass in 20.147s with unchanged
+old hashes. Artifacts: build/port-trade-engine/c-seventh*, c-repeat*, locked.log.
+Production engine C remains intact. Commit/push this baseline if uncommitted,
+then replace the eighteen engine bodies and retire eight now-private shop-core
+exports (core-caller-audit.json). See TRADE_ENGINE.md for coverage/exclusions.
+The VM disk filled during duplicate capture writes; reproducible Go cache files
+over twelve hours old were trimmed, leaving about 8 GiB free. Asset archive and
+scenario evidence are untouched. No user question is pending.
+
 <!-- /current-checkpoint -->
 
 ## GitHub backup and recovery
