@@ -20,8 +20,11 @@ build/port-line-projection. All three accumulated test variants and production b
 line-projection-port gameplay passes both preserved screenshot checks with
 overrides disabled. No validation processes remain running.
 
-Next candidate: durability classifier sub_57B190. Bounded fixture draft is available under ignored build/port-durability. Preserve its live C callers and
-shared threshold reads; cover all uint16 maxima at quarter/half/equality edges.
+Active next chunk: durability classifier sub_57B190. Reviewed fixture/tests are
+installed; all 13,369,208 original-C classifications pass
+(build/port-durability/c-baseline.log). Next replace the C body with Go.
+See docs/porting/DURABILITY.md for exhaustive boundaries and mutable thresholds.
+No production durability code has changed yet.
 No user decision is pending. Both approved writer/alias fixes are complete.
 Keep 57ADF0 list cleanup with its future GUI-owner port, and preserve existing
 separate server.PointOnTheLine behavior.
