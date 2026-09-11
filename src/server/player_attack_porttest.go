@@ -9,7 +9,7 @@ import (
 	"unsafe"
 )
 
-func (s *Server) PortTestAttackTypes(speed float32, missing []string) func() {
+func (s *Server) PortTestAttackTypes(speed float32, missing []string, extra ...string) func() {
 	old := s.Types
 	s.Types.byInd = append([]*ObjectType(nil), old.byInd...)
 	s.Types.byID = make(map[string]*ObjectType, len(old.byID)+5)
@@ -25,7 +25,8 @@ func (s *Server) PortTestAttackTypes(speed float32, missing []string) func() {
 		}
 		return unsafe.Pointer(&b[0])
 	}
-	for _, name := range []string{"archerarrow", "archerbolt", "weakarcherarrow", "fanchakraminmotion", "roundchakraminmotion"} {
+	for _, name := range append([]string{"archerarrow", "archerbolt", "weakarcherarrow", "fanchakraminmotion", "roundchakraminmotion"}, extra...) {
+		name = strings.ToLower(name)
 		id := uint16(len(s.Types.byInd))
 		t := &ObjectType{s: &s.Types, ind: id, ind2: id, id: name, class: object.ClassMissile, allowed: true, Mass: 1, Speed: speed, SpeedBase: speed}
 		t.InitData = region(20)

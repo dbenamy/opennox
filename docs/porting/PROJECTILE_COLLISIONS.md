@@ -77,5 +77,32 @@ Fixture audit:
 - 004EB890: `void nox_xxx_collideBearTrap_4EB890(int* a1, int a2)` (16 lines).
 - 004EB910: `void nox_xxx_collidePoisonGasTrap_4EB910(int* a1, int a2)` (19 lines).
 
-Current status: scope/fixture audit only; all candidate production functions
-remain C. No original-C baseline hashes for this batch are locked yet.
+## Original-C baseline
+
+All 27 candidate production functions remain C. A 1,704-case / 49-group corpus
+passes against them; first and repeat full captures are byte-identical (5.401s
+and 5.841s). Hashes are locked in projectile_collisions_porttest_test.go. The accumulated
+regression passes all 28,041 focused cases / 220 groups in 81.843s, including
+every earlier locked hash. This checkpoint must be pushed before conversion.
+
+Coverage includes accepted/rejected damage (including low-byte versus full-word
+return tests), named projectile damage, wall normals and contact, game modes,
+buffs/reflection, arrow/bolt definitions and depleted target health, explosion
+splash, mana/damage frame boundaries, script-triggered bombs, death overrides,
+chakram bounce/owner/return/drop/selection, and trap creation. Positive assertions
+verify hit/deletion behavior, bounced velocity, webbing, bear/gas trap creation,
+mana subtraction, and restored/re-equipped chakram inventory. Inspection also
+confirms successful target selection at the inclusive 400-unit boundary and
+multi-target splash damage.
+
+The fixture uses actual guarded object/type/modifier records, a controlled
+return on the existing damage recorder, and guarded normal vectors. It saves
+and restores wall-contact state, type caches and selection globals. Collision
+attack records leave the Front word unused and uninitialized; only that word,
+previously documented padding, and relocated addresses are normalized. Existing
+attack owners retain their original Front-byte capture mask.
+
+Local evidence: build/port-projectile-collisions/{candidate-scope.json,
+c-first.log,c-repeat.log,c-first-projectile-*.json,c-repeat-projectile-*.json,
+baseline-hashes.json,c-regression.log}. No C algorithm is retained for tests.
+Current production C remains 123,290 lines / 149 files / zero reference C.

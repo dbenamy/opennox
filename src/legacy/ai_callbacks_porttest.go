@@ -8,15 +8,17 @@ extern uint32_t dword_5d4594_2491580, dword_5d4594_2491588;
 static uint32_t pt_callback_damage[1024];
 static int pt_callback_damage_n;
 static int pt_callback_mutate;
+static int pt_callback_result=1;
+static void pt_callback_setResult(int v){pt_callback_result=v;}
 static uint32_t pt_callback_force_bits;
 static int pt_callback_hit(uint32_t* t, uint32_t* a, uint32_t* w, int damage, int kind) {
  int i=pt_callback_damage_n;
  if(i+5<=1024) {pt_callback_damage[i]=(uint32_t)t;pt_callback_damage[i+1]=(uint32_t)a;pt_callback_damage[i+2]=(uint32_t)w;pt_callback_damage[i+3]=damage;pt_callback_damage[i+4]=kind;pt_callback_damage_n+=5;}
  if(pt_callback_mutate) {*(uint32_t*)(*(uint32_t*)(a[187]+484)+120)=pt_callback_force_bits;}
- return 1;
+ return pt_callback_result;
 }
 static void* pt_callback_hit_ptr(void) {return (void*)pt_callback_hit;}
-static void pt_callback_reset(int mutate,uint32_t force) {pt_callback_damage_n=0;pt_callback_mutate=mutate;pt_callback_force_bits=force;}
+static void pt_callback_reset(int mutate,uint32_t force) {pt_callback_result=1;pt_callback_damage_n=0;pt_callback_mutate=mutate;pt_callback_force_bits=force;}
 static int pt_callback_count(void) {return pt_callback_damage_n;}
 static uint32_t pt_callback_word(int i) {return pt_callback_damage[i];}
 */
@@ -43,6 +45,7 @@ type PortTestAICallbackSpec struct {
 	Death                                                                  *PortTestDeathSpec
 	Penalty                                                                *PortTestPenaltySpec
 	Creation                                                               *PortTestCreationSpec
+	DamageResult                                                           *int32
 	MutateOnDamage                                                         bool
 	ForceAfterDamage                                                       uint32
 	Op                                                                     int
@@ -141,6 +144,9 @@ func portTestAICallbackPrepare(proxy *portTestRoamOwnerServer, u *server.Object,
 	st.configure(sp.Enabled)
 	st.lifetime(sp.CloudLifetime)
 	C.pt_callback_reset(C.int(bool2int(sp.MutateOnDamage)), C.uint32_t(sp.ForceAfterDamage))
+	if sp.DamageResult != nil {
+		C.pt_callback_setResult(C.int(*sp.DamageResult))
+	}
 	for i, p := range []*server.ModifierEff{st.modifiers.WeaponPower1, st.modifiers.Material1, st.modifiers.Material2} {
 		proxy.life.ids[uint32(uintptr(unsafe.Pointer(p)))] = uint32(970 + i)
 	}

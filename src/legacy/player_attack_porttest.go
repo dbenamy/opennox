@@ -7,16 +7,18 @@ package legacy
 #include "GAME4_3.h"
 #include "GAME3_2.h"
 extern uint32_t dword_5d4594_2488652,dword_5d4594_2488656,dword_5d4594_2488660;
-static uint32_t attackTrace[8192];static int attackCount,attackSet;static uint32_t attackOutput;
-static void attackReset(int set,uint32_t output){attackCount=0;attackSet=set;attackOutput=output;}
+static uint32_t attackTrace[8192];static int attackCount,attackSet;static uint32_t attackOutput;static uint32_t attackFrontMask;
+static void attackReset(int set,uint32_t output){attackFrontMask=255;attackCount=0;attackSet=set;attackOutput=output;}
 static int attackEffect(int m,int it,int target,int actor,int record){
  attackTrace[attackCount++]=m;attackTrace[attackCount++]=it;attackTrace[attackCount++]=target;attackTrace[attackCount++]=actor;
  // Bytes 5..7 and 33..35 are unused padding in the original stack record.
  memcpy(&attackTrace[attackCount],(void*)record,36);
- attackTrace[attackCount+1]&=255;attackTrace[attackCount+8]&=255;attackCount+=9;
+ attackTrace[attackCount+1]&=255;attackTrace[attackCount+8]&=attackFrontMask;attackCount+=9;
  if(attackSet) *(uint32_t*)record=attackOutput;
  return 0;
 }
+// Collision owners leave the entire Front word unused and uninitialized.
+static void attackCollisionRecord(void){attackFrontMask=0;}
 static void* attackEffectPtr(void){return attackEffect;}
 static int attackN(void){return attackCount;}
 static uint32_t attackValue(int i){return attackTrace[i];}
@@ -71,6 +73,7 @@ const (
 )
 
 type PortTestAttackSpec struct {
+	Collision                            *PortTestProjectileCollisionSpec
 	Actor, Ammo                          int
 	RecordWords, ActorWords, UpdateWords map[int]uint32
 	RecordRefs, ActorRefs, UpdateRefs    map[int]int
@@ -81,7 +84,7 @@ type PortTestAttackSpec struct {
 	ProjectileSpeed                      float32
 	MissingTypes                         []string
 }
-type portTestAttack struct{ record unsafe.Pointer }
+type portTestAttack struct{ record, collisionNormal unsafe.Pointer }
 
 func (p *portTestShopPools) attackPrepare() func() {
 	sp := p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack
@@ -89,13 +92,19 @@ func (p *portTestShopPools) attackPrepare() func() {
 		return func() {}
 	}
 	p.temporary.world.objectives.attack = &portTestAttack{record: p.objectiveRegion(64)}
-	restore := p.proxy.core.PortTestAttackTypes(sp.ProjectileSpeed, sp.MissingTypes)
+	var extra []string
+	if sp.Collision != nil {
+		extra = projectileCollisionTypeNames
+	}
+	restore := p.proxy.core.PortTestAttackTypes(sp.ProjectileSpeed, sp.MissingTypes, extra...)
+	restoreCollision := p.projectileCollisionPrepare()
 	oldRange, oldHit, oldTarget := C.dword_5d4594_2488652, C.dword_5d4594_2488656, C.dword_5d4594_2488660
 	C.dword_5d4594_2488652 = C.uint32_t(sp.NearestRange)
 	C.dword_5d4594_2488656 = 0
 	C.dword_5d4594_2488660 = 0
 	return func() {
 		C.dword_5d4594_2488652, C.dword_5d4594_2488656, C.dword_5d4594_2488660 = oldRange, oldHit, oldTarget
+		restoreCollision()
 		restore()
 	}
 }
@@ -106,6 +115,9 @@ func (p *portTestShopPools) attackItems() {
 	}
 	r := p.temporary.world.objectives.attack
 	C.attackReset(C.int(bool2int(sp.SetOutput)), C.uint32_t(sp.Output))
+	if sp.Collision != nil {
+		C.attackCollisionRecord()
+	}
 	p.identify(C.attackEffectPtr(), 86000)
 	for i := 0; i < 12; i++ {
 		p.identify(C.attackFunction(C.int(i)), 86001+uint32(i))
@@ -153,6 +165,7 @@ func (p *portTestShopPools) attackItems() {
 		}
 	}
 	C.dword_5d4594_2488660 = C.uint32_t(uintptr(p.temporaryRef(sp.NearestTarget).CObj()))
+	p.projectileCollisionItems()
 }
 func (p *portTestShopPools) attackAction(a PortTestShopAction) uint32 {
 	tmp := p.proxy.callbacks.shop.spec.TemporaryUpdates
@@ -201,5 +214,5 @@ func (p *portTestShopPools) attackSnapshot(out []uint32) []uint32 {
 			}
 		}
 	}
-	return out
+	return p.projectileCollisionSnapshot(out)
 }

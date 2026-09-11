@@ -67,11 +67,12 @@ build/port-player-attack and baseline/runs/player-attack-port.
 ### Active — projectile collision original-C baseline preparation
 
 Candidate: 27 connected handlers/helpers / 1,006 C lines; still original C,
-no baseline hashes locked yet. See [PROJECTILE_COLLISIONS.md](docs/porting/PROJECTILE_COLLISIONS.md).
+1,704 cases / 49 full captures repeat exactly and hashes are locked. All 28,041
+focused cases / 220 groups pass in 81.843s. Push this baseline before conversion. See [PROJECTILE_COLLISIONS.md](docs/porting/PROJECTILE_COLLISIONS.md).
 Scope/source/audit: build/port-projectile-collisions. Reuse the guarded attack,
 world, projectile and inventory fixtures; repeat/lock/commit/push original-C
 captures before conversion. Qualify once for the completed connected batch.
-Continue after committing/pushing player attack; no pending question or new
+Player attack was committed/pushed as `875a49a2`; summary delivered. No pending question or new
 agents. Preserve archive and stable evidence. Full-suite raw logs may contain
 secrets; print only action/package/test metadata.
 
