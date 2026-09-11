@@ -327,8 +327,8 @@ func portTestCombatTrace(proxy *portTestRoamOwnerServer, normalize func(uint32) 
 	}
 	proxy.trace = append(proxy.trace, 2487948, normalize(uint32(C.dword_5d4594_2487948)))
 	for _, ev := range proxy.core.PortTestCombatAudioSnapshot() {
-		r.Sounds = append(r.Sounds, uint32(ev.ID))
-		proxy.trace = append(proxy.trace, 14, uint32(ev.ID), uint32(bool2int(ev.Obj == proxy.combat.actor)), math.Float32bits(ev.Pos.X), math.Float32bits(ev.Pos.Y), uint32(ev.Kind), ev.Code, uint32(bool2int(ev.ByPos)))
+		r.Sounds = append(r.Sounds, normalize(uint32(ev.ID)))
+		proxy.trace = append(proxy.trace, 14, normalize(uint32(ev.ID)), uint32(bool2int(ev.Obj == proxy.combat.actor)), math.Float32bits(ev.Pos.X), math.Float32bits(ev.Pos.Y), uint32(ev.Kind), ev.Code, uint32(bool2int(ev.ByPos)))
 	}
 	if u := proxy.combatProjectile; u != nil {
 		proxy.trace = append(proxy.trace, 15)

@@ -3,6 +3,14 @@
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
+## In progress — generic object death baseline
+
+Quest penalty native commit `ab9fc939` is pushed. Eight generic death callbacks
+now have 1,704 locked original-C cases; repeat hashes and callback/creation/penalty
+regressions pass (7.659s). See docs/porting/OBJECT_DEATH.md. C remains 134,569
+lines; commit/push baseline before conversion. Native draft is ignored under
+build/port-object-death/object_death_native.go. No user question is pending.
+
 ## Resume here — 2026-09-11
 
 Continue the x86 C-to-Go port on `dev`, one connected, reviewed, tested,
