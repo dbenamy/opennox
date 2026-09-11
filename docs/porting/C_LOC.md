@@ -44,6 +44,7 @@ target build selection and linker evidence.
 | Glyph/item eligibility and caches (2026-09-11) | 153 | 141,042 | −40 | 0 |
 | Collision reflection / containment (2026-09-11) | 153 | 141,000 | −42 | 0 |
 | Line projection / clamping (2026-09-11) | 153 | 140,903 | −97 | 0 |
+| Durability classification (2026-09-11) | 153 | 140,879 | −24 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

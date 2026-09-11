@@ -3,12 +3,13 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-11
 
-Line projection 57C790/57C8A0 is complete. Production C is 140,903 physical
-lines (−97), with 21,656 exact original-386 cases including raw floating-point
-bits and overlapping buffers. All three test/build variants, fresh gameplay,
-and exact full-suite baseline comparison pass.
-Next install/review the ignored durability classifier 57B190 fixture draft
-under build/port-durability, establish its original-C baseline, then port it.
+Durability classification 57B190 is complete. Production C is 140,879 physical
+lines (−24), with 13,369,208 original-C/native checks. All three test/build
+variants and fresh gameplay pass. Last full-suite check was the preceding
+projection chunk, with the exact known failure multiset unchanged.
+Next review/install the ignored waypoint edge append fixture under
+build/port-waypoint-append, establish its original-C baseline, then port
+sub_51D2C0/sub_51D300. Preserve the signed-char duplicate comparison behavior.
 Both approved writer/alias fixes are complete; no user decision is pending.
 Keep 57ADF0 list cleanup with its future GUI-owner port.
 Use PORTING_STATE.md's top resume section for current verification and next steps.

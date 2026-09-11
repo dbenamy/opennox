@@ -36,7 +36,7 @@ type PortTestDurabilitySnapshot struct {
 	AfterRestoreHalf, AfterRestoreQuarter uint64
 }
 
-// PortTestDurability invokes the original C classifier after replacing its two
+// PortTestDurability invokes the live C ABI entry after replacing its two
 // threshold doubles by raw bits. It observes that C only reads them, then
 // restores both globals even on a test panic.
 func PortTestDurability(cases []PortTestDurabilityCase, halfBits, quarterBits uint64) (snap PortTestDurabilitySnapshot) {

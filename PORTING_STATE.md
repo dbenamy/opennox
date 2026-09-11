@@ -5,32 +5,33 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-11
 
-Latest completed chunk: line projection 57C790/57C8A0. Original-C baseline `7947f8ca`
-contains 21,656 analytic/IEEE/raw/overlap cases and a 259,872-byte asset-free
-fixture. Native implementation now matches every return and output bit.
-Production C: **140,903 physical lines** (−97), 153 files,
-zero reference C. Previous chunk: collision `910ecbab`.
+Latest completed chunk: durability classifier sub_57B190. Original-C baseline
+`d64dc414` and the Go port each pass 13,369,208 classifications: every uint16
+maximum at quarter/half/equality/endpoint boundaries, with default and sixteen
+altered shared threshold pairs. The default oracle uses integer rational checks.
+See [durability](docs/porting/DURABILITY.md). Production C: **140,879 physical
+lines** (−24), 153 files, zero reference C.
 
-Finite arithmetic follows disassembled PC53 spill points, with output/input
-aliasing preserved. Explicit NaN load/store/propagation preserves x87 behavior
-under GO386=softfloat. See [projection](docs/porting/LINE_PROJECTION.md).
-The full suite exactly matches the known baseline: 15 passing, 3 known failing,
-32 skipped/no-test packages, identical 1,553 failure entries. Artifacts:
-build/port-line-projection. All three accumulated test variants and production builds pass. Fresh
-line-projection-port gameplay passes both preserved screenshot checks with
-overrides disabled. No validation processes remain running.
+All accumulated tests pass in default/server/highres 386 variants. All three
+production binaries build; fresh durability-port gameplay passes both preserved
+screenshots with overrides disabled. Artifacts: build/port-durability.
+No validation processes remain running. The immediately preceding projection
+chunk f498e1cf ran the full suite: exact known 1,553 failure-entry multiset,
+15 passing/3 known failing/32 skipped-no-test packages. This small chunk did
+not repeat it. Projection's 21,656 exact-bit cases remain in accumulated tests.
 
-Active next chunk: durability classifier sub_57B190. Reviewed fixture/tests are
-installed; all 13,369,208 original-C classifications pass
-(build/port-durability/c-baseline.log). Next replace the C body with Go.
-See docs/porting/DURABILITY.md for exhaustive boundaries and mutable thresholds.
-No production durability code has changed yet.
+Next: waypoint edge append sub_51D2C0/sub_51D300 in GAME4_1.c. A bounded fixture
+is being drafted under ignored build/port-waypoint-append; no baseline or port
+is installed yet. Capacity is 31, not the physical 32 slots. Preserve pointer
+identity, padding, count checks and duplicate scan. Compiled C sign-extends the
+incoming char but zero-extends stored Ind: kinds 128..255 never match duplicates.
+Preserve this behavior, with all-byte tests for direct and blob-kind wrapper routes.
 No user decision is pending. Both approved writer/alias fixes are complete.
 Keep 57ADF0 list cleanup with its future GUI-owner port, and preserve existing
 separate server.PointOnTheLine behavior.
 
 Test from src with baseline environment: `go test -tags porttest -count=1
--run '^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection)' .`;
+-run '^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability)' .`;
 repeat server/highres. Preserve untracked asset archive.
 
 Continue through tests, docs/C LOC, commit, push and a user update per chunk,

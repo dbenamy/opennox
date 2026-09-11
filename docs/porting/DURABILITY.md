@@ -27,3 +27,19 @@ requires no assets. Local artifacts: build/port-durability.
 
 All cases pass against the original C before replacement. Production C before
 this chunk: **140,903 physical lines**, 153 files, zero reference C.
+
+## Native implementation
+
+The live C entry now calls private Go `durabilityBand`. It preserves both early
+returns, reads the shared half threshold from its C variable and the quarter
+threshold from its blob, and retains ordered comparisons. The same 13,369,208
+checks pass after conversion. Original-C baseline: `d64dc414`. The port removes
+24 physical C lines; no C reference implementation is retained.
+
+All three accumulated 386 test variants pass, including the unchanged projection
+fixture and the new durability cases. The immediately preceding projection
+chunk ran the full suite and matched the exact known 1,553 failure entries;
+this small conversion does not repeat that full run. All three production ELF32 binaries build, and fresh `durability-port`
+headless gameplay passes both preserved screenshot checks with overrides disabled.
+
+Production C: **140,879 physical lines**, 153 files, **−24**. Reference C: **0**.
