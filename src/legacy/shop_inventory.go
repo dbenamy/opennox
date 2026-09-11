@@ -63,7 +63,7 @@ func shopRepair(u *server.Object, s *shopSession, code uint32) uint32 {
 	C.nox_xxx_itemReportHealth_4D87A0(ind, asObjectC(item))
 	if item.ObjClass&0x1000 != 0 && item.ObjSubClass&0x47f0000 != 0 {
 		data := unsafe.Slice((*byte)(item.UseData.Ptr), 110)
-		if C.nox_xxx_rechargeItem_53C520(C.int(uintptr(item.CObj())), 100) != 0 {
+		if effectsRecharge(item, 100) != 0 {
 			C.nox_xxx_netReportCharges_4D82B0(ind, asObjectC(item), C.char(data[108]), C.char(data[109]))
 		}
 	}

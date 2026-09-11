@@ -4,87 +4,38 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Active — effects/use baseline locked; conversion next
+## Complete — modifier effects and weapon use
 
-Equipment is committed/pushed as `dec9b1ec`. The 41-function / 977-line effects
-and weapon-use batch remains original C. **4,733 cases / 19 groups** are locked;
-two full original-C captures match byte-for-byte. All prior 12,009 equipment /
-inventory / resource / shop / trade contracts remain unchanged (37.208s).
-Read [EFFECTS_USE.md](docs/porting/EFFECTS_USE.md) for exact scope and fixture
-preconditions. Stable captures: build/port-effects-use/c-{tables,repeat}-effects-*.json.
-Check c-locked.log, then commit/push baseline BEFORE native conversion.
-After converting, qualify once at the connected batch boundary, update C_LOC/docs,
-commit/push, summarize and continue. No pending question; no new agents.
+The 41-function batch removes **977 C lines**, leaving **127,104 physical C
+lines / 149 files / zero reference C**. Original-C baseline `0738dbed` was
+committed/pushed before conversion. All **4,733 cases / 19 groups** match full
+original-C captures byte-for-byte (10.836s). Combined **16,742** effects/equipment/
+inventory/resource/shop/trade contracts pass with prior hashes unchanged (48.932s).
+See [EFFECTS_USE.md](docs/porting/EFFECTS_USE.md).
 
-## Complete — equipment; next — modifier effects and weapon use
+Accumulated default/server/highres pass in 121.800s / 105.062s / 104.722s.
+Three production builds are ELF32/i386/SSE2/CGO. Full-suite failures exactly match
+baseline: 1,553 entries; 15 pass / 3 fail / 32 skip packages. Fresh effects-use-port
+gameplay passes unchanged repeat-a goldens in 57.062s, overrides disabled, Xvfb
+and null audio. No qualification processes remain running.
 
-The 33-function equipment batch is converted and qualified: **972 C lines
-removed; 128,081 physical C lines / 149 files / zero reference C**.
-Original-C baseline `6e13a789` was committed/pushed before conversion. All
-1,144 equipment cases / 17 groups match full original-C captures byte-for-byte.
-See [EQUIPMENT.md](docs/porting/EQUIPMENT.md).
+Native files: legacy/effects_modifiers.go, effects_weapon_use.go, effects_exports.go.
+Go callers and three wand registrations route natively; callback identities remain
+for retained C. The original compiler spills X projectile velocity but keeps Y
+until the final addition; explicit Go rounding preserves both. No C algorithm is
+retained solely for tests. Stable evidence: build/port-effects-use/c-{tables,repeat}
+and native-final captures plus logs. Intermediate captures and old regenerable
+cache entries were removed for disk space; preserve assets and stable evidence.
 
-Combined 12,009 equipment/inventory/resource/shop/trade cases pass with prior
-hashes unchanged (58.052s). Accumulated default/server/highres pass in
-101.875s / 91.325s / 96.494s. Three production builds are ELF32/i386/SSE2/CGO.
-Full-suite exact failure multiset is unchanged: 1,553 entries; 15 pass / 3 fail /
-32 skip packages. Fresh equipment-port gameplay passes unchanged repeat-a goldens
-in 38.916s, overrides disabled, Xvfb and null audio.
-
-Next: [EFFECTS_USE.md](docs/porting/EFFECTS_USE.md), **41 functions / 977 C lines**
-covering modifier effects and recharge/wand use. Production C for that family
-is intact. Reuse the guarded fixture, repeat/lock original-C contracts, verify
-all 12,009 existing contracts, commit/push baseline before conversion. Convert
-and qualify once at the connected batch boundary; update C_LOC/docs, commit/push,
-summarize and continue. No pending question; do not spawn agents.
-Local scope and detailed fixture plan: build/port-equipment/next-effects-use-scope.json
-and build/port-effects-use/fixture-plan.md. Preserve archive/gameplay evidence;
-full-suite raw logs can contain secrets, report only action/package/test metadata.
-
-## Complete — inventory; next — connected equipment owners
-
-The 33-function inventory pickup/drop batch is converted and qualified:
-**1,421 C lines removed; 129,053 physical C lines / 150 files / zero reference C**.
-Original-C baselines: `0763837a`, `d71388bd` (pushed). See
-[INVENTORY.md](docs/porting/INVENTORY.md). 31 ABI entry points remain for retained
-C callers/callback addresses; two private bridges are retired. Native registrations
-and Go callers route directly. No C algorithm remains solely for tests.
-
-All 2,288 inventory cases / 17 groups match full original-C captures byte-for-byte.
-The combined 10,865 inventory/resource/shop/trade contracts pass in 37.646s with
-all prior hashes unchanged. Accumulated default/server/highres tests pass in
-89.586s / 90.305s / 88.066s. Three production builds are ELF32/i386/SSE2. Full-suite
-failures exactly match baseline: 1,553 entries; 15 pass / 3 fail / 32 skip packages.
-Fresh inventory-port gameplay passes unchanged repeat-a goldens in 36.485s,
-overrides disabled, Xvfb and null audio.
-
-Next connected candidate: 31 functions / 924 C lines, weapon/armor equip/dequip,
-modifier callbacks, inventory/strength helpers and both shield-selection helpers
-in the entire MixPatch.c file. Ignored reviewed candidate list/notes:
-build/port-inventory/next-equipment-scope.json and next-equipment-plan.md.
-GAME4_3 roots 53A030/0F0/140/2C0/3D0/420/680/6C0/AAB0/AB90,
-53E2D0/300/3A0/430/520/600/650/7B0/AE0/EC40/EC80;
-GAME3_3 roots 4E4B20, 4E7D30/EC0, 4F2F70/FB0/FF0, 4F3030/3180;
-MixPatch roots sub_980523 and sub_9805EB. Recheck exact scope/callers before locking.
-Reuse inventory fixture, supply actual equipment definitions so strength checks
-can succeed, cover player/NPC switching, modifier callbacks, armor recomputation,
-shield interactions and enabled/disabled gameex_flags community behavior.
-
-Continue autonomously: repeat/lock original-C contracts, commit/push baseline,
-convert the connected family, qualify once at its boundary, update C_LOC/docs,
-commit/push, summarize and continue. No question is pending. Do not spawn agents.
-Use build/baseline/env.sh: Go1.26, 386/SSE2, CGO; retain C x87 flags. Preserve user
-archive and existing gameplay evidence. Full-suite raw logs may contain secrets;
-report action/package/test metadata only. Push over SSH to
+Next: [TEMPORARY_UPDATES.md](docs/porting/TEMPORARY_UPDATES.md), **31 functions /
+980 C lines** covering temporary objects, projectile updates and area callbacks.
+Production remains original C for this next family. Reuse the existing fixture,
+repeat/lock original-C contracts, verify previous contracts and commit/push the
+baseline before conversion. Qualify once at the connected family boundary,
+update C_LOC/docs, commit/push, summarize and CONTINUE. No pending user question;
+no new agents. Use build/baseline/env.sh. Full-suite raw logs can contain secrets;
+report only action/package/test metadata. Push over SSH to
  git@github.com:dbenamy/opennox.git dev:dev.
-
-An existing retained map-ray loop on negative-coordinate traversal is documented
-in INVENTORY.md and remains a separate issue. Team comparison is membership
-validation, not numeric-ID equality. Fixture position buffers crossing return
-ABIs use C-owned memory; no cgo checks are disabled. Stable inventory captures:
-build/port-inventory/c-members-inventory-*.json and native-final-inventory-*.json.
-The isolated original-C checkout was removed after its edits were preserved in
-pushed d71388bd. No qualification processes remain running.
 
 <!-- /current-checkpoint -->
 

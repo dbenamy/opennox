@@ -292,7 +292,7 @@ func monsterMainAI(u *server.Object) {
 		if t := lifecycleFoodSearch(u, 75, false); t != nil {
 			Nox_xxx_inventoryServPlace_4F36F0(u, t, 1, 1)
 			if t.SubClass()&0x90 != 0 {
-				C.nox_xxx_useByNetCode_53F8E0(combatPtr(u), combatPtr(t))
+				effectsUse(u, t)
 			}
 		}
 	}

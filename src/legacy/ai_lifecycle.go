@@ -81,7 +81,7 @@ func lifecyclePickup(u *server.Object) {
 			Nox_xxx_inventoryServPlace_4F36F0(u, t, 1, 1)
 			// C reloads the action argument after inventory placement.
 			if t = h.ArgObj(0); t != nil && t.SubClass()&0x10 != 0 {
-				C.nox_xxx_useByNetCode_53F8E0(C.int(uintptr(u.CObj())), C.int(uintptr(t.CObj())))
+				effectsUse(u, t)
 			}
 		}
 	}

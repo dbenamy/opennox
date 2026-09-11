@@ -155,7 +155,7 @@ func resourcePoison(u *server.Object, amount, max int32) bool {
 		return false
 	}
 	// Preserve the C double multiplication followed by its explicit float spill.
-	chance := floatToInt32(float32(float64(C.nox_xxx_getPoisonDmg_4E0040((*C.uint32_t)(u.CObj()))) * 100))
+	chance := floatToInt32(float32(effectsProtection(u, C.nox_xxx_checkPoisonProtectEnch_4DFDE0, 18, "PoisonSpellProtection", .69999999, .89999998) * 100))
 	if int32(nox_common_randomInt_415FA0(0, 100)) < chance {
 		resourcePriority(u, "Health.c:ResistPoison")
 		return false

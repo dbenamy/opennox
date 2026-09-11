@@ -1,8 +1,9 @@
-# Modifier effects and weapon use (baseline in progress)
+# Modifier effects and weapon use
 
-Connected next batch: **41 functions / 977 physical C lines**. Production is
-still original C for this family. Equipment is the preceding batch; starting
-count after equipment is 128,081 C lines / 149 files / zero reference C.
+Connected batch: **41 functions / 977 physical C lines** converted to native Go.
+Equipment was the preceding batch. C count falls from 128,081 to **127,104 lines /
+149 files / zero reference C**. Original-C baseline `0738dbed` was committed and
+pushed before conversion.
 
 ## Scope
 
@@ -46,8 +47,9 @@ build/port-effects-use/fixture-plan.md. No user question is pending.
 
 ## Original-C baseline
 
-The equipment conversion is committed/pushed as `dec9b1ec`. Production C for
-this family remains unchanged. **4,733 cases / 19 groups** are now locked in
+The equipment conversion was committed/pushed as `dec9b1ec`. This baseline
+was captured while the entire family remained original C. **4,733 cases /
+19 groups** are locked in
 `effects_use_porttest_test.go`. Full captures c-tables and c-repeat match
 byte-for-byte in every group (11.054s / 10.557s). All prior **12,009** equipment,
 inventory, resource, shop and trade cases remain unchanged (37.208s).
@@ -107,6 +109,39 @@ c-tables.log,c-repeat.log,c-locked.log,c-dependencies.log} and corresponding
 c-tables/c-repeat JSON captures. Obsolete intermediate captures were removed
 for disk space; logs, final evidence and user assets remain intact.
 
-Commit/push this original-C baseline before conversion. Then port all 41
-functions, compare native full captures, qualify once for the connected batch,
-update C_LOC/docs, commit/push, summarize and continue.
+## Native implementation
+
+`legacy/effects_modifiers.go` owns inventory modifier lookup, engagement flags,
+speed/protection, regeneration, replenishment, grip, status/resource effects and
+readiness. `legacy/effects_weapon_use.go` owns recharge, projectile creation,
+fireball/wand use and callback dispatch. `legacy/effects_exports.go` retains all
+41 ABI entries for C callers, registered modifier addresses and the test dispatcher.
+No original C algorithm remains solely for tests.
+
+Inventory/AI use callers, shop recharge and poison resistance call native Go.
+Three wand registrations use native Go functions with the original callback
+addresses retained. Generic use dispatch still preserves raw integer callback
+results; it cannot substitute the registry's bool result for arbitrary callbacks.
+
+Native full captures match all 19 original-C groups byte-for-byte (10.836s).
+The first implementation exposed one projectile-velocity difference: the original
+compiler spills the X product across its second direction lookup but keeps the
+Y product until owner velocity is added. Explicit Go float32/float64 operations
+preserve this distinction. Speed/protection caps, signed 64-bit effect truncation,
+byte charge wrap, cooldown wrap, spell-acceptance ordering, callback return bits
+and RNG sequences retain the locked behavior. Tests and baseline hashes were
+not changed to accept native differences.
+
+Combined **16,742** effects/equipment/inventory/resource/shop/trade contracts pass
+with all older hashes unchanged (48.932s). Three production builds are verified
+ELF32/i386, GOARCH=386, GO386=sse2 and CGO enabled. Full-suite failure multiset is
+unchanged: **1,553 entries; 15 pass / 3 fail / 32 skip packages**. Fresh
+`effects-use-port` gameplay passes unchanged repeat-a goldens in **57.062s**, with
+overrides disabled, Xvfb and null audio.
+
+Accumulated default/server/highres corpora pass in **121.800s / 105.062s /
+104.722s**. The entire connected family is qualified. Local evidence: native-final captures/log,
+native-dependencies.log, ports-*.log, binary-checks.json, full-suite-comparison.json,
+and build/baseline/runs/effects-use-port/result.json. Obsolete intermediate
+captures and old regenerable build-cache entries were removed for disk space;
+stable baseline/native captures, logs, gameplay evidence and user assets remain.

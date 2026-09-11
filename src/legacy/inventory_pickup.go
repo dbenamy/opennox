@@ -36,7 +36,7 @@ func inventoryFoodPickup(u, it *server.Object, arg int) int {
 	return rv
 }
 func inventoryUsePickup(u, it *server.Object, arg int) int {
-	C.nox_xxx_useByNetCode_53F8E0(inventoryInt(u), inventoryInt(it))
+	effectsUse(u, it)
 	if it.ObjFlags&0x20 != 0 {
 		return 1
 	}
@@ -57,7 +57,7 @@ func inventoryTrapPickup(u, it *server.Object, arg int) int {
 }
 func inventoryBookPickup(u, it *server.Object, arg int, ability bool) int {
 	if noxflags.HasGame(6144) {
-		C.nox_xxx_useByNetCode_53F8E0(inventoryInt(u), inventoryInt(it))
+		effectsUse(u, it)
 	}
 	if it.ObjFlags&0x20 != 0 {
 		return 1
