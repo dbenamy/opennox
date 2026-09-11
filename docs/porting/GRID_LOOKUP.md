@@ -3,7 +3,7 @@
 Scope: 411160 and its public Go wrapper. The corrected C baseline includes the
 lower-bound repair d765f9f4 (see GRID_BOUNDS.md). Float-to-int C helpers remain
 for C callers because exporting each one adds avoidable boundary overhead.
-The Go owner will use native conversion without those extra crossings.
+The Go owner uses native conversion without those extra crossings.
 
 ## Repaired-C baseline
 
@@ -38,4 +38,30 @@ Both benchmarks validate checksums and fixture state. They are microbenchmarks,
 not measurements of complete game frames. Compare both routes after replacement.
 
 Production C baseline: **140,455 physical lines**, 153 files, zero reference C.
-Artifacts: build/port-grid-lookup. Native implementation and qualification remain.
+Artifacts: build/port-grid-lookup.
+
+## Native Go route
+
+The public Go wrapper now calls tileAtPoint directly, using the native bit-based
+floatToInt32 helper. The full input corpus runs through both production routes:
+645,362 operations, including the separate public-wrapper cases. Converter tests
+check both C and native Go against the integer IEEE oracle on 4,193,481 conversions
+and 684 PC/RC cases per implementation.
+
+A complete Go-export experiment passed correctness checks but raised C caller
+cost to 294.4 ns. Retaining the C route measured 19.65 ns; the native Go wrapper
+measured 159.6 ns, versus 386.9–409.2 ns before. This staged migration avoids
+adding a callback to remaining C callers. These are VM microbenchmarks, not a
+claim about whole-game speed.
+
+Retirement order: migrate the remaining callers in GAME1.c (water predicate),
+GAME2_1.c (floor-rendering eligibility), GAME4_1.c (object processing), and GAME5.c (three
+call sites), then retire C 411160 and reassess the 411350 bridge. The converters
+retain other C owners too. C is retained for production use, not as a test oracle.
+Source count remains 140,455 lines, delta zero for this chunk.
+
+Accumulated default/server/highres port tests and all three production builds
+pass (ELF32 Intel 80386). The asset-backed full suite matches the exact 1,553
+known failure entries, with 15 passing, 3 known failing and 32 skipped/no-test
+packages. Fresh grid-lookup-port gameplay exits successfully with both preserved
+screenshot checks and overrides disabled. No C reference was added.

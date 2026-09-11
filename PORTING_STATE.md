@@ -5,39 +5,29 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-11
 
-Subtile predicate 4113A0 and list lookup 411350 are complete. Original-C baseline
-8cfa832a and Go pass 39,200 predicate checks and 2,180 list lookups. Point helper
-is private; lookup keeps its ABI for grid owner 411160. See
-[subtile lookup](docs/porting/SUBTILE_LOOKUP.md).
-Production C: **140,455 physical lines (−123)**, 153 files, zero reference C.
+Grid lookup repaired-C baseline is db42f02a; the lower-bound repair is d765f9f4.
+The working native Go route passes 645,362 lookup operations across both routes,
+plus 4,193,481 float conversions and 684 control-word cases per implementation.
+C callers retain C lookup/converters: the Go export experiment cost 294 ns versus
+19 ns for C. Native Go callers now cost 160 ns versus the old wrapper's 387–409 ns.
+See docs/porting/GRID_LOOKUP.md and FLOAT_INT.md. This is a deliberate staged
+migration; remaining C callers must move before the C implementation is retired.
 
-Accumulated default/server/highres tests and all three production builds pass.
-Fresh subtile-lookup-port gameplay passes both preserved screenshots, overrides
-off. No validation processes running. Artifacts: build/port-subtile-lookup.
-Last full suite: preceding normalization commit 3253ef53 matched the exact known
-1,553 failure entries, 15 passing/3 known failing/32 skipped-no-test packages.
-
-Current: float-to-int C baseline eb23d4b2 passes 4,193,481 conversions plus
-684 PC/RC cases. Go exports matched results but cost roughly 60–80× more per
-C call (3.5–3.8 ns vs 223–285 ns). Experiment saved in FLOAT_INT.md/proposals;
-original C helpers are restored for remaining C callers. Use the tested native
-helper when porting Go owners, avoiding extra crossings. No C LOC removed.
-
-Grid lookup 411160 has a confirmed lower-bound overflow: INT32_MIN-1 wraps
-and bypasses checks. Original-C crash baseline 4ec260c8 uses six isolated child
-processes. The user said continue after the defect/fix explanation. The direct
-comparison repair is now adopted and focused grid/float tests pass all three
-variants. See docs/porting/GRID_BOUNDS.md. Next establish full repaired-C grid
-lookup baseline, port it using native conversion and float32 spill boundaries,
-then complete accumulated checks, docs/count, commit/push. Production C remains
-140,455 lines. No validation processes running and no user question pending.
-Keep 57ADF0 cleanup with GUI owner and separate server.PointOnTheLine behavior.
+Production C remains **140,455 physical lines (delta 0)**, 153 files, zero reference
+C. Accumulated tests for all three variants and all production builds pass (ELF32
+Intel 80386). The full suite matches all 1,553 known failure entries exactly:
+15 passing, 3 known failing and 32 skipped/no-test packages. Fresh gameplay passed
+both preserved screenshot checks with overrides disabled under
+build/baseline/runs/grid-lookup-port; artifacts: build/port-grid-lookup.
+The grid chunk is qualified. Next baseline and port floor-rendering eligibility
+475810_draw_B, a Go-only caller that can use the native lookup without an ABI. No user question
+pending. Preserve the asset archive and separate server.PointOnTheLine behavior.
 
 Use build/baseline/env.sh and accumulated regex
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile)`
-with porttest, server porttest, highres porttest from src. Preserve asset archive.
-Continue one reviewed/tested/documented/committed/pushed chunk at a time until a
-substantive question or rate limit. Bounded Terra drafts require primary review.
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid)`
+with porttest, server porttest, highres porttest from src. Continue one reviewed,
+tested, documented, committed and pushed chunk at a time until a substantive
+question or rate limit. Bounded Terra drafts require primary review.
 <!-- /current-checkpoint -->
 
 ## GitHub backup and recovery

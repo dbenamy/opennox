@@ -31,7 +31,6 @@ import (
 	"github.com/opennox/opennox/v1/common/ntype"
 	"github.com/opennox/opennox/v1/internal/cryptfile"
 	"github.com/opennox/opennox/v1/legacy/cnxz"
-	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
@@ -216,10 +215,7 @@ func Sub_428170(a1, a2 unsafe.Pointer) {
 }
 
 func Nox_xxx_tileNFromPoint_411160(p types.Pointf) int {
-	cp, free := alloc.New(types.Pointf{})
-	defer free()
-	*cp = p
-	return int(C.nox_xxx_tileNFromPoint_411160((*C.float2)(unsafe.Pointer(cp))))
+	return int(tileAtPoint(p))
 }
 
 func Nox_xxx_unitSetDecayTime_511660(obj *server.Object, a2 int) {

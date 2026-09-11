@@ -70,16 +70,23 @@ func gridLookupWant(xb, yb uint32, listCount int) int32 {
 
 func checkGridLookup(t *testing.T, label string, inputs [][2]uint32, listCount int, wrapper bool) {
 	t.Helper()
-	got := legacy.PortTestGridLookup(inputs, listCount, wrapper)
-	if len(got.Results) != len(inputs) || !got.GridUnchanged || !got.TableUnchanged || !got.NodesUnchanged || !got.InputGuardsOK || !got.PointerUnchanged || !got.Restored {
-		t.Fatalf("%s fixture state: results=%d/%d grid=%t table=%t nodes=%t guards=%t pointer=%t restored=%t", label, len(got.Results), len(inputs), got.GridUnchanged, got.TableUnchanged, got.NodesUnchanged, got.InputGuardsOK, got.PointerUnchanged, got.Restored)
+	routes := []bool{wrapper}
+	if !wrapper {
+		routes = append(routes, true)
 	}
-	for n, in := range inputs {
-		want := gridLookupWant(in[0], in[1], listCount)
-		if got.Results[n] != want {
-			t.Fatalf("%s case=%d x=%08x y=%08x list=%d wrapper=%t got=%08x want=%08x", label, n, in[0], in[1], listCount, wrapper, uint32(got.Results[n]), uint32(want))
+	for _, route := range routes {
+		got := legacy.PortTestGridLookup(inputs, listCount, route)
+		if len(got.Results) != len(inputs) || !got.GridUnchanged || !got.TableUnchanged || !got.NodesUnchanged || !got.InputGuardsOK || !got.PointerUnchanged || !got.Restored {
+			t.Fatalf("%s fixture state: results=%d/%d grid=%t table=%t nodes=%t guards=%t pointer=%t restored=%t", label, len(got.Results), len(inputs), got.GridUnchanged, got.TableUnchanged, got.NodesUnchanged, got.InputGuardsOK, got.PointerUnchanged, got.Restored)
+		}
+		for n, in := range inputs {
+			want := gridLookupWant(in[0], in[1], listCount)
+			if got.Results[n] != want {
+				t.Fatalf("%s case=%d x=%08x y=%08x list=%d wrapper=%t got=%08x want=%08x", label, n, in[0], in[1], listCount, route, uint32(got.Results[n]), uint32(want))
+			}
 		}
 	}
+
 }
 
 func gridBits(v float32) uint32 { return math.Float32bits(v) }
@@ -174,7 +181,7 @@ func TestGridLookupCABI(t *testing.T) {
 	checkGridLookup(t, "wrapper-fallback", wrapper, 0, true)
 	checkGridLookup(t, "wrapper-list", wrapper, 12, true)
 
-	t.Logf("grid cases: physical=%d locals=%d ulp=%d raw=%d random=%d wrapper=%d total=%d", len(physical), len(local)*13, len(ulp), len(rawPairs), len(random), len(wrapper), len(physical)+len(local)*13+len(ulp)+len(rawPairs)+len(random)+2*len(wrapper))
+	t.Logf("grid cases: physical=%d locals=%d ulp=%d raw=%d random=%d wrapper=%d total=%d", len(physical), len(local)*13, len(ulp), len(rawPairs), len(random), len(wrapper), 2*(len(physical)+len(local)*13+len(ulp)+len(rawPairs)+len(random))+2*len(wrapper))
 }
 
 func BenchmarkGridLookup(b *testing.B) {

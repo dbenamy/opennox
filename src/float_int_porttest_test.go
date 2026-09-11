@@ -36,7 +36,7 @@ func checkFloatInt(t *testing.T, bits []uint32, control int) {
 	for i, b := range bits {
 		full, abs := floatIntExpected(b), floatIntExpected(b&0x7fffffff)
 		want := [3]int32{full, int32(int16(full)), int32(int16(abs))}
-		if got[i].Values != want || !got[i].GuardsOK || !got[i].ControlOK {
+		if got[i].Values != want || got[i].Native != want || !got[i].GuardsOK || !got[i].ControlOK {
 			t.Fatalf("bits=%08x control=%x got=%+v want=%v", b, control, got[i], want)
 		}
 	}

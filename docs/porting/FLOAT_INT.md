@@ -51,3 +51,10 @@ not keeping C solely as a test oracle. Production C remains **140,455 lines**.
 The next grid audit found `i-1 <= 0` can overflow for INT32_MIN, the observed
 invalid-conversion result. Reproduce the caller bug and prepare a bounds repair
 before asking the user about the behavior change.
+
+## Native Go owner integration
+
+Grid lookup now uses the private bit-based floatToInt32 helper. The retained
+conversion corpus checks C and native Go independently against the IEEE oracle,
+including all 684 control-word cases. C converters remain for actual C callers;
+see GRID_LOOKUP.md for measured caller costs and staged retirement.

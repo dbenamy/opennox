@@ -27,11 +27,13 @@ static void porttest_float_int_calls(uint32_t bits, int *out) {
 import "C"
 
 import (
+	"math"
 	"runtime"
 	"unsafe"
 )
 
 type PortTestFloatIntResult struct {
+	Native              [3]int32
 	Values              [3]int32
 	GuardsOK, ControlOK bool
 }
@@ -52,7 +54,7 @@ func PortTestFloatInt(bits []uint32, cwMask int) (out []PortTestFloatIntResult) 
 	for i, b := range bits {
 		words := [5]C.int{0x12345678, 0x34567812, 0x45678123, 0x56781234, 0x76543210}
 		C.porttest_float_int_calls(C.uint32_t(b), (*C.int)(unsafe.Pointer(&words[1])))
-		out[i] = PortTestFloatIntResult{Values: [3]int32{int32(words[1]), int32(words[2]), int32(words[3])}, GuardsOK: words[0] == 0x12345678 && words[4] == 0x76543210, ControlOK: C.porttest_float_cw() == control}
+		out[i] = PortTestFloatIntResult{Values: [3]int32{int32(words[1]), int32(words[2]), int32(words[3])}, Native: [3]int32{floatToInt32(math.Float32frombits(b)), int32(int16(floatToInt32(math.Float32frombits(b)))), int32(int16(floatToInt32(math.Float32frombits(b & 0x7fffffff))))}, GuardsOK: words[0] == 0x12345678 && words[4] == 0x76543210, ControlOK: C.porttest_float_cw() == control}
 	}
 	return out
 }
