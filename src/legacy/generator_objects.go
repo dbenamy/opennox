@@ -86,7 +86,7 @@ func generatorSpawn(gen *server.Object, point *types.Pointf, src *server.Object)
 	if *beholder == 0 {
 		*beholder = uint32(core.Types.IndByID("Beholder"))
 	}
-	result := uint32(C.sub_50DE80(C.int(uintptr(gen.CObj())), (*C.float)(unsafe.Pointer(&pos))))
+	result := uint32(spawnPolicyAdmission(gen, pos))
 	if result == 0 {
 		return 0
 	}
@@ -114,7 +114,7 @@ func generatorSpawn(gen *server.Object, point *types.Pointf, src *server.Object)
 	if uint32(child.TypeInd) == *beholder {
 		*(*uint32)(unsafe.Add(child.UpdateData, 1504)) = 0
 	}
-	if C.sub_50E030(C.int(uintptr(gen.CObj())), (*C.uint32_t)(child.CObj())) == 0 {
+	if spawnPolicyRegister(gen, child) == 0 {
 		return uint32(C.nox_xxx_objectFreeMem_4E38A0(asObjectC(child)))
 	}
 

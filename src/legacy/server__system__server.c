@@ -746,20 +746,6 @@ void nox_xxx_voteUptate_506F30() {
 	}
 }
 
-//----- (0050D890) --------------------------------------------------------
-unsigned int sub_50D890() {
-	unsigned int result; // eax
-
-	if (!(gameFrame() % (unsigned int)(5 * gameFPS()))) {
-		sub_50D8D0();
-	}
-	result = gameFrame() / 0xFu;
-	if (!(gameFrame() % 0xFu)) {
-		result = sub_50D960();
-	}
-	return result;
-}
-
 //----- (0051A1F0) --------------------------------------------------------
 void sub_51A1F0(int a1) {
 	int v1;           // ebx

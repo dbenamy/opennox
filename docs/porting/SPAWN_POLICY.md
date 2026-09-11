@@ -29,7 +29,7 @@ All indices, glyph allocations, player memory, globals, and pools are restored.
 
 Registration checks head/tail unlink, idempotence, the real 96-record capacity,
 failed allocation, reuse after removal and repeated cleanup. Far culling checks
-strict distance700, exact joined==1, busy state and no-player behavior. Visible
+strict distance 700, exact joined==1, busy state and no-player behavior. Visible
 culling checks deletion counts, player-specific capacities, overlapping views,
 zero distances, sorting permutations and resource exhaustion. Tick checks both
 modulo gates across four tick rates and frame boundaries including wraparound.
@@ -45,3 +45,27 @@ primitive panics on allocation failure. Fixed-pool NewObject exhaustion is
 exercised through the real allocator. Glyph creation uses a synthetic type with
 real init storage and no asset callbacks; the inventory engine remains outside
 this conversion. Linked records use C-owned memory throughout.
+
+## Native implementation
+
+Original-C baseline: `518b9e72`. All 1,582 spawn-policy cases and 2,264 generator
+cases plus 128 tile checks match native Go together (8.523s). C-owned allocator
+records remain 12/148 bytes; allocation uses the same existing Go alloc.Class
+implementation directly. Pairwise exchange ordering is preserved for visibility
+sorting, including equal distances. Intrusive removal updates next.prev before
+prev.next, with a missing previous pointer selecting head replacement.
+
+Sixteen C bodies and their private declarations are removed. Only E140 and E1E0
+retain C exports for the existing object/monster death owners. Startup/shutdown,
+generator admission/association, glyph release and periodic tick callers route
+directly to Go. Production C is 133,272 physical lines across 152 files (minus 564),
+with no C reference algorithms. Qualification artifacts: build/port-spawn-policy;
+original-C fixture captures: build/port-generator/spawn-*.
+
+Accumulated default/server/highres port contracts pass (67.794s, 57.408s,
+57.752s). All three production builds verify ELF32/i386 and GO386=sse2.
+The full-suite failure multiset exactly matches the baseline: 1,553 entries,
+15 passing / 3 failing / 32 skipped packages. Fresh spawn-policy-port headless
+gameplay exits 0 against the preserved screenshots with overrides disabled and
+null audio. This smoke scenario checks integration; the locked fixtures provide
+the detailed spawn-policy behavior coverage.

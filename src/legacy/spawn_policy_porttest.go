@@ -5,7 +5,6 @@ package legacy
 /*
 #include <stdint.h>
 #include "GAME4_1.h"
-unsigned int sub_50D890(void);
 extern void* nox_alloc_spawn_2386216;
 extern void* nox_alloc_monsterList_2386220;
 extern uint32_t dword_5d4594_2386212;
@@ -277,24 +276,24 @@ func (f *portTestGeneratorSpawnPolicy) dispatch(gen *server.Object, spec PortTes
 	}
 	switch action.Op {
 	case PortTestGeneratorSpawnRegister:
-		return uint32(C.sub_50E030(C.int(uintptr(gen.CObj())), (*C.uint32_t)(u.CObj())))
+		return uint32(spawnPolicyRegister(gen, u))
 	case PortTestGeneratorSpawnRemove:
 		C.sub_50E140(C.int(uintptr(u.CObj())))
 	case PortTestGeneratorSpawnNonZombieCleanup:
-		C.sub_50E1E0(C.int(uintptr(u.CObj())))
+		spawnPolicyDeathRelease(u)
 	case PortTestGeneratorSpawnGlyphCleanup:
-		C.sub_50E210((*C.nox_object_t)(u.CObj()))
+		spawnPolicyGlyphRelease(u)
 	case PortTestGeneratorSpawnCandidate:
-		C.sub_50DFB0((*C.float)(u.CObj()), C.int(uintptr(f.proxy.life.players[0].CObj())))
+		spawnPolicyCandidate(u, &f.proxy.life.players[0])
 	case PortTestGeneratorSpawnFarCull:
-		C.sub_50D8D0()
+		spawnPolicyFarCull()
 	case PortTestGeneratorSpawnVisibleCull:
-		return uint32(C.sub_50D960())
+		return spawnPolicyVisibleCull()
 	case PortTestGeneratorSpawnAdmission:
 		p := types.Pointf{X: *(*float32)(unsafe.Pointer(&spec.Point[0])), Y: *(*float32)(unsafe.Pointer(&spec.Point[1]))}
-		return uint32(C.sub_50DE80(C.int(uintptr(gen.CObj())), (*C.float)(unsafe.Pointer(&p))))
+		return uint32(spawnPolicyAdmission(gen, p))
 	case PortTestGeneratorSpawnTick:
-		return uint32(C.sub_50D890())
+		return spawnPolicyTick()
 	default:
 		panic("generator spawn-policy operation")
 	}

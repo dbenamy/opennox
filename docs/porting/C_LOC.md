@@ -70,6 +70,7 @@ target build selection and linker evidence.
 | Quest death-penalty policy and six private helpers (2026-09-11) | 153 | 134,569 | −385 | 0 |
 | Generic object death callbacks across GAME5 and object-die C (2026-09-11) | 152 | 134,304 | −265 | 0 |
 | Monster generator death, update, placement, spawn and copy (2026-09-11) | 152 | 133,836 | −468 | 0 |
+| Spawn ownership, admission, visibility culling and periodic tick (2026-09-11) | 152 | 133,272 | −564 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

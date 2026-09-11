@@ -3,68 +3,47 @@
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
-## In progress — spawn-policy original-C baseline
-
-Generator native `192c458f` is committed and pushed. Spawn-policy C remains
-intact at133,836 physical C lines. The 16-body/564-line next batch has1,582
-original-C cases in twelve groups, including pool exhaustion, overlapping player
-views, glyph cleanup and tick gates. See docs/porting/SPAWN_POLICY.md.
-
-All twelve groups repeat exactly; all1,582 locked cases pass (4.532s).
-Generator/adjacent regressions also pass (16.035s).
-Commit/push the completed original-C baseline before removing any C. Native
-lifetime/culling drafts are ignored under build/port-generator; primary already
-corrected the helper's reversed unlink logic in spawn-native-lifetime.go.draft.
-Review before integration. No user question is pending; continue to native
-qualification, docs, commit/push, and the next connected batch.
-
-## Resume here — 2026-09-11
+## Resume here — spawn policy completed, 2026-09-11
 
 Continue the x86 C-to-Go port on dev in connected, reviewed, tested, documented,
 committed and pushed batches until a substantive question or rate limit. User
 approved more aggressive batching and one bounded helper. Preserve the untracked
 asset archive. No question is pending.
 
-Latest qualified chunk: nine generator functions (death/update/selection/
-placement/vacancy/radial/spawn/copy), 468 physical C lines removed. Original-C
-baseline `898e4635` is committed and pushed; all 2,264 generator cases plus
-128 tile known answers match native Go. See docs/porting/GENERATOR.md.
-Production C: **133,836 physical lines**, **152 files**, **zero reference C**.
-Only registered death/update retain C ABI exports; seven helpers are Go-only.
+Latest qualified chunk: spawn ownership, admission, culling, glyph cleanup and
+periodic tick, 16 functions / 564 physical C lines removed. Original-C baseline
+`518b9e72` is committed and pushed; all 1,582 spawn-policy cases and 2,264
+generator cases plus 128 tile checks match native Go (8.523s combined).
+Production C: **133,272 physical lines**, **152 files**, **zero reference C**.
+See docs/porting/SPAWN_POLICY.md. Only E140 and E1E0 retain C exports; other
+family callers route directly to Go. C-owned pool layouts remain 12/148 bytes.
 
-Accumulated default/server/highres contracts pass (70.667s/50.693s/54.296s).
+Accumulated default/server/highres contracts pass (67.794s/57.408s/57.752s).
 Three production binaries verify ELF32/i386/SSE2. Full suite matches exactly
-1,553 known failures (15 pass/3 fail/32 skip packages). Fresh generator-port
+1,553 known failures (15 pass/3 fail/32 skip packages). Fresh spawn-policy-port
 headless gameplay exits 0 against preserved screenshots, overrides off, null
-audio. Artifacts/scripts: build/port-generator. Commit/push native changes if
-still uncommitted, then continue immediately to the next batch below.
+audio. Artifacts/scripts: build/port-spawn-policy; original-C captures under
+build/port-generator/spawn-*. Commit/push native changes if still uncommitted.
 
-Next connected batch: SpawnClass/MonsterList ownership, admission, culling,
-association and cleanup: GAME4_1 50D780 through50E210 =550 C lines/15 bodies,
-plus outer tick50D890 in server__system__server.c. Include the tick so its
-Go-only caller avoids extra ABI crossings. Reuse the generator map/player/
-allocator fixture; extend original-C contracts and commit them before removal.
+Next candidate: connected shop/trade subsystem, GAME4_1 50E2A0 through 510E20
+(before 510E50), 36 functions / 1,337 physical C lines. Assess the full boundary
+and reuse shared player, gold, inventory, modifier, packet and allocator fixtures.
+Lock and commit original-C behavior before conversion. Cover price arithmetic,
+stock ordering/matching, pool exhaustion, session cleanup, offers and gold,
+packet bytes, repairs/sales and stock creation. Do not turn every helper into a
+separately qualified chunk. Helper insert_port is auditing external callers and
+fixture reuse in ignored build/port-shop/caller-audit.md; primary verifies claims.
 
-Helper insert_port is idle. Ignored audit and draft fixture:
-build/port-generator/next-batch-audit.md and spawn_policy_porttest.go.
-Review carefully: audit initially said14 bodies instead of15; draft allocates
-772-byte objects but should allocate sizeof(server.Object) for Go EXT/server
-handle and snapshot only772. Raw allocator/list pointers must be normalized;
-draft does not fully do that. Server helper currently has NO Glyph type.
-Add actual array registration/removal sequences, player visibility/capacity,
-list sorting/deletion order, direct float-view callback filters, glyph cleanup,
-pool exhaustion and tick gates. alloc.NewClass panics on allocation failure;
-fixed class NewObject returns nil on exhaustion. Do not invent a nil factory
-failure injection inconsistent with the retained primitives.
+Use build/baseline/env.sh: Go 1.26, GOARCH=386, GO386=sse2, CGO enabled, GCC;
+keep remaining C x87 flags unchanged. Run focused contracts while implementing;
+qualify accumulated variants, production builds and gameplay at the batch boundary.
+Compare full-suite failures by metadata only. Update docs/porting/C_LOC.md each
+conversion, commit/push the recovery checkpoint and continue immediately.
 
-Use build/baseline/env.sh: Go1.26, GOARCH386, GO386sse2, CGO enabled, GCC;
-keep remaining C x87 flags unchanged. Run the saved accumulated check script,
-production builds, metadata-only full-suite comparison, and preserved headless
-scenario once per connected conversion. Update docs/porting/C_LOC.md each time.
-
-Previous native chunks: generic death fefc0445, quest penalty ab9fc939,
-initialization7ac58eed, callbacks6f0a291e, spells51dd2621, mainAIf674ad3a,
-monsterstate29b6e5d3, lifecyclee3ee0c9c, combate37039e5. Their tests remain locked.
+Previous native chunks: generator192c458f, generic death fefc0445, quest penalty
+ab9fc939, initialization7ac58eed, callbacks6f0a291e, spells51dd2621,
+mainAIf674ad3a, monsterstate29b6e5d3, lifecyclee3ee0c9c, combate37039e5.
+Their original-C contracts remain locked.
 
 <!-- /current-checkpoint -->
 

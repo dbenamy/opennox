@@ -11,20 +11,6 @@ extern void* nox_alloc_monsterList_2386220;
 extern uint32_t dword_5d4594_2386212;
 extern uint32_t dword_5d4594_2386224;
 extern uint32_t dword_5d4594_2386228;
-void sub_50D7E0(void);
-static void portTestGeneratorSpawnClassesFree(void) {
-	if (nox_alloc_spawn_2386216 && nox_alloc_monsterList_2386220) {
-		sub_50D820();
-		return;
-	}
-	if (nox_alloc_spawn_2386216) nox_free_alloc_class(nox_alloc_spawn_2386216);
-	if (nox_alloc_monsterList_2386220) nox_free_alloc_class(nox_alloc_monsterList_2386220);
-	nox_alloc_spawn_2386216 = 0;
-	nox_alloc_monsterList_2386220 = 0;
-	dword_5d4594_2386212 = 0;
-	dword_5d4594_2386224 = 0;
-	dword_5d4594_2386228 = 0;
-}
 */
 import "C"
 
@@ -62,9 +48,9 @@ func portTestGeneratorSpawnAllocator() (reset func(), snapshot func() portTestGe
 	C.dword_5d4594_2386212 = 0
 	C.dword_5d4594_2386224 = 0
 	C.dword_5d4594_2386228 = 0
-	if C.nox_xxx_allocMonsterRelatedArrays_50D780() == 0 {
+	if spawnPolicyInit() == 0 {
 		// A partial 50D780 allocation, if any, is owned by this fixture.
-		C.portTestGeneratorSpawnClassesFree()
+		spawnPolicyFree()
 		C.nox_alloc_spawn_2386216, C.nox_alloc_monsterList_2386220 = oldSpawnClass, oldMonsterClass
 		C.dword_5d4594_2386212, C.dword_5d4594_2386224, C.dword_5d4594_2386228 = oldSpawnHead, oldMonsterHead, oldMonsterCount
 		panic("generator SpawnClass allocation failed")
@@ -78,7 +64,7 @@ func portTestGeneratorSpawnAllocator() (reset func(), snapshot func() portTestGe
 	}
 	reset = func() {
 		checkOwn()
-		C.sub_50D7E0()
+		spawnPolicyReset()
 	}
 	snapshot = func() (out portTestGeneratorSpawnAllocatorSnapshot) {
 		checkOwn()
@@ -126,8 +112,8 @@ func portTestGeneratorSpawnAllocator() (reset func(), snapshot func() portTestGe
 	}
 	restore = func() {
 		checkOwn()
-		C.sub_50D7E0()
-		C.portTestGeneratorSpawnClassesFree()
+		spawnPolicyReset()
+		spawnPolicyFree()
 		C.nox_alloc_spawn_2386216, C.nox_alloc_monsterList_2386220 = oldSpawnClass, oldMonsterClass
 		C.dword_5d4594_2386212, C.dword_5d4594_2386224, C.dword_5d4594_2386228 = oldSpawnHead, oldMonsterHead, oldMonsterCount
 	}

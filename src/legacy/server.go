@@ -40,7 +40,6 @@ void nox_xxx_updateUnits_51B100();
 void nox_xxx_voteUptate_506F30();
 void sub_4E4170();
 void sub_4EC720();
-unsigned int sub_50D890();
 void nox_xxx_gameTick_4D2580_server_D();
 int nox_xxx_netUpdateObjectSpecial_527E50(nox_object_t* a1p, nox_object_t* a2p);
 void sub_4139C0();
@@ -289,7 +288,7 @@ func Sub_4EC720() {
 	C.sub_4EC720()
 }
 func Sub_50D890() {
-	C.sub_50D890()
+	spawnPolicyTick()
 }
 func Sub_4E4170() {
 	C.sub_4E4170()
@@ -349,7 +348,7 @@ func Nox_xxx_registerShopClasses_50E2A0() int {
 	return int(C.nox_xxx_registerShopClasses_50E2A0())
 }
 func Nox_xxx_allocMonsterRelatedArrays_50D780() int {
-	return int(C.nox_xxx_allocMonsterRelatedArrays_50D780())
+	return spawnPolicyInit()
 }
 func Nox_xxx_allocVoteArray_5066D0() int {
 	return int(C.nox_xxx_allocVoteArray_5066D0())
@@ -379,7 +378,7 @@ func Sub_506720() {
 	C.sub_506720()
 }
 func Sub_50D820() {
-	C.sub_50D820()
+	spawnPolicyFree()
 }
 func Nox_xxx_deleteShopInventories_50E300() {
 	C.nox_xxx_deleteShopInventories_50E300()
@@ -463,7 +462,7 @@ func Sub_50E360() {
 	C.sub_50E360()
 }
 func Sub_50D7E0() {
-	C.sub_50D7E0()
+	spawnPolicyReset()
 }
 func Sub_4E4F80() {
 	C.sub_4E4F80()
