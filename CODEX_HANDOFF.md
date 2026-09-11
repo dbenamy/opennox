@@ -111,21 +111,29 @@ call the native helper directly. Expected captures are unchanged.
 Accumulated default/server/highres tests, including all 34,380 focused cases,
 pass in 178.994s / 161.251s / 162.972s. Three production binaries verified ELF32/i386/SSE2/CGO.
 Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip).
+Completed and pushed as `04b6d580`; summary delivered.
 Fresh unchanged repeat-a headless gameplay passes in 37.775s. Evidence:
 build/port-object-state and baseline/runs/object-state-final.
 
-### Active — reward-generation original-C baseline preparation
+### Active — reward-generation original-C baseline
 
-Candidate: 21 address blocks / 1,862 physical C lines in GAME3_3.c, addresses
-004F0390 through 004F2210. Still original C; no baseline or conversion completed.
-See [REWARD_GENERATION.md](docs/porting/REWARD_GENERATION.md). Local scope/source
-audit and fixture drafts (not yet applied): build/port-reward-generation.
-Reuse guarded object/type/owner/RNG fixtures; successful books/equipment/modifiers
-and placement must be exercised alongside filters and no-op paths. Repeat,
-lock, commit and push original-C captures before conversion. Continue after
-object-state commit/push; no question pending and no new agents. Preserve archive
-and stable evidence. Full-suite raw logs may contain secrets; print only
-package/test/action metadata.
+All 21 functions / 1,862 physical C lines remain original C. The 6,926-case /
+48-group corpus repeats byte-for-byte and hashes are locked. Combined regression
+passes 41,306 cases / 363 groups (122.877s); locked reward-only rerun passes (20.166s).
+Commit/push this baseline before production conversion. See
+[REWARD_GENERATION.md](docs/porting/REWARD_GENERATION.md). Evidence and source
+scope: build/port-reward-generation (c-final/c-confirm, baseline-hashes.json,
+positive-coverage.json). Factories return allocations without placement; the
+fixture now captures/frees those returns. Created update storage matches the
+existing guarded 64-byte payload convention. Positive coverage includes all
+reward families, all four modifier slots and actual placement/deletion.
+
+Production C remains 119,818 lines / 149 files / zero reference C. Continue with
+the entire connected batch after baseline push. No question pending and no new
+agents. Preserve archive and stable evidence. Full-suite raw logs may contain
+secrets; print only package/test/action metadata. Obsolete regenerable compiler
+cache files over 16 MB and older than two hours were pruned (40 files, 1.063 GB)
+to keep working space available; stable assets/evidence/binaries were preserved.
 
 <!-- /current-focus -->
 

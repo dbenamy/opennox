@@ -73,6 +73,7 @@ const (
 )
 
 type PortTestAttackSpec struct {
+	Reward                               *PortTestRewardSpec
 	State                                *PortTestObjectStateSpec
 	Damage                               *PortTestDamageSpec
 	Collision                            *PortTestProjectileCollisionSpec
@@ -87,6 +88,7 @@ type PortTestAttackSpec struct {
 	MissingTypes                         []string
 }
 type portTestAttack struct {
+	reward                  *portTestReward
 	record, collisionNormal unsafe.Pointer
 	damage                  *portTestDamage
 	state                   *portTestObjectState
@@ -112,12 +114,14 @@ func (p *portTestShopPools) attackPrepare() func() {
 	restoreCollision := p.projectileCollisionPrepare()
 	restoreDamage := p.damagePrepare()
 	restoreState := p.objectStatePrepare()
+	restoreReward := p.rewardPrepare()
 	oldRange, oldHit, oldTarget := C.dword_5d4594_2488652, C.dword_5d4594_2488656, C.dword_5d4594_2488660
 	C.dword_5d4594_2488652 = C.uint32_t(sp.NearestRange)
 	C.dword_5d4594_2488656 = 0
 	C.dword_5d4594_2488660 = 0
 	return func() {
 		C.dword_5d4594_2488652, C.dword_5d4594_2488656, C.dword_5d4594_2488660 = oldRange, oldHit, oldTarget
+		restoreReward()
 		restoreState()
 		restoreDamage()
 		restoreCollision()
@@ -184,6 +188,7 @@ func (p *portTestShopPools) attackItems() {
 	p.projectileCollisionItems()
 	p.damageItems()
 	p.objectStateItems()
+	p.rewardItems()
 }
 func (p *portTestShopPools) attackAction(a PortTestShopAction) uint32 {
 	tmp := p.proxy.callbacks.shop.spec.TemporaryUpdates
@@ -232,5 +237,5 @@ func (p *portTestShopPools) attackSnapshot(out []uint32) []uint32 {
 			}
 		}
 	}
-	return p.objectStateSnapshot(p.damageSnapshot(p.projectileCollisionSnapshot(out)))
+	return p.rewardSnapshot(p.objectStateSnapshot(p.damageSnapshot(p.projectileCollisionSnapshot(out))))
 }
