@@ -85,8 +85,9 @@ build/port-projectile-collisions and baseline/runs/projectile-collisions-port.
 
 ### Active — damage-dispatch original-C baseline preparation
 
-Candidate: 26 connected functions / 1,331 C lines, still original C. No baseline
-hashes locked yet. See [DAMAGE_DISPATCH.md](docs/porting/DAMAGE_DISPATCH.md).
+Candidate: 26 connected functions / 1,331 C lines, still original C. The 3,582-case / 42-group original-C baseline now repeats exactly;
+hashes are locked in damage_dispatch_porttest_test.go. All 31,623 accumulated
+focused cases / 262 groups pass (95.765s). Production is unchanged. See [DAMAGE_DISPATCH.md](docs/porting/DAMAGE_DISPATCH.md).
 Scope/source/audit: build/port-damage-dispatch. Reuse guarded health, equipment,
 attack and collision fixtures; repeat/lock/commit/push original-C captures before
 converting default/player damage and their armor/durability/defense helpers.

@@ -73,6 +73,7 @@ const (
 )
 
 type PortTestAttackSpec struct {
+	Damage                               *PortTestDamageSpec
 	Collision                            *PortTestProjectileCollisionSpec
 	Actor, Ammo                          int
 	RecordWords, ActorWords, UpdateWords map[int]uint32
@@ -84,7 +85,10 @@ type PortTestAttackSpec struct {
 	ProjectileSpeed                      float32
 	MissingTypes                         []string
 }
-type portTestAttack struct{ record, collisionNormal unsafe.Pointer }
+type portTestAttack struct {
+	record, collisionNormal unsafe.Pointer
+	damage                  *portTestDamage
+}
 
 func (p *portTestShopPools) attackPrepare() func() {
 	sp := p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack
@@ -96,14 +100,19 @@ func (p *portTestShopPools) attackPrepare() func() {
 	if sp.Collision != nil {
 		extra = projectileCollisionTypeNames
 	}
+	if sp.Damage != nil {
+		extra = append(extra, damageTypeNames...)
+	}
 	restore := p.proxy.core.PortTestAttackTypes(sp.ProjectileSpeed, sp.MissingTypes, extra...)
 	restoreCollision := p.projectileCollisionPrepare()
+	restoreDamage := p.damagePrepare()
 	oldRange, oldHit, oldTarget := C.dword_5d4594_2488652, C.dword_5d4594_2488656, C.dword_5d4594_2488660
 	C.dword_5d4594_2488652 = C.uint32_t(sp.NearestRange)
 	C.dword_5d4594_2488656 = 0
 	C.dword_5d4594_2488660 = 0
 	return func() {
 		C.dword_5d4594_2488652, C.dword_5d4594_2488656, C.dword_5d4594_2488660 = oldRange, oldHit, oldTarget
+		restoreDamage()
 		restoreCollision()
 		restore()
 	}
@@ -166,6 +175,7 @@ func (p *portTestShopPools) attackItems() {
 	}
 	C.dword_5d4594_2488660 = C.uint32_t(uintptr(p.temporaryRef(sp.NearestTarget).CObj()))
 	p.projectileCollisionItems()
+	p.damageItems()
 }
 func (p *portTestShopPools) attackAction(a PortTestShopAction) uint32 {
 	tmp := p.proxy.callbacks.shop.spec.TemporaryUpdates
@@ -214,5 +224,5 @@ func (p *portTestShopPools) attackSnapshot(out []uint32) []uint32 {
 			}
 		}
 	}
-	return p.projectileCollisionSnapshot(out)
+	return p.damageSnapshot(p.projectileCollisionSnapshot(out))
 }

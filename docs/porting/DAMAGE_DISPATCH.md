@@ -1,4 +1,43 @@
-# Next batch: damage dispatch, defense effects and durability
+# Damage dispatch, defense effects and durability
+
+## Original-C baseline — 2026-09-11
+
+All 26 candidate functions remain original C. The guarded fixture covers
+**3,582 cases / 42 complete capture groups**, repeated byte-for-byte in separate
+processes (12.074s confirmation). Hashes are locked in
+`src/damage_dispatch_porttest_test.go`; full local evidence is in
+`build/port-damage-dispatch/c-final-*` and `c-confirm-*`.
+
+Coverage includes all eighteen damage kinds; player/simple/monster subjects;
+health/lethal boundaries; game modes, damage sources and owner relationships;
+dead/invulnerable/shock/reflection/shield behavior; elemental resistances;
+armor absorption and conductive armor; fractional accumulation; defense and
+pre-damage modifier ordering and changed inputs; weapon/armor durability calls;
+blocking; generator health thresholds and clocks; gameball drop thresholds;
+projectile reflection geometry/directions; and supported nil-input paths.
+Explicit assertions check actual 50→38 health changes, parser results, and
+ball ownership on either side of the 30-damage threshold.
+
+Fixture details discovered before locking:
+
+- Durability's slot-one defense callback receives one float; defense slots two
+  and three receive an integer damage/type pair. Separate recorders avoid
+  reading uninitialized stack words.
+- Standalone tests do not initialize the runtime damage-name blob. The fixture
+  saves/restores the region, loads the shipped bytes, and relocates the eighteen
+  pointers just as runtime initialization does. Exact parser assertions caught
+  the earlier empty-string setup. The same region supplies the original 0.15
+  conductivity constant.
+- `itemDestroyed` takes a player index, not an object pointer. Its dispatcher
+  uses an explicit scalar index. `damageArmor` requires a nonnil object; nil
+  admission tests cover only original-C-supported paths.
+- Recorders only observe dependency calls and optionally return configured
+  values. No production algorithm has been copied into test C.
+
+Production C remains **122,284 lines / 149 files / zero reference C**.
+All 31,623 accumulated focused cases / 262 capture groups pass with locked
+hashes (95.765s), including all 28,041 prior cases unchanged.
+Commit/push this baseline before converting the connected batch.
 
 Candidate: 26 connected functions / 1,331 C lines spanning GAME3_2.c and
 GAME3_3.c, addresses 004E0A00 through 004E27D0. Group default/player damage,
