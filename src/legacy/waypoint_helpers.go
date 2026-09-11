@@ -47,14 +47,6 @@ func sub_579E70() *C.uint32_t {
 	return (*C.uint32_t)(p)
 }
 
-//export sub_547EE0
-func sub_547EE0(a1 C.int, mask C.uchar) C.int {
-	if a1 == 0 {
-		return 0
-	}
-	wp := waypointFromRaw(a1)
-	if !wp.IsEnabled() || !wp.HasFlag2Mask(byte(mask)) {
-		return 0
-	}
-	return 1
+func waypointEnabledMask(wp *server.Waypoint, mask byte) bool {
+	return wp.IsEnabled() && wp.HasFlag2Mask(mask)
 }

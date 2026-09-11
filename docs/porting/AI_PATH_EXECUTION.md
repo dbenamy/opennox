@@ -49,6 +49,30 @@ the new corpora. Artifacts: build/port-ai-path-execution (ignored); C snapshots
 are c-path-cases.json and c-graph-cases.json, and logs are c-qualified.log and
 c-repeated.log. Recover the original implementation through the baseline commit.
 
-Production C remains 139,165 lines, 153 files, zero reference C. Native
-conversion and whole-batch qualification follow. Prior navigation batch is
+At the original baseline, production C was 139,165 lines, 153 files, zero
+reference C. Prior navigation batch is
 fully qualified, committed and pushed as e32982f7. No user question is pending.
+
+Native conversion matches original-C baseline bc1e662a: both corpora, independent
+assertions, repeated-update hashes and all existing AI/waypoint checks pass.
+Seven C bodies and four unused C exports are retired (waypoint eligibility,
+nearest-waypoint lookup, detailed path setup and retreat generation). Native
+roaming/navigation call private Go path helpers directly. The graph still shares
+the original epoch/scratch/one-shot storage; no test-only C body remains.
+Production C is 138,824 physical lines (minus 341), 153 files, zero reference C.
+First native fixed-position costs were 1,803/1,847 ns per actual-move/move-path
+call, versus C 2,686/3,020; these are VM microbenchmarks, not gameplay speed claims.
+
+Review checked the detailed-path success contract in unit_ai_path.go and
+server/object_ai_path.go: status zero appends at least the target point. The
+follower reloads the returned count before overwriting its last point. Cached
+target writes retain C ordering even for an aliased point. Accumulated tests
+and production builds pass in default/server/highres; all binaries identify as
+ELF32/80386 with GO386=sse2. The full suite matches exactly 1,553 known failure
+entries (15 passing/3 failing/32 skipped-no-test packages), none added or removed.
+Fresh ai-path-execution-port gameplay exits 0 against both preserved screenshots,
+overrides off. Qualification is complete.
+
+Next: group the six combat actions, their decision/stack helpers, scan callbacks
+and private buff cleanup. Record script/audio/strike/projectile effects before
+porting; retain broader damage, player-attack and spell engines.

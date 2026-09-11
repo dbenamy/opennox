@@ -24,7 +24,6 @@
 #include "client__gui__window.h"
 #include "client__video__draw_common.h"
 extern uint32_t dword_5d4594_2491716;
-extern uint32_t dword_5d4594_2490504;
 extern void* nox_alloc_hit_2491548;
 extern uint32_t dword_5d4594_2491580;
 extern uint32_t dword_587000_292488;
@@ -598,122 +597,6 @@ int sub_547DB0(int a1, float2* a2) {
 		return 0;
 	}
 	return 1;
-}
-
-//----- (00547F10) --------------------------------------------------------
-int sub_547F10() {
-	int result; // eax
-
-	result = *getMemU32Ptr(0x5D4594, 2490500);
-	*getMemU32Ptr(0x5D4594, 2490500) = 0;
-	return result;
-}
-
-//----- (00547F20) --------------------------------------------------------
-int sub_547F20(int a1, float* a2) {
-	int v2;       // ebx
-	uint32_t* v3; // edi
-	int v4;       // eax
-	int result;   // eax
-
-	v2 = *(uint32_t*)(a1 + 748);
-	v3 = (uint32_t*)sub_50CB20(a1, (float*)(a1 + 56));
-	v4 = sub_50CB20(a1, a2);
-	if (v3 && v4 && v3 != (uint32_t*)v4) {
-		result = nox_xxx_BuildWaypointPath_547F70(v3, v4, (uint32_t*)(v2 + 300), 16);
-	} else {
-		result = 0;
-	}
-	return result;
-}
-
-//----- (00547F70) --------------------------------------------------------
-int nox_xxx_BuildWaypointPath_547F70(uint32_t* a1, int a2, uint32_t* a3, int a4) {
-	uint32_t* v4;       // edi
-	int v5;             // ebx
-	int v6;             // ebp
-	uint32_t* v7;       // esi
-	int v8;             // ebx
-	unsigned char* v9;  // eax
-	int v10;            // esi
-	uint32_t* v11;      // ecx
-	unsigned char* v12; // eax
-	uint32_t* v14;      // [esp+14h] [ebp+4h]
-
-	v4 = a1;
-	if (sub_547EE0((int)a1, 0x80u) && sub_547EE0(a2, 0x80u)) {
-		++dword_5d4594_2490504;
-		a1[127] = 0;
-		a1[128] = 0;
-		a1[126] = dword_5d4594_2490504;
-		do {
-			v14 = 0;
-			if (!v4) {
-				break;
-			}
-			do {
-				if (v4 == (uint32_t*)a2) {
-					v8 = 0;
-					*getMemU32Ptr(0x5D4594, 2490500) = 0;
-					v9 = getMemAt(0x5D4594, 2489476);
-					while (1) {
-						*(uint32_t*)v9 = v4;
-						v4 = (uint32_t*)v4[127];
-						v9 += 4;
-						++v8;
-						if (v9 == getMemAt(0x5D4594, 2490500)) {
-							break;
-						}
-						if (!v4) {
-							goto LABEL_20;
-						}
-					}
-					nox_ai_debug_printf_5341A0("BuildWaypointPath: Node list exceeded internal buffer.\n");
-				LABEL_20:
-					v10 = 0;
-					if (v8 > 0) {
-						v11 = a3;
-						v12 = getMemAt(0x5D4594, 2489472 + 4 * v8);
-						do {
-							*v11 = *(uint32_t*)v12;
-							if (v10 == a4) {
-								break;
-							}
-							++v10;
-							v12 -= 4;
-							++v11;
-						} while (v10 < v8);
-					}
-					if (v10 != v8) {
-						nox_ai_debug_printf_5341A0("BuildWaypointPath: Node list too long.\n");
-						*getMemU32Ptr(0x5D4594, 2490500) = 1;
-					}
-					return v10;
-				}
-				v5 = 0;
-				if (*((uint8_t*)v4 + 476)) {
-					v6 = (int)(v4 + 23);
-					do {
-						v7 = *(uint32_t**)v6;
-						if (*(uint32_t*)(*(uint32_t*)v6 + 504) != dword_5d4594_2490504) {
-							if (sub_547EE0((int)v7, 0x80u)) {
-								v7[127] = v4;
-								v7[128] = v14;
-								v14 = v7;
-								v7[126] = dword_5d4594_2490504;
-							}
-						}
-						++v5;
-						v6 += 8;
-					} while (v5 < *((unsigned char*)v4 + 476));
-				}
-				v4 = (uint32_t*)v4[128];
-			} while (v4);
-			v4 = v14;
-		} while (v14);
-	}
-	*getMemU32Ptr(0x5D4594, 2490500) = 2;
-	return 0;
 }
 
 //----- (00548100) --------------------------------------------------------

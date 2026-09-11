@@ -124,24 +124,9 @@ func nox_xxx_checkMobAction_50A0D0(a1 *nox_object_t, a2 int) int {
 	return bool2int(asObjectS(a1).UpdateDataMonster().HasAction(ai.ActionType(a2)))
 }
 
-//export nox_xxx_generateRetreatPath_50CA00
-func nox_xxx_generateRetreatPath_50CA00(ptr unsafe.Pointer, sz int, obj *nox_object_t, p *C.float2) int {
-	return GetServer().Nox_xxx_generateRetreatPath_50CA00(unsafe.Slice((*types.Pointf)(ptr), sz), asObjectS(obj), (*types.Pointf)(unsafe.Pointer(p)))
-}
-
-//export nox_xxx_creatureSetDetailedPath_50D220
-func nox_xxx_creatureSetDetailedPath_50D220(obj *nox_object_t, p *C.float2) {
-	GetServer().Nox_xxx_creatureSetDetailedPath_50D220(asObjectS(obj), (*types.Pointf)(unsafe.Pointer(p)))
-}
-
 //export sub_50B810
 func sub_50B810(obj *nox_object_t, p *C.float2) int {
 	return bool2int(GetServer().Sub_50B810(asObjectS(obj), (*types.Pointf)(unsafe.Pointer(p))))
-}
-
-//export sub_50CB20
-func sub_50CB20(obj *nox_object_t, p *C.float2) *nox_waypoint_t {
-	return asWaypointC(GetServer().Sub_50CB20(asObjectS(obj), (*types.Pointf)(unsafe.Pointer(p))))
 }
 
 //export sub_50B500

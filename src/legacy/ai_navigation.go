@@ -94,14 +94,14 @@ func navigationMove(u *server.Object) {
 			escortStopRunning(u)
 		}
 	}
-	if C.nox_xxx_creatureSetMovePath_50D5A0(C.int(uintptr(u.CObj()))) == 1 {
+	if pathSetMove(u) {
 		status := byte(ud.Field71)
 		core := GetServer().S()
 		retry := status == 2 || status == 1 && uint32(core.Frame()-ud.Field135) < 5*core.TickRate()
 		if status == 1 {
 			ud.Field135 = core.Frame()
 		}
-		if status == 0 && C.sub_547F10() == 0 && head.Args[2] == 0 {
+		if status == 0 && pathTakeStatus() == 0 && head.Args[2] == 0 {
 			C.nox_xxx_mobCalcDir_533CC0(C.int(uintptr(u.CObj())), (*C.float)(unsafe.Pointer(&head.Args[0])))
 			u.MonsterPopAction()
 		}
@@ -194,7 +194,7 @@ func navigationFlee(u *server.Object) {
 		move = count > 1
 	}
 	if move {
-		if C.nox_xxx_creatureActuallyMove_50D3B0((*C.float)(u.CObj())) != 0 {
+		if pathActuallyMove(u) {
 			ud.Field2 = 0
 		}
 		navigationAudio(u)

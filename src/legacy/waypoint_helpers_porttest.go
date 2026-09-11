@@ -5,7 +5,6 @@ package legacy
 /*
 #include <stdlib.h>
 #include "GAME5_2.h"
-#include "GAME5.h"
 */
 import "C"
 
@@ -46,7 +45,7 @@ func PortTestWaypointMasks(specs []PortTestWaypointMask) []PortTestWaypointMaskR
 				mask = 1
 			}
 		}
-		enabled := int(C.sub_547EE0(arg, C.uchar(spec.Mask)))
+		enabled := bool2int(waypointEnabledMask(waypointFromRaw(arg), spec.Mask))
 		out = append(out, PortTestWaypointMaskResult{Mask: mask, EnabledMask: enabled, Unchanged: bytes.Equal(raw, before)})
 	}
 	return out

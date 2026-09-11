@@ -98,7 +98,7 @@ func roamUpdate(u *server.Object) {
 			return
 		}
 	}
-	if C.nox_xxx_creatureActuallyMove_50D3B0((*C.float)(unsafe.Pointer(u))) != 0 {
+	if pathActuallyMove(u) {
 		ud.Field2 = 0
 	}
 	C.nox_xxx_monsterMoveAudio_534030(C.int(uintptr(unsafe.Pointer(u))))

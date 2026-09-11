@@ -4,7 +4,6 @@ package legacy
 
 /*
 #include <stdint.h>
-#include "GAME5.h"
 extern uint32_t dword_5d4594_2490504;
 */
 import "C"
@@ -30,7 +29,7 @@ type PortTestWaypointGraphNode struct {
 	Parent, Next int
 }
 
-// PortTestWaypointGraphSpec invokes the original C builder once. Start and End
+// PortTestWaypointGraphSpec invokes the waypoint builder once. Start and End
 // may be -1 to exercise its safe ineligible-endpoint path. Capacity is bounded
 // to 0..32; the fixture always supplies Capacity+1 writable output words.
 type PortTestWaypointGraphSpec struct {
@@ -70,8 +69,7 @@ const (
 	portTestWaypointGuardWords = 2
 )
 
-// PortTestWaypointGraph runs arbitrary small graphs through the original C
-// builder. It restores the standalone epoch, logical 256-word scratch, and
+// PortTestWaypointGraph runs arbitrary small graphs against the captured C baseline. It restores the standalone epoch, logical 256-word scratch, and
 // one-shot flag after all operations. The C builder uses offsets 504 (epoch),
 // 508 (parent), and 512 (next-frontier); all other waypoint words are checked.
 func PortTestWaypointGraph(specs []PortTestWaypointGraphSpec) (out []PortTestWaypointGraphResult, restored bool) {
@@ -168,12 +166,7 @@ func portTestWaypointGraphOne(spec PortTestWaypointGraphSpec, scratch []uint32, 
 	output := outRaw[portTestWaypointGuardWords : portTestWaypointGuardWords+words]
 
 	start, end := nodeRef(spec.Start), nodeRef(spec.End)
-	ret := C.nox_xxx_BuildWaypointPath_547F70(
-		(*C.uint32_t)(unsafe.Pointer(start)),
-		C.int(uintptr(unsafe.Pointer(end))),
-		(*C.uint32_t)(unsafe.Pointer(&output[0])),
-		C.int(spec.Capacity),
-	)
+	ret := pathBuildGraph(start, end, output)
 
 	norm := func(v uint32) int32 {
 		if v == 0 {

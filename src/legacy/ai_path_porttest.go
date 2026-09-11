@@ -3,7 +3,7 @@
 package legacy
 
 /*
-#include "GAME4_1.h"
+#include <stdint.h>
 extern uint32_t dword_5d4594_2490504;
 */
 import "C"
@@ -75,13 +75,13 @@ func portTestPathPrepare(proxy *portTestRoamOwnerServer, u *server.Object, sp *P
 func portTestPathCall(u *server.Object, sp *PortTestPathSpec) int {
 	switch sp.Op {
 	case 0:
-		return int(C.nox_xxx_creatureActuallyMove_50D3B0((*C.float)(u.CObj())))
+		return bool2int(pathActuallyMove(u))
 	case 1:
-		return int(C.nox_xxx_creatureSetMovePath_50D5A0(C.int(uintptr(u.CObj()))))
+		return bool2int(pathSetMove(u))
 	case 2:
-		return int(C.sub_50D2E0(C.int(uintptr(u.CObj()))))
+		return bool2int(pathFollowWaypoints(u))
 	case 3:
-		return int(C.sub_50D2A0(C.int(uintptr(u.CObj())), C.int(uintptr(unsafe.Pointer(&u.UpdateDataMonster().AIStackHead().Args[0])))))
+		return pathSetWaypoints(u, (*types.Pointf)(unsafe.Pointer(&u.UpdateDataMonster().AIStackHead().Args[0])))
 	}
 	panic("invalid path operation")
 }

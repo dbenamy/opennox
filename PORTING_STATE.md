@@ -76,8 +76,13 @@ and private waypoint-path construction; reuse this fixture. Navigation was
 committed and pushed as e32982f7. Original C now passes 17,585 execution and 2,132 graph cases, independent
 route/wall/precision checks and two 200,000-call state baselines. Existing
 AI/waypoint checks pass too. See docs/porting/AI_PATH_EXECUTION.md.
-Production path implementations remain C; native conversion and whole-batch
-qualification follow.
+Native path/graph conversion matches baseline bc1e662a and the existing
+AI/waypoint checks. Seven C bodies and four unused exports are removed: 138,824
+physical C lines (minus 341), 153 files, zero reference C. Accumulated tests
+and ELF32/SSE2 builds pass in all three configurations. Full suite matches
+exactly 1,553 known failures. Fresh ai-path-execution-port gameplay passes both
+preserved screenshots, overrides off. No validation remains. Next: grouped
+combat actions with recorded script/audio/strike/projectile effects.
 See docs/porting/AI_GUARD_ESCORT.md; ignored drafts/audits are in
 build/port-guard-escort. User approved this more aggressive grouping. The roaming
 update is fully qualified, committed and pushed as fdb075f6. No question pending.
