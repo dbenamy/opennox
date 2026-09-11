@@ -225,9 +225,8 @@ func PortTestAIActions(specs []PortTestAIActionSpec) (out []PortTestAIActionResu
 	return out, false
 }
 
-// PortTestAIDot compares the native private helper with 534120, whose original
-// C implementation still serves other production callers.
-func PortTestAIDot(bits [4]uint32) (original, native, unchanged bool) {
+// PortTestAIDot exercises the retained native facing-dot helper after 534120 is retired.
+func PortTestAIDot(bits [4]uint32) (native, unchanged bool) {
 	table := unsafe.Slice(memmap.PtrUint32(0x587000, 194136), 2)
 	old := [2]uint32{table[0], table[1]}
 	defer func() { table[0], table[1] = old[0], old[1] }()
@@ -235,7 +234,6 @@ func PortTestAIDot(bits [4]uint32) (original, native, unchanged bool) {
 	obj, free := alloc.New(server.Object{})
 	defer free()
 	point := types.Pointf{X: math.Float32frombits(bits[2]), Y: math.Float32frombits(bits[3])}
-	original = C.sub_534120(C.int(uintptr(unsafe.Pointer(obj))), (*C.float2)(unsafe.Pointer(&point))) != 0
 	native = facingDot(obj, point)
 	unchanged = table[0] == bits[0] && table[1] == bits[1] && obj.Direction1 == 0 && math.Float32bits(point.X) == bits[2] && math.Float32bits(point.Y) == bits[3]
 	return

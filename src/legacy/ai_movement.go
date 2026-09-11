@@ -1,13 +1,7 @@
 package legacy
 
-/*
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"math"
-	"unsafe"
 
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -115,20 +109,19 @@ func randomWalk(u *server.Object) {
 	speed = float64(float32(speed))
 	x, y := movementDirectionVector(int32(dir))
 	u.ForceVec = types.Pointf{X: float32(speed * float64(x)), Y: float32(speed * float64(y))}
-	C.nox_xxx_monsterMoveAudio_534030(C.int(uintptr(unsafe.Pointer(u))))
+	monsterMoveAudio(u)
 }
 func confusedMovement(u *server.Object) {
 	if nox_common_randomInt_415FA0(0, 100) >= 15 {
 		randomWalk(u)
 		return
 	}
-	ptr := C.int(uintptr(unsafe.Pointer(u)))
-	if C.nox_xxx_monsterCanMelee_534220(ptr) != 0 {
-		if C.nox_xxx_monsterCanShoot_534280(ptr) == 0 || nox_common_randomInt_415FA0(0, 100) < 50 {
+	if monsterCanMelee(u) {
+		if !monsterCanShoot(u) || nox_common_randomInt_415FA0(0, 100) < 50 {
 			u.MonsterPushActionImpl(ai.ActionType(16), "go", 0)
 			return
 		}
-	} else if C.nox_xxx_monsterCanShoot_534280(ptr) == 0 {
+	} else if !monsterCanShoot(u) {
 		return
 	}
 	if st := u.MonsterPushActionImpl(ai.ActionType(17), "go", 0); st != nil {

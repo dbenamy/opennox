@@ -519,7 +519,7 @@ func Sub_516090(obj *server.Object, df int) {
 }
 
 func Nox_xxx_monsterCanCast_534300(obj *server.Object) bool {
-	return C.nox_xxx_monsterCanCast_534300(asObjectC(obj)) != 0
+	return monsterCanCast(obj)
 }
 
 func Nox_xxx_playerTryEquip_4F2F70(obj, item *server.Object) bool {
@@ -535,7 +535,7 @@ func Nox_xxx_inventoryPutImpl_4F3070(obj, item *server.Object, a3 int) {
 }
 
 func Nox_xxx_orderUnit_533900(owner, obj *server.Object, order uint32) {
-	C.nox_xxx_orderUnit_533900(asObjectC(owner), asObjectC(obj), C.int(order))
+	monsterOrder(owner, obj, int(order))
 }
 
 func Sub_4E9A30(a1, a2 *server.Object) bool {

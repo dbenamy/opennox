@@ -53,15 +53,10 @@ func init() {
 		server.RegisterAIAction(a)
 	}
 }
-func navigationStartRunning(u *server.Object) {
-	ud := u.UpdateDataMonster()
-	if ud.StatusFlags&0x10000 == 0 {
-		ud.StatusFlags |= 0x4000
-	}
-}
+func navigationStartRunning(u *server.Object) { monsterStartRunning(u) }
 
 // The movement gate uses base speed; dodge modifies current speed separately.
-func navigationMoving(u *server.Object) bool { return float64(u.SpeedBase) >= .0099999998 }
+func navigationMoving(u *server.Object) bool { return monsterMoving(u) }
 func navigationPrevious(u *server.Object) ai.ActionType {
 	ud := u.UpdateDataMonster()
 	for i := int(ud.AIStackInd) - 1; i >= 0; i-- {
@@ -71,7 +66,7 @@ func navigationPrevious(u *server.Object) ai.ActionType {
 	}
 	return ai.ActionType(38)
 }
-func navigationAudio(u *server.Object) { C.nox_xxx_monsterMoveAudio_534030(C.int(uintptr(u.CObj()))) }
+func navigationAudio(u *server.Object) { monsterMoveAudio(u) }
 func navigationMove(u *server.Object) {
 	ud := u.UpdateDataMonster()
 	if !navigationMoving(u) {
@@ -102,7 +97,7 @@ func navigationMove(u *server.Object) {
 			ud.Field135 = core.Frame()
 		}
 		if status == 0 && pathTakeStatus() == 0 && head.Args[2] == 0 {
-			C.nox_xxx_mobCalcDir_533CC0(C.int(uintptr(u.CObj())), (*C.float)(unsafe.Pointer(&head.Args[0])))
+			monsterCalcDir(u, (*float32)(unsafe.Pointer(&head.Args[0])))
 			u.MonsterPopAction()
 		}
 		if retry {
@@ -168,7 +163,7 @@ func navigationFlee(u *server.Object) {
 		if radius*radius > dy*dy+dx*dx && uint32(core.Frame()-ud.Field70) > core.TickRate()>>1 {
 			ud.Field2 = 0
 		}
-		if Nox_xxx_monsterCanCast_534300(u) && !u.HasEnchant(29) && C.sub_534400(C.int(uintptr(u.CObj()))) == 0 && !u.Sub_534440() {
+		if monsterCanCast(u) && !u.HasEnchant(29) && !monsterAggressionLow(u) && !u.Sub_534440() {
 			var cast C.int
 			if ud.HasAction(ai.ACTION_RETREAT) {
 				cast = C.nox_xxx_mobCastRelated_541050(C.int(uintptr(u.CObj())))

@@ -96,7 +96,7 @@ func lifecycleDyingStart(u *server.Object) {
 	}
 }
 func lifecycleIsZombie(u *server.Object) bool {
-	return C.nox_xxx_unitIsZombie_534A40(C.int(uintptr(u.CObj()))) != 0
+	return monsterIsZombie(u)
 }
 func lifecycleBurnDeleteCheck(u *server.Object) {
 	if lifecycleIsZombie(u) && u.UpdateDataMonster().StatusFlags&0x80000 != 0 {

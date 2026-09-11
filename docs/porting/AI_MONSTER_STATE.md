@@ -42,3 +42,36 @@ That old C helper can be retired without keeping a test-only C algorithm.
 
 At this baseline checkpoint production is unchanged: **137,882 physical C lines**,
 153 files, zero reference C. Ignored artifacts: `build/port-ai-state`.
+
+## Native conversion
+
+The 29 C bodies are replaced by `legacy/ai_monster_state.go` and the existing
+native facing-dot helper. Production C falls by **585 physical lines** to
+**137,297**, across 153 files with zero reference C. Live C entry points remain
+generated Go bridges; private helpers and their obsolete declarations are
+retired. Movement actions now contain no cgo, and combat, navigation, roaming,
+commands and lifecycle use the shared native helpers directly.
+
+Both original-C hashes match after conversion. Review and independent contracts
+caught the joint Zombie-cache miss rule, Plant's early return before Zombie
+lookup, animation flag OR arithmetic, zero/low-byte player animation lookup,
+command messages and their ordering, guard sight range and signed direction.
+The signed direction must be converted to Go `int` for action argument storage.
+Running setters return the post-mutation flags. NaN melee behavior and the
+facing-dot float32 spill remain explicit. No test-only C algorithm is retained.
+
+## Qualification
+
+Accumulated port tests pass for default (72.373s), server (39.660s) and highres
+(38.845s). All three production binaries build and report ELF32, Intel 80386 and
+GO386=sse2. C x87 flags are unchanged. The full asset-backed suite matches the
+established failure multiset exactly: 1,553 entries, 15 passing / 3 failing /
+32 skipped packages, no added failures. Fresh `ai-monster-state-port` headless
+gameplay exits 0 against both preserved screenshots, overrides disabled.
+
+Original-C checkpoint: `6aadf8ef`. Reproduce focused checks with
+`go test -tags porttest -run '^TestAIMonsterState' .` from src after loading the
+baseline environment. Ignored qualification artifacts are in build/port-ai-state.
+Next connected batch: the main monster AI owner, idle vocalization, dangerous-unit
+gate, attack-action unwinding, shield-threat scan and dodge reaction (GAME5
+5469B0–547C50 plus GAME4_3 533E70/533EB0). Retain casting, damage and map engines.

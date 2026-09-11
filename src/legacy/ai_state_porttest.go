@@ -248,31 +248,31 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 	case 8:
 		return uint64(C.sub_5343C0(p))
 	case 9:
-		return uint64(C.sub_534400(p))
+		return uint64(bool2int(monsterAggressionLow(u)))
 	case 10:
 		return uint64(C.sub_534440(p))
 	case 11:
 		return math.Float64bits(float64(C.sub_534470(p)))
 	case 12:
-		return uint64(C.sub_534710(p))
+		return uint64(bool2int(monsterRunningStatus(u)))
 	case 13:
-		return uint64(uint32(C.sub_534750(p)))
+		return uint64(monsterStartRunning(u))
 	case 14:
-		return uint64(uint32(C.sub_534780(p)))
+		return uint64(monsterStopRunning(u))
 	case 15:
-		return uint64(C.sub_5347A0((*C.nox_object_t)(u.CObj())))
+		return uint64(bool2int(monsterHasFlag9(u)))
 	case 16:
 		return uint64(C.sub_5347C0(p))
 	case 17:
-		return uint64(C.nox_xxx_isNotPoisoned_5347F0(p))
+		return uint64(bool2int(monsterPoisoned(u)))
 	case 18:
 		return uint64(C.nox_xxx_mobGetMoveAttemptTime_534810((*C.nox_object_t)(u.CObj())))
 	case 19:
-		return uint64(C.nox_xxx_unitIsMimic_534840(p))
+		return uint64(bool2int(monsterIsMimic(u)))
 	case 20:
-		C.nox_xxx_monsterMimicCheckMorph_534950((*C.nox_object_t)(u.CObj()))
+		monsterMimicMorph(u)
 	case 21:
-		return uint64(C.nox_xxx_unitIsPlant_534A10(p))
+		return uint64(bool2int(monsterIsPlant(u)))
 	case 22:
 		return uint64(C.nox_xxx_unitIsZombie_534A40(p))
 	case 23:
@@ -284,13 +284,13 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 	case 24:
 		return uint64(uintptr(unsafe.Pointer(C.nox_xxx_unitNPCActionToAnim_533D00(p))))
 	case 25:
-		C.nox_xxx_monsterMoveAudio_534030(p)
+		monsterMoveAudio(u)
 	case 26, 27:
 		point, free := alloc.New(types.Pointf{})
 		*point = types.Pointf{X: math.Float32frombits(sp.Arg[0]), Y: math.Float32frombits(sp.Arg[1])}
 		defer free()
 		if sp.Op == 26 {
-			return uint64(C.sub_534120(p, (*C.float2)(unsafe.Pointer(point))))
+			return uint64(bool2int(facingDot(u, *point)))
 		}
 		if sp.NilUnit {
 			p = 0

@@ -62,6 +62,7 @@ target build selection and linker evidence.
 | Movement-path execution and waypoint graph (2026-09-11) | 153 | 138,824 | −341 | 0 |
 | Combat AI action owners and private helpers (2026-09-11) | 153 | 138,212 | −612 | 0 |
 | AI lifecycle, revival and item searches (2026-09-11) | 153 | 137,882 | −330 | 0 |
+| Monster commands, animation and state (2026-09-11) | 153 | 137,297 | −585 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

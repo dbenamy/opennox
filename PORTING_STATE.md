@@ -12,30 +12,30 @@ aggressive batching. Do not stop after a push. Use at most one bounded helper
 when useful; review drafts against actual C, layouts and compiled arithmetic.
 Preserve the untracked asset archive.
 
-Latest fully qualified native batch: the five remaining C-registered AI actions,
-plus revival, soul creation, burn deletion, reset and item searches. Original-C
-checkpoint `8bae3340`; 5,632 generated cases and 174 contracts match exactly.
-Sixteen C bodies and the obsolete C action adapter are removed. Production C:
-**137,882 physical lines (minus 330)**, 153 files, zero reference C.
-See docs/porting/AI_LIFECYCLE.md. Accumulated default/server/highres tests and
-all three ELF32/SSE2 production builds pass. Full suite matches exactly 1,553
-known failure entries. Fresh `ai-lifecycle-port` gameplay exits 0 against both
-preserved screenshots, overrides off. Artifacts: build/port-ai-lifecycle.
+Latest fully qualified native batch: monster commands, animation and state.
+Original-C checkpoint `6aadf8ef`; 14,336 generated cases and 212 contracts match
+exactly. Twenty-nine C bodies removed, native callers use shared Go helpers,
+and movement actions no longer use cgo. Production C: **137,297 physical lines
+(minus 585)**, 153 files, zero reference C. See docs/porting/AI_MONSTER_STATE.md.
+Accumulated default/server/highres tests and all three ELF32/SSE2 production
+builds pass. Full suite matches exactly 1,553 known failure entries. Fresh
+`ai-monster-state-port` gameplay exits 0 against both preserved screenshots,
+overrides off. Artifacts: build/port-ai-state.
 
-Previous qualified/pushed batches: combat `e37039e5`, path `01a9ec4d`, navigation
-`e32982f7`, guard/escort `2bd0b90d`. The C_LOC.md table preserves the history.
-No user question is pending. Next connected batch: monster commands, animation
-selection, capability/state predicates and shared Mimic/Plant/Zombie caches
-around 533790–534A40. Audit: build/port-ai-lifecycle/next-batch-audit.md;
-ignored fixture drafts may be under build/port-ai-state. Read actual C: audit
-incorrectly says 534750/780 return original flags; they return the modified word
-when a mutation occurs. Retain live C ABIs and use native routes for Go callers.
-Do not split every predicate into a separately qualified conversion.
+Previous qualified/pushed batches: lifecycle `e3ee0c9c`, combat `e37039e5`, path
+`01a9ec4d`, navigation `e32982f7`, guard/escort `2bd0b90d`. C_LOC.md records history.
+No user question is pending. Continue with main monster AI orchestration and
+its private defensive helpers: GAME5 5469B0, 547120, 5471B0, 547210, 547C50 plus
+GAME4_3 533E70/533EB0. Qualify their shared action ordering as one connected batch.
+Retain casting, damage and map engines. Audit: build/port-ai-state/next-batch-audit.md.
+The helper's build/port-ai-main/native.patch is only a note, NOT an implementation.
+Establish the original-C baseline before replacing these bodies. Review actual C
+and layouts; several earlier helper drafts missed side effects and exact arithmetic.
 
 Use build/baseline/env.sh: Go1.26, GOARCH=386, GO386=sse2, CGO enabled, direct GCC.
 The user dropped old-CPU support. Keep existing C x87 flags unchanged.
 Accumulated port-test regex with porttest, server porttest, highres porttest:
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort|AINavigation|AIPath|AICombat|AILifecycle)`
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort|AINavigation|AIPath|AICombat|AILifecycle|AIMonsterState)`
 Once per connected batch: production builds, ELF32/SSE2 metadata, relevant fresh
 headless gameplay against preserved screenshots with overrides off. Full-suite
 comparison at subsystem/shared boundaries: exact 1,553 known failure entries,

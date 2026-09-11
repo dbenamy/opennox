@@ -110,7 +110,7 @@ func Nox_xxx_weaponGetStaminaByType_4F7E80(a1 int) int {
 	return int(C.nox_xxx_weaponGetStaminaByType_4F7E80(C.int(a1)))
 }
 func Nox_xxx_mobGetMoveAttemptTime_534810(a1 *server.Object) int {
-	return int(C.nox_xxx_mobGetMoveAttemptTime_534810(asObjectC(a1)))
+	return bool2int(monsterMoveAttempt(a1))
 }
 func Nox_xxx_unitIsDangerous_547120(a1 *server.Object, a2 *server.Object) {
 	C.nox_xxx_unitIsDangerous_547120(asObjectC(a1), asObjectC(a2))
@@ -146,7 +146,7 @@ func Nox_xxx_monsterPolygonEnter_421FF0(a1 *server.Object) {
 	C.nox_xxx_monsterPolygonEnter_421FF0(asObjectC(a1))
 }
 func Nox_xxx_monsterMimicCheckMorph_534950(a1 *server.Object) {
-	C.nox_xxx_monsterMimicCheckMorph_534950(asObjectC(a1))
+	monsterMimicMorph(a1)
 }
 func Sub_5466F0(a1 *server.Object) int {
 	return investigateHeardSound(a1)

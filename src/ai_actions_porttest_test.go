@@ -171,9 +171,9 @@ func TestAIActionsDotPrecision(t *testing.T) {
 		{[4]uint32{0xbf69997e, 0xbd442556, 0xbfd613e9, 0x4151344e}, false},
 		{[4]uint32{0xbf25230c, 0xbfdaf717, 0xbffa5971, 0x3e587c67}, true},
 	} {
-		c, goResult, unchanged := legacy.PortTestAIDot(tc.bits)
-		if c != tc.want || goResult != tc.want || !unchanged {
-			t.Fatalf("bits=%x C=%t Go=%t want=%t unchanged=%t", tc.bits, c, goResult, tc.want, unchanged)
+		got, unchanged := legacy.PortTestAIDot(tc.bits)
+		if got != tc.want || !unchanged {
+			t.Fatalf("bits=%x Go=%t want=%t unchanged=%t", tc.bits, got, tc.want, unchanged)
 		}
 		v := [4]float64{}
 		for i, b := range tc.bits {

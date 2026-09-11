@@ -101,5 +101,5 @@ func roamUpdate(u *server.Object) {
 	if pathActuallyMove(u) {
 		ud.Field2 = 0
 	}
-	C.nox_xxx_monsterMoveAudio_534030(C.int(uintptr(unsafe.Pointer(u))))
+	monsterMoveAudio(u)
 }

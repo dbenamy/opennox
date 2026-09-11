@@ -52,12 +52,7 @@ func aiPushFight(u *server.Object) {
 		st.SetArgs(u.UpdateDataMonster().CurrentEnemy.PosVec, GetServer().S().Frame())
 	}
 }
-func escortStopRunning(u *server.Object) {
-	ud := u.UpdateDataMonster()
-	if ud.StatusFlags&0x8000 == 0 {
-		ud.StatusFlags &^= 0x4000
-	}
-}
+func escortStopRunning(u *server.Object) { monsterStopRunning(u) }
 func escortResolve(u *server.Object) *server.Object {
 	ud := u.UpdateDataMonster()
 	name := (*byte)(unsafe.Pointer(&ud.Field341))

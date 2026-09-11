@@ -88,7 +88,7 @@ func combatMeleeChain(u, t *server.Object) {
 	d := u.UpdateDataMonster().MonsterDef
 	u.MonsterPushAction(ai.DEPENDENCY_NO_NEW_ENEMY, t)
 	u.MonsterPushAction(ai.DEPENDENCY_ALIVE, t)
-	if C.nox_xxx_monsterCanShoot_534280(combatPtr(u)) != 0 {
+	if monsterCanShoot(u) {
 		u.MonsterPushAction(ai.DEPENDENCY_OBJECT_CLOSER_THAN, float32(float64(d.MissileAttackRange212)*.60000002), 0, t)
 	}
 	u.MonsterPushAction(ai.DEPENDENCY_CAN_SEE, t)
@@ -107,7 +107,7 @@ func combatMissileChain(u, t *server.Object) {
 	u.MonsterPushAction(ai.DEPENDENCY_CAN_SEE, t)
 	u.MonsterPushAction(ai.ACTION_MISSILE_ATTACK, t.PosVec, t)
 	u.MonsterPushAction(ai.ACTION_FACE_OBJECT, t)
-	if C.sub_534710(combatPtr(u)) == 0 {
+	if !monsterRunningStatus(u) {
 		u.MonsterPushAction(ai.DEPENDENCY_BLOCKED_LINE_OF_FIRE, t)
 		u.MonsterPushAction(ai.DEPENDENCY_OBJECT_FARTHER_THAN, d.MissileAttackRange212, 0, t)
 		u.MonsterPushAction(ai.DEPENDENCY_OR)
@@ -118,15 +118,15 @@ func combatChoose(u, t *server.Object) {
 	if u.Buffs&(1<<29) == 0 && C.nox_xxx_mobCastRelated2_540D90(combatPtr(u), combatPtr(t)) != 0 {
 		return
 	}
-	if C.nox_xxx_monsterCanShoot_534280(combatPtr(u)) != 0 {
-		if C.nox_xxx_monsterCanMelee_534220(combatPtr(u)) != 0 && float64(C.nox_xxx_calcDistance_4E6C00(asObjectC(u), asObjectC(t))) < float64(u.UpdateDataMonster().MonsterDef.MissileAttackRange212)*.5 {
+	if monsterCanShoot(u) {
+		if monsterCanMelee(u) && float64(C.nox_xxx_calcDistance_4E6C00(asObjectC(u), asObjectC(t))) < float64(u.UpdateDataMonster().MonsterDef.MissileAttackRange212)*.5 {
 			combatMeleeChain(u, t)
 		} else {
 			combatMissileChain(u, t)
 		}
-	} else if C.nox_xxx_monsterCanMelee_534220(combatPtr(u)) != 0 {
+	} else if monsterCanMelee(u) {
 		combatMeleeChain(u, t)
-	} else if C.nox_xxx_monsterCanCast_534300(asObjectC(u)) == 0 {
+	} else if !monsterCanCast(u) {
 		combatChase(u, t)
 	}
 }
@@ -158,7 +158,7 @@ func combatFight(u *server.Object) {
 		}
 		return
 	}
-	if C.sub_534710(combatPtr(u)) != 0 {
+	if monsterRunningStatus(u) {
 		u.MonsterPopAction()
 		return
 	}
