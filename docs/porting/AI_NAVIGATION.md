@@ -22,9 +22,8 @@ visitation tokens may change in the food target, and those changes enter the has
 The shared one-shot movement flag and food-search scratch globals are captured
 and restored; game flags are restored too. No copied C test implementation.
 
-Artifacts: build/port-ai-navigation (ignored). Baseline source count remains
-139,549 physical C lines, 153 files, zero reference C. Native conversion and whole
-batch qualification follow; no production implementation has changed yet.
+Artifacts: build/port-ai-navigation (ignored). Original baseline source count was
+139,549 physical C lines, 153 files, zero reference C.
 
 Baseline review corrected the fixture's movement gate: C 534320 reads SpeedBase
 (object+548), while dodge modifies SpeedCur (+544). The corrected corpus initializes
@@ -34,3 +33,20 @@ corrected baseline. Explicit checks distinguish the unrounded dodge cutoff and
 float32 inner-radius spill. Dodge retains double deltas and the unrounded speed
 product for both forces despite writing float32 SpeedCur; only its denominator
 is reloaded from float32. Original-C corrected run: c-speed-qualified.log.
+
+Native conversion: corrected original-C baseline 0850c9d2 matches all 38,808
+cases exactly, including every independent assertion. Existing 22,723 guard/escort,
+12,289 roaming-owner and 98,304 roaming-history cases plus repeated-update hashes
+also match. Nineteen C bodies and unused declarations are removed; all seven
+actions register native Go. No new C export or test-only C implementation remains.
+Production C is 139,165 physical lines (minus 384), 153 files, zero reference C.
+Accumulated default/server/highres port tests and all three production builds
+pass. Binary metadata confirms ELF32/80386 and GO386=sse2. The full suite matches
+the exact 1,553 known failure entries (15 pass/3 fail/32 skipped-no-test packages),
+with none added or removed. Fresh ai-navigation-port gameplay exits 0 against
+both preserved screenshots, overrides off. Qualification is complete.
+
+Next connected batch: movement-path execution and its private waypoint-path
+construction, reusing the navigation fixture and rerouting native roam/navigation
+callers. Lifecycle actions are deferred because their smaller scope requires
+separate script/audio/death-callback fixture infrastructure.

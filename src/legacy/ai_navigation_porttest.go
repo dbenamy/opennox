@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/object"
 	"github.com/opennox/libs/types"
@@ -98,13 +93,13 @@ func portTestNavigationCall(u *server.Object, sp *PortTestNavigationSpec) uint32
 	}
 	switch sp.Op {
 	case 7:
-		return uint32(C.nox_xxx_monsterCanResumeAttack_545520(C.int(uintptr(u.CObj()))))
+		return uint32(bool2int(navigationCanResume(u)))
 	case 8:
-		return uint32(C.sub_545580(C.int(uintptr(u.CObj()))))
+		return uint32(bool2int(navigationShouldRetreat(u)))
 	case 9:
-		return uint32(C.nox_xxx_monsterCanCast2_5455B0(C.int(uintptr(u.CObj()))))
+		return uint32(bool2int(navigationCanCast2(u)))
 	case 10:
-		C.nox_xxx_mobRetreatCheckEdibles_5455E0(C.int(uintptr(u.CObj())))
+		navigationEdibles(u)
 	default:
 		panic("invalid navigation operation")
 	}

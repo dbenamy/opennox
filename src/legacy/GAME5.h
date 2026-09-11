@@ -3,14 +3,6 @@
 
 #include "defs.h"
 
-char nox_xxx_mobActionRetreat_545440(int a1);
-int nox_xxx_monsterCanResumeAttack_545520(int a1);
-int sub_545580(int a1);
-int nox_xxx_monsterCanCast2_5455B0(int a1);
-int* nox_xxx_mobRetreatCheckEdibles_5455E0(int a1);
-int sub_5456B0(int a1);
-int sub_5456C0(int a1);
-void sub_5456D0(int a1);
 int sub_545E60(nox_object_t* a1);
 void nox_xxx_mobAction_5469B0(nox_object_t* a1);
 short nox_xxx_unitIsDangerous_547120(nox_object_t* a1, nox_object_t* a2);

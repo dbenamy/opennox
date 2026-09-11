@@ -19,7 +19,6 @@ void nox_xxx_utilNormalizeVector_509F20(float2* a1);
 int sub_509FF0(int a1);
 int nox_xxx_monsterActionIsCondition_50A010(int a1);
 int nox_xxx_mobActionGet_50A020(int a1);
-int sub_50A040(int a1);
 int nox_xxx_monsterIsActionScheduled_50A090(int a1, int a2);
 int nox_xxx_checkMobAction_50A0D0(nox_object_t* a1, int a2);
 int nox_xxx_monsterPopAction_50A160(nox_object_t* a1p);

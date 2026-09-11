@@ -387,31 +387,6 @@ int nox_xxx_mobActionGet_50A020(int a1) {
 	return *(uint32_t*)(*(uint32_t*)(a1 + 748) + 24 * (*(char*)(*(uint32_t*)(a1 + 748) + 544) + 23));
 }
 
-//----- (0050A040) --------------------------------------------------------
-int sub_50A040(int a1) {
-	int v1; // ebx
-	int v2; // esi
-	int* i; // edi
-	int v4; // eax
-
-	v1 = *(uint32_t*)(a1 + 748);
-	v2 = *(char*)(v1 + 544) - 1;
-	if (v2 < 0) {
-		return 38;
-	}
-	for (i = (int*)(v1 + 8 * (3 * v2 + 69));; i -= 6) {
-		v4 = nox_xxx_monsterActionIsCondition_50A010(*i);
-		if (!v4) {
-			break;
-		}
-		if (--v2 < 0) {
-			return 38;
-		}
-	}
-	return *(uint32_t*)(v1 + 8 * (3 * v2 + 69));
-}
-// 50A06B: variable 'v4' is possibly undefined
-
 //----- (0050A090) --------------------------------------------------------
 int nox_xxx_monsterIsActionScheduled_50A090(int a1, int a2) {
 	int v2;      // ecx

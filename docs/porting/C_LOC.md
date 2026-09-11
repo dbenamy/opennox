@@ -58,6 +58,7 @@ target build selection and linker evidence.
 | Roaming history and successor selection (2026-09-11) | 153 | 140,082 | −178 | 0 |
 | Main roaming update and unused history bridges (2026-09-11) | 153 | 139,951 | −131 | 0 |
 | Guard, escort and sound investigation (2026-09-11) | 153 | 139,549 | −402 | 0 |
+| Navigation and retreat actions/private policies (2026-09-11) | 153 | 139,165 | −384 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

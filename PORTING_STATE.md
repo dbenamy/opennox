@@ -63,10 +63,16 @@ Accumulated tests and ELF32/SSE2 builds pass in all three configurations. The fu
 suite matches exactly 1,553 known failures. Fresh guard-escort-port gameplay exits
 0 against both preserved screenshots, overrides off. No validation remains.
 Guard/escort/sound is committed and pushed as 2bd0b90d.
-Current batch: seven navigation/retreat actions, lifecycle/private policies and
+Completed batch: seven navigation/retreat actions, lifecycle/private policies and
 preceding-action lookup. Original C passes 38,808 shared-fixture cases with exact
 state hashes and independent health/food checks. See docs/porting/AI_NAVIGATION.md.
-Native conversion and whole-batch qualification remain.
+Native conversion matches corrected C baseline 0850c9d2 and the existing
+roam/guard checks. Nineteen C bodies are removed: 139,165 physical C lines
+(minus 384), 153 files, zero reference C. Accumulated tests and ELF32/SSE2
+builds pass in all three configurations. Full suite matches exactly 1,553 known
+failures. Fresh ai-navigation-port gameplay passes both preserved screenshots,
+overrides off. No validation remains. Next: connected movement-path execution
+and private waypoint-path construction; reuse this fixture.
 See docs/porting/AI_GUARD_ESCORT.md; ignored drafts/audits are in
 build/port-guard-escort. User approved this more aggressive grouping. The roaming
 update is fully qualified, committed and pushed as fdb075f6. No question pending.
