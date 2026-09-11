@@ -13,12 +13,14 @@ import (
 	"github.com/opennox/libs/prand"
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
+	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/unit/ai"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 )
 
 type PortTestRoamSpec struct {
+	Navigation                 *PortTestNavigationSpec
 	GuardEscort                *PortTestGuardEscortSpec
 	Owner                      *PortTestRoamOwnerSpec
 	Op, Seed                   int
@@ -45,6 +47,22 @@ type PortTestRoamResult struct {
 // PortTestRoam runs a shared guarded fixture through registered actions and native helpers.
 // Pointer-bearing output is normalized to stable waypoint IDs before hashing.
 func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
+	oldGame := noxflags.GetGame()
+	offsets := []uintptr{2490500, 2489452, 2489444}
+	oldWords := make([]uint32, len(offsets))
+	for i, off := range offsets {
+		oldWords[i] = *memmap.PtrUint32(0x5D4594, off)
+	}
+	defer func() {
+		noxflags.ResetGame()
+		noxflags.SetGame(oldGame)
+		for i, off := range offsets {
+			*memmap.PtrUint32(0x5D4594, off) = oldWords[i]
+		}
+	}()
+	hb, fh := alloc.Make([]byte{}, int(unsafe.Sizeof(server.HealthData{}))+16)
+	defer fh()
+	health := (*server.HealthData)(unsafe.Pointer(&hb[8]))
 	for _, sp := range specs {
 		if sp.GuardEscort != nil {
 			restore := portTestGuardEscortEnvironment()
@@ -132,6 +150,8 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		clear(ub)
 		clear(wb)
 		clear(db)
+		clear(hb)
+		guard(hb)
 		clear(tb[8:780])
 		guard(db)
 		guard(tb)
@@ -221,11 +241,15 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 				}
 			}
 		}
+		if sp.Navigation != nil {
+			portTestNavigationPrepare(proxy, obj, target, health, sp.Navigation)
+		}
 		core.Rand.Logic, core.Rand.Other = prand.New(sp.Seed), prand.New(sp.Seed+1)
 		core.AI.StackChanged = false
 		beforeO, beforeU, beforeW := bytes.Clone(ob), bytes.Clone(ub), bytes.Clone(wb)
 		beforeD, beforeT := bytes.Clone(db), bytes.Clone(tb)
 		beforeName := bytes.Clone(scriptName)
+		beforeH := bytes.Clone(hb)
 		ret := 0
 		var nanos int64
 		switch sp.Op {
@@ -247,6 +271,8 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 				server.GetAIAction(ai.ACTION_ROAM).Update(obj)
 			}
 			nanos = time.Since(start).Nanoseconds()
+		case 8:
+			ret = int(portTestNavigationCall(obj, sp.Navigation))
 		case 7:
 			start := time.Now()
 			for repeat := 0; repeat < max(1, sp.Owner.Repeat); repeat++ {
@@ -256,7 +282,21 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		default:
 			panic("invalid roam operation")
 		}
-		r := PortTestRoamResult{Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT) && playersUnchanged() && bytes.Equal(scriptName, beforeName)}
+		if sp.Navigation != nil && !bytes.Equal(tb, beforeT) {
+			for j := 8; j < len(tb)-8; j += 4 {
+				if get(tb, j) != get(beforeT, j) {
+					proxy.trace = append(proxy.trace, 0xff000000+uint32(j-8), get(tb, j))
+				}
+			}
+			// Spatial iteration may write only its two visitation tokens.
+			copy(beforeT[8+248:8+256], tb[8+248:8+256])
+		}
+		r := PortTestRoamResult{Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT) && playersUnchanged() && bytes.Equal(scriptName, beforeName) && bytes.Equal(hb, beforeH)}
+		if sp.Navigation != nil {
+			for _, off := range offsets {
+				r.Trace = append(r.Trace, uint32(off), normalize(*memmap.PtrUint32(0x5D4594, off)))
+			}
+		}
 		for i := range r.History {
 			r.History[i] = byte(normalize(get(ub, 8+300+4*i)))
 		}

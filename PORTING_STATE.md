@@ -62,7 +62,11 @@ C is now 139,549 physical lines (minus 402), 153 files, zero reference C.
 Accumulated tests and ELF32/SSE2 builds pass in all three configurations. The full
 suite matches exactly 1,553 known failures. Fresh guard-escort-port gameplay exits
 0 against both preserved screenshots, overrides off. No validation remains.
-Next: group navigation actions and retreat policies in one connected batch.
+Guard/escort/sound is committed and pushed as 2bd0b90d.
+Current batch: seven navigation/retreat actions, lifecycle/private policies and
+preceding-action lookup. Original C passes 38,783 shared-fixture cases with exact
+state hashes and independent health/food checks. See docs/porting/AI_NAVIGATION.md.
+Native conversion and whole-batch qualification remain.
 See docs/porting/AI_GUARD_ESCORT.md; ignored drafts/audits are in
 build/port-guard-escort. User approved this more aggressive grouping. The roaming
 update is fully qualified, committed and pushed as fdb075f6. No question pending.
