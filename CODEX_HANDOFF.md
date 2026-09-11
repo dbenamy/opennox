@@ -1,33 +1,41 @@
 # OpenNox x86 Porting Handoff
 
 <!-- current-focus -->
-## In progress — shop/trade original-C baseline
+## In progress — shop/trade C baseline complete
 
 Spawn policy is complete and pushed as `e1b62d01`: 16 bodies / 564 C lines
 removed. Production C is **133,272 physical lines**, 152 files, zero reference C.
-Its original-C contracts, all three accumulated variants/builds, exact known
-full-suite failures and fresh headless gameplay pass. See SPAWN_POLICY.md.
+Its contracts, all three variants/builds, exact known full-suite failures and
+fresh headless gameplay pass. See docs/porting/SPAWN_POLICY.md.
 
-Current connected batch: GAME4_1 50E2A0 through 510E20, 36 bodies / 1,337 C
-lines. No shop production C has been removed. The first 3,389 C cases in
-13 groups repeat byte-exactly and are locked; locked shop plus adjacent
-regressions pass in 25.396s. See docs/porting/SHOP.md and build/port-shop.
-Commit/push these test-only changes if still uncommitted, then extend the C
-baseline for stock loading, repair, sales, quest-cached cleanup and additional
-offer sequences. Add independent gold/inventory assertions. Commit the expanded
-baseline before conversion. Keep this one connected qualification batch.
+Current batch: GAME4_1 50E2A0 through 510E20, 36 bodies / 1,337 physical C lines.
+The initial baseline is pushed as `96b4f97a`; the expanded baseline now locks
+**4,238 C cases in 21 groups**, all byte-exact repeated. Original thirteen
+hashes are unchanged. Full C contracts pass in 11.741s; expanded locked shop
+plus adjacent regressions pass in 27.405s. See docs/porting/SHOP.md for coverage,
+retained dependency limits and the single undefined modifier-word exclusion.
 
-The fixture owns real 64-session/500-item pools and a 768-object factory pool,
-full guarded query records, saved players, protected gold and actual packet
-queues. Bulk reset's existing orphaned gold allocations are observed, then
-cleaned up by the fixture. All thirteen current hashes must remain locked.
+No production shop C has been removed. Commit/push expanded baselines if still
+uncommitted, then replace the entire connected family and qualify it once.
+Route Go/private callers directly to Go; preserve required C roots. Update C_LOC,
+docs and checkpoints, commit/push, summarize and continue to the next batch.
 
-Helper insert_port is idle. Its ignored draft build/port-shop/price-draft.go
-needs corrections recorded in SHOP.md; primary found extra float32 spills,
-wrong quest/NaN clamps and an invented string limit. Primary caller inventory
-is build/port-shop/callers.json; keep shopExit/tradeAccept exports, which the
-helper table omitted. No question is pending. Continue autonomously after each
-reviewed, tested, documented, committed and pushed batch. Preserve the archive.
+Fixture/code: shop_porttest.go, shop_pools_porttest.go, shop_load_porttest.go in
+legacy; matching server helpers and src/shop_porttest_test.go. It owns real
+64-session/500-item pools, a 768-object pool, guarded queries, actual inventory/
+gold/packet services and synthetic loader definitions. All prior hashes remain
+locked. Artifacts/scripts/captures: build/port-shop. Production C remains intact.
+
+Primary caller inventory: build/port-shop/callers.json. shopExit and tradeAccept
+must retain exports; addItemToShopSession has no external C caller and becomes
+private. Ignore the helper audit's contradictory rows. Helper insert_port is
+idle. Its ignored price-draft.go needs primary corrections listed in SHOP.md:
+extra float32 spills, wrong quest/NaN clamps and an invented string length cap.
+Do not copy it unreviewed.
+
+No question is pending. Continue autonomously in reviewed, tested, documented,
+committed and pushed connected batches. Use build/baseline/env.sh (386/SSE2,
+CGO, Go 1.26); retain C x87 flags. Preserve the untracked asset archive.
 
 <!-- /current-focus -->
 

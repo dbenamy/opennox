@@ -40,6 +40,8 @@ type PortTestShopStock struct {
 	Mods         [4]bool
 }
 type PortTestShopSpec struct {
+	CaptureData       bool
+	Load              *PortTestShopLoadSpec
 	Peer              bool
 	Gold              [2]uint32
 	ProtectedGold     bool
@@ -65,6 +67,7 @@ type PortTestShopResult struct {
 }
 type portTestShopState struct {
 	pools          *portTestShopPools
+	load           *portTestShopLoad
 	configure      func(map[string]float64, int, map[int]int)
 	blocks, before [][]byte
 	spec           *PortTestShopSpec
@@ -82,6 +85,7 @@ func portTestShopEnvironment(proxy *portTestRoamOwnerServer) func() {
 	s := &portTestShopState{configure: configure}
 	proxy.callbacks.shop = s
 	s.pools = portTestShopPoolsEnvironment(proxy)
+	s.load = portTestShopLoadEnvironment(proxy)
 	sizes := []int{int(unsafe.Sizeof(server.Object{})), int(unsafe.Sizeof(server.Object{})), 64, 1724, 20, 128, 2200, 8, 4 * int(unsafe.Sizeof(server.ModifierEff{})), 16}
 	var frees []func()
 	for _, n := range sizes {
@@ -95,6 +99,7 @@ func portTestShopEnvironment(proxy *portTestRoamOwnerServer) func() {
 	}
 	return func() {
 		s.pools.restore()
+		s.load.restore()
 		for i, v := range old {
 			*memmap.PtrUint32(0x5D4594, 2386504+uintptr(4*i)) = v
 		}
@@ -110,6 +115,7 @@ func portTestShopPrepare(proxy *portTestRoamOwnerServer, sp *PortTestShopSpec) {
 	s.spec = sp
 	s.pools.prepare()
 	s.configure(sp.Balance, sp.GuideWorth, sp.SpellPrices)
+	s.load.prepare(sp.Load)
 	for i, b := range s.blocks {
 		clear(b)
 		for j := 0; j < 8; j++ {

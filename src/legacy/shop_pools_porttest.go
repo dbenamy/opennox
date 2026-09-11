@@ -48,6 +48,13 @@ const (
 	PortTestShopWithdraw
 	PortTestShopCancel
 	PortTestShopPlayerCleanup
+	PortTestShopInventory
+	PortTestShopRepairQuote
+	PortTestShopRepair
+	PortTestShopSell
+	PortTestShopLoad
+	PortTestShopLookup
+	PortTestShopDetach
 )
 
 type PortTestShopAction struct {
@@ -62,6 +69,7 @@ type PortTestShopPacketResult struct {
 	Data               []byte
 }
 type PortTestShopStep struct {
+	ObjectData               [][]uint32 `json:",omitempty"`
 	Cached                   [32]uint32
 	Return, Head             uint32
 	Alive                    int
@@ -72,9 +80,12 @@ type PortTestShopStep struct {
 	Protection               []uint32                   `json:",omitempty"`
 }
 type portTestShopOwned struct {
-	u     *server.Object
-	init  unsafe.Pointer
-	alive bool
+	health            unsafe.Pointer
+	initSize, useSize int
+	undefinedTail     bool
+	u                 *server.Object
+	init              unsafe.Pointer
+	alive             bool
 }
 type portTestShopPools struct {
 	proxy              *portTestRoamOwnerServer
@@ -130,12 +141,30 @@ func (p *portTestShopPools) identify(ptr unsafe.Pointer, id uint32) {
 }
 func (p *portTestShopPools) own(u *server.Object, id uint32) *portTestShopOwned {
 	o := &portTestShopOwned{u: u, init: u.InitData, alive: true}
+	if typ := p.proxy.core.Types.ByInd(int(u.TypeInd)); typ != nil {
+		o.initSize, o.useSize = int(typ.InitDataSize), int(typ.UseDataSize)
+	}
+	o.health = unsafe.Pointer(u.HealthData)
 	p.owned = append(p.owned, o)
 	p.identify(u.CObj(), id)
 	if u.InitData != nil {
 		p.identify(u.InitData, id+10000)
 	}
+	if u.HealthData != nil {
+		p.identify(unsafe.Pointer(u.HealthData), id+20000)
+	}
+	if u.UseData.Ptr != nil {
+		p.identify(u.UseData.Ptr, id+30000)
+	}
+	if u.Xfer != nil {
+		p.proxy.life.ids[uint32(uintptr(u.Xfer))] = 52000 + uint32(u.TypeInd)
+	}
 	return o
+}
+func (p *portTestShopPools) observeDelete(u *server.Object) {
+	if _, ok := p.ids[uint32(uintptr(u.CObj()))]; !ok {
+		p.own(u, uint32(75000+len(p.owned)))
+	}
 }
 func (p *portTestShopPools) markFreed(v uint32) {
 	for _, o := range p.owned {
@@ -184,6 +213,9 @@ func (p *portTestShopPools) cleanup() {
 		if o.init != nil {
 			alloc.FreePtr(o.init)
 		}
+		if o.health != nil {
+			alloc.FreePtr(o.health)
+		}
 	}
 	if p.proxy.core.Objs.Alive != p.initialAlive {
 		panic("shop fixture object leak")
@@ -215,7 +247,22 @@ func (p *portTestShopPools) run() {
 		u.Worth, u.NetCode = spec.Worth, uint32(70000+i)
 		init, _ := alloc.Make([]byte{}, 20)
 		u.InitData = unsafe.Pointer(&init[0])
-		p.items = append(p.items, p.own(u, uint32(70000+i)))
+		if spec.Health {
+			hp, _ := alloc.New(server.HealthData{})
+			hp.Cur, hp.Max = spec.HP, spec.MaxHP
+			u.HealthData = hp
+		}
+		if spec.Use != [128]byte{} {
+			data, _ := alloc.Make([]byte{}, 128)
+			copy(data, spec.Use[:])
+			u.UseData.Ptr = unsafe.Pointer(&data[0])
+		}
+		o := p.own(u, uint32(70000+i))
+		o.initSize = 20
+		if u.UseData.Ptr != nil {
+			o.useSize = 128
+		}
+		p.items = append(p.items, o)
 	}
 	for _, a := range s.spec.Sequence {
 		var q unsafe.Pointer
@@ -325,6 +372,46 @@ func (p *portTestShopPools) run() {
 			}
 		case PortTestShopWithdraw:
 			rv = uint32(C.nox_xxx_tradeP2PAddOfferMB_50FE20(C.int(uintptr(q)), C.int(a.Value)))
+		case PortTestShopInventory:
+			owner := (*server.Object)(shopTestPointer(words[2+a.Side]))
+			it := p.items[a.Item].u
+			it.InvHolder, it.InvNextItem, it.Field125 = owner, owner.InvFirstItem, nil
+			if it.InvNextItem != nil {
+				it.InvNextItem.Field125 = it
+			}
+			owner.InvFirstItem = it
+		case PortTestShopRepairQuote:
+			rv = uint32(uintptr(unsafe.Pointer(C.sub_5108D0(C.int(words[2+a.Side]), C.int(uintptr(q)), C.int(a.Value)))))
+		case PortTestShopRepair:
+			rv = uint32(uintptr(unsafe.Pointer(C.sub_510AE0((*C.int)(shopTestPointer(words[2+a.Side])), C.int(uintptr(q)), (*C.uint32_t)(shopTestPointer(a.Value))))))
+		case PortTestShopSell:
+			C.sub_510D10((*C.int)(shopTestPointer(words[2+a.Side])), C.int(uintptr(q)), C.int(a.Item), C.uint(a.Value))
+		case PortTestShopLookup:
+			rv = uint32(C.sub_510DE0(C.int(words[2+a.Side]), C.int(a.Value)))
+		case PortTestShopDetach:
+			rv = uint32(C.sub_50F490((*C.uint32_t)(q), C.int(words[2+a.Side])))
+		case PortTestShopLoad:
+			C.nox_xxx_loadShopItems_50E970(C.int(uintptr(q)))
+			for n := words[5]; n != 0; {
+				w := shopTestWords(shopTestPointer(n), 4)
+				if _, ok := p.ids[w[0]]; !ok {
+					u := (*server.Object)(shopTestPointer(w[0]))
+					o := p.own(u, uint32(75000+len(p.owned)))
+					// The original loader fills four modifier words in a five-word
+					// local. Only its uninitialized fifth word is outside the oracle.
+					if u.Class()&0x13001000 != 0 && u.InitData != nil {
+						for _, v := range shopTestWords(u.InitData, 4) {
+							if v != 0 {
+								o.undefinedTail = true
+							}
+						}
+						if u.Class()&0x1000 != 0 && u.SubClass()&0x47f0000 != 0 {
+							o.undefinedTail = true
+						}
+					}
+				}
+				n = w[2]
+			}
 		case PortTestShopAccept, PortTestShopCancel:
 			gold := [2]uint32{words[12], words[13]}
 			// Remember stock ownership before a destructor can invalidate nodes.
@@ -420,6 +507,23 @@ func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 				w = append(w, normalized(o.init, 1)...)
 			}
 			r.Objects = append(r.Objects, w)
+			if p.proxy.callbacks.shop.spec.CaptureData {
+				d := []uint32{p.normalize(uint32(uintptr(o.u.CObj()))), uint32(o.initSize), uint32(o.useSize)}
+				if o.init != nil {
+					init := normalized(o.init, o.initSize/4)
+					if o.undefinedTail && len(init) > 4 {
+						init[4] = 0
+					}
+					d = append(d, init...)
+				}
+				if o.u.UseData.Ptr != nil {
+					d = append(d, normalized(o.u.UseData.Ptr, o.useSize/4)...)
+				}
+				if o.health != nil {
+					d = append(d, normalized(o.health, 2)...)
+				}
+				r.ObjectData = append(r.ObjectData, d)
+			}
 		}
 	}
 	if len(p.owned) > 64 {

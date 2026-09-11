@@ -207,6 +207,14 @@ var shopHashes = map[string]string{
 	"shop-packets":                "051d65dfef6ab3b4349f59c959e2d2515c8176063943d9b19342264992063d41",
 	"shop-gold-balance":           "9019e9f97a408eadff11f9722e7781d653c3cee26d17c16c6cb6431403825cd3",
 	"shop-trade-completion":       "8cde6a61f8532c01768bd1d46c56b6cfc555f7cf88703ad90a1d347ded7c1b6e",
+	"shop-repairs":                "6ac553918b85a1f16e425cccad321c0b3c02312974dcc239221c1bc3bf204a0d",
+	"shop-sales":                  "39cb08269918856425f14693d10a21e11818814bb0e8854fb33693d6ed19ffbf",
+	"shop-cached-sessions":        "e55154a1f30a2e1e88e448822d47162e86752d6efd2bdaae0aed3145a44e8adf",
+	"shop-stock-loading":          "bf808c7f64995d7fa8497e44a43ec367d96f03cd3c890ddf99faaef51cc3a582",
+	"shop-quest-loading":          "dc0cfa85fac4eee21f50cb3f4cbddec8e21ec805e2465d485e5f081c2b7a38f5",
+	"shop-offer-removal":          "6ed33429c83d82ab61d0c15638a026e07b07f84a90c890ead4cf625bd96325fd",
+	"shop-quest-price-rounding":   "db88721cc49d89cc7e569e1b0e15b6a4e668d15eba5ef33d0f088f3257803861",
+	"shop-stock-boundaries":       "2a9acc334312f6e7c768909a9e3cefbe7633090c53e6e7c52f03a13be78cd773",
 }
 
 func TestShopPriceRounding(t *testing.T) {
@@ -457,5 +465,277 @@ func TestShopTradeCompletion(t *testing.T) {
 			}
 		}
 	}
-	callbackHash(t, "shop-trade-completion", legacy.PortTestRoam(specs), shopHashes["shop-trade-completion"])
+	r := legacy.PortTestRoam(specs)
+	for i, v := range r {
+		if i%6 >= 3 {
+			continue
+		}
+		sp := specs[i].Callbacks.Shop
+		steps := v.Callbacks.Shop.Sequence
+		last := steps[len(steps)-1]
+		want := uint32(107)
+		if sp.Session == 3 || sp.Peer {
+			want = 111
+		}
+		if last.Players[2][541] != want {
+			t.Fatalf("case%d completed gold=%d want%d", i, last.Players[2][541], want)
+		}
+		if sp.Peer {
+			if last.Players[5][541] != 207 || last.Head != 0 {
+				t.Fatalf("case%d peer completion state", i)
+			}
+			wantA, wantB := uint32(0), uint32(0)
+			if i%6 >= 1 {
+				wantB = 70000
+			}
+			if i%6 >= 2 {
+				wantA = 70001
+			}
+			if last.Players[0][126] != wantA || last.Players[3][126] != wantB {
+				t.Fatalf("case%d inventory delivery", i)
+			}
+		}
+	}
+	callbackHash(t, "shop-trade-completion", r, shopHashes["shop-trade-completion"])
+}
+
+func TestShopRepairs(t *testing.T) {
+	var specs []legacy.PortTestRoamSpec
+	for session := 2; session <= 3; session++ {
+		for _, hp := range [][2]uint16{{0, 100}, {1, 100}, {99, 100}, {100, 100}, {101, 100}, {0, 0}} {
+			for variant := 0; variant < 4; variant++ {
+				for _, gold := range []uint32{0, 1, 1000} {
+					s := shopBase(4)
+					p := s.Callbacks.Shop
+					p.CaptureData, p.Session, p.Gold, p.ProtectedGold = true, session, [2]uint32{gold, 100}, variant&1 != 0
+					item := legacy.PortTestShopItem{Type: 15, Class: 8, Worth: 100, Health: true, HP: hp[0], MaxHP: hp[1]}
+					if variant >= 2 {
+						item.Class, item.Subclass = 0x1000, 0x40000
+						item.Use[108], item.Use[109] = byte(variant-2)*20, 20
+						item.Use[112] = byte(variant-2) * 100
+					}
+					p.Items = []legacy.PortTestShopItem{item}
+					side := 3 - session
+					p.Sequence = []legacy.PortTestShopAction{{Op: legacy.PortTestShopCreate, Value: 1}, {Op: legacy.PortTestShopRepairQuote, Side: side, Value: 70000}, {Op: legacy.PortTestShopRepair, Side: side, Value: 70000}, {Op: legacy.PortTestShopInventory, Side: side}, {Op: legacy.PortTestShopRepairQuote, Side: side, Value: 70000}, {Op: legacy.PortTestShopRepairQuote, Side: side, Value: 0xffffffff}, {Op: legacy.PortTestShopRepair, Side: side, Value: 0xffffffff}, {Op: legacy.PortTestShopRepair, Side: side, Value: 70000}, {Op: legacy.PortTestShopRepairQuote, Side: side, Value: 70000}}
+					specs = append(specs, s)
+				}
+			}
+		}
+	}
+	r := legacy.PortTestRoam(specs)
+	for i, v := range r {
+		steps := v.Callbacks.Shop.Sequence
+		for _, data := range steps[7].ObjectData {
+			if data[0] != 70000 {
+				continue
+			}
+			hp := data[len(data)-2:]
+			if uint16(hp[0]) != uint16(hp[1]) {
+				t.Fatalf("case%d repair did not set current to maximum: %v", i, hp)
+			}
+		}
+	}
+	callbackHash(t, "shop-repairs", r, shopHashes["shop-repairs"])
+}
+
+func TestShopSales(t *testing.T) {
+	var specs []legacy.PortTestRoamSpec
+	for session := 2; session <= 3; session++ {
+		for _, qty := range []uint32{0, 1, 2, 3, 4, 0xffffffff} {
+			for _, typ := range []int{15, 16, 17, 0x1000f} {
+				for _, protected := range []bool{false, true} {
+					s := shopBase(4)
+					p := s.Callbacks.Shop
+					p.Session, p.Gold, p.ProtectedGold = session, [2]uint32{100, 0}, protected
+					p.Items = []legacy.PortTestShopItem{{Type: 15, Class: 8, Worth: 100}, {Type: 16, Class: 8, Worth: 200}, {Type: 15, Class: 8, Worth: 100}}
+					side := 3 - session
+					p.Sequence = []legacy.PortTestShopAction{{Op: legacy.PortTestShopCreate, Value: 1}, {Op: legacy.PortTestShopInventory, Side: side, Item: 0}, {Op: legacy.PortTestShopInventory, Side: side, Item: 1}, {Op: legacy.PortTestShopInventory, Side: side, Item: 2}, {Op: legacy.PortTestShopSell, Side: side, Item: typ, Value: qty}}
+					specs = append(specs, s)
+				}
+			}
+		}
+	}
+	r := legacy.PortTestRoam(specs)
+	for i, v := range r {
+		p := specs[i].Callbacks.Shop
+		a := p.Sequence[4]
+		want := uint32(100)
+		if a.Item == 15 {
+			want += 50 * min(a.Value, 2)
+		} else if a.Item == 16 && a.Value != 0 {
+			want += 100
+		}
+		if got := v.Callbacks.Shop.Sequence[4].Players[2][541]; got != want {
+			t.Fatalf("case%d gold=%d want%d", i, got, want)
+		}
+	}
+	callbackHash(t, "shop-sales", r, shopHashes["shop-sales"])
+}
+
+func TestShopCachedSessions(t *testing.T) {
+	var specs []legacy.PortTestRoamSpec
+	for session := 2; session <= 3; session++ {
+		for _, quest := range []uint32{0, 4096} {
+			for count := 0; count < 4; count++ {
+				s := shopBase(4)
+				s.Lifecycle.GameFlags = quest
+				p := s.Callbacks.Shop
+				p.Session = session
+				p.Sequence = []legacy.PortTestShopAction{{Op: legacy.PortTestShopCreate, Value: 1}}
+				for i := 0; i < count; i++ {
+					p.Items = append(p.Items, legacy.PortTestShopItem{Type: 15, Class: 8, Worth: 100})
+					p.Sequence = append(p.Sequence, legacy.PortTestShopAction{Op: legacy.PortTestShopAdd, Item: i})
+				}
+				side := 3 - session
+				p.Sequence = append(p.Sequence, legacy.PortTestShopAction{Op: legacy.PortTestShopLookup, Side: side, Value: 70000}, legacy.PortTestShopAction{Op: legacy.PortTestShopLookup, Side: side, Value: 0xffffffff}, legacy.PortTestShopAction{Op: legacy.PortTestShopDetach, Side: side}, legacy.PortTestShopAction{Op: legacy.PortTestShopLookup, Side: side, Value: 70000}, legacy.PortTestShopAction{Op: legacy.PortTestShopCancel}, legacy.PortTestShopAction{Op: legacy.PortTestShopPlayerCleanup, Item: 1}, legacy.PortTestShopAction{Op: legacy.PortTestShopPlayerCleanup, Item: 1})
+				specs = append(specs, s)
+			}
+		}
+	}
+	callbackHash(t, "shop-cached-sessions", legacy.PortTestRoam(specs), shopHashes["shop-cached-sessions"])
+}
+
+func TestShopStockLoading(t *testing.T) {
+	var specs []legacy.PortTestRoamSpec
+	for session := 2; session <= 3; session++ {
+		for count := byte(0); count < 4; count++ {
+			for mask := 0; mask < 16; mask++ {
+				s := shopBase(4)
+				p := s.Callbacks.Shop
+				p.Session, p.CaptureData = session, true
+				mods := [4]bool{}
+				for i := range mods {
+					mods[i] = mask&(1<<i) != 0
+				}
+				p.Item.ModPrice = [4]int32{7, 11, 13, 17}
+				p.Load = &legacy.PortTestShopLoadSpec{}
+				p.Stock = []legacy.PortTestShopStock{{Type: 23, Count: count}, {Type: 27, Count: 1, Reward: 1}, {Type: 28, Count: 1, Reward: 5}, {Type: 29, Count: 1, Reward: 2}, {Type: 32, Count: count, Mods: mods}}
+				p.Sequence = []legacy.PortTestShopAction{{Op: legacy.PortTestShopCreate, Value: 1}, {Op: legacy.PortTestShopLoad}, {Op: legacy.PortTestShopDestroy}}
+				specs = append(specs, s)
+			}
+		}
+	}
+	large := shopBase(4)
+	large.Callbacks.Shop.CaptureData = true
+	large.Callbacks.Shop.Load = &legacy.PortTestShopLoadSpec{}
+	large.Callbacks.Shop.Stock = []legacy.PortTestShopStock{{Type: 23, Count: 255}}
+	large.Callbacks.Shop.Sequence = []legacy.PortTestShopAction{{Op: legacy.PortTestShopCreate, Value: 1}, {Op: legacy.PortTestShopLoad}, {Op: legacy.PortTestShopDestroy}}
+	specs = append(specs, large)
+	r := legacy.PortTestRoam(specs)
+	for i, v := range r {
+		want := 0
+		for _, entry := range specs[i].Callbacks.Shop.Stock {
+			want += int(entry.Count)
+		}
+		if got := len(v.Callbacks.Shop.Sequence[1].Nodes); got != want {
+			t.Fatalf("case%d stock=%d want%d", i, got, want)
+		}
+	}
+	callbackHash(t, "shop-stock-loading", r, shopHashes["shop-stock-loading"])
+}
+
+func TestShopQuestLoading(t *testing.T) {
+	var specs []legacy.PortTestRoamSpec
+	for _, stage := range []uint32{0, 1, 8, 9, 10, 11, 0xffffffff} {
+		for _, seed := range []int{1, 2, 3, 7, 15, 31} {
+			for variant := 0; variant < 4; variant++ {
+				s := shopBase(4)
+				s.Seed, s.Lifecycle.GameFlags = seed, 4096
+				p := s.Callbacks.Shop
+				p.CaptureData = true
+				p.Balance["ShopAnkhCutoffStage"] = 10
+				p.Load = &legacy.PortTestShopLoadSpec{Stage: stage, Marker: variant != 0, MarkerChance: []uint32{0, 0, 1, 4}[variant], Names: []string{"Diamond", "missing", "Gold"}}
+				p.Sequence = []legacy.PortTestShopAction{{Op: legacy.PortTestShopCreate, Value: 1}, {Op: legacy.PortTestShopLoad}, {Op: legacy.PortTestShopDestroy}}
+				specs = append(specs, s)
+			}
+		}
+	}
+	callbackHash(t, "shop-quest-loading", legacy.PortTestRoam(specs), shopHashes["shop-quest-loading"])
+}
+
+func TestShopOfferRemoval(t *testing.T) {
+	var specs []legacy.PortTestRoamSpec
+	for _, peer := range []bool{false, true} {
+		for session := 2; session <= 3; session++ {
+			for remove := 0; remove < 6; remove++ {
+				s := shopBase(4)
+				p := s.Callbacks.Shop
+				p.Peer, p.Session, p.Gold, p.ProtectedGold = peer, session, [2]uint32{1000, 2000}, true
+				p.Sequence = []legacy.PortTestShopAction{{Op: legacy.PortTestShopCreate, Value: 1}, {Op: legacy.PortTestShopSet, Item: 6, Value: 1}, {Op: legacy.PortTestShopSet, Item: 7, Value: 1}}
+				for i, value := range []uint32{101, 0x80000000, 0xffffffff, 201, 0} {
+					p.Items = append(p.Items, legacy.PortTestShopItem{Type: 15, Class: 8, Worth: uint32(100 + i)})
+					side := 0
+					if i >= 3 {
+						side = 1
+					}
+					p.Sequence = append(p.Sequence, legacy.PortTestShopAction{Op: legacy.PortTestShopOffer, Item: i, Side: side, Value: value})
+				}
+				p.Sequence = append(p.Sequence, legacy.PortTestShopAction{Op: legacy.PortTestShopWithdraw, Value: uint32(70000 + remove)}, legacy.PortTestShopAction{Op: legacy.PortTestShopWithdraw, Value: uint32(70000 + remove)})
+				specs = append(specs, s)
+			}
+		}
+	}
+	r := legacy.PortTestRoam(specs)
+	for i, v := range r {
+		steps := v.Callbacks.Shop.Sequence
+		want := uint32(1)
+		if i%6 == 5 {
+			want = 0
+		}
+		if steps[8].Return != want || steps[9].Return != 0 {
+			t.Fatalf("case%d repeated withdrawal", i)
+		}
+	}
+	callbackHash(t, "shop-offer-removal", r, shopHashes["shop-offer-removal"])
+}
+
+func TestShopQuestPriceRounding(t *testing.T) {
+	var specs []legacy.PortTestRoamSpec
+	for i := uint32(0); i < 256; i++ {
+		s := shopBase(0)
+		s.Lifecycle.GameFlags = 4096
+		p := s.Callbacks.Shop
+		p.Mode = int(i % 3)
+		p.Item.Class = 0x1000000
+		p.Item.Worth = 16777200 + i*113
+		p.Item.Mods = [4]bool{true, true, i&1 != 0, i&2 != 0}
+		p.Item.ModPrice = [4]int32{16777217, -16777215, 101, -37}
+		values := []float64{.1, 1.00000003, 1.0 / 3, 1000000000001.25, -1.1, 0, .00000001, 1.01}
+		p.Balance["QuestModifierWorthMultiplier"] = values[i%8]
+		p.Balance["QuestSellMultiplier"] = values[(i/8)%8]
+		p.Item.Health = true
+		p.Item.HP, p.Item.MaxHP = uint16(1+i*37), uint16(1+i*97)
+		specs = append(specs, s)
+	}
+	callbackHash(t, "shop-quest-price-rounding", legacy.PortTestRoam(specs), shopHashes["shop-quest-price-rounding"])
+}
+
+func TestShopStockBoundaries(t *testing.T) {
+	var specs []legacy.PortTestRoamSpec
+	for _, n := range []int{0, 1, 59, 60} {
+		for session := 2; session <= 3; session++ {
+			for _, match := range []bool{false, true} {
+				s := shopBase(2)
+				p := s.Callbacks.Shop
+				p.Session = session
+				p.Stock = make([]legacy.PortTestShopStock, n)
+				if match && n > 0 {
+					p.Stock[n-1].Type = 15
+				}
+				specs = append(specs, s)
+			}
+		}
+	}
+	r := legacy.PortTestRoam(specs)
+	for i, v := range r {
+		want := uint32(0xffffffff)
+		n := len(specs[i].Callbacks.Shop.Stock)
+		if i%2 != 0 && n > 0 {
+			want = uint32(n - 1)
+		}
+		if v.Callbacks.Return != want {
+			t.Fatalf("case%d index=%d want%d", i, v.Callbacks.Return, want)
+		}
+	}
+	callbackHash(t, "shop-stock-boundaries", r, shopHashes["shop-stock-boundaries"])
 }

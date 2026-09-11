@@ -51,19 +51,59 @@ allocations afterward. Ordinary session destruction does free its gold objects.
 Allocation-class creation failure is not injected; the retained Go allocator
 panics there. Fixed-pool exhaustion is tested through the real allocator.
 
-## Remaining work before conversion
+## Expanded original-C baseline
 
-Extend the C baseline for stock loading (including quest generation), repair
-quotes/repair/sales, quest-cached sessions and more overlapping offer sequences.
-Add independent assertions for gold/inventory outcomes alongside exact hashes.
-Commit those baselines before replacing the production C bodies, then qualify
-one combined native batch. C remains 133,272 physical lines / 152 files, with
-zero reference C.
+The complete batch baseline now locks **4,238 cases in 21 groups**. All new
+captures repeat exactly; the original thirteen hashes remain unchanged.
+Added 144 repair sequences, 96 sales sequences, 16 quest-cached session
+sequences, 129 stock-loading cases (including quantity 255), 168 quest-loading
+cases, 24 multi-node offer removals, 256 quest rounding cases and 16 stock
+count/index boundaries up to the full 60-entry vendor record.
+
+Independent assertions cover repair current/max health, sales gold credits,
+completed peer-trade gold and inventory delivery, exact packet metadata,
+stock counts, first/last indices, pool limits and repeated withdrawal misses.
+Repair tests include insufficient funds, full/damaged/overfull/zero health,
+empty/full wand charges, missing codes and repeated quotes. The retained
+repair behavior is preserved; the fixture does not add an affordability gate.
+
+Stock loading uses real type factories and registered spell/ability/guide Xfer
+identities. Quest loading retains the real reward generator with controlled
+category and spell-eligibility tables, stage boundaries/wraparound, missing
+named items, the ankh cutoff, marker presence and probability variants.
+Spell/ability rewards are enabled; weapon/armor/guide reward categories return
+no generated object in this fixture. Their non-quest stock creation is covered,
+and the reward-generation dependency itself remains C.
+
+The original stock loader copies a five-word modifier array after initializing
+only its first four words. The fixture excludes exactly that uninitialized
+fifth word when it was copied. All defined modifiers, object data, list order,
+prices, packets and RNG state remain captured. The native loader will initialize
+this formerly undefined word to zero, as the earlier callback port does.
+
+Factory item data, health, full player state, packet recipient/ordering fields,
+protected-gold records, cached sessions and object lifetimes are captured at
+each action. Fixture-created health/init allocations and delayed reward markers
+are explicitly reclaimed. Query input records remain byte-exact read-only.
+Large capacity cases retain full-object digests and explicit list snapshots.
+
+Complete C run: 11.741s. Expanded locked shop plus adjacent generator/spawn/
+penalty/callback/creation/death regressions: 27.405s. Artifacts: c-locked-final-*,
+c-expanded-*, c-final-* and locked-expanded-adjacent.log under build/port-shop.
+
+## Conversion and qualification next
+
+Replace all 36 C bodies together, keep required C ABI roots, and route private
+helpers and Go callers directly to Go. Then run the locked contracts, accumulated
+variants, production builds, exact full-suite comparison and fresh headless
+scenario once for this connected batch. Production C remains **133,272** physical
+lines / 152 files, with zero reference C until the conversion is applied.
 
 Primary external-caller inventory is build/port-shop/callers.json. Retain both
 shopExit and tradeAccept exports: the first has packet-decoder and spell-owner
-callers; the second has a packet-decoder caller. The helper audit initially
-omitted those two rows. An ignored price draft also needs primary corrections:
-quest modifier/sell products stay double until their original float32 spills;
-quest-protected and NaN prices follow the C clamp; do not invent a string length
-cap. Do not integrate that draft without the locked contract comparison.
+callers; the second has a packet-decoder caller. addItemToShopSession is private
+once this whole interval is converted. The helper audit got these rows wrong.
+The ignored price draft needs primary corrections: quest modifier/sell products
+stay double until their original float32 spills; quest-protected and NaN prices
+follow the C clamp; do not invent a string length cap. Do not integrate the draft
+without the locked contract comparison.
