@@ -20,6 +20,7 @@ import (
 )
 
 type PortTestRoamSpec struct {
+	Path                       *PortTestPathSpec
 	Navigation                 *PortTestNavigationSpec
 	GuardEscort                *PortTestGuardEscortSpec
 	Owner                      *PortTestRoamOwnerSpec
@@ -49,6 +50,14 @@ type PortTestRoamResult struct {
 func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 	oldGame := noxflags.GetGame()
 	offsets := []uintptr{2490500, 2489452, 2489444}
+	for _, sp := range specs {
+		if sp.Path != nil {
+			offsets = append(offsets, 2386204)
+			restorePath := portTestPathEnvironment()
+			defer restorePath()
+			break
+		}
+	}
 	oldWords := make([]uint32, len(offsets))
 	for i, off := range offsets {
 		oldWords[i] = *memmap.PtrUint32(0x5D4594, off)
@@ -72,6 +81,8 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 	}
 	core := new(server.Server)
 	core.SetFrame(123)
+	configureWalls, wallsUnchanged, freeWalls := core.PortTestPathWalls()
+	defer freeWalls()
 	restoreTypes := core.PortTestObjectInitSize(1, 0)
 	defer restoreTypes()
 	oldGet, oldFlags := GetServer, noxflags.GetEngine()
@@ -156,6 +167,8 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		guard(db)
 		guard(tb)
 		proxy.trace = nil
+		proxy.pathEndpoints = [2]*server.Waypoint{}
+		proxy.endpointCall = 0
 		guard(ob)
 		guard(ub)
 		for i := 0; i < 34; i++ {
@@ -244,6 +257,10 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		if sp.Navigation != nil {
 			portTestNavigationPrepare(proxy, obj, target, health, sp.Navigation)
 		}
+		if sp.Path != nil {
+			configureWalls(sp.Path.Wall)
+			portTestPathPrepare(proxy, obj, sp.Path, raw)
+		}
 		core.Rand.Logic, core.Rand.Other = prand.New(sp.Seed), prand.New(sp.Seed+1)
 		core.AI.StackChanged = false
 		beforeO, beforeU, beforeW := bytes.Clone(ob), bytes.Clone(ub), bytes.Clone(wb)
@@ -271,6 +288,12 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 				server.GetAIAction(ai.ACTION_ROAM).Update(obj)
 			}
 			nanos = time.Since(start).Nanoseconds()
+		case 9:
+			start := time.Now()
+			for repeat := 0; repeat < max(1, sp.Owner.Repeat); repeat++ {
+				ret = portTestPathCall(obj, sp.Path)
+			}
+			nanos = time.Since(start).Nanoseconds()
 		case 8:
 			ret = int(portTestNavigationCall(obj, sp.Navigation))
 		case 7:
@@ -291,11 +314,28 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 			// Spatial iteration may write only its two visitation tokens.
 			copy(beforeT[8+248:8+256], tb[8+248:8+256])
 		}
+		var pathChanges []uint32
+		if sp.Path != nil {
+			for id := 0; id < 34; id++ {
+				for off := 504; off <= 512; off += 4 {
+					j := id*stride + 8 + off
+					if get(wb, j) != get(beforeW, j) {
+						pathChanges = append(pathChanges, uint32(8192+id*stride+off), normalize(get(wb, j)))
+						put(beforeW, j, get(wb, j))
+					}
+				}
+			}
+		}
 		r := PortTestRoamResult{Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT) && playersUnchanged() && bytes.Equal(scriptName, beforeName) && bytes.Equal(hb, beforeH)}
-		if sp.Navigation != nil {
+		if sp.Navigation != nil || sp.Path != nil {
 			for _, off := range offsets {
 				r.Trace = append(r.Trace, uint32(off), normalize(*memmap.PtrUint32(0x5D4594, off)))
 			}
+		}
+		if sp.Path != nil {
+			r.Changes = append(r.Changes, pathChanges...)
+			r.Trace = append(r.Trace, portTestPathGraphState(normalize)...)
+			r.Intact = r.Intact && wallsUnchanged()
 		}
 		for i := range r.History {
 			r.History[i] = byte(normalize(get(ub, 8+300+4*i)))

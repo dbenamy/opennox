@@ -20,11 +20,13 @@ type PortTestRoamOwnerSpec struct {
 
 type portTestRoamOwnerServer struct {
 	portTestRandomServer
-	generator int
-	mode      byte
-	precheck  bool
-	fallback  *server.Waypoint
-	trace     []uint32
+	pathEndpoints [2]*server.Waypoint
+	endpointCall  int
+	generator     int
+	mode          byte
+	precheck      bool
+	fallback      *server.Waypoint
+	trace         []uint32
 }
 
 func (s *portTestRoamOwnerServer) Nox_xxx_creatureSetDetailedPath_50D220(u *server.Object, p *types.Pointf) {
@@ -38,6 +40,17 @@ func (s *portTestRoamOwnerServer) Nox_xxx_creatureSetDetailedPath_50D220(u *serv
 	case 2:
 		ud.Field2 = 1
 		ud.Field67 = 1
+	case 4:
+		ud.Field2 = 2
+		ud.Field67 = 0
+		ud.Path[0] = u.PosVec
+		ud.Path[1] = *p
+	case 5:
+		ud.Field2 = 1
+		ud.Field67 = 0
+		ud.Path[0] = *p
+	case 6:
+		ud.Field71 = 1
 	case 3:
 		ud.Field2 = 1
 		ud.Field67 = 0
@@ -46,6 +59,11 @@ func (s *portTestRoamOwnerServer) Nox_xxx_creatureSetDetailedPath_50D220(u *serv
 }
 func (s *portTestRoamOwnerServer) Sub_50CB20(u *server.Object, p *types.Pointf) *server.Waypoint {
 	s.trace = append(s.trace, 2, math.Float32bits(p.X), math.Float32bits(p.Y))
+	if s.pathEndpoints[0] != nil || s.pathEndpoints[1] != nil {
+		p := s.pathEndpoints[min(s.endpointCall, 1)]
+		s.endpointCall++
+		return p
+	}
 	return s.fallback
 }
 
