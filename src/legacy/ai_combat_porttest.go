@@ -76,11 +76,25 @@ func (s *portTestCombatState) ScriptCallback(b *server.ScriptCallback, caller, t
 }
 func (s *portTestRoamOwnerServer) CreateObjectAt(obj, owner server.Obj, p types.Pointf) {
 	u := server.ToObject(obj)
+	if s.life != nil {
+		s.life.created = append(s.life.created, u)
+		s.life.ids[uint32(uintptr(u.CObj()))] = uint32(1000 + len(s.life.created))
+		if u.Field189 != nil {
+			s.life.ids[uint32(uintptr(u.Field189))] = uint32(2000 + len(s.life.created))
+		}
+		s.trace = append(s.trace, 31, uint32(u.TypeInd), math.Float32bits(p.X), math.Float32bits(p.Y), uint32(bool2int(owner == nil)))
+		u.PosVec = p
+		return
+	}
 	s.trace = append(s.trace, 11, math.Float32bits(p.X), math.Float32bits(p.Y), uint32(bool2int(owner == s.combat.actor)))
 	u.PosVec = p
 	s.combatProjectile = u
 }
 func (s *portTestRoamOwnerServer) DelayedDelete(u *server.Object) {
+	if s.life != nil {
+		s.trace = append(s.trace, 32, s.life.ids[uint32(uintptr(u.CObj()))])
+		return
+	}
 	s.trace = append(s.trace, 12)
 	s.combatProjectile = u
 }

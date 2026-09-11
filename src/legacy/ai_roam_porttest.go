@@ -20,6 +20,7 @@ import (
 )
 
 type PortTestRoamSpec struct {
+	Lifecycle                  *PortTestLifecycleSpec
 	Combat                     *PortTestCombatSpec
 	Path                       *PortTestPathSpec
 	Navigation                 *PortTestNavigationSpec
@@ -34,9 +35,10 @@ type PortTestRoamSpec struct {
 	Enabled                    [34]bool
 }
 type PortTestRoamResult struct {
-	Combat             *PortTestCombatResult `json:",omitempty"`
-	Nanos              int64                 `json:"-"`
-	Trace              []uint32              `json:",omitempty"`
+	Lifecycle          *PortTestLifecycleResult `json:",omitempty"`
+	Combat             *PortTestCombatResult    `json:",omitempty"`
+	Nanos              int64                    `json:"-"`
+	Trace              []uint32                 `json:",omitempty"`
 	History            [16]byte
 	Index, Arg, Field2 uint32
 	Return             int
@@ -96,6 +98,13 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 			break
 		}
 	}
+	for _, sp := range specs {
+		if sp.Lifecycle != nil {
+			restore := portTestLifecycleEnvironment(proxy)
+			defer restore()
+			break
+		}
+	}
 	GetServer = func() Server { return proxy }
 	noxflags.UnsetEngine(noxflags.EngineShowAI)
 	defer func() { GetServer = oldGet; noxflags.ResetEngine(); noxflags.SetEngine(oldFlags) }()
@@ -128,6 +137,12 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		ids[uint32(uintptr(unsafe.Pointer(proxy.combat.weapon)))] = 102
 		for i, b := range proxy.combat.extra {
 			ids[uint32(uintptr(unsafe.Pointer(&b[8])))] = uint32(400 + i)
+		}
+	}
+	if proxy.life != nil {
+		proxy.life.ids = ids
+		for i := range proxy.life.players {
+			ids[uint32(uintptr(unsafe.Pointer(&proxy.life.players[i])))] = uint32(200 + i)
 		}
 	}
 	var configurePlayers func(int)
@@ -277,6 +292,9 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 			portTestCombatPrepare(proxy, obj, target, health, sp.Combat)
 			configureWalls(sp.Combat.Wall)
 		}
+		if sp.Lifecycle != nil {
+			portTestLifecyclePrepare(proxy, obj, target, health, sp.Lifecycle)
+		}
 		if sp.Path != nil {
 			configureWalls(sp.Path.Wall)
 			portTestPathPrepare(proxy, obj, sp.Path, raw)
@@ -290,7 +308,13 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		ret := 0
 		var nanos int64
 		var combatResult *PortTestCombatResult
+		var lifeResult *PortTestLifecycleResult
 		switch sp.Op {
+		case 11:
+			ret = int(normalize(uint32(portTestLifecycleCall(obj, sp.Lifecycle))))
+			lifeResult = portTestLifecycleTrace(proxy, health, normalize)
+			combatResult = portTestCombatTrace(proxy, normalize)
+			copy(beforeH[8:len(beforeH)-8], hb[8:len(hb)-8])
 		case 10:
 			portTestCombatCall(obj, sp.Combat)
 			combatResult = portTestCombatTrace(proxy, normalize)
@@ -350,11 +374,14 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 				}
 			}
 		}
-		r := PortTestRoamResult{Combat: combatResult, Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT) && playersUnchanged() && bytes.Equal(scriptName, beforeName) && bytes.Equal(hb, beforeH)}
+		r := PortTestRoamResult{Lifecycle: lifeResult, Combat: combatResult, Nanos: nanos, Trace: proxy.trace, Index: ud.Field91, Arg: normalize(uint32(head.Args[0])), Field2: ud.Field2, Return: ret, Stack: ud.AIStackInd, Logic: core.Rand.Logic.Index(), Other: core.Rand.Other.Index(), Changed: core.AI.StackChanged, Intact: intact(ob) && intact(ub) && bytes.Equal(wb, beforeW) && bytes.Equal(db, beforeD) && bytes.Equal(tb, beforeT) && playersUnchanged() && bytes.Equal(scriptName, beforeName) && bytes.Equal(hb, beforeH)}
 		if sp.Navigation != nil || sp.Path != nil {
 			for _, off := range offsets {
 				r.Trace = append(r.Trace, uint32(off), normalize(*memmap.PtrUint32(0x5D4594, off)))
 			}
+		}
+		if lifeResult != nil {
+			r.Intact = r.Intact && proxy.life.playersUnchanged()
 		}
 		if combatResult != nil {
 			r.Intact = r.Intact && combatResult.Intact && wallsUnchanged()
