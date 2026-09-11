@@ -86,6 +86,16 @@ func (s *portTestCombatState) ScriptCallback(b *server.ScriptCallback, caller, t
 }
 func (s *portTestRoamOwnerServer) CreateObjectAt(obj, owner server.Obj, p types.Pointf) {
 	u := server.ToObject(obj)
+	if s.callbacks != nil && s.callbacks.shop != nil && s.callbacks.shop.spec != nil && s.callbacks.shop.spec.Inventory != nil {
+		// Dropping an existing item moves it; the owning pool still cleans it up.
+		for _, o := range s.callbacks.shop.pools.owned {
+			if o.alive && o.u == u {
+				s.trace = append(s.trace, 31, uint32(u.TypeInd), math.Float32bits(p.X), math.Float32bits(p.Y), uint32(bool2int(owner == nil)))
+				u.PosVec = p
+				return
+			}
+		}
+	}
 	if s.life != nil {
 		s.life.created = append(s.life.created, u)
 		s.life.ids[uint32(uintptr(u.CObj()))] = uint32(1000 + len(s.life.created))

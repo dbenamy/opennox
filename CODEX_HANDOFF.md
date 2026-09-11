@@ -1,41 +1,39 @@
 # OpenNox x86 Porting Handoff
 
 <!-- current-focus -->
-## Complete — resources; next — inventory pickup/drop batch
+## Inventory original-C baseline — ready for conversion
 
-The 25-function health/poison/mana/gold batch is ported: 646 C lines and the
-entire server__object__pickdrop__pickup.c file removed. Production C:
-**130,474 physical lines / 150 files / zero reference C**. Original-C baseline
-is pushed `0393b17c`. 23 C entry points remain, two private bridges are retired,
-and native Go callers/GoldPickup registration route directly.
+Current batch: 33 inventory removal/insertion, drop/placement/chest and specialized
+pickup functions, 1,421 C lines across GAME3_3.c and GAME4_3.c. See
+[INVENTORY.md](docs/porting/INVENTORY.md) for exact addresses and service boundaries.
+No inventory production C has been removed. Last completed/pushed conversion:
+`0f74e2b3` resources, leaving **130,474 physical C lines / 150 files / zero reference C**.
 
-All 3,591 resource cases match unchanged original-C hashes and complete capture
-files byte-for-byte (9.392s). Accumulated default/server/highres port tests pass
-in 114.993s / 87.221s / 88.604s. All three production builds are ELF32/i386/SSE2.
-Full-suite failure multiset is exactly unchanged: 1,553 entries, 15 pass / 3 fail /
-32 skip packages. Fresh resources-port gameplay exits zero against unchanged
-repeat-a goldens, overrides disabled, Xvfb and null audio. See RESOURCES.md.
+The expanded fixture has 2,198 cases in 16 groups, with locked original-C hashes.
+Full captures match byte-for-byte across separate processes. The combined prior
+8,577 shop/trade/resource contracts plus inventory pass in 34.072s. Original
+captures: build/port-inventory/c-reviewed-inventory-*.json and c-repeat-inventory-*.json.
+Fixture snapshots include guarded item buffers, player state, complete packets,
+minimap nodes for all 32 slots, RNG/callback/ownership/creation/deletion effects.
+Borrowed player server handles are asserted intact and identity-normalized.
 
-Qualification exposed a prior weapon initializer's write barrier inspecting
-uninitialized C modifier slots. It now stores the C descriptor's address bits
-without scanning old bytes as Go pointers. The unchanged original-C creation
-corpus passes three repetitions at GOGC=20 (25.862s); all accumulated checks also
-pass. See OBJECT_CREATION.md. No C algorithm is retained solely for tests.
+Next: push this original-C baseline before conversion; implement all 33 owners in
+Go, retire unnecessary internal bridges, compare unchanged hashes/full captures.
+Then accumulated default/server/highres port tests, three production builds,
+full-suite failure metadata comparison and fresh inventory-port gameplay. Reuse
+build/port-resources scripts, replacing directory and adding Inventory to regex.
+Update C_LOC/docs/commit/push, summarize and continue with the next connected batch.
+No user question is pending. Preserve user archive and existing gameplay evidence.
 
-Next connected candidate: 33 inventory removal, insertion, drop, chest and
-specialized pickup functions / 1,421 C lines across GAME3_3 and GAME4_3. No next
-production edits or hashes exist yet. Review exact scope/callers and extend the
-existing shop/player/item/protection/packet fixture; lock and repeat original-C
-contracts, commit/push baseline, then convert and qualify once for the batch.
-Ignored scope/review/fixture notes: build/port-resources/next-inventory-*. Avoid
-changing object ownership during create-at capture for borrowed dropped items.
-Keep all previous 8,577 resource/shop/trade contracts unchanged.
+Original-C testing exposed a retained map-ray loop for some rays crossing negative
+coordinates. Documented in INVENTORY.md; placement tests use in-map origins,
+while drop-all fallback tests with out-of-map origins also pass. Keep this separate
+from inventory behavior conversion. Important review correction: drop-all's C
+fallback `v1 + 7` uses float2* arithmetic, so it means position at byte 56.
 
-Continue autonomously: complete C_LOC/docs, commit/push, summarize, then proceed
-with the next connected batch. No user question is pending. Use
-build/baseline/env.sh (386/SSE2, CGO, Go1.26), retain C x87 flags. Preserve the
-user asset archive and gameplay evidence; avoid duplicate captures. Full-suite
-logs may contain secrets: report action/package/test metadata only.
+Use build/baseline/env.sh: Go1.26, 386/SSE2, CGO; retain existing C x87 flags.
+Full-suite logs can contain secrets: report only action/package/test metadata.
+No new subagents. Push via SSH git@github.com:dbenamy/opennox.git dev:dev.
 
 <!-- /current-focus -->
 

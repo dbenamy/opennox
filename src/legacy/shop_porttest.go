@@ -41,6 +41,7 @@ type PortTestShopStock struct {
 	Mods         [4]bool
 }
 type PortTestShopSpec struct {
+	Inventory         *PortTestInventorySpec
 	Resources         *PortTestResourceSpec
 	Engine            *PortTestShopEngineSpec
 	CaptureData       bool

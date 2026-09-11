@@ -66,6 +66,7 @@ type PortTestShopPacketResult struct {
 	Data               []byte
 }
 type PortTestShopStep struct {
+	InventoryData            []uint32   `json:",omitempty"`
 	ResourceData             [][]uint32 `json:",omitempty"`
 	ResourceMessages         [][]byte   `json:",omitempty"`
 	EngineStateRequests      []uint32   `json:",omitempty"`
@@ -90,6 +91,7 @@ type portTestShopOwned struct {
 	alive             bool
 }
 type portTestShopPools struct {
+	inventory           *portTestInventory
 	resources           *portTestResources
 	engineStateRequests []uint32
 	proxy               *portTestRoamOwnerServer
@@ -249,6 +251,7 @@ func (p *portTestShopPools) run() {
 	}
 	defer p.enginePrepare()()
 	defer p.resourcePrepare()()
+	defer p.inventoryPrepare()()
 	for i, spec := range s.spec.Items {
 		// Actual allocator objects let destruction execute the retained object
 		// free path. Price/charge/modifier arithmetic has guarded query fixtures.
@@ -275,6 +278,7 @@ func (p *portTestShopPools) run() {
 		}
 		p.items = append(p.items, o)
 	}
+	p.inventoryItems()
 	for _, a := range s.spec.Sequence {
 		var q unsafe.Pointer
 		if a.Op != PortTestShopCreate && a.Op != PortTestShopReset && a.Op != PortTestShopPlayerCleanup && a.Op != PortTestTradeCreatePlayer && a.Op != PortTestTradeStart && a.Op < 200 {
@@ -466,7 +470,9 @@ func (p *portTestShopPools) run() {
 			}
 			C.sub_510E20(C.int(a.Item))
 		default:
-			if a.Op >= 200 {
+			if a.Op >= 300 {
+				rv = p.inventoryAction(a)
+			} else if a.Op >= 200 {
 				rv = p.resourceAction(a)
 			} else {
 				rv = p.engineAction(a, q)
@@ -480,6 +486,7 @@ func (p *portTestShopPools) run() {
 func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 	r := PortTestShopStep{Alive: p.proxy.core.Objs.Alive - p.initialAlive}
 	r.ResourceData, r.ResourceMessages = p.resourceSnapshot()
+	r.InventoryData = p.inventorySnapshot()
 	var sessions, nodes []unsafe.Pointer
 	seen := make(map[unsafe.Pointer]bool)
 	for q := shopTestPointer(uint32(C.dword_5d4594_2386500)); q != nil; {
@@ -550,6 +557,15 @@ func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 	}
 	if p.players != nil {
 		r.Players = p.players()
+		if p.inventory != nil {
+			for i := range p.proxy.life.players {
+				if *(*uint32)(unsafe.Add(p.proxy.life.players[i].CObj(), 772)) != p.inventory.playerHandle {
+					panic("inventory player server association changed")
+				}
+				// Runtime server registration is an identity, not gameplay state.
+				r.Players[3*i][193] = 55004
+			}
+		}
 	}
 	if p.proxy.callbacks.shop.spec.ProtectedGold {
 		var intact bool
