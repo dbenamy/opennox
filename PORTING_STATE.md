@@ -5,39 +5,43 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-11
 
-Latest completed chunk: network alias reset/select/write 57B920/57B9A0/57BA10,
-plus the user-approved fix in both C packet callers. Production C is **141,082
-physical lines** in 153 files, zero reference C. Original-C helper baseline:
-19d02832, 28,656 operations. Another 1,530 real-caller cases cover full tables and
-every usable slot across frame boundaries, with packet processing, guard bytes
-and exact queued announcements checked. The regression reproduced exactly six
-full-table failures before changing the caller checks. See
-[network aliases](docs/porting/NETWORK_ALIASES.md) and [counts](docs/porting/C_LOC.md).
-No user decision remains pending; both approved writer/alias fixes are complete.
+Latest completed chunk: glyph/item eligibility 57B400/57B450. Both predicates
+execute Go with independent private lazy caches; only the live 57B400 C bridge
+remains. Production C is **141,042 physical lines** in 153 files, zero reference
+C. Original-C baseline: d6d7c136, 8,556 calls. See
+[glyph eligibility](docs/porting/GLYPH_ELIGIBILITY.md) and [counts](docs/porting/C_LOC.md).
+Both approved writer/alias fixes are complete; no user decision is pending.
 
-All accumulated protection/network/waypoint/rules/spell-class/ping tests pass on
-386 default/server/highres. All three binaries build. Fresh network-alias-port
-gameplay passes both preserved screenshots with overrides disabled. Full suite
-exactly matches the command-rule milestone: 15 passing, 3 known failing and 32
-skipped/no-test packages, identical 1,553 failure entries (zero added/removed).
-Artifacts: build/port-network-alias. No validation processes remain running.
+All accumulated protection/network/waypoint/rules/spell-class/ping/glyph tests
+pass on 386 default/server/highres. All three binaries build. Fresh
+glyph-eligibility-port gameplay passes both preserved screenshots with overrides
+disabled. Artifacts: build/port-glyph-eligibility. Full suite last repeated at the
+immediately preceding alias milestone: 15 passing, 3 known failing, 32 skipped/
+no-test packages and identical 1,553 failure entries. No validation is running.
 
-Next: glyph/item eligibility 57B400/57B450. Fixtures and independent tests are installed. Original-C baseline passes
-8,556 calls, including positive/zero lookup, all byte classes and every mask for
-the actual classes. Local artifacts: build/port-glyph-eligibility.
-Primary must independently test cache fill/reuse/zero retry and independence,
-missing drawable/current-player/local-player gates, glyph wizard restriction,
-cheat ordering, class-mask callback arguments/trace and readonly storage. Preserve
-full C ABI for 57B400's live C caller; recheck callers before retiring 57B450 bridge.
-Keep C nox_cheat_allowall: it also serves GAME3_3.c. Audit raw class-shift semantics
-before deciding coverage beyond legitimate class values; don't silently change
-existing behavior. Existing root item helper is related but has different gates.
+Next: collision reflection 57B810 and point containment 57B850. Agent is drafting
+raw-bit C fixtures under ignored build/port-collision-primitives/draft; not
+installed/tested yet. Primary saved original production disassembly in reflect.asm
+and contains.asm in that directory's parent. Reflection uses double-width product
+without float32 rounding; x87 loads/stores can quiet signaling NaNs, while its
+nonpositive swap copies old Y as raw bits. Test signed zeros, subnormals, NaNs,
+infinities, overlapping inputs and exact returned pointer bits before conversion.
+Containment keeps all additions/subtractions at x87 PC53 (no float32 spills),
+with an unsuffixed DOUBLE literal 0.70709997. Float64 operations in the exact
+original order should match; verify strict boundaries and adversarial values
+against original C rather than trusting decompiler float local types.
+
+Existing root reflection object_death_ball.go uses float32 multiplication;
+server/object.go around1783 has an analogous float32 containment branch. They
+are not automatically interchangeable with the C precision. Avoid silently
+changing those existing Go paths while porting live C callers. Both target C
+functions have live C callers and need their ABI retained.
 
 Keep 57ADF0 list cleanup with its future GUI-owner port: GUI options teardown
 still propagates its first freed pointer. Do not silently change that ABI.
 
 Test from src with baseline environment: `go test -tags porttest -count=1
--run '^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates)' .`;
+-run '^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility)' .`;
 repeat server/highres. Preserve untracked asset archive.
 
 Continue through tests, docs/C LOC, commit, push and a user update per chunk,
@@ -664,3 +668,11 @@ fixed. Exact packet/sprite/camera behavior continues on exhausted tables. All
 three accumulated test variants/builds and fresh gameplay pass; full-suite
 failure multiset exactly matches baseline (1,553 entries). Production C:
 **141,082 lines (−44)**. Details: docs/porting/NETWORK_ALIASES.md.
+
+## Glyph/item eligibility completed — 2026-09-11
+
+Ported both predicates and their caches with original-C baseline d6d7c136.
+Preserved lookup-before-gates, glyph restriction before cheat, callback ordering,
+and observed 386 class-shift behavior. Retired unused item C bridge; shared C
+cheat flag remains live. All three accumulated test variants/builds and gameplay
+pass. Production C: **141,042 lines (−40)**. Details: docs/porting/GLYPH_ELIGIBILITY.md.

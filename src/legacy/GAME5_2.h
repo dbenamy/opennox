@@ -75,7 +75,6 @@ float4 nox_xxx_plrGetMaxVarsPtr_57B360(int a1);
 unsigned char sub_57B370(int a1, int a2, int a3);
 int nox_xxx_playerClassCanUseItem_57B3D0(nox_object_t* item, int8_t a2);
 int nox_xxx_client_57B400(int a1);
-int sub_57B450(nox_drawable* a1p);
 char sub_57B500(int a1, int a2, char a3);
 int nox_xxx_collideReflect_57B810(float* a1, int a2);
 int nox_xxx_map_57B850(float2* a1, float* a2, float2* a3);

@@ -3,12 +3,12 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-11
 
-Network alias reset/select/write and the user-approved exhaustion fix are complete.
-Production C is 141,082 physical lines (−44). Both full-table callers skip the
-out-of-bounds write and invalid alias announcement, while processing continues.
-Next assess glyph/item eligibility 57B400/57B450. Draft fixtures are under ignored
-build/port-glyph-eligibility; positive-cache lookup coverage is being added.
-No user decision remains pending. Keep 57ADF0 for its future GUI-owner port.
+Glyph/item eligibility 57B400/57B450 is complete, including private Go caches
+and retirement of the unused item C bridge. Production C is 141,042 physical
+lines (−40). Next assess collision reflection 57B810 and containment 57B850 with
+original-386 raw-bit fixtures and disassembly under build/port-collision-primitives.
+Both approved writer/alias fixes are complete; no user decision is pending.
+Keep 57ADF0 list cleanup with its future GUI-owner port.
 Use PORTING_STATE.md's top resume section for current verification and next steps.
 Continue autonomously one reviewed/tested/documented/committed/pushed chunk at a
 time, with bounded Terra work and primary review. Stop for a substantive user

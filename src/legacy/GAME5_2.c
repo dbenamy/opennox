@@ -166,46 +166,6 @@ int sub_57B190(unsigned short a1, unsigned short a2) {
 //----- (0057B3D0) --------------------------------------------------------
 int nox_cheat_allowall = 0;
 
-//----- (0057B400) --------------------------------------------------------
-int nox_xxx_client_57B400(int a1) {
-	int v1; // eax
-
-	v1 = *getMemU32Ptr(0x5D4594, 2523876);
-	if (!*getMemU32Ptr(0x5D4594, 2523876)) {
-		v1 = nox_xxx_getTTByNameSpriteMB_44CFC0("Glyph");
-		*getMemU32Ptr(0x5D4594, 2523876) = v1;
-	}
-	if (!dword_8531A0_2576) {
-		return 0;
-	}
-	if (*(uint32_t*)(a1 + 108) != v1 || *(uint8_t*)(dword_8531A0_2576 + 2251) == 1) {
-		return 1;
-	}
-	return 0;
-}
-
-//----- (0057B450) --------------------------------------------------------
-int sub_57B450(nox_drawable* a1p) {
-	int* a1 = a1p;
-	int v1;           // eax
-	unsigned char v2; // bl
-
-	v1 = *getMemU32Ptr(0x5D4594, 2523880);
-	if (!*getMemU32Ptr(0x5D4594, 2523880)) {
-		v1 = nox_xxx_getTTByNameSpriteMB_44CFC0("Glyph");
-		*getMemU32Ptr(0x5D4594, 2523880) = v1;
-	}
-	if (!a1 || !*getMemU32Ptr(0x852978, 8) || !dword_8531A0_2576 ||
-		a1[27] == v1 && *(uint8_t*)(dword_8531A0_2576 + 2251) != 1) {
-		return 0;
-	}
-	if (nox_cheat_allowall) {
-		return 1;
-	}
-	v2 = 1 << *(uint8_t*)(dword_8531A0_2576 + 2251);
-	return (v2 & (unsigned char)sub_57B370(a1[28], a1[29], a1[27])) != 0;
-}
-
 //----- (0057B810) --------------------------------------------------------
 int nox_xxx_collideReflect_57B810(float* a1, int a2) {
 	int result; // eax

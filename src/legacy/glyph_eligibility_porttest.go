@@ -22,8 +22,6 @@ import (
 )
 
 const (
-	portTestGlyphClientCacheOff = 2523876
-	portTestGlyphItemCacheOff   = 2523880
 	portTestGlyphPlayerClassOff = 2251
 )
 
@@ -67,8 +65,8 @@ type PortTestGlyphEligibilitySnapshot struct {
 // PortTestGlyphEligibility supplies C-owned storage and a minimal real Glyph
 // lookup, preserving and restoring all globals used by the predicates.
 func PortTestGlyphEligibility(clientCacheInit, itemCacheInit uint32, calls []PortTestGlyphEligibilityCall) []PortTestGlyphEligibilitySnapshot {
-	clientCache := memmap.PtrUint32(0x5D4594, portTestGlyphClientCacheOff)
-	itemCache := memmap.PtrUint32(0x5D4594, portTestGlyphItemCacheOff)
+	clientCache := &glyphClientType
+	itemCache := &glyphItemType
 	local := memmap.PtrUint32(0x852978, 8)
 	oldClientCache, oldItemCache, oldLocal := *clientCache, *itemCache, *local
 	*clientCache, *itemCache = clientCacheInit, itemCacheInit
@@ -155,7 +153,7 @@ func PortTestGlyphEligibility(clientCacheInit, itemCacheInit uint32, calls []Por
 			if call.Wrapper {
 				s.Return = Sub_57B450((*client.Drawable)(drawable))
 			} else {
-				s.Return = int(C.sub_57B450((*C.nox_drawable)(drawable)))
+				s.Return = glyphItemAllowed((*client.Drawable)(drawable))
 			}
 		default:
 			panic("unknown glyph eligibility call")

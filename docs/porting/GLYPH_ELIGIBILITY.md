@@ -28,3 +28,23 @@ chunk: **141,082 physical lines**, 153 files, zero reference C. Local artifacts:
 57B400 retains a C caller in GAME2_2.c. 57B450 has only its Go wrapper and may
 retire its C bridge. Keep C nox_cheat_allowall: GAME3_3.c still uses it. The two
 cache words have no other references and can move to private Go state.
+
+## Go conversion
+
+Original-C baseline: `d6d7c136`. Both predicates now execute Go. Only 57B400
+retains its live C entry point; the item wrapper calls the private helper directly.
+The two lazy caches moved from otherwise-unused blob words to private Go uint32
+state. The live C cheat flag remains shared with its other C caller.
+
+The native item predicate computes the byte class mask before the class-mask
+callback and keeps the observed 386 shift-count masking. Cache lookup still
+precedes all early returns. Nil item wrapper input remains supported: Drawable.C
+already accepted a nil receiver in the original wrapper.
+
+Production C: **141,042 physical lines (−40)** in 153 files; reference C: **0**.
+All accumulated protection/network/waypoint/rules/spell-class/ping/glyph tests
+pass on 386 default/server/highres. All three production binaries build. Fresh
+glyph-eligibility-port gameplay passes both preserved screenshots with overrides
+disabled. Full suite was last repeated at the immediately preceding alias
+milestone, where its 1,553 failure entries exactly matched the known baseline.
+This small predicate chunk used targeted accumulated tests, builds and gameplay.

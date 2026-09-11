@@ -41,6 +41,7 @@ target build selection and linker evidence.
 | Spell-class eligibility / unused chat predicate (2026-09-10) | 153 | 141,180 | −35 | 0 |
 | Player-ping minimum/average (2026-09-10) | 153 | 141,126 | −54 | 0 |
 | Network alias table / exhaustion fix (2026-09-11) | 153 | 141,082 | −44 | 0 |
+| Glyph/item eligibility and caches (2026-09-11) | 153 | 141,042 | −40 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
