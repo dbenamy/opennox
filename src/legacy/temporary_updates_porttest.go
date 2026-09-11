@@ -184,6 +184,9 @@ func (p *portTestShopPools) temporaryRef(i int) *server.Object {
 	case 2:
 		return p.proxy.combat.target
 	default:
+		if i >= 100 && p.temporary != nil && p.temporary.world != nil && p.temporary.world.objectives != nil {
+			return &p.proxy.life.players[i-100]
+		}
 		return p.items[i-3].u
 	}
 }

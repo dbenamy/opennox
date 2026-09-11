@@ -32,13 +32,15 @@ pass (139.079s / 119.557s / 119.801s). Three production builds verified ELF32/i3
 SSE2, CGO enabled. Full-suite failures unchanged (1,553 entries; 15 packages pass,
 3 fail, 32 skip). Fresh unchanged repeat-a gameplay passes in 56.701s. Evidence:
 build/port-world-mechanisms and baseline/runs/world-mechanisms-port.
-Commit/push completed conversion, summarize and CONTINUE; no pending question.
+Completed and pushed as `5d25bd84`; summary delivered. Continue the next batch.
 
-### Next — objective objects and obelisk recharge
+### Active — objective-object conversion (baseline locked)
 
-Audited 12 functions / 732 C lines, still original C: obelisk, flag, ball, crown
+Audited 15 functions / 908 C lines, still original C: obelisk, flag, ball, crown
 updates; flag pickup/identity; ball owner, pickup, home-base scoring and reset;
-crown pickup dispatch. Scope/plan: build/port-objectives/{scope.json,plan.md}.
+crown pickup dispatch, flag-mode dispatch and pickup buff removal. See
+[OBJECTIVES.md](docs/porting/OBJECTIVES.md). Baseline now locks 1,920 cases / 19 repeated full captures;
+24,237 accumulated focused cases pass in 70.385s. Production still C. Scope/plan: build/port-objectives/{scope.json,plan.md}.
 Keep unrelated map-mode initialization in its own later family.
 
 Reuse guarded player/item, team, event, spatial and creation fixtures. Add

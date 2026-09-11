@@ -119,13 +119,15 @@ const (
 )
 
 type PortTestWorldSpec struct {
+	Objectives   *PortTestObjectivesSpec
 	CollideWords []map[int]uint32
 	ItemNames    []string
 }
 type portTestWorld struct {
-	blocks [][]byte
-	frees  []func()
-	oldCD  []unsafe.Pointer
+	objectives *portTestObjectives
+	blocks     [][]byte
+	frees      []func()
+	oldCD      []unsafe.Pointer
 }
 
 func (p *portTestShopPools) worldPrepare() func() {
@@ -144,7 +146,9 @@ func (p *portTestShopPools) worldPrepare() func() {
 	a, b := memmap.PtrUint32(0x5d4594, 2488680), memmap.PtrUint32(0x5d4594, 2488676)
 	oldA, oldB := *a, *b
 	*a, *b = 0, 0
+	restoreObjectives := p.objectivesPrepare()
 	return func() {
+		restoreObjectives()
 		w := p.temporary.world
 		for i, cd := range w.oldCD {
 			// Filter-only class probes own no monster-generator children.
@@ -200,6 +204,7 @@ func (p *portTestShopPools) worldItems() {
 			it.u.TypeInd = uint16(id)
 		}
 	}
+	p.objectivesItems()
 }
 func (p *portTestShopPools) worldAction(a PortTestShopAction) uint32 {
 	sp := p.proxy.callbacks.shop.spec.TemporaryUpdates
@@ -228,5 +233,5 @@ func (p *portTestShopPools) worldSnapshot(out []uint32) []uint32 {
 			out = append(out, p.normalize(v))
 		}
 	}
-	return out
+	return p.objectivesSnapshot(out)
 }
