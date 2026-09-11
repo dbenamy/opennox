@@ -3,19 +3,33 @@
 <!-- current-focus -->
 ## Resume focus — 2026-09-11
 
-Tile selection state 51D4D0/51D540/51D570/51D5C0 is complete. Production C is
-140,785 physical lines (−60), with 459,124 original-C/native checks. All three
-test/build variants and fresh gameplay pass. Last full-suite comparison was
-the preceding waypoint chunk, with the exact known failure multiset unchanged.
-Next review/install the ignored tile-fill worklist fixture under
-build/port-tile-worklist, establish its original-C baseline, then port
-51DD50/51DE30. Preserve signed/unsigned count tests and output aliasing.
-Both approved writer/alias fixes are complete; no user decision is pending.
-Keep 57ADF0 list cleanup with its future GUI-owner port.
-Use PORTING_STATE.md's top resume section for current verification and next steps.
-Continue autonomously one reviewed/tested/documented/committed/pushed chunk at a
-time, with bounded Terra work and primary review. Stop for a substantive user
-decision or rate limit. Preserve the asset archive and known baseline failures.
+Tile-fill worklist push/pop 51DD50/51DE30 is complete. Original-C baseline
+`c4117ac3` and native Go pass 9,000 operations, including signed/unsigned count,
+capacity/overflow, full flags, exact grid keys and output aliasing. Both ABI
+entries remain for the C tile-fill owner. See
+[worklist validation](docs/porting/TILE_WORKLIST.md).
+Production C: **140,730 physical lines** (−55), 153 files, zero reference C.
+
+Accumulated default/server/highres tests and all three production builds pass.
+Fresh tile-worklist-port gameplay passes both preserved screenshots, overrides
+off. Full suite matches the exact known 1,553 failure-entry multiset:
+15 passing/3 known failing/32 skipped-no-test packages. No validation is running.
+Artifacts: build/port-tile-worklist.
+
+Next investigate border-selection 543FB0/544020/544070/5440A0. Ignored drafts
+under build/port-border-selection are not integrated or tested yet. Byte4 appears
+to validate against the input variation's row rather than the selected border's
+row. Reproduce false rejection/acceptance with realistic loader limits, prepare
+a reviewed repair, and ask the user about that behavior change if confirmed.
+No user decision has been requested yet; no border repair has been applied.
+Both previously approved writer/alias fixes are complete. Keep 57ADF0 cleanup
+with its GUI owner and preserve separate server.PointOnTheLine behavior.
+
+Test from src with build/baseline/env.sh: accumulated regex
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist)`
+and porttest, server porttest, highres porttest tags. Preserve the asset archive.
+Continue one reviewed/tested/documented/committed/pushed chunk at a time until
+a substantive question or rate limit. Bounded Terra drafts require primary review.
 <!-- /current-focus -->
 
 ## Current plan — revised 2026-09-10

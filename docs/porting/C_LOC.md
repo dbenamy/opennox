@@ -47,6 +47,7 @@ target build selection and linker evidence.
 | Durability classification (2026-09-11) | 153 | 140,879 | −24 | 0 |
 | Waypoint link insertion (2026-09-11) | 153 | 140,845 | −34 | 0 |
 | Tile selection state (2026-09-11) | 153 | 140,785 | −60 | 0 |
+| Tile-fill worklist (2026-09-11) | 153 | 140,730 | −55 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

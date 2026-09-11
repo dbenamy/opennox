@@ -111,7 +111,7 @@ func portTestWorklistOutValue(ref uint16, words []C.uint32_t, count, overflow *u
 	return uint32(*portTestWorklistOut(ref, words, count, overflow, queue)), true
 }
 
-// PortTestTileWorklist invokes the original C producer/consumer against an
+// PortTestTileWorklist invokes the live C ABI producer/consumer against an
 // isolated C-owned 128x128 grid. It retains every physical queue word after
 // each call, including inactive records, so a port cannot merely model a slice.
 func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []uint32, specs []PortTestTileWorklistSpec) (snap PortTestTileWorklistSnapshot) {

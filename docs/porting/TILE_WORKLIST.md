@@ -45,3 +45,17 @@ Positive counts above 500 are outside the tested worklist invariant because C
 can scan beyond its physical records. No copied C algorithm or assets are used.
 Local artifacts: build/port-tile-worklist. Production C before this chunk: **140,785 physical
 lines**, 153 files, zero reference C.
+
+## Native implementation
+
+Both ABI entries now execute Go helpers against the existing C-backed queue,
+count, overflow and grid. All 9,000 checks match after replacement. The original
+C baseline is recoverable at `c4117ac3`. Production C: **140,730 physical
+lines** (−55), 153 files, zero reference C.
+
+Accumulated tests pass in default/server/highres 386 variants. All three
+production binaries build as ELF32 Intel 80386. Fresh `tile-worklist-port`
+headless gameplay passes both preserved screenshot checks with overrides off.
+The full suite matches the exact known 1,553 failure-entry multiset, with
+15 passing, 3 known failing and 32 skipped/no-test packages; no added or removed
+failures. No C reference algorithm remains.

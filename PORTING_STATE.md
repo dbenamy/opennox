@@ -5,44 +5,33 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-11
 
-Latest completed chunk: tile-selection quartet 51D4D0/51D540/51D570/51D5C0.
-Original-C baseline `375fc1b3` and native Go pass 459,124 checks. Name lookup
-preserves full physical 176-entry scan, last duplicate/NONE precedence, shared
-C locale comparator and raw-string semantics. Numeric selection/variation/flag
-boundaries and restoration of table/count/state/guards pass. See
-[tile selection](docs/porting/TILE_SELECTION.md).
-Production C: **140,785 physical lines** (−60), 153 files, zero reference C.
+Tile-fill worklist push/pop 51DD50/51DE30 is complete. Original-C baseline
+`c4117ac3` and native Go pass 9,000 operations, including signed/unsigned count,
+capacity/overflow, full flags, exact grid keys and output aliasing. Both ABI
+entries remain for the C tile-fill owner. See
+[worklist validation](docs/porting/TILE_WORKLIST.md).
+Production C: **140,730 physical lines** (−55), 153 files, zero reference C.
 
-All accumulated tests pass in default/server/highres 386 variants. All three
-production binaries build; fresh tile-selection-port gameplay passes both
-preserved screenshots with overrides disabled. Artifacts: build/port-tile-selection.
-No validation processes remain running. The preceding waypoint chunk c29f0a71
-ran the full suite and matched the known exact 1,553 failure-entry multiset:
-15 passing/3 known failing/32 skipped-no-test packages. This chunk did not repeat it.
+Accumulated default/server/highres tests and all three production builds pass.
+Fresh tile-worklist-port gameplay passes both preserved screenshots, overrides
+off. Full suite matches the exact known 1,553 failure-entry multiset:
+15 passing/3 known failing/32 skipped-no-test packages. No validation is running.
+Artifacts: build/port-tile-worklist.
 
-Next: tile-fill worklist push/pop 51DD50/51DE30 in GAME4_2.c, sole owner 5437E0.
-Reviewed fixtures/tests are installed and all 9,000 original-C operations pass
-(build/port-tile-worklist/c-baseline.log). Native draft tile_worklist.go remains
-ignored there; next install it after recording this baseline.
-Queue is 500×12 bytes at 0x973F18+16200, overflow at +22200; count is shared C
-word dword_5d4594_2487248. Scan/empty checks use signed count, but enqueue capacity
-uses unsigned count: high-bit counts skip scan then set overflow if gates pass.
-Pop must reload count/queue fields after each output write to preserve safe
-output aliasing. Push gate uses tile grid keys at +4/+24, full raw flags, coordinate
-bounds 1..126, and rejects appropriate x/y==1 edges. Duplicates at capacity do not
-set overflow. Keep the actual tile-fill/map-placement owner in C for now.
-No user decision is pending. Both approved writer/alias fixes are complete.
-Keep 57ADF0 list cleanup with its future GUI-owner port, and preserve existing
-separate server.PointOnTheLine behavior.
+Next investigate border-selection 543FB0/544020/544070/5440A0. Ignored drafts
+under build/port-border-selection are not integrated or tested yet. Byte4 appears
+to validate against the input variation's row rather than the selected border's
+row. Reproduce false rejection/acceptance with realistic loader limits, prepare
+a reviewed repair, and ask the user about that behavior change if confirmed.
+No user decision has been requested yet; no border repair has been applied.
+Both previously approved writer/alias fixes are complete. Keep 57ADF0 cleanup
+with its GUI owner and preserve separate server.PointOnTheLine behavior.
 
-Test from src with baseline environment: `go test -tags porttest -count=1
--run '^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection)' .`;
-repeat server/highres. Preserve untracked asset archive.
-
-Continue through tests, docs/C LOC, commit, push and a user update per chunk,
-then onward until a substantive question or rate limit. Terra handles bounded
-drafts/audits; primary review owns correctness, test oracles and integration.
-Historical milestones below are not the current checkpoint.
+Test from src with build/baseline/env.sh: accumulated regex
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist)`
+and porttest, server porttest, highres porttest tags. Preserve the asset archive.
+Continue one reviewed/tested/documented/committed/pushed chunk at a time until
+a substantive question or rate limit. Bounded Terra drafts require primary review.
 <!-- /current-checkpoint -->
 
 ## GitHub backup and recovery

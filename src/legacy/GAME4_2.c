@@ -216,61 +216,6 @@ LABEL_19:
 	return 1;
 }
 
-//----- (0051DD50) --------------------------------------------------------
-void sub_51DD50(int a1, int a2, int a3, int a4) {
-	int v4;            // edx
-	int v5;            // edi
-	unsigned char* v6; // eax
-	int v7;            // eax
-
-	if (a1 > 0 && a1 < 127 && a2 > 0 && a2 < 127) {
-		if ((v4 = a3, a3 & 2) && (v4 = a3, a4 == *(uint32_t*)((uint32_t)(ptr_5D4594_2650668[a1]) + 44 * a2 + 24)) ||
-			v4 & 1 && a4 == *(uint32_t*)((uint32_t)(ptr_5D4594_2650668[a1]) + 44 * a2 + 4)) {
-			if ((!(v4 & 1) || a2 != 1) && (!(a3 & 2) || a1 != 1)) {
-				v5 = 0;
-				if (*(int*)&dword_5d4594_2487248 > 0) {
-					v6 = getMemAt(0x973F18, 16204);
-					while (1) {
-						if (!(*((uint32_t*)v6 - 1) != a1 || *(uint32_t*)v6 != a2 || *((uint32_t*)v6 + 1) != v4)) {
-							return;
-						}
-						++v5;
-						v6 += 12;
-						if (v5 >= *(int*)&dword_5d4594_2487248) {
-							break;
-						}
-					}
-				}
-				if (dword_5d4594_2487248 >= 500) {
-					*getMemU32Ptr(0x973F18, 22200) = 1;
-				} else {
-					v7 = 12 * (dword_5d4594_2487248)++;
-					*getMemU32Ptr(0x973F18, 16200 + v7) = a1;
-					*getMemU32Ptr(0x973F18, 16204 + v7) = a2;
-					*getMemU32Ptr(0x973F18, 16208 + v7) = v4;
-				}
-			}
-		}
-	}
-}
-
-//----- (0051DE30) --------------------------------------------------------
-int sub_51DE30(uint32_t* a1, uint32_t* a2, uint32_t* a3) {
-	int v3;     // eax
-	int result; // eax
-
-	if (*(int*)&dword_5d4594_2487248 <= 0) {
-		return 0;
-	}
-	v3 = dword_5d4594_2487248 - 1;
-	dword_5d4594_2487248 = v3;
-	*a1 = *getMemU32Ptr(0x973F18, 16200 + 12 * v3);
-	*a2 = *getMemU32Ptr(0x973F18, 16204 + 12 * dword_5d4594_2487248);
-	result = 1;
-	*a3 = *getMemU32Ptr(0x973F18, 16208 + 12 * dword_5d4594_2487248);
-	return result;
-}
-
 //----- (0051DEA0) --------------------------------------------------------
 int nox_xxx_mapCountWallsMB_51DEA0(int a1) {
 	int result; // eax
