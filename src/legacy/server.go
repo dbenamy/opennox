@@ -345,7 +345,7 @@ func Nox_xxx_allocItemRespawnArray_4ECA60() int {
 	return int(C.nox_xxx_allocItemRespawnArray_4ECA60())
 }
 func Nox_xxx_registerShopClasses_50E2A0() int {
-	return int(C.nox_xxx_registerShopClasses_50E2A0())
+	return shopInit()
 }
 func Nox_xxx_allocMonsterRelatedArrays_50D780() int {
 	return spawnPolicyInit()
@@ -381,7 +381,7 @@ func Sub_50D820() {
 	spawnPolicyFree()
 }
 func Nox_xxx_deleteShopInventories_50E300() {
-	C.nox_xxx_deleteShopInventories_50E300()
+	shopFree()
 }
 func Sub_416950() {
 	C.sub_416950()
@@ -459,7 +459,7 @@ func Sub_4EC5B0() {
 	C.sub_4EC5B0()
 }
 func Sub_50E360() {
-	C.sub_50E360()
+	shopReset()
 }
 func Sub_50D7E0() {
 	spawnPolicyReset()
@@ -489,7 +489,7 @@ func Nox_xxx_Fn_4FCAC0(a1 bool, a2 int) {
 	C.nox_xxx_Fn_4FCAC0(C.int(bool2int(a1)), C.int(a2))
 }
 func Nox_xxx_shopCancelSession_510DC0(a1 *server.TradeSession) {
-	C.nox_xxx_shopCancelSession_510DC0(unsafe.Pointer(a1))
+	shopCancel(a1)
 }
 func Sub_4FCEB0(a1 bool) {
 	C.sub_4FCEB0(C.int(bool2int(a1)))

@@ -1,41 +1,30 @@
 # OpenNox x86 Porting Handoff
 
 <!-- current-focus -->
-## In progress — shop/trade C baseline complete
+## Complete — shop/trade core; next — remaining trade engine
 
-Spawn policy is complete and pushed as `e1b62d01`: 16 bodies / 564 C lines
-removed. Production C is **133,272 physical lines**, 152 files, zero reference C.
-Its contracts, all three variants/builds, exact known full-suite failures and
-fresh headless gameplay pass. See docs/porting/SPAWN_POLICY.md.
+All 36 shop/trade core C bodies are ported: 1,337 C lines removed, 17 private
+C declarations retired, 19 ABI roots retained. Production C is **131,935**
+physical lines, 152 files, zero reference C. Native contracts match all 4,238
+original-C cases locked at `ace4bb15`, with unchanged hashes (11.367s).
+Accumulated default/server/highres tests pass (94.124s/65.972s/67.922s); all
+three production builds are ELF32/i386/SSE2. Full suite exactly matches the
+1,553 known failure entries (15 pass / 3 fail / 32 skip packages). Fresh
+shop-port headless gameplay exits zero against unchanged repeat-a goldens,
+overrides disabled and null audio. Details: docs/porting/SHOP.md.
 
-Current batch: GAME4_1 50E2A0 through 510E20, 36 bodies / 1,337 physical C lines.
-The initial baseline is pushed as `96b4f97a`; the expanded baseline now locks
-**4,238 C cases in 21 groups**, all byte-exact repeated. Original thirteen
-hashes are unchanged. Full C contracts pass in 11.741s; expanded locked shop
-plus adjacent regressions pass in 27.405s. See docs/porting/SHOP.md for coverage,
-retained dependency limits and the single undefined modifier-word exclusion.
-
-No production shop C has been removed. Commit/push expanded baselines if still
-uncommitted, then replace the entire connected family and qualify it once.
-Route Go/private callers directly to Go; preserve required C roots. Update C_LOC,
-docs and checkpoints, commit/push, summarize and continue to the next batch.
-
-Fixture/code: shop_porttest.go, shop_pools_porttest.go, shop_load_porttest.go in
-legacy; matching server helpers and src/shop_porttest_test.go. It owns real
-64-session/500-item pools, a 768-object pool, guarded queries, actual inventory/
-gold/packet services and synthetic loader definitions. All prior hashes remain
-locked. Artifacts/scripts/captures: build/port-shop. Production C remains intact.
-
-Primary caller inventory: build/port-shop/callers.json. shopExit and tradeAccept
-must retain exports; addItemToShopSession has no external C caller and becomes
-private. Ignore the helper audit's contradictory rows. Helper insert_port is
-idle. Its ignored price-draft.go needs primary corrections listed in SHOP.md:
-extra float32 spills, wrong quest/NaN clamps and an invented string length cap.
-Do not copy it unreviewed.
+Next batch: all 18 functions in src/legacy/server__system__trade.c (815 physical
+lines): trade opening, offer admission, purchases and sales. Twelve functions
+have only internal callers; six roots serve the packet decoder. Caller audit
+is build/port-shop/trade-engine-callers.json. Extend the existing shop fixture
+and lock/repeat the new original-C contracts before replacing this whole file.
+Audit previously retained core roots again afterward to retire further bridges.
 
 No question is pending. Continue autonomously in reviewed, tested, documented,
 committed and pushed connected batches. Use build/baseline/env.sh (386/SSE2,
-CGO, Go 1.26); retain C x87 flags. Preserve the untracked asset archive.
+CGO, Go 1.26), retain C x87 flags, preserve the untracked asset archive. Raw
+captures, binaries and logs stay ignored in build/port-shop. No reference C
+algorithms are retained solely for testing.
 
 <!-- /current-focus -->
 

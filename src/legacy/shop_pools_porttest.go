@@ -9,11 +9,7 @@ extern void* nox_alloc_tradeSession_2386492;
 extern void* nox_alloc_tradeItems_2386496;
 extern uint32_t dword_5d4594_2386500;
 extern uint32_t dword_5d4594_1565512;
-static void* portTestShopAdd(int session, void* obj) {
-	float bits;
-	memcpy(&bits, &obj, sizeof(bits));
-	return nox_xxx_addItemToShopSession_50EE00(session, bits);
-}
+
 */
 import "C"
 
@@ -110,13 +106,13 @@ func portTestShopPoolsEnvironment(proxy *portTestRoamOwnerServer) *portTestShopP
 	table := unsafe.Slice(memmap.PtrUint32(0x5D4594, 2386364), 32)
 	oldTable := append([]uint32(nil), table...)
 	C.nox_alloc_tradeSession_2386492, C.nox_alloc_tradeItems_2386496, C.dword_5d4594_2386500 = nil, nil, 0
-	if C.nox_xxx_registerShopClasses_50E2A0() == 0 {
+	if shopInit() == 0 {
 		panic("shop fixture pools")
 	}
 	p.restore = func() {
 		p.cleanup()
 		freeProtection()
-		C.nox_xxx_deleteShopInventories_50E300()
+		shopFree()
 		C.nox_alloc_tradeSession_2386492, C.nox_alloc_tradeItems_2386496, C.dword_5d4594_2386500 = oldSessions, oldItems, oldHead
 		copy(table, oldTable)
 	}
@@ -190,7 +186,7 @@ func (p *portTestShopPools) reset() {
 		}
 		q = w[14]
 	}
-	C.sub_50E360()
+	shopReset()
 	for i := range p.sessions {
 		p.sessions[i] = nil
 	}
@@ -311,18 +307,18 @@ func (p *portTestShopPools) run() {
 			p.markStockFreed(w)
 			p.markFreed(w[12])
 			p.markFreed(w[13])
-			C.sub_510000(C.int(uintptr(q)))
+			shopDestroy((*shopSession)(q))
 			p.sessions[a.Session] = nil
 		case PortTestShopReset:
 			p.reset()
 		case PortTestShopAdd:
-			rv = uint32(uintptr(C.portTestShopAdd(C.int(uintptr(q)), p.items[a.Item].u.CObj())))
+			rv = uint32(uintptr(unsafe.Pointer(shopAdd((*shopSession)(q), p.items[a.Item].u))))
 		case PortTestShopFind:
 			w := shopTestWords(q, 16)
-			rv = uint32(uintptr(unsafe.Pointer(C.sub_50FFE0((*C.uint32_t)(shopTestPointer(w[5])), C.int(a.Value)))))
+			rv = uint32(uintptr(unsafe.Pointer(shopFind((*shopItem)(shopTestPointer(w[5])), a.Value))))
 		case PortTestShopFreeList:
 			w := shopTestWords(q, 16)
-			rv = uint32(C.sub_50F6B0(C.int(w[5])))
+			rv = uint32(shopFreeList((*shopItem)(shopTestPointer(w[5]))))
 			w[5] = 0
 		case PortTestShopSet:
 			if a.Item < 6 || a.Item > 11 || a.Item == 8 || a.Item == 9 {
@@ -344,7 +340,7 @@ func (p *portTestShopPools) run() {
 			}
 			words[8+a.Side] = uint32(uintptr(n))
 		case PortTestShopTotal:
-			rv = uint32(C.sub_50FD20((*C.uint32_t)(q), C.int(words[2+a.Side])))
+			rv = uint32(shopTotal((*shopSession)(q), (*server.Object)(shopTestPointer(words[2+a.Side]))))
 		case PortTestShopBalance:
 			rv = uint32(uintptr(unsafe.Pointer(C.sub_50FB90((*C.uint32_t)(q)))))
 		case PortTestShopPacket:
@@ -356,17 +352,17 @@ func (p *portTestShopPools) run() {
 			case 1:
 				rv = uint32(C.sub_50F2B0(player, (*C.uint32_t)(s.ptr(9))))
 			case 2:
-				rv = uint32(C.sub_50F450(player))
+				rv = uint32(shopSendShort(objectFromInt(player), 457, 0))
 			case 3:
-				rv = uint32(C.nox_xxx_sendEndTradeMsg_50F560(player))
+				rv = uint32(shopSendShort(objectFromInt(player), 713, 1))
 			case 4:
-				rv = uint32(C.sub_50F6E0(player))
+				rv = uint32(shopSendShort(objectFromInt(player), 1993, 1))
 			case 5:
 				rv = uint32(C.sub_50F720(player, (*C.uint32_t)(q)))
 			case 6:
 				rv = uint32(C.nox_xxx_tradeP2PUpdStuff_50FA00(player, (*C.uint32_t)(q)))
 			case 7:
-				rv = uint32(C.sub_50FF90(player, C.int(uintptr(q)), item))
+				rv = uint32(shopSendCode(objectFromInt(player), objectFromInt(item), 1481))
 			default:
 				panic("shop fixture packet")
 			}
@@ -389,7 +385,7 @@ func (p *portTestShopPools) run() {
 		case PortTestShopLookup:
 			rv = uint32(C.sub_510DE0(C.int(words[2+a.Side]), C.int(a.Value)))
 		case PortTestShopDetach:
-			rv = uint32(C.sub_50F490((*C.uint32_t)(q), C.int(words[2+a.Side])))
+			rv = uint32(shopDetach((*shopSession)(q), (*server.Object)(shopTestPointer(words[2+a.Side]))))
 		case PortTestShopLoad:
 			C.nox_xxx_loadShopItems_50E970(C.int(uintptr(q)))
 			for n := words[5]; n != 0; {

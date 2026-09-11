@@ -6,7 +6,7 @@ The connected batch is GAME4_1.c 50E2A0 through 510E20, ending before 510E50:
 36 functions / 1,337 physical C lines. Session/item pools, prices, stock,
 offers, gold balancing, packets, completion/cancellation, repair and sales share
 this boundary. Retained trade-engine and packet-decoder callers stay outside.
-No production C has been removed in this baseline checkpoint.
+The original C baseline was committed before the native conversion.
 
 The first 3,389 original-C cases are locked across thirteen byte-exact repeated
 groups in src/shop_porttest_test.go. Their locked contracts and adjacent
@@ -78,7 +78,7 @@ and the reward-generation dependency itself remains C.
 The original stock loader copies a five-word modifier array after initializing
 only its first four words. The fixture excludes exactly that uninitialized
 fifth word when it was copied. All defined modifiers, object data, list order,
-prices, packets and RNG state remain captured. The native loader will initialize
+prices, packets and RNG state remain captured. The native loader initializes
 this formerly undefined word to zero, as the earlier callback port does.
 
 Factory item data, health, full player state, packet recipient/ordering fields,
@@ -91,19 +91,32 @@ Complete C run: 11.741s. Expanded locked shop plus adjacent generator/spawn/
 penalty/callback/creation/death regressions: 27.405s. Artifacts: c-locked-final-*,
 c-expanded-*, c-final-* and locked-expanded-adjacent.log under build/port-shop.
 
-## Conversion and qualification next
+## Native conversion
 
-Replace all 36 C bodies together, keep required C ABI roots, and route private
-helpers and Go callers directly to Go. Then run the locked contracts, accumulated
-variants, production builds, exact full-suite comparison and fresh headless
-scenario once for this connected batch. Production C remains **133,272** physical
-lines / 152 files, with zero reference C until the conversion is applied.
+All 36 C bodies are replaced together. Seventeen private declarations are
+retired; nineteen C ABI roots remain for existing callers. Go callers and
+private helpers call Go directly. The existing server trade records now have
+semantic field names; compile-time assertions preserve their 64/16-byte layouts.
+Production C is **131,935** physical lines / 152 files, zero reference C, a
+reduction of **1,337** lines.
 
-Primary external-caller inventory is build/port-shop/callers.json. Retain both
-shopExit and tradeAccept exports: the first has packet-decoder and spell-owner
-callers; the second has a packet-decoder caller. addItemToShopSession is private
-once this whole interval is converted. The helper audit got these rows wrong.
-The ignored price draft needs primary corrections: quest modifier/sell products
-stay double until their original float32 spills; quest-protected and NaN prices
-follow the C clamp; do not invent a string length cap. Do not integrate the draft
-without the locked contract comparison.
+All 4,238 locked original-C cases pass natively (11.367s), with no hash changes.
+The initial build exposed Cgo pointer/argument type mismatches, corrected before
+comparison. The primary implementation corrected the helper draft’s float32
+spill and clamp errors before running the contracts. All three production builds pass and metadata confirms ELF32/Intel 80386 and
+GO386=sse2. The full suite has the exact baseline multiset of 1,553 failure
+entries (15 passing packages, 3 failing, 32 skipped), with no additions. Fresh
+`shop-port` gameplay exits zero with unchanged repeat-a screenshot goldens,
+NOX_E2E_OVERRIDE=false, Xvfb and null audio. Accumulated port tests pass for default (94.124s), server
+(65.972s) and highres (67.922s). Artifacts are in build/port-shop.
+These elapsed times include concurrent qualification load and are not runtime
+performance benchmarks.
+
+Required caller roots were checked against both calls and function references.
+shopExit and tradeAccept retain exports for the packet decoder and spell-owner
+paths; addItemToShopSession is private after this conversion. The retired C
+algorithms remain recoverable in Git at `ace4bb15`, not in the test tree.
+
+The next connected batch is the remaining server__system__trade.c engine:
+trade opening, offer admission, purchases and sales. Reuse this fixture and
+extend the original-C baseline before converting the entire file.

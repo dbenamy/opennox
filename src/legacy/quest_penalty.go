@@ -10,7 +10,6 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
-	"math"
 	"unsafe"
 )
 
@@ -210,8 +209,7 @@ func questLoseGems(u *server.Object) {
 		next := t.NextItem()
 		if k := kind(t); k >= 0 {
 			if odd[k] {
-				// The retained shop helper's float parameter carries raw object bits.
-				cost := int32(C.nox_xxx_shopGetItemCost_50E3D0(1, 0, C.float(math.Float32frombits(uint32(uintptr(t.CObj()))))))
+				cost := shopPrice(1, nil, t)
 				GetServer().DelayedDelete(t)
 				Nox_xxx_playerAddGold_4FA590(u, int(cost/2))
 				odd[k] = false

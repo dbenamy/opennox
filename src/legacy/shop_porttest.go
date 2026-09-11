@@ -203,11 +203,11 @@ func portTestShopCall(proxy *portTestRoamOwnerServer) uint32 {
 		if sp.NilEntry {
 			entry = nil
 		}
-		return uint32(C.sub_5103F0(C.int(uintptr(u)), C.int(uintptr(entry))))
+		return uint32(shopStockMatches((*server.Object)(u), (*shopStockEntry)(entry)))
 	case 2:
 		return uint32(C.nox_xxx_getSomeShopData_5103A0(session, C.int(uintptr(u))))
 	case 3:
-		return uint32(C.sub_50EEC0((*C.uint32_t)(s.ptr(9))))
+		return uint32(shopStockKey((*shopItem)(s.ptr(9))))
 	case 4:
 		s.pools.run()
 		return 0
