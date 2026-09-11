@@ -1,69 +1,53 @@
 # OpenNox x86 Porting Handoff
 
 <!-- current-focus -->
-## In progress — generator original-C baseline
-
-Generic death native `fefc0445` is committed and pushed. Generator C remains
-intact at 134,304 physical lines. The fixture now covers 2,264 generator cases
-plus 128 tile known answers, including real spawn registration, health, player
-selection, modifier copying and weapon/armor equipment. See
-[generator contracts](docs/porting/GENERATOR.md).
-
-The 12 hash groups repeat exactly; locked generator and adjacent regressions
-pass (11.291s). Commit this baseline before converting the
-nine-function, 468-line family. Native drafts are ignored under
-build/port-generator; independently review before integrating. One helper is
-available as insert_port. No user question is pending; continue through native
-qualification, documentation, commit and push, then the next connected batch.
-
 ## Resume here — 2026-09-11
 
-Continue the x86 C-to-Go port on `dev`, one connected, reviewed, tested,
-documented, committed and pushed family at a time, until a substantive user
-question or rate limit. User approved more aggressive batching and at most one
-bounded helper. Preserve the untracked asset archive. No question is pending.
+Continue the x86 C-to-Go port on dev in connected, reviewed, tested, documented,
+committed and pushed batches until a substantive question or rate limit. User
+approved more aggressive batching and one bounded helper. Preserve the untracked
+asset archive. No question is pending.
 
-Latest qualified batch: eight generic object death callbacks across GAME5
-54DFA0–54E620 and server__object__die__die.c, which is now removed.
-Original-C baseline `29780767` was committed and pushed before conversion.
-All 1,704 cases match, including creation failures, marker duplicates, rotating
-boulder debris, equipment material/plural messages and real packet encoding.
-See docs/porting/OBJECT_DEATH.md for contracts, hashes and scope limits.
-Production C: **134,304 physical lines (minus 265)**, **152 files**, zero reference C.
+Latest qualified chunk: nine generator functions (death/update/selection/
+placement/vacancy/radial/spawn/copy), 468 physical C lines removed. Original-C
+baseline `898e4635` is committed and pushed; all 2,264 generator cases plus
+128 tile known answers match native Go. See docs/porting/GENERATOR.md.
+Production C: **133,836 physical lines**, **152 files**, **zero reference C**.
+Only registered death/update retain C ABI exports; seven helpers are Go-only.
 
-Accumulated default/server/highres tests pass (60.128s/49.661s/49.157s).
+Accumulated default/server/highres contracts pass (70.667s/50.693s/54.296s).
 Three production binaries verify ELF32/i386/SSE2. Full suite matches exactly
-1,553 known failure entries (15 pass/3 fail/32 skip packages). Fresh
-`object-death-port` headless gameplay exits 0 against preserved screenshots,
-overrides off, null audio. Artifacts: build/port-object-death.
+1,553 known failures (15 pass/3 fail/32 skip packages). Fresh generator-port
+headless gameplay exits 0 against preserved screenshots, overrides off, null
+audio. Artifacts/scripts: build/port-generator. Commit/push native changes if
+still uncommitted, then continue immediately to the next batch below.
 
-Previous qualified/pushed: quest penalty `ab9fc939`, initialization `7ac58eed`,
-callbacks `6f0a291e`, spells `51dd2621`, main AI `f674ad3a`, monster state
-`29b6e5d3`, lifecycle `e3ee0c9c`, combat `e37039e5`, path `01a9ec4d`, navigation
-`e32982f7`, guard/escort `2bd0b90d`. C_LOC.md records each physical count.
+Next connected batch: SpawnClass/MonsterList ownership, admission, culling,
+association and cleanup: GAME4_1 50D780 through50E210 =550 C lines/15 bodies,
+plus outer tick50D890 in server__system__server.c. Include the tick so its
+Go-only caller avoids extra ABI crossings. Reuse the generator map/player/
+allocator fixture; extend original-C contracts and commit them before removal.
 
-Next: generator death/update/selection/placement/spawn/copy, **nine functions /
-468 physical C lines**: GAME5 54E630..beforeE6F0 (27) and E930..beforeF740 (441).
-Four interleaved visibility helpers remain shared C. Creation54CA90 is already
-Go. Establish original-C baseline with shared callback/map/script/player fixtures,
-real tile grid and SpawnClass lifecycle, then commit before conversion.
-Primary notes: build/port-object-death/generator-next.md. Helper audits and
-requested tile fixture draft are in that directory; review independently.
+Helper insert_port is idle. Ignored audit and draft fixture:
+build/port-generator/next-batch-audit.md and spawn_policy_porttest.go.
+Review carefully: audit initially said14 bodies instead of15; draft allocates
+772-byte objects but should allocate sizeof(server.Object) for Go EXT/server
+handle and snapshot only772. Raw allocator/list pointers must be normalized;
+draft does not fully do that. Server helper currently has NO Glyph type.
+Add actual array registration/removal sequences, player visibility/capacity,
+list sorting/deletion order, direct float-view callback filters, glyph cleanup,
+pool exhaustion and tick gates. alloc.NewClass panics on allocation failure;
+fixed class NewObject returns nil on exhaustion. Do not invent a nil factory
+failure injection inconsistent with the retained primitives.
 
-Map is already initialized by shared PortTestAIEmptyMap. Circle shape is Kind2
-and uses PosVec2/radius squared; helper audit incorrectly called it a rectangle.
-Killer pointer is Obj130(+520), distinct from ObjOwner(+508). Preserve full
-164-byte generator/2200-byte creature data, real spawn references and inventory,
-player state, quest caches, script offsets, packets and random indices.
-Radial fallback passes an unrounded double sum to cos but stored float angle
-to sin; inspect compiled x87 arithmetic before choosing native expressions.
-Both RNG APIs use Logic. No reason to ask the user before this bounded work.
+Use build/baseline/env.sh: Go1.26, GOARCH386, GO386sse2, CGO enabled, GCC;
+keep remaining C x87 flags unchanged. Run the saved accumulated check script,
+production builds, metadata-only full-suite comparison, and preserved headless
+scenario once per connected conversion. Update docs/porting/C_LOC.md each time.
 
-Use build/baseline/env.sh: Go1.26, GOARCH=386, GO386=sse2, CGO enabled, GCC.
-Keep C x87 flags unchanged. Accumulated tests:
-build/port-object-death/check-ports.sh (includes ObjectDeath). Full-suite
-comparison script compares only Action/Package/Test, never raw output.
-Scenario runner uses preserved repeat-a screenshots, overrides off, null audio.
+Previous native chunks: generic death fefc0445, quest penalty ab9fc939,
+initialization7ac58eed, callbacks6f0a291e, spells51dd2621, mainAIf674ad3a,
+monsterstate29b6e5d3, lifecyclee3ee0c9c, combate37039e5. Their tests remain locked.
 
 <!-- /current-focus -->
 

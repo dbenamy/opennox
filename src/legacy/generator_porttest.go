@@ -153,15 +153,15 @@ func portTestGeneratorCall(proxy *portTestRoamOwnerServer, u *server.Object) uin
 	}
 	switch sp.Op {
 	case 0:
-		return uint32(C.sub_54EF00((*C.float)(p)))
+		return generatorOccupied(*(*types.Pointf)(p))
 	case 1:
-		return uint32(C.sub_54EF90(C.float(math.Float32frombits(sp.Radius)), C.int(uintptr(unsafe.Pointer(&u.PosVec))), C.int(uintptr(p)), combatPtr(t)))
+		return uint32(generatorRadial(math.Float32frombits(sp.Radius), u.PosVec, (*types.Pointf)(p), t))
 	case 2:
-		var player C.int
+		var player *server.Object
 		if sp.TowardPlayer {
-			player = combatPtr(&proxy.life.players[0])
+			player = &proxy.life.players[0]
 		}
-		return uint32(C.nox_xxx_mgenSetCreaturePos_54ED50(combatPtr(u), (*C.float2)(p), player, combatPtr(t)))
+		return uint32(generatorPlace(u, (*types.Pointf)(p), player, t))
 	case 3:
 		return uint32(int32(C.nox_xxx_updateMonsterGenerator_54E930((*C.uint32_t)(u.CObj()))))
 	default:

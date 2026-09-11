@@ -58,3 +58,22 @@ exercise successful spawn registration and admission rejection; they do not
 exhaust the SpawnClass pool or simulate impossible factory type IDs. Source
 arrays are packed as expected by the original routine. Synthetic modifier
 callbacks are nil; their copied descriptors and real equip policy are observed.
+
+## Native conversion
+
+Original-C baseline commit: `898e4635`. All 2,264 locked generator cases and
+128 tile known answers match native Go (4.308s). Nine C bodies and seven private
+header declarations are removed. Only registered death/update callbacks keep
+C ABI exports; private helpers call Go directly. No C test algorithm remains.
+The radial implementation follows the original executable's x87 stores and
+libm calls, including the asymmetric angle precision.
+
+Production C is 133,836 physical lines across 152 files, down 468, with zero
+reference C. Qualification artifacts live under build/port-generator. Three
+production binaries verify ELF32/i386/SSE2. The full suite matches the exact
+1,553 known failure entries (15 passing, 3 failing, 32 skipped packages), with
+none added or removed. Fresh `generator-port` headless gameplay exits 0 against
+preserved repeat-a screenshots, override disabled, null audio.
+
+Accumulated port contracts pass in default/server/highres variants
+(70.667s / 50.693s / 54.296s).

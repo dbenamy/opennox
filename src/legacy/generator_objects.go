@@ -1,0 +1,139 @@
+package legacy
+
+/*
+#include "GAME3_2.h"
+#include "GAME3_3.h"
+#include "GAME4_1.h"
+#include "GAME4_2.h"
+#include "GAME4_3.h"
+#include "GAME5.h"
+*/
+import "C"
+
+import (
+	"unsafe"
+
+	"github.com/opennox/libs/types"
+	noxflags "github.com/opennox/opennox/v1/common/flags"
+	"github.com/opennox/opennox/v1/common/memmap"
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
+	"github.com/opennox/opennox/v1/server"
+)
+
+func generatorScript(ud unsafe.Pointer, off uintptr) *server.ScriptCallback {
+	return (*server.ScriptCallback)(unsafe.Add(ud, off))
+}
+
+func generatorDeath(u *server.Object) {
+	core := GetServer().S()
+	// C calls both quest services before any script/audio side effect.
+	Sub_4D71E0(int(core.Frame()))
+	Sub_4D7520(0)
+	GetServer().NoxScriptC().ScriptCallback(generatorScript(u.UpdateData, 56), u.Obj130, u, server.NoxEventGeneratorDead)
+	core.Audio.EventObj(1000, u, 0, 0)
+	C.nox_xxx_sendGeneratorBreakFX_523200((*C.float)(unsafe.Pointer(&u.PosVec)), C.char(-56))
+
+	if noxflags.HasGame(4096) && u.Obj130 != nil {
+		// The retained owner-chain service returns the terminal object.
+		p := C.nox_xxx_findParentChainPlayer_4EC580(asObjectC(u.Obj130))
+		if asObjectS(p).Class().Has(4) {
+			C.sub_4D61B0(C.int(uintptr(unsafe.Pointer(p))))
+		}
+	}
+	if t := core.NewObjectByTypeID("DestroyedGenerator"); t != nil {
+		GetServer().CreateObjectAt(t, nil, u.PosVec)
+	}
+	GetServer().DelayedDelete(u)
+}
+
+// generatorCopy is the private owner of the old 54F2B0 policy. The retained
+// inventory/modifier/NPC-equip engines stay on their current C boundaries.
+func generatorCopy(src, dst *server.Object) {
+	copy(unsafe.Slice((*byte)(dst.UpdateData), 2200), unsafe.Slice((*byte)(src.UpdateData), 2200))
+	if src.ObjSubClass&0x10 != 0 {
+		for it := src.InvFirstItem; it != nil; it = it.InvNextItem {
+			clone := GetServer().S().NewObjectByTypeInd(int(it.TypeInd))
+			if clone == nil {
+				continue
+			}
+			if clone.ObjClass&0x13001000 != 0 {
+				C.nox_xxx_modifSetItemAttrs_4E4990(asObjectC(clone), (*C.int)(it.InitData))
+			}
+			C.nox_xxx_inventoryPutImpl_4F3070(asObjectC(dst), asObjectC(clone), 0)
+			if it.ObjFlags&0x100 != 0 {
+				if clone.ObjClass&0x1001000 != 0 {
+					C.nox_xxx_NPCEquipWeapon_53A2C0(C.int(uintptr(dst.CObj())), asObjectC(clone))
+				} else if clone.ObjClass&0x2000000 != 0 {
+					C.nox_xxx_NPCEquipArmor_53E520(C.int(uintptr(dst.CObj())), (*C.uint32_t)(clone.CObj()))
+				}
+			}
+		}
+	}
+	dst.Direction1, dst.Direction2 = src.Direction1, src.Direction1
+}
+
+func generatorHealth(scale float32, n int32) uint16 {
+	return uint16(floatToInt32(float32(float64(scale) * float64(n))))
+}
+
+// generatorSpawn returns the original EAX bits. They are normally child object
+// pointer bits; admission or allocation failure returns 0, and the
+// 50E030 rejection path returns objectFreeMem's integer result.
+func generatorSpawn(gen *server.Object, point *types.Pointf, src *server.Object) uint32 {
+	pos := *point
+	core := GetServer().S()
+	beholder := memmap.PtrUint32(0x5D4594, 2491712)
+	if *beholder == 0 {
+		*beholder = uint32(core.Types.IndByID("Beholder"))
+	}
+	result := uint32(C.sub_50DE80(C.int(uintptr(gen.CObj())), (*C.float)(unsafe.Pointer(&pos))))
+	if result == 0 {
+		return 0
+	}
+	child := core.NewObjectByTypeInd(int(src.TypeInd))
+	if child == nil {
+		return 0
+	}
+	generatorCopy(src, child)
+
+	scale := *memmap.PtrFloat32(0x587000, 202036)
+	if def := child.UpdateDataMonster().MonsterDef; def != nil {
+		child.HealthData.Cur = generatorHealth(scale, int32(def.HealthQuest72))
+		child.HealthData.Max = generatorHealth(scale, int32(def.HealthQuest72))
+	} else {
+		health := core.Types.ByInd(int(child.TypeInd)).Health()
+		child.HealthData.Cur = generatorHealth(scale, int32(health.Cur))
+		child.HealthData.Max = generatorHealth(scale, int32(health.Max))
+	}
+	if child.HealthData.Cur == 0 {
+		child.HealthData.Cur = 1
+	}
+	if child.HealthData.Max == 0 {
+		child.HealthData.Max = 1
+	}
+	if uint32(child.TypeInd) == *beholder {
+		*(*uint32)(unsafe.Add(child.UpdateData, 1504)) = 0
+	}
+	if C.sub_50E030(C.int(uintptr(gen.CObj())), (*C.uint32_t)(child.CObj())) == 0 {
+		return uint32(C.nox_xxx_objectFreeMem_4E38A0(asObjectC(child)))
+	}
+
+	GetServer().CreateObjectAt(child, nil, pos)
+	GetServer().NoxScriptC().ScriptCallback(generatorScript(gen.UpdateData, 64), child, gen, server.NoxEventGeneratorSpawn)
+	dir, freeDir := alloc.New(types.Pointf{})
+	*dir = pos.Sub(gen.PosVec)
+	C.nox_xxx_utilNormalizeVector_509F20((*C.float2)(unsafe.Pointer(dir)))
+	fx := [4]C.int{
+		C.int(floatToInt32(gen.PosVec.X)),
+		C.int(floatToInt32(gen.PosVec.Y)) - 50,
+		C.int(floatToInt32(float32(float64(dir.X)*30 + float64(pos.X)))),
+		C.int(floatToInt32(float32(float64(dir.Y)*30 + float64(pos.Y)))),
+	}
+	freeDir()
+	C.nox_xxx_sendGeneratorSpawnFX_523830((*C.int4)(unsafe.Pointer(&fx[0])), 10)
+	core.Audio.EventObj(1002, child, 0, 0)
+	return uint32(uintptr(child.CObj()))
+}
+
+//export nox_xxx_dieMonsterGen_54E630
+func nox_xxx_dieMonsterGen_54E630(a C.int) { generatorDeath(objectFromInt(a)) }

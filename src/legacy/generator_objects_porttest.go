@@ -180,9 +180,9 @@ func portTestGeneratorObjectsCall(proxy *portTestRoamOwnerServer, u *server.Obje
 	case 4:
 		C.nox_xxx_dieMonsterGen_54E630(combatPtr(u))
 	case 5:
-		return uint32(C.nox_xxx_mobGeneratorPick_54EBA0((*C.uint32_t)(u.CObj()), (*C.float2)(p), combatPtr(o.source)))
+		return uint32(generatorPick(u, (*types.Pointf)(p), o.source))
 	case 6:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_mobGeneratorSpawn_54F070(combatPtr(u), C.int(uintptr(p)), combatPtr(o.source)))))
+		return generatorSpawn(u, (*types.Pointf)(p), o.source)
 	case 8:
 		rv := int8(C.nox_xxx_updateMonsterGenerator_54E930((*C.uint32_t)(u.CObj())))
 		// The update ABI returns only the low byte of a newly allocated pointer.
@@ -196,7 +196,7 @@ func portTestGeneratorObjectsCall(proxy *portTestRoamOwnerServer, u *server.Obje
 		}
 		return uint32(int32(rv))
 	case 7:
-		C.nox_xxx_unitCreatureCopyUC_54F2B0(combatPtr(o.source), combatPtr(o.destination))
+		generatorCopy(o.source, o.destination)
 	default:
 		panic("generator object operation")
 	}
