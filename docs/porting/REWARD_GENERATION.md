@@ -61,3 +61,12 @@ Local evidence: build/port-reward-generation/c-final-*.json, c-confirm-*.json,
 baseline-hashes.json, positive-coverage.json and combined-c-regression.log.
 Commit and push this baseline before production conversion. Expected batch C
 reduction: 1,862 lines, leaving 117,956 (subject to the final physical count).
+
+### Gold arithmetic addendum before cutover
+
+The baseline was pushed as `9b211b92`. Review found that the initial gold XP
+cases mostly had exactly representable averages. Added 48 cases for fractional
+averages and large-plus-small XP sums, repeated against the still-original C
+(0.282s / 0.223s), with a locked hash. Total: **6,974 cases / 49 groups**.
+The two draft Go reward helpers are not yet exported or called by production C;
+all 21 C bodies remain unchanged until this addendum is committed and pushed.

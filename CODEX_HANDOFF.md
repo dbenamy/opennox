@@ -117,10 +117,12 @@ build/port-object-state and baseline/runs/object-state-final.
 
 ### Active — reward-generation original-C baseline
 
-All 21 functions / 1,862 physical C lines remain original C. The 6,926-case /
-48-group corpus repeats byte-for-byte and hashes are locked. Combined regression
+All 21 functions / 1,862 physical C lines remain original C. The 6,974-case /
+49-group corpus repeats byte-for-byte and hashes are locked. Combined regression
 passes 41,306 cases / 363 groups (122.877s); locked reward-only rerun passes (20.166s).
-Commit/push this baseline before production conversion. See
+Baseline `9b211b92` is pushed. A 48-case gold-rounding addendum repeats and is
+locked; commit/push the addendum before C cutover. Two unexported Go reward
+helper files are drafted; production C bodies remain unchanged. See
 [REWARD_GENERATION.md](docs/porting/REWARD_GENERATION.md). Evidence and source
 scope: build/port-reward-generation (c-final/c-confirm, baseline-hashes.json,
 positive-coverage.json). Factories return allocations without placement; the

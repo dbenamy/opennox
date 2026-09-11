@@ -10,6 +10,7 @@ import (
 )
 
 var rewardHashes = map[string]string{
+	"reward-gold-rounding":          "0ada3ef75f7ccde587912d4df06587c3f448b429fc13a43d8cf9c55084112b2c",
 	"reward-category-masks":         "8b0513082443c8805aada0de7d7e9c6297c57ae8ddd9354b4dc51747bb2a14f0",
 	"reward-empty-placement-19":     "03c34cc431a939f05e14e653b1c40a19a5f4ad1da8a9c77176da6cc34ae4efee",
 	"reward-empty-placement-20":     "f74d2ee8bdff44826f36a62384ed426e2d8aa774c2530df6550939df16343174",
@@ -375,4 +376,19 @@ func TestRewardCategoryMasks(t *testing.T) {
 		}
 	}
 	rewardHash(t, "reward-category-masks", cases)
+}
+
+func TestRewardGoldRounding(t *testing.T) {
+	var cases []legacy.PortTestRoamSpec
+	for _, xp := range [][3]float32{{16777216, 1, 1}, {16777216, 2, 1}, {1, 16777216, 2}, {.1, .2, .3}, {.25, .5, 1}, {123456.7, 1.125, .25}} {
+		for seed := 1; seed <= 8; seed++ {
+			s := rewardBase(6)
+			s.Seed = seed
+			o := s.Callbacks.Shop.TemporaryUpdates.World.Objectives
+			o.Players = 3
+			o.PlayerWords = []map[int]uint32{{28: math.Float32bits(xp[0])}, {28: math.Float32bits(xp[1])}, {28: math.Float32bits(xp[2])}}
+			cases = append(cases, s)
+		}
+	}
+	rewardHash(t, "reward-gold-rounding", cases)
 }
