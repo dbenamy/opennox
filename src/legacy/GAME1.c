@@ -1021,41 +1021,6 @@ int sub_4113A0(int* a1, int a2) {
 	return 0;
 }
 
-//----- (00411490) --------------------------------------------------------
-int sub_411490(int a1, int a2) {
-	int v2; // ecx
-	int v3; // edx
-	int v5; // esi
-
-	v2 = getMemByte(0x85B3FC, 28696 + 60 * a1);
-	v3 = getMemByte(0x85B3FC, 28697 + 60 * a1);
-	if (v2 == 3 && v3 == 3) {
-		return a2;
-	}
-	if (!a2) {
-		return 0;
-	}
-	if (a2 <= v2 - 2) {
-		return 1;
-	}
-	if (a2 == v2 - 1) {
-		return 2;
-	}
-	v5 = v2 + 2 * v3 - 4;
-	if (a2 < v5) {
-		return ((((unsigned char)v2 ^ (unsigned char)a2) & 1) != 0) + 3;
-	}
-	if (a2 == v5) {
-		return 5;
-	} else if (a2 > 2 * (v3 + v2) - 6) {
-		if (a2 == 2 * (v3 + v2) - 5) {
-			return 7;
-		}
-		return a2 + 2 * (6 - v3 - v2);
-	}
-	return 6;
-}
-
 //----- (00411540) --------------------------------------------------------
 int nox_thing_read_FLOR_411540(nox_memfile* f, uint8_t* a2) {
 	if (nox_tile_def_cnt >= 176) {

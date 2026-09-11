@@ -1,7 +1,6 @@
 package legacy
 
 /*
-#include "GAME1.h"
 #include "GAME4_3.h"
 */
 import "C"
@@ -45,7 +44,7 @@ func generateBorderEdge(index, edge int32) int32 {
 
 func mergeBorderEdge(record *[4]uint32, category int32) bool {
 	// Existing callers supply a valid edge row and normalized category.
-	class := int32(C.sub_411490(C.int(record[2]), C.int(record[3])))
+	class := normalizeBorderEdge(int32(record[2]), int32(record[3]))
 	mapped := memmap.Uint32(0x587000, 282736+4*uintptr(category+12*class))
 	if mapped == 255 {
 		return false

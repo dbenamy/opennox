@@ -3,32 +3,32 @@
 <!-- current-focus -->
 ## Resume here — 2026-09-11
 
-Border edge mapping 543E60/543EB0 is complete. Original-C baseline606f5aa7 and
-Go pass 1,145,856 operations: all dimension bytes, branches, signed extremes,
-all physical rows/mapping classes/columns, exact RNG positions and memory guards.
-Both C ABI entries remain for the tile-list owner. See
-[edge mapping](docs/porting/EDGE_MAPPING.md).
-Production C: **140,613 physical lines (−59)**, 153 files, zero reference C.
+Edge normalization 411490 is complete. Original-C baseline b549e8fc and Go pass
+1,299,167 normalization calls plus 1,145,856 edge-mapping calls. The C ABI entry
+remains for C owners; Go merge calls the native helper directly. See
+[edge normalization](docs/porting/EDGE_NORMALIZATION.md).
+Production C: **140,578 physical lines (−35)**, 153 files, zero reference C.
 
 Accumulated default/server/highres tests and all three production builds pass.
-Fresh edge-mapping-port gameplay passes both preserved screenshots, overrides
-off. No processes remain running. Artifacts: build/port-edge-mapping.
-Last full suite: preceding border chunk199e59ee matched the exact known1,553
-failure-entry multiset,15 passing/3 known failing/32 skipped-no-test packages.
+Fresh edge-normalization-port gameplay passes both preserved screenshots,
+overrides off. Full suite matches the exact known 1,553 failure-entry multiset:
+15 passing/3 known failing/32 skipped-no-test packages. No processes running.
+Artifacts: build/port-edge-normalization.
 
-Next: inverse edge normalization411490. Ignored prepared fixture extension,
-threshold tests and notes under build/port-edge-normalization; review/install,
-run original C, commit baseline, then port. Preserve signed branch ordering,
-3×3 identity, default wrapping, low-byte parity and zero RNG use. Later candidate:
-411350 list lookup plus4113A0 point predicate; agent drafting ignored fixtures
-under build/port-subtile-lookup. No user question pending; all three fixes approved.
-Keep57ADF0 cleanup with GUI owner and separate server.PointOnTheLine behavior.
+Next: 411350 subtile list lookup plus 4113A0 point predicate. Use the corrected
+ignored fixtures under build/port-subtile-lookup/reviewed, not the agent draft.
+Primary repaired poisoned tail link, point guards, restored blob guards and
+address conversion; expanded list last-match and predicate boundary coverage.
+Still review/install/run original C, commit baseline, then port. Lookup keeps
+its ABI for grid owner 411160; predicate can become private once lookup moves.
+No question pending; all three fixes approved. Keep 57ADF0 cleanup with GUI
+owner and separate server.PointOnTheLine behavior. Preserve the asset archive.
 
 Use build/baseline/env.sh and accumulated regex
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping)`
-with porttest, server porttest, highres porttest from src. Preserve asset archive.
-Continue one reviewed/tested/documented/committed/pushed chunk at a time until
-substantive question or rate limit. Bounded Terra drafts require primary review.
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization)`
+with porttest, server porttest, highres porttest from src. Continue one reviewed,
+tested, documented, committed and pushed chunk at a time until a substantive
+question or rate limit. Bounded Terra drafts require primary review.
 <!-- /current-focus -->
 
 ## Current plan — revised 2026-09-10
