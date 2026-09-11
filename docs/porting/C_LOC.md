@@ -80,6 +80,7 @@ target build selection and linker evidence.
 | Temporary objects, projectile updates and Spark creation (2026-09-11) | 149 | 126,124 | −980 | 0 |
 | World mechanisms, elevators/teleports and directional force (2026-09-11) | 149 | 125,303 | −821 | 0 |
 | Objective objects, scoring and obelisk recharge | 149 | 124,395 | −908 | 0 |
+| Player attack, melee/ranged helpers and reload (2026-09-11) | 149 | 123,290 | −1,105 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

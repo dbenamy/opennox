@@ -50,15 +50,32 @@ packages pass, 3 fail, 32 skip). Fresh unchanged repeat-a headless gameplay
 passes in 57.464s. Evidence: build/port-objectives and baseline/runs/objectives-port.
 Completed and pushed as `ca0f193c`; summary delivered. Continue; no pending question.
 
-### Active — player-attack original-C baseline
+### Completed — player attack, melee/ranged helpers and reload
 
-12 connected functions / 1,105 C lines remain original C. All 2,100 cases / 16
-full capture groups repeat byte-for-byte; hashes are locked in the root attack
-tests. See [PLAYER_ATTACK.md](docs/porting/PLAYER_ATTACK.md). All 26,337 accumulated focused cases pass against C (76.006s).
-This checkpoint must be pushed before production conversion.
-Convert the whole connected batch, compare captures, then qualify once. No new
-agents or pending question. Preserve archive and stable evidence. Full-suite raw
-logs may contain secrets; print only action/package/test metadata.
+Baseline `b94b52c8` was pushed before conversion. All 12 functions / 1,105 C
+lines are native; all 2,100 cases / 16 complete captures match original C exactly
+(6.631s). Production C: **123,290 lines / 149 files / zero reference C**. See
+[PLAYER_ATTACK.md](docs/porting/PLAYER_ATTACK.md). The shape-aware C spatial query
+remains a dependency; replacing it with a center-distance query changed reach
+and was caught by the baseline. Native attack/equipment/inventory helpers call
+one another directly except callbacks owned by that remaining C query.
+
+Accumulated default/server/highres tests, including all 26,337 focused cases,
+pass in 146.770s / 127.486s / 134.713s. Three production binaries verified ELF32/i386/SSE2/CGO.
+Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip).
+Fresh unchanged repeat-a headless gameplay passes in 39.677s. Evidence:
+build/port-player-attack and baseline/runs/player-attack-port.
+
+### Active — projectile collision original-C baseline preparation
+
+Candidate: 27 connected handlers/helpers / 1,006 C lines; still original C,
+no baseline hashes locked yet. See [PROJECTILE_COLLISIONS.md](docs/porting/PROJECTILE_COLLISIONS.md).
+Scope/source/audit: build/port-projectile-collisions. Reuse the guarded attack,
+world, projectile and inventory fixtures; repeat/lock/commit/push original-C
+captures before conversion. Qualify once for the completed connected batch.
+Continue after committing/pushing player attack; no pending question or new
+agents. Preserve archive and stable evidence. Full-suite raw logs may contain
+secrets; print only action/package/test metadata.
 
 ## GitHub backup and recovery
 

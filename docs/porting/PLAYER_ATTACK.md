@@ -1,4 +1,4 @@
-# Next batch: player attack, hit dispatch, bow/crossbow and quiver reload
+# Player attack, hit dispatch, bow/crossbow and quiver reload
 
 Candidate: 12 connected functions / 1,105 C lines in GAME4_3.c, addresses
 00538290 through 00539FF0, excluding already converted equipment. Keep player
@@ -57,7 +57,7 @@ Fixture audit notes:
 
 ## Original-C baseline
 
-All 12 production functions remain C. The guarded fixture covers 2,100 cases
+Baseline `b94b52c8` was committed and pushed before conversion. The guarded fixture covers 2,100 cases
 in 16 groups: unarmed timing, hit filters, nearest target, modifier effects,
 projectiles, weapon dispatch, reloads, spatial traces, warcry, positive outcomes,
 NPC attacks, abilities, projectile modifiers/failures, chakram depletion and
@@ -82,3 +82,39 @@ Current production C count remains 124,395 / 149 files / zero reference C.
 
 Accumulated focused regression: all 26,337 cases / 171 groups pass against
 original C in 76.006s, with every earlier locked hash unchanged.
+
+## Native conversion
+
+All 12 functions / 1,105 C lines now live in player_attack.go,
+player_attack_melee.go, player_attack_ranged.go and thin player_attack_exports.go.
+All 16 full native captures match original C byte-for-byte (2,100 cases, 6.631s).
+Production C is 123,290 lines / 149 files / zero test-reference C.
+
+The dispatcher shares repeated melee setup but preserves weapon-mask priority,
+byte truncation of animation counters, uint32 frame wrap, half-frame gates,
+readiness calls, ability state transitions and equipment/inventory ordering.
+It calls native equipment, inventory and item-use owners directly. Bow/crossbow
+shots preserve clear-ray return values and consume player ammunition even when
+projectile allocation fails; fan and round chakrams retain distinct depletion
+and inventory-transfer behavior.
+
+The first native run matched 15/16 groups. The trace corpus caught an incorrect
+substitution of center-distance EachObjInCircle for the original shape-aware
+sub_518040 query. The original query remains a production dependency and invokes
+the native hit/nearest callbacks through their ABI exports. This preserves object
+extent checks, strict range boundaries and spatial-query visitation state.
+The unarmed modifier record is allocated in C-owned memory while the remaining
+C damage-calculation dependency reads it, including any callbacks into Go.
+
+## Qualification
+
+All accumulated port tests, including 26,337 focused cases / 171 groups, pass in
+default/server/highres: 146.770s / 127.486s / 134.713s. All three production binaries are
+verified ELF32/i386, GO386=sse2 and CGO enabled. Full-suite failure identities and
+multiplicities match the baseline exactly: 1,553 entries; 15 packages pass,
+3 fail and 32 skip. Fresh unchanged repeat-a headless gameplay passes in
+39.677s using Xvfb and null audio, without updating expected captures.
+
+Local evidence: build/port-player-attack (native-final captures, variant logs,
+binaries and qualification.json), and build/baseline/runs/player-attack-port.
+Next: [projectile collisions](PROJECTILE_COLLISIONS.md), one connected batch.
