@@ -6188,16 +6188,3 @@ int sub_4757D0_drawable(nox_drawable* dr) {
 	}
 	return result;
 }
-
-int nox_xxx_drawAllMB_475810_draw_B(nox_draw_viewport_t* vp) {
-	int v10 = 1;
-	int v11;
-	float2 v38;
-	if (nox_common_getEngineFlag(NOX_ENGINE_FLAG_DISABLE_FLOOR_RENDERING) ||
-		(v38.field_0 = (double)vp->field_6, v38.field_4 = (double)vp->field_7,
-		 v11 = nox_xxx_tileNFromPoint_411160(&v38), v11 == 255) ||
-		v11 == -1) {
-		v10 = 0;
-	}
-	return v10;
-}

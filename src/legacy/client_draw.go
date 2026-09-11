@@ -22,7 +22,6 @@ void  nox_xxx_cliLight16_469140(nox_drawable* dr, nox_draw_viewport_t* vp);
 void nox_xxx_clientDrawAll_436100_draw_A();
 void nox_xxx_clientDrawAll_436100_draw_B();
 void nox_xxx_drawAllMB_475810_draw_A(nox_draw_viewport_t* vp);
-int nox_xxx_drawAllMB_475810_draw_B(nox_draw_viewport_t* vp);
 void nox_xxx_drawAllMB_475810_draw_C(nox_draw_viewport_t* vp, int v36, int v7);
 int sub_436F50();
 */
@@ -30,8 +29,11 @@ import "C"
 import (
 	"unsafe"
 
+	"github.com/opennox/libs/types"
+
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
+	"github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -96,7 +98,14 @@ func Get_nox_thing_glow_orb_draw() unsafe.Pointer {
 }
 
 func Nox_xxx_drawAllMB_475810_draw_B(vp *noxrender.Viewport) int {
-	return int(C.nox_xxx_drawAllMB_475810_draw_B((*nox_draw_viewport_t)(vp.C())))
+	if noxflags.HasEngine(noxflags.EngineNoFloorRendering) {
+		return 0
+	}
+	tile := tileAtPoint(types.Pointf{X: float32(vp.World.Max.X), Y: float32(vp.World.Max.Y)})
+	if tile == -1 || tile == 255 {
+		return 0
+	}
+	return 1
 }
 func Sub_4C5060(vp *noxrender.Viewport) {
 	C.sub_4C5060((*nox_draw_viewport_t)(vp.C()))

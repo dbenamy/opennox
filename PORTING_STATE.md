@@ -5,31 +5,34 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-11
 
-Grid lookup repaired-C baseline is db42f02a; the lower-bound repair is d765f9f4.
-The working native Go route passes 645,362 lookup operations across both routes,
-plus 4,193,481 float conversions and 684 control-word cases per implementation.
-C callers retain C lookup/converters: the Go export experiment cost 294 ns versus
-19 ns for C. Native Go callers now cost 160 ns versus the old wrapper's 387–409 ns.
-See docs/porting/GRID_LOOKUP.md and FLOAT_INT.md. This is a deliberate staged
-migration; remaining C callers must move before the C implementation is retired.
+Native grid route is committed and pushed as fed20f33. Go callers now use native
+float conversion and grid lookup; remaining C callers retain the C route because
+exporting the lookup regressed their measured cost. Both routes pass 645,362
+lookup checks and the conversion corpus. See docs/porting/GRID_LOOKUP.md.
 
-Production C remains **140,455 physical lines (delta 0)**, 153 files, zero reference
-C. Accumulated tests for all three variants and all production builds pass (ELF32
-Intel 80386). The full suite matches all 1,553 known failure entries exactly:
-15 passing, 3 known failing and 32 skipped/no-test packages. Fresh gameplay passed
-both preserved screenshot checks with overrides disabled under
-build/baseline/runs/grid-lookup-port; artifacts: build/port-grid-lookup.
-The grid chunk is committed and pushed as fed20f33. Floor-rendering eligibility
-475810_draw_B passes the 22,083-case original-C fixture; evidence is in
-build/port-floor-eligibility/c-baseline.log. Next replace the Go-only wrapper
-with native logic and qualify the port. See docs/porting/FLOOR_ELIGIBILITY.md. No user question
-pending. Preserve the asset archive and separate server.PointOnTheLine behavior.
+Floor-rendering eligibility 475810_draw_B is now native Go too. Original-C
+baseline c3c073b5 and Go pass 22,083 cases. Its C definition and declaration are
+removed, with no replacement export. Production C: **140,442 physical lines
+(minus 13)**, 153 files, zero reference C. See FLOOR_ELIGIBILITY.md and C_LOC.md.
+Accumulated default/server/highres port tests and all three ELF32/80386 builds
+pass. Fresh floor-eligibility-port gameplay passes both preserved screenshots,
+overrides off. Artifacts: build/port-floor-eligibility. No validation is running.
+The preceding grid chunk matched the exact known full-suite baseline: 1,553
+failure entries, 15 passing/3 known failing/32 skipped-no-test packages.
+
+Next: review the random-walk direction 545090 baseline draft under ignored
+build/port-walk-direction. A bounded agent is drafting tests and a C-caller
+benchmark; production remains C. Verify RNG consumption, signed direction wrap,
+PC53 point arithmetic, flag short circuit, tile-6 rotation and state restoration.
+Measure caller cost before adopting the port. One remaining C caller is
+mobActionRandomWalk545020. No user question pending. Keep separate
+server.PointOnTheLine behavior and preserve the asset archive.
 
 Use build/baseline/env.sh and accumulated regex
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid)`
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility)`
 with porttest, server porttest, highres porttest from src. Continue one reviewed,
 tested, documented, committed and pushed chunk at a time until a substantive
-question or rate limit. Bounded Terra drafts require primary review.
+question or rate limit. Bounded agent drafts require primary review.
 <!-- /current-checkpoint -->
 
 ## GitHub backup and recovery

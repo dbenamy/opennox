@@ -55,10 +55,11 @@ adding a callback to remaining C callers. These are VM microbenchmarks, not a
 claim about whole-game speed.
 
 Retirement order: migrate the remaining callers in GAME1.c (water predicate),
-GAME2_1.c (floor-rendering eligibility), GAME4_1.c (object processing), and GAME5.c (three
+GAME4_1.c (object processing), and GAME5.c (three
 call sites), then retire C 411160 and reassess the 411350 bridge. The converters
 retain other C owners too. C is retained for production use, not as a test oracle.
-Source count remains 140,455 lines, delta zero for this chunk.
+Source count at this chunk was 140,455 lines, delta zero. The next
+floor-eligibility chunk retires the GAME2_1.c caller; see FLOOR_ELIGIBILITY.md.
 
 Accumulated default/server/highres port tests and all three production builds
 pass (ELF32 Intel 80386). The asset-backed full suite matches the exact 1,553

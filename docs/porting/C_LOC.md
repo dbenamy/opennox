@@ -53,6 +53,7 @@ target build selection and linker evidence.
 | Edge normalization (2026-09-11) | 153 | 140,578 | −35 | 0 |
 | Subtile predicate / list lookup (2026-09-11) | 153 | 140,455 | −123 | 0 |
 | Native Go grid route; C callers retained (2026-09-11) | 153 | 140,455 | 0 | 0 |
+| Floor-rendering eligibility (2026-09-11) | 153 | 140,442 | −13 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

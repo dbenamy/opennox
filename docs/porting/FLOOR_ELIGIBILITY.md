@@ -15,7 +15,17 @@ viewport, flags, guarded grid rows and cells, and restored global state.
 Grid geometry and list overrides remain covered by the preceding grid corpus;
 this fixture focuses on the owner's integer coordinates, flags and result filter.
 
-The original-C baseline passes all 22,083 cases on 386. Native qualification
-is next. Artifacts:
+The original-C baseline c3c073b5 passes all 22,083 cases on 386. The native
+implementation now calls tileAtPoint and preserves the flag short circuit and
+World.Max coordinates. The C definition and declaration are removed, with no
+replacement ABI. Native qualification is complete. Artifacts:
 build/port-floor-eligibility. Pre-port C count: 140,455 lines, 153 files, zero
 reference C. No C caller needs a replacement export.
+
+The native change removes 13 physical C lines (the function and trailing blank
+line): **140,442 lines**, 153 production C files, zero reference C. Default, server and high-resolution
+accumulated checks and all three ELF32/80386 production builds pass. Fresh
+floor-eligibility-port gameplay passed both preserved screenshot checks with
+overrides disabled. The immediately preceding grid
+chunk matched the exact full-suite baseline; this small owner change will use
+accumulated targeted checks and gameplay rather than repeating that full suite.
