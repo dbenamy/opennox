@@ -37,8 +37,32 @@ projectile rejection needs a ray that actually reaches the wall, and shield
 facing reads the projectile's previous position. Frozen snapshots and arithmetic
 review artifacts are in ignored `build/port-ai-combat`.
 
-## Conversion status
+## Native conversion
 
-Original-C baseline recorded; native implementation is drafted but not installed.
-Production C remains **138,824 physical lines**, 153 files, zero reference C.
-Run `TestAICombat` with `porttest` from `src` using `build/baseline/env.sh`.
+Original-C baseline commit: `e1cf21bf`. The native registered actions and private
+helpers match both complete-state hashes. Eighteen C bodies/declarations and the
+six old C registrations are removed, without replacement action exports.
+Production C: **138,212 physical lines (minus 612)**, 153 files, zero reference C.
+
+An additional 192 lifecycle assertions cover every end/cancel callback across
+running masks. Two explicit precision regressions protect the original-C results:
+scan minimum `0x3f800348` and projectile velocity words `3221729642/3221726419`.
+The former was verified with the original callback in an ignored standalone
+386/PC53 probe; the latter is original generated case 15362.
+
+Compiled x87 behavior matters here: scan length squares both full-precision
+deltas before the Y spill used by the facing test. Missile length and velocity
+also retain both deltas; the denominator is float32. Spawn X rounds before the
+ray addition, while spawn Y remains wide through that addition and rounds
+separately for object creation. An initial native draft differed in 416 projectile
+cases; correcting these points restored the original hash. The tests preserve
+these distinctions without retaining an original C combat implementation.
+
+## Qualification
+
+Accumulated tests pass in default/server/highres (35.585/47.419/35.567 seconds),
+with the extra combat precision/lifecycle run also passing. All three production
+builds pass and report ELF32/Intel80386 with GO386=sse2. The full suite matches
+exactly 1,553 known failure entries and the 15 pass/3 fail/32 skip package baseline.
+Fresh `ai-combat-port` gameplay exits 0 against both preserved screenshots,
+overrides off, under Xvfb/OpenAL null. Artifacts: `build/port-ai-combat`.

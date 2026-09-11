@@ -37,17 +37,11 @@ func init() {
 	for typ, a := range map[ai.ActionType]struct {
 		Start, Update, End, Cancel unsafe.Pointer
 	}{
-		ai.ACTION_HUNT:           {Update: C.nox_xxx_mobActionHunt_5449D0},
-		ai.ACTION_PICKUP_OBJECT:  {Update: C.nox_xxx_mobActionPickupObject_544B90},
-		ai.ACTION_FIGHT:          {Start: C.nox_xxx_mobActionFightStart_531E20, Update: C.nox_xxx_mobActionFight_531EC0, End: C.sub_531E90},
-		ai.ACTION_MELEE_ATTACK:   {Start: C.nox_xxx_mobActionMelee1_532130, Update: C.nox_xxx_mobActionMeleeAtt_532440, Cancel: C.nox_ai_action_pop_532100},
-		ai.ACTION_MISSILE_ATTACK: {Start: C.sub_532540, Update: C.nox_xxx_mobActionMissileAtt_532610, Cancel: C.nox_ai_action_pop_532100},
-		ai.ACTION_BLOCK_ATTACK:   {Update: C.nox_xxx_monsterShieldBlockStart_532070, Cancel: C.nox_ai_action_pop_532100},
-		ai.ACTION_BLOCK_FINISH:   {Update: C.nox_xxx_monsterShieldBlockStop_5320E0, Cancel: C.nox_ai_action_pop_532100},
-		ai.ACTION_WEAPON_BLOCK:   {Update: C.sub_532110, Cancel: C.nox_ai_action_pop_532100},
-		ai.ACTION_DYING:          {Start: C.nox_xxx_mobGenericDeath_544C40, Update: C.sub_544D60, End: C.nox_xxx_zombieBurnDeleteCheck_544CA0},
-		ai.ACTION_DEAD:           {Start: C.nox_xxx_mobActionDead1_544D80, Update: C.nox_xxx_mobActionDead2_544EC0},
-		ai.ACTION_GET_UP:         {Update: C.nox_xxx_mobActionGetUp_534A90},
+		ai.ACTION_HUNT:          {Update: C.nox_xxx_mobActionHunt_5449D0},
+		ai.ACTION_PICKUP_OBJECT: {Update: C.nox_xxx_mobActionPickupObject_544B90},
+		ai.ACTION_DYING:         {Start: C.nox_xxx_mobGenericDeath_544C40, Update: C.sub_544D60, End: C.nox_xxx_zombieBurnDeleteCheck_544CA0},
+		ai.ACTION_DEAD:          {Start: C.nox_xxx_mobActionDead1_544D80, Update: C.nox_xxx_mobActionDead2_544EC0},
+		ai.ACTION_GET_UP:        {Update: C.nox_xxx_mobActionGetUp_534A90},
 	} {
 		server.RegisterAIAction(cgoAIAction{typ: typ, start: a.Start, update: a.Update, end: a.End, cancel: a.Cancel})
 	}

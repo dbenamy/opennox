@@ -5,93 +5,44 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 <!-- current-checkpoint -->
 ## Resume here — 2026-09-11
 
-Native grid route is committed and pushed as fed20f33. Go callers now use native
-float conversion and grid lookup; remaining C callers retain the C route because
-exporting the lookup regressed their measured cost. Both routes pass 645,362
-lookup checks and the conversion corpus. See docs/porting/GRID_LOOKUP.md.
+We are porting the x86 engine C to native Go on branch `dev`, one connected,
+reviewed/tested/documented/committed/pushed batch at a time. The user authorized
+continued work until a substantive question or rate limit, and approved larger
+batches. Do not stop after each push. Use at most one bounded helper when useful;
+primary review remains necessary. Preserve the untracked asset archive.
 
-Floor-rendering eligibility 475810_draw_B is now native Go too. Original-C
-baseline c3c073b5 and Go pass 22,083 cases. Its C definition and declaration are
-removed, with no replacement export. Production C: **140,442 physical lines
-(minus 13)**, 153 files, zero reference C. See FLOOR_ELIGIBILITY.md and C_LOC.md.
-Accumulated default/server/highres port tests and all three ELF32/80386 builds
-pass. Fresh floor-eligibility-port gameplay passes both preserved screenshots,
-overrides off. Artifacts: build/port-floor-eligibility. No validation is running.
-The preceding grid chunk matched the exact known full-suite baseline: 1,553
-failure entries, 15 passing/3 known failing/32 skipped-no-test packages.
+Latest fully qualified native batch: six combat AI action families plus private
+builders/callbacks. Original-C baseline `e1cf21bf`: 17,408 generated cases and
+170 independent contracts. The native port matches both hashes, adds 192 lifecycle
+checks and 2 C-verified precision discriminators, and removes 18 C bodies:
+**138,212 physical C lines (minus 612)**, 153 files, zero reference C.
+See docs/porting/AI_COMBAT.md. Accumulated default/server/highres tests and all
+three ELF32/SSE2 production builds pass. The full suite matches exactly 1,553
+known failure entries. Fresh `ai-combat-port` gameplay exits 0 against both
+preserved screenshots, overrides off. No validation remains running.
 
-Completed batch: six native Go AI movement actions plus private helpers. C
-baseline 425e9c78 and native registry match 209,783 cases and two 200,000-update
-state/checksum runs; two additional dot-product spill discriminators pass.
-All eight C bodies/declarations and the temporary test dispatcher are removed.
-Production C: **140,260 physical lines (minus 182)**, 153 files, zero reference C.
-User confirmed old CPUs need not be supported; build driver/recovery select
-GO386=sse2, leaving C x87 flags unchanged. All accumulated tests and builds pass
-in default/server/highres; binary metadata confirms SSE2 and ELF32/80386.
-Full suite matches the exact 1,553 known failures. Fresh ai-movement-port gameplay
-exits 0 against both preserved screenshots, overrides off. A latent waypoint
-fixture initialization defect was repaired separately in d931b7ca and passes
-GOGC=10. Paired update microbenchmarks favor native Go under SSE2; ccache showed
-no reuse, so direct GCC/G++ remain configured. See docs/porting/AI_MOVEMENT.md.
+Previous fully qualified/pushed batches: path execution/graph `01a9ec4d`,
+guard/escort/sound `2bd0b90d`, navigation/retreat `e32982f7`. The C_LOC.md table
+and per-batch documents preserve the history. Artifacts: build/port-ai-combat.
+No user question is pending. Next: remaining registered AI actions plus connected
+death/soul/raise/reset and food/item searches, about 329 C lines. Caller/fixture
+audit: build/port-ai-lifecycle/expanded-audit.md. Raise and both search entry points
+still have C callers and need retained ABI exports. Object +744 is Update (the
+callback); +748 is UpdateData. Do not confuse these in the dead-update port.
 
-Completed batch: roaming history, successor selection and start/cancel/dead-end
-handling (545790/5457C0/545B00/545B60/545BB0/545C60). Original-C baseline 9c70753d
-passes 98,304 cases against an independent model and complete normalized state
-hashes. The native port passes those same checks and removes six C bodies;
-production C is now 140,082 (minus 178). Three exports remain for the larger C
-roam-update owner. Accumulated tests and all ELF32/SSE2 builds pass in all three
-variants. Fresh roam-history-port gameplay exits 0 against both preserved
-screenshots, overrides off. See docs/porting/AI_ROAM_HISTORY.md. The prior six-action
-batch was committed and pushed as 2bf36c01. No user question is pending.
-Completed batch: full roaming update 5457E0. Original-C baseline 3a9480b2 passes
-12,289 owner cases plus the 98,304 history cases, and two 200,000-update runs with
-full state/call traces. Native Go matches all hashes and independent assertions;
-three unused history exports and the owner C entry are removed. Production C is
-139,951 physical lines (minus 131), 153 files, zero reference C. First paired
-update measurements favor native Go. See docs/porting/AI_ROAM_UPDATE.md.
-Accumulated tests and all ELF32/SSE2 builds pass in three configurations. The
-full suite matches exactly 1,553 known failures. Fresh roam-update-port gameplay
-exits 0 against both preserved screenshots, overrides off. No validation remains.
-Completed larger batch: guard/escort updates, lifecycle, target resolution, damager
-look-at and sound investigation (545DA0, 546010, 546410/420/430, 546600,
-5466B0, 5466F0). Original C passes 22,723 shared-fixture cases and two 200,000-call
-idle-update baselines, with independent resolver/RNG, wrap and precision checks.
-Baseline commit: 54614975. The native port matches every hash, removes eight C
-bodies, and routes roam/idle sound calls natively. Existing roaming checks pass.
-C is now 139,549 physical lines (minus 402), 153 files, zero reference C.
-Accumulated tests and ELF32/SSE2 builds pass in all three configurations. The full
-suite matches exactly 1,553 known failures. Fresh guard-escort-port gameplay exits
-0 against both preserved screenshots, overrides off. No validation remains.
-Guard/escort/sound is committed and pushed as 2bd0b90d.
-Completed batch: seven navigation/retreat actions, lifecycle/private policies and
-preceding-action lookup. Original C passes 38,808 shared-fixture cases with exact
-state hashes and independent health/food checks. See docs/porting/AI_NAVIGATION.md.
-Native conversion matches corrected C baseline 0850c9d2 and the existing
-roam/guard checks. Nineteen C bodies are removed: 139,165 physical C lines
-(minus 384), 153 files, zero reference C. Accumulated tests and ELF32/SSE2
-builds pass in all three configurations. Full suite matches exactly 1,553 known
-failures. Fresh ai-navigation-port gameplay passes both preserved screenshots,
-overrides off. No validation remains. Next: connected movement-path execution
-and private waypoint-path construction; reuse this fixture. Navigation was
-committed and pushed as e32982f7. Original C now passes 17,585 execution and 2,132 graph cases, independent
-route/wall/precision checks and two 200,000-call state baselines. Existing
-AI/waypoint checks pass too. See docs/porting/AI_PATH_EXECUTION.md.
-Native path/graph conversion matches baseline bc1e662a and the existing
-AI/waypoint checks. Seven C bodies and four unused exports are removed: 138,824
-physical C lines (minus 341), 153 files, zero reference C. Accumulated tests
-and ELF32/SSE2 builds pass in all three configurations. Full suite matches
-exactly 1,553 known failures. Fresh ai-path-execution-port gameplay passes both
-preserved screenshots, overrides off. No validation remains. Next: grouped
-combat actions with recorded script/audio/strike/projectile effects.
-See docs/porting/AI_GUARD_ESCORT.md; ignored drafts/audits are in
-build/port-guard-escort. User approved this more aggressive grouping. The roaming
-update is fully qualified, committed and pushed as fdb075f6. No question pending.
+Use build/baseline/env.sh: Go1.26, GOARCH=386, GO386=sse2, CGO enabled, direct GCC.
+The user explicitly dropped old-CPU support. Keep existing C x87 flags unchanged.
+Run the accumulated test regex with porttest, server porttest, highres porttest:
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort|AINavigation|AIPath|AICombat)`
+Once per connected batch: all three production builds, ELF32/SSE2 metadata,
+full-suite comparison (exact 1,553 known failure entries, 15 pass/3 fail/32 skip
+packages) at shared boundaries, and a fresh isolated headless gameplay run against
+the preserved screenshots with overrides off. Never print raw full-suite output;
+compare only Action/Package/Test metadata. Update C LOC after each conversion.
 
-Use build/baseline/env.sh and accumulated regex
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort)`
-with porttest, server porttest, highres porttest from src. Continue one reviewed,
-tested, documented, committed and pushed chunk at a time until a substantive
-question or rate limit. Bounded agent drafts require primary review.
+Push authorized using:
+`git -c core.sshCommand='ssh -o BatchMode=yes' push git@github.com:dbenamy/opennox.git dev:dev`
+Git identity: Daniel Benamy <daniel@benamy.info>.
 <!-- /current-checkpoint -->
 
 ## GitHub backup and recovery

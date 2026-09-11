@@ -259,19 +259,18 @@ func portTestCombatCall(u *server.Object, sp *PortTestCombatSpec) {
 		}
 		return
 	}
-	p := C.int(uintptr(unsafe.Pointer(u)))
-	t := C.int(uintptr(unsafe.Pointer(GetServer().(*portTestRoamOwnerServer).combat.target)))
+	t := GetServer().(*portTestRoamOwnerServer).combat.target
 	switch sp.Op {
 	case 6:
-		C.sub_531C10(p, t)
+		combatChase(u, t)
 	case 7:
-		C.nox_xxx_monsterAction_531C60(p, t)
+		combatMeleeChain(u, t)
 	case 8:
-		C.sub_531D50(p, t)
+		combatMissileChain(u, t)
 	case 9:
-		C.nox_xxx_TODOsomeCallingMeleeAttack_531B40(p, t)
+		combatChoose(u, t)
 	case 10:
-		C.sub_532390(t, p)
+		combatScan(t, u)
 	}
 }
 func portTestCombatTrace(proxy *portTestRoamOwnerServer, normalize func(uint32) uint32) *PortTestCombatResult {

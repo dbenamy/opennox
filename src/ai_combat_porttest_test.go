@@ -74,8 +74,8 @@ func TestAICombatOriginalState(t *testing.T) {
 	data, _ := json.Marshal(got)
 	hash := fmt.Sprintf("%x", sha256.Sum256(data))
 	t.Logf("cases=%d complete-state-sha256=%s", len(got), hash)
-	if os.Getenv("OPENNOX_COMBAT_CAPTURE") != "" {
-		if err := os.WriteFile("../build/port-ai-combat/c-cases.json", data, 0600); err != nil {
+	if capture := os.Getenv("OPENNOX_COMBAT_CAPTURE"); capture != "" {
+		if err := os.WriteFile(capture, data, 0600); err != nil {
 			t.Fatal(err)
 		}
 	}
@@ -354,5 +354,52 @@ func TestAICombatContracts(t *testing.T) {
 	const baseline = "3375bac303a78fc6473ce0dfe489428def83a47b48146ac3d34224bc55add2b3"
 	if baseline != "" && hash != baseline {
 		t.Fatal("original C contracts differ", hash)
+	}
+}
+
+func TestAICombatPrecision(t *testing.T) {
+	bits := math.Float32bits
+	specs := []legacy.PortTestRoamSpec{
+		{Op: 10, Seed: 1, Stack: 1, Owner: &legacy.PortTestRoamOwnerSpec{Frame: 123, FPS: 30, Y: 0xb3800000}, Combat: &legacy.PortTestCombatSpec{Op: 10, Direction: 64, TargetClass: 6, Target: [2]uint32{0, 0x3f800001}}},
+		{Op: 10, Seed: 1, Stack: 1, Owner: &legacy.PortTestRoamOwnerSpec{Frame: 123, FPS: 30, X: bits(100), Y: bits(100), Buffs: 1 << 29}, Combat: &legacy.PortTestCombatSpec{Op: 5, Shoot: true, Anim: 2, AttackFrame: 2, Direction: 2, Radius: bits(float32(2) / 19), Target: [2]uint32{bits(float32(2) / 17), bits(float32(2) / 13)}}},
+	}
+	r := legacy.PortTestRoam(specs)
+	// Original sub_532390 compiled with PC53 selects this candidate. Squaring
+	// dy64*float32(dy) instead of dy64*dy64 changes the minimum by one ULP.
+	if !r[0].Intact || r[0].Combat.Selected != 100 || r[0].Combat.Nearest != 0x3f800348 {
+		t.Fatal("scan length spill", r[0].Combat)
+	}
+	// Original-C generated case 15362. C retains both deltas through velocity.
+	p := r[1].Combat.Projectile
+	if !r[1].Intact || len(p) != 193 || p[20] != 3221729642 || p[21] != 3221726419 {
+		t.Fatal("projectile delta spill", p)
+	}
+}
+
+func TestAICombatLifecycle(t *testing.T) {
+	var specs []legacy.PortTestRoamSpec
+	for op := 0; op < 6; op++ {
+		for phase := 2; phase < 4; phase++ {
+			for mask := uint32(0); mask < 16; mask++ {
+				specs = append(specs, legacy.PortTestRoamSpec{Op: 10, Seed: 1, Stack: 1, Owner: &legacy.PortTestRoamOwnerSpec{Frame: 123, FPS: 30, Status: mask<<13 | 0x100}, Combat: &legacy.PortTestCombatSpec{Op: op, Phase: phase}})
+			}
+		}
+	}
+	for i, r := range legacy.PortTestRoam(specs) {
+		s := specs[i]
+		want := s.Owner.Status
+		stack := int8(1)
+		if s.Combat.Op == 0 && s.Combat.Phase == 2 {
+			want &^= 0x100
+			if want&0x8000 == 0 {
+				want &^= 0x4000
+			}
+		}
+		if s.Combat.Op != 0 && s.Combat.Phase == 3 {
+			stack = 0
+		}
+		if !r.Intact || r.Stack != stack || r.Combat.Status != want {
+			t.Fatalf("case %d lifecycle: %+v", i, r)
+		}
 	}
 }
