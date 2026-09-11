@@ -4,15 +4,30 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Active — equipment baseline locked; conversion next
+## Complete — equipment; next — modifier effects and weapon use
 
-Scope: 33 functions / 972 C lines, including all MixPatch.c. Production is still
-129,053 C lines / 150 files. See [EQUIPMENT.md](docs/porting/EQUIPMENT.md).
-The original-C corpus has 1,144 cases / 17 groups; two full captures match
-byte-for-byte, with hashes locked in equipment_porttest_test.go. Commit/push
-baseline and verify prior inventory/resource/shop contracts before conversion.
-Then convert the whole connected family, qualify once, update counts/docs,
-commit/push and continue autonomously. No pending user question.
+The 33-function equipment batch is converted and qualified: **972 C lines
+removed; 128,081 physical C lines / 149 files / zero reference C**.
+Original-C baseline `6e13a789` was committed/pushed before conversion. All
+1,144 equipment cases / 17 groups match full original-C captures byte-for-byte.
+See [EQUIPMENT.md](docs/porting/EQUIPMENT.md).
+
+Combined 12,009 equipment/inventory/resource/shop/trade cases pass with prior
+hashes unchanged (58.052s). Accumulated default/server/highres pass in
+101.875s / 91.325s / 96.494s. Three production builds are ELF32/i386/SSE2/CGO.
+Full-suite exact failure multiset is unchanged: 1,553 entries; 15 pass / 3 fail /
+32 skip packages. Fresh equipment-port gameplay passes unchanged repeat-a goldens
+in 38.916s, overrides disabled, Xvfb and null audio.
+
+Next: [EFFECTS_USE.md](docs/porting/EFFECTS_USE.md), **41 functions / 977 C lines**
+covering modifier effects and recharge/wand use. Production C for that family
+is intact. Reuse the guarded fixture, repeat/lock original-C contracts, verify
+all 12,009 existing contracts, commit/push baseline before conversion. Convert
+and qualify once at the connected batch boundary; update C_LOC/docs, commit/push,
+summarize and continue. No pending question; do not spawn agents.
+Local scope and detailed fixture plan: build/port-equipment/next-effects-use-scope.json
+and build/port-effects-use/fixture-plan.md. Preserve archive/gameplay evidence;
+full-suite raw logs can contain secrets, report only action/package/test metadata.
 
 ## Complete — inventory; next — connected equipment owners
 

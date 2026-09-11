@@ -40,16 +40,16 @@ func inventoryRemove(u, it *server.Object) {
 				C.nox_xxx_netReportDequip_4D84C0(255, asObjectC(it))
 			}
 		}
-		C.sub_53E430((*C.uint32_t)(u.CObj()), asObjectC(it), 0, report)
-		C.nox_xxx_playerDequipWeapon_53A140((*C.uint32_t)(u.CObj()), asObjectC(it), 0, report)
+		equipmentDequipArmor(u, it, 0, int(report))
+		equipmentDequipWeapon(u, it, 0, int(report))
 		C.nox_xxx_netReportDrop_4D8B50(C.int(uint8(pl.PlayerInd)), asObjectC(it))
 		toggleProtectionObject(int32(pl.Prot4632), it)
 	} else if u.ObjClass&2 != 0 {
 		if u.ObjSubClass&0x10 != 0 && it.ObjClass&0x10000000 != 0 && noxflags.HasGame(32) {
-			C.nox_xxx_npcSetItemEquipFlags_4E4B20(inventoryInt(u), asObjectC(it), 0)
+			equipmentNPCSync(u, it, 0)
 		}
-		C.sub_53E430((*C.uint32_t)(u.CObj()), asObjectC(it), 1, 1)
-		C.nox_xxx_playerDequipWeapon_53A140((*C.uint32_t)(u.CObj()), asObjectC(it), 1, 1)
+		equipmentDequipArmor(u, it, 1, 1)
+		equipmentDequipWeapon(u, it, 1, 1)
 	}
 	if prev := it.Field125; prev != nil {
 		prev.InvNextItem = it.InvNextItem
@@ -97,7 +97,7 @@ func inventoryDroppable(it *server.Object) bool {
 		return false
 	}
 	if C.dword_5d4594_2488728 == 0 {
-		C.sub_53EC40()
+		equipmentInitDropTable()
 	}
 	for off := uintptr(279432); *memmap.PtrUint32(0x587000, off) != 0; off += 12 {
 		if *memmap.PtrUint32(0x587000, off+4) == uint32(it.TypeInd) {

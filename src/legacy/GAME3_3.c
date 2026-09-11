@@ -1297,47 +1297,6 @@ LABEL_19:
 //----- (004E4A70) --------------------------------------------------------
 double nox_xxx_objectGetMass_4E4A70(int a1) { return *(float*)(a1 + 120); }
 
-//----- (004E4B20) --------------------------------------------------------
-int* nox_xxx_npcSetItemEquipFlags_4E4B20(int a1, nox_object_t* item, int a3) {
-	int v3;      // esi
-	int v4;      // ecx
-	int v5;      // ecx
-	int* result; // eax
-	int v7;      // ecx
-	int v8;      // edx
-
-	v3 = *(uint32_t*)(a1 + 748);
-	nox_xxx_unitNeedSync_4E44F0(a1);
-	v4 = *(uint32_t*)&item->obj_class;
-	if (a3 == 1) {
-		if (v4 & 0x1001000) {
-			*(uint32_t*)(v3 + 2056) |= nox_xxx_weaponInventoryEquipFlags_415820(item);
-			goto LABEL_9;
-		}
-		v5 = nox_xxx_unitArmorInventoryEquipFlags_415C70(item) | *(uint32_t*)(v3 + 2060);
-	} else {
-		if (v4 & 0x1001000) {
-			*(uint32_t*)(v3 + 2056) &= ~nox_xxx_weaponInventoryEquipFlags_415820(item);
-			goto LABEL_9;
-		}
-		v5 = ~nox_xxx_unitArmorInventoryEquipFlags_415C70(item) & *(uint32_t*)(v3 + 2060);
-	}
-	*(uint32_t*)(v3 + 2060) = v5;
-LABEL_9:
-	if (!(*(uint32_t*)(a1 + 8) & 0x20400004)) {
-		return sub_4E4500(a1, 0x4000000, 1024, 1);
-	}
-	result = (int*)(a1 + 560);
-	v7 = 32;
-	do {
-		v8 = *result;
-		++result;
-		--v7;
-		*(result - 1) = v8 & 0xFFFFF000 | 0x4000000;
-	} while (v7);
-	return result;
-}
-
 //----- (004E4DE0) --------------------------------------------------------
 int sub_4E4DE0() {
 	int v0;            // edi
@@ -2781,22 +2740,6 @@ int nox_xxx_unitCountSlaves_4E7CF0(int a1, int a2, int a3) {
 	return result;
 }
 
-//----- (004E7D30) --------------------------------------------------------
-int nox_xxx_inventoryCountObjects_4E7D30(int a1, int a2) {
-	int result; // eax
-	int i;      // ecx
-
-	result = 0;
-	if (a1) {
-		for (i = *(uint32_t*)(a1 + 504); i; i = *(uint32_t*)(i + 496)) {
-			if (!a2 || *(unsigned short*)(i + 4) == a2 && !(*(uint8_t*)(i + 16) & 0x20)) {
-				++result;
-			}
-		}
-	}
-	return result;
-}
-
 //----- (004E7DE0) --------------------------------------------------------
 int sub_4E7DE0(int a1, nox_object_t* item) {
 	int v2;       // ebx
@@ -2841,29 +2784,6 @@ LABEL_8:
 	}
 	if (!v7) {
 		return 0;
-	}
-	return 1;
-}
-
-//----- (004E7EC0) --------------------------------------------------------
-int sub_4E7EC0(int a1, nox_object_t* item) {
-	int v2; // esi
-
-	if (!a1) {
-		return 0;
-	}
-	if (!item) {
-		return 0;
-	}
-	v2 = *(uint32_t*)(a1 + 504);
-	if (!v2) {
-		return 0;
-	}
-	while (!sub_4E7DE0(v2, item)) {
-		v2 = *(uint32_t*)(v2 + 496);
-		if (!v2) {
-			return 0;
-		}
 	}
 	return 1;
 }
@@ -9140,97 +9060,6 @@ LABEL_8:
 		} while (v4);
 	}
 	return v2 != 0;
-}
-
-//----- (004F2F70) --------------------------------------------------------
-int nox_xxx_playerTryEquip_4F2F70(nox_object_t* a1, nox_object_t* item) {
-	int result; // eax
-
-	if (nox_xxx_playerEquipWeapon_53A420(a1, item, 1, 1) ||
-		(result = nox_xxx_playerEquipArmor_53E650(a1, item, 1, 1)) != 0) {
-		result = 1;
-	}
-	return result;
-}
-
-//----- (004F2FB0) --------------------------------------------------------
-int nox_xxx_playerTryDequip_4F2FB0(nox_object_t* a1, const nox_object_t* object) {
-	int result; // eax
-
-	if (nox_xxx_playerDequipWeapon_53A140(a1, object, 1, 1) || (result = sub_53E430(a1, object, 1, 1)) != 0) {
-		result = 1;
-	}
-	return result;
-}
-
-//----- (004F2FF0) --------------------------------------------------------
-int nox_xxx_itemApplyEngageEffect_4F2FF0(nox_object_t* item, int a2) {
-	int v2;                   // ebp
-	int* v3;                  // esi
-	int result;               // eax
-	int (*v5)(int, int, int); // ecx
-
-	v2 = 2;
-	v3 = (int*)((int)item->init_data + 8);
-	do {
-		result = *v3;
-		if (*v3) {
-			v5 = *(int (**)(int, int, int))(result + 112);
-			if (v5) {
-				result = v5(result, a2, item);
-			}
-		}
-		++v3;
-		--v2;
-	} while (v2);
-	return result;
-}
-
-//----- (004F3030) --------------------------------------------------------
-int nox_xxx_itemApplyDisengageEffect_4F3030(const nox_object_t* object, int a2) {
-	int v2;                   // ebp
-	int* v3;                  // esi
-	int result;               // eax
-	int (*v5)(int, int, int); // ecx
-
-	v2 = 2;
-	v3 = (int*)((int)object->init_data + 8);
-	do {
-		result = *v3;
-		if (*v3) {
-			v5 = *(int (**)(int, int, int))(result + 116);
-			if (v5) {
-				result = v5(result, a2, object);
-			}
-		}
-		++v3;
-		--v2;
-	} while (v2);
-	return result;
-}
-
-//----- (004F3180) --------------------------------------------------------
-extern int nox_cheat_allowall;
-
-bool nox_xxx_playerCheckStrength_4F3180(nox_object_t* a1p, nox_object_t* item) {
-	int a1 = a1p;
-	if (nox_cheat_allowall) {
-		return 1;
-	}
-	int v2;       // esi
-	uint32_t* v3; // eax
-	bool result;  // al
-
-	if (*(uint8_t*)(a1 + 8) & 4 &&
-		((v2 = nox_xxx_unitGetStrength_4F9FD0(a1), !(*(uint32_t*)&item->obj_class & 0x2000000))
-			 ? (v3 = nox_xxx_getProjectileClassById_413250(*(unsigned short*)&item->typ_ind))
-			 : (v3 = nox_xxx_equipClothFindDefByTT_413270(*(unsigned short*)&item->typ_ind)),
-		 v3)) {
-		result = v2 >= *((unsigned short*)v3 + 30);
-	} else {
-		result = 0;
-	}
-	return result;
 }
 
 //----- (004F3E30) --------------------------------------------------------

@@ -24,14 +24,14 @@ func inventoryPriMessage(u *server.Object, key string) {
 func inventoryWeaponPickup(u, it *server.Object, arg, equip int) int {
 	if u.ObjClass&4 != 0 && noxflags.HasGame(4096) && it.ObjSubClass&0x200000 != 0 {
 		limit := float32(C.nox_xxx_gamedataGetFloat_419D40(internCStr("ForceOfNatureStaffLimit")))
-		if int32(C.nox_xxx_inventoryCountObjects_4E7D30(inventoryInt(u), C.int(it.ObjFlags))) >= floatToInt32(limit) {
+		if int32(equipmentCount(u, int(it.ObjFlags))) >= floatToInt32(limit) {
 			inventoryPriMessage(u, "pickup.c:MaxSameItem")
 			inventorySound(925, u, 0, 0)
 			return 0
 		}
 	}
 	if !noxflags.HasGame(2048|4096) && C.sub_409F40(2) != 0 {
-		duplicate := it.ObjSubClass&0x82 == 0 && C.sub_4E7EC0(inventoryInt(u), asObjectC(it)) != 0
+		duplicate := it.ObjSubClass&0x82 == 0 && equipmentDuplicate(u, it) != 0
 		if it.ObjSubClass&0x40 != 0 {
 			for owned := u.Field129; owned != nil; owned = owned.Field128 {
 				if owned.ObjClass&0x1000000 != 0 && owned.ObjSubClass&0x40 != 0 {
@@ -58,14 +58,14 @@ func inventoryWeaponPickup(u, it *server.Object, arg, equip int) int {
 	}
 	if u.ObjClass&4 != 0 {
 		ud := u.UpdateData
-		equipped := C.int(0)
+		equipped := 0
 		if *(*uint32)(unsafe.Add(ud, 104)) == 0 && C.sub_419E60(asObjectC(u)) == 0 && C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)) != 2 {
-			equipped = C.nox_xxx_playerEquipWeapon_53A420((*C.uint32_t)(u.CObj()), asObjectC(it), C.int(equip), 0)
+			equipped = equipmentEquipWeapon(u, it, equip, 0)
 		}
 		if C.sub_419E60(asObjectC(u)) == 0 && C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)) == 2 {
 			flags := *(*uint32)(unsafe.Add(unsafe.Pointer(u.UpdateDataPlayer().Player), 4))
 			if flags&0xC != 0 && flags&2 == 0 {
-				equipped = C.nox_xxx_playerEquipWeapon_53A420((*C.uint32_t)(u.CObj()), asObjectC(it), C.int(equip), 0)
+				equipped = equipmentEquipWeapon(u, it, equip, 0)
 			}
 		}
 		if equipped == 0 {
@@ -84,7 +84,7 @@ func inventoryWeaponPickup(u, it *server.Object, arg, equip int) int {
 			}
 		}
 	}
-	C.sub_53A6C0(inventoryInt(u), asObjectC(it))
+	equipmentPickupSound(u, it)
 	C.nox_xxx_decay_5116F0(asObjectC(it))
 	return 1
 }
@@ -112,7 +112,7 @@ func inventoryAmmoPickup(u, it *server.Object, arg, equip int) int {
 			prev[0] += data[0]
 			C.nox_xxx_netReportCharges_4D82B0(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), asObjectC(old), C.char(prev[1]), C.char(prev[0]))
 			GetServer().DelayedDelete(it)
-			C.sub_53A6C0(inventoryInt(u), asObjectC(it))
+			equipmentPickupSound(u, it)
 			return 1
 		}
 	}
@@ -129,7 +129,7 @@ func inventoryOblivionPickup(u, it *server.Object, arg, equip int) int {
 			}
 		}
 		C.sub_57AF30(inventoryInt(u), 1)
-		C.nox_xxx_playerTryEquip_4F2F70(asObjectC(u), asObjectC(it))
+		equipmentTryEquip(u, it)
 	}
 	return rv
 }
@@ -148,7 +148,7 @@ func inventoryArmorPickup(u, it *server.Object, arg, equip int) int {
 		C.dword_5d4594_2488720 = C.uint32_t(GetServer().S().Types.IndByID("WoodenShield"))
 		C.dword_5d4594_2488724 = C.uint32_t(GetServer().S().Types.IndByID("SteelShield"))
 	}
-	if !noxflags.HasGame(2048|4096) && C.sub_409F40(2) != 0 && C.sub_4E7EC0(inventoryInt(u), asObjectC(it)) != 0 {
+	if !noxflags.HasGame(2048|4096) && C.sub_409F40(2) != 0 && equipmentDuplicate(u, it) != 0 {
 		inventoryPriMessage(u, "armor.c:CannotPickupDuplicateArmor")
 		inventorySound(925, u, 2, int(u.NetCode))
 		return 0
@@ -162,7 +162,7 @@ func inventoryArmorPickup(u, it *server.Object, arg, equip int) int {
 		return 0
 	}
 	if u.ObjClass&4 != 0 {
-		old := (*server.Object)(unsafe.Pointer(C.nox_xxx_armorHaveSameSubclass_53E7B0(inventoryInt(u), inventoryInt(it))))
+		old := equipmentSameArmor(u, it)
 		if C.sub_419E60(asObjectC(u)) == 0 {
 			wood, steel := uint32(C.dword_5d4594_2488720), uint32(C.dword_5d4594_2488724)
 			sneakers, robe := *memmap.PtrUint32(0x5D4594, 2488712), *memmap.PtrUint32(0x5D4594, 2488716)
@@ -186,7 +186,7 @@ func inventoryArmorPickup(u, it *server.Object, arg, equip int) int {
 				}
 			}
 			if replace {
-				C.nox_xxx_playerEquipArmor_53E650((*C.uint32_t)(u.CObj()), asObjectC(it), C.int(equip), 0)
+				equipmentEquipArmor(u, it, equip, 0)
 			}
 		}
 	}

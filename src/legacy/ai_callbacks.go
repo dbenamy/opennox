@@ -346,9 +346,9 @@ func monsterDropLoot(u *server.Object, name string, mods [4]string, ammo int) {
 		*(*byte)(unsafe.Add(t.UseData.Ptr, 1)) = byte(ammo)
 	}
 	if t.Class()&0x2000000 != 0 {
-		C.sub_53EAE0(combatPtr(t))
+		equipmentArmorDropSound(t)
 	} else if t.Class()&0x1001000 != 0 {
-		C.sub_53AAB0(combatPtr(t))
+		equipmentDropSound(t)
 	}
 }
 func monsterDeathSkull(u *server.Object) {

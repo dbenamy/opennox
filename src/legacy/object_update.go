@@ -226,7 +226,7 @@ func Sub_4E7540(a1 *server.Object, a2 *server.Object) {
 	C.sub_4E7540(asObjectC(a1), asObjectC(a2))
 }
 func Nox_xxx_playerCheckStrength_4F3180(a1 *server.Object, a2 *server.Object) bool {
-	return bool(C.nox_xxx_playerCheckStrength_4F3180(asObjectC(a1), asObjectC(a2)))
+	return equipmentCheckStrength(a1, a2)
 }
 func Nox_xxx_unitDamageClear_4EE5E0(a1 *server.Object, a2 int) {
 	resourceDamage(a1, int32(a2))

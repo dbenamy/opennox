@@ -40,7 +40,7 @@ func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 	if it.InvHolder != u {
 		return 0
 	}
-	if u.ObjClass&4 != 0 && inventoryDroppable(it) && C.sub_53EC80(inventoryInt(it), 1) != 0 {
+	if u.ObjClass&4 != 0 && inventoryDroppable(it) && equipmentDropPolicy(it, 1) != 0 {
 		if u.ObjFlags&0x8020 == 0 {
 			C.nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr("drop.c:CantDropThat"), 0)
 			inventorySound(925, u, 2, int(u.NetCode))
@@ -161,9 +161,9 @@ func inventoryEquipmentDrop(u, it *server.Object, pos *types.Pointf, armor bool)
 		return 0
 	}
 	if armor {
-		C.sub_53EAE0(inventoryInt(it))
+		equipmentArmorDropSound(it)
 	} else {
-		C.sub_53AAB0(inventoryInt(it))
+		equipmentDropSound(it)
 	}
 	if !noxflags.HasGame(2048|4096) && C.sub_409F40(2) != 0 {
 		Nox_xxx_unitSetDecayTime_511660(it, int(25*GetServer().S().TickRate()))

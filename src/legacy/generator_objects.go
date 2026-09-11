@@ -62,9 +62,9 @@ func generatorCopy(src, dst *server.Object) {
 			inventoryInsert(dst, clone, 0)
 			if it.ObjFlags&0x100 != 0 {
 				if clone.ObjClass&0x1001000 != 0 {
-					C.nox_xxx_NPCEquipWeapon_53A2C0(C.int(uintptr(dst.CObj())), asObjectC(clone))
+					equipmentNPCEquipWeapon(dst, clone)
 				} else if clone.ObjClass&0x2000000 != 0 {
-					C.nox_xxx_NPCEquipArmor_53E520(C.int(uintptr(dst.CObj())), (*C.uint32_t)(clone.CObj()))
+					equipmentNPCEquipArmor(dst, clone)
 				}
 			}
 		}

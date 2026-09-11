@@ -1823,34 +1823,6 @@ double sub_415BD0(int a1) {
 	return result;
 }
 
-//----- (00415C00) --------------------------------------------------------
-double nox_xxx_itemApplyDefendEffect_415C00(int a1) {
-	int* v1;                                               // edi
-	float* v2;                                             // eax
-	int v4;                                                // eax
-	void (*v5)(int, int, uint32_t, int, uint32_t, float*); // ecx
-	float v6;                                              // [esp+8h] [ebp-4h]
-
-	v6 = 0.0;
-	if (!(*(uint32_t*)(a1 + 8) & 0x2000000)) {
-		return 0.0;
-	}
-	v1 = *(int**)(a1 + 692);
-	v2 = (float*)nox_xxx_equipClothFindDefByTT_413270(*(unsigned short*)(a1 + 4));
-	if (!v2) {
-		return v6;
-	}
-	v6 = v2[16];
-	v4 = *v1;
-	if (*v1) {
-		v5 = *(void (**)(int, int, uint32_t, int, uint32_t, float*))(v4 + 76);
-		if (v5) {
-			v5(v4, a1, 0, a1, 0, &v6);
-		}
-	}
-	return v6;
-}
-
 //----- (00415DA0) --------------------------------------------------------
 int sub_415DA0(wchar2_t* a1) {
 	int v1;             // edi

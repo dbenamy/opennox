@@ -75,6 +75,7 @@ target build selection and linker evidence.
 | Trade opening, offer admission, purchases and sales (2026-09-11) | 151 | 131,120 | −815 | 0 |
 | Health, poison, mana and gold; C-owned modifier-slot write fix (2026-09-11) | 150 | 130,474 | −646 | 0 |
 | Inventory pickup/drop, placement/chest and specialized equipment pickup (2026-09-11) | 150 | 129,053 | −1,421 | 0 |
+| Weapon/armor equipment, modifier dispatch and shield selection (2026-09-11) | 149 | 128,081 | −972 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

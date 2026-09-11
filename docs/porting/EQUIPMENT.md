@@ -1,8 +1,9 @@
-# Weapon and armor equipment port (in progress)
+# Weapon and armor equipment port
 
 Current scope: 33 functions / 972 physical C lines, including all of MixPatch.c.
-Production is unchanged from inventory commit `6d8a5863`:
-129,053 physical C lines / 150 files / zero reference C.
+Original-C baseline: `6e13a789` (committed and pushed before conversion).
+Native implementation removes **972 C lines**, leaving **128,081 physical C
+lines / 149 files / zero reference C**. Qualification is complete.
 
 The family includes player/NPC equip/dequip and switching, ammo/bow and shield
 interactions, modifier engage/disengage dispatch, armor-value calculation,
@@ -39,8 +40,9 @@ Independent assertions also check modifier return precedence, signed strength
 admission, armor-mask classification, and the NPC sync interior-pointer return.
 
 Full JSON captures c-final and c-repeat match byte-for-byte in all 17 groups;
-SHA-256 values are locked in equipment_porttest_test.go. Original production C
-is still intact. These fixtures exercise the current implementation, including
+SHA-256 values are locked in equipment_porttest_test.go. The original-C
+implementation is available at the baseline commit. These fixtures exercise
+the current implementation, including
 community shield behavior, actual modifier callbacks, and actual ability lists.
 Unlinked armor fixtures retain an inventory holder because the retained equip
 packet formatter requires it; list membership and holder relation are distinct.
@@ -48,6 +50,54 @@ packet formatter requires it; list membership and holder relation are distinct.
 Ignored scope/caller audit/original blocks: build/port-equipment/{scope.json,
 callers.txt,original-c.txt}. Stable captures: c-final-equipment-*.json and
 c-repeat-equipment-*.json. Locked equipment plus existing dependency results:
-c-locked-dependencies.log. Commit/push this baseline before production edits.
-Convert and qualify the family once at its boundary; update C_LOC/docs and
-commit/push before continuing.
+c-locked-dependencies.log. The baseline was committed/pushed before production
+edits; the connected family was qualified together.
+
+## Native implementation and review
+
+- equipment.go: strength, inventory queries, modifier dispatch, armor values,
+  NPC synchronization, shield selection, sounds, and shared drop-policy table.
+- equipment_weapon.go / equipment_armor.go: player and NPC transitions,
+  ammo/bow handling, opposing equipment sweeps, and admission checks.
+- equipment_exports.go: the 33 existing ABI entry points, used by retained C
+  callers and the original contract dispatcher. No copied C algorithms remain.
+  Two header const qualifiers are aligned with generated cgo declarations.
+- Existing inventory, trade, generator, AI loot and object Go callers route
+  directly to the native functions.
+
+All 17 original-C JSON capture groups match native-third byte-for-byte (3.809s).
+The baseline test plus inventory/resource/shop dependencies passed in 38.796s.
+Broader native qualification results are recorded below.
+
+Preserved details include last-slot modifier return precedence; the community
+shield-selection flag and exact equality for fallback shield flags; player
+armor dequip's object+48 byte check; signed strength versus unsigned 16-bit
+requirements; float32 armor accumulator spills with double helper results;
+and the NPC sync helper's raw interior-pointer return. Count with filter zero
+includes destroyed items; filtered counts exclude them. Duplicate comparison
+4E7DE0 and the existing network serializers remain production dependencies.
+
+The defend callback's writable float uses scoped C-owned storage. Modifier
+algorithms remain in their existing production locations for the next connected
+batch, while equipment dispatch itself is native.
+
+## Qualification
+
+- Native equipment plus existing inventory/resource/shop/trade: **12,009 cases**,
+  all hashes unchanged, 58.052s (concurrent build load).
+- Accumulated default/server/highres port corpora: pass in **101.875s /
+  91.325s / 96.494s**.
+- Three production builds: opennox, opennox-hd, opennox-server, all verified
+  ELF32/i386, GOARCH=386, GO386=sse2, CGO_ENABLED=1.
+- Whole-module suite: exact known failure multiset, 1,553 entries, zero additions
+  or removals; package outcomes 15 pass / 3 fail / 32 skip.
+- Fresh equipment-port gameplay: exit 0 in 38.916s, unchanged repeat-a goldens,
+  overrides disabled, Xvfb, null audio.
+
+Evidence is under build/port-equipment (native-third captures, native-dependencies,
+ports-variant logs, binary-checks, full-suite-comparison), and
+build/baseline/runs/equipment-port/result.json. Old regenerable build-cache files
+were pruned for disk space; asset archives and gameplay evidence were preserved.
+
+Next: [modifier effects and weapon use](EFFECTS_USE.md), 41 functions / 977 C
+lines with one qualification boundary for the connected family.

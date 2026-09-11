@@ -523,11 +523,11 @@ func Nox_xxx_monsterCanCast_534300(obj *server.Object) bool {
 }
 
 func Nox_xxx_playerTryEquip_4F2F70(obj, item *server.Object) bool {
-	return C.nox_xxx_playerTryEquip_4F2F70(asObjectC(obj), asObjectC(item)) != 0
+	return equipmentTryEquip(obj, item) != 0
 }
 
 func Nox_xxx_playerTryDequip_4F2FB0(obj, item *server.Object) bool {
-	return C.nox_xxx_playerTryDequip_4F2FB0(asObjectC(obj), asObjectC(item)) != 0
+	return equipmentTryDequip(obj, item) != 0
 }
 
 func Nox_xxx_inventoryPutImpl_4F3070(obj, item *server.Object, a3 int) {

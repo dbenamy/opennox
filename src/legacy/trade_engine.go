@@ -353,7 +353,7 @@ func tradeAddOffer(s *shopSession, u, item *server.Object) uint32 {
 	return 1
 }
 func tradeInventoryCount(u, item *server.Object) int32 {
-	return int32(C.nox_xxx_inventoryCountObjects_4E7D30(C.int(uintptr(u.CObj())), C.int(item.TypeInd)))
+	return int32(equipmentCount(u, int(item.TypeInd)))
 }
 func tradeLimit(key string) uint32 {
 	return uint32(floatToInt32(float32(GetServer().S().Balance.Float(key))))
