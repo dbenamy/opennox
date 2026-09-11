@@ -1,58 +1,49 @@
 # OpenNox x86 Porting Handoff
 
 <!-- current-focus -->
-## In progress — callback baseline locked
-
-Native spell batch `51dd2621` is fully qualified and pushed. Current original-C
-callback baseline covers the full 948-line/36-function family with 4,224 generated
-cases and targeted loader/strike/poison/loot/debris/precision/cloud contracts.
-See docs/porting/AI_CALLBACKS.md for hashes, arithmetic and reserved modifier word
-handling. Existing spell/main/state hashes pass unchanged. Production C is still
-136,242 lines. Next: native conversion, one final qualification, commit/push and
-continue. No substantive question is pending.
-
 ## Resume here — 2026-09-11
 
-Port the x86 C engine to Go on branch `dev`. User authorizes continued connected,
-reviewed/tested/documented/committed/pushed batches until a substantive question
-or rate limit, now with more aggressive batching. Do not stop after a push.
-Use at most one bounded helper, reviewing actual code/layouts/arithmetic. Preserve
-the untracked asset archive. No user question is pending.
+Continue the x86 C-to-Go port on `dev`, one connected, reviewed, tested,
+documented, committed and pushed family at a time, until a substantive user
+question or rate limit. User approved more aggressive batching and at most one
+bounded helper. Preserve the untracked asset archive. No question is pending.
 
-Latest fully qualified batch: monster spell decisions and cast actions.
-Original-C checkpoint `326f2a08`; 3,840 generated cases and 172 contracts match.
-Fifteen C bodies/prototypes removed; main-AI/combat/navigation/action wrappers use
-Go directly. Production C: **136,242 physical lines (minus 499)**, 153 files,
-zero reference C. See docs/porting/AI_SPELLS.md. Accumulated default/server/highres
-ports pass; three ELF32/i386/SSE2 production builds pass. Full suite matches
-exactly 1,553 known failure entries (15 pass/3 fail/32 skip packages). Fresh
-`ai-spell-port` gameplay exits 0 against preserved screenshots, overrides off.
-Artifacts: build/port-ai-spells. Cast argument buffers remain C-owned across
-callbacks. Unsigned cooldowns, 136 permission slots, integer half-health, summon
-retry draws, whole-list enchant rejection and compiled recoil spills are locked.
+Latest fully qualified batch: MonsterDef callback registration, strikes, death
+effects and loot, GAME5 549040–54A950. Original-C baseline `6923e2ac` is pushed.
+All 36 C bodies are removed; 28 parser/table ABI entries remain generated Go
+bridges and eight private helpers are Go-only. All locked C hashes match:
+4,224 generated cases plus 33 smoke, 172 loot, 100 strike, 36 poison, 48 debris,
+2 precision, 20 cloud and 88 loader checks. See docs/porting/AI_CALLBACKS.md.
+Production C: **135,294 physical lines (minus 948)**, 153 files, zero reference C.
 
-Previous qualified/pushed batches: main AI `f674ad3a`, monster state `29b6e5d3`,
-lifecycle `e3ee0c9c`, combat `e37039e5`, path `01a9ec4d`, navigation `e32982f7`,
-guard/escort `2bd0b90d`. C_LOC.md records each physical count.
+Accumulated default/server/highres tests pass (55.763s/43.408s/44.000s). Three
+production binaries pass and are ELF32/i386/SSE2. Full suite matches exactly
+1,553 known failure entries (15 pass/3 fail/32 skip packages). Fresh
+`ai-callback-port` headless gameplay exits 0 against preserved screenshots,
+overrides off, null audio. Artifacts: build/port-ai-callbacks.
 
-Next: full MonsterDef callback family GAME5 549040–54A950, **948 physical C lines**
-including three callback loaders, strike/poison/target helpers, death effects,
-debris and loot; stop before unrelated geometry 54A990. Capture original-C tests
-using shared combat/lifecycle/main fixtures, then port related groups with focused
-tests and one final qualification cycle. Callback pointer identity and real blob
-name tables matter; live C config parser calls loaders. Audit (review actual C):
-build/port-ai-spells/next-batch-audit.md. Ignored draft server fixture:
-build/port-ai-callbacks/server_fixture.go. Draft was corrected: Allowed does not
-block allocation; absent byID/byInd entries do. 549690 is poison activation;
-549D80 onward are death callbacks. Toxic-cloud lifetime explicitly casts FPS to
-signed int in C; preserve that cast despite the general uint32 declaration.
+Previous qualified/pushed batches: spells `51dd2621`, main AI `f674ad3a`,
+monster state `29b6e5d3`, lifecycle `e3ee0c9c`, combat `e37039e5`, path
+`01a9ec4d`, navigation `e32982f7`, guard/escort `2bd0b90d`. C_LOC.md records counts.
 
-Use build/baseline/env.sh: Go1.26, GOARCH=386, GO386=sse2, CGO enabled, direct GCC.
+Next: object initialization and small death callbacks, GAME5 54C0C0–54CBB0,
+**340 physical C lines / 11 functions**, stopping before player death-inventory
+cleanup 54CBD0. Capture original-C baseline with the existing callback fixture,
+then convert and qualify the complete family. Reuse modifier/health/cloud and
+creation fixtures; add the nine auto-spell type names, three Oblivion names,
+weapon/armor Modifier lists, larger guarded InitData/UseData, balance overlay
+and ToxicCloud update data. Inspect compiled arithmetic for durability/staff
+scaling. Audits and helper's server-fixture draft are ignored under
+build/port-ai-callbacks. Review actual source before applying helper drafts.
+Mapgen room connections 54B2D0–54BF20 are a later 530-line candidate requiring
+a separate room-graph fixture; do not expand this batch across that boundary.
+
+Use build/baseline/env.sh: Go1.26, GOARCH=386, GO386=sse2, CGO enabled, GCC.
 User dropped old-CPU support. Keep C x87 flags unchanged; inspect compiled spills
 where needed. Both random APIs 415FA0 and 416030 use Logic, never Other.
 Accumulated regex with porttest, server porttest, highres porttest:
-`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort|AINavigation|AIPath|AICombat|AILifecycle|AIMonsterState|AIMain|AISpell)`
-Once per connected batch: accumulated tests, three production builds and metadata,
+`^Test(Protection|Network|Waypoint|Rules|SpellClass|PingAggregates|GlyphEligibility|Collision|LineProjection|Durability|TileSelection|TileWorklist|BorderSelection|EdgeMapping|EdgeNormalization|Subtile|FloatInt|Grid|FloorEligibility|AIActions|AIRoam|AIGuardEscort|AINavigation|AIPath|AICombat|AILifecycle|AIMonsterState|AIMain|AISpell|AICallback)`
+Once per connected batch: accumulated tests, three production builds/metadata,
 fresh headless gameplay with preserved screenshots and overrides off. Full-suite
 comparison at subsystem/shared boundaries; never print raw full-suite logs,
 compare only Action/Package/Test metadata. Update C LOC after every conversion.

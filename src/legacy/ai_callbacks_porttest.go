@@ -19,8 +19,6 @@ static void* pt_callback_hit_ptr(void) {return (void*)pt_callback_hit;}
 static void pt_callback_reset(int mutate,uint32_t force) {pt_callback_damage_n=0;pt_callback_mutate=mutate;pt_callback_force_bits=force;}
 static int pt_callback_count(void) {return pt_callback_damage_n;}
 static uint32_t pt_callback_word(int i) {return pt_callback_damage[i];}
-static void pt_callback_area(int target,int actor) {union {int i;float f;} u;u.i=actor;nox_xxx_monsterAttackAreaDamage_549860(target,u.f);}
-static int pt_callback_golem(int actor) {union {int i;float f;} u;u.i=actor;return nox_xxx_sendEquakeAfterGolem_549800(u.f);}
 */
 import "C"
 
@@ -168,7 +166,6 @@ func portTestAICallbackCall(proxy *portTestRoamOwnerServer, u *server.Object, sp
 	if sp.SelfTarget {
 		t = u
 	}
-	p, q := combatPtr(u), combatPtr(t)
 	if sp.Op < 11 {
 		return uint32(ccall.CallIntPtr(*memmap.PtrPtr(0x587000, 287100+uintptr(sp.Op)*8), u.CObj()))
 	}
@@ -181,23 +178,21 @@ func portTestAICallbackCall(proxy *portTestRoamOwnerServer, u *server.Object, sp
 	}
 	switch sp.Op {
 	case 25:
-		C.sub_549270(q, p)
+		monsterOgreCandidate(t, u)
 	case 26:
-		return uint32(C.nox_xxx_monsterPickMeleeTarget_549440(p, C.int(sp.AllTargets)))
+		return uint32(uintptr(unsafe.Pointer(monsterPickMeleeTarget(u, sp.AllTargets))))
 	case 27:
-		C.sub_5494C0((*C.float)(t.CObj()), p)
+		monsterMeleeCandidate(t, u)
 	case 28:
-		return uint32(C.sub_549690(p, q))
+		return uint32(bool2int(monsterMeleePoison(u, t)))
 	case 29:
-		return uint32(C.pt_callback_golem(p))
+		return uint32(bool2int(monsterGolemStrike(u)))
 	case 30:
-		C.pt_callback_area(q, p)
+		monsterAreaCandidate(t, u)
 	case 31:
-		name, free := alloc.CString(sp.LootName)
-		defer free()
-		C.sub_54A390(p, (*C.char)(unsafe.Pointer(name)), nil, nil, nil, nil, 5)
+		monsterDropLoot(u, sp.LootName, [4]string{}, 5)
 	case 32:
-		C.sub_54A4C0(p)
+		monsterDeathSkull(u)
 	}
 	return 0
 }

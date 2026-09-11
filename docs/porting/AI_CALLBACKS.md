@@ -6,7 +6,7 @@ parser. Eleven strike and fourteen death/loot callback addresses are installed i
 the production blob tables; private target, poison, area and creation helpers
 move with their owners. The already-Go BomberDead callback remains shared.
 
-## Original-C baseline
+## Original-C baseline (`6923e2ac`)
 
 The shared AI fixture runs the real callback table addresses and retained force,
 poison, enchant, area damage, visibility, allocation, modifier and packet engines.
@@ -60,12 +60,26 @@ artifacts are ignored under build/port-ai-callbacks.
 sub54A390 initializes four modifier descriptors in a 20-byte local and the shared
 setter copies all 20 bytes. The fifth word (ModifierInitData.Field16) is undefined
 stack content. No semantic reader was found; generic respawn code copies it.
-The baseline checks the four defined slots and ammo. Native code will initialize
+The baseline checks the four defined slots and ammo. Native code initializes
 the reserved word to zero; it cannot preserve undefined stack contents.
 
-Production C remains **136,242 physical lines**, 153 files, zero reference C.
-Run from src with build/baseline/env.sh loaded:
+## Native conversion
+
+All 36 function bodies are removed from GAME5.c. The 28 public parser/table
+entry points use generated C ABI bridges into ai_callbacks.go; eight private
+helpers are Go-only and their obsolete declarations are removed. Strike ABI
+float arguments transport raw object-pointer bits, as in the original C.
+The original-C hashes all pass unchanged (2.405s). No reference C is retained.
+
+Production C is **135,294 physical lines**, down **948**, across 153 files;
+zero test-reference C lines. Run from src with build/baseline/env.sh loaded:
 `go test -tags porttest -run '^TestAICallback' .`.
 OPENNOX_CALLBACK_CAPTURE optionally saves ignored snapshots; CASE and CORPUS_CASE
-suffixes narrow the respective case lists. No C bodies have been removed at this
-checkpoint. Next: convert this whole callback family, then qualify once.
+suffixes narrow the respective case lists.
+
+Accumulated port tests pass on default (55.763s), server (43.408s) and highres
+(44.000s). All three production builds pass and are ELF32/i386 with GO386=sse2.
+Full-suite metadata matches exactly the 1,553 known failure entries: 15 passed,
+3 failed and 32 skipped packages, with no added or removed failures. Artifacts
+are under build/port-ai-callbacks. Fresh `ai-callback-port` headless gameplay exits 0 against preserved screenshots,
+overrides off and null audio.

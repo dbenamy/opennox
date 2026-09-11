@@ -65,6 +65,7 @@ target build selection and linker evidence.
 | Monster commands, animation and state (2026-09-11) | 153 | 137,297 | −585 | 0 |
 | Main monster AI and defensive reactions (2026-09-11) | 153 | 136,741 | −556 | 0 |
 | Monster spell decisions and cast actions (2026-09-11) | 153 | 136,242 | −499 | 0 |
+| Monster callback registration, strikes, death effects and loot (2026-09-11) | 153 | 135,294 | −948 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
