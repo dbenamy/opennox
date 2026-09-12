@@ -236,3 +236,24 @@ Final evidence: qualification.json, binary-verification.json, ports-*.log,
 full-suite-comparison.json and build.log under build/port-player-controls;
 gameplay result under build/baseline/runs/player-controls-port. Commit/push this
 qualified conversion, summarize and continue the 30-export cleanup without asking.
+
+## Completed export cleanup
+
+The qualified conversion was committed/pushed as `0a3f446d`. Its 30 obsolete
+exports and header declarations are now retired. Their test operations call the
+native owners directly; the thin C dispatcher covers only retained production
+ABIs. All 3,205 cases / 58 original hashes still pass in default/server/highres
+(9.281s / 9.427s / 14.374s). Function-identity normalization skips absent symbols,
+so nil remains nil. No production algorithm or expected capture changed.
+
+All three production targets rebuilt and were verified ELF32/i386/SSE2/CGO;
+`nm` confirms all 30 symbols absent from each binary. Fresh unchanged repeat-a
+headless gameplay passes in 34.974s. The preceding conversion's accumulated
+matrix and exact full-suite failure comparison remain the algorithm milestone;
+this ABI-only follow-up reran the affected corpus across variants, all builds,
+symbol checks and gameplay. C remains 115,985 lines / 149 files / zero reference C.
+Evidence: build/port-controls-bridges and baseline/runs/controls-bridges-port.
+
+Next: spell casting/buff lifecycle, 29 functions / 1,326 removable lines. Audit
+unused exports before qualification in future batches, avoiding a second build
+cycle for cleanup that can be included in the conversion itself.

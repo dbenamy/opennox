@@ -821,3 +821,14 @@ and symbols, document unchanged C LOC, commit/push and continue the next batch.
 Next algorithm scope is staged in build/port-spell-lifecycle: 29 spell-casting/buff
 blocks, 1,328 address-block lines before declaration audit. Do not rerun stale
 controls source generators. No pending question; no new agents; preserve archive.
+
+### Completed — player-controls obsolete exports
+
+Controls conversion `0a3f446d` is pushed. Follow-up removes 30 unused exports and
+header declarations, with direct Go fixture dispatch and unchanged expected
+hashes. All 3,205 cases / 58 groups pass in default/server/highres (9.281s /
+9.427s / 14.374s); three ELF32/i386/SSE2/CGO builds succeed and all 30 symbols are
+absent. Fresh unchanged gameplay passes in 34.974s. C remains 115,985 / 149 files /
+zero reference C. Evidence: build/port-controls-bridges. Commit/push and continue
+spell casting/buff lifecycle: 29 C functions / 1,326 removable lines; read staged
+build/port-spell-lifecycle/audit.md. No fixture changes for that batch yet.

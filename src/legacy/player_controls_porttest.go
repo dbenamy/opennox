@@ -11,62 +11,32 @@ extern uint32_t dword_5d4594_1565616,dword_5d4594_1568868;
 #include "GAME3_3.h"
 #include "GAME4.h"
 static void* controlsPlayerUpdatePtr(void) { return nox_xxx_updatePlayer_4F8100; }
-int sub_4E5F40(int a1);
-void sub_4E5FC0(int a1);
-nox_object_t* sub_4E6150(nox_playerInfo* a1p);
-int sub_4E6230();
-nox_object_t* nox_xxx_playerObserverFindGoodSlave0_4E6280(nox_playerInfo* a1p);
 void nox_xxx_playerLeaveObserver_0_4E6AA0(nox_playerInfo* pl);
-int nox_xxx_playerObserverFindGoodSlave2_4EC3E0(int a1);
-int nox_xxx_playerObserverFindGoodSlave_4EC420(int a1);
 void nox_xxx_unitRemoveChild_4EC470(nox_object_t* a1);
 void nox_xxx_unitTransferSlaves_4EC4B0(nox_object_t* a1p);
-void nox_xxx_abilGivePlayerAll_4EED40(int a1, char a2, int a3);
 int nox_xxx_plrReadVals_4EEDC0(nox_object_t* a1p, int a2);
 int sub_4EF140(int a1);
 double nox_xxx_calcBoltDamage_4EF1E0(int a1, int a2);
 void sub_4EF410(int a1, unsigned char a2);
-char nox_xxx_getRespawnWeaponFlags_4EF580();
 int sub_4EF6F0(int a1);
 nox_object_t* nox_xxx_playerRespawnItem_4EF750(nox_object_t* a1p, char* a2, int* a3, int a4, int a5);
 char nox_xxx_playerMakeDefItems_4EF7D0(int a1, int a2, int a3);
-int nox_xxx_netSendPlayerRespawn_4EFC30(int a1, char a2);
 char nox_xxx_unitInitPlayer_4EFE80(nox_object_t* a1p);
 int sub_4EFF10(int a1);
 int nox_xxx_equipedItemByCode_4F7920(int a1, int a2);
-void sub_4F7950(nox_object_t* a1p);
 void nox_xxx_playerSetCustomWP_4F79A0(int a1, int a2, int a3);
-int nox_xxx_playerConfusedGetDirection_4F7A40(nox_object_t* a1p);
 void nox_xxx_mapFindPlayerStart_4F7AB0(float2* a1, nox_object_t* a2p);
-int sub_4F7CE0(int a1, int a2);
-int nox_xxx_playerSubStamina_4F7D30(nox_object_t* a1p, int a2);
-void sub_4F7DB0(int a1, char a2);
-int nox_xxx_checkWinkFlags_4F7DF0(nox_object_t* a1p);
 int nox_xxx_weaponGetStaminaByType_4F7E80(int a1);
 short nox_xxx_playerRespawn_4F7EF0(nox_object_t* a1p);
-int sub_4F80C0(int a1, float2* a3);
-int sub_4F9A80(nox_object_t* a1);
-int sub_4F9AB0(nox_object_t* a1p);
-int nox_xxx_playerCanMove_4F9BC0(nox_object_t* a1p);
-int nox_xxx_playerCanAttack_4F9C40(nox_object_t* a1p);
-void nox_xxx_playerInputAttack_4F9C70(nox_object_t* a1p);
-int nox_xxx_playerAimsAtEnemy_4F9DC0(int a1);
-int sub_4F9E10(nox_object_t* a1p);
 int sub_4FA280(int a1);
 int nox_common_mapPlrActionToStateId_4FA2B0(nox_object_t* a1p);
 int nox_xxx_checkInversionEffect_4FA4F0(int a1, int a2);
-int nox_xxx_playerBotCreate_4FA700(nox_object_t* a1p);
 char nox_xxx_mobMorphFromPlayer_4FAAC0(uint32_t* a1);
 char nox_xxx_mobMorphToPlayer_4FAAF0(uint32_t* a1);
 int nox_xxx_updatePlayerMonsterBot_4FAB20(uint32_t* a1);
-char nox_xxx_monsterActionToPlrState_4FABC0(int a1);
-int nox_xxx_respawnPlayerBot_4FAC70(int a1);
 int nox_xxx_netSendRewardNotify_4FAD50(int a1, int a2, int a3, char a4);
 void sub_4FADD0(int a1, char* a2, char a3);
-int sub_4FB000(int a1, int a2);
 int sub_4FB050(int a1, int a2, int* a3);
-int nox_xxx_playerDoSchedSpell_4FB0E0(nox_object_t* a1p, nox_object_t* a2p);
-int nox_xxx_playerDoSchedSpellQueue_4FB1D0(nox_object_t* a1p, nox_object_t* a2p);
 static uint32_t controlsInitLog[256];static int controlsInitN;
 static void controlsInit(nox_object_t* u,int x){if(controlsInitN+2>=256)abort();controlsInitLog[controlsInitN++]=(uint32_t)u;controlsInitLog[controlsInitN++]=x;}
 static void controlsInitReset(){controlsInitN=0;}
@@ -74,121 +44,61 @@ static int controlsInitCount(){return controlsInitN;}
 static uint32_t controlsInitValue(int i){return controlsInitLog[i];}
 static void* controlsInitPtr(){return controlsInit;}
 static void* controlsFunction(int id){switch(id){
-case 0:return (void*)sub_4E5F40;
-case 1:return (void*)sub_4E5FC0;
-case 2:return (void*)sub_4E6150;
-case 3:return (void*)sub_4E6230;
-case 4:return (void*)nox_xxx_playerObserverFindGoodSlave0_4E6280;
 case 5:return (void*)nox_xxx_playerLeaveObserver_0_4E6AA0;
-case 6:return (void*)nox_xxx_playerObserverFindGoodSlave2_4EC3E0;
-case 7:return (void*)nox_xxx_playerObserverFindGoodSlave_4EC420;
 case 8:return (void*)nox_xxx_unitRemoveChild_4EC470;
 case 9:return (void*)nox_xxx_unitTransferSlaves_4EC4B0;
-case 10:return (void*)nox_xxx_abilGivePlayerAll_4EED40;
 case 11:return (void*)nox_xxx_plrReadVals_4EEDC0;
 case 12:return (void*)sub_4EF140;
 case 13:return (void*)nox_xxx_calcBoltDamage_4EF1E0;
 case 14:return (void*)sub_4EF410;
-case 15:return (void*)nox_xxx_getRespawnWeaponFlags_4EF580;
 case 16:return (void*)sub_4EF6F0;
 case 17:return (void*)nox_xxx_playerRespawnItem_4EF750;
 case 18:return (void*)nox_xxx_playerMakeDefItems_4EF7D0;
-case 19:return (void*)nox_xxx_netSendPlayerRespawn_4EFC30;
 case 20:return (void*)nox_xxx_unitInitPlayer_4EFE80;
 case 21:return (void*)sub_4EFF10;
 case 22:return (void*)nox_xxx_equipedItemByCode_4F7920;
-case 23:return (void*)sub_4F7950;
 case 24:return (void*)nox_xxx_playerSetCustomWP_4F79A0;
-case 25:return (void*)nox_xxx_playerConfusedGetDirection_4F7A40;
 case 26:return (void*)nox_xxx_mapFindPlayerStart_4F7AB0;
-case 27:return (void*)sub_4F7CE0;
-case 28:return (void*)nox_xxx_playerSubStamina_4F7D30;
-case 29:return (void*)sub_4F7DB0;
-case 30:return (void*)nox_xxx_checkWinkFlags_4F7DF0;
 case 31:return (void*)nox_xxx_weaponGetStaminaByType_4F7E80;
 case 32:return (void*)nox_xxx_playerRespawn_4F7EF0;
-case 33:return (void*)sub_4F80C0;
-case 34:return (void*)sub_4F9A80;
-case 35:return (void*)sub_4F9AB0;
-case 36:return (void*)nox_xxx_playerCanMove_4F9BC0;
-case 37:return (void*)nox_xxx_playerCanAttack_4F9C40;
-case 38:return (void*)nox_xxx_playerInputAttack_4F9C70;
-case 39:return (void*)nox_xxx_playerAimsAtEnemy_4F9DC0;
-case 40:return (void*)sub_4F9E10;
 case 41:return (void*)sub_4FA280;
 case 42:return (void*)nox_common_mapPlrActionToStateId_4FA2B0;
 case 43:return (void*)nox_xxx_checkInversionEffect_4FA4F0;
-case 44:return (void*)nox_xxx_playerBotCreate_4FA700;
 case 45:return (void*)nox_xxx_mobMorphFromPlayer_4FAAC0;
 case 46:return (void*)nox_xxx_mobMorphToPlayer_4FAAF0;
 case 47:return (void*)nox_xxx_updatePlayerMonsterBot_4FAB20;
-case 48:return (void*)nox_xxx_monsterActionToPlrState_4FABC0;
-case 49:return (void*)nox_xxx_respawnPlayerBot_4FAC70;
 case 50:return (void*)nox_xxx_netSendRewardNotify_4FAD50;
 case 51:return (void*)sub_4FADD0;
-case 52:return (void*)sub_4FB000;
 case 53:return (void*)sub_4FB050;
-case 54:return (void*)nox_xxx_playerDoSchedSpell_4FB0E0;
-case 55:return (void*)nox_xxx_playerDoSchedSpellQueue_4FB1D0;
 default:return 0;}}
 static uint64_t controlsCall(int id,nox_object_t* u,nox_object_t* t,int x,int y,void* record,char* name){
  switch(id){
-case 0:{return (uint32_t)sub_4E5F40((int)u);}
-case 1:{sub_4E5FC0((int)u);return 0;}
-case 2:{return (uint32_t)sub_4E6150((u?*(nox_playerInfo**)(*(char**)((char*)u+748)+276):0));}
-case 3:{return (uint32_t)sub_4E6230();}
-case 4:{return (uint32_t)nox_xxx_playerObserverFindGoodSlave0_4E6280((u?*(nox_playerInfo**)(*(char**)((char*)u+748)+276):0));}
 case 5:{nox_xxx_playerLeaveObserver_0_4E6AA0((u?*(nox_playerInfo**)(*(char**)((char*)u+748)+276):0));return 0;}
-case 6:{return (uint32_t)nox_xxx_playerObserverFindGoodSlave2_4EC3E0((int)u);}
-case 7:{return (uint32_t)nox_xxx_playerObserverFindGoodSlave_4EC420((int)u);}
 case 8:{nox_xxx_unitRemoveChild_4EC470(u);return 0;}
 case 9:{nox_xxx_unitTransferSlaves_4EC4B0(u);return 0;}
-case 10:{nox_xxx_abilGivePlayerAll_4EED40((int)u,(char)x,y);return 0;}
 case 11:{return (uint32_t)nox_xxx_plrReadVals_4EEDC0(u,x);}
 case 12:{return (uint32_t)sub_4EF140((int)u);}
 case 13:{double d=nox_xxx_calcBoltDamage_4EF1E0(x,(int)record);uint64_t bits;memcpy(&bits,&d,8);return bits;}
 case 14:{sub_4EF410((int)u,(unsigned char)x);return 0;}
-case 15:{return (uint32_t)nox_xxx_getRespawnWeaponFlags_4EF580();}
 case 16:{return (uint32_t)sub_4EF6F0((int)u);}
 case 17:{return (uint32_t)nox_xxx_playerRespawnItem_4EF750(u,name,(int*)record,x,y);}
 case 18:{return (uint32_t)nox_xxx_playerMakeDefItems_4EF7D0((int)u,x,y);}
-case 19:{return (uint32_t)nox_xxx_netSendPlayerRespawn_4EFC30((int)u,(char)x);}
 case 20:{return (uint32_t)nox_xxx_unitInitPlayer_4EFE80(u);}
 case 21:{return (uint32_t)sub_4EFF10((int)u);}
 case 22:{return (uint32_t)nox_xxx_equipedItemByCode_4F7920((int)u,x);}
-case 23:{sub_4F7950(u);return 0;}
 case 24:{nox_xxx_playerSetCustomWP_4F79A0((int)u,x,y);return 0;}
-case 25:{return (uint32_t)nox_xxx_playerConfusedGetDirection_4F7A40(u);}
 case 26:{nox_xxx_mapFindPlayerStart_4F7AB0((float2*)record,u);return 0;}
-case 27:{return (uint32_t)sub_4F7CE0((int)u,x);}
-case 28:{return (uint32_t)nox_xxx_playerSubStamina_4F7D30(u,x);}
-case 29:{sub_4F7DB0((int)u,(char)x);return 0;}
-case 30:{return (uint32_t)nox_xxx_checkWinkFlags_4F7DF0(u);}
 case 31:{return (uint32_t)nox_xxx_weaponGetStaminaByType_4F7E80(x);}
 case 32:{return (uint32_t)nox_xxx_playerRespawn_4F7EF0(u);}
-case 33:{return (uint32_t)sub_4F80C0((int)u,(float2*)record);}
-case 34:{return (uint32_t)sub_4F9A80(u);}
-case 35:{return (uint32_t)sub_4F9AB0(u);}
-case 36:{return (uint32_t)nox_xxx_playerCanMove_4F9BC0(u);}
-case 37:{return (uint32_t)nox_xxx_playerCanAttack_4F9C40(u);}
-case 38:{nox_xxx_playerInputAttack_4F9C70(u);return 0;}
-case 39:{return (uint32_t)nox_xxx_playerAimsAtEnemy_4F9DC0((int)u);}
-case 40:{return (uint32_t)sub_4F9E10(u);}
 case 41:{return (uint32_t)sub_4FA280(x);}
 case 42:{return (uint32_t)nox_common_mapPlrActionToStateId_4FA2B0(u);}
 case 43:{return (uint32_t)nox_xxx_checkInversionEffect_4FA4F0((int)u,(int)t);}
-case 44:{return (uint32_t)nox_xxx_playerBotCreate_4FA700(u);}
 case 45:{return (uint32_t)nox_xxx_mobMorphFromPlayer_4FAAC0((uint32_t*)u);}
 case 46:{return (uint32_t)nox_xxx_mobMorphToPlayer_4FAAF0((uint32_t*)u);}
 case 47:{return (uint32_t)nox_xxx_updatePlayerMonsterBot_4FAB20((uint32_t*)u);}
-case 48:{return (uint32_t)nox_xxx_monsterActionToPlrState_4FABC0((int)u);}
-case 49:{return (uint32_t)nox_xxx_respawnPlayerBot_4FAC70((int)u);}
 case 50:{return (uint32_t)nox_xxx_netSendRewardNotify_4FAD50((int)u,x,(int)t,(char)y);}
 case 51:{sub_4FADD0((int)u,name,(char)x);return 0;}
-case 52:{return (uint32_t)sub_4FB000((int)u,(int)t);}
 case 53:{return (uint32_t)sub_4FB050((int)u,(int)t,(int*)record);}
-case 54:{return (uint32_t)nox_xxx_playerDoSchedSpell_4FB0E0(u,t);}
-case 55:{return (uint32_t)nox_xxx_playerDoSchedSpellQueue_4FB1D0(u,t);}
 default:return 0;}}
 */
 import "C"
@@ -196,6 +106,7 @@ import "C"
 import (
 	"bytes"
 	"fmt"
+	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/memmap/nox/blobdata"
 	"github.com/opennox/opennox/v1/server"
@@ -351,7 +262,9 @@ func (p *portTestShopPools) controlsItems() {
 	p.identify(C.controlsInitPtr(), 91600)
 	p.identify(C.controlsPlayerUpdatePtr(), 91601)
 	for i := 0; i < 56; i++ {
-		p.identify(C.controlsFunction(C.int(i)), 91000+uint32(i))
+		if fn := C.controlsFunction(C.int(i)); fn != nil {
+			p.identify(fn, 91000+uint32(i))
+		}
 	}
 	for i := range p.proxy.life.players {
 		u := &p.proxy.life.players[i]
@@ -405,7 +318,7 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 		}
 		st.result = uint64(C.controlsCall(46, asObjectC(u), nil, 0, 0, record, nil))
 	} else {
-		st.result = uint64(C.controlsCall(C.int(a.Op-1400), asObjectC(p.temporaryRef(spec.Actor)), asObjectC(p.temporaryRef(sp.Target)), C.int(sp.X), C.int(sp.Y), record, (*C.char)(st.name)))
+		st.result = controlsInvoke(a.Op-1400, p.temporaryRef(spec.Actor), p.temporaryRef(sp.Target), sp.X, sp.Y, record, st.name)
 	}
 
 	if a.Op == 1444 {
@@ -493,5 +406,79 @@ func (p *portTestShopPools) controlsAdopt(u *server.Object) {
 	}
 	if u.UpdateData != nil {
 		p.identify(u.UpdateData, 3000+n)
+	}
+}
+
+// controlsInvoke calls retired internal entry points directly; the C dispatcher
+// covers only ABIs still used by production C. Expected captures are unchanged.
+func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe.Pointer) uint64 {
+	switch op {
+	case 0:
+		return uint64(uint32(controlRemoveGlyphs(u)))
+	case 1:
+		controlRemoveCreatures(u)
+		return 0
+	case 2:
+		return uint64(uint32(controlRaw(controlNextObserver(controlPlayer(u)))))
+	case 3:
+		return uint64(uint32(controlRaw(controlFindBall())))
+	case 4:
+		return uint64(uint32(controlRaw(controlObserverSlave(controlPlayer(u)))))
+	case 6:
+		return uint64(uint32(controlRaw(controlSlave(u, false))))
+	case 7:
+		return uint64(uint32(controlRaw(controlSlave(u, true))))
+	case 10:
+		controlGiveAbilities(u, int8(x), y)
+		return 0
+	case 15:
+		return uint64(uint32(int32(controlRespawnFlags())))
+	case 19:
+		return uint64(uint32(controlRespawnNotify(u, byte(x))))
+	case 23:
+		controlClearWaypoints(u)
+		return 0
+	case 25:
+		return uint64(uint32(controlConfusedDirection(u)))
+	case 27:
+		return uint64(uint32(bool2int(controlStartEligible(u, x))))
+	case 28:
+		return uint64(uint32(controlSubStamina(u, x)))
+	case 29:
+		controlAdjustStamina(u, int8(x))
+		return 0
+	case 30:
+		return uint64(uint32(controlDropBall(u)))
+	case 33:
+		return uint64(uint32(controlNearStart(u, (*types.Pointf)(record))))
+	case 34:
+		return uint64(uint32(bool2int(controlHasWaypoint(u))))
+	case 35:
+		return uint64(uint32(controlWalkWaypoint(u)))
+	case 36:
+		return uint64(uint32(bool2int(controlCanMove(u))))
+	case 37:
+		return uint64(uint32(bool2int(controlCanAttack(u))))
+	case 38:
+		controlInputAttack(u)
+		return 0
+	case 39:
+		return uint64(uint32(bool2int(controlAimsAtEnemy(u))))
+	case 40:
+		return uint64(uint32(controlFollowEnemy(u)))
+	case 44:
+		return uint64(uint32(controlBotCreate(u)))
+	case 48:
+		return uint64(uint32(int32(controlBotState(u))))
+	case 49:
+		return uint64(uint32(controlRespawnBot(u)))
+	case 52:
+		return uint64(uint32(controlGuideLevel(u, t)))
+	case 54:
+		return uint64(uint32(controlScheduledSpell(u, t, false)))
+	case 55:
+		return uint64(uint32(controlScheduledSpell(u, t, true)))
+	default:
+		return uint64(C.controlsCall(C.int(op), asObjectC(u), asObjectC(t), C.int(x), C.int(y), record, (*C.char)(name)))
 	}
 }

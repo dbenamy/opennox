@@ -144,13 +144,18 @@ ELF32/i386/SSE2/CGO. Full suite with assets has the exact known failures: 1,553
 entries; 15 packages pass, 3 fail, 32 skip. Fresh unchanged repeat-a gameplay
 passes in 42.972s. Evidence: build/port-player-controls and baseline/runs/player-controls-port.
 
-Next: retire 30 exports now unused by production callers and route their fixture
-operations directly to Go. Draft build/port-controls-bridges/retire.py is not yet
-applied; review before use. Keep all controls hashes unchanged, verify all targets
-and symbols, document unchanged C LOC, commit/push and continue the next batch.
-Next algorithm scope is staged in build/port-spell-lifecycle: 29 spell-casting/buff
-blocks, 1,328 address-block lines before declaration audit. Do not rerun stale
-controls source generators. No pending question; no new agents; preserve archive.
+The 30 obsolete exports are now retired as a follow-up; all 58 hashes pass in
+all three variants (9.281s / 9.427s / 14.374s), all binaries rebuild, and nm confirms
+all 30 symbols absent. Fresh unchanged gameplay passes in 34.974s. C LOC unchanged.
+Evidence: build/port-controls-bridges and baseline/runs/controls-bridges-port.
+
+Next: establish the C baseline for spell casting and buff lifecycle. Source audit
+is staged in build/port-spell-lifecycle: 29 functions / 1,326 removable lines;
+retain nox_setImaginaryCaster and sub_57AEE0 declarations. Read its audit.md and
+candidate-scope.json; no spell-lifecycle code or fixtures applied yet. Reuse the
+guarded player/controls fixtures with optional data. Audit exports before final
+qualification. No pending question; no new agents; preserve archive. Do not rerun
+stale controls or bridge generators. Commit/push bridge cleanup, then continue.
 
 Standing decision policy: when reasonably confident and reversal is inexpensive,
 implement and document for later review instead of asking. See
