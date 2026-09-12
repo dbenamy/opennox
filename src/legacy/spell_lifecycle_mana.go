@@ -19,7 +19,7 @@ import (
 func spellLifeWord(p unsafe.Pointer, off int) *uint32 { return (*uint32)(unsafe.Add(p, off)) }
 func spellLifeManaCost(u *server.Object, id, mode int32) int32 {
 	if id >= 75 && id <= 114 {
-		return int32(C.sub_500CA0(C.int(id), C.int(uintptr(u.CObj()))))
+		return spellEffectSummonCost(id, u)
 	}
 	return int32(GetServer().S().Spells.ManaCost(spell.ID(id), int(mode)))
 }

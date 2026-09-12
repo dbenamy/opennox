@@ -546,9 +546,6 @@ func Nox_xxx_unitsHaveSameTeam_4EC520(a1, a2 *server.Object) bool {
 	return C.nox_xxx_unitsHaveSameTeam_4EC520(asObjectC(a1), asObjectC(a2)) != 0
 }
 
-func Nox_xxx_mapPushUnitsAround_52E040(pos types.Pointf, a2 float32, a3 float32, a4 float32, a5 *server.Object, a6 int, a7 int) {
-	cpos, free := alloc.New(types.Pointf{})
-	defer free()
-	*cpos = pos
-	C.nox_xxx_mapPushUnitsAround_52E040(unsafe.Pointer(cpos), C.float(a2), C.float(a3), C.float(a4), asObjectC(a5), C.int(a6), C.int(a7))
+func Nox_xxx_mapPushUnitsAround_52E040(pos types.Pointf, a2, a3, a4 float32, a5 *server.Object, a6, a7 int) {
+	spellEffectPushAround(pos, a2, a3, a4, a5, unsafe.Pointer(uintptr(a6)), unsafe.Pointer(uintptr(a7)))
 }

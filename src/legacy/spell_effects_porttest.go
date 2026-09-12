@@ -18,137 +18,19 @@ extern int nox_cheat_charmall;
 extern uint32_t dword_5d4594_2487708,dword_5d4594_2487712,dword_5d4594_2487804;
 #include "GAME4_2.h"
 #include "GAME4_3.h"
-int sub_500CA0(int a1, int a2);
 int nox_xxx_summonStart_500DA0(int a1);
-int sub_500F40(int a1, float a2);
 int nox_xxx_summonFinish_5010D0(int a1);
 void nox_xxx_summonCancel_5011C0(int a1);
 int nox_xxx_charmCreature1_5011F0(int* a1);
 int nox_xxx_charmCreatureFinish_5013E0(int* a1);
 int nox_xxx_charmCreature2_501690(int a1);
-void nox_xxx_banishUnit_5017F0(int unit);
-int sub_52BEB0(int a1, int a2, int a3, int a4);
-int nox_xxx_castSpellWinkORrestoreHealth_52BF20(int a1, int a2, int a3, int a4, int* a5);
-int sub_52BF50(int a1, int a2, int a3, int a4, int* a5);
-int nox_xxx_castPull_52BFA0(int a1, int a2, int a3, int a4, int a5, int a6);
-int nox_xxx_castPush_52C000(int a1, int a2, int a3, int a4, int a5, int a6);
-int nox_xxx_castFumble_52C060(int a1, int a2, int a3, int a4, int* a5);
-int nox_xxx_castConfuse_52C1E0(int a1, int a2, int a3, int a4, int* a5, char a6);
-int nox_xxx_castStun_52C2C0(int a1, int a2, int a3, int a4, int* a5, char a6);
-int nox_xxx_castBurn_52C3E0(int a1, int a2, int a3, int a4, int a5);
-int nox_xxx_useShock_52C5A0(int a1, int a2, int a3, int a4, int* a5, int a6);
-int nox_xxx_castPoison_52C720(int a1, int a2, int a3, int a4, int* a5, int a6);
-int nox_xxx_castFireball_52C790(int a1, int a2, int a3, int a4, int a5, int a6);
-int sub_52CA80(int a1, int a2, int a3, int a4);
-int sub_52CBD0(int a1, int a2, int a3, int a4);
-int sub_52CCD0(int a1, int a2, int a3);
-int nox_xxx_castCurePoison_52CDB0(int a1, int a2, int a3, int a4, int* a5, int a6);
-void sub_52CE60(int a1);
-int nox_xxx_castLock_52CE90(int a1, int a2, int a3, int a4);
-void sub_52CF90(int a1, int a2);
-void sub_52D060(int a1, int a2);
-int nox_xxx_castTelekinesis_52D330(int a1, int a2, int a3, int a4, int* a5, char a6);
-int nox_xxx_castFist_52D3C0(int a1, int a2, int a3, int a4, int a5, int a6);
-int nox_xxx_spellCastCleansingFlame_52D5C0(int a1, nox_object_t* a2p, nox_object_t* a3p, nox_object_t* a4p, void* a5p, int a6);
-int nox_xxx_castMeteorShower_52D8A0(int a1, int a2, int a3, int a4, int a5, int a6);
-int nox_xxx_castMeteor_52D9D0(int a1, int a2, int a3, int a4, int a5, int a6);
-int nox_xxx_castToxicCloud_52DB60(int a1, int a2, int a3, int a4, int a5);
-int nox_xxx_spellArachna_52DC80(int a1, int a2, int a3, int a4, int a5);
-int sub_52DD50(int a1, int a2, int a3, int a4, void* a5);
-int nox_xxx_castEquake_52DE40(int a1, int a2, int a3, int a4, int a5, int a6);
-short nox_xxx_equakeDamage_52DEC0(int a1, int a2);
-unsigned int nox_xxx_isObjectMovable_52E020(int a1);
-void nox_xxx_mapPushUnitsAround_52E040(void* a1p, float a2, float a3p, float a4, nox_object_t* a5p, int a6, int a7);
-void nox_xxx_unitPushAroundFn_52E0E0(int a1, int** a2);
-static void* spellEffectsFunction(int op) {switch(op){
-case 0: return sub_500CA0;
-case 1: return nox_xxx_summonStart_500DA0;
-case 2: return sub_500F40;
-case 3: return nox_xxx_summonFinish_5010D0;
-case 4: return nox_xxx_summonCancel_5011C0;
-case 5: return nox_xxx_charmCreature1_5011F0;
-case 6: return nox_xxx_charmCreatureFinish_5013E0;
-case 7: return nox_xxx_charmCreature2_501690;
-case 8: return nox_xxx_banishUnit_5017F0;
-case 9: return sub_52BEB0;
-case 10: return nox_xxx_castSpellWinkORrestoreHealth_52BF20;
-case 11: return sub_52BF50;
-case 12: return nox_xxx_castPull_52BFA0;
-case 13: return nox_xxx_castPush_52C000;
-case 14: return nox_xxx_castFumble_52C060;
-case 15: return nox_xxx_castConfuse_52C1E0;
-case 16: return nox_xxx_castStun_52C2C0;
-case 17: return nox_xxx_castBurn_52C3E0;
-case 18: return nox_xxx_useShock_52C5A0;
-case 19: return nox_xxx_castPoison_52C720;
-case 20: return nox_xxx_castFireball_52C790;
-case 21: return sub_52CA80;
-case 22: return sub_52CBD0;
-case 23: return sub_52CCD0;
-case 24: return nox_xxx_castCurePoison_52CDB0;
-case 25: return sub_52CE60;
-case 26: return nox_xxx_castLock_52CE90;
-case 27: return sub_52CF90;
-case 28: return sub_52D060;
-case 29: return nox_xxx_castTelekinesis_52D330;
-case 30: return nox_xxx_castFist_52D3C0;
-case 31: return nox_xxx_spellCastCleansingFlame_52D5C0;
-case 32: return nox_xxx_castMeteorShower_52D8A0;
-case 33: return nox_xxx_castMeteor_52D9D0;
-case 34: return nox_xxx_castToxicCloud_52DB60;
-case 35: return nox_xxx_spellArachna_52DC80;
-case 36: return sub_52DD50;
-case 37: return nox_xxx_castEquake_52DE40;
-case 38: return nox_xxx_equakeDamage_52DEC0;
-case 39: return nox_xxx_isObjectMovable_52E020;
-case 40: return nox_xxx_mapPushUnitsAround_52E040;
-case 41: return nox_xxx_unitPushAroundFn_52E0E0;
-default:return 0;}}
-static uint32_t spellEffectsCall(int op,int id,nox_object_t* u,nox_object_t* a,nox_object_t* b,nox_object_t* c,void* record,void* output,int level,uint32_t fx,uint32_t fy,uint32_t fz,int q,int r) {
-float x,y,z,pout;memcpy(&x,&fx,4);memcpy(&y,&fy,4);memcpy(&z,&fz,4);memcpy(&pout,&output,4);
-switch(op){
-case 0: return (uint32_t)sub_500CA0(id,(int)u);
-case 1: return (uint32_t)nox_xxx_summonStart_500DA0((int)record);
-case 2: return (uint32_t)sub_500F40((int)record,pout);
-case 3: return (uint32_t)nox_xxx_summonFinish_5010D0((int)record);
-case 4: nox_xxx_summonCancel_5011C0((int)record);return 0;
-case 5: return (uint32_t)nox_xxx_charmCreature1_5011F0((int*)record);
-case 6: return (uint32_t)nox_xxx_charmCreatureFinish_5013E0((int*)record);
-case 7: return (uint32_t)nox_xxx_charmCreature2_501690((int)record);
-case 8: nox_xxx_banishUnit_5017F0((int)u);return 0;
-case 9: return (uint32_t)sub_52BEB0(id,(int)a,(int)b,(int)c);
-case 10: return (uint32_t)nox_xxx_castSpellWinkORrestoreHealth_52BF20(id,(int)a,(int)b,(int)c,(int*)record);
-case 11: return (uint32_t)sub_52BF50(id,(int)a,(int)b,(int)c,(int*)record);
-case 12: return (uint32_t)nox_xxx_castPull_52BFA0(id,(int)a,(int)b,(int)c,(int)record,level);
-case 13: return (uint32_t)nox_xxx_castPush_52C000(id,(int)a,(int)b,(int)c,(int)record,level);
-case 14: return (uint32_t)nox_xxx_castFumble_52C060(id,(int)a,(int)b,(int)c,(int*)record);
-case 15: return (uint32_t)nox_xxx_castConfuse_52C1E0(id,(int)a,(int)b,(int)c,(int*)record,(char)level);
-case 16: return (uint32_t)nox_xxx_castStun_52C2C0(id,(int)a,(int)b,(int)c,(int*)record,(char)level);
-case 17: return (uint32_t)nox_xxx_castBurn_52C3E0(id,(int)a,(int)b,(int)c,(int)record);
-case 18: return (uint32_t)nox_xxx_useShock_52C5A0(id,(int)a,(int)b,(int)c,(int*)record,level);
-case 19: return (uint32_t)nox_xxx_castPoison_52C720(id,(int)a,(int)b,(int)c,(int*)record,level);
-case 20: return (uint32_t)nox_xxx_castFireball_52C790(id,(int)a,(int)b,(int)c,(int)record,level);
-case 21: return (uint32_t)sub_52CA80(id,(int)a,(int)b,(int)c);
-case 22: return (uint32_t)sub_52CBD0(id,(int)a,(int)b,(int)c);
-case 23: return (uint32_t)sub_52CCD0(id,(int)a,(int)b);
-case 24: return (uint32_t)nox_xxx_castCurePoison_52CDB0(id,(int)a,(int)b,(int)c,(int*)record,level);
-case 25: sub_52CE60((int)u);return 0;
-case 26: return (uint32_t)nox_xxx_castLock_52CE90(id,(int)a,(int)b,(int)c);
-case 27: sub_52CF90((int)u,(int)a);return 0;
-case 28: sub_52D060((int)u,(int)a);return 0;
-case 29: return (uint32_t)nox_xxx_castTelekinesis_52D330(id,(int)a,(int)b,(int)c,(int*)record,(char)level);
-case 30: return (uint32_t)nox_xxx_castFist_52D3C0(id,(int)a,(int)b,(int)c,(int)record,level);
-case 31: return (uint32_t)nox_xxx_spellCastCleansingFlame_52D5C0(id,a,b,c,record,level);
-case 32: return (uint32_t)nox_xxx_castMeteorShower_52D8A0(id,(int)a,(int)b,(int)c,(int)record,level);
-case 33: return (uint32_t)nox_xxx_castMeteor_52D9D0(id,(int)a,(int)b,(int)c,(int)record,level);
-case 34: return (uint32_t)nox_xxx_castToxicCloud_52DB60(id,(int)a,(int)b,(int)c,(int)record);
-case 35: return (uint32_t)nox_xxx_spellArachna_52DC80(id,(int)a,(int)b,(int)c,(int)record);
-case 36: return (uint32_t)sub_52DD50(id,(int)a,(int)b,(int)c,record);
-case 37: return (uint32_t)nox_xxx_castEquake_52DE40(id,(int)a,(int)b,(int)c,(int)record,level);
-case 38: return (uint32_t)nox_xxx_equakeDamage_52DEC0((int)u,(int)a);
-case 39: return (uint32_t)nox_xxx_isObjectMovable_52E020((int)u);
-case 40: nox_xxx_mapPushUnitsAround_52E040(record,x,y,z,u,q,r);return 0;
-case 41: nox_xxx_unitPushAroundFn_52E0E0((int)u,(int**)record);return 0;
+static void* spellEffectsFunction(int op){switch(op){
+case 1:return nox_xxx_summonStart_500DA0;
+case 3:return nox_xxx_summonFinish_5010D0;
+case 4:return nox_xxx_summonCancel_5011C0;
+case 5:return nox_xxx_charmCreature1_5011F0;
+case 6:return nox_xxx_charmCreatureFinish_5013E0;
+case 7:return nox_xxx_charmCreature2_501690;
 default:return 0;}}
 
 */
@@ -158,6 +40,7 @@ import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"
+	"math"
 	"unsafe"
 )
 
@@ -301,7 +184,9 @@ func (p *portTestShopPools) spellEffectsItems() {
 		*memmap.PtrPtr(0x587000, 70500+uintptr(4*g.Index)) = p.objectiveString(name)
 	}
 	for i := 0; i < 42; i++ {
-		p.identify(C.spellEffectsFunction(C.int(i)), 95000+uint32(i))
+		if f := C.spellEffectsFunction(C.int(i)); f != nil {
+			p.identify(f, 95000+uint32(i))
+		}
 	}
 	for ref, name := range sp.ObjectTypes {
 		u := p.temporaryRef(ref)
@@ -338,7 +223,7 @@ func (p *portTestShopPools) spellEffectsAction(action PortTestShopAction) uint32
 	if sp.RecordForce {
 		q = int32(uintptr(C.spellEffectsForcePtr()))
 	}
-	out := uint32(C.spellEffectsCall(C.int(action.Op-1600), C.int(ctrl.X), asObjectC(u), asObjectC(p.temporaryRef(sp.Args[0])), asObjectC(p.temporaryRef(sp.Args[1])), asObjectC(p.temporaryRef(sp.Args[2])), record, output, C.int(ctrl.SpellLifecycle.Z), C.uint32_t(sp.Floats[0]), C.uint32_t(sp.Floats[1]), C.uint32_t(sp.Floats[2]), C.int(q), C.int(sp.Ints[1])))
+	out := spellEffectsInvoke(int32(action.Op-1600), ctrl.X, u, p.temporaryRef(sp.Args[0]), p.temporaryRef(sp.Args[1]), p.temporaryRef(sp.Args[2]), record, output, ctrl.SpellLifecycle.Z, math.Float32frombits(sp.Floats[0]), math.Float32frombits(sp.Floats[1]), math.Float32frombits(sp.Floats[2]), q, sp.Ints[1])
 	p.temporary.world.objectives.attack.controls.result = uint64(out)
 	return p.normalize(out)
 }
@@ -372,3 +257,101 @@ func (p *portTestShopPools) spellEffectsActive() bool {
 
 // PortTestSpellEffectsSummonLimit binds the actual root capacity owner in this fixture.
 var PortTestSpellEffectsSummonLimit func(*server.Object, int) bool
+
+func spellEffectsInvoke(op, id int32, u, a, b, c *server.Object, record, output unsafe.Pointer, level int32, x, y, z float32, q, r int32) uint32 {
+	switch op {
+	case 0:
+		return uint32(spellEffectSummonCost(id, u))
+	case 1:
+		return uint32(C.nox_xxx_summonStart_500DA0(C.int(uintptr(record))))
+	case 2:
+		return uint32(spellEffectSummonPosition(record, output))
+	case 3:
+		return uint32(C.nox_xxx_summonFinish_5010D0(C.int(uintptr(record))))
+	case 4:
+		C.nox_xxx_summonCancel_5011C0(C.int(uintptr(record)))
+		return 0
+	case 5:
+		return uint32(C.nox_xxx_charmCreature1_5011F0((*C.int)(record)))
+	case 6:
+		return uint32(C.nox_xxx_charmCreatureFinish_5013E0((*C.int)(record)))
+	case 7:
+		return uint32(C.nox_xxx_charmCreature2_501690(C.int(uintptr(record))))
+	case 8:
+		spellEffectBanish(u)
+		return 0
+	case 9:
+		return uint32(spellEffectInversion(id, a, b, c, record, level))
+	case 10:
+		return uint32(spellEffectRestoreHealth(id, a, b, c, record, level))
+	case 11:
+		return uint32(spellEffectRestoreMana(id, a, b, c, record, level))
+	case 12:
+		return uint32(spellEffectPull(id, a, b, c, record, level))
+	case 13:
+		return uint32(spellEffectPush(id, a, b, c, record, level))
+	case 14:
+		return uint32(spellEffectFumble(id, a, b, c, record, level))
+	case 15:
+		return uint32(spellEffectConfuse(id, a, b, c, record, level))
+	case 16:
+		return uint32(spellEffectStun(id, a, b, c, record, level))
+	case 17:
+		return uint32(spellEffectBurn(id, a, b, c, record, level))
+	case 18:
+		return uint32(spellEffectShock(id, a, b, c, record, level))
+	case 19:
+		return uint32(spellEffectPoison(id, a, b, c, record, level))
+	case 20:
+		return uint32(spellEffectFireball(id, a, b, c, record, level))
+	case 21:
+		return uint32(spellEffectPortal(id, a, b, c, record, level))
+	case 22:
+		return uint32(spellEffectNamedPortal(id, a, b, c, record, level))
+	case 23:
+		return uint32(spellEffectDetonateGlyph(id, a, b, c, record, level))
+	case 24:
+		return uint32(spellEffectCurePoison(id, a, b, c, record, level))
+	case 25:
+		spellEffectDoorLink(u)
+		return 0
+	case 26:
+		return uint32(spellEffectLock(id, a, b, c, record, level))
+	case 27:
+		spellEffectDoorCandidate(u, a)
+		return 0
+	case 28:
+		spellEffectDoorPropagate(u, a)
+		return 0
+	case 29:
+		return uint32(spellEffectTelekinesis(id, a, b, c, record, level))
+	case 30:
+		return uint32(spellEffectFist(id, a, b, c, record, level))
+	case 31:
+		return uint32(spellEffectCleansingFlame(id, a, b, c, record, level))
+	case 32:
+		return uint32(spellEffectMeteorShower(id, a, b, c, record, level))
+	case 33:
+		return uint32(spellEffectMeteor(id, a, b, c, record, level))
+	case 34:
+		return uint32(spellEffectToxicCloud(id, a, b, c, record, level))
+	case 35:
+		return uint32(spellEffectArachna(id, a, b, c, record, level))
+	case 36:
+		return uint32(spellEffectLesserHeal(id, a, b, c, record, level))
+	case 37:
+		return uint32(spellEffectQuake(id, a, b, c, record, level))
+	case 38:
+		return uint32(int32(spellEffectQuakeDamage(u, a)))
+	case 39:
+		return spellEffectMovable(u)
+	case 40:
+		spellEffectPushAround(spellEffectPos(record, 0), x, y, z, u, unsafe.Pointer(uintptr(uint32(q))), unsafe.Pointer(uintptr(uint32(r))))
+		return 0
+	case 41:
+		spellEffectPushUnit(u, record)
+		return 0
+	default:
+		panic("spell effects fixture operation")
+	}
+}

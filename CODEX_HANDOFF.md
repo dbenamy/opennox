@@ -2,34 +2,32 @@
 
 <!-- current-focus -->
 
-### Completed — spell casting and buff lifecycle
+### Completed — instant spell effects, summons and charm
 
-Baseline c6435866 was pushed before conversion. All 29 functions / 1,326 C lines
-are native; 15 obsolete C exports are retired. All 2,246 cases / 60 complete
-captures match C byte-for-byte (9.329s). Production C: **114,659 lines / 149 files /
-zero reference C**. Phoneme typed-pointer offset and Go EnchantPower corrections
-are documented for review in DECISIONS.md; conversion hashes remain unchanged.
+Baseline f51f09b6 was pushed before conversion. All 42 functions / 1,740 C lines
+are native; 36 obsolete exports are retired and six duration ABIs remain.
+All 1,803 cases / 90 complete captures match C byte-for-byte. New plus 2,246
+existing lifecycle cases pass in 18.220s; no baseline hashes or production
+behavior changed. Production C: **112,919 lines / 149 files / zero reference C**.
 
-Accumulated port checks, including all 46,805 focused cases, pass in default /
-server / highres: 190.330s / 193.123s / 196.334s.
-Three builds verified ELF32/i386/SSE2/CGO; all 15 retired symbols are absent.
-Asset-backed full-suite failure multiset unchanged (1,553 entries; 15 pass, 3 fail,
-32 skip). Fresh unchanged repeat-a headless gameplay passes in 38.474s.
-Evidence: build/port-spell-lifecycle and baseline/runs/spell-lifecycle-port.
-See [SPELL_LIFECYCLE.md](docs/porting/SPELL_LIFECYCLE.md).
-
-Completed/pushed as 2974c2fa; summary delivered. Continue without a new question.
-Active next batch: 42 instant spell-effect and summon/charm functions / 1,740
-removable C lines. Production remains C for all 42. The optional fixture has
-**1,803 cases / 90 locked complete captures**, repeated byte-for-byte in C
-(8.689s / 9.339s). Enforced regression plus all 2,246 existing lifecycle cases passes in 18.423s
-(c-enforced.log). This checkpoint commits the baseline before conversion. No production
-correction was needed; positive tests fixed missing fixture startup/owner inputs.
+Accumulated checks, including 48,608 focused cases / 572 capture groups, pass in
+default / server / highres: 210.312s / 302.784s / 222.884s.
+Three builds verified ELF32/i386/SSE2/CGO; all 36 retired symbols absent.
+Asset-backed full-suite failure multiset unchanged (1,553 entries; 15 pass,
+3 fail, 32 skip). Fresh unchanged repeat-a gameplay passes in 40.050s.
 See [SPELL_EFFECTS.md](docs/porting/SPELL_EFFECTS.md), build/port-spell-effects/
-baseline.json, audit.md and candidate-scope.json. All diagnostic generators and
-add-cases stages are already applied; do not rerun. Six duration callback ABIs
-must remain; other 36 can retire by invoking existing Go map query owners directly.
-No pending question; continue after commit/push. No new agents. Preserve archive.
+qualification.json and baseline/runs/spell-effects-port. Native quake uses the
+existing shape-aware stateDistance owner, preserving its minimum clamp.
+
+Next active batch: 53 sustained-spell and teleport functions / 2,635 C lines,
+GAME4_2 52E210–52F820 and GAME4_3 52F8A0–531AF0. Read-only scope/source audit:
+build/port-sustained-spells/candidate-scope.json, candidate-source.txt, audit.md.
+Establish, repeat, lock, commit and push C baseline before conversion. Reuse the
+optional guarded duration/effects fixtures, real map/resource/ownership owners,
+and positive contracts; audit static pointer tables and pointer-as-float ABIs.
+No next-batch code is applied yet. No pending question; continue autonomously.
+No new agents. Preserve archive. Old spell-effects apply scripts are already
+applied and must not be rerun.
 
 ### Completed — temporary objects and projectile updates
 

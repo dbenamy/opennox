@@ -3,13 +3,15 @@
 ## Scope and baseline
 
 The connected batch covers 42 functions / 1,740 removable C lines in GAME4.c
-(500CA0–5017F0) and GAME4_2.c (52BEB0–52E0E0). Production code is still C.
+(500CA0–5017F0) and GAME4_2.c (52BEB0–52E0E0). Baseline `f51f09b6` was
+committed and pushed before conversion; all 42 functions are now native Go.
 The locked baseline has **1,803 cases / 90 complete captures**. Two independent
 C runs match byte-for-byte (8.689s / 9.339s); the hashes are committed in
 `src/spell_effects_porttest_test.go`. The enforced run plus all 2,246 existing spell-lifecycle cases passes in 18.423s.
 
-The optional porttest fixture invokes the real C functions through a thin
-42-operation dispatcher. It reuses guarded player, inventory, spell, duration,
+The optional porttest fixture originally invoked the real C functions through a thin
+42-operation dispatcher. After conversion it invokes native functions directly,
+except the six callbacks whose C duration ABIs remain required. It reuses guarded player, inventory, spell, duration,
 object-factory, map and callback owners. The summon capacity owner is explicitly
 bound to the real root implementation, replacing the older AI fixture stub. Complete captures include return bits,
 object and update records, health/mana/buffs, ownership, packets, audio, creation,
@@ -46,24 +48,39 @@ transfer and selection of the nearest eligible glyph.
 - Spatial inputs carry the engine active flag before registration in the real
   index. Real shape, distance and ray predicates remain in use.
 - Glyph detonation is outside this batch. Its callback records the selected
-  object; the production selection algorithm remains real C. The force callback
+  object; the production selection algorithm is exercised directly. The force callback
   recorder captures object, raw distance bits and opaque argument in call order.
-- 500F40's float-typed output parameter carries pointer bits; the dispatcher
-  bitcasts it instead of numerically converting the address. The summon packed
+- 500F40's original float-typed output parameter carries pointer bits; the C
+  baseline dispatcher bitcasts it instead of numerically converting the address. The summon packed
   result includes unaligned position and sequence fields.
 - Existing spell-lifecycle fixtures have no Effects spec and retain their locked
   hashes. No production correction has been made while constructing this baseline.
 
-## Conversion and qualification still pending
+## Native conversion and qualification
 
-Retain callback ABIs required by duration dispatch and retained spatial queries;
-retire obsolete direct-call bridges before qualification. Preserve intermediate
-floating-point precision and explicit store boundaries. Compare all complete C
-captures unchanged, then run the accumulated port checks in default/server/highres,
-three binary builds, the asset-backed full-suite failure comparison and a fresh
-headless repeat-a gameplay run. Record the physical C count and commit/push.
+Five `legacy/spell_effects*.go` implementation files own resource/buff effects,
+spatial forces and doors, projectile creation, portals/glyph selection and
+summon/charm lifecycle. Six duration callback ABIs remain; 36 obsolete exports
+are retired. Internal spatial callbacks now use native closures through the same
+existing Go map owners. No C algorithms remain solely for testing.
 
-Local evidence and scope inventory: `build/port-spell-effects/`, including
-`baseline.json`, `c-proof-a-*.json` and `c-proof-b-*.json`. Earlier diagnostic
-captures were losslessly gzip-compressed and verified before removing raw copies.
-Current production C: **114,659 lines / 149 files / zero reference C**.
+All **90 complete captures match C byte-for-byte**, with no hash changes.
+The 1,803 new cases plus 2,246 existing lifecycle cases pass in **18.220s**.
+The first native quake comparison caught a center-distance substitution: the
+original uses shape-aware distance with a minimum-distance clamp. Reusing the
+existing `stateDistance` owner restores exact output. Charm range comparisons
+retain double precision and conditional monster health reads retain C ordering.
+No production behavior correction was needed for this batch.
+
+Accumulated checks, including **48,608 focused cases / 572 capture groups**, pass
+in default / server / highres: **210.312s / 302.784s / 222.884s**. Three production builds are verified
+ELF32/i386, SSE2 and CGO enabled; all 36 retired symbols are absent from each.
+The asset-backed full-suite failure multiset remains exactly unchanged: 1,553
+entries; 15 packages pass, 3 fail, 32 skip. Fresh unchanged repeat-a headless
+gameplay passes in **40.050s**, with Xvfb and null audio.
+
+Production C: **112,919 lines / 149 files / zero reference C** (−1,740 lines).
+Local evidence: `build/port-spell-effects/qualification.json`, `baseline.json`,
+`variants.json`, `binary-verification.json`, `full-suite-comparison.json`, and
+complete `c-proof-a`, `c-proof-b`, `native-final` captures (losslessly compressed
+and verified). Gameplay: `build/baseline/runs/spell-effects-port`.

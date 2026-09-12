@@ -13,8 +13,6 @@ void nullsub_42();
 void nullsub_43();
 void nullsub_44();
 
-int nox_xxx_spellCastCleansingFlame_52D5C0(int a1, nox_object_t* a2p, nox_object_t* a3p, nox_object_t* a4p, void* a5p, int a6);
-
 void sub_4DFE10(int a1, int a2);
 float* sub_4E0370(int a1, int a2, int a3, int a4, int a5, float* a6);
 float* sub_4E0380(int a1, int a2, int a3, int a4, int a5, float* a6);

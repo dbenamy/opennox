@@ -267,7 +267,7 @@ func worldInvisibleTeleport(u *server.Object) uint32 {
 	return uint32(uintptr(u.CObj()))
 }
 func worldPush(u *server.Object) {
-	C.nox_xxx_mapPushUnitsAround_52E040(unsafe.Pointer(&u.PosVec), C.float(*temporaryFloat(u.UpdateData, 0)), 0, C.float(*temporaryFloat(u.UpdateData, 8)), nil, 0, 0)
+	spellEffectPushAround(u.PosVec, *temporaryFloat(u.UpdateData, 0), 0, *temporaryFloat(u.UpdateData, 8), nil, nil, nil)
 }
 func worldIndexedDirection(u *server.Object) (int32, int32) {
 	var out C.int2

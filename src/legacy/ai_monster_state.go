@@ -292,7 +292,7 @@ func monsterEnactOrder(source, u *server.Object, order int) {
 	switch order {
 	case 0:
 		if u.ObjOwner == source {
-			C.nox_xxx_banishUnit_5017F0(C.int(uintptr(u.CObj())))
+			spellEffectBanish(u)
 		}
 	case 1:
 		if source.Class().Has(object.ClassPlayer) {

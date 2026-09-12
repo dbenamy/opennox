@@ -238,7 +238,7 @@ func monsterDeathExplosion(u *server.Object, big bool) {
 	if big {
 		radius, force, damage, size = 150, 150, 148, 255
 	}
-	C.nox_xxx_mapPushUnitsAround_52E040(unsafe.Pointer(&u.PosVec), C.float(radius), 10, C.float(force), asObjectC(u), 0, 0)
+	spellEffectPushAround(u.PosVec, radius, 10, force, u, nil, nil)
 	C.nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.float(radius), 10, C.int(damage), 7, asObjectC(u), nil)
 	C.nox_xxx_netSparkExplosionFx_5231B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.char(size))
 	GetServer().S().Audio.EventObj(42, u, 0, 0)
