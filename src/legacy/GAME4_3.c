@@ -521,10 +521,10 @@ int nox_xxx_spellTagCreature_530160(uint32_t* a1) {
 	char v10[7];  // [esp+Ch] [ebp-8h]
 
 	v1 = a1[4];
-	v2 = *(uint32_t*)(v1 + 748);
 	if (!v1) {
 		return 1;
 	}
+	v2 = *(uint32_t*)(v1 + 748);
 	if (*(uint32_t*)(v1 + 16) & 0x8020) {
 		return 1;
 	}

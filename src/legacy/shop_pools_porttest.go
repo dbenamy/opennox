@@ -66,16 +66,17 @@ type PortTestShopPacketResult struct {
 	Data               []byte
 }
 type PortTestShopStep struct {
-	EffectsUseData           []uint32   `json:",omitempty"`
-	TemporaryUpdatesData     []uint32   `json:",omitempty"`
-	EquipmentData            []uint32   `json:",omitempty"`
-	InventoryData            []uint32   `json:",omitempty"`
-	ResourceData             [][]uint32 `json:",omitempty"`
-	ResourceMessages         [][]byte   `json:",omitempty"`
-	EngineStateRequests      []uint32   `json:",omitempty"`
-	EngineMessages           [][]byte   `json:",omitempty"`
-	EngineState              []uint32   `json:",omitempty"`
-	ObjectData               [][]uint32 `json:",omitempty"`
+	Sustained                *PortTestSustainedSpellsResult `json:",omitempty"`
+	EffectsUseData           []uint32                       `json:",omitempty"`
+	TemporaryUpdatesData     []uint32                       `json:",omitempty"`
+	EquipmentData            []uint32                       `json:",omitempty"`
+	InventoryData            []uint32                       `json:",omitempty"`
+	ResourceData             [][]uint32                     `json:",omitempty"`
+	ResourceMessages         [][]byte                       `json:",omitempty"`
+	EngineStateRequests      []uint32                       `json:",omitempty"`
+	EngineMessages           [][]byte                       `json:",omitempty"`
+	EngineState              []uint32                       `json:",omitempty"`
+	ObjectData               [][]uint32                     `json:",omitempty"`
 	Cached                   [32]uint32
 	Return, Head             uint32
 	Alive                    int
@@ -507,7 +508,9 @@ func (p *portTestShopPools) run() {
 			}
 			C.sub_510E20(C.int(a.Item))
 		default:
-			if a.Op >= 1600 {
+			if a.Op >= 1700 {
+				rv = p.sustainedAction(a)
+			} else if a.Op >= 1600 {
 				rv = p.spellEffectsAction(a)
 			} else if a.Op >= 1500 {
 				rv = p.spellLifeAction(a)
@@ -549,6 +552,9 @@ func (p *portTestShopPools) run() {
 func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 	r := PortTestShopStep{Alive: p.proxy.core.Objs.Alive - p.initialAlive}
 	r.ResourceData, r.ResourceMessages = p.resourceSnapshot()
+	if p.spellEffectsActive() && p.sustainedSpec() != nil {
+		r.Sustained = p.sustainedDetails()
+	}
 	r.InventoryData = p.inventorySnapshot()
 	r.EquipmentData = p.equipmentSnapshot()
 	r.EffectsUseData = p.effectsUseSnapshot()

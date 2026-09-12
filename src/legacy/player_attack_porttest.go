@@ -122,6 +122,9 @@ func (p *portTestShopPools) attackPrepare() func() {
 			extra = append(extra, spellLifecycleTypeNames...)
 			if sp.Controls.SpellLifecycle.Effects != nil {
 				extra = append(extra, spellEffectsTypeNames...)
+				if sp.Controls.SpellLifecycle.Effects.Sustained != nil {
+					extra = append(extra, sustainedTypeNames...)
+				}
 			}
 		}
 	}

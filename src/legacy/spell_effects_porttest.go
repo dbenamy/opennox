@@ -50,6 +50,7 @@ type PortTestSpellEffectGuide struct {
 	Size  byte
 }
 type PortTestSpellEffectsSpec struct {
+	Sustained                *PortTestSustainedSpellsSpec
 	RecordForce              bool
 	Tile                     *int
 	RecordOutput, NullOutput bool
@@ -79,6 +80,9 @@ func (p *portTestShopPools) spellEffectsPrepare() func() {
 	p.spellLifeState().effects = &portTestSpellEffects{output: p.objectiveRegion(32), guideNames: bytes.Clone(memmap.Slice(0x587000, 70500)[:164])}
 	names := append(append([]string{}, spellLifecycleTypeNames...), spellEffectsTypeNames...)
 	names = append(names, "NPC", "Bat", "Glyph")
+	if sp.Sustained != nil {
+		names = append(names, sustainedTypeNames...)
+	}
 	restoreTypes := p.proxy.core.PortTestSpellEffectTypes(names, []string{"Bat"}, p.proxy.combat.actor)
 	restoreTiles := func() {}
 	if sp.Tile != nil {
@@ -148,7 +152,9 @@ func (p *portTestShopPools) spellEffectsPrepare() func() {
 		*memmap.PtrUint32(0x5d4594, uintptr(740080+28*g.Index)) = uint32(p.proxy.core.Types.IndByID(name))
 		*(*byte)(memmap.PtrOff(0x5d4594, uintptr(740100+28*g.Index))) = g.Size
 	}
+	restoreSustained := p.sustainedPrepare()
 	return func() {
+		restoreSustained()
 		restoreTiles()
 		copy(fireballTable, oldFireballTable)
 		Nox_xxx_checkSummonedCreaturesLimit_500D70 = oldLimit
@@ -202,6 +208,7 @@ func (p *portTestShopPools) spellEffectsItems() {
 	if sp.RecordForce {
 		*controlPtr(p.spellLifeState().record, 20) = C.spellEffectsForcePtr()
 	}
+	p.sustainedItems()
 	p.spellLifeFill(p.spellLifeState().effects.output, 32, sp.Output)
 	if sp.RecordOutput {
 		*controlPtr(p.spellLifeState().record, 0) = p.spellLifeState().effects.output
@@ -245,7 +252,7 @@ func (p *portTestShopPools) spellEffectsSnapshot(out []uint32) []uint32 {
 	for _, v := range unsafe.Slice((*uint32)(memmap.PtrOff(0x5d4594, 740076)), 41*7) {
 		out = append(out, p.normalize(v))
 	}
-	return out
+	return p.sustainedSnapshot(out)
 }
 
 func (p *portTestShopPools) spellEffectsActive() bool {

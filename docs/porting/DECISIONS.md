@@ -46,3 +46,14 @@ uses the byte power array; the existing Go method incorrectly returned the
 from power 7 and covers signed C byte returns. Native callers now receive power.
 Chosen under the standing policy; reversal is one field access. This intentional
 correction is separate from exact C/native lifecycle compatibility.
+
+## Creature-tag caster read — review with sustained spells conversion
+
+Move the caster-data read below the existing nil-caster guard in 530160 before
+locking the C baseline. The source previously dereferenced the caster before
+testing it. A dedicated nil-caster test already passes with the current compiler;
+this is not evidence of an observed runtime crash. The change makes the intended
+rejection defined in the source and independent of optimization. Positive input
+behavior is unchanged. Chosen under the standing policy; reversal moves one line.
+Evidence: `build/port-sustained-spells/c-tag-nil-before.log` and the committed
+`TestSustainedSpellsTagNilCaster` regression case when this baseline is locked.

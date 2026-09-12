@@ -22,14 +22,28 @@ qualification.json and baseline/runs/spell-effects-port. Native quake uses the
 existing shape-aware stateDistance owner, preserving its minimum clamp.
 
 Next active batch: 53 sustained-spell and teleport functions / 2,635 C lines,
-GAME4_2 52E210–52F820 and GAME4_3 52F8A0–531AF0. Read-only scope/source audit:
-build/port-sustained-spells/candidate-scope.json, candidate-source.txt, audit.md.
-Establish, repeat, lock, commit and push C baseline before conversion. Reuse the
-optional guarded duration/effects fixtures, real map/resource/ownership owners,
-and positive contracts; audit static pointer tables and pointer-as-float ABIs.
-No next-batch code is applied yet. No pending question; continue autonomously.
-No new agents. Preserve archive. Old spell-effects apply scripts are already
-applied and must not be rerun.
+GAME4_2 52E210–52F820 and GAME4_3 52F8A0–531AF0. C baseline is complete:
+**2,393 cases / 129 locked captures**, repeated byte-for-byte (11.977s / 11.281s).
+Enforced plus 1,803 instant-effect and 2,246 lifecycle cases passes 28.661s.
+No native conversion applied. Commit/push baseline before replacing C.
+
+See [SUSTAINED_SPELLS.md](docs/porting/SUSTAINED_SPELLS.md) and DECISIONS.md:
+creature-tag data read moved below existing nil guard; the current compiler
+already passed the nil test before correction. Physical C remains 112,919.
+Fixture isolates AI target UD + Player metadata from caster, supplies actual
+lightning-count startup table 1..5, initializes valid shapes for up to five targets,
+and normalizes child pointers using real duration allocation IDs (not recycled
+addresses). All 120 bytes and links remain captured. Prior hashes unchanged.
+
+Local evidence: build/port-sustained-spells/baseline.json, c-locked-a/b captures,
+c-enforced.log. Scope/body/ABI inventory and native-names.json are ready; retain
+42 duration callbacks, retire 11 helpers including native shield caller's bridge.
+No pending question; continue conversion, exact captures, all variants/builds,
+asset-backed full-suite comparison, fresh headless repeat-a, docs/C_LOC/commit/push.
+Do not rerun stale fixture/dispatch staging scripts. Preserve archive. No agents.
+Old reproducible port-batch binaries were pruned to reclaim 9.5 GiB; retained latest
+two batch binaries, logs/verification records/captures/assets. Prune manifest is
+build/port-sustained-spells/pruned-old-binaries.json; rebuild older outputs from Git.
 
 ### Completed — temporary objects and projectile updates
 
