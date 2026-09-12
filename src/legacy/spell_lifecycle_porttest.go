@@ -55,6 +55,7 @@ type PortTestSpellLifeRecord struct {
 	Refs  map[int]int
 }
 type PortTestSpellLifecycleSpec struct {
+	Effects           *PortTestSpellEffectsSpec
 	ClientSprite      bool
 	ActorType         string
 	Definitions       []server.PortTestSpellLifecycleDef
@@ -70,6 +71,7 @@ type PortTestSpellLifecycleSpec struct {
 	HalfPointerReturn bool
 }
 type portTestSpellLifecycle struct {
+	effects   *portTestSpellEffects
 	magicType uint16
 	client    *client.Client
 	record    unsafe.Pointer
@@ -143,7 +145,9 @@ func (p *portTestShopPools) spellLifePrepare() func() {
 		proxy := &portTestSpellLifeClient{core: st.client}
 		GetClient = func() Client { return proxy }
 	}
+	restoreEffects := p.spellEffectsPrepare()
 	return func() {
+		restoreEffects()
 		GetClient = oldClient
 		restore()
 		st.pool.Free()
@@ -222,6 +226,7 @@ func (p *portTestShopPools) spellLifeItems() {
 	for i := len(st.durations) - 1; i >= 0; i-- {
 		p.proxy.core.Spells.Dur.Add(st.durations[i])
 	}
+	p.spellEffectsItems()
 	for off, i := range sp.RecordChildren {
 		*controlPtr(st.record, off) = st.durations[i].C()
 	}
@@ -340,7 +345,7 @@ func (p *portTestShopPools) spellLifeSnapshot(out []uint32) []uint32 {
 	for i := 0; i < 18; i++ {
 		out = append(out, *memmap.PtrUint32(0x5d4594, uintptr(1569676+4*i)))
 	}
-	return out
+	return p.spellEffectsSnapshot(out)
 }
 
 // PortTestSpellLifePlayerSpell binds the actual root player-casting owner to the

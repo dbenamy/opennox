@@ -309,6 +309,9 @@ func portTestAICallbackTrace(proxy *portTestRoamOwnerServer, rv uint32, normaliz
 			if proxy.callbacks.shop != nil && proxy.callbacks.shop.pools != nil && proxy.callbacks.shop.spec.TemporaryUpdates != nil && proxy.callbacks.shop.spec.TemporaryUpdates.World != nil && proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives != nil && proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack != nil && proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack.Controls != nil && proxy.callbacks.shop.pools.spellLifeSpec() != nil && u.TypeInd == proxy.callbacks.shop.pools.spellLifeState().magicType {
 				first = proxy.callbacks.shop.pools.normalize(first)
 			}
+			if proxy.callbacks.shop != nil && proxy.callbacks.shop.pools.spellEffectsActive() {
+				first = proxy.callbacks.shop.pools.normalize(first)
+			}
 			r.CreatedData = append(r.CreatedData, normalize(uint32(uintptr(u.CObj()))), first)
 		}
 	}

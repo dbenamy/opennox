@@ -20,12 +20,18 @@ Asset-backed full-suite failure multiset unchanged (1,553 entries; 15 pass, 3 fa
 Evidence: build/port-spell-lifecycle and baseline/runs/spell-lifecycle-port.
 See [SPELL_LIFECYCLE.md](docs/porting/SPELL_LIFECYCLE.md).
 
-Commit/push this completed batch, summarize in commentary, then CONTINUE.
-Next: 42 instant spell-effect and summon/charm functions / 1,740 removable C lines.
-Source-only audit and thin dispatcher draft are in build/port-spell-effects.
-Read audit.md and candidate-scope.json; no next-batch code/fixtures applied yet.
-Establish/repeat/commit/push its C baseline first. No pending question; no new
-agents. Preserve the archive. Staged generators for the completed batch are stale.
+Completed/pushed as 2974c2fa; summary delivered. Continue without a new question.
+Active next batch: 42 instant spell-effect and summon/charm functions / 1,740
+removable C lines. Production remains C for all 42. The optional fixture has
+**1,803 cases / 90 locked complete captures**, repeated byte-for-byte in C
+(8.689s / 9.339s). Enforced regression plus all 2,246 existing lifecycle cases passes in 18.423s
+(c-enforced.log). This checkpoint commits the baseline before conversion. No production
+correction was needed; positive tests fixed missing fixture startup/owner inputs.
+See [SPELL_EFFECTS.md](docs/porting/SPELL_EFFECTS.md), build/port-spell-effects/
+baseline.json, audit.md and candidate-scope.json. All diagnostic generators and
+add-cases stages are already applied; do not rerun. Six duration callback ABIs
+must remain; other 36 can retire by invoking existing Go map query owners directly.
+No pending question; continue after commit/push. No new agents. Preserve archive.
 
 ### Completed — temporary objects and projectile updates
 

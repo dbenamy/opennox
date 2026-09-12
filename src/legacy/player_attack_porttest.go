@@ -120,6 +120,9 @@ func (p *portTestShopPools) attackPrepare() func() {
 		extra = append(extra, controlsTypeNames...)
 		if sp.Controls.SpellLifecycle != nil {
 			extra = append(extra, spellLifecycleTypeNames...)
+			if sp.Controls.SpellLifecycle.Effects != nil {
+				extra = append(extra, spellEffectsTypeNames...)
+			}
 		}
 	}
 	restore := p.proxy.core.PortTestAttackTypes(sp.ProjectileSpeed, sp.MissingTypes, extra...)

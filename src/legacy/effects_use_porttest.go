@@ -336,14 +336,26 @@ func (p *portTestShopPools) effectsUseSnapshot() []uint32 {
 		if u.CollideData != nil {
 			p.identify(u.CollideData, 67000+uint32(i))
 		}
+		if p.spellEffectsActive() && u.HealthData != nil {
+			p.identify(unsafe.Pointer(u.HealthData), 96000+uint32(i))
+		}
 		appendWords(u.CObj(), 193)
+		if p.spellEffectsActive() && u.HealthData != nil {
+			appendWords(unsafe.Pointer(u.HealthData), 5)
+		}
 		if u.UpdateData != nil {
-			for _, v := range unsafe.Slice((*byte)(u.UpdateData), 80)[64:] {
+			size := 80
+			if p.spellEffectsActive() {
+				if typ := p.proxy.core.Types.ByInd(int(u.TypeInd)); typ != nil && typ.UpdateDataSize >= 16 {
+					size = int(typ.UpdateDataSize)
+				}
+			}
+			for _, v := range unsafe.Slice((*byte)(u.UpdateData), size)[size-16:] {
 				if v != 0xa5 {
 					panic("effects Spark update guard")
 				}
 			}
-			appendWords(u.UpdateData, 20)
+			appendWords(u.UpdateData, size/4)
 		}
 		if u.CollideData != nil {
 			size := 20
