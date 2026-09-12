@@ -15,13 +15,8 @@ static void sustainedGlobalSet(int i,uint32_t v){*sustainedGlobals[i]=v;}
 #include "GAME4_2.h"
 #include "GAME4_3.h"
 int nox_xxx_spellDrainMana_52E210(float a1);
-int sub_52E450(int a1, int a2, int a3);
-int sub_52E610(int* a1, int a2);
-void sub_52E660(int a1, int a2);
-int sub_52E7C0(int a1);
 int nox_xxx_spellEnergyBoltStop_52E820(int a1);
 int nox_xxx_spellEnergyBoltTick_52E850(float a1);
-void nox_xxx_spellEnergyBoltSetTarget_52EC60(int target, int source);
 int nox_xxx_firewalkTick_52ED40(float* a1);
 int sub_52EF30(int a1);
 int sub_52EFD0(int a1);
@@ -32,19 +27,14 @@ int sub_52F460(float a1);
 int nox_xxx_castShield1_52F5A0(uint32_t* a1);
 int sub_52F650(int a1);
 int sub_52F670(int a1);
-void nox_xxx_unitShield_52F690(int a1, int a2);
-void nox_xxx_unitShieldReduceDamage_52F710(int a1, int* a2, int a3, int a4);
 int nox_xxx_onStartLightning_52F820(int a1);
 int nox_xxx_onFrameLightning_52F8A0(float a1);
-void nox_xxx_lightningCanAttackCheck_52FF10(int target, int source);
-void nox_xxx_lightningSpellTrapEffect_530020(int a1, int a2);
 char sub_530100(uint32_t* a1);
 int nox_xxx_spellTagCreature_530160(uint32_t* a1);
 unsigned int sub_530250(int a1);
 int sub_530270(int a1);
 int nox_xxx_spellBlink2_530310(uint32_t* a1);
 int nox_xxx_spellBlink1_530380(int* a1);
-uint32_t* nox_xxx_spellTeleportCreateWake_530560(int a1, int* a2, uint32_t* a3);
 int sub_5305D0(uint32_t* a1);
 int sub_530650(int* a1);
 int nox_xxx_castTele_530820(int a1);
@@ -63,19 +53,13 @@ int sub_5314F0(int a1);
 int sub_531560(int a1);
 int nox_xxx_plasmaSmth_531580(int a1);
 int nox_xxx_plasmaShot_531600(int a1);
-void sub_531920(int a1, int a2);
 int sub_5319E0(int a1);
 int nox_xxx_spellCreateMoonglow_531A00(uint32_t* a1);
 int sub_531AF0(int a1);
 static uint32_t sustainedInvoke(int op,int u,int a,void* record,void* output,int q){float fp;memcpy(&fp,&record,4);switch(op){
 case 0: return (uint32_t)(nox_xxx_spellDrainMana_52E210(fp));
-case 1: return (uint32_t)(sub_52E450(u,a,q));
-case 2: return (uint32_t)(sub_52E610((int*)record,u));
-case 3: sub_52E660(u,a);return 0;
-case 4: return (uint32_t)(sub_52E7C0(u));
 case 5: return (uint32_t)(nox_xxx_spellEnergyBoltStop_52E820((int)record));
 case 6: return (uint32_t)(nox_xxx_spellEnergyBoltTick_52E850(fp));
-case 7: nox_xxx_spellEnergyBoltSetTarget_52EC60(u,a);return 0;
 case 8: return (uint32_t)(nox_xxx_firewalkTick_52ED40((float*)record));
 case 9: return (uint32_t)(sub_52EF30((int)record));
 case 10: return (uint32_t)(sub_52EFD0((int)record));
@@ -86,19 +70,14 @@ case 14: return (uint32_t)(sub_52F460(fp));
 case 15: return (uint32_t)(nox_xxx_castShield1_52F5A0((uint32_t*)record));
 case 16: return (uint32_t)(sub_52F650((int)record));
 case 17: return (uint32_t)(sub_52F670((int)record));
-case 18: nox_xxx_unitShield_52F690(u,q);return 0;
-case 19: nox_xxx_unitShieldReduceDamage_52F710(u,(int*)output,q,a);return 0;
 case 20: return (uint32_t)(nox_xxx_onStartLightning_52F820((int)record));
 case 21: return (uint32_t)(nox_xxx_onFrameLightning_52F8A0(fp));
-case 22: nox_xxx_lightningCanAttackCheck_52FF10(u,a);return 0;
-case 23: nox_xxx_lightningSpellTrapEffect_530020(u,a);return 0;
 case 24: return (uint32_t)(sub_530100((uint32_t*)record));
 case 25: return (uint32_t)(nox_xxx_spellTagCreature_530160((uint32_t*)record));
 case 26: return (uint32_t)(sub_530250((int)record));
 case 27: return (uint32_t)(sub_530270((int)record));
 case 28: return (uint32_t)(nox_xxx_spellBlink2_530310((uint32_t*)record));
 case 29: return (uint32_t)(nox_xxx_spellBlink1_530380((int*)record));
-case 30: return (uint32_t)(nox_xxx_spellTeleportCreateWake_530560(u,(int*)record,(uint32_t*)output));
 case 31: return (uint32_t)(sub_5305D0((uint32_t*)record));
 case 32: return (uint32_t)(sub_530650((int*)record));
 case 33: return (uint32_t)(nox_xxx_castTele_530820((int)record));
@@ -117,20 +96,14 @@ case 45: return (uint32_t)(sub_5314F0((int)record));
 case 46: return (uint32_t)(sub_531560((int)record));
 case 47: return (uint32_t)(nox_xxx_plasmaSmth_531580((int)record));
 case 48: return (uint32_t)(nox_xxx_plasmaShot_531600((int)record));
-case 49: sub_531920(u,a);return 0;
 case 50: return (uint32_t)(sub_5319E0((int)record));
 case 51: return (uint32_t)(nox_xxx_spellCreateMoonglow_531A00((uint32_t*)record));
 case 52: return (uint32_t)(sub_531AF0((int)record));
 default:abort();}}
 static void* sustainedFunction(int op){switch(op){
 case 0:return nox_xxx_spellDrainMana_52E210;
-case 1:return sub_52E450;
-case 2:return sub_52E610;
-case 3:return sub_52E660;
-case 4:return sub_52E7C0;
 case 5:return nox_xxx_spellEnergyBoltStop_52E820;
 case 6:return nox_xxx_spellEnergyBoltTick_52E850;
-case 7:return nox_xxx_spellEnergyBoltSetTarget_52EC60;
 case 8:return nox_xxx_firewalkTick_52ED40;
 case 9:return sub_52EF30;
 case 10:return sub_52EFD0;
@@ -141,19 +114,14 @@ case 14:return sub_52F460;
 case 15:return nox_xxx_castShield1_52F5A0;
 case 16:return sub_52F650;
 case 17:return sub_52F670;
-case 18:return nox_xxx_unitShield_52F690;
-case 19:return nox_xxx_unitShieldReduceDamage_52F710;
 case 20:return nox_xxx_onStartLightning_52F820;
 case 21:return nox_xxx_onFrameLightning_52F8A0;
-case 22:return nox_xxx_lightningCanAttackCheck_52FF10;
-case 23:return nox_xxx_lightningSpellTrapEffect_530020;
 case 24:return sub_530100;
 case 25:return nox_xxx_spellTagCreature_530160;
 case 26:return sub_530250;
 case 27:return sub_530270;
 case 28:return nox_xxx_spellBlink2_530310;
 case 29:return nox_xxx_spellBlink1_530380;
-case 30:return nox_xxx_spellTeleportCreateWake_530560;
 case 31:return sub_5305D0;
 case 32:return sub_530650;
 case 33:return nox_xxx_castTele_530820;
@@ -172,7 +140,6 @@ case 45:return sub_5314F0;
 case 46:return sub_531560;
 case 47:return nox_xxx_plasmaSmth_531580;
 case 48:return nox_xxx_plasmaShot_531600;
-case 49:return sub_531920;
 case 50:return sub_5319E0;
 case 51:return nox_xxx_spellCreateMoonglow_531A00;
 case 52:return sub_531AF0;
@@ -180,6 +147,7 @@ default:return 0;}}
 */
 import "C"
 import (
+	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
@@ -261,7 +229,9 @@ func (p *portTestShopPools) sustainedItems() {
 		p.temporaryRef(ref).Damage = p.proxy.combat.target.Damage
 	}
 	for i := 0; i < 53; i++ {
-		p.identify(C.sustainedFunction(C.int(i)), 97000+uint32(i))
+		if fn := C.sustainedFunction(C.int(i)); fn != nil {
+			p.identify(fn, 97000+uint32(i))
+		}
 	}
 	for i, ref := range sp.GlobalRefs {
 		C.sustainedGlobalSet(C.int(i), C.uint32_t(uintptr(p.temporaryRef(ref).CObj())))
@@ -286,7 +256,35 @@ func (p *portTestShopPools) sustainedAction(a PortTestShopAction) uint32 {
 	if sp.Effects.NullOutput {
 		output = nil
 	}
-	out := uint32(C.sustainedInvoke(C.int(a.Op-1700), C.int(uintptr(p.temporaryRef(ctrl.Actor).CObj())), C.int(uintptr(p.temporaryRef(sp.Effects.Args[0]).CObj())), record, output, C.int(sp.Effects.Ints[0])))
+	u, t := p.temporaryRef(ctrl.Actor), p.temporaryRef(sp.Effects.Args[0])
+	q := int32(sp.Effects.Ints[0])
+	var out uint32
+	switch a.Op - 1700 {
+	case 1:
+		out = sustainedTransferMana(u, t, q)
+	case 2:
+		out = controlRaw(sustainedFindMana(*(*types.Pointf)(record), u))
+	case 3:
+		sustainedManaCandidate(u, t)
+	case 4:
+		out = sustainedHasMana(u)
+	case 7:
+		sustainedEnergyCandidate(u, t)
+	case 18:
+		sustainedShieldAbsorb(u, q)
+	case 19:
+		sustainedShieldDamage(u, (*int32)(output), q, t)
+	case 22:
+		sustainedLightningCandidate(u, t)
+	case 23:
+		sustainedLightningTrapHit(u, t)
+	case 30:
+		out = sustainedTeleportWake(u, (*types.Pointf)(record), (*types.Pointf)(output))
+	case 49:
+		sustainedPlasmaCandidate(u, t)
+	default:
+		out = uint32(C.sustainedInvoke(C.int(a.Op-1700), C.int(uintptr(u.CObj())), C.int(uintptr(t.CObj())), record, output, C.int(q)))
+	}
 	p.sustainedChildren(true)
 	ctrlState := p.temporary.world.objectives.attack.controls
 	ctrlState.result = uint64(out)

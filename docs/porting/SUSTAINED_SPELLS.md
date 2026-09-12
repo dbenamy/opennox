@@ -6,7 +6,7 @@ This connected batch follows native instant spell effects (`87fd50dd`). It cover
 53 functions / 2,635 removable C lines in GAME4_2.c (52E210–52F820) and GAME4_3.c
 (52F8A0–531AF0): mana drain, energy bolt, firewalk, force of nature, greater heal,
 channel life, shields, chain lightning, creature tagging, teleport callbacks,
-mana bomb, turn undead, plasma and moonglow. Production algorithms remain C.
+mana bomb, turn undead, plasma and moonglow. The production algorithms now live in native Go.
 
 The optional `Effects.Sustained` fixture reuses guarded duration, object, player,
 resource, map and factory owners. Its thin C dispatcher explicitly bitcasts the
@@ -30,9 +30,8 @@ spell-effects and 2,246 lifecycle cases passes in **29.602s**.
 Initial baseline `4fad7f26` was pushed before conversion. A final source audit
 added the energy-bolt selected-target global (2487880) to save/reset/restore and
 both snapshots, with an independent positive selection assertion. This expanded
-C baseline is also repeated and locked before replacing any algorithms. All
-seven named globals used by this scope are now captured. No native conversion
-has been applied.
+C baseline was repeated, locked and pushed as `59ef3bc5` before replacing any
+algorithms. All seven named globals used by this scope are captured.
 
 ## Fixture and source decisions
 
@@ -60,18 +59,39 @@ has been applied.
   An independent two-tick transfer contract exposed the alias. Restore the
   original pointers on cleanup; unrelated old fixtures remain unchanged.
 
-## Conversion gate
+## Native conversion and qualification
 
-The ABI audit finds 42 duration callback getters that require C entry points.
-Eleven helpers can retire their ABIs, including the shield-damage bridge whose
-only remaining production caller is native Go. Preserve pointer getter callers
-when deciding which exports are required. Keep the three embedded declarations
-for lightning segment creation, waypoint selection and buff cleanup.
+C baselines 4fad7f26 and expanded 59ef3bc5 were pushed before conversion.
+All 53 routines / 2,635 C algorithm-section lines are native Go; 11 obsolete
+exports are retired and 42 duration ABIs remain. All **2,393 cases / 129 complete
+captures** match C byte-for-byte. New plus 1,803 instant and 2,246 lifecycle
+cases pass together in 29.641s. No baseline hashes changed.
 
-After conversion, compare every complete capture unchanged, run accumulated port
-checks in default/server/highres, build/verify three production binaries, compare
-the asset-backed full-suite failure multiset, and run fresh unchanged headless
-repeat-a gameplay. Then record the physical C count, commit and push.
+Production C: **110,283 lines / 149 files / zero reference C** (−2,636 physical
+lines, including one trailing blank line). Accumulated **51,001 focused cases /
+701 capture groups** pass in default / server / highres:
+221.927s / 297.531s / 232.991s.
+Three production binaries verified ELF32/i386/SSE2/CGO; 11 retired symbols absent.
+Asset-backed full-suite failure multiset unchanged: 1,553 entries, 15 pass,
+3 fail, 32 skip. Fresh unchanged repeat-a gameplay passes in 46.968s.
 
-Current production C: **112,919 lines / 149 files / zero reference C**. Local
-scope, ABI audit, diagnostic captures and logs: `build/port-sustained-spells/`.
+See [SUSTAINED_SPELLS.md](SUSTAINED_SPELLS.md) and
+build/port-sustained-spells/qualification.json; gameplay evidence is in
+build/baseline/runs/sustained-spells-port. Native implementations preserve the
+plasma direction-expression quirk, complete lightning topology and allocation
+links, float store boundaries and grouped type-cache initialization. Any gameplay
+cleanup is separate from this conversion and noted for later review.
+
+Implementation lives in `legacy/sustained_spells.go`, `sustained_resources.go`,
+`sustained_projectiles.go`, `sustained_teleport.go`, `sustained_lightning.go` and
+`sustained_exports.go`. Internal fixture calls invoke the native helpers directly;
+retained dispatchers only adapt callback signatures, including float pointer bits.
+The native damage owner invokes shield absorption directly. No retired source
+references remain, and no C algorithms are retained solely as test references.
+
+Review later: plasma's original bitwise OR with 0xC makes its direction predicate
+always true. Enemy and interaction checks still apply. The Go port preserves this;
+any correction needs a separate gameplay decision. First native qualification
+matched every full capture, and final source review additionally preserved paired
+and grouped cache initialization even when secondary cache words are already set.
+The final repeated native captures match the same locked C oracle unchanged.

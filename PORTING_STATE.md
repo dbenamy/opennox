@@ -1,51 +1,39 @@
-# Porting checkpoint — 2026-09-10
+# Porting checkpoint — 2026-09-12
 
 Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Completed — instant spell effects, summons and charm
+### Completed — sustained spells and teleport callbacks
 
-Baseline f51f09b6 was pushed before conversion. All 42 functions / 1,740 C lines
-are native; 36 obsolete exports are retired and six duration ABIs remain.
-All 1,803 cases / 90 complete captures match C byte-for-byte. New plus 2,246
-existing lifecycle cases pass in 18.220s; no baseline hashes or production
-behavior changed. Production C: **112,919 lines / 149 files / zero reference C**.
+C baselines 4fad7f26 and expanded 59ef3bc5 were pushed before conversion.
+All 53 routines / 2,635 C algorithm-section lines are native Go; 11 obsolete
+exports are retired and 42 duration ABIs remain. All **2,393 cases / 129 complete
+captures** match C byte-for-byte. New plus 1,803 instant and 2,246 lifecycle
+cases pass together in 29.641s. No baseline hashes changed.
 
-Accumulated checks, including 48,608 focused cases / 572 capture groups, pass in
-default / server / highres: 210.312s / 302.784s / 222.884s.
-Three builds verified ELF32/i386/SSE2/CGO; all 36 retired symbols absent.
-Asset-backed full-suite failure multiset unchanged (1,553 entries; 15 pass,
-3 fail, 32 skip). Fresh unchanged repeat-a gameplay passes in 40.050s.
-See [SPELL_EFFECTS.md](docs/porting/SPELL_EFFECTS.md), build/port-spell-effects/
-qualification.json and baseline/runs/spell-effects-port. Native quake uses the
-existing shape-aware stateDistance owner, preserving its minimum clamp.
+Production C: **110,283 lines / 149 files / zero reference C** (−2,636 physical
+lines, including one trailing blank line). Accumulated **51,001 focused cases /
+701 capture groups** pass in default / server / highres:
+221.927s / 297.531s / 232.991s.
+Three production binaries verified ELF32/i386/SSE2/CGO; 11 retired symbols absent.
+Asset-backed full-suite failure multiset unchanged: 1,553 entries, 15 pass,
+3 fail, 32 skip. Fresh unchanged repeat-a gameplay passes in 46.968s.
 
-Next active batch: 53 sustained-spell and teleport functions / 2,635 C lines,
-GAME4_2 52E210–52F820 and GAME4_3 52F8A0–531AF0. Initial C baseline 4fad7f26
-is pushed. Expanded baseline adds omitted energy-bolt selected-target global
-2487880; all seven named globals are now saved/reset/restored and captured.
-**2,393 cases / 129 locked captures** repeat byte-for-byte (11.479s /
-11.427s). Enforced plus 1,803 instant and 2,246 lifecycle cases
-passes 29.602s. Commit/push expanded baseline before native conversion.
-No native algorithms applied; physical production C remains 112,919 / 149 / 0.
+See [SUSTAINED_SPELLS.md](docs/porting/SUSTAINED_SPELLS.md) and
+build/port-sustained-spells/qualification.json; gameplay evidence is in
+build/baseline/runs/sustained-spells-port. Native implementations preserve the
+plasma direction-expression quirk, complete lightning topology and allocation
+links, float store boundaries and grouped type-cache initialization. Any gameplay
+cleanup is separate from this conversion and noted for later review.
 
-See [SUSTAINED_SPELLS.md](docs/porting/SUSTAINED_SPELLS.md) and DECISIONS.md.
-Creature-tag caster-data read now follows existing nil guard; current compiler
-already passed nil input before correction. Optional fixture clones AI target UD
-and Player metadata to avoid caster alias, supplies actual lightning count table
-1..5 and valid collision shapes, and labels real duration allocation IDs instead
-of recycled addresses. Complete 120-byte child segments and links stay captured.
-
-Local evidence: build/port-sustained-spells/baseline.json, c-complete-a/b captures,
-c-enforced-complete.log. candidate-scope/source and ABI inventory are ready;
-native-names.json plans 42 retained duration ABIs and 11 retired helpers (including
-the native shield-damage caller). Next: native conversion, unchanged full captures,
-all variants/builds, asset-backed full-suite comparison, fresh headless repeat-a,
-docs/C_LOC/commit/push. No question; continue autonomously. No new agents.
-Stale fixture/dispatch stages and lock scripts are already applied; don't rerun.
-Preserve archive. Old reproducible port binaries pruned (~9.5GiB); latest two
-batch binaries, verification metadata, logs, captures and assets are retained.
+Next: continue a connected batch, with 60 map-generation room geometry, occupancy and
+decoration-selection helpers / 1,405 C lines scoped in build/port-map-rooms.
+A candidate source inventory, PLAN.md and thin C-dispatcher stage exist; no fixture or source edits
+have been applied for that batch. Do not rerun sustained apply-native.py or baseline lock
+scripts; they are already applied. Commit/push this qualified batch and continue.
+No pending question; no new agents. Preserve the asset archive and evidence.
+Previous instant-effects batch is pushed as 87fd50dd (SPELL_EFFECTS.md).
 
 ### Completed — temporary objects and projectile updates
 

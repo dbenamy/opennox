@@ -232,7 +232,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 	}
 	if u.Buffs&(1<<26) != 0 && kind != 5 {
 		if kind != 15 || source != u {
-			C.nox_xxx_unitShieldReduceDamage_52F710(inventoryInt(u), (*C.int)(unsafe.Pointer(value)), C.int(kind), inventoryInt(actual))
+			sustainedShieldDamage(u, value, kind, actual)
 		}
 		if *value == 0 {
 			return 0

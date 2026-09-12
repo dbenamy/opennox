@@ -57,3 +57,13 @@ rejection defined in the source and independent of optimization. Positive input
 behavior is unchanged. Chosen under the standing policy; reversal moves one line.
 Evidence: `build/port-sustained-spells/c-tag-nil-before.log` and the committed
 `TestSustainedSpellsTagNilCaster` regression case when this baseline is locked.
+
+## Plasma direction predicate — preserve now, review as a gameplay change
+
+Preserve the original expression in 531920: OR-ing the direction mask with 0xC
+makes that part of the predicate always true. Enemy and interaction checks still
+apply. The native helper evaluates the direction owner and preserves selection
+behavior; all locked spatial captures remain unchanged. Any intended restriction
+to targets in front should be a separate gameplay fix with explicit tests, not an
+incidental change during conversion. This choice is reversible in one predicate
+and follows the standing policy of documenting such decisions without pausing.

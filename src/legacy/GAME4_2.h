@@ -212,13 +212,8 @@ int sub_52BAF0(int a1);
 void nox_xxx_changeOwner_52BE40(nox_object_t* a1, nox_object_t* a2);
 void nox_xxx_objectApplyForce_52DF80(float* vec, nox_object_t* obj, float force);
 int nox_xxx_spellDrainMana_52E210(float a1);
-int sub_52E450(int a1, int a2, int a3);
-int sub_52E610(int* a1, int a2);
-void sub_52E660(int a1, int a2);
-int sub_52E7C0(int a1);
 int nox_xxx_spellEnergyBoltStop_52E820(int a1);
 int nox_xxx_spellEnergyBoltTick_52E850(float a1);
-void nox_xxx_spellEnergyBoltSetTarget_52EC60(int a1, int a2);
 int nox_xxx_firewalkTick_52ED40(float* a1);
 int sub_52EF30(int a1);
 int sub_52EFD0(int a1);
@@ -229,8 +224,6 @@ int sub_52F460(float a1);
 int nox_xxx_castShield1_52F5A0(uint32_t* a1);
 int sub_52F650(int a1);
 int sub_52F670(int a1);
-void nox_xxx_unitShield_52F690(int a1, int a2);
-void nox_xxx_unitShieldReduceDamage_52F710(int a1, int* a2, int a3, int a4);
 int nox_xxx_onStartLightning_52F820(int a1);
 
 #endif // NOX_PORT_GAME4_2
