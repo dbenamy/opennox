@@ -2157,7 +2157,7 @@ int nox_xxx_netSendRewardNotify_4FAD50(int a1, int a2, int a3, char a4) {
 //----- (004FADD0) --------------------------------------------------------
 void sub_4FADD0(int a1, const char* a2, char a3) {
 	unsigned int v4; // kr04_4
-	char v5[52];     // [esp+8h] [ebp-34h]
+	char v5[52] = {0}; // Initialize unused message padding as well as its fields.
 
 	if (a1) {
 		if (*(uint8_t*)(a1 + 8) & 4) {

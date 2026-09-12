@@ -132,7 +132,7 @@ Evidence: build/port-reward-generation and baseline/runs/reward-generation-port.
 Confirmation/preliminary captures are losslessly compressed as .json.gz;
 c-final/native-first remain raw. No reference C algorithms retained.
 
-### Active — player-controls baseline audit; message-padding decision pending
+### Active — player-controls baseline preparation; padding correction complete
 
 Next scope: 56 functions / 1,971 removable C lines in
 [PLAYER_CONTROLS.md](docs/porting/PLAYER_CONTROLS.md); source audit at
@@ -142,9 +142,19 @@ no fixtures or conversion applied yet. Reuse guarded players/owners/AI fixtures,
 require positive creation/respawn/observer coverage, repeat and lock original-C
 captures, commit/push baseline before conversion. Continue autonomously after
 reward commit/push (completed as `58eca54d`). No new agents.
-Pending user choice: zero the undefined padding in locked-door messages or defer
-that one routine. Source/disassembly and concrete test plan are recorded in
-PLAYER_CONTROLS.md; no controls production changes or locked baselines yet. Preserve archive
+The user approved zeroing message padding on 2026-09-12. The C array is now
+zero-initialized; 1,440 isolated cases / 400 messages match all defined original
+fields and every corrected message has zero padding. Accumulated default/server/
+highres regression passes (180.175s / 167.954s / 179.293s). C remains 117,956
+lines / 149 files / zero reference C. Continue the connected 56-function baseline.
+A thin dispatcher draft is in build/port-player-controls/player_controls_porttest.go.stage;
+it is not applied or compiled. No controls conversion or locked baseline yet. See
+PLAYER_CONTROLS.md and docs/porting/probes/locked_door_probe.py.
+
+Standing decision policy: when reasonably confident and reversal is inexpensive,
+implement and document for later review instead of asking. See
+[DECISIONS.md](docs/porting/DECISIONS.md). No pending question.
+Preserve archive
 and stable evidence. Full-suite raw logs may contain secrets; print only
 package/test/action metadata.
 

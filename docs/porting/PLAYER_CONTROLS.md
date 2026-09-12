@@ -24,9 +24,11 @@ original-C captures, lock hashes and commit/push before production conversion.
 Convert the connected family and qualify accumulated tests, relevant variants,
 production builds, full-suite failure identities and unchanged headless gameplay
 at the batch boundary. Update C_LOC/recovery docs, commit/push and continue.
-Local source/scope audit: build/port-player-controls. Fixtures have not started.
+Local source/scope audit: build/port-player-controls. A 56-entry thin dispatcher
+draft is staged there; it has not been applied or compiled. Full guarded controls
+fixtures and locked baselines remain to be implemented.
 
-## Locked-door notification: pending compatibility decision
+## Locked-door notification: approved padding correction (2026-09-12)
 
 Source and compiled-code review found undefined padding in `sub_4FADD0`
 (GAME4.c, address 004FADD0). The routine sends a fixed 52-byte message:
@@ -47,21 +49,53 @@ objdump -d --disassemble=sub_4FADD0 build/port-reward-generation/bin/opennox
 
 The client decoder in client__network__cdecode.c, MSG_GAUNTLET subtype 0x21,
 reads the NUL-terminated text at +2 and selector at +51, then consumes 52 bytes.
-It does not interpret the padding. This is source/disassembly evidence; no
-runtime packet-instability experiment has been performed or claimed.
+It does not interpret the padding. The isolated compiled-routine experiment
+below additionally confirms the difference between original and corrected output.
 
-Proposed conversion: use a zero-initialized `[52]byte`, preserving the header,
+The user approved zeroing the padding. The current C routine now initializes
+its array with `{0}`; the eventual Go port will use `[52]byte`, preserving the header,
 text, selector, recipient, length and transport flags. Compare all defined C
-fields and message order against repeated original-C captures; exclude only
-undefined padding from the differential expectation and add independent Go
-assertions that it is zero. Exercise both real keys, valid lengths 1/47/48,
+fields and message order against repeated original-C captures. The fixed C
+now provides deterministic padding for complete future C/Go comparisons, with
+independent assertions that it is zero. Exercise both real keys, valid lengths 1/47/48,
 empty/nil/rejected lengths 49/50, non-player/nil recipients, and selectors 0–4.
 Do not change string acceptance or other message formats under this decision.
 
-The user has been asked whether to accept this documented byte-level fix or
-defer this one routine. No production controls conversion or baseline lock has
-started; resolve that choice before converting this routine. The rest of the
-connected baseline can proceed independently.
+The correction is intentionally separate from the 56-function conversion. No
+controls C bodies have been removed. C remains 117,956 lines / 149 files, with
+zero reference C. The local scope/source audit was refreshed to include the fix.
+
+### Reproduction and focused validation
+
+The tracked [probe](probes/locked_door_probe.py) extracts the actual routine from
+GAME4.c into a temporary compilation unit with a recording transport. It does
+not retain a duplicate C algorithm. Run from the repository root:
+
+```
+python3 docs/porting/probes/locked_door_probe.py --source-ref f701d9a6
+python3 docs/porting/probes/locked_door_probe.py --expect-zero
+```
+
+Both versions pass 1,440 cases / 400 messages, repeated in separate processes.
+Cases include both real strings, empty/nil and boundary lengths, nil/non-player
+recipients, high class bits, selectors 0–4, and recipients including 255. Full
+object/update/player inputs are checked unchanged. The defined-field digest is
+`f628c861746ff1484f294b803a56c51fc38badbd792037b1d092dd4b3f87308f` in all four runs.
+Original output had nonzero padding in 245 messages in this experiment; that
+count is incidental stack history and is not a compatibility expectation.
+Corrected output has zero padding in every message. Probe compilation uses
+32-bit GCC, optimization, fortification and stack protection. This isolates
+message construction; the accumulated engine regression is recorded below.
+Local evidence: build/port-player-controls/padding.
+
+### Review later
+
+This byte-level change is approved; review it with the eventual Go message
+implementation. Keep the fixed 52-byte format and zero-padding assertion.
+The user also authorized future decisions when the answer is reasonably clear
+and reversal would not require substantial effort: implement, document the
+reason/evidence and mark for later review. Ask only when uncertainty or reversal
+cost warrants user input. See [DECISIONS.md](DECISIONS.md).
 
 ## Additional fixture audit
 
@@ -84,3 +118,23 @@ Scheduled-spell fixtures must distinguish front removal from stack removal:
 front removal shifts entries and zeros the vacated slot, while queue removal
 only decrements the count. Record admitted/rejected cast dependency arguments,
 text/audio requests, full queue bytes, and integer-coordinate-to-float bits.
+
+Observer baseline implementation notes: distinguish global object traversal
+from owned-child traversal. `sub_4E5F40` queries the next object after requesting
+deletion; `sub_4E5FC0` saves child/inventory next pointers before deletion.
+The observer helpers wrap from the current target to the beginning and skip
+dead/status-filtered candidates. Include successful wraparound, GameBall mode
+preference, and no eligible candidates. The slave-next helper additionally
+requires a non-nil owner before searching siblings. Transfer uses the actor's
+owner as the new owner; removal clears every child owner/next pointer and the
+actor's head. These are distinct effects and should have complete list snapshots.
+
+### Padding-fix engine regression
+
+The full accumulated port-test selection passes in default/server/highres:
+180.175s / 167.954s / 179.293s, with existing expectations unchanged. This checks
+all 41,354 previously focused cases along with the other accumulated groups.
+The separate message probe covers 1,440 additional cases; these are not yet
+part of the Go test fixture count. This one-line correction was not a new
+production-build/full-suite/gameplay milestone; those last passed at the reward
+conversion. Evidence: build/port-player-controls/padding/qualification.json.
