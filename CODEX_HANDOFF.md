@@ -25,13 +25,46 @@ plasma direction-expression quirk, complete lightning topology and allocation
 links, float store boundaries and grouped type-cache initialization. Any gameplay
 cleanup is separate from this conversion and noted for later review.
 
-Next: continue a connected batch, with 60 map-generation room geometry, occupancy and
-decoration-selection helpers / 1,405 C lines scoped in build/port-map-rooms.
-A candidate source inventory, PLAN.md and thin C-dispatcher stage exist; no fixture or source edits
-have been applied for that batch. Do not rerun sustained apply-native.py or baseline lock
-scripts; they are already applied. Commit/push this qualified batch and continue.
-No pending question; no new agents. Preserve the asset archive and evidence.
-Previous instant-effects batch is pushed as 87fd50dd (SPELL_EFFECTS.md).
+Completed and pushed as **efe8316c**. Summary delivered; continue autonomously.
+
+### Active — room geometry, occupancy and decoration selection
+
+C baseline complete for **60 routines / 1,405 C lines** in GAME4_2.c, plus one
+obsolete no-op line to retire after its two callers move. Both full C captures
+match: **2,997 cases / 122 groups**, 0.720s / 0.559s. Hashes are locked;
+new plus 6,442 existing spell cases pass together in 31.165s. Prior accumulated
+51,001 focused cases / 701 groups pass unchanged (root package 220.916s).
+No room algorithms have been converted; physical C remains 110,283 / 149 / 0.
+
+The C RNG adapter now masks the real platform integer to 15 bits before this
+baseline. Original C returned 575182.218727404 for [-5,8] and the RNG corpus
+failed after 52.35s; corrected corpus passes in 0.05s. This intentionally changes
+seeded layouts and is documented for review in DECISIONS.md and MAP_ROOMS.md.
+The broader Go platform API is unchanged. Include legacy/platform.go in baseline.
+
+Fixtures: legacy/map_rooms_porttest.go, map_rooms_porttest_test.go and
+map_rooms_boundaries_porttest_test.go. They use aligned guarded C allocations,
+real grid/room/exclusion ownership, full live-region snapshots and links,
+actual platform RNG with Get/Set restoration, and x87 PC53/nearest save/restore.
+Actual startup epsilon 0.1 and opposite directions 1,0,3,2 are supplied, captured
+and restored. Independent checks cover reciprocal direction, occupancy/list
+lifecycle, initialized allocations, cache tolerance/capacity, required decorations,
+RNG bounds/variety and a genuine 25-iteration overlap-resolution limit.
+
+Local evidence/planning: build/port-map-rooms/baseline.json, c-expanded-a/b
+captures, c-enforced.log, prior-ports-default.log, PLAN.md, candidate-scope/source,
+operations.json, abi-audit.json, native-names.json and retired.json. Scope has
+49 retained ABIs and 11 internal helpers to retire, plus the unused nullsub_28
+(one C line; cleanup-extra.json). Planned physical delta is 1,406 → 108,877 C lines.
+Use raw C allocation primitives while C callers share ownership; tracked
+common/alloc cannot free existing untracked C storage.
+
+Next: commit/push this corrected C baseline BEFORE conversion, then implement
+native room routines, remove obsolete bridges, compare all complete captures
+unchanged, qualify variants/builds/full-suite/headless, update docs/C_LOC and
+commit/push. Continue autonomously; no question and no new agents. Preserve archive.
+Staged fixture/dispatch/constant patches and lock-baseline.py are ALREADY APPLIED;
+edit real source, do not rerun them. Sustained batch is pushed as efe8316c.
 
 ### Completed — temporary objects and projectile updates
 

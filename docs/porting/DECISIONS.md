@@ -67,3 +67,20 @@ behavior; all locked spatial captures remain unchanged. Any intended restriction
 to targets in front should be a separate gameplay fix with explicit tests, not an
 incidental change during conversion. This choice is reversible in one predicate
 and follows the standing policy of documenting such decisions without pausing.
+
+## Map-generation random range — review the compatibility correction
+
+Constrain `nox_platform_rand` to `platform.RandInt() & 0x7fff` before locking the
+room-generation C baseline. Both remaining production callers scale the result
+as a 15-bit CRT random value; the real Go platform returns a wider integer.
+A seeded original-C request for a float in [-5, 8] returned 575182.218727404.
+The independent random-range corpus failed, and its rejection-sampling cases
+took 52.35 seconds. The full Go platform API is unchanged; only its C compatibility
+export is narrowed. Low 15 bits also avoid architecture-dependent int width.
+
+This deliberately changes generated layouts for a given seed, fixing out-of-range
+placements and heavily biased/sluggish selection. It is not exact preservation
+of the broken adapter. Chosen under the standing policy: the appropriate range
+is explicit in both consumers and reversal is one expression. Retain this as a
+seed-compatibility decision to review later. Evidence: build/port-map-rooms/
+rng-before-fix.json, c-smoke-map-rooms-smoke-59.json and c-boundaries.log.

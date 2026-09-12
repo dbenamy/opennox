@@ -12,7 +12,11 @@ var (
 )
 
 //export nox_platform_rand
-func nox_platform_rand() int { return platform.RandInt() }
+func nox_platform_rand() int {
+	// The remaining CRT-rand consumers scale by 0x7fff. Keep this ABI at the
+	// original 15-bit range even when the Go platform supplies a wider int.
+	return platform.RandInt() & 0x7fff
+}
 
 //export nox_platform_srand
 func nox_platform_srand(seed C.uint) { platform.RandSeed(int64(seed)) }
