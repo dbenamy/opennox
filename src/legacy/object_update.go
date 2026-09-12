@@ -178,49 +178,49 @@ func Nox_xxx_questCheckSecretArea_421C70(a1 *server.Object) {
 	C.nox_xxx_questCheckSecretArea_421C70(asObjectC(a1))
 }
 func Nox_xxx_playerCanMove_4F9BC0(a1 *server.Object) int {
-	return int(C.nox_xxx_playerCanMove_4F9BC0(asObjectC(a1)))
+	return bool2int(controlCanMove(a1))
 }
 func Sub_4F9AB0(a1 *server.Object) int {
-	return int(C.sub_4F9AB0(asObjectC(a1)))
+	return int(controlWalkWaypoint(a1))
 }
 func Nox_xxx_playerConfusedGetDirection_4F7A40(a1 *server.Object) server.Dir16 {
-	return server.Dir16(C.nox_xxx_playerConfusedGetDirection_4F7A40(asObjectC(a1)))
+	return server.Dir16(controlConfusedDirection(a1))
 }
 func Nox_xxx_playerAttack_538960(a1 *server.Object) int {
 	return int(C.nox_xxx_playerAttack_538960(asObjectC(a1)))
 }
 func Nox_xxx_playerRespawn_4F7EF0(a1 *server.Object) {
-	C.nox_xxx_playerRespawn_4F7EF0(asObjectC(a1))
+	controlRespawn(a1)
 }
 func Sub_4F9E10(a1 *server.Object) int {
-	return int(C.sub_4F9E10(asObjectC(a1)))
+	return int(controlFollowEnemy(a1))
 }
 func Sub_4F9A80(a1 *server.Object) int {
-	return int(C.sub_4F9A80(asObjectC(a1)))
+	return bool2int(controlHasWaypoint(a1))
 }
 func Nox_xxx_monsterTestBlockShield_533E70(a1 *server.Object) int {
 	return int(uintptr(unsafe.Pointer(monsterShieldThreat(a1))))
 }
 func Nox_common_mapPlrActionToStateId_4FA2B0(a1 *server.Object) int {
-	return int(C.nox_common_mapPlrActionToStateId_4FA2B0(asObjectC(a1)))
+	return int(controlActionState(a1))
 }
 func Nox_xxx_playerCanAttack_4F9C40(a1 *server.Object) int {
-	return int(C.nox_xxx_playerCanAttack_4F9C40(asObjectC(a1)))
+	return bool2int(controlCanAttack(a1))
 }
 func Nox_xxx_checkWinkFlags_4F7DF0(a1 *server.Object) int {
-	return int(C.nox_xxx_checkWinkFlags_4F7DF0(asObjectC(a1)))
+	return int(controlDropBall(a1))
 }
 func Nox_xxx_playerInputAttack_4F9C70(a1 *server.Object) {
-	C.nox_xxx_playerInputAttack_4F9C70(asObjectC(a1))
+	controlInputAttack(a1)
 }
 func Nox_xxx_playerSubStamina_4F7D30(a1 *server.Object, a2 int) int {
-	return int(C.nox_xxx_playerSubStamina_4F7D30(asObjectC(a1), C.int(a2)))
+	return int(controlSubStamina(a1, int32(a2)))
 }
 func Nox_xxx_playerDoSchedSpell_4FB0E0(a1 *server.Object, a2 *server.Object) {
-	C.nox_xxx_playerDoSchedSpell_4FB0E0(asObjectC(a1), asObjectC(a2))
+	controlScheduledSpell(a1, a2, false)
 }
 func Nox_xxx_playerDoSchedSpellQueue_4FB1D0(a1 *server.Object, a2 *server.Object) {
-	C.nox_xxx_playerDoSchedSpellQueue_4FB1D0(asObjectC(a1), asObjectC(a2))
+	controlScheduledSpell(a1, a2, true)
 }
 func Sub_4E7540(a1 *server.Object, a2 *server.Object) {
 	C.sub_4E7540(asObjectC(a1), asObjectC(a2))

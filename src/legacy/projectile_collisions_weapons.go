@@ -21,7 +21,7 @@ import (
 )
 
 func projectileBoltDamage(strength int32, d *server.Modifier) float64 {
-	return float64(C.nox_xxx_calcBoltDamage_4EF1E0(C.int(strength), C.int(uintptr(unsafe.Pointer(d)))))
+	return float64(controlBoltDamage(int32(strength), unsafe.Pointer(d)))
 }
 func projectileArrow(u, t *server.Object) {
 	core := GetServer().S()

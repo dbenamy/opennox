@@ -1,11 +1,12 @@
 # Player controls, respawning and observers
 
-Next connected batch: 56 functions / 1,971 removable physical C lines across
+Connected batch: 56 functions / 1,971 removable physical C lines across
 GAME3_3.c and GAME4.c. The address blocks contain 1,973 lines; two standalone
 forward declarations remain in C. Include player equipment/stamina helpers,
 start selection and respawning, action admission/mapping, scheduled spells,
 monster-bot transitions, initial player values/default equipment and observer
-selection/owned-unit cleanup. All candidate functions remain original C.
+selection/owned-unit cleanup. Baseline `1a87b410` was pushed before conversion. All 56 functions are now Go;
+qualification is complete.
 
 Reuse the guarded actual-player, inventory, ownership, ability and AI fixtures.
 Supply coherent player IDs and complete player/monster update records. Record
@@ -184,3 +185,54 @@ The C baseline for this batch will include both corrections. C LOC is unchanged.
 Current evidence: build/port-player-controls/c-locked.log, c-regression.log,
 c-locked-*.json, c-confirm-*.json and baseline-hashes.json. Native drafts remain
 in the ignored build directory until the baseline checkpoint is pushed.
+
+## Completed native conversion
+
+All 56 routines now live in player_controls_{helpers,stats,movement,respawn,bot,
+messages,exports}.go. The 3,205 cases / 58 complete native captures match the
+locked C baseline byte-for-byte (10.976s). Direct Go caller connections are included in the passing accumulated
+qualification below. Production C
+is 115,985 lines / 149 files / zero reference C: 1,971 lines removed, retaining
+the two adjacent forward declarations. No C algorithms are retained for tests.
+
+Native movement/input/observer wrappers, attack and projectile damage callers,
+and spawned-object cleanup call the new owners directly. Default equipment calls
+native modifier/resource owners; protected XP uses updateProtectionFloat. The
+initial port mistakenly used IEEE bits for XP protection; exact captures caught
+that mismatch, and the existing numeric encoding was restored without changing
+expected hashes. Spawn eligibility retains actual team-list membership checks.
+
+C-owned bot records remain compatible with the existing object teardown. Legacy
+signed-byte pointer returns and short respawn returns retain their original low
+bits. The C declaration of sub_4FADD0 drops its const qualifier to match cgo's
+export declaration; the implementation reads the supplied string. Defined valid
+keys remain limited to 1–48 bytes. Original overlong inputs that overflowed the
+fixed array are outside the preserved contract; the Go helper rejects them.
+
+Both initialization corrections are retained: locked-door padding and the fifth
+modifier word are zero. Review-later decisions above remain explicit. The fixture
+also verifies a caller-supplied nonzero fifth modifier word is copied normally.
+
+Evidence: native-final-*.json, native-final.log and c-locked-*.json under
+build/port-player-controls. Preliminary and confirmation captures were losslessly
+compressed as .json.gz to recover VM disk space; the locked C and final native
+captures remain raw. No performance claim is based on fixture execution time.
+
+Accumulated tests, including 44,559 focused cases / 422 groups, pass in default,
+server and highres: 192.132s / 179.762s / 196.813s. All three production binaries
+build and are verified ELF32/i386, SSE2, CGO enabled. The full suite, run with
+NOX_DATA set to the extracted assets and count=1, has the exact known failure
+multiset: 1,553 entries; 15 packages pass, 3 fail, 32 skip. Fresh unchanged repeat-a
+headless gameplay passes in 42.972s. No expectations were overridden.
+
+All 56 production algorithms are native. The final caller audit found 30 C exports
+that became unused after connecting native callers. Retire those in the immediate
+follow-up, switching their fixture dispatch to direct Go calls while preserving
+all 58 hashes. This is ABI cleanup, not retained C reference algorithms. The
+next algorithm batch is spell casting and buff lifecycle: 29 blocks / roughly
+1,300 C lines; its source/declaration audit is staged in build/port-spell-lifecycle.
+
+Final evidence: qualification.json, binary-verification.json, ports-*.log,
+full-suite-comparison.json and build.log under build/port-player-controls;
+gameplay result under build/baseline/runs/player-controls-port. Commit/push this
+qualified conversion, summarize and continue the 30-export cleanup without asking.

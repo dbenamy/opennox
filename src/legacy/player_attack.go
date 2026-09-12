@@ -89,7 +89,7 @@ func attackPlayer(u *server.Object) int {
 	half := func() bool { return int(current) == int(frames)/2 && current > prior }
 	melee := func(damageType byte, static uint32, area bool, sound int) {
 		r := attackRecord{Owner: u, Weapon: it, Pos: u.PosVec, Type: damageType, HitStatic: static, Front: 1}
-		r.Damage = float32(C.nox_xxx_calcBoltDamage_4EF1E0(strength, C.int(uintptr(unsafe.Pointer(def)))))
+		r.Damage = float32(controlBoltDamage(int32(strength), unsafe.Pointer(def)))
 		r.Radius = float32(float64(u.Shape.Circle.R) + float64(def.Range68))
 		if area {
 			d := attackDirection(u)
@@ -151,7 +151,7 @@ func attackPlayer(u *server.Object) int {
 			unarmed.DamageMin72 = 10
 		}
 		r := attackRecord{Owner: u, Pos: u.PosVec, Type: 10, Front: 1, Radius: float32(float64(u.Shape.Circle.R) + 20)}
-		r.Damage = float32(C.nox_xxx_calcBoltDamage_4EF1E0(strength, C.int(uintptr(unsafe.Pointer(unarmed)))))
+		r.Damage = float32(controlBoltDamage(int32(strength), unsafe.Pointer(unarmed)))
 		if attackTrace(u, &r) == 0 {
 			inventorySound(879, u, 0, 0)
 		}

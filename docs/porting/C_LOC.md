@@ -86,6 +86,7 @@ target build selection and linker evidence.
 | Object state, geometry and ownership (2026-09-11) | 149 | 119,818 | −1,134 | 0 |
 | Reward generation (2026-09-11) | 149 | 117,956 | −1,862 | 0 |
 | Locked-door padding fix (2026-09-12; no conversion) | 149 | 117,956 | 0 | 0 |
+| Player controls, respawning, observers and bot transitions (2026-09-12) | 149 | 115,985 | −1,971 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

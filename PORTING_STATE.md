@@ -800,14 +800,24 @@ accumulated test variants/builds, fresh gameplay and full-suite comparison pass;
 same 1,553 known failure entries. Production C: **141,000 lines (−42)**.
 Details: docs/porting/COLLISION_PRIMITIVES.md.
 
-### Player-controls recovery checkpoint — 2026-09-12
+### Completed — player controls, respawning, observers and bot transitions
 
-The final C baseline is locked: 3,205 cases / 58 groups, controls pass 9.785s,
-shared-fixture regression pass 109.281s, all captures exact across separate runs.
-All 56 algorithms remain C; the default-equipment fifth word initializer is the
-only additional production edit. Observer-update callback identity is normalized.
-See docs/porting/PLAYER_CONTROLS.md for final evidence and both intentional fixes.
-Commit/push this baseline before applying native drafts from build/port-player-controls.
-C remains 117,956 lines / 149 files / zero reference C. Continue the 56-function
-conversion, qualify once at the batch boundary, then commit/push and continue.
-This checkpoint supersedes the earlier in-progress counts and unlocked status.
+Baseline `1a87b410` was committed/pushed before conversion. All 56 functions /
+1,971 C lines are native. All 3,205 cases / 58 full captures match C exactly
+(10.976s). C is **115,985 lines / 149 files / zero reference C**. See
+[PLAYER_CONTROLS.md](docs/porting/PLAYER_CONTROLS.md) for both initialization fixes,
+the XP-protection encoding finding, caller connections and evidence.
+
+Accumulated default/server/highres tests, including 44,559 focused cases / 422
+groups, pass: 192.132s / 179.762s / 196.813s. Three production binaries verified
+ELF32/i386/SSE2/CGO. Full suite with assets has the exact known failures: 1,553
+entries; 15 packages pass, 3 fail, 32 skip. Fresh unchanged repeat-a gameplay
+passes in 42.972s. Evidence: build/port-player-controls and baseline/runs/player-controls-port.
+
+Next: retire 30 exports now unused by production callers and route their fixture
+operations directly to Go. Draft build/port-controls-bridges/retire.py is not yet
+applied; review before use. Keep all controls hashes unchanged, verify all targets
+and symbols, document unchanged C LOC, commit/push and continue the next batch.
+Next algorithm scope is staged in build/port-spell-lifecycle: 29 spell-casting/buff
+blocks, 1,328 address-block lines before declaration audit. Do not rerun stale
+controls source generators. No pending question; no new agents; preserve archive.

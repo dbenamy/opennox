@@ -130,30 +130,27 @@ Evidence: build/port-reward-generation and baseline/runs/reward-generation-port.
 Confirmation/preliminary captures are losslessly compressed as .json.gz;
 c-final/native-first remain raw. No reference C algorithms retained.
 
-### Active — player-controls baseline preparation; padding correction complete
+### Completed — player controls, respawning, observers and bot transitions
 
-Next scope: 56 functions / 1,971 removable C lines in
-[PLAYER_CONTROLS.md](docs/porting/PLAYER_CONTROLS.md); source audit at
-build/port-player-controls/candidate-scope.json and candidate-source.txt.
-Two adjacent C declarations stay in place. All candidate functions remain C;
-The guarded fixture and corpus are implemented; final baseline checks are in progress.
-No controls conversion has started. Reuse guarded players/owners/AI fixtures,
-require positive creation/respawn/observer coverage, repeat and lock original-C
-captures, commit/push baseline before conversion. Continue autonomously after
-reward commit/push (completed as `58eca54d`). No new agents.
-The user approved zeroing message padding on 2026-09-12. The C array is now
-zero-initialized; 1,440 isolated cases / 400 messages match all defined original
-fields and every corrected message has zero padding. Accumulated default/server/
-highres regression passes (180.175s / 167.954s / 179.293s). C remains 117,956
-lines / 149 files / zero reference C. Continue the connected 56-function baseline.
-The applied dispatcher covers all 56 C functions. Initial 2,662 cases / 38 groups
-repeated exactly, before respawn expansion. Current native-owner fixture binds
-ability cancellation and monster updating to the correct server. The C default-
-equipment modifier array now initializes its fifth word; this reversible fix is
-recorded for later review. No final hashes are locked yet. Finish the expanded
-C corpus and positive checks, repeat captures, lock/commit/push before conversion.
-See PLAYER_CONTROLS.md. Local current logs/captures: build/port-player-controls;
-pre-expansion c-repeat files are preliminary, not the final baseline.
+Baseline `1a87b410` was committed/pushed before conversion. All 56 functions /
+1,971 C lines are native. All 3,205 cases / 58 full captures match C exactly
+(10.976s). C is **115,985 lines / 149 files / zero reference C**. See
+[PLAYER_CONTROLS.md](docs/porting/PLAYER_CONTROLS.md) for both initialization fixes,
+the XP-protection encoding finding, caller connections and evidence.
+
+Accumulated default/server/highres tests, including 44,559 focused cases / 422
+groups, pass: 192.132s / 179.762s / 196.813s. Three production binaries verified
+ELF32/i386/SSE2/CGO. Full suite with assets has the exact known failures: 1,553
+entries; 15 packages pass, 3 fail, 32 skip. Fresh unchanged repeat-a gameplay
+passes in 42.972s. Evidence: build/port-player-controls and baseline/runs/player-controls-port.
+
+Next: retire 30 exports now unused by production callers and route their fixture
+operations directly to Go. Draft build/port-controls-bridges/retire.py is not yet
+applied; review before use. Keep all controls hashes unchanged, verify all targets
+and symbols, document unchanged C LOC, commit/push and continue the next batch.
+Next algorithm scope is staged in build/port-spell-lifecycle: 29 spell-casting/buff
+blocks, 1,328 address-block lines before declaration audit. Do not rerun stale
+controls source generators. No pending question; no new agents; preserve archive.
 
 Standing decision policy: when reasonably confident and reversal is inexpensive,
 implement and document for later review instead of asking. See
@@ -600,15 +597,3 @@ covering modular arithmetic and signed/truncated deltas before replacement.
 
 Additive updates are converted; see [their checkpoint](docs/porting/PROTECTION_ADD.md).
 Continue with buffer checksum validation, then the remaining object/float paths.
-
-### Player-controls recovery checkpoint — 2026-09-12
-
-The final C baseline is locked: 3,205 cases / 58 groups, controls pass 9.785s,
-shared-fixture regression pass 109.281s, all captures exact across separate runs.
-All 56 algorithms remain C; the default-equipment fifth word initializer is the
-only additional production edit. Observer-update callback identity is normalized.
-See docs/porting/PLAYER_CONTROLS.md for final evidence and both intentional fixes.
-Commit/push this baseline before applying native drafts from build/port-player-controls.
-C remains 117,956 lines / 149 files / zero reference C. Continue the 56-function
-conversion, qualify once at the batch boundary, then commit/push and continue.
-This checkpoint supersedes the earlier in-progress counts and unlocked status.

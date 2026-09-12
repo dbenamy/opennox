@@ -21,9 +21,9 @@ func stateRemoveSpawned(u *server.Object) {
 		pl := *(*unsafe.Pointer)(unsafe.Add(u.UpdateData, 276))
 		switch *(*byte)(unsafe.Add(pl, 2251)) {
 		case 1:
-			C.sub_4E5F40(inventoryInt(u))
+			controlRemoveGlyphs(u)
 		case 2:
-			C.sub_4E5FC0(inventoryInt(u))
+			controlRemoveCreatures(u)
 		}
 	}
 	for it := u.Field129; it != nil; {
