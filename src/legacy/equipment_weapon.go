@@ -28,7 +28,7 @@ func equipmentNPCDequipWeapon(u, it *server.Object) int {
 		*equipmentWord(ud, 2064) = 0
 	}
 	equipmentEffects(it, u, false)
-	C.sub_4FEB60(inventoryInt(u), inventoryInt(it))
+	spellLifeCancelWand(u, it)
 	return 1
 }
 func equipmentDequipAmmo(u *server.Object, report, broadcast int) {
@@ -66,7 +66,7 @@ func equipmentDequipWeapon(u, it *server.Object, report, broadcast int) int {
 	if bits&0xc != 0 {
 		equipmentDequipAmmo(u, report, broadcast)
 	}
-	C.sub_4FEB60(inventoryInt(u), inventoryInt(it))
+	spellLifeCancelWand(u, it)
 	if bits == 2 {
 		it.ObjFlags &^= 0x100
 		*equipmentWord(equipmentPlayer(u), 4) &^= 2

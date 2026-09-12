@@ -224,7 +224,7 @@ func projectileWeb(u, t *server.Object) {
 	GetServer().DelayedDelete(u)
 	if projectileDamage(t, u.FindOwnerChainPlayer(), u, 0, 2) != 0 {
 		if t.ObjClass&6 != 0 {
-			C.nox_xxx_buffApplyTo_4FF380(asObjectC(t), 4, C.short(uint16(GetServer().S().TickRate())*4), 3)
+			spellLifeApplyBuff(t, 4, int16(uint16(GetServer().S().TickRate())*4), 3)
 		}
 		if t.ObjClass&4 != 0 {
 			C.nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), internCStr("objcoll.c:WebbingSlow"), 0)
@@ -273,8 +273,8 @@ func projectileTrap(u, t *server.Object, gas bool) {
 		GetServer().DelayedDelete(u)
 	} else {
 		GetServer().DelayedDelete(u)
-		C.nox_xxx_buffApplyTo_4FF380(asObjectC(t), 5, 90, 5)
-		C.nox_xxx_buffApplyTo_4FF380(asObjectC(t), 14, 90, 5)
+		spellLifeApplyBuff(t, 5, 90, 5)
+		spellLifeApplyBuff(t, 14, 90, 5)
 		inventorySound(846, u, 0, 0)
 	}
 }

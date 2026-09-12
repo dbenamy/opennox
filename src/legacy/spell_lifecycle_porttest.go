@@ -8,26 +8,12 @@ package legacy
 #include "GAME4.h"
 extern void* nox_alloc_magicEnt_1569668;
 extern uint32_t dword_5d4594_1569672;
-int sub_4FC960(int a1, char a2);
-int nox_xxx_Fn_4FCAC0(int a1, int a2);
-void nox_xxx_spellCastByBook_4FCB80();
-int sub_4FCEB0(int a1);
-int nox_xxx_spellCheckSmth_4FCEF0(int a1, int* a2, int a3);
-int sub_4FCF90(nox_object_t* a1p, int a2, int a3);
 unsigned short sub_4FD030(int a1, short a2);
-int sub_4FD0E0(nox_object_t* a1p, int a2);
-int nox_xxx_checkPlrCantCastSpell_4FD150(nox_object_t* a1p, int a2, int a3);
-int nox_xxx_gameCaptureMagic_4FDC10(int a1, nox_object_t* a2p);
-uint32_t* nox_xxx_createSpellFly_4FDDA0(nox_object_t* a1p, nox_object_t* a2p, int a3);
 void nox_xxx_collide_4FDF90(int a1, int a2);
 int nox_xxx_spellGetPhoneme_4FE1C0(int a1, char a2);
 int nox_xxx_spellByBookInsert_4FE340(int a1, int* a2, int a3, int a4, int a5);
-void nox_xxx_spell_4FE680(nox_object_t* a1p, float a2);
-int nox_xxx_spellGetPower_4FE7B0(int a1, nox_object_t* a2p);
 int sub_4FEA70(int a1, float2* a2);
 int nox_xxx_playerCancelSpells_4FEAE0(nox_object_t* a1p);
-void sub_4FEB60(int a1, int a2);
-void nox_xxx_cancelAllSpells_4FEE90(nox_object_t* a1p);
 char* nox_xxx_netStartDurationRaySpell_4FF130(int a1);
 int sub_4FF2D0(int a1, int a2);
 int nox_xxx_testUnitBuffs_4FF350(nox_object_t* unit, char buff);
@@ -36,28 +22,13 @@ int nox_xxx_unitGetBuffTimer_4FF550(nox_object_t* unit, int buff);
 char nox_xxx_buffGetPower_4FF570(nox_object_t* unit, int buff);
 void nox_xxx_unitClearBuffs_4FF580(nox_object_t* unit);
 int nox_xxx_spellBuffOff_4FF5B0(nox_object_t* a1p, int a2);
-void nox_xxx_updateUnitBuffs_4FF620(nox_object_t* a1p);
 static void* spellLifeFunction(int id){switch(id){
-case 0:return sub_4FC960;
-case 1:return nox_xxx_Fn_4FCAC0;
-case 2:return nox_xxx_spellCastByBook_4FCB80;
-case 3:return sub_4FCEB0;
-case 4:return nox_xxx_spellCheckSmth_4FCEF0;
-case 5:return sub_4FCF90;
 case 6:return sub_4FD030;
-case 7:return sub_4FD0E0;
-case 8:return nox_xxx_checkPlrCantCastSpell_4FD150;
-case 9:return nox_xxx_gameCaptureMagic_4FDC10;
-case 10:return nox_xxx_createSpellFly_4FDDA0;
 case 11:return nox_xxx_collide_4FDF90;
 case 12:return nox_xxx_spellGetPhoneme_4FE1C0;
 case 13:return nox_xxx_spellByBookInsert_4FE340;
-case 14:return nox_xxx_spell_4FE680;
-case 15:return nox_xxx_spellGetPower_4FE7B0;
 case 16:return sub_4FEA70;
 case 17:return nox_xxx_playerCancelSpells_4FEAE0;
-case 18:return sub_4FEB60;
-case 19:return nox_xxx_cancelAllSpells_4FEE90;
 case 20:return nox_xxx_netStartDurationRaySpell_4FF130;
 case 21:return sub_4FF2D0;
 case 22:return nox_xxx_testUnitBuffs_4FF350;
@@ -66,46 +37,16 @@ case 24:return nox_xxx_unitGetBuffTimer_4FF550;
 case 25:return nox_xxx_buffGetPower_4FF570;
 case 26:return nox_xxx_unitClearBuffs_4FF580;
 case 27:return nox_xxx_spellBuffOff_4FF5B0;
-case 28:return nox_xxx_updateUnitBuffs_4FF620;
-default:return 0;}}
-static uint32_t spellLifeCall(int id,nox_object_t* u,nox_object_t* t,int x,int y,int z,void* record){float value;memcpy(&value,&x,4);switch(id){
-case 0: return (uint32_t)sub_4FC960((int)u,(char)x);
-case 1: return (uint32_t)nox_xxx_Fn_4FCAC0(x,y);
-case 2: nox_xxx_spellCastByBook_4FCB80();return 0;
-case 3: return (uint32_t)sub_4FCEB0(x);
-case 4: return (uint32_t)nox_xxx_spellCheckSmth_4FCEF0((int)u,(int*)record,x);
-case 5: return (uint32_t)sub_4FCF90(u,x,y);
-case 6: return (uint32_t)sub_4FD030((int)u,(short)x);
-case 7: return (uint32_t)sub_4FD0E0(u,x);
-case 8: return (uint32_t)nox_xxx_checkPlrCantCastSpell_4FD150(u,x,y);
-case 9: return (uint32_t)nox_xxx_gameCaptureMagic_4FDC10(x,u);
-case 10: return (uint32_t)nox_xxx_createSpellFly_4FDDA0(u,t,x);
-case 11: nox_xxx_collide_4FDF90((int)u,(int)t);return 0;
-case 12: return (uint32_t)nox_xxx_spellGetPhoneme_4FE1C0(u->net_code,(char)x);
-case 13: return (uint32_t)nox_xxx_spellByBookInsert_4FE340((int)u,(int*)record,x,y,z);
-case 14: nox_xxx_spell_4FE680(u,value);return 0;
-case 15: return (uint32_t)nox_xxx_spellGetPower_4FE7B0(x,u);
-case 16: return (uint32_t)sub_4FEA70((int)u,(float2*)record);
-case 17: return (uint32_t)nox_xxx_playerCancelSpells_4FEAE0(u);
-case 18: sub_4FEB60((int)u,(int)t);return 0;
-case 19: nox_xxx_cancelAllSpells_4FEE90(u);return 0;
-case 20: return (uint32_t)nox_xxx_netStartDurationRaySpell_4FF130((int)record);
-case 21: return (uint32_t)sub_4FF2D0(x,(int)u);
-case 22: return (uint32_t)nox_xxx_testUnitBuffs_4FF350(u,(char)x);
-case 23: nox_xxx_buffApplyTo_4FF380(u,x,(short)y,(char)z);return 0;
-case 24: return (uint32_t)nox_xxx_unitGetBuffTimer_4FF550(u,x);
-case 25: return (uint32_t)nox_xxx_buffGetPower_4FF570(u,x);
-case 26: nox_xxx_unitClearBuffs_4FF580(u);return 0;
-case 27: return (uint32_t)nox_xxx_spellBuffOff_4FF5B0(u,x);
-case 28: nox_xxx_updateUnitBuffs_4FF620(u);return 0;
 default:return 0;}}
 */
 import "C"
 import (
+	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
+	"math"
 	"unsafe"
 )
 
@@ -235,7 +176,9 @@ func (p *portTestShopPools) spellLifeItems() {
 	st := p.spellLifeState()
 	u := p.temporaryRef(p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack.Actor)
 	for i := 0; i < 29; i++ {
-		p.identify(C.spellLifeFunction(C.int(i)), 92000+uint32(i))
+		if f := C.spellLifeFunction(C.int(i)); f != nil {
+			p.identify(f, 92000+uint32(i))
+		}
 	}
 	if sp.ActorType != "" {
 		u.TypeInd = uint16(p.proxy.core.Types.IndByID(sp.ActorType))
@@ -292,7 +235,69 @@ func (p *portTestShopPools) spellLifeAction(a PortTestShopAction) uint32 {
 	if sp.NullRecord {
 		record = nil
 	}
-	result := uint32(C.spellLifeCall(C.int(a.Op-1500), asObjectC(u), asObjectC(p.temporaryRef(ctrl.Target)), C.int(ctrl.X), C.int(ctrl.Y), C.int(sp.Z), record))
+	var result uint32
+	target := p.temporaryRef(ctrl.Target)
+	x, y := ctrl.X, ctrl.Y
+	switch a.Op - 1500 {
+	case 0:
+		result = uint32(spellLifeBroadcastPhoneme(u, int8(x)))
+	case 1:
+		result = uint32(spellLifeReset(x, y))
+	case 2:
+		spellLifeCastBooks()
+	case 3:
+		result = uint32(spellLifeCancelDurations(x))
+	case 4:
+		result = uint32(spellLifeCheckMana(u, record, x))
+	case 5:
+		result = uint32(spellLifeSpendMana(u, x, y))
+	case 6:
+		result = uint32(spellLifeRefundMana(u, int16(x)))
+	case 7:
+		result = uint32(spellLifeCheckClass(u, x))
+	case 8:
+		result = uint32(spellLifeCantCast(u, x, y))
+	case 9:
+		result = uint32(spellLifeCaptureAllowed(x, u))
+	case 10:
+		result = controlRaw(spellLifeCreateFly(u, target, x))
+	case 11:
+		spellLifeCollide(u, target)
+	case 12:
+		result = uint32(spellLifePhoneme(int32(u.NetCode), int8(x)))
+	case 13:
+		result = uint32(spellLifeInsertBook(u, record, x, y, sp.Z))
+	case 14:
+		spellLifeCounterBooks(u, math.Float32frombits(uint32(x)))
+	case 15:
+		result = uint32(spellLifePower(x, u))
+	case 16:
+		result = uint32(spellLifeMoved(u, (*types.Pointf)(record)))
+	case 17:
+		result = uint32(spellLifeCancelPlayer(u))
+	case 18:
+		spellLifeCancelWand(u, target)
+	case 19:
+		spellLifeCancelSelected(u)
+	case 20:
+		result = spellLifeRayMessage((*server.DurSpell)(record))
+	case 21:
+		result = uint32(uintptr(unsafe.Pointer(spellLifeFindDuration(x, u))))
+	case 22:
+		result = uint32(bool2int(spellLifeHasBuff(u, int32(int8(x)))))
+	case 23:
+		spellLifeApplyBuff(u, x, int16(y), int8(sp.Z))
+	case 24:
+		result = uint32(spellLifeBuffTimer(u, x))
+	case 25:
+		result = uint32(int32(spellLifeBuffPower(u, x)))
+	case 26:
+		spellLifeClearBuffs(u)
+	case 27:
+		result = spellLifeBuffOff(u, x)
+	case 28:
+		spellLifeUpdateBuffs(u)
+	}
 	if sp.HalfPointerReturn {
 		if result != uint32(uint16(uintptr(u.CObj()))) {
 			panic("spell life half pointer return")

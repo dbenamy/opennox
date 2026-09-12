@@ -93,7 +93,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 	}
 	if source != nil && u.Buffs&(1<<22) != 0 && source.ObjClass&6 != 0 && weapon != nil && damageMelee(source, weapon) {
 		inventorySound(135, source, 0, 0)
-		C.nox_xxx_spellBuffOff_4FF5B0(asObjectC(u), 22)
+		spellLifeBuffOff(u, int32(22))
 		n := floatToInt32(float32(C.nox_xxx_gamedataGetFloatTable_419D70(internCStr("ShockDamage"), 4)))
 		projectileDamage(source, u, nil, n, 9)
 		if source.ObjClass&4 != 0 {
@@ -145,7 +145,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 		*equipmentWord(u.CObj(), 528) = 0
 		*equipmentWord(u.CObj(), 532) = 0
 		if kind == 12 {
-			C.nox_xxx_spellBuffOff_4FF5B0(asObjectC(u), 0)
+			spellLifeBuffOff(u, int32(0))
 		}
 	} else {
 		from := source
@@ -158,7 +158,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 			*equipmentWord(u.UpdateData, 2188) = 1
 			*equipmentWord(u.UpdateData, 2184) = uint32(actual.TypeInd)
 		}
-		C.nox_xxx_spellBuffOff_4FF5B0(asObjectC(u), 0)
+		spellLifeBuffOff(u, int32(0))
 	}
 	value, free := alloc.New(int32(0))
 	*value = amount

@@ -107,7 +107,7 @@ func controlScheduledSpell(u, target *server.Object, back bool) int32 {
 		off = 188 + 4*int(*count)
 	}
 	id := *equipmentWord(d, off)
-	reason := C.nox_xxx_checkPlrCantCastSpell_4FD150((*C.nox_object_t)(u.CObj()), C.int(id), 0)
+	reason := C.int(spellLifeCantCast(u, int32(id), 0))
 	args := [3]uint32{controlRaw(target), math.Float32bits(float32(int32(*equipmentWord(d, 220)))), math.Float32bits(float32(int32(*equipmentWord(d, 224))))}
 	if reason != 0 {
 		C.nox_xxx_netInformTextMsg_4DA0F0(C.int(*controlByte(controlPlayer(u), 2064)), 0, &reason)

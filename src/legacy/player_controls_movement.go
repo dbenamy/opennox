@@ -165,8 +165,8 @@ func controlInputAttack(u *server.Object) {
 			}
 		}
 	}
-	C.nox_xxx_spellBuffOff_4FF5B0((*C.nox_object_t)(u.CObj()), 0)
-	C.nox_xxx_spellBuffOff_4FF5B0((*C.nox_object_t)(u.CObj()), 23)
+	spellLifeBuffOff(u, int32(0))
+	spellLifeBuffOff(u, int32(23))
 	C.nox_xxx_spellCancelDurSpell_4FEB10(67, (*C.nox_object_t)(u.CObj()))
 }
 func controlFollowEnemy(u *server.Object) int32 {

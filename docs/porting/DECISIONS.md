@@ -37,3 +37,12 @@ pointer before adding the offset, matching the client branch's class-field check
 The new corpus checks male/female and nonplayer sounds in both server and client
 paths. This is a deliberate bug correction, not exact preservation of the invalid
 read. Chosen under the standing policy; reversal is one expression.
+
+## Buff power accessor — review with spell lifecycle conversion
+
+Change server.Object.EnchantPower from BuffsDur to BuffsPower. The C accessor
+uses the byte power array; the existing Go method incorrectly returned the
+16-bit duration. The locked C corpus independently distinguishes duration 1,234
+from power 7 and covers signed C byte returns. Native callers now receive power.
+Chosen under the standing policy; reversal is one field access. This intentional
+correction is separate from exact C/native lifecycle compatibility.

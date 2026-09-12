@@ -6,7 +6,7 @@
 phoneme delivery, book queues, mana and casting admission, spell projectiles,
 shock collision, duration cancellation/ray messages, and all buff operations.
 Keep the neighboring nox_setImaginaryCaster and sub_57AEE0 declarations.
-Production is still C while establishing this baseline.
+Production remained C while establishing this baseline.
 
 The optional spell fixture extends the guarded player/controls fixture, uses
 actual spell definitions and phoneme trees, actual book allocation and linked
@@ -54,3 +54,35 @@ was the Magic update record's caster pointer in the outer callback snapshot;
 all other data matched across the original repeats. Save the Magic type ID while
 the fixture registry is active, since that registry is restored before this
 outer snapshot. C count is unchanged. Commit/push this baseline before conversion.
+
+## Native implementation and first comparison
+
+Baseline c6435866 was pushed before conversion. All 29 bodies are replaced by
+spell_lifecycle_{buffs,mana,casting,books,duration,exports}.go. Go callers use the
+native owners directly; 15 unused C exports and header declarations are retired
+before qualification, with 14 production ABIs retained. The fixture dispatches
+native helpers and retains exactly the locked expected hashes.
+
+All 2,246 cases / 60 groups match in 9.329s. The first native run matched 59 groups;
+projectile Y positions differed by one ULP for two directions. The compiled C
+keeps the intermediate at x87 53-bit precision through inherited velocity
+addition. Keeping the Go intermediate float64 until the final store reproduces
+all 56 projectile cases exactly. No expected hashes changed for conversion.
+
+The existing Go EnchantPower accessor now reads BuffsPower; see the separately
+recorded decision. The book record remains 60 bytes in the real allocator, and
+its index/queue overlap and raw next-spell read preserve the original layout.
+No reference C algorithms remain. Current production C: **114,659 lines / 149
+files / zero reference C**, a reduction of 1,326. Final qualification is recorded below.
+
+Final C captures are now losslessly compressed c-final-*.json.gz. Native final
+captures are native-final-*.json; local comparison logs are preserved.
+
+## Final qualification
+
+Accumulated port checks, including all 46,805 focused cases, pass in default /
+server / highres: 190.330s / 193.123s / 196.334s.
+Three builds verified ELF32/i386/SSE2/CGO; all 15 retired symbols are absent.
+Asset-backed full-suite failure multiset unchanged (1,553 entries; 15 pass, 3 fail,
+32 skip). Fresh unchanged repeat-a headless gameplay passes in 38.474s.
+Evidence: build/port-spell-lifecycle and baseline/runs/spell-lifecycle-port.

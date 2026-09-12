@@ -67,7 +67,7 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 	}
 	u.ObjFlags &= 0xffeb3fe7
 	C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 13)
-	C.nox_xxx_unitClearBuffs_4FF580((*C.nox_object_t)(u.CObj()))
+	spellLifeClearBuffs(u)
 	*controlByte(d, 188) = 0
 	for _, off := range []int{216, 192, 196, 200, 204, 208, 136, 132, 268} {
 		*equipmentWord(d, off) = 0
@@ -182,8 +182,8 @@ func controlResetPlayer(u *server.Object) int32 {
 	*controlByte(u.CObj(), 541) = 0
 	u.ObjFlags &= 0xffeb3fe7
 	C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 13)
-	C.nox_xxx_unitClearBuffs_4FF580((*C.nox_object_t)(u.CObj()))
-	C.nox_xxx_playerCancelSpells_4FEAE0((*C.nox_object_t)(u.CObj()))
+	spellLifeClearBuffs(u)
+	spellLifeCancelPlayer(u)
 	resourceRemovePoison(u)
 	controlClearWaypoints(u)
 	C.nox_xxx_netReportTotalHealth_4D85C0(C.int(*controlByte(pl, 2064)), (*C.uint32_t)(u.CObj()))
@@ -210,7 +210,7 @@ func controlLeaveObserver(pl unsafe.Pointer) {
 		return
 	}
 	C.nox_xxx_playerUnsetStatus_417530((*C.nox_playerInfo)(pl), 289)
-	C.nox_xxx_spellBuffOff_4FF5B0((*C.nox_object_t)(u.CObj()), 0)
+	spellLifeBuffOff(u, int32(0))
 	*controlPtr(u.CObj(), 744) = C.controlNormalUpdate()
 	u.ObjFlags &^= 0x40
 	C.nox_xxx_monsterMarkUpdate_4E8020((*C.nox_object_t)(controlObject(pl, 2056).CObj()))
@@ -271,7 +271,7 @@ func controlRespawn(u *server.Object) int16 {
 		controlTeamFlag(pl)
 	}
 	if controlFlags(8192) {
-		C.nox_xxx_buffApplyTo_4FF380((*C.nox_object_t)(u.CObj()), 23, C.short(5*uint16(GetServer().S().TickRate())), 5)
+		spellLifeApplyBuff(u, 23, int16(5*uint16(GetServer().S().TickRate())), 5)
 		return 1
 	}
 	return 0
@@ -291,7 +291,7 @@ func controlRespawnBot(u *server.Object) int32 {
 		C.nox_xxx_unitMove_4E7010((*C.nox_object_t)(u.CObj()), (*C.float2)(unsafe.Pointer(&pos)))
 		C.nox_xxx_aud_501960(148, (*C.nox_object_t)(u.CObj()), 0, 0)
 		if controlFlags(8192) {
-			C.nox_xxx_buffApplyTo_4FF380((*C.nox_object_t)(u.CObj()), 23, C.short(5*uint16(GetServer().S().TickRate())), 5)
+			spellLifeApplyBuff(u, 23, int16(5*uint16(GetServer().S().TickRate())), 5)
 		}
 	}
 	return 0

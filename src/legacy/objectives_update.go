@@ -64,7 +64,7 @@ func objectiveRememberOwner(u, t *server.Object) *server.Object {
 func objectivePickupBuffs(u *server.Object) uint32 {
 	var out uint32
 	for enc := 0; enc < 32; enc++ {
-		out = uint32(C.nox_xxx_testUnitBuffs_4FF350(asObjectC(u), C.char(enc)))
+		out = uint32(bool2int(spellLifeHasBuff(u, int32(int8(enc)))))
 		if out == 0 {
 			continue
 		}
@@ -74,7 +74,7 @@ func objectivePickupBuffs(u *server.Object) uint32 {
 		}
 		out = uint32(bool2int(bool(C.nox_xxx_spellHasFlags_424A50(C.int(out), 0x80000))))
 		if out != 0 {
-			out = uint32(C.nox_xxx_spellBuffOff_4FF5B0(asObjectC(u), C.int(enc)))
+			out = uint32(spellLifeBuffOff(u, int32(enc)))
 		}
 	}
 	return out

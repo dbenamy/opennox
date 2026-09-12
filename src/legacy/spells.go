@@ -10,7 +10,6 @@ package legacy
 #include "GAME4_3.h"
 #include "GAME5_2.h"
 #include "server__magic__spell__execdur.h"
-void nox_xxx_spellCastByBook_4FCB80();
 void nox_xxx_spellCastByPlayer_4FEEF0();
 
 extern void* nox_alloc_magicEnt_1569668;
@@ -243,7 +242,7 @@ func nox_xxx_netStopRaySpell_4FEF90(p unsafe.Pointer, obj *nox_object_t) {
 }
 
 func Nox_xxx_spellCastByBook_4FCB80() {
-	C.nox_xxx_spellCastByBook_4FCB80()
+	spellLifeCastBooks()
 }
 func Nox_xxx_playerResetProtectionCRC_56F7D0(a1 uint32, a2 int) {
 	nox_xxx_playerResetProtectionCRC_56F7D0(C.int(a1), C.int(a2))
@@ -258,16 +257,16 @@ func Nox_xxx_spellGrantToPlayer_4FB550(a1 *server.Object, a2 spell.ID, a3 int, a
 	return int(C.nox_xxx_spellGrantToPlayer_4FB550(asObjectC(a1), C.int(a2), C.int(a3), C.int(a4), C.int(a5)))
 }
 func Nox_xxx_gameCaptureMagic_4FDC10(a1 spell.ID, a2 *server.Object) int {
-	return int(C.nox_xxx_gameCaptureMagic_4FDC10(C.int(a1), asObjectC(a2)))
+	return int(spellLifeCaptureAllowed(int32(a1), a2))
 }
 func Nox_spells_call_intint6_go(a1 unsafe.Pointer, a2 spell.ID, a3 *server.Object, a4 *server.Object, a5 *server.Object, a6 *server.SpellAcceptArg, a7 int) int {
 	return int(C.nox_spells_call_intint6_go((*[0]byte)(a1), C.int(a2), asObjectC(a3), asObjectC(a4), asObjectC(a5), unsafe.Pointer(a6), C.int(a7)))
 }
 func Nox_xxx_createSpellFly_4FDDA0(a1 *server.Object, a2 *server.Object, a3 spell.ID) {
-	C.nox_xxx_createSpellFly_4FDDA0(asObjectC(a1), asObjectC(a2), C.int(a3))
+	spellLifeCreateFly(a1, a2, int32(a3))
 }
 func Nox_xxx_spellGetPower_4FE7B0(a1 spell.ID, a2 *server.Object) int {
-	return int(C.nox_xxx_spellGetPower_4FE7B0(C.int(a1), asObjectC(a2)))
+	return int(spellLifePower(int32(a1), a2))
 }
 
 func Nox_xxx_spellArachna_52DC80(spellID spell.ID, a2, a3, a4 *server.Object, sa *server.SpellAcceptArg, lvl int) int {

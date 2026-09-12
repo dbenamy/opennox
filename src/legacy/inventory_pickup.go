@@ -90,7 +90,7 @@ func inventoryCrownPickup(u, it *server.Object, arg int) int {
 	if rv != 0 {
 		*(*uint32)(unsafe.Add(u.UpdateData, 264)) = GetServer().S().Frame()
 		GetServer().S().ObjSetOwner(u, it)
-		C.nox_xxx_buffApplyTo_4FF380(asObjectC(u), 30, 0, 5)
+		spellLifeApplyBuff(u, 30, 0, 5)
 		inventorySound(313, u, 0, 0)
 		inventoryMessage(10, u, uint32(u.TeamVal.ID))
 		C.nox_xxx_netUnmarkMinimapSpec_417470(inventoryInt(it), 1)

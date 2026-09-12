@@ -180,7 +180,7 @@ func attackWarcry(t, u *server.Object) int16 {
 		return 0
 	}
 	if t.ObjClass&2 != 0 && t.ObjSubClass&0x20000 != 0 && t.ObjFlags&0x8020 == 0 {
-		C.nox_xxx_buffApplyTo_4FF380(asObjectC(t), 5, 90, 3)
+		spellLifeApplyBuff(t, 5, 90, 3)
 	}
 	return int16(uintptr(t.CObj()))
 }

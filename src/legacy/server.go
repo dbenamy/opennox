@@ -237,7 +237,7 @@ func Nox_xxx_updatePoison_4EE8F0(a1 *server.Object, a2 int) {
 	resourceReducePoison(a1, int32(a2))
 }
 func Nox_xxx_updateUnitBuffs_4FF620(a1 *server.Object) {
-	C.nox_xxx_updateUnitBuffs_4FF620(asObjectC(a1))
+	spellLifeUpdateBuffs(a1)
 }
 func Nox_xxx_reconAttempt_41E390() {
 	C.nox_xxx_reconAttempt_41E390()
@@ -486,13 +486,13 @@ func Sub_4E5BF0(a1 bool) {
 	C.sub_4E5BF0(C.int(bool2int(a1)))
 }
 func Nox_xxx_Fn_4FCAC0(a1 bool, a2 int) {
-	C.nox_xxx_Fn_4FCAC0(C.int(bool2int(a1)), C.int(a2))
+	spellLifeReset(int32(bool2int(a1)), int32(a2))
 }
 func Nox_xxx_shopCancelSession_510DC0(a1 *server.TradeSession) {
 	shopCancel(a1)
 }
 func Sub_4FCEB0(a1 bool) {
-	C.sub_4FCEB0(C.int(bool2int(a1)))
+	spellLifeCancelDurations(int32(bool2int(a1)))
 }
 
 var _ = [1]struct{}{}[60-unsafe.Sizeof(server.TileDef{})]

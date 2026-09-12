@@ -4,6 +4,29 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
+### Completed — spell casting and buff lifecycle
+
+Baseline c6435866 was pushed before conversion. All 29 functions / 1,326 C lines
+are native; 15 obsolete C exports are retired. All 2,246 cases / 60 complete
+captures match C byte-for-byte (9.329s). Production C: **114,659 lines / 149 files /
+zero reference C**. Phoneme typed-pointer offset and Go EnchantPower corrections
+are documented for review in DECISIONS.md; conversion hashes remain unchanged.
+
+Accumulated port checks, including all 46,805 focused cases, pass in default /
+server / highres: 190.330s / 193.123s / 196.334s.
+Three builds verified ELF32/i386/SSE2/CGO; all 15 retired symbols are absent.
+Asset-backed full-suite failure multiset unchanged (1,553 entries; 15 pass, 3 fail,
+32 skip). Fresh unchanged repeat-a headless gameplay passes in 38.474s.
+Evidence: build/port-spell-lifecycle and baseline/runs/spell-lifecycle-port.
+See [SPELL_LIFECYCLE.md](docs/porting/SPELL_LIFECYCLE.md).
+
+Commit/push this completed batch, summarize in commentary, then CONTINUE.
+Next: 42 instant spell-effect and summon/charm functions / 1,740 removable C lines.
+Source-only audit and thin dispatcher draft are in build/port-spell-effects.
+Read audit.md and candidate-scope.json; no next-batch code/fixtures applied yet.
+Establish/repeat/commit/push its C baseline first. No pending question; no new
+agents. Preserve the archive. Staged generators for the completed batch are stale.
+
 ### Completed — temporary objects and projectile updates
 
 Original-C baseline `14eb6ed2` preceded conversion. All 31 functions / 980 C lines

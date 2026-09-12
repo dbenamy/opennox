@@ -64,7 +64,7 @@ func stateChargeMoveBack(u *server.Object) {
 }
 func stateChargeStun(u *server.Object) {
 	duration := floatToInt32(float32(C.nox_xxx_gamedataGetFloat_419D40(internCStr("BerserkerStunDuration"))))
-	C.nox_xxx_buffApplyTo_4FF380(asObjectC(u), 5, C.short(duration), 5)
+	spellLifeApplyBuff(u, 5, int16(duration), 5)
 }
 func stateCharge(u, t *server.Object) {
 	C.nox_xxx_playerSetState_4FA020(asObjectC(u), 13)
@@ -104,7 +104,7 @@ func statePlayerCollision(u, t *server.Object) {
 		stateCharge(u, t)
 	}
 	if t != nil && t.ObjClass&4 != 0 && t.ObjFlags&0x8000 == 0 && u.Buffs&(1<<16) != 0 && uint32(u.BuffsDur[16]) < 14*GetServer().S().TickRate() {
-		C.nox_xxx_buffApplyTo_4FF380(asObjectC(t), 16, C.short(uint16(15*GetServer().S().TickRate())), C.char(u.BuffsPower[16]))
-		C.nox_xxx_spellBuffOff_4FF5B0(asObjectC(u), 16)
+		spellLifeApplyBuff(t, 16, int16(uint16(15*GetServer().S().TickRate())), int8(u.BuffsPower[16]))
+		spellLifeBuffOff(u, int32(16))
 	}
 }
