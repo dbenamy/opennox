@@ -5,9 +5,9 @@ package legacy
 /*
 #include <stdlib.h>
 #include <stdint.h>
-extern unsigned int dword_5d4594_2487884,dword_5d4594_2487932;
+extern unsigned int dword_5d4594_2487884,dword_5d4594_2487932,nox_xxx_energyBoltTarget_5d4594_2487880;
 extern unsigned int nox_xxx_lightningOwner_5d4594_2487900,nox_xxx_lightningTargetArrayIndex_5d4594_2487904,nox_xxx_lightningTarget_5d4594_2487908,nox_xxx_lightningClosestTargetDistance_5d4594_2487912;
-static uint32_t* sustainedGlobals[]={&dword_5d4594_2487884,&dword_5d4594_2487932,&nox_xxx_lightningOwner_5d4594_2487900,&nox_xxx_lightningTargetArrayIndex_5d4594_2487904,&nox_xxx_lightningTarget_5d4594_2487908,&nox_xxx_lightningClosestTargetDistance_5d4594_2487912};
+static uint32_t* sustainedGlobals[]={&dword_5d4594_2487884,&dword_5d4594_2487932,&nox_xxx_lightningOwner_5d4594_2487900,&nox_xxx_lightningTargetArrayIndex_5d4594_2487904,&nox_xxx_lightningTarget_5d4594_2487908,&nox_xxx_lightningClosestTargetDistance_5d4594_2487912,&nox_xxx_energyBoltTarget_5d4594_2487880};
 static uint32_t sustainedGlobalGet(int i){return *sustainedGlobals[i];}
 static void sustainedGlobalSet(int i,uint32_t v){*sustainedGlobals[i]=v;}
 #include <stdint.h>
@@ -191,7 +191,7 @@ type PortTestSustainedSpellsSpec struct {
 	CacheRefs        map[uintptr]int
 	HealTable        [5]float32
 	DurationEdges    map[int]map[int]int
-	Globals          [6]uint32
+	Globals          [7]uint32
 	GlobalRefs       map[int]int
 }
 
@@ -231,7 +231,7 @@ func (p *portTestShopPools) sustainedPrepare() func() {
 		heal[i] = *memmap.PtrFloat32(0x587000, off)
 		*memmap.PtrFloat32(0x587000, off) = sp.HealTable[i]
 	}
-	var oldGlobals [6]uint32
+	var oldGlobals [7]uint32
 	for i := range oldGlobals {
 		oldGlobals[i] = uint32(C.sustainedGlobalGet(C.int(i)))
 		C.sustainedGlobalSet(C.int(i), C.uint32_t(sp.Globals[i]))
@@ -299,7 +299,7 @@ func (p *portTestShopPools) sustainedSnapshot(out []uint32) []uint32 {
 	for _, off := range sustainedCacheOffsets {
 		out = append(out, p.normalize(*memmap.PtrUint32(0x5d4594, off)))
 	}
-	for i := 0; i < 6; i++ {
+	for i := 0; i < 7; i++ {
 		out = append(out, p.normalize(uint32(C.sustainedGlobalGet(C.int(i)))))
 	}
 	out = append(out, *memmap.PtrUint32(0x587000, 260404))
@@ -364,7 +364,7 @@ func (p *portTestShopPools) sustainedDetails() *PortTestSustainedSpellsResult {
 			out.CreatedInit = append(out.CreatedInit, words(u.InitData, 9))
 		}
 	}
-	for i := 0; i < 6; i++ {
+	for i := 0; i < 7; i++ {
 		out.Globals = append(out.Globals, p.normalize(uint32(C.sustainedGlobalGet(C.int(i)))))
 	}
 	return out

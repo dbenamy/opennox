@@ -22,11 +22,17 @@ Coverage includes every entry point, duration/dead/nil boundaries,
 positive spawn and enchantment checks, mana transfer and shield arithmetic,
 spatial distance/ray boundaries, glyph slots and teleport movement, wand state,
 firewalk placement, multistep lightning, healing/channel life and unavailable
-named factories. Two independent C runs match all 129 complete captures byte-for-byte
-(11.977s / 11.281s). SHA-256 values are locked in
-`src/sustained_spells_porttest_test.go`. The enforced run plus all 1,803 instant
-spell-effects and 2,246 lifecycle cases passes in **28.661s**. No native
-conversion has been applied. Commit and push this baseline before conversion.
+named factories. Two independent expanded C runs match all 129 complete captures byte-for-byte
+(11.479s / 11.427s). SHA-256 values are locked
+in `src/sustained_spells_porttest_test.go`. The enforced run plus all 1,803 instant
+spell-effects and 2,246 lifecycle cases passes in **29.602s**.
+
+Initial baseline `4fad7f26` was pushed before conversion. A final source audit
+added the energy-bolt selected-target global (2487880) to save/reset/restore and
+both snapshots, with an independent positive selection assertion. This expanded
+C baseline is also repeated and locked before replacing any algorithms. All
+seven named globals used by this scope are now captured. No native conversion
+has been applied.
 
 ## Fixture and source decisions
 
