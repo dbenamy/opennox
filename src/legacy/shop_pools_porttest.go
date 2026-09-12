@@ -507,7 +507,9 @@ func (p *portTestShopPools) run() {
 			}
 			C.sub_510E20(C.int(a.Item))
 		default:
-			if a.Op >= 1400 {
+			if a.Op >= 1500 {
+				rv = p.spellLifeAction(a)
+			} else if a.Op >= 1400 {
 				rv = p.controlsAction(a)
 			} else if a.Op >= 1300 {
 				rv = p.rewardAction(a)

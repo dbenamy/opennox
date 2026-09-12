@@ -114,6 +114,7 @@ import (
 )
 
 type PortTestPlayerControlsSpec struct {
+	SpellLifecycle        *PortTestSpellLifecycleSpec
 	ByteReturn            int // 1: player record address; 2: last created item address, checked before normalization.
 	Corpse                bool
 	Guide                 bool
@@ -130,12 +131,13 @@ type PortTestPlayerControlsSpec struct {
 	BotWords              map[int]uint32
 }
 type portTestPlayerControls struct {
-	classes     map[*server.Object][2]uint32
-	transitions []uint32
-	freshBots   []unsafe.Pointer
-	result      uint64
-	name        unsafe.Pointer
-	canonical   map[*server.Object]unsafe.Pointer
+	spellLifecycle *portTestSpellLifecycle
+	classes        map[*server.Object][2]uint32
+	transitions    []uint32
+	freshBots      []unsafe.Pointer
+	result         uint64
+	name           unsafe.Pointer
+	canonical      map[*server.Object]unsafe.Pointer
 }
 
 var controlsOffsets = []uintptr{1564960, 1565600, 1568264, 1568268, 1568872}
@@ -226,7 +228,9 @@ func (p *portTestShopPools) controlsPrepare() func() {
 	if sp.Name != nil {
 		st.name = p.objectiveString(*sp.Name)
 	}
+	restoreSpellLife := p.spellLifePrepare()
 	return func() {
+		restoreSpellLife()
 		restoreCorpse()
 		restoreGuide()
 		C.nox_monsterBin_head_2386924 = oldMonster
@@ -301,6 +305,7 @@ func (p *portTestShopPools) controlsItems() {
 			*(*uint32)(unsafe.Add(bot, off)) = v
 		}
 	}
+	p.spellLifeItems()
 }
 func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 	spec := p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack
@@ -378,7 +383,7 @@ func (p *portTestShopPools) controlsSnapshot(out []uint32) []uint32 {
 	for _, off := range controlsOffsets {
 		out = append(out, *memmap.PtrUint32(0x5d4594, off))
 	}
-	return out
+	return p.spellLifeSnapshot(out)
 }
 
 func (p *portTestShopPools) controlsAdopt(u *server.Object) {

@@ -1763,7 +1763,7 @@ int nox_xxx_spellGetPhoneme_4FE1C0(int a1, char a2) {
 	char* v2;   // eax
 
 	if (nox_common_gameFlags_check_40A5C0(1)) {
-		if ((*(uint8_t*)(nox_server_getObjectFromNetCode_4ECCB0(a1) + 8) & 4) == 0) {
+		if ((*((uint8_t*)nox_server_getObjectFromNetCode_4ECCB0(a1) + 8) & 4) == 0) {
 			switch (a2) {
         	case 0:
         		return 193;

@@ -89,6 +89,12 @@ func controlsBase(op int) legacy.PortTestRoamSpec {
 }
 func controlsHash(t *testing.T, name string, cases []legacy.PortTestRoamSpec) []legacy.PortTestRoamResult {
 	t.Helper()
+	results := controlsRun(t, cases)
+	callbackHash(t, name, results, controlsHashes[name])
+	return results
+}
+func controlsRun(t *testing.T, cases []legacy.PortTestRoamSpec) []legacy.PortTestRoamResult {
+	t.Helper()
 	oldUpdate := legacy.Nox_xxx_unitUpdateMonster_50A5C0
 	legacy.Nox_xxx_unitUpdateMonster_50A5C0 = func(u *server.Object) {
 		core := u.Server()
@@ -106,9 +112,7 @@ func controlsHash(t *testing.T, name string, cases []legacy.PortTestRoamSpec) []
 		a.CancelAbilities(u)
 	}
 	defer func() { legacy.Nox_xxx_playerCancelAbils_4FC180 = old }()
-	results := effectsTimedRun(t, cases)
-	callbackHash(t, name, results, controlsHashes[name])
-	return results
+	return effectsTimedRun(t, cases)
 }
 func TestPlayerControlsAdmission(t *testing.T) {
 	for _, op := range []int{36, 37} {

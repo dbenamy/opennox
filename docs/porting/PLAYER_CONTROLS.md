@@ -216,7 +216,7 @@ also verifies a caller-supplied nonzero fifth modifier word is copied normally.
 Evidence: native-final-*.json, native-final.log and c-locked-*.json under
 build/port-player-controls. Preliminary and confirmation captures were losslessly
 compressed as .json.gz to recover VM disk space; the locked C and final native
-captures remain raw. No performance claim is based on fixture execution time.
+captures are now losslessly compressed as .json.gz (including c-locked and native-final); hashes are unchanged. No performance claim is based on fixture execution time.
 
 Accumulated tests, including 44,559 focused cases / 422 groups, pass in default,
 server and highres: 192.132s / 179.762s / 196.813s. All three production binaries

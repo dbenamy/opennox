@@ -829,6 +829,15 @@ header declarations, with direct Go fixture dispatch and unchanged expected
 hashes. All 3,205 cases / 58 groups pass in default/server/highres (9.281s /
 9.427s / 14.374s); three ELF32/i386/SSE2/CGO builds succeed and all 30 symbols are
 absent. Fresh unchanged gameplay passes in 34.974s. C remains 115,985 / 149 files /
-zero reference C. Evidence: build/port-controls-bridges. Commit/push and continue
-spell casting/buff lifecycle: 29 C functions / 1,326 removable lines; read staged
-build/port-spell-lifecycle/audit.md. No fixture changes for that batch yet.
+zero reference C. Evidence: build/port-controls-bridges. Committed/pushed 9fd4ebbf.
+
+## Active — spell casting and buff lifecycle C baseline
+
+29 functions / 1,326 removable C lines; production remains C. Optional guarded
+fixtures and 2,246 cases / 60 expected hashes are applied. First full C run passes
+in 8.743s; final locked spell + controls corpus passes twice in 38.765s. Phoneme typed-
+pointer offset bug corrected before locking (DECISIONS.md). See
+[batch notes](docs/porting/SPELL_LIFECYCLE.md). Lock/repeat/commit/push before any
+conversion. Correct EnchantPower duration-array mismatch in the Go conversion.
+Audit exports before qualification. No pending question. Stable controls/reward
+captures are now losslessly compressed .json.gz; tracked hashes unchanged.

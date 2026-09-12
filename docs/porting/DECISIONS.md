@@ -26,3 +26,14 @@ Chosen under the standing policy: use deterministic zero for that uninitialized
 word, matching the future Go array default. Reversal is one initializer. Retain
 all descriptor selection, ordering, callbacks and defined values. Evidence and
 validation are recorded in [PLAYER_CONTROLS.md](PLAYER_CONTROLS.md).
+
+## Spell phoneme class offset — review with spell lifecycle conversion
+
+Correct the server phoneme helper's class-byte access before locking its C
+baseline. `getObjectFromNetCode` returns `nox_object_t*`; adding 8 before the cast
+advanced eight whole objects (6,176 bytes), instead of reading byte offset 8.
+Nonplayer phoneme cases exposed an out-of-bounds read and crash. Cast to a byte
+pointer before adding the offset, matching the client branch's class-field check.
+The new corpus checks male/female and nonplayer sounds in both server and client
+paths. This is a deliberate bug correction, not exact preservation of the invalid
+read. Chosen under the standing policy; reversal is one expression.

@@ -149,13 +149,17 @@ all three variants (9.281s / 9.427s / 14.374s), all binaries rebuild, and nm con
 all 30 symbols absent. Fresh unchanged gameplay passes in 34.974s. C LOC unchanged.
 Evidence: build/port-controls-bridges and baseline/runs/controls-bridges-port.
 
-Next: establish the C baseline for spell casting and buff lifecycle. Source audit
-is staged in build/port-spell-lifecycle: 29 functions / 1,326 removable lines;
-retain nox_setImaginaryCaster and sub_57AEE0 declarations. Read its audit.md and
-candidate-scope.json; no spell-lifecycle code or fixtures applied yet. Reuse the
-guarded player/controls fixtures with optional data. Audit exports before final
-qualification. No pending question; no new agents; preserve archive. Do not rerun
-stale controls or bridge generators. Commit/push bridge cleanup, then continue.
+Current: spell casting/buff lifecycle C baseline is locked: 29 functions /
+1,326 removable C lines; production remains C. All 2,246 cases / 60 groups and
+3,205 existing controls cases pass twice together (38.765s). The typed-pointer
+phoneme class offset is deliberately corrected before baseline; DECISIONS.md
+records why. Projectile caster identity is normalized using the saved Magic type
+because the live type registry is restored before the outer callback snapshot.
+See [SPELL_LIFECYCLE.md](docs/porting/SPELL_LIFECYCLE.md). Commit/push this baseline,
+then convert all 29 and audit unused exports before qualification. Native drafts
+in build/port-spell-lifecycle/*.go.stage are incomplete, not applied. No pending
+question; no new agents; preserve archive. Stable controls/reward captures and
+intermediate spell captures are losslessly compressed .json.gz.
 
 Standing decision policy: when reasonably confident and reversal is inexpensive,
 implement and document for later review instead of asking. See

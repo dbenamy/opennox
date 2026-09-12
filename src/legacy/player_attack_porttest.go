@@ -118,6 +118,9 @@ func (p *portTestShopPools) attackPrepare() func() {
 	}
 	if sp.Controls != nil {
 		extra = append(extra, controlsTypeNames...)
+		if sp.Controls.SpellLifecycle != nil {
+			extra = append(extra, spellLifecycleTypeNames...)
+		}
 	}
 	restore := p.proxy.core.PortTestAttackTypes(sp.ProjectileSpeed, sp.MissingTypes, extra...)
 	restoreCollision := p.projectileCollisionPrepare()
