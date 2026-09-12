@@ -73,6 +73,7 @@ const (
 )
 
 type PortTestAttackSpec struct {
+	Controls                             *PortTestPlayerControlsSpec
 	Reward                               *PortTestRewardSpec
 	State                                *PortTestObjectStateSpec
 	Damage                               *PortTestDamageSpec
@@ -88,6 +89,7 @@ type PortTestAttackSpec struct {
 	MissingTypes                         []string
 }
 type portTestAttack struct {
+	controls                *portTestPlayerControls
 	reward                  *portTestReward
 	record, collisionNormal unsafe.Pointer
 	damage                  *portTestDamage
@@ -99,7 +101,11 @@ func (p *portTestShopPools) attackPrepare() func() {
 	if sp == nil {
 		return func() {}
 	}
-	p.temporary.world.objectives.attack = &portTestAttack{record: p.objectiveRegion(64)}
+	recordSize := 64
+	if sp.Controls != nil {
+		recordSize = 80
+	}
+	p.temporary.world.objectives.attack = &portTestAttack{record: p.objectiveRegion(recordSize)}
 	var extra []string
 	if sp.Collision != nil {
 		extra = projectileCollisionTypeNames
@@ -110,17 +116,22 @@ func (p *portTestShopPools) attackPrepare() func() {
 	if sp.State != nil {
 		extra = append(extra, objectStateTypeNames()...)
 	}
+	if sp.Controls != nil {
+		extra = append(extra, controlsTypeNames...)
+	}
 	restore := p.proxy.core.PortTestAttackTypes(sp.ProjectileSpeed, sp.MissingTypes, extra...)
 	restoreCollision := p.projectileCollisionPrepare()
 	restoreDamage := p.damagePrepare()
 	restoreState := p.objectStatePrepare()
 	restoreReward := p.rewardPrepare()
+	restoreControls := p.controlsPrepare()
 	oldRange, oldHit, oldTarget := C.dword_5d4594_2488652, C.dword_5d4594_2488656, C.dword_5d4594_2488660
 	C.dword_5d4594_2488652 = C.uint32_t(sp.NearestRange)
 	C.dword_5d4594_2488656 = 0
 	C.dword_5d4594_2488660 = 0
 	return func() {
 		C.dword_5d4594_2488652, C.dword_5d4594_2488656, C.dword_5d4594_2488660 = oldRange, oldHit, oldTarget
+		restoreControls()
 		restoreReward()
 		restoreState()
 		restoreDamage()
@@ -156,7 +167,11 @@ func (p *portTestShopPools) attackItems() {
 			*(*unsafe.Pointer)(unsafe.Add(ptr, off)) = p.temporaryRef(id).CObj()
 		}
 	}
-	apply(r.record, 64, sp.RecordWords, sp.RecordRefs)
+	recordSize := 64
+	if sp.Controls != nil {
+		recordSize = 80
+	}
+	apply(r.record, recordSize, sp.RecordWords, sp.RecordRefs)
 	u := p.temporaryRef(sp.Actor)
 	if u != nil {
 		apply(u.CObj(), 772, sp.ActorWords, sp.ActorRefs)
@@ -189,6 +204,7 @@ func (p *portTestShopPools) attackItems() {
 	p.damageItems()
 	p.objectStateItems()
 	p.rewardItems()
+	p.controlsItems()
 }
 func (p *portTestShopPools) attackAction(a PortTestShopAction) uint32 {
 	tmp := p.proxy.callbacks.shop.spec.TemporaryUpdates
@@ -237,5 +253,5 @@ func (p *portTestShopPools) attackSnapshot(out []uint32) []uint32 {
 			}
 		}
 	}
-	return p.rewardSnapshot(p.objectStateSnapshot(p.damageSnapshot(p.projectileCollisionSnapshot(out))))
+	return p.controlsSnapshot(p.rewardSnapshot(p.objectStateSnapshot(p.damageSnapshot(p.projectileCollisionSnapshot(out)))))
 }

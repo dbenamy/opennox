@@ -3089,7 +3089,7 @@ char nox_xxx_playerMakeDefItems_4EF7D0(int a1, int a2, int a3) {
 	int v14;               // eax
 	int v15;               // eax
 	int v16;               // edi
-	unsigned char v18[20]; // [esp+10h] [ebp-14h]
+	unsigned char v18[20] = {0}; // Include the fifth modifier word in initialization.
 	unsigned char* v19;    // [esp+28h] [ebp+4h]
 	uint32_t* v20;         // [esp+2Ch] [ebp+8h]
 

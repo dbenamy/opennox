@@ -138,7 +138,8 @@ Next scope: 56 functions / 1,971 removable C lines in
 [PLAYER_CONTROLS.md](docs/porting/PLAYER_CONTROLS.md); source audit at
 build/port-player-controls/candidate-scope.json and candidate-source.txt.
 Two adjacent C declarations stay in place. All candidate functions remain C;
-no fixtures or conversion applied yet. Reuse guarded players/owners/AI fixtures,
+The guarded fixture and corpus are implemented; final baseline checks are in progress.
+No controls conversion has started. Reuse guarded players/owners/AI fixtures,
 require positive creation/respawn/observer coverage, repeat and lock original-C
 captures, commit/push baseline before conversion. Continue autonomously after
 reward commit/push (completed as `58eca54d`). No new agents.
@@ -147,9 +148,14 @@ zero-initialized; 1,440 isolated cases / 400 messages match all defined original
 fields and every corrected message has zero padding. Accumulated default/server/
 highres regression passes (180.175s / 167.954s / 179.293s). C remains 117,956
 lines / 149 files / zero reference C. Continue the connected 56-function baseline.
-A thin dispatcher draft is in build/port-player-controls/player_controls_porttest.go.stage;
-it is not applied or compiled. No controls conversion or locked baseline yet. See
-PLAYER_CONTROLS.md and docs/porting/probes/locked_door_probe.py.
+The applied dispatcher covers all 56 C functions. Initial 2,662 cases / 38 groups
+repeated exactly, before respawn expansion. Current native-owner fixture binds
+ability cancellation and monster updating to the correct server. The C default-
+equipment modifier array now initializes its fifth word; this reversible fix is
+recorded for later review. No final hashes are locked yet. Finish the expanded
+C corpus and positive checks, repeat captures, lock/commit/push before conversion.
+See PLAYER_CONTROLS.md. Local current logs/captures: build/port-player-controls;
+pre-expansion c-repeat files are preliminary, not the final baseline.
 
 Standing decision policy: when reasonably confident and reversal is inexpensive,
 implement and document for later review instead of asking. See
@@ -793,3 +799,15 @@ strict boundaries, NaN quieting, overlapping inputs and live C ABI. All three
 accumulated test variants/builds, fresh gameplay and full-suite comparison pass;
 same 1,553 known failure entries. Production C: **141,000 lines (−42)**.
 Details: docs/porting/COLLISION_PRIMITIVES.md.
+
+### Player-controls recovery checkpoint — 2026-09-12
+
+The final C baseline is locked: 3,205 cases / 58 groups, controls pass 9.785s,
+shared-fixture regression pass 109.281s, all captures exact across separate runs.
+All 56 algorithms remain C; the default-equipment fifth word initializer is the
+only additional production edit. Observer-update callback identity is normalized.
+See docs/porting/PLAYER_CONTROLS.md for final evidence and both intentional fixes.
+Commit/push this baseline before applying native drafts from build/port-player-controls.
+C remains 117,956 lines / 149 files / zero reference C. Continue the 56-function
+conversion, qualify once at the batch boundary, then commit/push and continue.
+This checkpoint supersedes the earlier in-progress counts and unlocked status.

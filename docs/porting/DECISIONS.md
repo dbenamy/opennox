@@ -17,3 +17,12 @@ output for the upcoming Go conversion. No meaningful fields or string acceptance
 rules change. Reversal is one initializer, though preserving indeterminate
 padding is not recommended. The user explicitly approved this correction.
 Evidence and reproducible tests: [PLAYER_CONTROLS.md](PLAYER_CONTROLS.md).
+
+## Default-equipment modifier word — review with controls conversion
+
+Initialize the entire 20-byte C modifier array in 4EF7D0. Only four descriptor
+words were assigned, but the attribute helper copies a fifth word into items.
+Chosen under the standing policy: use deterministic zero for that uninitialized
+word, matching the future Go array default. Reversal is one initializer. Retain
+all descriptor selection, ordering, callbacks and defined values. Evidence and
+validation are recorded in [PLAYER_CONTROLS.md](PLAYER_CONTROLS.md).

@@ -24,9 +24,8 @@ original-C captures, lock hashes and commit/push before production conversion.
 Convert the connected family and qualify accumulated tests, relevant variants,
 production builds, full-suite failure identities and unchanged headless gameplay
 at the batch boundary. Update C_LOC/recovery docs, commit/push and continue.
-Local source/scope audit: build/port-player-controls. A 56-entry thin dispatcher
-draft is staged there; it has not been applied or compiled. Full guarded controls
-fixtures and locked baselines remain to be implemented.
+Local source/scope audit: build/port-player-controls. The 56-entry thin dispatcher and guarded fixture are implemented; the locked
+baseline below is ready for conversion.
 
 ## Locked-door notification: approved padding correction (2026-09-12)
 
@@ -138,3 +137,50 @@ The separate message probe covers 1,440 additional cases; these are not yet
 part of the Go test fixture count. This one-line correction was not a new
 production-build/full-suite/gameplay milestone; those last passed at the reward
 conversion. Evidence: build/port-player-controls/padding/qualification.json.
+
+## Locked C baseline (2026-09-12)
+
+All 56 entries are covered by 3,205 cases / 58 complete capture groups. Locked
+controls tests pass (9.785s), and the shared resource/inventory/equipment/effects/
+world/objectives/attack/projectile/damage/state/reward regression passes (109.281s).
+Every controls capture matches byte-for-byte across these separate runs. The
+baseline includes both documented initialization corrections; all 56 algorithms
+still run in C. Commit and push this checkpoint before production conversion.
+
+Coverage includes all 256 equipment availability masks, fractional stat and bolt
+arithmetic, signed stamina and narrow returns, all three bot classes, actual bot
+allocation/update, paired morphing, corpse-part creation, real default equipment,
+observer wraparound, waypoint movement/deletion, and admitted/rejected spell
+queues. Independent positive checks require allocations, known health/mana,
+glyph counts, inversion callbacks, queue mutations and zero fifth modifier words.
+
+The first locked run caught one missing callback identity: observer exit installs
+`nox_xxx_updatePlayer_4F8100` at object offset 744. Relinking moved its address.
+The fixture now normalizes this exact function to identity 91601; the four copies
+of that field in each snapshot are checked, rather than ignored. All other capture
+bytes were unchanged. Stable evidence: c-locked-*.json and c-confirm-*.json, with
+58 expected hashes committed in player_controls_porttest_test.go. Preliminary
+c-first/c-repeat files predate this final normalization and are not the baseline.
+
+Actual root ability cancellation and monster updating are bound to the fixture's
+server owner; this avoids invoking an unrelated global server or substituting
+the algorithms. Guarded player/stat protection records now optionally include
+strength, speed, character-name checksum, XP, level and ability checksum fields.
+Created inventory items are adopted for capture and teardown without inventing
+placement or mutating their state. The retained placement callback is recorded.
+
+### Review later: default-equipment fifth modifier word
+
+`nox_xxx_playerMakeDefItems_4EF7D0` filled only offsets 0, 4, 8 and 12 of a
+20-byte local modifier record. `stateAttributes` copies all 20 bytes, including
+the uninitialized word at +16, into created equipment. The C initializer now
+zeros the whole record before populating descriptors. This deliberate behavior
+change follows the user's standing instruction for confident, inexpensive-to-
+reverse decisions. It is not an exact preservation of indeterminate bytes.
+Keep the Go record zero-initialized and assert created default equipment's fifth
+word is zero. Review alongside the already-approved locked-door padding fix.
+The C baseline for this batch will include both corrections. C LOC is unchanged.
+
+Current evidence: build/port-player-controls/c-locked.log, c-regression.log,
+c-locked-*.json, c-confirm-*.json and baseline-hashes.json. Native drafts remain
+in the ignored build directory until the baseline checkpoint is pushed.

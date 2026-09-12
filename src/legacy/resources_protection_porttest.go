@@ -24,7 +24,11 @@ func portTestResourceProtection(p *portTestShopPools, sp *PortTestResourceSpec) 
 		Record protection.Record
 		Right  [2]uint32
 	}
-	records, free := alloc.Make([]guarded{}, 7)
+	n := 7
+	if sp.ExtraProtection {
+		n += 6
+	}
+	records, free := alloc.Make([]guarded{}, n)
 	head, tail, key, sum, seq := C.dword_5d4594_2516344, C.dword_5d4594_2516352, C.dword_5d4594_2516348, C.dword_5d4594_2516328, C.dword_5d4594_2516356
 	count := memmap.PtrUint16(0x587000, 311204)
 	oldCount := *count
@@ -33,6 +37,10 @@ func portTestResourceProtection(p *portTestShopPools, sp *PortTestResourceSpec) 
 	oldRNG := protectionRandom
 	values := []uint32{uint32(sp.HP), p.proxy.callbacks.shop.spec.Gold[0], uint32(sp.MaxHP), uint32(sp.Mana), uint32(sp.MaxMana), 0x1234, 0x5678}
 	offsets := []uintptr{4584, 4588, 4592, 4596, 4600, 4632, 4632}
+	if sp.ExtraProtection {
+		offsets = append(offsets, 4624, 4620, 4628, 4604, 4644, 4636)
+		values = append(values, 17, 19, 0, 0, 1, 0)
+	}
 	const encode = uint32(0x12345678)
 	var total uint32
 	for i := range records {

@@ -28,6 +28,7 @@ import (
 )
 
 type PortTestResourceSpec struct {
+	ExtraProtection                                      bool
 	ExtraClass, SyncSeed                                 uint32
 	OtherHolder, OtherOwner                              bool
 	PickupResult                                         bool
