@@ -44,6 +44,19 @@ Asset-backed full-suite failures match exactly (1,553 entries; 15 pass, 3 fail,
 See build/port-map-painting/qualification.json and baseline/runs/map-painting-port.
 The next batch is documented in MAP_POPULATION.md.
 
+## Fixture throughput follow-up
+
+Wall-definition snapshots compare the entire 986,560-byte backing array before
+reusing its SHA-256. Any changed byte causes a fresh digest; no state is omitted.
+A contract checks mutations outside active definitions, restoration and changes
+to variation limits during reset. All 88 complete captures remain byte-identical
+to the C baseline, and all painting/admission/snapshot checks pass in all variants.
+Root package times fall from 31.495s to **8.769s default / 8.551s server / 9.079s
+highres** (about 72% less execution time). Compile time is excluded from these
+package measurements. Production source and C count are unchanged: 106,609.
+Evidence: build/port-map-painting/cached-snapshot-comparison.json and
+cached-snapshot-variants.json. The cache is confined to the tagged fixture.
+
 ## Baseline prerequisite discovered
 
 Repeated unmodified C processes disagreed in 26 capture groups. Several

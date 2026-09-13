@@ -26,8 +26,17 @@ native-first-comparison.json, native-guards.json and baseline/runs/map-painting-
 The prerequisite fixes contiguous stack records in ten decompiled functions and
 initializes the border pattern; old process-dependent painting is deliberately
 not preserved. Shared C allocation ownership and coordinate alias semantics are
-preserved. See docs/porting/MAP_PAINTING.md and DECISIONS.md. Commit/push this
-completed batch, report it, then continue autonomously.
+preserved. See docs/porting/MAP_PAINTING.md and DECISIONS.md. Completed/pushed as **56ae5728**; summary delivered. Continue autonomously.
+
+### Completed prerequisite — faster complete fixture snapshots
+
+Wall-definition snapshots now compare every byte and reuse SHA-256 only for
+byte-identical state. Inactive-row mutations, restoration and reset limits are
+covered. All 88 complete C captures remain unchanged. Painting and admission
+checks pass in all variants: 8.769s default / 8.551s server / 9.079s highres root
+package time, down from 31.495s. Production C is unchanged at 106,609.
+See MAP_PAINTING.md and cached-snapshot-{comparison,variants}.json. Commit/push
+this test-only improvement, then continue the population/prefab baseline.
 
 ### Next — map population and prefab placement
 

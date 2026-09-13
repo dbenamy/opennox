@@ -27,6 +27,8 @@ type PortTestPaintOwners struct {
 	objects            []*Object
 	objectData         []unsafe.Pointer
 	handle             uintptr
+	definitionBytes    []byte
+	definitionHash     [32]byte
 }
 type PortTestPaintWallState struct {
 	Head, Free  uint32
@@ -193,7 +195,14 @@ func (p *PortTestPaintOwners) WallSnapshot(normalize func(uint32) uint32) (out P
 		out.Records = append(out.Records, record)
 		out.Intact = out.Intact && bytes.Equal(p.blocks[i][36:], bytes.Repeat([]byte{0x5a}, 16))
 	}
-	out.Definitions = sha256.Sum256(unsafe.Slice((*byte)(unsafe.Pointer(&p.S.Walls.defs[0])), int(unsafe.Sizeof(p.S.Walls.defs))))
+	// Compare the complete storage so mutations outside active definitions are
+	// still detected. Reuse only the digest of byte-identical state.
+	definitions := unsafe.Slice((*byte)(unsafe.Pointer(&p.S.Walls.defs[0])), int(unsafe.Sizeof(p.S.Walls.defs)))
+	if !bytes.Equal(p.definitionBytes, definitions) {
+		p.definitionBytes = append(p.definitionBytes[:0], definitions...)
+		p.definitionHash = sha256.Sum256(definitions)
+	}
+	out.Definitions = p.definitionHash
 	return out
 }
 func (p *PortTestPaintOwners) CreateWall(x, y int) *Wall {
