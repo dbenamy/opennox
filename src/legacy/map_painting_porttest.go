@@ -155,7 +155,22 @@ type PortTestPaintResult struct {
 	Steps                 []PortTestPaintStep
 	RandomTail, LogicTail int
 }
+
+// Optional services let connected map-generation corpora share allocation,
+// complete-state capture and isolation without changing painting's oracle.
+type paintTestExtension struct {
+	globals   map[string]*uint32
+	constants map[uint32]uint32
+	setup     func(*server.PortTestPaintOwners) func()
+	before    func(*paintTestFixture, PortTestPaintSpec)
+	invoke    func(*paintTestFixture, int, [6]uint32) uint32
+	after     func(*paintTestFixture, int, uint32)
+	finish    func(*paintTestFixture)
+}
+
 type paintTestFixture struct {
+	extra *paintTestExtension
+
 	table unsafe.Pointer
 	*mapRoomTestFixture
 	owners        *server.PortTestPaintOwners
@@ -209,6 +224,11 @@ func (f *paintTestFixture) containing(p unsafe.Pointer) *mapRoomTestRegion {
 	return nil
 }
 func (f *paintTestFixture) norm(v uint32) uint32 {
+	if f.extra != nil {
+		if n, ok := f.extra.constants[v]; ok {
+			return n
+		}
+	}
 	if v < 4096 {
 		return v
 	}
@@ -251,6 +271,15 @@ func (f *paintTestFixture) trackObject(u *server.Object) *mapRoomTestRegion {
 	f.owners.TrackObjects(u)
 	r := f.register(u.CObj(), int(unsafe.Sizeof(server.Object{})), "object", false)
 	f.objectRecords[r] = u
+	if u.InitData != nil {
+		f.register(u.InitData, int(f.owners.S.Types.ByInd(int(u.TypeInd)).InitDataSize), "objectInitData", false)
+	}
+	if u.CollideData != nil {
+		f.register(u.CollideData, int(f.owners.S.Types.ByInd(int(u.TypeInd)).CollideDataSize), "objectCollideData", false)
+	}
+	if u.Field189 != nil {
+		f.register(u.Field189, 2572, "objectField189", false)
+	}
 	if u.UseData.Ptr != nil {
 		f.register(u.UseData.Ptr, int(f.owners.S.Types.ByInd(int(u.TypeInd)).UseDataSize), "objectUseData", false)
 	}
@@ -421,6 +450,9 @@ func (f *paintTestFixture) snapshot(ret uint32) (out PortTestPaintStep) {
 	return out
 }
 func PortTestMapPainting(cases []PortTestPaintSpec, owner func(*server.Server) (Server, func())) []PortTestPaintResult {
+	return portTestMapPainting(cases, owner, nil)
+}
+func portTestMapPainting(cases []PortTestPaintSpec, owner func(*server.Server) (Server, func()), extra *paintTestExtension) []PortTestPaintResult {
 	runtime.LockOSThread()
 	defer runtime.UnlockOSThread()
 	cw := C.paintCW()
@@ -434,6 +466,14 @@ func PortTestMapPainting(cases []PortTestPaintSpec, owner func(*server.Server) (
 	noxflags.ResetGame()
 	defer func() { noxflags.ResetGame(); noxflags.SetGame(oldFlags) }()
 	globs := paintGlobals()
+	if extra != nil {
+		for n, p := range extra.globals {
+			if globs[n] != nil {
+				panic("duplicate map fixture global")
+			}
+			globs[n] = p
+		}
+	}
 	saved := map[string]uint32{}
 	for n, p := range globs {
 		saved[n] = *p
@@ -469,6 +509,12 @@ func PortTestMapPainting(cases []PortTestPaintSpec, owner func(*server.Server) (
 	oldGet := GetServer
 	GetServer = func() Server { return realOwner }
 	defer func() { GetServer = oldGet }()
+	if extra != nil && extra.setup != nil {
+		restore := extra.setup(owners)
+		if restore != nil {
+			defer restore()
+		}
+	}
 	var out []PortTestPaintResult
 	for _, sp := range cases {
 		cycle, variations := sp.Cycle, sp.Variations
@@ -479,13 +525,16 @@ func PortTestMapPainting(cases []PortTestPaintSpec, owner func(*server.Server) (
 			variations = 4
 		}
 		owners.Reset(sp.Seed, cycle, variations)
-		out = append(out, paintTestCase(sp, owners, globs, wantCW))
+		out = append(out, paintTestCase(sp, owners, globs, wantCW, extra))
 	}
 	return out
 }
-func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, globs map[string]*uint32, cw C.ushort) (out PortTestPaintResult) {
-	f := &paintTestFixture{mapRoomTestFixture: &mapRoomTestFixture{slots: map[int]*mapRoomTestRegion{}, intact: true}, owners: owners, owned: map[*mapRoomTestRegion]bool{}, objectRecords: map[*mapRoomTestRegion]*server.Object{}, globs: globs, secret: map[*mapRoomTestRegion]bool{}}
+func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, globs map[string]*uint32, cw C.ushort, extra *paintTestExtension) (out PortTestPaintResult) {
+	f := &paintTestFixture{extra: extra, mapRoomTestFixture: &mapRoomTestFixture{slots: map[int]*mapRoomTestRegion{}, intact: true}, owners: owners, owned: map[*mapRoomTestRegion]bool{}, objectRecords: map[*mapRoomTestRegion]*server.Object{}, globs: globs, secret: map[*mapRoomTestRegion]bool{}}
 	defer func() {
+		if extra != nil && extra.finish != nil {
+			extra.finish(f)
+		}
 		for r := range f.owned {
 			if r.alive {
 				C.free(r.ptr)
@@ -568,6 +617,9 @@ func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, glo
 			w.Data = mapRoomPointer(f.resolve(a))
 		}
 	}
+	if extra != nil && extra.before != nil {
+		extra.before(f, sp)
+	}
 	for p := mapRoomPointer(*globs["secretWalls"]); p != nil; p = *mapRoomRef(p, 0) {
 		r := f.known(p)
 		if r == nil {
@@ -593,8 +645,16 @@ func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, glo
 		f.guards()
 		var ret uint32
 		if a.Op >= 0 {
-			ret = paintInvokeNative(a.Op, args)
-			f.discover(ret, a.Op)
+			if extra != nil && extra.invoke != nil {
+				ret = extra.invoke(f, a.Op, args)
+				if extra.after != nil {
+					extra.after(f, a.Op, ret)
+				}
+				f.discover(0, -1)
+			} else {
+				ret = paintInvokeNative(a.Op, args)
+				f.discover(ret, a.Op)
+			}
 		}
 		if a.Assign != 0 {
 			if ret == 0 {

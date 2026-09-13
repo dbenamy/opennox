@@ -115,6 +115,15 @@ func (p *PortTestPaintOwners) TrackObjects(objects ...*Object) {
 		if found {
 			continue
 		}
+		if u.InitData != nil {
+			p.objectData = append(p.objectData, u.InitData)
+		}
+		if u.CollideData != nil {
+			p.objectData = append(p.objectData, u.CollideData)
+		}
+		if u.Field189 != nil {
+			p.objectData = append(p.objectData, u.Field189)
+		}
 		if u.UseData.Ptr != nil {
 			p.objectData = append(p.objectData, u.UseData.Ptr)
 		}

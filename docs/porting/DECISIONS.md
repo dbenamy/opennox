@@ -120,3 +120,20 @@ Defined-input behavior remains covered by unchanged C capture hashes. Two
 additional native admission contracts cover these formerly unsafe inputs.
 This reversible choice follows the standing decision policy; it is separate from
 byte-for-byte preservation of the valid-input painting corpus.
+
+
+## Population stack records — review generated-layout compatibility
+
+Original C execution confirms a spell-name crash, a point-output stack abort,
+and PlayerStart placement at a clamped map corner instead of the room center.
+Use explicit buffers of the sizes required by their consumers in spell-name
+lookup, population item placement and the population finale. Reject spell names
+that do not fit the existing 60-byte input record. The formatted output needs
+66 bytes including the `SPELL_` prefix and terminator. These are prerequisites
+to the corrected-C baseline, not differences hidden inside conversion hashes.
+The source fix is reversible; retain the corrected behavior unless reproduction
+of old broken generation becomes an explicit requirement. MAP_POPULATION.md
+records execution evidence and qualification status. After repairing spell-name lookup, the isolated invalid-book probe aborts with
+`free(): invalid size`. Route disposal through the existing engine object-free
+service; verify both the zero result and restored live-object count. This keeps
+object-pool ownership intact. It does not redesign the engine disposal service.

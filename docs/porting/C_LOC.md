@@ -94,6 +94,7 @@ target build selection and linker evidence.
 | Room geometry, occupancy, exclusions and decoration selection (2026-09-13) | 149 | 108,877 | −1,406 | 0 |
 | Map-painting C stack-record prerequisite (2026-09-13) | 149 | 108,858 | −19 | 0 |
 | Map painting, walls, borders and door placement (2026-09-13) | 149 | 106,609 | −2,249 | 0 |
+| Population stack-record and object-disposal prerequisites (2026-09-13; no conversion) | 149 | 106,611 | +2 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

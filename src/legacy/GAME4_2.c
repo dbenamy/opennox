@@ -188,14 +188,17 @@ int nox_xxx_map_51E140() {
 int nox_xxx_mapGenSpellIdByName_51E1D0(const char* a1) {
 	unsigned int i; // esi
 	char v3[60];    // [esp+8h] [ebp-78h]
-	char v4;        // [esp+44h] [ebp-3Ch]
+	char v4[66];        // [esp+44h] [ebp-3Ch]
 
+	if (strlen(a1) >= sizeof(v3)) {
+		return 0;
+	}
 	strcpy(v3, a1);
 	for (i = 0; i < strlen(v3); ++i) {
 		v3[i] = toupper(v3[i]);
 	}
-	nox_sprintf(&v4, "SPELL_%s", v3);
-	return nox_xxx_spellNameToN_4243F0(&v4);
+	nox_sprintf(v4, "SPELL_%s", v3);
+	return nox_xxx_spellNameToN_4243F0(v4);
 }
 // 51E1D0: using guessed type char var_78[60];
 
@@ -2274,7 +2277,7 @@ uint32_t* nox_xxx_mapGenMakeSpellbook_5220E0(int a1, const char* a2) {
 		nox_xxx_mapGenFinishSpellbook_527DB0((int)v3, v4);
 		return v3;
 	}
-	free(v3);
+	nox_xxx_objectFreeMem_4E38A0((nox_object_t*)v3);
 	return 0;
 }
 
@@ -2466,7 +2469,7 @@ float* nox_xxx_mapgen_5224B0(int a1, int a2, int a3) {
 	int v8;         // eax
 	float* v9;      // ebp
 	int v10;        // ebx
-	int v11;        // [esp+10h] [ebp-8h]
+	float v11[2];        // [esp+10h] [ebp-8h]
 	int v12;        // [esp+20h] [ebp+8h]
 	signed int v13; // [esp+24h] [ebp+Ch]
 
@@ -2517,31 +2520,31 @@ float* nox_xxx_mapgen_5224B0(int a1, int a2, int a3) {
 		result = (float*)sub_521C10((int)v4);
 		break;
 	case 3:
-		result = (float*)sub_5226D0((int)v4, 0.89999998, (int)&v11);
+		result = (float*)sub_5226D0((int)v4, 0.89999998, (int)v11);
 		if (result) {
 			result = (float*)nox_xxx_mapGenMakeEnchantedItem_5221A0((char*)(a3 + 4), *(char**)(a1 + 1100),
 																	*(uint32_t*)(a1 + 1104));
 			if (result) {
-				result = nox_xxx_mapGenMoveObject_527A10(result, (float*)&v11);
+				result = nox_xxx_mapGenMoveObject_527A10(result, v11);
 			}
 		}
 		break;
 	case 4:
-		result = (float*)sub_5226D0((int)v4, 0.89999998, (int)&v11);
+		result = (float*)sub_5226D0((int)v4, 0.89999998, (int)v11);
 		if (result) {
 			result = (float*)nox_xxx_mapGenMakeEnchantedItem_5221A0((char*)(a3 + 4), *(char**)(a1 + 1108),
 																	*(uint32_t*)(a1 + 1112));
 			if (result) {
-				result = nox_xxx_mapGenMoveObject_527A10(result, (float*)&v11);
+				result = nox_xxx_mapGenMoveObject_527A10(result, v11);
 			}
 		}
 		break;
 	case 5:
-		result = (float*)sub_5226D0((int)v4, 0.89999998, (int)&v11);
+		result = (float*)sub_5226D0((int)v4, 0.89999998, (int)v11);
 		if (result) {
 			result = (float*)nox_xxx_mapGenMakeSpellbook_5220E0(a1, (const char*)(a3 + 4));
 			if (result) {
-				result = nox_xxx_mapGenMoveObject_527A10(result, (float*)&v11);
+				result = nox_xxx_mapGenMoveObject_527A10(result, v11);
 			}
 		}
 		break;

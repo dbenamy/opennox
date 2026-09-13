@@ -2,6 +2,30 @@
 
 <!-- current-focus -->
 
+### Active — population/prefab baseline after qualified prerequisites
+
+Population remains C. Four prerequisites fix spell-name stack storage/length
+handling, two point records, and engine disposal of invalid spellbooks. Original
+isolated probes confirmed crashes/incorrect placement; ordinary regressions now
+pass. Production C **106,611 lines / 149 files / zero reference** (+2, no conversion).
+
+All **1,067 cases / 14 complete captures** agree in default/server/highres; existing
+room/painting tests pass alongside them in **12.619s / 12.302s / 13.366s** package
+time. See docs/porting/MAP_POPULATION.md and prerequisite-qualification.json.
+This is a prerequisite recovery checkpoint, not the locked full-batch baseline.
+Next expand decoded prefab caches/markers, candidate topology/room allocation,
+population ordering and placement. Audit 526550's two scalar-plus-array records;
+staged isolated probe: build/port-map-population/prefab-candidate-probe.go.stage.
+
+Commit/push this checkpoint, summarize, then continue autonomously. No question
+pending and no new agents. Do not rerun already-applied create-fixture.py,
+extend-painting-fixture.py or repair-stack-records.py. Current source/tests/docs
+are authoritative; preserve the asset archive. Lock repeated complete C captures
+before converting the full 38-routine batch. Production builds/full suite/fresh
+unchanged headless gameplay remain required at the batch boundary.
+
+Painting **56ae5728** and snapshot speedup **eea297fd** are already pushed.
+
 ### Completed — map painting, borders, walls and door placement
 
 Corrected-C baseline **08dc0ac5** preceded conversion. All **48 routines** are
@@ -33,27 +57,9 @@ byte-identical state. Inactive-row mutations, restoration and reset limits are
 covered. All 88 complete C captures remain unchanged. Painting and admission
 checks pass in all variants: 8.769s default / 8.551s server / 9.079s highres root
 package time, down from 31.495s. Production C is unchanged at 106,609.
-See MAP_PAINTING.md and cached-snapshot-{comparison,variants}.json. Commit/push
-this test-only improvement, then continue the population/prefab baseline.
+See MAP_PAINTING.md and cached-snapshot-{comparison,variants}.json. Completed
+and pushed as **eea297fd**. Population/prefab baseline is now active.
 
-### Next — map population and prefab placement
-
-Planning is complete for **38 connected routines / 1,758 C section lines**;
-initial audit 13 retained ABIs / 25 internal helpers. See MAP_POPULATION.md for
-the durable entry table and test plan. Local build/port-map-population contains
-scope.py, audit.py and candidate/ABI/dependency inventories. No next-batch source
-or fixture changes yet. Reuse real room/painting/object/cache owners and capture
-complete inventories, exclusions, random selection and prefab topology. Check the
-separate-coordinate locals in the population finale and the raw object free on
-invalid spellbook creation before locking C. Tick/progress callbacks need a
-controlled clock and isolated GUI state. Theme/file decoding remain dependencies.
-
-Lock and push repeated C captures before conversion. Then qualify/count/document/
-commit/push and continue. No pending question and no new agents. Preserve the
-asset archive. All painting apply-native/repair/lock/staged-fixture/native-guard
-scripts are ALREADY APPLIED; never rerun them. Painting scope.py cannot be rerun
-now because the source routines are removed. Committed source/tests/docs are the
-recovery record; candidate inventories and captures are local reproducible data.
 
 ### Completed — sustained spells and teleport callbacks
 

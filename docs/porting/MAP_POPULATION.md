@@ -55,7 +55,18 @@ continue. No pending question or new agents.
 
 Local reconstructible inventories: build/port-map-population/{scope.py,audit.py,
 candidate-scope.json,candidate-source.txt,candidate-dependencies.json,operations.json,
-abi-audit.json,named-globals.json}. Planning only; no fixture or production edits.
+abi-audit.json,named-globals.json}. Initial fixture work is in progress; production C remains unchanged. The shared
+painting fixture accepts population globals/dispatch and tracks InitData and
+Field189 allocation ownership. Initial groups exercise complete 64-bit returns,
+cyclic distance propagation, prefab coordinate candidates, metadata lookup and
+progress suppression/timing. Captures are exploratory, not yet locked baselines.
+
+Additional prerequisite candidates from source review: 5224B0 passes a single
+32-bit local as an 8-byte point output; 51E1D0 formats a complete spell identifier
+into a single-byte local. Establish focused execution evidence before repairs.
+The positive progress timing fixture uses the real callback with an already-seen
+GUI sequence, which exercises counter/tick updates without drawing. Actual GUI
+rendering remains covered by the headless gameplay scenario.
 
 ## Candidate entry points
 
@@ -99,3 +110,59 @@ abi-audit.json,named-globals.json}. Planning only; no fixture or production edit
 | `sub_526A90` | 3 | Retire |
 | `sub_526AA0` | 7 | Retire |
 | `sub_527D50` | 19 | Retire |
+
+
+## Active prerequisite findings (2026-09-13)
+
+Original production C probes run in separate processes confirm that spell lookup
+for `fireball` crashes and the 5224B0 wildcard-book placement path aborts with
+stack-smashing detection. The finale returns but places PlayerStart at the
+clamped map corner (5851.5, 5852.5), despite the supplied room having an interior
+center. The fixture now independently computes the expected center transform.
+Evidence: build/port-map-population/probe-{spell-name,point-output,finale-point}.log
+and c-probe-prerequisite-finale-point.json. The invalid-book probe first hits
+the spell-name defect, so repeat it after that repair to isolate the allocator.
+
+Three production C prerequisites are applied but awaiting qualification: give
+spell formatting its full 66-byte output record, reject names of 60 or more
+bytes before copying into the 60-byte input record, and use explicit two-float
+records in 5224B0 and the finale. Production C is now **106,611 / 149 files /
+zero reference C** (+2). No conversion has started and no hashes are locked yet.
+
+The initial 191 scalar/topology/coordinate/timing cases passed alongside all
+88 unchanged painting hashes. A further 580 inventory/book/item cases pass;
+the exit-name fixture exposed a fixture offset mistake (CollideData is byte 700,
+InitData is byte 692), corrected before admitting exit captures. Real pool and
+allocation owners are used throughout. Repeat full captures after qualification.
+
+
+After the stack repairs, all three direct regressions pass and all eight existing
+population capture groups remain byte-identical; all 88 painting captures pass.
+The invalid-book probe now reaches its allocator and aborts with `free(): invalid
+size`. Replace that raw free with the existing engine `objectFreeMem` service.
+The regression uses ordinary game flags to isolate pool/UseData disposal and
+asserts a zero return plus zero live objects. The four prerequisite probes also
+run as normal subtests, so they cannot silently disappear behind a diagnostic
+environment variable. Evidence: stack-probe-*.log and prereq-fixed.log.
+
+
+## Qualified prerequisite checkpoint
+
+All **1,067 cases / 14 capture groups** agree byte-for-byte across default,
+server and highres. The new population tests and existing room/painting tests
+pass together in **12.619s / 12.302s / 13.366s** package time. Thirteen earlier
+population groups also repeat exactly in independent default runs. Every
+registered spell name is checked against its exact ID in both upper/lower case;
+length boundaries and all four repaired paths have ordinary regression tests.
+Evidence: build/port-map-population/prerequisite-qualification.json and
+prereq-{repeat,server,highres}.log. Production C: **106,611 / 149 / zero reference**.
+
+Commit this as a prerequisite recovery checkpoint. The full population/prefab
+baseline is still incomplete: generated captures remain exploratory rather than
+mandatory conversion oracles. Next expand decoded-cache marker scanning, prefab
+candidate lists/room allocation/replacement, population ordering and actual
+placement. Audit the two six-element candidate arrays in 526550: each is still
+represented as a scalar plus a separate five-element local array. A staged
+isolated probe is in build/port-map-population/prefab-candidate-probe.go.stage.
+Recheck connected-list topology and all positive paths before locking the full
+baseline. Production builds/full-suite/gameplay remain batch-boundary checks.

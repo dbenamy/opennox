@@ -158,8 +158,7 @@ void nox_xxx_mapGenFinishPopulate_5228B0_mapgen_populate(int a1) {
 	int i;       // ebp
 	int j;       // esi
 	float* v6;   // eax
-	float v8;    // [esp+8h] [ebp-8h]
-	float v9;    // [esp+Ch] [ebp-4h]
+	float v8[2];    // [esp+8h] [ebp-8h]
 
 	nox_xxx_mapGenSetFlags_5235F0(157);
 	if (!nox_xxx_mapGenMakeExit_522A40(a1)) {
@@ -189,10 +188,10 @@ void nox_xxx_mapGenFinishPopulate_5228B0_mapgen_populate(int a1) {
 		}
 	}
 	v6 = (float*)sub_4D42C0();
-	v8 = (v6[11] + v6[9]) * 0.5;
-	v9 = (v6[12] + v6[10]) * 0.5;
+	v8[0] = (v6[11] + v6[9]) * 0.5;
+	v8[1] = (v6[12] + v6[10]) * 0.5;
 	nox_xxx_mapGenGetObjID_527940("PlayerStart");
-	nox_xxx_mapGenPlaceObj_5279B0(&v8);
+	nox_xxx_mapGenPlaceObj_5279B0(v8);
 	sub_469B90((int*)(a1 + 536));
 	sub_526A90();
 }
