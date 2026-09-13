@@ -10,11 +10,11 @@ and the map-generation RNG adapters. Terrain painting and prefab/object
 population are separate subsequent batches. After removing this scope virtually,
 only platform RNG and nullsub_28 remain as external callees.
 
-Production remains C; its complete repeated baseline is locked. Physical production C is
-110,283 lines in 149 files, with no reference C. Candidate source, operations and
-ABI inventories are under `build/port-map-rooms/`; the initial audit finds 49
-entries with production references and 11 without. Recheck Go getters and
-wrappers before retiring any ABI.
+Baseline `c470a93d` was committed and pushed before conversion. All 60 routines
+now have native implementations; 49 C ABIs remain for callers, and 11 internal
+helpers plus the obsolete no-op are retired. The source audit finds no remaining
+references to those 12 symbols. Physical production C is 108,877 lines in 149
+files, with zero reference C. Qualification is complete.
 
 ## Fixture and coverage
 
@@ -58,24 +58,50 @@ not exact preservation of the broken adapter. It follows the standing policy
 for confident reversible decisions and is recorded for later seed-compatibility
 review in [DECISIONS.md](DECISIONS.md). Before/after evidence is in
 `rng-before-fix.json`, `c-boundaries.log` and `c-rng-fixed.log` under the batch's
-build directory. Commit/push the corrected C baseline before replacing algorithms.
+build directory. The corrected baseline was pushed before replacing algorithms.
 
-## Locked C baseline and next gate
+## Locked C baseline
 
 All **2,997 cases / 122 complete captures** repeat byte-for-byte (0.720s / 0.559s).
 Hashes are locked in `src/map_rooms_porttest_test.go`. The prior 51,001 focused
 cases / 701 groups pass unchanged (root package 220.916s). Enforced new plus
-6,442 existing spell cases pass in 31.165s. Commit/push this corrected C
-baseline before native conversion.
+6,442 existing spell cases pass in 31.165s. This corrected C baseline was
+pushed as `c470a93d` before native conversion.
 
-The native scope retains 49 C ABIs and retires 11 internal helpers. Also remove
-the unused one-line nullsub_28 when its only two callers move; this gives 1,406
-physical C lines removed, with 60 actual native algorithms and target C total
-108,877. Raw C allocation primitives must preserve shared ownership while other
-C code allocates/frees these records; common/alloc's tracking registry cannot own
-untracked C pointers. No C algorithm will be retained solely for comparison.
+The conversion retains 49 C ABIs and retires 11 internal helpers plus the
+unused one-line nullsub_28. This removes 1,406 physical C lines and leaves
+108,877. Raw C allocation primitives preserve shared ownership while remaining
+C callers allocate/free these records; common/alloc's tracking registry cannot
+own untracked C pointers. No C algorithm is retained solely for comparison.
 
-After conversion, require unchanged complete captures. Run accumulated default,
-server and highres checks, build/verify all three production binaries, compare
-the asset-backed full-suite failure multiset, and replay fresh unchanged headless
-gameplay. Record the new physical C count, commit/push and continue.
+## Native precision checks
+
+The first capture run found one-bit differences in random point placement. The
+x87 build retains room-center intermediates in double stack slots across RNG
+calls, despite their decompiled float declarations. Preserve those intermediates
+in float64; only RNG arguments and the output coordinates round to float32.
+All original 2,997 cases / 122 complete captures then match byte-for-byte.
+
+Assembly review also found that exclusion comparisons retain half-unit insets
+at double precision. Four additional independent cases at 2^23 distinguish
+contact from overlap; the original C produces false/true/false/true. The draft's
+early float32 stores incorrectly admitted both contact cases, and the new tests
+reproduced those failures before the correction. These four contracts supplement
+the locked capture corpus; no baseline hashes were changed. Diagnostic C and
+assembly evidence stays in the ignored build directory, with no C test reference
+added to the repository.
+
+## Qualification
+
+Native final: all 2,997 cases / 122 captures match C unchanged in 0.657s; all four
+additional precision contracts pass. Accumulated 53,998 captured cases / 823
+groups plus those contracts pass in default/server/highres (228.594s / 298.913s / 233.356s wall time).
+All three production binaries are ELF32/i386, SSE2, CGO enabled; all 12 retired
+symbols are absent. Asset-backed full-suite failure multiset matches exactly:
+1,553 entries, 15 passing packages, 3 failing, 32 skipped. Fresh unchanged
+repeat-a headless gameplay passes in 35.817s. See `qualification.json`,
+`variants.json`, `builds.json`, `binary-verification.json`, `full-suite-comparison.json`
+and `build/baseline/runs/map-rooms-port` for local evidence.
+
+Production C is **108,877 lines / 149 files / zero test-reference C**, down 1,406
+physical lines. The next scope/test plan is [MAP_PAINTING.md](MAP_PAINTING.md).

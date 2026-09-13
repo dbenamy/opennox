@@ -2,6 +2,52 @@
 
 <!-- current-focus -->
 
+### Completed — room geometry, occupancy and decoration selection
+
+Corrected C baseline **c470a93d** was pushed before conversion. All 60 routines
+are native Go; 49 C ABIs remain and 11 internal helpers plus nullsub_28 are
+retired. All **2,997 cases / 122 complete captures** match the locked C baseline
+byte-for-byte (native final 0.657s). Four additional exclusion-precision contracts
+also pass. No hashes changed and no C algorithms remain solely for testing.
+
+Production C: **108,877 lines / 149 files / zero reference C** (−1,406 lines).
+Accumulated **53,998 captured cases / 823 groups**, plus the four new precision
+contracts, pass in default / server / highres: 228.594s / 298.913s / 233.356s wall time.
+Three production binaries verified ELF32/i386/SSE2/CGO; 12 retired symbols absent.
+Asset-backed full-suite failure multiset unchanged: 1,553 entries, 15 pass,
+3 fail, 32 skip. Fresh unchanged repeat-a gameplay passes in 35.817s.
+
+The prior RNG correction deliberately changes seeded layouts; see DECISIONS.md.
+Native conversion preserves x87 double intermediates for random-point centers
+and half-unit exclusion comparisons. The latter's four independent cases failed
+against the draft and agree with original C after correction. Shared room storage
+uses raw C allocation primitives because remaining C callers share ownership.
+See docs/porting/MAP_ROOMS.md, build/port-map-rooms/qualification.json and
+build/baseline/runs/map-rooms-port. Commit/push this qualified batch, then continue.
+
+### Active next — map painting, walls, borders and door placement
+
+Planning is complete for **48 connected routines / 2,274 C section lines**.
+See docs/porting/MAP_PAINTING.md for the durable scope and test plan. Precise
+physical removal depends on retaining shared forward declarations. Initial
+virtual audit: 16 retained ABIs, 32 obsolete helpers; recheck getters/callbacks.
+No painting algorithms or fixtures have been applied and no C baseline is locked.
+Local inventories: build/port-map-painting/candidate-scope.json, candidate-source.txt,
+operations.json, named-globals.json, candidate-dependencies.json, abi-audit.json,
+scope.py, audit.py and PLAN.md. Reconstruct from the tracked entry-point table
+if the build directory is lost.
+
+Use real tile grids, guarded wall pools and object factories, full sparse grid
+snapshots/links, actual startup direction tables and independent positive checks.
+Root tests should wrap/install a real isolated Server so both legacy.GetServer
+and root noxServer see it: actual CreateObjectAt/pending promotion and wall-name
+lookup must run against the same owner. Track subtile pool expansion, generated
+exclusions and secret-wall removal with correct allocator ownership. Lock and
+push repeated original-C captures BEFORE conversion. Then qualify/document/count/
+commit/push and continue autonomously. No pending question and no new agents.
+Preserve nox-iso-from-archive-org.7z. Room apply-native.py and staged baseline
+scripts are ALREADY APPLIED; never rerun them.
+
 ### Completed — sustained spells and teleport callbacks
 
 C baselines 4fad7f26 and expanded 59ef3bc5 were pushed before conversion.
@@ -26,45 +72,6 @@ links, float store boundaries and grouped type-cache initialization. Any gamepla
 cleanup is separate from this conversion and noted for later review.
 
 Completed and pushed as **efe8316c**. Summary delivered; continue autonomously.
-
-### Active — room geometry, occupancy and decoration selection
-
-C baseline complete for **60 routines / 1,405 C lines** in GAME4_2.c, plus one
-obsolete no-op line to retire after its two callers move. Both full C captures
-match: **2,997 cases / 122 groups**, 0.720s / 0.559s. Hashes are locked;
-new plus 6,442 existing spell cases pass together in 31.165s. Prior accumulated
-51,001 focused cases / 701 groups pass unchanged (root package 220.916s).
-No room algorithms have been converted; physical C remains 110,283 / 149 / 0.
-
-The C RNG adapter now masks the real platform integer to 15 bits before this
-baseline. Original C returned 575182.218727404 for [-5,8] and the RNG corpus
-failed after 52.35s; corrected corpus passes in 0.05s. This intentionally changes
-seeded layouts and is documented for review in DECISIONS.md and MAP_ROOMS.md.
-The broader Go platform API is unchanged. Include legacy/platform.go in baseline.
-
-Fixtures: legacy/map_rooms_porttest.go, map_rooms_porttest_test.go and
-map_rooms_boundaries_porttest_test.go. They use aligned guarded C allocations,
-real grid/room/exclusion ownership, full live-region snapshots and links,
-actual platform RNG with Get/Set restoration, and x87 PC53/nearest save/restore.
-Actual startup epsilon 0.1 and opposite directions 1,0,3,2 are supplied, captured
-and restored. Independent checks cover reciprocal direction, occupancy/list
-lifecycle, initialized allocations, cache tolerance/capacity, required decorations,
-RNG bounds/variety and a genuine 25-iteration overlap-resolution limit.
-
-Local evidence/planning: build/port-map-rooms/baseline.json, c-expanded-a/b
-captures, c-enforced.log, prior-ports-default.log, PLAN.md, candidate-scope/source,
-operations.json, abi-audit.json, native-names.json and retired.json. Scope has
-49 retained ABIs and 11 internal helpers to retire, plus the unused nullsub_28
-(one C line; cleanup-extra.json). Planned physical delta is 1,406 → 108,877 C lines.
-Use raw C allocation primitives while C callers share ownership; tracked
-common/alloc cannot free existing untracked C storage.
-
-Next: commit/push this corrected C baseline BEFORE conversion, then implement
-native room routines, remove obsolete bridges, compare all complete captures
-unchanged, qualify variants/builds/full-suite/headless, update docs/C_LOC and
-commit/push. Continue autonomously; no question and no new agents. Preserve archive.
-Staged fixture/dispatch/constant patches and lock-baseline.py are ALREADY APPLIED;
-edit real source, do not rerun them. Sustained batch is pushed as efe8316c.
 
 ### Completed — temporary objects and projectile updates
 

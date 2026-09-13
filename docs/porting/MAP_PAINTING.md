@@ -1,0 +1,105 @@
+# Map painting and door placement — next batch
+
+Room conversion is qualified; this is the next baseline-preparation task. The candidate covers 48 connected
+routines / 2,274 C section lines: room floor, wall, border and door emission;
+coordinate conversion; tile/subtile mutation and recycling; border propagation;
+wall direction composition; and shared object placement/orientation helpers.
+Prefab loading and randomized population follow separately. Precise physical
+removal depends on preserving any shared forward declarations.
+
+The first virtual-removal audit finds 16 ABIs with production references and 32
+internal helpers without them, including Go getter/callback references in the
+search. Recheck before conversion. Remaining services include already-native tile
+selection, edge mapping, worklists and room exclusions, plus actual wall/object
+owners. Local inventories are under `build/port-map-painting`.
+
+## Testing plan
+
+Lock repeated C captures and push the baseline before conversion. Use a guarded
+128x128 legacy tile grid with both half-tiles initially NONE (255), actual wall
+allocation/indexing, full room/config/pattern/output records, real object type
+lookup/allocation, and complete globals and return bits. Encode the grid sparsely
+against its fixed initial state so every mutation is captured without repeating
+megabytes of unchanged cells. Preserve complete subtile/pool records and links.
+
+Install actual startup direction/edge tables, save/restore all touched blobs,
+selection flags, definitions, pool heads and worklists, and retain guards. Seed a
+fresh real platform owner and capture the trailing RNG value. Lock/save/restore
+the x87 control word at PC53/nearest. Review generated C assembly when decompiled
+float declarations do not explain observable rounding.
+
+Root tests can wrap an isolated core in a real `Server` and temporarily install
+it as noxServer and legacy.GetServer. That exercises actual CreateObjectAt,
+collider/flags/pending-list updates and ObjectsClearPending, as well as the existing
+wall-name selector, which reads noxServer directly. Restore both owners afterward.
+Use actual DoorXfer/SpellRewardXfer addresses to cover snapping and type checks.
+
+Independent checks cover coordinate clamping/parity/bounds, painting/no-change,
+subtile deduplication, recycling and pool expansion, wall creation/update/removal,
+protected walls, seams/corners, all room kinds/directions, floor patterns, border
+propagation, default/explicit variations, NONE/missing-name gates, object/door/
+monster orientation and pending-object promotion. Include complete connected
+painting and placement sequences and a smoke case for every entry point.
+
+Keep allocation bases valid for the owning allocator. Track new 200-byte subtile
+blocks, generated exclusion rectangles and secret-wall removal without reading
+released storage. The tile grid needs its own pointer-identity range; the small
+record fixture's 10,000-byte spacing cannot represent its full storage safely.
+
+After conversion: unchanged full captures, accumulated default/server/highres
+checks, all three production builds, exact asset-backed full-suite failure
+comparison, fresh unchanged headless gameplay, actual C count, docs, commit/push
+and continue. No new agents or outstanding user question.
+
+## Candidate entry points
+
+| Entry point | C section lines | Current ABI audit |
+| --- | ---: | --- |
+| `nox_xxx_tileListAddNewSubtile_422160` | 26 | Retain |
+| `nox_xxx_tileFreeTileOne_4221E0` | 10 | Retain |
+| `nox_xxx_tileFreeTile_422200` | 19 | Retain |
+| `nox_xxx_wall_42A6C0` | 5 | Retain |
+| `nox_xxx_mapGenFixCoords_4D3D90` | 22 | Retain |
+| `sub_4D3FF0` | 36 | Retire |
+| `sub_51D5E0` | 16 | Retire |
+| `sub_51D8F0` | 42 | Retain |
+| `sub_51D9C0` | 20 | Retire |
+| `sub_51DA70` | 147 | Retire |
+| `sub_5244D0` | 12 | Retire |
+| `sub_524500` | 23 | Retire |
+| `sub_524550` | 23 | Retire |
+| `sub_5245A0` | 29 | Retain |
+| `sub_524610` | 21 | Retire |
+| `nox_xxx_gen_524680` | 159 | Retire |
+| `sub_524950` | 13 | Retire |
+| `sub_5249C0` | 77 | Retire |
+| `sub_524B50` | 95 | Retire |
+| `nox_xxx_gen_524E00` | 84 | Retain |
+| `sub_524FB0` | 176 | Retire |
+| `sub_525330` | 22 | Retire |
+| `sub_525370` | 22 | Retire |
+| `sub_5253B0` | 77 | Retire |
+| `nox_xxx_mapgen_525510` | 27 | Retire |
+| `nox_xxx_mapgen_525570` | 58 | Retire |
+| `nox_xxx_mapgen_525690` | 23 | Retire |
+| `nox_xxx_mapgen_525740` | 31 | Retire |
+| `nox_xxx_mapgen_525830` | 23 | Retire |
+| `nox_xxx_mapgen_5258E0` | 31 | Retire |
+| `sub_526C40` | 9 | Retain |
+| `sub_526C80` | 9 | Retire |
+| `sub_526D50` | 14 | Retire |
+| `sub_526DD0` | 38 | Retire |
+| `sub_526E60` | 75 | Retire |
+| `sub_527030` | 43 | Retain |
+| `sub_527380` | 38 | Retire |
+| `sub_527450` | 228 | Retire |
+| `nox_xxx_mapGenGetObjID_527940` | 18 | Retain |
+| `nox_xxx_mapGenPlaceObj_5279B0` | 18 | Retain |
+| `nox_xxx_mapGenMoveObject_527A10` | 33 | Retain |
+| `nox_xxx_mapGenOrientObj_527C60` | 62 | Retain |
+| `nox_xxx_mapGenFinishSpellbook_527DB0` | 16 | Retain |
+| `sub_543680` | 25 | Retire |
+| `sub_5437E0` | 110 | Retire |
+| `sub_543BC0` | 25 | Retire |
+| `nox_xxx_tile_543C50` | 108 | Retire |
+| `nox_xxx_tileSubtile_544310` | 36 | Retain |

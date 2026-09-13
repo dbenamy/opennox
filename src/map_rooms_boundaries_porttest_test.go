@@ -525,3 +525,37 @@ func TestMapRoomsResolveOverlap(t *testing.T) {
 		t.Fatal("oscillating overlap must hit the bounded iteration limit")
 	}
 }
+
+// At 2^23 the half-unit inset lies between float32 values. Contact after
+// insetting is not overlap; rounding the comparison operands early admits it.
+func TestMapRoomsExclusionPrecision(t *testing.T) {
+	bounds := [][4]float32{
+		{8388608, 8388620, 8388600, 8388609},
+		{8388608, 8388620, 8388600, 8388610},
+		{8388600, 8388610, 8388609, 8388620},
+		{8388600, 8388610, 8388608, 8388620},
+	}
+	var cases []legacy.PortTestMapRoomSpec
+	for _, b := range bounds {
+		s := roomSmoke(34)
+		s.Records = append(s.Records, roomRecord(28))
+		s.Records[1].Refs[368] = roomArg(10)
+		for i, pair := range [][2]float32{{b[0], b[1]}, {b[2], b[3]}} {
+			r := &s.Records[8+i]
+			r.Words = map[int]uint32{4: math.Float32bits(pair[0]), 8: 0, 12: math.Float32bits(pair[1]), 16: math.Float32bits(10)}
+		}
+		cases = append(cases, s)
+	}
+	for i, r := range legacy.PortTestMapRooms(cases) {
+		if !r.Intact || !r.ControlOK {
+			t.Fatalf("case %d: fixture state", i)
+		}
+		want := uint32(0)
+		if i%2 == 1 {
+			want = r.Steps[0].Slots[10]
+		}
+		if got := r.Steps[0].Return[0]; got != want {
+			t.Errorf("case %d: overlap %d, want %d", i, got, want)
+		}
+	}
+}

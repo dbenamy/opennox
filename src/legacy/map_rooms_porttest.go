@@ -10,11 +10,8 @@ package legacy
 static float mapRoomFloat(uint32_t v){float f;memcpy(&f,&v,4);return f;}
 static uint64_t mapRoomDouble(double v){uint64_t n;memcpy(&n,&v,8);return n;}
 long long nox_xxx_mapGenRoundFloatToPtr_520DF0(float2* a1, uint32_t* a2);
-int sub_520E60(int2* a1);
 int sub_520EA0(int a1);
 void sub_520F80();
-int sub_521100(int a1);
-int sub_521180(int a1);
 int sub_521200(int a1);
 int sub_521290(int2* a1);
 int sub_5212B0(int a1, uint32_t* a2);
@@ -26,7 +23,6 @@ int nox_xxx_mapGenAddNewRoom_521730(uint32_t* a1);
 int sub_521760(int a1);
 int sub_5217A0(int a1, int a2);
 int sub_521820(int a1, int a2);
-int nox_xxx_mapGenUpdateRoomRect_521850(int a1);
 int nox_xxx_mapGenSetRoomPos_521880(uint32_t* a1, float2* a2);
 int sub_5218B0(int a1, int a2);
 int sub_521900(int a1, int a2, int a3);
@@ -45,7 +41,6 @@ uint32_t* sub_521C10(int a1);
 int sub_521EB0(float* a1, float* a2);
 int sub_521F10(int a1, float* a2);
 int sub_5226D0(int a1, float a2, int a3);
-int sub_5227B0(int a1, float* a2);
 char sub_522CA0(int a1, float* a2);
 int nox_xxx_mapGenCheckRoomType_5238F0(int* a1);
 int sub_523920(int a1);
@@ -59,23 +54,14 @@ float* sub_523D30(float* a1, float* a2);
 float* sub_523E30(int a1, int a2, int a3);
 float* nox_xxx_mapGenMakeHall_523EC0(int a1, int a2, int a3);
 int sub_524070(int a1, int a2);
-int sub_524090(int a1, int* a2);
-int nox_xxx_mapGenDecorChkConstaint_5241C0(int a1, int a2);
-int nox_xxx_mapGenChkDecorFillsRoom_5241F0(int a1, int a2);
-char nox_xxx_mapGenDecorChkLimit_524220(int* a1, int a2);
 int nox_xxx_mapGenMakeRooms_524310(int a1);
-int sub_524660(float a1, float a2);
 void nox_xxx_mapGenSetRngSeed_526AB0(unsigned int a1);
 signed int nox_xxx_mapGenRandFunc_526AC0(int a1, signed int a2);
-int nox_xxx_mapGenRandFunc2_526B00(int a1, signed int a2);
 double sub_526BC0(float a1, float a2);
 static uint64_t mapRoomInvoke(int op,const uint32_t* v){switch(op){
 case 0: return (uint64_t)(nox_xxx_mapGenRoundFloatToPtr_520DF0((float2*)(uintptr_t)v[0],(uint32_t*)(uintptr_t)v[1]));
-case 1: return (uint32_t)(sub_520E60((int2*)(uintptr_t)v[0]));
 case 2: return (uint32_t)(sub_520EA0((int)v[0]));
 case 3: sub_520F80(); return 0;
-case 4: return (uint32_t)(sub_521100((int)v[0]));
-case 5: return (uint32_t)(sub_521180((int)v[0]));
 case 6: return (uint32_t)(sub_521200((int)v[0]));
 case 7: return (uint32_t)(sub_521290((int2*)(uintptr_t)v[0]));
 case 8: return (uint32_t)(sub_5212B0((int)v[0],(uint32_t*)(uintptr_t)v[1]));
@@ -87,7 +73,6 @@ case 13: return (uint32_t)(nox_xxx_mapGenAddNewRoom_521730((uint32_t*)(uintptr_t
 case 14: return (uint32_t)(sub_521760((int)v[0]));
 case 15: return (uint32_t)(sub_5217A0((int)v[0],(int)v[1]));
 case 16: return (uint32_t)(sub_521820((int)v[0],(int)v[1]));
-case 17: return (uint32_t)(nox_xxx_mapGenUpdateRoomRect_521850((int)v[0]));
 case 18: return (uint32_t)(nox_xxx_mapGenSetRoomPos_521880((uint32_t*)(uintptr_t)v[0],(float2*)(uintptr_t)v[1]));
 case 19: return (uint32_t)(sub_5218B0((int)v[0],(int)v[1]));
 case 20: return (uint32_t)(sub_521900((int)v[0],(int)v[1],(int)v[2]));
@@ -106,7 +91,6 @@ case 32: return (uint32_t)(uintptr_t)(sub_521C10((int)v[0]));
 case 33: return (uint32_t)(sub_521EB0((float*)(uintptr_t)v[0],(float*)(uintptr_t)v[1]));
 case 34: return (uint32_t)(sub_521F10((int)v[0],(float*)(uintptr_t)v[1]));
 case 35: return (uint32_t)(sub_5226D0((int)v[0],mapRoomFloat(v[1]),(int)v[2]));
-case 36: return (uint32_t)(sub_5227B0((int)v[0],(float*)(uintptr_t)v[1]));
 case 37: return (uint32_t)(sub_522CA0((int)v[0],(float*)(uintptr_t)v[1]));
 case 38: return (uint32_t)(nox_xxx_mapGenCheckRoomType_5238F0((int*)(uintptr_t)v[0]));
 case 39: return (uint32_t)(sub_523920((int)v[0]));
@@ -120,15 +104,9 @@ case 46: return (uint32_t)(uintptr_t)(sub_523D30((float*)(uintptr_t)v[0],(float*
 case 47: return (uint32_t)(uintptr_t)(sub_523E30((int)v[0],(int)v[1],(int)v[2]));
 case 48: return (uint32_t)(uintptr_t)(nox_xxx_mapGenMakeHall_523EC0((int)v[0],(int)v[1],(int)v[2]));
 case 49: return (uint32_t)(sub_524070((int)v[0],(int)v[1]));
-case 50: return (uint32_t)(sub_524090((int)v[0],(int*)(uintptr_t)v[1]));
-case 51: return (uint32_t)(nox_xxx_mapGenDecorChkConstaint_5241C0((int)v[0],(int)v[1]));
-case 52: return (uint32_t)(nox_xxx_mapGenChkDecorFillsRoom_5241F0((int)v[0],(int)v[1]));
-case 53: return (uint32_t)(nox_xxx_mapGenDecorChkLimit_524220((int*)(uintptr_t)v[0],(int)v[1]));
 case 54: return (uint32_t)(nox_xxx_mapGenMakeRooms_524310((int)v[0]));
-case 55: return (uint32_t)(sub_524660(mapRoomFloat(v[0]),mapRoomFloat(v[1])));
 case 56: nox_xxx_mapGenSetRngSeed_526AB0((unsigned int)v[0]); return 0;
 case 57: return (uint32_t)(nox_xxx_mapGenRandFunc_526AC0((int)v[0],(signed int)v[1]));
-case 58: return (uint32_t)(nox_xxx_mapGenRandFunc2_526B00((int)v[0],(signed int)v[1]));
 case 59: return mapRoomDouble(sub_526BC0(mapRoomFloat(v[0]),mapRoomFloat(v[1])));
 default:abort();}}
 
@@ -144,7 +122,9 @@ import "C"
 import (
 	"fmt"
 	"github.com/opennox/libs/platform"
+	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
+	"math"
 	"runtime"
 	"sort"
 	"unsafe"
@@ -507,7 +487,7 @@ func portTestMapRoomCase(sp PortTestMapRoomSpec, cw C.ushort) (out PortTestMapRo
 		var ret uint64
 		if action.Op >= 0 {
 			f.before(action.Op, args)
-			ret = uint64(C.mapRoomInvoke(C.int(action.Op), (*C.uint32_t)(unsafe.Pointer(&args[0]))))
+			ret = mapRoomPortInvoke(action.Op, args)
 			f.after(action.Op, ret, action.Assign)
 		}
 		out.Steps = append(out.Steps, f.snapshot(ret, action.Op))
@@ -527,5 +507,34 @@ func mapRoomConstantPointers() [6]*uint32 {
 		memmap.PtrUint32(0x581450, 10432), memmap.PtrUint32(0x581450, 10436),
 		memmap.PtrUint32(0x587000, 254952), memmap.PtrUint32(0x587000, 254956),
 		memmap.PtrUint32(0x587000, 254960), memmap.PtrUint32(0x587000, 254964),
+	}
+}
+
+func mapRoomPortInvoke(op int, args [4]uint32) uint64 {
+	switch op {
+	case 1:
+		return uint64(uint32(mapRoomRaw(unsafe.Pointer(mapRoomCell((*[2]int32)(mapRoomPointer(uint32(args[0]))))))))
+	case 4:
+		return uint64(uint32(mapRoomOccupy((*mapRoom)(mapRoomPointer(uint32(args[0]))))))
+	case 5:
+		return uint64(uint32(mapRoomVacate((*mapRoom)(mapRoomPointer(uint32(args[0]))))))
+	case 17:
+		return uint64(uint32(mapRoomRaw(unsafe.Pointer(mapRoomUpdateBounds((*mapRoom)(mapRoomPointer(uint32(args[0]))))))))
+	case 36:
+		return uint64(uint32(mapRoomPointExcluded((*mapRoom)(mapRoomPointer(uint32(args[0]))), (*types.Pointf)(mapRoomPointer(uint32(args[1]))))))
+	case 50:
+		return uint64(uint32(mapRoomRaw(unsafe.Pointer(mapRoomSelectDecoration((*mapRoom)(mapRoomPointer(uint32(args[0]))), mapRoomPointer(uint32(args[1])))))))
+	case 51:
+		return uint64(uint32(mapRoomDecorMatchesFlags(mapRoomPointer(uint32(args[0])), (*mapRoom)(mapRoomPointer(uint32(args[1]))))))
+	case 52:
+		return uint64(uint32(mapRoomDecorFitsRoom(mapRoomPointer(uint32(args[0])), (*mapRoom)(mapRoomPointer(uint32(args[1]))))))
+	case 53:
+		return uint64(uint32(mapRoomConsumeDecoration(mapRoomPointer(uint32(args[0])), mapRoomPointer(uint32(args[1])))))
+	case 55:
+		return uint64(uint32(mapRoomNear(math.Float32frombits(args[0]), math.Float32frombits(args[1]))))
+	case 58:
+		return uint64(uint32(mapRoomRandomCentered(int32(args[0]), int32(args[1]))))
+	default:
+		return uint64(C.mapRoomInvoke(C.int(op), (*C.uint32_t)(unsafe.Pointer(&args[0]))))
 	}
 }
