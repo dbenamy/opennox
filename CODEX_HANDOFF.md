@@ -2,60 +2,49 @@
 
 <!-- current-focus -->
 
+### Completed — map painting, borders, walls and door placement
 
-### Completed — room geometry, occupancy and decoration selection
+Corrected-C baseline **08dc0ac5** preceded conversion. All **48 routines** are
+native Go; **15 C ABIs remain and 33 helpers/bridges are retired**. All **3,580
+cases / 88 complete captures** match the locked C baseline byte-for-byte on the
+first complete native run (31.495s). No hashes changed and no C algorithms remain
+solely for testing. Two additional native object-admission contracts pass in all
+three variants; see DECISIONS.md for their intentionally defined failure paths.
 
-Corrected C baseline **c470a93d** was pushed before conversion. All 60 routines
-are native Go; 49 C ABIs remain and 11 internal helpers plus nullsub_28 are
-retired. All **2,997 cases / 122 complete captures** match the locked C baseline
-byte-for-byte (native final 0.657s). Four additional exclusion-precision contracts
-also pass. No hashes changed and no C algorithms remain solely for testing.
+Production C: **106,609 lines / 149 files / zero reference**,
+−2,249 conversion lines, after the separate −19-line stack-record prerequisite.
+Accumulated **57,578 captured cases / 911 groups**, plus four room contracts,
+pass in default / server / highres: **256.828s / 332.775s / 264.573s** wall time.
+All production binaries are ELF32/i386/SSE2/CGO; 33 retired symbols are absent.
+Asset-backed full-suite failure multiset is unchanged: 1,553 entries, 15 pass,
+3 fail, 32 skip. Fresh unchanged repeat-a headless gameplay passes in
+**35.310s**. Evidence: build/port-map-painting/qualification.json,
+native-first-comparison.json, native-guards.json and baseline/runs/map-painting-port.
 
-Production C: **108,877 lines / 149 files / zero reference C** (−1,406 lines).
-Accumulated **53,998 captured cases / 823 groups**, plus the four new precision
-contracts, pass in default / server / highres: 228.594s / 298.913s / 233.356s wall time.
-Three production binaries verified ELF32/i386/SSE2/CGO; 12 retired symbols absent.
-Asset-backed full-suite failure multiset unchanged: 1,553 entries, 15 pass,
-3 fail, 32 skip. Fresh unchanged repeat-a gameplay passes in 35.817s.
+The prerequisite fixes contiguous stack records in ten decompiled functions and
+initializes the border pattern; old process-dependent painting is deliberately
+not preserved. Shared C allocation ownership and coordinate alias semantics are
+preserved. See docs/porting/MAP_PAINTING.md and DECISIONS.md. Commit/push this
+completed batch, report it, then continue autonomously.
 
-The prior RNG correction deliberately changes seeded layouts; see DECISIONS.md.
-Native conversion preserves x87 double intermediates for random-point centers
-and half-unit exclusion comparisons. The latter's four independent cases failed
-against the draft and agree with original C after correction. Shared room storage
-uses raw C allocation primitives because remaining C callers share ownership.
-See docs/porting/MAP_ROOMS.md, build/port-map-rooms/qualification.json and
-build/baseline/runs/map-rooms-port. Completed and pushed as **df035395**.
-Summary delivered; continue autonomously.
+### Next — map population and prefab placement
 
-### Active — map painting corrected-C baseline locked
+Planning is complete for **38 connected routines / 1,758 C section lines**;
+initial audit 13 retained ABIs / 25 internal helpers. See MAP_POPULATION.md for
+the durable entry table and test plan. Local build/port-map-population contains
+scope.py, audit.py and candidate/ABI/dependency inventories. No next-batch source
+or fixture changes yet. Reuse real room/painting/object/cache owners and capture
+complete inventories, exclusions, random selection and prefab topology. Check the
+separate-coordinate locals in the population finale and the raw object free on
+invalid spellbook creation before locking C. Tick/progress callbacks need a
+controlled clock and isolated GUI state. Theme/file decoding remain dependencies.
 
-All 48 routines / 2,255 C section lines still execute in C. Ten functions now
-use explicit contiguous stack records; border propagation initializes its pattern.
-This deliberate prerequisite repair fixes process-dependent painting; see
-DECISIONS.md for assembly evidence and the compatibility review item.
-Production C: 108,858 / 149 files / zero reference (−19 prerequisite lines).
-
-All 3,580 cases / 88 complete groups match byte-for-byte in separate corrected-C
-runs (30.530s / 30.924s). Mandatory hashes are locked. Full captures/metadata:
-build/port-map-painting/c-final-{a,b} and c-baseline.json. Accumulated default
-port checks pass: 57,578 captured cases / 911 groups plus four room contracts;
-root package 252.436s, all 19 packages with selected tests pass.
-Commit/push this baseline now. No native
-conversion has started. The audit remains 16 retained ABIs / 32 obsolete helpers;
-recheck production getters/callbacks and preserve shared forward declarations.
-
-See docs/porting/MAP_PAINTING.md for scope, fixture ownership and contracts.
-Actual floor/wall/object owners, complete sparse grid/row pointers/pools/links,
-RNG tails and x87 state are captured. Direction checks use real startup tables.
-Uncorrected c-expanded/c-expanded-b differ in 26 groups and are evidence only.
-Older captures are losslessly compressed. All repair/lock/staged fixture scripts
-are ALREADY APPLIED; never rerun. Inventory scripts may be refreshed safely.
-
-Next: commit/push C baseline BEFORE conversion;
-then convert all 48, audit exports, qualify default/server/highres and three
-builds, compare asset-backed full-suite failures, run unchanged headless gameplay,
-count/document/commit/push and continue. No pending question and no new agents.
-Preserve nox-iso-from-archive-org.7z.
+Lock and push repeated C captures before conversion. Then qualify/count/document/
+commit/push and continue. No pending question and no new agents. Preserve the
+asset archive. All painting apply-native/repair/lock/staged-fixture/native-guard
+scripts are ALREADY APPLIED; never rerun them. Painting scope.py cannot be rerun
+now because the source routines are removed. Committed source/tests/docs are the
+recovery record; candidate inventories and captures are local reproducible data.
 
 ### Completed — sustained spells and teleport callbacks
 

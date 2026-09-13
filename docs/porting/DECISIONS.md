@@ -108,3 +108,15 @@ Generated layouts can deliberately differ from the broken C implementation.
 Repeated corrected-C captures and independent painting/corner contracts must
 pass before the new C baseline is locked. Review this with the prior map RNG
 compatibility fix if old seed/layout reproduction becomes a requirement.
+
+## Native map-object admission — review the defined failure paths
+
+Reject a nil object-selection name before string comparison, and use the existing
+server NewObjectByTypeInd guard when a selected type index is stale. The C name
+routine had a nil check after its unguarded strcmpi call; its placement routine
+checked the allocation result, but the C factory adapter could dereference a
+missing type first. Native callers now receive the intended zero/nil result.
+Defined-input behavior remains covered by unchanged C capture hashes. Two
+additional native admission contracts cover these formerly unsafe inputs.
+This reversible choice follows the standing decision policy; it is separate from
+byte-for-byte preservation of the valid-input painting corpus.

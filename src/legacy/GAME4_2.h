@@ -3,7 +3,6 @@
 
 #include "defs.h"
 
-int sub_51DA70(int a1, int a2, int a3, int a4, int a5);
 void sub_51DD50(int a1, int a2, int a3, int a4);
 int sub_51DE30(uint32_t* a1, uint32_t* a2, uint32_t* a3);
 int nox_xxx_mapCountWallsMB_51DEA0(int a1);
@@ -117,26 +116,8 @@ float* sub_523E30(int a1, int a2, int a3);
 float* nox_xxx_mapGenMakeHall_523EC0(int a1, int a2, int a3);
 int sub_524070(int a1, int a2);
 int nox_xxx_mapGenMakeRooms_524310(int a1);
-int sub_5244D0(int a1);
-int sub_524500(float2* a1, int a2);
-int sub_524550(int* a1, int a2);
 float* sub_5245A0(int a1, float* a2, int a3, int a4);
-float* sub_524610(int a1, float* a2, int a3);
-int nox_xxx_gen_524680(int a1, int a2, int a3);
-int sub_524950(int a1, int a2, float* a3, int* a4);
-int sub_5249C0(int a1, int a2, float* a3, int* a4);
-void sub_524B50(int a1, int a2, float* a3, int* a4);
 void nox_xxx_gen_524E00(int a1, int a2);
-int sub_524FB0(int a1, int a2, int a3);
-float2* sub_525330(float2* a1, int a2);
-float2* sub_525370(float2* a1, int a2);
-int sub_5253B0(float* a1);
-void nox_xxx_mapgen_525510(int a1, int a2);
-void nox_xxx_mapgen_525570(int a1, int a2, int a3, int a4);
-int nox_xxx_mapgen_525690(int a1, float2* a2, int a3);
-int nox_xxx_mapgen_525740(int a1, float2* a2, int a3);
-int nox_xxx_mapgen_525830(int a1, float2* a2, int a3);
-int nox_xxx_mapgen_5258E0(int a1, float2* a2, int a3);
 void sub_5259F0(int a1, int a2, float a3);
 float* sub_525AF0(int a1);
 void sub_525BF0(int a1);
@@ -156,13 +137,7 @@ void nox_xxx_mapGenSetRngSeed_526AB0(unsigned int a1);
 signed int nox_xxx_mapGenRandFunc_526AC0(int a1, signed int a2);
 double sub_526BC0(float a1, float a2);
 int sub_526C40(int a1);
-int sub_526C80(int a1);
-int sub_526D50(int a1);
-int sub_526DD0(float2* a1, int* a2);
-int sub_526E60(float* a1);
 int sub_527030(float2* a1);
-int sub_527380(float* a1);
-int sub_527450(uint32_t* a1);
 int nox_xxx_mapGenGetObjID_527940(char* a1);
 float* nox_xxx_mapGenPlaceObj_5279B0(float2* a1);
 float* nox_xxx_mapGenMoveObject_527A10(float* a1, float2* a2);

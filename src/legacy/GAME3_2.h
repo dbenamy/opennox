@@ -61,7 +61,6 @@ unsigned char* sub_4D3C70();
 uint32_t* sub_4D3C80(uint32_t* a1);
 int nox_xxx_mapGenFixCoords_4D3D90(float2* a1, float2* a2);
 int sub_4D3E30(float2* a1, float2* a2);
-int sub_4D3FF0(int a1);
 unsigned int sub_4D42E0(const char* a1);
 char* nox_xxx_getRandMapName_4D4310();
 int nox_xxx_mapGenStart_4D4320();

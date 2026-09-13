@@ -15,6 +15,35 @@ bridges/helpers. Recheck before qualification. Remaining services include alread
 selection, edge mapping, worklists and room exclusions, plus actual wall/object
 owners. Local inventories are under `build/port-map-painting`.
 
+## Qualified native conversion
+
+All **48 routines** are now native Go. Fifteen C ABIs remain; 33 internal
+helpers/bridges are retired, including the subtile-free-one export whose final
+Go caller now calls the native owner. The retired production-reference audit is
+empty. No C algorithms remain solely for tests.
+
+All **3,580 cases / 88 full captures** match the locked corrected-C baseline
+byte-for-byte on the first complete native run (31.495s). No expected hash changed.
+Full byte comparison is in
+build/port-map-painting/native-first-comparison.json.
+
+Physical C is **106,609 lines / 149 files / zero reference**: 2,249 lines removed
+by conversion, following the separately committed 19-line prerequisite repair.
+Retained shared forward declarations account for the difference from section
+counts. Implementations are legacy/map_painting{,_tiles,_walls,_borders,_patterns,
+_rooms,_objects,_exports}.go. Existing native selection, edge merging, worklists,
+room exclusions and server wall/object services are called directly. Shared
+subtile allocations continue using the C heap for remaining C owners.
+
+Accumulated **57,578 captured cases / 911 groups** plus four room-precision
+contracts pass in default/server/highres: 256.828s / 332.775s / 264.573s wall time. Two additional
+native admission contracts (nil name / stale type index) pass in all variants.
+Three production binaries are ELF32/i386/SSE2/CGO; all 33 retired symbols are absent.
+Asset-backed full-suite failures match exactly (1,553 entries; 15 pass, 3 fail,
+32 skip packages). Fresh unchanged repeat-a gameplay passes in 35.310s.
+See build/port-map-painting/qualification.json and baseline/runs/map-painting-port.
+The next batch is documented in MAP_POPULATION.md.
+
 ## Baseline prerequisite discovered
 
 Repeated unmodified C processes disagreed in 26 capture groups. Several
@@ -33,7 +62,7 @@ All **3,580 cases / 88 complete capture groups** pass twice in separate processe
 `src/map_painting_porttest_test.go`; full local captures and metadata are under
 `build/port-map-painting/c-final-{a,b}` and `c-baseline.json`.
 Accumulated default port regression validation passes (root package 252.436s);
-all 19 packages with selected tests pass. See c-accumulated.json and its log.
+the accumulated package checks succeed. See c-accumulated.json and its log.
 Including this corpus, the accumulated totals are 57,578 captured cases / 911
 groups, plus the four independent room-precision contracts.
 
@@ -92,7 +121,7 @@ and continue. No new agents or outstanding user question.
 | Entry point | C section lines | Current ABI audit |
 | --- | ---: | --- |
 | `nox_xxx_tileListAddNewSubtile_422160` | 26 | Retain |
-| `nox_xxx_tileFreeTileOne_4221E0` | 10 | Retain |
+| `nox_xxx_tileFreeTileOne_4221E0` | 10 | Retire |
 | `nox_xxx_tileFreeTile_422200` | 19 | Retain |
 | `nox_xxx_wall_42A6C0` | 5 | Retain |
 | `nox_xxx_mapGenFixCoords_4D3D90` | 22 | Retain |

@@ -3742,61 +3742,6 @@ int sub_422140(int a1) {
 	return result;
 }
 
-//----- (00422160) --------------------------------------------------------
-int* nox_xxx_tileListAddNewSubtile_422160(int a1, int a2, int a3, int a4) {
-	int* result; // eax
-	char* v5;    // eax
-	int i;       // ecx
-
-	result = *(int**)&dword_5d4594_588084;
-	if (!dword_5d4594_588084) {
-		v5 = (char*)calloc(1, 0xC8u);
-		dword_5d4594_588084 = v5;
-		for (i = 0; i < 180; i += 20) {
-			*(uint32_t*)&v5[i + 16] = &v5[i + 20];
-			v5 = *(char**)&dword_5d4594_588084;
-		}
-		*(uint32_t*)(dword_5d4594_588084 + 196) = 0;
-		result = *(int**)&dword_5d4594_588084;
-	}
-	dword_5d4594_588084 = result[4];
-	*result = a1;
-	result[1] = a2;
-	result[2] = a3;
-	result[3] = a4;
-	result[4] = 0;
-	return result;
-}
-
-//----- (004221E0) --------------------------------------------------------
-int nox_xxx_tileFreeTileOne_4221E0(void* a1) {
-	int result; // eax
-
-	result = a1;
-	*(uint32_t*)((uint32_t)a1 + 16) = dword_5d4594_588084;
-	dword_5d4594_588084 = a1;
-	return result;
-}
-
-//----- (00422200) --------------------------------------------------------
-int nox_xxx_tileFreeTile_422200(int a1) {
-	int result; // eax
-	int v2;     // esi
-
-	result = *(uint32_t*)(a1 + 16);
-	if (result) {
-		do {
-			v2 = *(uint32_t*)(result + 16);
-			nox_xxx_tileFreeTileOne_4221E0(result);
-			result = v2;
-		} while (v2);
-		*(uint32_t*)(a1 + 16) = 0;
-	} else {
-		*(uint32_t*)(a1 + 16) = 0;
-	}
-	return result;
-}
-
 //----- (00422230) --------------------------------------------------------
 int nox_server_mapRWFloorMap_422230(int a1) {
 	int v2;             // ecx

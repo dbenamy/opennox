@@ -646,3 +646,18 @@ func TestMapPaintingObjectGuardsAndRepeat(t *testing.T) {
 		}
 	}
 }
+
+// Native owner admission makes the existing failure paths usable without
+// dereferencing a missing name or object type. These are intentional guards,
+// separate from the defined-input C capture corpus.
+func TestMapPaintingNativeObjectAdmission(t *testing.T) {
+	missingName := paintSmoke(38)
+	missingName.Actions[0].Args[0] = roomValue(0)
+	missingType := paintSmoke(39)
+	missingType.Globals["dword_5d4594_3835388"] = roomValue(9999)
+	for i, result := range paintRun([]legacy.PortTestPaintSpec{missingName, missingType}) {
+		if !result.Intact || !result.ControlOK || result.Steps[0].Return != 0 || result.Steps[0].Objects[0] != 0 {
+			t.Fatalf("native object admission case %d", i)
+		}
+	}
+}

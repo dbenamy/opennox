@@ -32,101 +32,35 @@ extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
 extern nox_tileDef_t nox_tile_defs_arr[176];
 extern uint32_t nox_tile_def_cnt;
 int* nox_xxx_tileListAddNewSubtile_422160(int a1, int a2, int a3, int a4);
-int nox_xxx_tileFreeTileOne_4221E0(void* a1);
 int nox_xxx_tileFreeTile_422200(int a1);
 unsigned char nox_xxx_wall_42A6C0(unsigned char a1, unsigned char a2);
 int nox_xxx_mapGenFixCoords_4D3D90(float2* a1, float2* a2);
-int sub_4D3FF0(int a1);
-float* sub_51D5E0(float* a1);
 int sub_51D8F0(float2* a1);
-int sub_51D9C0(int a1, int a2, int a3, int a4, int a5);
-int sub_51DA70(int a1, int a2, int a3, int a4, int a5);
-int sub_5244D0(int a1);
-int sub_524500(float2* a1, int a2);
-int sub_524550(int* a1, int a2);
 float* sub_5245A0(int a1, float* a2, int a3, int a4);
-float* sub_524610(int a1, float* a2, int a3);
-int nox_xxx_gen_524680(int a1, int a2, int a3);
-int sub_524950(int a1, int a2, float* a3, int* a4);
-int sub_5249C0(int a1, int a2, float* a3, int* a4);
-void sub_524B50(int a1, int a2, float* a3, int* a4);
 void nox_xxx_gen_524E00(int a1, int a2);
-int sub_524FB0(int a1, int a2, int a3);
-float2* sub_525330(float2* a1, int a2);
-float2* sub_525370(float2* a1, int a2);
-int sub_5253B0(float* a1);
-void nox_xxx_mapgen_525510(int a1, int a2);
-void nox_xxx_mapgen_525570(int a1, int a2, int a3, int a4);
-int nox_xxx_mapgen_525690(int a1, float2* a2, int a3);
-int nox_xxx_mapgen_525740(int a1, float2* a2, int a3);
-int nox_xxx_mapgen_525830(int a1, float2* a2, int a3);
-int nox_xxx_mapgen_5258E0(int a1, float2* a2, int a3);
 int sub_526C40(int a1);
-int sub_526C80(int a1);
-int sub_526D50(int a1);
-int sub_526DD0(float2* a1, int* a2);
-int sub_526E60(float* a1);
 int sub_527030(float2* a1);
-int sub_527380(float* a1);
-int sub_527450(uint32_t* a1);
 int nox_xxx_mapGenGetObjID_527940(char* a1);
 float* nox_xxx_mapGenPlaceObj_5279B0(float2* a1);
 float* nox_xxx_mapGenMoveObject_527A10(float* a1, float2* a2);
 int nox_xxx_mapGenOrientObj_527C60(int a1, int a2);
 int nox_xxx_mapGenFinishSpellbook_527DB0(int a1, char a2);
-int sub_543680(float* a1);
-int sub_5437E0(int* a1, int a2, int a3);
-void sub_543BC0(int a1, int a2, int a3, int a4, int a5, int a6);
-int nox_xxx_tile_543C50(uint32_t* a1, int a2, int a3, int a4, int a5, int a6);
 int nox_xxx_tileSubtile_544310(float2* a1);
 static uint32_t paintInvoke(int op,const uint32_t* v){switch(op){
 case 0: return (uint32_t)(uintptr_t)nox_xxx_tileListAddNewSubtile_422160((int)v[0],(int)v[1],(int)v[2],(int)v[3]);
-case 1: return (uint32_t)nox_xxx_tileFreeTileOne_4221E0((void*)(uintptr_t)v[0]);
 case 2: return (uint32_t)nox_xxx_tileFreeTile_422200((int)v[0]);
 case 3: return (uint32_t)nox_xxx_wall_42A6C0((unsigned char)v[0],(unsigned char)v[1]);
 case 4: return (uint32_t)nox_xxx_mapGenFixCoords_4D3D90((float2*)(uintptr_t)v[0],(float2*)(uintptr_t)v[1]);
-case 5: return (uint32_t)sub_4D3FF0((int)v[0]);
-case 6: return (uint32_t)(uintptr_t)sub_51D5E0((float*)(uintptr_t)v[0]);
 case 7: return (uint32_t)sub_51D8F0((float2*)(uintptr_t)v[0]);
-case 8: return (uint32_t)sub_51D9C0((int)v[0],(int)v[1],(int)v[2],(int)v[3],(int)v[4]);
-case 9: return (uint32_t)sub_51DA70((int)v[0],(int)v[1],(int)v[2],(int)v[3],(int)v[4]);
-case 10: return (uint32_t)sub_5244D0((int)v[0]);
-case 11: return (uint32_t)sub_524500((float2*)(uintptr_t)v[0],(int)v[1]);
-case 12: return (uint32_t)sub_524550((int*)(uintptr_t)v[0],(int)v[1]);
 case 13: return (uint32_t)(uintptr_t)sub_5245A0((int)v[0],(float*)(uintptr_t)v[1],(int)v[2],(int)v[3]);
-case 14: return (uint32_t)(uintptr_t)sub_524610((int)v[0],(float*)(uintptr_t)v[1],(int)v[2]);
-case 15: return (uint32_t)nox_xxx_gen_524680((int)v[0],(int)v[1],(int)v[2]);
-case 16: return (uint32_t)sub_524950((int)v[0],(int)v[1],(float*)(uintptr_t)v[2],(int*)(uintptr_t)v[3]);
-case 17: return (uint32_t)sub_5249C0((int)v[0],(int)v[1],(float*)(uintptr_t)v[2],(int*)(uintptr_t)v[3]);
-case 18: sub_524B50((int)v[0],(int)v[1],(float*)(uintptr_t)v[2],(int*)(uintptr_t)v[3]);return 0;
 case 19: nox_xxx_gen_524E00((int)v[0],(int)v[1]);return 0;
-case 20: return (uint32_t)sub_524FB0((int)v[0],(int)v[1],(int)v[2]);
-case 21: return (uint32_t)(uintptr_t)sub_525330((float2*)(uintptr_t)v[0],(int)v[1]);
-case 22: return (uint32_t)(uintptr_t)sub_525370((float2*)(uintptr_t)v[0],(int)v[1]);
-case 23: return (uint32_t)sub_5253B0((float*)(uintptr_t)v[0]);
-case 24: nox_xxx_mapgen_525510((int)v[0],(int)v[1]);return 0;
-case 25: nox_xxx_mapgen_525570((int)v[0],(int)v[1],(int)v[2],(int)v[3]);return 0;
-case 26: return (uint32_t)nox_xxx_mapgen_525690((int)v[0],(float2*)(uintptr_t)v[1],(int)v[2]);
-case 27: return (uint32_t)nox_xxx_mapgen_525740((int)v[0],(float2*)(uintptr_t)v[1],(int)v[2]);
-case 28: return (uint32_t)nox_xxx_mapgen_525830((int)v[0],(float2*)(uintptr_t)v[1],(int)v[2]);
-case 29: return (uint32_t)nox_xxx_mapgen_5258E0((int)v[0],(float2*)(uintptr_t)v[1],(int)v[2]);
 case 30: return (uint32_t)sub_526C40((int)v[0]);
-case 31: return (uint32_t)sub_526C80((int)v[0]);
-case 32: return (uint32_t)sub_526D50((int)v[0]);
-case 33: return (uint32_t)sub_526DD0((float2*)(uintptr_t)v[0],(int*)(uintptr_t)v[1]);
-case 34: return (uint32_t)sub_526E60((float*)(uintptr_t)v[0]);
 case 35: return (uint32_t)sub_527030((float2*)(uintptr_t)v[0]);
-case 36: return (uint32_t)sub_527380((float*)(uintptr_t)v[0]);
-case 37: return (uint32_t)sub_527450((uint32_t*)(uintptr_t)v[0]);
 case 38: return (uint32_t)nox_xxx_mapGenGetObjID_527940((char*)(uintptr_t)v[0]);
 case 39: return (uint32_t)(uintptr_t)nox_xxx_mapGenPlaceObj_5279B0((float2*)(uintptr_t)v[0]);
 case 40: return (uint32_t)(uintptr_t)nox_xxx_mapGenMoveObject_527A10((float*)(uintptr_t)v[0],(float2*)(uintptr_t)v[1]);
 case 41: return (uint32_t)nox_xxx_mapGenOrientObj_527C60((int)v[0],(int)v[1]);
 case 42: return (uint32_t)nox_xxx_mapGenFinishSpellbook_527DB0((int)v[0],(char)v[1]);
-case 43: return (uint32_t)sub_543680((float*)(uintptr_t)v[0]);
-case 44: return (uint32_t)sub_5437E0((int*)(uintptr_t)v[0],(int)v[1],(int)v[2]);
-case 45: sub_543BC0((int)v[0],(int)v[1],(int)v[2],(int)v[3],(int)v[4],(int)v[5]);return 0;
-case 46: return (uint32_t)nox_xxx_tile_543C50((uint32_t*)(uintptr_t)v[0],(int)v[1],(int)v[2],(int)v[3],(int)v[4],(int)v[5]);
 case 47: return (uint32_t)nox_xxx_tileSubtile_544310((float2*)(uintptr_t)v[0]);
 default:abort();}}
 static uint32_t* paintGlobal(int i){switch(i){
@@ -161,6 +95,7 @@ import (
 	"unsafe"
 
 	"github.com/opennox/libs/platform"
+	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/memmap/nox/blobdata"
@@ -658,7 +593,7 @@ func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, glo
 		f.guards()
 		var ret uint32
 		if a.Op >= 0 {
-			ret = uint32(C.paintInvoke(C.int(a.Op), (*C.uint32_t)(unsafe.Pointer(&args[0]))))
+			ret = paintInvokeNative(a.Op, args)
 			f.discover(ret, a.Op)
 		}
 		if a.Assign != 0 {
@@ -685,4 +620,81 @@ func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, glo
 	out.RandomTail = platform.RandInt()
 	out.LogicTail = owners.S.Rand.Logic.IntClamp(0, 10000)
 	return out
+}
+
+func paintInvokeNative(op int, v [6]uint32) uint32 {
+	switch op {
+	case 1:
+		return uint32(mapPaintSubtileFree(mapPaintNode(v[0])))
+	case 5:
+		return uint32(mapPaintDirection(int32(v[0])))
+	case 6:
+		return uint32(mapPaintFloorPoint((*types.Pointf)(mapRoomPointer(v[0]))))
+	case 8:
+		return uint32(mapPaintFloorRoute(int32(v[0]), int32(v[1]), int32(v[2]), int32(v[3]), (*[8]int32)(mapRoomPointer(v[4]))))
+	case 9:
+		return uint32(mapPaintFloorCell(int32(v[0]), int32(v[1]), (*[8]int32)(mapRoomPointer(v[2])), int32(v[3]), int32(v[4])))
+	case 10:
+		return mapRoomRaw(unsafe.Pointer(mapPaintLayout(mapRoomPointer(v[0]))))
+	case 11:
+		return uint32(mapPaintWallLineX((*types.Pointf)(mapRoomPointer(v[0])), int32(v[1])))
+	case 12:
+		return uint32(mapPaintWallLineY((*types.Pointf)(mapRoomPointer(v[0])), int32(v[1])))
+	case 14:
+		return uint32(mapPaintLineY(mapRoomPointer(v[0]), (*types.Pointf)(mapRoomPointer(v[1])), int32(v[2])))
+	case 15:
+		return uint32(mapPaintRoomFloor(mapRoomPointer(v[0]), (*mapRoom)(mapRoomPointer(v[1])), mapRoomPointer(v[2])))
+	case 16:
+		return uint32(mapPaintPatternFill(mapRoomPointer(v[0]), mapRoomPointer(v[1]), (*types.Pointf)(mapRoomPointer(v[2])), (*[2]int32)(mapRoomPointer(v[3]))))
+	case 17:
+		return uint32(mapPaintPatternDiamond(mapRoomPointer(v[0]), mapRoomPointer(v[1]), (*types.Pointf)(mapRoomPointer(v[2])), (*[2]int32)(mapRoomPointer(v[3]))))
+	case 18:
+		mapPaintPatternRandom(mapRoomPointer(v[0]), mapRoomPointer(v[1]), (*types.Pointf)(mapRoomPointer(v[2])), (*[2]int32)(mapRoomPointer(v[3])))
+		return 0
+	case 20:
+		return uint32(mapPaintJoinWalls((*mapRoom)(mapRoomPointer(v[0])), (*mapRoom)(mapRoomPointer(v[1])), int32(v[2])))
+	case 21:
+		return uint32(mapPaintEraseLineX((*types.Pointf)(mapRoomPointer(v[0])), int32(v[1])))
+	case 22:
+		return uint32(mapPaintEraseLineY((*types.Pointf)(mapRoomPointer(v[0])), int32(v[1])))
+	case 23:
+		return uint32(mapPaintWallCorner((*types.Pointf)(mapRoomPointer(v[0]))))
+	case 24:
+		mapPaintRoomDoors(mapRoomPointer(v[0]), (*mapRoom)(mapRoomPointer(v[1])))
+		return 0
+	case 25:
+		mapPaintJoinDoors(mapRoomPointer(v[0]), (*mapRoom)(mapRoomPointer(v[1])), (*mapRoom)(mapRoomPointer(v[2])), int32(v[3]))
+		return 0
+	case 26:
+		return uint32(mapPaintDoorX((*mapRoom)(mapRoomPointer(v[0])), (*types.Pointf)(mapRoomPointer(v[1])), int32(v[2])))
+	case 27:
+		return uint32(mapPaintDoubleDoorX((*mapRoom)(mapRoomPointer(v[0])), (*types.Pointf)(mapRoomPointer(v[1])), int32(v[2])))
+	case 28:
+		return uint32(mapPaintDoorY((*mapRoom)(mapRoomPointer(v[0])), (*types.Pointf)(mapRoomPointer(v[1])), int32(v[2])))
+	case 29:
+		return uint32(mapPaintDoubleDoorY((*mapRoom)(mapRoomPointer(v[0])), (*types.Pointf)(mapRoomPointer(v[1])), int32(v[2])))
+	case 31:
+		return uint32(mapPaintMergeWalls(int32(v[0])))
+	case 32:
+		return uint32(mapPaintWallDirection(int32(v[0])))
+	case 33:
+		return uint32(mapPaintFindWall((*types.Pointf)(mapRoomPointer(v[0])), (*uint32)(mapRoomPointer(v[1]))))
+	case 34:
+		return uint32(mapPaintMakeWall((*types.Pointf)(mapRoomPointer(v[0]))))
+	case 36:
+		return uint32(mapPaintWorldWalls((*types.Pointf)(mapRoomPointer(v[0]))))
+	case 37:
+		return uint32(mapPaintGridWalls((*[2]int32)(mapRoomPointer(v[0]))))
+	case 43:
+		return uint32(mapPaintBorderPoint((*types.Pointf)(mapRoomPointer(v[0]))))
+	case 44:
+		return uint32(mapPaintFloodBorder((*[2]int32)(mapRoomPointer(v[0])), (*[8]int32)(mapRoomPointer(v[1])), int32(v[2])))
+	case 45:
+		mapPaintBorderNeighbor(int32(v[0]), int32(v[1]), int32(v[2]), int32(v[3]), (*[8]int32)(mapRoomPointer(v[4])), int32(v[5]))
+		return 0
+	case 46:
+		return uint32(mapPaintSubtileAdd(mapPaintNode(v[0]), int32(v[1]), int32(v[2]), int32(v[3]), int32(v[4]), int32(v[5])))
+	default:
+		return uint32(C.paintInvoke(C.int(op), (*C.uint32_t)(unsafe.Pointer(&v[0]))))
+	}
 }

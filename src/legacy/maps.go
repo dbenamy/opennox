@@ -223,7 +223,7 @@ func Nox_xxx_unitSetDecayTime_511660(obj *server.Object, a2 int) {
 }
 
 func Nox_xxx_tileFreeTileOne_4221E0(p unsafe.Pointer) {
-	C.nox_xxx_tileFreeTileOne_4221E0(p)
+	mapPaintSubtileFree((*[5]uint32)(p))
 }
 
 func Get_nox_client_mapSpecialRWObjectData_4AC610() unsafe.Pointer {

@@ -1573,28 +1573,6 @@ uint32_t* sub_4D3C80(uint32_t* a1) {
 	return result;
 }
 
-//----- (004D3D90) --------------------------------------------------------
-int nox_xxx_mapGenFixCoords_4D3D90(float2* a1, float2* a2) {
-	if (!a1 || !a2) {
-		return 0;
-	}
-	a2->field_0 = (a1->field_4 + a1->field_0) * 0.70710677 + 2957.0;
-	a2->field_4 = (a1->field_4 - a1->field_0) * 0.70710677 + 2956.0;
-	if (a2->field_0 <= 80.5) {
-		a2->field_0 = 82.5;
-	}
-	if (a2->field_4 <= 80.5) {
-		a2->field_4 = 81.5;
-	}
-	if (a2->field_0 >= 5853.5) {
-		a2->field_0 = 5851.5;
-	}
-	if (a2->field_4 >= 5853.5) {
-		a2->field_4 = 5852.5;
-	}
-	return 1;
-}
-
 //----- (004D3E30) --------------------------------------------------------
 int sub_4D3E30(float2* a1, float2* a2) {
 	int result; // eax
@@ -1617,42 +1595,6 @@ int sub_4D3E30(float2* a1, float2* a2) {
 	result = 1;
 	a2->field_0 = (a1->field_0 - 1.0 - a1->field_4) * 0.70710677;
 	a2->field_4 = (a1->field_4 + a1->field_0 - 5912.0) * 0.70710677;
-	return result;
-}
-
-//----- (004D3FF0) --------------------------------------------------------
-int sub_4D3FF0(int a1) {
-	int result; // eax
-
-	switch (a1) {
-	case 0:
-		result = 3;
-		break;
-	case 1:
-		result = 0;
-		break;
-	case 2:
-		result = 1;
-		break;
-	case 3:
-		result = 6;
-		break;
-	case 5:
-		result = 2;
-		break;
-	case 6:
-		result = 7;
-		break;
-	case 7:
-		result = 8;
-		break;
-	case 8:
-		result = 5;
-		break;
-	default:
-		result = -1;
-		break;
-	}
 	return result;
 }
 
