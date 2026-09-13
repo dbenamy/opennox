@@ -1,7 +1,7 @@
-# Map painting and door placement — next batch
+# Map painting and door placement
 
 Room conversion is qualified; this is the next baseline-preparation task. The candidate covers 48 connected
-routines / 2,274 C section lines: room floor, wall, border and door emission;
+routines / 2,255 C section lines: room floor, wall, border and door emission;
 coordinate conversion; tile/subtile mutation and recycling; border propagation;
 wall direction composition; and shared object placement/orientation helpers.
 Prefab loading and randomized population follow separately. Precise physical
@@ -9,9 +9,45 @@ removal depends on preserving any shared forward declarations.
 
 The first virtual-removal audit finds 16 ABIs with production references and 32
 internal helpers without them, including Go getter/callback references in the
-search. Recheck before conversion. Remaining services include already-native tile
+search. The subtile-free-one bridge has only a Go wrapper left: redirect it to
+the native owner during conversion, yielding 15 retained ABIs and 33 retired
+bridges/helpers. Recheck before qualification. Remaining services include already-native tile
 selection, edge mapping, worklists and room exclusions, plus actual wall/object
 owners. Local inventories are under `build/port-map-painting`.
+
+## Baseline prerequisite discovered
+
+Repeated unmodified C processes disagreed in 26 capture groups. Several
+coordinate and tile-pattern records were represented by unrelated scalar locals;
+optimized code removed fields and callers read unrelated stack memory. Ten
+functions now use explicit contiguous records, and the border entry initializes
+its pattern. The corrected baseline is locked after two complete, identical process runs.
+See DECISIONS.md for evidence and the seed/layout compatibility review item.
+This repair reduces physical C by 19 lines to 108,858; the 48 routines still run
+in C. The corrected scope is 48 routines / 2,255 C section lines.
+
+## Locked corrected-C baseline
+
+All **3,580 cases / 88 complete capture groups** pass twice in separate processes
+(30.530s / 30.924s) with byte-identical serialized state. Hashes are mandatory in
+`src/map_painting_porttest_test.go`; full local captures and metadata are under
+`build/port-map-painting/c-final-{a,b}` and `c-baseline.json`.
+Accumulated default port regression validation passes (root package 252.436s);
+all 19 packages with selected tests pass. See c-accumulated.json and its log.
+Including this corpus, the accumulated totals are 57,578 captured cases / 911
+groups, plus the four independent room-precision contracts.
+
+The fixture covers every entry point, 13x13 direction composition, coordinate
+aliases and clamping, pool growth/recycling and subtile merge/dedup, tile routing
+and anchors, rectangle/line/pattern painting, all floor-corner masks, protected
+walls and secret-wall removal, room kinds and connected patterns, real object
+placement/promotion and repeated movement, door/monster orientation, spellbook
+type checks, layout selection and flood-border propagation. Independent positive
+contracts supplement the complete-state hashes. Real startup tables include the
+monster direction-angle lookup and its preceding word for the legacy invalid
+index path. Sparse grid snapshots preserve every changed cell and all row
+pointers; guarded pools, links, complete records, globals, RNG tails and x87 state
+are included. Only the fresh server handle and known pointer identities normalize.
 
 ## Testing plan
 
@@ -62,23 +98,23 @@ and continue. No new agents or outstanding user question.
 | `nox_xxx_mapGenFixCoords_4D3D90` | 22 | Retain |
 | `sub_4D3FF0` | 36 | Retire |
 | `sub_51D5E0` | 16 | Retire |
-| `sub_51D8F0` | 42 | Retain |
+| `sub_51D8F0` | 35 | Retain |
 | `sub_51D9C0` | 20 | Retire |
 | `sub_51DA70` | 147 | Retire |
 | `sub_5244D0` | 12 | Retire |
 | `sub_524500` | 23 | Retire |
-| `sub_524550` | 23 | Retire |
-| `sub_5245A0` | 29 | Retain |
-| `sub_524610` | 21 | Retire |
-| `nox_xxx_gen_524680` | 159 | Retire |
-| `sub_524950` | 13 | Retire |
-| `sub_5249C0` | 77 | Retire |
-| `sub_524B50` | 95 | Retire |
+| `sub_524550` | 22 | Retire |
+| `sub_5245A0` | 28 | Retain |
+| `sub_524610` | 20 | Retire |
+| `nox_xxx_gen_524680` | 157 | Retire |
+| `sub_524950` | 12 | Retire |
+| `sub_5249C0` | 75 | Retire |
+| `sub_524B50` | 93 | Retire |
 | `nox_xxx_gen_524E00` | 84 | Retain |
 | `sub_524FB0` | 176 | Retire |
 | `sub_525330` | 22 | Retire |
 | `sub_525370` | 22 | Retire |
-| `sub_5253B0` | 77 | Retire |
+| `sub_5253B0` | 76 | Retire |
 | `nox_xxx_mapgen_525510` | 27 | Retire |
 | `nox_xxx_mapgen_525570` | 58 | Retire |
 | `nox_xxx_mapgen_525690` | 23 | Retire |
@@ -91,7 +127,7 @@ and continue. No new agents or outstanding user question.
 | `sub_526DD0` | 38 | Retire |
 | `sub_526E60` | 75 | Retire |
 | `sub_527030` | 43 | Retain |
-| `sub_527380` | 38 | Retire |
+| `sub_527380` | 37 | Retire |
 | `sub_527450` | 228 | Retire |
 | `nox_xxx_mapGenGetObjID_527940` | 18 | Retain |
 | `nox_xxx_mapGenPlaceObj_5279B0` | 18 | Retain |

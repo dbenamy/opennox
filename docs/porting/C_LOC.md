@@ -92,6 +92,7 @@ target build selection and linker evidence.
 | Instant spell effects, summons, charm and portals (2026-09-12) | 149 | 112,919 | −1,740 | 0 |
 | Sustained spells and teleport callbacks (2026-09-12) | 149 | 110,283 | −2,636 | 0 |
 | Room geometry, occupancy, exclusions and decoration selection (2026-09-13) | 149 | 108,877 | −1,406 | 0 |
+| Map-painting C stack-record prerequisite (2026-09-13) | 149 | 108,858 | −19 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

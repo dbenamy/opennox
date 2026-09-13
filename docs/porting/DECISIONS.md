@@ -84,3 +84,27 @@ of the broken adapter. Chosen under the standing policy: the appropriate range
 is explicit in both consumers and reversal is one expression. Retain this as a
 seed-compatibility decision to review later. Evidence: build/port-map-rooms/
 rng-before-fix.json, c-smoke-map-rooms-smoke-59.json and c-boundaries.log.
+
+## Map-painting stack records — review the compatibility correction
+
+Replace separate decompiler locals consumed as contiguous coordinates, dimensions
+or runtime tile patterns with explicit arrays (and one mixed int/float union).
+Ten painting functions have this layout defect. Also initialize the border
+entry's eight-word pattern before assigning its tile and border fields; its
+anchor-mode field was otherwise uninitialized. This is a prerequisite C repair,
+not an attempt to preserve compiler-dependent behavior during the Go conversion.
+
+Repeated original-C processes with identical inputs disagreed in 26 capture
+groups. A positive 1x1 rectangle alternated between painting and no change.
+Optimized i386 assembly for sub_5245A0 retains only the X local at stack offset
+40, places the stack canary at 44, and removes the intended Y assignments.
+The callee reads two floats through the X address, so Y comes from unrelated
+stack data. Independent corner-mask checks also fail before the repair.
+Evidence: build/port-map-painting/c-expanded{,-b} captures/logs and game4_2.s.
+
+Chosen under the standing decision policy: the intended record layouts are
+explicit in the consumers and decompiler offsets; reverting is inexpensive.
+Generated layouts can deliberately differ from the broken C implementation.
+Repeated corrected-C captures and independent painting/corner contracts must
+pass before the new C baseline is locked. Review this with the prior map RNG
+compatibility fix if old seed/layout reproduction becomes a requirement.

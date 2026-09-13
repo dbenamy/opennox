@@ -2,6 +2,7 @@
 
 <!-- current-focus -->
 
+
 ### Completed — room geometry, occupancy and decoration selection
 
 Corrected C baseline **c470a93d** was pushed before conversion. All 60 routines
@@ -23,30 +24,38 @@ and half-unit exclusion comparisons. The latter's four independent cases failed
 against the draft and agree with original C after correction. Shared room storage
 uses raw C allocation primitives because remaining C callers share ownership.
 See docs/porting/MAP_ROOMS.md, build/port-map-rooms/qualification.json and
-build/baseline/runs/map-rooms-port. Commit/push this qualified batch, then continue.
+build/baseline/runs/map-rooms-port. Completed and pushed as **df035395**.
+Summary delivered; continue autonomously.
 
-### Active next — map painting, walls, borders and door placement
+### Active — map painting corrected-C baseline locked
 
-Planning is complete for **48 connected routines / 2,274 C section lines**.
-See docs/porting/MAP_PAINTING.md for the durable scope and test plan. Precise
-physical removal depends on retaining shared forward declarations. Initial
-virtual audit: 16 retained ABIs, 32 obsolete helpers; recheck getters/callbacks.
-No painting algorithms or fixtures have been applied and no C baseline is locked.
-Local inventories: build/port-map-painting/candidate-scope.json, candidate-source.txt,
-operations.json, named-globals.json, candidate-dependencies.json, abi-audit.json,
-scope.py, audit.py and PLAN.md. Reconstruct from the tracked entry-point table
-if the build directory is lost.
+All 48 routines / 2,255 C section lines still execute in C. Ten functions now
+use explicit contiguous stack records; border propagation initializes its pattern.
+This deliberate prerequisite repair fixes process-dependent painting; see
+DECISIONS.md for assembly evidence and the compatibility review item.
+Production C: 108,858 / 149 files / zero reference (−19 prerequisite lines).
 
-Use real tile grids, guarded wall pools and object factories, full sparse grid
-snapshots/links, actual startup direction tables and independent positive checks.
-Root tests should wrap/install a real isolated Server so both legacy.GetServer
-and root noxServer see it: actual CreateObjectAt/pending promotion and wall-name
-lookup must run against the same owner. Track subtile pool expansion, generated
-exclusions and secret-wall removal with correct allocator ownership. Lock and
-push repeated original-C captures BEFORE conversion. Then qualify/document/count/
-commit/push and continue autonomously. No pending question and no new agents.
-Preserve nox-iso-from-archive-org.7z. Room apply-native.py and staged baseline
-scripts are ALREADY APPLIED; never rerun them.
+All 3,580 cases / 88 complete groups match byte-for-byte in separate corrected-C
+runs (30.530s / 30.924s). Mandatory hashes are locked. Full captures/metadata:
+build/port-map-painting/c-final-{a,b} and c-baseline.json. Accumulated default
+port checks pass: 57,578 captured cases / 911 groups plus four room contracts;
+root package 252.436s, all 19 packages with selected tests pass.
+Commit/push this baseline now. No native
+conversion has started. The audit remains 16 retained ABIs / 32 obsolete helpers;
+recheck production getters/callbacks and preserve shared forward declarations.
+
+See docs/porting/MAP_PAINTING.md for scope, fixture ownership and contracts.
+Actual floor/wall/object owners, complete sparse grid/row pointers/pools/links,
+RNG tails and x87 state are captured. Direction checks use real startup tables.
+Uncorrected c-expanded/c-expanded-b differ in 26 groups and are evidence only.
+Older captures are losslessly compressed. All repair/lock/staged fixture scripts
+are ALREADY APPLIED; never rerun. Inventory scripts may be refreshed safely.
+
+Next: commit/push C baseline BEFORE conversion;
+then convert all 48, audit exports, qualify default/server/highres and three
+builds, compare asset-backed full-suite failures, run unchanged headless gameplay,
+count/document/commit/push and continue. No pending question and no new agents.
+Preserve nox-iso-from-archive-org.7z.
 
 ### Completed — sustained spells and teleport callbacks
 

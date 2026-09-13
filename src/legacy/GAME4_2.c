@@ -3184,22 +3184,21 @@ int sub_524500(float2* a1, int a2) {
 
 //----- (00524550) --------------------------------------------------------
 int sub_524550(int* a1, int a2) {
+	union { int i[2]; float f[2]; } point;
 	int v2;     // edx
 	int result; // eax
 	int v4;     // esi
-	int v5;     // [esp+4h] [ebp-8h]
-	float v6;   // [esp+8h] [ebp-4h]
 
 	v2 = a1[1];
-	v5 = *a1;
-	v6 = *(float*)&v2;
+	point.i[0] = *a1;
+	point.f[1] = *(float*)&v2;
 	result = sub_526D50(1);
 	v4 = a2;
 	if (a2 > 0) {
 		do {
-			result = sub_526E60((float*)&v5);
+			result = sub_526E60((float*)&point.i[0]);
 			--v4;
-			v6 = v6 + 32.526913;
+			point.f[1] = point.f[1] + 32.526913;
 		} while (v4);
 	}
 	return result;
@@ -3207,28 +3206,27 @@ int sub_524550(int* a1, int a2) {
 
 //----- (005245A0) --------------------------------------------------------
 float* sub_5245A0(int a1, float* a2, int a3, int a4) {
+	float point[2];
 	float* result; // eax
 	int v5;        // ebp
 	int v6;        // esi
-	float v7;      // [esp+4h] [ebp-8h]
-	float v8;      // [esp+8h] [ebp-4h]
 
 	result = (float*)a4;
-	v8 = a2[1] + 16.263456;
+	point[1] = a2[1] + 16.263456;
 	if (a4 > 0) {
 		v5 = a4;
 		do {
-			v7 = *a2 + 16.263456;
+			point[0] = *a2 + 16.263456;
 			if (a3 > 0) {
 				v6 = a3;
 				do {
-					result = sub_51D5E0(&v7);
+					result = sub_51D5E0(&point[0]);
 					--v6;
-					v7 = v7 + 32.526913;
+					point[0] = point[0] + 32.526913;
 				} while (v6);
 			}
 			--v5;
-			v8 = v8 + 32.526913;
+			point[1] = point[1] + 32.526913;
 		} while (v5);
 	}
 	return result;
@@ -3236,20 +3234,19 @@ float* sub_5245A0(int a1, float* a2, int a3, int a4) {
 
 //----- (00524610) --------------------------------------------------------
 float* sub_524610(int a1, float* a2, int a3) {
+	float point[2];
 	float* result; // eax
 	int v4;        // esi
-	float v5;      // [esp+4h] [ebp-8h]
-	float v6;      // [esp+8h] [ebp-4h]
 
 	result = a2;
 	v4 = a3;
-	v5 = *a2 + 16.263456;
-	v6 = a2[1] + 16.263456;
+	point[0] = *a2 + 16.263456;
+	point[1] = a2[1] + 16.263456;
 	if (a3 > 0) {
 		do {
-			result = sub_51D5E0(&v5);
+			result = sub_51D5E0(&point[0]);
 			--v4;
-			v6 = v6 + 32.526913;
+			point[1] = point[1] + 32.526913;
 		} while (v4);
 	}
 	return result;
@@ -3257,6 +3254,8 @@ float* sub_524610(int a1, float* a2, int a3) {
 
 //----- (00524680) --------------------------------------------------------
 int nox_xxx_gen_524680(int a1, int a2, int a3) {
+	float point[2];
+	int size[2] = {0, 0};
 	float* v3;     // edi
 	double v4;     // st7
 	int result;    // eax
@@ -3275,10 +3274,6 @@ int nox_xxx_gen_524680(int a1, int a2, int a3) {
 	uint32_t* v18; // eax
 	uint32_t* v19; // esi
 	uint32_t* i;   // esi
-	int v21 = 0;   // [esp+10h] [ebp-10h]
-	int v22 = 0;   // [esp+14h] [ebp-Ch]
-	float v23;     // [esp+18h] [ebp-8h]
-	float v24;     // [esp+1Ch] [ebp-4h]
 
 	nox_xxx_tileGetDefByName_51D4D0((char*)(a3 + 60));
 	v3 = (float*)(a2 + 20);
@@ -3288,109 +3283,109 @@ int nox_xxx_gen_524680(int a1, int a2, int a3) {
 		v4 = *v3 + 32.526913;
 		result = *(uint32_t*)(a2 + 12) - 2;
 		v6 = *(uint32_t*)(a2 + 16) - 2;
-		v21 = *(uint32_t*)(a2 + 12) - 2;
-		v22 = v6;
-		v23 = v4;
-		v24 = *(float*)(a2 + 24) + 32.526913;
+		size[0] = *(uint32_t*)(a2 + 12) - 2;
+		size[1] = v6;
+		point[0] = v4;
+		point[1] = *(float*)(a2 + 24) + 32.526913;
 		break;
 	case 2:
 		v7 = *(uint32_t**)(a2 + 88);
 		result = *(uint32_t*)(a2 + 12) - 2;
-		v23 = *v3 + 32.526913;
-		v21 = result;
+		point[0] = *v3 + 32.526913;
+		size[0] = result;
 		if (v7 && *v7 != 1) {
-			v24 = *(float*)(a2 + 24);
+			point[1] = *(float*)(a2 + 24);
 			v6 = *(uint32_t*)(a2 + 16);
 		} else {
 			v6 = *(uint32_t*)(a2 + 16) - 1;
-			v24 = *(float*)(a2 + 24) + 32.526913;
+			point[1] = *(float*)(a2 + 24) + 32.526913;
 		}
 		v8 = *(uint32_t**)(a2 + 120);
-		v22 = v6;
+		size[1] = v6;
 		if (v8) {
 			if (*v8 != 1) {
-				v22 = ++v6;
+				size[1] = ++v6;
 				break;
 			}
-			v22 = --v6;
+			size[1] = --v6;
 		}
 		break;
 	case 3:
 		v9 = *(uint32_t**)(a2 + 120);
 		v10 = *(float*)(a2 + 24);
 		result = *(uint32_t*)(a2 + 12) - 2;
-		v23 = *v3 + 32.526913;
-		v24 = v10;
-		v21 = result;
+		point[0] = *v3 + 32.526913;
+		point[1] = v10;
+		size[0] = result;
 		if (v9 && *v9 != 1) {
 			v6 = *(uint32_t*)(a2 + 16);
 		} else {
 			v6 = *(uint32_t*)(a2 + 16) - 1;
 		}
 		v11 = *(uint32_t**)(a2 + 88);
-		v22 = v6;
+		size[1] = v6;
 		if (v11) {
-			v12 = v24;
+			v12 = point[1];
 			if (*v11 == 1) {
-				v22 = --v6;
-				v24 = v12 + 32.526913;
+				size[1] = --v6;
+				point[1] = v12 + 32.526913;
 			} else {
-				v24 = v12 - 32.526913;
-				v22 = ++v6;
+				point[1] = v12 - 32.526913;
+				size[1] = ++v6;
 			}
 		}
 		break;
 	case 4:
 		v13 = *(uint32_t*)(a2 + 16);
 		v14 = *(float*)(a2 + 24) + 32.526913;
-		v23 = *v3;
+		point[0] = *v3;
 		v15 = *(uint32_t**)(a2 + 152);
 		v6 = v13 - 2;
-		v24 = v14;
-		v22 = v6;
+		point[1] = v14;
+		size[1] = v6;
 		if (v15 && *v15 != 1) {
 			result = *(uint32_t*)(a2 + 12);
 		} else {
 			result = *(uint32_t*)(a2 + 12) - 1;
 		}
 		v16 = *(uint32_t**)(a2 + 184);
-		v21 = result;
+		size[0] = result;
 		if (v16) {
-			v17 = v23;
+			v17 = point[0];
 			if (*v16 != 1) {
-				v23 = v17 - 32.526913;
-				v21 = ++result;
+				point[0] = v17 - 32.526913;
+				size[0] = ++result;
 				break;
 			}
-			v21 = --result;
-			v23 = v17 + 32.526913;
+			size[0] = --result;
+			point[0] = v17 + 32.526913;
 		}
 		break;
 	case 5:
 		v18 = *(uint32_t**)(a2 + 184);
 		v6 = *(uint32_t*)(a2 + 16) - 2;
-		v24 = *(float*)(a2 + 24) + 32.526913;
-		v22 = v6;
+		point[1] = *(float*)(a2 + 24) + 32.526913;
+		size[1] = v6;
 		if (v18 && *v18 != 1) {
 			result = *(uint32_t*)(a2 + 12);
-			v23 = *v3;
+			point[0] = *v3;
 		} else {
 			result = *(uint32_t*)(a2 + 12) - 1;
-			v23 = *v3 + 32.526913;
+			point[0] = *v3 + 32.526913;
 		}
 		v19 = *(uint32_t**)(a2 + 152);
-		v21 = result;
+		size[0] = result;
 		if (v19) {
 			if (*v19 == 1) {
-				v21 = --result;
+				size[0] = --result;
 			} else {
-				v21 = ++result;
+				size[0] = ++result;
 			}
 		}
 		break;
 	default:
-		v6 = v22;
-		result = v21;
+		v6 = size[1];
+		result = size[0];
 		break;
 	}
 	for (i = *(uint32_t**)(a3 + 120); i; i = (uint32_t*)i[31]) {
@@ -3398,37 +3393,38 @@ int nox_xxx_gen_524680(int a1, int a2, int a3) {
 			break;
 		}
 		if (*i == 1) {
-			sub_5249C0(a1, (int)i, &v23, &v21);
+			sub_5249C0(a1, (int)i, &point[0], &size[0]);
 		} else if (*i == 2) {
-			sub_524B50(a1, (int)i, &v23, &v21);
+			sub_524B50(a1, (int)i, &point[0], &size[0]);
 		} else {
-			sub_524950(a1, (int)i, &v23, &v21);
+			sub_524950(a1, (int)i, &point[0], &size[0]);
 		}
-		result = v21 - 2;
-		v6 = v22 - 2;
-		v21 -= 2;
-		v22 -= 2;
-		v23 = v23 + 32.526913;
-		v24 = v24 + 32.526913;
+		result = size[0] - 2;
+		v6 = size[1] - 2;
+		size[0] -= 2;
+		size[1] -= 2;
+		point[0] = point[0] + 32.526913;
+		point[1] = point[1] + 32.526913;
 	}
 	return result;
 }
 
 //----- (00524950) --------------------------------------------------------
 int sub_524950(int a1, int a2, float* a3, int* a4) {
-	float v5; // [esp+Ch] [ebp-8h]
-	float v6; // [esp+10h] [ebp-4h]
+	float point[2];
 
 	nox_xxx_tileGetDefByName_51D4D0((char*)(a2 + 64));
 	sub_5245A0(a1, a3, *a4, a4[1]);
 	sub_544020((char*)(a2 + 4));
-	v5 = (double)*a4 * 16.263456 + *a3;
-	v6 = (double)a4[1] * 16.263456 + a3[1];
-	return sub_543680(&v5);
+	point[0] = (double)*a4 * 16.263456 + *a3;
+	point[1] = (double)a4[1] * 16.263456 + a3[1];
+	return sub_543680(&point[0]);
 }
 
 //----- (005249C0) --------------------------------------------------------
 int sub_5249C0(int a1, int a2, float* a3, int* a4) {
+	float center[2];
+	float point[2];
 	int* v4;    // esi
 	int v5;     // ecx
 	int v6;     // edx
@@ -3444,10 +3440,6 @@ int sub_5249C0(int a1, int a2, float* a3, int* a4) {
 	int v16;    // ebp
 	int v17;    // eax
 	float v19;  // [esp+10h] [ebp-14h]
-	float v20;  // [esp+14h] [ebp-10h]
-	float v21;  // [esp+18h] [ebp-Ch]
-	float v22;  // [esp+1Ch] [ebp-8h]
-	float v23;  // [esp+20h] [ebp-4h]
 	int v24;    // [esp+34h] [ebp+10h]
 
 	nox_xxx_tileGetDefByName_51D4D0((char*)(a2 + 64));
@@ -3461,19 +3453,19 @@ int sub_5249C0(int a1, int a2, float* a3, int* a4) {
 	v10 = v5 - 2 * v6;
 	v19 = v9;
 	v11 = v9 + *a3;
-	v21 = a3[1];
-	v20 = v11;
+	point[1] = a3[1];
+	point[0] = v11;
 	if (v7 / 2 >= 0) {
 		do {
-			sub_5245A0(a1, &v20, v10, 1);
+			sub_5245A0(a1, &point[0], v10, 1);
 			v12 = *v4;
 			v10 += 2;
 			v13 = v10 < *v4;
-			v20 = v20 - 32.526913;
-			v21 = v21 + 32.526913;
+			point[0] = point[0] - 32.526913;
+			point[1] = point[1] + 32.526913;
 			if (!v13) {
 				v10 = v12;
-				v20 = *a3;
+				point[0] = *a3;
 			}
 			++v24;
 		} while (v24 <= v4[1] / 2);
@@ -3481,31 +3473,33 @@ int sub_5249C0(int a1, int a2, float* a3, int* a4) {
 	v14 = v4[1];
 	v15 = *v4 - v8;
 	v16 = 0;
-	v20 = v19 + *a3;
-	v21 = (double)(v14 - 1) * 32.526913 + a3[1];
+	point[0] = v19 + *a3;
+	point[1] = (double)(v14 - 1) * 32.526913 + a3[1];
 	if (v14 / 2 > 0) {
 		do {
-			sub_5245A0(a1, &v20, v15, 1);
+			sub_5245A0(a1, &point[0], v15, 1);
 			v17 = *v4;
 			v15 += 2;
 			v13 = v15 < *v4;
-			v20 = v20 - 32.526913;
-			v21 = v21 - 32.526913;
+			point[0] = point[0] - 32.526913;
+			point[1] = point[1] - 32.526913;
 			if (!v13) {
 				v15 = v17;
-				v20 = *a3;
+				point[0] = *a3;
 			}
 			++v16;
 		} while (v16 < v4[1] / 2);
 	}
 	sub_544020((char*)(a2 + 4));
-	v22 = (double)*v4 * 16.263456 + *a3;
-	v23 = (double)v4[1] * 16.263456 + a3[1];
-	return sub_543680(&v22);
+	center[0] = (double)*v4 * 16.263456 + *a3;
+	center[1] = (double)v4[1] * 16.263456 + a3[1];
+	return sub_543680(&center[0]);
 }
 
 //----- (00524B50) --------------------------------------------------------
 void sub_524B50(int a1, int a2, float* a3, int* a4) {
+	float center[2];
+	float point[2];
 	int* v4;        // esi
 	int v5;         // eax
 	int v7;         // ecx
@@ -3523,10 +3517,6 @@ void sub_524B50(int a1, int a2, float* a3, int* a4) {
 	signed int v19; // eax
 	int v20;        // ebp
 	float v21;      // ecx
-	float v22;      // [esp+4h] [ebp-10h]
-	float v23;      // [esp+8h] [ebp-Ch]
-	float v24;      // [esp+Ch] [ebp-8h]
-	float v25;      // [esp+10h] [ebp-4h]
 	int v26;        // [esp+24h] [ebp+10h]
 	signed int v27; // [esp+24h] [ebp+10h]
 
@@ -3534,8 +3524,8 @@ void sub_524B50(int a1, int a2, float* a3, int* a4) {
 	if (*a4 >= 3 && a4[1] >= 3) {
 		nox_xxx_tileGetDefByName_51D4D0((char*)(a2 + 64));
 		v5 = *a4 - 2;
-		v22 = *a3 + 32.526913;
-		v23 = a3[1] + 32.526913;
+		point[0] = *a3 + 32.526913;
+		point[1] = a3[1] + 32.526913;
 		if (v5 < 1) {
 			v5 = 1;
 		}
@@ -3543,59 +3533,59 @@ void sub_524B50(int a1, int a2, float* a3, int* a4) {
 		if (v7 < 1) {
 			v7 = 1;
 		}
-		sub_5245A0(a1, &v22, v5, v7);
+		sub_5245A0(a1, &point[0], v5, v7);
 		v8 = *a4;
 		if ((int)*a4 < 4) {
 			if (v8 == 3) {
 				v15 = a3[1];
-				v22 = *a3 + 32.526913;
-				v23 = v15;
-				sub_5245A0(a1, &v22, 1, 1);
-				v23 = v23 + 65.053825;
-				sub_5245A0(a1, &v22, 1, 1);
+				point[0] = *a3 + 32.526913;
+				point[1] = v15;
+				sub_5245A0(a1, &point[0], 1, 1);
+				point[1] = point[1] + 65.053825;
+				sub_5245A0(a1, &point[0], 1, 1);
 			}
 		} else {
 			v9 = nox_xxx_mapGenRandFunc_526AC0(1, v8 - 3);
 			v10 = v9;
 			v11 = nox_xxx_mapGenRandFunc_526AC0(1, *a4 - v9 - 2);
-			v23 = a3[1];
-			v22 = (double)v11 * 32.526913 + *a3;
-			sub_5245A0(a1, &v22, v10, 1);
+			point[1] = a3[1];
+			point[0] = (double)v11 * 32.526913 + *a3;
+			sub_5245A0(a1, &point[0], v10, 1);
 			v12 = nox_xxx_mapGenRandFunc_526AC0(1, *a4 - 3);
 			v13 = v12;
 			v14 = nox_xxx_mapGenRandFunc_526AC0(1, *a4 - v12 - 2);
 			v26 = a4[1] - 1;
-			v22 = (double)v14 * 32.526913 + *a3;
-			v23 = (double)v26 * 32.526913 + a3[1];
-			sub_5245A0(a1, &v22, v13, 1);
+			point[0] = (double)v14 * 32.526913 + *a3;
+			point[1] = (double)v26 * 32.526913 + a3[1];
+			sub_5245A0(a1, &point[0], v13, 1);
 		}
 		v16 = v4[1];
 		if (v16 < 4) {
 			if (v16 == 3) {
 				v21 = *a3;
-				v23 = a3[1] + 32.526913;
-				v22 = v21;
-				sub_5245A0(a1, &v22, 1, 1);
-				v22 = v22 + 65.053825;
-				sub_5245A0(a1, &v22, 1, 1);
+				point[1] = a3[1] + 32.526913;
+				point[0] = v21;
+				sub_5245A0(a1, &point[0], 1, 1);
+				point[0] = point[0] + 65.053825;
+				sub_5245A0(a1, &point[0], 1, 1);
 			}
 		} else {
 			v17 = nox_xxx_mapGenRandFunc_526AC0(1, v16 - 3);
 			v18 = v17;
 			v19 = nox_xxx_mapGenRandFunc_526AC0(1, v4[1] - v17 - 2);
-			v22 = *a3;
-			v23 = (double)v19 * 32.526913 + a3[1];
-			sub_524610(a1, &v22, v18);
+			point[0] = *a3;
+			point[1] = (double)v19 * 32.526913 + a3[1];
+			sub_524610(a1, &point[0], v18);
 			v20 = nox_xxx_mapGenRandFunc_526AC0(1, v4[1] - 3);
 			v27 = nox_xxx_mapGenRandFunc_526AC0(1, v4[1] - v20 - 2);
-			v22 = (double)(*v4 - 1) * 32.526913 + *a3;
-			v23 = (double)v27 * 32.526913 + a3[1];
-			sub_524610(a1, &v22, v20);
+			point[0] = (double)(*v4 - 1) * 32.526913 + *a3;
+			point[1] = (double)v27 * 32.526913 + a3[1];
+			sub_524610(a1, &point[0], v20);
 		}
 		sub_544020((char*)(a2 + 4));
-		v24 = (double)*v4 * 16.263456 + *a3;
-		v25 = (double)v4[1] * 16.263456 + a3[1];
-		sub_543680(&v24);
+		center[0] = (double)*v4 * 16.263456 + *a3;
+		center[1] = (double)v4[1] * 16.263456 + a3[1];
+		sub_543680(&center[0]);
 	}
 }
 
@@ -3905,39 +3895,38 @@ float2* sub_525370(float2* a1, int a2) {
 
 //----- (005253B0) --------------------------------------------------------
 int sub_5253B0(float* a1) {
+	float point[2];
 	double v1;        // st7
 	double v2;        // st7
 	double v3;        // st7
 	double v4;        // st7
 	int result;       // eax
 	unsigned char v6; // [esp+4h] [ebp-18h]
-	float v7;         // [esp+8h] [ebp-14h]
-	float v8;         // [esp+Ch] [ebp-10h]
 	int v9;           // [esp+10h] [ebp-Ch]
 
 	v1 = a1[1] - 32.526913;
 	v6 = 0;
-	v7 = *a1;
-	v8 = v1;
-	if (sub_526DD0(&v7, &v9)) {
+	point[0] = *a1;
+	point[1] = v1;
+	if (sub_526DD0(&point[0], &v9)) {
 		v6 = 1;
 	}
 	v2 = a1[1] + 32.526913;
-	v7 = *a1;
-	v8 = v2;
-	if (sub_526DD0(&v7, &v9)) {
+	point[0] = *a1;
+	point[1] = v2;
+	if (sub_526DD0(&point[0], &v9)) {
 		v6 |= 2u;
 	}
 	v3 = *a1 - 32.526913;
-	v8 = a1[1];
-	v7 = v3;
-	if (sub_526DD0(&v7, &v9)) {
+	point[1] = a1[1];
+	point[0] = v3;
+	if (sub_526DD0(&point[0], &v9)) {
 		v6 |= 4u;
 	}
 	v4 = *a1 + 32.526913;
-	v8 = a1[1];
-	v7 = v4;
-	if (sub_526DD0(&v7, &v9)) {
+	point[1] = a1[1];
+	point[0] = v4;
+	if (sub_526DD0(&point[0], &v9)) {
 		v6 |= 8u;
 	}
 	result = v6 - 3;
@@ -5261,38 +5250,37 @@ int sub_527030(float2* a1) {
 
 //----- (00527380) --------------------------------------------------------
 int sub_527380(float* a1) {
+	int point[2];
 	double v1;    // st7
 	int v2;       // esi
 	long long v3; // rax
 	int v4;       // esi
 	int v5;       // esi
 	int v6;       // eax
-	int v8;       // [esp+8h] [ebp-8h]
-	int v9;       // [esp+Ch] [ebp-4h]
 
 	v1 = a1[1] * 0.043478262;
 	v2 = (long long)(*a1 * 0.043478262);
-	v8 = (long long)(*a1 * 0.043478262);
+	point[0] = (long long)(*a1 * 0.043478262);
 	v3 = (long long)v1;
-	v9 = (long long)v1;
+	point[1] = (long long)v1;
 	if (v2 > 0 && v2 < 255 && (int)v3 > 0 && (int)v3 < 255) {
-		sub_527450(&v8);
-		LODWORD(v3) = v9;
-		v2 = v8;
+		sub_527450(&point[0]);
+		LODWORD(v3) = point[1];
+		v2 = point[0];
 	}
 	v4 = v2 - 1;
-	v8 = v4;
+	point[0] = v4;
 	if (v4 > 0 && v4 < 255 && (int)v3 > 0 && (int)v3 < 255) {
-		sub_527450(&v8);
-		LODWORD(v3) = v9;
-		v4 = v8;
+		sub_527450(&point[0]);
+		LODWORD(v3) = point[1];
+		v4 = point[0];
 	}
 	v5 = v4 + 1;
 	v6 = v3 - 1;
-	v8 = v5;
-	v9 = v6;
+	point[0] = v5;
+	point[1] = v6;
 	if (v5 > 0 && v5 < 255 && v6 > 0 && v6 < 255) {
-		sub_527450(&v8);
+		sub_527450(&point[0]);
 	}
 	return 1;
 }

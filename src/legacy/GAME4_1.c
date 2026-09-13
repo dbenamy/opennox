@@ -2870,6 +2870,7 @@ float* sub_51D5E0(float* a1) {
 
 //----- (0051D8F0) --------------------------------------------------------
 int sub_51D8F0(float2* a1) {
+	int pattern[8];
 	double v1;  // st7
 	double v2;  // st6
 	int v3;     // esi
@@ -2877,25 +2878,17 @@ int sub_51D8F0(float2* a1) {
 	int v5;     // ebp
 	int v6;     // edx
 	int result; // eax
-	int v8;     // [esp+10h] [ebp-20h]
-	int v9;     // [esp+14h] [ebp-1Ch]
-	int v10;    // [esp+18h] [ebp-18h]
-	int v11;    // [esp+1Ch] [ebp-14h]
-	int v12;    // [esp+20h] [ebp-10h]
-	char v13;   // [esp+24h] [ebp-Ch]
-	int v14;    // [esp+28h] [ebp-8h]
-	int v15;    // [esp+2Ch] [ebp-4h]
 	float v16;  // [esp+34h] [ebp+4h]
 
-	v9 = dword_5d4594_3835348;
+	pattern[1] = dword_5d4594_3835348;
 	v1 = a1->field_0 + 11.5;
-	v8 = *getMemU32Ptr(0x973F18, 35912);
-	v10 = 0;
-	v13 = 0;
-	v11 = -1;
-	v12 = -1;
-	v14 = 255;
-	v15 = 0;
+	pattern[0] = *getMemU32Ptr(0x973F18, 35912);
+	pattern[2] = 0;
+	pattern[5] = 0;
+	pattern[3] = -1;
+	pattern[4] = -1;
+	pattern[6] = 255;
+	pattern[7] = 0;
 	v2 = a1->field_4 + 11.5;
 	v3 = (long long)(v1 * 0.021739131);
 	v16 = v2;
@@ -2905,7 +2898,7 @@ int sub_51D8F0(float2* a1) {
 	if (*getMemU32Ptr(0x973F18, 35912) == 255) {
 		result = sub_51D9C0(v3, v4, v5, v6, 0);
 	} else {
-		result = sub_51D9C0(v3, v4, v5, v6, (int)&v8);
+		result = sub_51D9C0(v3, v4, v5, v6, (int)&pattern[0]);
 	}
 	return result;
 }

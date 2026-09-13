@@ -1276,7 +1276,7 @@ int sub_543680(float* a1) {
 	int result; // eax
 	float2 a2;  // [esp+0h] [ebp-30h]
 	int2 v3;    // [esp+8h] [ebp-28h]
-	int v4[8];  // [esp+10h] [ebp-20h]
+	int v4[8] = {0};  // [esp+10h] [ebp-20h]
 
 	if (dword_5d4594_3835356 == 255) {
 		return 1;
