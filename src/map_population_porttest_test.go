@@ -52,6 +52,14 @@ func populationCapture(t *testing.T, label string, cases []legacy.PortTestPaintS
 			t.Fatal(err)
 		}
 	}
+	want, ok := populationCExpected[label]
+	if !ok {
+		t.Fatalf("no locked C capture for %s", label)
+	}
+	got := fmt.Sprintf("%x", sha256.Sum256(data))
+	if got != want {
+		t.Fatalf("%s complete capture differs from C: got %s want %s", label, got, want)
+	}
 	t.Logf("%s: %d cases %x", label, len(cases), sha256.Sum256(data))
 	return out
 }

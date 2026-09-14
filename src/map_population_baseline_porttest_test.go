@@ -1,0 +1,43 @@
+//go:build porttest
+
+package opennox
+
+// Locked corrected-C complete captures; see docs/porting/MAP_POPULATION.md.
+var populationCExpected = map[string]string{
+	"decoded-placement":              "ef23514391c6a155ae0008c8ac6e43c8ef4e74c0247b1d13187f66d0f4622834",
+	"density":                        "680cfec7e104aec4b264beb3d904ee197682ee4751151e8fe23b8b6bd7a0121f",
+	"distance-ordering":              "34455011e5c651e9a7e3ce83c71810fe717df1c71cfd9c48d583795459d2dbcd",
+	"distances":                      "bd84b31080b63296ce3d2167dc0a470af932cf5d38f23b40713c07c6299f351e",
+	"enchantments":                   "8e56d5d57bf09e587c8b89e5a6851ba7959334557c486086aa6e853dc0011e53",
+	"exit-names":                     "b70d73afbe5ccecaf530305bffe486014828819cb9ccda02b949d5e27160a5ab",
+	"exit-placement":                 "3681c1c2a83c88155deec6160c49a05275997e0b3dacff4f6dfbdddc22ec7ce0",
+	"globals":                        "56196bd1588ecb1dfdb1502795a5d10b2161700d23dd54d891ff2c8c1e74d02c",
+	"hallway-waypoints":              "75433daa1ebea601f0b6cd95e7aee519950eb201833873473b528358609a9351",
+	"inventories":                    "a3ad3db53de783a380935ac877ca96a01186b00f08cebbe52ac4a58467a06a69",
+	"marker-removal":                 "8015f1479da21cdc2bbb3b7bae62ccac61513e44b13efc9427ba0af7c312e6e4",
+	"metadata-allocation":            "a23067eec70b2a22aa0b0506e200413c6c8eb3451a88198634ec49acf75b9ef4",
+	"metadata-lookup":                "e4f6190c41d3347ae5213187f1cf4ce352695f8e76fcbe69304de91d232d2465",
+	"modifier-boundaries":            "64b4b284b59e2a12e3721e9261c61ad3ff99589e2d3b42fb18073d0829a5bac7",
+	"nearest-candidates":             "0f84062fdb352e5d9d479283cecf3fa8ed78072b93c3fcc4f41164c8dc1644c0",
+	"plain-items":                    "1b2b57f6d677d29db733f1f2b27c3e80347205aead0e9e0ab76f0887183aa727",
+	"population-ordering":            "e143b287fb7fcef3d1ec3029bf9f7f91c308f48f206365faefdda9d9d93a4b5e",
+	"prefab-candidates":              "a9e86f3efc8611497a6abbb757b92e920c1d0a3340d250424f4be27f220602e5",
+	"prefab-connections":             "66ca1de38a249cfb583e177b31f80ebb4845acb08a08452be485a430f803c9cc",
+	"prefab-coordinates":             "1b826c72dd1e76b9153961d9358908c70e8e806282e7a3991f85392c9f1c79f7",
+	"prefab-file":                    "6bacfa0e2fb5e266daaa326d4905ddc94440ce7435fa9dfb6d730b65930526fd",
+	"prefab-fit":                     "7114c7a58942367bbc1e7f0f7ccd9ddf1f4abfc575a355b56bc95697e5f8c982",
+	"prefab-metadata":                "9a48d406111848c219837f8c542a58d1d263d8ed1092e71fb1d51910bafd874f",
+	"prefab-replacement":             "3634752b04b1c1b3016e6adbecf4aadb1e621fdd5dcf66a568f98139a99616f8",
+	"prefab-retries":                 "d3b2a639de4a3e71775df89c1d438b204976bd7cbc33cce812ba1ca735befe20",
+	"prefab-rooms":                   "3701254012c99f415e2acce33d915e54da1019f8fc95d5f194d369a223264283",
+	"prefab-selection":               "941beab1a9a6ced897d26b946b3a10f8a95996743d5eba59744dda32534b2efa",
+	"prerequisite-finale-point":      "951e391ef00d428d314b5ca7b331008a69ba2a460dd3d5016ed2861867f9ced8",
+	"prerequisite-point-output":      "f2af01909de1b8e8e1568f3fdd9f034599eec724c1d1accb2749d4ada2bf4091",
+	"prerequisite-spell-name":        "262c6a1f8b82716dc0dba2a20c65d4d3a5a7fc62fb1a974931a22ba433115201",
+	"prerequisite-spellbook-invalid": "59be353e080807aaafefd8424f3ea5ac73fcc83a483de893cc4518050a54067f",
+	"progress":                       "f02af611ad1e0f30297b87a64c6fc5c38706ae66678de48bcfe3a250e1c4b83b",
+	"room-objects":                   "41195716a81493e1398583b0752de06e99f201b7186b529d27b631be60001840",
+	"spell-names":                    "54fe4affdd6b4204f15637f46188c7b4a48a7129a32853bff6c764982b9b4e94",
+	"spellbooks":                     "4eae1521c723d148df339d6bcd66ad211e60e199a009ff622d5e11574758fa87",
+	"waypoint-connections":           "a2734d97ba8a421447c01850463462b2d58f5f406cbf0fbe50f64ff0a360b296",
+}

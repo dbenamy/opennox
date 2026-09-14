@@ -2,50 +2,50 @@
 
 <!-- current-focus -->
 
-### Active — population/prefab baseline after qualified prerequisites
+### Active — qualified population/prefab C baseline, ready to lock and push
 
-Population remains C. Four prerequisites fix spell-name stack storage/length
-handling, two point records, and engine disposal of invalid spellbooks. Original
-isolated probes confirmed crashes/incorrect placement; ordinary regressions now
-pass. Production C **106,611 lines / 149 files / zero reference** (+2, no conversion).
+All **4,221 cases / 36 complete captures** agree byte-for-byte in default,
+server and highres. Population plus existing painting/room checks pass in
+**22.538s / 21.741s / 22.830s**. Independent default population repeat: **12.997s**.
+The 36 hashes are now mandatory in map_population_baseline_porttest_test.go;
+locked-baseline.log is checking them before commit/push. Evidence:
+build/port-map-population/baseline-qualification.json and final-repeat-comparison.json.
+**No population conversion has started. Commit/push this baseline before conversion.**
 
-All **1,067 cases / 14 complete captures** agree in default/server/highres; existing
-room/painting tests pass alongside them in **12.619s / 12.302s / 13.366s** package
-time. See docs/porting/MAP_POPULATION.md and prerequisite-qualification.json.
-This is a prerequisite recovery checkpoint, not the locked full-batch baseline.
-Next expand decoded prefab caches/markers, candidate topology/room allocation,
-population ordering and placement. Audit 526550's two scalar-plus-array records;
-staged isolated probe: build/port-map-population/prefab-candidate-probe.go.stage.
+Scope: **38 routines / 1,758 C section lines**, 13 retained ABIs, 25 internal
+helpers to retire. Refreshed inventories/native-names.json are under
+build/port-map-population; original inventories are preserved in original-inventory.
+Do not rerun lock-baseline.py, original-inventory archival, or already-applied
+fixture/repair scripts and staged files. Current source/tests/docs are authoritative.
 
-Prerequisite checkpoint **683b008f** is committed/pushed. The follow-up repairs
-526550's two six-element candidate arrays and initializes all five item-attribute
-words in 5221A0. Original candidate probing crashed; the original modifier
-regression fails, and repeated captures isolated 356 fifth-word differences.
-Current C: **106,609 / 149 files / zero reference** (−2 since 683b008f).
+Production C remains **106,609 lines / 149 files / zero reference C**.
+Prerequisite checkpoints **683b008f** and **41985ada** are pushed; the latter was
+summarized. They fix contiguous spell-name/point/candidate records, invalid-book
+pool disposal and the fifth item-attribute word. Original focused failures plus
+corrected regressions support those changes. Conversion must preserve remaining
+quirks: named/blob globals are distinct; prefab grid truncation precedes exact
+containment; item-slot dependencies, case-sensitive flags and return bits stay.
 
-Expanded **3,348 cases / 30 complete captures** repeat exactly and match across
-default/server/highres. Default population: **10.138s**. Server/highres with
-existing painting/room checks: **19.320s / 19.779s**. Default painting/room plus
-population passed before the last root-only test expansion in **18.809s**.
-Evidence: build/port-map-population/followup-qualification.json and
-followup-repeat-comparison.json. This is another prerequisite checkpoint, not
-the locked full 38-routine baseline. No population conversion has started.
+Coverage includes weighted inventories, exact modifier boundaries, shuffled
+population lists, distance sorting/themes, density clamps, prefab selection,
+metadata flags/markers, fit/retries/exclusion cleanup, occupancy and room
+replacement, all-direction candidate/hallway connections, exits, waypoint
+networks and decoded-cache application. Marker tests record object/node disposal
+without reading released storage; disposed objects are skipped in live traversal.
+The file test uses a synthetic empty prefab through the real loader, including
+header/bounds/section terminator and normal file handles. Seeded-cache tests use
+a porttest-only loader adapter; actual application and enumeration remain real.
+The supplied filesystem image has **no AreaMap.lib**. Real game prefab decoding
+is an explicit limitation, distinct from available asset-backed ordinary gameplay.
 
-Fixtures exercise real decoded-cache application, room allocation/replacement,
-occupancy, inventory/modifiers/exits, ordering/themes, rectangle fit/exclusions,
-and hallway/room waypoint connections. A porttest-only loader adapter seeds
-explicit caches; file decoding is not covered by those tests. The full supplied
-image contains no AreaMap.lib (asset-filesystem-list.txt), so asset-backed prefab
-decoder integration cannot run with current assets. Add a small real-loader
-fixture if practical, and retain this explicit limitation. Review remaining
-positive prefab connections and modifier/placement boundary coverage before
-locking repeated C captures. Production builds/full suite/fresh unchanged
-headless gameplay remain required at the conversion batch boundary.
-
-Continue autonomously; no pending question and no new agents. Current source is
-authoritative. Do not rerun already-applied fixture/repair scripts or copy stale
-staged files. Preserve the asset archive. Earlier exploratory captures are now
-losslessly compressed with checksums in exploratory-capture-archive.json.
+Next: commit/push the locked C baseline, then convert all 38 connected routines.
+Remove obsolete C exports and Go-only wrappers/getters, retire the eight-function
+populate.c translation unit, and compare unchanged complete captures. Run the
+accumulated default/server/highres tests, three production builds and symbol audit,
+asset-backed known-failure full suite and fresh unchanged repeat-a headless game.
+Count physical C, update docs/C_LOC, commit/push, summarize and continue. No pending
+question or new agents. Preserve the supplied asset archive. Earlier exploratory
+captures are losslessly gzipped with checksums in exploratory-capture-archive.json.
 
 Painting **56ae5728** and snapshot speedup **eea297fd** are already pushed.
 

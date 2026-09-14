@@ -1,7 +1,7 @@
-# Map population and prefabs — next batch
+# Map population and prefabs — qualified C baseline
 
-Planned after map-painting qualification: **38 connected routines / 1,758 C
-section lines**. Initial virtual-removal audit finds 13 retained ABIs and 25
+Current connected batch after map-painting qualification: **38 connected routines / 1,758 C
+section lines**. The refreshed virtual-removal audit finds 13 retained ABIs and 25
 internal helpers. Recheck Go wrappers/getters before conversion. The batch covers
 population selection and ordering, generated inventory/spellbooks/enchantments,
 monster and exit placement, room selection, prefab selection/geometry/placement,
@@ -30,14 +30,12 @@ for actual objects, correct inventory links, room occupancy and nonempty output;
 smoke success and hashes alone are insufficient. Keep boundary cases valid for
 the documented record capacities, and separately test defined invalid-input gates.
 
-Audit decompiler stack records before locking: the population finale passes &v8
-as a two-float PlayerStart coordinate while v9 is a separate local. Prove the
-observable defect with an original-C independent check, then replace the pair
-with explicit storage as a documented prerequisite if required. Spellbook failure
-currently calls free on an object from the engine pool; verify owner semantics
-and use the appropriate engine disposal path if the failure test confirms the
-mismatch. Neither repair is applied yet. Preserve questionable gameplay behavior
-unless a demonstrated correctness/ownership defect requires a reversible fix.
+The stack-record/ownership audit produced two pushed prerequisite checkpoints:
+683b008f repairs spell-name storage, point records and invalid-book disposal;
+41985ada repairs candidate arrays and initializes the complete item-attribute
+buffer. Focused original-C failures and corrected regressions support those
+changes. Preserve other questionable gameplay behavior during conversion,
+including grid truncation before exact containment and case-sensitive flags.
 
 Set PlatformTicks deterministically for progress timing, including wrap/reset
 and threshold boundaries. The current input-poll export is a no-op; the progress
@@ -55,15 +53,13 @@ continue. No pending question or new agents.
 
 Local reconstructible inventories: build/port-map-population/{scope.py,audit.py,
 candidate-scope.json,candidate-source.txt,candidate-dependencies.json,operations.json,
-abi-audit.json,named-globals.json}. Initial fixture work is in progress; production C remains unchanged. The shared
+abi-audit.json,named-globals.json}. Original inventories are archived locally.
+The shared
 painting fixture accepts population globals/dispatch and tracks InitData and
 Field189 allocation ownership. Initial groups exercise complete 64-bit returns,
 cyclic distance propagation, prefab coordinate candidates, metadata lookup and
 progress suppression/timing. Captures are exploratory, not yet locked baselines.
 
-Additional prerequisite candidates from source review: 5224B0 passes a single
-32-bit local as an 8-byte point output; 51E1D0 formats a complete spell identifier
-into a single-byte local. Establish focused execution evidence before repairs.
 The positive progress timing fixture uses the real callback with an already-seen
 GUI sequence, which exercises counter/tick updates without drawing. Actual GUI
 rendering remains covered by the headless gameplay scenario.
@@ -245,3 +241,61 @@ C. Remaining review includes positive prefab connection service calls and
 modifier/placement edge coverage. C count is **106,609 / 149 files / zero reference**.
 Earlier exploratory captures are gzip-compressed losslessly; their original byte
 counts and SHA-256 checksums are in exploratory-capture-archive.json.
+
+Checkpoint **41985ada** is pushed. The next expansion adds a synthetic, empty
+prefab-file fixture through the real unwrapped loader (including normal file
+handle initialization, header/bounds and section terminator). This does not
+substitute for unavailable game prefab assets. Together with 576 exact modifier
+boundary cases and the first successful hallway connection it passes in 1.526s
+(connections.log). Four-direction connection gaps/widths/missing candidates and
+complete service-global capture are now being qualified in complete.log.
+Refreshed scope remains 38 routines / 1,758 C section lines / 13 retained ABIs;
+original inventories are preserved under original-inventory.
+
+Final baseline review adds density clamping, prefab placement retries followed
+by exclusion cleanup, and removal of marker objects plus their decoded-cache
+list nodes. The marker fixture records disposals at the service boundary before
+snapshotting; disposed objects are excluded from live-object traversal. This
+fixes a fixture-only attempt to inspect a freed object, without production edits.
+Current qualification is in final.log; lock-baseline.py is prepared but has not
+run. Do not apply conversion edits before repeated captures are locked/pushed.
+
+Final default qualification passes in **22.538s** with existing painting/room
+checks. All **4,221 cases / 36 complete captures** repeat byte-for-byte in an
+independent population run (**12.997s**); see final-repeat-comparison.json.
+Server/highres verification is running before hashes are made mandatory. The
+remaining differences from checkpoint 41985ada are test fixtures/corpora and
+documentation; production C is unchanged.
+
+## Locked corrected-C baseline
+
+All **4,221 cases / 36 complete capture groups** repeat byte-for-byte and match
+default/server/highres. Population with existing painting/room tests passes in
+**22.538s / 21.741s / 22.830s**; the independent default population repeat takes
+**12.997s**. Every hash is mandatory in
+src/map_population_baseline_porttest_test.go. Evidence:
+build/port-map-population/baseline-qualification.json, final-repeat-comparison.json
+and final{,-repeat,-server,-highres}.log. The locked-hash smoke is in
+locked-baseline.log. Commit/push this checkpoint before editing production C.
+
+The baseline includes explicit density clamps, bounded placement retries and
+exclusion cleanup, plus all 16 marker combinations with surviving-cache topology
+and exact object/node disposal counts. It uses real waypoint and room-connection
+services and a synthetic file decoded through the real loader. Unavailable
+AreaMap.lib game content remains an integration limitation, not an assumed pass.
+The ordinary asset-backed headless scenario remains required after conversion.
+
+To reproduce the focused checks after setting the documented 386/CGO environment:
+
+```sh
+cd src
+GOMAXPROCS=2 go test -p 2 -tags porttest -count=1 -run '^TestMap(Population|Painting|Room)' .
+GOMAXPROCS=2 go test -p 2 -tags porttest,server -count=1 -run '^TestMap(Population|Painting|Room)' .
+GOMAXPROCS=2 go test -p 2 -tags porttest,highres -count=1 -run '^TestMap(Population|Painting|Room)' .
+```
+
+Set OPENNOX_MAP_POPULATION_CAPTURE to an absolute filename prefix to also retain
+complete JSON snapshots for diagnosis; mandatory hash checks remain enabled.
+The baseline hashes live in Git, so they survive loss of the ignored build tree.
+Production C is **106,609 / 149 files / zero reference C**; all 38 routines still
+use C at this checkpoint. The refreshed ABI audit retains 13 and retires 25.

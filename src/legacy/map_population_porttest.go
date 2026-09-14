@@ -59,6 +59,9 @@ extern uint32_t dword_5d4594_2487652;
 extern uint32_t dword_5d4594_2487656;
 extern uint32_t dword_5d4594_2487672;
 extern uint32_t dword_5d4594_2487676;
+extern uint32_t dword_5d4594_2491616;
+extern void* dword_5d4594_1599588;
+extern void* dword_5d4594_1599592;
 extern uint32_t dword_5d4594_1599576;
 extern uint32_t dword_5d4594_1599596;
 extern uint32_t dword_5d4594_1599480;
@@ -140,6 +143,9 @@ case 22:return &dword_5d4594_1599556;
 case 23:return &dword_5d4594_1599548;
 case 24:return &dword_5d4594_1599644;
 case 25:return &dword_5d4594_3835312;
+case 26:return (uint32_t*)&dword_5d4594_1599588;
+case 27:return (uint32_t*)&dword_5d4594_1599592;
+case 28:return &dword_5d4594_2491616;
 default:abort();}}
 */
 import "C"
@@ -157,7 +163,7 @@ import (
 // Dispatches the production implementation and snapshots shared engine owners.
 func PortTestMapPopulation(cases []PortTestPaintSpec, owner func(*server.Server) (Server, func())) []PortTestPaintResult {
 	ext := &paintTestExtension{globals: map[string]*uint32{}}
-	for i, n := range []string{"dword_5d4594_1550916", "dword_5d4594_2487564", "dword_5d4594_2487568", "dword_5d4594_2487576", "dword_5d4594_2487580", "dword_5d4594_2487584", "dword_5d4594_2487620", "dword_5d4594_2487624", "dword_5d4594_2487628", "dword_5d4594_2487632", "dword_5d4594_2487652", "dword_5d4594_2487656", "dword_5d4594_2487672", "dword_5d4594_2487676", "dword_5d4594_1599576", "dword_5d4594_1599596", "dword_5d4594_1599480", "dword_5d4594_1599476", "dword_5d4594_1599540", "dword_5d4594_3835396", "dword_5d4594_2487244", "dword_5d4594_1599532", "dword_5d4594_1599556", "dword_5d4594_1599548", "dword_5d4594_1599644", "dword_5d4594_3835312"} {
+	for i, n := range []string{"dword_5d4594_1550916", "dword_5d4594_2487564", "dword_5d4594_2487568", "dword_5d4594_2487576", "dword_5d4594_2487580", "dword_5d4594_2487584", "dword_5d4594_2487620", "dword_5d4594_2487624", "dword_5d4594_2487628", "dword_5d4594_2487632", "dword_5d4594_2487652", "dword_5d4594_2487656", "dword_5d4594_2487672", "dword_5d4594_2487676", "dword_5d4594_1599576", "dword_5d4594_1599596", "dword_5d4594_1599480", "dword_5d4594_1599476", "dword_5d4594_1599540", "dword_5d4594_3835396", "dword_5d4594_2487244", "dword_5d4594_1599532", "dword_5d4594_1599556", "dword_5d4594_1599548", "dword_5d4594_1599644", "dword_5d4594_3835312", "dword_5d4594_1599588", "dword_5d4594_1599592", "dword_5d4594_2491616"} {
 		ext.globals[n] = (*uint32)(unsafe.Pointer(C.populationGlobal(C.int(i))))
 	}
 	for i := 0; i < 5; i++ {
@@ -176,6 +182,12 @@ func PortTestMapPopulation(cases []PortTestPaintSpec, owner func(*server.Server)
 		ext.globals[n] = p
 	}
 	for off := uintptr(1599484); off < 1599532; off += 4 {
+		ext.globals[fmt.Sprintf("cacheBlob%d", off)] = memmap.PtrUint32(0x5D4594, off)
+	}
+	for off := uintptr(2491608); off <= 2491620; off += 4 {
+		ext.globals[fmt.Sprintf("connection%d", off)] = memmap.PtrUint32(0x5D4594, off)
+	}
+	for _, off := range []uintptr{1599536, 1599544, 1599552, 1599560, 1599568, 1599572} {
 		ext.globals[fmt.Sprintf("cacheBlob%d", off)] = memmap.PtrUint32(0x5D4594, off)
 	}
 	for _, off := range []uintptr{35920, 35924, 35928, 35932, 35936, 35940, 35944, 35960, 35964, 35968, 35980} {
@@ -198,6 +210,7 @@ func PortTestMapPopulation(cases []PortTestPaintSpec, owner func(*server.Server)
 	}
 	ext.constants = map[uint32]uint32{mapRoomRaw(unsafe.Pointer(C.nox_xxx_XFerExit_4F4B90)): 0x70000003}
 	var active *paintTestFixture
+	var disposed map[*server.Object]bool
 	var restoreModifier func()
 	ext.setup = func(p *server.PortTestPaintOwners) func() {
 		p.PopulationTypes(unsafe.Pointer(C.nox_xxx_XFerExit_4F4B90))
@@ -240,6 +253,7 @@ func PortTestMapPopulation(cases []PortTestPaintSpec, owner func(*server.Server)
 	}
 	ext.before = func(f *paintTestFixture, sp PortTestPaintSpec) {
 		active = f
+		disposed = map[*server.Object]bool{}
 		if *ext.globals["modifier"] != 0 {
 			restoreModifier = f.owners.S.PortTestRewardModifier((*server.ModifierEff)(mapRoomPointer(*ext.globals["modifier"])), (*byte)(mapRoomPointer(*ext.globals["modifierName"])))
 		}
@@ -278,7 +292,31 @@ func PortTestMapPopulation(cases []PortTestPaintSpec, owner func(*server.Server)
 		if op == 35 || op == 12 {
 			released = f.known(mapRoomPointer(*ext.globals["dword_5d4594_2487672"]))
 		}
+		cached := map[*mapRoomTestRegion]*mapRoomTestRegion{}
+		if op == 32 && *ext.globals["decodedCache"] != 0 {
+			for node := mapRoomPointer(*ext.globals["dword_5d4594_1599540"]); node != nil; node = *mapRoomRef(node, 4) {
+				if rec := f.known(node); rec != nil {
+					cached[rec] = f.known(*mapRoomRef(node, 0))
+				}
+			}
+		}
 		ret := uint32(C.populationInvoke(C.int(op), (*C.uint32_t)(unsafe.Pointer(&args[0])), (*C.uint32_t)(unsafe.Pointer(ext.globals["returnHigh"]))))
+		if len(cached) != 0 {
+			remaining := map[unsafe.Pointer]bool{}
+			for node := mapRoomPointer(*ext.globals["dword_5d4594_1599540"]); node != nil; node = *mapRoomRef(node, 4) {
+				remaining[node] = true
+			}
+			for node, object := range cached {
+				if !remaining[node.ptr] {
+					node.alive = false
+					delete(f.owned, node)
+					if object != nil {
+						object.alive = false
+						disposed[(*server.Object)(object.ptr)] = true
+					}
+				}
+			}
+		}
 		if released != nil {
 			released.alive = false
 			delete(f.owned, released)
@@ -326,7 +364,7 @@ func PortTestMapPopulation(cases []PortTestPaintSpec, owner func(*server.Server)
 		seen := map[*server.Object]bool{}
 		var visit func(*server.Object)
 		visit = func(u *server.Object) {
-			if u == nil || seen[u] {
+			if u == nil || seen[u] || disposed[u] {
 				return
 			}
 			seen[u] = true
