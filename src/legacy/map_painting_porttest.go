@@ -174,6 +174,7 @@ type paintTestFixture struct {
 
 	table unsafe.Pointer
 	*mapRoomTestFixture
+	xfers         [2]uint32
 	owners        *server.PortTestPaintOwners
 	rows          []unsafe.Pointer
 	owned         map[*mapRoomTestRegion]bool
@@ -233,8 +234,8 @@ func (f *paintTestFixture) norm(v uint32) uint32 {
 	if v < 4096 {
 		return v
 	}
-	for i := 0; i < 2; i++ {
-		if v == mapRoomRaw(C.paintXfer(C.int(i))) {
+	for i, address := range f.xfers {
+		if v == address {
 			return 0x30000000 + uint32(i)
 		}
 	}
@@ -534,7 +535,7 @@ func portTestMapPainting(cases []PortTestPaintSpec, owner func(*server.Server) (
 	return out
 }
 func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, globs map[string]*uint32, cw C.ushort, extra *paintTestExtension) (out PortTestPaintResult) {
-	f := &paintTestFixture{extra: extra, mapRoomTestFixture: &mapRoomTestFixture{slots: map[int]*mapRoomTestRegion{}, intact: true}, owners: owners, owned: map[*mapRoomTestRegion]bool{}, objectRecords: map[*mapRoomTestRegion]*server.Object{}, globs: globs, secret: map[*mapRoomTestRegion]bool{}}
+	f := &paintTestFixture{xfers: [2]uint32{mapRoomRaw(C.paintXfer(0)), mapRoomRaw(C.paintXfer(1))}, extra: extra, mapRoomTestFixture: &mapRoomTestFixture{slots: map[int]*mapRoomTestRegion{}, intact: true}, owners: owners, owned: map[*mapRoomTestRegion]bool{}, objectRecords: map[*mapRoomTestRegion]*server.Object{}, globs: globs, secret: map[*mapRoomTestRegion]bool{}}
 	defer func() {
 		if extra != nil && extra.finish != nil {
 			extra.finish(f)

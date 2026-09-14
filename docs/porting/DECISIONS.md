@@ -232,3 +232,18 @@ floats; an otherwise equivalent translated-room probe produced no doors/waypoint
 The expanded contract checks both object counts and projected coordinate shifts
 for positive/negative translations in all four directions. Qualify this small C
 correction with the full growth baseline before native conversion.
+
+## Cache invariant lookups in map capture fixtures (2026-09-14)
+
+Larger generator integration cases spent excessive time normalizing released grid
+records. Cache the two fixed C transfer-function addresses once per fixture case,
+and index stable wall-address ranges by page. Keep the original range checks,
+interior-byte offsets, pool order and canonical IDs; rebuild the wall index if the
+fixture pool grows. These are porttest-only changes and do not alter production.
+
+The first cached run preserves all growth/hallway hashes and completes 128 normal
+map integrations. All prior map hashes pass in default/server/highres (66.162 / 144.538 / 74.101s
+wall). Matching growth test durations sum to 24.96s before and 17.47s after in
+observed runs, not a dedicated benchmark.
+Evidence: build/port-map-orchestration/cache-{variants,growth-timing}.json and
+cache-*.log. Commit separately from the subsequently exposed wall-list defect.

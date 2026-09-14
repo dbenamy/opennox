@@ -4,30 +4,47 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Active — generator orchestration baseline next
+### Active — fixture speedup, then confirmed wall-list prerequisite
 
-Native growth is fully qualified and ready to commit/push. Corrected C baseline
-**eca05817** preceded conversion. Seven routines now use Go; four private C helpers
-are retired and three external C bridges remain. **5,781 cases / nine captures**
-plus 335 contracts pass with every hash unchanged (first native 25.082s).
-Physical C **101,335 / 148 files / zero reference**, **−1,081 lines**.
+Native growth **bd256d10** is committed/pushed and fully qualified: seven routines,
+−1,081 C lines, **101,335 / 148 files / zero reference**. Its 5,781 cases / nine captures
+plus 335 contracts match C; accumulated 73,484 cases / 978 groups pass all variants,
+three binaries qualify, full-suite failures unchanged, gameplay 37.042s.
 
-Accumulated **73,484 cases / 978 groups**, plus contracts, pass default/server/highres
-in **393.463 / 388.575 / 320.343s** wall. All three final production binaries pass
-ELF32/i386/SSE2/CGO and symbol checks. Asset-backed full suite exactly matches the
-known 1,553 failure entries (15 pass / 3 fail / 32 skip packages). Fresh unchanged repeat-a
-headless gameplay passes in **37.042s**. Evidence: build/port-map-growth/
-qualification.json and docs/porting/MAP_GROWTH.md. The final report's gameplay path
-has been corrected to the actual map-growth-port result. No process is active.
+Five remaining orchestration routines are still C (207 section lines). New fixtures
+and corpus are APPLIED but uncommitted: src/legacy/map_orchestration_porttest.go,
+src/server/map_orchestration_porttest.go, src/map_orchestration*_porttest_test.go.
+Original step probe passes: PlayerStart1, nine released rooms,68 records,0.075s.
+Expanded128 normal maps pass with hash55a6dd794e5f89b97cc572b2d62b74b53ab5cf75895695c39a311b90e0af2bd7;
+full capture is c-cached-normal-maps.json. Two128-byte layout records remain alive
+per successful map because existing theme cleanup is shallow; document/review that
+ownership issue separately rather than claiming complete generator cleanup.
 
-Next commit/push native growth, then apply/review the UNAPPLIED orchestration
-fixture.go.stage, probe.go.stage, server-types.go.stage under build/port-map-orchestration.
-Run the original C generation step through a small real keyed synthetic theme;
-require a PlayerStart and released rooms. Five orchestration routines remain C
-(207 section lines). Read PLAN.md for retry, filesystem and ownership coverage.
-Native-step.go.stage is an uncompiled future draft only; do not apply before a
-repeated/locked/committed C orchestration baseline. No user question or new agents.
-Continue batches after summaries. Preserve the asset archive.
+First expanded run was slow in fixture normalization and interrupted after101.244s.
+Two uncommitted porttest-only caches fetch fixed paintXfer addresses once per case
+and index stable wall ranges by page (same offsets/order/canonical IDs). Cached run
+passes all growth/hallway hashes and128 normal integrations, then TIMES OUT at180s
+in ring wall lookup. Trace and source reveal existing serverWalls.find traverses
+NextByY24 from s.head instead of Next20, corrupting the live/free lists on deletion.
+New UNCOMMITTED src/server/wall_list_test.go confirms original failures: deleting
+oldest/second wall leaves1/2 global walls instead of3. Evidence: wall-list-original.log.
+The one-line production fix is NOT applied yet.
+
+Cache qualification passes every prior map hash in default/server/highres:
+66.162 /144.538 /74.101s wall (cache-variants.json). No process is active.
+The TWO shared fixture cache files plus decision/log entry are ready to commit/push,
+BEFORE fixing wall.go. Then apply Next20 traversal, run wall regression and ring
+integration, audit any historical capture differences caused by the independent
+wall fix, qualify and commit/push that prerequisite before continuing the C baseline.
+New orchestration files and wall_list_test.go are still untracked and must not be
+included in the cache-only commit. Production remains unchanged in that commit.
+
+Remaining orchestration coverage: ring16 cases, invalid themes7 cases, retries and
+file/owner behavior. No orchestration hashes locked and no native orchestration
+applied. Original fixtures/drafts under build/port-map-orchestration now have stale
+parts: do not reapply over source. native-step.go.stage remains future-only.
+Completed map-growth-port assets are hash-deduplicated (556MB reclaimed), with
+restore manifest. No user question or agents. Continue batches; preserve asset archive.
 
 ### Completed — map painting, borders, walls and door placement
 

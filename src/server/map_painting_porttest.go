@@ -17,7 +17,11 @@ import (
 
 // The bounded wall pool uses normal production creation/deletion and indices.
 // Every Wall starts at its tracked allocation base so normal frees remain valid.
+type portTestWallAddress struct{ start, id uint32 }
+
 type PortTestPaintOwners struct {
+	wallIndex          map[uint32][]portTestWallAddress
+	wallIndexCount     int
 	S                  *Server
 	blocks             [][]byte
 	walls              []*Wall
@@ -173,10 +177,22 @@ func (p *PortTestPaintOwners) Reset(seed int, cycle, variations byte) {
 	p.S.Rand.Logic, p.S.Rand.Other = prand.New(seed), prand.New(seed+1)
 }
 func (p *PortTestPaintOwners) NormalizeWall(v uint32) uint32 {
-	for i, w := range p.walls {
-		start := uint32(uintptr(unsafe.Pointer(w)))
-		if v >= start && v-start < uint32(unsafe.Sizeof(Wall{})) {
-			return 0x20000000 + uint32(i)*64 + v - start
+	// Wall addresses are stable for an owner's lifetime. Bucket by page while
+	// retaining range checks, interior-byte offsets and original pool order.
+	if p.wallIndex == nil || p.wallIndexCount != len(p.walls) {
+		p.wallIndex = make(map[uint32][]portTestWallAddress)
+		for i, w := range p.walls {
+			start := uint32(uintptr(unsafe.Pointer(w)))
+			row := portTestWallAddress{start: start, id: 0x20000000 + uint32(i)*64}
+			for page := start >> 12; page <= (start+uint32(unsafe.Sizeof(Wall{}))-1)>>12; page++ {
+				p.wallIndex[page] = append(p.wallIndex[page], row)
+			}
+		}
+		p.wallIndexCount = len(p.walls)
+	}
+	for _, row := range p.wallIndex[v>>12] {
+		if v >= row.start && v-row.start < uint32(unsafe.Sizeof(Wall{})) {
+			return row.id + v - row.start
 		}
 	}
 	return v
