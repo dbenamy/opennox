@@ -84,7 +84,7 @@ func stateFreeze(u *server.Object, force int32) int8 {
 		if *p == 0 {
 			*p = uint32(force)
 		}
-		C.nox_xxx_netReportPlrStatus_4D8270(inventoryInt(u))
+		gameplayReportPlayerStatus(u)
 		C.nox_xxx_playerSetState_4FA020(asObjectC(u), 13)
 		stateRaise(u, 0)
 		C.sub_50B510()
@@ -115,7 +115,7 @@ func stateUnfreeze(u *server.Object, force int32) int8 {
 		}
 		*p = 0
 		u.ObjFlags &^= 2
-		result = int8(C.nox_xxx_netReportPlrStatus_4D8270(inventoryInt(u)))
+		result = int8(gameplayReportPlayerStatus(u))
 		for it := u.Field129; it != nil; it = it.Field128 {
 			if it.ObjClass&2 != 0 {
 				result = int8(uintptr(it.UpdateData))
@@ -155,7 +155,7 @@ func stateRemoveMonitors(u, t *server.Object) {
 	t.ObjSubClass &^= 0x80
 	pl := *(*unsafe.Pointer)(unsafe.Add(ud, 276))
 	ind := C.int(*(*byte)(unsafe.Add(pl, 2064)))
-	C.nox_xxx_netSendUnMonitorCrea_4D92A0(ind, (*C.uint32_t)(t.CObj()))
+	gameplayReportUnmonitor(int(ind), t)
 	C.nox_xxx_netUnmarkMinimapObj_417300(ind, asObjectC(t), 1)
 	C.nox_xxx_unitClearOwner_4EC300(asObjectC(t))
 }

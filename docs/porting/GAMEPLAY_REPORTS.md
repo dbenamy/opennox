@@ -1,4 +1,4 @@
-# Next candidate: gameplay status and item reports
+# Gameplay status and item reports
 
 Candidate after orchestration qualification: **73 connected routines /1,337 C
 section lines** in `legacy/GAME3_2.c`, from4D7BE0 up to but excluding4D9EB0.
@@ -8,7 +8,7 @@ score/elimination bookkeeping and the aggregate player-report routine. Six nearb
 helpers are included because the aggregate calls several of them. Variadic text
 formatting after this range is a separate scope.
 
-**The complete C baseline is qualified; production reporting remains C.** The local
+**The native conversion is fully qualified. Original C is recoverable at fbfac731.** The local
 source/signature/callee inventories and thin dispatcher source are in
 `build/port-gameplay-reports`. Re-audit callers after virtual removal to establish
 retained versus retired C ABIs before constructing the baseline. Initial virtual
@@ -47,60 +47,38 @@ Then match captures, retire obsolete bridges, run appropriate accumulated and
 production/gameplay checks, record actual C LOC, commit/push and continue.
 
 
-### Current — complete gameplay-reporting C baseline qualified
+### Native conversion — qualified
 
-The next connected conversion is **73 gameplay-reporting routines /1,337 C section
-lines**, GAME3_2.c from4D7BE0 up to4D9EB0. All remain C in this checkpoint. The
-baseline is complete: **7,809 cases/28 locked, repeated capture hashes**, plus three
-journal-padding regressions and a creature-order probe. Every routine has positive
-coverage. Full accumulated default ports pass **81,468 cases/1,010 groups** and
-contracts (324.199s); focused reporting/player-control checks pass server112.707s
-and highres42.952s. All previous capture hashes are unchanged. First reporting
-checkpoint1e20588e and preceding native orchestration3fa8a141 are already pushed.
+Baseline `fbfac731` is committed and pushed. All73 implementations now use Go;
+45 entry points retain their required C ABI and28 have been retired. All19
+Go-only callers now invoke native helpers, including equipment, resources,
+attacks, spells, player controls and inventory paths. The fixture dispatcher
+calls native helpers too. A whole-source audit found no remaining references to
+the28 retired names. No C algorithm remains solely for testing.
 
-Physical C remains **101,128 lines /148 files /zero reference C**. The initial
-journal prerequisite zeros unused message bytes; its audit permits only254 unused
-bytes across nine snapshots, with all defined fields and other state identical.
-No reporting algorithm has been converted or retained solely for testing.
+The first native focused run passed in20.984s: all7,809 cases /28 hashes match the
+original C baseline, plus journal-padding and creature-order checks. Accumulated
+default/server/highres tests passed (77.441s/114.117s/17.081s wall), covering81,468
+cases /1,010 groups and contracts in every variant. Allthree production builds
+pass ELF386/SSE2 and symbol audits:28 retired symbols absent,45 required bridges
+present, no test helpers. The full suite matches all1,553 baseline failure entries
+exactly (15pass/3fail/32skip packages). Fresh unchanged headless gameplay passes
+35.208s, with overrides disabled and null audio. No qualification failures were
+found in this conversion. `qualification.json` gathers the local evidence.
+Measured physical C is **99,791 lines /148 files /zero reference C**, a reduction
+of1,337 lines. Local evidence: native-first.log, native-retirement-audit.json,
+variants.json and native-qualification-progress.log.
 
-Next: commit/push this complete C baseline, then convert the connected batch to
-native Go. The ABI audit confirms **45 retained C bridges and28 removable entry
-points**, with no production Go address references requiring extra retention.
-Replace Go-only calls directly, retire obsolete declarations/getters, switch the
-fixture dispatcher to native helpers, compare all28 captures, then run full
-accumulated tests on allthree variants, production builds/symbol audits, the known
-full-suite comparison and fresh unchanged headless gameplay. Record C LOC,
-commit/push, summarize and continue. No pending user question.
+Serialization preserves message bytes, recipient/ordering/priority, narrow signed
+returns, full-width caches and mutation ordering. Engine objects and queued
+records remain C-owned. Temporary Go byte buffers pass to retained queue routines
+that synchronously copy them into owned storage; no pointer is retained. Direct
+message-list insertion uses the existing Go queue. Player, team and inventory
+iteration use the existing native owners, with the original valid-domain behavior.
+The original baseline has1296 elimination-rule cases, plus frame wrap, repeated
+aggregate caches, NaN/signed zero, equipment modifiers and byte/word boundaries.
+All report actions still assert preserved x87 control on a locked OS thread.
 
-Coverage includes byte/word/signed boundaries, all modifier combinations, weapon/
-armor precedence, NPC colors and equipment, sparse-player fanout, proximity
-falloff, journal name limits, score/frame wrap, zero-max item-health suppression,
-full/cooperative reporting caches, NaN/signed-zero comparisons and1,296 elimination
-rule cases. Real queues, guarded records, player/team/member iteration and caches
-are exercised. Countdown calls are recorded at the existing service boundary;
-its two empty fixture text slots are initialized/restored with the ID used by
-server.go. Optional recipient masks and rule globals restore per case. Every
-report action checks/preserves x87 control on a locked OS thread. Direct-list
-messages are in ResourceMessages, which drains the list before later snapshots.
-
-See docs/porting/GAMEPLAY_REPORTS.md. Local evidence and reusable scripts are in
-build/port-gameplay-reports: baseline-qualification.json, capture-audit.json,
-abi-audit.json, journal-padding-audit.json, qualify-c.py and test-pattern.txt.
-Original captures may be raw or SHA-verified gzip (capture-archive.json). Core
-fixtures and expected hashes are tracked, so the baseline can be regenerated.
-
-Disk recovery preserves originals and changed files. Ten additional completed
-runs have asset restoration manifests (ai-callback, player-attack, inventory,
-equipment, resources, object-death, ai-main, rule-command, world-mechanisms,
-temporary-updates; each name ends in -port), recovering5,563,589,860bytes. Latest
-map-orchestration-port was also deduplicated. Use the existing deduplicate script
-with --restore when needed. Preserve nox-iso-from-archive-org.7z.
-
-Standing authorization: continue connected chunks, thoroughly test, document C
-LOC, commit/push, summarize and continue until a substantive question or rate
-limit. Resolve confident reversible choices and record them for later review.
-No new agents. Use build/baseline/env.sh, GOMAXPROCS=2 and go -p 2. Full-suite/crash
-logs stay local; report metadata only. SSH push to dbenamy/opennox dev is authorized.
-Known separate reviews: orchestration failure paths preserve pending flags/saved
-objects; theme cleanup remains shallow. Native orchestration is fully qualified
-in3fa8a141, with fresh unchanged headless gameplay passing37.120s.
+Capture archival has SHA-verified gzip round trips; the latest pass archived208
+additional files and recovered2,472,958,742bytes. Captures and generated scripts
+are local evidence; tracked tests and baseline Git history reproduce the oracle.

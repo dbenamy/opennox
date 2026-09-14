@@ -45,7 +45,7 @@ func inventoryTreasureDrop(u, it *server.Object, pos *types.Pointf) int {
 		pl := u.UpdateDataPlayer().Player
 		pl.Field2152--
 		pl.Field2156 = uint32(C.nox_xxx_scavengerTreasureMax_4D1600())
-		C.nox_xxx_scavengerHuntReport_4D8CD0(inventoryInt(u))
+		gameplayReportScavenger(u)
 		inventorySound(308, u, 0, 0)
 	}
 	return 1

@@ -79,7 +79,7 @@ func sustainedShieldFX(u, source *server.Object) {
 }
 func sustainedCharges(u, item *server.Object) {
 	data := item.UseData.Ptr
-	C.nox_xxx_netReportCharges_4D82B0(C.int(*controlByte(controlPlayer(u), 2064)), asObjectC(item), C.char(*controlByte(data, 108)), C.char(*controlByte(data, 109)))
+	gameplayReportCharges(int(*controlByte(controlPlayer(u), 2064)), item, byte(*controlByte(data, 108)), byte(*controlByte(data, 109)))
 }
 func sustainedTagPacket(u, target *server.Object, mode byte) uint32 {
 	var b [7]byte

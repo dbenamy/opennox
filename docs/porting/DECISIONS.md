@@ -325,3 +325,19 @@ Post-removal ABI audit:45 routines retain C callers;28 entry points can be retir
 No production Go address references require retaining those28 symbols. Production
 reporting will use native helpers, with thin Go-backed C bridges for actual C
 callers and no retained C algorithms for testing.
+
+## 2026-09-14 — native reporting buffer ownership
+
+Use temporary Go byte buffers for gameplay reporting and pass them directly to
+the retained C queue insertion routines. Source review confirms both normal and
+coalescing insertion copy input synchronously into owned queue storage; neither
+retains the input pointer. This avoids an additional temporary C allocation while
+keeping all engine objects and queued records under their existing ownership.
+Direct message-list insertion uses the existing native queue. Revisit this choice
+if queue ownership changes; current byte/routing/state captures remain exact.
+
+Native reporting matches all28 original-C hashes on default/server/highres, and
+all accumulated port tests pass each variant. Keep the45 C bridges required by
+actual C callers and remove28 obsolete entry points. The full source audit finds
+no retired-name references. Allthree production builds and symbol audits pass; the full suite matches1,553
+known failure entries exactly and fresh unchanged headless gameplay passes35.208s.

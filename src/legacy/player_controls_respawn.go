@@ -54,7 +54,7 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 		resourceRefreshMana(u)
 	}
 	Nox_xxx_playerCancelAbils_4FC180(u)
-	C.sub_4D7E50((*C.nox_object_t)(u.CObj()))
+	gameplayReportReset(u)
 	for _, off := range []int{312, 316, 84} {
 		*equipmentWord(d, off) = 0
 	}
@@ -82,8 +82,8 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 	if pl == nil || *equipmentWord(pl, 4700) != 0 {
 		return result
 	}
-	C.nox_xxx_netReportTotalHealth_4D85C0(C.int(*controlByte(pl, 2064)), (*C.uint32_t)(u.CObj()))
-	C.nox_xxx_netReportTotalMana_4D88C0(C.int(*controlByte(pl, 2064)), inventoryInt(u))
+	gameplayReportTotalHealth(int(*controlByte(pl, 2064)), u)
+	gameplayReportTotalMana(int(*controlByte(pl, 2064)), u)
 	if keep != 0 {
 		result = int8(controlRespawnNotify(u, 0))
 	} else {
@@ -186,8 +186,8 @@ func controlResetPlayer(u *server.Object) int32 {
 	spellLifeCancelPlayer(u)
 	resourceRemovePoison(u)
 	controlClearWaypoints(u)
-	C.nox_xxx_netReportTotalHealth_4D85C0(C.int(*controlByte(pl, 2064)), (*C.uint32_t)(u.CObj()))
-	C.nox_xxx_netReportTotalMana_4D88C0(C.int(*controlByte(pl, 2064)), inventoryInt(u))
+	gameplayReportTotalHealth(int(*controlByte(pl, 2064)), u)
+	gameplayReportTotalMana(int(*controlByte(pl, 2064)), u)
 	*controlPtr(u.CObj(), 520) = nil
 	*equipmentWord(pl, 3664) = 0xdeadface
 	*equipmentWord(pl, 3660) = 0xdeadface

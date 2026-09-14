@@ -61,7 +61,7 @@ func attackShotEffects(u, it, p *server.Object) int {
 func attackReportAmmo(u, it *server.Object) {
 	b := unsafe.Slice((*byte)(it.UseData.Ptr), 3)
 	player := *(*unsafe.Pointer)(unsafe.Add(u.UpdateData, 276))
-	C.nox_xxx_netReportCharges_4D82B0(C.int(*(*byte)(unsafe.Add(player, 2064))), asObjectC(it), C.char(b[1]), C.char(b[0]))
+	gameplayReportCharges(int(*(*byte)(unsafe.Add(player, 2064))), it, byte(b[1]), byte(b[0]))
 }
 func attackShoot(u, ammo, it *server.Object, kind uint32) int {
 	pos := attackMuzzle(u)

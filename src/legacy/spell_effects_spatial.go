@@ -111,7 +111,7 @@ func spellEffectQuake(id int32, a, b, c *server.Object, record unsafe.Pointer, l
 	GetServer().S().Map.EachObjInCircle(c.PosVec, float32(spellEffectScalar("EarthquakeRange")), func(u *server.Object) bool { spellEffectQuakeDamage(u, c); return true })
 	spellEffectAudio(id, 0, c)
 	jiggle := floatToInt32(float32(spellEffectTable("EarthquakeJiggle", level-1)))
-	C.nox_xxx_earthquakeSend_4D9110((*C.float)(unsafe.Pointer(&c.PosVec)), C.int(jiggle))
+	gameplayReportEarthquake(&c.PosVec, int(jiggle))
 	return 1
 }
 func spellEffectDoorLink(u *server.Object) {

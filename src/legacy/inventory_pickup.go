@@ -109,7 +109,7 @@ func inventoryTreasurePickup(u, it *server.Object, arg int) int {
 	inventorySound(307, u, 0, 0)
 	pl.Field2152++
 	pl.Field2156 = uint32(C.nox_xxx_scavengerTreasureMax_4D1600())
-	C.nox_xxx_scavengerHuntReport_4D8CD0(inventoryInt(u))
+	gameplayReportScavenger(u)
 	core := GetServer().S()
 	if !u.TeamVal.Has() {
 		if pl.Field2152 == uint32(C.nox_xxx_scavengerTreasureMax_4D1600()) {

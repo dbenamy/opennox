@@ -224,7 +224,7 @@ func monsterGolemStrike(u *server.Object) bool {
 	r := float32(float64(u.UpdateDataMonster().MonsterDef.MeleeAttackRange112) + float64(u.Shape.Circle.R) + float64(*memmap.PtrFloat32(0x587000, 287328)))
 	*memmap.PtrUint32(0x5D4594, 2491576) = 0
 	GetServer().S().Map.EachObjInCircle(u.PosVec, r, func(t *server.Object) bool { monsterAreaCandidate(t, u); return true })
-	C.nox_xxx_earthquakeSend_4D9110((*C.float)(unsafe.Pointer(&u.PosVec)), 30)
+	gameplayReportEarthquake(&u.PosVec, 30)
 	return *memmap.PtrUint32(0x5D4594, 2491576) != 0
 }
 func monsterPointFX(u *server.Object, code byte) {

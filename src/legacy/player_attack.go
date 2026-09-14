@@ -99,7 +99,7 @@ func attackPlayer(u *server.Object) int {
 		attackItemEffects(it, u, &r)
 		hit := attackTrace(u, &r)
 		if area {
-			C.nox_xxx_earthquakeSend_4D9110((*C.float)(unsafe.Pointer(&u.PosVec)), C.int(floatToInt32(float32(float64(strength)*0.1))))
+			gameplayReportEarthquake(&u.PosVec, int(floatToInt32(float32(float64(strength)*0.1))))
 			inventorySound(882, u, 0, 0)
 		} else if hit == 0 {
 			inventorySound(sound, u, 0, 0)
@@ -109,7 +109,7 @@ func attackPlayer(u *server.Object) int {
 		animation(46)
 		current = elapsed()
 		if uint16(current)<<8|uint16(prior) == 770 {
-			C.nox_xxx_earthquakeSend_4D9110((*C.float)(unsafe.Pointer(&u.PosVec)), 15)
+			gameplayReportEarthquake(&u.PosVec, 15)
 			core.Map.EachObjInCircle(u.PosVec, 300, func(t *server.Object) bool { attackWarcry(t, u); return true })
 			C.nox_xxx_castCounterSpell_52BBB0(13, inventoryInt(u), inventoryInt(u), inventoryInt(u))
 		}

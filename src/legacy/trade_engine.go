@@ -362,7 +362,7 @@ func tradePriority(u *server.Object, key string) {
 	C.nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr(key), 0)
 }
 func tradeReportGold(u *server.Object) {
-	C.sub_4D8870(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), C.int(uintptr(u.CObj())))
+	gameplayReportPlayerStat(int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), u)
 }
 func tradeBuy(u *server.Object, s *shopSession, code uint32) {
 	available := shopGetGold(u)

@@ -171,7 +171,7 @@ func temporaryFist(u *server.Object) {
 		C.nox_xxx_netSendPointFx_522FF0(C.char(-118), (*C.float2)(unsafe.Pointer(&pos)))
 		pos = types.Ptf(u.PosVec.X, float32(float64(*temporaryFloat(u.CObj(), 176))+float64(u.PosVec.Y)))
 		C.nox_xxx_netSendPointFx_522FF0(C.char(-118), (*C.float2)(unsafe.Pointer(&pos)))
-		C.nox_xxx_earthquakeSend_4D9110((*C.float)(unsafe.Pointer(&u.PosVec)), 30)
+		gameplayReportEarthquake(&u.PosVec, 30)
 	}
 	if u.ZVal >= 200 && int32(u.ObjFlags) < 0 {
 		GetServer().DelayedDelete(u)
@@ -223,7 +223,7 @@ func temporaryMeteorExplode(u *server.Object) {
 	damage := equipmentWord(u.UpdateData, 0)
 	inventorySound(87, u, 0, 0)
 	temporaryScorch(u)
-	C.nox_xxx_earthquakeSend_4D9110((*C.float)(unsafe.Pointer(&u.PosVec)), 10)
+	gameplayReportEarthquake(&u.PosVec, 10)
 	if fx := GetServer().S().NewObjectByTypeID("MeteorExplode"); fx != nil {
 		GetServer().CreateObjectAt(fx, nil, u.PosVec)
 	}

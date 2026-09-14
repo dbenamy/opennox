@@ -270,7 +270,7 @@ func objectiveObelisk(u *server.Object) int32 {
 				}
 				if effectsRecharge(wand, rate) != 0 {
 					data := unsafe.Slice((*byte)(wand.UseData.Ptr), 110)
-					C.nox_xxx_netReportCharges_4D82B0(C.int(uint8(ud.Player.PlayerInd)), asObjectC(wand), C.char(data[108]), C.char(data[109]))
+					gameplayReportCharges(int(uint8(ud.Player.PlayerInd)), wand, byte(data[108]), byte(data[109]))
 				}
 			}
 		}

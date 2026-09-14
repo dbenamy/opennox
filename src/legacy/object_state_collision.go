@@ -68,7 +68,7 @@ func stateChargeStun(u *server.Object) {
 }
 func stateCharge(u, t *server.Object) {
 	C.nox_xxx_playerSetState_4FA020(asObjectC(u), 13)
-	C.nox_xxx_earthquakeSend_4D9110((*C.float)(unsafe.Pointer(&u.PosVec)), 10)
+	gameplayReportEarthquake(&u.PosVec, 10)
 	Sub_4FC300(u, 1)
 	if t != nil {
 		damage := floatToInt32(float32(C.nox_xxx_gamedataGetFloat_419D40(internCStr("BerserkerDamage"))))

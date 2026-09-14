@@ -41,10 +41,10 @@ func equipmentDequipAmmo(u *server.Object, report, broadcast int) {
 }
 func equipmentDequipReports(u, it *server.Object, report, broadcast int) {
 	if report != 0 {
-		C.nox_xxx_netReportDequip_4D8590(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), asObjectC(it))
+		gameplayReportDequipItem(int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), it)
 	}
 	if broadcast != 0 {
-		C.nox_xxx_netReportDequip_4D84C0(255, asObjectC(it))
+		gameplayReportDequipFlags(255, it)
 	}
 }
 func equipmentDequipWeapon(u, it *server.Object, report, broadcast int) int {
@@ -75,10 +75,10 @@ func equipmentDequipWeapon(u, it *server.Object, report, broadcast int) int {
 		active.ObjFlags &^= 0x100
 		*equipmentWord(equipmentPlayer(u), 4) &^= equipmentWeaponBits(active)
 		if report != 0 {
-			C.nox_xxx_netReportDequip_4D8590(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), asObjectC(active))
+			gameplayReportDequipItem(int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), active)
 		}
 		if broadcast != 0 {
-			C.nox_xxx_netReportDequip_4D84C0(255, asObjectC(it))
+			gameplayReportDequipFlags(255, it)
 		}
 		*equipmentWord(ud, 104) = 0
 	}
@@ -185,7 +185,7 @@ func equipmentEquipWeapon(u, it *server.Object, report, broadcast int) int {
 	}
 	it.ObjFlags |= 0x100
 	*equipmentWord(equipmentPlayer(u), 4) |= bits
-	C.nox_xxx_netReportEquip_4D8540(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), (*C.uint32_t)(it.CObj()), C.int(report))
+	gameplayReportEquip(int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), it, int(report))
 	if bits != 2 {
 		*equipmentWord(ud, 104) = uint32(uintptr(it.CObj()))
 	}
@@ -205,7 +205,7 @@ func equipmentEquipWeapon(u, it *server.Object, report, broadcast int) int {
 	return 1
 }
 func equipmentReportCharges(u, it *server.Object, a, b int) {
-	C.nox_xxx_netReportCharges_4D82B0(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), asObjectC(it), C.char(*(*byte)(unsafe.Add(it.UseData.Ptr, a))), C.char(*(*byte)(unsafe.Add(it.UseData.Ptr, b))))
+	gameplayReportCharges(int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), it, byte(*(*byte)(unsafe.Add(it.UseData.Ptr, a))), byte(*(*byte)(unsafe.Add(it.UseData.Ptr, b))))
 }
 func equipmentEquipBow(u *server.Object) int {
 	for it := u.InvFirstItem; it != nil; it = it.InvNextItem {

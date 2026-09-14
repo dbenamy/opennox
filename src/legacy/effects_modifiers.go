@@ -66,7 +66,7 @@ func effectsSpeed(m *server.ModifierEff, u *server.Object, engage bool) {
 		}
 		u.SpeedBonus = float32(float64(u.SpeedBonus) - float64(m.EngageFloat120))
 	}
-	C.nox_xxx_netReportStatsSpeed_4D9360(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), (*C.uint32_t)(u.CObj()), 0, C.int(math.Float32bits(u.SpeedBonus)))
+	gameplayReportSpeed(int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), u, 0, uint32(math.Float32bits(u.SpeedBonus)))
 	inventorySound(sound, u, 0, 0)
 }
 func effectsProtection(u *server.Object, fn unsafe.Pointer, buff int, key string, cap1, cap2 float64) float64 {

@@ -60,14 +60,14 @@ func shopRepair(u *server.Object, s *shopSession, code uint32) uint32 {
 	shopSubGold(u, uint32(shopPrice(2, s, item)))
 	resourceSetHP(item, item.HealthData.Max)
 	ind := C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd))
-	C.nox_xxx_itemReportHealth_4D87A0(ind, asObjectC(item))
+	gameplayReportItemHealth(int(ind), item)
 	if item.ObjClass&0x1000 != 0 && item.ObjSubClass&0x47f0000 != 0 {
 		data := unsafe.Slice((*byte)(item.UseData.Ptr), 110)
 		if effectsRecharge(item, 100) != 0 {
-			C.nox_xxx_netReportCharges_4D82B0(ind, asObjectC(item), C.char(data[108]), C.char(data[109]))
+			gameplayReportCharges(int(ind), item, byte(data[108]), byte(data[109]))
 		}
 	}
-	C.sub_4D8870(ind, C.int(uintptr(u.CObj())))
+	gameplayReportPlayerStat(int(ind), u)
 	GetServer().S().Audio.EventObj(803, u, 2, u.NetCode)
 	return code
 }
@@ -86,7 +86,7 @@ func shopSell(u *server.Object, s *shopSession, typ int32, count uint32) {
 		inventoryRemove(u, item)
 		GetServer().DelayedDelete(item)
 		shopAddGold(u, uint32(shopPrice(0, s, item)))
-		C.sub_4D8870(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), C.int(uintptr(u.CObj())))
+		gameplayReportPlayerStat(int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), u)
 		if i+1 == count {
 			GetServer().S().Audio.EventObj(307, u, 2, u.NetCode)
 			return

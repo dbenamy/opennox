@@ -37,12 +37,12 @@ func inventoryRemove(u, it *server.Object) {
 		if it.ObjClass&0x10000000 != 0 && noxflags.HasGame(32) {
 			*(*uint32)(unsafe.Add(unsafe.Pointer(pl), 4)) &^= 1
 			if report == 1 {
-				C.nox_xxx_netReportDequip_4D84C0(255, asObjectC(it))
+				gameplayReportDequipFlags(255, it)
 			}
 		}
 		equipmentDequipArmor(u, it, 0, int(report))
 		equipmentDequipWeapon(u, it, 0, int(report))
-		C.nox_xxx_netReportDrop_4D8B50(C.int(uint8(pl.PlayerInd)), asObjectC(it))
+		gameplayReportDrop(int(uint8(pl.PlayerInd)), it)
 		toggleProtectionObject(int32(pl.Prot4632), it)
 	} else if u.ObjClass&2 != 0 {
 		if u.ObjSubClass&0x10 != 0 && it.ObjClass&0x10000000 != 0 && noxflags.HasGame(32) {
@@ -80,7 +80,7 @@ func inventoryInsert(u, it *server.Object, report int) {
 	if u.ObjClass&4 != 0 {
 		pl := u.UpdateDataPlayer().Player
 		if report != 0 {
-			C.nox_xxx_netReportPickup_4D8A60(C.int(uint8(pl.PlayerInd)), asObjectC(it))
+			gameplayReportPickup(int(uint8(pl.PlayerInd)), it)
 		}
 		toggleProtectionObject(int32(pl.Prot4632), it)
 		inventoryWeight(u)

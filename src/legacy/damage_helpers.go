@@ -117,12 +117,12 @@ func damageItemReport(ind int32, it *server.Object, old, now uint16) int32 {
 		return result
 	}
 	if bool(C.nox_common_gameFlags_check_40A5C0(2048)) {
-		return int32(C.nox_xxx_itemReportHealth_4D87A0(C.int(ind), asObjectC(it)))
+		return int32(gameplayReportItemHealth(int(ind), it))
 	}
 	before := C.sub_57B190(C.ushort(old), C.ushort(it.HealthData.Max))
 	result = int32(C.sub_57B190(C.ushort(now), C.ushort(it.HealthData.Max)))
 	if int32(before) != result {
-		result = int32(C.nox_xxx_itemReportHealth_4D87A0(C.int(ind), asObjectC(it)))
+		result = int32(gameplayReportItemHealth(int(ind), it))
 	}
 	return result
 }

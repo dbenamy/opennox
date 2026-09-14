@@ -335,7 +335,7 @@ func sustainedManaBombTick(p unsafe.Pointer) uint32 {
 		inner := float32(spellEffectScalar("ManaBombInRadius"))
 		outer := float32(spellEffectScalar("ManaBombOutRadius"))
 		C.nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&pos)), C.float(outer), C.float(inner), C.int(d.Field72), 15, asObjectC(u), nil)
-		C.nox_xxx_earthquakeSend_4D9110((*C.float)(unsafe.Pointer(&pos)), C.int(sustainedScalarInt("ManaBombShakeMag")))
+		gameplayReportEarthquake(&pos, int(sustainedScalarInt("ManaBombShakeMag")))
 		sustainedFX(129, pos)
 		sustainedFX(154, pos)
 		sustainedAudio(81, u)

@@ -262,14 +262,14 @@ func controlSubStamina(u *server.Object, amount int32) int32 {
 	}
 	*p -= byte(amount)
 	if off == 91 {
-		C.nox_xxx_netReportStamina_4D8800(C.int(*controlByte(controlPlayer(u), 2064)), inventoryInt(u))
+		gameplayReportStamina(int(*controlByte(controlPlayer(u), 2064)), u)
 	}
 	return 1
 }
 func controlAdjustStamina(u *server.Object, amount int8) {
 	if u.ObjClass&4 != 0 {
 		*controlByte(u.UpdateData, 91) -= byte(amount)
-		C.nox_xxx_netReportStamina_4D8800(C.int(*controlByte(controlPlayer(u), 2064)), inventoryInt(u))
+		gameplayReportStamina(int(*controlByte(controlPlayer(u), 2064)), u)
 	}
 }
 func controlWeaponStamina(mask uint32) int32 {

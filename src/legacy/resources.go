@@ -193,7 +193,7 @@ func resourcePoisonReport(u *server.Object, active bool) {
 		owner = u.ObjOwner
 	}
 	if owner != nil {
-		C.nox_xxx_netReportObjectPoison_4D7F40(C.int(uintptr(owner.CObj())), (*C.uint32_t)(u.CObj()), C.char(bool2int(active)))
+		gameplayReportPoison(owner, u, byte(bool2int(active)))
 	}
 }
 func resourceClearPoison(u *server.Object, fade bool) {

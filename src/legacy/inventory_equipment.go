@@ -80,7 +80,7 @@ func inventoryWeaponPickup(u, it *server.Object, arg, equip int) int {
 				if offset == 1 {
 					other = 0
 				}
-				C.nox_xxx_netReportCharges_4D82B0(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), asObjectC(it), C.char(*(*byte)(unsafe.Add(it.UseData.Ptr, offset))), C.char(*(*byte)(unsafe.Add(it.UseData.Ptr, other))))
+				gameplayReportCharges(int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), it, byte(*(*byte)(unsafe.Add(it.UseData.Ptr, offset))), byte(*(*byte)(unsafe.Add(it.UseData.Ptr, other))))
 			}
 		}
 	}
@@ -110,7 +110,7 @@ func inventoryAmmoPickup(u, it *server.Object, arg, equip int) int {
 			}
 			prev[1] += data[1]
 			prev[0] += data[0]
-			C.nox_xxx_netReportCharges_4D82B0(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), asObjectC(old), C.char(prev[1]), C.char(prev[0]))
+			gameplayReportCharges(int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), old, byte(prev[1]), byte(prev[0]))
 			GetServer().DelayedDelete(it)
 			equipmentPickupSound(u, it)
 			return 1

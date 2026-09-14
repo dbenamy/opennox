@@ -104,7 +104,7 @@ func equipmentEquipArmor(u, it *server.Object, report, broadcast int) int {
 	}
 	it.ObjFlags |= 0x100
 	*equipmentWord(equipmentPlayer(u), 0) |= equipmentArmorBits(it)
-	C.nox_xxx_netReportEquip_4D8540(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), (*C.uint32_t)(it.CObj()), C.int(report))
+	gameplayReportEquip(int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), it, int(report))
 	if equipmentArmorMask(it) == 0 {
 		it.ObjFlags |= 0x10000000
 	}
