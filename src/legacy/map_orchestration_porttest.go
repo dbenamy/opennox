@@ -16,6 +16,8 @@ static uint32_t orchestrationInvoke(int op,uint32_t* args) {
  case 0:return sub_4D42E0((char*)(uintptr_t)args[0]);
  case 1:return (uintptr_t)nox_xxx_getRandMapName_4D4310();
  case 2:return nox_xxx_mapGenStep_4D44E0();
+ case 3:return nox_xxx_mapGenStart_4D4320();
+ case 4:return nox_xxx_mapGenStartAlt_4D5F30();
  }
  return 0;
 }
@@ -34,7 +36,29 @@ import (
 	"github.com/opennox/opennox/v1/server"
 )
 
-func PortTestMapOrchestration(cases []PortTestPaintSpec, owner func(*server.Server) (Server, func())) []PortTestPaintResult {
+type PortTestMapOrchestrationServices struct {
+	Progress func(string)
+	Before   func(*server.Server)
+	After    func(*server.Server, int, uint32)
+	Save     func(string, int) int
+}
+
+func PortTestMapOrchestration(cases []PortTestPaintSpec, owner func(*server.Server) (Server, func()), services ...*PortTestMapOrchestrationServices) []PortTestPaintResult {
+	var svc *PortTestMapOrchestrationServices
+	if len(services) != 0 {
+		svc = services[0]
+	}
+	if svc != nil {
+		oldSave := orchestrationTestSave
+		orchestrationTestSave = svc.Save
+		defer func() { orchestrationTestSave = oldSave }()
+		metadata := memmap.PtrOff(0x973F18, 2408)
+		savedMetadata := bytes.Clone(unsafe.Slice((*byte)(metadata), 1464))
+		defer copy(unsafe.Slice((*byte)(metadata), 1464), savedMetadata)
+		savedObjects := *memmap.PtrUint32(0x5D4594, 1550924)
+		defer func() { *memmap.PtrUint32(0x5D4594, 1550924) = savedObjects }()
+	}
+
 	ext := &paintTestExtension{globals: map[string]*uint32{}}
 	ext.globals["areaCount"] = (*uint32)(unsafe.Pointer(&C.dword_5d4594_1599596))
 	ext.globals["themeLine"] = populationBlob(2487520)
@@ -44,6 +68,9 @@ func PortTestMapOrchestration(cases []PortTestPaintSpec, owner func(*server.Serv
 	}
 	oldDebug := Sub_57C490_2
 	Sub_57C490_2 = func(string) {}
+	if svc != nil && svc.Progress != nil {
+		Sub_57C490_2 = svc.Progress
+	}
 	defer func() { Sub_57C490_2 = oldDebug }()
 	name := memmap.PtrOff(0x587000, 197860)
 	savedName := bytes.Clone(unsafe.Slice((*byte)(name), 64))
@@ -217,6 +244,17 @@ func PortTestMapOrchestration(cases []PortTestPaintSpec, owner func(*server.Serv
 			}
 		}
 	}
+	previousBefore := ext.before
+	ext.before = func(f *paintTestFixture, sp PortTestPaintSpec) {
+		previousBefore(f, sp)
+		if svc != nil {
+			clear(unsafe.Slice(memmap.PtrUint8(0x973F18, 2408), 1464))
+			*memmap.PtrUint32(0x5D4594, 1550924) = 0
+			if svc.Before != nil {
+				svc.Before(f.owners.S)
+			}
+		}
+	}
 	ext.invoke = func(f *paintTestFixture, op int, args [6]uint32) uint32 {
 		noxflags.ResetGame()
 		noxflags.SetGame(noxflags.GameFlag(*ext.globals["gameFlags"]))
@@ -225,6 +263,9 @@ func PortTestMapOrchestration(cases []PortTestPaintSpec, owner func(*server.Serv
 		return uint32(C.orchestrationInvoke(C.int(op), (*C.uint32_t)(unsafe.Pointer(&args[0]))))
 	}
 	ext.after = func(f *paintTestFixture, op int, ret uint32) {
+		if svc != nil && svc.After != nil {
+			svc.After(f.owners.S, op, ret)
+		}
 		*ext.globals["gameFlags"] = uint32(noxflags.GetGame())
 		for _, head := range []*server.Waypoint{f.owners.S.WPs.List, f.owners.S.WPs.Pending} {
 			for wp := head; wp != nil; wp = wp.WpNext {

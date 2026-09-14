@@ -14,11 +14,12 @@ import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc/handles"
 )
 
-// Corrected C step captures; outer start/save orchestration coverage is pending.
+// Corrected C step captures; outer start/retry/save behavior has separate contracts.
 var orchestrationCExpected = map[string]string{
-	"normal-maps":    "c6fc4af3bd0c2935bf7c5c3607302ca0e066950237e2d455f5170a42967ef6ab",
-	"ring-maps":      "d8f1e06ff469e2c6b6dce2f9583c375a0c62f936831875547d06c3803acfb93d",
-	"theme-failures": "e0bdd5828f0ebcc7a584699b059b6826c8b19281160eac5351eb9600c4da89c6",
+	"step-boundaries": "635b72c0db8747b78fa33790d65a35c0c45e5886ce3f3ca7632a29fbbfd5de32",
+	"normal-maps":     "c6fc4af3bd0c2935bf7c5c3607302ca0e066950237e2d455f5170a42967ef6ab",
+	"ring-maps":       "d8f1e06ff469e2c6b6dce2f9583c375a0c62f936831875547d06c3803acfb93d",
+	"theme-failures":  "e0bdd5828f0ebcc7a584699b059b6826c8b19281160eac5351eb9600c4da89c6",
 }
 
 func orchestrationTheme(t *testing.T, name, body string) {

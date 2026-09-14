@@ -10,6 +10,15 @@ func mapRoomSelectDecoration(r *mapRoom, list unsafe.Pointer) unsafe.Pointer {
 	weight := int32(mapRoomRaw(unsafe.Pointer(r)))
 	for attempt := 0; ; attempt++ {
 		switch r.ThemeFlags {
+		case 0:
+			// Backdrops are created without a theme phase. Only unrestricted
+			// decorations match them; their weights must not depend on r's address.
+			weight = 0
+			for d := *mapRoomRef(list, 0); d != nil; d = *mapRoomRef(d, 220) {
+				if mapRoomDecorMatchesFlags(d, r) != 0 {
+					weight += *mapRoomWord(d, 72)
+				}
+			}
 		case 1:
 			weight = *mapRoomWord(list, 8)
 		case 2:

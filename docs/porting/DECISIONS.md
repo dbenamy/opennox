@@ -266,3 +266,20 @@ on allocator layout. Go-owned retained buffers plus saved grid-row identities
 remove that observer effect. This is test-only; no engine allocation ownership
 changes. Repeated complete captures and eight allocation layouts check stability.
 The separate shallow theme-cleanup ownership issue remains deferred for review.
+
+
+## 2026-09-14 — unflagged backdrop decoration weights
+
+Real backdrop integration exposed an inherited selector bug: a newly created
+backdrop has ThemeFlags zero, while the selection default used the room address as
+its random weight. Depending on allocation address it returned nil (followed by a
+painting failure) or performed an enormous address-dependent draw/retry sequence.
+The earlier room conversion preserved that C behavior; this is a separate repair.
+
+Decision for later review: for ThemeFlags zero, sum weights of matching unrestricted
+decorations. Keep the existing six phase-specific weight paths unchanged. This is
+a bounded reversible change with direct selection tests and real backdrop maps.
+Empty/ineligible lists return nil. All22,658 map cases/281 groups and contracts
+pass default/server/highres (74.179s/148.546s/82.656s), all historical hashes
+unchanged. No orchestration C routines are converted. The initial real-C failure is c-expanded.log under
+build/port-map-orchestration, and the corrected rerun is c-backdrop-fixed.log.

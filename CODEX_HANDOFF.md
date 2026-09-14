@@ -4,14 +4,14 @@
 
 ### Current — wall-list prerequisite, then generator orchestration
 
-HEAD **55a4b2ef** is pushed. Recent completed work:
+HEAD **8bcecb87** is pushed. Recent completed work:
 - `bd256d10`: native growth, seven routines, −1,081 C lines; 5,781 cases / nine
   captures plus contracts match C; accumulated variants/builds/gameplay qualify.
 - `55a4b2ef`: fixture lookup caching; prior map hashes match all variants.
 
 Remaining C: **101,335 lines / 148 files / zero reference C**.
 
-The one-line `serverWalls.find` correction is fully qualified and ready to commit. It follows
+The one-line `serverWalls.find` correction is qualified, committed and pushed as8bcecb87. It follows
 `Next20` from the global head; the previous row-link traversal lost live walls and
 hung ring generation. Twelve deletion/reuse contracts pass. Eleven historical
 painting hashes intentionally change: only520 global links and31 heads across350
@@ -27,13 +27,31 @@ Accumulated default/server/highres variants PASS in299.109s/367.549s/307.546s,
 all hashes exact. All three production builds and binary audits pass. The full suite
 matches all1,553 known failure entries (15pass/3fail/32skip packages), with no new
 failures. Fresh unchanged gameplay passes in37.170s. Qualification evidence is
-build/fix-wall-list/qualification.json. Commit/push, then expand the C baseline.
+build/fix-wall-list/qualification.json.
+
+Expanded original-C fixtures and the unflagged backdrop correction are APPLIED
+but uncommitted. All175 cases/four mandatory captures plus15 outer contracts,
+three name boundaries, eight allocator layouts and direct identity/weight checks
+pass three repetitions (root16.382s/legacy0.046s). All previous hashes are unchanged.
+Full map corpus22,658 cases/281 groups plus contracts PASSES in all variants:
+default74.179s/server148.546s/highres82.656s.
+Evidence: c-expanded-qualification.json. Commit/push the qualified baseline
+and backdrop prerequisite before applying native orchestration.
+
+Backdrop failure was inherited: ThemeFlags0 used the room address as selection
+weight. map_rooms_decor.go now sums eligible unrestricted weights for flags0;
+six phase-specific branches are unchanged. See MAP_ORCHESTRATION.md/DECISIONS.md.
+The15 original outer C contracts already passed before this correction, including
+both100-attempt retries. Native orchestration remains UNAPPLIED; prepared scripts
+are prepare-native.py and native-*.go.stage, with final qualification scripts in
+build/port-map-orchestration-native. They retire all five C entries and redirect
+existing Go callers. Review/apply only after this expanded C baseline is pushed.
 
 Next: follow [MAP_ORCHESTRATION.md](docs/porting/MAP_ORCHESTRATION.md) to expand
 and lock original-C backdrop/name/start/retry/save coverage, commit/push baseline,
 then convert all five and retire their unused C bridges. Local unapplied drafts
 and preparation scripts are under build/port-map-orchestration; see PLAN.md there.
-Do not apply native drafts before the expanded C baseline. Existing failure cleanup
+Do not apply native drafts before the expanded C baseline is committed/pushed. Existing failure cleanup
 and shallow theme ownership remain separate documented review items.
 
 Standing authorization: continue connected chunks, thoroughly validate, update
