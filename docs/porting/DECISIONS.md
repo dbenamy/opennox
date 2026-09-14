@@ -336,8 +336,43 @@ keeping all engine objects and queued records under their existing ownership.
 Direct message-list insertion uses the existing native queue. Revisit this choice
 if queue ownership changes; current byte/routing/state captures remain exact.
 
-Native reporting matches all28 original-C hashes on default/server/highres, and
-all accumulated port tests pass each variant. Keep the45 C bridges required by
+The focused native reporting run matches all28 C hashes. Correction: the original
+accumulated native variant runs selected no tests because of a trailing newline
+in the saved pattern. Their claimed coverage is superseded by the corrected
+text-batch matrix (see GAMEPLAY_REPORTS.md). Keep the45 C bridges required by
 actual C callers and remove28 obsolete entry points. The full source audit finds
 no retired-name references. Allthree production builds and symbol audits pass; the full suite matches1,553
 known failure entries exactly and fresh unchanged headless gameplay passes35.208s.
+
+## 2026-09-14 — reject empty or incomplete port-test selections
+
+A saved pattern ending in `$` plus a newline made allthree original broad native
+reporting runs select zero root tests. Go returned success, and the original
+runner accepted it. Focused reporting, C baselines, builds, full-suite comparison
+and gameplay were unaffected. Correct the historical claims instead of treating
+those runs as evidence. The text-batch pattern had already stripped the newline. Its corrected full
+default/server/highres matrix passes; all builds/symbol checks pass, the full
+suite matches1,553 known failure entries, and unchanged gameplay passes34.664s.
+
+The reusable tools/porting/run_tests.py trims surrounding whitespace, rejects
+empty/multiline patterns, discovers root tests with Go itself, rejects zero
+selection, then checks `go test -json` events for every discovered root test to
+start and finish. Logs remain local. Validate it against an actual test selected
+by a newline-terminated pattern and against a pattern selecting nothing. Use this
+runner for subsequent accumulated matrices and retain selected/executed counts.
+
+Guard validation passes: an actual newline-terminated selection ran and completed
+its one root test; a zero-match pattern was rejected; a controlled Go-output
+fixture that listed two tests but ran only one was rejected with the missing test
+named. Discovery audits select603 root tests for reporting and614 for reporting
+plus text; the latter is exactly the former plus11 text tests. Local evidence is
+runner-positive/empty/partial-result.json and selection-audit.json under
+build/port-gameplay-text. These checks do not replace the running full matrix.
+
+The final per-variant discovery audit selects614/613/614 root tests. Server omits
+only TestFloorEligibility, whose source explicitly requires !server. Actual root
+logs for all corrected broad runs contain successful nonempty execution. This
+corrected matrix supersedes the invalid earlier reporting matrix; the original
+local qualification record is annotated accordingly. The new JSON runner is the
+required path for subsequent accumulated matrices, rather than repeating an
+already completed valid matrix solely to change its log format.

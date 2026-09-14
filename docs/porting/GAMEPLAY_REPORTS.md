@@ -8,7 +8,8 @@ score/elimination bookkeeping and the aggregate player-report routine. Six nearb
 helpers are included because the aggregate calls several of them. Variadic text
 formatting after this range is a separate scope.
 
-**The native conversion is fully qualified. Original C is recoverable at fbfac731.** The local
+**The corrected broad native matrix passes with the text batch.** Original C is
+recoverable at fbfac731. The earlier zero-test matrix is invalid; see below. The local
 source/signature/callee inventories and thin dispatcher source are in
 `build/port-gameplay-reports`. Re-audit callers after virtual removal to establish
 retained versus retired C ABIs before constructing the baseline. Initial virtual
@@ -47,7 +48,7 @@ Then match captures, retire obsolete bridges, run appropriate accumulated and
 production/gameplay checks, record actual C LOC, commit/push and continue.
 
 
-### Native conversion — qualified
+### Native conversion — qualification correction
 
 Baseline `fbfac731` is committed and pushed. All73 implementations now use Go;
 45 entry points retain their required C ABI and28 have been retired. All19
@@ -57,14 +58,26 @@ calls native helpers too. A whole-source audit found no remaining references to
 the28 retired names. No C algorithm remains solely for testing.
 
 The first native focused run passed in20.984s: all7,809 cases /28 hashes match the
-original C baseline, plus journal-padding and creature-order checks. Accumulated
-default/server/highres tests passed (77.441s/114.117s/17.081s wall), covering81,468
-cases /1,010 groups and contracts in every variant. Allthree production builds
-pass ELF386/SSE2 and symbol audits:28 retired symbols absent,45 required bridges
-present, no test helpers. The full suite matches all1,553 baseline failure entries
-exactly (15pass/3fail/32skip packages). Fresh unchanged headless gameplay passes
-35.208s, with overrides disabled and null audio. No qualification failures were
-found in this conversion. `qualification.json` gathers the local evidence.
+original C baseline, plus journal-padding and creature-order checks.
+
+The original broad native runs (77.441s/114.117s/17.081s wall) selected no tests:
+the saved regex contained a trailing newline after its end anchor, and the runner
+did not trim it. Their root logs explicitly say `[no tests to run]`. The earlier
+claim of81,468 cases on every native variant was incorrect. The original-C baseline
+runs and the20.984s focused native reporting run are valid, as are allthree
+production builds, symbol checks, full-suite comparison and the reporting
+scenario (35.208s).
+
+The corrected text-batch pattern trims the newline and includes all reporting
+and text tests. Replacement accumulated default/server/highres runs pass84,259 captured cases /
+1,021 groups and applicable contracts (321.386s/396.167s/335.635s wall). Go discovery
+confirms614/613/614 selected root tests; only the client-only floor contract is
+excluded on server. Root package logs confirm actual, nonempty execution.
+`tools/porting/run_tests.py` now discovers root tests and checks JSON execution
+records for every selected test, rejecting empty selections. The earlier local
+qualification.json is annotated as invalid for the earlier broad matrix and
+points to the replacement selection and execution audits.
+
 Measured physical C is **99,791 lines /148 files /zero reference C**, a reduction
 of1,337 lines. Local evidence: native-first.log, native-retirement-audit.json,
 variants.json and native-qualification-progress.log.
