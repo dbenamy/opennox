@@ -2,51 +2,47 @@
 
 <!-- current-focus -->
 
-### Current — native gameplay text qualified; object lookup/cache next
+### Current — object lookup/cache qualified; quest eligibility next
 
-The ten-routine text/notification, encoding and player-iteration conversion is
-fully qualified. All2,791 cases /11 locked C captures match. Accumulated84,259
-captured cases /1,021 groups and applicable contracts pass standard/server/highres
-(321.386s/396.167s/335.635s wall). Go discovery selects614/613/614 root tests; server
-omits only the explicitly client-only floor contract. Actual root logs confirm
-nonempty execution. All builds/symbol checks pass, full suite matches1,553 known
-failure entries exactly, and fresh unchanged headless gameplay passes34.664s.
-Physical C: **99,509 lines /147 files /zero reference C**, down282 lines/one file.
+The 13-routine object lookup/cache conversion is fully qualified. All 1,074
+cases /8 locked original-C captures match, including 1,280 mixed cache operations.
+Accumulated 85,333 captured cases /1,029 groups and applicable contracts pass
+standard/server/highres (357.408s/411.876s/346.540s wall). The guarded runner
+verifies all 623/622/623 selected root tests execute and complete. All three
+production builds and ABI/ELF checks pass. The full suite matches 1,553 known
+failure entries exactly, and fresh unchanged headless gameplay passes 35.566s.
+Physical C: **99,071 lines /147 files /zero reference C**, down 438 lines.
 
-Baseline text commitbab248cf is pushed. Reporting conversion51eb809a is pushed.
-Test-selection correction713f067b is committed: the original broad reporting
-matrix selected zero tests because of a trailing newline; its old coverage claim
-is invalid. The corrected matrix above closes that gap. Focused reporting, builds,
-full-suite and gameplay results were independently valid. All subsequent matrices
-must use tools/porting/run_tests.py (Go discovery + JSON execution/completion
-checks). It has positive, zero-selection and partial-execution validation.
+Original-C baseline 55ab415b is pushed. This checkpoint contains the completed
+native conversion: Go owns the 16-node cache, eleven private C entry points and
+its C storage/types are retired, and two required C exports remain. Existing Go
+callers and the objective fixture use native helpers. See docs/porting/OBJECT_LOOKUP.md
+and build/port-object-lookup/qualification.json for evidence.
 
-Text conversion 8acac7e5 is pushed. The original-C baseline for **13 object
-lookup/cache routines /436 C section lines** is in progress. Guarded fixture and
-root tests are applied; production remains C. Initial captures confirm names,
-search locations and cache lifecycle semantics. The initial player-fallback
-assertion used the wrong fixture identity (200 instead of the resources owner's
-54000); source review corrected it. All 1,074 cases /8 hashes are locked and repeated, including 1,280 mixed
-cache operations; focused checks pass. The guarded accumulated standard C
-baseline passes (623 root tests, 331.395s wall); affected server/highres pass
-91 root tests each (172.723s/69.908s). The original-C baseline is qualified.
-Native source and an apply script are staged only in build/port-object-lookup. No user question
-is pending. See docs/porting/OBJECT_LOOKUP.md for scope and audited decisions.
-Only two entry points need C exports; eleven can retire. Historical global
-address interval audit found metadata only. Preserve the C name-matching path;
-the existing native matcher differs. Keep the shadow-list pair outside scope.
+Next: establish the C baseline for **14 quest eligibility routines /563 C lines**
+(GAME3_3.c 4F24E0 through before 4F3E30). Four C entry points remain needed; ten
+can retire, including Go quest-penalty calls. Audit, original sections, a guarded
+fixture, root tests and apply-fixture.py are staged in build/port-quest-eligibility.
+No eligibility source is applied yet. The draft has nine groups (approximately
+10,793 cases; verify actual captures) covering scalar eligibility, books,
+modifier masks/slots/composites, item class precedence, special gear and inventory
+limits. Review first C failures against source, repeat captures, then lock hashes.
 
-Evidence: docs/porting/GAMEPLAY_TEXT.md, build/port-gameplay-text/qualification.json,
-variant-selection-audit.json, root-execution-audit.json, full-suite-comparison.json
-and build/baseline/runs/gameplay-text-port/result.json. Original C is recoverable
-atbab248cf. Native serializers preserve raw UTF16, narrow length wrap and the
-legacy signed %u behavior; only two production C varargs adapters remain in scope.
+Testing scope for the next tag-independent batch: repeated original-C captures
+plus the full accumulated standard baseline; completed native full standard and
+affected server/highres suites (eligibility, penalty, inventory, equipment,
+rewards), all builds and fresh gameplay. Replay a differing variant against the
+recoverable C baseline before diagnosing a port regression. Broaden for shared
+variant-sensitive changes or unexplained discrepancies. This applies the existing
+subsystem plan; rationale is recorded in docs/porting/DECISIONS.md.
 
-Standing authorization: continue connected chunks; resolve confident reversible
-choices and record them. No new agents. Use build/baseline/env.sh, GOMAXPROCS=2
-and -p 2. Keep raw full-suite/crash logs local. SSH push to dbenamy/opennox dev is
-authorized. Preserve the7z and original extracted assets. Completed reporting run
-asset duplicates have a restoration manifest; text captures have gzip manifests.
+Standing authorization: continue connected chunks, commit/push and continue.
+Resolve confident reversible choices and record them. No new agents or user
+question pending. Use build/baseline/env.sh, GOMAXPROCS=2 and -p 2. All accumulated
+matrices use tools/porting/run_tests.py; never edit source while tests/builds run.
+Keep raw full-suite/crash logs local. SSH push to dbenamy/opennox dev is authorized.
+Preserve the 7z and original extracted assets. Completed text-run asset duplicates
+have a restoration manifest; lookup captures have gzip manifests.
 
 <!-- /current-focus -->
 

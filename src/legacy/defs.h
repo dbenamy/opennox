@@ -879,20 +879,6 @@ typedef struct {
 } obj_5D4594_2650668_t;
 _Static_assert(sizeof(obj_5D4594_2650668_t) == 44, "wrong size of obj_5D4594_2650668_t structure!");
 
-typedef struct {
-	void* value;
-	void* next;
-	void* prev;
-} nox_dblLinkedList;
-_Static_assert(sizeof(nox_dblLinkedList) == 12, "wrong size of nox_dblLinkedList structure!");
-
-typedef struct {
-	nox_dblLinkedList* firstFreeObject;
-	nox_dblLinkedList* lastFreeObject;
-	nox_dblLinkedList objArray[16];
-	nox_dblLinkedList* firstUsedObject;
-	nox_dblLinkedList* lastUsedObject;
-} nox_server_netCodeCacheStruct;
 
 typedef struct nox_screenParticle nox_screenParticle;
 typedef struct nox_screenParticle {

@@ -167,9 +167,6 @@ void nox_xxx_netPriMsgToPlayer_4DA2C0(nox_object_t* a1, const char* a2, char a3)
 int nox_xxx_netPrintLineToAll_4DA390(const char* a1);
 nox_object_t* nox_get_and_zero_server_objects_4DA3C0(void);
 void nox_set_server_objects_4DA3E0(nox_object_t* p);
-nox_object_t* nox_xxx_getObjectByScrName_4DA4F0(char* a1);
-int sub_4DA5C0(int a1, const char* a2);
-int sub_4DA660(int a1, const char* a2);
 nox_object_t* nox_server_getFirstObject_4DA790();
 nox_object_t* nox_server_getNextObject_4DA7A0(nox_object_t* obj);
 nox_object_t* nox_xxx_getFirstPlayerUnit_4DA7C0();

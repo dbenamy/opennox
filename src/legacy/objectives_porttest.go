@@ -11,8 +11,6 @@ extern uint32_t dword_5d4594_527656;
 extern unsigned int dword_5d4594_2650652;
 extern uint32_t dword_5d4594_1567988;
 extern uint32_t dword_5d4594_527660;
-extern nox_server_netCodeCacheStruct nox_server_netCodeCache;
-extern uint32_t nox_server_needInitNetCodeCache;
 int sub_417F50(int a1);
 void nox_xxx_pickupFlagCtf_4EA490(int a1, int a2);
 int sub_4EB9B0(int a1, int a2);
@@ -170,8 +168,8 @@ func (p *portTestShopPools) objectivesPrepare() func() {
 		return v
 	}
 	oldList := core.Objs.List
-	oldNetCache, oldNetInit := C.nox_server_netCodeCache, C.nox_server_needInitNetCodeCache
-	C.nox_server_netCodeCache_initArray_4ECE50()
+	oldNetCache, oldNetInit := netCodeCacheState, netCodeCacheNeedInit
+	netCodeCacheInit()
 	oldStart, oldTeamBall := C.dword_5d4594_1567988, C.dword_5d4594_527660
 	C.dword_5d4594_527660 = 0
 	C.dword_5d4594_1567988 = 0
@@ -225,7 +223,7 @@ func (p *portTestShopPools) objectivesPrepare() func() {
 	return func() {
 		restoreAttack()
 		core.Objs.List = oldList
-		C.nox_server_netCodeCache, C.nox_server_needInitNetCodeCache = oldNetCache, oldNetInit
+		netCodeCacheState, netCodeCacheNeedInit = oldNetCache, oldNetInit
 		C.dword_5d4594_1567988 = oldStart
 		C.dword_5d4594_527660 = oldTeamBall
 		for i := range savedUnits {

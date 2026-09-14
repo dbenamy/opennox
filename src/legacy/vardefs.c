@@ -404,7 +404,6 @@ uint32_t dword_5d4594_1313740 = 0;
 uint32_t dword_587000_237036 = 0x1;
 uint32_t dword_5d4594_1062492 = 0;
 uint32_t dword_5d4594_1098604 = 0;
-uint32_t nox_server_needInitNetCodeCache = 0x1;
 uint32_t dword_5d4594_1308116 = 0;
 uint32_t dword_5d4594_1319248 = 0;
 uint32_t dword_5d4594_3807136 = 0;

@@ -2,36 +2,11 @@
 
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-extern nox_server_netCodeCacheStruct nox_server_netCodeCache;
-extern uint32_t nox_server_needInitNetCodeCache;
-static uint32_t objectLookupInvoke(int op,uint32_t* a) {
- switch(op) {
- case 0:return (uint32_t)nox_xxx_getObjectByScrName_4DA4F0((char*)a[0]);
- case 1:return sub_4DA5C0(a[0],(const char*)a[1]);
- case 2:return sub_4DA660(a[0],(const char*)a[1]);
- case 3:return (uint32_t)nox_server_getObjectFromNetCode_4ECCB0(a[0]);
- case 4:return nox_server_netCodeCache_lookupObj_4ECD90(a[0]);
- case 5:sub_4ECDE0((uint32_t*)a[0],a[1]);return 0;
- case 6:sub_4ECE10((uint32_t*)a[0],a[1]);return 0;
- case 7:nox_server_netCodeCache_initArray_4ECE50();return 0;
- case 8:nox_server_netCodeCache_addObj_4ECEA0(a[0]);return 0;
- case 9:return nox_server_netCodeCache_nextUnused_4ECEF0();
- case 10:return sub_4ECF10(a[0]);
- case 11:sub_4ECFA0((nox_object_t*)a[0]);return 0;
- case 12:sub_4ECFE0();return 0;
- default:return 0xDEADBEEF;
- }
-}
-*/
-import "C"
-
 import (
 	"unsafe"
 
 	"github.com/opennox/libs/object"
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -113,24 +88,24 @@ func (p *portTestShopPools) objectLookupEnsure() {
 	for _, name := range sp.Names {
 		st.names = append(st.names, p.objectiveString(name))
 	}
-	C.nox_server_netCodeCache = C.nox_server_netCodeCacheStruct{}
-	C.nox_server_needInitNetCodeCache = 1
+	netCodeCacheState = netCodeCacheStorage{}
+	netCodeCacheNeedInit = 1
 	if !sp.Uninitialized {
-		C.nox_server_netCodeCache_initArray_4ECE50()
+		netCodeCacheInit()
 	}
 	if sp.InitFlag != 0 {
-		C.nox_server_needInitNetCodeCache = C.uint32_t(sp.InitFlag)
+		netCodeCacheNeedInit = sp.InitFlag
 	}
 	for i := 0; i < 16; i++ {
-		p.identify(unsafe.Pointer(&C.nox_server_netCodeCache.objArray[i]), 920000+uint32(i))
+		p.identify(unsafe.Pointer(&netCodeCacheState.nodes[i]), 920000+uint32(i))
 	}
-	p.identify(unsafe.Pointer(&C.nox_server_netCodeCache.firstUsedObject), 930000)
-	p.identify(unsafe.Pointer(&C.nox_server_netCodeCache.firstFreeObject), 930001)
+	p.identify(unsafe.Pointer(&netCodeCacheState.used.first), 930000)
+	p.identify(unsafe.Pointer(&netCodeCacheState.free.first), 930001)
 	if len(sp.CacheValues) > 16 {
 		panic("lookup cache seed bounds")
 	}
 	for i, id := range sp.CacheValues {
-		C.nox_server_netCodeCache.objArray[i].value = ref(id).CObj()
+		netCodeCacheState.nodes[i].value = ref(id)
 	}
 }
 func (p *portTestShopPools) objectLookupArg(a PortTestGameplayReportArg) uint32 {
@@ -163,13 +138,13 @@ func (p *portTestShopPools) objectLookupArg(a PortTestGameplayReportArg) uint32 
 		if a.Ref < 0 || a.Ref >= 16 {
 			panic("lookup node argument")
 		}
-		ptr = unsafe.Pointer(&C.nox_server_netCodeCache.objArray[a.Ref])
+		ptr = unsafe.Pointer(&netCodeCacheState.nodes[a.Ref])
 		size = 12
 	case "lookup-head":
 		if a.Ref == 0 {
-			ptr = unsafe.Pointer(&C.nox_server_netCodeCache.firstUsedObject)
+			ptr = unsafe.Pointer(&netCodeCacheState.used.first)
 		} else if a.Ref == 1 {
-			ptr = unsafe.Pointer(&C.nox_server_netCodeCache.firstFreeObject)
+			ptr = unsafe.Pointer(&netCodeCacheState.free.first)
 		} else {
 			panic("lookup head argument")
 		}
@@ -195,18 +170,50 @@ func objectLookupInvoke(op int, args [5]uint32) uint32 {
 	if op < 0 || op > 12 {
 		panic("lookup operation")
 	}
-	return uint32(C.objectLookupInvoke(C.int(op), (*C.uint32_t)(unsafe.Pointer(&args[0]))))
+	ptr := func(v uint32) unsafe.Pointer { return unsafe.Pointer(uintptr(v)) }
+	obj := func(v uint32) *server.Object { return (*server.Object)(ptr(v)) }
+	result := func(u *server.Object) uint32 { return uint32(uintptr(u.CObj())) }
+	name := func(v uint32) string { return alloc.GoString((*byte)(ptr(v))) }
+	switch op {
+	case 0:
+		return result(objectLookupByName(name(args[0])))
+	case 1:
+		return result(objectLookupNameAt(obj(args[0]), name(args[1]), true))
+	case 2:
+		return result(objectLookupNameAt(obj(args[0]), name(args[1]), false))
+	case 3:
+		return result(objectLookupByNetCode(args[0]))
+	case 4:
+		return result(netCodeCacheLookup(args[0]))
+	case 5:
+		(*netCodeCacheList)(ptr(args[0])).prepend((*netCodeCacheNode)(ptr(args[1])))
+	case 6:
+		(*netCodeCacheList)(ptr(args[0])).remove((*netCodeCacheNode)(ptr(args[1])))
+	case 7:
+		netCodeCacheInit()
+	case 8:
+		netCodeCacheAdd(obj(args[0]))
+	case 9:
+		return uint32(uintptr(unsafe.Pointer(netCodeCacheNextUnused())))
+	case 10:
+		return result(objectLookupByScriptID(args[0]))
+	case 11:
+		netCodeCacheInvalidate(obj(args[0]))
+	case 12:
+		netCodeCacheFlush()
+	}
+	return 0
 }
 func (p *portTestShopPools) objectLookupSnapshot() *PortTestObjectLookupResult {
 	if p.reportLookup == nil {
 		return nil
 	}
-	out := &PortTestObjectLookupResult{NeedInit: uint32(C.nox_server_needInitNetCodeCache)}
+	out := &PortTestObjectLookupResult{NeedInit: uint32(netCodeCacheNeedInit)}
 	norm := func(v unsafe.Pointer) uint32 { return p.normalize(uint32(uintptr(v))) }
-	out.Heads = [4]uint32{norm(unsafe.Pointer(C.nox_server_netCodeCache.firstFreeObject)), norm(unsafe.Pointer(C.nox_server_netCodeCache.lastFreeObject)), norm(unsafe.Pointer(C.nox_server_netCodeCache.firstUsedObject)), norm(unsafe.Pointer(C.nox_server_netCodeCache.lastUsedObject))}
+	out.Heads = [4]uint32{norm(unsafe.Pointer(netCodeCacheState.free.first)), norm(unsafe.Pointer(netCodeCacheState.free.last)), norm(unsafe.Pointer(netCodeCacheState.used.first)), norm(unsafe.Pointer(netCodeCacheState.used.last))}
 	for i := range out.Nodes {
-		n := C.nox_server_netCodeCache.objArray[i]
-		out.Nodes[i] = [3]uint32{norm(n.value), norm(n.next), norm(n.prev)}
+		n := netCodeCacheState.nodes[i]
+		out.Nodes[i] = [3]uint32{norm(unsafe.Pointer(n.value)), norm(unsafe.Pointer(n.towardHead)), norm(unsafe.Pointer(n.towardTail))}
 	}
 	return out
 }

@@ -397,7 +397,6 @@ extern uint32_t dword_5d4594_1313740;
 extern uint32_t dword_587000_237036;
 extern uint32_t dword_5d4594_1062492;
 extern uint32_t dword_5d4594_1098604;
-extern uint32_t nox_server_needInitNetCodeCache;
 extern uint32_t dword_5d4594_1308116;
 extern uint32_t dword_5d4594_1319248;
 extern uint32_t dword_5d4594_3807136;

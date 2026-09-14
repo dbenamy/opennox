@@ -368,7 +368,7 @@ func sub_415B60(obj *nox_object_t) *wchar2_t {
 }
 
 func Nox_server_getObjectFromNetCode_4ECCB0(a1 int) *server.Object {
-	return asObjectS(C.nox_server_getObjectFromNetCode_4ECCB0(C.int(a1)))
+	return objectLookupByNetCode(uint32(a1))
 }
 func Nox_xxx_monsterRemoveMonitors_4E7B60(a1 *server.Object, a2 *server.Object) {
 	C.nox_xxx_monsterRemoveMonitors_4E7B60(asObjectC(a1), asObjectC(a2))
@@ -401,7 +401,7 @@ func Nox_xxx_unitRemoveChild_4EC470(a1 *server.Object) {
 	C.nox_xxx_unitRemoveChild_4EC470(asObjectC(a1))
 }
 func Sub_4ECFA0(a1 *server.Object) {
-	C.sub_4ECFA0(asObjectC(a1))
+	netCodeCacheInvalidate(a1)
 }
 func Sub_511DE0(a1 *server.Object) {
 	C.sub_511DE0(asObjectC(a1))

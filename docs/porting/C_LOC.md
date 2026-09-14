@@ -111,12 +111,10 @@ target build selection and linker evidence.
 | Map orchestration: generation, retries and save coordination (2026-09-14) | 148 | 101,128 | −207 | 0 |
 | Journal padding prerequisite and first reporting baseline (2026-09-14) | 148 | 101,128 | 0 | 0 |
 | Complete73-routine gameplay reporting C baseline (2026-09-14) | 148 | 101,128 | 0 | 0 |
-
 | Gameplay reporting, inventory notifications and player-state aggregation (2026-09-14) | 148 | 99,791 | −1,337 | 0 |
-
 | Gameplay text baseline (2026-09-14; 2,791 cases, no conversion) | 148 | 99,791 | 0 | 0 |
-
 | Gameplay text, notifications and player iteration (2026-09-14) | 147 | 99,509 | −282 | 0 |
+| Object lookup and 16-node net-code cache (2026-09-14) | 147 | 99,071 | −438 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

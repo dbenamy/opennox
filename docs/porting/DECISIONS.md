@@ -376,3 +376,27 @@ corrected matrix supersedes the invalid earlier reporting matrix; the original
 local qualification record is annotated accordingly. The new JSON runner is the
 required path for subsequent accumulated matrices, rather than repeating an
 already completed valid matrix solely to change its log format.
+
+## 2026-09-14 — scope variant regression work to the changed subsystem
+
+Review later: after object lookup's complete three-variant accumulated matrix,
+use one complete accumulated standard matrix plus affected server/highres suites
+for the next quest-eligibility batch. Its fourteen routines have no variant
+branches; the four outside C entry points are in the common server join path,
+and Go callers are the already-captured quest-penalty routines. Include the new
+eligibility corpus and existing penalty, inventory, equipment and reward suites
+in both affected variants. Keep repeated original-C captures, verified test
+selection/execution, all three production builds and gameplay qualification.
+
+This applies the existing subsystem-level testing plan to reduce repetition of
+unaffected historical corpora. Run complete variant matrices again for changes
+to shared variant-sensitive behavior, fixture ownership affecting those paths,
+or an unexplained discrepancy. The current object lookup matrix remains full
+in all three variants; this decision applies to following work.
+
+For that tag-independent batch, establish the original-C baseline with repeated
+focused captures and the full standard accumulated suite. Run affected variant
+suites on the completed native version against those same locked hashes. If a
+variant differs, replay the recoverable C baseline in that variant before
+attributing the difference to the port. No extra C-variant matrix is required
+when there is no variant-dependent implementation or observed discrepancy.
