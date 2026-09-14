@@ -10,18 +10,6 @@ static uint32_t* growthGlobal(int i) {
  switch(i) {case 0:return &dword_5d4594_1549844;case 1:return &dword_5d4594_1550912;case 2:return &dword_5d4594_1550916;}
  return 0;
 }
-static uint32_t growthInvoke(int op,uint32_t* v) {
- switch(op) {
- case 0:return (uintptr_t)nox_xxx_mapgen_Doors_4D4790();
- case 1:return (uintptr_t)nox_xxx_mapGenMkSmallRoom_4D4F40((uint32_t*)(uintptr_t)v[0]);
- case 2:sub_4D52F0();return 0;
- case 3:return sub_4D5350((uint32_t*)(uintptr_t)v[0],v[1],v[2],v[3],v[4]);
- case 4:return nox_xxx_mapGenFillRoom_4D53B0(v[0],v[1],v[2],v[3],v[4]);
- case 5:return sub_4D5630(v[0],v[1],v[2],v[3],v[4]);
- case 6:return sub_4D5D20((uint32_t*)(uintptr_t)v[0]);
- }
- return 0;
-}
 */
 import "C"
 import (
@@ -133,7 +121,7 @@ func PortTestMapGrowth(cases []PortTestPaintSpec, owner func(*server.Server) (Se
 		noxflags.SetGame(noxflags.GameFlag(*ext.globals["gameFlags"]))
 		themeObserve(true, 0)
 		defer themeObserve(false, 0)
-		return uint32(C.growthInvoke(C.int(op), (*C.uint32_t)(unsafe.Pointer(&args[0]))))
+		return mapGrowthPortInvoke(op, args)
 	}
 	ext.after = func(f *paintTestFixture, op int, ret uint32) {
 		for _, head := range []*server.Waypoint{f.owners.S.WPs.List, f.owners.S.WPs.Pending} {
@@ -153,4 +141,25 @@ func PortTestMapGrowth(cases []PortTestPaintSpec, owner func(*server.Server) (Se
 		f.owners.S.Nox_xxx_waypointDeleteAll_579DD0()
 	}
 	return portTestMapPainting(cases, owner, ext)
+}
+
+func mapGrowthPortInvoke(op int, v [6]uint32) uint32 {
+	switch op {
+	case 0:
+		return mapRoomRaw(unsafe.Pointer(mapGrowthDoors()))
+	case 1:
+		return mapRoomRaw(unsafe.Pointer(mapGrowthInitial(v[0])))
+	case 2:
+		mapGrowthFrontiers()
+		return 0
+	case 3:
+		return mapGrowthDispatch(populationRoom(v[0]), int32(v[1]), int32(v[2]), int32(v[3]), populationRoom(v[4]))
+	case 4:
+		return mapGrowthFill(populationRoom(v[0]), int32(v[1]), int32(v[2]), int32(v[3]), populationRoom(v[4]))
+	case 5:
+		return mapGrowthHall(populationRoom(v[0]), int32(v[1]), int32(v[2]), int32(v[3]), populationRoom(v[4]))
+	case 6:
+		return uint32(mapGrowthBranch(populationRoom(v[0])))
+	}
+	return 0
 }

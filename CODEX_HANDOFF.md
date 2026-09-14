@@ -2,25 +2,30 @@
 
 <!-- current-focus -->
 
-### Active — growth C baseline qualified; native conversion next
+### Active — generator orchestration baseline next
 
-All seven growth routines remain C. The corrected baseline is locked at **5,781
-cases / nine complete capture groups**, plus **335 separate contracts**. Default
-repeat/server/highres captures match exactly (82.945 / 161.009 / 93.334s wall),
-including prior map checks. Mandatory-hash smoke passes in **25.113s** with no
-extension bypass. Integer GridX/GridY door-scan reads now pass 16 translated-room
-contracts; the prior eight hashes are unchanged. Physical C **102,416 / 148 files /
-zero reference** (no line delta for this correction).
+Native growth is fully qualified and ready to commit/push. Corrected C baseline
+**eca05817** preceded conversion. Seven routines now use Go; four private C helpers
+are retired and three external C bridges remain. **5,781 cases / nine captures**
+plus 335 contracts pass with every hash unchanged (first native 25.082s).
+Physical C **101,335 / 148 files / zero reference**, **−1,081 lines**.
 
-Next convert the seven connected growth routines (1,079 C section lines), retaining
-only the three externally called C bridges. Four private helpers can retire. The
-baseline and translated-door correction must be committed/pushed first. Evidence:
-build/port-map-growth/baseline-{captures,variants,capture-archive}.json and
-baseline-locked.log. All raw captures are recoverable from verified gzip archives.
-Unapplied build/port-map-growth/native-layout.go.stage is an initial draft only;
-review against current C. No test process is active. Continue through native
-qualification, count/docs/commit/push and subsequent batches. No question or new
-agents. Preserve the asset archive.
+Accumulated **73,484 cases / 978 groups**, plus contracts, pass default/server/highres
+in **393.463 / 388.575 / 320.343s** wall. All three final production binaries pass
+ELF32/i386/SSE2/CGO and symbol checks. Asset-backed full suite exactly matches the
+known 1,553 failure entries (15 pass / 3 fail / 32 skip packages). Fresh unchanged repeat-a
+headless gameplay passes in **37.042s**. Evidence: build/port-map-growth/
+qualification.json and docs/porting/MAP_GROWTH.md. The final report's gameplay path
+has been corrected to the actual map-growth-port result. No process is active.
+
+Next commit/push native growth, then apply/review the UNAPPLIED orchestration
+fixture.go.stage, probe.go.stage, server-types.go.stage under build/port-map-orchestration.
+Run the original C generation step through a small real keyed synthetic theme;
+require a PlayerStart and released rooms. Five orchestration routines remain C
+(207 section lines). Read PLAN.md for retry, filesystem and ownership coverage.
+Native-step.go.stage is an uncompiled future draft only; do not apply before a
+repeated/locked/committed C orchestration baseline. No user question or new agents.
+Continue batches after summaries. Preserve the asset archive.
 
 ### Completed — map painting, borders, walls and door placement
 

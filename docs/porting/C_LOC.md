@@ -96,24 +96,16 @@ target build selection and linker evidence.
 | Map painting, walls, borders and door placement (2026-09-13) | 149 | 106,609 | −2,249 | 0 |
 | Population stack-record and object-disposal prerequisites (2026-09-13; no conversion) | 149 | 106,611 | +2 | 0 |
 | Population candidate arrays and complete item attributes prerequisite (2026-09-14) | 149 | 106,609 | −2 | 0 |
-
 | Population, prefabs, inventories, exits and waypoints (2026-09-14) | 148 | 104,839 | −1,770 | 0 |
-
 | Hallway second-corridor storage prerequisite (2026-09-14; no conversion) | 148 | 104,839 | 0 | 0 |
-
 | Hallway routing, bends, obstruction admission and candidate connections (2026-09-14) | 148 | 104,307 | −532 | 0 |
-
 | Theme value-buffer and modifier-counter prerequisites (2026-09-14; no conversion) | 148 | 104,300 | −7 | 0 |
-
 | Inherited modifier removal prerequisite (2026-09-14; no conversion) | 148 | 104,300 | 0 | 0 |
-
 | Complete theme parser C baseline (2026-09-14; 3,392 cases, no conversion) | 148 | 104,300 | 0 | 0 |
-
 | Theme parser, conditional input, equipment and decoration definitions (2026-09-14) | 148 | 102,419 | −1,881 | 0 |
-
 | Growth direction-array and merge-setting prerequisites (2026-09-14; no conversion) | 148 | 102,416 | −3 | 0 |
-
 | Growth translated-door prerequisite and locked baseline (2026-09-14; no conversion) | 148 | 102,416 | 0 | 0 |
+| Initial layouts, recursive growth, doors and waypoint connections (2026-09-14) | 148 | 101,335 | −1,081 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
