@@ -6,6 +6,25 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 ### Active — theme parser; hallway conversion qualified
 
+Hallway native **f1b92d3f** is committed/pushed. Theme fixture bootstrap is now
+written in uncommitted map_theme*porttest.go files plus the blobdata table getter.
+It uses real file handles, actual startup tables and a scoped allocation/clock
+observer. Token smoke passed (0.086s). Both original algorithm and four-modifier probes
+abort; evidence is in algorithm-original.log and modifier-original.log. The C
+value buffer is now char[60] and modifier counters int[4]. Corrected probes and existing map checks pass (41.556s); the expanded 72-case
+prerequisite smoke passes (0.823s). Server/highres checks both pass: **124.688s / 53.839s** wall time including
+builds; see prerequisite-variants.json and prerequisite-{server,highres}.log.
+Working C is 104,300 / 148 files / zero reference (−7). The prerequisite is qualified;
+count/document/commit/push it, then extend and lock the theme
+C baseline. No native theme conversion yet.
+Do not edit source during compilation. No theme C conversion or hashes yet.
+See docs/porting/MAP_THEME.md for current scope and recovery details. Earlier
+statements below that drafts are unapplied are superseded by this paragraph.
+Completed population/hallway gameplay data was deduplicated against verified
+canonical assets; changed files, logs and recordings remain. Each run has
+its SHA-256 manifest and restore command; the supplied archive is untouched.
+
+
 The six hallway routines are native Go, with all six C entry points retired.
 Corrected-C baseline **45961868** was committed/pushed first. All **2,512 cases /
 three complete captures** match on the first native run, with unchanged hashes;

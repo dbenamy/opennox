@@ -180,3 +180,12 @@ them would alter fallback and route selection beyond the pointer-storage repair.
 Keep the exact C captures and flag the gameplay behavior for a later correction;
 see [MAP_HALLWAYS.md](MAP_HALLWAYS.md). This is a compatibility choice, not an
 endorsement of the resulting shapes.
+
+## Theme value buffer and modifier counters — 2026-09-14, review later
+
+Restore contiguous local storage before qualifying the theme parser: a 60-byte
+algorithm value buffer and four modifier counters in one array. Both original
+normal-input probes abort, documented in [MAP_THEME.md](MAP_THEME.md). These
+small reversible repairs follow the standing policy; preserving the aborts
+would prevent ordinary settings and equipment parsing. Broader parsing and
+route behavior remain outside this prerequisite change.
