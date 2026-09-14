@@ -2252,202 +2252,25 @@ int sub_4D7B40() {
 	return result;
 }
 
-//----- (004D9EB0) --------------------------------------------------------
-int nox_xxx_netSendLineMessage_4D9EB0(int a1, wchar2_t* a2, ...) {
-	int result;      // eax
-	int v3;          // esi
-	char v4;         // al
-	int v5;          // eax
-	wchar2_t v6[516]; // [esp+4h] [ebp-408h]
-	va_list va;      // [esp+418h] [ebp+Ch]
-
-	va_start(va, a2);
-	result = a1;
-	if (a1 && *(uint8_t*)(a1 + 8) & 4) {
-		v3 = *(uint32_t*)(a1 + 748);
-		nox_vswprintf(&v6[260], a2, va);
-		LOBYTE(v6[0]) = -88; // MSG_TEXT_MESSAGE
-		*(wchar2_t*)((char*)v6 + 1) = 0;
-		HIBYTE(v6[1]) = 0;
-		if (nox_xxx_cliCanTalkMB_4100F0((short*)&v6[260])) {
-			v4 = HIBYTE(v6[1]) | 2;
-		} else {
-			v4 = HIBYTE(v6[1]) | 4;
-		}
-		HIBYTE(v6[1]) = v4;
-		v6[2] = 0;
-		v6[3] = 0;
-		LOBYTE(v6[5]) = 0;
-		v6[4] = (unsigned char)(nox_wcslen(&v6[260]) + 1);
-		if (v6[1] & 0x400) {
-			nox_wcscpy((wchar2_t*)((char*)&v6[5] + 1), &v6[260]);
-			v5 = 2;
-		} else {
-			nox_sprintf((char*)&v6[5] + 1, "%S", &v6[260]);
-			v5 = 1;
-		}
-		result = nox_netlist_addToMsgListCli_40EBC0(*(unsigned char*)(*(uint32_t*)(v3 + 276) + 2064), 1, v6,
-													v5 * LOBYTE(v6[4]) + 11);
-	}
-	return result;
+// C varargs are formatted here; Go owns message serialization and fanout.
+extern int nox_gameplayTextLine(int unit, wchar2_t* text);
+extern int nox_gameplayTextAll(char flags, wchar2_t* text);
+int nox_xxx_netSendLineMessage_4D9EB0(int unit, wchar2_t* format, ...) {
+ if (!unit || !(*(uint8_t*)(unit + 8) & 4)) { return unit; }
+ wchar2_t text[256];
+ va_list args;
+ va_start(args, format);
+ nox_vswprintf(text, format, args);
+ va_end(args);
+ return nox_gameplayTextLine(unit, text);
 }
-
-//----- (004D9FD0) --------------------------------------------------------
-int nox_xxx_printToAll_4D9FD0(char a1, wchar2_t* a2, ...) {
-	char v2;         // al
-	int v3;          // edi
-	int result;      // eax
-	int i;           // esi
-	wchar2_t v6[516]; // [esp+Ch] [ebp-408h]
-	va_list va;      // [esp+420h] [ebp+Ch]
-
-	va_start(va, a2);
-	nox_vswprintf(&v6[260], a2, va);
-	LOBYTE(v6[0]) = -88; // MSG_TEXT_MESSAGE
-	*(wchar2_t*)((char*)v6 + 1) = 0;
-	HIBYTE(v6[1]) = a1;
-	if (nox_xxx_cliCanTalkMB_4100F0((short*)&v6[260])) {
-		v2 = HIBYTE(v6[1]) | 2;
-	} else {
-		v2 = HIBYTE(v6[1]) | 4;
-	}
-	HIBYTE(v6[1]) = v2;
-	v6[2] = 0;
-	v6[3] = 0;
-	LOBYTE(v6[5]) = 0;
-	v6[4] = (unsigned char)(nox_wcslen(&v6[260]) + 1);
-	if (v6[1] & 0x400) {
-		nox_wcscpy((wchar2_t*)((char*)&v6[5] + 1), &v6[260]);
-		v3 = 2;
-	} else {
-		nox_sprintf((char*)&v6[5] + 1, "%S", &v6[260]);
-		v3 = 1;
-	}
-	result = nox_xxx_getFirstPlayerUnit_4DA7C0();
-	for (i = result; result; i = result) {
-		nox_netlist_addToMsgListCli_40EBC0(*(unsigned char*)(*(uint32_t*)(*(uint32_t*)(i + 748) + 276) + 2064), 1, v6,
-										   v3 * LOBYTE(v6[4]) + 11);
-		result = nox_xxx_getNextPlayerUnit_4DA7F0(i);
-	}
-	return result;
-}
-
-//----- (004DA0F0) --------------------------------------------------------
-int nox_xxx_netInformTextMsg_4DA0F0(int a1, int a2, int* a3) {
-	int result; // eax
-	int v4;     // edx
-	char v5[6]; // [esp+0h] [ebp-8h]
-
-	result = a2;
-	switch (a2) {
-	case 0:
-	case 1:
-	case 2:
-	case 12:
-	case 13:
-	case 16:
-	case 20:
-	case 21:
-		v5[1] = a2;
-		v4 = *a3;
-		v5[0] = -87;
-		*(uint32_t*)&v5[2] = v4;
-		result = nox_netlist_addToMsgListCli_40EBC0(a1, 1, v5, 6);
-		break;
-	case 17:
-		LOWORD(a2) = 4521;
-		result = nox_netlist_addToMsgListCli_40EBC0(a1, 1, &a2, 2);
-		break;
-	default:
-		return result;
-	}
-	return result;
-}
-
-//----- (004DA180) --------------------------------------------------------
-int nox_xxx_netInformTextMsg2_4DA180(int a1, uint8_t* a2) {
-	int result; // eax
-	int i;      // esi
-	int j;      // esi
-	int k;      // esi
-	char v6[6]; // [esp+8h] [ebp-8h]
-
-	result = a1;
-	switch (a1) {
-	case 3:
-	case 4:
-	case 8:
-	case 18:
-	case 19:
-	case 21:
-		v6[1] = a1;
-		v6[0] = -87;
-		*(uint32_t*)&v6[2] = *(uint32_t*)a2;
-		result = nox_xxx_getFirstPlayerUnit_4DA7C0();
-		for (i = result; result; i = result) {
-			nox_netlist_addToMsgListCli_40EBC0(*(unsigned char*)(*(uint32_t*)(*(uint32_t*)(i + 748) + 276) + 2064), 1,
-											   v6, 6);
-			result = nox_xxx_getNextPlayerUnit_4DA7F0(i);
-		}
-		break;
-	case 5:
-	case 6:
-	case 7:
-	case 9:
-	case 10:
-	case 11:
-		*a2 = -87;
-		a2[1] = a1;
-		result = nox_xxx_getFirstPlayerUnit_4DA7C0();
-		for (j = result; result; j = result) {
-			nox_netlist_addToMsgListCli_40EBC0(*(unsigned char*)(*(uint32_t*)(*(uint32_t*)(j + 748) + 276) + 2064), 1,
-											   a2, 10);
-			result = nox_xxx_getNextPlayerUnit_4DA7F0(j);
-		}
-		break;
-	case 14:
-		*a2 = -87;
-		a2[1] = a1;
-		result = nox_xxx_getFirstPlayerUnit_4DA7C0();
-		for (k = result; result; k = result) {
-			nox_netlist_addToMsgListCli_40EBC0(*(unsigned char*)(*(uint32_t*)(*(uint32_t*)(k + 748) + 276) + 2064), 1,
-											   a2, 11);
-			result = nox_xxx_getNextPlayerUnit_4DA7F0(k);
-		}
-		break;
-	default:
-		return result;
-	}
-	return result;
-}
-
-//----- (004DA2C0) --------------------------------------------------------
-void nox_xxx_netPriMsgToPlayer_4DA2C0(nox_object_t* a1p, const char* a2, char a3) {
-	int a1 = a1p;
-	int v3;      // edx
-	char v4[52]; // [esp+Ch] [ebp-34h]
-
-	if (a1 && *(uint8_t*)(a1 + 8) & 4 && a2 && !sub_419E60(a1) && strlen(a2) && strlen(a2) <= 0x30) {
-		v4[2] = a3;
-		v4[0] = -87;
-		v4[1] = 15;
-		v3 = *(uint32_t*)(a1 + 748);
-		strcpy(&v4[3], a2);
-		nox_netlist_addToMsgListCli_40EBC0(*(unsigned char*)(*(uint32_t*)(v3 + 276) + 2064), 1, v4, strlen(a2) + 4);
-	}
-}
-
-//----- (004DA390) --------------------------------------------------------
-int nox_xxx_netPrintLineToAll_4DA390(const char* a1) {
-	int result; // eax
-	int i;      // esi
-
-	result = nox_xxx_getFirstPlayerUnit_4DA7C0();
-	for (i = result; result; i = result) {
-		nox_xxx_netPriMsgToPlayer_4DA2C0(i, a1, 0);
-		result = nox_xxx_getNextPlayerUnit_4DA7F0(i);
-	}
-	return result;
+int nox_xxx_printToAll_4D9FD0(char flags, wchar2_t* format, ...) {
+ wchar2_t text[256];
+ va_list args;
+ va_start(args, format);
+ nox_vswprintf(text, format, args);
+ va_end(args);
+ return nox_gameplayTextAll(flags, text);
 }
 
 //----- (004DA4F0) --------------------------------------------------------
@@ -2617,40 +2440,6 @@ int sub_4DA660(int a1, const char* a2) {
 		}
 	}
 	return 0;
-}
-
-//----- (004DA7C0) --------------------------------------------------------
-nox_object_t* nox_xxx_getFirstPlayerUnit_4DA7C0() {
-	for (nox_playerInfo* p = nox_common_playerInfoGetFirst_416EA0(); p; p = nox_common_playerInfoGetNext_416EE0(p)) {
-		if (p->playerUnit) {
-			return p->playerUnit;
-		}
-	}
-	return 0;
-}
-
-//----- (004DA7F0) --------------------------------------------------------
-nox_object_t* nox_xxx_getNextPlayerUnit_4DA7F0(const nox_object_t* obj) {
-	const int a1 = obj;
-	char* v1; // eax
-
-	if (!a1) {
-		return 0;
-	}
-	if (!(*(uint8_t*)(a1 + 8) & 4)) {
-		return 0;
-	}
-	v1 = nox_common_playerInfoGetNext_416EE0(*(uint32_t*)(*(uint32_t*)(a1 + 748) + 276));
-	if (!v1) {
-		return 0;
-	}
-	while (!*((uint32_t*)v1 + 514)) {
-		v1 = nox_common_playerInfoGetNext_416EE0((int)v1);
-		if (!v1) {
-			return 0;
-		}
-	}
-	return *((uint32_t*)v1 + 514);
 }
 
 //----- (004DA9A0) --------------------------------------------------------

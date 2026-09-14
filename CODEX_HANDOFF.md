@@ -2,43 +2,47 @@
 
 <!-- current-focus -->
 
-### Current — gameplay text C baseline qualified
+### Current — native gameplay text qualified; object lookup/cache next
 
-Native gameplay reporting is committed and pushed as **51eb809a**:73 routines,
-1,337 C lines removed, all three variant/build checks and unchanged headless
-scenario passed. Physical C is **99,791 lines /148 files /zero reference C**.
+The ten-routine text/notification, encoding and player-iteration conversion is
+fully qualified. All2,791 cases /11 locked C captures match. Accumulated84,259
+captured cases /1,021 groups and applicable contracts pass standard/server/highres
+(321.386s/396.167s/335.635s wall). Go discovery selects614/613/614 root tests; server
+omits only the explicitly client-only floor contract. Actual root logs confirm
+nonempty execution. All builds/symbol checks pass, full suite matches1,553 known
+failure entries exactly, and fresh unchanged headless gameplay passes34.664s.
+Physical C: **99,509 lines /147 files /zero reference C**, down282 lines/one file.
 
-The next ten-routine text/notification, encoding and player-iteration batch has a
-qualified original-C baseline: **2,791 cases /11 locked, repeated captures**.
-All production text implementations remain C. Accumulated default ports passed
-84,243 cases /1,020 groups plus contracts (331.687s); affected server/highres
-checks passed131.178s/56.069s. Sixteen additional valid narrow-chat length-wrap
-cases repeat on default; existing ten text hashes and reporting/control hashes
-remain unchanged. All2,791 locked text cases pass together in6.926s. Final native
-qualification will run all84,259 cases /1,021 groups on every variant.
+Baseline text commitbab248cf is pushed. Reporting conversion51eb809a is pushed.
+Test-selection correction713f067b is committed: the original broad reporting
+matrix selected zero tests because of a trailing newline; its old coverage claim
+is invalid. The corrected matrix above closes that gap. Focused reporting, builds,
+full-suite and gameplay results were independently valid. All subsequent matrices
+must use tools/porting/run_tests.py (Go discovery + JSON execution/completion
+checks). It has positive, zero-selection and partial-execution validation.
 
-Next: commit/push this baseline, then apply/review the staged native conversion
-in build/port-gameplay-text/apply-native.py. The draft removes302 C section/file
-lines and one unused C declaration, leaving21 lines of production C varargs
-adapters: expected282-line reduction and one fewer C file. Retire scripted chat's
-Go-only C ABI; retain nine original names, plus two necessary Go serializer
-exports for the varargs adapters. Switch the fixture dispatcher to native helpers
-except the two actual varargs calls. Match all11 hashes, run accumulated variants,
-builds/symbols, full-suite comparison and fresh unchanged gameplay, then document
-C LOC, commit/push and continue. No pending user question.
+This checkpoint contains the completed text conversion. Push the checkpoint if
+necessary, then establish the original-C baseline for **13 object lookup/cache
+routines /436 C section lines**. Plan, operations and original sections are in
+build/port-object-lookup; a thin C dispatcher is staged there only. No lookup
+production or fixture source changes are applied. Two entry points have outside
+C callers; eleven appear removable, pending the Go address/global audit. The
+existing native name matcher differs from C for colons and empty IDs: preserve
+the C path's semantics in a dedicated helper. Reuse guarded object/player owners
+and real main/pending/missile lists; capture the16-node cache fully. Keep the
+unrelated shadow-list pair outside this batch. No user question is pending.
 
-Evidence: docs/porting/GAMEPLAY_TEXT.md, build/port-gameplay-text/captures.json,
-baseline-qualification.json, c-qualification-progress.log, c-locked.log and
-c-long-a/b.log. Raw captures may be SHA-verified gzip (capture-archive.json).
-The fixture allocates larger records only for long text; existing records and
-hashes remain unchanged. Formatting preserves legacy signed %u output. Raw UTF16
-units and byte-length wrap are tested without changing production behavior.
+Evidence: docs/porting/GAMEPLAY_TEXT.md, build/port-gameplay-text/qualification.json,
+variant-selection-audit.json, root-execution-audit.json, full-suite-comparison.json
+and build/baseline/runs/gameplay-text-port/result.json. Original C is recoverable
+atbab248cf. Native serializers preserve raw UTF16, narrow length wrap and the
+legacy signed %u behavior; only two production C varargs adapters remain in scope.
 
 Standing authorization: continue connected chunks; resolve confident reversible
 choices and record them. No new agents. Use build/baseline/env.sh, GOMAXPROCS=2
-and -p 2. Keep raw full-suite/crash logs local. SSH push to dbenamy/opennox dev
-is authorized. Preserve the7z and original extracted assets. Completed reporting
-run duplicates have an asset restoration manifest;555MB was recovered safely.
+and -p 2. Keep raw full-suite/crash logs local. SSH push to dbenamy/opennox dev is
+authorized. Preserve the7z and original extracted assets. Completed reporting run
+asset duplicates have a restoration manifest; text captures have gzip manifests.
 
 <!-- /current-focus -->
 
