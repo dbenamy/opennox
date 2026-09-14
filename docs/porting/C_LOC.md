@@ -97,6 +97,8 @@ target build selection and linker evidence.
 | Population stack-record and object-disposal prerequisites (2026-09-13; no conversion) | 149 | 106,611 | +2 | 0 |
 | Population candidate arrays and complete item attributes prerequisite (2026-09-14) | 149 | 106,609 | −2 | 0 |
 
+| Population, prefabs, inventories, exits and waypoints (2026-09-14) | 148 | 104,839 | −1,770 | 0 |
+
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
 because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful

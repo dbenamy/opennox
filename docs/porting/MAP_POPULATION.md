@@ -299,3 +299,46 @@ complete JSON snapshots for diagnosis; mandatory hash checks remain enabled.
 The baseline hashes live in Git, so they survive loss of the ignored build tree.
 Production C is **106,609 / 149 files / zero reference C**; all 38 routines still
 use C at this checkpoint. The refreshed ABI audit retains 13 and retires 25.
+
+Baseline **38c905a9** is committed/pushed; mandatory hashes pass in **13.906s**.
+The 38-routine native implementation is now written and switched into the tagged
+dispatcher. The old C algorithms and populate.c are removed, with 13 retained
+exports and 25 retired internal helpers. Current unqualified C count:
+**104,839 / 148 files / zero reference**, −1,770 physical lines. First native
+build/comparison is in native-first.log. No baseline hashes have changed and
+qualification remains pending. Do not rerun apply-native.py.
+
+## Native comparison
+
+All **4,221 cases / 36 complete captures** match corrected C byte-for-byte; no
+expected hashes changed. The first native run matched 35/36. The only difference
+was progress timestamp rollover: C's mixed signed/unsigned expression compares
+as unsigned. Correcting that comparison produces the exact expected state.
+Native population plus painting/room checks pass in **23.322s**. Evidence:
+native-corrected.log, native-comparison.json and native-first-progress-differences.json.
+
+Source audit finds zero references to the 25 retired helper names in production
+C/Go/headers. Full accumulated tests, three production builds/symbol checks,
+asset-backed full-suite comparison and unchanged headless gameplay are running
+under qualify-all.py. Qualification and the native commit/push remain pending.
+Qualified C baseline duplicate captures were compressed losslessly; checksums
+are in baseline-capture-archive.json, separate from exploratory archives.
+
+## Completed native qualification — 2026-09-14
+
+All 38 routines are native; populate.c is removed. **104,839 physical production
+C lines / 148 files / zero reference C**, a reduction of **1,770 lines**.
+All 4,221 cases / 36 complete captures match baseline **38c905a9** unchanged.
+Accumulated 61,799 cases / 947 groups pass in default/server/highres:
+250.004s / 325.610s / 261.790s, with the additional room and painting contracts.
+All three production builds pass ELF32/i386/SSE2/CGO and symbol verification:
+25 retired helpers absent, 13 retained entry points present, test loader adapter
+absent. The asset-backed full suite exactly matches the known 1,553 failure
+entries (15 pass, 3 fail, 32 skip packages). Fresh unchanged repeat-a gameplay
+passes with Xvfb/null audio in 36.118s. See qualification.json under
+build/port-map-population for machine-readable results. The AreaMap.lib limitation
+above remains. This completed result supersedes the intermediate pending status.
+
+Next: the six connected hallway-routing routines in GAME5.c. Preserve the locked
+population hashes while extending bent-route, obstruction and fallback coverage.
+Do not rerun population scope.py after C removal; recover inventories from Git.

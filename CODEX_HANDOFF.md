@@ -2,52 +2,48 @@
 
 <!-- current-focus -->
 
-### Active — qualified population/prefab C baseline, ready to lock and push
+### Active — hallway routing; population/prefab conversion qualified
 
-All **4,221 cases / 36 complete captures** agree byte-for-byte in default,
-server and highres. Population plus existing painting/room checks pass in
-**22.538s / 21.741s / 22.830s**. Independent default population repeat: **12.997s**.
-The 36 hashes are now mandatory in map_population_baseline_porttest_test.go;
-locked-baseline.log is checking them before commit/push. Evidence:
-build/port-map-population/baseline-qualification.json and final-repeat-comparison.json.
-**No population conversion has started. Commit/push this baseline before conversion.**
+Population/prefab conversion is complete: **38 routines**, **1,770 physical C
+lines removed**, **104,839 production C lines / 148 files / zero reference C**.
+All **4,221 cases / 36 complete captures** match committed C baseline
+**38c905a9** byte-for-byte with unchanged mandatory hashes. Native focused
+population/painting/room checks pass in **23.322s**. The initial progress mismatch
+was corrected by preserving C's unsigned timestamp comparison.
 
-Scope: **38 routines / 1,758 C section lines**, 13 retained ABIs, 25 internal
-helpers to retire. Refreshed inventories/native-names.json are under
-build/port-map-population; original inventories are preserved in original-inventory.
-Do not rerun lock-baseline.py, original-inventory archival, or already-applied
-fixture/repair scripts and staged files. Current source/tests/docs are authoritative.
+Accumulated **61,799 cases / 947 capture groups**, plus four room precision
+contracts and existing painting admission checks, pass in default/server/highres
+(**250.004s / 325.610s / 261.790s**). All three production binaries build and
+verify as ELF32/i386/SSE2/CGO. All 25 retired symbols are absent; all 13 required
+entry points remain. The test-only loader adapter is absent from production.
+The asset-backed full-suite failure multiset is unchanged: **1,553 entries;
+15 pass / 3 fail / 32 skip packages**, no added or removed failures. Fresh,
+unchanged repeat-a gameplay passes under Xvfb/null audio in **36.118s**.
+Evidence: build/port-map-population/qualification.json and its referenced logs.
 
-Production C remains **106,609 lines / 149 files / zero reference C**.
-Prerequisite checkpoints **683b008f** and **41985ada** are pushed; the latter was
-summarized. They fix contiguous spell-name/point/candidate records, invalid-book
-pool disposal and the fifth item-attribute word. Original focused failures plus
-corrected regressions support those changes. Conversion must preserve remaining
-quirks: named/blob globals are distinct; prefab grid truncation precedes exact
-containment; item-slot dependencies, case-sensitive flags and return bits stay.
+Coverage includes inventories, modifier boundaries, room population/density,
+distance sorting/themes, prefab metadata/selection/placement/retries, candidate
+connections, exits, waypoints, marker disposal and decoded-cache application.
+A synthetic file exercises the actual prefab loader. The supplied image lacks
+**AreaMap.lib**, so real game prefab decoding remains an explicit limitation;
+ordinary asset-backed gameplay passed. No C algorithms remain solely for tests.
 
-Coverage includes weighted inventories, exact modifier boundaries, shuffled
-population lists, distance sorting/themes, density clamps, prefab selection,
-metadata flags/markers, fit/retries/exclusion cleanup, occupancy and room
-replacement, all-direction candidate/hallway connections, exits, waypoint
-networks and decoded-cache application. Marker tests record object/node disposal
-without reading released storage; disposed objects are skipped in live traversal.
-The file test uses a synthetic empty prefab through the real loader, including
-header/bounds/section terminator and normal file handles. Seeded-cache tests use
-a porttest-only loader adapter; actual application and enumeration remain real.
-The supplied filesystem image has **no AreaMap.lib**. Real game prefab decoding
-is an explicit limitation, distinct from available asset-backed ordinary gameplay.
+Next connected batch: six hallway-routing routines **54B2D0..54BF20**, **531 C
+section lines** in GAME5.c. The only external caller is native population, so
+all six C entry points can retire. Scope, caller audit and plan are under
+build/port-map-hallways. Reuse population fixtures and preserve all existing
+hashes. First probe positive bent/three-segment routes: a suspected separate
+named/blob second-corridor pointer mismatch needs evidence before any repair.
+Then lock repeated C captures and commit/push before conversion. Thoroughly
+qualify, count/document/commit/push and continue without a new permission pause.
+No pending question or new agents; preserve the supplied asset archive.
 
-Next: commit/push the locked C baseline, then convert all 38 connected routines.
-Remove obsolete C exports and Go-only wrappers/getters, retire the eight-function
-populate.c translation unit, and compare unchanged complete captures. Run the
-accumulated default/server/highres tests, three production builds and symbol audit,
-asset-backed known-failure full suite and fresh unchanged repeat-a headless game.
-Count physical C, update docs/C_LOC, commit/push, summarize and continue. No pending
-question or new agents. Preserve the supplied asset archive. Earlier exploratory
-captures are losslessly gzipped with checksums in exploratory-capture-archive.json.
-
-Painting **56ae5728** and snapshot speedup **eea297fd** are already pushed.
+Do not rerun population apply-native.py, scope.py, lock-baseline.py or already
+applied fixture/repair scripts. Recover original C inventories from baseline
+38c905a9 when needed. Baseline duplicate captures and exploratory captures were
+losslessly compressed with checksum manifests under build/port-map-population;
+main c-final and native comparison captures remain available. Mandatory baseline
+hashes, fixtures and porting documentation are in Git for recovery without build/.
 
 ### Completed — map painting, borders, walls and door placement
 
