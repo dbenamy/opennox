@@ -1,155 +1,126 @@
 # Theme parser
 
-Active scope: 33 routines / 1,888 C section lines, 51E260..520D50 in GAME4_2.c.
-Hallway native conversion **f1b92d3f** is committed/pushed and fully qualified.
-Only mapGenReadTheme and sub_520D50 have external callers; 31 helpers can retire.
-Current physical C is **104,300 / 148 files / zero reference C**.
+All **33 routines** at 51E260..520D50 in GAME4_2.c are native Go. Only
+mapGenReadTheme and sub_520D50 retain C ABI bridges; the other **31 entries** have
+no remaining source references or production symbols. Physical C is **102,419
+lines / 148 files / zero reference C**, **−1,881**. This conversion is qualified
+and ready to commit/push; corrected C baseline **fc6f4252** was pushed first.
 
-CURRENT: complete theme C baseline is qualified: **3,392 cases / 19 mandatory
-captures**, plus focused contracts. Independent default/server/highres runs match
-all captures and existing map checks (**57.752s / 63.662s / 65.888s** wall).
-The mandatory-hash smoke passes (**14.074s**); the extension bypass is removed.
-Commit/push this checkpoint before converting all 33 theme routines. Native Go
-DRAFTS live only under build/port-map-theme/native-*.go.stage; they are incomplete,
-uncompiled and must be reviewed before application. C remains **104,300 / 148
-files / zero reference C**. No native source conversion yet. Next complete the
-native implementation, remove 31 private C entries, keep two external bridges,
-and run the normal full qualification. No question. Earlier blocks are historical.
+## Implementation and compatibility
 
+The Go parser covers tokenization and nested conditions, player/percentage tests,
+algorithm settings, spells/equipment/template modifiers, decoration properties,
+wall/floor edging, weighted choices, foreach rules, copies, prefabs and cleanup.
+It uses the existing file and engine owners. Records retain C allocator ownership
+because remaining map-generator code consumes/frees them. Standard libc numeric
+conversion and clock semantics remain production services. No old parser
+algorithms are retained solely for testing.
 
+Preserved behavior includes partial tokens at EOF, the shared token used by
+conditional filtering even when reading into another destination, bytewise ASCII
+case comparison, choice count clamping at 31, wildcard weight rounding, list order,
+shallow decoration-copy children and existing cleanup scope. Edging-table matches
+continue against the token changed by each nested read. File-open/key error logging
+matches the previous wrappers. Ownership changes remain a separate review decision.
 
-## Fixture bootstrap
+## C prerequisites
 
-The initial tagged fixture uses real Go-backed legacy file handles and shared
-record snapshots. A test-only calloc/free observer records allocations and
-release before free, active only during the parser invocation; a test-only clock
-makes the default seed deterministic. Other tests pass through the real services.
-The fixture initializes/restores actual startup string tables from blobdata and
-tracks the token buffer, line count, template pointer and input position/error.
-The adapters must be absent from production builds and must preserve older
-mandatory capture hashes.
+**ff4de53d** restored an actual 60-byte algorithm value buffer and a contiguous
+four-element modifier-count array. Original normal numeric and four-slot probes
+aborted; corrected tests and prior map checks passed in all variants. This removed
+seven physical C lines. **4fcad1f5** corrected inherited-modifier removal: advance
+the copy source after copying, preserving the next value instead of skipping it.
+The original alpha/beta/gamma minus alpha probe failed; a 72-case weapon/armor,
+slot and edit matrix verifies the correction. It changed no C line count.
 
-Current smoke: TestMapThemeTokensProbe in build/port-map-theme/tokens-original.log.
-The isolated TestMapThemeAlgorithmProbe exercises a normal numeric setting before
-repairing the suspected scalar token buffer. The equipment parser also traverses
-four scalar counters as an array; probe this before any contiguous-record repair.
-No production theme C changes or locked theme hashes yet. Staged allocator,
-callbacks, dispatcher and blob-table getter have been applied; do not reapply.
+Evidence lives in build/port-map-theme: algorithm-original.log,
+modifier-original.log, template-removal-original.log, prerequisite-variants.json,
+removal-variants.json and their referenced logs. These deliberate repairs were
+committed/pushed before the complete corrected-C baseline.
 
-## Plan
+## Coverage
 
-Cover whitespace/comments/EOF and counters, nested conditions and operators,
-player classes/counts, experience level and percentage draws, all algorithm
-settings/defaults, equipment/spell sets/modifiers, decoration types and copies,
-occurrence/frequency/room constraints, doors, prefabs and cleanup. Use synthetic
-full theme files through the actual file layer. The supplied image has no .thm
-files or AreaMap.lib; do not claim actual theme/prefab content integration.
-Ordinary asset-backed gameplay remains available.
+**3,392 cases / 19 complete captures**, plus 74 focused prerequisite contracts.
+Snapshots include all allocated record bytes and disposal, token/counter/file
+state, random draws and unchanged player records. The fixture uses actual startup
+string tables, sparse real player iteration, real file handles and scoped
+allocation/clock observers. Every capture hash is mandatory; there is no bypass.
 
-Repeat complete corrected-C captures in default/server/highres, lock mandatory
-hashes and commit/push before conversion. Then qualify the native implementation
-with complete captures, accumulated variants, production binaries/symbol audit,
-known full-suite comparison and fresh unchanged headless gameplay. Count C,
-update recovery docs, commit/push, summarize and continue.
+| Capture | Cases |
+| --- | ---: |
+| algorithms | 728 |
+| choices | 226 |
+| conditions | 688 |
+| decor-copies | 192 |
+| decor-properties | 60 |
+| decor-sets | 219 |
+| decorations | 78 |
+| equipment-boundaries | 26 |
+| equipment-sets | 256 |
+| exits-prefabs | 68 |
+| filtered-tokens | 87 |
+| foreach | 24 |
+| frequency-validation | 192 |
+| full-files | 52 |
+| operators | 12 |
+| raw-tokens | 277 |
+| skips | 90 |
+| spell-sets | 45 |
+| template-removals | 72 |
 
-## Local evidence storage
+The 52 full-file cases use actual keyed theme files, including missing and partial
+files, complete section combinations and final settings validation. The supplied
+assets have no .thm files or AreaMap.lib: this establishes synthetic theme coverage,
+not real theme/prefab asset integration. Ordinary asset-backed gameplay is tested.
 
-Completed population/hallway gameplay directories now keep changed/new files,
-logs and recordings plus deduplicated-assets.json. Identical asset copies were
-verified by SHA-256 against build/assets/extracted/drive_c/Nox before removal.
-Restore an entire data tree with the command in its manifest:
-`python3 build/baseline/deduplicate-run-assets.py --restore map-hallways-port`
-(or map-population-port). The script verifies source and restored hashes; the
-original supplied archive is untouched. This reclaimed about 1.1 GB while keeping
-all gameplay evidence reconstructable. New gameplay runs still make fresh copies.
+## Qualification
 
-## Contiguous-record prerequisite — validation running
+Complete C captures match independent default/server/highres runs, alongside
+existing map checks: **57.752 / 63.662 / 65.888s** wall. The locked C smoke passed
+in **14.074s**. First native captures match all hashes in **13.353s**.
 
-The token fixture smoke passes (0.086s). Both original focused probes abort:
-algorithm-original.log for `midHallLength 12 END`, and modifier-original.log for
-one named value in each of the four modifier slots. The real C parser was used;
-no production parser behavior was replaced by the fixture.
+Accumulated **67,703 cases / 969 capture groups**, plus room/painting/hallway/theme
+contracts, pass default/server/highres in **365.450 / 360.441 / 299.877s** wall.
+After restoring original error logging, focused themes pass all variants in
+**98.272 / 96.775 / 24.057s** wall, including compilation.
 
-Restore a 60-byte local value buffer in genReadAlgData_51EBB0 and an explicit
-four-element count array in sub_51F230. The former matches the original stack
-extent; the latter makes the existing indexed slot traversal defined. This is a
-deliberate prerequisite repair, not preservation of the original aborts.
-Corrected probes and existing hallway/population/painting/room checks are running
-in prerequisite-default.log. Qualify all variants and commit/push the prerequisite
-before broad theme captures and conversion. No theme baseline is locked yet.
+All three final production binaries build and verify ELF32/i386/SSE2/CGO; all 31
+retired symbols and test adapters are absent, and both required bridges remain.
+Build times: **69.317 / 9.749 / 69.820s** for normal/highres/server. Asset-backed
+full-suite failures match the existing baseline exactly: **1,553 entries;
+15 pass / 3 fail / 32 skip packages**, no additions/removals. Fresh unchanged
+repeat-a gameplay passes in **36.461s** under Xvfb/null audio, override disabled.
 
-Corrected default map checks pass in **41.556s**. The expanded **72-case** theme
-prerequisite smoke passes in **0.823s**: five numeric token lengths up to 59
-characters, all 16 slot-presence masks, one/three strings per slot, both input
-orders, and the original three probes. Assertions include exact slot counts,
-allocation extents and every stored string byte, plus guard/control state.
-Server/highres map checks are running under prerequisite-variants.py; inspect
-prerequisite-variants.log and prerequisite-variants.json. Working C is **104,300 /
-148 files / zero reference C**, −7 lines from consolidating counter declarations
-and initialization. No conversion has occurred in this batch.
+Evidence: build/port-map-theme/qualification.json, complete-captures.json,
+complete-variants.json, native-comparison.json, variants.json,
+final-theme-variants.json, binary-verification.json and full-suite-comparison.json;
+gameplay is build/baseline/runs/map-theme-port/result.json. No active build/test.
+Do not reapply native-*.go.stage drafts or the one-time finalize-reporting.py.
 
-All prerequisite variants pass: server **124.688s**, highres **53.839s** wall time
-including builds, alongside the existing mandatory map captures. Default broad
-checks pass in 41.556s; the expanded 72-case prerequisite smoke passes in 0.823s.
-Record the −7-line C prerequisite checkpoint and commit/push before extending
-the full theme baseline. No previous expected hashes changed.
+## Recoverable local evidence
 
-## Inherited modifier removal prerequisite — qualification running
+Capture JSON is losslessly gzipped with SHA-256 manifests:
+complete-capture-archive.json, native-first-capture-archive.json,
+removal-capture-archive.json and stream-capture-archive.json. Source tests and
+mandatory hashes are committed; raw local snapshots are diagnostic evidence.
 
-Buffer/counter prerequisite **ff4de53d** is committed/pushed. Full synthetic
-file parsing and cleanup now pass, with a fixed default seed and actual file
-closure. New stream/player/settings fixtures cover all byte values, 255-byte
-tokens, EOF/comment state, nested conditionals, actual sparse player iteration,
-all operators, algorithm keys/numeric boundaries and decoration frequency totals.
+Older qualified binaries are losslessly compressed under their original bin
+directories. Their metadata is in previous-binary-archive.json (population/hallways),
+spell-binary-archive.json (effects/lifecycle/sustained), and
+room-painting-binary-archive.json, all under build/port-map-theme. Restore one with
+`python3 build/port-map-theme/restore-qualified-binary.py ABSOLUTE_BINARY_PATH MANIFEST_PATH`.
+The script verifies SHA-256 and restores recorded permissions/timestamps.
 
-An original template-removal probe fails: removing alpha from alpha/beta/gamma
-does not preserve beta/gamma. The C shift loop advanced its source before copying,
-skipping the next value and reading beyond the populated scratch entries.
-Move the increment after strcpy. Evidence: template-removal-original.log.
-The 72-case regression spans weapon/armor, all four slots, first/middle/last and
-case-insensitive removal, missing/repeated values, additions/deduplication and
-cleanup. This is a deliberate correction, not compatibility with that failure.
+Completed population/hallway/room/painting/sustained-spell/spell-effects/lifecycle
+runs each had **1,654 identical asset files / 556,358,986 bytes** deduplicated
+against canonical extracted assets. Changed/new files, logs and recordings remain.
+Each run's deduplicated-assets.json has hashes and its restore command:
+`python3 build/baseline/deduplicate-run-assets.py --restore RUN_NAME`.
+The supplied archive is untouched. Fresh gameplay always uses fresh asset copies.
 
-All current checks pass in **50.195s**. The independent repeat passes in
-**52.482s** with **2,146 cases / eight complete captures** identical byte-for-byte;
-existing hallway/population/painting/room hashes also remain unchanged. Server
-and highres comparisons are running via qualify-removal.py (qualify-removal.log).
-Working C remains **104,300 / 148 files / zero reference**; the copy-order fix
-changes no line count. Lock the eight verified hashes and commit/push this
-prerequisite checkpoint before expanding the remaining parser sections.
+## Next batch
 
-Current capture labels and hashes: removal-captures.json; main raw copies:
-c-removal-*.json. Repeated variant copies are losslessly compressed after exact
-comparison, with manifest removal-capture-archive.json. No native theme routines
-yet. The full-file and player draft files were applied and the fixture now tracks
-new/closed file handles and verifies player records remain byte-for-byte unchanged.
-
-All eight captures match in default repeat/server/highres: **52.482s / 129.368s /
-60.201s** wall time, including builds and existing map checks. The eight hashes
-are now mandatory in map_theme_baseline_porttest_test.go. The mandatory-hash smoke passes in **8.485s** (locked-streams.log). New C-only corpus labels may
-be captured with OPENNOX_MAP_THEME_EXTEND_C=1; this never bypasses an existing
-hash. Remove that extension allowance before native conversion, once all labels
-are locked. No native theme algorithms are written yet.
-
-## Complete C baseline — 2026-09-14
-
-Prerequisite **4fcad1f5** was committed/pushed before this expansion. The complete
-baseline contains **3,392 cases / 19 captures**. New coverage includes spells,
-equipment templates and 256-value modifier boundaries, weighted choices and their
-32-item clamp, foreach rules, decoration properties/nested sets/list order,
-wall/floor edging, copy lookup and shared children, exits, prefabs, cleanup and
-52 real keyed full files (including missing/truncated files). Complete snapshots
-include allocations/disposal, input state, token bytes, counters and player state.
-
-Initial full capture passes in **13.703s**; independent default/server/highres plus
-existing map checks pass in **57.752s / 63.662s / 65.888s** wall, all 19 hashes
-identical. Mandatory smoke passes in **14.074s**. The new-label environment allowance
-has been removed: every capture must have a locked hash. Metadata is in
-build/port-map-theme/complete-captures.json and complete-variants.json; raw snapshots
-are losslessly compressed with complete-capture-archive.json. Source tests and
-mandatory hashes are committed; local snapshots are diagnostic evidence.
-
-Physical C stays **104,300 / 148 files / zero reference C**. No parser algorithm
-has been replaced yet. Native drafts under build are not applied. Keep the exact
-C behavior of shallow decoration copies and cleanup ownership during conversion;
-changing that ownership requires a separate decision and wider caller audit.
+Seven map-growth/door routines, **1,082 C section lines**, 4D4790..4D5D20 in
+GAME3_2.c; three external entries and four private helpers. Read-only inventory,
+caller audit, actual table values and plan are in build/port-map-growth. No source
+changes for that batch yet. Continue after this qualified conversion is pushed.

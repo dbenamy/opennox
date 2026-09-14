@@ -7,77 +7,6 @@ package legacy
 #include <stdio.h>
 #include <stdint.h>
 extern uint32_t dword_5d4594_2487524;
-int nox_xxx_mapGenReadTheme_51E260(int* a1, int a2);
-int nox_xxx_mapGenReadLine_51E540(FILE* a1, uint8_t* a2);
-int sub_51E570(FILE* a1, uint8_t* a2);
-int sub_51E630(FILE* a1);
-int sub_51E670(FILE* a1);
-int sub_51E720(FILE* a1);
-int sub_51E780(FILE* a1);
-int sub_51E800(int a1, uint32_t* a2);
-int sub_51EAF0(int a1, uint32_t* a2);
-int nox_xxx_genReadAlgData_51EBB0(int a1, FILE* a2);
-int nox_xxx_genReadSpellSet_51EFB0(int a1, FILE* a2);
-int nox_xxx_genReadWeaponSet_51F030(int a1, FILE* a2);
-void nox_xxx_mapGenFreeStr_51F1F0(void* lpMem);
-int sub_51F230(int a1, FILE* a2);
-int nox_xxx_genReadArmorSet_51F640(int a1, FILE* a2);
-int nox_xxx_genReadExit_51F800(int a1, FILE* a2);
-int nox_xxx_genReadDecor_51F9F0(uint32_t* a1, FILE* a2);
-char* nox_xxx_genDecorReadWallFloor_51FE00(int a1, FILE* a2);
-int sub_51FEC0(int a1, int a2, FILE* a3);
-int nox_xxx_genDecorReadDecorSet_51FFA0(int a1, FILE* a2);
-uint32_t* nox_xxx_gen_520380(FILE* a1);
-uint32_t* nox_xxx_gen_5205B0(FILE* a1);
-int nox_xxx_genDecorReadCopy_520660(uint32_t* a1, const char* a2, FILE* a3);
-int nox_xxx_genDecorReadOccurConstraint_520810(int a1, FILE* a2);
-int nox_xxx_genDecorReadOccurLimit_5208D0(int a1, FILE* a2);
-int nox_xxx_genDecorReadFrequency_520910(int a1, FILE* a2);
-int nox_xxx_genDecorReadRoomSizeCon_5209F0(int a1, FILE* a2);
-int nox_xxx_genDecorReadDoor_520A90(int a1, FILE* a2);
-int nox_xxx_genDecorReadDoubleDoor_520AB0(int a1, FILE* a2);
-int nox_xxx_mapgenCheckSettings_520AD0(int* a1);
-int nox_xxx_genReadPrefab_520BF0(int a1, FILE* a2);
-char* sub_520CE0(int a1, FILE* a2);
-uint32_t* sub_520D50(uint32_t* a1);
-static uint32_t themeInvokeC(int op, uint32_t *v) {
- switch (op) {
-case 0: return (uint32_t)(uintptr_t)(nox_xxx_mapGenReadTheme_51E260((int*)(uintptr_t)v[0], (int)(uintptr_t)v[1]));
-case 1: return (uint32_t)(uintptr_t)(nox_xxx_mapGenReadLine_51E540((FILE*)(uintptr_t)v[0], (uint8_t*)(uintptr_t)v[1]));
-case 2: return (uint32_t)(uintptr_t)(sub_51E570((FILE*)(uintptr_t)v[0], (uint8_t*)(uintptr_t)v[1]));
-case 3: return (uint32_t)(uintptr_t)(sub_51E630((FILE*)(uintptr_t)v[0]));
-case 4: return (uint32_t)(uintptr_t)(sub_51E670((FILE*)(uintptr_t)v[0]));
-case 5: return (uint32_t)(uintptr_t)(sub_51E720((FILE*)(uintptr_t)v[0]));
-case 6: return (uint32_t)(uintptr_t)(sub_51E780((FILE*)(uintptr_t)v[0]));
-case 7: return (uint32_t)(uintptr_t)(sub_51E800((int)(uintptr_t)v[0], (uint32_t*)(uintptr_t)v[1]));
-case 8: return (uint32_t)(uintptr_t)(sub_51EAF0((int)(uintptr_t)v[0], (uint32_t*)(uintptr_t)v[1]));
-case 9: return (uint32_t)(uintptr_t)(nox_xxx_genReadAlgData_51EBB0((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 10: return (uint32_t)(uintptr_t)(nox_xxx_genReadSpellSet_51EFB0((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 11: return (uint32_t)(uintptr_t)(nox_xxx_genReadWeaponSet_51F030((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 12: nox_xxx_mapGenFreeStr_51F1F0((void*)(uintptr_t)v[0]); return 0;
-case 13: return (uint32_t)(uintptr_t)(sub_51F230((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 14: return (uint32_t)(uintptr_t)(nox_xxx_genReadArmorSet_51F640((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 15: return (uint32_t)(uintptr_t)(nox_xxx_genReadExit_51F800((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 16: return (uint32_t)(uintptr_t)(nox_xxx_genReadDecor_51F9F0((uint32_t*)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 17: return (uint32_t)(uintptr_t)(nox_xxx_genDecorReadWallFloor_51FE00((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 18: return (uint32_t)(uintptr_t)(sub_51FEC0((int)(uintptr_t)v[0], (int)(uintptr_t)v[1], (FILE*)(uintptr_t)v[2]));
-case 19: return (uint32_t)(uintptr_t)(nox_xxx_genDecorReadDecorSet_51FFA0((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 20: return (uint32_t)(uintptr_t)(nox_xxx_gen_520380((FILE*)(uintptr_t)v[0]));
-case 21: return (uint32_t)(uintptr_t)(nox_xxx_gen_5205B0((FILE*)(uintptr_t)v[0]));
-case 22: return (uint32_t)(uintptr_t)(nox_xxx_genDecorReadCopy_520660((uint32_t*)(uintptr_t)v[0], (const char*)(uintptr_t)v[1], (FILE*)(uintptr_t)v[2]));
-case 23: return (uint32_t)(uintptr_t)(nox_xxx_genDecorReadOccurConstraint_520810((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 24: return (uint32_t)(uintptr_t)(nox_xxx_genDecorReadOccurLimit_5208D0((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 25: return (uint32_t)(uintptr_t)(nox_xxx_genDecorReadFrequency_520910((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 26: return (uint32_t)(uintptr_t)(nox_xxx_genDecorReadRoomSizeCon_5209F0((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 27: return (uint32_t)(uintptr_t)(nox_xxx_genDecorReadDoor_520A90((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 28: return (uint32_t)(uintptr_t)(nox_xxx_genDecorReadDoubleDoor_520AB0((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 29: return (uint32_t)(uintptr_t)(nox_xxx_mapgenCheckSettings_520AD0((int*)(uintptr_t)v[0]));
-case 30: return (uint32_t)(uintptr_t)(nox_xxx_genReadPrefab_520BF0((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 31: return (uint32_t)(uintptr_t)(sub_520CE0((int)(uintptr_t)v[0], (FILE*)(uintptr_t)v[1]));
-case 32: return (uint32_t)(uintptr_t)(sub_520D50((uint32_t*)(uintptr_t)v[0]));
- }
- return 0;
-}
 */
 import "C"
 import (
@@ -210,7 +139,7 @@ func PortTestMapTheme(cases []PortTestPaintSpec, owner func(*server.Server) (Ser
 		}
 		themeObserve(true, *ext.globals["themeClock"])
 		defer themeObserve(false, 0)
-		return uint32(C.themeInvokeC(C.int(op), (*C.uint32_t)(unsafe.Pointer(&args[0]))))
+		return themeInvokeGo(op, args)
 	}
 	ext.after = func(f *paintTestFixture, op int, ret uint32) {
 		if input != nil {

@@ -197,3 +197,14 @@ source pointer. The original loop skips that value and reads beyond populated
 scratch entries; the alpha/beta/gamma removal regression fails. The corrected
 72-case matrix checks weapon/armor slots and cleanup. This small copy-order
 repair follows the standing policy; see [MAP_THEME.md](MAP_THEME.md).
+
+### Theme parser shared ownership and token state (2026-09-14; review later)
+
+Preserve the C allocator ownership of theme records, shallow decoration-copy
+children, and current cleanup scope while porting the 33 parser routines. The
+remaining generator still consumes these records; changing ownership at the same
+time would require a larger caller/lifetime audit. Keep standard libc atoi/atof
+and time semantics behind small production Go helpers. No old parser algorithms
+remain for testing. Complete repeated C captures cover record contents/disposal,
+tokens, file state and random draws. The edging table walk continues comparing
+against the shared token after each nested read, matching the original source.

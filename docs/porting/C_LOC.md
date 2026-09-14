@@ -109,6 +109,8 @@ target build selection and linker evidence.
 
 | Complete theme parser C baseline (2026-09-14; 3,392 cases, no conversion) | 148 | 104,300 | 0 | 0 |
 
+| Theme parser, conditional input, equipment and decoration definitions (2026-09-14) | 148 | 102,419 | −1,881 | 0 |
+
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
 because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful

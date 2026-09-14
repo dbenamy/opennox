@@ -2,88 +2,47 @@
 
 <!-- current-focus -->
 
-### Active — theme parser; hallway conversion qualified
+### Active — theme parser qualified; map growth next
 
-CURRENT: complete theme C baseline is qualified: **3,392 cases / 19 mandatory
-captures**, plus focused contracts. Independent default/server/highres runs match
-all captures and existing map checks (**57.752s / 63.662s / 65.888s** wall).
-The mandatory-hash smoke passes (**14.074s**); the extension bypass is removed.
-Commit/push this checkpoint before converting all 33 theme routines. Native Go
-DRAFTS live only under build/port-map-theme/native-*.go.stage; they are incomplete,
-uncompiled and must be reviewed before application. C remains **104,300 / 148
-files / zero reference C**. No native source conversion yet. Next complete the
-native implementation, remove 31 private C entries, keep two external bridges,
-and run the normal full qualification. No question. Earlier blocks are historical.
+The 33 theme-parser routines are native Go and fully qualified. C baseline
+**fc6f4252** was committed/pushed before conversion. All **3,392 cases / 19
+complete captures** match unchanged; initial native checks pass in **13.353s**.
+Accumulated **67,703 cases / 969 capture groups**, plus contracts, pass in default,
+server and highres (**365.450 / 360.441 / 299.877s** wall). The final error-logging
+correction also passes focused themes in all variants (**98.272 / 96.775 / 24.057s**
+wall including builds). All three production binaries verify ELF32/i386/SSE2/CGO;
+31 retired symbols and test adapters are absent, two external ABI bridges remain.
+Asset-backed full-suite failures match exactly: **1,553 entries; 15 pass / 3 fail /
+32 skip packages**. Fresh unchanged repeat-a gameplay passes in **36.461s** under
+Xvfb/null audio. Evidence: build/port-map-theme/qualification.json.
 
+Physical C: **102,419 lines / 148 files / zero reference C**, **−1,881**.
+Count and docs are updated. Commit/push this qualified conversion, then continue.
+No source/test/build process is active. Do not rerun one-time native draft scripts
+or finalize-reporting.py; all corrections are in source. build.py no longer runs
+that one-time finalizer. No parser algorithms remain solely for tests.
 
+Next: seven connected map-growth/door routines, **1,082 C section lines**,
+4D4790..4D5D20 in GAME3_2.c. Three external entries remain necessary; four helpers
+can retire. Read-only candidate-source.txt, candidate-scope.json, caller-audit.json,
+tables.json and PLAN.md are in build/port-map-growth. No next-batch source edits.
+Reuse real room/painting/population owners and scoped allocation observation,
+initialize actual startup tables, bound recursive cases and capture complete room
+state, allocations/disposal, RNG and doors. Lock repeated C captures before porting.
+Continue one connected batch at a time, qualify/count/document/commit/push and onward.
 
+Theme prerequisites **ff4de53d / 4fcad1f5** restore the 60-byte algorithm value
+buffer, contiguous modifier counters and correct inherited-modifier deletion.
+Their original failure evidence and corrected baselines are documented in
+MAP_THEME.md. Earlier population native **07229da1** removed 1,770 C lines;
+hallway native **f1b92d3f** removed 532. Their qualification artifacts remain under
+build/port-map-population and build/port-map-hallways.
 
-Hallway native **f1b92d3f** is committed/pushed. Theme fixture bootstrap is now
-written in uncommitted map_theme*porttest.go files plus the blobdata table getter.
-It uses real file handles, actual startup tables and a scoped allocation/clock
-observer. Token smoke passed (0.086s). Both original algorithm and four-modifier probes
-abort; evidence is in algorithm-original.log and modifier-original.log. The C
-value buffer is now char[60] and modifier counters int[4]. Corrected probes and existing map checks pass (41.556s); the expanded 72-case
-prerequisite smoke passes (0.823s). Server/highres checks both pass: **124.688s / 53.839s** wall time including
-builds; see prerequisite-variants.json and prerequisite-{server,highres}.log.
-Working C is 104,300 / 148 files / zero reference (−7). The prerequisite is qualified;
-count/document/commit/push it, then extend and lock the theme
-C baseline. No native theme conversion yet.
-Do not edit source during compilation. No theme C conversion or hashes yet.
-See docs/porting/MAP_THEME.md for current scope and recovery details. Earlier
-statements below that drafts are unapplied are superseded by this paragraph.
-Completed population/hallway gameplay data was deduplicated against verified
-canonical assets; changed files, logs and recordings remain. Each run has
-its SHA-256 manifest and restore command; the supplied archive is untouched.
-
-
-The six hallway routines are native Go, with all six C entry points retired.
-Corrected-C baseline **45961868** was committed/pushed first. All **2,512 cases /
-three complete captures** match on the first native run, with unchanged hashes;
-16 bent-route contracts and existing population/painting/room checks pass in
-**41.914s**. Physical C: **104,307 lines / 148 files / zero reference**, **−532**.
-
-Accumulated **64,311 cases / 950 groups**, plus room/painting/hallway contracts,
-pass in default/server/highres: **266.526s / 342.367s / 281.183s**. All three
-production binaries build and verify ELF32/i386/SSE2/CGO; six retired symbols
-and the test loader adapter are absent. Asset-backed full-suite failures match
-exactly: **1,553 entries; 15 pass / 3 fail / 32 skip packages**, no changes.
-Fresh unchanged repeat-a gameplay passes in **36.527s** under Xvfb/null audio.
-Evidence: build/port-map-hallways/qualification.json and referenced logs.
-
-Prerequisite **9ec45f48** fixed ten second-corridor reads to use the same blob
-array as construction; an original positive bent-route failure established the
-need. The conversion preserves close-gap zero/negative-length records and the
-horizontal search's width-based vertical retry limit; see MAP_HALLWAYS.md and
-DECISIONS.md for behavior to review. No C algorithms remain solely for testing.
-
-Next: **33 theme-parser routines / 1,888 C section lines** in GAME4_2.c,
-51E260..520D50. Only external entry points are mapGenReadTheme and sub_520D50;
-31 helpers can retire. Read-only inventory, caller audit, PLAN.md and drafts are
-in build/port-map-theme. No theme source/test edits yet. Probe the algorithm
-value's scalar token buffer and equipment's four scalar counters before any
-prerequisite repair. Initialize actual startup string tables. Exercise real Go
-file-layer handles, synthetic full theme files, nested conditions, equipment,
-decoration/copy/settings/prefabs and cleanup. The supplied assets have no .thm
-files or AreaMap.lib; ordinary asset-backed gameplay is available.
-
-Staged dispatcher, allocation/clock observer, callback file, blob table getter
-and table-relocations.json are drafts, not applied or compiled. Use the observer
-only during theme invocations and verify it is absent in production. Capture
-complete records/disposal and file state; repeat/lock C captures in all three
-variants and commit/push before conversion. Follow the usual broad qualification,
-C count/docs/commit/push, summarize and continue. No question or new agents.
-
-Population conversion **07229da1** is committed/pushed: 38 routines, 1,770 C
-lines removed, 4,221 cases / 36 unchanged captures. Its full qualification is
-build/port-map-population/qualification.json. Do not rerun population or hallway
-one-time conversion/locking scripts or reapply old staged corpora. Working
-source and committed hashes are authoritative. Complete captures are losslessly
-gzipped with checksum manifests; hallway has early-capture-archive.json,
-completed-capture-archive.json, baseline-capture-archive.json and
-qualified-capture-archive.json. Some include completed population snapshots.
-Decompress before using older scripts that require raw JSON. Preserve the
-supplied nox-iso-from-archive-org.7z asset archive.
+Completed captures and older binaries are losslessly compressed with manifests.
+Several completed gameplay runs retain only changed assets plus SHA-256 restore
+manifests; see MAP_THEME.md for restoration commands. The supplied
+nox-iso-from-archive-org.7z archive and canonical extracted assets are untouched.
+Fresh qualification still uses fresh asset copies. No question or new agents.
 
 ### Completed — map painting, borders, walls and door placement
 
