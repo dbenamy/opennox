@@ -400,3 +400,14 @@ suites on the completed native version against those same locked hashes. If a
 variant differs, replay the recoverable C baseline in that variant before
 attributing the difference to the port. No extra C-variant matrix is required
 when there is no variant-dependent implementation or observed discrepancy.
+
+## Client effects renderer reference — 2026-09-14
+
+Preserve current original-C effects output through the current renderer using
+exact RGB5551 framebuffer references. Keep the historical sprite color backend
+policy unresolved as documented in FAILURE_DIAGNOSIS.md; do not regenerate its
+goldens as part of this higher-level conversion. This keeps a recoverable C
+reference for effect geometry, state and RNG without coupling the batch to a
+separate rendering policy change. Diagnostic PNGs may accompany raw references.
+Chosen under the standing reversible-decision policy; review before changing
+the color backend. See CLIENT_EFFECTS.md for fixture and qualification scope.

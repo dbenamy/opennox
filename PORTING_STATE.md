@@ -4,55 +4,42 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Current — object lookup/cache qualified; quest eligibility next
+### Current — quest eligibility qualified; client effects next
 
-The 13-routine object lookup/cache conversion is fully qualified. All 1,074
-cases /8 locked original-C captures match, including 1,280 mixed cache operations.
-Accumulated 85,333 captured cases /1,029 groups and applicable contracts pass
-standard/server/highres (357.408s/411.876s/346.540s wall). The guarded runner
-verifies all 623/622/623 selected root tests execute and complete. All three
-production builds and ABI/ELF checks pass. The full suite matches 1,553 known
-failure entries exactly, and fresh unchanged headless gameplay passes 35.566s.
-Physical C: **99,071 lines /147 files /zero reference C**, down 438 lines.
+The 14-routine quest eligibility conversion is fully qualified. All 10,809
+cases /10 locked original-C captures match. The full accumulated standard suite
+passes all 633 selected root tests (379.259s wall), covering 96,142 captured
+cases /1,039 groups plus contracts. Affected server and highres suites each
+pass all 67 selected tests (171.678s /77.589s). The guarded runner verifies
+selection, execution and completion. All three production builds, ELF32/SSE2
+and ABI checks pass. The full suite matches 1,553 known failure entries exactly;
+fresh unchanged headless gameplay passes in 36.344s.
 
-Original-C baseline 55ab415b and native conversion 085e63ca are pushed.
-Go owns the 16-node cache, eleven private C entry points and
-its C storage/types are retired, and two required C exports remain. Existing Go
-callers and the objective fixture use native helpers. See docs/porting/OBJECT_LOOKUP.md
-and build/port-object-lookup/qualification.json for evidence.
+Physical C: **98,506 lines /147 files /zero reference C**, down 565 lines.
+Ten private C entry points are retired; four retained exports are exercised
+directly by the fixture. Existing Go penalty callers use native helpers.
+Original-C baseline 8c1c2a94 is pushed; the native conversion is included with
+this checkpoint. See docs/porting/QUEST_ELIGIBILITY.md and local
+build/port-quest-eligibility/qualification.json for evidence.
 
-Next: establish the C baseline for **14 quest eligibility routines /563 C lines**
-(GAME3_3.c 4F24E0 through before 4F3E30). Four C entry points remain needed; ten
-can retire, including Go quest-penalty calls. Audit and original sections are in build/port-quest-eligibility. The guarded
-fixture and root tests are now applied; production eligibility code remains C.
-The original-C baseline is qualified: **10,809 cases /10 locked repeated hashes**.
-The complete standard matrix passes 632 selected root tests (369.139s wall),
-covering the first 10,793 cases. Final review added 16 double-input rounding
-cases; both captures match and the locked focused check passes (one selected
-root test, 17.503s wall). All executions are verified by the guarded runner.
-
-Native source and apply-native.py are staged in build/port-quest-eligibility.
-After committing/pushing this baseline, apply the conversion and run focused
-eligibility/penalty tests before qualification. The fixture will call the four
-retained C ABIs directly and private Go helpers for the ten retired entry points.
-Do not retain the original C algorithm. No eligibility production source has
-changed yet. See docs/porting/QUEST_ELIGIBILITY.md for evidence and scope.
-
-Testing scope for the next tag-independent batch: repeated original-C captures
-plus the full accumulated standard baseline; completed native full standard and
-affected server/highres suites (eligibility, penalty, inventory, equipment,
-rewards), all builds and fresh gameplay. Replay a differing variant against the
-recoverable C baseline before diagnosing a port regression. Broaden for shared
-variant-sensitive changes or unexplained discrepancies. This applies the existing
-subsystem plan; rationale is recorded in docs/porting/DECISIONS.md.
+Next: client effects, a connected candidate of **42 routines /2,177 C lines**.
+Five drawing files plus plasma setup, glow, drawable update and curve helpers.
+Local audit, original sections and plan: build/port-client-effects. No effects
+fixture or conversion is applied yet. First establish an asset-independent
+original-C framebuffer probe using the real renderer and drawable machinery,
+then expand geometry, lifetime, RNG, packet and callback coverage. Preserve
+current renderer output; do not change the historical sprite-color policy.
+The fixture adds client ownership, so broaden variant qualification as its
+actual dependencies become clear. See docs/porting/CLIENT_EFFECTS.md.
 
 Standing authorization: continue connected chunks, commit/push and continue.
 Resolve confident reversible choices and record them. No new agents or user
 question pending. Use build/baseline/env.sh, GOMAXPROCS=2 and -p 2. All accumulated
 matrices use tools/porting/run_tests.py; never edit source while tests/builds run.
 Keep raw full-suite/crash logs local. SSH push to dbenamy/opennox dev is authorized.
-Preserve the 7z and original extracted assets. Completed text and lookup run asset duplicates
-have restoration manifests; lookup captures have gzip manifests.
+Preserve the 7z and original extracted assets. Completed text and lookup run
+asset duplicates have restoration manifests; lookup and eligibility captures
+have verified gzip manifests.
 
 <!-- /current-checkpoint -->
 

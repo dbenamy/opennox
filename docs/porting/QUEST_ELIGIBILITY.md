@@ -1,11 +1,10 @@
 # Quest eligibility
 
-The next connected batch contains 14 routines /563 C section lines in GAME3_3.c,
-from 4F24E0 through before 4F3E30. Production remains C while the new baseline is
-captured. Four entry points serve the common server join path; ten private C
-entry points can retire. Existing Go quest-penalty callers will use native
-helpers. The current production count remains 99,071 C lines /147 files, with
-zero reference-only C.
+This completed batch contains 14 routines /563 C section lines in GAME3_3.c,
+from 4F24E0 through before 4F3E30. The native conversion is fully qualified. Four entry points serve the common server join path; ten private C
+entry points are retired. Existing Go quest-penalty callers use native
+helpers. The production count is now 98,506 C lines /147 files, down 565 lines
+(563 section lines and two obsolete declarations), with zero reference-only C.
 
 The guarded fixture uses actual type, modifier, equipment and guide registries,
 plus bounded records in the production table regions. It saves and restores
@@ -40,10 +39,19 @@ be replayed against the recoverable C baseline. Broaden for variant-sensitive
 changes or unexplained discrepancies; see DECISIONS.md for this testing scope.
 
 Local plan, original sections, ABI audit, staged fixture and test sources, and
-qualification scripts are under build/port-quest-eligibility. Native source, its installer and qualification scripts are staged there. No C
-eligibility algorithm has been replaced yet.
+qualification scripts are under build/port-quest-eligibility. The qualified C baseline is 8c1c2a94. Native focused eligibility and penalty
+tests pass in 29.040s, matching all ten hashes unchanged. The native full standard matrix passes all 633 selected root tests (379.259s),
+covering 96,142 accumulated captured cases /1,039 groups plus contracts.
+Affected server/highres suites each pass all 67 selected tests (171.678s and
+77.589s). All selections execute and complete. All three production builds pass
+ELF32/SSE2 and symbol checks: ten retired symbols absent, four required exports
+present, test helpers absent. The full suite has the exact same 1,553 failure
+entries (15 passing, three failing, 32 skipped packages). Fresh headless gameplay
+with unchanged goldens passes in 36.344s. Full local metadata is recorded in
+build/port-quest-eligibility/qualification.json.
 
-The native fixture will call the four retained production C ABIs directly and
+The native fixture calls the four retained production C ABIs directly and
 private Go helpers for the ten retired entry points. Thus the retained argument
 and return conversions remain exercised without keeping a C algorithm solely
-for testing. Native source is still staged at this baseline checkpoint.
+for testing. No original C eligibility algorithm remains. The existing C-backed cache word
+and shared table data remain production state, as in neighboring native ports.

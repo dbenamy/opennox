@@ -105,14 +105,14 @@ func questLoseSpell(u *server.Object) {
 	}
 	count := 0
 	for i, v := range p.SpellLvl {
-		if v != 0 && C.sub_4F24E0(C.int(i)) != 0 {
+		if v != 0 && questEligibilityPenaltySpell(uint32(i)) {
 			count++
 		}
 	}
 	selected := GetServer().S().Rand.Logic.IntClamp(0, count-1)
 	index := 0
 	for i, v := range p.SpellLvl {
-		if v != 0 && C.sub_4F24E0(C.int(i)) != 0 {
+		if v != 0 && questEligibilityPenaltySpell(uint32(i)) {
 			if index == selected {
 				p.SpellLvl[i] = 0
 				questKnowledgePacket(p, 0x11f0, i)
@@ -129,14 +129,14 @@ func questLoseBeastScroll(u *server.Object) {
 	}
 	count := 0
 	for i, v := range p.BeastScrollLvl {
-		if v == 1 && C.sub_4F2530(C.int(i)) != 0 {
+		if v == 1 && questEligibilityPenaltyBeast(uint32(i)) {
 			count++
 		}
 	}
 	selected := GetServer().S().Rand.Logic.IntClamp(0, count-1)
 	index := 0
 	for i, v := range p.BeastScrollLvl {
-		if v == 1 && C.sub_4F2530(C.int(i)) != 0 {
+		if v == 1 && questEligibilityPenaltyBeast(uint32(i)) {
 			if index == selected {
 				p.BeastScrollLvl[i] = 0
 				questKnowledgePacket(p, 0x13f0, i)
@@ -154,7 +154,7 @@ func questLoseWarriorAbility(u *server.Object) int8 {
 	}
 	count := 0
 	for i := 0; i < 6; i++ {
-		if p.SpellLvl[i] != 0 && C.sub_4F2570(C.int(i)) != 0 {
+		if p.SpellLvl[i] != 0 && questEligibilityAbility(uint32(i)) {
 			count++
 		}
 	}
@@ -162,7 +162,7 @@ func questLoseWarriorAbility(u *server.Object) int8 {
 	selected, index := int(result), 1
 	for i := 1; i < 6; i++ {
 		if p.SpellLvl[i] != 0 {
-			result = int32(C.sub_4F2570(C.int(i)))
+			result = int32(bool2int(questEligibilityAbility(uint32(i))))
 			if result != 0 {
 				if index == selected {
 					p.SpellLvl[i] = 0

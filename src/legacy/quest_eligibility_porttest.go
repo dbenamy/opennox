@@ -5,25 +5,6 @@ package legacy
 /*
 #include "GAME3_3.h"
 extern uint32_t dword_5d4594_1568308;
-static uint32_t questEligibilityInvoke(int op,uint32_t a) {
- switch(op) {
- case 0:return sub_4F24E0(a);
- case 1:return sub_4F2530(a);
- case 2:return sub_4F2570(a);
- case 3:return sub_4F2590(a);
- case 4:return sub_4F2700(a);
- case 5:return sub_4F27A0(a);
- case 6:return sub_4F27E0(a);
- case 7:return sub_4F28C0(a);
- case 8:return sub_4F2960(a);
- case 9:return sub_4F2B20(a);
- case 10:return sub_4F2B60(a);
- case 11:return sub_4F2C30(a);
- case 12:return nox_xxx_spell_4F2E70(a);
- case 13:return sub_4F2EF0(a);
- default:return 0xDEADBEEF;
- }
-}
 */
 import "C"
 
@@ -266,7 +247,37 @@ func questEligibilityInvoke(op int, args [5]uint32) uint32 {
 	if op < 0 || op > 13 {
 		panic("eligibility operation")
 	}
-	return uint32(C.questEligibilityInvoke(C.int(op), C.uint32_t(args[0])))
+	obj := func() *server.Object { return (*server.Object)(unsafe.Pointer(uintptr(args[0]))) }
+	var value bool
+	switch op {
+	case 0:
+		value = questEligibilityPenaltySpell(args[0])
+	case 1:
+		value = questEligibilityPenaltyBeast(args[0])
+	case 2:
+		value = questEligibilityAbility(args[0])
+	case 3:
+		return uint32(C.sub_4F2590(C.int(args[0])))
+	case 4:
+		value = questEligibilityBook(obj())
+	case 5, 9:
+		value = questEligibilityModifiers(obj())
+	case 6:
+		value = questEligibilityMaterial(obj())
+	case 7:
+		value = questEligibilityQuality(obj())
+	case 8:
+		value = questEligibilityEffects(obj())
+	case 10:
+		value = questEligibilitySpecial(obj())
+	case 11:
+		return uint32(C.sub_4F2C30(C.int(args[0])))
+	case 12:
+		return uint32(C.nox_xxx_spell_4F2E70(C.int(args[0])))
+	case 13:
+		return uint32(C.sub_4F2EF0(C.int(args[0])))
+	}
+	return uint32(bool2int(value))
 }
 func (p *portTestShopPools) eligibilitySnapshot() *PortTestQuestEligibilityResult {
 	st := p.reportEligibility
