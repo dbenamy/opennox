@@ -208,3 +208,18 @@ and time semantics behind small production Go helpers. No old parser algorithms
 remain for testing. Complete repeated C captures cover record contents/disposal,
 tokens, file state and random draws. The edging table walk continues comparing
 against the shared token after each nested read, matching the original source.
+
+### Growth direction array and merge configuration (2026-09-14; review later)
+
+Restore a contiguous four-element direction array in nox_xxx_mapGenFillRoom_4D53B0.
+The original stronger probe observed an invalid hallway kind; checking only the
+return value had missed it. Preserve normalized record bytes before disposal in
+the growth fixture so rejected candidates are verified too. All 16 blocked masks
+across eight seeds now exercise only the intended remaining directions.
+
+Point four growth merge-rate reads at the same configuration blob that the theme
+parser writes. With config mergeRate=100, the original probe produced zero merges
+when an unrelated named word was zero and one merge when it was 100. This is a
+deliberate storage correction, consistent with the earlier hallway prerequisite.
+Four directions, 0/50/100 rates, eight seeds and independently varied named values
+verify that actual configuration controls the result and random draws.

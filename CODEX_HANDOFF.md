@@ -2,47 +2,32 @@
 
 <!-- current-focus -->
 
-### Active — theme parser qualified; map growth next
+### Active — growth C prerequisites qualified; baseline next
 
-The 33 theme-parser routines are native Go and fully qualified. C baseline
-**fc6f4252** was committed/pushed before conversion. All **3,392 cases / 19
-complete captures** match unchanged; initial native checks pass in **13.353s**.
-Accumulated **67,703 cases / 969 capture groups**, plus contracts, pass in default,
-server and highres (**365.450 / 360.441 / 299.877s** wall). The final error-logging
-correction also passes focused themes in all variants (**98.272 / 96.775 / 24.057s**
-wall including builds). All three production binaries verify ELF32/i386/SSE2/CGO;
-31 retired symbols and test adapters are absent, two external ABI bridges remain.
-Asset-backed full-suite failures match exactly: **1,553 entries; 15 pass / 3 fail /
-32 skip packages**. Fresh unchanged repeat-a gameplay passes in **36.461s** under
-Xvfb/null audio. Evidence: build/port-map-theme/qualification.json.
+Theme native **14b1caa7** is qualified and pushed: 33 routines, −1,881 C lines,
+3,392 unchanged cases / 19 captures; broad variants/builds/full-suite/gameplay pass.
+Evidence: build/port-map-theme/qualification.json.
 
-Physical C: **102,419 lines / 148 files / zero reference C**, **−1,881**.
-Count and docs are updated. Commit/push this qualified conversion, then continue.
-No source/test/build process is active. Do not rerun one-time native draft scripts
-or finalize-reporting.py; all corrections are in source. build.py no longer runs
-that one-time finalizer. No parser algorithms remain solely for tests.
+Growth C prerequisites are qualified and ready to commit/push. The original
+stronger fill probe found invalid hallway kind1107434383 from indexing four
+separate locals as an array. C fill now uses directions[4]. The original merge
+probe also failed: config mergeRate100 produced [0,1] north connections as only
+an unrelated named word changed. All four merge reads now use the real config
+blob. **331 contracts**, plus existing map checks and mandatory hashes, pass:
+default **57.006s** root time, server/highres **138.224 / 67.847s** wall.
+Evidence: build/port-map-growth/prerequisite-qualification.json and MAP_GROWTH.md.
+Physical C **102,416 / 148 files / zero reference**, −3. All seven growth routines
+remain C. No active compile/test. Count/docs are updated; commit/push next.
 
-Next: seven connected map-growth/door routines, **1,082 C section lines**,
-4D4790..4D5D20 in GAME3_2.c. Three external entries remain necessary; four helpers
-can retire. Read-only candidate-source.txt, candidate-scope.json, caller-audit.json,
-tables.json and PLAN.md are in build/port-map-growth. No next-batch source edits.
-Reuse real room/painting/population owners and scoped allocation observation,
-initialize actual startup tables, bound recursive cases and capture complete room
-state, allocations/disposal, RNG and doors. Lock repeated C captures before porting.
-Continue one connected batch at a time, qualify/count/document/commit/push and onward.
-
-Theme prerequisites **ff4de53d / 4fcad1f5** restore the 60-byte algorithm value
-buffer, contiguous modifier counters and correct inherited-modifier deletion.
-Their original failure evidence and corrected baselines are documented in
-MAP_THEME.md. Earlier population native **07229da1** removed 1,770 C lines;
-hallway native **f1b92d3f** removed 532. Their qualification artifacts remain under
-build/port-map-population and build/port-map-hallways.
-
-Completed captures and older binaries are losslessly compressed with manifests.
-Several completed gameplay runs retain only changed assets plus SHA-256 restore
-manifests; see MAP_THEME.md for restoration commands. The supplied
-nox-iso-from-archive-org.7z archive and canonical extracted assets are untouched.
-Fresh qualification still uses fresh asset copies. No question or new agents.
+After pushing, apply build/port-map-growth/corpus.go.stage as a new root test file
+and exercise it with OPENNOX_MAP_GROWTH_EXTEND_C=1 and an absolute
+OPENNOX_MAP_GROWTH_CAPTURE prefix. This draft is NOT applied/compiled yet. It
+covers branch choices/layouts/recursion guards/room and hall expansion; add door
+and frontier coverage before final locking. Extend the fixture with real waypoint
+state/cleanup for door cases using population fixture patterns. Repeat and lock
+complete C captures before any native conversion. No source edits during builds.
+No question or new agents; preserve original asset archive. Continue batches,
+qualify/count/document/commit/push and onward.
 
 ### Completed — map painting, borders, walls and door placement
 

@@ -2363,32 +2363,29 @@ int nox_xxx_mapGenFillRoom_4D53B0(int a1, int a2, int a3, int a4, int a5) {
 	int v26;        // eax
 	int v28;        // [esp+10h] [ebp-1Ch]
 	float2 a2a;     // [esp+14h] [ebp-18h]
-	int v30;        // [esp+1Ch] [ebp-10h]
-	int v31;        // [esp+20h] [ebp-Ch]
-	int v32;        // [esp+24h] [ebp-8h]
-	int v33;        // [esp+28h] [ebp-4h]
+	int directions[4]; // contiguous direction choices
 	int v34;        // [esp+30h] [ebp+4h]
 
 	v5 = (float*)a1;
 	v6 = sub_5218B0(a1, 0);
 	v7 = v6 != 0 ? 0 : 2;
-	v30 = v6 != 0 ? 0 : 2;
+	directions[0] = v6 != 0 ? 0 : 2;
 	v8 = sub_5218B0(a1, 1);
 	v9 = v8 != 0 ? 0 : 3;
-	v31 = v8 != 0 ? 0 : 3;
+	directions[1] = v8 != 0 ? 0 : 3;
 	v10 = sub_5218B0(a1, 2);
 	v11 = v10 != 0 ? 0 : 4;
-	v32 = v10 != 0 ? 0 : 4;
+	directions[2] = v10 != 0 ? 0 : 4;
 	v12 = -(sub_5218B0(a1, 3) != 0);
 	LOBYTE(v12) = v12 & 0xFB;
 	v13 = v12 + 5;
-	v33 = v13;
+	directions[3] = v13;
 	if (v7 || v9 || v11 || v13) {
 		v14 = nox_xxx_mapGenRandFunc_526AC0(0, 3);
 		v34 = 0;
 		while (1) {
 			v15 = (v14 + 1) % 4;
-			v16 = *(&v30 + v15);
+			v16 = directions[v15];
 			v28 = v15;
 			if (!v16) {
 				v14 = v28;
@@ -2438,7 +2435,7 @@ int nox_xxx_mapGenFillRoom_4D53B0(int a1, int a2, int a3, int a4, int a5) {
 			v24 = (int)v23;
 			if (v23) {
 				if (nox_xxx_mapGenCheckRoomType_5238F0(v23) || *(uint8_t*)(v24 + 52) & 2 || v24 == a5 ||
-					nox_xxx_mapGenRandFunc_526AC0(1, 100) > *(int*)&dword_5d4594_1549844 ||
+					nox_xxx_mapGenRandFunc_526AC0(1, 100) > *getMemIntPtr(0x5D4594, 1549844) ||
 					!sub_523A10((int)v18, (float*)v24)) {
 					sub_521A10(v18);
 				} else {
@@ -2620,7 +2617,7 @@ int sub_4D5630(int a1, int a2, int a3, int a4, int a5) {
 		goto LABEL_34;
 	}
 	if (*(uint32_t*)v17 != 1 || *(uint8_t*)(v17 + 52) & 2 || v17 == a5 ||
-		nox_xxx_mapGenRandFunc_526AC0(1, 100) > *(int*)&dword_5d4594_1549844) {
+		nox_xxx_mapGenRandFunc_526AC0(1, 100) > *getMemIntPtr(0x5D4594, 1549844)) {
 		v43 = 0;
 		sub_521A10(v14);
 		if (v45 == 2 || v45 == 8) {
@@ -2709,7 +2706,7 @@ LABEL_43:
 		v28 = 0;
 	} else {
 		if (*(uint32_t*)v26 != 1 || *(uint8_t*)(v26 + 52) & 2 || v26 == a5 ||
-			nox_xxx_mapGenRandFunc_526AC0(1, 100) > *(int*)&dword_5d4594_1549844) {
+			nox_xxx_mapGenRandFunc_526AC0(1, 100) > *getMemIntPtr(0x5D4594, 1549844)) {
 			v44 = 0;
 			sub_521A10(v22);
 			if (v45 == 4 || v45 == 16) {
@@ -2791,7 +2788,7 @@ LABEL_71:
 				v40 = 0;
 			} else {
 				if (*(uint32_t*)v38 == 1 && !(*(uint8_t*)(v38 + 52) & 2) && v38 != a5 &&
-					nox_xxx_mapGenRandFunc_526AC0(1, 100) <= *(int*)&dword_5d4594_1549844) {
+					nox_xxx_mapGenRandFunc_526AC0(1, 100) <= *getMemIntPtr(0x5D4594, 1549844)) {
 					v40 = 1;
 					if (sub_523A10((int)v32, v39)) {
 						goto LABEL_89;

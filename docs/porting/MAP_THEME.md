@@ -3,8 +3,8 @@
 All **33 routines** at 51E260..520D50 in GAME4_2.c are native Go. Only
 mapGenReadTheme and sub_520D50 retain C ABI bridges; the other **31 entries** have
 no remaining source references or production symbols. Physical C is **102,419
-lines / 148 files / zero reference C**, **−1,881**. This conversion is qualified
-and ready to commit/push; corrected C baseline **fc6f4252** was pushed first.
+lines / 148 files / zero reference C**, **−1,881**. Native commit **14b1caa7** is qualified and pushed; corrected C baseline
+**fc6f4252** was pushed first.
 
 ## Implementation and compatibility
 
@@ -122,5 +122,4 @@ The supplied archive is untouched. Fresh gameplay always uses fresh asset copies
 
 Seven map-growth/door routines, **1,082 C section lines**, 4D4790..4D5D20 in
 GAME3_2.c; three external entries and four private helpers. Read-only inventory,
-caller audit, actual table values and plan are in build/port-map-growth. No source
-changes for that batch yet. Continue after this qualified conversion is pushed.
+caller audit, actual table values and plan are in build/port-map-growth. Its fixture bootstrap is now in progress; all seven routines remain C.

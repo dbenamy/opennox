@@ -111,6 +111,8 @@ target build selection and linker evidence.
 
 | Theme parser, conditional input, equipment and decoration definitions (2026-09-14) | 148 | 102,419 | −1,881 | 0 |
 
+| Growth direction-array and merge-setting prerequisites (2026-09-14; no conversion) | 148 | 102,416 | −3 | 0 |
+
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
 because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful
