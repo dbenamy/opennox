@@ -100,6 +100,7 @@ type portTestShopPools struct {
 	reportRecords       []unsafe.Pointer
 	reportTexts         []unsafe.Pointer
 	reportLookup        *portTestObjectLookup
+	reportEligibility   *portTestQuestEligibility
 	reports             *PortTestGameplayReportsSpec
 	equipment           *portTestEquipment
 	effectsUse          *portTestEffectsUse

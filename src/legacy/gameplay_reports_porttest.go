@@ -28,6 +28,7 @@ type PortTestGameplayReportRecord struct {
 	Flags uint16
 }
 type PortTestGameplayReportsSpec struct {
+	Eligibility       *PortTestQuestEligibilitySpec
 	Lookup            *PortTestObjectLookupSpec
 	Texts             [][]uint16
 	SuppressedPlayers *uint32
@@ -39,10 +40,11 @@ type PortTestGameplayReportsSpec struct {
 	Caches            [3]uint32
 }
 type PortTestGameplayReportsResult struct {
-	Lookup   *PortTestObjectLookupResult        `json:",omitempty"`
-	Rules    *PortTestGameplayReportRulesResult `json:",omitempty"`
-	Caches   [3]uint32
-	Messages [3][]byte
+	Eligibility *PortTestQuestEligibilityResult    `json:",omitempty"`
+	Lookup      *PortTestObjectLookupResult        `json:",omitempty"`
+	Rules       *PortTestGameplayReportRulesResult `json:",omitempty"`
+	Caches      [3]uint32
+	Messages    [3][]byte
 }
 
 func (p *portTestShopPools) gameplayReportsPrepare() func() {
@@ -99,6 +101,7 @@ func (p *portTestShopPools) gameplayReportsPrepare() func() {
 		for i, v := range old {
 			*memmap.PtrUint32(0x5D4594, 1556320+uintptr(4*i)) = v
 		}
+		p.eligibilityRestore()
 		restoreRules()
 		if p.reportLookup != nil {
 			p.reportLookup.restore()
@@ -120,6 +123,8 @@ func (p *portTestShopPools) gameplayReportsArg(a PortTestGameplayReportArg) uint
 	var ptr unsafe.Pointer
 	var size int
 	switch a.Kind {
+	case "eligibility-object":
+		return p.eligibilityArg(a)
 	case "lookup-object", "lookup-name", "lookup-node", "lookup-head":
 		return p.objectLookupArg(a)
 	case "text":
@@ -144,6 +149,8 @@ func (p *portTestShopPools) gameplayReportsArg(a PortTestGameplayReportArg) uint
 		u := p.temporaryRef(a.Ref)
 		if u != nil {
 			switch a.Kind {
+			case "eligibility-object":
+				return p.eligibilityArg(a)
 			case "object":
 				ptr = u.CObj()
 				size = 772
@@ -184,6 +191,7 @@ func (p *portTestShopPools) gameplayReportsAction(a PortTestShopAction) uint32 {
 	if p.reports == nil {
 		panic("gameplay report fixture not prepared")
 	}
+	p.eligibilityEnsure()
 	p.objectLookupEnsure()
 	spec := p.reports.Args
 	if call, ok := p.reports.Calls[a.Value]; ok {
@@ -194,7 +202,9 @@ func (p *portTestShopPools) gameplayReportsAction(a PortTestShopAction) uint32 {
 		args[i] = p.gameplayReportsArg(v)
 	}
 	var ret uint32
-	if a.Op >= 2000 {
+	if a.Op >= 2100 {
+		ret = questEligibilityInvoke(a.Op-2100, args)
+	} else if a.Op >= 2000 {
 		ret = objectLookupInvoke(a.Op-2000, args)
 	} else if a.Op >= 1900 {
 		ret = gameplayTextInvoke(a.Op-1900, args)
@@ -213,6 +223,7 @@ func (p *portTestShopPools) gameplayReportsSnapshot() *PortTestGameplayReportsRe
 		return nil
 	}
 	out := new(PortTestGameplayReportsResult)
+	out.Eligibility = p.eligibilitySnapshot()
 	out.Lookup = p.objectLookupSnapshot()
 	if st := p.reportRules; st != nil {
 		out.Rules = &PortTestGameplayReportRulesResult{Notified: *memmap.PtrUint32(0x5D4594, 3536), Countdown: append([]PortTestGameplayReportCountdown(nil), st.countdown...)}

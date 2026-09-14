@@ -13,20 +13,28 @@ production builds and ABI/ELF checks pass. The full suite matches 1,553 known
 failure entries exactly, and fresh unchanged headless gameplay passes 35.566s.
 Physical C: **99,071 lines /147 files /zero reference C**, down 438 lines.
 
-Original-C baseline 55ab415b is pushed. This checkpoint contains the completed
-native conversion: Go owns the 16-node cache, eleven private C entry points and
+Original-C baseline 55ab415b and native conversion 085e63ca are pushed.
+Go owns the 16-node cache, eleven private C entry points and
 its C storage/types are retired, and two required C exports remain. Existing Go
 callers and the objective fixture use native helpers. See docs/porting/OBJECT_LOOKUP.md
 and build/port-object-lookup/qualification.json for evidence.
 
 Next: establish the C baseline for **14 quest eligibility routines /563 C lines**
 (GAME3_3.c 4F24E0 through before 4F3E30). Four C entry points remain needed; ten
-can retire, including Go quest-penalty calls. Audit, original sections, a guarded
-fixture, root tests and apply-fixture.py are staged in build/port-quest-eligibility.
-No eligibility source is applied yet. The draft has nine groups (approximately
-10,793 cases; verify actual captures) covering scalar eligibility, books,
-modifier masks/slots/composites, item class precedence, special gear and inventory
-limits. Review first C failures against source, repeat captures, then lock hashes.
+can retire, including Go quest-penalty calls. Audit and original sections are in build/port-quest-eligibility. The guarded
+fixture and root tests are now applied; production eligibility code remains C.
+The original-C baseline is qualified: **10,809 cases /10 locked repeated hashes**.
+The complete standard matrix passes 632 selected root tests (369.139s wall),
+covering the first 10,793 cases. Final review added 16 double-input rounding
+cases; both captures match and the locked focused check passes (one selected
+root test, 17.503s wall). All executions are verified by the guarded runner.
+
+Native source and apply-native.py are staged in build/port-quest-eligibility.
+After committing/pushing this baseline, apply the conversion and run focused
+eligibility/penalty tests before qualification. The fixture will call the four
+retained C ABIs directly and private Go helpers for the ten retired entry points.
+Do not retain the original C algorithm. No eligibility production source has
+changed yet. See docs/porting/QUEST_ELIGIBILITY.md for evidence and scope.
 
 Testing scope for the next tag-independent batch: repeated original-C captures
 plus the full accumulated standard baseline; completed native full standard and
@@ -41,8 +49,8 @@ Resolve confident reversible choices and record them. No new agents or user
 question pending. Use build/baseline/env.sh, GOMAXPROCS=2 and -p 2. All accumulated
 matrices use tools/porting/run_tests.py; never edit source while tests/builds run.
 Keep raw full-suite/crash logs local. SSH push to dbenamy/opennox dev is authorized.
-Preserve the 7z and original extracted assets. Completed text-run asset duplicates
-have a restoration manifest; lookup captures have gzip manifests.
+Preserve the 7z and original extracted assets. Completed text and lookup run asset duplicates
+have restoration manifests; lookup captures have gzip manifests.
 
 <!-- /current-focus -->
 
