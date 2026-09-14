@@ -18,19 +18,21 @@ fresh unchanged headless gameplay passes in 36.344s.
 Physical C: **98,506 lines /147 files /zero reference C**, down 565 lines.
 Ten private C entry points are retired; four retained exports are exercised
 directly by the fixture. Existing Go penalty callers use native helpers.
-Original-C baseline 8c1c2a94 is pushed; the native conversion is included with
-this checkpoint. See docs/porting/QUEST_ELIGIBILITY.md and local
+Original-C baseline 8c1c2a94 and native conversion fa9b0376 are pushed. See docs/porting/QUEST_ELIGIBILITY.md and local
 build/port-quest-eligibility/qualification.json for evidence.
 
-Next: client effects, a connected candidate of **42 routines /2,177 C lines**.
-Five drawing files plus plasma setup, glow, drawable update and curve helpers.
-Local audit, original sections and plan: build/port-client-effects. No effects
-fixture or conversion is applied yet. First establish an asset-independent
-original-C framebuffer probe using the real renderer and drawable machinery,
-then expand geometry, lifetime, RNG, packet and callback coverage. Preserve
-current renderer output; do not change the historical sprite-color policy.
-The fixture adds client ownership, so broaden variant qualification as its
-actual dependencies become clear. See docs/porting/CLIENT_EFFECTS.md.
+Current work: client effects, **45 routines /2,263 C lines**, all still C.
+The initial headless renderer/drawable fixture is applied. The original-C pixel
+probe passes standard/server/highres. Larger locked groups cover 6,070 orb
+lifetime snapshots (1,056 combinations) and 462 curve callback cases, with
+independent state/geometry assertions and identical repeated captures. The
+focused standard check passes all three selected tests (89.555s wall); metadata
+is in build/port-client-effects/early-baseline.json.
+This is an early fixture checkpoint; the complete effects baseline is unfinished.
+Next expand the remaining effects families, including RNG, construction,
+lightning/plasma, motion and callback state. A full C dispatch adapter is staged
+locally, not applied. Preserve the renderer color policy. See
+[CLIENT_EFFECTS.md](docs/porting/CLIENT_EFFECTS.md) for scope and resume details.
 
 Standing authorization: continue connected chunks, commit/push and continue.
 Resolve confident reversible choices and record them. No new agents or user

@@ -116,6 +116,7 @@ target build selection and linker evidence.
 | Gameplay text, notifications and player iteration (2026-09-14) | 147 | 99,509 | −282 | 0 |
 | Object lookup and 16-node net-code cache (2026-09-14) | 147 | 99,071 | −438 | 0 |
 | Quest eligibility, modifiers and inventory limits (2026-09-14) | 147 | 98,506 | −565 | 0 |
+| Client effects renderer/curve fixture checkpoint (2026-09-14; no conversion) | 147 | 98,506 | 0 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
