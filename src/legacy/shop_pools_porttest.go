@@ -99,6 +99,7 @@ type portTestShopPools struct {
 	reportRules         *portTestGameplayReportRules
 	reportRecords       []unsafe.Pointer
 	reportTexts         []unsafe.Pointer
+	reportLookup        *portTestObjectLookup
 	reports             *PortTestGameplayReportsSpec
 	equipment           *portTestEquipment
 	effectsUse          *portTestEffectsUse

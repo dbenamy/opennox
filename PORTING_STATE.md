@@ -23,16 +23,20 @@ full-suite and gameplay results were independently valid. All subsequent matrice
 must use tools/porting/run_tests.py (Go discovery + JSON execution/completion
 checks). It has positive, zero-selection and partial-execution validation.
 
-This checkpoint contains the completed text conversion. Push the checkpoint if
-necessary, then establish the original-C baseline for **13 object lookup/cache
-routines /436 C section lines**. Plan, operations and original sections are in
-build/port-object-lookup; a thin C dispatcher is staged there only. No lookup
-production or fixture source changes are applied. Two entry points have outside
-C callers; eleven appear removable, pending the Go address/global audit. The
-existing native name matcher differs from C for colons and empty IDs: preserve
-the C path's semantics in a dedicated helper. Reuse guarded object/player owners
-and real main/pending/missile lists; capture the16-node cache fully. Keep the
-unrelated shadow-list pair outside this batch. No user question is pending.
+Text conversion 8acac7e5 is pushed. The original-C baseline for **13 object
+lookup/cache routines /436 C section lines** is in progress. Guarded fixture and
+root tests are applied; production remains C. Initial captures confirm names,
+search locations and cache lifecycle semantics. The initial player-fallback
+assertion used the wrong fixture identity (200 instead of the resources owner's
+54000); source review corrected it. All 1,074 cases /8 hashes are locked and repeated, including 1,280 mixed
+cache operations; focused checks pass. The guarded accumulated standard C
+baseline passes (623 root tests, 331.395s wall); affected server/highres pass
+91 root tests each (172.723s/69.908s). The original-C baseline is qualified.
+Native source and an apply script are staged only in build/port-object-lookup. No user question
+is pending. See docs/porting/OBJECT_LOOKUP.md for scope and audited decisions.
+Only two entry points need C exports; eleven can retire. Historical global
+address interval audit found metadata only. Preserve the C name-matching path;
+the existing native matcher differs. Keep the shadow-list pair outside scope.
 
 Evidence: docs/porting/GAMEPLAY_TEXT.md, build/port-gameplay-text/qualification.json,
 variant-selection-audit.json, root-execution-audit.json, full-suite-comparison.json

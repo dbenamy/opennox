@@ -28,6 +28,7 @@ type PortTestGameplayReportRecord struct {
 	Flags uint16
 }
 type PortTestGameplayReportsSpec struct {
+	Lookup            *PortTestObjectLookupSpec
 	Texts             [][]uint16
 	SuppressedPlayers *uint32
 	Rules             *PortTestGameplayReportRules
@@ -38,6 +39,7 @@ type PortTestGameplayReportsSpec struct {
 	Caches            [3]uint32
 }
 type PortTestGameplayReportsResult struct {
+	Lookup   *PortTestObjectLookupResult        `json:",omitempty"`
 	Rules    *PortTestGameplayReportRulesResult `json:",omitempty"`
 	Caches   [3]uint32
 	Messages [3][]byte
@@ -98,6 +100,10 @@ func (p *portTestShopPools) gameplayReportsPrepare() func() {
 			*memmap.PtrUint32(0x5D4594, 1556320+uintptr(4*i)) = v
 		}
 		restoreRules()
+		if p.reportLookup != nil {
+			p.reportLookup.restore()
+			p.reportLookup = nil
+		}
 		for _, restore := range suppressionRestore {
 			restore()
 		}
@@ -114,6 +120,8 @@ func (p *portTestShopPools) gameplayReportsArg(a PortTestGameplayReportArg) uint
 	var ptr unsafe.Pointer
 	var size int
 	switch a.Kind {
+	case "lookup-object", "lookup-name", "lookup-node", "lookup-head":
+		return p.objectLookupArg(a)
 	case "text":
 		if a.Ref < 0 || a.Ref >= len(p.reportTexts) {
 			panic("text fixture reference")
@@ -176,6 +184,7 @@ func (p *portTestShopPools) gameplayReportsAction(a PortTestShopAction) uint32 {
 	if p.reports == nil {
 		panic("gameplay report fixture not prepared")
 	}
+	p.objectLookupEnsure()
 	spec := p.reports.Args
 	if call, ok := p.reports.Calls[a.Value]; ok {
 		spec = call
@@ -185,7 +194,9 @@ func (p *portTestShopPools) gameplayReportsAction(a PortTestShopAction) uint32 {
 		args[i] = p.gameplayReportsArg(v)
 	}
 	var ret uint32
-	if a.Op >= 1900 {
+	if a.Op >= 2000 {
+		ret = objectLookupInvoke(a.Op-2000, args)
+	} else if a.Op >= 1900 {
 		ret = gameplayTextInvoke(a.Op-1900, args)
 	} else {
 		ret = gameplayReportsInvoke(a.Op-1800, args)
@@ -202,6 +213,7 @@ func (p *portTestShopPools) gameplayReportsSnapshot() *PortTestGameplayReportsRe
 		return nil
 	}
 	out := new(PortTestGameplayReportsResult)
+	out.Lookup = p.objectLookupSnapshot()
 	if st := p.reportRules; st != nil {
 		out.Rules = &PortTestGameplayReportRulesResult{Notified: *memmap.PtrUint32(0x5D4594, 3536), Countdown: append([]PortTestGameplayReportCountdown(nil), st.countdown...)}
 		for i := range out.Rules.PlayerStatus {
