@@ -83,40 +83,6 @@ extern int ptr_5D4594_2650668_cap;
 
 nox_list_item_t nox_common_maplist = {0};
 
-//----- (004CDF80) --------------------------------------------------------
-int nox_xxx_updDrawDBall_4CDF80(int a1, int a2) {
-	nox_xxx_updDrawAddRndSpark_4CDFA0(a2, (uint32_t*)3);
-	return 1;
-}
-
-//----- (004CE0A0) --------------------------------------------------------
-int sub_4CE0A0(int a1, int a2) {
-	nox_xxx_updDrawAddRndSpark_4CDFA0(a2, (uint32_t*)1);
-	return 1;
-}
-
-//----- (004CE1D0) --------------------------------------------------------
-int nox_xxx_updDrawCloud_4CE1D0(int a1, int a2) {
-	if ((unsigned char)gameFrame() & 1) {
-		sub_4CE200(a1, a2, 1, 75);
-	}
-	return 1;
-}
-
-//----- (004CE340) --------------------------------------------------------
-int sub_4CE340(int a1, int a2) {
-	*(uint16_t*)(a2 + 104) += *(unsigned char*)(a2 + 432);
-	return 1;
-}
-
-//----- (004CE360) --------------------------------------------------------
-int sub_4CE360(int a1, int a2) {
-	if ((unsigned char)gameFrame() & 1) {
-		sub_4CE200(a1, a2, 1, 35);
-	}
-	return 1;
-}
-
 //----- (004CE390) --------------------------------------------------------
 int nox_xxx_updDrawColorlight_4CE390(uint32_t* a1, int a2) {
 	int result; // eax

@@ -38,18 +38,18 @@ func PortTestClientUpdate(op int, vp *noxrender.Viewport, dr *client.Drawable, a
 	viewWords := (*C.uint32_t)(vp.C())
 	switch op {
 	case 0:
-		C.sub_4CD150(C.int(a[0]), viewWords, drawable, C.int(a[1]))
+		updateTransfer(int(a[0]), vp, dr, a[1] != 0, true)
 		return 0
 	case 1:
-		return uint32(C.sub_4CE200(viewport, drawable, C.int(a[0]), C.int(a[1])))
+		return uint32(updateCloud(dr, int(a[0]), int(a[1])))
 	case 2:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_updDrawAddRndSpark_4CDFA0(drawable, (*C.uint32_t)(unsafe.Pointer(uintptr(uint32(a[0]))))))))
+		return updateDeathBallSparks(dr, int(a[0]))
 	case 3:
 		return uint32(C.nox_xxx_updDrawDBallCharge_4CE0C0(viewport, drawable))
 	case 4:
 		return uint32(C.sub_4CD690(viewWords, drawable))
 	case 5:
-		C.sub_4CCEA0(words, C.int(a[0]))
+		updateFireball(dr, int(a[0]))
 		return 0
 	case 6:
 		return uint32(C.sub_4CD450(viewWords, drawable))
