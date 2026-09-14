@@ -39,3 +39,60 @@ Then compare every captured byte, run accumulated three-variant tests, build and
 audit all production binaries, compare the asset-backed known-failure suite and
 run fresh unchanged headless repeat-a gameplay. Update C_LOC and recovery docs,
 commit/push, summarize and continue to the next connected batch.
+
+## Expanded C baseline — in progress
+
+Prerequisite **9ec45f48** is committed/pushed. The corpus now contains **2,512
+captured cases / three groups**: 2,376 routes, 72 obstacles and 64 candidate
+fallback cases, plus 16 explicit bent-route contracts. Routes span gaps 1,2,3,4,8,12,
+three widths, eleven lateral offsets, four directions and three rectangular
+room shapes. Route counts are 230 rejections, 568 single-segment, 241 two-segment
+and 1,337 three-segment admissions. Topology checks require live reciprocal edges
+and reachability of the intended target. Barriers require rejection and no live
+temporary corridor; fallback skips an undersized candidate in either list order.
+
+The stronger contracts exposed fixture issues, corrected before baseline lock:
+initialize/restore the real startup opposite-direction table (1,0,3,2), avoid
+shared mutable room maps, and place the undersized candidate off the route to
+its fallback. Existing 36 population hashes retain their original inputs and
+remain mandatory. The release observer now records discarded corridor identities
+before free, without reading released memory. Scope this to the connector call.
+
+The close-gap matrix captures **491 zero/negative-length live corridors** produced
+by existing routing arithmetic. Preserve this defined behavior during conversion;
+changing admission and route selection is a separate gameplay correction for
+review. Evidence: degenerate-corridors.json. No claim is made that these shapes
+are desirable. The existing direct room allocator already permits signed lengths.
+
+Current evidence: c-boundaries.log (routes/obstacles pass), fallback-corrected.log
+(64 cases pass), c-boundaries-{routes,obstructions,fallback}.json. Independent
+repeat and server/highres checks run via repeat-baseline.py; lock mandatory hashes
+and commit/push only after all complete captures repeat exactly. Early exploratory
+captures are losslessly gzipped with checksums in early-capture-archive.json.
+Do not reapply staged corpus/topology/fallback files; the working tests include
+subsequent corrections.
+
+## Repeated corrected-C captures qualified
+
+All **2,512 cases / three groups** match byte-for-byte in independent default,
+server and highres, with existing population/painting/room tests passing:
+**42.316s / 119.848s / 52.549s** wall time including builds. See
+baseline-qualification.json, baseline-variants.json and c-{repeat,server,highres}.log.
+Every capture hash is mandatory in src/map_hallways_baseline_porttest_test.go.
+The final mandatory-hash smoke passes in **19.890s** (locked-baseline.log).
+The Go draft is staged separately and production still uses the six C routines.
+
+Reproduce after sourcing build/baseline/env.sh, from src:
+
+```sh
+GOMAXPROCS=2 go test -p 2 -tags porttest -count=1 -run '^TestMap(Hallways|Population|Painting|Room)' .
+GOMAXPROCS=2 go test -p 2 -tags porttest,server -count=1 -run '^TestMap(Hallways|Population|Painting|Room)' .
+GOMAXPROCS=2 go test -p 2 -tags porttest,highres -count=1 -run '^TestMap(Hallways|Population|Painting|Room)' .
+```
+
+Optional OPENNOX_MAP_HALLWAYS_CAPTURE is an absolute output filename prefix;
+mandatory comparisons stay enabled. Duplicate baseline snapshots are gzipped
+with checksums in baseline-capture-archive.json. Older population completed
+captures and the early hallway topology run were also losslessly compressed to
+manage disk use; see completed-capture-archive.json under build/port-map-hallways.
+Decompress named evidence before rerunning an older script requiring raw JSON.

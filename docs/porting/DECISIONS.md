@@ -170,3 +170,13 @@ This cheap reversible correction follows the standing policy; retaining that
 failure would prevent ordinary multi-segment routes. See [MAP_HALLWAYS.md](MAP_HALLWAYS.md)
 for original evidence, regression and validation status. No unrelated named/blob
 globals are merged or treated as aliases.
+
+## Short-gap hallway shapes — 2026-09-14, review separately
+
+Preserve existing signed corridor-length arithmetic in the hallway conversion.
+The expanded gap 1–3 matrix records 491 admitted zero/negative-length corridors;
+these are defined record values, with no invalid memory access observed. Rejecting
+them would alter fallback and route selection beyond the pointer-storage repair.
+Keep the exact C captures and flag the gameplay behavior for a later correction;
+see [MAP_HALLWAYS.md](MAP_HALLWAYS.md). This is a compatibility choice, not an
+endorsement of the resulting shapes.

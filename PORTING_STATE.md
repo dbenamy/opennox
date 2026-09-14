@@ -40,9 +40,28 @@ pointer from inconsistent named/blob storage. Ten C reads are corrected; all
 checks pass in all three variants: default 23.869s test time, server 102.602s
 and highres 34.029s wall time including builds. Evidence is under
 build/port-map-hallways/prerequisite-*.log and prerequisite-variants.json.
-The prerequisite is ready to commit/push before extending the baseline.
-See docs/porting/MAP_HALLWAYS.md. Broader root corpus is staged, not applied, at
-build/port-map-hallways/corpus.go.stage; copy once and add required imports.
+Prerequisite **9ec45f48** is committed/pushed. The root hallway corpus now has
+**2,512 cases / three complete captures**, plus 16 bent-route contracts. All route
+and obstruction checks pass; the corrected 64-case fallback check passes too.
+Independent default repeat and server/highres checks all pass and match
+byte-for-byte: **42.316s / 119.848s / 52.549s** wall time including builds.
+Existing population/painting/room checks pass in each run. Three hashes are now
+mandatory in src/map_hallways_baseline_porttest_test.go; locked-baseline.log passes the mandatory-hash smoke in **19.890s**. Commit/push
+the C baseline before applying native.go.stage. Do not rerun lock-baseline.py.
+Expected captures are c-boundaries-{routes,obstructions,fallback}.json; the first
+full run's fallback setup was corrected in fallback-corrected.log. All older
+population hashes remain mandatory and unchanged.
+
+Hallway tests initialize/restore the real opposite-direction table; older
+population captures intentionally retain their original fixture inputs. The
+release observer records unknown discarded corridor identities before free,
+without reading freed storage. The close-gap corpus exposes 491 accepted
+zero/negative-length corridors: preserve this defined existing behavior for the
+conversion and review separately, rather than silently change route selection.
+See docs/porting/MAP_HALLWAYS.md. The three *.go.stage corpus/topology/fallback
+files were copied and corrected; DO NOT reapply them. Early exploratory captures
+are gzipped with manifest early-capture-archive.json (includes population's old
+native-first copies). Repeat captures are compressed after exact comparison.
 Then lock repeated C captures and commit/push before conversion. Thoroughly
 qualify, count/document/commit/push and continue without a new permission pause.
 No pending question or new agents; preserve the supplied asset archive.
@@ -51,7 +70,7 @@ Do not rerun population apply-native.py, scope.py, lock-baseline.py or already
 applied fixture/repair scripts. Recover original C inventories from baseline
 38c905a9 when needed. Baseline duplicate captures and exploratory captures were
 losslessly compressed with checksum manifests under build/port-map-population;
-main c-final and native comparison captures remain available. Mandatory baseline
+main c-final and native comparison captures remain available in gzip form. Mandatory baseline
 hashes, fixtures and porting documentation are in Git for recovery without build/.
 
 ### Completed — map painting, borders, walls and door placement

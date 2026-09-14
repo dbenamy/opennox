@@ -125,6 +125,7 @@ func PortTestMapPopulation(cases []PortTestPaintSpec, owner func(*server.Server)
 	}
 	ext.constants = map[uint32]uint32{mapRoomRaw(unsafe.Pointer(C.nox_xxx_XFerExit_4F4B90)): 0x70000003}
 	var active *paintTestFixture
+	var recordDiscardedHallways bool
 	var disposed map[*server.Object]bool
 	var restoreModifier func()
 	ext.setup = func(p *server.PortTestPaintOwners) func() {
@@ -132,7 +133,12 @@ func PortTestMapPopulation(cases []PortTestPaintSpec, owner func(*server.Server)
 		oldRelease := mapRoomTestRelease
 		mapRoomTestRelease = func(ptr unsafe.Pointer) {
 			if active != nil {
-				if r := active.known(ptr); r != nil {
+				r := active.known(ptr)
+				if r == nil && ptr != nil && recordDiscardedHallways {
+					// Record identity before release, without ever reading freed storage.
+					r = active.register(ptr, 0, "discardedHallway", false)
+				}
+				if r != nil {
 					r.alive = false
 					delete(active.owned, r)
 				}
@@ -215,7 +221,9 @@ func PortTestMapPopulation(cases []PortTestPaintSpec, owner func(*server.Server)
 				}
 			}
 		}
+		recordDiscardedHallways = op == 31
 		ret := populationInvokeNative(op, args, ext.globals["returnHigh"])
+		recordDiscardedHallways = false
 		if len(cached) != 0 {
 			remaining := map[unsafe.Pointer]bool{}
 			for node := mapRoomPointer(*ext.globals["dword_5d4594_1599540"]); node != nil; node = *mapRoomRef(node, 4) {
