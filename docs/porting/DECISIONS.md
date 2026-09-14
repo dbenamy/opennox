@@ -443,3 +443,16 @@ the flag; the forward-difference curve rasterizer stores two coefficients in
 named globals distinct from their historical mapped slots. Neither is silently
 changed in the effects port. Tests exercise the current storage and lookup
 behavior explicitly.
+
+## Effects floating-point and clipping compatibility — 2026-09-14
+
+The first native comparison localized discrepancies to curve/plasma intermediate
+rounding and moving-spark left-edge clipping. Read the original compiler output
+to preserve the effective boundaries: Hermite X uses wider t/t²/t³ values, Y
+uses their float32 spills with wider accumulation; plasma stores normalized Y
+as float32 but uses the wider division result in its next product. Moving-spark
+X clipping and the bottom edge compare unsigned viewport words, unlike the
+random sparkle path. Preserve these current behaviors rather than changing the
+locked C references or general renderer policy. Native float-to-int calls use
+the already qualified Go helper. Review these quirks before any later geometry
+cleanup; the port's compatibility tests remain the constraint.

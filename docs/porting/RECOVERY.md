@@ -2,8 +2,9 @@
 
 The plan, checkpoint, source changes and `warrior-smoke.yaml` are tracked in Git.
 Read `CODEX_HANDOFF.md` and `PORTING_STATE.md` after cloning. Work continues on
-`dev` in `https://github.com/dbenamy/opennox.git`; no C conversion has begun yet.
-Infrastructure changes through `e694e1ac` were pushed on 2026-09-10.
+`dev` in `https://github.com/dbenamy/opennox.git`. Qualified conversion chunks
+and their recovery checkpoints are pushed throughout the work. The current
+handoff and checkpoint supersede historical progress notes in older documents.
 
 ## What needs a separate backup
 
@@ -119,10 +120,44 @@ investigation of assets/toolchain/configuration as well as engine behavior.
 Player save bytes were not deterministic in the recorded baseline; map save bytes
 matched. Save/load compatibility still needs a dedicated check.
 
+## Recover the accumulated port tests
+
+The current accumulated selection is tracked in
+`docs/porting/accumulated-test-pattern.txt`. Keep it as one nonempty line: the
+runner rejects malformed patterns and zero selection, and requires each selected
+root test to run and complete. With the environment above configured, run from
+the repository root:
+
+```bash
+GOMAXPROCS=2 python3 tools/porting/run_tests.py \
+  --pattern-file docs/porting/accumulated-test-pattern.txt \
+  --tags porttest \
+  --log build/recovery/logs/ports-standard.jsonl \
+  --result build/recovery/logs/ports-standard-result.json
+```
+
+Use `--tags porttest,server` and `--tags porttest,highres` with distinct log/result
+paths for the other variants. One optional `TestMapPopulationPrerequisiteProbe`
+is intentionally skipped unless explicitly enabled; the fixture's actual
+regression contracts run separately. Preserve that distinction when reporting
+selected/completed versus passing test counts.
+
+The raw full-suite known-failure oracle remains local. If lost, reproduce it
+from a qualified Git checkpoint with the supplied assets and matching toolchain;
+compare both the failure multiset and completed package results. Never treat a
+crashed/incomplete run as matching just because it reported no new failures.
+
 ## Resume development
 
-Choose a small C leaf using the build dependency graph and current callers.
-Establish relevant passing checks and C/Go differential coverage before replacing
-it. Unrelated documented failures need not block that conversion. Commit each
-coherent verified step, update the checkpoint and push it. Local commits alone
-will not survive loss of this VM.
+Choose a connected behavior batch using the dependency graph and current
+callers, keeping private helpers with their callers where practical. Reuse the
+qualified fixture owners. Establish independent contracts and repeated C
+references before replacement; retain production C entry points only for actual
+callers/callbacks, and remove the old C algorithms after conversion. Unrelated
+documented failures do not block a chunk whose affected checks pass.
+
+Run the full accumulated standard suite, affected variants and relevant builds/
+gameplay at the batch boundary. Broaden to full variant matrices for shared
+infrastructure or unexplained differences, as recorded in DECISIONS.md. Update
+the tracked test selection, C LOC and porting checkpoint; commit and push each
+qualified coherent chunk. Local commits alone will not survive loss of the VM.

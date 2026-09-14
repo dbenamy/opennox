@@ -2,46 +2,49 @@
 
 <!-- current-focus -->
 
-### Current — client effects C baseline qualified; integrate Go draft
+### Current — client effects fully qualified; drawable updates next
 
-Quest eligibility is complete and pushed as fa9b0376 (14 routines, −565 C
-lines). Its 10,809 captures, accumulated 633-test standard suite, affected
-variants, production builds, full-suite oracle and fresh gameplay all passed.
-See docs/porting/QUEST_ELIGIBILITY.md for that completed qualification.
+The 46-routine client effects conversion is complete. All 13,344 captured
+results /18 groups match the locked C baseline, alongside independent contracts.
+Full accumulated standard/server/highres matrices pass: 654/653/654 selected root
+tests, all executed/completed (377.692s/444.741s/383.076s wall). Each has one intentionally skipped
+optional prerequisite probe; the actual regression contracts pass. Accumulated
+coverage is 109,486 captured results /1,057 groups plus contracts.
 
-Current batch: **46 client-effects routines /2,289 C section lines**. All remain
-C. The full reference fixture now passes the guarded accumulated standard suite:
-654 selected/executed/completed root tests, 373.911s wall. Focused server/highres
-each pass all 21 effects tests (161.309s /25.696s). All 18 capture groups are
-locked after repeated C execution, with independent state/geometry/RNG contracts.
-Local metadata: build/port-client-effects/baseline.json. No test/build is active.
+All three production builds and ELF32/SSE2/ABI checks pass. Fourteen private C
+entry points are retired, 32 exports retained and directly exercised. The full
+asset-backed suite matches 1,553 known failures and all package outcomes exactly
+(15 pass /3 fail /32 skip). Fresh unchanged headless gameplay passes in 35.750s.
+Production C: **96,216 lines /142 files /zero reference C**, down **2,289**.
 
-Two explicit prerequisite C repairs precede conversion: skip missing plasma
-endpoints and initialize both coordinate chain-lightning particle endpoints.
-The latter removed observed run-dependent particle positions/RNG consumption.
-Fixture distance-table initialization also corrected moving-orb/plasma references;
-superseded hashes are withdrawn. Current physical C is **98,505 lines /147 files
-/zero reference C** (net −1 from eligibility). Review decisions and full coverage
-in docs/porting/CLIENT_EFFECTS.md and DECISIONS.md.
+Baseline b554a327 is pushed. This checkpoint accompanies the native effects
+conversion commit; inspect git log/status to confirm its commit/push state.
+See docs/porting/CLIENT_EFFECTS.md and local qualification.json for evidence.
+No test/build process remains active after qualification.
 
-Next integrate the complete local native draft in
-build/port-client-effects/client_effects*.go.stage (seven files), retire the 14
-private C entry points, retain/exercise 32 C exports, and compare all effects
-references. Drafts are not compiled or qualified. Recheck source/caller audits;
-do not overwrite current fixtures with the older fixture stage files. Repaired
-source reference is baseline-sections.c.txt, not original-sections.c.txt.
-After focused matches run full accumulated native matrices in all three tags,
-all production builds/ABI audit, exact known-failure full-suite comparison and
-fresh unchanged headless gameplay. Update docs/C LOC, commit/push and continue.
+Next: 27 drawable-update routines /1,069 C lines, including twelve whole update
+files, their GAME3_1/GAME3_2 callers and the stored cloud callback. Audit, explicit
+ranges, proposed tail-allocation prerequisite repairs and four fixture groups
+are staged in build/port-client-updates. Read PLAN.md before applying. None is
+applied or compiled yet. Use explicit stage-to-package mappings; never copy a
+broad stage glob. The fixture reuses the effects owner with optional extra types
+and known callback normalization. Add focused failed-tail retry contracts before
+capturing a repaired C baseline. Retarget the existing Go energy-spark wrapper
+to effectCreateEnergySparks with int16 height narrowing in that next chunk.
 
-Standing authorization: continue connected chunks autonomously. Resolve
-confident reversible choices and document for review. No new agents or user
-question pending. Use build/baseline/env.sh, GOMAXPROCS=2 and -p 2. Selected
-matrices must use tools/porting/run_tests.py; never edit source while tests/builds
-run. Keep raw full-suite/crash logs local. SSH push to dbenamy/opennox dev is
-authorized. Preserve the 7z and original assets. Completed local captures and
-binaries may be gzip archived with SHA256/restoration manifests; see
-build/port-client-effects/completed-artifact-archives.json.
+Standing authorization: continue connected chunks autonomously; make confident
+reversible decisions and document them. Commit/push each qualified chunk and
+continue. No new agents or user question pending. Use build/baseline/env.sh,
+GOMAXPROCS=2 and -p 2. Selected matrices use tools/porting/run_tests.py and the
+tracked docs/porting/accumulated-test-pattern.txt. Never edit Go/C source during
+builds/tests. Keep full-suite/crash logs local. Preserve original assets and 7z.
+
+Completed capture/binary gzip archives and duplicate gameplay assets have
+verified restoration manifests. This turn additionally deduplicated only
+byte-identical assets from waypoint-port, writer-port and tile-worklist-port,
+reclaiming about 1.67 GB; original assets and unique run outputs are preserved.
+RECOVERY.md now describes current batching and how to recover the accumulated
+test selection from Git. SSH push to dbenamy/opennox dev remains authorized.
 
 <!-- /current-focus -->
 

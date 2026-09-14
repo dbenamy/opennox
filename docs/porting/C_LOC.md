@@ -119,6 +119,7 @@ target build selection and linker evidence.
 | Client effects renderer/curve fixture checkpoint (2026-09-14; no conversion) | 147 | 98,506 | 0 | 0 |
 | Missing plasma endpoint correction before effects baseline (2026-09-14; no conversion) | 147 | 98,504 | −2 | 0 |
 | Client effects: initialize chain-lightning particle endpoint prerequisite (2026-09-14) | 147 | 98,505 | +1 | 0 |
+| Client particles, rays, glow, lightning, plasma and curves (2026-09-14) | 142 | 96,216 | −2,289 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

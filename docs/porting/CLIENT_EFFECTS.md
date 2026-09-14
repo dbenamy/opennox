@@ -1,11 +1,11 @@
 # Client effects
 
-Connected scope: **46 routines /2,289 physical C section lines**, all still C.
-Five whole files (client__draw__fx, drawrays, lightning, plasma, glowdraw),
-GAME3_1 plasma setup 4BA670, lightning initialization 4BAB30, orbit update 4CA720,
-four curve helpers 4BE800–4BEDE0, and GAME3 spark/orb helpers 4B6880, 4B6970,
-4B69F0 and 4B6B80. Current production C: **98,505 lines /147 files /zero
-reference C**. Two explicit prerequisite repairs precede the Go conversion;
+Converted **46 routines /2,289 physical C lines** to Go: five whole C files
+(client__draw__fx, drawrays, lightning, plasma, glowdraw), GAME3_1 plasma setup
+4BA670, lightning initialization 4BAB30, orbit update 4CA720, four curve helpers
+4BE800–4BEDE0, and GAME3 spark/orb helpers 4B6880, 4B6970, 4B69F0 and 4B6B80.
+Production C is **96,216 lines /142 files /zero reference C**, down 2,289 from
+the qualified C baseline. Two explicit prerequisite repairs preceded conversion;
 see [DECISIONS.md](DECISIONS.md).
 
 ## Reference fixture
@@ -49,58 +49,63 @@ Independent assertions complement repeated C hashes:
 Separate contracts check moving-orb arrival/distance, plasma missing endpoints,
 and equivalent chain-lightning particle endpoints across binding modes.
 
-## Baseline corrections and current status
+## C baseline and prerequisite repairs
 
-The early three-test fixture is pushed as **69512647**. Its stationary-orb probe
-passes standard/server/highres; orb lifetime and Hermite callback references
-remain valid. The full 21-test effects baseline is now qualified.
+The early three-test fixture is pushed as 69512647; the complete baseline is
+pushed as **b554a327**. The C baseline passes 654 selected accumulated standard
+root tests (373.911s), plus all 21 effects tests in server/highres (161.309s /
+25.696s). Stationary orb and Hermite references from the early checkpoint remain
+valid. All 18 final capture groups have identical repeated C results.
 
 Independent checks caught two missing startup tables in fixture construction:
-Hermite coefficients and the integer-distance lookup. Both now use bounded data
-from the production embedded blobs and restore borrowed state. The distance
-table correction changes moving-orb and plasma outputs. Earlier glow reference
-(1,617 snapshots) and early ray-drawing hashes are withdrawn, not port oracles.
-Corrected glow (1,716 snapshots) and plasma geometry match repeated captures.
+Hermite coefficients and integer distance. The fixture now loads bounded data
+from the production embedded blobs and restores borrowed state. The distance
+correction changed moving-orb/plasma outputs; the early 1,617-snapshot glow
+reference and early ray-drawing hashes are withdrawn, not port oracles.
 
-Two production C fixes are intentional: missing plasma endpoints now skip
-rendering, and coordinate chain lightning now initializes both particle target
-coordinates. The latter originally left Y uninitialized, producing different
-particle/RNG results in eight cases between runs. The endpoint contract compares
-coordinate and object bindings for identical positions. These repairs are
-separate from equivalence-preserving Go conversion.
+Two production C repairs are deliberate: skip missing plasma endpoints, and
+initialize both particle target coordinates for coordinate chain lightning.
+The latter originally left Y uninitialized, producing run-dependent particle
+positions/RNG consumption in eight cases. A binding-equivalence contract covers
+the repair. These fixes are distinct from the subsequent equivalent Go port.
 
-All corrected references are locked after identical repeats. The guarded full
-accumulated standard baseline passes all 654 selected/executed/completed root
-tests (373.911s wall). Focused server and highres each pass all 21 effects tests
-(161.309s /25.696s). Metadata: build/port-client-effects/baseline.json.
-No effects algorithms have moved to Go yet. The complete native draft is staged
-locally as client_effects*.go.stage and awaits integration and qualification.
-Diagnostic PNGs in c-diagnostics were visually reviewed (curve, energy bolt,
-lightning, orb, plasma); exact framebuffer words remain the oracle. Historical
-sprite-color goldens are not regenerated; preserve the current renderer policy.
+## Native conversion and qualification
 
-## Conversion and qualification
+Seven legacy/client_effects Go files replace all 46 algorithms. Fourteen private
+C entry points are retired; 32 retained exports serve real C callers or stored
+callbacks and are exercised directly by the fixture. The orbit callback remains
+C-callable. Internal plasma curve callbacks are typed Go calls; 4BEDE0 adapts its
+remaining external C callback. The Go lightning initializer calls its native
+helper. No old C algorithm is retained solely for tests.
 
-The provisional ABI audit retains 32 entry points and retires 14. Twenty-one
-draw callbacks have Go address references. Retain 4CA720 while stored update
-pointers use the C ABI. Plasma's internal synchronous callback can become a
-typed Go callback. Curve evaluator 4BEDE0 has an outside GAME2.c caller and
-keeps a C adapter for external callbacks. Retarget the sole Go caller of
-lightning initialization 4BAB30. Recheck callers and prototypes before deletion.
+All **13,344 captured results /18 groups**, plus independent contracts, match
+unchanged references. Initial differences in spark clipping and curve/plasma
+rounding were traced to C signedness and compiler storage boundaries, corrected
+in Go, and documented in DECISIONS.md. Native-c passes all 21 focused tests.
+Representative diagnostic PNGs were reviewed; exact framebuffer words remain
+the oracle and historical sprite-color goldens were not regenerated.
 
-Once the baseline is qualified, commit/push it, then convert all 46 routines.
-Run focused comparisons during implementation. Because this batch adds shared
-client/renderer ownership, complete the full accumulated native matrix under
-all three tags, all production builds/ELF32/SSE2/ABI checks, exact known-failure
-full-suite comparison, and a fresh unchanged headless gameplay replay.
-Use tools/porting/run_tests.py for selected matrices; it rejects zero selection
-and requires every selected root test to run and complete. Do not edit source
-while a build/test runs. Update C LOC, decisions, this log and handoff; commit,
-push and continue under the user's standing authorization.
+Full accumulated standard/server/highres matrices pass with **654/653/654**
+selected/executed/completed root tests (377.692s/444.741s/383.076s wall). Each has one intentionally
+skipped optional TestMapPopulationPrerequisiteProbe; all actual regression
+contracts pass. Accumulated coverage is 109,486 captured results /1,057 groups
+plus contracts. Every selected suite uses the guarded runner.
 
-Local evidence is under build/port-client-effects. baseline-sections.c.txt is
-the repaired C reference; original-sections.c.txt predates repairs/scope expansion.
-Completed captures may be gzip archived with verified SHA256/restoration entries
-in completed-artifact-archives.json. Preserve the original extracted assets and
-7z. Raw logs/captures remain local; tracked hashes and fixture code recover the
-baseline from Git.
+All three production binaries build and pass ELF32/i386, SSE2 and C ABI audits:
+14 retired symbols absent, 32 required exports present, no fixture helpers.
+The asset-backed full suite matches all 1,553 known failure entries exactly and
+all package outcomes (15 pass /3 fail /32 skip), with normal suite exit status.
+Fresh unchanged headless warrior gameplay passes in **35.750s**, using Xvfb,
+null audio, original assets and override disabled.
+
+Local evidence: build/port-client-effects/qualification.json, baseline.json,
+variant/full-suite logs and binary-verification.json. The reproducible accumulated
+selection is tracked in accumulated-test-pattern.txt; see RECOVERY.md for commands.
+Completed raw captures/binaries may be gzip archived with SHA256/restoration
+manifests. The original assets and 7z remain untouched. Repaired source reference
+is baseline-sections.c.txt; the older original-sections.c.txt is not the oracle.
+
+Next connected batch: 27 drawable-update routines /1,069 C lines, reusing the
+qualified owner. Its audit and fixture drafts are staged under
+build/port-client-updates; no source from that batch was applied during this
+qualification. Retarget the remaining Go energy-spark wrapper in that batch.

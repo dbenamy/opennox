@@ -10,24 +10,23 @@ package legacy
 #include "client__draw__lightning.h"
 #include "client__draw__plasma.h"
 #include "client__draw__glowdraw.h"
-int nox_xxx_drawLightningStep_4BB070(int, int);
-int nox_xxx_lightningProc2_4BAE60(int2*, int2*, int, short*, int, int, int);
 */
 import "C"
 
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
+	"image"
 	"unsafe"
 )
 
-// PortTestClientEffects invokes original production entry points. The caller
+// PortTestClientEffects exercises retained production C entry points and native private helpers. The caller
 // owns bounded input storage, drawable lists, renderer and RNG. Curve callback
 // recording has a separate typed fixture to preserve its external ABI.
 func PortTestClientEffects(op int, vp *noxrender.Viewport, dr *client.Drawable, a [8]int32, data unsafe.Pointer) uint32 {
 	switch op {
 	case 45:
-		return uint32(C.nox_xxx_prepareLightningEffects_4BAB30())
+		return uint32(effectPrepareLightning())
 	case 0:
 		C.sub_499490(C.int(a[0]), (*C.uint16_t)(data), C.int(a[1]), C.int(a[2]), C.char(a[3]), C.char(a[4]))
 		return 0
@@ -49,9 +48,9 @@ func PortTestClientEffects(op int, vp *noxrender.Viewport, dr *client.Drawable, 
 	case 8:
 		return uint32(C.nox_xxx_netDrawRays_49BDD0((*C.uchar)(data)))
 	case 9:
-		return uint32(C.nox_xxx_drawLightningStep_4BB070(C.int(a[0]), C.int(a[1])))
+		return uint32(effectLightningStep(uint32(a[0]), uint32(a[1])))
 	case 10:
-		return uint32(C.nox_xxx_lightningProc2_4BAE60((*C.int2)(unsafe.Add(data, 0)), (*C.int2)(unsafe.Add(data, 8)), C.int(a[0]), (*C.short)(unsafe.Add(data, 16)), C.int(a[1]), C.int(a[2]), C.int(a[3])))
+		return uint32(effectLightningPasses(AsPoint(data), AsPoint(unsafe.Add(data, 8)), int(a[0]), (*[4]int16)(unsafe.Add(data, 16)), int(a[1]), int(a[2]), int(a[3])))
 	case 11:
 		return uint32(C.nox_thing_lightning_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
 	case 12:
@@ -61,13 +60,13 @@ func PortTestClientEffects(op int, vp *noxrender.Viewport, dr *client.Drawable, 
 	case 14:
 		return uint32(C.nox_thing_green_bolt_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
 	case 15:
-		return uint32(C.sub_4BA230(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4])))
+		return uint32(effectPlasma(int(a[0]), image.Pt(int(a[1]), int(a[2])), image.Pt(int(a[3]), int(a[4]))))
 	case 16:
-		return uint32(C.sub_4BA8B0((*C.int)(data), (*C.int)(unsafe.Add(data, 8)), (*C.int)(unsafe.Add(data, 16))))
+		return uint32(effectPlasmaSegment(AsPoint(data), AsPoint(unsafe.Add(data, 8)), int(*(*int32)(unsafe.Add(data, 16)))))
 	case 17:
 		return uint32(C.nox_thing_plasma_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
 	case 18:
-		return uint32(C.sub_4B6770((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr)), C.int(a[0]), C.int(a[1])))
+		return uint32(effectSparkDraw(vp, dr, uint32(a[0]), uint32(a[1]), true))
 	case 19:
 		return uint32(C.nox_thing_magic_sparkle_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
 	case 20:
@@ -101,25 +100,25 @@ func PortTestClientEffects(op int, vp *noxrender.Viewport, dr *client.Drawable, 
 	case 34:
 		return uint32(C.nox_thing_glow_orb_move_draw((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr))))
 	case 35:
-		C.sub_4BA670(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]))
+		effectPlasmaSetup(int(a[0]), image.Pt(int(a[1]), int(a[2])), image.Pt(int(a[3]), int(a[4])))
 		return 0
 	case 36:
-		return uint32(C.sub_4B6B80((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr)), C.int(a[0])))
+		return uint32(effectOrb(vp, dr, a[0] != 0))
 	case 37:
 		return uint32(C.sub_4CA720(C.int(uintptr(unsafe.Pointer(vp))), C.int(uintptr(unsafe.Pointer(dr)))))
 	case 38:
-		return uint32(C.sub_4BE800(C.int(a[0])))
+		return uint32(effectCurveColor(int(a[0])))
 	case 39:
-		return uint32(C.sub_4BE810(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.char(a[3])))
+		return uint32(effectCurveGlow(int(a[0]), int(a[1]), int(a[2]), int8(a[3])))
 	case 40:
-		C.sub_4BEAD0((*C.int2)(unsafe.Add(data, 0)), (*C.int2)(unsafe.Add(data, 8)), (*C.int2)(unsafe.Add(data, 16)), (*C.int2)(unsafe.Add(data, 24)), C.int(a[0]), C.int(a[1]))
+		effectCurveRaster([4]image.Point{AsPoint(data), AsPoint(unsafe.Add(data, 8)), AsPoint(unsafe.Add(data, 16)), AsPoint(unsafe.Add(data, 24))}, int(a[0]), int(a[1]))
 		return 0
 	case 42:
-		return uint32(C.sub_4B6880((*C.uint32_t)(unsafe.Pointer(vp)), C.int(uintptr(unsafe.Pointer(dr))), C.int(a[0]), C.int(a[1])))
+		return uint32(effectSparkDraw(vp, dr, uint32(a[0]), uint32(a[1]), false))
 	case 43:
-		return uint32(C.sub_4B6970((*C.uint32_t)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr)), C.int(a[0]), C.int(a[1])))
+		return uint32(effectMovingSpark(vp, dr, uint32(a[0]), uint32(a[1])))
 	case 44:
-		return uint32(C.sub_4B69F0(C.int(uintptr(unsafe.Pointer(dr)))))
+		return uint32(effectSparkBounce(dr))
 	default:
 		panic("unknown client effect operation")
 	}

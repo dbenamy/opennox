@@ -8,8 +8,6 @@ package legacy
 import "C"
 
 import (
-	"unsafe"
-
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -35,5 +33,5 @@ func PortTestEffectsOrbEnvironment() func() {
 }
 
 func PortTestEffectsOrb(vp *noxrender.Viewport, dr *client.Drawable, move bool) int {
-	return int(C.sub_4B6B80((*C.int)(unsafe.Pointer(vp)), (*C.nox_drawable)(unsafe.Pointer(dr)), C.int(bool2int(move))))
+	return effectOrb(vp, dr, move)
 }

@@ -163,7 +163,7 @@ func Nox_xxx_servMapLoadPlaceObj_4F3F50(obj *server.Object, a2 int, a3 unsafe.Po
 }
 
 func Nox_xxx_prepareLightningEffects_4BAB30() {
-	C.nox_xxx_prepareLightningEffects_4BAB30()
+	effectPrepareLightning()
 }
 
 func Sub_4B64C0() {
