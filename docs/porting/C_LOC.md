@@ -108,6 +108,7 @@ target build selection and linker evidence.
 | Initial layouts, recursive growth, doors and waypoint connections (2026-09-14) | 148 | 101,335 | −1,081 | 0 |
 | Wall-list correctness prerequisite and stable C generator integration (2026-09-14; no conversion) | 148 | 101,335 | 0 | 0 |
 | Unflagged backdrop correction and expanded orchestration C baseline (2026-09-14; no conversion) | 148 | 101,335 | 0 | 0 |
+| Map orchestration: generation, retries and save coordination (2026-09-14) | 148 | 101,128 | −207 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

@@ -1,8 +1,5 @@
 package legacy
 
-/*
-unsigned int sub_4D42E0(const char* a1);
-*/
 import "C"
 
 var (
@@ -15,5 +12,5 @@ func sub_57C490_2(a1 *C.char) {
 }
 
 func Sub_4D42E0(s string) {
-	C.sub_4D42E0(internCStr(s))
+	mapOrchestrationSetName(s)
 }

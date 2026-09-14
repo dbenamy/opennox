@@ -11,16 +11,6 @@ static uint32_t* orchestrationGlobal(int i) {
  switch(i) {case 0:return &dword_5d4594_1549844;case 1:return &dword_5d4594_1550912;case 2:return &dword_5d4594_1550916;}
  return 0;
 }
-static uint32_t orchestrationInvoke(int op,uint32_t* args) {
- switch(op) {
- case 0:return sub_4D42E0((char*)(uintptr_t)args[0]);
- case 1:return (uintptr_t)nox_xxx_getRandMapName_4D4310();
- case 2:return nox_xxx_mapGenStep_4D44E0();
- case 3:return nox_xxx_mapGenStart_4D4320();
- case 4:return nox_xxx_mapGenStartAlt_4D5F30();
- }
- return 0;
-}
 */
 import "C"
 import (
@@ -260,7 +250,19 @@ func PortTestMapOrchestration(cases []PortTestPaintSpec, owner func(*server.Serv
 		noxflags.SetGame(noxflags.GameFlag(*ext.globals["gameFlags"]))
 		themeObserve(true, 1700000000)
 		defer themeObserve(false, 0)
-		return uint32(C.orchestrationInvoke(C.int(op), (*C.uint32_t)(unsafe.Pointer(&args[0]))))
+		switch op {
+		case 0:
+			return mapOrchestrationSetName(GoStringP(unsafe.Pointer(uintptr(args[0]))))
+		case 1:
+			return uint32(uintptr(mapOrchestrationName()))
+		case 2:
+			return mapOrchestrationStep()
+		case 3:
+			return mapOrchestrationStart()
+		case 4:
+			return mapOrchestrationStartAlt()
+		}
+		panic("map orchestration operation")
 	}
 	ext.after = func(f *paintTestFixture, op int, ret uint32) {
 		if svc != nil && svc.After != nil {

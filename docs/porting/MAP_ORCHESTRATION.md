@@ -2,7 +2,7 @@
 
 The next connected scope is five remaining routines in `legacy/GAME3_2.c`,
 207 section lines: map-name setter/getter, main start, generation step and
-alternate start. **All five remain C.** The wall-list prerequisite is documented
+alternate start. **All five are native Go and fully qualified.** The wall-list prerequisite is documented
 in [WALL_LIST.md](WALL_LIST.md); growth is already native and qualified.
 
 ## Original C step baseline
@@ -52,9 +52,9 @@ Metadata and map-switch callbacks are recorded external service boundaries.
 All175 cases/four mandatory captures and the new contracts pass three repetitions
 (root16.382s, legacy0.046s). Qualification of all22,658 map cases/281 groups plus
 contracts passes default/server/highres in74.179s/148.546s/82.656s, with every
-historical hash unchanged. No orchestration is converted.
+historical hash unchanged. These checks ran before conversion.
 
-The expanded C baseline is ready to commit/push before conversion. The caller
+The expanded C baseline was committed/pushed as415ba255 before conversion. The caller
 audit finds no C consumers outside this group. Existing Go debug/gameloop wrappers
 can call native helpers directly; retire all five C declarations and the unused
 alternate-start reference in `keep.go`. Audit floating-point rounding in radius
@@ -86,6 +86,33 @@ Existing theme cleanup leaves nested wall/floor records allocated. The fixture
 records those survivors and releases them at teardown. Deep cleanup requires an
 ownership/sharing review; current tests do not claim full production cleanup.
 
-Outer fixtures and step boundaries are applied and qualified. Native step/outer
-helpers and prepare-native.py under build/port-map-orchestration remain unapplied.
-Final application qualification scripts are in build/port-map-orchestration-native.
+Outer fixtures and step boundaries are qualified. Native helpers are applied and
+qualified; the local preparation scripts are historical, not pending work.
+Final application evidence is in build/port-map-orchestration-native.
+
+
+## Qualified native conversion
+
+Native files are legacy/map_orchestration.go and map_orchestration_step.go.
+All five C implementations/declarations are removed, with existing Go callers
+redirected directly. No C bridge is required for this group. Source references to
+retired names are gone except existing error-message text. Physical C is **101,128
+lines /148 files /zero reference C, −207 lines**. No algorithm is retained in C
+solely for testing.
+
+The first native run matches all175 cases/four captures and all additional
+contracts (root5.674s, legacy0.043s). Complete qualification passes:
+
+- 73,659 accumulated captured cases /982 groups plus contracts across default,
+  server and highres:301.046s/371.200s/310.082s, all expected hashes unchanged.
+- Normal/HD/server production builds:68.918s/9.592s/68.027s. ELF32/i386, SSE2/CGO,
+  fixture exclusion and retired-symbol checks pass; all five orchestration C entries
+  are absent, along with the four previously retired growth helpers.
+- Asset-backed full suite matches all1,553 known failure entries exactly:
+  15 packages pass, three fail and32 skip; no added/removed failures.
+- Fresh unchanged headless gameplay passes in37.120s with null audio and
+  NOX_E2E_OVERRIDE=false, in build/baseline/runs/map-orchestration-port.
+
+Evidence: build/port-map-orchestration-native/qualification.json, verified native-first
+and per-variant capture archives, build/binary metadata and full-suite comparison.
+The next connected candidate is [gameplay reporting](GAMEPLAY_REPORTS.md).

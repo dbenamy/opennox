@@ -4,57 +4,43 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Current — wall-list prerequisite, then generator orchestration
+### Current — orchestration qualified; gameplay reporting next
 
-HEAD **8bcecb87** is pushed. Recent completed work:
-- `bd256d10`: native growth, seven routines, −1,081 C lines; 5,781 cases / nine
-  captures plus contracts match C; accumulated variants/builds/gameplay qualify.
-- `55a4b2ef`: fixture lookup caching; prior map hashes match all variants.
+The five-routine native orchestration conversion is fully qualified and ready for
+commit/push. Its original-C baseline415ba255 was pushed before conversion;
+8bcecb87 wall-list prerequisite and bd256d10 growth conversion are complete.
 
-Remaining C: **101,335 lines / 148 files / zero reference C**.
+Remaining C: **101,128 lines /148 files /zero reference C, −207**. All five
+orchestration C declarations/callers are retired; existing Go entry points call
+native helpers directly. No C algorithms remain solely for testing.
 
-The one-line `serverWalls.find` correction is qualified, committed and pushed as8bcecb87. It follows
-`Next20` from the global head; the previous row-link traversal lost live walls and
-hung ring generation. Twelve deletion/reuse contracts pass. Eleven historical
-painting hashes intentionally change: only520 global links and31 heads across350
-cases; all other fields are identical, with673 structurally checked steps.
-See [WALL_LIST.md](docs/porting/WALL_LIST.md).
+All175 orchestration cases/four captures plus15 outer contracts, three name
+boundaries, eight allocator layouts and direct identity/backdrop-weight checks
+match. Full accumulated73,659 cases/982 groups plus contracts pass all variants:
+301.046s/371.200s/310.082s. Three production builds/binary audits pass; all five
+retired C symbols are absent. Full suite matches all1,553 known failure entries
+(15pass/3fail/32skip packages). Fresh unchanged headless gameplay passes37.120s.
+See [MAP_ORCHESTRATION.md](docs/porting/MAP_ORCHESTRATION.md) and local
+build/port-map-orchestration-native/qualification.json.
 
-All five orchestration routines remain C (207 section lines). New integration
-fixtures capture151 cases in three mandatory groups. Release snapshots use retained
-Go buffers marked captureOnly, with saved grid-row IDs. Direct identity checks and
-eight varied allocator layouts prevent diagnostic storage from corrupting pointer
-normalization. Three focused repetitions pass (root11.658s,legacy0.015s).
-Accumulated default/server/highres variants PASS in299.109s/367.549s/307.546s,
-all hashes exact. All three production builds and binary audits pass. The full suite
-matches all1,553 known failure entries (15pass/3fail/32skip packages), with no new
-failures. Fresh unchanged gameplay passes in37.170s. Qualification evidence is
-build/fix-wall-list/qualification.json.
+Next connected candidate: **73 gameplay-reporting routines /1,337 C section lines**,
+4D7BE0 up to4D9EB0 in GAME3_2.c. No reporting fixture/production changes are applied.
+Initial virtual removal finds45 routines with outside C callers and28 candidates
+for retirement (nine private,19 Go-only); inspect Go getter/callback uses next.
+See [GAMEPLAY_REPORTS.md](docs/porting/GAMEPLAY_REPORTS.md). Local inventory,
+operations.json, reference audit and unapplied73-call dispatcher stage are under
+build/port-gameplay-reports. Reuse guarded shop/player/object owners and captured
+messages; lock/repeat/commit/push C baseline before converting the connected batch.
 
-Expanded original-C fixtures and the unflagged backdrop correction are APPLIED
-but uncommitted. All175 cases/four mandatory captures plus15 outer contracts,
-three name boundaries, eight allocator layouts and direct identity/weight checks
-pass three repetitions (root16.382s/legacy0.046s). All previous hashes are unchanged.
-Full map corpus22,658 cases/281 groups plus contracts PASSES in all variants:
-default74.179s/server148.546s/highres82.656s.
-Evidence: c-expanded-qualification.json. Commit/push the qualified baseline
-and backdrop prerequisite before applying native orchestration.
+Known separate reviews: original orchestration failure paths leave flags/saved
+objects pending; shallow theme cleanup leaves nested layout records allocated.
+Tests preserve these behaviors and fixture teardown owns survivors. Unflagged
+backdrop weighting was fixed separately in415ba255, with old phase hashes unchanged.
 
-Backdrop failure was inherited: ThemeFlags0 used the room address as selection
-weight. map_rooms_decor.go now sums eligible unrestricted weights for flags0;
-six phase-specific branches are unchanged. See MAP_ORCHESTRATION.md/DECISIONS.md.
-The15 original outer C contracts already passed before this correction, including
-both100-attempt retries. Native orchestration remains UNAPPLIED; prepared scripts
-are prepare-native.py and native-*.go.stage, with final qualification scripts in
-build/port-map-orchestration-native. They retire all five C entries and redirect
-existing Go callers. Review/apply only after this expanded C baseline is pushed.
-
-Next: follow [MAP_ORCHESTRATION.md](docs/porting/MAP_ORCHESTRATION.md) to expand
-and lock original-C backdrop/name/start/retry/save coverage, commit/push baseline,
-then convert all five and retire their unused C bridges. Local unapplied drafts
-and preparation scripts are under build/port-map-orchestration; see PLAN.md there.
-Do not apply native drafts before the expanded C baseline is committed/pushed. Existing failure cleanup
-and shallow theme ownership remain separate documented review items.
+Evidence is compressed with SHA verification: C/native integration captures;
+older painting captures (painting-evidence-archive.json); earlier theme/growth
+binaries (theme-growth-binary-archive.json). Completed gameplay asset copies are
+deduplicated with per-run manifests and restoration support. Preserve originals.
 
 Standing authorization: continue connected chunks, thoroughly validate, update
 C LOC/docs, commit/push, summarize and continue until a substantive question or rate

@@ -6,7 +6,7 @@ import "C"
 
 var (
 	// maybe worth keeping mapgen
-	_ = C.nox_xxx_mapGenStartAlt_4D5F30
+	_ = mapOrchestrationStartAlt
 	// unused grip spell effect - could be useful
 	_ = C.nox_xxx_unusedCheckGripEffect_4E03F0
 	// some game setup code - unused game mode?
