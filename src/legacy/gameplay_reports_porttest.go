@@ -5,6 +5,7 @@ package legacy
 /*
 #include "GAME3_2.h"
 #include <stdint.h>
+extern uint32_t dword_5d4594_2649712;
 static uint32_t gameplayReportsInvoke(int op, uint32_t* args) {
  switch(op) {
  case 0: return (uint32_t)(uintptr_t)nox_xxx_netSendInterestingId_4D7BE0((int)(uintptr_t)args[0]);
@@ -87,6 +88,7 @@ static uint32_t gameplayReportsInvoke(int op, uint32_t* args) {
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -103,12 +105,15 @@ type PortTestGameplayReportRecord struct {
 	Flags uint16
 }
 type PortTestGameplayReportsSpec struct {
-	Records []PortTestGameplayReportRecord
-	Args    [5]PortTestGameplayReportArg
-	Calls   map[uint32][5]PortTestGameplayReportArg
-	Caches  [3]uint32
+	Rules         *PortTestGameplayReportRules
+	RecipientMask *uint32
+	Records       []PortTestGameplayReportRecord
+	Args          [5]PortTestGameplayReportArg
+	Calls         map[uint32][5]PortTestGameplayReportArg
+	Caches        [3]uint32
 }
 type PortTestGameplayReportsResult struct {
+	Rules    *PortTestGameplayReportRulesResult `json:",omitempty"`
 	Caches   [3]uint32
 	Messages [3][]byte
 }
@@ -119,6 +124,11 @@ func (p *portTestShopPools) gameplayReportsPrepare() func() {
 		return func() {}
 	}
 	p.reports = sp
+	restoreRules := p.gameplayReportRulesPrepare(sp.Rules)
+	oldMask := C.dword_5d4594_2649712
+	if sp.RecipientMask != nil {
+		C.dword_5d4594_2649712 = C.uint32_t(*sp.RecipientMask)
+	}
 	p.reportRecords = nil
 	for _, v := range sp.Records {
 		if len(v.Text) > 63 {
@@ -140,6 +150,8 @@ func (p *portTestShopPools) gameplayReportsPrepare() func() {
 		for i, v := range old {
 			*memmap.PtrUint32(0x5D4594, 1556320+uintptr(4*i)) = v
 		}
+		restoreRules()
+		C.dword_5d4594_2649712 = oldMask
 		p.reports = nil
 		p.reportRecords = nil
 	}
@@ -196,6 +208,14 @@ func (p *portTestShopPools) gameplayReportsArg(a PortTestGameplayReportArg) uint
 	return uint32(uintptr(unsafe.Add(ptr, a.Offset)))
 }
 func (p *portTestShopPools) gameplayReportsAction(a PortTestShopAction) uint32 {
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+	control := PortTestProtectionFloatCW()
+	if control&0x0f00 != 0x0200 {
+		panic("report x87 precision/rounding")
+	}
+	p.gameplayReportRulesMembers()
+
 	if p.reports == nil {
 		panic("gameplay report fixture not prepared")
 	}
@@ -208,6 +228,9 @@ func (p *portTestShopPools) gameplayReportsAction(a PortTestShopAction) uint32 {
 		args[i] = p.gameplayReportsArg(v)
 	}
 	ret := uint32(C.gameplayReportsInvoke(C.int(a.Op-1800), (*C.uint32_t)(unsafe.Pointer(&args[0]))))
+	if PortTestProtectionFloatCW() != control {
+		panic("report changed x87 control")
+	}
 	p.temporary.result = ret
 	p.temporary.world.objectives.attack.controls.result = uint64(ret)
 	return ret
@@ -217,6 +240,12 @@ func (p *portTestShopPools) gameplayReportsSnapshot() *PortTestGameplayReportsRe
 		return nil
 	}
 	out := new(PortTestGameplayReportsResult)
+	if st := p.reportRules; st != nil {
+		out.Rules = &PortTestGameplayReportRulesResult{Notified: *memmap.PtrUint32(0x5D4594, 3536), Countdown: append([]PortTestGameplayReportCountdown(nil), st.countdown...)}
+		for i := range out.Rules.PlayerStatus {
+			out.Rules.PlayerStatus[i] = *(*uint32)(unsafe.Add(unsafe.Pointer(p.proxy.life.players[i].UpdateDataPlayer().Player), 3680))
+		}
+	}
 	for i := range out.Caches {
 		out.Caches[i] = *memmap.PtrUint32(0x5D4594, 1556320+uintptr(4*i))
 	}

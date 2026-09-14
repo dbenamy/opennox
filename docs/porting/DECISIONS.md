@@ -301,3 +301,27 @@ reproducible audit script, comparing `journal-isolated-original.json` against
 record-list isolation fix and is not the comparison oracle. Reporting baseline
 qualification remains in progress. Physical production C is unchanged at101,128
 lines in148files, with zero reference C.
+
+## 2026-09-14 — gameplay-reporting baseline qualification
+
+Use a full accumulated default port run plus focused reporting/player-control
+server and highres runs before conversion, then full accumulated runs on allthree
+variants after conversion. All7,809 new C cases/28 captures repeat exactly before
+locking; the original73 routines remain the implementation during this baseline.
+The default accumulated run passes81,468 cases/1,010 groups and contracts. This
+keeps full variant validation of the final change while avoiding a second full
+variant matrix before the conversion. Revisit if a baseline result or variant
+difference identifies a broader dependency.
+
+The reporting fixture reuses real queues, guarded records, player iteration and
+team/member lists. Elimination countdown transitions are recorded at the existing
+service boundary; the two empty headless text slots are initialized/restored with
+Settings.c:SuddenDeathImminent from the existing Go handler. Network recipient
+masks are optional per-case inputs and restored afterward. Reporting actions
+check and preserve x87 precision/rounding on a locked OS thread. These fixture
+additions leave all prior capture hashes unchanged.
+
+Post-removal ABI audit:45 routines retain C callers;28 entry points can be retired.
+No production Go address references require retaining those28 symbols. Production
+reporting will use native helpers, with thin Go-backed C bridges for actual C
+callers and no retained C algorithms for testing.

@@ -96,6 +96,7 @@ type portTestShopOwned struct {
 	alive             bool
 }
 type portTestShopPools struct {
+	reportRules         *portTestGameplayReportRules
 	reportRecords       []unsafe.Pointer
 	reports             *PortTestGameplayReportsSpec
 	equipment           *portTestEquipment

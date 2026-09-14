@@ -11,17 +11,40 @@ import (
 	"os"
 	"testing"
 
+	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy"
 )
 
 // Populate only after auditing original C results. Every capture is mandatory.
 var gameplayReportHashes = map[string]string{
-	"player-fields": "cbc6f037e28e7028ca799b9cde1bbda942436391b7935842bf4fbd6ca056e2af",
-	"height-fields": "f4f047bca1fc0bbd5c12ec335be8aac84ce4d5881af49d0bb9f93d66d736d9b7",
-	"object-fields": "4eda9691ce8fbaac7d1a32dc18098c626061b5c292abea6ced08e8343b5db3eb",
-	"health-fields": "5e4468131bd9468f3fbb6e1a8cb83cc4240f8cbc24b3acb4c920c0e19e003892",
-	"scalar-fields": "1c1bd2819428de0849b808f19dbba0d23b55c3d85ef0521236bac101d9bdefb7",
-	"health-delta":  "e27f68756fb497f89266eb6c913a3ca3459af364eed62158def73e777ea39ef5",
+	"aggregate-coop":         "a7de634b90db6de3e830c0913adf5638520e32d997a23f7a3a99b22daabcbf52",
+	"aggregate-float-cache":  "30f56e5ac00f3c38cd9c77af8f00630ef63f68bc3019cdb13312092bb112506c",
+	"aggregate-local":        "d97bc87d062062d90bba3fd63f97db075eee8615916cd6c09c07196ec23f8ffa",
+	"creature-resources":     "4ef33964e3d4c7f3d23309c00e5dbb30314b8181e0c2ab17ff645a4253b3ca22",
+	"earthquake":             "b4f385d01286c9436d8058f8c7b5ecfbe78571ca6fefdf931ba8c1f2900f364e",
+	"elimination-frame-wrap": "71915d9a711f188119a48646cbcc7b1aeb0d8d6d54bb78d54e270560d16f2a51",
+	"elimination-rules":      "e094031e8ace9546c20ceec6f8693c0c1ad79b9e2037dc27fc5d859da750f64a",
+	"health-delta":           "e27f68756fb497f89266eb6c913a3ca3459af364eed62158def73e777ea39ef5",
+	"health-fields":          "5e4468131bd9468f3fbb6e1a8cb83cc4240f8cbc24b3acb4c920c0e19e003892",
+	"height-fields":          "f4f047bca1fc0bbd5c12ec335be8aac84ce4d5881af49d0bb9f93d66d736d9b7",
+	"hidden":                 "39677c28ac8d983bf33396eccf86b3dc457559f9c6a64879cb8808d682038baa",
+	"interesting-fanout":     "858fd4ed5f387b5a57eec8527cff997395c15f78b1e832a6eafd900a26a007c9",
+	"inventory-class-masks":  "7ff2e495ce78b03609d57ea6ea4b802dbff3a4b44395cefff5604b0a812332a3",
+	"inventory-fields":       "78becf60dd91e20a034f86f9e9904fa4d609ba6e07d59cbe8669fa03d2e66f4d",
+	"journal-boundaries":     "9260d04c61be33bb02c2bf5237bbaaf944cac05c9a3a4733696593ab5de4e33c",
+	"non-players":            "eb7549432165153c9e52350830250ea78edaa2a14014cf1642b2f1c577747047",
+	"notifications":          "de5ce71f6e6cb922edb30fd83e3f8ca1f4dfd718df5bc39a4ab47930019c8d81",
+	"npc":                    "45a71ea98f5f0de594c0de76828998094a09937d1566a65a289facb3f16da184",
+	"object-fields":          "4eda9691ce8fbaac7d1a32dc18098c626061b5c292abea6ced08e8343b5db3eb",
+	"player-fields":          "cbc6f037e28e7028ca799b9cde1bbda942436391b7935842bf4fbd6ca056e2af",
+	"rate":                   "6f58062569b6fb2645bf3c9c3f2e0c5231e5145e7762f3be2103fd4606d71eb2",
+	"scalar-fields":          "1c1bd2819428de0849b808f19dbba0d23b55c3d85ef0521236bac101d9bdefb7",
+	"score-changes":          "7af4d365abdb5adc14168f5544c2c3e31a5dbbfa6dfddb0ca78f8c64689d364b",
+	"stats-scavenger":        "fc9d6060ca436b8875c881bd0a53bab4540a72430a21b8b74c9bdc5af5815bb4",
+	"team-base-cache":        "9df4a41bcede82346e3b3e77a8f499dffbd0f5dc6c5baea2c94dc967eed0211f",
+	"team-health":            "69f6974ee51efec03b5df34d43c17dfccbdc606461101845ef75fa30a0744d4d",
+	"winners":                "6f76af90723b3a0744eeb04973106d7a021329a8b78cd0d3accce5b72bc5b3e6",
+	"zero-max-health":        "58847363506593d5ca775fd85f5d1c3307160a01bd65e235a07df19cb2aa044a",
 }
 
 func gameplayReportsCapture(t *testing.T, label string, out []legacy.PortTestRoamResult) {
@@ -51,6 +74,7 @@ func gameplayReportsCapture(t *testing.T, label string, out []legacy.PortTestRoa
 	}
 }
 func TestGameplayReportsScalarFields(t *testing.T) {
+	deadline := *memmap.PtrUint32(0x5D4594, 3468)
 	values := []uint32{0, 1, 127, 128, 255, 256, 32767, 32768, 65535, 65536, 0x7fffffff, 0x80000000, 0xffffffff}
 	var cases []legacy.PortTestRoamSpec
 	type expected struct {
@@ -77,6 +101,8 @@ func TestGameplayReportsScalarFields(t *testing.T) {
 					data = make([]byte, 13)
 					data[0] = 211
 					binary.LittleEndian.PutUint32(data[1:], v)
+					binary.LittleEndian.PutUint32(data[5:], deadline-10000)
+					binary.LittleEndian.PutUint32(data[9:], s.Owner.Frame)
 				case 44:
 					data = []byte{151, byte(v)}
 				case 56:
@@ -140,13 +166,6 @@ func TestGameplayReportsScalarFields(t *testing.T) {
 			t.Fatalf("scalar case%d route/metadata", i)
 		}
 		got, want := p.Data, c.data
-		if c.op == 40 {
-			if len(got) != 13 {
-				t.Fatalf("timer size case%d", i)
-			}
-			got = got[:5]
-			want = want[:5]
-		}
 		if !bytes.Equal(got, want) {
 			t.Fatalf("scalar case%d defined bytes", i)
 		}
