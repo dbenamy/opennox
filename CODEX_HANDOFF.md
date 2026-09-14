@@ -2,54 +2,49 @@
 
 <!-- current-focus -->
 
-### Current — drawable updates fully qualified; procedural drawing next
+### Current — procedural particle drawing C baseline qualified; native staged
 
-The 27-routine drawable-update conversion is complete. All 6,264 captured results
-/four groups match locked C baseline `bbac104c` exactly. Allocation retry and the
-exact squared-distance 200/205 boundary contracts pass. Twelve whole C files and
-connected GAME3_1/GAME3_2 sections are removed; four private C entry points retire,
-23 retained exports/callbacks are directly exercised. No C test algorithms remain.
+Drawable updates are fully qualified and pushed at `06133afd`. Production C:
+95,146 lines /130 files /zero reference C. See CLIENT_UPDATES.md for its completed
+27-routine conversion and qualification.
 
-Accumulated standard passes: 660 selected/completed, 659 pass and one optional
-prerequisite skip (448.814s). Affected server/highres suites each pass all
-27 tests (161.608s/25.727s). All three production builds and ELF32/SSE2/ABI
-checks pass. Fresh unchanged headless gameplay passes in 37.031s. Full asset-backed
-suite already matched known failures at the preceding effects milestone; this
-state-only update batch used the documented targeted variant plan.
+The next 19-routine /731-line batch has a qualified C baseline. Expanded c-d/c-e
+captures repeat byte-for-byte: 4,647 results /four groups, plus independent bubble
+and vortex lifecycle contracts. All 33 related effects/update/drawing standard
+tests passed in 22.350s. Six new root tests and all hashes are tracked; the
+accumulated pattern includes ^TestClientParticle. No production C changed.
+See docs/porting/CLIENT_PARTICLE_DRAWING.md and local baseline-hashes.json.
 
-Production C: **95,146 lines /130 files /zero reference C**, down **1,075** from
-the repaired C baseline (including one unused separator). Accumulated captures:
-115,750 results /1,061 groups plus contracts. See docs/porting/CLIENT_UPDATES.md
-and build/port-client-updates/qualification.json. This checkpoint accompanies the
-native conversion commit; confirm commit/push state with git log/status.
-No test/build process remains active after qualification.
+The initial fixture combined shrinking phase with zero size, an impossible normal
+bubble state. Correcting phase/size invariants resolved the renderer panic with
+no production fix. Zero-size growth and deletion remain tested. Raw diagnostic
+runs c-a/c-b are not baselines; c-d/c-e are the expanded locked references.
 
-Next: 18 routines /671 C lines covering procedural magic/bubble/rain/spider-spit/
-vortex drawing, shared light properties and palette initialization. Explicit
-ranges/signatures/original sections, a plan and five fixture stage files are in
-build/port-client-draw-particles. None is applied or compiled yet. Use explicit
-stage mappings: blob-* to common/memmap/nox/blobdata, legacy-* to legacy, root-*
-to the root package. Read PLAN.md and review stage files before applying. Reuse
-the real effects renderer; no image-loader fixture is needed. Drafts include
-actual stored draw callbacks, complete pixels/render/light/ownership state,
-independent emission/return checks, light layout and clamp contracts, palette
-samples and explicit bubble/vortex lifecycle contracts. Establish/repeat a C
-baseline before translation. Staging is untested and may need correction.
+Next: confirm this baseline checkpoint is committed/pushed, then apply
+build/port-client-draw-particles/integrate-native.py. It installs the three native
+Go stages, removes audited C sections/files and three private C entry points, and
+retargets maps.go plus private fixture calls. Initial fixture stage files are
+stale; do not copy them over actual src. Native stages are reviewed but uncompiled.
+Run gofmt/diff-check before the first native focus run to avoid another C rebuild
+for whitespace. Compare the unchanged references, then run qualify-native.py.
+That script joins independent production builds with accumulated standard,
+affected server/highres, then ABI/full asset-suite comparison and fresh gameplay.
+Never edit Go/C while either builds or tests are active. No process is active at
+this baseline checkpoint.
 
-Standing authorization: continue connected chunks autonomously, document confident
-reversible decisions, commit/push each qualified chunk, then continue onward.
-No new agents or user question pending. Preserve the asset archive/originals.
-Use build/baseline/env.sh (386/SSE2/CGO), GOMAXPROCS=2 and -p 2. Selected suites
-use tools/porting/run_tests.py with the tracked accumulated pattern. Never edit
-Go/C source during builds/tests. Keep full-suite/crash logs local.
+Scope: six procedural particle draw files; five light-property setters; both
+palette and color initialization callers in GAME3. Retire falling-spark helper
+and the two initializers; 16 actual callbacks/exports remain. Named globals and
+mapped aliases stay distinct. Preserve the signed-byte first palette; changing
+its intended gradient needs separate visual/reference evidence.
 
-Completed effects gameplay assets were deduplicated against originals, reclaiming
-556,358,986 bytes with a verified restoration manifest. Current updates gameplay
-assets are still separate copies; preserve unique outputs if deduplicating later.
-Four older completed AI gameplay runs (combat, lifecycle, monster-state, movement)
-were also deduplicated with restoration manifests, reclaiming 2,225,435,944 bytes.
-Three completed effects binaries were gzip-verified and archived, reclaiming
-75,625,294 bytes; restoration commands are in completed-artifact-archives.json.
+Standing authorization: continue connected chunks, make/document confident
+reversible choices, commit/push completed chunks, then continue onward. No new
+agents or user question pending. Preserve original assets and the 7z. Use
+build/baseline/env.sh (386/SSE2/CGO), GOMAXPROCS=2 and -p2; selected tests use the
+guarded run_tests.py. Keep raw failure logs local. Completed duplicate assets and
+old binaries have verified restoration manifests; current updates gameplay is
+still a separate copy.
 
 <!-- /current-focus -->
 

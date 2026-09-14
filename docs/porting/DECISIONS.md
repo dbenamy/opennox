@@ -471,3 +471,18 @@ accumulated standard suite and affected effects/update server/highres tests, all
 production builds and unchanged headless gameplay. The full asset suite was
 just qualified at the effects subsystem milestone; repeat it on evidence of
 shared regression rather than automatically for every callback batch.
+
+
+### Particle drawing and color startup boundary — 2026-09-14
+
+Include the color initializer with the palette helper it calls. Its only remaining
+caller is Go, so both C entry points can retire and maps.go can call Go directly.
+Together with the falling-spark helper, three private boundaries retire in the
+19-routine /731-line batch. Preserve signed-byte palette behavior; review an
+intended gradient separately rather than changing the captured visual baseline.
+
+New fixtures reuse the existing owner without modifying its API or production
+code. Repeated C capture plus the related effects/update/drawing standard suite
+qualify the baseline. Native qualification broadens to accumulated standard,
+affected variants, all builds, full asset-suite comparison and fresh gameplay.
+The full suite is warranted here by shared lighting/color startup changes.
