@@ -1339,14 +1339,14 @@ int sub_54B810(int a1, int a2, int* a3, int2* a4, int a5) {
 			a2a.field_4 = v16;
 			*getMemU32Ptr(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)) = v17;
 			a2a.field_0 = (double)v6->field_0 * 32.526913;
-			sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *(int*)&dword_5d4594_2491616, 3);
+			sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *getMemIntPtr(0x5D4594, 2491616), 3);
 		} else {
 			*getMemU32Ptr(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)) =
 				sub_523E30(4, a5, v6->field_0 - *v5);
 			v22 = (int2*)(a5 + *v5);
 			a2a.field_4 = v16;
 			a2a.field_0 = (double)(int)v22 * 32.526913;
-			sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *(int*)&dword_5d4594_2491616, 2);
+			sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *getMemIntPtr(0x5D4594, 2491616), 2);
 		}
 		nox_xxx_mapGenSetRoomPos_521880(*(uint32_t**)getMemAt(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)),
 										&a2a);
@@ -1357,7 +1357,7 @@ int sub_54B810(int a1, int a2, int* a3, int2* a4, int a5) {
 		a2a.field_0 = (double)v6->field_0 * 32.526913;
 		a2a.field_4 = (double)v24 * 32.526913;
 		nox_xxx_mapGenSetRoomPos_521880(v18, &a2a);
-		sub_521A70(*(int*)&dword_5d4594_2491616, *getMemIntPtr(0x5D4594, 2491620), 0);
+		sub_521A70(*getMemIntPtr(0x5D4594, 2491616), *getMemIntPtr(0x5D4594, 2491620), 0);
 	} else {
 		v8 = sub_523E30(2, a5, v5[1] - a4->field_4 - 1);
 		*getMemU32Ptr(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)) = v8;
@@ -1460,13 +1460,13 @@ int sub_54BB20(int a1, int a2, int* a3, uint32_t* a4, int a5) {
 			*getMemU32Ptr(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)) = sub_523E30(2, a5, a3[1] - v5[1]);
 			a2a.field_0 = (double)v11 * 32.526913;
 			a2a.field_4 = (double)(int)v5[1] * 32.526913;
-			sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *(int*)&dword_5d4594_2491616, 0);
+			sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *getMemIntPtr(0x5D4594, 2491616), 0);
 		} else {
 			*getMemU32Ptr(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)) = sub_523E30(3, a5, v5[1] - a3[1]);
 			v17 = a3[1] + a5;
 			a2a.field_0 = (double)v11 * 32.526913;
 			a2a.field_4 = (double)v17 * 32.526913;
-			sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *(int*)&dword_5d4594_2491616, 1);
+			sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *getMemIntPtr(0x5D4594, 2491616), 1);
 		}
 		nox_xxx_mapGenSetRoomPos_521880(*(uint32_t**)getMemAt(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)),
 										&a2a);
@@ -1476,7 +1476,7 @@ int sub_54BB20(int a1, int a2, int* a3, uint32_t* a4, int a5) {
 		a2a.field_0 = (double)(v12 + v11) * 32.526913;
 		a2a.field_4 = (double)(int)v5[1] * 32.526913;
 		nox_xxx_mapGenSetRoomPos_521880(v14, &a2a);
-		sub_521A70(*(int*)&dword_5d4594_2491616, *getMemIntPtr(0x5D4594, 2491620), 2);
+		sub_521A70(*getMemIntPtr(0x5D4594, 2491616), *getMemIntPtr(0x5D4594, 2491620), 2);
 	} else {
 		v7 = sub_523E30(4, a5, *v5 - *a3 - 1);
 		*getMemU32Ptr(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)) = v7;
@@ -1514,13 +1514,13 @@ int sub_54BD90(int a1, int a2, int* a3, int* a4, int a5) {
 		*getMemU32Ptr(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)) = sub_523E30(5, a5, *a3 - *a4 - 1);
 		a2a.field_0 = (double)(*a4 + 1) * 32.526913;
 		a2a.field_4 = (double)a4[1] * 32.526913;
-		sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *(int*)&dword_5d4594_2491616, 3);
+		sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *getMemIntPtr(0x5D4594, 2491616), 3);
 		v10 = 2;
 	} else {
 		*getMemU32Ptr(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)) = sub_523E30(4, a5, *a4 - *a3 - a5);
 		a2a.field_0 = (double)(a5 + *a3) * 32.526913;
 		a2a.field_4 = (double)a4[1] * 32.526913;
-		sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *(int*)&dword_5d4594_2491616, 2);
+		sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *getMemIntPtr(0x5D4594, 2491616), 2);
 		v10 = 3;
 	}
 	nox_xxx_mapGenSetRoomPos_521880(*(uint32_t**)getMemAt(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)),
@@ -1557,13 +1557,13 @@ int sub_54BF20(int a1, int a2, int* a3, int* a4, int a5) {
 		*getMemU32Ptr(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)) = sub_523E30(5, a5, *v5 - *a4 - 1);
 		a2a.field_0 = (double)(*a4 + 1) * 32.526913;
 		a2a.field_4 = (double)a4[1] * 32.526913;
-		sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *(int*)&dword_5d4594_2491616, 3);
+		sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *getMemIntPtr(0x5D4594, 2491616), 3);
 		v10 = 2;
 	} else {
 		*getMemU32Ptr(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)) = sub_523E30(4, a5, *a4 - *v5 - a5);
 		a2a.field_0 = (double)(a5 + *v5) * 32.526913;
 		a2a.field_4 = (double)a4[1] * 32.526913;
-		sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *(int*)&dword_5d4594_2491616, 2);
+		sub_521A70(*getMemIntPtr(0x5D4594, 2491612), *getMemIntPtr(0x5D4594, 2491616), 2);
 		v10 = 3;
 	}
 	nox_xxx_mapGenSetRoomPos_521880(*(uint32_t**)getMemAt(0x5D4594, 2491612 + 4 * *getMemU32Ptr(0x5D4594, 2491608)),

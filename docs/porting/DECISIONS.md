@@ -160,3 +160,13 @@ that fifth field should acquire an explicit nonzero gameplay meaning; arbitrary
 stack contents are not a defined value. Evidence: modifier-repeat-diagnosis.json,
 modifier-initialization-original.log and modifier-fixed.log under
 build/port-map-population. No physical C line-count change from this initializer.
+
+## Hallway second-corridor storage — 2026-09-14, review later
+
+Use the blob corridor array consistently in the ten second-corridor connection
+reads across 54B810/54BB20/54BD90/54BF20. Original bent-route regression passes a
+null room because the separate named global is never assigned by construction.
+This cheap reversible correction follows the standing policy; retaining that
+failure would prevent ordinary multi-segment routes. See [MAP_HALLWAYS.md](MAP_HALLWAYS.md)
+for original evidence, regression and validation status. No unrelated named/blob
+globals are merged or treated as aliases.

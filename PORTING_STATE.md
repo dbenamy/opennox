@@ -6,7 +6,7 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 ### Active — hallway routing; population/prefab conversion qualified
 
-Population/prefab conversion is complete: **38 routines**, **1,770 physical C
+Population/prefab conversion **07229da1** is committed/pushed: **38 routines**, **1,770 physical C
 lines removed**, **104,839 production C lines / 148 files / zero reference C**.
 All **4,221 cases / 36 complete captures** match committed C baseline
 **38c905a9** byte-for-byte with unchanged mandatory hashes. Native focused
@@ -34,8 +34,15 @@ Next connected batch: six hallway-routing routines **54B2D0..54BF20**, **531 C
 section lines** in GAME5.c. The only external caller is native population, so
 all six C entry points can retire. Scope, caller audit and plan are under
 build/port-map-hallways. Reuse population fixtures and preserve all existing
-hashes. First probe positive bent/three-segment routes: a suspected separate
-named/blob second-corridor pointer mismatch needs evidence before any repair.
+hashes. The original positive bent-route probe confirmed a null second-corridor
+pointer from inconsistent named/blob storage. Ten C reads are corrected; all
+16 directions/orientations/width regressions and existing population/painting/room
+checks pass in all three variants: default 23.869s test time, server 102.602s
+and highres 34.029s wall time including builds. Evidence is under
+build/port-map-hallways/prerequisite-*.log and prerequisite-variants.json.
+The prerequisite is ready to commit/push before extending the baseline.
+See docs/porting/MAP_HALLWAYS.md. Broader root corpus is staged, not applied, at
+build/port-map-hallways/corpus.go.stage; copy once and add required imports.
 Then lock repeated C captures and commit/push before conversion. Thoroughly
 qualify, count/document/commit/push and continue without a new permission pause.
 No pending question or new agents; preserve the supplied asset archive.
