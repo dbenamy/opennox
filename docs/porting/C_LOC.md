@@ -101,6 +101,8 @@ target build selection and linker evidence.
 
 | Hallway second-corridor storage prerequisite (2026-09-14; no conversion) | 148 | 104,839 | 0 | 0 |
 
+| Hallway routing, bends, obstruction admission and candidate connections (2026-09-14) | 148 | 104,307 | −532 | 0 |
+
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
 because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful

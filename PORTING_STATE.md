@@ -4,74 +4,55 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Active — hallway routing; population/prefab conversion qualified
+### Active — theme parser; hallway conversion qualified
 
-Population/prefab conversion **07229da1** is committed/pushed: **38 routines**, **1,770 physical C
-lines removed**, **104,839 production C lines / 148 files / zero reference C**.
-All **4,221 cases / 36 complete captures** match committed C baseline
-**38c905a9** byte-for-byte with unchanged mandatory hashes. Native focused
-population/painting/room checks pass in **23.322s**. The initial progress mismatch
-was corrected by preserving C's unsigned timestamp comparison.
+The six hallway routines are native Go, with all six C entry points retired.
+Corrected-C baseline **45961868** was committed/pushed first. All **2,512 cases /
+three complete captures** match on the first native run, with unchanged hashes;
+16 bent-route contracts and existing population/painting/room checks pass in
+**41.914s**. Physical C: **104,307 lines / 148 files / zero reference**, **−532**.
 
-Accumulated **61,799 cases / 947 capture groups**, plus four room precision
-contracts and existing painting admission checks, pass in default/server/highres
-(**250.004s / 325.610s / 261.790s**). All three production binaries build and
-verify as ELF32/i386/SSE2/CGO. All 25 retired symbols are absent; all 13 required
-entry points remain. The test-only loader adapter is absent from production.
-The asset-backed full-suite failure multiset is unchanged: **1,553 entries;
-15 pass / 3 fail / 32 skip packages**, no added or removed failures. Fresh,
-unchanged repeat-a gameplay passes under Xvfb/null audio in **36.118s**.
-Evidence: build/port-map-population/qualification.json and its referenced logs.
+Accumulated **64,311 cases / 950 groups**, plus room/painting/hallway contracts,
+pass in default/server/highres: **266.526s / 342.367s / 281.183s**. All three
+production binaries build and verify ELF32/i386/SSE2/CGO; six retired symbols
+and the test loader adapter are absent. Asset-backed full-suite failures match
+exactly: **1,553 entries; 15 pass / 3 fail / 32 skip packages**, no changes.
+Fresh unchanged repeat-a gameplay passes in **36.527s** under Xvfb/null audio.
+Evidence: build/port-map-hallways/qualification.json and referenced logs.
 
-Coverage includes inventories, modifier boundaries, room population/density,
-distance sorting/themes, prefab metadata/selection/placement/retries, candidate
-connections, exits, waypoints, marker disposal and decoded-cache application.
-A synthetic file exercises the actual prefab loader. The supplied image lacks
-**AreaMap.lib**, so real game prefab decoding remains an explicit limitation;
-ordinary asset-backed gameplay passed. No C algorithms remain solely for tests.
+Prerequisite **9ec45f48** fixed ten second-corridor reads to use the same blob
+array as construction; an original positive bent-route failure established the
+need. The conversion preserves close-gap zero/negative-length records and the
+horizontal search's width-based vertical retry limit; see MAP_HALLWAYS.md and
+DECISIONS.md for behavior to review. No C algorithms remain solely for testing.
 
-Next connected batch: six hallway-routing routines **54B2D0..54BF20**, **531 C
-section lines** in GAME5.c. The only external caller is native population, so
-all six C entry points can retire. Scope, caller audit and plan are under
-build/port-map-hallways. Reuse population fixtures and preserve all existing
-hashes. The original positive bent-route probe confirmed a null second-corridor
-pointer from inconsistent named/blob storage. Ten C reads are corrected; all
-16 directions/orientations/width regressions and existing population/painting/room
-checks pass in all three variants: default 23.869s test time, server 102.602s
-and highres 34.029s wall time including builds. Evidence is under
-build/port-map-hallways/prerequisite-*.log and prerequisite-variants.json.
-Prerequisite **9ec45f48** is committed/pushed. The root hallway corpus now has
-**2,512 cases / three complete captures**, plus 16 bent-route contracts. All route
-and obstruction checks pass; the corrected 64-case fallback check passes too.
-Independent default repeat and server/highres checks all pass and match
-byte-for-byte: **42.316s / 119.848s / 52.549s** wall time including builds.
-Existing population/painting/room checks pass in each run. Three hashes are now
-mandatory in src/map_hallways_baseline_porttest_test.go; locked-baseline.log passes the mandatory-hash smoke in **19.890s**. Commit/push
-the C baseline before applying native.go.stage. Do not rerun lock-baseline.py.
-Expected captures are c-boundaries-{routes,obstructions,fallback}.json; the first
-full run's fallback setup was corrected in fallback-corrected.log. All older
-population hashes remain mandatory and unchanged.
+Next: **33 theme-parser routines / 1,888 C section lines** in GAME4_2.c,
+51E260..520D50. Only external entry points are mapGenReadTheme and sub_520D50;
+31 helpers can retire. Read-only inventory, caller audit, PLAN.md and drafts are
+in build/port-map-theme. No theme source/test edits yet. Probe the algorithm
+value's scalar token buffer and equipment's four scalar counters before any
+prerequisite repair. Initialize actual startup string tables. Exercise real Go
+file-layer handles, synthetic full theme files, nested conditions, equipment,
+decoration/copy/settings/prefabs and cleanup. The supplied assets have no .thm
+files or AreaMap.lib; ordinary asset-backed gameplay is available.
 
-Hallway tests initialize/restore the real opposite-direction table; older
-population captures intentionally retain their original fixture inputs. The
-release observer records unknown discarded corridor identities before free,
-without reading freed storage. The close-gap corpus exposes 491 accepted
-zero/negative-length corridors: preserve this defined existing behavior for the
-conversion and review separately, rather than silently change route selection.
-See docs/porting/MAP_HALLWAYS.md. The three *.go.stage corpus/topology/fallback
-files were copied and corrected; DO NOT reapply them. Early exploratory captures
-are gzipped with manifest early-capture-archive.json (includes population's old
-native-first copies). Repeat captures are compressed after exact comparison.
-Then lock repeated C captures and commit/push before conversion. Thoroughly
-qualify, count/document/commit/push and continue without a new permission pause.
-No pending question or new agents; preserve the supplied asset archive.
+Staged dispatcher, allocation/clock observer, callback file, blob table getter
+and table-relocations.json are drafts, not applied or compiled. Use the observer
+only during theme invocations and verify it is absent in production. Capture
+complete records/disposal and file state; repeat/lock C captures in all three
+variants and commit/push before conversion. Follow the usual broad qualification,
+C count/docs/commit/push, summarize and continue. No question or new agents.
 
-Do not rerun population apply-native.py, scope.py, lock-baseline.py or already
-applied fixture/repair scripts. Recover original C inventories from baseline
-38c905a9 when needed. Baseline duplicate captures and exploratory captures were
-losslessly compressed with checksum manifests under build/port-map-population;
-main c-final and native comparison captures remain available in gzip form. Mandatory baseline
-hashes, fixtures and porting documentation are in Git for recovery without build/.
+Population conversion **07229da1** is committed/pushed: 38 routines, 1,770 C
+lines removed, 4,221 cases / 36 unchanged captures. Its full qualification is
+build/port-map-population/qualification.json. Do not rerun population or hallway
+one-time conversion/locking scripts or reapply old staged corpora. Working
+source and committed hashes are authoritative. Complete captures are losslessly
+gzipped with checksum manifests; hallway has early-capture-archive.json,
+completed-capture-archive.json, baseline-capture-archive.json and
+qualified-capture-archive.json. Some include completed population snapshots.
+Decompress before using older scripts that require raw JSON. Preserve the
+supplied nox-iso-from-archive-org.7z asset archive.
 
 ### Completed — map painting, borders, walls and door placement
 

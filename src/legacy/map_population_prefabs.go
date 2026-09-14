@@ -310,7 +310,7 @@ func mapPopulationConnectPrefabs(cfg uint32) uint32 {
 				continue
 			}
 			candidate := mapPopulationCandidates(p, dir)
-			for candidate != 0 && C.sub_54B2D0((*C.int)(mapRoomPointer(p)), C.int(dir), (*C.uint32_t)(mapRoomPointer(candidate))) == 0 {
+			for candidate != 0 && mapHallConnect(p, int32(dir), populationRoom(candidate)) == 0 {
 				candidate = *populationWord(candidate, 72)
 			}
 			if candidate == 0 {

@@ -96,3 +96,41 @@ with checksums in baseline-capture-archive.json. Older population completed
 captures and the early hallway topology run were also losslessly compressed to
 manage disk use; see completed-capture-archive.json under build/port-map-hallways.
 Decompress named evidence before rerunning an older script requiring raw JSON.
+
+## Native implementation — qualification pending
+
+Corrected-C baseline **45961868** is committed/pushed; mandatory hashes pass in
+19.890s. All six algorithms are now native in map_hallways.go. Their C entry
+points retire completely; native population calls directly into Go. The C bodies,
+six prototypes and one unused extern are removed. Current count: **104,307 lines /
+148 files / zero reference C**, −532 physical lines. Zero retired-name references
+remain in source. Native-first.log is the focused comparison; qualify-all.py
+then runs broad validation. Do not reapply the staged native draft.
+
+All **2,512 cases / three captures** match on the first native run, with unchanged
+mandatory hashes. The 16 bent contracts plus existing population/painting/room
+checks pass in **41.914s**. Complete snapshots were losslessly archived after
+comparison; see native-comparison.json and qualified-capture-archive.json.
+Broad qualification is running under qualify-all.py. Next scope is the 33-routine
+theme parser, documented locally under build/port-map-theme; no theme source
+changes are included in the hallway batch.
+
+Accumulated **64,311 cases / 950 capture groups**, plus the room, painting and
+16 bent-hallway contracts, pass in default/server/highres: **266.526s / 342.367s /
+281.183s** wall time. Production builds and final full-suite/gameplay checks
+remain in progress; see variants.json and qualify-all.log.
+
+## Completed native qualification — 2026-09-14
+
+All six routines are native and all six old entry points retire. **104,307 physical
+production C lines / 148 files / zero reference C**, a reduction of **532 lines**.
+All 2,512 cases / three complete captures match baseline **45961868** unchanged
+on the first native run. Accumulated 64,311 cases / 950 groups and the additional
+contracts pass in all three variants (266.526s / 342.367s / 281.183s). All three
+production binaries pass architecture and retired-symbol verification.
+The asset-backed full suite matches the known failure multiset exactly: 1,553
+entries, 15 pass / 3 fail / 32 skip packages. Fresh unchanged repeat-a gameplay
+passes in **36.527s** with Xvfb/null audio. See qualification.json and the
+map-hallways-port run artifacts. This supersedes intermediate pending status.
+Next connected batch: 33 theme-parser routines, with source and plan under
+build/port-map-theme. No theme source changes are part of this conversion.
