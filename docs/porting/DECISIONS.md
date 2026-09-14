@@ -247,3 +247,22 @@ wall). Matching growth test durations sum to 24.96s before and 17.47s after in
 observed runs, not a dedicated benchmark.
 Evidence: build/port-map-orchestration/cache-{variants,growth-timing}.json and
 cache-*.log. Commit separately from the subsequently exposed wall-list defect.
+
+
+## 2026-09-14 — correct wall-list traversal before generator orchestration
+
+Decision for later review: `serverWalls.find` must traverse the global `Next20`
+link from the global head. Its prior use of the row link dropped live walls on
+ordinary deletion and caused a ring-generator integration to hang. This is a
+one-line reversible correctness fix, established by a failing direct regression.
+Twelve deletion/reuse contracts cover different rows, one row and bucket collisions.
+The intentional update to 11 historical painting hashes is field-audited: only
+520 global-list links and 31 heads change; every other field remains identical.
+See [WALL_LIST.md](WALL_LIST.md) for qualification and evidence.
+
+Keep diagnostic release storage outside the engine's allocator. C-allocated trace
+buffers reused disposed engine records and made canonical pointer captures depend
+on allocator layout. Go-owned retained buffers plus saved grid-row identities
+remove that observer effect. This is test-only; no engine allocation ownership
+changes. Repeated complete captures and eight allocation layouts check stability.
+The separate shallow theme-cleanup ownership issue remains deferred for review.

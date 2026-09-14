@@ -181,3 +181,11 @@ and continue. No new agents or outstanding user question.
 | `sub_543BC0` | 25 | Retire |
 | `nox_xxx_tile_543C50` | 108 | Retire |
 | `nox_xxx_tileSubtile_544310` | 36 | Retain |
+
+## Later wall-service correction
+
+The painting translation matched all 88 corrected-C groups at conversion time.
+Subsequent generator integration exposed an older bug in the Go wall manager's
+global-list traversal. Its independent correction updates 11 painting snapshots:
+only global wall-list heads and Next20 links differ. See [WALL_LIST.md](WALL_LIST.md)
+for the direct regression, full field-difference audit and qualification status.

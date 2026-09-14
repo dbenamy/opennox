@@ -4,267 +4,46 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Active — fixture speedup, then confirmed wall-list prerequisite
+### Current — wall-list prerequisite, then generator orchestration
 
-Native growth **bd256d10** is committed/pushed and fully qualified: seven routines,
-−1,081 C lines, **101,335 / 148 files / zero reference**. Its 5,781 cases / nine captures
-plus 335 contracts match C; accumulated 73,484 cases / 978 groups pass all variants,
-three binaries qualify, full-suite failures unchanged, gameplay 37.042s.
+HEAD **55a4b2ef** is pushed. Recent completed work:
+- `bd256d10`: native growth, seven routines, −1,081 C lines; 5,781 cases / nine
+  captures plus contracts match C; accumulated variants/builds/gameplay qualify.
+- `55a4b2ef`: fixture lookup caching; prior map hashes match all variants.
 
-Five remaining orchestration routines are still C (207 section lines). New fixtures
-and corpus are APPLIED but uncommitted: src/legacy/map_orchestration_porttest.go,
-src/server/map_orchestration_porttest.go, src/map_orchestration*_porttest_test.go.
-Original step probe passes: PlayerStart1, nine released rooms,68 records,0.075s.
-Expanded128 normal maps pass with hash55a6dd794e5f89b97cc572b2d62b74b53ab5cf75895695c39a311b90e0af2bd7;
-full capture is c-cached-normal-maps.json. Two128-byte layout records remain alive
-per successful map because existing theme cleanup is shallow; document/review that
-ownership issue separately rather than claiming complete generator cleanup.
+Remaining C: **101,335 lines / 148 files / zero reference C**.
 
-First expanded run was slow in fixture normalization and interrupted after101.244s.
-Two uncommitted porttest-only caches fetch fixed paintXfer addresses once per case
-and index stable wall ranges by page (same offsets/order/canonical IDs). Cached run
-passes all growth/hallway hashes and128 normal integrations, then TIMES OUT at180s
-in ring wall lookup. Trace and source reveal existing serverWalls.find traverses
-NextByY24 from s.head instead of Next20, corrupting the live/free lists on deletion.
-New UNCOMMITTED src/server/wall_list_test.go confirms original failures: deleting
-oldest/second wall leaves1/2 global walls instead of3. Evidence: wall-list-original.log.
-The one-line production fix is NOT applied yet.
+The one-line `serverWalls.find` correction is fully qualified and ready to commit. It follows
+`Next20` from the global head; the previous row-link traversal lost live walls and
+hung ring generation. Twelve deletion/reuse contracts pass. Eleven historical
+painting hashes intentionally change: only520 global links and31 heads across350
+cases; all other fields are identical, with673 structurally checked steps.
+See [WALL_LIST.md](docs/porting/WALL_LIST.md).
 
-Cache qualification passes every prior map hash in default/server/highres:
-66.162 /144.538 /74.101s wall (cache-variants.json). No process is active.
-The TWO shared fixture cache files plus decision/log entry are ready to commit/push,
-BEFORE fixing wall.go. Then apply Next20 traversal, run wall regression and ring
-integration, audit any historical capture differences caused by the independent
-wall fix, qualify and commit/push that prerequisite before continuing the C baseline.
-New orchestration files and wall_list_test.go are still untracked and must not be
-included in the cache-only commit. Production remains unchanged in that commit.
+All five orchestration routines remain C (207 section lines). New integration
+fixtures capture151 cases in three mandatory groups. Release snapshots use retained
+Go buffers marked captureOnly, with saved grid-row IDs. Direct identity checks and
+eight varied allocator layouts prevent diagnostic storage from corrupting pointer
+normalization. Three focused repetitions pass (root11.658s,legacy0.015s).
+Accumulated default/server/highres variants PASS in299.109s/367.549s/307.546s,
+all hashes exact. All three production builds and binary audits pass. The full suite
+matches all1,553 known failure entries (15pass/3fail/32skip packages), with no new
+failures. Fresh unchanged gameplay passes in37.170s. Qualification evidence is
+build/fix-wall-list/qualification.json. Commit/push, then expand the C baseline.
 
-Remaining orchestration coverage: ring16 cases, invalid themes7 cases, retries and
-file/owner behavior. No orchestration hashes locked and no native orchestration
-applied. Original fixtures/drafts under build/port-map-orchestration now have stale
-parts: do not reapply over source. native-step.go.stage remains future-only.
-Completed map-growth-port assets are hash-deduplicated (556MB reclaimed), with
-restore manifest. No user question or agents. Continue batches; preserve asset archive.
+Next: follow [MAP_ORCHESTRATION.md](docs/porting/MAP_ORCHESTRATION.md) to expand
+and lock original-C backdrop/name/start/retry/save coverage, commit/push baseline,
+then convert all five and retire their unused C bridges. Local unapplied drafts
+and preparation scripts are under build/port-map-orchestration; see PLAN.md there.
+Do not apply native drafts before the expanded C baseline. Existing failure cleanup
+and shallow theme ownership remain separate documented review items.
 
-### Completed — map painting, borders, walls and door placement
-
-Corrected-C baseline **08dc0ac5** preceded conversion. All **48 routines** are
-native Go; **15 C ABIs remain and 33 helpers/bridges are retired**. All **3,580
-cases / 88 complete captures** match the locked C baseline byte-for-byte on the
-first complete native run (31.495s). No hashes changed and no C algorithms remain
-solely for testing. Two additional native object-admission contracts pass in all
-three variants; see DECISIONS.md for their intentionally defined failure paths.
-
-Production C: **106,609 lines / 149 files / zero reference**,
-−2,249 conversion lines, after the separate −19-line stack-record prerequisite.
-Accumulated **57,578 captured cases / 911 groups**, plus four room contracts,
-pass in default / server / highres: **256.828s / 332.775s / 264.573s** wall time.
-All production binaries are ELF32/i386/SSE2/CGO; 33 retired symbols are absent.
-Asset-backed full-suite failure multiset is unchanged: 1,553 entries, 15 pass,
-3 fail, 32 skip. Fresh unchanged repeat-a headless gameplay passes in
-**35.310s**. Evidence: build/port-map-painting/qualification.json,
-native-first-comparison.json, native-guards.json and baseline/runs/map-painting-port.
-
-The prerequisite fixes contiguous stack records in ten decompiled functions and
-initializes the border pattern; old process-dependent painting is deliberately
-not preserved. Shared C allocation ownership and coordinate alias semantics are
-preserved. See docs/porting/MAP_PAINTING.md and DECISIONS.md. Completed/pushed as **56ae5728**; summary delivered. Continue autonomously.
-
-### Completed prerequisite — faster complete fixture snapshots
-
-Wall-definition snapshots now compare every byte and reuse SHA-256 only for
-byte-identical state. Inactive-row mutations, restoration and reset limits are
-covered. All 88 complete C captures remain unchanged. Painting and admission
-checks pass in all variants: 8.769s default / 8.551s server / 9.079s highres root
-package time, down from 31.495s. Production C is unchanged at 106,609.
-See MAP_PAINTING.md and cached-snapshot-{comparison,variants}.json. Completed
-and pushed as **eea297fd**. Population/prefab baseline is now active.
-
-
-### Completed — sustained spells and teleport callbacks
-
-C baselines 4fad7f26 and expanded 59ef3bc5 were pushed before conversion.
-All 53 routines / 2,635 C algorithm-section lines are native Go; 11 obsolete
-exports are retired and 42 duration ABIs remain. All **2,393 cases / 129 complete
-captures** match C byte-for-byte. New plus 1,803 instant and 2,246 lifecycle
-cases pass together in 29.641s. No baseline hashes changed.
-
-Production C: **110,283 lines / 149 files / zero reference C** (−2,636 physical
-lines, including one trailing blank line). Accumulated **51,001 focused cases /
-701 capture groups** pass in default / server / highres:
-221.927s / 297.531s / 232.991s.
-Three production binaries verified ELF32/i386/SSE2/CGO; 11 retired symbols absent.
-Asset-backed full-suite failure multiset unchanged: 1,553 entries, 15 pass,
-3 fail, 32 skip. Fresh unchanged repeat-a gameplay passes in 46.968s.
-
-See [SUSTAINED_SPELLS.md](docs/porting/SUSTAINED_SPELLS.md) and
-build/port-sustained-spells/qualification.json; gameplay evidence is in
-build/baseline/runs/sustained-spells-port. Native implementations preserve the
-plasma direction-expression quirk, complete lightning topology and allocation
-links, float store boundaries and grouped type-cache initialization. Any gameplay
-cleanup is separate from this conversion and noted for later review.
-
-Completed and pushed as **efe8316c**. Summary delivered; continue autonomously.
-
-### Completed — temporary objects and projectile updates
-
-Original-C baseline `14eb6ed2` preceded conversion. All 31 functions / 980 C lines
-are now native; production C is **126,124 lines / 149 files / zero reference C**.
-All 2,571 cases / 16 full captures match original C byte-for-byte. The fixture
-collision-list cleanup also reproduces every original hash unchanged in C.
-See [TEMPORARY_UPDATES.md](docs/porting/TEMPORARY_UPDATES.md) for findings/evidence.
-
-Accumulated tests (including all 20,314 focused cases) pass in default/server/
-highres: 153.927s / 112.748s / 112.020s. All three production builds are ELF32/i386,
-SSE2, CGO enabled. Full-suite failure multiset unchanged (1,553 entries; 15 pass,
-3 fail, 32 skip). Fresh unchanged repeat-a gameplay passed in 52.442s. Local
-captures/logs/builds: build/port-temporary-updates; gameplay run: temporary-updates-port.
-Completed and pushed as `8f96bbc6`; summary delivered. Continue the next batch.
-
-### Completed — world mechanisms
-
-Original-C baselines `55524613` and `3b82ae2f` preceded conversion. 21 functions /
-821 C lines now live in legacy/world_states.go, world_movement.go and
-world_exports.go. Production C: **125,303 lines / 149 files / zero reference C**.
-All **2,003 cases / 15 full capture groups** match original C (6.774s final).
-See [WORLD_MECHANISMS.md](docs/porting/WORLD_MECHANISMS.md) for scope and findings.
-
-Accumulated default/server/highres tests, including all 22,317 focused cases,
-pass (139.079s / 119.557s / 119.801s). Three production builds verified ELF32/i386,
-SSE2, CGO enabled. Full-suite failures unchanged (1,553 entries; 15 packages pass,
-3 fail, 32 skip). Fresh unchanged repeat-a gameplay passes in 56.701s. Evidence:
-build/port-world-mechanisms and baseline/runs/world-mechanisms-port.
-Completed and pushed as `5d25bd84`; summary delivered. Continue the next batch.
-
-### Completed — objective objects and obelisk recharge
-
-Baseline `d0094d3a` was pushed before conversion. All 15 functions / 908 C lines
-are now native; all 1,920 cases / 19 complete captures match original C exactly
-(6.585s). Production C: **124,395 lines / 149 files / zero reference C**. See
-[OBJECTIVES.md](docs/porting/OBJECTIVES.md). Retained team-score notification
-uses its original transport path; native objective helpers call one another
-and the converted inventory/effects owners directly.
-
-Accumulated default/server/highres tests, including all 24,237 focused cases,
-pass in 145.833s / 122.632s / 124.291s. Three production binaries verified
-ELF32/i386/SSE2/CGO. Full-suite failure multiset unchanged (1,553 entries; 15
-packages pass, 3 fail, 32 skip). Fresh unchanged repeat-a headless gameplay
-passes in 57.464s. Evidence: build/port-objectives and baseline/runs/objectives-port.
-Completed and pushed as `ca0f193c`; summary delivered. Continue; no pending question.
-
-### Completed — player attack, melee/ranged helpers and reload
-
-Baseline `b94b52c8` was pushed before conversion. All 12 functions / 1,105 C
-lines are native; all 2,100 cases / 16 complete captures match original C exactly
-(6.631s). Production C: **123,290 lines / 149 files / zero reference C**. See
-[PLAYER_ATTACK.md](docs/porting/PLAYER_ATTACK.md). The shape-aware C spatial query
-remains a dependency; replacing it with a center-distance query changed reach
-and was caught by the baseline. Native attack/equipment/inventory helpers call
-one another directly except callbacks owned by that remaining C query.
-
-Accumulated default/server/highres tests, including all 26,337 focused cases,
-pass in 146.770s / 127.486s / 134.713s. Three production binaries verified ELF32/i386/SSE2/CGO.
-Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip).
-Fresh unchanged repeat-a headless gameplay passes in 39.677s. Evidence:
-build/port-player-attack and baseline/runs/player-attack-port.
-Completed/pushed as `875a49a2`; summary delivered.
-
-### Completed — projectile collisions, arrows/chakrams and traps
-
-Baseline `42fdbc86` was pushed before conversion. All 27 functions / 1,006 C
-lines are native. All 1,704 cases / 49 complete captures match original C on
-the first native run (6.175s). Production C: **122,284 lines / 149 files / zero
-reference C**. See [PROJECTILE_COLLISIONS.md](docs/porting/PROJECTILE_COLLISIONS.md).
-Handlers use native attack/equipment/inventory/resource/reflection helpers;
-callback order, byte/full-word damage returns and unusual float flag conversions
-retain original behavior.
-
-Accumulated default/server/highres tests, including all 28,041 focused cases,
-pass in 151.165s / 137.223s / 142.355s. Three production binaries verified ELF32/i386/SSE2/CGO.
-Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip).
-Fresh unchanged repeat-a headless gameplay passes in 36.421s. Evidence:
-build/port-projectile-collisions and baseline/runs/projectile-collisions-port.
-
-### Completed — damage dispatch, defense effects and durability
-
-Baseline `7a3fbb46` was pushed before conversion. All 26 functions / 1,331 C
-function lines are native, plus one trailing blank removed. All 3,582 cases /
-42 complete captures match original C byte-for-byte (11.692s). Production C:
-**120,952 lines / 149 files / zero reference C**. See
-[DAMAGE_DISPATCH.md](docs/porting/DAMAGE_DISPATCH.md). Native melee/projectile
-callers use the shared durability/reflection helpers directly. Differential
-checks caught missing initialization of C-heap temporary damage records.
-
-Accumulated default/server/highres tests, including all 31,623 focused cases,
-pass in 172.196s / 150.338s / 152.211s. Three production binaries verified ELF32/i386/SSE2/CGO.
-Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip).
-Fresh unchanged repeat-a headless gameplay passes in 52.560s. Evidence:
-build/port-damage-dispatch and baseline/runs/damage-dispatch-port.
-Completed and pushed as `54fdeca8`; summary delivered.
-
-### Completed — object state, geometry and ownership
-
-Original-C baseline `c300fd2d` was pushed before conversion. All 44 functions /
-1,134 C lines are native. All 2,757 cases / 53 complete captures match original C
-byte-for-byte. Production C: **119,818 lines / 149 files / zero reference C**.
-See [OBJECT_STATE.md](docs/porting/OBJECT_STATE.md). Existing native Object
-methods own sync/collider/AI changes. Broad regression caught the modifier
-C bridge returning a pointer into a temporary Go input; shop/generator/quest
-call the native helper directly. Expected captures are unchanged.
-
-Accumulated default/server/highres tests, including all 34,380 focused cases,
-pass in 178.994s / 161.251s / 162.972s. Three production binaries verified ELF32/i386/SSE2/CGO.
-Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip).
-Completed and pushed as `04b6d580`; summary delivered.
-Fresh unchanged repeat-a headless gameplay passes in 37.775s. Evidence:
-build/port-object-state and baseline/runs/object-state-final.
-
-### Completed — reward generation and object initialization
-
-Baselines `9b211b92` and `9caa2c85` were pushed before cutover. All 21 functions /
-1,862 C lines are native. All 6,974 cases / 49 complete captures match original C
-byte-for-byte on the first native run (21.068s). Production C: **117,956 lines /
-149 files / zero reference C**. See [REWARD_GENERATION.md](docs/porting/REWARD_GENERATION.md).
-
-Accumulated default/server/highres tests, including 41,354 focused cases / 364
-groups, pass in 193.708s / 169.508s / 178.540s. Three production binaries verified ELF32/i386/SSE2/CGO.
-Full-suite failures unchanged (1,553 entries; 15 packages pass, 3 fail, 32 skip).
-Fresh unchanged repeat-a headless gameplay passes in 34.990s.
-Evidence: build/port-reward-generation and baseline/runs/reward-generation-port.
-Confirmation/preliminary captures are losslessly compressed as .json.gz;
-c-final/native-first remain raw. No reference C algorithms retained.
-
-### Active — player-controls baseline preparation; padding correction complete
-
-Next scope: 56 functions / 1,971 removable C lines in
-[PLAYER_CONTROLS.md](docs/porting/PLAYER_CONTROLS.md); source audit at
-build/port-player-controls/candidate-scope.json and candidate-source.txt.
-Two adjacent C declarations stay in place. All candidate functions remain C;
-The guarded fixture and corpus are implemented; final baseline checks are in progress.
-No controls conversion has started. Reuse guarded players/owners/AI fixtures,
-require positive creation/respawn/observer coverage, repeat and lock original-C
-captures, commit/push baseline before conversion. Continue autonomously after
-reward commit/push (completed as `58eca54d`). No new agents.
-The user approved zeroing message padding on 2026-09-12. The C array is now
-zero-initialized; 1,440 isolated cases / 400 messages match all defined original
-fields and every corrected message has zero padding. Accumulated default/server/
-highres regression passes (180.175s / 167.954s / 179.293s). C remains 117,956
-lines / 149 files / zero reference C. Continue the connected 56-function baseline.
-The applied dispatcher covers all 56 C functions. Initial 2,662 cases / 38 groups
-repeated exactly, before respawn expansion. Current native-owner fixture binds
-ability cancellation and monster updating to the correct server. The C default-
-equipment modifier array now initializes its fifth word; this reversible fix is
-recorded for later review. No final hashes are locked yet. Finish the expanded
-C corpus and positive checks, repeat captures, lock/commit/push before conversion.
-See PLAYER_CONTROLS.md. Local current logs/captures: build/port-player-controls;
-pre-expansion c-repeat files are preliminary, not the final baseline.
-
-Standing decision policy: when reasonably confident and reversal is inexpensive,
-implement and document for later review instead of asking. See
-[DECISIONS.md](docs/porting/DECISIONS.md). No pending question.
-Preserve archive
-and stable evidence. Full-suite raw logs may contain secrets; print only
-package/test/action metadata.
+Standing authorization: continue connected chunks, thoroughly validate, update
+C LOC/docs, commit/push, summarize and continue until a substantive question or rate
+limit. Resolve reasonably confident reversible choices and record for later review.
+No pending question; no new agents. Preserve the asset archive and stable evidence.
+Use build/baseline/env.sh, GOMAXPROCS=2 and go -p 2. Full-suite logs stay local;
+report metadata only. SSH push is authorized to dbenamy/opennox dev.
 
 ## GitHub backup and recovery
 

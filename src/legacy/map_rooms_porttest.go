@@ -181,6 +181,7 @@ type mapRoomTestRegion struct {
 	id             uint32
 	kind           string
 	alive, guarded bool
+	captureOnly    bool // Diagnostic storage is never an engine pointer target.
 }
 type mapRoomTestFixture struct {
 	regions      []*mapRoomTestRegion
@@ -216,6 +217,9 @@ func (f *mapRoomTestFixture) normalize(v uint32) uint32 {
 	}
 	for i := len(f.regions) - 1; i >= 0; i-- {
 		r := f.regions[i]
+		if r.captureOnly {
+			continue
+		}
 		start := uint32(uintptr(r.ptr))
 		if v == start || (v >= start && v-start < uint32(r.size)) {
 			return r.id + v - start
