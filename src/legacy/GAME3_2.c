@@ -3285,7 +3285,7 @@ uint32_t* nox_xxx_netSendReportNPC_4D93A0(int a1, int a2) {
 //----- (004D9440) --------------------------------------------------------
 int nox_xxx_netSendJournalAdd_4D9440(int a1, nox_playerInfo_journal* a2p) {
 	int a2 = a2p;
-	char v3[68]; // [esp+Ch] [ebp-44h]
+	char v3[68] = {0}; // [esp+Ch] [ebp-44h]
 
 	v3[0] = -43;
 	v3[1] = 1;
@@ -3296,7 +3296,7 @@ int nox_xxx_netSendJournalAdd_4D9440(int a1, nox_playerInfo_journal* a2p) {
 
 //----- (004D94A0) --------------------------------------------------------
 int nox_xxx_netSendJournalRemove_4D94A0(int a1, const char* a2) {
-	char v3[68]; // [esp+8h] [ebp-44h]
+	char v3[68] = {0}; // [esp+8h] [ebp-44h]
 
 	v3[0] = -43;
 	v3[1] = 2;
@@ -3306,7 +3306,7 @@ int nox_xxx_netSendJournalRemove_4D94A0(int a1, const char* a2) {
 
 //----- (004D9500) --------------------------------------------------------
 int nox_xxx_netSendJournalUpdate_4D9500(int a1, int a2) {
-	char v3[68]; // [esp+Ch] [ebp-44h]
+	char v3[68] = {0}; // [esp+Ch] [ebp-44h]
 
 	v3[0] = -43;
 	v3[1] = 3;

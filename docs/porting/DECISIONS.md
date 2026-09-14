@@ -283,3 +283,21 @@ Empty/ineligible lists return nil. All22,658 map cases/281 groups and contracts
 pass default/server/highres (74.179s/148.546s/82.656s), all historical hashes
 unchanged. No orchestration C routines are converted. The initial real-C failure is c-expanded.log under
 build/port-map-orchestration, and the corrected rerun is c-backdrop-fixed.log.
+
+## 2026-09-14 — initialize unused journal message bytes
+
+Decision for later review: initialize the three 68-byte journal add/remove/update
+buffers before filling their defined fields. Short names previously left unused
+bytes dependent on prior stack contents. The original-C regression reproduces
+this for all three operations; corrected tests pass. A recursive before/after
+audit permits differences only after the name terminator through byte65 for
+add/update or byte67 for remove. Nine captured message snapshots change in254
+unused bytes; every defined field, routing value and other captured state is
+identical. No message masking or C reference implementation was added.
+
+Local evidence: `build/port-gameplay-reports/journal-padding-audit.json` and its
+reproducible audit script, comparing `journal-isolated-original.json` against
+`journal-corrected.json`. Earlier `journal-original.json` predates a fixture
+record-list isolation fix and is not the comparison oracle. Reporting baseline
+qualification remains in progress. Physical production C is unchanged at101,128
+lines in148files, with zero reference C.

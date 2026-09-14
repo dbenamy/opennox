@@ -114,6 +114,7 @@ import (
 )
 
 type PortTestPlayerControlsSpec struct {
+	Reports               *PortTestGameplayReportsSpec
 	SpellLifecycle        *PortTestSpellLifecycleSpec
 	ByteReturn            int // 1: player record address; 2: last created item address, checked before normalization.
 	Corpse                bool
@@ -228,8 +229,10 @@ func (p *portTestShopPools) controlsPrepare() func() {
 	if sp.Name != nil {
 		st.name = p.objectiveString(*sp.Name)
 	}
+	restoreReports := p.gameplayReportsPrepare()
 	restoreSpellLife := p.spellLifePrepare()
 	return func() {
+		restoreReports()
 		restoreSpellLife()
 		restoreCorpse()
 		restoreGuide()

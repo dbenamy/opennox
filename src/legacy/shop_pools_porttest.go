@@ -66,6 +66,7 @@ type PortTestShopPacketResult struct {
 	Data               []byte
 }
 type PortTestShopStep struct {
+	GameplayReports          *PortTestGameplayReportsResult `json:",omitempty"`
 	Sustained                *PortTestSustainedSpellsResult `json:",omitempty"`
 	EffectsUseData           []uint32                       `json:",omitempty"`
 	TemporaryUpdatesData     []uint32                       `json:",omitempty"`
@@ -95,6 +96,8 @@ type portTestShopOwned struct {
 	alive             bool
 }
 type portTestShopPools struct {
+	reportRecords       []unsafe.Pointer
+	reports             *PortTestGameplayReportsSpec
 	equipment           *portTestEquipment
 	effectsUse          *portTestEffectsUse
 	temporary           *portTestTemporaryUpdates
@@ -508,7 +511,9 @@ func (p *portTestShopPools) run() {
 			}
 			C.sub_510E20(C.int(a.Item))
 		default:
-			if a.Op >= 1700 {
+			if a.Op >= 1800 {
+				rv = p.gameplayReportsAction(a)
+			} else if a.Op >= 1700 {
 				rv = p.sustainedAction(a)
 			} else if a.Op >= 1600 {
 				rv = p.spellEffectsAction(a)
@@ -668,6 +673,7 @@ func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 		}
 		r.EngineState = append(r.EngineState, normalized(p.proxy.callbacks.shop.npc().InitData, 431)...)
 	}
+	r.GameplayReports = p.gameplayReportsSnapshot()
 	r.Return, r.Head = p.normalize(rv), p.normalize(uint32(C.dword_5d4594_2386500))
 	for i := range r.Cached {
 		r.Cached[i] = p.normalize(*memmap.PtrUint32(0x5D4594, 2386364+uintptr(4*i)))

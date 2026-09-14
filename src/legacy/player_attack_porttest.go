@@ -118,6 +118,9 @@ func (p *portTestShopPools) attackPrepare() func() {
 	}
 	if sp.Controls != nil {
 		extra = append(extra, controlsTypeNames...)
+		if sp.Controls.Reports != nil {
+			extra = append(extra, "TeamBase", "SilverKey", "GoldKey")
+		}
 		if sp.Controls.SpellLifecycle != nil {
 			extra = append(extra, spellLifecycleTypeNames...)
 			if sp.Controls.SpellLifecycle.Effects != nil {

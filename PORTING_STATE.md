@@ -4,50 +4,56 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Current — orchestration qualified; gameplay reporting next
+### Current — first gameplay-reporting baseline checkpoint qualified
 
-The five-routine native orchestration conversion is fully qualified and ready for
-commit/push. Its original-C baseline415ba255 was pushed before conversion;
-8bcecb87 wall-list prerequisite and bd256d10 growth conversion are complete.
+Native map orchestration is complete and pushed in **3fa8a141**: five routines,
+−207 C lines; all73,659 accumulated cases/982groups and contracts pass all three
+variants, production builds and symbol audits pass, the full suite matches its
+1,553 known failures, and fresh unchanged headless gameplay passes37.120s.
 
-Remaining C: **101,128 lines /148 files /zero reference C, −207**. All five
-orchestration C declarations/callers are retired; existing Go entry points call
-native helpers directly. No C algorithms remain solely for testing.
+The next connected scope is **73 gameplay-reporting routines /1,337 C section
+lines** (GAME3_2.c,4D7BE0 through4D9E70). All still run in C. The first baseline
+checkpoint covers41 routines with **2,064 captured cases/six locked hashes**, plus
+three journal regressions and a creature-order probe. Original-C captures repeat
+exactly. Reporting plus all existing player-control tests pass three default
+runs46.352s, server16.373s and highres15.493s; old control hashes are unchanged.
+These are scoped baseline checks; full application qualification follows the
+completed baseline/conversion. See docs/porting/GAMEPLAY_REPORTS.md.
 
-All175 orchestration cases/four captures plus15 outer contracts, three name
-boundaries, eight allocator layouts and direct identity/backdrop-weight checks
-match. Full accumulated73,659 cases/982 groups plus contracts pass all variants:
-301.046s/371.200s/310.082s. Three production builds/binary audits pass; all five
-retired C symbols are absent. Full suite matches all1,553 known failure entries
-(15pass/3fail/32skip packages). Fresh unchanged headless gameplay passes37.120s.
-See [MAP_ORCHESTRATION.md](docs/porting/MAP_ORCHESTRATION.md) and local
-build/port-map-orchestration-native/qualification.json.
+A separate reversible prerequisite initializes the three journal message buffers.
+The original regression reproduces nonzero unused bytes in add/remove/update.
+The recursive audit permits only unused message-byte changes: nine snapshots,
+254bytes; all defined fields and all other state are identical. Corrected tests
+pass. No reference C algorithms were added. Physical C remains **101,128 lines /
+148files /zero reference C**, confirmed by tools/porting/c_loc.py.
 
-Next connected candidate: **73 gameplay-reporting routines /1,337 C section lines**,
-4D7BE0 up to4D9EB0 in GAME3_2.c. No reporting fixture/production changes are applied.
-Initial virtual removal finds45 routines with outside C callers and28 candidates
-for retirement (nine private,19 Go-only); inspect Go getter/callback uses next.
-See [GAMEPLAY_REPORTS.md](docs/porting/GAMEPLAY_REPORTS.md). Local inventory,
-operations.json, reference audit and unapplied73-call dispatcher stage are under
-build/port-gameplay-reports. Reuse guarded shop/player/object owners and captured
-messages; lock/repeat/commit/push C baseline before converting the connected batch.
+Next: expand the remaining32 routines and deeper branch/integration coverage,
+then qualify/commit/push the complete C baseline before converting all73. Unapplied
+root test stages results.go.stage and notifications.go.stage under
+build/port-gameplay-reports cover winner broadcasts, score changes, creature
+resource cascades and additional notifications. Audit and apply after this
+checkpoint is committed. Important: direct-list messages are in ResourceMessages;
+that existing snapshot drains NetList before later snapshots. Journal record
+lists explicitly reset per case. The optional reporting fixture is isolated from
+old cases; its C adapter contains calls only. Initial ABI inventory finds45 outside
+C callers and28 retirement candidates; recheck Go getter/callback references.
 
-Known separate reviews: original orchestration failure paths leave flags/saved
-objects pending; shallow theme cleanup leaves nested layout records allocated.
-Tests preserve these behaviors and fixture teardown owns survivors. Unflagged
-backdrop weighting was fixed separately in415ba255, with old phase hashes unchanged.
+Local evidence: build/port-gameplay-reports/initial-capture-audit.json,
+journal-padding-audit.json, c-initial-{default,server,highres}.log and
+initial-qualification.json. Historical captures/binaries have SHA-verified
+compressed archives; completed gameplay asset copies have restoration manifests.
+The latest map-orchestration-port asset copy is now deduplicated (556,358,986bytes
+recovered); originals and changed run files remain. Preserve the 7z asset archive.
 
-Evidence is compressed with SHA verification: C/native integration captures;
-older painting captures (painting-evidence-archive.json); earlier theme/growth
-binaries (theme-growth-binary-archive.json). Completed gameplay asset copies are
-deduplicated with per-run manifests and restoration support. Preserve originals.
+Standing authorization: continue connected chunks, thoroughly test, document C
+LOC, commit/push, summarize and continue until a substantive question or rate
+limit. Resolve confident reversible choices and record them for later review.
+No pending question; no new agents. Use build/baseline/env.sh, GOMAXPROCS=2 and
+go -p 2. Full-suite logs stay local; report metadata only. SSH push to
+dbenamy/opennox dev is authorized. Known separate reviews: orchestration failure
+paths preserve pending flags/saved objects; theme cleanup remains shallow.
 
-Standing authorization: continue connected chunks, thoroughly validate, update
-C LOC/docs, commit/push, summarize and continue until a substantive question or rate
-limit. Resolve reasonably confident reversible choices and record for later review.
-No pending question; no new agents. Preserve the asset archive and stable evidence.
-Use build/baseline/env.sh, GOMAXPROCS=2 and go -p 2. Full-suite logs stay local;
-report metadata only. SSH push is authorized to dbenamy/opennox dev.
+<!-- /current-checkpoint -->
 
 ## GitHub backup and recovery
 
