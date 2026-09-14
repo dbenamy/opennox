@@ -114,6 +114,8 @@ target build selection and linker evidence.
 
 | Gameplay reporting, inventory notifications and player-state aggregation (2026-09-14) | 148 | 99,791 | −1,337 | 0 |
 
+| Gameplay text baseline (2026-09-14; 2,791 cases, no conversion) | 148 | 99,791 | 0 | 0 |
+
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
 because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful

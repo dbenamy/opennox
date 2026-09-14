@@ -4,39 +4,43 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Current — native gameplay reporting qualified; next text batch scoped
+### Current — gameplay text C baseline qualified
 
-The73-routine gameplay-reporting conversion is fully qualified. All7,809 cases /
-28 locked C captures match; accumulated81,468 cases /1,010 groups plus contracts
-pass default/server/highres (77.441s/114.117s/17.081s wall). Allthree production
-builds pass ELF386/SSE2, export and test-helper audits. The28 retired C symbols
-are absent;45 required C bridges remain. Full suite matches all1,553 known failure
-entries exactly (15pass/3fail/32skip packages, no new failures). Fresh unchanged
-headless gameplay passes35.208s with golden overrides disabled and null audio.
-Physical C is **99,791 lines /148 files /zero reference C**, down1,337 lines.
-No C reporting algorithm remains solely for tests. Baseline fbfac731 is pushed.
+Native gameplay reporting is committed and pushed as **51eb809a**:73 routines,
+1,337 C lines removed, all three variant/build checks and unchanged headless
+scenario passed. Physical C is **99,791 lines /148 files /zero reference C**.
 
-Native implementation and caller rewiring are ready to commit/push. Evidence is
-build/port-gameplay-reports/qualification.json, variants.json,
-binary-verification.json, native-retirement-audit.json, full-suite-comparison.json
-and build/baseline/runs/gameplay-reports-port/result.json. Tests and the recoverable
-C baseline are tracked; raw captures/builds remain local. See
- docs/porting/GAMEPLAY_REPORTS.md for the scope and ownership decisions.
+The next ten-routine text/notification, encoding and player-iteration batch has a
+qualified original-C baseline: **2,791 cases /11 locked, repeated captures**.
+All production text implementations remain C. Accumulated default ports passed
+84,243 cases /1,020 groups plus contracts (331.687s); affected server/highres
+checks passed131.178s/56.069s. Sixteen additional valid narrow-chat length-wrap
+cases repeat on default; existing ten text hashes and reporting/control hashes
+remain unchanged. All2,791 locked text cases pass together in6.926s. Final native
+qualification will run all84,259 cases /1,021 groups on every variant.
 
-Next: commit/push this completed batch, summarize, then establish the original-C
-baseline for ten connected text/notification, encoding and player-iteration
-routines, including scripted spatial chat (roughly300 C lines). Plan/signatures
-and the original sections are in build/port-gameplay-text; fixture draft remains
-only in that build directory. Production text code has not changed. Reuse guarded
-message/player records, preserve raw UTF16 units, and keep only the necessary C
-varargs adapters around the existing formatter. No user question is pending.
+Next: commit/push this baseline, then apply/review the staged native conversion
+in build/port-gameplay-text/apply-native.py. The draft removes302 C section/file
+lines and one unused C declaration, leaving21 lines of production C varargs
+adapters: expected282-line reduction and one fewer C file. Retire scripted chat's
+Go-only C ABI; retain nine original names, plus two necessary Go serializer
+exports for the varargs adapters. Switch the fixture dispatcher to native helpers
+except the two actual varargs calls. Match all11 hashes, run accumulated variants,
+builds/symbols, full-suite comparison and fresh unchanged gameplay, then document
+C LOC, commit/push and continue. No pending user question.
+
+Evidence: docs/porting/GAMEPLAY_TEXT.md, build/port-gameplay-text/captures.json,
+baseline-qualification.json, c-qualification-progress.log, c-locked.log and
+c-long-a/b.log. Raw captures may be SHA-verified gzip (capture-archive.json).
+The fixture allocates larger records only for long text; existing records and
+hashes remain unchanged. Formatting preserves legacy signed %u output. Raw UTF16
+units and byte-length wrap are tested without changing production behavior.
 
 Standing authorization: continue connected chunks; resolve confident reversible
-choices and record them for review. No new agents. Use build/baseline/env.sh,
-GOMAXPROCS=2 and -p 2. Full-suite/crash logs stay local. SSH push to
-dbenamy/opennox dev authorized. Preserve nox-iso-from-archive-org.7z and original
-extracted assets. SHA-verified capture archival recovered another2.47GB; completed
-asset copies can use existing restoration manifests and the deduplication tool.
+choices and record them. No new agents. Use build/baseline/env.sh, GOMAXPROCS=2
+and -p 2. Keep raw full-suite/crash logs local. SSH push to dbenamy/opennox dev
+is authorized. Preserve the7z and original extracted assets. Completed reporting
+run duplicates have an asset restoration manifest;555MB was recovered safely.
 
 <!-- /current-checkpoint -->
 

@@ -28,12 +28,14 @@ type PortTestGameplayReportRecord struct {
 	Flags uint16
 }
 type PortTestGameplayReportsSpec struct {
-	Rules         *PortTestGameplayReportRules
-	RecipientMask *uint32
-	Records       []PortTestGameplayReportRecord
-	Args          [5]PortTestGameplayReportArg
-	Calls         map[uint32][5]PortTestGameplayReportArg
-	Caches        [3]uint32
+	Texts             [][]uint16
+	SuppressedPlayers *uint32
+	Rules             *PortTestGameplayReportRules
+	RecipientMask     *uint32
+	Records           []PortTestGameplayReportRecord
+	Args              [5]PortTestGameplayReportArg
+	Calls             map[uint32][5]PortTestGameplayReportArg
+	Caches            [3]uint32
 }
 type PortTestGameplayReportsResult struct {
 	Rules    *PortTestGameplayReportRulesResult `json:",omitempty"`
@@ -51,6 +53,28 @@ func (p *portTestShopPools) gameplayReportsPrepare() func() {
 	oldMask := C.dword_5d4594_2649712
 	if sp.RecipientMask != nil {
 		C.dword_5d4594_2649712 = C.uint32_t(*sp.RecipientMask)
+	}
+	p.reportTexts = nil
+	for _, text := range sp.Texts {
+		if len(text) > 519 {
+			panic("text fixture bounds")
+		}
+		size := max(520, (2*(len(text)+1)+3)&^3)
+		ptr := p.objectiveRegion(size)
+		clear(unsafe.Slice((*byte)(ptr), size))
+		copy(unsafe.Slice((*uint16)(ptr), size/2), text)
+		p.reportTexts = append(p.reportTexts, ptr)
+	}
+	var suppressionRestore []func()
+	if sp.SuppressedPlayers != nil {
+		core := GetServer().S()
+		for i := range p.proxy.life.players {
+			u := &p.proxy.life.players[i]
+			pl := u.UpdateDataPlayer().Player
+			old := core.Players.CheckXxx(u)
+			core.Players.SetXxx(u, int32((*sp.SuppressedPlayers>>uint(pl.PlayerInd))&1))
+			suppressionRestore = append(suppressionRestore, func() { core.Players.SetXxx(u, int32(bool2int(old))) })
+		}
 	}
 	p.reportRecords = nil
 	for _, v := range sp.Records {
@@ -74,6 +98,10 @@ func (p *portTestShopPools) gameplayReportsPrepare() func() {
 			*memmap.PtrUint32(0x5D4594, 1556320+uintptr(4*i)) = v
 		}
 		restoreRules()
+		for _, restore := range suppressionRestore {
+			restore()
+		}
+		p.reportTexts = nil
 		C.dword_5d4594_2649712 = oldMask
 		p.reports = nil
 		p.reportRecords = nil
@@ -86,6 +114,12 @@ func (p *portTestShopPools) gameplayReportsArg(a PortTestGameplayReportArg) uint
 	var ptr unsafe.Pointer
 	var size int
 	switch a.Kind {
+	case "text":
+		if a.Ref < 0 || a.Ref >= len(p.reportTexts) {
+			panic("text fixture reference")
+		}
+		ptr = p.reportTexts[a.Ref]
+		size = max(520, (2*(len(p.reports.Texts[a.Ref])+1)+3)&^3)
 	case "record":
 		ptr = p.temporary.world.objectives.attack.record
 		if a.Ref != 0 {
@@ -150,7 +184,12 @@ func (p *portTestShopPools) gameplayReportsAction(a PortTestShopAction) uint32 {
 	for i, v := range spec {
 		args[i] = p.gameplayReportsArg(v)
 	}
-	ret := gameplayReportsInvoke(a.Op-1800, args)
+	var ret uint32
+	if a.Op >= 1900 {
+		ret = gameplayTextInvoke(a.Op-1900, args)
+	} else {
+		ret = gameplayReportsInvoke(a.Op-1800, args)
+	}
 	if PortTestProtectionFloatCW() != control {
 		panic("report changed x87 control")
 	}
