@@ -43,7 +43,7 @@ func effectsPixelHash(p *noximage.Image16) string {
 func newEffectsTestOwner(t *testing.T) (*Client, *noximage.Image16) {
 	t.Helper()
 	core := new(server.Server)
-	cli, free := client.PortTestEffectsClient(core, []string{"DrainManaOrb", "HealOrb", "CharmOrb", "WhiteOrb", "ManaBombOrb", "WhiteMoveOrb", "BlueMoveOrb"})
+	cli, free := client.PortTestEffectsClient(core, []string{"DrainManaOrb", "HealOrb", "CharmOrb", "WhiteOrb", "ManaBombOrb", "WhiteMoveOrb", "BlueMoveOrb", "CyanSpark", "DynamicChainLightning", "DynamicEnergyBolt", "DynamicLightning", "GreenZap", "OrbRay", "PlasmaRay", "RainOrbBlue", "RainOrbWhite", "WhiteSpark", "BlueSpark", "YellowSpark", "GreenSpark"})
 	t.Cleanup(free)
 	c := &Client{Client: cli, srv: &Server{Server: core}, r: NewNoxRender(cli.Render())}
 	cli.ExtClient = unsafe.Pointer(c)
@@ -88,6 +88,7 @@ func TestClientEffectsOrbProbe(t *testing.T) {
 	if hash == blank {
 		t.Fatal("original C orb did not render any pixels")
 	}
+	effectsDiagnostic(t, "orb", pix)
 	const want = "2bc7703f6e4a987ab887c7a2c3cc13bc33a59715eebb9c5a5566c4daabff1b6f"
 	if hash != want {
 		t.Fatalf("orb framebuffer = %s, want repeated original-C capture %s", hash, want)

@@ -4,44 +4,46 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Current — quest eligibility qualified; client effects next
+### Current — client effects C baseline qualified; integrate Go draft
 
-The 14-routine quest eligibility conversion is fully qualified. All 10,809
-cases /10 locked original-C captures match. The full accumulated standard suite
-passes all 633 selected root tests (379.259s wall), covering 96,142 captured
-cases /1,039 groups plus contracts. Affected server and highres suites each
-pass all 67 selected tests (171.678s /77.589s). The guarded runner verifies
-selection, execution and completion. All three production builds, ELF32/SSE2
-and ABI checks pass. The full suite matches 1,553 known failure entries exactly;
-fresh unchanged headless gameplay passes in 36.344s.
+Quest eligibility is complete and pushed as fa9b0376 (14 routines, −565 C
+lines). Its 10,809 captures, accumulated 633-test standard suite, affected
+variants, production builds, full-suite oracle and fresh gameplay all passed.
+See docs/porting/QUEST_ELIGIBILITY.md for that completed qualification.
 
-Physical C: **98,506 lines /147 files /zero reference C**, down 565 lines.
-Ten private C entry points are retired; four retained exports are exercised
-directly by the fixture. Existing Go penalty callers use native helpers.
-Original-C baseline 8c1c2a94 and native conversion fa9b0376 are pushed. See docs/porting/QUEST_ELIGIBILITY.md and local
-build/port-quest-eligibility/qualification.json for evidence.
+Current batch: **46 client-effects routines /2,289 C section lines**. All remain
+C. The full reference fixture now passes the guarded accumulated standard suite:
+654 selected/executed/completed root tests, 373.911s wall. Focused server/highres
+each pass all 21 effects tests (161.309s /25.696s). All 18 capture groups are
+locked after repeated C execution, with independent state/geometry/RNG contracts.
+Local metadata: build/port-client-effects/baseline.json. No test/build is active.
 
-Current work: client effects, **45 routines /2,263 C lines**, all still C.
-The initial headless renderer/drawable fixture is applied. The original-C pixel
-probe passes standard/server/highres. Larger locked groups cover 6,070 orb
-lifetime snapshots (1,056 combinations) and 462 curve callback cases, with
-independent state/geometry assertions and identical repeated captures. The
-focused standard check passes all three selected tests (89.555s wall); metadata
-is in build/port-client-effects/early-baseline.json.
-This is an early fixture checkpoint; the complete effects baseline is unfinished.
-Next expand the remaining effects families, including RNG, construction,
-lightning/plasma, motion and callback state. A full C dispatch adapter is staged
-locally, not applied. Preserve the renderer color policy. See
-[CLIENT_EFFECTS.md](docs/porting/CLIENT_EFFECTS.md) for scope and resume details.
+Two explicit prerequisite C repairs precede conversion: skip missing plasma
+endpoints and initialize both coordinate chain-lightning particle endpoints.
+The latter removed observed run-dependent particle positions/RNG consumption.
+Fixture distance-table initialization also corrected moving-orb/plasma references;
+superseded hashes are withdrawn. Current physical C is **98,505 lines /147 files
+/zero reference C** (net −1 from eligibility). Review decisions and full coverage
+in docs/porting/CLIENT_EFFECTS.md and DECISIONS.md.
 
-Standing authorization: continue connected chunks, commit/push and continue.
-Resolve confident reversible choices and record them. No new agents or user
-question pending. Use build/baseline/env.sh, GOMAXPROCS=2 and -p 2. All accumulated
-matrices use tools/porting/run_tests.py; never edit source while tests/builds run.
-Keep raw full-suite/crash logs local. SSH push to dbenamy/opennox dev is authorized.
-Preserve the 7z and original extracted assets. Completed text and lookup run
-asset duplicates have restoration manifests; lookup and eligibility captures
-have verified gzip manifests.
+Next integrate the complete local native draft in
+build/port-client-effects/client_effects*.go.stage (seven files), retire the 14
+private C entry points, retain/exercise 32 C exports, and compare all effects
+references. Drafts are not compiled or qualified. Recheck source/caller audits;
+do not overwrite current fixtures with the older fixture stage files. Repaired
+source reference is baseline-sections.c.txt, not original-sections.c.txt.
+After focused matches run full accumulated native matrices in all three tags,
+all production builds/ABI audit, exact known-failure full-suite comparison and
+fresh unchanged headless gameplay. Update docs/C LOC, commit/push and continue.
+
+Standing authorization: continue connected chunks autonomously. Resolve
+confident reversible choices and document for review. No new agents or user
+question pending. Use build/baseline/env.sh, GOMAXPROCS=2 and -p 2. Selected
+matrices must use tools/porting/run_tests.py; never edit source while tests/builds
+run. Keep raw full-suite/crash logs local. SSH push to dbenamy/opennox dev is
+authorized. Preserve the 7z and original assets. Completed local captures and
+binaries may be gzip archived with SHA256/restoration manifests; see
+build/port-client-effects/completed-artifact-archives.json.
 
 <!-- /current-checkpoint -->
 

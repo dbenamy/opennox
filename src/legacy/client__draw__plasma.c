@@ -285,9 +285,7 @@ int nox_thing_plasma_draw(int* a1, nox_drawable* dr) {
 			v10 = (int*)(v22 + v19[3] - v21);
 			v11 = (int*)(v19[4] - v20 + v23 - 20);
 		} else {
-			v9 = a2;
-			v10 = a1;
-			v11 = a1;
+			return 1;
 		}
 		v25.field_0 = (double)mpos.x - (double)a2;
 		v25.field_4 = (double)mpos.y - (double)(int)a1;

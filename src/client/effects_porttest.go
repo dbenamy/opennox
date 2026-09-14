@@ -19,7 +19,7 @@ func PortTestEffectsClient(s *server.Server, names []string) (*Client, func()) {
 	c.handle = atomic.AddUintptr(&clientLast, 1)
 	clients.Store(c.handle, c)
 	c.Objs.init(c)
-	c.Objs.Init(128)
+	c.Objs.Init(512)
 	c.Things.init(s.Strings())
 	c.Things.byInd = []*ObjectType{nil}
 	c.Things.byID = make(map[string]*ObjectType)

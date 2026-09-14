@@ -396,7 +396,8 @@ int nox_thing_chain_lightning_bolt_draw(int* a1, nox_drawable* dr) {
 		v19.field_4 = (unsigned short)v7;
 		v8 = *(uint16_t*)(a2 + 443);
 		a1a.field_4 = v6 - v5 + (unsigned short)v7 - 20;
-		a3.field_0 = v8;
+		a3.field_0 = *(uint16_t*)(a2 + 441);
+		a3.field_4 = v8;
 		a2a.field_4 = v8 - v5 + v6 - 20;
 	} else {
 		if (nox_xxx_netTestHighBit_578B70(*(uint32_t*)(a2 + 437))) {

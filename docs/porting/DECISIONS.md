@@ -411,3 +411,35 @@ reference for effect geometry, state and RNG without coupling the batch to a
 separate rendering policy change. Diagnostic PNGs may accompany raw references.
 Chosen under the standing reversible-decision policy; review before changing
 the color backend. See CLIENT_EFFECTS.md for fixture and qualification scope.
+
+## Missing plasma endpoints — 2026-09-14
+
+Skip plasma drawing when either referenced endpoint is absent, returning the
+normal live-drawable result. Its C fallback had continued with local variables
+that did not contain endpoint coordinates. The other four ray renderers already
+return early in this situation. This correction is needed before establishing
+a deterministic plasma reference. A focused regression checks absent source,
+absent target and both absent: unchanged drawable/framebuffer/scratch state, no
+particle creation and no RNG consumption. This is a deliberate C prerequisite
+correction, not exact preservation of the broken branch. Chosen under the user's
+standing reversible-decision policy; review alongside CLIENT_EFFECTS.md.
+
+## Coordinate chain-lightning particle endpoint — 2026-09-14
+
+Initialize both target coordinates from the ray's endpoint packet. The C branch
+assigned target Y to X and left Y uninitialized. Repeated references differed
+in eight unpaused coordinate cases, including particle positions, allocation
+counts and RNG consumption; object-bound and paused cases were stable. This is
+undefined input to particle generation, so do not freeze a process-dependent
+capture or emulate it in Go. A dedicated contract compares coordinate and
+object bindings with identical endpoints and requires identical particle
+positions/types and RNG consumption. This is a deliberate prerequisite fix,
+chosen under the standing reversible-decision policy; review with the plasma
+endpoint repair. Earlier ray-drawing hashes are withdrawn.
+
+Preserve two separate existing behaviors for later review: non-plasma ray
+callbacks pass flagged static codes unchanged to lookup, while plasma strips
+the flag; the forward-difference curve rasterizer stores two coefficients in
+named globals distinct from their historical mapped slots. Neither is silently
+changed in the effects port. Tests exercise the current storage and lookup
+behavior explicitly.
