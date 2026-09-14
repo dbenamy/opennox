@@ -31,12 +31,14 @@ void nox_xxx_updDrawMagic_4CDD80(int a1, uint32_t* a2) {
 			*getMemU32Ptr(0x5D4594, 1523000) = v4;
 		}
 		v5 = (uint32_t*)nox_xxx_spriteLoadAdd_45A360_drawable(v4, a2[108], a2[109]);
-		v5[108] = a2[3];
-		v5[109] = a2[4];
-		nox_xxx_sprite_45A110_drawable(v5);
-		a2[108] = a2[3];
-		a2[109] = a2[4];
-		nox_xxx_spriteTransparentDecay_49B950(v5, (int)gameFPS());
+		if (v5) {
+			v5[108] = a2[3];
+			v5[109] = a2[4];
+			nox_xxx_sprite_45A110_drawable(v5);
+			a2[108] = a2[3];
+			a2[109] = a2[4];
+			nox_xxx_spriteTransparentDecay_49B950(v5, (int)gameFPS());
+		}
 	}
 	v13 = a2[3] - a2[8];
 	v14 = a2[4] - a2[9];

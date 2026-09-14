@@ -69,6 +69,9 @@ int nox_xxx_updDrawMagicMissile_4CD9E0(int a1, uint32_t* a2) {
 	v11 = v2[108];
 	if ((v2[3] - v11) * (v2[3] - v11) + (v2[4] - v2[109]) * (v2[4] - v2[109]) > 200) {
 		v12 = (uint32_t*)nox_xxx_spriteLoadAdd_45A360_drawable(*getMemIntPtr(0x5D4594, 1522992), v11, v2[109]);
+		if (!v12) {
+			return 1;
+		}
 		v12[108] = v2[3];
 		v12[109] = v2[4];
 		nox_xxx_sprite_45A110_drawable(v12);

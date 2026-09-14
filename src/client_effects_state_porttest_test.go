@@ -26,8 +26,9 @@ type effectsSpawnCall struct {
 	Ref      uint32
 }
 type effectsTestClient struct {
-	Mouse      image.Point
-	MouseReads int
+	callbackRefs map[unsafe.Pointer]uint32
+	Mouse        image.Point
+	MouseReads   int
 	*Client
 	refs      map[*client.Drawable]uint32
 	next      uint32
@@ -56,9 +57,9 @@ func (c *effectsTestClient) Nox_xxx_spriteDeleteStatic_45A4E0_drawable(dr *clien
 	c.Deleted = append(c.Deleted, c.refs[dr])
 	c.Client.Nox_xxx_spriteDeleteStatic_45A4E0_drawable(dr)
 }
-func newEffectsFullOwner(t *testing.T) (*effectsTestClient, *noximage.Image16, *legacy.PortTestEffectsEnvironment) {
+func newEffectsFullOwner(t *testing.T, extraNames ...string) (*effectsTestClient, *noximage.Image16, *legacy.PortTestEffectsEnvironment) {
 	t.Helper()
-	base, pix := newEffectsTestOwner(t)
+	base, pix := newEffectsTestOwner(t, extraNames...)
 	base.srv.Rand.Logic, base.srv.Rand.Other = prand.New(1), prand.New(2)
 	oldHover := legacy.Get_dword_5d4594_1096640()
 	oldCursor := legacy.Get_nox_client_spriteUnderCursorXxx_1096644()
@@ -196,7 +197,16 @@ func (c *effectsTestClient) snapshotDrawables(t *testing.T) [][]uint32 {
 		for _, i := range []int{83, 84, 87, 88, 90, 91, 92, 93, 94, 95, 97, 98, 100, 101, 102, 103, 104, 105, 106, 107} {
 			words[i] = ref(words[i])
 		}
-		for _, i := range []int{2, 75, 76, 99, 114, 115, 124} {
+		for _, i := range []int{75, 115} {
+			if words[i] != 0 {
+				marker, ok := c.callbackRefs[unsafe.Pointer(uintptr(words[i]))]
+				if !ok {
+					t.Fatalf("unmodeled effect callback at word%d", i)
+				}
+				words[i] = marker
+			}
+		}
+		for _, i := range []int{2, 76, 99, 114, 124} {
 			if words[i] != 0 {
 				t.Fatalf("unmodeled pointer in drawable word%d", i)
 			}

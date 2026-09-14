@@ -40,10 +40,10 @@ func effectsPixelHash(p *noximage.Image16) string {
 	return hex.EncodeToString(h.Sum(nil))
 }
 
-func newEffectsTestOwner(t *testing.T) (*Client, *noximage.Image16) {
+func newEffectsTestOwner(t *testing.T, extraNames ...string) (*Client, *noximage.Image16) {
 	t.Helper()
 	core := new(server.Server)
-	cli, free := client.PortTestEffectsClient(core, []string{"DrainManaOrb", "HealOrb", "CharmOrb", "WhiteOrb", "ManaBombOrb", "WhiteMoveOrb", "BlueMoveOrb", "CyanSpark", "DynamicChainLightning", "DynamicEnergyBolt", "DynamicLightning", "GreenZap", "OrbRay", "PlasmaRay", "RainOrbBlue", "RainOrbWhite", "WhiteSpark", "BlueSpark", "YellowSpark", "GreenSpark"})
+	cli, free := client.PortTestEffectsClient(core, append([]string{"DrainManaOrb", "HealOrb", "CharmOrb", "WhiteOrb", "ManaBombOrb", "WhiteMoveOrb", "BlueMoveOrb", "CyanSpark", "DynamicChainLightning", "DynamicEnergyBolt", "DynamicLightning", "GreenZap", "OrbRay", "PlasmaRay", "RainOrbBlue", "RainOrbWhite", "WhiteSpark", "BlueSpark", "YellowSpark", "GreenSpark"}, extraNames...))
 	t.Cleanup(free)
 	c := &Client{Client: cli, srv: &Server{Server: core}, r: NewNoxRender(cli.Render())}
 	cli.ExtClient = unsafe.Pointer(c)

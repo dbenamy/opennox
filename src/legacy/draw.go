@@ -534,7 +534,7 @@ func Sub_49F860() {
 	C.sub_49F860()
 }
 func Nox_xxx_drawEnergyBolt_499710(a1 int, a2 int, a3 int, a4 int) {
-	C.nox_xxx_drawEnergyBolt_499710(C.int(a1), C.int(a2), C.short(a3), C.int(a4))
+	effectCreateEnergySparks(a1, a2, int16(a3), a4)
 }
 func Nox_xxx_drawShield_499810(vp *noxrender.Viewport, dr *client.Drawable) {
 	C.nox_xxx_drawShield_499810((*nox_draw_viewport_t)(vp.C()), (*nox_drawable)(dr.C()))

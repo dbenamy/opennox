@@ -456,3 +456,18 @@ random sparkle path. Preserve these current behaviors rather than changing the
 locked C references or general renderer policy. Native float-to-int calls use
 the already qualified Go helper. Review these quirks before any later geometry
 cleanup; the port's compatibility tests remain the constraint.
+
+
+### Drawable tail allocation retry — 2026-09-14
+
+Guard the two unchecked tail-link allocations before capturing the next C
+baseline. Failure preserves the previous anchor for a later retry and adds no
+deadline entry. Magic-trail sparks remain independent of tail allocation. This
+reversible repair is authorized without another confirmation; revisit the retry
+policy if allocation policy changes. See [client updates](CLIENT_UPDATES.md).
+
+Reuse the qualified effects owner for this state-only callback batch. Run the
+accumulated standard suite and affected effects/update server/highres tests, all
+production builds and unchanged headless gameplay. The full asset suite was
+just qualified at the effects subsystem milestone; repeat it on evidence of
+shared regression rather than automatically for every callback batch.
