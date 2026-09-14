@@ -189,3 +189,11 @@ normal-input probes abort, documented in [MAP_THEME.md](MAP_THEME.md). These
 small reversible repairs follow the standing policy; preserving the aborts
 would prevent ordinary settings and equipment parsing. Broader parsing and
 route behavior remain outside this prerequisite change.
+
+## Inherited modifier deletion — 2026-09-14, review later
+
+Copy the next inherited modifier into the vacated slot before advancing the
+source pointer. The original loop skips that value and reads beyond populated
+scratch entries; the alpha/beta/gamma removal regression fails. The corrected
+72-case matrix checks weapon/armor slots and cleanup. This small copy-order
+repair follows the standing policy; see [MAP_THEME.md](MAP_THEME.md).

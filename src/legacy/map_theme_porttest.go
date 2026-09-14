@@ -101,7 +101,7 @@ func PortTestMapTheme(cases []PortTestPaintSpec, owner func(*server.Server) (Ser
 		"themeLine":     memmap.PtrUint32(0x5D4594, 2487520),
 		"themeTemplate": (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487524)),
 	}}
-	for _, name := range []string{"themeInputPath", "themeFile", "themeOffset", "themeError", "themeClock"} {
+	for _, name := range []string{"themeInputPath", "themeFile", "themeOffset", "themeError", "themeClock", "themePlayers", "themeOpenFiles", "themeClosedFiles"} {
 		p, free := alloc.New(uint32(0))
 		defer free()
 		ext.globals[name] = p
@@ -142,6 +142,9 @@ func PortTestMapTheme(cases []PortTestPaintSpec, owner func(*server.Server) (Ser
 	var active *paintTestFixture
 	var input *binfile.Binfile
 	var oldHandles map[unsafe.Pointer]bool
+	var seenHandles map[unsafe.Pointer]bool
+	var playersUnchanged func() bool
+	var restorePlayers func()
 	ext.setup = func(p *server.PortTestPaintOwners) func() {
 		oldAlloc, oldFree := themeTestOnAllocate, themeTestOnRelease
 		themeTestOnAllocate = func(ptr unsafe.Pointer, size int) {
@@ -162,6 +165,18 @@ func PortTestMapTheme(cases []PortTestPaintSpec, owner func(*server.Server) (Ser
 	}
 	ext.before = func(f *paintTestFixture, sp PortTestPaintSpec) {
 		active = f
+		seenHandles = map[unsafe.Pointer]bool{}
+		if ptr := *ext.globals["themePlayers"]; ptr != 0 {
+			count := *populationWord(ptr, 0)
+			if count > 32 {
+				panic("theme fixture player count")
+			}
+			classes := make([]byte, count)
+			for i := range classes {
+				classes[i] = byte(*populationWord(ptr, 4+4*i))
+			}
+			playersUnchanged, restorePlayers = f.owners.S.PortTestThemePlayers(classes)
+		}
 		clear(unsafe.Slice((*byte)(token), 256))
 		f.register(token, 256, "themeToken", false)
 		f.register(table, 368, "themeTables", false)
@@ -181,6 +196,7 @@ func PortTestMapTheme(cases []PortTestPaintSpec, owner func(*server.Server) (Ser
 			handle := NewFileHandle(input.File)
 			*ext.globals["themeFile"] = mapRoomRaw(unsafe.Pointer(handle))
 			f.register(unsafe.Pointer(handle), 0, "themeFile", false)
+			seenHandles[unsafe.Pointer(handle)] = true
 		}
 	}
 	ext.invoke = func(f *paintTestFixture, op int, args [6]uint32) uint32 {
@@ -205,10 +221,22 @@ func PortTestMapTheme(cases []PortTestPaintSpec, owner func(*server.Server) (Ser
 			*ext.globals["themeOffset"] = uint32(offset)
 			*ext.globals["themeError"] = uint32(bool2int(input.File.Err != nil))
 		}
+		if playersUnchanged != nil {
+			f.intact = playersUnchanged() && f.intact
+		}
+		*ext.globals["themeOpenFiles"], *ext.globals["themeClosedFiles"] = 0, 0
 		files.RLock()
 		defer files.RUnlock()
 		for h, file := range files.byHandle {
-			if !oldHandles[h] && f.known(h) == nil {
+			if !oldHandles[h] {
+				if file.File.Fd() == ^uintptr(0) {
+					*ext.globals["themeClosedFiles"]++
+				} else {
+					*ext.globals["themeOpenFiles"]++
+				}
+			}
+			if !oldHandles[h] && !seenHandles[h] {
+				seenHandles[h] = true
 				r := f.register(h, 0, "themeFile", false)
 				if file.File.Fd() == ^uintptr(0) {
 					r.alive = false
@@ -219,6 +247,11 @@ func PortTestMapTheme(cases []PortTestPaintSpec, owner func(*server.Server) (Ser
 	ext.finish = func(f *paintTestFixture) {
 		themeObserve(false, 0)
 		active = nil
+		if restorePlayers != nil {
+			restorePlayers()
+			restorePlayers = nil
+			playersUnchanged = nil
+		}
 		files.Lock()
 		defer files.Unlock()
 		for h, file := range files.byHandle {

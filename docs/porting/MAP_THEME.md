@@ -80,3 +80,40 @@ including builds, alongside the existing mandatory map captures. Default broad
 checks pass in 41.556s; the expanded 72-case prerequisite smoke passes in 0.823s.
 Record the −7-line C prerequisite checkpoint and commit/push before extending
 the full theme baseline. No previous expected hashes changed.
+
+## Inherited modifier removal prerequisite — qualification running
+
+Buffer/counter prerequisite **ff4de53d** is committed/pushed. Full synthetic
+file parsing and cleanup now pass, with a fixed default seed and actual file
+closure. New stream/player/settings fixtures cover all byte values, 255-byte
+tokens, EOF/comment state, nested conditionals, actual sparse player iteration,
+all operators, algorithm keys/numeric boundaries and decoration frequency totals.
+
+An original template-removal probe fails: removing alpha from alpha/beta/gamma
+does not preserve beta/gamma. The C shift loop advanced its source before copying,
+skipping the next value and reading beyond the populated scratch entries.
+Move the increment after strcpy. Evidence: template-removal-original.log.
+The 72-case regression spans weapon/armor, all four slots, first/middle/last and
+case-insensitive removal, missing/repeated values, additions/deduplication and
+cleanup. This is a deliberate correction, not compatibility with that failure.
+
+All current checks pass in **50.195s**. The independent repeat passes in
+**52.482s** with **2,146 cases / eight complete captures** identical byte-for-byte;
+existing hallway/population/painting/room hashes also remain unchanged. Server
+and highres comparisons are running via qualify-removal.py (qualify-removal.log).
+Working C remains **104,300 / 148 files / zero reference**; the copy-order fix
+changes no line count. Lock the eight verified hashes and commit/push this
+prerequisite checkpoint before expanding the remaining parser sections.
+
+Current capture labels and hashes: removal-captures.json; main raw copies:
+c-removal-*.json. Repeated variant copies are losslessly compressed after exact
+comparison, with manifest removal-capture-archive.json. No native theme routines
+yet. The full-file and player draft files were applied and the fixture now tracks
+new/closed file handles and verifies player records remain byte-for-byte unchanged.
+
+All eight captures match in default repeat/server/highres: **52.482s / 129.368s /
+60.201s** wall time, including builds and existing map checks. The eight hashes
+are now mandatory in map_theme_baseline_porttest_test.go. The mandatory-hash smoke passes in **8.485s** (locked-streams.log). New C-only corpus labels may
+be captured with OPENNOX_MAP_THEME_EXTEND_C=1; this never bypasses an existing
+hash. Remove that extension allowance before native conversion, once all labels
+are locked. No native theme algorithms are written yet.

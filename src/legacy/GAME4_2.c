@@ -921,8 +921,8 @@ int sub_51F230(int a1, FILE* a2) {
 									v20 = &v60[60 * v18];
 									do {
 										v53 = (char*)(v20 - 60);
-										v20 += 60;
 										strcpy(v53, v20);
+										v20 += 60;
 										--v19;
 									} while (v19);
 									v15 = v48;

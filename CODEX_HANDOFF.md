@@ -4,6 +4,23 @@
 
 ### Active — theme parser; hallway conversion qualified
 
+CURRENT: parser prerequisite **ff4de53d** is committed/pushed. Expanded fixtures
+now use full synthetic files, real player iteration and complete stream/settings
+captures. A new original inherited-modifier removal probe fails; the C copy order
+is corrected and its 72-case regression passes. All map checks pass (50.195s),
+and independent repeat (52.482s) matches **2,146 cases / eight complete captures**.
+All eight captures also match server/highres (**129.368s / 60.201s**). Eight
+hashes are mandatory in map_theme_baseline_porttest_test.go. locked-streams.log
+passes the mandatory-hash smoke in **8.485s**. Existing hashes always stay enforced;
+OPENNOX_MAP_THEME_EXTEND_C=1 permits only new C corpus labels while extending the
+baseline. Remove that allowance before native conversion. No source edits during
+active builds. If successful, lock the eight hashes in a theme baseline file,
+run mandatory-hash smoke, document/count/commit/push the prerequisite checkpoint,
+then broaden equipment/decor/prefab/full-theme coverage. C count stays **104,300 /
+148 files / zero reference**. No native theme conversion yet. Earlier status
+paragraphs below are historical. See MAP_THEME.md for evidence and recovery.
+
+
 Hallway native **f1b92d3f** is committed/pushed. Theme fixture bootstrap is now
 written in uncommitted map_theme*porttest.go files plus the blobdata table getter.
 It uses real file handles, actual startup tables and a scoped allocation/clock
