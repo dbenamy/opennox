@@ -3,7 +3,20 @@
 Active scope: 33 routines / 1,888 C section lines, 51E260..520D50 in GAME4_2.c.
 Hallway native conversion **f1b92d3f** is committed/pushed and fully qualified.
 Only mapGenReadTheme and sub_520D50 have external callers; 31 helpers can retire.
-Current physical C remains **104,307 / 148 files / zero reference C**.
+Current physical C is **104,300 / 148 files / zero reference C**.
+
+CURRENT: complete theme C baseline is qualified: **3,392 cases / 19 mandatory
+captures**, plus focused contracts. Independent default/server/highres runs match
+all captures and existing map checks (**57.752s / 63.662s / 65.888s** wall).
+The mandatory-hash smoke passes (**14.074s**); the extension bypass is removed.
+Commit/push this checkpoint before converting all 33 theme routines. Native Go
+DRAFTS live only under build/port-map-theme/native-*.go.stage; they are incomplete,
+uncompiled and must be reviewed before application. C remains **104,300 / 148
+files / zero reference C**. No native source conversion yet. Next complete the
+native implementation, remove 31 private C entries, keep two external bridges,
+and run the normal full qualification. No question. Earlier blocks are historical.
+
+
 
 ## Fixture bootstrap
 
@@ -117,3 +130,26 @@ are now mandatory in map_theme_baseline_porttest_test.go. The mandatory-hash smo
 be captured with OPENNOX_MAP_THEME_EXTEND_C=1; this never bypasses an existing
 hash. Remove that extension allowance before native conversion, once all labels
 are locked. No native theme algorithms are written yet.
+
+## Complete C baseline — 2026-09-14
+
+Prerequisite **4fcad1f5** was committed/pushed before this expansion. The complete
+baseline contains **3,392 cases / 19 captures**. New coverage includes spells,
+equipment templates and 256-value modifier boundaries, weighted choices and their
+32-item clamp, foreach rules, decoration properties/nested sets/list order,
+wall/floor edging, copy lookup and shared children, exits, prefabs, cleanup and
+52 real keyed full files (including missing/truncated files). Complete snapshots
+include allocations/disposal, input state, token bytes, counters and player state.
+
+Initial full capture passes in **13.703s**; independent default/server/highres plus
+existing map checks pass in **57.752s / 63.662s / 65.888s** wall, all 19 hashes
+identical. Mandatory smoke passes in **14.074s**. The new-label environment allowance
+has been removed: every capture must have a locked hash. Metadata is in
+build/port-map-theme/complete-captures.json and complete-variants.json; raw snapshots
+are losslessly compressed with complete-capture-archive.json. Source tests and
+mandatory hashes are committed; local snapshots are diagnostic evidence.
+
+Physical C stays **104,300 / 148 files / zero reference C**. No parser algorithm
+has been replaced yet. Native drafts under build are not applied. Keep the exact
+C behavior of shallow decoration copies and cleanup ownership during conversion;
+changing that ownership requires a separate decision and wider caller audit.

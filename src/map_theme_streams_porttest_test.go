@@ -37,7 +37,11 @@ func themeCapture(t *testing.T, label string, inputs []themeInputCase) []legacy.
 		paintString(&s.Records[7], 0, name)
 		cases[i] = s
 	}
-	out := themeRun(cases)
+	return themeCheckCapture(t, label, themeRun(cases))
+}
+
+func themeCheckCapture(t *testing.T, label string, out []legacy.PortTestPaintResult) []legacy.PortTestPaintResult {
+	t.Helper()
 	for i, r := range out {
 		if !r.Intact || !r.ControlOK {
 			t.Fatalf("%s case %d guard/control state", label, i)
@@ -57,10 +61,10 @@ func themeCapture(t *testing.T, label string, inputs []themeInputCase) []legacy.
 		if got != want {
 			t.Fatalf("%s complete capture differs from C: got %s want %s", label, got, want)
 		}
-	} else if os.Getenv("OPENNOX_MAP_THEME_EXTEND_C") != "1" {
+	} else {
 		t.Fatalf("missing locked C capture for %s", label)
 	}
-	t.Logf("%s: %d cases %x", label, len(inputs), sha256.Sum256(data))
+	t.Logf("%s: %d cases %x", label, len(out), sha256.Sum256(data))
 	return out
 }
 func themeStream(text string, op, steps int) themeInputCase {

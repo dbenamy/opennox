@@ -6,21 +6,18 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 ### Active — theme parser; hallway conversion qualified
 
-CURRENT: parser prerequisite **ff4de53d** is committed/pushed. Expanded fixtures
-now use full synthetic files, real player iteration and complete stream/settings
-captures. A new original inherited-modifier removal probe fails; the C copy order
-is corrected and its 72-case regression passes. All map checks pass (50.195s),
-and independent repeat (52.482s) matches **2,146 cases / eight complete captures**.
-All eight captures also match server/highres (**129.368s / 60.201s**). Eight
-hashes are mandatory in map_theme_baseline_porttest_test.go. locked-streams.log
-passes the mandatory-hash smoke in **8.485s**. Existing hashes always stay enforced;
-OPENNOX_MAP_THEME_EXTEND_C=1 permits only new C corpus labels while extending the
-baseline. Remove that allowance before native conversion. No source edits during
-active builds. If successful, lock the eight hashes in a theme baseline file,
-run mandatory-hash smoke, document/count/commit/push the prerequisite checkpoint,
-then broaden equipment/decor/prefab/full-theme coverage. C count stays **104,300 /
-148 files / zero reference**. No native theme conversion yet. Earlier status
-paragraphs below are historical. See MAP_THEME.md for evidence and recovery.
+CURRENT: complete theme C baseline is qualified: **3,392 cases / 19 mandatory
+captures**, plus focused contracts. Independent default/server/highres runs match
+all captures and existing map checks (**57.752s / 63.662s / 65.888s** wall).
+The mandatory-hash smoke passes (**14.074s**); the extension bypass is removed.
+Commit/push this checkpoint before converting all 33 theme routines. Native Go
+DRAFTS live only under build/port-map-theme/native-*.go.stage; they are incomplete,
+uncompiled and must be reviewed before application. C remains **104,300 / 148
+files / zero reference C**. No native source conversion yet. Next complete the
+native implementation, remove 31 private C entries, keep two external bridges,
+and run the normal full qualification. No question. Earlier blocks are historical.
+
+
 
 
 Hallway native **f1b92d3f** is committed/pushed. Theme fixture bootstrap is now
