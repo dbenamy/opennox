@@ -137,3 +137,26 @@ records execution evidence and qualification status. After repairing spell-name 
 `free(): invalid size`. Route disposal through the existing engine object-free
 service; verify both the zero result and restored live-object count. This keeps
 object-pool ownership intact. It does not redesign the engine disposal service.
+
+
+## Prefab candidate arrays — same stack-record prerequisite
+
+526550 has two six-entry candidate records represented as individual scalars
+followed by unrelated five-entry arrays. An original-C two-room probe crashes;
+use explicit six-entry arrays before locking the population baseline. This is
+the same reversible storage repair as the point/name fixes. Candidate ordering,
+nearest-six selection and link topology need independent checks as well as
+complete corrected-C captures. No other candidate-selection policy is changed.
+
+## Population item attributes — initialize the complete copied record
+
+5221A0 initializes four words of a five-word local item-attribute buffer; the
+existing attribute setter copies all five words into the object. Independent
+complete C captures agree in 26 groups, but 356 enchanted-item cases differ only
+in the fifth word. Initialize the complete 20-byte buffer before constructing
+modifiers. The explicit trailing-word regression fails on the original C. This
+is a prerequisite correction, not behavior to reproduce in Go. Review later if
+that fifth field should acquire an explicit nonzero gameplay meaning; arbitrary
+stack contents are not a defined value. Evidence: modifier-repeat-diagnosis.json,
+modifier-initialization-original.log and modifier-fixed.log under
+build/port-map-population. No physical C line-count change from this initializer.

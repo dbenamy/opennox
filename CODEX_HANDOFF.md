@@ -17,12 +17,35 @@ Next expand decoded prefab caches/markers, candidate topology/room allocation,
 population ordering and placement. Audit 526550's two scalar-plus-array records;
 staged isolated probe: build/port-map-population/prefab-candidate-probe.go.stage.
 
-Commit/push this checkpoint, summarize, then continue autonomously. No question
-pending and no new agents. Do not rerun already-applied create-fixture.py,
-extend-painting-fixture.py or repair-stack-records.py. Current source/tests/docs
-are authoritative; preserve the asset archive. Lock repeated complete C captures
-before converting the full 38-routine batch. Production builds/full suite/fresh
-unchanged headless gameplay remain required at the batch boundary.
+Prerequisite checkpoint **683b008f** is committed/pushed. The follow-up repairs
+526550's two six-element candidate arrays and initializes all five item-attribute
+words in 5221A0. Original candidate probing crashed; the original modifier
+regression fails, and repeated captures isolated 356 fifth-word differences.
+Current C: **106,609 / 149 files / zero reference** (−2 since 683b008f).
+
+Expanded **3,348 cases / 30 complete captures** repeat exactly and match across
+default/server/highres. Default population: **10.138s**. Server/highres with
+existing painting/room checks: **19.320s / 19.779s**. Default painting/room plus
+population passed before the last root-only test expansion in **18.809s**.
+Evidence: build/port-map-population/followup-qualification.json and
+followup-repeat-comparison.json. This is another prerequisite checkpoint, not
+the locked full 38-routine baseline. No population conversion has started.
+
+Fixtures exercise real decoded-cache application, room allocation/replacement,
+occupancy, inventory/modifiers/exits, ordering/themes, rectangle fit/exclusions,
+and hallway/room waypoint connections. A porttest-only loader adapter seeds
+explicit caches; file decoding is not covered by those tests. The full supplied
+image contains no AreaMap.lib (asset-filesystem-list.txt), so asset-backed prefab
+decoder integration cannot run with current assets. Add a small real-loader
+fixture if practical, and retain this explicit limitation. Review remaining
+positive prefab connections and modifier/placement boundary coverage before
+locking repeated C captures. Production builds/full suite/fresh unchanged
+headless gameplay remain required at the conversion batch boundary.
+
+Continue autonomously; no pending question and no new agents. Current source is
+authoritative. Do not rerun already-applied fixture/repair scripts or copy stale
+staged files. Preserve the asset archive. Earlier exploratory captures are now
+losslessly compressed with checksums in exploratory-capture-archive.json.
 
 Painting **56ae5728** and snapshot speedup **eea297fd** are already pushed.
 

@@ -217,7 +217,7 @@ func (f *mapRoomTestFixture) normalize(v uint32) uint32 {
 	for i := len(f.regions) - 1; i >= 0; i-- {
 		r := f.regions[i]
 		start := uint32(uintptr(r.ptr))
-		if v >= start && v-start < uint32(r.size) {
+		if v == start || (v >= start && v-start < uint32(r.size)) {
 			return r.id + v - start
 		}
 	}

@@ -15,7 +15,7 @@ func (p *PortTestPaintOwners) PopulationTypes(exitXfer unsafe.Pointer) {
 	s := p.S
 	s.Types.byID["spellbook"] = s.Types.byInd[3]
 	s.Types.byID["playerstart"] = s.Types.byInd[1]
-	for _, name := range []string{"PopulationExit", "ExitNorthMarker", "ExitSouthMarker", "ExitEastMarker", "ExitWestMarker"} {
+	for _, name := range []string{"PopulationExit", "ExitNorthMarker", "ExitSouthMarker", "ExitEastMarker", "ExitWestMarker", "PopulationWeapon", "PopulationArmor"} {
 		id := uint16(len(s.Types.byInd))
 		typ := &ObjectType{s: &s.Types, ind: id, ind2: id, id: strings.ToLower(name), class: object.ClassSimple, allowed: true, Mass: 1}
 		if name == "PopulationExit" {
@@ -23,6 +23,15 @@ func (p *PortTestPaintOwners) PopulationTypes(exitXfer unsafe.Pointer) {
 			typ.CollideDataSize = 80
 			typ.CollideData, _ = alloc.Malloc(80)
 			p.typeData = append(p.typeData, typ.CollideData)
+		}
+		if name == "PopulationWeapon" || name == "PopulationArmor" {
+			typ.class = object.ClassWeapon
+			if name == "PopulationArmor" {
+				typ.class = object.ClassArmor
+			}
+			typ.InitDataSize = 20
+			typ.InitData, _ = alloc.Malloc(20)
+			p.typeData = append(p.typeData, typ.InitData)
 		}
 		s.Types.byInd = append(s.Types.byInd, typ)
 		s.Types.byID[typ.id] = typ

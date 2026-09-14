@@ -17,8 +17,8 @@ records and pointer-normalized topology, object lifecycle counters, all touched
 selection/prefab globals, both random-stream tails, return bits, guards and x87
 PC53/nearest state. Seed linked prefab metadata and decoded object lists in the
 existing cache so remaining C lookup/enumeration paths execute normally. Add a
-bounded asset-backed integration check for decoding/placement; asset availability
-is already established locally. Preserve cache ownership and allocator boundaries.
+bounded real-file integration check for decoding/placement. General game assets
+are available, but the supplied image lacks the required AreaMap.lib prefab library. Preserve cache ownership and allocator boundaries.
 
 Cover weighted branch thresholds, randomized ordering with full list integrity,
 empty/single/multiple lists, explicit and wildcard items/spells, modifier chances
@@ -166,3 +166,82 @@ represented as a scalar plus a separate five-element local array. A staged
 isolated probe is in build/port-map-population/prefab-candidate-probe.go.stage.
 Recheck connected-list topology and all positive paths before locking the full
 baseline. Production builds/full-suite/gameplay remain batch-boundary checks.
+
+
+Prerequisites committed/pushed as **683b008f**; continue the full baseline.
+The subsequent candidate probe crashes in 526550 when the list has two rooms.
+Both scalar-plus-five-element records are now explicit six-element arrays.
+One-to-eight-room candidate chains pass order, limit and link checks. C is back
+to **106,609 / 149 / zero reference** (−2); this follow-up is not committed yet.
+Evidence: candidate-probe.log (original) and candidate-arrays.log (corrected).
+
+The expanded fixture sets each case's game flags before preallocating objects,
+fixing a dependence on the preceding case. It tracks occupancy grid rows and
+allocated metadata, including freed-state snapshots and zero-sized allocation
+identity without reading beyond the allocation. Startup modifier chances and
+prefab flag characters come from immutable blob data.
+
+The real prefab-selection service 502D70 reloads the file even when a decoded
+cache is present. For bounded selection/geometry tests, a **porttest-only linker
+wrapper** supplies an explicitly seeded decoded cache and records load count and
+index. Enumeration, metadata processing and room operations still execute their
+real production implementations. The wrapper delegates to the real loader when
+that fixture option is off; production binaries contain neither the wrapper nor
+its linker flag. Asset-backed decoding/placement remains a separate integration
+requirement; seeded-cache tests must not be described as exercising file decoding.
+
+
+Expanded C tests through ordering pass in **7.625s** (ordering.log). Coverage now
+includes required/optional prefab selection, nearest-six selection in all four
+directions with randomized input order, actual room occupancy/replacement,
+weighted inventories, shuffled population lists with full forward/back links,
+actual object counts, and real waypoint creation plus all pair connections.
+A build-tagged observer at the native room-release boundary records freed rooms
+without reading released memory; production uses an empty inlineable observer.
+The population fixture owns waypoint cleanup through the existing server owner.
+
+Further tests for actual decoded-cache application, exit placement and modifier
+selection are in progress in placement.log. The file decoder alone is replaced
+by the explicit seeded-cache service option; the prefab application routine is
+being exercised directly. All population captures remain exploratory until the
+entire scope and repeatability audit finish. Existing painting/room hashes stay
+mandatory and must pass unchanged after fixture extensions.
+
+The placement expansion passes in **9.118s**, covering 27 complete capture groups.
+An independent repeat agrees in 26 groups and isolates 356 differences to the
+fifth word of enchanted-item attribute data. The C caller initialized only four
+words but its setter copies five. A direct regression fails before repair; the
+complete buffer is now zero-initialized. Corrected population plus existing
+painting/room checks are running in modifier-fixed.log. See the decision record
+and modifier-repeat-diagnosis.json; baseline locking remains pending.
+
+## Qualified expanded prerequisite checkpoint
+
+**3,348 cases / 30 complete captures** repeat byte-for-byte and match default,
+server and highres. Population-only default passes in **10.138s**; server/highres
+with existing painting/room tests pass in **19.320s / 19.779s**. Default painting/room
+plus population passed in **18.809s** before the final root-only corpus expansion.
+The item fifth word is consistently zero. New coverage includes stable distance
+sorting (ties, reverse/permuted lists), theme thresholds, uppercase/case-sensitive
+prefab flags, rectangle fit/exclusions, and real hallway waypoint connections.
+Evidence: followup-qualification.json and followup-repeat-comparison.json.
+
+Prefab dimensions are truncated to cells before random position selection; an
+attempt can pass that coarse check and fail exact rectangle containment. Tests
+preserve that behavior, independently assert centered success and oversized/
+excluded rejection, and capture all state/RNG on both paths. Do not silently
+change this placement policy during conversion.
+
+The supplied 7z contains a filesystem image. Listing the entire image confirms
+**no AreaMap.lib**; the extracted tree also lacks it. The loader's filename comes
+from the original startup data. Asset-backed prefab decoding is therefore not
+currently available; this differs from ordinary asset-backed gameplay validation,
+which remains available and required. Seeded-cache application is covered; add a
+small synthetic real-file fixture if practical before locking the baseline.
+No new downloads or replacement asset assumptions are needed for this checkpoint.
+
+The full population baseline is still **not locked**, and all 38 routines remain
+C. Remaining review includes positive prefab connection service calls and
+modifier/placement edge coverage. C count is **106,609 / 149 files / zero reference**.
+Earlier exploratory captures are gzip-compressed losslessly; their original byte
+counts and SHA-256 checksums are in exploratory-capture-archive.json.

@@ -72,7 +72,7 @@ func mapRoomByte(p unsafe.Pointer, off int) *byte { return (*byte)(unsafe.Add(p,
 func mapRoomCalloc(count uint32, size uintptr) unsafe.Pointer {
 	return C.calloc(C.size_t(count), C.size_t(size))
 }
-func mapRoomRelease(p unsafe.Pointer) { C.free(p) }
+func mapRoomRelease(p unsafe.Pointer) { mapRoomBeforeRelease(p); C.free(p) }
 func mapRoomScratchAlloc() uint32 {
 	p := mapRoomCalloc(1, 8192)
 	*mapRoomGlobalWord(3) = mapRoomRaw(p)

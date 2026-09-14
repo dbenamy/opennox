@@ -162,6 +162,7 @@ type paintTestExtension struct {
 	globals   map[string]*uint32
 	constants map[uint32]uint32
 	setup     func(*server.PortTestPaintOwners) func()
+	reset     func(PortTestPaintSpec)
 	before    func(*paintTestFixture, PortTestPaintSpec)
 	invoke    func(*paintTestFixture, int, [6]uint32) uint32
 	after     func(*paintTestFixture, int, uint32)
@@ -523,6 +524,9 @@ func portTestMapPainting(cases []PortTestPaintSpec, owner func(*server.Server) (
 		}
 		if variations == 0 && !sp.ExplicitWallLimits {
 			variations = 4
+		}
+		if extra != nil && extra.reset != nil {
+			extra.reset(sp)
 		}
 		owners.Reset(sp.Seed, cycle, variations)
 		out = append(out, paintTestCase(sp, owners, globs, wantCW, extra))

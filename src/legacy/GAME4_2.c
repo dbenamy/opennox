@@ -2292,7 +2292,7 @@ uint32_t* nox_xxx_mapGenMakeEnchantedItem_5221A0(char* a1, char* a2, int a3) {
 	int v9;          // ebx
 	const char* v10; // edi
 	int v11;         // eax
-	char v13[20];    // [esp+10h] [ebp-14h]
+	char v13[20] = {0}; // All five attribute words are copied into the item.
 
 	if (!strcmp("*", a1)) {
 		v3 = nox_xxx_mapGenRandFunc_526AC0(0, a3 - 1);
@@ -3618,10 +3618,8 @@ int sub_526550(int a1, int a2) {
 	int v21;          // ecx
 	int v23;          // [esp+10h] [ebp-38h]
 	int v24;          // [esp+14h] [ebp-34h]
-	int v25;          // [esp+18h] [ebp-30h]
-	int v26[5] = {0}; // [esp+1Ch] [ebp-2Ch]
-	int v27;          // [esp+30h] [ebp-18h]
-	int v28[5];       // [esp+34h] [ebp-14h]
+	int v25[6] = {0}; // candidate squared distances
+	int v27[6] = {0}; // candidate room pointers
 	int v29;          // [esp+4Ch] [ebp+4h]
 
 	v2 = 16 * (a2 + 5);
@@ -3630,7 +3628,7 @@ int sub_526550(int a1, int a2) {
 	v5 = 0;
 	v23 = *(uint32_t*)(v2 + a1);
 	v6 = *(uint32_t*)(v2 + a1 + 4);
-	v27 = 0;
+	v27[0] = 0;
 	v24 = v6;
 	v29 = 0;
 	v7 = (int*)nox_xxx_mapGenGetTopRoom_521710();
@@ -3665,22 +3663,22 @@ int sub_526550(int a1, int a2) {
 				}
 				v10 = v8 * v8 + v9 * v9;
 				if (v3 >= 24) {
-					if (*(&v25 + v5) > v10) {
-						*(&v27 + v5) = (int)v7;
-						*(&v25 + v5) = v10;
+					if (*(&v25[0] + v5) > v10) {
+						*(&v27[0] + v5) = (int)v7;
+						*(&v25[0] + v5) = v10;
 					}
 				} else {
 					++v4;
-					*(int*)((char*)&v27 + v3) = (int)v7;
-					*(int*)((char*)&v25 + v3) = v10;
+					*(int*)((char*)&v27[0] + v3) = (int)v7;
+					*(int*)((char*)&v25[0] + v3) = v10;
 					v29 = v4;
 					v3 += 4;
 				}
-				v11 = v25;
+				v11 = v25[0];
 				v5 = 0;
 				v12 = 1;
 				if (v3 > 4) {
-					v13 = v26;
+					v13 = (&v25[1]);
 					do {
 						if (*v13 > v11) {
 							v5 = v12;
@@ -3700,14 +3698,14 @@ int sub_526550(int a1, int a2) {
 			v15 = v4 - 1;
 			if (v4 - 1 > 0) {
 				do {
-					v16 = *(&v25 + v14);
-					v17 = v26[v14];
+					v16 = *(&v25[0] + v14);
+					v17 = (&v25[1])[v14];
 					if (v16 > v17) {
-						v18 = *(&v27 + v14);
-						*(&v25 + v14) = v17;
-						*(&v27 + v14) = v28[v14];
-						v26[v14] = v16;
-						v28[v14] = v18;
+						v18 = *(&v27[0] + v14);
+						*(&v25[0] + v14) = v17;
+						*(&v27[0] + v14) = (&v27[1])[v14];
+						(&v25[1])[v14] = v16;
+						(&v27[1])[v14] = v18;
 						v14 = -1;
 					}
 					++v14;
@@ -3718,7 +3716,7 @@ int sub_526550(int a1, int a2) {
 	}
 	v19 = 0;
 	if (v4 > 0) {
-		v20 = &v27;
+		v20 = &v27[0];
 		do {
 			v21 = *v20;
 			*(uint32_t*)(*v20 + 72) = 0;
