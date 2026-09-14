@@ -45,8 +45,10 @@ func PortTestMapGrowth(cases []PortTestPaintSpec, owner func(*server.Server) (Se
 	for i := 0; i < 5; i++ {
 		ext.globals[fmt.Sprintf("roomGlobal%d", i)] = mapRoomGlobalWord(i)
 	}
+	ext.globals["waypointKind"] = memmap.PtrUint32(0x973F18, 35972)
+	ext.globals["waypointAutoConnect"] = memmap.PtrUint32(0x973F18, 35976)
 	var frees []func()
-	for _, name := range []string{"growthInitGrid", "gameFlags"} {
+	for _, name := range []string{"growthInitGrid", "gameFlags", "waypointHead", "waypointPending"} {
 		p, free := alloc.New(uint32(0))
 		ext.globals[name] = p
 		frees = append(frees, free)
@@ -133,6 +135,22 @@ func PortTestMapGrowth(cases []PortTestPaintSpec, owner func(*server.Server) (Se
 		defer themeObserve(false, 0)
 		return uint32(C.growthInvoke(C.int(op), (*C.uint32_t)(unsafe.Pointer(&args[0]))))
 	}
-	ext.finish = func(f *paintTestFixture) { themeObserve(false, 0); active = nil }
+	ext.after = func(f *paintTestFixture, op int, ret uint32) {
+		for _, head := range []*server.Waypoint{f.owners.S.WPs.List, f.owners.S.WPs.Pending} {
+			for wp := head; wp != nil; wp = wp.WpNext {
+				if f.known(wp.C()) == nil {
+					f.register(wp.C(), int(unsafe.Sizeof(server.Waypoint{})), "waypoint", false)
+				}
+			}
+		}
+		*ext.globals["waypointHead"] = mapRoomRaw(unsafe.Pointer(f.owners.S.WPs.List))
+		*ext.globals["waypointPending"] = mapRoomRaw(unsafe.Pointer(f.owners.S.WPs.Pending))
+	}
+	ext.finish = func(f *paintTestFixture) {
+		themeObserve(false, 0)
+		active = nil
+		f.owners.S.Nox_xxx_waypoint_5799C0()
+		f.owners.S.Nox_xxx_waypointDeleteAll_579DD0()
+	}
 	return portTestMapPainting(cases, owner, ext)
 }

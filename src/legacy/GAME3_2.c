@@ -1827,7 +1827,7 @@ float* nox_xxx_mapgen_Doors_4D4790() {
 				switch (v4) {
 				case 0:
 				case 1:
-					a1.field_0 = (int)v1[1];
+					a1.field_0 = *((int*)v1 + 1);
 					if (v4 == 1) {
 						a1.field_4 = *((uint32_t*)v1 + 2) + *((uint32_t*)v1 + 4);
 					} else {
@@ -1963,7 +1963,7 @@ float* nox_xxx_mapgen_Doors_4D4790() {
 						a1.field_0 = *((uint32_t*)v1 + 1) - 1;
 					}
 					v30 = 0;
-					a1.field_4 = (int)v1[2];
+					a1.field_4 = *((int*)v1 + 2);
 					if (*((int*)v1 + 4) <= 0) {
 						goto LABEL_115;
 					}

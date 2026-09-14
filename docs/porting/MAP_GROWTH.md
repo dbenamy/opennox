@@ -59,3 +59,47 @@ The prerequisites are qualified and ready to commit/push. Summary metadata is in
 prerequisite-qualification.json. Next expand complete growth C captures from the
 unapplied corpus.go.stage draft, add door/frontier cases, repeat and lock all hashes
 before native conversion. No compile/test is active.
+
+## Baseline expansion after prerequisite commit
+
+Prerequisites **2fc007db** are committed/pushed. Five C capture groups now pass
+**4,068 cases** plus the 331 contracts in **11.330s**: branch choices (3,528),
+initial layouts (168), recursion guards (100), room expansion (128), and hall
+expansion (144). These are not locked yet. The initial c-first run reached an
+uninitialized renderer because the fixture used 1<<22 instead of the existing
+GameFlag22 constant (0x200000). Use the named constant, matching population's
+fixture; c-fixed.log passes. No production rendering change was needed.
+
+The fixture now captures real waypoint records, list heads and cleanup for door
+cases. The four-direction positive door probe is compiling in door-probe.log.
+That snapshot extension means earlier captures must be regenerated before final
+locking. Add frontier/door and bounded geometry/obstruction coverage, repeat every
+C capture across variants, then lock/commit/push before native conversion.
+
+The full eight-group corpus passes **5,765 cases** plus focused contracts in
+**25.545s** (c-complete.log), including 1,216 door, 97 repeated-frontier and 384
+obstruction cases. Waypoints use their real server owner, are fully captured, and
+are disposed between fixture cases.
+
+A translated-room regression then found that two door-scan reads treated integer
+grid coordinates as floats. The original positive-offset case6 produced no doors
+or waypoints instead of one/two (door-translations-original.log). Restore integer
+word reads for GridX/GridY. The correction changes no physical C line count. All
+16 translation cases now capture full state and assert the corresponding projected
+door-position shift as well as counts. Corrected full growth captures are running
+in c-final.log; qualify this correction with the complete baseline before porting.
+
+## Locked corrected C baseline
+
+All **5,781 cases / nine full captures**, plus **335 separate contracts**, pass.
+The additional 16 translated-door contracts are included in their capture count.
+Default repeat / server / highres reproduce every hash with prior map checks in
+**82.945 / 161.009 / 93.334s** wall. The earlier eight hashes are unchanged by the
+two integer grid-coordinate reads. All hashes are mandatory in the committed
+fixture; the extension bypass is removed. Locked smoke passes in **25.113s**.
+
+Evidence: baseline-captures.json, baseline-variants.json,
+baseline-capture-archive.json, early-capture-archive.json and baseline-locked.log
+under build/port-map-growth. Complete captures are gzip archived with verified
+hashes. Physical C remains **102,416 / 148 files / zero reference**.
+Commit/push this corrected baseline before converting the seven routines.

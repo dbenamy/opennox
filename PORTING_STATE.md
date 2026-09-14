@@ -4,32 +4,25 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Active — growth C prerequisites qualified; baseline next
+### Active — growth C baseline qualified; native conversion next
 
-Theme native **14b1caa7** is qualified and pushed: 33 routines, −1,881 C lines,
-3,392 unchanged cases / 19 captures; broad variants/builds/full-suite/gameplay pass.
-Evidence: build/port-map-theme/qualification.json.
+All seven growth routines remain C. The corrected baseline is locked at **5,781
+cases / nine complete capture groups**, plus **335 separate contracts**. Default
+repeat/server/highres captures match exactly (82.945 / 161.009 / 93.334s wall),
+including prior map checks. Mandatory-hash smoke passes in **25.113s** with no
+extension bypass. Integer GridX/GridY door-scan reads now pass 16 translated-room
+contracts; the prior eight hashes are unchanged. Physical C **102,416 / 148 files /
+zero reference** (no line delta for this correction).
 
-Growth C prerequisites are qualified and ready to commit/push. The original
-stronger fill probe found invalid hallway kind1107434383 from indexing four
-separate locals as an array. C fill now uses directions[4]. The original merge
-probe also failed: config mergeRate100 produced [0,1] north connections as only
-an unrelated named word changed. All four merge reads now use the real config
-blob. **331 contracts**, plus existing map checks and mandatory hashes, pass:
-default **57.006s** root time, server/highres **138.224 / 67.847s** wall.
-Evidence: build/port-map-growth/prerequisite-qualification.json and MAP_GROWTH.md.
-Physical C **102,416 / 148 files / zero reference**, −3. All seven growth routines
-remain C. No active compile/test. Count/docs are updated; commit/push next.
-
-After pushing, apply build/port-map-growth/corpus.go.stage as a new root test file
-and exercise it with OPENNOX_MAP_GROWTH_EXTEND_C=1 and an absolute
-OPENNOX_MAP_GROWTH_CAPTURE prefix. This draft is NOT applied/compiled yet. It
-covers branch choices/layouts/recursion guards/room and hall expansion; add door
-and frontier coverage before final locking. Extend the fixture with real waypoint
-state/cleanup for door cases using population fixture patterns. Repeat and lock
-complete C captures before any native conversion. No source edits during builds.
-No question or new agents; preserve original asset archive. Continue batches,
-qualify/count/document/commit/push and onward.
+Next convert the seven connected growth routines (1,079 C section lines), retaining
+only the three externally called C bridges. Four private helpers can retire. The
+baseline and translated-door correction must be committed/pushed first. Evidence:
+build/port-map-growth/baseline-{captures,variants,capture-archive}.json and
+baseline-locked.log. All raw captures are recoverable from verified gzip archives.
+Unapplied build/port-map-growth/native-layout.go.stage is an initial draft only;
+review against current C. No test process is active. Continue through native
+qualification, count/docs/commit/push and subsequent batches. No question or new
+agents. Preserve the asset archive.
 
 ### Completed — map painting, borders, walls and door placement
 

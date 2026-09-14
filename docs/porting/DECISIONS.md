@@ -223,3 +223,12 @@ when an unrelated named word was zero and one merge when it was 100. This is a
 deliberate storage correction, consistent with the earlier hallway prerequisite.
 Four directions, 0/50/100 rates, eight seeds and independently varied named values
 verify that actual configuration controls the result and random draws.
+
+### Door scans read integer grid coordinates (2026-09-14; review later)
+
+Restore integer GridX/GridY loads in the two directional door scans. The source
+used a float pointer to a shared room record and converted the integer words as
+floats; an otherwise equivalent translated-room probe produced no doors/waypoints.
+The expanded contract checks both object counts and projected coordinate shifts
+for positive/negative translations in all four directions. Qualify this small C
+correction with the full growth baseline before native conversion.

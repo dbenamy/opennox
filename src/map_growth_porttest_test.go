@@ -6,12 +6,13 @@ import (
 	"testing"
 	"unsafe"
 
+	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/legacy"
 	"github.com/opennox/opennox/v1/server"
 )
 
 func growthBase() legacy.PortTestPaintSpec {
-	s := legacy.PortTestPaintSpec{Seed: 12345, Globals: map[string]legacy.PortTestMapRoomArg{"gameFlags": roomValue(1 << 22), "growthInitGrid": roomValue(1)}}
+	s := legacy.PortTestPaintSpec{Seed: 12345, Globals: map[string]legacy.PortTestMapRoomArg{"gameFlags": roomValue(int32(noxflags.GameFlag22)), "growthInitGrid": roomValue(1)}}
 	s.Records = []legacy.PortTestMapRoomRecord{roomRecord(1116), roomRecord(376), roomRecord(376)}
 	s.Records[0].Words = map[int]uint32{4: 5, 8: 1, 12: 3, 16: 1, 20: 3, 24: 40, 28: 20, 32: 5, 36: 1, 40: 20, 48: 100, 52: 100, 56: 1, 68: 32, 72: 3}
 	return s
