@@ -1,13 +1,12 @@
 # Radio-button selection and drawing
 
-Status: C baseline and GUI lifecycle correction fully qualified; radio routines
-remain C until the next conversion commit.
+Status: converted and fully qualified against C baseline **b5cf991e**.
 
 Scope: five C callbacks in GAME3.c (004A84E0 through 004A93C0), 296 physical
 lines. Input, exclusive group selection, focus/text updates, callback setup and
-colored/image rendering move together. The constructor is already Go. No C
+colored/image rendering moved together. The constructor is already Go. No C
 callers remain after replacing its two Go wrapper references, so all five C
-interfaces can retire.
+interfaces are retired.
 
 The actual GUI fixture owns three radio buttons and a non-radio sibling. Tests
 observe group state during notification callbacks to prove ordering, including
@@ -81,3 +80,31 @@ source, has the notification owner set selection and change group. It distinguis
 keyboard XOR from mouse/programmatic OR and proves sibling iteration observes
 the changed group. Seven focused tests pass under each configuration;
 existing C capture hashes remain unchanged.
+
+
+## Native conversion and qualification
+
+All five radio callbacks are native Go; all five private C interfaces and their
+prototypes are removed. The existing Go constructor directly registers Go
+callbacks and retains its qualified ownership wrapper. All **15,874 frozen
+results / two groups** remain exact, including raw UTF-16 text and callback
+ordering. Independent lifecycle, allocation and callback-mutation contracts pass.
+
+Native qualification: accumulated **727** (one expected optional skip), affected
+server **93** / highres **94**, with every selected root test started
+and completed. Three production builds pass ELF32/i386/SSE2/CGO and symbol checks:
+five retired interfaces and test helpers are absent. The full asset suite retains
+exactly 1,553 known failure entries and 15 passing / 3 failing / 32 no-test packages.
+Fresh headless gameplay passes in 35.717s with null audio and unchanged
+reference comparison. Local qualification.json records the evidence.
+
+Production C is **90,583 physical lines / 101 files**, a reduction of **296 lines**,
+with zero test-reference C. Accumulated frozen coverage is **391,692 results /
+1,105 groups**, plus independent contracts. The shared GUI correction changes
+lifecycle behavior intentionally; radio selection, drawing and text expectations
+were preserved. Other GUI screens are not individually claimed as qualified by
+the warrior scenario; the independent contracts cover the mechanism and radio /
+slider allocations, and the broader suite checks existing behavior.
+
+All seven focused native tests and both capture groups passed on the first native
+attempt (167.108s), without implementation corrections or expectation changes.

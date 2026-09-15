@@ -14,14 +14,12 @@
 
 ## Current status
 
-The shared object-renderer conversion is complete. The user has resumed autonomous
-porting, one connected batch at a time through qualification, docs, commit and push.
-Shared clipping/raster helpers and progress-bar UI drawing are also complete.
-Slider widgets and their input, value and drawing callbacks are also complete.
-The current batch covers radio-button selection, input and rendering.
-See [PORTING_STATE.md](PORTING_STATE.md) for the latest qualification, commits and
-remaining C count, and [the radio-widget report](docs/porting/CLIENT_RADIO.md)
-for this batch's scope, test coverage and limitations.
+Radio-button selection, input, text and rendering are converted, alongside a
+qualified correction to deferred GUI cleanup and radio-owned data release.
+Continue autonomous porting one connected batch at a time through qualification,
+docs, commit and push. See [PORTING_STATE.md](PORTING_STATE.md) for the current
+checkpoint and C count, and [the radio-widget report](docs/porting/CLIENT_RADIO.md)
+for scope, evidence and compatibility decisions.
 
 ## Goal and target
 
