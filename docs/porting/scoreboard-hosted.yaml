@@ -1,0 +1,50 @@
+# Local hosted estate observer, qualified C scoreboard reference 0b3ed13d.
+# Start with -autosrv -port 18590 -autoexec "load estate" and fresh assets/save.
+# Input coordinates refer to the 1280x960 X display; game frames are 1024x768.
+steps:
+  - action: click
+    name: dismiss message of the day
+    x: 579
+    y: 413
+    dt: 600
+  - action: screen
+    name: hosted_gameplay
+    dt: 80
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 67, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 67, pressed: false}
+  - action: screen
+    name: scoreboard_players
+    dt: 80
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 67, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 67, pressed: false}
+  - action: screen
+    name: scoreboard_teams
+    dt: 80
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 67, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 67, pressed: false}
+  - action: screen
+    name: scoreboard_top_three
+    dt: 80
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 67, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 67, pressed: false}
+  - action: screen
+    name: scoreboard_closed
+    dt: 80
+  - action: quit
+    dt: 20

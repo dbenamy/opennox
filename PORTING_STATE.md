@@ -13,31 +13,38 @@ an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LO
 
 <!-- current-checkpoint -->
 
-## Current — briefing family complete; scoreboard baseline next
+## Current — scoreboard C baseline qualified; Go translation next
 
-Briefing window Go conversion is qualified: **nine routines / 320 C lines
-removed**, **78,657 / 92 files / zero reference C**. C baseline a46a62e5 and
-presentation adfe6fa5 are pushed. Five actual C entries remain, twelve private
-interfaces retire. All **840 results / 22 groups** match unchanged.
+Briefing-window conversion **0b3ed13d is committed/pushed**. It removed nine
+routines / 320 C lines; **78,657 / 92 files / zero reference C** remain. All 840
+briefing results match. Complete accumulated qualification passed in all three
+targets, with the existing optional skip; production builds/ABI, exact full-assets
+known failures and eight fresh chapter checkpoints all passed. Highres root took
+598.823s: allow more margin before the next complete-corpus milestone.
+See [BRIEFING_WINDOW.md](docs/porting/BRIEFING_WINDOW.md).
 
-Full accumulated tests completed **974 default / 551.131s**, **971 server /
-628.189s**, and **974 highres /
-623.296s**, with the expected optional skip and no failures.
-All three production builds/interface audits pass. Full-assets results remain
-exactly 1,553 known failure entries (15 pass / three fail / 32 skip packages).
-Fresh chapter gameplay matches all eight checkpoints. All source-reading jobs
-joined; fingerprints unchanged. See [BRIEFING_WINDOW.md](docs/porting/BRIEFING_WINDOW.md).
+Applied **test-only scoreboard C fixtures**, with all expectations frozen and
+qualified. Production is unchanged. Scope is 31 connected routines /
+1,504 function-block lines; see [SCOREBOARD.md](docs/porting/SCOREBOARD.md) and
+build/port-scoreboard/README.md for remaining coverage and draft caveats.
 
-Next: scoreboard/rank, about 31 connected routines / 1,504 function-block lines.
-Ignored scope/caller audits and **unapplied, untested development fixture drafts**
-are under build/port-scoreboard. README.md records missing coverage and draft
-caveats. Start the actual C baseline, qualify/repeat/freeze it before production
-translation. Preserve the guirank.c window global or migrate all bindings when
-removing that file; function-block count is not net physical C removal.
+Affected C qualification completed in all three targets: 286/284/286 roots,
+all 2,025 original results exact. Added 112 actual long-name record/draw results;
+all **2,137 results / eighteen groups** now have frozen expectations.
+Final locked fifteen-root family passed all three targets: default 50.224s,
+server 49.019s, highres 49.462s. Every frozen result matches; source unchanged.
+All readers joined; no active job.
+No production source changes; ignored native_state/native_collect.go.stage drafts
+are incomplete/unapplied. Other old fixture stages are stale, not recovery inputs.
 
-No active test/build reader and no user question pending. Commit/push the qualified
-window chunk and docs before applying scoreboard drafts; then continue autonomously.
-Original assets/archive untouched. Never edit source while readers run.
+Exact production fingerprints match qualified 0b3ed13d, so its builds/full-assets/
+chapter evidence is reused. Corrected local hosted scoreboard gameplay has a fresh
+five-checkpoint repeat (30.099s, updates false), preserved by the tracked scenario
+and pixel manifest. Next commit/push this C baseline, then translate the connected family. No question pending.
+
+Old derived Go cache entries (118 files / 2,036,853,907 bytes) were removed only
+after all prior readers joined; manifest build/port-scoreboard/cache-pruned.json.
+Original assets/archive untouched. No question pending; continue autonomously.
 
 <!-- /current-checkpoint -->
 

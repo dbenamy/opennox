@@ -20,8 +20,10 @@ removed **320 C lines / nine routines**; all **840 briefing results** are unchan
 Complete accumulated tests passed in all three targets, as did production builds,
 known-failure comparison and fresh chapter gameplay. About **79k C lines remain**:
 **78,657 physical lines in 92 production files**, with zero test-reference C.
-Next: the connected scoreboard/rank family, approximately **31 routines / 1,500
-function-block lines**, starting with actual-owner baseline fixtures.
+Next: translate the connected scoreboard/rank family, **31 routines / 1,504
+function-block lines**. Its C baseline is frozen: 2,137 actual-owner results,
+three-target affected and locked tests, and fresh hosted-game screenshots pass.
+See [the scoreboard report](docs/porting/SCOREBOARD.md).
 See [the window report](docs/porting/BRIEFING_WINDOW.md),
 [the presentation report](docs/porting/BRIEFING.md) and [PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain

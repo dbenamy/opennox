@@ -1,0 +1,43 @@
+{
+  "baseline_production_revision": "0b3ed13d",
+  "scenario": "docs/porting/scoreboard-hosted.yaml",
+  "startup_args": [
+    "-autosrv",
+    "-port",
+    "18590",
+    "-autoexec",
+    "load estate"
+  ],
+  "pixel_format": "tightly packed row-major NRGBA bytes",
+  "environment": {
+    "GODEBUG": "randautoseed=0",
+    "Xvfb": "1280x960x24",
+    "ALSOFT_DRIVERS": "null"
+  },
+  "frames": {
+    "hosted_gameplay.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "022ceee79287505630c19864c93f1de116c287f5bd8b3d0e9f162fa4e2d36cce"
+    },
+    "scoreboard_closed.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "301c617497e548e3f70d0eeeab7192813f65814cb53ee1920002dda13b770280"
+    },
+    "scoreboard_players.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "e12ed1ce1e9cd44161f492d0bc8263a52d7a80c2abf96cadbc0cb28300a74562"
+    },
+    "scoreboard_teams.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "45fbdf0f619dbf11f8e17e9b6de43644f27d08d1fb467160c82c6d09dd8c6f18"
+    },
+    "scoreboard_top_three.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "2b91038203c324e0fe65fdf0d0d8567dbd60032f5d36d57447c4438f8e00fcaf"
+    }
+  },
+  "qualification": "Separate fresh run passed all five E2E screenshot comparisons with golden updates disabled. Manifest hashes describe the original captured frames.",
+  "limits": [
+    "Local hosted estate observer with one player row; no populated team rows or remote participants in this scenario. Populated player/team behavior requires actual-owner fixtures."
+  ]
+}

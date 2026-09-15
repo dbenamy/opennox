@@ -205,3 +205,18 @@ record decoded NRGBA buffers and each frame's dimensions. Early frames are
 intentional: the E2E harness shortens chapter duration. This scenario covers an
 ordinary chapter transition; quest statistics/instructions use the actual-owner
 and shipped-window fixtures. See [the briefing report](BRIEFING.md).
+
+## Hosted scoreboard reference
+
+At the scoreboard C baseline, use [scoreboard-hosted.yaml](scoreboard-hosted.yaml)
+and [the decoded pixel hashes](scoreboard-hosted-pixels.json) with the qualified
+0b3ed13d binary (or the unchanged-production scoreboard baseline). Run the usual
+fresh asset/save copy, seeded random source, null audio and 1280×960 Xvfb with
+`-autosrv -port 18590 -autoexec "load estate"`. These flags host the estate map
+locally; ordinary solo play does not accept F9 through the online-only control
+handler. The scenario dismisses the initial dialog using X-display coordinates,
+then checks gameplay, Teams and Players, Teams, Top 3 Players and closed state.
+Regenerate references independently and compare hashes; validate with updates
+disabled. The local artifact reference is client-scoreboard-hosted-develop3, with
+a separate accepted fresh run client-scoreboard-hosted-c-repeat. This scene has
+one player and no populated teams; the actual-owner fixtures cover those rows.
