@@ -36,3 +36,10 @@ func PortTestUIInventoryWords() ([]*uint32, func()) {
 		}
 	}
 }
+
+// PortTestUIInventoryNativeLayout checks the native view of shared C storage.
+func PortTestUIInventoryNativeLayout() [6]uintptr {
+	var cell uiInventoryCell
+	var found uiInventoryLookup
+	return [6]uintptr{unsafe.Sizeof(cell), unsafe.Offsetof(cell.Codes), unsafe.Offsetof(cell.Equipped), unsafe.Offsetof(cell.Count), unsafe.Sizeof(found), unsafe.Offsetof(found.Index)}
+}

@@ -141,6 +141,7 @@ target build selection and linker evidence.
 | Localized item-hover names and cursor tooltip storage | 98 | 87,884 | −328 | 0 |
 | Meter baseline sound-observation ABI (tagged; no algorithm) | 98 | 87,888 | +4 | 0 |
 | Health/mana, potion, weapon and charge meters | 97 | 86,818 | −1,070 | 0 |
+| Client inventory queries, scalar state and item updates | 97 | 86,422 | −396 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

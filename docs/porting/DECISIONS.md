@@ -663,3 +663,22 @@ reads past the final cell. Keep the extra valid21st row for searches and the
 existing20-row limit for visible coordinate queries. Cover last-cell/last-stack
 hits, missing codes and duplicate search priority. This fixes an invalid read
 without changing valid cell behavior; the original invalid read is not an oracle.
+
+## Native client inventory stack-code bound — review later
+
+The shared148-byte cell contains32 stored item codes. Bound native code searches
+to min(count,32) when the stored count byte is larger. The old C loop would read
+past the code array. Preserve count getters and all valid0..32 behavior. A native
+contract verifies first/last stored-code hits, missing-code termination and the
+unchanged raw255 count getter; no invalid C read is used as a baseline.
+
+## Hallway qualification mismatch — investigate on recurrence
+
+The first inventory native accumulated run had one hallway-route hash mismatch.
+No source or oracle changed before hallway-alone, inventory-plus-hallway, exact
+preceding-prefix and full accumulated repeats all passed. Preserve the first
+failure and full repeat captures in the inventory report. Its cause is unknown;
+there is no evidence to call it fixed or attribute it to overlapping test jobs.
+Proceed with the qualified reversible inventory conversion under standing user
+authorization, and add automatic full mismatch capture as a separate diagnostic
+follow-up so any recurrence has inspectable data without another replay.

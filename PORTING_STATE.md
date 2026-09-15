@@ -2,47 +2,46 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 87k lines** — exactly **86,818 physical lines** in
+**Rough C remaining: about 86k lines** — exactly **86,422 physical lines** in
 97 production `.c` files, with zero test-reference C. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — inventory C baseline qualified
+## Current — inventory queries complete; diagnostics and transactions next
 
-The meter conversion is fully qualified and pushed as `30553db2`. C baseline `025ef4ff` preserves the
-original algorithms and corrected fixture inputs. The native batch removes 37
-routines and their private seven-record array: 1,070 C lines. All 3,858 frozen
-results / 11 groups match, and 13 independent contracts pass. Accumulated client,
-server and highres runs pass all 794 / 160 / 161 selected root tests. Three
-production binaries retain 28 required C interfaces, retire 10 symbols, and
-contain no test helpers. Full asset suite has the exact known 1,553 failure
-entries (15 pass / 3 fail / 32 skip packages). Fresh warrior and wizard HUD
-comparisons pass in 36.491s / 38.558s. All 1,517 source fingerprints are unchanged.
-See [CLIENT_METERS.md](docs/porting/CLIENT_METERS.md) for evidence and limitations.
-C remaining: 86,818 physical lines / 97 files / zero reference C.
+Meter conversion `30553db2` is pushed. The subsequent inventory-query conversion
+is qualified, with C baseline `0d563b10`. It removes 31 routines / 396 C lines:
+86,422 C lines remain in 97 files, with zero reference C. Five obsolete C
+interfaces retire; 26 genuine interfaces remain. All 7,137 frozen results match,
+and 11 focused tests pass. Final accumulated/server/highres runs pass all
+805 / 171 / 172 selected root tests. Three production binaries and interfaces
+verify, the full suite has the exact known 1,553 failure entries, and fresh
+warrior gameplay passes in 36.119s. All 1,524 source fingerprints are unchanged.
+See [CLIENT_INVENTORY.md](docs/porting/CLIENT_INVENTORY.md).
 
-Next: client inventory queries and related state. Ignored scope/caller audit and
-ABI drafts are under build/port-client-inventory: 31 routines / 396 C lines,
-including equipped/stack searches, counts, durability/charge updates and scalar
-controls. Exclude the larger inventory-mode transition sub_467650. Reuse meter
-owners. Before freezing, correct sub_461EF0's inclusive row limit: it iterates
-through row21 despite declared rows0..20. Cover the extra valid21st row, visible
-20-row coordinate limits, duplicate search order, stack boundaries and owned
-pointer returns. The row limit is corrected and the initial 31-operation fixture/matrices are
-applied. Initial c-a/c-b passed all 10 tests; all 7,137 results / 6 groups repeated
-byte-for-byte and are frozen. C qualification is complete: 171 / 170 / 171 affected tests pass, production
-client/31 interfaces verify, the full asset suite has the exact known failures,
-and fresh warrior gameplay passes in 35.614s. All 1,521 source fingerprints are
-unchanged. The native draft is ignored; no inventory algorithm is converted yet. See
-[CLIENT_INVENTORY.md](docs/porting/CLIENT_INVENTORY.md).
+One first-run hallway-route mismatch remains unexplained. Hallway-only,
+inventory-plus-hallway, the exact380-test preceding prefix and the full805-test
+repeat all passed without source or golden changes. Full final evidence,
+including the first failure, is build/port-client-inventory/native-qualification.json.
+Do not silently discard this limitation or change the oracle on recurrence.
 
-No user question is pending. Continue through baseline, conversion, qualification,
-docs, commit and push. Every Go shell sources build/baseline/env.sh; no Go/C edits
-during tests/builds. Preserve original assets and archive. Completed meter,
-tooltip and window qualification must not be rerun merely to resume. Final meter
-evidence is build/port-client-meters/qualification.json. Development drafts are
-historical; actual source is authoritative.
+Next, after committing/pushing the inventory conversion: apply the ignored
+add-hallway-failure-capture.py follow-up, check it and commit/push separately.
+It adds failure diagnostics only; C LOC stays unchanged. Then continue the next
+connected batch: build/port-client-inventory-transactions has a26-routine /
+1,023-C-line candidate scope and caller/owner notes. It covers actual stack,
+allocation/deletion, compaction, equipment and item-request state. No transaction
+source changes are applied. Fix pickup's uninitialized existing-stack coordinates
+before freezing; use actual allocator ownership and conservation contracts.
+
+No user question is pending. Every Go shell sources build/baseline/env.sh.
+No Go/C edits during source-reading tests/builds; always join every job, including
+failures. Preserve original assets/archive. Completed qualification need not be
+rerun to resume. Actual source is authoritative; ignored drafts are historical.
+Qualified meter and hallway isolation captures are verified gzip archives.
+Old compiled Go cache entries were pruned selectively to free2GiB; Go recreates
+these cache entries. See the artifact manifests for details.
 
 <!-- /current-checkpoint -->
 

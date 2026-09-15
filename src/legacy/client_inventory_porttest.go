@@ -46,14 +46,14 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 		C.nox_window_set_visible_unk5(C.int(a))
 		return 0
 	case 14:
-		C.nox_xxx_cliUseCurePoison_4674E0(C.int(a))
+		uiInventoryUsePotion(a)
 		return 0
 	case 15:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_cliInventoryFirstItemByTT_467520(C.int(a)))))
+		return uint32(uintptr(unsafe.Pointer(uiInventoryFindType(a))))
 	case 16:
 		return uint32(C.sub_467590())
 	case 17:
-		return uint32(C.sub_4675B0())
+		return uint32(uiInventoryMode())
 	case 18:
 		return uint32(C.sub_4675E0(C.int(a), C.short(b), C.short(c)))
 	case 19:
@@ -70,7 +70,7 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 	case 24:
 		return uint32(C.sub_467810(C.int(a), C.int(b)))
 	case 25:
-		return uint32(C.sub_467850(C.int(a)))
+		return uint32(uiInventoryTypeCount(a))
 	case 26:
 		return uint32(uintptr(unsafe.Pointer(C.sub_467870(C.int(a), C.int(b)))))
 	case 27:
@@ -78,7 +78,7 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 	case 28:
 		return uint32(C.sub_4678C0())
 	case 29:
-		return uint32(C.sub_4678D0())
+		return uint32(uintptr(unsafe.Pointer(uiInventorySelectedWeapon())))
 	case 30:
 		return uint32(uintptr(unsafe.Pointer(C.sub_467930(C.int(a), C.int(b), C.int(c)))))
 	default:

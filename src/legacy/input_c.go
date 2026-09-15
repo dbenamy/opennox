@@ -176,7 +176,7 @@ func Nox_xxx_clientIsObserver_4372E0() int {
 	return int(C.nox_xxx_clientIsObserver_4372E0())
 }
 func Sub_4675B0() int {
-	return int(C.sub_4675B0())
+	return uiInventoryMode()
 }
 func Sub_479590() int {
 	return int(C.sub_479590())

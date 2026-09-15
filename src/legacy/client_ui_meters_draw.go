@@ -276,7 +276,7 @@ func uiMeterWeaponDraw(w *gui.Window) int {
 	}
 	m.Alternate = m.Color
 	if draw && sector >= 256 {
-		item := uintptr(uint32(C.sub_4678D0()))
+		item := uintptr(unsafe.Pointer(uiInventorySelectedWeapon()))
 		sector = 1
 		if item == 0 {
 			draw = false

@@ -14,13 +14,14 @@
 
 ## Current status
 
-The health/mana, potion, weapon and charge meters are converted and fully
-qualified, following localized tooltips, window helpers and the widget batches.
-Continue autonomous porting one connected batch at a time through qualification,
-docs, commit and push. The next audited scope is client inventory queries and
-related state, reusing the meter owners.
+Client inventory queries and state are converted and qualified, following the
+health/mana, potion, weapon and charge meters. Continue autonomous porting one
+connected batch at a time through qualification, docs, commit and push. The next
+audited scope is about 1,000 C lines of inventory stack/equipment transactions,
+reusing the existing owners. First add the planned hallway failure-capture
+follow-up; an isolated qualification mismatch remains documented for review.
 See [PORTING_STATE.md](PORTING_STATE.md) for the checkpoint and C count, and
-[the meter report](docs/porting/CLIENT_METERS.md) for evidence.
+[the inventory report](docs/porting/CLIENT_INVENTORY.md) for evidence.
 
 ## Goal and target
 

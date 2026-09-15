@@ -97,7 +97,7 @@ func nox_xxx_guiBottleSlotProc_471B90(window, event int) int {
 	if event == 5 {
 		w := (*gui.Window)(unsafe.Pointer(uintptr(uint32(window))))
 		if typ := uiMeterSlot(int(uintptr(w.WidgetData))).Type; typ != 0 {
-			C.nox_xxx_cliUseCurePoison_4674E0(C.int(typ))
+			uiInventoryUsePotion(typ)
 		}
 	}
 	return uiMeterInputResult(event)
@@ -119,7 +119,7 @@ func nox_xxx_guiHealthManaTubeProc_472100(window, event int) int {
 func uiMeterQuickPotion(index int) {
 	if memmap.Uint32(0x5D4594, 1096672) == 0 {
 		if typ := uiMeterSlot(index).Type; typ != 0 {
-			C.nox_xxx_cliUseCurePoison_4674E0(C.int(typ))
+			uiInventoryUsePotion(typ)
 		}
 	}
 }
@@ -148,7 +148,7 @@ func uiMeterBindings() unsafe.Pointer {
 func sub_472280() *C.wchar2_t { return (*C.wchar2_t)(uiMeterBindings()) }
 
 func uiMeterRefreshPotions() uintptr {
-	count := func(typ uint32) uint16 { return uint16(C.sub_467850(C.int(typ))) }
+	count := func(typ uint32) uint16 { return uint16(uiInventoryTypeCount(typ)) }
 	uiMeterSlot(2).Count = count(uint32(C.dword_5d4594_1096276))
 	uiMeterSlot(1).Count = count(uint32(C.dword_5d4594_1096272))
 	uiMeterSlot(2).Count = count(uint32(C.dword_5d4594_1096276))
@@ -189,7 +189,7 @@ func uiMeterRefreshPotions() uintptr {
 func sub_472310() *C.uchar { return (*C.uchar)(unsafe.Pointer(uiMeterRefreshPotions())) }
 
 func uiMeterWeaponTooltip() int {
-	dr := (*client.Drawable)(unsafe.Pointer(uintptr(uint32(C.sub_4615C0()))))
+	dr := uiInventoryCurrentWeapon()
 	if dr == nil {
 		uiCursorTooltip(alloc.InternCString16(uiMeterString("ToolTipCurWeapon")))
 		return 1
@@ -203,7 +203,7 @@ func uiMeterWeaponTooltip() int {
 		if *typ == 0 {
 			*typ = uint32(GetServer().S().Types.IndByID("Quiver"))
 		}
-		q := (*client.Drawable)(unsafe.Pointer(uintptr(uint32(C.sub_461600(C.int(*typ))))))
+		q := uiInventoryEquippedType(*typ)
 		if q != nil {
 			appendText := func(p *uint16) { n := alloc.StrLenS(dst); alloc.StrCopyZero16P(dst[n:], p) }
 			appendText(alloc.InternCString16("\n"))
