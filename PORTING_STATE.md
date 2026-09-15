@@ -8,22 +8,26 @@ an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LO
 
 <!-- current-checkpoint -->
 
-## Current — UI rendering conversion fully qualified
+## Current — slider-widget C baseline qualified
 
-Thirteen routines moved to Go;262 C lines removed. Production C is91,478
-/101files /reference0. All9,880 results/5groups plus independent contracts pass.
-Focus7, accumulated714 (one optional skip), server80/highres81, all three builds/ABI,
-exact asset-suite failure comparison and fresh gameplay pass. Accumulated frozen
-coverage:349,126results/1,099groups plus contracts. See
-[CLIENT_UI_RENDER.md](docs/porting/CLIENT_UI_RENDER.md) and local
-build/port-client-ui-render/qualification.json. Commit/push this conversion now.
-Do not rerun integration scripts. The scalar rectangle-copy return correction
-preserves existing bits and is documented for review.
+UI rendering conversion **fbcf7828** is committed and pushed. Production C is
+**91,478 / 101 files / zero reference C**. Accumulated expectations before sliders:
+349,126 results / 1,099 groups, plus independent contracts.
 
-Continue the next connected batch autonomously through baseline, translation,
-qualification, docs/C LOC, commit/push and onward. No pending user question.
-Source build/baseline/env.sh for every Go command; no source edits during checks.
-Preserve original assets/archive. Completed duplicates have restore manifests.
+Slider scope: twelve routines / 599 C lines. Four applied root fixture files now
+capture 26,692 results in four groups, repeated exactly across original-C runs.
+Two independent contract tests also pass (six focused tests total). Affected
+client87/server86/highres87 checks, C build and fresh gameplay pass.
+Evidence: build/port-client-sliders/c-qualification.json and c-gameplay-qualification.json. No production changes
+for sliders yet. Native implementation, exports and integration script are ignored
+*.stage drafts. See [CLIENT_SLIDERS.md](docs/porting/CLIENT_SLIDERS.md).
+
+Next: commit/push baseline, review/apply native draft,
+compare unchanged expectations, qualify all targets, update docs/C LOC and
+commit/push. Then continue the next connected batch. No pending question.
+Do not edit Go/C during checks; source build/baseline/env.sh for every Go command.
+Original assets/archive intact. Completed UI artifacts have verified gzip or
+asset-restoration manifests; do not rerun completed integration scripts.
 
 <!-- /current-checkpoint -->
 
