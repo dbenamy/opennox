@@ -771,3 +771,28 @@ captures reproduces the new captures exactly. The other 27 groups and every
 unrelated field stay unchanged. Only two hashes are updated. This is a small,
 reversible correctness fix under standing authorization; see
 [CLIENT_INVENTORY_CANCEL.md](CLIENT_INVENTORY_CANCEL.md) for qualification.
+
+
+### Trade UI C baseline prerequisites — review later
+
+Before replacing the connected quantity dialog/trade routines, independent
+contracts justify complete grid-pointer returns/assignments, scalar packed mouse
+coordinates, bounds and allocation checks, safe missing-item removal, quantity
+replacement/destruction ownership, and clearing/finalizing trade drags on reset.
+Quantity replacement allocates first so failure preserves the existing dialog.
+Reset deletes a detached drag only when neither grid owns it, including a queued
+item update arriving during the drag. Quantity destruction also clears its active
+flag. Together these add 35 physical C lines before conversion.
+
+Trade reset's three labels borrowed a stack text buffer. Give that local C buffer
+static storage until conversion; the Go owner must provide equally stable text.
+This narrowly repairs the demonstrated lifetime bug without changing shared
+static-text widget ownership or normalizing away differing strings. Separate C
+captures and direct label assertions establish stability. See
+[CLIENT_TRADE_UI.md](CLIENT_TRADE_UI.md) for original failures and qualification.
+
+A repeated lifecycle fixture also exhausted the GUI pool because it omitted the
+normal deferred FreeDestroyed pass. Correcting that fixture is sufficient for
+this batch. Review generic GUI allocation failure separately: NewWindowRaw
+passes a nil allocation to setExt, whose panic can retain the extension mutex
+and block cleanup. That generic path is not fixed by this port.

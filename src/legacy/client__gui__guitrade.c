@@ -172,6 +172,7 @@ int sub_4C15D0(int a1) {
 		v11 =
 			nox_strman_loadString_40F1D0("TradeGUIItemNotFound", 0, "C:\\NoxPost\\src\\client\\Gui\\GUITrade.c", 1141);
 		nox_xxx_printCentered_445490(v11);
+		return 0;
 	LABEL_17:
 		v6 = v12;
 	LABEL_18:

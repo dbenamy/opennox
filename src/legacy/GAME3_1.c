@@ -1549,6 +1549,7 @@ void nox_gui_itemAmount_free_4C03E0() {
 	dword_5d4594_1319232 = 0;
 	dword_5d4594_1319236 = 0;
 	dword_5d4594_1319264 = 0;
+	dword_5d4594_1319268 = 0;
 }
 
 //----- (004C0430) --------------------------------------------------------
@@ -1557,9 +1558,16 @@ int nox_gui_itemAmountDialog_4C0430(wchar2_t* title, int x, int y, int a4, int a
 	uint32_t* v10; // eax
 	int result;    // eax
 
+	v10 = nox_new_drawable_for_thing(a5);
+	if (!v10) {
+		return 0;
+	}
+	if (dword_5d4594_1319268 == 1) {
+		sub_4BFD40();
+	}
+	nox_gui_itemAmount_item_1319256 = v10;
 	v10 = nox_xxx_wndGetChildByID_46B0C0(nox_gui_itemAmount_dialog_1319228, 3606);
 	sub_46AEE0(v10, title);
-	nox_gui_itemAmount_item_1319256 = nox_new_drawable_for_thing(a5);
 	*(uint32_t*)((uint32_t)nox_gui_itemAmount_item_1319256 + 120) |= 0x40000000u;
 	if (a6) {
 		memcpy((void*)((uint32_t)nox_gui_itemAmount_item_1319256 + 432), a6, 0x14u);
@@ -1649,9 +1657,9 @@ int sub_4C0630(int a1, unsigned int a2, unsigned int a3) {
 	if (a2 == 5) {
 		v12 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1320940, 3704);
 		if (nox_xxx_wndPointInWnd_46AAB0(v12, a1a.field_0, a1a.field_4)) {
-			LOBYTE(v13) = sub_4C0910(&a1a);
+			v13 = sub_4C0910(&a1a);
 			v14 = v13;
-			if (v13[1]) {
+			if (v13 && v13[1]) {
 				nox_xxx_wndSetCaptureMain_46ADC0(*(int*)&dword_5d4594_1320940);
 				nox_xxx_setKeybTimeout_4160D0(2);
 				*(int2*)getMemAt(0x5D4594, 1319276) = a1a;
@@ -1729,7 +1737,7 @@ int nox_xxx_clientTrade_0_4C08E0(int a1) {
 }
 
 //----- (004C0910) --------------------------------------------------------
-char sub_4C0910(int2* a1) {
+uint32_t* sub_4C0910(int2* a1) {
 	uint32_t* v1; // eax
 	int v2;       // edi
 	int v3;       // ebx
@@ -1753,7 +1761,7 @@ char sub_4C0910(int2* a1) {
 			v10.field_C = v2 + v9 + 50;
 			v5 = nox_xxx_pointInRect_4281F0(a1, &v10);
 			if (v5) {
-				return (char)getMemAt(0x5D4594, 1319284 + 140 * (v7 + 2 * v3));
+				return (uint32_t*)getMemAt(0x5D4594, 1319284 + 140 * (v7 + 2 * v3));
 			}
 			++v3;
 		}
@@ -1764,7 +1772,7 @@ char sub_4C0910(int2* a1) {
 		}
 		break;
 	}
-	return v5;
+	return 0;
 }
 // 4C097E: variable 'v5' is possibly undefined
 
@@ -1907,7 +1915,7 @@ int sub_4C0D00() {
 }
 
 //----- (004C1120) --------------------------------------------------------
-int sub_4C1120(int a1, int a2, wchar2_t** a3) {
+int sub_4C1120(int a1, int a2, unsigned int a3) {
 	uint32_t* v3; // eax
 	wchar2_t** v4; // eax
 	uint32_t* v5; // eax
@@ -1918,16 +1926,16 @@ int sub_4C1120(int a1, int a2, wchar2_t** a3) {
 	a1a.field_4 = (unsigned int)a3 >> 16;
 	v3 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1320940, 3704);
 	if (nox_xxx_wndPointInWnd_46AAB0(v3, (unsigned short)a3, (unsigned int)a3 >> 16)) {
-		LOBYTE(v4) = sub_4C0910(&a1a);
+		v4 = (wchar2_t**)sub_4C0910(&a1a);
 	} else {
 		v5 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1320940, 3705);
 		if (nox_xxx_wndPointInWnd_46AAB0(v5, a1a.field_0, a1a.field_4)) {
-			LOBYTE(v4) = sub_4C11E0(&a1a);
+			v4 = (wchar2_t**)sub_4C11E0((uint32_t*)&a1a);
 		} else {
-			v4 = a3;
+			v4 = 0;
 		}
 	}
-	if (*v4) {
+	if (v4 && *v4) {
 		*((uint32_t*)*v4 + 32) = v4[2];
 		v6 = nox_xxx_clientAskInfoMb_4BF050(*v4);
 		nox_xxx_cursorSetTooltip_4776B0(v6);
@@ -1937,7 +1945,7 @@ int sub_4C1120(int a1, int a2, wchar2_t** a3) {
 // 4C11AC: variable 'v4' is possibly undefined
 
 //----- (004C11E0) --------------------------------------------------------
-char sub_4C11E0(uint32_t* a1) {
+uint32_t* sub_4C11E0(uint32_t* a1) {
 	uint32_t* v1; // eax
 	int v2;       // edi
 	int v3;       // ebx
@@ -1961,7 +1969,7 @@ char sub_4C11E0(uint32_t* a1) {
 			v10.field_C = v2 + v9 + 50;
 			v5 = nox_xxx_pointInRect_4281F0((int2*)a1, &v10);
 			if (v5) {
-				return (char)getMemAt(0x5D4594, 1320308 + 140 * (v7 + 2 * v3));
+				return (uint32_t*)getMemAt(0x5D4594, 1320308 + 140 * (v7 + 2 * v3));
 			}
 			++v3;
 		}
@@ -1972,7 +1980,7 @@ char sub_4C11E0(uint32_t* a1) {
 		}
 		break;
 	}
-	return v5;
+	return 0;
 }
 // 4C124E: variable 'v5' is possibly undefined
 
@@ -2045,7 +2053,24 @@ int sub_4C1410() {
 	uint32_t* v9;      // eax
 	uint32_t* v10;     // eax
 	int result;        // eax
-	wchar2_t v12[64];   // [esp+10h] [ebp-80h]
+	static wchar2_t v12[64];   // [esp+10h] [ebp-80h]
+
+	if (dword_5d4594_1320968) {
+		int in_grid = 0;
+		for (int i = 0; i < 4; ++i) {
+			if (*getMemU32Ptr(0x5D4594, 1319284 + 140 * i) == dword_5d4594_1320968 ||
+				*getMemU32Ptr(0x5D4594, 1320308 + 140 * i) == dword_5d4594_1320968) {
+				in_grid = 1;
+			}
+		}
+		nox_xxx_cursorResetDraggedItem_4776A0();
+		if (!in_grid) {
+			nox_xxx_spriteDelete_45A4B0((void*)dword_5d4594_1320968);
+		}
+	}
+	if (dword_5d4594_1320940 && nox_xxx_wndGetCaptureMain_46AE00() == dword_5d4594_1320940) {
+		nox_xxx_wndClearCaptureMain_46ADE0(dword_5d4594_1320940);
+	}
 
 	*getMemU16Ptr(0x5D4594, 1320240) = 0;
 	*getMemU16Ptr(0x5D4594, 1320868) = 0;
@@ -2205,8 +2230,14 @@ char* nox_xxx_tradeClientAddItem_4C1790(int a1) {
 	v3 = result;
 LABEL_12:
 	if (v3) {
+		if (*((uint32_t*)v3 + 1) >= 32) {
+			return 0;
+		}
 		if (!*(uint32_t*)v3) {
 			v4 = nox_new_drawable_for_thing(*(unsigned short*)(a1 + 3));
+			if (!v4) {
+				return 0;
+			}
 			*(uint32_t*)v3 = v4;
 			if (v4[28] & 0x13001000) {
 				v5 = -11 - a1;
@@ -2244,6 +2275,9 @@ int sub_4C18E0(int a1, uint32_t* a2) {
 	if (!a2[1]) {
 		return 1;
 	}
+	if (a2[1] >= 32) {
+		return 0;
+	}
 	if (*(uint32_t*)(*a2 + 108) != a1 || *(uint32_t*)(*a2 + 112) & 0x13001000) {
 		return 0;
 	}
@@ -2269,7 +2303,7 @@ char* sub_4C1910(int a1) {
 		v4 = v2;
 		do {
 			v5 = *(uint32_t*)v4;
-			if (*(uint32_t*)v4 && *(uint32_t*)(v5 + 108) == a1 && !(*(uint32_t*)(v5 + 112) & 0x13001000)) {
+			if (*(uint32_t*)v4 && *((uint32_t*)v4 + 1) < 32 && *(uint32_t*)(v5 + 108) == a1 && !(*(uint32_t*)(v5 + 112) & 0x13001000)) {
 				return (char*)getMemAt(0x5D4594, 1319284 + 140 * (v1 + 2 * v3));
 			}
 			++v3;
@@ -2323,7 +2357,7 @@ char* sub_4C19C0(int a1) {
 		v4 = v2;
 		do {
 			v5 = *(uint32_t*)v4;
-			if (*(uint32_t*)v4 && *(uint32_t*)(v5 + 108) == a1 && !(*(uint32_t*)(v5 + 112) & 0x13001000)) {
+			if (*(uint32_t*)v4 && *((uint32_t*)v4 + 1) < 32 && *(uint32_t*)(v5 + 108) == a1 && !(*(uint32_t*)(v5 + 112) & 0x13001000)) {
 				return (char*)getMemAt(0x5D4594, 1320308 + 140 * (v1 + 2 * v3));
 			}
 			++v3;
@@ -2384,7 +2418,7 @@ int sub_4C1BC0(int a1) {
 	if (dword_5d4594_1320964) {
 		result = a1;
 		dword_5d4594_1320944 = *(uint8_t*)(a1 + 2) & 1;
-		LOBYTE(v1) = *(uint8_t*)(a1 + 2);
+		v1 = *(uint8_t*)(a1 + 2);
 		dword_5d4594_1320948 = (v1 >> 1) & 1;
 	}
 	return result;

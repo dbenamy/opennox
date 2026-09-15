@@ -2,61 +2,57 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 83k lines** — exactly **82,632 physical lines** in
-96 production `.c` files, with zero test-reference C. This is source size, not
+**Rough C remaining: about 83k lines** — exactly **82,667 physical lines** in
+96 production `.c` files (including 35 qualified C prerequisite lines), with zero test-reference C. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — inventory cancellation cleanup qualified
+## Current — quantity dialog and trade UI C baseline qualified
 
-Inventory window conversion **24f3f67e is committed and pushed**: 34 routines,
-1,605 C lines removed, 11 retained / 23 retired interfaces. Its separate
-cancellation cleanup is now qualified. It deletes the owned temporary after
-restoration attempts and preserves borrowed equipped drawables. Independent
-contracts first reproduced the old leak, then passed 800 repeated cycles plus
-fallback/full-inventory cases. All 55 focused window/display tests pass.
+Inventory window conversion **24f3f67e** and cancellation cleanup **e712ca56** are
+pushed. The new baseline qualifies **36 routines / 1,316 removable C lines**,
+with **3,216 captured results / 23 frozen hashes**, 42,436 grid contracts and
+repeated ownership/lifecycle checks. All 23 groups match across independent
+C processes. Affected suites pass: **346 default / 344 server / 346 highres**.
+The final locked run passes all 30 roots. Three ELF32/i386/SSE2/CGO production
+binaries retain all 36 interfaces and exclude test helpers. Full assets match
+exactly 1,553 known failures (15 pass / 3 fail / 32 skip packages), and the
+nine-screen unchanged headless inventory comparison passes.
 
-Exactly six cancellation results change only lifetime/deletion/pool fields; the
-other 27 groups and every unrelated field remain unchanged. Two expectations
-were updated after an exact correction-only comparison against the C captures.
-Frozen case coverage remains 2,120 results / 29 groups for the window batch,
-455,479 / 1,185 cumulatively; the repeated cycles are independent contracts.
-See [CLIENT_INVENTORY_CANCEL.md](docs/porting/CLIENT_INVENTORY_CANCEL.md).
+C remains **82,667 / 96 files / zero reference C** after 35 prerequisite lines.
+See [CLIENT_TRADE_UI.md](docs/porting/CLIENT_TRADE_UI.md) for full failure evidence,
+justified corrections, qualification and integration limits. Shipped Trade.wnd
+and MultMove.wnd run in the real GUI/renderer with authored trade reports; this
+is not two-client multiplayer. Five extra quantity-gameplay setup runs did not
+establish an apple stack and are not dialog oracles; defer further script tuning
+while translating the tested batch. The cumulative captured corpus is now
+458,695 results / 1,208 groups, plus independent assertions.
 
-Final checks passed: accumulated default **877 / 469.897s**,
-affected server **314 / 229.749s**, highres
-**316 / 155.701s**. All selected tests started and
-finished. All three production binaries verify ELF32/i386/SSE2/CGO, the existing
-11 retained / 23 retired window interfaces, and no test helpers. Full assets retain
-exactly 1,553 known failures and 15 pass / 3 fail / 32 skip packages. The nine-screen
-headless scenario matches the original C gameplay reference in
-**50.395s**, with reference replacement disabled. All **1,581 source
-fingerprints** remain unchanged. C LOC is **82,632 / 96 files / zero reference C**.
+**No Go conversion is implemented yet. No readers remain running.** The first
+locked test attempt ended 143 after discovery without a result; an unchanged
+retry passes. The cause remains unknown. Earlier lifetime-test pool exhaustion
+was a fixture missing FreeDestroyed; a generic allocation-failure/locked-mutex
+issue is recorded for separate review. The unrelated hallway/identification
+mismatches remain visible with automatic full failure captures.
 
-The earlier hallway and identification mismatches remain unexplained; neither
-recurred here. Full failure captures remain enabled, with expectations preserved.
+Next translate all 36 routines, preserving hashes and actual owners. Re-audit
+remaining C callers/callbacks and route Go callers directly. Current scoped C
+blocks and fingerprints live in build/port-client-trade-ui/current-blocks.json,
+current-scope.json and c-frozen-source-fingerprints.json; original-blocks.json
+and old .go.stage files are STALE. native-design.md is a plan only. Expected
+removal is about 1,316 C lines; measure after integration. Evidence summary:
+build/port-client-trade-ui/c-qualification.json. Completed captures are lossless
+.json.gz where compressed, with SHA/size manifests; use gzip when reading them.
 
-Next: **quantity dialog and player-to-player trade UI**, 36 routines / about
-1,281 removable C lines, including the trade translation unit. The adjacent
-sub_4C1CA0 belongs to summon controls and is excluded. Scope, original blocks,
-caller audit, preflight notes and a thin test-bridge draft are saved in ignored
-build/port-client-trade-ui. Nothing from that batch is integrated yet. Read
-preflight.md before installing drafts: two trade hit helpers return pointers
-through char, with partial pointer assignments in callers; establish a corrected
-C baseline and independent exact-cell contracts. Audit real allocation failures,
-missing-item removal and fixed 32-code capacity before freezing invalid behavior.
-Reuse actual owners and extend trade-specific integration rather than treating
-the inventory-only gameplay scenario as full trade coverage.
-
-Commit/push this qualified cleanup, then continue the next batch. Existing
-window/display/transaction integration scripts and cancellation drafts are
-ALREADY APPLIED or stale; never rerun/copy them blindly. Every Go shell sources
-build/baseline/env.sh. Join all source-reading jobs before edits. Preserve original
-assets/archive. Commit and push each qualified chunk under PORT.md. No user
+Source build/baseline/env.sh in every Go shell. Never edit Go/C/headers while
+source-reading jobs run; join every job. Preserve original assets and untracked
+archive. Commit/push each qualified chunk and continue under PORT.md. No product
 question is pending.
 
 <!-- /current-checkpoint -->
+
+
 
 ## GitHub backup and recovery
 
