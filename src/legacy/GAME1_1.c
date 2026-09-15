@@ -208,23 +208,6 @@ char* sub_418A40(wchar2_t* a1) {
 	return v1;
 }
 
-//----- (00418A80) --------------------------------------------------------
-char* sub_418A80(int a1) {
-	char* result; // eax
-
-	result = nox_server_teamFirst_418B10();
-	if (!result) {
-		return 0;
-	}
-	while ((unsigned char)result[56] != a1) {
-		result = nox_server_teamNext_418B60((int)result);
-		if (!result) {
-			return 0;
-		}
-	}
-	return result;
-}
-
 //----- (00418BC0) --------------------------------------------------------
 int sub_418BC0(int a1) {
 	int v1;       // ebx

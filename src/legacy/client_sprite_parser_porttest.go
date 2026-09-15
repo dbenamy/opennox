@@ -7,7 +7,6 @@ package legacy
 #include "client__draw__canidraw.h"
 #include "client__draw__staticdraw.h"
 #include "client__draw__slavedraw.h"
-#include "client__draw__parse__parse.h"
 void nox_xxx_draw_44C650_free_kind(void*, int);
 void* nox_xxx_draw_44C780(int);
 */

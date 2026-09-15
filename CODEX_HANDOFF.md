@@ -2,32 +2,30 @@
 
 <!-- current-focus -->
 
-### Current — corrected object-drawing C baseline qualified
+### Current — object drawing native conversion fully qualified
 
-Sprite conversion c7f68f46 is pushed. Object-drawing corrected C baseline is now
-fully qualified:14 focused tests,13,298 repeated results/10 matrices; standard686
-(685 pass/one optional skip), server/highres53 each, production build and fresh
-headless gameplay all pass. See docs/porting/CLIENT_OBJECT_DRAWING.md and local
-build/port-client-draw-objects/c-qualification.json /c-gameplay-qualification.json.
-C count93,782 /118 files /reference0 includes+7 prerequisite lines. No C qualification
-process remains active. Commit/push this baseline before applying native drafts.
+Corrected C baseline dd3571f8 was committed/pushed first. Native object drawing is
+fully qualified and ready to commit/push:27 routines;13,298 captures/10 groups
+match on first native attempt; no implementation fixes. Standard686(685pass/one
+optional skip), server/highres53 each, three builds/ABI, exact full asset baseline
+comparison and fresh gameplay all pass. See docs/porting/CLIENT_OBJECT_DRAWING.md
+and build/port-client-draw-objects/qualification.json. No process remains active.
+Production C92,869 /106 files /reference0, down913 lines/12 files. Accumulated
+captures151,301 /1,079 groups plus contracts. Do not rerun completed integration,
+prerequisite or finalization scripts. Actual src is authoritative.
 
-Next: review and run local integrate-native.py ONCE, then exact focused captures,
-qualify-native.py (accumulated/variants/three builds/ABI/full asset comparison/gameplay).
-Expected retirement912 C lines /12 files;27 routines with23 retained exports,
-4 private helper exports retired plus the now-unused static-array loader export.
-Native drafts native-*.go.stage are not yet applied. prepare-integration.py.stage
-and fix-drafts.py.stage are older drafts and must NOT overwrite reviewed stages.
-Do NOT rerun prerequisites.py.stage, which is already applied, or any completed
-sprite integration/finalization scripts. Actual src/test fixtures are authoritative.
+Commit/push native conversion, summarize in commentary, then continue the next
+connected batch. Read build/port-client-screen-effects/PLAN.md: remaining five
+client__draw__*.c files plus screen-particle creation/list/delete/walk, rope/circle
+helpers and possibly shared distance primitives. No next-batch source edits yet.
+The already-qualified PortTestEffectsScreenParticles owns real allocator/list/tail
+reuse and can support the new lifecycle matrix. Maiden's real Go monster renderer
+needs owned animation/NPC/server state; don't substitute a no-op callback. Shared
+C drawObject wider player/team/clipping paths remain outside these conversions.
 
-Test owners preserve real rendering, lighting, materials/teams/fonts and linked/
-unlinked drawable ownership. Shared C drawObject remains a dependency; this batch
-does not qualify all its player/team/clipping paths. Continue full qualification,
-C LOC/docs, commit/push, commentary summary, then next batch without asking unless
-a substantive decision is needed. No questions/new agents. Preserve assets/7z.
-Completed sprite asset duplicate reclamation556,358,986 bytes and archived qualified
-binaries252,645,068 bytes have verified restoration manifests under build/.
+No questions/new agents. Preserve originals/7z; completed asset deduplication and
+binary archives have verified restoration manifests. Current native gameplay asset
+copy remains available; C baseline copy is deduplicated and restorable.
 
 <!-- /current-focus -->
 

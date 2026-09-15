@@ -70,8 +70,3 @@ func nox_things_slave_draw_parse(obj *C.nox_thing, f *C.nox_memfile, attr *C.cha
 func nox_things_animate_state_draw_parse(obj *C.nox_thing, f *C.nox_memfile, attr *C.char) C.bool {
 	return C.bool(spriteParseState((*client.ObjectType)(unsafe.Pointer(obj)), asMemfile(f)))
 }
-
-//export nox_xxx_spriteLoadStaticRandomData_44C000
-func nox_xxx_spriteLoadStaticRandomData_44C000(attr *C.char, f *C.nox_memfile) unsafe.Pointer {
-	return spriteStaticRandomData(asMemfile(f), unsafe.Slice((*byte)(unsafe.Pointer(attr)), 256))
-}

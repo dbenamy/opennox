@@ -67,7 +67,7 @@ and expectations are committed; no C algorithm is retained solely for tests.
 | object-drawing-shield | 90 | `fbd4a997d5f8f1afd70ba2f4771d496016c0ef2ffe70825e08f91743b7d6c71e` |
 | object-drawing-summon | 486 | `28d66af6b2db0802b7e6810d7a5430332d4ac5b885a8d32595ecc7c41752d560` |
 
-The corrected C baseline is fully qualified; no native conversion is applied yet.
+The corrected C baseline was committed as dd3571f8 before native conversion.
 
 ## Qualified C checkpoint
 
@@ -76,3 +76,27 @@ Standard:686 selected/completed (685 pass, one optional skip), 370.247s. Server/
 passes; fresh headless gameplay passes in 38.281s. All13,298 captured results repeat
 byte-for-byte. Local c-qualification.json and c-gameplay-qualification.json record
 the commands/results. Native drafts remained outside the build for these checks.
+
+## Qualified native conversion
+
+27 routines now use Go. All13,298 results match the corrected C captures byte-for-
+byte on the first native attempt; no implementation fixes were needed. Four private
+helper C entry points retire;23 required exports remain. The door parser reuses
+existing Go frame loading, allowing retirement of its last shared C export and
+obsolete header/include. No C algorithm is retained for testing. Material order,
+image lookup order, full render state, generator countdown/completion, summon
+restoration/lifetimes and existing pointer-shaped UI return values are preserved.
+
+Production C falls by913 lines to92,869 across106 files (zero test-reference C):
+912 lines in the selected routines/files, plus one obsolete playerdraw.c include.
+Accumulated captures now total151,301 results across1,079 groups plus contracts.
+
+Standard:686 selected/completed (685 pass, one optional skip), 372.418s. Server/highres:
+53 pass each (163.112s/35.916s). Three production builds and ELF32/i386/SSE2/CGO checks
+pass; all23 required exports are present, all five retired exports absent, and
+tagged test helpers absent. Full asset suite retains the exact1,553 failure-entry
+multiset and15pass/3fail/32skip package outcomes. Fresh unchanged headless gameplay
+passes in 37.665s with null audio. Local qualification.json records the full evidence.
+
+The broader shared C drawObject and cleanup ownership remain separate work. The
+next read-only candidate audit is build/port-client-screen-effects/PLAN.md.

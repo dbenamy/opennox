@@ -8,7 +8,6 @@
 #include "GAME2_3.h"
 #include "GAME3.h"
 #include "GAME3_1.h"
-#include "client__draw__parse__parse.h"
 #include "client__drawable__drawable.h"
 #include "client__gui__window.h"
 #include "client__video__draw_common.h"

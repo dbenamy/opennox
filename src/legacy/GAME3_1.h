@@ -4,10 +4,7 @@
 #include "defs.h"
 
 int sub_4B9470(const char** a1);
-int sub_4B94E0(nox_drawable* dr);
-uint32_t* sub_4B95D0(nox_drawable* dr);
 uint32_t* sub_4B9650(int a1);
-uint32_t* sub_4B96F0(nox_drawable* dr);
 int sub_4BC720(int a1);
 int nox_xxx_updDrawMonsterGen_4BC920();
 uint32_t* sub_4BD280(int a1, int a2);

@@ -11,7 +11,6 @@ int sub_418830(int a1, int a2);
 char* sub_4189D0();
 char* sub_418A10();
 char* sub_418A40(wchar2_t* a1);
-char* sub_418A80(int a1);
 int sub_418BC0(int a1);
 int nox_xxx_teamCheckSmth_418C60(int a1);
 uint32_t* sub_418C70(uint32_t* a1);
