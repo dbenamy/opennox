@@ -118,7 +118,7 @@ func Sub_495430() {
 }
 
 func Sub_479280() {
-	C.sub_479280()
+	uiShopClose()
 }
 
 func Sub_45D810() {

@@ -1,0 +1,25 @@
+{
+  "baseline_revision": "fbc11484",
+  "scenario": "docs/porting/shop-ui.yaml",
+  "pixel_format": "tightly packed row-major NRGBA bytes",
+  "width": 1024,
+  "height": 768,
+  "environment": {
+    "NOX_DEV": "true",
+    "GODEBUG": "randautoseed=0",
+    "Xvfb": "1280x960x24",
+    "ALSOFT_DRIVERS": "null"
+  },
+  "sha256": {
+    "empty_stock_click.png": "e27823434ea837e21c65ff8d657c8a628fe5dcd0da6541755cfb0fd3f2303f23",
+    "gameplay.png": "0a113a2a37440e95c4e457e2771d36aa14de1d50becc806273b5db4e91a827ee",
+    "repair_quantity.png": "95c31f821cbf99667b7dc89e7a5fb775d92f447efb8746e6642a6368059c2f56",
+    "sell_cancelled.png": "f75ba73f797009e5f382199e2320301ac42c1aaf03a23ae1bf38cf51154950d2",
+    "sell_quantity.png": "bee600ff47aa7608d1255a7280116c7ff96f9d0391d6a5c1870efd7655dc2cc3",
+    "shop_closed.png": "b049ac22a379cc05e84ea730f2d0e448bf7cddf2082534cf46bc195be6c61f1e",
+    "shop_interaction.png": "11e6ea5c720f0d00ae2dbf7451dacdbd2735ef2dd21813abb0d96a1d3e41d4c7",
+    "shop_stock.png": "9b1d29671f3c214c68eb22340fe93235c5d00946b98aced30f646bea4880575c",
+    "shopkeeper_console.png": "b6d2b66342ed9b980ed36f9b183891579165bf574d6371df13a4c755b7a048f5",
+    "shopkeeper_ground.png": "5b7e406a5ecb9ddc289e97a35c74f05880306c638aab88967fb2c8c78fad12d0"
+  }
+}

@@ -2,42 +2,51 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining in the working tree: about 81k lines** — exactly **81,373
-physical lines** in 95 production `.c` files, with zero test-reference C. The
-quantity-dialog/trade UI conversion removed 1,316 lines; the current shop prerequisites add twenty-two. This is source size, not
+**Rough C remaining in the working tree: about 80k lines** — exactly **80,263
+physical lines** in 94 production `.c` files, with zero test-reference C. The
+quantity-dialog/trade UI conversion removed 1,316 lines; shop prerequisites added
+22, and the qualified shop conversion removes 1,110. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — qualified shop UI C baseline
+## Current — shop UI conversion qualified
 
-Quantity/trade conversion de1bb918 is committed/pushed (−1,316 C lines).
-Shop baseline now covers all 42 routines / 1,110 removable C lines. All 31 focused
-roots passed the locked repeat in 37.984s, with 1,299 frozen results / 25 groups.
-Affected default/server/highres passed 379/377/379 roots, every shop hash and
-all 23 existing trade hashes unchanged. All three production binaries pass
-ELF32/i386/SSE2/CGO/interface checks. Full assets have exactly the known 1,553
-failures and 15 pass / 3 fail / 32 skip packages. Unchanged inventory nine-screen
-and new shop ten-screen fresh comparisons pass with updates disabled.
+C baseline **fbc11484 is committed/pushed**. Native conversion removes all 42
+shop routines / 1,110 C lines. All 1,299 frozen results / 25 groups match Go.
+Independent first focused 31 roots pass; accumulated default 940, affected server
+377 and highres 379 roots pass. Three production binaries are ELF32/i386/SSE2/CGO,
+with 18 retained Go-backed interfaces, 24 retired absent, no test helpers.
+Full assets retain exactly 1,553 known failures and 15/3/32 package outcomes.
+Fresh unchanged inventory nine-screen (51.938s) and shop ten-screen
+(75.847s) comparisons pass, updates disabled. All 1619 source
+fingerprints stayed unchanged. Every reader/build/gameplay job is joined.
 
-Four justified C prerequisites (+22 lines) fix full-stack selection/append,
-affordability overflow, pending flags after allocation failure and owned quantity
-cancellation before shop closure/destruction. Unrelated quantity owners survive.
-See [CLIENT_SHOP_UI.md](docs/porting/CLIENT_SHOP_UI.md) and DECISIONS.md for evidence,
-fixture corrections and gameplay limitations. Working C: 81,373 / 95 files /
-zero reference C; expected native total 80,263 / 94 files.
+**C remaining: 80,263 lines / 94 files / zero reference C.** See
+[CLIENT_SHOP_UI.md](docs/porting/CLIENT_SHOP_UI.md), C_LOC.md and DECISIONS.md.
+Four pre-baseline C corrections cover capacity, affordability and quantity
+ownership. Gameplay uses an empty generic merchant and exercises priced sell
+quantity; stocked purchase/repair quantity use the real-owner fixtures.
+Tracked shop-ui.yaml and shop-ui-pixels.json support recovery from baseline.
 
-All readers/builds/gameplay jobs are joined. Next commit/push this baseline,
-then apply reviewed native drafts in ignored build/port-client-shop-ui/native-*.go.stage.
-No native source applied yet. Other old drafts are stale; do not reapply.
-Retain only actual C callers/callbacks (predicted 18 retained / 24 retired).
-Translate all 42 together, compare frozen hashes without updates, qualify,
-document C LOC, commit/push and continue. No question pending; no agents used.
+Next commit/push the conversion, then apply reviewed **journal C-baseline tests**
+from ignored build/port-journal/*.go.stage: 11 routines / 339 removable C lines.
+Its scope/caller audit and qualification plan are preserved there. Adapter,
+environment, owner, storage/report/render/save tests are drafts, not applied.
+The native.go.stage draft must wait for qualified/frozen/committed C baseline.
+Use the existing journal serializer for focused save/load integration. Reuse
+current production/full-suite evidence only if no production prerequisite changes.
 
-Original assets/archive untouched. Completed captures are losslessly compressed
-with manifests. Source build/baseline/env.sh in Go shells; no Go/C/header edits
-while source readers run. Prior unexplained failures and generic GUI exhaustion
-remain documented in the trade report; not fixed by this batch.
+PORT.md now selects accumulated tests by affected callers/owners/dependencies
+between subsystem milestones, and the full corpus at milestones/shared changes
+or uncertain regression scope. This reversible testing decision is recorded for
+review. Keep all frozen tests. No question pending; no agents used.
+
+Original assets/archive untouched. Source build/baseline/env.sh in Go shells.
+No Go/C/header edits during source readers. Completed captures are losslessly
+compressed. The latest idle-cache cleanup removed 63 derived entries older than
+24h (1,106,179,560 bytes); source/assets remain intact. Prior unexplained failures
+and generic GUI exhaustion remain documented in the trade report; not fixed here.
 
 <!-- /current-checkpoint -->
 

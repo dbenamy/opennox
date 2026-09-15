@@ -179,10 +179,10 @@ func Sub_4675B0() int {
 	return uiInventoryMode()
 }
 func Sub_479590() int {
-	return int(C.sub_479590())
+	return int(uiShopMode())
 }
 func Sub_478030() int {
-	return int(C.sub_478030())
+	return int(uiShopActive())
 }
 func Sub_47A260() int {
 	return int(C.sub_47A260())

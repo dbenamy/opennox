@@ -840,3 +840,27 @@ three owned plus one unrelated callback; 100 shop recreation cycles also pass.
 This reversible prerequisite adds 11 C lines (22 total for this batch), precedes
 baseline freezing, and passes all affected targets/full-assets/gameplay checks.
 No algorithm is retained only for testing after translation.
+
+
+### Qualification scope between subsystem milestones — review later
+
+The complete default corpus at the shop boundary passed 940 roots in 637.877s;
+affected server qualification passed 377 in 296.439s. These are wall times in
+this VM, not an isolated benchmark of test selection. Repeating unrelated port
+families for every smaller connected follow-up has substantial overhead.
+
+For following batches, select accumulated default/server/highres coverage from
+actual callers, shared owners/state and dependencies; preserve focused C oracles,
+independent contracts, all production builds/interface checks and relevant fresh
+gameplay comparisons. Record the exact pattern and selected/completed counts.
+Run the complete accumulated corpus at subsystem milestones and for shared
+infrastructure changes or uncertain regression scope. Keep the tests and their
+expectations available; the change is run frequency, not removal of coverage.
+The current shop qualification still runs the complete corpus as planned.
+
+For an unchanged-production C baseline, reuse the immediately preceding qualified
+production builds and full-asset results when source identity establishes that
+only tagged fixtures have changed. New C behavior fixes invalidate that reuse.
+Capture and repeat the new baseline independently before freezing and committing.
+This reversible workflow adjustment follows the user's request to improve pace
+and autonomously record reasonably confident implementation/testing choices.

@@ -14,18 +14,15 @@
 
 ## Current status
 
-Client inventory windows, input, lifecycle, display, transactions, queries and
-meters are converted. The window batch removed 1,605 C lines; its follow-up now
-releases temporary drags on cancellation while preserving borrowed equipment.
-The connected quantity-dialog and player-to-player trade UI is also converted:
-36 routines / 1,316 C lines removed, with all 3,216 captured results unchanged
-and additional lifetime/bounds/C-interface contracts. There are about **81k C
-lines left** (81,373 physical lines in 95 production files). Next qualify and
-port the connected shop UI, 1,110 C lines / 42 routines after qualified prerequisites. See
-[the trade UI report](docs/porting/CLIENT_TRADE_UI.md),
-[PORTING_STATE.md](PORTING_STATE.md),
-[the window report](docs/porting/CLIENT_INVENTORY_WINDOW.md) and
-[the cancellation report](docs/porting/CLIENT_INVENTORY_CANCEL.md).
+Client inventory, quantity-dialog, player-to-player trade and shop UI are converted.
+The shop batch removed 1,110 C lines / 42 routines, with all 1,299 captured results
+unchanged, independent boundary/lifetime contracts and two fresh gameplay
+comparisons. There are about **80k C lines left** (80,263 physical lines in 94
+production files). Next: connected journal entry storage, updates and rendering,
+11 routines / 339 C lines. See [the shop report](docs/porting/CLIENT_SHOP_UI.md),
+[the trade report](docs/porting/CLIENT_TRADE_UI.md) and
+[PORTING_STATE.md](PORTING_STATE.md). The inventory cancellation follow-up releases
+temporary drags while preserving borrowed equipment.
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.
 
@@ -139,9 +136,13 @@ Reconsider the tests as the behavior and failure modes become clearer.
 - **Baseline:** repeated C captures and independent contracts; qualify affected
   targets and relevant integration before replacement. Record exactly which source
   state and cases supplied the oracle.
-- **Native batch:** focused captures/contracts, accumulated port tests and affected
-  server/highres variants. Check that selected tests actually start and finish;
-  discovery success or a process exit alone does not establish coverage.
+- **Native batch:** focused captures/contracts plus accumulated tests for affected
+  callers, owners and dependencies in default/server/highres. Audit the selection
+  against real callers and shared state, and record its pattern and coverage.
+  Run the complete accumulated port corpus at subsystem milestones, when shared
+  infrastructure changes, or when a failure leaves the affected scope uncertain.
+  Check that selected tests actually start and finish; discovery success or a
+  process exit alone does not establish coverage.
 - **Builds and ABI:** all three production binaries on 386/SSE2/CGO. Check expected
   C callbacks/exports, retired symbols and absence of test helpers. Assert sizes,
   alignment and offsets for types crossing the C/Go boundary.

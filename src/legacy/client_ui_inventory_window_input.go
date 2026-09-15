@@ -126,10 +126,9 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 				}
 				return 1
 			}
-			if C.sub_478030() != 0 && C.sub_479870() != 0 {
-				p := [2]int32{int32(pos.X), int32(pos.Y)}
-				if C.sub_479880((*C.uint32_t)(unsafe.Pointer(&p[0]))) {
-					C.dword_5d4594_1063116 = C.uint32_t(C.sub_4798A0((*C.uint32_t)(unsafe.Pointer(&p[0]))))
+			if uiShopActive() != 0 && uiShopMode() == 2 {
+				if uiShopInside(pos) {
+					C.dword_5d4594_1063116 = C.uint32_t(uiInventoryPointer(uiShopHit(pos).C()))
 					return 1
 				}
 			}

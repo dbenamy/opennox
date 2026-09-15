@@ -155,8 +155,36 @@ references before replacement; retain production C entry points only for actual
 callers/callbacks, and remove the old C algorithms after conversion. Unrelated
 documented failures do not block a chunk whose affected checks pass.
 
-Run the full accumulated standard suite, affected variants and relevant builds/
-gameplay at the batch boundary. Broaden to full variant matrices for shared
-infrastructure or unexplained differences, as recorded in DECISIONS.md. Update
+Run the accumulated tests covering affected callers, owners and dependencies in
+all relevant targets, plus production builds and gameplay at the batch boundary.
+Run the complete accumulated corpus at subsystem milestones, shared infrastructure
+changes or uncertain regression scope, as recorded in PORT.md and DECISIONS.md. Update
 the tracked test selection, C LOC and porting checkpoint; commit and push each
 qualified coherent chunk. Local commits alone will not survive loss of the VM.
+
+
+## Shop and quantity UI recovery
+
+The shipped-window fixture tests use `OPENNOX_SHOP_UI_ASSETS` and
+`OPENNOX_TRADE_UI_ASSETS`, each pointing to the extracted Nox directory. Set these
+alongside the accumulated runner environment to include their original Shop.wnd,
+Trade.wnd and MultMove.wnd cases; `NOX_DATA` alone does not enable those fixtures.
+
+The tracked [shop scenario](shop-ui.yaml) has ten full-screen checkpoints. If its
+local reference images are lost, build shop C baseline **fbc11484** in a separate
+worktree and run that binary against this scenario with fresh data/save,
+`NOX_DEV=true`, `GODEBUG=randautoseed=0`, Xvfb 1280x960x24 and OpenAL null.
+Use `NOX_E2E_OVERRIDE=true` for the initial C reference capture only. Repeat from
+another fresh copy with those images and `NOX_E2E_OVERRIDE=false`, then compare
+the converted binary with updates disabled. The comparator at this baseline is
+already repaired. Use the same toolchain/assets and the general run command
+above, substituting the shop scenario and its environment.
+
+[Reference pixel hashes](shop-ui-pixels.json) preserve SHA-256 of decoded,
+tightly packed NRGBA pixels at 1024x768 for all ten C screenshots. They are not
+hashes of PNG-file bytes. The game runner compares pixels directly; initial
+capture success alone is not an independent repeat. The generic spawned merchant
+has empty stock and a missing map-authored name. The scenario opens/cancels a
+priced sell-quantity dialog and closes the shop; its repair_quantity checkpoint
+shows repair inspection. Purchase and repair quantity behavior is separately
+covered by the actual-owner fixtures. See [the batch report](CLIENT_SHOP_UI.md).

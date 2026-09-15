@@ -490,7 +490,7 @@ func Sub_4C09D0() int {
 	return uiTradeInit()
 }
 func Sub_478110() int {
-	return int(C.sub_478110())
+	return uiShopInit()
 }
 func Sub_49B3E0() int {
 	return int(C.sub_49B3E0())
@@ -574,7 +574,7 @@ func Sub_49B490() {
 	C.sub_49B490()
 }
 func Sub_478F80() {
-	C.sub_478F80()
+	uiShopDestroy()
 }
 func Sub_479D10() {
 	C.sub_479D10()

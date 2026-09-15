@@ -1,8 +1,10 @@
 # Shop UI
 
-Status: **C baseline development; no shop conversion or prerequisite applied**.
-Quantity/trade UI conversion de1bb918 is qualified and pushed. Production remains
-**81,351 C lines / 95 files / zero reference C**.
+Status: **converted and qualified** against committed C baseline fbc11484.
+All 42 routines are Go; 1,110 C lines and one translation unit removed.
+Production C: **80,263 lines / 94 files / zero reference C**. All 1,299 captured
+results / 25 groups match C, with independent contracts and both gameplay
+comparisons passing. Development notes below preserve earlier observations.
 
 Scope: 42 routines, GAME2_2.c 00478030 through 004798A0 and the whole shop
 translation unit. The unmarked sub_479680 is a separate callback. Exclude the
@@ -158,3 +160,53 @@ translation-unit prelude (1,088 original + 22 justified prerequisites).
 Working production C: 81,373 lines / 95 files / zero test-reference C.
 The 25 expectation literals are frozen; the final locked repeat passed all 31
 roots in 37.984s. No native shop source has been applied at this baseline.
+
+
+## Native implementation and interface review
+
+The first Go run passes 31 roots / 1,299 results / 25 unchanged capture groups.
+Stock selection/removal/clear use the actual 60-cell owner in row-first order;
+unit prices retain their meaning distinct from the shared trade cell layout.
+Go handles construction, drawing, scroll/mode events and buy/sell/repair quantity
+flows. Real C callers and the five quantity callbacks plus raw tooltip retain
+18 bridges; 24 private interfaces are retired. Go callers call Go directly.
+A textual audit finds only the old constructor name in an error message outside
+these bridges; production symbol verification follows in qualification.
+
+Add/remove declarations now return uint32_t: the old pointer-typed results were
+scalar counts/deletion results, and the remaining C decoder ignores both returns.
+The start-dialog name argument loses const only to match the generated cgo
+signature; Go still reads it without modification. Valid name storage is bounded
+to the actual 26 UTF-16-unit destination; no overflow of the old buffer is preserved.
+Callback argument words and the existing quantity-owned point retain their ABI.
+No test-only C algorithm remains. Source/header changes were made only after all
+baseline readers and the locked repeat had joined.
+
+
+## Completed qualification
+
+- Focused first Go run: 31/31 roots, 181.725s; all 1,299 results / 25 groups exact.
+- Accumulated default: **940/940**, 637.877s; affected server **377/377**,
+  296.439s; highres **379/379**, 217.704s. Every shop hash matches in each target.
+- Production default/highres/server: 59.301s / 9.735s / 61.913s; ELF32/i386/SSE2/
+  CGO, all 18 retained interfaces Go-backed, all 24 retired absent, no test helpers.
+- Full assets: 49.770s; exactly 1,553 known failures, 15 pass / 3 fail / 32 skip
+  packages, no added or removed failure entries.
+- Fresh unchanged inventory nine-screen comparison: 51.938s;
+  fresh shop ten-screen comparison: 75.847s. Both exit 0,
+  updates disabled. The gameplay limits in the C-baseline section still apply.
+- All 1619 Go/C/header fingerprints unchanged during qualification.
+  All jobs joined before completion. Evidence: native-qualification.json,
+  native-*-result.json, native-binary-verification.json and
+  native-qualified-capture-compression.json under build/port-client-shop-ui.
+
+The C count falls from 81,373 to **80,263** (−1,110), 95 to 94 translation units,
+zero reference C. Cumulative recorded port captures: **459,994 results / 1,233
+groups**, with independent boundary/lifetime contracts additional to that count.
+[Recovery notes](RECOVERY.md#shop-and-quantity-ui-recovery) and
+[reference pixel hashes](shop-ui-pixels.json) preserve the new gameplay reference.
+
+No behavioral correction to the Go draft was required by its focused or broader
+checks. All production behavior corrections were qualified before freezing C.
+Next: the connected journal storage/report/rendering owner, 11 routines / 339 C
+lines, using affected accumulated tests under the updated PORT.md policy.

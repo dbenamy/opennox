@@ -42,9 +42,8 @@ func uiInventoryIdentify(pos image.Point) uint32 {
 		}
 	} else if uiInventoryHitRect(rel, 136336) {
 		cursor = 0
-	} else if C.sub_478030() != 0 && C.sub_479870() != 0 {
-		point := [2]int32{int32(rel.X), int32(rel.Y)}
-		if C.sub_479880((*C.uint32_t)(unsafe.Pointer(&point[0]))) {
+	} else if uiShopActive() != 0 && uiShopMode() == 2 {
+		if uiShopInside(rel) {
 			cursor = 6
 		}
 	}
