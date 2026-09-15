@@ -5,6 +5,8 @@
 - [Current status](#current-status)
 - [Goal and target](#goal-and-target)
 - [Batch workflow](#batch-workflow)
+- [Subagent use](#subagent-use)
+- [Explaining the work and reporting diagnostics](#explaining-the-work-and-reporting-diagnostics)
 - [Testing strategy](#testing-strategy)
 - [Build and test environment](#build-and-test-environment)
 - [Commits and recovery](#commits-and-recovery)
@@ -61,6 +63,64 @@ Do not retain C algorithms solely for tests. A committed C baseline and frozen
 expectations provide recovery after conversion. Reuse fixtures across related
 functions; avoid building a broad framework before there is a demonstrated need.
 Batch size is a guide, not a LOC quota or reason to weaken coverage.
+
+## Subagent use
+
+The user supports bounded delegation to a cheaper model such as Terra when the
+primary agent is confident it will save total work without weakening the result.
+Use the primary agent plus at most one helper by default; avoid an agent fleet.
+Follow the active session's delegation rules and available model choices. This
+plan does not override restrictions on spawning agents.
+
+A useful split has been a small, well-specified Go implementation draft, with the
+primary agent owning the C baseline, tests, review and integration. The recorded
+Terra randomized-insertion trial was accepted without corrections, and the
+integer/byte/word setter draft also passed review. See
+[the insertion report](docs/porting/PROTECTION_INSERT.md) and
+[the setter report](docs/porting/PROTECTION_SET.md). These are successful bounded
+trials, not evidence that every subsystem is equally easy to delegate or that
+subscription savings have been measured.
+
+- Delegate an independent, concrete task: a caller/ABI audit, a bounded helper
+  translation against frozen expectations, or a focused review. Give the helper
+  exact scope, ownership rules, relevant files, expected behavior and acceptance
+  checks. Keep useful independent work for the primary agent while it runs.
+- Keep baseline design, ambiguous behavior, shared-state ownership and final
+  qualification with the primary agent. Review the draft against C and the
+  independent contracts; a helper's report alone is not acceptance evidence.
+- Give helpers disjoint files or an ignored draft path. Coordinate all source
+  edits with the no-edits-during-builds rule; no concurrent source mutation while
+  another agent's tests are reading it. The primary agent integrates and commits.
+- Count context transfer, review, corrections and duplicate builds as delegation
+  costs. Stop delegating a task if these outweigh the saved work. Larger connected
+  batches and reused fixtures remain the main way to reduce qualification overhead.
+
+## Explaining the work and reporting diagnostics
+
+The user has seen repeated UI cybersecurity-classifier interruptions during this
+port. The exact triggers are unknown; we have no diagnostic evidence identifying
+particular words or logs as the cause. Clear context and bounded output are useful
+reporting practices, not a guaranteed remedy.
+
+Explain the concrete game-engine behavior being preserved, the local fixture or
+headless scenario exercising it, and the observed result. For example: “Port the
+sprite opacity calculation to Go and compare pixels and renderer state against
+the committed C baseline.” For legacy protection/checksum or packet-processing
+code, name its actual role in the game and the specific compatibility checks.
+Keep necessary technical terms, source identifiers and failure details accurate.
+
+Keep full compiler, crash and suite logs in ignored local artifacts. Inspect them
+as needed, then report the relevant error, affected function, expected/actual
+result and the artifact path. Prefer a short diagnostic excerpt or exact failure
+comparison to repeatedly dumping entire logs into the conversation. Preserve the
+complete evidence locally and record material failures and fixes in the batch
+report. This also makes reviews easier and avoids publishing unrelated log data.
+
+Do not disguise the task, use euphemisms to conceal its purpose, change algorithms
+or omit tests to influence a classifier. If an interruption recurs, checkpoint the
+actual source and qualification state so work can resume without repeating it.
+Do not promise wording that prevents interruptions or weaken port quality to try
+to avoid them.
 
 ## Testing strategy
 
