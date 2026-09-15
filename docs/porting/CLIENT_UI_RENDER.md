@@ -76,5 +76,27 @@ Production C build passed in 4.251s; fresh headless gameplay passed
 in 37.552s with null audio and reference comparison enabled.
 No production C change was needed to establish this baseline.
 
-Native conversion has not been applied. C remains 91,740 lines /101 files /zero
-reference C. Native qualification will include the accumulated port tests.
+## Native conversion and qualification
+
+The thirteen routines now live in Go. All **9,880 frozen results in 5 groups**
+and the independent contracts pass; no frozen expectations changed during conversion.
+An additional native ownership contract verifies clipping and save/restore when
+the C current RenderData differs from the Go renderer's current data; the Go data
+remains unchanged. This is an independent contract, not a new golden capture.
+Four required C bridges remain, nine internal entries are retired, and progress
+windows register Go event/draw callbacks directly. The rectangle-copy declaration
+now correctly describes scalar 0/1 results; captured return bits are unchanged.
+
+Production C is **91,478 lines in 101 files**, a reduction of **262 lines**,
+with zero test-reference C. Native qualification passed: focus7, accumulated
+714 (one expected optional skip), affected server/highres
+80/81. All selected tests started and completed.
+Three production builds passed ELF32/i386/SSE2/CGO and symbol audits: retained
+exports present, retired entries and test helpers absent. The full asset suite
+matches the exact known failure set and package outcomes (1,553 entries; 15 pass /
+3 fail /32 skip). Fresh headless gameplay passed in 37.422s with
+null audio and reference comparison enabled.
+
+Accumulated frozen coverage is **349,126 results in 1,099 groups**, plus
+independent contracts. Local qualification.json and native-a-capture-comparison.json
+record binary/build/test/gameplay evidence and exact capture hashes.

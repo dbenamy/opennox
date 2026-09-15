@@ -2,25 +2,28 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 92k lines** — exactly **91,740 physical lines** in
+**Rough C remaining: about 91k lines** — exactly **91,478 physical lines** in
 101 production `.c` files, with zero test-reference C. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — UI rendering C baseline qualified
+## Current — UI rendering conversion fully qualified
 
-Thirteen routines /262 removable C lines are ready for conversion. Six tests own
-9,880 repeated C results/fivegroups plus independent contracts. Focus6,
-affected client80/server79/highres80, Cproduction build and headless gameplay pass.
-See [CLIENT_UI_RENDER.md](docs/porting/CLIENT_UI_RENDER.md). Commit/push this baseline,
-then integrate the reviewed drafts and run frozen captures, accumulated713,
-affected variants, three builds/ABI, exact asset suite and fresh gameplay.
-Production C remains91,740 /101files /reference0. No Cprerequisite corrections.
+Thirteen routines moved to Go;262 C lines removed. Production C is91,478
+/101files /reference0. All9,880 results/5groups plus independent contracts pass.
+Focus7, accumulated714 (one optional skip), server80/highres81, all three builds/ABI,
+exact asset-suite failure comparison and fresh gameplay pass. Accumulated frozen
+coverage:349,126results/1,099groups plus contracts. See
+[CLIENT_UI_RENDER.md](docs/porting/CLIENT_UI_RENDER.md) and local
+build/port-client-ui-render/qualification.json. Commit/push this conversion now.
+Do not rerun integration scripts. The scalar rectangle-copy return correction
+preserves existing bits and is documented for review.
 
-User resumed autonomous connected batches through qualification, docs/C LOC,
-commit/push and onward. No pending question. Do not edit Go/C during builds/tests;
-actual source and committed expectations take precedence over local drafts.
+Continue the next connected batch autonomously through baseline, translation,
+qualification, docs/C LOC, commit/push and onward. No pending user question.
+Source build/baseline/env.sh for every Go command; no source edits during checks.
+Preserve original assets/archive. Completed duplicates have restore manifests.
 
 <!-- /current-checkpoint -->
 

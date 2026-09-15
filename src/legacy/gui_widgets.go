@@ -65,7 +65,7 @@ func Nox_gui_newSlider_4B4EE0(par *gui.Window, status gui.StatusFlags, px, py, w
 }
 
 func Nox_gui_newProgressBar_4CAF10(par *gui.Window, status gui.StatusFlags, px, py, w, h int, draw *gui.WindowData) *gui.Window {
-	return asWindow((*nox_window)(C.nox_gui_newProgressBar_4CAF10(C.int(uintptr(par.C())), C.int(status), C.int(px), C.int(py), C.int(w), C.int(h), (*C.uint)(draw.C()))))
+	return uiProgressNew(par, status, px, py, w, h, draw)
 }
 
 func Nox_xxx_wndRadioButtonSetAllFn_4A87E0(win *gui.Window) {

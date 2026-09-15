@@ -3233,18 +3233,6 @@ int nox_xxx_cursor_430B00() { return nox_xxx_useAudio_587000_80772; }
 //----- (00430B10) --------------------------------------------------------
 void nox_client_setMousePos_430B10(int x, int y) { nox_client_changeMousePos_430A00(x, y, true); }
 
-//----- (00430B50) --------------------------------------------------------
-int sub_430B50(int a1, int a2, int a3, int a4) {
-	int result; // eax
-
-	dword_5d4594_3807140 = a1;
-	result = a4;
-	dword_5d4594_3807136 = a2;
-	dword_5d4594_3807116 = a3;
-	dword_5d4594_3807152 = a4;
-	return result;
-}
-
 //----- (00431270) --------------------------------------------------------
 void sub_431270() {
 	if (dword_5d4594_805984) {

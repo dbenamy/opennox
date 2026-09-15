@@ -131,10 +131,10 @@ func Nox_xxx_setSomeFunc_48A210(a1 unsafe.Pointer) {
 	C.nox_xxx_setSomeFunc_48A210(C.int(uintptr(a1)))
 }
 func Sub_49F6D0(a1 int) int {
-	return int(C.sub_49F6D0(C.int(a1)))
+	return int(uiRenderFlag(uint32(a1)))
 }
 func Sub_430B50(a1 int, a2 int, a3 int, a4 int) {
-	C.sub_430B50(C.int(a1), C.int(a2), C.int(a3), C.int(a4))
+	uiRenderBounds(a1, a2, a3, a4)
 }
 func Sub_495A80(a1 uint32) int {
 	return int(C.sub_495A80(C.int(a1)))

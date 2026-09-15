@@ -129,6 +129,7 @@ target build selection and linker evidence.
 | Screen effects corrected C baseline (2026-09-15; no conversion) | 106 | 92,869 | 0 | 0 |
 | Screen particles, remaining drawing and distance/raster helpers (2026-09-15) | 101 | 92,307 | −562 | 0 |
 | Shared object renderer, ghost/shiny, beam and clipping helpers (2026-09-15) | 101 | 91,740 | −567 | 0 |
+| Shared UI clipping/raster helpers and progress bars | 101 | 91,478 | −262 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

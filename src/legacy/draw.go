@@ -528,7 +528,7 @@ func Nox_xxx_wndDraw_49F7F0() {
 	objectRenderSaveClip()
 }
 func Sub_49F780(a1 int, a2 int) {
-	C.sub_49F780(C.int(a1), C.int(a2))
+	uiRenderNarrowClip(a1, a2)
 }
 func Sub_49F860() {
 	objectRenderRestoreClip()

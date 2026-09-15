@@ -16,9 +16,9 @@
 
 The shared object-renderer conversion is complete. The user has resumed autonomous
 porting, one connected batch at a time through qualification, docs, commit and push.
-The next batch covers shared clipping/raster helpers and progress-bar UI drawing.
+Shared clipping/raster helpers and progress-bar UI drawing are also complete.
 See [PORTING_STATE.md](PORTING_STATE.md) for the latest qualification, commits and
-remaining C count, and [the renderer report](docs/porting/CLIENT_OBJECT_RENDER.md)
+remaining C count, and [the UI rendering report](docs/porting/CLIENT_UI_RENDER.md)
 for this batch's scope, test coverage and limitations.
 
 ## Goal and target
@@ -57,8 +57,7 @@ the same VM; do not extrapolate its speed to native hardware.
 The user authorized confident, reasonably reversible implementation decisions:
 make the decision and record it for later review. Ask when a meaningful product
 choice, major compatibility change or costly irreversible action needs their
-judgment. Normally continue one chunk at a time; honor explicit pauses such as
-this checkpoint's review request.
+judgment. Normally continue one chunk at a time; honor any explicit pause requested by the user.
 
 Do not retain C algorithms solely for tests. A committed C baseline and frozen
 expectations provide recovery after conversion. Reuse fixtures across related
