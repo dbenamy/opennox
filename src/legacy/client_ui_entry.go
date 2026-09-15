@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-#include "GAME3.h"
-#include "client__gui__gadgets__listbox.h"
 static int entryDigit(unsigned short v) { return iswdigit(v); }
 static int entryAlnum(unsigned short v) { return iswalnum(v); }
 */
@@ -232,7 +230,7 @@ func uiEntryNew(parent *gui.Window, flags gui.StatusFlags, x, y, width, height i
 		return nil
 	}
 	list.Flags &^= 128
-	C.nox_xxx_wndListboxInit_4A3C00(C.int(uintptr(list.C())), C.int(uintptr(list.WidgetData)))
+	uiListInit(list, uiListData(list))
 	list.DrawData().BgColorVal = noxcolor.RGB5551Color(0, 0, 0).Color32()
 	return w
 }

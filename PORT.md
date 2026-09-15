@@ -14,12 +14,12 @@
 
 ## Current status
 
-Text-entry input, composition, rendering and context are converted and fully
-qualified, including real character-name typing and corrected input ownership.
-Continue autonomous porting one connected batch at a time through qualification,
-docs, commit and push. The listbox C baseline is now qualified; its Go conversion is next. See
-[PORTING_STATE.md](PORTING_STATE.md) for the resume checkpoint and C count, and
-[the entry report](docs/porting/CLIENT_ENTRY.md) for scope and evidence.
+Listbox construction, rows, selection, scrolling and drawing are converted and
+fully qualified, following text-entry and the other widget batches. Continue
+autonomous porting one connected batch at a time through qualification, docs,
+commit and push. The next candidate is window geometry, visibility, flags and
+draw-data helpers. See [PORTING_STATE.md](PORTING_STATE.md) for the checkpoint
+and C count, and [the listbox report](docs/porting/CLIENT_LISTBOX.md) for evidence.
 
 ## Goal and target
 

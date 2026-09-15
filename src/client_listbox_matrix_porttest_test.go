@@ -144,7 +144,7 @@ func TestClientListboxRowsAndCapacity(t *testing.T) {
 			}
 		}
 	}
-	effectsCapture(t, "listbox-rows-capacity", out, len(out), "13988d7aed540c47474782d208ef6378799a91706fa15de7919d6f7ae6779c52")
+	effectsCapture(t, "listbox-rows-capacity", out, 1200, "13988d7aed540c47474782d208ef6378799a91706fa15de7919d6f7ae6779c52")
 }
 func TestClientListboxInputAndSelection(t *testing.T) {
 	runtime.LockOSThread()
@@ -209,7 +209,7 @@ func TestClientListboxInputAndSelection(t *testing.T) {
 			}
 		}
 	}
-	effectsCapture(t, "listbox-input-selection", out, len(out), "7f7fb19d91ecc15a68e57cd7560b77480674a16220aa5380bea97dcc7bc71a28")
+	effectsCapture(t, "listbox-input-selection", out, 8640, "7f7fb19d91ecc15a68e57cd7560b77480674a16220aa5380bea97dcc7bc71a28")
 }
 func TestClientListboxDrawing(t *testing.T) {
 	runtime.LockOSThread()
@@ -264,7 +264,7 @@ func TestClientListboxDrawing(t *testing.T) {
 			}
 		}
 	}
-	effectsCapture(t, "listbox-drawing", out, len(out), "a4966f318753a7b35313e7f8e022b0b2217191cf8bd3940079218ccb7ab13724")
+	effectsCapture(t, "listbox-drawing", out, 2048, "a4966f318753a7b35313e7f8e022b0b2217191cf8bd3940079218ccb7ab13724")
 }
 
 func TestClientListboxControlsAndBoundaries(t *testing.T) {
@@ -322,5 +322,5 @@ func TestClientListboxControlsAndBoundaries(t *testing.T) {
 			}
 		}
 	}
-	effectsCapture(t, "listbox-controls-boundaries", out, len(out), "f5bd9dc52834c2edb335d1e8d46e8b26d115a07f8699e62cf0ae6c52a0fb69d7")
+	effectsCapture(t, "listbox-controls-boundaries", out, 1820, "f5bd9dc52834c2edb335d1e8d46e8b26d115a07f8699e62cf0ae6c52a0fb69d7")
 }

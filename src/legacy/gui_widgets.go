@@ -4,7 +4,6 @@ package legacy
 #include "GAME2_2.h"
 #include "GAME3.h"
 #include "GAME3_1.h"
-#include "client__gui__gadgets__listbox.h"
 */
 import "C"
 import (
@@ -53,7 +52,7 @@ func nox_xxx_wndButtonDrawNoImg_4A81D0(win *nox_window, draw *C.nox_window_data)
 }
 
 func Nox_gui_newScrollListBox_4A4310(par *gui.Window, status gui.StatusFlags, px, py, w, h int, draw *gui.WindowData, tdata *gui.ScrollListBoxData) *gui.Window {
-	return asWindow((*nox_window)(C.nox_gui_newScrollListBox_4A4310((*nox_window)(par.C()), C.int(status), C.int(px), C.int(py), C.int(w), C.int(h), C.int(uintptr(draw.C())), (*C.nox_scrollListBox_data)(unsafe.Pointer(tdata)))))
+	return uiListNew(par, status, px, py, w, h, draw, tdata)
 }
 
 func Nox_gui_newEntryField_488500(par *gui.Window, status gui.StatusFlags, px, py, w, h int, draw *gui.WindowData, tdata *gui.EntryFieldData) *gui.Window {

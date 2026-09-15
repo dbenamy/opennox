@@ -2,15 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME3.h"
-*/
-import "C"
-import (
-	"github.com/opennox/opennox/v1/client/gui"
-	"unsafe"
-)
+import "github.com/opennox/opennox/v1/client/gui"
 
-func PortTestListboxScrollIndex(d *gui.ScrollListBoxData) int {
-	return int(C.sub_4A4800(C.int(uintptr(unsafe.Pointer(d)))))
-}
+func PortTestListboxScrollIndex(d *gui.ScrollListBoxData) int { return uiListIndex(d) }
