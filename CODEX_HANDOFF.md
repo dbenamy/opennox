@@ -2,42 +2,32 @@
 
 <!-- current-focus -->
 
-### Current — sprite animation fully qualified; object drawing next
+### Current — corrected object-drawing C baseline qualified
 
-Sprite animation is fully converted and qualified against pushed C baseline
-8847eb40. This checkpoint accompanies the native commit; confirm push with Git.
-Read docs/porting/CLIENT_SPRITE_ANIMATION.md. All 17,606 results/four groups match,
-and image-owner/callback identity plus 128-seed random-bound contracts pass.
-Standard 672 tests (671 pass/one optional skip), server 39/highres 39 pass.
-All three production builds and ELF32/SSE2/ABI checks pass; full asset-suite
-outcomes match exactly (1,553 known failures, 15 pass/3 fail/32 skip packages).
-Fresh unchanged headless gameplay passes in 36.572s.
+Sprite conversion c7f68f46 is pushed. Object-drawing corrected C baseline is now
+fully qualified:14 focused tests,13,298 repeated results/10 matrices; standard686
+(685 pass/one optional skip), server/highres53 each, production build and fresh
+headless gameplay all pass. See docs/porting/CLIENT_OBJECT_DRAWING.md and local
+build/port-client-draw-objects/c-qualification.json /c-gameplay-qualification.json.
+C count93,782 /118 files /reference0 includes+7 prerequisite lines. No C qualification
+process remains active. Commit/push this baseline before applying native drafts.
 
-Six whole C files /640 lines removed; sixteen routines converted/reusing Go,
-one unused C vector-array duplicate removed. Thirteen C entry points remain,
-four private/dead ones retired. C drawObject and draw-data cleanup remain live
-production dependencies. Current C **93,775 lines /118 files /zero reference C**.
-Accumulated captures **138,003 results /1,069 groups** plus contracts.
+Next: review and run local integrate-native.py ONCE, then exact focused captures,
+qualify-native.py (accumulated/variants/three builds/ABI/full asset comparison/gameplay).
+Expected retirement912 C lines /12 files;27 routines with23 retained exports,
+4 private helper exports retired plus the now-unused static-array loader export.
+Native drafts native-*.go.stage are not yet applied. prepare-integration.py.stage
+and fix-drafts.py.stage are older drafts and must NOT overwrite reviewed stages.
+Do NOT rerun prerequisites.py.stage, which is already applied, or any completed
+sprite integration/finalization scripts. Actual src/test fixtures are authoritative.
 
-All qualification/build processes are joined before this checkpoint. Current
-native source is authoritative; do not rerun integrate-native.py, finalize-c-docs.py
-or finalize-native-docs.py. Original C copies/local captures are recovery evidence,
-never staged; the C baseline commit is recoverable from Git. Preserve existing
-fade-deletion alpha state and conditional size header for separate review; the
-conditional random bound was deliberately corrected/qualified before conversion.
-
-Next read build/port-client-draw-objects/PLAN.md: a read-only candidate audit of
-12 related C files /716 lines, not yet applied. Reuse image/effects owners; real
-world lighting uses the embedded grid and six-word C buffer. Arrow allocation,
-glyph default alpha and summon nested ownership need explicit contracts. Shared
-player/team/wall-clipping drawObject coverage is still a separate requirement.
-Proceed with the next connected batch, qualify, update C LOC/docs, commit/push,
-summarize in commentary and continue. No new agents or user question pending.
-
-Use baseline 386/SSE2/CGO env, GOMAXPROCS=2, -p2 and guarded run_tests.py. Never edit
-Go/C during tests/builds. Preserve originals and untracked 7z; verified duplicate
-older gameplay assets were deduplicated with restoration manifests. The current
-native gameplay copy remains. Keep raw crash/full-suite logs local.
+Test owners preserve real rendering, lighting, materials/teams/fonts and linked/
+unlinked drawable ownership. Shared C drawObject remains a dependency; this batch
+does not qualify all its player/team/clipping paths. Continue full qualification,
+C LOC/docs, commit/push, commentary summary, then next batch without asking unless
+a substantive decision is needed. No questions/new agents. Preserve assets/7z.
+Completed sprite asset duplicate reclamation556,358,986 bytes and archived qualified
+binaries252,645,068 bytes have verified restoration manifests under build/.
 
 <!-- /current-focus -->
 

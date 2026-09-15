@@ -177,7 +177,7 @@ func (c *effectsTestClient) resetCase(env *legacy.PortTestEffectsEnvironment, pi
 	d.SetRect3(pix.Rect)
 	c.r.ClearPoints()
 }
-func (c *effectsTestClient) snapshotDrawables(t *testing.T) [][]uint32 {
+func (c *effectsTestClient) snapshotDrawables(t *testing.T, unlinked ...*client.Drawable) [][]uint32 {
 	t.Helper()
 	ref := func(p uint32) uint32 {
 		if p == 0 {
@@ -190,11 +190,25 @@ func (c *effectsTestClient) snapshotDrawables(t *testing.T) [][]uint32 {
 		return n
 	}
 	var out [][]uint32
+	var drawables []*client.Drawable
+	seen := make(map[*client.Drawable]bool)
 	var prev *client.Drawable
 	for dr := c.Objs.List1; dr != nil; dr = dr.NextPtr {
-		if len(out) >= 512 || dr.Field_93 != prev {
+		if len(drawables) >= 512 || dr.Field_93 != prev || seen[dr] {
 			t.Fatal("invalid production drawable list")
 		}
+		drawables = append(drawables, dr)
+		seen[dr] = true
+		prev = dr
+	}
+	for _, dr := range unlinked {
+		if dr == nil || seen[dr] || c.refs[dr] == 0 || dr.NextPtr != nil || dr.Field_93 != nil {
+			t.Fatal("invalid explicitly owned unlinked drawable")
+		}
+		seen[dr] = true
+		drawables = append(drawables, dr)
+	}
+	for _, dr := range drawables {
 		words := append([]uint32(nil), unsafe.Slice((*uint32)(unsafe.Pointer(dr)), 128)...)
 		for _, i := range []int{83, 84, 87, 88, 90, 91, 92, 93, 94, 95, 97, 98, 100, 101, 102, 103, 104, 105, 106, 107} {
 			words[i] = ref(words[i])
@@ -229,7 +243,6 @@ func (c *effectsTestClient) snapshotDrawables(t *testing.T) [][]uint32 {
 			words[116] = 0xe1000025
 		}
 		out = append(out, append([]uint32{c.refs[dr]}, words...))
-		prev = dr
 	}
 	if len(out) != c.Objs.Count {
 		t.Fatal("drawable count differs from list")
@@ -246,6 +259,11 @@ func (c *effectsTestClient) snapshotDrawables(t *testing.T) [][]uint32 {
 				indexed[dr] = true
 				previous = dr
 			}
+		}
+	}
+	for _, dr := range unlinked {
+		if indexed[dr] {
+			t.Fatal("unlinked drawable is unexpectedly indexed")
 		}
 	}
 	return out

@@ -51,7 +51,7 @@ int nox_thing_monster_gen_draw(int* a1, nox_drawable* dr) {
 		}
 		break;
 	case 4:
-		v7 = nox_common_randomIntMinMax_415FF0(0, v6, "C:\\NoxPost\\src\\client\\Draw\\MGenDraw.c", 86);
+		v7 = nox_common_randomIntMinMax_415FF0(0, v6 - 1, "C:\\NoxPost\\src\\client\\Draw\\MGenDraw.c", 86);
 		break;
 	case 5:
 		v7 = *(unsigned int*)(v2 + 308);

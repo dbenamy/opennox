@@ -497,3 +497,14 @@ dependency until its broader player/team/clipping paths are owned. Preserve the
 existing fade-on-deletion alpha state and conditional data size header for later
 review. Remove the unused C vector-array loader instead of porting its already
 existing Go replacement again. See CLIENT_SPRITE_ANIMATION.md.
+
+## Object drawing prerequisites (2026-09-15)
+
+Before the next C baseline, failed optional arrow tails now preserve the main
+sprite and retry anchor; default glyph opacity is explicitly255 instead of the
+drawable address's low byte; generator Random uses the declared last frame index
+(count-1) with the inclusive RNG. These are reversible corrections under the
+user's standing authorization. Review the intended optional-effect/opacity policy
+later; do not reinstate address-dependent pixels to reproduce memory addresses.
+Independent rendered-pixel, allocation/lifetime and RNG contracts accompany them.
+See [the object drawing checkpoint](CLIENT_OBJECT_DRAWING.md).

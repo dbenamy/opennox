@@ -124,6 +124,7 @@ target build selection and linker evidence.
 | Client drawable updates (2026-09-14) | 130 | 95,146 | −1,075 | 0 |
 | Procedural particle drawing, lighting and color initialization (2026-09-14) | 124 | 94,415 | −731 | 0 |
 | Sprite animation, frame parsing and boulder drawing (2026-09-15) | 118 | 93,775 | −640 | 0 |
+| Object drawing prerequisites and C baseline (2026-09-15; no conversion) | 118 | 93,782 | +7 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
