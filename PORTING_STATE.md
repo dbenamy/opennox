@@ -1,65 +1,69 @@
-# Porting checkpoint — 2026-09-14
+# Porting checkpoint
 
-Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
+Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
+
+**Rough C remaining: about 92k lines** — exactly **91,740 physical lines** in
+101 production `.c` files, with zero test-reference C. This is source size, not
+an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-### Current — shared object renderer conversion fully qualified
+## Current — renderer complete; paused for review
 
-Ten routines moved to Go;567 C lines removed. Production C is91,740 /101files /
-reference0. All38,677 results/ninegroups plus threeprobes match on first native
-attempt. Focus12, accumulated707 (oneoptional skip), server73/highres74, allthree
-production builds/ABI checks, exactfullassetsuite and gameplay36.470s pass.
-Accumulated339,246results/1,094groups pluscontracts. See
-[the renderer report](docs/porting/CLIENT_OBJECT_RENDER.md). Cbaseline3143d026 is
-committed/pushed; commit/push the native conversion now. Do not rerun integration.
+Shared object renderer conversion **`642218e7`** is committed and pushed to `dev`.
+Ten routines moved to Go, removing 567 C lines. All **38,677 frozen results in nine
+groups** and three independent probes pass. Baseline **`3143d026`** is recoverable
+in Git. See [CLIENT_OBJECT_RENDER.md](docs/porting/CLIENT_OBJECT_RENDER.md) for scope,
+coverage, fixture corrections and preserved behavior requiring later review.
 
-The user's final requested step is a separate documentation cleanup: rename
-CODEX_HANDOFF.md to PORT.md, remove old host/date material and stale plans, add a
-top TOC, lightly tidy PORTING_STATE.md and add rough C LOC remaining. Commit/push
-that cleanup, then PAUSE for review. Do not begin another conversion chunk.
+Native qualification passed: 12 focused tests, 707 accumulated tests (one expected
+optional skip), affected server/highres 73/74, all three production builds and ABI
+checks, the exact known full-asset-suite failure set (1,553 entries; 15 pass / 3 fail /
+32 skip packages), and fresh headless gameplay with reference comparison enabled.
+Four required C entry points remain; six internal entries are retired. Accumulated
+frozen coverage is 339,246 results in 1,094 groups plus independent contracts.
+
+The plan is now PORT.md with a table of contents and current workflow; obsolete
+original-host/setup snapshots were removed. This checkpoint was lightly tidied
+and the remaining C count added above. The cleanup is committed separately from
+the conversion. **Work is paused for user review. Do not begin another conversion
+chunk until the user asks to continue.**
+
+Local evidence: `build/port-client-object-render/qualification.json`. No tests or
+builds remain active. Original assets and archive are preserved. Completed-run
+asset deduplication and binary archives have restoration manifests under `build/`.
 
 <!-- /current-checkpoint -->
 
 ## GitHub backup and recovery
 
-On 2026-09-10, SSH authentication to GitHub succeeded as dbenamytravis and all
-seven commits through e694e1ac were pushed to dbenamy/opennox, branch dev. The
-remote branch was verified at e694e1ac40ab12da869cccb50248881fd537b3f4 before this
-checkpoint update. The plan and this log were already included in that push.
+Qualified changes and these documents are pushed to `dev` in
+[dbenamy/opennox](https://github.com/dbenamy/opennox). The explicit SSH push URL is
+`git@github.com:dbenamy/opennox.git`; credentials are provisioned separately.
 
-See [recovery instructions](docs/porting/RECOVERY.md) and the tracked
-[warrior smoke scenario](docs/porting/warrior-smoke.yaml). They preserve the
-asset-free setup needed to resume without the ignored build/ directory. Original
-assets still require a separate user backup; raw logs, binaries and screenshots
-are not on GitHub. Provision SSH credentials separately; no private key or token
-is recorded here. The SSH push URL is git@github.com:dbenamy/opennox.git; origin
-still uses HTTPS, so an explicit SSH URL was used for the push.
+[Recovery instructions](docs/porting/RECOVERY.md) and the tracked
+[warrior scenario](docs/porting/warrior-smoke.yaml) preserve setup and validation
+steps if the ignored `build/` directory is lost. Raw captures, logs, binaries,
+screenshots, saves and game assets are local artifacts, not committed source.
 
-## Historical status after infrastructure repairs
+## Historical notes
+
+The sections below preserve earlier measurements and decisions. Their C counts,
+run status and then-next actions describe the recorded stage, **not current work**.
+Use the current checkpoint above, the [C size history](docs/porting/C_LOC.md) and
+individual batch reports for subsequent progress. This log is not an exhaustive
+chronology of every completed batch.
+
+### Historical status after infrastructure repairs
 
 Plan and infrastructure changes are committed. Screenshot checks now fail
 reliably, automatic test writes are isolated, and stale API/vet failures are
 repaired. Full default suite with assets is down from seven failing packages to
 three: blobs tooling, renderer goldens and audio goldens. None are suppressed.
-No C-to-Go conversion has begun. Historical baseline results below remain useful;
-see the final infrastructure section for the latest checks.
+No C-to-Go conversion had begun at that stage. The following measurements record
+that infrastructure baseline; later conversion reports supersede its progress status.
 
-## Repository and environment
-
-- Original baseline: b184030e76be2b681a7f6d2bcdef52b091d94b9b on dev; origin is the user's fork,
-  https://github.com/dbenamy/opennox.git.
-- No pre-existing tracked changes. Only the handoff and media archive were
-  untracked initially. No C-to-Go porting has begun; subsequent infrastructure edits are committed.
-- Ubuntu 26.04.1 x86_64, Go 1.26.0, multilib GCC, i386 SDL2/OpenAL dev packages.
-  Current Codex sandbox is disabled at the user's request. Stay within this host.
-- Added archive/headless tools; bsdtar, 7z, unsquashfs, Xvfb and xdotool available.
-  dpkg --audit is clean. No reboot performed. Old UTM hardware details are historical.
-- Initial sandbox SIGSYS on 386 execution, network denial and unwritable module
-  cache are resolved. Explicit CC=gcc/CXX=g++ avoids Go selecting absent
-  i686-linux-gnu-gcc. Target remains 386 with CGO.
-
-## Local artifacts and reproducibility
+### Local artifacts and reproducibility
 
 Everything under build/ is ignored by Git. These artifacts persist in this VM,
 not in commits. See build/baseline/README.md for details and commands.
@@ -78,7 +82,7 @@ not in commits. See build/baseline/README.md for details and commands.
 - Full JSON test outputs, exit files and build graphs are in build/baseline/logs.
   test-summary.json gives package/test event counts.
 
-## Test outcomes: baseline is red
+### Test outcomes: baseline is red
 
 All three full suite variants were attempted with assets, GOARCH=386,
 CGO_ENABLED=1 and allowed C flags. Each exits 1:
@@ -114,7 +118,7 @@ reused across variants; future runs must recreate it per variant to avoid any
 cross-run contamination. The working checkout is clean apart from planning docs
 and the original archive.
 
-## Gameplay scenario and oracle
+### Gameplay scenario and oracle
 
 - Existing src/e2e*.go harness supports YAML input, simulated time, platform RNG,
   screen comparisons and save hashing. Use it before inventing another harness.
@@ -139,14 +143,14 @@ and the original archive.
   WORKING and AUTOSAVE. See save-comparison.json. Cause and save-load compatibility
   are unverified. Missing-script-object warnings also remain in baseline logs.
 
-## C inventory started
+### C inventory started
 
 Saved go list -deps -json graphs for default/server/highres. Local compiled C:
 152 for clients (148 legacy + 3 cnxz + 1 ail), 151 for server (no ail C file).
 This is compiled translation-unit inventory, not linked/reachable/active logic.
 Indirect callbacks, retained symbols and subsystem classification remain pending.
 
-## Next work
+### Follow-up identified at the initial baseline
 
 1. Diagnose PNG/PCM goldens without masking real behavior changes. Investigate
    Player.plr nondeterminism and add a save-load scenario.
@@ -156,7 +160,7 @@ Indirect callbacks, retained symbols and subsystem classification remain pending
 Do not call the suite green. Dedicated-server map/tick scenarios, multiplayer,
 replay validation, sanitizer compatibility and performance work remain pending.
 
-## Infrastructure changes after baseline
+### Infrastructure changes after baseline
 
 - Plan/checkpoint committed as af08739d; repository-local Git author configured
   from the user's supplied identity.
@@ -207,7 +211,7 @@ render/audio failures need diagnosis before touching those areas, but are not a
 blanket blocker for unrelated conversions. Baseline Player.plr differences also
 remain unexplained. No C implementation has been replaced yet.
 
-## Bounded failure diagnosis — 2026-09-10
+### Bounded failure diagnosis — 2026-09-10
 
 - Blob formatter: combining two dynamic Go offset terms dropped the joining +,
   e.g. uintptr(x)*13+71276+uintptr(y) became invalid Go. Added regression cases
@@ -255,7 +259,7 @@ choose an independent leaf, and establish its C-reference differential tests
 before conversion. Do not require the entire baseline suite to be green, and do
 not use obsolete blob writers or unresolved render/audio goldens as port oracles.
 
-## First conversion: protection checksum — 2026-09-10
+### First conversion: protection checksum — 2026-09-10
 
 - Bounded build inventory: standard/highres select 152 repository C translation
   units, server 151. Both checksum symbols are retained in all baseline binaries.
@@ -286,7 +290,7 @@ no broad protection-manager or render/audio conversion has been attempted.
 Conversion commit: 66fa7bd4; pushed to dbenamy/opennox dev with the preceding
 reference-test commit 00228a81. Only the original media archive is untracked.
 
-## Retire checksum C test reference — 2026-09-10
+### Retire checksum C test reference — 2026-09-10
 
 At the user's request, removed internal/protectionref after the completed
 conversion comparisons. The historical C implementation and differential harness
@@ -301,7 +305,7 @@ Production C count stays 142,637 lines across 153 files; test-reference C drops
 from 33 to 0. C_LOC.md and the handoff reflect this retirement. No engine rebuild
 or gameplay rerun was needed for this test-only removal.
 
-## Protection record helpers — in progress, 2026-09-10
+### Protection record helpers — baseline checkpoint, 2026-09-10
 
 Selected sub_56F590 (decoded-ID lookup), sub_56F6F0 (index lookup), and
 sub_56F720 (payload swap). All are retained in the standard baseline binary.
@@ -322,7 +326,7 @@ See docs/porting/PROTECTION_RECORDS.md for scope, commands and limitations.
 Next chunk: inspect and test the protection spell/ability bitset operations;
 keep allocation, rekeying and floating-point state outside that scope.
 
-## Protection bitset operations — in progress, 2026-09-10
+### Protection bitset operations — baseline checkpoint, 2026-09-10
 
 Current C passes 5,000 deterministic state scenarios plus 12,291 direct bit
 checks before conversion. Tests cover signed handle thresholds, empty/missing
@@ -339,7 +343,7 @@ lines (−67 this chunk), 153 files, with zero C reference lines. Details:
 docs/porting/PROTECTION_BITSET.md. Next inspect integer/float record construction,
 including exact float bit patterns and allocation-failure state handling.
 
-## Protection constructors — in progress, 2026-09-10
+### Protection constructors — baseline checkpoint, 2026-09-10
 
 Current C constructors pass 16,224 cases (1,014 bit patterns × four keys × four
 C/Go integer/float call paths) before replacement. Patterns include signed zero,
@@ -364,7 +368,7 @@ See docs/porting/PROTECTION_CREATE.md. Next: record deletion and manager cleanup
 only the delete-and-clear operation has remaining C callers, so preserve that
 ABI while routing existing Go cleanup directly to Go.
 
-## Protection deletion/cleanup — in progress, 2026-09-10
+### Protection deletion/cleanup — baseline checkpoint, 2026-09-10
 
 Current C passes 1,000 deterministic removal/cleanup sequences, including exact
 surviving payloads/links/endpoints, head/middle/tail and duplicate-ID removal,
@@ -383,7 +387,7 @@ is 142,393 lines (−65 this chunk), 153 files; C references remain zero.
 See docs/porting/PROTECTION_REMOVE.md. Next: randomized record insertion, with
 explicit comparison of list order and RNG index/consumption under fixed seeds.
 
-## Protection randomized insertion — in progress, 2026-09-10
+### Protection randomized insertion — baseline checkpoint, 2026-09-10
 
 Original C passes 500 deterministic insertion sequences plus prepopulated
 32,768/65,535-record boundaries. Tests compare exact list order, back links,
@@ -402,7 +406,7 @@ build/port-insert. Production C: 142,351 lines (−42), 153 files; C references:
 See docs/porting/PROTECTION_INSERT.md. Next: reserved-record initialization and
 handle allocation, including uint32 sequence wrap and return-value semantics.
 
-## Protection reserved records/handles — in progress, 2026-09-10
+### Protection reserved records/handles — baseline checkpoint, 2026-09-10
 
 Original C passes 400 deterministic mixed operation sequences against full list,
 checksum, handle sequence, return-value and RNG snapshots. Cases include empty
@@ -420,7 +424,7 @@ files; reference C: 0. Evidence: build/port-handles; see
 docs/porting/PROTECTION_HANDLES.md. Next: record rekey/shuffle, testing exact
 payload order, unchanged links, checksum resets and RNG/counter consumption.
 
-## Protection rekey/shuffle — in progress, 2026-09-10
+### Protection rekey/shuffle — baseline checkpoint, 2026-09-10
 
 Original C passes 400 deterministic scenarios in C-export and Go-wrapper modes.
 Checks compare exact shuffled decoded values, unchanged node identities/links,
@@ -441,7 +445,7 @@ docs/porting/PROTECTION_REKEY.md and build/port-rekey. Next retire the now-unuse
 integer struct-constructor C bridge (remaining production callers are native Go),
 then continue protected-value validation/mutation.
 
-## Unused protection bridge cleanup — completed, 2026-09-10
+### Unused protection bridge cleanup — completed, 2026-09-10
 
 Retired integer struct-constructor and single-bit C exports/prototypes after
 caller audits found only native Go production paths. Go APIs and behavior tests
@@ -453,7 +457,7 @@ docs/porting/PROTECTION_BRIDGES.md and build/port-bridges. Next: integer/byte/wo
 protected-value setters; their decompiled pointer returns are raw scalar bits.
 Caller audit found no dereferences, so uint32 C return declarations are suitable.
 
-## Protection integer/byte/word setters — in progress, 2026-09-10
+### Protection integer/byte/word setters — baseline checkpoint, 2026-09-10
 
 Original C passes 2,500 setter calls (500 scenarios × four C entries and one
 Go-wrapper path), plus the rekey regression checks after shared fixture reuse.
@@ -473,7 +477,7 @@ Production C: 142,189 lines (−76), 153 files; reference C: 0. See
 docs/porting/PROTECTION_SET.md and build/port-setters. Next: additive protection
 updates (int32, signed int16 mana, unsigned uint8 level), with wraparound tests.
 
-## Protection additive updates — in progress, 2026-09-10
+### Protection additive updates — baseline checkpoint, 2026-09-10
 
 Original C passes 2,000 calls across integer, signed-short mana, unsigned-byte
 level and Go mana-wrapper paths. A widened signed oracle checks modulo addition;
@@ -491,7 +495,7 @@ C: 0. See docs/porting/PROTECTION_ADD.md and build/port-add. Next: buffer checks
 validation (sub_56FB00), including signed eligibility, first-match lookup,
 partial-word handling and proof that rejected/missing IDs never read the buffer.
 
-## Protection buffer validation — in progress, 2026-09-10
+### Protection buffer validation — baseline checkpoint, 2026-09-10
 
 Original C passes 515 validation cases: aligned/unaligned buffers and trailing
 bytes, first-match duplicates, signed eligibility, missing IDs, nil huge lengths,
@@ -507,7 +511,7 @@ C: 0. See docs/porting/PROTECTION_VALIDATE.md and build/port-validate. Next obje
 checksum/toggles require object/type fixtures and preserve raw-ID returns on
 missing records, unlike the setter functions.
 
-## Protection object checksum/toggles — in progress, 2026-09-10
+### Protection object checksum/toggles — baseline checkpoint, 2026-09-10
 
 Final original C passes 520 scenarios through both toggle entries (1,040 runs),
 with direct checksum comparisons and 1–3 repeated toggles per run. Fixtures use
@@ -521,7 +525,7 @@ Retire CRC/getter bridges with no remaining C callers; the length-aware checksum
 entry still has a C caller. FC50's const parameter becomes non-const in the
 internal declaration to match the generated Go export; behavior remains read-only.
 
-## Object checksum/toggles completed — 2026-09-10
+### Object checksum/toggles completed — 2026-09-10
 
 Ported the digest and both toggles, removed sole-use object getter and checksum
 bridges, and preserved missing-ID return behavior and read-only object access.
@@ -529,47 +533,47 @@ Original-C baseline is `e4127e22`; 1,040 toggle scenarios plus direct digest and
 guard-page checks pass after the port. See [details](docs/porting/PROTECTION_OBJECT.md).
 Production C: **141,984 physical lines (−131)**; test-reference C: **0**.
 
-## Float updates completed — 2026-09-10
+### Float updates completed — 2026-09-10
 
 Ported both float updates after 3,600 original-C ABI calls and independent
 precision-53 arbitrary-precision tests. Actual hosted x87 precision corrected
 the standalone C probe assumption before the port. See [details](docs/porting/PROTECTION_FLOAT.md).
 Production C: **141,941 physical lines (−43)**; test-reference C: **0**.
 
-## Initialization completed — 2026-09-10
+### Initialization completed — 2026-09-10
 
 Ported startup after 400 original-C/wrapper baseline runs with the shipped
 floating constants; retired the sole-use C bridge. See [details](docs/porting/PROTECTION_STARTUP.md).
 Production C: **141,914 physical lines (−27)**; test-reference C: **0**.
 
-## Floating RNG/state completed — 2026-09-10
+### Floating RNG/state completed — 2026-09-10
 
 Ported the remaining four helpers and moved their private state to Go after
 46,046 original-C snapshots and independent arbitrary-precision tests. Retired
 all four C bridges and both C range globals. See [details](docs/porting/PROTECTION_RANDOM.md).
 Production C: **141,844 physical lines (−70)**; test-reference C: **0**.
 
-## Client unit-code/bit helpers completed — 2026-09-10
+### Client unit-code/bit helpers completed — 2026-09-10
 
 Ported three C entries after exhaustive low-word/upper-pattern bit tests and
 2,988 read-only drawable cases. See [details](docs/porting/NETWORK_CODE.md).
 Production C: **141,821 physical lines (−23)**; test-reference C: **0**.
 
-## Dynamic unit-code/extent lookup completed — 2026-09-10
+### Dynamic unit-code/extent lookup completed — 2026-09-10
 
 Ported two C entries through the existing typed server lookup after exhaustive
 unmarked-code bypass and randomized C-backed object-list baselines. See
 [details](docs/porting/NETWORK_EXTENT.md).
 Production C: **141,786 physical lines (−35)**; test-reference C: **0**.
 
-## Waypoint helpers completed — 2026-09-10
+### Waypoint helpers completed — 2026-09-10
 
 Ported allocation, duplicate next-link entries and composite flag predicate,
 retiring its sole-use mask bridge after 459,008 predicate cases and byte-level
 link/allocation baselines. See [details](docs/porting/WAYPOINT_HELPERS.md).
 Production C: **141,745 physical lines (−41)**; test-reference C: **0**.
 
-## Completed — map-rule loading/parsing (2026-09-10)
+### Completed — map-rule loading/parsing (2026-09-10)
 
 Ported 57A1B0/57A1E0/57A3F0/57A4D0/57A620 after original-C baselines at
 2bf05750 and 9c86046c. Go owns context, file reading, tokenization and directive
@@ -579,7 +583,7 @@ All binaries build, rules-port gameplay passes, and the full-suite failure
 multiset exactly matches the prior milestone. Production C: **141,455 (−290)**,
 153 files, zero test-reference C. See docs/porting/RULE_LOADING.md.
 
-## Next chunk baseline — writer decision pending (2026-09-10)
+### Writer baseline — historical decision checkpoint (2026-09-10)
 
 Confirmed original online writer memory-layout/output instability; saved the
 asset-free diagnostic and compiled-offset analysis in docs/porting/RULE_WRITER.md.
@@ -588,7 +592,7 @@ default/server/highres with those cases. No writer production changes; C remains
 **141,455** physical lines. Pending user choice: fix the online bug as part of the
 writer port, or postpone that chunk and continue elsewhere.
 
-## Completed — rule writer and approved online fix (2026-09-10)
+### Completed — rule writer and approved online fix (2026-09-10)
 
 Ported 57AAA0, replacing overlapping decompiler-split temporaries with two full
 Settings2 values. The user explicitly approved fixing the unstable online output.
@@ -597,7 +601,7 @@ writer-port gameplay and exact known-failure full-suite comparison pass. C is
 **141,351 (−104)** physical lines, 153 files, zero test-reference C. See
 RULE_WRITER.md for independent online expectations and original offline baseline.
 
-## Completed — rule-file deletion (2026-09-10)
+### Completed — rule-file deletion (2026-09-10)
 
 Ported 57A9F0 after original-C baseline b861ab46. Ten full-tree/exact-return cases
 and all accumulated ABI tests pass on 386 default/server/highres; all binaries
@@ -605,7 +609,7 @@ build and rule-remove-port passes both gameplay screenshots. Production C:
 **141,340 (−11)** physical lines, 153 files, zero test-reference C. Full-suite
 milestone remains the immediately preceding writer chunk. See RULE_REMOVAL.md.
 
-## Completed — command-rule loading/dispatch (2026-09-10)
+### Completed — command-rule loading/dispatch (2026-09-10)
 
 Ported 57A950/4D0550/4D0670/57AE30 after original-C baseline b803c933. Preserved
 any-bit mode checks, exact headers, byte widening/254-byte physical-line copies,
@@ -615,14 +619,14 @@ rule-command-port gameplay pass; full-suite failure multiset remains exactly
 unchanged. Production C: **141,215 (−125)** physical lines, 153 files, zero
 reference C. See COMMAND_RULES.md.
 
-## Spell-class eligibility completed — 2026-09-10
+### Spell-class eligibility completed — 2026-09-10
 
 Ported 57AEA0 with original-C baseline 2970e5e9, preserving full-width class input,
 real spell flag lookup and exact 0/9 returns. Removed unused C chat predicate.
 All three accumulated test variants, builds and fresh gameplay checks pass.
 Production C: **141,180 lines (−35)**; details in docs/porting/SPELL_CLASS.md.
 
-## Player-ping aggregates completed — 2026-09-10
+### Player-ping aggregates completed — 2026-09-10
 
 Ported 554290/554300 with original-C baseline fea6ca7b. Preserved active-player
 order, host exclusion, two timing reads per qualifying player, unsigned minimum,
@@ -631,7 +635,7 @@ All three accumulated test variants, builds and fresh gameplay checks pass.
 Production C: **141,126 lines (−54)**; see docs/porting/PING_AGGREGATES.md.
 Next alias-table work has a pending user decision documented in the top checkpoint.
 
-## Network aliases and exhaustion fix completed — 2026-09-11
+### Network aliases and exhaustion fix completed — 2026-09-11
 
 Ported reset/select/write with original-C helper baseline 19d02832. Actual-caller
 regressions reproduced the approved bug and now pass with both sentinel checks
@@ -640,7 +644,7 @@ three accumulated test variants/builds and fresh gameplay pass; full-suite
 failure multiset exactly matches baseline (1,553 entries). Production C:
 **141,082 lines (−44)**. Details: docs/porting/NETWORK_ALIASES.md.
 
-## Glyph/item eligibility completed — 2026-09-11
+### Glyph/item eligibility completed — 2026-09-11
 
 Ported both predicates and their caches with original-C baseline d6d7c136.
 Preserved lookup-before-gates, glyph restriction before cheat, callback ordering,
@@ -648,7 +652,7 @@ and observed 386 class-shift behavior. Retired unused item C bridge; shared C
 cheat flag remains live. All three accumulated test variants/builds and gameplay
 pass. Production C: **141,042 lines (−40)**. Details: docs/porting/GLYPH_ELIGIBILITY.md.
 
-## Collision primitives completed — 2026-09-11
+### Collision primitives completed — 2026-09-11
 
 Ported reflection/containment with original-C baseline f85e37ee, exact raw-bit
 reflection and compact containment result fixture. Preserved PC53 arithmetic,
@@ -671,11 +675,11 @@ ELF32/i386/SSE2/CGO. Full suite with assets has the exact known failures: 1,553
 entries; 15 packages pass, 3 fail, 32 skip. Fresh unchanged repeat-a gameplay
 passes in 42.972s. Evidence: build/port-player-controls and baseline/runs/player-controls-port.
 
-Next: retire 30 exports now unused by production callers and route their fixture
+At that checkpoint, the next action was to retire 30 exports unused by production callers and route their fixture
 operations directly to Go. Draft build/port-controls-bridges/retire.py is not yet
 applied; review before use. Keep all controls hashes unchanged, verify all targets
 and symbols, document unchanged C LOC, commit/push and continue the next batch.
-Next algorithm scope is staged in build/port-spell-lifecycle: 29 spell-casting/buff
+The next algorithm scope was staged in build/port-spell-lifecycle: 29 spell-casting/buff
 blocks, 1,328 address-block lines before declaration audit. Do not rerun stale
 controls source generators. No pending question; no new agents; preserve archive.
 
@@ -688,13 +692,13 @@ hashes. All 3,205 cases / 58 groups pass in default/server/highres (9.281s /
 absent. Fresh unchanged gameplay passes in 34.974s. C remains 115,985 / 149 files /
 zero reference C. Evidence: build/port-controls-bridges. Committed/pushed 9fd4ebbf.
 
-## Active — spell casting and buff lifecycle C baseline
+### Spell casting and buff lifecycle — historical C baseline
 
-29 functions / 1,326 removable C lines; production remains C. Optional guarded
+At this baseline: 29 functions / 1,326 removable C lines; production was still C. Optional guarded
 fixtures and 2,246 cases / 60 expected hashes are applied. First full C run passes
 in 8.743s; final locked spell + controls corpus passes twice in 38.765s. Phoneme typed-
 pointer offset bug corrected before locking (DECISIONS.md). See
-[batch notes](docs/porting/SPELL_LIFECYCLE.md). Lock/repeat/commit/push before any
-conversion. Correct EnchantPower duration-array mismatch in the Go conversion.
-Audit exports before qualification. No pending question. Stable controls/reward
+[batch notes](docs/porting/SPELL_LIFECYCLE.md). The then-next tasks were baseline commit/push, conversion, the EnchantPower
+duration-array correction and export qualification; see the linked batch report
+for their completion. Stable controls/reward
 captures are now losslessly compressed .json.gz; tracked hashes unchanged.

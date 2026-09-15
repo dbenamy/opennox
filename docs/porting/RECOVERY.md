@@ -1,10 +1,10 @@
 # Recovering the porting workspace
 
 The plan, checkpoint, source changes and `warrior-smoke.yaml` are tracked in Git.
-Read `CODEX_HANDOFF.md` and `PORTING_STATE.md` after cloning. Work continues on
+Read [PORT.md](../../PORT.md) and [PORTING_STATE.md](../../PORTING_STATE.md) after cloning. Work continues on
 `dev` in `https://github.com/dbenamy/opennox.git`. Qualified conversion chunks
 and their recovery checkpoints are pushed throughout the work. The current
-handoff and checkpoint supersede historical progress notes in older documents.
+plan and checkpoint supersede historical progress notes in older documents.
 
 ## What needs a separate backup
 
@@ -24,7 +24,6 @@ normal project metadata. SSH credentials are provisioned separately on a new VM.
 Use an x86_64 Linux machine with 32-bit execution support. The measured environment
 was Ubuntu 26.04.1 with Go 1.26.0, multilib GCC, i386 SDL2 and OpenAL development
 packages. Preserve the toolchain version when comparing against recorded goldens.
-The old UTM settings in the handoff are historical, not requirements for a new VM.
 
 Relevant Ubuntu packages include `gcc-multilib`, `g++-multilib`, `pkg-config`,
 `libsdl2-dev:i386`, `libopenal-dev:i386`, `libgl1-mesa-dev:i386`, `xvfb`, `xauth`,
