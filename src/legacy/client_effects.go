@@ -47,7 +47,7 @@ func effectSpawn(typ int, pos image.Point) *client.Drawable {
 }
 func effectLink(dr *client.Drawable) { GetClient().Cli().Objs.List34Add(dr) }
 func effectType(name string) uint32  { return uint32(GetClient().Cli().Things.IndByID(name)) }
-func effectDistance(x, y int) int    { return int(C.sub_48C6B0(C.int(x), C.int(y))) }
+func effectDistance(x, y int) int    { return int(screenDistance(int32(x), int32(y))) }
 func effectAngle(x, y float32) int {
 	p := [2]float32{x, y}
 	return int(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&p))))

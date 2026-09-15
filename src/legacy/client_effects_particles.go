@@ -133,7 +133,7 @@ func effectScreenParticles(kind, x, y, width, height, axis, direction int) int {
 		} else {
 			vx = effectRand(0, 20)
 		}
-		C.nox_client_newScreenParticle_431540(C.int(kind), C.int(px), C.int(py), C.int(vx), C.int(vy), 1, C.char(radius), 0, 0, 1)
+		screenParticleCreate(kind, px, py, vx, vy, 1, byte(radius), 0, 0, 1)
 	}
 	return 0
 }

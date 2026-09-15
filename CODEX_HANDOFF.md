@@ -2,29 +2,27 @@
 
 <!-- current-focus -->
 
-### Current — screen-effects C baseline qualified
+### Current — screen effects native conversion fully qualified
 
-Object drawing d0fa88f9 is pushed. Screen-effects corrected C baseline now passes:
-focus9, default695 (one optional skip), server/highres62/62, production
-build and fresh gameplay35.928s. Six capture groups/149,268 results
-repeat byte-for-byte (c-g/c-h), plus three contracts/probes. Production C remains
-92,869 /106 files /reference0. See docs/porting/CLIENT_SCREEN_EFFECTS.md.
+Screen effects: 16 routines converted, 562 C lines/five files removed. All
+149,268 frozen results/six groups plus three contracts pass. Native focus9,
+default695 (one optional skip), server/highres62/62, three builds/ABI audit,
+exact full-asset failure comparison and gameplay38.049s pass.
+Production C 92,307 /101 files /reference0. Accumulated300,569 results/1,085
+groups plus contracts. See docs/porting/CLIENT_SCREEN_EFFECTS.md and local
+build/port-client-screen-effects/qualification.json. Commit/push this chunk now.
+Do not rerun integration or finalization scripts; actual src is authoritative.
 
-Commit/push this baseline, then apply build/port-client-screen-effects/
-integrate-native.py.stage ONCE after verifying clean tracked state. Drafts
-primitives.go.stage, particles.go.stage, draws.go.stage, exports.go.stage hold
-16 routines. Actual src is authoritative after application. Native qualification
-scripts are prepared; source build/baseline/env.sh before every Go test/build.
+Eight required C exports remain, eight private/Go-only boundaries are retired.
+The C baseline rope-ID correction is deliberate and recorded for later review;
+circle unsigned arithmetic and table approximation are preserved. Shared object/
+monster rendering and renderer-bounds setter remain production C dependencies.
 
-Retire eight internal C entries, retain eight required ABI bridges. Keep shared
-bounds setter and actual monster/object renderer dependencies. Preserve circle
-unsigned arithmetic and table approximation. Rope static-ID clearing is an
-applied, independently tested C prerequisite; do not reapply prerequisite script.
-
-Continue focus/native captured equivalence, accumulated/variants/three builds,
-ABI audit, exact full-asset suite comparison, fresh gameplay, docs/C LOC, commit/
-push and next connected chunk. No new agents or pending user question. Original
-assets/7z untouched; completed gameplay asset deduplication has restore manifests.
+Continue the next connected batch autonomously through baseline, conversion,
+qualification, docs/C LOC, commit/push and onward. No new agents or pending user
+question. Source build/baseline/env.sh for every test/build. Keep full failure
+logs local and compare exact existing asset failures. Original assets/7z remain
+untouched; completed gameplay duplicates have restoration manifests.
 
 <!-- /current-focus -->
 

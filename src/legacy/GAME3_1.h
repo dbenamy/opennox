@@ -130,7 +130,6 @@ int sub_4C3210(int a1);
 int nox_xxx_sprite_4C3220(nox_drawable* a1);
 int sub_4C3260();
 void nox_video_drawCircleColored_4C3270(int a1, int a2, int a3, int a4);
-int nox_xxx_spriteDrawCircleMB_4C32A0(int a1, int a2, int a3, int a4);
 int sub_4C3390();
 int sub_4C3410(int* a1);
 int sub_4C3460(int a1);

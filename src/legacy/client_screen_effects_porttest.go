@@ -22,6 +22,7 @@ import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/common/memmap"
+	"image"
 	"unsafe"
 )
 
@@ -48,20 +49,20 @@ func PortTestScreenParticleDraw(p *Nox_screenParticle, vp *noxrender.Viewport) i
 	return int(C.nox_client_screenParticleDraw_489700(vp.C(), (*C.nox_screenParticle)(unsafe.Pointer(p))))
 }
 func PortTestScreenParticleDelete(p *Nox_screenParticle) {
-	C.sub_431700((*C.uint64_t)(unsafe.Pointer(p)))
+	screenParticleDelete(p)
 }
 func PortTestScreenPrimitive(op int, a [4]int32) uint32 {
 	switch op {
 	case 0:
-		return uint32(C.sub_48C730(C.uint(a[0])))
+		return screenSqrt(uint32(a[0]))
 	case 1:
 		return uint32(C.sub_48C6B0(C.int(a[0]), C.int(a[1])))
 	case 2:
-		return uint32(C.sub_48C690(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3])))
+		return screenDistanceBetween(a[0], a[1], a[2], a[3])
 	case 3:
-		return uint32(C.sub_4B63B0((*C.int2)(unsafe.Pointer(&a[0])), (*C.int2)(unsafe.Pointer(&a[2]))))
+		return uint32(screenRopeLine(image.Pt(int(a[0]), int(a[1])), image.Pt(int(a[2]), int(a[3]))))
 	case 4:
-		return uint32(C.nox_xxx_spriteDrawCircleMB_4C32A0(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3])))
+		return uint32(screenCircle(int(a[0]), int(a[1]), int(a[2]), uint32(a[3])))
 	}
 	panic("unknown screen primitive")
 }
@@ -105,5 +106,5 @@ func (e *PortTestScreenEnvironment) Restore() {
 
 // This adapter is available in every target; the game-loop wrapper is !server.
 func PortTestScreenParticlesDraw(vp *noxrender.Viewport) {
-	C.nox_client_screenParticlesDraw_431720((*C.nox_draw_viewport_t)(vp.C()))
+	screenParticlesDraw(vp)
 }

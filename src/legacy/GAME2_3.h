@@ -4,7 +4,6 @@
 #include "defs.h"
 
 void sub_48C580(pixel8888* a1, int num);
-unsigned int sub_48C690(int a1, int a2, int a3, int a4);
 unsigned int sub_48C6B0(int a1, int a2);
 int nox_xxx_showObserverWindow_48CA70(int a1);
 int sub_48CAD0();
@@ -140,6 +139,5 @@ int* sub_4A0490(int a1);
 int* sub_4A04C0(int a1);
 nox_window* nox_new_window_from_file(char* cname, void* fnc);
 
-unsigned sub_48C730(unsigned int a1);
 
 #endif // NOX_PORT_GAME2_3

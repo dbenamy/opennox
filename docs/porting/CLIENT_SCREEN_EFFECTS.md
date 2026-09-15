@@ -74,8 +74,23 @@ All selected tests started and completed. Production C build passed in
 51.069s; fresh headless gameplay passed in 35.928s
 with null audio and reference comparison enabled.
 
-Native conversion has not been applied. Planned C boundary: retain six drawing
-callbacks, screen-particle creation for remaining C GUI callers, and two-coordinate
-distance for its remaining C caller. Retire the eight private/Go-only entries;
-move existing Go callers directly to Go helpers. Keep existing shared pool/head/
-tail globals compatible with the production initialization/reset owner.
+Native conversion passed all 149,268 frozen results and three contracts on its
+first attempt; no implementation corrections or expectation changes were needed. The
+16 routines now live in Go; 562 C lines and five whole C files were removed.
+Production C is 92,307 lines / 101 files, with zero test-reference C. Existing
+Go callers invoke private Go helpers directly. Eight required ABI bridges remain
+(six draw callbacks, particle creation, two-coordinate distance); eight internal
+C entries and their declarations are retired. Shared pool/head/tail globals stay
+compatible with the existing initialization/reset owner. Callback walk saves its
+next pointer before dispatch, and tail reuse preserves the untouched upper bytes.
+
+Native qualification: focus 9, accumulated default
+695 (one expected optional skip), server/highres
+62/62; all selected tests started and completed.
+Three production builds passed and were verified as ELF32/i386, SSE2, CGO enabled,
+with all required exports present and retired entries/test helpers absent. The
+full asset suite matches the existing failure multiset and package outcomes;
+fresh headless gameplay passed in 38.049s with null audio and
+reference comparison enabled. Accumulated frozen coverage is 300,569 results in
+1,085 capture groups plus independent contracts. Local qualification.json records
+exact timings, binary hashes, suite comparison and gameplay result.
