@@ -531,3 +531,13 @@ are intentionally unreachable. Keep shared C team lookup as a dependency; retire
 six private renderer entries and retain only four ABI bridges needed by C callers.
 See [the shared object renderer report](CLIENT_OBJECT_RENDER.md) for qualification
 and the explicit hosted x87 precision check.
+
+## UI rendering and progress-bar batch
+
+Port thirteen connected UI rendering routines with real window/renderer owners.
+The pointer-declared rectangle-copy return is scalar 0/1 from noxCopyRect; preserve
+those bits and correct its declaration to int when converting. All remaining C
+callers ignore the result. Keep particle-border tests within known rasterizer
+preconditions (positive radius, contained unclipped images); radius-zero division
+and out-of-buffer unclipped rendering are pre-existing issues, not fixes hidden
+inside this port. See [UI rendering](CLIENT_UI_RENDER.md) for evidence and limits.

@@ -14,8 +14,9 @@
 
 ## Current status
 
-The shared object-renderer conversion is complete. Work is **paused for user
-review** after the documentation cleanup; do not start another batch until asked.
+The shared object-renderer conversion is complete. The user has resumed autonomous
+porting, one connected batch at a time through qualification, docs, commit and push.
+The next batch covers shared clipping/raster helpers and progress-bar UI drawing.
 See [PORTING_STATE.md](PORTING_STATE.md) for the latest qualification, commits and
 remaining C count, and [the renderer report](docs/porting/CLIENT_OBJECT_RENDER.md)
 for this batch's scope, test coverage and limitations.

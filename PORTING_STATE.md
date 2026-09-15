@@ -8,30 +8,19 @@ an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LO
 
 <!-- current-checkpoint -->
 
-## Current — renderer complete; paused for review
+## Current — UI rendering C baseline qualified
 
-Shared object renderer conversion **`642218e7`** is committed and pushed to `dev`.
-Ten routines moved to Go, removing 567 C lines. All **38,677 frozen results in nine
-groups** and three independent probes pass. Baseline **`3143d026`** is recoverable
-in Git. See [CLIENT_OBJECT_RENDER.md](docs/porting/CLIENT_OBJECT_RENDER.md) for scope,
-coverage, fixture corrections and preserved behavior requiring later review.
+Thirteen routines /262 removable C lines are ready for conversion. Six tests own
+9,880 repeated C results/fivegroups plus independent contracts. Focus6,
+affected client80/server79/highres80, Cproduction build and headless gameplay pass.
+See [CLIENT_UI_RENDER.md](docs/porting/CLIENT_UI_RENDER.md). Commit/push this baseline,
+then integrate the reviewed drafts and run frozen captures, accumulated713,
+affected variants, three builds/ABI, exact asset suite and fresh gameplay.
+Production C remains91,740 /101files /reference0. No Cprerequisite corrections.
 
-Native qualification passed: 12 focused tests, 707 accumulated tests (one expected
-optional skip), affected server/highres 73/74, all three production builds and ABI
-checks, the exact known full-asset-suite failure set (1,553 entries; 15 pass / 3 fail /
-32 skip packages), and fresh headless gameplay with reference comparison enabled.
-Four required C entry points remain; six internal entries are retired. Accumulated
-frozen coverage is 339,246 results in 1,094 groups plus independent contracts.
-
-The plan is now PORT.md with a table of contents and current workflow; obsolete
-original-host/setup snapshots were removed. This checkpoint was lightly tidied
-and the remaining C count added above. The cleanup is committed separately from
-the conversion. **Work is paused for user review. Do not begin another conversion
-chunk until the user asks to continue.**
-
-Local evidence: `build/port-client-object-render/qualification.json`. No tests or
-builds remain active. Original assets and archive are preserved. Completed-run
-asset deduplication and binary archives have restoration manifests under `build/`.
+User resumed autonomous connected batches through qualification, docs/C LOC,
+commit/push and onward. No pending question. Do not edit Go/C during builds/tests;
+actual source and committed expectations take precedence over local drafts.
 
 <!-- /current-checkpoint -->
 
