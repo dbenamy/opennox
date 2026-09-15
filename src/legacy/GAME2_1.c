@@ -4431,7 +4431,7 @@ int sub_471450(uint32_t* a1) {
 	uint32_t* v1;           // esi
 	int v3;                 // [esp+4h] [ebp-10h]
 	int v4;                 // [esp+8h] [ebp-Ch]
-	wchar2_t WideCharStr[4]; // [esp+Ch] [ebp-8h]
+	wchar2_t WideCharStr[12]; // [esp+Ch] [ebp-8h]
 
 	v1 = a1;
 	nox_itow(nox_windows_arr_1093036[a1[8]].field_1, WideCharStr, 10);
@@ -4517,7 +4517,7 @@ int nox_xxx_drawHealthManaBar_471C00(int a1) {
 		v3 = nox_win_width / 2 + 15;
 	}
 	v4 = nox_win_height / 2 - 48;
-	v5 = 48 * *((int*)v2 + 1) / *((int*)v2 + 2);
+	v5 = *((int*)v2 + 2) ? 48 * *((int*)v2 + 1) / *((int*)v2 + 2) : 0;
 	nox_client_drawSetColor_434460(nox_color_black_2650656);
 	nox_client_drawRectFilledOpaque_49CE30(v3, v4, 2, 48);
 	nox_client_drawSetColor_434460(*((uint32_t*)v2 + 3));

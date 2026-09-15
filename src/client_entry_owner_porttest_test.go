@@ -45,8 +45,8 @@ type entryOwner struct {
 	named       []string
 }
 
-func newEntryOwner(t *testing.T) *entryOwner {
-	o := &entryOwner{objectRenderOwner: newObjectRenderOwner(t)}
+func newEntryOwner(t *testing.T, extraNames ...string) *entryOwner {
+	o := &entryOwner{objectRenderOwner: newObjectRenderOwner(t, extraNames...)}
 	o.c.GUI = gui.New(o.c.Render())
 	o.env = legacy.PortTestNewEntryEnvironment()
 	t.Cleanup(o.env.Restore)

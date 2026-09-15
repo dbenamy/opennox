@@ -621,3 +621,19 @@ truncation with modifiers. This is a confident reversible choice to review later
 under the user's standing authorization. The shared variadic missing-equipment
 formatter remains unchanged and outside this bounded assembly path; this decision
 does not claim that the shared formatter has been ported or generally bounded.
+
+## Meter label capacity and zero-maximum mini-bars
+
+Before freezing the meter baseline, expand sub_471450's four-unit UTF16 decimal
+label buffer to12 units, sufficient for signed32-bit values including their sign
+and terminator. Establish the original overflow by its source capacity and
+formatting contract, not by treating a stack overwrite as a golden. Exercise
+999/1000,65535 and signed limits after the correction.
+
+For nox_xxx_drawHealthManaBar_471C00, use zero fill height when maximum is zero.
+The corresponding tube already has an empty-state branch, and newly cleared
+meter records have a zero maximum. Preserve existing nonzero-maximum arithmetic.
+Check the empty case explicitly through both draw paths. Both choices are local,
+reversible and made under the user's standing authorization; review them later.
+They do not change physical C LOC. Qualification is still in progress; this entry
+records the decisions, not completed acceptance evidence.

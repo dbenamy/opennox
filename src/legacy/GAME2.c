@@ -1731,6 +1731,10 @@ int sub_452BD0(int a1, char* a2) {
 
 //----- (00452D80) --------------------------------------------------------
 void nox_xxx_clientPlaySoundSpecial_452D80(int a1, int a2) {
+#ifdef NOX_PORT_TEST_CLIENT_SOUND
+	extern void nox_porttest_client_sound(int id, int volume);
+	nox_porttest_client_sound(a1, a2);
+#endif
 	uint32_t* result; // eax
 	uint32_t* v3;     // esi
 

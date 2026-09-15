@@ -2,35 +2,38 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 88k lines** — exactly **87,884 physical lines** in
+**Rough C remaining: about 88k lines** — exactly **87,888 physical lines** in
 98 production `.c` files, with zero test-reference C. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — tooltip conversion fully qualified
+## Current — meter C baseline qualified
 
-Tooltip conversion is fully qualified against C baseline `5921a0f9`, following
-window conversion `98013201`. Both routines are native;11,790 frozen results /four
-groups match byte-for-byte, with nine independent contracts passing. All770
-accumulated,136server/137highres tests, three builds/ABI checks, fresh warrior
-gameplay and exact full-suite known-failure comparison pass. Source fingerprints
-stayed unchanged. See [CLIENT_TOOLTIP.md](docs/porting/CLIENT_TOOLTIP.md).
+Tooltip conversion is committed/pushed as `f0b47113`; no tooltip work remains.
+The next connected meter batch has37 routines /1,069 C lines, plus its private
+seven-record array. The C baseline is fully qualified:3,858 frozen results in11
+groups,12 independent contracts,160client/159server/160highres tests, production
+client build/ABI, exact known full-suite failures, and fresh warrior plus repeated
+wizard HUD gameplay. See [CLIENT_METERS.md](docs/porting/CLIENT_METERS.md).
 
-C remains87,884 /98 files /zero reference C:328 removed (corrected from the
-preliminary329 estimate). Accumulated frozen coverage:436,280 results /1,119
-groups, plus contracts. Both C interfaces remain live; Go callers use Go directly.
-Oversized assembled names truncate at the mapped capacity, recorded for review in
-DECISIONS.md; the shared variadic formatter remains outside that bounded path.
+Production remains C with the recorded label-capacity and zero-maximum bar
+corrections. Four conditional sound-observer lines account for the C-count
+increase to87,888; production contains no observer symbol. No C reference
+algorithms were added. All qualification drivers have finished; source edits
+are allowed. The committed expectations include the repaired poison-overlay
+owner and visible label pixels, not the earlier incomplete fixture captures.
 
-Next connected batch: health/mana/potion/weapon/charge meters,37 routines /about
-1,069 C lines. Audit and initial ignored ABI/environment drafts are under
-build/port-client-meters; no meter source/fixtures are applied or qualified yet.
-Before freezing, review the charge-label's four-unit string buffer (expand to fit
-signed32-bit counts) and the mini-bar zero-maximum divisor against lifecycle.
-Do not rerun completed tooltip/window integration or finalization scripts.
-No user question pending. Every Go shell sources build/baseline/env.sh; no Go/C
-edits during checks. Preserve original assets and archive.
+Next: commit/push this baseline, integrate/review the four ignored native drafts
+under build/port-client-meters/client_ui_meters_*.go.stage, compare against the
+frozen oracle, qualify, update C LOC, commit/push and continue. The draft moves
+the private meter array into Go and retires unnecessary C exports. Review the
+combined weapon/quiver tooltip's512-unit bound with a native regression check.
+Drafts are not applied or accepted source. No user question is pending.
+
+Every Go shell sources build/baseline/env.sh. Do not edit Go/C while tests/builds
+run. Preserve original assets and archive. Completed tooltip/window/meter C
+qualification and gameplay scripts must not be rerun merely to resume work.
 
 <!-- /current-checkpoint -->
 

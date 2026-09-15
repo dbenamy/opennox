@@ -23,9 +23,9 @@ type objectRenderOwner struct {
 	animation *legacy.ImageRefAnim
 }
 
-func newObjectRenderOwner(t *testing.T) *objectRenderOwner {
+func newObjectRenderOwner(t *testing.T, extraNames ...string) *objectRenderOwner {
 	t.Helper()
-	o := newObjectDrawingOwner(t, "Ghost")
+	o := newObjectDrawingOwner(t, append([]string{"Ghost"}, extraNames...)...)
 	e := legacy.PortTestNewObjectRenderEnvironment(o.c.r.Data())
 	t.Cleanup(e.Restore)
 	players, freePlayers := o.c.srv.PortTestObjectRenderPlayers()

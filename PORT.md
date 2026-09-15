@@ -17,7 +17,8 @@
 Localized item-hover names and cursor tooltip storage are converted and fully
 qualified, following window helpers and the widget batches. Continue autonomous
 porting one connected batch at a time through qualification, docs, commit and
-push. The next candidate is the health/mana, potion, weapon and charge meters.
+push. The health/mana, potion, weapon and charge-meter C baseline is now qualified;
+convert that connected batch next.
 See [PORTING_STATE.md](PORTING_STATE.md) for the checkpoint and C count, and
 [the tooltip report](docs/porting/CLIENT_TOOLTIP.md) for evidence.
 

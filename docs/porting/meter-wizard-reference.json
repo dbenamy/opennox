@@ -1,0 +1,15 @@
+{
+  "status": "corrected C reference inspected and repeated",
+  "class": "wizard",
+  "scenario": "meter-wizard-smoke.yaml",
+  "reference_override_for_repeat": false,
+  "audio_backend": "null",
+  "capture_seconds": 39.918256525998004,
+  "repeat_seconds": 39.37071560102049,
+  "png_sha256": {
+    "wizard_dialogue.png": "173cff8a156a41a40efdad3a0c9736fd78e0f5692ea1b2b7a835dbb2d9e3b863",
+    "wizard_meters.png": "17a98f8eec377f52cc6e3f02171ad711e6eeab1fad71ef1705836ff8004a0ad6"
+  },
+  "local_reference_directory": "build/port-client-meters/wizard-reference",
+  "note": "Both dialogue and unobscured health/mana HUD frames compared successfully; prior dialogue-only trial is not this reference."
+}

@@ -139,6 +139,7 @@ target build selection and linker evidence.
 | Inclusive window-ID range termination prerequisite | 100 | 88,574 | +2 | 0 |
 | Window geometry, state, tree and draw-data helpers | 99 | 88,212 | −362 | 0 |
 | Localized item-hover names and cursor tooltip storage | 98 | 87,884 | −328 | 0 |
+| Meter baseline sound-observation ABI (tagged; no algorithm) | 98 | 87,888 | +4 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
