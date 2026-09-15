@@ -12,31 +12,36 @@ an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LO
 
 <!-- current-checkpoint -->
 
-## Current — briefing presentation qualified; next window lifecycle
+## Current — briefing window C baseline frozen
 
-Briefing presentation is qualified and committed with this checkpoint; C baseline
-**d1565ae5** is pushed. Thirteen routines / **947 C lines removed**, leaving
-**78,977 / 92 files / zero reference C**. All **467 results / eleven groups**
-match in default/server/highres; **240 / 238 / 240** affected tests pass. All three
-production builds and eight retained / five retired interface checks pass.
-The full-asset suite exactly matches 1,553 known failure entries and 15/3/32
-package outcomes. Fresh chapter gameplay matches all eight C screenshots.
-All 1,636 Go/C/header fingerprints remained unchanged. All readers/jobs joined.
-See [BRIEFING.md](docs/porting/BRIEFING.md) for timings, history and evidence.
+Briefing presentation **adfe6fa5 is committed/pushed**: thirteen routines / 947
+C lines removed, all 467 frozen results and eight chapter screenshots match.
+Current C size **78,977 / 92 files / zero reference C**. See BRIEFING.md.
 
-Next: remaining briefing window creation, transitions and cleanup in GAME2.c,
-nine routines / about 320 C lines. Reuse briefingOwner, the real dialogue owner
-and chapter gameplay. Candidate scope/callers and UNAPPLIED fixture drafts are
-in build/port-briefing-window. Review/apply those only after pushing this chunk;
-establish independent contracts and repeated C captures before freezing.
-No question pending; continue autonomously. No agents involved.
+Next batch is applied as tagged fixtures only: nine remaining briefing window
+routines / about 320 C lines. Production unchanged. New tests reuse actual GUI,
+renderer, dialogue, music, sprite and fade owners. Cover resource failure,
+chapter/class and remembered loss selection, credits, quest mode precedence,
+input gates, draw modes and timed dismissal. Expectations are not frozen yet.
+C affected qualification passed **251 default / 249 server / 251 highres**,
+all **373 results / eleven groups** identical. Production fingerprints match
+adfe6fa5; its builds/full-assets/chapter gameplay reused. All jobs joined before
+freezing expectations. The locked focused repeat passed all twelve roots with
+assets in 26.047s; all jobs joined.
+Next commit/push C baseline, then apply/review native draft and qualify. Native
+implementation and apply/qualification scripts remain UNAPPLIED under
+build/port-briefing-window; fixture *.stage files are stale applied copies.
 
-All old *.go.stage files in build/port-briefing are stale applied drafts. Current
-native implementation is in src/legacy/briefing*.go. Local qualification is in
-build/port-briefing/native-qualification.json. Original assets/archive untouched.
-With readers joined, pruned 166 old derived Go cache entries (3,013,755,798 bytes);
-manifest build/port-briefing/cache-pruned.json. Capture evidence preserved with
-verified lossless compression. Never edit source while readers run.
+Audit: five C entries will remain across briefing presentation/window code,
+including display called by client__network__cdecode.c; twelve private entries
+can retire. Preserve actual caller bridge, direct Go calls elsewhere. Next review
+first baseline results, expand any missing owner paths, repeat and qualify before
+freezing/committing. No question pending; continue autonomously.
+
+Original assets/archive untouched. Previous complete qualification and source
+fingerprints: build/port-briefing/native-qualification.json and
+native-source-fingerprints.json. Old build/port-briefing/*.go.stage files are stale.
+Never edit source while readers run.
 
 <!-- /current-checkpoint -->
 
