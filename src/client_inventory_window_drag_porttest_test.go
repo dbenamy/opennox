@@ -108,7 +108,7 @@ func TestClientInventoryWindowDragDrop(t *testing.T) {
 			}
 		}
 	}
-	inventoryWindowCapture(t, "drag-drop", rows, "41ca0fa4c4a5a72d1b8b4f4a795d10c396922d940873da843adbd6a4768012f3")
+	inventoryWindowCapture(t, "drag-drop", rows, "ada8d7b8d6e2499ff5a3dac275cd601b7e0de83b9ff952e6683ad4d450f9a9d2")
 }
 func TestClientInventoryWindowAmountCancel(t *testing.T) {
 	o := newInventoryWindowOwner(t)

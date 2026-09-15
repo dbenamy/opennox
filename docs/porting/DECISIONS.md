@@ -737,7 +737,8 @@ word instead. The intended false path preserves the previous identified item;
 the true path selects the actual trade-grid item and stack code. Add direct
 contracts before freezing this batch. No C lines are added/removed. This is a
 small reversible decompilation correction under standing authorization; review
-with CLIENT_INVENTORY_WINDOW.md. Its C qualification is still pending.
+with CLIENT_INVENTORY_WINDOW.md. The C baseline and native conversion are now
+qualified in 0842b2d1 and 24f3f67e respectively.
 
 ### Inventory window baseline: diagnostics and cancellation ownership
 
@@ -753,3 +754,20 @@ drawable. Preserve that deterministic allocation behavior for this conversion,
 then fix it in a separate qualified Go cleanup chunk with lifetime contracts.
 This sequencing is reversible and recorded for review; no behavior is hidden
 from the frozen captures or pool checks.
+
+### Release the owned inventory drag on cancellation — review later
+
+After qualifying the unchanged C behavior in 24f3f67e, add deletion of the
+non-equipped temporary drag after restoration attempts. Placement/pickup copies
+into a separate drawable; equipment drags borrow a live drawable and are excluded
+from deletion. Normal mouse release already makes this ownership distinction.
+Full-inventory failure still reports the existing error and clears the drag.
+
+Independent tests first demonstrate the old leak, then cover 800 repeated cycles,
+fallback and full-inventory failure, identity preservation, exactly-once deletion
+and idempotence. Six captured cancellation results change only the precise
+lifetime/deletion/pool fields; applying that expected correction to the original
+captures reproduces the new captures exactly. The other 27 groups and every
+unrelated field stay unchanged. Only two hashes are updated. This is a small,
+reversible correctness fix under standing authorization; see
+[CLIENT_INVENTORY_CANCEL.md](CLIENT_INVENTORY_CANCEL.md) for qualification.

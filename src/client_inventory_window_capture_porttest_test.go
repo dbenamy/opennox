@@ -135,6 +135,6 @@ func inventoryWindowCapture(t *testing.T, label string, rows []inventoryWindowRe
 	t.Logf("%s: %d results %s", label, len(rows), hash)
 	// Empty expectations are only for the in-progress C baseline. Lock before qualification.
 	if want != "" && hash != want {
-		t.Fatalf("%s hash%s want frozen C%s", label, hash, want)
+		t.Fatalf("%s hash%s want frozen expectation%s", label, hash, want)
 	}
 }

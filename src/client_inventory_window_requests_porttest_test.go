@@ -102,7 +102,7 @@ func TestClientInventoryWindowCancelFallback(t *testing.T) {
 			t.Fatal("fallback lost dragged item")
 		}
 	}
-	inventoryWindowCapture(t, "cancel-fallback", rows, "83117e86628d2a3dfcf6091ab15579236d6ebf1403da861d4950f7ffaf87e58d")
+	inventoryWindowCapture(t, "cancel-fallback", rows, "02249a85ac4fd7bc542dc340eb45ad29b48024bb2dc44e0a4bb0cad6da05a56f")
 }
 
 func TestClientInventoryWindowDropBlockedAndMissing(t *testing.T) {

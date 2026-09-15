@@ -173,3 +173,8 @@ conversion. Its next, separate cleanup will first demonstrate the leak with
 independent lifetime contracts, then verify precise ownership changes without
 changing unrelated gameplay expectations. C baseline and original hashes remain
 recoverable from Git.
+
+The cancellation ownership follow-up is now separately qualified; see
+[CLIENT_INVENTORY_CANCEL.md](CLIENT_INVENTORY_CANCEL.md). The conversion's
+unchanged C expectations and leak behavior remain recoverable at 24f3f67e; only
+the six explicitly reviewed ownership results change in the follow-up.

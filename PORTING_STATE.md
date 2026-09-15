@@ -8,43 +8,52 @@ an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LO
 
 <!-- current-checkpoint -->
 
-## Current — inventory window conversion qualified
+## Current — inventory cancellation cleanup qualified
 
-Seven Go owners now replace all 34 inventory window/input/lifecycle routines,
-removing **1,605 C lines** and retiring client__gui__guiinv.c. Eleven interfaces
-remain for actual C callers and callbacks; 23 retire and Go callers invoke Go
-directly. C baseline **0842b2d1** is pushed. Frozen coverage remains **2,120 results /
-29 groups** for this batch, **455,479 results / 1,185 groups** cumulatively.
-Focused native tests passed all 52 window/display tests with unchanged goldens.
+Inventory window conversion **24f3f67e is committed and pushed**: 34 routines,
+1,605 C lines removed, 11 retained / 23 retired interfaces. Its separate
+cancellation cleanup is now qualified. It deletes the owned temporary after
+restoration attempts and preserves borrowed equipped drawables. Independent
+contracts first reproduced the old leak, then passed 800 repeated cycles plus
+fallback/full-inventory cases. All 55 focused window/display tests pass.
 
-Native qualification passed: accumulated default **874 / 473.503s**,
-affected server **311 / 229.165s**, highres
-**313 / 152.932s**. Every selected root test started
-and finished. All three production binaries verify ELF32/i386/SSE2/CGO, 11 retained
-C interfaces, 23 retired interfaces and no test helpers. Full assets retain exactly
-**1,553 known failures**, 15 pass / 3 fail / 32 skip packages. The nine-screen
-headless scenario matches the committed C baseline's reference, with replacement
-disabled, in **51.206s**. All **1,580 source fingerprints** stayed
-unchanged throughout qualification. No hallway or identification mismatch recurred.
+Exactly six cancellation results change only lifetime/deletion/pool fields; the
+other 27 groups and every unrelated field remain unchanged. Two expectations
+were updated after an exact correction-only comparison against the C captures.
+Frozen case coverage remains 2,120 results / 29 groups for the window batch,
+455,479 / 1,185 cumulatively; the repeated cycles are independent contracts.
+See [CLIENT_INVENTORY_CANCEL.md](docs/porting/CLIENT_INVENTORY_CANCEL.md).
 
-The native-d fallback mismatch wrote an equipped flag to the drawable rather than
-the inventory cell. It was corrected with an independent contract; expectations
-stayed unchanged. The earlier hallway and identification mismatches remain
-unexplained, with automatic full failure captures enabled. See
-[CLIENT_INVENTORY_WINDOW.md](docs/porting/CLIENT_INVENTORY_WINDOW.md).
+Final checks passed: accumulated default **877 / 469.897s**,
+affected server **314 / 229.749s**, highres
+**316 / 155.701s**. All selected tests started and
+finished. All three production binaries verify ELF32/i386/SSE2/CGO, the existing
+11 retained / 23 retired window interfaces, and no test helpers. Full assets retain
+exactly 1,553 known failures and 15 pass / 3 fail / 32 skip packages. The nine-screen
+headless scenario matches the original C gameplay reference in
+**50.395s**, with reference replacement disabled. All **1,581 source
+fingerprints** remain unchanged. C LOC is **82,632 / 96 files / zero reference C**.
 
-Next fix the recorded cancellation drag-copy leak separately. An ignored draft
-build/port-client-inventory-cancel/contracts.go.stage covers repeated stack drag /
-cancel and close cycles, borrowed-equipment lifetimes, successful fallback and
-full-inventory failure. It is NOT integrated. First run its independent contracts
-against this qualified implementation to demonstrate the leak, then fix ownership
-and review every changed capture field before updating affected expectations.
+The earlier hallway and identification mismatches remain unexplained; neither
+recurred here. Full failure captures remain enabled, with expectations preserved.
 
-The inventory-window, display and transaction integration scripts are ALREADY
-APPLIED; never rerun them. Ignored native drafts are stale. Every Go shell sources
-build/baseline/env.sh. Do not edit Go/C/header source while readers run; join all
-jobs including failures. Preserve original assets/archive. Commit and push this
-qualified conversion, then continue one chunk at a time under PORT.md. No user
+Next: **quantity dialog and player-to-player trade UI**, 36 routines / about
+1,281 removable C lines, including the trade translation unit. The adjacent
+sub_4C1CA0 belongs to summon controls and is excluded. Scope, original blocks,
+caller audit, preflight notes and a thin test-bridge draft are saved in ignored
+build/port-client-trade-ui. Nothing from that batch is integrated yet. Read
+preflight.md before installing drafts: two trade hit helpers return pointers
+through char, with partial pointer assignments in callers; establish a corrected
+C baseline and independent exact-cell contracts. Audit real allocation failures,
+missing-item removal and fixed 32-code capacity before freezing invalid behavior.
+Reuse actual owners and extend trade-specific integration rather than treating
+the inventory-only gameplay scenario as full trade coverage.
+
+Commit/push this qualified cleanup, then continue the next batch. Existing
+window/display/transaction integration scripts and cancellation drafts are
+ALREADY APPLIED or stale; never rerun/copy them blindly. Every Go shell sources
+build/baseline/env.sh. Join all source-reading jobs before edits. Preserve original
+assets/archive. Commit and push each qualified chunk under PORT.md. No user
 question is pending.
 
 <!-- /current-checkpoint -->

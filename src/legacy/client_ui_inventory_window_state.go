@@ -171,8 +171,11 @@ func uiInventoryCancelDrag() int {
 				}
 			}
 		}
-		// C retains this temporary allocation. Correct it in the separately qualified
-		// cancellation-ownership follow-up, not by changing the frozen port baseline.
+		// Inventory restoration copies the item into another drawable. Only an
+		// equipment drag borrows its drawable; inventory drags own this temporary.
+		if C.dword_5d4594_1049856 == 0 {
+			GetClient().Nox_xxx_spriteDelete_45A4B0(dr)
+		}
 		uiInventorySetDragged(nil)
 		C.dword_5d4594_1049856 = 0
 		Nox_xxx_cursorSetDraggedItem_477690(nil)
