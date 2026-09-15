@@ -520,3 +520,14 @@ review unusual circle clipping separately. Own actual particle allocation/list
 mutation and real maiden/monster rendering, including gameplay flags. Keep the
 adjacent renderer-bounds setter as a shared C dependency. See
 [screen effects](CLIENT_SCREEN_EFFECTS.md) for scope and evidence.
+
+## Shared object renderer baseline
+
+Own real player/team, animation, renderer, clipping and sight state before moving
+the ten related routines together. Preserve the existing acceptance of short
+nonhorizontal occlusion paths and ignored returned bounds; review this behavior
+separately. The scanline matrix targets client/highres because server implementations
+are intentionally unreachable. Keep shared C team lookup as a dependency; retire
+six private renderer entries and retain only four ABI bridges needed by C callers.
+See [the shared object renderer report](CLIENT_OBJECT_RENDER.md) for qualification
+and the explicit hosted x87 precision check.

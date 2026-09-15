@@ -4,27 +4,24 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Current — screen effects native conversion fully qualified
+### Current — shared object renderer C baseline qualified
 
-Screen effects: 16 routines converted, 562 C lines/five files removed. All
-149,268 frozen results/six groups plus three contracts pass. Native focus9,
-default695 (one optional skip), server/highres62/62, three builds/ABI audit,
-exact full-asset failure comparison and gameplay38.049s pass.
-Production C 92,307 /101 files /reference0. Accumulated300,569 results/1,085
-groups plus contracts. See docs/porting/CLIENT_SCREEN_EFFECTS.md and local
-build/port-client-screen-effects/qualification.json. Commit/push this chunk now.
-Do not rerun integration or finalization scripts; actual src is authoritative.
+Ten routines / 567 C lines are ready for conversion. Twelve focused tests own
+38,677 results in nine frozen groups plus three independent probes. C focus12,
+accumulated706 before the final precision addition, server73/highres74, production
+build and fresh headless gameplay pass. See docs/porting/CLIENT_OBJECT_RENDER.md.
+The occlusion matrix is client-only because the server target deliberately has no
+scanline implementation. No production-C prerequisite correction was needed.
+Production C remains92,307 /101 files /reference0. Commit/push the baseline, then
+apply the reviewed native drafts and qualify frozen results, accumulated707,
+affected variants, three builds/ABI, exact full asset suite and fresh gameplay.
 
-Eight required C exports remain, eight private/Go-only boundaries are retired.
-The C baseline rope-ID correction is deliberate and recorded for later review;
-circle unsigned arithmetic and table approximation are preserved. Shared object/
-monster rendering and renderer-bounds setter remain production C dependencies.
-
-Continue the next connected batch autonomously through baseline, conversion,
-qualification, docs/C LOC, commit/push and onward. No new agents or pending user
-question. Source build/baseline/env.sh for every test/build. Keep full failure
-logs local and compare exact existing asset failures. Original assets/7z remain
-untouched; completed gameplay duplicates have restoration manifests.
+After the renderer conversion is qualified, committed and pushed, separately
+rename CODEX_HANDOFF.md to PORT.md, remove obsolete original-host/date material,
+add a top table of contents, lightly tidy PORTING_STATE.md and add rough remaining
+C LOC. Commit/push that documentation cleanup, then PAUSE for user review.
+Do not start another port batch. Source build/baseline/env.sh for every Go command;
+never edit Go/C while tests/builds are running. Actual source is authoritative.
 
 <!-- /current-checkpoint -->
 

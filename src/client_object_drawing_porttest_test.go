@@ -53,10 +53,10 @@ func objectMaterialImage(frame int) []byte {
 	}
 	return b
 }
-func newObjectDrawingOwner(t *testing.T) *objectDrawingOwner {
+func newObjectDrawingOwner(t *testing.T, extraNames ...string) *objectDrawingOwner {
 	t.Helper()
 	t.Cleanup(handles.PortTestInit())
-	c, pix, effects := newEffectsFullOwner(t, "ArrowTailLink", "WeakArrowTailLink")
+	c, pix, effects := newEffectsFullOwner(t, append([]string{"ArrowTailLink", "WeakArrowTailLink"}, extraNames...)...)
 	t.Cleanup(legacy.PortTestSpriteAnimationEnvironment())
 	env := legacy.PortTestNewObjectDrawEnvironment()
 	t.Cleanup(env.Restore)
