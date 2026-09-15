@@ -136,6 +136,7 @@ target build selection and linker evidence.
 | Text-entry input, composition, rendering and context | 101 | 89,969 | −625 | 0 |
 | Listbox row/selection/scroll corrected C baseline | 101 | 89,979 | +10 | 0 |
 | Listbox construction, rows, selection, scrolling and drawing | 100 | 88,572 | −1,407 | 0 |
+| Inclusive window-ID range termination prerequisite | 100 | 88,574 | +2 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

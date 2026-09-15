@@ -19,6 +19,7 @@ void sub_46ACE0(unsigned int* a1, int a2, int a3, int a4) {
 	for (int i = a2; i <= a3; i++) {
 		unsigned int* v5 = nox_xxx_wndGetChildByID_46B0C0(a1, i);
 		nox_window_set_hidden((int)v5, a4);
+		if (i == a3) break;
 	}
 }
 
@@ -30,6 +31,7 @@ void sub_46AD20(unsigned int* a1, int a2, int a3, int a4) {
 	for (i = a2; i <= a3; ++i) {
 		v5 = nox_xxx_wndGetChildByID_46B0C0(a1, i);
 		nox_xxx_wnd_46ABB0((int)v5, a4);
+		if (i == a3) break;
 	}
 }
 

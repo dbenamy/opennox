@@ -2,34 +2,34 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 89k lines** — exactly **88,572 physical lines** in
+**Rough C remaining: about 89k lines** — exactly **88,574 physical lines** in
 100 production `.c` files, with zero test-reference C. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — listbox conversion qualified
+## Current — window-helper C baseline qualified
 
-Text-entry conversion is committed/pushed as `97fc1bc7`. The subsequent listbox
-conversion is fully qualified against C baseline `43ac4785`: twelve routines,
-1,407 C lines removed, four retained C caller interfaces and eight private ones
-retired. C remaining is88,572 /100 files /zero reference C.
-
-All13,708 frozen results /four groups matched byte for byte; eight independent
-contracts passed. Qualification passed750 accumulated tests,116 affected server
-and117 highres tests, all three builds/ABI checks, exact known full-suite failures,
-fresh warrior gameplay and existing character-name typing screenshots. Accumulated
-frozen coverage is416,826 results /1,113 groups, plus contracts. See
+Listbox conversion is committed/pushed as `5cba7b22` against corrected C baseline
+`43ac4785`:1,407 C lines removed; all13,708 frozen results and eight contracts
+matched;750 accumulated tests, affected server/highres, three builds, full-suite
+failure comparison, gameplay and typing screenshots passed. See
 [CLIENT_LISTBOX.md](docs/porting/CLIENT_LISTBOX.md).
 
-Next: window geometry, tree visibility, flags and draw-data helpers (360 C lines
-/26 routines). Ignored drafts/audit notes are in `build/port-client-window`.
-Prepare and repeat their C baseline before replacement. Do not rerun the completed
-listbox integration/finalization scripts; they are historical artifacts.
+Window geometry/tree-state/draw-data helpers are next:26 routines /360 original
+C lines. Four independent contracts and two capture matrices are applied.
+The inclusive ID-range loops now stop after INT_MAX (+2 C lines); an actual-child
+contract covers that audited termination fix. The first fixture build needed
+image-handle casts; both expanded captures now repeat (7,664 results /two groups) and all four
+contracts pass. All affected targets, client build, gameplay and exact full-suite failure
+comparison passed; no native integration yet. Current C is88,574 /100 files /zero reference C.
+See [CLIENT_WINDOW.md](docs/porting/CLIENT_WINDOW.md).
 
-Continue baseline, port, qualification, docs/C LOC, commit/push and onward. No user
-question pending. Every Go shell sources build/baseline/env.sh; no Go/C edits
-during checks. Preserve original assets and archive.
+Ignored drafts/audits/scripts are in `build/port-client-window`. Actual source
+supersedes old fixture stages. Freeze/repeat/qualify and commit the C baseline
+before replacement, then qualify the native batch and commit/push. Continue
+onward; no user question pending. Every Go shell sources build/baseline/env.sh;
+no Go/C edits during checks. Preserve original assets and archive.
 
 <!-- /current-checkpoint -->
 

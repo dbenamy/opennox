@@ -599,3 +599,12 @@ These are local reversible fixes; qualification and exact preserved quirks are i
 [CLIENT_LISTBOX.md](CLIENT_LISTBOX.md). Keep the existing unusual head-removal
 selection comparison for now. Represent the ABI selection union as a uint32 word,
 which holds either a scalar index or an array address, preserving size/offsets.
+
+
+### Window ID-range termination — review later
+
+Break after processing the final inclusive ID in hide/enable range loops. The
+original signed loop counter wraps at INT_MAX; first=last=INT_MAX should process
+one child and finish. Source audit identified the nontermination; a corrected-C
+contract checks the actual maximum-ID child. This adds two C prerequisite lines
+and preserves ordinary ranges. See [CLIENT_WINDOW.md](CLIENT_WINDOW.md).
