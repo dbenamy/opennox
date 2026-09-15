@@ -4971,7 +4971,10 @@ int nox_xxx_wndEditProc_487D70_key(uint32_t* a1, int v4, int a3, int a4) {
 	if (nox_strman_get_lang_code() == 6 || nox_strman_get_lang_code() == 8) {
 		if (!*(uint32_t*)(v4 + 1036) && !*(uint32_t*)(v4 + 1032) && !*(uint32_t*)(v4 + 1028)) {
 			wchar2_t* v8 = nox_input_getStringBuffer_57011C();
-			nox_wcscpy((wchar2_t*)(v4 + 512), (const wchar2_t*)v8);
+			size_t count = nox_wcslen(v8);
+			if (count > 255) count = 255;
+			nox_wcsncpy((wchar2_t*)(v4 + 512), (const wchar2_t*)v8, count);
+			*(uint16_t*)(v4 + 512 + 2 * count) = 0;
 			nox_input_freeStringBuffer_57011C(v8);
 			*(uint16_t*)(v4 + 1054) = nox_wcslen((const wchar2_t*)(v4 + 512));
 			if (0) { // if (!nox_xxx_string_5702B4(*(uint32_t***)&dword_5d4594_1193348))
@@ -5165,11 +5168,11 @@ int nox_xxx_wndEditDrawNoImage_488160(int a1, int a2) {
 		v25 = v23 + 256;
 		nox_xxx_drawGetStringSize_43F840(v19, v23 + 256, &v24, 0, 0);
 		if (((*(uint32_t*)(v2 + 4) >> 14) & 1) == 1 && v24 + v22 > 0 && v21 >= 10 && v24 + v22 + 10 > v21) {
-			do {
+			while (*v26 && v24 + v22 + 10 > v21) {
 				v20 = *(uint32_t*)(a2 + 200);
 				++v26;
 				nox_xxx_drawGetStringSize_43F840(v20, (unsigned short*)v26, &v22, 0, 0);
-			} while (v24 + v22 + 10 > v21);
+			}
 		}
 		v14 = (uint32_t*)*((uint32_t*)v23 + 262);
 		if (v14) {
@@ -5284,6 +5287,11 @@ int nox_xxx_wndEditProcPre_488710(int a1, unsigned int a2, wchar2_t* a3, int a4)
 		return *(uint32_t*)(a1 + 32);
 	}
 	if (a2 == 2) {
+		// Destruction suppresses ordinary focus events; release this entry's input ownership here.
+		if (dword_5d4594_1193352 == a1) {
+			dword_5d4594_1193352 = 0;
+			nox_input_disableTextEdit_5700F6();
+		}
 		nox_xxx_windowDestroyMB_46C4E0(*(uint32_t**)(v3 + 1048));
 		free(*(void**)(a1 + 32));
 		return 0;
@@ -5405,11 +5413,11 @@ int nox_xxx_wndEditDrawWithImage_488870(int a1, int a2) {
 		v20 = v22 + 256;
 		nox_xxx_drawGetStringSize_43F840(*(uint32_t*)(a2 + 200), v22 + 256, &v19, 0, 0);
 		if (((*(uint32_t*)(v2 + 4) >> 14) & 1) == 1 && v17 + v19 > 0 && v17 + v19 + 10 > v3) {
-			do {
+			while (*v18 && v19 + v17 + 10 > v3) {
 				v15 = *(uint32_t*)(a2 + 200);
 				++v18;
 				nox_xxx_drawGetStringSize_43F840(v15, (unsigned short*)v18, &v17, 0, 0);
-			} while (v19 + v17 + 10 > v3);
+			}
 		}
 		nox_xxx_drawSetTextColor_434390(*(uint32_t*)(a2 + 68));
 		nox_xxx_drawStringWrap_43FAF0(*(uint32_t*)(a2 + 200), v18, xLeft + 5, v6, v3, 0);
@@ -5488,7 +5496,10 @@ void nox_xxx_onChar_488BD0(unsigned short a1) {
 									*(uint16_t*)(v2 + 2 * (unsigned short)++*(uint16_t*)(v2 + 1052)) = 0;
 								}
 								wchar2_t* v4 = nox_input_getStringBuffer_57011C();
-								nox_wcscpy((wchar2_t*)(v2 + 512), (const wchar2_t*)v4);
+								size_t count = nox_wcslen(v4);
+								if (count > 255) count = 255;
+								nox_wcsncpy((wchar2_t*)(v2 + 512), (const wchar2_t*)v4, count);
+								*(uint16_t*)(v2 + 512 + 2 * count) = 0;
 								nox_input_freeStringBuffer_57011C(v4);
 								*(uint16_t*)(v2 + 1054) = nox_wcslen((const wchar2_t*)(v2 + 512));
 								// nox_xxx_string_570392(*(uint32_t***)&dword_5d4594_1193348);

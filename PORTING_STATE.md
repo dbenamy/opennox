@@ -2,27 +2,31 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 91k lines** — exactly **90,583 physical lines** in
+**Rough C remaining: about 91k lines** — exactly **90,594 physical lines** in
 101 production `.c` files, with zero test-reference C. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — radio widgets fully qualified
+## Current — text-entry C baseline fully qualified
 
-Five routines moved to Go; 296 C lines removed. Production C is **90,583 /
-101 files / zero reference C**. All 15,874 results / two groups and independent
-contracts pass. Accumulated frozen coverage:391,692 results /1,105 groups.
-Accumulated727 (one optional skip), server93 /highres94, three builds/ABI,
-exact full-suite comparison and fresh gameplay pass. See
-[CLIENT_RADIO.md](docs/porting/CLIENT_RADIO.md). Commit/push this conversion now.
-Do not rerun its integration script. The shared deferred-cleanup correction and
-radio allocation release were qualified in the C baseline before conversion.
+Twelve connected entry/context routines are ready to convert. Four repeated C
+capture groups cover11,426 results, plus six independent contracts. Corrected
+focused cleanup and bounded composition/scrolling preserve unused bytes after
+short strings. Production C is90,594 /101files /zero reference C.
 
-Continue the next connected batch through baseline, conversion, qualification,
-docs/C LOC and commit/push. No pending user question. Source build/baseline/env.sh
-for every Go command; no source edits during checks. Preserve original assets
-and archive. Completed duplicate assets have verified restoration manifests.
+Final focused10, affected client104 /server103 /highres104 all pass. Client build,
+fresh gameplay, exact full-suite comparison and repeated real name-entry typing
+screens all pass. The earlier bounded-copy draft also passed736 accumulated
+tests before its unused-byte refinement. See [CLIENT_ENTRY.md](docs/porting/CLIENT_ENTRY.md).
+
+Commit/push this baseline, then apply the reviewed native draft under
+`build/port-client-entry`, compare frozen captures and run native qualification.
+Two C interfaces remain needed; ten private function interfaces and two context
+globals can retire. The staged integration script is not yet applied. Continue
+through docs/C LOC, commit/push and the next batch without pausing. No pending
+user question. Source build/baseline/env.sh for Go commands; do not edit Go/C
+source during active checks. Preserve original assets and archive.
 
 <!-- /current-checkpoint -->
 

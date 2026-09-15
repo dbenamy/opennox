@@ -14,12 +14,12 @@
 
 ## Current status
 
-Radio-button selection, input, text and rendering are converted, alongside a
-qualified correction to deferred GUI cleanup and radio-owned data release.
-Continue autonomous porting one connected batch at a time through qualification,
-docs, commit and push. See [PORTING_STATE.md](PORTING_STATE.md) for the current
-checkpoint and C count, and [the radio-widget report](docs/porting/CLIENT_RADIO.md)
-for scope, evidence and compatibility decisions.
+Radio buttons are converted. The next connected text-entry baseline is fully
+qualified, including focused-window cleanup, bounded composition/scrolling and
+real character-name typing. Continue autonomous porting through conversion,
+qualification, docs, commit and push. See [PORTING_STATE.md](PORTING_STATE.md) for
+the resume checkpoint and [the entry report](docs/porting/CLIENT_ENTRY.md) for
+scope and evidence.
 
 ## Goal and target
 

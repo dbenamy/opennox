@@ -563,3 +563,18 @@ and leaked data; corrected contracts cover radio and slider allocation release,
 ordinary-event rejection, callback order and newly queued cleanup. This is a
 reversible correctness decision under the user's standing authorization, subject
 to broad qualification and later review. See [CLIENT_RADIO.md](CLIENT_RADIO.md).
+
+## Text-entry input ownership and bounds
+
+Before freezing the entry baseline, release active text-input ownership from the
+entry destructor itself: shared GUI destruction suppresses ordinary focus loss.
+The original focused-destruction contract failed; disabling text input only when
+this entry owns it is a local correction that preserves other active entries.
+Bound both composition copies to 255 UTF-16 units plus a terminator, and stop
+text scrolling at the main-text terminator even if composition alone cannot fit.
+The real input owner has no composition length limit, and the old draw loop had
+no terminating case for that width condition. Do not use invalid memory reads or
+writes as the compatibility oracle. Keep all other image/color clipping, signed
+limits, raw code-unit editing, notification and key-state behavior. These are
+reversible corrections to review later; qualification is recorded in
+[CLIENT_ENTRY.md](CLIENT_ENTRY.md).

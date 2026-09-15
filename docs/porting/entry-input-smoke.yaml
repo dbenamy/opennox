@@ -1,0 +1,219 @@
+steps:
+  - action: click
+    name: dismiss title
+    x: 320
+    y: 240
+    dt: 300
+  - action: click
+    name: solo
+    x: 480
+    y: 220
+    dt: 100
+  - action: click
+    name: new game
+    x: 360
+    y: 760
+    dt: 100
+  - action: click
+    name: warrior
+    x: 320
+    y: 260
+    dt: 100
+  - action: click
+    name: accept class
+    x: 640
+    y: 820
+    dt: 30
+  - action: click
+    name: focus name entry
+    x: 400
+    y: 548
+    dt: 100
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: screen
+    name: entry blank
+    dt: 5
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 30, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 30, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 48, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 48, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 46, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 46, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 14, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 32, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 32, pressed: false}
+  - action: screen
+    name: entry edited
+    dt: 5
+  - action: quit
+    dt: 5
