@@ -61,7 +61,7 @@ func Nox_gui_newEntryField_488500(par *gui.Window, status gui.StatusFlags, px, p
 }
 
 func Nox_gui_newSlider_4B4EE0(par *gui.Window, status gui.StatusFlags, px, py, w, h int, draw *gui.WindowData, tdata *gui.SliderData) *gui.Window {
-	return asWindow((*nox_window)(C.nox_gui_newSlider_4B4EE0(C.int(uintptr(par.C())), C.int(status), C.int(px), C.int(py), C.int(w), C.int(h), (*C.uint)(draw.C()), (*C.float)(unsafe.Pointer(tdata)))))
+	return uiSliderNew(par, status, px, py, w, h, draw, tdata)
 }
 
 func Nox_gui_newProgressBar_4CAF10(par *gui.Window, status gui.StatusFlags, px, py, w, h int, draw *gui.WindowData) *gui.Window {

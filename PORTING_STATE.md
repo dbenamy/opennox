@@ -2,32 +2,29 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 91k lines** — exactly **91,478 physical lines** in
+**Rough C remaining: about 91k lines** — exactly **90,879 physical lines** in
 101 production `.c` files, with zero test-reference C. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — slider-widget C baseline qualified
+## Current — slider conversion fully qualified
 
-UI rendering conversion **fbcf7828** is committed and pushed. Production C is
-**91,478 / 101 files / zero reference C**. Accumulated expectations before sliders:
-349,126 results / 1,099 groups, plus independent contracts.
+Twelve routines moved to Go; 599 C lines removed. Production C is **90,879 /
+101 files / zero reference C**. All 26,692 results / four groups and independent
+contracts pass. Accumulated coverage is 375,818 results / 1,103 groups plus
+contracts. Six focused tests, accumulated720 (one optional skip), server86 /
+highres87, three builds/ABI, exact asset-suite comparison and fresh gameplay pass.
+See [CLIENT_SLIDERS.md](docs/porting/CLIENT_SLIDERS.md) and local
+build/port-client-sliders/qualification.json. Commit/push this conversion now.
+Do not rerun its integration script. Preserve the documented nonzero-minimum,
+vertical-image and float conversion behavior for later review.
 
-Slider scope: twelve routines / 599 C lines. Four applied root fixture files now
-capture 26,692 results in four groups, repeated exactly across original-C runs.
-Two independent contract tests also pass (six focused tests total). Affected
-client87/server86/highres87 checks, C build and fresh gameplay pass.
-Evidence: build/port-client-sliders/c-qualification.json and c-gameplay-qualification.json. No production changes
-for sliders yet. Native implementation, exports and integration script are ignored
-*.stage drafts. See [CLIENT_SLIDERS.md](docs/porting/CLIENT_SLIDERS.md).
-
-Next: commit/push baseline, review/apply native draft,
-compare unchanged expectations, qualify all targets, update docs/C LOC and
-commit/push. Then continue the next connected batch. No pending question.
-Do not edit Go/C during checks; source build/baseline/env.sh for every Go command.
-Original assets/archive intact. Completed UI artifacts have verified gzip or
-asset-restoration manifests; do not rerun completed integration scripts.
+Continue the next connected batch through baseline, translation, qualification,
+docs/C LOC and commit/push. Radio-button input, selection and rendering are the
+next connected UI candidate. No pending user question. Source build/baseline/env.sh
+for every Go command; do not edit Go/C during checks. Original assets/archive
+remain intact; completed duplicates have verified restoration manifests.
 
 <!-- /current-checkpoint -->
 

@@ -541,3 +541,12 @@ callers ignore the result. Keep particle-border tests within known rasterizer
 preconditions (positive radius, contained unclipped images); radius-zero division
 and out-of-buffer unclipped rendering are pre-existing issues, not fixes hidden
 inside this port. See [UI rendering](CLIENT_UI_RENDER.md) for evidence and limits.
+
+## Slider compatibility
+
+Preserve the original nonzero-minimum position formulas, vertical image draw
+no-op, tab-navigation no-ops and exact raw key-state comparisons. Float positions
+convert through int64 then narrow to 32 bits, matching the hosted C behavior at
+numeric boundaries. Window image/color callbacks are chosen at construction,
+independently of later flag mutations. These are reversible compatibility choices
+to review later; see [CLIENT_SLIDERS.md](CLIENT_SLIDERS.md).

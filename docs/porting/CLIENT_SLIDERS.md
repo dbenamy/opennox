@@ -1,9 +1,7 @@
 # Slider widgets
 
-Status: original-C baseline fully qualified; native implementation is an ignored
-draft, not applied yet. Focus6, affected client87/server86/highres87 all pass.
-C client build passes; fresh headless gameplay passes in 36.907s with reference
-comparisons enabled. Qualification evidence: build/port-client-sliders.
+Status: conversion fully qualified against C baseline **7df42a4b**.
+All 26,692 original-C results remain exact.
 
 ## Scope and ownership
 
@@ -72,3 +70,37 @@ than normalize all states at least two to a pressed boolean.
 Headless warrior gameplay checks integration, not every slider interaction. The
 actual-widget fixtures supply slider branch coverage; physical mouse/display
 feel remains a manual release check.
+
+## Native implementation review
+
+The first native run caught a missing explicit copy into owned SliderData:
+`alloc.New` allocates zeroed storage and uses its argument only for the type/size.
+The independent ownership contract and all four capture groups detected this.
+The implementation now assigns the input value after allocating. Review also
+keeps focus dispatch on the client GUI, matching the original C bridge, rather
+than choosing the window's GUI. Frozen expectations are unchanged.
+
+The second native run matched construction, drawing and numeric groups. Input
+captures isolated a color-field mistake: `nox_xxx_wndSetRectColor2MB_46AFE0`
+changes the background, not the enabled color. Full window words and pixels
+identified this without changing notification/value expectations. The native
+input handler uses the actual background setter for both hover transitions.
+
+## Native qualification
+
+All twelve routines now run in Go. Two C exports remain for live callers; ten
+private interfaces and their prototypes are removed. Go constructor callers and
+window callbacks dispatch directly to Go. The original 599-line C block is gone;
+production C is **90,879 lines / 101 files**, with zero test-reference C.
+
+Six focused tests pass against unchanged expectations and contracts. The complete
+accumulated port corpus and affected server/highres variants pass, with selected
+tests verified to start and finish. All three production builds pass ELF32/i386,
+SSE2/CGO and symbol audits. The full asset suite matches the exact known 1,553
+failure entries and package outcomes (15 pass / 3 fail / 32 skip). Fresh headless
+warrior gameplay passes with null audio and reference comparisons enabled.
+
+Accumulated frozen coverage is **375,818 results / 1,103 groups**, plus independent
+contracts. Local qualification.json records tests, binaries, captures and gameplay.
+
+Qualification counts: accumulated 720, affected server 86 / highres 87. Fresh gameplay completed in 35.874s. All 1,460 source fingerprints remained unchanged during qualification.

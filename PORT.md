@@ -17,9 +17,9 @@
 The shared object-renderer conversion is complete. The user has resumed autonomous
 porting, one connected batch at a time through qualification, docs, commit and push.
 Shared clipping/raster helpers and progress-bar UI drawing are also complete.
-The next batch covers slider widgets and their input, value and drawing callbacks.
+Slider widgets and their input, value and drawing callbacks are also complete.
 See [PORTING_STATE.md](PORTING_STATE.md) for the latest qualification, commits and
-remaining C count, and [the UI rendering report](docs/porting/CLIENT_UI_RENDER.md)
+remaining C count, and [the slider report](docs/porting/CLIENT_SLIDERS.md)
 for this batch's scope, test coverage and limitations.
 
 ## Goal and target
