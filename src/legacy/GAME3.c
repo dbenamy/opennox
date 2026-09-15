@@ -5068,61 +5068,6 @@ int nox_xxx_wndScrollBoxButtonCreate_4B5640(int a1, int a2, int a3) {
 	return result;
 }
 
-//----- (004B5CD0) --------------------------------------------------------
-int sub_4B5CD0() {
-	char v0;           // si
-	unsigned char* v1; // edi
-	int v2;            // edi
-	unsigned char* v3; // esi
-	int v4;            // eax
-	int v5;            // edx
-	int v6;            // esi
-	unsigned char* v7; // edi
-	int v8;            // esi
-	unsigned char* v9; // edi
-	int result;        // eax
-	int v12;           // [esp+8h] [ebp-4h]
-
-	v0 = 0;
-	v1 = getMemAt(0x5D4594, 1312500);
-	do {
-		LOBYTE(v12) = v0 / 63;
-		*(uint32_t*)v1 = nox_color_rgb_4344A0((unsigned char)(v0 / 63) / 3, 3 * (unsigned char)(v0 / 63) / 5, v12);
-		v1 += 4;
-		--v0;
-	} while ((int)v1 < (int)getMemAt(0x5D4594, 1312756));
-	v2 = 0;
-	v3 = getMemAt(0x5D4594, 1312756);
-	do {
-		LOBYTE(v12) = v2 / 32;
-		v4 = nox_color_rgb_4344A0(v12, v12, 0);
-		LOBYTE(v5) = -1 - v12;
-		*(uint32_t*)v3 = v4;
-		*((uint32_t*)v3 + 32) = nox_color_rgb_4344A0(255, v5, 0);
-		v3 += 4;
-		v2 += 255;
-	} while ((int)v3 < (int)getMemAt(0x5D4594, 1312884));
-	v6 = 0;
-	v7 = getMemAt(0x5D4594, 1313012);
-	do {
-		LOBYTE(v12) = v6 / 63;
-		*(uint32_t*)v7 = nox_color_rgb_4344A0(v12, v12, v12);
-		v7 += 4;
-		v6 += 255;
-	} while ((int)v7 < (int)getMemAt(0x5D4594, 1313268));
-	v8 = 0;
-	v9 = getMemAt(0x5D4594, 1313268);
-	do {
-		result = nox_color_rgb_4344A0(v8 / 63, 50, 50);
-		*(uint32_t*)v9 = result;
-		v9 += 4;
-		v8 += 255;
-	} while ((int)v9 < (int)getMemAt(0x5D4594, 1313524));
-	return result;
-}
-// 4B5D21: variable 'v12' is possibly undefined
-// 4B5D71: variable 'v5' is possibly undefined
-
 //----- (004B63B0) --------------------------------------------------------
 int sub_4B63B0(int2* a1, int2* a2) {
 	int v2; // ebx
@@ -5156,66 +5101,6 @@ int sub_4B63B0(int2* a1, int2* a2) {
 	}
 	return nox_client_drawLineFromPoints_49E4B0();
 }
-
-//----- (004B64C0) --------------------------------------------------------
-int sub_4B64C0() {
-	unsigned char v0;  // bl
-	unsigned char* v1; // esi
-	int v2;            // ebp
-	int v3;            // edi
-	int v5;            // [esp+10h] [ebp-10h]
-	int v6;            // [esp+14h] [ebp-Ch]
-	int v7;            // [esp+18h] [ebp-8h]
-	int v8;            // [esp+1Ch] [ebp-4h]
-
-	*getMemU32Ptr(0x5D4594, 1313524) = nox_color_rgb_4344A0(255, 255, 0);
-	*getMemU32Ptr(0x5D4594, 1313528) = nox_color_rgb_4344A0(255, 100, 0);
-	dword_5d4594_1313532 = nox_color_rgb_4344A0(255, 255, 0);
-	dword_5d4594_1313536 = nox_color_rgb_4344A0(0, 0, 255);
-	dword_5d4594_1313540 = nox_color_rgb_4344A0(0, 200, 255);
-	*getMemU32Ptr(0x5D4594, 1313544) = nox_color_rgb_4344A0(0, 200, 200);
-	*getMemU32Ptr(0x5D4594, 1313548) = nox_color_rgb_4344A0(50, 255, 255);
-	*getMemU32Ptr(0x5D4594, 1313552) = nox_color_rgb_4344A0(255, 0, 255);
-	*getMemU32Ptr(0x5D4594, 1313556) = nox_color_rgb_4344A0(255, 200, 255);
-	*getMemU32Ptr(0x5D4594, 1313560) = nox_color_rgb_4344A0(255, 200, 0);
-	dword_5d4594_1313564 = nox_color_rgb_4344A0(255, 255, 100);
-	*getMemU32Ptr(0x5D4594, 1313568) = nox_color_rgb_4344A0(100, 255, 50);
-	*getMemU32Ptr(0x5D4594, 1313572) = nox_color_rgb_4344A0(150, 255, 150);
-	*getMemU32Ptr(0x5D4594, 1313576) = nox_color_rgb_4344A0(255, 255, 0);
-	*getMemU32Ptr(0x5D4594, 1313580) = nox_color_rgb_4344A0(0, 220, 0);
-	*getMemU32Ptr(0x5D4594, 1313584) = nox_color_rgb_4344A0(150, 255, 150);
-	*getMemU32Ptr(0x5D4594, 1313588) = nox_color_rgb_4344A0(200, 200, 200);
-	*getMemU32Ptr(0x5D4594, 1313592) = nox_color_rgb_4344A0(255, 255, 255);
-	LOBYTE(v8) = -1;
-	LOBYTE(v7) = -1;
-	LOBYTE(v6) = -1;
-	v0 = 0;
-	v1 = getMemAt(0x5D4594, 1313656);
-	v2 = 1085;
-	v5 = 600;
-	v3 = 765;
-	do {
-		if (v0 > 3u) {
-			if (v0 > 7u) {
-				LOBYTE(v8) = v2 / 9 - 1;
-			} else {
-				LOBYTE(v7) = v5 / 4 - 1;
-			}
-		} else {
-			LOBYTE(v6) = v3 / 3;
-		}
-		*(uint32_t*)v1 = nox_color_rgb_4344A0(v8, v7, v6);
-		++v0;
-		v3 -= 255;
-		v2 -= 155;
-		v1 -= 4;
-		v5 -= 200;
-	} while (v0 < 0x10u);
-	return sub_4B5CD0();
-}
-// 4B66DF: variable 'v8' is possibly undefined
-// 4B66DF: variable 'v7' is possibly undefined
-// 4B66DF: variable 'v6' is possibly undefined
 
 //----- (004B7C40) --------------------------------------------------------
 uint32_t* nox_xxx_netHandleSummonPacket_4B7C40(short a1, unsigned short* a2, unsigned short a3, unsigned char a4,

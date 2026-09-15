@@ -3934,65 +3934,6 @@ int sub_484450(int a1, int a2) {
 	return result;
 }
 
-//----- (00484BE0) --------------------------------------------------------
-uint32_t* nox_xxx_spriteChangeLightColor_484BE0(uint32_t* a1, int a2, int a3, int a4) {
-	uint32_t* result; // eax
-
-	result = a1;
-	a1[4] = a2;
-	*a1 = 2;
-	a1[5] = a3;
-	a1[6] = a4;
-	return result;
-}
-
-//----- (00484C00) --------------------------------------------------------
-long long sub_484C00(int a1, int a2) {
-	long long result; // rax
-
-	result = (long long)((double)a2 * 0.0027777778 * *(double*)&qword_581450_9552 + *(double*)&qword_581450_9544);
-	*(uint16_t*)(a1 + 28) = result;
-	*(uint32_t*)(a1 + 32) = 0;
-	return result;
-}
-
-//----- (00484C30) --------------------------------------------------------
-long long nox_xxx_spriteChangeLightSize_484C30(int a1, int a2) {
-	long long result; // rax
-
-	result = (long long)((double)a2 * 0.0027777778 * *(double*)&qword_581450_9552 + *(double*)&qword_581450_9544);
-	*(uint16_t*)(a1 + 30) = result;
-	return result;
-}
-
-//----- (00484CE0) --------------------------------------------------------
-int sub_484CE0(int a1, float a2) {
-	int result; // eax
-
-	if (a2 > 63.0) {
-		a2 = 63.0;
-	}
-	*(float*)(a1 + 4) = a2;
-	result = sub_484C60(a2);
-	*(uint32_t*)(a1 + 8) = result;
-	return result;
-}
-
-//----- (00484D70) --------------------------------------------------------
-int nox_xxx_spriteChangeIntensity_484D70_light_intensity(int a1, float a2) {
-	int result; // eax
-
-	if (a2 > 63.0) {
-		a2 = 63.0;
-	}
-	*(float*)(a1 + 4) = a2;
-	*(uint32_t*)(a1 + 12) = (long long)(a2 * *(double*)&qword_581450_9552 + *(double*)&qword_581450_9544);
-	result = sub_484C60(a2);
-	*(uint32_t*)(a1 + 8) = result;
-	return result;
-}
-
-
 //----- (00485B30) --------------------------------------------------------
 int nox_thing_read_floor_485B30(nox_memfile* f, char* a2) {
 	int a1 = f;

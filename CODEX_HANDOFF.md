@@ -2,49 +2,47 @@
 
 <!-- current-focus -->
 
-### Current — procedural particle drawing C baseline qualified; native staged
+### Current — procedural particle drawing fully qualified; sprite animation next
 
-Drawable updates are fully qualified and pushed at `06133afd`. Production C:
-95,146 lines /130 files /zero reference C. See CLIENT_UPDATES.md for its completed
-27-routine conversion and qualification.
+The 19-routine particle drawing/light/color conversion is complete. All 4,647
+results /four groups match locked C baseline `423a0a3a` on the first native run;
+independent bubble/vortex lifecycle contracts pass. Six C files and three private
+C entry points are removed; sixteen retained callbacks/exports are exercised.
+maps.go calls the Go color initializer directly. No C test algorithms remain.
 
-The next 19-routine /731-line batch has a qualified C baseline. Expanded c-d/c-e
-captures repeat byte-for-byte: 4,647 results /four groups, plus independent bubble
-and vortex lifecycle contracts. All 33 related effects/update/drawing standard
-tests passed in 22.350s. Six new root tests and all hashes are tracked; the
-accumulated pattern includes ^TestClientParticle. No production C changed.
-See docs/porting/CLIENT_PARTICLE_DRAWING.md and local baseline-hashes.json.
+Accumulated standard passed 666 selected/completed tests (665 pass, one optional
+prerequisite skip) in 370.211s. Affected server/highres each passed 33 tests
+(163.456s/28.651s). All three production builds and ELF32/SSE2/ABI checks pass.
+Full asset-suite outcomes match exactly: 1,553 known failure entries and 15 pass
+/3 fail /32 skip packages. Fresh unchanged headless gameplay passed in 37.574s.
+See docs/porting/CLIENT_PARTICLE_DRAWING.md and local qualification.json.
 
-The initial fixture combined shrinking phase with zero size, an impossible normal
-bubble state. Correcting phase/size invariants resolved the renderer panic with
-no production fix. Zero-size growth and deletion remain tested. Raw diagnostic
-runs c-a/c-b are not baselines; c-d/c-e are the expanded locked references.
+Production C: **94,415 lines /124 files /zero reference C**, down **731**.
+Accumulated captures: **120,397 results /1,065 groups**, plus contracts.
+This checkpoint accompanies the native conversion commit; confirm commit/push
+state with git log/status. No test/build process remains active after qualification.
 
-Next: confirm this baseline checkpoint is committed/pushed, then apply
-build/port-client-draw-particles/integrate-native.py. It installs the three native
-Go stages, removes audited C sections/files and three private C entry points, and
-retargets maps.go plus private fixture calls. Initial fixture stage files are
-stale; do not copy them over actual src. Native stages are reviewed but uncompiled.
-Run gofmt/diff-check before the first native focus run to avoid another C rebuild
-for whitespace. Compare the unchanged references, then run qualify-native.py.
-That script joins independent production builds with accumulated standard,
-affected server/highres, then ABI/full asset-suite comparison and fresh gameplay.
-Never edit Go/C while either builds or tests are active. No process is active at
-this baseline checkpoint.
+The earlier fixture panic came from an impossible shrinking/zero-size bubble
+state. Corrected phase/size invariants retained zero-size growth and deletion
+coverage; no production renderer fix was needed. c-d/c-e are the locked expanded
+C captures. Initial *.stage files are historical and may be stale; actual src is
+authoritative. Do not rerun integrate-native.py or finalize-docs.py.
 
-Scope: six procedural particle draw files; five light-property setters; both
-palette and color initialization callers in GAME3. Retire falling-spark helper
-and the two initializers; 16 actual callbacks/exports remain. Named globals and
-mapped aliases stay distinct. Preserve the signed-byte first palette; changing
-its intended gradient needs separate visual/reference evidence.
+Next investigate sprite data and animation with a real image/data owner. Read
+build/port-client-sprite-animation/PLAN.md. It is a read-only candidate audit;
+no next-batch source or fixture is applied. NewRawImage intentionally disallows
+C handles; use a real RenderSprites owner or actual video bag rather than removing
+that guard. Frame/data cleanup ownership, image handles, animation bounds/alpha
+lifecycle and the shared C drawObject path need an explicit scope and baseline.
 
-Standing authorization: continue connected chunks, make/document confident
-reversible choices, commit/push completed chunks, then continue onward. No new
-agents or user question pending. Preserve original assets and the 7z. Use
-build/baseline/env.sh (386/SSE2/CGO), GOMAXPROCS=2 and -p2; selected tests use the
-guarded run_tests.py. Keep raw failure logs local. Completed duplicate assets and
-old binaries have verified restoration manifests; current updates gameplay is
-still a separate copy.
+Standing authorization: continue connected chunks autonomously, record confident
+reversible choices, commit/push completed chunks and continue onward. No new agents
+or user question pending. Preserve original assets and the 7z. Use the baseline
+environment (386/SSE2/CGO), GOMAXPROCS=2 and -p2. Selected tests use guarded
+run_tests.py with the tracked accumulated pattern. Never edit Go/C while builds
+or tests run; qualifier joins its independent build process before returning.
+Keep raw failure logs local. Completed duplicate assets and old binaries have
+verified restoration manifests; current particle/update gameplay copies remain.
 
 <!-- /current-focus -->
 

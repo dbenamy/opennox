@@ -27,11 +27,11 @@ zero. The real bubble lifecycle switches phase when it reaches zero. Correcting
 phase/size combinations resolved the renderer panic without a production change;
 zero-size growth and deletion cases remain. Explicit lifecycle contracts pass.
 
-Current status: C references locked and related baseline passed. Production C
-remains **95,146 lines /130 files /zero test-reference C**. The native translation
-is staged locally and has not replaced C yet. The C baseline is recoverable from
-the fixture commit accompanying this document. Local scope/signatures/original
-sections and raw evidence are in `build/port-client-draw-particles`.
+Current status: native conversion fully qualified. C baseline `423a0a3a` is
+pushed and recoverable. All 19 routines are translated; six whole C files and
+three private C entry points are removed. Sixteen live callbacks/exports remain
+and are exercised through their actual C ABI. maps.go calls the Go color
+initializer directly. No C algorithms are retained solely for tests.
 
 
 The expanded C capture repeats byte-for-byte (c-d/c-e): 4,647 results /four groups,
@@ -55,3 +55,33 @@ batch moves shared lighting properties and production color initialization.
 Review later: the source's first palette uses a signed-byte decrement, producing
 mostly black entries and a final colored entry. Preserve that exact behavior in
 this port; changing the intended gradient needs separate visual/reference evidence.
+
+
+Final native validation:
+
+| Check | Result |
+| --- | --- |
+| Focused comparison | All 4,647 locked results and lifecycle contracts match on first native run; 164.196s |
+| Accumulated standard | 666 selected/completed; 665 pass and one optional prerequisite skip; 370.211s |
+| Affected server | All 33 selected tests pass; 163.456s |
+| Affected highres | All 33 selected tests pass; 28.651s |
+| Production builds | Standard/server/highres pass; independent builds ran alongside tests |
+| Binary checks | ELF32/i386, SSE2, CGO; three retired symbols absent, 16 retained exports present, test helpers absent |
+| Full asset-backed suite | Exactly 1,553 known failure entries and the same package outcomes: 15 pass /3 fail /32 skip |
+| Fresh gameplay | Original assets, unchanged warrior scenario, override=false, Xvfb/null audio; exit zero in 37.574s |
+
+Production C is **94,415 physical lines /124 files /zero reference C**, down
+**731**. Accumulated captures are **120,397 results /1,065 groups**, plus
+independent contracts. Raw evidence and binary hashes are in the local
+`qualification.json`; tracked tests/hashes and baseline Git revision support
+recovery without those local artifacts.
+
+Preserved details include separate named/mapped color storage, signed-byte
+palette generation, exact floating-point light conversion and return widths,
+clamping, unsigned vortex trailing-point arithmetic, phase/timer/deletion rules,
+alpha state, viewport clipping and allocation/RNG order. No production behavior
+repair was needed; the only prerequisite correction was to an invalid fixture.
+
+Next investigate sprite data/animation and its real image-handle owner. A read-only
+plan is in `build/port-client-sprite-animation/PLAN.md`; no next-batch fixture or
+production edit is applied. Audit scope and image/data ownership before capture.

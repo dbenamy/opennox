@@ -167,7 +167,7 @@ func Nox_xxx_prepareLightningEffects_4BAB30() {
 }
 
 func Sub_4B64C0() {
-	C.sub_4B64C0()
+	initParticleColors()
 }
 
 func Nox_xxx_bookSetColor_45AC40() {

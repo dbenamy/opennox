@@ -113,9 +113,7 @@ int nox_xxx_wndScrollBoxDraw_4B5540(int a1, int a2);
 int nox_xxx_wndScrollBoxDraw_4B5620(uint32_t* a1, int a2);
 int nox_xxx_wndScrollBoxButtonCreate_4B5640(int a1, int a2, int a3);
 void sub_4B5700(nox_window* a1, void* a2, void* a3, void* a4, void* a5, void* a6);
-int sub_4B5CD0();
 int sub_4B63B0(int2* a1, int2* a2);
-int sub_4B64C0();
 void sub_4B6720(int2* a1, int a2, int a3, char a4);
 uint32_t* nox_xxx_netHandleSummonPacket_4B7C40(short a1, unsigned short* a2, unsigned short a3, unsigned char a4,
 											   short a5);

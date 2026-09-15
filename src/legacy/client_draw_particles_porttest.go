@@ -55,7 +55,7 @@ func PortTestClientDrawParticle(op int, vp *noxrender.Viewport, dr *client.Drawa
 	case 8:
 		return int64(C.nox_thing_oblivion_up_draw(vi, drawable))
 	case 9:
-		return int64(uint32(uintptr(unsafe.Pointer(C.nox_thing_falling_sparks_draw_4B7740(C.int(a[0]), vi, drawable)))))
+		return int64(uint32(uintptr(unsafe.Pointer(particleFallingSparks(int(a[0]), vp, dr)))))
 	case 10:
 		return int64(C.nox_thing_spider_spit_draw(words, drawable))
 	case 11:
@@ -75,9 +75,9 @@ func PortTestClientDrawParticle(op int, vp *noxrender.Viewport, dr *client.Drawa
 	case 16:
 		return int64(C.nox_xxx_spriteChangeIntensity_484D70_light_intensity(li, C.float(math.Float32frombits(uint32(a[0])))))
 	case 17:
-		return int64(C.sub_4B5CD0())
+		return int64(initParticlePalettes())
 	case 18:
-		return int64(C.sub_4B64C0())
+		return int64(initParticleColors())
 	}
 	panic("unknown particle draw operation")
 }
@@ -116,7 +116,7 @@ func (e *PortTestClientParticleEnvironment) Reset() {
 	C.qword_581450_9544 = C.uint64_t(math.Float64bits(0.5))
 	C.qword_581450_9552 = C.uint64_t(math.Float64bits(65536))
 	*memmap.PtrUint32(0x85B3FC, 956) = noxcolor.RGB5551Color(0, 0, 0).Color32()
-	C.sub_4B5CD0()
+	initParticlePalettes()
 }
 func (e *PortTestClientParticleEnvironment) Constants(half, scale float64) {
 	C.qword_581450_9544 = C.uint64_t(math.Float64bits(half))
