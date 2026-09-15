@@ -814,3 +814,29 @@ representing scalar game data as Go pointers. Keep the shared production C
 number parser until its own connected port; it is not a test-only reference.
 See [CLIENT_TRADE_UI.md](CLIENT_TRADE_UI.md) for qualification and the explicit
 remaining gameplay integration limits.
+
+### Shop UI C prerequisites — review later
+
+Before freezing the shop UI baseline, independent contracts show full 32-code
+stacks are still selected, failed quantity allocations retain sell/repair pending
+flags, and count*price overflow can offer unaffordable goods. Skip full stacks
+and guard the append. Compare affordable count with gold/unit-price when price
+is nonzero, retaining free-goods behavior. Arm a sell/repair request only after
+the quantity owner publishes a replacement drawable; allocation failure leaves
+the existing dialog intact and permits retry. These are small reversible
+correctness changes under standing authorization. Preserve the original failing
+runs and verify normal request/callback behavior before freezing the C oracle.
+See [CLIENT_SHOP_UI.md](CLIENT_SHOP_UI.md) for observed cases and qualification.
+
+
+### Shop closure owns its quantity dialog — review later
+
+Independent C tests reproduced retained quantity drawables/windows when closing
+or destroying a shop during buy, sell or repair input. Cancel through the actual
+quantity lifecycle before shop teardown only when its accept callback is one of
+the three known shop callbacks; preserve unrelated inventory quantity dialogs.
+Clear both pending flags. Eight direct ownership cases cover close/destroy and
+three owned plus one unrelated callback; 100 shop recreation cycles also pass.
+This reversible prerequisite adds 11 C lines (22 total for this batch), precedes
+baseline freezing, and passes all affected targets/full-assets/gameplay checks.
+No algorithm is retained only for testing after translation.

@@ -53,8 +53,8 @@ WINDOW
 END
 `
 
-func newInventoryWindowOwner(t *testing.T) *inventoryWindowOwner {
-	o := &inventoryWindowOwner{inventoryDisplayOwner: newInventoryDisplayOwner(t, "Gold", "Identify", "AutoMap", "QuestGoldPile", "QuestGoldChest")}
+func newInventoryWindowOwner(t *testing.T, extraNames ...string) *inventoryWindowOwner {
+	o := &inventoryWindowOwner{inventoryDisplayOwner: newInventoryDisplayOwner(t, append([]string{"Gold", "Identify", "AutoMap", "QuestGoldPile", "QuestGoldChest"}, extraNames...)...)}
 	oldMapRefresh := o.c.GUI.ValYYY
 	t.Cleanup(func() { o.c.GUI.ValYYY = oldMapRefresh })
 	var restore func()

@@ -89,6 +89,9 @@ func (o *inventoryWindowOwner) capture(t *testing.T, id, step, op int, a, b, c, 
 			switch style := w.DrawData().Style; {
 			case style&(gui.StyleVertSlider|gui.StyleHorizSlider) != 0:
 				v.Data = words(unsafe.Sizeof(gui.SliderData{}))
+			case style&gui.StyleEntryField != 0:
+				v.Data = words(unsafe.Sizeof(gui.EntryFieldData{}))
+				v.Data[1048/4] = o.norm(v.Data[1048/4])
 			case style&gui.StyleStaticText != 0:
 				data := (*gui.StaticTextData)(w.WidgetData)
 				v.Data = words(unsafe.Sizeof(*data))

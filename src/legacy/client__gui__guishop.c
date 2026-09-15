@@ -26,6 +26,7 @@ extern uint32_t dword_5d4594_1107036;
 extern uint32_t dword_5d4594_1098628;
 extern uint32_t dword_5d4594_1098576;
 extern uint32_t nox_color_white_2523948;
+extern void* nox_gui_itemAmount_item_1319256;
 
 //----- (00478730) --------------------------------------------------------
 void sub_478730(int* a1) {
@@ -61,7 +62,7 @@ void sub_478730(int* a1) {
 	v6 = sub_4674A0();
 	v7 = *((uint32_t*)v5 + 34);
 	v8 = *((uint32_t*)v5 + 1);
-	if (v6 < v8 * *((uint32_t*)v5 + 34)) {
+	if (v7 && v6 / v7 < (unsigned int)v8) {
 		v8 = v6 / v7;
 	}
 	if (!v8) {
@@ -236,8 +237,11 @@ int sub_4795E0(int a1, int a2) {
 			v9 = *(uint32_t*)(v5 + 108);
 			wchar2_t* str =
 				nox_strman_loadString_40F1D0("SellLabel", 0, "C:\\NoxPost\\src\\client\\Gui\\GUIShop.c", 1504);
+			void* oldItem = nox_gui_itemAmount_item_1319256;
 			result = nox_gui_itemAmountDialog_4C0430(str, mpos.x, mpos.y, a1, v9, v2, v10, 0, sub_479690, sub_479680);
-			dword_5d4594_1098616 = 1;
+			if (nox_gui_itemAmount_item_1319256 != oldItem) {
+				dword_5d4594_1098616 = 1;
+			}
 		}
 	}
 	return result;
@@ -273,8 +277,11 @@ void sub_479740(int a1, unsigned int a2) {
 				v8 = mpos.y;
 				v7 = mpos.x;
 				v6 = nox_strman_loadString_40F1D0("RepairLabel", 0, "C:\\NoxPost\\src\\client\\Gui\\GUIShop.c", 1580);
+				void* oldItem = nox_gui_itemAmount_item_1319256;
 				nox_gui_itemAmountDialog_4C0430((int)v6, v7, v8, a1, v9, v2, 1, 0, sub_479820, sub_479810);
-				dword_5d4594_1098620 = 1;
+				if (nox_gui_itemAmount_item_1319256 != oldItem) {
+					dword_5d4594_1098620 = 1;
+				}
 			}
 		}
 	}

@@ -20,8 +20,8 @@ releases temporary drags on cancellation while preserving borrowed equipment.
 The connected quantity-dialog and player-to-player trade UI is also converted:
 36 routines / 1,316 C lines removed, with all 3,216 captured results unchanged
 and additional lifetime/bounds/C-interface contracts. There are about **81k C
-lines left** (81,351 physical lines in 95 production files). Next qualify and
-port the connected shop UI, approximately 1,088 C lines / 42 routines. See
+lines left** (81,373 physical lines in 95 production files). Next qualify and
+port the connected shop UI, 1,110 C lines / 42 routines after qualified prerequisites. See
 [the trade UI report](docs/porting/CLIENT_TRADE_UI.md),
 [PORTING_STATE.md](PORTING_STATE.md),
 [the window report](docs/porting/CLIENT_INVENTORY_WINDOW.md) and

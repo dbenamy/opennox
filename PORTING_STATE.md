@@ -2,51 +2,42 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining in the working tree: about 81k lines** — exactly **81,351
+**Rough C remaining in the working tree: about 81k lines** — exactly **81,373
 physical lines** in 95 production `.c` files, with zero test-reference C. The
-quantity-dialog/trade UI conversion removed 1,316 lines from its qualified C baseline. This is source size, not
+quantity-dialog/trade UI conversion removed 1,316 lines; the current shop prerequisites add twenty-two. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — quantity/trade UI port qualified; shop UI next
+## Current — qualified shop UI C baseline
 
-The 36-routine quantity-dialog and player-to-player trade UI conversion is fully
-qualified. C baseline **b77d5102** is pushed; this checkpoint accompanies the
-native conversion commit. **81,351 C lines / 95 files / zero reference C** remain,
-a reduction of **1,316**. See [CLIENT_TRADE_UI.md](docs/porting/CLIENT_TRADE_UI.md).
+Quantity/trade conversion de1bb918 is committed/pushed (−1,316 C lines).
+Shop baseline now covers all 42 routines / 1,110 removable C lines. All 31 focused
+roots passed the locked repeat in 37.984s, with 1,299 frozen results / 25 groups.
+Affected default/server/highres passed 379/377/379 roots, every shop hash and
+all 23 existing trade hashes unchanged. All three production binaries pass
+ELF32/i386/SSE2/CGO/interface checks. Full assets have exactly the known 1,553
+failures and 15 pass / 3 fail / 32 skip packages. Unchanged inventory nine-screen
+and new shop ten-screen fresh comparisons pass with updates disabled.
 
-All 3,216 results / 23 frozen C groups match Go exactly. Thirty-two focused roots
-pass, including forced-GC checks through the actual C quantity/price/tooltip
-interfaces. Broader qualification passed **909 accumulated default / 346 server /
-348 highres** roots, all three production builds and 11-retained/25-retired symbol
-checks, exact known full-asset failures (1,553; 15/3/32 packages), and fresh
-unchanged nine-screen headless inventory comparison (51.832s). All 1,602 source
-fingerprints stayed unchanged. Final evidence: build/port-client-trade-ui/
-native-qualification.json. All jobs are joined; no active source readers.
+Four justified C prerequisites (+22 lines) fix full-stack selection/append,
+affordability overflow, pending flags after allocation failure and owned quantity
+cancellation before shop closure/destruction. Unrelated quantity owners survive.
+See [CLIENT_SHOP_UI.md](docs/porting/CLIENT_SHOP_UI.md) and DECISIONS.md for evidence,
+fixture corrections and gameplay limitations. Working C: 81,373 / 95 files /
+zero reference C; expected native total 80,263 / 94 files.
 
-The shipped trade/quantity windows use the actual parser/widgets/renderer with
-authored reports. They are not two-client multiplayer gameplay. The extra apple
-pickup/quantity game setup remains explicitly unqualified; do not resume an
-open-ended script-tuning detour before the next batch. Generic GUI exhaustion/
-mutex handling, first locked-run exit 143, and prior hallway/identification
-mismatches remain recorded; do not claim those unrelated issues fixed.
+All readers/builds/gameplay jobs are joined. Next commit/push this baseline,
+then apply reviewed native drafts in ignored build/port-client-shop-ui/native-*.go.stage.
+No native source applied yet. Other old drafts are stale; do not reapply.
+Retain only actual C callers/callbacks (predicted 18 retained / 24 retired).
+Translate all 42 together, compare frozen hashes without updates, qualify,
+document C LOC, commit/push and continue. No question pending; no agents used.
 
-Next begin the **shop UI C baseline**: GAME2_2.c 00478030 through 004798A0 plus
-client__gui__guishop.c, excluding 00479950 onward. Read-only scope is **42 routines /
-1,088 removable C lines**. Ignored build/port-client-shop-ui holds original blocks,
-caller audit, operations and draft thin dispatcher/environment/owner/four initial
-tests. Review before applying. Extend the inventory-window owner with optional
-extra shopkeeper types; unchanged callers must preserve their existing type IDs.
-Use real shop/quantity/widgets/renderer/drawable owners. Prove capacity and
-allocation/price boundary behavior before any prerequisite; expand coverage and
-integration, repeat/freeze C, commit/push baseline, translate and qualify.
-
-No shop source or prerequisite is applied yet. No question pending; no agents
-used. Do not rerun the already-applied trade integrate-native.py or its stale
-.go.stage drafts. The new native files and committed C expectations are the
-source of truth. Source build/baseline/env.sh for Go; never mutate Go/C/headers
-while source-reading jobs run. Preserve the original asset archive.
+Original assets/archive untouched. Completed captures are losslessly compressed
+with manifests. Source build/baseline/env.sh in Go shells; no Go/C/header edits
+while source readers run. Prior unexplained failures and generic GUI exhaustion
+remain documented in the trade report; not fixed by this batch.
 
 <!-- /current-checkpoint -->
 
