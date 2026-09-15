@@ -796,3 +796,21 @@ normal deferred FreeDestroyed pass. Correcting that fixture is sufficient for
 this batch. Review generic GUI allocation failure separately: NewWindowRaw
 passes a nil allocation to setExt, whose panic can retain the extension mutex
 and block cleanup. That generic path is not fixed by this port.
+
+### Native quantity/trade interfaces — review later
+
+Retain eleven actual C interfaces and retire twenty-five private ones after
+moving Go callers to the new owners. The quantity callback receives a C-owned
+point and four scalar argument words; forced collection inside the callback
+checks this actual boundary. The add-report return is a numeric price, so its
+header/export now declares uint32_t instead of char*. Existing decoder callers
+ignore that result; all 32 bits remain unchanged, including high-bit prices.
+The quantity modifier parameter is void* to match cgo's generated declaration;
+the implementation still only copies the supplied bytes. Stable interned reset
+labels preserve the corrected C buffer's borrowing lifetime.
+
+These reversible type/lifetime choices preserve the frozen C behavior and avoid
+representing scalar game data as Go pointers. Keep the shared production C
+number parser until its own connected port; it is not a test-only reference.
+See [CLIENT_TRADE_UI.md](CLIENT_TRADE_UI.md) for qualification and the explicit
+remaining gameplay integration limits.

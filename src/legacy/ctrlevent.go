@@ -98,7 +98,7 @@ func Get_nox_gui_itemAmount_dialog_1319228() *gui.Window {
 }
 
 func Sub_4C01C0(a1, a2 int, a3 unsafe.Pointer, a4 int) {
-	C.sub_4C01C0(C.int(a1), C.int(a2), (*C.int)(a3), C.int(a4))
+	uiAmountPanel(uiInventoryWindowValue(uint32(a1)), a2, uintptr(a3), uintptr(a4))
 }
 
 func Nox_client_chatStart_46A430(v int) {

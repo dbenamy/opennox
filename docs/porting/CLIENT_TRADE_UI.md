@@ -1,6 +1,7 @@
 # Quantity dialog and player-to-player trade UI
 
-Status: **C baseline qualified and frozen; no Go conversion yet**. Prior inventory
+Status: **Go conversion fully qualified**. C baseline
+b77d5102 is committed and pushed. Prior inventory
 window conversion 24f3f67e and cancellation cleanup e712ca56 are pushed.
 
 Scope: 36 routines, 1,264 address-block C lines plus the trade translation unit's
@@ -22,7 +23,7 @@ observations. Existing fixture strings are preserved through a JSON round trip
 before appending trade-specific entries; ReadJSON alone replaces the manager's
 entries. A newly authored Trade.wnd exercises real construction.
 
-Initial three-test run: build/port-client-trade-ui/develop-a. The construction
+Historical initial three-test run: build/port-client-trade-ui/develop-a. The construction
 capture has an empty development expectation; no baseline is frozen. Additional
 preflight work covers allocation failures, missing-item removal, fixed 32-code
 capacity and repeated quantity-dialog lifetime. Expand across every scoped
@@ -30,7 +31,7 @@ routine and meaningful integration before freezing the C baseline. Keep original
 failure evidence and review justified prerequisites, rather than using invalid
 pointer accesses or adjacent-memory writes as an oracle.
 
-## Development and prerequisites
+## C development and prerequisites (historical)
 
 Development-a passed all three initial tests in 178.944s. Development-b completed
 eight root tests in 23.846s and demonstrated two bugs with independent contracts:
@@ -154,7 +155,7 @@ The 36 routines now occupy 1,299 address-block lines plus 17 TU preamble lines:
 **1,316 removable C lines**. The cumulative captured corpus is 458,695 results /
 1,208 groups; independent property/lifetime assertions are additional.
 
-### Integration limits and next action
+### Integration limits
 
 The shipped-window test passes in every target with OPENNOX_TRADE_UI_ASSETS set
 to the original data directory. It exercises quantity up/accept callbacks,
@@ -174,10 +175,62 @@ integration and stated broader checks; retain this integration gap for native
 qualification and later multiplayer testing. This is a reversible testing-scope
 decision under standing authorization, not a claim that the missing scenario passed.
 
-Next replace the 36 routines together. Re-audit callers; retain real C callbacks
-and decoder/shop interfaces, move Go callers directly, and remove private C
-interfaces. Give native reset labels stable storage and quantity callbacks real
-point storage with scalar code/type/count/extra words. Keep every frozen hash.
-Ignored current-blocks/current-scope describe the final C; original-blocks and
-old .go.stage files are stale. The native-design note is a plan only, not an
-implemented conversion. Measure C LOC, qualify, commit/push and continue.
+## Native conversion
+
+All 36 routines now use Go quantity-dialog and trade-window owners. Removed
+1,316 physical C lines, including client__gui__guitrade.c: **81,351 C lines / 95
+files / zero reference C**. Typed trade cells assert their 140-byte size and
+136-byte value offset. Go callers and the tagged fixture dispatcher call Go
+directly. Eleven interfaces remain for real C decoder/shop callers and the raw
+GUI tooltip callback; 25 private interfaces are retired.
+
+Quantity acceptance passes a C-owned point allocation and four scalar words to
+the callback, then releases the point. Stable interned reset labels respect the
+existing widget's borrowing lifetime. The existing shared production C number
+parser remains in use; no C algorithm is retained solely for testing.
+
+The add-report return declaration is now uint32_t instead of char*, matching its
+numeric price. Actual decoder callers ignore the result; the 32-bit return word
+is preserved without manufacturing a Go pointer from a price. The quantity
+modifier argument is void* in the C declaration to match cgo's generated bridge;
+the implementation only copies the modifier bytes. These reversible ABI typing
+decisions preserve actual usage and are recorded for review.
+
+Native-a failed discovery on the const/void* declaration conflict in 66.964s.
+The job was joined and no compiler remained before correcting that declaration.
+Native-b then passed all 30 focused roots in 184.917s: **every one of the 23
+capture groups matched the frozen C bytes on the first behavioral Go run**.
+No behavioral expectation changed.
+
+Two additional independent ABI tests exercise 100 quantity callback cycles with
+forced GC inside the actual callback, and both trade grids across seven price
+words (including high-bit values), entering through real retained C interfaces.
+The latter also invokes the widget's actual raw C tooltip callback. Native-c
+passed all 32 roots in 184.355s with all 3,216 captured results unchanged.
+
+## Native qualification
+
+All **909 accumulated default / 346 affected server / 348 affected highres**
+root tests passed in 511.865s / 277.512s / 201.154s. Every selected test started
+and finished. All 23 full capture groups match the frozen C hashes in all three
+targets; the shipped-window integration ran with original assets enabled.
+
+Three production builds succeeded in 58.802s / 8.400s / 55.419s. Each is
+ELF32/i386/SSE2/CGO, with all eleven retained interfaces supplied by Go bridges,
+all twenty-five retired symbols absent, and no tagged test helpers. The full
+asset suite in 49.523s has exactly the same 1,553 known failure entries and
+15 pass / 3 fail / 32 skip package outcomes. The fresh unchanged nine-screen
+inventory game comparison passed in **51.832s**, with reference updates disabled.
+
+All 1,602 Go/C/header fingerprints stayed unchanged throughout qualification.
+Evidence: build/port-client-trade-ui/native-qualification.json, native-b-parity.json,
+native-qualified-capture-compression.json and native-binary-verification.json.
+Completed captures are losslessly compressed with SHA-256 manifests. All jobs
+are joined. The corpus remains **458,695 results / 1,208 groups**; additional
+independent grid/lifetime/ABI assertions are outside that count.
+
+The integration limits above remain: authored reports on real shipped widgets
+are covered; a two-client trade game and the extra quantity-pickup gameplay setup
+are not qualified. No claim of coverage is based on those unfinished scenarios.
+Next is the connected shop UI: 42 scoped routines and about 1,088 removable C
+lines before any independently justified baseline prerequisites.

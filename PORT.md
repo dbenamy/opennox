@@ -17,9 +17,11 @@
 Client inventory windows, input, lifecycle, display, transactions, queries and
 meters are converted. The window batch removed 1,605 C lines; its follow-up now
 releases temporary drags on cancellation while preserving borrowed equipment.
-The connected quantity-dialog and player-to-player trade UI C baseline is now
-qualified: 36 routines / 1,316 removable C lines, with 3,216 captured results
-and independent lifetime/bounds contracts. Next translate this batch to Go. See
+The connected quantity-dialog and player-to-player trade UI is also converted:
+36 routines / 1,316 C lines removed, with all 3,216 captured results unchanged
+and additional lifetime/bounds/C-interface contracts. There are about **81k C
+lines left** (81,351 physical lines in 95 production files). Next qualify and
+port the connected shop UI, approximately 1,088 C lines / 42 routines. See
 [the trade UI report](docs/porting/CLIENT_TRADE_UI.md),
 [PORTING_STATE.md](PORTING_STATE.md),
 [the window report](docs/porting/CLIENT_INVENTORY_WINDOW.md) and

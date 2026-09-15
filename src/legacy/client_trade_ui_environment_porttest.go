@@ -17,17 +17,11 @@ extern uint32_t dword_5d4594_1320972;
 import "C"
 
 import (
-	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
 )
 
-type PortTestTradeUICell struct {
-	Drawable *client.Drawable
-	Count    uint32
-	Codes    [32]uint32
-	Value    uint32
-}
+type PortTestTradeUICell = uiTradeCell
 
 func PortTestTradeUICells() [2][]PortTestTradeUICell {
 	if unsafe.Sizeof(PortTestTradeUICell{}) != 140 || unsafe.Offsetof(PortTestTradeUICell{}.Value) != 136 {
@@ -60,41 +54,41 @@ func PortTestTradeUIWords() (map[string]*uint32, func()) {
 }
 func PortTestTradeUICallbacks() []unsafe.Pointer {
 	return []unsafe.Pointer{
-		C.sub_4BFD40,
-		C.sub_4BFDD0,
+		nil,
+		nil,
 		C.sub_4BFE40,
-		C.nox_gui_itemAmount_init_4BFEF0,
-		C.sub_4C0030,
-		C.sub_4C01C0,
-		C.nox_gui_itemAmount_free_4C03E0,
+		nil,
+		nil,
+		nil,
+		nil,
 		C.nox_gui_itemAmountDialog_4C0430,
-		C.sub_4C0560,
+		nil,
 		C.sub_4C05F0,
-		C.nox_xxx_func_4C0610,
-		C.sub_4C0630,
-		C.nox_xxx_clientTrade_0_4C08E0,
-		C.sub_4C0910,
-		C.sub_4C0C90,
-		C.nox_xxx_clientTrade_4C0CE0,
-		C.sub_4C0D00,
+		nil,
+		nil,
+		nil,
+		nil,
+		nil,
+		nil,
+		nil,
 		C.sub_4C1120,
-		C.sub_4C11E0,
-		C.nox_xxx_closeP2PTradeWnd_4C12A0,
-		C.sub_4C12C0,
-		C.nox_xxx_showP2PTradeWnd_4C12D0,
+		nil,
+		nil,
+		nil,
+		nil,
 		C.nox_xxx_netP2PStartTrade_4C1320,
-		C.sub_4C1410,
+		nil,
 		C.sub_4C1590,
-		C.sub_4C1710,
-		C.sub_4C1760,
+		nil,
+		nil,
 		C.nox_xxx_tradeClientAddItem_4C1790,
-		C.sub_4C18E0,
-		C.sub_4C1910,
-		C.sub_4C19C0,
+		nil,
+		nil,
+		nil,
 		C.sub_4C1B50,
 		C.sub_4C1BC0,
 		C.nox_xxx_prepareP2PTrade_4C1BF0,
-		C.sub_4C09D0,
+		nil,
 		C.sub_4C15D0,
 	}
 }

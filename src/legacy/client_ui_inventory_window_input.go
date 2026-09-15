@@ -84,7 +84,7 @@ func uiInventoryDropQuantity(pos image.Point, code, typ uint32, count int) {
 			dr := found.Cell.Drawable
 			uiInventorySetDragged(dr)
 			dr.NetCode32 = found.Cell.Codes[i]
-			if C.sub_4C12C0() == 0 {
+			if uiTradeActive() == 0 {
 				uiInventoryDropAt(world)
 			}
 			uiInventorySetDragged(nil)
@@ -221,7 +221,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 		if !bool(nox_xxx_wndPointInWnd_46AAB0((*C.uint)(uiInventoryMainWindow().C()), C.int(screen.X), C.int(screen.Y))) || hit(136384) || hit(136400) {
 			world := Sub_473970(screen)
 			if C.dword_5d4594_1049856 == 1 {
-				if C.sub_4C12C0() == 0 {
+				if uiTradeActive() == 0 {
 					uiInventoryDropAt(world)
 				}
 			} else {
@@ -232,9 +232,9 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 					if uint32(dr.Class())&0x13001000 != 0 {
 						mods = unsafe.Add(dr.C(), 432)
 					}
-					C.sub_4C05F0(0, 0)
-					C.nox_gui_itemAmountDialog_4C0430((*C.wchar2_t)(unsafe.Pointer(internWStr(uiInventoryText("DropLabel")))), C.int(screen.X), C.int(screen.Y), C.int(dr.NetCode32), C.int(dr.TypeIDVal), mods, C.int(count+1), 0, C.sub_465CD0, nil)
-				} else if C.sub_4C12C0() == 0 {
+					uiAmountPrice(0, 0)
+					uiAmountShow((*uint16)(unsafe.Pointer(internWStr(uiInventoryText("DropLabel")))), screen.X, screen.Y, dr.NetCode32, dr.TypeIDVal, mods, uint32(count+1), 0, C.sub_465CD0, nil)
+				} else if uiTradeActive() == 0 {
 					uiInventoryDropAt(world)
 				}
 			}
@@ -248,7 +248,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 			if !hit(136352) {
 				return 1
 			}
-			if C.sub_4C12C0() == 0 {
+			if uiTradeActive() == 0 {
 				if uint32(dr.Class())&0x3001000 != 0 {
 					cell := uiInventorySourceCell()
 					if cell.Alternate != 0 {

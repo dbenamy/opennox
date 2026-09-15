@@ -487,7 +487,7 @@ func Sub_4C3760() int {
 	return int(C.sub_4C3760())
 }
 func Sub_4C09D0() int {
-	return int(C.sub_4C09D0())
+	return uiTradeInit()
 }
 func Sub_478110() int {
 	return int(C.sub_478110())
@@ -499,7 +499,7 @@ func Sub_4BFC90() int {
 	return int(C.sub_4BFC90())
 }
 func Nox_gui_itemAmount_init_4BFEF0() int {
-	return int(C.nox_gui_itemAmount_init_4BFEF0())
+	return uiAmountInit()
 }
 func Sub_4799A0() int {
 	return int(C.sub_4799A0())
@@ -553,7 +553,7 @@ func Sub_40A970() {
 	C.sub_40A970()
 }
 func Nox_gui_itemAmount_free_4C03E0() {
-	C.nox_gui_itemAmount_free_4C03E0()
+	uiAmountFree()
 }
 func Sub_4AE3B0() {
 	C.sub_4AE3B0()
@@ -565,7 +565,7 @@ func Sub_4C4220() {
 	C.sub_4C4220()
 }
 func Nox_xxx_closeP2PTradeWnd_4C12A0() {
-	C.nox_xxx_closeP2PTradeWnd_4C12A0()
+	uiTradeDestroy()
 }
 func Sub_4BFD10() {
 	C.sub_4BFD10()

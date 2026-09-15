@@ -148,6 +148,7 @@ target build selection and linker evidence.
 | Client inventory windows, input, scrolling and lifecycle | 96 | 82,632 | −1,605 | 0 |
 | Inventory cancellation ownership cleanup (Go only) | 96 | 82,632 | 0 | 0 |
 | Quantity/trade UI qualified C prerequisites | 96 | 82,667 | +35 | 0 |
+| Quantity dialog and player-to-player trade UI | 95 | 81,351 | −1,316 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
