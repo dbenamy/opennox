@@ -179,7 +179,7 @@ func briefingWinReport(data unsafe.Pointer) int {
 		}
 		C.dword_5d4594_832476 = C.uint32_t(width)
 	}
-	return int(C.nox_client_lockScreenBriefing_450160(254, 1, 1))
+	return briefingShow(254, 1, 1)
 }
 func briefingSelection(data unsafe.Pointer, show int, instructions bool) int {
 	C.dword_5d4594_832480 = 0
@@ -205,7 +205,7 @@ func briefingSelection(data unsafe.Pointer, show int, instructions bool) int {
 		C.dword_5d4594_832480 = 1
 	}
 	if show != 0 {
-		return int(C.nox_client_lockScreenBriefing_450160(254, 1, C.char(mode)))
+		return briefingShow(254, 1, mode)
 	}
 	return show
 }

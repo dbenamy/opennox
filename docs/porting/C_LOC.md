@@ -153,6 +153,7 @@ target build selection and linker evidence.
 | Shop UI storage, drawing, input and quantity transactions | 94 | 80,263 | −1,110 | 0 |
 | Quest journal storage, reports, save integration and rendering | 93 | 79,924 | −339 | 0 |
 | Quest briefing chapters, reports, sprite cache and presentation | 92 | 78,977 | −947 | 0 |
+| Briefing window lifecycle, voice, input and transitions | 92 | 78,657 | −320 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

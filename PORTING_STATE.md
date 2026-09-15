@@ -2,46 +2,42 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining in the working tree: about 79k lines** — exactly **78,977
+**Rough C remaining in the working tree: about 79k lines** — exactly **78,657
 physical lines** in 92 production `.c` files, with zero test-reference C. The
 quantity-dialog/trade UI conversion removed 1,316 lines; shop prerequisites added
 22, and the qualified shop conversion removes 1,110. The journal translation removes
-another 339; the qualified briefing translation removes 947.
+another 339; the qualified briefing translation removes 947. The qualified window lifecycle
+translation removes 320 more.
 This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — briefing window C baseline frozen
+## Current — briefing family complete; scoreboard baseline next
 
-Briefing presentation **adfe6fa5 is committed/pushed**: thirteen routines / 947
-C lines removed, all 467 frozen results and eight chapter screenshots match.
-Current C size **78,977 / 92 files / zero reference C**. See BRIEFING.md.
+Briefing window Go conversion is qualified: **nine routines / 320 C lines
+removed**, **78,657 / 92 files / zero reference C**. C baseline a46a62e5 and
+presentation adfe6fa5 are pushed. Five actual C entries remain, twelve private
+interfaces retire. All **840 results / 22 groups** match unchanged.
 
-Next batch is applied as tagged fixtures only: nine remaining briefing window
-routines / about 320 C lines. Production unchanged. New tests reuse actual GUI,
-renderer, dialogue, music, sprite and fade owners. Cover resource failure,
-chapter/class and remembered loss selection, credits, quest mode precedence,
-input gates, draw modes and timed dismissal. Expectations are not frozen yet.
-C affected qualification passed **251 default / 249 server / 251 highres**,
-all **373 results / eleven groups** identical. Production fingerprints match
-adfe6fa5; its builds/full-assets/chapter gameplay reused. All jobs joined before
-freezing expectations. The locked focused repeat passed all twelve roots with
-assets in 26.047s; all jobs joined.
-Next commit/push C baseline, then apply/review native draft and qualify. Native
-implementation and apply/qualification scripts remain UNAPPLIED under
-build/port-briefing-window; fixture *.stage files are stale applied copies.
+Full accumulated tests completed **974 default / 551.131s**, **971 server /
+628.189s**, and **974 highres /
+623.296s**, with the expected optional skip and no failures.
+All three production builds/interface audits pass. Full-assets results remain
+exactly 1,553 known failure entries (15 pass / three fail / 32 skip packages).
+Fresh chapter gameplay matches all eight checkpoints. All source-reading jobs
+joined; fingerprints unchanged. See [BRIEFING_WINDOW.md](docs/porting/BRIEFING_WINDOW.md).
 
-Audit: five C entries will remain across briefing presentation/window code,
-including display called by client__network__cdecode.c; twelve private entries
-can retire. Preserve actual caller bridge, direct Go calls elsewhere. Next review
-first baseline results, expand any missing owner paths, repeat and qualify before
-freezing/committing. No question pending; continue autonomously.
+Next: scoreboard/rank, about 31 connected routines / 1,504 function-block lines.
+Ignored scope/caller audits and **unapplied, untested development fixture drafts**
+are under build/port-scoreboard. README.md records missing coverage and draft
+caveats. Start the actual C baseline, qualify/repeat/freeze it before production
+translation. Preserve the guirank.c window global or migrate all bindings when
+removing that file; function-block count is not net physical C removal.
 
-Original assets/archive untouched. Previous complete qualification and source
-fingerprints: build/port-briefing/native-qualification.json and
-native-source-fingerprints.json. Old build/port-briefing/*.go.stage files are stale.
-Never edit source while readers run.
+No active test/build reader and no user question pending. Commit/push the qualified
+window chunk and docs before applying scoreboard drafts; then continue autonomously.
+Original assets/archive untouched. Never edit source while readers run.
 
 <!-- /current-checkpoint -->
 

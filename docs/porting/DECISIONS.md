@@ -897,3 +897,22 @@ capture as briefing evidence; the corrected scenario and independent repeat are
 tracked/recoverable. Statistics and instructions use real render/GUI/sprite
 owners with the shipped Briefing.wnd, while ordinary chapter gameplay supplies
 the full-game integration check. See BRIEFING.md for qualification and limits.
+
+
+### Briefing lifecycle completion
+
+Preserve existing resource-failure ownership, sprite-deletion order, nil event
+responses and post-draw state reads when replacing the remaining callbacks with
+Go. Keep the actual save-menu boundary outside this batch: quest-mode transition
+fixtures exercise its early return, and ordinary chapter gameplay provides the
+full-game check. Additional save-selector pixels and audible credits remain
+separate coverage work. Review these limits when changing transitions.
+
+Run the complete accumulated corpus in all three targets at this closed briefing
+subsystem milestone. All selected roots completed with no failures and the one
+expected optional skip in each target. Keep the 600s per-package timeout; no
+infrastructure adjustment was necessary for this completed run. Highres root
+execution was 598.823s, so give the next complete-corpus run a longer explicit
+timeout before adding further coverage; retain strict root completion/failure
+checks. Following batches resume the documented
+affected-corpus policy until another milestone or uncertain dependency scope.

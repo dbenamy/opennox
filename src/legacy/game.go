@@ -364,7 +364,7 @@ func Nox_xxx_mapLoadOrSaveMB_4DCC70(v int) {
 	C.nox_xxx_mapLoadOrSaveMB_4DCC70(C.int(v))
 }
 func Sub_44E560() unsafe.Pointer {
-	return unsafe.Pointer(C.sub_44E560())
+	return unsafe.Pointer(briefingCreateWindow())
 }
 func Nox_xxx_serverOptionsGetServername_40A4C0() string {
 	return GoString(C.nox_xxx_serverOptionsGetServername_40A4C0())
@@ -595,7 +595,7 @@ func Sub_455EE0() {
 	C.sub_455EE0()
 }
 func Sub_4505E0() {
-	C.sub_4505E0()
+	briefingDestroy()
 }
 func Sub_46A860() {
 	C.sub_46A860()

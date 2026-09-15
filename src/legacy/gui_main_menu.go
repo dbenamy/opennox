@@ -100,7 +100,7 @@ func Sub_4A7A60(a1 int) {
 	C.sub_4A7A60(C.int(a1))
 }
 func Nox_client_lockScreenBriefing_450160(a1 int, a2 int, a3 int) {
-	C.nox_client_lockScreenBriefing_450160(C.int(a1), C.int(a2), C.char(a3))
+	briefingShow(a1, a2, byte(a3))
 }
 func Sub_43E8C0(a1 int) {
 	C.sub_43E8C0(C.int(a1))
