@@ -14,14 +14,13 @@
 
 ## Current status
 
-Client inventory queries and state are converted and qualified, following the
-health/mana, potion, weapon and charge meters. Continue autonomous porting one
-connected batch at a time through qualification, docs, commit and push. The next
-audited scope is about 1,000 C lines of inventory stack/equipment transactions,
-reusing the existing owners. An isolated qualification mismatch remains documented for review; future
-hallway mismatches automatically preserve full captures under build/port-failures.
-See [PORTING_STATE.md](PORTING_STATE.md) for the checkpoint and C count, and
-[the inventory report](docs/porting/CLIENT_INVENTORY.md) for evidence.
+Client inventory queries and meters are converted. The next inventory transaction
+batch has a qualified C baseline: 26 routines / 1,025 C lines, 3,606 frozen results
+and 16 focused tests. Continue with the Go translation, qualification, docs,
+commit and push. See [PORTING_STATE.md](PORTING_STATE.md) and
+[the transaction report](docs/porting/CLIENT_INVENTORY_TRANSACTIONS.md).
+An earlier isolated hallway qualification mismatch remains documented for review;
+future failures automatically preserve full captures under build/port-failures.
 
 ## Goal and target
 

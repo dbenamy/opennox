@@ -10,7 +10,7 @@ import (
 )
 
 // PortTestMeterStrings installs a real language-bearing string manager.
-func (s *Server) PortTestMeterStrings() (func(int), func()) {
+func (s *Server) PortTestMeterStrings(extra ...strman.Entry) (func(int), func()) {
 	old := s.sm
 	f, err := os.CreateTemp("", "opennox-meter-strings-*.json")
 	if err != nil {
@@ -24,7 +24,7 @@ func (s *Server) PortTestMeterStrings() (func(int), func()) {
 		data, err := json.Marshal(struct {
 			Lang    int            `json:"lang"`
 			Entries []strman.Entry `json:"entries"`
-		}{language, []strman.Entry{
+		}{language, append([]strman.Entry{
 			{ID: "keybind:Q", Vals: []strman.Variant{{Str: "Q"}}},
 			{ID: "keybind:F12", Vals: []strman.Variant{{Str: "F12"}}},
 			{ID: "keybind:KpEnter", Vals: []strman.Variant{{Str: "Keypad Enter"}}},
@@ -38,7 +38,7 @@ func (s *Server) PortTestMeterStrings() (func(int), func()) {
 			{ID: "ToolTip.c:BookOf", Vals: []strman.Variant{{Str: "Book of"}}},
 			{ID: "ToolTip.c:LoreScroll", Vals: []strman.Variant{{Str: "Beast scroll"}}},
 			{ID: "ToolTip.c:NoArmsInfo", Vals: []strman.Variant{{Str: "Missing: %S"}}},
-		}})
+		}, extra...)})
 		if err != nil {
 			panic(err)
 		}

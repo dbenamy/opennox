@@ -72,6 +72,8 @@ int nox_xxx_spritePickup_461660(int a1, int a2, const void* a3) {
 		a2 != *getMemU32Ptr(0x5D4594, 1049724) && a2 != dword_5d4594_1062556 && a2 != dword_5d4594_1062564) {
 		v3 = sub_461970(a1, a2);
 		if (v3) {
+			a4.field_0 = ((nox_inventory_cell_t*)v3 - nox_client_inventory_grid_1050020) / NOX_INVENTORY_ROW_COUNT;
+			a4.field_4 = ((nox_inventory_cell_t*)v3 - nox_client_inventory_grid_1050020) % NOX_INVENTORY_ROW_COUNT;
 			if (*(uint8_t*)(*v3 + 112) & 0x10) {
 				sub_472310();
 			}

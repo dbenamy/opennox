@@ -682,3 +682,14 @@ there is no evidence to call it fixed or attribute it to overlapping test jobs.
 Proceed with the qualified reversible inventory conversion under standing user
 authorization, and add automatic full mismatch capture as a separate diagnostic
 follow-up so any recurrence has inspectable data without another replay.
+
+## Client inventory transaction prerequisites — review later
+
+Before freezing the transaction baseline, derive existing-stack pickup coordinates
+from its returned cell; the old local pair was uninitialized on that path. This
+adds two C lines, checked across all visible inventory cells. Also address the
+compaction copy destination directly by existing cell row/column. GDB demonstrated
+an in-bounds 148-byte copy whose generated fortified destination size was zero
+with the old rolling pointer. Keep fortification enabled and preserve the copy's
+source, length and traversal. Both are reversible local corrections, made under
+the standing authorization. See [CLIENT_INVENTORY_TRANSACTIONS.md](CLIENT_INVENTORY_TRANSACTIONS.md).

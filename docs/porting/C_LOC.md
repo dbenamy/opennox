@@ -142,8 +142,10 @@ target build selection and linker evidence.
 | Meter baseline sound-observation ABI (tagged; no algorithm) | 98 | 87,888 | +4 | 0 |
 | Health/mana, potion, weapon and charge meters | 97 | 86,818 | −1,070 | 0 |
 | Client inventory queries, scalar state and item updates | 97 | 86,422 | −396 | 0 |
+| Inventory transaction C prerequisites (pickup coordinates; compaction copy) | 97 | 86,424 | +2 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
 because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful
 differential validation; they remain recoverable from Git at `66fa7bd4`.
+

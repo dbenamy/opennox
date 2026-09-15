@@ -736,7 +736,7 @@ LABEL_2:
 					v2 = v24;
 					v8 = &nox_client_inventory_grid_1050020[v5];
 				}
-				memcpy(v21, v8, sizeof(nox_inventory_cell_t));
+				memcpy(&nox_client_inventory_grid_1050020[v25 + NOX_INVENTORY_ROW_COUNT * v24], v8, sizeof(nox_inventory_cell_t));
 				if (*(uint32_t*)v20) {
 					dword_5d4594_1062480 = v21;
 				}
