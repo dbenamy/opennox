@@ -508,3 +508,15 @@ user's standing authorization. Review the intended optional-effect/opacity polic
 later; do not reinstate address-dependent pixels to reproduce memory addresses.
 Independent rendered-pixel, allocation/lifetime and RNG contracts accompany them.
 See [the object drawing checkpoint](CLIENT_OBJECT_DRAWING.md).
+
+## Screen effects baseline (2026-09-15)
+
+Clear encoded rope endpoint IDs before actual static/dynamic drawable lookup;
+the producer preserves the static marker while drawable NetCode32 stores the
+cleared code. The original-C rendered contract fails for static endpoints and
+passes after this reversible prerequisite. Preserve the circle helper's unsigned
+trig arithmetic and table-based distance approximation for this conversion;
+review unusual circle clipping separately. Own actual particle allocation/list
+mutation and real maiden/monster rendering, including gameplay flags. Keep the
+adjacent renderer-bounds setter as a shared C dependency. See
+[screen effects](CLIENT_SCREEN_EFFECTS.md) for scope and evidence.

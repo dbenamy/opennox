@@ -126,6 +126,7 @@ target build selection and linker evidence.
 | Sprite animation, frame parsing and boulder drawing (2026-09-15) | 118 | 93,775 | −640 | 0 |
 | Object drawing prerequisites and C baseline (2026-09-15; no conversion) | 118 | 93,782 | +7 | 0 |
 | Object drawing, materials, team colors and generator/summon lifecycle (2026-09-15) | 106 | 92,869 | −913 | 0 |
+| Screen effects corrected C baseline (2026-09-15; no conversion) | 106 | 92,869 | 0 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

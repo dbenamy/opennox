@@ -4,30 +4,29 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Current — object drawing native conversion fully qualified
+### Current — screen-effects C baseline qualified
 
-Corrected C baseline dd3571f8 was committed/pushed first. Native object drawing is
-fully qualified and ready to commit/push:27 routines;13,298 captures/10 groups
-match on first native attempt; no implementation fixes. Standard686(685pass/one
-optional skip), server/highres53 each, three builds/ABI, exact full asset baseline
-comparison and fresh gameplay all pass. See docs/porting/CLIENT_OBJECT_DRAWING.md
-and build/port-client-draw-objects/qualification.json. No process remains active.
-Production C92,869 /106 files /reference0, down913 lines/12 files. Accumulated
-captures151,301 /1,079 groups plus contracts. Do not rerun completed integration,
-prerequisite or finalization scripts. Actual src is authoritative.
+Object drawing d0fa88f9 is pushed. Screen-effects corrected C baseline now passes:
+focus9, default695 (one optional skip), server/highres62/62, production
+build and fresh gameplay35.928s. Six capture groups/149,268 results
+repeat byte-for-byte (c-g/c-h), plus three contracts/probes. Production C remains
+92,869 /106 files /reference0. See docs/porting/CLIENT_SCREEN_EFFECTS.md.
 
-Commit/push native conversion, summarize in commentary, then continue the next
-connected batch. Read build/port-client-screen-effects/PLAN.md: remaining five
-client__draw__*.c files plus screen-particle creation/list/delete/walk, rope/circle
-helpers and possibly shared distance primitives. No next-batch source edits yet.
-The already-qualified PortTestEffectsScreenParticles owns real allocator/list/tail
-reuse and can support the new lifecycle matrix. Maiden's real Go monster renderer
-needs owned animation/NPC/server state; don't substitute a no-op callback. Shared
-C drawObject wider player/team/clipping paths remain outside these conversions.
+Commit/push this baseline, then apply build/port-client-screen-effects/
+integrate-native.py.stage ONCE after verifying clean tracked state. Drafts
+primitives.go.stage, particles.go.stage, draws.go.stage, exports.go.stage hold
+16 routines. Actual src is authoritative after application. Native qualification
+scripts are prepared; source build/baseline/env.sh before every Go test/build.
 
-No questions/new agents. Preserve originals/7z; completed asset deduplication and
-binary archives have verified restoration manifests. Current native gameplay asset
-copy remains available; C baseline copy is deduplicated and restorable.
+Retire eight internal C entries, retain eight required ABI bridges. Keep shared
+bounds setter and actual monster/object renderer dependencies. Preserve circle
+unsigned arithmetic and table approximation. Rope static-ID clearing is an
+applied, independently tested C prerequisite; do not reapply prerequisite script.
+
+Continue focus/native captured equivalence, accumulated/variants/three builds,
+ABI audit, exact full-asset suite comparison, fresh gameplay, docs/C LOC, commit/
+push and next connected chunk. No new agents or pending user question. Original
+assets/7z untouched; completed gameplay asset deduplication has restore manifests.
 
 <!-- /current-checkpoint -->
 
