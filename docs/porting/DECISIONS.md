@@ -486,3 +486,14 @@ code. Repeated C capture plus the related effects/update/drawing standard suite
 qualify the baseline. Native qualification broadens to accumulated standard,
 affected variants, all builds, full asset-suite comparison and fresh gameplay.
 The full suite is warranted here by shared lighting/color startup changes.
+
+## 2026-09-15 — sprite animation baseline and conditional random bound
+
+Correct the conditional animation RNG bound from count to count-1 before locking
+its C baseline. The parser allocates count entries and RNG bounds are inclusive;
+a sentinel/128-seed contract checks both states and RNG consumption. Use an
+isolated, tagged real RenderSprites image owner and retain drawObject as a C
+dependency until its broader player/team/clipping paths are owned. Preserve the
+existing fade-on-deletion alpha state and conditional data size header for later
+review. Remove the unused C vector-array loader instead of porting its already
+existing Go replacement again. See CLIENT_SPRITE_ANIMATION.md.

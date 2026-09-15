@@ -27,6 +27,8 @@ type effectsSpawnCall struct {
 }
 type effectsTestClient struct {
 	callbackRefs map[unsafe.Pointer]uint32
+	imageRefs    map[uint32]uint32
+	dataRefs     map[uint32]uint32
 	Mouse        image.Point
 	MouseReads   int
 	*Client
@@ -206,7 +208,16 @@ func (c *effectsTestClient) snapshotDrawables(t *testing.T) [][]uint32 {
 				words[i] = marker
 			}
 		}
-		for _, i := range []int{2, 76, 99, 114, 124} {
+		for i, refs := range map[int]map[uint32]uint32{2: c.imageRefs, 76: c.dataRefs} {
+			if words[i] != 0 {
+				marker, ok := refs[words[i]]
+				if !ok {
+					t.Fatalf("unmodeled owned image/data pointer at word%d", i)
+				}
+				words[i] = marker
+			}
+		}
+		for _, i := range []int{99, 114, 124} {
 			if words[i] != 0 {
 				t.Fatalf("unmodeled pointer in drawable word%d", i)
 			}
