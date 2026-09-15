@@ -8,27 +8,26 @@ an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LO
 
 <!-- current-checkpoint -->
 
-## Current — window helpers fully qualified
+## Current — tooltip C baseline qualified
 
-All26 window geometry/state/tree/draw-data routines are native and fully qualified
-against corrected C baseline `20970e2a`. Both frozen captures match byte-for-byte:
-7,664 results /two groups, plus five independent contracts. Accumulated757,
-server123 and highres124 tests, all three production builds/ABI checks, fresh
-warrior gameplay, entry typing and the exact full-suite failure comparison pass.
-No Go/C/header source changed during qualification. See
-[CLIENT_WINDOW.md](docs/porting/CLIENT_WINDOW.md).
+Window helpers are committed/pushed as `98013201`. Tooltip C baseline is now
+fully qualified:11,790 frozen results /four groups, seven independent contracts,
+all11 focused and135client/134server/135highres affected tests passed. C captures
+repeat byte-for-byte; client build and fresh warrior gameplay pass. All source
+fingerprints stayed unchanged. Production is still C; see
+[CLIENT_TOOLTIP.md](docs/porting/CLIENT_TOOLTIP.md).
 
-C remaining:88,212 /99 files /zero reference C (−362 from corrected baseline).
-Twenty-one C interfaces remain live; five private/unused interfaces are retired.
-Accumulated frozen coverage:424,490 results /1,115 groups, plus contracts.
+Scope: two item-hover text/cursor-storage routines /329 C lines. C remains88,212
+/99 files /zero reference C. Commit/push this baseline, then review/apply native
+integration draft in build/port-client-tooltip/integrate.py.stage, run focused
+comparison, all native qualification, docs/C LOC and commit/push. The drafts are
+not yet applied or qualified; do not substitute stale fixture drafts for source.
+Native-only contracts are drafted for Go callers and oversized-name truncation.
 
-Next: localized item-hover text and cursor tooltip storage, a connected329-line
-candidate. Ignored draft fixtures and owner audit are under
-`build/port-client-tooltip`; they are not qualified or applied yet. Continue C
-baseline, conversion, qualification, docs and commit/push. Do not rerun completed
-window integration/finalization scripts. No user question pending.
+Next connected candidate after tooltip completion: health/mana/potion/charge
+meters, audit only in build/port-client-meters/PLAN.md. No user question pending.
 Every Go shell sources build/baseline/env.sh; no Go/C edits during checks.
-Preserve original assets and archive.
+Preserve original assets and archive; do not rerun completed window scripts.
 
 <!-- /current-checkpoint -->
 
