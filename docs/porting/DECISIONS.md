@@ -728,3 +728,28 @@ exercise the boundary. Reversible and authorized; review the shared callback
 convention when the target ABI changes. Full failure evidence remains in the
 inventory-display build directory; qualification is complete as recorded in
 CLIENT_INVENTORY_DISPLAY.md.
+
+### Define the inventory trade-hit boolean before freezing C
+
+The inventory main mouse handler wrote only LOBYTE(v14) from sub_479880's bool
+return and then tested all of uninitialized v14. Assign the complete boolean
+word instead. The intended false path preserves the previous identified item;
+the true path selects the actual trade-grid item and stack code. Add direct
+contracts before freezing this batch. No C lines are added/removed. This is a
+small reversible decompilation correction under standing authorization; review
+with CLIENT_INVENTORY_WINDOW.md. Its C qualification is still pending.
+
+### Inventory window baseline: diagnostics and cancellation ownership
+
+The 34-routine window batch freezes actual owners and 2,120 results after a
+byte-identical repeat; authored minimal resources exercise the real parser and
+nine gameplay screens exercise the original assets. A broader identification
+mismatch did not reproduce in isolated/order/broader repeats. Keep the original
+hash and failure visible; automatic full failure capture now applies to display
+tests. Do not infer a cause from passing repeats. See CLIENT_INVENTORY_WINDOW.md.
+
+The source/ledger audit shows cancellation retains a temporary non-equipped drag
+drawable. Preserve that deterministic allocation behavior for this conversion,
+then fix it in a separate qualified Go cleanup chunk with lifetime contracts.
+This sequencing is reversible and recorded for review; no behavior is hidden
+from the frozen captures or pool checks.

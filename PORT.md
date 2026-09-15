@@ -14,15 +14,16 @@
 
 ## Current status
 
-Client inventory display and feedback are converted and fully qualified, following
-inventory transactions, queries and meters. Continue one connected batch at a time
-through C baseline, translation, qualification, docs, commit and push. Next is
-inventory window construction, input, scrolling and open/close lifecycle: 34
-routines / about 1,600 C lines, including an obsolete translation unit. See
+Client inventory display, transactions, queries and meters are converted. The
+inventory window/input/lifecycle C baseline is now qualified: 34 routines / about
+1,605 C lines, with 2,120 frozen results and a nine-screen gameplay scenario.
+Next translate and qualify that connected batch, then correct its documented
+cancellation allocation leak in a separate cleanup chunk. Continue through
+baseline, translation, qualification, docs, commit and push. See
 [PORTING_STATE.md](PORTING_STATE.md) and
-[the display report](docs/porting/CLIENT_INVENTORY_DISPLAY.md).
-An earlier isolated hallway qualification mismatch remains unexplained; future
-failures automatically preserve full captures under build/port-failures.
+[the window report](docs/porting/CLIENT_INVENTORY_WINDOW.md).
+An isolated hallway mismatch and a later identification-display mismatch remain
+unexplained; future failures automatically preserve full captures.
 
 ## Goal and target
 

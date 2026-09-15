@@ -63,8 +63,8 @@ type inventoryDisplayOwner struct {
 	language       func(int)
 }
 
-func newInventoryDisplayOwner(t *testing.T) *inventoryDisplayOwner {
-	o := &inventoryDisplayOwner{inventoryTransactionOwner: newInventoryTransactionOwner(t, "ArcherArrow", "ArcherBolt")}
+func newInventoryDisplayOwner(t *testing.T, extraNames ...string) *inventoryDisplayOwner {
+	o := &inventoryDisplayOwner{inventoryTransactionOwner: newInventoryTransactionOwner(t, append([]string{"ArcherArrow", "ArcherBolt"}, extraNames...)...)}
 	var restore func()
 	o.displayWords, restore = legacy.PortTestInventoryDisplayWords()
 	t.Cleanup(restore)
@@ -109,7 +109,7 @@ func newInventoryDisplayOwner(t *testing.T) *inventoryDisplayOwner {
 		}
 		entries = append(entries, strman.Entry{ID: strman.ID(id), Vals: []strman.Variant{{Str: text}}})
 	}
-	for _, pair := range [][2]string{{"StatsLevel", "Level %d"}, {"StatsEXP", "Experience %d / %d"}, {"StatsHealth", "Health"}, {"StatsMana", "Mana"}, {"StatsStrength", "Strength"}, {"StatsSpeed", "Speed"}, {"StatsArmor", "Armor"}, {"MinMaxFormat", "%d / %d"}, {"IdentifyItem", "Identify"}, {"IdentifyWeight", "Weight %d"}, {"IdentifyDurability", "Durability %d / %d"}, {"IdentifyDurabilityIndestructable", "Indestructible"}, {"IdentifyDurabilityNoDamage", "No damage"}, {"IdentifyDurabilitySlight", "Slight damage"}, {"IdentifyDurabilityModerate", "Moderate damage"}, {"IdentifyDurabilitySevere", "Severe damage"}, {"JournalModeTT", "Journal"}, {"InventoryModeTT", "Inventory"}, {"StatsModeTT", "Statistics"}, {"PaperDollModeTT", "Paper doll"}, {"CloseInventoryTT", "Close"}, {"Weapon2CantUse", "Cannot use secondary weapon"}, {"ElaborateNameFormat", "%s the %s"}} {
+	for _, pair := range [][2]string{{"WindowDir:Blank", ""}, {"thing.db:AnkhGUI", "Extra lives"}, {"GeneralPrint:TooltipKeyIcon", "Shared keys"}, {"OpenInventoryTT", "Open inventory"}, {"ToolTipWeapon2Area", "Secondary weapon"}, {"ObjectTooFar", "Object too far"}, {"NoObject", "No object"}, {"DropLabel", "Drop amount"}, {"Journal:QuestLabel", "Quest:"}, {"Journal:CompletedLabel", "Complete:"}, {"Journal:HintLabel", "Hint:"}, {"Journal:PortInventoryEntry", "A fixture journal entry with enough text to exercise the real wrapped text renderer across several lines."}, {"StatsLevel", "Level %d"}, {"StatsEXP", "Experience %d / %d"}, {"StatsHealth", "Health"}, {"StatsMana", "Mana"}, {"StatsStrength", "Strength"}, {"StatsSpeed", "Speed"}, {"StatsArmor", "Armor"}, {"MinMaxFormat", "%d / %d"}, {"IdentifyItem", "Identify"}, {"IdentifyWeight", "Weight %d"}, {"IdentifyDurability", "Durability %d / %d"}, {"IdentifyDurabilityIndestructable", "Indestructible"}, {"IdentifyDurabilityNoDamage", "No damage"}, {"IdentifyDurabilitySlight", "Slight damage"}, {"IdentifyDurabilityModerate", "Moderate damage"}, {"IdentifyDurabilitySevere", "Severe damage"}, {"JournalModeTT", "Journal"}, {"InventoryModeTT", "Inventory"}, {"StatsModeTT", "Statistics"}, {"PaperDollModeTT", "Paper doll"}, {"CloseInventoryTT", "Close"}, {"Weapon2CantUse", "Cannot use secondary weapon"}, {"ElaborateNameFormat", "%s the %s"}} {
 		add(pair[0], pair[1])
 	}
 	for _, pair := range [][2]string{{"StatsArmorLabel", "Armor"}, {"DollWeight", "Weight"}, {"DollRegionError", "No equipment region"}, {"ToolTipDrag", "Drag equipment here"}, {"WeaponDamageLabelNA", "Damage unavailable"}, {"WeaponDamageLabel", "Damage %.2f"}, {"WeaponDamageLabelUnknownPlus", "Damage %.2f + unknown"}, {"BaseDamageLabel", "Base %.2f"}, {"StrengthDamageLabel", "Strength %.2f"}, {"FireDamageLabel", "Fire %.2f"}, {"ElectricalDamageLabel", "Lightning %.2f"}, {"ArmorValueLabelNA", "Armor unavailable"}, {"ArmorValueLabel", "Armor %d"}, {"IdentifySpecialAttributes", "Special attributes"}, {"IdentifyUnknown", "Unknown"}, {"thing.db:IdentifyDescription", "Choose an item"}} {
@@ -119,6 +119,9 @@ func newInventoryDisplayOwner(t *testing.T) *inventoryDisplayOwner {
 		for _, level := range []int{-128, -1, 0, 1, 5, 10, 11, 127} {
 			add(fmt.Sprintf("experience:%s%d", name, level), fmt.Sprintf("Rank%d-%d", class, level))
 		}
+	}
+	for i := 0; i < 6; i++ {
+		add(fmt.Sprintf("Modifier.c:WindowEffect%d", i), fmt.Sprintf("Status effect %d", i))
 	}
 	t.Cleanup(o.c.srv.Server.PortTestInventoryDisplayBalance())
 	configure, restore := o.c.srv.Server.PortTestMeterStrings(entries...)
@@ -190,6 +193,10 @@ type inventoryDisplayResult struct {
 
 func (o *inventoryDisplayOwner) call(t *testing.T, id, op int, a, b, c uintptr) inventoryDisplayResult {
 	ret := legacy.PortTestInventoryDisplay(op, a, b, c)
+	return o.displaySnapshot(t, id, op, ret)
+}
+
+func (o *inventoryDisplayOwner) displaySnapshot(t *testing.T, id, op int, ret uint64) inventoryDisplayResult {
 	var returnedText string
 	if op == 11 && ret != 0 {
 		returnedText = alloc.GoString16((*uint16)(unsafe.Pointer(uintptr(ret))))
@@ -264,6 +271,19 @@ func inventoryDisplayCapture(t *testing.T, label string, rows []inventoryDisplay
 	h := fmt.Sprintf("%x", sha256.Sum256(b))
 	t.Logf("%s: %d results %s", label, len(rows), h)
 	if h != want {
+		// Preserve intermittent differences even when an explicit capture was not requested.
+		if os.Getenv("OPENNOX_INVENTORY_DISPLAY_CAPTURE") == "" {
+			const dir = "../build/port-failures"
+			if err := os.MkdirAll(dir, 0700); err != nil {
+				t.Logf("cannot create mismatch artifact directory: %v", err)
+			} else if f, err := os.CreateTemp(dir, "inventory-display-"+label+"-*.json"); err != nil {
+				t.Logf("cannot create mismatch artifact: %v", err)
+			} else {
+				_, writeErr := f.Write(b)
+				closeErr := f.Close()
+				t.Logf("full mismatch capture: %s (write error: %v; close error: %v)", f.Name(), writeErr, closeErr)
+			}
+		}
 		t.Fatalf("%s hash %s want frozen C %s", label, h, want)
 	}
 }

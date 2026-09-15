@@ -157,7 +157,7 @@ int sub_464BD0(int a1, int a2, unsigned int a3) {
 			}
 			if (sub_478030()) {
 				if (sub_479870()) {
-					LOBYTE(v14) = sub_479880(&v56);
+					v14 = sub_479880(&v56);
 					if (v14) {
 						dword_5d4594_1063116 = sub_4798A0(&v56);
 						return 1;

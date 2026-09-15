@@ -1,0 +1,176 @@
+//go:build porttest
+
+package legacy
+
+/*
+#include "defs.h"
+#include "GAME2_1.h"
+#include "client__gui__guiinv.h"
+int sub_467CA0(void);
+extern uint32_t dword_587000_136184;
+extern uint32_t dword_5d4594_1049796_inventory_click_column_index;
+extern uint32_t dword_5d4594_1049800_inventory_click_row_index;
+extern uint32_t dword_5d4594_1049804;
+extern uint32_t dword_5d4594_1049808;
+extern uint32_t dword_5d4594_1049844;
+extern uint32_t dword_5d4594_1049856;
+extern uint32_t dword_5d4594_1049864;
+extern uint32_t dword_5d4594_1049976;
+extern uint32_t dword_5d4594_1049992;
+extern uint32_t dword_5d4594_1049996;
+extern uint32_t dword_5d4594_1050008;
+extern nox_window* dword_5d4594_1062452;
+extern uint32_t dword_5d4594_1062456;
+extern uint32_t dword_5d4594_1062468;
+extern uint32_t dword_5d4594_1062476;
+extern uint32_t dword_5d4594_1062480;
+extern uint32_t dword_5d4594_1062488;
+extern uint32_t dword_5d4594_1062492;
+extern uint32_t dword_5d4594_1062496;
+extern uint32_t dword_5d4594_1062508;
+extern uint32_t dword_5d4594_1062512;
+extern uint32_t dword_5d4594_1062516;
+extern uint32_t dword_5d4594_1062520;
+extern uint32_t dword_5d4594_1062524;
+extern uint32_t dword_5d4594_1062528;
+extern uint32_t dword_5d4594_1062552;
+extern uint32_t dword_5d4594_1062556;
+extern uint32_t dword_5d4594_1062560;
+extern uint32_t dword_5d4594_1062564;
+extern uint32_t dword_5d4594_1063116;
+extern uint32_t dword_5d4594_1063120;
+extern uint32_t dword_5d4594_1063636;
+extern uint32_t dword_5d4594_1098624;
+extern uint32_t dword_5d4594_1098628;
+extern uint32_t dword_5d4594_1107036;
+extern uint32_t dword_5d4594_1047520;
+extern uint32_t dword_5d4594_2523804;
+extern uint32_t dword_5d4594_1309820;
+extern uint32_t dword_5d4594_1321228;
+extern nox_window* nox_wnd_quitMenu_825760;
+extern uint32_t dword_5d4594_1319056;
+extern uint32_t dword_5d4594_1319232;
+extern uint32_t dword_5d4594_1319236;
+extern uint32_t dword_5d4594_1319248;
+extern uint32_t dword_5d4594_1319260;
+extern uint32_t dword_5d4594_1319264;
+extern uint32_t dword_5d4594_1319268;
+extern uint32_t dword_5d4594_1320964;
+extern uint32_t dword_587000_183456;
+extern uint32_t dword_587000_183460;
+extern void* nox_gui_itemAmount_dialog_1319228;
+extern void* nox_gui_itemAmount_item_1319256;
+extern nox_window* nox_win_unk5;
+*/
+import "C"
+
+import "unsafe"
+
+func PortTestInventoryWindowWords() (map[string]*uint32, func()) {
+	words := map[string]*uint32{
+		"nox_gui_itemAmount_item_1319256":                   (*uint32)(unsafe.Pointer(&C.nox_gui_itemAmount_item_1319256)),
+		"nox_gui_itemAmount_dialog_1319228":                 (*uint32)(unsafe.Pointer(&C.nox_gui_itemAmount_dialog_1319228)),
+		"dword_587000_183460":                               (*uint32)(unsafe.Pointer(&C.dword_587000_183460)),
+		"dword_587000_183456":                               (*uint32)(unsafe.Pointer(&C.dword_587000_183456)),
+		"dword_5d4594_1320964":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1320964)),
+		"dword_5d4594_1319268":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1319268)),
+		"dword_5d4594_1319264":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1319264)),
+		"dword_5d4594_1319260":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1319260)),
+		"dword_5d4594_1319248":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1319248)),
+		"dword_5d4594_1319236":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1319236)),
+		"dword_5d4594_1319232":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1319232)),
+		"dword_5d4594_1319056":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1319056)),
+		"nox_wnd_quitMenu_825760":                           (*uint32)(unsafe.Pointer(&C.nox_wnd_quitMenu_825760)),
+		"dword_5d4594_1321228":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321228)),
+		"dword_5d4594_1309820":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309820)),
+		"dword_5d4594_2523804":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_2523804)),
+		"dword_5d4594_1047520":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047520)),
+		"dword_587000_136184":                               (*uint32)(unsafe.Pointer(&C.dword_587000_136184)),
+		"dword_5d4594_1049796_inventory_click_column_index": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049796_inventory_click_column_index)),
+		"dword_5d4594_1049800_inventory_click_row_index":    (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049800_inventory_click_row_index)),
+		"dword_5d4594_1049804":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049804)),
+		"dword_5d4594_1049808":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049808)),
+		"dword_5d4594_1049844":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049844)),
+		"dword_5d4594_1049856":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049856)),
+		"dword_5d4594_1049864":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049864)),
+		"dword_5d4594_1049976":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049976)),
+		"dword_5d4594_1049992":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049992)),
+		"dword_5d4594_1049996":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049996)),
+		"dword_5d4594_1050008":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1050008)),
+		"dword_5d4594_1062452":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062452)),
+		"dword_5d4594_1062456":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062456)),
+		"dword_5d4594_1062468":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062468)),
+		"dword_5d4594_1062476":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062476)),
+		"dword_5d4594_1062480":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062480)),
+		"dword_5d4594_1062488":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062488)),
+		"dword_5d4594_1062492":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062492)),
+		"dword_5d4594_1062496":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062496)),
+		"dword_5d4594_1062508":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062508)),
+		"dword_5d4594_1062512":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062512)),
+		"dword_5d4594_1062516":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062516)),
+		"dword_5d4594_1062520":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062520)),
+		"dword_5d4594_1062524":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062524)),
+		"dword_5d4594_1062528":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062528)),
+		"dword_5d4594_1062552":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062552)),
+		"dword_5d4594_1062556":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062556)),
+		"dword_5d4594_1062560":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062560)),
+		"dword_5d4594_1062564":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062564)),
+		"dword_5d4594_1063116":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1063116)),
+		"dword_5d4594_1063120":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1063120)),
+		"dword_5d4594_1063636":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1063636)),
+		"dword_5d4594_1098624":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1098624)),
+		"dword_5d4594_1098628":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1098628)),
+		"dword_5d4594_1107036":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1107036)),
+		"nox_win_unk5":                                      (*uint32)(unsafe.Pointer(&C.nox_win_unk5)),
+	}
+	old := make(map[string]uint32, len(words))
+	for n, p := range words {
+		old[n] = *p
+		*p = 0
+	}
+	return words, func() {
+		for n, p := range words {
+			*p = old[n]
+		}
+	}
+}
+
+func PortTestInventoryWindowCallbacks() []unsafe.Pointer {
+	return []unsafe.Pointer{
+		C.sub_462740,
+		C.sub_464BD0,
+		C.sub_466160,
+		C.sub_4661D0,
+		C.nox_xxx_inventroryOnHovewerSub_4667E0,
+		C.nox_xxx_inventoryDrawAllMB_463430,
+		C.sub_464770,
+		C.nox_xxx_XorEaxEaxSub_464BA0,
+		C.nox_xxx_inventoryWndProc_464BB0,
+		C.nox_xxx_clientTradeMB_4657E0,
+		C.sub_4658A0,
+		C.sub_465990,
+		C.sub_465CA0,
+		C.sub_465CD0,
+		C.sub_465DE0,
+		C.nox_xxx_wndCreateInventoryMB_465E00,
+		C.nox_xxx_movEax1Sub_4661C0,
+		C.sub_466220,
+		C.sub_466550,
+		C.sub_466620,
+		C.sub_466950,
+		C.sub_466BA0,
+		C.sub_466BF0,
+		C.sub_466C40,
+		C.sub_466ED0,
+		C.nox_xxx_inventoryLoadImages_467050,
+		C.sub_467650,
+		C.sub_467980,
+		C.sub_467BB0,
+		C.sub_467C10,
+		C.nox_client_toggleInventory_467C60,
+		C.sub_467C80,
+		C.sub_467CA0,
+		C.sub_467CD0,
+		C.sub_4625D0, C.sub_465D50_draw, C.nox_xxx_inventoryDrawProc_466580, C.sub_466E20, C.sub_466F50,
+	}
+}

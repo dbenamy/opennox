@@ -7,3 +7,8 @@ package blobdata
 func PortTestInventoryDisplayGeometry() []byte {
 	return append([]byte(nil), data587000[136192:136384]...)
 }
+
+// PortTestInventoryWindowGeometry includes the two inventory event exclusion rectangles.
+func PortTestInventoryWindowGeometry() []byte {
+	return append([]byte(nil), data587000[136192:136416]...)
+}
