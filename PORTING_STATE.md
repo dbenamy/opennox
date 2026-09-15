@@ -8,23 +8,42 @@ an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LO
 
 <!-- current-checkpoint -->
 
-## Current — slider conversion fully qualified
+## Current — radio-button ownership regression running
 
-Twelve routines moved to Go; 599 C lines removed. Production C is **90,879 /
-101 files / zero reference C**. All 26,692 results / four groups and independent
-contracts pass. Accumulated coverage is 375,818 results / 1,103 groups plus
-contracts. Six focused tests, accumulated720 (one optional skip), server86 /
-highres87, three builds/ABI, exact asset-suite comparison and fresh gameplay pass.
-See [CLIENT_SLIDERS.md](docs/porting/CLIENT_SLIDERS.md) and local
-build/port-client-sliders/qualification.json. Commit/push this conversion now.
-Do not rerun its integration script. Preserve the documented nonzero-minimum,
-vertical-image and float conversion behavior for later review.
+Slider conversion **f8530ba8** is committed and pushed. Twelve routines /599 C
+lines removed; all 26,692 captures, six focused tests, accumulated720, server86 /
+highres87, three builds/ABI, exact full-suite failure comparison and fresh gameplay
+pass. Production C: **90,879 /101 files /zero reference C**. Frozen accumulated
+coverage:375,818 results /1,103 groups plus independent contracts. Do not rerun
+slider integration/finalization scripts. See [CLIENT_SLIDERS.md](docs/porting/CLIENT_SLIDERS.md).
 
-Continue the next connected batch through baseline, translation, qualification,
-docs/C LOC and commit/push. Radio-button input, selection and rendering are the
-next connected UI candidate. No pending user question. Source build/baseline/env.sh
-for every Go command; do not edit Go/C during checks. Original assets/archive
-remain intact; completed duplicates have verified restoration manifests.
+Next radio scope: five callbacks /296 C lines plus a shared GUI lifecycle fix.
+Original ownership regression failed exactly as expected (169.821s). A separate
+contract also confirmed no deferred cleanup callbacks (18.731s). Audit found
+three causes: destroyed-window dispatch rejection, erased callback and radio's
+missing owned-data release; duplicate Destroy also used a status-filtered getter.
+GUI now captures a dedicated deferred cleanup callback, rejects repeat destruction,
+and invokes cleanup directly during FreeDestroyed. Radio's Go constructor releases
+its own data. Six focused tests pass (c-b21.614s; c-focus11.594s); 15,874 results /
+two groups repeat exactly. Slider allocation release and cleanup queued by another
+callback also pass. No radio C routines ported yet.
+
+Broad C qualification passes: accumulated726 (one optional skip), affected
+server92/highres93, C client build, fresh gameplay36.342s and exact full-suite
+failure comparison. All recorded source fingerprints remained unchanged.
+
+The additional callback-mutation contract is now applied as a separate file.
+Seven focused C tests pass in default/server/highres (22.093/21.219/22.452s). Existing C
+capture hashes are unchanged. Commit/push the GUI correction
+and radio C baseline, then review/apply native radio draft and qualify it. No
+radio C routines have been replaced yet. Do not edit source during checks.
+Applied ownership/fixture scripts are stale; do not rerun them. See
+[CLIENT_RADIO.md](docs/porting/CLIENT_RADIO.md). No pending user question.
+
+Continue baseline, conversion, qualification, docs/C LOC, commit/push and onward.
+No pending user question. No source edits while checks run; source baseline env
+for every Go command. Original assets/archive intact. More completed duplicate
+run assets have verified restoration manifests; about5GB disk is free.
 
 <!-- /current-checkpoint -->
 

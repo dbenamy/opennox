@@ -39,10 +39,11 @@ func WrapDrawFuncC(fnc unsafe.Pointer) WindowDrawFunc {
 }
 
 type windowExt struct {
-	GUI    *GUI
-	Func93 WindowFunc
-	Func94 WindowFunc
-	Draw   WindowDrawFunc
+	GUI     *GUI
+	Func93  WindowFunc
+	Func94  WindowFunc
+	Draw    WindowDrawFunc
+	destroy WindowFunc // retained only for deferred cleanup
 }
 
 type WidgetData interface {

@@ -550,3 +550,16 @@ convert through int64 then narrow to 32 bits, matching the hosted C behavior at
 numeric boundaries. Window image/color callbacks are chosen at construction,
 independently of later flag mutations. These are reversible compatibility choices
 to review later; see [CLIENT_SLIDERS.md](CLIENT_SLIDERS.md).
+
+## Deferred GUI cleanup and radio-owned data
+
+Fix the shared GUI lifecycle before freezing the radio C baseline: queued windows
+must retain their cleanup callback and receive it once from FreeDestroyed, even
+though ordinary events are rejected after destruction. Preserve deferred timing
+and queue order. Reject duplicate destruction using the actual dead/destroyed
+state, not a getter that hides that state. The radio Go constructor also releases
+its owned RadioButtonData. Independent failures reproduced the missing callback
+and leaked data; corrected contracts cover radio and slider allocation release,
+ordinary-event rejection, callback order and newly queued cleanup. This is a
+reversible correctness decision under the user's standing authorization, subject
+to broad qualification and later review. See [CLIENT_RADIO.md](CLIENT_RADIO.md).

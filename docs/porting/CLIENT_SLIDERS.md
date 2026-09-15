@@ -104,3 +104,13 @@ Accumulated frozen coverage is **375,818 results / 1,103 groups**, plus independ
 contracts. Local qualification.json records tests, binaries, captures and gameplay.
 
 Qualification counts: accumulated 720, affected server 86 / highres 87. Fresh gameplay completed in 35.874s. All 1,460 source fingerprints remained unchanged during qualification.
+
+
+## Subsequent GUI lifecycle finding
+
+The radio-widget audit found that the shared GUI suppressed deferred destruction
+callbacks. The slider port's equivalence tests exercised window destruction but
+did not independently assert allocation release, so they preserved that existing
+leak. A later allocation-liveness contract now checks release for both slider
+orientations, alongside the shared dispatch correction. See
+[CLIENT_RADIO.md](CLIENT_RADIO.md) for qualification of that separate correction.
