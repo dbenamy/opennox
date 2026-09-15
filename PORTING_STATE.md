@@ -9,33 +9,31 @@ estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.m
 
 <!-- current-checkpoint -->
 
-## Current — scoreboard Go conversion qualified
+## Current — minimap C baseline development
 
-C baseline **73017352 is committed/pushed**. The connected Go conversion is fully
-qualified and ready to commit/push: all **2,137 frozen results / eighteen groups**
-match, affected tests and the post-review fifteen-root family pass in all three
-targets. All production builds/ABI, exact full-assets known failures, five hosted
-scoreboard states and eight chapter frames pass. See
-[SCOREBOARD.md](docs/porting/SCOREBOARD.md). C remaining: **77,120 / 91 / zero reference C**.
+Scoreboard conversion **ddf44816 is committed/pushed**. It removes 31 routines /
+1,537 C lines; **77,120 / 91 files / zero reference C** remain. All 2,137 frozen
+results match, affected and post-review family tests pass in all three targets,
+production builds/ABI and exact full-assets known failures pass, and five hosted
+plus eight chapter gameplay checkpoints match. See [SCOREBOARD.md](docs/porting/SCOREBOARD.md).
 
-All readers joined. Broad qualification's production source is identical to the
-post-review tree; only the test adapter changed to invoke its two empty callbacks
-directly. No golden changes. Logs, hashes, source fingerprints, binaries and
-qualification manifests are under build/port-scoreboard. Native and applied fixture
-stage files are stale: do not rerun their integration/freeze scripts.
+Original C baseline now has **1,599 frozen results / ten root tests**, all passing
+in development-g (190.053s). Seventeen routines / 734 function-block lines,
+including private AI-debug monster iterators. See [MINIMAP.md](docs/porting/MINIMAP.md).
+Fresh twelve-frame minimap gameplay repeated independently (51.050s), updates false.
+Three-target affected C qualification completed: **206 / 205 / 206 selected roots**
+(default/server/highres), all started/completed with the one expected prerequisite
+skip. Times112.869/211.633/117.658s; all1,599 hashes match. Production fingerprints
+match ddf44816; reuse its builds/full-assets qualification. No readers active.
+Commit/push this qualified C baseline, then apply/review the Go draft in
+build/port-minimap/*-native.go.stage using apply-native.py. Production translation
+is not yet applied. Earlier fixture stages are stale; do not overwrite current
+sources. No question pending; continue autonomously.
 
-Next commit/push this conversion, then establish the actual-owner C baseline for
-the connected minimap renderer: fifteen routines / 696 function-block lines.
-Read build/port-minimap/README.md and its scope/caller audit. Its dispatch/primitive
-fixture drafts are **unapplied/uncompiled**, with empty development expectations;
-add meaningful full renderer, wall/player/team/objective, polygon/visibility and
-fresh gameplay coverage before freezing. No question pending; continue autonomously.
-
-The last full accumulated milestone was the briefing-window conversion 0b3ed13d.
-Highres root took 598.823s; give the next full-corpus run a longer explicit timeout.
-Following batches use the documented affected-corpus policy until that milestone.
-Original assets/archive remain unchanged. Derived cache pruning and gameplay
-asset deduplication manifests are retained locally.
+The last full accumulated milestone was briefing-window 0b3ed13d; highres root
+598.823s means the next complete-corpus run needs a longer explicit timeout.
+Original assets/archive unchanged. Logs, screenshots, binaries, source fingerprints
+and qualification manifests remain in ignored build/ for local recovery.
 
 <!-- /current-checkpoint -->
 

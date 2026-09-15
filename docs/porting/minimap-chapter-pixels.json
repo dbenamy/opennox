@@ -1,0 +1,75 @@
+{
+  "baseline_production_revision": "ddf44816",
+  "scenario": "docs/porting/minimap-chapter.yaml",
+  "pixel_format": "tightly packed row-major NRGBA bytes",
+  "environment": {
+    "GODEBUG": "randautoseed=0",
+    "Xvfb": "1280x960x24",
+    "ALSOFT_DRIVERS": "null"
+  },
+  "frames": {
+    "after_walk.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "32a18672dd49064bb512016d622b53083b0bd1c7f2d5ae8cf8c6d31b227f457e"
+    },
+    "chapter_frame_1.png": {
+      "bounds": "(0,0)-(640,480)",
+      "sha256": "02dbfe9f86365d4798174f322bb951b3fafc687d75ba01829cdccb23a3709e9e"
+    },
+    "chapter_frame_10.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "2edc0d4a9645a4d9ad94316c18a4ff4c3d325d26f8cdff6c30f1dea032fd7747"
+    },
+    "chapter_frame_15.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "d20c0281a9c15e32dce0577deed2d2d0ed9029c5ffe0e9f4ab272a16074982c5"
+    },
+    "chapter_frame_20.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "bd772e17c2c47bcbba0c14f87b354db6f6097ac3dd0bcc5d169e49c3bfed8c8d"
+    },
+    "chapter_frame_30.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "2094558e0ce4fa9ee006ab95bd96725efaf240192066333ad005d88971056541"
+    },
+    "chapter_frame_5.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "d2cdb07798b599560e35abad5e4f87f4205ee60e72e14d850b9590f801080978"
+    },
+    "gameplay.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "0a113a2a37440e95c4e457e2771d36aa14de1d50becc806273b5db4e91a827ee"
+    },
+    "minimap_closed.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "009803cd824fafb93f75e26f60c2a076f6a68c0b1bee281fb7407350d4ea6b00"
+    },
+    "minimap_default.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "4e964ff83bccdd9f111a60f81e721452c5aa6802041ef3ca00eacda7e308cd62"
+    },
+    "minimap_zoom_in.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "b2d90fb763a58e88c3a1a84200e3ee9b7d9208070615e27afae38069cf5c8542"
+    },
+    "minimap_zoom_out.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "c8a93787efe3b959066832371d75d8e71f6ccdc75691ab60b090be241658ed9a"
+    }
+  },
+  "evidence": {
+    "capture": "client-minimap-develop",
+    "independent_repeat": "client-minimap-c-repeat",
+    "repeat_seconds": 51.05032317794394,
+    "updates_disabled": true,
+    "visually_inspected": [
+      "minimap_default",
+      "minimap_zoom_in",
+      "minimap_zoom_out",
+      "minimap_closed"
+    ]
+  },
+  "limits": [
+    "Solo warrior scene; populated team/objective/debug/floor branches require actual-owner fixtures."
+  ]
+}

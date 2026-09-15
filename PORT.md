@@ -20,8 +20,9 @@ scoreboard/rank presentation are converted. The latest scoreboard batch removes
 three targets. Affected tests, production builds/ABI, exact known-failure comparison
 and fresh hosted/chapter gameplay passed. About **77k C lines remain**:
 **77,120 physical lines in 91 production files**, with zero test-reference C.
-Next: the connected minimap renderer and helpers, **15 routines / 696 C
-function-block lines**, starting with actual-owner C baseline fixtures.
+Active: the connected minimap renderer and helpers, **17 routines / 734 C
+function-block lines**. Its **1,599 frozen C results** pass across all three
+targets, and twelve fresh gameplay frames repeat exactly; translate next.
 See [the scoreboard report](docs/porting/SCOREBOARD.md) and
 [PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain
