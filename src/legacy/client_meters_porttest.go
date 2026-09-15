@@ -14,16 +14,17 @@ import (
 	"unsafe"
 )
 
-// PortTestMeterCall enters the production C ABI; fixtures own all inputs.
+// PortTestMeterCall enters retained C ABIs or private native helpers after their
+// last C caller is removed; fixtures still own the actual production state.
 func PortTestMeterCall(op int, w *gui.Window, a, b, c, d int) uint32 {
 	switch op {
 	case 0:
-		return uint32(C.nox_xxx_playerGet_470A90())
+		return uiMeterMode()
 	case 1:
 		C.nox_xxx_cliShowHideTubes_470AA0(C.int(a))
 		return 0
 	case 2:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_guiHealthManaColorInit_470B00())))
+		return uint32(uintptr(uiMeterInitColors()))
 	case 3:
 		return uint32(C.sub_470C40(C.int(a)))
 	case 4:
@@ -48,7 +49,7 @@ func PortTestMeterCall(op int, w *gui.Window, a, b, c, d int) uint32 {
 	case 13:
 		return uint32(C.nox_xxx_cliGetMana_470DD0())
 	case 14:
-		return uint32(C.sub_470DE0())
+		return uint32(uiMeterHeartbeat())
 	case 15:
 		return uint32(C.sub_470E90(C.int(uintptr(w.C())), C.int(a)))
 	case 16:
@@ -67,9 +68,9 @@ func PortTestMeterCall(op int, w *gui.Window, a, b, c, d int) uint32 {
 	case 22:
 		return uint32(C.nox_xxx_drawHealthManaBar_471C00(C.int(uintptr(w.C()))))
 	case 23:
-		return uint32(C.sub_472080())
+		return uint32(uiMeterAdvanceCharge())
 	case 24:
-		return uint32(C.sub_4720C0(C.int(a), C.int(b)))
+		return uint32(uiMeterCross(a, b))
 	case 25:
 		return uint32(C.nox_xxx_guiHealthManaTubeProc_472100(C.int(uintptr(w.C())), C.int(a)))
 	case 26:
@@ -77,13 +78,13 @@ func PortTestMeterCall(op int, w *gui.Window, a, b, c, d int) uint32 {
 	case 27:
 		return uint32(C.nox_xxx_cliPrepareGameplay2_4721D0())
 	case 28:
-		C.nox_client_quickHealthPotion_472220()
+		uiMeterQuickPotion(0)
 		return 0
 	case 29:
-		C.nox_client_quickManaPotion_472240()
+		uiMeterQuickPotion(1)
 		return 0
 	case 30:
-		C.nox_client_quickCurePoisonPotion_472260()
+		uiMeterQuickPotion(2)
 		return 0
 	case 31:
 		return uint32(uintptr(unsafe.Pointer(C.sub_472280())))
@@ -94,7 +95,7 @@ func PortTestMeterCall(op int, w *gui.Window, a, b, c, d int) uint32 {
 	case 34:
 		return uint32(C.sub_471160(C.int(uintptr(w.C())), C.int(a), C.int(b), C.int(c), C.int(d)))
 	case 35:
-		return uint32(C.nox_xxx_guiHealthManaInit_4714E0())
+		return uint32(uiMeterInit())
 	case 36:
 		return uint32(C.nox_xxx_guiHealthManaTubeDraw_471D10(C.int(uintptr(w.C()))))
 	default:

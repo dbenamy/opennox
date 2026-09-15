@@ -635,5 +635,21 @@ The corresponding tube already has an empty-state branch, and newly cleared
 meter records have a zero maximum. Preserve existing nonzero-maximum arithmetic.
 Check the empty case explicitly through both draw paths. Both choices are local,
 reversible and made under the user's standing authorization; review them later.
-They do not change physical C LOC. Qualification is still in progress; this entry
-records the decisions, not completed acceptance evidence.
+They do not change physical C LOC. Both corrections passed C-baseline and native
+qualification; see CLIENT_METERS.md for the completed evidence.
+
+
+## Meter combined tooltip storage — review later
+
+The original weapon/quiver tooltip concatenates into mapped UTF16 storage at
+5D4594+1091968; the next live field, a poison color, is at+1092992. The native
+assembler keeps the text within512 units including its terminator. Ordinary
+C-baseline names are unchanged. A native-only900-character name contract checks
+511 stored characters, the255-character cursor bound, and an unchanged adjacent
+color. The oversized original C write is outside the buffer and is not executed
+as an oracle. This follows the preceding item-tooltip bounded-assembly decision.
+
+Move the private seven20-byte meter records into a Go array. The caller audit
+found no remaining C consumer outside the converted batch. Keep only actual
+remaining C callers and callback interfaces; the fixture borrows the native
+owner after conversion instead of retaining an otherwise-unused C array.

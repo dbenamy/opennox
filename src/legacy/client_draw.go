@@ -58,7 +58,7 @@ func Sub_437100() {
 }
 
 func Sub_470DE0() {
-	C.sub_470DE0()
+	uiMeterHeartbeat()
 }
 
 func Nox_xxx_clientEnumHover_476FA0() {

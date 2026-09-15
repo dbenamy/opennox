@@ -14,13 +14,13 @@
 
 ## Current status
 
-Localized item-hover names and cursor tooltip storage are converted and fully
-qualified, following window helpers and the widget batches. Continue autonomous
-porting one connected batch at a time through qualification, docs, commit and
-push. The health/mana, potion, weapon and charge-meter C baseline is now qualified;
-convert that connected batch next.
+The health/mana, potion, weapon and charge meters are converted and fully
+qualified, following localized tooltips, window helpers and the widget batches.
+Continue autonomous porting one connected batch at a time through qualification,
+docs, commit and push. The next audited scope is client inventory queries and
+related state, reusing the meter owners.
 See [PORTING_STATE.md](PORTING_STATE.md) for the checkpoint and C count, and
-[the tooltip report](docs/porting/CLIENT_TOOLTIP.md) for evidence.
+[the meter report](docs/porting/CLIENT_METERS.md) for evidence.
 
 ## Goal and target
 

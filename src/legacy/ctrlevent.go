@@ -126,15 +126,15 @@ func Nox_client_invAlterWeapon_4672C0() {
 }
 
 func Nox_client_quickHealthPotion_472220() {
-	C.nox_client_quickHealthPotion_472220()
+	uiMeterQuickPotion(0)
 }
 
 func Nox_client_quickManaPotion_472240() {
-	C.nox_client_quickManaPotion_472240()
+	uiMeterQuickPotion(1)
 }
 
 func Nox_client_quickCurePoisonPotion_472260() {
-	C.nox_client_quickCurePoisonPotion_472260()
+	uiMeterQuickPotion(2)
 }
 
 func Nox_client_spellSetNext_4604F0() {

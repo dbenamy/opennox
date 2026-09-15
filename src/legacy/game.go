@@ -421,7 +421,7 @@ func Nox_xxx_cliPrepareGameplay1_460E60() int {
 	return int(C.nox_xxx_cliPrepareGameplay1_460E60())
 }
 func Nox_xxx_cliPrepareGameplay2_4721D0() {
-	C.nox_xxx_cliPrepareGameplay2_4721D0()
+	nox_xxx_cliPrepareGameplay2_4721D0()
 }
 func Sub_4951C0() {
 	C.sub_4951C0()
@@ -463,7 +463,7 @@ func Sub_456070() int {
 	return int(C.sub_456070())
 }
 func Nox_xxx_guiHealthManaInit_4714E0() int {
-	return int(C.nox_xxx_guiHealthManaInit_4714E0())
+	return uiMeterInit()
 }
 func Nox_xxx_bookInit_45B9D0() int {
 	return int(C.nox_xxx_bookInit_45B9D0())
@@ -645,7 +645,7 @@ func Sub_4AB4D0(a1 int) {
 	C.sub_4AB4D0(C.int(a1))
 }
 func Sub_4721A0(a1 int) {
-	C.sub_4721A0(C.int(a1))
+	sub_4721A0(a1)
 }
 func Sub_460EA0(a1 int) {
 	C.sub_460EA0(C.int(a1))

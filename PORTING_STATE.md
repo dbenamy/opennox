@@ -2,38 +2,41 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 88k lines** — exactly **87,888 physical lines** in
-98 production `.c` files, with zero test-reference C. This is source size, not
+**Rough C remaining: about 87k lines** — exactly **86,818 physical lines** in
+97 production `.c` files, with zero test-reference C. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — meter C baseline qualified
+## Current — meters complete; inventory queries next
 
-Tooltip conversion is committed/pushed as `f0b47113`; no tooltip work remains.
-The next connected meter batch has37 routines /1,069 C lines, plus its private
-seven-record array. The C baseline is fully qualified:3,858 frozen results in11
-groups,12 independent contracts,160client/159server/160highres tests, production
-client build/ABI, exact known full-suite failures, and fresh warrior plus repeated
-wizard HUD gameplay. See [CLIENT_METERS.md](docs/porting/CLIENT_METERS.md).
+The meter conversion is fully qualified. C baseline `025ef4ff` preserves the
+original algorithms and corrected fixture inputs. The native batch removes 37
+routines and their private seven-record array: 1,070 C lines. All 3,858 frozen
+results / 11 groups match, and 13 independent contracts pass. Accumulated client,
+server and highres runs pass all 794 / 160 / 161 selected root tests. Three
+production binaries retain 28 required C interfaces, retire 10 symbols, and
+contain no test helpers. Full asset suite has the exact known 1,553 failure
+entries (15 pass / 3 fail / 32 skip packages). Fresh warrior and wizard HUD
+comparisons pass in 36.491s / 38.558s. All 1,517 source fingerprints are unchanged.
+See [CLIENT_METERS.md](docs/porting/CLIENT_METERS.md) for evidence and limitations.
+C remaining: 86,818 physical lines / 97 files / zero reference C.
 
-Production remains C with the recorded label-capacity and zero-maximum bar
-corrections. Four conditional sound-observer lines account for the C-count
-increase to87,888; production contains no observer symbol. No C reference
-algorithms were added. All qualification drivers have finished; source edits
-are allowed. The committed expectations include the repaired poison-overlay
-owner and visible label pixels, not the earlier incomplete fixture captures.
+Next: client inventory queries and related state. Ignored scope/caller audit and
+ABI drafts are under build/port-client-inventory: 31 routines / 396 C lines,
+including equipped/stack searches, counts, durability/charge updates and scalar
+controls. Exclude the larger inventory-mode transition sub_467650. Reuse meter
+owners. Before freezing, correct sub_461EF0's inclusive row limit: it iterates
+through row21 despite declared rows0..20. Cover the extra valid21st row, visible
+20-row coordinate limits, duplicate search order, stack boundaries and owned
+pointer returns. No inventory source edits have been applied at this checkpoint.
 
-Next: commit/push this baseline, integrate/review the four ignored native drafts
-under build/port-client-meters/client_ui_meters_*.go.stage, compare against the
-frozen oracle, qualify, update C LOC, commit/push and continue. The draft moves
-the private meter array into Go and retires unnecessary C exports. Review the
-combined weapon/quiver tooltip's512-unit bound with a native regression check.
-Drafts are not applied or accepted source. No user question is pending.
-
-Every Go shell sources build/baseline/env.sh. Do not edit Go/C while tests/builds
-run. Preserve original assets and archive. Completed tooltip/window/meter C
-qualification and gameplay scripts must not be rerun merely to resume work.
+No user question is pending. Continue through baseline, conversion, qualification,
+docs, commit and push. Every Go shell sources build/baseline/env.sh; no Go/C edits
+during tests/builds. Preserve original assets and archive. Completed meter,
+tooltip and window qualification must not be rerun merely to resume. Final meter
+evidence is build/port-client-meters/qualification.json. Development drafts are
+historical; actual source is authoritative.
 
 <!-- /current-checkpoint -->
 

@@ -1,8 +1,42 @@
 # Health, mana, potion, weapon and charge meters
 
-Status: corrected C baseline qualified and ready for conversion. Production is
-still C. All3,858 results /11 groups are frozen and match isolated and wider
-runs;12 independent contracts also pass.
+Status: converted and fully qualified. All 3,858 frozen results / 11 groups
+match the C baseline, with 13 independent contracts. The corrected C baseline
+is recoverable at `025ef4ff`; no C algorithms remain solely for tests.
+
+## Native qualification
+
+| Check | Result |
+| --- | --- |
+| Focused native tests | 24 passed, 171.061s; all frozen hashes unchanged |
+| Accumulated client tests | 794 passed, 424.588s |
+| Server variant | 160 passed, 181.789s |
+| Highres variant | 161 passed, 83.380s |
+| Three production binaries | ELF32/i386, CGO, SSE2; 28 native C interfaces, 10 retired symbols, no test helpers |
+| Full asset suite | Exact 1,553-entry known failure multiset; 15 pass / 3 fail / 32 skip packages |
+| Fresh warrior gameplay | Passed, 36.491s; reference comparison enabled |
+| Fresh wizard dialogue and HUD | Passed, 38.558s; reference comparison enabled |
+| Source integrity | 1,517 Go/C/header fingerprints unchanged throughout qualification |
+| C reduction | 1,070 lines removed; 86,818 remain in 97 files; zero reference C |
+
+State, drawing, item interactions and construction now live in four legacy Go
+files. The private seven-record array is Go-owned. Retained exports serve real
+C callers or callbacks; Go callers use native helpers. The additional native
+storage contract covers bounded combined weapon/quiver text and padded binding
+labels. Qualification preserves all defined frozen behavior. Headless checks
+use Xvfb and null audio; physical display and audible output remain release
+checks. The elapsed test/build times are not runtime performance measurements.
+
+Evidence: build/port-client-meters/qualification.json, native-capture-comparison.json,
+native-source-fingerprints.json, binary-verification.json and native-*.jsonl;
+fresh gameplay artifacts are baseline/runs/client-meters-port and
+baseline/runs/client-meters-wizard-native. Verified duplicate assets from the
+completed warrior run are recoverable using its deduplication manifest. Total
+accumulated frozen coverage is 440,138 results / 1,130 groups, plus contracts.
+
+The accumulated run briefly appeared stalled because the diagnostic log was
+buffered. A read-only stack sample and later completion record confirmed the
+projectile case passed in 0.23s; no source correction or rerun was needed.
 
 ## C baseline qualification
 
@@ -26,7 +60,7 @@ these qualification times.
 
 No C algorithms are retained solely for tests. The sound observer records IDs
 and volumes, then continues the actual implementation; it is absent from the
-production binary. C count is87,888 /98 files /zero reference C. Conversion will
+production binary. At the C baseline, the count was 87,888 / 98 files / zero reference C. Conversion would
 also move the private seven-record array into Go: the caller audit found no
 remaining C consumer outside this batch.
 
@@ -164,6 +198,23 @@ The first differing fields were solely image-observer output positions after a
 nil poison-image draw (0,0 versus31,28). Pixels, bubble state and RNG were identical.
 The plain poisoned-tube case had omitted the actual image owner. It now supplies
 the owned poison overlay, so this case exercises a real image draw. c-o changes
-only that group; its new input/capture is being checked in wider run c-p. The
+only that group; its new input/capture matched in the completed wider run c-p. The
 original k/l captures remain available; this is an explicit fixture-input repair,
 not a change to C or a golden update hiding a port discrepancy.
+
+
+## Native conversion development
+
+Baseline `025ef4ff` is pushed. The native implementation replaces 37 routines and
+the private meter array, removing 1,070 C lines (86,818 remain in 97 files).
+Nine now-private functions and the C array symbol are retired; 28 genuine C
+caller/callback interfaces remain. Go wrappers call native helpers directly.
+The first native discovery exposed Go's *_windows.go platform-name rule; the
+constructor file is now *_construct.go. Native-b passed all 24 selected tests in
+171.061s, including every frozen group and 13 independent contracts. The
+accumulated run passed all 794 selected root tests in 424.588s.
+
+Keep the frozen baseline unchanged. The bounded combined tooltip is the only
+additional intentional behavior correction: names that would exceed the old
+512-unit buffer terminate inside it, with the neighboring color preserved.
+A native-only contract covers that undefined-old-C boundary and binding padding.

@@ -203,7 +203,7 @@ func Sub_461450() int {
 }
 
 func Nox_xxx_cliShowHideTubes_470AA0(v int) {
-	C.nox_xxx_cliShowHideTubes_470AA0(C.int(v))
+	nox_xxx_cliShowHideTubes_470AA0(v)
 }
 
 func Sub_51DED0() int {

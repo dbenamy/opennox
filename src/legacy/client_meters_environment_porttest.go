@@ -5,7 +5,6 @@ package legacy
 /*
 #include "defs.h"
 extern int nox_win_width, nox_win_height;
-extern nox_window_yyy nox_windows_arr_1093036[7];
 extern uint32_t dword_5d4594_1090276;
 extern uint32_t dword_5d4594_1090280;
 extern uint32_t dword_5d4594_1090284;
@@ -85,7 +84,7 @@ func PortTestNewMeterEnvironment() *PortTestMeterEnvironment {
 	for _, p := range e.named {
 		e.saved = append(e.saved, *p)
 	}
-	e.Records = unsafe.Slice((*PortTestMeterRecord)(unsafe.Pointer(&C.nox_windows_arr_1093036[0])), 7)
+	e.Records = unsafe.Slice((*PortTestMeterRecord)(unsafe.Pointer(&uiMeterRecords[0])), 7)
 	e.oldRecords = append([]PortTestMeterRecord(nil), e.Records...)
 	// Complete meter/potion storage, charge-raster row state, and cursor text.
 	// Mapped embedded potion drawables are not ordinary sprite-pool allocations.
