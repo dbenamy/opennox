@@ -25,8 +25,8 @@ recur in hallway-alone, inventory-plus-hallway, the exact 380-test preceding
 prefix, or the complete 805-test repeat. Its cause remains **unexplained**; it is
 not claimed fixed or attributed to scheduling. No inventory code, test input or
 expected hash changed during this investigation. Keep the failure and repeat
-evidence and investigate any recurrence. A separate diagnostic follow-up will
-save full hallway mismatch captures automatically.
+evidence and investigate any recurrence. A separate diagnostic follow-up now
+saves full hallway mismatch captures automatically.
 
 Evidence: build/port-client-inventory/native-qualification.json includes the
 initial failure and all isolation results; native-capture-comparison.json,
@@ -137,3 +137,13 @@ With identical source, hallway-alone passes in19.840s and inventory-plus-hallway
 passes all12 selected tests in20.754s. The exact380-test preceding prefix passed in193.911s, then the complete805-test
 repeat passed in420.943s with full hallway captures. All three hallway groups
 matched the original hashes. Frozen expectations remain unchanged.
+
+## Hallway diagnostic follow-up
+
+Inventory conversion `019a5d26` is pushed. A separate test-only change preserves
+full JSON automatically under build/port-failures on hallway hash mismatches when
+no explicit capture prefix is set. Artifact creation/write failures are reported
+alongside the original mismatch; the comparison remains mandatory. The original
+route capture still passes in30.441s. Production code and C LOC are unchanged.
+This improves future evidence collection; it does not claim to fix the unexplained
+first qualification mismatch.

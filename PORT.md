@@ -18,8 +18,8 @@ Client inventory queries and state are converted and qualified, following the
 health/mana, potion, weapon and charge meters. Continue autonomous porting one
 connected batch at a time through qualification, docs, commit and push. The next
 audited scope is about 1,000 C lines of inventory stack/equipment transactions,
-reusing the existing owners. First add the planned hallway failure-capture
-follow-up; an isolated qualification mismatch remains documented for review.
+reusing the existing owners. An isolated qualification mismatch remains documented for review; future
+hallway mismatches automatically preserve full captures under build/port-failures.
 See [PORTING_STATE.md](PORTING_STATE.md) for the checkpoint and C count, and
 [the inventory report](docs/porting/CLIENT_INVENTORY.md) for evidence.
 

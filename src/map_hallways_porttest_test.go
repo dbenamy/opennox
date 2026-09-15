@@ -99,6 +99,19 @@ func hallwayCapture(t *testing.T, label string, cases []legacy.PortTestPaintSpec
 	}
 	got := fmt.Sprintf("%x", sha256.Sum256(data))
 	if got != want {
+		// Preserve intermittent failures even when capture was not requested.
+		if os.Getenv("OPENNOX_MAP_HALLWAYS_CAPTURE") == "" {
+			const dir = "../build/port-failures"
+			if err := os.MkdirAll(dir, 0700); err != nil {
+				t.Logf("cannot create mismatch artifact directory: %v", err)
+			} else if f, err := os.CreateTemp(dir, "map-hallways-"+label+"-*.json"); err != nil {
+				t.Logf("cannot create mismatch artifact: %v", err)
+			} else {
+				_, writeErr := f.Write(data)
+				closeErr := f.Close()
+				t.Logf("full mismatch capture: %s (write error: %v; close error: %v)", f.Name(), writeErr, closeErr)
+			}
+		}
 		t.Fatalf("%s complete capture differs from C: got %s want %s", label, got, want)
 	}
 	t.Logf("%s: %d cases %x", label, len(cases), sha256.Sum256(data))

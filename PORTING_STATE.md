@@ -8,10 +8,10 @@ an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LO
 
 <!-- current-checkpoint -->
 
-## Current — inventory queries complete; diagnostics and transactions next
+## Current — inventory queries and diagnostics complete; transactions next
 
 Meter conversion `30553db2` is pushed. The subsequent inventory-query conversion
-is qualified, with C baseline `0d563b10`. It removes 31 routines / 396 C lines:
+`019a5d26` is qualified and pushed, with C baseline `0d563b10`. It removes 31 routines / 396 C lines:
 86,422 C lines remain in 97 files, with zero reference C. Five obsolete C
 interfaces retire; 26 genuine interfaces remain. All 7,137 frozen results match,
 and 11 focused tests pass. Final accumulated/server/highres runs pass all
@@ -26,11 +26,13 @@ repeat all passed without source or golden changes. Full final evidence,
 including the first failure, is build/port-client-inventory/native-qualification.json.
 Do not silently discard this limitation or change the oracle on recurrence.
 
-Next, after committing/pushing the inventory conversion: apply the ignored
-add-hallway-failure-capture.py follow-up, check it and commit/push separately.
-It adds failure diagnostics only; C LOC stays unchanged. Then continue the next
-connected batch: build/port-client-inventory-transactions has a26-routine /
-1,023-C-line candidate scope and caller/owner notes. It covers actual stack,
+The hallway diagnostic follow-up is applied and checked: the original route
+capture passes in30.441s. Failed comparisons now save full JSON automatically
+under build/port-failures unless an explicit capture prefix was provided. Only
+test-failure diagnostics changed; no algorithm/golden changes, and C LOC is
+unchanged. Commit/push this follow-up, then continue the next connected batch:
+build/port-client-inventory-transactions has a26-routine /1,023-C-line candidate
+scope and caller/owner notes. It covers actual stack,
 allocation/deletion, compaction, equipment and item-request state. No transaction
 source changes are applied. Fix pickup's uninitialized existing-stack coordinates
 before freezing; use actual allocator ownership and conservation contracts.
