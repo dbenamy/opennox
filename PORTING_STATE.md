@@ -10,43 +10,29 @@ an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LO
 
 <!-- current-checkpoint -->
 
-## Current — shop UI conversion qualified
+## Current — journal C baseline qualified; ready to commit
 
-C baseline **fbc11484 is committed/pushed**. Native conversion removes all 42
-shop routines / 1,110 C lines. All 1,299 frozen results / 25 groups match Go.
-Independent first focused 31 roots pass; accumulated default 940, affected server
-377 and highres 379 roots pass. Three production binaries are ELF32/i386/SSE2/CGO,
-with 18 retained Go-backed interfaces, 24 retired absent, no test helpers.
-Full assets retain exactly 1,553 known failures and 15/3/32 package outcomes.
-Fresh unchanged inventory nine-screen (51.938s) and shop ten-screen
-(75.847s) comparisons pass, updates disabled. All 1619 source
-fingerprints stayed unchanged. Every reader/build/gameplay job is joined.
+Shop UI conversion **31ec1393 is committed/pushed**, against C baseline fbc11484.
+C remains **80,263 / 94 files / zero reference C**.
 
-**C remaining: 80,263 lines / 94 files / zero reference C.** See
-[CLIENT_SHOP_UI.md](docs/porting/CLIENT_SHOP_UI.md), C_LOC.md and DECISIONS.md.
-Four pre-baseline C corrections cover capacity, affordability and quantity
-ownership. Gameplay uses an empty generic merchant and exercises priced sell
-quantity; stocked purchase/repair quantity use the real-owner fixtures.
-Tracked shop-ui.yaml and shop-ui-pixels.json support recovery from baseline.
+Journal scope: **11 routines / 339 removable C lines**. Production is unchanged.
+C baseline development passed eleven roots; three affected-corpus runs passed
+245 default / 243 server / 245 highres roots, with all 717 results / ten groups
+identical. All source fingerprints unchanged; production-identical shop evidence
+reused for baseline builds/full-assets/gameplay. Expectations are now frozen.
+Locked C repeat passed all eleven roots in 22.837s; all reader jobs joined.
+Next commit/push baseline, apply reviewed drafts, qualify native and commit/push.
+See [JOURNAL.md](docs/porting/JOURNAL.md). build/port-journal/apply-native.py requires
+c-baseline-commit.json; native Go and export/dispatcher drafts remain unapplied.
+Other *.stage files are stale and must not overwrite fixture fixes.
 
-Next commit/push the conversion, then apply reviewed **journal C-baseline tests**
-from ignored build/port-journal/*.go.stage: 11 routines / 339 removable C lines.
-Its scope/caller audit and qualification plan are preserved there. Adapter,
-environment, owner, storage/report/render/save tests are drafts, not applied.
-The native.go.stage draft must wait for qualified/frozen/committed C baseline.
-Use the existing journal serializer for focused save/load integration. Reuse
-current production/full-suite evidence only if no production prerequisite changes.
-
-PORT.md now selects accumulated tests by affected callers/owners/dependencies
-between subsystem milestones, and the full corpus at milestones/shared changes
-or uncertain regression scope. This reversible testing decision is recorded for
-review. Keep all frozen tests. No question pending; no agents used.
-
-Original assets/archive untouched. Source build/baseline/env.sh in Go shells.
-No Go/C/header edits during source readers. Completed captures are losslessly
-compressed. The latest idle-cache cleanup removed 63 derived entries older than
-24h (1,106,179,560 bytes); source/assets remain intact. Prior unexplained failures
-and generic GUI exhaustion remain documented in the trade report; not fixed here.
+Use PORT.md's affected-corpus policy, with full corpus at milestones/shared
+changes/uncertain scope. All three native production builds/interfaces, exact
+full-asset failures and fresh inventory gameplay are required. The existing
+save/load serializer is a production caller, outside this conversion.
+No source edits during readers. Original assets/archive untouched. No question
+pending; no agents. Next candidate audited read-only: quest briefing presentation,
+seven routines / 787 C lines; no fixtures or final scope decision yet.
 
 <!-- /current-checkpoint -->
 
