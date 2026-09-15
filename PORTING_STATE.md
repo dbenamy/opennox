@@ -2,32 +2,35 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 88k lines** — exactly **88,212 physical lines** in
-99 production `.c` files, with zero test-reference C. This is source size, not
+**Rough C remaining: about 88k lines** — exactly **87,884 physical lines** in
+98 production `.c` files, with zero test-reference C. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — tooltip C baseline qualified
+## Current — tooltip conversion fully qualified
 
-Window helpers are committed/pushed as `98013201`. Tooltip C baseline is now
-fully qualified:11,790 frozen results /four groups, seven independent contracts,
-all11 focused and135client/134server/135highres affected tests passed. C captures
-repeat byte-for-byte; client build and fresh warrior gameplay pass. All source
-fingerprints stayed unchanged. Production is still C; see
-[CLIENT_TOOLTIP.md](docs/porting/CLIENT_TOOLTIP.md).
+Tooltip conversion is fully qualified against C baseline `5921a0f9`, following
+window conversion `98013201`. Both routines are native;11,790 frozen results /four
+groups match byte-for-byte, with nine independent contracts passing. All770
+accumulated,136server/137highres tests, three builds/ABI checks, fresh warrior
+gameplay and exact full-suite known-failure comparison pass. Source fingerprints
+stayed unchanged. See [CLIENT_TOOLTIP.md](docs/porting/CLIENT_TOOLTIP.md).
 
-Scope: two item-hover text/cursor-storage routines /329 C lines. C remains88,212
-/99 files /zero reference C. Commit/push this baseline, then review/apply native
-integration draft in build/port-client-tooltip/integrate.py.stage, run focused
-comparison, all native qualification, docs/C LOC and commit/push. The drafts are
-not yet applied or qualified; do not substitute stale fixture drafts for source.
-Native-only contracts are drafted for Go callers and oversized-name truncation.
+C remains87,884 /98 files /zero reference C:328 removed (corrected from the
+preliminary329 estimate). Accumulated frozen coverage:436,280 results /1,119
+groups, plus contracts. Both C interfaces remain live; Go callers use Go directly.
+Oversized assembled names truncate at the mapped capacity, recorded for review in
+DECISIONS.md; the shared variadic formatter remains outside that bounded path.
 
-Next connected candidate after tooltip completion: health/mana/potion/charge
-meters, audit only in build/port-client-meters/PLAN.md. No user question pending.
-Every Go shell sources build/baseline/env.sh; no Go/C edits during checks.
-Preserve original assets and archive; do not rerun completed window scripts.
+Next connected batch: health/mana/potion/weapon/charge meters,37 routines /about
+1,069 C lines. Audit and initial ignored ABI/environment drafts are under
+build/port-client-meters; no meter source/fixtures are applied or qualified yet.
+Before freezing, review the charge-label's four-unit string buffer (expand to fit
+signed32-bit counts) and the mini-bar zero-maximum divisor against lifecycle.
+Do not rerun completed tooltip/window integration or finalization scripts.
+No user question pending. Every Go shell sources build/baseline/env.sh; no Go/C
+edits during checks. Preserve original assets and archive.
 
 <!-- /current-checkpoint -->
 

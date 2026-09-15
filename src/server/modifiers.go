@@ -219,6 +219,11 @@ func (p *ModifierEff) Desc() string {
 	return alloc.GoString16(p.desc8)
 }
 
+// DescPtr exposes the original UTF16 storage for legacy text assembly.
+// Preserve nil, empty, and raw UTF16 units without a string round trip.
+func (p *ModifierEff) DescPtr() *uint16          { return p.desc8 }
+func (p *ModifierEff) SecondaryDescPtr() *uint16 { return p.secdesc12 }
+
 func (p *ModifierEff) Next() *ModifierEff {
 	return p.next136
 }

@@ -1,10 +1,10 @@
 # Item-hover text and cursor tooltip storage
 
-Status: original C baseline fully qualified after window conversion `98013201`.
-Production is still C; the native draft is not yet applied or qualified.
+Status: native conversion fully qualified against original-C baseline `5921a0f9`,
+following window conversion `98013201`.
 
-Scope: all314 lines of client__gui__tooltip.c and the15-line cursor setter block
-in GAME2_2.c: two connected routines /329 C lines. Both interfaces have live C
+Scope: all314 lines of client__gui__tooltip.c and the14-line cursor setter block
+in GAME2_2.c: two connected routines /328 C lines. Both interfaces have live C
 callers. Go callers should use native helpers when the conversion is applied.
 No production correction is needed to establish this baseline.
 
@@ -86,3 +86,42 @@ No production behavior changed for this fixture-only baseline. The full asset
 suite milestone remains the immediately preceding window conversion: exact1,553
 known failure entries,15pass/3fail/32skip packages. Native qualification will repeat
 that comparison. C remains88,212 /99 files /zero reference C.
+
+## Native conversion and qualification
+
+Both routines are native. The first executing native run passed all13 focused
+tests in170.088s: all11,790 results /four frozen groups matched C byte-for-byte,
+plus nine independent contracts. No native build failure, behavioral correction
+or golden change was needed. Two contracts added after C freezing cover the direct
+Go wrappers and oversized-name truncation; they are not extra C capture claims.
+
+Both C interfaces remain for real callers. Go callers invoke Go helpers directly.
+Modifier accessors expose original UTF16 pointers so nil, empty and raw units
+remain distinguishable; drawable fields and union storage use their Go types.
+The missing-equipment path retains a tiny production variadic-formatter ABI
+adapter. No item selection or assembly algorithm remains as test-reference C.
+Native concatenation truncates at the mapped scratch capacity; see DECISIONS.md
+for this reversible choice outside the former C implementation's defined bounds.
+The shared formatter remains outside this bounded assembly path.
+
+default: all770 selected root tests passed in414.775s. server: all136 selected root tests passed in176.417s. highres: all137 selected root tests passed in76.684s. Every selected root test started and finished.
+
+All three production binaries built and passed ELF32/i386/SSE2/CGO checks;
+both retained C symbols are Go-backed, and test helpers are absent. Build times: opennox 59.218s, opennox-hd 8.484s, opennox-server 53.295s.
+The full asset suite preserved exactly1,553 known failure entries and15pass/3fail/
+32skip package outcomes. Fresh warrior gameplay passed in37.301s
+with null audio and reference override=false. All1495 source fingerprints
+remained unchanged during qualification. This is not a green legacy suite.
+
+The initial binary-check script expected an unavailable file utility. It was
+changed to direct ELF-header validation, matching prior batches, and qualification
+resumed after the already-passed tests/builds. No Go/C source changed for this
+script repair and no passed tests were needlessly repeated.
+
+Production C is**87,884 physical lines /98 files /zero reference C**, down328
+(314 whole-file lines plus14 cursor-setter lines). The preliminary329-line scope
+estimate counted one extra separator line and is corrected here. Accumulated
+frozen coverage is436,280 results /1,119 groups, plus independent contracts.
+Evidence: qualification.json, native-*-result.json, native-capture-comparison.json,
+native-source-verification.json and baseline/runs/client-tooltip-port.
+Next connected candidate: the health/mana, potion, weapon and charge meters.

@@ -138,6 +138,7 @@ target build selection and linker evidence.
 | Listbox construction, rows, selection, scrolling and drawing | 100 | 88,572 | −1,407 | 0 |
 | Inclusive window-ID range termination prerequisite | 100 | 88,574 | +2 | 0 |
 | Window geometry, state, tree and draw-data helpers | 99 | 88,212 | −362 | 0 |
+| Localized item-hover names and cursor tooltip storage | 98 | 87,884 | −328 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

@@ -203,17 +203,18 @@ func Nox_xxx_wnd_46C2A0(a1 *gui.Window) int {
 	return uiWindowHidden(a1)
 }
 func Nox_xxx_clientAskInfoMb_4BF050(a1 *client.Drawable) string {
-	return GoWString(C.nox_xxx_clientAskInfoMb_4BF050((*nox_drawable)(a1.C())))
+	return GoWString((*wchar2_t)(unsafe.Pointer(uiItemTooltip(a1))))
 }
 func Nox_xxx_cursorSetTooltip_4776B0(a1 string) {
 	if a1 == "" {
-		C.nox_xxx_cursorSetTooltip_4776B0(nil)
+		uiCursorTooltip(nil)
 		return
 	}
 	wstr, free := CWString(a1)
 	defer free()
-	C.nox_xxx_cursorSetTooltip_4776B0(wstr)
+	uiCursorTooltip((*uint16)(unsafe.Pointer(wstr)))
 }
+
 func Sub_57B450(a1 *client.Drawable) int {
 	return glyphItemAllowed(a1)
 }

@@ -573,20 +573,6 @@ LABEL_38:
 //----- (00477600) --------------------------------------------------------
 int nox_xxx_guiCursor_477600() { return *getMemU32Ptr(0x5D4594, 1096672); }
 
-//----- (004776B0) --------------------------------------------------------
-void nox_xxx_cursorSetTooltip_4776B0(wchar2_t* a1) {
-	if (a1) {
-		if ((int)nox_wcslen(a1) >= 256) {
-			nox_wcsncpy((wchar2_t*)getMemAt(0x5D4594, 1096676), a1, 0xFFu);
-			*getMemU16Ptr(0x5D4594, 1097186) = 0;
-		} else {
-			nox_wcscpy((wchar2_t*)getMemAt(0x5D4594, 1096676), a1);
-		}
-	} else {
-		*getMemU16Ptr(0x5D4594, 1096676) = 0;
-	}
-}
-
 //----- (00478030) --------------------------------------------------------
 int sub_478030() { return dword_5d4594_1098624; }
 

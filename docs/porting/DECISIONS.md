@@ -608,3 +608,16 @@ original signed loop counter wraps at INT_MAX; first=last=INT_MAX should process
 one child and finish. Source audit identified the nontermination; a corrected-C
 contract checks the actual maximum-ID child. This adds two C prerequisite lines
 and preserves ordinary ranges. See [CLIENT_WINDOW.md](CLIENT_WINDOW.md).
+
+
+## Item tooltip native assembly bounds
+
+The item-name assembler now uses its mapped1,024-unit scratch capacity and
+truncates assembled names to1,023 raw UTF16 units plus a terminator. Original C
+concatenation had no defined in-allocation behavior for oversized combined names;
+those cases are not frozen as C goldens. Exact-capacity1,023-unit names are covered
+by the original-C contract, and a native-only2,048-unit base-name contract checks
+truncation with modifiers. This is a confident reversible choice to review later,
+under the user's standing authorization. The shared variadic missing-equipment
+formatter remains unchanged and outside this bounded assembly path; this decision
+does not claim that the shared formatter has been ported or generally bounded.
