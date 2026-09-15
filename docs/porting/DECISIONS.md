@@ -586,3 +586,16 @@ focus behavior, while entry destruction releases its own active input state.
 Keep CRT wide-character classification for locale compatibility on the current
 CGO target. All twelve routines qualified without changing the frozen C results;
 review these compatibility choices separately from future platform work.
+
+
+### Listbox baseline corrections — review later
+
+Before translating listbox widgets, correct byte-offset scaling in middle row
+insertion (independent original-C order regression), bounded row/label terminators,
+selection sentinel allocation and overlapping shift, negative head-removal bounds,
+capacity-limited scroll lookup, non-progressing auto-scroll and empty-string draw
+clipping. Guard the full-selection empty-area click's extra sentinel write.
+These are local reversible fixes; qualification and exact preserved quirks are in
+[CLIENT_LISTBOX.md](CLIENT_LISTBOX.md). Keep the existing unusual head-removal
+selection comparison for now. Represent the ABI selection union as a uint32 word,
+which holds either a scalar index or an array address, preserving size/offsets.

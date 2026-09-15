@@ -569,7 +569,9 @@ int nox_xxx_wndListboxProcWithData10_4A2DE0(int a1, int a2, unsigned int a3, int
 			}
 		}
 		v12[v13] = v10;
+		if (v13 < *(uint16_t*)v5) {
 		*(uint32_t*)(*(uint32_t*)(v5 + 48) + 4 * v13 + 4) = -1;
+		}
 		nox_window_call_field_94(*(uint32_t*)(v4 + 52), 16400, v4, v10);
 		return 1;
 	case 8:
@@ -645,7 +647,7 @@ short* sub_4A3090(short* a1, int a2) {
 	short* result; // eax
 
 	result = a1;
-	memcpy((void*)(*((uint32_t*)a1 + 12) + 4 * a2), (const void*)(*((uint32_t*)a1 + 12) + 4 * a2 + 4), 4 * (*a1 - a2));
+	memmove((void*)(*((uint32_t*)a1 + 12) + 4 * a2), (const void*)(*((uint32_t*)a1 + 12) + 4 * a2 + 4), 4 * (*a1 - a2));
 	*(uint32_t*)(*((uint32_t*)a1 + 12) + 4 * *a1 - 4) = -1;
 	return result;
 }
@@ -781,7 +783,9 @@ int nox_xxx_wndListboxProcPre_4A30D0(nox_window* win, unsigned int ev, uint32_t 
 				return 0;
 			}
 			nox_wcsncpy(sdata->items[ind].text, wstr, 255);
-			sdata->items[ind].text[nox_wcslen(wstr)] = 0; // TODO: potential overflow
+			size_t row_len = nox_wcslen(wstr);
+			if (row_len > 255) row_len = 255;
+			sdata->items[ind].text[row_len] = 0;
 			return 0;
 		case 0x4018u:
 			sdata->field_7 = a3;
@@ -795,7 +799,7 @@ int nox_xxx_wndListboxProcPre_4A30D0(nox_window* win, unsigned int ev, uint32_t 
 		case 0x401Bu:
 			ind = a3;
 			v40 = sdata->field_11_0;
-			if (v40 < ind) {
+			if (ind < 0 || v40 < ind) {
 				return 0;
 			}
 			memmove(sdata->items, &sdata->items[ind], sizeof(nox_scrollListBox_item) * (unsigned int)(v40 - ind));
@@ -884,7 +888,7 @@ int nox_xxx_wndListboxProcPre_4A30D0(nox_window* win, unsigned int ev, uint32_t 
 						v21 = 524 * v20;
 						do {
 							--v20;
-							v22 = (uint32_t*)sdata->items + v21;
+							v22 = (char*)sdata->items + v21;
 							v21 -= 524;
 							memcpy((void*)(v22 + 524), (const void*)v22, 0x20Cu);
 						} while (v20 >= sdata->field_11_1);
@@ -920,7 +924,9 @@ int nox_xxx_wndListboxProcPre_4A30D0(nox_window* win, unsigned int ev, uint32_t 
 			}
 			if (sdata->field_1) {
 				while (sdata->items[sdata->field_11_1 - 1].field_0 >= sdata->field_13_1 + sdata->field_13_0) {
+					unsigned short old_top = sdata->field_13_1;
 					nox_xxx_wndListBox_4A2D10(v4, 1, 1);
+					if (sdata->field_13_1 == old_top) break;
 				}
 			}
 			v26 = (uint32_t*)sdata->field_12;
@@ -1020,7 +1026,9 @@ int nox_xxx_wndListboxProcPre_4A30D0(nox_window* win, unsigned int ev, uint32_t 
 	if (ev == 16385) {
 		wstr = a3;
 		nox_wcsncpy(win->draw_data.text, wstr, 63);
-		win->draw_data.text[nox_wcslen(wstr)] = 0; // TODO: this may overflow
+		size_t label_len = nox_wcslen(wstr);
+		if (label_len > 63) label_len = 63;
+		win->draw_data.text[label_len] = 0;
 		return 0;
 	}
 	if (ev == 16388) {
@@ -1293,7 +1301,7 @@ LABEL_13:
 					*v15 = 0;
 					--v15;
 					nox_xxx_drawGetStringSize_43F840(v17, (unsigned short*)v30, &v29, 0, 0);
-				} while (v29 > v16);
+				} while (v29 > v16 && v30[0]);
 				nox_xxx_drawStringWrap_43FAF0(*(uint32_t*)(a2 + 200), v30, xLeft + 5, v21 + 2, v16, v27);
 				v9 = i;
 				v12 = v27;
@@ -1435,7 +1443,7 @@ int nox_xxx_wndListboxDrawWithImage_4A3FC0(uint32_t* a1, int a2) {
 					*v16 = 0;
 					--v16;
 					nox_xxx_drawGetStringSize_43F840(v18, (unsigned short*)v30, &v29, 0, 0);
-				} while (v29 > v17);
+				} while (v29 > v17 && v30[0]);
 				nox_xxx_drawStringWrap_43FAF0(*(uint32_t*)(a2 + 200), v30, xLeft + 5, v25 + 2, v17, v28);
 				v10 = i;
 				v13 = v28;
@@ -1464,10 +1472,12 @@ int sub_4A4800(int a1) {
 	int v4;       // edi
 
 	result = 0;
+	if (!*(uint16_t*)a1) return 0;
 	v2 = *(uint32_t**)(a1 + 24);
 	v3 = *(short*)(a1 + 54);
 	if (*v2 <= v3) {
 		while (result < *(short*)(a1 + 44)) {
+			if (result + 1 >= *(uint16_t*)a1) break;
 			v4 = v2[131];
 			v2 += 131;
 			++result;

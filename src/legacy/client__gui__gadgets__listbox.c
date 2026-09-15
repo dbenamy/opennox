@@ -72,13 +72,13 @@ nox_window* nox_gui_newScrollListBox_4A4310(nox_window* a1p, int a2, int a3, int
 	a8[22] = 0;
 	*((uint32_t*)a8 + 10) = 0;
 	if (v11) {
-		v12 = calloc(opts->count, 4);
+		v12 = calloc((size_t)opts->count + 1, 4);
 		*((uint32_t*)a8 + 12) = v12;
 		if (!v12) {
 			free(*((void**)a8 + 6));
 			return 0;
 		}
-		memset(v12, 0xFFu, 4 * (int)opts->count);
+		memset(v12, 0xFFu, 4 * ((size_t)opts->count + 1));
 		v10 = a6;
 	}
 	if (*((uint32_t*)a8 + 3)) {

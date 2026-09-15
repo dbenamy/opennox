@@ -2,30 +2,37 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 90k lines** — exactly **89,969 physical lines** in
+**Rough C remaining: about 90k lines** — exactly **89,979 physical lines** in
 101 production `.c` files, with zero test-reference C. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — text-entry conversion fully qualified
+## Current — listbox C baseline qualified
 
-Twelve routines moved to Go; 625 C lines removed. Production C is **89,969 /
-101 files / zero reference C**. All 11,426 results / four groups and seven
-independent contracts pass. Accumulated frozen coverage is 403,118 results /
-1,109 groups. The C baseline is `4087008d`; no native correction or golden change
-was needed. Accumulated 738, server 104 / highres 105, three builds/ABI, exact
-full-suite comparison and both gameplay/typing scenarios passed. See
-[CLIENT_ENTRY.md](docs/porting/CLIENT_ENTRY.md).
+Text-entry conversion is committed and pushed as `97fc1bc7` (C baseline
+`4087008d`). Twelve routines / 625 C lines removed; all qualification passed.
+Production C is **89,979 / 101 files / zero reference C** after ten
+prerequisite lines in the listbox baseline. Accumulated frozen
+coverage is 403,118 results / 1,109 groups, plus independent contracts. Do not
+rerun entry integration/finalization scripts.
 
-Commit/push this conversion, then continue the connected listbox batch. Do not
-rerun entry integration/finalization scripts. The ignored listbox directory has
-an audited plan, scope list, real palette/owner drafts and a bounded middle-row
-insertion contract; no listbox source is applied. Verify that original-C contract,
-then qualify the connected baseline before conversion. No pending user question.
-Source build/baseline/env.sh for Go commands; no Go/C edits during active checks.
-Preserve original assets and archive; completed duplicate assets are recoverable
-through verified restoration manifests.
+The next connected listbox batch spans twelve routines: GAME3.c from 004A28E0
+through before 004A4840 (1,226 lines), plus its 171-line constructor file. Real
+palette/window/input owner fixtures and a middle-insertion contract are applied;
+the original C insertion contract failed as predicted. Byte addressing and the
+audited text/selection/scroll bounds are now corrected in C; seven contracts passed. Four capture groups now cover rows,
+input, drawing, and constructor/control boundaries; all repeat and qualification checks passed. The C baseline is frozen; the ignored Go draft is ready for integration/review. See
+[CLIENT_LISTBOX.md](docs/porting/CLIENT_LISTBOX.md).
+Ignored drafts and audit notes are in `build/port-client-listbox`.
+
+Audit identified row-offset scaling during middle insertion, bounded text
+terminators, selection-array sentinel capacity and row/scroll boundary handling.
+Reproduce defined behavior with independent contracts, make justified local fixes
+before freezing, and qualify the whole connected batch. Continue through port,
+docs/C LOC, commit/push and onward. No pending user question. Source
+build/baseline/env.sh for Go commands; no Go/C edits during active checks.
+Preserve original assets and archive.
 
 <!-- /current-checkpoint -->
 
