@@ -188,3 +188,20 @@ has empty stock and a missing map-authored name. The scenario opens/cancels a
 priced sell-quantity dialog and closes the shop; its repair_quantity checkpoint
 shows repair inspection. Purchase and repair quantity behavior is separately
 covered by the actual-owner fixtures. See [the batch report](CLIENT_SHOP_UI.md).
+
+
+## Briefing recovery
+
+Set `OPENNOX_BRIEFING_ASSETS` to the extracted Nox directory to include the
+shipped Briefing.wnd fixture. Focused selection is `^TestBriefing` with `porttest`,
+`porttest,server` and `porttest,highres`; frozen expectations live in the tests.
+
+The tracked [chapter scenario](briefing-chapter.yaml) has eight checkpoints.
+Recreate references from production revision **78ad58b2** using the same fresh
+asset/save, seeded randomness, Xvfb and null-audio procedure above. Capture once
+with updates enabled, repeat from fresh data with updates disabled, then compare
+the converted binary with updates disabled. [Pixel hashes](briefing-chapter-pixels.json)
+record decoded NRGBA buffers and each frame's dimensions. Early frames are
+intentional: the E2E harness shortens chapter duration. This scenario covers an
+ordinary chapter transition; quest statistics/instructions use the actual-owner
+and shipped-window fixtures. See [the briefing report](BRIEFING.md).

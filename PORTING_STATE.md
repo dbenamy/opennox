@@ -11,33 +11,33 @@ an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LO
 
 <!-- current-checkpoint -->
 
-## Current — journal Go conversion qualified; ready to commit/push
+## Current — briefing C baseline qualified and frozen
 
-Journal C baseline **2c3ea111 is committed/pushed**. All eleven native focused
-roots passed on the first implementation run; all **717 results / ten groups**
-match unchanged. Native affected corpus: **245 default / 243 server / 245 highres**.
-Three production builds pass, ELF32/i386/SSE2/CGO, ten retained journal interfaces,
-four retired interfaces absent and no test helpers. Full assets exactly match
-known 1,553 failures and 15/3/32 package outcomes. Fresh inventory gameplay passes
-all nine reference screenshots. All 1,627 source fingerprints unchanged during
-qualification. All jobs joined; no active reader or pending question.
+Journal conversion **78ad58b2 is committed/pushed**. C remains **79,924 / 93 files /
+zero reference C**. Current batch: **13 briefing routines / 947 removable C lines**.
+Production unchanged. C affected tests pass **240 default / 238 server / 240
+highres**, with **467 results / eleven groups** identical. All source fingerprints
+unchanged, production matches qualified journal revision; its build/full-suite
+proof reused. Fresh chapter gameplay visually verified and all eight screenshots
+match a repeat with updates disabled. Tracked scenario/pixel manifest added.
 
-Removed **339 C lines / eleven routines**: **79,924 / 93 files / zero reference C**.
-See [JOURNAL.md](docs/porting/JOURNAL.md) and build/port-journal/native-qualification.json.
-Go owns journal storage/reports/drawing; C allocation only preserves shared layout
-and failure behavior. Actual C save/load remains a qualified integration caller.
-No production prerequisite or native correction was needed; expectations unchanged.
+Expectations frozen. The locked repeat passed all twelve roots with assets in
+25.714s. All reader/headless jobs joined. Next commit/push baseline, finish/review
+Go draft, apply then qualify native. All
+fixture corrections so far were test setup/known pointer identities; no production
+prerequisite. See [BRIEFING.md](docs/porting/BRIEFING.md).
 
-Next: commit/push this qualified chunk, then quest briefing presentation and
-connected helpers, candidate **13 routines / 947 C lines**. Read-only caller audit
-and unapplied adapter/environment drafts are in build/port-briefing. The score
-producer packs up to six entries, explaining receiver sorting; do not invent a
-prerequisite from bounded sparse-input behavior. Own real window/music/fade/book/
-particle state for integration. No briefing source edits applied yet.
+Ignored build/port-briefing/native-state.go.stage and native-draw.go.stage are
+UNAPPLIED partial drafts; instructions drawing and exports/adapters remain to
+write/review. Other *.stage fixture drafts are stale: never reapply them over the
+actual corrected/frozen sources. C capture manifests are compressed losslessly;
+use frozen-captures.json, not earlier development hashes.
 
-All journal drafts are stale after application; do not reapply. Original assets/
-archive untouched. No agents. Use PORT.md's affected-corpus policy and no source
-edits during readers. Remaining historical uncertainties stay recorded.
+Candidate native interface audit: eight retained C entries, five private helpers
+retired. Actual C window creation/presentation/cleanup remain callers. Preserve
+packed score sorting and stable equal scores; no change to sparse-input behavior.
+No user question or agents. Original assets/archive untouched. No source edits
+while readers run. Full completed-batch qualification is still required after port.
 
 <!-- /current-checkpoint -->
 
