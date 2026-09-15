@@ -108,7 +108,7 @@ func Nox_xxx_drawAllMB_475810_draw_B(vp *noxrender.Viewport) int {
 	return 1
 }
 func Sub_4C5060(vp *noxrender.Viewport) {
-	C.sub_4C5060((*nox_draw_viewport_t)(vp.C()))
+	objectRenderBeamDraw(vp)
 }
 func Nox_xxx_drawWalls_473C10(vp *noxrender.Viewport, a2 *server.Wall) {
 	C.nox_xxx_drawWalls_473C10((*nox_draw_viewport_t)(vp.C()), a2.C())

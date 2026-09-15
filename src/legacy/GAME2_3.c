@@ -3354,45 +3354,6 @@ int4* sub_49F780(int xLeft, int a2) {
 									  nox_draw_curDrawData_3799572->clip.max_y - nox_draw_curDrawData_3799572->clip.min_y);
 }
 
-//----- (0049F7F0) --------------------------------------------------------
-void nox_xxx_wndDraw_49F7F0() {
-	if (!dword_5d4594_1305748) {
-		*getMemU32Ptr(0x5D4594, 1305772) = nox_draw_curDrawData_3799572->flag_0;
-		*getMemU32Ptr(0x5D4594, 1305756) = nox_draw_curDrawData_3799572->clip.min_x;
-		*getMemU32Ptr(0x5D4594, 1305760) = nox_draw_curDrawData_3799572->clip.min_y;
-		*getMemU32Ptr(0x5D4594, 1305764) = nox_draw_curDrawData_3799572->clip.max_x;
-		*getMemU32Ptr(0x5D4594, 1305768) = nox_draw_curDrawData_3799572->clip.max_y;
-		*getMemU32Ptr(0x5D4594, 1305732) = nox_draw_curDrawData_3799572->rect2.min_x;
-		*getMemU32Ptr(0x5D4594, 1305736) = nox_draw_curDrawData_3799572->rect2.min_y;
-		*getMemU32Ptr(0x5D4594, 1305740) = nox_draw_curDrawData_3799572->rect2.max_x;
-		*getMemU32Ptr(0x5D4594, 1305744) = nox_draw_curDrawData_3799572->rect2.max_y;
-		dword_5d4594_1305748 = 1;
-	}
-}
-
-//----- (0049F860) --------------------------------------------------------
-int sub_49F860() {
-	int result; // eax
-
-	result = dword_5d4594_1305748;
-	if (dword_5d4594_1305748) {
-		nox_draw_curDrawData_3799572->flag_0 = *getMemU32Ptr(0x5D4594, 1305772);
-		nox_rect* v1 = &nox_draw_curDrawData_3799572->clip;
-		v1->min_x = *getMemU32Ptr(0x5D4594, 1305756);
-		v1->min_y = *getMemU32Ptr(0x5D4594, 1305760);
-		v1->max_x = *getMemU32Ptr(0x5D4594, 1305764);
-		v1->max_y = *getMemU32Ptr(0x5D4594, 1305768);
-		nox_rect* v2 = &nox_draw_curDrawData_3799572->rect2;
-		v2->min_x = *getMemU32Ptr(0x5D4594, 1305732);
-		v2->min_y = *getMemU32Ptr(0x5D4594, 1305736);
-		result = *getMemU32Ptr(0x5D4594, 1305740);
-		v2->max_x = *getMemU32Ptr(0x5D4594, 1305740);
-		v2->max_y = *getMemU32Ptr(0x5D4594, 1305744);
-		dword_5d4594_1305748 = 0;
-	}
-	return result;
-}
-
 //----- (0049F930) --------------------------------------------------------
 int4* nox_xxx_utilRect_49F930(int4* a1, int4* a2, int4* a3) {
 	int v3;       // ecx

@@ -82,5 +82,30 @@ passed in 38.159s with null audio and reference comparison
 enabled. All qualified selections started and completed. The earlier server
 occlusion fixture failure is explained above and was not accepted as qualification.
 
-Native conversion has not been applied. Production C remains 92,307 physical
-lines in 101 files, with zero test-reference C.
+## Native conversion and qualification
+
+The ten routines now live in Go. All **38,677 frozen results in nine groups** and
+three independent probes pass on the first native attempt, with no implementation
+correction or expectation change. Go callers use private helpers directly; four
+required C bridges remain and six internal C entry points/declarations are retired.
+The clipping helpers preserve the actual C current-render-data owner for remaining
+UI callers. No C algorithm is retained solely for testing.
+
+Production C is **91,740 physical lines in 101 files**, a reduction of
+**567 lines**, with zero test-reference C. The prior screen-effects batch
+removed another 562 lines in five files; its independent report remains unchanged.
+
+Native qualification passed: focus **12** (164.159s), accumulated
+**707** (388.187s; one expected optional skip), affected server/highres
+**73/74** (160.929s / 50.478s).
+Every selected test started and completed. All three production builds passed,
+verified as ELF32/i386/SSE2/CGO with the four required exports present, six retired
+entries absent and no test helpers linked. The full asset suite matches the exact
+existing failure multiset: 1,553 entries, package outcomes 15 pass / 3 fail / 32 skip.
+Fresh headless gameplay passed in **36.470s**, using null audio and
+reference comparison enabled. The known legacy suite failures remain visible.
+
+Accumulated frozen coverage is **339,246 results in 1,094 groups**, plus independent
+contracts. Local `qualification.json` records builds, binary hashes, full-suite
+comparison, gameplay and C counts; `native-capture-comparison.json` records the
+byte-hash comparison. Recoverable C baseline: **3143d026**.

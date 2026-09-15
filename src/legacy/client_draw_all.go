@@ -43,7 +43,6 @@ int nox_thing_player_draw(nox_draw_viewport_t* a1, nox_drawable* dr);
 int nox_thing_vector_animate_draw(nox_draw_viewport_t* a1, nox_drawable* dr);
 int nox_thing_npc_draw(nox_draw_viewport_t* a1, nox_drawable* dr);
 int nox_thing_released_soul_draw(nox_draw_viewport_t* a1, nox_drawable* dr);
-void nox_xxx_drawObject_4C4770_draw(nox_draw_viewport_t* vp, nox_drawable* dr, void* img);
 int sub_495180(int a1, uint16_t* a2, uint16_t* a3, uint8_t* a4);
 */
 import "C"
@@ -173,7 +172,7 @@ func nox_thing_npc_draw(vp *nox_draw_viewport_t, dr *nox_drawable) int {
 }
 
 func Nox_xxx_drawObject_4C4770_draw(vp *noxrender.Viewport, dr *client.Drawable, img noxrender.ImageHandle) {
-	C.nox_xxx_drawObject_4C4770_draw((*nox_draw_viewport_t)(vp.C()), (*nox_drawable)(dr.C()), unsafe.Pointer(img))
+	objectRenderDraw(vp, dr, img)
 }
 func Sub_495180(id int) (cur, max int, alt, ok bool) {
 	var (

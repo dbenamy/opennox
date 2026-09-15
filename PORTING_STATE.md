@@ -4,24 +4,20 @@ Read CODEX_HANDOFF.md for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-### Current — shared object renderer C baseline qualified
+### Current — shared object renderer conversion fully qualified
 
-Ten routines / 567 C lines are ready for conversion. Twelve focused tests own
-38,677 results in nine frozen groups plus three independent probes. C focus12,
-accumulated706 before the final precision addition, server73/highres74, production
-build and fresh headless gameplay pass. See docs/porting/CLIENT_OBJECT_RENDER.md.
-The occlusion matrix is client-only because the server target deliberately has no
-scanline implementation. No production-C prerequisite correction was needed.
-Production C remains92,307 /101 files /reference0. Commit/push the baseline, then
-apply the reviewed native drafts and qualify frozen results, accumulated707,
-affected variants, three builds/ABI, exact full asset suite and fresh gameplay.
+Ten routines moved to Go;567 C lines removed. Production C is91,740 /101files /
+reference0. All38,677 results/ninegroups plus threeprobes match on first native
+attempt. Focus12, accumulated707 (oneoptional skip), server73/highres74, allthree
+production builds/ABI checks, exactfullassetsuite and gameplay36.470s pass.
+Accumulated339,246results/1,094groups pluscontracts. See
+[the renderer report](docs/porting/CLIENT_OBJECT_RENDER.md). Cbaseline3143d026 is
+committed/pushed; commit/push the native conversion now. Do not rerun integration.
 
-After the renderer conversion is qualified, committed and pushed, separately
-rename CODEX_HANDOFF.md to PORT.md, remove obsolete original-host/date material,
-add a top table of contents, lightly tidy PORTING_STATE.md and add rough remaining
-C LOC. Commit/push that documentation cleanup, then PAUSE for user review.
-Do not start another port batch. Source build/baseline/env.sh for every Go command;
-never edit Go/C while tests/builds are running. Actual source is authoritative.
+The user's final requested step is a separate documentation cleanup: rename
+CODEX_HANDOFF.md to PORT.md, remove old host/date material and stale plans, add a
+top TOC, lightly tidy PORTING_STATE.md and add rough C LOC remaining. Commit/push
+that cleanup, then PAUSE for review. Do not begin another conversion chunk.
 
 <!-- /current-checkpoint -->
 

@@ -11,13 +11,8 @@ extern uint32_t dword_8531A0_2576;
 extern unsigned int nox_player_netCode_85319C;
 extern nox_render_data_t* nox_draw_curDrawData_3799572;
 extern int nox_win_height;
-char sub_4C4EC0(uint32_t*,int);
-short nox_xxx_drawShinySpot_4C4F40(nox_draw_viewport_t*,nox_drawable*);
-int nox_xxx_colorInit_4C4FD0();
 int sub_4C5020(int);
 void sub_4C5050();
-int sub_4C5060(nox_draw_viewport_t*);
-int sub_4C51D0(int2*,int2*);
 void nox_xxx_wndDraw_49F7F0();
 int sub_49F860();
 */
@@ -28,6 +23,7 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/memmap/nox/blobdata"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
+	"image"
 	"unsafe"
 )
 
@@ -85,10 +81,10 @@ func (e *PortTestObjectRenderEnvironment) LastDrawable() *client.Drawable {
 	return (*client.Drawable)(*memmap.PtrPtr(0x5D4594, 1321516))
 }
 func PortTestObjectRenderGhost(vp *noxrender.Viewport, dr *client.Drawable) byte {
-	return byte(C.sub_4C4EC0((*C.uint32_t)(vp.C()), C.int(uintptr(dr.C()))))
+	return objectRenderGhost(vp, dr)
 }
 func PortTestObjectRenderShiny(vp *noxrender.Viewport, dr *client.Drawable) uint16 {
-	return uint16(C.nox_xxx_drawShinySpot_4C4F40((*C.nox_draw_viewport_t)(vp.C()), (*C.nox_drawable)(dr.C())))
+	return objectRenderShiny(vp, dr)
 }
 func PortTestObjectRenderClip(save bool) int32 {
 	if save {
@@ -101,7 +97,7 @@ func PortTestObjectRenderClip(save bool) int32 {
 func PortTestObjectRenderBeam(op int, vp *noxrender.Viewport, a [4]int32) uint32 {
 	switch op {
 	case 0:
-		return uint32(C.nox_xxx_colorInit_4C4FD0())
+		return uint32(objectRenderBeamColors())
 	case 1:
 		// Packet layout is one leading opcode byte followed by two unaligned words.
 		packet, free := alloc.New([9]byte{})
@@ -115,9 +111,9 @@ func PortTestObjectRenderBeam(op int, vp *noxrender.Viewport, a [4]int32) uint32
 		C.sub_4C5050()
 		return 0
 	case 3:
-		return uint32(C.sub_4C5060((*C.nox_draw_viewport_t)(vp.C())))
+		return uint32(objectRenderBeamDraw(vp))
 	case 4:
-		return uint32(C.sub_4C51D0((*C.int2)(unsafe.Pointer(&a[0])), (*C.int2)(unsafe.Pointer(&a[2]))))
+		return uint32(objectRenderBeamLine(image.Pt(int(a[0]), int(a[1])), image.Pt(int(a[2]), int(a[3]))))
 	}
 	panic("unknown beam operation")
 }

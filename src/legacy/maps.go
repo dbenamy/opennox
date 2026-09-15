@@ -175,7 +175,7 @@ func Nox_xxx_bookSetColor_45AC40() {
 }
 
 func Nox_xxx_colorInit_4C4FD0() {
-	C.nox_xxx_colorInit_4C4FD0()
+	objectRenderBeamColors()
 }
 
 func Sub_445FF0() {
