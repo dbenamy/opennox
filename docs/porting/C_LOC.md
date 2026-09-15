@@ -151,6 +151,7 @@ target build selection and linker evidence.
 | Quantity dialog and player-to-player trade UI | 95 | 81,351 | −1,316 | 0 |
 | Shop UI capacity, affordability and quantity ownership prerequisites | 95 | 81,373 | +22 | 0 |
 | Shop UI storage, drawing, input and quantity transactions | 94 | 80,263 | −1,110 | 0 |
+| Quest journal storage, reports, save integration and rendering | 93 | 79,924 | −339 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

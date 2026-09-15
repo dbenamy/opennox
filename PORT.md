@@ -14,15 +14,14 @@
 
 ## Current status
 
-Client inventory, quantity-dialog, player-to-player trade and shop UI are converted.
-The shop batch removed 1,110 C lines / 42 routines, with all 1,299 captured results
-unchanged, independent boundary/lifetime contracts and two fresh gameplay
-comparisons. There are about **80k C lines left** (80,263 physical lines in 94
-production files). Next: connected journal entry storage, updates and rendering,
-11 routines / 339 C lines. See [the shop report](docs/porting/CLIENT_SHOP_UI.md),
-[the trade report](docs/porting/CLIENT_TRADE_UI.md) and
-[PORTING_STATE.md](PORTING_STATE.md). The inventory cancellation follow-up releases
-temporary drags while preserving borrowed equipment.
+Client inventory, quantity-dialog, player-to-player trade, shop UI and quest
+journal storage/rendering are converted. The journal batch removed **339 C lines /
+11 routines**, with all **717 captured results unchanged**, independent storage,
+report and save/load contracts, three-target qualification and fresh gameplay.
+There are about **80k C lines left** (**79,924** physical lines in **93** production
+files). Next: connected quest briefing presentation and its helpers, a candidate
+**13 routines / 947 C lines**. See [the journal report](docs/porting/JOURNAL.md),
+[the shop report](docs/porting/CLIENT_SHOP_UI.md) and [PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.
 

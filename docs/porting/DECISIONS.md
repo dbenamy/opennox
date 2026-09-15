@@ -864,3 +864,16 @@ only tagged fixtures have changed. New C behavior fixes invalidate that reuse.
 Capture and repeat the new baseline independently before freezing and committing.
 This reversible workflow adjustment follows the user's request to improve pace
 and autonomously record reasonably confident implementation/testing choices.
+
+
+### Journal shared storage and presentation
+
+Journal list/report/rendering logic is Go, with libc allocation/free for entries
+shared by the remaining C decoder and save/load layout. This preserves the old
+nil-on-allocation-failure behavior and C-compatible lifetime without retaining a
+C algorithm. Direct Go inputs retain first-NUL semantics and 63-byte storage.
+Go strings replace the presentation scratch buffers; frozen valid-input layout
+and pixels remain identical. Local flag updates still omit cached-height rebuild,
+as did both original callers; no correction is claimed. Review these choices if
+journal ownership/layout or update behavior changes. See JOURNAL.md (C baseline
+2c3ea111) for actual save/load, report, render and gameplay evidence.

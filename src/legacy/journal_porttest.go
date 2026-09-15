@@ -4,38 +4,41 @@ package legacy
 
 /*
 #include "GAME1_1.h"
-#include "client__gui__guijourn.h"
 */
 import "C"
-import "unsafe"
+import (
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
+	"github.com/opennox/opennox/v1/server"
+	"unsafe"
+)
 
 // PortTestJournal calls the real journal entry owners and renderer.
 func PortTestJournal(op int, a, b, c uintptr) uint32 {
 	switch op {
 	case 0:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_journalEntryAdd_427490((*C.nox_playerInfo)(unsafe.Pointer(a)), (*C.char)(unsafe.Pointer(b)), C.short(c)))))
+		return uint32(uintptr(unsafe.Pointer(journalAdd((*server.Player)(unsafe.Pointer(a)), alloc.GoString((*byte)(unsafe.Pointer(b))), uint16(c)))))
 	case 1:
-		C.nox_xxx_comJournalEntryAdd_427500((*C.nox_object_t)(unsafe.Pointer(a)), (*C.char)(unsafe.Pointer(b)), C.short(c))
+		journalUnitAdd((*server.Object)(unsafe.Pointer(a)), alloc.GoString((*byte)(unsafe.Pointer(b))), uint16(c))
 	case 2:
-		return uint32(C.nox_xxx_journalEntryRemove_427590((*C.nox_playerInfo)(unsafe.Pointer(a)), (*C.char)(unsafe.Pointer(b))))
+		return uint32(journalRemove((*server.Player)(unsafe.Pointer(a)), alloc.GoString((*byte)(unsafe.Pointer(b)))))
 	case 3:
-		C.nox_xxx_comJournalEntryRemove_427630(C.int(a), (*C.char)(unsafe.Pointer(b)))
+		journalUnitRemove((*server.Object)(unsafe.Pointer(a)), alloc.GoString((*byte)(unsafe.Pointer(b))))
 	case 4:
-		return uint32(C.nox_xxx_comRemoveEntryAll_427680((*C.char)(unsafe.Pointer(b))))
+		return uint32(journalRemoveAll(alloc.GoString((*byte)(unsafe.Pointer(b)))))
 	case 5:
-		return uint32(C.nox_xxx_journalUpdateEntry_4276B0((*C.nox_playerInfo)(unsafe.Pointer(a)), (*C.char)(unsafe.Pointer(b)), C.short(c)))
+		return uint32(uintptr(unsafe.Pointer(journalUpdate((*server.Player)(unsafe.Pointer(a)), alloc.GoString((*byte)(unsafe.Pointer(b))), uint16(c)))))
 	case 6:
-		return uint32(C.nox_xxx_comJournalEntryUpdate_427720(C.int(a), (*C.char)(unsafe.Pointer(b)), C.short(c)))
+		return journalUnitUpdate((*server.Object)(unsafe.Pointer(a)), alloc.GoString((*byte)(unsafe.Pointer(b))), uint16(c))
 	case 7:
-		return uint32(C.nox_xxx_comUpdateEntryAll_427770((*C.char)(unsafe.Pointer(b)), C.short(c)))
+		return uint32(journalUpdateAll(alloc.GoString((*byte)(unsafe.Pointer(b))), uint16(c)))
 	case 8:
-		return uint32(C.sub_4277B0((*C.nox_object_t)(unsafe.Pointer(a)), C.ushort(c)))
+		return uint32(journalRemoveMask((*server.Object)(unsafe.Pointer(a)), uint16(c)))
 	case 9:
-		C.nox_xxx_cliBuildJournalString_469BC0()
+		journalMeasure()
+	case 10:
+		journalDraw(int(a), int(b), int(c))
 	case 11:
 		return uint32(C.sub_41BEC0(unsafe.Pointer(a), nil))
-	case 10:
-		C.nox_xxx_guiDrawJournal_469D40(C.int(a), C.int(b), C.int(c))
 	}
 	return 0
 }

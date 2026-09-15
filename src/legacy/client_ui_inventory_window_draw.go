@@ -73,7 +73,7 @@ func uiInventoryDrawWindow(w *gui.Window) int {
 			case 0:
 				nox_xxx_guiDrawInventoryTray_4643B0(C.int(pos.X+254), C.int(pos.Y+13))
 			case 1:
-				C.nox_xxx_guiDrawJournal_469D40(C.int(pos.X+254), C.int(pos.Y+13), C.int(C.dword_5d4594_1062512))
+				journalDraw(pos.X+254, pos.Y+13, int(C.dword_5d4594_1062512))
 			}
 			objectRenderRestoreClip()
 		}

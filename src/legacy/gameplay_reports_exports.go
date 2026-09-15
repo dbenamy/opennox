@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "GAME3_2.h"
-typedef const char gameplay_report_const_char;
 typedef const nox_object_t gameplay_report_const_object;
 */
 import "C"
@@ -151,21 +150,6 @@ func nox_xxx_netReportTeamBase_4D92D0(a0 C.int, a1 C.int) C.int {
 //export nox_xxx_netSendReportNPC_4D93A0
 func nox_xxx_netSendReportNPC_4D93A0(a0 C.int, a1 C.int) *C.uint32_t {
 	return (*C.uint32_t)(unsafe.Pointer(uintptr(gameplayReportNPC(int(a0), (*server.Object)(unsafe.Pointer(uintptr(uint32(a1))))))))
-}
-
-//export nox_xxx_netSendJournalAdd_4D9440
-func nox_xxx_netSendJournalAdd_4D9440(a0 C.int, a1 *C.nox_playerInfo_journal) C.int {
-	return C.int(gameplayReportJournal(int(a0), unsafe.Pointer(a1), 1))
-}
-
-//export nox_xxx_netSendJournalRemove_4D94A0
-func nox_xxx_netSendJournalRemove_4D94A0(a0 C.int, a1 *C.gameplay_report_const_char) C.int {
-	return C.int(gameplayReportJournal(int(a0), unsafe.Pointer(a1), 2))
-}
-
-//export nox_xxx_netSendJournalUpdate_4D9500
-func nox_xxx_netSendJournalUpdate_4D9500(a0 C.int, a1 C.int) C.int {
-	return C.int(gameplayReportJournal(int(a0), unsafe.Pointer(uintptr(uint32(a1))), 3))
 }
 
 //export nox_xxx_netSendChapterEnd_4D9560

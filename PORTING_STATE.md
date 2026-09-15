@@ -2,37 +2,42 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining in the working tree: about 80k lines** — exactly **80,263
-physical lines** in 94 production `.c` files, with zero test-reference C. The
+**Rough C remaining in the working tree: about 80k lines** — exactly **79,924
+physical lines** in 93 production `.c` files, with zero test-reference C. The
 quantity-dialog/trade UI conversion removed 1,316 lines; shop prerequisites added
-22, and the qualified shop conversion removes 1,110. This is source size, not
+22, and the qualified shop conversion removes 1,110. The journal translation removes
+another 339. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — journal C baseline qualified; ready to commit
+## Current — journal Go conversion qualified; ready to commit/push
 
-Shop UI conversion **31ec1393 is committed/pushed**, against C baseline fbc11484.
-C remains **80,263 / 94 files / zero reference C**.
+Journal C baseline **2c3ea111 is committed/pushed**. All eleven native focused
+roots passed on the first implementation run; all **717 results / ten groups**
+match unchanged. Native affected corpus: **245 default / 243 server / 245 highres**.
+Three production builds pass, ELF32/i386/SSE2/CGO, ten retained journal interfaces,
+four retired interfaces absent and no test helpers. Full assets exactly match
+known 1,553 failures and 15/3/32 package outcomes. Fresh inventory gameplay passes
+all nine reference screenshots. All 1,627 source fingerprints unchanged during
+qualification. All jobs joined; no active reader or pending question.
 
-Journal scope: **11 routines / 339 removable C lines**. Production is unchanged.
-C baseline development passed eleven roots; three affected-corpus runs passed
-245 default / 243 server / 245 highres roots, with all 717 results / ten groups
-identical. All source fingerprints unchanged; production-identical shop evidence
-reused for baseline builds/full-assets/gameplay. Expectations are now frozen.
-Locked C repeat passed all eleven roots in 22.837s; all reader jobs joined.
-Next commit/push baseline, apply reviewed drafts, qualify native and commit/push.
-See [JOURNAL.md](docs/porting/JOURNAL.md). build/port-journal/apply-native.py requires
-c-baseline-commit.json; native Go and export/dispatcher drafts remain unapplied.
-Other *.stage files are stale and must not overwrite fixture fixes.
+Removed **339 C lines / eleven routines**: **79,924 / 93 files / zero reference C**.
+See [JOURNAL.md](docs/porting/JOURNAL.md) and build/port-journal/native-qualification.json.
+Go owns journal storage/reports/drawing; C allocation only preserves shared layout
+and failure behavior. Actual C save/load remains a qualified integration caller.
+No production prerequisite or native correction was needed; expectations unchanged.
 
-Use PORT.md's affected-corpus policy, with full corpus at milestones/shared
-changes/uncertain scope. All three native production builds/interfaces, exact
-full-asset failures and fresh inventory gameplay are required. The existing
-save/load serializer is a production caller, outside this conversion.
-No source edits during readers. Original assets/archive untouched. No question
-pending; no agents. Next candidate audited read-only: quest briefing presentation,
-seven routines / 787 C lines; no fixtures or final scope decision yet.
+Next: commit/push this qualified chunk, then quest briefing presentation and
+connected helpers, candidate **13 routines / 947 C lines**. Read-only caller audit
+and unapplied adapter/environment drafts are in build/port-briefing. The score
+producer packs up to six entries, explaining receiver sorting; do not invent a
+prerequisite from bounded sparse-input behavior. Own real window/music/fade/book/
+particle state for integration. No briefing source edits applied yet.
+
+All journal drafts are stale after application; do not reapply. Original assets/
+archive untouched. No agents. Use PORT.md's affected-corpus policy and no source
+edits during readers. Remaining historical uncertainties stay recorded.
 
 <!-- /current-checkpoint -->
 
