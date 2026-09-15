@@ -120,8 +120,7 @@ func uiInventoryHoverText(p image.Point) *uint16 {
 		if memmap.Uint8(0x5D4594, 1049870) == 1 {
 			return nil
 		}
-		point := [2]int32{int32(p.X), int32(p.Y)}
-		slot := int(C.sub_465990((*C.uint32_t)(unsafe.Pointer(&point[0]))))
+		slot := uiInventoryEquipmentAt(p)
 		if slot == -1 {
 			return alloc.InternCString16(uiInventoryText("DollRegionError"))
 		}

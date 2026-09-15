@@ -2,48 +2,50 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 84k lines** — exactly **84,237 physical lines** in
-97 production `.c` files, with zero test-reference C. This is source size, not
+**Rough C remaining: about 83k lines** — exactly **82,632 physical lines** in
+96 production `.c` files, with zero test-reference C. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — inventory window C baseline qualified; translation next
+## Current — inventory window conversion qualified
 
-The next connected batch has **34 routines / about 1,605 C lines**, covering
-inventory construction, drawing/animation, input, scrolling and lifecycle. Its
-qualified C baseline contains **2,120 frozen results / 29 groups**, plus independent
-contracts including 40,003 equipment hit-test points. Cumulative frozen coverage
-is **455,479 results / 1,185 groups**. Production remains **84,237 C lines / 97
-files / zero reference C**. The sole production prerequisite fully assigns a bool
-in trade-identify input instead of testing uninitialized high bytes.
+Seven Go owners now replace all 34 inventory window/input/lifecycle routines,
+removing **1,605 C lines** and retiring client__gui__guiinv.c. Eleven interfaces
+remain for actual C callers and callbacks; 23 retire and Go callers invoke Go
+directly. C baseline **0842b2d1** is pushed. Frozen coverage remains **2,120 results /
+29 groups** for this batch, **455,479 results / 1,185 groups** cumulatively.
+Focused native tests passed all 52 window/display tests with unchanged goldens.
 
-Affected qualification passed: default 313 tests (150.307s), server 311 (230.942s),
-highres 313 (154.457s). All three production builds verify ELF32/i386/SSE2/CGO,
-34 original interfaces and no test helpers. Full assets match exactly: 1,553 known
-failures, 15 pass / 3 fail / 32 skip packages. The expanded nine-screen inventory
-scenario passes a fresh seeded comparison with reference replacement disabled.
-All 1,574 final source fingerprints match; all jobs are joined.
+Native qualification passed: accumulated default **874 / 473.503s**,
+affected server **311 / 229.165s**, highres
+**313 / 152.932s**. Every selected root test started
+and finished. All three production binaries verify ELF32/i386/SSE2/CGO, 11 retained
+C interfaces, 23 retired interfaces and no test helpers. Full assets retain exactly
+**1,553 known failures**, 15 pass / 3 fail / 32 skip packages. The nine-screen
+headless scenario matches the committed C baseline's reference, with replacement
+disabled, in **51.206s**. All **1,580 source fingerprints** stayed
+unchanged throughout qualification. No hallway or identification mismatch recurred.
 
-The first broader run had one unexplained identification-display hash mismatch.
-Unchanged-source isolated/order replays and the broader repeat passed. Its first
-raw capture was unavailable; automatic capture-on-failure is now added, with
-unchanged expectations. Do not call it fixed or pre-existing. The older hallway
-mismatch also remains unexplained. Details and evidence are in
+The native-d fallback mismatch wrote an equipped flag to the drawable rather than
+the inventory cell. It was corrected with an independent contract; expectations
+stayed unchanged. The earlier hallway and identification mismatches remain
+unexplained, with automatic full failure captures enabled. See
 [CLIENT_INVENTORY_WINDOW.md](docs/porting/CLIENT_INVENTORY_WINDOW.md).
 
-Next translate this window batch against its frozen C baseline, qualify, measure
-C LOC, commit/push and continue. The audit also found cancellation retains one
-temporary drag drawable: preserve the recorded behavior during conversion, then
-fix it in a separate qualified Go cleanup chunk. Incomplete, uncompiled drafts
-are under build/port-client-inventory-window/native-*.go.stage; native-review.md
-lists remaining work. Actual source and committed expectations take precedence.
+Next fix the recorded cancellation drag-copy leak separately. An ignored draft
+build/port-client-inventory-cancel/contracts.go.stage covers repeated stack drag /
+cancel and close cycles, borrowed-equipment lifetimes, successful fallback and
+full-inventory failure. It is NOT integrated. First run its independent contracts
+against this qualified implementation to demonstrate the leak, then fix ownership
+and review every changed capture field before updating affected expectations.
 
-Display conversion 243fc816 is already pushed. Its and the transaction batch's
-integration scripts are ALREADY APPLIED; do not rerun them. Every Go shell sources
+The inventory-window, display and transaction integration scripts are ALREADY
+APPLIED; never rerun them. Ignored native drafts are stale. Every Go shell sources
 build/baseline/env.sh. Do not edit Go/C/header source while readers run; join all
-jobs including failures. Preserve the original assets/archive. Commit and push
-each qualified chunk, then continue under PORT.md. No user question is pending.
+jobs including failures. Preserve original assets/archive. Commit and push this
+qualified conversion, then continue one chunk at a time under PORT.md. No user
+question is pending.
 
 <!-- /current-checkpoint -->
 

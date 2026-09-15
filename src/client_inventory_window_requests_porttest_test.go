@@ -89,6 +89,13 @@ func TestClientInventoryWindowCancelFallback(t *testing.T) {
 				if cell.Drawable == nil {
 					t.Fatal("restored code has no drawable")
 				}
+				wantEquipped := uint32(0)
+				if equipped {
+					wantEquipped = 1
+				}
+				if cell.Equipped != wantEquipped {
+					t.Fatalf("fallback equipped flag%d want%d", cell.Equipped, wantEquipped)
+				}
 			}
 		}
 		if !found {

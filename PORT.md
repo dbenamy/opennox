@@ -14,12 +14,11 @@
 
 ## Current status
 
-Client inventory display, transactions, queries and meters are converted. The
-inventory window/input/lifecycle C baseline is now qualified: 34 routines / about
-1,605 C lines, with 2,120 frozen results and a nine-screen gameplay scenario.
-Next translate and qualify that connected batch, then correct its documented
-cancellation allocation leak in a separate cleanup chunk. Continue through
-baseline, translation, qualification, docs, commit and push. See
+Client inventory windows, input and lifecycle are converted, along with display,
+transactions, queries and meters. The latest connected batch removes 1,605 C lines
+and preserves 2,120 frozen results across 29 groups plus the nine-screen gameplay
+scenario. Next correct its documented cancellation allocation leak in a separate
+cleanup chunk, then continue to the next connected port batch. See
 [PORTING_STATE.md](PORTING_STATE.md) and
 [the window report](docs/porting/CLIENT_INVENTORY_WINDOW.md).
 An isolated hallway mismatch and a later identification-display mismatch remain

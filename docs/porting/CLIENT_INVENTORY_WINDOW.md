@@ -1,16 +1,16 @@
 # Client inventory windows, input and lifecycle
 
-Status: **C baseline qualified; Go translation next**, following display conversion
-`243fc816`. Production C remains **84,237 / 97 files / zero reference C**.
-No inventory window routines have been removed yet.
+Status: **native Go conversion qualified**, following qualified C baseline
+`0842b2d1`. Production now contains **82,632 C lines /
+96 files / zero reference C**; 1,605 C lines have been removed.
 
 ## Connected scope
 
 34 routines / 1,544 address-block C lines cover construction and image loading,
 main drawing/animation, open/close/reset, scroll/mode events, equipment selection,
 hover routing, trade selection and item drag/drop/cancellation. Removing the last
-five routines from client__gui__guiinv.c should also retire its remaining 61
-include/extern lines: about **1,605 physical C lines**. Measure after conversion.
+five routines from client__gui__guiinv.c also retires its remaining 61
+include/extern lines: **1,605 physical C lines** in total.
 Paper-doll composition and journal internals remain separate existing owners.
 
 ## Baseline and fixtures
@@ -61,7 +61,7 @@ unchanged. Undefined high bytes are not a compatibility oracle.
 The geometry audit found no uncovered valid paper-doll point, even with slot0
 empty. The equipment index therefore needs no speculative correction.
 
-## Qualification
+## C baseline qualification
 
 Affected tests passed: default **313 / 150.307s**, server **311 / 230.942s**,
 highres **313 / 154.457s**. Every selected test started and completed.
@@ -128,8 +128,48 @@ code first; actual restoration appends it to the stack. Removal/restoration orde
 now has independent checks. These fixture corrections did not change production
 logic. All source-reading jobs, including failures, were joined before edits.
 
-Ignored native-*.go.stage files contain incomplete, uncompiled translation drafts;
-native-review.md lists remaining work. Do not treat drafts as integrated or rerun
-older scripts blindly. Translate against the frozen expectations, qualify the
-whole connected batch, record the new C LOC, commit/push, then address cancellation
-ownership. No user question is pending.
+Ignored native-*.go.stage drafts are stale after integration and compile
+corrections. Actual source and committed expectations take precedence. The
+integration script is already applied; never rerun it.
+
+## Native conversion
+
+Baseline **0842b2d1 is committed and pushed**. Seven Go owners now replace all
+34 routines. The obsolete inventory translation unit is deleted: **1,605 C lines
+removed**, leaving **82,632 / 96 files / zero reference C** in the working tree.
+Eleven interfaces remain for C callers or tooltip/quantity callbacks; 23 internal
+functions retire. The source audit finds no remaining C reference to a retired
+function. Go callers use Go directly. Binary qualification confirms those interfaces in all three targets.
+
+Native-a/b failed discovery on missing headers; native-c exposed C/Go pointer,
+UTF-16 and integer conversions. Native-d compiled and completed all 52 selected
+window/display tests, with 51 passing (180.993s). Its sole mismatch had exactly
+two fields: fallback cancellation wrote the equipped flag to a drawable instead
+of the cell. The pointer expression was corrected and an independent equipped-cell
+assertion added. No frozen expectation changed. Native-e passed all 52
+tests in 180.632s; all 29 raw capture hashes match the frozen C baseline. The
+accumulated default suite passed all 874 selected root tests in 473.503s.
+All failed jobs were joined before editing; ignored drafts are now stale.
+
+Native qualification passed: accumulated default **874 / 473.503s**,
+affected server **311 / 229.165s**, highres
+**313 / 152.932s**. Every selected root test started
+and finished. All three production binaries verify ELF32/i386/SSE2/CGO, 11 retained
+C interfaces, 23 retired interfaces and no test helpers. Full assets retain exactly
+**1,553 known failures**, 15 pass / 3 fail / 32 skip packages. The nine-screen
+headless scenario matches the committed C baseline's reference, with replacement
+disabled, in **51.206s**. All **1,580 source fingerprints** stayed
+unchanged throughout qualification. No hallway or identification mismatch recurred.
+
+Evidence: native-qualification.json, native-focused-capture-verification.json,
+native-{default,server,highres}-result.json, native-binary-verification.json,
+native-source-interface-audit.json and full-suite-comparison.json under
+build/port-client-inventory-window. The fresh gameplay run is
+build/baseline/runs/client-inventory-window-port. Completed development captures
+have verified lossless compression manifests. Original assets remain unchanged.
+
+The deterministic cancellation leak remains deliberately unchanged in this
+conversion. Its next, separate cleanup will first demonstrate the leak with
+independent lifetime contracts, then verify precise ownership changes without
+changing unrelated gameplay expectations. C baseline and original hashes remain
+recoverable from Git.

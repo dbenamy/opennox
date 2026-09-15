@@ -475,7 +475,7 @@ func Sub_4BFAD0() int {
 	return int(C.sub_4BFAD0())
 }
 func Nox_xxx_wndCreateInventoryMB_465E00() uint32 {
-	return uint32(C.nox_xxx_wndCreateInventoryMB_465E00())
+	return uint32(uiInventoryCreateWindow())
 }
 func Nox_game_initOptionsInGame_4ADAD0() int {
 	return int(C.nox_game_initOptionsInGame_4ADAD0())
@@ -601,7 +601,7 @@ func Sub_46A860() {
 	C.sub_46A860()
 }
 func Sub_467980() {
-	C.sub_467980()
+	uiInventoryResetWindow()
 }
 func Sub_460D50() {
 	C.sub_460D50()
@@ -627,7 +627,7 @@ func Nox_xxx_plrLoad_41A480(a1 string) int {
 	return int(C.nox_xxx_plrLoad_41A480(str))
 }
 func Sub_465DE0(a1 int) {
-	C.sub_465DE0(C.int(a1))
+	uiInventorySetWindowLevel(a1)
 }
 func Sub_4E79B0(a1 int) {
 	C.sub_4E79B0(C.int(a1))

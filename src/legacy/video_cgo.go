@@ -125,7 +125,7 @@ func Sub_4611A0() int {
 	return int(C.sub_4611A0())
 }
 func Sub_467CD0() {
-	C.sub_467CD0()
+	uiInventoryCancelDrag()
 }
 func Nox_xxx_setSomeFunc_48A210(a1 unsafe.Pointer) {
 	C.nox_xxx_setSomeFunc_48A210(C.int(uintptr(a1)))

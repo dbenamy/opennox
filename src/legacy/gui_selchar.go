@@ -106,7 +106,7 @@ func Nox_xxx_reconStart_41E400() {
 	C.nox_xxx_reconStart_41E400()
 }
 func Sub_467C10() int {
-	return int(C.sub_467C10())
+	return uiInventoryCloseWindow()
 }
 func Nox_xxx_guiServerOptionsTryHide_4574D0() int {
 	return int(C.nox_xxx_guiServerOptionsTryHide_4574D0())
@@ -118,7 +118,7 @@ func Sub_460660() {
 	C.sub_460660()
 }
 func Sub_467BB0() {
-	C.sub_467BB0()
+	uiInventoryOpenWindow()
 }
 func Sub_4602F0() {
 	C.sub_4602F0()

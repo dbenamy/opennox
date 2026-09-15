@@ -28,7 +28,6 @@ int sub_456DF0(int a1);
 void sub_455950(wchar2_t* a1);
 int sub_455920(wchar2_t* a1);
 int sub_43C650();
-int sub_467CA0();
 void* sub_49BB80(char a1);
 int* nox_xxx_guiServerOptionsHide_4597E0(int a1);
 int nox_net_importantACK_4E55A0(int a1, int a2);
@@ -208,7 +207,7 @@ func Sub_49C7A0() {
 	C.sub_49C7A0()
 }
 func Sub_467CA0() {
-	C.sub_467CA0()
+	uiInventoryResetClosedScroll()
 }
 func Sub_48D660() {
 	C.sub_48D660()

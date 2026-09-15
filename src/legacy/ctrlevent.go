@@ -110,7 +110,7 @@ func Nox_client_toggleSpellbook_45AC70() {
 }
 
 func Nox_client_toggleInventory_467C60() {
-	C.nox_client_toggleInventory_467C60()
+	uiInventoryToggleWindow()
 }
 
 func Nox_client_mapZoomIn_4724E0() {

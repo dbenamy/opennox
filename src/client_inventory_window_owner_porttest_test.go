@@ -67,7 +67,9 @@ func newInventoryWindowOwner(t *testing.T) *inventoryWindowOwner {
 		t.Cleanup(func() { copy(b, old) })
 	}
 	for i, p := range legacy.PortTestInventoryWindowCallbacks() {
-		o.c.callbackRefs[p] = 0xed200000 + uint32(i)
+		if p != nil {
+			o.c.callbackRefs[p] = 0xed200000 + uint32(i)
+		}
 	}
 	names := []string{"InventoryBase", "InventoryIdentifyBase", "InventoryTray1", "InventoryTray2", "InventoryTray3", "InventoryTraySpecial", "InventoryTrayIdentifyLit", "InventoryTrayMapLit", "InventoryUpButton", "InventoryUpButtonLit", "InventoryDownButton", "InventoryDownButtonLit", "InventorySliderButton", "InventorySliderButtonLit", "InventoryEquipRing", "InventoryQuickItemRing", "InventoryCloseButtonLit", "InventoryJournalButtonLit", "InventoryInventoryButton", "InventoryInventoryButtonLit", "InventoryDollButtonLit", "InventoryStatsButton", "InventoryStatsButtonLit", "GUIFist", "SharedKeyMode", "CurrentWeapon", "CurrentWeaponLit", "DefaultLBUpButton", "DefaultLBUpButtonLit", "DefaultLBUpButtonDis", "DefaultLBDownButton", "DefaultLBDownButtonLit", "DefaultLBDownButtonDis", "DefaultSliderThumb", "DefaultSliderThumbLit", "DefaultSliderThumbDis", "MultiMoveBase", "MultiMoveUpLit", "MultiMoveDownLit", "MultiMoveYesPressed", "MultiMoveNoPressed", "MultiMoveBaseNoTag", "MultiMoveYesPressedNoTag", "MultiMoveNoPressedNoTag"}
 	images := make(map[string]*noxrender.Image, len(names))

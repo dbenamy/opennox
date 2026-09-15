@@ -1,0 +1,187 @@
+package legacy
+
+/*
+#include "defs.h"
+#include "GAME2_2.h"
+#include "GAME5_2.h"
+#include "GAME1_2.h"
+#include "GAME1_3.h"
+#include "GAME2.h"
+#include "GAME2_1.h"
+#include "GAME3.h"
+#include "GAME3_1.h"
+#include "GAME5.h"
+extern uint32_t dword_5d4594_1063116, dword_5d4594_1063120;
+extern uint32_t dword_5d4594_1049864, dword_5d4594_1049844;
+extern uint32_t dword_5d4594_1062516, dword_5d4594_1062512;
+extern uint32_t dword_5d4594_1062508, dword_5d4594_1049856;
+extern uint32_t dword_5d4594_1049796_inventory_click_column_index;
+extern uint32_t dword_5d4594_1049800_inventory_click_row_index;
+extern nox_window* dword_5d4594_1062452;
+*/
+import "C"
+
+import (
+	"github.com/opennox/opennox/v1/client/gui"
+	"github.com/opennox/opennox/v1/common/memmap"
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
+	"unsafe"
+)
+
+func uiInventoryCloseIdentify() int {
+	w := uiInventoryIdentifyWindow()
+	if w == nil || w.Flags.IsHidden() {
+		return 0
+	}
+	w.Hide()
+	C.dword_5d4594_1063116, C.dword_5d4594_1063120 = 0, 0
+	alloc.StrCopyZero16(unsafe.Slice((*uint16)(memmap.PtrOff(0x5D4594, 1063124)), 256), uiInventoryText("thing.db:IdentifyDescription"))
+	w.ChildByID(9156).Func94(&gui.RawEvent{Event: 16399})
+	uiInventoryMainWindow().Capture(false)
+	C.dword_5d4594_1049864 = 0
+	nox_client_setCursorType_477610(0)
+	return 1
+}
+
+//export sub_462740
+func sub_462740() C.int { return C.int(uiInventoryCloseIdentify()) }
+
+func uiInventoryOpenIdentify() int {
+	uiInventoryIdentifyWindow().Show()
+	C.dword_5d4594_1049864 = 5
+	nox_client_setCursorType_477610(6)
+	if !uiInventoryMainWindow().Capture(true) {
+		return -4
+	}
+	return 0
+}
+func uiInventoryWindowOpenState() bool {
+	state := memmap.Uint8(0x5D4594, 1049868)
+	return state == 1 || state == 2
+}
+
+//export sub_467C80
+func sub_467C80() C.int { return C.int(bool2int(uiInventoryWindowOpenState())) }
+
+func uiInventoryOpenWindow() int {
+	if v := int(C.nox_gui_xxx_check_446360()); v != 0 {
+		return v
+	}
+	if v := int(C.sub_4AE3D0()); v != 0 {
+		return v
+	}
+	if v := int(C.nox_xxx_guiCursor_477600()); v != 0 {
+		return v
+	}
+	if v := Nox_xxx_playerAnimCheck_4372B0(); v != 0 {
+		return v
+	}
+	if v := int(C.nox_xxx_get_57AF20()); v != 0 {
+		return v
+	}
+	state := memmap.PtrUint8(0x5D4594, 1049868)
+	if *state == 0 || *state == 3 {
+		*state = 1
+		C.nox_xxx_clientPlaySoundSpecial_452D80(789, 100)
+	}
+	C.dword_5d4594_1062512 = C.dword_5d4594_1062516
+	return int(int32(C.dword_5d4594_1062516))
+}
+
+//export sub_467BB0
+func sub_467BB0() C.int { return C.int(uiInventoryOpenWindow()) }
+
+func uiInventoryCloseWindow() int {
+	if uiInventoryMode() == 6 {
+		return 1
+	}
+	if !uiInventoryWindowOpenState() {
+		return 0
+	}
+	*memmap.PtrUint8(0x5D4594, 1049868) = 3
+	C.nox_xxx_clientPlaySoundSpecial_452D80(790, 100)
+	if uiInventoryMode() == 5 {
+		uiInventoryCloseIdentify()
+	}
+	uiInventoryCancelDrag()
+	return 1
+}
+
+//export sub_467C10
+func sub_467C10() C.int { return C.int(uiInventoryCloseWindow()) }
+func uiInventoryToggleWindow() int {
+	if uiInventoryWindowOpenState() {
+		return uiInventoryCloseWindow()
+	}
+	return uiInventoryOpenWindow()
+}
+func uiInventoryRepairMode() int {
+	uiInventoryCloseIdentify()
+	C.dword_5d4594_1049864 = 6
+	nox_client_setCursorType_477610(8)
+	if uiInventoryWindowOpenState() {
+		return 1
+	}
+	return uiInventoryOpenWindow()
+}
+
+//export sub_467650
+func sub_467650() C.int { return C.int(uiInventoryRepairMode()) }
+
+func uiInventoryResetClosedScroll() int {
+	if uiInventoryWindowOpenState() {
+		return 1
+	}
+	C.dword_5d4594_1062516 = 0
+	w := (*gui.Window)(unsafe.Pointer(uintptr(C.dword_5d4594_1062508)))
+	if w == nil {
+		return 0
+	}
+	max := (*gui.SliderData)(w.WidgetData).Max
+	return gui.EventRespInt(w.Func94(&gui.RawEvent{Event: 16394, Arg1: uintptr(uint32(max))}))
+}
+func uiInventorySetWindowLevel(level int) int {
+	C.dword_5d4594_1049844 = C.uint32_t(level)
+	return int(nox_xxx_inventoryNameSignInit_4671E0())
+}
+
+//export sub_465DE0
+func sub_465DE0(level C.int) C.int { return C.int(uiInventorySetWindowLevel(int(level))) }
+
+func uiInventoryCancelDrag() int {
+	ret := 0
+	if dr := uiInventoryDragged(); dr != nil {
+		if C.dword_5d4594_1049856 == 0 && uiInventoryPlace(dr, int(int32(C.dword_5d4594_1049796_inventory_click_column_index)), int(int32(C.dword_5d4594_1049800_inventory_click_row_index))) == 0 {
+			nox_xxx_spritePickup_461660(C.int(dr.NetCode32), C.int(dr.TypeIDVal), unsafe.Add(dr.C(), 432))
+			if found := uiInventoryFindCode(dr.NetCode32); found != nil {
+				restored := found.Cell
+				restored.Equipped = 0
+				for _, v := range uiInventoryEquipment() {
+					for eq := uiInventoryDrawable(v); eq != nil; eq = uiInventoryNext(eq) {
+						if eq.NetCode32 != dr.NetCode32 {
+							continue
+						}
+						restored.Equipped = 1
+						if restored.Alternate != 0 {
+							uiInventorySetAlternate(nil)
+							restored.Alternate = 0
+						}
+						break
+					}
+				}
+			}
+		}
+		// C retains this temporary allocation. Correct it in the separately qualified
+		// cancellation-ownership follow-up, not by changing the frozen port baseline.
+		uiInventorySetDragged(nil)
+		C.dword_5d4594_1049856 = 0
+		Nox_xxx_cursorSetDraggedItem_477690(nil)
+		ret = 1
+	}
+	parent := (*gui.Window)(unsafe.Pointer(C.dword_5d4594_1062452))
+	captured := GetClient().Cli().GUI.Captured()
+	if nox_window_is_child((*nox_window)(parent.C()), (*nox_window)(captured.C())) == 1 {
+		captured.Capture(false)
+	}
+	return ret
+}
