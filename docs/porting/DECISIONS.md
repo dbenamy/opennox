@@ -916,3 +916,23 @@ execution was 598.823s, so give the next complete-corpus run a longer explicit
 timeout before adding further coverage; retain strict root completion/failure
 checks. Following batches resume the documented
 affected-corpus policy until another milestone or uncertain dependency scope.
+
+
+### Scoreboard compatibility and scratch ownership
+
+Preserve stable score selection, unsigned rank comparisons, observer score
+adjustments and their restoration, mode-specific team/player counts and raw
+UTF-16 record copying. Long names can overlap the adjacent team field before that
+field is rewritten; the narrow-font fixtures preserve the existing bytes and
+rendered result. A bounded-name behavioral correction belongs in separate review,
+as do unsupported sort sentinels and inconsistent headless-host counts. These
+limits are documented rather than silently changed during translation.
+
+Use existing mapped scratch for dynamic score/time text instead of permanently
+interning each changing string. Retain only the five interfaces with real C callers;
+move private callers to Go and retire the newly private briefing-stage bridge.
+Use affected three-target qualification after the prior complete briefing milestone,
+plus all production builds, exact known-failure comparison and both hosted-scoreboard
+and chapter gameplay. Post-review callback-adapter cleanup repeats the full scoreboard
+family in all three targets, with exact production fingerprints to reuse the broader
+checks. See SCOREBOARD.md for evidence and limits.

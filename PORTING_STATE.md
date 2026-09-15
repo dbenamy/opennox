@@ -2,49 +2,40 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining in the working tree: about 79k lines** — exactly **78,657
-physical lines** in 92 production `.c` files, with zero test-reference C. The
-quantity-dialog/trade UI conversion removed 1,316 lines; shop prerequisites added
-22, and the qualified shop conversion removes 1,110. The journal translation removes
-another 339; the qualified briefing translation removes 947. The qualified window lifecycle
-translation removes 320 more.
-This is source size, not
-an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 77k lines** — exactly **77,120 physical lines** in
+91 production `.c` files, with zero test-reference C. The latest scoreboard/rank
+conversion removes **1,537 C lines / 31 routines**. This is source size, not an
+estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — scoreboard C baseline qualified; Go translation next
+## Current — scoreboard Go conversion qualified
 
-Briefing-window conversion **0b3ed13d is committed/pushed**. It removed nine
-routines / 320 C lines; **78,657 / 92 files / zero reference C** remain. All 840
-briefing results match. Complete accumulated qualification passed in all three
-targets, with the existing optional skip; production builds/ABI, exact full-assets
-known failures and eight fresh chapter checkpoints all passed. Highres root took
-598.823s: allow more margin before the next complete-corpus milestone.
-See [BRIEFING_WINDOW.md](docs/porting/BRIEFING_WINDOW.md).
+C baseline **73017352 is committed/pushed**. The connected Go conversion is fully
+qualified and ready to commit/push: all **2,137 frozen results / eighteen groups**
+match, affected tests and the post-review fifteen-root family pass in all three
+targets. All production builds/ABI, exact full-assets known failures, five hosted
+scoreboard states and eight chapter frames pass. See
+[SCOREBOARD.md](docs/porting/SCOREBOARD.md). C remaining: **77,120 / 91 / zero reference C**.
 
-Applied **test-only scoreboard C fixtures**, with all expectations frozen and
-qualified. Production is unchanged. Scope is 31 connected routines /
-1,504 function-block lines; see [SCOREBOARD.md](docs/porting/SCOREBOARD.md) and
-build/port-scoreboard/README.md for remaining coverage and draft caveats.
+All readers joined. Broad qualification's production source is identical to the
+post-review tree; only the test adapter changed to invoke its two empty callbacks
+directly. No golden changes. Logs, hashes, source fingerprints, binaries and
+qualification manifests are under build/port-scoreboard. Native and applied fixture
+stage files are stale: do not rerun their integration/freeze scripts.
 
-Affected C qualification completed in all three targets: 286/284/286 roots,
-all 2,025 original results exact. Added 112 actual long-name record/draw results;
-all **2,137 results / eighteen groups** now have frozen expectations.
-Final locked fifteen-root family passed all three targets: default 50.224s,
-server 49.019s, highres 49.462s. Every frozen result matches; source unchanged.
-All readers joined; no active job.
-No production source changes; ignored native_state/native_collect.go.stage drafts
-are incomplete/unapplied. Other old fixture stages are stale, not recovery inputs.
+Next commit/push this conversion, then establish the actual-owner C baseline for
+the connected minimap renderer: fifteen routines / 696 function-block lines.
+Read build/port-minimap/README.md and its scope/caller audit. Its dispatch/primitive
+fixture drafts are **unapplied/uncompiled**, with empty development expectations;
+add meaningful full renderer, wall/player/team/objective, polygon/visibility and
+fresh gameplay coverage before freezing. No question pending; continue autonomously.
 
-Exact production fingerprints match qualified 0b3ed13d, so its builds/full-assets/
-chapter evidence is reused. Corrected local hosted scoreboard gameplay has a fresh
-five-checkpoint repeat (30.099s, updates false), preserved by the tracked scenario
-and pixel manifest. Next commit/push this C baseline, then translate the connected family. No question pending.
-
-Old derived Go cache entries (118 files / 2,036,853,907 bytes) were removed only
-after all prior readers joined; manifest build/port-scoreboard/cache-pruned.json.
-Original assets/archive untouched. No question pending; continue autonomously.
+The last full accumulated milestone was the briefing-window conversion 0b3ed13d.
+Highres root took 598.823s; give the next full-corpus run a longer explicit timeout.
+Following batches use the documented affected-corpus policy until that milestone.
+Original assets/archive remain unchanged. Derived cache pruning and gameplay
+asset deduplication manifests are retained locally.
 
 <!-- /current-checkpoint -->
 

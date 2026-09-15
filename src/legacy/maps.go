@@ -183,7 +183,7 @@ func Sub_445FF0() {
 }
 
 func Sub_470680() {
-	C.sub_470680()
+	scoreboardClearFlags()
 }
 
 func Sub_461520() {

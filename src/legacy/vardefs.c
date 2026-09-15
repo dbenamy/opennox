@@ -238,6 +238,7 @@ uint32_t nox_xxx_energyBoltTarget_5d4594_2487880 = 0;
 uint32_t dword_5d4594_832504 = 0;
 uint32_t dword_5d4594_1203864 = 0;
 uint32_t dword_5d4594_832508 = 0;
+nox_window* dword_5d4594_1090048 = 0;
 uint32_t dword_5d4594_1090100 = 0;
 uint32_t dword_5d4594_3835356 = 0;
 uint32_t nox_client_renderBubbles_80844 = 0x1;

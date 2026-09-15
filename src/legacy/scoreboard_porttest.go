@@ -2,82 +2,81 @@
 
 package legacy
 
-/*
-#include "GAME2_1.h"
-#include "client__gui__guirank.h"
-*/
-import "C"
-import "unsafe"
+import (
+	"github.com/opennox/opennox/v1/client/gui"
+	"github.com/opennox/opennox/v1/server"
+	"unsafe"
+)
 
-// PortTestScoreboard invokes the original owners. The variadic formatter is
-// exercised through its actual row-rendering callers, not a C test substitute.
+// PortTestScoreboard invokes the production owners directly. Row formatting is
+// exercised through its real rendering callers, with no test-only algorithm.
 func PortTestScoreboard(op int, a, b, c uintptr) uint32 {
+	ptr := func(p *uint16) uint32 { return uint32(uintptr(unsafe.Pointer(p))) }
+	signedByte := func(v byte) uint32 { return uint32(int32(int8(v))) }
 	switch op {
 	case 0:
-		return uint32(uintptr(unsafe.Pointer(C.sub_46DC60(C.int(a), C.uchar(b), C.int(c)))))
+		return uint32(scoreboardInsertSafe((*gui.Window)(unsafe.Pointer(a)), byte(b), (*uint16)(unsafe.Pointer(c))))
 	case 1:
-		return uint32(C.nox_xxx_guiDrawRank_46E870())
+		return uint32(uintptr(unsafe.Pointer(scoreboardConstruct())))
 	case 2:
-		return uint32(uintptr(unsafe.Pointer(C.sub_46F030())))
+		return ptr(scoreboardLoadClasses())
 	case 3:
-		return uint32(C.sub_46F080(C.int(a), C.int(b)))
+		return uint32(scoreboardDraw((*gui.Window)(unsafe.Pointer(a)), (*gui.WindowData)(unsafe.Pointer(b))))
 	case 4:
-		return uint32(uintptr(unsafe.Pointer(C.sub_46F8F0(C.int(a), C.int(b)))))
+		return uint32(scoreboardHeadings(int(a), int(b)))
 	case 5:
-		return uint32(uintptr(unsafe.Pointer(C.sub_46FB50(C.int(a), (*C.uint8_t)(unsafe.Pointer(b))))))
+		return ptr(scoreboardStatus(int(a), (*byte)(unsafe.Pointer(b))))
 	case 6:
-		return uint32(C.sub_46FC50())
+		return signedByte(scoreboardTimeHeading())
 	case 7:
-		return uint32(C.sub_46FD80())
+		return uint32(scoreboardLessonHeading())
 	case 8:
-		return uint32(C.sub_46DB80())
+		return uint32(scoreboardClearRows())
 	case 9:
-		return uint32(C.sub_46DC00(C.int(a), C.uchar(b), C.int(c)))
+		return uint32(scoreboardInsert((*gui.Window)(unsafe.Pointer(a)), byte(b), (*uint16)(unsafe.Pointer(c))))
 	case 11:
-		return uint32(uintptr(unsafe.Pointer(C.sub_46DCC0())))
+		scoreboardCollect()
+		return 0
 	case 12:
-		return uint32(C.sub_46E080(C.int(a)))
+		return uint32(scoreboardObjective((*server.Player)(unsafe.Pointer(a))))
 	case 13:
-		return uint32(C.sub_46E130(C.int(a)))
+		return uint32(bool2int(scoreboardHasTeam(uint32(a))))
 	case 14:
-		return uint32(uintptr(unsafe.Pointer(C.sub_46E170((*C.wchar2_t)(unsafe.Pointer(a))))))
+		return ptr(scoreboardClipName((*uint16)(unsafe.Pointer(a))))
 	case 15:
-		return uint32(C.sub_46E1E0(C.int(a)))
+		return uint32(bool2int(scoreboardHasPlayer(uint32(a))))
 	case 16:
-		return uint32(uintptr(unsafe.Pointer(C.sub_46E4E0())))
-	case 17:
-		return uint32(C.sub_46F060())
-	case 18:
-		return uint32(C.nox_xxx_Proc_46F070())
+		scoreboardCollectOrdinary()
+		return 0
+	case 17, 18:
+		return uint32(gui.EventRespInt(scoreboardEmptyEvent(nil, gui.AsWindowEvent(0, 0, 0))))
 	case 19:
-		C.sub_46FAE0()
+		scoreboardHighlight()
 		return 0
 	case 20:
-		return uint32(C.sub_46FE60(C.int(a)))
+		return uint32(scoreboardTeamIndex(uint32(a)))
 	case 21:
-		return uint32(C.sub_46FEB0(C.uchar(a)))
+		return uint32(scoreboardTeamColor(byte(a)))
 	case 22:
-		return uint32(C.sub_46FEE0())
+		return signedByte(scoreboardLocalRank())
 	case 23:
-		return uint32(C.sub_46FF70(C.int(a)))
+		return signedByte(scoreboardTeamRank(uint32(a)))
 	case 24:
-		return uint32(C.sub_46FFD0())
+		return uint32(scoreboardDrawQuest())
 	case 25:
-		return uint32(C.sub_470580())
+		return uint32(bool2int(scoreboardVisible()))
 	case 26:
-		C.sub_4705B0()
+		scoreboardOpen()
 		return 0
 	case 27:
-		return uint32(C.sub_4705F0(C.char(a), C.char(b), C.short(c)))
+		return signedByte(scoreboardSetFlag(byte(a), byte(b), uint16(c)))
 	case 28:
-		return uint32(C.sub_470650(C.char(a), C.short(b)))
+		return signedByte(scoreboardSetBall(byte(a), uint16(b)))
 	case 29:
-		return uint32(C.sub_470680())
+		return uint32(scoreboardClearFlags())
 	case 30:
-		return uint32(C.sub_4706A0())
+		return uint32(bool2int(scoreboardEnabled()))
 	}
 	panic("unknown scoreboard operation")
 }
-func PortTestScoreboardCallbacks() []unsafe.Pointer {
-	return []unsafe.Pointer{C.sub_46F060, C.nox_xxx_Proc_46F070, C.sub_46F080}
-}
+func PortTestScoreboardCallbacks() []unsafe.Pointer { return []unsafe.Pointer{nil, nil, nil} }

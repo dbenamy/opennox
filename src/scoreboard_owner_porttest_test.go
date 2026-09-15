@@ -22,7 +22,7 @@ import (
 )
 
 // Reuse the presentation fixture's actual GUI, font/string, renderer and player
-// ownership. Scoreboard routines and their sorting/formatting remain original C.
+// ownership. Scoreboard routines use their actual production implementations.
 type scoreboardOwner struct {
 	*briefingOwner
 	rankWords   map[string]*uint32

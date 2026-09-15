@@ -14,18 +14,16 @@
 
 ## Current status
 
-Client inventory, quantity-dialog, trade, shop UI, quest journal and the full
-briefing presentation/window family are converted. The latest window batch
-removed **320 C lines / nine routines**; all **840 briefing results** are unchanged.
-Complete accumulated tests passed in all three targets, as did production builds,
-known-failure comparison and fresh chapter gameplay. About **79k C lines remain**:
-**78,657 physical lines in 92 production files**, with zero test-reference C.
-Next: translate the connected scoreboard/rank family, **31 routines / 1,504
-function-block lines**. Its C baseline is frozen: 2,137 actual-owner results,
-three-target affected and locked tests, and fresh hosted-game screenshots pass.
-See [the scoreboard report](docs/porting/SCOREBOARD.md).
-See [the window report](docs/porting/BRIEFING_WINDOW.md),
-[the presentation report](docs/porting/BRIEFING.md) and [PORTING_STATE.md](PORTING_STATE.md).
+Client inventory, quantity-dialog, trade, shop UI, quest journal, briefing and
+scoreboard/rank presentation are converted. The latest scoreboard batch removes
+**1,537 C lines / 31 routines**; all **2,137 frozen results** are unchanged in all
+three targets. Affected tests, production builds/ABI, exact known-failure comparison
+and fresh hosted/chapter gameplay passed. About **77k C lines remain**:
+**77,120 physical lines in 91 production files**, with zero test-reference C.
+Next: the connected minimap renderer and helpers, **15 routines / 696 C
+function-block lines**, starting with actual-owner C baseline fixtures.
+See [the scoreboard report](docs/porting/SCOREBOARD.md) and
+[PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.
 

@@ -436,7 +436,7 @@ func Sub_416650() int {
 	return int(C.sub_416650())
 }
 func Sub_46DCC0() {
-	C.sub_46DCC0()
+	scoreboardCollect()
 }
 func Sub_409B80() string {
 	return GoString(C.sub_409B80())
@@ -511,7 +511,7 @@ func Sub_4C3500() int {
 	return int(C.sub_4C3500())
 }
 func Nox_xxx_guiDrawRank_46E870() uint32 {
-	return uint32(C.nox_xxx_guiDrawRank_46E870())
+	return uint32(uintptr(unsafe.Pointer(scoreboardConstruct())))
 }
 func Nox_xxx_guiMotdLoad_4465C0() uint32 {
 	return uint32(C.nox_xxx_guiMotdLoad_4465C0())

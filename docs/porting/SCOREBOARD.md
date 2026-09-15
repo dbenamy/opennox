@@ -1,15 +1,16 @@
 # Scoreboard and rank presentation
 
-Status: **C baseline qualified and frozen**, after qualified/pushed briefing-window
-conversion **0b3ed13d**. Production remains **78,657 C lines / 92 files / zero
-reference C**. No scoreboard production translation applied yet.
+Status: **Go conversion qualified**, from committed/pushed C baseline
+**73017352**. The connected 31-routine batch removes **1,537 physical C lines**;
+**77,120 C lines / 91 files / zero reference C** remain. All 2,137 frozen results
+match in default/server/highres, with production and gameplay qualification below.
 
 Scope: 31 connected routines, about 1,504 function-block lines, across
 client__gui__guirank.c and GAME2_1.c. Includes window construction, player/team
 collection and ordering, row/column formatting, rank/status/heading rendering,
 objective indicators and mode/visibility helpers. The existing Go mode-cycle and
-network-refresh callers remain actual integration. Removing guirank.c must retain
-its shared window definition or deliberately migrate its bindings. Function-block
+network-refresh callers remain actual integration. Removing guirank.c retains
+its shared window definition in vardefs.c. Function-block
 count is not the final net physical C LOC reduction.
 
 The baseline reuses actual GUI/listbox/static-text, renderer/fonts/strings,
@@ -26,16 +27,15 @@ Additional fixtures cover real team membership, supported headless-host filterin
 timer/lesson branches, refresh boundaries, objective buffs and populated rows. Exact sort-sentinel inputs need separate
 invariant analysis; do not misclassify unsupported state as a port regression.
 
-A fresh headless scoreboard scenario is being developed with the original C
+The headless scoreboard scenario was developed with the original C
 scoreboard in the qualified binary. F9 is the installed default rank key; cycling
 in ordinary play requests players, teams, top three and closed. Visual inspection
-must confirm the screenshots actually show those states before accepting them as
-baseline evidence. Capture names alone are not evidence. Repeat from fresh assets
-and saves with golden updates disabled before freezing.
+confirmed the corrected screenshots show those states before accepting them as
+baseline evidence. Capture names alone were insufficient. A fresh repeat with
+golden updates disabled passed before freezing.
 
 Local drafts, scope/caller audit, logs and captures: build/port-scoreboard.
-Original assets and archive remain unchanged. This report is a development
-checkpoint, not a qualification claim.
+Original assets and archive remain unchanged. The qualification results and original development diagnostics follow.
 
 
 ## Development diagnostics
@@ -139,3 +139,62 @@ Local evidence lives in
 build/port-scoreboard/{c-qualification,locked-c-qualification,frozen-captures}.json.
 The original development failures above are retained to distinguish fixture fixes
 from production changes; no C algorithm was changed to produce this oracle.
+
+## Go implementation and qualification
+
+C baseline **73017352** is committed and pushed. The connected translation is qualified. It removes 1,537 physical C lines, including
+the guirank.c preamble while relocating its one shared window definition to
+vardefs.c. Working-tree count: **77,120 C lines / 91 files / zero reference C**.
+Five scoreboard C entry points remain for actual C callers. All other scoreboard
+entry points, plus the now-private briefing-stage bridge, retire. Go callers invoke
+Go directly; typed shared records have compile-time size and field-offset checks.
+
+Native-a stopped during discovery (17.702s): an existing Go collector wrapper
+still called the retired C function. Redirected it to the Go collector. No goldens
+changed. Native-b passed all fifteen roots in **182.378s** and all 2,137 hashes match.
+Review then removed permanent interning of dynamic score/time scratch strings and
+added alignment assertions. The completed checks are recorded below.
+
+| Check | Result |
+| --- | --- |
+| default affected tests | 287 selected/started/completed roots; 276.664s; all captures exact |
+| server affected tests | 285 selected/started/completed roots; 265.129s; all captures exact |
+| highres affected tests | 287 selected/started/completed roots; 191.406s; all captures exact |
+| default post-review family | 15 roots; 182.755s; all captures exact |
+| server post-review family | 15 roots; 181.610s; all captures exact |
+| highres post-review family | 15 roots; 57.541s; all captures exact |
+| opennox production build | 58.493s; ELF32/i386/SSE2/CGO; five retained / 27 retired interfaces; no test helpers |
+| opennox-hd production build | 9.425s; ELF32/i386/SSE2/CGO; five retained / 27 retired interfaces; no test helpers |
+| opennox-server production build | 60.855s; ELF32/i386/SSE2/CGO; five retained / 27 retired interfaces; no test helpers |
+| Full-assets comparison | Exact 1,553 failure entries; 15 passing / 3 failing / 32 skipped packages; expected exit 1 |
+| client-scoreboard-port | 30.845s; fresh assets/save; reference comparison passed; updates disabled |
+| client-scoreboard-chapter-port | 38.394s; fresh assets/save; reference comparison passed; updates disabled |
+
+After broad qualification, the test adapter's two empty-callback operations were
+changed to invoke the production Go callback directly. Constructed parent/group
+callbacks already had nil-response contracts. The entire fifteen-root scoreboard
+family repeated in all three targets after this cleanup; production fingerprints
+are identical to the broader qualification, so builds/full-suite/gameplay evidence
+is reused rather than rebuilt for a test-only change. Source fingerprints stayed
+unchanged during each run, and all captured JSON was compressed with a verified
+lossless round trip. No golden was regenerated for the Go implementation.
+
+The five retained C entries serve existing network/state callers. Private Go
+callers invoke Go directly, including the collector wrapper. Removing the last C
+briefing-stage caller also removes its C bridge; its Go implementation remains.
+The declared 80-byte player and 56-byte team records have size/alignment/offset
+checks. UTF-16 clipping, raw record name copying and stale bytes after terminators
+remain compatible; dynamic score/time formatting writes existing scratch without
+permanent string interning. The shared window variable remains in vardefs.c.
+
+The hosted route checks five visible states; ordinary chapter gameplay checks
+all eight existing frames. This does not claim remote-player gameplay, populated
+teams in the hosted scene, or audio playback quality. Those row and state branches
+are covered by actual-owner fixtures as detailed above. Exact unsupported sorting
+sentinels and malformed headless host counts are still separate review items.
+
+Local native evidence: native-qualification.json, post-review-qualification.json,
+native-source-fingerprints.json, post-review-source-fingerprints.json, all logs and
+compressed captures under build/port-scoreboard. The next candidate is the connected
+minimap renderer, fifteen routines / 696 C function-block lines; its C baseline
+must be established before translating it.
