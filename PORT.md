@@ -16,9 +16,9 @@
 
 Client inventory transactions are converted and fully qualified, following the
 inventory queries and meters. Continue one connected batch at a time through
-C baseline, translation, qualification, docs, commit and push. The next audited
-candidate is inventory display and feedback: about 1,160 C lines, reusing current
-owners and adding a headless inventory-screen scenario. See
+C baseline, translation, qualification, docs, commit and push. The inventory display
+and feedback C baseline is qualified: 1,162 C lines, twelve frozen capture groups
+and a reproducible headless inventory-screen scenario. Translate that batch next. See
 [PORTING_STATE.md](PORTING_STATE.md) and
 [the transaction report](docs/porting/CLIENT_INVENTORY_TRANSACTIONS.md).
 An earlier isolated hallway qualification mismatch remains unexplained; future

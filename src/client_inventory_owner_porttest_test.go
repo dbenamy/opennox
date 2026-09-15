@@ -25,8 +25,8 @@ type uiInventoryOwner struct {
 	shortReturn uint32
 }
 
-func newUIInventoryOwner(t *testing.T) *uiInventoryOwner {
-	o := &uiInventoryOwner{meterOwner: newMeterOwner(t)}
+func newUIInventoryOwner(t *testing.T, extraNames ...string) *uiInventoryOwner {
+	o := &uiInventoryOwner{meterOwner: newMeterOwner(t, extraNames...)}
 	var restore func()
 	o.words, restore = legacy.PortTestUIInventoryWords()
 	t.Cleanup(restore)

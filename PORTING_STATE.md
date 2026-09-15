@@ -8,7 +8,7 @@ an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LO
 
 <!-- current-checkpoint -->
 
-## Current — inventory transactions complete; display baseline next
+## Current — inventory transactions pushed; display C baseline in progress
 
 Inventory transactions are converted and fully qualified, following C baseline
 `9676bcf0` (pushed). The native checkpoint removes 26 routines / 1,025 C lines:
@@ -25,13 +25,27 @@ The previous inventory-query hallway mismatch did not recur in this batch, but
 its cause remains unexplained. See CLIENT_INVENTORY.md; automatic failure capture
 is present. Do not discard this limitation or change its oracle on recurrence.
 
-Next: commit/push this qualified checkpoint if uncommitted, then begin the C
-baseline for inventory display/feedback. build/port-client-inventory-render has
-an audited 16-routine / 1,162-C-line candidate, caller/state notes, initial tagged
-probe drafts and an inventory-opening scenario draft. No display source edits
-are applied. Reuse the actual owners, cover text/pixels/state and stat/modifier
-rounding, then record and repeat a fresh inventory-screen scenario while display
-routines are still C. Refine the scope as the baseline reveals dependencies.
+Transaction conversion `2f34230e` is committed/pushed. The inventory display C
+baseline is now fully qualified: sixteen routines / 1,162 C lines, 2,478 frozen
+results / twelve groups and independent contracts. Client/server/highres affected
+suites pass 204 / 203 / 204 tests; all 1,552 source fingerprints stay unchanged.
+Production source and three binaries are unchanged from the qualified transaction
+checkpoint. Each binary's hash/format/sixteen display interfaces was rechecked.
+The exact known full asset result is reused for this test-only C checkpoint.
+
+The four-screen C scenario passes with full pixel comparison, including stats and
+shirt identification. GODEBUG=randautoseed=0 fixes the test's localization input;
+production variant selection is unchanged. Failed development runs and pointer
+normalization diagnostics are preserved. See
+[CLIENT_INVENTORY_DISPLAY.md](docs/porting/CLIENT_INVENTORY_DISPLAY.md) and the
+tracked inventory-display.yaml for baseline coverage and recovery.
+
+Next: commit/push the qualified C baseline, then apply/review the Go translation.
+Three modifier/durability helpers can retire; thirteen interfaces still have C
+consumers. Ignored native-common/native-draw/native-stats.go.stage drafts are
+prepared but NOT applied; identification translation remains to draft. Do not
+regenerate frozen hashes to hide conversion differences. The C evidence, audit,
+source fingerprints and scripts are under build/port-client-inventory-render.
 
 The transaction integration script is already applied; do not rerun it. Its
 qualification is complete and need not be repeated merely to resume. No user

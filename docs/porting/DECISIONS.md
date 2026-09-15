@@ -693,3 +693,17 @@ an in-bounds 148-byte copy whose generated fortified destination size was zero
 with the old rolling pointer. Keep fortification enabled and preserve the copy's
 source, length and traversal. Both are reversible local corrections, made under
 the standing authorization. See [CLIENT_INVENTORY_TRANSACTIONS.md](CLIENT_INVENTORY_TRANSACTIONS.md).
+
+## Inventory display localization input — review later
+
+The fresh four-screen C comparison initially differed only in the shirt's random
+localized description. Seed the test process's existing math/rand source with
+GODEBUG=randautoseed=0, then capture and compare full screens. The seeded capture
+and fresh comparison pass; production localization and the compared pixel area
+are unchanged. Preserve the failed run and diff. This is deterministic test input,
+not a claim that all gameplay randomness is controlled by this setting.
+
+Display C baseline changes are all behind porttest build tags. Verify unchanged
+production source before reusing the immediately preceding qualified three
+binaries/full asset result. Run fresh affected tests on all three targets and the
+new display scenario; after translation, build and qualify all targets again.

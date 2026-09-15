@@ -32,8 +32,8 @@ type meterOwner struct {
 	windows []*gui.Window
 }
 
-func newMeterOwner(t *testing.T) *meterOwner {
-	o := &meterOwner{entryOwner: newEntryOwner(t, "RedPotion", "BluePotion", "CurePoisonPotion", "RedApple", "Meat", "Quiver", "Bow")}
+func newMeterOwner(t *testing.T, extraNames ...string) *meterOwner {
+	o := &meterOwner{entryOwner: newEntryOwner(t, append([]string{"RedPotion", "BluePotion", "CurePoisonPotion", "RedApple", "Meat", "Quiver", "Bow"}, extraNames...)...)}
 	t.Cleanup(legacy.PortTestClientSoundObserver(func(id, volume int) { o.sounds = append(o.sounds, [2]int{id, volume}) }))
 	legacy.GetClient = func() legacy.Client { return &meterClient{o.objectDrawingOwner.proxy, o} }
 	var restoreInventory func()

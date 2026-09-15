@@ -80,8 +80,8 @@ type inventoryTransactionOwner struct {
 	countStart int
 }
 
-func newInventoryTransactionOwner(t *testing.T) *inventoryTransactionOwner {
-	o := &inventoryTransactionOwner{uiInventoryOwner: newUIInventoryOwner(t)}
+func newInventoryTransactionOwner(t *testing.T, extraNames ...string) *inventoryTransactionOwner {
+	o := &inventoryTransactionOwner{uiInventoryOwner: newUIInventoryOwner(t, extraNames...)}
 	o.tx = &inventoryTransactionClient{legacy.GetClient().(*meterClient), o}
 	oldClient := legacy.GetClient
 	legacy.GetClient = func() legacy.Client { return o.tx }
