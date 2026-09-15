@@ -908,7 +908,7 @@ char* sub_461EF0(int a1) {
 			++col_idx;
 		} while (col_idx < NOX_INVENTORY_COL_COUNT);
 		++row_idx;
-	} while (row_idx <= NOX_INVENTORY_ROW_COUNT);
+	} while (row_idx < NOX_INVENTORY_ROW_COUNT);
 
 	return 0;
 }

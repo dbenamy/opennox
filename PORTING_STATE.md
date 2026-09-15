@@ -8,9 +8,9 @@ an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LO
 
 <!-- current-checkpoint -->
 
-## Current — meters complete; inventory queries next
+## Current — inventory C baseline qualified
 
-The meter conversion is fully qualified. C baseline `025ef4ff` preserves the
+The meter conversion is fully qualified and pushed as `30553db2`. C baseline `025ef4ff` preserves the
 original algorithms and corrected fixture inputs. The native batch removes 37
 routines and their private seven-record array: 1,070 C lines. All 3,858 frozen
 results / 11 groups match, and 13 independent contracts pass. Accumulated client,
@@ -29,7 +29,13 @@ controls. Exclude the larger inventory-mode transition sub_467650. Reuse meter
 owners. Before freezing, correct sub_461EF0's inclusive row limit: it iterates
 through row21 despite declared rows0..20. Cover the extra valid21st row, visible
 20-row coordinate limits, duplicate search order, stack boundaries and owned
-pointer returns. No inventory source edits have been applied at this checkpoint.
+pointer returns. The row limit is corrected and the initial 31-operation fixture/matrices are
+applied. Initial c-a/c-b passed all 10 tests; all 7,137 results / 6 groups repeated
+byte-for-byte and are frozen. C qualification is complete: 171 / 170 / 171 affected tests pass, production
+client/31 interfaces verify, the full asset suite has the exact known failures,
+and fresh warrior gameplay passes in 35.614s. All 1,521 source fingerprints are
+unchanged. The native draft is ignored; no inventory algorithm is converted yet. See
+[CLIENT_INVENTORY.md](docs/porting/CLIENT_INVENTORY.md).
 
 No user question is pending. Continue through baseline, conversion, qualification,
 docs, commit and push. Every Go shell sources build/baseline/env.sh; no Go/C edits

@@ -653,3 +653,13 @@ Move the private seven20-byte meter records into a Go array. The caller audit
 found no remaining C consumer outside the converted batch. Keep only actual
 remaining C callers and callback interfaces; the fixture borrows the native
 owner after conversion instead of retaining an otherwise-unused C array.
+
+## Client inventory search row bound — review later
+
+Before freezing the inventory-query baseline, change sub_461EF0's row loop from
+<= NOX_INVENTORY_ROW_COUNT to < NOX_INVENTORY_ROW_COUNT. Its declared84-cell
+storage has rows0..20 in four columns; row21 aliases subsequent columns and then
+reads past the final cell. Keep the extra valid21st row for searches and the
+existing20-row limit for visible coordinate queries. Cover last-cell/last-stack
+hits, missing codes and duplicate search priority. This fixes an invalid read
+without changing valid cell behavior; the original invalid read is not an oracle.
