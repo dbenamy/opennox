@@ -29,7 +29,7 @@ func projectileSplash(u, exclude *server.Object, radius, inner float32, damage, 
 	C.nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.float(radius), C.float(inner), C.int(damage), C.int(kind), asObjectC(u), asObjectC(exclude))
 }
 func projectilePush(u *server.Object, radius, inner, force float32) {
-	spellEffectPushAround(u.PosVec, radius, inner, force, u, nil, nil)
+	spellEffectPushAround(u.PosVec, radius, inner, force, u, nil, 0)
 }
 func projectileBoom(u, t *server.Object, n *types.Pointf) {
 	init := memmap.PtrUint32(0x5d4594, 1567964)

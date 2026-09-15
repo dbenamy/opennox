@@ -14,13 +14,13 @@
 
 ## Current status
 
-Client inventory transactions are converted and fully qualified, following the
-inventory queries and meters. Continue one connected batch at a time through
-C baseline, translation, qualification, docs, commit and push. The inventory display
-and feedback C baseline is qualified: 1,162 C lines, twelve frozen capture groups
-and a reproducible headless inventory-screen scenario. Translate that batch next. See
+Client inventory display and feedback are converted and fully qualified, following
+inventory transactions, queries and meters. Continue one connected batch at a time
+through C baseline, translation, qualification, docs, commit and push. Next is
+inventory window construction, input, scrolling and open/close lifecycle: 34
+routines / about 1,600 C lines, including an obsolete translation unit. See
 [PORTING_STATE.md](PORTING_STATE.md) and
-[the transaction report](docs/porting/CLIENT_INVENTORY_TRANSACTIONS.md).
+[the display report](docs/porting/CLIENT_INVENTORY_DISPLAY.md).
 An earlier isolated hallway qualification mismatch remains unexplained; future
 failures automatically preserve full captures under build/port-failures.
 

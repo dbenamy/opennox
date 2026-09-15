@@ -547,5 +547,5 @@ func Nox_xxx_unitsHaveSameTeam_4EC520(a1, a2 *server.Object) bool {
 }
 
 func Nox_xxx_mapPushUnitsAround_52E040(pos types.Pointf, a2, a3, a4 float32, a5 *server.Object, a6, a7 int) {
-	spellEffectPushAround(pos, a2, a3, a4, a5, unsafe.Pointer(uintptr(a6)), unsafe.Pointer(uintptr(a7)))
+	spellEffectPushAround(pos, a2, a3, a4, a5, unsafe.Pointer(uintptr(a6)), uintptr(a7))
 }

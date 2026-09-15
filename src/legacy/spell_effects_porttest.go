@@ -5,8 +5,11 @@ package legacy
 /*
 #include <stdint.h>
 #include <stdlib.h>
+extern void portTestSpellForceCollect(void);
+static int spellEffectsForceGC;
+static void spellEffectsForceSetGC(int v){spellEffectsForceGC=v;}
 static uint32_t spellEffectsForceLog[384]; static int spellEffectsForceN;
-static void spellEffectsForceRecord(int u,uint32_t distance,int* arg) {if(spellEffectsForceN+3>384)abort();spellEffectsForceLog[spellEffectsForceN++]=u;spellEffectsForceLog[spellEffectsForceN++]=distance;spellEffectsForceLog[spellEffectsForceN++]=(uint32_t)arg;}
+static void spellEffectsForceRecord(int u,uint32_t distance,int* arg) {if(spellEffectsForceGC)portTestSpellForceCollect();if(spellEffectsForceN+3>384)abort();spellEffectsForceLog[spellEffectsForceN++]=u;spellEffectsForceLog[spellEffectsForceN++]=distance;spellEffectsForceLog[spellEffectsForceN++]=(uint32_t)arg;}
 static void* spellEffectsForcePtr(void){return spellEffectsForceRecord;}
 static void spellEffectsForceReset(void){spellEffectsForceN=0;}
 static int spellEffectsForceCount(void){return spellEffectsForceN;}
@@ -52,6 +55,7 @@ type PortTestSpellEffectGuide struct {
 type PortTestSpellEffectsSpec struct {
 	Sustained                *PortTestSustainedSpellsSpec
 	RecordForce              bool
+	ForceGC                  bool
 	Tile                     *int
 	RecordOutput, NullOutput bool
 	Args                     [3]int
@@ -226,6 +230,8 @@ func (p *portTestShopPools) spellEffectsAction(action PortTestShopAction) uint32
 	if sp.NullOutput {
 		output = nil
 	}
+	C.spellEffectsForceSetGC(C.int(bool2int(sp.ForceGC)))
+	defer C.spellEffectsForceSetGC(0)
 	q := sp.Ints[0]
 	if sp.RecordForce {
 		q = int32(uintptr(C.spellEffectsForcePtr()))
@@ -353,7 +359,7 @@ func spellEffectsInvoke(op, id int32, u, a, b, c *server.Object, record, output 
 	case 39:
 		return spellEffectMovable(u)
 	case 40:
-		spellEffectPushAround(spellEffectPos(record, 0), x, y, z, u, unsafe.Pointer(uintptr(uint32(q))), unsafe.Pointer(uintptr(uint32(r))))
+		spellEffectPushAround(spellEffectPos(record, 0), x, y, z, u, unsafe.Pointer(uintptr(uint32(q))), uintptr(uint32(r)))
 		return 0
 	case 41:
 		spellEffectPushUnit(u, record)

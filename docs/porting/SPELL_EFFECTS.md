@@ -84,3 +84,22 @@ Local evidence: `build/port-spell-effects/qualification.json`, `baseline.json`,
 `variants.json`, `binary-verification.json`, `full-suite-comparison.json`, and
 complete `c-proof-a`, `c-proof-b`, `native-final` captures (losslessly compressed
 and verified). Gameplay: `build/baseline/runs/spell-effects-port`.
+
+## Follow-up: GC-safe force callback arguments
+
+Inventory-display qualification exposed an invalid Go pointer in the native force
+callback boundary: distance bits 0x3f8ccccd were passed as unsafe.Pointer into
+CallVoidPtr3. The GC stopped the accumulated suite while scanning that call frame.
+The opaque third word was also modeled as a pointer despite integer callers.
+
+Keep both values as integer words and use the existing CallVoidUPtr3 bridge on
+the qualified 386 target. Actual object/function addresses retain their existing
+C ownership. Update direct callers and read the record's opaque word as uint32;
+force math, callback word layout and ordering stay unchanged. The regression
+runs the entire existing force matrix with runtime.GC inside the C callback,
+checks collection occurred and compares the unchanged C hashes. This adds 288
+repeated cases, not new reference captures. Qualification passes with the display
+chunk: 18 focused spell tests, accumulated 839 plus the new focused GC test,
+affected server/highres 278/279, three production binaries, exact known full
+asset failures and matching fresh four-screen gameplay. See
+[the display report](CLIENT_INVENTORY_DISPLAY.md) for timings and source reuse.

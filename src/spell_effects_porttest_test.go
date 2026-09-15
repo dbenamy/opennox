@@ -346,7 +346,17 @@ func TestSpellEffectsSummonAdmission(t *testing.T) {
 	}
 }
 
-func TestSpellEffectsForce(t *testing.T) {
+func TestSpellEffectsForce(t *testing.T) { testSpellEffectsForce(t, false) }
+
+func TestSpellEffectsForceGC(t *testing.T) {
+	before := legacy.PortTestSpellForceCollections()
+	testSpellEffectsForce(t, true)
+	if legacy.PortTestSpellForceCollections() <= before {
+		t.Fatal("force callbacks did not collect while the C call was active")
+	}
+}
+
+func testSpellEffectsForce(t *testing.T, collect bool) {
 	for _, op := range []int{39, 40, 41} {
 		var cases []legacy.PortTestRoamSpec
 		for _, distance := range []float32{0, 1, 4.9, 5, 9.9, 10, 10.1, 20} {
@@ -368,6 +378,7 @@ func TestSpellEffectsForce(t *testing.T) {
 					}
 					sp.Record = legacy.PortTestSpellLifeRecord{Words: map[int]uint32{0: math.Float32bits(512), 4: math.Float32bits(512)}}
 					sp.Effects.RecordForce = true
+					sp.Effects.ForceGC = collect
 					sp.Effects.Ints[1] = 17
 					if op == 40 {
 						p.TemporaryUpdates.Indexed = []int{1}

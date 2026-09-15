@@ -28,15 +28,15 @@ func PortTestInventoryDisplay(op int, a, b, c uintptr) uint64 {
 	case 0:
 		return uint64(uint32(C.sub_4625D0((*C.uint32_t)(unsafe.Pointer(a)))))
 	case 1:
-		return math.Float64bits(float64(C.sub_4626C0(C.int(a))))
+		return math.Float64bits(uiInventoryElementValue(uiInventoryDrawable(uint32(a)), false))
 	case 2:
-		return math.Float64bits(float64(C.sub_462700(C.int(a))))
+		return math.Float64bits(uiInventoryElementValue(uiInventoryDrawable(uint32(a)), true))
 	case 3:
 		return uint64(uint32(C.sub_4627F0((*C.uint32_t)(unsafe.Pointer(a)))))
 	case 4:
 		return uint64(uint32(C.sub_463370((*C.uint32_t)(unsafe.Pointer(a)), (*C.nox_point)(unsafe.Pointer(b)), (*C.uint32_t)(unsafe.Pointer(c)))))
 	case 5:
-		return uint64(uint32(C.sub_4633B0(C.int(a), (*C.float)(unsafe.Pointer(b)), (*C.float)(unsafe.Pointer(c)))))
+		return uint64(uiInventoryScaledDurability(uiInventoryDrawable(uint32(a)), (*float32)(unsafe.Pointer(b)), (*float32)(unsafe.Pointer(c))))
 	case 6:
 		return uint64(uint32(C.sub_463420(C.int(a))))
 	case 7:

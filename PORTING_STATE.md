@@ -2,58 +2,59 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 85k lines** — exactly **85,399 physical lines** in
+**Rough C remaining: about 84k lines** — exactly **84,237 physical lines** in
 97 production `.c` files, with zero test-reference C. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — inventory transactions pushed; display C baseline in progress
+## Current — inventory display qualified; window/input batch next
 
-Inventory transactions are converted and fully qualified, following C baseline
-`9676bcf0` (pushed). The native checkpoint removes 26 routines / 1,025 C lines:
-**85,399 C lines / 97 files / zero reference C**. Nineteen real interfaces remain,
-seven private helpers retire and three Go callers invoke Go directly. All 3,606
-frozen results / eight groups match on the first native comparison; 16 focused
-tests pass. Accumulated/default, server and highres pass 821 / 187 / 188 root
-tests. Three binaries/interfaces verify, the full asset suite has the exact known
-1,553 failure entries, and fresh warrior gameplay passes in 35.377s. All 1,537
-source fingerprints remain unchanged. See
-[CLIENT_INVENTORY_TRANSACTIONS.md](docs/porting/CLIENT_INVENTORY_TRANSACTIONS.md).
+All sixteen inventory display/feedback routines are native: **1,162 C lines
+removed**, leaving **84,237 / 97 files / zero reference C**. C baseline
+`18f9cfb4` is pushed. Thirteen real C interfaces remain; three private helpers
+retire. All 2,478 frozen results / twelve groups match, with 773 additional
+coordinate, durability, localization-order and long-heading cases. Cumulative
+frozen coverage is **453,359 results / 1,156 groups** (repeated runs excluded).
+See [CLIENT_INVENTORY_DISPLAY.md](docs/porting/CLIENT_INVENTORY_DISPLAY.md).
 
-The previous inventory-query hallway mismatch did not recur in this batch, but
-its cause remains unexplained. See CLIENT_INVENTORY.md; automatic failure capture
-is present. Do not discard this limitation or change its oracle on recurrence.
+Qualification passes: accumulated 839 tests (430.745s), affected server 278
+(201.582s), highres 279 (125.110s). The new forced-GC spell regression also passed
+in the focused default run; the two default runs cover 840 distinct tests. It is
+now included in the tracked accumulated pattern. All eighteen display tests
+passed again on every target after a test-only raw-buffer guard correction;
+production and earlier broad-run code stayed unchanged. Three production binaries
+verify ELF32/i386/SSE2/CGO, thirteen retained/three retired display interfaces and
+no test helpers. Full assets: exactly **1,553 known failures**, 15 pass / 3 fail /
+32 skip packages. Fresh seeded four-screen gameplay matches C in **38.846s**.
+All **1,559 final source fingerprints** remain unchanged; all jobs are joined.
 
-Transaction conversion `2f34230e` is committed/pushed. The inventory display C
-baseline is now fully qualified: sixteen routines / 1,162 C lines, 2,478 frozen
-results / twelve groups and independent contracts. Client/server/highres affected
-suites pass 204 / 203 / 204 tests; all 1,552 source fingerprints stay unchanged.
-Production source and three binaries are unchanged from the qualified transaction
-checkpoint. Each binary's hash/format/sixteen display interfaces was rechecked.
-The exact known full asset result is reused for this test-only C checkpoint.
+Qualification exposed and fixed an earlier spell-force callback defect: numeric
+distance bits and opaque data entered Go pointer slots. Both now remain integer
+words through the C callback; the added regression collects inside that call and
+keeps the original hashes. Full failure evidence and the later static-map fixture
+failure are preserved. The previous hallway mismatch remains unexplained and did
+not recur; retain its automatic capture and unchanged oracle (CLIENT_INVENTORY.md).
 
-The four-screen C scenario passes with full pixel comparison, including stats and
-shirt identification. GODEBUG=randautoseed=0 fixes the test's localization input;
-production variant selection is unchanged. Failed development runs and pointer
-normalization diagnostics are preserved. See
-[CLIENT_INVENTORY_DISPLAY.md](docs/porting/CLIENT_INVENTORY_DISPLAY.md) and the
-tracked inventory-display.yaml for baseline coverage and recovery.
+Evidence: build/port-client-inventory-render/native-qualification.json,
+default-coverage-union.json, fixture-only-qualification-delta.json, final source
+fingerprints, binary verification and baseline/runs/client-inventory-display-port.
+Successful run assets have a verified deduplication/restoration manifest. Older
+completed development captures are losslessly archived with a compression manifest.
 
-Next: commit/push the qualified C baseline, then apply/review the Go translation.
-Three modifier/durability helpers can retire; thirteen interfaces still have C
-consumers. Ignored native-common/native-draw/native-stats.go.stage drafts are
-prepared but NOT applied; identification translation remains to draft. Do not
-regenerate frozen hashes to hide conversion differences. The C evidence, audit,
-source fingerprints and scripts are under build/port-client-inventory-render.
+Next: commit/push this qualified conversion, then build the inventory window/input
+C baseline. The audit in build/port-client-inventory-window covers 34 routines /
+1,544 address-block lines plus 61 obsolete translation-unit lines. Caller/state
+maps, a 40,000-point paperdoll geometry audit, fixture plan and uncompiled ignored
+drafts are saved. Main mouse handling contains a partial-byte assignment to an
+uninitialized int; resolve before freezing C. Valid paperdoll geometry has no hole,
+so no selector correction is justified. Use actual GUI/parser/drawable owners.
 
-The transaction integration script is already applied; do not rerun it. Its
-qualification is complete and need not be repeated merely to resume. No user
-question is pending. Every Go shell sources build/baseline/env.sh. Do not edit
-Go/C/header source while tests/builds read it; join every job including failures.
-Preserve original assets/archive. Qualified captures/binaries and completed run
-copies have verified compression/deduplication manifests where noted. Old,
-regenerable compiler cache was pruned selectively after source readers joined.
+No next-batch source is applied and no user question is pending. The display and
+transaction integration scripts are ALREADY APPLIED; do not rerun them. Every Go
+shell sources build/baseline/env.sh. Do not edit Go/C/header source while readers
+run; join every job including failures. Preserve original assets/archive. Commit
+and push each qualified chunk, then continue under PORT.md.
 
 <!-- /current-checkpoint -->
 

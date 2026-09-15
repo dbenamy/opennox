@@ -41,7 +41,7 @@ func temporaryPowderBarrel(u *server.Object) {
 		*memmap.PtrUint32(0x5d4594, 2488688) = uint32(core.Types.IndByID("MediumFlame"))
 	}
 	temporaryAreaDamage(u, 100, 30, 30, 7)
-	spellEffectPushAround(u.PosVec, 100, 30, 60, u, nil, nil)
+	spellEffectPushAround(u.PosVec, 100, 30, 60, u, nil, 0)
 	pos := u.PosVec
 	rng := core.Rand.Logic
 	for i := 0; i < 4; i++ {

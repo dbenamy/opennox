@@ -267,7 +267,7 @@ func worldInvisibleTeleport(u *server.Object) uint32 {
 	return uint32(uintptr(u.CObj()))
 }
 func worldPush(u *server.Object) {
-	spellEffectPushAround(u.PosVec, *temporaryFloat(u.UpdateData, 0), 0, *temporaryFloat(u.UpdateData, 8), nil, nil, nil)
+	spellEffectPushAround(u.PosVec, *temporaryFloat(u.UpdateData, 0), 0, *temporaryFloat(u.UpdateData, 8), nil, nil, 0)
 }
 func worldIndexedDirection(u *server.Object) (int32, int32) {
 	var out C.int2

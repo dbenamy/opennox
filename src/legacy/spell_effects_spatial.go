@@ -29,7 +29,8 @@ type spellEffectForceContext struct {
 	pos                  types.Pointf
 	radius, inner, power float32
 	source               *server.Object
-	callback, arg        unsafe.Pointer
+	callback             unsafe.Pointer
+	arg                  uintptr
 }
 
 func spellEffectForce(u *server.Object, ctx spellEffectForceContext) {
@@ -50,7 +51,9 @@ func spellEffectForce(u *server.Object, ctx spellEffectForceContext) {
 	}
 	acceleration := float32(float64(force) / float64(u.Mass))
 	if ctx.callback != nil {
-		ccall.CallVoidPtr3(ctx.callback, u.CObj(), unsafe.Pointer(uintptr(math.Float32bits(d))), ctx.arg)
+		// Distance is a raw float word, and arg is opaque integer-sized data.
+		// Neither may enter a Go pointer slot visible to the garbage collector.
+		ccall.CallVoidUPtr3(ctx.callback, uintptr(u.CObj()), uintptr(math.Float32bits(d)), ctx.arg)
 	}
 	u.ForceVec.X = float32(float64(acceleration)*float64(dx)/float64(d) + float64(u.ForceVec.X))
 	u.ForceVec.Y = float32(float64(acceleration)*float64(dy)/float64(d) + float64(u.ForceVec.Y))
@@ -59,10 +62,10 @@ func spellEffectForce(u *server.Object, ctx spellEffectForceContext) {
 	}
 }
 func spellEffectPushUnit(u *server.Object, record unsafe.Pointer) {
-	ctx := spellEffectForceContext{pos: spellEffectPos(*controlPtr(record, 0), 0), radius: *temporaryFloat(record, 4), inner: *temporaryFloat(record, 8), power: *temporaryFloat(record, 12), source: spellEffectObject(record, 16), callback: *controlPtr(record, 20), arg: *controlPtr(record, 24)}
+	ctx := spellEffectForceContext{pos: spellEffectPos(*controlPtr(record, 0), 0), radius: *temporaryFloat(record, 4), inner: *temporaryFloat(record, 8), power: *temporaryFloat(record, 12), source: spellEffectObject(record, 16), callback: *controlPtr(record, 20), arg: uintptr(*spellLifeWord(record, 24))}
 	spellEffectForce(u, ctx)
 }
-func spellEffectPushAround(pos types.Pointf, radius, inner, power float32, source *server.Object, callback, arg unsafe.Pointer) {
+func spellEffectPushAround(pos types.Pointf, radius, inner, power float32, source *server.Object, callback unsafe.Pointer, arg uintptr) {
 	ctx := spellEffectForceContext{pos: pos, radius: radius, inner: inner, power: float32(float64(power) * 10), source: source, callback: callback, arg: arg}
 	if radius < inner {
 		ctx.radius = inner
@@ -72,13 +75,13 @@ func spellEffectPushAround(pos types.Pointf, radius, inner, power float32, sourc
 }
 func spellEffectPull(id int32, a, b, c *server.Object, record unsafe.Pointer, level int32) int32 {
 	power := float32(-(spellEffectScalar("PullPowerCoeff") * float64(level)))
-	spellEffectPushAround(c.PosVec, 600, 10, power, nil, nil, nil)
+	spellEffectPushAround(c.PosVec, 600, 10, power, nil, nil, 0)
 	spellEffectAudio(id, 0, b)
 	return 1
 }
 func spellEffectPush(id int32, a, b, c *server.Object, record unsafe.Pointer, level int32) int32 {
 	power := float32(spellEffectScalar("PushPowerCoeff") * float64(level))
-	spellEffectPushAround(c.PosVec, 600, 10, power, nil, nil, nil)
+	spellEffectPushAround(c.PosVec, 600, 10, power, nil, nil, 0)
 	spellEffectAudio(id, 0, b)
 	return 1
 }

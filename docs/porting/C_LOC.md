@@ -144,6 +144,7 @@ target build selection and linker evidence.
 | Client inventory queries, scalar state and item updates | 97 | 86,422 | −396 | 0 |
 | Inventory transaction C prerequisites (pickup coordinates; compaction copy) | 97 | 86,424 | +2 | 0 |
 | Client inventory stack/equipment transactions | 97 | 85,399 | −1,025 | 0 |
+| Client inventory display, identification, stats and feedback | 97 | 84,237 | −1,162 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

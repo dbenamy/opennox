@@ -707,3 +707,24 @@ Display C baseline changes are all behind porttest build tags. Verify unchanged
 production source before reusing the immediately preceding qualified three
 binaries/full asset result. Run fresh affected tests on all three targets and the
 new display scenario; after translation, build and qualify all targets again.
+
+## Inventory identify header bound — review later
+
+Native identification limits its heading to 255 UTF16 units plus a terminator in
+the declared 256-unit buffer, using the existing bounded-copy helper. The old C
+could leave its same-sized temporary unterminated and concatenate beyond the
+heading on long item names. Preserve valid headings, and test the payload boundary,
+long ASCII/Greek/emoji names and adjacent storage without using invalid C writes
+as an oracle. Existing display hashes remain unchanged.
+
+### Keep spell-force scalar callback words out of Go pointer slots
+
+During inventory-display qualification, GC rejected raw distance word 0x3f8ccccd
+in the earlier force port's CallVoidPtr3 frame. Use the existing uintptr callback
+bridge and uintptr for its opaque argument throughout native callers. This is a
+required correctness fix, preserves the 386 callback words, and does not disable
+GC/checks or alter the oracle. Add collection inside the recorded C callback to
+exercise the boundary. Reversible and authorized; review the shared callback
+convention when the target ABI changes. Full failure evidence remains in the
+inventory-display build directory; qualification is complete as recorded in
+CLIENT_INVENTORY_DISPLAY.md.
