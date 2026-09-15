@@ -1,6 +1,6 @@
 # Text-entry widgets
 
-Status: corrected C baseline fully qualified; Go conversion is next.
+Status: converted and fully qualified against C baseline **4087008d**.
 
 ## Scope and owners
 
@@ -84,10 +84,43 @@ empty `testdata` child, and run with `NOX_E2E` pointing to that scenario. Use
 
 C `calloc` allocations are not registered by the Go allocation observer. The
 baseline makes no allocation-liveness claim based on that observer. A separate
-native ownership contract will check the new Go-owned entry allocation through
-deferred GUI cleanup, without reading freed memory.
+native ownership contract checks the new Go-owned entry allocation through
+deferred GUI cleanup, without reading freed memory; it passed on the first native run.
 
 Physical production C at this corrected baseline: **90,594 /101 files /zero
 reference C**, an 11-line increase for the prerequisite corrections. Local
-artifacts and drafts: `build/port-client-entry`. The native draft remains outside
-source until this baseline is committed.
+artifacts and drafts: `build/port-client-entry`. The C baseline is committed and pushed.
+
+## Go conversion
+
+Twelve routines moved together; ten private function interfaces and two C globals
+are retired. Only the entry input callback and colored draw callback retain C
+bridges. Go callers invoke Go directly. Editing context is now a boolean and a
+typed window pointer: the old four-byte allocation was only a presence token.
+Context teardown still leaves focus handling to window lifecycle. The remaining
+listbox constructor/init dependency is C and owns its own allocations.
+
+Preserve signed16 maximum length, exact raw key-state comparisons, full-width key
+switching before scan-code truncation, digit-before-alphanumeric filter priority,
+locale-dependent CRT character classification, UTF-16 code-unit deletion and
+password masking, constructor half-buffer initialization and notification timing.
+Colored and image rendering retain their different width/clipping behavior.
+
+The first native guarded run passed all eleven focused tests in 168.124 seconds.
+All 11,426 results /four capture groups exactly matched C, without native fixes or
+changed goldens. The new allocation-liveness contract also passed. Final qualification also passed:
+
+- Accumulated default: 738 (403.240 seconds), including the existing optional skip.
+- Affected server: 104 (172.067 seconds); highres: 105 (68.098 seconds).
+- Three production builds: client 57.188, highres 8.616,
+  server 53.998 seconds. ELF32/i386, SSE2/CGO, both required C bridges,
+  twelve retired function/global symbols and absent test helpers verified.
+- Full asset suite: exact known 1,553 failure entries and package outcomes.
+- Fresh warrior gameplay: 37.030 seconds; character-name typing:
+  11.107 seconds. Both compare existing C pixels with override disabled.
+- All 1,476 Go/C/header source fingerprints remained unchanged during qualification.
+
+Accumulated frozen coverage is now **403,118 results /1,109 groups**, plus
+independent contracts. No native corrective patch or golden update was needed.
+Physical production C is now **89,969 /101 files /zero reference C**, down 625
+lines from the corrected baseline (614 net from before the prerequisites).

@@ -52,7 +52,8 @@ func Sub_4D11A0() {
 }
 
 func Sub_431370() int {
-	return int(C.sub_431370())
+	uiEntryContext = true
+	return 1
 }
 
 func Nox_xxx_tileAlloc_410F60_init() int {
@@ -80,7 +81,8 @@ func Sub_413920() {
 }
 
 func Sub_431380() {
-	C.sub_431380()
+	uiEntryContext = false
+	C.sub_4896E0()
 }
 
 func Nox_xxx_tileFree_410FC0_free() {

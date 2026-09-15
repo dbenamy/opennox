@@ -2,31 +2,30 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 91k lines** — exactly **90,594 physical lines** in
+**Rough C remaining: about 90k lines** — exactly **89,969 physical lines** in
 101 production `.c` files, with zero test-reference C. This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — text-entry C baseline fully qualified
+## Current — text-entry conversion fully qualified
 
-Twelve connected entry/context routines are ready to convert. Four repeated C
-capture groups cover11,426 results, plus six independent contracts. Corrected
-focused cleanup and bounded composition/scrolling preserve unused bytes after
-short strings. Production C is90,594 /101files /zero reference C.
+Twelve routines moved to Go; 625 C lines removed. Production C is **89,969 /
+101 files / zero reference C**. All 11,426 results / four groups and seven
+independent contracts pass. Accumulated frozen coverage is 403,118 results /
+1,109 groups. The C baseline is `4087008d`; no native correction or golden change
+was needed. Accumulated 738, server 104 / highres 105, three builds/ABI, exact
+full-suite comparison and both gameplay/typing scenarios passed. See
+[CLIENT_ENTRY.md](docs/porting/CLIENT_ENTRY.md).
 
-Final focused10, affected client104 /server103 /highres104 all pass. Client build,
-fresh gameplay, exact full-suite comparison and repeated real name-entry typing
-screens all pass. The earlier bounded-copy draft also passed736 accumulated
-tests before its unused-byte refinement. See [CLIENT_ENTRY.md](docs/porting/CLIENT_ENTRY.md).
-
-Commit/push this baseline, then apply the reviewed native draft under
-`build/port-client-entry`, compare frozen captures and run native qualification.
-Two C interfaces remain needed; ten private function interfaces and two context
-globals can retire. The staged integration script is not yet applied. Continue
-through docs/C LOC, commit/push and the next batch without pausing. No pending
-user question. Source build/baseline/env.sh for Go commands; do not edit Go/C
-source during active checks. Preserve original assets and archive.
+Commit/push this conversion, then continue the connected listbox batch. Do not
+rerun entry integration/finalization scripts. The ignored listbox directory has
+an audited plan, scope list, real palette/owner drafts and a bounded middle-row
+insertion contract; no listbox source is applied. Verify that original-C contract,
+then qualify the connected baseline before conversion. No pending user question.
+Source build/baseline/env.sh for Go commands; no Go/C edits during active checks.
+Preserve original assets and archive; completed duplicate assets are recoverable
+through verified restoration manifests.
 
 <!-- /current-checkpoint -->
 

@@ -170,7 +170,7 @@ func nox_input_scanCodeToAlpha_47F950(r C.ushort) C.ushort {
 }
 
 func NoxInputOnChar(c uint16) {
-	C.nox_xxx_onChar_488BD0(C.wchar2_t(c))
+	uiEntryChar(c)
 }
 func Nox_xxx_clientIsObserver_4372E0() int {
 	return int(C.nox_xxx_clientIsObserver_4372E0())

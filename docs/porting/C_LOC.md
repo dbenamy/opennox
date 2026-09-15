@@ -133,6 +133,7 @@ target build selection and linker evidence.
 | Slider widgets, input and drawing | 101 | 90,879 | −599 | 0 |
 | Radio-button selection, text and drawing | 101 | 90,583 | −296 | 0 |
 | Text-entry ownership/bounds corrected C baseline | 101 | 90,594 | +11 | 0 |
+| Text-entry input, composition, rendering and context | 101 | 89,969 | −625 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

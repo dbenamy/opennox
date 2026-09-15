@@ -14,12 +14,12 @@
 
 ## Current status
 
-Radio buttons are converted. The next connected text-entry baseline is fully
-qualified, including focused-window cleanup, bounded composition/scrolling and
-real character-name typing. Continue autonomous porting through conversion,
-qualification, docs, commit and push. See [PORTING_STATE.md](PORTING_STATE.md) for
-the resume checkpoint and [the entry report](docs/porting/CLIENT_ENTRY.md) for
-scope and evidence.
+Text-entry input, composition, rendering and context are converted and fully
+qualified, including real character-name typing and corrected input ownership.
+Continue autonomous porting one connected batch at a time through qualification,
+docs, commit and push. The next candidate is listbox widgets. See
+[PORTING_STATE.md](PORTING_STATE.md) for the resume checkpoint and C count, and
+[the entry report](docs/porting/CLIENT_ENTRY.md) for scope and evidence.
 
 ## Goal and target
 

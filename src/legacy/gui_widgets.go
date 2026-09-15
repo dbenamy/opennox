@@ -57,7 +57,7 @@ func Nox_gui_newScrollListBox_4A4310(par *gui.Window, status gui.StatusFlags, px
 }
 
 func Nox_gui_newEntryField_488500(par *gui.Window, status gui.StatusFlags, px, py, w, h int, draw *gui.WindowData, tdata *gui.EntryFieldData) *gui.Window {
-	return asWindow((*nox_window)(C.nox_gui_newEntryField_488500((*nox_window)(par.C()), C.int(status), C.int(px), C.int(py), C.int(w), C.int(h), C.int(uintptr(draw.C())), (*C.ushort)(unsafe.Pointer(tdata)))))
+	return uiEntryNew(par, status, px, py, w, h, draw, tdata)
 }
 
 func Nox_gui_newSlider_4B4EE0(par *gui.Window, status gui.StatusFlags, px, py, w, h int, draw *gui.WindowData, tdata *gui.SliderData) *gui.Window {

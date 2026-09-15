@@ -88,8 +88,6 @@ void sub_430C30_set_video_max(int w, int h);
 void nox_xxx_screenGetSize_430C50_get_video_max(int* w, int* h);
 void sub_431270();
 void sub_431290();
-int sub_431370();
-void sub_431380();
 void nox_client_resetScreenParticles_431510();
 nox_screenParticle* nox_client_newScreenParticle_431540(int a1, int a2, int a3, int a4, int a5, int a6, char a7,
 														char a8, char a9, char a10);

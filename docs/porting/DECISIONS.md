@@ -578,3 +578,11 @@ writes as the compatibility oracle. Keep all other image/color clipping, signed
 limits, raw code-unit editing, notification and key-state behavior. These are
 reversible corrections to review later; qualification is recorded in
 [CLIENT_ENTRY.md](CLIENT_ENTRY.md).
+
+
+The entry conversion replaces the unused four-byte C context token with a Go
+boolean and a typed active-window pointer. Context teardown retains its original
+focus behavior, while entry destruction releases its own active input state.
+Keep CRT wide-character classification for locale compatibility on the current
+CGO target. All twelve routines qualified without changing the frozen C results;
+review these compatibility choices separately from future platform work.
