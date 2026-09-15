@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "client__gui__window.h"
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/libs/strman"
@@ -335,7 +330,7 @@ func uiListEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 		}
 		if slider != nil {
 			slider.SetPos(image.Pt(int(a)-slider.SizeVal.X, up.SizeVal.Y))
-			C.sub_46AB20((*C.uint)(slider.C()), C.int(slider.SizeVal.X), C.int(int(b)-2*slider.Field100Ptr.SizeVal.Y))
+			uiWindowResize(slider, slider.SizeVal.X, int(b)-2*slider.Field100Ptr.SizeVal.Y)
 		}
 		d.Field_13_0 = uint16(b)
 		if w.DrawData().Text() != "" {

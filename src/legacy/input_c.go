@@ -200,7 +200,7 @@ func Nox_xxx_sprite_4C3220(a1 *client.Drawable) int {
 	return int(C.nox_xxx_sprite_4C3220((*nox_drawable)(a1.C())))
 }
 func Nox_xxx_wnd_46C2A0(a1 *gui.Window) int {
-	return int(C.nox_xxx_wnd_46C2A0((*nox_window)(a1.C())))
+	return uiWindowHidden(a1)
 }
 func Nox_xxx_clientAskInfoMb_4BF050(a1 *client.Drawable) string {
 	return GoWString(C.nox_xxx_clientAskInfoMb_4BF050((*nox_drawable)(a1.C())))
@@ -221,7 +221,7 @@ func Nox_xxx_clientPickup_46C140(a1 *client.Drawable) {
 	C.nox_xxx_clientPickup_46C140((*nox_drawable)(a1.C()))
 }
 func Sub_46B630(a1 *gui.Window, a2 int, a3 int) *gui.Window {
-	return asWindow(C.sub_46B630((*nox_window)(a1.C()), C.int(a2), C.int(a3)))
+	return uiWindowChildAt(a1, a2, a3)
 }
 
 func Get_nox_input_reset_430140() unsafe.Pointer {

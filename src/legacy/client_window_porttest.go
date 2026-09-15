@@ -22,7 +22,11 @@ func PortTestWindowHelper(op int, w *gui.Window, a, b int, other unsafe.Pointer,
 	case 0:
 		ret = int(C.nox_gui_getWindowOffs_46AA20(p, &x, &y))
 	case 1:
-		ret = int(C.nox_client_wndGetPosition_46AA60(p, &x, &y))
+		if flag != 0 {
+			ret = int(C.nox_client_wndGetPosition_46AA60(p, &x, &x))
+		} else {
+			ret = int(C.nox_client_wndGetPosition_46AA60(p, &x, &y))
+		}
 	case 2:
 		ret = int(C.nox_window_get_size(p, (*C.int)(unsafe.Pointer(&x)), (*C.int)(unsafe.Pointer(&y))))
 	case 3:
@@ -58,13 +62,13 @@ func PortTestWindowHelper(op int, w *gui.Window, a, b int, other unsafe.Pointer,
 	case 17:
 		ret = int(uintptr(unsafe.Pointer(C.sub_46AF00(w.C()))))
 	case 18:
-		ret = int(uintptr(C.sub_46AF40(w.C())))
+		ret = int(uintptr(uiWindowFont(w)))
 	case 19:
-		ret = int(C.nox_gui_windowCopyDrawData_46AF80(p, other))
+		ret = w.CopyDrawData((*gui.WindowData)(other))
 	case 20:
-		ret = int(uintptr(unsafe.Pointer(C.sub_46B630(p, C.int(a), C.int(b)))))
+		ret = int(uintptr(uiWindowChildAt(w, a, b).C()))
 	case 21:
-		ret = int(C.nox_xxx_wnd_46C2A0(p))
+		ret = uiWindowHidden(w)
 	case 22:
 		C.sub_46ACE0((*C.uint)(w.C()), C.int(a), C.int(b), C.int(flag))
 	case 23:
@@ -72,7 +76,7 @@ func PortTestWindowHelper(op int, w *gui.Window, a, b int, other unsafe.Pointer,
 	case 24:
 		ret = int(C.nox_xxx_wndRetNULL_46A8A0())
 	case 25:
-		ret = int(C.nox_xxx_wndRetNULL_0_46A8B0())
+		ret = 0
 	default:
 		panic("window helper case")
 	}

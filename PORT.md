@@ -14,12 +14,12 @@
 
 ## Current status
 
-Listbox construction, rows, selection, scrolling and drawing are converted and
-fully qualified, following text-entry and the other widget batches. Continue
+Window geometry, state, tree and draw-data helpers are converted and fully
+qualified, following listbox, text-entry and the other widget batches. Continue
 autonomous porting one connected batch at a time through qualification, docs,
-commit and push. The next candidate is window geometry, visibility, flags and
-draw-data helpers. See [PORTING_STATE.md](PORTING_STATE.md) for the checkpoint
-and C count, and [the listbox report](docs/porting/CLIENT_LISTBOX.md) for evidence.
+commit and push. The next candidate is localized item-hover text and cursor
+tooltip storage. See [PORTING_STATE.md](PORTING_STATE.md) for the checkpoint
+and C count, and [the window report](docs/porting/CLIENT_WINDOW.md) for evidence.
 
 ## Goal and target
 
