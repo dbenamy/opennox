@@ -877,3 +877,23 @@ and pixels remain identical. Local flag updates still omit cached-height rebuild
 as did both original callers; no correction is claimed. Review these choices if
 journal ownership/layout or update behavior changes. See JOURNAL.md (C baseline
 2c3ea111) for actual save/load, report, render and gameplay evidence.
+
+
+### Briefing presentation compatibility
+
+Use typed Go chapter/score layouts backed by the existing shared storage and
+stable descending sorting of the original participating-record count. The server
+packs its six score slots; preserve bounded sparse-input behavior without adding
+client compaction. Keep observed equal-score order. Go strings replace formatting
+scratch buffers, preserving UTF-16 code-unit name clipping and known presentation
+quirks (the `XX1` label, SoulGate paragraph edge and mixed prompt fonts). Review
+these if changing briefing presentation, rather than silently correcting them
+during translation. All thirteen routines are Go; actual window lifecycle,
+coordinate and sprite callback owners remain integration dependencies.
+
+The new chapter scenario samples early frames because the existing E2E harness
+shortens briefing duration. Visual inspection rejected the initial late-frame
+capture as briefing evidence; the corrected scenario and independent repeat are
+tracked/recoverable. Statistics and instructions use real render/GUI/sprite
+owners with the shipped Briefing.wnd, while ordinary chapter gameplay supplies
+the full-game integration check. See BRIEFING.md for qualification and limits.

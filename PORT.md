@@ -14,14 +14,15 @@
 
 ## Current status
 
-Client inventory, quantity-dialog, player-to-player trade, shop UI and quest
-journal storage/rendering are converted. The journal batch removed **339 C lines /
-11 routines**, with all **717 captured results unchanged**, independent storage,
-report and save/load contracts, three-target qualification and fresh gameplay.
-There are about **80k C lines left** (**79,924** physical lines in **93** production
-files). Next: connected quest briefing presentation and its helpers, a candidate
-**13 routines / 947 C lines**. See [the journal report](docs/porting/JOURNAL.md),
-[the shop report](docs/porting/CLIENT_SHOP_UI.md) and [PORTING_STATE.md](PORTING_STATE.md).
+Client inventory, quantity-dialog, player-to-player trade, shop UI, quest
+journal and briefing presentation are converted. The briefing batch removed
+**947 C lines / thirteen routines**, with all **467 captured results unchanged**,
+independent report/layout/lifetime contracts, three-target qualification and
+fresh chapter gameplay. There are about **79k C lines left** (**78,977** physical
+lines in **92** production files). Next: remaining briefing window creation,
+transitions and cleanup, a connected **nine routines / about 320 C lines**.
+See [the briefing report](docs/porting/BRIEFING.md),
+[the journal report](docs/porting/JOURNAL.md) and [PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.
 

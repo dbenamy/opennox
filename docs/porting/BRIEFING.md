@@ -1,7 +1,9 @@
 # Quest briefing presentation
 
-Status: **C baseline qualified; expectations frozen** after qualified/pushed journal conversion
-78ad58b2. Production unchanged at **79,924 C lines / 93 files / zero reference C**.
+Status: **Go conversion qualified**. C baseline **d1565ae5** is pushed.
+The conversion removes **947 C lines / thirteen routines**, leaving **78,977
+production C lines / 92 files / zero reference C**. All **467 frozen results /
+eleven groups** match on default, server and high-resolution targets.
 
 Scope: thirteen routines / 947 removable C lines: client__gui__guibrief.c and
 GAME2.c helpers sub_44E110, sub_450960, sub_450AD0, sub_450AF0,
@@ -112,3 +114,59 @@ see local remaining-callers.json for the audit. No reference C copy is introduce
 
 The final locked C repeat passed all twelve roots with assets in **25.714s**.
 All jobs joined before baseline commit; production remains unchanged.
+
+
+## Native translation
+
+C baseline **d1565ae5** is committed and pushed. Replaced all thirteen scoped
+routines with Go chapter/score structs, report decoding, sprite-cache management,
+and title/statistics/instructions drawing. Eight C exports remain for actual
+callers; five private helpers and their declarations are removed. No test-only C
+algorithm remains. Applied size: **78,977 production C lines / 92 files**,
+**947 fewer lines**, with zero reference C.
+
+The first native run executed all twelve roots and matched **all 467 results /
+eleven groups**. Its overall driver failed at Go vet: a zero-argument localized
+`fmt.Sprintf` call used a dynamic format string. Joined every compiler job, then
+introduced a variadic localization-format helper and kept the stage label as a
+literal `%s` argument, matching the original concatenation. Frozen expectations
+are unchanged. The corrected focused run subsequently passed; do not treat the initial
+root passes as completed-batch qualification.
+
+Preserved details include unsigned descending totals and observed stable ties,
+UTF-16 code-unit name clipping, the existing `XX1` statistics label, the SoulGate
+paragraph's height-based right edge, and instructions measuring the prompt with
+the cached font while drawing with the window font. Existing C window creation,
+modal presentation and cleanup remain real integration callers. All sprite draws
+still use their actual callbacks and coordinate owner.
+
+
+The corrected focused run passed all twelve roots in **184.274s**, with all
+467 results / eleven groups identical to the frozen C baseline. The initial
+run took 188.455s including its vet failure. Completed qualification is recorded below.
+Old derived Go cache entries were pruned only after all readers joined: 166
+entries / 3,013,755,798 bytes, recorded in the local cache-pruned manifest.
+All capture evidence is preserved with verified lossless compression.
+
+
+## Completed native qualification
+
+Affected tests passed **240 default / 129.906s**, **238 server / 222.961s**, and
+**240 highres / 143.610s**. Every variant reproduced all **467 results / eleven
+groups** exactly. Production builds passed in **58.798s / 8.524s / 56.684s**
+(default / highres / server); ELF32/i386/SSE2/CGO checks confirm eight retained
+C bridges, five retired interfaces absent, and no tagged test helpers.
+
+The full default asset suite completed in **50.660s** with exactly the established
+**1,553 failure entries** and **15 pass / 3 fail / 32 skipped packages**. No failure
+entry was added or removed. Fresh chapter gameplay completed in **37.462s**,
+matching all eight checkpoints against the original C reference with updates
+disabled, seeded randomness, fresh copied data/save, Xvfb and null audio.
+All **1,636 Go/C/header fingerprints** stayed unchanged during qualification.
+Every test, compiler and headless job joined before commit.
+
+Local evidence: build/port-briefing/native-qualification.json, native-source-fingerprints.json,
+native-qualified-capture-compression.json and native-binary-verification.json.
+These artifacts are ignored; frozen tests, C baseline revision and the tracked
+chapter scenario/pixel manifest preserve recovery. The next connected scope is
+the remaining briefing window lifecycle and transition owners in GAME2.c.

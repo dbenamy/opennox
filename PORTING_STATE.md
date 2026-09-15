@@ -2,42 +2,41 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining in the working tree: about 80k lines** — exactly **79,924
-physical lines** in 93 production `.c` files, with zero test-reference C. The
+**Rough C remaining in the working tree: about 79k lines** — exactly **78,977
+physical lines** in 92 production `.c` files, with zero test-reference C. The
 quantity-dialog/trade UI conversion removed 1,316 lines; shop prerequisites added
 22, and the qualified shop conversion removes 1,110. The journal translation removes
-another 339. This is source size, not
+another 339; the qualified briefing translation removes 947.
+This is source size, not
 an estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — briefing C baseline qualified and frozen
+## Current — briefing presentation qualified; next window lifecycle
 
-Journal conversion **78ad58b2 is committed/pushed**. C remains **79,924 / 93 files /
-zero reference C**. Current batch: **13 briefing routines / 947 removable C lines**.
-Production unchanged. C affected tests pass **240 default / 238 server / 240
-highres**, with **467 results / eleven groups** identical. All source fingerprints
-unchanged, production matches qualified journal revision; its build/full-suite
-proof reused. Fresh chapter gameplay visually verified and all eight screenshots
-match a repeat with updates disabled. Tracked scenario/pixel manifest added.
+Briefing presentation is qualified and committed with this checkpoint; C baseline
+**d1565ae5** is pushed. Thirteen routines / **947 C lines removed**, leaving
+**78,977 / 92 files / zero reference C**. All **467 results / eleven groups**
+match in default/server/highres; **240 / 238 / 240** affected tests pass. All three
+production builds and eight retained / five retired interface checks pass.
+The full-asset suite exactly matches 1,553 known failure entries and 15/3/32
+package outcomes. Fresh chapter gameplay matches all eight C screenshots.
+All 1,636 Go/C/header fingerprints remained unchanged. All readers/jobs joined.
+See [BRIEFING.md](docs/porting/BRIEFING.md) for timings, history and evidence.
 
-Expectations frozen. The locked repeat passed all twelve roots with assets in
-25.714s. All reader/headless jobs joined. Next commit/push baseline, finish/review
-Go draft, apply then qualify native. All
-fixture corrections so far were test setup/known pointer identities; no production
-prerequisite. See [BRIEFING.md](docs/porting/BRIEFING.md).
+Next: remaining briefing window creation, transitions and cleanup in GAME2.c,
+nine routines / about 320 C lines. Reuse briefingOwner, the real dialogue owner
+and chapter gameplay. Candidate scope/callers and UNAPPLIED fixture drafts are
+in build/port-briefing-window. Review/apply those only after pushing this chunk;
+establish independent contracts and repeated C captures before freezing.
+No question pending; continue autonomously. No agents involved.
 
-Ignored build/port-briefing/native-state.go.stage and native-draw.go.stage are
-UNAPPLIED partial drafts; instructions drawing and exports/adapters remain to
-write/review. Other *.stage fixture drafts are stale: never reapply them over the
-actual corrected/frozen sources. C capture manifests are compressed losslessly;
-use frozen-captures.json, not earlier development hashes.
-
-Candidate native interface audit: eight retained C entries, five private helpers
-retired. Actual C window creation/presentation/cleanup remain callers. Preserve
-packed score sorting and stable equal scores; no change to sparse-input behavior.
-No user question or agents. Original assets/archive untouched. No source edits
-while readers run. Full completed-batch qualification is still required after port.
+All old *.go.stage files in build/port-briefing are stale applied drafts. Current
+native implementation is in src/legacy/briefing*.go. Local qualification is in
+build/port-briefing/native-qualification.json. Original assets/archive untouched.
+With readers joined, pruned 166 old derived Go cache entries (3,013,755,798 bytes);
+manifest build/port-briefing/cache-pruned.json. Capture evidence preserved with
+verified lossless compression. Never edit source while readers run.
 
 <!-- /current-checkpoint -->
 
