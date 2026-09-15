@@ -2,8 +2,9 @@
 
 ## Scope and status
 
-The corrected C baseline is fully qualified. The production conversion has not
-yet been applied. Local evidence/scripts: `build/port-client-sprite-animation/`.
+The Go conversion is fully qualified against corrected C baseline `8847eb40`.
+All 17,606 results match unchanged. Sixteen routines moved to Go or reuse an
+existing Go helper; the unused C vector-array duplicate was removed. Local evidence/scripts: `build/port-client-sprite-animation/`.
 
 The batch covers six complete C files, 640 physical lines: `animdraw` (234),
 `canidraw` (131), `staticdraw` (55), draw/parse/parse (137), `boulderdraw` (59),
@@ -11,10 +12,10 @@ and `slavedraw` (24). It contains seventeen C routines. Sixteen move to Go or
 reuse an existing Go helper; the unused C vector-array loader is removed because
 production already uses `src/drawable_vector.go`. Thirteen C callbacks/parser
 entry points remain for current callers. Three private helper entry points and
-the unused vector-array entry point can retire.
+the unused vector-array entry point are retired.
 
 Production C before conversion: **94,415 lines /124 files /zero reference C**.
-Expected after conversion: **93,775 lines /118 files /zero reference C**.
+Qualified after conversion: **93,775 lines /118 files /zero reference C**.
 
 The shared `nox_xxx_drawObject_4C4770_draw` renderer and draw-data cleanup stay in
 production C. The new fixture establishes real image rendering for ordinary
@@ -107,3 +108,23 @@ build passes and fresh unchanged headless gameplay passes in 35.569s.
 The prerequisite bound correction is therefore qualified before native replacement.
 No native Go drafts were applied during these checks. Local result manifests are
 c-qualification.json and c-gameplay-qualification.json.
+
+## Qualified native checkpoint
+
+All four groups match the locked C captures, and both independent contracts pass.
+Accumulated standard: 672 selected/completed tests (671 pass, one optional
+prerequisite skip), 369.111s. Affected server/highres: 39 tests each,
+162.729s/31.850s. All three production builds pass ELF32,
+SSE2, CGO and symbol checks: thirteen required exports remain, four private/dead
+C symbols and test helpers are absent. The shared static-array export remains
+for the C door parser; production asset loading/gameplay exercises that boundary.
+
+Full asset-suite failure entries and package outcomes match the established
+baseline exactly: 1,553 known failure entries, 15 pass /3 fail /32 skip packages,
+no added or removed failures. Fresh unchanged headless gameplay passed in
+36.572s. Local evidence: qualification.json and individual result/log files.
+
+Production C is **93,775 lines /118 files /zero reference C**, down **640**.
+Accumulated port captures now total **138,003 results /1,069 groups**, plus
+independent contracts. No C algorithms were retained solely for tests. Parsed
+buffers continue to use C allocation because production C cleanup still owns them.

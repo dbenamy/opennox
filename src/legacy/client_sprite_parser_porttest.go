@@ -8,7 +8,6 @@ package legacy
 #include "client__draw__staticdraw.h"
 #include "client__draw__slavedraw.h"
 #include "client__draw__parse__parse.h"
-int sub_44BE90(int, nox_memfile*);
 void nox_xxx_draw_44C650_free_kind(void*, int);
 void* nox_xxx_draw_44C780(int);
 */
@@ -46,11 +45,9 @@ func PortTestSpriteParse(op int, obj *client.ObjectType, mf *binfile.MemFile, at
 		}
 		return 0
 	case 4:
-		return int(C.nox_xxx_loadVectorAnimated_44B8B0(C.int(uintptr(vector)), f))
-	case 5:
-		return int(C.nox_xxx_loadVectorAnimated_44BC50(C.int(uintptr(vector)), f))
+		return spriteVectorHeader((*client.AnimationVector)(vector), mf)
 	case 6:
-		return int(C.sub_44BE90(C.int(uintptr(vector)), f))
+		return spriteVectorFrames((*client.AnimationVector)(vector), mf)
 	case 7:
 		if C.nox_things_animate_state_draw_parse(o, f, a) {
 			return 1
@@ -62,7 +59,7 @@ func PortTestSpriteParse(op int, obj *client.ObjectType, mf *binfile.MemFile, at
 		}
 		return 0
 	case 8:
-		return int(C.get_animation_kind_id_44B4C0(a))
+		return int(client.ParseAnimKind(GoString(a)))
 	}
 	panic("unknown sprite parser")
 }

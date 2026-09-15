@@ -123,6 +123,7 @@ target build selection and linker evidence.
 | Drawable tail allocation guards before updates baseline (2026-09-14; no conversion) | 142 | 96,221 | +5 | 0 |
 | Client drawable updates (2026-09-14) | 130 | 95,146 | −1,075 | 0 |
 | Procedural particle drawing, lighting and color initialization (2026-09-14) | 124 | 94,415 | −731 | 0 |
+| Sprite animation, frame parsing and boulder drawing (2026-09-15) | 118 | 93,775 | −640 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
