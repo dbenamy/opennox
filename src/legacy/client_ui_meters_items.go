@@ -87,7 +87,7 @@ func uiMeterInputResult(event int) int {
 //export sub_470E90
 func sub_470E90(window, event int) int {
 	if event == 5 {
-		C.nox_client_invAlterWeapon_4672C0()
+		uiInventoryAlterWeapon()
 	}
 	return uiMeterInputResult(event)
 }

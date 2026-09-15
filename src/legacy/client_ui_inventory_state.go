@@ -62,7 +62,7 @@ func uiInventoryUsePotion(typ uint32) {
 	}
 	if cell := uiInventoryFindType(typ); cell != nil {
 		cell.Drawable.NetCode32 = cell.Codes[0]
-		C.nox_xxx_clientUse_465C70(C.int(uintptr(cell.Drawable.C())))
+		uiInventoryUse(cell.Drawable)
 	}
 }
 

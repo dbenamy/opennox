@@ -26,29 +26,29 @@ func PortTestInventoryTransaction(op int, a, b, c, d uintptr) uint32 {
 	case 2:
 		return uint32(C.nox_xxx_spritePickup_461660(C.int(a), C.int(b), unsafe.Pointer(c)))
 	case 3:
-		return uint32(C.sub_4617C0(C.int(a), C.int(b), unsafe.Pointer(c), (*C.int2)(unsafe.Pointer(d))))
+		return uint32(uiInventoryNewStack(uint32(a), uint32(b), unsafe.Pointer(c), (*[2]int32)(unsafe.Pointer(d))))
 	case 4:
-		return uint32(uintptr(unsafe.Pointer(C.sub_461970(C.int(a), C.int(b)))))
+		return uint32(uintptr(unsafe.Pointer(uiInventoryAppend(uint32(a), uint32(b)))))
 	case 5:
-		return uint32(uintptr(unsafe.Pointer(C.sub_4619F0())))
+		return uint32(uiInventoryClearAlternateFlags())
 	case 6:
 		C.sub_461A80(C.int(a))
 		return 0
 	case 7:
 		return uint32(uintptr(unsafe.Pointer(C.sub_461B50())))
 	case 8:
-		return uint32(uintptr(unsafe.Pointer(C.sub_461E60((***C.uint64_t)(unsafe.Pointer(a))))))
+		return uint32(uiInventoryRemoveStack((*uiInventoryLookup)(unsafe.Pointer(a))))
 	case 9:
-		return uint32(C.sub_461F90(C.int(a)))
+		return uint32(uintptr(unsafe.Pointer(uiInventoryUnlink(uint32(a)))))
 	case 10:
 		C.sub_462040(C.int(a))
 		return 0
 	case 11:
-		return uint32(C.sub_4622E0(C.int(a)))
+		return uint32(uiInventoryEquipmentSlot(uiInventoryDrawable(uint32(a))))
 	case 12:
 		return uint32(C.nox_xxx_clientEquip_4623B0(C.int(a)))
 	case 13:
-		return uint32(uintptr(unsafe.Pointer(C.sub_4623E0((*C.uint32_t)(unsafe.Pointer(a)), C.int(b)))))
+		return uint32(uintptr(unsafe.Pointer(uiInventoryInsertEquipment(uiInventoryDrawable(uint32(a)), int(b)))))
 	case 14:
 		return uint32(C.sub_4624D0(C.int(a)))
 	case 15:

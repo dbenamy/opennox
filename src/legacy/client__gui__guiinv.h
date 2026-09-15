@@ -3,8 +3,7 @@
 
 #include "defs.h"
 
-int nox_xxx_spritePickup_461660(int a1, int a2, const void* a3);
-int sub_4617C0(int a1, int a2, const void* a3, int2* a4);
+int nox_xxx_spritePickup_461660(int a1, int a2, void* a3);
 void sub_461A80(int a1);
 void sub_462040(int a1);
 int sub_462740();

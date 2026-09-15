@@ -14,13 +14,15 @@
 
 ## Current status
 
-Client inventory queries and meters are converted. The next inventory transaction
-batch has a qualified C baseline: 26 routines / 1,025 C lines, 3,606 frozen results
-and 16 focused tests. Continue with the Go translation, qualification, docs,
-commit and push. See [PORTING_STATE.md](PORTING_STATE.md) and
+Client inventory transactions are converted and fully qualified, following the
+inventory queries and meters. Continue one connected batch at a time through
+C baseline, translation, qualification, docs, commit and push. The next audited
+candidate is inventory display and feedback: about 1,160 C lines, reusing current
+owners and adding a headless inventory-screen scenario. See
+[PORTING_STATE.md](PORTING_STATE.md) and
 [the transaction report](docs/porting/CLIENT_INVENTORY_TRANSACTIONS.md).
-An earlier isolated hallway qualification mismatch remains documented for review;
-future failures automatically preserve full captures under build/port-failures.
+An earlier isolated hallway qualification mismatch remains unexplained; future
+failures automatically preserve full captures under build/port-failures.
 
 ## Goal and target
 
