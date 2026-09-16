@@ -1,0 +1,26 @@
+{
+  "binding-apply": {
+    "records": 512,
+    "sha256": "45353301e424f93c06c27a77b128c3cdfe6888694c4de294e5adae4762bc3020"
+  },
+  "binding-assignments": {
+    "records": 5004,
+    "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
+  },
+  "binding-capture": {
+    "records": 1800,
+    "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
+  },
+  "binding-construction": {
+    "records": 12,
+    "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+  },
+  "binding-routing": {
+    "records": 60,
+    "sha256": "22a667044908725ad803326ae28269fda5f4797c3f1fa8d06b6ea174d937285b"
+  },
+  "binding-wheel-filter": {
+    "records": 24,
+    "sha256": "8cd46a4e235f8a962d94fad92080f19d2ae76021dab3d52fcbfb56d40e333cf3"
+  }
+}

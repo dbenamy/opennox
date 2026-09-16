@@ -8,7 +8,7 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — summon qualified; begin binding-editor baseline
+## Current — binding-editor C contracts qualified; gameplay next
 
 Quickbar final qualification **657c6dc4** is pushed. Summon C contracts **f40d94dc**
 and gameplay baseline **20e9b5e3** are pushed. The completed native summon owner
@@ -37,13 +37,23 @@ runs are hash-deduplicated with restorable manifests; screenshots/logs remain.
 Do not rerun stale summon drafts or integrate_native.py. Preserve the unrelated
 untracked asset archive. Source build/baseline/env.sh for every Go command.
 
-Next: the connected in-game and main-menu binding editor, **21 functions / 757 C
-lines**. Ignored candidate audit: build/port-bindings/candidate.json. No next-batch
-source changes are installed. Build a C baseline with real listboxes and binding
-owners, covering duplicate keys, primary/secondary ordering, mandatory Escape,
-apply/cancel and file output in a temporary directory. Confirm caller/global
-ownership before translation. Continue one qualified chunk at a time, recording
-review decisions and C LOC, committing/pushing and continuing without a pause.
+The connected in-game/main-menu binding-editor C baseline is qualified: **7,412
+records / six groups**, exact in default/repeat/server/highres; all 29 affected
+binding/listbox/entry tests pass without skips. Source production C is unchanged:
+**63,323 lines / 85 files**. See [BINDINGS.md](docs/porting/BINDINGS.md), the tracked
+bindings-batch.json manifest and bindings-captures.json hashes. Evidence is under
+build/port-bindings/c-{default,repeat,server,highres,affected}; all readers joined.
+
+Next: qualify real editor gameplay, then translate the 21 functions / 757-line
+candidate. C apply serialization collapses duplicate keys with last action at
+first position; Escape cancels by popping the modal stack (not mouse capture),
+leaves the selected-list pointer, and clears its row selection. Preserve the
+synthetic narrow-screen unsigned-coordinate behavior for this batch. These are
+review notes, not behavior changes. The ignored gui_bindings_state.go draft is
+preliminary and uncompiled: fix its GetClient GUI access and listbox input helper
+before use, then review the rest. Other ignored *_test.go drafts are stale.
+Continue one qualified chunk at a time, recording C LOC and decisions,
+committing/pushing and continuing without a scheduled pause.
 No user question or substantial blocker is pending.
 
 The previous spellbook conversion **41b8abfb** is fully qualified and pushed;

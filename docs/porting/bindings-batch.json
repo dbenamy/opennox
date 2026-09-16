@@ -1,0 +1,246 @@
+{
+  "batch": "binding-editors",
+  "env": {
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_CAPTURE": "{out}/capture",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
+  "phases": {
+    "c-default": [
+      {
+        "name": "c-default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/bindings-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-binding-apply.json",
+            "sha256": "45353301e424f93c06c27a77b128c3cdfe6888694c4de294e5adae4762bc3020"
+          },
+          {
+            "path": "{out}/capture-binding-assignments.json",
+            "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
+          },
+          {
+            "path": "{out}/capture-binding-capture.json",
+            "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
+          },
+          {
+            "path": "{out}/capture-binding-construction.json",
+            "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-routing.json",
+            "sha256": "22a667044908725ad803326ae28269fda5f4797c3f1fa8d06b6ea174d937285b"
+          },
+          {
+            "path": "{out}/capture-binding-wheel-filter.json",
+            "sha256": "8cd46a4e235f8a962d94fad92080f19d2ae76021dab3d52fcbfb56d40e333cf3"
+          }
+        ]
+      }
+    ],
+    "c-repeat": [
+      {
+        "name": "c-repeat",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/bindings-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-binding-apply.json",
+            "sha256": "45353301e424f93c06c27a77b128c3cdfe6888694c4de294e5adae4762bc3020"
+          },
+          {
+            "path": "{out}/capture-binding-assignments.json",
+            "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
+          },
+          {
+            "path": "{out}/capture-binding-capture.json",
+            "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
+          },
+          {
+            "path": "{out}/capture-binding-construction.json",
+            "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-routing.json",
+            "sha256": "22a667044908725ad803326ae28269fda5f4797c3f1fa8d06b6ea174d937285b"
+          },
+          {
+            "path": "{out}/capture-binding-wheel-filter.json",
+            "sha256": "8cd46a4e235f8a962d94fad92080f19d2ae76021dab3d52fcbfb56d40e333cf3"
+          }
+        ]
+      }
+    ],
+    "c-server": [
+      {
+        "name": "c-server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/bindings-tests.txt",
+          "--tags",
+          "server,porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-binding-apply.json",
+            "sha256": "45353301e424f93c06c27a77b128c3cdfe6888694c4de294e5adae4762bc3020"
+          },
+          {
+            "path": "{out}/capture-binding-assignments.json",
+            "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
+          },
+          {
+            "path": "{out}/capture-binding-capture.json",
+            "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
+          },
+          {
+            "path": "{out}/capture-binding-construction.json",
+            "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-routing.json",
+            "sha256": "22a667044908725ad803326ae28269fda5f4797c3f1fa8d06b6ea174d937285b"
+          },
+          {
+            "path": "{out}/capture-binding-wheel-filter.json",
+            "sha256": "8cd46a4e235f8a962d94fad92080f19d2ae76021dab3d52fcbfb56d40e333cf3"
+          }
+        ]
+      }
+    ],
+    "c-highres": [
+      {
+        "name": "c-highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/bindings-tests.txt",
+          "--tags",
+          "highres,porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-binding-apply.json",
+            "sha256": "45353301e424f93c06c27a77b128c3cdfe6888694c4de294e5adae4762bc3020"
+          },
+          {
+            "path": "{out}/capture-binding-assignments.json",
+            "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
+          },
+          {
+            "path": "{out}/capture-binding-capture.json",
+            "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
+          },
+          {
+            "path": "{out}/capture-binding-construction.json",
+            "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-routing.json",
+            "sha256": "22a667044908725ad803326ae28269fda5f4797c3f1fa8d06b6ea174d937285b"
+          },
+          {
+            "path": "{out}/capture-binding-wheel-filter.json",
+            "sha256": "8cd46a4e235f8a962d94fad92080f19d2ae76021dab3d52fcbfb56d40e333cf3"
+          }
+        ]
+      }
+    ],
+    "c-affected": [
+      {
+        "name": "c-affected",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/bindings-affected-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-binding-apply.json",
+            "sha256": "45353301e424f93c06c27a77b128c3cdfe6888694c4de294e5adae4762bc3020"
+          },
+          {
+            "path": "{out}/capture-binding-assignments.json",
+            "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
+          },
+          {
+            "path": "{out}/capture-binding-capture.json",
+            "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
+          },
+          {
+            "path": "{out}/capture-binding-construction.json",
+            "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-routing.json",
+            "sha256": "22a667044908725ad803326ae28269fda5f4797c3f1fa8d06b6ea174d937285b"
+          },
+          {
+            "path": "{out}/capture-binding-wheel-filter.json",
+            "sha256": "8cd46a4e235f8a962d94fad92080f19d2ae76021dab3d52fcbfb56d40e333cf3"
+          }
+        ]
+      }
+    ]
+  }
+}

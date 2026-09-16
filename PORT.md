@@ -28,8 +28,11 @@ the completed-batch affected checks; broaden again at the next relevant mileston
 See [SUMMON.md](docs/porting/SUMMON.md) for the menu-clamp prerequisite correction,
 preserved animation behavior, hit-test translation correction and evidence.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. The next connected
-candidate is the in-game/main-menu binding editor, reusing real GUI/listbox/input
-owners. Confident reversible decisions remain recorded for review.
+batch is the in-game/main-menu binding editor. Its C baseline has **7,412 frozen
+records in six groups**, matching default/server/highres plus repeat; all 29
+affected binding/listbox/entry tests pass. See [BINDINGS.md](docs/porting/BINDINGS.md).
+Gameplay qualification and translation are next. Confident reversible decisions
+remain recorded for review.
 
 ## Goal and target
 
