@@ -1,0 +1,608 @@
+{
+  "batch": "lists",
+  "env": {
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_CAPTURE": "{out}/capture",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_LISTS_CAPTURE": "{out}/capture"
+  },
+  "phases": {
+    "c": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/lists-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-group-boundaries.json",
+            "sha256": "b8638e8868f2506bfb102667a2766b35bfcc52de9479a2d92e2c36963feb82ad"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "2928266a95fd7c7e09e9f102596996e941bc0be80da4327b995c07e1cf5c1fe4"
+          },
+          {
+            "path": "{out}/capture-mixed.json",
+            "sha256": "b69b830142d62fbaa0a99130c31dd5edcfe73013aa963134454df44193d90415"
+          },
+          {
+            "path": "{out}/capture-nullable.json",
+            "sha256": "108c8f0ee6ec5f56b57189d4acfd4315b6baa61207c1162f27a2ce133ed13244"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "4e88b199e8043a9b3ac5c6fca53b40df154a1406b0ba7d3d95c7124c590a967d"
+          }
+        ]
+      },
+      {
+        "name": "repeat",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/lists-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/repeat.jsonl",
+          "--result",
+          "{out}/repeat-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-group-boundaries.json",
+            "sha256": "b8638e8868f2506bfb102667a2766b35bfcc52de9479a2d92e2c36963feb82ad"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "2928266a95fd7c7e09e9f102596996e941bc0be80da4327b995c07e1cf5c1fe4"
+          },
+          {
+            "path": "{out}/capture-mixed.json",
+            "sha256": "b69b830142d62fbaa0a99130c31dd5edcfe73013aa963134454df44193d90415"
+          },
+          {
+            "path": "{out}/capture-nullable.json",
+            "sha256": "108c8f0ee6ec5f56b57189d4acfd4315b6baa61207c1162f27a2ce133ed13244"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "4e88b199e8043a9b3ac5c6fca53b40df154a1406b0ba7d3d95c7124c590a967d"
+          }
+        ]
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/lists-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-group-boundaries.json",
+            "sha256": "b8638e8868f2506bfb102667a2766b35bfcc52de9479a2d92e2c36963feb82ad"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "2928266a95fd7c7e09e9f102596996e941bc0be80da4327b995c07e1cf5c1fe4"
+          },
+          {
+            "path": "{out}/capture-mixed.json",
+            "sha256": "b69b830142d62fbaa0a99130c31dd5edcfe73013aa963134454df44193d90415"
+          },
+          {
+            "path": "{out}/capture-nullable.json",
+            "sha256": "108c8f0ee6ec5f56b57189d4acfd4315b6baa61207c1162f27a2ce133ed13244"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "4e88b199e8043a9b3ac5c6fca53b40df154a1406b0ba7d3d95c7124c590a967d"
+          }
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/lists-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-group-boundaries.json",
+            "sha256": "b8638e8868f2506bfb102667a2766b35bfcc52de9479a2d92e2c36963feb82ad"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "2928266a95fd7c7e09e9f102596996e941bc0be80da4327b995c07e1cf5c1fe4"
+          },
+          {
+            "path": "{out}/capture-mixed.json",
+            "sha256": "b69b830142d62fbaa0a99130c31dd5edcfe73013aa963134454df44193d90415"
+          },
+          {
+            "path": "{out}/capture-nullable.json",
+            "sha256": "108c8f0ee6ec5f56b57189d4acfd4315b6baa61207c1162f27a2ce133ed13244"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "4e88b199e8043a9b3ac5c6fca53b40df154a1406b0ba7d3d95c7124c590a967d"
+          }
+        ]
+      }
+    ],
+    "focused": [
+      {
+        "name": "focused",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/lists-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/focused.jsonl",
+          "--result",
+          "{out}/focused-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-group-boundaries.json",
+            "sha256": "b8638e8868f2506bfb102667a2766b35bfcc52de9479a2d92e2c36963feb82ad"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "2928266a95fd7c7e09e9f102596996e941bc0be80da4327b995c07e1cf5c1fe4"
+          },
+          {
+            "path": "{out}/capture-mixed.json",
+            "sha256": "b69b830142d62fbaa0a99130c31dd5edcfe73013aa963134454df44193d90415"
+          },
+          {
+            "path": "{out}/capture-nullable.json",
+            "sha256": "108c8f0ee6ec5f56b57189d4acfd4315b6baa61207c1162f27a2ce133ed13244"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "4e88b199e8043a9b3ac5c6fca53b40df154a1406b0ba7d3d95c7124c590a967d"
+          }
+        ]
+      }
+    ],
+    "native": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/lists-affected-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-group-boundaries.json",
+            "sha256": "b8638e8868f2506bfb102667a2766b35bfcc52de9479a2d92e2c36963feb82ad"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "2928266a95fd7c7e09e9f102596996e941bc0be80da4327b995c07e1cf5c1fe4"
+          },
+          {
+            "path": "{out}/capture-mixed.json",
+            "sha256": "b69b830142d62fbaa0a99130c31dd5edcfe73013aa963134454df44193d90415"
+          },
+          {
+            "path": "{out}/capture-nullable.json",
+            "sha256": "108c8f0ee6ec5f56b57189d4acfd4315b6baa61207c1162f27a2ce133ed13244"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "4e88b199e8043a9b3ac5c6fca53b40df154a1406b0ba7d3d95c7124c590a967d"
+          }
+        ]
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/lists-affected-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-group-boundaries.json",
+            "sha256": "b8638e8868f2506bfb102667a2766b35bfcc52de9479a2d92e2c36963feb82ad"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "2928266a95fd7c7e09e9f102596996e941bc0be80da4327b995c07e1cf5c1fe4"
+          },
+          {
+            "path": "{out}/capture-mixed.json",
+            "sha256": "b69b830142d62fbaa0a99130c31dd5edcfe73013aa963134454df44193d90415"
+          },
+          {
+            "path": "{out}/capture-nullable.json",
+            "sha256": "108c8f0ee6ec5f56b57189d4acfd4315b6baa61207c1162f27a2ce133ed13244"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "4e88b199e8043a9b3ac5c6fca53b40df154a1406b0ba7d3d95c7124c590a967d"
+          }
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/lists-affected-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-group-boundaries.json",
+            "sha256": "b8638e8868f2506bfb102667a2766b35bfcc52de9479a2d92e2c36963feb82ad"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "2928266a95fd7c7e09e9f102596996e941bc0be80da4327b995c07e1cf5c1fe4"
+          },
+          {
+            "path": "{out}/capture-mixed.json",
+            "sha256": "b69b830142d62fbaa0a99130c31dd5edcfe73013aa963134454df44193d90415"
+          },
+          {
+            "path": "{out}/capture-nullable.json",
+            "sha256": "108c8f0ee6ec5f56b57189d4acfd4315b6baa61207c1162f27a2ce133ed13244"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "4e88b199e8043a9b3ac5c6fca53b40df154a1406b0ba7d3d95c7124c590a967d"
+          }
+        ]
+      },
+      {
+        "name": "compressor-helper",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{root}/build/port-lists/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/lists-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      }
+    ],
+    "milestone-default": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          },
+          {
+            "path": "{out}/capture-group-boundaries.json",
+            "sha256": "b8638e8868f2506bfb102667a2766b35bfcc52de9479a2d92e2c36963feb82ad"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "2928266a95fd7c7e09e9f102596996e941bc0be80da4327b995c07e1cf5c1fe4"
+          },
+          {
+            "path": "{out}/capture-mixed.json",
+            "sha256": "b69b830142d62fbaa0a99130c31dd5edcfe73013aa963134454df44193d90415"
+          },
+          {
+            "path": "{out}/capture-nullable.json",
+            "sha256": "108c8f0ee6ec5f56b57189d4acfd4315b6baa61207c1162f27a2ce133ed13244"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "4e88b199e8043a9b3ac5c6fca53b40df154a1406b0ba7d3d95c7124c590a967d"
+          }
+        ]
+      }
+    ],
+    "milestone-server": [
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          },
+          {
+            "path": "{out}/capture-group-boundaries.json",
+            "sha256": "b8638e8868f2506bfb102667a2766b35bfcc52de9479a2d92e2c36963feb82ad"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "2928266a95fd7c7e09e9f102596996e941bc0be80da4327b995c07e1cf5c1fe4"
+          },
+          {
+            "path": "{out}/capture-mixed.json",
+            "sha256": "b69b830142d62fbaa0a99130c31dd5edcfe73013aa963134454df44193d90415"
+          },
+          {
+            "path": "{out}/capture-nullable.json",
+            "sha256": "108c8f0ee6ec5f56b57189d4acfd4315b6baa61207c1162f27a2ce133ed13244"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "4e88b199e8043a9b3ac5c6fca53b40df154a1406b0ba7d3d95c7124c590a967d"
+          }
+        ]
+      }
+    ],
+    "milestone-highres": [
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          },
+          {
+            "path": "{out}/capture-group-boundaries.json",
+            "sha256": "b8638e8868f2506bfb102667a2766b35bfcc52de9479a2d92e2c36963feb82ad"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "2928266a95fd7c7e09e9f102596996e941bc0be80da4327b995c07e1cf5c1fe4"
+          },
+          {
+            "path": "{out}/capture-mixed.json",
+            "sha256": "b69b830142d62fbaa0a99130c31dd5edcfe73013aa963134454df44193d90415"
+          },
+          {
+            "path": "{out}/capture-nullable.json",
+            "sha256": "108c8f0ee6ec5f56b57189d4acfd4315b6baa61207c1162f27a2ce133ed13244"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "4e88b199e8043a9b3ac5c6fca53b40df154a1406b0ba7d3d95c7124c590a967d"
+          }
+        ]
+      }
+    ]
+  },
+  "production": {
+    "description": "Shared intrusive lists and player-group membership in Go",
+    "assets": "build/assets/extracted/drive_c/Nox",
+    "known_suite": "build/port-rule-command/full-suite.jsonl",
+    "scenario_runner": "tools/porting/run_scenario.py",
+    "force_map_decompression": true,
+    "retained": [
+      "nox_common_list_clear_425760",
+      "sub_425770",
+      "sub_425790",
+      "sub_4257F0",
+      "nox_common_list_getFirstSafe_425890",
+      "nox_common_list_getNextSafe_4258A0",
+      "sub_4258C0",
+      "nox_common_list_append_4258E0",
+      "sub_425900",
+      "nox_common_list_remove_425920",
+      "nox_common_list_getNext_425940",
+      "sub_425960",
+      "sub_425A50",
+      "sub_425A60",
+      "sub_425A70",
+      "sub_425B60"
+    ],
+    "retired": [
+      "sub_4259C0",
+      "sub_4259F0",
+      "sub_425AA0",
+      "sub_425AD0",
+      "sub_425B30",
+      "sub_425BC0",
+      "sub_425BE0"
+    ],
+    "scenarios": [
+      {
+        "name": "lists-native",
+        "reference": "build/baseline/runs/map-catalog-native",
+        "scenario": "docs/porting/minimap-chapter.yaml"
+      },
+      {
+        "name": "lists-flat-native",
+        "reference": "build/baseline/runs/map-catalog-flat-native",
+        "scenario": "docs/porting/tile-raster-flat.yaml"
+      }
+    ],
+    "compress_maps": [
+      "war01a/War01A.map"
+    ],
+    "map_compressor": "build/port-lists/map-compress"
+  }
+}

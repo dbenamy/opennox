@@ -10,7 +10,7 @@ Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
 ## Current — map catalog qualified; continue shared lists and player groups
 
-Catalog C baseline **cd5337b6** is pushed. Native qualification is complete under
+Catalog C baseline **cd5337b6** and conversion **b6df7591** are pushed. Native qualification is complete under
 `build/port-map-catalog/native-qualified` (662.181s), with unchanged source and all
 readers joined. All 47 affected roots pass without skips in each configuration;
 all 1,789 frozen records match. Three production builds/ABI pass, the full asset
@@ -18,12 +18,16 @@ suite exactly retains 1,553 known failure entries, and both fresh gameplay modes
 regenerate the warrior map exactly and match their frame references. See
 [MAP_CATALOG.md](docs/porting/MAP_CATALOG.md) for detailed evidence and review notes.
 
-Next: shared intrusive lists and player-group membership. The audit and drafts
-are in `build/port-lists`; they are not installed or frozen yet. Read AUDIT.md.
+Current work: [shared intrusive lists and player-group membership](docs/porting/LISTS.md).
 The connected 300-line owner has a duplicate root Go implementation to consolidate.
-Use independent list models and lifecycle checks, freeze C before conversion,
-and run the full accumulated corpus because the shared owner is widely used.
-No code from the ignored fixture/native drafts has been qualified.
+C baseline is qualified: 2,319 frozen records / five groups, all five roots pass
+in default, repeat, server and highres with no skips and unchanged source
+(`build/port-lists/c-qualified`, 154.223s). All readers joined; no prerequisite
+C change. Next review/apply the native draft and caller migration, then focused,
+production and full accumulated gates. No native implementation is installed yet.
+The ignored prepare-baseline script is applied and stale; do not overwrite the
+committed fixtures with drafts. Separate milestone phases are tracked for all
+three targets; use isolated output directories and GOMAXPROCS=1/GOMEMLIMIT=768MiB.
 
 Continue under PORT.md without a scheduled pause. Preserve original assets/archive.
 Catalog and compressor apply/finalization scripts are stale; do not rerun them.

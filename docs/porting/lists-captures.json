@@ -1,0 +1,27 @@
+[
+  {
+    "label": "group-boundaries",
+    "sha256": "b8638e8868f2506bfb102667a2766b35bfcc52de9479a2d92e2c36963feb82ad",
+    "records": 40
+  },
+  {
+    "label": "groups",
+    "sha256": "2928266a95fd7c7e09e9f102596996e941bc0be80da4327b995c07e1cf5c1fe4",
+    "records": 800
+  },
+  {
+    "label": "mixed",
+    "sha256": "b69b830142d62fbaa0a99130c31dd5edcfe73013aa963134454df44193d90415",
+    "records": 1440
+  },
+  {
+    "label": "nullable",
+    "sha256": "108c8f0ee6ec5f56b57189d4acfd4315b6baa61207c1162f27a2ce133ed13244",
+    "records": 3
+  },
+  {
+    "label": "ordering",
+    "sha256": "4e88b199e8043a9b3ac5c6fca53b40df154a1406b0ba7d3d95c7124c590a967d",
+    "records": 36
+  }
+]
