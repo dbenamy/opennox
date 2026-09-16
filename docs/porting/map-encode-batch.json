@@ -1,0 +1,498 @@
+{
+  "batch": "map-compression",
+  "env": {
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_CAPTURE": "{out}/capture",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
+  "phases": {
+    "c": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-encode-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./legacy/cnxz",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      },
+      {
+        "name": "repeat",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-encode-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./legacy/cnxz",
+          "--log",
+          "{out}/repeat.jsonl",
+          "--result",
+          "{out}/repeat-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-encode-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          "./legacy/cnxz",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-encode-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          "./legacy/cnxz",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      }
+    ],
+    "focused": [
+      {
+        "name": "focused",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-encode-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./legacy/cnxz",
+          "--log",
+          "{out}/focused.jsonl",
+          "--result",
+          "{out}/focused-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      }
+    ],
+    "native": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-encode-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./legacy/cnxz",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-encode-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          "./legacy/cnxz",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-encode-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          "./legacy/cnxz",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/map-encode-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      }
+    ],
+    "milestone": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "900"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "900"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "900"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      }
+    ]
+  },
+  "production": {
+    "description": "Complete NXZ map compressor in Go",
+    "assets": "build/assets/extracted/drive_c/Nox",
+    "known_suite": "build/port-rule-command/full-suite.jsonl",
+    "scenario_runner": "tools/porting/run_scenario.py",
+    "force_map_decompression": true,
+    "retained": [],
+    "retired": [
+      "nxz_compress",
+      "nxz_compress_free",
+      "nxz_compress_new",
+      "nxz_decompress",
+      "nxz_decompress_free",
+      "nxz_decompress_new",
+      "sub57D150",
+      "sub57DD90",
+      "sub57DDC0",
+      "sub57DDE0",
+      "sub57DEA0",
+      "sub57DF70",
+      "sub57E8A0",
+      "sub57E910",
+      "sub57E9A0",
+      "sub57EA00",
+      "sub_57DDE0",
+      "sub_57DEA0",
+      "sub_57DF00",
+      "sub_57DFC0",
+      "sub_57E2C0",
+      "sub_57E3F0",
+      "sub_57E4C0",
+      "sub_57E7D0",
+      "sub_57F160"
+    ],
+    "scenarios": [
+      {
+        "name": "map-encode-native-forced-case",
+        "reference": "build/baseline/runs/map-decode-native-forced-case",
+        "scenario": "docs/porting/minimap-chapter.yaml"
+      },
+      {
+        "name": "map-encode-flat-native-forced-case",
+        "reference": "build/baseline/runs/map-decode-flat-native-forced-case",
+        "scenario": "docs/porting/tile-raster-flat.yaml"
+      }
+    ],
+    "compress_maps": [
+      "war01a/War01A.map"
+    ],
+    "map_compressor": "{root}/build/port-map-compression/map-compress"
+  }
+}
