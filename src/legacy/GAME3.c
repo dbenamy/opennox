@@ -1347,7 +1347,7 @@ int sub_4ABDA0(int a1, short a2, short a3, uint32_t* a4) {
 	unsigned int v7; // edx
 	int v8;          // eax
 	float v9;        // [esp-14h] [ebp-148h]
-	char v10;        // [esp+Fh] [ebp-125h]
+	char v10 = 0;        // [esp+Fh] [ebp-125h]
 	float v11;       // [esp+10h] [ebp-124h]
 	int v12;         // [esp+14h] [ebp-120h]
 	int v13[2];      // [esp+18h] [ebp-11Ch]
@@ -1355,7 +1355,7 @@ int sub_4ABDA0(int a1, short a2, short a3, uint32_t* a4) {
 	int v15;         // [esp+24h] [ebp-110h]
 	int v16;         // [esp+28h] [ebp-10Ch]
 	float v17;       // [esp+2Ch] [ebp-108h]
-	int v18;         // [esp+30h] [ebp-104h]
+	int v18 = 0;         // [esp+30h] [ebp-104h]
 	char v19[256];   // [esp+34h] [ebp-100h]
 
 	nox_xxx_fileReadWrite_426AC0_file3_fread(&v15, 4u);

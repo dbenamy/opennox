@@ -1212,3 +1212,22 @@ OPTIONS.md. This is an intentional reversible behavior correction to review;
 it precedes Go translation. It removes 96 C lines of raw-pointer plumbing and
 redundant empty-handler branches; record that separately from ported C LOC.
 The transient clipping frame is recorded for a separate renderer investigation.
+
+## Client map reader defaults and preserved edge cases
+
+Initialize the old common record's team byte and extra-flags word to zero when
+older layouts omit them. All 42 independent regression cases fail against the
+unmodified C reader and pass after the two initializers. This reversible C
+prerequisite is qualified before translation; no physical C lines are removed.
+See [MAP_DRAWABLES.md](MAP_DRAWABLES.md).
+
+Preserve old count narrowing, signed-X/unsigned-Y door positioning, and distinct
+legacy versus modern team-registration exceptions. The 2,484-record baseline
+uses actual tables, file/drawable/shape/light/modifier/wall/team owners and seven
+frozen capture groups.
+
+Keep the existing allocation-failure section-framing behavior during this port.
+A typed reader can consume a partial record and return zero, after which the
+section owner skips the full declared length. Controlled cases reproduce the
+resulting stop positions and load-error flag. A later fix should define recovery
+for the complete map-loading owner; it is separate from defaulting absent fields.

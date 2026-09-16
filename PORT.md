@@ -27,9 +27,10 @@ matches with exact map regeneration. The full accumulated milestone passed at th
 preceding binding conversion; affected checks are appropriate for this batch.
 
 See [OPTIONS.md](docs/porting/OPTIONS.md) for the prerequisite correction,
-qualification and rendering follow-up. Next candidate: nine connected client map
-drawable readers / 617 C lines, using real stream, drawable, light and shape
-owners. Audit old-format defaults before freezing C expectations.
+qualification and rendering follow-up. The next client-map batch has a qualified C prerequisite and **2,484 frozen
+records / seven groups**, repeated gameplay and flat-map regeneration. Its nine
+connected readers occupy **617 C lines**; translation is next. See
+[MAP_DRAWABLES.md](docs/porting/MAP_DRAWABLES.md).
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. Confident reversible
 decisions remain recorded for review.
 

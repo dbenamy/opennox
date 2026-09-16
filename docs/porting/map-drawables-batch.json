@@ -1,0 +1,612 @@
+{
+  "batch": "client-map-drawables",
+  "env": {
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_CAPTURE": "{out}/capture",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
+  "phases": {
+    "c-default": [
+      {
+        "name": "c-default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-drawables-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-map-drawable-base.json",
+            "sha256": "25470a33a9b23facda83bf28da0e678c95746b57404602b6e33d046182c78590"
+          },
+          {
+            "path": "{out}/capture-map-drawable-typed.json",
+            "sha256": "48492ed7e77735caa052fe9a5d1dddcfa6812cb75ae18da4a3c658b528cb46b5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-sections.json",
+            "sha256": "750143749d1d04499fae4c1c5ae5174eebdd8f9cd450ce1095421414834527a5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-counts.json",
+            "sha256": "3e7317fc0efe59950be7af5719ffa0b0bb87d47b49b89e3ce12c93ce5c8b6b38"
+          },
+          {
+            "path": "{out}/capture-map-drawable-teams.json",
+            "sha256": "0a3b027d3095ebc8181e91ea904c0fe9d0f25851ec2c9e51b4e67b88656d23fe"
+          },
+          {
+            "path": "{out}/capture-map-drawable-lights.json",
+            "sha256": "f86e84c8f103bc7ed3dc12739c33d4bb886a33e0d8d931fb58fcdd87dfe949c4"
+          },
+          {
+            "path": "{out}/capture-map-drawable-doors.json",
+            "sha256": "bfbff3b9940128653de3aeeb077be18d7fd96730325f9174329a4f4076dac9f2"
+          }
+        ]
+      }
+    ],
+    "c-repeat": [
+      {
+        "name": "c-repeat",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-drawables-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-map-drawable-base.json",
+            "sha256": "25470a33a9b23facda83bf28da0e678c95746b57404602b6e33d046182c78590"
+          },
+          {
+            "path": "{out}/capture-map-drawable-typed.json",
+            "sha256": "48492ed7e77735caa052fe9a5d1dddcfa6812cb75ae18da4a3c658b528cb46b5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-sections.json",
+            "sha256": "750143749d1d04499fae4c1c5ae5174eebdd8f9cd450ce1095421414834527a5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-counts.json",
+            "sha256": "3e7317fc0efe59950be7af5719ffa0b0bb87d47b49b89e3ce12c93ce5c8b6b38"
+          },
+          {
+            "path": "{out}/capture-map-drawable-teams.json",
+            "sha256": "0a3b027d3095ebc8181e91ea904c0fe9d0f25851ec2c9e51b4e67b88656d23fe"
+          },
+          {
+            "path": "{out}/capture-map-drawable-lights.json",
+            "sha256": "f86e84c8f103bc7ed3dc12739c33d4bb886a33e0d8d931fb58fcdd87dfe949c4"
+          },
+          {
+            "path": "{out}/capture-map-drawable-doors.json",
+            "sha256": "bfbff3b9940128653de3aeeb077be18d7fd96730325f9174329a4f4076dac9f2"
+          }
+        ]
+      }
+    ],
+    "c-server": [
+      {
+        "name": "c-server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-drawables-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-map-drawable-base.json",
+            "sha256": "25470a33a9b23facda83bf28da0e678c95746b57404602b6e33d046182c78590"
+          },
+          {
+            "path": "{out}/capture-map-drawable-typed.json",
+            "sha256": "48492ed7e77735caa052fe9a5d1dddcfa6812cb75ae18da4a3c658b528cb46b5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-sections.json",
+            "sha256": "750143749d1d04499fae4c1c5ae5174eebdd8f9cd450ce1095421414834527a5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-counts.json",
+            "sha256": "3e7317fc0efe59950be7af5719ffa0b0bb87d47b49b89e3ce12c93ce5c8b6b38"
+          },
+          {
+            "path": "{out}/capture-map-drawable-teams.json",
+            "sha256": "0a3b027d3095ebc8181e91ea904c0fe9d0f25851ec2c9e51b4e67b88656d23fe"
+          },
+          {
+            "path": "{out}/capture-map-drawable-lights.json",
+            "sha256": "f86e84c8f103bc7ed3dc12739c33d4bb886a33e0d8d931fb58fcdd87dfe949c4"
+          },
+          {
+            "path": "{out}/capture-map-drawable-doors.json",
+            "sha256": "bfbff3b9940128653de3aeeb077be18d7fd96730325f9174329a4f4076dac9f2"
+          }
+        ]
+      }
+    ],
+    "c-highres": [
+      {
+        "name": "c-highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-drawables-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-map-drawable-base.json",
+            "sha256": "25470a33a9b23facda83bf28da0e678c95746b57404602b6e33d046182c78590"
+          },
+          {
+            "path": "{out}/capture-map-drawable-typed.json",
+            "sha256": "48492ed7e77735caa052fe9a5d1dddcfa6812cb75ae18da4a3c658b528cb46b5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-sections.json",
+            "sha256": "750143749d1d04499fae4c1c5ae5174eebdd8f9cd450ce1095421414834527a5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-counts.json",
+            "sha256": "3e7317fc0efe59950be7af5719ffa0b0bb87d47b49b89e3ce12c93ce5c8b6b38"
+          },
+          {
+            "path": "{out}/capture-map-drawable-teams.json",
+            "sha256": "0a3b027d3095ebc8181e91ea904c0fe9d0f25851ec2c9e51b4e67b88656d23fe"
+          },
+          {
+            "path": "{out}/capture-map-drawable-lights.json",
+            "sha256": "f86e84c8f103bc7ed3dc12739c33d4bb886a33e0d8d931fb58fcdd87dfe949c4"
+          },
+          {
+            "path": "{out}/capture-map-drawable-doors.json",
+            "sha256": "bfbff3b9940128653de3aeeb077be18d7fd96730325f9174329a4f4076dac9f2"
+          }
+        ]
+      }
+    ],
+    "c-affected": [
+      {
+        "name": "c-affected",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-drawables-affected-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-map-drawable-base.json",
+            "sha256": "25470a33a9b23facda83bf28da0e678c95746b57404602b6e33d046182c78590"
+          },
+          {
+            "path": "{out}/capture-map-drawable-typed.json",
+            "sha256": "48492ed7e77735caa052fe9a5d1dddcfa6812cb75ae18da4a3c658b528cb46b5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-sections.json",
+            "sha256": "750143749d1d04499fae4c1c5ae5174eebdd8f9cd450ce1095421414834527a5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-counts.json",
+            "sha256": "3e7317fc0efe59950be7af5719ffa0b0bb87d47b49b89e3ce12c93ce5c8b6b38"
+          },
+          {
+            "path": "{out}/capture-map-drawable-teams.json",
+            "sha256": "0a3b027d3095ebc8181e91ea904c0fe9d0f25851ec2c9e51b4e67b88656d23fe"
+          },
+          {
+            "path": "{out}/capture-map-drawable-lights.json",
+            "sha256": "f86e84c8f103bc7ed3dc12739c33d4bb886a33e0d8d931fb58fcdd87dfe949c4"
+          },
+          {
+            "path": "{out}/capture-map-drawable-doors.json",
+            "sha256": "bfbff3b9940128653de3aeeb077be18d7fd96730325f9174329a4f4076dac9f2"
+          }
+        ]
+      }
+    ],
+    "native-focused": [
+      {
+        "name": "native-focused",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-drawables-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-map-drawable-base.json",
+            "sha256": "25470a33a9b23facda83bf28da0e678c95746b57404602b6e33d046182c78590"
+          },
+          {
+            "path": "{out}/capture-map-drawable-typed.json",
+            "sha256": "48492ed7e77735caa052fe9a5d1dddcfa6812cb75ae18da4a3c658b528cb46b5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-sections.json",
+            "sha256": "750143749d1d04499fae4c1c5ae5174eebdd8f9cd450ce1095421414834527a5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-counts.json",
+            "sha256": "3e7317fc0efe59950be7af5719ffa0b0bb87d47b49b89e3ce12c93ce5c8b6b38"
+          },
+          {
+            "path": "{out}/capture-map-drawable-teams.json",
+            "sha256": "0a3b027d3095ebc8181e91ea904c0fe9d0f25851ec2c9e51b4e67b88656d23fe"
+          },
+          {
+            "path": "{out}/capture-map-drawable-lights.json",
+            "sha256": "f86e84c8f103bc7ed3dc12739c33d4bb886a33e0d8d931fb58fcdd87dfe949c4"
+          },
+          {
+            "path": "{out}/capture-map-drawable-doors.json",
+            "sha256": "bfbff3b9940128653de3aeeb077be18d7fd96730325f9174329a4f4076dac9f2"
+          }
+        ]
+      }
+    ],
+    "native-default": [
+      {
+        "name": "native-default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-drawables-affected-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-map-drawable-base.json",
+            "sha256": "25470a33a9b23facda83bf28da0e678c95746b57404602b6e33d046182c78590"
+          },
+          {
+            "path": "{out}/capture-map-drawable-typed.json",
+            "sha256": "48492ed7e77735caa052fe9a5d1dddcfa6812cb75ae18da4a3c658b528cb46b5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-sections.json",
+            "sha256": "750143749d1d04499fae4c1c5ae5174eebdd8f9cd450ce1095421414834527a5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-counts.json",
+            "sha256": "3e7317fc0efe59950be7af5719ffa0b0bb87d47b49b89e3ce12c93ce5c8b6b38"
+          },
+          {
+            "path": "{out}/capture-map-drawable-teams.json",
+            "sha256": "0a3b027d3095ebc8181e91ea904c0fe9d0f25851ec2c9e51b4e67b88656d23fe"
+          },
+          {
+            "path": "{out}/capture-map-drawable-lights.json",
+            "sha256": "f86e84c8f103bc7ed3dc12739c33d4bb886a33e0d8d931fb58fcdd87dfe949c4"
+          },
+          {
+            "path": "{out}/capture-map-drawable-doors.json",
+            "sha256": "bfbff3b9940128653de3aeeb077be18d7fd96730325f9174329a4f4076dac9f2"
+          }
+        ]
+      }
+    ],
+    "native-server": [
+      {
+        "name": "native-server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-drawables-affected-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-map-drawable-base.json",
+            "sha256": "25470a33a9b23facda83bf28da0e678c95746b57404602b6e33d046182c78590"
+          },
+          {
+            "path": "{out}/capture-map-drawable-typed.json",
+            "sha256": "48492ed7e77735caa052fe9a5d1dddcfa6812cb75ae18da4a3c658b528cb46b5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-sections.json",
+            "sha256": "750143749d1d04499fae4c1c5ae5174eebdd8f9cd450ce1095421414834527a5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-counts.json",
+            "sha256": "3e7317fc0efe59950be7af5719ffa0b0bb87d47b49b89e3ce12c93ce5c8b6b38"
+          },
+          {
+            "path": "{out}/capture-map-drawable-teams.json",
+            "sha256": "0a3b027d3095ebc8181e91ea904c0fe9d0f25851ec2c9e51b4e67b88656d23fe"
+          },
+          {
+            "path": "{out}/capture-map-drawable-lights.json",
+            "sha256": "f86e84c8f103bc7ed3dc12739c33d4bb886a33e0d8d931fb58fcdd87dfe949c4"
+          },
+          {
+            "path": "{out}/capture-map-drawable-doors.json",
+            "sha256": "bfbff3b9940128653de3aeeb077be18d7fd96730325f9174329a4f4076dac9f2"
+          }
+        ]
+      }
+    ],
+    "native-highres": [
+      {
+        "name": "native-highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-drawables-affected-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-map-drawable-base.json",
+            "sha256": "25470a33a9b23facda83bf28da0e678c95746b57404602b6e33d046182c78590"
+          },
+          {
+            "path": "{out}/capture-map-drawable-typed.json",
+            "sha256": "48492ed7e77735caa052fe9a5d1dddcfa6812cb75ae18da4a3c658b528cb46b5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-sections.json",
+            "sha256": "750143749d1d04499fae4c1c5ae5174eebdd8f9cd450ce1095421414834527a5"
+          },
+          {
+            "path": "{out}/capture-map-drawable-counts.json",
+            "sha256": "3e7317fc0efe59950be7af5719ffa0b0bb87d47b49b89e3ce12c93ce5c8b6b38"
+          },
+          {
+            "path": "{out}/capture-map-drawable-teams.json",
+            "sha256": "0a3b027d3095ebc8181e91ea904c0fe9d0f25851ec2c9e51b4e67b88656d23fe"
+          },
+          {
+            "path": "{out}/capture-map-drawable-lights.json",
+            "sha256": "f86e84c8f103bc7ed3dc12739c33d4bb886a33e0d8d931fb58fcdd87dfe949c4"
+          },
+          {
+            "path": "{out}/capture-map-drawable-doors.json",
+            "sha256": "bfbff3b9940128653de3aeeb077be18d7fd96730325f9174329a4f4076dac9f2"
+          }
+        ]
+      }
+    ],
+    "c-gameplay": [
+      {
+        "name": "compressor-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "client-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/client",
+          "./cmd/opennox"
+        ]
+      },
+      {
+        "name": "map-drawables-c",
+        "command": [
+          "env",
+          "NOX_DEV=true",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/options-panels.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=C client map readers with absent-field defaults",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "map-drawables-c",
+          "compare",
+          "{root}/build/baseline/runs/options-native"
+        ]
+      },
+      {
+        "name": "map-drawables-c-repeat",
+        "command": [
+          "env",
+          "NOX_DEV=true",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/options-panels.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=C client map readers with absent-field defaults",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "map-drawables-c-repeat",
+          "compare",
+          "{root}/build/baseline/runs/map-drawables-c"
+        ]
+      },
+      {
+        "name": "flat-c",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/tile-raster-flat.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=C client map readers with absent-field defaults",
+          "OPENNOX_REQUIRE_MAP_DECOMPRESSION=1",
+          "OPENNOX_COMPRESS_MAPS=[\"war01a/War01A.map\"]",
+          "OPENNOX_MAP_COMPRESSOR={out}/map-compress",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "map-drawables-flat-c",
+          "compare",
+          "{root}/build/baseline/runs/options-flat-native"
+        ]
+      }
+    ],
+    "production": [
+      {
+        "name": "compressor-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/map-drawables-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      },
+      {
+        "name": "flat-gameplay",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/production/bin/opennox",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/tile-raster-flat.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Client map drawable loading in Go",
+          "OPENNOX_REQUIRE_MAP_DECOMPRESSION=1",
+          "OPENNOX_COMPRESS_MAPS=[\"war01a/War01A.map\"]",
+          "OPENNOX_MAP_COMPRESSOR={out}/map-compress",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "map-drawables-flat-native",
+          "compare",
+          "{root}/build/baseline/runs/options-flat-native"
+        ]
+      }
+    ]
+  },
+  "production": {
+    "description": "Client map drawable loading in Go",
+    "assets": "build/assets/extracted/drive_c/Nox",
+    "known_suite": "build/port-rule-command/full-suite.jsonl",
+    "scenario_runner": "tools/porting/run_scenario.py",
+    "retained": [
+      "nox_client_mapSpecialRWObjectData_4AC610"
+    ],
+    "retired": [
+      "sub_4ABDA0",
+      "nox_xxx_spriteLoadFromMap_4AC020",
+      "nox_xxx_clientLoadSomeObject_4AC6E0",
+      "sub_4AC7B0",
+      "nox_xxx_colorLightClientLoad_4AC980",
+      "nox_xxx_cliLoadTeamBase_4ACE00",
+      "sub_4ACEF0",
+      "sub_4AD040"
+    ],
+    "scenarios": [
+      {
+        "name": "map-drawables-native",
+        "reference": "build/baseline/runs/map-drawables-c",
+        "scenario": "docs/porting/options-panels.yaml",
+        "env": {
+          "NOX_DEV": "true"
+        }
+      }
+    ]
+  }
+}

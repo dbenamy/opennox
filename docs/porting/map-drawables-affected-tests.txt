@@ -1,0 +1,1 @@
+^Test(MapDrawable|ClientObjectDrawing(Door|Geometry|Helpers|Equipment)|ClientObjectRender|Minimap|WorldWalls|ClientParticleLight)

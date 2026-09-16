@@ -41,18 +41,33 @@ Evidence under build/port-options:
 - native-index-proof.json matches all 1,847 staged source files to all four final
   phases. Every phase reports unchanged source; all readers are joined.
 
-Next: commit/push this qualified options conversion, then continue the client map
-drawable readers: nine functions / 617 C lines, GAME3.c 004ABDA0–004AD570 exclusive.
-Read-only caller audit and preliminary fixture drafts are in
-build/port-map-drawables. No source from that batch is installed yet. Only the map
-section callback currently has an external caller; audit before retiring helpers.
-The old-format reader stores two locals even when older records omit those
-fields. Establish default-zero contracts and qualify a C initializer correction
-before freezing old-format expectations; do not preserve random stack bytes.
-Use real file, drawable/type, light, shape, team/modifier and wall owners. Cover
-record/version boundaries, consumed bytes, stream position, allocation failures,
-canonical state and real asset loading/gameplay. No substantive question blocks
-this reversible choice. The full accumulated milestone passed at bindings.
+Options conversion **a1e88a75** is committed and pushed. Current batch: client map
+drawable readers, nine functions / 617 C lines, GAME3.c 004ABDA0–004AD570 exclusive.
+See docs/porting/MAP_DRAWABLES.md. No Go map-reader implementation is installed.
+
+The C prerequisite initializes two previously uninitialized old-format locals;
+all 42 missing-field regressions fail before and pass after. It changes no C LOC.
+The corrected C baseline is fully qualified: **2,484 records / seven groups**,
+eight roots in default/repeat/server/highres and 44 affected roots, no skips.
+Repeated gameplay matches all 41 frames; flat gameplay and exact warrior map
+regeneration pass. Real tables/teams were added after independent contracts
+exposed missing fixture dependencies. Static final preflight passes.
+c-index-proof.json compares all 1,860 source files across six final phases.
+All readers are joined. See MAP_DRAWABLES.md for timing and review notes.
+
+This checkpoint contains the qualified C prerequisite and frozen baseline.
+Next: push if needed, then translate the nine functions. Only the raw map-section callback
+has an external caller; verify one retained/eight retired interfaces. Ignored
+native drafts are in build/port-map-drawables but not yet integrated or compiled.
+Preserve all frozen hashes. Qualify affected targets, production/interfaces/known
+suite, map-loading gameplay and exact flat-map regeneration; document C LOC,
+commit/push and continue.
+
+Review notes for this batch: zero defaults are the intentional C prerequisite;
+old counts narrow their multiplied skip length to 16 bits; door X divides signed
+while Y divides unsigned. Controlled allocation failures preserve the existing
+section-framing issue, for later map-loader recovery work. Light limits and angle
+conversion use actual production tables. No substantive question is pending.
 
 Review later: single sensitivity-exponent rounding preserves C bits; enabling
 music resets its target from current volume; menu viewport refresh notifies while

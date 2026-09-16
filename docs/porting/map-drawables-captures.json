@@ -1,0 +1,37 @@
+[
+  {
+    "label": "map-drawable-base",
+    "records": 732,
+    "sha256": "25470a33a9b23facda83bf28da0e678c95746b57404602b6e33d046182c78590"
+  },
+  {
+    "label": "map-drawable-typed",
+    "records": 240,
+    "sha256": "48492ed7e77735caa052fe9a5d1dddcfa6812cb75ae18da4a3c658b528cb46b5"
+  },
+  {
+    "label": "map-drawable-sections",
+    "records": 36,
+    "sha256": "750143749d1d04499fae4c1c5ae5174eebdd8f9cd450ce1095421414834527a5"
+  },
+  {
+    "label": "map-drawable-counts",
+    "records": 168,
+    "sha256": "3e7317fc0efe59950be7af5719ffa0b0bb87d47b49b89e3ce12c93ce5c8b6b38"
+  },
+  {
+    "label": "map-drawable-teams",
+    "records": 96,
+    "sha256": "0a3b027d3095ebc8181e91ea904c0fe9d0f25851ec2c9e51b4e67b88656d23fe"
+  },
+  {
+    "label": "map-drawable-lights",
+    "records": 1176,
+    "sha256": "f86e84c8f103bc7ed3dc12739c33d4bb886a33e0d8d931fb58fcdd87dfe949c4"
+  },
+  {
+    "label": "map-drawable-doors",
+    "records": 36,
+    "sha256": "bfbff3b9940128653de3aeeb077be18d7fd96730325f9174329a4f4076dac9f2"
+  }
+]
