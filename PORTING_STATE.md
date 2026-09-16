@@ -2,64 +2,52 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 61k lines** — **60,775 physical lines in 82 production
+**Rough C remaining: about 61k lines** — **60,779 physical lines in 82 production
 `.c` files**, zero reference C. Latest conversion removed **296 lines** (268 light
-animation plus 28 unused map helpers). See [C_LOC.md](docs/porting/C_LOC.md).
+animation plus 28 unused map helpers); the next ownership prerequisite adds four. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — colored-light conversion qualified
+## Current — server object-transfer ownership prerequisite
 
-Map drawable conversion **b593c7ae** and the colored-light C prerequisite
-**215e515a** are committed and pushed. All eight degenerate-direction regressions
-fail before and pass after two C guards. These preserve light state for coincident
-targets and zero rotation arcs; the Go implementation keeps that correction.
+Colored-light conversion **82b2c821** and save/load integration **bc84cc35** are
+committed and pushed. The current batch is eighteen server common/typed object
+serialization functions in GAME3_3.c, 004F3E30 through EOF: **1,177 C lines**
+including four new ownership guards. No functions in this batch are Go yet.
 
-The six light animation functions are now Go. Three unused map-classification
-helpers are removed. One C callback remains; eight private interfaces are retired.
-See [COLOR_LIGHT.md](docs/porting/COLOR_LIGHT.md).
+Two C regression fixes are ready for a prerequisite commit: release a newly
+allocated child when its transfer callback fails, and clear an already-disposed
+inventory head before rejecting/freeing its parent. Before-change tests observe
+an orphaned live object and a freed-child traversal fault. After-change checks
+pass ten roots across default/server/highres, **681 subcases plus two ownership
+regressions**, no skips. Static checking passes. The c-ownership-qualified repeat passes all three builds in 17.173s,
+with unchanged source fingerprints. Current C:
+**60,779 lines / 82 production files / zero reference C**.
 
-Evidence under build/port-color-light:
-- Final C: seven roots in default/repeat/server/highres, all **8,853 records / five
-  hashes**, no skips; 34 affected roots. Repeated 41-frame gameplay and 14-frame
-  flat gameplay with exact map regeneration pass. c-index-proof.json checks
-  1,871 staged source files across six phases. Baseline is pushed.
-- native-focused: seven roots and all hashes pass on first installed run, 112.302s.
-- Native default/server/highres: **34 / 33 / 34** roots, no skips, all hashes match;
-  driver seconds 18.032 / 114.955 / 46.106. Server excludes rendering-only occlusion.
-- static-native-final.log passes. Source review and retired-name audit are complete.
-- Production: three builds/ABI checks and exact known asset-suite results pass:
-  1,553 failure entries; 15 pass / 3 fail / 32 skip package outcomes. All 41 gameplay
-  and 14 flat frames match C; exact map regeneration passes. Driver seconds
-  282.834 plus 49.092 flat. Tracked color-light-replay.json has process timings/hashes.
-- native-index-proof.json checks all 1,873 staged source files against the three
-  affected phases and production. Every phase reports unchanged source; all
-  readers are joined. Final C **60,775 / 82 files / zero reference C**.
+Fixtures use actual object pools, type templates, registered callbacks, cryptfile
+streams and client light drawables. Cases cover common reader/writer versions,
+exact written bytes, stream positions, default and historical typed formats,
+light records and inventory linkage/partial loading. Both common name allocation
+and historical script file-handle initialization required fixture corrections;
+neither changed engine behavior. See [OBJECT_XFER.md](docs/porting/OBJECT_XFER.md).
 
-Colored-light conversion **82b2c821** is committed and pushed. Current work is
-server map-object common records and world-object transfer callbacks, GAME3_3.c
-004F3E30 through EOF, eighteen functions / 1,173 C lines.
+Next: commit/push the ownership prerequisite if needed;
+then expand complete state captures, active script/reference and placement cases,
+repeat/freeze the full C baseline, and translate the connected batch. The actual
+seven-frame save/load scenario is ready, but its currently qualified binary
+predates the ownership correction; rebuild/replay current C before freezing.
+Broaden accumulated checks at this shared serialization boundary.
 
-The actual save/load integration prerequisite passes: seven repeated screenshots,
-explicit F2 save, F4 reload from the saved map and resumed gameplay. Six checker
-unit tests pass. See [OBJECT_XFER.md](docs/porting/OBJECT_XFER.md) for commands,
-evidence and the remaining qualification plan. Engine serializers and their C
-fixture source are not yet changed. Next: build common/typed stream contracts
-with actual object owners; account for buffer cleanup and TriggerXfer's legacy
-float-typed callback declaration. Broaden accumulated checks at this shared
-serialization boundary. No substantive blocker or user question is pending.
+Useful local artifacts: build/port-object-xfer holds development and qualification
+logs. common_native.draft is an uninstalled, uncompiled preparatory Go draft;
+review it against the final C corpus before use. Other ignored *.draft files
+may be stale; never copy them over newer tracked fixture source. No source edits
+while tests/builds run. No substantive blocker or user question is pending.
 
-Review later: degenerate light directions preserve the current angle/mode; decide
-separately if zero-width arcs should reset to their configured start. The intensity
-fixture initially omitted its fixed-point field; tracing the real adapter corrected
-both the fixture and the pre-installation draft. Extreme rotation combinations with
-undefined C conversions are excluded from the oracle. See DECISIONS.md for these
-and earlier map framing/options-rendering follow-ups.
-
-Original assets remain unchanged. Completed C replay copies were deduplicated
-with verified restoration manifests; frames/logs/changed outputs remain. Preserve
-untracked nox-iso-from-archive-org.7z. Source build/baseline/env.sh for every Go
-command. Never rerun stale ignored installation/generation scripts over source.
+Notable decisions are in DECISIONS.md, including the two ownership corrections.
+Original assets remain unchanged. Completed save/load run copies were deduplicated
+with verified restoration manifests; frames/logs/saves remain. Preserve untracked
+nox-iso-from-archive-org.7z. Source build/baseline/env.sh for every Go command.
 
 <!-- /current-checkpoint -->
 

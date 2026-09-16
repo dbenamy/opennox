@@ -1241,3 +1241,24 @@ cases with two early returns, before freezing C expectations. This is a small,
 reversible behavior correction authorized by the working plan; review later if
 zero-width arcs should explicitly reset to their configured starting angle.
 See COLOR_LIGHT.md for before/after evidence and qualification status.
+
+## Object-transfer rejection ownership — prerequisite correction
+
+Return a newly allocated inventory object to the real object pool when its
+transfer callback rejects the record. Also clear a rejected parent's inventory
+head after disposing its children, before disposing the parent. The first defect
+leaves an unreachable live object; the second lets the normal destructor traverse
+children that were already freed. Both changes are in GAME3_3.c before freezing
+the server serialization baseline. Four C lines are added.
+
+The failed-callback regression observes two live objects instead of one. The
+placement regression faults when the destructor follows the freed inventory.
+Evidence: build/port-object-xfer/c-failed-callback-before.log and
+c-rejected-inventory-before.log. After-change default/server/highres checks pass: ten roots, 681 subcases plus
+two ownership regressions, no skips. Static checking also passes; see
+[OBJECT_XFER.md](OBJECT_XFER.md). These are deliberate ownership fixes,
+not exact preservation of the broken failure paths. Successful-load formats and
+return/stream behavior are preserved. Existing general buffer cleanup policy is
+outside this correction; the failed-callback regression isolates the pool slot
+using a type with no side buffers. Reversal is small, but retaining a leak and
+a freed-object traversal is not recommended.

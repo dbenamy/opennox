@@ -1,0 +1,62 @@
+{
+  "batch": "server-object-xfer",
+  "env": {},
+  "phases": {
+    "c-ownership": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/object-xfer-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/object-xfer-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/object-xfer-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres.json",
+          "--require-no-skips"
+        ]
+      }
+    ]
+  }
+}

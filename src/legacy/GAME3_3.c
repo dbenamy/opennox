@@ -2252,6 +2252,9 @@ int nox_xxx_xfer_4F3E30(unsigned short a1, nox_object_t* a2p, int a3) {
 		v5 = nox_xxx_newObjectWithTypeInd_4E3450(v4);
 		v6 = v5;
 		if (!v5 || !((int (*)(uint32_t*, uint32_t))v5[176])(v5, 0)) {
+			if (v5) {
+				nox_xxx_objectFreeMem_4E38A0((int)v5);
+			}
 			break;
 		}
 		v7 = *(uint32_t*)(a2 + 504);
@@ -2317,6 +2320,7 @@ int nox_xxx_servMapLoadPlaceObj_4F3F50(nox_object_t* a1p, int a2, void* a3p) {
 				v3 = v4;
 			} while (v4);
 		}
+		*(uint32_t*)(a1 + 504) = 0;
 		nox_xxx_objectFreeMem_4E38A0(a1);
 		result = 0;
 	}

@@ -2,10 +2,11 @@
 
 ## Scope and status
 
-Next connected batch: eighteen functions / 1,173 physical C lines in GAME3_3.c,
+Next connected batch: eighteen functions / 1,177 physical C lines (1,173 before ownership guards) in GAME3_3.c,
 004F3E30 through EOF. This covers common object records, inventory loading,
 placement and typed world-object transfer callbacks. Engine code is still C;
-no serialization baseline has been frozen yet. Current C remains **60,775 lines
+no serialization baseline has been frozen yet. Two ownership prerequisite fixes
+pass focused qualification, adding four C lines. Current C is **60,779 lines
 in 82 production files, zero reference C**.
 
 ## Save/load integration prerequisite
@@ -70,3 +71,42 @@ FreeObject frees UseData but only clears several other pointers. Track ownership
 explicitly. alloc.IsDead only recognizes a sentinel pointer, not whether an
 arbitrary allocation has been freed. No production ownership changes are planned
 merely to simplify the fixture.
+
+Fixture development found that names allocated by this C reader use libc calloc,
+whereas factory-owned buffers use the tracked Go alloc wrapper. The first contract
+run caught an incorrect fixture free at the first nonempty name. Keep those
+cleanup paths distinct; this is a test ownership correction, not an engine change.
+
+Development progress: 255 independent common-reader cases and 99 exact-byte
+writer cases pass against C in c-common-development3.log. This includes signed
+version limits, omission/presence, coordinates, flags, teams, inventory counts,
+script IDs, extra status, lifetime and 255/256/257-byte name behavior. These are
+not yet the final repeated/frozen corpus. Typed callbacks now use real registered
+function pointers and actual factory/type allocations; their contracts are in
+development.
+
+## Ownership prerequisite
+
+Both new regressions fail against the original C: callback rejection leaves an
+unlinked object alive (two instead of one), and disallowed placement with an
+inventory faults while following a freed child. The correction returns failed
+children to the real pool and clears the already-disposed inventory head before
+freeing its parent. See [DECISIONS.md](DECISIONS.md). No source edits occur while
+the default/server/highres checks are running.
+
+Typed default and historical checks, invisible-light read/write checks and
+positive/partial inventory loading pass before these corrections. Historical
+trigger scripts require the actual legacy file-handle registry; the fixture now
+initializes it and closes registered handles after each case. Initial omission
+of that setup was a fixture failure, not a serialization defect.
+
+After-change qualification: default/server/highres each pass ten roots with
+681 subcases plus the two ownership regressions, no skips. Driver seconds:
+6.766 / 119.484 / 170.263. Static checking passes (static-ownership.log).
+This qualifies the prerequisite correction and current contracts, not the final
+serialization baseline or a native conversion. Current-source production builds,
+replays, remaining boundary tests and frozen capture comparisons are still due.
+The tracked object-xfer-batch.json manifest records repeatable qualification
+commands; c-ownership-qualified repeats all three successfully in 17.173s and records
+unchanged source fingerprints. ownership-index-proof.json checks that tested
+source matches the staged source archive.

@@ -16,9 +16,11 @@
 
 The revised process is adopted: continue successive qualified batches without a
 scheduled pause. Colored-light animation and unused map-helper cleanup are
-qualified: **296 C lines removed**, leaving **60,775 physical lines in 82 files**,
+qualified: **296 C lines removed**, leaving **60,779 physical lines in 82 files**,
 with zero reference C. The preceding map-reader conversion removed 617 lines;
 the light-direction prerequisite added six before those functions moved to Go.
+The next batch adds four C lines to correct rejected-object ownership before
+freezing its serialization baseline.
 
 All **8,853 frozen light records / five groups** and independent contracts match.
 Affected checks pass **34 default / 33 server / 34 highres tests**, no skips.
@@ -28,7 +30,7 @@ matches **14 frames** with exact map regeneration.
 
 See [COLOR_LIGHT.md](docs/porting/COLOR_LIGHT.md) for qualification and the
 reversible degenerate-direction correction. Next: server map-object readers,
-writers and world-object transfer callbacks, about **1,173 C lines**. Include
+writers and world-object transfer callbacks, about **1,177 C lines**. Include
 [save/load integration and serialization contracts](docs/porting/OBJECT_XFER.md); use a broader accumulated
 milestone at that shared serialization boundary. The last full accumulated
 milestone passed at the binding conversion.
