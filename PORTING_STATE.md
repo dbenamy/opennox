@@ -8,20 +8,26 @@ Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-## Current — tile-raster Go conversion qualified
+## Current — tile-composition C baseline development
 
-Frozen C baseline **2a6bfb01** is committed/pushed. Go tile rasterization is fully
-qualified: all 797 records /four groups match in all targets, every affected root
-completed, all three builds/ABI pass, the exact known 1,553 failure entries remain,
-and fresh normal12 plus GUI-flat14 gameplay frames match. See TILE_RASTER.md and
-build/port-tile-raster/native-qualification.json. All readers joined. Commit/push
-this conversion, then continue. Applied scripts/stages are stale; never rerun them.
+Tile-raster Go conversion **fb882b61** and C baseline **2a6bfb01** are committed/pushed.
+Removed 1,444 C lines; **74,029 /91 files /zero reference C** remain. All797 records
+match in all3 targets, affected259/257/259 roots, three builds/ABI, exact1,553 known
+failure entries and normal12+GUI-flat14 frames qualified. Applied raster stages
+and scripts are stale; never rerun them.
 
-Next: connected tile composition, edge overlays and scrolling/redraw routines,
-audited in build/port-tile-composition. Reuse actual tile-buffer/image/configuration
-owners; extend with actual map cells, edge definitions and viewport state. Freeze
-full and incremental redraw behavior, boundary clamps, tile/edge usage flags and
-ring pixels. No next-batch source changes applied yet. No user question pending.
+Tile-composition C baseline is fully qualified: all three,096 records/six groups match
+in all three targets, every selected affected root finished, source fingerprints are
+unchanged. Production exactly matchesfb882b61, so its builds/full-known-failures/
+normal 12+GUI flat-floor 14 replays are valid baseline evidence. See TILE_COMPOSITION.md.
+All readers joined. Commit/push baseline, write its revision to ignored checkpoint,
+then apply reviewed Go draft with build/port-tile-composition/apply-native.py.
+Fixture/freeze/finalize-C stages are completed/stale; never rerun them.
+
+Native: first focused match, then complete accumulated corpus with 900s per package,
+all three builds/ABI, exact known full-assets failures and 26 gameplay frames. Optional
+runner timeout defaults600 and rejects nonpositive inputs. Full pattern includes
+wall-edge, raster and composition families. No user question pending.
 
 Last complete accumulated milestone: briefing-window 0b3ed13d; highres root 598.823s.
 Give the next complete-corpus run a longer explicit timeout. Original assets/archive

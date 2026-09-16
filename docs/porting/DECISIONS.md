@@ -1013,3 +1013,24 @@ click does not establish that mode. Preserve the actual GUI scenario and pixel
 manifest, and compare both normal12 and GUI-flat14 frames. Flagged tile definitions
 may temporarily restore textures, as before. Invalid assets remain outside these
 valid-owner contracts; this batch makes no image-decoder behavior change.
+
+
+### Tile composition baseline and milestone timeout
+
+Preserve the original redraw predicate's unsigned X calculation near the map
+origin, independently of full redraw's signed calculation; fixtures establish the
+difference before translation. A behavior correction would be a separate review
+item. Overlay inputs must respect the existing row-start and one-initial-wrap
+preconditions. Retain evidence from invalid fixture positions and do not count
+those crashes as qualified output. Shared image ownership matters: tile and overlay
+handles must be registered in the same actual bag.
+
+Move the private callback selection/state to Go with its final composition callers;
+retire the two raster exports, edge callback, no-op and C slots. Preserve actual
+shared counter/grid/definition owners and all frozen behavioral expectations.
+
+Run the complete accumulated port corpus at the native floor-rendering milestone.
+The previous highres root took 598.823s under a 600-second timeout; expose a positive
+--timeout-seconds option (default 600 unchanged), record it in results and use 900
+for this larger milestone. Do not silently omit newer test families: the tracked
+complete pattern now includes wall-edge, tile raster and composition tests.

@@ -21,9 +21,13 @@ def main():
     parser.add_argument("--tags", default="porttest")
     parser.add_argument("--log", type=Path, required=True)
     parser.add_argument("--result", type=Path, required=True)
+    parser.add_argument("--timeout-seconds", type=int, default=600,
+                        help="per-package Go test timeout (default: 600)")
     args = parser.parse_args()
+    if args.timeout_seconds <= 0:
+        parser.error("--timeout-seconds must be positive")
     pattern = args.pattern_file.read_text().strip()
-    result = {"tags": args.tags, "success": False}
+    result = {"tags": args.tags, "success": False, "timeout_seconds": args.timeout_seconds}
     started = time.monotonic()
 
     def finish(reason, code=1):
@@ -53,7 +57,7 @@ def main():
 
     ran, completed = set(), set()
     with args.log.open("w") as log:
-        proc = subprocess.Popen(common + ["-count=1", "-timeout", "600s", "-json",
+        proc = subprocess.Popen(common + ["-count=1", "-timeout", f"{args.timeout_seconds}s", "-json",
                                            "-run", pattern, "./..."],
                                 cwd=ROOT / "src", env=env, stdout=subprocess.PIPE,
                                 stderr=subprocess.STDOUT, text=True, errors="replace")
