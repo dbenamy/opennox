@@ -27,7 +27,11 @@ See [SPELLBOOK.md](docs/porting/SPELLBOOK.md) and
 The last full accumulated milestone was shared lists: 1,079 tests in default/
 highres and 1,075 in server, with only the existing opt-in diagnostic skipped.
 Spellbook is included in the accumulated pattern for the next milestone.
-Next: the connected quickbar owner, reusing the book/GUI/particle/input fixtures.
+The connected quickbar C baseline is qualified: 22 new groups plus all 24 book
+groups (6,936 records), repeated and checked in all three configurations; its
+22-frame gameplay replay also repeats exactly. A reversible saved-row correction
+and fixture findings are recorded in [QUICKBAR.md](docs/porting/QUICKBAR.md).
+Next: convert that connected owner, reusing the book/GUI/particle/input fixtures.
 The test driver bounds Go heap growth; optional asset cleanup runs separately
 from gameplay validation. Confident reversible decisions remain recorded for review.
 

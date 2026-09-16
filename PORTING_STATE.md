@@ -43,16 +43,30 @@ existing real quickbar/book/GUI/input/particle owners. Production quickbar C is
 unchanged. See [QUICKBAR.md](docs/porting/QUICKBAR.md) for scope, pending coverage
 and the saved-row/timed-selection behavior requiring review.
 
-Quickbar original prerequisite **fdc5048e** is pushed (949 records / seven roots).
-Saved-row prerequisite correction **b872d272** changes one C read; all seven roots
-pass and six unrelated capture hashes stay exact. The quickbar conversion is not
-yet implemented; full batch qualification remains pending. All 12 current direct roots pass (1,464 records;
-build/port-quickbar/c-lifecycle2, 33.913 seconds). Those readers are joined.
-The gameplay coordinate pilot is running as quickbar-pilot using the earlier
-qualified spellbook binary; it is not the final C reference.
-Production C LOC is unchanged. Ignored test drafts are development aids, not
-authoritative state. Keep the current book frames
-as its gameplay reference and use larger coherent batches where dependencies allow.
+Quickbar prerequisites **fdc5048e**, **b872d272** and the partial recovery
+checkpoint **a6ee4a23** are pushed. The saved-row fix is the only production C
+change so far; C LOC is unchanged. All 22 direct quickbar roots pass (2,242 records,
+c-final-candidate, 42.323 seconds). The corrected lifecycle fixture normalizes only
+two identified child pointers retained after destruction; its captures repeat.
+
+The complete original-C baseline is qualified: 46 roots / 6,936 records match
+in default, repeat, server and highres. The four c-qualified-* directories have
+identical 1,801-file source manifests, unchanged throughout. All readers are joined.
+Default/repeat: 148.864 seconds; server: 161.925; highres: 88.477; gameplay build/
+capture/repeat: 187.324. Jobs ran at most two at a time.
+
+Fresh quickbar-c and quickbar-c-repeat match all 22 frames and regenerate the
+warrior map exactly after removing 51 copied maps. Their binary includes the row
+fix; quickbar-pilot is only prior coordinate evidence. See quickbar-replay.json.
+
+Next: install/review the native quickbar conversion, then compare frozen records
+and qualify production/interfaces/known suite/gameplay plus the full accumulated
+UI milestone. No native quickbar source is installed yet. Three initial ignored
+drafts (native_state.draft, native_actions.draft, native_rows.draft) are uncompiled;
+review them against C, do not assume they are accepted.
+
+Keep the current book frames
+as an additional gameplay reference and use larger coherent batches where dependencies allow.
 The accumulated pattern includes spellbook; the last full accumulated milestone
 was shared lists, before this book conversion. Use the next connected UI milestone
 for another full corpus sweep rather than repeating it inside each small edit.

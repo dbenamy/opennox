@@ -7,13 +7,37 @@
     "records": 270,
     "sha256": "f1f1b054aeff77a483bed7e9f007c55260c324538de777738205df7c31429d22"
   },
+  "quickbar-clear-restore": {
+    "records": 24,
+    "sha256": "cb7f298704397f2737a8eb5cbcea72dfdb026c003ee06ba7df995bb5a5ccc23a"
+  },
+  "quickbar-cross-row-dragging": {
+    "records": 100,
+    "sha256": "ef9eca9f221ac464ab4fe9c7e487ff84b536e4678bb103e7dadea9fa4838993b"
+  },
+  "quickbar-direction-controls": {
+    "records": 120,
+    "sha256": "6a12e44daa4dd0a3a66ea393025b998a645688d49f676b31c8b07f208933fa96"
+  },
   "quickbar-expanded-rows": {
     "records": 10,
     "sha256": "4a5c57ea1d6a2ee64eee652785ae96e93737efbba9b8fa0c21281ba8396ac323"
   },
+  "quickbar-gui-frames": {
+    "records": 18,
+    "sha256": "9ad38bc8097c13398dec76466c080c6d2a73266c06b44657aa240eae71ecf60c"
+  },
+  "quickbar-hotkeys": {
+    "records": 150,
+    "sha256": "975f751a3a22f8e17180c7b688976f95392b71ea4f885f1e57d5e0d3ca4ba5ee"
+  },
   "quickbar-lifecycle": {
     "records": 104,
-    "sha256": "d608d461abba32371de0879ba12e399ab29a79e3a3b45788067fcb2018b8a8ae"
+    "sha256": "88a114c61e0fb134ffc3eabff07fe1fbd5fd04a8496c3ccb7b9aa01440f7e523"
+  },
+  "quickbar-mana-shading": {
+    "records": 48,
+    "sha256": "fc09adc9000339d24f0e25eebc9a68a8aa5e8d39c2a83dc08eb5d0abbf67e052"
   },
   "quickbar-pending-activation": {
     "records": 48,
@@ -22,6 +46,14 @@
   "quickbar-row-navigation": {
     "records": 36,
     "sha256": "b11e94d59665bbf330ddd50e30839b4f301d4deddfdfacf073be9fb26d08d2f8"
+  },
+  "quickbar-row-trap-controls": {
+    "records": 34,
+    "sha256": "599846a679536cd8b2395b67e3a7fa8758fa6923c10f1ddb79bb5f92ff666739"
+  },
+  "quickbar-save-owners": {
+    "records": 12,
+    "sha256": "c2cc5eaacb5cfcd2f0a557bfa221f5e1d62e82982435c34dddbeefdb79281335"
   },
   "quickbar-save-spells": {
     "records": 50,
@@ -35,6 +67,10 @@
     "records": 125,
     "sha256": "0bc7ff3461e8544461840edae1ce82f71eee2facc995b966d3067c69f382046e"
   },
+  "quickbar-slot-rendering": {
+    "records": 240,
+    "sha256": "c60518093674943097f94b5fb7a3f42e8e9a64e33ec6587ae8e1dbc3ab2ddab1"
+  },
   "quickbar-slot-search": {
     "records": 390,
     "sha256": "f67eaccbd3c97f7a0de9205929bd1a559f2a349718d4a9fcd9f63bbbbea236af"
@@ -46,5 +82,9 @@
   "quickbar-trap-activation": {
     "records": 144,
     "sha256": "bb288e1b1c2e15dc461f98d98ae29393b7c91751bffea1cb8b3ef95c65d5dade"
+  },
+  "quickbar-trap-slots": {
+    "records": 32,
+    "sha256": "e434b48ff462f2c2b5ced25e5feae1272e6ea68401cc1bcbb6d0396c712ef48b"
   }
 }

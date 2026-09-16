@@ -2,8 +2,23 @@
 
 ## Status and scope
 
-Baseline preparation follows qualified spellbook conversion **41b8abfb**.
-Production C is unchanged: **66,811 lines / 87 files / zero reference C**.
+The original-C baseline is fully qualified. All **2,242 quickbar records in
+22 groups** and **4,694 book records in 24 groups** match in default, an independent
+repeat, server and highres. All four phase source manifests match the same
+**1,801 source files**, unchanged during qualification.
+
+- Default/repeat: 148.864 seconds; server: 161.925 seconds (concurrent jobs).
+- Highres: 88.477 seconds; C gameplay build/capture/repeat: 187.324 seconds
+  (concurrent jobs).
+- Fresh C binary SHA-256:
+  87163fc4a80aae957e95f6e11388acb20fc4beb42ea41f84a95a56308cf73cdf.
+- Both gameplay runs match all **22 frames**, remove 51 copied maps and
+  regenerate the warrior map exactly. See quickbar-replay.json.
+- All readers are joined. Native drafts are outside source and unqualified.
+
+The baseline follows qualified spellbook conversion **41b8abfb**.
+Production C remains **66,811 lines / 87 files / zero reference C**; the one-line
+saved-row prerequisite correction is described below.
 The selected connected scope is **87 functions / 2,457 physical lines**:
 GAME2.c from 0045D9D0 to its end, GAME2_1.c from 00460D40 up to
 00461460, and client__gui__guispell.c. The latter also has file declarations
@@ -33,10 +48,9 @@ has been installed.
 
 ## Remaining gates
 
-Direct frozen C captures and independent contracts; repeat and server/highres C
-qualification; committed baseline; native implementation and comparison; production
-builds/interfaces, known asset-suite comparison, fresh gameplay replays and the next
-full accumulated UI milestone. Commit/push each qualified chunk and continue.
+Native implementation and comparison; production builds/interfaces, known
+asset-suite comparison, fresh gameplay replays and the next full accumulated UI
+milestone. Commit/push each qualified chunk and continue.
 
 ## Baseline development checkpoint
 
@@ -118,3 +132,55 @@ of the connected baseline coverage.
 The quickbar-warrior scenario is undergoing a coordinate pilot using the already
 qualified spellbook binary. That pilot is not the final C reference: the latter
 will use a fresh binary including the saved-row correction.
+
+## Repeatability correction before final baseline
+
+The 240 slot-rendering records pass, including actual pixels, image/fallback
+paths, cooldown/highlight boundaries and signed byte timers. An independent
+process exposed unstable addresses in the previously captured lifecycle
+destruction records: C leaves child addresses in named 1049524 and mapped
+1049528 after their parent is destroyed. All 48 differences were those two
+identified pointers in the 24 destruction records.
+
+Remember each actual window identity before calling the destructor, then retain
+that identity when snapshotting the stale address. This changes capture
+normalization only; do not clear the production words or mask arbitrary values.
+The previous lifecycle hash in a6ee4a23 is not a final repeatable golden. Re-freeze
+this group after the corrected fixture passes and require an independent repeat.
+Raw differences are in build/port-quickbar/lifecycle-repeat-diff.json.
+
+The headless quickbar-pilot completed successfully; inspection confirms both
+ability assignments, their swap and Eye of the Wolf activation. Its binary
+predates the row prerequisite, so retain it as coordinate evidence only.
+
+## Final C qualification started
+
+All 22 direct quickbar roots pass (2,242 records, c-final-candidate,
+42.323 seconds). The corrected lifecycle normalization repeats exactly.
+Hotkeys cover valid and blocked animation states and missing players; the
+additional mana test binds the actual drawable so disabled/animation/buff and
+mana-deficit paths are tested separately. The direction-button fixture selects
+the actual self-cast child rather than its key-label sibling.
+
+The reviewed quickbar-batch.json qualifies all 22 quickbar plus 24 spellbook
+roots, with explicit hashes for all **6,936 records**. Default/repeat and server
+run in separate processes concurrently; highres and the fresh C gameplay binary/
+capture/repeat follow. At most two qualification jobs run together on this
+4-vCPU/8-GiB VM. Sources remain immutable until all readers join; no parallel
+agents are involved. This bounded scheduling choice is reversible and its timings
+will be recorded instead of assuming a speedup.
+
+Native translation and its production/interface/known-suite/full accumulated
+milestone gates remain pending.
+
+Default/repeat qualification passed all 46 roots and hashes in 148.864 seconds;
+server passed in 161.925 seconds. Both source fingerprints are unchanged and the
+readers are joined. Highres and the fresh C gameplay build/capture/repeat are now
+running concurrently. Initial typed-state and activation drafts live only under
+build/port-quickbar; they are not compiled/accepted production source.
+
+Highres passed all 46 roots in 88.258 seconds on unchanged source. Its reader
+is joined. The fresh C client built in 61.550 seconds and the forced-map capture
+passed in 57.800 seconds. The independent gameplay repeat is still running.
+All four phase source manifests match. Three ignored native drafts (state,
+activation and row transitions) remain uncompiled and outside source.

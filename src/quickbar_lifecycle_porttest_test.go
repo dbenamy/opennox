@@ -79,6 +79,11 @@ func TestQuickbarLifecycle(t *testing.T) {
 					records = append(records, q.snapshot(label+"-hide", 0))
 					q.call("sub_460B90", 1)
 					records = append(records, q.snapshot(label+"-show", 0))
+					// The C destructor leaves these two child addresses in storage.
+					// Preserve identities while the actual windows are still live.
+					for _, v := range []uint32{*q.quickWords["dword_5d4594_1049524"], memmap.Uint32(0x5D4594, 1049528)} {
+						q.c.dataRefs[v] = q.normalize(v)
+					}
 					q.call("sub_460D50")
 					q.check(t, q.call("sub_460D40") == 0 && *q.quickWords["dword_5d4594_1049532"] == 0, "destroy clears quickbar/capture owner")
 					records = append(records, q.snapshot(label+"-destroy", 0))
@@ -86,5 +91,5 @@ func TestQuickbarLifecycle(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "quickbar-lifecycle", records, "d608d461abba32371de0879ba12e399ab29a79e3a3b45788067fcb2018b8a8ae")
+	spellbookCapture(t, "quickbar-lifecycle", records, "88a114c61e0fb134ffc3eabff07fe1fbd5fd04a8496c3ccb7b9aa01440f7e523")
 }
