@@ -2,86 +2,57 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 62k lines** — **61,682 physical lines in 82 production
-`.c` files**, zero reference C. Options conversion removed **793**, after its
-separate prerequisite removed **96 C plumbing lines**.
+**Rough C remaining: about 61k lines** — **61,065 physical lines in 82 production
+`.c` files**, zero reference C. Latest conversion removed **617 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — options conversion qualified
+## Current — client map drawable conversion qualified
 
-Binding conversion **0649e67a** and the options checkbox prerequisite **9abed837**
-are committed and pushed. The prerequisite repaired twenty C callback paths that
-bypassed actual Go checkbox handlers; all six real-checkbox regressions fail
-before and pass after. See [OPTIONS.md](docs/porting/OPTIONS.md).
+Options conversion **a1e88a75** and the map-reader C prerequisite **5777c6d3** are
+committed and pushed. The prerequisite initializes two absent old-format fields;
+all 42 independent regressions fail before and pass after. It changes no C LOC.
 
-Qualified native options source is installed: twelve functions, **793 C lines removed**,
-four retained C adapters and eight retired interfaces. Current working count is
-**61,682 lines / 82 C files / zero reference C**. No C implementation is retained
-solely for tests. Go callers invoke Go directly.
+Native map readers are fully qualified: nine functions, **617 C lines removed**,
+one retained C map-section callback, eight retired private interfaces. No C
+implementation remains solely for tests. See [MAP_DRAWABLES.md](docs/porting/MAP_DRAWABLES.md).
 
-Evidence under build/port-options:
-- Corrected C: 3,130 frozen records / ten groups, all eleven roots in default,
-  repeat, server and highres; 56 original affected roots, no skips.
-- C gameplay: options-c/options-c-repeat, 41 exact frames; phase 123.646s,
-  process times 56.735/61.344s. Tracked options-panels.yaml/options-replay.json.
-- C index proof: 1,845 source files, all six final phases. Baseline is pushed.
-- native-first: initial build rejected named-bool switch cases, corrected.
-- native-second: all eleven roots and ten frozen hashes pass, 112.481s.
-- static-native-first.log passes.
-- native-default/server/highres pass 142 / 141 / 142 selected roots, no skips;
-  all ten frozen hashes match. Driver seconds 235.484 / 234.763 / 288.338.
-  Expanded selection includes inventory-window, spellbook and quickbar callers.
-- static-native-final.log passes. All three target readers are joined.
-- Production passes: three builds/ABI, exact 1,553 known asset-suite failure
-  entries and 15 pass / 3 fail / 32 skip package outcomes. All 41 options frames
-  match; flat replay and exact map regeneration pass. Phase 284.718s; replay
-  processes 62.953 / 49.526s.
-- native-index-proof.json matches all 1,847 staged source files to all four final
-  phases. Every phase reports unchanged source; all readers are joined.
+Evidence under build/port-map-drawables:
+- Corrected C: 2,484 frozen records / seven groups; eight roots in default,
+  repeat, server and highres, plus 44 affected roots, no skips. Repeated 41-frame
+  gameplay and 14-frame flat gameplay with exact map regeneration pass.
+- Native first focused pass: all eight roots and seven hashes, 112.039s.
+  No compiler/behavior corrections or expected-result changes were needed.
+- Final native-default/server/highres: 44 / 42 / 44 roots, no skips, all hashes
+  match. Driver seconds 146.035 / 143.357 / 201.454. Server compilation excludes
+  the object-render occlusion and world-wall field-of-view tests.
+- static-native-final.log passes; source/caller review is complete.
+- Production: all three builds/ABI checks pass; exactly 1,553 known asset-suite
+  failure entries, 15 pass / 3 fail / 32 skip package outcomes. All 41 gameplay
+  frames match C; all 14 flat frames and exact map regeneration pass.
+  Driver seconds 277.154 plus 49.863 flat; replay process seconds 63.020 / 49.320.
+- native-index-proof.json checks 1,863 staged source files across the three final
+  target phases and production. All report unchanged source. All readers joined.
 
-Options conversion **a1e88a75** is committed and pushed. Current batch: client map
-drawable readers, nine functions / 617 C lines, GAME3.c 004ABDA0–004AD570 exclusive.
-See docs/porting/MAP_DRAWABLES.md. No Go map-reader implementation is installed.
+Commit/push this qualified conversion if needed, then continue with colored-light
+animation and viewport callbacks. Ignored candidate audit, plan and preliminary
+fixture drafts are under build/port-color-light; they are not installed or tested.
+Six related functions / 262 C lines, one actual callback and five private helpers.
+Reuse real drawable/light owners; cover interpolation, direction, timing and
+viewport/list behavior before translation. This closes behavior related to the
+map light fields; avoid padding the batch with unrelated functions.
 
-The C prerequisite initializes two previously uninitialized old-format locals;
-all 42 missing-field regressions fail before and pass after. It changes no C LOC.
-The corrected C baseline is fully qualified: **2,484 records / seven groups**,
-eight roots in default/repeat/server/highres and 44 affected roots, no skips.
-Repeated gameplay matches all 41 frames; flat gameplay and exact warrior map
-regeneration pass. Real tables/teams were added after independent contracts
-exposed missing fixture dependencies. Static final preflight passes.
-c-index-proof.json compares all 1,860 source files across six final phases.
-All readers are joined. See MAP_DRAWABLES.md for timing and review notes.
+Review notes: absent-field zero defaults are intentional. Old count products
+narrow to 16 bits; door X divides signed while Y divides unsigned. Allocation
+failure retains the existing section-framing issue for later recovery work.
+Production light tables are used. Earlier options clipping and compiler-cache
+notes remain in OPTIONS.md and DECISIONS.md. No substantive question is pending.
 
-This checkpoint contains the qualified C prerequisite and frozen baseline.
-Next: push if needed, then translate the nine functions. Only the raw map-section callback
-has an external caller; verify one retained/eight retired interfaces. Ignored
-native drafts are in build/port-map-drawables but not yet integrated or compiled.
-Preserve all frozen hashes. Qualify affected targets, production/interfaces/known
-suite, map-loading gameplay and exact flat-map regeneration; document C LOC,
-commit/push and continue.
-
-Review notes for this batch: zero defaults are the intentional C prerequisite;
-old counts narrow their multiplied skip length to 16 bits; door X divides signed
-while Y divides unsigned. Controlled allocation failures preserve the existing
-section-framing issue, for later map-loader recovery work. Light limits and angle
-conversion use actual production tables. No substantive question is pending.
-
-Review later: single sensitivity-exponent rounding preserves C bits; enabling
-music resets its target from current volume; menu viewport refresh notifies while
-in-game selection does not. The transient options game_numeric clipping artifact
-exists in both C runs and later redraws normally; investigate the renderer
-separately. Underlying fullscreen behavior still needs physical-display release
-checks. The compiler-cache probe is deferred because Go's revision-dependent
-random seed causes cache misses; keep plain GCC. See DECISIONS.md.
-
-All original assets remain unchanged. Completed C replay copies were deduplicated
-with verified restoration manifests; screenshots/logs/hashes remain. Preserve
-nox-iso-from-archive-org.7z. Source build/baseline/env.sh for every Go command.
-Do not rerun ignored install_native.py or stale fixture/binding/summon/spellbook
-scripts over installed source. No substantive blocker or user question is pending.
+Original assets remain unchanged. Completed replay asset copies were deduplicated
+with verified restoration manifests; frames/logs/hashes remain. Preserve the
+untracked nox-iso-from-archive-org.7z. Source build/baseline/env.sh for every Go
+command. Do not rerun stale ignored installation/generation scripts over source.
 
 <!-- /current-checkpoint -->
 

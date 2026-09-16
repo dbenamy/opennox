@@ -42,7 +42,7 @@ freeze unstable bytes or ask the user to choose their values.
 
 All **42** independent missing-field cases fail against unchanged C. The two
 locals are now initialized to zero, without changing C LOC. All 42 pass afterward.
-No map-reader Go translation is installed yet. The correction is qualified in all targets and real gameplay, as recorded below.
+The correction was qualified in all targets and real gameplay before translation, as recorded below.
 
 ## Frozen C capture set
 
@@ -94,9 +94,8 @@ both rules, including omitted wall registration when adjusted Y is negative.
 Preserve this asymmetric arithmetic explicitly in Go.
 
 All eight root fixtures pass together in c-doors-develop.log. The final seven
-hashes are frozen. Static final preflight passes. Final C qualification is complete. No Go map-reader
-implementation is installed. Ignored native drafts are incomplete review artifacts
-until the baseline is committed and pushed; do not copy them into source blindly.
+hashes are frozen. Static final preflight passes. Final C qualification is complete. The baseline was committed and pushed as
+5777c6d3 before the reviewed native drafts were installed.
 
 Evidence and historical drafts: build/port-map-drawables.
 
@@ -117,9 +116,53 @@ manifest; it is diagnostic metadata and changes no scenario behavior.
 
 The C initializers change no physical line count: **61,682 / 82 / zero reference
 C**. Final c-index-proof.json records source identity against all six phases.
-All source readers are joined. Commit/push this checkpoint before installing Go.
+All C source readers were joined before baseline commit/push and Go integration.
 
 Disk maintenance deduplicated nine older completed spellbook/catalog/list replay
 asset copies, reclaiming about 4.9 GB with verified restoration manifests. Original
 assets and active runs were untouched; screenshots, logs and changed outputs stay
 local. No qualification failed from disk exhaustion.
+
+## Native conversion
+
+The nine readers are implemented in map_drawables_state.go and
+map_drawables_types.go; map_drawables_exports.go retains only the actual raw
+map-section callback. Eight private C interfaces and **617 C lines** are removed.
+Working count: **61,065 lines / 82 files / zero reference C**.
+
+The first native focused run passes all eight roots and seven frozen hashes in
+112.039s. No compiler or behavior corrections were needed. Source review checked
+read versus seek accounting, allocation order, version/count signedness, team
+registration, class dispatch, door coordinate arithmetic and light calculations
+against C. Static final checks pass. Completed target and production qualification is recorded below.
+
+Completed C replay asset copies were also deduplicated using verified restoration
+manifests, reclaiming about 1.66 GB. Reference frames, logs and modified outputs
+remain available; original assets are untouched.
+
+Affected native qualification passes **44 default / 42 server / 44 highres** roots,
+with no skips and all seven capture hashes matching. Driver seconds:
+**146.035 / 143.357 / 201.454**. The server build excludes
+TestClientObjectRenderOcclusion and TestWorldWallsFieldOfView at compilation;
+these are not skipped tests. All target source readers are joined, and each phase
+reports unchanged source. Production qualification also passes, as recorded below.
+
+Production qualification passes all three 386/SSE2/CGO builds, ABI checks, and
+absence of test helpers. One map-section callback is retained; all eight private
+C interfaces are absent from source and production binaries. The full asset suite
+matches exactly **1,553 known failure entries**, with **15 pass / 3 fail / 32 skip**
+package outcomes. All **41 gameplay frames** match the qualified C baseline;
+flat gameplay matches all **14 frames** and exact warrior map regeneration.
+Production driver took **277.154s**, then flat gameplay **49.863s**. Gameplay
+process times were **63.020s / 49.320s**; exact timings and binary/frame
+hashes are recorded in map-drawables-replay.json.
+
+Final native-index-proof.json checks all **1,863 staged source files** against the
+three affected phases and production. All four phases report unchanged source;
+all source readers are joined. Measured final C: **61,065 lines / 82 files / zero
+reference C**, a reduction of **617 lines**. No frozen expectations changed.
+
+The next candidate is colored-light animation and viewport updates, which consume
+these loaded fields. Its six functions form a small coherent follow-up with
+reusable real drawable/light owners; do not expand it into unrelated resource UI
+merely to meet the target batch size.

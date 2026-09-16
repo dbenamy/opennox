@@ -15,22 +15,21 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. The options-panel conversion is qualified, removing **793 C
-lines** and leaving **61,682 physical lines in 82 files**, with zero reference C.
-Its earlier checkbox prerequisite removed another 96 C plumbing lines.
+scheduled pause. The client map-drawable conversion is qualified, removing **617 C
+lines** and leaving **61,065 physical lines in 82 files**, with zero reference C.
+The preceding options conversion removed 793 lines, plus 96 in its prerequisite.
 
-All **3,130 frozen records / ten options groups** match. Expanded affected checks
-pass **142 default / 141 server / 142 highres tests**, with no skips. Three
-production builds and interface audits pass; the asset suite retains exactly its
-known failures. All **41 options gameplay frames** match C, and flat gameplay
-matches with exact map regeneration. The full accumulated milestone passed at the
-preceding binding conversion; affected checks are appropriate for this batch.
+All **2,484 frozen records / seven map-reader groups** match, along with independent
+contracts. Affected checks pass **44 default / 42 server / 44 highres tests**, no
+skips. All three production builds and interface audits pass; the asset suite
+retains exactly its known failures. Gameplay matches **41 frames**, and flat
+rendering matches **14 frames** with exact map regeneration.
 
-See [OPTIONS.md](docs/porting/OPTIONS.md) for the prerequisite correction,
-qualification and rendering follow-up. The next client-map batch has a qualified C prerequisite and **2,484 frozen
-records / seven groups**, repeated gameplay and flat-map regeneration. Its nine
-connected readers occupy **617 C lines**; translation is next. See
-[MAP_DRAWABLES.md](docs/porting/MAP_DRAWABLES.md).
+See [MAP_DRAWABLES.md](docs/porting/MAP_DRAWABLES.md) for qualification and review
+notes, including the corrected absent-field defaults and preserved allocation-
+failure framing issue. Next: colored-light animation callbacks, reusing the real
+light/drawable owners. The full accumulated milestone passed at the binding
+conversion; use affected checks until the next meaningful subsystem boundary.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. Confident reversible
 decisions remain recorded for review.
 
