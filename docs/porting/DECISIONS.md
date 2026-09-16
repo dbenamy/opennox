@@ -993,3 +993,23 @@ pixel-row/clip/configuration owners until their remaining tile callers move. Inv
 RLE buffers are outside the valid asset contract; actual image-owner load failures
 remain unchanged. Three-target frozen comparisons, actual caller tests, builds/ABI,
 exact known failures and fresh 12-frame gameplay qualify this conversion.
+
+
+### Tile raster callback ABI, fill compatibility and integration
+
+Normalize the two retained callbacks to their actual void/three-argument dispatch
+slot. No caller consumes the decompiled scratch returns; fill narrows the tile
+argument to uint16, confirmed with nonzero upper-word inputs before conversion.
+Retire private raster/setup/getter C interfaces, retaining their Go owners and
+shared C configuration storage. No test-only C algorithm remains.
+
+Preserve fast-path full-width fill phase and split-path pattern restart; uniform
+16-bit filling would silently change existing behavior. Compact loops use the same
+46-row diamond layout, backed by independent whole-buffer contracts and frozen C.
+
+E2E intentionally ignores nox.cfg. Flat-floor integration must use the real options
+checkbox with a hover tick before clicking; a config-only replay or instantaneous
+click does not establish that mode. Preserve the actual GUI scenario and pixel
+manifest, and compare both normal12 and GUI-flat14 frames. Flagged tile definitions
+may temporarily restore textures, as before. Invalid assets remain outside these
+valid-owner contracts; this batch makes no image-decoder behavior change.

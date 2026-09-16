@@ -191,7 +191,7 @@ func Sub_461520() {
 }
 
 func Nox_xxx_tile_486060() {
-	C.nox_xxx_tile_486060()
+	tileRasterWrapSetup()
 }
 
 func Sub_461400() {

@@ -1,8 +1,8 @@
 # Tile texture/fill callbacks and raster helpers
 
-Status: **qualified frozen C baseline**.
-Production remains **75,473 C lines / 91 files / zero reference C**, from qualified
-wall-edge conversion **51230d6e**.
+Status: **qualified Go conversion**.
+Frozen C baseline: **2a6bfb01**. Removed **1,444 C lines**; **74,029 C lines /
+91 files / zero reference C** remain.
 
 Five connected C routines / **1,445 function-block lines**: texture callback
 nox_xxx_tileDraw_4815E0, fill callback sub_481770, their private unrolled raster
@@ -41,7 +41,7 @@ not silently replace either with a uniform uint16 fill. Actual game image and
 buffer ownership keeps source and destination separate; malformed images and
 invalid tile indices remain outside the valid asset contract.
 
-## Interfaces and planned conversion
+## Interfaces and conversion
 
 All six remaining C composition calls use the same void, three-argument callback
 slot. Their old selected functions have decompiled char/char-pointer return types
@@ -54,7 +54,7 @@ Retire the two private primitive interfaces, the wrap-setup C interface and the
 now-private textured-floors getter export. Keep the getter's actual Go owner and
 shared C state. In particular, the flat-floor flag definition is embedded in the
 fill function's source block and must remain when that block is removed. No C
-algorithm will remain solely for tests.
+algorithm remains solely for tests.
 
 ## Baseline evidence and gameplay
 
@@ -79,8 +79,8 @@ normal twelve-frame gameplay for the unchanged C baseline. The Go conversion
 requires new builds/ABI, the exact known-failure comparison and fresh gameplay in
 both normal and GUI-selected flat-floor scenarios.
 
-Evidence and unapplied implementation drafts: build/port-tile-raster. Applied
-fixture/freeze drafts are stale; use actual source and PORTING_STATE.md. Original
+Evidence: build/port-tile-raster. All applied implementation, fixture, freeze and
+finalization drafts are stale; use actual source and PORTING_STATE.md. Original
 assets/archive remain unchanged.
 
 ## Frozen expectation hashes
@@ -118,3 +118,26 @@ The engine may temporarily restore textures for flagged tile definitions; that
 existing fallback remains live, while direct fixtures independently cover both
 callbacks and flag states. E2E ignores nox.cfg, so recovery must use this GUI input
 sequence. Production remains original C, with no algorithm edits in this baseline.
+
+## Go qualification
+
+The first focused Go run passed all **797 frozen records** in **187.328s**.
+No implementation or expectation correction was needed. Compact diamond loops
+replace the two unrolled routines, preserving the packed source layout, full-width
+fill phase, ring splits, nil-image behavior, configuration effects and uint32 setup
+arithmetic. Both remaining C callbacks now have the actual void/three-argument
+ABI. Four private C interfaces retire; the shared flat-floor flag storage remains
+in the C globals. Removing 1,445 block lines and retaining that one storage line
+reduces production C by **1,444 lines**.
+
+Affected default/server/highres checks completed **259 / 257 / 259 roots**
+in **123.144 / 215.758 / 139.810s**. All selected roots started and finished, with the expected
+optional prerequisite skip. Every frozen record matches in all three targets.
+All production binaries pass ELF32/i386/SSE2/CGO and interface checks: two retained
+callbacks, four retired interfaces, no test helpers. The full-assets failure
+multiset/package outcomes remain exactly **1,553 entries; 15 pass /3 fail /32 skip**.
+Fresh normal chapter/minimap gameplay matches **12 frames**, and the actual GUI
+flat-floor scenario matches **14 frames**, with updates disabled. Source fingerprints
+remain unchanged through qualification. Evidence: native-qualification.json under
+build/port-tile-raster. Solo gameplay does not establish multiplayer coverage;
+malformed image buffers and invalid tile indices are outside these asset contracts.

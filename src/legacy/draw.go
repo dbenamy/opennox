@@ -49,11 +49,6 @@ func asViewport(p *nox_draw_viewport_t) *noxrender.Viewport {
 	return asViewportP(unsafe.Pointer(p))
 }
 
-//export get_nox_client_texturedFloors_154956
-func get_nox_client_texturedFloors_154956() C.bool {
-	return C.bool(Get_nox_client_texturedFloors_154956())
-}
-
 //export sub_4C42A0
 func sub_4C42A0(a1 *C.int2, a2 *C.int2, a3 *int, a4 *int) int32 {
 	return GetClient().Sub4C42A0(AsPoint(unsafe.Pointer(a1)), AsPoint(unsafe.Pointer(a2)), a3, a4)

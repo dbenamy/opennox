@@ -15,15 +15,13 @@
 ## Current status
 
 Client inventory, quantity-dialog, trade, shop UI, quest journal, briefing,
-scoreboard/rank presentation, minimap, world walls and the wall-edge renderer are
-converted. The latest batch removes **284 C lines**; all **1,340 frozen results**
-match in three targets. Affected tests, three builds/ABI, exact known failures
-and twelve fresh gameplay frames passed. About **75k C lines remain: 75,473
-physical lines in 91 files**, with zero reference C. Next: five connected tile
-texture/fill, raster and wrap-setup routines, **1,445 C block lines**. Their **797
-C records** are frozen and qualified in all three targets, with an independent
-14-frame GUI flat-floor replay. See [TILE_RASTER.md](docs/porting/TILE_RASTER.md).
-See [the edge-renderer report](docs/porting/WALL_EDGE.md) and
+scoreboard/rank presentation, minimap, world walls, wall edges and tile rasterization
+are converted. The latest batch removes **1,444 C lines**; all **797 frozen results**
+match in three targets. Affected tests, three builds/ABI, exact known failures and
+**26 fresh gameplay frames** passed, including GUI-selected flat floors. About
+**74k C lines remain: 74,029 physical lines in 91 files**, with zero reference C.
+Next: connected tile composition, edge overlays and scrolling/redraw routines.
+See [TILE_RASTER.md](docs/porting/TILE_RASTER.md) and
 [PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.

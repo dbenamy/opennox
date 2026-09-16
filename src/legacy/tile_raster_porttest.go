@@ -62,11 +62,12 @@ func PortTestTileRasterOwner() (map[string]*uint32, []server.TileDef, func()) {
 }
 func PortTestTileRasterPrimitive(fill bool, dst, source unsafe.Pointer, color uint32) {
 	if fill {
-		C.sub_484450(C.int(color), C.int(uintptr(dst)))
+		tileRasterFillPacked(dst, color)
 	} else {
-		C.sub_4831C0(C.int(uintptr(source)), C.int(uintptr(dst)))
+		tileRasterCopyPacked(dst, source)
 	}
 }
+
 func PortTestTileRasterDispatch(pos image.Point, img noxrender.ImageHandle, tile uint32) {
 	C.portTestTileRasterDispatch((*C.int2)(unsafe.Pointer(&pos)), C.uint32_t(uintptr(img)), C.uint32_t(tile))
 }
