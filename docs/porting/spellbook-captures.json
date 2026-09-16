@@ -25,6 +25,11 @@
     "records": 54
   },
   {
+    "label": "icon-release",
+    "sha256": "83a1b3082f043fb1117fb69154d7319018efb282db510fdcf0db188cb6fd543e",
+    "records": 480
+  },
+  {
     "label": "icons-tooltips",
     "sha256": "4620f33300afa75b363e009048b010db88a549fef9b68d385d51ed473f09c1b8",
     "records": 390

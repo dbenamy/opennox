@@ -124,6 +124,10 @@
           {
             "path": "{out}/capture-visibility.json",
             "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          },
+          {
+            "path": "{out}/capture-icon-release.json",
+            "sha256": "83a1b3082f043fb1117fb69154d7319018efb282db510fdcf0db188cb6fd543e"
           }
         ]
       },
@@ -238,6 +242,10 @@
           {
             "path": "{out}/capture-visibility.json",
             "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          },
+          {
+            "path": "{out}/capture-icon-release.json",
+            "sha256": "83a1b3082f043fb1117fb69154d7319018efb282db510fdcf0db188cb6fd543e"
           }
         ]
       },
@@ -352,6 +360,10 @@
           {
             "path": "{out}/capture-visibility.json",
             "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          },
+          {
+            "path": "{out}/capture-icon-release.json",
+            "sha256": "83a1b3082f043fb1117fb69154d7319018efb282db510fdcf0db188cb6fd543e"
           }
         ]
       },
@@ -466,6 +478,10 @@
           {
             "path": "{out}/capture-visibility.json",
             "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          },
+          {
+            "path": "{out}/capture-icon-release.json",
+            "sha256": "83a1b3082f043fb1117fb69154d7319018efb282db510fdcf0db188cb6fd543e"
           }
         ]
       }
@@ -582,6 +598,10 @@
           {
             "path": "{out}/capture-visibility.json",
             "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          },
+          {
+            "path": "{out}/capture-icon-release.json",
+            "sha256": "83a1b3082f043fb1117fb69154d7319018efb282db510fdcf0db188cb6fd543e"
           }
         ]
       }
@@ -698,6 +718,10 @@
           {
             "path": "{out}/capture-visibility.json",
             "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          },
+          {
+            "path": "{out}/capture-icon-release.json",
+            "sha256": "83a1b3082f043fb1117fb69154d7319018efb282db510fdcf0db188cb6fd543e"
           }
         ]
       },
@@ -812,6 +836,10 @@
           {
             "path": "{out}/capture-visibility.json",
             "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          },
+          {
+            "path": "{out}/capture-icon-release.json",
+            "sha256": "83a1b3082f043fb1117fb69154d7319018efb282db510fdcf0db188cb6fd543e"
           }
         ]
       },
@@ -926,6 +954,10 @@
           {
             "path": "{out}/capture-visibility.json",
             "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          },
+          {
+            "path": "{out}/capture-icon-release.json",
+            "sha256": "83a1b3082f043fb1117fb69154d7319018efb282db510fdcf0db188cb6fd543e"
           }
         ]
       }
