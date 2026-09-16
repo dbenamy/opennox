@@ -21,8 +21,13 @@ Round 2 baseline **5a714a00** is committed/pushed. Native decoder applied;
 first focused run passes all nine package roots, all 174 frozen records and
 new malformed/empty/frequency contracts in 4.613s including discovery/build.
 C currently **71,252 /90 files /zero reference C**. Implementation recovery
-checkpoint precedes three-target production/full-suite/forced-map gameplay and
-the complete accumulated-corpus milestone. Both must pass before round2 is done.
+checkpoint **0615e830** is pushed. All production builds/ABI, the exact known
+full suite, and corrected normal/flat forced-map replays now pass. Both replays
+regenerate the warrior map exactly and preserve all 26 reference frames.
+Evidence: build/port-map-decompression/native-final. Initial integration checks
+caught missing campaign-map compression and filename-case assumptions; only the
+harness changed. Complete accumulated default passed (1,058 selected); server
+and highres remain in progress under the milestone driver. Do not begin round3.
 All map preparation/freeze/apply scripts are stale; never rerun them.
 See MAP_DECOMPRESSION.md, DECISIONS.md and build/port-map-decompression.
 PAUSE after this round and the combined milestone for the requested reflection.

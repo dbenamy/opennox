@@ -398,6 +398,122 @@
           }
         ]
       }
+    ],
+    "finish": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-decode-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./legacy/cnxz",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          }
+        ]
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-decode-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          "./legacy/cnxz",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          }
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-decode-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          "./legacy/cnxz",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          }
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/map-decode-batch.json",
+          "--out",
+          "{out}/production",
+          "--reuse-production-from",
+          "{root}/build/port-map-decompression/native-qualified/production"
+        ]
+      }
     ]
   },
   "production": {
@@ -425,15 +541,19 @@
     ],
     "scenarios": [
       {
-        "name": "map-decode-native",
+        "name": "map-decode-native-forced-case",
         "reference": "build/baseline/runs/client-audio-assets-native",
         "scenario": "docs/porting/minimap-chapter.yaml"
       },
       {
-        "name": "map-decode-flat-native",
+        "name": "map-decode-flat-native-forced-case",
         "reference": "build/baseline/runs/client-audio-assets-flat-native",
         "scenario": "docs/porting/tile-raster-flat.yaml"
       }
-    ]
+    ],
+    "compress_maps": [
+      "war01a/War01A.map"
+    ],
+    "map_compressor": "build/port-map-decompression/map-compress"
   }
 }

@@ -52,8 +52,9 @@ whole-tree driver. This included compilation and is not a controlled benchmark.
 Compare warm runs separately; record cache/source differences and avoid attributing
 all elapsed-time variation to the runner.
 
-Tooling setup and the first round are in progress. No trial round is complete.
-The initial audio fixtures passed; audio production code is unchanged.
+Round 1 is complete; round 2 production and integration gates now pass.
+The combined accumulated milestone is still running. Final reflection follows
+that milestone; the user requested a pause before any third round.
 Pause after the second fully qualified conversion, even if more work is available.
 
 Initial driver validation: six accounting tests pass (empty discovery, missing
@@ -82,3 +83,18 @@ handles) and one compile-only unused-import correction; no Go behavioral
 mismatch. Full native qualification took 499.084s. See CLIENT_AUDIO_ASSETS.md.
 The small pre-existing scope established the runner; round 2 will test a larger
 969-line self-contained scope and a non-root test package.
+
+Round 2 integration development exposed two coverage assumptions: the warrior
+map has no shipped compressed counterpart, and production expansion creates a
+lowercase filename. Both caused the stronger verification to fail closed while
+replay pixels matched. Generate the compressed warrior map only in the run copy
+using the unchanged production compressor; verify created map bytes with case-
+aware filename lookup. Exact-source builds/full-suite results can be reused when
+only the integration harness changes, with binary hashes and gate identity checked.
+These harness corrections cost time and belong in the trial's accounting.
+
+The accumulated driver also exposes a pre-existing skipped test explicitly:
+TestMapPopulationPrerequisiteProbe is an opt-in diagnostic requiring its own
+process and OPENNOX_POPULATION_PROBE. It is not an asset prerequisite silently
+missing from either new batch. Require no skips in both focused batch selections;
+report this historical diagnostic separately at the accumulated milestone.

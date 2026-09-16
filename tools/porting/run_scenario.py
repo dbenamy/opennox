@@ -23,6 +23,16 @@ if mode == 'compare' and reference is None:
 run = ROOT/'build/baseline/runs'/name
 run.mkdir(exist_ok=False)
 shutil.copytree(ROOT/'build/assets/extracted/drive_c/Nox',run/'data',symlinks=True)
+# Some shipped campaign maps have no compressed counterpart. Generate only
+# requested run-copy counterparts with the unchanged production compressor.
+generated=[]
+for relative in json.loads(os.environ.get('OPENNOX_COMPRESS_MAPS','[]')):
+    path=run/'data/maps'/relative
+    if Path(relative).is_absolute() or '..' in Path(relative).parts or path.is_symlink():
+        raise SystemExit('invalid run-copy map path')
+    subprocess.run([os.environ['OPENNOX_MAP_COMPRESSOR'],str(path),str(path.with_suffix('.nxz'))],check=True)
+    generated.append(relative)
+(run/'generated-compressed-maps.json').write_text(json.dumps(generated,indent=2)+'\n')
 removed=[]
 if os.environ.get('OPENNOX_REQUIRE_MAP_DECOMPRESSION') == '1':
     for compressed in sorted((run/'data/maps').glob('*/*.nxz')):
@@ -55,7 +65,7 @@ with (run/'output.log').open('w') as log:
         code = subprocess.run(cmd,env=env,stdout=log,stderr=subprocess.STDOUT,timeout=120).returncode
     except subprocess.TimeoutExpired:
         code = 124
-report = dict(exit=code,elapsed=time.monotonic()-start,capture=mode=='capture',
+report = dict(exit=code,process_exit=code,elapsed=time.monotonic()-start,capture=mode=='capture',
               godebug=env['GODEBUG'],reference=str(reference) if reference else None,
               binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),command=cmd,
               display_implementation=os.environ.get('OPENNOX_DISPLAY_IMPLEMENTATION',''),
@@ -64,12 +74,20 @@ if code == 0 and removed:
     regenerated=[]
     for item in removed:
         path = run/'data'/item['path']
+        if not path.exists() and path.parent.is_dir():
+            matches=[p for p in path.parent.iterdir() if p.name.casefold()==path.name.casefold()]
+            if len(matches)>1:
+                report['error']='ambiguous regenerated map name: '+item['path']
+                code=1
+                break
+            if matches:
+                path=matches[0]
         if path.exists():
             if hashlib.sha256(path.read_bytes()).hexdigest()!=item['sha256']:
                 report['error']='regenerated map mismatch: '+item['path']
                 code=1
                 break
-            regenerated.append(item)
+            regenerated.append(dict(item, actual_path=str(path.relative_to(run/"data"))))
     if not regenerated:
         report['error']='scenario did not regenerate any compressed map'
         code=1
@@ -78,6 +96,8 @@ if code == 0 and removed:
 report['exit']=code
 (run/'result.json').write_text(json.dumps(report,indent=2)+'\n')
 print(name,'exit',code,flush=True)
-if code == 0:
-    subprocess.run([sys.executable,str(ROOT/'build/baseline/deduplicate-run-assets.py'),name],cwd=ROOT,check=True)
+# Deduplication saves local disk space but is not required for validation.
+deduplicate = ROOT/'build/baseline/deduplicate-run-assets.py'
+if code == 0 and deduplicate.exists():
+    subprocess.run([sys.executable,str(deduplicate),name],cwd=ROOT,check=True)
 raise SystemExit(code)
