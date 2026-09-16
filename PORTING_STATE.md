@@ -2,47 +2,38 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 76k lines** — exactly **76,382 physical lines** in
-91 production `.c` files, with zero test-reference C. The latest minimap conversion
-removes **738 C lines / 17 routines**. This measures source size, not remaining
+**Rough C remaining: about 76k lines** — exactly **75,757 physical lines** in
+91 production `.c` files, with zero reference C. The latest world-wall conversion
+removes **625 C lines / nine routines**. This measures source size, not remaining
 effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — world-wall C baseline development
+## Current — world-wall Go conversion qualified
 
-Minimap conversion **33e4247c** and C baseline **475aec11** are committed/pushed.
-It removes738 C lines /17 routines: **76,382 /91 files /zero reference C** remain.
-All1,599 frozen results match in all3 targets; 209/208/209 affected roots, production
-builds/ABI, exact known failure set and12 fresh gameplay frames qualified. See
-[MINIMAP.md](docs/porting/MINIMAP.md).
+Frozen C baseline **0e0df42d** is committed/pushed. Go world-wall rendering,
+viewport projection, drawable visibility and its private image-interval helper
+are fully qualified. **625 C lines / nine routines** removed: **75,757 / 91 files /
+zero reference C** remain. All 6,262 client / 5,734 server records match frozen C;
+246/244/246 affected roots, three builds/ABI, exact known 1,553 failure entries
+and 12 fresh gameplay frames qualify. See [WORLD_WALLS.md](docs/porting/WORLD_WALLS.md).
+All readers joined; no source edit overlapped qualification. Commit/push this
+conversion, then continue the next batch. Applied scripts/stages are stale;
+never rerun them.
 
-Applied world-wall C fixtures; production remains unchanged. Scope expanded to
-**nine routines /620 function-block lines**, including the private image-interval
-helper whose only caller is the wall renderer. See WORLD_WALLS.md. Development-a
-passed three roots in188.398s (5,104 records). Pixel buffer is now pinned for the
-real C row table lifetime; its old hashes remain exact. Development-b passed five
-roots in22.695s (5,668 records); development-c passed seven roots in22.506s (5,778
-records), adding real FOV/visibility, variant/light-gradient/clip and nil-wall cases.
+Next: nox_xxx_edgeDraw_480EF0, the shared wall-edge renderer, 279 C block lines.
+Read-only audit and unapplied direct fixture drafts are in build/port-wall-edge.
+One production Go caller discards its old return. Retain actual image handles,
+shared pixel-row/clip ownership and light multiplication owner. Expand original-C
+coverage for mixed opaque/transparent runs, partial runs, gradients, cropping and
+alternate-row copies before freezing. Nearby color-codec callbacks remain outside
+scope pending indirect-reader audit. No new edge fixtures/production edits applied.
+No question pending; continue autonomously one qualified chunk at a time.
 
-Development-d passed eight roots in 187.251s. Frozen **6,262 C records / eight groups**
-(default/highres), **5,734 / seven** on server, with client-only FOV excluded.
-C qualification completed **246 / 244 / 246 roots** in **131.375 / 213.129 / 135.790s**;
-all selected roots started/completed with the expected prerequisite skip, and all
-applicable hashes match. Exact production fingerprints match 33e4247c, supporting
-reuse of its builds/full-assets/twelve-frame gameplay. No readers active.
-
-Commit/push this qualified baseline, then apply the reviewed ignored Go drafts via
-build/port-world-walls/apply-native.py and qualify against unchanged expectations.
-Expected removal is 624 physical C lines (620 function blocks plus four unused
-translation-unit declarations); verify after application. No production port yet.
-All fixture stages are applied/stale. No question pending. Minimap scripts are
-complete and must never be rerun. Continue autonomously.
-
-The last full accumulated milestone was briefing-window 0b3ed13d; highres root
-598.823s means the next complete-corpus run needs a longer explicit timeout.
-Original assets/archive unchanged. Logs, screenshots, binaries, source fingerprints
-and qualification manifests remain in ignored build/ for local recovery.
+Last complete accumulated milestone: briefing-window **0b3ed13d**. Its highres
+root took 598.823s, so the next complete-corpus run needs a longer explicit timeout.
+Original assets/archive unchanged. Evidence remains in ignored build/port-world-walls
+and build/baseline/runs/client-world-walls-port; recovery instructions are tracked.
 
 <!-- /current-checkpoint -->
 

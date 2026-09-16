@@ -168,7 +168,7 @@ func briefingDrawInstructions(data *gui.WindowData) int {
 	sprite := func(index, x, y int) {
 		dr := (*client.Drawable)(unsafe.Pointer(uintptr(*sprites[index])))
 		p := image.Pt(ox+x, oy+y)
-		C.sub_473A10((*C.uint32_t)(vp.C()), (*C.int2)(unsafe.Pointer(&p)), (*C.uint32_t)(unsafe.Add(dr.C(), 12)))
+		dr.PosVec = vp.ToWorldPos(p)
 		dr.CallDraw(vp)
 	}
 	left := func(n string, x, y, right int) {

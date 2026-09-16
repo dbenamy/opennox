@@ -156,6 +156,7 @@ target build selection and linker evidence.
 | Briefing window lifecycle, voice, input and transitions | 92 | 78,657 | −320 | 0 |
 | Scoreboard collection, rank tables, rendering and mode state | 91 | 77,120 | −1,537 | 0 |
 | Minimap rendering, zoom, objectives and AI debug traversal | 91 | 76,382 | −738 | 0 |
+| World-wall rendering, projection and drawable visibility | 91 | 75,757 | −625 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

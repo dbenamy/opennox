@@ -15,16 +15,15 @@
 ## Current status
 
 Client inventory, quantity-dialog, trade, shop UI, quest journal, briefing,
-scoreboard/rank presentation and minimap rendering are converted. The latest
-minimap batch removes **738 C lines / 17 routines**; all **1,599 frozen results**
-match in all three targets. Affected tests, production builds/ABI, exact known
-failure comparison and twelve fresh gameplay frames passed. About **76k C lines
-remain: 76,382 physical lines in 91 files**, with zero test-reference C.
-Active: world-wall rendering, viewport projection, drawable visibility and a
-private image-interval helper, **nine routines / 620 C function-block lines**.
-Frozen C fixtures cover **6,262 records** in client targets and **5,734** on server
-(the actual field-of-view clipper is client-only).
-See [the minimap report](docs/porting/MINIMAP.md) and [PORTING_STATE.md](PORTING_STATE.md).
+scoreboard/rank presentation, minimap and world-wall rendering are converted.
+The latest world-wall batch removes **625 C lines / nine routines**; all **6,262
+frozen client results / 5,734 server results** match. Affected tests, three production
+builds/ABI, exact known-failure comparison and twelve fresh gameplay frames passed.
+About **76k C lines remain: 75,757 physical lines in 91 files**, with zero
+reference C. Next: the shared wall-edge renderer, **279 C block lines**; expand
+its direct image/run/clipping coverage before translation.
+See [the world-wall report](docs/porting/WORLD_WALLS.md) and
+[PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.
 

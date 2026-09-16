@@ -954,3 +954,23 @@ algorithms solely as an oracle. Use affected three-target qualification after th
 briefing milestone, plus builds/ABI, exact full-assets comparison and twelve fresh
 minimap gameplay frames. Solo gameplay does not establish remote multiplayer
 coverage; populated team/objective and debug behavior have actual-owner fixtures.
+
+
+### World-wall ownership and visibility compatibility
+
+Use existing Viewport methods for both private projection helpers and route
+briefing through them. Keep actual static callback identities, player/team lookups,
+vision buff eligibility, FOV scanline intersection and shared image-interval state.
+Copy the first light sample before obtaining the second: the real sampler reuses
+its buffer. Preserve signed-byte interlacing parity, front/back/translucent options,
+sprite overrides, consumed wall flags and explored state. Retire all nine private
+C interfaces; retain the actual edge renderer and shared C configuration owners.
+
+The server's actual FOV clipper is intentionally unreachable. Run those 528 cases
+only in client targets; all other 5,734 records execute on all three targets,
+including ordinary/edge rendering. Do not install a replacement clipper for tests.
+Pin the real Go pixel buffer while the production C row table retains its addresses;
+cleanup detaches/frees the table before unpinning. Full-assets failure comparison
+remains exactly the known 1,553 entries, and fresh solo chapter/minimap gameplay
+matches twelve frames. Review pixel-row ownership consolidation with the remaining
+C tile callers later; it is separate from this behavioral translation.

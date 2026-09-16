@@ -46,7 +46,6 @@ extern uint32_t dword_5d4594_1098620;
 extern uint32_t dword_5d4594_1123520;
 extern uint32_t dword_5d4594_1193188;
 extern uint32_t dword_5d4594_1098596;
-extern uint32_t dword_5d4594_3799452;
 extern uint32_t dword_5d4594_1098600;
 extern uint32_t dword_5d4594_3807152;
 extern uint32_t dword_5d4594_1098616;
@@ -739,46 +738,6 @@ int sub_479D10() {
 
 //----- (0047A260) --------------------------------------------------------
 int sub_47A260() { return dword_5d4594_1123520; }
-
-//----- (0047D380) --------------------------------------------------------
-int sub_47D380(int a1, int a2) {
-	int v2; // eax
-	int v3; // ecx
-	int v4; // edx
-	int v5; // esi
-
-	v2 = a1;
-	v3 = a2;
-	if (a1 > a2) {
-		v2 = a2;
-		v3 = a1;
-	}
-	v4 = nox_draw_curDrawData_3799572->clip.min_x;
-	if (v2 >= v4) {
-		if (v2 >= nox_draw_curDrawData_3799572->clip.max_x) {
-			return 0;
-		}
-	} else {
-		v2 = nox_draw_curDrawData_3799572->clip.min_x;
-	}
-	v5 = nox_draw_curDrawData_3799572->clip.max_x;
-	if (v3 < v5) {
-		if (v3 < v4) {
-			return 0;
-		}
-	} else {
-		v3 = nox_draw_curDrawData_3799572->clip.max_x;
-	}
-	if (v2 == v3) {
-		return 0;
-	}
-	if (v2 != v4 || v3 != v5) {
-		*getMemU32Ptr(0x973F18, 52) = v2;
-		*getMemU32Ptr(0x973F18, 12) = v3;
-		dword_5d4594_3799452 = 1;
-	}
-	return 1;
-}
 
 //----- (0047DBC0) --------------------------------------------------------
 unsigned char sub_47DBC0() { return getMemByte(0x5D4594, 1193128); }

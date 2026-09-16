@@ -540,7 +540,7 @@ func Nox_xxx_drawShield_499810(vp *noxrender.Viewport, dr *client.Drawable) {
 	C.nox_xxx_drawShield_499810((*nox_draw_viewport_t)(vp.C()), (*nox_drawable)(dr.C()))
 }
 func Sub_474B40(dr *client.Drawable) int {
-	return int(C.sub_474B40((*nox_drawable)(dr.C())))
+	return bool2int(worldWallPlayerVisible(dr))
 }
 func Sub_495BB0(dr *client.Drawable, vp *noxrender.Viewport) {
 	C.sub_495BB0((*nox_drawable)(dr.C()), (*nox_draw_viewport_t)(vp.C()))

@@ -111,7 +111,7 @@ func Sub_4C5060(vp *noxrender.Viewport) {
 	objectRenderBeamDraw(vp)
 }
 func Nox_xxx_drawWalls_473C10(vp *noxrender.Viewport, a2 *server.Wall) {
-	C.nox_xxx_drawWalls_473C10((*nox_draw_viewport_t)(vp.C()), a2.C())
+	worldWallDraw(vp, a2)
 }
 func Sub_4761B0(dr *client.Drawable) int {
 	return int(C.sub_4761B0((*nox_drawable)(dr.C())))
@@ -126,16 +126,16 @@ func Sub_49A6A0(vp *noxrender.Viewport, dr *client.Drawable) {
 	C.sub_49A6A0((*nox_draw_viewport_t)(vp.C()), (*nox_drawable)(dr.C()))
 }
 func Nox_xxx_sprite_4756E0_drawable(dr *client.Drawable) int {
-	return int(C.nox_xxx_sprite_4756E0_drawable((*nox_drawable)(dr.C())))
+	return bool2int(worldWallStaticPass(dr))
 }
 func Nox_xxx_sprite_475740_drawable(dr *client.Drawable) int {
-	return int(C.nox_xxx_sprite_475740_drawable((*nox_drawable)(dr.C())))
+	return bool2int(worldWallDynamicPass(dr))
 }
 func Nox_xxx_sprite_4757A0_drawable(dr *client.Drawable) int {
-	return int(C.nox_xxx_sprite_4757A0_drawable((*nox_drawable)(dr.C())))
+	return bool2int(worldWallSpecialPass(dr))
 }
 func Sub_4757D0_drawable(dr *client.Drawable) int {
-	return int(C.sub_4757D0_drawable((*nox_drawable)(dr.C())))
+	return bool2int(worldWallInactivePass(dr))
 }
 func Nox_xxx_tileDrawImpl_4826A0(vp *noxrender.Viewport) {
 	C.nox_xxx_tileDrawImpl_4826A0((*nox_draw_viewport_t)(vp.C()))
