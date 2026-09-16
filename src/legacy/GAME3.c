@@ -1402,17 +1402,9 @@ int sub_4AABE0(int a1, int a2, int* a3, int a4) {
 	int result = 0;                       // eax
 	int v7;                               // edi
 	int v8;                               // esi
-	void (*v9)(uint32_t, int, int, int);  // eax
-	void (*v10)(uint32_t, int, int, int); // eax
-	void (*v11)(uint32_t, int, int, int); // eax
 	void* v12;                            // ecx
-	void (*v13)(void*, int, int, int);    // eax
-	void (*v14)(uint32_t, int, int, int); // eax
 	int v15;                              // ecx
-	void (*v16)(int, int, int, int);      // eax
 	int v17;                              // eax
-	void (*v18)(uint32_t, int, int, int); // eax
-	void (*v19)(uint32_t, int, int, int); // eax
 
 	switch (a2) {
 	case 16389:
@@ -1502,23 +1494,14 @@ int sub_4AABE0(int a1, int a2, int* a3, int a4) {
 					return 0;
 				}
 				v15 = dword_5d4594_1309728;
-				v16 = *(void (**)(int, int, int, int))(dword_5d4594_1309728 + 372);
-				if (!v16) {
-					nox_xxx_clientPlaySoundSpecial_452D80(768, 100);
-					return 0;
-				}
-				v16(v15, 21, 28, 2);
+				nox_window_call_field_93((nox_window*)(uintptr_t)(v15), 21, 28, 2);
 				nox_xxx_clientPlaySoundSpecial_452D80(768, 100);
 				return 0;
 			}
 			if (sub_453070() != 1) {
 				return 0;
 			}
-			v14 = *(void (**)(uint32_t, int, int, int))(dword_5d4594_1309728 + 372);
-			if (!v14) {
-				return 0;
-			}
-			v14(dword_5d4594_1309728, 21, 28, 2);
+			nox_window_call_field_93((nox_window*)(uintptr_t)(dword_5d4594_1309728), 21, 28, 2);
 			result = 0;
 			break;
 		case 352:
@@ -1529,23 +1512,14 @@ int sub_4AABE0(int a1, int a2, int* a3, int a4) {
 					return 0;
 				}
 				v12 = *(void**)&dword_5d4594_1309732;
-				v13 = *(void (**)(void*, int, int, int))(dword_5d4594_1309732 + 372);
-				if (!v13) {
-					sub_4AA650();
-					return 0;
-				}
-				v13(v12, 21, 28, 2);
+				nox_window_call_field_93((nox_window*)(uintptr_t)(v12), 21, 28, 2);
 				sub_4AA650();
 				return 0;
 			}
 			if (sub_44D990() != 1) {
 				return 0;
 			}
-			v11 = *(void (**)(uint32_t, int, int, int))(dword_5d4594_1309732 + 372);
-			if (!v11) {
-				return 0;
-			}
-			v11(dword_5d4594_1309732, 21, 28, 2);
+			nox_window_call_field_93((nox_window*)(uintptr_t)(dword_5d4594_1309732), 21, 28, 2);
 			result = 0;
 			break;
 		case 353:
@@ -1554,21 +1528,13 @@ int sub_4AABE0(int a1, int a2, int* a3, int a4) {
 				if (sub_43DC30()) {
 					return 0;
 				}
-				v10 = *(void (**)(uint32_t, int, int, int))(dword_5d4594_1309736 + 372);
-				if (!v10) {
-					return 0;
-				}
-				v10(dword_5d4594_1309736, 21, 28, 2);
+				nox_window_call_field_93((nox_window*)(uintptr_t)(dword_5d4594_1309736), 21, 28, 2);
 				result = 0;
 			} else {
 				if (sub_43DC30() != 1) {
 					return 0;
 				}
-				v9 = *(void (**)(uint32_t, int, int, int))(dword_5d4594_1309736 + 372);
-				if (!v9) {
-					return 0;
-				}
-				v9(dword_5d4594_1309736, 21, 28, 2);
+				nox_window_call_field_93((nox_window*)(uintptr_t)(dword_5d4594_1309736), 21, 28, 2);
 				result = 0;
 			}
 			break;
@@ -1592,10 +1558,7 @@ int sub_4AABE0(int a1, int a2, int* a3, int a4) {
 			if (a4) {
 				if (!sub_44D990()) {
 					v12 = *(void**)&dword_5d4594_1309732;
-					v13 = *(void (**)(void*, int, int, int))(dword_5d4594_1309732 + 372);
-					if (v13) {
-						v13(v12, 21, 28, 2);
-					}
+					nox_window_call_field_93((nox_window*)(uintptr_t)(v12), 21, 28, 2);
 				}
 				sub_4AA650();
 				return 0;
@@ -1603,11 +1566,7 @@ int sub_4AABE0(int a1, int a2, int* a3, int a4) {
 				if (sub_44D990() != 1) {
 					return 0;
 				}
-				v18 = *(void (**)(uint32_t, int, int, int))(dword_5d4594_1309732 + 372);
-				if (!v18) {
-					return 0;
-				}
-				v18(dword_5d4594_1309732, 21, 28, 2);
+				nox_window_call_field_93((nox_window*)(uintptr_t)(dword_5d4594_1309732), 21, 28, 2);
 				result = 0;
 			}
 		} else {
@@ -1615,10 +1574,7 @@ int sub_4AABE0(int a1, int a2, int* a3, int a4) {
 			if (a4) {
 				if (!sub_453070()) {
 					v15 = dword_5d4594_1309728;
-					v16 = *(void (**)(int, int, int, int))(dword_5d4594_1309728 + 372);
-					if (v16) {
-						v16(v15, 21, 28, 2);
-					}
+					nox_window_call_field_93((nox_window*)(uintptr_t)(v15), 21, 28, 2);
 				}
 				nox_xxx_clientPlaySoundSpecial_452D80(768, 100);
 				return 0;
@@ -1626,11 +1582,7 @@ int sub_4AABE0(int a1, int a2, int* a3, int a4) {
 			if (sub_453070() != 1) {
 				return 0;
 			}
-			v19 = *(void (**)(uint32_t, int, int, int))(dword_5d4594_1309728 + 372);
-			if (!v19) {
-				return 0;
-			}
-			v19(dword_5d4594_1309728, 21, 28, 2);
+			nox_window_call_field_93((nox_window*)(uintptr_t)(dword_5d4594_1309728), 21, 28, 2);
 			result = 0;
 		}
 		break;
@@ -2689,17 +2641,9 @@ int nox_xxx_windowOptionsProc_4ADF30(int a1, int a2, int* a3, int a4) {
 	int result = 0;                       // eax
 	int v5;                               // edi
 	int v6;                               // esi
-	void (*v7)(uint32_t, int, int, int);  // eax
-	void (*v8)(uint32_t, int, int, int);  // eax
-	void (*v9)(uint32_t, int, int, int);  // eax
 	void* v10;                            // ecx
-	void (*v11)(void*, int, int, int);    // eax
-	void (*v12)(uint32_t, int, int, int); // eax
 	int v13;                              // ecx
-	void (*v14)(int, int, int, int);      // eax
 	int v15;                              // eax
-	void (*v16)(uint32_t, int, int, int); // eax
-	void (*v17)(uint32_t, int, int, int); // eax
 
 	switch (a2) {
 	case 16389:
@@ -2769,23 +2713,14 @@ int nox_xxx_windowOptionsProc_4ADF30(int a1, int a2, int* a3, int a4) {
 					return 0;
 				}
 				v13 = dword_5d4594_1309828;
-				v14 = *(void (**)(int, int, int, int))(dword_5d4594_1309828 + 372);
-				if (!v14) {
-					nox_xxx_clientPlaySoundSpecial_452D80(768, 100);
-					return 0;
-				}
-				v14(v13, 21, 28, 2);
+				nox_window_call_field_93((nox_window*)(uintptr_t)(v13), 21, 28, 2);
 				nox_xxx_clientPlaySoundSpecial_452D80(768, 100);
 				return 0;
 			}
 			if (sub_453070() != 1) {
 				return 0;
 			}
-			v12 = *(void (**)(uint32_t, int, int, int))(dword_5d4594_1309828 + 372);
-			if (!v12) {
-				return 0;
-			}
-			v12(dword_5d4594_1309828, 21, 28, 2);
+			nox_window_call_field_93((nox_window*)(uintptr_t)(dword_5d4594_1309828), 21, 28, 2);
 			result = 0;
 			break;
 		case 352:
@@ -2796,23 +2731,14 @@ int nox_xxx_windowOptionsProc_4ADF30(int a1, int a2, int* a3, int a4) {
 					return 0;
 				}
 				v10 = *(void**)&dword_5d4594_1309836;
-				v11 = *(void (**)(void*, int, int, int))(dword_5d4594_1309836 + 372);
-				if (!v11) {
-					sub_4AA650();
-					return 0;
-				}
-				v11(v10, 21, 28, 2);
+				nox_window_call_field_93((nox_window*)(uintptr_t)(v10), 21, 28, 2);
 				sub_4AA650();
 				return 0;
 			}
 			if (sub_44D990() != 1) {
 				return 0;
 			}
-			v9 = *(void (**)(uint32_t, int, int, int))(dword_5d4594_1309836 + 372);
-			if (!v9) {
-				return 0;
-			}
-			v9(dword_5d4594_1309836, 21, 28, 2);
+			nox_window_call_field_93((nox_window*)(uintptr_t)(dword_5d4594_1309836), 21, 28, 2);
 			return 0;
 		case 353:
 			sub_486320(*(uint32_t**)&dword_587000_93164, a4);
@@ -2820,21 +2746,13 @@ int nox_xxx_windowOptionsProc_4ADF30(int a1, int a2, int* a3, int a4) {
 				if (sub_43DC30()) {
 					return 0;
 				}
-				v8 = *(void (**)(uint32_t, int, int, int))(dword_5d4594_1309832 + 372);
-				if (!v8) {
-					return 0;
-				}
-				v8(dword_5d4594_1309832, 21, 28, 2);
+				nox_window_call_field_93((nox_window*)(uintptr_t)(dword_5d4594_1309832), 21, 28, 2);
 				result = 0;
 			} else {
 				if (sub_43DC30() != 1) {
 					return 0;
 				}
-				v7 = *(void (**)(uint32_t, int, int, int))(dword_5d4594_1309832 + 372);
-				if (!v7) {
-					return 0;
-				}
-				v7(dword_5d4594_1309832, 21, 28, 2);
+				nox_window_call_field_93((nox_window*)(uintptr_t)(dword_5d4594_1309832), 21, 28, 2);
 				result = 0;
 			}
 			break;
@@ -2858,10 +2776,7 @@ int nox_xxx_windowOptionsProc_4ADF30(int a1, int a2, int* a3, int a4) {
 			if (a4) {
 				if (!sub_44D990()) {
 					v10 = *(void**)&dword_5d4594_1309836;
-					v11 = *(void (**)(void*, int, int, int))(dword_5d4594_1309836 + 372);
-					if (v11) {
-						v11(v10, 21, 28, 2);
-					}
+					nox_window_call_field_93((nox_window*)(uintptr_t)(v10), 21, 28, 2);
 				}
 				sub_4AA650();
 				return 0;
@@ -2869,11 +2784,7 @@ int nox_xxx_windowOptionsProc_4ADF30(int a1, int a2, int* a3, int a4) {
 				if (sub_44D990() != 1) {
 					return 0;
 				}
-				v16 = *(void (**)(uint32_t, int, int, int))(dword_5d4594_1309836 + 372);
-				if (!v16) {
-					return 0;
-				}
-				v16(dword_5d4594_1309836, 21, 28, 2);
+				nox_window_call_field_93((nox_window*)(uintptr_t)(dword_5d4594_1309836), 21, 28, 2);
 				return 0;
 			}
 		} else {
@@ -2881,10 +2792,7 @@ int nox_xxx_windowOptionsProc_4ADF30(int a1, int a2, int* a3, int a4) {
 			if (a4) {
 				if (!sub_453070()) {
 					v13 = dword_5d4594_1309828;
-					v14 = *(void (**)(int, int, int, int))(dword_5d4594_1309828 + 372);
-					if (v14) {
-						v14(v13, 21, 28, 2);
-					}
+					nox_window_call_field_93((nox_window*)(uintptr_t)(v13), 21, 28, 2);
 				}
 				nox_xxx_clientPlaySoundSpecial_452D80(768, 100);
 				return 0;
@@ -2892,11 +2800,7 @@ int nox_xxx_windowOptionsProc_4ADF30(int a1, int a2, int* a3, int a4) {
 			if (sub_453070() != 1) {
 				return 0;
 			}
-			v17 = *(void (**)(uint32_t, int, int, int))(dword_5d4594_1309828 + 372);
-			if (!v17) {
-				return 0;
-			}
-			v17(dword_5d4594_1309828, 21, 28, 2);
+			nox_window_call_field_93((nox_window*)(uintptr_t)(dword_5d4594_1309828), 21, 28, 2);
 			return 0;
 		}
 		break;

@@ -1180,3 +1180,35 @@ static-text API for other callers. The visible prompt should name the selected
 action every time, including after reopening it. See [BINDINGS.md](BINDINGS.md)
 for qualification status. This reversible correction is authorized by the standing
 instruction to act on confident decisions and record them for later review.
+
+### Compiler-cache probe after binding editors
+
+The installed ccache 4.12.3 can reuse an unchanged GAME3.c object across different
+Go-style temporary paths. With GCC's switch recording disabled as in the Go build,
+all probe object hashes agree: uncached 0.821s, direct hit 0.006s, changed-work-path
+hit 0.097s. However, changing the compiler seed causes a miss (0.975s). Go 1.26
+passes its package action ID as `-frandom-seed`, so a source revision changes that
+seed. Evidence: build/port-compiler-cache/result-seeds.json and driver-seeds.log.
+
+Decision for later review: keep the current plain-GCC environment. The probe does
+not establish savings across port revisions. Ignoring the seed would relax cache
+identity and needs broader object/build validation before adoption; one unchanged
+object is insufficient evidence. This is a deferred optimization, not a blocker.
+No toolchain, compiler flags, production source or qualification expectations were
+changed by this experiment. The isolated cache is limited to 512MiB.
+
+### Options volume checkbox dispatcher prerequisite
+
+Use the existing window event dispatcher for the options panels' twenty calls to
+mute-checkbox handlers. The direct C function-pointer reads bypass handlers stored
+in Go window extensions. The independent zero-volume regression fails for all
+three channels in both panels against 0649e67a's C and passes after this scoped
+correction. The full volume matrix includes actual checkboxes, absent handlers,
+audio readiness, preview ordering and real timer state.
+
+The corrected C baseline qualifies 3,130 frozen records on all three targets plus
+repeat, all 56 affected checks, and 41 repeated real gameplay frames. See
+OPTIONS.md. This is an intentional reversible behavior correction to review;
+it precedes Go translation. It removes 96 C lines of raw-pointer plumbing and
+redundant empty-handler branches; record that separately from ported C LOC.
+The transient clipping frame is recorded for a separate renderer investigation.

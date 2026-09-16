@@ -2,8 +2,9 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 63k lines** — **62,571 physical lines in 83 production
-`.c` files**, zero reference C. The binding conversion removes **755**.
+**Rough C remaining: about 63k lines** — **62,475 physical lines in 83 production
+`.c` files**, zero reference C. Binding conversion removed **755**; the subsequent
+options dispatcher prerequisite removes **96 C plumbing lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
@@ -34,16 +35,39 @@ centering; transient wheel-frame background/clipping artifact already in C,
 which redraws normally on the later frame. Settings serialization/parsing uses
 real temporary files; full configuration writes are disabled in gameplay replays.
 
-Next: commit/push this qualified conversion, then immediately continue the next
-connected batch. Candidate build/port-options/candidate.json covers twelve
+Qualified conversion **0649e67a** is committed and pushed. Continue the next
+connected batch; see docs/porting/OPTIONS.md. Candidate build/port-options/candidate.json covers twelve
 main-menu/in-game options functions / 889 C lines, with actual slider, checkbox,
 audio, dialog, configuration and advanced-video owners. Use affected checks after
-this accumulated milestone. No next-batch source is installed.
+this accumulated milestone. The corrected options C baseline is fully qualified and ready to commit/push.
+All **3,130 frozen records / ten groups** pass in c-default/repeat/server/highres;
+all eleven selected tests and all 56 c-affected tests complete without skips.
+The six real-checkbox regressions fail before and pass afterward. The dispatcher
+fix removes 96 C plumbing lines (not a Go conversion): **62,475 / 83**.
 
-A separate ignored compiler-cache probe in build/port-compiler-cache produced
-byte-identical GAME3.c objects: gcc 0.864s, direct cache hit 0.018s, changed temporary
-path hit 0.070s. Current qualification still uses plain gcc. Consider a bounded
-ccache trial after this commit; no whole-build savings have been measured yet.
+C gameplay options-c/options-c-repeat passes all **41 exact frames**, including
+both panels and both binding transitions, with complete resumed gameplay.
+Tracked scenario/metadata: options-panels.yaml, options-replay.json. Evidence:
+c-gameplay, 123.646s; process capture/repeat 56.735/61.344s. Static preflight passes.
+c-index-proof.json matches staged source to all six final phases (1,845 files).
+All readers are joined. OPTIONS.md and DECISIONS.md record the intentional fix,
+precision preservation, timer semantics and transient C clipping artifact.
+
+Next: commit/push the baseline/fix, then install the Go translation of the twelve
+remaining options functions / 793 C lines. Candidate native interface plan and an
+uncompiled state-owner draft are ignored under build/port-options. Verify the
+planned four retained/eight retired adapters, update existing Go callers directly,
+and preserve every frozen hash. Run affected native checks on all targets plus
+production/ABI/known-suite and options+flat gameplay, then document C LOC,
+commit/push and continue. No native options implementation is installed yet.
+Old fixture generators and drafts under build/port-options are stale relative to
+installed source; never copy them back without reviewing current differences.
+
+
+The compiler-cache follow-up found that Go changes `-frandom-seed` with each
+package revision, producing a cache miss. Keep plain GCC for now; no compiler or
+environment settings changed. DECISIONS.md records the bounded probe and reason
+for deferring adoption.
 
 Do not rerun stale binding/summon/spellbook integration scripts or ignored Go
 drafts over installed source. Preserve nox-iso-from-archive-org.7z. Source

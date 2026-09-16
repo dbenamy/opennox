@@ -1,0 +1,42 @@
+{
+  "options-clicks": {
+    "records": 36,
+    "sha256": "06d6693189c0db0a8a7d121af0cd3bc251c4e1c7bd481c71032144ed61c8a000"
+  },
+  "options-close": {
+    "records": 9,
+    "sha256": "e30e09f9dffc4ad3aa88805a4e2e772fa7c266c0bda5c0c4e12326852f4af215"
+  },
+  "options-construction": {
+    "records": 36,
+    "sha256": "8c91640ffe180f958fefbd8cc699c8366e4707d28e73d35b17001b2baa67733d"
+  },
+  "options-menu-completion": {
+    "records": 1,
+    "sha256": "5cc6a8a697bb6f2fcb468ef02cf2a76e9ad3f5da223682f1ca29288836ee66b3"
+  },
+  "options-numeric": {
+    "records": 1320,
+    "sha256": "608a984491b1c8f501b42d24379ac70fb29a124e7557d42a9b609af8f4064aa5"
+  },
+  "options-overlay": {
+    "records": 32,
+    "sha256": "e651c3589a15b14f98f7693dfb215172382429bbb0a02953c921c7fe5391bc46"
+  },
+  "options-preview": {
+    "records": 180,
+    "sha256": "9714869c059c73ca48f4b525303cf07bf83193401a9e01a5c1c1b73d05aa96f5"
+  },
+  "options-settings": {
+    "records": 48,
+    "sha256": "f670776d0b563031d9a3b29e29ede8768a58c119ef35a9ab58e1214648e18617"
+  },
+  "options-viewport": {
+    "records": 28,
+    "sha256": "eb2016a7036e29206b99323c2cfa5e8353606308b0d340b33561611ea6a54024"
+  },
+  "options-volume": {
+    "records": 1440,
+    "sha256": "7e720133b8f493b07fd671d6c3636d7bedaeb057efc3c770e29279f427839d8e"
+  }
+}

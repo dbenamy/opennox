@@ -1,0 +1,721 @@
+{
+  "batch": "options-panels",
+  "env": {
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_CAPTURE": "{out}/capture",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
+  "phases": {
+    "c-default": [
+      {
+        "name": "c-default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/options-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-options-clicks.json",
+            "sha256": "06d6693189c0db0a8a7d121af0cd3bc251c4e1c7bd481c71032144ed61c8a000"
+          },
+          {
+            "path": "{out}/capture-options-close.json",
+            "sha256": "e30e09f9dffc4ad3aa88805a4e2e772fa7c266c0bda5c0c4e12326852f4af215"
+          },
+          {
+            "path": "{out}/capture-options-construction.json",
+            "sha256": "8c91640ffe180f958fefbd8cc699c8366e4707d28e73d35b17001b2baa67733d"
+          },
+          {
+            "path": "{out}/capture-options-menu-completion.json",
+            "sha256": "5cc6a8a697bb6f2fcb468ef02cf2a76e9ad3f5da223682f1ca29288836ee66b3"
+          },
+          {
+            "path": "{out}/capture-options-numeric.json",
+            "sha256": "608a984491b1c8f501b42d24379ac70fb29a124e7557d42a9b609af8f4064aa5"
+          },
+          {
+            "path": "{out}/capture-options-overlay.json",
+            "sha256": "e651c3589a15b14f98f7693dfb215172382429bbb0a02953c921c7fe5391bc46"
+          },
+          {
+            "path": "{out}/capture-options-preview.json",
+            "sha256": "9714869c059c73ca48f4b525303cf07bf83193401a9e01a5c1c1b73d05aa96f5"
+          },
+          {
+            "path": "{out}/capture-options-settings.json",
+            "sha256": "f670776d0b563031d9a3b29e29ede8768a58c119ef35a9ab58e1214648e18617"
+          },
+          {
+            "path": "{out}/capture-options-viewport.json",
+            "sha256": "eb2016a7036e29206b99323c2cfa5e8353606308b0d340b33561611ea6a54024"
+          },
+          {
+            "path": "{out}/capture-options-volume.json",
+            "sha256": "7e720133b8f493b07fd671d6c3636d7bedaeb057efc3c770e29279f427839d8e"
+          }
+        ]
+      }
+    ],
+    "c-repeat": [
+      {
+        "name": "c-repeat",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/options-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-options-clicks.json",
+            "sha256": "06d6693189c0db0a8a7d121af0cd3bc251c4e1c7bd481c71032144ed61c8a000"
+          },
+          {
+            "path": "{out}/capture-options-close.json",
+            "sha256": "e30e09f9dffc4ad3aa88805a4e2e772fa7c266c0bda5c0c4e12326852f4af215"
+          },
+          {
+            "path": "{out}/capture-options-construction.json",
+            "sha256": "8c91640ffe180f958fefbd8cc699c8366e4707d28e73d35b17001b2baa67733d"
+          },
+          {
+            "path": "{out}/capture-options-menu-completion.json",
+            "sha256": "5cc6a8a697bb6f2fcb468ef02cf2a76e9ad3f5da223682f1ca29288836ee66b3"
+          },
+          {
+            "path": "{out}/capture-options-numeric.json",
+            "sha256": "608a984491b1c8f501b42d24379ac70fb29a124e7557d42a9b609af8f4064aa5"
+          },
+          {
+            "path": "{out}/capture-options-overlay.json",
+            "sha256": "e651c3589a15b14f98f7693dfb215172382429bbb0a02953c921c7fe5391bc46"
+          },
+          {
+            "path": "{out}/capture-options-preview.json",
+            "sha256": "9714869c059c73ca48f4b525303cf07bf83193401a9e01a5c1c1b73d05aa96f5"
+          },
+          {
+            "path": "{out}/capture-options-settings.json",
+            "sha256": "f670776d0b563031d9a3b29e29ede8768a58c119ef35a9ab58e1214648e18617"
+          },
+          {
+            "path": "{out}/capture-options-viewport.json",
+            "sha256": "eb2016a7036e29206b99323c2cfa5e8353606308b0d340b33561611ea6a54024"
+          },
+          {
+            "path": "{out}/capture-options-volume.json",
+            "sha256": "7e720133b8f493b07fd671d6c3636d7bedaeb057efc3c770e29279f427839d8e"
+          }
+        ]
+      }
+    ],
+    "c-server": [
+      {
+        "name": "c-server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/options-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-options-clicks.json",
+            "sha256": "06d6693189c0db0a8a7d121af0cd3bc251c4e1c7bd481c71032144ed61c8a000"
+          },
+          {
+            "path": "{out}/capture-options-close.json",
+            "sha256": "e30e09f9dffc4ad3aa88805a4e2e772fa7c266c0bda5c0c4e12326852f4af215"
+          },
+          {
+            "path": "{out}/capture-options-construction.json",
+            "sha256": "8c91640ffe180f958fefbd8cc699c8366e4707d28e73d35b17001b2baa67733d"
+          },
+          {
+            "path": "{out}/capture-options-menu-completion.json",
+            "sha256": "5cc6a8a697bb6f2fcb468ef02cf2a76e9ad3f5da223682f1ca29288836ee66b3"
+          },
+          {
+            "path": "{out}/capture-options-numeric.json",
+            "sha256": "608a984491b1c8f501b42d24379ac70fb29a124e7557d42a9b609af8f4064aa5"
+          },
+          {
+            "path": "{out}/capture-options-overlay.json",
+            "sha256": "e651c3589a15b14f98f7693dfb215172382429bbb0a02953c921c7fe5391bc46"
+          },
+          {
+            "path": "{out}/capture-options-preview.json",
+            "sha256": "9714869c059c73ca48f4b525303cf07bf83193401a9e01a5c1c1b73d05aa96f5"
+          },
+          {
+            "path": "{out}/capture-options-settings.json",
+            "sha256": "f670776d0b563031d9a3b29e29ede8768a58c119ef35a9ab58e1214648e18617"
+          },
+          {
+            "path": "{out}/capture-options-viewport.json",
+            "sha256": "eb2016a7036e29206b99323c2cfa5e8353606308b0d340b33561611ea6a54024"
+          },
+          {
+            "path": "{out}/capture-options-volume.json",
+            "sha256": "7e720133b8f493b07fd671d6c3636d7bedaeb057efc3c770e29279f427839d8e"
+          }
+        ]
+      }
+    ],
+    "c-highres": [
+      {
+        "name": "c-highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/options-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-options-clicks.json",
+            "sha256": "06d6693189c0db0a8a7d121af0cd3bc251c4e1c7bd481c71032144ed61c8a000"
+          },
+          {
+            "path": "{out}/capture-options-close.json",
+            "sha256": "e30e09f9dffc4ad3aa88805a4e2e772fa7c266c0bda5c0c4e12326852f4af215"
+          },
+          {
+            "path": "{out}/capture-options-construction.json",
+            "sha256": "8c91640ffe180f958fefbd8cc699c8366e4707d28e73d35b17001b2baa67733d"
+          },
+          {
+            "path": "{out}/capture-options-menu-completion.json",
+            "sha256": "5cc6a8a697bb6f2fcb468ef02cf2a76e9ad3f5da223682f1ca29288836ee66b3"
+          },
+          {
+            "path": "{out}/capture-options-numeric.json",
+            "sha256": "608a984491b1c8f501b42d24379ac70fb29a124e7557d42a9b609af8f4064aa5"
+          },
+          {
+            "path": "{out}/capture-options-overlay.json",
+            "sha256": "e651c3589a15b14f98f7693dfb215172382429bbb0a02953c921c7fe5391bc46"
+          },
+          {
+            "path": "{out}/capture-options-preview.json",
+            "sha256": "9714869c059c73ca48f4b525303cf07bf83193401a9e01a5c1c1b73d05aa96f5"
+          },
+          {
+            "path": "{out}/capture-options-settings.json",
+            "sha256": "f670776d0b563031d9a3b29e29ede8768a58c119ef35a9ab58e1214648e18617"
+          },
+          {
+            "path": "{out}/capture-options-viewport.json",
+            "sha256": "eb2016a7036e29206b99323c2cfa5e8353606308b0d340b33561611ea6a54024"
+          },
+          {
+            "path": "{out}/capture-options-volume.json",
+            "sha256": "7e720133b8f493b07fd671d6c3636d7bedaeb057efc3c770e29279f427839d8e"
+          }
+        ]
+      }
+    ],
+    "c-affected": [
+      {
+        "name": "c-affected",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/options-affected-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-options-clicks.json",
+            "sha256": "06d6693189c0db0a8a7d121af0cd3bc251c4e1c7bd481c71032144ed61c8a000"
+          },
+          {
+            "path": "{out}/capture-options-close.json",
+            "sha256": "e30e09f9dffc4ad3aa88805a4e2e772fa7c266c0bda5c0c4e12326852f4af215"
+          },
+          {
+            "path": "{out}/capture-options-construction.json",
+            "sha256": "8c91640ffe180f958fefbd8cc699c8366e4707d28e73d35b17001b2baa67733d"
+          },
+          {
+            "path": "{out}/capture-options-menu-completion.json",
+            "sha256": "5cc6a8a697bb6f2fcb468ef02cf2a76e9ad3f5da223682f1ca29288836ee66b3"
+          },
+          {
+            "path": "{out}/capture-options-numeric.json",
+            "sha256": "608a984491b1c8f501b42d24379ac70fb29a124e7557d42a9b609af8f4064aa5"
+          },
+          {
+            "path": "{out}/capture-options-overlay.json",
+            "sha256": "e651c3589a15b14f98f7693dfb215172382429bbb0a02953c921c7fe5391bc46"
+          },
+          {
+            "path": "{out}/capture-options-preview.json",
+            "sha256": "9714869c059c73ca48f4b525303cf07bf83193401a9e01a5c1c1b73d05aa96f5"
+          },
+          {
+            "path": "{out}/capture-options-settings.json",
+            "sha256": "f670776d0b563031d9a3b29e29ede8768a58c119ef35a9ab58e1214648e18617"
+          },
+          {
+            "path": "{out}/capture-options-viewport.json",
+            "sha256": "eb2016a7036e29206b99323c2cfa5e8353606308b0d340b33561611ea6a54024"
+          },
+          {
+            "path": "{out}/capture-options-volume.json",
+            "sha256": "7e720133b8f493b07fd671d6c3636d7bedaeb057efc3c770e29279f427839d8e"
+          }
+        ]
+      }
+    ],
+    "native-focused": [
+      {
+        "name": "native-focused",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/options-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-options-clicks.json",
+            "sha256": "06d6693189c0db0a8a7d121af0cd3bc251c4e1c7bd481c71032144ed61c8a000"
+          },
+          {
+            "path": "{out}/capture-options-close.json",
+            "sha256": "e30e09f9dffc4ad3aa88805a4e2e772fa7c266c0bda5c0c4e12326852f4af215"
+          },
+          {
+            "path": "{out}/capture-options-construction.json",
+            "sha256": "8c91640ffe180f958fefbd8cc699c8366e4707d28e73d35b17001b2baa67733d"
+          },
+          {
+            "path": "{out}/capture-options-menu-completion.json",
+            "sha256": "5cc6a8a697bb6f2fcb468ef02cf2a76e9ad3f5da223682f1ca29288836ee66b3"
+          },
+          {
+            "path": "{out}/capture-options-numeric.json",
+            "sha256": "608a984491b1c8f501b42d24379ac70fb29a124e7557d42a9b609af8f4064aa5"
+          },
+          {
+            "path": "{out}/capture-options-overlay.json",
+            "sha256": "e651c3589a15b14f98f7693dfb215172382429bbb0a02953c921c7fe5391bc46"
+          },
+          {
+            "path": "{out}/capture-options-preview.json",
+            "sha256": "9714869c059c73ca48f4b525303cf07bf83193401a9e01a5c1c1b73d05aa96f5"
+          },
+          {
+            "path": "{out}/capture-options-settings.json",
+            "sha256": "f670776d0b563031d9a3b29e29ede8768a58c119ef35a9ab58e1214648e18617"
+          },
+          {
+            "path": "{out}/capture-options-viewport.json",
+            "sha256": "eb2016a7036e29206b99323c2cfa5e8353606308b0d340b33561611ea6a54024"
+          },
+          {
+            "path": "{out}/capture-options-volume.json",
+            "sha256": "7e720133b8f493b07fd671d6c3636d7bedaeb057efc3c770e29279f427839d8e"
+          }
+        ]
+      }
+    ],
+    "native-default": [
+      {
+        "name": "native-default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/options-affected-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-options-clicks.json",
+            "sha256": "06d6693189c0db0a8a7d121af0cd3bc251c4e1c7bd481c71032144ed61c8a000"
+          },
+          {
+            "path": "{out}/capture-options-close.json",
+            "sha256": "e30e09f9dffc4ad3aa88805a4e2e772fa7c266c0bda5c0c4e12326852f4af215"
+          },
+          {
+            "path": "{out}/capture-options-construction.json",
+            "sha256": "8c91640ffe180f958fefbd8cc699c8366e4707d28e73d35b17001b2baa67733d"
+          },
+          {
+            "path": "{out}/capture-options-menu-completion.json",
+            "sha256": "5cc6a8a697bb6f2fcb468ef02cf2a76e9ad3f5da223682f1ca29288836ee66b3"
+          },
+          {
+            "path": "{out}/capture-options-numeric.json",
+            "sha256": "608a984491b1c8f501b42d24379ac70fb29a124e7557d42a9b609af8f4064aa5"
+          },
+          {
+            "path": "{out}/capture-options-overlay.json",
+            "sha256": "e651c3589a15b14f98f7693dfb215172382429bbb0a02953c921c7fe5391bc46"
+          },
+          {
+            "path": "{out}/capture-options-preview.json",
+            "sha256": "9714869c059c73ca48f4b525303cf07bf83193401a9e01a5c1c1b73d05aa96f5"
+          },
+          {
+            "path": "{out}/capture-options-settings.json",
+            "sha256": "f670776d0b563031d9a3b29e29ede8768a58c119ef35a9ab58e1214648e18617"
+          },
+          {
+            "path": "{out}/capture-options-viewport.json",
+            "sha256": "eb2016a7036e29206b99323c2cfa5e8353606308b0d340b33561611ea6a54024"
+          },
+          {
+            "path": "{out}/capture-options-volume.json",
+            "sha256": "7e720133b8f493b07fd671d6c3636d7bedaeb057efc3c770e29279f427839d8e"
+          }
+        ]
+      }
+    ],
+    "native-server": [
+      {
+        "name": "native-server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/options-affected-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-options-clicks.json",
+            "sha256": "06d6693189c0db0a8a7d121af0cd3bc251c4e1c7bd481c71032144ed61c8a000"
+          },
+          {
+            "path": "{out}/capture-options-close.json",
+            "sha256": "e30e09f9dffc4ad3aa88805a4e2e772fa7c266c0bda5c0c4e12326852f4af215"
+          },
+          {
+            "path": "{out}/capture-options-construction.json",
+            "sha256": "8c91640ffe180f958fefbd8cc699c8366e4707d28e73d35b17001b2baa67733d"
+          },
+          {
+            "path": "{out}/capture-options-menu-completion.json",
+            "sha256": "5cc6a8a697bb6f2fcb468ef02cf2a76e9ad3f5da223682f1ca29288836ee66b3"
+          },
+          {
+            "path": "{out}/capture-options-numeric.json",
+            "sha256": "608a984491b1c8f501b42d24379ac70fb29a124e7557d42a9b609af8f4064aa5"
+          },
+          {
+            "path": "{out}/capture-options-overlay.json",
+            "sha256": "e651c3589a15b14f98f7693dfb215172382429bbb0a02953c921c7fe5391bc46"
+          },
+          {
+            "path": "{out}/capture-options-preview.json",
+            "sha256": "9714869c059c73ca48f4b525303cf07bf83193401a9e01a5c1c1b73d05aa96f5"
+          },
+          {
+            "path": "{out}/capture-options-settings.json",
+            "sha256": "f670776d0b563031d9a3b29e29ede8768a58c119ef35a9ab58e1214648e18617"
+          },
+          {
+            "path": "{out}/capture-options-viewport.json",
+            "sha256": "eb2016a7036e29206b99323c2cfa5e8353606308b0d340b33561611ea6a54024"
+          },
+          {
+            "path": "{out}/capture-options-volume.json",
+            "sha256": "7e720133b8f493b07fd671d6c3636d7bedaeb057efc3c770e29279f427839d8e"
+          }
+        ]
+      }
+    ],
+    "native-highres": [
+      {
+        "name": "native-highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/options-affected-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-options-clicks.json",
+            "sha256": "06d6693189c0db0a8a7d121af0cd3bc251c4e1c7bd481c71032144ed61c8a000"
+          },
+          {
+            "path": "{out}/capture-options-close.json",
+            "sha256": "e30e09f9dffc4ad3aa88805a4e2e772fa7c266c0bda5c0c4e12326852f4af215"
+          },
+          {
+            "path": "{out}/capture-options-construction.json",
+            "sha256": "8c91640ffe180f958fefbd8cc699c8366e4707d28e73d35b17001b2baa67733d"
+          },
+          {
+            "path": "{out}/capture-options-menu-completion.json",
+            "sha256": "5cc6a8a697bb6f2fcb468ef02cf2a76e9ad3f5da223682f1ca29288836ee66b3"
+          },
+          {
+            "path": "{out}/capture-options-numeric.json",
+            "sha256": "608a984491b1c8f501b42d24379ac70fb29a124e7557d42a9b609af8f4064aa5"
+          },
+          {
+            "path": "{out}/capture-options-overlay.json",
+            "sha256": "e651c3589a15b14f98f7693dfb215172382429bbb0a02953c921c7fe5391bc46"
+          },
+          {
+            "path": "{out}/capture-options-preview.json",
+            "sha256": "9714869c059c73ca48f4b525303cf07bf83193401a9e01a5c1c1b73d05aa96f5"
+          },
+          {
+            "path": "{out}/capture-options-settings.json",
+            "sha256": "f670776d0b563031d9a3b29e29ede8768a58c119ef35a9ab58e1214648e18617"
+          },
+          {
+            "path": "{out}/capture-options-viewport.json",
+            "sha256": "eb2016a7036e29206b99323c2cfa5e8353606308b0d340b33561611ea6a54024"
+          },
+          {
+            "path": "{out}/capture-options-volume.json",
+            "sha256": "7e720133b8f493b07fd671d6c3636d7bedaeb057efc3c770e29279f427839d8e"
+          }
+        ]
+      }
+    ],
+    "c-menu-develop": [
+      {
+        "name": "client-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/client",
+          "./cmd/opennox"
+        ]
+      },
+      {
+        "name": "menu-capture",
+        "command": [
+          "env",
+          "NOX_DEV=true",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_UI_SCENARIO={root}/build/port-options/menu-develop.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=C options with checkbox dispatch correction",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "options-menu-develop",
+          "capture"
+        ]
+      }
+    ],
+    "c-gameplay": [
+      {
+        "name": "client-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/client",
+          "./cmd/opennox"
+        ]
+      },
+      {
+        "name": "options-c",
+        "command": [
+          "env",
+          "NOX_DEV=true",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/options-panels.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=C options with checkbox dispatch correction",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "options-c",
+          "capture"
+        ]
+      },
+      {
+        "name": "options-c-repeat",
+        "command": [
+          "env",
+          "NOX_DEV=true",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/options-panels.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=C options with checkbox dispatch correction",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "options-c-repeat",
+          "compare",
+          "{root}/build/baseline/runs/options-c"
+        ]
+      }
+    ],
+    "production": [
+      {
+        "name": "compressor-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/options-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      },
+      {
+        "name": "flat-gameplay",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/production/bin/opennox",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/tile-raster-flat.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Options panels in Go",
+          "OPENNOX_REQUIRE_MAP_DECOMPRESSION=1",
+          "OPENNOX_COMPRESS_MAPS=[\"war01a/War01A.map\"]",
+          "OPENNOX_MAP_COMPRESSOR={out}/map-compress",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "options-flat-native",
+          "compare",
+          "{root}/build/baseline/runs/bindings-flat-native"
+        ]
+      }
+    ]
+  },
+  "production": {
+    "description": "Main-menu and in-game options panels in Go",
+    "assets": "build/assets/extracted/drive_c/Nox",
+    "known_suite": "build/port-rule-command/full-suite.jsonl",
+    "scenario_runner": "tools/porting/run_scenario.py",
+    "retained": [
+      "nox_game_showOptions_4AA6B0",
+      "sub_4AD9B0",
+      "sub_4ADA40",
+      "sub_4AB0C0"
+    ],
+    "retired": [
+      "sub_4AAA70",
+      "sub_4AABE0",
+      "nox_game_initOptionsInGame_4ADAD0",
+      "sub_4ADEF0",
+      "nox_xxx_windowOptionsProc_4ADF30",
+      "sub_4AE3B0",
+      "sub_4AE3D0",
+      "sub_4AA650"
+    ],
+    "scenarios": [
+      {
+        "name": "options-native",
+        "reference": "build/baseline/runs/options-c",
+        "scenario": "docs/porting/options-panels.yaml",
+        "env": {
+          "NOX_DEV": "true"
+        }
+      }
+    ]
+  }
+}

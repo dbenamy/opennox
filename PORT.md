@@ -17,6 +17,8 @@
 The revised process is adopted: continue successive qualified batches without a
 scheduled pause. The binding-editor conversion is qualified, removing **755 C
 lines** and leaving **62,571 physical lines in 83 files**, with zero reference C.
+The later options checkbox prerequisite removes 96 C plumbing lines: current
+**62,475 / 83**, still zero reference C.
 All **7,425 frozen records / nine binding groups** match. The full accumulated
 milestone passes **1,151 selected tests in default/highres and 1,147 in server**,
 with only the existing opt-in diagnostic skipped. Three production builds and
@@ -26,8 +28,11 @@ with exact map regeneration.
 
 See [BINDINGS.md](docs/porting/BINDINGS.md) for the prompt prerequisite correction,
 preserved edge cases, rendering follow-up and evidence. The next connected batch
-is the main-menu/in-game options panels, approximately 889 C lines across twelve
-functions. It can use affected checks after this accumulated milestone.
+is the main-menu/in-game options panels: twelve functions, now **793 C lines**
+after the checkbox prerequisite fix. Its corrected C baseline qualifies **3,130
+frozen records / ten groups**, all 56 affected checks and 41 repeated gameplay
+frames. Translation is next. See [OPTIONS.md](docs/porting/OPTIONS.md).
+It can use affected checks after the binding accumulated milestone.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. Confident reversible
 decisions remain recorded for review.
 
