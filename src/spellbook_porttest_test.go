@@ -42,7 +42,7 @@ func TestSpellbookInitialization(t *testing.T) {
 		}
 		rows = append(rows, o.bookSnapshot(o.missing, result))
 	}
-	spellbookCapture(t, "initialization", rows, "")
+	spellbookCapture(t, "initialization", rows, "e814a31a3954dd373781f654266f8d2b4d55cb75ec3f89868a16afcf5acb6eeb")
 }
 func TestSpellbookPathBuffer(t *testing.T) {
 	o := newSpellbookOwner(t)
@@ -77,7 +77,7 @@ func TestSpellbookPathBuffer(t *testing.T) {
 			rows = append(rows, o.bookSnapshot(fmt.Sprintf("path-%d-%d", count, caseID), got))
 		}
 	}
-	spellbookCapture(t, "path", rows, "")
+	spellbookCapture(t, "path", rows, "4babc9f66cb15e0efe1839e97ce8a6fbde59112d244c62701f77778ac1f0612e")
 }
 func TestSpellbookPalette(t *testing.T) {
 	o := newSpellbookOwner(t)
@@ -85,5 +85,5 @@ func TestSpellbookPalette(t *testing.T) {
 	if got := o.bookCall("nox_xxx_bookSetColor_45AC40"); got == 0 {
 		t.Fatal("book palette")
 	}
-	spellbookCapture(t, "palette", []spellbookResult{o.bookSnapshot("palette", 0)}, "")
+	spellbookCapture(t, "palette", []spellbookResult{o.bookSnapshot("palette", 0)}, "da8e6beca619d11d3d611a6edfbae1e88f6dc235c8cbcc9373f0f03b6fceb61a")
 }

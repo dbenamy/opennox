@@ -1130,3 +1130,16 @@ units; overlong names have no valid C-buffer oracle. Native contracts cover
 lengths 0/1/9/10/11/128. Keep the shared C-compatible allocation/free ownership.
 Use the full accumulated corpus as this shared batch's all-target behavior gate,
 in place of a redundant affected-only sweep; retain production and replay gates.
+
+## Spellbook baseline — preserved behavior and replay preparation
+
+Preserve the original quest-mode difference between guide-icon drawing and
+pressing: drawing requires a known summon spell; pressing permits dragging
+without it. This is captured, not corrected, during the mechanical port.
+A fresh warrior has an empty book, so the gameplay scenario uses the existing
+`cheat spells` developer game command to grant its five abilities. `NOX_DEV=true`
+is scoped to this scenario in production qualification. No production fixture
+backdoor or changes to the shipped game data are needed. Key taps use one frame;
+ASCII console text uses individual key events. Pointer inputs are in the 1280x960
+window coordinate space, scaled to the 1024x768 gameplay renderer.
+See [SPELLBOOK.md](SPELLBOOK.md) for frozen tests and rejected replay evidence.

@@ -1,0 +1,90 @@
+{
+  "binary_sha256": "cf4c2b59ca508dee17e5980a6862c5c301ff685242271d67909b941ea4bc12ac",
+  "scenario": "docs/porting/spellbook-warrior.yaml",
+  "scenario_sha256": "a5d5d944c2dcaa16b3e0c5b2e3ab07eacc29c0c267f3500ddfd17f1132ebb149",
+  "env": {
+    "NOX_DEV": "true"
+  },
+  "reference": "build/baseline/runs/spellbook-scaled-c",
+  "repeat": "build/baseline/runs/spellbook-scaled-c-repeat",
+  "capture_seconds": 55.20244548399933,
+  "repeat_seconds": 55.34052392398007,
+  "frames": [
+    {
+      "name": "after_walk.png",
+      "sha256": "293118038352e4e693b65b7e7ceeaba0c632085e24447607e439f823880e170c"
+    },
+    {
+      "name": "book_closed.png",
+      "sha256": "7ef91d9f6132d713f06bb730758f6ad889d2dd295793eadf0c1cf68fc5a2f566"
+    },
+    {
+      "name": "book_contents.png",
+      "sha256": "31b80d5f7a9ee2451a4d780e955ce22b4dfc6cb9c9e5952805cf2ca09a3c7f3e"
+    },
+    {
+      "name": "book_contents_return.png",
+      "sha256": "fe45b618ab9adda547f93b0bfefc173acd73f84e43c10a79d81102ac1c407db2"
+    },
+    {
+      "name": "book_detail.png",
+      "sha256": "b8ed800aab5988e22fbb1f37cd18790dca02de3029f62357f3b61fbd10d01eab"
+    },
+    {
+      "name": "book_next.png",
+      "sha256": "7bb549a07ff3b1d19bcee2d9e94f16ada85ea4f4ea37833b790e0a34ef0c0b0b"
+    },
+    {
+      "name": "book_previous.png",
+      "sha256": "d8e246e55712ee954a336ffc03076af906d4f40db9eafc79ffbcc3cdc0cf9b24"
+    },
+    {
+      "name": "book_turn_early.png",
+      "sha256": "2fc1ff6c40f647263ff1a1be0409926cb99aa58246b081680a714dbfb3c98184"
+    },
+    {
+      "name": "book_turn_middle.png",
+      "sha256": "6fefc7d9dd98e0d13485069c8307025bf91101ba482d4523e4d0352e05d596d2"
+    },
+    {
+      "name": "chapter_frame_1.png",
+      "sha256": "cef1b1c643faf4c87c4e68ce6b32868a3e7dea3ccdcbb98af2b6b29c6e136739"
+    },
+    {
+      "name": "chapter_frame_10.png",
+      "sha256": "ea5ce849af24ba92d96a9f6edeec255eeaade7e70404fcf60ab9df04c33cfa92"
+    },
+    {
+      "name": "chapter_frame_15.png",
+      "sha256": "72c25b56a5e75c24591e424aa0cf549d4dd29c7c0cc48b9b6762d46c3b91fe66"
+    },
+    {
+      "name": "chapter_frame_20.png",
+      "sha256": "7357a4bd5c1659950705c88467d44f7a145dd716a56c974c9845ad2fca06c6ba"
+    },
+    {
+      "name": "chapter_frame_30.png",
+      "sha256": "dd887dd8af880cb99f57a95c746c17fe7da7c9d693d83ced9d288a054fd77ae7"
+    },
+    {
+      "name": "chapter_frame_5.png",
+      "sha256": "dc95dfdcd7f63eaf6298f79455772e3581df13e8134e8710e05c460b797a2938"
+    },
+    {
+      "name": "console_command.png",
+      "sha256": "dff1db3d0673749d5cd4addd9ba7aadd7404a4661218ed8a2d21ea0a7168ba90"
+    },
+    {
+      "name": "console_open.png",
+      "sha256": "6f1d0199892e1bad0cd588241ea996c6eea1fe57488caad11feb2e974ec8dc7a"
+    },
+    {
+      "name": "console_result.png",
+      "sha256": "5d88a1ec2f5a932419d4838d599c627948fbae75efc9f05f50dd11bcc749274c"
+    },
+    {
+      "name": "gameplay.png",
+      "sha256": "67a23bcf3a5c714ea6eb06a94e5cdce82cb8497f9061253f04dfd85750512358"
+    }
+  ]
+}

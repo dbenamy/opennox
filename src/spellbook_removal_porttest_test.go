@@ -120,5 +120,5 @@ func TestSpellbookKnowledgeRemoval(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "removal", rows, "")
+	spellbookCapture(t, "removal", rows, "7109d59cfb23e1967575923d2d671c40d714d3dbd4370603c30c6db6213fa6e2")
 }

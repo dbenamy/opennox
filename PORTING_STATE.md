@@ -23,22 +23,24 @@ milestone-final-{default,server,highres}` and `production-qualified`; all reader
 joined. See [LISTS.md](docs/porting/LISTS.md) for timings and the rejected initial
 multiline-pattern launches, which ran no tests and remain preserved.
 
-Next: [spellbook UI](docs/porting/SPELLBOOK.md), a connected 36-function / 1,745-line
-scope spanning GAME2.c and client__gui__guibook.c. The first C-fixture checkpoint
-is pushed as `751e8fab`. Further baseline development passes fourteen roots with
-no skips (`build/port-book/c-tabs`, 41.689 seconds): guide-family rewards, slot
-removal, mouse selection, tabs and immediate quickbar addition are now included.
-Readers are joined. Captures remain unfrozen and production C is unchanged.
-Next: continuous addition animation, remaining icon/visibility/reward callbacks,
-original-asset rendering/replay, then independent repeats/all-target C baseline.
+Active: [spellbook UI](docs/porting/SPELLBOOK.md), 36 functions / 1,745 C block
+lines. Original-C baseline now qualifies all 23 roots / 4,214 frozen records in
+default, repeat, server and highres (`build/port-book/c-qualified`, 286.574 seconds;
+source unchanged, no skips). Production C is unchanged. All readers are joined.
 
-The immediate-addition fixture uses the actual quickbar initializer, Hermite
-coefficients and screen-particle pool. It checks all width speed tiers, duplicates,
-full bars and special-family exclusions. Snapshots include drag state, GUI refresh,
-text/pixels and the identified quickbar owner pointers stored in window word92.
-The first renderer run required a missing real spell-owner server backlink and
-onscreen placement for tiny fixture images; neither was a production correction.
-All installed ignored facade/guide/removal/click/tab/quickbar drafts are stale.
+The real-asset tests cover nonempty pages and complete turns. The final gameplay
+reference `build/baseline/runs/spellbook-scaled-c` visibly exercises contents,
+details and navigation; `spellbook-scaled-c-repeat` reproduces all frames and the
+regenerated map exactly. Its existing developer game command seeds warrior
+abilities, scoped with `NOX_DEV=true` in the manifest. See the subsystem report
+for rejected earlier replay attempts and the documented coordinate/key contracts.
+
+Next: translate the connected spellbook batch, retain 14 actual C-call interfaces
+plus 3 existing callback bridges, retire 19 private interfaces, then run focused,
+affected and production qualification. The frozen C commit is the recovery oracle.
+All earlier ignored spellbook generators/drafts are stale. New native-state drafts
+under `build/port-book/` are uninstalled and uncompiled implementation sketches;
+review before using. No production implementation has been installed yet.
 
 Continue under PORT.md without a scheduled pause. Preserve original assets/archive.
 All applied list/catalog/compressor scripts are stale; do not rerun them.

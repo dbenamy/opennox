@@ -129,7 +129,7 @@ def main():
             name = scenario['name']
             result = run(name, [sys.executable, str(ROOT/spec.get('scenario_runner','build/port-client-shop-ui/run-scenario.py')),
                                name, 'compare', str(ROOT/scenario['reference'])],
-                         env=dict(os.environ, OPENNOX_COMPRESS_MAPS=json.dumps(spec.get('compress_maps',[])), OPENNOX_MAP_COMPRESSOR=str(ROOT/spec.get('map_compressor','build/port-map-decompression/map-compress')), OPENNOX_REQUIRE_MAP_DECOMPRESSION='1' if spec.get('force_map_decompression') else '0', OPENNOX_DISPLAY_BINARY=str(out/'bin/opennox'),
+                         env=dict(os.environ, **scenario.get('env', {}), OPENNOX_COMPRESS_MAPS=json.dumps(spec.get('compress_maps',[])), OPENNOX_MAP_COMPRESSOR=str(ROOT/spec.get('map_compressor','build/port-map-decompression/map-compress')), OPENNOX_REQUIRE_MAP_DECOMPRESSION='1' if spec.get('force_map_decompression') else '0', OPENNOX_DISPLAY_BINARY=str(out/'bin/opennox'),
                                   OPENNOX_DISPLAY_IMPLEMENTATION=spec['description'],
                                   OPENNOX_UI_SCENARIO=str(ROOT/scenario['scenario'])))
             report['scenarios'][name] = result

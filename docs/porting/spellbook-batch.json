@@ -1,0 +1,1025 @@
+{
+  "batch": "spellbook",
+  "env": {
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_CAPTURE": "{out}/capture",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
+  "phases": {
+    "c": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/spellbook-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-ability-removal.json",
+            "sha256": "faa69b3a9daf912bb23c7ab25b32172ccc23a7079ee1589bb7a3503dc8af46af"
+          },
+          {
+            "path": "{out}/capture-animation-frames.json",
+            "sha256": "d134eee7d7194447696a8b210bf73897152457466e25fb75933b8b345671b01d"
+          },
+          {
+            "path": "{out}/capture-asset-pages.json",
+            "sha256": "aab7dc659cb46b961797c2661d6c6279761120cdc35582f4415584b3a5a29cdc"
+          },
+          {
+            "path": "{out}/capture-clicks.json",
+            "sha256": "fec3eae1cf267d9ad253bf4819a05bf98e414c12ad4f2507f9b7d27ba607ec6c"
+          },
+          {
+            "path": "{out}/capture-guide-knowledge.json",
+            "sha256": "41cbab5370d0016108127726202c919ca2736572537f4789c57476bacb6bb431"
+          },
+          {
+            "path": "{out}/capture-icons-tooltips.json",
+            "sha256": "4620f33300afa75b363e009048b010db88a549fef9b68d385d51ed473f09c1b8"
+          },
+          {
+            "path": "{out}/capture-immediate-addition.json",
+            "sha256": "597f41128ade2b3812f0a169bf4cffcf70f538cbed07fef48a2184e4d4303c5c"
+          },
+          {
+            "path": "{out}/capture-initialization.json",
+            "sha256": "e814a31a3954dd373781f654266f8d2b4d55cb75ec3f89868a16afcf5acb6eeb"
+          },
+          {
+            "path": "{out}/capture-metadata-lists.json",
+            "sha256": "9f76a37a072dcf0d4d4f217e9155b1758a6062c240cc62bae5448eeb20dcbbd9"
+          },
+          {
+            "path": "{out}/capture-name-compare.json",
+            "sha256": "d377183956fc746b21e47de689c0c8aab363edfd87bd1c78bd03e2f136c91693"
+          },
+          {
+            "path": "{out}/capture-pages.json",
+            "sha256": "0ee40a5e4a73ca8bdb7844497213a7d941cfec30396462d2c4e4993e4bcce8d7"
+          },
+          {
+            "path": "{out}/capture-palette.json",
+            "sha256": "da8e6beca619d11d3d611a6edfbae1e88f6dc235c8cbcc9373f0f03b6fceb61a"
+          },
+          {
+            "path": "{out}/capture-path.json",
+            "sha256": "4babc9f66cb15e0efe1839e97ce8a6fbde59112d244c62701f77778ac1f0612e"
+          },
+          {
+            "path": "{out}/capture-position-controls.json",
+            "sha256": "84c6d01b3ff8723634c1f29cfc82fc7625ad49e57f10f3c106c6780c7419309f"
+          },
+          {
+            "path": "{out}/capture-removal.json",
+            "sha256": "7109d59cfb23e1967575923d2d671c40d714d3dbd4370603c30c6db6213fa6e2"
+          },
+          {
+            "path": "{out}/capture-render.json",
+            "sha256": "e09d57ec73188ed7cb8c4e81bcbd736b5da2be8268b9df78362241a41b9cd37a"
+          },
+          {
+            "path": "{out}/capture-reward-presentation.json",
+            "sha256": "9a8999bbd4fafd2f203f7ba506ae1cf62e8a11fa3fb4198feb2c4b9384670134"
+          },
+          {
+            "path": "{out}/capture-show-toggle.json",
+            "sha256": "c8ac97be08d31ab4c7480b33c16f166d8a0f6d1c111c18e31b8c86a546422e49"
+          },
+          {
+            "path": "{out}/capture-spell-knowledge.json",
+            "sha256": "c03cf5fc9649ff34021a66f171c18a90ffea75afb568d222963621fb9b70a2e3"
+          },
+          {
+            "path": "{out}/capture-spell-lists.json",
+            "sha256": "bb597eedcf6688ce61a798eda6e23a41bac04e8a9aae49c25241a7bc0b19c915"
+          },
+          {
+            "path": "{out}/capture-tabs.json",
+            "sha256": "b72ff2a8a020c16cc916d175671340d42ccba75f8ea86018991aa4f52b36c0e3"
+          },
+          {
+            "path": "{out}/capture-trap-reward.json",
+            "sha256": "29207f4112ef3aec75695a466de5ece07a6e4a8e7464552d041c9f34a191f839"
+          },
+          {
+            "path": "{out}/capture-visibility.json",
+            "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          }
+        ]
+      },
+      {
+        "name": "repeat",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/spellbook-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/repeat.jsonl",
+          "--result",
+          "{out}/repeat-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-ability-removal.json",
+            "sha256": "faa69b3a9daf912bb23c7ab25b32172ccc23a7079ee1589bb7a3503dc8af46af"
+          },
+          {
+            "path": "{out}/capture-animation-frames.json",
+            "sha256": "d134eee7d7194447696a8b210bf73897152457466e25fb75933b8b345671b01d"
+          },
+          {
+            "path": "{out}/capture-asset-pages.json",
+            "sha256": "aab7dc659cb46b961797c2661d6c6279761120cdc35582f4415584b3a5a29cdc"
+          },
+          {
+            "path": "{out}/capture-clicks.json",
+            "sha256": "fec3eae1cf267d9ad253bf4819a05bf98e414c12ad4f2507f9b7d27ba607ec6c"
+          },
+          {
+            "path": "{out}/capture-guide-knowledge.json",
+            "sha256": "41cbab5370d0016108127726202c919ca2736572537f4789c57476bacb6bb431"
+          },
+          {
+            "path": "{out}/capture-icons-tooltips.json",
+            "sha256": "4620f33300afa75b363e009048b010db88a549fef9b68d385d51ed473f09c1b8"
+          },
+          {
+            "path": "{out}/capture-immediate-addition.json",
+            "sha256": "597f41128ade2b3812f0a169bf4cffcf70f538cbed07fef48a2184e4d4303c5c"
+          },
+          {
+            "path": "{out}/capture-initialization.json",
+            "sha256": "e814a31a3954dd373781f654266f8d2b4d55cb75ec3f89868a16afcf5acb6eeb"
+          },
+          {
+            "path": "{out}/capture-metadata-lists.json",
+            "sha256": "9f76a37a072dcf0d4d4f217e9155b1758a6062c240cc62bae5448eeb20dcbbd9"
+          },
+          {
+            "path": "{out}/capture-name-compare.json",
+            "sha256": "d377183956fc746b21e47de689c0c8aab363edfd87bd1c78bd03e2f136c91693"
+          },
+          {
+            "path": "{out}/capture-pages.json",
+            "sha256": "0ee40a5e4a73ca8bdb7844497213a7d941cfec30396462d2c4e4993e4bcce8d7"
+          },
+          {
+            "path": "{out}/capture-palette.json",
+            "sha256": "da8e6beca619d11d3d611a6edfbae1e88f6dc235c8cbcc9373f0f03b6fceb61a"
+          },
+          {
+            "path": "{out}/capture-path.json",
+            "sha256": "4babc9f66cb15e0efe1839e97ce8a6fbde59112d244c62701f77778ac1f0612e"
+          },
+          {
+            "path": "{out}/capture-position-controls.json",
+            "sha256": "84c6d01b3ff8723634c1f29cfc82fc7625ad49e57f10f3c106c6780c7419309f"
+          },
+          {
+            "path": "{out}/capture-removal.json",
+            "sha256": "7109d59cfb23e1967575923d2d671c40d714d3dbd4370603c30c6db6213fa6e2"
+          },
+          {
+            "path": "{out}/capture-render.json",
+            "sha256": "e09d57ec73188ed7cb8c4e81bcbd736b5da2be8268b9df78362241a41b9cd37a"
+          },
+          {
+            "path": "{out}/capture-reward-presentation.json",
+            "sha256": "9a8999bbd4fafd2f203f7ba506ae1cf62e8a11fa3fb4198feb2c4b9384670134"
+          },
+          {
+            "path": "{out}/capture-show-toggle.json",
+            "sha256": "c8ac97be08d31ab4c7480b33c16f166d8a0f6d1c111c18e31b8c86a546422e49"
+          },
+          {
+            "path": "{out}/capture-spell-knowledge.json",
+            "sha256": "c03cf5fc9649ff34021a66f171c18a90ffea75afb568d222963621fb9b70a2e3"
+          },
+          {
+            "path": "{out}/capture-spell-lists.json",
+            "sha256": "bb597eedcf6688ce61a798eda6e23a41bac04e8a9aae49c25241a7bc0b19c915"
+          },
+          {
+            "path": "{out}/capture-tabs.json",
+            "sha256": "b72ff2a8a020c16cc916d175671340d42ccba75f8ea86018991aa4f52b36c0e3"
+          },
+          {
+            "path": "{out}/capture-trap-reward.json",
+            "sha256": "29207f4112ef3aec75695a466de5ece07a6e4a8e7464552d041c9f34a191f839"
+          },
+          {
+            "path": "{out}/capture-visibility.json",
+            "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          }
+        ]
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/spellbook-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-ability-removal.json",
+            "sha256": "faa69b3a9daf912bb23c7ab25b32172ccc23a7079ee1589bb7a3503dc8af46af"
+          },
+          {
+            "path": "{out}/capture-animation-frames.json",
+            "sha256": "d134eee7d7194447696a8b210bf73897152457466e25fb75933b8b345671b01d"
+          },
+          {
+            "path": "{out}/capture-asset-pages.json",
+            "sha256": "aab7dc659cb46b961797c2661d6c6279761120cdc35582f4415584b3a5a29cdc"
+          },
+          {
+            "path": "{out}/capture-clicks.json",
+            "sha256": "fec3eae1cf267d9ad253bf4819a05bf98e414c12ad4f2507f9b7d27ba607ec6c"
+          },
+          {
+            "path": "{out}/capture-guide-knowledge.json",
+            "sha256": "41cbab5370d0016108127726202c919ca2736572537f4789c57476bacb6bb431"
+          },
+          {
+            "path": "{out}/capture-icons-tooltips.json",
+            "sha256": "4620f33300afa75b363e009048b010db88a549fef9b68d385d51ed473f09c1b8"
+          },
+          {
+            "path": "{out}/capture-immediate-addition.json",
+            "sha256": "597f41128ade2b3812f0a169bf4cffcf70f538cbed07fef48a2184e4d4303c5c"
+          },
+          {
+            "path": "{out}/capture-initialization.json",
+            "sha256": "e814a31a3954dd373781f654266f8d2b4d55cb75ec3f89868a16afcf5acb6eeb"
+          },
+          {
+            "path": "{out}/capture-metadata-lists.json",
+            "sha256": "9f76a37a072dcf0d4d4f217e9155b1758a6062c240cc62bae5448eeb20dcbbd9"
+          },
+          {
+            "path": "{out}/capture-name-compare.json",
+            "sha256": "d377183956fc746b21e47de689c0c8aab363edfd87bd1c78bd03e2f136c91693"
+          },
+          {
+            "path": "{out}/capture-pages.json",
+            "sha256": "0ee40a5e4a73ca8bdb7844497213a7d941cfec30396462d2c4e4993e4bcce8d7"
+          },
+          {
+            "path": "{out}/capture-palette.json",
+            "sha256": "da8e6beca619d11d3d611a6edfbae1e88f6dc235c8cbcc9373f0f03b6fceb61a"
+          },
+          {
+            "path": "{out}/capture-path.json",
+            "sha256": "4babc9f66cb15e0efe1839e97ce8a6fbde59112d244c62701f77778ac1f0612e"
+          },
+          {
+            "path": "{out}/capture-position-controls.json",
+            "sha256": "84c6d01b3ff8723634c1f29cfc82fc7625ad49e57f10f3c106c6780c7419309f"
+          },
+          {
+            "path": "{out}/capture-removal.json",
+            "sha256": "7109d59cfb23e1967575923d2d671c40d714d3dbd4370603c30c6db6213fa6e2"
+          },
+          {
+            "path": "{out}/capture-render.json",
+            "sha256": "e09d57ec73188ed7cb8c4e81bcbd736b5da2be8268b9df78362241a41b9cd37a"
+          },
+          {
+            "path": "{out}/capture-reward-presentation.json",
+            "sha256": "9a8999bbd4fafd2f203f7ba506ae1cf62e8a11fa3fb4198feb2c4b9384670134"
+          },
+          {
+            "path": "{out}/capture-show-toggle.json",
+            "sha256": "c8ac97be08d31ab4c7480b33c16f166d8a0f6d1c111c18e31b8c86a546422e49"
+          },
+          {
+            "path": "{out}/capture-spell-knowledge.json",
+            "sha256": "c03cf5fc9649ff34021a66f171c18a90ffea75afb568d222963621fb9b70a2e3"
+          },
+          {
+            "path": "{out}/capture-spell-lists.json",
+            "sha256": "bb597eedcf6688ce61a798eda6e23a41bac04e8a9aae49c25241a7bc0b19c915"
+          },
+          {
+            "path": "{out}/capture-tabs.json",
+            "sha256": "b72ff2a8a020c16cc916d175671340d42ccba75f8ea86018991aa4f52b36c0e3"
+          },
+          {
+            "path": "{out}/capture-trap-reward.json",
+            "sha256": "29207f4112ef3aec75695a466de5ece07a6e4a8e7464552d041c9f34a191f839"
+          },
+          {
+            "path": "{out}/capture-visibility.json",
+            "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          }
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/spellbook-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-ability-removal.json",
+            "sha256": "faa69b3a9daf912bb23c7ab25b32172ccc23a7079ee1589bb7a3503dc8af46af"
+          },
+          {
+            "path": "{out}/capture-animation-frames.json",
+            "sha256": "d134eee7d7194447696a8b210bf73897152457466e25fb75933b8b345671b01d"
+          },
+          {
+            "path": "{out}/capture-asset-pages.json",
+            "sha256": "aab7dc659cb46b961797c2661d6c6279761120cdc35582f4415584b3a5a29cdc"
+          },
+          {
+            "path": "{out}/capture-clicks.json",
+            "sha256": "fec3eae1cf267d9ad253bf4819a05bf98e414c12ad4f2507f9b7d27ba607ec6c"
+          },
+          {
+            "path": "{out}/capture-guide-knowledge.json",
+            "sha256": "41cbab5370d0016108127726202c919ca2736572537f4789c57476bacb6bb431"
+          },
+          {
+            "path": "{out}/capture-icons-tooltips.json",
+            "sha256": "4620f33300afa75b363e009048b010db88a549fef9b68d385d51ed473f09c1b8"
+          },
+          {
+            "path": "{out}/capture-immediate-addition.json",
+            "sha256": "597f41128ade2b3812f0a169bf4cffcf70f538cbed07fef48a2184e4d4303c5c"
+          },
+          {
+            "path": "{out}/capture-initialization.json",
+            "sha256": "e814a31a3954dd373781f654266f8d2b4d55cb75ec3f89868a16afcf5acb6eeb"
+          },
+          {
+            "path": "{out}/capture-metadata-lists.json",
+            "sha256": "9f76a37a072dcf0d4d4f217e9155b1758a6062c240cc62bae5448eeb20dcbbd9"
+          },
+          {
+            "path": "{out}/capture-name-compare.json",
+            "sha256": "d377183956fc746b21e47de689c0c8aab363edfd87bd1c78bd03e2f136c91693"
+          },
+          {
+            "path": "{out}/capture-pages.json",
+            "sha256": "0ee40a5e4a73ca8bdb7844497213a7d941cfec30396462d2c4e4993e4bcce8d7"
+          },
+          {
+            "path": "{out}/capture-palette.json",
+            "sha256": "da8e6beca619d11d3d611a6edfbae1e88f6dc235c8cbcc9373f0f03b6fceb61a"
+          },
+          {
+            "path": "{out}/capture-path.json",
+            "sha256": "4babc9f66cb15e0efe1839e97ce8a6fbde59112d244c62701f77778ac1f0612e"
+          },
+          {
+            "path": "{out}/capture-position-controls.json",
+            "sha256": "84c6d01b3ff8723634c1f29cfc82fc7625ad49e57f10f3c106c6780c7419309f"
+          },
+          {
+            "path": "{out}/capture-removal.json",
+            "sha256": "7109d59cfb23e1967575923d2d671c40d714d3dbd4370603c30c6db6213fa6e2"
+          },
+          {
+            "path": "{out}/capture-render.json",
+            "sha256": "e09d57ec73188ed7cb8c4e81bcbd736b5da2be8268b9df78362241a41b9cd37a"
+          },
+          {
+            "path": "{out}/capture-reward-presentation.json",
+            "sha256": "9a8999bbd4fafd2f203f7ba506ae1cf62e8a11fa3fb4198feb2c4b9384670134"
+          },
+          {
+            "path": "{out}/capture-show-toggle.json",
+            "sha256": "c8ac97be08d31ab4c7480b33c16f166d8a0f6d1c111c18e31b8c86a546422e49"
+          },
+          {
+            "path": "{out}/capture-spell-knowledge.json",
+            "sha256": "c03cf5fc9649ff34021a66f171c18a90ffea75afb568d222963621fb9b70a2e3"
+          },
+          {
+            "path": "{out}/capture-spell-lists.json",
+            "sha256": "bb597eedcf6688ce61a798eda6e23a41bac04e8a9aae49c25241a7bc0b19c915"
+          },
+          {
+            "path": "{out}/capture-tabs.json",
+            "sha256": "b72ff2a8a020c16cc916d175671340d42ccba75f8ea86018991aa4f52b36c0e3"
+          },
+          {
+            "path": "{out}/capture-trap-reward.json",
+            "sha256": "29207f4112ef3aec75695a466de5ece07a6e4a8e7464552d041c9f34a191f839"
+          },
+          {
+            "path": "{out}/capture-visibility.json",
+            "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          }
+        ]
+      }
+    ],
+    "focused": [
+      {
+        "name": "focused",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/spellbook-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/focused.jsonl",
+          "--result",
+          "{out}/focused-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-ability-removal.json",
+            "sha256": "faa69b3a9daf912bb23c7ab25b32172ccc23a7079ee1589bb7a3503dc8af46af"
+          },
+          {
+            "path": "{out}/capture-animation-frames.json",
+            "sha256": "d134eee7d7194447696a8b210bf73897152457466e25fb75933b8b345671b01d"
+          },
+          {
+            "path": "{out}/capture-asset-pages.json",
+            "sha256": "aab7dc659cb46b961797c2661d6c6279761120cdc35582f4415584b3a5a29cdc"
+          },
+          {
+            "path": "{out}/capture-clicks.json",
+            "sha256": "fec3eae1cf267d9ad253bf4819a05bf98e414c12ad4f2507f9b7d27ba607ec6c"
+          },
+          {
+            "path": "{out}/capture-guide-knowledge.json",
+            "sha256": "41cbab5370d0016108127726202c919ca2736572537f4789c57476bacb6bb431"
+          },
+          {
+            "path": "{out}/capture-icons-tooltips.json",
+            "sha256": "4620f33300afa75b363e009048b010db88a549fef9b68d385d51ed473f09c1b8"
+          },
+          {
+            "path": "{out}/capture-immediate-addition.json",
+            "sha256": "597f41128ade2b3812f0a169bf4cffcf70f538cbed07fef48a2184e4d4303c5c"
+          },
+          {
+            "path": "{out}/capture-initialization.json",
+            "sha256": "e814a31a3954dd373781f654266f8d2b4d55cb75ec3f89868a16afcf5acb6eeb"
+          },
+          {
+            "path": "{out}/capture-metadata-lists.json",
+            "sha256": "9f76a37a072dcf0d4d4f217e9155b1758a6062c240cc62bae5448eeb20dcbbd9"
+          },
+          {
+            "path": "{out}/capture-name-compare.json",
+            "sha256": "d377183956fc746b21e47de689c0c8aab363edfd87bd1c78bd03e2f136c91693"
+          },
+          {
+            "path": "{out}/capture-pages.json",
+            "sha256": "0ee40a5e4a73ca8bdb7844497213a7d941cfec30396462d2c4e4993e4bcce8d7"
+          },
+          {
+            "path": "{out}/capture-palette.json",
+            "sha256": "da8e6beca619d11d3d611a6edfbae1e88f6dc235c8cbcc9373f0f03b6fceb61a"
+          },
+          {
+            "path": "{out}/capture-path.json",
+            "sha256": "4babc9f66cb15e0efe1839e97ce8a6fbde59112d244c62701f77778ac1f0612e"
+          },
+          {
+            "path": "{out}/capture-position-controls.json",
+            "sha256": "84c6d01b3ff8723634c1f29cfc82fc7625ad49e57f10f3c106c6780c7419309f"
+          },
+          {
+            "path": "{out}/capture-removal.json",
+            "sha256": "7109d59cfb23e1967575923d2d671c40d714d3dbd4370603c30c6db6213fa6e2"
+          },
+          {
+            "path": "{out}/capture-render.json",
+            "sha256": "e09d57ec73188ed7cb8c4e81bcbd736b5da2be8268b9df78362241a41b9cd37a"
+          },
+          {
+            "path": "{out}/capture-reward-presentation.json",
+            "sha256": "9a8999bbd4fafd2f203f7ba506ae1cf62e8a11fa3fb4198feb2c4b9384670134"
+          },
+          {
+            "path": "{out}/capture-show-toggle.json",
+            "sha256": "c8ac97be08d31ab4c7480b33c16f166d8a0f6d1c111c18e31b8c86a546422e49"
+          },
+          {
+            "path": "{out}/capture-spell-knowledge.json",
+            "sha256": "c03cf5fc9649ff34021a66f171c18a90ffea75afb568d222963621fb9b70a2e3"
+          },
+          {
+            "path": "{out}/capture-spell-lists.json",
+            "sha256": "bb597eedcf6688ce61a798eda6e23a41bac04e8a9aae49c25241a7bc0b19c915"
+          },
+          {
+            "path": "{out}/capture-tabs.json",
+            "sha256": "b72ff2a8a020c16cc916d175671340d42ccba75f8ea86018991aa4f52b36c0e3"
+          },
+          {
+            "path": "{out}/capture-trap-reward.json",
+            "sha256": "29207f4112ef3aec75695a466de5ece07a6e4a8e7464552d041c9f34a191f839"
+          },
+          {
+            "path": "{out}/capture-visibility.json",
+            "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          }
+        ]
+      }
+    ],
+    "native": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/spellbook-affected-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-ability-removal.json",
+            "sha256": "faa69b3a9daf912bb23c7ab25b32172ccc23a7079ee1589bb7a3503dc8af46af"
+          },
+          {
+            "path": "{out}/capture-animation-frames.json",
+            "sha256": "d134eee7d7194447696a8b210bf73897152457466e25fb75933b8b345671b01d"
+          },
+          {
+            "path": "{out}/capture-asset-pages.json",
+            "sha256": "aab7dc659cb46b961797c2661d6c6279761120cdc35582f4415584b3a5a29cdc"
+          },
+          {
+            "path": "{out}/capture-clicks.json",
+            "sha256": "fec3eae1cf267d9ad253bf4819a05bf98e414c12ad4f2507f9b7d27ba607ec6c"
+          },
+          {
+            "path": "{out}/capture-guide-knowledge.json",
+            "sha256": "41cbab5370d0016108127726202c919ca2736572537f4789c57476bacb6bb431"
+          },
+          {
+            "path": "{out}/capture-icons-tooltips.json",
+            "sha256": "4620f33300afa75b363e009048b010db88a549fef9b68d385d51ed473f09c1b8"
+          },
+          {
+            "path": "{out}/capture-immediate-addition.json",
+            "sha256": "597f41128ade2b3812f0a169bf4cffcf70f538cbed07fef48a2184e4d4303c5c"
+          },
+          {
+            "path": "{out}/capture-initialization.json",
+            "sha256": "e814a31a3954dd373781f654266f8d2b4d55cb75ec3f89868a16afcf5acb6eeb"
+          },
+          {
+            "path": "{out}/capture-metadata-lists.json",
+            "sha256": "9f76a37a072dcf0d4d4f217e9155b1758a6062c240cc62bae5448eeb20dcbbd9"
+          },
+          {
+            "path": "{out}/capture-name-compare.json",
+            "sha256": "d377183956fc746b21e47de689c0c8aab363edfd87bd1c78bd03e2f136c91693"
+          },
+          {
+            "path": "{out}/capture-pages.json",
+            "sha256": "0ee40a5e4a73ca8bdb7844497213a7d941cfec30396462d2c4e4993e4bcce8d7"
+          },
+          {
+            "path": "{out}/capture-palette.json",
+            "sha256": "da8e6beca619d11d3d611a6edfbae1e88f6dc235c8cbcc9373f0f03b6fceb61a"
+          },
+          {
+            "path": "{out}/capture-path.json",
+            "sha256": "4babc9f66cb15e0efe1839e97ce8a6fbde59112d244c62701f77778ac1f0612e"
+          },
+          {
+            "path": "{out}/capture-position-controls.json",
+            "sha256": "84c6d01b3ff8723634c1f29cfc82fc7625ad49e57f10f3c106c6780c7419309f"
+          },
+          {
+            "path": "{out}/capture-removal.json",
+            "sha256": "7109d59cfb23e1967575923d2d671c40d714d3dbd4370603c30c6db6213fa6e2"
+          },
+          {
+            "path": "{out}/capture-render.json",
+            "sha256": "e09d57ec73188ed7cb8c4e81bcbd736b5da2be8268b9df78362241a41b9cd37a"
+          },
+          {
+            "path": "{out}/capture-reward-presentation.json",
+            "sha256": "9a8999bbd4fafd2f203f7ba506ae1cf62e8a11fa3fb4198feb2c4b9384670134"
+          },
+          {
+            "path": "{out}/capture-show-toggle.json",
+            "sha256": "c8ac97be08d31ab4c7480b33c16f166d8a0f6d1c111c18e31b8c86a546422e49"
+          },
+          {
+            "path": "{out}/capture-spell-knowledge.json",
+            "sha256": "c03cf5fc9649ff34021a66f171c18a90ffea75afb568d222963621fb9b70a2e3"
+          },
+          {
+            "path": "{out}/capture-spell-lists.json",
+            "sha256": "bb597eedcf6688ce61a798eda6e23a41bac04e8a9aae49c25241a7bc0b19c915"
+          },
+          {
+            "path": "{out}/capture-tabs.json",
+            "sha256": "b72ff2a8a020c16cc916d175671340d42ccba75f8ea86018991aa4f52b36c0e3"
+          },
+          {
+            "path": "{out}/capture-trap-reward.json",
+            "sha256": "29207f4112ef3aec75695a466de5ece07a6e4a8e7464552d041c9f34a191f839"
+          },
+          {
+            "path": "{out}/capture-visibility.json",
+            "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          }
+        ]
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/spellbook-affected-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-ability-removal.json",
+            "sha256": "faa69b3a9daf912bb23c7ab25b32172ccc23a7079ee1589bb7a3503dc8af46af"
+          },
+          {
+            "path": "{out}/capture-animation-frames.json",
+            "sha256": "d134eee7d7194447696a8b210bf73897152457466e25fb75933b8b345671b01d"
+          },
+          {
+            "path": "{out}/capture-asset-pages.json",
+            "sha256": "aab7dc659cb46b961797c2661d6c6279761120cdc35582f4415584b3a5a29cdc"
+          },
+          {
+            "path": "{out}/capture-clicks.json",
+            "sha256": "fec3eae1cf267d9ad253bf4819a05bf98e414c12ad4f2507f9b7d27ba607ec6c"
+          },
+          {
+            "path": "{out}/capture-guide-knowledge.json",
+            "sha256": "41cbab5370d0016108127726202c919ca2736572537f4789c57476bacb6bb431"
+          },
+          {
+            "path": "{out}/capture-icons-tooltips.json",
+            "sha256": "4620f33300afa75b363e009048b010db88a549fef9b68d385d51ed473f09c1b8"
+          },
+          {
+            "path": "{out}/capture-immediate-addition.json",
+            "sha256": "597f41128ade2b3812f0a169bf4cffcf70f538cbed07fef48a2184e4d4303c5c"
+          },
+          {
+            "path": "{out}/capture-initialization.json",
+            "sha256": "e814a31a3954dd373781f654266f8d2b4d55cb75ec3f89868a16afcf5acb6eeb"
+          },
+          {
+            "path": "{out}/capture-metadata-lists.json",
+            "sha256": "9f76a37a072dcf0d4d4f217e9155b1758a6062c240cc62bae5448eeb20dcbbd9"
+          },
+          {
+            "path": "{out}/capture-name-compare.json",
+            "sha256": "d377183956fc746b21e47de689c0c8aab363edfd87bd1c78bd03e2f136c91693"
+          },
+          {
+            "path": "{out}/capture-pages.json",
+            "sha256": "0ee40a5e4a73ca8bdb7844497213a7d941cfec30396462d2c4e4993e4bcce8d7"
+          },
+          {
+            "path": "{out}/capture-palette.json",
+            "sha256": "da8e6beca619d11d3d611a6edfbae1e88f6dc235c8cbcc9373f0f03b6fceb61a"
+          },
+          {
+            "path": "{out}/capture-path.json",
+            "sha256": "4babc9f66cb15e0efe1839e97ce8a6fbde59112d244c62701f77778ac1f0612e"
+          },
+          {
+            "path": "{out}/capture-position-controls.json",
+            "sha256": "84c6d01b3ff8723634c1f29cfc82fc7625ad49e57f10f3c106c6780c7419309f"
+          },
+          {
+            "path": "{out}/capture-removal.json",
+            "sha256": "7109d59cfb23e1967575923d2d671c40d714d3dbd4370603c30c6db6213fa6e2"
+          },
+          {
+            "path": "{out}/capture-render.json",
+            "sha256": "e09d57ec73188ed7cb8c4e81bcbd736b5da2be8268b9df78362241a41b9cd37a"
+          },
+          {
+            "path": "{out}/capture-reward-presentation.json",
+            "sha256": "9a8999bbd4fafd2f203f7ba506ae1cf62e8a11fa3fb4198feb2c4b9384670134"
+          },
+          {
+            "path": "{out}/capture-show-toggle.json",
+            "sha256": "c8ac97be08d31ab4c7480b33c16f166d8a0f6d1c111c18e31b8c86a546422e49"
+          },
+          {
+            "path": "{out}/capture-spell-knowledge.json",
+            "sha256": "c03cf5fc9649ff34021a66f171c18a90ffea75afb568d222963621fb9b70a2e3"
+          },
+          {
+            "path": "{out}/capture-spell-lists.json",
+            "sha256": "bb597eedcf6688ce61a798eda6e23a41bac04e8a9aae49c25241a7bc0b19c915"
+          },
+          {
+            "path": "{out}/capture-tabs.json",
+            "sha256": "b72ff2a8a020c16cc916d175671340d42ccba75f8ea86018991aa4f52b36c0e3"
+          },
+          {
+            "path": "{out}/capture-trap-reward.json",
+            "sha256": "29207f4112ef3aec75695a466de5ece07a6e4a8e7464552d041c9f34a191f839"
+          },
+          {
+            "path": "{out}/capture-visibility.json",
+            "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          }
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/spellbook-affected-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-ability-removal.json",
+            "sha256": "faa69b3a9daf912bb23c7ab25b32172ccc23a7079ee1589bb7a3503dc8af46af"
+          },
+          {
+            "path": "{out}/capture-animation-frames.json",
+            "sha256": "d134eee7d7194447696a8b210bf73897152457466e25fb75933b8b345671b01d"
+          },
+          {
+            "path": "{out}/capture-asset-pages.json",
+            "sha256": "aab7dc659cb46b961797c2661d6c6279761120cdc35582f4415584b3a5a29cdc"
+          },
+          {
+            "path": "{out}/capture-clicks.json",
+            "sha256": "fec3eae1cf267d9ad253bf4819a05bf98e414c12ad4f2507f9b7d27ba607ec6c"
+          },
+          {
+            "path": "{out}/capture-guide-knowledge.json",
+            "sha256": "41cbab5370d0016108127726202c919ca2736572537f4789c57476bacb6bb431"
+          },
+          {
+            "path": "{out}/capture-icons-tooltips.json",
+            "sha256": "4620f33300afa75b363e009048b010db88a549fef9b68d385d51ed473f09c1b8"
+          },
+          {
+            "path": "{out}/capture-immediate-addition.json",
+            "sha256": "597f41128ade2b3812f0a169bf4cffcf70f538cbed07fef48a2184e4d4303c5c"
+          },
+          {
+            "path": "{out}/capture-initialization.json",
+            "sha256": "e814a31a3954dd373781f654266f8d2b4d55cb75ec3f89868a16afcf5acb6eeb"
+          },
+          {
+            "path": "{out}/capture-metadata-lists.json",
+            "sha256": "9f76a37a072dcf0d4d4f217e9155b1758a6062c240cc62bae5448eeb20dcbbd9"
+          },
+          {
+            "path": "{out}/capture-name-compare.json",
+            "sha256": "d377183956fc746b21e47de689c0c8aab363edfd87bd1c78bd03e2f136c91693"
+          },
+          {
+            "path": "{out}/capture-pages.json",
+            "sha256": "0ee40a5e4a73ca8bdb7844497213a7d941cfec30396462d2c4e4993e4bcce8d7"
+          },
+          {
+            "path": "{out}/capture-palette.json",
+            "sha256": "da8e6beca619d11d3d611a6edfbae1e88f6dc235c8cbcc9373f0f03b6fceb61a"
+          },
+          {
+            "path": "{out}/capture-path.json",
+            "sha256": "4babc9f66cb15e0efe1839e97ce8a6fbde59112d244c62701f77778ac1f0612e"
+          },
+          {
+            "path": "{out}/capture-position-controls.json",
+            "sha256": "84c6d01b3ff8723634c1f29cfc82fc7625ad49e57f10f3c106c6780c7419309f"
+          },
+          {
+            "path": "{out}/capture-removal.json",
+            "sha256": "7109d59cfb23e1967575923d2d671c40d714d3dbd4370603c30c6db6213fa6e2"
+          },
+          {
+            "path": "{out}/capture-render.json",
+            "sha256": "e09d57ec73188ed7cb8c4e81bcbd736b5da2be8268b9df78362241a41b9cd37a"
+          },
+          {
+            "path": "{out}/capture-reward-presentation.json",
+            "sha256": "9a8999bbd4fafd2f203f7ba506ae1cf62e8a11fa3fb4198feb2c4b9384670134"
+          },
+          {
+            "path": "{out}/capture-show-toggle.json",
+            "sha256": "c8ac97be08d31ab4c7480b33c16f166d8a0f6d1c111c18e31b8c86a546422e49"
+          },
+          {
+            "path": "{out}/capture-spell-knowledge.json",
+            "sha256": "c03cf5fc9649ff34021a66f171c18a90ffea75afb568d222963621fb9b70a2e3"
+          },
+          {
+            "path": "{out}/capture-spell-lists.json",
+            "sha256": "bb597eedcf6688ce61a798eda6e23a41bac04e8a9aae49c25241a7bc0b19c915"
+          },
+          {
+            "path": "{out}/capture-tabs.json",
+            "sha256": "b72ff2a8a020c16cc916d175671340d42ccba75f8ea86018991aa4f52b36c0e3"
+          },
+          {
+            "path": "{out}/capture-trap-reward.json",
+            "sha256": "29207f4112ef3aec75695a466de5ece07a6e4a8e7464552d041c9f34a191f839"
+          },
+          {
+            "path": "{out}/capture-visibility.json",
+            "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          }
+        ]
+      }
+    ],
+    "production": [
+      {
+        "name": "compressor-helper",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{root}/build/port-book/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/spellbook-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      }
+    ]
+  },
+  "production": {
+    "description": "Spellbook UI in Go",
+    "assets": "build/assets/extracted/drive_c/Nox",
+    "known_suite": "build/port-rule-command/full-suite.jsonl",
+    "scenario_runner": "tools/porting/run_scenario.py",
+    "force_map_decompression": true,
+    "retained": [
+      "nox_client_toggleSpellbook_45AC70",
+      "nox_xxx_bookHideMB_45ACA0",
+      "nox_xxx_bookClickSpell_45B1F0",
+      "nox_xxx_bookClickCreature_45B200",
+      "sub_45CFC0",
+      "nox_xxx_netSpellRewardCli_45CFE0",
+      "nox_xxx_netGuideRewardCli_45D140",
+      "nox_xxx_bookSetForward_45D200",
+      "nox_xxx_abilityReward_45D290",
+      "sub_45D320",
+      "sub_45D400",
+      "nox_xxx_clientQuestDisableAbility_45D4A0",
+      "sub_45D500",
+      "nox_xxx_bookFillAll_45D570",
+      "sub_45D9B0",
+      "nox_xxx_book_45CF00",
+      "sub_45D870"
+    ],
+    "retired": [
+      "nox_xxx_guiSpellSortFn_45ABC0",
+      "nox_xxx_bookSetColor_45AC40",
+      "nox_xxx_guiSpellSortList_45ADF0",
+      "nox_xxx_book_45B010",
+      "nox_xxx_bookWndProc_45B070",
+      "nox_xxx_book_45B210",
+      "nox_xxx_bookChildWndProcMB_45B360",
+      "nox_xxx_bookListWndProc_45B5F0",
+      "nox_xxx_bookMoveToPage_45B930",
+      "nox_xxx_book_45BD30",
+      "nox_xxx_bookInit_45B9D0",
+      "nox_xxx_bookDrawIconFn_45CB30",
+      "nox_xxx_bookWndFn_45CC10",
+      "sub_45D550",
+      "sub_45D7D0",
+      "sub_45D810",
+      "nox_xxx_bookShowMB_45AD70",
+      "nox_xxx_bookDrawList_45BD40",
+      "nox_xxx_bookDrawFn_45C7D0"
+    ],
+    "scenarios": [
+      {
+        "name": "spellbook-native",
+        "reference": "build/baseline/runs/spellbook-scaled-c",
+        "scenario": "docs/porting/spellbook-warrior.yaml",
+        "env": {
+          "NOX_DEV": "true"
+        }
+      },
+      {
+        "name": "spellbook-flat-native",
+        "reference": "build/baseline/runs/lists-flat-native",
+        "scenario": "docs/porting/tile-raster-flat.yaml"
+      }
+    ],
+    "compress_maps": [
+      "war01a/War01A.map"
+    ],
+    "map_compressor": "build/port-book/map-compress"
+  }
+}

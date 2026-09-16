@@ -67,5 +67,5 @@ func TestSpellbookListClicks(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "clicks", rows, "")
+	spellbookCapture(t, "clicks", rows, "fec3eae1cf267d9ad253bf4819a05bf98e414c12ad4f2507f9b7d27ba607ec6c")
 }

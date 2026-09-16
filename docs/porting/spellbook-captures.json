@@ -1,0 +1,117 @@
+[
+  {
+    "label": "ability-removal",
+    "sha256": "faa69b3a9daf912bb23c7ab25b32172ccc23a7079ee1589bb7a3503dc8af46af",
+    "records": 9
+  },
+  {
+    "label": "animation-frames",
+    "sha256": "d134eee7d7194447696a8b210bf73897152457466e25fb75933b8b345671b01d",
+    "records": 585
+  },
+  {
+    "label": "asset-pages",
+    "sha256": "aab7dc659cb46b961797c2661d6c6279761120cdc35582f4415584b3a5a29cdc",
+    "records": 24
+  },
+  {
+    "label": "clicks",
+    "sha256": "fec3eae1cf267d9ad253bf4819a05bf98e414c12ad4f2507f9b7d27ba607ec6c",
+    "records": 864
+  },
+  {
+    "label": "guide-knowledge",
+    "sha256": "41cbab5370d0016108127726202c919ca2736572537f4789c57476bacb6bb431",
+    "records": 54
+  },
+  {
+    "label": "icons-tooltips",
+    "sha256": "4620f33300afa75b363e009048b010db88a549fef9b68d385d51ed473f09c1b8",
+    "records": 390
+  },
+  {
+    "label": "immediate-addition",
+    "sha256": "597f41128ade2b3812f0a169bf4cffcf70f538cbed07fef48a2184e4d4303c5c",
+    "records": 72
+  },
+  {
+    "label": "initialization",
+    "sha256": "e814a31a3954dd373781f654266f8d2b4d55cb75ec3f89868a16afcf5acb6eeb",
+    "records": 14
+  },
+  {
+    "label": "metadata-lists",
+    "sha256": "9f76a37a072dcf0d4d4f217e9155b1758a6062c240cc62bae5448eeb20dcbbd9",
+    "records": 144
+  },
+  {
+    "label": "name-compare",
+    "sha256": "d377183956fc746b21e47de689c0c8aab363edfd87bd1c78bd03e2f136c91693",
+    "records": 196
+  },
+  {
+    "label": "pages",
+    "sha256": "0ee40a5e4a73ca8bdb7844497213a7d941cfec30396462d2c4e4993e4bcce8d7",
+    "records": 1182
+  },
+  {
+    "label": "palette",
+    "sha256": "da8e6beca619d11d3d611a6edfbae1e88f6dc235c8cbcc9373f0f03b6fceb61a",
+    "records": 1
+  },
+  {
+    "label": "path",
+    "sha256": "4babc9f66cb15e0efe1839e97ce8a6fbde59112d244c62701f77778ac1f0612e",
+    "records": 18
+  },
+  {
+    "label": "position-controls",
+    "sha256": "84c6d01b3ff8723634c1f29cfc82fc7625ad49e57f10f3c106c6780c7419309f",
+    "records": 31
+  },
+  {
+    "label": "removal",
+    "sha256": "7109d59cfb23e1967575923d2d671c40d714d3dbd4370603c30c6db6213fa6e2",
+    "records": 30
+  },
+  {
+    "label": "render",
+    "sha256": "e09d57ec73188ed7cb8c4e81bcbd736b5da2be8268b9df78362241a41b9cd37a",
+    "records": 30
+  },
+  {
+    "label": "reward-presentation",
+    "sha256": "9a8999bbd4fafd2f203f7ba506ae1cf62e8a11fa3fb4198feb2c4b9384670134",
+    "records": 18
+  },
+  {
+    "label": "show-toggle",
+    "sha256": "c8ac97be08d31ab4c7480b33c16f166d8a0f6d1c111c18e31b8c86a546422e49",
+    "records": 30
+  },
+  {
+    "label": "spell-knowledge",
+    "sha256": "c03cf5fc9649ff34021a66f171c18a90ffea75afb568d222963621fb9b70a2e3",
+    "records": 120
+  },
+  {
+    "label": "spell-lists",
+    "sha256": "bb597eedcf6688ce61a798eda6e23a41bac04e8a9aae49c25241a7bc0b19c915",
+    "records": 198
+  },
+  {
+    "label": "tabs",
+    "sha256": "b72ff2a8a020c16cc916d175671340d42ccba75f8ea86018991aa4f52b36c0e3",
+    "records": 128
+  },
+  {
+    "label": "trap-reward",
+    "sha256": "29207f4112ef3aec75695a466de5ece07a6e4a8e7464552d041c9f34a191f839",
+    "records": 36
+  },
+  {
+    "label": "visibility",
+    "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b",
+    "records": 40
+  }
+]

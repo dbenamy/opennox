@@ -17,7 +17,7 @@ import (
 	"github.com/opennox/opennox/v1/server"
 )
 
-func TestSpellbookImmediateAddition(t *testing.T) {
+func newSpellbookAdditionOwner(t *testing.T) (*spellbookOwner, []uint32, func([]server.PortTestSpellClassDef)) {
 	o := newSpellbookOwner(t)
 	configure, restore := o.c.srv.Server.PortTestAISpellDefs()
 	t.Cleanup(restore)
@@ -50,6 +50,11 @@ func TestSpellbookImmediateAddition(t *testing.T) {
 		}
 		return oldLoad(name)
 	}
+	return o, bar, configure
+}
+
+func TestSpellbookImmediateAddition(t *testing.T) {
+	o, bar, configure := newSpellbookAdditionOwner(t)
 	var rows []struct {
 		Book      spellbookResult
 		Bar       []uint32
@@ -61,23 +66,7 @@ func TestSpellbookImmediateAddition(t *testing.T) {
 		for _, kind := range []uint32{2, 3, 4} {
 			for mode := 0; mode < 4; mode++ {
 				func() {
-					o.resetBook(t)
-					clear(bar)
-					nox_client_renderGUI_80828 = false
-					*expanded = 0
-					*o.words["nox_win_width"] = width
-					if o.bookCall("nox_xxx_bookInit_45B9D0") != 1 {
-						t.Fatal("book setup")
-					}
-					for row := 0; row < 5; row++ {
-						o.c.dataRefs[uint32(uintptr(unsafe.Pointer(&bar[row*10])))] = 0xee600001 + uint32(row)
-					}
-					legacy.PortTestBookQuickbarInit(unsafe.Pointer(&bar[0]), 229, 438)
-					for i := 0; i < 5; i++ {
-						parent := (*gui.Window)(unsafe.Pointer(uintptr(bar[52])))
-						w := o.c.GUI.NewWindowRaw(parent, gui.StatusFlags(8), 10+36*i, 1, 10, 10, nil)
-						bar[58+i] = uint32(uintptr(w.C()))
-					}
+					prepareSpellbookAddition(t, o, bar, width)
 					flags := uint32(things.SpellClassAny)
 					if mode == 3 {
 						flags |= 0x1000
@@ -132,5 +121,25 @@ func TestSpellbookImmediateAddition(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "immediate-addition", rows, "")
+	spellbookCapture(t, "immediate-addition", rows, "597f41128ade2b3812f0a169bf4cffcf70f538cbed07fef48a2184e4d4303c5c")
+}
+
+func prepareSpellbookAddition(t *testing.T, o *spellbookOwner, bar []uint32, width uint32) {
+	o.resetBook(t)
+	clear(bar)
+	nox_client_renderGUI_80828 = false
+	*memmap.PtrUint32(0x5D4594, 1049476) = 0
+	*o.words["nox_win_width"] = width
+	if o.bookCall("nox_xxx_bookInit_45B9D0") != 1 {
+		t.Fatal("book setup")
+	}
+	for row := 0; row < 5; row++ {
+		o.c.dataRefs[uint32(uintptr(unsafe.Pointer(&bar[row*10])))] = 0xee600001 + uint32(row)
+	}
+	legacy.PortTestBookQuickbarInit(unsafe.Pointer(&bar[0]), 229, 438)
+	for i := 0; i < 5; i++ {
+		parent := (*gui.Window)(unsafe.Pointer(uintptr(bar[52])))
+		w := o.c.GUI.NewWindowRaw(parent, gui.StatusFlags(8), 10+36*i, 1, 10, 10, nil)
+		bar[58+i] = uint32(uintptr(w.C()))
+	}
 }

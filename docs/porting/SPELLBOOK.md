@@ -1,9 +1,42 @@
-# Spellbook UI — next batch audit
+# Spellbook UI
 
-Status: C baseline development; production unchanged. Fourteen roots pass
-with no skips (`c-tabs`, 41.689 seconds); continuous animation and asset
-coverage is being expanded. No capture is frozen. Starting C: 68,597 lines in
-88 files, zero reference C.
+Status: original-C baseline qualified; production unchanged.
+All 23 roots pass (`c-final-candidate`, 55.119 seconds), with 4,214 records in
+23 capture groups now frozen in [spellbook-captures.json](spellbook-captures.json).
+Default/repeat/server/highres all pass without skips or changed captures
+(`c-qualified`, 286.574 seconds total; source unchanged). Starting and current C: 68,597 physical lines in 88 files, zero
+reference C. No spellbook production correction has been needed.
+
+The real-asset test covers nonempty ability/guide pages and complete page-turn
+animations. Addition tests run the actual input clock, particle pool, quickbar,
+normalizer and pause completion, including early finish and screen-width tiers.
+Reward tests include popup particles, trap setup, ability removal, ranks and
+family propagation. Name comparison uses real guide metadata and the live C
+UTF-16 comparator, including missing names, embedded terminators and raw surrogates.
+
+Notable review items:
+
+- Preserve the original quest-mode difference: guide icon drawing requires a
+  known summon spell, while pressing that guide icon permits dragging without it.
+  The test records both paths; this port does not change their rules.
+- A fresh warrior has no abilities. Visual inspection rejected the initial empty
+  book run despite successful process and map regeneration. The final scenario
+  uses the existing developer game command and one-frame key taps, with pointer
+  coordinates scaled from the 1280x960 window to 1024x768 gameplay. The console's
+  ASCII entry uses key events; direct text-input events did not enter the command.
+  `spellbook-scaled-c` visibly covers contents, Berserker Charge detail, Eye of the
+  Wolf detail, backward turns, contents return and closing. Its independent
+  `spellbook-scaled-c-repeat` matches every frame and the regenerated map exactly
+  (55.341 seconds). Earlier empty/missed-click runs remain preserved, not accepted
+  as page-turn coverage. [Replay identity](spellbook-replay.json) records all frames.
+- `c-complete` failed only its new comparator contract because the fixture omitted
+  the guide metadata valid word. All names therefore resolved as missing. Setting
+  the real record's valid word fixes the fixture; the complete corrected run passes.
+- `c-icons-repeat` independently reproduced all 18 then-current captures byte for
+  byte. The final 23-group repeat and both additional build variants also pass.
+
+Development history below records earlier incomplete checkpoints. Their pending
+work and unfrozen status are historical; use the status above when resuming.
 
 Selected scope: GAME2.c from 0045ABC0 through 0045D9B0, plus all five function
 bodies in client__gui__guibook.c. This is 36 functions / 1,745 C block lines:
@@ -14,9 +47,10 @@ keep its actual callbacks/ownership during book testing. Do not add unrelated
 sprite helpers before the sort comparator to pad scope.
 
 Initial static word-reference audit is saved in `build/port-book/callers.json`
-and `remaining-callers.json`. Fourteen book interfaces still have C references; 22
-appear internal to selected C/Go users, but callback address uses and wrappers
-must be rechecked before retirement. Existing GUI ports show how to replace
+and `remaining-callers.json`. Fourteen book interfaces still have C callers. Two animation completion callbacks
+and one tooltip callback also require C-callable bridges with the current live
+owners: the planned ABI retains 17 and retires 19 interfaces. Curve insertion can
+call the already-native curve owner directly. Recheck the final ABI after conversion. Existing GUI ports show how to replace
 selected window callbacks with native Go callbacks while keeping actual GUI
 ownership. obj_5d4594_1046620 is defined in guibook.c and used only by selected
 book bodies; it can become private Go state when its C file is removed. Memmap's
@@ -44,10 +78,9 @@ Audit numerical edges before freezing: sort-list page divisor depends on font
 height; guide and spell tables have fixed capacities; path callback writes up to
 20 coordinate pairs; animation uses x87 intermediate precision and normalization.
 Preserve successful original behavior and identify any actual prerequisite fix
-with an independent contract before capture. No bug correction or baseline has been made for this scope yet.
+with an independent contract before capture. No production correction was required before freezing this baseline.
 
-The original archive/assets remain untouched. This is only a recoverable audit,
-not a native implementation or test result.
+The original archive/assets remain untouched. Native implementation is next.
 
 Further audit: initialization loads eleven still images plus forward/backward
 ImageRef animations, then creates the real book/child/arrow/icon windows. Use

@@ -106,5 +106,5 @@ func TestSpellbookPageTransitions(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "pages", rows, "")
+	spellbookCapture(t, "pages", rows, "0ee40a5e4a73ca8bdb7844497213a7d941cfec30396462d2c4e4993e4bcce8d7")
 }

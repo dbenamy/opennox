@@ -75,5 +75,5 @@ func TestSpellbookPageRendering(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "render", rows, "")
+	spellbookCapture(t, "render", rows, "e09d57ec73188ed7cb8c4e81bcbd736b5da2be8268b9df78362241a41b9cd37a")
 }

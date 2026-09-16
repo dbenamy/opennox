@@ -70,5 +70,5 @@ func TestSpellbookVisibility(t *testing.T) {
 			other.Capture(false)
 		}
 	}
-	spellbookCapture(t, "visibility", rows, "")
+	spellbookCapture(t, "visibility", rows, "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b")
 }

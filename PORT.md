@@ -28,8 +28,10 @@ The test driver bounds Go heap growth; optional asset cleanup runs separately
 from gameplay validation. The quest fallback, bounded player-group names and root
 null-list correction are recorded for review. Next: the connected
 [spellbook UI owner](docs/porting/SPELLBOOK.md), roughly 1,745 C block lines.
-The spellbook C baseline is under development; fourteen focused roots pass, with
-continuous animation, remaining callbacks and asset qualification outstanding.
+The spellbook C baseline now passes 23 roots / 4,214 frozen records in default,
+independent repeat, server and highres. Nonempty gameplay pages are visually
+verified and reproduce exactly in an independent headless run. Native translation
+is next; production C is unchanged.
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.
 

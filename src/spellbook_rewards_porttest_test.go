@@ -57,5 +57,5 @@ func TestSpellbookSpellKnowledge(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "spell-knowledge", rows, "")
+	spellbookCapture(t, "spell-knowledge", rows, "c03cf5fc9649ff34021a66f171c18a90ffea75afb568d222963621fb9b70a2e3")
 }

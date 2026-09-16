@@ -99,5 +99,5 @@ func TestSpellbookSpellLists(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "spell-lists", rows, "")
+	spellbookCapture(t, "spell-lists", rows, "bb597eedcf6688ce61a798eda6e23a41bac04e8a9aae49c25241a7bc0b19c915")
 }

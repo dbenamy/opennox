@@ -55,5 +55,5 @@ func TestSpellbookGuideKnowledge(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "guide-knowledge", rows, "")
+	spellbookCapture(t, "guide-knowledge", rows, "41cbab5370d0016108127726202c919ca2736572537f4789c57476bacb6bb431")
 }

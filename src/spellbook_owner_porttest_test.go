@@ -38,7 +38,7 @@ func newSpellbookOwner(t *testing.T) *spellbookOwner {
 	t.Helper()
 	o := &spellbookOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}
 	t.Cleanup(o.c.srv.Server.PortTestBookSpellOwner())
-	var entries []strman.Entry
+	entries := []strman.Entry{{ID: "guimsg.c:systemmsg", Vals: []strman.Variant{{Str: "System: %s"}}}}
 	for _, pair := range [][2]string{{"Size", "Size"}, {"Small", "Small"}, {"Medium", "Medium"}, {"Large", "Large"}, {"ManaCost", "Mana cost"}, {"PowerLevel", "Power level %d"}, {"SpellInstant", "Instant"}, {"SpellTargeted", "Targeted"}, {"SpellAtLocation", "At location"}, {"SpellHostile", "Hostile"}, {"EmptyBook", "No known entries"}, {"ToolTipAbilityTab", "Abilities"}, {"ToolTipSpellTab", "Spells"}, {"ToolTipGuideTab", "Creatures"}} {
 		entries = append(entries, strman.Entry{ID: strman.ID("guibook.c:" + pair[0]), Vals: []strman.Variant{{Str: pair[1]}}})
 	}
@@ -57,6 +57,9 @@ func newSpellbookOwner(t *testing.T) *spellbookOwner {
 	o.font, restore = o.c.Render().GetFonts().PortTestWindowFont(basicfont.Face7x13)
 	t.Cleanup(restore)
 	o.c.dataRefs[uint32(uintptr(o.font))] = 0xee100001
+	for i := 0; i <= 137; i++ {
+		o.c.dataRefs[uint32(uintptr(memmap.PtrOff(0x5D4594, 1046960+uintptr(4*i))))] = 0xeea00000 + uint32(i)
+	}
 	callbacks := legacy.PortTestBookCallbacks()
 	var names []string
 	for name := range callbacks {
@@ -152,6 +155,11 @@ func (o *spellbookOwner) bookWindow() *gui.Window {
 }
 
 type spellbookResult struct {
+	Console           []string
+	Centered          [3]string
+	MessageExpiry     [3]uint32
+	MessageIndex      uint32
+	Tooltip           string
 	Drag              [2]uint32
 	MapRefresh        int
 	Case              string
@@ -172,6 +180,13 @@ type spellbookResult struct {
 func (o *spellbookOwner) bookSnapshot(label string, ret uint32) spellbookResult {
 	o.collect()
 	r := spellbookResult{Case: label, Return: o.normalize(ret), Words: make(map[string]uint32), Region: append([]uint32(nil), o.region...), Loads: append([]string(nil), o.loads...), Sounds: append([][2]int(nil), o.sounds...), Vector: *legacy.PortTestBookVector()}
+	r.Console = append([]string(nil), o.console...)
+	r.MessageIndex = *o.txwords[11]
+	for i := 0; i < 3; i++ {
+		r.Centered[i] = legacy.GoWStringP(memmap.PtrOff(0x5D4594, 823804+644*uintptr(i)))
+		r.MessageExpiry[i] = memmap.Uint32(0x5D4594, 824440+644*uintptr(i))
+	}
+	r.Tooltip = alloc.GoString16(&o.cursorText[0])
 	r.Drag = [2]uint32{o.c.dragndrapSpell, uint32(o.c.dragndropSpellType)}
 	r.MapRefresh = o.c.GUI.ValYYY
 	r.Text = append([]inventoryDisplayText(nil), o.displayText...)

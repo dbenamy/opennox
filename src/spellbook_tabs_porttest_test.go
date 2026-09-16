@@ -89,5 +89,5 @@ func TestSpellbookTabSelection(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "tabs", rows, "")
+	spellbookCapture(t, "tabs", rows, "b72ff2a8a020c16cc916d175671340d42ccba75f8ea86018991aa4f52b36c0e3")
 }

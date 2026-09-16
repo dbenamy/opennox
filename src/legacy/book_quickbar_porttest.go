@@ -8,6 +8,8 @@ package legacy
 #include "client__gui__guispell.h"
 extern void* nox_xxx_aClosewoodengat_587000_133480;
 extern uint32_t dword_5d4594_1049496;
+extern uint32_t dword_5d4594_1049500, dword_5d4594_1049504, dword_5d4594_1049520, dword_5d4594_1049536;
+extern uint32_t dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776;
 */
 import "C"
 import "unsafe"
@@ -29,5 +31,25 @@ func PortTestBookQuickbarCallbacks() map[unsafe.Pointer]uint32 {
 		unsafe.Pointer(C.nox_xxx_quickbar_45F8D0):       0xee700001,
 		unsafe.Pointer(C.nox_xxx_quickBarWnd_45EF50):    0xee700002,
 		unsafe.Pointer(C.nox_xxx_quickBarDrawFn_45FBD0): 0xee700003,
+	}
+}
+
+// PortTestBookPauseOwner owns the already-paused reward presentation state.
+// Live pause/unpause routines remain unchanged and are exercised on completion.
+func PortTestBookPauseOwner() (func(), func()) {
+	a, b, c := C.dword_5d4594_2523804, C.dword_5d4594_2523780, C.dword_5d4594_2523776
+	return func() { C.dword_5d4594_2523804 = 1; C.dword_5d4594_2523780 = 0; C.dword_5d4594_2523776 = 0 }, func() { C.dword_5d4594_2523804 = a; C.dword_5d4594_2523780 = b; C.dword_5d4594_2523776 = c }
+}
+
+func PortTestBookTrapWords() ([]*uint32, func()) {
+	words := []*uint32{(*uint32)(unsafe.Pointer(&C.dword_5d4594_1049500)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049504)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049520)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049536))}
+	old := make([]uint32, len(words))
+	for i, p := range words {
+		old[i] = *p
+	}
+	return words, func() {
+		for i, p := range words {
+			*p = old[i]
+		}
 	}
 }

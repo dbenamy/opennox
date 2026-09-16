@@ -89,7 +89,7 @@ func TestSpellbookGuideAndAbilityLists(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "metadata-lists", rows, "")
+	spellbookCapture(t, "metadata-lists", rows, "9f76a37a072dcf0d4d4f217e9155b1758a6062c240cc62bae5448eeb20dcbbd9")
 }
 
 // ASCII titles deliberately include equal case-folded names while retaining
