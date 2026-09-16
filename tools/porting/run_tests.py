@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run a selected port suite and require every discovered root test to execute.
+"""Run a selected port suite and require every discovered test to execute.
 
 Source build/baseline/env.sh first. Raw Go output stays in the supplied log files.
 """
@@ -23,11 +23,15 @@ def main():
     parser.add_argument("--result", type=Path, required=True)
     parser.add_argument("--timeout-seconds", type=int, default=600,
                         help="per-package Go test timeout (default: 600)")
+    parser.add_argument("--package", action="append", dest="packages",
+                        help="affected package (repeatable; default: .)")
+    parser.add_argument("--require-no-skips", action="store_true")
     args = parser.parse_args()
+    packages = args.packages or ["."]
     if args.timeout_seconds <= 0:
         parser.error("--timeout-seconds must be positive")
     pattern = args.pattern_file.read_text().strip()
-    result = {"tags": args.tags, "success": False, "timeout_seconds": args.timeout_seconds}
+    result = {"tags": args.tags, "success": False, "timeout_seconds": args.timeout_seconds, "packages": packages}
     started = time.monotonic()
 
     def finish(reason, code=1):
@@ -44,21 +48,29 @@ def main():
     env = dict(os.environ, GOMAXPROCS=os.environ.get("GOMAXPROCS", "2"))
     discovery = args.log.with_suffix(args.log.suffix + ".discovery")
     with discovery.open("w") as log:
-        proc = subprocess.run(common + ["-list", pattern, "."], cwd=ROOT / "src",
+        proc = subprocess.run(common + ["-json", "-list", pattern] + packages, cwd=ROOT / "src",
                               env=env, stdout=log, stderr=subprocess.STDOUT)
     result["discovery_exit"] = proc.returncode
     if proc.returncode:
         return finish("test discovery failed")
-    expected = {line for line in discovery.read_text().splitlines()
-                if line.startswith("Test") and not any(c.isspace() for c in line)}
-    result["selected_root_tests"] = len(expected)
+    expected = set()
+    for line in discovery.read_text().splitlines():
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        name = event.get("Output", "").strip()
+        if name.startswith("Test") and not any(c.isspace() for c in name):
+            expected.add((event["Package"], name))
+    result["selected_tests"] = len(expected)
+    result["selected_root_tests"] = sum(pkg == PACKAGE for pkg, _ in expected)
     if not expected:
-        return finish("pattern selected no root tests")
+        return finish("pattern selected no tests")
 
-    ran, completed = set(), set()
+    ran, completed, skipped = set(), set(), set()
     with args.log.open("w") as log:
         proc = subprocess.Popen(common + ["-count=1", "-timeout", f"{args.timeout_seconds}s", "-json",
-                                           "-run", pattern, "./..."],
+                                           "-run", pattern] + packages,
                                 cwd=ROOT / "src", env=env, stdout=subprocess.PIPE,
                                 stderr=subprocess.STDOUT, text=True, errors="replace")
         for line in proc.stdout:
@@ -67,22 +79,29 @@ def main():
                 event = json.loads(line)
             except json.JSONDecodeError:
                 continue
-            name = event.get("Test", "")
-            if event.get("Package") != PACKAGE or name not in expected:
+            name = (event.get("Package"), event.get("Test", ""))
+            if name not in expected:
                 continue
             if event.get("Action") == "run":
                 ran.add(name)
             elif event.get("Action") in ("pass", "skip", "fail"):
                 completed.add(name)
+                if event.get("Action") == "skip":
+                    skipped.add(name)
         code = proc.wait()
-    result.update(exit=code, started_root_tests=len(ran), completed_root_tests=len(completed),
+    result.update(exit=code, started_tests=len(ran), completed_tests=len(completed),
+                  started_root_tests=sum(pkg == PACKAGE for pkg, _ in ran),
+                  completed_root_tests=sum(pkg == PACKAGE for pkg, _ in completed),
+                  skipped_tests=sorted(skipped),
                   missing_started=sorted(expected - ran), missing_completed=sorted(expected - completed))
     if code:
         return finish("selected test suite failed")
     if expected - ran or expected - completed:
-        return finish("discovered root tests did not all execute and finish")
+        return finish("discovered tests did not all execute and finish")
+    if args.require_no_skips and skipped:
+        return finish("selected tests skipped despite required prerequisites")
     result["success"] = True
-    return finish("all selected root tests executed and finished", 0)
+    return finish("all selected tests executed and finished", 0)
 
 
 if __name__ == "__main__":

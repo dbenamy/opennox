@@ -8,25 +8,21 @@ Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-## Current — things-section reader Go conversion qualified
+## Current — two-round process trial, first round in preparation
 
-C baseline **950c536b** is committed/pushed. Go conversion is fully qualified:
-7,737 frozen section records match, earlier floor/edge contracts plus new buffer-
-view regression pass, all affected roots and three builds/ABI pass, exact known
-1,553 failures remain and normal12/flat14 frames match. C remaining: **72,542 /
-91 files /zero reference C**. All readers joined. See THING_SKIPS.md and ignored
-build/port-thing-skips/native-qualification.json. Commit/push, then continue.
-All applied scripts/stages are stale; never rerun them.
+Last qualified production commit **f0db7a7b** is pushed. Things-section readers
+removed 398 C lines; all recorded gates passed. C remains **72,542 /91 files**.
 
-Next candidate: six client sound-definition functions/helpers /321 C block lines.
-Read-only scope/owner audit in build/port-client-audio-assets; no fixture/native
-source applied. Complete the actual sound-table, timer, catalog and caller audit.
-These are live client AUD/AVNT loaders, distinct from Go server audio readers.
-Retire the AVNT inner C export once its final event-loader caller moves to Go.
+User requested trying the revised process for two complete conversion rounds,
+then pausing to reflect. See [PROCESS_TRIAL.md](docs/porting/PROCESS_TRIAL.md).
+Tooling changes are being validated before the first round. Current uncommitted
+client audio fixtures (three `*_porttest*.go` files) passed their two initial C
+roots in 187.797s. No production audio source changed; no audio goldens frozen.
+`build/port-client-audio-assets/prepare-c.py` is applied/stale; do not rerun it.
+Its native stage remains unapplied. Finish parser/asset/boundary fixtures next.
 
-Latest complete accumulated-corpus milestone: tile composition **642fba50**;
-future complete runs use explicit 900s/package. No question pending. Continue
-batches autonomously. Original assets/archive unchanged.
+Latest full accumulated-corpus milestone: tile composition **642fba50**.
+Use explicit 900s/package for the complete corpus. Preserve original archive.
 
 <!-- /current-checkpoint -->
 

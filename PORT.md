@@ -43,8 +43,13 @@ the same VM; do not extrapolate its speed to native hardware.
 
 ## Batch workflow
 
-1. Select a connected behavior batch, usually several hundred C lines (roughly
-   300–1,000 where dependencies permit). Identify callers, callbacks, shared state,
+A user-authorized [two-round process trial](docs/porting/PROCESS_TRIAL.md) is
+active. Use focused package checks inside each round and full qualification at
+both round boundaries; pause for reflection after round 2. Recovery commits may
+precede full qualification when their evidence and remaining gates are explicit.
+
+1. Select a connected behavior batch, aiming for roughly
+   1,000–3,000 C lines where dependencies permit. Identify callers, callbacks, shared state,
    ownership and observable effects. Move callers with private helpers when useful.
 2. Build a recoverable C baseline using real owners and reusable fixtures. Cover
    boundaries, return values, mutations, signedness/overflow, layout, serialization,
@@ -142,6 +147,7 @@ Reconsider the tests as the behavior and failure modes become clearer.
   against real callers and shared state, and record its pattern and coverage.
   Run the complete accumulated port corpus at subsystem milestones, when shared
   infrastructure changes, or when a failure leaves the affected scope uncertain.
+  Select affected packages explicitly (`--package`, root by default).
   Check that selected tests actually start and finish; discovery success or a
   process exit alone does not establish coverage.
 - **Builds and ABI:** all three production binaries on 386/SSE2/CGO. Check expected
