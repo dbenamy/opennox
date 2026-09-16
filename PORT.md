@@ -15,25 +15,21 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. The latest shared-list/player-group batch removed **300 C lines**,
-leaving about **69k: 68,597 physical lines in 88 files**, with zero reference C.
-The full accumulated corpus passes in all three configurations (1,079 tests in
-default/highres, 1,075 in server; only the existing opt-in diagnostic is skipped).
-Three production builds/ABI and both forced map-expansion replays pass, and the
-asset suite retains exactly its known failures.
-See [LISTS.md](docs/porting/LISTS.md), [MAP_CATALOG.md](docs/porting/MAP_CATALOG.md)
-and [PORTING_STATE.md](PORTING_STATE.md) for evidence and review notes.
+scheduled pause. The spellbook batch removes **1,786 C lines**, leaving about
+**67k: 66,811 physical lines in 87 files**, with zero reference C.
+All **4,694 frozen records in 24 groups** match. The 137 affected tests pass in
+default, server and highres; three production builds and interface audits pass.
+The asset suite retains exactly its known failures, and both fresh gameplay
+replays regenerate the warrior map exactly and match their preserved frames.
+See [SPELLBOOK.md](docs/porting/SPELLBOOK.md) and
+[PORTING_STATE.md](PORTING_STATE.md) for evidence and review notes.
 
+The last full accumulated milestone was shared lists: 1,079 tests in default/
+highres and 1,075 in server, with only the existing opt-in diagnostic skipped.
+Spellbook is included in the accumulated pattern for the next milestone.
+Next: the connected quickbar owner, reusing the book/GUI/particle/input fixtures.
 The test driver bounds Go heap growth; optional asset cleanup runs separately
-from gameplay validation. The quest fallback, bounded player-group names and root
-null-list correction are recorded for review. Next: the connected
-[spellbook UI owner](docs/porting/SPELLBOOK.md), roughly 1,745 C block lines.
-The spellbook C baseline now passes 23 roots / 4,214 frozen records in default,
-independent repeat, server and highres. Nonempty gameplay pages are visually
-verified and reproduce exactly in an independent headless run. Native translation
-is next; production C is unchanged.
-An isolated hallway mismatch and a later identification-display mismatch remain
-unexplained; future failures automatically preserve full captures.
+from gameplay validation. Confident reversible decisions remain recorded for review.
 
 ## Goal and target
 

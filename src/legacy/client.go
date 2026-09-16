@@ -6,7 +6,6 @@ void sub_4519C0();
 int sub_495430();
 void sub_44D3A0();
 void nox_xxx_sprite_49C4F0();
-void sub_45D810();
 void sub_49A630();
 void sub_49BBB0();
 void sub_479280();
@@ -122,7 +121,7 @@ func Sub_479280() {
 }
 
 func Sub_45D810() {
-	C.sub_45D810()
+	bookStopAddition()
 }
 
 func Nox_xxx_sprite_49C4F0() {

@@ -465,7 +465,7 @@ func Nox_xxx_guiHealthManaInit_4714E0() int {
 	return uiMeterInit()
 }
 func Nox_xxx_bookInit_45B9D0() int {
-	return int(C.nox_xxx_bookInit_45B9D0())
+	return bookInit()
 }
 func Sub_476E20() unsafe.Pointer {
 	return unsafe.Pointer(C.sub_476E20())
@@ -653,7 +653,7 @@ func Nox_window_set_visible_unk5(a1 int) {
 	C.nox_window_set_visible_unk5(C.int(a1))
 }
 func Sub_45D500(a1 int) {
-	C.sub_45D500(C.int(a1))
+	bookTemporaryShow(a1)
 }
 func Sub_455A00(a1 int) {
 	C.sub_455A00(C.int(a1))

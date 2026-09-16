@@ -67,7 +67,9 @@ func newSpellbookOwner(t *testing.T) *spellbookOwner {
 	}
 	sort.Strings(names)
 	for i, name := range names {
-		o.c.callbackRefs[callbacks[name]] = 0xee200001 + uint32(i)
+		if callbacks[name] != nil {
+			o.c.callbackRefs[callbacks[name]] = 0xee200001 + uint32(i)
+		}
 	}
 	for i := 0; i < 2; i++ {
 		ref, freeRef := alloc.New(legacy.ImageRef{})

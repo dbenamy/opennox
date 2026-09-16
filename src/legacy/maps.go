@@ -171,7 +171,7 @@ func Sub_4B64C0() {
 }
 
 func Nox_xxx_bookSetColor_45AC40() {
-	C.nox_xxx_bookSetColor_45AC40()
+	bookSetColor()
 }
 
 func Nox_xxx_colorInit_4C4FD0() {

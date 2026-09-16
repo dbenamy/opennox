@@ -130,13 +130,13 @@ func Sub_41DA10(a1 int) {
 	C.sub_41DA10(C.int(a1))
 }
 func Nox_xxx_bookHideMB_45ACA0(a1 int) int {
-	return int(C.nox_xxx_bookHideMB_45ACA0(C.int(a1)))
+	return bookHide(a1)
 }
 func Sub_4AD9B0(a1 int) {
 	C.sub_4AD9B0(C.int(a1))
 }
 func Nox_xxx_bookShowMB_45AD70(a1 int) {
-	C.nox_xxx_bookShowMB_45AD70(C.int(a1))
+	bookShow(a1)
 }
 func Sub_41A000(a1 string, a2 *server.SaveGameInfo) int {
 	cstr := CString(a1)

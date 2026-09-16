@@ -1,11 +1,26 @@
 # Spellbook UI
 
-Status: original-C baseline qualified; production unchanged.
-All 23 roots pass (`c-final-candidate`, 55.119 seconds), with 4,214 records in
-23 capture groups now frozen in [spellbook-captures.json](spellbook-captures.json).
-Default/repeat/server/highres all pass without skips or changed captures
-(`c-qualified`, 286.574 seconds total; source unchanged). Starting and current C: 68,597 physical lines in 88 files, zero
-reference C. No spellbook production correction has been needed.
+Status: fully qualified. Original-C baseline **337f7c77** and
+[supplement **0c7332e1**](SPELLBOOK_SUPPLEMENT.md) preserve **4,694 records in 24
+groups**, listed in [spellbook-captures.json](spellbook-captures.json). All original
+23 hashes are unchanged; the supplemental release cases were captured from C.
+The completed C matrix passes default/repeat/server/highres without skips or source
+changes (`c-supplement-qualified`, 303.563 seconds).
+
+The native conversion passes all 137 affected roots in default, server and highres
+(`native-qualified`, 537.570 seconds). Production qualification passes in 400.158
+seconds: three ELF32/i386/SSE2/CGO builds, 17 retained and 19 retired interface
+audits, exact known asset-suite failures (1,553 entries; 15 pass / 3 fail / 32 skip
+packages), and both forced-map gameplay replays. `spellbook-native` matches all 19
+book frames; `spellbook-flat-native` matches the flat-map reference. Both regenerate
+the warrior map exactly. All readers joined; no frozen expectation was changed.
+
+Starting C: **68,597 lines / 88 files**. Final C: **66,811 lines / 87 files**, zero
+reference C (**−1,786 physical lines**). The 36-function scope comprised 1,745 C
+body/comment lines; removing the standalone file's declarations and the unused
+vector declaration accounts for the additional reduction. Native algorithms live
+in eight `legacy/gui_book_*.go` files. The two-float vector is private Go state;
+shared words remain bound to actual quickbar storage until that owner is ported.
 
 The real-asset test covers nonempty ability/guide pages and complete page-turn
 animations. Addition tests run the actual input clock, particle pool, quickbar,
@@ -36,7 +51,7 @@ Notable review items:
   byte. The final 23-group repeat and both additional build variants also pass.
 
 Development history below records earlier incomplete checkpoints. Their pending
-work and unfrozen status are historical; use the status above when resuming.
+work and unfrozen status are historical; use the qualified status above when resuming.
 
 Selected scope: GAME2.c from 0045ABC0 through 0045D9B0, plus all five function
 bodies in client__gui__guibook.c. This is 36 functions / 1,745 C block lines:
@@ -80,7 +95,7 @@ height; guide and spell tables have fixed capacities; path callback writes up to
 Preserve successful original behavior and identify any actual prerequisite fix
 with an independent contract before capture. No production correction was required before freezing this baseline.
 
-The original archive/assets remain untouched. Native implementation is next.
+The original archive/assets remain untouched. The native implementation and production qualification are complete.
 
 Further audit: initialization loads eleven still images plus forward/backward
 ImageRef animations, then creates the real book/child/arrow/icon windows. Use
@@ -177,3 +192,30 @@ contract and identified quickbar-pointer normalization. Immediate additions cove
 target fallback, repeated/current tabs, details/contents, and blocked transitions.
 The original C still owns every selected spellbook implementation. Continuous
 animation, remaining callbacks and original assets are outstanding before freeze.
+
+## Native integration and supplemental release coverage
+
+The native replacement removes 1,786 physical C lines, including the standalone
+file's declarations: working count 66,811 / 87 files, zero reference C. All original
+4,214 frozen records pass in `native-palette` (137.401 seconds). The only behavioral
+mismatch during the first complete comparison was storage of two palette values:
+the original helper replicates each 16-bit pixel into a 32-bit word. The Go color
+owner's `Color32` method preserves it. Rendered pixels already matched. An earlier
+build rejected exported parameter `auto`, a C keyword; renamed to `autoAdd`.
+
+While reviewing the full icon handler, release paths were missing from the original
+test matrix. Added 480 cases against an isolated checkout of the committed C
+baseline: immediate/deferred ability and spell actions, existing targeting cursors,
+queued spells, inside/inclusive-edge/outside/quickbar positions, both release events
+and unrelated events. Capture includes actual quickbar/cursor state, ability records,
+input timeout and exact message-list bytes. Independent contracts require drag
+cleanup on release, capture/selection cleanup outside, immediate ability message
+bytes, and unchanged state for non-release events. The first C run passes; its
+frozen hash is supplemental to the unchanged 23 original captures (4,694 total).
+The full C repeat/all-target and native affected suites pass. Production
+qualification also passes; its source fingerprints cover the exact native source.
+
+The localized rank label uses a one-line ABI adapter to the existing production
+variadic formatter, matching the inventory port's approach. The animation curve,
+GUI, image/text rendering, particle pool, and other already-Go owners are called
+directly. Existing C normalization and UTF-16 comparison remain live dependencies.

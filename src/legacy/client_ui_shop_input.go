@@ -30,7 +30,7 @@ func uiShopPanel(w *gui.Window, event int, a, b uintptr) int {
 		*uiShopWord(1107036) = *uiShopWord(1098592) - uint32(b)
 		return 0
 	}
-	if event != 16391 || C.sub_45D9B0() != 0 {
+	if event != 16391 || C.int(*bookWord(1047520)) != 0 {
 		return 0
 	}
 	id := uiInventoryWindowValue(uint32(a)).ID()
@@ -85,7 +85,7 @@ func uiShopPanel(w *gui.Window, event int, a, b uintptr) int {
 	return 0
 }
 func uiShopMouse(w *gui.Window, event int, a, b uintptr) int {
-	if C.sub_45D9B0() != 0 {
+	if C.int(*bookWord(1047520)) != 0 {
 		return 1
 	}
 	p := uiInventoryPackedPoint(a)

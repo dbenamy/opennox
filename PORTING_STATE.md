@@ -2,48 +2,47 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 69k lines** — exactly **68,597 physical lines** in
-88 production `.c` files, zero reference C. Latest shared-list/player-group
-conversion: **−300 C lines**. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 67k lines** — exactly **66,811 physical lines** in
+87 production `.c` files, zero reference C. Latest spellbook conversion:
+**−1,786 C lines**. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — shared lists qualified; continue spellbook UI
+## Current — spellbook qualified; continue quickbar UI
 
-List C baseline **5ef1bf5e**, Go implementation **ef7d12a9**, pattern correction
-**7c627db5** are pushed. All 2,319 frozen records match; seven focused roots and
-three production builds/ABI pass. The asset suite exactly retains its known
-1,553 failure entries. Both fresh gameplay modes regenerate the warrior map
-exactly and match their preserved frames.
+Original-C baseline **337f7c77** and the supplemental icon-release baseline
+**0c7332e1** preserve all **4,694 records in 24 groups**. The latter's committed
+source exactly matches all 1,772 original-C qualification source fingerprints;
+no native production change was staged into that baseline commit.
 
-The full accumulated corpus passes on the exact production source:
-1,079 selected/completed in default and highres; 1,075 in server. Only the existing
-opt-in map-population diagnostic is skipped. Evidence under `build/port-lists/
-milestone-final-{default,server,highres}` and `production-qualified`; all readers
-joined. See [LISTS.md](docs/porting/LISTS.md) for timings and the rejected initial
-multiline-pattern launches, which ran no tests and remain preserved.
+The native conversion is fully qualified on unchanged source:
 
-Active: [spellbook UI](docs/porting/SPELLBOOK.md), 36 functions / 1,745 C block
-lines. Original-C baseline now qualifies all 23 roots / 4,214 frozen records in
-default, repeat, server and highres (`build/port-book/c-qualified`, 286.574 seconds;
-source unchanged, no skips). Production C is unchanged. All readers are joined.
+- 137 affected tests pass in default, server and highres, with no skips
+  (`build/port-book/native-qualified`, 537.570 seconds).
+- Three production builds and ABI audits pass: 17 actual C-call/callback interfaces
+  retained, 19 private interfaces retired (`production-qualified`, 400.158 seconds).
+- The asset suite exactly preserves 1,553 known failure entries and package results
+  (15 pass / 3 fail / 32 skip).
+- Both fresh gameplay replays match all frames and regenerate the warrior map
+  exactly: `spellbook-native` and `spellbook-flat-native`. The book replay includes
+  19 preserved frames with nonempty pages and navigation.
 
-The real-asset tests cover nonempty pages and complete turns. The final gameplay
-reference `build/baseline/runs/spellbook-scaled-c` visibly exercises contents,
-details and navigation; `spellbook-scaled-c-repeat` reproduces all frames and the
-regenerated map exactly. Its existing developer game command seeds warrior
-abilities, scoped with `NOX_DEV=true` in the manifest. See the subsystem report
-for rejected earlier replay attempts and the documented coordinate/key contracts.
+All readers are joined. See [SPELLBOOK.md](docs/porting/SPELLBOOK.md) for the
+palette-storage correction during translation, the additional original-C release
+coverage, and the preserved quest-mode difference between icon drawing and pressing.
+No original frozen capture changed. The temporary C oracle can be removed after
+its source-proof check; the complete oracle is preserved in Git. All ignored
+spellbook implementation drafts and apply scripts are stale.
 
-Next: translate the connected spellbook batch, retain 14 actual C-call interfaces
-plus 3 existing callback bridges, retire 19 private interfaces, then run focused,
-affected and production qualification. The frozen C commit is the recovery oracle.
-All earlier ignored spellbook generators/drafts are stale. New native-state drafts
-under `build/port-book/` are uninstalled and uncompiled implementation sketches;
-review before using. No production implementation has been installed yet.
+Next: audit the connected quickbar owner (GAME2.c starting 0045D9D0, related
+GAME2_1.c helpers, and client__gui__guispell.c), then build its C baseline with the
+existing real quickbar/book/GUI/input/particle owners. Keep the current book frames
+as its gameplay reference and use larger coherent batches where dependencies allow.
+The accumulated pattern includes spellbook; the last full accumulated milestone
+was shared lists, before this book conversion. Use the next connected UI milestone
+for another full corpus sweep rather than repeating it inside each small edit.
 
 Continue under PORT.md without a scheduled pause. Preserve original assets/archive.
-All applied list/catalog/compressor scripts are stale; do not rerun them.
 
 <!-- /current-checkpoint -->
 

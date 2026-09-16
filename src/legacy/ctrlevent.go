@@ -106,7 +106,7 @@ func Nox_client_chatStart_46A430(v int) {
 }
 
 func Nox_client_toggleSpellbook_45AC70() {
-	C.nox_client_toggleSpellbook_45AC70()
+	bookToggle()
 }
 
 func Nox_client_toggleInventory_467C60() {

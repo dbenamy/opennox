@@ -101,7 +101,7 @@ func sub_465CD0(pos *C.uint32_t, code, typ, count C.int) {
 func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 	screen := uiInventoryPackedPoint(a)
 	pos := screen.Sub(uiWindowPosition(uiInventoryMainWindow()))
-	if C.sub_45D9B0() != 0 || memmap.Uint8(0x5D4594, 1049868) != 2 {
+	if C.int(*bookWord(1047520)) != 0 || memmap.Uint8(0x5D4594, 1049868) != 2 {
 		return 1
 	}
 	hit := func(off uintptr) bool { return uiInventoryHitRect(pos, off) }

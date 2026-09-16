@@ -169,6 +169,7 @@ target build selection and linker evidence.
 | Quest selection zero-candidate fallback prerequisite | 88 | 69,345 | +3 | 0 |
 | Complete map catalog, cycle parsing and quest rotation | 88 | 68,897 | −448 | 0 |
 | Shared intrusive lists and player-group membership | 88 | 68,597 | −300 | 0 |
+| Spellbook UI, page rendering, rewards and quickbar addition | 87 | 66,811 | −1,786 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

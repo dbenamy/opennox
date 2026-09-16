@@ -191,10 +191,10 @@ func Nox_xxx_cursor_430B00() int {
 	return int(C.nox_xxx_cursor_430B00())
 }
 func Sub_45D9B0() int {
-	return int(C.sub_45D9B0())
+	return int(*bookWord(1047520))
 }
 func Sub_45D870() {
-	C.sub_45D870()
+	bookFinishAddition()
 }
 func Nox_xxx_sprite_4C3220(a1 *client.Drawable) int {
 	return int(C.nox_xxx_sprite_4C3220((*nox_drawable)(a1.C())))
