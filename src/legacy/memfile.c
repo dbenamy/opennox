@@ -66,22 +66,3 @@ unsigned int nox_memfile_read(void* dst, const unsigned int sz, const int cnt, n
 	f->cur += n;
 	return n / sz;
 }
-
-//----- (0040AD60) --------------------------------------------------------
-unsigned int nox_memfile_read64align_40AD60(char* dest, int sz, int cnt, nox_memfile* f) {
-	const size_t cur_offset = f->cur - f->data;
-	const uint8_t over = cur_offset % 8;
-
-	char buf[8];
-	if (over) {
-		nox_memfile_read(&buf, 8 - over, 1, f);
-	}
-
-	unsigned int result = nox_memfile_read(&buf, 8, 1, f);
-	if (result != 1) {
-		return result;
-	}
-
-	memcpy(dest, &buf, cnt * sz);
-	return 1;
-}

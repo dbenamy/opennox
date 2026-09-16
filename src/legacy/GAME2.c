@@ -1076,60 +1076,6 @@ int nox_thing_read_AVNT_452890(nox_memfile* a1p, void* a2) {
 	return result;
 }
 
-//----- (00452B00) --------------------------------------------------------
-int nox_thing_skip_AVNT_452B00(nox_memfile* f) {
-	int sz = nox_memfile_read_u8(f);
-	nox_memfile_skip(f, sz);
-	return nox_thing_skip_AVNT_inner_452B30(f);
-}
-
-//----- (00452B30) --------------------------------------------------------
-int nox_thing_skip_AVNT_inner_452B30(nox_memfile* f) {
-	char v3;          // bl
-	unsigned char v5; // dl
-	int result;       // eax
-	char v8;          // [esp+Ch] [ebp+4h]
-
-	while (1) {
-		v3 = nox_memfile_read_i8(f);
-		v8 = v3;
-		switch (v8) {
-		case 0:
-			result = v3 == 0;
-			break;
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
-			nox_memfile_skip(f, 1);
-			continue;
-		case 6:
-		case 9:
-		case 0xA:
-			nox_memfile_skip(f, 2);
-			continue;
-		case 7:
-			while (1) {
-				v5 = nox_memfile_read_u8(f);
-				if (!v5) {
-					break;
-				}
-				nox_memfile_skip(f, v5);
-			}
-			continue;
-		case 8:
-			nox_memfile_skip(f, 8);
-			continue;
-		default:
-			result = 0;
-			break;
-		}
-		break;
-	}
-	return result;
-}
-
 //----- (00452BD0) --------------------------------------------------------
 int sub_452BD0(int a1, char* a2) {
 	int v2;             // esi

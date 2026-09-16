@@ -2,33 +2,24 @@
 
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME2.h"
-*/
-import "C"
-import (
-	"github.com/opennox/opennox/v1/internal/binfile"
-	"unsafe"
-)
+import "github.com/opennox/opennox/v1/internal/binfile"
 
 func PortTestThingSkip(op int, f *binfile.MemFile, scratch []byte) int {
-	p := (*C.nox_memfile)(f.C())
 	switch op {
 	case 0:
-		return int(C.nox_thing_skip_AUD_414D40(p))
+		return thingSkipAUD(f)
 	case 1:
-		return int(C.nox_thing_skip_spells_415100(p))
+		return thingSkipSpells(f)
 	case 2:
-		return int(C.nox_thing_read_ability_415320(p))
+		return thingSkipAbilities(f)
 	case 3:
-		return int(C.nox_thing_read_image_415240(p))
+		return thingSkipImages(f)
 	case 4:
-		return int(C.nox_thing_skip_AVNT_452B00(p))
+		return thingSkipAVNT(f)
 	case 5:
-		return int(C.nox_thing_skip_AVNT_inner_452B30(p))
+		return thingSkipAVNTInner(f)
 	case 6:
-		return int(C.nox_thing_read_WALL_414F60(p, unsafe.Pointer(&scratch[0])))
+		return thingSkipWall(f, scratch)
 	default:
 		panic(op)
 	}

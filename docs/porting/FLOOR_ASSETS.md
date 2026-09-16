@@ -122,3 +122,13 @@ build/port-floor-assets/native-qualification.json and native-evidence/.
 
 Net C reduction from the corrected baseline is **513 lines**. The prerequisite
 added three lines before translation; net change from composition is **510 lines**.
+
+
+## Buffer-view follow-up
+
+The following [section-reader batch](THING_SKIPS.md) restores the original public
+wrapper behavior for nonempty short slices backed by adequate capacity, while
+preserving empty-slice rejection before reader mutations. Actual game callers use
+full buffers; the added independent capacity contract supplements that gameplay
+coverage. All existing 4,396 floor/edge records remain unchanged and rerun in all
+three targets with the correction.

@@ -162,6 +162,7 @@ target build selection and linker evidence.
 | Tile composition, scrolling, overlays and private callback interfaces | 91 | 73,450 | −579 | 0 |
 | Empty floor-definition binding prerequisite | 91 | 73,453 | +3 | 0 |
 | Floor/edge asset readers, facade lookup and image-array cleanup | 91 | 72,940 | −513 | 0 |
+| Things-section readers and aligned MemFile helper | 91 | 72,542 | −398 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

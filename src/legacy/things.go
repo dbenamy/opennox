@@ -61,44 +61,44 @@ func Sub_485F30() {
 }
 
 func Nox_thing_skip_spells_415100(f *binfile.MemFile) {
-	C.nox_thing_skip_spells_415100((*nox_memfile)(f.C()))
+	thingSkipSpells(f)
 }
 
 func Nox_thing_read_ability_415320(f *binfile.MemFile) {
-	C.nox_thing_read_ability_415320((*nox_memfile)(f.C()))
+	thingSkipAbilities(f)
 }
 
 func Nox_thing_skip_AUD_414D40(f *binfile.MemFile) {
-	C.nox_thing_skip_AUD_414D40((*nox_memfile)(f.C()))
+	thingSkipAUD(f)
 }
 
 func Nox_thing_skip_AVNT_452B00(f *binfile.MemFile) {
-	C.nox_thing_skip_AVNT_452B00((*nox_memfile)(f.C()))
+	thingSkipAVNT(f)
 }
 
 func Nox_thing_read_image_415240(f *binfile.MemFile) {
-	C.nox_thing_read_image_415240((*nox_memfile)(f.C()))
+	thingSkipImages(f)
 }
 
 func Nox_thing_read_floor_485B30(f *binfile.MemFile, buf []byte) int {
 	if cap(buf) < 256*1024 {
 		panic(cap(buf))
 	}
-	return floorAssetBind(f, buf)
+	return floorAssetBind(f, thingReaderScratch(buf))
 }
 
 func Nox_thing_read_edge_485D40(f *binfile.MemFile, buf []byte) int {
 	if cap(buf) < 256*1024 {
 		panic(cap(buf))
 	}
-	return edgeAssetBind(f, buf)
+	return edgeAssetBind(f, thingReaderScratch(buf))
 }
 
 func Nox_thing_read_WALL_414F60(f *binfile.MemFile, buf []byte) int {
 	if cap(buf) < 256*1024 {
 		panic(cap(buf))
 	}
-	return int(C.nox_thing_read_WALL_414F60((*nox_memfile)(f.C()), unsafe.Pointer(&buf[0])))
+	return thingSkipWall(f, thingReaderScratch(buf))
 }
 
 func Nox_thing_read_FLOR_414DB0(f *binfile.MemFile) int {
@@ -109,7 +109,7 @@ func Nox_thing_read_EDGE_414E70(f *binfile.MemFile, buf []byte) int {
 	if cap(buf) < 256*1024 {
 		panic(cap(buf))
 	}
-	return edgeAssetSkip(f, buf)
+	return edgeAssetSkip(f, thingReaderScratch(buf))
 }
 
 func Nox_thing_read_audio_415660(f *binfile.MemFile, buf []byte) int {
@@ -130,17 +130,23 @@ func Nox_thing_read_FLOR_411540(f *binfile.MemFile, buf []byte) int {
 	if cap(buf) < 256*1024 {
 		panic(cap(buf))
 	}
-	return floorAssetDefinition(f, buf)
+	return floorAssetDefinition(f, thingReaderScratch(buf))
 }
 
 func Nox_thing_read_EDGE_411850(f *binfile.MemFile, buf []byte) int {
 	if cap(buf) < 256*1024 {
 		panic(cap(buf))
 	}
-	return edgeAssetDefinition(f, buf)
+	return edgeAssetDefinition(f, thingReaderScratch(buf))
 }
 
 func LoadAllBinFileSectionsResetCounters() {
 	C.nox_tile_def_cnt = 0
 	C.dword_5d4594_251572 = 0
+}
+
+// The old C bridge accepted nonempty short slices backed by the checked capacity.
+func thingReaderScratch(buf []byte) []byte {
+	_ = buf[0] // Preserve the original empty-slice rejection before any reader runs.
+	return buf[:cap(buf)]
 }

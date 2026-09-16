@@ -2,33 +2,31 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 73k lines** — exactly **72,940 physical lines** in
-91 production `.c` files, with zero reference C. Latest asset-reader conversion:
-**−513 C lines** from its corrected C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 73k lines** — exactly **72,542 physical lines** in
+91 production `.c` files, zero reference C. Latest section-reader conversion:
+**−398 C lines**. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — things-section reader C baseline qualified
+## Current — things-section reader Go conversion qualified
 
-Floor/edge Go **bea20162** remains the production checkpoint: **72,940 C lines /
-91 files /zero reference C**. The new C baseline is fully qualified: **7,737 frozen
-records/eight groups**, all affected roots in three targets, exact-production-
-fingerprint reuse of its builds/known failures/26 frames and an eight-interface C
-binary audit. All readers joined. See THING_SKIPS.md and ignored
-build/port-thing-skips/c-qualification.json.
+C baseline **950c536b** is committed/pushed. Go conversion is fully qualified:
+7,737 frozen section records match, earlier floor/edge contracts plus new buffer-
+view regression pass, all affected roots and three builds/ABI pass, exact known
+1,553 failures remain and normal12/flat14 frames match. C remaining: **72,542 /
+91 files /zero reference C**. All readers joined. See THING_SKIPS.md and ignored
+build/port-thing-skips/native-qualification.json. Commit/push, then continue.
+All applied scripts/stages are stale; never rerun them.
 
-Commit/push C, then apply the reviewed native draft with guarded apply-native.py.
-Preparation and freeze scripts are stale. Native implementation is unexecuted;
-review before applying. Scope: eight C functions/helpers /397 lines, retaining
-one AVNT inner export for its live C caller. Native application also preserves
-short/nonempty backing-buffer views in the five preceding floor/edge wrappers
-and adds the independent TestFloorAssetsScratchCapacity regression root.
+Next candidate: six client sound-definition functions/helpers /321 C block lines.
+Read-only scope/owner audit in build/port-client-audio-assets; no fixture/native
+source applied. Complete the actual sound-table, timer, catalog and caller audit.
+These are live client AUD/AVNT loaders, distinct from Go server audio readers.
+Retire the AVNT inner C export once its final event-loader caller moves to Go.
 
-Use native-focused-pattern.txt (things plus all floor contracts), then fresh
-native qualification/builds/ABI/full known failures/normal+flat replays. Update
-C LOC/docs, commit/push and continue. Latest complete-corpus milestone remains
-**642fba50**; future complete runs use explicit 900s/package. No question pending.
-Original assets/archive unchanged.
+Latest complete accumulated-corpus milestone: tile composition **642fba50**;
+future complete runs use explicit 900s/package. No question pending. Continue
+batches autonomously. Original assets/archive unchanged.
 
 <!-- /current-checkpoint -->
 

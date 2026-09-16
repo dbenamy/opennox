@@ -1,8 +1,10 @@
 # Things-section cursor readers
 
-Status: **qualified frozen C baseline**. Production remains the qualified floor/edge
-asset-reader conversion **bea20162**: **72,940 C lines /91 files /zero reference C**. Scope: eight connected functions /397 C block
-lines. Root `things.go` uses these while traversing sections for different loading
+Status: **qualified Go conversion**. Frozen C baseline: **950c536b**.
+Removed **398 C lines**; **72,542 lines /91 files /zero reference C** remain.
+Previous production baseline: floor/edge conversion **bea20162**, with
+**72,940 C lines /91 files /zero reference C**. Scope: eight connected functions
+and 397 C block lines. Root `things.go` uses these while traversing sections for different loading
 passes: audio definitions/events, spell/ability definitions, image records and wall
 records. This batch preserves traversal; actual definition/image owners remain.
 
@@ -46,7 +48,7 @@ and build reader before editing Go/C/header files. Original assets remain intact
 Initial C capture passed seven roots in 187.476s. Added public wall scratch-buffer
 contracts pass with all eight roots in 36.144s; the seven earlier group bytes are
 unchanged. **7,737 records/eight groups are frozen**; three-target C qualification
-is complete. No native implementation is applied. Preparation/freezing scripts
+is complete. Native implementation is now applied and qualified. Preparation/freezing scripts
 are stale and must not be rerun.
 
 The final caller audit includes the aligned MemFile helper: its only two callers
@@ -70,8 +72,7 @@ from actual C, including cursor and whole-buffer rejection contracts. An added
 independent floor/edge test will compare accepted views with full-buffer behavior
 and assert that rejected views preserve owner state. The original a4d69a64 bridge
 establishes their equivalence by passing the same address regardless of nonempty
-slice length. No frozen floor/edge expectations will change. The fix/test remain
-unapplied until native translation; qualify all existing floor records alongside it.
+slice length. No frozen floor/edge expectations will change. The fix/test are now applied and qualified alongside all existing floor records.
 
 ## Qualified C checkpoint
 
@@ -92,6 +93,31 @@ across all targets. Production fingerprints exactly match **bea20162**, so its
 three production builds, exact known 1,553 failure entries/package outcomes and
 26 matching gameplay frames remain valid evidence. Saved binary hashes match
 their original qualification, and all eight original C interfaces are present.
-No production change is smuggled into that reuse: the buffer-view follow-up is
-only a reviewed native-stage plan at this point. Source fingerprints remain
+At the C checkpoint, production was unchanged and the buffer-view correction
+was still an unapplied native-stage plan. Source fingerprints remain
 unchanged throughout. Evidence: build/port-thing-skips/c-qualification.json.
+
+## Go conversion and buffer-view regression coverage
+
+Go now owns all seven section functions and the aligned-byte behavior. Seven C
+interfaces retire; the AVNT inner helper retains one narrow export for its actual
+remaining C event-loader caller. No test-only C algorithm remains.
+Removing 397 function-block lines and the now-terminal separator blank removes
+398 physical C lines.
+
+The public wall reader and five preceding floor/edge readers preserve the original
+capacity-based buffer contract. Existing capacity checks remain, empty views are
+rejected before calling a reader, and accepted nonempty views expose their backing
+capacity. Original-C wall captures cover this directly. The independent floor/edge
+root checks all five readers, accepted short/full views and unchanged owner state
+on rejection; its original-C basis is the address-only bridge in a4d69a64. Existing
+4,396 floor/edge frozen records remain unchanged.
+
+Focused 16 roots passed in **183.071s**.
+Affected roots **307 / 305 / 307** completed in **248.978 / 252.756 / 179.232s**
+(default/server/highres); all 7,737 section records match frozen C. All three
+production builds pass ELF32/i386/SSE2/CGO, retained/retired-interface checks and
+absence of test helpers. Exact known failures remain 1,553 entries with unchanged
+package outcomes. Fresh normal 12 and GUI flat-floor 14 gameplay frames match.
+Source fingerprints remain unchanged throughout. Evidence:
+build/port-thing-skips/native-qualification.json and native-evidence/.
