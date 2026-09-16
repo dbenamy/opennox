@@ -1,7 +1,12 @@
-# Map catalog and rotation — next batch audit
+# Map catalog and rotation
 
-Status: audit and ignored drafts only. The compressor's accumulated qualification
-must finish before these source edits begin. No catalog C baseline is frozen yet.
+Status: C baseline qualified under `build/port-map-catalog/c-qualified`.
+All eight roots pass in default, repeat, server and highres (240.234s total),
+with unchanged source and no skips. Frozen expectations cover 1,789 records in
+eight groups, including all 50 shipped map names through the real metadata reader.
+The three-line prerequisite brings working production C to 69,345 lines in 88
+files; the most recent completed conversion remains 69,342, zero reference C.
+Native integration is next.
 
 Complete the connected map-list owner and rotation APIs: sorted insertion/free,
 six-mode mapcycle parsing and indices, quest grouping, selection and played-map
@@ -17,13 +22,13 @@ Read actual shipped maps through the metadata owner using a disposable mapcycle
 file. Preserve original assets, global metadata, data path and handle ownership.
 
 A valid small catalog can have zero eligible quest candidates after the family
-and recent-history exclusions. Current IntClamp(0,-1) returns -1 without advancing
-RNG, so C returns a string pointer before its row array. Proposed prerequisite:
+and recent-history exclusions. The original IntClamp(0,-1) returns -1 without advancing
+RNG, so C returns a string pointer before its row array. Implemented prerequisite before freezing C:
 fall back to a uniform choice from the full nonempty catalog when exclusions leave
 no candidate. This is a bounded, reversible bug correction under the standing
-user authorization. Implement and independently test it before freezing the C
-baseline; document the deliberate fallback/RNG change and preserve all successful
-candidate-selection behavior. No implementation has changed yet.
+user authorization. Independent contracts require a valid selected name and exactly one RNG draw for
+each choice from a catalog larger than one. Successful candidate-selection
+behavior is preserved. The C baseline commit is the recoverable oracle.
 
 Compatibility details from the audit:
 
@@ -37,9 +42,15 @@ Compatibility details from the audit:
   grouping is bytewise and stops at NUL, not Unicode case folding.
 - Preserve string-buffer tails and unsigned history/counter arithmetic.
 
-Ignored drafts are under build/port-map-catalog, with AUDIT.md describing remaining
-review and integration work. They have not been compiled or tested and must not
-be treated as completed source after a session loss.
+Coverage includes bytewise sorting/duplicate order through 180 nodes; quest
+capacity 127/128/129; six-character families; 1,050 seeded selection/history steps
+including counter wrap; all cycle mode combinations and signed cursor boundaries;
+first-line, NUL, CR/LF, EOF and 124–1,024-byte line cases. Fixtures restore list,
+quest/cycle state, metadata, startup pointers and path, and check file-handle
+cleanup. Frozen hashes are in `map-catalog-captures.json`.
+
+Ignored `native.go.draft` under build/port-map-catalog still needs integration and
+review. Other fixture drafts are stale: use the committed source fixtures.
 
 Remaining-C caller audit identifies five interfaces to retain as Go-backed C
 exports: maplist first/next, cycle enable get/set, and quest-map selection. Other

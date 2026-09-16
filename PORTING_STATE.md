@@ -8,38 +8,28 @@ Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-## Current — complete map compressor qualified; continue next batch
+## Current — map catalog C baseline qualified; native integration next
 
-C baseline **3ee3d454**, Go implementation **2699f7fc**. All 15 focused codec roots
-pass in default/server/highres, including frozen outputs, all 50 shipped compressed
-maps and independent length/distance/block/file contracts. Three production builds
-and ABI pass, known full-suite failures remain exactly 1,553, and both gameplay
-modes regenerate the warrior map exactly and match all 26 reference frames.
+The complete codec is qualified and pushed as **9a04f7fe**; its final evidence is
+in [MAP_COMPRESSION.md](docs/porting/MAP_COMPRESSION.md). The latest completed
+conversion leaves 69,342 C lines. The current catalog prerequisite adds three
+lines (69,345 working C / 88 files / zero reference C).
 
-The complete accumulated corpus passes all three targets; only the existing opt-in
-map-population prerequisite diagnostic is skipped. See
-[MAP_COMPRESSION.md](docs/porting/MAP_COMPRESSION.md) and local reports under
-`build/port-map-compression/native-loop-final` and `milestone-bounded-*`.
-All corpus readers joined; source stayed unchanged through those checks. Final
-review corrected the compressor loop to advance by the actual last chunk, avoiding
-int overflow near the 386 size limit. Fresh affected/production gates passed
-under `build/port-map-compression/native-loop-final`, with both scenarios matching
-all map bytes and frames. Those readers also joined. The full corpus above covers
-the prior wrapper loop; the final localized correction passed all 15 codec roots
-in every target. Continue the next batch now.
+[Map catalog and rotation](docs/porting/MAP_CATALOG.md) now has 1,789 frozen records
+in eight groups. All eight roots pass in default, repeat, server and highres with
+no skips and unchanged source (`build/port-map-catalog/c-qualified`, 240.234s).
+All readers joined. The reversible zero-candidate quest fallback was corrected
+before capture; see DECISIONS.md for its RNG/recent-family tradeoff.
 
-Review notes: bounded empty/oversized-file behavior, observed compressor timing,
-separating optional cleanup from validation (**a2fc6ae5**), and the test driver's
-recorded 768 MiB Go memory limit (**fd976cf1**). Original failed attempts remain
-visible; successful reruns supply the qualification. Seventeen tooling tests pass.
-
-Next: [map catalog and rotation](docs/porting/MAP_CATALOG.md). Ignored drafts under
-`build/port-map-catalog` are uncompiled and unfrozen; read AUDIT.md before using.
-The audit identified a zero-eligible-candidate quest-selection bug requiring the
-recorded reversible C prerequisite correction before freezing that baseline.
+Next: review/integrate `build/port-map-catalog/native.go.draft`, migrate Go callers,
+retain the five audited C-facing exports and retire 14 internal symbols. Do not
+copy stale fixture drafts over the committed tests. Run frozen focused checks,
+then affected/production qualification with exact known-suite comparison and both
+forced map-expansion replays. No repeated full accumulated corpus is needed solely
+for this known scope immediately after the codec milestone.
 
 Continue under PORT.md without a scheduled pause. Preserve original assets/archive.
-Compressor finalization scripts are now stale; do not rerun applied scripts.
+Compressor finalization scripts are stale; do not rerun applied scripts.
 
 <!-- /current-checkpoint -->
 

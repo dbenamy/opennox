@@ -1151,6 +1151,9 @@ char* nox_xxx_getQuestMapFile_4D0F60() // quest setup 2
 		++v10;
 		v11 += 32;
 	} while (v10 < *(int*)&dword_5d4594_1548476);
+	if (v9 == 0) {
+		return (char*)getMemAt(0x5D4594, 1525136 + 32 * nox_common_randomInt_415FA0(0, dword_5d4594_1548476 - 1));
+	}
 	v12 = nox_common_randomInt_415FA0(0, v9 - 1);
 	v13 = 0;
 	v14 = 0;

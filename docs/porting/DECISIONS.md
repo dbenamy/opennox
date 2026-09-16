@@ -1100,3 +1100,18 @@ Review later: empty input now produces the four-byte zero-size header, and input
 exceeding the wrapper's addressable allocation or format size return errors before
 creating the destination. These replace allocation panic/unchecked narrowing;
 independent tests cover both. No valid-file baseline was changed.
+
+### Quest rotation with no eligible candidate
+
+Before freezing the catalog baseline, add a fallback to uniformly select from the
+full nonempty catalog when family and recent-history exclusions remove every
+candidate. This occurs in valid small catalogs; the original reversed RNG bounds
+returned -1 without a draw and produced a name pointer before the table. Review
+later: fallback may repeat a recent family, and now consumes one RNG draw for a
+catalog larger than one. Empty/singleton and successful filtered choices preserve
+their existing contracts. The correction is three C lines, reversible, and tested
+independently before freezing 1,789 catalog/cycle records.
+
+Preserve the cycle cursor's strict `index > count` comparison and unchecked first
+non-section mapcycle line. These are observable existing behavior; changing them
+is outside this compatibility batch.

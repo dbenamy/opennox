@@ -1,0 +1,42 @@
+[
+  {
+    "label": "controls",
+    "sha256": "989631b482535c3baa34027db4da1b06143a3adf67d3d7dd0353432438ce745e",
+    "records": 101
+  },
+  {
+    "label": "cycle-groups",
+    "sha256": "a5c5ff64353809bc4e773bc2a4c205910eefd314523666d94c7e71b031cdd0ee",
+    "records": 568
+  },
+  {
+    "label": "files",
+    "sha256": "3d43cfa5d73332d3f5f537b0b4022169a490109cdc460252bfbb99aeda66b9a4",
+    "records": 4
+  },
+  {
+    "label": "first-lines",
+    "sha256": "6e52285522fdac4cdffb7b4195468e3a721b4642f8d075df7f196da3d290d140",
+    "records": 17
+  },
+  {
+    "label": "groups",
+    "sha256": "56e58d720d5804f504ffe730cf1a194d5dec4288f3ae03d77cddb6dba51de228",
+    "records": 8
+  },
+  {
+    "label": "line-endings",
+    "sha256": "6b737614e1b4b4fefa4073871534ace7489c92bc0b1cdf1c073626820742860c",
+    "records": 9
+  },
+  {
+    "label": "ordering",
+    "sha256": "01ab41e61d7721e87c34da3cb50be72bdcc3e010807f822bd35e5d0966e9f552",
+    "records": 32
+  },
+  {
+    "label": "sequences",
+    "sha256": "0d88809833169ae07f681ecaf7cfa2504aa2515d5acf5a6d8bf669afb668cc01",
+    "records": 1050
+  }
+]

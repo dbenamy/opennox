@@ -1,0 +1,523 @@
+{
+  "batch": "map-catalog",
+  "env": {
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_CAPTURE": "{out}/capture",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_CAPTURE": "{out}/capture"
+  },
+  "phases": {
+    "c": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-catalog-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-controls.json",
+            "sha256": "989631b482535c3baa34027db4da1b06143a3adf67d3d7dd0353432438ce745e"
+          },
+          {
+            "path": "{out}/capture-cycle-groups.json",
+            "sha256": "a5c5ff64353809bc4e773bc2a4c205910eefd314523666d94c7e71b031cdd0ee"
+          },
+          {
+            "path": "{out}/capture-files.json",
+            "sha256": "3d43cfa5d73332d3f5f537b0b4022169a490109cdc460252bfbb99aeda66b9a4"
+          },
+          {
+            "path": "{out}/capture-first-lines.json",
+            "sha256": "6e52285522fdac4cdffb7b4195468e3a721b4642f8d075df7f196da3d290d140"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "56e58d720d5804f504ffe730cf1a194d5dec4288f3ae03d77cddb6dba51de228"
+          },
+          {
+            "path": "{out}/capture-line-endings.json",
+            "sha256": "6b737614e1b4b4fefa4073871534ace7489c92bc0b1cdf1c073626820742860c"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "01ab41e61d7721e87c34da3cb50be72bdcc3e010807f822bd35e5d0966e9f552"
+          },
+          {
+            "path": "{out}/capture-sequences.json",
+            "sha256": "0d88809833169ae07f681ecaf7cfa2504aa2515d5acf5a6d8bf669afb668cc01"
+          }
+        ]
+      },
+      {
+        "name": "repeat",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-catalog-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/repeat.jsonl",
+          "--result",
+          "{out}/repeat-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-controls.json",
+            "sha256": "989631b482535c3baa34027db4da1b06143a3adf67d3d7dd0353432438ce745e"
+          },
+          {
+            "path": "{out}/capture-cycle-groups.json",
+            "sha256": "a5c5ff64353809bc4e773bc2a4c205910eefd314523666d94c7e71b031cdd0ee"
+          },
+          {
+            "path": "{out}/capture-files.json",
+            "sha256": "3d43cfa5d73332d3f5f537b0b4022169a490109cdc460252bfbb99aeda66b9a4"
+          },
+          {
+            "path": "{out}/capture-first-lines.json",
+            "sha256": "6e52285522fdac4cdffb7b4195468e3a721b4642f8d075df7f196da3d290d140"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "56e58d720d5804f504ffe730cf1a194d5dec4288f3ae03d77cddb6dba51de228"
+          },
+          {
+            "path": "{out}/capture-line-endings.json",
+            "sha256": "6b737614e1b4b4fefa4073871534ace7489c92bc0b1cdf1c073626820742860c"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "01ab41e61d7721e87c34da3cb50be72bdcc3e010807f822bd35e5d0966e9f552"
+          },
+          {
+            "path": "{out}/capture-sequences.json",
+            "sha256": "0d88809833169ae07f681ecaf7cfa2504aa2515d5acf5a6d8bf669afb668cc01"
+          }
+        ]
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-catalog-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-controls.json",
+            "sha256": "989631b482535c3baa34027db4da1b06143a3adf67d3d7dd0353432438ce745e"
+          },
+          {
+            "path": "{out}/capture-cycle-groups.json",
+            "sha256": "a5c5ff64353809bc4e773bc2a4c205910eefd314523666d94c7e71b031cdd0ee"
+          },
+          {
+            "path": "{out}/capture-files.json",
+            "sha256": "3d43cfa5d73332d3f5f537b0b4022169a490109cdc460252bfbb99aeda66b9a4"
+          },
+          {
+            "path": "{out}/capture-first-lines.json",
+            "sha256": "6e52285522fdac4cdffb7b4195468e3a721b4642f8d075df7f196da3d290d140"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "56e58d720d5804f504ffe730cf1a194d5dec4288f3ae03d77cddb6dba51de228"
+          },
+          {
+            "path": "{out}/capture-line-endings.json",
+            "sha256": "6b737614e1b4b4fefa4073871534ace7489c92bc0b1cdf1c073626820742860c"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "01ab41e61d7721e87c34da3cb50be72bdcc3e010807f822bd35e5d0966e9f552"
+          },
+          {
+            "path": "{out}/capture-sequences.json",
+            "sha256": "0d88809833169ae07f681ecaf7cfa2504aa2515d5acf5a6d8bf669afb668cc01"
+          }
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-catalog-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-controls.json",
+            "sha256": "989631b482535c3baa34027db4da1b06143a3adf67d3d7dd0353432438ce745e"
+          },
+          {
+            "path": "{out}/capture-cycle-groups.json",
+            "sha256": "a5c5ff64353809bc4e773bc2a4c205910eefd314523666d94c7e71b031cdd0ee"
+          },
+          {
+            "path": "{out}/capture-files.json",
+            "sha256": "3d43cfa5d73332d3f5f537b0b4022169a490109cdc460252bfbb99aeda66b9a4"
+          },
+          {
+            "path": "{out}/capture-first-lines.json",
+            "sha256": "6e52285522fdac4cdffb7b4195468e3a721b4642f8d075df7f196da3d290d140"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "56e58d720d5804f504ffe730cf1a194d5dec4288f3ae03d77cddb6dba51de228"
+          },
+          {
+            "path": "{out}/capture-line-endings.json",
+            "sha256": "6b737614e1b4b4fefa4073871534ace7489c92bc0b1cdf1c073626820742860c"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "01ab41e61d7721e87c34da3cb50be72bdcc3e010807f822bd35e5d0966e9f552"
+          },
+          {
+            "path": "{out}/capture-sequences.json",
+            "sha256": "0d88809833169ae07f681ecaf7cfa2504aa2515d5acf5a6d8bf669afb668cc01"
+          }
+        ]
+      }
+    ],
+    "focused": [
+      {
+        "name": "focused",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-catalog-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/focused.jsonl",
+          "--result",
+          "{out}/focused-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-controls.json",
+            "sha256": "989631b482535c3baa34027db4da1b06143a3adf67d3d7dd0353432438ce745e"
+          },
+          {
+            "path": "{out}/capture-cycle-groups.json",
+            "sha256": "a5c5ff64353809bc4e773bc2a4c205910eefd314523666d94c7e71b031cdd0ee"
+          },
+          {
+            "path": "{out}/capture-files.json",
+            "sha256": "3d43cfa5d73332d3f5f537b0b4022169a490109cdc460252bfbb99aeda66b9a4"
+          },
+          {
+            "path": "{out}/capture-first-lines.json",
+            "sha256": "6e52285522fdac4cdffb7b4195468e3a721b4642f8d075df7f196da3d290d140"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "56e58d720d5804f504ffe730cf1a194d5dec4288f3ae03d77cddb6dba51de228"
+          },
+          {
+            "path": "{out}/capture-line-endings.json",
+            "sha256": "6b737614e1b4b4fefa4073871534ace7489c92bc0b1cdf1c073626820742860c"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "01ab41e61d7721e87c34da3cb50be72bdcc3e010807f822bd35e5d0966e9f552"
+          },
+          {
+            "path": "{out}/capture-sequences.json",
+            "sha256": "0d88809833169ae07f681ecaf7cfa2504aa2515d5acf5a6d8bf669afb668cc01"
+          }
+        ]
+      }
+    ],
+    "native": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-catalog-affected-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-controls.json",
+            "sha256": "989631b482535c3baa34027db4da1b06143a3adf67d3d7dd0353432438ce745e"
+          },
+          {
+            "path": "{out}/capture-cycle-groups.json",
+            "sha256": "a5c5ff64353809bc4e773bc2a4c205910eefd314523666d94c7e71b031cdd0ee"
+          },
+          {
+            "path": "{out}/capture-files.json",
+            "sha256": "3d43cfa5d73332d3f5f537b0b4022169a490109cdc460252bfbb99aeda66b9a4"
+          },
+          {
+            "path": "{out}/capture-first-lines.json",
+            "sha256": "6e52285522fdac4cdffb7b4195468e3a721b4642f8d075df7f196da3d290d140"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "56e58d720d5804f504ffe730cf1a194d5dec4288f3ae03d77cddb6dba51de228"
+          },
+          {
+            "path": "{out}/capture-line-endings.json",
+            "sha256": "6b737614e1b4b4fefa4073871534ace7489c92bc0b1cdf1c073626820742860c"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "01ab41e61d7721e87c34da3cb50be72bdcc3e010807f822bd35e5d0966e9f552"
+          },
+          {
+            "path": "{out}/capture-sequences.json",
+            "sha256": "0d88809833169ae07f681ecaf7cfa2504aa2515d5acf5a6d8bf669afb668cc01"
+          }
+        ]
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-catalog-affected-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-controls.json",
+            "sha256": "989631b482535c3baa34027db4da1b06143a3adf67d3d7dd0353432438ce745e"
+          },
+          {
+            "path": "{out}/capture-cycle-groups.json",
+            "sha256": "a5c5ff64353809bc4e773bc2a4c205910eefd314523666d94c7e71b031cdd0ee"
+          },
+          {
+            "path": "{out}/capture-files.json",
+            "sha256": "3d43cfa5d73332d3f5f537b0b4022169a490109cdc460252bfbb99aeda66b9a4"
+          },
+          {
+            "path": "{out}/capture-first-lines.json",
+            "sha256": "6e52285522fdac4cdffb7b4195468e3a721b4642f8d075df7f196da3d290d140"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "56e58d720d5804f504ffe730cf1a194d5dec4288f3ae03d77cddb6dba51de228"
+          },
+          {
+            "path": "{out}/capture-line-endings.json",
+            "sha256": "6b737614e1b4b4fefa4073871534ace7489c92bc0b1cdf1c073626820742860c"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "01ab41e61d7721e87c34da3cb50be72bdcc3e010807f822bd35e5d0966e9f552"
+          },
+          {
+            "path": "{out}/capture-sequences.json",
+            "sha256": "0d88809833169ae07f681ecaf7cfa2504aa2515d5acf5a6d8bf669afb668cc01"
+          }
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/map-catalog-affected-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-controls.json",
+            "sha256": "989631b482535c3baa34027db4da1b06143a3adf67d3d7dd0353432438ce745e"
+          },
+          {
+            "path": "{out}/capture-cycle-groups.json",
+            "sha256": "a5c5ff64353809bc4e773bc2a4c205910eefd314523666d94c7e71b031cdd0ee"
+          },
+          {
+            "path": "{out}/capture-files.json",
+            "sha256": "3d43cfa5d73332d3f5f537b0b4022169a490109cdc460252bfbb99aeda66b9a4"
+          },
+          {
+            "path": "{out}/capture-first-lines.json",
+            "sha256": "6e52285522fdac4cdffb7b4195468e3a721b4642f8d075df7f196da3d290d140"
+          },
+          {
+            "path": "{out}/capture-groups.json",
+            "sha256": "56e58d720d5804f504ffe730cf1a194d5dec4288f3ae03d77cddb6dba51de228"
+          },
+          {
+            "path": "{out}/capture-line-endings.json",
+            "sha256": "6b737614e1b4b4fefa4073871534ace7489c92bc0b1cdf1c073626820742860c"
+          },
+          {
+            "path": "{out}/capture-ordering.json",
+            "sha256": "01ab41e61d7721e87c34da3cb50be72bdcc3e010807f822bd35e5d0966e9f552"
+          },
+          {
+            "path": "{out}/capture-sequences.json",
+            "sha256": "0d88809833169ae07f681ecaf7cfa2504aa2515d5acf5a6d8bf669afb668cc01"
+          }
+        ]
+      },
+      {
+        "name": "compressor-helper",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{root}/build/port-map-catalog/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/map-catalog-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      }
+    ]
+  },
+  "production": {
+    "description": "Map catalog and rotation in Go",
+    "assets": "build/assets/extracted/drive_c/Nox",
+    "known_suite": "build/port-rule-command/full-suite.jsonl",
+    "scenario_runner": "tools/porting/run_scenario.py",
+    "force_map_decompression": true,
+    "retained": [
+      "nox_common_maplist_first_4D09B0",
+      "nox_common_maplist_next_4D09C0",
+      "sub_4D0D70",
+      "sub_4D0D90",
+      "nox_xxx_getQuestMapFile_4D0F60"
+    ],
+    "retired": [
+      "nox_common_maplist_add_4D0760",
+      "nox_common_maplist_free_4D0970",
+      "nox_xxx_loadMapCycle_4D0A30",
+      "sub_4D0C70",
+      "sub_4D0C80",
+      "sub_4D0CC0",
+      "sub_4D0D50",
+      "sub_4D0DA0",
+      "sub_4D0DC0",
+      "sub_4D0DE0",
+      "nox_xxx_mapSelectFirst_4D0E00",
+      "sub_4D0F30",
+      "nox_xxx_getSomeMapName_4D0CF0",
+      "sub_4D10F0"
+    ],
+    "scenarios": [
+      {
+        "name": "map-catalog-native",
+        "reference": "build/baseline/runs/map-encode-native-final",
+        "scenario": "docs/porting/minimap-chapter.yaml"
+      },
+      {
+        "name": "map-catalog-flat-native",
+        "reference": "build/baseline/runs/map-encode-flat-native-final",
+        "scenario": "docs/porting/tile-raster-flat.yaml"
+      }
+    ],
+    "compress_maps": [
+      "war01a/War01A.map"
+    ],
+    "map_compressor": "build/port-map-catalog/map-compress"
+  }
+}
