@@ -2,37 +2,30 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 73k lines** — exactly **72,542 physical lines** in
-91 production `.c` files, zero reference C. Latest section-reader conversion:
-**−398 C lines**. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 72k lines** — exactly **72,221 physical lines** in
+91 production `.c` files, zero reference C. Latest client audio-definition conversion:
+**−321 C lines**. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — two-round process trial, first round in preparation
+## Current — process trial round 1 qualified; round 2 next
 
-Last qualified production commit **f0db7a7b** is pushed. Things-section readers
-removed 398 C lines; all recorded gates passed. C remains **72,542 /91 files**.
+C baseline **06a35720**, implementation **0b3cbe58**. Round 1 fully qualifies:
+1,433 frozen audio records; 51 affected roots in all three variants without skips;
+three builds/ABI; exact 1,553 known failures; normal12/flat14 matching frames.
+C remaining **72,221 /91 files /zero reference C**. All readers joined. Evidence:
+build/port-client-audio-assets/native-qualified/result.json. See CLIENT_AUDIO_ASSETS.md.
+All audio preparation/freeze/apply/finalize scripts are stale once committed.
 
-User requested trying the revised process for two complete conversion rounds,
-then pausing to reflect. See [PROCESS_TRIAL.md](docs/porting/PROCESS_TRIAL.md).
-Tooling checkpoint **b303c046** is pushed. Package-aware driver accounting and
-manifest runner have ten passing failure-path/acceptance tests. Warm actual
-root/tree comparisons took 6.041/12.707s (not a cold-build benchmark).
+Round 2: complete 969-line map decoder in legacy/cnxz. Read-only source/owner
+audit and unapplied decoder/test/scenario drafts are under build/port-map-decompression.
+Use 50 real map pairs plus independent synthetic/block/history/file contracts;
+retain live C compressor. No round2 source or goldens applied at this checkpoint.
+Run full accumulated corpus at the combined milestone, then PAUSE for reflection
+as requested. See PROCESS_TRIAL.md. Original archive/assets unchanged.
 
-Round 1 C baseline **06a35720** is pushed. Go replacement applied; all eight
-roots /1,433 frozen records match in native-focused-fixed (107.538s including
-rebuild). Initial compile found one unused import, removed before that run.
-C is now **72,221 /91 files**, pending completed-round qualification. Native
-manifest phase is next: three affected suites, builds/ABI, exact known full-suite
-failures and two gameplay references. Do not claim round completion yet.
-All audio apply/preparation scripts are stale; never rerun them.
-
-Round 2 read-only candidate: 969-line map decoder in legacy/cnxz, with independent
-block-history and real-map fixtures drafted under build/port-map-decompression.
-No round2 source applied. Pause after two qualified rounds for reflection.
-
-Latest full accumulated-corpus milestone: tile composition **642fba50**.
-Use explicit 900s/package for the complete corpus. Preserve original archive.
+Latest complete accumulated corpus: **642fba50**. New milestone uses explicit
+900s/package and ./... selection. No product decision pending.
 
 <!-- /current-checkpoint -->
 

@@ -75,3 +75,10 @@ The common production qualifier now takes ABI and scenario declarations from the
 same manifest, recording builds, exact failure/package comparison and integration
 outcomes. It reuses the proven local gameplay runner; that remaining recovery
 requirement is explicit rather than silently embedding it in another batch script.
+
+Round 1 completed: 321 C lines removed, eight frozen groups /1,433 records and
+51 affected roots in all targets pass. One fixture ownership correction (file
+handles) and one compile-only unused-import correction; no Go behavioral
+mismatch. Full native qualification took 499.084s. See CLIENT_AUDIO_ASSETS.md.
+The small pre-existing scope established the runner; round 2 will test a larger
+969-line self-contained scope and a non-root test package.

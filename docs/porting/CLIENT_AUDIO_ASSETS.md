@@ -71,4 +71,20 @@ artifacts: build/port-client-audio-assets, including failed fixture logs.
 Go implementation checkpoint: initial compile reported the now-unused unsafe
 import in things.go; removing it allowed all 1,433 frozen records and independent
 contracts to pass on the first behavioral run (107.538s including rebuild).
-321 C lines removed, 72,221 remain. Full round qualification is pending.
+321 C lines removed, 72,221 remain. Full round qualification is recorded below.
+
+## Completed round 1
+
+C baseline `06a35720`; Go implementation checkpoint `0b3cbe58`. All 51 affected
+roots pass without skips in three variants; all 1,433 frozen records match.
+Test driver wall seconds (including discovery/build): default 40.288, server 135.706, highres 54.476.
+All three ELF32/i386/SSE2/CGO builds and ABI pass: two retained Go-backed C
+exports, five retired interfaces, no test helpers. Full assets retain exactly
+1,553 failure entries and 15 pass/3 fail/32 skip package outcomes. Normal12 and
+flat14 gameplay frames match their preceding references. Source hashes remained
+unchanged throughout qualification. No production reference C remains.
+
+C remaining: **72,221 physical lines /91 files**, a reduction of **321**.
+Manifest qualification elapsed 499.084s. This excludes fixture
+authoring, initial captures, translation and the failed compile/import correction.
+Raw evidence: build/port-client-audio-assets/native-qualified.

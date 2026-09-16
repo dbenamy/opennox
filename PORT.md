@@ -14,14 +14,13 @@
 
 ## Current status
 
-Client UI, minimap, world walls, tile rendering, floor/edge asset readers and
-things-section cursor readers are converted. The latest batch removes **398 C
-lines** and preserves the public readers' backing-buffer contract. All **7,737
-frozen section results** match; earlier floor contracts, affected tests, three
-builds/ABI, exact known failures and 26 gameplay frames qualify the change.
-About **73k C lines remain: 72,542 physical lines in 91 files**,
-with zero reference C. Next candidate: connected client sound-definition loaders
-and lookup helpers, six C blocks /321 lines, pending full owner/caller audit.
+Client sound-definition readers and sample lookup are converted. Round 1 of the
+process trial removes **321 C lines**; all **1,433 frozen records**, 51 affected
+roots in three variants, production builds/ABI, exact known failures and 26
+reference gameplay frames qualify the change. About **72k C lines remain:
+72,221 physical lines in 91 files**, with zero reference C. Round 2 selects the
+969-line map decoder and will finish with the accumulated-corpus milestone, then
+pause for reflection. See [CLIENT_AUDIO_ASSETS.md](docs/porting/CLIENT_AUDIO_ASSETS.md).
 The latest full accumulated rendering milestone remains **642fba50**.
 See [THING_SKIPS.md](docs/porting/THING_SKIPS.md) and [PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain
