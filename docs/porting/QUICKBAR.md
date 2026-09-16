@@ -40,7 +40,7 @@ full accumulated UI milestone. Commit/push each qualified chunk and continue.
 
 ## Baseline development checkpoint
 
-The initial candidate has four direct test roots covering 390 slot-search cases,
+The first candidate had four direct test roots covering 390 slot-search cases,
 125 full-word swaps, 270 actual activation-message cases and 48 pending-activation
 transition records. Expectations are not frozen yet. The focused build is the only
 active source reader; additional test drafts remain under ignored
@@ -66,3 +66,22 @@ there is no writer. Correct the closing read to 1047912 before freezing the fina
 conversion baseline. Preserve these original hashes and the Git revision as evidence.
 The correction is reversible and needs no user decision; it restores the row
 that the same operation already saved.
+
+The original seven-root baseline is committed as **fdc5048e** (949 records).
+The one-line row-read correction is being checked against all seven roots.
+Only the expanded-row expectation changes; the six other original hashes remain
+enforced. Slot-event coverage is drafted outside source while this reader runs.
+
+## Saved-row correction
+
+Corrected the closing read from 1047908 to 1047912. All seven roots pass
+(default porttest, no skips, 115.618 seconds). The six unrelated frozen hashes
+remain identical. A field-level comparison of the ten expanded-row records
+changes only the closed selected-row byte, its row pointer and the direction
+indicators for that restored row. Original captures remain recoverable from
+fdc5048e and quickbar-original-captures.json; quickbar-captures.json has the
+corrected baseline. C LOC is unchanged at 66,811.
+
+This prerequisite has focused validation. The connected batch's server/highres,
+production, gameplay and accumulated checks remain pending. The quickbar port
+itself has not yet begun.

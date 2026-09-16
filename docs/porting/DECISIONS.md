@@ -1143,3 +1143,14 @@ backdoor or changes to the shipped game data are needed. Key taps use one frame;
 ASCII console text uses individual key events. Pointer inputs are in the 1280x960
 window coordinate space, scaled to the 1024x768 gameplay renderer.
 See [SPELLBOOK.md](SPELLBOOK.md) for frozen tests and rejected replay evidence.
+
+### Quickbar collapse restores the row saved by expansion
+
+During the quickbar baseline audit, the complete real-window transition confirmed
+that expansion saved the selected row at 1047912 while collapse read unwritten
+1047908, returning every starting row to zero. Read 1047912 on collapse. This is a
+reversible prerequisite correction before freezing the final port baseline.
+Seven focused C roots pass; only restored-row/pointer/direction-indicator fields
+change, and six unrelated capture hashes remain exact. Original behavior is
+preserved in fdc5048e and quickbar-original-captures.json. See QUICKBAR.md for the
+remaining batch qualification gates.

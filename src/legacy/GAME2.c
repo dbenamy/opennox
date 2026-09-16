@@ -4582,7 +4582,7 @@ int nox_xxx_quickBarClose_4606B0() {
 		v0 += 256;
 		v6 += 40;
 	} while ((int)v0 < (int)getMemAt(0x5D4594, 1049220));
-	*(uint8_t*)((uint32_t)nox_xxx_aClosewoodengat_587000_133480 + 200) = getMemByte(0x5D4594, 1047908);
+	*(uint8_t*)((uint32_t)nox_xxx_aClosewoodengat_587000_133480 + 200) = getMemByte(0x5D4594, 1047912);
 	*(uint32_t*)((uint32_t)nox_xxx_aClosewoodengat_587000_133480 + 204) =
 		(uint32_t)nox_xxx_aClosewoodengat_587000_133480 +
 		40 * *(unsigned char*)((uint32_t)nox_xxx_aClosewoodengat_587000_133480 + 200);

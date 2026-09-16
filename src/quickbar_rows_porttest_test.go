@@ -53,12 +53,11 @@ func TestQuickbarExpandedRows(t *testing.T) {
 		ret := q.call("nox_xxx_quickBarClose_4606B0")
 		q.check(t, ret == 1 && memmap.Uint32(0x5D4594, 1049476) == 0, "close exits expanded view")
 		q.check(t, q.bar[2] == 75 && q.bar[3] == 0xabcdef80, "close copies low flag byte without clobbering upper bytes")
-		// Original C reads 1047908 instead of the selected row saved at 1047912.
-		// Record this prerequisite behavior before evaluating its correction.
-		q.check(t, byte(q.bar[50]) == 0, "original C saved-row mismatch")
+		// Closing restores the row saved by the matching expansion.
+		q.check(t, byte(q.bar[50]) == byte(selected), "closing restores the selected row")
 		rows = append(rows, q.snapshot(fmt.Sprintf("selected%d-closed", selected), ret))
 	}
-	spellbookCapture(t, "quickbar-expanded-rows", rows, "be08551827e6ec47b87336c06d90072e46abc031226da708ef3ee588f1ada8c8")
+	spellbookCapture(t, "quickbar-expanded-rows", rows, "4a5c57ea1d6a2ee64eee652785ae96e93737efbba9b8fa0c21281ba8396ac323")
 }
 
 func TestQuickbarRowNavigation(t *testing.T) {
