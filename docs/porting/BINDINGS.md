@@ -1,10 +1,11 @@
 # Binding editors
 
-The next connected batch covers the in-game and main-menu key-binding editors:
-21 C functions / 757 physical lines. The C implementation is still installed;
-the corrected C baseline is qualified: **7,425 frozen records / nine groups**,
-matching default, repeat, server and highres, plus all 32 affected tests without
-skips. The 28-frame C gameplay baseline also repeats exactly; translation is next.
+The in-game and main-menu key-binding editors are fully native and qualified:
+**21 C functions / 755 net C lines removed**, leaving **62,571 lines / 83 files**.
+All **7,425 frozen records / nine groups**, the full three-target accumulated
+milestone, production interfaces, known asset-suite results, 28 binding gameplay
+frames and flat-map regeneration pass. The scoped prompt correction was qualified
+in C before translation; it is the only intentional behavior change.
 
 ## Scope and contracts
 
@@ -25,8 +26,9 @@ skips. The 28-frame C gameplay baseline also repeats exactly; translation is nex
 
 ## Review notes
 
-No production behavior changes have been made. Sharing Go helpers is appropriate
-only where the two original owners agree. Keep animation ownership separate.
+The only intentional behavior change is the prompt prerequisite described below.
+The native owners share row logic where the two C implementations agree and keep
+menu animation ownership separate.
 The assignment fixture uses real listboxes and independently checks every registered
 key plus invalid codes, both columns, absent selection and first/last rows.
 It explicitly owns live C globals separately from backing blob bytes, and restores
@@ -145,6 +147,45 @@ agree. Preserve it for this translation and investigate rendering separately.
 The replay framework disables full settings-file writes. The independent tests
 cover actual hotkey serialization and parsing through temporary files.
 
-This completes the C baseline. The native qualification will run the full
-accumulated suite across all three targets as the next UI milestone, adding the
-summon and binding groups to its selector. Native Go drafts remain uninstalled.
+This completed the C baseline at efccce6e. Native qualification subsequently ran
+the full accumulated suite across all three targets, adding summon and binding
+groups to its selector. Do not overwrite the installed source with stale drafts.
+
+## Qualified native implementation
+
+Twenty-one C functions move to gui_bindings_state.go, gui_bindings_ui.go and
+gui_bindings_exports.go. Six adapters remain for production C callers and raw
+animation callback fields; fifteen private interfaces retire. Existing Go callers
+and fixtures dispatch directly to Go. Four compatibility window-pointer storage
+definitions remain in GAME3_1.c; no C algorithm is retained solely for testing.
+
+The corrected C ranges occupy 760 physical lines; five lines of compatibility
+storage replace them. Net removal: **755**, leaving **62,571 / 83
+files / zero reference C**. The focused native-first run matches all **7,425
+records / nine groups** on its first attempt (111.748s driver, including rebuild).
+A subsequent naming/import/comment cleanup is covered by the final qualification
+runs, rather than claiming native-first used the final source identity.
+
+Review preserved the unsigned-entry/signed-loop list count, unsigned binding
+window centering, own-window visibility checks, secondary-before-primary apply
+order, modal-stack behavior and menu animation callbacks. The frozen expectations
+are unchanged. Full accumulated checks and production/gameplay gates pass.
+
+Final evidence under build/port-bindings:
+
+- native-default/server/highres: 1,151 / 1,147 / 1,151 selected tests completed,
+  only TestMapPopulationPrerequisiteProbe skipped. Driver times 914.811 / 912.283 /
+  969.536 seconds. Each also verifies all nine binding capture hashes.
+- production: all three ELF32/i386/SSE2/CGO builds and interfaces pass; six live
+  Go-backed C adapters remain, fifteen retired symbols are absent, no test helpers
+  are linked. The full asset suite matches all 1,553 known failure entries and
+  exactly 15 passing / 3 failing / 32 skipped packages.
+- bindings-native: all 28 reference frames match (52.262s process time).
+  bindings-flat-native: exact reference frames and warrior map regeneration
+  (48.904s process time). Total production phase 315.756s.
+- static-native-final.log: static memory-access check passes. Source/index proof
+  native-index-proof.json matches all four final phases (1,832 source files).
+
+All readers are joined. This milestone closes the accumulated regression gate;
+use connected affected checks inside the next options batch and broaden again at
+its next meaningful boundary. No unresolved qualification failure remains.

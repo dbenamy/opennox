@@ -52,7 +52,7 @@ func sub_4A1A40(a1 int) {
 }
 
 func Sub_4CBD30() {
-	C.sub_4CBD30()
+	bindingMenu.apply()
 }
 
 func Sub_430AA0(v int) {
@@ -60,7 +60,7 @@ func Sub_430AA0(v int) {
 }
 
 func Sub_4C35B0(v int) {
-	C.sub_4C35B0(C.int(v))
+	bindingClose(v)
 }
 
 func Get_nox_wnd_xxx_1309740() *gui.Anim {

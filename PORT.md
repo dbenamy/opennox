@@ -15,25 +15,21 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. The summon-creature panel is qualified, removing **994 C lines**
-and leaving **63,323 physical lines in 85 files**, with zero reference C.
-The subsequent binding-prompt correction adds three lines: current **63,326 / 85**.
-All **7,954 frozen records in 63 connected summon/book/quickbar groups** match in
-default/server/highres. Three production builds and interface audits pass; the
-asset suite retains exactly its known failures. Fresh conjurer gameplay matches
-all 20 reference frames, and the flat replay matches with exact map regeneration.
+scheduled pause. The binding-editor conversion is qualified, removing **755 C
+lines** and leaving **62,571 physical lines in 83 files**, with zero reference C.
+All **7,425 frozen records / nine binding groups** match. The full accumulated
+milestone passes **1,151 selected tests in default/highres and 1,147 in server**,
+with only the existing opt-in diagnostic skipped. Three production builds and
+interface audits pass; the asset suite retains exactly its known failures.
+The binding replay matches all 28 reference frames, and the flat replay matches
+with exact map regeneration.
 
-The latest full accumulated milestone was quickbar: 1,128 tests in default/highres
-and 1,124 in server, with only the existing opt-in diagnostic skipped. Summon uses
-the completed-batch affected checks; broaden again at the next relevant milestone.
-See [SUMMON.md](docs/porting/SUMMON.md) for the menu-clamp prerequisite correction,
-preserved animation behavior, hit-test translation correction and evidence.
-[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. The next connected
-batch is the in-game/main-menu binding editor. Its C baseline has **7,425 frozen
-records in nine groups**, matching default/server/highres plus repeat; all 32
-affected binding/listbox/entry tests pass. See [BINDINGS.md](docs/porting/BINDINGS.md).
-The 28-frame C gameplay baseline repeats exactly; translation is next. Confident reversible decisions
-remain recorded for review.
+See [BINDINGS.md](docs/porting/BINDINGS.md) for the prompt prerequisite correction,
+preserved edge cases, rendering follow-up and evidence. The next connected batch
+is the main-menu/in-game options panels, approximately 889 C lines across twelve
+functions. It can use affected checks after this accumulated milestone.
+[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. Confident reversible
+decisions remain recorded for review.
 
 ## Goal and target
 

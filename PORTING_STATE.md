@@ -2,81 +2,53 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 63k lines** — **63,326 physical lines in 85 production
-`.c` files**, zero reference C. The qualified summon conversion removes **994**; the later prompt fix adds **3**.
+**Rough C remaining: about 63k lines** — **62,571 physical lines in 83 production
+`.c` files**, zero reference C. The binding conversion removes **755**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — binding-editor C contracts qualified; gameplay next
+## Current — binding editors qualified; next options panels
 
-Quickbar final qualification **657c6dc4** is pushed. Summon C contracts **f40d94dc**
-and gameplay baseline **20e9b5e3** are pushed. The completed native summon owner
-removes 36 C functions / 994 lines; six C adapters remain and thirty interfaces
-retire. See [SUMMON.md](docs/porting/SUMMON.md) for source, tests and review notes.
-The only intentional behavior change is the documented C menu-bottom clamp fix.
+The completed binding conversion moves 21 C functions into Go, retains six
+required C adapters and retires fifteen private interfaces. Four compatibility
+window-pointer storage definitions remain; no C algorithms are kept for testing.
+The C baseline commits d6879118, 2b8f2db9 and efccce6e are pushed. The only
+intentional behavior change is the earlier blank-prompt fix qualified in C.
+See [BINDINGS.md](docs/porting/BINDINGS.md) for contracts and review notes.
 
-Evidence under build/port-summon:
-- c-default/repeat/server/highres: all 971 summon records / fourteen groups.
-- c-affected: all 7,954 records / 63 summon/book/quickbar groups; previous hashes
-  unchanged. C source index proof: c-index-proof.json (1,818 files).
-- summon-c and summon-c-repeat under baseline/runs: real Summon Bat, Guard,
-  individual/group menus and banishment; twenty identical frames. Metadata and
-  scenario are tracked in summon-replay.json and summon-conjurer.yaml.
-- native-focused-02: all fourteen groups after correcting local/global hit tests.
-- native-default/server/highres: all 7,954 / 63 in each target, no skips. Driver
-  seconds 87.996 / 168.256 / 97.015.
-- production: all three builds/ABI, exactly 1,553 known asset-suite failures and
-  15/3/32 packages, exact native conjurer frames, exact flat frames and warrior-map
-  regeneration. Final source proof: native-index-proof.json, 1,821 files.
+Evidence under build/port-bindings:
+- native-first: all 7,425 frozen records / nine groups match on first translation.
+- final native-default/server/highres: full accumulated milestone passes
+  1,151 / 1,147 / 1,151 selected tests; only the existing opt-in map diagnostic
+  skipped. All nine binding capture hashes match. Driver seconds
+  914.811 / 912.283 / 969.536.
+- production: three builds/ABI, exact known asset-suite failures (1,553 entries,
+  15 passing / 3 failing / 32 skipped packages), 28 exact binding frames and flat
+  reference frames with exact warrior map regeneration. Phase 315.756s.
+- native-index-proof.json matches staged source to all four final phases
+  (1,832 source files). static-native-final.log passes. All readers are joined.
 
-All readers are joined. The failed native-first and initial conjurer-develop run
-remain diagnostic only. Keep con01a.map for campaign availability; the separate
-flat replay covers forced map regeneration. Copied assets in completed C scenario
-runs are hash-deduplicated with restorable manifests; screenshots/logs remain.
-Do not rerun stale summon drafts or integrate_native.py. Preserve the unrelated
-untracked asset archive. Source build/baseline/env.sh for every Go command.
+Review later: the blank-prompt prerequisite fix; preserved unsigned narrow-screen
+centering; transient wheel-frame background/clipping artifact already in C,
+which redraws normally on the later frame. Settings serialization/parsing uses
+real temporary files; full configuration writes are disabled in gameplay replays.
 
-The first binding-editor C baseline, pushed as d6879118, qualified **7,412
-records / six groups**, exact in default/repeat/server/highres; all 29 affected
-binding/listbox/entry tests pass without skips. At that baseline, production C was unchanged:
-**63,323 lines / 85 files**. See [BINDINGS.md](docs/porting/BINDINGS.md), the tracked
-bindings-batch.json manifest and bindings-captures.json hashes. Evidence is under
-build/port-bindings/c-{default,repeat,server,highres,affected}; all readers joined.
+Next: commit/push this qualified conversion, then immediately continue the next
+connected batch. Candidate build/port-options/candidate.json covers twelve
+main-menu/in-game options functions / 889 C lines, with actual slider, checkbox,
+audio, dialog, configuration and advanced-video owners. Use affected checks after
+this accumulated milestone. No next-batch source is installed.
 
-The prompt correction now passes: **7,425 records / nine groups**, matching all
-four c-prompt-{default,repeat,server,highres} runs plus 32 affected tests. Source
-proof is c-prompt-index-proof.json; source is unchanged across the five phases.
-Both C routers refresh static-text child 981 after formatting its buffer (+3 C
-lines including a header include). The regression fails before the fix in both
-editors and passes afterward. DECISIONS.md records this scoped correction.
+A separate ignored compiler-cache probe in build/port-compiler-cache produced
+byte-identical GAME3.c objects: gcc 0.864s, direct cache hit 0.018s, changed temporary
+path hit 0.070s. Current qualification still uses plain gcc. Consider a bounded
+ccache trial after this commit; no whole-build savings have been measured yet.
 
-Final C gameplay is qualified: **28 exact frames** in bindings-c and
-bindings-c-repeat, through both editors and back into gameplay. Evidence:
-build/port-bindings/c-gameplay; tracked scenario and metadata are
-bindings-editors.yaml and bindings-replay.json. The source matches all corrected
-C fixture phases. All source readers are joined. The previously blank prompt is
-fixed; a transient wheel-frame rendering artifact is recorded for later review.
-
-Next: translate the connected candidate (21 functions; original 757 C lines plus
-three prerequisite lines). Native drafts and integrate_native.py are ignored in
-build/port-bindings; review and compile after this baseline commit. Run focused
-checks during translation and the full accumulated three-target milestone at
-completion, then production/interface/known-suite and both gameplay replays. C apply serialization collapses duplicate keys with last action at
-first position; Escape cancels by popping the modal stack (not mouse capture),
-leaves the selected-list pointer, and clears its row selection. Preserve the
-synthetic narrow-screen unsigned-coordinate behavior for this batch. These are
-review notes, not behavior changes. The ignored gui_bindings_state.go draft is
-preliminary and uncompiled; its companion gui_bindings_ui.go is also a draft.
-Review and compile both only after committing the final C baseline. Other ignored *_test.go drafts are stale.
-Continue one qualified chunk at a time, recording C LOC and decisions,
-committing/pushing and continuing without a scheduled pause.
-No user question or substantial blocker is pending.
-
-The previous spellbook conversion **41b8abfb** is fully qualified and pushed;
-see [SPELLBOOK.md](docs/porting/SPELLBOOK.md). Do not rerun stale native drafts,
-`integrate.py`, or old spellbook/list generators over current source. Preserve
-`nox-iso-from-archive-org.7z`. No user question or substantial blocker is pending.
+Do not rerun stale binding/summon/spellbook integration scripts or ignored Go
+drafts over installed source. Preserve nox-iso-from-archive-org.7z. Source
+build/baseline/env.sh for every Go command. No substantive blocker or user question
+is pending. Continue qualified chunks, recording decisions for later review.
 
 <!-- /current-checkpoint -->
 

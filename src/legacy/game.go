@@ -483,7 +483,7 @@ func Sub_48D000_initGuiKick() int {
 	return int(C.sub_48D000_initGuiKick())
 }
 func Sub_4C3760() int {
-	return int(C.sub_4C3760())
+	return bindingInGame.construct()
 }
 func Sub_4C09D0() int {
 	return uiTradeInit()
@@ -507,7 +507,7 @@ func Sub_46A730() unsafe.Pointer {
 	return unsafe.Pointer(C.sub_46A730())
 }
 func Sub_4C3500() int {
-	return int(C.sub_4C3500())
+	return int(bindingYesNo())
 }
 func Nox_xxx_guiDrawRank_46E870() uint32 {
 	return uint32(uintptr(unsafe.Pointer(scoreboardConstruct())))
@@ -561,7 +561,7 @@ func Sub_48D450() {
 	C.sub_48D450()
 }
 func Sub_4C4220() {
-	C.sub_4C4220()
+	bindingDestroy()
 }
 func Nox_xxx_closeP2PTradeWnd_4C12A0() {
 	uiTradeDestroy()

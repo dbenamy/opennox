@@ -28,6 +28,7 @@ extern uint32_t dword_5d4594_1522632;
 */
 import "C"
 import "unsafe"
+import "github.com/opennox/opennox/v1/client/gui"
 
 // PortTestBindingWords owns live globals independently of the backing memory blob.
 func PortTestBindingWords() (map[int]*uint32, func()) {
@@ -60,69 +61,50 @@ func PortTestBindingWords() (map[int]*uint32, func()) {
 	}
 }
 
-// PortTestBindingAssign invokes the existing C keyboard/mouse assignment owners.
+// PortTestBindingAssign invokes the production Go keyboard/mouse assignment owners.
 func PortTestBindingAssign(menu, mouse bool, key uint32) int {
-	if menu {
-		if mouse {
-			return int(C.sub_4CC3C0(C.uint(key)))
-		}
-		return int(C.sub_4CC280(C.uint(key)))
-	}
-	if mouse {
-		return int(C.sub_4C4100(C.uint(key)))
-	}
-	return int(C.sub_4C3FC0(C.uint(key)))
-}
-func PortTestBindingModal(menu bool, win uint32, event int, key uint32, state int) int {
-	if menu {
-		return int(C.sub_4CC170(C.int(win), C.int(event), (*C.char)(unsafe.Pointer(uintptr(key))), C.int(state)))
-	}
-	return int(C.sub_4C3EB0(C.int(win), C.int(event), C.uint(key), C.int(state)))
+	return bindingEditor(menu).assign(key, mouse)
 }
 
-func PortTestBindingApply(menu bool) {
-	if menu {
-		C.sub_4CBD30()
-	} else {
-		C.sub_4C3620()
-	}
+func PortTestBindingModal(menu bool, win uint32, event int, key uint32, state int) int {
+	return gui.EventRespInt(bindingEditor(menu).modalEvent((*gui.Window)(unsafe.Pointer(uintptr(win))), &gui.RawEvent{Event: event, Arg1: uintptr(key), Arg2: uintptr(uint32(state))}))
 }
+
+func PortTestBindingApply(menu bool) { bindingEditor(menu).apply() }
 
 func PortTestBindingDimensions() [2]*int32 {
 	return [2]*int32{(*int32)(unsafe.Pointer(&C.nox_win_width)), (*int32)(unsafe.Pointer(&C.nox_win_height))}
 }
-func PortTestBindingConstruct(menu bool) int {
-	if menu {
-		return int(C.sub_4CB880())
-	}
-	return int(C.sub_4C3760())
-}
-func PortTestBindingDestroy() int { return int(C.sub_4C4220()) }
+func PortTestBindingConstruct(menu bool) int { return bindingEditor(menu).construct() }
+
+func PortTestBindingDestroy() int { return bindingDestroy() }
+
 func PortTestBindingInvoke(op string, a [4]uint32) uint32 {
+	w := (*gui.Window)(unsafe.Pointer(uintptr(a[0])))
+	ev := &gui.RawEvent{Event: int(a[1]), Arg1: uintptr(a[2]), Arg2: uintptr(a[3])}
 	switch op {
 	case "sub_4C3500":
-		return uint32(C.sub_4C3500())
+		return bindingYesNo()
 	case "sub_4C35B0":
-		return uint32(C.sub_4C35B0(C.int(a[0])))
+		return uint32(bindingClose(int(a[0])))
 	case "sub_4C4260":
-		C.sub_4C4260()
+		bindingShow()
 		return 0
 	case "sub_4C4280":
-		return uint32(C.sub_4C4280())
+		return uint32(bindingVisible())
 	case "sub_4CBB70":
-		return uint32(C.sub_4CBB70())
+		return uint32(bindingMenuBack())
 	case "sub_4CBBB0":
-		return uint32(C.sub_4CBBB0())
-	case "sub_4C3A60":
-		return uint32(C.sub_4C3A60((*C.uint32_t)(unsafe.Pointer(uintptr(a[0]))), C.uint(a[1]), C.uint(a[2]), C.int(a[3])))
-	case "sub_4CC140":
-		return uint32(C.sub_4CC140((*C.uint32_t)(unsafe.Pointer(uintptr(a[0]))), C.uint(a[1]), C.uint(a[2]), C.int(a[3])))
+		return uint32(bindingMenuDone())
+	case "sub_4C3A60", "sub_4CC140":
+		return uint32(gui.EventRespInt(bindingFilter(w, ev)))
 	case "sub_4C3CD0":
-		return uint32(C.sub_4C3CD0(C.int(a[0]), C.uint(a[1]), C.int(a[2]), C.int(a[3])))
+		return uint32(gui.EventRespInt(bindingInGame.route(w, ev)))
 	case "sub_4CBF60":
-		return uint32(C.sub_4CBF60(C.int(a[0]), C.uint(a[1]), C.int(a[2]), C.int(a[3])))
+		return uint32(gui.EventRespInt(bindingMenu.route(w, ev)))
 	default:
 		panic(op)
 	}
 }
+
 func PortTestBindingAnimationWord() *uint32 { return (*uint32)(unsafe.Pointer(&C.nox_wnd_xxx_1522608)) }
