@@ -15,19 +15,21 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. The connected quickbar batch is qualified, removing **2,494 C
-lines** and leaving **64,317 physical lines in 86 files**, with zero reference C.
-All **6,983 frozen records in 49 groups** match in default/server/highres.
-The full accumulated milestone passes 1,128 tests in default/highres and 1,124
-in server, with only the existing opt-in diagnostic skipped. Three production
-builds and interface audits pass; the asset suite has exactly its known failures.
-Fresh quickbar and flat gameplay replays match, including regenerated map bytes.
+scheduled pause. The summon-creature panel is qualified, removing **994 C lines**
+and leaving **63,323 physical lines in 85 files**, with zero reference C.
+All **7,954 frozen records in 63 connected summon/book/quickbar groups** match in
+default/server/highres. Three production builds and interface audits pass; the
+asset suite retains exactly its known failures. Fresh conjurer gameplay matches
+all 20 reference frames, and the flat replay matches with exact map regeneration.
 
-See [QUICKBAR.md](docs/porting/QUICKBAR.md) for translation boundaries, the saved-row
-prerequisite correction, fixture ownership correction and qualification evidence.
+The latest full accumulated milestone was quickbar: 1,128 tests in default/highres
+and 1,124 in server, with only the existing opt-in diagnostic skipped. Summon uses
+the completed-batch affected checks; broaden again at the next relevant milestone.
+See [SUMMON.md](docs/porting/SUMMON.md) for the menu-clamp prerequisite correction,
+preserved animation behavior, hit-test translation correction and evidence.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. The next connected
-candidate is the summon-creature panel, reusing the book/GUI/drawable fixtures.
-Confident reversible decisions remain recorded for review.
+candidate is the in-game/main-menu binding editor, reusing real GUI/listbox/input
+owners. Confident reversible decisions remain recorded for review.
 
 ## Goal and target
 
@@ -66,6 +68,8 @@ may precede full qualification when their evidence and remaining gates are expli
    Before launching long milestone gates, review arithmetic widths, signedness,
    pointer construction and callback behavior against C. Matching captured cases
    does not replace that review; add C contracts for newly identified boundaries.
+   Trace the existing C adapter when choosing a Go API: similar names can hide
+   differences in coordinate space, return conventions or ownership.
 5. Run the completed-batch qualification below, review the diff and measure C LOC.
    Update the batch report, decision log where needed, size table and checkpoint.
    Commit and push the conversion before starting another batch.

@@ -2,63 +2,48 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 64k lines** — **64,317 physical lines in 86 production
-`.c` files**, zero reference C. The qualified quickbar conversion removes **2,494**.
+**Rough C remaining: about 63k lines** — **63,323 physical lines in 85 production
+`.c` files**, zero reference C. The qualified summon conversion removes **994**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — summon-panel C baseline in progress
+## Current — summon qualified; begin binding-editor baseline
 
-Quickbar final qualification **657c6dc4** is pushed.
+Quickbar final qualification **657c6dc4** is pushed. Summon C contracts **f40d94dc**
+and gameplay baseline **20e9b5e3** are pushed. The completed native summon owner
+removes 36 C functions / 994 lines; six C adapters remain and thirty interfaces
+retire. See [SUMMON.md](docs/porting/SUMMON.md) for source, tests and review notes.
+The only intentional behavior change is the documented C menu-bottom clamp fix.
 
-Original C baseline b487b8dd and boundary supplement a6c1640e are pushed.
-Native implementation recovery f7c75139 plus this fixture/documentation follow-up
-complete the batch: 87 native functions, 19 remaining C interfaces, 68 retired.
-All **6,983 frozen records / 49 groups** pass default/server/highres.
+Evidence under build/port-summon:
+- c-default/repeat/server/highres: all 971 summon records / fourteen groups.
+- c-affected: all 7,954 records / 63 summon/book/quickbar groups; previous hashes
+  unchanged. C source index proof: c-index-proof.json (1,818 files).
+- summon-c and summon-c-repeat under baseline/runs: real Summon Bat, Guard,
+  individual/group menus and banishment; twenty identical frames. Metadata and
+  scenario are tracked in summon-replay.json and summon-conjurer.yaml.
+- native-focused-02: all fourteen groups after correcting local/global hit tests.
+- native-default/server/highres: all 7,954 / 63 in each target, no skips. Driver
+  seconds 87.996 / 168.256 / 97.015.
+- production: all three builds/ABI, exactly 1,553 known asset-suite failures and
+  15/3/32 packages, exact native conjurer frames, exact flat frames and warrior-map
+  regeneration. Final source proof: native-index-proof.json, 1,821 files.
 
-Evidence under build/port-quickbar:
-- native-final-default/server/highres: complete accumulated milestone, 1,128 /
-  1,124 / 1,128 selected tests, only the known diagnostic skip, all 49 hashes.
-- fixture-final: all 49 focused groups rechecked on the final fixture source in
-  all three targets, no skips. Manifest: fixture-batch.json.
-- production-final-02: three builds/ABI audits, exactly 1,553 known asset-suite
-  failures (15/3/32 packages), fresh quickbar-native and quickbar-flat-native replays.
-- fixture-equivalence-proof.json: only quickbar_owner_porttest_test.go differs
-  from accumulated source manifests; production source is identical. The final
-  fixture and production runs share all 1,812 source fingerprints.
+All readers are joined. The failed native-first and initial conjurer-develop run
+remain diagnostic only. Keep con01a.map for campaign availability; the separate
+flat replay covers forced map regeneration. Copied assets in completed C scenario
+runs are hash-deduplicated with restorable manifests; screenshots/logs remain.
+Do not rerun stale summon drafts or integrate_native.py. Preserve the unrelated
+untracked asset archive. Source build/baseline/env.sh for every Go command.
 
-All readers are joined. Final-index-proof.json ties the committed source to final
-qualification. Failed/superseded native-focused-01, native-qualified-* and
-production-final directories remain diagnostic only; do not reuse them as passed.
-
-See [QUICKBAR.md](docs/porting/QUICKBAR.md) for review notes and exact evidence.
-The static fixture ownership correction does not change production or goldens;
-PORT.md now includes the cheap static-memory check before long gates.
-No agents are active. Preserve the unrelated untracked asset archive. Do not rerun
-stale quickbar drafts or integrate.py. Source the pinned build/baseline/env.sh for Go.
-
-The active next owner is the summon-creature panel. See
-[SUMMON.md](docs/porting/SUMMON.md) for scope, contracts and review notes.
-The summon C baseline is fully qualified. Contract commit **f40d94dc** is pushed;
-all 971 records / 14 groups pass default/repeat/server/highres, and all 7,954 /
-63 combined book/quickbar/summon records pass. The C menu-bottom-clamp correction
-is explicit in DECISIONS.md. Production count remains 64,317 / 86.
-The conjurer gameplay capture and fresh repeat pass, including actual Summon Bat,
-guarding, both command menus and banishment. Scenario: summon-conjurer.yaml;
-identities/frame hashes: summon-replay.json. Keep con01a.map present for campaign
-availability; separate warrior/flat replay covers forced map regeneration.
-All readers are joined. Source proof: build/port-summon/c-index-proof.json, 1,818
-files. Next: finish/review/install native summon implementation, compare all
-frozen expectations and qualify affected targets/production/replays, document
-C LOC, commit/push and continue. Six C adapters remain necessary (four outside
-callers plus two tooltip callbacks), thirty private interfaces should retire.
-
-No native source installed yet. Two implementation drafts exist only under
-build/port-summon/gui_summon_state.go and gui_summon_ui.go; they are incomplete
-and require review (widget data is offset 32, not quickbar's offset 368;
-negative constants need unsigned representation; drawable flags at 120 are
-ObjFlags). Do not run stale initial wrapper/UI baseline generators.
+Next: the connected in-game and main-menu binding editor, **21 functions / 757 C
+lines**. Ignored candidate audit: build/port-bindings/candidate.json. No next-batch
+source changes are installed. Build a C baseline with real listboxes and binding
+owners, covering duplicate keys, primary/secondary ordering, mandatory Escape,
+apply/cancel and file output in a temporary directory. Confirm caller/global
+ownership before translation. Continue one qualified chunk at a time, recording
+review decisions and C LOC, committing/pushing and continuing without a pause.
 No user question or substantial blocker is pending.
 
 The previous spellbook conversion **41b8abfb** is fully qualified and pushed;

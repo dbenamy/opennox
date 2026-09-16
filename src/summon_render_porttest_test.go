@@ -111,7 +111,7 @@ func TestSummonControlEvents(t *testing.T) {
 				if op == "nox_xxx_wndSummonProc_4C2B10" {
 					w = *o.summonWords["dword_5d4594_1321036"]
 				}
-				// A real window's ID selects the command in the third handler.
+				// Window word 8 (widget data) selects the command in the third handler.
 				(*[101]uint32)(unsafe.Pointer(uintptr(w)))[8] = 4
 				ret := o.call(op, w, event, uint32(560)|(uint32(0)<<16))
 				want := uint32(0)

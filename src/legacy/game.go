@@ -516,7 +516,7 @@ func Nox_xxx_guiMotdLoad_4465C0() uint32 {
 	return uint32(C.nox_xxx_guiMotdLoad_4465C0())
 }
 func Nox_xxx_guiSummonCreatureLoad_4C1D80() int {
-	return int(C.nox_xxx_guiSummonCreatureLoad_4C1D80())
+	return summonCreate()
 }
 func Sub_4AB260() int {
 	return int(C.sub_4AB260())

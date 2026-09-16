@@ -6,7 +6,6 @@ package legacy
 #include "defs.h"
 #include "GAME3_1.h"
 #include "client__gui__guisumn.h"
-void nox_client_orderCreature(int creature, int command);
 extern uint32_t dword_5d4594_1320988;
 extern uint32_t dword_5d4594_1320992;
 extern uint32_t dword_5d4594_1321024;
@@ -20,86 +19,91 @@ extern uint32_t dword_5d4594_1321208;
 extern uint32_t nox_xxx_screenWidth_587000_184452;
 */
 import "C"
-import "unsafe"
+import (
+	"image"
+	"unsafe"
+)
 
-// PortTestSummonInvoke calls production C directly; no test algorithm is retained.
+// PortTestSummonInvoke calls the production Go owner directly.
 func PortTestSummonInvoke(op string, a [5]uint32) uint32 {
+	record := func(v uint32) *summonRecord { return (*summonRecord)(unsafe.Pointer(uintptr(v))) }
+	pos := func(v uint32) *[2]int32 { return (*[2]int32)(unsafe.Pointer(uintptr(v))) }
 	switch op {
 	case "sub_4C1CA0":
-		return uint32(C.sub_4C1CA0(C.int(a[0])))
+		return uint32(summonSetCommand(a[0]))
 	case "nox_xxx_guiDrawSummonBox_4C1FE0":
-		return uint32(C.nox_xxx_guiDrawSummonBox_4C1FE0((*C.uint32_t)(unsafe.Pointer(uintptr(a[0])))))
+		return uint32(summonDraw(bookWindow(a[0])))
 	case "nox_xxx_wndSummonGet_4C2410":
-		return uint32(C.nox_xxx_wndSummonGet_4C2410((*C.int2)(unsafe.Pointer(uintptr(a[0])))))
+		return summonGet(pos(a[0]))
 	case "nox_xxx_guiDrawSummon_4C2440":
-		return uint32(C.nox_xxx_guiDrawSummon_4C2440(C.int(a[0])))
+		return summonIcon(int(a[0]))
 	case "nox_xxx_guiHideSummonWindow_4C2470":
-		return uint32(C.nox_xxx_guiHideSummonWindow_4C2470())
+		return summonClose()
 	case "sub_4C24A0":
-		return uint32(C.sub_4C24A0())
+		return 1
 	case "nox_xxx_wndSummonBigButtonProc_4C24B0":
-		return uint32(C.nox_xxx_wndSummonBigButtonProc_4C24B0(C.int(a[0]), C.int(a[1]), C.uint(a[2])))
+		return uint32(summonBigEvent(bookWindow(a[0]), a[1], a[2]))
 	case "sub_4C2A00":
-		return uint32(C.sub_4C2A00(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), (*C.short)(unsafe.Pointer(uintptr(a[4])))))
+		return uint32(summonOutline(image.Pt(int(a[0]), int(a[1])), a[2], a[3], GoWStringP(unsafe.Pointer(uintptr(a[4])))))
 	case "nox_client_orderCreature":
-		C.nox_client_orderCreature(C.int(a[0]), C.int(a[1]))
+		summonOrder(record(a[0]), a[1])
 		return 0
 	case "nox_xxx_clientOrderCreature_4C2A60":
-		return uint32(C.nox_xxx_clientOrderCreature_4C2A60(C.int(a[0]), C.uint(a[1])))
+		return uint32(summonCommandEvent(bookWindow(a[0]), a[1], 0))
 	case "nox_xxx_wndSummonProc_4C2B10":
-		return uint32(C.nox_xxx_wndSummonProc_4C2B10((*C.uint32_t)(unsafe.Pointer(uintptr(a[0]))), C.uint(a[1]), C.uint(a[2])))
+		return uint32(summonBoxEvent(bookWindow(a[0]), a[1], a[2]))
 	case "sub_4C2BD0":
-		return uint32(C.sub_4C2BD0())
+		return 0
 	case "sub_4C2BE0":
-		return uint32(C.sub_4C2BE0())
+		return 1
 	case "sub_4C2BF0":
-		return uint32(uintptr(unsafe.Pointer(C.sub_4C2BF0())))
+		return summonClearGrid()
 	case "sub_4C2C20":
-		return uint32(C.sub_4C2C20((*C.uint32_t)(unsafe.Pointer(uintptr(a[0]))), C.int(a[1]), C.uint(a[2])))
+		return uint32(sub_4C2C20((*C.uint32_t)(unsafe.Pointer(uintptr(a[0]))), C.int(a[1]), C.uint(a[2])))
 	case "sub_4C2C60":
-		return uint32(C.sub_4C2C60((*C.uint32_t)(unsafe.Pointer(uintptr(a[0]))), (*C.int2)(unsafe.Pointer(uintptr(a[1])))))
+		return uint32(uintptr(summonSlotTooltip(bookWindow(a[0]), image.Pt(int(pos(a[1])[0]), int(pos(a[1])[1])))))
 	case "sub_4C2D60":
-		return uint32(uintptr(unsafe.Pointer(C.sub_4C2D60())))
+		return summonAddress(summonFirst())
 	case "sub_4C2D90":
-		return uint32(uintptr(unsafe.Pointer(C.sub_4C2D90(C.int(a[0])))))
+		return summonAddress(summonNext(record(a[0])))
 	case "sub_4C2DD0":
-		return uint32(C.sub_4C2DD0(C.int(a[0])))
+		return uint32(summonMobile(record(a[0])))
 	case "sub_4C2E00":
-		return uint32(C.sub_4C2E00())
+		return uint32(summonAnyMobile())
 	case "nox_xxx_cliSummonCreat_4C2E50":
-		return uint32(C.nox_xxx_cliSummonCreat_4C2E50(C.int(a[0]), C.int(a[1]), C.int(a[2])))
+		return uint32(int8(summonAdd(a[0], a[1], a[2] != 0)))
 	case "sub_4C2EF0":
-		return uint32(C.sub_4C2EF0(C.int(a[0])))
+		return uint32(summonClass(int(a[0])))
 	case "sub_4C2F20":
-		return uint32(uintptr(unsafe.Pointer(C.sub_4C2F20())))
+		return summonAddress(summonAllocate())
 	case "sub_4C2F70":
-		return uint32(uintptr(unsafe.Pointer(C.sub_4C2F70())))
+		return summonLayout()
 	case "sub_4C2FD0":
-		return uint32(C.sub_4C2FD0(C.int(a[0])))
+		return uint32(summonPlace(record(a[0])))
 	case "sub_4C3030":
-		return uint32(C.sub_4C3030((*C.int)(unsafe.Pointer(uintptr(a[0]))), C.int(a[1]), C.int(a[2])))
+		return uint32(summonPaint(pos(a[0]), int32(a[1]), a[2]))
 	case "sub_4C30C0":
-		return uint32(C.sub_4C30C0((*C.int)(unsafe.Pointer(uintptr(a[0]))), C.int(a[1])))
+		return uint32(summonAvailable(pos(a[0]), int32(a[1])))
 	case "nox_xxx_cliSummonOnDieOrBanish_4C3140":
-		C.nox_xxx_cliSummonOnDieOrBanish_4C3140(C.int(a[0]), (unsafe.Pointer)(unsafe.Pointer(uintptr(a[1]))))
+		summonRemove(a[0], a[1] != 0)
 		return 0
 	case "sub_4C31D0":
-		return uint32(uintptr(unsafe.Pointer(C.sub_4C31D0(C.int(a[0])))))
+		return summonAddress(summonFind(a[0]))
 	case "sub_4C3210":
-		return uint32(C.sub_4C3210(C.int(a[0])))
+		return summonDeactivate(record(a[0]))
 	case "nox_xxx_sprite_4C3220":
-		return uint32(C.nox_xxx_sprite_4C3220((*C.nox_drawable)(unsafe.Pointer(uintptr(a[0])))))
+		return uint32(bool2int(summonFind(*(*uint32)(unsafe.Pointer(uintptr(a[0]) + 128))) != nil))
 	case "sub_4C3260":
-		return uint32(C.sub_4C3260())
+		return uint32(bool2int(summonFirst() != nil))
 	case "nox_xxx_guiSummonCreatureLoad_4C1D80":
-		return uint32(C.nox_xxx_guiSummonCreatureLoad_4C1D80())
+		return uint32(summonCreate())
 	case "nox_xxx_wndSummonCreateList_4C2560":
-		C.nox_xxx_wndSummonCreateList_4C2560((*C.int2)(unsafe.Pointer(uintptr(a[0]))))
+		summonMenu(image.Pt(int(pos(a[0])[0]), int(pos(a[0])[1])))
 		return 0
 	case "sub_4C27F0":
-		return uint32(C.sub_4C27F0((*C.uint32_t)(unsafe.Pointer(uintptr(a[0])))))
+		return uint32(summonDrawMenu(bookWindow(a[0])))
 	case "sub_4C2CE0":
-		return uint32(C.sub_4C2CE0())
+		return uint32(summonCommandTooltip())
 	}
 	panic("unknown summon operation: " + op)
 }
@@ -131,40 +135,40 @@ func PortTestSummonWords() (map[string]*uint32, func()) {
 func PortTestSummonCallbacks() map[string]unsafe.Pointer {
 	return map[string]unsafe.Pointer{
 		"sub_4C1CA0":                            C.sub_4C1CA0,
-		"nox_xxx_guiDrawSummonBox_4C1FE0":       C.nox_xxx_guiDrawSummonBox_4C1FE0,
-		"nox_xxx_wndSummonGet_4C2410":           C.nox_xxx_wndSummonGet_4C2410,
-		"nox_xxx_guiDrawSummon_4C2440":          C.nox_xxx_guiDrawSummon_4C2440,
-		"nox_xxx_guiHideSummonWindow_4C2470":    C.nox_xxx_guiHideSummonWindow_4C2470,
-		"sub_4C24A0":                            C.sub_4C24A0,
-		"nox_xxx_wndSummonBigButtonProc_4C24B0": C.nox_xxx_wndSummonBigButtonProc_4C24B0,
-		"sub_4C2A00":                            C.sub_4C2A00,
-		"nox_client_orderCreature":              C.nox_client_orderCreature,
-		"nox_xxx_clientOrderCreature_4C2A60":    C.nox_xxx_clientOrderCreature_4C2A60,
-		"nox_xxx_wndSummonProc_4C2B10":          C.nox_xxx_wndSummonProc_4C2B10,
-		"sub_4C2BD0":                            C.sub_4C2BD0,
-		"sub_4C2BE0":                            C.sub_4C2BE0,
-		"sub_4C2BF0":                            C.sub_4C2BF0,
+		"nox_xxx_guiDrawSummonBox_4C1FE0":       nil,
+		"nox_xxx_wndSummonGet_4C2410":           nil,
+		"nox_xxx_guiDrawSummon_4C2440":          nil,
+		"nox_xxx_guiHideSummonWindow_4C2470":    nil,
+		"sub_4C24A0":                            nil,
+		"nox_xxx_wndSummonBigButtonProc_4C24B0": nil,
+		"sub_4C2A00":                            nil,
+		"nox_client_orderCreature":              nil,
+		"nox_xxx_clientOrderCreature_4C2A60":    nil,
+		"nox_xxx_wndSummonProc_4C2B10":          nil,
+		"sub_4C2BD0":                            nil,
+		"sub_4C2BE0":                            nil,
+		"sub_4C2BF0":                            nil,
 		"sub_4C2C20":                            C.sub_4C2C20,
-		"sub_4C2C60":                            C.sub_4C2C60,
-		"sub_4C2D60":                            C.sub_4C2D60,
-		"sub_4C2D90":                            C.sub_4C2D90,
-		"sub_4C2DD0":                            C.sub_4C2DD0,
-		"sub_4C2E00":                            C.sub_4C2E00,
+		"sub_4C2C60":                            nil,
+		"sub_4C2D60":                            nil,
+		"sub_4C2D90":                            nil,
+		"sub_4C2DD0":                            nil,
+		"sub_4C2E00":                            nil,
 		"nox_xxx_cliSummonCreat_4C2E50":         C.nox_xxx_cliSummonCreat_4C2E50,
-		"sub_4C2EF0":                            C.sub_4C2EF0,
-		"sub_4C2F20":                            C.sub_4C2F20,
-		"sub_4C2F70":                            C.sub_4C2F70,
-		"sub_4C2FD0":                            C.sub_4C2FD0,
-		"sub_4C3030":                            C.sub_4C3030,
-		"sub_4C30C0":                            C.sub_4C30C0,
+		"sub_4C2EF0":                            nil,
+		"sub_4C2F20":                            nil,
+		"sub_4C2F70":                            nil,
+		"sub_4C2FD0":                            nil,
+		"sub_4C3030":                            nil,
+		"sub_4C30C0":                            nil,
 		"nox_xxx_cliSummonOnDieOrBanish_4C3140": C.nox_xxx_cliSummonOnDieOrBanish_4C3140,
-		"sub_4C31D0":                            C.sub_4C31D0,
-		"sub_4C3210":                            C.sub_4C3210,
-		"nox_xxx_sprite_4C3220":                 C.nox_xxx_sprite_4C3220,
+		"sub_4C31D0":                            nil,
+		"sub_4C3210":                            nil,
+		"nox_xxx_sprite_4C3220":                 nil,
 		"sub_4C3260":                            C.sub_4C3260,
-		"nox_xxx_guiSummonCreatureLoad_4C1D80":  C.nox_xxx_guiSummonCreatureLoad_4C1D80,
-		"nox_xxx_wndSummonCreateList_4C2560":    C.nox_xxx_wndSummonCreateList_4C2560,
-		"sub_4C27F0":                            C.sub_4C27F0,
+		"nox_xxx_guiSummonCreatureLoad_4C1D80":  nil,
+		"nox_xxx_wndSummonCreateList_4C2560":    nil,
+		"sub_4C27F0":                            nil,
 		"sub_4C2CE0":                            C.sub_4C2CE0,
 	}
 }

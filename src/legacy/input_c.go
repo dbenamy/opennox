@@ -197,7 +197,7 @@ func Sub_45D870() {
 	bookFinishAddition()
 }
 func Nox_xxx_sprite_4C3220(a1 *client.Drawable) int {
-	return int(C.nox_xxx_sprite_4C3220((*nox_drawable)(a1.C())))
+	return bool2int(summonFind(a1.NetCode32) != nil)
 }
 func Nox_xxx_wnd_46C2A0(a1 *gui.Window) int {
 	return uiWindowHidden(a1)

@@ -19,7 +19,6 @@ package legacy
 extern void* nox_gui_itemAmount_dialog_1319228;
 
 int nox_ctrlevent_add_ticks_42E630();
-void nox_client_orderCreature(int creature, int command);
 */
 import "C"
 import (
@@ -90,7 +89,7 @@ func Nox_client_trapSetSelect_4604B0(ind int) {
 }
 
 func Nox_client_orderCreature(a1, a2 int) {
-	C.nox_client_orderCreature(C.int(a1), C.int(a2))
+	summonOrder((*summonRecord)(unsafe.Pointer(uintptr(a1))), uint32(a2))
 }
 
 func Get_nox_gui_itemAmount_dialog_1319228() *gui.Window {
