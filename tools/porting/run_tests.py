@@ -45,7 +45,11 @@ def main():
         return finish("test pattern must be one nonempty line")
     args.log.parent.mkdir(parents=True, exist_ok=True)
     common = ["go", "test", "-p", "2", "-tags", args.tags]
-    env = dict(os.environ, GOMAXPROCS=os.environ.get("GOMAXPROCS", "2"))
+    # A long 386 process can exhaust its 4 GiB address space before the default
+    # heap-growth target triggers collection. Leave room for C and mapped blobs.
+    env = dict(os.environ, GOMAXPROCS=os.environ.get("GOMAXPROCS", "2"),
+               GOMEMLIMIT=os.environ.get("GOMEMLIMIT", "768MiB"))
+    result["runtime_env"] = {k: env.get(k) for k in ("GOMAXPROCS", "GOMEMLIMIT", "GOGC")}
     discovery = args.log.with_suffix(args.log.suffix + ".discovery")
     with discovery.open("w") as log:
         proc = subprocess.run(common + ["-json", "-list", pattern] + packages, cwd=ROOT / "src",

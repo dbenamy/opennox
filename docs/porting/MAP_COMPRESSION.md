@@ -69,3 +69,19 @@ matched its reference frames (12 normal, 14 flat-floor). Final integration repor
 reuse check accepted the original three builds and full suite without rebuilding.
 Successful copies were deduplicated separately with verified restoration manifests;
 the first cleanup-failed run copy is retained unchanged. Full corpus still running.
+
+## Accumulated-process memory issue
+
+The first default accumulated sweep exhausted the 386 process address space
+(about 3.99 GiB already in use) while allocating a 1.85 MiB server fixture in
+TestProtectionValidateABI. It completed 826 selected tests; this is a failed,
+incomplete sweep, not a qualification. Log: `milestone/default.jsonl`.
+The fixture alone passes with a 768 MiB Go memory limit (0.318s package time).
+Host memory remained available; this was the 32-bit process limit.
+
+The test driver now defaults to `GOMEMLIMIT=768MiB`, preserves explicit overrides
+and records effective runtime settings. Two driver tests cover default/override
+propagation. Full reruns are pending in isolated target output directories with
+GOMAXPROCS=1 and a 1,800s per-package timeout for concurrent target execution.
+All selected cases remain required; the lone opt-in prerequisite skip is unchanged.
+No game or fixture source changed.

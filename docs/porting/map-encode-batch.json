@@ -469,6 +469,123 @@
           "{root}/build/port-map-compression/native-qualified/production"
         ]
       }
+    ],
+    "milestone-default": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      }
+    ],
+    "milestone-server": [
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      }
+    ],
+    "milestone-highres": [
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-synthetic.json",
+            "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244"
+          },
+          {
+            "path": "{out}/capture-block-history.json",
+            "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a"
+          },
+          {
+            "path": "{out}/capture-real-maps.json",
+            "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e"
+          },
+          {
+            "path": "{out}/capture-encode-matches.json",
+            "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
+          }
+        ]
+      }
     ]
   },
   "production": {

@@ -28,8 +28,9 @@ process and authorized continued batches; there is no scheduled review pause.
 
 C remaining **71,252 /90 files /zero reference C**. No product question blocks
 implementation. Active batch: complete NXZ map compressor and allocation helpers. C baseline
-**3ee3d454** is pushed; Go passes focused frozen/independent contracts. Production
-and milestone gates pending. Working size **69,342 /88 files /zero reference C**
+**3ee3d454** is pushed; Go passes focused frozen/independent contracts. Production builds/ABI, exact known failures and both gameplay modes pass.
+Initial full-corpus attempt hit 386 address-space exhaustion in an older fixture;
+rerunning with a recorded 768 MiB Go memory limit. Milestone gate pending. Working size **69,342 /88 files /zero reference C**
 (−1,910); the top count remains the last qualified size until those gates finish.
 See [PROCESS_TRIAL.md](docs/porting/PROCESS_TRIAL.md) for measured results,
 limitations and recommendations.

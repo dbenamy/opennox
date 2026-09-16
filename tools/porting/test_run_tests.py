@@ -60,6 +60,22 @@ class Accounting(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertEqual(launch.call_args.args[0][-1], '.')
 
+    def test_memory_budget_defaults_and_reaches_test_process(self):
+        events = [dict(Package='p', Test='TestExample', Action=a) for a in ('run','pass')]
+        with patch.dict(run_tests.os.environ, {}, clear=True):
+            code, result, launch = self.run_driver([('p','TestExample')], events)
+        self.assertEqual(code, 0)
+        self.assertEqual(result['runtime_env']['GOMEMLIMIT'], '768MiB')
+        self.assertEqual(launch.call_args.kwargs['env']['GOMEMLIMIT'], '768MiB')
+
+    def test_explicit_runtime_budget_is_preserved(self):
+        events = [dict(Package='p', Test='TestExample', Action=a) for a in ('run','pass')]
+        with patch.dict(run_tests.os.environ, {'GOMEMLIMIT':'512MiB','GOMAXPROCS':'1','GOGC':'50'}):
+            code, result, launch = self.run_driver([('p','TestExample')], events)
+        self.assertEqual(code, 0)
+        self.assertEqual(result['runtime_env'], {'GOMEMLIMIT':'512MiB','GOMAXPROCS':'1','GOGC':'50'})
+        self.assertEqual(launch.call_args.kwargs['env']['GOMEMLIMIT'], '512MiB')
+
 
 if __name__ == '__main__':
     unittest.main()

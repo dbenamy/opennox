@@ -155,7 +155,11 @@ Reconsider the tests as the behavior and failure modes become clearer.
   or arbitrary number of batches has completed.
   Select affected packages explicitly (`--package`, root by default).
   Check that selected tests actually start and finish; discovery success or a
-  process exit alone does not establish coverage.
+  process exit alone does not establish coverage. The test driver defaults to
+  `GOMEMLIMIT=768MiB` to limit Go heap growth within the 386 address space; explicit
+  environment settings override it and the effective settings are recorded.
+  Independent target sweeps may run concurrently when their output directories
+  and fixtures are isolated and total CPU/memory fit this VM.
 - **Builds and ABI:** all three production binaries on 386/SSE2/CGO. Check expected
   C callbacks/exports, retired symbols and absence of test helpers. Assert sizes,
   alignment and offsets for types crossing the C/Go boundary.
