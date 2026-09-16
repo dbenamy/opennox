@@ -20,8 +20,10 @@ floor/edge asset readers are converted. The latest asset batch removes **513 C
 lines**; all **4,396 frozen results** match in three targets. Affected tests, three
 builds/ABI, exact known failures and 26 fresh gameplay frames qualify the change.
 About **73k C lines remain: 72,940 physical lines in 91 files**,
-with zero reference C. Next: seven connected things-section skip functions /379
+with zero reference C. Next: eight connected things-section skip functions/helpers /397
 C block lines. The latest full accumulated rendering milestone is **642fba50**.
+The next section-reader batch has **7,737 qualified frozen C records**; see
+[THING_SKIPS.md](docs/porting/THING_SKIPS.md).
 See [FLOOR_ASSETS.md](docs/porting/FLOOR_ASSETS.md) and
 [PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain

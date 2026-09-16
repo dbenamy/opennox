@@ -1051,3 +1051,24 @@ Use the real startup facade strings/pointers and actual image resolver in tests;
 inline names currently resolve nil. Keep raw calloc/free ownership compatible,
 without retaining C reader algorithms solely for the oracle. Retire the now-unused
 width/height C adapters in the same Go batch, retaining their live Go owners.
+
+## Things-section traversal and public scratch-buffer views
+
+Port the connected section readers together, including the aligned MemFile helper
+whose only callers are in the wall reader. Preserve absolute eight-byte alignment,
+full eight-byte consumption for count fields, partial scratch writes and early
+returns. Keep one AVNT inner export while the client event loader still calls it.
+Original-C contracts cover all tag bytes, count/name boundaries, concatenated
+sections and public wall buffer views. Do not retain C algorithms just for tests.
+
+Review found a compatibility edge in the preceding Go floor/edge readers. Their
+original wrappers check backing capacity and pass `&buf[0]` to C, so any nonempty
+view with enough capacity behaves like the full buffer; zero length is rejected
+before execution. Actual game callers pass full buffers, which is why replay did
+not reveal the shorter-view difference. Preserve that public contract in the
+native section batch: keep capacity guards, check element zero before reslicing,
+and expose capacity to the Go reader. This applies to five floor/edge wrappers
+and the new wall reader. Add the independent floor-view equivalence/rejection
+contract; retain all existing frozen floor expectations. This is a reversible
+compatibility correction within the standing authorization, not a new parsing
+policy or relaxed input requirement.

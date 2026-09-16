@@ -8,25 +8,27 @@ Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-## Current — floor/edge asset-reader Go conversion qualified
+## Current — things-section reader C baseline qualified
 
-C baseline **a4d69a64** is committed/pushed. Go asset readers are fully qualified:
-all 4,396 records in seven groups match in default/server/highres; every selected
-affected root finishes; three builds/ABI pass; exactly the same 1,553 full-suite
-failures and 26 matching gameplay frames remain. C remaining: **72,940 /91
-files /zero reference C**. All source readers joined. See FLOOR_ASSETS.md and
-build/port-floor-assets/native-qualification.json. Commit/push conversion, then
-continue. All applied scripts/stages are stale; never rerun them.
+Floor/edge Go **bea20162** remains the production checkpoint: **72,940 C lines /
+91 files /zero reference C**. The new C baseline is fully qualified: **7,737 frozen
+records/eight groups**, all affected roots in three targets, exact-production-
+fingerprint reuse of its builds/known failures/26 frames and an eight-interface C
+binary audit. All readers joined. See THING_SKIPS.md and ignored
+build/port-thing-skips/c-qualification.json.
 
-Next: seven connected things-section skip functions /379 C block lines. Ignored
-scope, implementation and fixture drafts in build/port-thing-skips; none applied
-or executed. Review encoding/absolute eight-byte alignment and remaining AVNT
-inner C caller before baseline capture. Do not trust draft expectations until
-actual C qualification. Reuse actual MemFile and caller behavior.
+Commit/push C, then apply the reviewed native draft with guarded apply-native.py.
+Preparation and freeze scripts are stale. Native implementation is unexecuted;
+review before applying. Scope: eight C functions/helpers /397 lines, retaining
+one AVNT inner export for its live C caller. Native application also preserves
+short/nonempty backing-buffer views in the five preceding floor/edge wrappers
+and adds the independent TestFloorAssetsScratchCapacity regression root.
 
-Latest complete accumulated-corpus milestone: tile composition **642fba50**,
-1,023/1,019/1,023 roots. Use explicit 900s/package for future complete runs. No
-question pending. Continue autonomously; original assets/archive unchanged.
+Use native-focused-pattern.txt (things plus all floor contracts), then fresh
+native qualification/builds/ABI/full known failures/normal+flat replays. Update
+C LOC/docs, commit/push and continue. Latest complete-corpus milestone remains
+**642fba50**; future complete runs use explicit 900s/package. No question pending.
+Original assets/archive unchanged.
 
 <!-- /current-checkpoint -->
 
