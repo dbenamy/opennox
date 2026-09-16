@@ -4,7 +4,7 @@ The next connected batch covers the in-game and main-menu key-binding editors:
 21 C functions / 757 physical lines. The C implementation is still installed;
 the corrected C baseline is qualified: **7,425 frozen records / nine groups**,
 matching default, repeat, server and highres, plus all 32 affected tests without
-skips. Gameplay qualification and translation remain.
+skips. The 28-frame C gameplay baseline also repeats exactly; translation is next.
 
 ## Scope and contracts
 
@@ -119,10 +119,32 @@ Current C remaining: **63,326 lines / 85 files**, zero reference C. The original
 The corrected menu development replay visibly names the action, assigns A to
 Move Forward, removes its former duplicate, and returns to options. Explicit
 post-transition waits are required before interacting: an animation completion
-can otherwise change focus after an early prompt opens. Final combined menu and
-in-game gameplay qualification is still pending.
+can otherwise change focus after an early prompt opens. The final combined menu/in-game replay is qualified below.
 
 For disk space, verified duplicates in completed summon-native, summon-flat-native
 and bindings-menu-develop2 runs were removed using the existing hash-and-restore
 manifest procedure (1,660,074,083 bytes). Original assets, screenshots, logs,
 modified files and saves remain. Restore with the recorded per-run manifest.
+
+
+## Qualified C gameplay
+
+The tracked bindings-editors.yaml scenario covers both editors: primary and
+secondary assignments, duplicate removal, Escape cancellation, defaults, menu
+animation return, in-game wheel assignment, applying bindings, returning through
+options/quit menu and resuming gameplay. All **28 reference frames** repeat exactly.
+Metadata and frame hashes are in bindings-replay.json. Manifest-driven evidence:
+build/port-bindings/c-gameplay (118.862s), with process times 61.405s capture and
+51.578s repeat. Binary SHA256:
+`a628b3258227f0865caf4f3d5547de294839305910752124904cf4fdd1a249c8`.
+The staged source matches this run and all five corrected-C fixture phases.
+
+Review note: game_wheel_assigned captures a transient background/clipping artifact
+already present in C; game_cancelled later redraws normally. Both reference runs
+agree. Preserve it for this translation and investigate rendering separately.
+The replay framework disables full settings-file writes. The independent tests
+cover actual hotkey serialization and parsing through temporary files.
+
+This completes the C baseline. The native qualification will run the full
+accumulated suite across all three targets as the next UI milestone, adding the
+summon and binding groups to its selector. Native Go drafts remain uninstalled.

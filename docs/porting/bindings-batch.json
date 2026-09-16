@@ -301,6 +301,368 @@
           }
         ]
       }
+    ],
+    "c-gameplay": [
+      {
+        "name": "client-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/client",
+          "./cmd/opennox"
+        ]
+      },
+      {
+        "name": "capture",
+        "command": [
+          "env",
+          "NOX_DEV=true",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/bindings-editors.yaml",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Binding editor C with prompt refresh",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "bindings-c",
+          "capture"
+        ]
+      },
+      {
+        "name": "compare",
+        "command": [
+          "env",
+          "NOX_DEV=true",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/bindings-editors.yaml",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Binding editor C with prompt refresh",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "bindings-c-repeat",
+          "compare",
+          "{root}/build/baseline/runs/bindings-c"
+        ]
+      }
+    ],
+    "native-default": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-binding-apply.json",
+            "sha256": "45353301e424f93c06c27a77b128c3cdfe6888694c4de294e5adae4762bc3020"
+          },
+          {
+            "path": "{out}/capture-binding-assignments.json",
+            "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
+          },
+          {
+            "path": "{out}/capture-binding-auxiliary.json",
+            "sha256": "a29f9eb5aa7ead40c99d9ff7d103f206aea0e2bedf73fcd3c110284fd7a98d72"
+          },
+          {
+            "path": "{out}/capture-binding-cancel.json",
+            "sha256": "167ba3826021173a744054ba1f28b1cb88bea697f5528f9f70f7d77c0fa6b3c9"
+          },
+          {
+            "path": "{out}/capture-binding-capture.json",
+            "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
+          },
+          {
+            "path": "{out}/capture-binding-construction.json",
+            "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-prompt-text.json",
+            "sha256": "4b3a6545560ef5bd2bed35b0a904da80755703d165aac00661d891f6f059974a"
+          },
+          {
+            "path": "{out}/capture-binding-routing.json",
+            "sha256": "22a667044908725ad803326ae28269fda5f4797c3f1fa8d06b6ea174d937285b"
+          },
+          {
+            "path": "{out}/capture-binding-wheel-filter.json",
+            "sha256": "8cd46a4e235f8a962d94fad92080f19d2ae76021dab3d52fcbfb56d40e333cf3"
+          }
+        ]
+      }
+    ],
+    "native-server": [
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-binding-apply.json",
+            "sha256": "45353301e424f93c06c27a77b128c3cdfe6888694c4de294e5adae4762bc3020"
+          },
+          {
+            "path": "{out}/capture-binding-assignments.json",
+            "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
+          },
+          {
+            "path": "{out}/capture-binding-auxiliary.json",
+            "sha256": "a29f9eb5aa7ead40c99d9ff7d103f206aea0e2bedf73fcd3c110284fd7a98d72"
+          },
+          {
+            "path": "{out}/capture-binding-cancel.json",
+            "sha256": "167ba3826021173a744054ba1f28b1cb88bea697f5528f9f70f7d77c0fa6b3c9"
+          },
+          {
+            "path": "{out}/capture-binding-capture.json",
+            "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
+          },
+          {
+            "path": "{out}/capture-binding-construction.json",
+            "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-prompt-text.json",
+            "sha256": "4b3a6545560ef5bd2bed35b0a904da80755703d165aac00661d891f6f059974a"
+          },
+          {
+            "path": "{out}/capture-binding-routing.json",
+            "sha256": "22a667044908725ad803326ae28269fda5f4797c3f1fa8d06b6ea174d937285b"
+          },
+          {
+            "path": "{out}/capture-binding-wheel-filter.json",
+            "sha256": "8cd46a4e235f8a962d94fad92080f19d2ae76021dab3d52fcbfb56d40e333cf3"
+          }
+        ]
+      }
+    ],
+    "native-highres": [
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-binding-apply.json",
+            "sha256": "45353301e424f93c06c27a77b128c3cdfe6888694c4de294e5adae4762bc3020"
+          },
+          {
+            "path": "{out}/capture-binding-assignments.json",
+            "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
+          },
+          {
+            "path": "{out}/capture-binding-auxiliary.json",
+            "sha256": "a29f9eb5aa7ead40c99d9ff7d103f206aea0e2bedf73fcd3c110284fd7a98d72"
+          },
+          {
+            "path": "{out}/capture-binding-cancel.json",
+            "sha256": "167ba3826021173a744054ba1f28b1cb88bea697f5528f9f70f7d77c0fa6b3c9"
+          },
+          {
+            "path": "{out}/capture-binding-capture.json",
+            "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
+          },
+          {
+            "path": "{out}/capture-binding-construction.json",
+            "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-prompt-text.json",
+            "sha256": "4b3a6545560ef5bd2bed35b0a904da80755703d165aac00661d891f6f059974a"
+          },
+          {
+            "path": "{out}/capture-binding-routing.json",
+            "sha256": "22a667044908725ad803326ae28269fda5f4797c3f1fa8d06b6ea174d937285b"
+          },
+          {
+            "path": "{out}/capture-binding-wheel-filter.json",
+            "sha256": "8cd46a4e235f8a962d94fad92080f19d2ae76021dab3d52fcbfb56d40e333cf3"
+          }
+        ]
+      }
+    ],
+    "native-focused": [
+      {
+        "name": "native-focused",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/bindings-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-binding-apply.json",
+            "sha256": "45353301e424f93c06c27a77b128c3cdfe6888694c4de294e5adae4762bc3020"
+          },
+          {
+            "path": "{out}/capture-binding-assignments.json",
+            "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
+          },
+          {
+            "path": "{out}/capture-binding-auxiliary.json",
+            "sha256": "a29f9eb5aa7ead40c99d9ff7d103f206aea0e2bedf73fcd3c110284fd7a98d72"
+          },
+          {
+            "path": "{out}/capture-binding-cancel.json",
+            "sha256": "167ba3826021173a744054ba1f28b1cb88bea697f5528f9f70f7d77c0fa6b3c9"
+          },
+          {
+            "path": "{out}/capture-binding-capture.json",
+            "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
+          },
+          {
+            "path": "{out}/capture-binding-construction.json",
+            "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-prompt-text.json",
+            "sha256": "4b3a6545560ef5bd2bed35b0a904da80755703d165aac00661d891f6f059974a"
+          },
+          {
+            "path": "{out}/capture-binding-routing.json",
+            "sha256": "22a667044908725ad803326ae28269fda5f4797c3f1fa8d06b6ea174d937285b"
+          },
+          {
+            "path": "{out}/capture-binding-wheel-filter.json",
+            "sha256": "8cd46a4e235f8a962d94fad92080f19d2ae76021dab3d52fcbfb56d40e333cf3"
+          }
+        ]
+      }
+    ],
+    "production": [
+      {
+        "name": "compressor-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/bindings-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      },
+      {
+        "name": "flat-gameplay",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/production/bin/opennox",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/tile-raster-flat.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Binding editors in Go",
+          "OPENNOX_REQUIRE_MAP_DECOMPRESSION=1",
+          "OPENNOX_COMPRESS_MAPS=[\"war01a/War01A.map\"]",
+          "OPENNOX_MAP_COMPRESSOR={out}/map-compress",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "bindings-flat-native",
+          "compare",
+          "{root}/build/baseline/runs/lists-flat-native"
+        ]
+      }
+    ]
+  },
+  "production": {
+    "description": "In-game and main-menu binding editors in Go",
+    "assets": "build/assets/extracted/drive_c/Nox",
+    "known_suite": "build/port-rule-command/full-suite.jsonl",
+    "scenario_runner": "tools/porting/run_scenario.py",
+    "retained": [
+      "sub_4C35B0",
+      "sub_4C4260",
+      "sub_4C4280",
+      "sub_4CB880",
+      "sub_4CBB70",
+      "sub_4CBBB0"
+    ],
+    "retired": [
+      "sub_4C3500",
+      "sub_4C3A60",
+      "sub_4C3EB0",
+      "sub_4C3FC0",
+      "sub_4C4100",
+      "sub_4C4220",
+      "sub_4CC140",
+      "sub_4CC170",
+      "sub_4CC280",
+      "sub_4CC3C0",
+      "sub_4C3620",
+      "sub_4C3760",
+      "sub_4C3CD0",
+      "sub_4CBD30",
+      "sub_4CBF60"
+    ],
+    "scenarios": [
+      {
+        "name": "bindings-native",
+        "reference": "build/baseline/runs/bindings-c",
+        "scenario": "docs/porting/bindings-editors.yaml",
+        "env": {
+          "NOX_DEV": "true"
+        }
+      }
     ]
   }
 }

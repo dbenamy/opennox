@@ -1,0 +1,109 @@
+# Main-menu and in-game binding editors; keep con01a.map for campaign availability.
+# Menu coordinates use 2x scaling; in-game coordinates use 1.25x scaling.
+# Wait after animation transitions before opening key-entry prompts.
+steps:
+- {action: click, name: dismiss title, x: 320, y: 240, dt: 300}
+- {action: click, name: options, x: 450, y: 910, dt: 100}
+- {action: screen, name: menu_options, dt: 60}
+- {action: click, name: input configuration, x: 640, y: 740, dt: 10}
+- {action: screen, name: menu_bindings, dt: 60}
+- {action: click, name: primary key, x: 740, y: 214, dt: 5}
+- {action: screen, name: menu_primary_prompt, dt: 1}
+- {action: raw, dt: 1, ev: {type: key, key: 30, pressed: true}}
+- {action: raw, dt: 1, ev: {type: key, key: 30, pressed: false}}
+- {action: screen, name: menu_primary_assigned, dt: 10}
+- {action: click, name: secondary key, x: 930, y: 246, dt: 5}
+- {action: screen, name: menu_secondary_prompt, dt: 1}
+- {action: raw, dt: 1, ev: {type: key, key: 48, pressed: true}}
+- {action: raw, dt: 1, ev: {type: key, key: 48, pressed: false}}
+- {action: screen, name: menu_secondary_assigned, dt: 10}
+- {action: click, name: primary key to cancel, x: 740, y: 214, dt: 5}
+- {action: raw, dt: 1, ev: {type: key, key: 1, pressed: true}}
+- {action: raw, dt: 1, ev: {type: key, key: 1, pressed: false}}
+- {action: screen, name: menu_cancelled, dt: 10}
+- {action: click, name: restore defaults, x: 914, y: 810, dt: 5}
+- {action: screen, name: menu_defaults, dt: 10}
+- {action: click, name: back to options, x: 835, y: 910, dt: 5}
+- {action: screen, name: menu_returned, dt: 60}
+- {action: click, name: back to main menu, x: 835, y: 910, dt: 5}
+- {action: screen, name: main_menu, dt: 60}
+- action: click
+  name: solo
+  x: 480
+  y: 220
+  dt: 100
+- action: click
+  name: new game
+  x: 360
+  y: 760
+  dt: 100
+- action: click
+  name: conjurer
+  x: 640
+  y: 260
+  dt: 100
+- action: click
+  name: accept class
+  x: 640
+  y: 820
+  dt: 30
+- action: click
+  name: accept appearance
+  x: 460
+  y: 760
+  dt: 100
+- action: screen
+  name: chapter_frame_1
+  dt: 1
+- action: screen
+  name: chapter_frame_5
+  dt: 4
+- action: screen
+  name: chapter_frame_10
+  dt: 5
+- action: screen
+  name: chapter_frame_15
+  dt: 5
+- action: screen
+  name: chapter_frame_20
+  dt: 5
+- action: screen
+  name: chapter_frame_30
+  dt: 10
+- action: click
+  name: dismiss chapter
+  x: 640
+  y: 480
+  dt: 470
+- action: screen
+  name: gameplay
+  dt: 300
+- {action: click, name: close captain dialog, x: 970, y: 940, dt: 10}
+- {action: raw, dt: 1, ev: {type: key, key: 1, pressed: true}}
+- {action: raw, dt: 1, ev: {type: key, key: 1, pressed: false}}
+- {action: screen, name: game_quit_menu, dt: 10}
+- {action: click, name: game options, x: 640, y: 326, dt: 5}
+- {action: screen, name: game_options, dt: 30}
+- {action: click, name: in-game input configuration, x: 640, y: 466, dt: 5}
+- {action: screen, name: game_bindings, dt: 20}
+- {action: click, name: in-game primary key, x: 700, y: 134, dt: 5}
+- {action: screen, name: game_primary_prompt, dt: 1}
+- {action: raw, dt: 1, ev: {type: key, key: 46, pressed: true}}
+- {action: raw, dt: 1, ev: {type: key, key: 46, pressed: false}}
+- {action: screen, name: game_primary_assigned, dt: 10}
+- {action: click, name: in-game secondary key, x: 820, y: 154, dt: 5}
+- {action: screen, name: game_secondary_prompt, dt: 1}
+- {action: move, name: point inside prompt, x: 640, y: 285, dt: 1}
+- {action: raw, dt: 1, ev: {type: wheel, wheel: -1}}
+- {action: screen, name: game_wheel_assigned, dt: 10}
+- {action: click, name: in-game key to cancel, x: 700, y: 174, dt: 5}
+- {action: raw, dt: 1, ev: {type: key, key: 1, pressed: true}}
+- {action: raw, dt: 1, ev: {type: key, key: 1, pressed: false}}
+- {action: screen, name: game_cancelled, dt: 10}
+- {action: click, name: apply in-game bindings, x: 640, y: 506, dt: 5}
+- {action: screen, name: game_returned, dt: 20}
+- {action: click, name: close options, x: 907, y: 25, dt: 5}
+- {action: screen, name: game_quit_returned, dt: 20}
+- {action: click, name: resume game, x: 640, y: 100, dt: 5}
+- {action: screen, name: game_resumed, dt: 30}
+- {action: quit, dt: 20}

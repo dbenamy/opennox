@@ -32,7 +32,7 @@ preserved animation behavior, hit-test translation correction and evidence.
 batch is the in-game/main-menu binding editor. Its C baseline has **7,425 frozen
 records in nine groups**, matching default/server/highres plus repeat; all 32
 affected binding/listbox/entry tests pass. See [BINDINGS.md](docs/porting/BINDINGS.md).
-Gameplay qualification and translation are next. Confident reversible decisions
+The 28-frame C gameplay baseline repeats exactly; translation is next. Confident reversible decisions
 remain recorded for review.
 
 ## Goal and target

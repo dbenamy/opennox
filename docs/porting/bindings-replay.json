@@ -1,0 +1,128 @@
+{
+  "binary_sha256": "a628b3258227f0865caf4f3d5547de294839305910752124904cf4fdd1a249c8",
+  "scenario": "docs/porting/bindings-editors.yaml",
+  "scenario_sha256": "78df066cce33f38a55ca1693c3c1dafd6a4b11c609774807766ecae58546174e",
+  "env": {
+    "NOX_DEV": "true"
+  },
+  "reference": "build/baseline/runs/bindings-c",
+  "repeat": "build/baseline/runs/bindings-c-repeat",
+  "capture_seconds": 61.40490515809506,
+  "repeat_seconds": 51.578194457804784,
+  "map_decompression": false,
+  "reason": "campaign availability requires con01a.map; separate flat scenario covers expansion",
+  "frames": [
+    {
+      "name": "chapter_frame_1.png",
+      "sha256": "13b47b7649c78d3ab24f0193227bf7781a193dd8fccbdf1997f7cda3b8b05641"
+    },
+    {
+      "name": "chapter_frame_10.png",
+      "sha256": "442da1c911a51b0a241bce88b7b691148806565eb63b95123681e51fb98636eb"
+    },
+    {
+      "name": "chapter_frame_15.png",
+      "sha256": "5a1f96d0b562cc2d9ee005c030710f863818c080e18baf63e780307fcecc695d"
+    },
+    {
+      "name": "chapter_frame_20.png",
+      "sha256": "7357a4bd5c1659950705c88467d44f7a145dd716a56c974c9845ad2fca06c6ba"
+    },
+    {
+      "name": "chapter_frame_30.png",
+      "sha256": "a50f3052c474da9d94fbeeab488ac79a826fbc9353486b3d5be919f185e59442"
+    },
+    {
+      "name": "chapter_frame_5.png",
+      "sha256": "dc95dfdcd7f63eaf6298f79455772e3581df13e8134e8710e05c460b797a2938"
+    },
+    {
+      "name": "game_bindings.png",
+      "sha256": "b40bd875aa677bf08912c4f798c0cf40cb814276eddd7cb84917e7da98b7698e"
+    },
+    {
+      "name": "game_cancelled.png",
+      "sha256": "8494e0a45d56a4f3a57b8fa5510d917125caf85fd7005a89d56beeca53f4b234"
+    },
+    {
+      "name": "game_options.png",
+      "sha256": "1bd1ed1adbf1c28a6be9646bfa048476bfbe5fb88a5acfbf1bc5b76a2588be3a"
+    },
+    {
+      "name": "game_primary_assigned.png",
+      "sha256": "8ba828d89027ee672bbd34fa83e6d998884e02f2ba882ea29e3db0d74348122d"
+    },
+    {
+      "name": "game_primary_prompt.png",
+      "sha256": "db6316a5f849976650ea26bb9cd9ddb9ca460cd432bfc58a7e8eaa1a374cd630"
+    },
+    {
+      "name": "game_quit_menu.png",
+      "sha256": "a6d4e256ac146aa58409f72e911723682ab0f315db0ce0f558ca5e4b09448765"
+    },
+    {
+      "name": "game_quit_returned.png",
+      "sha256": "9f16736f6b16d66b328ac40c0ce5234269428788d4a969f71ad2f439bfabdd9e"
+    },
+    {
+      "name": "game_resumed.png",
+      "sha256": "3f7f9c5790df9d7b677d9f059a472ab5d4a7eba37d991af5e482960dfc47c423"
+    },
+    {
+      "name": "game_returned.png",
+      "sha256": "4583fe74106f7df2531b60748f7cf8e447c9b9b1e437810f1c2b248bcb886911"
+    },
+    {
+      "name": "game_secondary_prompt.png",
+      "sha256": "04b4e9d1a55425b50303c9188170beb5493d7aa3623ba6c8d1f21126452627a3"
+    },
+    {
+      "name": "game_wheel_assigned.png",
+      "sha256": "c48d066e51fa02285f288dd4f181ad363c3574d7e7d9f198a2b64e075d8a6fe2"
+    },
+    {
+      "name": "gameplay.png",
+      "sha256": "48c0ca84c976ef6aa31d8e6ed4cbc1bbd8b1d0f2321efe72a980e52dfc2a3009"
+    },
+    {
+      "name": "main_menu.png",
+      "sha256": "20bc542236075fbf3628f150c50e5e96a8548be38d7b87ed9b8467e729c30940"
+    },
+    {
+      "name": "menu_bindings.png",
+      "sha256": "87ab4b9bef6149ffa2091f33b0ad34c21489e2ca5515254b866c7714e5c6ac1d"
+    },
+    {
+      "name": "menu_cancelled.png",
+      "sha256": "109c9c46753a53d8f02f294062bfe7eb2c66e74be061d8c5f3453d9269185959"
+    },
+    {
+      "name": "menu_defaults.png",
+      "sha256": "21befdb9fcff41b49c9d3804598a496aae240177b309b033797c207f103f5a3f"
+    },
+    {
+      "name": "menu_options.png",
+      "sha256": "48b496cf4dc755b7e7a8c78ece5bbf9c086c65bdb7ab3e62c6cbd972815f410c"
+    },
+    {
+      "name": "menu_primary_assigned.png",
+      "sha256": "ea2fc2a4d29549b7801bcc639f3f968afac466b3c9e320b9db0df8f638dbfdd7"
+    },
+    {
+      "name": "menu_primary_prompt.png",
+      "sha256": "8e11a4afc7219ec822cc3e78e7bfce3fd0602d63b043b2c2c5eaa548e8f6deaf"
+    },
+    {
+      "name": "menu_returned.png",
+      "sha256": "299203546359fd3987067fd636b2acc249f9c5c574b463982796232493e70a45"
+    },
+    {
+      "name": "menu_secondary_assigned.png",
+      "sha256": "f8590d12a30989edff4b08b4ae9598d0c4aac47a426f3b48fbcc2fb73ea06ed4"
+    },
+    {
+      "name": "menu_secondary_prompt.png",
+      "sha256": "5f0e3e6eb4bde7a0af86155118d4e7480c51eb9be33a44a429f17ef5483dbb3d"
+    }
+  ]
+}

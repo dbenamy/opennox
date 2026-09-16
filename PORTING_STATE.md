@@ -51,14 +51,18 @@ Both C routers refresh static-text child 981 after formatting its buffer (+3 C
 lines including a header include). The regression fails before the fix in both
 editors and passes afterward. DECISIONS.md records this scoped correction.
 
-Gameplay development now demonstrates the fixed prompt, primary assignment and
-return to options. The first run lacked a quit step and clicked before transition
-completion; it is diagnostic only. menu-develop2 and editors-develop pass. The
-combined extended editors-develop2 run is in progress, using client-dev. The final
-reference still needs a manifest-driven build/capture/repeat and metadata.
+Final C gameplay is qualified: **28 exact frames** in bindings-c and
+bindings-c-repeat, through both editors and back into gameplay. Evidence:
+build/port-bindings/c-gameplay; tracked scenario and metadata are
+bindings-editors.yaml and bindings-replay.json. The source matches all corrected
+C fixture phases. All source readers are joined. The previously blank prompt is
+fixed; a transient wheel-frame rendering artifact is recorded for later review.
 
-Next: qualify real editor gameplay, then translate the
-connected candidate. C apply serialization collapses duplicate keys with last action at
+Next: translate the connected candidate (21 functions; original 757 C lines plus
+three prerequisite lines). Native drafts and integrate_native.py are ignored in
+build/port-bindings; review and compile after this baseline commit. Run focused
+checks during translation and the full accumulated three-target milestone at
+completion, then production/interface/known-suite and both gameplay replays. C apply serialization collapses duplicate keys with last action at
 first position; Escape cancels by popping the modal stack (not mouse capture),
 leaves the selected-list pointer, and clears its row selection. Preserve the
 synthetic narrow-screen unsigned-coordinate behavior for this batch. These are
