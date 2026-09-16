@@ -62,8 +62,6 @@ long long nox_xxx_spriteChangeLightSize_484C30(int a1, int a2);
 int sub_484C60(float a1);
 int sub_484CE0(int a1, float a2);
 int nox_xxx_spriteChangeIntensity_484D70_light_intensity(int a1, float a2);
-int nox_thing_read_floor_485B30(nox_memfile* f, char* a2);
-int nox_thing_read_edge_485D40(nox_memfile* f, char* a2);
 int sub_4862E0(void* a3, int a4);
 void* sub_486320(void* a1, int a2);
 int sub_486350(void* a1, int a2);

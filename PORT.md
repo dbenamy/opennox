@@ -15,17 +15,14 @@
 ## Current status
 
 Client inventory, quantity-dialog, trade, shop UI, quest journal, briefing,
-scoreboard/rank presentation, minimap, world walls, wall edges and tile rendering
-are converted. The latest composition batch removes **579 C lines**; all **3,096
-frozen results** match in three targets. The complete accumulated corpus, three
-builds/ABI, exact known failures and 26 fresh gameplay frames qualify the rendering
-milestone. About **73k C lines remain: 73,450 physical lines in 91
-files**, with zero reference C. Next: connected floor/edge definition and image
-asset readers, nine connected readers/helpers /510 C block lines.
-The asset readers now have a qualified **4,396-record C baseline**, including a
-three-line empty-definition correction; current C size is **73,453**.
-See [FLOOR_ASSETS.md](docs/porting/FLOOR_ASSETS.md),
-[TILE_COMPOSITION.md](docs/porting/TILE_COMPOSITION.md) and
+scoreboard/rank presentation, minimap, world walls, wall edges, tile rendering and
+floor/edge asset readers are converted. The latest asset batch removes **513 C
+lines**; all **4,396 frozen results** match in three targets. Affected tests, three
+builds/ABI, exact known failures and 26 fresh gameplay frames qualify the change.
+About **73k C lines remain: 72,940 physical lines in 91 files**,
+with zero reference C. Next: seven connected things-section skip functions /379
+C block lines. The latest full accumulated rendering milestone is **642fba50**.
+See [FLOOR_ASSETS.md](docs/porting/FLOOR_ASSETS.md) and
 [PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.

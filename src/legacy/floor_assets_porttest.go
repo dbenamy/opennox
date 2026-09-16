@@ -4,7 +4,7 @@ package legacy
 
 /*
 #include <stdlib.h>
-#include "GAME1.h"
+#include <stdint.h>
 extern uint32_t dword_5d4594_251572;
 */
 import "C"
@@ -50,5 +50,8 @@ func PortTestFloorAssetsOwner() ([]server.TileDef, []byte, *uint32, *uint32, fun
 }
 func PortTestFloorAssetsAlloc(n int) unsafe.Pointer { return C.calloc(C.size_t(n), 1) }
 func PortTestFloorAssetsFacade(index int) int {
-	return int(C.nox_xxx_checkFacade_4117E0((*C.nox_tileDef_t)(unsafe.Pointer(&tileDefinitionsAll()[index]))))
+	if floorAssetFacade(&tileDefinitionsAll()[index]) {
+		return 1
+	}
+	return 0
 }

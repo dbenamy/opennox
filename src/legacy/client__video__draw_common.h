@@ -4,8 +4,6 @@
 
 #include <stdint.h>
 
-int nox_getBackbufWidth();
-int nox_getBackbufHeight();
 
 
 

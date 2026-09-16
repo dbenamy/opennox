@@ -2,30 +2,31 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 73k lines** — exactly **73,453 physical lines** in
-91 production `.c` files, with zero reference C. Qualified tile composition removed
-579 lines; the current asset-reader prerequisite adds three. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 73k lines** — exactly **72,940 physical lines** in
+91 production `.c` files, with zero reference C. Latest asset-reader conversion:
+**−513 C lines** from its corrected C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — floor/edge asset-reader C baseline qualified
+## Current — floor/edge asset-reader Go conversion qualified
 
-Tile composition **642fba50** is committed/pushed and remains the latest complete
-accumulated-corpus milestone (1,023/1,019/1,023 roots). The corrected floor/edge C
-baseline is fully qualified: 4,396 frozen records in seven groups repeat exactly
-in three targets; all affected roots, three builds/ABI, exact known 1,553 failures
-and fresh normal 12/flat 14 gameplay frames pass. C remaining: **73,453 /91 files**.
-See [FLOOR_ASSETS.md](docs/porting/FLOOR_ASSETS.md) and ignored
-build/port-floor-assets/c-qualification.json. All readers joined.
+C baseline **a4d69a64** is committed/pushed. Go asset readers are fully qualified:
+all 4,396 records in seven groups match in default/server/highres; every selected
+affected root finishes; three builds/ABI pass; exactly the same 1,553 full-suite
+failures and 26 matching gameplay frames remain. C remaining: **72,940 /91
+files /zero reference C**. All source readers joined. See FLOOR_ASSETS.md and
+build/port-floor-assets/native-qualification.json. Commit/push conversion, then
+continue. All applied scripts/stages are stale; never rerun them.
 
-Commit/push this C baseline, then apply the reviewed native draft using the guarded
-apply-native.py. prepare-c.py, review-tests.py and freeze-c.py are stale; never rerun.
-Native stage is not yet applied or qualified. Preserve golden expectations and
-qualify all affected targets/builds/ABI/full known failures and both replays.
-Next read-only candidate: seven things section skip functions /379 C block lines in
-build/port-thing-skips. No next-batch source edits applied.
+Next: seven connected things-section skip functions /379 C block lines. Ignored
+scope, implementation and fixture drafts in build/port-thing-skips; none applied
+or executed. Review encoding/absolute eight-byte alignment and remaining AVNT
+inner C caller before baseline capture. Do not trust draft expectations until
+actual C qualification. Reuse actual MemFile and caller behavior.
 
-No question pending. Continue batches autonomously. Original assets/archive unchanged.
+Latest complete accumulated-corpus milestone: tile composition **642fba50**,
+1,023/1,019/1,023 roots. Use explicit 900s/package for future complete runs. No
+question pending. Continue autonomously; original assets/archive unchanged.
 
 <!-- /current-checkpoint -->
 

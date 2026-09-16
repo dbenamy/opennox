@@ -11,8 +11,6 @@ package legacy
 #include "GAME4.h"
 extern uint32_t nox_tile_def_cnt;
 extern uint32_t dword_5d4594_251572;
-int nox_free_tile_defs();
-int sub_485F30();
 int sub_4F0640();
 */
 import "C"
@@ -56,10 +54,10 @@ func Sub_4F0640() {
 	C.sub_4F0640()
 }
 func Sub_485CF0() {
-	C.nox_free_tile_defs()
+	floorAssetFree()
 }
 func Sub_485F30() {
-	C.sub_485F30()
+	edgeAssetFree()
 }
 
 func Nox_thing_skip_spells_415100(f *binfile.MemFile) {
@@ -86,14 +84,14 @@ func Nox_thing_read_floor_485B30(f *binfile.MemFile, buf []byte) int {
 	if cap(buf) < 256*1024 {
 		panic(cap(buf))
 	}
-	return int(C.nox_thing_read_floor_485B30((*nox_memfile)(f.C()), (*C.char)(unsafe.Pointer(&buf[0]))))
+	return floorAssetBind(f, buf)
 }
 
 func Nox_thing_read_edge_485D40(f *binfile.MemFile, buf []byte) int {
 	if cap(buf) < 256*1024 {
 		panic(cap(buf))
 	}
-	return int(C.nox_thing_read_edge_485D40((*nox_memfile)(f.C()), (*C.char)(unsafe.Pointer(&buf[0]))))
+	return edgeAssetBind(f, buf)
 }
 
 func Nox_thing_read_WALL_414F60(f *binfile.MemFile, buf []byte) int {
@@ -104,14 +102,14 @@ func Nox_thing_read_WALL_414F60(f *binfile.MemFile, buf []byte) int {
 }
 
 func Nox_thing_read_FLOR_414DB0(f *binfile.MemFile) int {
-	return int(C.nox_thing_read_FLOR_414DB0((*nox_memfile)(f.C())))
+	return floorAssetSkip(f)
 }
 
 func Nox_thing_read_EDGE_414E70(f *binfile.MemFile, buf []byte) int {
 	if cap(buf) < 256*1024 {
 		panic(cap(buf))
 	}
-	return int(C.nox_thing_read_EDGE_414E70((*nox_memfile)(f.C()), unsafe.Pointer(&buf[0])))
+	return edgeAssetSkip(f, buf)
 }
 
 func Nox_thing_read_audio_415660(f *binfile.MemFile, buf []byte) int {
@@ -132,14 +130,14 @@ func Nox_thing_read_FLOR_411540(f *binfile.MemFile, buf []byte) int {
 	if cap(buf) < 256*1024 {
 		panic(cap(buf))
 	}
-	return int(C.nox_thing_read_FLOR_411540((*nox_memfile)(f.C()), (*C.uchar)(unsafe.Pointer(&buf[0]))))
+	return floorAssetDefinition(f, buf)
 }
 
 func Nox_thing_read_EDGE_411850(f *binfile.MemFile, buf []byte) int {
 	if cap(buf) < 256*1024 {
 		panic(cap(buf))
 	}
-	return int(C.nox_thing_read_EDGE_411850((*nox_memfile)(f.C()), (*C.uchar)(unsafe.Pointer(&buf[0]))))
+	return edgeAssetDefinition(f, buf)
 }
 
 func LoadAllBinFileSectionsResetCounters() {

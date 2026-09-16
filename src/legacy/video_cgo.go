@@ -60,12 +60,6 @@ func sub_43BE50_get_video_mode_id() int { return Sub_43BE50_get_video_mode_id() 
 //export get_video_mode_string
 func get_video_mode_string(id int) *wchar2_t { return internWStr(Get_video_mode_string(id)) }
 
-//export nox_getBackbufWidth
-func nox_getBackbufWidth() int { return Nox_getBackbufWidth() }
-
-//export nox_getBackbufHeight
-func nox_getBackbufHeight() int { return Nox_getBackbufHeight() }
-
 //export nox_video_getFullScreen
 func nox_video_getFullScreen() int { return Nox_video_getFullScreen() }
 

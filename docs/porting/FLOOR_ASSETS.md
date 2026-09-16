@@ -1,8 +1,9 @@
 # Floor and edge asset readers
 
-Status: **qualified frozen C baseline; no Go conversion applied**.
+Status: **qualified Go conversion**. Frozen C baseline: **a4d69a64**.
+Removed **513 C lines**; **72,940 physical lines /91 files /zero reference C** remain.
 Previous rendering milestone: **642fba50**, committed and pushed.
-Current C size: **73,453 physical lines /91 files /zero reference C**, including
+Corrected C baseline size: **73,453 physical lines /91 files /zero reference C**, including
 one three-line prerequisite correction. The connected conversion scope is nine
 readers/helpers, 513 corrected C block lines (510 before the prerequisite).
 
@@ -76,9 +77,9 @@ multiplayer coverage. Original assets/archive remain unchanged.
 
 Ignored evidence/drafts: `build/port-floor-assets`. `prepare-c.py` and
 `review-tests.py` have already been applied and must not be rerun. The native
-implementation remains an unexecuted `.stage` draft. Join the entire active test
-driver before editing Go/C/header source. Qualify/freeze/commit/push C before
-applying the native draft.
+implementation is applied and qualified; its stage is stale. Join the entire active test
+driver before editing Go/C/header source. The C baseline was frozen, qualified and pushed before
+applying the native implementation.
 
 ## Frozen C checkpoint
 
@@ -97,6 +98,27 @@ Affected roots **298 / 296 / 298** all completed in **159.933 / 237.897 / 160.45
 and all three targets. Three fresh production binaries pass ELF32/i386/SSE2/CGO
 and all eleven original C interfaces are present, with no test helpers. The full
 asset suite retains exactly 1,553 failure entries and 15 pass/3 fail/32 skip
-packages. Fresh normal 12 and GUI flat-floor14 frames match the preceding qualified
+packages. Fresh normal 12 and GUI flat-floor 14 frames match the preceding qualified
 composition replay. Source fingerprints are unchanged throughout qualification.
 Evidence: build/port-floor-assets/c-qualification.json and c-evidence/.
+
+## Go conversion
+
+Go now owns definition, image binding, skip, facade lookup and image-array cleanup.
+The shared definition storage/counts and compatible raw allocation/free primitives
+remain. All nine C reader/helper interfaces retire, along with the two orphaned
+backbuffer width/height C adapters. Their real Go owners remain in use. No C reader
+algorithm is retained for tests. Frozen expectations are unchanged.
+
+The first Go focused run passed all seven roots and 4,396 records in **186.339s**, without an algorithm or expectation correction.
+
+Affected roots **298 / 296 / 298** completed in **145.136 / 234.857 / 160.207s**
+(default/server/highres). All 4,396 records match; three production builds pass
+ELF32/i386/SSE2/CGO and eleven retired-interface checks, with no test helpers.
+Full-assets failures remain exactly 1,553 entries with the same package outcomes.
+Fresh normal 12 and GUI flat-floor 14 gameplay frames match the qualified preceding
+composition baseline. Source fingerprints remain unchanged throughout. Evidence:
+build/port-floor-assets/native-qualification.json and native-evidence/.
+
+Net C reduction from the corrected baseline is **513 lines**. The prerequisite
+added three lines before translation; net change from composition is **510 lines**.
