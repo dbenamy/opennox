@@ -1231,3 +1231,13 @@ A typed reader can consume a partial record and return zero, after which the
 section owner skips the full declared length. Controlled cases reproduce the
 resulting stop positions and load-error flag. A later fix should define recovery
 for the complete map-loading owner; it is separate from defaulting absent fields.
+
+## Colored-light degenerate direction prerequisite
+
+While preparing the colored-light animation batch after b593c7ae, eight independent
+regressions showed that coincident targets and zero-width rotation arcs change the
+angle via NaN-to-integer conversion. Preserve the existing light state in both
+cases with two early returns, before freezing C expectations. This is a small,
+reversible behavior correction authorized by the working plan; review later if
+zero-width arcs should explicitly reset to their configured starting angle.
+See COLOR_LIGHT.md for before/after evidence and qualification status.

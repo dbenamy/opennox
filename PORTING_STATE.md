@@ -2,8 +2,8 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 61k lines** — **61,065 physical lines in 82 production
-`.c` files**, zero reference C. Latest conversion removed **617 lines**.
+**Rough C remaining: about 61k lines** — **61,071 physical lines in 82 production
+`.c` files**, zero reference C. Latest conversion removed **617 lines**; the current C light prerequisite adds six.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
@@ -35,13 +35,30 @@ Evidence under build/port-map-drawables:
 - native-index-proof.json checks 1,863 staged source files across the three final
   target phases and production. All report unchanged source. All readers joined.
 
-Commit/push this qualified conversion if needed, then continue with colored-light
-animation and viewport callbacks. Ignored candidate audit, plan and preliminary
-fixture drafts are under build/port-color-light; they are not installed or tested.
-Six related functions / 262 C lines, one actual callback and five private helpers.
-Reuse real drawable/light owners; cover interpolation, direction, timing and
-viewport/list behavior before translation. This closes behavior related to the
-map light fields; avoid padding the batch with unrelated functions.
+Map conversion **b593c7ae** is committed and pushed. Current batch: colored-light
+animation, see docs/porting/COLOR_LIGHT.md. C fixtures now freeze **8,853 records /
+five groups** plus independent degenerate/property contracts. All eight undefined-
+direction cases fail before two C guards and pass afterward. The guards add six
+lines: current working C **61,071 / 82 / zero reference C**.
+
+Final C qualification is complete: seven roots in default/repeat/server/highres,
+all five hashes, and 34 affected roots; no skips. Static final checks pass. Real
+C gameplay matches 41 frames and repeats exactly; flat gameplay matches 14 frames
+and exact map regeneration. All source readers joined; c-index-proof.json checks
+all 1,871 staged source files against the six final phases. Commit/push the C
+prerequisite and baseline if needed, then integrate the reviewed native draft.
+
+Ignored native draft and installation script are under build/port-color-light;
+they have not been installed or compiled. Review the actual C adapter choices:
+animated intensity updates its fixed-point field as well as float intensity/radius.
+The frozen rotation corpus excludes undefined extreme conversions. No golden
+changes are permitted to hide a native difference.
+
+The six corrected animation functions span 268 C lines. Retire three now-unused
+map-classification helpers (28 lines) with the native conversion; final caller
+search finds only definitions/declarations. Manifest audits one retained callback
+and eight retired functions. Preserve all frozen captures and qualify native
+sources before conversion commit/push and continuing.
 
 Review notes: absent-field zero defaults are intentional. Old count products
 narrow to 16 bits; door X divides signed while Y divides unsigned. Allocation

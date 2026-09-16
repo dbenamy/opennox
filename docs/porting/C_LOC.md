@@ -177,6 +177,7 @@ target build selection and linker evidence.
 | Options checkbox dispatcher prerequisite (C fix) | 83 | 62,475 | −96 | 0 |
 | Complete main-menu and in-game options panels | 82 | 61,682 | −793 | 0 |
 | Client map drawable readers | 82 | 61,065 | −617 | 0 |
+| Colored-light degenerate-direction prerequisite (C fix) | 82 | 61,071 | +6 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

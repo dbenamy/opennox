@@ -27,8 +27,12 @@ rendering matches **14 frames** with exact map regeneration.
 
 See [MAP_DRAWABLES.md](docs/porting/MAP_DRAWABLES.md) for qualification and review
 notes, including the corrected absent-field defaults and preserved allocation-
-failure framing issue. Next: colored-light animation callbacks, reusing the real
-light/drawable owners. The full accumulated milestone passed at the binding
+failure framing issue. The next colored-light batch has a qualified C prerequisite and **8,853 frozen
+records / five groups**, repeated gameplay and flat-map regeneration. Its two
+degenerate-direction guards add six C lines: current **61,071 / 82 / zero reference
+C**. Translate the six animation callbacks, reusing real light/drawable owners;
+also remove three now-unused map-classification helpers. See
+[COLOR_LIGHT.md](docs/porting/COLOR_LIGHT.md). The full accumulated milestone passed at the binding
 conversion; use affected checks until the next meaningful subsystem boundary.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. Confident reversible
 decisions remain recorded for review.

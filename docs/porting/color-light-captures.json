@@ -1,0 +1,29 @@
+{
+  "captures": [
+    {
+      "label": "color-light-interpolation",
+      "records": 5040,
+      "sha256": "48941b54fc091b4f24354f8cb0c24cf52a63ddbc8055f8f285e5fcdcd44b1d4e"
+    },
+    {
+      "label": "color-light-update",
+      "records": 150,
+      "sha256": "973af366685512326ddd2f3699d1d8964e4f90767a4329da0d1c7bf965707fb0"
+    },
+    {
+      "label": "color-light-direction",
+      "records": 40,
+      "sha256": "9c4da0c65f2933d2ed77f8bdd73104a06110434c2d19526d11cbca198afbc33f"
+    },
+    {
+      "label": "color-light-rotation",
+      "records": 3047,
+      "sha256": "1d3d2d5924bd55310a9786918decfa6ba2b53cc080a782f699ac22777b0e193e"
+    },
+    {
+      "label": "color-light-sequences",
+      "records": 576,
+      "sha256": "7583afa0841860903f89a98cd2c6ca99e5b3d3a8992d593ac863df141bb7b300"
+    }
+  ]
+}

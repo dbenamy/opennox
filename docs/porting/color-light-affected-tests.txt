@@ -1,0 +1,1 @@
+^Test(ColorLight|MapDrawable|ClientParticleLight|ClientUpdates|ClientObjectRender)

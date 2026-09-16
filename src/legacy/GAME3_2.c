@@ -297,6 +297,9 @@ void sub_4CE8C0(int a1) {
 		if (v1) {
 			v2 = v1[4] - *(uint32_t*)(a1 + 16);
 			v4 = v1[3] - *(uint32_t*)(a1 + 12);
+			if (!v4 && !v2) {
+				return;
+			}
 			v3 = nox_double2float(acos((double)v4 / sqrt((double)(v4 * v4 + v2 * v2)))) * 57.295776;
 			if (v2 < 0) {
 				v3 = 360.0 - v3;
@@ -328,6 +331,9 @@ void sub_4CE960(int a1) {
 		v5 = (double)(*(unsigned short*)(a1 + 272) - *(unsigned short*)(a1 + 268));
 	} else {
 		v5 = 360.0;
+	}
+	if (v5 == 0.0) {
+		return;
 	}
 	v4 = (double)gameFPS();
 	v3 = (double)v1;
