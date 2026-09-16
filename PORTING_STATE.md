@@ -2,74 +2,60 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 61k lines** — **61,071 physical lines in 82 production
-`.c` files**, zero reference C. Latest conversion removed **617 lines**; the current C light prerequisite adds six.
-See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 61k lines** — **60,775 physical lines in 82 production
+`.c` files**, zero reference C. Latest conversion removed **296 lines** (268 light
+animation plus 28 unused map helpers). See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — client map drawable conversion qualified
+## Current — colored-light conversion qualified
 
-Options conversion **a1e88a75** and the map-reader C prerequisite **5777c6d3** are
-committed and pushed. The prerequisite initializes two absent old-format fields;
-all 42 independent regressions fail before and pass after. It changes no C LOC.
+Map drawable conversion **b593c7ae** and the colored-light C prerequisite
+**215e515a** are committed and pushed. All eight degenerate-direction regressions
+fail before and pass after two C guards. These preserve light state for coincident
+targets and zero rotation arcs; the Go implementation keeps that correction.
 
-Native map readers are fully qualified: nine functions, **617 C lines removed**,
-one retained C map-section callback, eight retired private interfaces. No C
-implementation remains solely for tests. See [MAP_DRAWABLES.md](docs/porting/MAP_DRAWABLES.md).
+The six light animation functions are now Go. Three unused map-classification
+helpers are removed. One C callback remains; eight private interfaces are retired.
+See [COLOR_LIGHT.md](docs/porting/COLOR_LIGHT.md).
 
-Evidence under build/port-map-drawables:
-- Corrected C: 2,484 frozen records / seven groups; eight roots in default,
-  repeat, server and highres, plus 44 affected roots, no skips. Repeated 41-frame
-  gameplay and 14-frame flat gameplay with exact map regeneration pass.
-- Native first focused pass: all eight roots and seven hashes, 112.039s.
-  No compiler/behavior corrections or expected-result changes were needed.
-- Final native-default/server/highres: 44 / 42 / 44 roots, no skips, all hashes
-  match. Driver seconds 146.035 / 143.357 / 201.454. Server compilation excludes
-  the object-render occlusion and world-wall field-of-view tests.
-- static-native-final.log passes; source/caller review is complete.
-- Production: all three builds/ABI checks pass; exactly 1,553 known asset-suite
-  failure entries, 15 pass / 3 fail / 32 skip package outcomes. All 41 gameplay
-  frames match C; all 14 flat frames and exact map regeneration pass.
-  Driver seconds 277.154 plus 49.863 flat; replay process seconds 63.020 / 49.320.
-- native-index-proof.json checks 1,863 staged source files across the three final
-  target phases and production. All report unchanged source. All readers joined.
+Evidence under build/port-color-light:
+- Final C: seven roots in default/repeat/server/highres, all **8,853 records / five
+  hashes**, no skips; 34 affected roots. Repeated 41-frame gameplay and 14-frame
+  flat gameplay with exact map regeneration pass. c-index-proof.json checks
+  1,871 staged source files across six phases. Baseline is pushed.
+- native-focused: seven roots and all hashes pass on first installed run, 112.302s.
+- Native default/server/highres: **34 / 33 / 34** roots, no skips, all hashes match;
+  driver seconds 18.032 / 114.955 / 46.106. Server excludes rendering-only occlusion.
+- static-native-final.log passes. Source review and retired-name audit are complete.
+- Production: three builds/ABI checks and exact known asset-suite results pass:
+  1,553 failure entries; 15 pass / 3 fail / 32 skip package outcomes. All 41 gameplay
+  and 14 flat frames match C; exact map regeneration passes. Driver seconds
+  282.834 plus 49.092 flat. Tracked color-light-replay.json has process timings/hashes.
+- native-index-proof.json checks all 1,873 staged source files against the three
+  affected phases and production. Every phase reports unchanged source; all
+  readers are joined. Final C **60,775 / 82 files / zero reference C**.
 
-Map conversion **b593c7ae** is committed and pushed. Current batch: colored-light
-animation, see docs/porting/COLOR_LIGHT.md. C fixtures now freeze **8,853 records /
-five groups** plus independent degenerate/property contracts. All eight undefined-
-direction cases fail before two C guards and pass afterward. The guards add six
-lines: current working C **61,071 / 82 / zero reference C**.
+Commit/push this conversion if needed, then continue with the next candidate:
+server map-object common records and world-object transfer callbacks, GAME3_3.c
+004F3E30 through EOF, eighteen functions / 1,173 C lines. Ignored audit and plan
+are in build/port-object-xfer. No next-batch source is changed yet. Qualify both
+reading and writing, version/field/stream contracts, real object ownership and
+actual save/load gameplay. Trace the TriggerXfer float-typed callback declaration
+before choosing its Go ABI. Broaden accumulated checks at this shared serialization
+boundary. No substantive blocker or user question is pending.
 
-Final C qualification is complete: seven roots in default/repeat/server/highres,
-all five hashes, and 34 affected roots; no skips. Static final checks pass. Real
-C gameplay matches 41 frames and repeats exactly; flat gameplay matches 14 frames
-and exact map regeneration. All source readers joined; c-index-proof.json checks
-all 1,871 staged source files against the six final phases. Commit/push the C
-prerequisite and baseline if needed, then integrate the reviewed native draft.
+Review later: degenerate light directions preserve the current angle/mode; decide
+separately if zero-width arcs should reset to their configured start. The intensity
+fixture initially omitted its fixed-point field; tracing the real adapter corrected
+both the fixture and the pre-installation draft. Extreme rotation combinations with
+undefined C conversions are excluded from the oracle. See DECISIONS.md for these
+and earlier map framing/options-rendering follow-ups.
 
-Ignored native draft and installation script are under build/port-color-light;
-they have not been installed or compiled. Review the actual C adapter choices:
-animated intensity updates its fixed-point field as well as float intensity/radius.
-The frozen rotation corpus excludes undefined extreme conversions. No golden
-changes are permitted to hide a native difference.
-
-The six corrected animation functions span 268 C lines. Retire three now-unused
-map-classification helpers (28 lines) with the native conversion; final caller
-search finds only definitions/declarations. Manifest audits one retained callback
-and eight retired functions. Preserve all frozen captures and qualify native
-sources before conversion commit/push and continuing.
-
-Review notes: absent-field zero defaults are intentional. Old count products
-narrow to 16 bits; door X divides signed while Y divides unsigned. Allocation
-failure retains the existing section-framing issue for later recovery work.
-Production light tables are used. Earlier options clipping and compiler-cache
-notes remain in OPTIONS.md and DECISIONS.md. No substantive question is pending.
-
-Original assets remain unchanged. Completed replay asset copies were deduplicated
-with verified restoration manifests; frames/logs/hashes remain. Preserve the
+Original assets remain unchanged. Completed C replay copies were deduplicated
+with verified restoration manifests; frames/logs/changed outputs remain. Preserve
 untracked nox-iso-from-archive-org.7z. Source build/baseline/env.sh for every Go
-command. Do not rerun stale ignored installation/generation scripts over source.
+command. Never rerun stale ignored installation/generation scripts over source.
 
 <!-- /current-checkpoint -->
 

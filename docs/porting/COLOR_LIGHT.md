@@ -13,7 +13,7 @@ This is a smaller coherent batch than the usual 1,000–3,000-line target. Combi
 unrelated resource UI would add a different owner and integration surface without
 helping this translation. Continue to use the larger target when dependencies fit.
 
-## C baseline in development
+## C baseline and independent contracts
 
 Interpolation covers RGB, intensity and penumbra: 5,040 records over counts
 0/1/2/3/16/128/255, periods 0/1/2/3/255/256/257/65535, cyclic/ping-pong modes,
@@ -26,7 +26,7 @@ Viewport update has 150 cases across inclusive 100-pixel margins, empty/single/
 multiple entry arrays, editor suppression and actual update-list removal.
 Direction covers actual static drawable lookup, missing targets, quadrants and
 near-axis positions. Rotation covers signed speed, frame boundaries, FPS and
-full/partial-turn modes. These latter fixtures are still being qualified.
+full/partial-turn modes.
 
 All eight independent coincident-target/zero-arc regressions fail against the
 unchanged C implementation: the angle changes and the setter clears the light
@@ -48,10 +48,8 @@ C's defined range. Retain high frame cases where these operations remain defined
 do not freeze undefined conversion results. Disabled-property checks separately
 verify the penumbra/rotation mode gates. No fixture uses invalid array indices.
 
-The two C guards are installed; no native translation is installed. Baseline
-captures are preliminary, not frozen. Evidence and scoped draft plan are under
-build/port-color-light. Complete source audit, independent contracts, repeated C
-captures, affected targets and gameplay before replacing the six functions.
+Evidence is under build/port-color-light. Development captures precede the final
+frozen set below; use the final phase directories for qualification evidence.
 
 ## Frozen capture set and final qualification
 
@@ -65,14 +63,14 @@ Pre-sequence C checks passed in default/server/highres. They are development
 preflights, not the final seven-root baseline. The final seven-root target phases
 pass in c-final-default/server/highres, no skips, with all five hashes matching.
 Driver seconds: 29.213 / 27.508 / 36.737; exact timings remain in
-tests-result.json. Repeat, affected checks and real gameplay are now running.
+tests-result.json.
 Static final preflight passes.
 
-The C guards add six lines: current **61,071 / 82 / zero reference C**. The six
-functions now occupy **268 lines**. A complete source-reference audit also found
+The C guards added six lines: baseline **61,071 / 82 / zero reference C**. The six
+functions then occupied **268 lines**. A complete source-reference audit also found
 three map-classification helpers left unreferenced by the preceding map conversion:
-sub_44D040, sub_44D060 and sub_44D090 (28 lines). Retire these with native integration,
-including their declarations, and verify all eight retired symbols are absent.
+sub_44D040, sub_44D060 and sub_44D090 (28 lines). These and their declarations were
+removed with native integration; all eight retired symbols are audited.
 This is removal of unreachable leftovers, not a separate behavior translation.
 
 Final repeat passes all seven roots/five hashes (6.009s), and the affected
@@ -85,5 +83,42 @@ Exact process times/binary/frame hashes are in color-light-replay.json.
 
 All six final phases report unchanged source. c-index-proof.json checks **1,871
 staged source files** against default/repeat/server/highres/affected/gameplay.
-All source readers are joined. Commit and push this C correction and recoverable
-baseline before native integration. No Go light animation is installed yet.
+All C source readers were joined before the baseline was committed and pushed as
+215e515a, followed by native integration.
+
+## Native integration
+
+C prerequisite and baseline **215e515a** are committed and pushed. The six
+animation callbacks/helpers are now Go, sharing the common interpolation logic
+and reusing actual particle-light setters. The five private animation C interfaces
+and three unused map-classification helpers are removed; the registered update
+callback remains. C is **60,775 lines / 82 files / zero reference C**, **296 fewer**
+than the corrected baseline (268 animation, 28 cleanup).
+
+The first native focused run passes all seven roots and all **8,853 frozen
+records / five hashes**, including independent contracts (112.302s). No native
+compiler or behavior corrections were needed after installation. Static checks
+pass. Source review verified signed counts, byte interpolation steps, floating
+operation order, the required float32 direction narrowing, fixed-point intensity,
+callback order and actual list/lookup ownership. No frozen expected results changed.
+
+Affected default/server/highres checks pass **34 / 33 / 34 roots**, no skips, all
+hashes matching (18.032s / 114.955s / 46.106s). The server build excludes the
+rendering-only TestClientObjectRenderOcclusion. All target readers are joined.
+Production qualification passes all three builds and interface checks, including
+absence of test helpers and the eight retired names. The full asset suite matches
+exactly **1,553 known failure entries**, with **15 pass / 3 fail / 32 skip** package
+outcomes. All **41 gameplay frames** and **14 flat frames** match C; exact warrior
+map regeneration also passes. Production driver took **282.834s**, followed by
+flat gameplay **49.092s**. Exact replay timings and hashes are tracked in
+color-light-replay.json; these timings are not controlled performance benchmarks.
+
+native-index-proof.json checks all **1,873 staged source files** against the three
+affected phases and production. All four phases report unchanged source, and all
+readers are joined. Final C: **60,775 / 82 files / zero reference C**.
+
+Next candidate: the connected server map-object readers/writers and world-object
+transfer callbacks, eighteen functions / about 1,173 C lines. Include actual
+save/load integration and field/byte contracts, since initial map loading alone
+would not qualify the write paths. Candidate audit and plan are ignored under
+build/port-object-xfer; no next-batch source changes are part of this conversion.

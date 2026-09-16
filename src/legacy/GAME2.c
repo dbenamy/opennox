@@ -183,34 +183,6 @@ uint32_t dword_587000_122856 = 0x1;
 uint32_t dword_5d4594_831092 = 0;
 uint32_t nox_player_netCode_85319C = 0;
 
-//----- (0044D040) --------------------------------------------------------
-int sub_44D040(int i) {
-	nox_thing* obj = nox_get_thing(i);
-	if (!obj) {
-		return 0;
-	}
-	return (obj->pri_class >> 22) & 1;
-}
-
-//----- (0044D060) --------------------------------------------------------
-int sub_44D060(int a1) {
-	int v1; // eax
-
-	v1 = nox_get_thing(a1);
-	return v1 && *(uint32_t*)(v1 + 32) & 0x400000 && *(uint8_t*)(v1 + 36) & 0x18;
-}
-
-//----- (0044D090) --------------------------------------------------------
-int sub_44D090(int a1) {
-	int result; // eax
-
-	result = nox_get_thing(a1);
-	if (result) {
-		result = (*(uint32_t*)(result + 32) & 0x20400000) != 0;
-	}
-	return result;
-}
-
 //----- (0044D960) --------------------------------------------------------
 void sub_44D960() { dword_587000_122848 = 0; }
 

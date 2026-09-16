@@ -15,25 +15,23 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. The client map-drawable conversion is qualified, removing **617 C
-lines** and leaving **61,065 physical lines in 82 files**, with zero reference C.
-The preceding options conversion removed 793 lines, plus 96 in its prerequisite.
+scheduled pause. Colored-light animation and unused map-helper cleanup are
+qualified: **296 C lines removed**, leaving **60,775 physical lines in 82 files**,
+with zero reference C. The preceding map-reader conversion removed 617 lines;
+the light-direction prerequisite added six before those functions moved to Go.
 
-All **2,484 frozen records / seven map-reader groups** match, along with independent
-contracts. Affected checks pass **44 default / 42 server / 44 highres tests**, no
-skips. All three production builds and interface audits pass; the asset suite
-retains exactly its known failures. Gameplay matches **41 frames**, and flat
-rendering matches **14 frames** with exact map regeneration.
+All **8,853 frozen light records / five groups** and independent contracts match.
+Affected checks pass **34 default / 33 server / 34 highres tests**, no skips.
+All three production builds and interface audits pass; the asset suite retains
+exactly its known failures. Gameplay matches **41 frames**, and flat rendering
+matches **14 frames** with exact map regeneration.
 
-See [MAP_DRAWABLES.md](docs/porting/MAP_DRAWABLES.md) for qualification and review
-notes, including the corrected absent-field defaults and preserved allocation-
-failure framing issue. The next colored-light batch has a qualified C prerequisite and **8,853 frozen
-records / five groups**, repeated gameplay and flat-map regeneration. Its two
-degenerate-direction guards add six C lines: current **61,071 / 82 / zero reference
-C**. Translate the six animation callbacks, reusing real light/drawable owners;
-also remove three now-unused map-classification helpers. See
-[COLOR_LIGHT.md](docs/porting/COLOR_LIGHT.md). The full accumulated milestone passed at the binding
-conversion; use affected checks until the next meaningful subsystem boundary.
+See [COLOR_LIGHT.md](docs/porting/COLOR_LIGHT.md) for qualification and the
+reversible degenerate-direction correction. Next: server map-object readers,
+writers and world-object transfer callbacks, about **1,173 C lines**. Include
+save/load integration and serialization contracts; use a broader accumulated
+milestone at that shared serialization boundary. The last full accumulated
+milestone passed at the binding conversion.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. Confident reversible
 decisions remain recorded for review.
 
