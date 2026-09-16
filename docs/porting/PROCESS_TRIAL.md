@@ -1,7 +1,7 @@
-# Two-round process trial: results and pause
+# Two-round process trial: results and adopted process
 
-Both rounds are qualified. **Pause for the user's review before starting another
-conversion.** The trial removed **1,290 C lines**, leaving **71,252 physical C
+Both rounds are qualified. The user reviewed the trial and **adopted the revised
+process for continued successive batches**, lifting the trial's scheduled pause. The trial removed **1,290 C lines**, leaving **71,252 physical C
 lines in 90 files**, with no test-reference C. These counts measure source removed,
 not remaining effort or a percentage of the port completed.
 

@@ -14,7 +14,8 @@
 
 ## Current status
 
-The two-round process trial is complete and paused for user review. Client audio
+The two-round process trial is complete and the user has adopted its revised
+process. Continue successive qualified batches without a scheduled pause. Client audio
 asset readers and the complete map decoder are converted, removing **1,290 C
 lines** in total. About **71k C lines remain: 71,252 physical lines in 90 files**,
 with zero reference C. Both rounds pass their affected tests, all production
@@ -42,9 +43,9 @@ the same VM; do not extrapolate its speed to native hardware.
 
 ## Batch workflow
 
-The [two-round process trial](docs/porting/PROCESS_TRIAL.md) is complete and
-paused for user review. On resumption, use focused package checks inside each
-coherent batch and full qualification at meaningful boundaries. Recovery commits
+The [two-round process trial](docs/porting/PROCESS_TRIAL.md) established the default
+process: use focused package checks inside each coherent batch and full
+qualification at meaningful boundaries. Recovery commits
 may precede full qualification when their evidence and remaining gates are explicit.
 
 1. Select a connected behavior batch, aiming for roughly
@@ -67,7 +68,11 @@ may precede full qualification when their evidence and remaining gates are expli
 The user authorized confident, reasonably reversible implementation decisions:
 make the decision and record it for later review. Ask when a meaningful product
 choice, major compatibility change or costly irreversible action needs their
-judgment. Normally continue one chunk at a time; honor any explicit pause requested by the user.
+judgment. Continue one chunk at a time, summarizing each pushed qualification in the
+conversation and immediately proceeding to the next. Keep notable issues and
+reversible decisions in the batch report and decision log for later review. Stop
+only for a substantial blocker or a decision whose answer changes the result in a
+way that is hard to undo; honor explicit user pauses.
 
 Do not retain C algorithms solely for tests. A committed C baseline and frozen
 expectations provide recovery after conversion. Reuse fixtures across related
@@ -146,6 +151,8 @@ Reconsider the tests as the behavior and failure modes become clearer.
   against real callers and shared state, and record its pattern and coverage.
   Run the complete accumulated port corpus at subsystem milestones, when shared
   infrastructure changes, or when a failure leaves the affected scope uncertain.
+  Do not schedule the full corpus merely because another helper, recovery commit
+  or arbitrary number of batches has completed.
   Select affected packages explicitly (`--package`, root by default).
   Check that selected tests actually start and finish; discovery success or a
   process exit alone does not establish coverage.

@@ -8,7 +8,7 @@ Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-## Current — two-round process trial complete; PAUSED for user review
+## Current — revised process accepted; successive batches resumed
 
 Round 1: client audio-definition readers, C baseline **06a35720**, Go **0b3cbe58**,
 qualification **5ed10356**. 321 C lines removed; 1,433 frozen records; all 51
@@ -23,14 +23,17 @@ map-population prerequisite diagnostic is skipped in each target. See
 [MAP_DECOMPRESSION.md](docs/porting/MAP_DECOMPRESSION.md) and the local
 `build/port-map-decompression/{native-final,milestone}` reports.
 All readers joined; source stayed unchanged during validation. This checkpoint
-records the final qualification and assessment. Do not begin a third round.
+records the final qualification and assessment. The user has accepted the new
+process and authorized continued batches; there is no scheduled review pause.
 
 C remaining **71,252 /90 files /zero reference C**. No product question blocks
-implementation; the pause is explicitly requested to review the process trial.
+implementation. Next candidate under audit: the connected NXZ map compressor
+and its remaining shared allocation helpers (about 1,912 C lines).
 See [PROCESS_TRIAL.md](docs/porting/PROCESS_TRIAL.md) for measured results,
 limitations and recommendations.
 All ignored preparation/freeze/apply/finalize scripts for these rounds are stale.
-Preserve original assets/archive. Resume only after user direction.
+Preserve original assets/archive. Continue under PORT.md, recording notable issues
+and reversible decisions for later user review. No new conversion is qualified yet.
 
 <!-- /current-checkpoint -->
 
