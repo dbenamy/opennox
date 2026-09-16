@@ -36,14 +36,18 @@ Evidence under build/port-color-light:
   affected phases and production. Every phase reports unchanged source; all
   readers are joined. Final C **60,775 / 82 files / zero reference C**.
 
-Commit/push this conversion if needed, then continue with the next candidate:
+Colored-light conversion **82b2c821** is committed and pushed. Current work is
 server map-object common records and world-object transfer callbacks, GAME3_3.c
-004F3E30 through EOF, eighteen functions / 1,173 C lines. Ignored audit and plan
-are in build/port-object-xfer. No next-batch source is changed yet. Qualify both
-reading and writing, version/field/stream contracts, real object ownership and
-actual save/load gameplay. Trace the TriggerXfer float-typed callback declaration
-before choosing its Go ABI. Broaden accumulated checks at this shared serialization
-boundary. No substantive blocker or user question is pending.
+004F3E30 through EOF, eighteen functions / 1,173 C lines.
+
+The actual save/load integration prerequisite passes: seven repeated screenshots,
+explicit F2 save, F4 reload from the saved map and resumed gameplay. Six checker
+unit tests pass. See [OBJECT_XFER.md](docs/porting/OBJECT_XFER.md) for commands,
+evidence and the remaining qualification plan. Engine serializers and their C
+fixture source are not yet changed. Next: build common/typed stream contracts
+with actual object owners; account for buffer cleanup and TriggerXfer's legacy
+float-typed callback declaration. Broaden accumulated checks at this shared
+serialization boundary. No substantive blocker or user question is pending.
 
 Review later: degenerate light directions preserve the current angle/mode; decide
 separately if zero-width arcs should reset to their configured start. The intensity

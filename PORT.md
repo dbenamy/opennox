@@ -29,7 +29,7 @@ matches **14 frames** with exact map regeneration.
 See [COLOR_LIGHT.md](docs/porting/COLOR_LIGHT.md) for qualification and the
 reversible degenerate-direction correction. Next: server map-object readers,
 writers and world-object transfer callbacks, about **1,173 C lines**. Include
-save/load integration and serialization contracts; use a broader accumulated
+[save/load integration and serialization contracts](docs/porting/OBJECT_XFER.md); use a broader accumulated
 milestone at that shared serialization boundary. The last full accumulated
 milestone passed at the binding conversion.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. Confident reversible

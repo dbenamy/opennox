@@ -13,6 +13,8 @@ import subprocess
 import sys
 import time
 
+from save_load import verify_save_load
+
 ROOT = Path(__file__).resolve().parents[2]
 name, mode = sys.argv[1:3]
 if not name.replace('-', '').replace('_', '').isalnum() or mode not in ('capture','compare'):
@@ -93,6 +95,12 @@ if code == 0 and removed:
         code=1
     (run/'regenerated-maps.json').write_text(json.dumps(regenerated,indent=2)+'\n')
     report['regenerated_maps']=len(regenerated)
+if code == 0 and os.environ.get('OPENNOX_REQUIRE_SAVE_LOAD') == '1':
+    try:
+        report['save_load'] = verify_save_load(run)
+    except (ValueError, OSError) as exc:
+        report['error'] = str(exc)
+        code = 1
 report['exit']=code
 (run/'result.json').write_text(json.dumps(report,indent=2)+'\n')
 print(name,'exit',code,flush=True)
