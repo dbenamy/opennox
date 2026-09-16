@@ -15,27 +15,19 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. The spellbook batch removes **1,786 C lines**, leaving about
-**67k: 66,811 physical lines in 87 files**, with zero reference C.
-All **4,694 frozen records in 24 groups** match. The 137 affected tests pass in
-default, server and highres; three production builds and interface audits pass.
-The asset suite retains exactly its known failures, and both fresh gameplay
-replays regenerate the warrior map exactly and match their preserved frames.
-See [SPELLBOOK.md](docs/porting/SPELLBOOK.md) and
-[PORTING_STATE.md](PORTING_STATE.md) for evidence and review notes.
+scheduled pause. The connected quickbar batch is qualified, removing **2,494 C
+lines** and leaving **64,317 physical lines in 86 files**, with zero reference C.
+All **6,983 frozen records in 49 groups** match in default/server/highres.
+The full accumulated milestone passes 1,128 tests in default/highres and 1,124
+in server, with only the existing opt-in diagnostic skipped. Three production
+builds and interface audits pass; the asset suite has exactly its known failures.
+Fresh quickbar and flat gameplay replays match, including regenerated map bytes.
 
-The last full accumulated milestone was shared lists: 1,079 tests in default/
-highres and 1,075 in server, with only the existing opt-in diagnostic skipped.
-Spellbook is included in the accumulated pattern for the next milestone.
-The connected quickbar C baseline is qualified: 22 new groups plus all 24 book
-groups (6,936 records), repeated and checked in all three configurations; its
-22-frame gameplay replay also repeats exactly. A reversible saved-row correction
-and fixture findings are recorded in [QUICKBAR.md](docs/porting/QUICKBAR.md).
-The native quickbar conversion is installed and undergoing comparison, reusing
-the book/GUI/particle/input fixtures. Its provisional count is 64,317 C lines
-in 86 files (−2,494); do not treat it as qualified until the remaining gates pass.
-The test driver bounds Go heap growth; optional asset cleanup runs separately
-from gameplay validation. Confident reversible decisions remain recorded for review.
+See [QUICKBAR.md](docs/porting/QUICKBAR.md) for translation boundaries, the saved-row
+prerequisite correction, fixture ownership correction and qualification evidence.
+[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. The next connected
+candidate is the summon-creature panel, reusing the book/GUI/drawable fixtures.
+Confident reversible decisions remain recorded for review.
 
 ## Goal and target
 
@@ -173,6 +165,10 @@ Reconsider the tests as the behavior and failure modes become clearer.
   environment settings override it and the effective settings are recorded.
   Independent target sweeps may run concurrently when their output directories
   and fixtures are isolated and total CPU/memory fit this VM.
+- **Static memory accesses:** run `go test ./common/memmap/nox -run
+  '^TestCodeStatic$' -count=1` from `src` when adding or changing fixtures that
+  touch mapped state. This inexpensive preflight also scans porttest files.
+  Own raw backing-blob snapshots explicitly, separately from extracted live globals.
 - **Builds and ABI:** all three production binaries on 386/SSE2/CGO. Check expected
   C callbacks/exports, retired symbols and absence of test helpers. Assert sizes,
   alignment and offsets for types crossing the C/Go boundary.

@@ -36,7 +36,12 @@ func newQuickbarOwner(t *testing.T) *quickbarOwner {
 	var restore func()
 	q.quickWords, restore = legacy.PortTestQuickbarWords()
 	t.Cleanup(restore)
-	q.raw = unsafe.Slice(memmap.PtrUint32(0x5D4594, 1047548), (1049716-1047548)/4)
+	// Snapshot the backing blob, including inert bytes left behind by extracted
+	// globals. Their live values are owned separately by quickWords above.
+	// Using Blob.Data makes that distinction explicit; this is not a typed
+	// access to the extracted word at the start of the region.
+	raw := memmap.BlobByAddr(0x5D4594).Data[1047548:1049716]
+	q.raw = unsafe.Slice((*uint32)(unsafe.Pointer(&raw[0])), len(raw)/4)
 	old := append([]uint32(nil), q.raw...)
 	t.Cleanup(func() { copy(q.raw, old) })
 	timeouts := inputKeyTimeoutsOld
@@ -57,7 +62,7 @@ func newQuickbarOwner(t *testing.T) *quickbarOwner {
 	}
 	// Register actual row/slot addresses, including the ability loop end pointers.
 	for off := uintptr(1047548); off < 1049716; off += 4 {
-		p := uint32(uintptr(memmap.PtrOff(0x5D4594, off)))
+		p := uint32(uintptr(unsafe.Pointer(&q.raw[(off-1047548)/4])))
 		if _, ok := o.c.dataRefs[p]; !ok {
 			o.c.dataRefs[p] = 0xeec00000 + uint32(off-1047548)
 		}

@@ -171,6 +171,8 @@ target build selection and linker evidence.
 | Shared intrusive lists and player-group membership | 88 | 68,597 | −300 | 0 |
 | Spellbook UI, page rendering, rewards and quickbar addition | 87 | 66,811 | −1,786 | 0 |
 
+| Complete quickbar UI, activation, rows, traps, rendering and saved slots | 86 | 64,317 | −2,494 | 0 |
+
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
 because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful

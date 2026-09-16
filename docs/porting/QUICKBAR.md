@@ -1,6 +1,23 @@
 # Quickbar UI port
 
-## Status and scope
+## Qualified native result
+
+The complete quickbar owner is native: **87 functions**, **2,494 C lines removed**,
+**64,317 C lines / 86 files / zero reference C** remaining. Implementation recovery
+commit f7c75139 is followed by final fixture ownership and qualification docs.
+All **6,983 records / 49 groups** pass in default/server/highres without changes
+to frozen hashes. Final fixture checks take 83.035 / 82.414 / 81.278 driver seconds.
+Three accumulated sweeps, three production builds/ABI audits, exact known-suite
+comparison and both fresh gameplay replays pass. Source identity and the narrow
+fixture-only difference between sweeps are documented at the end of this report.
+
+Review items: the saved-row C prerequisite correction, preserved byte-only flag
+writes and stale destructor words, constructor callback/row behavior, unsigned
+arithmetic boundaries, and explicit raw-blob versus named-global fixture ownership.
+No unresolved question blocks the next batch. Sections below preserve the baseline
+and development history; their provisional statuses describe those earlier stages.
+
+## Original C baseline and scope
 
 The original-C baseline is fully qualified. All **2,242 quickbar records in
 22 groups** and **4,694 book records in 24 groups** match in default, an independent
@@ -268,3 +285,67 @@ fresh default/server accumulated sweeps run. This protects the completed
 implementation work from VM loss; it is explicitly **not final qualification**.
 Highres, production/ABI, known-suite and replay gates remain, followed by the
 completed-chunk documentation commit. Do not begin the next port until those pass.
+
+The native recovery commit is **f7c75139**, pushed. The final sweeps use its
+unchanged 1,812-file source. During default/server execution, both test processes
+used about 2.2 CPU cores combined and the VM reported roughly 4.9 GiB available
+memory. Start the independent highres sweep with GOMAXPROCS=1 and the existing
+768MiB heap bound in the remaining capacity. This replaces the earlier two-job
+cap for these isolated target sweeps; do not add a fourth job. No agents or extra
+checks are involved. Record actual timings and outcomes rather than claiming a
+speedup from this resource observation alone. This choice is reversible.
+
+Final server sweep passed all **1,124 selected tests** / 1,107 root-package tests
+with only the known opt-in diagnostic skip and all 49 hashes unchanged.
+Driver time: 813.561 seconds. Its reader is joined; final production qualification
+starts in the freed slot while default/highres continue. Source is unchanged.
+
+Final default sweep passed all **1,128 selected tests** / 1,111 root-package
+tests, with the same single existing skip and all 49 hashes unchanged. Driver:
+760.999 seconds; phase: 761.323 seconds.
+The reader is joined. Highres and production/replay qualification remain active.
+
+
+## Final fixture ownership correction
+
+The final highres accumulated sweep passes all 1,128 selected tests / 1,111
+root tests with the same diagnostic skip and all 49 hashes (712.226 driver
+seconds). Default/server/highres all qualify the production source in f7c75139.
+
+Production-final built and audited all three binaries, but the full asset suite
+reported 1,555 failures instead of 1,553: the two additional entries are
+TestCodeStatic and its package. The quickbar fixture's broad backing-region
+snapshot began with a typed memmap access at an extracted named-global address.
+That fixture existed in the C baseline; no gameplay mismatch was involved.
+
+The fixture now explicitly slices Blob.Data for its raw backing snapshot and
+registers addresses from that same slice. Actual named globals remain separately
+owned by PortTestQuickbarWords. This preserves the captured bytes, including
+inert backing bytes at extracted offsets; it does not reinterpret separately
+allocated globals as contiguous storage. TestCodeStatic passes without changes
+to the checker. PORT.md adds this cheap check before long qualification.
+
+Only quickbar_owner_porttest_test.go changed after the accumulated sweeps.
+Recheck all 49 focused captures in default/server/highres in fixture-final, and
+rerun all production gates in production-final-02. Do not repeat the accumulated
+corpus for this fixture-only equivalent access change; retain exact source-diff
+proof connecting its results to the final tree. Production code is unchanged.
+The failed production-final remains diagnostic evidence and is not acceptance.
+
+
+Final production gate `production-final-02` passes in 176.601 phase seconds.
+All three rebuilt binaries are byte-identical to the earlier builds, confirming
+the fixture change does not affect production. ABI audits retain 19 interfaces,
+retire 68, and find no test helpers. The asset suite has exactly 1,553 known
+failure entries and 15/3/32 passing/failing/skipped packages. Fresh quickbar and
+flat replays both pass (63.152 / 47.715 driver seconds), each removing 51 copied
+maps and regenerating the warrior map exactly. The quickbar replay compares all
+22 frames to quickbar-c; the flat replay uses lists-flat-native.
+
+`fixture-equivalence-proof.json` compares all 1,812 fingerprints from each
+accumulated sweep with the final source: only quickbar_owner_porttest_test.go
+changed. It includes that exact ownership-only diff. Final focused and production
+manifests match each other exactly. To reproduce the affected fixture checks,
+use the native-focused phase's command and 49 hashes with tags porttest,
+porttest,server and porttest,highres, each with separate output log/result paths.
+The ignored fixture-batch.json records those three steps explicitly.

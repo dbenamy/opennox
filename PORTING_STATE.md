@@ -2,57 +2,39 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 64k lines** — the working quickbar conversion has
-**64,317 physical lines in 86 production `.c` files**, zero reference C. Its
-**−2,494 lines** remain provisional until final qualification and commit.
-The last qualified native checkpoint is 66,811; see [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 64k lines** — **64,317 physical lines in 86 production
+`.c` files**, zero reference C. The qualified quickbar conversion removes **2,494**.
+See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — quickbar native conversion under final qualification
+## Current — quickbar qualified; begin summon-panel baseline
 
-The C baseline **b487b8dd** and boundary supplement **a6c1640e** are committed
-and pushed. The supplement adds 47 records in three roots, bringing the connected
-baseline to **6,983 records / 49 groups** (2,289 quickbar + 4,694 spellbook).
-All supplement records pass in default/repeat/server/highres. Its committed
-1,802-file source tree exactly matches every C qualification manifest; proof:
-`build/port-quickbar/c-boundary-index-proof.json`.
+Original C baseline b487b8dd and boundary supplement a6c1640e are pushed.
+Native implementation recovery f7c75139 plus this fixture/documentation follow-up
+complete the batch: 87 native functions, 19 remaining C interfaces, 68 retired.
+All **6,983 frozen records / 49 groups** pass default/server/highres.
 
-The native implementation is installed but **not yet accepted**. It removes
-**2,494 C lines**, provisionally leaving **64,317 / 86 files / zero reference C**.
-There are 19 remaining C interfaces and 68 retired interfaces. Source is in
-`src/legacy/gui_quickbar_*.go`; Go callers and test dispatch invoke it directly.
+Evidence under build/port-quickbar:
+- native-final-default/server/highres: complete accumulated milestone, 1,128 /
+  1,124 / 1,128 selected tests, only the known diagnostic skip, all 49 hashes.
+- fixture-final: all 49 focused groups rechecked on the final fixture source in
+  all three targets, no skips. Manifest: fixture-batch.json.
+- production-final-02: three builds/ABI audits, exactly 1,553 known asset-suite
+  failures (15/3/32 packages), fresh quickbar-native and quickbar-flat-native replays.
+- fixture-equivalence-proof.json: only quickbar_owner_porttest_test.go differs
+  from accumulated source manifests; production source is identical. The final
+  fixture and production runs share all 1,812 source fingerprints.
 
-The original 46 groups pass after all production corrections (native-focused-03,
-169.841 seconds). The full 49-group run
-`native-focused-04` passes all 6,983 records without skips in 92.620 seconds.
-Accumulated `native-final-default` and `native-final-server` are now running on
-the same corrected source with the committed supplemental test. Join source readers
-before editing any Go/C/header/module file. At most two qualification jobs run
-concurrently; no subagents are active.
+All readers are joined. Final-index-proof.json ties the committed source to final
+qualification. Failed/superseded native-focused-01, native-qualified-* and
+production-final directories remain diagnostic only; do not reuse them as passed.
 
-Final review corrected three translation boundaries: unsigned tray destination
-comparison, rejected out-of-range previous-row navigation, and byte-selected trap
-row address calculation without a new Go bounds panic. The original empty-label
-render call difference was also corrected. All original goldens are unchanged;
-the supplement was frozen against untouched C before accepting its Go results.
-See [QUICKBAR.md](docs/porting/QUICKBAR.md) for findings and timings.
-
-**Superseded evidence:** native-qualified-default/server passed 1,125 / 1,121
-selected tests, but precede the boundary corrections. production-qualified was
-terminated deliberately and joined. Do not reuse these for the final commit.
-
-This native implementation and its docs are being saved as an explicitly
-unqualified recovery checkpoint after focused acceptance. Its 1,812-file index
-source must match native-focused-04 exactly. Continue the remaining gates and
-record their final results in a follow-up commit before beginning another port.
-
-Remaining: finish accumulated default/server/highres in
-fresh native-final-* directories; three production builds/ABI checks, exact known
-asset-suite failure comparison, and fresh quickbar/flat gameplay replays in a
-fresh production-final directory. Native sources should have 1,812 fingerprints.
-Then review, update C_LOC and docs, stage only this task's paths, prove the index
-matches all final source manifests, commit/push, summarize, and continue.
+See [QUICKBAR.md](docs/porting/QUICKBAR.md) for review notes and exact evidence.
+The static fixture ownership correction does not change production or goldens;
+PORT.md now includes the cheap static-memory check before long gates.
+No agents are active. Preserve the unrelated untracked asset archive. Do not rerun
+stale quickbar drafts or integrate.py. Source the pinned build/baseline/env.sh for Go.
 
 The likely next connected owner is the summon-creature panel: 36 functions /
 994 C lines, GAME3_1.c 004C1CA0 up to 004C3390 plus guisumn.c. Its ignored
