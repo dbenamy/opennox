@@ -1,13 +1,8 @@
 package legacy
 
-/*
-#include "memfile.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/internal/binfile"
 	"io"
-	"unsafe"
 )
 
 func thingSkipSized(f *binfile.MemFile) { n := int(f.ReadU8()); f.Skip(n) }
@@ -110,10 +105,6 @@ func thingSkipAVNTInner(f *binfile.MemFile) int {
 }
 func thingSkipAVNT(f *binfile.MemFile) int { thingSkipSized(f); return thingSkipAVNTInner(f) }
 
-//export nox_thing_skip_AVNT_inner_452B30
-func nox_thing_skip_AVNT_inner_452B30(f *C.nox_memfile) C.int {
-	return C.int(thingSkipAVNTInner((*binfile.MemFile)(unsafe.Pointer(f))))
-}
 func thingReadAlignedByte(f *binfile.MemFile) byte {
 	off, _ := f.Seek(0, io.SeekCurrent)
 	if extra := off % 8; extra != 0 {

@@ -15,8 +15,6 @@ int sub_4F0640();
 */
 import "C"
 import (
-	"unsafe"
-
 	"github.com/opennox/opennox/v1/internal/binfile"
 )
 
@@ -116,14 +114,14 @@ func Nox_thing_read_audio_415660(f *binfile.MemFile, buf []byte) int {
 	if cap(buf) < 256*1024 {
 		panic(cap(buf))
 	}
-	return int(C.nox_thing_read_audio_415660((*nox_memfile)(f.C()), (*C.char)(unsafe.Pointer(&buf[0]))))
+	return audioAssetDefinitions(f, thingReaderScratch(buf))
 }
 
 func Nox_thing_read_AVNT_452890(f *binfile.MemFile, buf []byte) int {
 	if cap(buf) < 256*1024 {
 		panic(cap(buf))
 	}
-	return int(C.nox_thing_read_AVNT_452890((*nox_memfile)(f.C()), unsafe.Pointer(&buf[0])))
+	return audioAssetEvent(f, thingReaderScratch(buf))
 }
 
 func Nox_thing_read_FLOR_411540(f *binfile.MemFile, buf []byte) int {

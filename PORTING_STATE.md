@@ -19,13 +19,17 @@ Tooling checkpoint **b303c046** is pushed. Package-aware driver accounting and
 manifest runner have ten passing failure-path/acceptance tests. Warm actual
 root/tree comparisons took 6.041/12.707s (not a cold-build benchmark).
 
-Round 1: six client audio-definition/lookup functions, 321 C lines. Eight roots /
-1,433 C records are frozen in docs/porting/client-audio-assets-captures.json.
-Repeated default/server/highres C qualification passed through the new
-manifest; all eight roots completed without skips and hashes matched. Real-catalog fixture needed the existing handles.PortTestInit setup;
-that correction passed. Native source remains unapplied. The ignored preparation
-and freeze scripts are stale. Check c-qualified/result.json and join its driver
-before applying build/port-client-audio-assets/apply-native.py, exactly once.
+Round 1 C baseline **06a35720** is pushed. Go replacement applied; all eight
+roots /1,433 frozen records match in native-focused-fixed (107.538s including
+rebuild). Initial compile found one unused import, removed before that run.
+C is now **72,221 /91 files**, pending completed-round qualification. Native
+manifest phase is next: three affected suites, builds/ABI, exact known full-suite
+failures and two gameplay references. Do not claim round completion yet.
+All audio apply/preparation scripts are stale; never rerun them.
+
+Round 2 read-only candidate: 969-line map decoder in legacy/cnxz, with independent
+block-history and real-map fixtures drafted under build/port-map-decompression.
+No round2 source applied. Pause after two qualified rounds for reflection.
 
 Latest full accumulated-corpus milestone: tile composition **642fba50**.
 Use explicit 900s/package for the complete corpus. Preserve original archive.

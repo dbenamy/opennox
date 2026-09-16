@@ -67,3 +67,8 @@ C qualification passed: default 24.175s, independent repeat 10.691s, server
 records matched each time and source fingerprints stayed unchanged. Native
 replacement and its completed-round gates are still pending. Detailed local
 artifacts: build/port-client-audio-assets, including failed fixture logs.
+
+Go implementation checkpoint: initial compile reported the now-unused unsafe
+import in things.go; removing it allowed all 1,433 frozen records and independent
+contracts to pass on the first behavioral run (107.538s including rebuild).
+321 C lines removed, 72,221 remain. Full round qualification is pending.

@@ -119,7 +119,6 @@ int nox_xxx_checkGameFlagPause_413A50();
 void nox_xxx_gameLoopMemDump_413E30();
 int sub_413F60(const void* a1, const void* a2);
 char nox_xxx_initSinCosTables_414C90();
-int nox_thing_read_audio_415660(nox_memfile* a1, char* a2);
 int nox_xxx_weaponInventoryEquipFlags_415820(nox_object_t* item);
 int sub_415840(int a1);
 int nox_xxx_ammoCheck_415880(int typ_ind);

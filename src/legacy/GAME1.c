@@ -1111,28 +1111,6 @@ char nox_xxx_initSinCosTables_414C90() {
 	return v0;
 }
 
-//----- (00415660) --------------------------------------------------------
-int nox_thing_read_audio_415660(nox_memfile* a1p, char* a2) {
-	int a1 = a1p;
-	int v2;  // ebx
-	int* v3; // eax
-	int v4;  // edi
-
-	v2 = 0;
-	v3 = *(int**)(a1 + 8);
-	v4 = *v3;
-	*(uint32_t*)(a1 + 8) = v3 + 1;
-	if (v4 <= 0) {
-		return 1;
-	}
-	while (sub_452BD0(a1, a2)) {
-		if (++v2 >= v4) {
-			return 1;
-		}
-	}
-	return 0;
-}
-
 //----- (00415960) --------------------------------------------------------
 int sub_415960(wchar2_t* a1) {
 	int v1;             // edi

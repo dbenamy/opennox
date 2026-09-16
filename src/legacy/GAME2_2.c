@@ -783,20 +783,6 @@ int sub_486640(void* a1p, int a2) {
 //----- (004866D0) --------------------------------------------------------
 int sub_4866D0(uint32_t* a1, int a2) { return *a1 + 36 * a2; }
 
-//----- (00486A10) --------------------------------------------------------
-unsigned int sub_486A10(int a1, void* a2) {
-	void* v2;            // eax
-	unsigned int result; // eax
-
-	v2 = bsearch(a2, *(const void**)a1, *(uint32_t*)(a1 + 4), 0x24u, (int (*)(const void*, const void*))nox_strcmpi);
-	if (v2) {
-		result = ((unsigned int)v2 - *(uint32_t*)a1) / 0x24;
-	} else {
-		result = -1;
-	}
-	return result;
-}
-
 //----- (00486AA0) --------------------------------------------------------
 int sub_486AA0(uint32_t* a1, int a2, uint32_t* a3) {
 	uint32_t* v3; // eax

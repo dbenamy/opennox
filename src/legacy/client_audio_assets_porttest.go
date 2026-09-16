@@ -37,8 +37,8 @@ func PortTestClientAudioSlot(id int32) unsafe.Pointer {
 }
 func PortTestClientAudioDelay(p unsafe.Pointer) int32 { return int32(C.sub_4522A0(C.int(uintptr(p)))) }
 func PortTestClientAudioSample(p unsafe.Pointer, key *byte) int32 {
-	return int32(C.sub_486A10(C.int(uintptr(p)), unsafe.Pointer(key)))
+	return audioAssetSample(p, key)
 }
 func PortTestClientAudioRecord(f *binfile.MemFile, scratch []byte) int {
-	return int(C.sub_452BD0(C.int(uintptr(f.C())), (*C.char)(unsafe.Pointer(&scratch[0]))))
+	return audioAssetRecord(f, scratch)
 }
