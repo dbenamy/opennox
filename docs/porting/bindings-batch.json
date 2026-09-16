@@ -40,12 +40,24 @@
             "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
           },
           {
+            "path": "{out}/capture-binding-auxiliary.json",
+            "sha256": "a29f9eb5aa7ead40c99d9ff7d103f206aea0e2bedf73fcd3c110284fd7a98d72"
+          },
+          {
+            "path": "{out}/capture-binding-cancel.json",
+            "sha256": "167ba3826021173a744054ba1f28b1cb88bea697f5528f9f70f7d77c0fa6b3c9"
+          },
+          {
             "path": "{out}/capture-binding-capture.json",
             "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
           },
           {
             "path": "{out}/capture-binding-construction.json",
             "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-prompt-text.json",
+            "sha256": "4b3a6545560ef5bd2bed35b0a904da80755703d165aac00661d891f6f059974a"
           },
           {
             "path": "{out}/capture-binding-routing.json",
@@ -86,12 +98,24 @@
             "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
           },
           {
+            "path": "{out}/capture-binding-auxiliary.json",
+            "sha256": "a29f9eb5aa7ead40c99d9ff7d103f206aea0e2bedf73fcd3c110284fd7a98d72"
+          },
+          {
+            "path": "{out}/capture-binding-cancel.json",
+            "sha256": "167ba3826021173a744054ba1f28b1cb88bea697f5528f9f70f7d77c0fa6b3c9"
+          },
+          {
             "path": "{out}/capture-binding-capture.json",
             "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
           },
           {
             "path": "{out}/capture-binding-construction.json",
             "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-prompt-text.json",
+            "sha256": "4b3a6545560ef5bd2bed35b0a904da80755703d165aac00661d891f6f059974a"
           },
           {
             "path": "{out}/capture-binding-routing.json",
@@ -132,12 +156,24 @@
             "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
           },
           {
+            "path": "{out}/capture-binding-auxiliary.json",
+            "sha256": "a29f9eb5aa7ead40c99d9ff7d103f206aea0e2bedf73fcd3c110284fd7a98d72"
+          },
+          {
+            "path": "{out}/capture-binding-cancel.json",
+            "sha256": "167ba3826021173a744054ba1f28b1cb88bea697f5528f9f70f7d77c0fa6b3c9"
+          },
+          {
             "path": "{out}/capture-binding-capture.json",
             "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
           },
           {
             "path": "{out}/capture-binding-construction.json",
             "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-prompt-text.json",
+            "sha256": "4b3a6545560ef5bd2bed35b0a904da80755703d165aac00661d891f6f059974a"
           },
           {
             "path": "{out}/capture-binding-routing.json",
@@ -178,12 +214,24 @@
             "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
           },
           {
+            "path": "{out}/capture-binding-auxiliary.json",
+            "sha256": "a29f9eb5aa7ead40c99d9ff7d103f206aea0e2bedf73fcd3c110284fd7a98d72"
+          },
+          {
+            "path": "{out}/capture-binding-cancel.json",
+            "sha256": "167ba3826021173a744054ba1f28b1cb88bea697f5528f9f70f7d77c0fa6b3c9"
+          },
+          {
             "path": "{out}/capture-binding-capture.json",
             "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
           },
           {
             "path": "{out}/capture-binding-construction.json",
             "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-prompt-text.json",
+            "sha256": "4b3a6545560ef5bd2bed35b0a904da80755703d165aac00661d891f6f059974a"
           },
           {
             "path": "{out}/capture-binding-routing.json",
@@ -224,12 +272,24 @@
             "sha256": "90fcb0808475ebc4ff87d1b6d9334cceadb84acb88b9a7d1670ff908b22d37f6"
           },
           {
+            "path": "{out}/capture-binding-auxiliary.json",
+            "sha256": "a29f9eb5aa7ead40c99d9ff7d103f206aea0e2bedf73fcd3c110284fd7a98d72"
+          },
+          {
+            "path": "{out}/capture-binding-cancel.json",
+            "sha256": "167ba3826021173a744054ba1f28b1cb88bea697f5528f9f70f7d77c0fa6b3c9"
+          },
+          {
             "path": "{out}/capture-binding-capture.json",
             "sha256": "664905ce9353cbeff63fae7c6efa1c33bdada83a38ce06b66f3e80b7a9fe242b"
           },
           {
             "path": "{out}/capture-binding-construction.json",
             "sha256": "ae635dff6390b90fd34d71f58863d32ee8f1f1e4745f1825f72c489bafa6f445"
+          },
+          {
+            "path": "{out}/capture-binding-prompt-text.json",
+            "sha256": "4b3a6545560ef5bd2bed35b0a904da80755703d165aac00661d891f6f059974a"
           },
           {
             "path": "{out}/capture-binding-routing.json",

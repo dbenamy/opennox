@@ -17,6 +17,7 @@
 The revised process is adopted: continue successive qualified batches without a
 scheduled pause. The summon-creature panel is qualified, removing **994 C lines**
 and leaving **63,323 physical lines in 85 files**, with zero reference C.
+The subsequent binding-prompt correction adds three lines: current **63,326 / 85**.
 All **7,954 frozen records in 63 connected summon/book/quickbar groups** match in
 default/server/highres. Three production builds and interface audits pass; the
 asset suite retains exactly its known failures. Fresh conjurer gameplay matches
@@ -28,8 +29,8 @@ the completed-batch affected checks; broaden again at the next relevant mileston
 See [SUMMON.md](docs/porting/SUMMON.md) for the menu-clamp prerequisite correction,
 preserved animation behavior, hit-test translation correction and evidence.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. The next connected
-batch is the in-game/main-menu binding editor. Its C baseline has **7,412 frozen
-records in six groups**, matching default/server/highres plus repeat; all 29
+batch is the in-game/main-menu binding editor. Its C baseline has **7,425 frozen
+records in nine groups**, matching default/server/highres plus repeat; all 32
 affected binding/listbox/entry tests pass. See [BINDINGS.md](docs/porting/BINDINGS.md).
 Gameplay qualification and translation are next. Confident reversible decisions
 remain recorded for review.

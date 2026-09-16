@@ -2,6 +2,7 @@
 #include "client__system__ctrlevnt.h"
 
 #include "GAME3.h"
+#include "GAME2_1.h"
 #include "client__gui__window.h"
 #include "common__strman.h"
 extern nox_window* dword_5d4594_1522620;
@@ -81,6 +82,7 @@ int sub_4CBF60(int a1, unsigned int a2, int a3, int a4) {
 				v6 = nox_strman_loadString_40F1D0("InputCfg.wnd:PressKey", 0,
 												  "C:\\NoxPost\\src\\Client\\shell\\InputCfg\\inputcfg.c", 424);
 				nox_swprintf((wchar2_t*)getMemAt(0x5D4594, 1522636), L"%s\n'%s'", v6, v9);
+				sub_46AEE0((int)nox_xxx_wndGetChildByID_46B0C0((nox_window*)dword_5d4594_1522612, 981), (int)getMemAt(0x5D4594, 1522636));
 				nox_xxx_wndShowModalMB_46A8C0(*(int*)&dword_5d4594_1522612);
 				nox_xxx_windowFocus_46B500(*(int*)&dword_5d4594_1522612);
 				sub_46C690(*(int*)&dword_5d4594_1522612);

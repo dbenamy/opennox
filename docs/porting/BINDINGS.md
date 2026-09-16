@@ -2,8 +2,8 @@
 
 The next connected batch covers the in-game and main-menu key-binding editors:
 21 C functions / 757 physical lines. The C implementation is still installed;
-the C contract baseline is qualified: **7,412 frozen records / six groups**,
-matching default, repeat, server and highres, plus all 29 affected tests without
+the corrected C baseline is qualified: **7,425 frozen records / nine groups**,
+matching default, repeat, server and highres, plus all 32 affected tests without
 skips. Gameplay qualification and translation remain.
 
 ## Scope and contracts
@@ -52,7 +52,7 @@ Ignored working audit and diagnostics: build/port-bindings.
   that widget behavior before invoking the editor handler.
 
 
-## Qualified C baseline
+## Initial qualified C baseline (d6879118)
 
 | Group | Records |
 | --- | ---: |
@@ -79,3 +79,50 @@ development diagnostics only, not accepted baseline evidence.
 The baseline commit does not change production algorithms or C LOC. A preliminary
 Go state-owner draft is ignored at build/port-bindings/gui_bindings_state.go;
 it has not been compiled or installed and must not be treated as completed work.
+
+## Prompt prerequisite discovered in gameplay
+
+The first real menu run exposed a blank key-entry prompt. The static-text widget
+clears its pointer when initialized with an empty string. Construction supplies
+the empty dynamic buffer; later C routing formats that buffer but never updates
+the widget. The new TestBindingEditorPromptText reproduces the failure in both
+editors: the buffer contains the expected action, while visible text is empty.
+
+A scoped correction refreshes child 981 after formatting the prompt in each C
+router. It avoids changing static-text behavior for every other UI owner. This is
+an intentional, reversible prerequisite fix to review, not part of translation.
+It adds three physical C lines, including one needed declaration header include.
+The regression checks consecutive prompts with different action titles, including
+Unicode. Its after-fix qualification passes; the earlier committed six-group baseline
+remains the unmodified-C evidence.
+
+The development gameplay run bindings-menu-develop reached all five screenshots
+but lacked a quit step and timed out after completing the script. It is diagnostic
+only. No child process remains. Add an explicit quit step to subsequent scenarios.
+
+
+### Qualified prompt correction
+
+The nine-group corrected baseline adds four visible-prompt records, six auxiliary
+window cases and three cancel/visibility cases. All earlier frozen hashes remain
+unchanged. Default/repeat/server/highres and all 32 affected tests pass without
+skips. The static memory check passes. Source/index proof: c-prompt-index-proof.json.
+- c-prompt-default: 33.636s, GOMAXPROCS=1.
+- c-prompt-repeat: 7.064s, GOMAXPROCS=1.
+- c-prompt-server: 177.865s, GOMAXPROCS=1.
+- c-prompt-highres: 33.631s, GOMAXPROCS=1.
+- c-prompt-affected: 16.847s, GOMAXPROCS=1.
+
+Current C remaining: **63,326 lines / 85 files**, zero reference C. The original
+757-line candidate now contains three prerequisite lines to translate as well.
+
+The corrected menu development replay visibly names the action, assigns A to
+Move Forward, removes its former duplicate, and returns to options. Explicit
+post-transition waits are required before interacting: an animation completion
+can otherwise change focus after an early prompt opens. Final combined menu and
+in-game gameplay qualification is still pending.
+
+For disk space, verified duplicates in completed summon-native, summon-flat-native
+and bindings-menu-develop2 runs were removed using the existing hash-and-restore
+manifest procedure (1,660,074,083 bytes). Original assets, screenshots, logs,
+modified files and saves remain. Restore with the recorded per-run manifest.

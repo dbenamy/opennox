@@ -2,8 +2,8 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 63k lines** — **63,323 physical lines in 85 production
-`.c` files**, zero reference C. The qualified summon conversion removes **994**.
+**Rough C remaining: about 63k lines** — **63,326 physical lines in 85 production
+`.c` files**, zero reference C. The qualified summon conversion removes **994**; the later prompt fix adds **3**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
@@ -37,21 +37,34 @@ runs are hash-deduplicated with restorable manifests; screenshots/logs remain.
 Do not rerun stale summon drafts or integrate_native.py. Preserve the unrelated
 untracked asset archive. Source build/baseline/env.sh for every Go command.
 
-The connected in-game/main-menu binding-editor C baseline is qualified: **7,412
+The first binding-editor C baseline, pushed as d6879118, qualified **7,412
 records / six groups**, exact in default/repeat/server/highres; all 29 affected
-binding/listbox/entry tests pass without skips. Source production C is unchanged:
+binding/listbox/entry tests pass without skips. At that baseline, production C was unchanged:
 **63,323 lines / 85 files**. See [BINDINGS.md](docs/porting/BINDINGS.md), the tracked
 bindings-batch.json manifest and bindings-captures.json hashes. Evidence is under
 build/port-bindings/c-{default,repeat,server,highres,affected}; all readers joined.
 
-Next: qualify real editor gameplay, then translate the 21 functions / 757-line
-candidate. C apply serialization collapses duplicate keys with last action at
+The prompt correction now passes: **7,425 records / nine groups**, matching all
+four c-prompt-{default,repeat,server,highres} runs plus 32 affected tests. Source
+proof is c-prompt-index-proof.json; source is unchanged across the five phases.
+Both C routers refresh static-text child 981 after formatting its buffer (+3 C
+lines including a header include). The regression fails before the fix in both
+editors and passes afterward. DECISIONS.md records this scoped correction.
+
+Gameplay development now demonstrates the fixed prompt, primary assignment and
+return to options. The first run lacked a quit step and clicked before transition
+completion; it is diagnostic only. menu-develop2 and editors-develop pass. The
+combined extended editors-develop2 run is in progress, using client-dev. The final
+reference still needs a manifest-driven build/capture/repeat and metadata.
+
+Next: qualify real editor gameplay, then translate the
+connected candidate. C apply serialization collapses duplicate keys with last action at
 first position; Escape cancels by popping the modal stack (not mouse capture),
 leaves the selected-list pointer, and clears its row selection. Preserve the
 synthetic narrow-screen unsigned-coordinate behavior for this batch. These are
 review notes, not behavior changes. The ignored gui_bindings_state.go draft is
-preliminary and uncompiled: fix its GetClient GUI access and listbox input helper
-before use, then review the rest. Other ignored *_test.go drafts are stale.
+preliminary and uncompiled; its companion gui_bindings_ui.go is also a draft.
+Review and compile both only after committing the final C baseline. Other ignored *_test.go drafts are stale.
 Continue one qualified chunk at a time, recording C LOC and decisions,
 committing/pushing and continuing without a scheduled pause.
 No user question or substantial blocker is pending.

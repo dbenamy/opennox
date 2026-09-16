@@ -1166,3 +1166,17 @@ This is an intentional behavior correction, not an exact match to the old bug.
 Reversal is a one-word source change plus its explicitly changed expectations.
 Evidence: build/port-summon/menu-bounds-before.log and TestSummonMenuBounds;
 see [SUMMON.md](SUMMON.md). C LOC is unchanged.
+
+### Refresh binding-editor prompt text when opening it — review later
+
+Headless gameplay showed a blank prompt in the C binding editor. Construction
+initializes the static-text widget with an empty buffer, which clears its text
+pointer. Updating the buffer later does not update the widget. A regression test
+reproduces this in both the in-game and main-menu editors.
+
+Refresh child 981 after formatting each prompt, in the two existing C routers
+before translation. This keeps the correction local and preserves the existing
+static-text API for other callers. The visible prompt should name the selected
+action every time, including after reopening it. See [BINDINGS.md](BINDINGS.md)
+for qualification status. This reversible correction is authorized by the standing
+instruction to act on confident decisions and record them for later review.
