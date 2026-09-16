@@ -67,6 +67,9 @@ func TestSpellbookPageRendering(t *testing.T) {
 					if ret != 1 || effectsPixelHash(o.pix) == blank {
 						t.Fatalf("book must draw visible pixels: class=%d guide=%d detail=%d length=%d ret=%d", class, guide, detail, length, ret)
 					}
+					if length > 0 && len(o.displayText) == 0 {
+						t.Fatal("nonempty page must draw text")
+					}
 					rows = append(rows, o.bookSnapshot(fmt.Sprintf("class%d-guide%d-detail%d-count%d", class, guide, detail, length), ret))
 				}
 			}

@@ -24,20 +24,21 @@ joined. See [LISTS.md](docs/porting/LISTS.md) for timings and the rejected initi
 multiline-pattern launches, which ran no tests and remain preserved.
 
 Next: [spellbook UI](docs/porting/SPELLBOOK.md), a connected 36-function / 1,745-line
-scope spanning GAME2.c and client__gui__guibook.c. C baseline development is
-saved in source: nine roots pass with no skips (`build/port-book/c-render-owner`,
-122.493 seconds). Coverage includes resource failures, spell/guide/ability sorting,
-1,182 page-transition records, visibility/capture, actual rendering, spell-family
-knowledge and path-buffer boundaries. Captures remain unfrozen. No production
-implementation changed. Next: guide-family rewards/removal, remaining window
-interactions and quickbar addition animation, then shipped-asset rendering/replay
-and repeat/all-target C qualification. Current readers are joined.
+scope spanning GAME2.c and client__gui__guibook.c. The first C-fixture checkpoint
+is pushed as `751e8fab`. Further baseline development passes fourteen roots with
+no skips (`build/port-book/c-tabs`, 41.689 seconds): guide-family rewards, slot
+removal, mouse selection, tabs and immediate quickbar addition are now included.
+Readers are joined. Captures remain unfrozen and production C is unchanged.
+Next: continuous addition animation, remaining icon/visibility/reward callbacks,
+original-asset rendering/replay, then independent repeats/all-target C baseline.
 
-The lightweight GUI fixture required the real spell owner's server backlink for
-mana-cost rendering. Tiny test images need an onscreen book position. These are
-fixture corrections, not production changes. All ignored facade/initial/sorting/
-render/reward drafts already installed are stale; use reviewed source. The pending
-`guide.go.draft` is only preparation, not installed coverage.
+The immediate-addition fixture uses the actual quickbar initializer, Hermite
+coefficients and screen-particle pool. It checks all width speed tiers, duplicates,
+full bars and special-family exclusions. Snapshots include drag state, GUI refresh,
+text/pixels and the identified quickbar owner pointers stored in window word92.
+The first renderer run required a missing real spell-owner server backlink and
+onscreen placement for tiny fixture images; neither was a production correction.
+All installed ignored facade/guide/removal/click/tab/quickbar drafts are stale.
 
 Continue under PORT.md without a scheduled pause. Preserve original assets/archive.
 All applied list/catalog/compressor scripts are stale; do not rerun them.

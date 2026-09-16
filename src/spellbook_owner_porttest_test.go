@@ -137,6 +137,7 @@ func (o *spellbookOwner) resetBook(t *testing.T) {
 	noxflags.UnsetGame(noxflags.GetGame())
 	noxflags.SetGame(noxflags.GameHost)
 	o.loads = nil
+	o.c.dragndropSpellClear()
 	o.sounds = nil
 	clear(o.pix.Pix)
 	o.collect()
@@ -151,6 +152,8 @@ func (o *spellbookOwner) bookWindow() *gui.Window {
 }
 
 type spellbookResult struct {
+	Drag              [2]uint32
+	MapRefresh        int
 	Case              string
 	Return            uint32
 	Words             map[string]uint32
@@ -160,6 +163,7 @@ type spellbookResult struct {
 	Loads             []string
 	Sounds            [][2]int
 	Vector            [2]float32
+	Text              []inventoryDisplayText
 	Pixels            string
 	Known             []uint32
 	Captured, Focused uint32
@@ -168,6 +172,9 @@ type spellbookResult struct {
 func (o *spellbookOwner) bookSnapshot(label string, ret uint32) spellbookResult {
 	o.collect()
 	r := spellbookResult{Case: label, Return: o.normalize(ret), Words: make(map[string]uint32), Region: append([]uint32(nil), o.region...), Loads: append([]string(nil), o.loads...), Sounds: append([][2]int(nil), o.sounds...), Vector: *legacy.PortTestBookVector()}
+	r.Drag = [2]uint32{o.c.dragndrapSpell, uint32(o.c.dragndropSpellType)}
+	r.MapRefresh = o.c.GUI.ValYYY
+	r.Text = append([]inventoryDisplayText(nil), o.displayText...)
 	r.Pixels = effectsPixelHash(o.pix)
 	r.Known = append([]uint32(nil), unsafe.Slice((*uint32)(unsafe.Add(unsafe.Pointer(&o.players[0]), 3696)), 178)...)
 	r.Captured = o.normalize(uint32(uintptr(o.c.GUI.Captured().C())))
@@ -188,6 +195,11 @@ func (o *spellbookOwner) bookSnapshot(label string, ret uint32) spellbookResult 
 		words := append([]uint32(nil), unsafe.Slice((*uint32)(w.C()), 101)...)
 		for _, i := range []int{13, 15, 17, 19, 21, 23, 59, 93, 94, 95, 96, 97, 98, 99, 100} {
 			words[i] = o.normalize(words[i])
+		}
+		// The unchanged quickbar initializer stores its owner pointer in word92;
+		// other windows may use this word as a scalar, so normalize only registered owners.
+		if _, ok := o.c.dataRefs[words[92]]; ok {
+			words[92] = o.normalize(words[92])
 		}
 		r.Windows = append(r.Windows, words)
 	}

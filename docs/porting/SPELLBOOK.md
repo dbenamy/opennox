@@ -1,7 +1,7 @@
 # Spellbook UI — next batch audit
 
-Status: C baseline development; production unchanged. Nine roots pass
-with no skips (`c-render-owner`, 122.493 seconds); reward and animation
+Status: C baseline development; production unchanged. Fourteen roots pass
+with no skips (`c-tabs`, 41.689 seconds); continuous animation and asset
 coverage is being expanded. No capture is frozen. Starting C: 68,597 lines in
 88 files, zero reference C.
 
@@ -121,3 +121,26 @@ a missing server backlink in the lightweight spell owner during mana-cost lookup
 `PortTestBookSpellOwner` connects the actual owner and restores it afterward.
 No production bug was found or corrected in these attempts. The complete nine-root
 run includes every test omitted after that earlier rendering panic.
+
+`c-guide` passes ten roots with the original startup guide-family table, covering
+54 reward cases including missing players and existing knowledge values.
+`c-removal` passes eleven roots in 117.723 seconds. Its 30 removal cases exercise
+the actual quickbar slot owner across all five selected rows, including duplicate
+entries, family propagation, invalid spell definitions and retained slot flags.
+Decoded text draw calls are captured alongside pixels, and nonempty rendering
+must actually draw text. Mouse-selection coverage is the next active check.
+
+`c-clicks` passes all twelve roots in 40.482 seconds, adding 864 down/up records
+across row/column/page boundaries, all three classes, guide mode and conjurer
+summoning availability. Drag state and GUI refresh are now captured. Immediate
+addition is being integrated with the actual quickbar window initializer, actual
+Hermite coefficients and real screen-particle pool. This source is still baseline
+development; neither captures nor remaining behavior coverage are final.
+
+`c-addition` passes thirteen roots in 124.720 seconds; `c-tabs` passes fourteen
+in 41.689 seconds after adding tab transitions, an independent speed-magnitude
+contract and identified quickbar-pointer normalization. Immediate additions cover
+72 width/kind/availability cases. Tab selection covers 128 records, including empty
+target fallback, repeated/current tabs, details/contents, and blocked transitions.
+The original C still owns every selected spellbook implementation. Continuous
+animation, remaining callbacks and original assets are outstanding before freeze.
