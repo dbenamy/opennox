@@ -63,3 +63,15 @@ cover successful artifact verification, hash mismatch, source mutation and faile
 commands. Actual warm-cache audio runs: root 6.041s; whole tree 12.707s, both two
 roots completed without skips. Source was unchanged between these two runs.
 These are single observations, not a cold-build benchmark.
+
+Qualification cadence for this trial: each round has three-configuration affected
+contracts, three production builds/ABI, the exact full asset suite, and relevant
+reference gameplay. Run the entire accumulated port corpus at the end of round 2
+as the combined milestone. Driver accounting itself is covered by dedicated
+failure-path tests plus actual package selections in both rounds. This avoids
+repeating the accumulated corpus merely for each tooling/fixture commit.
+
+The common production qualifier now takes ABI and scenario declarations from the
+same manifest, recording builds, exact failure/package comparison and integration
+outcomes. It reuses the proven local gameplay runner; that remaining recovery
+requirement is explicit rather than silently embedding it in another batch script.

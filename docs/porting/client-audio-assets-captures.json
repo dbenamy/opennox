@@ -1,0 +1,34 @@
+{
+  "sample-lookup": {
+    "sha256": "4147b1f864904f88e969faa847245d15e844b50d5ff6f2039d3c96a65e8b28e6",
+    "cases": 130
+  },
+  "events": {
+    "sha256": "3cecd7b4489458691ff5183af6a56079a61e29d7311ffb4327c4b5a3909f3e9e",
+    "cases": 1039
+  },
+  "records": {
+    "sha256": "d629e1dcef6d3d8c855c9724c4619843f16d053247598186c36289b49b62c8f2",
+    "cases": 61
+  },
+  "scratch-capacity": {
+    "sha256": "8839d0be9c250f287840dd9c149253425d9c79c2f94363f374672996575d8c64",
+    "cases": 6
+  },
+  "bulk": {
+    "sha256": "f8e256c6cc1d6c5f025c8646eb68e72745aead4e71aa318a3170832eec676556",
+    "cases": 24
+  },
+  "getters": {
+    "sha256": "38278328bf4a85afca9e48e552d6960c60da3c68d6fc7a6dc64a997bd0bfaa06",
+    "cases": 150
+  },
+  "real-catalog": {
+    "sha256": "bdd84b61caa8affe8e9ed30b173a323356c402f6160905090b1cabdd1e64c953",
+    "cases": 6
+  },
+  "sample-lists": {
+    "sha256": "d40055048815871ca71380244ded275e86fea7b927f90bcdd6eb36e00613eb57",
+    "cases": 17
+  }
+}

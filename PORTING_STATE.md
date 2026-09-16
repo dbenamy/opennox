@@ -15,11 +15,17 @@ removed 398 C lines; all recorded gates passed. C remains **72,542 /91 files**.
 
 User requested trying the revised process for two complete conversion rounds,
 then pausing to reflect. See [PROCESS_TRIAL.md](docs/porting/PROCESS_TRIAL.md).
-Tooling changes are being validated before the first round. Current uncommitted
-client audio fixtures (three `*_porttest*.go` files) passed their two initial C
-roots in 187.797s. No production audio source changed; no audio goldens frozen.
-`build/port-client-audio-assets/prepare-c.py` is applied/stale; do not rerun it.
-Its native stage remains unapplied. Finish parser/asset/boundary fixtures next.
+Tooling checkpoint **b303c046** is pushed. Package-aware driver accounting and
+manifest runner have ten passing failure-path/acceptance tests. Warm actual
+root/tree comparisons took 6.041/12.707s (not a cold-build benchmark).
+
+Round 1: six client audio-definition/lookup functions, 321 C lines. Eight roots /
+1,433 C records are frozen in docs/porting/client-audio-assets-captures.json.
+Repeated default/server/highres C qualification passed through the new
+manifest; all eight roots completed without skips and hashes matched. Real-catalog fixture needed the existing handles.PortTestInit setup;
+that correction passed. Native source remains unapplied. The ignored preparation
+and freeze scripts are stale. Check c-qualified/result.json and join its driver
+before applying build/port-client-audio-assets/apply-native.py, exactly once.
 
 Latest full accumulated-corpus milestone: tile composition **642fba50**.
 Use explicit 900s/package for the complete corpus. Preserve original archive.

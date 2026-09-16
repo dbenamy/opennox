@@ -1,0 +1,472 @@
+{
+  "batch": "client-audio-assets",
+  "env": {
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS_CAPTURE": "{out}/capture",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
+  "phases": {
+    "c": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-audio-assets-tests.txt",
+          "--tags",
+          "porttest",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-sample-lookup.json",
+            "sha256": "4147b1f864904f88e969faa847245d15e844b50d5ff6f2039d3c96a65e8b28e6"
+          },
+          {
+            "path": "{out}/capture-events.json",
+            "sha256": "3cecd7b4489458691ff5183af6a56079a61e29d7311ffb4327c4b5a3909f3e9e"
+          },
+          {
+            "path": "{out}/capture-records.json",
+            "sha256": "d629e1dcef6d3d8c855c9724c4619843f16d053247598186c36289b49b62c8f2"
+          },
+          {
+            "path": "{out}/capture-scratch-capacity.json",
+            "sha256": "8839d0be9c250f287840dd9c149253425d9c79c2f94363f374672996575d8c64"
+          },
+          {
+            "path": "{out}/capture-bulk.json",
+            "sha256": "f8e256c6cc1d6c5f025c8646eb68e72745aead4e71aa318a3170832eec676556"
+          },
+          {
+            "path": "{out}/capture-getters.json",
+            "sha256": "38278328bf4a85afca9e48e552d6960c60da3c68d6fc7a6dc64a997bd0bfaa06"
+          },
+          {
+            "path": "{out}/capture-real-catalog.json",
+            "sha256": "bdd84b61caa8affe8e9ed30b173a323356c402f6160905090b1cabdd1e64c953"
+          },
+          {
+            "path": "{out}/capture-sample-lists.json",
+            "sha256": "d40055048815871ca71380244ded275e86fea7b927f90bcdd6eb36e00613eb57"
+          }
+        ]
+      },
+      {
+        "name": "repeat",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-audio-assets-tests.txt",
+          "--tags",
+          "porttest",
+          "--log",
+          "{out}/repeat.jsonl",
+          "--result",
+          "{out}/repeat-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-sample-lookup.json",
+            "sha256": "4147b1f864904f88e969faa847245d15e844b50d5ff6f2039d3c96a65e8b28e6"
+          },
+          {
+            "path": "{out}/capture-events.json",
+            "sha256": "3cecd7b4489458691ff5183af6a56079a61e29d7311ffb4327c4b5a3909f3e9e"
+          },
+          {
+            "path": "{out}/capture-records.json",
+            "sha256": "d629e1dcef6d3d8c855c9724c4619843f16d053247598186c36289b49b62c8f2"
+          },
+          {
+            "path": "{out}/capture-scratch-capacity.json",
+            "sha256": "8839d0be9c250f287840dd9c149253425d9c79c2f94363f374672996575d8c64"
+          },
+          {
+            "path": "{out}/capture-bulk.json",
+            "sha256": "f8e256c6cc1d6c5f025c8646eb68e72745aead4e71aa318a3170832eec676556"
+          },
+          {
+            "path": "{out}/capture-getters.json",
+            "sha256": "38278328bf4a85afca9e48e552d6960c60da3c68d6fc7a6dc64a997bd0bfaa06"
+          },
+          {
+            "path": "{out}/capture-real-catalog.json",
+            "sha256": "bdd84b61caa8affe8e9ed30b173a323356c402f6160905090b1cabdd1e64c953"
+          },
+          {
+            "path": "{out}/capture-sample-lists.json",
+            "sha256": "d40055048815871ca71380244ded275e86fea7b927f90bcdd6eb36e00613eb57"
+          }
+        ]
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-audio-assets-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-sample-lookup.json",
+            "sha256": "4147b1f864904f88e969faa847245d15e844b50d5ff6f2039d3c96a65e8b28e6"
+          },
+          {
+            "path": "{out}/capture-events.json",
+            "sha256": "3cecd7b4489458691ff5183af6a56079a61e29d7311ffb4327c4b5a3909f3e9e"
+          },
+          {
+            "path": "{out}/capture-records.json",
+            "sha256": "d629e1dcef6d3d8c855c9724c4619843f16d053247598186c36289b49b62c8f2"
+          },
+          {
+            "path": "{out}/capture-scratch-capacity.json",
+            "sha256": "8839d0be9c250f287840dd9c149253425d9c79c2f94363f374672996575d8c64"
+          },
+          {
+            "path": "{out}/capture-bulk.json",
+            "sha256": "f8e256c6cc1d6c5f025c8646eb68e72745aead4e71aa318a3170832eec676556"
+          },
+          {
+            "path": "{out}/capture-getters.json",
+            "sha256": "38278328bf4a85afca9e48e552d6960c60da3c68d6fc7a6dc64a997bd0bfaa06"
+          },
+          {
+            "path": "{out}/capture-real-catalog.json",
+            "sha256": "bdd84b61caa8affe8e9ed30b173a323356c402f6160905090b1cabdd1e64c953"
+          },
+          {
+            "path": "{out}/capture-sample-lists.json",
+            "sha256": "d40055048815871ca71380244ded275e86fea7b927f90bcdd6eb36e00613eb57"
+          }
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-audio-assets-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-sample-lookup.json",
+            "sha256": "4147b1f864904f88e969faa847245d15e844b50d5ff6f2039d3c96a65e8b28e6"
+          },
+          {
+            "path": "{out}/capture-events.json",
+            "sha256": "3cecd7b4489458691ff5183af6a56079a61e29d7311ffb4327c4b5a3909f3e9e"
+          },
+          {
+            "path": "{out}/capture-records.json",
+            "sha256": "d629e1dcef6d3d8c855c9724c4619843f16d053247598186c36289b49b62c8f2"
+          },
+          {
+            "path": "{out}/capture-scratch-capacity.json",
+            "sha256": "8839d0be9c250f287840dd9c149253425d9c79c2f94363f374672996575d8c64"
+          },
+          {
+            "path": "{out}/capture-bulk.json",
+            "sha256": "f8e256c6cc1d6c5f025c8646eb68e72745aead4e71aa318a3170832eec676556"
+          },
+          {
+            "path": "{out}/capture-getters.json",
+            "sha256": "38278328bf4a85afca9e48e552d6960c60da3c68d6fc7a6dc64a997bd0bfaa06"
+          },
+          {
+            "path": "{out}/capture-real-catalog.json",
+            "sha256": "bdd84b61caa8affe8e9ed30b173a323356c402f6160905090b1cabdd1e64c953"
+          },
+          {
+            "path": "{out}/capture-sample-lists.json",
+            "sha256": "d40055048815871ca71380244ded275e86fea7b927f90bcdd6eb36e00613eb57"
+          }
+        ]
+      }
+    ],
+    "focused": [
+      {
+        "name": "focused",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-audio-assets-tests.txt",
+          "--tags",
+          "porttest",
+          "--log",
+          "{out}/focused.jsonl",
+          "--result",
+          "{out}/focused-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-sample-lookup.json",
+            "sha256": "4147b1f864904f88e969faa847245d15e844b50d5ff6f2039d3c96a65e8b28e6"
+          },
+          {
+            "path": "{out}/capture-events.json",
+            "sha256": "3cecd7b4489458691ff5183af6a56079a61e29d7311ffb4327c4b5a3909f3e9e"
+          },
+          {
+            "path": "{out}/capture-records.json",
+            "sha256": "d629e1dcef6d3d8c855c9724c4619843f16d053247598186c36289b49b62c8f2"
+          },
+          {
+            "path": "{out}/capture-scratch-capacity.json",
+            "sha256": "8839d0be9c250f287840dd9c149253425d9c79c2f94363f374672996575d8c64"
+          },
+          {
+            "path": "{out}/capture-bulk.json",
+            "sha256": "f8e256c6cc1d6c5f025c8646eb68e72745aead4e71aa318a3170832eec676556"
+          },
+          {
+            "path": "{out}/capture-getters.json",
+            "sha256": "38278328bf4a85afca9e48e552d6960c60da3c68d6fc7a6dc64a997bd0bfaa06"
+          },
+          {
+            "path": "{out}/capture-real-catalog.json",
+            "sha256": "bdd84b61caa8affe8e9ed30b173a323356c402f6160905090b1cabdd1e64c953"
+          },
+          {
+            "path": "{out}/capture-sample-lists.json",
+            "sha256": "d40055048815871ca71380244ded275e86fea7b927f90bcdd6eb36e00613eb57"
+          }
+        ]
+      }
+    ],
+    "native": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-audio-assets-affected.txt",
+          "--tags",
+          "porttest",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-sample-lookup.json",
+            "sha256": "4147b1f864904f88e969faa847245d15e844b50d5ff6f2039d3c96a65e8b28e6"
+          },
+          {
+            "path": "{out}/capture-events.json",
+            "sha256": "3cecd7b4489458691ff5183af6a56079a61e29d7311ffb4327c4b5a3909f3e9e"
+          },
+          {
+            "path": "{out}/capture-records.json",
+            "sha256": "d629e1dcef6d3d8c855c9724c4619843f16d053247598186c36289b49b62c8f2"
+          },
+          {
+            "path": "{out}/capture-scratch-capacity.json",
+            "sha256": "8839d0be9c250f287840dd9c149253425d9c79c2f94363f374672996575d8c64"
+          },
+          {
+            "path": "{out}/capture-bulk.json",
+            "sha256": "f8e256c6cc1d6c5f025c8646eb68e72745aead4e71aa318a3170832eec676556"
+          },
+          {
+            "path": "{out}/capture-getters.json",
+            "sha256": "38278328bf4a85afca9e48e552d6960c60da3c68d6fc7a6dc64a997bd0bfaa06"
+          },
+          {
+            "path": "{out}/capture-real-catalog.json",
+            "sha256": "bdd84b61caa8affe8e9ed30b173a323356c402f6160905090b1cabdd1e64c953"
+          },
+          {
+            "path": "{out}/capture-sample-lists.json",
+            "sha256": "d40055048815871ca71380244ded275e86fea7b927f90bcdd6eb36e00613eb57"
+          }
+        ]
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-audio-assets-affected.txt",
+          "--tags",
+          "porttest,server",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-sample-lookup.json",
+            "sha256": "4147b1f864904f88e969faa847245d15e844b50d5ff6f2039d3c96a65e8b28e6"
+          },
+          {
+            "path": "{out}/capture-events.json",
+            "sha256": "3cecd7b4489458691ff5183af6a56079a61e29d7311ffb4327c4b5a3909f3e9e"
+          },
+          {
+            "path": "{out}/capture-records.json",
+            "sha256": "d629e1dcef6d3d8c855c9724c4619843f16d053247598186c36289b49b62c8f2"
+          },
+          {
+            "path": "{out}/capture-scratch-capacity.json",
+            "sha256": "8839d0be9c250f287840dd9c149253425d9c79c2f94363f374672996575d8c64"
+          },
+          {
+            "path": "{out}/capture-bulk.json",
+            "sha256": "f8e256c6cc1d6c5f025c8646eb68e72745aead4e71aa318a3170832eec676556"
+          },
+          {
+            "path": "{out}/capture-getters.json",
+            "sha256": "38278328bf4a85afca9e48e552d6960c60da3c68d6fc7a6dc64a997bd0bfaa06"
+          },
+          {
+            "path": "{out}/capture-real-catalog.json",
+            "sha256": "bdd84b61caa8affe8e9ed30b173a323356c402f6160905090b1cabdd1e64c953"
+          },
+          {
+            "path": "{out}/capture-sample-lists.json",
+            "sha256": "d40055048815871ca71380244ded275e86fea7b927f90bcdd6eb36e00613eb57"
+          }
+        ]
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-audio-assets-affected.txt",
+          "--tags",
+          "porttest,highres",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-sample-lookup.json",
+            "sha256": "4147b1f864904f88e969faa847245d15e844b50d5ff6f2039d3c96a65e8b28e6"
+          },
+          {
+            "path": "{out}/capture-events.json",
+            "sha256": "3cecd7b4489458691ff5183af6a56079a61e29d7311ffb4327c4b5a3909f3e9e"
+          },
+          {
+            "path": "{out}/capture-records.json",
+            "sha256": "d629e1dcef6d3d8c855c9724c4619843f16d053247598186c36289b49b62c8f2"
+          },
+          {
+            "path": "{out}/capture-scratch-capacity.json",
+            "sha256": "8839d0be9c250f287840dd9c149253425d9c79c2f94363f374672996575d8c64"
+          },
+          {
+            "path": "{out}/capture-bulk.json",
+            "sha256": "f8e256c6cc1d6c5f025c8646eb68e72745aead4e71aa318a3170832eec676556"
+          },
+          {
+            "path": "{out}/capture-getters.json",
+            "sha256": "38278328bf4a85afca9e48e552d6960c60da3c68d6fc7a6dc64a997bd0bfaa06"
+          },
+          {
+            "path": "{out}/capture-real-catalog.json",
+            "sha256": "bdd84b61caa8affe8e9ed30b173a323356c402f6160905090b1cabdd1e64c953"
+          },
+          {
+            "path": "{out}/capture-sample-lists.json",
+            "sha256": "d40055048815871ca71380244ded275e86fea7b927f90bcdd6eb36e00613eb57"
+          }
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/client-audio-assets-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      }
+    ]
+  },
+  "production": {
+    "description": "Go client sound-definition readers and lookup",
+    "assets": "build/assets/extracted/drive_c/Nox",
+    "known_suite": "build/port-rule-command/full-suite.jsonl",
+    "retained": [
+      "nox_xxx_draw_452270",
+      "sub_4522A0"
+    ],
+    "retired": [
+      "nox_thing_read_audio_415660",
+      "nox_thing_read_AVNT_452890",
+      "sub_452BD0",
+      "sub_486A10",
+      "nox_thing_skip_AVNT_inner_452B30"
+    ],
+    "scenarios": [
+      {
+        "name": "client-audio-assets-native",
+        "reference": "build/baseline/runs/client-thing-skips-native",
+        "scenario": "docs/porting/minimap-chapter.yaml"
+      },
+      {
+        "name": "client-audio-assets-flat-native",
+        "reference": "build/baseline/runs/client-thing-skips-flat-native",
+        "scenario": "docs/porting/tile-raster-flat.yaml"
+      }
+    ]
+  }
+}
