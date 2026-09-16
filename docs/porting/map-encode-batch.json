@@ -320,6 +320,19 @@
         ]
       },
       {
+        "name": "compressor-helper",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{root}/build/port-map-compression/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
         "name": "production",
         "command": [
           "python3",
@@ -493,6 +506,6 @@
     "compress_maps": [
       "war01a/War01A.map"
     ],
-    "map_compressor": "{root}/build/port-map-compression/map-compress"
+    "map_compressor": "build/port-map-compression/map-compress"
   }
 }

@@ -1089,3 +1089,14 @@ malformed-input oracle. These bounded, reversible behavior corrections fall unde
 the user's standing authorization. Keep malformed-input and empty-output tests
 explicit; do not change any valid-file expectation. Empty-input compression is
 outside this decoder scope and still has its existing allocation limitation.
+
+### Map compressor ownership and bounded lookahead
+
+Complete NXZ compression in Go and remove its last two production C files.
+Retain exact encoded bytes, including following-file lookahead at 500,000-byte
+block boundaries. Final-file lookahead is explicitly padded; the C version could
+read beyond its allocation while maintaining hashes unused after the final block.
+Review later: empty input now produces the four-byte zero-size header, and inputs
+exceeding the wrapper's addressable allocation or format size return errors before
+creating the destination. These replace allocation panic/unchecked narrowing;
+independent tests cover both. No valid-file baseline was changed.

@@ -1,8 +1,9 @@
 # Complete NXZ map compressor
 
-Status: C baseline qualified in all three targets and an independent repeat;
-implementation draft is ignored and not yet integrated. Starting size: **71,252 C lines /90 files /zero reference C**.
-Scope: `legacy/cnxz/nxz_comp.c` (1,892 lines) and `nxz_common.c` (20 lines).
+Status: C baseline qualified in all three targets and an independent repeat.
+Go implementation passes focused frozen and independent contracts; production
+qualification pending. C baseline commit: **3ee3d454**. Starting size: **71,252 C lines /90 files /zero reference C**.
+Scope: `legacy/cnxz/nxz_comp.c` (1,892 lines) and `nxz_common.c` (18 lines).
 
 ## Scope and contracts
 
@@ -39,4 +40,11 @@ Local initial C checks: `build/port-map-compression/c-focused.log`,
 `c-matches.log`. Frozen match capture SHA-256:
 `c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f`.
 C gate: `build/port-map-compression/c-qualified/result.json`, all steps passed.
-Native qualification and final size pending.
+The first native behavioral run passed all frozen expectations (5.071s driver).
+Additional native contracts pass (5.520s): empty/sparse-oversized input, every
+length 4–521 against 19 distance boundaries, and 12 small block sizes down to one
+byte, including repeated table rebuilds. No goldens changed.
+
+Working C size: **69,342 physical lines /88 files /zero reference C**, a reduction
+of **1,910 lines**. Initial scope estimate overstated the shared helper by two
+lines; the tracked physical-line counter is authoritative. Full gates pending.

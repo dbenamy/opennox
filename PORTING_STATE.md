@@ -27,13 +27,15 @@ records the final qualification and assessment. The user has accepted the new
 process and authorized continued batches; there is no scheduled review pause.
 
 C remaining **71,252 /90 files /zero reference C**. No product question blocks
-implementation. Next candidate under audit: the connected NXZ map compressor
-and its remaining shared allocation helpers (about 1,912 C lines).
+implementation. Active batch: complete NXZ map compressor and allocation helpers. C baseline
+**3ee3d454** is pushed; Go passes focused frozen/independent contracts. Production
+and milestone gates pending. Working size **69,342 /88 files /zero reference C**
+(−1,910); the top count remains the last qualified size until those gates finish.
 See [PROCESS_TRIAL.md](docs/porting/PROCESS_TRIAL.md) for measured results,
 limitations and recommendations.
 All ignored preparation/freeze/apply/finalize scripts for these rounds are stale.
 Preserve original assets/archive. Continue under PORT.md, recording notable issues
-and reversible decisions for later user review. No new conversion is qualified yet.
+and reversible decisions for later user review. See [MAP_COMPRESSION.md](docs/porting/MAP_COMPRESSION.md) for active evidence.
 
 <!-- /current-checkpoint -->
 
