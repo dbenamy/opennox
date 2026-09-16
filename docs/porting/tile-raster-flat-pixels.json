@@ -1,0 +1,69 @@
+{
+  "baseline_production_revision": "51230d6e",
+  "scenario": "docs/porting/tile-raster-flat.yaml",
+  "pixel_format": "tightly packed row-major NRGBA bytes",
+  "environment": {
+    "GODEBUG": "randautoseed=0",
+    "Xvfb": "1280x960x24",
+    "ALSOFT_DRIVERS": "null"
+  },
+  "mode": "Textured Floors unchecked through real GUI control2033; normal engine fallback for flagged tiles remains live",
+  "frames": {
+    "after_walk.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "f2df83c3181bdbbd1fa7810c872a9c07e1733114ea95c5c5451aeaf0d7fd3760"
+    },
+    "chapter_frame_1.png": {
+      "bounds": "(0,0)-(640,480)",
+      "sha256": "2ff9535acea0eb6c84992a7361c3009e3bcaded5d2f66e8db0e97a9aa15bcc92"
+    },
+    "chapter_frame_10.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "2edc0d4a9645a4d9ad94316c18a4ff4c3d325d26f8cdff6c30f1dea032fd7747"
+    },
+    "chapter_frame_15.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "d20c0281a9c15e32dce0577deed2d2d0ed9029c5ffe0e9f4ab272a16074982c5"
+    },
+    "chapter_frame_20.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "bd772e17c2c47bcbba0c14f87b354db6f6097ac3dd0bcc5d169e49c3bfed8c8d"
+    },
+    "chapter_frame_30.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "55a7acd80f61c4dd36642c8372573138196aaf59f68ca1088bf50b6eb471e759"
+    },
+    "chapter_frame_5.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "d2cdb07798b599560e35abad5e4f87f4205ee60e72e14d850b9590f801080978"
+    },
+    "gameplay.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "58985bdc921ae967deb699a167a86ffd17db0925afebaa62f3d4ab98e571a61e"
+    },
+    "minimap_closed.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "efdf90ce0dd39e1a0ce4467f05c27046b84f4fabea0886675e6c0032b5b2eb0f"
+    },
+    "minimap_default.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "ede41c76812ab80f5115552219fca59bad3369ebce81b8a77024265673c35956"
+    },
+    "minimap_zoom_in.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "4859880299f1ccca292b648894bdc7ceb9266a14b52c0f7d71a8beed5e25f1ed"
+    },
+    "minimap_zoom_out.png": {
+      "bounds": "(0,0)-(1024,768)",
+      "sha256": "870250f0b1af015819ba056c76aee4ca79c42014112cdbdcef51747edbb9f92e"
+    },
+    "textured_option_after.png": {
+      "bounds": "(0,0)-(640,480)",
+      "sha256": "ae8c64e6d840e059ea86cfb5382f55f17b7fef3784f195f9fff83fa9fff57306"
+    },
+    "textured_option_before.png": {
+      "bounds": "(0,0)-(640,480)",
+      "sha256": "1d1cd61a359f7122728a00b8258282d8dfa8fee13780acc67f4aabb636dee55d"
+    }
+  }
+}

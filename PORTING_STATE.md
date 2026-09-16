@@ -8,22 +8,33 @@ Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-## Current — wall-edge Go conversion qualified
+## Current — tile-raster C baseline development
 
-Frozen C baseline **cbe1f86c** is committed/pushed. Go edge rendering is fully
-qualified: all 1,340 frozen records / five groups match in all targets, every selected
-affected root completed, all three production builds/ABI pass, the exact known
-1,553 failure entries remain, and 12 fresh chapter/minimap frames match. C remaining:
-**75,473 /91 files /zero reference C**. All readers joined. See WALL_EDGE.md and
-build/port-wall-edge/native-qualification.json. Commit/push this conversion, then
-continue. Applied scripts/stages are stale; never rerun them.
+Wall-edge Go conversion **51230d6e** and C baseline **cbe1f86c** are committed/pushed.
+Removed 284 C lines: **75,473 / 91 files / zero reference C** remain. All 1,340
+frozen results match in all targets; 251/249/251 affected roots, three builds/ABI,
+exact 1,553 known failure entries and 12 fresh gameplay frames qualified. See
+WALL_EDGE.md and build/port-wall-edge/native-qualification.json. All old edge
+apply/freeze/finalize scripts and stages are completed/stale; never rerun them.
 
-Next: five connected tile texture/fill callbacks, unrolled raster routines and wrap setup,
-**1,445 C block lines**, audited in build/port-tile-raster. Tile fixture and implementation drafts are prepared but unapplied. Use actual tile buffer/stride, diamond tables,
-image/type/config owners; test ring wrapping, shape, raw fill patterns, source
-immutability and real callback dispatch. Retain C callbacks while tile composition
-callers remain. Audit decompiled return signatures against the actual void callback
-before deciding on normalization. No user question pending.
+Tile-raster C baseline is fully qualified: **797 records /four groups** match in
+all targets, with259/257/259 selected roots completed. All source fingerprints
+unchanged. Exact production matches51230d6e; reuse of builds/ABI, known failures
+and normal12-frame gameplay is valid. Actual GUI option2033 now supplies an
+independent **14-frame** flat-floor-option replay: client-tile-flat-gui2-c-repeat
+matches client-tile-flat-gui2-c with updates disabled. Checkbox-only pixel inspection
+and visual review confirm the toggle. Config-file and instantaneous-click attempts
+were ineffective and invalidated; never treat them as flat coverage. See TILE_RASTER.md.
+
+All readers joined. Commit/push this C baseline, record HEAD in
+build/port-tile-raster/baseline-revision.txt, then apply reviewed Go with
+apply-native.py. Five C routines /1,445 block lines; retain shared flag storage.
+Two actual C callbacks remain as void/three-argument Go exports with low16 tile
+narrowing; four private C interfaces retire. All797 expectations stay unchanged.
+Native qualification requires all affected targets, builds/ABI, exact known
+failures, normal12-frame and GUI flat14-frame replays. Implementation/export
+stages remain unapplied; fixture/freeze/finalize-c scripts are completed/stale.
+No question pending; continue one qualified chunk at a time.
 
 Last complete accumulated milestone: briefing-window 0b3ed13d; highres root 598.823s.
 Give the next complete-corpus run a longer explicit timeout. Original assets/archive
