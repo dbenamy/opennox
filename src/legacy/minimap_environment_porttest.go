@@ -4,10 +4,8 @@ package legacy
 
 /*
 #include "GAME1_1.h"
-extern uint32_t nox_xxx_minimap_587000_149232;
 extern uint32_t nox_xxx_polygonNextIdx_587000_60352;
 extern uint32_t nox_client_gui_flag_1556112;
-extern uint32_t dword_5d4594_1599696;
 extern uint32_t dword_5d4594_825736;
 extern int nox_win_width, nox_win_height;
 */
@@ -17,8 +15,8 @@ import "unsafe"
 func PortTestMinimapWords() (map[string]*uint32, func()) {
 	m := map[string]*uint32{
 		"messageHead":   (*uint32)(unsafe.Pointer(&C.dword_5d4594_825736)),
-		"debugIterator": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1599696)),
-		"zoom":          (*uint32)(unsafe.Pointer(&C.nox_xxx_minimap_587000_149232)),
+		"debugIterator": &minimapDebugIterator,
+		"zoom":          &minimapZoom,
 		"polygons":      (*uint32)(unsafe.Pointer(&C.nox_xxx_polygonNextIdx_587000_60352)),
 		"gui":           (*uint32)(unsafe.Pointer(&C.nox_client_gui_flag_1556112)),
 		"width":         (*uint32)(unsafe.Pointer(&C.nox_win_width)),

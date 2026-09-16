@@ -2,33 +2,30 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 77k lines** — exactly **77,120 physical lines** in
-91 production `.c` files, with zero test-reference C. The latest scoreboard/rank
-conversion removes **1,537 C lines / 31 routines**. This is source size, not an
-estimate of active code or remaining effort. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 76k lines** — exactly **76,382 physical lines** in
+91 production `.c` files, with zero test-reference C. The latest minimap conversion
+removes **738 C lines / 17 routines**. This measures source size, not remaining
+effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — minimap C baseline development
+## Current — minimap complete; world-wall baseline next
 
-Scoreboard conversion **ddf44816 is committed/pushed**. It removes 31 routines /
-1,537 C lines; **77,120 / 91 files / zero reference C** remain. All 2,137 frozen
-results match, affected and post-review family tests pass in all three targets,
-production builds/ABI and exact full-assets known failures pass, and five hosted
-plus eight chapter gameplay checkpoints match. See [SCOREBOARD.md](docs/porting/SCOREBOARD.md).
+Minimap C baseline **475aec11** is committed/pushed. Go conversion is fully
+qualified: **1,599 frozen results unchanged**, 209/208/209 affected roots
+(default/server/highres) completed, all production builds and 21-symbol retirement
+audit passed. Full-assets exactly matches 1,553 known failures / 15 pass / 3 fail / 32
+skipped packages. Twelve fresh minimap/chapter frames match, updates false.
+Source fingerprints unchanged throughout. **76,382 C lines / 91 files / zero reference
+C**, down 738. See [MINIMAP.md](docs/porting/MINIMAP.md).
 
-Original C baseline now has **1,599 frozen results / ten root tests**, all passing
-in development-g (190.053s). Seventeen routines / 734 function-block lines,
-including private AI-debug monster iterators. See [MINIMAP.md](docs/porting/MINIMAP.md).
-Fresh twelve-frame minimap gameplay repeated independently (51.050s), updates false.
-Three-target affected C qualification completed: **206 / 205 / 206 selected roots**
-(default/server/highres), all started/completed with the one expected prerequisite
-skip. Times112.869/211.633/117.658s; all1,599 hashes match. Production fingerprints
-match ddf44816; reuse its builds/full-assets qualification. No readers active.
-Commit/push this qualified C baseline, then apply/review the Go draft in
-build/port-minimap/*-native.go.stage using apply-native.py. Production translation
-is not yet applied. Earlier fixture stages are stale; do not overwrite current
-sources. No question pending; continue autonomously.
+All readers joined. This checkpoint completes the qualified minimap conversion.
+Continue with the proposed world-wall rendering/visibility batch: eight routines /
+580 function-block lines. Read-only scope/caller audit is in build/port-world-walls.
+No new baseline fixtures or production changes for that batch yet. Actual wall
+sprite/edge/light owners need inspection before choosing the C cases.
+Minimap apply/freeze/finalize scripts are completed; do not rerun. No question
+pending. Continue autonomously one connected chunk at a time.
 
 The last full accumulated milestone was briefing-window 0b3ed13d; highres root
 598.823s means the next complete-corpus run needs a longer explicit timeout.

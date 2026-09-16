@@ -936,3 +936,21 @@ plus all production builds, exact known-failure comparison and both hosted-score
 and chapter gameplay. Post-review callback-adapter cleanup repeats the full scoreboard
 family in all three targets, with exact production fingerprints to reuse the broader
 checks. See SCOREBOARD.md for evidence and limits.
+
+
+### Minimap compatibility and private interfaces
+
+Preserve the polygon predicate's existing first-query corner-ray miss and subsequent
+floor caching; freeze that behavior separately from ordinary asymmetric polygon
+cases. A predicate correction is a separate review item, not part of rendering
+translation. Preserve zoom wrap/signed comparisons, integer projection, three-sided
+shadow borders, current team/objective/observer visibility and real message drawing.
+
+Include the private AI-debug monster traversal with its only renderer caller. Move
+zoom/iterator state to Go, invoke Go owners directly and retire both private AI-path
+C bridges. Test fixtures use actual path/object/wall/drawable/team owners, with normal
+palette definitions supplied as inputs to the lightweight test server. Retain no C
+algorithms solely as an oracle. Use affected three-target qualification after the
+briefing milestone, plus builds/ABI, exact full-assets comparison and twelve fresh
+minimap gameplay frames. Solo gameplay does not establish remote multiplayer
+coverage; populated team/objective and debug behavior have actual-owner fixtures.

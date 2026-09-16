@@ -1,8 +1,8 @@
 # Minimap renderer
 
-Status: **qualified C baseline** after scoreboard **ddf44816**.
-Production remains **77,120 C lines / 91 files / zero test-reference C**. The Go
-translation is an ignored draft and has not been applied.
+Status: **converted and qualified in Go**, against committed/pushed C baseline
+**475aec11**. Removes **738 physical C lines / 17 routines**; **76,382 C lines
+in 91 files**, with zero test-reference C, remain.
 
 ## Scope and ownership
 
@@ -10,8 +10,10 @@ Seventeen routines / **734 C function-block lines** in GAME2_1.c and GAME4_1.c:
 zoom controls, remembered polygon level, minimap drawing, wall/door strokes,
 objective glyphs, player dots, the minimap/message caller and the two private
 AI-debug monster iterators. The completed audit finds no remaining C callers
-outside this connected batch. Four existing Go wrappers will call Go directly;
-the private AI path-buffer C bridges can retire with their only caller.
+outside this connected batch. Four existing Go wrappers call Go directly; the private AI path-buffer C bridges
+retire with their only caller. The zoom word and debug-iterator state move to Go.
+No C minimap exports remain; binary audit checks all 21 retired function/global
+names. Existing polygon, rendering, team and message owners remain shared.
 
 Fixtures reuse real renderer, fonts, drawable allocation/list/spatial-index,
 player/team and wall owners. Polygons use the production allocator and predicate
@@ -95,3 +97,24 @@ The existing polygon predicate behavior is preserved, not repaired here.
 Raw captures (losslessly compressed), scope/caller audits, fingerprints and logs
 are in ignored build/port-minimap. Frozen hashes and fixtures are tracked; no
 permanent test-only C implementation is retained after conversion.
+
+## Go qualification
+
+Native-a discovery failed in 73.891s on client storage accesses missing the Cli()
+accessor. All readers joined before correction. Native-b passed all ten roots in
+**186.757s**; all **1,599 results match**, with no frozen expectation changes.
+
+The completed affected qualification passed **209/208/209 roots** in
+**106.664/210.763/120.500s** (default/server/highres). All selected roots started and
+completed, including the expected prerequisite-probe skip. This selection also
+checks the real AI-path owner and wall-deletion tests alongside the C baseline
+selection. All three production binaries are ELF32/i386/SSE2/CGO, with no test
+helpers and all 21 retired C names absent.
+
+Build times: opennox 58.631s, opennox-hd 8.713s, opennox-server 57.401s.
+The full-assets run (49.908s) exactly matches the established
+**1,553 failure entries**, **15 passed / 3 failed / 32 skipped packages**, exit 1.
+Fresh **client-minimap-port** matched all twelve reference frames in
+**50.626s**, updates false, fresh data/save and seeded headless
+rendering. No change to the known failure set or screenshot expectations.
+All **1,673 source fingerprints** remained unchanged during qualification.

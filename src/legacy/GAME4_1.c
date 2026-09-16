@@ -32,7 +32,6 @@ extern uint32_t dword_5d4594_1599708;
 extern uint32_t dword_5d4594_1599688;
 extern uint32_t dword_587000_234176;
 extern uint32_t dword_5d4594_2487244;
-extern uint32_t dword_5d4594_1599696;
 extern uint32_t dword_587000_237036;
 extern void* nox_alloc_pendingOwn_2386916;
 extern uint32_t dword_5d4594_2386228;
@@ -645,44 +644,6 @@ int nox_xxx_mobAction_50A910(nox_object_t* a1p) {
 		v1 = v12;
 	}
 	return result;
-}
-
-//----- (0050AAE0) --------------------------------------------------------
-int nox_xxx_minimapFirstMonster_50AAE0() {
-	int v0; // eax
-
-	v0 = nox_server_getFirstObject_4DA790();
-	dword_5d4594_1599696 = v0;
-	if (!v0) {
-		return 0;
-	}
-	while (!(*(uint8_t*)(v0 + 8) & 2)) {
-		v0 = nox_server_getNextObject_4DA7A0(v0);
-		dword_5d4594_1599696 = v0;
-		if (!v0) {
-			return 0;
-		}
-	}
-	return v0 + 56;
-}
-
-//----- (0050AB10) --------------------------------------------------------
-int nox_xxx_minimapNextMonster_50AB10() {
-	int v0; // eax
-
-	v0 = nox_server_getNextObject_4DA7A0(*(int*)&dword_5d4594_1599696);
-	dword_5d4594_1599696 = v0;
-	if (!v0) {
-		return 0;
-	}
-	while (!(*(uint8_t*)(v0 + 8) & 2)) {
-		v0 = nox_server_getNextObject_4DA7A0(v0);
-		dword_5d4594_1599696 = v0;
-		if (!v0) {
-			return 0;
-		}
-	}
-	return v0 + 56;
 }
 
 //----- (0050CAC0) --------------------------------------------------------

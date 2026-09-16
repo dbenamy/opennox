@@ -14,17 +14,15 @@
 
 ## Current status
 
-Client inventory, quantity-dialog, trade, shop UI, quest journal, briefing and
-scoreboard/rank presentation are converted. The latest scoreboard batch removes
-**1,537 C lines / 31 routines**; all **2,137 frozen results** are unchanged in all
-three targets. Affected tests, production builds/ABI, exact known-failure comparison
-and fresh hosted/chapter gameplay passed. About **77k C lines remain**:
-**77,120 physical lines in 91 production files**, with zero test-reference C.
-Active: the connected minimap renderer and helpers, **17 routines / 734 C
-function-block lines**. Its **1,599 frozen C results** pass across all three
-targets, and twelve fresh gameplay frames repeat exactly; translate next.
-See [the scoreboard report](docs/porting/SCOREBOARD.md) and
-[PORTING_STATE.md](PORTING_STATE.md).
+Client inventory, quantity-dialog, trade, shop UI, quest journal, briefing,
+scoreboard/rank presentation and minimap rendering are converted. The latest
+minimap batch removes **738 C lines / 17 routines**; all **1,599 frozen results**
+match in all three targets. Affected tests, production builds/ABI, exact known
+failure comparison and twelve fresh gameplay frames passed. About **76k C lines
+remain: 76,382 physical lines in 91 files**, with zero test-reference C.
+Next candidate: world-wall rendering, viewport projection and drawable visibility,
+**eight routines / 580 C function-block lines**, starting with real-owner C fixtures.
+See [the minimap report](docs/porting/MINIMAP.md) and [PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.
 

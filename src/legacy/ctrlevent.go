@@ -114,11 +114,11 @@ func Nox_client_toggleInventory_467C60() {
 }
 
 func Nox_client_mapZoomIn_4724E0() {
-	C.nox_client_mapZoomIn_4724E0()
+	minimapZoomIn()
 }
 
 func Nox_client_mapZoomOut_472500() {
-	C.nox_client_mapZoomOut_472500()
+	minimapZoomOut()
 }
 
 func Nox_client_invAlterWeapon_4672C0() {

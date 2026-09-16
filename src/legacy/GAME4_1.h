@@ -30,8 +30,6 @@ int nox_xxx_monsterCallDieFn_50A3D0(uint32_t* a1);
 void nox_xxx_unitUpdateMonster_50A5C0(nox_object_t* a1);
 char nox_xxx_updateNPCAnimData_50A850(nox_object_t* a1);
 int nox_xxx_mobAction_50A910(nox_object_t* a1);
-int nox_xxx_minimapFirstMonster_50AAE0();
-int nox_xxx_minimapNextMonster_50AB10();
 int nox_xxx_mapTraceObstacles_50B580(nox_object_t* a1, float4* a3);
 void sub_50CAC0(int a1, int a2);
 void sub_50E140(int a1);

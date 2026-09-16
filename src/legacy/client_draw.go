@@ -42,7 +42,7 @@ func Nox_xxx_clientDrawAll_436100_draw_A() {
 }
 
 func Nox_xxx_drawMinimapAndLines_4738E0() {
-	C.nox_xxx_drawMinimapAndLines_4738E0()
+	minimapDrawAndMessages()
 }
 
 func Nox_xxx_clientDrawAll_436100_draw_B() {

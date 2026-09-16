@@ -85,21 +85,6 @@ func sub_50B510() {
 	GetServer().S().AI.Paths.Sub_50B510()
 }
 
-//export sub_50CB00
-func sub_50CB00() int {
-	points := GetServer().S().AI.Paths.Points()
-	return len(points)
-}
-
-//export sub_50CB10
-func sub_50CB10() unsafe.Pointer {
-	points := GetServer().S().AI.Paths.Points()
-	if len(points) == 0 {
-		return nil
-	}
-	return unsafe.Pointer(&points[0])
-}
-
 func Nox_xxx_mobSearchEdible_544A00(a1 *server.Object, a2 float32) int {
 	if u := lifecycleFoodSearch(a1, a2, false); u != nil {
 		return int(uintptr(u.CObj()))
