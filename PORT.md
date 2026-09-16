@@ -20,8 +20,8 @@ The latest world-wall batch removes **625 C lines / nine routines**; all **6,262
 frozen client results / 5,734 server results** match. Affected tests, three production
 builds/ABI, exact known-failure comparison and twelve fresh gameplay frames passed.
 About **76k C lines remain: 75,757 physical lines in 91 files**, with zero
-reference C. Next: the shared wall-edge renderer, **279 C block lines**; expand
-its direct image/run/clipping coverage before translation.
+reference C. Next: the shared wall-edge renderer, **279 C block lines**; its **1,340 original-C records /five groups** are frozen and qualified in
+all three targets. See [WALL_EDGE.md](docs/porting/WALL_EDGE.md).
 See [the world-wall report](docs/porting/WORLD_WALLS.md) and
 [PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain

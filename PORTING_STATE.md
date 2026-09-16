@@ -9,26 +9,29 @@ effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — world-wall Go conversion qualified
+## Current — wall-edge C baseline development
 
-Frozen C baseline **0e0df42d** is committed/pushed. Go world-wall rendering,
-viewport projection, drawable visibility and its private image-interval helper
-are fully qualified. **625 C lines / nine routines** removed: **75,757 / 91 files /
-zero reference C** remain. All 6,262 client / 5,734 server records match frozen C;
-246/244/246 affected roots, three builds/ABI, exact known 1,553 failure entries
-and 12 fresh gameplay frames qualify. See [WORLD_WALLS.md](docs/porting/WORLD_WALLS.md).
-All readers joined; no source edit overlapped qualification. Commit/push this
-conversion, then continue the next batch. Applied scripts/stages are stale;
-never rerun them.
+World-wall Go conversion **6b077ec9** and frozen baseline **0e0df42d** are
+committed/pushed. Removed625 C lines /nine routines: **75,757 /91 files /zero
+reference C** remain. All6,262 client /5,734 server results,246/244/246 affected
+roots,three production builds/ABI,exact1,553 known failures and12 gameplay frames
+qualified. See WORLD_WALLS.md and build/port-world-walls/native-qualification.json.
 
-Next: nox_xxx_edgeDraw_480EF0, the shared wall-edge renderer, 279 C block lines.
-Read-only audit and unapplied direct fixture drafts are in build/port-wall-edge.
-One production Go caller discards its old return. Retain actual image handles,
-shared pixel-row/clip ownership and light multiplication owner. Expand original-C
-coverage for mixed opaque/transparent runs, partial runs, gradients, cropping and
-alternate-row copies before freezing. Nearby color-codec callbacks remain outside
-scope pending indirect-reader audit. No new edge fixtures/production edits applied.
-No question pending; continue autonomously one qualified chunk at a time.
+Wall-edge C baseline is qualified: **1,340 records /five groups**, all hashes
+exact in all three targets. All selected roots started/completed with expected
+optional skip; source fingerprints remained unchanged. Exact production matches
+6b077ec9, validating reuse of its builds/ABI, full-suite comparison and gameplay.
+See WALL_EDGE.md and build/port-wall-edge/c-qualification.json. No readers active.
+Commit/push this baseline before applying reviewed Go via apply-native.py. The
+algorithm draft is unapplied; fixture/freeze scripts are completed/stale.
+
+Scope:279 C block lines plus five newly unused declarations. Retire the edge
+routine and two now-private helper C exports. Preserve actual pixel-row/clip
+owners and the low-resolution copy-length behavior. All1,340 expectations stay
+unchanged. Native qualification needs new three-target tests/builds/ABI, exact
+known failures and fresh12-frame gameplay. No question pending; continue one
+qualified chunk at a time. Next read-only candidate: four tile raster/callback
+routines,1435 C block lines, in build/port-tile-raster; no fixtures applied yet.
 
 Last complete accumulated milestone: briefing-window **0b3ed13d**. Its highres
 root took 598.823s, so the next complete-corpus run needs a longer explicit timeout.
