@@ -8,7 +8,10 @@ Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
 <!-- current-checkpoint -->
 
-## Current — spellbook qualified; continue quickbar UI
+## Current — spellbook pushed; quickbar C baseline in progress
+
+Qualified native conversion **41b8abfb** is pushed; its committed source matches
+all 1,779 native/production qualification fingerprints.
 
 Original-C baseline **337f7c77** and the supplemental icon-release baseline
 **0c7332e1** preserve all **4,694 records in 24 groups**. The latter's committed
@@ -34,9 +37,11 @@ No original frozen capture changed. The temporary C oracle can be removed after
 its source-proof check; the complete oracle is preserved in Git. All ignored
 spellbook implementation drafts and apply scripts are stale.
 
-Next: audit the connected quickbar owner (GAME2.c starting 0045D9D0, related
-GAME2_1.c helpers, and client__gui__guispell.c), then build its C baseline with the
-existing real quickbar/book/GUI/input/particle owners. Keep the current book frames
+Quickbar audit selected 87 connected functions / 2,457 physical C lines.
+Baseline work is in progress in the new quickbar porttest files, extending the
+existing real quickbar/book/GUI/input/particle owners. Production quickbar C is
+unchanged. See [QUICKBAR.md](docs/porting/QUICKBAR.md) for scope, pending coverage
+and the saved-row/timed-selection behavior requiring review. Keep the current book frames
 as its gameplay reference and use larger coherent batches where dependencies allow.
 The accumulated pattern includes spellbook; the last full accumulated milestone
 was shared lists, before this book conversion. Use the next connected UI milestone
