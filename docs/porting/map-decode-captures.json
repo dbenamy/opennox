@@ -1,0 +1,14 @@
+{
+  "synthetic": {
+    "sha256": "56d40cb714d8176aede00dc93fff70021ca6b80c28b02687c6b114041a742244",
+    "cases": 115
+  },
+  "block-history": {
+    "sha256": "13fd63dd1cacaf77797269309a068b2c938cbe6eef97baf7038b56e00c494e8a",
+    "cases": 9
+  },
+  "real-maps": {
+    "sha256": "20b230bc3111761f92159aba009dadf144259e3b97aa60e1b7ba01db7edb590e",
+    "cases": 50
+  }
+}

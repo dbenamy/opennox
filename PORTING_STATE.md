@@ -17,12 +17,18 @@ C remaining **72,221 /91 files /zero reference C**. All readers joined. Evidence
 build/port-client-audio-assets/native-qualified/result.json. See CLIENT_AUDIO_ASSETS.md.
 All audio preparation/freeze/apply/finalize scripts are stale once committed.
 
-Round 2: complete 969-line map decoder in legacy/cnxz. Read-only source/owner
-audit and unapplied decoder/test/scenario drafts are under build/port-map-decompression.
-Use 50 real map pairs plus independent synthetic/block/history/file contracts;
-retain live C compressor. No round2 source or goldens applied at this checkpoint.
-Run full accumulated corpus at the combined milestone, then PAUSE for reflection
-as requested. See PROCESS_TRIAL.md. Original archive/assets unchanged.
+Round 2 is in C-baseline qualification: full 969-line map decoder in legacy/cnxz.
+New decode_porttest_test.go covers 174 records (115 synthetic, all 50 real maps,
+nine hand-encoded block/history cases) plus file API contracts. The first run
+exposed the existing empty-compressor zero-allocation panic; tests use positive
+compression inputs. Asset enumeration was corrected to include three case-varying
+filenames. Native decoder/error/empty-output contracts remain unapplied drafts.
+Final repeated C qualification: build/port-map-decompression/c-final/result.json.
+Join the driver before applying apply-native.py, once. Earlier make-manifest and
+fixture-copy preparation scripts are stale; they contain earlier capture paths.
+Commit/push this baseline before replacement. See MAP_DECOMPRESSION.md and
+DECISIONS.md. Complete both round2 qualification and accumulated milestone, then
+PAUSE for reflection. Original assets/archive are unchanged.
 
 Latest complete accumulated corpus: **642fba50**. New milestone uses explicit
 900s/package and ./... selection. No product decision pending.

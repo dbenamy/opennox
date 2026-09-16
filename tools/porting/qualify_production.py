@@ -70,6 +70,9 @@ def main():
             for symbol in spec['retained']:
                 if symbol not in symbols or not any('_cgoexp_' in s and s.endswith('_'+symbol) for s in symbols):
                     raise RuntimeError('missing Go-backed C export: '+symbol)
+            for symbol in spec.get('retained_c', []):
+                if symbol not in symbols:
+                    raise RuntimeError('missing live C interface: '+symbol)
             for symbol in spec['retired']:
                 if symbol in symbols:
                     raise RuntimeError('retired C symbol remains: '+symbol)
@@ -93,9 +96,9 @@ def main():
             raise RuntimeError('full suite differs from known baseline')
         for scenario in spec['scenarios']:
             name = scenario['name']
-            result = run(name, [sys.executable, str(ROOT/'build/port-client-shop-ui/run-scenario.py'),
+            result = run(name, [sys.executable, str(ROOT/spec.get('scenario_runner','build/port-client-shop-ui/run-scenario.py')),
                                name, 'compare', str(ROOT/scenario['reference'])],
-                         env=dict(os.environ, OPENNOX_DISPLAY_BINARY=str(out/'bin/opennox'),
+                         env=dict(os.environ, OPENNOX_REQUIRE_MAP_DECOMPRESSION='1' if spec.get('force_map_decompression') else '0', OPENNOX_DISPLAY_BINARY=str(out/'bin/opennox'),
                                   OPENNOX_DISPLAY_IMPLEMENTATION=spec['description'],
                                   OPENNOX_UI_SCENARIO=str(ROOT/scenario['scenario'])))
             report['scenarios'][name] = result

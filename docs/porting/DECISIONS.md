@@ -1072,3 +1072,20 @@ and the new wall reader. Add the independent floor-view equivalence/rejection
 contract; retain all existing frozen floor expectations. This is a reversible
 compatibility correction within the standing authorization, not a new parsing
 policy or relaxed input requirement.
+
+### Map decoder valid files and malformed/empty input (process trial round 2)
+
+Move the complete NXZ decoder into local Go with owned arrays; retain the C
+compressor because it remains production code. Preserve the dictionary, signed
+16-bit frequencies and symbol order across byte-aligned blocks. Do not directly
+substitute the pinned libs/nxz reader: its end-block handling does not perform the
+alignment observed in C. Freeze valid C files and use independent map bytes and
+hand-encoded block boundaries to qualify the replacement.
+
+Review later: return an error for truncated/invalid bodies before creating the
+destination, and accept a zero-output-size header as an empty map. The existing
+C wrapper can panic on zero allocation; its unchecked body reads are not a sound
+malformed-input oracle. These bounded, reversible behavior corrections fall under
+the user's standing authorization. Keep malformed-input and empty-output tests
+explicit; do not change any valid-file expectation. Empty-input compression is
+outside this decoder scope and still has its existing allocation limitation.
