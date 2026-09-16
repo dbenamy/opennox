@@ -32,5 +32,5 @@ func Nox_common_maplist_add_4D0760(p *Nox_map_list_item) {
 }
 
 func Sub_425770(p *Nox_map_list_item) {
-	C.sub_425770(unsafe.Pointer(p))
+	listInit((*legacyListNode)(unsafe.Pointer(p)))
 }

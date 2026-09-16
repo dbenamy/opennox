@@ -336,7 +336,7 @@ func Nox_motd_4463E0(a1 int) {
 	C.nox_motd_4463E0(C.int(a1))
 }
 func Sub_4259C0() {
-	C.sub_4259C0()
+	playerGroupsInit()
 }
 func Sub_518770() int {
 	return int(C.sub_518770())
@@ -369,7 +369,7 @@ func Sub_516F10() {
 	C.sub_516F10()
 }
 func Sub_4259F0() {
-	C.sub_4259F0()
+	playerGroupsFree()
 }
 func Sub_4ECA90() {
 	C.sub_4ECA90()

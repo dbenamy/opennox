@@ -6,7 +6,6 @@ package legacy
 extern nox_list_item_t nox_common_maplist;
 extern uint32_t dword_5d4594_1548476;
 extern uint32_t dword_5d4594_1548480;
-#include "GAME1_1.h"
 */
 import "C"
 import (
@@ -22,28 +21,28 @@ import (
 )
 
 func mapCatalogFirst() *Nox_map_list_item {
-	return (*Nox_map_list_item)(unsafe.Pointer(C.nox_common_list_getFirstSafe_425890(&C.nox_common_maplist)))
+	return (*Nox_map_list_item)(unsafe.Pointer(listNext((*legacyListNode)(unsafe.Pointer(&C.nox_common_maplist)))))
 }
 func mapCatalogNext(p *Nox_map_list_item) *Nox_map_list_item {
 	if p == nil {
 		return nil
 	}
-	return (*Nox_map_list_item)(unsafe.Pointer(C.nox_common_list_getNextSafe_4258A0(&p.list)))
+	return (*Nox_map_list_item)(unsafe.Pointer(listNext((*legacyListNode)(unsafe.Pointer(p)))))
 }
 func mapCatalogAdd(p *Nox_map_list_item) {
 	name := alloc.GoString(&p.Name[0])
 	for it := mapCatalogFirst(); it != nil; it = mapCatalogNext(it) {
 		if name <= alloc.GoString(&it.Name[0]) {
-			C.nox_common_list_append_4258E0(&it.list, &p.list)
+			listAppend((*legacyListNode)(unsafe.Pointer(it)), (*legacyListNode)(unsafe.Pointer(p)))
 			return
 		}
 	}
-	C.nox_common_list_append_4258E0(&C.nox_common_maplist, &p.list)
+	listAppend((*legacyListNode)(unsafe.Pointer(&C.nox_common_maplist)), (*legacyListNode)(unsafe.Pointer(p)))
 }
 func mapCatalogFree() {
 	for it := mapCatalogFirst(); it != nil; {
 		next := mapCatalogNext(it)
-		C.nox_common_list_remove_425920(unsafe.Pointer(it))
+		listRemove((*legacyListNode)(unsafe.Pointer(it)))
 		C.free(unsafe.Pointer(it))
 		it = next
 	}

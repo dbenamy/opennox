@@ -124,11 +124,11 @@ func PortTestGroupsOpen() *PortTestGroups {
 	p := unsafe.Slice(memmap.PtrUint8(0x5D4594, 599460), 16)
 	f := &PortTestGroups{saved: bytes.Clone(p)}
 	clear(p)
-	C.sub_4259C0()
+	playerGroupsInit()
 	return f
 }
-func (f *PortTestGroups) Init() { C.sub_4259C0() }
-func (f *PortTestGroups) Free() { C.sub_4259F0() }
+func (f *PortTestGroups) Init() { playerGroupsInit() }
+func (f *PortTestGroups) Free() { playerGroupsFree() }
 func (f *PortTestGroups) Close() {
 	f.Free()
 	copy(unsafe.Slice(memmap.PtrUint8(0x5D4594, 599460), 16), f.saved)
@@ -136,7 +136,7 @@ func (f *PortTestGroups) Close() {
 func (f *PortTestGroups) Find(id uint32) unsafe.Pointer {
 	return unsafe.Pointer(C.sub_425A70(C.int(id)))
 }
-func (f *PortTestGroups) Exists(id uint32) bool { return C.sub_425AA0(C.int(id)) != 0 }
+func (f *PortTestGroups) Exists(id uint32) bool { return playerGroupFind(id) != nil }
 func (f *PortTestGroups) Add(id uint32, name []uint16) bool {
 	if len(name) > 9 {
 		panic("group fixture name too long")
@@ -144,14 +144,14 @@ func (f *PortTestGroups) Add(id uint32, name []uint16) bool {
 	p, free := alloc.Make([]uint16{}, len(name)+1)
 	defer free()
 	copy(p, name)
-	return C.sub_425AD0(C.int(id), (*C.ushort)(unsafe.Pointer(&p[0]))) != nil
+	return playerGroupAdd(id, &p[0]) != nil
 }
 func (f *PortTestGroups) Member(id uint32, index int32) {
 	p := f.Find(id)
 	if p == nil {
 		panic("missing fixture group")
 	}
-	C.sub_425B30(p, C.int(index))
+	playerGroupAddMember((*playerGroup)(p), index)
 }
 func (f *PortTestGroups) Remove(id uint32, index int32) bool {
 	p := f.Find(id)
@@ -174,7 +174,7 @@ func (f *PortTestGroups) State() (out []PortTestGroupState) {
 		v := PortTestGroupState{ID: words[8], Name: append([]uint16(nil), unsafe.Slice((*uint16)(unsafe.Add(p, 12)), 10)...), Team: words[9]}
 		childHead := unsafe.Add(p, 40)
 		childPrev := childHead
-		for q := unsafe.Pointer(C.sub_425BC0(C.int(uintptr(p)))); q != nil; q = unsafe.Pointer(C.sub_425BE0((*C.int)(q))) {
+		for q := unsafe.Pointer(listNext(&(*playerGroup)(p).members)); q != nil; q = unsafe.Pointer(listNext((*legacyListNode)(q))) {
 			w := unsafe.Slice((*uint32)(q), 4)
 			if w[1] != uint32(uintptr(childPrev)) {
 				panic("member backward link")
@@ -194,3 +194,13 @@ func (f *PortTestGroups) State() (out []PortTestGroupState) {
 }
 
 func (f *PortTestGroups) Initialized() uint32 { return memmap.Uint32(0x5D4594, 599472) }
+
+func (f *PortTestLists) Pointer(i int) unsafe.Pointer { return f.ptr(i) }
+func (f *PortTestGroups) AddLongName(id uint32, name []uint16) {
+	p, free := alloc.Make([]uint16{}, len(name)+1)
+	defer free()
+	copy(p, name)
+	if playerGroupAdd(id, &p[0]) == nil {
+		panic("duplicate native group fixture")
+	}
+}

@@ -1115,3 +1115,18 @@ independently before freezing 1,789 catalog/cycle records.
 Preserve the cycle cursor's strict `index > count` comparison and unchecked first
 non-section mapcycle line. These are observable existing behavior; changing them
 is outside this compatibility batch.
+
+### Shared list owner and player-group names
+
+Consolidate the duplicate root list implementation on the Go owner used by legacy
+callers and retained C interfaces. Preserve the canonical C behavior for nil
+successors; the old root Go helper could dereference nil on a zeroed list. Add an
+independent root-wrapper contract. Preserve partial append behavior on an
+uninitialized head, signed sort keys, duplicate order and exact link layout.
+
+Review later: bound group names to nine raw UTF16 units plus a terminator in the
+existing ten-word field. Valid C names are unchanged, including raw surrogate
+units; overlong names have no valid C-buffer oracle. Native contracts cover
+lengths 0/1/9/10/11/128. Keep the shared C-compatible allocation/free ownership.
+Use the full accumulated corpus as this shared batch's all-target behavior gate,
+in place of a redundant affected-only sweep; retain production and replay gates.

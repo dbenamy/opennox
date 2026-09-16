@@ -553,6 +553,31 @@
           }
         ]
       }
+    ],
+    "production": [
+      {
+        "name": "compressor-helper",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{root}/build/port-lists/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/lists-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      }
     ]
   },
   "production": {

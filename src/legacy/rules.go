@@ -92,7 +92,7 @@ func ruleAppendRejected(list *C.nox_list_item_t, line []uint16) {
 	}
 	dst := unsafe.Slice((*uint16)(unsafe.Add(p, 12)), 256)
 	copy(dst[:255], line)
-	C.nox_common_list_append_4258E0(list, (*C.nox_list_item_t)(p))
+	listAppend((*legacyListNode)(unsafe.Pointer(list)), (*legacyListNode)(p))
 }
 
 func ruleClearSpell(st *server.Settings2, ind int) {

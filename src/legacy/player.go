@@ -258,15 +258,15 @@ func Nox_xxx_playerInitColors_461460(pl *server.Player) {
 }
 
 func Sub_425B30(a1 unsafe.Pointer, a2 ntype.PlayerInd) {
-	C.sub_425B30(a1, C.int(a2))
+	playerGroupAddMember((*playerGroup)(a1), int32(a2))
 }
 
 func Sub_425A70(a1 int) unsafe.Pointer {
-	return unsafe.Pointer(C.sub_425A70(C.int(a1)))
+	return unsafe.Pointer(playerGroupFind(uint32(a1)))
 }
 
 func Sub_425AD0(a1 int, a2 *uint16) unsafe.Pointer {
-	return unsafe.Pointer(C.sub_425AD0(C.int(a1), (*C.ushort)(unsafe.Pointer(a2))))
+	return unsafe.Pointer(playerGroupAdd(uint32(a1), a2))
 }
 
 func Sub_41D670(a1 string) {

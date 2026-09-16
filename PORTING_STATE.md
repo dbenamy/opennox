@@ -20,14 +20,24 @@ regenerate the warrior map exactly and match their frame references. See
 
 Current work: [shared intrusive lists and player-group membership](docs/porting/LISTS.md).
 The connected 300-line owner has a duplicate root Go implementation to consolidate.
-C baseline is qualified: 2,319 frozen records / five groups, all five roots pass
-in default, repeat, server and highres with no skips and unchanged source
-(`build/port-lists/c-qualified`, 154.223s). All readers joined; no prerequisite
-C change. Next review/apply the native draft and caller migration, then focused,
-production and full accumulated gates. No native implementation is installed yet.
-The ignored prepare-baseline script is applied and stale; do not overwrite the
-committed fixtures with drafts. Separate milestone phases are tracked for all
-three targets; use isolated output directories and GOMAXPROCS=1/GOMEMLIMIT=768MiB.
+C baseline **5ef1bf5e** is pushed: 2,319 frozen records / five groups, all five roots
+pass in default, repeat, server and highres without skips (`c-qualified`, 154.223s).
+Native integration is installed and all seven focused roots pass with unchanged
+captures (`native-focused`, 105.066s). Added root null-traversal and bounded raw
+UTF16-name contracts; see DECISIONS.md. Final review added field-offset assertions.
+
+Production qualification passes under `build/port-lists/production-qualified`
+(265.849s): three builds/ABI, exact known asset-suite failures and both fresh
+forced-map replays. Those readers joined. Run the full accumulated corpus in
+all three configurations next; it replaces a redundant affected-only sweep. This
+recovery checkpoint is not final batch qualification. Do not edit source while
+the full sweeps run. Separate
+milestone phases are tracked; use isolated output directories and
+GOMAXPROCS=1/GOMEMLIMIT=768MiB. Working C is 68,597 / 88 files / zero reference C;
+latest fully qualified count remains 68,897 until all gates pass.
+
+All ignored list prepare/apply/review scripts have now been applied and are stale.
+Do not overwrite committed fixtures or installed native code from drafts.
 
 Continue under PORT.md without a scheduled pause. Preserve original assets/archive.
 Catalog and compressor apply/finalization scripts are stale; do not rerun them.
