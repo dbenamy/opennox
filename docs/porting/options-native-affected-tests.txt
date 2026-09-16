@@ -1,0 +1,1 @@
+^Test(Options|BindingEditor|ClientRadio|ClientSlider|ClientListbox|ClientEntry|ClientInventoryWindow|Spellbook|Quickbar)

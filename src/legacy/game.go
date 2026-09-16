@@ -94,7 +94,7 @@ var (
 
 func init() {
 	gui.RegisterState(client.StateOptions, "Options", func() bool {
-		return C.nox_game_showOptions_4AA6B0() != 0
+		return optionsMenu.construct() != 0
 	})
 	gui.RegisterState(client.StateClassSelect, "ClassSelect", func() bool {
 		return C.nox_game_showSelClass_4A4840() != 0
@@ -477,7 +477,7 @@ func Nox_xxx_wndCreateInventoryMB_465E00() uint32 {
 	return uint32(uiInventoryCreateWindow())
 }
 func Nox_game_initOptionsInGame_4ADAD0() int {
-	return int(C.nox_game_initOptionsInGame_4ADAD0())
+	return optionsInGame.construct()
 }
 func Sub_48D000_initGuiKick() int {
 	return int(C.sub_48D000_initGuiKick())
@@ -555,7 +555,7 @@ func Nox_gui_itemAmount_free_4C03E0() {
 	uiAmountFree()
 }
 func Sub_4AE3B0() {
-	C.sub_4AE3B0()
+	optionsDestroy()
 }
 func Sub_48D450() {
 	C.sub_48D450()

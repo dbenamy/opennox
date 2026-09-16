@@ -167,7 +167,7 @@ func quickbarDirectionEvent(w *gui.Window, event, _ uint32) int {
 
 func quickbarRowEvent(w *gui.Window, event, _ uint32) int {
 	action := *quickbarUserData(w)
-	if quickbarCorpse() || C.sub_4AE3D0() != 0 {
+	if quickbarCorpse() || optionsVisible() != 0 {
 		return 1
 	}
 	if event == 5 {

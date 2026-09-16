@@ -169,7 +169,7 @@ func bindingClose(cancel int) int {
 		WriteConfigLegacy("nox.cfg")
 		w.SetHidden(true)
 		uiMeterBindings()
-		C.sub_4ADA40()
+		optionsShow()
 	}
 	return 1
 }

@@ -175,6 +175,7 @@ target build selection and linker evidence.
 | Binding-editor prompt refresh prerequisite | 85 | 63,326 | +3 | 0 |
 | Complete in-game and main-menu binding editors | 83 | 62,571 | −755 | 0 |
 | Options checkbox dispatcher prerequisite (C fix) | 83 | 62,475 | −96 | 0 |
+| Complete main-menu and in-game options panels | 82 | 61,682 | −793 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

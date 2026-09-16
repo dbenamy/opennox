@@ -67,7 +67,7 @@ func uiInventoryOpenWindow() int {
 	if v := int(C.nox_gui_xxx_check_446360()); v != 0 {
 		return v
 	}
-	if v := int(C.sub_4AE3D0()); v != 0 {
+	if v := optionsVisible(); v != 0 {
 		return v
 	}
 	if v := int(C.nox_xxx_guiCursor_477600()); v != 0 {

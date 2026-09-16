@@ -15,24 +15,21 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. The binding-editor conversion is qualified, removing **755 C
-lines** and leaving **62,571 physical lines in 83 files**, with zero reference C.
-The later options checkbox prerequisite removes 96 C plumbing lines: current
-**62,475 / 83**, still zero reference C.
-All **7,425 frozen records / nine binding groups** match. The full accumulated
-milestone passes **1,151 selected tests in default/highres and 1,147 in server**,
-with only the existing opt-in diagnostic skipped. Three production builds and
-interface audits pass; the asset suite retains exactly its known failures.
-The binding replay matches all 28 reference frames, and the flat replay matches
-with exact map regeneration.
+scheduled pause. The options-panel conversion is qualified, removing **793 C
+lines** and leaving **61,682 physical lines in 82 files**, with zero reference C.
+Its earlier checkbox prerequisite removed another 96 C plumbing lines.
 
-See [BINDINGS.md](docs/porting/BINDINGS.md) for the prompt prerequisite correction,
-preserved edge cases, rendering follow-up and evidence. The next connected batch
-is the main-menu/in-game options panels: twelve functions, now **793 C lines**
-after the checkbox prerequisite fix. Its corrected C baseline qualifies **3,130
-frozen records / ten groups**, all 56 affected checks and 41 repeated gameplay
-frames. Translation is next. See [OPTIONS.md](docs/porting/OPTIONS.md).
-It can use affected checks after the binding accumulated milestone.
+All **3,130 frozen records / ten options groups** match. Expanded affected checks
+pass **142 default / 141 server / 142 highres tests**, with no skips. Three
+production builds and interface audits pass; the asset suite retains exactly its
+known failures. All **41 options gameplay frames** match C, and flat gameplay
+matches with exact map regeneration. The full accumulated milestone passed at the
+preceding binding conversion; affected checks are appropriate for this batch.
+
+See [OPTIONS.md](docs/porting/OPTIONS.md) for the prerequisite correction,
+qualification and rendering follow-up. Next candidate: nine connected client map
+drawable readers / 617 C lines, using real stream, drawable, light and shape
+owners. Audit old-format defaults before freezing C expectations.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. Confident reversible
 decisions remain recorded for review.
 

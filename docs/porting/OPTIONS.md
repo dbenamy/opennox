@@ -1,9 +1,11 @@
 # Options panels
 
-The next connected batch covers main-menu and in-game options, shared volume
-previews and settings controls: twelve functions / approximately 889 physical C
-lines. C is still installed. Starting checkpoint: **62,571 lines / 83 files /
-zero reference C**, after qualified binding conversion 0649e67a.
+This batch covers main-menu and in-game options, shared volume previews and
+settings controls. Its twelve functions initially occupied 889 C lines. The
+qualified checkbox prerequisite (9abed837, pushed) removed 96; the Go translation
+removes the remaining **793**, leaving **61,682 lines / 82 files / zero reference
+C**. Native qualification is complete. Starting checkpoint: binding conversion
+0649e67a, **62,571 / 83 / zero reference C**.
 
 ## Scope and planned contracts
 
@@ -36,15 +38,16 @@ zero reference C**, after qualified binding conversion 0649e67a.
   Use connected affected checks after the binding accumulated milestone, plus
   production/interface/known-suite and relevant gameplay qualification.
 
-Evidence and working drafts: build/port-options. The C baseline is frozen and passes all five fixture phases. No native options
-implementation is installed.
+Evidence and historical drafts: build/port-options. The corrected C baseline is
+frozen, qualified and pushed. Native source is installed; ignored integration
+scripts and fixture generators have already been applied and must not be rerun.
 
-## Baseline development
+## Baseline development history
 
 The numeric fixture currently passes 1,320 records through both actual C event
 handlers, including all 0–100 values, extremes and unrelated events. Gamma has
 independent clamping/config-dirty checks; sensitivity has independent curve and
-midpoint checks. No hashes are frozen yet.
+midpoint checks. This preceded the frozen capture set below.
 
 Arithmetic finding: C rounds the complete sensitivity exponent to float32 at the
 powf call, retaining extra precision for division/subtraction. Rounding each Go
@@ -57,10 +60,10 @@ The real-checkbox regression fails in all six menu/channel combinations against
 unchanged C (c-checkbox-before2.log). A scoped correction replaces twenty direct
 callback paths with nox_window_call_field_93. It removes 96 lines of callback
 pointers and redundant absent-handler branches, leaving 62,475 C lines / 83 files
-provisionally. This is a prerequisite C fix, not the later Go conversion.
+at that checkpoint. This is a prerequisite C fix, not the later Go conversion.
 The after-fix numeric, checkbox and 1,440-case volume matrix passes in
 c-checkbox-after2.log. Missing callbacks remain covered. Three-target and gameplay
-qualification still remain before committing the correction.
+qualification subsequently passed before committing the correction.
 
 The volume matrix also preserves music-enable behavior: its checkbox handler
 sets the volume target from the timer’s current value, superseding the preceding
@@ -102,8 +105,7 @@ usual E2E write suppression.
 
 Driver times: c-default 28.498s, c-repeat 6.207s, c-server 110.533s,
 c-highres 35.606s, c-affected 28.702s. Each phase records unchanged source identity.
-The real options gameplay baseline is being developed; fixture qualification alone
-does not yet close this prerequisite/baseline commit.
+C gameplay was then qualified separately, as recorded below.
 
 ## Qualified C gameplay and prerequisite
 
@@ -125,3 +127,44 @@ Go conversion. The remaining native scope is **793 physical C lines / twelve
 functions**. Static memory-access preflight passes. c-index-proof.json matches
 the staged source to all five fixture phases and the C gameplay phase (1,845
 source files). No C algorithm is retained solely for tests after translation.
+
+## Qualified native translation
+
+The menu and in-game panels share Go construction, volume and event routing,
+while preserving their distinct viewport notification, visibility and close
+behavior. Four C interfaces remain for actual C callers/raw callbacks; eight
+private interfaces are retired. Go callers now invoke Go directly. The frozen
+capture hashes are unchanged.
+
+Final affected selection also includes inventory-window, spellbook and quickbar
+tests because their input gates call options visibility. The original C selection
+remains reproducible separately; native selection is recorded in
+options-native-affected-tests.txt. The binding batch just completed the full
+accumulated milestone, so another full accumulated sweep is not required here.
+
+The first native build caught named-boolean switch cases requiring an explicit
+bool conversion; corrected before executing captures. No baseline expectations
+were changed. Static memory preflight passes.
+
+All final affected sweeps pass with no skips: **142 default, 141 server, 142
+highres** selected roots, all started and completed. Driver times are
+235.484 / 234.763 / 288.338 seconds. All ten options capture hashes match in
+every target. Static final preflight passes.
+
+Production qualification passes all three 386/SSE2/CGO builds and interface
+audits, including absence of test helpers. The full asset suite retains exactly
+1,553 known failure entries and the same 15 passing / 3 failing / 32 skipped
+packages. The native options replay matches all **41 reference frames** (62.953s
+process); flat gameplay matches with exact warrior map regeneration (49.526s
+process). Production phase: 284.718s. Native replay metadata is in
+options-replay.json.
+
+Final native-index-proof.json compares all **1,847 staged source files** with
+native-default/server/highres and production; every phase reports unchanged
+source. All readers are joined. The default production binary SHA-256 is
+`e03815452c5fe486106dd1c06c823e01b79a8732e4d975bf84eb89dc1197ca3d`.
+
+Final reduction: **793 C lines**, **61,682 remaining in 82 files**, zero reference
+C. Together with the separately qualified checkbox prerequisite, this options
+batch removes 889 physical C lines. No new behavior change was introduced by the
+Go translation; the recorded rendering follow-up remains separate.

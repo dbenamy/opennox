@@ -133,7 +133,7 @@ func Nox_xxx_bookHideMB_45ACA0(a1 int) int {
 	return bookHide(a1)
 }
 func Sub_4AD9B0(a1 int) {
-	C.sub_4AD9B0(C.int(a1))
+	optionsClose(a1)
 }
 func Nox_xxx_bookShowMB_45AD70(a1 int) {
 	bookShow(a1)

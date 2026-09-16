@@ -7,7 +7,6 @@ package legacy
 #include "GAME3.h"
 extern nox_gui_animation* nox_wnd_xxx_1309740;
 extern uint32_t nox_xxx_normalWndBits_587000_172880;
-void sub_4AA650();
 int nox_porttest_options_done();
 extern void* dword_5d4594_1309720;
 extern uint32_t dword_5d4594_1309728;
@@ -36,12 +35,9 @@ import (
 	"unsafe"
 )
 
-// PortTestOptionsEvent invokes the installed production owner, initially C.
+// PortTestOptionsEvent invokes the installed production owner directly.
 func PortTestOptionsEvent(menu bool, root *gui.Window, event int, child *gui.Window, value int) int {
-	if menu {
-		return int(C.sub_4AABE0(C.int(uintptr(root.C())), C.int(event), (*C.int)(child.C()), C.int(value)))
-	}
-	return int(C.nox_xxx_windowOptionsProc_4ADF30(C.int(uintptr(root.C())), C.int(event), (*C.int)(child.C()), C.int(value)))
+	return gui.EventRespInt(optionsEditor(menu).event(root, gui.AsWindowEvent(event, uintptr(child.C()), uintptr(value))))
 }
 
 // PortTestOptionsWords isolates live UI/audio globals from their backing blobs.
@@ -93,32 +89,29 @@ func PortTestOptionsTimers() ([3]*timer.Timer, func()) {
 }
 
 func PortTestOptionsConstruct(menu bool) int {
-	if menu {
-		return int(C.nox_game_showOptions_4AA6B0())
-	}
-	return int(C.nox_game_initOptionsInGame_4ADAD0())
+	return optionsEditor(menu).construct()
 }
 func PortTestOptionsAction(op, arg int) int {
 	switch op {
 	case 0:
-		return int(uintptr(unsafe.Pointer(C.sub_4AAA70())))
+		return optionsMenuRefresh()
 	case 1:
-		return int(C.sub_4ADA40())
+		return optionsShow()
 	case 2:
-		return int(C.sub_4AD9B0(C.int(arg)))
+		return optionsClose(arg)
 	case 3:
-		return int(C.sub_4AE3D0())
+		return optionsVisible()
 	case 4:
-		return int(C.sub_4AE3B0())
+		return optionsDestroy()
 	case 5:
-		return int(C.sub_4AB0C0())
+		return optionsMenuDone()
 	case 6:
-		C.sub_4AA650()
+		optionsPreview()
 		return 0
 	}
 	panic(op)
 }
-func PortTestOptionsDraw(w *gui.Window) int { return int(C.sub_4ADEF0((*C.uint32_t)(w.C()), 0)) }
+func PortTestOptionsDraw(w *gui.Window) int { return optionsOverlayDraw(w, w.DrawData()) }
 func PortTestOptionsAnimWord() *uint32      { return (*uint32)(unsafe.Pointer(&C.nox_wnd_xxx_1309740)) }
 
 var portTestOptionsDoneCount int
