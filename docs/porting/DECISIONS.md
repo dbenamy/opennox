@@ -974,3 +974,22 @@ cleanup detaches/frees the table before unpinning. Full-assets failure compariso
 remains exactly the known 1,553 entries, and fresh solo chapter/minimap gameplay
 matches twelve frames. Review pixel-row ownership consolidation with the remaining
 C tile callers later; it is separate from this behavioral translation.
+
+
+### Wall-edge rasterizer compatibility and private API
+
+The only production caller discards the original edge routine's scratch/pointer
+return, and its flags argument is unused. Use a private void Go API without the
+flags argument; freeze flag-independence before conversion. Retire the edge C
+interface plus light-multiplication and pitch exports whose only C caller was the
+edge renderer. The underlying Go owners remain, and no test-only C algorithm stays.
+
+Preserve low-resolution copy length exactly: a leading partial transparent run
+contributes nothing, while later transparent runs count their full length, including
+a run extending past the horizontal interval. Distinct background rows, partial-run
+cases and independent alternate-row contracts make this behavior visible. A visual
+change to that legacy behavior is a separate review item. Keep the real shared C
+pixel-row/clip/configuration owners until their remaining tile callers move. Invalid
+RLE buffers are outside the valid asset contract; actual image-owner load failures
+remain unchanged. Three-target frozen comparisons, actual caller tests, builds/ABI,
+exact known failures and fresh 12-frame gameplay qualify this conversion.

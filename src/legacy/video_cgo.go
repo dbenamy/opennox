@@ -85,9 +85,6 @@ func nox_xxx_screenGetSize_430C50_get_video_max(pw, ph *C.int) {
 //export nox_video_callCopyBackBuffer_4AD170
 func nox_video_callCopyBackBuffer_4AD170() { Nox_video_callCopyBackBuffer_4AD170() }
 
-//export nox_getBackbufferPitch
-func nox_getBackbufferPitch() int { return Nox_getBackbufferPitch() }
-
 //export nox_client_clearScreen_440900
 func nox_client_clearScreen_440900() { Nox_client_clearScreen_440900() }
 

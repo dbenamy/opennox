@@ -2,41 +2,32 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 76k lines** — exactly **75,757 physical lines** in
-91 production `.c` files, with zero reference C. The latest world-wall conversion
-removes **625 C lines / nine routines**. This measures source size, not remaining
-effort. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 75k lines** — exactly **75,473 physical lines** in
+91 production `.c` files, with zero reference C. Latest wall-edge conversion:
+**−284 C lines**. Source size is not remaining effort; see [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — wall-edge C baseline development
+## Current — wall-edge Go conversion qualified
 
-World-wall Go conversion **6b077ec9** and frozen baseline **0e0df42d** are
-committed/pushed. Removed625 C lines /nine routines: **75,757 /91 files /zero
-reference C** remain. All6,262 client /5,734 server results,246/244/246 affected
-roots,three production builds/ABI,exact1,553 known failures and12 gameplay frames
-qualified. See WORLD_WALLS.md and build/port-world-walls/native-qualification.json.
+Frozen C baseline **cbe1f86c** is committed/pushed. Go edge rendering is fully
+qualified: all 1,340 frozen records / five groups match in all targets, every selected
+affected root completed, all three production builds/ABI pass, the exact known
+1,553 failure entries remain, and 12 fresh chapter/minimap frames match. C remaining:
+**75,473 /91 files /zero reference C**. All readers joined. See WALL_EDGE.md and
+build/port-wall-edge/native-qualification.json. Commit/push this conversion, then
+continue. Applied scripts/stages are stale; never rerun them.
 
-Wall-edge C baseline is qualified: **1,340 records /five groups**, all hashes
-exact in all three targets. All selected roots started/completed with expected
-optional skip; source fingerprints remained unchanged. Exact production matches
-6b077ec9, validating reuse of its builds/ABI, full-suite comparison and gameplay.
-See WALL_EDGE.md and build/port-wall-edge/c-qualification.json. No readers active.
-Commit/push this baseline before applying reviewed Go via apply-native.py. The
-algorithm draft is unapplied; fixture/freeze scripts are completed/stale.
+Next: five connected tile texture/fill callbacks, unrolled raster routines and wrap setup,
+**1,445 C block lines**, audited in build/port-tile-raster. Tile fixture and implementation drafts are prepared but unapplied. Use actual tile buffer/stride, diamond tables,
+image/type/config owners; test ring wrapping, shape, raw fill patterns, source
+immutability and real callback dispatch. Retain C callbacks while tile composition
+callers remain. Audit decompiled return signatures against the actual void callback
+before deciding on normalization. No user question pending.
 
-Scope:279 C block lines plus five newly unused declarations. Retire the edge
-routine and two now-private helper C exports. Preserve actual pixel-row/clip
-owners and the low-resolution copy-length behavior. All1,340 expectations stay
-unchanged. Native qualification needs new three-target tests/builds/ABI, exact
-known failures and fresh12-frame gameplay. No question pending; continue one
-qualified chunk at a time. Next read-only candidate: four tile raster/callback
-routines,1435 C block lines, in build/port-tile-raster; no fixtures applied yet.
-
-Last complete accumulated milestone: briefing-window **0b3ed13d**. Its highres
-root took 598.823s, so the next complete-corpus run needs a longer explicit timeout.
-Original assets/archive unchanged. Evidence remains in ignored build/port-world-walls
-and build/baseline/runs/client-world-walls-port; recovery instructions are tracked.
+Last complete accumulated milestone: briefing-window 0b3ed13d; highres root 598.823s.
+Give the next complete-corpus run a longer explicit timeout. Original assets/archive
+unchanged; evidence lives in ignored build/. Recovery instructions are tracked.
 
 <!-- /current-checkpoint -->
 

@@ -15,14 +15,13 @@
 ## Current status
 
 Client inventory, quantity-dialog, trade, shop UI, quest journal, briefing,
-scoreboard/rank presentation, minimap and world-wall rendering are converted.
-The latest world-wall batch removes **625 C lines / nine routines**; all **6,262
-frozen client results / 5,734 server results** match. Affected tests, three production
-builds/ABI, exact known-failure comparison and twelve fresh gameplay frames passed.
-About **76k C lines remain: 75,757 physical lines in 91 files**, with zero
-reference C. Next: the shared wall-edge renderer, **279 C block lines**; its **1,340 original-C records /five groups** are frozen and qualified in
-all three targets. See [WALL_EDGE.md](docs/porting/WALL_EDGE.md).
-See [the world-wall report](docs/porting/WORLD_WALLS.md) and
+scoreboard/rank presentation, minimap, world walls and the wall-edge renderer are
+converted. The latest batch removes **284 C lines**; all **1,340 frozen results**
+match in three targets. Affected tests, three builds/ABI, exact known failures
+and twelve fresh gameplay frames passed. About **75k C lines remain: 75,473
+physical lines in 91 files**, with zero reference C. Next: five connected tile
+texture/fill, raster and wrap-setup routines, **1,445 C block lines**.
+See [the edge-renderer report](docs/porting/WALL_EDGE.md) and
 [PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.

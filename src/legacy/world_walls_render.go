@@ -14,7 +14,6 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"
 	"image"
-	"unsafe"
 )
 
 // Update the image interval cache without changing the renderer's clip rectangle.
@@ -123,7 +122,7 @@ func worldWallDraw(vp *noxrender.Viewport, w *server.Wall) {
 		data.SetMultiply14(1)
 		r.SetColorMultAndIntensityRGB(byte(color[0]), byte(color[1]), byte(color[2]))
 		if options&2 == 0 {
-			C.nox_xxx_edgeDraw_480EF0(C.int(uintptr(img)), C.int(p.X), C.int(p.Y), (*C.int)(unsafe.Pointer(&color[0])), (*C.int)(unsafe.Pointer(&second[0])), C.int(height), C.int(lo), C.int(hi), 0, C.int(options))
+			wallEdgeDraw(noxrender.ImageHandle(img), p, &color, (*[3]uint32)(second), height, lo, hi, 0)
 		} else if worldWallImageInterval(lo, hi) {
 			data.SetAlphaEnabled(true)
 			data.SetAlpha(128)

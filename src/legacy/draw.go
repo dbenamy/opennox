@@ -209,15 +209,6 @@ func sub_49E4F0(a1 int) int {
 	return bool2int(GetClient().R2().DrawParticles49ED80(a1))
 }
 
-//export sub_480860
-func sub_480860(a1, a2 *C.ushort, w int, a4, a5 *C.int) {
-	dst := unsafe.Slice((*uint16)(unsafe.Pointer(a1)), w)
-	src := unsafe.Slice((*uint16)(unsafe.Pointer(a2)), w)
-	a4p := unsafe.Slice((*uint32)(unsafe.Pointer(a4)), 3)
-	a5p := unsafe.Slice((*uint32)(unsafe.Pointer(a5)), 3)
-	Sub_480860(dst, src, w, a4p, a5p)
-}
-
 //export nox_draw_setColorMultAndIntensityRGB_433CD0
 func nox_draw_setColorMultAndIntensityRGB_433CD0(r, g, b C.uchar) int {
 	return int(GetClient().R2().SetColorMultAndIntensityRGB(byte(r), byte(g), byte(b)))
