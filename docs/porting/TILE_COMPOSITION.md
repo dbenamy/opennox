@@ -1,7 +1,7 @@
 # Tile composition, overlays and scrolling
 
-Status: **qualified frozen C baseline**. Production remains **74,029 C lines /91 files /
-zero reference C**, from qualified tile-raster conversion **fb882b61**.
+Status: **qualified Go conversion**. Frozen C baseline: **6819d3ff**.
+Removed **579 C lines**; **73,450 C lines /91 files /zero reference C** remain.
 
 Seven routines in six marked blocks total **558 C lines**: counter reset, edge
 overlay callback and linked traversal, horizontal/vertical incremental redraw,
@@ -128,3 +128,32 @@ shared counter from 17 to −1, while a no-op preserves every renderer word and 
 The complete focused family then passed 7 roots in all three targets, with all frozen
 expectations unchanged. All earlier source fingerprints are identical, validating
 reuse of the broader affected runs; the added test is the only source change.
+
+## Go conversion and complete rendering milestone
+
+The first Go focused run passed all seven roots and 3,096 frozen records in
+**188.594s**, without an algorithm or expectation correction. Removing 558
+function-block lines, one private no-op line, two callback-slot definitions and
+18 unused extern declarations reduces C by 579 lines.
+
+Go now owns tile callback selection, full and incremental composition, redraw
+selection, edge-list traversal and overlay copies. Actual grid/definition/buffer
+and counter owners remain. Private callbacks are called directly in Go; twelve
+C interfaces/storage slots retire, including the prior raster exports and private
+no-op. A later caller audit also found the width/height C getter adapters unused;
+retire those in the following asset batch, retaining their live Go owners. Frozen expectations remain unchanged; no test-only C algorithm remains.
+The unused C scratch returns and upper-word callback argument residue are absent
+from private Go APIs. Actual callers never consumed them.
+
+The **complete accumulated port corpus** completed **1023 / 1019 / 1023 roots**
+in **583.533 / 668.732 / 600.907s** for default/server/highres, with an explicit 900-second
+per-package timeout. Every selected root started and finished; only established
+optional prerequisite skips remain. All 3,096 composition records match frozen C in
+each target, alongside the earlier raster/edge/wall/UI/gameplay port contracts.
+All three production builds pass ELF32/i386/SSE2/CGO and retired-interface checks,
+with no test helpers. Full-assets failures/package outcomes remain exactly 1,553
+entries and 15 pass/3 fail/32 skip. Fresh normal chapter/minimap 12 and GUI flat-floor 14
+frames match, with updates disabled. Source fingerprints stay unchanged throughout.
+Evidence: build/port-tile-composition/native-qualification.json. Invalid image
+streams and out-of-contract overlay coordinates remain outside this qualification;
+solo replay does not establish remote multiplayer coverage.

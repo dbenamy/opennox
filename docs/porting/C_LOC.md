@@ -159,6 +159,7 @@ target build selection and linker evidence.
 | World-wall rendering, projection and drawable visibility | 91 | 75,757 | −625 | 0 |
 | Wall-edge RLE rasterizer and private helper interfaces | 91 | 75,473 | −284 | 0 |
 | Tile texture/fill callbacks, packed raster and wrap setup | 91 | 74,029 | −1,444 | 0 |
+| Tile composition, scrolling, overlays and private callback interfaces | 91 | 73,450 | −579 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

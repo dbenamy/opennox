@@ -396,7 +396,7 @@ func Sub_502DF0() {
 	C.sub_502DF0()
 }
 func Sub_481410() {
-	C.sub_481410()
+	tileCompositionReset()
 }
 func Sub_4D0550(a1 string) {
 	commandRulesPath(&a1)

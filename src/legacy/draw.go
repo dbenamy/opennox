@@ -489,18 +489,6 @@ func Get_sub_480250() unsafe.Pointer {
 func Get_sub_480220() unsafe.Pointer {
 	return C.sub_480220
 }
-func Get_nox_xxx_tileDraw_4815E0() unsafe.Pointer {
-	return C.nox_xxx_tileDraw_4815E0
-}
-func Get_nox_xxx_drawTexEdgesProbably_481900() unsafe.Pointer {
-	return C.nox_xxx_drawTexEdgesProbably_481900
-}
-func Get_sub_481770() unsafe.Pointer {
-	return C.sub_481770
-}
-func Get_nullsub_8() unsafe.Pointer {
-	return C.nullsub_8
-}
 func Sub_435120(a1 unsafe.Pointer, a2 unsafe.Pointer) {
 	C.sub_435120(a1, a2)
 }

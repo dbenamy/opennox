@@ -2,36 +2,28 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 74k lines** — exactly **74,029 physical lines** in
-91 production `.c` files, with zero reference C. Latest tile-raster conversion:
-**−1,444 C lines**. Source size is not remaining effort; see [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 73k lines** — exactly **73,450 physical lines** in
+91 production `.c` files, with zero reference C. Latest tile-composition conversion:
+**−579 C lines**. Source size is not remaining effort; see [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — tile-composition C baseline development
+## Current — tile-composition Go rendering milestone qualified
 
-Tile-raster Go conversion **fb882b61** and C baseline **2a6bfb01** are committed/pushed.
-Removed 1,444 C lines; **74,029 /91 files /zero reference C** remain. All797 records
-match in all3 targets, affected259/257/259 roots, three builds/ABI, exact1,553 known
-failure entries and normal12+GUI-flat14 frames qualified. Applied raster stages
-and scripts are stale; never rerun them.
+C baseline **6819d3ff** is committed/pushed. Go composition is fully qualified:
+all 3,096 records/six groups match in all three targets, complete accumulated corpus roots
+all finished under explicit 900s/package, three builds/ABI pass, exact known 1,553
+full-suite failures remain and normal 12+GUI flat-floor 14 frames match. C remaining:
+**73,450 /91 files /zero reference C**. All readers joined. See TILE_COMPOSITION.md
+and build/port-tile-composition/native-qualification.json. Commit/push conversion,
+then continue. All applied scripts/stages are stale; never rerun them.
 
-Tile-composition C baseline is fully qualified: all three,096 records/six groups match
-in all three targets, every selected affected root finished, source fingerprints are
-unchanged. Production exactly matchesfb882b61, so its builds/full-known-failures/
-normal 12+GUI flat-floor 14 replays are valid baseline evidence. See TILE_COMPOSITION.md.
-All readers joined. Commit/push baseline, write its revision to ignored checkpoint,
-then apply reviewed Go draft with build/port-tile-composition/apply-native.py.
-Fixture/freeze/finalize-C stages are completed/stale; never rerun them.
-
-Native: first focused match, then complete accumulated corpus with 900s per package,
-all three builds/ABI, exact known full-assets failures and 26 gameplay frames. Optional
-runner timeout defaults600 and rejects nonpositive inputs. Full pattern includes
-wall-edge, raster and composition families. No user question pending.
-
-Last complete accumulated milestone: briefing-window 0b3ed13d; highres root 598.823s.
-Give the next complete-corpus run a longer explicit timeout. Original assets/archive
-unchanged; evidence lives in ignored build/. Recovery instructions are tracked.
+Next: connected floor/edge asset readers, nine connected readers/helpers /510 C block lines. Scope audit and ignored fixture/implementation drafts are in build/port-floor-assets;
+none applied or executed. Use actual MemFile/definition/image
+owners, cursor/return/state contracts and real asset references. Reassess unsupported
+inputs before freezing; preserve the actual allocation/free lifecycle. No question
+pending. Original assets/archive unchanged. Current complete-corpus milestone is
+this tile-composition conversion; keep explicit 900s for future complete runs.
 
 <!-- /current-checkpoint -->
 

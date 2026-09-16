@@ -5,7 +5,6 @@
 
 int sub_42CC50(void** this);
 int nox_xxx_j_inventoryNameSignInit_467460(void);
-int nullsub_8(int a1, int a2);
 void nullsub_9(uint32_t a1);
 void nullsub_10(uint32_t a1);
 void nullsub_22();
