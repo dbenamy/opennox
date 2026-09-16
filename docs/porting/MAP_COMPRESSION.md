@@ -48,3 +48,24 @@ byte, including repeated table rebuilds. No goldens changed.
 Working C size: **69,342 physical lines /88 files /zero reference C**, a reduction
 of **1,910 lines**. Initial scope estimate overstated the shared helper by two
 lines; the tracked physical-line counter is authoritative. Full gates pending.
+
+## Qualification harness issue
+
+All three production builds/ABI and the exact 1,553 known failure entries passed.
+The first normal replay passed its map-byte check and reference frames, then an
+optional ignored asset-deduplication helper rejected the new run name. The parent
+runner correctly recorded the nonzero process exit; this was cleanup failure, not
+a game mismatch. Keep the original attempt and full run copy.
+
+Remove implicit cleanup from the tracked scenario runner. Perform verified local
+deduplication separately after validation. Reuse unchanged-source build/ABI/suite
+evidence through the existing guarded mechanism, and run both scenarios afresh.
+No game/test source or valid-file expectations changed during these checks.
+
+Both fresh scenarios now pass: `map-encode-native-qualified` and
+`map-encode-flat-native-qualified`. Each regenerated one warrior map exactly and
+matched its reference frames (12 normal, 14 flat-floor). Final integration report:
+`build/port-map-compression/native-final/production/production.json`. The guarded
+reuse check accepted the original three builds and full suite without rebuilding.
+Successful copies were deduplicated separately with verified restoration manifests;
+the first cleanup-failed run copy is retained unchanged. Full corpus still running.

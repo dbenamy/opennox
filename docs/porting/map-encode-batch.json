@@ -455,6 +455,20 @@
           }
         ]
       }
+    ],
+    "finish": [
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/map-encode-batch.json",
+          "--out",
+          "{out}/production",
+          "--reuse-production-from",
+          "{root}/build/port-map-compression/native-qualified/production"
+        ]
+      }
     ]
   },
   "production": {
@@ -493,12 +507,12 @@
     ],
     "scenarios": [
       {
-        "name": "map-encode-native-forced-case",
+        "name": "map-encode-native-qualified",
         "reference": "build/baseline/runs/map-decode-native-forced-case",
         "scenario": "docs/porting/minimap-chapter.yaml"
       },
       {
-        "name": "map-encode-flat-native-forced-case",
+        "name": "map-encode-flat-native-qualified",
         "reference": "build/baseline/runs/map-decode-flat-native-forced-case",
         "scenario": "docs/porting/tile-raster-flat.yaml"
       }

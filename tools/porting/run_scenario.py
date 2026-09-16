@@ -96,8 +96,6 @@ if code == 0 and removed:
 report['exit']=code
 (run/'result.json').write_text(json.dumps(report,indent=2)+'\n')
 print(name,'exit',code,flush=True)
-# Deduplication saves local disk space but is not required for validation.
-deduplicate = ROOT/'build/baseline/deduplicate-run-assets.py'
-if code == 0 and deduplicate.exists():
-    subprocess.run([sys.executable,str(deduplicate),name],cwd=ROOT,check=True)
+# Run optional asset deduplication separately after inspecting this result. Local
+# maintenance failures must not change the gameplay validation process status.
 raise SystemExit(code)

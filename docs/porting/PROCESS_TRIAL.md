@@ -126,6 +126,8 @@ source build/baseline/env.sh
 
 The helper calls the existing production CompressFile. Original assets stay
 unchanged. The local verified asset-deduplication helper under build/baseline
-is optional; without it, successful run copies stay intact. See RECOVERY.md for
+is optional and now runs separately after validation; successful run copies stay
+intact until explicitly deduplicated. A subsequent compressor batch exposed an
+outdated helper allowlist that had incorrectly failed an otherwise passing replay. See RECOVERY.md for
 restoring the environment and references. Do not rerun stale ignored apply/freeze/finalize
 scripts. Consult PORTING_STATE.md and the committed manifests after session loss.
