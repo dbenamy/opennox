@@ -1,6 +1,6 @@
 # Client sound-definition assets
 
-Round 1 of the two-round process trial. Six connected C functions (321 physical
+Completed round 1 of the two-round process trial. Six connected C functions (321 physical
 block lines) cover client AUD/AVNT readers, a single-record helper, sound-slot and
 delay getters, and case-insensitive sample-catalog lookup. This is the existing
 small scope used to establish the runner; it is not a demonstration of larger
@@ -55,8 +55,8 @@ and owners in all three variants, then all production builds, ABI, exact known
 failures and two reference gameplay scenarios. Intermediate commits describe
 pending gates; only the completed native report establishes round completion.
 
-Before replacement, production source remains at qualified f0db7a7b; new files
-are guarded fixtures. Prior production integration evidence remains applicable.
+At the C baseline, production source was unchanged from qualified f0db7a7b;
+new source files were guarded fixtures, so prior integration evidence applied.
 Retain sound-slot/delay C callbacks for live consumers; retire both reader APIs,
 the private record/lookup helpers and the previous AVNT-inner export whose last
 C consumer moves in this batch. Go public wrappers retain the backing-capacity
@@ -65,7 +65,7 @@ contract established by the preceding readers batch.
 C qualification passed: default 24.175s, independent repeat 10.691s, server
 105.991s, highres 23.798s. All eight roots completed without skips, all 1,433
 records matched each time and source fingerprints stayed unchanged. Native
-replacement and its completed-round gates are still pending. Detailed local
+replacement and completed-round gates subsequently passed, as recorded below. Detailed local
 artifacts: build/port-client-audio-assets, including failed fixture logs.
 
 Go implementation checkpoint: initial compile reported the now-unused unsafe
@@ -84,7 +84,7 @@ exports, five retired interfaces, no test helpers. Full assets retain exactly
 flat14 gameplay frames match their preceding references. Source hashes remained
 unchanged throughout qualification. No production reference C remains.
 
-C remaining: **72,221 physical lines /91 files**, a reduction of **321**.
+C remaining after this round: **72,221 physical lines /91 files**, a reduction of **321**.
 Manifest qualification elapsed 499.084s. This excludes fixture
 authoring, initial captures, translation and the failed compile/import correction.
 Raw evidence: build/port-client-audio-assets/native-qualified.

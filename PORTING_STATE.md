@@ -2,38 +2,35 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 72k lines** — exactly **72,221 physical lines** in
-91 production `.c` files, zero reference C. Latest client audio-definition conversion:
-**−321 C lines**. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 71k lines** — exactly **71,252 physical lines** in
+90 production `.c` files, zero reference C. Latest map decoder conversion:
+**−969 C lines**; two-round trial total **−1,290**. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — process trial round 1 qualified; round 2 next
+## Current — two-round process trial complete; PAUSED for user review
 
-C baseline **06a35720**, implementation **0b3cbe58**. Round 1 fully qualifies:
-1,433 frozen audio records; 51 affected roots in all three variants without skips;
-three builds/ABI; exact 1,553 known failures; normal12/flat14 matching frames.
-C remaining **72,221 /91 files /zero reference C**. All readers joined. Evidence:
-build/port-client-audio-assets/native-qualified/result.json. See CLIENT_AUDIO_ASSETS.md.
-All audio preparation/freeze/apply/finalize scripts are stale once committed.
+Round 1: client audio-definition readers, C baseline **06a35720**, Go **0b3cbe58**,
+qualification **5ed10356**. 321 C lines removed; 1,433 frozen records; all 51
+affected roots in three targets, builds/ABI, exact known failures and 26 frames.
 
-Round 2 baseline **5a714a00** is committed/pushed. Native decoder applied;
-first focused run passes all nine package roots, all 174 frozen records and
-new malformed/empty/frequency contracts in 4.613s including discovery/build.
-C currently **71,252 /90 files /zero reference C**. Implementation recovery
-checkpoint **0615e830** is pushed. All production builds/ABI, the exact known
-full suite, and corrected normal/flat forced-map replays now pass. Both replays
-regenerate the warrior map exactly and preserve all 26 reference frames.
-Evidence: build/port-map-decompression/native-final. Initial integration checks
-caught missing campaign-map compression and filename-case assumptions; only the
-harness changed. Complete accumulated default passed (1,058 selected); server
-and highres remain in progress under the milestone driver. Do not begin round3.
-All map preparation/freeze/apply scripts are stale; never rerun them.
-See MAP_DECOMPRESSION.md, DECISIONS.md and build/port-map-decompression.
-PAUSE after this round and the combined milestone for the requested reflection.
+Round 2: complete map decoder, C baseline **5a714a00**, Go **0615e830**. 969 C
+lines removed; all 174 frozen records and nine package roots pass in each target.
+Builds/ABI and exact known failures pass; both gameplay modes force actual map
+expansion and match original map bytes plus all 26 reference frames. Complete
+accumulated corpus in default/server/highres passes; only the existing opt-in
+map-population prerequisite diagnostic is skipped in each target. See
+[MAP_DECOMPRESSION.md](docs/porting/MAP_DECOMPRESSION.md) and the local
+`build/port-map-decompression/{native-final,milestone}` reports.
+All readers joined; source stayed unchanged during validation. This checkpoint
+records the final qualification and assessment. Do not begin a third round.
 
-Latest complete accumulated corpus: **642fba50**. New milestone uses explicit
-900s/package and ./... selection. No product decision pending.
+C remaining **71,252 /90 files /zero reference C**. No product question blocks
+implementation; the pause is explicitly requested to review the process trial.
+See [PROCESS_TRIAL.md](docs/porting/PROCESS_TRIAL.md) for measured results,
+limitations and recommendations.
+All ignored preparation/freeze/apply/finalize scripts for these rounds are stale.
+Preserve original assets/archive. Resume only after user direction.
 
 <!-- /current-checkpoint -->
 

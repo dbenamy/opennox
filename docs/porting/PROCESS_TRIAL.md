@@ -1,100 +1,131 @@
-# Two-round process trial
+# Two-round process trial: results and pause
 
-The user authorized trying all five process recommendations for two completed
-conversion rounds, then pausing to review the results. Round 1 starts from the
-existing client audio asset fixtures; round 2 should select a larger connected
-scope after its owner/caller audit. Do not inflate scope to meet a line quota.
+Both rounds are qualified. **Pause for the user's review before starting another
+conversion.** The trial removed **1,290 C lines**, leaving **71,252 physical C
+lines in 90 files**, with no test-reference C. These counts measure source removed,
+not remaining effort or a percentage of the port completed.
 
-## Changes being tried
+## Assessment
 
-- Focused tests select explicit packages (root by default), with discovery and
-  execution accounting for every selected package. Whole-tree checks remain at
-  qualified round boundaries. Required asset tests must not silently skip.
-- Use coherent scopes, aiming for 1–3k C lines where shared ownership permits.
-  Keep baseline and implementation recovery commits separate from expensive
-  completed-round qualification. Mark intermediate evidence accurately.
-- A small tracked manifest runner records commands, timings, source hashes,
-  frozen-capture verification and C LOC. Use a fresh output directory per run;
-  never overwrite failed evidence or regenerate expectations to match Go.
-- Audit length/capacity and empty inputs; signedness/narrowing; owner lifecycle;
-  partial failures and cursor position; surviving C callers; actual assets.
-  Each report explains applicable boundaries and exclusions.
-- Report lines removed separately from time, fixture/debugging effort, coverage
-  gaps and remaining dependency complexity. No claim that LOC equals effort.
+Keep the revised process. Explicit package selection, coherent batches, separate
+recovery commits and qualification gates, and boundary-oriented contracts all
+proved useful. The larger map-decoder scope was manageable as a single batch;
+both Go implementations matched their frozen C behavior on their first actual
+behavioral run. This is encouraging evidence, not a general guarantee.
 
-## Runner
+The main remaining fixed cost is the accumulated corpus. Its default run alone
+took 765.871s, while the map decoder's first focused Go run took 4.613s.
+The combined three-target sweep took 2,108.020s, about 35 minutes. Continue focused/affected checks during implementation and
+full qualification at coherent round/subsystem boundaries. Do not pay for a full
+accumulated run at every recovery commit. Keep a broader milestone after related
+rounds, shared infrastructure changes or uncertain failure scope.
 
-Source `build/baseline/env.sh`, then use:
+Prefer complete owners or APIs, aiming for roughly 1–3k C lines when dependencies
+permit. The audio round deliberately completed an existing small scope to establish
+the runner. The 969-line decoder then exercised larger scope and a non-root package.
+Do not turn line count into a quota or combine unrelated code just to hit it.
+
+Keep the common runner, but its JSON manifests are still verbose: commands, tags
+and hash lists repeat. A later small cleanup can reference shared capture manifests
+and target lists. Avoid expanding the harness before another concrete need appears.
+No subagents were used in this trial; it provides no measured model-cost or
+subscription-limit comparison.
+
+## Measured gates
+
+| Round | C removed | Frozen records | Affected roots per target | Final C qualification | Native qualification attempts |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Client audio assets | 321 | 1,433 | 51 | 165.227s | 499.084s |
+| Complete map decoder | 969 | 174 | 9 | 14.792s | 439.645s |
+
+These are qualification command times, excluding fixture authoring and focused
+development runs. The map native column includes both failed harness-verification
+attempts and the successful correction. Its final attempt reused unchanged
+build/ABI/full-suite evidence only after source, binary-hash and gate comparisons.
+Map qualification overlapped the accumulated job; times are not additive.
+
+A separate same-source warm-cache driver check ran the initial two audio tests
+in 6.041s for the root package versus 12.707s across the tree. The earlier 187.797s
+run included compilation and is not a comparable speedup baseline. Different
+batch complexity, cache state, I/O and concurrent jobs prevent claiming an overall
+speedup factor from these two rounds.
+
+## What the checks found
+
+- The audio real-catalog fixture needed the existing file-handle initializer and
+  cleanup. One obsolete Go import also needed removal after deleting C calls.
+- Empty compression input hits a pre-existing zero-allocation panic. The decoder's
+  empty-output behavior and malformed-body errors are explicit, reversible changes
+  recorded in DECISIONS.md; the compressor's empty-input limitation remains.
+- Enumerating real filenames added three map pairs missed by the old directory-
+  name convention. All 50 shipped compressed maps are now covered by the new tests.
+- Screenshot success did not prove decoder coverage: the warrior map had no
+  compressed counterpart. The new integration gate rejected that run. It now
+  creates a compressed counterpart only in the disposable asset copy using the
+  unchanged production compressor, then requires the game to regenerate the map.
+- The game creates lowercase war01a.map. The first verifier expected the original
+  War01A.map spelling; its corrected lookup verifies the actual created filename
+  and bytes. Both normal and flat-floor replays then passed all 26 reference frames.
+
+These were fixture, coverage and compile issues, not reasons to change frozen
+valid-file expectations. Harness development cost time; its fail-closed checks
+also prevented recording a replay as decoder coverage when it wasn't.
+
+## Final regression evidence
+
+Both rounds pass three ELF32/i386/SSE2/CGO production builds, their C-interface
+audits and the exact known full asset suite: **1,553 failure entries**, with
+**15 pass /3 fail /32 skip packages**. Existing failures remain visible.
+
+The complete accumulated corpus ran across packages in all three variants:
+
+| Target | Selected tests | Root-package tests | Driver seconds |
+| --- | ---: | ---: | ---: |
+| default | 1058 | 1047 | 765.871 |
+| server | 1054 | 1043 | 717.866 |
+| highres | 1058 | 1047 | 623.616 |
+
+Each target skips only TestMapPopulationPrerequisiteProbe, an existing opt-in
+isolated diagnostic requiring OPENNOX_POPULATION_PROBE. Neither new batch skips
+any selected test. Source fingerprints remained unchanged during validation.
+Fifteen tooling tests cover execution accounting, artifact hashes, source changes,
+failed commands and invalid evidence reuse. See CLIENT_AUDIO_ASSETS.md and
+MAP_DECOMPRESSION.md for batch-specific contracts, limitations and local artifacts.
+
+## Reusable commands and recovery
+
+Source `build/baseline/env.sh`, then use a reviewed manifest with a fresh directory:
 
 ```
-python3 tools/porting/run_batch.py docs/porting/BATCH.json \
-  --phase c --out build/BATCH/c-repeat-a
+python3 tools/porting/run_batch.py docs/porting/map-decode-batch.json \
+  --phase native --out build/map-decode-review
 ```
 
-A manifest has `batch`, optional `env`, and `phases` mapping names to ordered
-steps. Each step has `name`, an argument-array `command`, optional `cwd`, and
-optional `hashes` entries with `path` and `sha256`. Strings support `{root}`,
-`{out}` and `{phase}` substitutions. Commands must exit zero, including separate
-comparison commands that explicitly accept the exact known legacy failure set.
-The runner checks source integrity after each step and writes a failure report
-when a command or capture check fails. It performs no source edits or commits.
-Batch-specific ownership and ABI checks remain explicit; consolidate proven
-repetition rather than inventing a generalized fixture framework.
+Give scenario runs fresh names too; never overwrite earlier evidence.
+A manifest declares `batch`, optional `env`, and ordered steps under `phases`.
+Each step names an argument-array command, optional cwd and expected artifact
+hashes. Strings support `{root}`, `{out}` and `{phase}`. The runner records
+commands, timing, source identity and C LOC; it never edits source or expectations.
+`run_tests.py --package .` is the default; repeat `--package` for affected packages.
+Use `--package ./...` deliberately for the complete corpus and
+`--require-no-skips` for required asset fixtures.
 
-`run_tests.py --package .` is the default. Repeat `--package` for additional
-actual dependencies with matching tests; use `--package ./...` only when intended.
-`--require-no-skips` makes missing optional prerequisites fail qualification.
+`qualify_production.py` reads build/ABI and scenario declarations from that same
+manifest. Evidence reuse requires exact source fingerprints, binary hashes,
+matching requested gates and a qualified known-failure suite. Failed attempts
+remain separate; no implicit retry or golden regeneration is performed.
 
-## Measurements and checkpoint
+`run_scenario.py` is tracked and supports forced map expansion in fresh copies.
+Build its small compressor helper from the src module when needed:
 
-Baseline: initial two-root audio C-fixture run took 187.797 seconds using the old
-whole-tree driver. This included compilation and is not a controlled benchmark.
-Compare warm runs separately; record cache/source differences and avoid attributing
-all elapsed-time variation to the runner.
+```
+source build/baseline/env.sh
+(cd src && go build -p 2 -o ../build/port-map-decompression/map-compress \
+  ../tools/porting/map_compress.go)
+```
 
-Round 1 is complete; round 2 production and integration gates now pass.
-The combined accumulated milestone is still running. Final reflection follows
-that milestone; the user requested a pause before any third round.
-Pause after the second fully qualified conversion, even if more work is available.
-
-Initial driver validation: six accounting tests pass (empty discovery, missing
-execution despite exit zero, package-aware accounting, failed process, required
-prerequisite skip and default package selection). Four manifest-runner tests
-cover successful artifact verification, hash mismatch, source mutation and failed
-commands. Actual warm-cache audio runs: root 6.041s; whole tree 12.707s, both two
-roots completed without skips. Source was unchanged between these two runs.
-These are single observations, not a cold-build benchmark.
-
-Qualification cadence for this trial: each round has three-configuration affected
-contracts, three production builds/ABI, the exact full asset suite, and relevant
-reference gameplay. Run the entire accumulated port corpus at the end of round 2
-as the combined milestone. Driver accounting itself is covered by dedicated
-failure-path tests plus actual package selections in both rounds. This avoids
-repeating the accumulated corpus merely for each tooling/fixture commit.
-
-The common production qualifier now takes ABI and scenario declarations from the
-same manifest, recording builds, exact failure/package comparison and integration
-outcomes. It reuses the proven local gameplay runner; that remaining recovery
-requirement is explicit rather than silently embedding it in another batch script.
-
-Round 1 completed: 321 C lines removed, eight frozen groups /1,433 records and
-51 affected roots in all targets pass. One fixture ownership correction (file
-handles) and one compile-only unused-import correction; no Go behavioral
-mismatch. Full native qualification took 499.084s. See CLIENT_AUDIO_ASSETS.md.
-The small pre-existing scope established the runner; round 2 will test a larger
-969-line self-contained scope and a non-root test package.
-
-Round 2 integration development exposed two coverage assumptions: the warrior
-map has no shipped compressed counterpart, and production expansion creates a
-lowercase filename. Both caused the stronger verification to fail closed while
-replay pixels matched. Generate the compressed warrior map only in the run copy
-using the unchanged production compressor; verify created map bytes with case-
-aware filename lookup. Exact-source builds/full-suite results can be reused when
-only the integration harness changes, with binary hashes and gate identity checked.
-These harness corrections cost time and belong in the trial's accounting.
-
-The accumulated driver also exposes a pre-existing skipped test explicitly:
-TestMapPopulationPrerequisiteProbe is an opt-in diagnostic requiring its own
-process and OPENNOX_POPULATION_PROBE. It is not an asset prerequisite silently
-missing from either new batch. Require no skips in both focused batch selections;
-report this historical diagnostic separately at the accumulated milestone.
+The helper calls the existing production CompressFile. Original assets stay
+unchanged. The local verified asset-deduplication helper under build/baseline
+is optional; without it, successful run copies stay intact. See RECOVERY.md for
+restoring the environment and references. Do not rerun stale ignored apply/freeze/finalize
+scripts. Consult PORTING_STATE.md and the committed manifests after session loss.

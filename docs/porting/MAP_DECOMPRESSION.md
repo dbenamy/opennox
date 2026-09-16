@@ -1,6 +1,7 @@
 # Map decompression
 
-Round 2 of the process trial selects the complete 969-line C map decoder: initial
+Round 2 is complete: the full 969-line C map decoder is replaced with Go, with
+174 frozen records and all qualification gates passing. The scope includes initial
 format tables, adaptive symbol ordering, 64 KiB dictionary, copy expansion,
 byte-aligned block boundaries and lifecycle. The C compressor remains live
 production code. Its allocator helper is shared and remains necessary.
@@ -13,10 +14,10 @@ substituting a reader with different chunk semantics.
 
 ## Contracts
 
-Freeze original C output for deterministic synthetic data around length-code,
+Frozen original C output covers deterministic synthetic data around length-code,
 frequency-rebuild, dictionary and 500000-byte chunk boundaries; five data patterns
-include incompressible and highly repeated input. Assert expansion equals the
-independent original input, and freeze compressed bytes too. An unchanged C
+include incompressible and highly repeated input. Tests assert that expansion
+equals the independent original input; compressed bytes are frozen too. An unchanged C
 compressor provides production-format inputs after conversion, not a test-only
 reference implementation. Fifty shipped .nxz maps have independent .map files.
 
@@ -39,17 +40,15 @@ asset tests and the new contracts must all run without skips in three variants.
 The complete accumulated corpus across packages is the combined two-round
 milestone. Production builds/ABI and the exact full-suite comparison remain.
 
-Gameplay will use fresh copied assets with expanded maps removed only where a
+Gameplay uses fresh copied assets with expanded maps removed only where a
 compressed counterpart exists. Require a real regenerated map, compare its bytes
 to the source asset, and retain all normal/flat-floor pixel references. Thus the
 integration check exercises the actual changed loading path.
 
-Status: final original-C baseline qualified; native decoder remains unapplied.
-
 Baseline development found two useful edges. Empty source data panics in the
 existing compressor's zero-sized allocation before it reaches C; the old decoder
 also allocates zero-sized buffers for an empty declared output. The unchanged
-compressor is therefore tested on positive sizes. Native decoding will accept a
+compressor is therefore tested on positive sizes. Native decoding accepts a
 four-byte zero-size header as an empty map, with an explicit independent test.
 The compressor's empty-input limitation remains outside this decoder conversion.
 
@@ -66,7 +65,7 @@ without skips; 174 frozen records matched on every run, with source unchanged.
 Go focused validation passes on its first run: nine package roots, all 174 frozen
 records, existing codec tests, and new malformed/empty/frequency contracts. The
 969-line C decoder is removed; 71,252 physical C lines remain in 90 files. No
-reference decoder C is retained. Whole-round and accumulated gates are pending.
+reference decoder C is retained. Completed-round gates are recorded below.
 Observed real-map test time was 0.24s in the C repeat and 0.49s in the first Go
 run across all 50 files; these include file I/O and are not isolated benchmarks.
 
@@ -89,7 +88,38 @@ runs must both pass the corrected check; prior replay success alone is insuffici
 Corrected normal/flat gameplay now passes, with one exact regenerated warrior map
 per run and all 26 reference frames preserved. Final integration report:
 build/port-map-decompression/native-final/result.json (116.614s, including focused
-checks and reuse verification). The full accumulated milestone is still running;
-do not label the process trial complete yet. Fifteen tooling tests also pass.
+checks and reuse verification). The completed accumulated milestone is recorded
+below. Fifteen tooling tests also pass.
 The tracked map_compress.go helper reproduces the exact compressed warrior file
 used by the qualified replay. It lives outside the game/test source tree.
+
+## Completed round 2
+
+Original C baseline `5a714a00`; Go implementation `0615e830`. All nine package
+roots pass in each target, with all 174 frozen records unchanged. Three
+ELF32/i386/SSE2/CGO production builds and ABI pass; the decoder C interfaces are
+absent and the three compressor interfaces remain live. The full asset suite
+retains exactly 1,553 failure entries and 15 pass/3 fail/32 skip package outcomes.
+
+Both gameplay modes preserve all 26 reference frames. Each starts without copied
+expanded maps and regenerates the warrior map through production loading,
+with identical bytes. The run names are `map-decode-native-forced-case` and
+`map-decode-flat-native-forced-case`.
+
+Complete accumulated corpus across packages passes; each target skips only the
+existing opt-in TestMapPopulationPrerequisiteProbe diagnostic:
+
+| Target | Selected tests | Root-package tests | Driver seconds |
+| --- | ---: | ---: | ---: |
+| default | 1058 | 1047 | 765.871 |
+| server | 1054 | 1043 | 717.866 |
+| highres | 1058 | 1047 | 623.616 |
+
+Final integration qualification, reusing unchanged build/full-suite evidence,
+took 116.614s. The accumulated milestone took 2,108.020s (about 35 minutes).
+These independent jobs overlapped on the four-CPU VM, so their elapsed times are
+not additive or directly comparable to isolated runs. Source fingerprints match
+throughout both jobs. All readers joined before this checkpoint.
+
+**71,252 physical C lines remain in 90 files, zero reference C; −969 this round.**
+Evidence: build/port-map-decompression/native-final and milestone.

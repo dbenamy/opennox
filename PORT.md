@@ -14,15 +14,15 @@
 
 ## Current status
 
-Client sound-definition readers and sample lookup are converted. Round 1 of the
-process trial removes **321 C lines**; all **1,433 frozen records**, 51 affected
-roots in three variants, production builds/ABI, exact known failures and 26
-reference gameplay frames qualify the change. About **72k C lines remain:
-72,221 physical lines in 91 files**, with zero reference C. Round 2 selects the
-969-line map decoder and will finish with the accumulated-corpus milestone, then
-pause for reflection. See [CLIENT_AUDIO_ASSETS.md](docs/porting/CLIENT_AUDIO_ASSETS.md).
-The latest full accumulated rendering milestone remains **642fba50**.
-See [THING_SKIPS.md](docs/porting/THING_SKIPS.md) and [PORTING_STATE.md](PORTING_STATE.md).
+The two-round process trial is complete and paused for user review. Client audio
+asset readers and the complete map decoder are converted, removing **1,290 C
+lines** in total. About **71k C lines remain: 71,252 physical lines in 90 files**,
+with zero reference C. Both rounds pass their affected tests, all production
+builds/ABI, exact known failures and reference gameplay. The map round additionally
+forces production map decompression and completes the accumulated corpus in all
+three variants. See [PROCESS_TRIAL.md](docs/porting/PROCESS_TRIAL.md),
+[MAP_DECOMPRESSION.md](docs/porting/MAP_DECOMPRESSION.md) and
+[PORTING_STATE.md](PORTING_STATE.md) for evidence and reflection.
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.
 
@@ -42,10 +42,10 @@ the same VM; do not extrapolate its speed to native hardware.
 
 ## Batch workflow
 
-A user-authorized [two-round process trial](docs/porting/PROCESS_TRIAL.md) is
-active. Use focused package checks inside each round and full qualification at
-both round boundaries; pause for reflection after round 2. Recovery commits may
-precede full qualification when their evidence and remaining gates are explicit.
+The [two-round process trial](docs/porting/PROCESS_TRIAL.md) is complete and
+paused for user review. On resumption, use focused package checks inside each
+coherent batch and full qualification at meaningful boundaries. Recovery commits
+may precede full qualification when their evidence and remaining gates are explicit.
 
 1. Select a connected behavior batch, aiming for roughly
    1,000–3,000 C lines where dependencies permit. Identify callers, callbacks, shared state,
