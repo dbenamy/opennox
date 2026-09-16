@@ -34,9 +34,9 @@ type spellbookOwner struct {
 	missing string
 }
 
-func newSpellbookOwner(t *testing.T) *spellbookOwner {
+func newSpellbookOwner(t *testing.T, extraNames ...string) *spellbookOwner {
 	t.Helper()
-	o := &spellbookOwner{inventoryWindowOwner: newInventoryWindowOwner(t)}
+	o := &spellbookOwner{inventoryWindowOwner: newInventoryWindowOwner(t, extraNames...)}
 	t.Cleanup(o.c.srv.Server.PortTestBookSpellOwner())
 	entries := []strman.Entry{{ID: "guimsg.c:systemmsg", Vals: []strman.Variant{{Str: "System: %s"}}}}
 	for _, pair := range [][2]string{{"Size", "Size"}, {"Small", "Small"}, {"Medium", "Medium"}, {"Large", "Large"}, {"ManaCost", "Mana cost"}, {"PowerLevel", "Power level %d"}, {"SpellInstant", "Instant"}, {"SpellTargeted", "Targeted"}, {"SpellAtLocation", "At location"}, {"SpellHostile", "Hostile"}, {"EmptyBook", "No known entries"}, {"ToolTipAbilityTab", "Abilities"}, {"ToolTipSpellTab", "Spells"}, {"ToolTipGuideTab", "Creatures"}} {

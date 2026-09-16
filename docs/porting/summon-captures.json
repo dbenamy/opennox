@@ -1,0 +1,58 @@
+{
+  "summon-classification": {
+    "records": 26,
+    "sha256": "ce994ee04f5082bdaa37b786f88e6338823af94c891fad660fc75a5d1feb7278"
+  },
+  "summon-commands": {
+    "records": 18,
+    "sha256": "d384c488b52a08e35728f6097bd84e1dac2ab2e20ce66a5b0eb6921cec5ec004"
+  },
+  "summon-control-events": {
+    "records": 45,
+    "sha256": "f2feb5303724b631fb677d971be272b55572d576b33e646a5d3222494ee2a9cc"
+  },
+  "summon-creature-lifecycle": {
+    "records": 96,
+    "sha256": "0ecaa4cf21fd47996e365c8613bc92d5df2a5e9e9c24d6f1f596100f07943f73"
+  },
+  "summon-grid": {
+    "records": 112,
+    "sha256": "e729538433320046a4757cbcea9aedf10c862abc55555c22db8d2729d4bd8388"
+  },
+  "summon-highlights": {
+    "records": 16,
+    "sha256": "c042bd0b66ecd82c655cb554bcf1bcdbd2bc1fa5447998a2d902eac777848bc2"
+  },
+  "summon-layout": {
+    "records": 256,
+    "sha256": "bb1c3ade62a36c87b876b18b796d0dd7204787581281f4682365abed3b88e5fe"
+  },
+  "summon-lifecycle": {
+    "records": 110,
+    "sha256": "44e41e19ed51745591ae2a3fb11730d33abd68eb9b6839700fc087e5ecc3922e"
+  },
+  "summon-menu-bounds": {
+    "records": 12,
+    "sha256": "a0b1e77a473097af5763706bdab66cd195d1a187ae467012c0a7e19dc9ac063c"
+  },
+  "summon-menus": {
+    "records": 12,
+    "sha256": "c0ec411613a20e3183fb1924952b0520244243e9815982715095ff8c6de2d05a"
+  },
+  "summon-record-storage": {
+    "records": 144,
+    "sha256": "843e0e1d9e78276b7458cf421404827623ee9bc7bac2adc6a01d485d390b508b"
+  },
+  "summon-rendering": {
+    "records": 60,
+    "sha256": "8e9e47604f6f06526301a15e8f338526993ce3f3912e0f3274f1cb0db3845e6a"
+  },
+  "summon-slot-tooltips": {
+    "records": 18,
+    "sha256": "3ec72d5e87eed2f6d367a0030270f028d122ddb75bee60d9fd16781d4175ce43"
+  },
+  "summon-tooltips-menu-draw": {
+    "records": 46,
+    "sha256": "98464c50265bab0771efb8b9e62db94bbb6bbb959df486b64442a8f91c25e959"
+  }
+}

@@ -142,7 +142,7 @@ LABEL_11:
 		goto LABEL_16;
 	}
 	if (v6 + v7 >= nox_win_height) {
-		v7 = nox_win_width - v6 - 1;
+		v7 = nox_win_height - v6 - 1;
 		v13 = v7;
 	}
 LABEL_16:

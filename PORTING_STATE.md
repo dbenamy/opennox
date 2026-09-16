@@ -8,7 +8,9 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — quickbar qualified; begin summon-panel baseline
+## Current — summon-panel C baseline in progress
+
+Quickbar final qualification **657c6dc4** is pushed.
 
 Original C baseline b487b8dd and boundary supplement a6c1640e are pushed.
 Native implementation recovery f7c75139 plus this fixture/documentation follow-up
@@ -36,11 +38,25 @@ PORT.md now includes the cheap static-memory check before long gates.
 No agents are active. Preserve the unrelated untracked asset archive. Do not rerun
 stale quickbar drafts or integrate.py. Source the pinned build/baseline/env.sh for Go.
 
-The likely next connected owner is the summon-creature panel: 36 functions /
-994 C lines, GAME3_1.c 004C1CA0 up to 004C3390 plus guisumn.c. Its ignored
-candidate audit is `build/port-summon/candidate.json`; no next-batch source is
-installed. Reuse the existing GUI/drawable/render fixtures and qualify a new C
-baseline before conversion.
+The active next owner is the summon-creature panel. See
+[SUMMON.md](docs/porting/SUMMON.md) for scope, contracts and review notes.
+Production remains C with one reversible menu-bottom-clamp prerequisite fix;
+see DECISIONS.md and the failing/passing corner contract. All 971 frozen records
+in fourteen roots pass default/repeat/server/highres; combined affected checks
+pass all 7,954 records / 63 groups with no skips or prior golden changes.
+All Go/build readers are joined. C LOC remains 64,317 / 86.
+C-contract source index proof: build/port-summon/c-index-proof.json. The contract
+checkpoint is being committed before completing the headless gameplay baseline.
+
+Production C client: build/port-summon/client, built with the pinned environment.
+Conjurer scenario draft: build/port-summon/conjurer-develop.yaml. First attempt
+could not start solo because removing con01a.map for forced decompression defeats
+checkHasSoloMaps. Do not change that unrelated production behavior; keep the map
+for this scenario. Develop2 is running (session 75116); its map-decompression
+requirement is disabled. Observe actual summoning and menus before accepting or
+repeating the final scenario. Separate warrior/flat runs retain map coverage.
+No native summon source installed. Initial wrapper/UI generators are stale and
+must not overwrite later test edits. No user question is pending.
 
 The previous spellbook conversion **41b8abfb** is fully qualified and pushed;
 see [SPELLBOOK.md](docs/porting/SPELLBOOK.md). Do not rerun stale native drafts,

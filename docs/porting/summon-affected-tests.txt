@@ -1,0 +1,1 @@
+^Test(Summon|Spellbook|Quickbar)

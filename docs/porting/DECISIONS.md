@@ -1154,3 +1154,15 @@ Seven focused C roots pass; only restored-row/pointer/direction-indicator fields
 change, and six unrelated capture hashes remain exact. Original behavior is
 preserved in fdc5048e and quickbar-original-captures.json. See QUICKBAR.md for the
 remaining batch qualification gates.
+
+## Summon command menu bottom clamp — reversible C prerequisite
+
+The original C command-menu constructor uses screen width when clamping the
+vertical position at the bottom edge. A 640×480 corner contract produces a menu
+rectangle (0,562)–(148,639), entirely below the screen. Use screen height in that
+one calculation before freezing the summon baseline. The twelve corner contracts
+cover 640×480, 1024×768 and portrait 480×640 screens and require the menu to fit.
+This is an intentional behavior correction, not an exact match to the old bug.
+Reversal is a one-word source change plus its explicitly changed expectations.
+Evidence: build/port-summon/menu-bounds-before.log and TestSummonMenuBounds;
+see [SUMMON.md](SUMMON.md). C LOC is unchanged.

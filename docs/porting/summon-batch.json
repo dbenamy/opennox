@@ -1,0 +1,604 @@
+{
+  "batch": "summon-creature-panel",
+  "env": {
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_CAPTURE": "{out}/capture",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
+  "phases": {
+    "c-default": [
+      {
+        "name": "c-default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/summon-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-summon-classification.json",
+            "sha256": "ce994ee04f5082bdaa37b786f88e6338823af94c891fad660fc75a5d1feb7278"
+          },
+          {
+            "path": "{out}/capture-summon-commands.json",
+            "sha256": "d384c488b52a08e35728f6097bd84e1dac2ab2e20ce66a5b0eb6921cec5ec004"
+          },
+          {
+            "path": "{out}/capture-summon-control-events.json",
+            "sha256": "f2feb5303724b631fb677d971be272b55572d576b33e646a5d3222494ee2a9cc"
+          },
+          {
+            "path": "{out}/capture-summon-creature-lifecycle.json",
+            "sha256": "0ecaa4cf21fd47996e365c8613bc92d5df2a5e9e9c24d6f1f596100f07943f73"
+          },
+          {
+            "path": "{out}/capture-summon-grid.json",
+            "sha256": "e729538433320046a4757cbcea9aedf10c862abc55555c22db8d2729d4bd8388"
+          },
+          {
+            "path": "{out}/capture-summon-highlights.json",
+            "sha256": "c042bd0b66ecd82c655cb554bcf1bcdbd2bc1fa5447998a2d902eac777848bc2"
+          },
+          {
+            "path": "{out}/capture-summon-layout.json",
+            "sha256": "bb1c3ade62a36c87b876b18b796d0dd7204787581281f4682365abed3b88e5fe"
+          },
+          {
+            "path": "{out}/capture-summon-lifecycle.json",
+            "sha256": "44e41e19ed51745591ae2a3fb11730d33abd68eb9b6839700fc087e5ecc3922e"
+          },
+          {
+            "path": "{out}/capture-summon-menu-bounds.json",
+            "sha256": "a0b1e77a473097af5763706bdab66cd195d1a187ae467012c0a7e19dc9ac063c"
+          },
+          {
+            "path": "{out}/capture-summon-menus.json",
+            "sha256": "c0ec411613a20e3183fb1924952b0520244243e9815982715095ff8c6de2d05a"
+          },
+          {
+            "path": "{out}/capture-summon-record-storage.json",
+            "sha256": "843e0e1d9e78276b7458cf421404827623ee9bc7bac2adc6a01d485d390b508b"
+          },
+          {
+            "path": "{out}/capture-summon-rendering.json",
+            "sha256": "8e9e47604f6f06526301a15e8f338526993ce3f3912e0f3274f1cb0db3845e6a"
+          },
+          {
+            "path": "{out}/capture-summon-slot-tooltips.json",
+            "sha256": "3ec72d5e87eed2f6d367a0030270f028d122ddb75bee60d9fd16781d4175ce43"
+          },
+          {
+            "path": "{out}/capture-summon-tooltips-menu-draw.json",
+            "sha256": "98464c50265bab0771efb8b9e62db94bbb6bbb959df486b64442a8f91c25e959"
+          }
+        ]
+      }
+    ],
+    "c-repeat": [
+      {
+        "name": "c-repeat",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/summon-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-summon-classification.json",
+            "sha256": "ce994ee04f5082bdaa37b786f88e6338823af94c891fad660fc75a5d1feb7278"
+          },
+          {
+            "path": "{out}/capture-summon-commands.json",
+            "sha256": "d384c488b52a08e35728f6097bd84e1dac2ab2e20ce66a5b0eb6921cec5ec004"
+          },
+          {
+            "path": "{out}/capture-summon-control-events.json",
+            "sha256": "f2feb5303724b631fb677d971be272b55572d576b33e646a5d3222494ee2a9cc"
+          },
+          {
+            "path": "{out}/capture-summon-creature-lifecycle.json",
+            "sha256": "0ecaa4cf21fd47996e365c8613bc92d5df2a5e9e9c24d6f1f596100f07943f73"
+          },
+          {
+            "path": "{out}/capture-summon-grid.json",
+            "sha256": "e729538433320046a4757cbcea9aedf10c862abc55555c22db8d2729d4bd8388"
+          },
+          {
+            "path": "{out}/capture-summon-highlights.json",
+            "sha256": "c042bd0b66ecd82c655cb554bcf1bcdbd2bc1fa5447998a2d902eac777848bc2"
+          },
+          {
+            "path": "{out}/capture-summon-layout.json",
+            "sha256": "bb1c3ade62a36c87b876b18b796d0dd7204787581281f4682365abed3b88e5fe"
+          },
+          {
+            "path": "{out}/capture-summon-lifecycle.json",
+            "sha256": "44e41e19ed51745591ae2a3fb11730d33abd68eb9b6839700fc087e5ecc3922e"
+          },
+          {
+            "path": "{out}/capture-summon-menu-bounds.json",
+            "sha256": "a0b1e77a473097af5763706bdab66cd195d1a187ae467012c0a7e19dc9ac063c"
+          },
+          {
+            "path": "{out}/capture-summon-menus.json",
+            "sha256": "c0ec411613a20e3183fb1924952b0520244243e9815982715095ff8c6de2d05a"
+          },
+          {
+            "path": "{out}/capture-summon-record-storage.json",
+            "sha256": "843e0e1d9e78276b7458cf421404827623ee9bc7bac2adc6a01d485d390b508b"
+          },
+          {
+            "path": "{out}/capture-summon-rendering.json",
+            "sha256": "8e9e47604f6f06526301a15e8f338526993ce3f3912e0f3274f1cb0db3845e6a"
+          },
+          {
+            "path": "{out}/capture-summon-slot-tooltips.json",
+            "sha256": "3ec72d5e87eed2f6d367a0030270f028d122ddb75bee60d9fd16781d4175ce43"
+          },
+          {
+            "path": "{out}/capture-summon-tooltips-menu-draw.json",
+            "sha256": "98464c50265bab0771efb8b9e62db94bbb6bbb959df486b64442a8f91c25e959"
+          }
+        ]
+      }
+    ],
+    "c-server": [
+      {
+        "name": "c-server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/summon-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-summon-classification.json",
+            "sha256": "ce994ee04f5082bdaa37b786f88e6338823af94c891fad660fc75a5d1feb7278"
+          },
+          {
+            "path": "{out}/capture-summon-commands.json",
+            "sha256": "d384c488b52a08e35728f6097bd84e1dac2ab2e20ce66a5b0eb6921cec5ec004"
+          },
+          {
+            "path": "{out}/capture-summon-control-events.json",
+            "sha256": "f2feb5303724b631fb677d971be272b55572d576b33e646a5d3222494ee2a9cc"
+          },
+          {
+            "path": "{out}/capture-summon-creature-lifecycle.json",
+            "sha256": "0ecaa4cf21fd47996e365c8613bc92d5df2a5e9e9c24d6f1f596100f07943f73"
+          },
+          {
+            "path": "{out}/capture-summon-grid.json",
+            "sha256": "e729538433320046a4757cbcea9aedf10c862abc55555c22db8d2729d4bd8388"
+          },
+          {
+            "path": "{out}/capture-summon-highlights.json",
+            "sha256": "c042bd0b66ecd82c655cb554bcf1bcdbd2bc1fa5447998a2d902eac777848bc2"
+          },
+          {
+            "path": "{out}/capture-summon-layout.json",
+            "sha256": "bb1c3ade62a36c87b876b18b796d0dd7204787581281f4682365abed3b88e5fe"
+          },
+          {
+            "path": "{out}/capture-summon-lifecycle.json",
+            "sha256": "44e41e19ed51745591ae2a3fb11730d33abd68eb9b6839700fc087e5ecc3922e"
+          },
+          {
+            "path": "{out}/capture-summon-menu-bounds.json",
+            "sha256": "a0b1e77a473097af5763706bdab66cd195d1a187ae467012c0a7e19dc9ac063c"
+          },
+          {
+            "path": "{out}/capture-summon-menus.json",
+            "sha256": "c0ec411613a20e3183fb1924952b0520244243e9815982715095ff8c6de2d05a"
+          },
+          {
+            "path": "{out}/capture-summon-record-storage.json",
+            "sha256": "843e0e1d9e78276b7458cf421404827623ee9bc7bac2adc6a01d485d390b508b"
+          },
+          {
+            "path": "{out}/capture-summon-rendering.json",
+            "sha256": "8e9e47604f6f06526301a15e8f338526993ce3f3912e0f3274f1cb0db3845e6a"
+          },
+          {
+            "path": "{out}/capture-summon-slot-tooltips.json",
+            "sha256": "3ec72d5e87eed2f6d367a0030270f028d122ddb75bee60d9fd16781d4175ce43"
+          },
+          {
+            "path": "{out}/capture-summon-tooltips-menu-draw.json",
+            "sha256": "98464c50265bab0771efb8b9e62db94bbb6bbb959df486b64442a8f91c25e959"
+          }
+        ]
+      }
+    ],
+    "c-highres": [
+      {
+        "name": "c-highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/summon-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-summon-classification.json",
+            "sha256": "ce994ee04f5082bdaa37b786f88e6338823af94c891fad660fc75a5d1feb7278"
+          },
+          {
+            "path": "{out}/capture-summon-commands.json",
+            "sha256": "d384c488b52a08e35728f6097bd84e1dac2ab2e20ce66a5b0eb6921cec5ec004"
+          },
+          {
+            "path": "{out}/capture-summon-control-events.json",
+            "sha256": "f2feb5303724b631fb677d971be272b55572d576b33e646a5d3222494ee2a9cc"
+          },
+          {
+            "path": "{out}/capture-summon-creature-lifecycle.json",
+            "sha256": "0ecaa4cf21fd47996e365c8613bc92d5df2a5e9e9c24d6f1f596100f07943f73"
+          },
+          {
+            "path": "{out}/capture-summon-grid.json",
+            "sha256": "e729538433320046a4757cbcea9aedf10c862abc55555c22db8d2729d4bd8388"
+          },
+          {
+            "path": "{out}/capture-summon-highlights.json",
+            "sha256": "c042bd0b66ecd82c655cb554bcf1bcdbd2bc1fa5447998a2d902eac777848bc2"
+          },
+          {
+            "path": "{out}/capture-summon-layout.json",
+            "sha256": "bb1c3ade62a36c87b876b18b796d0dd7204787581281f4682365abed3b88e5fe"
+          },
+          {
+            "path": "{out}/capture-summon-lifecycle.json",
+            "sha256": "44e41e19ed51745591ae2a3fb11730d33abd68eb9b6839700fc087e5ecc3922e"
+          },
+          {
+            "path": "{out}/capture-summon-menu-bounds.json",
+            "sha256": "a0b1e77a473097af5763706bdab66cd195d1a187ae467012c0a7e19dc9ac063c"
+          },
+          {
+            "path": "{out}/capture-summon-menus.json",
+            "sha256": "c0ec411613a20e3183fb1924952b0520244243e9815982715095ff8c6de2d05a"
+          },
+          {
+            "path": "{out}/capture-summon-record-storage.json",
+            "sha256": "843e0e1d9e78276b7458cf421404827623ee9bc7bac2adc6a01d485d390b508b"
+          },
+          {
+            "path": "{out}/capture-summon-rendering.json",
+            "sha256": "8e9e47604f6f06526301a15e8f338526993ce3f3912e0f3274f1cb0db3845e6a"
+          },
+          {
+            "path": "{out}/capture-summon-slot-tooltips.json",
+            "sha256": "3ec72d5e87eed2f6d367a0030270f028d122ddb75bee60d9fd16781d4175ce43"
+          },
+          {
+            "path": "{out}/capture-summon-tooltips-menu-draw.json",
+            "sha256": "98464c50265bab0771efb8b9e62db94bbb6bbb959df486b64442a8f91c25e959"
+          }
+        ]
+      }
+    ],
+    "affected": [
+      {
+        "name": "affected",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/summon-affected-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-quickbar-ability-state.json",
+            "sha256": "d4e2e826f1bf4948aaea4ea4554199d98ee69773c3525ae2634e4147426211e7"
+          },
+          {
+            "path": "{out}/capture-quickbar-activation-messages.json",
+            "sha256": "f1f1b054aeff77a483bed7e9f007c55260c324538de777738205df7c31429d22"
+          },
+          {
+            "path": "{out}/capture-quickbar-clear-restore.json",
+            "sha256": "cb7f298704397f2737a8eb5cbcea72dfdb026c003ee06ba7df995bb5a5ccc23a"
+          },
+          {
+            "path": "{out}/capture-quickbar-cross-row-dragging.json",
+            "sha256": "ef9eca9f221ac464ab4fe9c7e487ff84b536e4678bb103e7dadea9fa4838993b"
+          },
+          {
+            "path": "{out}/capture-quickbar-direction-controls.json",
+            "sha256": "6a12e44daa4dd0a3a66ea393025b998a645688d49f676b31c8b07f208933fa96"
+          },
+          {
+            "path": "{out}/capture-quickbar-expanded-rows.json",
+            "sha256": "4a5c57ea1d6a2ee64eee652785ae96e93737efbba9b8fa0c21281ba8396ac323"
+          },
+          {
+            "path": "{out}/capture-quickbar-gui-frames.json",
+            "sha256": "9ad38bc8097c13398dec76466c080c6d2a73266c06b44657aa240eae71ecf60c"
+          },
+          {
+            "path": "{out}/capture-quickbar-hotkeys.json",
+            "sha256": "975f751a3a22f8e17180c7b688976f95392b71ea4f885f1e57d5e0d3ca4ba5ee"
+          },
+          {
+            "path": "{out}/capture-quickbar-lifecycle.json",
+            "sha256": "88a114c61e0fb134ffc3eabff07fe1fbd5fd04a8496c3ccb7b9aa01440f7e523"
+          },
+          {
+            "path": "{out}/capture-quickbar-mana-shading.json",
+            "sha256": "fc09adc9000339d24f0e25eebc9a68a8aa5e8d39c2a83dc08eb5d0abbf67e052"
+          },
+          {
+            "path": "{out}/capture-quickbar-pending-activation.json",
+            "sha256": "ac2b95389c86c2584b572dc8b9faa855125c9dbc8bf4e8f997e3f0222079c738"
+          },
+          {
+            "path": "{out}/capture-quickbar-row-navigation.json",
+            "sha256": "b11e94d59665bbf330ddd50e30839b4f301d4deddfdfacf073be9fb26d08d2f8"
+          },
+          {
+            "path": "{out}/capture-quickbar-row-trap-controls.json",
+            "sha256": "599846a679536cd8b2395b67e3a7fa8758fa6923c10f1ddb79bb5f92ff666739"
+          },
+          {
+            "path": "{out}/capture-quickbar-save-owners.json",
+            "sha256": "c2cc5eaacb5cfcd2f0a557bfa221f5e1d62e82982435c34dddbeefdb79281335"
+          },
+          {
+            "path": "{out}/capture-quickbar-save-spells.json",
+            "sha256": "9a89dda2d6bc2811cbab65c3339e69375934bc4b1951135a99319bd8b08af81a"
+          },
+          {
+            "path": "{out}/capture-quickbar-slot-events.json",
+            "sha256": "b825d46dbc297d029353da80d9adcd293298693edbd2b0ad1601e8d04d74d63b"
+          },
+          {
+            "path": "{out}/capture-quickbar-slot-mutation.json",
+            "sha256": "0bc7ff3461e8544461840edae1ce82f71eee2facc995b966d3067c69f382046e"
+          },
+          {
+            "path": "{out}/capture-quickbar-slot-rendering.json",
+            "sha256": "c60518093674943097f94b5fb7a3f42e8e9a64e33ec6587ae8e1dbc3ab2ddab1"
+          },
+          {
+            "path": "{out}/capture-quickbar-slot-search.json",
+            "sha256": "f67eaccbd3c97f7a0de9205929bd1a559f2a349718d4a9fcd9f63bbbbea236af"
+          },
+          {
+            "path": "{out}/capture-quickbar-timing.json",
+            "sha256": "c9a7f9c54b4e72e0c0fe8a5437a05d36b6a25f52ad97616118cb8cee12cd06a6"
+          },
+          {
+            "path": "{out}/capture-quickbar-trap-activation.json",
+            "sha256": "bb288e1b1c2e15dc461f98d98ae29393b7c91751bffea1cb8b3ef95c65d5dade"
+          },
+          {
+            "path": "{out}/capture-quickbar-trap-slots.json",
+            "sha256": "e434b48ff462f2c2b5ced25e5feae1272e6ea68401cc1bcbb6d0396c712ef48b"
+          },
+          {
+            "path": "{out}/capture-ability-removal.json",
+            "sha256": "faa69b3a9daf912bb23c7ab25b32172ccc23a7079ee1589bb7a3503dc8af46af"
+          },
+          {
+            "path": "{out}/capture-animation-frames.json",
+            "sha256": "d134eee7d7194447696a8b210bf73897152457466e25fb75933b8b345671b01d"
+          },
+          {
+            "path": "{out}/capture-asset-pages.json",
+            "sha256": "aab7dc659cb46b961797c2661d6c6279761120cdc35582f4415584b3a5a29cdc"
+          },
+          {
+            "path": "{out}/capture-clicks.json",
+            "sha256": "fec3eae1cf267d9ad253bf4819a05bf98e414c12ad4f2507f9b7d27ba607ec6c"
+          },
+          {
+            "path": "{out}/capture-guide-knowledge.json",
+            "sha256": "41cbab5370d0016108127726202c919ca2736572537f4789c57476bacb6bb431"
+          },
+          {
+            "path": "{out}/capture-icon-release.json",
+            "sha256": "83a1b3082f043fb1117fb69154d7319018efb282db510fdcf0db188cb6fd543e"
+          },
+          {
+            "path": "{out}/capture-icons-tooltips.json",
+            "sha256": "4620f33300afa75b363e009048b010db88a549fef9b68d385d51ed473f09c1b8"
+          },
+          {
+            "path": "{out}/capture-immediate-addition.json",
+            "sha256": "597f41128ade2b3812f0a169bf4cffcf70f538cbed07fef48a2184e4d4303c5c"
+          },
+          {
+            "path": "{out}/capture-initialization.json",
+            "sha256": "e814a31a3954dd373781f654266f8d2b4d55cb75ec3f89868a16afcf5acb6eeb"
+          },
+          {
+            "path": "{out}/capture-metadata-lists.json",
+            "sha256": "9f76a37a072dcf0d4d4f217e9155b1758a6062c240cc62bae5448eeb20dcbbd9"
+          },
+          {
+            "path": "{out}/capture-name-compare.json",
+            "sha256": "d377183956fc746b21e47de689c0c8aab363edfd87bd1c78bd03e2f136c91693"
+          },
+          {
+            "path": "{out}/capture-pages.json",
+            "sha256": "0ee40a5e4a73ca8bdb7844497213a7d941cfec30396462d2c4e4993e4bcce8d7"
+          },
+          {
+            "path": "{out}/capture-palette.json",
+            "sha256": "da8e6beca619d11d3d611a6edfbae1e88f6dc235c8cbcc9373f0f03b6fceb61a"
+          },
+          {
+            "path": "{out}/capture-path.json",
+            "sha256": "4babc9f66cb15e0efe1839e97ce8a6fbde59112d244c62701f77778ac1f0612e"
+          },
+          {
+            "path": "{out}/capture-position-controls.json",
+            "sha256": "84c6d01b3ff8723634c1f29cfc82fc7625ad49e57f10f3c106c6780c7419309f"
+          },
+          {
+            "path": "{out}/capture-removal.json",
+            "sha256": "7109d59cfb23e1967575923d2d671c40d714d3dbd4370603c30c6db6213fa6e2"
+          },
+          {
+            "path": "{out}/capture-render.json",
+            "sha256": "e09d57ec73188ed7cb8c4e81bcbd736b5da2be8268b9df78362241a41b9cd37a"
+          },
+          {
+            "path": "{out}/capture-reward-presentation.json",
+            "sha256": "9a8999bbd4fafd2f203f7ba506ae1cf62e8a11fa3fb4198feb2c4b9384670134"
+          },
+          {
+            "path": "{out}/capture-show-toggle.json",
+            "sha256": "c8ac97be08d31ab4c7480b33c16f166d8a0f6d1c111c18e31b8c86a546422e49"
+          },
+          {
+            "path": "{out}/capture-spell-knowledge.json",
+            "sha256": "c03cf5fc9649ff34021a66f171c18a90ffea75afb568d222963621fb9b70a2e3"
+          },
+          {
+            "path": "{out}/capture-spell-lists.json",
+            "sha256": "bb597eedcf6688ce61a798eda6e23a41bac04e8a9aae49c25241a7bc0b19c915"
+          },
+          {
+            "path": "{out}/capture-tabs.json",
+            "sha256": "b72ff2a8a020c16cc916d175671340d42ccba75f8ea86018991aa4f52b36c0e3"
+          },
+          {
+            "path": "{out}/capture-trap-reward.json",
+            "sha256": "29207f4112ef3aec75695a466de5ece07a6e4a8e7464552d041c9f34a191f839"
+          },
+          {
+            "path": "{out}/capture-visibility.json",
+            "sha256": "4d69dff929f413bfd5058f37ad546ea7bf54e39aae70d6cfb0d01f74eb3f457b"
+          },
+          {
+            "path": "{out}/capture-quickbar-boundary-rows.json",
+            "sha256": "676ce19d44b078ad596f7444eb122948710e2f068bdccb5a6c62e7e579c44b83"
+          },
+          {
+            "path": "{out}/capture-quickbar-boundary-tray.json",
+            "sha256": "043e2f970d63df24510c97ca416d07586524b782aac184ee5dcb27525cd0c42c"
+          },
+          {
+            "path": "{out}/capture-quickbar-boundary-trap-rows.json",
+            "sha256": "9a6b72b2234e6c9dba02e66f99afff706eb61f2a4df182507b2d649f616fa3f6"
+          },
+          {
+            "path": "{out}/capture-summon-classification.json",
+            "sha256": "ce994ee04f5082bdaa37b786f88e6338823af94c891fad660fc75a5d1feb7278"
+          },
+          {
+            "path": "{out}/capture-summon-commands.json",
+            "sha256": "d384c488b52a08e35728f6097bd84e1dac2ab2e20ce66a5b0eb6921cec5ec004"
+          },
+          {
+            "path": "{out}/capture-summon-control-events.json",
+            "sha256": "f2feb5303724b631fb677d971be272b55572d576b33e646a5d3222494ee2a9cc"
+          },
+          {
+            "path": "{out}/capture-summon-creature-lifecycle.json",
+            "sha256": "0ecaa4cf21fd47996e365c8613bc92d5df2a5e9e9c24d6f1f596100f07943f73"
+          },
+          {
+            "path": "{out}/capture-summon-grid.json",
+            "sha256": "e729538433320046a4757cbcea9aedf10c862abc55555c22db8d2729d4bd8388"
+          },
+          {
+            "path": "{out}/capture-summon-highlights.json",
+            "sha256": "c042bd0b66ecd82c655cb554bcf1bcdbd2bc1fa5447998a2d902eac777848bc2"
+          },
+          {
+            "path": "{out}/capture-summon-layout.json",
+            "sha256": "bb1c3ade62a36c87b876b18b796d0dd7204787581281f4682365abed3b88e5fe"
+          },
+          {
+            "path": "{out}/capture-summon-lifecycle.json",
+            "sha256": "44e41e19ed51745591ae2a3fb11730d33abd68eb9b6839700fc087e5ecc3922e"
+          },
+          {
+            "path": "{out}/capture-summon-menu-bounds.json",
+            "sha256": "a0b1e77a473097af5763706bdab66cd195d1a187ae467012c0a7e19dc9ac063c"
+          },
+          {
+            "path": "{out}/capture-summon-menus.json",
+            "sha256": "c0ec411613a20e3183fb1924952b0520244243e9815982715095ff8c6de2d05a"
+          },
+          {
+            "path": "{out}/capture-summon-record-storage.json",
+            "sha256": "843e0e1d9e78276b7458cf421404827623ee9bc7bac2adc6a01d485d390b508b"
+          },
+          {
+            "path": "{out}/capture-summon-rendering.json",
+            "sha256": "8e9e47604f6f06526301a15e8f338526993ce3f3912e0f3274f1cb0db3845e6a"
+          },
+          {
+            "path": "{out}/capture-summon-slot-tooltips.json",
+            "sha256": "3ec72d5e87eed2f6d367a0030270f028d122ddb75bee60d9fd16781d4175ce43"
+          },
+          {
+            "path": "{out}/capture-summon-tooltips-menu-draw.json",
+            "sha256": "98464c50265bab0771efb8b9e62db94bbb6bbb959df486b64442a8f91c25e959"
+          }
+        ]
+      }
+    ]
+  }
+}
