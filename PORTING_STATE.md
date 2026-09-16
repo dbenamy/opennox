@@ -29,7 +29,10 @@ UTF16-name contracts; see DECISIONS.md. Final review added field-offset assertio
 Production qualification passes under `build/port-lists/production-qualified`
 (265.849s): three builds/ABI, exact known asset-suite failures and both fresh
 forced-map replays. Those readers joined. Run the full accumulated corpus in
-all three configurations next; it replaces a redundant affected-only sweep. This
+all three configurations next; it replaces a redundant affected-only sweep.
+Initial `milestone-*` launches were rejected before discovery due to a multiline
+accumulated pattern. It is corrected to one regex line with alternation; use
+fresh `milestone-final-*` output directories. This
 recovery checkpoint is not final batch qualification. Do not edit source while
 the full sweeps run. Separate
 milestone phases are tracked; use isolated output directories and

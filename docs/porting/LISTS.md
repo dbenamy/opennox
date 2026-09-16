@@ -66,3 +66,9 @@ script has been applied; do not rerun it or overwrite installed fixtures with
 stale drafts. The native draft and caller migration have been applied; their apply script is
 stale. Source qualification is pending. Additional native contracts cover root
 null traversal and bounded raw-UTF16 name copying.
+
+The first full-sweep launches (`milestone-default/server/highres`) were rejected
+before discovery because the accumulated pattern had new families appended as
+extra lines. The driver correctly requires one nonempty regex line. Join the
+alternatives with `|` and rerun into fresh `milestone-final-*` directories; retain
+the original rejected results. No test ran or source changed in those attempts.
