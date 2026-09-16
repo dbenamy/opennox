@@ -15,20 +15,19 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. The complete NXZ map codec and map catalog/rotation owners are
-now Go. The latest catalog batch removed **448 C lines**, leaving about **69k:
-68,897 physical lines in 88 files**, with zero reference C. All 47 affected roots
-pass in three configurations, as do production builds/ABI and both forced map
-expansion replays; the suite retains exactly its known failures.
-See [MAP_CATALOG.md](docs/porting/MAP_CATALOG.md),
-[MAP_COMPRESSION.md](docs/porting/MAP_COMPRESSION.md) and
-[PORTING_STATE.md](PORTING_STATE.md) for evidence and review notes.
+scheduled pause. The latest shared-list/player-group batch removed **300 C lines**,
+leaving about **69k: 68,597 physical lines in 88 files**, with zero reference C.
+The full accumulated corpus passes in all three configurations (1,079 tests in
+default/highres, 1,075 in server; only the existing opt-in diagnostic is skipped).
+Three production builds/ABI and both forced map-expansion replays pass, and the
+asset suite retains exactly its known failures.
+See [LISTS.md](docs/porting/LISTS.md), [MAP_CATALOG.md](docs/porting/MAP_CATALOG.md)
+and [PORTING_STATE.md](PORTING_STATE.md) for evidence and review notes.
 
-The test driver bounds Go heap growth after a 386 address-space exhaustion;
-optional asset cleanup runs separately from gameplay validation. The catalog's
-zero-candidate quest fallback is recorded for review. Next: shared intrusive list
-operations and player-group membership, with a full accumulated corpus gate
-because the shared list owner serves many subsystems.
+The test driver bounds Go heap growth; optional asset cleanup runs separately
+from gameplay validation. The quest fallback, bounded player-group names and root
+null-list correction are recorded for review. Next: the connected
+[spellbook UI owner](docs/porting/SPELLBOOK.md), roughly 1,745 C block lines.
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.
 

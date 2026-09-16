@@ -1,6 +1,7 @@
 # Shared intrusive lists and player-group membership
 
-Status: the C baseline is qualified. All five roots pass in default, repeat,
+Status: fully qualified. C baseline **5ef1bf5e**, Go implementation **ef7d12a9**,
+pattern composition correction **7c627db5** are pushed. All five roots pass in default, repeat,
 server and highres, with unchanged source and no skips (`build/port-lists/c-qualified`,
 154.223s; initial independent checks 105.266s). Frozen expectations cover **2,319
 records in five groups**, listed in `lists-captures.json`. The baseline required no C prerequisite correction.
@@ -14,9 +15,9 @@ SSE2/CGO binaries and symbol audits pass; the full asset suite exactly retains
 forced-map replays (`lists-native`, `lists-flat-native`) exit zero, regenerate the
 warrior map exactly and match their preserved frame references. All readers joined.
 
-Working C is 68,597 lines in 88 files, zero reference C. The complete accumulated
-sweep in all three configurations is still required; this is a recovery checkpoint,
-not final batch qualification. No frozen expectation changed during conversion.
+Final C is **68,597 lines in 88 files, zero reference C** (−300). All complete
+accumulated sweeps pass on the same source as production qualification. No frozen
+expectation changed during conversion. No C algorithm remains solely for testing.
 
 The connected owner occupies 300 C lines in GAME1_1.c, from 00425760 through
 00425BE0: list initialization, forward/reverse/index traversal, sorted insertion,
@@ -64,7 +65,7 @@ diagnostic is an expected skip.
 Ignored drafts under `build/port-lists` are work in progress. The prepare-baseline
 script has been applied; do not rerun it or overwrite installed fixtures with
 stale drafts. The native draft and caller migration have been applied; their apply script is
-stale. Source qualification is pending. Additional native contracts cover root
+stale. Source qualification is complete. Additional native contracts cover root
 null traversal and bounded raw-UTF16 name copying.
 
 The first full-sweep launches (`milestone-default/server/highres`) were rejected
@@ -72,3 +73,22 @@ before discovery because the accumulated pattern had new families appended as
 extra lines. The driver correctly requires one nonempty regex line. Join the
 alternatives with `|` and rerun into fresh `milestone-final-*` directories; retain
 the original rejected results. No test ran or source changed in those attempts.
+
+## Complete accumulated qualification
+
+| Target | Selected/completed tests | Root-package tests | Driver seconds |
+| --- | ---: | ---: | ---: |
+| default | 1079 | 1062 | 859.669 |
+| server | 1075 | 1058 | 849.351 |
+| highres | 1079 | 1062 | 857.410 |
+
+Evidence: `build/port-lists/milestone-final-{default,server,highres}`. Targets ran
+concurrently with GOMAXPROCS=1/GOMEMLIMIT=768MiB; their times are not additive.
+Each has only the existing opt-in `TestMapPopulationPrerequisiteProbe` skip.
+Source fingerprints match production qualification, and all readers joined.
+The full sweep replaces an additional affected-only repetition. Both gameplay
+runs took about 50 seconds (50.309s normal / 49.126s flat), similar to the preceding
+catalog runs; these scenario timings are not a general performance benchmark.
+
+Next: the connected spellbook UI owner. Its audit is in [SPELLBOOK.md](SPELLBOOK.md).
+Ignored list prepare/apply/review/finalize scripts are now stale; do not rerun them.

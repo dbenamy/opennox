@@ -2,48 +2,38 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 69k lines** — exactly **68,897 physical lines** in
-88 production `.c` files, zero reference C. Latest map catalog conversion:
-**−448 C lines** (net −445 including its prerequisite). See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 69k lines** — exactly **68,597 physical lines** in
+88 production `.c` files, zero reference C. Latest shared-list/player-group
+conversion: **−300 C lines**. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — map catalog qualified; continue shared lists and player groups
+## Current — shared lists qualified; continue spellbook UI
 
-Catalog C baseline **cd5337b6** and conversion **b6df7591** are pushed. Native qualification is complete under
-`build/port-map-catalog/native-qualified` (662.181s), with unchanged source and all
-readers joined. All 47 affected roots pass without skips in each configuration;
-all 1,789 frozen records match. Three production builds/ABI pass, the full asset
-suite exactly retains 1,553 known failure entries, and both fresh gameplay modes
-regenerate the warrior map exactly and match their frame references. See
-[MAP_CATALOG.md](docs/porting/MAP_CATALOG.md) for detailed evidence and review notes.
+List C baseline **5ef1bf5e**, Go implementation **ef7d12a9**, pattern correction
+**7c627db5** are pushed. All 2,319 frozen records match; seven focused roots and
+three production builds/ABI pass. The asset suite exactly retains its known
+1,553 failure entries. Both fresh gameplay modes regenerate the warrior map
+exactly and match their preserved frames.
 
-Current work: [shared intrusive lists and player-group membership](docs/porting/LISTS.md).
-The connected 300-line owner has a duplicate root Go implementation to consolidate.
-C baseline **5ef1bf5e** is pushed: 2,319 frozen records / five groups, all five roots
-pass in default, repeat, server and highres without skips (`c-qualified`, 154.223s).
-Native integration is installed and all seven focused roots pass with unchanged
-captures (`native-focused`, 105.066s). Added root null-traversal and bounded raw
-UTF16-name contracts; see DECISIONS.md. Final review added field-offset assertions.
+The full accumulated corpus passes on the exact production source:
+1,079 selected/completed in default and highres; 1,075 in server. Only the existing
+opt-in map-population diagnostic is skipped. Evidence under `build/port-lists/
+milestone-final-{default,server,highres}` and `production-qualified`; all readers
+joined. See [LISTS.md](docs/porting/LISTS.md) for timings and the rejected initial
+multiline-pattern launches, which ran no tests and remain preserved.
 
-Production qualification passes under `build/port-lists/production-qualified`
-(265.849s): three builds/ABI, exact known asset-suite failures and both fresh
-forced-map replays. Those readers joined. Run the full accumulated corpus in
-all three configurations next; it replaces a redundant affected-only sweep.
-Initial `milestone-*` launches were rejected before discovery due to a multiline
-accumulated pattern. It is corrected to one regex line with alternation; use
-fresh `milestone-final-*` output directories. This
-recovery checkpoint is not final batch qualification. Do not edit source while
-the full sweeps run. Separate
-milestone phases are tracked; use isolated output directories and
-GOMAXPROCS=1/GOMEMLIMIT=768MiB. Working C is 68,597 / 88 files / zero reference C;
-latest fully qualified count remains 68,897 until all gates pass.
-
-All ignored list prepare/apply/review scripts have now been applied and are stale.
-Do not overwrite committed fixtures or installed native code from drafts.
+Next: [spellbook UI](docs/porting/SPELLBOOK.md), a connected 36-function / 1,745-line
+scope spanning GAME2.c and client__gui__guibook.c. The audit and C-call facade draft
+are under `build/port-book`; no book source or tests are installed or frozen yet.
+Use the actual GUI/font/image/player/metadata owners, nonempty page pixels and
+independent list/page/lifecycle/reward/animation contracts before freezing C.
+The facade draft was manually enhanced; its generator is stale and would erase
+those additions. Complete the fixture owner rather than treating the draft as
+qualified source.
 
 Continue under PORT.md without a scheduled pause. Preserve original assets/archive.
-Catalog and compressor apply/finalization scripts are stale; do not rerun them.
+All applied list/catalog/compressor scripts are stale; do not rerun them.
 
 <!-- /current-checkpoint -->
 
