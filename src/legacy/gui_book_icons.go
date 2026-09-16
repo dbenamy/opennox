@@ -99,38 +99,38 @@ func bookIconEvents(w *gui.Window, event int, pos image.Point) int {
 		origin := uiWindowPosition(w)
 		inside := pos.X >= origin.X && pos.X <= origin.X+w.SizeVal.X && pos.Y >= origin.Y && pos.Y <= origin.Y+w.SizeVal.Y
 		if !inside {
-			if C.nox_xxx_guiSpell_460650() != 0 {
-				C.nox_xxx_guiSpellTargetClickSet_45D9D0(C.int(*bookWord(1047540)))
-			} else if C.sub_4611A0() != 0 {
-				C.sub_4611B0()
+			if *quickbarWord(1047928) != 0 {
+				quickbarQueueTarget(*bookWord(1047540))
+			} else if *quickbarWord(1047932) != 0 {
+				quickbarSendPendingAbility()
 			} else {
-				C.nox_xxx_bookSpellDrop_45DCA0(C.int(*bookWord(1047540)), 0, C.int(pos.X), C.int(pos.Y), nil)
+				quickbarDrop(*bookWord(1047540), 0, pos, nil)
 			}
 			clear()
 			return 1
 		}
 		if class != 0 {
-			if C.nox_xxx_guiSpell_460650() != 0 {
-				C.nox_xxx_guiSpellSetCursor_45DF60(0, 0)
+			if *quickbarWord(1047928) != 0 {
+				quickbarSpellCursor(0, 0)
 				clear()
 				return 1
 			}
 			if !bool(nox_xxx_spellHasFlags_424A50(int(*bookWord(1047540)), 0x600)) {
-				C.nox_xxx_guiSpellSetCursor_45DF60(C.int(*bookWord(1047540)), 0)
+				quickbarSpellCursor(*bookWord(1047540), 0)
 				C.nox_xxx_bookSpellDnDclear_477660()
 				return 1
 			}
-			if C.nox_xxx_guiSpellSetCursor_45DF60(C.int(*bookWord(1047540)), 1) != 0 {
+			if quickbarSpellCursor(*bookWord(1047540), 1) != 0 {
 				clear()
 				return 1
 			}
 		} else {
-			if C.sub_4611A0() != 0 {
-				C.sub_45DFC0(0)
+			if *quickbarWord(1047932) != 0 {
+				quickbarAbilityCursor(0)
 				clear()
 				return 1
 			}
-			if C.sub_45DFC0(C.int(*bookWord(1047540))) != 0 {
+			if quickbarAbilityCursor(*bookWord(1047540)) != 0 {
 				clear()
 				return 1
 			}

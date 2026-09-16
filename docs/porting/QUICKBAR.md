@@ -14,7 +14,7 @@ repeat, server and highres. All four phase source manifests match the same
   87163fc4a80aae957e95f6e11388acb20fc4beb42ea41f84a95a56308cf73cdf.
 - Both gameplay runs match all **22 frames**, remove 51 copied maps and
   regenerate the warrior map exactly. See quickbar-replay.json.
-- All readers are joined. Native drafts are outside source and unqualified.
+- C baseline readers are joined; baseline commit **b487b8dd** is pushed.
 
 The baseline follows qualified spellbook conversion **41b8abfb**.
 Production C remains **66,811 lines / 87 files / zero reference C**; the one-line
@@ -28,8 +28,8 @@ reward presentation and saved slot data.
 
 The spellbook, GUI, input, rendering, metadata, netlist and particle owners provide
 the reusable baseline fixtures. Extend them with direct quickbar contracts before
-translating. Baseline preparation is not qualification; no native quickbar source
-has been installed.
+translating. The baseline is complete; the native implementation is now installed
+and undergoing qualification.
 
 ## Review notes from the audit
 
@@ -45,6 +45,32 @@ has been installed.
   timeout owner and frame counter. No duplicated C test algorithms.
 - Keep original book gameplay frames and add meaningful quickbar interactions for
   a fresh original-C reference; mere startup frames do not establish slot behavior.
+
+## Native implementation checkpoint
+
+The installed conversion removes **2,494 C lines**, leaving **64,317 / 86 files /
+zero reference C** provisionally. Typed records retain the shared 256-byte layout;
+actual GUI, renderer, input, save-file, message-list and particle owners are reused.
+Go callers now invoke the native helpers directly. Nineteen C interfaces remain
+for actual callers and tooltip callbacks; 68 private interfaces are retired.
+
+Preserved details for review: hidden rows reuse nugget 1 and its direction index;
+only the main row increments that counter in the original constructor. Both
+caster classes check the same availability field when initially showing the
+trap/bomber controls. Save-name parsing stops at embedded NUL like the original
+C string conversion, while still consuming the complete counted field. These
+are preservation choices, not new behavior fixes.
+
+The initial compile check passed before integration. The first integrated run
+(native-focused-01, 169.342 seconds) matched 45 of 46 groups. Its 18 differing
+GUI-frame records contained only missing empty hotkey-label text calls: the live
+C string adapter returns a non-null interned pointer even for an empty string.
+The Go renderer now preserves those calls and their text-color side effect.
+Goldens are unchanged. The corrected focused run (native-focused-02) passes all
+46 roots and all 6,936 hashes, without skips, in 185.283 seconds. All 1,811 source
+fingerprints remain unchanged. Accumulated default/server milestone runs are
+underway; highres and production/gameplay gates still remain. Do not rerun ignored
+`native_*.draft` or `integrate.py` over the current source.
 
 ## Remaining gates
 
@@ -184,3 +210,61 @@ is joined. The fresh C client built in 61.550 seconds and the forced-map capture
 passed in 57.800 seconds. The independent gameplay repeat is still running.
 All four phase source manifests match. Three ignored native drafts (state,
 activation and row transitions) remain uncompiled and outside source.
+
+The accumulated server milestone passed **1,121 selected/completed tests**
+(1,104 in the root package), with only the existing opt-in
+`TestMapPopulationPrerequisiteProbe` skipped. All 46 book/quickbar hashes match.
+Driver: 815.448 seconds; phase: 815.731 seconds, source unchanged.
+Evidence: `build/port-quickbar/native-qualified-server`. Default remains active;
+production builds/interface/known-suite/replays have started in the freed slot.
+
+## Final review: additional C boundary contracts
+
+The first accumulated default/server passes (1,125 / 1,121 selected tests) are
+superseded by these subsequent source corrections. The production run was
+terminated and joined; its partial artifacts are diagnostic only.
+
+- C compares the arrived tray destination to screen height as unsigned; a signed
+  Go comparison differed for destinations with the high bit set.
+- Previous-row navigation rejects an out-of-range result; sharing the next-row
+  wrap condition incorrectly selected row zero for large selected-byte values.
+- Trap row navigation computes an address without accessing the row. Preserve
+  its byte wrap and address arithmetic rather than adding a Go array-bounds panic.
+
+These are translation corrections, not changes to original game behavior. Three
+new test roots (47 records) are being qualified against unchanged C in an isolated
+baseline worktree. Original 46-group goldens remain unchanged. Freeze and commit
+the supplement before accepting its native results, then repeat qualification on
+the corrected source. The final C reduction includes one trailing blank line
+removed from the shortened GAME2.c: **2,494**, leaving **64,317**.
+
+The supplemental tray fixture initially used the GUI position setter, which
+normalizes overflowing rectangles and therefore changed the coordinate under
+test. It now sets the raw coordinate to isolate the original comparison; no
+production C was changed. Process adjustment: finish the arithmetic/pointer review
+before launching long accumulated gates. Late discovery here requires rerunning
+previously passing default/server sweeps rather than accepting stale evidence.
+
+## Supplemental C baseline committed
+
+**a6c1640e** is pushed. The 47 new records (14 row, 21 tray, 12 trap-row) pass
+unchanged C in default/repeat/server/highres: phase times 29.810 / 106.170 /
+23.662 seconds. All readers joined. The staged and committed 1,802-file source
+tree matches every supplemental C manifest exactly. No native implementation
+was included in that commit; source proof is c-boundary-index-proof.json.
+
+The corrected native production code still matches every original record
+(native-focused-03). Native-focused-04 and native-final-server now include the
+committed supplement: **49 groups / 6,983 records**, with all original hashes
+unchanged. Full final qualification remains pending. The source-review ordering
+adjustment is recorded in PORT.md.
+
+## Native recovery checkpoint
+
+The full **49 groups / 6,983 records** pass in native-focused-04 without skips
+or golden changes (92.620 seconds), with 1,812 unchanged source fingerprints.
+Save the native implementation and docs as a recovery commit now, while the
+fresh default/server accumulated sweeps run. This protects the completed
+implementation work from VM loss; it is explicitly **not final qualification**.
+Highres, production/ABI, known-suite and replay gates remain, followed by the
+completed-chunk documentation commit. Do not begin the next port until those pass.

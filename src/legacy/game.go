@@ -390,7 +390,7 @@ func Sub_445450() {
 	C.sub_445450()
 }
 func Sub_45DB90() {
-	C.sub_45DB90()
+	quickbarResetFlash()
 }
 func Nox_xxx_initTime_435570() {
 	C.nox_xxx_initTime_435570()
@@ -414,10 +414,10 @@ func Sub_4958F0() {
 	C.sub_4958F0()
 }
 func Sub_460380() {
-	C.sub_460380()
+	quickbarClearAbilities()
 }
 func Nox_xxx_cliPrepareGameplay1_460E60() int {
-	return int(C.nox_xxx_cliPrepareGameplay1_460E60())
+	return int(quickbarPrepare())
 }
 func Nox_xxx_cliPrepareGameplay2_4721D0() {
 	nox_xxx_cliPrepareGameplay2_4721D0()
@@ -603,7 +603,7 @@ func Sub_467980() {
 	uiInventoryResetWindow()
 }
 func Sub_460D50() {
-	C.sub_460D50()
+	quickbarDestroy()
 }
 func Nox_xxx_guiServerOptionsGetGametypeName_4573C0(a1 noxflags.GameFlag) string {
 	return GoWString(C.nox_xxx_guiServerOptionsGetGametypeName_4573C0(C.short(a1)))
@@ -647,7 +647,7 @@ func Sub_4721A0(a1 int) {
 	sub_4721A0(a1)
 }
 func Sub_460EA0(a1 int) {
-	C.sub_460EA0(C.int(a1))
+	quickbarVisible(a1 != 0)
 }
 func Nox_window_set_visible_unk5(a1 int) {
 	C.nox_window_set_visible_unk5(C.int(a1))

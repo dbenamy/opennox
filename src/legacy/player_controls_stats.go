@@ -145,7 +145,7 @@ func controlSetLevel(u *server.Object, level byte) {
 		if *controlByte(pl, 2251) == 0 {
 			for i := 1; i < 6; i++ {
 				if *equipmentWord(pl, 3696+4*i) != 0 {
-					C.nox_xxx_book_45DBE0(unsafe.Pointer(uintptr(3)), C.int(i), C.int(i-1))
+					quickbarBookSlot(3, uint32(i), i-1)
 				}
 			}
 		}

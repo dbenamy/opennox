@@ -62,7 +62,7 @@ func nox_client_parseConfigHotkeysLine_42CF50(a1 *C.char) int {
 }
 
 func Nox_xxx_guiSpellTargetClickCheckSend_45DBB0() {
-	C.nox_xxx_guiSpellTargetClickCheckSend_45DBB0()
+	quickbarSendPending()
 }
 
 func Nox_xxx_clientTrade_42E850(dr *client.Drawable) {
@@ -82,11 +82,11 @@ func Nox_xxx_packetGetMarshall_476F40() uint32 {
 }
 
 func Nox_xxx_clientUpdateButtonRow_45E110(ind int) {
-	C.nox_xxx_clientUpdateButtonRow_45E110(C.int(ind))
+	quickbarSelectRow(ind)
 }
 
 func Nox_client_trapSetSelect_4604B0(ind int) {
-	C.nox_client_trapSetSelect_4604B0(C.int(ind))
+	quickbarTrapSelect(ind)
 }
 
 func Nox_client_orderCreature(a1, a2 int) {
@@ -138,19 +138,19 @@ func Nox_client_quickCurePoisonPotion_472260() {
 }
 
 func Nox_client_spellSetNext_4604F0() {
-	C.nox_client_spellSetNext_4604F0()
+	quickbarMoveRow(1)
 }
 
 func Nox_client_spellSetPrev_460540() {
-	C.nox_client_spellSetPrev_460540()
+	quickbarMoveRow(-1)
 }
 
 func Nox_client_spellSetSelect_460590() {
-	C.nox_client_spellSetSelect_460590()
+	quickbarTimedRow()
 }
 
 func Nox_client_buildTrap_45E040() {
-	C.nox_client_buildTrap_45E040()
+	quickbarBuildTrap()
 }
 
 func Nox_xxx_guiServerOptsLoad_457500() {
@@ -158,7 +158,7 @@ func Nox_xxx_guiServerOptsLoad_457500() {
 }
 
 func Sub_460630() {
-	C.sub_460630()
+	quickbarRememberMouseSequence()
 }
 func Nox_xxx_game_4DCCB0() int {
 	return int(C.nox_xxx_game_4DCCB0())
@@ -176,5 +176,5 @@ func Sub_42EB90(a1 int) {
 	C.sub_42EB90(C.int(a1))
 }
 func Nox_client_invokeSpellSlot_45DA50(a1 int) {
-	C.nox_client_invokeSpellSlot_45DA50(C.int(a1))
+	quickbarInvokeSlot(a1)
 }

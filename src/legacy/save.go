@@ -83,7 +83,7 @@ func Nox_xxx_destroyEveryChatMB_528D60() {
 	C.nox_xxx_destroyEveryChatMB_528D60()
 }
 func Nox_xxx_quickBarClose_4606B0() {
-	C.nox_xxx_quickBarClose_4606B0()
+	quickbarCloseExpanded()
 }
 func Nox_xxx_monstersAllBelongToHost_4DB6A0() {
 	C.nox_xxx_monstersAllBelongToHost_4DB6A0()

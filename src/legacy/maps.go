@@ -195,11 +195,11 @@ func Nox_xxx_tile_486060() {
 }
 
 func Sub_461400() {
-	C.sub_461400()
+	quickbarRestoreSlots()
 }
 
 func Sub_461450() int {
-	return int(C.sub_461450())
+	return int(*quickbarWord(1049688))
 }
 
 func Nox_xxx_cliShowHideTubes_470AA0(v int) {

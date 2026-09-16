@@ -33,26 +33,26 @@ func bookNormalizeStep() {
 	bookVector[1] *= speed
 }
 func bookStoreInBar() {
-	C.nox_xxx_book_45DBE0(unsafe.Pointer(uintptr(*bookWord(1046676))), C.int(*bookWord(1047524)), C.int(*bookWord(1046852)))
+	quickbarBookSlot(uintptr(*bookWord(1046676)), *bookWord(1047524), int(*bookWord(1046852)))
 }
 func bookAdd(kind, id int) {
 	if *bookWord(1047520) == 1 {
 		return
 	}
-	C.nox_xxx_quickBarClose_4606B0()
-	*bookWord(1046612) = uint32(C.nox_xxx_buttonsGetSelectedRow_45E180())
+	quickbarCloseExpanded()
+	*bookWord(1046612) = uint32(quickbarMain().Selected)
 	if kind == 2 && bool(nox_xxx_spellHasFlags_424A50(id, 0x15000)) {
 		return
 	}
-	if C.nox_xxx_buttonHaveSpellInBarMB_4612D0(C.int(id)) == 1 {
+	if quickbarContains(uint32(id)) == 1 {
 		return
 	}
 	var slot int
 	switch kind {
 	case 2, 4:
-		slot = int(C.nox_xxx_buttonFindFirstEmptySlot_461250())
+		slot = int(quickbarFirstEmpty(false))
 	case 3:
-		slot = int(C.sub_4612A0())
+		slot = int(quickbarFirstEmpty(true))
 	default:
 		return
 	}
@@ -68,7 +68,7 @@ func bookAdd(kind, id int) {
 	*bookFloat(1046640) = float32(from.Y)
 	moving := bookWindow(*bookWord(1046956))
 	moving.SetPos(*from)
-	C.nox_xxx_buttonSetImgMB_461320(C.int(slot), (*C.uint32_t)(unsafe.Pointer(bookWord(1046668))))
+	quickbarSlotPosition(slot, (*[2]int32)(unsafe.Pointer(bookWord(1046668))))
 	*bookWord(1047524) = uint32(id)
 	*bookWord(1046652) = 0
 	if kind == 3 {

@@ -115,13 +115,13 @@ func Sub_446780() {
 	C.sub_446780()
 }
 func Sub_460660() {
-	C.sub_460660()
+	quickbarCancelCapture()
 }
 func Sub_467BB0() {
 	uiInventoryOpenWindow()
 }
 func Sub_4602F0() {
-	C.sub_4602F0()
+	quickbarClearSlots()
 }
 func Nox_xxx_playerAnimCheck_4372B0() int {
 	return int(C.nox_xxx_playerAnimCheck_4372B0())

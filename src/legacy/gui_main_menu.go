@@ -80,7 +80,7 @@ func Get_nox_game_showGameSel_4379F0() unsafe.Pointer {
 }
 
 func Sub_461440(v int) {
-	C.sub_461440(C.int(v))
+	*quickbarWord(1049688) = uint32(v)
 }
 
 func Sub_4D7440(v int) {

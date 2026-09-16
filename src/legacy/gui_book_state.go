@@ -314,7 +314,7 @@ func bookStopAddition() {
 	*bookWord(1047520) = 0
 	bookHideWindow(bookWindow(*bookWord(1046956)), true)
 	*bookWord(1046648) = 0
-	C.nox_xxx_clientUpdateButtonRow_45E110(C.int(*bookWord(1046612)))
+	quickbarSelectRow(int(*bookWord(1046612)))
 	if noxflags.HasGame(noxflags.GameModeCoop) {
 		C.sub_57B0A0()
 		C.sub_413A00(0)

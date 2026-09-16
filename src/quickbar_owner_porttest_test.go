@@ -51,7 +51,7 @@ func newQuickbarOwner(t *testing.T) *quickbarOwner {
 	sort.Strings(names)
 	for i, n := range names {
 		// Keep already-established callback identities used by spellbook captures.
-		if _, ok := o.c.callbackRefs[callbacks[n]]; !ok {
+		if _, ok := o.c.callbackRefs[callbacks[n]]; !ok && callbacks[n] != nil {
 			o.c.callbackRefs[callbacks[n]] = 0xeeb00001 + uint32(i)
 		}
 	}

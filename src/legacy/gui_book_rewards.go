@@ -82,7 +82,7 @@ func bookSpellReward(id, rank, notify, auto int) {
 		if *bookPlayerWord(p, 3832, 0) == 1 && notify != 0 {
 			show = 1
 		}
-		C.nox_xxx_quickbarAddTrap_460EC0(C.int(show))
+		quickbarAddTrap(show)
 	} else if notify != 0 {
 		if index := bookFind(id, 137); index != 137 {
 			bookHide(0)
@@ -153,12 +153,12 @@ func bookRemoveSpell(id int) int {
 		return result
 	}
 	*bookPlayerWord(p, 3696, id) = 0
-	C.sub_461360(C.int(id))
+	quickbarRemove(uint32(id))
 	if family := bookSpellFamily(id); family != 0 {
 		for n := 1; n < 137; n++ {
 			if bool(nox_xxx_spellHasFlags_424A50(n, family)) && bool(nox_xxx_spellIsValid_424B50(n)) {
 				*bookPlayerWord(p, 3696, n) = 0
-				C.sub_461360(C.int(n))
+				quickbarRemove(uint32(n))
 			}
 		}
 	}
@@ -171,17 +171,17 @@ func bookRemoveGuide(id int) int {
 		return result
 	}
 	*bookPlayerWord(p, 4244, id) = 0
-	C.sub_461360(C.int(id + 74))
-	bookGuideFamily(id, func(n int) { *bookPlayerWord(p, 4244, n) = 0; C.sub_461360(C.int(n + 74)) })
+	quickbarRemove(uint32(id + 74))
+	bookGuideFamily(id, func(n int) { *bookPlayerWord(p, 4244, n) = 0; quickbarRemove(uint32(n + 74)) })
 	return bookSort(bookClass(p))
 }
 func bookRemoveAbility(id int) uintptr {
 	bookHide(1)
-	C.nox_xxx_netAbilityRewardCli_4611E0(C.int(id), 0, nil)
+	quickbarAbilityReward(id, 0, 0)
 	if p := *bookWord(1047516); p != 0 {
 		*bookPlayerWord(p, 3696, id) = 0
 	}
-	C.sub_461360(C.int(id))
+	quickbarRemove(uint32(id))
 	p := C.nox_common_playerInfoGetByID_417040(C.int(C.nox_player_netCode_85319C))
 	if p == nil {
 		return 0

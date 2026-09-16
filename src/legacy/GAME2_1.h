@@ -4,28 +4,13 @@
 #include "common__savegame.h"
 #include "defs.h"
 
-int sub_460D40();
-int sub_460D50();
 int nox_xxx_cliPrepareGameplay1_460E60();
 int sub_460EA0(int a1);
 void sub_460EB0(int a1, char a2);
-void sub_461010();
-void sub_461060();
 char* sub_461090(int a1, int a2);
 char* sub_4610D0(unsigned char a1);
 char* sub_461120(int a1, int a2);
-int sub_461160(int a1);
-int sub_4611A0();
-int sub_4611B0();
 void nox_xxx_netAbilityRewardCli_4611E0(int a1, int a2, char* a3);
-int nox_xxx_buttonFindFirstEmptySlot_461250();
-int sub_4612A0();
-int nox_xxx_buttonHaveSpellInBarMB_4612D0(int a1);
-void nox_xxx_buttonSetImgMB_461320(int a1, uint32_t* a2);
-int sub_461360(int a1);
-int sub_461400();
-int sub_461440(int a1);
-int sub_461450();
 void nox_xxx_playerInitColors_461460(nox_playerInfo* pl);
 char* sub_461520();
 int nox_xxx_clientSetAltWeapon_461550(int a1);

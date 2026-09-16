@@ -110,10 +110,10 @@ func Sub_4AEE30() {
 	C.sub_4AEE30()
 }
 func Nox_xxx_guiSpell_460650() int {
-	return int(C.nox_xxx_guiSpell_460650())
+	return int(*quickbarWord(1047928))
 }
 func Sub_4611A0() int {
-	return int(C.sub_4611A0())
+	return int(*quickbarWord(1047932))
 }
 func Sub_467CD0() {
 	uiInventoryCancelDrag()

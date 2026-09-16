@@ -24,14 +24,10 @@ func PortTestBookQuickbar(p unsafe.Pointer) func() {
 }
 
 func PortTestBookQuickbarInit(p unsafe.Pointer, x, y int) uint32 {
-	return uint32(C.nox_xxx_quickBarInitWindow_4601F0(C.int(uintptr(p)), C.int(x), C.int(y), 5, 0, C.int(uintptr(unsafe.Pointer(C.nox_xxx_quickBarWnd_45EF50))), C.int(uintptr(unsafe.Pointer(C.nox_xxx_quickBarDrawFn_45FBD0)))))
+	return uint32(quickbarInitWindow((*quickbarRecord)(p), x, y, 5, 0, bookEvent(quickbarSlotEvent), quickbarDrawAbility))
 }
 func PortTestBookQuickbarCallbacks() map[unsafe.Pointer]uint32 {
-	return map[unsafe.Pointer]uint32{
-		unsafe.Pointer(C.nox_xxx_quickbar_45F8D0):       0xee700001,
-		unsafe.Pointer(C.nox_xxx_quickBarWnd_45EF50):    0xee700002,
-		unsafe.Pointer(C.nox_xxx_quickBarDrawFn_45FBD0): 0xee700003,
-	}
+	return nil
 }
 
 // PortTestBookPauseOwner owns the already-paused reward presentation state.

@@ -121,7 +121,7 @@ func sub_467B00(typ, quantity C.int) C.int {
 }
 func uiInventoryAlterWeapon() {
 	playerDr := uiInventoryDrawable(memmap.Uint32(0x852978, 8))
-	if playerDr == nil || GetClient().Cli().Cursor != 0 || C.sub_461160(1) != 0 {
+	if playerDr == nil || GetClient().Cli().Cursor != 0 || quickbarAbilityAvailable(1) != 0 {
 		return
 	}
 	player := uiMeterPlayer()

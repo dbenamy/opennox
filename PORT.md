@@ -31,7 +31,9 @@ The connected quickbar C baseline is qualified: 22 new groups plus all 24 book
 groups (6,936 records), repeated and checked in all three configurations; its
 22-frame gameplay replay also repeats exactly. A reversible saved-row correction
 and fixture findings are recorded in [QUICKBAR.md](docs/porting/QUICKBAR.md).
-Next: convert that connected owner, reusing the book/GUI/particle/input fixtures.
+The native quickbar conversion is installed and undergoing comparison, reusing
+the book/GUI/particle/input fixtures. Its provisional count is 64,317 C lines
+in 86 files (−2,494); do not treat it as qualified until the remaining gates pass.
 The test driver bounds Go heap growth; optional asset cleanup runs separately
 from gameplay validation. Confident reversible decisions remain recorded for review.
 
@@ -69,6 +71,9 @@ may precede full qualification when their evidence and remaining gates are expli
 4. Translate the batch, keeping C exports only for remaining C callers/callbacks.
    Go callers should invoke Go directly. Compare against frozen expectations while
    implementing; diagnose differences without regenerating goldens to hide them.
+   Before launching long milestone gates, review arithmetic widths, signedness,
+   pointer construction and callback behavior against C. Matching captured cases
+   does not replace that review; add C contracts for newly identified boundaries.
 5. Run the completed-batch qualification below, review the diff and measure C LOC.
    Update the batch report, decision log where needed, size table and checkpoint.
    Commit and push the conversion before starting another batch.

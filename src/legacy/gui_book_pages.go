@@ -253,7 +253,7 @@ func bookListEvents(w *gui.Window, event uint32, pos image.Point) int {
 				dy = -dy
 			}
 			if dx >= 5 || dy >= 5 {
-				C.nox_xxx_bookSpellDrop_45DCA0(C.int(*bookWord(1047528)), 0, C.int(pos.X), C.int(pos.Y), nil)
+				quickbarDrop(*bookWord(1047528), 0, pos, nil)
 			} else {
 				bookMoveToPage(int(int32(*bookSelection())))
 			}

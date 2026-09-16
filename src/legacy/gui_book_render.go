@@ -23,8 +23,11 @@ func bookText(id string) string {
 	return GetServer().S().Strings().GetStringInFile(strman.ID(id), "guibook.c")
 }
 func bookRankText(rank uint32) string {
+	return bookFormatInt(bookText("PowerLevel"), int(rank))
+}
+func bookFormatInt(format string, number int) string {
 	var dst [256]uint16
-	C.bookFormatRank((*C.wchar2_t)(unsafe.Pointer(&dst[0])), internWStr(bookText("PowerLevel")), C.int(rank))
+	C.bookFormatRank((*C.wchar2_t)(unsafe.Pointer(&dst[0])), internWStr(format), C.int(number))
 	return alloc.GoString16(&dst[0])
 }
 func bookCreatureName(id int) string {
