@@ -1,6 +1,6 @@
 # Summon-creature panel port
 
-## Scope and current work
+## Scope and C baseline
 
 Quickbar is qualified and pushed in **657c6dc4**. The next connected candidate
 covers 36 functions / roughly 994 physical C lines: GAME3_1.c from 004C1CA0 up
@@ -95,3 +95,20 @@ sub_4C1CA0, nox_xxx_cliSummonCreat_4C2E50,
 nox_xxx_cliSummonOnDieOrBanish_4C3140 and sub_4C3260. Three other entry points
 have only Go callers and can move with their callers. Audit final symbols and
 callbacks after translation rather than treating this preliminary list as proof.
+
+
+## Gameplay baseline qualified
+
+C-contract checkpoint **f40d94dc** is pushed. The new conjurer scenario visibly
+opens the creature guide, assigns Summon Bat, casts it, shows the cage and health
+bar, orders Guard, opens the individual bat menu, and banishes it until the cage
+closes. The original capture and fresh repeat both pass with exact frame matches.
+See summon-replay.json for all frame hashes, scenario and binary identity, and
+measured timings. No source changed after the qualified C-contract checkpoint.
+The source index remains 1,818 files, matching all C qualification manifests.
+
+All C tests/build/scenario readers are joined. The baseline is now ready for Go
+replacement. Final audit identifies **six** interfaces to keep: the four external
+C entries above plus sub_4C2C20 and sub_4C2CE0, since the GUI still invokes tooltip
+callbacks through C pointers. Keep those adapters; the other thirty functions can
+be private Go functions once their callers move.

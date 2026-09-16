@@ -40,23 +40,26 @@ stale quickbar drafts or integrate.py. Source the pinned build/baseline/env.sh f
 
 The active next owner is the summon-creature panel. See
 [SUMMON.md](docs/porting/SUMMON.md) for scope, contracts and review notes.
-Production remains C with one reversible menu-bottom-clamp prerequisite fix;
-see DECISIONS.md and the failing/passing corner contract. All 971 frozen records
-in fourteen roots pass default/repeat/server/highres; combined affected checks
-pass all 7,954 records / 63 groups with no skips or prior golden changes.
-All Go/build readers are joined. C LOC remains 64,317 / 86.
-C-contract source index proof: build/port-summon/c-index-proof.json. The contract
-checkpoint is being committed before completing the headless gameplay baseline.
+The summon C baseline is fully qualified. Contract commit **f40d94dc** is pushed;
+all 971 records / 14 groups pass default/repeat/server/highres, and all 7,954 /
+63 combined book/quickbar/summon records pass. The C menu-bottom-clamp correction
+is explicit in DECISIONS.md. Production count remains 64,317 / 86.
+The conjurer gameplay capture and fresh repeat pass, including actual Summon Bat,
+guarding, both command menus and banishment. Scenario: summon-conjurer.yaml;
+identities/frame hashes: summon-replay.json. Keep con01a.map present for campaign
+availability; separate warrior/flat replay covers forced map regeneration.
+All readers are joined. Source proof: build/port-summon/c-index-proof.json, 1,818
+files. Next: finish/review/install native summon implementation, compare all
+frozen expectations and qualify affected targets/production/replays, document
+C LOC, commit/push and continue. Six C adapters remain necessary (four outside
+callers plus two tooltip callbacks), thirty private interfaces should retire.
 
-Production C client: build/port-summon/client, built with the pinned environment.
-Conjurer scenario draft: build/port-summon/conjurer-develop.yaml. First attempt
-could not start solo because removing con01a.map for forced decompression defeats
-checkHasSoloMaps. Do not change that unrelated production behavior; keep the map
-for this scenario. Develop2 is running (session 75116); its map-decompression
-requirement is disabled. Observe actual summoning and menus before accepting or
-repeating the final scenario. Separate warrior/flat runs retain map coverage.
-No native summon source installed. Initial wrapper/UI generators are stale and
-must not overwrite later test edits. No user question is pending.
+No native source installed yet. Two implementation drafts exist only under
+build/port-summon/gui_summon_state.go and gui_summon_ui.go; they are incomplete
+and require review (widget data is offset 32, not quickbar's offset 368;
+negative constants need unsigned representation; drawable flags at 120 are
+ObjFlags). Do not run stale initial wrapper/UI baseline generators.
+No user question or substantial blocker is pending.
 
 The previous spellbook conversion **41b8abfb** is fully qualified and pushed;
 see [SPELLBOOK.md](docs/porting/SPELLBOOK.md). Do not rerun stale native drafts,

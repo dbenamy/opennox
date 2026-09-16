@@ -599,6 +599,50 @@
           }
         ]
       }
+    ],
+    "c-gameplay": [
+      {
+        "name": "client-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/client",
+          "./cmd/opennox"
+        ]
+      },
+      {
+        "name": "capture",
+        "command": [
+          "env",
+          "NOX_DEV=true",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/summon-conjurer.yaml",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Summon C with menu-bottom correction",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "summon-c",
+          "capture"
+        ]
+      },
+      {
+        "name": "compare",
+        "command": [
+          "env",
+          "NOX_DEV=true",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/summon-conjurer.yaml",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Summon C with menu-bottom correction",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "summon-c-repeat",
+          "compare",
+          "{root}/build/baseline/runs/summon-c"
+        ]
+      }
     ]
   }
 }

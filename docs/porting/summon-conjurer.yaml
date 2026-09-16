@@ -1,0 +1,364 @@
+# Real conjurer campaign: guide entry, summon a bat, command menus and banishment.
+# Keep con01a.map present: the campaign availability check requires it.
+# Pointer input uses the 1280x960 X window; gameplay renders at 1024x768.
+steps:
+- action: click
+  name: dismiss title
+  x: 320
+  y: 240
+  dt: 300
+- action: click
+  name: solo
+  x: 480
+  y: 220
+  dt: 100
+- action: click
+  name: new game
+  x: 360
+  y: 760
+  dt: 100
+- action: click
+  name: conjurer
+  x: 640
+  y: 260
+  dt: 100
+- action: click
+  name: accept class
+  x: 640
+  y: 820
+  dt: 30
+- action: click
+  name: accept appearance
+  x: 460
+  y: 760
+  dt: 100
+- action: screen
+  name: chapter_frame_1
+  dt: 1
+- action: screen
+  name: chapter_frame_5
+  dt: 4
+- action: screen
+  name: chapter_frame_10
+  dt: 5
+- action: screen
+  name: chapter_frame_15
+  dt: 5
+- action: screen
+  name: chapter_frame_20
+  dt: 5
+- action: screen
+  name: chapter_frame_30
+  dt: 10
+- action: click
+  name: dismiss chapter
+  x: 640
+  y: 480
+  dt: 470
+- action: screen
+  name: gameplay
+  dt: 300
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 59
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 59
+    pressed: false
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 46
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 46
+    pressed: false
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 35
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 35
+    pressed: false
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 18
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 18
+    pressed: false
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 30
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 30
+    pressed: false
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 20
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 20
+    pressed: false
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 57
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 57
+    pressed: false
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 31
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 31
+    pressed: false
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 30
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 30
+    pressed: false
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 34
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 34
+    pressed: false
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 18
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 18
+    pressed: false
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 28
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 28
+    pressed: false
+- action: screen
+  name: sage_result
+  dt: 30
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 59
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 59
+    pressed: false
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 48
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 48
+    pressed: false
+- action: screen
+  name: conjurer_book
+  dt: 30
+- action: click
+  name: close captain dialogue
+  x: 970
+  y: 940
+  dt: 20
+- action: click
+  name: creature guide tab
+  x: 342
+  y: 600
+  dt: 20
+- action: screen
+  name: creature_guide
+  dt: 30
+- action: click
+  name: first creature entry
+  x: 104
+  y: 585
+  dt: 1
+- action: screen
+  name: creature_detail
+  dt: 80
+- action: raw
+  dt: 1
+  ev:
+    type: move
+    pos:
+      x: 104
+      y: 600
+- action: raw
+  dt: 1
+  ev:
+    type: button
+    button: 0
+    pressed: true
+- action: raw
+  dt: 15
+  ev:
+    type: move
+    pos:
+      x: 546
+      y: 928
+- action: raw
+  dt: 2
+  ev:
+    type: button
+    button: 0
+    pressed: false
+- action: screen
+  name: summon_slot
+  dt: 30
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 48
+    pressed: true
+- action: raw
+  dt: 1
+  ev:
+    type: key
+    key: 48
+    pressed: false
+- action: click
+  name: begin summoning
+  x: 546
+  y: 928
+  dt: 1
+- action: click
+  name: summon location
+  x: 820
+  y: 500
+  dt: 1
+- action: screen
+  name: summoning
+  dt: 30
+- action: screen
+  name: summoned
+  dt: 180
+- action: click
+  name: all creatures command menu
+  x: 1210
+  y: 40
+  dt: 1
+- action: screen
+  name: creature_commands
+  dt: 30
+- action: click
+  name: order guard
+  x: 1210
+  y: 40
+  dt: 1
+- action: screen
+  name: guard_order
+  dt: 30
+- action: click
+  name: select summoned bat
+  x: 1185
+  y: 73
+  dt: 1
+- action: screen
+  name: bat_commands
+  dt: 30
+- action: raw
+  dt: 10
+  ev:
+    type: move
+    pos:
+      x: 820
+      y: 500
+- action: click
+  name: open all creatures menu again
+  x: 1210
+  y: 40
+  dt: 1
+- action: screen
+  name: banish_menu
+  dt: 10
+- action: click
+  name: banish summoned bat
+  x: 1210
+  y: 9
+  dt: 1
+- action: screen
+  name: banish_early
+  dt: 5
+- action: screen
+  name: cage_closed
+  dt: 90
+- action: quit
+  dt: 20

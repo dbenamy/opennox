@@ -1,0 +1,96 @@
+{
+  "binary_sha256": "8aa333a8780268083eb77d527927b2cd1191c621ebc52e1c32c1b32c292142c2",
+  "scenario": "docs/porting/summon-conjurer.yaml",
+  "scenario_sha256": "a73677717f8dc25beea0570ee4931d9cc266e58ca4e272aeb7b0717cfedbee17",
+  "env": {
+    "NOX_DEV": "true"
+  },
+  "reference": "build/baseline/runs/summon-c",
+  "repeat": "build/baseline/runs/summon-c-repeat",
+  "capture_seconds": 66.57218835805543,
+  "repeat_seconds": 60.44645679183304,
+  "map_decompression": false,
+  "reason": "campaign availability requires con01a.map; separate warrior/flat scenarios cover expansion",
+  "frames": [
+    {
+      "name": "banish_early.png",
+      "sha256": "d03c6f8da27009772bc0692b2923a4c6fd528670838b2e059cf95c0fe451de63"
+    },
+    {
+      "name": "banish_menu.png",
+      "sha256": "ab81f6adaa9e7cdbee30379f6b7ca0a4545a4211175cd8f5d724b7ec2f4ec231"
+    },
+    {
+      "name": "bat_commands.png",
+      "sha256": "c519c8c68d51444963e64d7ad76ab420e518e4bd5b952587652b9f15e3eb8105"
+    },
+    {
+      "name": "cage_closed.png",
+      "sha256": "82770cc8a7b244fd3d14259c3c1cddadafe02c838f7315d6e5d13da0eb223a7e"
+    },
+    {
+      "name": "chapter_frame_1.png",
+      "sha256": "f56ce805b2e24d5a8decefc55c90d53c3ee5927d85a0e09ea8db3a119a94c843"
+    },
+    {
+      "name": "chapter_frame_10.png",
+      "sha256": "442da1c911a51b0a241bce88b7b691148806565eb63b95123681e51fb98636eb"
+    },
+    {
+      "name": "chapter_frame_15.png",
+      "sha256": "5a1f96d0b562cc2d9ee005c030710f863818c080e18baf63e780307fcecc695d"
+    },
+    {
+      "name": "chapter_frame_20.png",
+      "sha256": "7357a4bd5c1659950705c88467d44f7a145dd716a56c974c9845ad2fca06c6ba"
+    },
+    {
+      "name": "chapter_frame_30.png",
+      "sha256": "2ae047a5fa05395b43f5f7f9821b6767c6d4a19578640debd651ece6ced82ca4"
+    },
+    {
+      "name": "chapter_frame_5.png",
+      "sha256": "dc95dfdcd7f63eaf6298f79455772e3581df13e8134e8710e05c460b797a2938"
+    },
+    {
+      "name": "conjurer_book.png",
+      "sha256": "20584c9f11733ae65f2ee985142f98b99cbeeee35d7e4c34f7200d6ed27ac923"
+    },
+    {
+      "name": "creature_commands.png",
+      "sha256": "80009e9f6dc85bda68cf4e1fc1544e051793d80e9434d3397f03acb5a2efec49"
+    },
+    {
+      "name": "creature_detail.png",
+      "sha256": "0fb227ae40787e3659fa27ebf809645209675b626a247cfb1c711146cdc2fc21"
+    },
+    {
+      "name": "creature_guide.png",
+      "sha256": "710e5bf86851e569e6038e067a6e4d67f4750c4c423418ec03de41e0b8b21117"
+    },
+    {
+      "name": "gameplay.png",
+      "sha256": "eec5f57616a66aa047e8e87a8885a72658b7301d3f0bc30da6aaacde4f1291f2"
+    },
+    {
+      "name": "guard_order.png",
+      "sha256": "6be4d87eecb5e5291279a6188698ccb121db5ba8e3e232a549f6f23ae63f8ab8"
+    },
+    {
+      "name": "sage_result.png",
+      "sha256": "ee5ef4deba83747578143354084970a5dd88c7de25a07ef286e0a556fdd6379d"
+    },
+    {
+      "name": "summon_slot.png",
+      "sha256": "e5ff6799f2c083e5efaa6e147b5d3a3b7356d6527d40b86475b195668dae4154"
+    },
+    {
+      "name": "summoned.png",
+      "sha256": "55e8474e30526d867676d172408da3d2c670b90ef7dab9be78c7d865be41218f"
+    },
+    {
+      "name": "summoning.png",
+      "sha256": "ea7c877e38f75b1e4921cc21e5b068c0b673b95980a993e2aefb7fc4a27702ea"
+    }
+  ]
+}
