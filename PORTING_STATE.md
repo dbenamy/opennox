@@ -9,23 +9,35 @@ effort. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — minimap complete; world-wall baseline next
+## Current — world-wall C baseline development
 
-Minimap C baseline **475aec11** is committed/pushed. Go conversion is fully
-qualified: **1,599 frozen results unchanged**, 209/208/209 affected roots
-(default/server/highres) completed, all production builds and 21-symbol retirement
-audit passed. Full-assets exactly matches 1,553 known failures / 15 pass / 3 fail / 32
-skipped packages. Twelve fresh minimap/chapter frames match, updates false.
-Source fingerprints unchanged throughout. **76,382 C lines / 91 files / zero reference
-C**, down 738. See [MINIMAP.md](docs/porting/MINIMAP.md).
+Minimap conversion **33e4247c** and C baseline **475aec11** are committed/pushed.
+It removes738 C lines /17 routines: **76,382 /91 files /zero reference C** remain.
+All1,599 frozen results match in all3 targets; 209/208/209 affected roots, production
+builds/ABI, exact known failure set and12 fresh gameplay frames qualified. See
+[MINIMAP.md](docs/porting/MINIMAP.md).
 
-All readers joined. This checkpoint completes the qualified minimap conversion.
-Continue with the proposed world-wall rendering/visibility batch: eight routines /
-580 function-block lines. Read-only scope/caller audit is in build/port-world-walls.
-No new baseline fixtures or production changes for that batch yet. Actual wall
-sprite/edge/light owners need inspection before choosing the C cases.
-Minimap apply/freeze/finalize scripts are completed; do not rerun. No question
-pending. Continue autonomously one connected chunk at a time.
+Applied world-wall C fixtures; production remains unchanged. Scope expanded to
+**nine routines /620 function-block lines**, including the private image-interval
+helper whose only caller is the wall renderer. See WORLD_WALLS.md. Development-a
+passed three roots in188.398s (5,104 records). Pixel buffer is now pinned for the
+real C row table lifetime; its old hashes remain exact. Development-b passed five
+roots in22.695s (5,668 records); development-c passed seven roots in22.506s (5,778
+records), adding real FOV/visibility, variant/light-gradient/clip and nil-wall cases.
+
+Development-d passed eight roots in 187.251s. Frozen **6,262 C records / eight groups**
+(default/highres), **5,734 / seven** on server, with client-only FOV excluded.
+C qualification completed **246 / 244 / 246 roots** in **131.375 / 213.129 / 135.790s**;
+all selected roots started/completed with the expected prerequisite skip, and all
+applicable hashes match. Exact production fingerprints match 33e4247c, supporting
+reuse of its builds/full-assets/twelve-frame gameplay. No readers active.
+
+Commit/push this qualified baseline, then apply the reviewed ignored Go drafts via
+build/port-world-walls/apply-native.py and qualify against unchanged expectations.
+Expected removal is 624 physical C lines (620 function blocks plus four unused
+translation-unit declarations); verify after application. No production port yet.
+All fixture stages are applied/stale. No question pending. Minimap scripts are
+complete and must never be rerun. Continue autonomously.
 
 The last full accumulated milestone was briefing-window 0b3ed13d; highres root
 598.823s means the next complete-corpus run needs a longer explicit timeout.

@@ -20,8 +20,10 @@ minimap batch removes **738 C lines / 17 routines**; all **1,599 frozen results*
 match in all three targets. Affected tests, production builds/ABI, exact known
 failure comparison and twelve fresh gameplay frames passed. About **76k C lines
 remain: 76,382 physical lines in 91 files**, with zero test-reference C.
-Next candidate: world-wall rendering, viewport projection and drawable visibility,
-**eight routines / 580 C function-block lines**, starting with real-owner C fixtures.
+Active: world-wall rendering, viewport projection, drawable visibility and a
+private image-interval helper, **nine routines / 620 C function-block lines**.
+Frozen C fixtures cover **6,262 records** in client targets and **5,734** on server
+(the actual field-of-view clipper is client-only).
 See [the minimap report](docs/porting/MINIMAP.md) and [PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.
