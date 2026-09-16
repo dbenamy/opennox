@@ -2,41 +2,44 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 71k lines** — exactly **71,252 physical lines** in
-90 production `.c` files, zero reference C. Latest map decoder conversion:
-**−969 C lines**; two-round trial total **−1,290**. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 69k lines** — exactly **69,342 physical lines** in
+88 production `.c` files, zero reference C. Latest complete map compressor:
+**−1,910 C lines**. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — revised process accepted; successive batches resumed
+## Current — complete map compressor qualified; continue next batch
 
-Round 1: client audio-definition readers, C baseline **06a35720**, Go **0b3cbe58**,
-qualification **5ed10356**. 321 C lines removed; 1,433 frozen records; all 51
-affected roots in three targets, builds/ABI, exact known failures and 26 frames.
+C baseline **3ee3d454**, Go implementation **2699f7fc**. All 15 focused codec roots
+pass in default/server/highres, including frozen outputs, all 50 shipped compressed
+maps and independent length/distance/block/file contracts. Three production builds
+and ABI pass, known full-suite failures remain exactly 1,553, and both gameplay
+modes regenerate the warrior map exactly and match all 26 reference frames.
 
-Round 2: complete map decoder, C baseline **5a714a00**, Go **0615e830**. 969 C
-lines removed; all 174 frozen records and nine package roots pass in each target.
-Builds/ABI and exact known failures pass; both gameplay modes force actual map
-expansion and match original map bytes plus all 26 reference frames. Complete
-accumulated corpus in default/server/highres passes; only the existing opt-in
-map-population prerequisite diagnostic is skipped in each target. See
-[MAP_DECOMPRESSION.md](docs/porting/MAP_DECOMPRESSION.md) and the local
-`build/port-map-decompression/{native-final,milestone}` reports.
-All readers joined; source stayed unchanged during validation. This checkpoint
-records the final qualification and assessment. The user has accepted the new
-process and authorized continued batches; there is no scheduled review pause.
+The complete accumulated corpus passes all three targets; only the existing opt-in
+map-population prerequisite diagnostic is skipped. See
+[MAP_COMPRESSION.md](docs/porting/MAP_COMPRESSION.md) and local reports under
+`build/port-map-compression/native-loop-final` and `milestone-bounded-*`.
+All corpus readers joined; source stayed unchanged through those checks. Final
+review corrected the compressor loop to advance by the actual last chunk, avoiding
+int overflow near the 386 size limit. Fresh affected/production gates passed
+under `build/port-map-compression/native-loop-final`, with both scenarios matching
+all map bytes and frames. Those readers also joined. The full corpus above covers
+the prior wrapper loop; the final localized correction passed all 15 codec roots
+in every target. Continue the next batch now.
 
-C remaining **71,252 /90 files /zero reference C**. No product question blocks
-implementation. Active batch: complete NXZ map compressor and allocation helpers. C baseline
-**3ee3d454** is pushed; Go passes focused frozen/independent contracts. Production builds/ABI, exact known failures and both gameplay modes pass.
-Initial full-corpus attempt hit 386 address-space exhaustion in an older fixture;
-rerunning with a recorded 768 MiB Go memory limit. Milestone gate pending. Working size **69,342 /88 files /zero reference C**
-(−1,910); the top count remains the last qualified size until those gates finish.
-See [PROCESS_TRIAL.md](docs/porting/PROCESS_TRIAL.md) for measured results,
-limitations and recommendations.
-All ignored preparation/freeze/apply/finalize scripts for these rounds are stale.
-Preserve original assets/archive. Continue under PORT.md, recording notable issues
-and reversible decisions for later user review. See [MAP_COMPRESSION.md](docs/porting/MAP_COMPRESSION.md) for active evidence.
+Review notes: bounded empty/oversized-file behavior, observed compressor timing,
+separating optional cleanup from validation (**a2fc6ae5**), and the test driver's
+recorded 768 MiB Go memory limit (**fd976cf1**). Original failed attempts remain
+visible; successful reruns supply the qualification. Seventeen tooling tests pass.
+
+Next: [map catalog and rotation](docs/porting/MAP_CATALOG.md). Ignored drafts under
+`build/port-map-catalog` are uncompiled and unfrozen; read AUDIT.md before using.
+The audit identified a zero-eligible-candidate quest-selection bug requiring the
+recorded reversible C prerequisite correction before freezing that baseline.
+
+Continue under PORT.md without a scheduled pause. Preserve original assets/archive.
+Compressor finalization scripts are now stale; do not rerun applied scripts.
 
 <!-- /current-checkpoint -->
 

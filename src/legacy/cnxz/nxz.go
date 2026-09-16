@@ -81,8 +81,11 @@ func CompressFile(src, dst string) error {
 	}
 	encoder := newMapEncoder()
 	var dbuf []byte
-	for i := 0; i < srcSz; i += 500000 {
-		dbuf = append(dbuf, encoder.block(sbuf[i:], min(srcSz-i, 500000))...)
+	for i := 0; i < srcSz; {
+		n := min(srcSz-i, 500000)
+		dbuf = append(dbuf, encoder.block(sbuf[i:], n)...)
+		// Advancing by the final partial chunk cannot overflow the source size.
+		i += n
 	}
 
 	w, err := ifs.Create(dst)

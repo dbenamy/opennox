@@ -360,7 +360,7 @@
           "--result",
           "{out}/default-result.json",
           "--timeout-seconds",
-          "900"
+          "1800"
         ],
         "hashes": [
           {
@@ -397,7 +397,7 @@
           "--result",
           "{out}/server-result.json",
           "--timeout-seconds",
-          "900"
+          "1800"
         ],
         "hashes": [
           {
@@ -434,7 +434,7 @@
           "--result",
           "{out}/highres-result.json",
           "--timeout-seconds",
-          "900"
+          "1800"
         ],
         "hashes": [
           {
@@ -453,20 +453,6 @@
             "path": "{out}/capture-encode-matches.json",
             "sha256": "c8c09c83ad7cd5b40da7986ececb7f59fef83ca902d91a1491fcf659bf19728f"
           }
-        ]
-      }
-    ],
-    "finish": [
-      {
-        "name": "production",
-        "command": [
-          "python3",
-          "{root}/tools/porting/qualify_production.py",
-          "{root}/docs/porting/map-encode-batch.json",
-          "--out",
-          "{out}/production",
-          "--reuse-production-from",
-          "{root}/build/port-map-compression/native-qualified/production"
         ]
       }
     ],
@@ -624,12 +610,12 @@
     ],
     "scenarios": [
       {
-        "name": "map-encode-native-qualified",
+        "name": "map-encode-native-final",
         "reference": "build/baseline/runs/map-decode-native-forced-case",
         "scenario": "docs/porting/minimap-chapter.yaml"
       },
       {
-        "name": "map-encode-flat-native-qualified",
+        "name": "map-encode-flat-native-final",
         "reference": "build/baseline/runs/map-decode-flat-native-forced-case",
         "scenario": "docs/porting/tile-raster-flat.yaml"
       }

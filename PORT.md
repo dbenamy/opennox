@@ -14,16 +14,18 @@
 
 ## Current status
 
-The two-round process trial is complete and the user has adopted its revised
-process. Continue successive qualified batches without a scheduled pause. Client audio
-asset readers and the complete map decoder are converted, removing **1,290 C
-lines** in total. About **71k C lines remain: 71,252 physical lines in 90 files**,
-with zero reference C. Both rounds pass their affected tests, all production
-builds/ABI, exact known failures and reference gameplay. The map round additionally
-forces production map decompression and completes the accumulated corpus in all
-three variants. See [PROCESS_TRIAL.md](docs/porting/PROCESS_TRIAL.md),
-[MAP_DECOMPRESSION.md](docs/porting/MAP_DECOMPRESSION.md) and
-[PORTING_STATE.md](PORTING_STATE.md) for evidence and reflection.
+The revised process is adopted: continue successive qualified batches without a
+scheduled pause. The complete NXZ map codec is now Go-owned. The latest compressor
+batch removed **1,910 C lines**, leaving about **69k: 69,342 physical lines in 88
+files**, with zero reference C. Focused tests, three production builds/ABI, exact
+known failures, forced map expansion and the complete accumulated corpus pass.
+See [MAP_COMPRESSION.md](docs/porting/MAP_COMPRESSION.md),
+[PROCESS_TRIAL.md](docs/porting/PROCESS_TRIAL.md) and
+[PORTING_STATE.md](PORTING_STATE.md) for evidence and review notes.
+
+The test driver now bounds Go heap growth after a 386 address-space exhaustion;
+optional asset cleanup runs separately from gameplay validation. Both issues and
+successful reruns are documented. Next: [map catalog and rotation](docs/porting/MAP_CATALOG.md).
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.
 
@@ -193,13 +195,13 @@ source it in **every shell that invokes Go**:
 
 ```bash
 source build/baseline/env.sh
-python3 tools/porting/run_tests.py \
-  --pattern-file docs/porting/accumulated-test-pattern.txt \
-  --tags porttest \
-  --log build/port-check.jsonl \
-  --result build/port-check-result.json
+python3 tools/porting/run_batch.py docs/porting/map-encode-batch.json \
+  --phase milestone --out build/port-check
 python3 tools/porting/c_loc.py
 ```
+
+Use a fresh output directory. The batch manifest supplies the asset environment
+and explicit package selections for all three targets.
 
 The helper configures `GOARCH=386 GO386=sse2 CGO_ENABLED=1`, GCC/G++, i386
 pkg-config paths and ignored Go caches. Preserve the qualified toolchain when

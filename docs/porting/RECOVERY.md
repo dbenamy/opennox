@@ -124,19 +124,27 @@ matched. Save/load compatibility still needs a dedicated check.
 The current accumulated selection is tracked in
 `docs/porting/accumulated-test-pattern.txt`. Keep it as one nonempty line: the
 runner rejects malformed patterns and zero selection, and requires each selected
-root test to run and complete. With the environment above configured, run from
-the repository root:
+(package, test) pair to run and complete. With the environment above configured, run from
+the repository root. Required asset fixture variables are declared in each batch
+manifest; for the complete current corpus, prefer the latest qualified manifest's
+milestone phases so those variables are supplied together. The direct command
+below assumes that asset environment has already been set:
 
 ```bash
 GOMAXPROCS=2 python3 tools/porting/run_tests.py \
   --pattern-file docs/porting/accumulated-test-pattern.txt \
+  --package ./... \
+  --timeout-seconds 1800 \
   --tags porttest \
   --log build/recovery/logs/ports-standard.jsonl \
   --result build/recovery/logs/ports-standard-result.json
 ```
 
 Use `--tags porttest,server` and `--tags porttest,highres` with distinct log/result
-paths for the other variants. One optional `TestMapPopulationPrerequisiteProbe`
+paths for the other variants. The driver defaults to `GOMEMLIMIT=768MiB` and
+records the effective runtime settings; this bounds heap growth
+after an observed 386 address-space exhaustion in a long accumulated process. Explicit
+environment overrides are preserved. One optional `TestMapPopulationPrerequisiteProbe`
 is intentionally skipped unless explicitly enabled; the fixture's actual
 regression contracts run separately. Preserve that distinction when reporting
 selected/completed versus passing test counts.
