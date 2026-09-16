@@ -1,9 +1,9 @@
 # Spellbook UI — next batch audit
 
-Status: the preceding shared-list owner is fully qualified, with all readers
-joined. No spellbook source or tests are installed or frozen yet. Starting C:
-68,597 lines in 88 files, zero reference C. The ignored audit/facade drafts under
-`build/port-book` are preparation, not a completed implementation.
+Status: C baseline development; production unchanged. Nine roots pass
+with no skips (`c-render-owner`, 122.493 seconds); reward and animation
+coverage is being expanded. No capture is frozen. Starting C: 68,597 lines in
+88 files, zero reference C.
 
 Selected scope: GAME2.c from 0045ABC0 through 0045D9B0, plus all five function
 bodies in client__gui__guibook.c. This is 36 functions / 1,745 C block lines:
@@ -54,7 +54,7 @@ ImageRef animations, then creates the real book/child/arrow/icon windows. Use
 separate owned ImageRefAnim records; copying only ImageRef aliases the mutable
 OnEnd callback/timing state. Preserve every early image failure's partial globals.
 The shared player arrays from objectRenderOwner are suitable; explicitly bind the
-book's player pointer and restore all 28 named globals, vector and blob regions.
+book's player pointer and restore all 32 named globals, vector and blob regions.
 Destroy owned windows before freeing image references or restoring old globals.
 
 Sort-list special/hidden spell flags can make a synthetic special-count exceed the
@@ -65,10 +65,9 @@ page geometry (the divisor is 2*(141/(fontHeight+2))-2). Preserve duplicate-name
 ordering observed in C. The existing string comparator/normalizer remains a live
 owner; do not replace byte/UTF16 semantics with broad Unicode transformations.
 
-facade.go.draft was generated for all 36 actual C calls, callback identities,
-28 global-word addresses and the two-float animation vector. It is not installed,
-compiled, or a fixture owner yet. draft-facade.py is a regenerating draft helper;
-read the installed source rather than rerunning it once integration begins.
+The installed facade exposes all 36 actual C calls, callback identities, 32 named
+word addresses and the two-float animation vector. Ignored facade generators and
+drafts are stale; do not rerun them over the reviewed installed source.
 
 The actual startup guide-family table at blob587000 offset132100 is
 [24,7,8,25,26,0], followed by the pointer at132124 to that row and a null terminator
@@ -84,3 +83,41 @@ facade has been enhanced; draft-facade.py is now stale and would overwrite those
 additions. Bind players[0].Active/NetCodeVal and the local ID together to exercise
 the actual active-player lookup in ability rewards. Only normalize pointer fields,
 not arbitrary scalar/float bit patterns that happen to resemble an address.
+
+Initial fixture evidence: `c-initial` failed before test discovery because the
+local-player ID declaration used a cgo-inconsistent integer typedef; the actual
+C declaration is unsigned int. After correction, `c-owner` passed all three roots
+in 106.334 seconds. Initialization covers success and all thirteen missing resources;
+the path contract covers 18 boundary/coordinate cases with independent float32
+word expectations. Palette setup has its own root.
+
+`c-sorting` exposed an incorrect fixture assumption about font height. The actual
+renderer uses cap height: the selected font gives 11 pixels, a 13-pixel row and
+18 entries per page. Corrected boundary inputs and expectations pass all four
+roots in `c-sorting-capheight` (22.903 seconds). Spell sorting covers 198 cases,
+including empty/max tables, hidden/special entries, duplicate names and game modes.
+These are unfrozen development captures. No production correction was needed.
+All applied initial/sorting scripts are stale.
+
+Further unfrozen coverage: `c-metadata` passes five roots in 22.778 seconds,
+adding 144 guide/ability list cases using actual metadata owners. `c-pages`
+passes six roots in 32.455 seconds, including sequential forward/backward turns,
+contents/detail transitions, direct selection and animation guards. Snapshots now
+include known-entry arrays, capture/focus and decoded pixel hashes. Rendering,
+visibility and rewards remain under development; this is not a complete baseline.
+
+Recovery checkpoint: `c-render-owner` passes all nine selected roots without skips
+in 122.493 seconds. This includes 1,182 page-transition records, 40 visibility
+records, 30 rendering records and 120 spell-family knowledge cases. The rendering
+fixture uses actual text/image drawing with wrapped names/descriptions, three
+classes, guide/spell/ability pages and size variants. Full original-asset and
+animation qualification is still outstanding; captures are deliberately unfrozen.
+
+Development failures remain preserved. `c-visibility` selected the book itself
+when looking for another capture window; the test now uses its known arrow child.
+`c-render` found the tiny fixture images entirely clipped at the default book
+position; the test moves the real window onscreen. `c-render-position` then exposed
+a missing server backlink in the lightweight spell owner during mana-cost lookup;
+`PortTestBookSpellOwner` connects the actual owner and restores it afterward.
+No production bug was found or corrected in these attempts. The complete nine-root
+run includes every test omitted after that earlier rendering panic.

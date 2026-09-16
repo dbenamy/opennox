@@ -24,13 +24,20 @@ joined. See [LISTS.md](docs/porting/LISTS.md) for timings and the rejected initi
 multiline-pattern launches, which ran no tests and remain preserved.
 
 Next: [spellbook UI](docs/porting/SPELLBOOK.md), a connected 36-function / 1,745-line
-scope spanning GAME2.c and client__gui__guibook.c. The audit and C-call facade draft
-are under `build/port-book`; no book source or tests are installed or frozen yet.
-Use the actual GUI/font/image/player/metadata owners, nonempty page pixels and
-independent list/page/lifecycle/reward/animation contracts before freezing C.
-The facade draft was manually enhanced; its generator is stale and would erase
-those additions. Complete the fixture owner rather than treating the draft as
-qualified source.
+scope spanning GAME2.c and client__gui__guibook.c. C baseline development is
+saved in source: nine roots pass with no skips (`build/port-book/c-render-owner`,
+122.493 seconds). Coverage includes resource failures, spell/guide/ability sorting,
+1,182 page-transition records, visibility/capture, actual rendering, spell-family
+knowledge and path-buffer boundaries. Captures remain unfrozen. No production
+implementation changed. Next: guide-family rewards/removal, remaining window
+interactions and quickbar addition animation, then shipped-asset rendering/replay
+and repeat/all-target C qualification. Current readers are joined.
+
+The lightweight GUI fixture required the real spell owner's server backlink for
+mana-cost rendering. Tiny test images need an onscreen book position. These are
+fixture corrections, not production changes. All ignored facade/initial/sorting/
+render/reward drafts already installed are stale; use reviewed source. The pending
+`guide.go.draft` is only preparation, not installed coverage.
 
 Continue under PORT.md without a scheduled pause. Preserve original assets/archive.
 All applied list/catalog/compressor scripts are stale; do not rerun them.
