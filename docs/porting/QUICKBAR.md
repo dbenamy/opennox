@@ -85,3 +85,36 @@ corrected baseline. C LOC is unchanged at 66,811.
 This prerequisite has focused validation. The connected batch's server/highres,
 production, gameplay and accumulated checks remain pending. The quickbar port
 itself has not yet begun.
+
+## Further fixture findings
+
+The first direct slot-event candidate correctly failed because the metadata
+fixture supplied valid definitions but did not enable them; live quickbar input
+checks Enabled independently. Enable the actual spell definitions for the
+successful-drag cases. With this fixture correction, all 150 slot-event records
+pass. The 50 saved-spell-row records pass exact byte and independent round-trip
+contracts, including signed nonpositive dimensions and preserving upper flag bytes.
+
+The timed-selection candidate initially assumed saturated presses keep refreshing
+the timeout. Original C does not: with half-rate gaps the observed/required rows
+are 0,1,2,3,4,4,0,1. The test now explicitly preserves that sequence. On ordinary
+reachable sequences the row pointer stays consistent even though the saturated
+branch does not rewrite it; no production change is warranted for this branch.
+
+The lifecycle candidate adds actual creation, hiding/showing and destruction
+across two widths, all three player classes, missing-player and game-mode cases.
+It restores the production startup ability records and image suffix rather than
+inventing their contents. The remaining rendering/asset, trap, cross-row input
+and saved-ability coverage must still be completed before conversion.
+
+All twelve current roots pass without skips (c-lifecycle2, 33.913 seconds),
+covering **1,464 records**. The constructor's missing-player contract required
+collecting the fixture's already-created windows before measuring newly created
+ones; production C was unchanged. Current captures are recorded in
+quickbar-captures.json and asserted by their respective tests. This is a recovery
+checkpoint; final repeated/default/server/highres qualification awaits the rest
+of the connected baseline coverage.
+
+The quickbar-warrior scenario is undergoing a coordinate pilot using the already
+qualified spellbook binary. That pilot is not the final C reference: the latter
+will use a fresh binary including the saved-row correction.

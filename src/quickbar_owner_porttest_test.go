@@ -98,6 +98,7 @@ func (q *quickbarOwner) snapshot(label string, ret uint32) quickbarResult {
 			r.Region[ix] = q.normalize(r.Region[ix])
 		}
 	}
+	r.Region[(1049528-1047548)/4] = q.normalize(r.Region[(1049528-1047548)/4])
 	r.Region[(1049684-1047548)/4] = q.normalize(r.Region[(1049684-1047548)/4])
 	for k, v := range inputKeyTimeoutsOld {
 		r.Timeouts[k] = v

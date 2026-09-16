@@ -30,7 +30,7 @@ The native conversion is fully qualified on unchanged source:
   exactly: `spellbook-native` and `spellbook-flat-native`. The book replay includes
   19 preserved frames with nonempty pages and navigation.
 
-All readers are joined. See [SPELLBOOK.md](docs/porting/SPELLBOOK.md) for the
+All spellbook qualification readers are joined. See [SPELLBOOK.md](docs/porting/SPELLBOOK.md) for the
 palette-storage correction during translation, the additional original-C release
 coverage, and the preserved quest-mode difference between icon drawing and pressing.
 No original frozen capture changed. The temporary C oracle can be removed after
@@ -41,7 +41,17 @@ Quickbar audit selected 87 connected functions / 2,457 physical C lines.
 Baseline work is in progress in the new quickbar porttest files, extending the
 existing real quickbar/book/GUI/input/particle owners. Production quickbar C is
 unchanged. See [QUICKBAR.md](docs/porting/QUICKBAR.md) for scope, pending coverage
-and the saved-row/timed-selection behavior requiring review. Keep the current book frames
+and the saved-row/timed-selection behavior requiring review.
+
+Quickbar original prerequisite **fdc5048e** is pushed (949 records / seven roots).
+Saved-row prerequisite correction **b872d272** changes one C read; all seven roots
+pass and six unrelated capture hashes stay exact. The quickbar conversion is not
+yet implemented; full batch qualification remains pending. All 12 current direct roots pass (1,464 records;
+build/port-quickbar/c-lifecycle2, 33.913 seconds). Those readers are joined.
+The gameplay coordinate pilot is running as quickbar-pilot using the earlier
+qualified spellbook binary; it is not the final C reference.
+Production C LOC is unchanged. Ignored test drafts are development aids, not
+authoritative state. Keep the current book frames
 as its gameplay reference and use larger coherent batches where dependencies allow.
 The accumulated pattern includes spellbook; the last full accumulated milestone
 was shared lists, before this book conversion. Use the next connected UI milestone

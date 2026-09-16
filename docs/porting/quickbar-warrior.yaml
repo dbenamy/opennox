@@ -1,0 +1,282 @@
+# Original-C spellbook reference; fresh solo warrior game and real book input.
+# Gameplay is 1024x768; pointer inputs use the 1280x960 X window (scale 1.25).
+steps:
+  - action: click
+    name: dismiss title
+    x: 320
+    y: 240
+    dt: 300
+  - action: click
+    name: solo
+    x: 480
+    y: 220
+    dt: 100
+  - action: click
+    name: new game
+    x: 360
+    y: 760
+    dt: 100
+  - action: click
+    name: warrior
+    x: 320
+    y: 260
+    dt: 100
+  - action: click
+    name: accept class
+    x: 640
+    y: 820
+    dt: 30
+  - action: click
+    name: accept appearance
+    x: 460
+    y: 760
+    dt: 100
+  - action: screen
+    name: chapter_frame_1
+    dt: 1
+  - action: screen
+    name: chapter_frame_5
+    dt: 4
+  - action: screen
+    name: chapter_frame_10
+    dt: 5
+  - action: screen
+    name: chapter_frame_15
+    dt: 5
+  - action: screen
+    name: chapter_frame_20
+    dt: 5
+  - action: screen
+    name: chapter_frame_30
+    dt: 10
+  - action: click
+    name: dismiss chapter
+    x: 640
+    y: 480
+    dt: 470
+  - action: screen
+    name: gameplay
+    dt: 300
+  - action: click
+    name: close captain dialogue
+    x: 970
+    y: 940
+    dt: 20
+  - action: walk
+    name: short walk
+    ang: 0.7
+    dt: 30
+  - action: screen
+    name: after walk
+    dt: 40
+  # Existing developer game command grants warrior abilities for nonempty pages.
+  # Run this scenario with NOX_DEV=true.
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 59, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 59, pressed: false}
+  - action: screen
+    name: console_open
+    dt: 30
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 46, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 46, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 35, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 35, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 18, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 18, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 30, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 30, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 20, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 20, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 57, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 57, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 31, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 31, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 25, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 25, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 18, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 18, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 38, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 38, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 38, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 38, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 31, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 31, pressed: false}
+  - action: screen
+    name: console_command
+    dt: 30
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 28, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 28, pressed: false}
+  - action: screen
+    name: console_result
+    dt: 30
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 59, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 59, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 48, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 48, pressed: false}
+  - action: screen
+    name: book_contents
+    dt: 25
+  - action: click
+    name: first book entry
+    x: 104
+    y: 585
+    dt: 1
+  - action: screen
+    name: book_turn_early
+    dt: 1
+  - action: screen
+    name: book_turn_middle
+    dt: 5
+  - action: screen
+    name: book_detail
+    dt: 80
+  - action: click
+    name: next book entry
+    x: 310
+    y: 741
+    dt: 1
+  - action: screen
+    name: book_next
+    dt: 40
+  - action: click
+    name: previous book entry
+    x: 49
+    y: 741
+    dt: 1
+  - action: screen
+    name: book_previous
+    dt: 40
+  - action: raw
+    dt: 1
+    ev: {type: move, pos: {x: 104, y: 600}}
+  - action: raw
+    dt: 1
+    ev: {type: button, button: 0, pressed: true}
+  - action: raw
+    dt: 15
+    ev: {type: move, pos: {x: 546, y: 928}}
+  - action: raw
+    dt: 2
+    ev: {type: button, button: 0, pressed: false}
+  - action: screen
+    name: quickbar_charge_added
+    dt: 20
+  - action: click
+    name: next ability for quickbar
+    x: 310
+    y: 741
+    dt: 1
+  - action: wait
+    dt: 40
+  - action: raw
+    dt: 1
+    ev: {type: move, pos: {x: 104, y: 600}}
+  - action: raw
+    dt: 1
+    ev: {type: button, button: 0, pressed: true}
+  - action: raw
+    dt: 15
+    ev: {type: move, pos: {x: 594, y: 928}}
+  - action: raw
+    dt: 2
+    ev: {type: button, button: 0, pressed: false}
+  - action: screen
+    name: quickbar_two_abilities
+    dt: 20
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 48, pressed: true}
+  - action: raw
+    dt: 1
+    ev: {type: key, key: 48, pressed: false}
+  - action: raw
+    dt: 1
+    ev: {type: move, pos: {x: 546, y: 928}}
+  - action: raw
+    dt: 1
+    ev: {type: button, button: 0, pressed: true}
+  - action: raw
+    dt: 15
+    ev: {type: move, pos: {x: 594, y: 928}}
+  - action: raw
+    dt: 2
+    ev: {type: button, button: 0, pressed: false}
+  - action: screen
+    name: quickbar_swapped
+    dt: 20
+  - action: click
+    name: activate Eye of the Wolf
+    x: 546
+    y: 928
+    dt: 1
+  - action: screen
+    name: quickbar_activation
+    dt: 5
+  - action: screen
+    name: quickbar_cooldown
+    dt: 60
+  - action: quit
+    dt: 20
