@@ -25,7 +25,7 @@ func TestDecompress(t *testing.T) {
 		}
 		t.Run(fi.Name(), func(t *testing.T) {
 			mexp, mexpN := hashFile(t, mname)
-			gotc, gotcN := decompressC(t, zname)
+			gotc, gotcN := decompressFileForTest(t, zname)
 			require.Equal(t, mexpN, gotcN)
 			require.Equal(t, mexp, gotc)
 		})
@@ -51,7 +51,7 @@ func TestCompress(t *testing.T) {
 	}
 }
 
-func decompressC(t testing.TB, path string) (string, int) {
+func decompressFileForTest(t testing.TB, path string) (string, int) {
 	out, err := os.CreateTemp("", "nxzmap_*.map")
 	require.NoError(t, err)
 	defer func() {

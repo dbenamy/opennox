@@ -4,10 +4,6 @@ package cnxz
 #include <stdint.h>
 #include <stdlib.h>
 
-void* nxz_decompress_new();
-void nxz_decompress_free(void* p);
-int nxz_decompress(void* p, uint8_t* a2, int* a3, uint8_t* a4, int* a5);
-
 void* nxz_compress_new();
 void nxz_compress_free(void* p);
 int nxz_compress(void* a1p, uint8_t* a2p, uint8_t* a3p, int a4p);
@@ -43,36 +39,22 @@ func DecompressFile(src, dst string) error {
 	if err != nil {
 		return err
 	}
-	srcSz := int(fi.Size() - 4)
 	var buf [4]byte
-	if _, err = io.ReadFull(r, buf[:4]); err != nil {
+	if _, err = io.ReadFull(r, buf[:]); err != nil {
 		return err
 	}
-	dstSz := int(binary.LittleEndian.Uint32(buf[:]))
-
-	sbuf, sfree := alloc.Make([]byte{}, srcSz)
-	defer sfree()
-	_, err = io.ReadFull(r, sbuf)
-	if err != nil {
+	dstSize := binary.LittleEndian.Uint32(buf[:])
+	if uint64(dstSize) > uint64(^uint(0)>>1) || fi.Size()-4 > int64(^uint(0)>>1) {
+		return errors.New("nxz: file exceeds addressable size")
+	}
+	sbuf := make([]byte, int(fi.Size()-4))
+	if _, err = io.ReadFull(r, sbuf); err != nil {
 		return err
 	}
-
-	dbuf, dfree := alloc.Make([]byte{}, dstSz)
-	defer dfree()
-
-	sleft := srcSz
-	dleft := dstSz
-
-	ptr := C.nxz_decompress_new()
-	for sleft > 0 && dleft > 0 {
-		if C.nxz_decompress(ptr,
-			(*C.uchar)(unsafe.Pointer(&dbuf[dstSz-dleft])), (*C.int)(unsafe.Pointer(&dleft)),
-			(*C.uchar)(unsafe.Pointer(&sbuf[srcSz-sleft])), (*C.int)(unsafe.Pointer(&sleft)),
-		) == 0 {
-			break
-		}
+	dbuf := make([]byte, int(dstSize))
+	if err := newMapDecoder(sbuf).decode(dbuf); err != nil {
+		return err
 	}
-	C.nxz_decompress_free(ptr)
 
 	w, err := ifs.Create(dst)
 	if err != nil {

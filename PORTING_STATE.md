@@ -17,18 +17,15 @@ C remaining **72,221 /91 files /zero reference C**. All readers joined. Evidence
 build/port-client-audio-assets/native-qualified/result.json. See CLIENT_AUDIO_ASSETS.md.
 All audio preparation/freeze/apply/finalize scripts are stale once committed.
 
-Round 2 is in C-baseline qualification: full 969-line map decoder in legacy/cnxz.
-New decode_porttest_test.go covers 174 records (115 synthetic, all 50 real maps,
-nine hand-encoded block/history cases) plus file API contracts. The first run
-exposed the existing empty-compressor zero-allocation panic; tests use positive
-compression inputs. Asset enumeration was corrected to include three case-varying
-filenames. Native decoder/error/empty-output contracts remain unapplied drafts.
-Final repeated C qualification: build/port-map-decompression/c-final/result.json.
-Join the driver before applying apply-native.py, once. Earlier make-manifest and
-fixture-copy preparation scripts are stale; they contain earlier capture paths.
-Commit/push this baseline before replacement. See MAP_DECOMPRESSION.md and
-DECISIONS.md. Complete both round2 qualification and accumulated milestone, then
-PAUSE for reflection. Original assets/archive are unchanged.
+Round 2 baseline **5a714a00** is committed/pushed. Native decoder applied;
+first focused run passes all nine package roots, all 174 frozen records and
+new malformed/empty/frequency contracts in 4.613s including discovery/build.
+C currently **71,252 /90 files /zero reference C**. Implementation recovery
+checkpoint precedes three-target production/full-suite/forced-map gameplay and
+the complete accumulated-corpus milestone. Both must pass before round2 is done.
+All map preparation/freeze/apply scripts are stale; never rerun them.
+See MAP_DECOMPRESSION.md, DECISIONS.md and build/port-map-decompression.
+PAUSE after this round and the combined milestone for the requested reflection.
 
 Latest complete accumulated corpus: **642fba50**. New milestone uses explicit
 900s/package and ./... selection. No product decision pending.

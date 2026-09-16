@@ -62,3 +62,10 @@ File API checks are independent assertions, not additional frozen records.
 Final C qualification: default 4.061s, repeat 3.309s, server 3.538s, highres 3.418s.
 All six selected package roots (including existing codec asset tests) completed
 without skips; 174 frozen records matched on every run, with source unchanged.
+
+Go focused validation passes on its first run: nine package roots, all 174 frozen
+records, existing codec tests, and new malformed/empty/frequency contracts. The
+969-line C decoder is removed; 71,252 physical C lines remain in 90 files. No
+reference decoder C is retained. Whole-round and accumulated gates are pending.
+Observed real-map test time was 0.24s in the C repeat and 0.49s in the first Go
+run across all 50 files; these include file I/O and are not isolated benchmarks.
