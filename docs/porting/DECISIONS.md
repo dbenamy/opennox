@@ -1034,3 +1034,20 @@ The previous highres root took 598.823s under a 600-second timeout; expose a pos
 --timeout-seconds option (default 600 unchanged), record it in results and use 900
 for this larger milestone. Do not silently omit newer test families: the tracked
 complete pattern now includes wall-edge, tile raster and composition tests.
+
+## Floor/edge asset-reader compatibility and empty-table correction
+
+Port the connected definition, skip, image-binding and free helpers together.
+Before freezing C, make empty floor-definition binding return the existing
+missing-definition failure after reading the name. The original path used a
+pointer-derived index; the edge binder already rejects count zero. This three-line
+correction is narrow and reversible, with an independent cursor/no-mutation test;
+review it separately if changing loader error semantics later. Normal loading
+order initializes definitions first. Fresh C production qualification is required.
+
+Preserve the differing END consumption, partial failed-edge writes, C-string name
+termination/padding, format-byte behavior and five-byte edge allocation extent.
+Use the real startup facade strings/pointers and actual image resolver in tests;
+inline names currently resolve nil. Keep raw calloc/free ownership compatible,
+without retaining C reader algorithms solely for the oracle. Retire the now-unused
+width/height C adapters in the same Go batch, retaining their live Go owners.

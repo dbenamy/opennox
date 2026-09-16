@@ -801,6 +801,9 @@ int nox_thing_read_floor_485B30(nox_memfile* f, char* a2) {
 	*(uint32_t*)(v2 + 8) = v3 + 1;
 	nox_memfile_read(v22, 1u, (unsigned char)a1, v16);
 	v22[(unsigned char)a1] = 0;
+	if (nox_tile_def_cnt == 0) {
+		return 0;
+	}
 	int v7 = a1;
 	if (nox_tile_def_cnt > 0) {
 		int v5 = 0;

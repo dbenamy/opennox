@@ -2,28 +2,30 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 73k lines** — exactly **73,450 physical lines** in
-91 production `.c` files, with zero reference C. Latest tile-composition conversion:
-**−579 C lines**. Source size is not remaining effort; see [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 73k lines** — exactly **73,453 physical lines** in
+91 production `.c` files, with zero reference C. Qualified tile composition removed
+579 lines; the current asset-reader prerequisite adds three. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — tile-composition Go rendering milestone qualified
+## Current — floor/edge asset-reader C baseline qualified
 
-C baseline **6819d3ff** is committed/pushed. Go composition is fully qualified:
-all 3,096 records/six groups match in all three targets, complete accumulated corpus roots
-all finished under explicit 900s/package, three builds/ABI pass, exact known 1,553
-full-suite failures remain and normal 12+GUI flat-floor 14 frames match. C remaining:
-**73,450 /91 files /zero reference C**. All readers joined. See TILE_COMPOSITION.md
-and build/port-tile-composition/native-qualification.json. Commit/push conversion,
-then continue. All applied scripts/stages are stale; never rerun them.
+Tile composition **642fba50** is committed/pushed and remains the latest complete
+accumulated-corpus milestone (1,023/1,019/1,023 roots). The corrected floor/edge C
+baseline is fully qualified: 4,396 frozen records in seven groups repeat exactly
+in three targets; all affected roots, three builds/ABI, exact known 1,553 failures
+and fresh normal 12/flat 14 gameplay frames pass. C remaining: **73,453 /91 files**.
+See [FLOOR_ASSETS.md](docs/porting/FLOOR_ASSETS.md) and ignored
+build/port-floor-assets/c-qualification.json. All readers joined.
 
-Next: connected floor/edge asset readers, nine connected readers/helpers /510 C block lines. Scope audit and ignored fixture/implementation drafts are in build/port-floor-assets;
-none applied or executed. Use actual MemFile/definition/image
-owners, cursor/return/state contracts and real asset references. Reassess unsupported
-inputs before freezing; preserve the actual allocation/free lifecycle. No question
-pending. Original assets/archive unchanged. Current complete-corpus milestone is
-this tile-composition conversion; keep explicit 900s for future complete runs.
+Commit/push this C baseline, then apply the reviewed native draft using the guarded
+apply-native.py. prepare-c.py, review-tests.py and freeze-c.py are stale; never rerun.
+Native stage is not yet applied or qualified. Preserve golden expectations and
+qualify all affected targets/builds/ABI/full known failures and both replays.
+Next read-only candidate: seven things section skip functions /379 C block lines in
+build/port-thing-skips. No next-batch source edits applied.
+
+No question pending. Continue batches autonomously. Original assets/archive unchanged.
 
 <!-- /current-checkpoint -->
 

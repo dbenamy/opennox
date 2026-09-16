@@ -22,7 +22,10 @@ builds/ABI, exact known failures and 26 fresh gameplay frames qualify the render
 milestone. About **73k C lines remain: 73,450 physical lines in 91
 files**, with zero reference C. Next: connected floor/edge definition and image
 asset readers, nine connected readers/helpers /510 C block lines.
-See [TILE_COMPOSITION.md](docs/porting/TILE_COMPOSITION.md) and
+The asset readers now have a qualified **4,396-record C baseline**, including a
+three-line empty-definition correction; current C size is **73,453**.
+See [FLOOR_ASSETS.md](docs/porting/FLOOR_ASSETS.md),
+[TILE_COMPOSITION.md](docs/porting/TILE_COMPOSITION.md) and
 [PORTING_STATE.md](PORTING_STATE.md).
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.
