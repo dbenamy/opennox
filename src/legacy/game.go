@@ -44,7 +44,6 @@ void sub_4D22B0();
 void sub_4DBA30(int a1);
 int sub_48C980();
 void nox_console_sendSysOpPass_4409D0(wchar2_t* a1);
-char* nox_xxx_getSomeMapName_4D0CF0();
 int  nox_server_loadMapFile_4CF5F0(char* a1, int a2);
 int nox_xxx_mapLoadRequired_4DCC80();
 int  sub_4EF660(nox_object_t* a1p);
@@ -340,7 +339,7 @@ func Nox_xxx_sMakeScorch_537AF0(pos types.Pointf, a2 int) {
 }
 
 func Nox_xxx_getSomeMapName_4D0CF0() string {
-	return GoString(C.nox_xxx_getSomeMapName_4D0CF0())
+	return GoStringP(unsafe.Pointer(mapCycleNext()))
 }
 
 func Nox_server_gameSettingsUpdated_40A670() {

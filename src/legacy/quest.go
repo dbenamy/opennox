@@ -7,7 +7,6 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4_1.h"
 int  sub_51A920(int a1);
-void sub_4D10F0(char* a1);
 void sub_4F1F20();
 void sub_51A1F0(int a1);
 extern unsigned int nox_client_gui_flag_1556112;
@@ -52,10 +51,10 @@ func Sub_4F1F20() {
 	C.sub_4F1F20()
 }
 func Nox_xxx_getQuestMapFile_4D0F60() string {
-	return GoString(C.nox_xxx_getQuestMapFile_4D0F60())
+	return GoStringP(unsafe.Pointer(mapQuestChoose()))
 }
 func Sub_4D0F30() {
-	C.sub_4D0F30()
+	mapQuestReset()
 }
 func Nox_game_setQuestStage_4E3CD0(a1 int) {
 	C.nox_game_setQuestStage_4E3CD0(C.int(a1))
@@ -67,7 +66,7 @@ func Sub_51A1F0(a1 int) {
 	C.sub_51A1F0(C.int(a1))
 }
 func Sub_4D10F0(a1 string) {
-	C.sub_4D10F0(internCStr(a1))
+	mapQuestPlayed((*byte)(unsafe.Pointer(internCStr(a1))))
 }
 func Sub_4D7520(a1 int) {
 	C.sub_4D7520(C.int(a1))

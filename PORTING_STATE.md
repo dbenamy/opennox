@@ -2,34 +2,31 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 69k lines** — exactly **69,342 physical lines** in
-88 production `.c` files, zero reference C. Latest complete map compressor:
-**−1,910 C lines**. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 69k lines** — exactly **68,897 physical lines** in
+88 production `.c` files, zero reference C. Latest map catalog conversion:
+**−448 C lines** (net −445 including its prerequisite). See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — map catalog C baseline qualified; native integration next
+## Current — map catalog qualified; continue shared lists and player groups
 
-The complete codec is qualified and pushed as **9a04f7fe**; its final evidence is
-in [MAP_COMPRESSION.md](docs/porting/MAP_COMPRESSION.md). The latest completed
-conversion leaves 69,342 C lines. The current catalog prerequisite adds three
-lines (69,345 working C / 88 files / zero reference C).
+Catalog C baseline **cd5337b6** is pushed. Native qualification is complete under
+`build/port-map-catalog/native-qualified` (662.181s), with unchanged source and all
+readers joined. All 47 affected roots pass without skips in each configuration;
+all 1,789 frozen records match. Three production builds/ABI pass, the full asset
+suite exactly retains 1,553 known failure entries, and both fresh gameplay modes
+regenerate the warrior map exactly and match their frame references. See
+[MAP_CATALOG.md](docs/porting/MAP_CATALOG.md) for detailed evidence and review notes.
 
-[Map catalog and rotation](docs/porting/MAP_CATALOG.md) now has 1,789 frozen records
-in eight groups. All eight roots pass in default, repeat, server and highres with
-no skips and unchanged source (`build/port-map-catalog/c-qualified`, 240.234s).
-All readers joined. The reversible zero-candidate quest fallback was corrected
-before capture; see DECISIONS.md for its RNG/recent-family tradeoff.
-
-Next: review/integrate `build/port-map-catalog/native.go.draft`, migrate Go callers,
-retain the five audited C-facing exports and retire 14 internal symbols. Do not
-copy stale fixture drafts over the committed tests. Run frozen focused checks,
-then affected/production qualification with exact known-suite comparison and both
-forced map-expansion replays. No repeated full accumulated corpus is needed solely
-for this known scope immediately after the codec milestone.
+Next: shared intrusive lists and player-group membership. The audit and drafts
+are in `build/port-lists`; they are not installed or frozen yet. Read AUDIT.md.
+The connected 300-line owner has a duplicate root Go implementation to consolidate.
+Use independent list models and lifecycle checks, freeze C before conversion,
+and run the full accumulated corpus because the shared owner is widely used.
+No code from the ignored fixture/native drafts has been qualified.
 
 Continue under PORT.md without a scheduled pause. Preserve original assets/archive.
-Compressor finalization scripts are stale; do not rerun applied scripts.
+Catalog and compressor apply/finalization scripts are stale; do not rerun them.
 
 <!-- /current-checkpoint -->
 

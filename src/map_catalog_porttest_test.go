@@ -40,6 +40,9 @@ func mapCatalogCapture(t *testing.T, label string, rows any, want string) {
 	}
 }
 func TestMapCatalogOrdering(t *testing.T) {
+	if !legacy.PortTestMapCatalogNilNext() {
+		t.Fatal("nil list successor")
+	}
 	var rows [][]legacy.PortTestMapCatalogEntry
 	for _, size := range []int{0, 1, 2, 7, 32, 128, 129, 180} {
 		for order := 0; order < 4; order++ {

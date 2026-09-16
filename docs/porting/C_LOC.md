@@ -166,6 +166,8 @@ target build selection and linker evidence.
 | Client sound-definition readers and sample lookup | 91 | 72,221 | −321 | 0 |
 | Complete map decompressor, dictionary and adaptive tables | 90 | 71,252 | −969 | 0 |
 | Complete map compressor, match search and adaptive writer | 88 | 69,342 | −1,910 | 0 |
+| Quest selection zero-candidate fallback prerequisite | 88 | 69,345 | +3 | 0 |
+| Complete map catalog, cycle parsing and quest rotation | 88 | 68,897 | −448 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

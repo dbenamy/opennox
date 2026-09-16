@@ -9,14 +9,6 @@ extern nox_list_item_t nox_common_maplist;
 extern uint32_t dword_5d4594_1548476;
 extern uint32_t dword_5d4594_1548480;
 void nox_common_list_clear_425760(nox_list_item_t* list);
-void nox_common_maplist_add_4D0760(nox_map_list_item* mp);
-int sub_4D0C70(int a1);
-int sub_4D0C80(char* a1);
-void sub_4D0CC0(char* a1);
-int sub_4D0D50(int a1);
-int sub_4D0DC0(int a1,int a2);
-char* nox_xxx_getSomeMapName_4D0CF0();
-void sub_4D10F0(char* a1);
 */
 import "C"
 import (
@@ -81,7 +73,7 @@ func PortTestMapCatalogOpen(seed int) *PortTestMapCatalog {
 	return f
 }
 func (f *PortTestMapCatalog) Close() {
-	C.nox_common_maplist_free_4D0970()
+	mapCatalogFree()
 	for i := len(f.restore) - 1; i >= 0; i-- {
 		f.restore[i]()
 	}
@@ -105,17 +97,17 @@ func (f *PortTestMapCatalog) Entries() (out []PortTestMapCatalogEntry) {
 	}
 	return
 }
-func (f *PortTestMapCatalog) BuildQuest() int { return int(C.nox_xxx_mapSelectFirst_4D0E00()) }
-func (f *PortTestMapCatalog) ResetQuest()     { C.sub_4D0F30() }
+func (f *PortTestMapCatalog) BuildQuest() int { return mapQuestBuild() }
+func (f *PortTestMapCatalog) ResetQuest()     { mapQuestReset() }
 func (f *PortTestMapCatalog) ChooseQuest() (string, int) {
 	p := C.nox_xxx_getQuestMapFile_4D0F60()
 	return GoString(p), f.core.Rand.Logic.Index()
 }
 func (f *PortTestMapCatalog) Played(name *string) {
 	if name == nil {
-		C.sub_4D10F0(nil)
+		mapQuestPlayed(nil)
 	} else {
-		C.sub_4D10F0(internCStr(*name))
+		mapQuestPlayed((*byte)(unsafe.Pointer(internCStr(*name))))
 	}
 }
 func (f *PortTestMapCatalog) State() (s PortTestMapCatalogState) {
@@ -137,28 +129,28 @@ func (f *PortTestMapCatalog) RestoreState(s PortTestMapCatalogState) {
 	copy(unsafe.Slice(memmap.PtrUint32(0x5D4594, 1548428), 6), s.Counts[:])
 	copy(unsafe.Slice(memmap.PtrUint32(0x5D4594, 1548452), 6), s.Indices[:])
 }
-func PortTestMapCycleGroup(name string) int      { return int(C.sub_4D0C80(internCStr(name))) }
-func PortTestMapCycleMask(group int) uint32      { return uint32(C.sub_4D0C70(C.int(group))) }
-func PortTestMapCycleFlagGroup(flags uint32) int { return int(C.sub_4D0D50(C.int(flags))) }
+func PortTestMapCycleGroup(name string) int      { return mapCycleGroup(GoString(internCStr(name))) }
+func PortTestMapCycleMask(group int) uint32      { return mapCycleMask(group) }
+func PortTestMapCycleFlagGroup(flags uint32) int { return mapCycleFlagGroup(flags) }
 func PortTestMapCycleSetIndex(flags uint32, index int) int {
-	return int(C.sub_4D0DC0(C.int(flags), C.int(index)))
+	return mapCycleSetIndex(flags, uint32(index))
 }
-func PortTestMapCycleGetIndex(flags uint32) int { return int(C.sub_4D0DE0(C.int(flags))) }
+func PortTestMapCycleGetIndex(flags uint32) int { return int(mapCycleGetIndex(flags)) }
 func PortTestMapCycleStrip(data []byte) []byte {
 	if data == nil {
-		C.sub_4D0CC0(nil)
+		mapCycleStrip(nil)
 		return nil
 	}
 	p := C.CBytes(data)
 	defer C.free(p)
-	C.sub_4D0CC0((*C.char)(p))
+	mapCycleStrip((*byte)(p))
 	return bytes.Clone(unsafe.Slice((*byte)(p), len(data)))
 }
-func PortTestMapCycleNext() string     { return GoString(C.nox_xxx_getSomeMapName_4D0CF0()) }
-func PortTestMapCycleLoad()            { C.nox_xxx_loadMapCycle_4D0A30() }
+func PortTestMapCycleNext() string     { return GoStringP(unsafe.Pointer(mapCycleNext())) }
+func PortTestMapCycleLoad()            { mapCycleLoad() }
 func PortTestMapCycleEnabled() int     { return int(C.sub_4D0D70()) }
 func PortTestMapCycleEnable(v int) int { return int(C.sub_4D0D90(C.int(v))) }
-func PortTestMapCycleReset()           { C.sub_4D0DA0() }
+func PortTestMapCycleReset()           { mapCycleReset() }
 
 func PortTestMapCyclePath() string { return GoStringP(memmap.PtrOff(0x5D4594, 1524108)) }
 func PortTestMapCycleOpenHandles() int {
@@ -166,3 +158,5 @@ func PortTestMapCycleOpenHandles() int {
 	defer files.RUnlock()
 	return len(files.byHandle)
 }
+
+func PortTestMapCatalogNilNext() bool { return C.nox_common_maplist_next_4D09C0(nil) == nil }

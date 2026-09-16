@@ -102,69 +102,6 @@ void sub_426060() {
 	}
 }
 
-//----- (004D0CF0) --------------------------------------------------------
-char* nox_xxx_getSomeMapName_4D0CF0() {
-	int v0; // eax
-	int v1; // eax
-	int v2; // edi
-	int v4; // esi
-
-	v0 = nox_common_gameFlags_getVal_40A5B0();
-	v1 = sub_4D0D50(v0);
-	v2 = *getMemU32Ptr(0x5D4594, 1548428 + 4 * v1);
-	if (!v2) {
-		return 0;
-	}
-	v4 = *getMemU32Ptr(0x5D4594, 1548452 + 4 * v1);
-	if (v4 > v2) {
-		*getMemU32Ptr(0x5D4594, 1548452 + 4 * v1) = 0;
-		v4 = 0;
-	}
-	*getMemU32Ptr(0x5D4594, 1548452 + 4 * v1) = (*getMemU32Ptr(0x5D4594, 1548452 + 4 * v1) + 1) % v2;
-	return (char*)getMemAt(0x5D4594, 1529228 + 128 * (v4 + 20 * v1 + 5 * v1));
-}
-
-//----- (004D10F0) --------------------------------------------------------
-void sub_4D10F0(char* a1) {
-	int v1;            // esi
-	const char* i;     // edi
-	int v3;            // edi
-	int v4;            // eax
-	int v5;            // ebx
-	int v6;            // edx
-	unsigned char* v7; // ecx
-
-	if (a1) {
-		v1 = 0;
-		if (dword_5d4594_1548476 > 0) {
-			for (i = (const char*)getMemAt(0x5D4594, 1525136); nox_strcmpi(i, a1); i += 32) {
-				if (++v1 >= *(int*)&dword_5d4594_1548476) {
-					return;
-				}
-			}
-			v3 = dword_5d4594_1548476;
-			v4 = 32 * v1;
-			v5 = dword_5d4594_1548480;
-			*getMemU32Ptr(0x587000, 191880) = v1;
-			*getMemU32Ptr(0x5D4594, 1525156 + v4) = *getMemU32Ptr(0x5D4594, 1525156 + 32 * v1) + 1;
-			v6 = 0;
-			*getMemU32Ptr(0x5D4594, 1525160 + v4) = v5;
-			if (v3 > 0) {
-				v7 = getMemAt(0x5D4594, 1525156);
-				do {
-					if (*((uint32_t*)v7 - 6) == *getMemU32Ptr(0x5D4594, 1525132 + 32 * v1) && v1 != v6) {
-						++*(uint32_t*)v7;
-						*((uint32_t*)v7 + 1) = v5;
-					}
-					++v6;
-					v7 += 32;
-				} while (v6 < v3);
-			}
-			dword_5d4594_1548480 = v5 + 1;
-		}
-	}
-}
-
 //----- (004D2160) --------------------------------------------------------
 void sub_4D2160() {
 	char* result; // eax

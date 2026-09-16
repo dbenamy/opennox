@@ -15,17 +15,20 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. The complete NXZ map codec is now Go-owned. The latest compressor
-batch removed **1,910 C lines**, leaving about **69k: 69,342 physical lines in 88
-files**, with zero reference C. Focused tests, three production builds/ABI, exact
-known failures, forced map expansion and the complete accumulated corpus pass.
-See [MAP_COMPRESSION.md](docs/porting/MAP_COMPRESSION.md),
-[PROCESS_TRIAL.md](docs/porting/PROCESS_TRIAL.md) and
+scheduled pause. The complete NXZ map codec and map catalog/rotation owners are
+now Go. The latest catalog batch removed **448 C lines**, leaving about **69k:
+68,897 physical lines in 88 files**, with zero reference C. All 47 affected roots
+pass in three configurations, as do production builds/ABI and both forced map
+expansion replays; the suite retains exactly its known failures.
+See [MAP_CATALOG.md](docs/porting/MAP_CATALOG.md),
+[MAP_COMPRESSION.md](docs/porting/MAP_COMPRESSION.md) and
 [PORTING_STATE.md](PORTING_STATE.md) for evidence and review notes.
 
-The test driver now bounds Go heap growth after a 386 address-space exhaustion;
-optional asset cleanup runs separately from gameplay validation. Both issues and
-successful reruns are documented. Next: [map catalog and rotation](docs/porting/MAP_CATALOG.md).
+The test driver bounds Go heap growth after a 386 address-space exhaustion;
+optional asset cleanup runs separately from gameplay validation. The catalog's
+zero-candidate quest fallback is recorded for review. Next: shared intrusive list
+operations and player-group membership, with a full accumulated corpus gate
+because the shared list owner serves many subsystems.
 An isolated hallway mismatch and a later identification-display mismatch remain
 unexplained; future failures automatically preserve full captures.
 

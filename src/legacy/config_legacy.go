@@ -7,7 +7,6 @@ package legacy
 #include "GAME3_2.h"
 
 void sub_409FB0_settings(short a1, unsigned short a2);
-int sub_4D0DC0(int a1, int a2);
 int sub_489FF0(int a1, int a2, const void* a3);
 */
 import "C"
@@ -26,7 +25,7 @@ func Nox_xxx_sysopGetPass_40A630() string {
 	return GoWString(C.nox_xxx_sysopGetPass_40A630())
 }
 func Sub_4D0D70() int {
-	return int(C.sub_4D0D70())
+	return mapCycleEnabled()
 }
 func Nox_xxx_getServerSubFlags_409E60() uint32 {
 	return uint32(C.nox_xxx_getServerSubFlags_409E60())
@@ -41,7 +40,7 @@ func Nox_xxx_rateUpdate_40A6D0(a1 int) {
 	C.nox_xxx_rateUpdate_40A6D0(C.int(a1))
 }
 func Sub_4D0D90(a1 int) {
-	C.sub_4D0D90(C.int(a1))
+	mapCycleSetEnabled(uint32(a1))
 }
 func Sub_409FB0_settings(a1 uint16, a2 uint16) {
 	C.sub_409FB0_settings(C.short(a1), C.ushort(a2))
@@ -50,11 +49,11 @@ func Sub_409EC0(a1 int) {
 	C.sub_409EC0(C.int(a1))
 }
 func Sub_4D0DC0(a1 uint32, a2 int) {
-	C.sub_4D0DC0(C.int(a1), C.int(a2))
+	mapCycleSetIndex(a1, uint32(a2))
 }
 func Sub_489FF0(a1 int, a2 int, a3 unsafe.Pointer) {
 	C.sub_489FF0(C.int(a1), C.int(a2), a3)
 }
 func Sub_4D0DE0(a1 uint32) int {
-	return int(C.sub_4D0DE0(C.int(a1)))
+	return int(mapCycleGetIndex(a1))
 }

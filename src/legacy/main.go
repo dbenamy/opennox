@@ -65,11 +65,11 @@ func Nox_xxx_initSinCosTables_414C90() {
 }
 
 func Nox_xxx_loadMapCycle_4D0A30() {
-	C.nox_xxx_loadMapCycle_4D0A30()
+	mapCycleLoad()
 }
 
 func Nox_xxx_mapSelectFirst_4D0E00() {
-	C.nox_xxx_mapSelectFirst_4D0E00()
+	mapQuestBuild()
 }
 
 func Sub_4134D0() {
@@ -98,11 +98,11 @@ func Sub_4D11D0() {
 }
 
 func Sub_4D0DA0() {
-	C.sub_4D0DA0()
+	mapCycleReset()
 }
 
 func Nox_common_maplist_free_4D0970() {
-	C.nox_common_maplist_free_4D0970()
+	mapCatalogFree()
 }
 
 func Sub_451970() {
