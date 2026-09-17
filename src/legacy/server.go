@@ -41,7 +41,6 @@ void nox_xxx_voteUptate_506F30();
 void sub_4E4170();
 void sub_4EC720();
 void nox_xxx_gameTick_4D2580_server_D();
-int nox_xxx_netUpdateObjectSpecial_527E50(nox_object_t* a1p, nox_object_t* a2p);
 void sub_4139C0();
 int sub_4DCF20();
 int sub_4E76C0();
@@ -186,10 +185,10 @@ func Sub_511100(a1 int) {
 	C.sub_511100(C.int(a1))
 }
 func Nox_xxx_netUpdateRemotePlr_501CA0(a1 *server.Object) {
-	C.nox_xxx_netUpdateRemotePlr_501CA0(asObjectC(a1))
+	objectReportRemoteAudio(a1)
 }
 func Nox_xxx_netSendObjects2Plr_519410(a1 *server.Object, a2 *server.Object) {
-	C.nox_xxx_netSendObjects2Plr_519410(asObjectC(a1), asObjectC(a2))
+	objectReportRecipient(a1, a2)
 }
 func Sub_4D6770(a1 ntype.PlayerInd) {
 	C.sub_4D6770(C.int(a1))
@@ -207,7 +206,7 @@ func Nox_xxx_playerMapTracksObj_4173D0(a1 int, a2 *server.Object) int {
 	return int(C.nox_xxx_playerMapTracksObj_4173D0(C.int(a1), asObjectC(a2)))
 }
 func Sub_519710(a1 unsafe.Pointer) int {
-	return int(C.sub_519710(a1))
+	return objectReportSchedule((*server.PlayerUpdateData)(a1))
 }
 func Nox_xxx_updateUnits_51B100_D() {
 	C.nox_xxx_updateUnits_51B100_D()
@@ -339,7 +338,7 @@ func Sub_4259C0() {
 	playerGroupsInit()
 }
 func Sub_518770() int {
-	return int(C.sub_518770())
+	return objectReportInit()
 }
 func Nox_xxx_allocItemRespawnArray_4ECA60() int {
 	return int(C.nox_xxx_allocItemRespawnArray_4ECA60())

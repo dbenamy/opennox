@@ -41,7 +41,6 @@ static int nox_xxx_netSendLineMessage_go(nox_object_t* a1, wchar2_t* str) {
 
 nox_drawable* nox_xxx_netSpriteByCodeDynamic_45A6F0(int a1);
 
-int nox_xxx_netPlayerObjSend_518C30(nox_object_t* a1, nox_object_t* a2, int a3, signed int a4);
 int nox_xxx_netOnPacketRecvServ_51BAD0_net_sdecode_switch(int a1, unsigned char* data, int dsz, nox_playerInfo* v8p, nox_object_t* unitp, void* v10p);
 int nox_xxx_netOnPacketRecvCli_48EA70_switch(int a1, int op, unsigned char* data, int sz);
 */
@@ -261,7 +260,7 @@ func Sub_4DDE10(a1 int, a2 *server.Player) {
 	C.sub_4DDE10(C.int(a1), (*nox_playerInfo)(a2.C()))
 }
 func Nox_xxx_netPlayerObjSend_518C30(a1 *server.Object, a2 *server.Object, a3 int, a4 int) int {
-	return int(C.nox_xxx_netPlayerObjSend_518C30(asObjectC(a1), asObjectC(a2), C.int(a3), C.int(a4)))
+	return objectReportPlayer(a1, a2, a3, a4)
 }
 func Nox_xxx_gameServerReadyMB_4DD180(a1 int) {
 	C.nox_xxx_gameServerReadyMB_4DD180(C.int(a1))

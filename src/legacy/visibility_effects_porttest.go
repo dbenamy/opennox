@@ -23,7 +23,6 @@ import (
 // Operation 13 belonged to the proven orphaned throttle helper and is retired.
 func PortTestVisibilityEffects(op int, a, b *server.Object, pos *types.Pointf, words *[4]int32, args [5]int32, data []byte, command string) uint32 {
 
-	ap, bp := (*C.nox_object_t)(unsafe.Pointer(a)), (*C.nox_object_t)(unsafe.Pointer(b))
 	fp := (*C.float)(unsafe.Pointer(pos))
 	switch op {
 	case 0:
@@ -51,7 +50,7 @@ func PortTestVisibilityEffects(op int, a, b *server.Object, pos *types.Pointf, w
 	case 11:
 		C.nox_xxx_sendArrowTrapFX_5238A0(fp, C.char(args[0]))
 	case 12:
-		return uint32(C.nox_xxx_netUpdateObjectSpecial_527E50(ap, bp))
+		return uint32(visibilitySpecialUpdate(a, b))
 	case 14:
 		return uint32(visibilityKillable(a))
 	case 15:
@@ -77,9 +76,9 @@ func PortTestVisibilityEffects(op int, a, b *server.Object, pos *types.Pointf, w
 	case 25:
 		visibilityDestroyReport(a)
 	case 26:
-		return uint32(C.nox_xxx_netObjectOutOfSight_528A60(C.int(args[0]), (*C.uint32_t)(unsafe.Pointer(b))))
+		return uint32(visibilityOutOfSight(int(args[0]), b))
 	case 27:
-		return uint32(C.nox_xxx_netObjectInShadows_528A90(C.int(args[0]), (*C.uint32_t)(unsafe.Pointer(b))))
+		return uint32(visibilityInShadows(int(args[0]), b))
 	case 28:
 		return uint32(visibilityMonsterCommand(a, b, command, uint16(args[0])))
 	case 29:

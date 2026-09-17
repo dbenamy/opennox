@@ -1351,3 +1351,18 @@ small test region. Correct bounds preserve the original spatial capture and allo
 864 independent distant/empty-search scheduling contracts. See
 [VISIBILITY_EFFECTS.md](VISIBILITY_EFFECTS.md) and
 [VISIBILITY_SCAN_DELAY.md](VISIBILITY_SCAN_DELAY.md) for evidence and validation.
+
+
+### Object and recipient reports
+
+Qualified after C baseline `8b370caa`: move the private minimap-count helper with
+its only caller and retire the now-unnecessary audio/visibility C bridges. Preserve
+health-word narrowing, history changes even when a later queue write fails, and
+signed polygon-level behavior. Polygon vertex/ray edge behavior is captured and
+left to the existing geometry owner; no unrelated geometry fix is folded in.
+
+Reuse a preceding qualified production baseline when new changes are test-only
+and production source is identical. The new C contracts still run across all three
+targets and repeat independently. Completed native batches still receive the broad
+affected corpus, fresh builds/ABI, exact known suite and headless integration gates.
+See [OBJECT_REPORTS.md](OBJECT_REPORTS.md) for the evidence and fixture corrections.

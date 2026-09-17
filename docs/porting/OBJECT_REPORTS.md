@@ -2,11 +2,10 @@
 
 ## Scope and status
 
-C baseline development after visibility/effects conversion `df8b3bb7`.
-Eleven live functions: ten in GAME4_1.c (518770 through 519710) and GAME4.c
-(501C00 and 501CA0), plus their private minimap-count helper in GAME1.c.
-The selected blocks occupy **541 physical C lines**. No production changes yet;
-qualified C count remains 56,118 lines / 82 files, zero reference C.
+Native conversion qualified: **541 physical C lines removed**, leaving **55,577
+lines / 82 production files**, zero reference C. Eleven functions across GAME4_1.c,
+GAME4.c and GAME1.c are replaced by three Go files (325 lines), with fifteen C
+entry/callback bridges retired. Frozen C baseline: **8b370caa**.
 
 The scope covers type lookup caches, simple/phantom/monster/player object messages,
 sprite state, recipient visibility/dirty masks, minimap update timing, polygon
@@ -95,6 +94,26 @@ cleanup. Only identical copied original assets were removed.
   implementation; this port changes its callers, and normal Kind2 packet routing
   is exercised directly plus in the headless integration scenarios.
 
-Native drafts/install tooling under build/port-object-reports are not installed
-until baseline validation and commit are complete. Frozen expectations must not
-be regenerated during the conversion.
+The ignored native drafts/install script are consumed and stale. Do not reinstall
+them over the qualified source. Frozen expectations were unchanged throughout.
+
+## Native development
+
+Baseline committed/pushed as **8b370caa**. Three Go files (325 lines) now replace
+all eleven selected functions; working C count is **55,577 / 82 files**, zero
+reference C, now qualified. Fifteen C symbols are retired, including the
+private count helper, audio callback, and three preceding visibility bridges.
+No retired symbol references remain, and static checks pass.
+
+The first native focused run passes all 18 groups / 13,593 records and 12,493 leaf
+cases unchanged. A stale C prototype in the old server preamble was found by the
+source audit and removed before final gates. No production algorithm correction
+was needed. The final three target sweeps pass 401 roots / 23,265 leaf cases and all 83 groups /
+22,555 records, without skips. All 1,979 source fingerprints agree. Default took
+303.4s, server 303.4s and highres 372.0s (concurrent runs, including compilation).
+Production/integration qualification passes. All three builds and ABI audits pass;
+the full suite exactly retains 1,553 failure entries (15 packages pass / three fail /
+32 skip). Gameplay matches 41 frames, actual save/load seven, and flat rendering
+fourteen plus exact map regeneration. All gates share 1,979 unchanged source
+fingerprints. Production qualification took 381.9s. Client SHA-256:
+`b13e16c90cc220af61c48b61ec57daa482f08cd54755e5a74f27d354f736ca2a`. Artifacts: build/port-object-reports/native-production.

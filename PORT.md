@@ -15,19 +15,17 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Visibility and effect reports are qualified: **850 physical C
-lines removed**, leaving **56,118 lines in 82 files**, with zero reference C.
+scheduled pause. Object and recipient reports are qualified: **541 physical C
+lines removed**, leaving **55,577 lines in 82 files**, with zero reference C.
 
-Default/server/highres each pass **383 affected roots / 10,772 leaf cases** without
-skips; **8,962 frozen records / 65 groups** match. All production builds and ABI
+Default/server/highres each pass **401 affected roots / 23,265 leaf cases** without
+skips; **22,555 frozen records / 83 groups** match. All production builds and ABI
 audits pass, the full asset suite retains exactly its known failures, and headless
 gameplay, actual save/load and flat rendering pass with exact map regeneration.
 
-See [VISIBILITY_EFFECTS.md](docs/porting/VISIBILITY_EFFECTS.md) for evidence and
-review notes, including retirement of an unreachable helper and supplemental
-original-C scan scheduling contracts. The connected [object-report batch](docs/porting/OBJECT_REPORTS.md) now has a C
-baseline; its selected blocks total 541 physical C lines, including a private
-minimap-count helper. Finish baseline validation, then convert and qualify.
+See [OBJECT_REPORTS.md](docs/porting/OBJECT_REPORTS.md) for evidence and review
+notes. Next: the connected reliable game-message queue, approximately 615 C lines,
+reusing the real player and queue owners from these report batches.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint; confident reversible
 decisions remain recorded for review.
 

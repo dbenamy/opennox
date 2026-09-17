@@ -1592,27 +1592,6 @@ char* nox_xxx_playerByName_4170D0(wchar2_t* a1) {
 	return v1;
 }
 
-//----- (00417270) --------------------------------------------------------
-int sub_417270(int a1) {
-	int result; // eax
-	int v2;     // edx
-	int v3;     // ecx
-
-	result = 0;
-	if (a1 >= 0 && a1 < NOX_PLAYERINFO_MAX) {
-		nox_playerInfo* pl = nox_common_playerInfoFromNumRaw(a1);
-		v2 = pl->field_4580;
-		if (v2) {
-			v3 = *(uint32_t*)(v2 + 8);
-			for (result = 1; v3 != v2; ++result) {
-				v3 = *(uint32_t*)(v3 + 8);
-			}
-		}
-	}
-	return result;
-}
-
-// mark spell -- is tracked
 //----- (004173D0) --------------------------------------------------------
 int nox_xxx_playerMapTracksObj_4173D0(int a1, nox_object_t* a2p) {
 	int a2 = a2p;

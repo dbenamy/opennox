@@ -1,0 +1,54 @@
+package legacy
+
+/*
+#include "GAME1_1.h"
+*/
+import "C"
+
+import (
+	"image"
+	"unsafe"
+
+	"github.com/opennox/libs/types"
+	"github.com/opennox/opennox/v1/server"
+)
+
+func objectReportPolygon(p types.Pointf) int8 {
+	level, _ := minimapPolygonLevel(image.Pt(int(floatToInt32(p.X)), int(floatToInt32(p.Y))))
+	return int8(level)
+}
+func objectReportSoundLevel(p types.Pointf, u *server.Object) int {
+	if u != nil {
+		if uint32(u.ObjClass)&4 != 0 {
+			if level := *(*int8)(unsafe.Add(unsafe.Pointer(u.UpdateDataPlayer().Player), 3668)); level != 0 {
+				return int(level)
+			}
+		} else if uint32(u.ObjClass)&2 != 0 {
+			poly := C.nox_xxx_polygonGetByIdx_4214A0(C.int(*(*int32)(u.UpdateData)))
+			if poly != nil {
+				if level := *(*int8)(unsafe.Add(unsafe.Pointer(poly), 130)); level != 0 {
+					return int(level)
+				}
+			}
+		}
+	}
+	return int(objectReportPolygon(p))
+}
+func objectReportRemoteAudio(viewer *server.Object) {
+	data := viewer.UpdateData
+	pl := viewer.UpdateDataPlayer().Player
+	var level int8
+	if follow := pl.CameraFollowObj; pl.Field3680&3 != 0 && follow != nil {
+		if uint32(follow.ObjClass)&4 != 0 {
+			level = *(*int8)(unsafe.Add(unsafe.Pointer(follow.UpdateDataPlayer().Player), 3668))
+		} else {
+			level = objectReportPolygon(follow.PosVec)
+		}
+	} else {
+		if *(*uint32)(unsafe.Add(unsafe.Pointer(pl), 3664)) == 0xdeadface {
+			Nox_xxx_questCheckSecretArea_421C70(viewer)
+		}
+		level = *(*int8)(unsafe.Add(unsafe.Pointer(viewer.UpdateDataPlayer().Player), 3668))
+	}
+	GetServer().NetUpdateRemotePlrAudioEvents(viewer, data, level)
+}

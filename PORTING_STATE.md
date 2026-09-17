@@ -2,37 +2,38 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 56k lines** — **56,118 physical lines in 82 production
-`.c` files**, zero reference C. Latest qualified conversion removes **850 lines**.
+**Rough C remaining: about 56k lines** — **55,577 physical lines in 82 production
+`.c` files**, zero reference C. Latest qualified conversion removes **541 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — object-report C baseline
+## Current — object and recipient reports qualified
 
-Visibility/effects conversion **df8b3bb7** is committed/pushed and qualified.
-Object reports are the next connected batch: eleven live C functions, including
-a private minimap-count helper, with **541 physical C lines** selected. Production
-source remains unchanged; qualified count is still **56,118 / 82 files**.
+C baseline **8b370caa** is committed/pushed. Its native conversion passes all gates:
+default/server/highres 401 roots / 23,265 leaf cases each, all 83 groups / 22,555
+records, static checks, production builds/ABI, exact known full-suite failures,
+gameplay, actual save/load and flat rendering with exact map regeneration. The
+1,979 source fingerprints match across all native target and production gates.
 
-C default/server/highres pass 400 roots / 23,259 leaf cases and all 82 capture
-groups. A final six-case polygon-initialization supplement passes on all targets; the focused repeat passes 18 new groups / 13,593 records. See
-[OBJECT_REPORTS.md](docs/porting/OBJECT_REPORTS.md) and object-reports-batch.json.
-The previous conversion's production baseline is reused because only tests/docs
-changed. Native qualification will run all production gates and the combined
-401-root corpus anew.
+Eleven C functions are replaced by three Go files (325 lines). Fifteen C bridges
+are retired, including a private count helper, an audio callback and three
+preceding visibility bridges. No frozen expectations or production behavior were
+changed to accommodate the port. See OBJECT_REPORTS.md for qualification evidence
+and notable fixture/ownership decisions.
 
-Next: commit/push this qualified C baseline, then install the reviewed Go drafts,
-compare frozen expectations,
-qualify production, update the C count, commit/push and continue. Ignored drafts
-and an install script are in build/port-object-reports; they are not installed yet.
-No production conversion changes are present at this checkpoint.
+Next: baseline the connected reliable game-message queue: 20 functions / 615
+physical C lines in GAME3_3.c, from 004E4DE0 through 004E5770, preserving the
+following unrelated forward declaration. Six private helpers have live selected
+callers. Preliminary audit/plan: build/port-reliable-reports. No next-batch source
+is installed. Reuse real players, reliable allocation/list ownership, NetList,
+frame/rate state and recipient snapshots. New contracts need all-target C captures
+and independent repeats; reuse prior production evidence when source is identical.
+Qualify the full affected corpus and production/integration after conversion.
 
-Disk cleanup freed about 19 GiB; original assets, all evidence, and current/
-preceding binaries remain. Inventory: build/baseline/removed-old-binaries.json.
-Completed runs have per-run deduplicated-assets.json restoration manifests.
-Preserve untracked nox-iso-from-archive-org.7z. Source build/baseline/env.sh for Go
-commands. No user question or substantial blocker.
+The object-report install script/drafts are CONSUMED/STale; never rerun them.
+Preserve untracked nox-iso-from-archive-org.7z and original assets. Source
+build/baseline/env.sh for Go commands. No user question or substantial blocker.
 
 <!-- /current-checkpoint -->
 

@@ -16,30 +16,29 @@ import (
 	"unsafe"
 )
 
-// Primitive entry dispatch; all behavior belongs to the original production code.
+// Call the production Go entry points after retiring their C bridges.
 func PortTestObjectReports(op int, a, b *server.Object, player, x, y int, pos *types.Pointf) int {
-	ai, bi := C.int(uintptr(unsafe.Pointer(a))), C.int(uintptr(unsafe.Pointer(b)))
 	switch op {
 	case 0:
-		return int(C.sub_518770())
+		return objectReportInit()
 	case 1:
-		return int(C.nox_xxx_netSendPhantomPlrMb_5187E0(C.int(player), bi))
+		return objectReportPhantom(player, b)
 	case 2:
-		return int(C.nox_xxx_netSendSimpleObj_5188A0(C.int(player), bi))
+		return objectReportSimple(player, b)
 	case 3:
-		return int(C.nox_xxx_netSendComplexObject_518960(C.int(player), (*C.uint)(unsafe.Pointer(b)), C.int(x)))
+		return objectReportMonster(player, b, x)
 	case 4:
-		return int(C.nox_xxx_netSpriteUpdate_518AE0(ai, C.int(player), (*C.uint)(unsafe.Pointer(b))))
+		return objectReportSprite(a, player, b)
 	case 5:
-		return int(C.nox_xxx_netPlayerObjSend_518C30(asObjectC(a), asObjectC(b), C.int(x), C.int(y)))
+		return objectReportPlayer(a, b, x, y)
 	case 6:
-		return int(C.nox_xxx_netSendObjects2Plr_519410(asObjectC(a), asObjectC(b)))
+		return objectReportRecipient(a, b)
 	case 7:
-		return int(C.sub_519710(a.UpdateData))
+		return objectReportSchedule(a.UpdateDataPlayer())
 	case 8:
-		return int(C.sub_501C00((*C.float)(unsafe.Pointer(pos)), asObjectC(b)))
+		return objectReportSoundLevel(*pos, b)
 	case 9:
-		C.nox_xxx_netUpdateRemotePlr_501CA0(asObjectC(a))
+		objectReportRemoteAudio(a)
 		return 0
 	default:
 		panic("object report operation")

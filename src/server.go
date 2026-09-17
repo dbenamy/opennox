@@ -662,7 +662,7 @@ func (s *Server) newSession() error {
 	legacy.Sub_4259C0()
 	s.Players.Camper.Reset()
 	if legacy.Sub_518770() == 0 {
-		return errors.New("sub_518770 failed")
+		return errors.New("object report type cache initialization failed")
 	}
 	noxflags.HasGame(noxflags.GameFlag22)
 	if !s.Objs.Init(5000) {
