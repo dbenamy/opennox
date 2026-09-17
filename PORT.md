@@ -25,9 +25,11 @@ audits pass, the full asset suite retains exactly its known failures, and headle
 gameplay, actual save/load and flat rendering pass, including exact map regeneration.
 
 See [WORLD_COLLISIONS.md](docs/porting/WORLD_COLLISIONS.md) for evidence, the
-floating-point rounding finding and recorded compatibility limits. Next candidate:
-quest runtime/statistics and difficulty scaling, approximately 894 C lines / 56
-functions, reusing the existing player, collision, object and report owners.
+floating-point rounding finding and recorded compatibility limits. Next conversion:
+quest runtime/statistics and difficulty scaling. Its corrected C baseline is
+qualified, including a shipped score-constant width fix. Native scope is 897 C
+lines / 57 functions, including a private conversion helper. See
+[QUEST_RUNTIME.md](docs/porting/QUEST_RUNTIME.md).
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint; confident reversible
 decisions remain recorded for review.
 
@@ -66,6 +68,10 @@ may precede full qualification when their evidence and remaining gates are expli
    Reuse the preceding qualified production baseline when the new baseline changes
    only tests/docs and production source is identical. Record that identity and the
    reused artifacts; always rerun production qualification after the conversion.
+   Before freezing, audit numeric constants and lookup tables read by the selected
+   C functions. Supply shipped data or explicitly controlled values, and check a
+   nontrivial result so zero-filled fixture state cannot hide behavior. The quest
+   scoring review found a real width bug that zero-exponent fixtures had masked.
 3. Add independent contracts so matching a baseline is not the only correctness
    check. If these uncover an existing bug, make a justified, reversible correction
    before freezing the baseline and record it for later review. Commit the baseline.

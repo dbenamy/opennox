@@ -1099,7 +1099,7 @@ unsigned int sub_4D6540(int a1) {
 int sub_4D66E0(unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4) {
 	float v5; // [esp+4h] [ebp-10h]
 
-	v5 = nox_double2float(pow((double)a4, *(long double*)getMemAt(0x581450, 10088))) *
+	v5 = nox_double2float(pow((double)a4, *getMemDoublePtr(0x581450, 10088))) *
 		 ((double)a1 * 10.0 + (double)a2 * 35.0 + (double)a3 * 0.1);
 	return nox_float2int(v5);
 }

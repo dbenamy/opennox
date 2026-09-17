@@ -189,6 +189,7 @@ target build selection and linker evidence.
 | Reliable queue pressure ownership prerequisite (C fix) | 82 | 55,584 | +7 | 0 |
 | Reliable game-message queue | 82 | 54,962 | −622 | 0 |
 | World collisions and interactions | 82 | 53,946 | −1,016 | 0 |
+| Quest score constant width prerequisite (C fix) | 82 | 53,946 | 0 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

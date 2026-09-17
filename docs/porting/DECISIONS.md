@@ -1406,3 +1406,19 @@ adjacent coordinates uninitialized; Go initializes them to zero. Spell argument
 fields that C left uninitialized are also zeroed. These are reversible choices
 outside the established valid-input contract, recorded for later review. No C
 algorithm is kept solely for tests. See [WORLD_COLLISIONS.md](WORLD_COLLISIONS.md).
+
+
+### Quest score constant width and fixture data
+
+The shipped quest score exponent is an eight-byte double near 1.9. Original C
+read it as long double; the independent shipped-data regression returned
+2,147,483,648 instead of 37 for stage 2/ten points. Change the read to
+getMemDoublePtr before translating the quest runtime. This reversible prerequisite
+fix is within the authorized workflow and requires fresh C production gates.
+
+The first fixture left the exponent zero and masked this bug. It was caught in
+source review before the C baseline commit. All quest fixtures now install and
+restore the shipped constant. Only three scoring groups are refrozen from corrected
+C; the other 20 groups remain identical. Numeric/table input audits are now explicit
+in PORT.md so nontrivial production data is checked before freezing expectations.
+See [QUEST_RUNTIME.md](QUEST_RUNTIME.md) for qualification and limitations.
