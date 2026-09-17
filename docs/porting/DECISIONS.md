@@ -1655,3 +1655,19 @@ float32 store. Keep the retained absolute-value helper's observable scratch writ
 Use pointer-typed callback arguments for temporary contact normals so their lifetime
 remains visible to cgo. The radial contract exercises the remaining production C
 caller across the new double-return export. See COLLISION_CORE.md for qualification.
+
+## World-motion corrected-C prerequisites — review after conversion
+
+Fix sentry removal's membership test to use bit 31: its unsigned `<0` comparison
+compiled out the only unlink branch. Real three-object registration/removal
+reproduced retained head/middle/tail membership. The corrected list contract
+covers permutations, repeated removal and destroyed-object updates.
+
+Treat a nil trigger-script callback result as no admission. An actual one-shot
+script accepts the first contact, disables itself, and returns nil on the second;
+the previous C dereference crashed. Preserve prior contact state when no result
+is returned. Both corrections are small and reversible under the standing policy.
+The partial corrected-C corpus passes twice; all-target and fresh production
+qualification remain required before the baseline freeze. See
+[WORLD_MOTION.md](WORLD_MOTION.md). Preserve the separate signed allow-team quirk;
+values 128–255 do not match an unsigned object team byte.

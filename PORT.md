@@ -20,10 +20,10 @@ following world geometry and map polygons. The latest batch replaces 23 live
 functions; all three target sweeps and fresh production/gameplay qualification
 pass. See [COLLISION_CORE.md](docs/porting/COLLISION_CORE.md).
 
-Production C is **41,886 physical lines in 74 files**, with zero reference C.
+Current production C is **41,887 physical lines in 74 files**, with zero reference C.
 The collision-core conversion removed **1,096 lines**. The asset suite retains its
-exact three known failing packages. Next candidate: world motion, projectile
-contacts and timed world objects.
+exact three known failing packages. The world-motion C baseline is in progress, with regression-tested sentry unlink
+and one-shot trigger corrections. Its full qualification remains pending.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target

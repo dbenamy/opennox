@@ -1178,9 +1178,13 @@ void nox_xxx_collideTrigger_54FCD0(int a1, int a2) {
 							v6 = *((uint8_t*)v2 + 52);
 							if (!v6 || *(uint8_t*)(a2 + 52) == v6) {
 								v7 = *((uint8_t*)v2 + 53);
-								if ((!v7 || *(char*)(a2 + 52) != v7) &&
-									(v2[4] == -1 ||
-									 *(uint32_t*)nox_xxx_scriptCallByEventBlock_502490(v2 + 3, a2, a1, 1))) {
+								if (!v7 || *(char*)(a2 + 52) != v7) {
+									if (v2[4] != -1) {
+										uint32_t* script_result = nox_xxx_scriptCallByEventBlock_502490(v2 + 3, a2, a1, 1);
+										if (!script_result || !*script_result) {
+											return;
+										}
+									}
 									v8 = *v2;
 									v2[1] = a2;
 									LOBYTE(v8) = v8 | 1;

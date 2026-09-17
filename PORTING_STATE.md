@@ -2,13 +2,50 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 42k lines** — **41,886 physical lines in 74 production
-`.c` files**, zero reference C. Latest conversion removes **1,096 lines**.
+**Rough C remaining: about 42k lines** — **41,887 physical lines in 74 production
+`.c` files**, zero reference C, including the current corrected-C prerequisites.
+The latest completed conversion removed **1,096 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — collision-core Go conversion qualified
+## Current — world-motion corrected-C baseline recovery checkpoint
+
+Qualified collision-core parent: **950f8f22, pushed**. Scope is **30 live
+functions / 1,072 C body lines**. No Go conversion or frozen baseline yet.
+
+Corrected-C checks pass twice: **18 roots, 17 captures / 8,122 records**,
+zero skips. physics-7.log passes in 0.278s; recovery-repeat-2 repeats every
+capture exactly and verifies unchanged source. Both sessions are joined; no
+active build. Static mapped-state checks also pass (static-2.log).
+
+Two reversible C corrections are reproduced and regression-tested: sentry
+removal tests bit 31 instead of unsigned `<0`; trigger contact tolerates a nil
+result from an already-disabled script. The latter previously crashed on the
+second contact with a one-shot script. One proven orphan getter is removed.
+Current working C is **41,887 lines / 74 files / zero reference**, one line above
+the qualified parent after the corrections/removal. See WORLD_MOTION.md and
+world-motion-{scope,recovery}.json for details and the qualification limits.
+
+Covered: sentry lists/beams/contacts/reporting, decay queues/expiry, projectile
+integration/tracing/dispatch, activation, fall/bounce/shaft return, velocity,
+waypoint movers, scorch allocation/decay/RNG, and actual-VM trigger admission.
+Next: install/review the still-unused radial draft; add shooting trap and remaining
+spring/tile/monster velocity integration contracts. Then repeat/freeze the whole
+scope, run default/server/highres affected sweeps and fresh corrected-C production
+qualification, commit/push the baseline, and translate to Go. No user blocker.
+
+All installed fixture/adaptor drafts under build/port-world-motion are consumed;
+work from src. Only radial-draft.go and radial-adapter-draft.txt remain uninstalled.
+Original proposal/disassembly are historical; corrected-c-functions.json reflects
+both fixes. Do not rerun consumed install/cleanup scripts.
+
+Disk cleanup removed **14.96 GiB** of rebuildable Go cache entries last touched
+more than six hours earlier; **24 GiB** free afterward. Recent cache entries,
+module downloads, assets, logs, captures and qualified binaries remain intact.
+Local audit: build/cleanup/cache-20260917.json.
+
+## Qualified parent — collision-core Go conversion (950f8f22, pushed)
 
 C baseline **bc4a791e is committed/pushed**. The native conversion replaces
 **23 live functions / 993 body lines**, retires eighteen function interfaces and
@@ -40,16 +77,7 @@ default driver had misnamed inherited capture paths after tests passed; independ
 corrected-manifest and cross-target audit verified every capture. Reports retain
 both issues transparently.
 
-Next: commit/push this qualified conversion, then prepare world-motion C baseline.
-Read-only proposal: **31 candidates / 1,069 body lines**, with **30 live / 1,068
-lines** and the one-line apparent orphan sub_537760. Artifacts under
-build/port-world-motion: proposal/combined-reachability/plan-draft/candidate-source,
-c-disassembly and two **uninstalled** list fixture drafts. The no-marker Hit reset
-trampoline is explicitly included. Verify final parent production identity before
-using saved disassembly. The sentry removal's uint32 `<0` membership test appears
-broken (compiled unlink branch absent); reproduce with the drafted real-list
-contract before any correction. A justified fix requires fresh corrected-C
-production qualification. No next-batch source changes are installed yet.
+Next: world-motion baseline described above.
 
 Disk cleanup reclaimed **4.638 GiB** from nine newly completed polygon/geometry
 run copies. Each removed file matched the original asset hash; per-run manifests

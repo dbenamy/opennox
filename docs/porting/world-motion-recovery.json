@@ -1,0 +1,108 @@
+{
+  "status": "partial corrected-C baseline; not frozen and not production qualified",
+  "qualified_parent": "950f8f22",
+  "roots": 18,
+  "captures": [
+    {
+      "label": "world-motion-activation-wrappers",
+      "records": 192,
+      "sha256": "5f7e9e7038d1f9d883f1c976a0bac3ffb126a6baa7459eb09c131c76449694ff"
+    },
+    {
+      "label": "world-motion-decay-expiry",
+      "records": 28,
+      "sha256": "8594706fa8d642fc7b04d80f71a8129cf05a56bbf817dbd47c69660f72c757de"
+    },
+    {
+      "label": "world-motion-decay-queue",
+      "records": 60,
+      "sha256": "dedfa60ccf2d8ee0881e3343309c8d40fb06a4eccf5bdd1ee6dec61c75eeff6f"
+    },
+    {
+      "label": "world-motion-fall",
+      "records": 3456,
+      "sha256": "9639947135da4e35ee81d9b0ef80fb518cecf2d79cb1e8710654e66e71e44903"
+    },
+    {
+      "label": "world-motion-mover",
+      "records": 972,
+      "sha256": "e8f1dcca0dcf0c4d75feac47c84c781a21c1e3c82ec9af2d151a6db73471e1c8"
+    },
+    {
+      "label": "world-motion-projectile-dispatch",
+      "records": 40,
+      "sha256": "478ccf83f4cf473d4d318cba128c7d4b619d471ac915ba6248a14c6e0b441645"
+    },
+    {
+      "label": "world-motion-projectile-integration",
+      "records": 1152,
+      "sha256": "0d2adb0fe5e032bfb917e37e4211d031278645c441885e73be6f28ea50c4cf47"
+    },
+    {
+      "label": "world-motion-projectile-trace",
+      "records": 72,
+      "sha256": "1049b231aa90410dfac004bc87a860a2dd75f47d94ac84ddb80ca80061ceec3c"
+    },
+    {
+      "label": "world-motion-scorch",
+      "records": 160,
+      "sha256": "4eb227450d2b6cc20d530923f59bd129613da8941f692d6008b391576bc40421"
+    },
+    {
+      "label": "world-motion-sentry-beam",
+      "records": 252,
+      "sha256": "0e94eebfaf4411f215eb3c61a0028277163eb7bd29cc62964cc58b3dd8fe1d59"
+    },
+    {
+      "label": "world-motion-sentry-contacts",
+      "records": 640,
+      "sha256": "2db2ee309bdcf5c60275dd723a6d32104d0c86fa68b7387c4d3dc32da82894e0"
+    },
+    {
+      "label": "world-motion-sentry-list",
+      "records": 216,
+      "sha256": "3d5b8bd92e6fa7b7891ab02ae78f9f9ba68838c6617159f5405c16a2285eb4ac"
+    },
+    {
+      "label": "world-motion-sentry-packet",
+      "records": 26,
+      "sha256": "4ba493dbb9e9c526c25317f0cd04c9f462e5a344afc4530b52f184545bae3859"
+    },
+    {
+      "label": "world-motion-sentry-reporting",
+      "records": 16,
+      "sha256": "f30dba050bd6a3a64b64f211530a782b14175ba4f41cf59644011b67cf6639f4"
+    },
+    {
+      "label": "world-motion-shaft-fall",
+      "records": 120,
+      "sha256": "2109921813e9f353809b61f36257002cbcd2e13237942afd714fc681ff2f48c6"
+    },
+    {
+      "label": "world-motion-trigger",
+      "records": 432,
+      "sha256": "afe829f8057a68e7b1e132ba5e902432e9530e238f71a3a32c859bca66f7c388"
+    },
+    {
+      "label": "world-motion-velocity",
+      "records": 288,
+      "sha256": "4c75c39ed3e8685d10a1f6d95fa3e5363e77fff909ec3cd0a951dc1920482284"
+    }
+  ],
+  "records": 8122,
+  "source_files": 2233,
+  "working_c_lines": 41887,
+  "production_c_files": 74,
+  "reference_c_lines": 0,
+  "runs": [
+    "build/port-world-motion/physics-7.log",
+    "build/port-world-motion/recovery-repeat-2/result.json"
+  ],
+  "remaining": [
+    "trap/radial and velocity integration contracts",
+    "repeat and freeze completed scope",
+    "default/server/highres affected sweeps",
+    "fresh corrected-C production/gameplay/save-load/flatmap qualification",
+    "baseline commit before Go conversion"
+  ]
+}

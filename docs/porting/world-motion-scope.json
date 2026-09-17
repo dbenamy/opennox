@@ -1,0 +1,204 @@
+{
+  "parent": "950f8f22",
+  "functions": [
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_510E50",
+      "body_lines": 1,
+      "sha256": "9f17984994414cc16be7038fab05320e4554debc7466fb5d9ab48bb5676087cc"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_updateSentryGlobe_510E60",
+      "body_lines": 68,
+      "sha256": "2acbf05c45cf58b09d7101ec7cf88a93733e54efe276911134feb2fa8beeb824"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_sentryUpdateList_510FD0",
+      "body_lines": 21,
+      "sha256": "b0ebe303d5288732d12524d42cd70907900b645dd8e483c09e2161415507452a"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_sentry_511020",
+      "body_lines": 22,
+      "sha256": "334a599f564b9072545a3186362481180abfa87b23776046e66dd3049af33a7a"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_511100",
+      "body_lines": 47,
+      "sha256": "6c54e4dc99fea32079ca3241a6a636cfdab29d0c01c9a2ca46a54cd770b2fa7f"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_511250",
+      "body_lines": 18,
+      "sha256": "aaf8e77ac3337fc6d948e7be7723693b77b2fb1793a4dd9e745370577f113fe2"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_unitSetDecayTime_511660",
+      "body_lines": 44,
+      "sha256": "7f441526e670b89f818474c8dbd500322ab7f7ea8bb541b9dbfb8cf27aee4898"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_decay_5116F0",
+      "body_lines": 29,
+      "sha256": "9ff46b01d469bfeba0b6fcf943749fcad2e7d16ad0dc5d1512acf647279dfeaa"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_decay_511750",
+      "body_lines": 25,
+      "sha256": "610c4d6a70f0cbff0a1adc3c58b460f4af3dd4006fb30d33e0ab61543ae29ff7"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_decayDestroy_5117B0",
+      "body_lines": 17,
+      "sha256": "cccd022eee46ca79caf20ff280d202c23754899cca4a4b78765d9d57696e2bb3"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_5117F0",
+      "body_lines": 9,
+      "sha256": "ff060a1fcb7e6634dfe4bc53d75d006856e4fab2bd91cc17503009e7b4c44279"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_unit_511810",
+      "body_lines": 7,
+      "sha256": "a65c5d4655f6d819bd4899b55123493d988b7dd83950c5f5ef524bae312cd5a8"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_updateObjectsVelocity_5118A0",
+      "body_lines": 98,
+      "sha256": "a4903345b5400baa5eabb229d54bf53a0b74e4c95b01bd35d3dd108aa0d00b13"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_518040",
+      "body_lines": 23,
+      "sha256": "db5df48e5f2fdfec2c83e57db265a17012bf0239c86ed0bb87a2b06f64cfc6d6"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_5180B0",
+      "body_lines": 34,
+      "sha256": "a8c0307df68b179ee955281d792cf659504cf6d586e7b22ef42d6e3823b06ead"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_51B810",
+      "body_lines": 23,
+      "sha256": "e80888d69f3831262887df1444bbbdd22e862d9348f3f6cf848f6267e70d7159"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_51B860",
+      "body_lines": 1,
+      "sha256": "5d04175d9a8f0f30c660d73d595bb6ca4b15e4c5587a3f93eb35b1bd2187fc02"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_updateFallLogic_51B870",
+      "body_lines": 84,
+      "sha256": "97225ecd87a0107f9f9481c25e383be175266dc8caa5ccded54bc688d1af050a"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "sub_537770",
+      "body_lines": 31,
+      "sha256": "996550fe193006ef867d1eb9132f7c5c13297ae2e317fe4d9b0b19166aed05f6"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "nox_xxx_projectileTraceHit_537850",
+      "body_lines": 132,
+      "sha256": "17b2da9aa29fc46ee79232708e4d34d628a4d9344fdd7e33076e0f05ee3cfe85"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "nox_xxx_sMakeScorch_537AF0",
+      "body_lines": 38,
+      "sha256": "741a189f4bc783255004aec6d8bde8aa6d7daa00934f65febab6878b59c4d061"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "nox_xxx_scorchInit_537BD0",
+      "body_lines": 10,
+      "sha256": "bef164fd372dfba21b3409da7b87a9f6b538e73a01048d4c628f26925f43afe8"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "nox_xxx_unitUpdateMover_54F740",
+      "body_lines": 124,
+      "sha256": "523c56b8038fc2caca434315fb4e6fe9fe4dc454f5f0f4b1ab248874aff3fbcc"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "nox_xxx_updateShootingTrap_54F9A0",
+      "body_lines": 45,
+      "sha256": "120f605214b3d16c65d880d26539877338828331edfb8bf5e7581a515fcba0e3"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "nox_xxx_createArrowTrapProjectile_54FA80",
+      "body_lines": 42,
+      "sha256": "03a7bbb8fcff82b68759dd9920949f7376f55ecec982f2ce532e88be0e2b5bd4"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_54FBB0",
+      "body_lines": 11,
+      "sha256": "180e3f8e4ba659809a3374a22b9c8603a822fe8744ad38d6df121fa5347f3b5f"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_54FBF0",
+      "body_lines": 13,
+      "sha256": "faa578d033097d4bf3a443ec0ccffe46f16ed762f93b1132006c0bd371cef333"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "nox_xxx_unitIsAttackReachable_54FC50",
+      "body_lines": 8,
+      "sha256": "324678190363900a2b97970173b6c2eda1bb28328a984b3a683ddfb3417a7f34"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "nox_xxx_collideTrigger_54FCD0",
+      "body_lines": 46,
+      "sha256": "18495fdfce3cf8ea8179504833d48d70507f5ae31ea98abdc8838dd3c08977e4"
+    },
+    {
+      "file": "src/legacy/GAME5_2.c",
+      "name": "nox_xxx_j_allocHitArray_511840",
+      "body_lines": 1,
+      "sha256": "eb6a10eb3b561ada94e1e98c7c46891a5b064c7837bc660e96d02e924b168e76"
+    }
+  ],
+  "removed_orphans": [
+    {
+      "name": "sub_537760",
+      "body_lines": 1,
+      "reason": "whole-source references were only its definition and header; no Go/C/preamble/registration caller"
+    }
+  ],
+  "corrections": [
+    {
+      "name": "nox_xxx_sentryUpdateList_510FD0",
+      "change": "test membership bit 31 instead of unsigned < 0",
+      "evidence": "list-1.log reproduces retained member; original binary omits unlink branch"
+    },
+    {
+      "name": "nox_xxx_collideTrigger_54FCD0",
+      "change": "treat a nil script callback result as no admission, preserving prior contact state",
+      "evidence": "trigger-disabled-c.log: real one-shot script accepts first contact, second contact segfaults at nil result dereference"
+    }
+  ]
+}

@@ -437,7 +437,7 @@ uint32_t* nox_xxx_sentryUpdateList_510FD0(uint32_t* a1) {
 	int v3;           // ecx
 
 	result = a1;
-	if (a1[4] < 0) {
+	if (a1[4] & 0x80000000u) {
 		v2 = a1[125];
 		if (v2) {
 			*(uint32_t*)(v2 + 496) = a1[124];
