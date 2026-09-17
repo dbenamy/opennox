@@ -8,42 +8,37 @@ across twelve item/reward callbacks. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — creature serialization baseline development
+## Current — creature C baseline qualified; translation next
 
-Item/reward conversion **a7814f6e** is committed and pushed: 1,065 C lines removed,
-leaving **58,539 / 82 production files / zero reference C**. It passes all 24 frozen
-groups, 178 affected roots / 3,294 leaf cases per target, all production builds/ABIs,
-the exact known suite and gameplay/save-load/flat comparisons. See ITEM_XFER.md.
+Item/reward conversion **a7814f6e** is committed/pushed and qualified. Creature
+helper recovery checkpoint **48c0ba80** is also pushed; subsequent callback fixtures
+and frozen expectations are uncommitted. No creature production code has changed.
 
 Current batch: GAME4_2.c from 00528DB0 through EOF, **1,570 C lines / ten functions**.
 Retain Monster/NPC callbacks and sub_52BAF0; seven helpers can become private Go.
-No creature implementation has changed and no new expectation is frozen.
+Current C remains **58,539 / 82 production files / zero reference C**.
 
-Initial C contracts now pass **106 leaf cases**: two current registered-callback
-round trips, four future-version rejections and 100 signed/wrapping timestamp
-cases (build/port-creature-xfer/c-initial3.log). Current records are 273/303 bytes.
-The fixture owns real type/object buffers, AI-name pointers and shipped numeric
-buff/action/direction tables. Missing fixture tables caused the first writer failure
-and stalled second run; both were corrected without changing production behavior.
-Current/historical action streams, all 72 shipped argument layouts, post-load
-references and 781 equipment-order cases now pass. Twelve action edge cases, 108 definition-default cases, seven voice cases,
-86 buff writer/gate cases, 70 actual buff-application cases and 32 path cases also
-pass. Two separate default-target runs pass 16 roots / 1,734 leaf cases with zero
-failures/skips; 1,707 records / thirteen groups match byte for byte. This is a
-helper-fixture recovery checkpoint, not a frozen baseline or conversion. See CREATURE_XFER.md for
-log names and compatibility decisions. None of these captures is frozen yet.
+Before freezing, default/server/highres and a separate repeat each passed **61 roots /
+5,108 leaf cases** without skips. All **4,908 records / 44 groups** matched across
+processes/targets: **1,977 creature records / twenty groups** plus 2,931 qualified
+item/common records / 24 groups. Those hashes are now installed in fixtures and
+creature-xfer-batch.json; final frozen baseline gates all pass. See
+[CREATURE_XFER.md](docs/porting/CREATURE_XFER.md) for owners, contracts and decisions.
 
-Next: qualify action frame adjustments, names/argument kinds, path/waypoint/object
-references and post-load resolution; expand historical monster/NPC, health/default,
-script/name, shop, voice/color, inventory and actual buff-effect cases. Repeat C
-captures and current-source integration before freezing/replacing the block. See
-CREATURE_XFER.md and creature-xfer-batch.json. No substantial blocker is pending.
+All three production builds/ABI pass. The full suite matches exactly 1,553 known
+failure entries (15 pass / three fail / 32 skip). Gameplay matches 41 frames,
+actual save/reload seven, flat rendering fourteen plus exact map regeneration.
+Final artifacts: build/port-creature-xfer/c-{default,server,highres,repeat} and
+c-production-final. All source fingerprints stayed unchanged.
 
-Ignored helper/timestamp/action drafts already installed in source are consumed;
-do not rerun them over reviewed files. The standalone debug test binary predates
-later fixture changes. Preserve untracked nox-iso-from-archive-org.7z and original
-assets. Completed runs have verified restoration manifests. Source build/baseline/env.sh
-for every Go command. Do not edit source during tests/builds.
+Next: commit/push this frozen baseline, then translate and qualify against unchanged
+expectations. Private helper drafts under build/port-creature-xfer/native-*.go are
+uninstalled/unqualified. No substantial blocker.
+
+Preserve untracked nox-iso-from-archive-org.7z and original assets. Completed-run
+asset duplicates have verified restoration manifests. Source build/baseline/env.sh
+for every Go command. Do not edit Go/C/headers while tests/builds are running.
+Ignored fixture drafts already installed are consumed; do not reinstall them.
 
 <!-- /current-checkpoint -->
 

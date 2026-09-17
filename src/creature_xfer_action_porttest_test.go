@@ -104,7 +104,9 @@ func TestCreatureXferActionCurrent(t *testing.T) {
 		Writer, Reader itemXferCaptureRow
 		Wire           []byte
 	}
-	defer func() { spellbookCapture(t, "creature-xfer-action-current", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "creature-xfer-action-current", rows, "4c7066f977ad9d5d1f4bf42a047829a9c650eac4308b02f252d38ce10924eab8")
+	}()
 	for _, frames := range [][2]uint32{{123, 123}, {123, 0}, {0, 123}, {0xffffffff, 0}, {0, 0xffffffff}} {
 		for _, value := range []uint32{0, 1, 0x7fffffff, 0xffffffff} {
 			t.Run(fmt.Sprintf("frame%08x-%08x-value%08x", frames[0], frames[1], value), func(t *testing.T) {

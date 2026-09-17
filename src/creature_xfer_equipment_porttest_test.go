@@ -17,7 +17,9 @@ func TestCreatureXferEquipmentOrder(t *testing.T) {
 		Case  string
 		Flags []uint32
 	}
-	defer func() { spellbookCapture(t, "creature-xfer-equipment-order", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "creature-xfer-equipment-order", rows, "fefcfa5d72da58b690c9ab091d64e7f24ce4199889a5153cc10334bc06a6b368")
+	}()
 	kinds := []struct {
 		class, subclass uint32
 		group           int

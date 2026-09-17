@@ -27,7 +27,9 @@ func TestCreatureXferActionArguments(t *testing.T) {
 		Wire              []byte
 		ReadCRC, WriteCRC uint32
 	}
-	defer func() { spellbookCapture(t, "creature-xfer-action-arguments", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "creature-xfer-action-arguments", rows, "f42e6c0ca02e3a05d6290f05d502f23c850e7d3208df22d1def7b8f70d1ae331")
+	}()
 	for id := 0; id < 72; id++ {
 		for _, present := range []bool{false, true} {
 			t.Run(fmt.Sprintf("id%d-present%v", id, present), func(t *testing.T) {

@@ -39,7 +39,9 @@ func TestCreatureXferBuffApplication(t *testing.T) {
 		CRC    uint32
 	}
 	var rows []row
-	defer func() { spellbookCapture(t, "creature-xfer-buff-application", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "creature-xfer-buff-application", rows, "eeb10d0e71494c8986fdb7dc42724f964bafe728770ac7ab6f81fa242275e32c")
+	}()
 	for _, version := range []uint16{1, 2} {
 		for _, power := range []byte{0, 1, 5, 6, 255} {
 			for _, timer := range []uint32{0, 1, 0x7fff, 0x8000, 0xffff, 0x10000, 0xffffffff} {

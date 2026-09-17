@@ -23,7 +23,9 @@ func TestCreatureXferDefinitionDefaults(t *testing.T) {
 		Data   []byte
 	}
 	var rows []row
-	defer func() { spellbookCapture(t, "creature-xfer-definition-defaults", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "creature-xfer-definition-defaults", rows, "2694cdd92e3157113a7851b6462f234742057c5ddeaa4bf3166b3cf4587910e3")
+	}()
 	for _, present := range []bool{false, true} {
 		for _, mask := range []uint32{0, 0xffffffff, 0x19c40, 0x20, 0x1800, 0xffc00000} {
 			for _, defaults := range []byte{0, 1, 2} {

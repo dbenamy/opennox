@@ -63,7 +63,9 @@ func TestCreatureXferCurrentRecords(t *testing.T) {
 		State itemXferCaptureRow
 		Wire  []byte
 	}
-	defer func() { spellbookCapture(t, "creature-xfer-current", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "creature-xfer-current", rows, "d3bce2e0e945a46f08e4539705d5e5b51acae4a21021998801fd6400bff4c89a")
+	}()
 	for _, name := range []string{"Monster", "NPC"} {
 		t.Run(name, func(t *testing.T) {
 			u := newCreatureXferObject(t, s, name)

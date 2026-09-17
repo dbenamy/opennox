@@ -1,126 +1,147 @@
 # Monster and NPC serialization
 
-## Scope and baseline plan
+## Current status
 
-Continue after qualified item/reward serialization **a7814f6e**. The next connected
-block is GAME4_2.c from 00528DB0 through EOF: **1,570 C lines / ten functions**.
-It covers monster/NPC callbacks, spellcaster defaults, action serialization and
-its timestamp/argument helpers, buff and voice records, equipment normalization,
-and post-load action-reference resolution. Current qualified C remains **58,539
-lines / 82 production files / zero reference C**.
+The C baseline is frozen and qualified; translation is next.
+No creature production implementation has changed. Current C remains **58,539
+physical lines / 82 production files / zero reference C**. Recovery checkpoint
+**48c0ba80** is committed and pushed. Item/reward conversion **a7814f6e** remains
+the latest qualified conversion.
 
-Audit existing registrations and callers before choosing retained exports versus
-private Go helpers. Keep unrelated declarations where remaining C callers need
-them. Reuse the qualified common/item stream and real object/type ownership
-fixtures; extend them with actual monster definitions, action metadata, waypoints,
-spell/buff owners, sound sets and inventory relationships as required.
+Before freezing, default/server/highres and a separate default process each passed
+**61 roots / 5,108 leaf cases**, without skips. All **4,908 records / 44 groups**
+matched byte for byte: **1,977 creature records / twenty groups**, plus the qualified
+2,931 item/common records / 24 groups. Frozen checks also pass on all targets and the separate repeat. All three
+production builds pass the C-symbol audit. The full asset suite matches its exact
+known 1,553 failure entries (15 packages pass / three fail / 32 skip). Gameplay
+matches 41 frames, actual save/reload seven, and flat rendering fourteen with exact
+map regeneration. All phase source fingerprints stayed unchanged.
 
-Start with current registered-callback read/write contracts and version rejection.
-Then cover historical field boundaries, names and masks, scripts, direction and
-float conversion, health/default policy, NPC colors/voice, shop payloads, inventory,
-buff side effects and timers. Action contracts must cover frame adjustments,
-argument kinds, path/waypoint references, stack boundaries and post-load resolution.
-Check full state, exact fields/stream positions, checksums, pointer identity and
-ownership. Repeat C captures before freezing; establish independent contracts for
-any ambiguous behavior before a reversible correction.
+## Scope and retained interfaces
 
-No creature callback has been translated. Preparatory caller references are under
-build/port-creature-xfer/caller-audit.json. The initial manifest runs creature plus
-qualified item/common serialization checks on all targets and a separate repeat.
-Final affected and production qualification will be selected after the caller/owner
-audit, preserving the exact known suite and gameplay/save-load/flat references.
+GAME4_2.c from 00528DB0 through EOF: **1,570 C lines / ten functions**. This covers
+Monster/NPC callbacks, spellcaster defaults, action serialization and timestamp/
+argument helpers, buff and voice records, equipment normalization, and post-load
+reference conversion.
 
-## Initial caller audit
+Retain Monster/NPC registered callbacks and sub_52BAF0, called by the server's
+post-load phase. The other seven helpers have no callers outside this block and
+can become private Go functions after moving their callers. Preserve unrelated
+waypoint declarations still needed by remaining C. Caller audit:
+build/port-creature-xfer/caller-audit.json.
 
-Retain the Monster/NPC registered callbacks and sub_52BAF0, which the server's
-post-load phase calls. The other seven helpers have no callers outside this block
-and can become private Go functions after moving their callers. Preserve any
-unrelated waypoint declaration needed elsewhere.
+## Contracts and owners
 
-Initial fixtures are installed for current records and future-version rejection,
-using real registered callbacks and MonsterUpdateData-sized buffers. Timestamp/helper bridges are installed; ignored drafts are consumed.
-No expectation is frozen and no creature implementation has changed.
+Fixtures use actual registered callbacks, owned monster/type buffers, production
+AI names and shipped numeric buff/action/direction tables. Actual linked monster
+definitions and voice sets, pending waypoints, live object lists, lookup-cache
+owners, inventory chains, duration records and spell definitions preserve runtime
+lookup/application behavior. Pointer identity is checked before normalizing only
+identified reference fields. Full state, exact fields, return values, stream ends,
+wire bytes and checksums are checked as appropriate.
 
-The first current-record writer stopped in its action-name lookup because the small
-fixture had not initialized the runtime AI-name pointer table. A debugger located
-the missing table at the writer's name-length operation. The fixture now owns and
-restores all 72 production AI names while keeping the actual C resolver. This is
-fixture setup, not evidence of an engine defect. Next, own the shipped numeric
-argument-kind table and allowed default actions as well for extended action tests.
+- Current Monster/NPC round trips and future-version rejection.
+- Every positive supported historical version: Monster 1–64, NPC 1–62. Independent
+  plaintext builders check script layouts, field widths, mirrored movement values,
+  health/max-health rules and colors. Old Monster scripts use the actual file-handle
+  registry with matching close/release ownership.
+- Spell tables: raw/named layouts, empty/sparse/alternating/full 137 slots, clearing
+  absent entries, and the current writer's exact count/name/value section.
+- Action frame shifts and signed/wrapping timestamp boundaries; all 72 shipped
+  argument layouts with present/absent object and waypoint identities; missing tail,
+  empty/unknown/255-byte names, unshipped supported kind 6 and unsupported kinds.
+- Every valid action-stack length through 24. Paths reach all 32 coordinate pairs
+  and sixteen pending-waypoint references. Object-reference arrays reach their
+  16/8-element limits and cover absent/live/destroyed lookups. Post-load conversion
+  independently checks identities, all action types, maximum stack and signed disable.
+- All 781 inventory sequences of up to four items across five categories, checking
+  complete item state except independently expected equipped-flag changes.
+- Definition defaults: saved health, selective status bits, retreat/resume override
+  flags and automatic-spell dispatch. The latter exercises the actual Wizard policy
+  with defined/missing definitions, matching/nonmatching types and four flag values.
+- Voice records: real linked lookup, unknown-name clearing, empty/255-byte names,
+  and absent voice sets. Buff writers cover the shipped iteration order and actual
+  shield duration lookup/default. Version/name rejection checks exact stopping points.
+  Actual infravision spell application covers versions 1/2, level clamping and timer
+  truncation across seventy cases; other spell effects reuse their qualified owners.
+- Merchant reads: nine historical boundaries, 0/1/2/60 stock entries, real type lookup,
+  versioned item parameters and both vendor tail fields. Shop helpers are already Go.
 
-Local disk space was recovered by removing only hash-verified duplicate original
-assets from seven older completed runs. Their screenshots/logs and restoration
-manifests remain; original assets and the active batch are untouched.
+Captured groups (not every assertion produces a capture):
 
-## Initial C evidence
+| Group | Records |
+| --- | ---: |
+| action-arguments | 144 |
+| action-current | 20 |
+| action-edges | 12 |
+| action-historical | 140 |
+| action-references | 27 |
+| action-stack | 25 |
+| auto-spells | 16 |
+| buff-application | 70 |
+| buff-writer | 72 |
+| current | 2 |
+| definition-defaults | 108 |
+| equipment-order | 781 |
+| merchant | 36 |
+| monster-historical | 64 |
+| npc-historical | 62 |
+| paths | 32 |
+| postload | 220 |
+| spell-words | 40 |
+| timestamps | 100 |
+| voices | 6 |
 
-With the required runtime tables owned/restored, **106 leaf cases pass** in
-c-initial3.log: current Monster/NPC round trips, future-version rejections and
-100 timestamp cases. The current records are 273 and 303 bytes. The timestamp
-helper returns the raw wrapped sum while storing at least 1 using a signed
-comparison. No expectation is frozen yet.
+## Compatibility decisions and review notes
 
-The action stream/gate fixture is installed. It independently builds an empty
-stack/path record, checks frame shifts and serialized fields, and captures both
-writer and reader state. Some timestamp adjustments run on writing as well as
-reading; preserve their minimum-1 side effect rather than assuming saves are pure.
+1. Timestamp arithmetic wraps at 32 bits. The helper returns the raw sum while
+   storing at least 1 using a signed comparison. Several adjustments also run
+   while saving; saves have these existing state changes.
+2. Action versions with a nonpositive signed value use the oldest layout. Future
+   positive versions reject. Unknown action names resolve to action zero.
+3. The shared stream adapter returns boolean success, not a byte count. Argument
+   serialization returns its final I/O status; an absent final word fails. Unsupported
+   argument kinds return the kind value before consuming argument/tail bytes.
+4. A reserved action word carries the completed waypoint-loop count. Preserve this
+   observed wire behavior, including checksums, rather than writing an assumed zero.
+5. Spell application clamps levels above five; the stored 32-bit duration then
+   overwrites the resulting timer through its 16-bit field. Existing ordering remains.
+6. Definition flags compare exactly with one where C does; other nonzero values
+   do not necessarily enable defaults. Preserve health/status masks and ordered
+   inventory conflict behavior.
 
-Current action stream/gate checks pass 28 cases; historical action reads pass
-140 cases including signed nonpositive versions, which this helper accepts using
-its oldest layout. The full 72-action argument fixture initially assumed a byte
-count return; the existing stream adapter actually returns a success flag. Its
-contract was corrected against that adapter before freezing. Owner isolation now
-also restores the object lookup cache, monster-definition list and voice-set list.
+No production defect correction was needed during this baseline. Early failures
+were fixture setup or expectation errors: missing AI-name/numeric runtime tables,
+wrong stream return assumption, uninitialized fixture file-handle registry, wrong
+waypoint field name, and an assumed no-argument idle action (shipped idle uses a
+timestamp). Each was corrected before freezing, with existing engine code unchanged.
 
-## Expanded helper contracts (not frozen)
+## Evidence and remaining gates
 
-All 72 shipped action kinds pass writer/reader argument contracts (144 cases),
-including real object/waypoint identities and normalized captures. Post-load
-reference conversion passes 220 cases: absent/live/destroyed objects, waypoint
-lookup, full 24-entry stacks and disabled signed-stack values. Inventory conflict
-normalization passes all 781 sequences of up to four items across five categories;
-full object state is checked, allowing only expected equipped-flag changes.
+Pre-freeze all-target/repeat artifacts:
+build/port-creature-xfer/c-{default,server,highres,repeat}-development.
+Frozen qualification uses c-{default,server,highres,repeat} and c-production-final.
+The batch manifest records commands, hashes and whole-source fingerprints.
+Development logs remain under build/port-creature-xfer; 48c0ba80's helper recovery
+checks passed 1,734 cases and repeated 1,707 records before callback expansion.
 
-Twelve action edge cases pass: empty/unknown/maximum-length names, absent final
-word, supported but unshipped argument kind 6, and unsupported kinds. The C helper
-returns the final stream adapter's boolean success; unsupported kinds return the
-kind value and leave the argument/tail unread. These are compatibility contracts,
-not reasons to regenerate expectations during the translation.
+Next: commit/push this baseline, then translate the
+connected block, review widths/ownership/exports and qualify against these unchanged
+expectations plus the complete affected suite and production gates. Matching samples
+never replaces the direct C/Go review.
 
-Logs: c-action-arguments-development2.log, c-postload-development.log,
-c-equipment-development.log and c-action-edges-development.log under
-build/port-creature-xfer. Definition-default contracts are in development. No
-creature production source has changed, and the baseline still needs complete
-callback/historical/buff coverage plus repeat and integration qualification.
+Disk recovery removed only hash-verified duplicate original assets from completed
+runs, preserving logs/screenshots and restoration manifests. Original assets and
+active runs remain intact. Ignored fixture drafts already installed in source are
+consumed; do not reinstall them over reviewed files.
 
-Definition defaults now pass 108 cases against actual linked definitions, covering
-health preservation/truncation, selective status bits and retreat/resume overrides.
-Seven voice cases cover empty/255-byte names, actual linked lookup, clearing unknown
-names and absent sets. Buff writes pass 72 cases, preserving the shipped order and
-shield duration-record/default-100 behavior; fourteen version/name rejection cases
-check exact stopping positions and unchanged object state.
+Final baseline timings: default 33.4 s, server 31.9 s, highres 41.9 s, repeat 7.3 s;
+production 225.4 s including gameplay/save-load/flat. Client SHA-256:
+86f015e11c91ca7ffb93b5657f0d4aa19745fcb4fe3837c167132f2ba7dd9683.
+The first production manifest mistakenly requested Go-backed exports for the still-C
+callbacks. The existing retained_c option corrected that configuration; no source
+or expectation changed. The final production run passes all gates.
 
-Seventy buff-application cases use the real spell acceptance and infravision effect:
-levels above five clamp, the applied buff power reflects that clamp, and the saved
-32-bit duration overwrites the resulting timer through its 16-bit field. Versions
-one and two agree. Thirty-two path cases reach all 32 coordinate pairs and sixteen
-waypoints, checking actual pending-waypoint lookup and missing-reference results.
-The first nonempty waypoint contract exposed a reserved-word detail: C serializes
-the completed waypoint-loop count later in the record. Preserve this existing wire
-behavior; the independent builder was corrected before freezing.
-
-Additional logs: c-defaults-development.log, c-voice-development.log,
-c-buffs-development.log and c-paths-buff-application.log. The first paths compile
-used Next instead of the actual WpNext field; this was only a fixture correction.
-Separate-process helper captures are in progress. Main callback historical records,
-merchant payloads, scripts/spell masks, nonempty action references/stack records and
-auto-spell defaults still need coverage before calling this a frozen C baseline.
-
-## Recovery checkpoint: helper baseline
-
-Two separate default-target processes pass **16 roots / 1,734 leaf cases**, zero
-failures/skips. Their **1,707 records / thirteen capture groups** match byte for
-byte (`c-helper-check-{a,b}.jsonl`, `helper-check-{a,b}-*.json`). These are development
-captures, not frozen expectations: callback expansion and all-target/integration
-qualification remain outstanding. A recovery commit saves this tested fixture work
-without claiming a completed conversion. C remains **58,539 / 82 files**.
+Private Go helper drafts are under build/port-creature-xfer/native-*.go. They are
+uninstalled and unqualified; review/complete them before use. No C count reduction
+is claimed by this baseline commit.

@@ -28,7 +28,9 @@ func TestCreatureXferPaths(t *testing.T) {
 		ReadCRC, WriteCRC uint32
 	}
 	var rows []row
-	defer func() { spellbookCapture(t, "creature-xfer-paths", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "creature-xfer-paths", rows, "83ac69db2230cc65c5f5cef23c335266dff56079b6582e8b268f2a8f18f95b8c")
+	}()
 	for _, points := range []int{0, 1, 2, 32} {
 		for _, waypoints := range []int{0, 1, 2, 16} {
 			for _, known := range []bool{false, true} {

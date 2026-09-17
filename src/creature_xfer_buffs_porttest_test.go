@@ -25,7 +25,9 @@ func TestCreatureXferBuffWriter(t *testing.T) {
 		CRC  uint32
 	}
 	var rows []row
-	defer func() { spellbookCapture(t, "creature-xfer-buff-writer", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "creature-xfer-buff-writer", rows, "491477ed873d75d72aa98fe30c46ad9d495d489b731fa77f67b5c056dbc4a205")
+	}()
 	order := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 27, 29, 26, 23, 0}
 	masks := []uint32{0, 0xffffffff, 0x55555555, 0xaaaaaaaa}
 	for i := 0; i < 32; i++ {

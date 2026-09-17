@@ -26,7 +26,9 @@ func TestCreatureXferActionEdges(t *testing.T) {
 		Position    int64
 	}
 	var rows []row
-	defer func() { spellbookCapture(t, "creature-xfer-action-edges", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "creature-xfer-action-edges", rows, "4181955561fc0d2075358604e903a1d7570ee3703608b4d96a72aecd2aa57af0")
+	}()
 	for _, name := range []string{"", "unknown-action", strings.Repeat("x", 255), ai.ActionType(0).String()} {
 		for _, tail := range []bool{false, true} {
 			t.Run(fmt.Sprintf("name%d-tail%v", len(name), tail), func(t *testing.T) {

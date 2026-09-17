@@ -26,7 +26,9 @@ func TestCreatureXferVoiceRecords(t *testing.T) {
 		ReadCRC, WriteCRC uint32
 	}
 	var rows []row
-	defer func() { spellbookCapture(t, "creature-xfer-voices", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "creature-xfer-voices", rows, "067a08d8ad5734f304babebc0d903d89e92b79524aaad2ceed37b6a8ba6061e0")
+	}()
 	for _, name := range []string{"", "PortVoice", strings.Repeat("v", 255)} {
 		for _, known := range []bool{false, true} {
 			t.Run(fmt.Sprintf("len%d-known%v", len(name), known), func(t *testing.T) {

@@ -15,7 +15,9 @@ func TestCreatureXferActionHistorical(t *testing.T) {
 	s := newCreatureXferOwner(t)
 	path := filepath.Join(t.TempDir(), "old-action.bin")
 	var rows []itemXferCaptureRow
-	defer func() { spellbookCapture(t, "creature-xfer-action-historical", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "creature-xfer-action-historical", rows, "0a2fa616be097bbc8d8d9f492fa3a8389d181671e5af85fa8e7e2107895e366d")
+	}()
 	for _, version := range []uint16{0, 1, 2, 3, 4, 0x8000, 0xffff} {
 		for _, frames := range [][2]uint32{{123, 123}, {123, 0}, {0, 123}, {0xffffffff, 0}, {0, 0xffffffff}} {
 			for _, value := range []uint32{0, 1, 0x7fffffff, 0xffffffff} {

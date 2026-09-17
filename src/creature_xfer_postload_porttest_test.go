@@ -20,7 +20,9 @@ func TestCreatureXferPostloadReferences(t *testing.T) {
 		Case    string
 		Entries [][6]uint32
 	}
-	defer func() { spellbookCapture(t, "creature-xfer-postload", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "creature-xfer-postload", rows, "5996b0b2ba26681fc5621c10546d4d807fc487a5f1427517d7660de64139c1ad")
+	}()
 	run := func(label string, ids []int, stack byte, present, destroyed bool) {
 		t.Run(label, func(t *testing.T) {
 			u := newCreatureXferObject(t, s, "Monster")
