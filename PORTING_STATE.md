@@ -8,31 +8,42 @@ across twelve item/reward callbacks. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — item serialization qualified
+## Current — creature serialization baseline development
 
-The twelve item/reward callbacks are Go implementations, with **1,065 C lines
-removed**. All **24 frozen groups / 2,931 records** match. Final default/server/highres
-runs each pass **178 roots / 3,294 leaf cases**, with no skips. All three production
-builds/ABI checks pass. The full suite retains exactly **1,553 known failure entries**
-and **15/3/32 pass/fail/skip packages**. Gameplay/save-load/flat comparisons match
-**41/7/14 frames** and exact War01A regeneration. Static checking passes.
+Item/reward conversion **a7814f6e** is committed and pushed: 1,065 C lines removed,
+leaving **58,539 / 82 production files / zero reference C**. It passes all 24 frozen
+groups, 178 affected roots / 3,294 leaf cases per target, all production builds/ABIs,
+the exact known suite and gameplay/save-load/flat comparisons. See ITEM_XFER.md.
 
-Prerequisites **bf1afd10** and frozen C baseline **e4852239** are pushed. The conversion
-is ready for its commit/push. Final source proof covers **1,912 files** and all
-four final phases. See ITEM_XFER.md and build/port-item-xfer/native-final-*.
-No expected output was changed. The only follow-up fixture adjustment names a
-function-type parameter to avoid a legacy noxfactor tokenizer ambiguity; all final
-gates were rerun. The shared empty obelisk hook remains for objective-update callers.
+Current batch: GAME4_2.c from 00528DB0 through EOF, **1,570 C lines / ten functions**.
+Retain Monster/NPC callbacks and sub_52BAF0; seven helpers can become private Go.
+No creature implementation has changed and no new expectation is frozen.
 
-Next: commit/push this conversion, then audit the connected monster/NPC transfer
-block and action/buff helpers in GAME4_2.c. Reuse the common/item owners and stream
-fixtures; establish and repeat C contracts before replacing the next block.
-Continue one qualified chunk at a time. No substantial blocker is pending.
+Initial C contracts now pass **106 leaf cases**: two current registered-callback
+round trips, four future-version rejections and 100 signed/wrapping timestamp
+cases (build/port-creature-xfer/c-initial3.log). Current records are 273/303 bytes.
+The fixture owns real type/object buffers, AI-name pointers and shipped numeric
+buff/action/direction tables. Missing fixture tables caused the first writer failure
+and stalled second run; both were corrected without changing production behavior.
+Current/historical action streams, all 72 shipped argument layouts, post-load
+references and 781 equipment-order cases now pass. Twelve action edge cases, 108 definition-default cases, seven voice cases,
+86 buff writer/gate cases, 70 actual buff-application cases and 32 path cases also
+pass. Two separate default-target runs pass 16 roots / 1,734 leaf cases with zero
+failures/skips; 1,707 records / thirteen groups match byte for byte. This is a
+helper-fixture recovery checkpoint, not a frozen baseline or conversion. See CREATURE_XFER.md for
+log names and compatibility decisions. None of these captures is frozen yet.
 
-Ignored build/port-item-xfer/*_native.draft and fixture installers are consumed;
-do not overwrite reviewed source. Preserve untracked nox-iso-from-archive-org.7z
-and original assets. Completed runs have verified restoration manifests. Source
-build/baseline/env.sh for every Go command. Do not edit source during tests/builds.
+Next: qualify action frame adjustments, names/argument kinds, path/waypoint/object
+references and post-load resolution; expand historical monster/NPC, health/default,
+script/name, shop, voice/color, inventory and actual buff-effect cases. Repeat C
+captures and current-source integration before freezing/replacing the block. See
+CREATURE_XFER.md and creature-xfer-batch.json. No substantial blocker is pending.
+
+Ignored helper/timestamp/action drafts already installed in source are consumed;
+do not rerun them over reviewed files. The standalone debug test binary predates
+later fixture changes. Preserve untracked nox-iso-from-archive-org.7z and original
+assets. Completed runs have verified restoration manifests. Source build/baseline/env.sh
+for every Go command. Do not edit source during tests/builds.
 
 <!-- /current-checkpoint -->
 

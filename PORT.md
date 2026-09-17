@@ -27,8 +27,9 @@ Gameplay matches **41 frames**, actual save/load **seven frames**, and flat rend
 
 See [ITEM_XFER.md](docs/porting/ITEM_XFER.md) for evidence and review notes, including
 historical reward-mask behavior and the fixture-only refactoring-tool adjustment.
-Next, audit the connected monster/NPC serialization block and its action/buff helpers,
-reusing these qualified owners and stream fixtures. [PORTING_STATE.md](PORTING_STATE.md)
+The connected monster/NPC serialization block is in C-baseline preparation,
+reusing these qualified owners and stream fixtures. See
+[CREATURE_XFER.md](docs/porting/CREATURE_XFER.md) for current coverage and open gates. [PORTING_STATE.md](PORTING_STATE.md)
 is the resume checkpoint; confident reversible decisions remain recorded for review.
 
 ## Goal and target
