@@ -26,7 +26,10 @@ Gameplay matches **41 frames**, actual save/load **seven**, and flat rendering
 
 See [CREATURE_XFER.md](docs/porting/CREATURE_XFER.md) for evidence and review notes,
 including historical timestamp/reserved-word behavior and glyph prefix copying.
-Next: visibility and effect reports, reusing these qualified owners.
+The [visibility/effects C baseline](docs/porting/VISIBILITY_EFFECTS.md) is now
+qualified: 84 roots / 11,688 leaf cases in all three targets and a separate repeat,
+with all 11,458 records / 65 groups matching and production/integration gates passing.
+Next: install that conversion, retiring its proven orphaned throttle helper.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint; confident reversible
 decisions remain recorded for review.
 
@@ -54,6 +57,10 @@ may precede full qualification when their evidence and remaining gates are expli
 1. Select a connected behavior batch, aiming for roughly
    1,000–3,000 C lines where dependencies permit. Identify callers, callbacks, shared state,
    ownership and observable effects. Move callers with private helpers when useful.
+   Check whole-repository reachability before building fixtures: a function with no
+   external callers may be a live private helper or completely orphaned. Audit
+   callbacks, registrations and C preambles too. Remove proven unreachable code
+   with documented evidence instead of translating it solely to keep tests alive.
 2. Build a recoverable C baseline using real owners and reusable fixtures. Cover
    boundaries, return values, mutations, signedness/overflow, layout, serialization,
    RNG consumption, timing and pixels as relevant. Repeat original-C captures in

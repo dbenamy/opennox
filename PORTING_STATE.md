@@ -9,32 +9,38 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — creature conversion qualified; next batch audit ready
+## Current — visibility/effects C baseline qualified
 
-Frozen C baseline **194434ff** is committed/pushed. The native creature conversion
-is qualified and ready to commit/push. It removes ten C functions, retains three
-exports and retires seven private bridges; six Go files contain the implementation.
-No reference C remains. Current count: **56,968 / 82 files**.
+Creature conversion **c1e41b4d** is committed/pushed. Production C remains
+**56,968 lines / 82 files**, zero reference C. This checkpoint freezes the next
+849-line / thirty-function block in GAME4_2.c, from 00522FF0 through EOF.
 
-Default/server/highres each pass **309 roots / 6,645 leaf cases**, no skips. All
-**4,908 records / 44 groups** match unchanged expectations. Production builds and
-export audits pass; the suite matches exactly 1,553 known failures (15 packages
-pass / three fail / 32 skip). Gameplay matches 41 frames, actual save/reload seven,
-flat rendering fourteen plus exact map regeneration. Static checks pass. All gates
-share **1,941 unchanged source-file fingerprints**.
+Default/server/highres and separate repeat each pass **84 roots / 11,688 leaf
+cases**, no skips. All **11,458 records / 65 groups** match unchanged expectations.
+All three production builds and thirty C-symbol checks pass. Full suite exactly
+matches 1,553 known failures (15 packages pass / three fail / 32 skip). Gameplay
+matches 41 frames, actual save/load seven, flat rendering fourteen plus exact map
+regeneration. Static checks pass. All final gates share **1,954 unchanged source
+fingerprints**. See docs/porting/VISIBILITY_EFFECTS.md and visibility-effects-batch.json.
+Artifacts: build/port-visibility-effects/c-{default,server,highres,repeat}-final,
+c-production. No tests/builds remain running.
 
-Artifacts: build/port-creature-xfer/native-{default,server,highres,production}.
-[CREATURE_XFER.md](docs/porting/CREATURE_XFER.md) records compatibility decisions.
+Next: commit/push this frozen C baseline, install/review the native conversion,
+route Go callers directly, retire unused exports, then qualify/commit/push and
+continue. Six functions have external C callers; the rest can lose their C exports.
+The 47-line sub_528030 helper is completely orphaned: retire it and its baseline
+fixture rather than preserve unused Go solely for testing. Native checks explicitly
+omit that retired 3,360-record group; all live expectations remain unchanged.
 
-Next: commit/push this conversion, then begin visibility/effect reports in
-GAME4_2.c from 00522FF0 through EOF: **849 C lines / thirty functions**. Candidate
-and caller audit plus owner/test notes are under build/port-visibility-effects.
-Eight helpers have no external nonheader callers; move them with their callers.
-No next-batch source/fixture changes exist yet. No substantial blocker.
+Ignored native-{fx,reports,seen,sight}.go drafts under build/port-visibility-effects
+are incomplete/unreviewed and NOT installed. They still need exports, caller
+routing, primitive fixture dispatch, header cleanup and arithmetic/callback audit.
+Retain the small unrelated declarations if needed outside the removed C block.
 
 Preserve untracked nox-iso-from-archive-org.7z and original assets. Source
 build/baseline/env.sh for Go commands. Do not edit Go/C/headers during tests/builds.
-Ignored native drafts are consumed; do not reinstall them over reviewed source.
+Confident reversible decisions are recorded in the batch report; no substantial
+blocker or user question. Continue after each qualified commit/push.
 
 <!-- /current-checkpoint -->
 
