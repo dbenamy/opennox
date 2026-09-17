@@ -18,56 +18,51 @@ import (
 	"unsafe"
 )
 
-// Call the actual team implementation; fixtures own teams and message queues.
+// Fixtures dispatch directly to the production Go owners.
 func PortTestTeamRuntimeMessage(op string, tm *server.Team, obj *server.ObjectTeam, code int, name string) int {
 	switch op {
 	case "rename":
-		C.nox_xxx_teamRenameMB_418CD0((*C.wchar2_t)(tm.C()), internWStr(name))
+		teamRuntimeRename(tm, (*uint16)(unsafe.Pointer(internWStr(name))))
 	case "change":
-		return int(C.sub_4196D0(obj.C(), tm.C(), C.int(code), 0))
+		return teamRuntimeSwitch(obj, tm, code, 0)
 	case "join-request":
-		return int(C.sub_419900(C.int(uintptr(tm.C())), C.int(uintptr(unsafe.Pointer(obj))), C.short(code)))
+		return int(teamRuntimeRequest(tm, obj, int16(code), 10))
 	case "change-request":
-		return int(C.sub_419960(C.int(uintptr(tm.C())), C.int(uintptr(unsafe.Pointer(obj))), C.short(code)))
+		return int(teamRuntimeRequest(tm, obj, int16(code), 11))
 	default:
 		panic(op)
 	}
 	return 0
 }
-
 func PortTestTeamRuntimeName(tm *server.Team, name string, flag uint32) {
-	C.sub_418800((*C.wchar2_t)(tm.C()), internWStr(name), C.int(flag))
+	teamRuntimeSetName(tm, (*uint16)(unsafe.Pointer(internWStr(name))), flag)
 }
-func PortTestTeamRuntimeUnlink(tm *server.Team, obj *server.ObjectTeam) {
-	C.sub_418E40(tm.C(), obj.C())
-}
-
+func PortTestTeamRuntimeUnlink(tm *server.Team, obj *server.ObjectTeam) { teamRuntimeUnlink(tm, obj) }
 func PortTestTeamRuntimePredicates(a, b *server.ObjectTeam, id byte) (int, int, int) {
-	return int(C.nox_xxx_servObjectHasTeam_419130(C.int(uintptr(a.C())))), int(C.nox_xxx_servCompareTeams_419150(C.int(uintptr(a.C())), C.int(uintptr(b.C())))), int(C.nox_xxx_teamCompare2_419180(a.C(), C.uchar(id)))
+	return int(teamRuntimeBool(a.Has())), int(teamRuntimeBool(a.SameAs(b))), int(teamRuntimeBool(teamRuntimeContains(a, server.TeamID(id))))
 }
 func PortTestTeamRuntimeLookup(name string) (*server.Team, bool) {
-	return (*server.Team)(unsafe.Pointer(C.sub_418A40(internWStr(name)))), C.sub_4190F0(internWStr(name)) != 0
+	t := teamRuntimeFind((*uint16)(unsafe.Pointer(internWStr(name))))
+	return t, t != nil
 }
 func PortTestTeamRuntimeSelect(op string, tm *server.Team) int {
 	switch op {
 	case "count":
-		return int(C.sub_418BC0(C.int(uintptr(tm.C()))))
+		return teamRuntimeCount(tm)
 	case "group-count":
-		return int(C.sub_417DE0())
+		return int(teamRuntimeGroupCount())
 	case "least":
-		t := (*server.Team)(unsafe.Pointer(C.sub_4189D0()))
-		if t == nil {
-			return 0
+		if t := teamRuntimeLeast(); t != nil {
+			return int(t.ID())
 		}
-		return int(t.ID())
+		return 0
 	case "available":
-		t := (*server.Team)(unsafe.Pointer(C.sub_418A10()))
-		if t == nil {
-			return 0
+		if t := teamRuntimeAvailable(); t != nil {
+			return int(t.ID())
 		}
-		return int(t.ID())
+		return 0
 	case "flag-count":
-		return int(C.sub_417DC0())
+		return int(teamRuntimeFlagCount)
 	case "capflag":
 		return int(C.nox_xxx_mapInfoSetCapflag_417EA0())
 	case "flagball":
@@ -76,64 +71,59 @@ func PortTestTeamRuntimeSelect(op string, tm *server.Team) int {
 		panic(op)
 	}
 }
-
 func PortTestTeamRuntimeMap(op string, arg int) int {
 	switch op {
 	case "scan":
-		if C.sub_417EC0() {
-			return 1
-		}
-		return 0
+		return int(teamRuntimeBool(teamRuntimeScan()))
 	case "assign":
-		return int(C.nox_xxx_teamAssignFlags_418640())
+		return teamRuntimeAssignFlags()
 	case "toggle":
-		return int(uintptr(unsafe.Pointer(C.nox_xxx_toggleAllTeamFlags_418690(C.int(arg)))))
+		teamRuntimeToggle(arg != 0)
+		return 0
 	case "create":
-		return int(C.nox_xxx_wndGuiTeamCreate_4185B0())
+		return teamRuntimeCreateMap()
 	case "balance":
-		C.sub_4181F0(C.int(arg))
+		teamRuntimeBalance(arg != 0)
 		return 0
 	case "nearest":
-		return int(C.sub_4183C0())
+		return teamRuntimeNearest()
 	case "enable":
-		return int(C.sub_418390())
+		return teamRuntimeEnable()
 	case "crown":
-		return int(C.nox_xxx_mapInfoSetKotr_4180D0())
+		return teamRuntimeCrown()
 	default:
 		panic(op)
 	}
 }
-
 func PortTestTeamRuntimeTextIndex() *uint32 { return (*uint32)(unsafe.Pointer(&C.dword_5d4594_825736)) }
 func PortTestTeamRuntimeOther(op string, tm *server.Team, member *server.ObjectTeam, a, b int) int {
 	switch op {
 	case "group":
-		return int(C.sub_418830(C.int(uintptr(tm.C())), C.int(a)))
+		teamRuntimeSetGroup(tm, uint32(a))
+		return int(uintptr(tm.C()))
 	case "clear":
-		C.sub_418D80(C.int(uintptr(tm.C())))
+		teamRuntimeClearPlayers(tm)
 	case "lessons":
-		C.nox_xxx_netChangeTeamID_419090(C.int(uintptr(tm.C())), C.int(a))
+		teamRuntimeLessons(tm, a)
 	case "leave":
-		C.nox_xxx_netChangeTeamMb_419570(member.C(), C.int(a))
+		teamRuntimeLeave(member, a)
 	case "announce":
-		C.sub_4184D0((*C.nox_team_t)(tm.C()))
+		teamRuntimeAnnounce(tm)
 	case "describe":
-		C.sub_4197C0((*C.wchar2_t)(tm.C()), C.int(a))
+		teamRuntimeDescribe(tm, a)
 	case "member-report":
-		C.sub_4198A0(C.int(uintptr(member.C())), C.int(a), C.int(b))
+		teamRuntimeMemberReport(member, a, b)
 	case "reset":
-		return int(C.sub_417CF0())
+		return GetServer().TeamsRemoveActive(false)
 	default:
 		panic(op)
 	}
 	return 0
 }
 func PortTestTeamRuntimeLinks(tm *server.Team, member *server.ObjectTeam) (unsafe.Pointer, unsafe.Pointer) {
-	return unsafe.Pointer(uintptr(C.nox_xxx_teamCheckSmth_418C60(C.int(uintptr(tm.C()))))), unsafe.Pointer(C.sub_418C70((*C.uint32_t)(member.C())))
+	return teamRuntimeFirst(tm).C(), teamRuntimeNext(member).C()
 }
-func PortTestTeamRuntimeObject(code int) *server.ObjectTeam {
-	return (*server.ObjectTeam)(unsafe.Pointer(C.nox_xxx_objGetTeamByNetCode_418C80(C.int(code))))
-}
+func PortTestTeamRuntimeObject(code int) *server.ObjectTeam { return teamRuntimeObject(code) }
 
 // Shared C respawn ownership, not a second implementation of its list logic.
 func PortTestTeamRuntimeRespawns(objects []*server.Object) func() {

@@ -1470,12 +1470,24 @@ its outgoing array. Store it at byte 8 of the existing 10-byte record and remove
 the unused local. Header bytes already matched the independent contract; the
 incorrect type word was reproduced separately. These corrections are authorized,
 reversible and intended to make the existing protocol fields deterministic and
-correct. Twelve focused C roots pass after correction; broader baseline and fresh
-production qualification remain pending. See [TEAM_RUNTIME.md](TEAM_RUNTIME.md).
+correct. The corrected C baseline `0b4b853c` passes all three targets and fresh
+production qualification. See [TEAM_RUNTIME.md](TEAM_RUNTIME.md).
 
 The group/rebalance contract additionally reproduces stale team member counts:
 the clear-player caller removes membership nodes without decrementing its counter.
 Decrement only after a successful unlink; a detached matching-ID entry must not
 change the count. Keep the lower-level unlink API unchanged because other callers
 already own their decrements. This is another reversible prerequisite correction;
-combined original-C and production qualification is pending in TEAM_RUNTIME.md.
+combined corrected-C and production qualification passes in TEAM_RUNTIME.md.
+
+## Team score dispatch ownership — conversion review
+
+Preserve the legacy score sender's direct reliable-queue dispatch. An initial
+reuse of Server.TeamChangeLessons matched the default output but routed through
+its replaceable send hook, changing the existing objective fixtures' complete
+observations. Keep the public Go setter unchanged; the converted legacy owner
+stores the score and sends the existing record directly. A new dispatch-owner
+contract distinguishes the two paths, and both original objective-score hashes
+are restored without changing goldens. PORT.md now calls for this ownership check
+when reusing existing Go APIs. This is translation fidelity, not a gameplay rule
+change; no additional user decision is needed.

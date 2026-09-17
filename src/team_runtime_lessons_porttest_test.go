@@ -58,3 +58,43 @@ func TestTeamRuntimeLessons(t *testing.T) {
 	legacy.PortTestTeamRuntimeOther("lessons", nil, nil, 1, 0)
 	spellbookCapture(t, "team-runtime-lessons", rows, "18b3efc86e89b18d120954905c2cdb22d751372158decc9ffdf89cb3298c8b61")
 }
+
+// C score updates use the reliable queue directly, independently of the public
+// server send hook. Equal bytes under the default hook are not the full contract.
+func TestTeamRuntimeLessonsDispatch(t *testing.T) {
+	o := newMatchRosterOwner(t)
+	tm := o.s.Teams.Create(1)
+	old := o.s.NetSendPacketXxx
+	t.Cleanup(func() { o.s.NetSendPacketXxx = old })
+	calls := 0
+	o.s.NetSendPacketXxx = func(int, []byte, int, int, int) int { calls++; return 1 }
+	for _, host := range []bool{false, true} {
+		t.Run(fmt.Sprintf("host%t", host), func(t *testing.T) {
+			mode := noxflags.GameFlag(0)
+			if host {
+				mode = 1
+			}
+			defer noxflags.PortTestGameFlags(mode)()
+			o.reset()
+			calls = 0
+			legacy.PortTestTeamRuntimeOther("lessons", tm, nil, 37, 0)
+			if calls != 0 {
+				t.Fatal("legacy score update called the replaceable server hook")
+			}
+			if tm.Lessons != 37 {
+				t.Fatal("score not stored")
+			}
+			nodes := o.state().Nodes
+			if !host {
+				if len(nodes) != 0 {
+					t.Fatal("client score update sent a message")
+				}
+				return
+			}
+			want := []byte{196, 8, 1, 0, 0, 0, 37, 0, 0, 0}
+			if len(nodes) != 1 || !bytes.Equal(nodes[0].Data, want) {
+				t.Fatal("score update did not reach the actual reliable queue")
+			}
+		})
+	}
+}

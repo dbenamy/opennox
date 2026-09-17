@@ -37,15 +37,14 @@ func damageBall(source, u *server.Object, amount int32) {
 		C.nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&u.PosVec)), asObjectC(it), 30)
 		C.nox_xxx_unitClearOwner_4EC300(asObjectC(it))
 		objectiveRememberOwner(it, u)
-		team := C.int(uintptr(unsafe.Pointer(&it.TeamVal)))
 		ind := *(*byte)(unsafe.Add(source.CObj(), 52))
-		if C.nox_xxx_servObjectHasTeam_419130(team) != 0 {
+		if it.TeamVal.Has() {
 			t := C.nox_xxx_getTeamByID_418AB0(C.int(ind))
 			if t != nil {
-				C.sub_4196D0(unsafe.Pointer(&it.TeamVal), unsafe.Pointer(t), C.int(it.NetCode), 0)
+				teamRuntimeSwitch(it.TeamPtr(), asTeamP(unsafe.Pointer(t)), int(it.NetCode), 0)
 			}
 		} else {
-			C.nox_xxx_createAtImpl_4191D0(C.uchar(ind), unsafe.Pointer(&it.TeamVal), 1, C.int(it.NetCode), 0)
+			teamRuntimeJoin(server.TeamID(ind), it.TeamPtr(), 1, int(it.NetCode), 0)
 		}
 		inventorySound(926, u, 0, 0)
 		return

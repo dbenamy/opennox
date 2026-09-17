@@ -23,7 +23,7 @@ func spellLifeForbiddenObjective(id int32) bool {
 	return GetServer().S().Spells.HasFlags(spell.ID(id), 0x80000)
 }
 func spellLifeHasTeam(u *server.Object) bool {
-	return C.nox_xxx_servObjectHasTeam_419130(C.int(uintptr(unsafe.Add(u.CObj(), 48)))) != 0
+	return u.TeamVal.Has()
 }
 func spellLifeOwnsType(u *server.Object, id uint32) bool {
 	for it := u.Field129; it != nil; it = it.Field128 {

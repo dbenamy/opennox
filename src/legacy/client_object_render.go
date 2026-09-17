@@ -64,7 +64,7 @@ func objectRenderTint(color uint32) {
 }
 func objectRenderTeam(id int) *server.ObjectTeam {
 	// The shared lookup still serves remaining C code and owns host/client routing.
-	return (*server.ObjectTeam)(unsafe.Pointer(C.nox_xxx_objGetTeamByNetCode_418C80(C.int(id))))
+	return teamRuntimeObject(id)
 }
 func objectRenderDraw(vp *noxrender.Viewport, dr *client.Drawable, img noxrender.ImageHandle) {
 	if C.dword_5d4594_1321520 == 0 {

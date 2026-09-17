@@ -246,7 +246,7 @@ func controlConfusedDirection(u *server.Object) int32 {
 	return v
 }
 func controlStartEligible(u *server.Object, team int32) bool {
-	return u.ObjFlags&0x1000000 != 0 && (team == 0 || C.nox_xxx_servObjectHasTeam_419130(C.int(uintptr(unsafe.Add(u.CObj(), 48)))) == 0 || Nox_xxx_teamCompare2_419180(&u.TeamVal, server.TeamID(byte(team))) != 0)
+	return u.ObjFlags&0x1000000 != 0 && (team == 0 || !u.TeamVal.Has() || Nox_xxx_teamCompare2_419180(&u.TeamVal, server.TeamID(byte(team))) != 0)
 }
 func controlSubStamina(u *server.Object, amount int32) int32 {
 	if u.ObjClass&6 == 0 {

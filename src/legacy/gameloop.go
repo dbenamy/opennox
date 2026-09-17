@@ -176,7 +176,7 @@ func Sub_48D760() {
 	C.sub_48D760()
 }
 func Sub_417CF0() {
-	C.sub_417CF0()
+	GetServer().TeamsRemoveActive(false)
 }
 func Sub_499450() {
 	C.sub_499450()

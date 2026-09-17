@@ -21,7 +21,7 @@ import (
 	"unsafe"
 )
 
-func objectiveTeamCount(t *server.Team) int { return int(C.sub_418BC0(C.int(uintptr(t.C())))) }
+func objectiveTeamCount(t *server.Team) int { return teamRuntimeCount(t) }
 func objectiveScore(u *server.Object) {
 	C.nox_xxx_changeScore_4D8E90(inventoryInt(u), 1)
 	C.nox_xxx_netReportLesson_4D8EF0(asObjectC(u))
@@ -59,10 +59,10 @@ func objectiveBallCollide(u, t *server.Object) {
 	core.ObjSetOwner(t, u)
 	if u.TeamVal.Has() {
 		if team != nil {
-			C.sub_4196D0(unsafe.Pointer(&u.TeamVal), team.C(), C.int(u.NetCode), 0)
+			teamRuntimeSwitch(u.TeamPtr(), team, int(u.NetCode), 0)
 		}
 	} else {
-		C.nox_xxx_createAtImpl_4191D0(C.uchar(t.TeamVal.ID), unsafe.Pointer(&u.TeamVal), 1, C.int(u.NetCode), 0)
+		teamRuntimeJoin(t.TeamVal.ID, u.TeamPtr(), 1, int(u.NetCode), 0)
 	}
 	if team != nil {
 		state := byte(2)
@@ -123,7 +123,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 			objectiveScore(t)
 			if t.TeamVal.Has() {
 				tm := core.Teams.ByID(t.TeamVal.ID)
-				C.nox_xxx_netChangeTeamID_419090(C.int(uintptr(tm.C())), C.int(tm.Lessons+1))
+				teamRuntimeLessons(tm, tm.Lessons+1)
 				if C.dword_5d4594_2650652 != 0 && playerUD != nil {
 					C.sub_425CA0(C.int(uintptr(unsafe.Pointer((*server.PlayerUpdateData)(playerUD).Player))), 0)
 				}
@@ -205,7 +205,7 @@ func objectiveHomeBase(base, ball *server.Object) int16 {
 		objectiveScore(owner)
 	}
 	if baseTeam != nil {
-		C.nox_xxx_netChangeTeamID_419090(C.int(uintptr(baseTeam.C())), C.int(baseTeam.Lessons+1))
+		teamRuntimeLessons(baseTeam, baseTeam.Lessons+1)
 		objectiveQuestScore(*temporaryRefWord(ud, 0))
 		inventorySound(929, base, 0, 0)
 		objectivePointFX(154, ball)
@@ -278,7 +278,7 @@ func objectiveFlagBallScore(flag, target *server.Object) int16 {
 	}
 	limit := uint16(C.nox_xxx_servGamedataGet_40A020(64))
 	objectiveScore(owner)
-	C.nox_xxx_netChangeTeamID_419090(C.int(uintptr(team.C())), C.int(team.Lessons+1))
+	teamRuntimeLessons(team, team.Lessons+1)
 	objectiveQuestScore(owner)
 	inventorySound(929, flag, 0, 0)
 	inventoryMessage(9, owner, uint32(team.ID()))
@@ -308,7 +308,7 @@ func objectiveFlagBallScore(flag, target *server.Object) int16 {
 				data := ball.UpdateData
 				core.ObjClearOwner(ball)
 				objectiveRememberOwner(ball, nil)
-				C.nox_xxx_netChangeTeamMb_419570(unsafe.Pointer(&ball.TeamVal), C.int(ball.NetCode))
+				teamRuntimeLeave(ball.TeamPtr(), int(ball.NetCode))
 				C.nox_xxx_unitHPsetOnMax_4EE6F0(inventoryInt(ball))
 				*(*uint64)(unsafe.Add(data, 8)) = uint64(uint32(PlatformTicks()))
 				Nox_xxx_unitMove_4E7010(ball, it.PosVec)

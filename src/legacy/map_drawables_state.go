@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME1_2.h"
-#include "common__system__team.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	"image"
@@ -47,7 +39,7 @@ func (r mapDrawableReader) field(d *client.Drawable, off, n int) {
 	r.bytes(unsafe.Slice((*byte)(unsafe.Add(d.C(), off)), n))
 }
 func mapDrawableTeam(d *client.Drawable) {
-	C.nox_xxx_createAtImpl_4191D0(C.uchar(d.TeamVal.ID), d.TeamPtr().C(), 0, C.int(*effectWord(d, 128)), 0)
+	teamRuntimeJoin(d.TeamVal.ID, d.TeamPtr(), 0, int(*effectWord(d, 128)), 0)
 }
 func mapDrawableOld(typ int, inner, outer int16, r mapDrawableReader) *client.Drawable {
 	id, flags := r.u32(), r.u32()

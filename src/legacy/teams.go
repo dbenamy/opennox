@@ -94,7 +94,7 @@ func Sub_456FA0() {
 	C.sub_456FA0()
 }
 func Sub_418E40(t *server.Team, p *server.ObjectTeam) {
-	C.sub_418E40(t.C(), unsafe.Pointer(p))
+	teamRuntimeUnlink(t, p)
 }
 func Sub_456EA0(name string) {
 	C.sub_456EA0(internWStr(name))

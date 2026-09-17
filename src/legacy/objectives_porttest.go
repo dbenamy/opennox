@@ -10,7 +10,6 @@ package legacy
 extern uint32_t dword_5d4594_527656;
 extern unsigned int dword_5d4594_2650652;
 extern uint32_t dword_5d4594_1567988;
-extern uint32_t dword_5d4594_527660;
 int sub_417F50(int a1);
 void nox_xxx_pickupFlagCtf_4EA490(int a1, int a2);
 int sub_4EB9B0(int a1, int a2);
@@ -170,8 +169,8 @@ func (p *portTestShopPools) objectivesPrepare() func() {
 	oldList := core.Objs.List
 	oldNetCache, oldNetInit := netCodeCacheState, netCodeCacheNeedInit
 	netCodeCacheInit()
-	oldStart, oldTeamBall := C.dword_5d4594_1567988, C.dword_5d4594_527660
-	C.dword_5d4594_527660 = 0
+	oldStart, oldTeamBall := C.dword_5d4594_1567988, teamRuntimeBallType
+	teamRuntimeBallType = 0
 	C.dword_5d4594_1567988 = 0
 	oldCache, oldQuest := C.dword_5d4594_527656, C.dword_5d4594_2650652
 	C.dword_5d4594_527656, C.dword_5d4594_2650652 = 0, 0
@@ -225,7 +224,7 @@ func (p *portTestShopPools) objectivesPrepare() func() {
 		core.Objs.List = oldList
 		netCodeCacheState, netCodeCacheNeedInit = oldNetCache, oldNetInit
 		C.dword_5d4594_1567988 = oldStart
-		C.dword_5d4594_527660 = oldTeamBall
+		teamRuntimeBallType = oldTeamBall
 		for i := range savedUnits {
 			u := &p.proxy.life.players[i]
 			pl := u.UpdateDataPlayer().Player
@@ -352,7 +351,7 @@ func (p *portTestShopPools) objectivesSnapshot(out []uint32) []uint32 {
 		words(u.UpdateData, int(unsafe.Sizeof(server.PlayerUpdateData{}))/4)
 		words(unsafe.Pointer(u.UpdateDataPlayer().Player), int(unsafe.Sizeof(server.Player{}))/4)
 	}
-	out = append(out, uint32(p.proxy.core.Teams.ActiveCnt), uint32(C.dword_5d4594_527660))
+	out = append(out, uint32(p.proxy.core.Teams.ActiveCnt), uint32(teamRuntimeBallType))
 	for i := range p.proxy.core.Teams.Arr {
 		words(p.proxy.core.Teams.Arr[i].C(), int(unsafe.Sizeof(server.Team{}))/4)
 	}

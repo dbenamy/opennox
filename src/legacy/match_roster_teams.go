@@ -11,7 +11,6 @@ import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"
-	"unsafe"
 )
 
 func matchRosterAssignTeam(pl *server.Player) {
@@ -22,7 +21,7 @@ func matchRosterAssignTeam(pl *server.Player) {
 	s := GetServer().S()
 	if C.sub_40A740() == 0 && !noxflags.HasGame(0x8000) {
 		if byte(s.Teams.Count()) != 0 {
-			tm := (*server.Team)(unsafe.Pointer(C.sub_4189D0()))
+			tm := teamRuntimeLeast()
 			if tm != nil && !u.TeamVal.Has() {
 				Nox_xxx_createAtImpl_4191D0(tm.IDVal, u.TeamPtr(), 1, int(u.NetCode), 1)
 			}
@@ -38,23 +37,23 @@ func matchRosterAssignTeam(pl *server.Player) {
 		if (noxflags.HasGame(96) || noxflags.HasGame(16) && noxflags.HasGamePlay(4)) && capacity > 2 {
 			capacity = 2
 		}
-		count := func() int { return int(byte(C.sub_417DE0())) }
+		count := func() int { return int(byte(teamRuntimeGroupCount())) }
 		if count() >= capacity {
 			return
 		}
-		if noxflags.HasGame(96) && count() >= int(C.sub_417DC0()) {
+		if noxflags.HasGame(96) && count() >= int(teamRuntimeFlagCount) {
 			return
 		}
-		tm = (*server.Team)(unsafe.Pointer(C.sub_418A10()))
+		tm = teamRuntimeAvailable()
 		if tm == nil {
 			return
 		}
-		C.sub_418800((*C.wchar2_t)(tm.C()), (*C.wchar2_t)(unsafe.Pointer(&pl.Field2072[0])), 0)
-		C.sub_418830(C.int(uintptr(tm.C())), C.int(pl.Field2068))
-		C.sub_4184D0((*C.nox_team_t)(tm.C()))
+		teamRuntimeSetName(tm, &pl.Field2072[0], 0)
+		teamRuntimeSetGroup(tm, pl.Field2068)
+		teamRuntimeAnnounce(tm)
 	}
 	if u.TeamVal.Has() {
-		C.sub_4196D0(u.TeamPtr().C(), tm.C(), C.int(u.NetCode), 0)
+		teamRuntimeSwitch(u.TeamPtr(), tm, int(u.NetCode), 0)
 	} else {
 		Nox_xxx_createAtImpl_4191D0(tm.IDVal, u.TeamPtr(), 1, int(u.NetCode), 0)
 	}

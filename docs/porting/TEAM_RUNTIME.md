@@ -2,13 +2,19 @@
 
 ## Status and scope
 
-Baseline investigation follows qualified match/roster conversion `12da9a9e`.
-Last qualified production was **52,273 physical C lines / 82 files**, zero reference C.
-The corrected C baseline is **52,275 lines** and fully qualified (details below).
-No native team conversion is installed or qualified.
+The native conversion is fully qualified. It replaces **36 live C functions**
+and removes one **62-line orphan**, retaining **25 C interfaces** and retiring
+**12**. Two private globals move to Go. Production C is **51,203 physical lines /
+82 files**, zero reference C: **1,072 lines removed** from corrected baseline
+`0b4b853c` (52,275 lines). All frozen expectations remain unchanged.
+
+Default/server/highres pass **390 / 389 / 390 roots**, about **56,100 leaf cases**,
+and **151 identical capture groups / 58,911 records**. Fresh production passes
+all builds/ABI, the exact known asset failures, gameplay, save/load and flat rendering.
+See the final qualification below; earlier investigation notes are historical.
 
 The original candidate scan had **39 functions / 1,011 C body lines**. Accepted
-scope is now **37 functions / 992 current C body lines** after prerequisite fixes
+scope is **37 functions / 992 baseline C body lines** after prerequisite fixes
 and the UI owner boundary described below. It covers:
 team naming/lookup and member lists, membership changes and notifications, score
 messages, roster creation messages, team assignment/balancing and map flag/crown
@@ -18,15 +24,15 @@ recounted by their actual function extents, not distance to the next marker.
 
 `nox_xxx_unused_418840` is a 62-line orphan: its only non-definition reference is
 in `legacy/keep.go`, behind `//go:build none`, with no declaration, actual caller,
-callback or registration. Remove the obsolete retention reference and C body in
-the conversion; do not add test-only calls to retain an unused mode. The other
+callback or registration. The obsolete retention reference and C body are removed;
+no test-only calls retain an unused mode. The other
 functions require behavioral coverage. GUI-adjacent team setup is included because
 its actual behavior creates teams and associates map flag objects; GUI callbacks
 remain dependencies with their own owners.
 
-Source extents/references: build/port-team-runtime/scope-audit.json. This is the
-working scope audit, not a frozen baseline. Prior 42-function range inventory is
-superseded; no implementation has been removed.
+Source extents/references: build/port-team-runtime/scope-audit.json, captured before
+conversion. The initial range inventory is superseded. The investigation sections
+below record intermediate states; the final qualification sections take precedence.
 
 ## Baseline investigation
 
@@ -173,13 +179,13 @@ and linked/detached member departures with team lifetime and group reset behavio
 
 Accept **37 functions / 989 current C body lines**, including the 62-line orphan,
 after the join-type prerequisite. Keep the 21 lines in the CTF/Flagball map-entry
-wrappers with their client team-selection window owner. Their nonempty path opens
+wrappers with their client team HUD/window owner. Their nonempty path opens
 and positions that window (and initializes the ball); moving those orchestration
 wrappers without the UI owner would add weakly covered code to this batch. The
 shared flag scan/assignment is included and independently checked with real map
 objects. Empty-wrapper regression cases remain useful checks on the C-to-Go
 boundary after conversion. This reversible scope choice is recorded for the later
-team-selection UI batch; no production behavior changes because of it.
+team HUD and player-list UI batch; no production behavior changes because of it.
 
 The original 39-function candidate list is superseded by scope-audit.json plus
 deferred-ui-wrappers.json. The two wrappers' partial-width boolean locals still
@@ -252,3 +258,118 @@ Completed C scenario copies were deduplicated against the unchanged original
 assets, reclaiming **1,660,044,319 bytes**. Per-run restoration manifests preserve
 paths, hashes and metadata; captures and unique saves remain. This cleanup is
 consumed; do not rerun it unless the copies have first been explicitly restored.
+
+## Native conversion in progress
+
+The corrected C baseline is committed/pushed as `0b4b853c`. All 36 live functions
+are translated; the 62-line unreachable retention function is removed. The caller
+audit retains 25 C interfaces and retires 12, including the orphan. Two private
+C globals become Go state; fixtures now own that actual state. Existing Go callers
+invoke the new owners directly, and existing ObjectTeam predicates are reused.
+Score updates preserve the original direct reliable-queue dispatch (see below). Deferred map-entry wrappers
+still call the retained boolean scan interface.
+
+Review preserves raw bounded UTF-16 copying (including zero-fill and untouched
+adjacent storage), signed byte returns, 32-bit identifiers, queue ordering and
+message operation codes. Membership mutation keeps direct unlink count-neutral;
+clear, leave and switch own their increments/decrements. Assignment retains the
+50 pair swaps / 100 random draws, eligibility filters and clan mapping. Nearest
+flag selection retains float32 subtraction, double distance arithmetic, float32
+best-distance storage and strict first-match ties. Crown setup keeps real delayed
+deletion and retained C respawn-registry removal.
+
+Join text uses the actual string manager and centered-message owner. The two
+shipped format strings were inspected and use ordinary string substitutions.
+Relocation continues through the previously ported random-placement and unit-move
+owners; the team notification corpus does not itself exercise the relocation
+branch with both chat mode and movement enabled. Full production and accumulated
+placement/player-control coverage remain required; do not describe the smoke
+scenario as complete team-mode integration.
+
+The first native discovery stopped on a missing GAME1.h include for the retained
+clan-mode helper (45.45s); fixed before retry. No expectations changed. Broader
+selection is **389 roots**, taking the preceding 283-root match/roster selection,
+new team contracts and affected damage, spell lifecycle/effects, map-drawable and
+client-object rendering owners. The exact selection and native qualification
+manifest are committed with the completed batch. Native qualification is pending.
+
+Focused native qualification passes in **133.39s** (native-focused-3): all 46 roots
+complete without skips, all 40 frozen captures unchanged. The preceding retry
+stopped on an explicit uint32-to-int caller conversion (78.54s), corrected before
+this pass. No C or Go oracle changed. Final source cleanup removes obsolete
+function markers/blank lines; working physical C is **51,203 / 82 files**, zero
+reference C, a **1,072-line reduction** from the committed corrected baseline.
+Broader default/server/highres checks are now running; production is pending.
+
+### Broader qualification caught a dispatch-owner mismatch
+
+The first broader default/server sweeps finish in 285.68 / 280.54s with exactly
+two failures: TestObjectivesHomeScore and TestObjectivesCTFScore. All other roots
+pass. Their independent scoring/position assertions pass, but complete state
+captures differ. The existing Go TeamChangeLessons setter uses the replaceable
+Server.NetSendPacketXxx hook; the original C sender's already-ported bridge calls
+the actual reliable queue directly. The objective fixture intentionally observes
+that hook, exposing a distinction hidden by comparing normal queue output alone.
+
+Preserve the original dispatch owner with a direct score-update helper and add
+an independent hook-versus-queue contract. Keep the existing public Go setter's
+behavior unchanged. Do not change any frozen captures. Highres first sweep is
+still running; no source edits until joined. The earlier claim of full score
+setter equivalence is limited to default-hook output and is superseded here.
+
+All first broader processes are joined. Highres completes in **344.79s** with the
+same two failures and no others. Targets execute 389 / 388 / 389 roots with no
+skips; server excludes the client-only TestClientObjectRenderOcclusion by build tag.
+The direct score-update helper is installed, with a new independent
+TestTeamRuntimeLessonsDispatch contract. Focused retry now selects 49 roots: the
+46 frozen C roots, that dispatch contract, and both affected objective-score roots.
+Broader selection is now **390 default/highres roots / 389 server roots**.
+No expected hashes were edited. Source is frozen while focused retry runs.
+
+Focused retry **native-focused-4 passes in 134.10s**: all 49 roots complete without
+skips, both original objective-score hashes restored and all 40 C capture files
+unchanged. The new contract proves the legacy entry point bypasses the replaceable
+server send hook and still queues the complete score record. Broader retries are
+running from this fixed source. Earlier C baseline captures and production remain
+the references; no re-recording was necessary.
+
+## Native broader qualification
+
+All corrected sweeps pass: default **158.90s**, server **261.03s**, highres
+**197.54s**. They execute **390 / 389 / 390 roots** and **56,105 / 56,104 / 56,105
+leaf cases**, with no skips or missing completions. The server's one omitted root
+is client-only render occlusion, excluded at build time. Every target produces
+identical **151 capture groups / 58,911 records**, including all 40 frozen team
+baseline groups. All three share an identical **2,083-file source manifest** and
+report unchanged source. Processes are joined. Fresh production is running.
+
+Dispatch review is now part of PORT.md's existing-Go reuse guidance: check the
+actual hook/queue owner as well as byte output and state changes. This adds a
+specific boundary check rather than rerunning unrelated suites for every helper.
+
+## Native production and final audit
+
+Fresh production passes in **369.47s**. Standard/highres/server binaries build and
+pass ABI/export checks (70.44 / 9.72 / 75.65s). The full asset suite preserves the
+exact **1,553 failure entries**, package results **15 pass / 3 fail / 32 no-test**.
+Gameplay and save/load pass against corrected C references. Flat rendering also
+matches, with 51 maps removed and one regenerated. All four final gates share the
+same 2,083-file source manifest, report unchanged source, and are joined.
+Client SHA256: `5edffa51d483b8868f7511fa93a755e7ed2fb9acbcf9b4d194c1557a949a0929`.
+
+Final artifacts: build/port-team-runtime/native-{default,server,highres}-2 and
+native-production; native-qualified-audit.json summarizes counts. The 12 retired
+functions have no source references. The two retired private-global names/offsets
+remain only as historical blob-map labels, with no live reads. All 25 remaining
+C entry points are thin Go bridges; no algorithm is retained only for testing.
+
+The next connected candidate is the team HUD and server player-list UI, including
+the two deferred map-entry wrappers and the CTF construction/tooltip owner. The
+preliminary audit is 35 functions / 921 C body lines; ownership and reachability
+still require review before freezing its baseline. Earlier references to a
+“team-selection window” were imprecise: these map-entry helpers open team/flag HUDs.
+
+Completed native scenario copies were also deduplicated against original assets,
+reclaiming **1,660,044,319 bytes** (3.32 GB across both C/native trios). Restoration
+manifests preserve every removed duplicate; unique captures and saves remain.
+Both cleanup invocations are consumed. Original assets and archive are untouched.

@@ -182,7 +182,7 @@ func Sub_40A740() int {
 }
 
 func Sub_417DE0() int {
-	return int(C.sub_417DE0())
+	return int(teamRuntimeGroupCount())
 }
 
 func Nox_xxx_countObserverPlayers_425BF0() int {
@@ -243,7 +243,7 @@ func Sub_455950(a1 *uint16) {
 	C.sub_455950((*C.ushort)(unsafe.Pointer(a1)))
 }
 func Nox_xxx_netChangeTeamMb_419570(a1 *server.ObjectTeam, a2 uint32) {
-	C.nox_xxx_netChangeTeamMb_419570(a1.C(), C.int(a2))
+	teamRuntimeLeave(a1, int(a2))
 }
 func Sub_49BB80(a1 byte) {
 	C.sub_49BB80(C.char(a1))
@@ -261,7 +261,7 @@ func Nox_xxx_gameServerReadyMB_4DD180(a1 int) {
 	C.nox_xxx_gameServerReadyMB_4DD180(C.int(a1))
 }
 func Nox_xxx_teamCompare2_419180(t *server.ObjectTeam, id server.TeamID) int {
-	return int(C.nox_xxx_teamCompare2_419180(unsafe.Pointer(t), C.uchar(id)))
+	return int(teamRuntimeBool(teamRuntimeContains(t, id)))
 }
 func Sub_4D12A0(a1 int) int {
 	return int(C.sub_4D12A0(C.int(a1)))
@@ -273,7 +273,7 @@ func Nox_net_importantACK_4E55A0(a1 int, a2 int) {
 	reliableACK(a1, uint32(a2))
 }
 func Sub_4196D0(a1 unsafe.Pointer, a2 unsafe.Pointer, a3 int, a4 int) {
-	C.sub_4196D0(a1, a2, C.int(a3), C.int(a4))
+	teamRuntimeSwitch(teamRuntimeMember(a1), asTeamP(a2), a3, a4)
 }
 func Nox_xxx_netOnPacketRecvServ_51BAD0_net_sdecode_switch(a1 ntype.PlayerInd, data []byte, a4 *server.Player, a5 *server.Object, a6 unsafe.Pointer) int {
 	return int(C.nox_xxx_netOnPacketRecvServ_51BAD0_net_sdecode_switch(C.int(a1), (*C.uchar)(unsafe.Pointer(&data[0])), C.int(len(data)), (*nox_playerInfo)(a4.C()), asObjectC(a5), a6))

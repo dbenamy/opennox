@@ -132,7 +132,7 @@ func objectiveCrownCollide(u, t *server.Object) uint32 {
 }
 func objectiveClearBallTeam(u *server.Object) {
 	objectiveRememberOwner(u, nil)
-	C.nox_xxx_netChangeTeamMb_419570(unsafe.Pointer(&u.TeamVal), C.int(u.NetCode))
+	teamRuntimeLeave(u.TeamPtr(), int(u.NetCode))
 	Sub_4E8290(1, 0)
 }
 func objectiveBallUpdate(u *server.Object) {

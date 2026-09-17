@@ -225,7 +225,7 @@ func spellEffectCharmFinish(record unsafe.Pointer) int32 {
 	u.SetOwner(nil)
 	u.SetOwner(source)
 	if spellLifeHasTeam(u) {
-		C.nox_xxx_netChangeTeamMb_419570(unsafe.Add(u.CObj(), 48), C.int(u.NetCode))
+		teamRuntimeLeave(u.TeamPtr(), int(u.NetCode))
 	}
 	*spellLifeWord(u.UpdateData, 1440) |= 0x80
 	if controlFlags(4096) {

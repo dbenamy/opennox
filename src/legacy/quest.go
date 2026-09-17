@@ -90,10 +90,10 @@ func Nox_xxx_modifSetItemAttrs_4E4990(a1 *server.Object, a2 unsafe.Pointer) {
 	stateAttributes(a1, a2)
 }
 func Sub_4184D0(a1 unsafe.Pointer) {
-	C.sub_4184D0((*nox_team_t)(a1))
+	teamRuntimeAnnounce(asTeamP(a1))
 }
 func Nox_xxx_createAtImpl_4191D0(a1 server.TeamID, a2 *server.ObjectTeam, a3 int, a4 int, a5 int) {
-	C.nox_xxx_createAtImpl_4191D0(C.uchar(a1), a2.C(), C.int(a3), C.int(a4), C.int(a5))
+	teamRuntimeJoin(a1, a2, a3, a4, a5)
 }
 func Nox_xxx_cliPlrInfoLoadFromFile_41A2E0(a1 string, a2 ntype.PlayerInd) int {
 	return int(C.nox_xxx_cliPlrInfoLoadFromFile_41A2E0(internCStr(a1), C.int(a2)))

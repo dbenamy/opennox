@@ -15,15 +15,14 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Match results and roster synchronization are ported. The next
-team-runtime batch now has a committed C baseline: 46 test roots / 10,835 leaf
-cases, identical captures on all three targets, and fresh production qualification.
+scheduled pause. Team runtime, membership and map objective setup are ported and
+qualified: about 56,100 affected leaf cases across three targets, 151 identical
+capture groups, and fresh production builds, gameplay, save/load and flat rendering.
 
-Production C is **52,275 physical lines in 82 files**, with zero reference C.
-The +2 lines since the previous conversion are prerequisite corrections to team
-message fields and clear/rebalance counts. The full asset suite retains its exact
-three known failing packages. Next is translating the 37-function team-runtime scope.
-See [TEAM_RUNTIME.md](docs/porting/TEAM_RUNTIME.md) for coverage and decisions.
+Production C is **51,203 physical lines in 82 files**, with zero reference C;
+this conversion removes **1,072 lines**. The full asset suite retains its exact
+three known failing packages. Next is the connected team HUD and player-list UI.
+See [TEAM_RUNTIME.md](docs/porting/TEAM_RUNTIME.md) for evidence and review decisions.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
@@ -79,6 +78,9 @@ may precede full qualification when their evidence and remaining gates are expli
    fix can invalidate the whole cgo package build and repeat the remaining C compile.
    Trace the existing C adapter when choosing a Go API: similar names can hide
    differences in coordinate space, return conventions or ownership.
+   Check dispatch ownership when reusing an existing Go implementation: equal
+   output under the default configuration can hide different hooks or queues.
+   The team score port caught this through accumulated objective-scoring captures.
 5. Run the completed-batch qualification below, review the diff and measure C LOC.
    Update the batch report, decision log where needed, size table and checkpoint.
    Commit and push the conversion before starting another batch.

@@ -269,7 +269,7 @@ func Nox_xxx_netReportAllLatency_4D3050() {
 	C.nox_xxx_netReportAllLatency_4D3050()
 }
 func Sub_4183C0() {
-	C.sub_4183C0()
+	teamRuntimeNearest()
 }
 func Sub_4D7150() {
 	questRuntimeObserverDeadline()
@@ -431,13 +431,13 @@ func Nox_xxx_mapInfoSetFlagball_417F30() int {
 	return int(C.nox_xxx_mapInfoSetFlagball_417F30())
 }
 func Nox_xxx_mapInfoSetKotr_4180D0() int {
-	return int(C.nox_xxx_mapInfoSetKotr_4180D0())
+	return teamRuntimeCrown()
 }
 func Nox_xxx_teamAssignFlags_418640() {
-	C.nox_xxx_teamAssignFlags_418640()
+	teamRuntimeAssignFlags()
 }
 func Nox_xxx_toggleAllTeamFlags_418690(a1 int) {
-	C.nox_xxx_toggleAllTeamFlags_418690(C.int(a1))
+	teamRuntimeToggle(a1 != 0)
 }
 func Sub_410730() {
 	C.sub_410730()

@@ -266,7 +266,7 @@ func spellLifeCastBooks() {
 func spellLifeCounterBooks(u *server.Object, radius float32) {
 	for p := spellLifeBookHead(); p != nil; {
 		owner := p.Owner
-		same := owner.ObjClass&4 != 0 && C.nox_xxx_servCompareTeams_419150(C.int(uintptr(unsafe.Add(u.CObj(), 48))), C.int(uintptr(unsafe.Add(owner.CObj(), 48)))) != 0
+		same := owner.ObjClass&4 != 0 && u.TeamVal.SameAs(&owner.TeamVal)
 		dx := float64(owner.PosVec.X) - float64(u.PosVec.X)
 		dy := float64(owner.PosVec.Y) - float64(u.PosVec.Y)
 		if !same && math.Sqrt(dx*dx+dy*dy)+0.1 < float64(radius) && C.nox_xxx_mapCheck_537110(asObjectC(u), asObjectC(owner)) != 0 {

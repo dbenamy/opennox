@@ -118,10 +118,10 @@ func matchRosterTeamRoster(to int) {
 	}
 	s := GetServer().S()
 	for tm := s.Teams.First(); tm != nil; tm = s.Teams.Next(tm) {
-		C.sub_4197C0((*C.wchar2_t)(tm.C()), C.int(to))
+		teamRuntimeDescribe(tm, to)
 		for u := s.Players.FirstUnit(); u != nil; u = s.Players.NextUnit(u) {
-			if C.nox_xxx_teamCompare2_419180(u.TeamPtr().C(), C.uchar(tm.IDVal)) != 0 {
-				C.sub_4198A0(C.int(uintptr(u.TeamPtr().C())), C.int(to), C.int(u.NetCode))
+			if teamRuntimeContains(u.TeamPtr(), tm.IDVal) {
+				teamRuntimeMemberReport(u.TeamPtr(), to, int(u.NetCode))
 			}
 		}
 	}

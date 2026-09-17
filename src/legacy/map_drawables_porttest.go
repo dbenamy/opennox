@@ -2,15 +2,8 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME3.h"
-extern uint32_t dword_5d4594_527660;
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client"
-	"unsafe"
 )
 
 // Calls the real installed map reader; no replacement stream or drawable factory.
@@ -33,4 +26,4 @@ func PortTestMapDrawableRecord(op, typ int) int {
 	panic(op)
 }
 
-func PortTestMapDrawableTeamWord() *uint32 { return (*uint32)(unsafe.Pointer(&C.dword_5d4594_527660)) }
+func PortTestMapDrawableTeamWord() *uint32 { return &teamRuntimeBallType }

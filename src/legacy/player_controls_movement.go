@@ -29,7 +29,7 @@ func controlFindStart(out *types.Pointf, u *server.Object) {
 		return
 	}
 	team := int32(0)
-	if C.nox_xxx_servObjectHasTeam_419130(C.int(uintptr(unsafe.Add(u.CObj(), 48)))) != 0 {
+	if u.TeamVal.Has() {
 		team = int32(*controlByte(u.CObj(), 52))
 		C.nox_xxx_getTeamByID_418AB0(C.int(team))
 	}
