@@ -15,20 +15,16 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Server configuration, its rule picker and admission persistence
-are now in Go, following the server-options panels. The conversion passes focused,
-broader three-target and fresh production qualification with unchanged corrected-C
-expectations and gameplay references.
+scheduled pause. Map polygon storage, lookup, actor events, ambient color and
+serialization are now in Go. The conversion passes focused checks, broader
+three-target capture comparison, and fresh production/gameplay qualification.
 
-The next map-polygon batch has a qualified C baseline covering lifecycle, geometry,
-actor events, ambient color and serialization. All three affected-target sweeps
-pass with identical captures; see [MAP_POLYGONS.md](docs/porting/MAP_POLYGONS.md).
-
-Production C is **45,473 physical lines in 74 files**, with zero reference C.
-The configuration conversion removes **920 lines** from its corrected C baseline.
-The full asset suite retains its exact three known failing packages. See
-[SERVER_CONFIG.md](docs/porting/SERVER_CONFIG.md) for qualification and review
-items; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Production C is **44,401 physical lines in 74 files**, with zero reference C.
+The polygon conversion removes **1,072 lines**. The full asset suite retains its
+exact three known failing packages. See [MAP_POLYGONS.md](docs/porting/MAP_POLYGONS.md)
+for qualification and review items; [PORTING_STATE.md](PORTING_STATE.md) is the
+resume checkpoint. The next proposed batch covers connected world geometry,
+direction/vector/shape primitives and wall collision.
 
 ## Goal and target
 

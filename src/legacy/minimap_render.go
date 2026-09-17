@@ -31,7 +31,7 @@ func minimapLevel(dr *client.Drawable) int {
 	} else {
 		p = dr.PosVec
 	}
-	index := int(C.nox_xxx_polygonGetIdxA_421790((*C.int2)(unsafe.Pointer(&p)), C.int(memmap.Uint32(0x5D4594, 1096312))))
+	index := int(mapPolygonIndex((*[2]int32)(unsafe.Pointer(&p)), memmap.Uint32(0x5D4594, 1096312)))
 	if index != 0 {
 		*memmap.PtrUint32(0x5D4594, 1096312) = uint32(index)
 	} else {
@@ -40,10 +40,10 @@ func minimapLevel(dr *client.Drawable) int {
 	if index == 0 {
 		return 1
 	}
-	return int(*(*byte)(unsafe.Add(unsafe.Pointer(C.nox_xxx_polygonGetByIdx_4214A0(C.int(index))), 130)))
+	return int(*(*byte)(unsafe.Add(unsafe.Pointer(mapPolygonGet(uint32(index))), 130)))
 }
 func minimapPolygonLevel(p image.Point) (int, bool) {
-	poly := C.nox_xxx_polygonIsPlayerInPolygon_4217B0((*C.int2)(unsafe.Pointer(&p)), 0)
+	poly := mapPolygonFind((*[2]int32)(unsafe.Pointer(&p)), 0, false)
 	if poly == nil {
 		return 0, false
 	}

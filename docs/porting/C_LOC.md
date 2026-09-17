@@ -206,6 +206,7 @@ target build selection and linker evidence.
 | Server panels, private globals, callback table and orphan cleanup | 74 | 46,391 | −2,364 | 0 |
 | Server-configuration corrected C prerequisites | 74 | 46,393 | +2 | 0 |
 | Server configuration, rule picker, admission persistence and dead helpers | 74 | 45,473 | −920 | 0 |
+| Map polygon lifecycle, geometry, actor events and serialization | 74 | 44,401 | −1,072 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
@@ -226,3 +227,7 @@ The server-configuration native conversion removes **920 physical C lines**,
 including the two disabled helpers and eight private globals. Current C:
 **45,473 lines / 74 files / zero reference C**. See SERVER_CONFIG.md for the
 qualification record and retained interfaces.
+
+The map-polygon conversion removes **1,072 physical C lines**, including the
+selected functions and three private globals. Current C: **44,401 / 74 files /
+zero reference C**. See [MAP_POLYGONS.md](MAP_POLYGONS.md) for qualification.

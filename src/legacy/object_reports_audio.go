@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-*/
-import "C"
-
 import (
 	"image"
 	"unsafe"
@@ -24,7 +19,7 @@ func objectReportSoundLevel(p types.Pointf, u *server.Object) int {
 				return int(level)
 			}
 		} else if uint32(u.ObjClass)&2 != 0 {
-			poly := C.nox_xxx_polygonGetByIdx_4214A0(C.int(*(*int32)(u.UpdateData)))
+			poly := mapPolygonGet(*(*uint32)(u.UpdateData))
 			if poly != nil {
 				if level := *(*int8)(unsafe.Add(unsafe.Pointer(poly), 130)); level != 0 {
 					return int(level)

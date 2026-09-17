@@ -1583,3 +1583,24 @@ C globals and 41 function interfaces. Thirty-two thin exports retain actual C
 callers; list allocations/layout and shared configuration storage remain compatible.
 The Cgo admission header drops a const qualifier without changing the ABI. See
 SERVER_CONFIG.md for qualification and deferred compatibility cleanup items.
+
+### Map-polygon compatibility and ownership (review after port)
+
+Preserve the existing finite-ray containment parity at shared vertices, remote
+player behavior when leaving every region, and the host's zero-cache level
+handling. Independent contracts make those branches explicit. Correcting them
+would change gameplay and should be a separate change. See
+[MAP_POLYGONS.md](MAP_POLYGONS.md).
+
+Keep the polygon allocations on the C heap while remaining owners and borrowed
+arrays require it. Reset detaches borrowed arrays without freeing them. If editor
+metadata allocation fails, the Go constructor returns nil instead of attempting
+to free the fixed polygon record in backing storage. This is a narrow, reversible
+correction to an invalid cleanup path; forced allocation failure is not tested.
+
+The nearest-vertex draft initially misread a double temporary as an integer. An
+independent large-coordinate contract caught it; corrected float/double widths
+match the original C captures. The earlier C-baseline report's description of this
+temporary was wrong and has been corrected. Expected test outputs were unchanged.
+The constructor also retains its initial decimal ID write before copying defaults,
+so short default strings preserve the same trailing record bytes.

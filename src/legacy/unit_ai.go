@@ -104,7 +104,7 @@ func Nox_xxx_checkIsKillable_528190(a1 *server.Object) int {
 	return int(visibilityKillable(a1))
 }
 func Nox_xxx_polygonIsPlayerInPolygon_4217B0(a1 unsafe.Pointer, a2 int) *Nox_player_polygon_check_data {
-	return (*Nox_player_polygon_check_data)(unsafe.Pointer(C.nox_xxx_polygonIsPlayerInPolygon_4217B0((*C.int2)(a1), C.int(a2))))
+	return (*Nox_player_polygon_check_data)(unsafe.Pointer(mapPolygonFind((*[2]int32)(a1), uint32(a2), false)))
 }
 func Nox_xxx_mobAction_50A910(a1 *server.Object) {
 	C.nox_xxx_mobAction_50A910(asObjectC(a1))
@@ -128,7 +128,7 @@ func Nox_xxx_updateNPCAnimData_50A850(a1 *server.Object) {
 	C.nox_xxx_updateNPCAnimData_50A850(asObjectC(a1))
 }
 func Nox_xxx_monsterPolygonEnter_421FF0(a1 *server.Object) {
-	C.nox_xxx_monsterPolygonEnter_421FF0(asObjectC(a1))
+	mapPolygonMonster(a1)
 }
 func Nox_xxx_monsterMimicCheckMorph_534950(a1 *server.Object) {
 	monsterMimicMorph(a1)

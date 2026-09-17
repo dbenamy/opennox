@@ -2,38 +2,47 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 45k lines** — **45,473 physical lines in 74 production
-`.c` files**, zero reference C. Latest conversion removes **920 lines**.
+**Rough C remaining: about 44k lines** — **44,401 physical lines in 74 production
+`.c` files**, zero reference C. Latest conversion removes **1,072 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — map-polygon C baseline qualified
+## Current — map-polygon native conversion qualified
 
-Parent server configuration **5ecbdfc2 is committed/pushed**. Map polygon baseline
-covers **33 live functions / 1,000 original C body lines**. All 16 focused roots
-pass (0.239s); static memory checks pass. Eleven polygon captures were repeated
-before freezing. Broader default/server/highres pass **269/268/269 roots**,
-**34,988/34,987/34,988 tests including subtests**, no skips. **87 identical captures /
-51,433 records**; durations **143.87/225.80/157.58s**. All sessions joined and one
-unchanged **2,175-file source manifest**. Production source is identical to parent,
-so its fresh production qualification is reused. No polygon production changes yet.
+C baseline **afdb26e7 is committed/pushed**. The native conversion replaces
+**33 functions / 1,000 C body lines**, retires 26 function interfaces and three
+private globals, and retains seven thin C exports. All 16 focused groups pass
+(0.223s); static checks pass. Broader default/server/highres pass **269/268/269
+roots**, **34,988/34,987/34,988 tests including subtests**, no skips. **87 identical
+captures / 51,433 records** match C. Durations **108.70/215.00/152.76s**.
+
+Fresh production passes **371.15s**: three builds/ABI/interface checks, exact known
+1,553 asset failures (15 pass / 3 fail / 32 no-test), options gameplay, save/load and
+flat-map regeneration. All four gates share an unchanged **2,180-file source
+manifest**; all sessions joined. Client SHA:
+0a9413f9dfb01e79c28603eecc3bed74967b537e222fc069a629de873fd399f2.
+C: **44,401 / 74 files / zero reference (−1,072)**.
 
 See [MAP_POLYGONS.md](docs/porting/MAP_POLYGONS.md), map-polygons-batch.json,
-map-polygons-tests.txt and map-polygons-scope.json. Artifacts:
-build/port-polygons/c-{default,server,highres}, c-audit.json, focused-11.log,
-static-final.log. Shared-vertex ray parity and remote-player out-of-region behavior
-are documented compatibility limitations; preserve them, do not regenerate goldens.
+map-polygons-tests.txt and map-polygons-scope.json. Artifacts under
+build/port-polygons/native-{default,server,highres,production}, native-audit.json
+and native-interface-audit.json. All drafts/install/finish-docs scripts are consumed; never
+reinstall them. Frozen root tests/expectations were not changed. Nearest-vertex
+width review, ray parity, player cache quirks and allocation ownership decisions
+are documented for review. No active sessions or user blocker.
 
-Next: commit/push this qualified C baseline, then finish/review/install native
-translation, compare frozen tests, qualify all targets and fresh production,
-update C LOC/docs, commit/push and continue. Ignored native-draft files are unfinished
-and not installed. The effects fixture draft is consumed: never recopy it. Use the
-combined 33-function scope, not the older core-only scope.py/candidate.json.
+This checkpoint records the qualified conversion. Next proceed to world geometry
+and wall collision after committing/pushing it.
+Read-only proposal: **32 reachable functions / 1,390 C body lines** under
+build/port-world-geometry/proposal.json and combined-reachability.json. This includes
+helpers still called inside polygon loops, shared direction/vector/shape primitives
+and wall/circle/box collision helpers. No fixtures or production edits for that
+next batch are installed. Reassess contracts/constants/ownership before freezing.
 
-Disk cleanup reclaimed **6.184 GiB** from twelve completed panel/configuration runs;
-per-run deduplicated-assets.json manifests permit restoration. Do not repeat deletion
-mode. Original assets/archive and modified files remain intact; about 16 GiB free.
+Disk cleanup before the polygon batch reclaimed **6.184 GiB** from twelve completed
+panel/configuration runs. Per-run manifests permit restoration; never repeat
+deletion mode. Original assets/archive and modified files remain intact.
 
 ## Qualified parent — server-configuration native conversion
 

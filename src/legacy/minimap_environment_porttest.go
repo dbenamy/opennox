@@ -4,7 +4,6 @@ package legacy
 
 /*
 #include "GAME1_1.h"
-extern uint32_t nox_xxx_polygonNextIdx_587000_60352;
 extern uint32_t nox_client_gui_flag_1556112;
 extern uint32_t dword_5d4594_825736;
 extern int nox_win_width, nox_win_height;
@@ -17,7 +16,7 @@ func PortTestMinimapWords() (map[string]*uint32, func()) {
 		"messageHead":   (*uint32)(unsafe.Pointer(&C.dword_5d4594_825736)),
 		"debugIterator": &minimapDebugIterator,
 		"zoom":          &minimapZoom,
-		"polygons":      (*uint32)(unsafe.Pointer(&C.nox_xxx_polygonNextIdx_587000_60352)),
+		"polygons":      &mapPolygonNext,
 		"gui":           (*uint32)(unsafe.Pointer(&C.nox_client_gui_flag_1556112)),
 		"width":         (*uint32)(unsafe.Pointer(&C.nox_win_width)),
 		"height":        (*uint32)(unsafe.Pointer(&C.nox_win_height)),
@@ -32,4 +31,4 @@ func PortTestMinimapWords() (map[string]*uint32, func()) {
 		}
 	}
 }
-func PortTestMinimapNewPolygon() unsafe.Pointer { return unsafe.Pointer(C.sub_421230()) }
+func PortTestMinimapNewPolygon() unsafe.Pointer { return unsafe.Pointer(mapPolygonNew()) }
