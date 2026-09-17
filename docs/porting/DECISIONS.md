@@ -1290,3 +1290,22 @@ identity. No numeric-float caller was found. Keep the symbol and callback identi
 correct its header to nox_object_t*, and never numerically convert an address to
 float. This is an ABI description correction for the supported 386 target;
 focused registered-callback and full production ABI checks qualify it.
+
+## Item serialization prerequisites — generator child and old wand attributes
+
+The next typed-serialization baseline exposes two existing defects. Free a newly
+allocated generator child when its registered transfer callback rejects the record;
+the before-change contract observes two live pool objects instead of one. Define
+the final attribute word in pre-version-11 weapon records as 0xffffffff, matching
+the two 0xffff words supplied by the version-11 path. A real charged wand copies
+uninitialized stack bytes before this correction; four old-version cases fail,
+while the version-11 control passes.
+
+The initial attribute fixture used ClassWeapon and missed the charged-wand branch;
+corrected before-change evidence uses ClassWand and is recorded separately. Normal
+armor does not take that branch, so its early-return path is left unchanged.
+These two C lines are small reversible corrections authorized by the working plan.
+They precede frozen expectations; they do not change the current writer format.
+After-change default/server/highres qualification passes 29 roots / 1,569 leaf
+cases per target without skips, and static checking passes. See ITEM_XFER.md
+for evidence, the fixture correction and the remaining full-baseline work.

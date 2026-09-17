@@ -16,8 +16,8 @@
 
 The revised process is adopted: continue successive qualified batches without a
 scheduled pause. Server common and world-object serialization is qualified:
-**1,177 C lines / eighteen functions removed**, leaving **59,602 physical lines
-in 82 files**, with zero reference C.
+**1,177 C lines / eighteen functions removed**. The next prerequisite adds two
+lines, leaving **59,604 physical C lines in 82 files**, with zero reference C.
 
 All **1,174 frozen object-state records / twelve groups** and **1,297 leaf cases**
 match. The accumulated milestone passes **1198 / 1194 / 1198 selected checks** in
@@ -27,7 +27,8 @@ known failures. Gameplay matches **41 frames**, actual save/load **seven frames*
 and flat rendering **14 frames** with exact map regeneration.
 
 See [OBJECT_XFER.md](docs/porting/OBJECT_XFER.md) for evidence and review points.
-Next: adjacent item/reward serializers, **1,063 C lines / twelve callbacks**,
+Current work: [adjacent item/reward serializers](docs/porting/ITEM_XFER.md),
+**1,065 C lines / twelve callbacks**, including two qualified prerequisite fixes,
 reusing these owners and stream fixtures. Confirm the historical and nested-object
 contracts against C before freezing expectations. [PORTING_STATE.md](PORTING_STATE.md)
 is the resume checkpoint; confident reversible decisions remain recorded for review.

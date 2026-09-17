@@ -2,39 +2,39 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 60k lines** — **59,602 physical lines in 82 production
+**Rough C remaining: about 60k lines** — **59,604 physical lines in 82 production
 `.c` files**, zero reference C. Latest qualified conversion removes **1,177 lines**
-across eighteen object-serialization functions. See [C_LOC.md](docs/porting/C_LOC.md).
+across eighteen object-serialization functions; the next prerequisite adds two. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — server object serialization qualified
+## Current — item serialization prerequisite qualified
 
-C baseline **62a006d2** is committed and pushed. The native conversion now passes
-focused checks, all three accumulated target sweeps, static checking, all three
-production builds/ABI audits, exact known full-suite comparison and normal,
-actual save/load and flat/map-regeneration integration. See OBJECT_XFER.md for
-counts, timings, source identity and the documented prerequisite corrections.
+Common/world-object serialization **b4ff2519** is committed and pushed. The next
+item/reward block now covers twelve GAME4.c callbacks / **1,065 C lines** after
+two qualified prerequisite corrections: release a rejected generator child and
+initialize the pre-version-11 charged-wand attribute tail to the existing modern
+0xffffffff default. Before-change regressions and a passing version-11 control
+are recorded in ITEM_XFER.md and DECISIONS.md.
 
-Eighteen functions / 1,177 C lines move to four legacy/object_xfer Go files.
-Seventeen interfaces remain as Go-backed C callbacks/exports; the private historical
-reader is retired. Go common/inventory/placement callers invoke Go directly.
-The first installed native run matched all frozen records; no goldens changed.
-Finish staged-source proof, commit and push this qualified conversion, then continue.
+Default/server/highres c-prereq phases each pass 29 roots / 1,569 leaf cases without
+skips (272 new item cases plus 1,297 existing object-transfer cases). Static checking
+passes. Three new development groups / 222 state records match across targets,
+including stream checksums. These are initial contracts, not the final frozen
+item oracle. Current C: **59,604 lines / 82 production files / zero reference C**.
+Complete staged-source proof, commit/push the prerequisite, then extend the baseline.
 
-Next scope: twelve adjacent GAME4.c item/reward callbacks / 1,063 C lines. Retain
-the unrelated declarations after RewardMarker. Ignored build/port-item-xfer holds
-an audit and uninstalled, uncompiled fixture/implementation drafts. Review them
-before use. The audit identifies a likely failed-child ownership defect in
-MonsterGenerator and potentially undefined old charged-weapon attribute padding;
-demonstrate each against C before choosing any prerequisite correction. Use focused
-affected checks for that batch; this completed common-serialization milestone has
-already run the full accumulated corpus.
+Remaining coverage: modifier identities and mutations, HP/charge policy, nonempty
+generator ownership, reward masks/names and obelisk minimap state. Then repeat and
+freeze the C corpus, run current-source integration and translate the connected
+callbacks. Use affected checks; the preceding common serialization boundary already
+ran the full accumulated milestone. No item callback is translated yet.
 
-No substantial blocker or user question is pending. Do not rerun the consumed
-object-xfer installation script or overwrite tracked fixtures with stale drafts.
-Original assets remain unchanged. Completed scenario copies have verified
-restoration manifests; frames/logs/saves remain. Preserve untracked
+Ignored build/port-item-xfer/charges_fixture.draft is ready for review/installation
+next. simple_native.draft covers five callbacks but remains uninstalled and untested.
+Earlier fixture/installation drafts are consumed and stale; do not overwrite tracked
+source with them. No substantial blocker is pending. Original assets remain unchanged;
+completed scenario copies have verified restoration manifests. Preserve untracked
 nox-iso-from-archive-org.7z. Source build/baseline/env.sh for every Go command.
 
 <!-- /current-checkpoint -->

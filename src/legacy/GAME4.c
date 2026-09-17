@@ -277,6 +277,7 @@ int nox_xxx_XFerWeapon_4F64A0(int a1) {
 		*(uint32_t*)&v20[4] = 0;
 		*(uint32_t*)&v20[8] = 0;
 		*(uint32_t*)&v20[12] = 0;
+		*(uint32_t*)&v20[16] = 0xFFFFFFFF;
 		nox_xxx_modifSetItemAttrs_4E4990(a1, (int*)v20);
 		return 1;
 	}
@@ -879,6 +880,7 @@ int nox_xxx_XFerMonsterGen_4F7130(int* a1) {
 							nox_xxx_fileReadWrite_426AC0_file3_fread(&v26, 2u);
 							nox_xxx_fileCryptReadCrcMB_426C20(&v32, 4u);
 							if (!((int (*)(uint32_t*, uint32_t))v18[176])(v18, 0)) {
+								nox_xxx_objectFreeMem_4E38A0((int)v18);
 								return 0;
 							}
 							v19 = v17++ + 4 * v16;
