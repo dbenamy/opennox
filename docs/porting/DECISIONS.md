@@ -1491,3 +1491,26 @@ contract distinguishes the two paths, and both original objective-score hashes
 are restored without changing goldens. PORT.md now calls for this ownership check
 when reusing existing Go APIs. This is translation fidelity, not a gameplay rule
 change; no additional user decision is needed.
+
+## Team UI prerequisites — review after conversion
+
+Before freezing the team HUD/player-list baseline, independent real-widget
+contracts reproduce five existing C issues. Correct them under the standing
+permission for confident reversible changes:
+
+- Refresh frees both old backing row lists before rebuilding, keeping metadata
+  and displayed rows aligned instead of accumulating duplicates.
+- Team lookup compares complete bare names, preserving spaces.
+- Rename finds the row by team ID, updates its backing name and preserves the
+  current selection; it must not rename a different selected team or insert an
+  extra row when nothing is selected.
+- Assign-button eligibility compares the player selection as signed, so the -1
+  sentinel disables the control.
+- Failed player-list resource loading returns zero before accessing child widgets.
+
+The corrected original-C UI corpus passes 25 roots with 19 frozen captures.
+Three-target and production qualification are recorded in [TEAM_UI.md](TEAM_UI.md).
+These changes add 22 C lines before conversion (51,225 remaining). They change no
+message layouts or membership rules. Keep existing empty-name acceptance and
+ASCII case folding; this runtime's C comparison does not fold Cyrillic case.
+Broader Unicode case handling is a separate review item, not part of this port.

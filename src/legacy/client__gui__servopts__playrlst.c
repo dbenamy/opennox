@@ -41,6 +41,9 @@ int nox_xxx_guiServerPlayersLoad_456270(int a1) {
 		return 0;
 	}
 	dword_5d4594_1045684 = nox_new_window_from_file(*(const char**)getMemAt(0x587000, 129048 + 4 * v1), sub_4567C0);
+	if (!dword_5d4594_1045684) {
+		return 0;
+	}
 	dword_5d4594_1045688 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1045684, 10507);
 	dword_5d4594_1045692 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1045684, 10509);
 	sub_46B120(*(uint32_t**)&dword_5d4594_1045684, a1);
@@ -237,7 +240,17 @@ int sub_457010(int a1, wchar2_t* a2) {
 	result = dword_5d4594_1045684;
 	if (dword_5d4594_1045684) {
 		v4 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1045684, 10502);
-		v5 = nox_window_call_field_94((int)v4, 16404, 0, 0);
+		int selected = nox_window_call_field_94((int)v4, 16404, 0, 0);
+		int* row = nox_common_list_getFirstSafe_425890(getMemIntPtr(0x5D4594, 1045668));
+		v5 = 0;
+		while (row && row[15] != *(unsigned char*)(a1 + 57)) {
+			row = nox_common_list_getNextSafe_4258A0(row);
+			++v5;
+		}
+		if (!row) {
+			return 0;
+		}
+		nox_wcscpy((wchar2_t*)row + 6, a2);
 		nox_wcscpy(v9, a2);
 		if (nox_common_gameFlags_check_40A5C0(96) || v2[52] & 0x60) {
 			v6 = *(uint8_t*)(a1 + 57);
@@ -256,7 +269,7 @@ int sub_457010(int a1, wchar2_t* a2) {
 		nox_window_call_field_94((int)v4, 16402, v5, 0);
 		v7 = sub_457120(a1);
 		nox_window_call_field_94((int)v4, 16397, (int)v9, v7);
-		result = nox_window_call_field_94((int)v4, 16403, v5, 0);
+		result = nox_window_call_field_94((int)v4, 16403, selected, 0);
 	}
 	return result;
 }

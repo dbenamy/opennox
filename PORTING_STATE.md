@@ -2,16 +2,52 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 51k lines** — **51,203 physical lines in 82 production
-`.c` files**, zero reference C. Latest qualified conversion removes **1,072 lines**.
+**Rough C remaining: about 51k lines** — **51,225 physical lines in 82 production
+`.c` files**, zero reference C. Latest conversion removes **1,072 lines**; the
+qualified team UI prerequisites add 22 before the next conversion.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — team runtime conversion qualified
+## Current — qualified team UI C baseline
 
-Corrected C baseline `0b4b853c` is pushed. This checkpoint accompanies the qualified
-native conversion: 36 live functions ported, one 62-line orphan removed, 25 C
+This checkpoint accompanies the corrected team HUD/player-list C baseline.
+Parent conversion: **`6963545e`**. Five independently reproduced C prerequisites
+are corrected and qualified: refresh metadata ownership, full-name lookup,
+rename targeting/metadata, signed selection eligibility, missing-resource guard.
+See [TEAM_UI.md](docs/porting/TEAM_UI.md) and DECISIONS.md.
+
+**51,225 physical C lines / 82 files / zero reference C** (+22 prerequisite lines).
+Accepted conversion: **35 live functions / 943 C body lines**, no orphans. Corrected
+bodies: build/port-team-ui/corrected-scope.json; original reachability/ref audit in
+the same directory. Keep the Flagball root pointer shared: the adjacent, unported
+C status setter sub_456140 still reads it. No native UI implementation installed.
+
+C baseline default/server/highres all pass **74 roots / 11,136 leaves**, **59
+identical groups / 11,660 records**, no skips, in **50.47 / 136.09 / 61.61s**.
+Nineteen new UI captures are frozen; 40 preceding captures unchanged. Fresh
+production passes in **375.08s**: three builds/ABI, exact known asset failures,
+gameplay, save/load and flat rendering (51 maps removed, one regenerated).
+All four gates share the same unchanged **2,093-file source manifest**.
+All sessions joined; source may be edited after baseline commit/push.
+
+Manifest/selection: docs/porting/team-ui-c-batch.json / team-ui-focused-tests.txt.
+Artifacts: build/port-team-ui/c-{default,server,highres,production}, c-audit.json.
+Preserve frozen hashes. All ignored fixture and freeze scripts are consumed.
+**Uninstalled drafts:** native-hud-draft.go and translation-review.md in that
+build directory. Review before using; they are not compiled or qualified.
+
+Next commit/push this baseline, translate the batch, qualify/commit/push and
+continue. Source build/baseline/env.sh for every Go command. Never edit source
+while builds/tests read it. Maximum three heavy jobs. No substantial user blocker.
+
+Disk: prior team scenario dedups reclaimed 3.32 GB; generated Go cache pruning
+reclaimed 23.33 GB. Those manifests are consumed. Preserve current dependencies,
+module cache, source, qualification records, original assets and unrelated archive.
+
+### Completed — team runtime
+
+Corrected C baseline `0b4b853c` and native conversion `6963545e` are pushed: 36 live functions ported, one 62-line orphan removed, 25 C
 interfaces retained / 12 retired, two private globals moved to Go. Frozen hashes
 are unchanged. See [TEAM_RUNTIME.md](docs/porting/TEAM_RUNTIME.md).
 
@@ -30,14 +66,6 @@ Manifests: team-runtime-c-batch.json / team-runtime-batch.json. Artifacts under
 build/port-team-runtime; final sweeps native-{default,server,highres}-2 and
 native-production. Ignored fixture/native drafts and install/rewrite scripts are
 consumed/stale; do not rerun them. Preserve original assets and archive.
-
-Next: push this conversion, then audit the team HUD and server player-list UI
-candidate (35 functions / 921 C body lines). Preliminary exact bodies/references:
-build/port-team-ui/scope-audit.json. Include CTF construction/tooltips and the two
-deferred map-entry wrappers; exclude neighboring ban-list/server-options helpers.
-Reuse real GUI, listbox, renderer, player/team and message owners. Review the
-wrappers' partial-width booleans before freezing. No substantial user blocker.
-Source build/baseline/env.sh for Go; continue one qualified batch at a time.
 
 ### Last completed qualification
 

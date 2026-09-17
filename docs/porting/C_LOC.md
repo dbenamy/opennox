@@ -198,6 +198,8 @@ target build selection and linker evidence.
 
 | Team runtime, membership and map objectives, including orphan/separator cleanup | 82 | 51,203 | −1,072 | 0 |
 
+| Team UI row ownership, naming, selection and missing-resource prerequisites | 82 | 51,225 | +22 | 0 |
+
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
 because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful

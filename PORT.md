@@ -15,15 +15,15 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Team runtime, membership and map objective setup are ported and
-qualified: about 56,100 affected leaf cases across three targets, 151 identical
-capture groups, and fresh production builds, gameplay, save/load and flat rendering.
+scheduled pause. Team runtime is ported. The team HUD/player-list corrected C
+baseline is now qualified: 74 affected roots / 11,136 leaves on all three targets,
+59 identical captures, and fresh production/gameplay/save-load/flat rendering.
 
-Production C is **51,203 physical lines in 82 files**, with zero reference C;
-this conversion removes **1,072 lines**. The full asset suite retains its exact
-three known failing packages. Next is the connected team HUD and player-list UI.
-See [TEAM_RUNTIME.md](docs/porting/TEAM_RUNTIME.md) for evidence and review decisions.
-[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Production C is **51,225 physical lines in 82 files**, with zero reference C.
+Five UI correctness prerequisites add 22 lines before the next conversion of
+35 live functions / 943 body lines. The full asset suite retains its exact three
+known failing packages. See [TEAM_UI.md](docs/porting/TEAM_UI.md) for evidence and
+review decisions; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 

@@ -2436,6 +2436,18 @@ int sub_456500() {
 	uint32_t* v4; // edi
 	int result;   // eax
 
+	// Refresh owns both the widget rows and their parallel metadata lists.
+	for (int list = 0; list < 2; ++list) {
+		int* head = getMemIntPtr(0x5D4594, 1045652 + 16 * list);
+		int* row = nox_common_list_getFirstSafe_425890(head);
+		while (row) {
+			int* next = nox_common_list_getNextSafe_4258A0(row);
+			nox_common_list_remove_425920((uint32_t**)row);
+			free(row);
+			row = next;
+		}
+	}
+
 	v0 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1045684, 10501);
 	v1 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1045684, 10502);
 	nox_window_call_field_94((int)v0, 16399, 0, 0);
@@ -2493,7 +2505,7 @@ int sub_456640(int a1, int a2) {
 			v3 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1045684, 10501);
 			v4 = (uint32_t*)nox_window_call_field_94((int)v3, 16404, 0, 0);
 			v5 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1045684, 10503);
-			nox_xxx_wnd_46ABB0((int)v5, *v4 >= 0);
+			nox_xxx_wnd_46ABB0((int)v5, (int32_t)*v4 >= 0);
 		}
 	}
 	v7 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1045684, 10502);
@@ -2665,8 +2677,6 @@ int sub_456EA0(wchar2_t* a1) {
 int sub_456F10(wchar2_t* a1, int a2) {
 	int* v2;        // esi
 	int v3;         // ebx
-	wchar2_t* v4;    // eax
-	wchar2_t v6[56]; // [esp+Ch] [ebp-70h]
 
 	v2 = nox_common_list_getFirstSafe_425890(getMemIntPtr(0x5D4594, 1045668));
 	v3 = 0;
@@ -2674,9 +2684,8 @@ int sub_456F10(wchar2_t* a1, int a2) {
 		return -1;
 	}
 	while (1) {
-		nox_wcscpy(v6, (const wchar2_t*)v2 + 6);
-		v4 = nox_wcstok(v6, L" \t\n\r");
-		if (!_nox_wcsicmp(v4, a1)) {
+		// Metadata stores the bare team name, including any spaces.
+		if (!_nox_wcsicmp((const wchar2_t*)v2 + 6, a1)) {
 			break;
 		}
 		v2 = nox_common_list_getNextSafe_4258A0(v2);
