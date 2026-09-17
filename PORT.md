@@ -28,6 +28,9 @@ See [RELIABLE_REPORTS.md](docs/porting/RELIABLE_REPORTS.md) for evidence and the
 prerequisite pressure-cleanup crash fix. Next: the connected world-collision and
 interaction callbacks, approximately 1,016 physical C lines / 21 functions, using
 the existing object, player, inventory, script, audio and report owners.
+The world-collision C baseline is frozen and passes 28 roots / 10,515 leaf cases
+on all three targets plus an independent repeat. See
+[WORLD_COLLISIONS.md](docs/porting/WORLD_COLLISIONS.md).
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint; confident reversible
 decisions remain recorded for review.
 

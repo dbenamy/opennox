@@ -8,34 +8,35 @@ from its corrected C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — reliable game-message queue qualified
+## Current — world-collision C baseline qualified
 
-C baseline **f95e7aee** is committed/pushed, including the independently reproduced
-pressure-cleanup crash fix. The native conversion passes all gates:
-default/server/highres 416 roots / 30,236 leaf cases each, all 98 groups / 31,587
-records, static checks, production builds/ABI, exact known full-suite failures,
-gameplay, actual save/load and flat rendering with exact map regeneration. The
-1,991 source fingerprints match across native target and production gates.
+Latest qualified conversion **fec78429** is committed/pushed. Its native reliable
+queue passes 416 affected roots / 30,236 leaves, all 98 groups / 31,587 records,
+production builds/ABI, exact known full-suite failures, gameplay, actual save/load
+and flat rendering with exact map regeneration. See RELIABLE_REPORTS.md.
 
-Twenty C functions are replaced by three Go files (457 lines). Thirteen C
-interfaces are retired; seven remain for C callers. Go consumers call Go directly,
-and the root sequence-reset helper delegates to the shared implementation. No
-algorithm or frozen expectation was adjusted during conversion. Previous reports'
-leaf counts are corrected from their original logs; every preceding case remains.
-See RELIABLE_REPORTS.md for evidence, the prerequisite fix and review notes.
+The next connected block is **21 live functions / 1,016 physical C lines** in
+GAME3_3.c, 004E86E0 through 004EBF40, ending before 004EC520. It includes obsolete
+commented projectile code. Every entry has live callers or callback registration.
+Its original-C contracts are frozen: default/server/highres and independent repeat
+each pass **28 roots / 10,515 leaves**, no skips, **28 groups / 10,541 records**.
+All four gates have identical **2,013 source fingerprints**. All 1,991 preceding
+sources are unchanged; the 22 additions are porttest-only. Production evidence
+from the previous conversion is reused with an explicit identity audit. No C
+correction was needed. See docs/porting/WORLD_COLLISIONS.md and
+build/port-world-collisions/c-production-reuse-audit.json.
 
-Next: world-collision and interaction callbacks, 21 live functions / 1,016 physical
-C lines in GAME3_3.c, 004E86E0 through 004EBF40, before 004EC520. The count includes
-an obsolete commented projectile implementation, to remove with the live block.
-All entries have live callers or callback registrations. Initial audit is in
-build/port-world-collisions/candidate-audit.json. No next-batch source is installed.
-Baseline new contracts on all targets and repeat independently; reuse the current
-production baseline if production source is unchanged. Retain callback identities
-where C compares function addresses. Existing callback registry takes C pointers.
+Next: commit/push this baseline, translate all 21 functions, retire the mass helper
+C interface and retain the other 20 for callbacks/callers. No native draft is
+installed. Then run native-default/server/highres (expected 444 roots / 40,751
+leaves, 126 groups / 42,128 records), fresh production qualification, docs/C LOC,
+commit/push, and continue. Use docs/porting/world-collisions-batch.json.
 
-Reliable-queue and prior install scripts/drafts are CONSUMED/STALE; never rerun.
+No running test/build sessions. The freeze script and installed exit drafts are
+CONSUMED/STALE. Do not rerun old reliable-queue install/finalize scripts either.
 Preserve untracked nox-iso-from-archive-org.7z and original assets. Source
-build/baseline/env.sh for Go commands. No source edits during builds. No user blocker.
+build/baseline/env.sh for Go commands. Never edit source during builds. No user
+blocker. Native conversion has not begun; C remains 54,962 lines / 82 files.
 
 <!-- /current-checkpoint -->
 
