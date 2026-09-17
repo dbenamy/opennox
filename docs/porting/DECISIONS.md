@@ -1366,3 +1366,15 @@ and production source is identical. The new C contracts still run across all thr
 targets and repeat independently. Completed native batches still receive the broad
 affected corpus, fresh builds/ABI, exact known suite and headless integration gates.
 See [OBJECT_REPORTS.md](OBJECT_REPORTS.md) for the evidence and fixture corrections.
+
+
+### Reliable message queue pressure ownership
+
+Fix the independently reproduced original-C cleanup crash before freezing the next
+baseline. Slow-player removal can already free the oldest message selected by the
+pressure scan. Check the surviving list before unlinking that selection again;
+retain acknowledgement/related-bit updates and return success when removal already
+released it. Tests verify pool reuse and surviving-list variants. This is a
+reversible prerequisite correction within the authorized port workflow, not an
+expectation change made to accommodate Go. Fresh C production checks are required
+because production source changed. See [RELIABLE_REPORTS.md](RELIABLE_REPORTS.md).

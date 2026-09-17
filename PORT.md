@@ -15,19 +15,18 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Object and recipient reports are qualified: **541 physical C
-lines removed**, leaving **55,577 lines in 82 files**, with zero reference C.
+scheduled pause. Object and recipient reports remain the latest qualified Go
+conversion (`eb2e61c4`, 541 C lines removed). The reliable game-message queue C
+baseline now passes all three targets, independent repeat and fresh production /
+headless integration checks: **15 roots / 6,989 leaf cases, 9,032 frozen records**.
 
-Default/server/highres each pass **401 affected roots / 23,265 leaf cases** without
-skips; **22,555 frozen records / 83 groups** match. All production builds and ABI
-audits pass, the full asset suite retains exactly its known failures, and headless
-gameplay, actual save/load and flat rendering pass with exact map regeneration.
-
-See [OBJECT_REPORTS.md](docs/porting/OBJECT_REPORTS.md) for evidence and review
-notes. Next: the connected reliable game-message queue, approximately 615 C lines,
-reusing the real player and queue owners from these report batches.
-[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint; confident reversible
-decisions remain recorded for review.
+An independent regression reproduced an existing pressure-cleanup crash. The
+qualified C prerequisite fixes ownership before cleanup reuses a selected node;
+it temporarily adds seven lines. Current C: **55,584 lines / 82 files**, zero
+reference C. Next: replace the corrected 622-line queue block with Go and qualify
+its consumers. See [RELIABLE_REPORTS.md](docs/porting/RELIABLE_REPORTS.md) for the
+fix and evidence. [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint;
+confident reversible decisions remain recorded for review.
 
 ## Goal and target
 

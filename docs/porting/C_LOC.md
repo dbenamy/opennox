@@ -186,6 +186,7 @@ target build selection and linker evidence.
 | Monster and NPC serialization (including trailing separator) | 82 | 56,968 | −1,571 | 0 |
 | Visibility and effect reports, including orphan/EOF cleanup | 82 | 56,118 | −850 | 0 |
 | Object and recipient reports, including private minimap count | 82 | 55,577 | −541 | 0 |
+| Reliable queue pressure ownership prerequisite (C fix) | 82 | 55,584 | +7 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

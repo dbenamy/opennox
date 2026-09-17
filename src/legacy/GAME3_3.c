@@ -682,7 +682,14 @@ int nox_xxx_importantCheckRate_4E52B0() {
 	if (!v0) {
 		return 0;
 	}
-	sub_4E4FC0(v0);
+	// Removing the slow player may already have released the selected node.
+	// Find it in the surviving list before accessing its links or freeing it.
+	for (v1 = dword_5d4594_1565512; v1; v1 = *(uint32_t*)(v1 + 408)) {
+		if (v1 == v0) {
+			sub_4E4FC0(v1);
+			break;
+		}
+	}
 	return 1;
 }
 // 4E5AB0: using guessed type void  nullsub_24(uint32_t);

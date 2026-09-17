@@ -1,0 +1,1699 @@
+{
+  "batch": "reliable-reports",
+  "env": {
+    "OPENNOX_SPELLBOOK_CAPTURE": "{out}/capture",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
+  "phases": {
+    "c-default": [
+      {
+        "name": "c-default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/reliable-reports-focused-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-reliable-reports-acknowledge.json",
+            "sha256": "d467840257f4656b65ee2a2e4ee2afe15a67e9a47bf5f1124e87942f1ee5fa58"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-client-wrapper.json",
+            "sha256": "4471530029de3c5425ef0cbcc7840114c6bde86aa3d04212b798161ab8997b25"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-capacity.json",
+            "sha256": "2e2597e525418bbb3117ec89641f80fee0300e87158a8cd8e2b64f2173c5679b"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-flags.json",
+            "sha256": "d084fafe1d4e276eb1dec1d600350d6de39315ed270eb469f8a6ad3271583ef5"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery.json",
+            "sha256": "6074dcef71eb0e00fda7637b61d6343f20857032a385aab910e3fff0d58af070"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-enqueue.json",
+            "sha256": "c0f7d315ea2a262fc7b636f8b9f83b0b93bfa2c9a411a059b71bf786120b7686"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-list-edits.json",
+            "sha256": "a3f4d9d897beeba50650702e976e7a2d51bca3def42ba8fc04c833d7c2e298eb"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pool-pressure.json",
+            "sha256": "8a1660c562478ba1e4d028b51749293814a97043e90ed0610f22f97f17e6b7cf"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-recipient.json",
+            "sha256": "0d3081e3f1bbb257902ebe8e0825310253259ac47f873e8470c3e64e8d30971d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-survivors.json",
+            "sha256": "33baf72e33950f23e3fe876d249ff5170b925cd49a3f1e3b6834b85f49ca726d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-rate-adaptation.json",
+            "sha256": "5e9c04abba360f8eba93e3bc655b8110ffd323fedbd7c761a77d6fa9df9db4c8"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-remove-player.json",
+            "sha256": "178dc3acd210f86f43dd00c143037c47e0b42a22bd25bd0de671d02f168d9541"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-resets.json",
+            "sha256": "f0c64ff12ec99a556527231149c44c55af96d093a9b716f8dc518fc334d1daf1"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-retries.json",
+            "sha256": "6c01b5a99276b7aa3c9807054dd686c46cad505be1d70f3104cd6e91c7e78e17"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-sequence-wrap.json",
+            "sha256": "764a0d28a7601fd19df384a70c81afed3bba52c0b6dc8550b2ad956b26428a9a"
+          }
+        ]
+      }
+    ],
+    "c-server": [
+      {
+        "name": "c-server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/reliable-reports-focused-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-reliable-reports-acknowledge.json",
+            "sha256": "d467840257f4656b65ee2a2e4ee2afe15a67e9a47bf5f1124e87942f1ee5fa58"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-client-wrapper.json",
+            "sha256": "4471530029de3c5425ef0cbcc7840114c6bde86aa3d04212b798161ab8997b25"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-capacity.json",
+            "sha256": "2e2597e525418bbb3117ec89641f80fee0300e87158a8cd8e2b64f2173c5679b"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-flags.json",
+            "sha256": "d084fafe1d4e276eb1dec1d600350d6de39315ed270eb469f8a6ad3271583ef5"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery.json",
+            "sha256": "6074dcef71eb0e00fda7637b61d6343f20857032a385aab910e3fff0d58af070"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-enqueue.json",
+            "sha256": "c0f7d315ea2a262fc7b636f8b9f83b0b93bfa2c9a411a059b71bf786120b7686"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-list-edits.json",
+            "sha256": "a3f4d9d897beeba50650702e976e7a2d51bca3def42ba8fc04c833d7c2e298eb"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pool-pressure.json",
+            "sha256": "8a1660c562478ba1e4d028b51749293814a97043e90ed0610f22f97f17e6b7cf"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-recipient.json",
+            "sha256": "0d3081e3f1bbb257902ebe8e0825310253259ac47f873e8470c3e64e8d30971d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-survivors.json",
+            "sha256": "33baf72e33950f23e3fe876d249ff5170b925cd49a3f1e3b6834b85f49ca726d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-rate-adaptation.json",
+            "sha256": "5e9c04abba360f8eba93e3bc655b8110ffd323fedbd7c761a77d6fa9df9db4c8"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-remove-player.json",
+            "sha256": "178dc3acd210f86f43dd00c143037c47e0b42a22bd25bd0de671d02f168d9541"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-resets.json",
+            "sha256": "f0c64ff12ec99a556527231149c44c55af96d093a9b716f8dc518fc334d1daf1"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-retries.json",
+            "sha256": "6c01b5a99276b7aa3c9807054dd686c46cad505be1d70f3104cd6e91c7e78e17"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-sequence-wrap.json",
+            "sha256": "764a0d28a7601fd19df384a70c81afed3bba52c0b6dc8550b2ad956b26428a9a"
+          }
+        ]
+      }
+    ],
+    "c-highres": [
+      {
+        "name": "c-highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/reliable-reports-focused-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-reliable-reports-acknowledge.json",
+            "sha256": "d467840257f4656b65ee2a2e4ee2afe15a67e9a47bf5f1124e87942f1ee5fa58"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-client-wrapper.json",
+            "sha256": "4471530029de3c5425ef0cbcc7840114c6bde86aa3d04212b798161ab8997b25"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-capacity.json",
+            "sha256": "2e2597e525418bbb3117ec89641f80fee0300e87158a8cd8e2b64f2173c5679b"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-flags.json",
+            "sha256": "d084fafe1d4e276eb1dec1d600350d6de39315ed270eb469f8a6ad3271583ef5"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery.json",
+            "sha256": "6074dcef71eb0e00fda7637b61d6343f20857032a385aab910e3fff0d58af070"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-enqueue.json",
+            "sha256": "c0f7d315ea2a262fc7b636f8b9f83b0b93bfa2c9a411a059b71bf786120b7686"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-list-edits.json",
+            "sha256": "a3f4d9d897beeba50650702e976e7a2d51bca3def42ba8fc04c833d7c2e298eb"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pool-pressure.json",
+            "sha256": "8a1660c562478ba1e4d028b51749293814a97043e90ed0610f22f97f17e6b7cf"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-recipient.json",
+            "sha256": "0d3081e3f1bbb257902ebe8e0825310253259ac47f873e8470c3e64e8d30971d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-survivors.json",
+            "sha256": "33baf72e33950f23e3fe876d249ff5170b925cd49a3f1e3b6834b85f49ca726d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-rate-adaptation.json",
+            "sha256": "5e9c04abba360f8eba93e3bc655b8110ffd323fedbd7c761a77d6fa9df9db4c8"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-remove-player.json",
+            "sha256": "178dc3acd210f86f43dd00c143037c47e0b42a22bd25bd0de671d02f168d9541"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-resets.json",
+            "sha256": "f0c64ff12ec99a556527231149c44c55af96d093a9b716f8dc518fc334d1daf1"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-retries.json",
+            "sha256": "6c01b5a99276b7aa3c9807054dd686c46cad505be1d70f3104cd6e91c7e78e17"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-sequence-wrap.json",
+            "sha256": "764a0d28a7601fd19df384a70c81afed3bba52c0b6dc8550b2ad956b26428a9a"
+          }
+        ]
+      }
+    ],
+    "c-repeat": [
+      {
+        "name": "c-repeat",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/reliable-reports-focused-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-reliable-reports-acknowledge.json",
+            "sha256": "d467840257f4656b65ee2a2e4ee2afe15a67e9a47bf5f1124e87942f1ee5fa58"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-client-wrapper.json",
+            "sha256": "4471530029de3c5425ef0cbcc7840114c6bde86aa3d04212b798161ab8997b25"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-capacity.json",
+            "sha256": "2e2597e525418bbb3117ec89641f80fee0300e87158a8cd8e2b64f2173c5679b"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-flags.json",
+            "sha256": "d084fafe1d4e276eb1dec1d600350d6de39315ed270eb469f8a6ad3271583ef5"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery.json",
+            "sha256": "6074dcef71eb0e00fda7637b61d6343f20857032a385aab910e3fff0d58af070"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-enqueue.json",
+            "sha256": "c0f7d315ea2a262fc7b636f8b9f83b0b93bfa2c9a411a059b71bf786120b7686"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-list-edits.json",
+            "sha256": "a3f4d9d897beeba50650702e976e7a2d51bca3def42ba8fc04c833d7c2e298eb"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pool-pressure.json",
+            "sha256": "8a1660c562478ba1e4d028b51749293814a97043e90ed0610f22f97f17e6b7cf"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-recipient.json",
+            "sha256": "0d3081e3f1bbb257902ebe8e0825310253259ac47f873e8470c3e64e8d30971d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-survivors.json",
+            "sha256": "33baf72e33950f23e3fe876d249ff5170b925cd49a3f1e3b6834b85f49ca726d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-rate-adaptation.json",
+            "sha256": "5e9c04abba360f8eba93e3bc655b8110ffd323fedbd7c761a77d6fa9df9db4c8"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-remove-player.json",
+            "sha256": "178dc3acd210f86f43dd00c143037c47e0b42a22bd25bd0de671d02f168d9541"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-resets.json",
+            "sha256": "f0c64ff12ec99a556527231149c44c55af96d093a9b716f8dc518fc334d1daf1"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-retries.json",
+            "sha256": "6c01b5a99276b7aa3c9807054dd686c46cad505be1d70f3104cd6e91c7e78e17"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-sequence-wrap.json",
+            "sha256": "764a0d28a7601fd19df384a70c81afed3bba52c0b6dc8550b2ad956b26428a9a"
+          }
+        ]
+      }
+    ],
+    "native-default": [
+      {
+        "name": "native-default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/reliable-reports-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-creature-xfer-action-arguments.json",
+            "sha256": "f42e6c0ca02e3a05d6290f05d502f23c850e7d3208df22d1def7b8f70d1ae331"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-current.json",
+            "sha256": "4c7066f977ad9d5d1f4bf42a047829a9c650eac4308b02f252d38ce10924eab8"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-edges.json",
+            "sha256": "4181955561fc0d2075358604e903a1d7570ee3703608b4d96a72aecd2aa57af0"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-historical.json",
+            "sha256": "0a2fa616be097bbc8d8d9f492fa3a8389d181671e5af85fa8e7e2107895e366d"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-references.json",
+            "sha256": "bef27611f488889453daac9b85fd6f793cc968da9cd95121aa2f06b61a8c9d91"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-stack.json",
+            "sha256": "4649d58d02b79be244555bef4a4e51bf1b45add93f1ed7472eff6c27b71ade2c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-auto-spells.json",
+            "sha256": "d52054751fa0c381c9ddd5c3a4b8abd66ee08afef8cdbe95539d443ff4adf1f7"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-buff-application.json",
+            "sha256": "eeb10d0e71494c8986fdb7dc42724f964bafe728770ac7ab6f81fa242275e32c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-buff-writer.json",
+            "sha256": "491477ed873d75d72aa98fe30c46ad9d495d489b731fa77f67b5c056dbc4a205"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-current.json",
+            "sha256": "d3bce2e0e945a46f08e4539705d5e5b51acae4a21021998801fd6400bff4c89a"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-definition-defaults.json",
+            "sha256": "2694cdd92e3157113a7851b6462f234742057c5ddeaa4bf3166b3cf4587910e3"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-equipment-order.json",
+            "sha256": "fefcfa5d72da58b690c9ab091d64e7f24ce4199889a5153cc10334bc06a6b368"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-merchant.json",
+            "sha256": "d1820f99d8a6a53c84f9313b792a1dcf73eb4cc65c83ceecf2cc3a6bb743fb7e"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-monster-historical.json",
+            "sha256": "bc3e7e0d2dcdcd12343c119c15c109f47fc75df5c0ee00cc8abf553d4eaf92a5"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-npc-historical.json",
+            "sha256": "1a3494a6e4b9316aba48108cd601de0e9473ea5d3404517cafe1b37a7bf5baff"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-paths.json",
+            "sha256": "83ac69db2230cc65c5f5cef23c335266dff56079b6582e8b268f2a8f18f95b8c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-postload.json",
+            "sha256": "5996b0b2ba26681fc5621c10546d4d807fc487a5f1427517d7660de64139c1ad"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-spell-words.json",
+            "sha256": "cf46d2dbabd9249ac09dfe091e8e607ef94a841267269850a87bed89cc2c7826"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-timestamps.json",
+            "sha256": "5f3c1e03a96daf814ea8e85d2646a2fb09072184a8058895608dd29c0c83ee71"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-voices.json",
+            "sha256": "067a08d8ad5734f304babebc0d903d89e92b79524aaad2ceed37b6a8ba6061e0"
+          },
+          {
+            "path": "{out}/capture-item-xfer-default.json",
+            "sha256": "6869329949659b6782b5fa57cb0ba222c85193e356658ff23cf27d98ff97ef62"
+          },
+          {
+            "path": "{out}/capture-item-xfer-equipment-health.json",
+            "sha256": "af7f8e014742cec75751206eb64e9cfa484c9184927f8a436db1b7831116ce56"
+          },
+          {
+            "path": "{out}/capture-item-xfer-generator-partial.json",
+            "sha256": "d2dc20501579610e180c7d21ac00a89dab1b1cfeae99a50d7422926583a83716"
+          },
+          {
+            "path": "{out}/capture-item-xfer-generator-records.json",
+            "sha256": "4d0309d232cb1ce62afa7c862e480e1fe7afef1280e87e38da73bb76d5d395c0"
+          },
+          {
+            "path": "{out}/capture-item-xfer-historical.json",
+            "sha256": "90d388662199a78f8c07c566b185df5cccacfc88c99fb11117f0818899edd063"
+          },
+          {
+            "path": "{out}/capture-item-xfer-modifiers.json",
+            "sha256": "5dec507c6294b4c666c4f14a4a43a21b5a75e97471e7d97b8b0d05d256f35b83"
+          },
+          {
+            "path": "{out}/capture-item-xfer-name-boundaries.json",
+            "sha256": "eef3c2673164b967d3bcb50983f239c98fcc7145f1b673a530e0070fb0f4156e"
+          },
+          {
+            "path": "{out}/capture-item-xfer-obelisk-minimap.json",
+            "sha256": "682faf05e991e354997ef2f75194e6e9b62fe0ce0c3c9e05cb71d86d61a41d1c"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-failures.json",
+            "sha256": "ec77c9e1785dcf9d5d4ceb9b20c86fa3dcea89f3bb0907fd9deb27e1859494f2"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-masks.json",
+            "sha256": "db3294dda28c6f942b267731f0a320ccec573e3f3af4aadc93e6c893497b2ec4"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-merge.json",
+            "sha256": "181f8397e0143fdfe072e8a5f89cd3b83a9dbc7c99011bfcd6678e0e862f6c19"
+          },
+          {
+            "path": "{out}/capture-item-xfer-weapon-charges.json",
+            "sha256": "78ce522d53ec6949f2a27ff33e3a3fe7b1cad0a2041537b4db82dc63d39752d9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-camera.json",
+            "sha256": "aaaa9ccf7961f10bdc6f395ea6d9803bec32c80c1084953d18fe96b764438ab6"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-candidates.json",
+            "sha256": "f89f2ce15f5fd5167381de92d7935136e0c6d13a722a84125796b9e63d6cb756"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-chat.json",
+            "sha256": "2e1bc29f467f305715c0815311a1e892d4809d2493b6882ef22594f8879533f4"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-destinations.json",
+            "sha256": "dc0132a00e582242edeefa209dde210e40e86443d7734db52cfede9801e66098"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-destroy-reports.json",
+            "sha256": "04de6f0dc161424687a0ea32c73951740ff4e63ea4b687459de41673b360e38b"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-frame-copy.json",
+            "sha256": "f2eb7ab62acd056881288d9dc8c95e6298da2abe5236f7b3c6dc5d15ffd2d36c"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-global-removal.json",
+            "sha256": "e8d0482e1df182a9b56425629ffaef2953e3499e85ff72beebb47f8e6fefb87b"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-killable.json",
+            "sha256": "d0f92b2ea6d5f7b87a991ab9452a8c6cdf89527e2d096d023178656d9db04ca5"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-point-packets.json",
+            "sha256": "dc805c016fe651145abc7127e070e60a846bdc8922b38f8756f3a489f6e6ba75"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-prediction.json",
+            "sha256": "f23426209a392d8ab8decd29218c11f3b5c94b8fef332b7759cee71fd8f4157f"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-reliable.json",
+            "sha256": "b57afb84055aa2c143781abecf3842677096024be5f1a3c5532424cb9cb623c1"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-seen-cooldown.json",
+            "sha256": "d5dc781cd3d9b23eb7b2c00c86875baed9ce4e294b1c15d9d6d956ee547ba4e7"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-seen-insertion.json",
+            "sha256": "44ecd46e0b25eb4252ad53528425223ba67843270e885bd797f43b50ecb539a8"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-seen-removal.json",
+            "sha256": "e593003d2d14121191be94d98b5138771c80a9967ae0507a155e083feb02de6d"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-shield.json",
+            "sha256": "238ad11972b983a12a44b8064555f2e2f772f361c2eda61b90926c1fe060acca"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-sight-maintenance.json",
+            "sha256": "8435200c73359f3374ac76ee7be8c068104fb1b6a7c304e61e3b7f6487a4bf79"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-spatial-scan.json",
+            "sha256": "194c6546cbb13135f451b5af00ce110ec7292c538e635a3308ea91deff2c5813"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-special-updates.json",
+            "sha256": "0f9647778519617c8a159e4584ef7e32bbbea71e49e0e1fa0ab055b7fe6f2cc6"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-target-selection.json",
+            "sha256": "ccedbdfaee008b670bbc391d926a11b1e1ca9084e1e139aca494efc0cc784190"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-viewport.json",
+            "sha256": "89c3ed8a970f3ea32af3a626c7c0388fdafcf87ffb7087754f12f17c6dfd33fa"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-scan-delay.json",
+            "sha256": "0db5f83c5cf17aaf3c9552fc3b924247ea22c628453e5a9617362b066355b50d"
+          },
+          {
+            "path": "{out}/capture-object-reports-cache.json",
+            "sha256": "58d52abc1990f0f8d8fac7c463705b73287b8e17f6b70d00bad2f0fb71cb51ac"
+          },
+          {
+            "path": "{out}/capture-object-reports-dirty-propagation.json",
+            "sha256": "e7f8bbc7be839bc587968f2ef3da1e55b91ea20714df49bfc1aa209fbfed3826"
+          },
+          {
+            "path": "{out}/capture-object-reports-health.json",
+            "sha256": "d744a88ebb868b1017cdc1d2640bb4c0db2f50f402535e10e3e55fb12465c0f9"
+          },
+          {
+            "path": "{out}/capture-object-reports-monster-animation.json",
+            "sha256": "d306a19e408363b8a29b4f74492a65fe926fa217d9a9582d8c8a143d43d9b4a0"
+          },
+          {
+            "path": "{out}/capture-object-reports-observer-audio.json",
+            "sha256": "c24c4dabf2e9263649f481637dda56c05f2a971ea4e43bc519a377e61cbe13ed"
+          },
+          {
+            "path": "{out}/capture-object-reports-occlusion.json",
+            "sha256": "cd755d3090a9e7f650572fc6b96a2664090e75c350b1b84a8785814edcd91599"
+          },
+          {
+            "path": "{out}/capture-object-reports-phantom.json",
+            "sha256": "1b317d3a2391bb76627a1b2d69c3fc7a6269e018fae665e8ac7e3414fb7dcd49"
+          },
+          {
+            "path": "{out}/capture-object-reports-player-animation.json",
+            "sha256": "62a6ef467578fd4f7d37eb8878c5b9e0ab0722fa55b508c2f7789612e52bffdd"
+          },
+          {
+            "path": "{out}/capture-object-reports-polygon-vertices.json",
+            "sha256": "ef2551055a27807ed42cfb9d15f005527de5747b5f0cfd443d05c53c6c51d4ba"
+          },
+          {
+            "path": "{out}/capture-object-reports-polygons.json",
+            "sha256": "16288be028cb8173fa7b6d252cdcb50cb42b2e9e3483046554461997a07fd46e"
+          },
+          {
+            "path": "{out}/capture-object-reports-queue-capacity.json",
+            "sha256": "9da6e3a53b1454df07e8af94e7be74072f7c29e936dbdc9731209614dbcd2e61"
+          },
+          {
+            "path": "{out}/capture-object-reports-recipient-masks.json",
+            "sha256": "1e0d69068cf86f0e00a94a1b69cb9380c8b7c3f0eca7ab5a9337d12ee6a51e2c"
+          },
+          {
+            "path": "{out}/capture-object-reports-schedule.json",
+            "sha256": "63550214ba3acf3a830ccb7687722e8c7f877336861cc49d80d3f626c016f90e"
+          },
+          {
+            "path": "{out}/capture-object-reports-self.json",
+            "sha256": "28aab84b6198587e0e333f5ce1e6940eb4a30a7b457037b0a4ec6b6fef76fcec"
+          },
+          {
+            "path": "{out}/capture-object-reports-simple.json",
+            "sha256": "7837a08b6508021c13b225a0acf1a8c072e114e1e4253e86c64900e94fc6d1e9"
+          },
+          {
+            "path": "{out}/capture-object-reports-sprites.json",
+            "sha256": "dbd4b63122abe4f7b206f3e2586a8a6221df307daabf324b41e44949ab6fcb24"
+          },
+          {
+            "path": "{out}/capture-object-reports-recipient-edges.json",
+            "sha256": "bbf48241c3e8b8b6c921587c01c79bec057e7fa8b90fc6a32cf501fd2e0e0bca"
+          },
+          {
+            "path": "{out}/capture-object-reports-initial-polygon.json",
+            "sha256": "f9688c4d426531a5700933cdde466a8dfea7c6b3f8518a4f9560363e1a202da3"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-acknowledge.json",
+            "sha256": "d467840257f4656b65ee2a2e4ee2afe15a67e9a47bf5f1124e87942f1ee5fa58"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-client-wrapper.json",
+            "sha256": "4471530029de3c5425ef0cbcc7840114c6bde86aa3d04212b798161ab8997b25"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-capacity.json",
+            "sha256": "2e2597e525418bbb3117ec89641f80fee0300e87158a8cd8e2b64f2173c5679b"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-flags.json",
+            "sha256": "d084fafe1d4e276eb1dec1d600350d6de39315ed270eb469f8a6ad3271583ef5"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery.json",
+            "sha256": "6074dcef71eb0e00fda7637b61d6343f20857032a385aab910e3fff0d58af070"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-enqueue.json",
+            "sha256": "c0f7d315ea2a262fc7b636f8b9f83b0b93bfa2c9a411a059b71bf786120b7686"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-list-edits.json",
+            "sha256": "a3f4d9d897beeba50650702e976e7a2d51bca3def42ba8fc04c833d7c2e298eb"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pool-pressure.json",
+            "sha256": "8a1660c562478ba1e4d028b51749293814a97043e90ed0610f22f97f17e6b7cf"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-recipient.json",
+            "sha256": "0d3081e3f1bbb257902ebe8e0825310253259ac47f873e8470c3e64e8d30971d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-survivors.json",
+            "sha256": "33baf72e33950f23e3fe876d249ff5170b925cd49a3f1e3b6834b85f49ca726d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-rate-adaptation.json",
+            "sha256": "5e9c04abba360f8eba93e3bc655b8110ffd323fedbd7c761a77d6fa9df9db4c8"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-remove-player.json",
+            "sha256": "178dc3acd210f86f43dd00c143037c47e0b42a22bd25bd0de671d02f168d9541"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-resets.json",
+            "sha256": "f0c64ff12ec99a556527231149c44c55af96d093a9b716f8dc518fc334d1daf1"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-retries.json",
+            "sha256": "6c01b5a99276b7aa3c9807054dd686c46cad505be1d70f3104cd6e91c7e78e17"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-sequence-wrap.json",
+            "sha256": "764a0d28a7601fd19df384a70c81afed3bba52c0b6dc8550b2ad956b26428a9a"
+          }
+        ]
+      }
+    ],
+    "native-server": [
+      {
+        "name": "native-server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/reliable-reports-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-creature-xfer-action-arguments.json",
+            "sha256": "f42e6c0ca02e3a05d6290f05d502f23c850e7d3208df22d1def7b8f70d1ae331"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-current.json",
+            "sha256": "4c7066f977ad9d5d1f4bf42a047829a9c650eac4308b02f252d38ce10924eab8"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-edges.json",
+            "sha256": "4181955561fc0d2075358604e903a1d7570ee3703608b4d96a72aecd2aa57af0"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-historical.json",
+            "sha256": "0a2fa616be097bbc8d8d9f492fa3a8389d181671e5af85fa8e7e2107895e366d"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-references.json",
+            "sha256": "bef27611f488889453daac9b85fd6f793cc968da9cd95121aa2f06b61a8c9d91"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-stack.json",
+            "sha256": "4649d58d02b79be244555bef4a4e51bf1b45add93f1ed7472eff6c27b71ade2c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-auto-spells.json",
+            "sha256": "d52054751fa0c381c9ddd5c3a4b8abd66ee08afef8cdbe95539d443ff4adf1f7"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-buff-application.json",
+            "sha256": "eeb10d0e71494c8986fdb7dc42724f964bafe728770ac7ab6f81fa242275e32c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-buff-writer.json",
+            "sha256": "491477ed873d75d72aa98fe30c46ad9d495d489b731fa77f67b5c056dbc4a205"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-current.json",
+            "sha256": "d3bce2e0e945a46f08e4539705d5e5b51acae4a21021998801fd6400bff4c89a"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-definition-defaults.json",
+            "sha256": "2694cdd92e3157113a7851b6462f234742057c5ddeaa4bf3166b3cf4587910e3"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-equipment-order.json",
+            "sha256": "fefcfa5d72da58b690c9ab091d64e7f24ce4199889a5153cc10334bc06a6b368"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-merchant.json",
+            "sha256": "d1820f99d8a6a53c84f9313b792a1dcf73eb4cc65c83ceecf2cc3a6bb743fb7e"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-monster-historical.json",
+            "sha256": "bc3e7e0d2dcdcd12343c119c15c109f47fc75df5c0ee00cc8abf553d4eaf92a5"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-npc-historical.json",
+            "sha256": "1a3494a6e4b9316aba48108cd601de0e9473ea5d3404517cafe1b37a7bf5baff"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-paths.json",
+            "sha256": "83ac69db2230cc65c5f5cef23c335266dff56079b6582e8b268f2a8f18f95b8c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-postload.json",
+            "sha256": "5996b0b2ba26681fc5621c10546d4d807fc487a5f1427517d7660de64139c1ad"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-spell-words.json",
+            "sha256": "cf46d2dbabd9249ac09dfe091e8e607ef94a841267269850a87bed89cc2c7826"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-timestamps.json",
+            "sha256": "5f3c1e03a96daf814ea8e85d2646a2fb09072184a8058895608dd29c0c83ee71"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-voices.json",
+            "sha256": "067a08d8ad5734f304babebc0d903d89e92b79524aaad2ceed37b6a8ba6061e0"
+          },
+          {
+            "path": "{out}/capture-item-xfer-default.json",
+            "sha256": "6869329949659b6782b5fa57cb0ba222c85193e356658ff23cf27d98ff97ef62"
+          },
+          {
+            "path": "{out}/capture-item-xfer-equipment-health.json",
+            "sha256": "af7f8e014742cec75751206eb64e9cfa484c9184927f8a436db1b7831116ce56"
+          },
+          {
+            "path": "{out}/capture-item-xfer-generator-partial.json",
+            "sha256": "d2dc20501579610e180c7d21ac00a89dab1b1cfeae99a50d7422926583a83716"
+          },
+          {
+            "path": "{out}/capture-item-xfer-generator-records.json",
+            "sha256": "4d0309d232cb1ce62afa7c862e480e1fe7afef1280e87e38da73bb76d5d395c0"
+          },
+          {
+            "path": "{out}/capture-item-xfer-historical.json",
+            "sha256": "90d388662199a78f8c07c566b185df5cccacfc88c99fb11117f0818899edd063"
+          },
+          {
+            "path": "{out}/capture-item-xfer-modifiers.json",
+            "sha256": "5dec507c6294b4c666c4f14a4a43a21b5a75e97471e7d97b8b0d05d256f35b83"
+          },
+          {
+            "path": "{out}/capture-item-xfer-name-boundaries.json",
+            "sha256": "eef3c2673164b967d3bcb50983f239c98fcc7145f1b673a530e0070fb0f4156e"
+          },
+          {
+            "path": "{out}/capture-item-xfer-obelisk-minimap.json",
+            "sha256": "682faf05e991e354997ef2f75194e6e9b62fe0ce0c3c9e05cb71d86d61a41d1c"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-failures.json",
+            "sha256": "ec77c9e1785dcf9d5d4ceb9b20c86fa3dcea89f3bb0907fd9deb27e1859494f2"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-masks.json",
+            "sha256": "db3294dda28c6f942b267731f0a320ccec573e3f3af4aadc93e6c893497b2ec4"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-merge.json",
+            "sha256": "181f8397e0143fdfe072e8a5f89cd3b83a9dbc7c99011bfcd6678e0e862f6c19"
+          },
+          {
+            "path": "{out}/capture-item-xfer-weapon-charges.json",
+            "sha256": "78ce522d53ec6949f2a27ff33e3a3fe7b1cad0a2041537b4db82dc63d39752d9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-camera.json",
+            "sha256": "aaaa9ccf7961f10bdc6f395ea6d9803bec32c80c1084953d18fe96b764438ab6"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-candidates.json",
+            "sha256": "f89f2ce15f5fd5167381de92d7935136e0c6d13a722a84125796b9e63d6cb756"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-chat.json",
+            "sha256": "2e1bc29f467f305715c0815311a1e892d4809d2493b6882ef22594f8879533f4"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-destinations.json",
+            "sha256": "dc0132a00e582242edeefa209dde210e40e86443d7734db52cfede9801e66098"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-destroy-reports.json",
+            "sha256": "04de6f0dc161424687a0ea32c73951740ff4e63ea4b687459de41673b360e38b"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-frame-copy.json",
+            "sha256": "f2eb7ab62acd056881288d9dc8c95e6298da2abe5236f7b3c6dc5d15ffd2d36c"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-global-removal.json",
+            "sha256": "e8d0482e1df182a9b56425629ffaef2953e3499e85ff72beebb47f8e6fefb87b"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-killable.json",
+            "sha256": "d0f92b2ea6d5f7b87a991ab9452a8c6cdf89527e2d096d023178656d9db04ca5"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-point-packets.json",
+            "sha256": "dc805c016fe651145abc7127e070e60a846bdc8922b38f8756f3a489f6e6ba75"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-prediction.json",
+            "sha256": "f23426209a392d8ab8decd29218c11f3b5c94b8fef332b7759cee71fd8f4157f"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-reliable.json",
+            "sha256": "b57afb84055aa2c143781abecf3842677096024be5f1a3c5532424cb9cb623c1"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-seen-cooldown.json",
+            "sha256": "d5dc781cd3d9b23eb7b2c00c86875baed9ce4e294b1c15d9d6d956ee547ba4e7"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-seen-insertion.json",
+            "sha256": "44ecd46e0b25eb4252ad53528425223ba67843270e885bd797f43b50ecb539a8"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-seen-removal.json",
+            "sha256": "e593003d2d14121191be94d98b5138771c80a9967ae0507a155e083feb02de6d"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-shield.json",
+            "sha256": "238ad11972b983a12a44b8064555f2e2f772f361c2eda61b90926c1fe060acca"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-sight-maintenance.json",
+            "sha256": "8435200c73359f3374ac76ee7be8c068104fb1b6a7c304e61e3b7f6487a4bf79"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-spatial-scan.json",
+            "sha256": "194c6546cbb13135f451b5af00ce110ec7292c538e635a3308ea91deff2c5813"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-special-updates.json",
+            "sha256": "0f9647778519617c8a159e4584ef7e32bbbea71e49e0e1fa0ab055b7fe6f2cc6"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-target-selection.json",
+            "sha256": "ccedbdfaee008b670bbc391d926a11b1e1ca9084e1e139aca494efc0cc784190"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-viewport.json",
+            "sha256": "89c3ed8a970f3ea32af3a626c7c0388fdafcf87ffb7087754f12f17c6dfd33fa"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-scan-delay.json",
+            "sha256": "0db5f83c5cf17aaf3c9552fc3b924247ea22c628453e5a9617362b066355b50d"
+          },
+          {
+            "path": "{out}/capture-object-reports-cache.json",
+            "sha256": "58d52abc1990f0f8d8fac7c463705b73287b8e17f6b70d00bad2f0fb71cb51ac"
+          },
+          {
+            "path": "{out}/capture-object-reports-dirty-propagation.json",
+            "sha256": "e7f8bbc7be839bc587968f2ef3da1e55b91ea20714df49bfc1aa209fbfed3826"
+          },
+          {
+            "path": "{out}/capture-object-reports-health.json",
+            "sha256": "d744a88ebb868b1017cdc1d2640bb4c0db2f50f402535e10e3e55fb12465c0f9"
+          },
+          {
+            "path": "{out}/capture-object-reports-monster-animation.json",
+            "sha256": "d306a19e408363b8a29b4f74492a65fe926fa217d9a9582d8c8a143d43d9b4a0"
+          },
+          {
+            "path": "{out}/capture-object-reports-observer-audio.json",
+            "sha256": "c24c4dabf2e9263649f481637dda56c05f2a971ea4e43bc519a377e61cbe13ed"
+          },
+          {
+            "path": "{out}/capture-object-reports-occlusion.json",
+            "sha256": "cd755d3090a9e7f650572fc6b96a2664090e75c350b1b84a8785814edcd91599"
+          },
+          {
+            "path": "{out}/capture-object-reports-phantom.json",
+            "sha256": "1b317d3a2391bb76627a1b2d69c3fc7a6269e018fae665e8ac7e3414fb7dcd49"
+          },
+          {
+            "path": "{out}/capture-object-reports-player-animation.json",
+            "sha256": "62a6ef467578fd4f7d37eb8878c5b9e0ab0722fa55b508c2f7789612e52bffdd"
+          },
+          {
+            "path": "{out}/capture-object-reports-polygon-vertices.json",
+            "sha256": "ef2551055a27807ed42cfb9d15f005527de5747b5f0cfd443d05c53c6c51d4ba"
+          },
+          {
+            "path": "{out}/capture-object-reports-polygons.json",
+            "sha256": "16288be028cb8173fa7b6d252cdcb50cb42b2e9e3483046554461997a07fd46e"
+          },
+          {
+            "path": "{out}/capture-object-reports-queue-capacity.json",
+            "sha256": "9da6e3a53b1454df07e8af94e7be74072f7c29e936dbdc9731209614dbcd2e61"
+          },
+          {
+            "path": "{out}/capture-object-reports-recipient-masks.json",
+            "sha256": "1e0d69068cf86f0e00a94a1b69cb9380c8b7c3f0eca7ab5a9337d12ee6a51e2c"
+          },
+          {
+            "path": "{out}/capture-object-reports-schedule.json",
+            "sha256": "63550214ba3acf3a830ccb7687722e8c7f877336861cc49d80d3f626c016f90e"
+          },
+          {
+            "path": "{out}/capture-object-reports-self.json",
+            "sha256": "28aab84b6198587e0e333f5ce1e6940eb4a30a7b457037b0a4ec6b6fef76fcec"
+          },
+          {
+            "path": "{out}/capture-object-reports-simple.json",
+            "sha256": "7837a08b6508021c13b225a0acf1a8c072e114e1e4253e86c64900e94fc6d1e9"
+          },
+          {
+            "path": "{out}/capture-object-reports-sprites.json",
+            "sha256": "dbd4b63122abe4f7b206f3e2586a8a6221df307daabf324b41e44949ab6fcb24"
+          },
+          {
+            "path": "{out}/capture-object-reports-recipient-edges.json",
+            "sha256": "bbf48241c3e8b8b6c921587c01c79bec057e7fa8b90fc6a32cf501fd2e0e0bca"
+          },
+          {
+            "path": "{out}/capture-object-reports-initial-polygon.json",
+            "sha256": "f9688c4d426531a5700933cdde466a8dfea7c6b3f8518a4f9560363e1a202da3"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-acknowledge.json",
+            "sha256": "d467840257f4656b65ee2a2e4ee2afe15a67e9a47bf5f1124e87942f1ee5fa58"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-client-wrapper.json",
+            "sha256": "4471530029de3c5425ef0cbcc7840114c6bde86aa3d04212b798161ab8997b25"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-capacity.json",
+            "sha256": "2e2597e525418bbb3117ec89641f80fee0300e87158a8cd8e2b64f2173c5679b"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-flags.json",
+            "sha256": "d084fafe1d4e276eb1dec1d600350d6de39315ed270eb469f8a6ad3271583ef5"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery.json",
+            "sha256": "6074dcef71eb0e00fda7637b61d6343f20857032a385aab910e3fff0d58af070"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-enqueue.json",
+            "sha256": "c0f7d315ea2a262fc7b636f8b9f83b0b93bfa2c9a411a059b71bf786120b7686"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-list-edits.json",
+            "sha256": "a3f4d9d897beeba50650702e976e7a2d51bca3def42ba8fc04c833d7c2e298eb"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pool-pressure.json",
+            "sha256": "8a1660c562478ba1e4d028b51749293814a97043e90ed0610f22f97f17e6b7cf"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-recipient.json",
+            "sha256": "0d3081e3f1bbb257902ebe8e0825310253259ac47f873e8470c3e64e8d30971d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-survivors.json",
+            "sha256": "33baf72e33950f23e3fe876d249ff5170b925cd49a3f1e3b6834b85f49ca726d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-rate-adaptation.json",
+            "sha256": "5e9c04abba360f8eba93e3bc655b8110ffd323fedbd7c761a77d6fa9df9db4c8"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-remove-player.json",
+            "sha256": "178dc3acd210f86f43dd00c143037c47e0b42a22bd25bd0de671d02f168d9541"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-resets.json",
+            "sha256": "f0c64ff12ec99a556527231149c44c55af96d093a9b716f8dc518fc334d1daf1"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-retries.json",
+            "sha256": "6c01b5a99276b7aa3c9807054dd686c46cad505be1d70f3104cd6e91c7e78e17"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-sequence-wrap.json",
+            "sha256": "764a0d28a7601fd19df384a70c81afed3bba52c0b6dc8550b2ad956b26428a9a"
+          }
+        ]
+      }
+    ],
+    "native-highres": [
+      {
+        "name": "native-highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/reliable-reports-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-creature-xfer-action-arguments.json",
+            "sha256": "f42e6c0ca02e3a05d6290f05d502f23c850e7d3208df22d1def7b8f70d1ae331"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-current.json",
+            "sha256": "4c7066f977ad9d5d1f4bf42a047829a9c650eac4308b02f252d38ce10924eab8"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-edges.json",
+            "sha256": "4181955561fc0d2075358604e903a1d7570ee3703608b4d96a72aecd2aa57af0"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-historical.json",
+            "sha256": "0a2fa616be097bbc8d8d9f492fa3a8389d181671e5af85fa8e7e2107895e366d"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-references.json",
+            "sha256": "bef27611f488889453daac9b85fd6f793cc968da9cd95121aa2f06b61a8c9d91"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-stack.json",
+            "sha256": "4649d58d02b79be244555bef4a4e51bf1b45add93f1ed7472eff6c27b71ade2c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-auto-spells.json",
+            "sha256": "d52054751fa0c381c9ddd5c3a4b8abd66ee08afef8cdbe95539d443ff4adf1f7"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-buff-application.json",
+            "sha256": "eeb10d0e71494c8986fdb7dc42724f964bafe728770ac7ab6f81fa242275e32c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-buff-writer.json",
+            "sha256": "491477ed873d75d72aa98fe30c46ad9d495d489b731fa77f67b5c056dbc4a205"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-current.json",
+            "sha256": "d3bce2e0e945a46f08e4539705d5e5b51acae4a21021998801fd6400bff4c89a"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-definition-defaults.json",
+            "sha256": "2694cdd92e3157113a7851b6462f234742057c5ddeaa4bf3166b3cf4587910e3"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-equipment-order.json",
+            "sha256": "fefcfa5d72da58b690c9ab091d64e7f24ce4199889a5153cc10334bc06a6b368"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-merchant.json",
+            "sha256": "d1820f99d8a6a53c84f9313b792a1dcf73eb4cc65c83ceecf2cc3a6bb743fb7e"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-monster-historical.json",
+            "sha256": "bc3e7e0d2dcdcd12343c119c15c109f47fc75df5c0ee00cc8abf553d4eaf92a5"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-npc-historical.json",
+            "sha256": "1a3494a6e4b9316aba48108cd601de0e9473ea5d3404517cafe1b37a7bf5baff"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-paths.json",
+            "sha256": "83ac69db2230cc65c5f5cef23c335266dff56079b6582e8b268f2a8f18f95b8c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-postload.json",
+            "sha256": "5996b0b2ba26681fc5621c10546d4d807fc487a5f1427517d7660de64139c1ad"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-spell-words.json",
+            "sha256": "cf46d2dbabd9249ac09dfe091e8e607ef94a841267269850a87bed89cc2c7826"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-timestamps.json",
+            "sha256": "5f3c1e03a96daf814ea8e85d2646a2fb09072184a8058895608dd29c0c83ee71"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-voices.json",
+            "sha256": "067a08d8ad5734f304babebc0d903d89e92b79524aaad2ceed37b6a8ba6061e0"
+          },
+          {
+            "path": "{out}/capture-item-xfer-default.json",
+            "sha256": "6869329949659b6782b5fa57cb0ba222c85193e356658ff23cf27d98ff97ef62"
+          },
+          {
+            "path": "{out}/capture-item-xfer-equipment-health.json",
+            "sha256": "af7f8e014742cec75751206eb64e9cfa484c9184927f8a436db1b7831116ce56"
+          },
+          {
+            "path": "{out}/capture-item-xfer-generator-partial.json",
+            "sha256": "d2dc20501579610e180c7d21ac00a89dab1b1cfeae99a50d7422926583a83716"
+          },
+          {
+            "path": "{out}/capture-item-xfer-generator-records.json",
+            "sha256": "4d0309d232cb1ce62afa7c862e480e1fe7afef1280e87e38da73bb76d5d395c0"
+          },
+          {
+            "path": "{out}/capture-item-xfer-historical.json",
+            "sha256": "90d388662199a78f8c07c566b185df5cccacfc88c99fb11117f0818899edd063"
+          },
+          {
+            "path": "{out}/capture-item-xfer-modifiers.json",
+            "sha256": "5dec507c6294b4c666c4f14a4a43a21b5a75e97471e7d97b8b0d05d256f35b83"
+          },
+          {
+            "path": "{out}/capture-item-xfer-name-boundaries.json",
+            "sha256": "eef3c2673164b967d3bcb50983f239c98fcc7145f1b673a530e0070fb0f4156e"
+          },
+          {
+            "path": "{out}/capture-item-xfer-obelisk-minimap.json",
+            "sha256": "682faf05e991e354997ef2f75194e6e9b62fe0ce0c3c9e05cb71d86d61a41d1c"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-failures.json",
+            "sha256": "ec77c9e1785dcf9d5d4ceb9b20c86fa3dcea89f3bb0907fd9deb27e1859494f2"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-masks.json",
+            "sha256": "db3294dda28c6f942b267731f0a320ccec573e3f3af4aadc93e6c893497b2ec4"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-merge.json",
+            "sha256": "181f8397e0143fdfe072e8a5f89cd3b83a9dbc7c99011bfcd6678e0e862f6c19"
+          },
+          {
+            "path": "{out}/capture-item-xfer-weapon-charges.json",
+            "sha256": "78ce522d53ec6949f2a27ff33e3a3fe7b1cad0a2041537b4db82dc63d39752d9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-camera.json",
+            "sha256": "aaaa9ccf7961f10bdc6f395ea6d9803bec32c80c1084953d18fe96b764438ab6"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-candidates.json",
+            "sha256": "f89f2ce15f5fd5167381de92d7935136e0c6d13a722a84125796b9e63d6cb756"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-chat.json",
+            "sha256": "2e1bc29f467f305715c0815311a1e892d4809d2493b6882ef22594f8879533f4"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-destinations.json",
+            "sha256": "dc0132a00e582242edeefa209dde210e40e86443d7734db52cfede9801e66098"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-destroy-reports.json",
+            "sha256": "04de6f0dc161424687a0ea32c73951740ff4e63ea4b687459de41673b360e38b"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-frame-copy.json",
+            "sha256": "f2eb7ab62acd056881288d9dc8c95e6298da2abe5236f7b3c6dc5d15ffd2d36c"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-global-removal.json",
+            "sha256": "e8d0482e1df182a9b56425629ffaef2953e3499e85ff72beebb47f8e6fefb87b"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-killable.json",
+            "sha256": "d0f92b2ea6d5f7b87a991ab9452a8c6cdf89527e2d096d023178656d9db04ca5"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-point-packets.json",
+            "sha256": "dc805c016fe651145abc7127e070e60a846bdc8922b38f8756f3a489f6e6ba75"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-prediction.json",
+            "sha256": "f23426209a392d8ab8decd29218c11f3b5c94b8fef332b7759cee71fd8f4157f"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-reliable.json",
+            "sha256": "b57afb84055aa2c143781abecf3842677096024be5f1a3c5532424cb9cb623c1"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-seen-cooldown.json",
+            "sha256": "d5dc781cd3d9b23eb7b2c00c86875baed9ce4e294b1c15d9d6d956ee547ba4e7"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-seen-insertion.json",
+            "sha256": "44ecd46e0b25eb4252ad53528425223ba67843270e885bd797f43b50ecb539a8"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-seen-removal.json",
+            "sha256": "e593003d2d14121191be94d98b5138771c80a9967ae0507a155e083feb02de6d"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-shield.json",
+            "sha256": "238ad11972b983a12a44b8064555f2e2f772f361c2eda61b90926c1fe060acca"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-sight-maintenance.json",
+            "sha256": "8435200c73359f3374ac76ee7be8c068104fb1b6a7c304e61e3b7f6487a4bf79"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-spatial-scan.json",
+            "sha256": "194c6546cbb13135f451b5af00ce110ec7292c538e635a3308ea91deff2c5813"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-special-updates.json",
+            "sha256": "0f9647778519617c8a159e4584ef7e32bbbea71e49e0e1fa0ab055b7fe6f2cc6"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-target-selection.json",
+            "sha256": "ccedbdfaee008b670bbc391d926a11b1e1ca9084e1e139aca494efc0cc784190"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-viewport.json",
+            "sha256": "89c3ed8a970f3ea32af3a626c7c0388fdafcf87ffb7087754f12f17c6dfd33fa"
+          },
+          {
+            "path": "{out}/capture-visibility-effects-scan-delay.json",
+            "sha256": "0db5f83c5cf17aaf3c9552fc3b924247ea22c628453e5a9617362b066355b50d"
+          },
+          {
+            "path": "{out}/capture-object-reports-cache.json",
+            "sha256": "58d52abc1990f0f8d8fac7c463705b73287b8e17f6b70d00bad2f0fb71cb51ac"
+          },
+          {
+            "path": "{out}/capture-object-reports-dirty-propagation.json",
+            "sha256": "e7f8bbc7be839bc587968f2ef3da1e55b91ea20714df49bfc1aa209fbfed3826"
+          },
+          {
+            "path": "{out}/capture-object-reports-health.json",
+            "sha256": "d744a88ebb868b1017cdc1d2640bb4c0db2f50f402535e10e3e55fb12465c0f9"
+          },
+          {
+            "path": "{out}/capture-object-reports-monster-animation.json",
+            "sha256": "d306a19e408363b8a29b4f74492a65fe926fa217d9a9582d8c8a143d43d9b4a0"
+          },
+          {
+            "path": "{out}/capture-object-reports-observer-audio.json",
+            "sha256": "c24c4dabf2e9263649f481637dda56c05f2a971ea4e43bc519a377e61cbe13ed"
+          },
+          {
+            "path": "{out}/capture-object-reports-occlusion.json",
+            "sha256": "cd755d3090a9e7f650572fc6b96a2664090e75c350b1b84a8785814edcd91599"
+          },
+          {
+            "path": "{out}/capture-object-reports-phantom.json",
+            "sha256": "1b317d3a2391bb76627a1b2d69c3fc7a6269e018fae665e8ac7e3414fb7dcd49"
+          },
+          {
+            "path": "{out}/capture-object-reports-player-animation.json",
+            "sha256": "62a6ef467578fd4f7d37eb8878c5b9e0ab0722fa55b508c2f7789612e52bffdd"
+          },
+          {
+            "path": "{out}/capture-object-reports-polygon-vertices.json",
+            "sha256": "ef2551055a27807ed42cfb9d15f005527de5747b5f0cfd443d05c53c6c51d4ba"
+          },
+          {
+            "path": "{out}/capture-object-reports-polygons.json",
+            "sha256": "16288be028cb8173fa7b6d252cdcb50cb42b2e9e3483046554461997a07fd46e"
+          },
+          {
+            "path": "{out}/capture-object-reports-queue-capacity.json",
+            "sha256": "9da6e3a53b1454df07e8af94e7be74072f7c29e936dbdc9731209614dbcd2e61"
+          },
+          {
+            "path": "{out}/capture-object-reports-recipient-masks.json",
+            "sha256": "1e0d69068cf86f0e00a94a1b69cb9380c8b7c3f0eca7ab5a9337d12ee6a51e2c"
+          },
+          {
+            "path": "{out}/capture-object-reports-schedule.json",
+            "sha256": "63550214ba3acf3a830ccb7687722e8c7f877336861cc49d80d3f626c016f90e"
+          },
+          {
+            "path": "{out}/capture-object-reports-self.json",
+            "sha256": "28aab84b6198587e0e333f5ce1e6940eb4a30a7b457037b0a4ec6b6fef76fcec"
+          },
+          {
+            "path": "{out}/capture-object-reports-simple.json",
+            "sha256": "7837a08b6508021c13b225a0acf1a8c072e114e1e4253e86c64900e94fc6d1e9"
+          },
+          {
+            "path": "{out}/capture-object-reports-sprites.json",
+            "sha256": "dbd4b63122abe4f7b206f3e2586a8a6221df307daabf324b41e44949ab6fcb24"
+          },
+          {
+            "path": "{out}/capture-object-reports-recipient-edges.json",
+            "sha256": "bbf48241c3e8b8b6c921587c01c79bec057e7fa8b90fc6a32cf501fd2e0e0bca"
+          },
+          {
+            "path": "{out}/capture-object-reports-initial-polygon.json",
+            "sha256": "f9688c4d426531a5700933cdde466a8dfea7c6b3f8518a4f9560363e1a202da3"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-acknowledge.json",
+            "sha256": "d467840257f4656b65ee2a2e4ee2afe15a67e9a47bf5f1124e87942f1ee5fa58"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-client-wrapper.json",
+            "sha256": "4471530029de3c5425ef0cbcc7840114c6bde86aa3d04212b798161ab8997b25"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-capacity.json",
+            "sha256": "2e2597e525418bbb3117ec89641f80fee0300e87158a8cd8e2b64f2173c5679b"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery-flags.json",
+            "sha256": "d084fafe1d4e276eb1dec1d600350d6de39315ed270eb469f8a6ad3271583ef5"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-delivery.json",
+            "sha256": "6074dcef71eb0e00fda7637b61d6343f20857032a385aab910e3fff0d58af070"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-enqueue.json",
+            "sha256": "c0f7d315ea2a262fc7b636f8b9f83b0b93bfa2c9a411a059b71bf786120b7686"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-list-edits.json",
+            "sha256": "a3f4d9d897beeba50650702e976e7a2d51bca3def42ba8fc04c833d7c2e298eb"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pool-pressure.json",
+            "sha256": "8a1660c562478ba1e4d028b51749293814a97043e90ed0610f22f97f17e6b7cf"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-recipient.json",
+            "sha256": "0d3081e3f1bbb257902ebe8e0825310253259ac47f873e8470c3e64e8d30971d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-pressure-survivors.json",
+            "sha256": "33baf72e33950f23e3fe876d249ff5170b925cd49a3f1e3b6834b85f49ca726d"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-rate-adaptation.json",
+            "sha256": "5e9c04abba360f8eba93e3bc655b8110ffd323fedbd7c761a77d6fa9df9db4c8"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-remove-player.json",
+            "sha256": "178dc3acd210f86f43dd00c143037c47e0b42a22bd25bd0de671d02f168d9541"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-resets.json",
+            "sha256": "f0c64ff12ec99a556527231149c44c55af96d093a9b716f8dc518fc334d1daf1"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-retries.json",
+            "sha256": "6c01b5a99276b7aa3c9807054dd686c46cad505be1d70f3104cd6e91c7e78e17"
+          },
+          {
+            "path": "{out}/capture-reliable-reports-sequence-wrap.json",
+            "sha256": "764a0d28a7601fd19df384a70c81afed3bba52c0b6dc8550b2ad956b26428a9a"
+          }
+        ]
+      }
+    ],
+    "production": [
+      {
+        "name": "compressor-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/reliable-reports-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      },
+      {
+        "name": "flat-gameplay",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/production/bin/opennox",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/tile-raster-flat.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Reliable game-message queue in Go",
+          "OPENNOX_REQUIRE_MAP_DECOMPRESSION=1",
+          "OPENNOX_COMPRESS_MAPS=[\"war01a/War01A.map\"]",
+          "OPENNOX_MAP_COMPRESSOR={out}/map-compress",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "reliable-reports-flat-native",
+          "compare",
+          "{root}/build/baseline/runs/object-reports-flat-native"
+        ]
+      }
+    ]
+  },
+  "production": {
+    "description": "Reliable game-message queue in Go",
+    "assets": "build/assets/extracted/drive_c/Nox",
+    "known_suite": "build/port-rule-command/full-suite.jsonl",
+    "scenario_runner": "tools/porting/run_scenario.py",
+    "retained": [
+      "nox_xxx_frameCounterSetCopyToNextFrame_5281D0",
+      "nox_xxx_netSendPointFx_522FF0",
+      "nox_xxx_sendArrowTrapFX_5238A0"
+    ],
+    "retired": [
+      "nox_xxx_aiLostSight_528560",
+      "nox_xxx_checkIsKillable_528190",
+      "nox_xxx_destroyEveryChatMB_528D60",
+      "nox_xxx_frameCounterSetCopy_5281E0",
+      "nox_xxx_monsterCmdSend_528BD0",
+      "nox_xxx_monsterUpdateSeenEnemies_5286D0",
+      "nox_xxx_monsterVisionSeeEnemy_5287B0",
+      "nox_xxx_netClientPredictLinear_523530",
+      "nox_xxx_netObjectInShadows_528A90",
+      "nox_xxx_netObjectOutOfSight_528A60",
+      "nox_xxx_netPlayerObjSend_518C30",
+      "nox_xxx_netReportDestroyObject_5289D0",
+      "nox_xxx_netSendComplexObject_518960",
+      "nox_xxx_netSendFxAllCli_523030",
+      "nox_xxx_netSendObjects2Plr_519410",
+      "nox_xxx_netSendPhantomPlrMb_5187E0",
+      "nox_xxx_netSendShieldFx_523670",
+      "nox_xxx_netSendSimpleObj_5188A0",
+      "nox_xxx_netSendVampFx_523270",
+      "nox_xxx_netSparkExplosionFx_5231B0",
+      "nox_xxx_netSpriteUpdate_518AE0",
+      "nox_xxx_netUpdateObjectSpecial_527E50",
+      "nox_xxx_netUpdateRemotePlr_501CA0",
+      "nox_xxx_netUpdateRemotePlr_501CA0_B",
+      "nox_xxx_sendGeneratorBreakFX_523200",
+      "nox_xxx_sendGeneratorSpawnFX_523830",
+      "nox_xxx_sendSummonCancelFX_523760",
+      "nox_xxx_sendSummonStartFX_5236F0",
+      "nox_xxx_unitUpdateSightMB_5281F0",
+      "sub_417270",
+      "sub_501C00",
+      "sub_518770",
+      "sub_519710",
+      "sub_523150",
+      "sub_528030",
+      "sub_528610",
+      "sub_528910",
+      "sub_528950",
+      "sub_528990"
+    ],
+    "scenarios": [
+      {
+        "name": "reliable-reports-native",
+        "reference": "build/baseline/runs/object-reports-native",
+        "scenario": "docs/porting/options-panels.yaml",
+        "env": {
+          "NOX_DEV": "true"
+        }
+      },
+      {
+        "name": "reliable-reports-save-native",
+        "reference": "build/baseline/runs/object-reports-save-native",
+        "scenario": "docs/porting/object-xfer-save-load.yaml",
+        "env": {
+          "OPENNOX_REQUIRE_SAVE_LOAD": "1"
+        }
+      }
+    ],
+    "retained_c": []
+  }
+}
