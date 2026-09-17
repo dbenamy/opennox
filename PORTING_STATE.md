@@ -8,7 +8,34 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — server-configuration native conversion qualified
+## Current — map-polygon C baseline qualified
+
+Parent server configuration **5ecbdfc2 is committed/pushed**. Map polygon baseline
+covers **33 live functions / 1,000 original C body lines**. All 16 focused roots
+pass (0.239s); static memory checks pass. Eleven polygon captures were repeated
+before freezing. Broader default/server/highres pass **269/268/269 roots**,
+**34,988/34,987/34,988 tests including subtests**, no skips. **87 identical captures /
+51,433 records**; durations **143.87/225.80/157.58s**. All sessions joined and one
+unchanged **2,175-file source manifest**. Production source is identical to parent,
+so its fresh production qualification is reused. No polygon production changes yet.
+
+See [MAP_POLYGONS.md](docs/porting/MAP_POLYGONS.md), map-polygons-batch.json,
+map-polygons-tests.txt and map-polygons-scope.json. Artifacts:
+build/port-polygons/c-{default,server,highres}, c-audit.json, focused-11.log,
+static-final.log. Shared-vertex ray parity and remote-player out-of-region behavior
+are documented compatibility limitations; preserve them, do not regenerate goldens.
+
+Next: commit/push this qualified C baseline, then finish/review/install native
+translation, compare frozen tests, qualify all targets and fresh production,
+update C LOC/docs, commit/push and continue. Ignored native-draft files are unfinished
+and not installed. The effects fixture draft is consumed: never recopy it. Use the
+combined 33-function scope, not the older core-only scope.py/candidate.json.
+
+Disk cleanup reclaimed **6.184 GiB** from twelve completed panel/configuration runs;
+per-run deduplicated-assets.json manifests permit restoration. Do not repeat deletion
+mode. Original assets/archive and modified files remain intact; about 16 GiB free.
+
+## Qualified parent — server-configuration native conversion
 
 Corrected C baseline **ce1399b2** is committed/pushed. Native conversion replaces
 **64 live functions / 816 corrected C body lines**, removes two disabled helpers
@@ -34,13 +61,11 @@ installation and export-preparation scripts are **consumed**; never recopy them.
 Frozen expectations were not changed during conversion. The pixel capture caught
 and corrected use of a blended background where the picker requires opaque fill.
 
-Next: commit/push this qualified conversion, reclaim verified duplicate assets
-from completed run copies if useful, then start map polygons. Preliminary combined
+The conversion is committed/pushed and duplicate cleanup is complete. Preliminary combined
 scope: **33 functions / 1,000 C body lines** (core lifecycle/lookup/render/events plus
 map serialization). Read-only scope/audit/plan are in build/port-polygons;
 use candidate-with-serialization.json, not the smaller core-only candidate.json.
-The reachability closure includes all 33 functions. No polygon fixtures or native
-conversion are installed. Preserve original assets/archive; no user decision/blocker.
+The reachability closure includes all 33 functions. Polygon C fixtures are in progress; no native conversion is installed. Preserve original assets/archive; no user decision/blocker.
 
 ## Qualified parent — server-panel conversion
 

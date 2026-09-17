@@ -1,0 +1,204 @@
+{
+  "parent": "5ecbdfc2",
+  "functions": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_420C40",
+      "address": "0x420c40",
+      "body_lines": 12
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_420C70",
+      "address": "0x420c70",
+      "body_lines": 17
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "nox_xxx_polygon_420CA0",
+      "address": "0x420ca0",
+      "body_lines": 15
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "nox_xxx_polygon_420CD0",
+      "address": "0x420cd0",
+      "body_lines": 15
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_420D10",
+      "address": "0x420d10",
+      "body_lines": 15
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "nox_xxx_polygonSetAngle_420D40",
+      "address": "0x420d40",
+      "body_lines": 18
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_420DA0",
+      "address": "0x420da0",
+      "body_lines": 31
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_420E80",
+      "address": "0x420e80",
+      "body_lines": 26
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_421430",
+      "address": "0x421430",
+      "body_lines": 29
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_421010",
+      "address": "0x421010",
+      "body_lines": 11
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "nox_xxx_polygonGetAngle_421030",
+      "address": "0x421030",
+      "body_lines": 1
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_421040",
+      "address": "0x421040",
+      "body_lines": 31
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "nox_xxx_polygonGetNext_4210A0",
+      "address": "0x4210a0",
+      "body_lines": 15
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_4210E0",
+      "address": "0x4210e0",
+      "body_lines": 15
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_421130",
+      "address": "0x421130",
+      "body_lines": 15
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_421160",
+      "address": "0x421160",
+      "body_lines": 13
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_4211D0",
+      "address": "0x4211d0",
+      "body_lines": 13
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_421230",
+      "address": "0x421230",
+      "body_lines": 24
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "nox_xxx_polygonGetByIdx_4214A0",
+      "address": "0x4214a0",
+      "body_lines": 10
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_4214D0",
+      "address": "0x4214d0",
+      "body_lines": 53
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "nox_xxx_polygon_421660",
+      "address": "0x421660",
+      "body_lines": 46
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "nox_xxx_polygonGetIdxA_421790",
+      "address": "0x421790",
+      "body_lines": 12
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "nox_xxx_polygonIsPlayerInPolygon_4217B0",
+      "address": "0x4217b0",
+      "body_lines": 39
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_421880",
+      "address": "0x421880",
+      "body_lines": 37
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_421990",
+      "address": "0x421990",
+      "body_lines": 25
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_421B10",
+      "address": "0x421b10",
+      "body_lines": 10
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_421B40",
+      "address": "0x421b40",
+      "body_lines": 15
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "nox_xxx_polygonDrawColor_421B80",
+      "address": "0x421b80",
+      "body_lines": 39
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "nox_xxx_questCheckSecretArea_421C70",
+      "address": "0x421c70",
+      "body_lines": 101
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_421F10",
+      "address": "0x421f10",
+      "body_lines": 41
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "nox_xxx_monsterPolygonEnter_421FF0",
+      "address": "0x421ff0",
+      "body_lines": 52
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_422140",
+      "address": "0x422140",
+      "body_lines": 10
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "name": "nox_server_mapRWPolygons_428CD0",
+      "address": "0x428cd0",
+      "body_lines": 194
+    }
+  ],
+  "dead": []
+}

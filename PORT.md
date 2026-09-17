@@ -20,6 +20,10 @@ are now in Go, following the server-options panels. The conversion passes focuse
 broader three-target and fresh production qualification with unchanged corrected-C
 expectations and gameplay references.
 
+The next map-polygon batch has a qualified C baseline covering lifecycle, geometry,
+actor events, ambient color and serialization. All three affected-target sweeps
+pass with identical captures; see [MAP_POLYGONS.md](docs/porting/MAP_POLYGONS.md).
+
 Production C is **45,473 physical lines in 74 files**, with zero reference C.
 The configuration conversion removes **920 lines** from its corrected C baseline.
 The full asset suite retains its exact three known failing packages. See
