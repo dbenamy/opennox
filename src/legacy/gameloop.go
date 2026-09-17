@@ -149,10 +149,10 @@ func Nox_server_gameDoSwitchMap_40A680() int {
 	return int(C.nox_server_gameDoSwitchMap_40A680())
 }
 func Sub_459D60() int {
-	return int(C.sub_459D60())
+	return int(*serverOptionsWord(1046544))
 }
 func Sub_459DA0() int {
-	return int(C.sub_459DA0())
+	return bool2int(serverOptionsRoot != 0)
 }
 func Sub_4DF020() {
 	C.sub_4DF020()
@@ -200,7 +200,7 @@ func Nox_xxx_set3512_40A340(a1 int) {
 	C.nox_xxx_set3512_40A340(C.int(a1))
 }
 func Sub_459D50(a1 int) {
-	C.sub_459D50(C.int(a1))
+	serverOptionsDirty(a1)
 }
 func Nox_xxx_gameSetMapPath_409D70(a1 string) {
 	C.nox_xxx_gameSetMapPath_409D70(internCStr(a1))

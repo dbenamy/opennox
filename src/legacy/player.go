@@ -12,7 +12,6 @@ package legacy
 #include "GAME4_1.h"
 #include "common__net_list.h"
 #include "defs.h"
-extern unsigned int dword_5d4594_1046492;
 extern unsigned int dword_5d4594_2650652;
 extern unsigned int nox_player_netCode_85319C;
 void nox_xxx_WideScreenDo_515240(bool enable);
@@ -250,7 +249,7 @@ func Nox_xxx_playerResetImportantCtr_4E4F40(v ntype.PlayerInd) {
 }
 
 func Get_dword_5d4594_1046492() int {
-	return int(C.dword_5d4594_1046492)
+	return int(serverOptionsRoot)
 }
 
 func Nox_xxx_playerInitColors_461460(pl *server.Player) {
@@ -302,7 +301,7 @@ func Nox_xxx_netGuiGameSettings_4DD9B0(a1 int, a2 *server.Settings2, a3 int) {
 }
 
 func Sub_459AA0(a1 *server.Settings2) {
-	C.sub_459AA0(unsafe.Pointer(a1))
+	serverOptionsRead(serverOptionsRecord(unsafe.Pointer(a1)))
 }
 
 func Nox_xxx_netNotifyRate_4D7F10(v ntype.PlayerInd) {

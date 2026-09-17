@@ -88,7 +88,7 @@ func sub_418F20(t *nox_team_t, a2 int) {
 	GetServer().TeamRemove(asTeam(t), a2 != 0)
 }
 func Sub_459CD0() {
-	C.sub_459CD0()
+	serverOptionsTeamCount()
 }
 func Sub_456FA0() {
 	teamUITeamClear()

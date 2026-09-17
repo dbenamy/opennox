@@ -1,6 +1,6 @@
-# Server-options UI: qualified C baseline
+# Server-options UI in Go
 
-Following team UI, select 33 live functions / 1,252 C body lines from guiserv.c
+Following team UI, port 33 live functions / 1,256 corrected C body lines from guiserv.c
 and GAME2.c 457460..459DA0. Remove the separate 28-line sub_457FE0 orphan:
 its only two call sites are inside literal `if (0)` blocks; no registrations,
 Go wrappers or other callers exist. Raw regex reachability overcounts this edge.
@@ -53,7 +53,7 @@ production/gameplay/save-load/flat gate. Record exact C LOC and review decisions
 Parent production baseline: **3d6436bb**, fully qualified/pushed team UI.
 First C mode contracts are installed; mode fixture drafts are now consumed.
 The two prerequisites below are the only production changes so far. C is
-50,181 / 80 files / zero reference C. The baseline is not frozen or qualified yet.
+50,181 / 80 files / zero reference C. The completed baseline qualification is recorded below.
 
 ## Baseline progress and prerequisite
 
@@ -107,7 +107,7 @@ distinct nonzero score/time values per mode. Byte-wrapping team count labels and
 group-count labels are independently asserted. Startup contracts check first-open
 consumption and the existing quest/server console-command boundary, including
 reopen without executing the command again. Static mapped-memory preflight passes.
-These are original-C contracts; no expectations have yet been frozen.
+These original-C contracts supplied the frozen expectations below.
 
 The final descriptive-label contract caught a fixture omission: GameTypeIs reads
 its localization filename from blob 131072, which was empty in the fixture.
@@ -140,3 +140,46 @@ server-options-c-batch.json and server-options-focused-tests.txt.
 **C: 50,181 physical lines / 80 files / zero reference C**. Commit this corrected
 baseline before translating the selected 33 live functions / 1,256 body lines and
 removing the separate 28-line orphan. Frozen expectations stay unchanged.
+
+## Native conversion
+
+Baseline **55ccc2b7** was committed/pushed before translation. All 33 functions
+are installed as Go; 16 private C globals and the mode table/cache are native.
+The 28-line orphan is removed. Twelve C interfaces remain: ten actual external
+callers and two tooltip callbacks stored through the GUI's C-pointer ABI. Twenty-two
+function interfaces are retired; Go callers and fixtures invoke Go directly.
+Current C is **48,740 / 79 files / zero reference C (−1,441)**, qualified below.
+
+First compile succeeded. Frozen captures caught two translation differences:
+window.PointIn uses different geometry from the legacy absolute-position/live-size
+hit test, and clamping a negative edit must not rewrite the displayed text. Both
+were corrected without changing expectations. Manual review also preserved the
+selected-name alias across record copying and the edited-name text color.
+
+## Native qualification
+
+All **35 options roots / 847 leaves** pass against the unchanged C contracts and
+23 frozen captures in 4.852s. The broader dependency selection now includes
+rules and actual entry/list widgets as well as the prior UI, gameplay/report,
+team and roster corpus. Default/server/highres pass **487 / 486 / 487 roots** and
+**57,405 / 57,404 / 57,405 leaves**, with no skips, in **204.41 / 329.54 / 230.07s**.
+The single server exclusion is the existing client-only occlusion root.
+
+All **193 captures / 61,102 records** are identical across targets, including
+all 82 corrected-C baseline captures and all 170 preceding team-UI captures.
+Fresh production passes in **416.35s**: all three builds/ABI and interface checks,
+exact 1,553 known failure entries (15 pass / 3 fail / 32 no-test), gameplay,
+save/load and forced flat-map regeneration. Client SHA-256:
+`f1641ca43485c15532894867eedcaa2bf7aab0f7d061d0d2a976b0e5c35fb058`.
+
+All four final gates share the same unchanged **2,128-file source manifest**;
+all sessions are joined. Static memory preflight and retired-interface audits pass.
+Artifacts: build/port-server-options/native-{default,server,highres,production},
+native-audit.json and interface-audit.json. Reproduction manifest:
+server-options-batch.json; selection: server-options-tests.txt.
+
+Final C is **48,740 physical lines / 79 files / zero reference C**, a reduction of
+**1,441 lines** including the C mode table, private globals, orphan, declarations
+and separators. The original C implementation remains recoverable at 55ccc2b7;
+no C algorithm is retained solely for testing. Next candidate: related server
+access/general/advanced/spell/object panels, with the current fixtures reusable.

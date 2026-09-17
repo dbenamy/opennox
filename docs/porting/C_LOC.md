@@ -201,6 +201,7 @@ target build selection and linker evidence.
 | Team UI row ownership, naming, selection and missing-resource prerequisites | 82 | 51,225 | +22 | 0 |
 | Team HUD/player-list UI, private globals and translation-unit cleanup | 80 | 50,177 | −1,048 | 0 |
 | Server-options missing-resource and panel ownership prerequisites | 80 | 50,181 | +4 | 0 |
+| Server-options UI, private globals, mode table and orphan cleanup | 79 | 48,740 | −1,441 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

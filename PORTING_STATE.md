@@ -2,43 +2,48 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 50k lines** — **50,181 physical lines in 80 production
-`.c` files**, zero reference C. Latest conversion removes **1,048 lines**; subsequent C prerequisites add four.
+**Rough C remaining: about 49k lines** — **48,740 physical lines in 79 production
+`.c` files**, zero reference C. Latest conversion removes **1,441 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — server-options C baseline qualified
+## Current — server-options native conversion qualified
 
-This checkpoint accompanies the corrected C baseline commit. Team UI conversion
-**3d6436bb is pushed**. See [SERVER_OPTIONS.md](docs/porting/SERVER_OPTIONS.md).
-All **35 server-options roots / 847 leaves** pass, plus exhaustive 65,536-mode
-lookup; **23 frozen captures / 1,322 records**. The selected scope is **33 live
-functions / 1,256 C body lines**, plus a proven **28-line orphan**.
+This checkpoint accompanies the native conversion commit. Corrected C baseline
+**55ccc2b7 was committed/pushed before translation**. See
+[SERVER_OPTIONS.md](docs/porting/SERVER_OPTIONS.md) for scope and review decisions.
+All **33 functions / 1,256 live C body lines** are native; the 28-line orphan,
+guiserv.c translation unit, 16 private globals and C mode table/cache are gone.
+Twelve C interfaces remain (ten outside callers and two GUI tooltip callbacks);
+22 function interfaces are retired. Go callers and fixtures call Go directly.
 
-Affected default/server/highres sweeps pass **146 roots / 12,107 leaves** each,
-with **82 identical captures / 12,982 records**, in **37.85 / 65.10 / 81.80s**.
-Fresh production passes in **401.66s**: three builds/ABI, exact known asset failures
-(1,553 entries; 15 pass / 3 fail / 32 no-test), gameplay, save/load and flat-map
-expansion. Static mapped-memory preflight passes. All sessions are joined.
+All **35 options roots / 847 leaves** pass with **23 unchanged C captures /
+1,322 records**, in 4.852s. Broader default/server/highres pass **487 / 486 / 487
+roots**, **57,405 / 57,404 / 57,405 leaves**, no skips, in **204.41 / 329.54 /
+230.07s**. All **193 captures / 61,102 records** match, including both the corrected-C
+baseline and preceding team-UI corpus. The server excludes client-only occlusion.
 
-Final target sweeps share an unchanged 2,119-file source manifest. Production was
-qualified before a final test-only label check: only the two porttest files differ,
-with production source identity explicitly verified. That check caught a fixture
-filename missing at blob 131072; owner now supplies guiserv.c. All frozen captures
-remain unchanged. The two actual C fixes are resource failure handling and clearing
-the general-panel pointer on close, documented for review.
+Fresh production passes in **416.35s**: three builds/ABI/interfaces, exact known
+asset failures (1,553 entries; 15 pass / 3 fail / 32 no-test), gameplay, save/load
+and forced flat-map regeneration. All four gates share one unchanged **2,128-file
+source manifest**. Static memory and interface audits pass; all sessions joined.
+Client SHA: f1641ca43485c15532894867eedcaa2bf7aab0f7d061d0d2a976b0e5c35fb058.
+C is **48,740 / 79 files / zero reference C (−1,441)**.
 
-Artifacts: build/port-server-options/c-{default,server,highres}-final,
-c-production, c-audit.json, caller-audit.json. Tracked manifest:
-server-options-c-batch.json; selection: server-options-focused-tests.txt.
-Client SHA: 22b3ffb0711a237534b145cda0fb474546ee57695146d5a5002ce4ba26240977.
+Artifacts: build/port-server-options/native-{default,server,highres,production},
+native-audit.json and interface-audit.json. Manifest: server-options-batch.json;
+selection: server-options-tests.txt. Frozen expectations are unchanged. First-run
+hit-test and negative-edit differences were fixed against C. Apply preserves the
+selected-name alias across settings copies. All native drafts/install scripts are
+consumed or stale: never recopy them.
 
-Next: commit/push this baseline, then translate and qualify the batch. Incomplete
-native drafts are in build/port-server-options/native-draft/; they are not installed
-or compiled. Review types, localization formatting and callers before installation.
-All fixture drafts and freeze-baseline.py are consumed; never rerun them. Keep
-frozen expectations unchanged. No blocker or user question; about 20 GB free.
+Next: commit/push this conversion, reclaim verified duplicate completed-run assets,
+then start server panels. Read-only draft scope: build/port-server-panels/candidate.json,
+58 functions / 2,120 body lines across five remaining servopts files and related
+GAME2/GAME3/GAME3_1 blocks. plan-draft.md records owners/tests; external-refs.json
+is advisory and requires review. No next-batch source changes yet. No blocker or
+user question. Preserve archive/assets. Around 17 GB currently free.
 
 ### Qualified parent — team UI
 
@@ -815,3 +820,9 @@ pointer offset bug corrected before locking (DECISIONS.md). See
 duration-array correction and export qualification; see the linked batch report
 for their completion. Stable controls/reward
 captures are now losslessly compressed .json.gz; tracked hashes unchanged.
+
+<!-- next-scope-draft -->
+Read-only next-scope candidate: build/port-server-panels/candidate.json and
+plan-draft.md, 58 functions / 2,120 body lines from remaining servopts panels and
+related GAME2/GAME3/GAME3_1 blocks. No next-batch source changes yet. External
+reference graph reaches every candidate; review literal branches/registrations.

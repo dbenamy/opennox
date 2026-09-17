@@ -52,7 +52,6 @@ int nox_xxx_guiChatIconLoad_445650();
 int nox_xxx_loadGuides_427070();
 void sub_41CAC0(char* a1, void* a2);
 
-wchar2_t* nox_xxx_guiServerOptionsGetGametypeName_4573C0(short mode);
 void nox_xxx_mapSwitchLevel_4D12E0_tileFree();
 */
 import "C"
@@ -534,7 +533,7 @@ func Sub_4D22B0() {
 	C.sub_4D22B0()
 }
 func Sub_459870() unsafe.Pointer {
-	return unsafe.Pointer(C.sub_459870())
+	return serverOptionsListHead()
 }
 func Nox_xxx_gamePlayIsAnyPlayers_40A8A0() int {
 	return int(C.nox_xxx_gamePlayIsAnyPlayers_40A8A0())
@@ -606,7 +605,7 @@ func Sub_460D50() {
 	quickbarDestroy()
 }
 func Nox_xxx_guiServerOptionsGetGametypeName_4573C0(a1 noxflags.GameFlag) string {
-	return GoWString(C.nox_xxx_guiServerOptionsGetGametypeName_4573C0(C.short(a1)))
+	return serverOptionsModeName(uint16(a1))
 }
 func Sub_40A180(a1 noxflags.GameFlag) int {
 	return int(C.sub_40A180(C.short(a1)))

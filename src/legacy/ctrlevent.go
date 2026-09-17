@@ -153,7 +153,7 @@ func Nox_client_buildTrap_45E040() {
 }
 
 func Nox_xxx_guiServerOptsLoad_457500() {
-	C.nox_xxx_guiServerOptsLoad_457500()
+	serverOptionsConstruct()
 }
 
 func Sub_460630() {

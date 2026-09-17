@@ -55,7 +55,7 @@ func Sub_446490(v int) {
 }
 
 func Nox_xxx_guiServerOptionsHide_4597E0(v int) {
-	C.nox_xxx_guiServerOptionsHide_4597E0(C.int(v))
+	serverOptionsClose(v)
 }
 
 func Sub_445C40() {
