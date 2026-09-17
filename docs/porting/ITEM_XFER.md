@@ -48,13 +48,10 @@ full-suite failure set when running production qualification.
 
 ## Current progress
 
-Initial fixture drafts are installed but not yet qualified. They cover twelve
-current formats, historical versions, name boundaries, future/nonpositive version
-rejection, and the generator ownership regression. The first before-change
-ownership run is in progress; no engine correction has been made. Broader payload
-and ownership cases, repeated captures and all final qualification remain due.
-Ignored build/port-item-xfer contains the draft audit and preparatory translation;
-do not mistake uncompiled drafts for implemented or accepted code.
+Prerequisites are committed and pushed as **bf1afd10**. All twelve item callbacks
+remain in C. Expanded contracts are being qualified before repeated captures and
+baseline freezing. Ignored build/port-item-xfer contains consumed fixture drafts
+and an uninstalled translation draft; these are not accepted implementation.
 
 ## Prerequisite evidence
 
@@ -103,3 +100,58 @@ files / zero reference C**. The scoped item callback block is now **1,065 lines*
 This qualifies the prerequisite and initial contracts; modifier/charge/HP policy,
 nonempty generator ownership, reward-mask/name and obelisk-minimap coverage, full
 repeated C captures and current-source integration remain due before replacement.
+
+## Expanded contracts and review notes
+
+Development C checks pass 336 charged-wand policy cases, 792 weapon/armor health
+cases, 64 modifier-mask cases, 96 obelisk/minimap cases, and 17 generator cases.
+These exercise real modifier definitions, player bitsets, drawable/minimap owners,
+object allocation and nested callbacks. Reward-mask/name coverage is next.
+
+The first nonempty generator writer fixture used XOR mode to obtain simple
+four-byte sections. That mode could not backpatch its section length through the
+existing writable-binfile seek adapter. The fixture now uses the actual map cipher
+mode. Independent contracts check aligned section lengths and decoded fields;
+a separate wire hash retains compatibility padding. Sparse children compact within
+each row, retain row order and allocate distinct owned objects on reload. Failure
+cases check that earlier accepted children remain owned and rejected children are
+released. No shared stream behavior was changed to accommodate this fixture.
+
+Review later: modifier descriptors with empty names serialize like absent modifiers
+but take a zero-length writer operation, producing a different checksum. Captures
+retain both read and write checksums so the port preserves that distinction.
+
+## Frozen C baseline
+
+All three targets match **1,757 new item records / twelve groups** and the existing
+**1,174 object records / twelve groups**. Expectations are now pinned both in tests
+and the batch manifest. Fresh frozen default/server/highres runs each pass **38
+roots / 3,104 leaf cases**, with no skips and unchanged source. Static memory-access
+checking passes. Artifacts: c-expanded-{default,server,highres},
+c-frozen-{repeat,server,highres}, static-c-frozen.log.
+
+Reward coverage adds 230 cases: every valid ID, mixed masks, invalid names through
+255 bytes, rejected ID zero, partial mutations, duplicate names, retained existing
+bits and versioned tails. Noncanonical writers are checked separately from readers;
+counts include only value 1 while names include every nonzero value.
+
+The C production client matches the prior 41-frame gameplay and seven-frame actual
+save/load references. Flat rendering/map regeneration qualification is in progress.
+Its first launch used an incorrect local compressor path and stopped before starting
+the game; the corrected launch uses the existing qualified compressor. No engine
+change was needed.
+
+The conversion selection contains 161 root tests: item/common serialization,
+object creation/state, resources, rewards, shop engine, map population/painting and
+minimap. The existing opt-in map-population diagnostic is excluded explicitly;
+all selected tests must run without skips. This follows the established affected
+selection policy after the previous full common-serialization milestone.
+
+The empty obelisk callback still has two objective-update callers. Keep its shared
+C definition/header while eliminating the now-unnecessary call from the translated
+obelisk serializer. This batch still removes exactly 1,065 C lines.
+
+Flat replay now passes **14 frames** and exact War01A regeneration. Current C
+client SHA-256: 87b6326a0043ee952c075d5fbfeb4bb76fde0cdec20883d4117f3c1aa0607ea9.
+Frozen-phase source proof matches all **1,908 staged source files**. The baseline
+is ready for its recovery commit; conversion and native qualification follow.

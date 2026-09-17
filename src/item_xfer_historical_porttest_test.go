@@ -105,7 +105,9 @@ func TestItemXferHistoricalRecords(t *testing.T) {
 	s := newItemXferOwner(t)
 	path := filepath.Join(t.TempDir(), "historical.bin")
 	var rows []itemXferCaptureRow
-	defer func() { spellbookCapture(t, "item-xfer-historical", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "item-xfer-historical", rows, "90d388662199a78f8c07c566b185df5cccacfc88c99fb11117f0818899edd063")
+	}()
 	for _, sp := range itemXferKinds {
 		for _, v := range []int16{-32768, -1, 0, 1, 2, 10, 11, 20, 21, 30, 31, 40, 41, 42, 60, 61, 62, 63, 64} {
 			if v > int16(sp.version) {

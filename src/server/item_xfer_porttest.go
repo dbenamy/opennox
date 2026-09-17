@@ -70,3 +70,10 @@ func (s *Server) PortTestItemXferTypes() func() {
 		}
 	}
 }
+
+// Own the actual player bitset used by the quest item-health policy.
+func (s *Server) PortTestItemXferQuestPlayers(mask uint32) func() {
+	old := s.Players.playersXxx
+	s.Players.playersXxx = mask
+	return func() { s.Players.playersXxx = old }
+}

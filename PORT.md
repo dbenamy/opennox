@@ -29,8 +29,9 @@ and flat rendering **14 frames** with exact map regeneration.
 See [OBJECT_XFER.md](docs/porting/OBJECT_XFER.md) for evidence and review points.
 Current work: [adjacent item/reward serializers](docs/porting/ITEM_XFER.md),
 **1,065 C lines / twelve callbacks**, including two qualified prerequisite fixes,
-reusing these owners and stream fixtures. Confirm the historical and nested-object
-contracts against C before freezing expectations. [PORTING_STATE.md](PORTING_STATE.md)
+reusing these owners and stream fixtures. The C baseline now pins 1,757 item records across twelve groups, with historical,
+modifier, health/charge, reward and nested-child contracts. Translate against these
+expectations and the affected selection before full production qualification. [PORTING_STATE.md](PORTING_STATE.md)
 is the resume checkpoint; confident reversible decisions remain recorded for review.
 
 ## Goal and target

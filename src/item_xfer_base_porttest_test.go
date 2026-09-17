@@ -104,7 +104,9 @@ func TestItemXferDefaultRecords(t *testing.T) {
 	s := newItemXferOwner(t)
 	path := filepath.Join(t.TempDir(), "default.bin")
 	var rows []itemXferCaptureRow
-	defer func() { spellbookCapture(t, "item-xfer-default", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "item-xfer-default", rows, "6869329949659b6782b5fa57cb0ba222c85193e356658ff23cf27d98ff97ef62")
+	}()
 	for _, sp := range itemXferKinds {
 		t.Run(sp.name, func(t *testing.T) {
 			u := newItemXferObject(t, s, sp.name)

@@ -18,7 +18,9 @@ func TestItemXferNameBoundaries(t *testing.T) {
 	s := newItemXferOwner(t)
 	path := filepath.Join(t.TempDir(), "names.bin")
 	var rows []itemXferCaptureRow
-	defer func() { spellbookCapture(t, "item-xfer-name-boundaries", rows, "") }()
+	defer func() {
+		spellbookCapture(t, "item-xfer-name-boundaries", rows, "eef3c2673164b967d3bcb50983f239c98fcc7145f1b673a530e0070fb0f4156e")
+	}()
 	for _, name := range []string{"SpellReward", "AbilityReward", "FieldGuide"} {
 		for _, n := range []int{0, 1, 31, 63, 64, 127, 128, 255} {
 			t.Run(fmt.Sprintf("%s-n%d", name, n), func(t *testing.T) {
