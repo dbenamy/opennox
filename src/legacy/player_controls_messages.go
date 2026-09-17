@@ -28,7 +28,7 @@ func controlRewardNotify(u *server.Object, kind int32, target *server.Object, se
 	}
 	msg := [5]byte{0xf0, byte(30 + kind), selector}
 	binary.LittleEndian.PutUint16(msg[3:], uint16(target.NetCode))
-	return int32(C.nox_xxx_netSendPacket0_4E5420(C.int(*controlByte(controlPlayer(u), 2064)), unsafe.Pointer(&msg[0]), 5, 0, 1))
+	return int32(reliableEnqueue(int(*controlByte(controlPlayer(u), 2064)), msg[:], nil, 1, 0))
 }
 func controlLockedDoor(u *server.Object, key *C.char, selector byte) {
 	if u == nil || u.ObjClass&4 == 0 || key == nil {
@@ -42,7 +42,7 @@ func controlLockedDoor(u *server.Object, key *C.char, selector byte) {
 	msg := [52]byte{0xf0, 33}
 	copy(msg[2:], s)
 	msg[51] = selector
-	C.nox_xxx_netSendPacket0_4E5420(C.int(*controlByte(controlPlayer(u), 2064)), unsafe.Pointer(&msg[0]), 52, 0, 1)
+	reliableEnqueue(int(*controlByte(controlPlayer(u), 2064)), msg[:], nil, 1, 0)
 }
 func controlRespawnNotify(u *server.Object, flag byte) int32 {
 	msg := [9]byte{0xe9}
@@ -50,7 +50,7 @@ func controlRespawnNotify(u *server.Object, flag byte) int32 {
 	binary.LittleEndian.PutUint32(msg[3:], GetServer().S().Frame())
 	msg[7] = byte(controlRespawnFlags())
 	msg[8] = flag
-	return int32(C.nox_xxx_netSendPacket1_4E5390(255, C.int(uintptr(unsafe.Pointer(&msg[0]))), 9, 0, 0))
+	return int32(reliableEnqueue(255, msg[:], nil, 0, 1))
 }
 func controlGuideLevel(u, target *server.Object) int32 {
 	if u == nil || target == nil || u.ObjClass&4 == 0 || target.ObjClass&2 == 0 {

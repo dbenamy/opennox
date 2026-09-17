@@ -227,7 +227,7 @@ func sub_459D70() int {
 }
 
 func sub_4E4F30(a1 ntype.PlayerInd) {
-	*memmap.PtrUint16(0x5D4594, 1565524+2*uintptr(a1)) = 0
+	legacy.ReliableResetSequence(a1)
 }
 
 var (

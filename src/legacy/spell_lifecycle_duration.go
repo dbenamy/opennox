@@ -112,7 +112,7 @@ func spellLifeRayMessage(p *server.DurSpell) uint32 {
 	return spellLifeSendRay(p, buf)
 }
 func spellLifeSendRay(p *server.DurSpell, buf [7]byte) uint32 {
-	C.nox_xxx_netSendPacket1_4E5390(255, C.int(uintptr(unsafe.Pointer(&buf[0]))), 7, 0, 1)
+	reliableEnqueue(255, buf[:], nil, 1, 1)
 	runtime.KeepAlive(buf)
 	C.nox_xxx_netMarkMinimapForAll_4174B0(C.int(uintptr(p.Caster16.CObj())), 2)
 	return uint32(uintptr(unsafe.Pointer(C.nox_xxx_netMarkMinimapForAll_4174B0(C.int(uintptr(p.Target48.CObj())), 2))))

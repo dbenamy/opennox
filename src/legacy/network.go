@@ -30,10 +30,7 @@ int sub_455920(wchar2_t* a1);
 int sub_43C650();
 void* sub_49BB80(char a1);
 int* nox_xxx_guiServerOptionsHide_4597E0(int a1);
-int nox_net_importantACK_4E55A0(int a1, int a2);
-int nox_xxx_netClientSend2_4E53C0(int a1, const void* a2, int a3, int a4, int a5);
 void* nox_xxx_spriteGetMB_476F80();
-int nox_xxx_netSendPacket_4E5030(int a1, const void* a2, signed int a3, int a4, int a5, char a6);
 int nox_xxx_netOnPacketRecvCli_48EA70(int a1, unsigned char* data, int sz);
 static int nox_xxx_netSendLineMessage_go(nox_object_t* a1, wchar2_t* str) {
 	return nox_xxx_netSendLineMessage_4D9EB0(a1, str);
@@ -159,9 +156,7 @@ func Sub_43AF90(v int) {
 }
 
 func Nox_xxx_netSendPacket_4E5030(a1 int, buf []byte, a4, a5, a6 int) int {
-	b, free := alloc.CloneSlice(buf)
-	defer free()
-	return int(C.nox_xxx_netSendPacket_4E5030(C.int(a1), unsafe.Pointer(&b[0]), C.int(len(b)), C.int(a4), C.int(a5), C.char(a6)))
+	return reliableEnqueue(a1, buf, (*server.Object)(unsafe.Pointer(uintptr(uint32(a4)))), a5, byte(a6))
 }
 
 func Nox_client_getServerAddr_43B300() netip.Addr {
@@ -227,7 +222,7 @@ func convSendToServerErr(n int, err error) int {
 	return n
 }
 func Nox_xxx_netClientSend2_4E53C0(a1 int, a2 unsafe.Pointer, a3 int, a4 int, a5 int) {
-	C.nox_xxx_netClientSend2_4E53C0(C.int(a1), a2, C.int(a3), C.int(a4), C.int(a5))
+	reliableClientSend(a1, unsafe.Slice((*byte)(a2), a3), (*server.Object)(unsafe.Pointer(uintptr(uint32(a4)))), a5)
 }
 func Sub_57B920(a1 unsafe.Pointer) {
 	resetNetworkAliases((*[255]server.PlayerNetData)(a1))
@@ -275,7 +270,7 @@ func Sub_4D1210(a1 int) {
 	C.sub_4D1210(C.int(a1))
 }
 func Nox_net_importantACK_4E55A0(a1 int, a2 int) {
-	C.nox_net_importantACK_4E55A0(C.int(a1), C.int(a2))
+	reliableACK(a1, uint32(a2))
 }
 func Sub_4196D0(a1 unsafe.Pointer, a2 unsafe.Pointer, a3 int, a4 int) {
 	C.sub_4196D0(a1, a2, C.int(a3), C.int(a4))

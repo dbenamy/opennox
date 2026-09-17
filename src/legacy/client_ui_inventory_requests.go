@@ -3,7 +3,6 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME2_1.h"
-int nox_xxx_netClientSend2_4E53C0(int,const void*,int,int,int);
 */
 import "C"
 
@@ -55,7 +54,7 @@ func nox_xxx_clientTrade_465870(v C.short) C.int { return C.int(uiInventoryTrade
 //export nox_xxx_send2ServInvenFail_461630
 func nox_xxx_send2ServInvenFail_461630(v C.short) C.int {
 	msg := [3]byte{241, byte(v), byte(uint16(v) >> 8)}
-	return C.nox_xxx_netClientSend2_4E53C0(31, unsafe.Pointer(&msg[0]), 3, 0, 0)
+	return C.int(reliableClientSend(31, msg[:], nil, 0))
 }
 
 //export nox_xxx_clientDrop_465BE0

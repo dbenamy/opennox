@@ -88,7 +88,7 @@ func sustainedTagPacket(u, target *server.Object, mode byte) uint32 {
 	binary.LittleEndian.PutUint16(b[3:], target.TypeInd)
 	b[5] = mode
 	b[6] = 1
-	return uint32(C.nox_xxx_netSendPacket0_4E5420(C.int(*controlByte(controlPlayer(u), 2064)), unsafe.Pointer(&b[0]), 7, 0, 1))
+	return uint32(reliableEnqueue(int(*controlByte(controlPlayer(u), 2064)), b[:], nil, 1, 0))
 }
 func sustainedTagStart(p unsafe.Pointer) uint32 {
 	d := (*server.DurSpell)(p)

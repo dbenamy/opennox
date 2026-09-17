@@ -1378,3 +1378,14 @@ released it. Tests verify pool reuse and surviving-list variants. This is a
 reversible prerequisite correction within the authorized port workflow, not an
 expectation change made to accommodate Go. Fresh C production checks are required
 because production source changed. See [RELIABLE_REPORTS.md](RELIABLE_REPORTS.md).
+
+
+### Reliable queue conversion and evidence counts
+
+Preserve the original shared C-owned allocation/list/rate layout while replacing
+queue algorithms, and keep only seven entry points required by C callers. The
+pressure ownership fix is already qualified in C baseline `f95e7aee`; the Go
+conversion changes no frozen expectation. Go callers avoid the C round trip and
+extra payload allocation. Treat unique terminal test names as leaf cases: recounting
+the original visibility/object-report logs corrects an 18-case overstatement in
+prior documentation. No tests were removed. See [RELIABLE_REPORTS.md](RELIABLE_REPORTS.md).

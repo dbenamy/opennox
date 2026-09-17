@@ -7,7 +7,7 @@ lines / 82 production files**, zero reference C. The original 849-line block plu
 its trailing separator is replaced by five Go files (509 lines): 29 live behaviors
 and retirement of one proven orphan. Six C exports remain; 24 are retired.
 
-Default/server/highres each pass **383 affected roots / 10,772 leaf cases**, no
+Default/server/highres each pass **383 affected roots / 10,754 leaf cases**, no
 skips. All **8,962 records / 65 groups** match unchanged live expectations,
 including supplemental scan-delay contracts. All three production builds and ABI
 audits pass. Static checks pass. The full suite exactly retains 1,553 known failure
@@ -139,3 +139,8 @@ pass. Real circular bounds correct an origin-only fixture setup; the original
 spatial-scan capture stays unchanged. See [VISIBILITY_SCAN_DELAY.md](VISIBILITY_SCAN_DELAY.md).
 Native qualification now expects **8,962 records / 65 groups** and selects
 **383 affected roots**. All live historical expectations remain unchanged.
+
+
+Leaf-count correction recorded during reliable-queue qualification: the original
+native logs contain 10,754 unique terminal test names (including 289 roots without
+subtests), not 10,772. This corrects documentation only; no test or capture changed.

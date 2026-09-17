@@ -329,7 +329,7 @@ func Sub_41E4B0(a1 int) {
 	C.sub_41E4B0(C.int(a1))
 }
 func Sub_4E4ED0() {
-	C.sub_4E4ED0()
+	reliableResetSequences()
 }
 func Nox_motd_4463E0(a1 int) {
 	C.nox_motd_4463E0(C.int(a1))
@@ -464,7 +464,7 @@ func Sub_50D7E0() {
 	spawnPolicyReset()
 }
 func Sub_4E4F80() {
-	C.sub_4E4F80()
+	reliableTrim()
 }
 func Sub_4ECFE0() {
 	netCodeCacheFlush()

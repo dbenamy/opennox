@@ -20,7 +20,7 @@ import (
 	"unsafe"
 )
 
-// Entry dispatch and observation only; queue behavior is the production C code.
+// Entry dispatch and observation only; retired entries call production Go directly.
 func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related *server.Object, priority int, ordered bool) uint32 {
 	var empty byte
 	p := unsafe.Pointer(unsafe.SliceData(data))
@@ -44,27 +44,27 @@ func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related
 	}
 	switch op {
 	case 0:
-		return uint32(C.sub_4E4DE0())
+		return uint32(reliableInit())
 	case 1:
-		return uint32(C.sub_4E4E50(a))
+		return uint32(reliableRecalculate(to))
 	case 2:
-		return uint32(C.sub_4E4ED0())
+		return uint32(reliableResetSequences())
 	case 3:
-		return uint32(C.sub_4E4EF0())
+		return uint32(reliableResetRates())
 	case 4:
 		return uint32(C.sub_4E4F30(a))
 	case 5:
 		return uint32(C.nox_xxx_playerResetImportantCtr_4E4F40(a))
 	case 6:
-		return uint32(C.sub_4E4F80())
+		return uint32(reliableTrim())
 	case 7:
-		C.sub_4E4FC0(C.int(node))
+		reliableUnlink((*reliableMessage)(unsafe.Pointer(uintptr(node))))
 	case 8:
-		return uint32(C.nox_xxx_netSendPacket_4E5030(a, p, n, obj, C.int(priority), order))
+		return uint32(reliableEnqueue(to, data, related, priority, byte(order)))
 	case 9:
-		return uint32(C.nox_xxx_importantCheckRate_4E52B0())
+		return uint32(reliablePressure())
 	case 10:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_playerKickDueToRate_4E5360(a))))
+		return uint32(reliableRemoveSlowPlayer(to))
 	case 11:
 		return uint32(C.nox_xxx_netSendPacket1_4E5390(a, b, n, obj, C.int(priority)))
 	case 12:
@@ -72,17 +72,17 @@ func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related
 	case 13:
 		return uint32(C.nox_xxx_netSendPacket0_4E5420(a, p, n, obj, C.int(priority)))
 	case 14:
-		return uint32(C.sub_4E5450(a, (*C.char)(p), n, obj, C.int(priority)))
+		return uint32(reliableCoalesce(to, data, related, priority))
 	case 15:
-		C.sub_4E54D0(C.int(arg), C.int(node), a)
+		reliableAcknowledge(arg, (*reliableMessage)(unsafe.Pointer(uintptr(node))), to)
 	case 16:
 		return uint32(C.nox_net_importantACK_4E55A0(a, C.int(arg)))
 	case 17:
 		return uint32(C.sub_4E55F0(C.uchar(to)))
 	case 18:
-		return uint32(C.nox_xxx_importantCheckRate2_4E5670(C.uchar(to)))
+		return uint32(reliableAdapt(byte(to)))
 	case 19:
-		C.nox_xxx_netImportant_4E5770(C.uchar(to), C.int(arg))
+		reliableDeliver(byte(to), int(arg))
 	default:
 		panic("reliable report operation")
 	}

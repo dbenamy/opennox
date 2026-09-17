@@ -95,7 +95,7 @@ func questKnowledgePacket(p *server.Player, opcode uint16, id int) int32 {
 	word, free := alloc.New(uint32(0))
 	defer free()
 	*word = uint32(opcode) | uint32(id)<<16
-	return int32(C.nox_xxx_netSendPacket0_4E5420(C.int(p.PlayerInd), unsafe.Pointer(word), 4, 0, 1))
+	return int32(reliableEnqueue(int(p.PlayerInd), unsafe.Slice((*byte)(unsafe.Pointer(word)), 4), nil, 1, 0))
 }
 func questLoseSpell(u *server.Object) {
 	p := u.UpdateDataPlayer().Player

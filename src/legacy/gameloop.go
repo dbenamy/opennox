@@ -122,7 +122,7 @@ func Nox_xxx_getRandomName_4358A0() string {
 	return GoString(C.nox_xxx_getRandomName_4358A0())
 }
 func Sub_4E4EF0() {
-	C.sub_4E4EF0()
+	reliableResetRates()
 }
 func Sub_48D740() {
 	C.sub_48D740()
@@ -170,7 +170,7 @@ func Sub_49A8C0() {
 	C.sub_49A8C0()
 }
 func Sub_4E4DE0() {
-	C.sub_4E4DE0()
+	reliableInit()
 }
 func Sub_48D760() {
 	C.sub_48D760()

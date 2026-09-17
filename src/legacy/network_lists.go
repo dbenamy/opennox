@@ -6,7 +6,6 @@ extern unsigned int dword_5d4594_2650652;
 int nox_xxx_netOnPacketRecvCli_48EA70(int a1, unsigned char* data, int sz);
 int sub_48D660();
 int sub_4DF9B0(void* a1, void* a2, void* a3, int a4);
-void nox_xxx_netImportant_4E5770(unsigned char a1, int a2);
 */
 import "C"
 import (
@@ -37,5 +36,5 @@ func nox_netlist_addToMsgListSrv_40EF40(ind int, buf *C.uchar, sz int) C.bool {
 }
 
 func Nox_xxx_netImportant_4E5770(a1 byte, a2 int) {
-	C.nox_xxx_netImportant_4E5770(C.uchar(a1), C.int(a2))
+	reliableDeliver(a1, a2)
 }

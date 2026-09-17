@@ -2,12 +2,12 @@
 
 ## Scope and status
 
-C baseline qualified after object-report conversion `eb2e61c4`; native conversion next.
-Twenty live functions / 615 physical C lines in GAME3_3.c, 004E4DE0 through
-004E5770, ending before the unrelated sub_50B510 forward declaration. Six private
-helpers have live selected callers; preliminary whole-source audit found no orphan.
-The prerequisite C correction brings production C to 55,584 lines / 82 files,
-zero reference C.
+Qualified native conversion after corrected C baseline `f95e7aee`.
+Twenty functions / 622 physical C lines (including the prerequisite fix) are
+replaced in GAME3_3.c, 004E4DE0 through 004E5770, preserving the unrelated
+sub_50B510 forward declaration. Six private helpers had live selected callers;
+the whole-source audit found no orphan. Production C is now 54,962 lines / 82
+files, with zero reference C.
 
 ## Contract plan
 
@@ -27,8 +27,8 @@ qualified production baseline while production source remains identical. Preserv
 existing consumer expectations and run the full affected corpus and fresh
 production/integration checks after native conversion.
 
-The existing Go sequence-reset helper in src/player.go duplicates sub_4E4F30;
-compare before unifying it. Include C preambles in bridge-retirement audits.
+The duplicate Go sequence-reset helper in src/player.go now delegates to the
+shared implementation. Bridge-retirement audits include C preambles.
 The pressure ownership correction below is the sole intended behavior change.
 
 ## Baseline correction for review
@@ -91,3 +91,46 @@ All 1,988 source fingerprints agree across these gates. The corrected C client
 SHA-256 is `990ec5fb1e033ec9de17a5138608807003532a3dcc248f53027217496b5e460a`.
 The original crash capture remains separate from the corrected frozen contracts.
 No C algorithm is added solely for tests; this committed baseline provides recovery.
+
+
+## Native conversion and review
+
+The Go implementation uses three production files (457 lines) and the original
+shared pool/list/rate layout. It removes the corrected 622-line C block, leaving
+54,962 physical C lines / 82 files, zero reference C. Net reduction from the prior
+qualified object-report conversion is 615 lines. Thirteen C interfaces are retired;
+seven remain for C callers. All Go consumers call Go directly, including the
+previously duplicated root sequence reset. The payload is copied once into the
+queue allocation; the obsolete extra C allocation in the Go wrapper is removed.
+
+Arithmetic/ownership review covers 16-bit sequence wrap, byte retry/countdown wrap,
+unsigned rate products and signed lower-threshold checks, signed recipient ranges,
+mask bit 31, pressure counter wrap and strict frame selection, related-bit updates,
+C-owned layout and cleanup survival. Retired-symbol and header audits pass. The
+payload pointer declarations lose only their const qualifier to match generated
+Go C-export declarations; their calling convention and data layout are unchanged.
+
+All three targets pass 416 roots / 30,236 unique leaf cases and 98 groups / 31,587
+records, with no skips or algorithm/expectation adjustment. Every preceding
+consumer test name is present. Original visibility/object reports overstated their
+leaf totals by 18; their logs and frozen records are unchanged, and those reports
+now give the corrected totals. Initial native commands rejected a multiline test
+pattern before compilation; the corrected one-line pattern is committed with the
+conversion. Successful artifacts are native-{default,server,highres}-v2. Production
+qualification passes.
+
+
+## Completed native qualification
+
+Artifacts: `build/port-reliable-reports/native-{default,server,highres}-v2`,
+`native-production`, `native-source-audit.json` and `native-removal.json`.
+All 1,991 source fingerprints match across target and production gates. All three
+production builds and ABI audits pass; the asset suite has exactly the known
+1,553 failure entries (15 packages pass, 3 fail, 32 skip). Gameplay (41 frames),
+actual save/load (7) and flat rendering (14) match the corrected C baseline with
+exact map regeneration. Client SHA-256: `a501fc9e201c9df1880ac25ef09b4552066f3637245dbe8b6bffbd19e8081b34`.
+
+The three completed C run directories had 1.66 GB of byte-identical asset copies
+removed after hash verification; their restore manifests, outputs, screenshots,
+saves and original assets remain. The native draft/install scripts are consumed
+and must not be rerun against the completed source tree.

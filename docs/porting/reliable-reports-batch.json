@@ -1620,7 +1620,7 @@
           "{root}/tools/porting/run_scenario.py",
           "reliable-reports-flat-native",
           "compare",
-          "{root}/build/baseline/runs/object-reports-flat-native"
+          "{root}/build/baseline/runs/reliable-reports-flat-c"
         ]
       }
     ]
@@ -1633,7 +1633,14 @@
     "retained": [
       "nox_xxx_frameCounterSetCopyToNextFrame_5281D0",
       "nox_xxx_netSendPointFx_522FF0",
-      "nox_xxx_sendArrowTrapFX_5238A0"
+      "nox_xxx_sendArrowTrapFX_5238A0",
+      "sub_4E4F30",
+      "nox_xxx_playerResetImportantCtr_4E4F40",
+      "nox_xxx_netSendPacket1_4E5390",
+      "nox_xxx_netClientSend2_4E53C0",
+      "nox_xxx_netSendPacket0_4E5420",
+      "nox_net_importantACK_4E55A0",
+      "sub_4E55F0"
     ],
     "retired": [
       "nox_xxx_aiLostSight_528560",
@@ -1674,12 +1681,25 @@
       "sub_528610",
       "sub_528910",
       "sub_528950",
-      "sub_528990"
+      "sub_528990",
+      "sub_4E4DE0",
+      "sub_4E4E50",
+      "sub_4E4ED0",
+      "sub_4E4EF0",
+      "sub_4E4F80",
+      "sub_4E4FC0",
+      "nox_xxx_netSendPacket_4E5030",
+      "nox_xxx_importantCheckRate_4E52B0",
+      "nox_xxx_playerKickDueToRate_4E5360",
+      "sub_4E5450",
+      "sub_4E54D0",
+      "nox_xxx_importantCheckRate2_4E5670",
+      "nox_xxx_netImportant_4E5770"
     ],
     "scenarios": [
       {
         "name": "reliable-reports-native",
-        "reference": "build/baseline/runs/object-reports-native",
+        "reference": "build/baseline/runs/reliable-reports-c",
         "scenario": "docs/porting/options-panels.yaml",
         "env": {
           "NOX_DEV": "true"
@@ -1687,7 +1707,7 @@
       },
       {
         "name": "reliable-reports-save-native",
-        "reference": "build/baseline/runs/object-reports-save-native",
+        "reference": "build/baseline/runs/reliable-reports-save-c",
         "scenario": "docs/porting/object-xfer-save-load.yaml",
         "env": {
           "OPENNOX_REQUIRE_SAVE_LOAD": "1"

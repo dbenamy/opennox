@@ -2,35 +2,40 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 56k lines** — **55,577 physical lines in 82 production
-`.c` files**, zero reference C. Latest qualified conversion removes **541 lines**.
-See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 55k lines** — **54,962 physical lines in 82 production
+`.c` files**, zero reference C. Latest qualified conversion removes **622 lines**
+from its corrected C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — reliable message queue C baseline qualified
+## Current — reliable game-message queue qualified
 
-Last qualified conversion: **eb2e61c4**, object and recipient reports, pushed.
-Active batch: 20 functions / originally 615 C lines in GAME3_3.c, 004E4DE0 through
-004E5770. An independent regression reproduced an original-C pressure-cleanup
-crash: removing a slow player could free the selected oldest message before cleanup
-accessed it again. The small C correction checks surviving-list membership first;
-regressions cover list integrity, related bits, status and pool reuse. This adds 7
-lines temporarily, giving 55,584 C lines / 82 files and a 622-line selected block.
+C baseline **f95e7aee** is committed/pushed, including the independently reproduced
+pressure-cleanup crash fix. The native conversion passes all gates:
+default/server/highres 416 roots / 30,236 leaf cases each, all 98 groups / 31,587
+records, static checks, production builds/ABI, exact known full-suite failures,
+gameplay, actual save/load and flat rendering with exact map regeneration. The
+1,991 source fingerprints match across native target and production gates.
 
-Fifteen roots / 6,989 leaf cases and 15 groups / 9,032 records are frozen in the new
-fixtures. All three C targets and the independent repeat pass. Fresh C production checks
-pass builds/ABI, the exact known suite, gameplay, actual save/load and flat rendering
-with exact map regeneration. All 1,988 source fingerprints match. Production
-source changed, so the preceding production baseline is not being reused.
-Evidence/ignored drafts: build/port-reliable-reports. Manifest and focused/affected
-patterns: docs/porting/reliable-reports-*. Report: RELIABLE_REPORTS.md.
-The native queue/delivery/exports are ignored drafts only, NOT installed. Finish
-and commit the C baseline before installing them. No source edits during builds.
+Twenty C functions are replaced by three Go files (457 lines). Thirteen C
+interfaces are retired; seven remain for C callers. Go consumers call Go directly,
+and the root sequence-reset helper delegates to the shared implementation. No
+algorithm or frozen expectation was adjusted during conversion. Previous reports'
+leaf counts are corrected from their original logs; every preceding case remains.
+See RELIABLE_REPORTS.md for evidence, the prerequisite fix and review notes.
 
-The object-report install script/drafts are CONSUMED/STALE; never rerun them.
+Next: world-collision and interaction callbacks, 21 live functions / 1,016 physical
+C lines in GAME3_3.c, 004E86E0 through 004EBF40, before 004EC520. The count includes
+an obsolete commented projectile implementation, to remove with the live block.
+All entries have live callers or callback registrations. Initial audit is in
+build/port-world-collisions/candidate-audit.json. No next-batch source is installed.
+Baseline new contracts on all targets and repeat independently; reuse the current
+production baseline if production source is unchanged. Retain callback identities
+where C compares function addresses. Existing callback registry takes C pointers.
+
+Reliable-queue and prior install scripts/drafts are CONSUMED/STALE; never rerun.
 Preserve untracked nox-iso-from-archive-org.7z and original assets. Source
-build/baseline/env.sh for Go commands. No user question or substantial blocker.
+build/baseline/env.sh for Go commands. No source edits during builds. No user blocker.
 
 <!-- /current-checkpoint -->
 

@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_3.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"unsafe"
@@ -29,16 +24,13 @@ func gameplayReportID(op byte, u *server.Object, size int) []byte {
 	return b
 }
 func gameplayReportSend(to int, b []byte, ordered bool, priority int) int {
-	var order C.char
+	var order byte
 	if ordered {
 		order = 1
 	}
-	// The retained queue copies the bytes synchronously into its own C allocation.
-	return int(C.nox_xxx_netSendPacket_4E5030(C.int(to), unsafe.Pointer(&b[0]), C.int(len(b)), 0, C.int(priority), order))
+	return reliableEnqueue(to, b, nil, priority, order)
 }
-func gameplayReportCoalesce(to int, b []byte) int {
-	return int(C.sub_4E5450(C.int(to), (*C.char)(unsafe.Pointer(&b[0])), C.int(len(b)), 0, 1))
-}
+func gameplayReportCoalesce(to int, b []byte) int { return reliableCoalesce(to, b, nil, 1) }
 func gameplayReportDirect(to int, b []byte) int {
 	return bool2int(GetServer().S().NetList.AddToMsgListCli(ntype.PlayerInd(to), netlist.Kind1, b))
 }

@@ -52,7 +52,7 @@ inside this reporting batch.
 
 ## Original-C qualification
 
-Default/server/highres each pass **400 affected roots / 23,259 leaf cases**,
+Default/server/highres each pass **400 affected roots / 23,241 leaf cases**,
 without skips. All **82 groups / 22,549 records** match. These runs share the same
 source fingerprints. Default took 207.3s, server 292.8s and highres 224.6s.
 
@@ -61,7 +61,7 @@ supplement. They prove the existing C polygon update runs before audio filtering
 and that an observer following another player retains its own polygon state.
 The supplement passes on all three targets; the focused repeat passes all
 **18 new groups / 13,593 records**. Native qualification will check the combined
-**83 groups / 22,555 records** and **401 roots / 23,265 leaf cases** together.
+**83 groups / 22,555 records** and **401 roots / 23,247 leaf cases** together.
 The manifest preserves the original broad phases and supplemental commands.
 
 Production source is identical to qualified conversion `df8b3bb7`; all changes
@@ -108,7 +108,7 @@ No retired symbol references remain, and static checks pass.
 The first native focused run passes all 18 groups / 13,593 records and 12,493 leaf
 cases unchanged. A stale C prototype in the old server preamble was found by the
 source audit and removed before final gates. No production algorithm correction
-was needed. The final three target sweeps pass 401 roots / 23,265 leaf cases and all 83 groups /
+was needed. The final three target sweeps pass 401 roots / 23,247 leaf cases and all 83 groups /
 22,555 records, without skips. All 1,979 source fingerprints agree. Default took
 303.4s, server 303.4s and highres 372.0s (concurrent runs, including compilation).
 Production/integration qualification passes. All three builds and ABI audits pass;
@@ -117,3 +117,10 @@ the full suite exactly retains 1,553 failure entries (15 packages pass / three f
 fourteen plus exact map regeneration. All gates share 1,979 unchanged source
 fingerprints. Production qualification took 381.9s. Client SHA-256:
 `b13e16c90cc220af61c48b61ec57daa482f08cd54755e5a74f27d354f736ca2a`. Artifacts: build/port-object-reports/native-production.
+
+
+Leaf-count correction recorded during reliable-queue qualification: recomputing
+unique terminal test names from the original JSON logs gives 23,241 C and 23,247
+native affected leaves. The earlier totals were inflated by 18 in the preceding
+consumer corpus; the 12,493 new object-report leaves were already correct. All
+original test names and capture records remain unchanged.

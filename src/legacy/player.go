@@ -246,7 +246,7 @@ func Nox_xxx_playerUnsetStatus_417530(p *server.Player, a2 int) {
 }
 
 func Nox_xxx_playerResetImportantCtr_4E4F40(v ntype.PlayerInd) {
-	C.nox_xxx_playerResetImportantCtr_4E4F40(C.int(v))
+	reliableResetRate(int(v))
 }
 
 func Get_dword_5d4594_1046492() int {
@@ -350,5 +350,5 @@ func Sub_425E90(pl *server.Player, a2 int8) {
 }
 
 func Sub_4E55F0(pli ntype.PlayerInd) {
-	C.sub_4E55F0(C.uchar(pli))
+	reliableRemoveRecipient(byte(pli))
 }
