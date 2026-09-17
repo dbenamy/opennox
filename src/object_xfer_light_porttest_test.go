@@ -20,6 +20,8 @@ import (
 )
 
 func TestObjectXferLightReadContracts(t *testing.T) {
+	var captures []objectXferCaptureRow
+	defer func() { spellbookCapture(t, "object-xfer-light-read", captures, "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae") }()
 	core := newObjectXferOwner(t)
 	mapDrawableTables(t)
 	path := filepath.Join(t.TempDir(), "light.bin")
@@ -27,6 +29,7 @@ func TestObjectXferLightReadContracts(t *testing.T) {
 		for variant := 0; variant < 2; variant++ {
 			t.Run(fmt.Sprintf("v%d-variant%d", version, variant), func(t *testing.T) {
 				u := newObjectXferTyped(t, core, "InvisibleLight")
+				defer objectXferCaptureCase(t, &captures, u)
 				u.ObjFlags = 0
 				u.Field34 = 999
 				var stream, payload mapDrawableStream
@@ -76,12 +79,15 @@ func TestObjectXferLightReadContracts(t *testing.T) {
 }
 
 func TestObjectXferLightWriteContracts(t *testing.T) {
+	var captures []objectXferCaptureRow
+	defer func() { spellbookCapture(t, "object-xfer-light-write", captures, "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40") }()
 	c, _, _ := newEffectsFullOwner(t)
 	core := newObjectXferOwner(t)
 	path := filepath.Join(t.TempDir(), "light.bin")
 	for _, matched := range []bool{false, true} {
 		t.Run(fmt.Sprint(matched), func(t *testing.T) {
 			u := newObjectXferTyped(t, core, "InvisibleLight")
+			defer objectXferCaptureCase(t, &captures, u)
 			u.ObjFlags = 0
 			u.Extent = 123
 			u.ScriptIDVal = 88

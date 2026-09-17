@@ -1,6 +1,16 @@
 {
   "batch": "server-object-xfer",
-  "env": {},
+  "env": {
+    "OPENNOX_SPELLBOOK_CAPTURE": "{out}/capture",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
   "phases": {
     "c-ownership": [
       {
@@ -56,6 +66,818 @@
           "{out}/highres.json",
           "--require-no-skips"
         ]
+      }
+    ],
+    "c-default": [
+      {
+        "name": "c-default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/object-xfer-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          }
+        ]
+      }
+    ],
+    "c-repeat": [
+      {
+        "name": "c-repeat",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/object-xfer-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          }
+        ]
+      }
+    ],
+    "c-server": [
+      {
+        "name": "c-server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/object-xfer-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          }
+        ]
+      }
+    ],
+    "c-highres": [
+      {
+        "name": "c-highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/object-xfer-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          }
+        ]
+      }
+    ],
+    "native-focused": [
+      {
+        "name": "native-focused",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/object-xfer-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          }
+        ]
+      }
+    ],
+    "c-gameplay": [
+      {
+        "name": "compressor-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "client-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/client",
+          "./cmd/opennox"
+        ]
+      },
+      {
+        "name": "object-xfer-c",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/options-panels.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=C server object serialization with ownership corrections",
+          "NOX_DEV=true",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "object-xfer-c",
+          "compare",
+          "{root}/build/baseline/runs/color-light-native"
+        ]
+      },
+      {
+        "name": "object-xfer-save-c",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/object-xfer-save-load.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=C server object serialization with ownership corrections",
+          "OPENNOX_REQUIRE_SAVE_LOAD=1",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "object-xfer-save-c",
+          "compare",
+          "{root}/build/baseline/runs/object-xfer-save-load-repeat"
+        ]
+      },
+      {
+        "name": "object-xfer-save-c-repeat",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/object-xfer-save-load.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=C server object serialization with ownership corrections",
+          "OPENNOX_REQUIRE_SAVE_LOAD=1",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "object-xfer-save-c-repeat",
+          "compare",
+          "{root}/build/baseline/runs/object-xfer-save-c"
+        ]
+      },
+      {
+        "name": "object-xfer-flat-c",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/client",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/tile-raster-flat.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=C server object serialization with ownership corrections",
+          "OPENNOX_REQUIRE_MAP_DECOMPRESSION=1",
+          "OPENNOX_COMPRESS_MAPS=[\"war01a/War01A.map\"]",
+          "OPENNOX_MAP_COMPRESSOR={out}/map-compress",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "object-xfer-flat-c",
+          "compare",
+          "{root}/build/baseline/runs/color-light-flat-native"
+        ]
+      }
+    ],
+    "c-accumulated": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          }
+        ]
+      }
+    ],
+    "native-default": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/default.jsonl",
+          "--result",
+          "{out}/default-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          }
+        ]
+      }
+    ],
+    "native-server": [
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/server.jsonl",
+          "--result",
+          "{out}/server-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          }
+        ]
+      }
+    ],
+    "native-highres": [
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          "./...",
+          "--log",
+          "{out}/highres.jsonl",
+          "--result",
+          "{out}/highres-result.json",
+          "--timeout-seconds",
+          "1800"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          }
+        ]
+      }
+    ],
+    "production": [
+      {
+        "name": "compressor-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/object-xfer-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      },
+      {
+        "name": "flat-gameplay",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/production/bin/opennox",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/tile-raster-flat.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Server object serialization in Go",
+          "OPENNOX_REQUIRE_MAP_DECOMPRESSION=1",
+          "OPENNOX_COMPRESS_MAPS=[\"war01a/War01A.map\"]",
+          "OPENNOX_MAP_COMPRESSOR={out}/map-compress",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "object-xfer-flat-native",
+          "compare",
+          "{root}/build/baseline/runs/object-xfer-flat-c"
+        ]
+      }
+    ]
+  },
+  "production": {
+    "description": "Server object serialization in Go",
+    "assets": "build/assets/extracted/drive_c/Nox",
+    "known_suite": "build/port-rule-command/full-suite.jsonl",
+    "scenario_runner": "tools/porting/run_scenario.py",
+    "retained": [
+      "nox_xxx_xfer_4F3E30",
+      "nox_xxx_servMapLoadPlaceObj_4F3F50",
+      "nox_xxx_mapReadWriteObjData_4F4530",
+      "nox_xxx_XFerSpellPagePedistal_4F4A20",
+      "nox_xxx_XFerReadable_4F4AB0",
+      "nox_xxx_XFerExit_4F4B90",
+      "nox_xxx_XFerDoor_4F4CB0",
+      "nox_xxx_unitTriggerXfer_4F4E50",
+      "nox_xxx_XFerHole_4F51D0",
+      "nox_xxx_XFerTransporter_4F5300",
+      "nox_xxx_XFerElevator_4F53D0",
+      "nox_xxx_XFerElevatorShaft_4F54A0",
+      "sub_4F5540",
+      "nox_xxx_XFerMover_4F5730",
+      "nox_xxx_XFerGlyph_4F5890",
+      "nox_xxx_XFerInvLight_4F5AA0",
+      "nox_xxx_XFerSentry_4F5E50"
+    ],
+    "retired": [
+      "nox_xxx_readObjectOldVer_4F4170"
+    ],
+    "scenarios": [
+      {
+        "name": "object-xfer-native",
+        "reference": "build/baseline/runs/object-xfer-c",
+        "scenario": "docs/porting/options-panels.yaml",
+        "env": {
+          "NOX_DEV": "true"
+        }
+      },
+      {
+        "name": "object-xfer-save-native",
+        "reference": "build/baseline/runs/object-xfer-save-c",
+        "scenario": "docs/porting/object-xfer-save-load.yaml",
+        "env": {
+          "OPENNOX_REQUIRE_SAVE_LOAD": "1"
+        }
       }
     ]
   }

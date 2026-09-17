@@ -67,3 +67,12 @@ func (p *PortTestPaintOwners) ObjectXferTypes() {
 		s.Types.byID[typ.id] = typ
 	}
 }
+
+// Admission contracts configure real type fields read by the production policy.
+func (s *Server) PortTestObjectXferAdmission(class object.Class, flags object.Flags, allowed bool) {
+	typ := s.Types.ByInd(1)
+	typ.class = class
+	typ.flags = flags
+	typ.allowed = allowed
+	typ.Weight = 255
+}

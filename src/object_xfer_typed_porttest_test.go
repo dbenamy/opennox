@@ -59,6 +59,8 @@ func TestObjectXferTypedVersionRejection(t *testing.T) {
 }
 
 func TestObjectXferTypedDefaultRecords(t *testing.T) {
+	var captures []objectXferCaptureRow
+	defer func() { spellbookCapture(t, "object-xfer-typed-default", captures, "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3") }()
 	core := newObjectXferOwner(t)
 	mapDrawableTables(t)
 	path := filepath.Join(t.TempDir(), "typed.bin")
@@ -112,6 +114,7 @@ func TestObjectXferTypedDefaultRecords(t *testing.T) {
 				t.Fatal("writer changed saved lifetime")
 			}
 			v := newObjectXferTyped(t, core, sp.name)
+			defer objectXferCaptureCase(t, &captures, v)
 			v.Field34 = 999
 			if err := cryptfile.OpenGlobal(path, cryptfile.ReadOnly, -1); err != nil {
 				t.Fatal(err)

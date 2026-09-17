@@ -19,6 +19,8 @@ import (
 )
 
 func TestObjectXferCommonWriteContracts(t *testing.T) {
+	var captures []objectXferCaptureRow
+	defer func() { spellbookCapture(t, "object-xfer-common-write", captures, "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae") }()
 	core := newObjectXferOwner(t)
 	path := filepath.Join(t.TempDir(), "written.bin")
 	for _, outer := range []int{0, 9, 10, 19, 20, 29, 30, 39, 40, 60, 64} {
@@ -29,6 +31,7 @@ func TestObjectXferCommonWriteContracts(t *testing.T) {
 				}
 				t.Run(fmt.Sprintf("outer%d-%s-len%d", outer, reason, nameLen), func(t *testing.T) {
 					u := newObjectXferSimple(t, core)
+					defer objectXferCaptureCase(t, &captures, u)
 					u.ObjFlags = 0
 					u.Field5 = 0
 					u.Extent = 0x12345678

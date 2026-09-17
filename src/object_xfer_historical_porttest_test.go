@@ -162,6 +162,8 @@ func objectXferHistoricalPayload(s *mapDrawableStream, name string, version int1
 	}
 }
 func TestObjectXferTypedHistoricalRecords(t *testing.T) {
+	var captures []objectXferCaptureRow
+	defer func() { spellbookCapture(t, "object-xfer-historical", captures, "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9") }()
 	handles.Init()
 	t.Cleanup(handles.Release)
 	core := newObjectXferOwner(t)
@@ -174,6 +176,7 @@ func TestObjectXferTypedHistoricalRecords(t *testing.T) {
 			}
 			t.Run(fmt.Sprintf("%s-%d", sp.name, version), func(t *testing.T) {
 				u := newObjectXferTyped(t, core, sp.name)
+				defer objectXferCaptureCase(t, &captures, u)
 				u.ObjFlags = 0
 				u.ScriptIDVal = 88
 				u.Field34 = 777

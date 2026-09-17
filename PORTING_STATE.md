@@ -8,44 +8,35 @@ animation plus 28 unused map helpers); the next ownership prerequisite adds four
 
 <!-- current-checkpoint -->
 
-## Current — server object-transfer ownership prerequisite
+## Current — server object serialization C baseline
 
-Colored-light conversion **82b2c821** and save/load integration **bc84cc35** are
-committed and pushed. The current batch is eighteen server common/typed object
-serialization functions in GAME3_3.c, 004F3E30 through EOF: **1,177 C lines**
-including four new ownership guards. No functions in this batch are Go yet.
+Colored-light conversion **82b2c821**, save/load integration **bc84cc35**, and
+rejected-object ownership fixes **b55e295f** are committed and pushed. The current
+batch covers eighteen functions in GAME3_3.c, 004F3E30 through EOF: **1,177 C
+lines**, including four ownership guards. None are translated in the checkout yet.
 
-Two C regression fixes are ready for a prerequisite commit: release a newly
-allocated child when its transfer callback fails, and clear an already-disposed
-inventory head before rejecting/freeing its parent. Before-change tests observe
-an orphaned live object and a freed-child traversal fault. After-change checks
-pass ten roots across default/server/highres, **681 subcases plus two ownership
-regressions**, no skips. Static checking passes. The c-ownership-qualified repeat passes all three builds in 17.173s,
-with unchanged source fingerprints. Current C:
-**60,779 lines / 82 production files / zero reference C**.
+The expanded C baseline passes 21 roots / 1,297 leaf cases in default, repeat,
+server and highres, with no skips; all twelve hashes / 1,174 full object-state
+records match. Static checking passes. Current-source gameplay matches 41 frames,
+actual save/load and its repeat match seven each, and flat rendering matches 14
+with exact map regeneration. c-accumulated passes all 1,198 selected checks (1,181 root), with only the existing
+opt-in probe skip. The staged archive matches all six qualified phases across
+1,890 source files. Commit/push the baseline, then install the reviewed Go drafts.
 
-Fixtures use actual object pools, type templates, registered callbacks, cryptfile
-streams and client light drawables. Cases cover common reader/writer versions,
-exact written bytes, stream positions, default and historical typed formats,
-light records and inventory linkage/partial loading. Both common name allocation
-and historical script file-handle initialization required fixture corrections;
-neither changed engine behavior. See [OBJECT_XFER.md](docs/porting/OBJECT_XFER.md).
+One newly added stale-TOC case found the C factory adapter bypassing the existing
+nil-type guard. The local adapter now calls Server.NewObjectByTypeInd; corrected
+final phases have suffix 2. Original failed phases are not qualification evidence.
+All previously covered expectations are unchanged. See OBJECT_XFER.md and
+DECISIONS.md for evidence and the earlier ownership corrections.
 
-Next: commit/push the ownership prerequisite if needed;
-then expand complete state captures, active script/reference and placement cases,
-repeat/freeze the full C baseline, and translate the connected batch. The actual
-seven-frame save/load scenario is ready, but its currently qualified binary
-predates the ownership correction; rebuild/replay current C before freezing.
-Broaden accumulated checks at this shared serialization boundary.
+Ignored build/port-object-xfer contains common_native.draft, typed_native.draft,
+world_native.draft, exports_native.draft and install_native.py. These are reviewed
+preparatory drafts, not compiled or installed. Other old *.draft files may be
+stale; never overwrite tracked fixtures with them. The manifest now includes
+native focused/accumulated phases and full production/integration qualification.
+No source edits while tests/builds run. No substantive blocker is pending.
 
-Useful local artifacts: build/port-object-xfer holds development and qualification
-logs. common_native.draft is an uninstalled, uncompiled preparatory Go draft;
-review it against the final C corpus before use. Other ignored *.draft files
-may be stale; never copy them over newer tracked fixture source. No source edits
-while tests/builds run. No substantive blocker or user question is pending.
-
-Notable decisions are in DECISIONS.md, including the two ownership corrections.
-Original assets remain unchanged. Completed save/load run copies were deduplicated
+Original assets remain unchanged. Completed C scenario copies were deduplicated
 with verified restoration manifests; frames/logs/saves remain. Preserve untracked
 nox-iso-from-archive-org.7z. Source build/baseline/env.sh for every Go command.
 

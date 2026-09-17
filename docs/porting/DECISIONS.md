@@ -1262,3 +1262,20 @@ return/stream behavior are preserved. Existing general buffer cleanup policy is
 outside this correction; the failed-callback regression isolates the pool slot
 using a type with no side buffers. Reversal is small, but retaining a leak and
 a freed-object traversal is not recommended.
+
+## C object-factory adapter — stale type prerequisite
+
+Route nox_xxx_newObjectWithTypeInd_4E3450 through Server.NewObjectByTypeInd, which
+already returns nil for a missing type. Its previous Go adapter called the pool
+factory directly with Types.ByInd's nil result. The new stale-TOC regression
+reaches that path from the real inventory loader and panics in ObjectType.Ind2.
+The intended loader failure path already checks for a nil allocation.
+
+This extends the guarded-factory choice previously used by the native map-object
+admission port to remaining C callers. Valid allocations retain the same factory
+and object initialization. It is a reversible adapter correction, with no C LOC
+change. Before-change evidence is c-final-default/tests.jsonl and the matching
+target checks under build/port-object-xfer; corrected c-final-default2, c-final-repeat,
+c-final-server2 and c-final-highres2 each pass all 21 roots and twelve hashes.
+Current-source gameplay, actual save/load and flat/map regeneration also pass.
+Frozen expectations for previously covered valid records are unchanged.

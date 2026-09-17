@@ -88,6 +88,8 @@ func objectXferCommonStream(outer, inner int16, present bool, team byte) *mapDra
 }
 
 func TestObjectXferCommonReadContracts(t *testing.T) {
+	var captures []objectXferCaptureRow
+	defer func() { spellbookCapture(t, "object-xfer-common-read", captures, "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7") }()
 	core := newObjectXferOwner(t)
 	path := filepath.Join(t.TempDir(), "record.bin")
 	for _, outer := range []int16{-1, 0, 9, 10, 19, 20, 29, 30, 39, 40, 60, 64, 32767} {
@@ -103,6 +105,7 @@ func TestObjectXferCommonReadContracts(t *testing.T) {
 				for _, team := range []byte{0, 7, 255} {
 					t.Run(fmt.Sprintf("outer%d-inner%d-present%v-team%d", outer, inner, present, team), func(t *testing.T) {
 						u := newObjectXferSimple(t, core)
+						defer objectXferCaptureCase(t, &captures, u)
 						u.ObjFlags = object.Flags(0x20000040)
 						u.Field5 = 0x80
 						u.Field34 = 999

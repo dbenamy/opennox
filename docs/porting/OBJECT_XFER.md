@@ -110,3 +110,50 @@ The tracked object-xfer-batch.json manifest records repeatable qualification
 commands; c-ownership-qualified repeats all three successfully in 17.173s and records
 unchanged source fingerprints. ownership-index-proof.json checks that tested
 source matches the staged source archive.
+
+## Full C corpus
+
+The expanded corpus selects **1,174 complete state records / twelve groups** in
+object-xfer-captures.json, alongside independent stream, field and ownership
+contracts. Every byte of the 772-byte legacy object ABI and its type-owned data
+is captured; declared pointer slots record presence, while relationship identity
+and order have separate contracts. Go server handles and allocation addresses do
+not become golden data. The groups include 270 door geometry cases with signed
+positions, historical formats, trigger dimensions, glyph names, linked mover and
+transporter records, and pickup script names.
+
+A final added stale-TOC case exposed the existing C factory adapter bypassing the
+nil-type guard. Original final-default/server/highres attempts fail on that case
+and are not qualification evidence. Routing the adapter through the guarded
+server factory makes the focused corpus pass. All existing capture expectations
+are unchanged. Corrected final target runs have suffix 2. Default, independent repeat, server
+and highres each pass 21 roots / 1,297 leaf cases without skips and match all
+twelve frozen capture hashes. Batch-driver seconds: 26.715 / 6.395 / 104.386 /
+34.848. Static memory-access checking also passes (static-c-final.log).
+
+c-gameplay succeeds with unchanged source fingerprints in 322.763s: a fresh
+production client matches 41 gameplay frames, two actual save/load runs match
+seven frames each and satisfy the explicit save/reload artifact checks, and flat
+rendering matches 14 frames with exact map regeneration. These runs include the
+ownership and guarded-factory corrections. The broader C accumulated regression
+milestone succeeds: 1,198 selected top-level checks execute and finish (1,181 in
+the root package), with only the existing opt-in TestMapPopulationPrerequisiteProbe
+skip. Driver time is 801.459s; every batch records unchanged source fingerprints.
+The staged-source proof checks all six qualification phases against 1,890 source
+files (source archive tree ead6528fef353fe2164831c54926341f8cfbc648).
+
+The production C client SHA-256 is
+703e627243a0424786d3a9c05f3008965a930f4f32039f74c6df3b3825d8f577.
+Actual save/load player files differ between repeated runs (1,376 / 1,384 bytes),
+while the saved map matches; each run independently proves that its saved files
+were loaded. This reinforces the decision to compare controlled serialization
+bytes and within-run saved artifacts, rather than assume whole saves are identical
+across runs. Frozen expectations are now recoverable in Git; C remains 60,779
+lines / 82 production files / zero reference C until the native conversion.
+
+Translation review caught an important stream detail before installation: old
+integer coordinates are read as one eight-byte operation, while float coordinates
+use two four-byte operations. The existing stream checksum depends on operation
+boundaries, so preserve the original grouping even when decoded values and stream
+positions would be identical. The preparatory Go draft was corrected accordingly;
+no C expectation changed.

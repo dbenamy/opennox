@@ -109,3 +109,39 @@ func TestObjectXferInventoryLoading(t *testing.T) {
 		}
 	}
 }
+
+func TestObjectXferInventoryFactoryRejection(t *testing.T) {
+	core := newObjectXferOwner(t)
+	path := filepath.Join(t.TempDir(), "factory.bin")
+	for _, count := range []int32{-2147483648, -1, 0, 1} {
+		for _, code := range []uint16{900, 999} {
+			t.Run(fmt.Sprintf("count%d-code%d", count, code), func(t *testing.T) {
+				u := newObjectXferSimple(t, core)
+				before := core.Objs.Alive
+				var stream mapDrawableStream
+				stream.u16(code)
+				stream.u32(0x12345678)
+				if err := os.WriteFile(path, stream.Bytes(), 0600); err != nil {
+					t.Fatal(err)
+				}
+				if err := cryptfile.OpenGlobal(path, cryptfile.ReadOnly, -1); err != nil {
+					t.Fatal(err)
+				}
+				defer cryptfile.Close()
+				got := legacy.Nox_xxx_xfer_4F3E30(60, u, uint32(count))
+				want, posWant := 1, int64(0)
+				if count > 0 {
+					want = 0
+					posWant = 2
+					if code == 900 {
+						posWant = 6
+					}
+				}
+				pos, err := cryptfile.Global().File.Seek(0, io.SeekCurrent)
+				if got != want || pos != posWant || err != nil || core.Objs.Alive != before || u.InvFirstItem != nil {
+					t.Fatalf("factory result=%d/%d pos=%d/%d alive=%d/%d err=%v", got, want, pos, posWant, core.Objs.Alive, before, err)
+				}
+			})
+		}
+	}
+}
