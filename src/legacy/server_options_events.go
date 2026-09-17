@@ -86,9 +86,9 @@ func serverOptionsEvent(_ *gui.Window, event int, arg uintptr, value int) int {
 		case 10141:
 			serverOptionsResetMap()
 		case 10145:
-			data := serverOptionsRecord(unsafe.Pointer(C.nox_xxx_cliGamedataGet_416590(1)))
+			data := serverOptionsRecord(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlot(int32(1))))))
 			serverOptionsRead(data)
-			C.sub_4165F0(1, 0)
+			serverConfigSlotCopy(int32(1), int32(0))
 			count := GetServer().S().Teams.Count()
 			mode := binary.LittleEndian.Uint16(data[52:])
 			tooMany := false
@@ -120,7 +120,7 @@ func serverOptionsEvent(_ *gui.Window, event int, arg uintptr, value int) int {
 		case 10149:
 			serverOptionsClose(0)
 		case 10152:
-			serverPanelsAdvancedOpen(unsafe.Pointer(C.nox_xxx_cliGamedataGet_416590(1)))
+			serverPanelsAdvancedOpen(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlot(int32(1))))))
 		case 10159:
 			parent := child.Parent()
 			child.SetParent(nil)

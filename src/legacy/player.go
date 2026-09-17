@@ -209,7 +209,7 @@ func Nox_xxx_netNeedTimestampStatus_4174F0(pl *server.Player, v int) {
 }
 
 func Sub_40A1F0(v int) {
-	C.sub_40A1F0(C.int(v))
+	serverConfigTimerSet(int32(v))
 }
 
 func Nox_game_sendQuestStage_4D6960(v ntype.PlayerInd) {

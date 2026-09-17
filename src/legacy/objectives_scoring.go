@@ -116,7 +116,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 			if flag.ObjClass&0x10000000 == 0 {
 				continue
 			}
-			limit := uint16(C.nox_xxx_servGamedataGet_40A020(32))
+			limit := uint16(serverConfigScore(int16(32)))
 			data := flag.UpdateData
 			flagColor := objectiveFlagID(flag)
 			flagTeam := flag.TeamVal.ID
@@ -276,7 +276,7 @@ func objectiveFlagBallScore(flag, target *server.Object) int16 {
 	if owner.TeamVal.ID != team.ID() {
 		return out
 	}
-	limit := uint16(C.nox_xxx_servGamedataGet_40A020(64))
+	limit := uint16(serverConfigScore(int16(64)))
 	objectiveScore(owner)
 	teamRuntimeLessons(team, team.Lessons+1)
 	objectiveQuestScore(owner)

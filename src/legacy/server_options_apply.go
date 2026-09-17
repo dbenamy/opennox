@@ -48,8 +48,8 @@ func serverOptionsApply() int8 {
 		return result
 	}
 	different := !mapASCIIEqual(selected, GoString(C.nox_xxx_mapGetMapName_409B40()))
-	C.sub_4165F0(1, 0)
-	current := serverOptionsRecord(unsafe.Pointer(C.sub_4165D0(0)))
+	serverConfigSlotCopy(int32(1), int32(0))
+	current := serverOptionsRecord(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlotSelect(int32(0))))))
 	Nox_xxx_gameSetServername_40A440(alloc.GoString(&current[9]))
 	mode := binary.LittleEndian.Uint16(current[52:])
 	if mode&0x1000 == 0 {
@@ -69,15 +69,15 @@ func serverOptionsApply() int8 {
 	if different {
 		suffix := alloc.GoString(memmap.PtrUint8(0x587000, 131668))
 		C.nox_xxx_mapLoad_4D2450(internCStr(selected + suffix))
-		C.sub_416690()
-		C.sub_4165D0(1)
+
+		serverConfigSlotSelect(int32(1))
 	} else {
 		GetServer().S().Spells.EnableAll()
 		sub_4537F0()
 		head := (*C.nox_list_item_t)(serverOptionsListHead())
-		ruleWrite("user.rul", (*server.Settings2)(unsafe.Pointer(C.nox_xxx_cliGamedataGet_416590(1))), head)
+		ruleWrite("user.rul", (*server.Settings2)(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlot(int32(1)))))), head)
 		sub_57A950(C.nox_server_currentMapGetFilename_409B30())
-		ruleLoad((*server.Settings2)(unsafe.Pointer(C.nox_xxx_cliGamedataGet_416590(0))), "user.rul", head, 3, uint16(noxflags.GetGame()))
+		ruleLoad((*server.Settings2)(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlot(int32(0)))))), "user.rul", head, 3, uint16(noxflags.GetGame()))
 	}
 	return int8(serverOptionsClose(0))
 }

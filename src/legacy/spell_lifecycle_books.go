@@ -205,7 +205,7 @@ func spellLifeCastBooks() {
 			C.nox_netlist_addToMsgListCli_40EBC0(C.int(*controlByte(*controlPtr(ud, 276), 2064)), 1, (*C.uchar)(unsafe.Pointer(&msg[0])), 2)
 		}
 		if p.Tree.Ind != id {
-			settings := unsafe.Pointer(C.sub_416640())
+			settings := unsafe.Pointer((unsafe.Pointer)(unsafe.Pointer(serverConfigSettings())))
 			ph := s.Spells.Phoneme(spell.ID(id), int(p.Phoneme))
 			if C.dword_5d4594_2650652 == 0 || *spellLifeWord(settings, 62) != 0 {
 				spellLifeBroadcastPhoneme(u, int8(ph))

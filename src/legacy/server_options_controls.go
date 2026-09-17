@@ -122,7 +122,7 @@ func serverOptionsMapToken(text string) string {
 	return v
 }
 func serverOptionsRefresh() int {
-	data := serverOptionsRecord(unsafe.Pointer(C.nox_xxx_cliGamedataGet_416590(1)))
+	data := serverOptionsRecord(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlot(int32(1))))))
 	serverPanelsSpellStore((*uint32)(unsafe.Pointer(&data[24])))
 	serverPanelsWeaponStore((*uint32)(unsafe.Pointer(&data[44])))
 	serverPanelsArmorStore(binary.LittleEndian.Uint32(data[48:]))

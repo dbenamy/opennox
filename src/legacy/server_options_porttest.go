@@ -6,15 +6,7 @@ package legacy
 #include "GAME2.h"
 #include "GAME1.h"
 #include "client__gui__servopts__guiserv.h"
-extern uint32_t dword_5d4594_1523024;
-extern uint32_t dword_5d4594_1523028;
-extern uint32_t dword_5d4594_1523032;
-extern uint32_t dword_5d4594_1523036;
-extern uint32_t dword_5d4594_1523040;
-extern uint32_t dword_5d4594_1523044;
-extern uint32_t dword_5d4594_1523048;
 extern int nox_server_gameSettingsUpdated;
-extern uint32_t dword_5d4594_371692;
 */
 import "C"
 
@@ -37,13 +29,13 @@ func PortTestServerOptionsModeLoaded() bool             { return serverOptionsMo
 
 func PortTestServerOptionsWords() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
-		"panel-1523024": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1523024)),
-		"panel-1523028": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1523028)),
-		"panel-1523032": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1523032)),
-		"panel-1523036": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1523036)),
-		"panel-1523040": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1523040)),
-		"panel-1523044": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1523044)),
-		"panel-1523048": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1523048)),
+		"panel-1523024": &serverConfigRuleWords[0],
+		"panel-1523028": &serverConfigRuleWords[1],
+		"panel-1523032": &serverConfigRuleWords[2],
+		"panel-1523036": &serverConfigRuleWords[3],
+		"panel-1523040": &serverConfigRuleWords[4],
+		"panel-1523044": &serverConfigRuleWords[5],
+		"panel-1523048": &serverConfigRuleWords[6],
 
 		"panel-1045480": serverPanelsWord(1045480),
 		"panel-1045484": serverPanelsWord(1045484),
@@ -70,7 +62,7 @@ func PortTestServerOptionsWords() (map[string]*uint32, func()) {
 		"panel-1316972": serverPanelsWord(1316972),
 
 		"settings-updated":      (*uint32)(unsafe.Pointer(&C.nox_server_gameSettingsUpdated)),
-		"settings-record-dirty": (*uint32)(unsafe.Pointer(&C.dword_5d4594_371692)),
+		"settings-record-dirty": (*uint32)(unsafe.Pointer(&serverConfigRecordDirty)),
 		"root":                  serverOptionsWord(1046492),
 		"maps":                  serverOptionsWord(1046496),
 		"map-controls":          serverOptionsWord(1046500),

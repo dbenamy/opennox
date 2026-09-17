@@ -19,7 +19,7 @@ func matchRosterAssignTeam(pl *server.Player) {
 		return
 	}
 	s := GetServer().S()
-	if C.sub_40A740() == 0 && !noxflags.HasGame(0x8000) {
+	if C.int(serverConfigSpecialMode()) == 0 && !noxflags.HasGame(0x8000) {
 		if byte(s.Teams.Count()) != 0 {
 			tm := teamRuntimeLeast()
 			if tm != nil && !u.TeamVal.Has() {

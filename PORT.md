@@ -15,16 +15,15 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Server options and their object, spell, admission, general and
-advanced panels are now in Go. The panel conversion passes focused, broader
-three-target and fresh production qualification with unchanged C expectations.
+scheduled pause. Server configuration, its rule picker and admission persistence
+are now in Go, following the server-options panels. The conversion passes focused,
+broader three-target and fresh production qualification with unchanged corrected-C
+expectations and gameplay references.
 
-Production C is **46,393 physical lines in 74 files**, with zero reference C.
-The panel conversion removes **2,364 lines** from its corrected C baseline.
-The next server-configuration C baseline is qualified with five local prerequisite
-corrections (+2 net lines); see [SERVER_CONFIG.md](docs/porting/SERVER_CONFIG.md).
+Production C is **45,473 physical lines in 74 files**, with zero reference C.
+The configuration conversion removes **920 lines** from its corrected C baseline.
 The full asset suite retains its exact three known failing packages. See
-[SERVER_PANELS.md](docs/porting/SERVER_PANELS.md) for qualification and review
+[SERVER_CONFIG.md](docs/porting/SERVER_CONFIG.md) for qualification and review
 items; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target

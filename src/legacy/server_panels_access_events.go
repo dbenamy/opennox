@@ -60,7 +60,7 @@ func serverPanelsAccessEdit(child *gui.Window) {
 		Nox_xxx_servSetPlrLimit_409F80(n)
 		admission[4] = byte(n)
 	case 10136:
-		C.nox_xxx_sysopSetPass_40A610((*C.wchar2_t)(unsafe.Pointer(p)))
+		serverConfigPasswordSet((*uint16)(unsafe.Pointer(unsafe.Pointer(p))))
 	}
 }
 func serverPanelsAccessShowList(allowed bool) {
@@ -111,9 +111,9 @@ func serverPanelsAccessEvent(_ *gui.Window, event int, arg uintptr, value int) i
 		case 10112:
 			p := unsafe.Pointer(uintptr(teamUIEvent(serverPanelsWindow(1045540), 16413, 0, 0)))
 			if serverPanelsWindow(1045528).Flags.IsHidden() {
-				C.sub_4168A0((*C.wchar2_t)(p))
+				serverConfigAllowedAdd((*uint16)(unsafe.Pointer(p)))
 			} else {
-				C.sub_416770(0, (*C.wchar2_t)(p), nil)
+				serverConfigBlockedAdd(int32(0), (*uint16)(unsafe.Pointer(p)), (*byte)(unsafe.Pointer(nil)))
 			}
 			teamUIEvent(serverPanelsWindow(1045540), 16414, uintptr(memmap.PtrOff(0x5D4594, 1045600)), 0)
 		case 10113:
@@ -121,12 +121,12 @@ func serverPanelsAccessEvent(_ *gui.Window, event int, arg uintptr, value int) i
 				list := serverPanelsWindow(1045532)
 				index := teamUIEvent(list, 16404, 0, 0)
 				teamUIEvent(list, 16398, uintptr(index), 0)
-				C.sub_416860(C.int(index))
+				serverConfigAllowedRemove(int32(index))
 			} else {
 				list := serverPanelsWindow(1045528)
 				index := teamUIEvent(list, 16404, 0, 0)
 				teamUIEvent(list, 16398, uintptr(index), 0)
-				C.sub_416820(C.int(index))
+				serverConfigBlockedRemove(int32(index))
 			}
 		case 10124:
 			admission[2] ^= 0x80
@@ -181,7 +181,7 @@ func serverPanelsAccessEvent(_ *gui.Window, event int, arg uintptr, value int) i
 					Nox_xxx_playerDisconnByPlrID_4DEB00(ntype.PlayerInd(player.PlayerInd))
 				}
 				if id == 10192 {
-					C.sub_416770(0, (*C.wchar2_t)(name), (*C.char)(unsafe.Add(unsafe.Pointer(player), 2112)))
+					serverConfigBlockedAdd(int32(0), (*uint16)(unsafe.Pointer(name)), (*byte)(unsafe.Pointer(unsafe.Add(unsafe.Pointer(player), 2112))))
 				}
 			}
 		case 10206, 10207:

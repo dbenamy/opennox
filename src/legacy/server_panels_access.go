@@ -164,7 +164,7 @@ func serverPanelsAccessRefresh() uintptr {
 	if w == nil {
 		return 0
 	}
-	serverOptionsSetText(serverPanelsWindow(1045592), 16414, strconv.Itoa(int(C.nox_xxx_servGetPlrLimit_409FA0())), 0)
+	serverOptionsSetText(serverPanelsWindow(1045592), 16414, strconv.Itoa(int(C.int(serverConfigLimitGet()))), 0)
 	if noxflags.HasGame(1) {
 		allowed, blocked := serverPanelsWindow(1045532), serverPanelsWindow(1045528)
 		teamUIEvent(blocked, 16399, 0, 0)

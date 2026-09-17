@@ -233,7 +233,7 @@ func controlMakeCorpse(u *server.Object, settings unsafe.Pointer) {
 	}
 }
 func controlRespawn(u *server.Object) int16 {
-	settings := unsafe.Pointer(C.sub_416640())
+	settings := unsafe.Pointer((unsafe.Pointer)(unsafe.Pointer(serverConfigSettings())))
 	result := int16(uintptr(settings))
 	if u == nil {
 		return result
@@ -277,7 +277,7 @@ func controlRespawn(u *server.Object) int16 {
 }
 func controlRespawnBot(u *server.Object) int32 {
 	b := *controlPtr(u.UpdateData, 292)
-	settings := unsafe.Pointer(C.sub_416640())
+	settings := unsafe.Pointer((unsafe.Pointer)(unsafe.Pointer(serverConfigSettings())))
 	if *controlHalf(*controlPtr(u.CObj(), 556), 0) == 0 {
 		if GetServer().S().Frame()-*equipmentWord(b, 548) < 2*GetServer().S().TickRate() {
 			return 1

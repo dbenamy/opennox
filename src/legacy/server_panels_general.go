@@ -58,10 +58,10 @@ func serverPanelsGeneralRefresh() int {
 	if mapCycleEnabled() != 0 {
 		w.ChildByID(10304).DrawData().Field0 |= 4
 	}
-	if C.sub_409F40(2) != 0 {
+	if C.int(serverConfigFlagsQuery(int32(2))) != 0 {
 		w.ChildByID(10305).DrawData().Field0 |= 4
 	}
-	if C.sub_409F40(0x2000) != 0 {
+	if C.int(serverConfigFlagsQuery(int32(0x2000))) != 0 {
 		w.ChildByID(10306).DrawData().Field0 |= 4
 	}
 	return int(serverOptionsPtr(w))
@@ -84,10 +84,10 @@ func serverPanelsGeneralEvent(_ *gui.Window, event int, arg uintptr, value int) 
 		case 10304:
 			mapCycleSetEnabled(uint32(bool2int(mapCycleEnabled() == 0)))
 		case 10305:
-			C.sub_409EF0(2)
+			serverConfigFlagsToggle(int32(2))
 		case 10306:
-			C.sub_409EF0(0x2000)
-			if C.sub_409F40(0x2000) == 0 {
+			serverConfigFlagsToggle(int32(0x2000))
+			if C.int(serverConfigFlagsQuery(int32(0x2000))) == 0 {
 				gameplayReportResetAll()
 			}
 		case 10316:
@@ -111,8 +111,8 @@ func serverPanelsGeneralEvent(_ *gui.Window, event int, arg uintptr, value int) 
 		text := teamUIEvent(child, 16406, uintptr(value), 0)
 		teamUIEvent(w.ChildByID(10316), 16385, uintptr(text), ^uintptr(0))
 		Set_nox_server_connectionType_3596(selection + 1)
-		Nox_xxx_rateUpdate_40A6D0(int(C.sub_40A710(C.int(selection + 1))))
-		teamUIEvent(w.ChildByID(10312), 16394, uintptr(4-int(C.nox_xxx_rateGet_40A6C0())), 0)
+		Nox_xxx_rateUpdate_40A6D0(int(C.int(serverConfigConnectionRate(int32(selection + 1)))))
+		teamUIEvent(w.ChildByID(10312), 16394, uintptr(4-int(C.int(serverConfigRateGet()))), 0)
 		child.SetHidden(true)
 		child.Capture(false)
 	}

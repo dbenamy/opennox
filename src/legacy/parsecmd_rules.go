@@ -9,7 +9,7 @@ func Sub_4AD840() {
 	serverPanelsGeneralRefresh()
 }
 func Sub_409E70(a1 int) {
-	C.sub_409E70(C.int(a1))
+	serverConfigFlagsAdd(int32(a1))
 }
 func Sub_415960(a1 string) uint32 {
 	return uint32(C.sub_415960(internWStr(a1)))

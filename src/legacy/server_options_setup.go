@@ -24,7 +24,7 @@ func serverOptionsEnableRange(w *gui.Window, first, last uint, enabled bool) {
 	}
 }
 func serverOptionsSetup(data []byte) int {
-	serverOptionsSetText(serverOptionsWindow(1046512), 16414, GoString(C.nox_xxx_serverOptionsGetServername_40A4C0()), 0)
+	serverOptionsSetText(serverOptionsWindow(1046512), 16414, GoString((*C.char)(unsafe.Pointer(serverConfigNameGet()))), 0)
 	serverOptionsTeamCount()
 	id := uint(10119)
 	if noxflags.HasGame(128) {
@@ -35,7 +35,7 @@ func serverOptionsSetup(data []byte) int {
 	if noxflags.HasGame(1) {
 		uiWindowEnable(teams, 1)
 		if noxflags.HasGame(128) {
-			initial := serverOptionsRecord(unsafe.Pointer(C.nox_xxx_cliGamedataGet_416590(1)))
+			initial := serverOptionsRecord(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlot(int32(1))))))
 			mode := binary.LittleEndian.Uint16(initial[52:]) & 0x17f0
 			serverOptionsMapList(int(mode), alloc.GoString(&initial[0]), true)
 			data = serverOptionsCurrent()

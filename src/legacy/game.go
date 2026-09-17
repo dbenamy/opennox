@@ -365,13 +365,13 @@ func Sub_44E560() unsafe.Pointer {
 	return unsafe.Pointer(briefingCreateWindow())
 }
 func Nox_xxx_serverOptionsGetServername_40A4C0() string {
-	return GoString(C.nox_xxx_serverOptionsGetServername_40A4C0())
+	return GoString((*C.char)(unsafe.Pointer(serverConfigNameGet())))
 }
 func Nox_xxx_mapGetMapName_409B40() string {
 	return GoString(C.nox_xxx_mapGetMapName_409B40())
 }
 func Nox_xxx_servGetPlrLimit_409FA0() int {
-	return int(C.nox_xxx_servGetPlrLimit_409FA0())
+	return int(C.int(serverConfigLimitGet()))
 }
 func Nox_client_xxx_switchChatMap_43B510() {
 	C.nox_client_xxx_switchChatMap_43B510()
@@ -428,10 +428,10 @@ func Nox_xxx_netGameSettings_4DEF00() {
 	matchRosterSettings()
 }
 func Nox_server_gameUnsetMapLoad_40A690() {
-	C.nox_server_gameUnsetMapLoad_40A690()
+	serverConfigUpdatedClear()
 }
 func Sub_416650() int {
-	return int(C.sub_416650())
+	return int(C.int(serverConfigRecordState()))
 }
 func Sub_46DCC0() {
 	scoreboardCollect()
@@ -447,9 +447,6 @@ func Sub_4573B0() {
 }
 func Sub_4264D0() {
 	C.sub_4264D0()
-}
-func Sub_416690() {
-	C.sub_416690()
 }
 func Sub_426060() {
 	C.sub_426060()
@@ -539,7 +536,7 @@ func Nox_xxx_gamePlayIsAnyPlayers_40A8A0() int {
 	return int(C.nox_xxx_gamePlayIsAnyPlayers_40A8A0())
 }
 func Sub_40A250() {
-	C.sub_40A250()
+	serverConfigTimerInit()
 }
 func Sub_4D2160() {
 	C.sub_4D2160()
@@ -608,10 +605,10 @@ func Nox_xxx_guiServerOptionsGetGametypeName_4573C0(a1 noxflags.GameFlag) string
 	return serverOptionsModeName(uint16(a1))
 }
 func Sub_40A180(a1 noxflags.GameFlag) int {
-	return int(C.sub_40A180(C.short(a1)))
+	return int(C.uchar(serverConfigMinutes(int16(a1))))
 }
 func Nox_xxx_servGamedataGet_40A020(a1 uint16) int {
-	return int(C.nox_xxx_servGamedataGet_40A020(C.short(a1)))
+	return int(C.short(serverConfigScore(int16(a1))))
 }
 func Sub_41D1A0(a1 int) {
 	C.sub_41D1A0(C.int(a1))

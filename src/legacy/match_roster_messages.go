@@ -93,12 +93,12 @@ func matchRosterSettings() int {
 	binary.LittleEndian.PutUint32(a[9:], uint32(noxflags.GetGame())&0x7fff0)
 	binary.LittleEndian.PutUint32(a[13:], uint32(C.dword_5d4594_3484))
 	a[17] = byte(memmap.Uint32(0x5D4594, 3464))
-	a[18] = byte(C.nox_xxx_servGamedataGet_40A020(C.short(mode)))
-	a[19] = byte(C.sub_40A180(C.short(mode)))
+	a[18] = byte(C.short(serverConfigScore(int16(mode))))
+	a[19] = byte(C.uchar(serverConfigMinutes(int16(mode))))
 	b[0] = 176
 	alloc.StrCopy(b[1:17], alloc.GoString(memmap.PtrUint8(0x5D4594, 1324)))
 	copy(b[17:45], unsafe.Slice((*byte)(unsafe.Add(settings, 24)), 28))
-	if C.sub_40A220() != 0 && (C.sub_40A300() != 0 || a[19] != 0) {
+	if C.int(serverConfigTimerGet()) != 0 && (C.sub_40A300() != 0 || a[19] != 0) {
 		binary.LittleEndian.PutUint32(b[45:], memmap.Uint32(0x5D4594, 3468)-uint32(PlatformTicks()))
 	}
 	gameplayReportSend(159, a[:], true, 0)

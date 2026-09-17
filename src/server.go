@@ -827,7 +827,6 @@ func (s *Server) nox_server_loadMapFile_4CF5F0(mname string, noCrypt bool) error
 	if !noxflags.HasGame(noxflags.GameFlag22) {
 		s.nox_xxx_mapReadSetFlags_4CF990()
 		if false {
-			legacy.Sub_416690()
 		}
 		noxflags.UnsetGame(noxflags.GameSuddenDeath)
 		legacy.Sub_470680()

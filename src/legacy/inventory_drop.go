@@ -165,7 +165,7 @@ func inventoryEquipmentDrop(u, it *server.Object, pos *types.Pointf, armor bool)
 	} else {
 		equipmentDropSound(it)
 	}
-	if !noxflags.HasGame(2048|4096) && C.sub_409F40(2) != 0 {
+	if !noxflags.HasGame(2048|4096) && C.int(serverConfigFlagsQuery(int32(2))) != 0 {
 		Nox_xxx_unitSetDecayTime_511660(it, int(25*GetServer().S().TickRate()))
 	}
 	return 1

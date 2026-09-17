@@ -642,7 +642,6 @@ func mainloopMaybeSwitchMapXXX() {
 	}
 	if noxServer.Frame() >= memmap.Uint32(0x5D4594, 816400) {
 		legacy.Sub_4161E0()
-		legacy.Sub_416690()
 		*memmap.PtrUint32(0x5D4594, 816400) = noxServer.Frame() + noxServer.SecToFrames(60)
 	}
 }

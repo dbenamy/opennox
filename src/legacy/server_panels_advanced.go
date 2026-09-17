@@ -58,7 +58,7 @@ func serverPanelsAdvancedTab() int {
 	parent := serverPanelsWindow(1316708)
 	switch *serverPanelsWord(1316704) {
 	case 0:
-		*serverPanelsWord(1316712) = uint32(C.sub_4CEBA0(C.int(serverOptionsPtr(parent)), (*C.char)(unsafe.Pointer(&serverOptionsCurrent()[0]))))
+		*serverPanelsWord(1316712) = uint32(serverConfigRuleOpen((*gui.Window)(unsafe.Pointer(uintptr(uint32(serverOptionsPtr(parent))))), (*byte)(unsafe.Pointer(unsafe.Pointer(&serverOptionsCurrent()[0])))))
 	case 1:
 		*serverPanelsWord(1316712) = uint32(serverPanelsSpellOpen(parent))
 	case 2:
@@ -227,7 +227,7 @@ func serverPanelsAdvancedServerEvent(_ *gui.Window, event int, arg uintptr, valu
 	case 2106, 2107, 2108, 2109:
 		uiWindowEnable(w.ChildByID(2110), bool2int(id == 2109))
 		binary.LittleEndian.PutUint32(data[66:], uint32(id-2106))
-		C.sub_40A6A0(1)
+		serverConfigRateDirtySet(int32(1))
 	case 2130:
 		serverPanelsAdvancedServerClose()
 	}

@@ -126,7 +126,7 @@ func Sub_431290() {
 }
 
 func Nox_xxx_servSetPlrLimit_409F80(v int) {
-	C.nox_xxx_servSetPlrLimit_409F80(C.int(v))
+	serverConfigLimitSet(int32(v))
 }
 
 func Nox_xxx_guiChatShowHide_445730(v bool) {

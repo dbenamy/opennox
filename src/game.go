@@ -958,7 +958,6 @@ func (s *Server) nox_xxx_gameTick_4D2580_server_C() bool {
 	crc := nox_xxx_mapCrcGetMB_409B00()
 	s.nox_xxx_netUseMap_4DEE00(mname+".map", crc)
 	if false {
-		legacy.Sub_416690()
 		if noxflags.HasGame(noxflags.GameModeChat) {
 			if noxflags.HasGame(noxflags.GameFlag16) {
 				s.TeamsRemoveActive(true)

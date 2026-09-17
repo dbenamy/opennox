@@ -52,7 +52,7 @@ func teamRuntimeBalance(reset bool) {
 		}
 	}
 	for _, u := range units {
-		if C.sub_40A740() != 0 {
+		if C.int(serverConfigSpecialMode()) != 0 {
 			group := u.UpdateDataPlayer().Player.Field2068
 			if group != 0 {
 				if t := s.Teams.ByXxx(int(group)); t != nil {

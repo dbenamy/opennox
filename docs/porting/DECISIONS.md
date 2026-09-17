@@ -1573,3 +1573,13 @@ bytes, headless empty counts and video flags: identical record bytes do not impl
 an unchanged return value. These are explicit later-review items, not silent
 conversion fixes. The old disabled report function and its private setter are
 proven dead and are scheduled for removal with their no-op calls during translation.
+
+
+Server-configuration native review preserves the opaque rule-picker background,
+including the renderer's existing color; its pixel capture rejected an initially
+reused blended-background helper. All frozen expectations remain unchanged.
+The port removes two proven disabled helpers and their no-op callers, eight private
+C globals and 41 function interfaces. Thirty-two thin exports retain actual C
+callers; list allocations/layout and shared configuration storage remain compatible.
+The Cgo admission header drops a const qualifier without changing the ABI. See
+SERVER_CONFIG.md for qualification and deferred compatibility cleanup items.

@@ -176,7 +176,7 @@ func Nox_server_makeServerInfoPacket_554040(src, dst []byte) int {
 }
 
 func Sub_40A740() int {
-	return int(C.sub_40A740())
+	return int(C.int(serverConfigSpecialMode()))
 }
 
 func Sub_417DE0() int {
@@ -205,10 +205,10 @@ func Sub_48D660() {
 	C.sub_48D660()
 }
 func Sub_40A220() int {
-	return int(C.sub_40A220())
+	return int(C.int(serverConfigTimerGet()))
 }
 func Sub_40A230() uint32 {
-	return uint32(C.sub_40A230())
+	return uint32(serverConfigTimerLeft())
 }
 
 func convSendToServerErr(n int, err error) int {
@@ -226,7 +226,7 @@ func Sub_57B920(a1 unsafe.Pointer) {
 	resetNetworkAliases((*[255]server.PlayerNetData)(a1))
 }
 func Nox_xxx_cliSetSettingsAcquired_4169D0(a1 int) {
-	C.nox_xxx_cliSetSettingsAcquired_4169D0(C.int(a1))
+	serverConfigAcquiredSet(int32(a1))
 }
 func Sub_457140(a1 int, a2 *uint16) {
 	teamUIPlayerAdd(a1, alloc.GoString16(a2))

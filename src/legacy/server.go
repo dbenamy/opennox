@@ -245,7 +245,7 @@ func Sub_5096F0() {
 	matchRosterCheckLimit()
 }
 func Sub_416720() {
-	C.sub_416720()
+	serverConfigExpire()
 }
 func Sub_40AA00() int {
 	return int(C.sub_40AA00())
@@ -260,10 +260,10 @@ func Sub_40A770() int {
 	return int(C.sub_40A770())
 }
 func Sub_40A6B0() int {
-	return int(C.sub_40A6B0())
+	return int(C.int(serverConfigRateDirtyGet()))
 }
 func Sub_40A6A0(a1 int) {
-	C.sub_40A6A0(C.int(a1))
+	serverConfigRateDirtySet(int32(a1))
 }
 func Nox_xxx_netReportAllLatency_4D3050() {
 	C.nox_xxx_netReportAllLatency_4D3050()
@@ -356,7 +356,7 @@ func Nox_xxx_monsterList_517520() int {
 	return int(C.nox_xxx_monsterList_517520())
 }
 func Sub_416920() {
-	C.sub_416920()
+	serverConfigAdmissionInit()
 }
 func Nox_xxx_allocPendingOwnsArray_516EE0() int {
 	return int(C.nox_xxx_allocPendingOwnsArray_516EE0())
@@ -383,7 +383,7 @@ func Nox_xxx_deleteShopInventories_50E300() {
 	shopFree()
 }
 func Sub_416950() {
-	C.sub_416950()
+	serverConfigAdmissionClose()
 }
 func Sub_56F3B0() {
 	freeProtectionRecords()
@@ -401,7 +401,7 @@ func Sub_4D0550(a1 string) {
 	commandRulesPath(&a1)
 }
 func Sub_4165F0(a1 int, a2 int) {
-	C.sub_4165F0(C.int(a1), C.int(a2))
+	serverConfigSlotCopy(int32(a1), int32(a2))
 }
 func Sub_4D7430() int {
 	return int(questRuntimeWord(1556116))
@@ -413,7 +413,7 @@ func Sub_4D76E0(a1 int) {
 	questRuntimeSetWord(1556124, uint32(a1))
 }
 func Nox_xxx_ruleSetNoRespawn_40A5E0(a1 int) {
-	C.nox_xxx_ruleSetNoRespawn_40A5E0(C.int(a1))
+	serverConfigRespawnSet(int32(a1))
 }
 func Sub_455C10() {
 	teamUIHUDHide(false)

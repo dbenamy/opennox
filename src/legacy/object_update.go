@@ -164,7 +164,7 @@ func wrapObjectUpdateParseC(ptr unsafe.Pointer) server.ObjectParseFunc {
 }
 
 func Nox_server_doPlayersAutoRespawn_40A5F0() int {
-	return int(C.nox_server_doPlayersAutoRespawn_40A5F0())
+	return int(C.int(serverConfigRespawnGet()))
 }
 func Sub_4E4100() uint32 {
 	return uint32(bool2int(questRuntimeRoom()))

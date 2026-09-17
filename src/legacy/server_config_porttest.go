@@ -2,91 +2,86 @@
 
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_2.h"
-*/
-import "C"
 import "unsafe"
 import "github.com/opennox/opennox/v1/client/gui"
 
-// Invoke the original configuration operations; tests own mapped fields, players,
+// Invoke the native configuration operations; tests own mapped fields, players,
 // report state and packet queues. Do not duplicate any production algorithm here.
 func PortTestServerConfigScalar(op string, a, b int) uint64 {
 	switch op {
 	case "flags-set":
-		return uint64(C.sub_409E40(C.int(a)))
+		return uint64(int32(serverConfigFlagsSet(int32(int32(a)))))
 	case "flags-get":
-		return uint64(C.nox_xxx_getServerSubFlags_409E60())
+		return uint64(int32(serverConfigFlagsGet()))
 	case "flags-add":
-		return uint64(C.sub_409E70(C.int(a)))
+		return uint64(int32(serverConfigFlagsAdd(int32(int32(a)))))
 	case "flags-remove":
-		return uint64(C.sub_409EC0(C.int(a)))
+		return uint64(int32(serverConfigFlagsRemove(int32(int32(a)))))
 	case "flags-toggle":
-		return uint64(C.sub_409EF0(C.int(a)))
+		return uint64(int32(serverConfigFlagsToggle(int32(int32(a)))))
 	case "flags-query":
-		return uint64(C.sub_409F40(C.int(a)))
+		return uint64(int32(serverConfigFlagsQuery(int32(int32(a)))))
 	case "limit-set":
-		return uint64(C.nox_xxx_servSetPlrLimit_409F80(C.int(a)))
+		return uint64(int32(serverConfigLimitSet(int32(int32(a)))))
 	case "limit-get":
-		return uint64(C.nox_xxx_servGetPlrLimit_409FA0())
+		return uint64(int32(serverConfigLimitGet()))
 	case "score":
-		return uint64(C.nox_xxx_servGamedataGet_40A020(C.short(a)))
+		return uint64(int16(serverConfigScore(int16(int16(a)))))
 	case "minutes":
-		return uint64(C.sub_40A180(C.short(a)))
+		return uint64(byte(serverConfigMinutes(int16(int16(a)))))
 	case "timer-set":
-		return uint64(C.sub_40A1F0(C.int(a)))
+		return uint64(int32(serverConfigTimerSet(int32(int32(a)))))
 	case "timer-get":
-		return uint64(C.sub_40A220())
+		return uint64(int32(serverConfigTimerGet()))
 	case "timer-left":
-		return uint64(C.sub_40A230())
+		return uint64(int32(serverConfigTimerLeft()))
 	case "timer-init":
-		return uint64(C.sub_40A250())
+		return uint64(int64(serverConfigTimerInit()))
 	case "timer-reset":
-		return uint64(C.sub_40A310(C.int(a)))
+		return uint64(int64(serverConfigTimerReset(int32(int32(a)))))
 	case "3512-set":
-		C.nox_xxx_set3512_40A340(C.int(a))
+		serverConfig3512Set(int32(int32(a)))
 		return 0
 	case "3512-get":
-		return uint64(C.nox_xxx_get3512_40A350())
+		return uint64(int32(serverConfig3512Get()))
 	case "mode-store":
-		return uint64(C.sub_40A3C0(C.uint(a)))
+		return uint64(uint32(serverConfigModeStore(uint32(uint32(a)))))
 	case "respawn-set":
-		return uint64(C.nox_xxx_ruleSetNoRespawn_40A5E0(C.int(a)))
+		return uint64(int32(serverConfigRespawnSet(int32(int32(a)))))
 	case "respawn-get":
-		return uint64(C.nox_server_doPlayersAutoRespawn_40A5F0())
+		return uint64(int32(serverConfigRespawnGet()))
 	case "updated-set":
-		C.nox_server_gameSettingsUpdated_40A670()
+		serverConfigUpdatedSet()
 		return 0
 	case "updated-get":
-		return uint64(C.nox_server_gameDoSwitchMap_40A680())
+		return uint64(int32(serverConfigUpdatedGet()))
 	case "updated-clear":
-		C.nox_server_gameUnsetMapLoad_40A690()
+		serverConfigUpdatedClear()
 		return 0
 	case "rate-dirty-set":
-		return uint64(C.sub_40A6A0(C.int(a)))
+		return uint64(int32(serverConfigRateDirtySet(int32(int32(a)))))
 	case "rate-dirty-get":
-		return uint64(C.sub_40A6B0())
+		return uint64(int32(serverConfigRateDirtyGet()))
 	case "rate-get":
-		return uint64(C.nox_xxx_rateGet_40A6C0())
+		return uint64(int32(serverConfigRateGet()))
 	case "rate-set":
-		return uint64(C.nox_xxx_rateUpdate_40A6D0(C.int(a)))
+		return uint64(int32(serverConfigRateSet(int32(int32(a)))))
 	case "connection-rate":
-		return uint64(C.sub_40A710(C.int(a)))
+		return uint64(int32(serverConfigConnectionRate(int32(int32(a)))))
 	case "special-mode":
-		return uint64(C.sub_40A740())
+		return uint64(int32(serverConfigSpecialMode()))
 	case "refresh":
-		return uint64(C.sub_4161E0())
+		return uint64(int32(serverConfigRefresh()))
 	case "slot-index":
-		return uint64(C.sub_416580())
+		return uint64(int32(serverConfigSlotIndex()))
 	case "slot-copy":
-		return uint64(C.sub_4165F0(C.int(a), C.int(b)))
+		return uint64(int32(serverConfigSlotCopy(int32(int32(a)), int32(int32(b)))))
 	case "record-state":
-		return uint64(C.sub_416650())
+		return uint64(int32(serverConfigRecordState()))
 	case "acquired-get":
-		return uint64(C.sub_4169C0())
+		return uint64(int32(serverConfigAcquiredGet()))
 	case "acquired-set":
-		return uint64(C.nox_xxx_cliSetSettingsAcquired_4169D0(C.int(a)))
+		return uint64(int32(serverConfigAcquiredSet(int32(int32(a)))))
 	default:
 		panic(op)
 	}
@@ -94,30 +89,30 @@ func PortTestServerConfigScalar(op string, a, b int) uint64 {
 func PortTestServerConfigPointer(op string, a int, p unsafe.Pointer) unsafe.Pointer {
 	switch op {
 	case "name-set":
-		return unsafe.Pointer(C.nox_xxx_gameSetServername_40A440((*C.char)(p)))
+		return unsafe.Pointer((*byte)(unsafe.Pointer(serverConfigNameSet((*byte)(unsafe.Pointer((*byte)(p)))))))
 	case "name-get":
-		return unsafe.Pointer(C.nox_xxx_serverOptionsGetServername_40A4C0())
+		return unsafe.Pointer((*byte)(unsafe.Pointer(serverConfigNameGet())))
 	case "password-set":
-		return unsafe.Pointer(C.nox_xxx_sysopSetPass_40A610((*C.wchar2_t)(p)))
+		return unsafe.Pointer((*uint16)(unsafe.Pointer(serverConfigPasswordSet((*uint16)(unsafe.Pointer((*uint16)(p)))))))
 	case "password-get":
-		return unsafe.Pointer(C.nox_xxx_sysopGetPass_40A630())
+		return unsafe.Pointer((*uint16)(unsafe.Pointer(serverConfigPasswordGet())))
 	case "slot":
-		return unsafe.Pointer(C.nox_xxx_cliGamedataGet_416590(C.int(a)))
+		return unsafe.Pointer((*byte)(unsafe.Pointer(serverConfigSlot(int32(int32(a))))))
 	case "slot-current":
-		return unsafe.Pointer(C.sub_4165B0())
+		return unsafe.Pointer((*byte)(unsafe.Pointer(serverConfigSlotCurrent())))
 	case "slot-select":
-		return unsafe.Pointer(C.sub_4165D0(C.int(a)))
+		return unsafe.Pointer((*byte)(unsafe.Pointer(serverConfigSlotSelect(int32(int32(a))))))
 	case "admission":
-		return unsafe.Pointer(C.sub_416630())
+		return unsafe.Pointer((*byte)(unsafe.Pointer(serverConfigAdmissionData())))
 	case "settings":
-		return C.sub_416640()
+		return (unsafe.Pointer)(unsafe.Pointer(serverConfigSettings()))
 	case "open-admission":
-		return unsafe.Pointer(C.sub_4169F0())
+		return unsafe.Pointer((*byte)(unsafe.Pointer(serverConfigOpenAdmission())))
 	default:
 		panic(op)
 	}
 }
 
 func PortTestServerConfigRuleOpen(parent *gui.Window, settings unsafe.Pointer) int {
-	return int(C.sub_4CEBA0(C.int(uintptr(parent.C())), (*C.char)(settings)))
+	return int(int32(serverConfigRuleOpen((*gui.Window)(unsafe.Pointer(uintptr(uint32(int32(uintptr(parent.C())))))), (*byte)(unsafe.Pointer((*byte)(settings))))))
 }

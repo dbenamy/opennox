@@ -22,11 +22,6 @@ func sub_457460(data C.int) C.int {
 	return C.int(serverOptionsLimits(serverOptionsRecord(unsafe.Pointer(uintptr(uint32(data))))))
 }
 
-//export sub_459880
-func sub_459880(data C.int) C.int {
-	return C.int(serverOptionsSettingsLabels(serverOptionsRecord(unsafe.Pointer(uintptr(uint32(data))))))
-}
-
 //export sub_459AA0
 func sub_459AA0(data unsafe.Pointer) *C.char {
 	return (*C.char)(unsafe.Pointer(serverOptionsRead(serverOptionsRecord(data))))

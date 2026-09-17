@@ -25,7 +25,7 @@ func Sub_43CEB0() {
 	C.sub_43CEB0()
 }
 func Sub_40A710(a1 int) uint32 {
-	return uint32(C.sub_40A710(C.int(a1)))
+	return uint32(serverConfigConnectionRate(int32(a1)))
 }
 func Nox_client_screenParticlesDraw_431720(vp *noxrender.Viewport) {
 	screenParticlesDraw(vp)

@@ -30,7 +30,7 @@ func inventoryWeaponPickup(u, it *server.Object, arg, equip int) int {
 			return 0
 		}
 	}
-	if !noxflags.HasGame(2048|4096) && C.sub_409F40(2) != 0 {
+	if !noxflags.HasGame(2048|4096) && C.int(serverConfigFlagsQuery(int32(2))) != 0 {
 		duplicate := it.ObjSubClass&0x82 == 0 && equipmentDuplicate(u, it) != 0
 		if it.ObjSubClass&0x40 != 0 {
 			for owned := u.Field129; owned != nil; owned = owned.Field128 {
@@ -148,7 +148,7 @@ func inventoryArmorPickup(u, it *server.Object, arg, equip int) int {
 		C.dword_5d4594_2488720 = C.uint32_t(GetServer().S().Types.IndByID("WoodenShield"))
 		C.dword_5d4594_2488724 = C.uint32_t(GetServer().S().Types.IndByID("SteelShield"))
 	}
-	if !noxflags.HasGame(2048|4096) && C.sub_409F40(2) != 0 && equipmentDuplicate(u, it) != 0 {
+	if !noxflags.HasGame(2048|4096) && C.int(serverConfigFlagsQuery(int32(2))) != 0 && equipmentDuplicate(u, it) != 0 {
 		inventoryPriMessage(u, "armor.c:CannotPickupDuplicateArmor")
 		inventorySound(925, u, 2, int(u.NetCode))
 		return 0

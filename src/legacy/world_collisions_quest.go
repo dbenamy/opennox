@@ -35,7 +35,7 @@ func worldQuestCountdown() int32 {
 		}
 	}
 	if total == 0 {
-		return int32(C.sub_40A1F0(0))
+		return int32(serverConfigTimerSet(int32(0)))
 	}
 	reduction := floatToInt32(float32(float64(ready) / float64(total) * float64(seconds)))
 	next := seconds - reduction

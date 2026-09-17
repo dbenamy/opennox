@@ -2,39 +2,45 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 46k lines** — **46,393 physical lines in 74 production
-`.c` files**, zero reference C. Latest qualified conversion removes **2,364 lines**; the next pending prerequisites currently add 2 net lines.
+**Rough C remaining: about 45k lines** — **45,473 physical lines in 74 production
+`.c` files**, zero reference C. Latest conversion removes **920 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — server-configuration corrected C baseline qualified
+## Current — server-configuration native conversion qualified
 
-Parent panel conversion **80c9ca2c** is committed/pushed. The next baseline covers
-**66 functions / 838 corrected C body lines**: 64 live functions / 816 lines and
-two proven dead helpers / 22 lines. Five prerequisite corrections and preserved
-compatibility details are documented in [SERVER_CONFIG.md](docs/porting/SERVER_CONFIG.md).
-Working C is **46,393 / 74 files / zero reference C** (+2 prerequisite lines).
+Corrected C baseline **ce1399b2** is committed/pushed. Native conversion replaces
+**64 live functions / 816 corrected C body lines**, removes two disabled helpers
+and their no-op callers, and retires eight private globals / 41 function interfaces.
+Thirty-two thin exports remain for actual C callers. Go callers and callbacks use
+native functions. See [SERVER_CONFIG.md](docs/porting/SERVER_CONFIG.md).
 
-All 26 focused roots pass; 25 new captures repeat byte-for-byte and are frozen.
-Broader default/server/highres pass **535/534/535 roots**, **58,651/58,650/58,651
-leaves**, no skips, **240 identical captures / 76,002 records**. Static preflight
-passes (0.592s). Fresh production passes in **371.49s**: three builds/ABI/interface,
-exact known asset failures, options gameplay, save/load and forced flat map.
-All four gates have the same unchanged 2,161-file source manifest; sessions joined.
-All inherited captures and gameplay references remain unchanged.
+All 26 focused roots pass (2.127s); static preflight passes (0.398s). Broader
+native default/server/highres pass **535/534/535 roots**, **58,651/58,650/58,651
+leaves**, no skips. **240 identical captures / 76,002 records** match corrected C.
+Durations: **178.11/283.13/222.88s**. Fresh production passes in **377.75s**:
+three builds and ABI/interface checks, the exact known 1,553 asset failures
+(15 passing / 3 failing / 32 no-test packages), options gameplay, save/load and
+forced flat-map regeneration. All four gates share an unchanged **2,167-file source
+manifest**; all sessions joined. Client SHA:
+7c3a16ffb2531aac2c9b6a4368380b41982b89de2af36483c5c5b9d30017ef95.
+C is **45,473 / 74 files / zero reference C (−920)**.
 
-Artifacts: build/port-server-config/c-{default,server,highres,production},
-c-audit.json, repeat-audit.json. Manifests: server-config-batch.json,
-server-config-tests.txt and server-config-scope.json. Original assets/archive untouched.
+Artifacts: build/port-server-config/native-{default,server,highres,production},
+native-audit.json, native-interface-audit.json. Manifests: server-config-batch.json,
+server-config-tests.txt and server-config-scope.json. All fixture/native drafts,
+installation and export-preparation scripts are **consumed**; never recopy them.
+Frozen expectations were not changed during conversion. The pixel capture caught
+and corrected use of a blended background where the picker requires opaque fill.
 
-Next: commit/push this baseline, then integrate the **uninstalled, unqualified**
-ignored native-draft files. Native-map.json and native-retained.json record the
-preliminary mapping / 32 remaining C callers. Complete caller/fixture migration,
-retire private state and proven dead helpers plus no-op calls, then test against
-unchanged expectations. Additional panel/option exports have no C callers after
-this scope moves; review before retiring. Never recopy consumed fixture drafts or
-regenerate frozen goldens during translation. No user decision/blocker.
+Next: commit/push this qualified conversion, reclaim verified duplicate assets
+from completed run copies if useful, then start map polygons. Preliminary combined
+scope: **33 functions / 1,000 C body lines** (core lifecycle/lookup/render/events plus
+map serialization). Read-only scope/audit/plan are in build/port-polygons;
+use candidate-with-serialization.json, not the smaller core-only candidate.json.
+The reachability closure includes all 33 functions. No polygon fixtures or native
+conversion are installed. Preserve original assets/archive; no user decision/blocker.
 
 ## Qualified parent — server-panel conversion
 

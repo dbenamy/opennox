@@ -88,7 +88,7 @@ func serverOptionsConstruct() int {
 	data.Field_7 = up.C()
 	data.Field_8 = down.C()
 	w.ChildByID(10160).DrawData().Field0 |= 4
-	initial := serverOptionsRecord(unsafe.Pointer(C.sub_4165D0(0)))
+	initial := serverOptionsRecord(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlotSelect(int32(0))))))
 	if noxflags.HasGame(1) {
 		Sub_4161E0()
 	}
@@ -96,8 +96,8 @@ func serverOptionsConstruct() int {
 	serverOptionsSetup(initial)
 	serverOptionsMeasure()
 	if noxflags.HasGame(1) {
-		C.sub_4165F0(0, 1)
-		C.sub_4165D0(1)
+		serverConfigSlotCopy(int32(0), int32(1))
+		serverConfigSlotSelect(int32(1))
 	} else {
 		tab := w.ChildByID(10159)
 		serverOptionsSetText(tab, 16385, serverOptionsText("servopts.wnd:teams"), -1)

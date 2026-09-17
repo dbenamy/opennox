@@ -22,22 +22,22 @@ func Sub_43DC30() int {
 	return int(C.sub_43DC30())
 }
 func Nox_xxx_sysopGetPass_40A630() string {
-	return GoWString(C.nox_xxx_sysopGetPass_40A630())
+	return GoWString((*C.wchar2_t)(unsafe.Pointer(serverConfigPasswordGet())))
 }
 func Sub_4D0D70() int {
 	return mapCycleEnabled()
 }
 func Nox_xxx_getServerSubFlags_409E60() uint32 {
-	return uint32(C.nox_xxx_getServerSubFlags_409E60())
+	return uint32(serverConfigFlagsGet())
 }
 func Nox_xxx_gameSetServername_40A440(a1 string) {
-	C.nox_xxx_gameSetServername_40A440(internCStr(a1))
+	serverConfigNameSet((*byte)(unsafe.Pointer(internCStr(a1))))
 }
 func Nox_xxx_sysopSetPass_40A610(a1 string) {
-	C.nox_xxx_sysopSetPass_40A610(internWStr(a1))
+	serverConfigPasswordSet((*uint16)(unsafe.Pointer(internWStr(a1))))
 }
 func Nox_xxx_rateUpdate_40A6D0(a1 int) {
-	C.nox_xxx_rateUpdate_40A6D0(C.int(a1))
+	serverConfigRateSet(int32(a1))
 }
 func Sub_4D0D90(a1 int) {
 	mapCycleSetEnabled(uint32(a1))
@@ -46,7 +46,7 @@ func Sub_409FB0_settings(a1 uint16, a2 uint16) {
 	C.sub_409FB0_settings(C.short(a1), C.ushort(a2))
 }
 func Sub_409EC0(a1 int) {
-	C.sub_409EC0(C.int(a1))
+	serverConfigFlagsRemove(int32(a1))
 }
 func Sub_4D0DC0(a1 uint32, a2 int) {
 	mapCycleSetIndex(a1, uint32(a2))

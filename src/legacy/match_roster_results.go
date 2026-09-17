@@ -93,7 +93,7 @@ func matchRosterFlagWinner() int {
 }
 func matchRosterCheckVictory() {
 	s := GetServer().S()
-	limit := uint32(uint16(C.nox_xxx_servGamedataGet_40A020(C.short(noxflags.GetGame()))))
+	limit := uint32(uint16(serverConfigScore(int16(noxflags.GetGame()))))
 	if noxflags.HasGame(1024) {
 		if limit == 0 {
 			return
@@ -207,5 +207,5 @@ func matchRosterCheckLimit() int {
 			s.Audio.EventObj(sound.ID(582), u, 2, u.NetCode)
 		}
 	}
-	return int(C.sub_40A1F0(0))
+	return int(C.int(serverConfigTimerSet(int32(0))))
 }
