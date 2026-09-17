@@ -9,6 +9,7 @@ import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy"
+	"github.com/opennox/opennox/v1/server"
 	"testing"
 )
 
@@ -59,6 +60,9 @@ func TestVisibilityEffectsSpatialScan(t *testing.T) {
 						v.PosVec = types.Pointf{float32(150 + i*25), 100}
 						v.NewPos = v.PosVec
 						v.ObjFlags = object.FlagActive
+						v.Shape.Kind = server.ShapeKindCircle
+						v.Shape.Circle.R = 1
+						v.Shape.Circle.R2 = 1
 						s.Map.AddObjectToIndex(v)
 					}
 					rv := legacy.PortTestVisibilityEffects(17, u, nil, nil, nil, [5]int32{}, nil, "")
