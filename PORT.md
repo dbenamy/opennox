@@ -15,16 +15,16 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Map polygon storage, lookup, actor events, ambient color and
-serialization are now in Go. The conversion passes focused checks, broader
-three-target capture comparison, and fresh production/gameplay qualification.
+scheduled pause. Map polygon storage, lookup, events and serialization are in Go.
+The next geometry/collision batch has a qualified corrected C baseline: 32 live
+functions, repeated frozen captures, broader three-target checks and fresh
+production/gameplay qualification. Four small prerequisite corrections are
+recorded for review in [WORLD_GEOMETRY.md](docs/porting/WORLD_GEOMETRY.md).
 
-Production C is **44,401 physical lines in 74 files**, with zero reference C.
-The polygon conversion removes **1,072 lines**. The full asset suite retains its
-exact three known failing packages. See [MAP_POLYGONS.md](docs/porting/MAP_POLYGONS.md)
-for qualification and review items; [PORTING_STATE.md](PORTING_STATE.md) is the
-resume checkpoint. The next proposed batch covers connected world geometry,
-direction/vector/shape primitives and wall collision.
+Production C is **44,396 physical lines in 74 files**, with zero reference C.
+The polygon conversion removed **1,072 lines**; the geometry prerequisite removed
+five unused local lines. The asset suite retains its exact three known failing
+packages. [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 

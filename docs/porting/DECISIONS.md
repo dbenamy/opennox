@@ -1604,3 +1604,20 @@ match the original C captures. The earlier C-baseline report's description of th
 temporary was wrong and has been corrected. Expected test outputs were unchanged.
 The constructor also retains its initial decimal ID write before copying defaults,
 so short default strings preserve the same trailing record bytes.
+
+## Geometry collision prerequisites — qualified, review with conversion
+
+Read the first object's class/flag words as bits in box collision (550F80), matching
+object layout and the neighboring circle response. Three numeric float conversions
+lost force-suppression bits and failed to clear the wake flag. Independent C
+contracts reproduced all three failures; the corresponding second-object paths
+already use raw reads. The corrected contracts pass before the Go conversion.
+
+Restore the computed X less-than/equal condition in wall quadrant selection
+(550CB0). The decompiled condition byte was initialized to zero and never assigned,
+so two masks were unreachable despite the existing X comparisons. Four-quadrant
+contracts reproduce the defect; threshold-neighbor contracts keep the original
+16.263456 comparison and float width. Both decisions change existing behavior and
+are small, reversible corrections under the standing policy. Fresh production
+qualification and three-target regression checks pass. See
+[WORLD_GEOMETRY.md](WORLD_GEOMETRY.md) for evidence.

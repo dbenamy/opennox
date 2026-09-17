@@ -2,13 +2,40 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 44k lines** — **44,401 physical lines in 74 production
+**Rough C remaining: about 44k lines** — **44,396 physical lines in 74 production
 `.c` files**, zero reference C. Latest conversion removes **1,072 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — map-polygon native conversion qualified
+## Current — world geometry/collision corrected C baseline qualified
+
+The next conversion covers **32 live functions / 1,385 corrected C body lines**.
+C baseline is qualified and ready for its commit/push; parent polygon conversion
+is **10d3294d**. See [WORLD_GEOMETRY.md](docs/porting/WORLD_GEOMETRY.md).
+
+Sixteen focused groups pass; two separate processes agree on 15 frozen captures /
+15,782 records. Independent contracts reproduced three box flag errors and a lost
+quadrant condition; the small C corrections are qualified and recorded for review.
+Static checks pass. Default/server/highres pass **543/542/543 roots**,
+**42,759/42,758/42,759 tests including subtests**, no skips. **204 identical captures /
+81,403 records**; durations **291.14/383.26/290.61s**. Fresh production passes
+**408.92s**: three builds/ABI/interfaces, exact known 1,553 asset failures, options
+gameplay, save/load and flat maps. All gates share unchanged **2,190-file source**;
+all sessions are joined. No native code is installed yet and no blocker exists.
+
+Artifacts: build/port-world-geometry/c-{default,server,highres,production},
+c-audit.json and corrected-c-functions.json. The original proposal.json contains
+pre-correction C: use committed C/current corrected snapshot for translation.
+Next: commit/push baseline, then port and requalify without changing expectations.
+Twelve C interfaces remain live outside the batch; the two force coefficients
+also retain C readers. Reuse ShapeBox.Calc and floatToInt32 where equivalent.
+At most three heavy jobs; source build/baseline/env.sh for every Go command;
+GOMAXPROCS=2 (highres=1), GOMEMLIMIT=768MiB. Never edit source during checks.
+All projection/walls/gate installation drafts and earlier polygon scripts are
+consumed; do not reinstall them. Original assets/archive remain untouched.
+
+## Qualified parent — map-polygon native conversion (10d3294d, pushed)
 
 C baseline **afdb26e7 is committed/pushed**. The native conversion replaces
 **33 functions / 1,000 C body lines**, retires 26 function interfaces and three
@@ -31,14 +58,6 @@ and native-interface-audit.json. All drafts/install/finish-docs scripts are cons
 reinstall them. Frozen root tests/expectations were not changed. Nearest-vertex
 width review, ray parity, player cache quirks and allocation ownership decisions
 are documented for review. No active sessions or user blocker.
-
-This checkpoint records the qualified conversion. Next proceed to world geometry
-and wall collision after committing/pushing it.
-Read-only proposal: **32 reachable functions / 1,390 C body lines** under
-build/port-world-geometry/proposal.json and combined-reachability.json. This includes
-helpers still called inside polygon loops, shared direction/vector/shape primitives
-and wall/circle/box collision helpers. No fixtures or production edits for that
-next batch are installed. Reassess contracts/constants/ownership before freezing.
 
 Disk cleanup before the polygon batch reclaimed **6.184 GiB** from twelve completed
 panel/configuration runs. Per-run manifests permit restoration; never repeat

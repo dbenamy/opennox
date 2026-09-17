@@ -1,0 +1,946 @@
+{
+  "parent": "10d3294d",
+  "functions": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_427C80",
+      "address": "0x427c80",
+      "body_lines": 100,
+      "original_body_lines": 100,
+      "sha256": "dd2dbee8e47495e694e2602cedcdfa872e7061038e15513a39f158a20857dc01"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "name": "sub_427DF0",
+      "address": "0x427df0",
+      "body_lines": 45,
+      "original_body_lines": 45,
+      "sha256": "9730d287bbbcffa1e50e856d33b9cd654e1f7c32f88739be0fbb27f3cbebcfb0"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "name": "nox_xxx_wallMath_427F30",
+      "address": "0x427f30",
+      "body_lines": 56,
+      "original_body_lines": 56,
+      "sha256": "3f6e53f8ebdf89130d0d23bfc715bb054df5fa194e96f03053cbca8255ca2495"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "name": "sub_428170",
+      "address": "0x428170",
+      "body_lines": 35,
+      "original_body_lines": 35,
+      "sha256": "2bffd86dd1dbda04a0649e79e634f70071c8305f701b6134e89c62e0487d7c03"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "name": "nox_xxx_pointInRect_4281F0",
+      "address": "0x4281f0",
+      "body_lines": 13,
+      "original_body_lines": 13,
+      "sha256": "e53215cb93c985925b0bbee789c1238f1def7f0471a5320d5d97b8c44f3772e1"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "name": "sub_428220",
+      "address": "0x428220",
+      "body_lines": 4,
+      "original_body_lines": 4,
+      "sha256": "71342d36f37ac743978eb80ae60a30e0f727b3ded40571d8ff7edd4a0bc2c406"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "name": "nox_shape_box_calc",
+      "address": "0x428270",
+      "body_lines": 23,
+      "original_body_lines": 23,
+      "sha256": "8aac672f40bc6d8a5eae5c7818bfe088d62744124907f849429db257150fa885"
+    },
+    {
+      "file": "src/legacy/GAME3_2.c",
+      "name": "sub_4D3E30",
+      "address": "0x4d3e30",
+      "body_lines": 23,
+      "original_body_lines": 23,
+      "sha256": "b8f881c4e989c6603d089c57d32c6d55710c991cdedc62fceedbf6a6130dbb53"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_xferDirectionToAngle_509E00",
+      "address": "0x509e00",
+      "body_lines": 3,
+      "original_body_lines": 3,
+      "sha256": "1090ff26a46da0d47dc8d61206d899676511a30447744525c02e58c7af504a80"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_xferIndexedDirection_509E20",
+      "address": "0x509e20",
+      "body_lines": 25,
+      "original_body_lines": 25,
+      "sha256": "d3453101f71bde971ad285c1b3db5b7f669cf57348a8e08f9db6ef7344209f7b"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_mathDirection4ToAngle_509E90",
+      "address": "0x509e90",
+      "body_lines": 1,
+      "original_body_lines": 1,
+      "sha256": "3a4358e6adee7540970696759e9e8da45495ba825e72834ad18d2774c54e645e"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_math_509EA0",
+      "address": "0x509ea0",
+      "body_lines": 6,
+      "original_body_lines": 6,
+      "sha256": "0198e17b28bda213f5f53f9915bb41a4ba03adbd4219eaa6f1fb8b322703df70"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_math_509ED0",
+      "address": "0x509ed0",
+      "body_lines": 14,
+      "original_body_lines": 14,
+      "sha256": "7cdfe86868509522f27df2fa7aec5e5d66eb4fbbc3fee8d5a82654267ef59708"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_utilNormalizeVector_509F20",
+      "address": "0x509f20",
+      "body_lines": 7,
+      "original_body_lines": 7,
+      "sha256": "27849872be2c57e97d25d865fd0076a7dacc040ee24bc78d9a46c1edb9c1ca8a"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_54FFC0",
+      "address": "0x54ffc0",
+      "body_lines": 93,
+      "original_body_lines": 93,
+      "sha256": "05432f94d99d5e477aa58aa5012bc968c2b45e88585a4437a643b2c8d94190ab"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_550280",
+      "address": "0x550280",
+      "body_lines": 20,
+      "original_body_lines": 20,
+      "sha256": "89cd9820ad5dcf43939ec56660c683b63e806450ee40fda1c0b48306935200f9"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_5502F0",
+      "address": "0x5502f0",
+      "body_lines": 21,
+      "original_body_lines": 21,
+      "sha256": "1d76b2b26d1828c273a009684802b3833a1ad58b1ff046c84aded77e6484b0e4"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_550380",
+      "address": "0x550380",
+      "body_lines": 43,
+      "original_body_lines": 43,
+      "sha256": "ce771c733062fae3d747e7a2bbed5b284bad4a0a8d89dc459dafa91f130096aa"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_550480",
+      "address": "0x550480",
+      "body_lines": 10,
+      "original_body_lines": 10,
+      "sha256": "517d17e962f7de170f9003b25f0463f01889e179282b0aa9870abbe89ee703e1"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_5504B0",
+      "address": "0x5504b0",
+      "body_lines": 42,
+      "original_body_lines": 42,
+      "sha256": "bec461edd259c40f46bc044f3dd4d113c73e959385a8b13e3e5858ca7df5c934"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_550580",
+      "address": "0x550580",
+      "body_lines": 57,
+      "original_body_lines": 57,
+      "sha256": "d7f9c1801a238ad7fa9d211c1368daeb829792169b59be3c5cae30bdbab3ab73"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_550760",
+      "address": "0x550760",
+      "body_lines": 103,
+      "original_body_lines": 103,
+      "sha256": "58456faf63ccf86430db7a2a10b9f2fcf2204bdac80a8eb7fe4bda62b287c4f2"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_550A10",
+      "address": "0x550a10",
+      "body_lines": 105,
+      "original_body_lines": 105,
+      "sha256": "5f297ba999e2f3682a9d5c8881e0f54ab5e9969116d4275110caf5416bd790dc"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_550CB0",
+      "address": "0x550cb0",
+      "body_lines": 27,
+      "original_body_lines": 32,
+      "sha256": "0280ea1034bcada9006c4f73ee458ba4d6c41b6dd501fbcb30d4e3c59ea1be56"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "nox_xxx_collisionCheckCircleCircle_550D00",
+      "address": "0x550d00",
+      "body_lines": 85,
+      "original_body_lines": 85,
+      "sha256": "bc7cda3676029860c4dcfd619c1efe182ac6d45fef2266f656c245bc9875199d"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_550F80",
+      "address": "0x550f80",
+      "body_lines": 113,
+      "original_body_lines": 113,
+      "sha256": "648de3ab3e394321ae0f07447823784bf61f25e626a9864b13c057e36c5fe717"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_551250",
+      "address": "0x551250",
+      "body_lines": 159,
+      "original_body_lines": 159,
+      "sha256": "e7d28b5b1387c41c8b7dff22b0e025c3ac4fe7d6663a5fa0cee91e2dbe4e621d"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_5516A0",
+      "address": "0x5516a0",
+      "body_lines": 44,
+      "original_body_lines": 44,
+      "sha256": "a4f79420a0d1942eb84f0dff393d8f49e5875a2d413258382171b79b441ffac2"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_551780",
+      "address": "0x551780",
+      "body_lines": 31,
+      "original_body_lines": 31,
+      "sha256": "8ef91c105dd15853bf3b8fa5239219b2057da9dd7bb3bd1f48330a365b09fefb"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_551870",
+      "address": "0x551870",
+      "body_lines": 31,
+      "original_body_lines": 31,
+      "sha256": "2996b610f44a0baa64a4b0fd1f8396f753a1c15c6d09d01cd3a0409f1e0ebce5"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_551960",
+      "address": "0x551960",
+      "body_lines": 42,
+      "original_body_lines": 42,
+      "sha256": "3df4d6a54d46c734a128aec1c4a32b081f70ebed3f3b03692dbfc817e7da617e"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_551A90",
+      "address": "0x551a90",
+      "body_lines": 4,
+      "original_body_lines": 4,
+      "sha256": "ca4cb319e824225ed2fca75ec16795d588c484092d54736d62ceb931acdc8b3e"
+    }
+  ],
+  "reachability": {
+    "roots": [
+      "nox_shape_box_calc",
+      "nox_xxx_collisionCheckCircleCircle_550D00",
+      "nox_xxx_mathDirection4ToAngle_509E90",
+      "nox_xxx_math_509EA0",
+      "nox_xxx_math_509ED0",
+      "nox_xxx_pointInRect_4281F0",
+      "nox_xxx_utilNormalizeVector_509F20",
+      "nox_xxx_wallMath_427F30",
+      "nox_xxx_xferDirectionToAngle_509E00",
+      "nox_xxx_xferIndexedDirection_509E20",
+      "sub_427C80",
+      "sub_427DF0",
+      "sub_428170",
+      "sub_428220",
+      "sub_4D3E30",
+      "sub_54FFC0",
+      "sub_5504B0",
+      "sub_550F80",
+      "sub_551250"
+    ],
+    "live": [
+      "nox_shape_box_calc",
+      "nox_xxx_collisionCheckCircleCircle_550D00",
+      "nox_xxx_mathDirection4ToAngle_509E90",
+      "nox_xxx_math_509EA0",
+      "nox_xxx_math_509ED0",
+      "nox_xxx_pointInRect_4281F0",
+      "nox_xxx_utilNormalizeVector_509F20",
+      "nox_xxx_wallMath_427F30",
+      "nox_xxx_xferDirectionToAngle_509E00",
+      "nox_xxx_xferIndexedDirection_509E20",
+      "sub_427C80",
+      "sub_427DF0",
+      "sub_428170",
+      "sub_428220",
+      "sub_4D3E30",
+      "sub_54FFC0",
+      "sub_550280",
+      "sub_5502F0",
+      "sub_550380",
+      "sub_550480",
+      "sub_5504B0",
+      "sub_550580",
+      "sub_550760",
+      "sub_550A10",
+      "sub_550CB0",
+      "sub_550F80",
+      "sub_551250",
+      "sub_5516A0",
+      "sub_551780",
+      "sub_551870",
+      "sub_551960",
+      "sub_551A90"
+    ],
+    "candidate_orphans": [],
+    "external": {
+      "nox_xxx_xferIndexedDirection_509E20": [
+        {
+          "file": "src/legacy/spell_lifecycle_casting.go",
+          "text": "C.nox_xxx_xferIndexedDirection_509E20(C.int(u.Direction1), &indexed)"
+        },
+        {
+          "file": "src/legacy/world_movement.go",
+          "text": "C.nox_xxx_xferIndexedDirection_509E20(C.int(int16(u.Direction1)), &out)"
+        },
+        {
+          "file": "src/legacy/object_reports_encoding.go",
+          "text": "C.nox_xxx_xferIndexedDirection_509E20(C.int(int16(u.Direction1)), &dir)"
+        },
+        {
+          "file": "src/legacy/creature_xfer_fields.go",
+          "text": "C.nox_xxx_xferIndexedDirection_509E20(C.int(int16(u.Direction1)), (*C.int2)(unsafe.Pointer(&direction[0])))"
+        },
+        {
+          "file": "src/legacy/object_state_geometry.go",
+          "text": "C.nox_xxx_xferIndexedDirection_509E20(C.int(dir), (*C.int2)(unsafe.Pointer(v)))"
+        },
+        {
+          "file": "src/legacy/GAME4_1.h",
+          "text": "int nox_xxx_xferIndexedDirection_509E20(int a1, int2* a2);"
+        }
+      ],
+      "sub_550580": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "int sub_550580(int2* a1, float* a2);"
+        }
+      ],
+      "nox_xxx_collisionCheckCircleCircle_550D00": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "void nox_xxx_collisionCheckCircleCircle_550D00(int a1, int a2);"
+        },
+        {
+          "file": "src/legacy/GAME5.c",
+          "text": "nox_xxx_collisionCheckCircleCircle_550D00((int)a2, (int)a1);"
+        }
+      ],
+      "sub_427C80": [
+        {
+          "file": "src/client/sight.go",
+          "text": "if sub_427C80(r, r2) {"
+        },
+        {
+          "file": "src/client/sight.go",
+          "text": "func sub_427C80(r1, r2 image.Rectangle) bool {"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "text": "int sub_427C80(int4* a1, int4* a2);"
+        },
+        {
+          "file": "src/legacy/map_polygons_lookup.go",
+          "text": "int sub_427C80(int4* a1, int4* a2);"
+        },
+        {
+          "file": "src/legacy/map_polygons_lookup.go",
+          "text": "if C.sub_427C80((*C.int4)(unsafe.Pointer(&ray)), (*C.int4)(unsafe.Pointer(&segment))) != 0 {"
+        }
+      ],
+      "sub_550380": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "int sub_550380(int a1, int a2, float2* a3);"
+        }
+      ],
+      "sub_551250": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "void sub_551250(unsigned int a1, float* a2, int a3);"
+        },
+        {
+          "file": "src/legacy/GAME5.c",
+          "text": "sub_551250((unsigned int)a1, a2, 1);"
+        },
+        {
+          "file": "src/legacy/GAME5.c",
+          "text": "sub_551250((unsigned int)a2, (float*)a1, 0);"
+        }
+      ],
+      "nox_xxx_utilNormalizeVector_509F20": [
+        {
+          "file": "src/legacy/damage_dispatch.go",
+          "text": "C.nox_xxx_utilNormalizeVector_509F20((*C.float2)(unsafe.Pointer(&pos)))"
+        },
+        {
+          "file": "src/legacy/generator_objects.go",
+          "text": "C.nox_xxx_utilNormalizeVector_509F20((*C.float2)(unsafe.Pointer(dir)))"
+        },
+        {
+          "file": "src/legacy/inventory_placement.go",
+          "text": "C.nox_xxx_utilNormalizeVector_509F20((*C.float2)(unsafe.Pointer(&dir)))"
+        },
+        {
+          "file": "src/legacy/gui_book_animation.go",
+          "text": "C.nox_xxx_utilNormalizeVector_509F20((*C.float2)(unsafe.Pointer(&bookVector)))"
+        },
+        {
+          "file": "src/legacy/generator.go",
+          "text": "C.nox_xxx_utilNormalizeVector_509F20((*C.float2)(unsafe.Pointer(&p)))"
+        },
+        {
+          "file": "src/legacy/GAME4_1.h",
+          "text": "void nox_xxx_utilNormalizeVector_509F20(float2* a1);"
+        }
+      ],
+      "sub_428220": [
+        {
+          "file": "src/legacy/sustained_teleport.go",
+          "text": "if C.sub_428220((*C.float2)(unsafe.Pointer(&t.PosVec)), (*C.float4)(unsafe.Pointer(&rect))) == 0 {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "text": "int sub_428220(float2* a1, float4* a2);"
+        }
+      ],
+      "sub_550A10": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "int sub_550A10(int a1, float2* a2, float2* a3, float4* a4, float2* a5, float a6);"
+        }
+      ],
+      "sub_54FFC0": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "int sub_54FFC0(int2* a1, int a2);"
+        },
+        {
+          "file": "src/legacy/GAME5.c",
+          "text": "if (sub_54FFC0(&a1, (int)v1)) {"
+        }
+      ],
+      "sub_551960": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "int sub_551960(float4* a1, float4* a2, float4* a3, float2* a4);"
+        }
+      ],
+      "nox_xxx_mathDirection4ToAngle_509E90": [
+        {
+          "file": "src/legacy/GAME4_1.c",
+          "text": "result = (float*)nox_xxx_mathDirection4ToAngle_509E90(a2);"
+        },
+        {
+          "file": "src/legacy/reward_initializers.go",
+          "text": "result = int32(C.nox_xxx_mathDirection4ToAngle_509E90(C.int(dir)))"
+        },
+        {
+          "file": "src/legacy/map_painting_objects.go",
+          "text": "angle := uint32(C.nox_xxx_mathDirection4ToAngle_509E90(C.int(mapPaintDirection(dir))))"
+        },
+        {
+          "file": "src/legacy/GAME4_1.h",
+          "text": "int nox_xxx_mathDirection4ToAngle_509E90(int a1);"
+        }
+      ],
+      "nox_xxx_math_509ED0": [
+        {
+          "file": "src/legacy/ai_path_execution.go",
+          "text": "angle := C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&direction)))"
+        },
+        {
+          "file": "src/legacy/map_population_rooms.go",
+          "text": "angle := C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&delta)))"
+        },
+        {
+          "file": "src/legacy/player_controls_movement.go",
+          "text": "u.Direction2 = server.Dir16(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&pos))))"
+        },
+        {
+          "file": "src/legacy/projectile_collisions_weapons.go",
+          "text": "dir := int32(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&u.VelVec))))"
+        },
+        {
+          "file": "src/legacy/projectile_collisions_effects.go",
+          "text": "u.Direction2 = server.Dir16(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&u.VelVec))))"
+        },
+        {
+          "file": "src/legacy/projectile_collisions_effects.go",
+          "text": "u.Direction2 = server.Dir16(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&u.VelVec))))"
+        },
+        {
+          "file": "src/legacy/visibility_effects_fx.go",
+          "text": "direction = int32(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&delta))))"
+        },
+        {
+          "file": "src/legacy/GAME4_1.c",
+          "text": "v4[3] = nox_xxx_math_509ED0(&v5);"
+        },
+        {
+          "file": "src/legacy/inventory_drop.go",
+          "text": "angle := uint16(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&dir))))"
+        },
+        {
+          "file": "src/legacy/wall.go",
+          "text": "return int(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(cpos))))"
+        },
+        {
+          "file": "src/legacy/client_effects.go",
+          "text": "return int(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&p))))"
+        },
+        {
+          "file": "src/legacy/ai_monster_state.go",
+          "text": "u.Direction2 = server.Dir16(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&q[0]))))"
+        },
+        {
+          "file": "src/legacy/GAME4_1.h",
+          "text": "int nox_xxx_math_509ED0(float2* a1);"
+        }
+      ],
+      "sub_550760": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "int sub_550760(int a1, float2* a2, float2* a3, float4* a4, float2* a5, float a6);"
+        }
+      ],
+      "sub_550280": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "int sub_550280(int a1, float a2, float a3, int a4, int a5, int a6, int a7);"
+        }
+      ],
+      "sub_5502F0": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "int sub_5502F0(float2* a1, float a2, float a3, int a4, int a5, float2* a6, float2* a7);"
+        }
+      ],
+      "nox_xxx_pointInRect_4281F0": [
+        {
+          "file": "src/gui.go",
+          "text": "func nox_xxx_pointInRect_4281F0(p image.Point, r image.Rectangle) bool {"
+        },
+        {
+          "file": "src/legacy/client_ui_inventory_place.go",
+          "text": "if C.nox_xxx_pointInRect_4281F0((*C.int2)(memmap.PtrOff(0x5D4594, 1062572)), (*C.int4)(memmap.PtrOff(0x587000, 136336))) == 1 {"
+        },
+        {
+          "file": "src/legacy/map_polygons_lookup.go",
+          "text": "return C.nox_xxx_pointInRect_4281F0((*C.int2)(unsafe.Pointer(point)), (*C.int4)(unsafe.Pointer(&p.Bounds))) != 0 && mapPolygonContains(p, point)"
+        },
+        {
+          "file": "src/legacy/gui_quickbar_input.go",
+          "text": "inside := C.nox_xxx_pointInRect_4281F0(&point, (*C.int4)(memmap.PtrOff(0x587000, 133656))) != 0"
+        },
+        {
+          "file": "src/legacy/GAME2_3.c",
+          "text": "v3 = nox_xxx_pointInRect_4281F0((int2*)a1, &v11);"
+        },
+        {
+          "file": "src/legacy/GAME2_3.c",
+          "text": "if (v3 || (v3 = nox_xxx_pointInRect_4281F0((int2*)&a1->field_8, &v11), v3)) {"
+        },
+        {
+          "file": "src/legacy/GAME2_3.c",
+          "text": "v3 = nox_xxx_pointInRect_4281F0((int2*)a1, &v11);"
+        },
+        {
+          "file": "src/legacy/GAME2_3.c",
+          "text": "v3 = nox_xxx_pointInRect_4281F0((int2*)&a1->field_8, &v11);"
+        },
+        {
+          "file": "src/legacy/GAME2_3.c",
+          "text": "v4 = nox_xxx_pointInRect_4281F0((int2*)a1, &v11);"
+        },
+        {
+          "file": "src/legacy/GAME2_3.c",
+          "text": "if (v4 || (v5 = nox_xxx_pointInRect_4281F0((int2*)&a1->field_8, &v11), v5)) {"
+        },
+        {
+          "file": "src/legacy/GAME2_3.c",
+          "text": "v6 = nox_xxx_pointInRect_4281F0((int2*)a1, &v11);"
+        },
+        {
+          "file": "src/legacy/GAME2_3.c",
+          "text": "if (v6 || (v7 = nox_xxx_pointInRect_4281F0((int2*)&a1->field_8, &v11), v7)) {"
+        },
+        {
+          "file": "src/legacy/GAME2_3.c",
+          "text": "v8 = nox_xxx_pointInRect_4281F0((int2*)a1, &v11);"
+        },
+        {
+          "file": "src/legacy/GAME2_3.c",
+          "text": "if (v8 || (v9 = nox_xxx_pointInRect_4281F0((int2*)&a1->field_8, &v11), v9)) {"
+        },
+        {
+          "file": "src/legacy/GAME2_3.c",
+          "text": "v3 = nox_xxx_pointInRect_4281F0((int2*)a1, &v11);"
+        },
+        {
+          "file": "src/legacy/GAME2_3.c",
+          "text": "if (v3 || (v3 = nox_xxx_pointInRect_4281F0((int2*)&a1->field_8, &v11), v3)) {"
+        },
+        {
+          "file": "src/legacy/GAME3.c",
+          "text": "v3 = nox_xxx_pointInRect_4281F0(&v5, (int4*)(a1 + 16));"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "text": "int nox_xxx_pointInRect_4281F0(int2* a1, int4* a2);"
+        }
+      ],
+      "sub_550480": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "int sub_550480(int a1);"
+        }
+      ],
+      "sub_427DF0": [
+        {
+          "file": "src/legacy/map_polygons_lookup.go",
+          "text": "if C.sub_427DF0(C.int(uintptr(unsafe.Pointer(point))), (*C.int)(unsafe.Pointer(&segment)), C.float(distance)) != 0 {"
+        },
+        {
+          "file": "src/legacy/GAME1_1.h",
+          "text": "int sub_427DF0(int a1, int* a2, float a3);"
+        }
+      ],
+      "sub_551A90": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "int sub_551A90(float2* a1, float4* a2);"
+        }
+      ],
+      "sub_5516A0": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "int sub_5516A0(float4* a1, float4* a2, float2* a3, int a4, int a6);"
+        }
+      ],
+      "sub_550F80": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "void sub_550F80(float* a1, int a2);"
+        },
+        {
+          "file": "src/legacy/GAME5.c",
+          "text": "sub_550F80(a2, (int)a1);"
+        },
+        {
+          "file": "src/legacy/GAME5.c",
+          "text": "sub_550F80((float*)a2, a1);"
+        }
+      ],
+      "nox_xxx_math_509EA0": [
+        {
+          "file": "src/legacy/map_population_rooms.go",
+          "text": "mapPaintOrientObject(u, int32(C.nox_xxx_math_509EA0(angle)))"
+        },
+        {
+          "file": "src/legacy/GAME4_3.c",
+          "text": "v2 = nox_xxx_math_509EA0(a2);"
+        },
+        {
+          "file": "src/legacy/visibility_effects_fx.go",
+          "text": "b = append(b, byte(C.nox_xxx_math_509EA0(C.int(direction))))"
+        },
+        {
+          "file": "src/legacy/GAME3.c",
+          "text": "*((uint8_t*)result + 297) = nox_xxx_math_509EA0(a4);"
+        },
+        {
+          "file": "src/legacy/wall.go",
+          "text": "return int(C.nox_xxx_math_509EA0(C.int(a1)))"
+        },
+        {
+          "file": "src/legacy/GAME4_1.h",
+          "text": "int nox_xxx_math_509EA0(int a1);"
+        }
+      ],
+      "sub_551780": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "int sub_551780(float4* a1, float a2, float a3, float a4, float2* a5, int a6);"
+        }
+      ],
+      "nox_xxx_wallMath_427F30": [
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "text": "if (nox_xxx_wallMath_427F30(&v69, (uint32_t*)a1)) {"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "text": "if (nox_xxx_wallMath_427F30(&v69, (uint32_t*)a1)) {"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "text": "if (nox_xxx_wallMath_427F30(&v82, (uint32_t*)a2)) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "nox_xxx_wallMath_427F30(&v3, a2))) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "nox_xxx_wallMath_427F30(&v4, a2))) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "nox_xxx_wallMath_427F30(&v3, a2))) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "nox_xxx_wallMath_427F30(&v4, a2))) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "nox_xxx_wallMath_427F30(&v3, a2))) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "nox_xxx_wallMath_427F30(&v5, a2))) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "v32.field_4 = 23 * (unsigned char)v10[6], nox_xxx_wallMath_427F30(&v32, v2))) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "if (!nox_xxx_wallMath_427F30(&v32, v3)) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "text": "int nox_xxx_wallMath_427F30(int2* a1, int* a2);"
+        },
+        {
+          "file": "src/legacy/GAME4.c",
+          "text": "(v26.field_0 = (long long)v2[2], v26.field_4 = (long long)v2[3], nox_xxx_wallMath_427F30(&v26, a1))) {"
+        },
+        {
+          "file": "src/legacy/GAME4.c",
+          "text": "nox_xxx_wallMath_427F30(&v26, v3))) {"
+        }
+      ],
+      "sub_551870": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "int sub_551870(float4* a1, float a2, float a3, float a4, float2* a5, int a6);"
+        }
+      ],
+      "sub_4D3E30": [
+        {
+          "file": "src/legacy/GAME3_2.h",
+          "text": "int sub_4D3E30(float2* a1, float2* a2);"
+        },
+        {
+          "file": "src/legacy/GAME4.c",
+          "text": "sub_4D3E30(&a1a, &a2a);"
+        },
+        {
+          "file": "src/legacy/GAME4.c",
+          "text": "sub_4D3E30((float2*)(a1 + 56), &v4);"
+        }
+      ],
+      "sub_550CB0": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "char sub_550CB0(float2* a1, float2* a2);"
+        }
+      ],
+      "sub_428170": [
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "text": "sub_428170((uint32_t*)a1, &v70);"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "text": "sub_428170((uint32_t*)a1, &v70);"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "text": "sub_428170((uint32_t*)a2, &v83);"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "text": "sub_428170((uint32_t*)a2, &v83);"
+        },
+        {
+          "file": "src/legacy/maps.go",
+          "text": "C.sub_428170(a1, (*C.int4)(a2))"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "sub_428170(a1, &v9);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "sub_428170(a1, &v9);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "sub_428170(a1, &v12);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "sub_428170(a1, &v33);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "sub_428170(v2, &v33);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "sub_428170(a2, &v33);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "text": "sub_428170(v3, &v33);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "text": "int sub_428170(void* a1, int4* a2);"
+        },
+        {
+          "file": "src/legacy/GAME4.c",
+          "text": "sub_428170(&v11, &v25);"
+        },
+        {
+          "file": "src/legacy/GAME4.c",
+          "text": "sub_428170(v18, &v17);"
+        },
+        {
+          "file": "src/legacy/GAME4.c",
+          "text": "sub_428170(a1, &v30);"
+        }
+      ],
+      "nox_shape_box_calc": [
+        {
+          "file": "src/legacy/object_xfer_types.go",
+          "text": "C.nox_shape_box_calc((*C.nox_shape)(unsafe.Pointer(&u.Shape)))"
+        },
+        {
+          "file": "src/legacy/map_drawables_types.go",
+          "text": "func mapDrawableBox(d *client.Drawable)                    { C.nox_shape_box_calc((*C.nox_shape)(unsafe.Add(d.C(), 44))) }"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "text": "void nox_shape_box_calc(nox_shape* s);"
+        }
+      ],
+      "nox_xxx_xferDirectionToAngle_509E00": [
+        {
+          "file": "src/legacy/creature_xfer_fields.go",
+          "text": "d := server.Dir16(C.nox_xxx_xferDirectionToAngle_509E00((*C.uint32_t)(unsafe.Pointer(&direction[0]))))"
+        },
+        {
+          "file": "src/legacy/reward_initializers.go",
+          "text": "dir := int32(C.nox_xxx_xferDirectionToAngle_509E00((*C.uint32_t)(u.InitData)))"
+        },
+        {
+          "file": "src/legacy/GAME4_1.h",
+          "text": "int nox_xxx_xferDirectionToAngle_509E00(uint32_t* a1);"
+        }
+      ],
+      "sub_5504B0": [
+        {
+          "file": "src/legacy/GAME5.h",
+          "text": "void sub_5504B0(int a2);"
+        },
+        {
+          "file": "src/legacy/GAME5.c",
+          "text": "sub_5504B0(a1);"
+        }
+      ]
+    },
+    "edges": {
+      "sub_427C80": [],
+      "sub_427DF0": [],
+      "nox_xxx_wallMath_427F30": [],
+      "sub_428170": [],
+      "nox_xxx_pointInRect_4281F0": [],
+      "sub_428220": [],
+      "nox_shape_box_calc": [],
+      "sub_4D3E30": [],
+      "nox_xxx_xferDirectionToAngle_509E00": [],
+      "nox_xxx_xferIndexedDirection_509E20": [],
+      "nox_xxx_mathDirection4ToAngle_509E90": [],
+      "nox_xxx_math_509EA0": [
+        "nox_xxx_xferIndexedDirection_509E20"
+      ],
+      "nox_xxx_math_509ED0": [],
+      "nox_xxx_utilNormalizeVector_509F20": [],
+      "sub_54FFC0": [
+        "sub_550280",
+        "sub_5502F0",
+        "sub_550380"
+      ],
+      "sub_550280": [],
+      "sub_5502F0": [],
+      "sub_550380": [
+        "sub_550480"
+      ],
+      "sub_550480": [],
+      "sub_5504B0": [
+        "sub_550580"
+      ],
+      "sub_550580": [
+        "sub_550760",
+        "sub_550A10",
+        "sub_550CB0"
+      ],
+      "sub_550760": [],
+      "sub_550A10": [],
+      "sub_550CB0": [],
+      "nox_xxx_collisionCheckCircleCircle_550D00": [],
+      "sub_550F80": [],
+      "sub_551250": [
+        "sub_5516A0",
+        "sub_551960"
+      ],
+      "sub_5516A0": [
+        "sub_551780",
+        "sub_551870"
+      ],
+      "sub_551780": [],
+      "sub_551870": [],
+      "sub_551960": [
+        "sub_5516A0",
+        "sub_551A90"
+      ],
+      "sub_551A90": []
+    }
+  }
+}

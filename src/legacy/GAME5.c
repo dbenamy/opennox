@@ -2579,11 +2579,8 @@ int sub_550A10(int a1, float2* a2, float2* a3, float4* a4, float2* a5, float a6)
 //----- (00550CB0) --------------------------------------------------------
 char sub_550CB0(float2* a1, float2* a2) {
 	double v2;   // st7
-	char v3 = 0; // fps^1
 	bool v4;     // c0
-	char v5;     // c2
 	bool v6;     // c3
-	char v7;     // ah
 	bool v8;     // c0
 	bool v9;     // c3
 	char result; // al
@@ -2592,12 +2589,10 @@ char sub_550CB0(float2* a1, float2* a2) {
 	v11 = a1->field_0 - a2->field_0;
 	v2 = a1->field_4 - a2->field_4;
 	v4 = v11 < 16.263456;
-	v5 = 0;
 	v6 = v11 == 16.263456;
-	v7 = v3;
 	v8 = v2 < 0.0;
 	v9 = v2 == 0.0;
-	if (v7 & 0x41) {
+	if (v4 || v6) {
 		result = 8;
 		if (v8 || v9) {
 			result = 1;
@@ -2751,10 +2746,10 @@ void sub_550F80(float* a1, int a2) {
 		v16.field_0 = *(float*)(a2 + 64) - v2[16];
 		v16.field_4 = *(float*)(a2 + 68) - v2[17];
 		nox_xxx_collSysAddCollision_548630(a2, (unsigned int)v2, &v16);
-		if (((uint8_t)v2[4] & 8) == 8 || (*(uint8_t*)(a2 + 16) & 8) == 8) {
+		if ((*((uint8_t*)v2 + 16) & 8) == 8 || (*(uint8_t*)(a2 + 16) & 8) == 8) {
 			v3 = 0;
 		}
-		if (!((uint8_t)v2[2] & 6) || (v6 = *(uint32_t*)(a2 + 16), !(v6 & 0x2000))) {
+		if (!(*((uint8_t*)v2 + 8) & 6) || (v6 = *(uint32_t*)(a2 + 16), !(v6 & 0x2000))) {
 			if (v3) {
 				if (v21 <= (double)v25) {
 					v7 = v25;
@@ -2801,7 +2796,7 @@ void sub_550F80(float* a1, int a2) {
 				sub_548600((int)v2, v19, v20);
 			}
 		}
-		if ((uint32_t)v2[4] & 0x8000000) {
+		if (*((uint32_t*)v2 + 4) & 0x8000000) {
 			nox_xxx_unitHasCollideOrUpdateFn_537610((int)v2);
 			*((uint32_t*)v2 + 4) &= 0xF7FFFFFF;
 		}

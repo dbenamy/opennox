@@ -207,6 +207,7 @@ target build selection and linker evidence.
 | Server-configuration corrected C prerequisites | 74 | 46,393 | +2 | 0 |
 | Server configuration, rule picker, admission persistence and dead helpers | 74 | 45,473 | −920 | 0 |
 | Map polygon lifecycle, geometry, actor events and serialization | 74 | 44,401 | −1,072 | 0 |
+| Geometry prerequisite correction (unused quadrant locals; no conversion) | 74 | 44,396 | −5 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
@@ -231,3 +232,7 @@ qualification record and retained interfaces.
 The map-polygon conversion removes **1,072 physical C lines**, including the
 selected functions and three private globals. Current C: **44,401 / 74 files /
 zero reference C**. See [MAP_POLYGONS.md](MAP_POLYGONS.md) for qualification.
+
+Geometry prerequisite corrections remove five unused quadrant local lines. Current
+C: **44,396 / 74 files / zero reference C**. This is not conversion progress; see
+[WORLD_GEOMETRY.md](WORLD_GEOMETRY.md) for qualified behavior changes.
