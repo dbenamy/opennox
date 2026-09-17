@@ -444,7 +444,7 @@ func Sub_4EDD70() {
 	C.sub_4EDD70()
 }
 func Sub_4573B0() {
-	C.sub_4573B0()
+	teamUIRequestsReset()
 }
 func Sub_4264D0() {
 	C.sub_4264D0()
@@ -456,10 +456,10 @@ func Sub_426060() {
 	C.sub_426060()
 }
 func Sub_455C30() int {
-	return int(C.sub_455C30())
+	return teamUICTFConstruct()
 }
 func Sub_456070() int {
-	return int(C.sub_456070())
+	return teamUIBallConstruct()
 }
 func Nox_xxx_guiHealthManaInit_4714E0() int {
 	return uiMeterInit()
@@ -588,10 +588,10 @@ func Sub_445770() {
 	C.sub_445770()
 }
 func Sub_456240() {
-	C.sub_456240()
+	teamUIHUDDestroy(true)
 }
 func Sub_455EE0() {
-	C.sub_455EE0()
+	teamUIHUDDestroy(false)
 }
 func Sub_4505E0() {
 	briefingDestroy()
@@ -656,10 +656,10 @@ func Sub_45D500(a1 int) {
 	bookTemporaryShow(a1)
 }
 func Sub_455A00(a1 int) {
-	C.sub_455A00(C.int(a1))
+	teamUIHUDShow(false, a1)
 }
 func Sub_455F10(a1 int) {
-	C.sub_455F10(C.int(a1))
+	teamUIHUDShow(true, a1)
 }
 func Nox_xxx_mapFindPlayerStart_4F7AB0(a2 *server.Object) types.Pointf {
 	cp, freeCp := alloc.New(C.float2{})

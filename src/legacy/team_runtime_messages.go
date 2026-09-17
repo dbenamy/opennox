@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME2.h"
-#include "client__gui__servopts__playrlst.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"unsafe"
@@ -52,7 +45,7 @@ func teamRuntimeDescribe(t *server.Team, to int) {
 }
 func teamRuntimeAnnounce(t *server.Team) {
 	if t != nil {
-		C.sub_457230((*C.wchar2_t)(t.C()))
+		teamUITeamAdd(t.Name())
 		teamRuntimeDescribe(t, 159)
 	}
 }
@@ -60,7 +53,7 @@ func teamRuntimeRename(t *server.Team, name *uint16) {
 	if t == nil {
 		return
 	}
-	C.sub_457010(C.int(uintptr(t.C())), (*C.wchar2_t)(unsafe.Pointer(name)))
+	teamUITeamRename(t, alloc.GoString16(name))
 	*teamRuntimeWord(t, 68) = 0
 	if noxflags.HasGame(1) {
 		var b [46]byte

@@ -64,9 +64,9 @@ func PortTestTeamRuntimeSelect(op string, tm *server.Team) int {
 	case "flag-count":
 		return int(teamRuntimeFlagCount)
 	case "capflag":
-		return int(C.nox_xxx_mapInfoSetCapflag_417EA0())
+		return teamUIMapCTF()
 	case "flagball":
-		return int(C.nox_xxx_mapInfoSetFlagball_417F30())
+		return int(teamUIMapBall())
 	default:
 		panic(op)
 	}

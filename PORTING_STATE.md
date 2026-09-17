@@ -2,48 +2,51 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 51k lines** — **51,225 physical lines in 82 production
-`.c` files**, zero reference C. Latest conversion removes **1,072 lines**; the
-qualified team UI prerequisites add 22 before the next conversion.
+**Rough C remaining: about 50k lines** — **50,177 physical lines in 80 production
+`.c` files**, zero reference C. Latest conversion removes **1,048 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — qualified team UI C baseline
+## Current — team UI native conversion qualified
 
-This checkpoint accompanies the corrected team HUD/player-list C baseline.
-Parent conversion: **`6963545e`**. Five independently reproduced C prerequisites
-are corrected and qualified: refresh metadata ownership, full-name lookup,
-rename targeting/metadata, signed selection eligibility, missing-resource guard.
-See [TEAM_UI.md](docs/porting/TEAM_UI.md) and DECISIONS.md.
+Corrected C baseline **e86e6b21** was committed/pushed before conversion. All
+**35 live functions / 943 body lines** are native. Two C translation units and five
+private C globals are gone; 14 Go-backed interfaces remain / 21 retired. Go callers
+and fixtures call Go directly. Flagball root stays shared with unported C callback
+sub_456140. Row storage preserves its 72-byte layout and address-stable allocation;
+list algorithms and ownership are Go. No C algorithm remains solely for testing.
 
-**51,225 physical C lines / 82 files / zero reference C** (+22 prerequisite lines).
-Accepted conversion: **35 live functions / 943 C body lines**, no orphans. Corrected
-bodies: build/port-team-ui/corrected-scope.json; original reachability/ref audit in
-the same directory. Keep the Flagball root pointer shared: the adjacent, unported
-C status setter sub_456140 still reads it. No native UI implementation installed.
+All three broader sweeps pass without skips: **415 / 414 / 415 roots**,
+**56,434 / 56,433 / 56,434 leaves**, **170 identical captures / 59,780 records**,
+in **292.34 / 288.66 / 354.17s**. The server excludes the client-only occlusion root.
+Fresh production passes in **301.60s**: all three builds/ABI, exact known
+asset-suite failures (1,553 entries; 15 pass / 3 fail / 32 no-test), gameplay,
+save/load and flat rendering. Forced expansion removes 51 maps and regenerates
+one exactly. All four gates share the same unchanged **2,097-file source manifest**;
+all sessions are joined. Client SHA-256:
+`226200f02134e47708ec3239a20c72d185ca39e7931e9fd05cf665c4128a2bc1`.
+Artifacts: build/port-team-ui/native-{default,server,highres,production-final},
+native-audit.json and interface-audit.json. Manifest: team-ui-batch.json;
+selection: team-ui-tests.txt. Frozen original-C expectations are unchanged.
 
-C baseline default/server/highres all pass **74 roots / 11,136 leaves**, **59
-identical groups / 11,660 records**, no skips, in **50.47 / 136.09 / 61.61s**.
-Nineteen new UI captures are frozen; 40 preceding captures unchanged. Fresh
-production passes in **375.08s**: three builds/ABI, exact known asset failures,
-gameplay, save/load and flat rendering (51 maps removed, one regenerated).
-All four gates share the same unchanged **2,093-file source manifest**.
-All sessions joined; source may be edited after baseline commit/push.
+The first production attempt had a manifest-only error: the shared Flagball C
+variable was in the Go-export list. Corrected to retained_c; final production
+passes without source or golden changes. Five original-C UI fixes and ASCII-only
+name folding are documented in TEAM_UI.md / DECISIONS.md for review.
 
-Manifest/selection: docs/porting/team-ui-c-batch.json / team-ui-focused-tests.txt.
-Artifacts: build/port-team-ui/c-{default,server,highres,production}, c-audit.json.
-Preserve frozen hashes. All ignored fixture and freeze scripts are consumed.
-**Uninstalled drafts:** native-hud-draft.go and translation-review.md in that
-build directory. Review before using; they are not compiled or qualified.
+Next: commit/push this qualified conversion, then server-options UI. Read-only
+scope audit in build/port-server-options selects **33 live functions / 1,252 body
+lines**, plus a **28-line orphan** (sub_457FE0, called only in two literal if(0)
+blocks). plan-draft.md describes the test/owner matrix. Candidate reachability and
+state audits are advisory; numeric references and callbacks require manual review.
+Initial mode fixture drafts there are uninstalled. No user decision blocks work.
 
-Next commit/push this baseline, translate the batch, qualify/commit/push and
-continue. Source build/baseline/env.sh for every Go command. Never edit source
-while builds/tests read it. Maximum three heavy jobs. No substantial user blocker.
-
-Disk: prior team scenario dedups reclaimed 3.32 GB; generated Go cache pruning
-reclaimed 23.33 GB. Those manifests are consumed. Preserve current dependencies,
-module cache, source, qualification records, original assets and unrelated archive.
+Source build/baseline/env.sh for Go. Maximum three heavy jobs; do not edit source
+while qualification reads it. Team UI ignored drafts/install/freeze scripts are
+consumed or stale: never recopy them. Preserve original assets, module cache and
+archive. Prior Go-cache pruning and scenario-dedup manifests are consumed. Around
+22 GB remains free; the latest team-UI scenarios have not been deduplicated.
 
 ### Completed — team runtime
 

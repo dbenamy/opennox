@@ -1973,29 +1973,6 @@ char* sub_417B80(char a1, int a2, int a3) {
 	return result;
 }
 
-//----- (00417EA0) --------------------------------------------------------
-int nox_xxx_mapInfoSetCapflag_417EA0() {
-	int v0; // eax
-	int v1; // esi
-
-	LOBYTE(v0) = sub_417EC0();
-	v1 = v0;
-	if (v0) {
-		sub_455A50(2);
-	}
-	return v1;
-}
 // 417EA6: variable 'v0' is possibly undefined
 
-//----- (00417F30) --------------------------------------------------------
-char nox_xxx_mapInfoSetFlagball_417F30() {
-	int v0; // eax
-
-	LOBYTE(v0) = sub_417EC0();
-	if (v0) {
-		sub_455F60();
-		LOBYTE(v0) = sub_417F50(0);
-	}
-	return v0;
-}
 // 417F37: variable 'v0' is possibly undefined

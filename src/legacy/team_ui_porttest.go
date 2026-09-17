@@ -9,14 +9,8 @@ package legacy
 #include "GAME1_2.h"
 #include "client__gui__gui_ctf.h"
 #include "client__gui__servopts__playrlst.h"
-extern uint32_t dword_5d4594_1045604;
 extern uint32_t dword_5d4594_527656;
 extern uint32_t dword_5d4594_1045636;
-extern uint32_t dword_5d4594_1045640;
-extern uint32_t dword_5d4594_1045684;
-extern uint32_t dword_5d4594_1045688;
-extern uint32_t dword_5d4594_1045692;
-int sub_456DF0(int a1);
 */
 import "C"
 
@@ -28,69 +22,69 @@ import (
 	"unsafe"
 )
 
-// The thin accessor calls original production C; it contains no UI algorithms.
+// Thin accessors call the native UI without duplicating its algorithms.
 func PortTestTeamUI(op string, w *gui.Window, tm *server.Team, code, value int, text string) int {
 	switch op {
 	case "ctf-construct":
-		return int(C.sub_455C30())
+		return teamUICTFConstruct()
 	case "ctf-show":
-		return int(C.sub_455A00(C.int(value)))
+		return teamUIHUDShow(false, value)
 	case "ctf-open":
-		return int(C.sub_455A50(C.char(value)))
+		return int(teamUICTFOpen(byte(value)))
 	case "ctf-hide":
-		return int(C.sub_455C10())
+		return teamUIHUDHide(false)
 	case "ctf-select":
-		return int(C.sub_455E70(C.uchar(code)))
+		return teamUICTFSelect(byte(code))
 	case "ctf-tooltip":
-		C.sub_455D80(C.uchar(code), C.char(value))
+		teamUICTFTooltip(byte(code), byte(value))
 	case "ctf-destroy":
-		return int(C.sub_455EE0())
+		return teamUIHUDDestroy(false)
 	case "ball-construct":
-		return int(C.sub_456070())
+		return teamUIBallConstruct()
 	case "ball-show":
-		return int(C.sub_455F10(C.int(value)))
+		return teamUIHUDShow(true, value)
 	case "ball-open":
-		return int(C.sub_455F60())
+		return teamUIBallOpen()
 	case "ball-hide":
-		return int(C.sub_456050())
+		return teamUIHUDHide(true)
 	case "ball-destroy":
-		return int(C.sub_456240())
+		return teamUIHUDDestroy(true)
 	case "players-construct":
-		return int(C.nox_xxx_guiServerPlayersLoad_456270(C.int(code)))
+		return teamUIPlayersConstruct((*gui.Window)(unsafe.Pointer(uintptr(code))))
 	case "players-refresh":
-		return int(C.sub_456500())
+		return teamUIPlayersRefresh()
 	case "players-refresh-if-open":
-		return int(C.sub_4573A0())
+		return teamUIPlayersRefreshOpen()
 	case "players-destroy":
-		return int(uintptr(unsafe.Pointer(C.sub_456D60(C.int(value)))))
+		return int(teamUIPlayersDestroy(value != 0))
 	case "player-add":
-		return int(C.sub_457140(C.int(code), internWStr(text)))
+		return teamUIPlayerAdd(code, text)
 	case "player-remove":
-		return int(C.sub_456DF0(C.int(code)))
+		return teamUIPlayerRemove(code)
 	case "player-find":
-		return int(C.sub_456E40(C.int(code), C.int(value)))
+		return teamUIPlayerFind(code, value != 0)
 	case "player-team":
-		return int(C.sub_4571A0(C.int(code), C.int(value)))
+		return teamUIPlayerTeam(code, value)
 	case "team-add":
-		return int(uintptr(unsafe.Pointer(C.sub_457230((*C.wchar2_t)(tm.C())))))
+		return teamUITeamAdd(tm.Name())
 	case "team-color":
-		return int(C.sub_457120(C.int(uintptr(tm.C()))))
+		return int(teamUITeamColor(tm))
 	case "team-rename":
-		return int(C.sub_457010(C.int(uintptr(tm.C())), internWStr(text)))
+		return teamUITeamRename(tm, text)
 	case "team-remove":
-		return int(C.sub_456EA0(internWStr(text)))
+		return teamUITeamRemove(text)
 	case "team-find":
-		return int(C.sub_456F10(internWStr(text), C.int(value)))
+		return teamUITeamFind(text, value != 0)
 	case "team-clear":
-		return int(C.sub_456FA0())
+		return teamUITeamClear()
 	case "team-join":
-		C.sub_456BB0(C.int(uintptr(tm.C())))
+		teamUIJoin(tm)
 	case "requests-reset":
-		C.sub_4573B0()
+		teamUIRequestsReset()
 	case "map-ctf":
-		return int(C.nox_xxx_mapInfoSetCapflag_417EA0())
+		return teamUIMapCTF()
 	case "map-ball":
-		return int(C.nox_xxx_mapInfoSetFlagball_417F30())
+		return int(teamUIMapBall())
 	default:
 		panic(op)
 	}
@@ -99,34 +93,30 @@ func PortTestTeamUI(op string, w *gui.Window, tm *server.Team, code, value int, 
 func PortTestTeamUIDraw(op string, w *gui.Window) int {
 	switch op {
 	case "ctf":
-		return int(C.sub_455CD0((*C.uint8_t)(w.C()), (*C.uint32_t)(w.DrawData().C())))
+		return teamUICTFDraw(w, w.DrawData())
 	case "ball":
-		return int(C.sub_4560D0(C.int(uintptr(w.C())), C.int(uintptr(w.DrawData().C()))))
+		return teamUIBallDraw(w, w.DrawData())
 	case "players":
-		return int(C.sub_456640(C.int(uintptr(w.C())), C.int(uintptr(w.DrawData().C()))))
+		return teamUIPlayersDraw(w, w.DrawData())
 	default:
 		panic(op)
 	}
 }
 func PortTestTeamUIEvent(w, child *gui.Window, event, value int) int {
-	return int(C.sub_4567C0(C.int(uintptr(w.C())), C.int(event), (*C.int)(child.C()), C.int(value)))
+	return teamUIPlayersEvent(w, event, child, value)
 }
-func PortTestTeamUISelectedName(index int) string {
-	var b [128]uint16
-	C.sub_456D00(C.int(index), (*C.wchar2_t)(unsafe.Pointer(&b[0])))
-	return alloc.GoString16S(b[:])
-}
+func PortTestTeamUISelectedName(index int) string { return teamUISelectedName(index) }
 
 // Extracted window pointers are independent of the old backing-blob slots.
 func PortTestTeamUIWords() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
 		"ball-start-type": (*uint32)(unsafe.Pointer(&C.dword_5d4594_527656)),
-		"ctf":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045604)),
+		"ctf":             teamUIWord(1045604),
 		"ball":            (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045636)),
-		"ball-visible":    (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045640)),
-		"players":         (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045684)),
-		"join":            (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045688)),
-		"rename":          (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045692)),
+		"ball-visible":    teamUIWord(1045640),
+		"players":         teamUIWord(1045684),
+		"join":            teamUIWord(1045688),
+		"rename":          teamUIWord(1045692),
 	}
 	old := make(map[string]uint32)
 	for k, p := range words {
@@ -136,12 +126,12 @@ func PortTestTeamUIWords() (map[string]*uint32, func()) {
 	region := unsafe.Slice((*byte)(memmap.PtrOff(0x5D4594, 1045608)), 92)
 	saved := append([]byte(nil), region...)
 	clear(region)
-	C.nox_common_list_clear_425760((*C.nox_list_item_t)(memmap.PtrOff(0x5D4594, 1045652)))
-	C.nox_common_list_clear_425760((*C.nox_list_item_t)(memmap.PtrOff(0x5D4594, 1045668)))
+	listClear((*legacyListNode)(memmap.PtrOff(0x5D4594, 1045652)))
+	listClear((*legacyListNode)(memmap.PtrOff(0x5D4594, 1045668)))
 	return words, func() {
-		C.sub_456D60(1)
-		C.sub_455EE0()
-		C.sub_456240()
+		teamUIPlayersDestroy(true)
+		teamUIHUDDestroy(false)
+		teamUIHUDDestroy(true)
 		copy(region, saved)
 		for k, p := range words {
 			*p = old[k]

@@ -91,11 +91,11 @@ func Sub_459CD0() {
 	C.sub_459CD0()
 }
 func Sub_456FA0() {
-	C.sub_456FA0()
+	teamUITeamClear()
 }
 func Sub_418E40(t *server.Team, p *server.ObjectTeam) {
 	teamRuntimeUnlink(t, p)
 }
 func Sub_456EA0(name string) {
-	C.sub_456EA0(internWStr(name))
+	teamUITeamRemove(name)
 }

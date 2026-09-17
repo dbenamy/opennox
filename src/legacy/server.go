@@ -416,19 +416,19 @@ func Nox_xxx_ruleSetNoRespawn_40A5E0(a1 int) {
 	C.nox_xxx_ruleSetNoRespawn_40A5E0(C.int(a1))
 }
 func Sub_455C10() {
-	C.sub_455C10()
+	teamUIHUDHide(false)
 }
 func Sub_456050() {
-	C.sub_456050()
+	teamUIHUDHide(true)
 }
 func Nox_xxx_mapFindCrown_4CFC30() {
 	C.nox_xxx_mapFindCrown_4CFC30()
 }
 func Nox_xxx_mapInfoSetCapflag_417EA0() int {
-	return int(C.nox_xxx_mapInfoSetCapflag_417EA0())
+	return teamUIMapCTF()
 }
 func Nox_xxx_mapInfoSetFlagball_417F30() int {
-	return int(C.nox_xxx_mapInfoSetFlagball_417F30())
+	return int(teamUIMapBall())
 }
 func Nox_xxx_mapInfoSetKotr_4180D0() int {
 	return teamRuntimeCrown()

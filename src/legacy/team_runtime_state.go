@@ -181,7 +181,7 @@ func teamRuntimeClearPlayers(t *server.Team) {
 	for pl := s.Players.First(); pl != nil; pl = s.Players.Next(pl) {
 		m := teamRuntimeObject(int(pl.NetCodeVal))
 		if m != nil && m.ID == t.ID() {
-			C.sub_4571A0(C.int(pl.NetCodeVal), 0)
+			teamUIPlayerTeam(int(pl.NetCodeVal), 0)
 			teamRuntimeUnlink(t, m)
 			if m.ID == 0 {
 				*teamRuntimeWord(t, 48)--

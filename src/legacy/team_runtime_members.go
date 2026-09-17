@@ -49,7 +49,7 @@ func teamRuntimeJoin(id server.TeamID, m *server.ObjectTeam, notify, code, reloc
 	m.Field0 = *teamRuntimeWord(t, 44)
 	teamRuntimeSetFirst(t, m)
 	if code == ClientPlayerNetCode() {
-		C.sub_455E70(C.uchar(t.ID()))
+		teamUICTFSelect(byte(t.ID()))
 	}
 	if noxflags.HasGame(1) {
 		if noxflags.HasGame(0x2000) {
@@ -76,7 +76,7 @@ func teamRuntimeJoin(id server.TeamID, m *server.ObjectTeam, notify, code, reloc
 				binary.LittleEndian.PutUint32(b[2:], uint32(t.ID()))
 				binary.LittleEndian.PutUint16(b[6:], uint16(code))
 				binary.LittleEndian.PutUint16(b[8:], u.TypeInd)
-				C.sub_4571A0(C.int(code), C.int(t.ID()))
+				teamUIPlayerTeam(code, int(t.ID()))
 				gameplayReportSend(159, b, true, 1)
 			}
 		}
@@ -105,7 +105,7 @@ func teamRuntimeLeave(m *server.ObjectTeam, code int) {
 		return
 	}
 	if noxflags.HasGame(1) && noxflags.HasGame(0x2000) {
-		C.sub_4571A0(C.int(code), 0)
+		teamUIPlayerTeam(code, 0)
 		teamRuntimeSendID(159, 2, uint32(code))
 	}
 	teamRuntimeUnlink(t, m)
@@ -128,14 +128,14 @@ func teamRuntimeSwitch(m *server.ObjectTeam, t *server.Team, code, relocate int)
 		binary.LittleEndian.PutUint32(b[2:], uint32(t.ID()))
 		binary.LittleEndian.PutUint16(b[6:], uint16(code))
 		gameplayReportSend(159, b, true, 1)
-		C.sub_4571A0(C.int(code), C.int(t.ID()))
+		teamUIPlayerTeam(code, int(t.ID()))
 	}
 	old := GetServer().S().Teams.ByID(m.ID)
 	*teamRuntimeWord(old, 48)--
 	teamRuntimeUnlink(old, m)
 	teamRuntimeJoin(t.ID(), m, 0, code, relocate)
 	if code == ClientPlayerNetCode() {
-		C.sub_455E70(C.uchar(t.ID()))
+		teamUICTFSelect(byte(t.ID()))
 	}
 	return 1
 }

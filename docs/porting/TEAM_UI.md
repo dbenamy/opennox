@@ -98,7 +98,7 @@ Production gate: c-production. All sessions are joined.
 Commit/push this qualified corrected baseline, then translate without changing
 frozen expectations and qualify the conversion. Never edit sources while a build
 or test reads them. Ignored fixture/freeze scripts are consumed; do not rerun them.
-The ignored native-hud-draft.go and translation-review.md are uninstalled drafts.
+The ignored native drafts and install scripts were consumed by the conversion below.
 
 ## Disk maintenance
 
@@ -109,3 +109,40 @@ local Go 1.26 cache refreshes last-use mtimes within one hour. Current dependenc
 module cache, source, qualification records, original assets and archive remain.
 Prune manifest: build/port-team-ui/pruned-go-cache.json; it and prior dedup manifests
 are consumed. Older removed cache entries can be rebuilt.
+
+## Qualified native conversion
+
+Corrected baseline **e86e6b21** is committed/pushed. All 35 selected functions are
+native; two C translation units are gone. Working count: **50,177 physical C
+lines / 80 files / zero reference C** (1,048 removed including separators, file
+headers and five private global definitions). Fourteen C interfaces remain;
+21 are retired. Go callers and fixtures call Go directly. Five private globals
+move to Go; the Flagball root remains shared with its adjacent C status setter.
+The real row lists keep their address-stable 72-byte layout, with native typed
+allocation, list operations and cleanup. No C algorithms remain solely for tests.
+
+The focused native sweep passes all 74 roots against unchanged expectations.
+Adapter review preserves server-owned string lookup, single image loads, raw
+coordinate writes and raw draw positions; Window.SetPos adds normalization that
+the C helpers did not perform. Initial compile-only issues were the string-ID
+cast and two older fixtures calling retired wrappers. Broader three-target and
+fresh production gates use team-ui-batch.json / team-ui-tests.txt. No goldens
+were regenerated during conversion. Draft/install scripts are consumed.
+
+All three broader sweeps pass without skips: **415 / 414 / 415 roots**,
+**56,434 / 56,433 / 56,434 leaves**, **170 identical captures / 59,780 records**,
+in **292.34 / 288.66 / 354.17s**. The server excludes the client-only occlusion root.
+Fresh production passes in **301.60s**: all three builds/ABI, exact known
+asset-suite failures (1,553 entries; 15 pass / 3 fail / 32 no-test), gameplay,
+save/load and flat rendering. Forced expansion removes 51 maps and regenerates
+one exactly. All four gates share the same unchanged **2,097-file source manifest**;
+all sessions are joined. Client SHA-256:
+`226200f02134e47708ec3239a20c72d185ca39e7931e9fd05cf665c4128a2bc1`.
+Artifacts: build/port-team-ui/native-{default,server,highres,production-final},
+native-audit.json and interface-audit.json. Manifest: team-ui-batch.json;
+selection: team-ui-tests.txt. Frozen original-C expectations are unchanged.
+
+The first production attempt stopped because the manifest classified the shared
+Flagball window C variable as a Go-backed function export. Corrected its category
+to retained_c and reran production in a fresh output directory. No source or
+expected capture changed; the final gate verifies the C symbol exists.

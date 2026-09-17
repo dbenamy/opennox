@@ -231,13 +231,13 @@ func Nox_xxx_cliSetSettingsAcquired_4169D0(a1 int) {
 	C.nox_xxx_cliSetSettingsAcquired_4169D0(C.int(a1))
 }
 func Sub_457140(a1 int, a2 *uint16) {
-	C.sub_457140(C.int(a1), (*C.ushort)(unsafe.Pointer(a2)))
+	teamUIPlayerAdd(a1, alloc.GoString16(a2))
 }
 func Sub_455920(a1 *uint16) {
 	C.sub_455920((*C.ushort)(unsafe.Pointer(a1)))
 }
 func Sub_456DF0(a1 int) {
-	C.sub_456DF0(C.int(a1))
+	teamUIPlayerRemove(a1)
 }
 func Sub_455950(a1 *uint16) {
 	C.sub_455950((*C.ushort)(unsafe.Pointer(a1)))

@@ -15,15 +15,15 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Team runtime is ported. The team HUD/player-list corrected C
-baseline is now qualified: 74 affected roots / 11,136 leaves on all three targets,
-59 identical captures, and fresh production/gameplay/save-load/flat rendering.
+scheduled pause. Team runtime and the team HUD/player-list UI are ported. The latest
+conversion passes broader default/server/highres sweeps, 170 identical captures,
+and fresh production/gameplay/save-load/flat rendering.
 
-Production C is **51,225 physical lines in 82 files**, with zero reference C.
-Five UI correctness prerequisites add 22 lines before the next conversion of
-35 live functions / 943 body lines. The full asset suite retains its exact three
-known failing packages. See [TEAM_UI.md](docs/porting/TEAM_UI.md) for evidence and
-review decisions; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Production C is **50,177 physical lines in 80 files**, with zero reference C.
+The latest conversion moves 35 live functions to Go and removes 1,048 C lines.
+The full asset suite retains its exact three known failing packages. See
+[TEAM_UI.md](docs/porting/TEAM_UI.md) for evidence and review decisions;
+[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 
