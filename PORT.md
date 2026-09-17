@@ -15,15 +15,16 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. World motion, sentries, decay, projectiles, movers, shooting traps
-and contact triggers are now in Go. The latest batch replaces 30 live functions;
-all three target sweeps and fresh production/gameplay qualification pass. See
-[WORLD_MOTION.md](docs/porting/WORLD_MOTION.md).
+scheduled pause. Spatial targeting, cursor selection and wall-contact normals are
+now in Go. The latest batch replaces eleven live functions; all three target sweeps
+and fresh production/gameplay qualification pass. See
+[SPATIAL_TARGETING.md](docs/porting/SPATIAL_TARGETING.md).
 
-Current production C is **40,777 physical lines in 74 files**, with zero reference C.
-The world-motion conversion removed **1,110 lines** from its corrected-C baseline.
-The asset suite retains its exact three known failing packages. Sentry unlink and
-one-shot trigger fixes were reproduced and qualified before conversion.
+Current production C is **40,218 physical lines in 74 files**, with zero reference C.
+This conversion removed **559 lines**, eleven obsolete interfaces and temporary C
+allocations in tracing and aim prediction. Qualification also reproduced and fixed
+an older callback bridge treating an integer token as a pointer; curve captures
+remain unchanged. The asset suite retains its exact three known failing packages.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target

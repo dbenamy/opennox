@@ -68,7 +68,7 @@ func spellEffectTrace(from, to types.Pointf, flags int) bool {
 }
 func spellEffectPlacement(from, to types.Pointf) bool {
 	ray := [4]float32{from.X, from.Y, to.X, to.Y}
-	return byte(C.nox_xxx_traceRay_5374B0((*C.float4)(unsafe.Pointer(&ray)))) != 0
+	return spatialRay(&ray)
 }
 func spellEffectSummonCost(id int32, u *server.Object) int32 {
 	if u != nil && u.ObjClass&4 != 0 {

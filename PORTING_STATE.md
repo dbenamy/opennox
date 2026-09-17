@@ -2,28 +2,43 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 41k lines** — **40,777 physical lines in 74 production
-`.c` files**, zero reference C. Latest conversion: **−1,110 lines**.
+**Rough C remaining: about 40k lines** — **40,218 physical lines in 74 production
+`.c` files**, zero reference C. Latest conversion: **−559 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — spatial-targeting C baseline qualified
+## Current — spatial-targeting Go conversion qualified
 
-World-motion parent **6541718f is committed and pushed**. The connected next batch
-covers **11 live C functions / 554 body lines**. All eleven focused roots and
-**26,142 records** repeat identically and pass frozen expectations. Static mapped
-checks pass. Three broader targets pass with no skips and identical captures;
-see [SPATIAL_TARGETING.md](docs/porting/SPATIAL_TARGETING.md) and
-spatial-targeting-c-qualification.json. Production reuse verifies all **2,244**
-parent source files unchanged, six new porttest files only, and three qualified
-binary hashes. Production C is unchanged: **40,777 / 74 files / zero reference**.
+C baseline **76ba09f8 is committed and pushed**. The native conversion replaces
+**11 functions / 554 body lines**, retains one ray export for a real C spell caller,
+and retires eleven obsolete interfaces plus one C global. Go owns cursor state;
+tracing and AI prediction no longer allocate temporary C point records.
 
-Next: commit/push this baseline, install the reviewed Go draft, then compare frozen
-captures and qualify three targets plus fresh production. No production changes
-have been installed. Drafts and guarded one-shot installer are under
-build/port-spatial-targeting. Do not rerun any prior batch installer or cleanup.
-The original archive and assets remain intact. No user decision is required.
+Focused native-2 passes **13 roots** (0.299s): eleven spatial captures / **26,142
+records** unchanged from C, existing curve captures and the opaque-token regression.
+All three broader targets pass with no skips: **706/705/706 roots** and
+**257 captures / 157,554 records** each. Fresh production passes all gates,
+including the exact known asset failures, gameplay, save/load and flat regeneration.
+All four gates share unchanged source; all sessions are joined. See
+[SPATIAL_TARGETING.md](docs/porting/SPATIAL_TARGETING.md) and
+spatial-targeting-native-qualification.json for counts, timings and binaries.
+
+Qualification caught an older curve callback bridge treating integer userdata as
+a pointer. A deterministic regression reproduced it before correction; typed point
+pointers plus an integer token now preserve the callback ABI. No goldens changed.
+Production C: **40,218 / 74 files / zero reference (−559)**.
+
+Next after committing/pushing: monster control and definitions. Read-only proposal
+covers **40 live functions / 1,001 body lines** and three orphan candidates / 31 lines.
+Comment-only name matches are not callers. Complete dynamic/preamble reachability
+and shipped table review, then reuse AI owners for C contracts. Proposal/reference/
+table audits are under build/port-monster-control. No next-batch source is installed.
+
+**Spatial install-native.py is consumed.** Work from src; never reinstall drafts
+or rerun old cleanup scripts. Current artifacts: build/port-spatial-targeting/
+native2-{default,server,highres}, native-production, native-focused-2. Original
+assets/archive are preserved. No user blocker or pending product decision.
 
 ## Qualified parent — world-motion Go conversion (6541718f, pushed)
 
@@ -1064,3 +1079,10 @@ Read-only next candidate: build/port-collision-core/proposal.json,
 combined-reachability.json and plan-draft.md. Twenty-three live functions /
 993 C body lines in collision dispatch/queues/activation and remaining contact
 geometry. No next-batch source or fixture changes installed.
+
+Disk cleanup reclaimed **6.184 GiB** from twelve completed scenario copies after
+verifying every removed file against the original asset hash. Per-run restoration
+manifests preserve how to recreate them. Original assets/archive, changed files
+and all reports remain. About **20 GiB** is free. The spatial-targeting
+**deduplicate-completed-assets.py --apply is consumed; never repeat deletion mode.**
+See build/port-spatial-targeting/completed-assets-{plan,audit}.json and applied log.

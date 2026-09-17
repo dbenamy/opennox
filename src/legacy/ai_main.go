@@ -110,7 +110,7 @@ func monsterShieldThreat(u *server.Object) *server.Object {
 	return (*server.Object)(unsafe.Pointer(uintptr(*memmap.PtrUint32(0x5D4594, 2487956))))
 }
 func monsterShieldCandidate(t, u *server.Object) {
-	if C.sub_54E6F0(combatPtr(u), combatPtr(t)) == 0 {
+	if !spatialTeamEligible(u, t) {
 		return
 	}
 	point := t.PrevPos

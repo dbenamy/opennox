@@ -204,7 +204,7 @@ func temporaryMeteorShower(u *server.Object) {
 	dx, dy := movementDirectionVector(int32(dir))
 	end := types.Ptf(float32(r*float64(dx)+float64(u.PosVec.X)), float32(r*float64(dy)+float64(u.PosVec.Y)))
 	ray := [4]float32{u.PosVec.X, u.PosVec.Y, end.X, end.Y}
-	if byte(C.nox_xxx_traceRay_5374B0((*C.float4)(unsafe.Pointer(&ray)))) != 0 {
+	if spatialRay(&ray) {
 		m := core.NewObjectByTypeID("Meteor")
 		if m != nil {
 			*equipmentWord(m.UpdateData, 0) = *equipmentWord(data, 0)

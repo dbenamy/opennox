@@ -2,13 +2,15 @@ package legacy
 
 /*
 #include "defs.h"
+static void effectsCurveCall(void* fn, int2* from, int2* to, int token) {
+ ((void (*)(int2*, int2*, int))fn)(from, to, token);
+}
 */
 import "C"
 
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"image"
 	"unsafe"
 )
@@ -69,9 +71,9 @@ func sub_4BEDE0(a, b, c, d *C.int2, steps C.int, shift C.float, callback, token 
 	points := [4]image.Point{AsPoint(unsafe.Pointer(a)), AsPoint(unsafe.Pointer(b)), AsPoint(unsafe.Pointer(c)), AsPoint(unsafe.Pointer(d))}
 	fn := unsafe.Pointer(uintptr(uint32(callback)))
 	effectCurveSegments(points, int(steps), float32(shift), func(from, to image.Point) {
-		// Typed pointers make the stack-copy/lifetime boundary visible to Go while
-		// preserving the external three-word callback ABI and opaque token bits.
-		ccall.CallVoidPtr3(fn, unsafe.Pointer(&from), unsafe.Pointer(&to), unsafe.Pointer(uintptr(uint32(token))))
+		// Point pointers expose their lifetime to cgo; token is an opaque integer,
+		// even when its bits happen to coincide with an address in the Go heap.
+		C.effectsCurveCall(fn, (*C.int2)(unsafe.Pointer(&from)), (*C.int2)(unsafe.Pointer(&to)), token)
 	})
 }
 

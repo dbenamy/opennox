@@ -20,7 +20,6 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/sound"
 	"github.com/opennox/opennox/v1/common/unit/ai"
-	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"math"
@@ -329,10 +328,7 @@ func combatMissile(u *server.Object) {
 		if proj := GetServer().S().NewObjectByTypeID(string(name)); proj != nil {
 			p := types.Pointf{X: math.Float32frombits(uint32(h.Args[0])), Y: math.Float32frombits(uint32(h.Args[1]))}
 			if h.Args[2] != 0 {
-				q, free := alloc.New(p)
-				C.nox_xxx_projAddVelocitySmth_533080(combatPtr(u), C.int(h.Args[2]), C.float(proj.SpeedCur), C.int(uintptr(unsafe.Pointer(q))))
-				p = *q
-				free()
+				spatialPredict(u, motionObject(uint32(h.Args[2])), proj.SpeedCur, &p)
 			}
 			dx, dy := float64(p.X)-float64(u.PosVec.X), float64(p.Y)-float64(u.PosVec.Y)
 			// The compiled C retains both deltas in x87 through length and velocity.

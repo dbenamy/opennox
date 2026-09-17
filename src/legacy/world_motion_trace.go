@@ -3,14 +3,12 @@ package legacy
 /*
 #include "GAME1_1.h"
 #include "GAME5.h"
-int sub_57CDB0(int2* a1, float* a2, float2* a3);
 extern uint32_t dword_5d4594_2488620;
 */
 import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
-	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"image"
@@ -19,11 +17,7 @@ import (
 )
 
 func motionTrace(u *server.Object, target *uint32, normal *types.Pointf) int8 {
-	// The retained spatial candidate helper receives the previous point as an
-	// integer address and calls back into Go. Keep that record C-backed.
-	points, free := alloc.New([2]types.Pointf{})
-	*points = [2]types.Pointf{u.PosVec, u.NewPos}
-	defer free()
+	points := [2]types.Pointf{u.PosVec, u.NewPos}
 	previous, next := &points[0], &points[1]
 	dx := float64(u.NewPos.X) - float64(u.PosVec.X)
 	dyWide := float64(u.NewPos.Y) - float64(u.PosVec.Y)
@@ -32,11 +26,10 @@ func motionTrace(u *server.Object, target *uint32, normal *types.Pointf) int8 {
 	var hit *server.Object
 	var objectNormal types.Pointf
 	probe := func() bool {
-		raw := uint32(C.sub_54E810(C.int(motionAddress(u)), (*C.float2)(unsafe.Pointer(next)), C.int(uintptr(unsafe.Pointer(previous)))))
-		if raw == 0 {
+		hit = spatialProbe(u, next, previous)
+		if hit == nil {
 			return false
 		}
-		hit = motionObject(raw)
 		objectNormal = types.Pointf{X: float32(float64(previous.X) - float64(hit.PosVec.X)), Y: float32(float64(previous.Y) - float64(hit.PosVec.Y))}
 		return true
 	}
@@ -65,7 +58,7 @@ func motionTrace(u *server.Object, target *uint32, normal *types.Pointf) int8 {
 		*memmap.PtrUint32(0x5D4594, 2488616) = uint32(grid.Y)
 		C.dword_5d4594_2488620 = 1
 		ray := [4]float32{start.X, start.Y, wallPoint.X, wallPoint.Y}
-		wall = C.sub_57CDB0((*C.int2)(unsafe.Pointer(&grid)), (*C.float)(unsafe.Pointer(&ray)), (*C.float2)(unsafe.Pointer(&wallNormal))) != 0
+		wall = spatialNormal(&[2]int32{int32(grid.X), int32(grid.Y)}, &ray, &wallNormal) != 0
 		u.NewPos = u.PosVec
 	}
 	if hit != nil {

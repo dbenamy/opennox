@@ -101,20 +101,6 @@ int sub_532880(int a1) {
 }
 
 //----- (00533080) --------------------------------------------------------
-int nox_xxx_projAddVelocitySmth_533080(int a1, int a2, float a3, int a4) {
-	int result;     // eax
-	double v5;      // st7
-	double v6;      // st6
-	long double v7; // st7
-
-	result = a2;
-	v5 = *(float*)(a2 + 56) - *(float*)(a1 + 56);
-	v6 = *(float*)(a2 + 60) - *(float*)(a1 + 60);
-	v7 = sqrt(v6 * v6 + v5 * v5) / a3;
-	*(float*)a4 = v7 * *(float*)(a2 + 80) + *(float*)(a2 + 56);
-	*(float*)(a4 + 4) = v7 * *(float*)(a2 + 84) + *(float*)(a2 + 60);
-	return result;
-}
 
 //----- (00534020) --------------------------------------------------------
 int sub_534020(int a1) { return (*(uint32_t*)(a1 + 12) >> 10) & 1; }
@@ -406,11 +392,9 @@ int sub_536E80(char* a1, int* a2) {
 }
 
 //----- (005374B0) --------------------------------------------------------
-int nox_xxx_traceRay_5374B0(float4* a1) { return nox_xxx_mapTraceRay_535250(a1, 0, 0, 9); }
 
 
 //----- (00537850) --------------------------------------------------------
-int sub_57CDB0(int2* a1, float* a2, float2* a3);
 
 // 537A87: variable 'v24' is possibly undefined
 

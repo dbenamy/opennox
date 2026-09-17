@@ -35,7 +35,6 @@ char nox_xxx_monsterPlayHurtSound_532800(nox_object_t* a1);
 int sub_532880(int a1);
 void sub_532930(int a1, unsigned short a2, unsigned short a3);
 int nox_xxx_soundDefaultDamageSound_532E20(nox_object_t* a1, nox_object_t* a2);
-int nox_xxx_projAddVelocitySmth_533080(int a1, int a2, float a3, int a4);
 int nox_xxx_unitIsEnemyTo_5330C0(nox_object_t* a1, nox_object_t* a2);
 nox_object_t* nox_xxx_enemyAggro_5335D0(nox_object_t* a1, float a2);
 double sub_5336D0(nox_object_t* a1);

@@ -210,6 +210,9 @@ target build selection and linker evidence.
 | Geometry prerequisite correction (unused quadrant locals; no conversion) | 74 | 44,396 | −5 | 0 |
 | World geometry, wall/circle/box responses, private threshold and wall spans | 74 | 42,982 | −1,414 | 0 |
 | Collision queues, activation, contact dispatch, private globals and separator cleanup | 74 | 41,886 | −1,096 | 0 |
+| World-motion corrected-C prerequisites (sentry/trigger corrections and orphan removal) | 74 | 41,887 | +1 | 0 |
+| World motion, sentries, decay, projectiles, movers, traps and triggers | 74 | 40,777 | −1,110 | 0 |
+| Spatial targeting, cursor selection, wall normals and private interfaces | 74 | 40,218 | −559 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
@@ -250,5 +253,3 @@ The collision-core conversion removes **1,096 physical C lines** across 23
 functions, eight private globals and obsolete address/separator cleanup. Current
 C: **41,886 / 74 files / zero reference C**. Ten exports remain for actual C callers;
 eighteen interfaces are retired. See [COLLISION_CORE.md](COLLISION_CORE.md).
-| World-motion corrected-C prerequisites (sentry/trigger corrections and orphan removal) | 74 | 41,887 | +1 | 0 |
-| World motion, sentries, decay, projectiles, movers, traps and triggers | 74 | 40,777 | −1,110 | 0 |

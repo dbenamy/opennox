@@ -1,0 +1,156 @@
+{
+  "status": "qualified native conversion",
+  "c_baseline": "76ba09f8",
+  "runs": {
+    "default": {
+      "seconds": 290.9972284110263,
+      "roots": 706,
+      "including_subtests": 43310,
+      "skips": 0,
+      "captures": 257,
+      "records": 157554
+    },
+    "server": {
+      "seconds": 413.71809534798376,
+      "roots": 705,
+      "including_subtests": 43309,
+      "skips": 0,
+      "captures": 257,
+      "records": 157554
+    },
+    "highres": {
+      "seconds": 335.55821364815347,
+      "roots": 706,
+      "including_subtests": 43310,
+      "skips": 0,
+      "captures": 257,
+      "records": 157554
+    }
+  },
+  "source_files": 2254,
+  "source_manifest_sha256": "4be39f3ec094267577de6d6fb9f9bec510a55a2029511c1170251b8a81f061f6",
+  "focused": {
+    "roots": 13,
+    "spatial_captures": 11,
+    "spatial_records": 26142,
+    "seconds": 0.299,
+    "matches_frozen_c": true,
+    "additional_contracts": "Existing curve captures and deterministic opaque-token regression"
+  },
+  "production_seconds": 402.0580244679004,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 85.37528683617711,
+        "sha256": "335eaf99f15e587884c201776e2cb4ed9a0c15f03524931409a18cc94efb64cb",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.67423529503867,
+        "sha256": "2d3f7becffd2335e01d13d7fe8914fe70acb1c33a8a25e084e444c61d78c04fb",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 78.4198419849854,
+        "sha256": "ec4b1b2588fdb61817814833b5e64c9dff90386ae188a0396efbe4c3fb773924",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "spatial-targeting-native": {
+        "exit": 0,
+        "wall_seconds": 70.2264498330187,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 69.63260920299217,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "335eaf99f15e587884c201776e2cb4ed9a0c15f03524931409a18cc94efb64cb",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-spatial-targeting/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/spatial-targeting-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Spatial targeting in Go; one ray export retained for the actual C spell caller, eleven obsolete interfaces and the cursor-owner C global retired.",
+          "removed_maps": 0
+        }
+      },
+      "spatial-targeting-save-native": {
+        "exit": 0,
+        "wall_seconds": 45.94566466589458,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.34480719012208,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "335eaf99f15e587884c201776e2cb4ed9a0c15f03524931409a18cc94efb64cb",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-spatial-targeting/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/spatial-targeting-save-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Spatial targeting in Go; one ray export retained for the actual C spell caller, eleven obsolete interfaces and the cursor-owner C global retired.",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "208aa3237b7244f7b0efd1f75d1278a3954d688e651a6c11c7350cfaadf092cf"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 55.67250916082412,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "production_c_lines": 40218,
+  "production_c_files": 74,
+  "reference_c_lines": 0,
+  "removed_c_lines": 559,
+  "converted_functions": 11,
+  "retained_exports": 1,
+  "retired_interfaces": 11,
+  "retired_c_globals": 1,
+  "notable_correction": "Curve callback bridge keeps point arguments pointer-typed and opaque token integer-typed. Deterministic regression reproduced failure before correction. No goldens changed."
+}

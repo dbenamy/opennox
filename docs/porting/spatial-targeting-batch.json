@@ -6378,10 +6378,52 @@
           }
         ]
       }
+    ],
+    "production": [
+      {
+        "name": "compressor-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/spatial-targeting-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      },
+      {
+        "name": "flat-gameplay",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/production/bin/opennox",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/tile-raster-flat.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Spatial targeting in Go",
+          "OPENNOX_REQUIRE_MAP_DECOMPRESSION=1",
+          "OPENNOX_COMPRESS_MAPS=[\"war01a/War01A.map\"]",
+          "OPENNOX_MAP_COMPRESSOR={out}/map-compress",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "spatial-targeting-flat-native",
+          "compare",
+          "{root}/build/baseline/runs/server-config-flat-c"
+        ]
+      }
     ]
   },
   "production": {
-    "description": "Spatial-targeting C baseline reuses verified identical production source and parent qualification.",
+    "description": "Spatial targeting in Go; one ray export retained for the actual C spell caller, eleven obsolete interfaces and the cursor-owner C global retired.",
     "assets": "build/assets/extracted/drive_c/Nox",
     "known_suite": "build/port-rule-command/full-suite.jsonl",
     "scenario_runner": "tools/porting/run_scenario.py",
@@ -6555,7 +6597,7 @@
       "sub_4EBE40",
       "sub_5095E0",
       "sub_51B860",
-      "sub_547DB0"
+      "nox_xxx_traceRay_5374B0"
     ],
     "retired": [
       "dword_587000_129656",
@@ -6624,6 +6666,7 @@
       "dword_5d4594_2490508",
       "dword_5d4594_2491544",
       "dword_5d4594_2491552",
+      "dword_5d4594_2491592",
       "dword_5d4594_371692",
       "dword_5d4594_526276",
       "dword_5d4594_527660",
@@ -6654,6 +6697,7 @@
       "nox_xxx_decay_5116F0",
       "nox_xxx_decay_511750",
       "nox_xxx_destroyEveryChatMB_528D60",
+      "nox_xxx_findObjectAtCursor_54AF40",
       "nox_xxx_frameCounterSetCopy_5281E0",
       "nox_xxx_getServerSubFlags_409E60",
       "nox_xxx_guiObjlistLoad_4530C0",
@@ -6694,6 +6738,7 @@
       "nox_xxx_netUpdateObjectSpecial_527E50",
       "nox_xxx_netUpdateRemotePlr_501CA0",
       "nox_xxx_netUpdateRemotePlr_501CA0_B",
+      "nox_xxx_playerCursorScanFn_54AFB0",
       "nox_xxx_playerKickDueToRate_4E5360",
       "nox_xxx_polygonDrawColor_421B80",
       "nox_xxx_polygonGetAngle_421030",
@@ -6706,6 +6751,7 @@
       "nox_xxx_polygon_420CA0",
       "nox_xxx_polygon_420CD0",
       "nox_xxx_polygon_421660",
+      "nox_xxx_projAddVelocitySmth_533080",
       "nox_xxx_projectileTraceHit_537850",
       "nox_xxx_questCheckSecretArea_421C70",
       "nox_xxx_rateGet_40A6C0",
@@ -6949,6 +6995,7 @@
       "sub_537750",
       "sub_537760",
       "sub_537770",
+      "sub_547DB0",
       "sub_548100",
       "sub_5481C0",
       "sub_548220",
@@ -6958,6 +7005,10 @@
       "sub_548B60",
       "sub_54A990",
       "sub_54AD50",
+      "sub_54E6F0",
+      "sub_54E730",
+      "sub_54E810",
+      "sub_54E850",
       "sub_54FBB0",
       "sub_54FBF0",
       "sub_54FEF0",
@@ -6981,11 +7032,14 @@
       "sub_551AE0",
       "sub_551BF0",
       "sub_551C40",
+      "sub_57CDB0",
+      "sub_57F1D0",
+      "sub_57F2A0",
       "table_313272"
     ],
     "scenarios": [
       {
-        "name": "world-motion-native",
+        "name": "spatial-targeting-native",
         "reference": "build/baseline/runs/server-config-c",
         "scenario": "docs/porting/options-panels.yaml",
         "env": {
@@ -6993,7 +7047,7 @@
         }
       },
       {
-        "name": "world-motion-save-native",
+        "name": "spatial-targeting-save-native",
         "reference": "build/baseline/runs/server-config-save-c",
         "scenario": "docs/porting/object-xfer-save-load.yaml",
         "env": {

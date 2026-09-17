@@ -4,7 +4,6 @@
 #include "defs.h"
 
 int sub_545E60(nox_object_t* a1);
-int sub_547DB0(int a1, float2* a2);
 void sub_548600(nox_object_t* a1, float a2, float a3);
 void sub_548830(int a1);
 void sub_548860(int a1, short a2);
@@ -38,8 +37,6 @@ int sub_54A850(int a1);
 int sub_54A890(int a1);
 int sub_54A900(int a1);
 int sub_54A950(int a1);
-nox_object_t* nox_xxx_findObjectAtCursor_54AF40(nox_object_t* a1);
-void nox_xxx_playerCursorScanFn_54AFB0(int a1, float* a2);
 short nox_xxx_monsterAutoSpells_54C0C0(nox_object_t* a1p);
 void nox_xxx_monsterCreateFn_54C480(nox_object_t* a1);
 int nox_xxx_createWeapon_54C710(int a1);
@@ -66,10 +63,6 @@ void nox_xxx_dieMarker_54E460(int a1);
 void nox_xxx_dieBoulder_54E4B0(int a1);
 int nox_xxx_dieGameBall_54E620(int a1);
 void nox_xxx_dieMonsterGen_54E630(int a1);
-int sub_54E6F0(int a1, int a2);
-int sub_54E730(int a1, int a2);
-int sub_54E810(int a1, float2* a2, int a3);
-void sub_54E850(int a1, int a2);
 char nox_xxx_updateMonsterGenerator_54E930(uint32_t* a1);
 void nox_xxx_updateHarpoon_54F380(nox_object_t* a1);
 void nox_xxx_unitUpdateMover_54F740(int a1);

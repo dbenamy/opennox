@@ -1686,3 +1686,20 @@ results instead of mechanically narrowing every intermediate. The trace adapter
 still needs a C-backed temporary record for the remaining spatial C callback;
 its allocation can disappear with the next connected spatial-targeting batch.
 No C algorithm is kept solely as a reference implementation.
+
+
+## Spatial targeting and opaque callback tokens — review after conversion
+
+Keep the eleven-function spatial batch connected rather than padding its LOC count.
+Use Go calls for projectile/cursor candidates and wall normals, retiring obsolete
+C interfaces and the temporary C allocations in tracing and aim prediction. Retain
+one ray export for its real spell caller. Preserve tile-byte narrowing, compiled
+float spills, cursor ties and the existing door-line helper behavior.
+
+Correct the older curve callback bridge exposed by qualification: an opaque integer
+token must cross as an integer, while temporary point arguments remain typed
+pointers. A deterministic test uses the integer bits of a live Go address containing
+pointers, reproduced the original panic, and passes after the correction. This
+preserves the callback ABI and curve captures; it does not weaken cgo checking.
+The small, reversible correction follows the standing authorization. See
+[SPATIAL_TARGETING.md](SPATIAL_TARGETING.md) for full evidence and qualification.
