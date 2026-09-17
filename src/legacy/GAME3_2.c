@@ -1333,6 +1333,7 @@ char* nox_xxx_newPlayerSendAllPlayers_4DE300(int a1) {
 	for (i = (int)result; result; i = (int)result) {
 		if (*(unsigned char*)(i + 2064) != a1 &&
 			(*(uint8_t*)(i + 2064) != 31 || !nox_common_getEngineFlag(NOX_ENGINE_FLAG_DISABLE_GRAPHICS_RENDERING))) {
+			memset(v3, 0, sizeof(v3));
 			nox_xxx_netNewPlayerMakePacket_4DDA90((int)v3, i);
 			nox_xxx_netSendPacket1_4E5390(a1, (int)v3, 129, 0, 0);
 			sub_4DDE10(a1, i);
@@ -1530,7 +1531,7 @@ void nox_xxx_playerForceDisconnect_4DE7C0(int ind) {
 int nox_xxx_netGameSettings_4DEF00() {
 	char* v0;    // ebx
 	char v2[20]; // [esp+Ch] [ebp-48h]
-	char v3[49]; // [esp+20h] [ebp-34h]
+	char v3[49] = {0}; // [esp+20h] [ebp-34h]
 
 	v0 = nox_xxx_cliGamedataGet_416590(0);
 	v2[0] = -81;

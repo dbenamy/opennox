@@ -2,45 +2,52 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 53k lines** — **53,049 physical lines in 82 production
+**Rough C remaining: about 53k lines** — **53,046 physical lines in 82 production
 `.c` files**, zero reference C. Latest qualified conversion removes **897 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — quest-runtime native conversion qualified
+## Current — match results / roster corrected C baseline
 
-Corrected C baseline `1ee50d99` is committed/pushed. Native conversion is fully
-qualified: **53,049 C lines / 82 files / zero reference C**.
-Five Go files (558 lines) replace 897 C lines / 57 functions, with 24 retained C
-exports and 33 retired interfaces including the private absolute converter.
-All production Go callers invoke Go directly. Frozen expectations are unchanged.
+Quest conversion `c1f80856` is committed/pushed. The corrected C baseline is qualified; production C remains C. Working count is **53,046 / 82 files / zero reference C**.
+Audited conversion scope is **767 C lines / 28 functions**, including one proven
+unreachable 19-line wall-destroy implementation. Full player-arrival orchestration,
+server-ready UI and the GUI-widget-backed settings reader remain separate.
 
-Default/server/highres each pass **470 roots / 49,254 leaves**, no skips, and
-**149 groups / 50,640 records** (251.85s / 361.20s / 297.77s). Fresh production also
-passes (397.78s): all builds/ABI, the exact known 1,553 full-suite failure
-entries, gameplay 41 frames, save/load 7, flat rendering 14 and exact map regeneration.
-All gates share 2,038 source fingerprints. See QUEST_RUNTIME.md and
-build/port-quest-runtime/native-coverage-audit.json /native-production.
+Three confirmed prerequisite corrections are installed: initialize roster/settings
+string padding, use the existing generic draw message for a Flagball timeout with
+no winning team, and align Go's player identifier to C offset 2096 with explicit
+padding/assertion. Player size and later offsets stay unchanged. See MATCH_ROSTER.md.
 
-All builds/tests are joined. Commit/push the qualified conversion, then continue
-the connected match-results / player-roster candidate; inspect Git history first
-when resuming to avoid repeating a completed commit. Preliminary
-read-only scope is in build/port-match-roster/candidate.json (800 lines plus the
-125-line connected match-limit logic). Audit actual ownership, callbacks and callers
-before fixtures; do not treat that draft as an approved frozen scope.
+Baseline covers **24 roots / 10,027 leaves / 21 groups / 10,034 frozen records**.
+C capture: build/port-match-roster/c-capture (44.95s). Frozen default repeat (56.54s),
+server (149.58s), and highres (67.17s) pass without skips and match every hash.
+Production build/port-match-roster/c-production passes (400.55s): all builds/ABI,
+exact known asset failures, gameplay/save and flat rendering with map regeneration.
+All qualification processes have joined. All four runs share 2,054 source fingerprints.
 
-C prerequisite and native installers/freezers in build/port-quest-runtime are
-CONSUMED; never rerun them. The two failed native discovery attempts required only
-package naming and type adapters, not behavioral fixes. The health scaler's unused
-decompiler return is now void; rationale is in DECISIONS.md. Original corrected-C
-baseline and diagnostic evidence remain locally recoverable and committed.
+All fixtures are installed and frozen; do NOT recopy old fixture drafts. The
+scope-audit.json was refreshed after the C fixes and totals 767 lines. Native Go
+files in build/port-match-roster/native-draft are unfinished, uninstalled drafts;
+review signatures/callers, then integrate only after baseline qualification and
+commit/push. freeze-baseline.py is CONSUMED; never regenerate expectations to hide
+a difference. Initial interface plan is 10 retained / 18 retired entry points.
 
-No user blocker. Preserve untracked nox-iso-from-archive-org.7z and original assets.
-Quest C and native scene deduplication reclaimed 1.66 GB each, preserving restoration
-manifests. About 12 GB remains free. Source build/baseline/env.sh for Go; never edit
-source during builds. Continue one qualified, documented, committed/pushed batch
-at a time without a scheduled pause.
+C's highres compiler flag is unconditional, so settings emit 0x000F039A on all
+three targets. Preserve that message value in this conversion; review the C/root-Go
+version discrepancy separately because the compiler flag also changes rendering.
+The timer coordinate message uses a 64-bit intermediate, unlike ordinary 32-bit
+object coordinate conversion; separate boundary contracts cover it.
+
+Next: commit/push the qualified C baseline, integrate the Go draft, qualify
+affected callers/all production targets,
+update C LOC and commit/push the conversion, then continue the next batch.
+
+Preserve original assets and untracked nox-iso-from-archive-org.7z. The completed
+quest C/native scene copies have restoration manifests after deduplication; their
+cleanup scripts are CONSUMED. Source build/baseline/env.sh for Go. No source edits
+during builds, no user blocker, and no active agent delegation.
 
 <!-- /current-checkpoint -->
 

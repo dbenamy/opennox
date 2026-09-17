@@ -191,6 +191,7 @@ target build selection and linker evidence.
 | World collisions and interactions | 82 | 53,946 | −1,016 | 0 |
 | Quest score constant width prerequisite (C fix) | 82 | 53,946 | 0 | 0 |
 | Quest runtime, statistics and difficulty scaling | 82 | 53,049 | −897 | 0 |
+| Roster padding, Flagball draw and player layout prerequisites | 82 | 53,046 | −3 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

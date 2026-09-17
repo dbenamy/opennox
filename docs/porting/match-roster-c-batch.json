@@ -1,0 +1,679 @@
+{
+  "batch": "match-roster-c",
+  "env": {
+    "OPENNOX_SPELLBOOK_CAPTURE": "{out}/capture",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
+  "phases": {
+    "c-default": [
+      {
+        "name": "c-default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/match-roster-focused-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-match-roster-flag-state.json",
+            "sha256": "c4d4bd49637339ccd49e82486085fe1a6f9fba79c5c6aa59b027d2feb6f1df6c"
+          },
+          {
+            "path": "{out}/capture-match-roster-flag-winners.json",
+            "sha256": "8df3f438d14fa6a9e9141a6546509bd97e3aba42c0cc6dbe4656ac34f19a26e8"
+          },
+          {
+            "path": "{out}/capture-match-roster-gui-settings.json",
+            "sha256": "b15fecbfaa412679b3c7c0c6d031f502f48df5672f9aad585570346f819e7104"
+          },
+          {
+            "path": "{out}/capture-match-roster-inventory.json",
+            "sha256": "cb261c2db82e011afaa7f28458154327db7df772a29dd15aefb61403733694d6"
+          },
+          {
+            "path": "{out}/capture-match-roster-minimap.json",
+            "sha256": "27d9f0bad30ea73845c4170923eb6fb7029951758b468feafe9d2197cb188565"
+          },
+          {
+            "path": "{out}/capture-match-roster-object-masks.json",
+            "sha256": "f7346cce75a8474253069a1638e5c1268a79220fcc4ad252a4901edb22a7be1e"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-encoding.json",
+            "sha256": "77d354cb4c415146df721af17f6142a04893cca8288b394acd5d2923523a4c96"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-ids.json",
+            "sha256": "bd3f32ead3e649e55de5e1ad4789caefca4705a0f84a5bec3da1f2dec4428880"
+          },
+          {
+            "path": "{out}/capture-match-roster-quest-timeout.json",
+            "sha256": "47006a4b7850544651280080aeb0b7f2d8303b3e2f9bcb0715b64c0a7db7f5ac"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered.json",
+            "sha256": "b3e7df8ed3b67d56f4b2155435e3e66c9d535f9753cced5fcf7f731a8c7a99b2"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered-list.json",
+            "sha256": "e696e388a5a4198a78cc7de930d86ff97733f1966be2a54494779984472087f3"
+          },
+          {
+            "path": "{out}/capture-match-roster-roster.json",
+            "sha256": "bd4f66463ee78144a20fcd3524b457474703a02afecd27174a8e8eecc8c42685"
+          },
+          {
+            "path": "{out}/capture-match-roster-settings.json",
+            "sha256": "5c26e9c133d55a983f3d7a5bdd9786b1a81b6f57832a480710cf13735df53d6e"
+          },
+          {
+            "path": "{out}/capture-match-roster-simple-object.json",
+            "sha256": "5ac1e01b3e3b297734c0927c89e3f98046f96c40ce6b763a2f7a9c4f63449d87"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-assignment.json",
+            "sha256": "68d1ddb58d0504dd589b59dd6f70a869f15dfa696bfd12a1d1b61c49cc919a46"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-roster.json",
+            "sha256": "867df32de94332f6cfda59532899f5d0b702b9ed20d54a76ca572eb654b48777"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer.json",
+            "sha256": "729852a8a0d84268d8ae5693807943696684392590796ff9e473988416fa6c70"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer-coordinates.json",
+            "sha256": "61a0f9c22f7cec236ced6db34b01b7e404081083f30274237e07f71547ab0ddc"
+          },
+          {
+            "path": "{out}/capture-match-roster-victory.json",
+            "sha256": "697fbdb316d558744ee3c57d06ef7f793c7cb67cd9e0b1a6d01d71cb43579fad"
+          },
+          {
+            "path": "{out}/capture-match-roster-wall-messages.json",
+            "sha256": "e593205eb1d45d26ebed9d2b05abe2dc42a1f27ec0d113925b626234188a1a25"
+          },
+          {
+            "path": "{out}/capture-match-roster-winners.json",
+            "sha256": "89e18421d5042d28bfc721fc3d8770d2098f81b65dcfc4efaf39c23c598521ab"
+          }
+        ]
+      }
+    ],
+    "c-server": [
+      {
+        "name": "c-server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/match-roster-focused-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-match-roster-flag-state.json",
+            "sha256": "c4d4bd49637339ccd49e82486085fe1a6f9fba79c5c6aa59b027d2feb6f1df6c"
+          },
+          {
+            "path": "{out}/capture-match-roster-flag-winners.json",
+            "sha256": "8df3f438d14fa6a9e9141a6546509bd97e3aba42c0cc6dbe4656ac34f19a26e8"
+          },
+          {
+            "path": "{out}/capture-match-roster-gui-settings.json",
+            "sha256": "b15fecbfaa412679b3c7c0c6d031f502f48df5672f9aad585570346f819e7104"
+          },
+          {
+            "path": "{out}/capture-match-roster-inventory.json",
+            "sha256": "cb261c2db82e011afaa7f28458154327db7df772a29dd15aefb61403733694d6"
+          },
+          {
+            "path": "{out}/capture-match-roster-minimap.json",
+            "sha256": "27d9f0bad30ea73845c4170923eb6fb7029951758b468feafe9d2197cb188565"
+          },
+          {
+            "path": "{out}/capture-match-roster-object-masks.json",
+            "sha256": "f7346cce75a8474253069a1638e5c1268a79220fcc4ad252a4901edb22a7be1e"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-encoding.json",
+            "sha256": "77d354cb4c415146df721af17f6142a04893cca8288b394acd5d2923523a4c96"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-ids.json",
+            "sha256": "bd3f32ead3e649e55de5e1ad4789caefca4705a0f84a5bec3da1f2dec4428880"
+          },
+          {
+            "path": "{out}/capture-match-roster-quest-timeout.json",
+            "sha256": "47006a4b7850544651280080aeb0b7f2d8303b3e2f9bcb0715b64c0a7db7f5ac"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered.json",
+            "sha256": "b3e7df8ed3b67d56f4b2155435e3e66c9d535f9753cced5fcf7f731a8c7a99b2"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered-list.json",
+            "sha256": "e696e388a5a4198a78cc7de930d86ff97733f1966be2a54494779984472087f3"
+          },
+          {
+            "path": "{out}/capture-match-roster-roster.json",
+            "sha256": "bd4f66463ee78144a20fcd3524b457474703a02afecd27174a8e8eecc8c42685"
+          },
+          {
+            "path": "{out}/capture-match-roster-settings.json",
+            "sha256": "5c26e9c133d55a983f3d7a5bdd9786b1a81b6f57832a480710cf13735df53d6e"
+          },
+          {
+            "path": "{out}/capture-match-roster-simple-object.json",
+            "sha256": "5ac1e01b3e3b297734c0927c89e3f98046f96c40ce6b763a2f7a9c4f63449d87"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-assignment.json",
+            "sha256": "68d1ddb58d0504dd589b59dd6f70a869f15dfa696bfd12a1d1b61c49cc919a46"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-roster.json",
+            "sha256": "867df32de94332f6cfda59532899f5d0b702b9ed20d54a76ca572eb654b48777"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer.json",
+            "sha256": "729852a8a0d84268d8ae5693807943696684392590796ff9e473988416fa6c70"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer-coordinates.json",
+            "sha256": "61a0f9c22f7cec236ced6db34b01b7e404081083f30274237e07f71547ab0ddc"
+          },
+          {
+            "path": "{out}/capture-match-roster-victory.json",
+            "sha256": "697fbdb316d558744ee3c57d06ef7f793c7cb67cd9e0b1a6d01d71cb43579fad"
+          },
+          {
+            "path": "{out}/capture-match-roster-wall-messages.json",
+            "sha256": "e593205eb1d45d26ebed9d2b05abe2dc42a1f27ec0d113925b626234188a1a25"
+          },
+          {
+            "path": "{out}/capture-match-roster-winners.json",
+            "sha256": "89e18421d5042d28bfc721fc3d8770d2098f81b65dcfc4efaf39c23c598521ab"
+          }
+        ]
+      }
+    ],
+    "c-highres": [
+      {
+        "name": "c-highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/match-roster-focused-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-match-roster-flag-state.json",
+            "sha256": "c4d4bd49637339ccd49e82486085fe1a6f9fba79c5c6aa59b027d2feb6f1df6c"
+          },
+          {
+            "path": "{out}/capture-match-roster-flag-winners.json",
+            "sha256": "8df3f438d14fa6a9e9141a6546509bd97e3aba42c0cc6dbe4656ac34f19a26e8"
+          },
+          {
+            "path": "{out}/capture-match-roster-gui-settings.json",
+            "sha256": "b15fecbfaa412679b3c7c0c6d031f502f48df5672f9aad585570346f819e7104"
+          },
+          {
+            "path": "{out}/capture-match-roster-inventory.json",
+            "sha256": "cb261c2db82e011afaa7f28458154327db7df772a29dd15aefb61403733694d6"
+          },
+          {
+            "path": "{out}/capture-match-roster-minimap.json",
+            "sha256": "27d9f0bad30ea73845c4170923eb6fb7029951758b468feafe9d2197cb188565"
+          },
+          {
+            "path": "{out}/capture-match-roster-object-masks.json",
+            "sha256": "f7346cce75a8474253069a1638e5c1268a79220fcc4ad252a4901edb22a7be1e"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-encoding.json",
+            "sha256": "77d354cb4c415146df721af17f6142a04893cca8288b394acd5d2923523a4c96"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-ids.json",
+            "sha256": "bd3f32ead3e649e55de5e1ad4789caefca4705a0f84a5bec3da1f2dec4428880"
+          },
+          {
+            "path": "{out}/capture-match-roster-quest-timeout.json",
+            "sha256": "47006a4b7850544651280080aeb0b7f2d8303b3e2f9bcb0715b64c0a7db7f5ac"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered.json",
+            "sha256": "b3e7df8ed3b67d56f4b2155435e3e66c9d535f9753cced5fcf7f731a8c7a99b2"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered-list.json",
+            "sha256": "e696e388a5a4198a78cc7de930d86ff97733f1966be2a54494779984472087f3"
+          },
+          {
+            "path": "{out}/capture-match-roster-roster.json",
+            "sha256": "bd4f66463ee78144a20fcd3524b457474703a02afecd27174a8e8eecc8c42685"
+          },
+          {
+            "path": "{out}/capture-match-roster-settings.json",
+            "sha256": "5c26e9c133d55a983f3d7a5bdd9786b1a81b6f57832a480710cf13735df53d6e"
+          },
+          {
+            "path": "{out}/capture-match-roster-simple-object.json",
+            "sha256": "5ac1e01b3e3b297734c0927c89e3f98046f96c40ce6b763a2f7a9c4f63449d87"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-assignment.json",
+            "sha256": "68d1ddb58d0504dd589b59dd6f70a869f15dfa696bfd12a1d1b61c49cc919a46"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-roster.json",
+            "sha256": "867df32de94332f6cfda59532899f5d0b702b9ed20d54a76ca572eb654b48777"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer.json",
+            "sha256": "729852a8a0d84268d8ae5693807943696684392590796ff9e473988416fa6c70"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer-coordinates.json",
+            "sha256": "61a0f9c22f7cec236ced6db34b01b7e404081083f30274237e07f71547ab0ddc"
+          },
+          {
+            "path": "{out}/capture-match-roster-victory.json",
+            "sha256": "697fbdb316d558744ee3c57d06ef7f793c7cb67cd9e0b1a6d01d71cb43579fad"
+          },
+          {
+            "path": "{out}/capture-match-roster-wall-messages.json",
+            "sha256": "e593205eb1d45d26ebed9d2b05abe2dc42a1f27ec0d113925b626234188a1a25"
+          },
+          {
+            "path": "{out}/capture-match-roster-winners.json",
+            "sha256": "89e18421d5042d28bfc721fc3d8770d2098f81b65dcfc4efaf39c23c598521ab"
+          }
+        ]
+      }
+    ],
+    "c-repeat": [
+      {
+        "name": "c-repeat",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/match-roster-focused-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-match-roster-flag-state.json",
+            "sha256": "c4d4bd49637339ccd49e82486085fe1a6f9fba79c5c6aa59b027d2feb6f1df6c"
+          },
+          {
+            "path": "{out}/capture-match-roster-flag-winners.json",
+            "sha256": "8df3f438d14fa6a9e9141a6546509bd97e3aba42c0cc6dbe4656ac34f19a26e8"
+          },
+          {
+            "path": "{out}/capture-match-roster-gui-settings.json",
+            "sha256": "b15fecbfaa412679b3c7c0c6d031f502f48df5672f9aad585570346f819e7104"
+          },
+          {
+            "path": "{out}/capture-match-roster-inventory.json",
+            "sha256": "cb261c2db82e011afaa7f28458154327db7df772a29dd15aefb61403733694d6"
+          },
+          {
+            "path": "{out}/capture-match-roster-minimap.json",
+            "sha256": "27d9f0bad30ea73845c4170923eb6fb7029951758b468feafe9d2197cb188565"
+          },
+          {
+            "path": "{out}/capture-match-roster-object-masks.json",
+            "sha256": "f7346cce75a8474253069a1638e5c1268a79220fcc4ad252a4901edb22a7be1e"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-encoding.json",
+            "sha256": "77d354cb4c415146df721af17f6142a04893cca8288b394acd5d2923523a4c96"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-ids.json",
+            "sha256": "bd3f32ead3e649e55de5e1ad4789caefca4705a0f84a5bec3da1f2dec4428880"
+          },
+          {
+            "path": "{out}/capture-match-roster-quest-timeout.json",
+            "sha256": "47006a4b7850544651280080aeb0b7f2d8303b3e2f9bcb0715b64c0a7db7f5ac"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered.json",
+            "sha256": "b3e7df8ed3b67d56f4b2155435e3e66c9d535f9753cced5fcf7f731a8c7a99b2"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered-list.json",
+            "sha256": "e696e388a5a4198a78cc7de930d86ff97733f1966be2a54494779984472087f3"
+          },
+          {
+            "path": "{out}/capture-match-roster-roster.json",
+            "sha256": "bd4f66463ee78144a20fcd3524b457474703a02afecd27174a8e8eecc8c42685"
+          },
+          {
+            "path": "{out}/capture-match-roster-settings.json",
+            "sha256": "5c26e9c133d55a983f3d7a5bdd9786b1a81b6f57832a480710cf13735df53d6e"
+          },
+          {
+            "path": "{out}/capture-match-roster-simple-object.json",
+            "sha256": "5ac1e01b3e3b297734c0927c89e3f98046f96c40ce6b763a2f7a9c4f63449d87"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-assignment.json",
+            "sha256": "68d1ddb58d0504dd589b59dd6f70a869f15dfa696bfd12a1d1b61c49cc919a46"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-roster.json",
+            "sha256": "867df32de94332f6cfda59532899f5d0b702b9ed20d54a76ca572eb654b48777"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer.json",
+            "sha256": "729852a8a0d84268d8ae5693807943696684392590796ff9e473988416fa6c70"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer-coordinates.json",
+            "sha256": "61a0f9c22f7cec236ced6db34b01b7e404081083f30274237e07f71547ab0ddc"
+          },
+          {
+            "path": "{out}/capture-match-roster-victory.json",
+            "sha256": "697fbdb316d558744ee3c57d06ef7f793c7cb67cd9e0b1a6d01d71cb43579fad"
+          },
+          {
+            "path": "{out}/capture-match-roster-wall-messages.json",
+            "sha256": "e593205eb1d45d26ebed9d2b05abe2dc42a1f27ec0d113925b626234188a1a25"
+          },
+          {
+            "path": "{out}/capture-match-roster-winners.json",
+            "sha256": "89e18421d5042d28bfc721fc3d8770d2098f81b65dcfc4efaf39c23c598521ab"
+          }
+        ]
+      }
+    ],
+    "production": [
+      {
+        "name": "compressor-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/match-roster-c-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      },
+      {
+        "name": "flat-gameplay",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/production/bin/opennox",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/tile-raster-flat.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Match roster and player layout prerequisites",
+          "OPENNOX_REQUIRE_MAP_DECOMPRESSION=1",
+          "OPENNOX_COMPRESS_MAPS=[\"war01a/War01A.map\"]",
+          "OPENNOX_MAP_COMPRESSOR={out}/map-compress",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "match-roster-flat-c",
+          "compare",
+          "{root}/build/baseline/runs/quest-runtime-flat-native"
+        ]
+      }
+    ]
+  },
+  "production": {
+    "description": "Match results and roster synchronization: corrected C baseline",
+    "assets": "build/assets/extracted/drive_c/Nox",
+    "known_suite": "build/port-rule-command/full-suite.jsonl",
+    "scenario_runner": "tools/porting/run_scenario.py",
+    "retained": [
+      "nox_xxx_frameCounterSetCopyToNextFrame_5281D0",
+      "nox_xxx_netSendPointFx_522FF0",
+      "nox_xxx_sendArrowTrapFX_5238A0",
+      "sub_4E4F30",
+      "nox_xxx_playerResetImportantCtr_4E4F40",
+      "nox_xxx_netSendPacket1_4E5390",
+      "nox_xxx_netClientSend2_4E53C0",
+      "nox_xxx_netSendPacket0_4E5420",
+      "nox_net_importantACK_4E55A0",
+      "sub_4E55F0",
+      "nox_xxx_collideDoor_4E8AC0",
+      "nox_xxx_collidePickup_4E8DF0",
+      "sub_4E8E50",
+      "sub_4E8E60",
+      "nox_server_questMaybeWarp_4E8F60",
+      "sub_4E9010",
+      "nox_xxx_collideExit_4E9090",
+      "nox_xxx_spellFlyCollide_4E9500",
+      "nox_xxx_collideChest_4E9C40",
+      "sub_4EAAA0",
+      "sub_4EAAD0",
+      "nox_xxx_collidePentagram_4EAB20",
+      "nox_xxx_collideSign_4EAB40",
+      "nox_xxx_collideTrapDoor_4EAB60",
+      "sub_4EACA0",
+      "nox_xxx_collideSpellPedestal_4EAD20",
+      "nox_xxx_collideUndeadKiller_4EBD40",
+      "nox_xxx_collideMonsterGen_4EBE10",
+      "sub_4EBE40",
+      "nox_xxx_collideAnkhQuest_4EBF40",
+      "sub_4D6000",
+      "sub_4D60B0",
+      "sub_4D60E0",
+      "sub_4D6130",
+      "sub_4D6170",
+      "sub_4D61F0",
+      "sub_4D6540",
+      "nox_xxx_isQuest_4D6F50",
+      "nox_xxx_setQuest_4D6F60",
+      "sub_4D6F70",
+      "sub_4D6F80",
+      "sub_4D6FA0",
+      "sub_4D72D0",
+      "sub_4D7450",
+      "sub_4D75E0",
+      "sub_4D76E0",
+      "sub_4D7A60",
+      "sub_4E3CA0",
+      "nox_game_getQuestStage_4E3CC0",
+      "nox_game_setQuestStage_4E3CD0",
+      "nox_xxx_player_4E3CE0",
+      "sub_4E3D50",
+      "sub_4E3DD0",
+      "sub_4E40F0"
+    ],
+    "retired": [
+      "nox_xxx_aiLostSight_528560",
+      "nox_xxx_checkIsKillable_528190",
+      "nox_xxx_destroyEveryChatMB_528D60",
+      "nox_xxx_frameCounterSetCopy_5281E0",
+      "nox_xxx_monsterCmdSend_528BD0",
+      "nox_xxx_monsterUpdateSeenEnemies_5286D0",
+      "nox_xxx_monsterVisionSeeEnemy_5287B0",
+      "nox_xxx_netClientPredictLinear_523530",
+      "nox_xxx_netObjectInShadows_528A90",
+      "nox_xxx_netObjectOutOfSight_528A60",
+      "nox_xxx_netPlayerObjSend_518C30",
+      "nox_xxx_netReportDestroyObject_5289D0",
+      "nox_xxx_netSendComplexObject_518960",
+      "nox_xxx_netSendFxAllCli_523030",
+      "nox_xxx_netSendObjects2Plr_519410",
+      "nox_xxx_netSendPhantomPlrMb_5187E0",
+      "nox_xxx_netSendShieldFx_523670",
+      "nox_xxx_netSendSimpleObj_5188A0",
+      "nox_xxx_netSendVampFx_523270",
+      "nox_xxx_netSparkExplosionFx_5231B0",
+      "nox_xxx_netSpriteUpdate_518AE0",
+      "nox_xxx_netUpdateObjectSpecial_527E50",
+      "nox_xxx_netUpdateRemotePlr_501CA0",
+      "nox_xxx_netUpdateRemotePlr_501CA0_B",
+      "nox_xxx_sendGeneratorBreakFX_523200",
+      "nox_xxx_sendGeneratorSpawnFX_523830",
+      "nox_xxx_sendSummonCancelFX_523760",
+      "nox_xxx_sendSummonStartFX_5236F0",
+      "nox_xxx_unitUpdateSightMB_5281F0",
+      "sub_417270",
+      "sub_501C00",
+      "sub_518770",
+      "sub_519710",
+      "sub_523150",
+      "sub_528030",
+      "sub_528610",
+      "sub_528910",
+      "sub_528950",
+      "sub_528990",
+      "sub_4E4DE0",
+      "sub_4E4E50",
+      "sub_4E4ED0",
+      "sub_4E4EF0",
+      "sub_4E4F80",
+      "sub_4E4FC0",
+      "nox_xxx_netSendPacket_4E5030",
+      "nox_xxx_importantCheckRate_4E52B0",
+      "nox_xxx_playerKickDueToRate_4E5360",
+      "sub_4E5450",
+      "sub_4E54D0",
+      "nox_xxx_importantCheckRate2_4E5670",
+      "nox_xxx_netImportant_4E5770",
+      "sub_4E86E0",
+      "sub_4D61B0",
+      "sub_4D66E0",
+      "sub_4D6770",
+      "sub_4D6880",
+      "sub_4D6940",
+      "sub_4D6950",
+      "nox_game_sendQuestStage_4D6960",
+      "sub_4D6A20",
+      "sub_4D70B0",
+      "nox_xxx_bookCreatureTest_4D70C0",
+      "sub_4D7100",
+      "sub_4D7150",
+      "sub_4D71E0",
+      "sub_4D71F0",
+      "sub_4D7280",
+      "sub_4D7300",
+      "sub_4D7430",
+      "sub_4D7440",
+      "sub_4D7480",
+      "sub_4D7520",
+      "sub_4D75F0",
+      "nox_server_checkWarpGate_4D7600",
+      "sub_4D76F0",
+      "sub_4D79A0",
+      "sub_4D79C0",
+      "sub_4D7A80",
+      "sub_4D7B40",
+      "sub_4E3CB0",
+      "sub_4E4080",
+      "sub_4E40B0",
+      "sub_4E40C0",
+      "sub_4E4100",
+      "nox_float2int16_abs"
+    ],
+    "scenarios": [
+      {
+        "name": "match-roster-c",
+        "reference": "build/baseline/runs/quest-runtime-native",
+        "scenario": "docs/porting/options-panels.yaml",
+        "env": {
+          "NOX_DEV": "true"
+        }
+      },
+      {
+        "name": "match-roster-save-c",
+        "reference": "build/baseline/runs/quest-runtime-save-native",
+        "scenario": "docs/porting/object-xfer-save-load.yaml",
+        "env": {
+          "OPENNOX_REQUIRE_SAVE_LOAD": "1"
+        }
+      }
+    ],
+    "retained_c": [
+      "nox_xxx_netGuiGameSettings_4DD9B0",
+      "nox_xxx_netNewPlayerMakePacket_4DDA90",
+      "sub_4DDE10",
+      "nox_xxx_sendAllPlayerIDs_4DE270",
+      "nox_xxx_newPlayerSendAllPlayers_4DE300",
+      "nox_xxx_servMinimapRevealFlag_4DE380",
+      "sub_4DE410",
+      "sub_4DE4D0",
+      "nox_xxx_netGameSettings_4DEF00",
+      "sub_4DF120",
+      "sub_4DF180",
+      "sub_4DF2E0",
+      "nox_xxx_netSendSimpleObject2_4DF360",
+      "sub_4DF3C0",
+      "sub_4E80C0",
+      "sub_4E82C0",
+      "sub_4E8310",
+      "sub_4E8320",
+      "sub_5095E0",
+      "sub_5096F0",
+      "sub_5098A0",
+      "sub_5099B0",
+      "nox_server_checkVictory_509A60",
+      "sub_509C30",
+      "sub_509CB0",
+      "sub_509CF0",
+      "sub_509D80"
+    ]
+  }
+}

@@ -15,20 +15,16 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Quest runtime, statistics and difficulty scaling are qualified:
-**897 physical C lines / 57 functions removed**, leaving **53,049 lines in 82 files**,
-with zero reference C. Twenty-four C interfaces remain as thin Go exports.
+scheduled pause. Quest runtime is ported. The next **match results and roster C
+baseline is qualified**, with 24 roots / 10,027 cases / 10,034 frozen records on all
+three targets and fresh production, gameplay, save/load and flat-rendering gates.
 
-Default/server/highres each pass **470 affected roots / 49,254 leaf cases** without
-skips; **50,640 frozen records / 149 groups** match. All production builds and ABI
-audits pass, the full asset suite retains exactly its known failures, and headless
-gameplay, actual save/load and flat rendering pass, including exact map regeneration.
-
-See [QUEST_RUNTIME.md](docs/porting/QUEST_RUNTIME.md) for qualification and the
-preceding shipped score-constant width correction. The next candidate is connected
-match results and player-roster synchronization; audit ownership and callers before
-freezing its scope. [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint;
-confident reversible decisions remain recorded for review.
+Independent contracts justified three prerequisite corrections: message padding,
+Flagball draws and Go's player identifier offset. Production C is now **53,046 lines
+in 82 files**, with zero reference C. The audited 767-line conversion is next.
+See [MATCH_ROSTER.md](docs/porting/MATCH_ROSTER.md) for evidence and the preserved
+C protocol-version discrepancy. [PORTING_STATE.md](PORTING_STATE.md) is the resume
+checkpoint; confident reversible decisions remain recorded for review.
 
 ## Goal and target
 

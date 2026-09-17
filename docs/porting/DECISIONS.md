@@ -1438,3 +1438,24 @@ This reversible interface cleanup leaves the covered mutations unchanged. The
 stage-message builder bounds each name to its 32-byte field; the preserved valid
 contract is at most 31 name bytes plus a terminator. See
 [QUEST_RUNTIME.md](QUEST_RUNTIME.md) for complete three-target and production gates.
+
+## Match roster prerequisites and C protocol version — review after conversion
+
+Initialize the roster's reused scratch buffer inside each player iteration and
+zero the settings server-name padding. Independent long/short/empty-name sequences
+reproduced both uninitialized fields before this correction. For a Flagball timeout
+without a winning team, send the existing generic flag draw message (87 / 65535 /
+timeout marker 1); the Flagball winner reporter requires a real team in both its
+old C and current Go implementations. Empty-match testing reproduced the old crash.
+
+Add three explicit bytes after `Player.Active` so the Go identifier starts at 2096,
+matching C, with a compile-time offset assertion. Previously it started at 2093,
+which the new full C/Go encoder comparison exposed. Total size/later offsets are
+unchanged because the explicit padding replaces implicit padding after that array.
+These are intentional, reversible corrections under the standing authorization.
+
+Preserve the selected C settings message's protocol value 0x000F039A on every
+target. The legacy highres compiler flag is unconditional, whereas the root Go
+version is target-specific. Correcting that compiler flag would also change C
+rendering constants; defer that broader compatibility change for review.
+Evidence, qualification and conversion scope: [MATCH_ROSTER.md](MATCH_ROSTER.md).

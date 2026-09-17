@@ -137,11 +137,7 @@ int sub_5099B0() {
 	}
 	nox_xxx_setGameFlags_40A4D0(8);
 	if (!v0 || v1) {
-		if (nox_common_gameFlags_check_40A5C0(64)) {
-			result = nox_xxx_netFlagballWinner_4D8C40(0);
-		} else {
-			result = nox_xxx_netFlagWinner_4D8C40_4D8C80(0, 1);
-		}
+		result = nox_xxx_netFlagWinner_4D8C40_4D8C80(0, 1);
 	} else if (nox_common_gameFlags_check_40A5C0(64)) {
 		result = nox_xxx_netFlagballWinner_4D8C40(v0);
 	} else {
