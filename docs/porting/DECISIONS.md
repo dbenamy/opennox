@@ -1309,3 +1309,21 @@ They precede frozen expectations; they do not change the current writer format.
 After-change default/server/highres qualification passes 29 roots / 1,569 leaf
 cases per target without skips, and static checking passes. See ITEM_XFER.md
 for evidence, the fixture correction and the remaining full-baseline work.
+
+## Item serialization — preserve established records and callback ABI
+
+The item/reward port keeps historical field widths and stream operation boundaries,
+including zero-length writes. Reward-marker counts include only mask value 1 while
+the writer emits names for any nonzero mask; explicit writer-only contracts preserve
+this quirk instead of inventing a format migration. Reads merge masks and keep
+already accepted entries on later failure. Sparse generator children compact within
+each row on reload and retain ownership of earlier successfully loaded children.
+
+Nested generator tests use the same cipher framing as real saves. An initial XOR
+fixture exposed a writable seek/backpatch limitation in that alternate mode; changing
+shared stream behavior was unnecessary for qualifying this port. Defined serialized
+fields are checked independently, with full wire hashes also pinning compatibility
+padding. The empty obelisk hook remains for objective-update callers; the translated
+serializer omits its no-op call. Existing callback header declarations and symbol
+identities remain unchanged, with address conversion restricted to the C bridges.
+See ITEM_XFER.md for frozen evidence and final qualification status.

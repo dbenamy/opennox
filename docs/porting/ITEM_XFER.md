@@ -1,157 +1,139 @@
 # Item and reward serialization
 
-## Scope
+## Qualified result
 
-Continue after qualified common/world-object serialization (b4ff2519). Move the
-twelve adjacent GAME4.c callbacks from 004F5F30 through RewardMarker 004F74D0:
-spell/ability rewards, field guides, weapons, armor, ammunition, team items, gold,
-obelisks, toxic clouds, monster generators and reward markers. The initial scope
-is **1,063 C lines**. Preserve the two unrelated declarations following the block.
-Current qualified C: **59,602 lines / 82 production files / zero reference C**.
+Twelve GAME4.c callbacks are now Go implementations: spell/ability rewards, field
+guides, weapons, armor, ammunition, team items, gold, obelisks, toxic clouds,
+monster generators and reward markers. The conversion removes **1,065 C lines**,
+leaving **58,539 physical lines / 82 production files / zero reference C**.
+The unrelated prefix and two declarations following the block are unchanged.
 
-All callback symbols remain registered or compared by existing callers, including
-shop and root transfer code. Keep their identities as Go-backed exports. Reuse the
-qualified common/inventory stream helpers and real object/type ownership fixtures.
-No C algorithm will remain solely as a test reference.
+All **24 frozen groups / 2,931 state records** match: **1,757 item records** plus
+**1,174 common/world-object records**. Default/server/highres each pass **178 roots /
+3,294 leaf cases**, with no skips. All three production binaries and ABI audits
+pass. The full asset suite preserves exactly **1,553 known failure entries** and
+package results **15 pass / 3 fail / 32 skip**. Gameplay matches **41 frames**,
+actual save/load **seven frames**, and flat rendering **14 frames** with exact
+War01A regeneration. No new failure is accepted or suppressed.
 
-## Baseline and qualification plan
+The twelve existing callback symbols remain Go-backed C exports, preserving the
+original mixed int/int-pointer declarations and function identities. Go code uses
+the existing common/inventory stream helpers and real modifier/resource/object
+owners directly. No C algorithm remains solely for testing.
 
-Use registered callbacks with real object pools, type templates, stream owners,
-modifier descriptors and client/minimap owners. Test current exact bytes and
-round trips, signed/historical versions, name boundaries, payload mutations,
-stream positions, lifetime restoration and failure ownership. Add detailed
-contracts for weapon charges/HP policy, modifiers, nested generator children,
-reward masks/names and obelisk minimap state. Normalize only identified pointer
-fields; check pointer identity and order independently.
+## Recovery and evidence
 
-Repeat C captures before freezing expectations. The preceding common serialization
-batch already completed the full accumulated milestone. Use an audited affected
-selection across default/server/highres for this batch; broaden if shared changes
-or failures warrant it. Qualify all three production builds/ABIs and normal,
-actual save/load and flat rendering/map regeneration. Preserve the exact known
-full-suite failure set when running production qualification.
+- Prerequisite fixes: **bf1afd10**, committed and pushed before freezing.
+- Frozen C baseline: **e4852239**, committed and pushed before translation.
+- Expectations: test-local hashes plus [item-xfer-batch.json](item-xfer-batch.json).
+- Selection: [item-xfer-affected-tests.txt](item-xfer-affected-tests.txt); item tests
+  are also included in the accumulated milestone pattern.
+- Final artifacts: build/port-item-xfer/native-final-{default,server,highres,production}.
+- Final source proof: native-index-proof.json covers **1,912 staged source files**,
+  including all affected phases and production. Static memory checking passes.
+- Client SHA-256: 657f95d64f1c78e25cb8ee5b1d3b30f3c85ff38e58484b2b87a3d53c132ff4d7.
 
-## Audit findings to resolve
+The C default/server/highres captures matched before pinning expectations. Fresh
+frozen runs each passed **38 roots / 3,104 leaf cases** without skips and matched
+all 24 groups. C-source proof covered 1,908 files. The C client also matched the
+preceding gameplay/save-load/flat references before replacement. Its SHA-256 is
+87b6326a0043ee952c075d5fbfeb4bb76fde0cdec20883d4117f3c1aa0607ea9.
 
-- The generator appears to leave a newly allocated child unowned when its transfer
-  callback rejects the record. Demonstrate with the real callback/pool before
-  selecting the same small release-on-rejection correction used by inventory.
-- Weapon/armor version<11 initializes only sixteen of twenty attribute scratch
-  bytes. Ordinary nil-modifier items skip copying them, but charged weapon
-  subclasses may copy the uninitialized tail. Add a discriminating C contract
-  before deciding how to define it; do not freeze random stack bytes.
-- Reward-marker counts include exactly-one bytes, while its writer emits every
-  nonzero entry. Preserve the observed format unless an independent correction
-  is justified; do not assume noncanonical masks round-trip.
-- Stream checksums depend on operation boundaries. Keep field grouping and
-  zero-length operations aligned with C, as in the preceding batch.
+Final affected test-driver seconds: **101.587 / 100.195 / 111.189**. These include
+bounded concurrent qualification and are not runtime performance claims. An earlier
+native run also passed all groups before the fixture-only tooling adjustment below.
+Final production binaries are byte-identical to those earlier builds.
 
-## Current progress
+## Contracts and notable behavior
 
-Prerequisites are committed and pushed as **bf1afd10**. All twelve item callbacks
-remain in C. Expanded contracts are being qualified before repeated captures and
-baseline freezing. Ignored build/port-item-xfer contains consumed fixture drafts
-and an uninstalled translation draft; these are not accepted implementation.
+Fixtures use registered callbacks, real object/type pools, modifier definitions,
+player bitsets, and drawable/minimap owners. Snapshots include the full object,
+type-owned buffers, health data, modifier identities, nested children and stream
+checksums. Only identified pointer fields are normalized; independent contracts
+check actual pointer identity, ordering, ownership, bytes and stream positions.
 
-## Prerequisite evidence
+Expanded item coverage includes:
 
-The initial generator regression fails against C: a rejected child leaves two
-live pool objects instead of the parent alone. Evidence:
-build/port-item-xfer/c-ownership-before.log.
+- **336 charge-policy cases:** historical versions, ordinary/special wand subtypes,
+  quest validation, count/capacity boundaries and signed charge amounts.
+- **792 health-policy cases:** weapon/armor versions, solo/switch/quest/player modes,
+  present/missing definitions, clamping and low-word definition durability.
+- **64 modifier cases:** every four-slot mask, real descriptor identity, empty and
+  255-byte names, attribute-tail mutations and team-position copying.
+- **96 obelisk cases:** client flags, static/dynamic/missing sprites, minimap lists
+  including non-head matches, and mana boundaries.
+- **17 generator cases:** sparse/dense child lists, row compaction, cipher section
+  framing, identity/order, lifetime, allocation counts and partial failures.
+- **230 reward cases:** every valid ID, mixed/noncanonical masks, invalid names up
+  to 255 bytes, rejected ID zero, duplicates, retained bits and versioned tails.
 
-The old-attribute fixture first selected ClassWeapon, which does not enter the
-charged-item copy branch; that was a fixture-selection failure, not evidence of
-uninitialized copying. With the actual ClassWand bit and charged subtype, all
-four old-version cases copy a stack-derived word into the attribute tail
-(c-attributes-before2.log). A version-11 control is being checked to confirm its
-existing two-0xffff default. The intended correction defines that same default
-for pre-version-11 wand records. Ordinary items retain their current skip-copy
-behavior. Armor uses a similar scratch buffer but does not take the charged-wand
-copy path for its normal class; no armor change is currently proposed.
+Historical early returns retain their observed lifetime behavior. Stream checksum
+updates depend on operation boundaries, including zero-length calls. An empty-named
+modifier descriptor writes the same bytes as an absent modifier but takes an extra
+zero-length write; snapshots preserve the resulting checksum distinction.
 
-These are small, reversible prerequisite corrections, recorded for review before
-baseline freezing. No item callback has yet been translated to Go.
+Reward counts include only mask value 1, but the writer emits names for every
+nonzero value. Preserve that established behavior. Noncanonical writers have
+separate contracts rather than an assumed round trip. Reads merge existing bits,
+retain earlier accepted names on later failure, and stop at the rejected name.
 
-The version-11 control passes for charged and ordinary items. Two C lines now
-release the rejected generator child and initialize the old wand attribute tail.
-Both regressions pass in the first after-change run. Other initial failures were
-fixture setup: alloc.New uses its argument as a type hint and zero-fills, and the
-C ability-name resolver needs its actual pointer table initialized. The fixtures
-now assign health values explicitly and own/restore the ability table using the
-same production names as the existing quickbar fixture.
+Sparse generator children compact within each row on reload. Earlier successfully
+loaded children remain owned when a later child fails. The empty obelisk callback
+still has two objective-update callers, so its shared C definition/header remain;
+the translated serializer omits its no-op call.
 
-New item snapshots include complete health records, named modifier identities,
-normalized nested-child pointers and stream checksums in addition to the full
-object and type-owned buffers. This makes operation grouping observable. These
-captures are still development data, not frozen expectations; qualification is
-in progress.
+The affected selection covers item/common serialization, object creation/state,
+resources, rewards, equipment, shop engine, map population/painting and minimap.
+The existing opt-in map-population diagnostic is explicitly excluded; every selected
+test must execute without skips. The preceding common-serialization batch already
+ran the full accumulated milestone, so this batch uses the established affected
+selection policy plus complete production qualification.
 
-## Qualified prerequisite checkpoint
+## Prerequisite corrections
 
-Default/server/highres each pass **29 roots / 1,569 leaf cases**, without skips:
-272 new item cases plus the 1,297 qualified object-transfer cases. Test-driver
-seconds are 29.208 / 115.061 / 37.825. All phases record unchanged source; static
-checking passes (static-prerequisite.log). The three new development capture
-groups match across targets: current defaults 12, historical 186, name boundaries
-24. They are not yet the final frozen item oracle.
+The original generator left a newly allocated child unowned when its callback
+rejected the record. The before-change contract observed two live objects instead
+of the parent alone (c-ownership-before.log). Release that rejected child before
+returning failure, matching the preceding inventory correction.
 
-The two C corrections add two lines, leaving **59,604 production C lines / 82
-files / zero reference C**. The scoped item callback block is now **1,065 lines**.
-This qualifies the prerequisite and initial contracts; modifier/charge/HP policy,
-nonempty generator ownership, reward-mask/name and obelisk-minimap coverage, full
-repeated C captures and current-source integration remain due before replacement.
+Pre-version-11 weapon records initialized only sixteen of twenty attribute bytes.
+A real charged wand copied the uninitialized final word. Four old-version cases
+failed (c-attributes-before2.log), while version 11 supplied two 0xffff words and
+passed its control. Define the old tail as the same 0xffffffff. Normal nil-modifier
+items retain their skip-copy behavior; normal armor does not enter the charged-wand
+path and received no C correction.
 
-## Expanded contracts and review notes
+These two reversible fixes added two C lines before baseline freezing. Initial
+prerequisite default/server/highres runs each passed 29 roots / 1,569 leaf cases.
+See [DECISIONS.md](DECISIONS.md) for the recorded rationale.
 
-Development C checks pass 336 charged-wand policy cases, 792 weapon/armor health
-cases, 64 modifier-mask cases, 96 obelisk/minimap cases, and 17 generator cases.
-These exercise real modifier definitions, player bitsets, drawable/minimap owners,
-object allocation and nested callbacks. Reward-mask/name coverage is next.
+## Fixture and tooling corrections
 
-The first nonempty generator writer fixture used XOR mode to obtain simple
-four-byte sections. That mode could not backpatch its section length through the
-existing writable-binfile seek adapter. The fixture now uses the actual map cipher
-mode. Independent contracts check aligned section lengths and decoded fields;
-a separate wire hash retains compatibility padding. Sparse children compact within
-each row, retain row order and allocate distinct owned objects on reload. Failure
-cases check that earlier accepted children remain owned and rejected children are
-released. No shared stream behavior was changed to accommodate this fixture.
+The first old-attribute fixture used ClassWeapon and missed the charged-wand branch;
+its failure was not engine evidence. The corrected fixture uses ClassWand. Other
+initial setup corrections explicitly assigned health after alloc.New (which uses its
+argument as a type hint and zero-fills) and owned/restored the actual ability-name
+table. None changed an expectation to accommodate translated behavior.
 
-Review later: modifier descriptors with empty names serialize like absent modifiers
-but take a zero-length writer operation, producing a different checksum. Captures
-retain both read and write checksums so the port preserves that distinction.
+The first nonempty generator writer fixture used XOR mode for four-byte framing.
+That alternate mode could not backpatch its section length through the writable
+binfile seek adapter. The fixture now uses the actual map cipher mode. Independent
+contracts check aligned lengths and decoded fields; a full wire hash also pins
+compatibility padding. Shared stream behavior was unchanged.
 
-## Frozen C baseline
+The first flat-C launch used the wrong local compressor path and stopped before
+starting the game. The corrected launch used the existing qualified compressor.
+Initial native compilation required the correct ability-resolver header and exact
+export/header signatures. These were corrected before behavior qualification.
 
-All three targets match **1,757 new item records / twelve groups** and the existing
-**1,174 object records / twelve groups**. Expectations are now pinned both in tests
-and the batch manifest. Fresh frozen default/server/highres runs each pass **38
-roots / 3,104 leaf cases**, with no skips and unchanged source. Static memory-access
-checking passes. Artifacts: c-expanded-{default,server,highres},
-c-frozen-{repeat,server,highres}, static-c-frozen.log.
+The first production full-suite run found one new tooling failure: noxfactor's
+legacy C-cast tokenizer rewrote the fixture type `func(int) string` into the invalid
+`funcint(string)`. An isolated copy reproduced it. Naming the parameter as
+`func(index int) string` preserves the Go type and fixture behavior while avoiding
+that ambiguous token sequence. Both refactoring-tool packages pass; final affected
+and production gates were repeated, with all frozen expectations unchanged. A
+general tokenizer redesign is deferred for later review.
 
-Reward coverage adds 230 cases: every valid ID, mixed masks, invalid names through
-255 bytes, rejected ID zero, partial mutations, duplicate names, retained existing
-bits and versioned tails. Noncanonical writers are checked separately from readers;
-counts include only value 1 while names include every nonzero value.
-
-The C production client matches the prior 41-frame gameplay and seven-frame actual
-save/load references. Flat rendering/map regeneration qualification is in progress.
-Its first launch used an incorrect local compressor path and stopped before starting
-the game; the corrected launch uses the existing qualified compressor. No engine
-change was needed.
-
-The conversion selection contains 161 root tests: item/common serialization,
-object creation/state, resources, rewards, shop engine, map population/painting and
-minimap. The existing opt-in map-population diagnostic is excluded explicitly;
-all selected tests must run without skips. This follows the established affected
-selection policy after the previous full common-serialization milestone.
-
-The empty obelisk callback still has two objective-update callers. Keep its shared
-C definition/header while eliminating the now-unnecessary call from the translated
-obelisk serializer. This batch still removes exactly 1,065 C lines.
-
-Flat replay now passes **14 frames** and exact War01A regeneration. Current C
-client SHA-256: 87b6326a0043ee952c075d5fbfeb4bb76fde0cdec20883d4117f3c1aa0607ea9.
-Frozen-phase source proof matches all **1,908 staged source files**. The baseline
-is ready for its recovery commit; conversion and native qualification follow.
+Completed scenario copies retain screenshots, logs, saves, changed maps and verified
+asset-restoration manifests. Duplicate unchanged assets and identical production
+binaries share or release local storage; original assets remain untouched.

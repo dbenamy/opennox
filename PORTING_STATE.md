@@ -2,36 +2,37 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 60k lines** — **59,604 physical lines in 82 production
-`.c` files**, zero reference C. Latest qualified conversion removes **1,177 lines**
-across eighteen object-serialization functions; the next prerequisite adds two. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 59k lines** — **58,539 physical lines in 82 production
+`.c` files**, zero reference C. Latest qualified conversion removes **1,065 lines**
+across twelve item/reward callbacks. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — item serialization C baseline frozen
+## Current — item serialization qualified
 
-Common/world-object serialization **b4ff2519** and item prerequisites **bf1afd10**
-are committed and pushed. The item baseline is qualified and ready for commit:
-**1,757 new records / twelve groups**, plus **1,174 existing object records**.
-Frozen default/server/highres runs each pass **38 roots / 3,104 leaf cases** without
-skips, with identical captures and unchanged source. Static checking passes.
-Staged-source proof covers **1,908 files** (build/port-item-xfer/baseline-index-proof.json).
+The twelve item/reward callbacks are Go implementations, with **1,065 C lines
+removed**. All **24 frozen groups / 2,931 records** match. Final default/server/highres
+runs each pass **178 roots / 3,294 leaf cases**, with no skips. All three production
+builds/ABI checks pass. The full suite retains exactly **1,553 known failure entries**
+and **15/3/32 pass/fail/skip packages**. Gameplay/save-load/flat comparisons match
+**41/7/14 frames** and exact War01A regeneration. Static checking passes.
 
-Current C binary matches gameplay **41 frames**, actual save/load **seven frames**,
-and flat rendering **14 frames** with exact War01A map regeneration. All twelve
-item callbacks remain C; **59,604 production lines / 82 files / zero reference C**.
-Next: commit/push the frozen baseline, install/review the twelve-callback Go draft,
-then qualify it against the pinned corpus, 161 affected root tests on each target,
-and all production/build/ABI/scenario gates in item-xfer-batch.json.
+Prerequisites **bf1afd10** and frozen C baseline **e4852239** are pushed. The conversion
+is ready for its commit/push. Final source proof covers **1,912 files** and all
+four final phases. See ITEM_XFER.md and build/port-item-xfer/native-final-*.
+No expected output was changed. The only follow-up fixture adjustment names a
+function-type parameter to avoid a legacy noxfactor tokenizer ambiguity; all final
+gates were rerun. The shared empty obelisk hook remains for objective-update callers.
 
-Ignored build/port-item-xfer/{simple,equipment,world}_native.draft are preparatory,
-uninstalled and uncompiled. Review before installation; do not rerun consumed fixture
-installers. Conversion scope is **1,065 C lines**. Keep the empty nullsub_35 definition:
-objective-update code still calls it. See ITEM_XFER.md for notable behavior and
-fixture corrections; no substantial blocker or user question is pending.
+Next: commit/push this conversion, then audit the connected monster/NPC transfer
+block and action/buff helpers in GAME4_2.c. Reuse the common/item owners and stream
+fixtures; establish and repeat C contracts before replacing the next block.
+Continue one qualified chunk at a time. No substantial blocker is pending.
 
-Preserve untracked nox-iso-from-archive-org.7z and original assets. Source
-build/baseline/env.sh for every Go command. Do not edit source while tests/builds run.
+Ignored build/port-item-xfer/*_native.draft and fixture installers are consumed;
+do not overwrite reviewed source. Preserve untracked nox-iso-from-archive-org.7z
+and original assets. Completed runs have verified restoration manifests. Source
+build/baseline/env.sh for every Go command. Do not edit source during tests/builds.
 
 <!-- /current-checkpoint -->
 

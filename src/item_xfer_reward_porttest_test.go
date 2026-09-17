@@ -20,7 +20,7 @@ import (
 
 var itemXferRewardGroups = []struct {
 	offset, count int
-	name          func(int) string
+	name          func(index int) string
 }{
 	{8, 137, func(i int) string { return spell.ID(i).String() }},
 	{145, 6, func(i int) string { return server.Ability(i).String() }},

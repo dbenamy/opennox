@@ -182,6 +182,7 @@ target build selection and linker evidence.
 | Object-transfer rejection ownership prerequisite (C fix) | 82 | 60,779 | +4 | 0 |
 | Server common and world-object serialization | 82 | 59,602 | −1,177 | 0 |
 | Item serialization ownership and old wand defaults prerequisite (C fixes) | 82 | 59,604 | +2 | 0 |
+| Item and reward serialization | 82 | 58,539 | −1,065 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

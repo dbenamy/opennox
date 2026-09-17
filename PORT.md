@@ -15,23 +15,20 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Server common and world-object serialization is qualified:
-**1,177 C lines / eighteen functions removed**. The next prerequisite adds two
-lines, leaving **59,604 physical C lines in 82 files**, with zero reference C.
+scheduled pause. Item and reward serialization is qualified: **1,065 C lines /
+twelve callbacks removed**, leaving **58,539 physical C lines in 82 files**, with
+zero reference C.
 
-All **1,174 frozen object-state records / twelve groups** and **1,297 leaf cases**
-match. The accumulated milestone passes **1198 / 1194 / 1198 selected checks** in
-default/server/highres, with one existing opt-in skip per target. All three
-production binaries and ABI audits pass; the full asset suite retains exactly its
-known failures. Gameplay matches **41 frames**, actual save/load **seven frames**,
-and flat rendering **14 frames** with exact map regeneration.
+All **2,931 frozen records / 24 groups** match. Default/server/highres each pass
+**178 affected roots / 3,294 leaf cases**, without skips. All three production
+builds and ABI audits pass; the full asset suite retains exactly its known failures.
+Gameplay matches **41 frames**, actual save/load **seven frames**, and flat rendering
+**14 frames** with exact map regeneration.
 
-See [OBJECT_XFER.md](docs/porting/OBJECT_XFER.md) for evidence and review points.
-Current work: [adjacent item/reward serializers](docs/porting/ITEM_XFER.md),
-**1,065 C lines / twelve callbacks**, including two qualified prerequisite fixes,
-reusing these owners and stream fixtures. The C baseline now pins 1,757 item records across twelve groups, with historical,
-modifier, health/charge, reward and nested-child contracts. Translate against these
-expectations and the affected selection before full production qualification. [PORTING_STATE.md](PORTING_STATE.md)
+See [ITEM_XFER.md](docs/porting/ITEM_XFER.md) for evidence and review notes, including
+historical reward-mask behavior and the fixture-only refactoring-tool adjustment.
+Next, audit the connected monster/NPC serialization block and its action/buff helpers,
+reusing these qualified owners and stream fixtures. [PORTING_STATE.md](PORTING_STATE.md)
 is the resume checkpoint; confident reversible decisions remain recorded for review.
 
 ## Goal and target
@@ -71,6 +68,8 @@ may precede full qualification when their evidence and remaining gates are expli
    Before launching long milestone gates, review arithmetic widths, signedness,
    pointer construction and callback behavior against C. Matching captured cases
    does not replace that review; add C contracts for newly identified boundaries.
+   Check new export signatures against every existing header declaration before
+   the first compile; CGO declaration errors can otherwise waste a full C rebuild.
    Trace the existing C adapter when choosing a Go API: similar names can hide
    differences in coordinate space, return conventions or ownership.
 5. Run the completed-batch qualification below, review the diff and measure C LOC.
