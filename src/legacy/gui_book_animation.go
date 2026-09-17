@@ -13,6 +13,7 @@ extern int nox_win_width;
 */
 import "C"
 import (
+	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/client/gui"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -22,7 +23,7 @@ import (
 
 func bookFloat(off uintptr) *float32 { return (*float32)(unsafe.Pointer(bookWord(off))) }
 func bookNormalizeStep() {
-	C.nox_xxx_utilNormalizeVector_509F20((*C.float2)(unsafe.Pointer(&bookVector)))
+	geometryNormalize((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&bookVector))))
 	speed := float32(10)
 	if C.nox_win_width < 750 {
 		speed = 6

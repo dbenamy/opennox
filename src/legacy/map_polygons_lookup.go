@@ -4,7 +4,6 @@ package legacy
 #include "defs.h"
 #include "GAME1_1.h"
 #include "GAME1_2.h"
-int sub_427C80(int4* a1, int4* a2);
 */
 import "C"
 import (
@@ -91,7 +90,7 @@ func mapPolygonContains(p *mapPolygon, point *[2]int32) bool {
 	var crossings uint8
 	for i := uint16(1); i <= p.Count; i++ {
 		mapPolygonSegmentNext(p, &segment, uint32(i))
-		if C.sub_427C80((*C.int4)(unsafe.Pointer(&ray)), (*C.int4)(unsafe.Pointer(&segment))) != 0 {
+		if C.int(geometrySegments((*[4]int32)(unsafe.Pointer(unsafe.Pointer(&ray))), (*[4]int32)(unsafe.Pointer(unsafe.Pointer(&segment))))) != 0 {
 			crossings++
 		}
 	}
@@ -101,7 +100,7 @@ func mapPolygonAdmits(p *mapPolygon, point *[2]int32, scripts bool) bool {
 	if p.Active == 0 || scripts && p.Enter.Func == -1 && p.Leave.Func == -1 {
 		return false
 	}
-	return C.nox_xxx_pointInRect_4281F0((*C.int2)(unsafe.Pointer(point)), (*C.int4)(unsafe.Pointer(&p.Bounds))) != 0 && mapPolygonContains(p, point)
+	return C.int(geometryRectInt((*[2]int32)(unsafe.Pointer(unsafe.Pointer(point))), (*[4]int32)(unsafe.Pointer(unsafe.Pointer(&p.Bounds))))) != 0 && mapPolygonContains(p, point)
 }
 func mapPolygonFind(point *[2]int32, cached uint32, scripts bool) *mapPolygon {
 	if cached != 0 && cached != mapPolygonUnset {
@@ -128,7 +127,7 @@ func mapPolygonEdge(p *mapPolygon, point *[2]int32, distance float32) bool {
 	segment := mapPolygonSegmentStart(p)
 	for i := uint32(1); i <= uint32(p.Count); i++ {
 		mapPolygonSegmentNext(p, &segment, i)
-		if C.sub_427DF0(C.int(uintptr(unsafe.Pointer(point))), (*C.int)(unsafe.Pointer(&segment)), C.float(distance)) != 0 {
+		if C.int(geometryProjectEdge((*[2]int32)(unsafe.Pointer(point)), (*[4]int32)(unsafe.Pointer(unsafe.Pointer(&segment))), float32(distance))) != 0 {
 			return true
 		}
 	}

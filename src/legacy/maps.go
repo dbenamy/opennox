@@ -211,7 +211,7 @@ func Sub_51DED0() int {
 }
 
 func Sub_428170(a1, a2 unsafe.Pointer) {
-	C.sub_428170(a1, (*C.int4)(a2))
+	geometryWallBounds((*[8]uint32)(unsafe.Pointer(a1)), (*[4]int32)(unsafe.Pointer(a2)))
 }
 
 func Nox_xxx_tileNFromPoint_411160(p types.Pointf) int {

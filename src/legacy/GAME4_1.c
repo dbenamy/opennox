@@ -35,7 +35,6 @@ extern uint32_t dword_587000_237036;
 extern void* nox_alloc_pendingOwn_2386916;
 extern uint32_t dword_5d4594_2386228;
 extern void* nox_alloc_spawn_2386216;
-extern uint32_t dword_587000_230092;
 extern uint32_t dword_5d4594_3835348;
 extern void* nox_alloc_tradeSession_2386492;
 extern uint32_t dword_5d4594_2386564;
@@ -52,73 +51,17 @@ extern nox_tileDef_t nox_tile_defs_arr[176];
 
 void* nox_monsterBin_head_2386924 = 0;
 
-//----- (00509E00) --------------------------------------------------------
-int nox_xxx_xferDirectionToAngle_509E00(uint32_t* a1) {
-	return *getMemU32Ptr(0x587000, 230072 + 4 * (*a1 + 3 * a1[1]));
-}
 
-//----- (00509E20) --------------------------------------------------------
-int nox_xxx_xferIndexedDirection_509E20(int a1, int2* a2) {
-	int v2;     // ecx
-	int v3;     // ecx
-	int result; // eax
 
-	v2 = *getMemIntPtr(0x587000, 192088 + 8 * a1);
-	if (v2 <= *(int*)&dword_587000_230092) {
-		a2->field_0 = (v2 >= -*(int*)&dword_587000_230092) - 1;
-	} else {
-		a2->field_0 = 1;
-	}
-	v3 = *getMemIntPtr(0x587000, 192092 + 8 * a1);
-	result = dword_587000_230092;
-	if (v3 <= *(int*)&dword_587000_230092) {
-		result = -*(int*)&dword_587000_230092;
-		if (v3 >= -*(int*)&dword_587000_230092) {
-			a2->field_4 = 0;
-		} else {
-			a2->field_4 = -1;
-		}
-	} else {
-		a2->field_4 = 1;
-	}
-	return result;
-}
 
-//----- (00509E90) --------------------------------------------------------
-int nox_xxx_mathDirection4ToAngle_509E90(int a1) { return *getMemU32Ptr(0x587000, 230056 + 4 * (a1%9)); }
 
-//----- (00509EA0) --------------------------------------------------------
-int nox_xxx_math_509EA0(int a1) {
-	int2 a2; // [esp+0h] [ebp-8h]
 
-	nox_xxx_xferIndexedDirection_509E20(a1, &a2);
-	return a2.field_4 + a2.field_0 + 2 * a2.field_4 + 4;
-}
 
-//----- (00509ED0) --------------------------------------------------------
-int nox_xxx_math_509ED0(float2* a1) {
-	int result; // eax
-	float v2;   // [esp+0h] [ebp-4h]
 
-	v2 = (atan2(a1->field_4, a1->field_0) + 6.2831855) * 40.743664 + 0.5;
-	result = nox_float2int(v2);
-	if (result < 0) {
-		result += (unsigned int)(255 - result) >> 8 << 8;
-	}
-	if (result >= 256) {
-		result += -256 * ((unsigned int)result >> 8);
-	}
-	return result;
-}
 
-//----- (00509F20) --------------------------------------------------------
-void nox_xxx_utilNormalizeVector_509F20(float2* a1) {
-	double v1; // st7
 
-	v1 = nox_double2float(sqrt(a1->field_0 * a1->field_0 + a1->field_4 * a1->field_4));
-	a1->field_0 = a1->field_0 / v1;
-	a1->field_4 = a1->field_4 / v1;
-}
+
+
 
 //----- (00509FF0) --------------------------------------------------------
 int sub_509FF0(int a1) {

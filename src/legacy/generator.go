@@ -58,7 +58,7 @@ func generatorPlace(u *server.Object, out *types.Pointf, player, descriptor *ser
 		if p.Y == 0 {
 			p.Y++
 		}
-		C.nox_xxx_utilNormalizeVector_509F20((*C.float2)(unsafe.Pointer(&p)))
+		geometryNormalize((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&p))))
 		p.X = float32(float64(p.X)*45 + float64(u.PosVec.X))
 		p.Y = float32(float64(p.Y)*45 + float64(u.PosVec.Y))
 		flags := server.MapTraceFlags(1)

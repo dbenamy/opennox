@@ -66,7 +66,7 @@ func projectileBoom(u, t *server.Object, n *types.Pointf) {
 		C.nox_xxx_sMakeScorch_537AF0((*C.float)(unsafe.Pointer(&t.PosVec)), 0)
 	} else if n != nil {
 		collisionReflect(n, &u.VelVec)
-		u.Direction2 = server.Dir16(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&u.VelVec))))
+		u.Direction2 = server.Dir16(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&u.VelVec))))))
 		u.VelVec.X = float32(float64(u.VelVec.X) * 0.5)
 		u.VelVec.Y = float32(float64(u.VelVec.Y) * 0.5)
 		projectileContact(u, int32(memmap.Uint32(0x5d4594, 1567968)), 7)
@@ -133,7 +133,7 @@ func projectilePixie(u, t *server.Object, n *types.Pointf) {
 		GetServer().DelayedDelete(u)
 	} else if n != nil {
 		collisionReflect(n, &u.VelVec)
-		u.Direction2 = server.Dir16(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&u.VelVec))))
+		u.Direction2 = server.Dir16(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&u.VelVec))))))
 		u.NewPos.X = float32(float64(u.VelVec.X) + float64(u.NewPos.X))
 		y := float64(u.VelVec.Y) + float64(u.NewPos.Y)
 		u.NewPos.Y = float32(y)

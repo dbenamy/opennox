@@ -182,9 +182,9 @@ func Nox_xxx_math_509ED0(pos types.Pointf) int {
 	cpos, free := alloc.New(types.Pointf{})
 	defer free()
 	*cpos = pos
-	return int(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(cpos))))
+	return int(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(cpos))))))
 }
 
 func Nox_xxx_math_509EA0(a1 int) int {
-	return int(C.nox_xxx_math_509EA0(C.int(a1)))
+	return int(C.int(geometryDirection4Index(int32(a1))))
 }

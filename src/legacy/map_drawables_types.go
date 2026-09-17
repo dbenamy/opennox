@@ -8,6 +8,7 @@ package legacy
 import "C"
 import (
 	"encoding/binary"
+	"github.com/opennox/opennox/v1/server"
 	"io"
 	"math"
 	"unsafe"
@@ -20,7 +21,9 @@ import (
 
 func mapDrawableByte(d *client.Drawable, off int) *byte    { return (*byte)(unsafe.Add(d.C(), off)) }
 func mapDrawableShort(d *client.Drawable, off int) *uint16 { return (*uint16)(unsafe.Add(d.C(), off)) }
-func mapDrawableBox(d *client.Drawable)                    { C.nox_shape_box_calc((*C.nox_shape)(unsafe.Add(d.C(), 44))) }
+func mapDrawableBox(d *client.Drawable) {
+	geometryShapeBox((*server.Shape)(unsafe.Pointer(unsafe.Add(d.C(), 44))))
+}
 func mapDrawableTyped(kind, typ int) int {
 	var count uint32
 	r := mapDrawableReader{&count}

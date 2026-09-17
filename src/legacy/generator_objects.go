@@ -122,7 +122,7 @@ func generatorSpawn(gen *server.Object, point *types.Pointf, src *server.Object)
 	GetServer().NoxScriptC().ScriptCallback(generatorScript(gen.UpdateData, 64), child, gen, server.NoxEventGeneratorSpawn)
 	dir, freeDir := alloc.New(types.Pointf{})
 	*dir = pos.Sub(gen.PosVec)
-	C.nox_xxx_utilNormalizeVector_509F20((*C.float2)(unsafe.Pointer(dir)))
+	geometryNormalize((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(dir))))
 	fx := [4]C.int{
 		C.int(floatToInt32(gen.PosVec.X)),
 		C.int(floatToInt32(gen.PosVec.Y)) - 50,

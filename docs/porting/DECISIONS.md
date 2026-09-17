@@ -1621,3 +1621,19 @@ contracts reproduce the defect; threshold-neighbor contracts keep the original
 are small, reversible corrections under the standing policy. Fresh production
 qualification and three-target regression checks pass. See
 [WORLD_GEOMETRY.md](WORLD_GEOMETRY.md) for evidence.
+
+
+### Geometry arithmetic and interface ownership
+
+Preserve the qualified C calculation's observable rounding points. C float locals
+can remain wide in x87 registers; their declared types alone are insufficient to
+choose Go intermediate widths. The geometry port uses explicit wide calculations
+and float32 stores/reloads, checked against the compiled baseline and frozen
+captures. In particular, the existing Go ShapeBox.Calc rounds earlier and cannot
+replace the selected C corner calculation. Its other callers remain unchanged.
+
+Keep the two collision force coefficients shared while remaining C code reads
+them. Move the private direction threshold and circle wall spans into Go, retire
+unused C interfaces, and retain twelve exports required by actual C callers. Gate
+locked-team notifications use the existing private-message adapter path so hooks
+and dispatch ownership remain consistent. See WORLD_GEOMETRY.md for qualification.

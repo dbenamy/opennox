@@ -37,7 +37,7 @@ func rewardInitBreakable(u *server.Object) {
 	}
 }
 func rewardInitDirection(u *server.Object, name bool) int32 {
-	dir := int32(C.nox_xxx_xferDirectionToAngle_509E00((*C.uint32_t)(u.InitData)))
+	dir := int32(C.int(geometryDirectionAngle((*[2]uint32)(unsafe.Pointer(u.InitData)))))
 	u.Direction1 = server.Dir16(uint16(dir))
 	u.Direction2 = u.Direction1
 	if !name {
@@ -78,7 +78,7 @@ func rewardInitGenerator(u *server.Object) int32 {
 	result := int32(u.ObjSubClass)
 	for i, dir := range []int{0, 2, 8, 6} {
 		if u.ObjSubClass&(1<<uint(i)) != 0 {
-			result = int32(C.nox_xxx_mathDirection4ToAngle_509E90(C.int(dir)))
+			result = int32(C.int(geometryDirection4Angle(int32(dir))))
 			u.Direction1 = server.Dir16(uint16(result))
 			break
 		}

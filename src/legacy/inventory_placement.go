@@ -184,7 +184,7 @@ func inventoryChest(u, opener *server.Object) {
 	default:
 		dir = types.Pointf{X: opener.PosVec.X - u.PosVec.X, Y: opener.PosVec.Y - u.PosVec.Y}
 	}
-	C.nox_xxx_utilNormalizeVector_509F20((*C.float2)(unsafe.Pointer(&dir)))
+	geometryNormalize((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&dir))))
 	dist := inventoryShapeRadius(u) + 4 + 15
 	var p [3]types.Pointf
 	p[0] = types.Pointf{X: float32(dist*float64(dir.X) + float64(u.PosVec.X)), Y: float32(dist*float64(dir.Y) + float64(u.PosVec.Y))}

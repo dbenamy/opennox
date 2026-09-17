@@ -6,7 +6,6 @@ package legacy
 #include "defs.h"
 #include "GAME4.h"
 #include "GAME4_1.h"
-extern unsigned int dword_587000_230092;
 */
 import "C"
 
@@ -45,5 +44,5 @@ func PortTestObjectReports(op int, a, b *server.Object, player, x, y int, pos *t
 	}
 }
 func PortTestObjectReportsDirectionThreshold() *int32 {
-	return (*int32)(unsafe.Pointer(&C.dword_587000_230092))
+	return (*int32)(unsafe.Pointer(&geometryDirectionThreshold))
 }

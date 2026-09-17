@@ -77,7 +77,7 @@ func quickbarSlotEvent(w *gui.Window, event, arg uint32) int {
 			old := quickbarDrop(s.ID, byte(s.Flags), pos, b)
 			if old>>16 == 137 {
 				point := C.int2{field_0: C.int(pos.X), field_4: C.int(pos.Y)}
-				inside := C.nox_xxx_pointInRect_4281F0(&point, (*C.int4)(memmap.PtrOff(0x587000, 133656))) != 0
+				inside := C.int(geometryRectInt((*[2]int32)(unsafe.Pointer(&point)), (*[4]int32)(unsafe.Pointer(memmap.PtrOff(0x587000, 133656))))) != 0
 				previous := *quickbarWord(1049696)
 				if inside || previous != 0 && previous != quickbarPointer(unsafe.Pointer(b.Current)) {
 					return 1

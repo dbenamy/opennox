@@ -15,16 +15,17 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Map polygon storage, lookup, events and serialization are in Go.
-The next geometry/collision batch has a qualified corrected C baseline: 32 live
-functions, repeated frozen captures, broader three-target checks and fresh
-production/gameplay qualification. Four small prerequisite corrections are
-recorded for review in [WORLD_GEOMETRY.md](docs/porting/WORLD_GEOMETRY.md).
+scheduled pause. Map polygons and world geometry/collision responses are in Go.
+The geometry batch replaces 32 live functions; all three target sweeps and fresh
+production/gameplay qualification pass. Four prerequisite corrections and the
+arithmetic compatibility review are recorded in
+[WORLD_GEOMETRY.md](docs/porting/WORLD_GEOMETRY.md).
 
-Production C is **44,396 physical lines in 74 files**, with zero reference C.
-The polygon conversion removed **1,072 lines**; the geometry prerequisite removed
-five unused local lines. The asset suite retains its exact three known failing
-packages. [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Production C is **42,982 physical lines in 74 files**, with zero reference C.
+The geometry conversion removed **1,414 lines**. The asset suite retains its exact
+three known failing packages. The next connected candidate is collision queues,
+dispatch, activation and remaining contact geometry.
+[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 
@@ -74,6 +75,11 @@ may precede full qualification when their evidence and remaining gates are expli
    Before launching long milestone gates, review arithmetic widths, signedness,
    pointer construction and callback behavior against C. Matching captured cases
    does not replace that review; add C contracts for newly identified boundaries.
+   For floating-point code, inspect the qualified C binary when source types do not
+   explain a mismatch. The current C compiler can keep float expressions wide in
+   x87 registers; preserve its observable store/reload boundaries. Review related
+   calculations together before rebuilding instead of rounding every C float local
+   to float32 in Go. The world-geometry conversion demonstrated this distinction.
    Before the first compile, format new files, check the whitespace diff, and compare
    new export signatures with every existing header declaration. A small late source
    fix can invalidate the whole cgo package build and repeat the remaining C compile.

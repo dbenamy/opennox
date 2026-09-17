@@ -104,7 +104,7 @@ func inventoryGlyphDrop(u, it *server.Object, pos *types.Pointf) int {
 	}
 	*(*types.Pointf)(unsafe.Add(it.InitData, 28)) = *pos
 	dir := types.Pointf{X: u.PosVec.X - pos.X, Y: u.PosVec.Y - pos.Y}
-	angle := uint16(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&dir))))
+	angle := uint16(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&dir))))))
 	it.Direction1, it.Direction2 = server.Dir16(angle), server.Dir16(angle)
 	inventorySound(825, it, 0, 0)
 	return 1

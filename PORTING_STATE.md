@@ -2,47 +2,50 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 44k lines** — **44,396 physical lines in 74 production
-`.c` files**, zero reference C. Latest conversion removes **1,072 lines**.
+**Rough C remaining: about 43k lines** — **42,982 physical lines in 74 production
+`.c` files**, zero reference C. Latest conversion removes **1,414 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — world geometry/collision corrected C baseline qualified
+## Current — world geometry/collision Go conversion qualified
 
-The next conversion covers **32 live functions / 1,385 corrected C body lines**.
-C baseline **9a945523 is committed/pushed**; parent polygon conversion
-is **10d3294d**. See [WORLD_GEOMETRY.md](docs/porting/WORLD_GEOMETRY.md).
+C baseline **9a945523** and supplemental player-wall contract **7d363edc** are
+pushed. The conversion replaces **32 functions / 1,385 corrected C body lines**,
+keeps twelve exports for actual C callers, retires twenty function interfaces and
+two private data definitions, and routes Go callers directly. Two force coefficients
+remain shared with C readers. Seven production Go files implement the batch.
 
-Sixteen focused groups pass; two separate processes agree on 15 frozen captures /
-15,782 records. Independent contracts reproduced three box flag errors and a lost
-quadrant condition; the small C corrections are qualified and recorded for review.
-Static checks pass. Default/server/highres pass **543/542/543 roots**,
-**42,759/42,758/42,759 tests including subtests**, no skips. **204 identical captures /
-81,403 records**; durations **291.14/383.26/290.61s**. Fresh production passes
-**408.92s**: three builds/ABI/interfaces, exact known 1,553 asset failures, options
-gameplay, save/load and flat maps. All gates share unchanged **2,190-file source**;
-all sessions are joined. No native code is installed yet and no blocker exists.
+Focused native-7 passes **17 roots / 16 captures / 15,902 records** (0.352s);
+static-2 passes. Broader default/server/highres pass **544/543/544 roots**,
+**42,760/42,759/42,760 tests including subtests**, no skips; **205 identical
+captures / 81,523 records** match C. Durations **251.18/375.39/290.70s**.
+Fresh production passes **398.08s**: three binaries/ABI/interfaces, exact known
+1,553 asset failures (15 pass / 3 fail / 32 no-test packages), gameplay, save/load
+and flat-map regeneration. All four gates share an unchanged **2,198-file source**.
+All sessions are joined; no active tests or user blocker.
 
-Supplemental player wall-association C contract: 120 records, repeated default
-and server/highres identical; frozen without modifying existing captures. Production
-source is identical to 9a945523. Supplement is ready for commit/push. Next native
-selection: 544 roots, 205 captures. Sixteen focused captures / 15,902 records.
-Native drafts are under build/port-world-geometry/native-draft (not installed):
-primitives, crossings, object responses, walls and axes. Gate, exports and caller
-migration remain. Review drafts against corrected committed C before installation.
+C is **42,982 / 74 files / zero reference (−1,414)**. Client SHA:
+3b0754cf3af539d8447c294af8a64a48429441760495861838d69429233a7737.
+See [WORLD_GEOMETRY.md](docs/porting/WORLD_GEOMETRY.md), scope and batch manifests.
+Artifacts: build/port-world-geometry/native-{default,server,highres,production},
+native-audit.json and native-interface-source-audit.json.
 
-Artifacts: build/port-world-geometry/c-{default,server,highres,production},
-c-audit.json and corrected-c-functions.json. The original proposal.json contains
-pre-correction C: use committed C/current corrected snapshot for translation.
-Next: finish native drafts, install once, move callers and retire C, then requalify
-without changing expectations.
-Twelve C interfaces remain live outside the batch; the two force coefficients
-also retain C readers. Reuse ShapeBox.Calc and floatToInt32 where equivalent.
+Arithmetic review preserves compiled C's x87 store/reload boundaries; declared
+float locals sometimes remain wide. ShapeBox.Calc is not interchangeable, so the
+port uses a compatible corner calculation. floatToInt32 is reused. Frozen root
+expectations unchanged. All native drafts, install-native.py and finish-width-review.py
+are consumed; never reinstall. A local comparison helper now rejects missing
+captures instead of reporting an empty set as matching.
+
+Next: commit/push this qualified conversion, then prepare the collision-core C
+baseline. The read-only next candidate has **23 live functions / 993 C body lines**
+in collision event queues, dispatch, activation lists and remaining contact
+geometry. See build/port-collision-core/{proposal.json,combined-reachability.json,plan-draft.md,c-disassembly}.
+No next-batch source or fixture changes are installed. Reuse actual owners and
+capture the separate shipped circle/box coincidence table at 0x587000:289928.
 At most three heavy jobs; source build/baseline/env.sh for every Go command;
-GOMAXPROCS=2 (highres=1), GOMEMLIMIT=768MiB. Never edit source during checks.
-All projection/walls/gate installation drafts and earlier polygon scripts are
-consumed; do not reinstall them. Original assets/archive remain untouched.
+GOMAXPROCS=2 (highres=1), GOMEMLIMIT=768MiB. Original assets/archive untouched.
 
 ## Qualified parent — map-polygon native conversion (10d3294d, pushed)
 
@@ -961,3 +964,9 @@ Read-only next-scope candidate: build/port-server-panels/candidate.json and
 plan-draft.md, 58 functions / 2,120 body lines from remaining servopts panels and
 related GAME2/GAME3/GAME3_1 blocks. No next-batch source changes yet. External
 reference graph reaches every candidate; review literal branches/registrations.
+
+<!-- next-collision-core-draft -->
+Read-only next candidate: build/port-collision-core/proposal.json,
+combined-reachability.json and plan-draft.md. Twenty-three live functions /
+993 C body lines in collision dispatch/queues/activation and remaining contact
+geometry. No next-batch source or fixture changes installed.

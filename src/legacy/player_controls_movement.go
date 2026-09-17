@@ -120,7 +120,7 @@ func controlWalkWaypoint(u *server.Object) int32 {
 		*ptr = nil
 		return 0
 	}
-	u.Direction2 = server.Dir16(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&pos))))
+	u.Direction2 = server.Dir16(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&pos))))))
 	if u.Buffs&(1<<3) != 0 {
 		u.Direction2 = server.Dir16(controlConfusedDirection(u))
 	}

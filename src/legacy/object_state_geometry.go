@@ -72,7 +72,7 @@ func stateDirection(a, b *types.Pointf) int32 {
 func stateFront(a *types.Pointf, dir int32, b *types.Pointf) int32 {
 	v, free := alloc.New([2]int32{})
 	defer free()
-	C.nox_xxx_xferIndexedDirection_509E20(C.int(dir), (*C.int2)(unsafe.Pointer(v)))
+	geometryIndexedDirection(int32(dir), (*[2]int32)(unsafe.Pointer(unsafe.Pointer(v))))
 	ind := stateDirection(a, b) + 16*(v[0]+3*v[1]+4)
 	return int32(memmap.Uint32(0x587000, uintptr(202504+4*ind)))
 }

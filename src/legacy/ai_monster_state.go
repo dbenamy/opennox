@@ -10,6 +10,7 @@ package legacy
 import "C"
 
 import (
+	"github.com/opennox/libs/types"
 	"math"
 	"unsafe"
 
@@ -124,7 +125,7 @@ func monsterCalcDir(u *server.Object, p *float32) {
 		return
 	}
 	q := [2]float32{*p - u.PosVec.X, *(*float32)(unsafe.Add(unsafe.Pointer(p), 4)) - u.PosVec.Y}
-	u.Direction2 = server.Dir16(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&q[0]))))
+	u.Direction2 = server.Dir16(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&q[0]))))))
 }
 func monsterNPCAnim(u *server.Object) unsafe.Pointer {
 	ud := u.UpdateDataMonster()

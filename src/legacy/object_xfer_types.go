@@ -152,7 +152,7 @@ func objectXferTrigger(u *server.Object) int {
 		r.word(uint32(int64(u.Shape.Box.W)))
 		r.word(uint32(int64(u.Shape.Box.H)))
 	}
-	C.nox_shape_box_calc((*C.nox_shape)(unsafe.Pointer(&u.Shape)))
+	geometryShapeBox((*server.Shape)(unsafe.Pointer(unsafe.Pointer(&u.Shape))))
 	if v < 41 {
 		var scratch [3]byte
 		for i := 0; i < 3; i++ {

@@ -271,7 +271,7 @@ func worldPush(u *server.Object) {
 }
 func worldIndexedDirection(u *server.Object) (int32, int32) {
 	var out C.int2
-	C.nox_xxx_xferIndexedDirection_509E20(C.int(int16(u.Direction1)), &out)
+	geometryIndexedDirection(int32(int16(u.Direction1)), (*[2]int32)(unsafe.Pointer(&out)))
 	return int32(out.field_0), int32(out.field_4)
 }
 func worldBlowCandidate(t, u *server.Object) {

@@ -250,7 +250,7 @@ func sustainedSwapTick(p unsafe.Pointer) uint32 {
 			pl := controlPlayer(u)
 			x, y := float64(*controlHalf(pl, 10)), float64(*controlHalf(pl, 12))
 			rect := [4]float32{float32(float64(u.PosVec.X) - x), float32(float64(u.PosVec.Y) - y), float32(x + float64(u.PosVec.X)), float32(y + float64(u.PosVec.Y))}
-			if C.sub_428220((*C.float2)(unsafe.Pointer(&t.PosVec)), (*C.float4)(unsafe.Pointer(&rect))) == 0 {
+			if C.int(geometryRectFloat((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&t.PosVec))), (*[4]float32)(unsafe.Pointer(unsafe.Pointer(&rect))))) == 0 {
 				resourcePriority(u, "ExecDur.c:NeedClearLOSForSwap")
 				return 1
 			}

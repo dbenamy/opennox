@@ -325,7 +325,6 @@ uint32_t nox_client_connError_814552 = 0;
 uint32_t dword_5d4594_10984 = 0;
 uint32_t dword_587000_145668 = 0x6;
 uint32_t dword_587000_180480 = 0x0;
-uint32_t dword_587000_230092 = 0x6;
 uint32_t dword_5d4594_1197372 = 0;
 uint32_t dword_5d4594_251716 = 0;
 uint32_t dword_5d4594_251708 = 0;

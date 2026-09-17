@@ -6,8 +6,6 @@
 int nox_xxx_wallMath_427F30(int2* a1, int* a2);
 int sub_428170(void* a1, int4* a2);
 int nox_xxx_pointInRect_4281F0(int2* a1, int4* a2);
-int sub_428220(float2* a1, float4* a2);
-void nox_shape_box_calc(nox_shape* s);
 char* sub_4282D0(char* a1, int a2);
 void* sub_4282F0(int a1, int a2, size_t a3);
 unsigned int sub_428540(int a1, char* a2, int a3);

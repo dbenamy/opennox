@@ -3,12 +3,9 @@
 
 #include "defs.h"
 
-int nox_xxx_xferDirectionToAngle_509E00(uint32_t* a1);
-int nox_xxx_xferIndexedDirection_509E20(int a1, int2* a2);
 int nox_xxx_mathDirection4ToAngle_509E90(int a1);
 int nox_xxx_math_509EA0(int a1);
 int nox_xxx_math_509ED0(float2* a1);
-void nox_xxx_utilNormalizeVector_509F20(float2* a1);
 int sub_509FF0(int a1);
 int nox_xxx_monsterActionIsCondition_50A010(int a1);
 int nox_xxx_mobActionGet_50A020(int a1);

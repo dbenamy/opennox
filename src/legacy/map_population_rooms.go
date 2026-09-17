@@ -140,8 +140,8 @@ func mapPopulationMonster(room, name uint32) uint32 {
 	// The original expression converts the class word interpreted as a float.
 	if u != nil && byte(math.Float32frombits(uint32(u.ObjClass)))&2 != 0 {
 		delta := types.Pointf{X: center.X - pos.X, Y: center.Y - pos.Y}
-		angle := C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&delta)))
-		mapPaintOrientObject(u, int32(C.nox_xxx_math_509EA0(angle)))
+		angle := C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&delta)))))
+		mapPaintOrientObject(u, int32(C.int(geometryDirection4Index(int32(angle)))))
 	}
 	return mapRoomRaw(unsafe.Pointer(u))
 }

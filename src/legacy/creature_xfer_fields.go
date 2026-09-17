@@ -77,7 +77,7 @@ func creatureXferSpellTable(r objectXferStream, p unsafe.Pointer, version int) {
 func creatureXferHeader(r objectXferStream, u *server.Object, v int, npc bool, scriptBase unsafe.Pointer) {
 	var direction [2]uint32
 	if !r.read() {
-		C.nox_xxx_xferIndexedDirection_509E20(C.int(int16(u.Direction1)), (*C.int2)(unsafe.Pointer(&direction[0])))
+		geometryIndexedDirection(int32(int16(u.Direction1)), (*[2]int32)(unsafe.Pointer(unsafe.Pointer(&direction[0]))))
 	}
 	r.raw(unsafe.Pointer(&direction[0]), 8)
 	script := func(off, nameOff int) {
@@ -109,7 +109,7 @@ func creatureXferHeader(r objectXferStream, u *server.Object, v int, npc bool, s
 		}
 	}
 	if r.read() {
-		d := server.Dir16(C.nox_xxx_xferDirectionToAngle_509E00((*C.uint32_t)(unsafe.Pointer(&direction[0]))))
+		d := server.Dir16(C.int(geometryDirectionAngle((*[2]uint32)(unsafe.Pointer(unsafe.Pointer(&direction[0]))))))
 		u.Direction1 = d
 		u.Direction2 = d
 	}

@@ -317,7 +317,6 @@ extern uint32_t nox_client_connError_814552;
 extern uint32_t dword_5d4594_10984;
 extern uint32_t dword_587000_145668;
 extern uint32_t dword_587000_180480;
-extern uint32_t dword_587000_230092;
 extern uint32_t dword_5d4594_1197372;
 extern uint32_t dword_5d4594_251716;
 extern uint32_t dword_5d4594_251708;

@@ -72,11 +72,11 @@ func visibilityFXShield(u *server.Object, pos *types.Pointf) int {
 	direction := int32(int16(u.Direction1))
 	if pos != nil {
 		delta := types.Pointf{X: float32(float64(u.PosVec.X) - float64(pos.X)), Y: float32(float64(u.PosVec.Y) - float64(pos.Y))}
-		direction = int32(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&delta))))
+		direction = int32(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&delta))))))
 	}
 	b := []byte{128}
 	b = binary.LittleEndian.AppendUint16(b, gameplayReportCode(u))
-	b = append(b, byte(C.nox_xxx_math_509EA0(C.int(direction))))
+	b = append(b, byte(C.int(geometryDirection4Index(int32(direction)))))
 	return visibilityFXSend(u.PosVec, b)
 }
 func visibilityFXSummonStart(id uint16, pos types.Pointf, extra byte, a, b uint16) int {

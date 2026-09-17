@@ -132,146 +132,15 @@ void* dword_5d4594_814624 = 0;
 
 void* dword_5d4594_805984 = 0;
 
-//----- (00427F30) --------------------------------------------------------
-int nox_xxx_wallMath_427F30(int2* a1, int* a2) {
-	int v2;  // esi
-	int v3;  // ecx
-	int v4;  // ebp
-	int v5;  // edi
-	int v6;  // ebx
-	int v7;  // esi
-	int v9;  // edx
-	int v10; // eax
-	int v12; // [esp+18h] [ebp-18h]
-	int v13; // [esp+1Ch] [ebp-14h]
 
-	v2 = a1->field_0;
-	if ((double)a1->field_0 < 57.5) {
-		return 0;
-	}
-	v3 = a1->field_4;
-	if ((double)v3 < 57.5) {
-		return 0;
-	}
-	if (v2 > 5888) {
-		return 0;
-	}
-	if (v3 > 5888) {
-		return 0;
-	}
-	v4 = v2 / 23;
-	v5 = v3 / 23;
-	v6 = a2[1] / 23;
-	v12 = a2[2] / 23;
-	v13 = a2[3] / 23;
-	v7 = a2[4] / 23;
-	v9 = a2[5] / 23;
-	if (v3 / 23 < v6 || v5 > a2[7] / 23 || v4 < v12 || v4 > v7) {
-		return 0;
-	}
-	if (v5 > v13) {
-		if (v4 < v5 + v12 - v13) {
-			return 0;
-		}
-		v10 = *a2 / 23;
-	} else {
-		v10 = *a2 / 23;
-		if (v4 < v10 + v6 - v5) {
-			return 0;
-		}
-	}
-	if (v5 > v9) {
-		if (v4 > v7 + v9 - v5) {
-			return 0;
-		}
-	} else if (v4 > v5 + v10 - v6) {
-		return 0;
-	}
-	return 1;
-}
 
-//----- (00428170) --------------------------------------------------------
-int sub_428170(void* a1p, int4* a2) {
-	uint32_t* a1 = a1p;
-	int v2; // edx
-	int v3; // edx
 
-	v2 = a1[1];
-	if (v2 >= a1[7]) {
-		a2->field_C = v2;
-		a2->field_4 = a1[7];
-	} else {
-		a2->field_4 = v2;
-		a2->field_C = a1[7];
-	}
-	v3 = a1[2];
-	if (v3 >= a1[4]) {
-		a2->field_8 = v3;
-		a2->field_0 = a1[4];
-	} else {
-		a2->field_0 = v3;
-		a2->field_8 = a1[4];
-	}
-	if (a2->field_0 < 0) {
-		a2->field_0 = 0;
-	}
-	if (a2->field_4 < 0) {
-		a2->field_4 = 0;
-	}
-	if (a2->field_8 >= 5888) {
-		a2->field_8 = 5887;
-	}
-	if (a2->field_C >= 5888) {
-		a2->field_C = 5887;
-	}
-	return 0;
-}
 
-//----- (004281F0) --------------------------------------------------------
-int nox_xxx_pointInRect_4281F0(int2* a1, int4* a2) {
-	int v2;      // ecx
-	bool result; // al
 
-	result = 0;
-	if (a1->field_0 >= a2->field_0 && a1->field_0 <= a2->field_8) {
-		v2 = a1->field_4;
-		if (v2 >= a2->field_4 && v2 <= a2->field_C) {
-			result = 1;
-		}
-	}
-	return result;
-}
 
-//----- (00428220) --------------------------------------------------------
-int sub_428220(float2* a1, float4* a2) {
-	return a1->field_0 >= (double)a2->field_0 && a1->field_0 <= (double)a2->field_8 &&
-		   a1->field_4 >= (double)a2->field_4 && a1->field_4 <= (double)a2->field_C;
-}
 
-//----- (00428270) --------------------------------------------------------
-void nox_shape_box_calc(nox_shape* s) {
-	const float mul = 0.35354999; // cos(Pi/4) / 2
-	float px = s->box_w * mul;
-	float py = s->box_h * mul;
 
-	double v = 0.0;
 
-	v = -px + py;
-	s->box_left_top = v;
-	s->box_left_top_2 = v;
-
-	v = -px - py;
-	s->box_left_bottom = v;
-	s->box_left_bottom_2 = v;
-
-	v = +px + py;
-	s->box_right_top = v;
-	s->box_right_top_2 = v;
-
-	v = +px - py;
-	s->box_right_bottom = v;
-	s->box_right_bottom_2 = v;
-}
 
 //----- (004282D0) --------------------------------------------------------
 char* sub_4282D0(char* a1, int a2) {

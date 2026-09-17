@@ -14,6 +14,7 @@ package legacy
 */
 import "C"
 import (
+	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/legacy/common/ccall"
@@ -288,7 +289,7 @@ func damageGenerator(u, source, weapon *server.Object, amount, kind int32) int32
 		if weapon != nil {
 			pos.X = float32(float64(weapon.PosVec.X) - float64(u.PosVec.X) + 0.0099999998)
 			pos.Y = float32(float64(weapon.PosVec.Y) - float64(u.PosVec.Y) + 0.0099999998)
-			C.nox_xxx_utilNormalizeVector_509F20((*C.float2)(unsafe.Pointer(&pos)))
+			geometryNormalize((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&pos))))
 			pos.X = float32(float64(pos.X)*22 + float64(u.PosVec.X))
 			pos.Y = float32(float64(pos.Y)*22 + float64(u.PosVec.Y))
 		}

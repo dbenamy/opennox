@@ -17,7 +17,7 @@ import (
 
 func objectReportDirection(u *server.Object) byte {
 	var dir C.int2
-	C.nox_xxx_xferIndexedDirection_509E20(C.int(int16(u.Direction1)), &dir)
+	geometryIndexedDirection(int32(int16(u.Direction1)), (*[2]int32)(unsafe.Pointer(&dir)))
 	index := byte(dir.field_0) + 3*byte(dir.field_4) + 4
 	if index > 3 {
 		index--

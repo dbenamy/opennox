@@ -128,7 +128,7 @@ func uiInventoryAlterWeapon() {
 	if player == nil || *(*uint32)(unsafe.Add(playerDr.C(), 276)) == 34 {
 		return
 	}
-	if C.nox_xxx_pointInRect_4281F0((*C.int2)(memmap.PtrOff(0x5D4594, 1062572)), (*C.int4)(memmap.PtrOff(0x587000, 136336))) == 1 {
+	if C.int(geometryRectInt((*[2]int32)(unsafe.Pointer(memmap.PtrOff(0x5D4594, 1062572))), (*[4]int32)(unsafe.Pointer(memmap.PtrOff(0x587000, 136336))))) == 1 {
 		Nox_xxx_cursorSetDraggedItem_477690(nil)
 	}
 	alt := uiInventoryCellRef(uint32(C.dword_5d4594_1062480))

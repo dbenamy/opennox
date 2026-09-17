@@ -19,6 +19,7 @@ import "C"
 
 import (
 	noxcolor "github.com/opennox/libs/color"
+	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -50,7 +51,7 @@ func effectType(name string) uint32  { return uint32(GetClient().Cli().Things.In
 func effectDistance(x, y int) int    { return int(screenDistance(int32(x), int32(y))) }
 func effectAngle(x, y float32) int {
 	p := [2]float32{x, y}
-	return int(C.nox_xxx_math_509ED0((*C.float2)(unsafe.Pointer(&p))))
+	return int(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&p))))))
 }
 func effectFloatInt(v float32) int { return int(floatToInt32(v)) }
 func effectGlow(p image.Point, color uint32, radius, size int) {

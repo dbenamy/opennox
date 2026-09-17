@@ -8,8 +8,6 @@ package legacy
 #include "GAME3_2.h"
 #include "GAME4_1.h"
 #include "GAME5.h"
-int sub_427C80(int4*, int4*);
-extern unsigned int dword_587000_230092;
 extern uint32_t dword_587000_292488, dword_587000_292492;
 extern uint32_t dword_5d4594_2491544;
 extern void* nox_alloc_hit_2491548;
@@ -17,6 +15,7 @@ extern void* nox_alloc_hit_2491548;
 import "C"
 
 import (
+	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
@@ -55,49 +54,49 @@ func PortTestWorldGeometry(spec PortTestWorldGeometrySpec) PortTestWorldGeometry
 	var rv C.int
 	switch spec.Op {
 	case "segments":
-		rv = C.sub_427C80((*C.int4)(ptr[0]), (*C.int4)(ptr[1]))
+		rv = C.int(geometrySegments((*[4]int32)(unsafe.Pointer(ptr[0])), (*[4]int32)(unsafe.Pointer(ptr[1]))))
 	case "edge-project":
-		rv = C.sub_427DF0(C.int(uintptr(ptr[0])), (*C.int)(ptr[1]), f(0))
+		rv = C.int(geometryProjectEdge((*[2]int32)(ptr[0]), (*[4]int32)(unsafe.Pointer(ptr[1])), float32(f(0))))
 	case "wall-point":
-		rv = C.nox_xxx_wallMath_427F30((*C.int2)(ptr[0]), (*C.int)(ptr[1]))
+		rv = C.int(geometryWallPoint((*[2]int32)(unsafe.Pointer(ptr[0])), (*[8]int32)(unsafe.Pointer(ptr[1]))))
 	case "wall-bounds":
-		rv = C.sub_428170(ptr[0], (*C.int4)(ptr[1]))
+		rv = C.int(geometryWallBounds((*[8]uint32)(unsafe.Pointer(ptr[0])), (*[4]int32)(unsafe.Pointer(ptr[1]))))
 	case "rect-int":
-		rv = C.nox_xxx_pointInRect_4281F0((*C.int2)(ptr[0]), (*C.int4)(ptr[1]))
+		rv = C.int(geometryRectInt((*[2]int32)(unsafe.Pointer(ptr[0])), (*[4]int32)(unsafe.Pointer(ptr[1]))))
 	case "rect-float":
-		rv = C.sub_428220((*C.float2)(ptr[0]), (*C.float4)(ptr[1]))
+		rv = C.int(geometryRectFloat((*types.Pointf)(unsafe.Pointer(ptr[0])), (*[4]float32)(unsafe.Pointer(ptr[1]))))
 	case "box-calc":
-		C.nox_shape_box_calc((*C.nox_shape)(ptr[0]))
+		geometryShapeBox((*server.Shape)(unsafe.Pointer(ptr[0])))
 	case "map-coordinates":
-		rv = C.sub_4D3E30((*C.float2)(ptr[0]), (*C.float2)(ptr[1]))
+		rv = C.int(geometryMapCoordinates((*types.Pointf)(unsafe.Pointer(ptr[0])), (*types.Pointf)(unsafe.Pointer(ptr[1]))))
 	case "direction-angle":
-		rv = C.nox_xxx_xferDirectionToAngle_509E00((*C.uint32_t)(ptr[0]))
+		rv = C.int(geometryDirectionAngle((*[2]uint32)(unsafe.Pointer(ptr[0]))))
 	case "indexed-direction":
-		rv = C.nox_xxx_xferIndexedDirection_509E20(C.int(spec.Ints[0]), (*C.int2)(ptr[0]))
+		rv = C.int(geometryIndexedDirection(int32(spec.Ints[0]), (*[2]int32)(unsafe.Pointer(ptr[0]))))
 	case "direction4-angle":
-		rv = C.nox_xxx_mathDirection4ToAngle_509E90(C.int(spec.Ints[0]))
+		rv = C.int(geometryDirection4Angle(int32(spec.Ints[0])))
 	case "direction4-index":
-		rv = C.nox_xxx_math_509EA0(C.int(spec.Ints[0]))
+		rv = C.int(geometryDirection4Index(int32(spec.Ints[0])))
 	case "vector-angle":
-		rv = C.nox_xxx_math_509ED0((*C.float2)(ptr[0]))
+		rv = C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(ptr[0]))))
 	case "normalize":
-		C.nox_xxx_utilNormalizeVector_509F20((*C.float2)(ptr[0]))
+		geometryNormalize((*types.Pointf)(unsafe.Pointer(ptr[0])))
 	case "project-positive":
-		rv = C.sub_550280(C.int(uintptr(ptr[0])), f(0), f(1), C.int(spec.Ints[0]), C.int(spec.Ints[1]), C.int(uintptr(ptr[1])), C.int(uintptr(ptr[2])))
+		rv = C.int(geometryProjectPositive((*types.Pointf)(ptr[0]), float32(f(0)), float32(f(1)), int32(spec.Ints[0]), int32(spec.Ints[1]), (*types.Pointf)(ptr[1]), (*types.Pointf)(ptr[2])))
 	case "project-negative":
-		rv = C.sub_5502F0((*C.float2)(ptr[0]), f(0), f(1), C.int(spec.Ints[0]), C.int(spec.Ints[1]), (*C.float2)(ptr[1]), (*C.float2)(ptr[2]))
+		rv = C.int(geometryProjectNegative((*types.Pointf)(unsafe.Pointer(ptr[0])), float32(f(0)), float32(f(1)), int32(spec.Ints[0]), int32(spec.Ints[1]), (*types.Pointf)(unsafe.Pointer(ptr[1])), (*types.Pointf)(unsafe.Pointer(ptr[2]))))
 	case "quadrant":
-		rv = C.int(C.sub_550CB0((*C.float2)(ptr[0]), (*C.float2)(ptr[1])))
+		rv = C.int(C.int(geometryQuadrant((*types.Pointf)(unsafe.Pointer(ptr[0])), (*types.Pointf)(unsafe.Pointer(ptr[1])))))
 	case "rectangle-crossings":
-		rv = C.sub_5516A0((*C.float4)(ptr[0]), (*C.float4)(ptr[1]), (*C.float2)(ptr[2]), C.int(spec.Ints[0]), C.int(spec.Ints[1]))
+		rv = C.int(geometryRectCrossings((*[4]float32)(unsafe.Pointer(ptr[0])), (*[4]float32)(unsafe.Pointer(ptr[1])), (*types.Pointf)(unsafe.Pointer(ptr[2])), int32(spec.Ints[0]), int32(spec.Ints[1])))
 	case "horizontal-crossing":
-		rv = C.sub_551780((*C.float4)(ptr[0]), f(0), f(1), f(2), (*C.float2)(ptr[1]), C.int(spec.Ints[0]))
+		rv = C.int(geometryCrossHorizontal((*[4]float32)(unsafe.Pointer(ptr[0])), float32(f(0)), float32(f(1)), float32(f(2)), (*types.Pointf)(unsafe.Pointer(ptr[1])), int32(spec.Ints[0])))
 	case "vertical-crossing":
-		rv = C.sub_551870((*C.float4)(ptr[0]), f(0), f(1), f(2), (*C.float2)(ptr[1]), C.int(spec.Ints[0]))
+		rv = C.int(geometryCrossVertical((*[4]float32)(unsafe.Pointer(ptr[0])), float32(f(0)), float32(f(1)), float32(f(2)), (*types.Pointf)(unsafe.Pointer(ptr[1])), int32(spec.Ints[0])))
 	case "clipped-center":
-		rv = C.sub_551960((*C.float4)(ptr[0]), (*C.float4)(ptr[1]), (*C.float4)(ptr[2]), (*C.float2)(ptr[3]))
+		rv = C.int(geometryClipCenter((*[4]float32)(unsafe.Pointer(ptr[0])), (*[4]float32)(unsafe.Pointer(ptr[1])), (*[4]float32)(unsafe.Pointer(ptr[2])), (*types.Pointf)(unsafe.Pointer(ptr[3]))))
 	case "rect-float-alt":
-		rv = C.sub_551A90((*C.float2)(ptr[0]), (*C.float4)(ptr[1]))
+		rv = C.int(geometryRectFloat((*types.Pointf)(unsafe.Pointer(ptr[0])), (*[4]float32)(unsafe.Pointer(ptr[1]))))
 	default:
 		panic(spec.Op)
 	}
@@ -109,40 +108,40 @@ func PortTestWorldGeometry(spec PortTestWorldGeometrySpec) PortTestWorldGeometry
 }
 
 func PortTestWorldGeometryPhysics(op string, u, v *server.Object, words *[16]uint32, flags int32, distance float32) int {
-	a, b := C.int(uintptr(u.CObj())), C.int(uintptr(v.CObj()))
 	p := unsafe.Pointer(&words[0])
 	p1 := unsafe.Pointer(&words[2])
 	p2 := unsafe.Pointer(&words[4])
 	p3 := unsafe.Pointer(&words[8])
 	switch op {
 	case "circle-wall":
-		return int(C.sub_54FFC0((*C.int2)(p), a))
+		return int(geometryCircleWall((*[2]int32)(p), u))
 	case "point-wall":
-		return int(C.sub_550380(C.int(flags), a, (*C.float2)(p)))
+		return int(geometryPointWall(u, (*types.Pointf)(p)))
 	case "game-ball":
-		return int(C.sub_550480(a))
+		return int(geometryGameBall(u))
 	case "box-walls":
-		C.sub_5504B0(a)
+		geometryBoxWalls(u)
 	case "box-wall":
-		return int(C.sub_550580((*C.int2)(p), (*C.float)(u.CObj())))
+		return int(geometryBoxWall((*[2]int32)(p), u))
 	case "horizontal-wall":
-		return int(C.sub_550760(a, (*C.float2)(p), (*C.float2)(p1), (*C.float4)(p2), (*C.float2)(p3), C.float(distance)))
+		return int(geometryWallHorizontal(u, (*types.Pointf)(p), (*types.Pointf)(p1), (*[4]float32)(p2), (*types.Pointf)(p3), distance))
 	case "vertical-wall":
-		return int(C.sub_550A10(a, (*C.float2)(p), (*C.float2)(p1), (*C.float4)(p2), (*C.float2)(p3), C.float(distance)))
+		return int(geometryWallVertical(u, (*types.Pointf)(p), (*types.Pointf)(p1), (*[4]float32)(p2), (*types.Pointf)(p3), distance))
 	case "circle-circle":
-		C.nox_xxx_collisionCheckCircleCircle_550D00(a, b)
+		geometryCircleCircle(u, v)
 	case "box-box":
-		C.sub_550F80((*C.float)(u.CObj()), b)
+		geometryBoxBox(u, v)
 	case "gate-box":
-		C.sub_551250(C.uint(a), (*C.float)(v.CObj()), C.int(flags))
+		geometryGateBox(u, v, flags)
 	default:
 		panic(op)
 	}
 	return 0
 }
+
 func PortTestWorldGeometryGlobals() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
-		"directionThreshold": (*uint32)(unsafe.Pointer(&C.dword_587000_230092)),
+		"directionThreshold": (*uint32)(unsafe.Pointer(&geometryDirectionThreshold)),
 		"objectForce":        (*uint32)(unsafe.Pointer(&C.dword_587000_292488)),
 		"wallForce":          (*uint32)(unsafe.Pointer(&C.dword_587000_292492)),
 		"gameBall":           memmap.PtrUint32(0x5D4594, 2491788),

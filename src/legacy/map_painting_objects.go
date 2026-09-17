@@ -67,7 +67,7 @@ func mapPaintOrientObject(u *server.Object, dir int32) uint32 {
 		return 0
 	}
 	if u.ObjClass&2 != 0 {
-		angle := uint32(C.nox_xxx_mathDirection4ToAngle_509E90(C.int(mapPaintDirection(dir))))
+		angle := uint32(C.int(geometryDirection4Angle(int32(mapPaintDirection(dir)))))
 		*(*uint32)(unsafe.Add(u.UpdateData, 376)) = angle
 		u.Direction1 = server.Dir16(angle)
 		return 1

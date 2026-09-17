@@ -201,7 +201,7 @@ func spellLifeCreateFly(u, target *server.Object, id int32) *server.Object {
 	*spellLifeWord(out.UpdateData, 12) = uint32(id)
 	// Preserve the direction helper's side effects before velocity stores.
 	var indexed C.int2
-	C.nox_xxx_xferIndexedDirection_509E20(C.int(u.Direction1), &indexed)
+	geometryIndexedDirection(int32(u.Direction1), (*[2]int32)(unsafe.Pointer(&indexed)))
 	out.VelVec.X = float32(float64(dx) * float64(*(*float32)(unsafe.Add(out.CObj(), 544))))
 	out.VelVec.Y = float32(float64(dy) * float64(*(*float32)(unsafe.Add(out.CObj(), 544))))
 	out.VelVec.X = float32(float64(out.VelVec.X) + float64(u.VelVec.X))
