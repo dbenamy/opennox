@@ -8,33 +8,31 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — visibility/effects conversion qualified
+## Current — object-report C baseline
 
-Original C baseline **6e8dccf2** and supplemental scan-delay baseline **e2616865**
-are committed/pushed. The native conversion passes all gates: default/server/highres
-383 roots / 10,772 leaf cases each, 8,962 records / 65 groups, all production builds
-and ABI audits, static checks, exact known full-suite failures, gameplay, actual
-save/load and flat rendering with exact map regeneration. All gates finished;
-there are no active build/test sessions. Production qualification took 373.9s.
+Visibility/effects conversion **df8b3bb7** is committed/pushed and qualified.
+Object reports are the next connected batch: eleven live C functions, including
+a private minimap-count helper, with **541 physical C lines** selected. Production
+source remains unchanged; qualified count is still **56,118 / 82 files**.
 
-Five Go files contain 509 lines of live behavior. Six C exports remain and 24 are
-retired. The unreachable sub_528030 and its fixture are deliberately removed;
-all live frozen expectations remain unchanged. See VISIBILITY_EFFECTS.md and
-VISIBILITY_SCAN_DELAY.md for review notes and evidence.
+C default/server/highres pass 400 roots / 23,259 leaf cases and all 82 capture
+groups. A final six-case polygon-initialization supplement passes on all targets; the focused repeat passes 18 new groups / 13,593 records. See
+[OBJECT_REPORTS.md](docs/porting/OBJECT_REPORTS.md) and object-reports-batch.json.
+The previous conversion's production baseline is reused because only tests/docs
+changed. Native qualification will run all production gates and the combined
+401-root corpus anew.
 
-Next: baseline the connected object-report encoding/delivery batch (ten functions,
-about 499 C implementation lines in GAME4_1.c and GAME4.c). Preliminary ignored
-scope notes are under build/port-object-reports. Save/quest transition functions
-are excluded after body review. No next-batch source changes yet.
+Next: commit/push this qualified C baseline, then install the reviewed Go drafts,
+compare frozen expectations,
+qualify production, update the C count, commit/push and continue. Ignored drafts
+and an install script are in build/port-object-reports; they are not installed yet.
+No production conversion changes are present at this checkpoint.
 
-Disk cleanup preserves logs, captures, screenshots, saves, current/preceding batch
-binaries and original assets. Older rebuildable binaries were removed with an
-inventory at build/baseline/removed-old-binaries.json. Completed scenario asset
-copies are removed only after byte verification; each run has a restoration
-manifest for build/baseline/deduplicate-run-assets.py --restore RUN.
-
-Preserve untracked nox-iso-from-archive-org.7z and original assets. Source
-build/baseline/env.sh for Go commands. No user question or substantial blocker.
+Disk cleanup freed about 19 GiB; original assets, all evidence, and current/
+preceding binaries remain. Inventory: build/baseline/removed-old-binaries.json.
+Completed runs have per-run deduplicated-assets.json restoration manifests.
+Preserve untracked nox-iso-from-archive-org.7z. Source build/baseline/env.sh for Go
+commands. No user question or substantial blocker.
 
 <!-- /current-checkpoint -->
 

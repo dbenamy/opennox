@@ -25,8 +25,9 @@ gameplay, actual save/load and flat rendering pass with exact map regeneration.
 
 See [VISIBILITY_EFFECTS.md](docs/porting/VISIBILITY_EFFECTS.md) for evidence and
 review notes, including retirement of an unreachable helper and supplemental
-original-C scan scheduling contracts. Next: baseline the connected object-report
-encoding/delivery batch, approximately 499 C implementation lines.
+original-C scan scheduling contracts. The connected [object-report batch](docs/porting/OBJECT_REPORTS.md) now has a C
+baseline; its selected blocks total 541 physical C lines, including a private
+minimap-count helper. Finish baseline validation, then convert and qualify.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint; confident reversible
 decisions remain recorded for review.
 
@@ -62,6 +63,9 @@ may precede full qualification when their evidence and remaining gates are expli
    boundaries, return values, mutations, signedness/overflow, layout, serialization,
    RNG consumption, timing and pixels as relevant. Repeat original-C captures in
    separate processes; normalize only identified nondeterministic fields.
+   Reuse the preceding qualified production baseline when the new baseline changes
+   only tests/docs and production source is identical. Record that identity and the
+   reused artifacts; always rerun production qualification after the conversion.
 3. Add independent contracts so matching a baseline is not the only correctness
    check. If these uncover an existing bug, make a justified, reversible correction
    before freezing the baseline and record it for later review. Commit the baseline.
