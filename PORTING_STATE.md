@@ -8,7 +8,42 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — world geometry/collision Go conversion qualified
+## Current — collision-core C baseline qualified; native conversion next
+
+World geometry **011fcb73 is committed/pushed**. This batch selects **23 live C
+functions / 993 body lines**. Production source remains identical to that parent.
+Sixteen focused C roots/captures pass twice with **22,848 identical records**;
+expectations are frozen. Static-3 passes. Broader default/server/highres pass
+**660/659/660 roots**, **42,918/42,917/42,918 tests including subtests**, zero skips.
+**221 captures / 104,371 records** match across all targets. Durations
+**308.57/387.42/328.98s**, one unchanged **2,213-file source manifest**.
+All sessions (43142/16593/63449) joined; no active jobs.
+
+Default's tests passed but its final manifest hash check had inherited geometry
+filenames renamed by mistake. The corrected manifest and independent c-audit
+verify all saved outputs and source identity; the original failed driver report
+is retained. Other targets' drivers pass. Production identity/reuse audit verifies
+parent's three binary hashes, successful qualification and all selected C symbols.
+See docs/porting/COLLISION_CORE.md and build/port-collision-core/c-audit.json.
+
+Next: baseline commit/push, then native conversion. Five ignored implementation
+drafts are under build/port-collision-core/native-draft; **not installed yet**.
+Review before installation. Scope/reachability/disassembly are in the batch folder.
+All fixture draft installs and golden freeze invocations are consumed; never rerun.
+Frozen root expectations must remain unchanged. No production changes or blocker.
+The height fixture owns the absolute-value helper's relocation/scratch; preserve
+that retained helper's scratch side effects. Native interface audit should retire
+the five geometry exports whose last C callers are in this batch, and move private
+queue/force/cache ownership after whole-source verification.
+
+Disk cleanup reclaimed **4.638 GiB** from nine newly completed polygon/geometry
+run copies. Each removed file matched the original asset hash; per-run manifests
+record restoration. **deduplicate-completed-assets.py --apply is consumed; never
+repeat deletion mode.** Original assets/archive, changed files and results remain.
+Free space afterward: about 12 GiB. See completed-assets-{plan,audit}.json and
+completed-assets-applied.log under the new batch directory.
+
+## Qualified parent — world geometry/collision Go conversion (011fcb73, pushed)
 
 C baseline **9a945523** and supplemental player-wall contract **7d363edc** are
 pushed. The conversion replaces **32 functions / 1,385 corrected C body lines**,
@@ -38,11 +73,10 @@ expectations unchanged. All native drafts, install-native.py and finish-width-re
 are consumed; never reinstall. A local comparison helper now rejects missing
 captures instead of reporting an empty set as matching.
 
-Next: commit/push this qualified conversion, then prepare the collision-core C
-baseline. The read-only next candidate has **23 live functions / 993 C body lines**
+Next: prepare the collision-core C baseline described above. The read-only next candidate has **23 live functions / 993 C body lines**
 in collision event queues, dispatch, activation lists and remaining contact
 geometry. See build/port-collision-core/{proposal.json,combined-reachability.json,plan-draft.md,c-disassembly}.
-No next-batch source or fixture changes are installed. Reuse actual owners and
+Reuse actual owners and
 capture the separate shipped circle/box coincidence table at 0x587000:289928.
 At most three heavy jobs; source build/baseline/env.sh for every Go command;
 GOMAXPROCS=2 (highres=1), GOMEMLIMIT=768MiB. Original assets/archive untouched.

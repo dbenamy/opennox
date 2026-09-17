@@ -1,0 +1,143 @@
+{
+  "parent": "011fcb73",
+  "functions": [
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "nox_xxx_allocHitArray_5486D0",
+      "body_lines": 16,
+      "sha256": "840e648e0cc79dbb563612a9f8bdd38b4b76e11195100b7ce2ae36604a071ad4"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "nox_xxx_collSysAddCollision_548630",
+      "body_lines": 44,
+      "sha256": "b447c0f6459aa4fd4aa113cfcc056de1e668a507ed6f47e3e5861cfb815c6f3e"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "nox_xxx_collide_548740",
+      "body_lines": 34,
+      "sha256": "00f651a76faf549d399b300e006f4c7ca8f99294393215f09d1373091ed80a71"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_547DB0",
+      "body_lines": 37,
+      "sha256": "17628c8fb04515a4810dbfffe6a46ac49a5bcab2c92a9ffb5f9a58836be69ad8"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_548100",
+      "body_lines": 35,
+      "sha256": "88f11b80d0d5d3194c41ef7dee50a619368ec3c71ede0aaae6421f58f8c88ac1"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_5481C0",
+      "body_lines": 14,
+      "sha256": "4e2fe5abc8c7db9b8cfd9fd44249af06a12bee1522e49730e4769c55eb80e832"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_548220",
+      "body_lines": 54,
+      "sha256": "87185d6a9dcf38bd993b55bade317ca5cb5efd9babe24c1a7b5ce4cb7b0e4d68"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_548360",
+      "body_lines": 81,
+      "sha256": "5b594802287be3f75c9699d51ef1c8b0b29dfc23f85bcf7d5a024bd8d1a8a9b9"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_5485B0",
+      "body_lines": 19,
+      "sha256": "4b0c6daf54b58b4704b9474d328136456f9cbdbeb3273846dc9bc89097913ef5"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_5488B0",
+      "body_lines": 110,
+      "sha256": "e418fdc9d54f1985c7e0fe2b1d87050c2c3df335705eadd0398de45631204c5a"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_548B60",
+      "body_lines": 75,
+      "sha256": "d87ebb0aa6aefa7511ca0b714a68baf50d8fd18707e3c07dc6a072cbe853675e"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_54A990",
+      "body_lines": 164,
+      "sha256": "674e0762ec6f23eb1532ab28d36c4dbf1d0133d15a7b06a24795f3637a2a5cc3"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_54AD50",
+      "body_lines": 80,
+      "sha256": "48961f971bd0c55dbf2c09e10a85f3fbd11895f2e83e9e09b44672a88e184876"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_54FEF0",
+      "body_lines": 42,
+      "sha256": "ccb3311032c4afa19618cb4182f23b29f42629d9f75bbc79f59fc411e11d25b4"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_551AE0",
+      "body_lines": 32,
+      "sha256": "a3ae45d9683d84d2d763ec965d83f68db542b4292e4789a17afd3bc28634bca8"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_551BF0",
+      "body_lines": 7,
+      "sha256": "6a68988205949d2ad0043dd20fb89854b7c96a9d163795b272ee76d6cc1b999a"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_551C40",
+      "body_lines": 54,
+      "sha256": "9aa3337849f7db99440073e018ab0a9eec2973daf24602c3cb27000b93d23b3a"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "nox_xxx_unitHasCollideOrUpdateFn_537610",
+      "body_lines": 38,
+      "sha256": "f0e2ce166d0e103623a741d17b4f3d77026a5153b0e358c2008f85702736c9e7"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "sub_537580",
+      "body_lines": 1,
+      "sha256": "9979c8ea5c66d3b1db64420f21aa26af8fd6de9041c4a15c3c91f37be45a9263"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "sub_5375A0",
+      "body_lines": 32,
+      "sha256": "9a4d8b84a3dd3a090d054311e898dd58c3d2d51d74c2dbf303f2d2957b8a5fbe"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "sub_537700",
+      "body_lines": 14,
+      "sha256": "57fbfdfe0785d04a0b6297aa890931a4ba4540fda7eaa493a28592f983380fbc"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "sub_537740",
+      "body_lines": 1,
+      "sha256": "0f41534e28ab07582e3e5a147c0d94c8a5764dacc85693e0872056f6d56c3311"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "sub_537750",
+      "body_lines": 9,
+      "sha256": "efebaa7b0377bf915601117ff6056c39c0c1dc2bcc16cc568af7f7809d3d5cce"
+    }
+  ]
+}
