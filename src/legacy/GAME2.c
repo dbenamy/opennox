@@ -2618,6 +2618,7 @@ int* nox_xxx_guiServerOptionsHide_4597E0(int a1) {
 		sub_4557D0(0);
 		dword_5d4594_1046528 = 0;
 		sub_4AD820();
+		dword_5d4594_1046540 = 0;
 		dword_5d4594_1046536 = 0;
 	}
 	result = (int*)a1;

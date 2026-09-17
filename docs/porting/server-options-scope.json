@@ -1,0 +1,213 @@
+{
+  "parent": "3d6436bb",
+  "live_functions": 33,
+  "live_body_lines": 1256,
+  "orphan_body_lines": 28,
+  "functions": [
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "nox_gui_gamemode_load_457410",
+      "body_lines": 13,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "nox_xxx_guiServerOptionsGetGametypeName_4573C0",
+      "body_lines": 15,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "sub_457A10",
+      "body_lines": 32,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "sub_459650",
+      "body_lines": 9,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "sub_459C10",
+      "body_lines": 6,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "nox_xxx_windowServerOptionsFillGametypeList_4596A0",
+      "body_lines": 11,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "nox_xxx_guiServerOptsLoad_457500",
+      "body_lines": 122,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "nox_xxx_options_457AA0",
+      "body_lines": 13,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "nox_xxx_options_457B00",
+      "body_lines": 13,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "sub_457FE0",
+      "body_lines": 28,
+      "classification": "orphan: only two literal if(0) call sites"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "sub_4580E0",
+      "body_lines": 35,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "nox_client_guiserv_updateMapList_458230",
+      "body_lines": 74,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "nox_xxx_guiServerOptionsProcPre_4585D0",
+      "body_lines": 320,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "sub_459880",
+      "body_lines": 52,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__guiserv.c",
+      "name": "sub_459CD0",
+      "body_lines": 22,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_457460",
+      "body_lines": 8,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "nox_xxx_guiServerOptionsTryHide_4574D0",
+      "body_lines": 8,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_457B60",
+      "body_lines": 102,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_457F30",
+      "body_lines": 23,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "nox_xxx_windowServerOptionsDrawProc_458500",
+      "body_lines": 15,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "nox_xxx_guiServerOptionsProc_458590",
+      "body_lines": 12,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_459150",
+      "body_lines": 100,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_4593B0",
+      "body_lines": 63,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_459560",
+      "body_lines": 43,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_459700",
+      "body_lines": 27,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "nox_xxx_guiServerOptionsHide_4597E0",
+      "body_lines": 27,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_459870",
+      "body_lines": 1,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_459A40",
+      "body_lines": 9,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_459AA0",
+      "body_lines": 38,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_459C30",
+      "body_lines": 25,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_459D50",
+      "body_lines": 7,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_459D60",
+      "body_lines": 1,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_459D80",
+      "body_lines": 9,
+      "classification": "live"
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_459DA0",
+      "body_lines": 1,
+      "classification": "live"
+    }
+  ],
+  "prerequisite_added_lines": 4
+}

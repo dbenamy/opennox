@@ -19,8 +19,12 @@ scheduled pause. Team runtime and the team HUD/player-list UI are ported. The la
 conversion passes broader default/server/highres sweeps, 170 identical captures,
 and fresh production/gameplay/save-load/flat rendering.
 
-Production C is **50,177 physical lines in 80 files**, with zero reference C.
+The server-options corrected C baseline is qualified across all three targets
+and fresh production; translation is next.
+
+Production C is **50,181 physical lines in 80 files**, with zero reference C.
 The latest conversion moves 35 live functions to Go and removes 1,048 C lines.
+Two server-options lifecycle prerequisites subsequently add four C lines.
 The full asset suite retains its exact three known failing packages. See
 [TEAM_UI.md](docs/porting/TEAM_UI.md) for evidence and review decisions;
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.

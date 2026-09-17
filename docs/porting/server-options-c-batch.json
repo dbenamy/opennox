@@ -1,0 +1,1388 @@
+{
+  "batch": "server-options-c",
+  "env": {
+    "OPENNOX_SPELLBOOK_CAPTURE": "{out}/capture",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
+  "phases": {
+    "c-default": [
+      {
+        "name": "c-default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/server-options-focused-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-map-drawable-teams.json",
+            "sha256": "0a3b027d3095ebc8181e91ea904c0fe9d0f25851ec2c9e51b4e67b88656d23fe"
+          },
+          {
+            "path": "{out}/capture-match-roster-flag-state.json",
+            "sha256": "c4d4bd49637339ccd49e82486085fe1a6f9fba79c5c6aa59b027d2feb6f1df6c"
+          },
+          {
+            "path": "{out}/capture-match-roster-flag-winners.json",
+            "sha256": "8df3f438d14fa6a9e9141a6546509bd97e3aba42c0cc6dbe4656ac34f19a26e8"
+          },
+          {
+            "path": "{out}/capture-match-roster-gui-settings.json",
+            "sha256": "b15fecbfaa412679b3c7c0c6d031f502f48df5672f9aad585570346f819e7104"
+          },
+          {
+            "path": "{out}/capture-match-roster-inventory.json",
+            "sha256": "cb261c2db82e011afaa7f28458154327db7df772a29dd15aefb61403733694d6"
+          },
+          {
+            "path": "{out}/capture-match-roster-minimap.json",
+            "sha256": "27d9f0bad30ea73845c4170923eb6fb7029951758b468feafe9d2197cb188565"
+          },
+          {
+            "path": "{out}/capture-match-roster-object-masks.json",
+            "sha256": "f7346cce75a8474253069a1638e5c1268a79220fcc4ad252a4901edb22a7be1e"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-encoding.json",
+            "sha256": "77d354cb4c415146df721af17f6142a04893cca8288b394acd5d2923523a4c96"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-ids.json",
+            "sha256": "bd3f32ead3e649e55de5e1ad4789caefca4705a0f84a5bec3da1f2dec4428880"
+          },
+          {
+            "path": "{out}/capture-match-roster-quest-timeout.json",
+            "sha256": "47006a4b7850544651280080aeb0b7f2d8303b3e2f9bcb0715b64c0a7db7f5ac"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered-list.json",
+            "sha256": "e696e388a5a4198a78cc7de930d86ff97733f1966be2a54494779984472087f3"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered.json",
+            "sha256": "b3e7df8ed3b67d56f4b2155435e3e66c9d535f9753cced5fcf7f731a8c7a99b2"
+          },
+          {
+            "path": "{out}/capture-match-roster-roster.json",
+            "sha256": "bd4f66463ee78144a20fcd3524b457474703a02afecd27174a8e8eecc8c42685"
+          },
+          {
+            "path": "{out}/capture-match-roster-settings.json",
+            "sha256": "5c26e9c133d55a983f3d7a5bdd9786b1a81b6f57832a480710cf13735df53d6e"
+          },
+          {
+            "path": "{out}/capture-match-roster-simple-object.json",
+            "sha256": "5ac1e01b3e3b297734c0927c89e3f98046f96c40ce6b763a2f7a9c4f63449d87"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-assignment.json",
+            "sha256": "68d1ddb58d0504dd589b59dd6f70a869f15dfa696bfd12a1d1b61c49cc919a46"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-roster.json",
+            "sha256": "867df32de94332f6cfda59532899f5d0b702b9ed20d54a76ca572eb654b48777"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer-coordinates.json",
+            "sha256": "61a0f9c22f7cec236ced6db34b01b7e404081083f30274237e07f71547ab0ddc"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer.json",
+            "sha256": "729852a8a0d84268d8ae5693807943696684392590796ff9e473988416fa6c70"
+          },
+          {
+            "path": "{out}/capture-match-roster-victory.json",
+            "sha256": "697fbdb316d558744ee3c57d06ef7f793c7cb67cd9e0b1a6d01d71cb43579fad"
+          },
+          {
+            "path": "{out}/capture-match-roster-wall-messages.json",
+            "sha256": "e593205eb1d45d26ebed9d2b05abe2dc42a1f27ec0d113925b626234188a1a25"
+          },
+          {
+            "path": "{out}/capture-match-roster-winners.json",
+            "sha256": "89e18421d5042d28bfc721fc3d8770d2098f81b65dcfc4efaf39c23c598521ab"
+          },
+          {
+            "path": "{out}/capture-team-runtime-balance.json",
+            "sha256": "0ca54e7884d56b30742ae0b586da579ab9725c5a4fda1162eedb016b1c60a106"
+          },
+          {
+            "path": "{out}/capture-team-runtime-capacity.json",
+            "sha256": "f1080c8b5c1a93338f851c68f7231bf7e5b749db0b25c66dfa71d043a9c50cf6"
+          },
+          {
+            "path": "{out}/capture-team-runtime-clear-reset.json",
+            "sha256": "eaae58a3fe8929bb1467125754e3016838375eded10687a03a065df5cd82dd22"
+          },
+          {
+            "path": "{out}/capture-team-runtime-client-join.json",
+            "sha256": "a48b2279dc5ae1b25dcdb38c0dfa0c4e39094b3ea7d847ea53e1cc0163acff82"
+          },
+          {
+            "path": "{out}/capture-team-runtime-client-object-lookup.json",
+            "sha256": "2e3367a483507589057e9c447e4834b2242d725426c87c5488497c339a015ff8"
+          },
+          {
+            "path": "{out}/capture-team-runtime-create-map.json",
+            "sha256": "3f3d83fd1694d2cb1393622cd87e2d2c88ea7b71f8aedb97ddffe34a64f31ce0"
+          },
+          {
+            "path": "{out}/capture-team-runtime-crown-setup.json",
+            "sha256": "733a50b842de312861f5662dab6630b9f6df7cc638f1e6b2cc1fb38c7147816d"
+          },
+          {
+            "path": "{out}/capture-team-runtime-group-balance.json",
+            "sha256": "4180ac8575ac5469aafe61690045e978cbc81087ca76637627e2644a4b9b1e2c"
+          },
+          {
+            "path": "{out}/capture-team-runtime-join-notifications.json",
+            "sha256": "9bb9242c9b7eb2e1260b84648edeb00c0e73fd726c080df27f180c5804a3cbfc"
+          },
+          {
+            "path": "{out}/capture-team-runtime-leave.json",
+            "sha256": "1971dff97076665a8580799994cf788f619e1659e25d8b6c680bf441aa87b304"
+          },
+          {
+            "path": "{out}/capture-team-runtime-lessons.json",
+            "sha256": "18b3efc86e89b18d120954905c2cdb22d751372158decc9ffdf89cb3298c8b61"
+          },
+          {
+            "path": "{out}/capture-team-runtime-lookup.json",
+            "sha256": "bc06fb9af5f3459a82a937fbda38f4b0648450f49f46304d81101bd6b090e58a"
+          },
+          {
+            "path": "{out}/capture-team-runtime-map-flags.json",
+            "sha256": "bbbd493f3d389dc65bde4180f98dcb2d9fe4191476d23f63a3f9e12d0971d0a5"
+          },
+          {
+            "path": "{out}/capture-team-runtime-membership.json",
+            "sha256": "474835eaeaa59237441269061c77b3b4027e8ac34828bf01ab14aa844318ab7e"
+          },
+          {
+            "path": "{out}/capture-team-runtime-name-storage.json",
+            "sha256": "c318c6a4a51929473c272c41b421932a46de5f3f248855dd621a06e9fdcb7194"
+          },
+          {
+            "path": "{out}/capture-team-runtime-nearest.json",
+            "sha256": "b5b1a98d8f8ac14f9ca551c93dd1a0d851878645dc9461874078f7a95c4bf2f3"
+          },
+          {
+            "path": "{out}/capture-team-runtime-predicates.json",
+            "sha256": "f6e13e3551b803b158d7579bed1c72631dae4ff9af75339d815f1ce988f4f264"
+          },
+          {
+            "path": "{out}/capture-team-runtime-selection.json",
+            "sha256": "9edb675f51b5fc22d66858b4010560c3731d49e0df022b43a1359ddc88a8fb58"
+          },
+          {
+            "path": "{out}/capture-team-ui-ball-drawing.json",
+            "sha256": "34f8bacc3ddbba173f5ab8a22dbd715e5947da2ecb89e14d21cc6b088fc50794"
+          },
+          {
+            "path": "{out}/capture-team-ui-client-join.json",
+            "sha256": "da45c37d6188cc02a45bc9b15c5c83f2d160df377135477d4c88e4f315abffed"
+          },
+          {
+            "path": "{out}/capture-team-ui-flag-drawing.json",
+            "sha256": "006d32be8acfb657e8499370b8d40da0c942be9d15ea1b738265d82490c84b0a"
+          },
+          {
+            "path": "{out}/capture-team-ui-flag-selection.json",
+            "sha256": "aef8c9ee8e3ccecd7306e06cca6411115895331599a8f44504905bc1b939076f"
+          },
+          {
+            "path": "{out}/capture-team-ui-flag-tooltips.json",
+            "sha256": "ec5440d608a7cc370babf5903c21058254f3612dcb62f06df69acea94bc3bcad"
+          },
+          {
+            "path": "{out}/capture-team-ui-headless-roster.json",
+            "sha256": "caa2e97fc696fc8fd3008724dfeea433a753d16339e6cb44d33e78bbcb11fd63"
+          },
+          {
+            "path": "{out}/capture-team-ui-host-assign.json",
+            "sha256": "beaaf8b014031d31de2f1e6d0f09584b72dea71ae1bac30e20028af19fb02920"
+          },
+          {
+            "path": "{out}/capture-team-ui-hud-construction.json",
+            "sha256": "1d25a57cb16dc78949560147b28bc75c2f6437fe32557d0eb521d3cf97623db6"
+          },
+          {
+            "path": "{out}/capture-team-ui-hud-layout.json",
+            "sha256": "4a5bf58f05c404c33a0cff6ccfeca08cc6754d207280216f7d15871093443644"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-colors.json",
+            "sha256": "9347f27317796d33bf7d252c232f425b1ceb517bd128fc533fec9214e2c3f3fb"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-construction.json",
+            "sha256": "2c01f4954f4a9c1716c6306e07c5d0716380db1a43eca3914c5279a683434f91"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-drawing.json",
+            "sha256": "b61f4cfa9959dfc87caaab5ed78e2d848452d2553a6d018a1109e88df44acb10"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-format.json",
+            "sha256": "528cb058213d41ba25479f5c293a7100f4009d6e97a7144dc6fc59ef2c408d3e"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-selection-events.json",
+            "sha256": "e229e8600ceb5397f6c41b814db9df22c7b201760832746ed87e173beae234b7"
+          },
+          {
+            "path": "{out}/capture-team-ui-map-wrappers.json",
+            "sha256": "9f1eccaf481dc600ed937a07e5a40ebeda5d9ad626300ad74c1284bc761db76f"
+          },
+          {
+            "path": "{out}/capture-team-ui-name-boundaries.json",
+            "sha256": "cda5433ef0dcb489e173e76e3888c388993f258ac5ce307d6b5a4d859f37832e"
+          },
+          {
+            "path": "{out}/capture-team-ui-player-mutations.json",
+            "sha256": "4db1b83effbbf65432e3362577b32f8ee88c7921c4a670460481225f81d049a1"
+          },
+          {
+            "path": "{out}/capture-team-ui-rename-dialog-events.json",
+            "sha256": "a21b174552bdc7efb0dd4793cbcb09249b7d04e92a1784016a19feb4ed42ac4b"
+          },
+          {
+            "path": "{out}/capture-team-ui-team-removal-refresh.json",
+            "sha256": "e687b863002fe83e5a27c562c2dc4e1abe94ac0a6d8639720fb71691b1d9ea4a"
+          },
+          {
+            "path": "{out}/capture-server-options-advanced-modal.json",
+            "sha256": "82e4dc7f9bd631652dd96a26a540525c06f7f3f7dfd5e1e6634b78e11a9972d6"
+          },
+          {
+            "path": "{out}/capture-server-options-apply.json",
+            "sha256": "9c746eb7460e13076dc8ad71920f07c79f19dcce71adf5367d9efa5f0a93797b"
+          },
+          {
+            "path": "{out}/capture-server-options-cancel.json",
+            "sha256": "1854ecbf95825829afdfef1e13869bbb75c92148a7093c45b79c300d591135aa"
+          },
+          {
+            "path": "{out}/capture-server-options-cycle-control.json",
+            "sha256": "6c181982a123d50d20a96007d54fca66cd22e6b583818e34395f59ca095808e6"
+          },
+          {
+            "path": "{out}/capture-server-options-drawing.json",
+            "sha256": "0dd395d62e6ea918949ca90927e6b1b3f88cc1d85c9b3c5c3b081e9c3c4b7df8"
+          },
+          {
+            "path": "{out}/capture-server-options-first-open.json",
+            "sha256": "5d92618b553926b6630771c5bb2e01dc4c90814d18dcbc496a6eedd60deb2ef0"
+          },
+          {
+            "path": "{out}/capture-server-options-keyboard.json",
+            "sha256": "877b54ddc7b0f91953c7f3499c957785eff294da345be3db0fbb7b64c68e68de"
+          },
+          {
+            "path": "{out}/capture-server-options-limits.json",
+            "sha256": "7dabecf8dcca1aa651ad2845cbc975e67ef67144acd938436bb8c310c549e712"
+          },
+          {
+            "path": "{out}/capture-server-options-map-list.json",
+            "sha256": "9a96a79edf9f91051482148afe12cec85c9104e118e5b61fe3c6524759d72fd2"
+          },
+          {
+            "path": "{out}/capture-server-options-map-selection-reset.json",
+            "sha256": "de2db54764668fe602a5e582b1caae53ab8b56953f2b8b2f5a1179a39b14b526"
+          },
+          {
+            "path": "{out}/capture-server-options-mode-selection.json",
+            "sha256": "b7c9ed21b88915ada194abff56dabf2057478c3c9f9026378fcd599f7ed954df"
+          },
+          {
+            "path": "{out}/capture-server-options-numeric-edits.json",
+            "sha256": "db0a103974a9b8bce247557b5cbe72bb79c32a9ccb5fb4bbd07a3e14ab4abbf8"
+          },
+          {
+            "path": "{out}/capture-server-options-refresh.json",
+            "sha256": "e5890fb5155289c0f90cf18f967429e2b526096b206725df72e7ab4041a8415d"
+          },
+          {
+            "path": "{out}/capture-server-options-settings-labels.json",
+            "sha256": "d565249b8851298f3206a2eedca5a70e1cad0ccce85c75f1915c17969a6b8832"
+          },
+          {
+            "path": "{out}/capture-server-options-settings-read.json",
+            "sha256": "c53b5f690aaa4fd4c8515fb5f3cdbdf7febf76e8e9f5a53f28dd55afa4deab25"
+          },
+          {
+            "path": "{out}/capture-server-options-setup.json",
+            "sha256": "19dd81e9ff1afb90aa04eab3a0a00911ded93aae1ab1681aeeaa4cdeb6773c22"
+          },
+          {
+            "path": "{out}/capture-server-options-tab-lifecycle.json",
+            "sha256": "70f05b1f423d74871200d1cbf5da649a4da73564a6e013634f13af324cdfb8a9"
+          },
+          {
+            "path": "{out}/capture-server-options-tab-order.json",
+            "sha256": "f3eac40a80ab835eeb8212f9da25e8f27c74ed744f9f9dd898ea0968e6f75959"
+          },
+          {
+            "path": "{out}/capture-server-options-team-confirmation.json",
+            "sha256": "5e8631f3ce721d61a3d0b7ce849ec86b173619d703ff2db3a77d335453753dcb"
+          },
+          {
+            "path": "{out}/capture-server-options-team-controls.json",
+            "sha256": "4d6b6061f5638350e7879cc7d5fcbbe453170cc1a56aa3bbb0216b0b08fdf3fd"
+          },
+          {
+            "path": "{out}/capture-server-options-team-count.json",
+            "sha256": "cc8fd8560879577aaedcdc9b8d0d65b8852ccadda387c1299c2081d89726ff47"
+          },
+          {
+            "path": "{out}/capture-server-options-tooltips.json",
+            "sha256": "3c9414088fd9de2adc5977b173adab4928c58b0a8643a1d2af15b9156a1d739a"
+          },
+          {
+            "path": "{out}/capture-server-options-top-tabs.json",
+            "sha256": "5584a5229b99893dcc64e5d615d0b0a03cb3b207da360810f849ac930e829eb5"
+          }
+        ]
+      }
+    ],
+    "c-server": [
+      {
+        "name": "c-server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/server-options-focused-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-map-drawable-teams.json",
+            "sha256": "0a3b027d3095ebc8181e91ea904c0fe9d0f25851ec2c9e51b4e67b88656d23fe"
+          },
+          {
+            "path": "{out}/capture-match-roster-flag-state.json",
+            "sha256": "c4d4bd49637339ccd49e82486085fe1a6f9fba79c5c6aa59b027d2feb6f1df6c"
+          },
+          {
+            "path": "{out}/capture-match-roster-flag-winners.json",
+            "sha256": "8df3f438d14fa6a9e9141a6546509bd97e3aba42c0cc6dbe4656ac34f19a26e8"
+          },
+          {
+            "path": "{out}/capture-match-roster-gui-settings.json",
+            "sha256": "b15fecbfaa412679b3c7c0c6d031f502f48df5672f9aad585570346f819e7104"
+          },
+          {
+            "path": "{out}/capture-match-roster-inventory.json",
+            "sha256": "cb261c2db82e011afaa7f28458154327db7df772a29dd15aefb61403733694d6"
+          },
+          {
+            "path": "{out}/capture-match-roster-minimap.json",
+            "sha256": "27d9f0bad30ea73845c4170923eb6fb7029951758b468feafe9d2197cb188565"
+          },
+          {
+            "path": "{out}/capture-match-roster-object-masks.json",
+            "sha256": "f7346cce75a8474253069a1638e5c1268a79220fcc4ad252a4901edb22a7be1e"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-encoding.json",
+            "sha256": "77d354cb4c415146df721af17f6142a04893cca8288b394acd5d2923523a4c96"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-ids.json",
+            "sha256": "bd3f32ead3e649e55de5e1ad4789caefca4705a0f84a5bec3da1f2dec4428880"
+          },
+          {
+            "path": "{out}/capture-match-roster-quest-timeout.json",
+            "sha256": "47006a4b7850544651280080aeb0b7f2d8303b3e2f9bcb0715b64c0a7db7f5ac"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered-list.json",
+            "sha256": "e696e388a5a4198a78cc7de930d86ff97733f1966be2a54494779984472087f3"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered.json",
+            "sha256": "b3e7df8ed3b67d56f4b2155435e3e66c9d535f9753cced5fcf7f731a8c7a99b2"
+          },
+          {
+            "path": "{out}/capture-match-roster-roster.json",
+            "sha256": "bd4f66463ee78144a20fcd3524b457474703a02afecd27174a8e8eecc8c42685"
+          },
+          {
+            "path": "{out}/capture-match-roster-settings.json",
+            "sha256": "5c26e9c133d55a983f3d7a5bdd9786b1a81b6f57832a480710cf13735df53d6e"
+          },
+          {
+            "path": "{out}/capture-match-roster-simple-object.json",
+            "sha256": "5ac1e01b3e3b297734c0927c89e3f98046f96c40ce6b763a2f7a9c4f63449d87"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-assignment.json",
+            "sha256": "68d1ddb58d0504dd589b59dd6f70a869f15dfa696bfd12a1d1b61c49cc919a46"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-roster.json",
+            "sha256": "867df32de94332f6cfda59532899f5d0b702b9ed20d54a76ca572eb654b48777"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer-coordinates.json",
+            "sha256": "61a0f9c22f7cec236ced6db34b01b7e404081083f30274237e07f71547ab0ddc"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer.json",
+            "sha256": "729852a8a0d84268d8ae5693807943696684392590796ff9e473988416fa6c70"
+          },
+          {
+            "path": "{out}/capture-match-roster-victory.json",
+            "sha256": "697fbdb316d558744ee3c57d06ef7f793c7cb67cd9e0b1a6d01d71cb43579fad"
+          },
+          {
+            "path": "{out}/capture-match-roster-wall-messages.json",
+            "sha256": "e593205eb1d45d26ebed9d2b05abe2dc42a1f27ec0d113925b626234188a1a25"
+          },
+          {
+            "path": "{out}/capture-match-roster-winners.json",
+            "sha256": "89e18421d5042d28bfc721fc3d8770d2098f81b65dcfc4efaf39c23c598521ab"
+          },
+          {
+            "path": "{out}/capture-team-runtime-balance.json",
+            "sha256": "0ca54e7884d56b30742ae0b586da579ab9725c5a4fda1162eedb016b1c60a106"
+          },
+          {
+            "path": "{out}/capture-team-runtime-capacity.json",
+            "sha256": "f1080c8b5c1a93338f851c68f7231bf7e5b749db0b25c66dfa71d043a9c50cf6"
+          },
+          {
+            "path": "{out}/capture-team-runtime-clear-reset.json",
+            "sha256": "eaae58a3fe8929bb1467125754e3016838375eded10687a03a065df5cd82dd22"
+          },
+          {
+            "path": "{out}/capture-team-runtime-client-join.json",
+            "sha256": "a48b2279dc5ae1b25dcdb38c0dfa0c4e39094b3ea7d847ea53e1cc0163acff82"
+          },
+          {
+            "path": "{out}/capture-team-runtime-client-object-lookup.json",
+            "sha256": "2e3367a483507589057e9c447e4834b2242d725426c87c5488497c339a015ff8"
+          },
+          {
+            "path": "{out}/capture-team-runtime-create-map.json",
+            "sha256": "3f3d83fd1694d2cb1393622cd87e2d2c88ea7b71f8aedb97ddffe34a64f31ce0"
+          },
+          {
+            "path": "{out}/capture-team-runtime-crown-setup.json",
+            "sha256": "733a50b842de312861f5662dab6630b9f6df7cc638f1e6b2cc1fb38c7147816d"
+          },
+          {
+            "path": "{out}/capture-team-runtime-group-balance.json",
+            "sha256": "4180ac8575ac5469aafe61690045e978cbc81087ca76637627e2644a4b9b1e2c"
+          },
+          {
+            "path": "{out}/capture-team-runtime-join-notifications.json",
+            "sha256": "9bb9242c9b7eb2e1260b84648edeb00c0e73fd726c080df27f180c5804a3cbfc"
+          },
+          {
+            "path": "{out}/capture-team-runtime-leave.json",
+            "sha256": "1971dff97076665a8580799994cf788f619e1659e25d8b6c680bf441aa87b304"
+          },
+          {
+            "path": "{out}/capture-team-runtime-lessons.json",
+            "sha256": "18b3efc86e89b18d120954905c2cdb22d751372158decc9ffdf89cb3298c8b61"
+          },
+          {
+            "path": "{out}/capture-team-runtime-lookup.json",
+            "sha256": "bc06fb9af5f3459a82a937fbda38f4b0648450f49f46304d81101bd6b090e58a"
+          },
+          {
+            "path": "{out}/capture-team-runtime-map-flags.json",
+            "sha256": "bbbd493f3d389dc65bde4180f98dcb2d9fe4191476d23f63a3f9e12d0971d0a5"
+          },
+          {
+            "path": "{out}/capture-team-runtime-membership.json",
+            "sha256": "474835eaeaa59237441269061c77b3b4027e8ac34828bf01ab14aa844318ab7e"
+          },
+          {
+            "path": "{out}/capture-team-runtime-name-storage.json",
+            "sha256": "c318c6a4a51929473c272c41b421932a46de5f3f248855dd621a06e9fdcb7194"
+          },
+          {
+            "path": "{out}/capture-team-runtime-nearest.json",
+            "sha256": "b5b1a98d8f8ac14f9ca551c93dd1a0d851878645dc9461874078f7a95c4bf2f3"
+          },
+          {
+            "path": "{out}/capture-team-runtime-predicates.json",
+            "sha256": "f6e13e3551b803b158d7579bed1c72631dae4ff9af75339d815f1ce988f4f264"
+          },
+          {
+            "path": "{out}/capture-team-runtime-selection.json",
+            "sha256": "9edb675f51b5fc22d66858b4010560c3731d49e0df022b43a1359ddc88a8fb58"
+          },
+          {
+            "path": "{out}/capture-team-ui-ball-drawing.json",
+            "sha256": "34f8bacc3ddbba173f5ab8a22dbd715e5947da2ecb89e14d21cc6b088fc50794"
+          },
+          {
+            "path": "{out}/capture-team-ui-client-join.json",
+            "sha256": "da45c37d6188cc02a45bc9b15c5c83f2d160df377135477d4c88e4f315abffed"
+          },
+          {
+            "path": "{out}/capture-team-ui-flag-drawing.json",
+            "sha256": "006d32be8acfb657e8499370b8d40da0c942be9d15ea1b738265d82490c84b0a"
+          },
+          {
+            "path": "{out}/capture-team-ui-flag-selection.json",
+            "sha256": "aef8c9ee8e3ccecd7306e06cca6411115895331599a8f44504905bc1b939076f"
+          },
+          {
+            "path": "{out}/capture-team-ui-flag-tooltips.json",
+            "sha256": "ec5440d608a7cc370babf5903c21058254f3612dcb62f06df69acea94bc3bcad"
+          },
+          {
+            "path": "{out}/capture-team-ui-headless-roster.json",
+            "sha256": "caa2e97fc696fc8fd3008724dfeea433a753d16339e6cb44d33e78bbcb11fd63"
+          },
+          {
+            "path": "{out}/capture-team-ui-host-assign.json",
+            "sha256": "beaaf8b014031d31de2f1e6d0f09584b72dea71ae1bac30e20028af19fb02920"
+          },
+          {
+            "path": "{out}/capture-team-ui-hud-construction.json",
+            "sha256": "1d25a57cb16dc78949560147b28bc75c2f6437fe32557d0eb521d3cf97623db6"
+          },
+          {
+            "path": "{out}/capture-team-ui-hud-layout.json",
+            "sha256": "4a5bf58f05c404c33a0cff6ccfeca08cc6754d207280216f7d15871093443644"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-colors.json",
+            "sha256": "9347f27317796d33bf7d252c232f425b1ceb517bd128fc533fec9214e2c3f3fb"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-construction.json",
+            "sha256": "2c01f4954f4a9c1716c6306e07c5d0716380db1a43eca3914c5279a683434f91"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-drawing.json",
+            "sha256": "b61f4cfa9959dfc87caaab5ed78e2d848452d2553a6d018a1109e88df44acb10"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-format.json",
+            "sha256": "528cb058213d41ba25479f5c293a7100f4009d6e97a7144dc6fc59ef2c408d3e"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-selection-events.json",
+            "sha256": "e229e8600ceb5397f6c41b814db9df22c7b201760832746ed87e173beae234b7"
+          },
+          {
+            "path": "{out}/capture-team-ui-map-wrappers.json",
+            "sha256": "9f1eccaf481dc600ed937a07e5a40ebeda5d9ad626300ad74c1284bc761db76f"
+          },
+          {
+            "path": "{out}/capture-team-ui-name-boundaries.json",
+            "sha256": "cda5433ef0dcb489e173e76e3888c388993f258ac5ce307d6b5a4d859f37832e"
+          },
+          {
+            "path": "{out}/capture-team-ui-player-mutations.json",
+            "sha256": "4db1b83effbbf65432e3362577b32f8ee88c7921c4a670460481225f81d049a1"
+          },
+          {
+            "path": "{out}/capture-team-ui-rename-dialog-events.json",
+            "sha256": "a21b174552bdc7efb0dd4793cbcb09249b7d04e92a1784016a19feb4ed42ac4b"
+          },
+          {
+            "path": "{out}/capture-team-ui-team-removal-refresh.json",
+            "sha256": "e687b863002fe83e5a27c562c2dc4e1abe94ac0a6d8639720fb71691b1d9ea4a"
+          },
+          {
+            "path": "{out}/capture-server-options-advanced-modal.json",
+            "sha256": "82e4dc7f9bd631652dd96a26a540525c06f7f3f7dfd5e1e6634b78e11a9972d6"
+          },
+          {
+            "path": "{out}/capture-server-options-apply.json",
+            "sha256": "9c746eb7460e13076dc8ad71920f07c79f19dcce71adf5367d9efa5f0a93797b"
+          },
+          {
+            "path": "{out}/capture-server-options-cancel.json",
+            "sha256": "1854ecbf95825829afdfef1e13869bbb75c92148a7093c45b79c300d591135aa"
+          },
+          {
+            "path": "{out}/capture-server-options-cycle-control.json",
+            "sha256": "6c181982a123d50d20a96007d54fca66cd22e6b583818e34395f59ca095808e6"
+          },
+          {
+            "path": "{out}/capture-server-options-drawing.json",
+            "sha256": "0dd395d62e6ea918949ca90927e6b1b3f88cc1d85c9b3c5c3b081e9c3c4b7df8"
+          },
+          {
+            "path": "{out}/capture-server-options-first-open.json",
+            "sha256": "5d92618b553926b6630771c5bb2e01dc4c90814d18dcbc496a6eedd60deb2ef0"
+          },
+          {
+            "path": "{out}/capture-server-options-keyboard.json",
+            "sha256": "877b54ddc7b0f91953c7f3499c957785eff294da345be3db0fbb7b64c68e68de"
+          },
+          {
+            "path": "{out}/capture-server-options-limits.json",
+            "sha256": "7dabecf8dcca1aa651ad2845cbc975e67ef67144acd938436bb8c310c549e712"
+          },
+          {
+            "path": "{out}/capture-server-options-map-list.json",
+            "sha256": "9a96a79edf9f91051482148afe12cec85c9104e118e5b61fe3c6524759d72fd2"
+          },
+          {
+            "path": "{out}/capture-server-options-map-selection-reset.json",
+            "sha256": "de2db54764668fe602a5e582b1caae53ab8b56953f2b8b2f5a1179a39b14b526"
+          },
+          {
+            "path": "{out}/capture-server-options-mode-selection.json",
+            "sha256": "b7c9ed21b88915ada194abff56dabf2057478c3c9f9026378fcd599f7ed954df"
+          },
+          {
+            "path": "{out}/capture-server-options-numeric-edits.json",
+            "sha256": "db0a103974a9b8bce247557b5cbe72bb79c32a9ccb5fb4bbd07a3e14ab4abbf8"
+          },
+          {
+            "path": "{out}/capture-server-options-refresh.json",
+            "sha256": "e5890fb5155289c0f90cf18f967429e2b526096b206725df72e7ab4041a8415d"
+          },
+          {
+            "path": "{out}/capture-server-options-settings-labels.json",
+            "sha256": "d565249b8851298f3206a2eedca5a70e1cad0ccce85c75f1915c17969a6b8832"
+          },
+          {
+            "path": "{out}/capture-server-options-settings-read.json",
+            "sha256": "c53b5f690aaa4fd4c8515fb5f3cdbdf7febf76e8e9f5a53f28dd55afa4deab25"
+          },
+          {
+            "path": "{out}/capture-server-options-setup.json",
+            "sha256": "19dd81e9ff1afb90aa04eab3a0a00911ded93aae1ab1681aeeaa4cdeb6773c22"
+          },
+          {
+            "path": "{out}/capture-server-options-tab-lifecycle.json",
+            "sha256": "70f05b1f423d74871200d1cbf5da649a4da73564a6e013634f13af324cdfb8a9"
+          },
+          {
+            "path": "{out}/capture-server-options-tab-order.json",
+            "sha256": "f3eac40a80ab835eeb8212f9da25e8f27c74ed744f9f9dd898ea0968e6f75959"
+          },
+          {
+            "path": "{out}/capture-server-options-team-confirmation.json",
+            "sha256": "5e8631f3ce721d61a3d0b7ce849ec86b173619d703ff2db3a77d335453753dcb"
+          },
+          {
+            "path": "{out}/capture-server-options-team-controls.json",
+            "sha256": "4d6b6061f5638350e7879cc7d5fcbbe453170cc1a56aa3bbb0216b0b08fdf3fd"
+          },
+          {
+            "path": "{out}/capture-server-options-team-count.json",
+            "sha256": "cc8fd8560879577aaedcdc9b8d0d65b8852ccadda387c1299c2081d89726ff47"
+          },
+          {
+            "path": "{out}/capture-server-options-tooltips.json",
+            "sha256": "3c9414088fd9de2adc5977b173adab4928c58b0a8643a1d2af15b9156a1d739a"
+          },
+          {
+            "path": "{out}/capture-server-options-top-tabs.json",
+            "sha256": "5584a5229b99893dcc64e5d615d0b0a03cb3b207da360810f849ac930e829eb5"
+          }
+        ]
+      }
+    ],
+    "c-highres": [
+      {
+        "name": "c-highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/server-options-focused-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-map-drawable-teams.json",
+            "sha256": "0a3b027d3095ebc8181e91ea904c0fe9d0f25851ec2c9e51b4e67b88656d23fe"
+          },
+          {
+            "path": "{out}/capture-match-roster-flag-state.json",
+            "sha256": "c4d4bd49637339ccd49e82486085fe1a6f9fba79c5c6aa59b027d2feb6f1df6c"
+          },
+          {
+            "path": "{out}/capture-match-roster-flag-winners.json",
+            "sha256": "8df3f438d14fa6a9e9141a6546509bd97e3aba42c0cc6dbe4656ac34f19a26e8"
+          },
+          {
+            "path": "{out}/capture-match-roster-gui-settings.json",
+            "sha256": "b15fecbfaa412679b3c7c0c6d031f502f48df5672f9aad585570346f819e7104"
+          },
+          {
+            "path": "{out}/capture-match-roster-inventory.json",
+            "sha256": "cb261c2db82e011afaa7f28458154327db7df772a29dd15aefb61403733694d6"
+          },
+          {
+            "path": "{out}/capture-match-roster-minimap.json",
+            "sha256": "27d9f0bad30ea73845c4170923eb6fb7029951758b468feafe9d2197cb188565"
+          },
+          {
+            "path": "{out}/capture-match-roster-object-masks.json",
+            "sha256": "f7346cce75a8474253069a1638e5c1268a79220fcc4ad252a4901edb22a7be1e"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-encoding.json",
+            "sha256": "77d354cb4c415146df721af17f6142a04893cca8288b394acd5d2923523a4c96"
+          },
+          {
+            "path": "{out}/capture-match-roster-player-ids.json",
+            "sha256": "bd3f32ead3e649e55de5e1ad4789caefca4705a0f84a5bec3da1f2dec4428880"
+          },
+          {
+            "path": "{out}/capture-match-roster-quest-timeout.json",
+            "sha256": "47006a4b7850544651280080aeb0b7f2d8303b3e2f9bcb0715b64c0a7db7f5ac"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered-list.json",
+            "sha256": "e696e388a5a4198a78cc7de930d86ff97733f1966be2a54494779984472087f3"
+          },
+          {
+            "path": "{out}/capture-match-roster-remembered.json",
+            "sha256": "b3e7df8ed3b67d56f4b2155435e3e66c9d535f9753cced5fcf7f731a8c7a99b2"
+          },
+          {
+            "path": "{out}/capture-match-roster-roster.json",
+            "sha256": "bd4f66463ee78144a20fcd3524b457474703a02afecd27174a8e8eecc8c42685"
+          },
+          {
+            "path": "{out}/capture-match-roster-settings.json",
+            "sha256": "5c26e9c133d55a983f3d7a5bdd9786b1a81b6f57832a480710cf13735df53d6e"
+          },
+          {
+            "path": "{out}/capture-match-roster-simple-object.json",
+            "sha256": "5ac1e01b3e3b297734c0927c89e3f98046f96c40ce6b763a2f7a9c4f63449d87"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-assignment.json",
+            "sha256": "68d1ddb58d0504dd589b59dd6f70a869f15dfa696bfd12a1d1b61c49cc919a46"
+          },
+          {
+            "path": "{out}/capture-match-roster-team-roster.json",
+            "sha256": "867df32de94332f6cfda59532899f5d0b702b9ed20d54a76ca572eb654b48777"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer-coordinates.json",
+            "sha256": "61a0f9c22f7cec236ced6db34b01b7e404081083f30274237e07f71547ab0ddc"
+          },
+          {
+            "path": "{out}/capture-match-roster-timer.json",
+            "sha256": "729852a8a0d84268d8ae5693807943696684392590796ff9e473988416fa6c70"
+          },
+          {
+            "path": "{out}/capture-match-roster-victory.json",
+            "sha256": "697fbdb316d558744ee3c57d06ef7f793c7cb67cd9e0b1a6d01d71cb43579fad"
+          },
+          {
+            "path": "{out}/capture-match-roster-wall-messages.json",
+            "sha256": "e593205eb1d45d26ebed9d2b05abe2dc42a1f27ec0d113925b626234188a1a25"
+          },
+          {
+            "path": "{out}/capture-match-roster-winners.json",
+            "sha256": "89e18421d5042d28bfc721fc3d8770d2098f81b65dcfc4efaf39c23c598521ab"
+          },
+          {
+            "path": "{out}/capture-team-runtime-balance.json",
+            "sha256": "0ca54e7884d56b30742ae0b586da579ab9725c5a4fda1162eedb016b1c60a106"
+          },
+          {
+            "path": "{out}/capture-team-runtime-capacity.json",
+            "sha256": "f1080c8b5c1a93338f851c68f7231bf7e5b749db0b25c66dfa71d043a9c50cf6"
+          },
+          {
+            "path": "{out}/capture-team-runtime-clear-reset.json",
+            "sha256": "eaae58a3fe8929bb1467125754e3016838375eded10687a03a065df5cd82dd22"
+          },
+          {
+            "path": "{out}/capture-team-runtime-client-join.json",
+            "sha256": "a48b2279dc5ae1b25dcdb38c0dfa0c4e39094b3ea7d847ea53e1cc0163acff82"
+          },
+          {
+            "path": "{out}/capture-team-runtime-client-object-lookup.json",
+            "sha256": "2e3367a483507589057e9c447e4834b2242d725426c87c5488497c339a015ff8"
+          },
+          {
+            "path": "{out}/capture-team-runtime-create-map.json",
+            "sha256": "3f3d83fd1694d2cb1393622cd87e2d2c88ea7b71f8aedb97ddffe34a64f31ce0"
+          },
+          {
+            "path": "{out}/capture-team-runtime-crown-setup.json",
+            "sha256": "733a50b842de312861f5662dab6630b9f6df7cc638f1e6b2cc1fb38c7147816d"
+          },
+          {
+            "path": "{out}/capture-team-runtime-group-balance.json",
+            "sha256": "4180ac8575ac5469aafe61690045e978cbc81087ca76637627e2644a4b9b1e2c"
+          },
+          {
+            "path": "{out}/capture-team-runtime-join-notifications.json",
+            "sha256": "9bb9242c9b7eb2e1260b84648edeb00c0e73fd726c080df27f180c5804a3cbfc"
+          },
+          {
+            "path": "{out}/capture-team-runtime-leave.json",
+            "sha256": "1971dff97076665a8580799994cf788f619e1659e25d8b6c680bf441aa87b304"
+          },
+          {
+            "path": "{out}/capture-team-runtime-lessons.json",
+            "sha256": "18b3efc86e89b18d120954905c2cdb22d751372158decc9ffdf89cb3298c8b61"
+          },
+          {
+            "path": "{out}/capture-team-runtime-lookup.json",
+            "sha256": "bc06fb9af5f3459a82a937fbda38f4b0648450f49f46304d81101bd6b090e58a"
+          },
+          {
+            "path": "{out}/capture-team-runtime-map-flags.json",
+            "sha256": "bbbd493f3d389dc65bde4180f98dcb2d9fe4191476d23f63a3f9e12d0971d0a5"
+          },
+          {
+            "path": "{out}/capture-team-runtime-membership.json",
+            "sha256": "474835eaeaa59237441269061c77b3b4027e8ac34828bf01ab14aa844318ab7e"
+          },
+          {
+            "path": "{out}/capture-team-runtime-name-storage.json",
+            "sha256": "c318c6a4a51929473c272c41b421932a46de5f3f248855dd621a06e9fdcb7194"
+          },
+          {
+            "path": "{out}/capture-team-runtime-nearest.json",
+            "sha256": "b5b1a98d8f8ac14f9ca551c93dd1a0d851878645dc9461874078f7a95c4bf2f3"
+          },
+          {
+            "path": "{out}/capture-team-runtime-predicates.json",
+            "sha256": "f6e13e3551b803b158d7579bed1c72631dae4ff9af75339d815f1ce988f4f264"
+          },
+          {
+            "path": "{out}/capture-team-runtime-selection.json",
+            "sha256": "9edb675f51b5fc22d66858b4010560c3731d49e0df022b43a1359ddc88a8fb58"
+          },
+          {
+            "path": "{out}/capture-team-ui-ball-drawing.json",
+            "sha256": "34f8bacc3ddbba173f5ab8a22dbd715e5947da2ecb89e14d21cc6b088fc50794"
+          },
+          {
+            "path": "{out}/capture-team-ui-client-join.json",
+            "sha256": "da45c37d6188cc02a45bc9b15c5c83f2d160df377135477d4c88e4f315abffed"
+          },
+          {
+            "path": "{out}/capture-team-ui-flag-drawing.json",
+            "sha256": "006d32be8acfb657e8499370b8d40da0c942be9d15ea1b738265d82490c84b0a"
+          },
+          {
+            "path": "{out}/capture-team-ui-flag-selection.json",
+            "sha256": "aef8c9ee8e3ccecd7306e06cca6411115895331599a8f44504905bc1b939076f"
+          },
+          {
+            "path": "{out}/capture-team-ui-flag-tooltips.json",
+            "sha256": "ec5440d608a7cc370babf5903c21058254f3612dcb62f06df69acea94bc3bcad"
+          },
+          {
+            "path": "{out}/capture-team-ui-headless-roster.json",
+            "sha256": "caa2e97fc696fc8fd3008724dfeea433a753d16339e6cb44d33e78bbcb11fd63"
+          },
+          {
+            "path": "{out}/capture-team-ui-host-assign.json",
+            "sha256": "beaaf8b014031d31de2f1e6d0f09584b72dea71ae1bac30e20028af19fb02920"
+          },
+          {
+            "path": "{out}/capture-team-ui-hud-construction.json",
+            "sha256": "1d25a57cb16dc78949560147b28bc75c2f6437fe32557d0eb521d3cf97623db6"
+          },
+          {
+            "path": "{out}/capture-team-ui-hud-layout.json",
+            "sha256": "4a5bf58f05c404c33a0cff6ccfeca08cc6754d207280216f7d15871093443644"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-colors.json",
+            "sha256": "9347f27317796d33bf7d252c232f425b1ceb517bd128fc533fec9214e2c3f3fb"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-construction.json",
+            "sha256": "2c01f4954f4a9c1716c6306e07c5d0716380db1a43eca3914c5279a683434f91"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-drawing.json",
+            "sha256": "b61f4cfa9959dfc87caaab5ed78e2d848452d2553a6d018a1109e88df44acb10"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-format.json",
+            "sha256": "528cb058213d41ba25479f5c293a7100f4009d6e97a7144dc6fc59ef2c408d3e"
+          },
+          {
+            "path": "{out}/capture-team-ui-list-selection-events.json",
+            "sha256": "e229e8600ceb5397f6c41b814db9df22c7b201760832746ed87e173beae234b7"
+          },
+          {
+            "path": "{out}/capture-team-ui-map-wrappers.json",
+            "sha256": "9f1eccaf481dc600ed937a07e5a40ebeda5d9ad626300ad74c1284bc761db76f"
+          },
+          {
+            "path": "{out}/capture-team-ui-name-boundaries.json",
+            "sha256": "cda5433ef0dcb489e173e76e3888c388993f258ac5ce307d6b5a4d859f37832e"
+          },
+          {
+            "path": "{out}/capture-team-ui-player-mutations.json",
+            "sha256": "4db1b83effbbf65432e3362577b32f8ee88c7921c4a670460481225f81d049a1"
+          },
+          {
+            "path": "{out}/capture-team-ui-rename-dialog-events.json",
+            "sha256": "a21b174552bdc7efb0dd4793cbcb09249b7d04e92a1784016a19feb4ed42ac4b"
+          },
+          {
+            "path": "{out}/capture-team-ui-team-removal-refresh.json",
+            "sha256": "e687b863002fe83e5a27c562c2dc4e1abe94ac0a6d8639720fb71691b1d9ea4a"
+          },
+          {
+            "path": "{out}/capture-server-options-advanced-modal.json",
+            "sha256": "82e4dc7f9bd631652dd96a26a540525c06f7f3f7dfd5e1e6634b78e11a9972d6"
+          },
+          {
+            "path": "{out}/capture-server-options-apply.json",
+            "sha256": "9c746eb7460e13076dc8ad71920f07c79f19dcce71adf5367d9efa5f0a93797b"
+          },
+          {
+            "path": "{out}/capture-server-options-cancel.json",
+            "sha256": "1854ecbf95825829afdfef1e13869bbb75c92148a7093c45b79c300d591135aa"
+          },
+          {
+            "path": "{out}/capture-server-options-cycle-control.json",
+            "sha256": "6c181982a123d50d20a96007d54fca66cd22e6b583818e34395f59ca095808e6"
+          },
+          {
+            "path": "{out}/capture-server-options-drawing.json",
+            "sha256": "0dd395d62e6ea918949ca90927e6b1b3f88cc1d85c9b3c5c3b081e9c3c4b7df8"
+          },
+          {
+            "path": "{out}/capture-server-options-first-open.json",
+            "sha256": "5d92618b553926b6630771c5bb2e01dc4c90814d18dcbc496a6eedd60deb2ef0"
+          },
+          {
+            "path": "{out}/capture-server-options-keyboard.json",
+            "sha256": "877b54ddc7b0f91953c7f3499c957785eff294da345be3db0fbb7b64c68e68de"
+          },
+          {
+            "path": "{out}/capture-server-options-limits.json",
+            "sha256": "7dabecf8dcca1aa651ad2845cbc975e67ef67144acd938436bb8c310c549e712"
+          },
+          {
+            "path": "{out}/capture-server-options-map-list.json",
+            "sha256": "9a96a79edf9f91051482148afe12cec85c9104e118e5b61fe3c6524759d72fd2"
+          },
+          {
+            "path": "{out}/capture-server-options-map-selection-reset.json",
+            "sha256": "de2db54764668fe602a5e582b1caae53ab8b56953f2b8b2f5a1179a39b14b526"
+          },
+          {
+            "path": "{out}/capture-server-options-mode-selection.json",
+            "sha256": "b7c9ed21b88915ada194abff56dabf2057478c3c9f9026378fcd599f7ed954df"
+          },
+          {
+            "path": "{out}/capture-server-options-numeric-edits.json",
+            "sha256": "db0a103974a9b8bce247557b5cbe72bb79c32a9ccb5fb4bbd07a3e14ab4abbf8"
+          },
+          {
+            "path": "{out}/capture-server-options-refresh.json",
+            "sha256": "e5890fb5155289c0f90cf18f967429e2b526096b206725df72e7ab4041a8415d"
+          },
+          {
+            "path": "{out}/capture-server-options-settings-labels.json",
+            "sha256": "d565249b8851298f3206a2eedca5a70e1cad0ccce85c75f1915c17969a6b8832"
+          },
+          {
+            "path": "{out}/capture-server-options-settings-read.json",
+            "sha256": "c53b5f690aaa4fd4c8515fb5f3cdbdf7febf76e8e9f5a53f28dd55afa4deab25"
+          },
+          {
+            "path": "{out}/capture-server-options-setup.json",
+            "sha256": "19dd81e9ff1afb90aa04eab3a0a00911ded93aae1ab1681aeeaa4cdeb6773c22"
+          },
+          {
+            "path": "{out}/capture-server-options-tab-lifecycle.json",
+            "sha256": "70f05b1f423d74871200d1cbf5da649a4da73564a6e013634f13af324cdfb8a9"
+          },
+          {
+            "path": "{out}/capture-server-options-tab-order.json",
+            "sha256": "f3eac40a80ab835eeb8212f9da25e8f27c74ed744f9f9dd898ea0968e6f75959"
+          },
+          {
+            "path": "{out}/capture-server-options-team-confirmation.json",
+            "sha256": "5e8631f3ce721d61a3d0b7ce849ec86b173619d703ff2db3a77d335453753dcb"
+          },
+          {
+            "path": "{out}/capture-server-options-team-controls.json",
+            "sha256": "4d6b6061f5638350e7879cc7d5fcbbe453170cc1a56aa3bbb0216b0b08fdf3fd"
+          },
+          {
+            "path": "{out}/capture-server-options-team-count.json",
+            "sha256": "cc8fd8560879577aaedcdc9b8d0d65b8852ccadda387c1299c2081d89726ff47"
+          },
+          {
+            "path": "{out}/capture-server-options-tooltips.json",
+            "sha256": "3c9414088fd9de2adc5977b173adab4928c58b0a8643a1d2af15b9156a1d739a"
+          },
+          {
+            "path": "{out}/capture-server-options-top-tabs.json",
+            "sha256": "5584a5229b99893dcc64e5d615d0b0a03cb3b207da360810f849ac930e829eb5"
+          }
+        ]
+      }
+    ],
+    "production": [
+      {
+        "name": "compressor-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/map-compress",
+          "{root}/tools/porting/map_compress.go"
+        ]
+      },
+      {
+        "name": "production",
+        "command": [
+          "python3",
+          "{root}/tools/porting/qualify_production.py",
+          "{root}/docs/porting/server-options-c-batch.json",
+          "--out",
+          "{out}/production"
+        ]
+      },
+      {
+        "name": "flat-gameplay",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/production/bin/opennox",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/tile-raster-flat.yaml",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Server options corrected C baseline",
+          "OPENNOX_REQUIRE_MAP_DECOMPRESSION=1",
+          "OPENNOX_COMPRESS_MAPS=[\"war01a/War01A.map\"]",
+          "OPENNOX_MAP_COMPRESSOR={out}/map-compress",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "server-options-flat-c",
+          "compare",
+          "{root}/build/baseline/runs/team-ui-flat-native"
+        ]
+      }
+    ]
+  },
+  "production": {
+    "description": "Server options corrected C baseline",
+    "assets": "build/assets/extracted/drive_c/Nox",
+    "known_suite": "build/port-rule-command/full-suite.jsonl",
+    "scenario_runner": "tools/porting/run_scenario.py",
+    "retained": [
+      "nox_xxx_frameCounterSetCopyToNextFrame_5281D0",
+      "nox_xxx_netSendPointFx_522FF0",
+      "nox_xxx_sendArrowTrapFX_5238A0",
+      "sub_4E4F30",
+      "nox_xxx_playerResetImportantCtr_4E4F40",
+      "nox_xxx_netSendPacket1_4E5390",
+      "nox_xxx_netClientSend2_4E53C0",
+      "nox_xxx_netSendPacket0_4E5420",
+      "nox_net_importantACK_4E55A0",
+      "sub_4E55F0",
+      "nox_xxx_collideDoor_4E8AC0",
+      "nox_xxx_collidePickup_4E8DF0",
+      "sub_4E8E50",
+      "sub_4E8E60",
+      "nox_server_questMaybeWarp_4E8F60",
+      "sub_4E9010",
+      "nox_xxx_collideExit_4E9090",
+      "nox_xxx_spellFlyCollide_4E9500",
+      "nox_xxx_collideChest_4E9C40",
+      "sub_4EAAA0",
+      "sub_4EAAD0",
+      "nox_xxx_collidePentagram_4EAB20",
+      "nox_xxx_collideSign_4EAB40",
+      "nox_xxx_collideTrapDoor_4EAB60",
+      "sub_4EACA0",
+      "nox_xxx_collideSpellPedestal_4EAD20",
+      "nox_xxx_collideUndeadKiller_4EBD40",
+      "nox_xxx_collideMonsterGen_4EBE10",
+      "sub_4EBE40",
+      "nox_xxx_collideAnkhQuest_4EBF40",
+      "sub_4D6000",
+      "sub_4D60B0",
+      "sub_4D60E0",
+      "sub_4D6130",
+      "sub_4D6170",
+      "sub_4D61F0",
+      "sub_4D6540",
+      "nox_xxx_isQuest_4D6F50",
+      "nox_xxx_setQuest_4D6F60",
+      "sub_4D6F70",
+      "sub_4D6F80",
+      "sub_4D6FA0",
+      "sub_4D72D0",
+      "sub_4D7450",
+      "sub_4D75E0",
+      "sub_4D76E0",
+      "sub_4D7A60",
+      "sub_4E3CA0",
+      "nox_game_getQuestStage_4E3CC0",
+      "nox_game_setQuestStage_4E3CD0",
+      "nox_xxx_player_4E3CE0",
+      "sub_4E3D50",
+      "sub_4E3DD0",
+      "sub_4E40F0",
+      "nox_xxx_netGameSettings_4DEF00",
+      "nox_xxx_netGuiGameSettings_4DD9B0",
+      "nox_xxx_netSendSimpleObject2_4DF360",
+      "nox_xxx_newPlayerSendAllPlayers_4DE300",
+      "nox_xxx_sendAllPlayerIDs_4DE270",
+      "nox_xxx_servMinimapRevealFlag_4DE380",
+      "sub_4DF2E0",
+      "sub_4E8310",
+      "sub_4E8320",
+      "sub_5095E0",
+      "sub_418800",
+      "sub_418830",
+      "sub_418A40",
+      "sub_418BC0",
+      "nox_xxx_objGetTeamByNetCode_418C80",
+      "nox_xxx_teamRenameMB_418CD0",
+      "sub_418D80",
+      "nox_xxx_netChangeTeamID_419090",
+      "sub_4190F0",
+      "nox_xxx_servObjectHasTeam_419130",
+      "nox_xxx_servCompareTeams_419150",
+      "nox_xxx_teamCompare2_419180",
+      "nox_xxx_netChangeTeamMb_419570",
+      "sub_4196D0",
+      "sub_419900",
+      "sub_419960",
+      "sub_417DC0",
+      "sub_417DE0",
+      "sub_417EC0",
+      "sub_4181F0",
+      "sub_418390",
+      "sub_4184D0",
+      "nox_xxx_wndGuiTeamCreate_4185B0",
+      "nox_xxx_toggleAllTeamFlags_418690",
+      "nox_xxx_createAtImpl_4191D0",
+      "sub_455A00",
+      "sub_455A50",
+      "sub_455C10",
+      "sub_455F10",
+      "sub_455F60",
+      "sub_456050",
+      "sub_456D60",
+      "sub_456EA0",
+      "sub_456FA0",
+      "sub_4571A0",
+      "sub_4573A0",
+      "nox_xxx_guiServerPlayersLoad_456270",
+      "sub_457230",
+      "sub_455D80"
+    ],
+    "retired": [
+      "nox_xxx_aiLostSight_528560",
+      "nox_xxx_checkIsKillable_528190",
+      "nox_xxx_destroyEveryChatMB_528D60",
+      "nox_xxx_frameCounterSetCopy_5281E0",
+      "nox_xxx_monsterCmdSend_528BD0",
+      "nox_xxx_monsterUpdateSeenEnemies_5286D0",
+      "nox_xxx_monsterVisionSeeEnemy_5287B0",
+      "nox_xxx_netClientPredictLinear_523530",
+      "nox_xxx_netObjectInShadows_528A90",
+      "nox_xxx_netObjectOutOfSight_528A60",
+      "nox_xxx_netPlayerObjSend_518C30",
+      "nox_xxx_netReportDestroyObject_5289D0",
+      "nox_xxx_netSendComplexObject_518960",
+      "nox_xxx_netSendFxAllCli_523030",
+      "nox_xxx_netSendObjects2Plr_519410",
+      "nox_xxx_netSendPhantomPlrMb_5187E0",
+      "nox_xxx_netSendShieldFx_523670",
+      "nox_xxx_netSendSimpleObj_5188A0",
+      "nox_xxx_netSendVampFx_523270",
+      "nox_xxx_netSparkExplosionFx_5231B0",
+      "nox_xxx_netSpriteUpdate_518AE0",
+      "nox_xxx_netUpdateObjectSpecial_527E50",
+      "nox_xxx_netUpdateRemotePlr_501CA0",
+      "nox_xxx_netUpdateRemotePlr_501CA0_B",
+      "nox_xxx_sendGeneratorBreakFX_523200",
+      "nox_xxx_sendGeneratorSpawnFX_523830",
+      "nox_xxx_sendSummonCancelFX_523760",
+      "nox_xxx_sendSummonStartFX_5236F0",
+      "nox_xxx_unitUpdateSightMB_5281F0",
+      "sub_417270",
+      "sub_501C00",
+      "sub_518770",
+      "sub_519710",
+      "sub_523150",
+      "sub_528030",
+      "sub_528610",
+      "sub_528910",
+      "sub_528950",
+      "sub_528990",
+      "sub_4E4DE0",
+      "sub_4E4E50",
+      "sub_4E4ED0",
+      "sub_4E4EF0",
+      "sub_4E4F80",
+      "sub_4E4FC0",
+      "nox_xxx_netSendPacket_4E5030",
+      "nox_xxx_importantCheckRate_4E52B0",
+      "nox_xxx_playerKickDueToRate_4E5360",
+      "sub_4E5450",
+      "sub_4E54D0",
+      "nox_xxx_importantCheckRate2_4E5670",
+      "nox_xxx_netImportant_4E5770",
+      "sub_4E86E0",
+      "sub_4D61B0",
+      "sub_4D66E0",
+      "sub_4D6770",
+      "sub_4D6880",
+      "sub_4D6940",
+      "sub_4D6950",
+      "nox_game_sendQuestStage_4D6960",
+      "sub_4D6A20",
+      "sub_4D70B0",
+      "nox_xxx_bookCreatureTest_4D70C0",
+      "sub_4D7100",
+      "sub_4D7150",
+      "sub_4D71E0",
+      "sub_4D71F0",
+      "sub_4D7280",
+      "sub_4D7300",
+      "sub_4D7430",
+      "sub_4D7440",
+      "sub_4D7480",
+      "sub_4D7520",
+      "sub_4D75F0",
+      "nox_server_checkWarpGate_4D7600",
+      "sub_4D76F0",
+      "sub_4D79A0",
+      "sub_4D79C0",
+      "sub_4D7A80",
+      "sub_4D7B40",
+      "sub_4E3CB0",
+      "sub_4E4080",
+      "sub_4E40B0",
+      "sub_4E40C0",
+      "sub_4E4100",
+      "nox_float2int16_abs",
+      "nox_server_checkVictory_509A60",
+      "nox_xxx_netNewPlayerMakePacket_4DDA90",
+      "nox_xxx_wallSendDestroyed_4DF0A0",
+      "sub_4DDE10",
+      "sub_4DE410",
+      "sub_4DE4D0",
+      "sub_4DF120",
+      "sub_4DF180",
+      "sub_4DF3C0",
+      "sub_4E80C0",
+      "sub_4E82C0",
+      "sub_5096F0",
+      "sub_5098A0",
+      "sub_5099B0",
+      "sub_509C30",
+      "sub_509CB0",
+      "sub_509CF0",
+      "sub_509D80",
+      "dword_5d4594_1563276",
+      "dword_5d4594_1599688",
+      "nox_xxx_unused_418840",
+      "sub_4189D0",
+      "sub_418A10",
+      "nox_xxx_teamCheckSmth_418C60",
+      "sub_418C70",
+      "sub_418E40",
+      "sub_4197C0",
+      "sub_4198A0",
+      "sub_417CF0",
+      "nox_xxx_mapInfoSetKotr_4180D0",
+      "sub_4183C0",
+      "nox_xxx_teamAssignFlags_418640",
+      "dword_5d4594_526276",
+      "dword_5d4594_527660",
+      "sub_455CD0",
+      "sub_455E70",
+      "sub_455EE0",
+      "sub_456070",
+      "sub_4560D0",
+      "sub_456240",
+      "sub_456500",
+      "sub_456640",
+      "sub_456BB0",
+      "sub_456D00",
+      "sub_456DF0",
+      "sub_456E40",
+      "sub_456F10",
+      "sub_457120",
+      "sub_457140",
+      "sub_4573B0",
+      "sub_4567C0",
+      "sub_457010",
+      "nox_xxx_mapInfoSetCapflag_417EA0",
+      "nox_xxx_mapInfoSetFlagball_417F30",
+      "sub_455C30",
+      "dword_5d4594_1045604",
+      "dword_5d4594_1045640",
+      "dword_5d4594_1045684",
+      "dword_5d4594_1045688",
+      "dword_5d4594_1045692"
+    ],
+    "scenarios": [
+      {
+        "name": "server-options-c",
+        "reference": "build/baseline/runs/team-ui-native",
+        "scenario": "docs/porting/options-panels.yaml",
+        "env": {
+          "NOX_DEV": "true"
+        }
+      },
+      {
+        "name": "server-options-save-c",
+        "reference": "build/baseline/runs/team-ui-save-native",
+        "scenario": "docs/porting/object-xfer-save-load.yaml",
+        "env": {
+          "OPENNOX_REQUIRE_SAVE_LOAD": "1"
+        }
+      }
+    ],
+    "retained_c": [
+      "dword_5d4594_1045636"
+    ]
+  }
+}

@@ -2,13 +2,45 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 50k lines** — **50,177 physical lines in 80 production
-`.c` files**, zero reference C. Latest conversion removes **1,048 lines**.
+**Rough C remaining: about 50k lines** — **50,181 physical lines in 80 production
+`.c` files**, zero reference C. Latest conversion removes **1,048 lines**; subsequent C prerequisites add four.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — team UI native conversion qualified
+## Current — server-options C baseline qualified
+
+This checkpoint accompanies the corrected C baseline commit. Team UI conversion
+**3d6436bb is pushed**. See [SERVER_OPTIONS.md](docs/porting/SERVER_OPTIONS.md).
+All **35 server-options roots / 847 leaves** pass, plus exhaustive 65,536-mode
+lookup; **23 frozen captures / 1,322 records**. The selected scope is **33 live
+functions / 1,256 C body lines**, plus a proven **28-line orphan**.
+
+Affected default/server/highres sweeps pass **146 roots / 12,107 leaves** each,
+with **82 identical captures / 12,982 records**, in **37.85 / 65.10 / 81.80s**.
+Fresh production passes in **401.66s**: three builds/ABI, exact known asset failures
+(1,553 entries; 15 pass / 3 fail / 32 no-test), gameplay, save/load and flat-map
+expansion. Static mapped-memory preflight passes. All sessions are joined.
+
+Final target sweeps share an unchanged 2,119-file source manifest. Production was
+qualified before a final test-only label check: only the two porttest files differ,
+with production source identity explicitly verified. That check caught a fixture
+filename missing at blob 131072; owner now supplies guiserv.c. All frozen captures
+remain unchanged. The two actual C fixes are resource failure handling and clearing
+the general-panel pointer on close, documented for review.
+
+Artifacts: build/port-server-options/c-{default,server,highres}-final,
+c-production, c-audit.json, caller-audit.json. Tracked manifest:
+server-options-c-batch.json; selection: server-options-focused-tests.txt.
+Client SHA: 22b3ffb0711a237534b145cda0fb474546ee57695146d5a5002ce4ba26240977.
+
+Next: commit/push this baseline, then translate and qualify the batch. Incomplete
+native drafts are in build/port-server-options/native-draft/; they are not installed
+or compiled. Review types, localization formatting and callers before installation.
+All fixture drafts and freeze-baseline.py are consumed; never rerun them. Keep
+frozen expectations unchanged. No blocker or user question; about 20 GB free.
+
+### Qualified parent — team UI
 
 Corrected C baseline **e86e6b21** was committed/pushed before conversion. All
 **35 live functions / 943 body lines** are native. Two C translation units and five
@@ -35,12 +67,13 @@ variable was in the Go-export list. Corrected to retained_c; final production
 passes without source or golden changes. Five original-C UI fixes and ASCII-only
 name folding are documented in TEAM_UI.md / DECISIONS.md for review.
 
-Next: commit/push this qualified conversion, then server-options UI. Read-only
+Next: complete the server-options C fixture/contract matrix and qualify baseline.
+Read-only
 scope audit in build/port-server-options selects **33 live functions / 1,252 body
 lines**, plus a **28-line orphan** (sub_457FE0, called only in two literal if(0)
 blocks). plan-draft.md describes the test/owner matrix. Candidate reachability and
 state audits are advisory; numeric references and callbacks require manual review.
-Initial mode fixture drafts there are uninstalled. No user decision blocks work.
+Initial mode fixture drafts there are consumed/installed. No user decision blocks work.
 
 Source build/baseline/env.sh for Go. Maximum three heavy jobs; do not edit source
 while qualification reads it. Team UI ignored drafts/install/freeze scripts are

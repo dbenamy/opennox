@@ -1514,3 +1514,14 @@ These changes add 22 C lines before conversion (51,225 remaining). They change n
 message layouts or membership rules. Keep existing empty-name acceptance and
 ASCII case folding; this runtime's C comparison does not fold Cyrillic case.
 Broader Unicode case handling is a separate review item, not part of this port.
+
+### Server-options baseline prerequisites (review after port)
+
+Independent C contracts found two small lifecycle defects. Missing window resources
+cause the server-options constructor to dereference NULL while reading width;
+return 0 before layout/child access. Closing options destroys its general panel
+but leaves the parent's general-panel pointer set; clear that pointer with the
+other panel state. Both corrections are reversible and covered by missing-resource
+retry and tab/close contracts. They add four physical C lines before conversion.
+Because production source changes, qualify a fresh corrected C baseline rather
+than reusing the previous team's production result. See SERVER_OPTIONS.md.
