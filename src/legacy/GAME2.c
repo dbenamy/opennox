@@ -1536,6 +1536,9 @@ int nox_xxx_guiServerAccessLoad_4541D0(int a1) {
 	}
 	dword_5d4594_1045516 =
 		nox_new_window_from_file(*(const char**)getMemAt(0x587000, 127824 + 4 * v2), nox_xxx_windowAccessProc_454BA0);
+	if (!dword_5d4594_1045516) {
+		return 0;
+	}
 	nox_draw_setTabWidth_43FE20(100);
 	sub_46B120(*(uint32_t**)&dword_5d4594_1045516, a1);
 	dword_5d4594_1045520 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1045516, 10102);

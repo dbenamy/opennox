@@ -20,6 +20,9 @@ int nox_xxx_guiSpelllistLoad_453850(int a1) {
 	uint32_t* v10; // esi
 
 	dword_5d4594_1045484 = nox_new_window_from_file("spelllst.wnd", sub_453C00);
+	if (!dword_5d4594_1045484) {
+		return 0;
+	}
 	nox_xxx_wndSetDrawFn_46B340(*(int*)&dword_5d4594_1045484, sub_453B80);
 	sub_46B120(*(uint32_t**)&dword_5d4594_1045484, a1);
 	nox_xxx_wnd_46B280(*(int*)&dword_5d4594_1045484, a1);

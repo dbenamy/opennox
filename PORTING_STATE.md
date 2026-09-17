@@ -2,15 +2,47 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 49k lines** — **48,740 physical lines in 79 production
-`.c` files**, zero reference C. Latest conversion removes **1,441 lines**.
+**Rough C remaining: about 49k lines** — **48,755 physical lines in 79 production
+`.c` files**, zero reference C. Latest conversion removed **1,441 lines**; current baseline prerequisites add 15.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — server-options native conversion qualified
+## Current — qualified server-panels C baseline; translate next
 
-This checkpoint accompanies the native conversion commit. Corrected C baseline
+Server-options conversion **f5737e6a is committed/pushed**. The new server-panel
+C baseline is qualified and ready for its checkpoint commit/push before translation.
+Scope: **57 live functions / 2,098 body lines**, plus one 37-line orphan to remove.
+C is **48,755 / 79 files / zero reference C** after five missing-resource guards.
+See [SERVER_PANELS.md](docs/porting/SERVER_PANELS.md) for contracts and review items.
+
+Default/server/highres each pass **168 roots / 12,914 leaves**, no skips, with
+**104 identical captures / 26,048 records**. The new panel corpus has **22 roots /
+22 frozen captures / 13,066 records**, plus exhaustive independent byte operations.
+Durations: **72.43 / 163.07 / 83.80s**. Fresh production passes in **391.28s**:
+three builds/ABI/interface checks, exact known 1,553 asset failures (15 pass /
+3 fail / 32 no-test), options gameplay, save/load and forced flat-map regeneration.
+All four gates share one unchanged **2,144-file source manifest**; all sessions
+joined. Static preflight passes. Client SHA:
+d9486bf2dc88515630d9b0b025b9c2f8d6ea4f2460c4a9a432d23968af4f8a71.
+
+Artifacts: build/port-server-panels/c-{default,server,highres,production}, c-audit.json,
+external-reviewed.json. Manifest: server-panels-c-batch.json. Selection:
+server-panels-focused-tests.txt. Freeze/installed fixture scripts are consumed:
+never regenerate hashes or recopy old drafts over fixes.
+
+No native conversion is installed. Uninstalled scalar/state drafts are in
+build/port-server-panels/native-draft (review before use). Nine C interfaces remain
+needed by other production C; migrate Go callers directly. Twenty-six private
+C globals and the advanced refresh callback table can move to Go. The shared
+online-mode flag remains. `sub_4AD4B0` has only a literal if(0) caller; remove with
+conversion. Preserve the recorded class-index and level-limit checkbox behavior.
+No blocker or user question. Continue through native qualification, docs/C LOC,
+commit/push, then the next coherent batch. About 18–20 GB free; preserve assets/archive.
+
+### Qualified parent — server options
+
+Native conversion **f5737e6a is committed/pushed**. Corrected C baseline
 **55ccc2b7 was committed/pushed before translation**. See
 [SERVER_OPTIONS.md](docs/porting/SERVER_OPTIONS.md) for scope and review decisions.
 All **33 functions / 1,256 live C body lines** are native; the 28-line orphan,
@@ -38,12 +70,15 @@ hit-test and negative-edit differences were fixed against C. Apply preserves the
 selected-name alias across settings copies. All native drafts/install scripts are
 consumed or stale: never recopy them.
 
-Next: commit/push this conversion, reclaim verified duplicate completed-run assets,
-then start server panels. Read-only draft scope: build/port-server-panels/candidate.json,
+Completed-run asset deduplication is finished: 12 runs, 19,648 identical files
+(6.18 GiB logical duplicates), with per-run restoration manifests. Original assets,
+changed data and screenshots remain. About 21 GB is free.
+
+Next scope is underway: server panels. Read-only draft scope: build/port-server-panels/candidate.json,
 58 functions / 2,120 body lines across five remaining servopts files and related
 GAME2/GAME3/GAME3_1 blocks. plan-draft.md records owners/tests; external-refs.json
-is advisory and requires review. No next-batch source changes yet. No blocker or
-user question. Preserve archive/assets. Around 17 GB currently free.
+is advisory and requires review. Candidate audit predates the newly installed scalar fixture. No blocker or
+user question. Preserve archive/assets.
 
 ### Qualified parent — team UI
 

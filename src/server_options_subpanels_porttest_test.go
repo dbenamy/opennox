@@ -20,7 +20,7 @@ type serverOptionsControl struct {
 
 // The controls match the IDs and widget types that the remaining C subpanels use.
 // Geometry, strings, images and widget contents are deliberately controlled.
-func serverOptionsSubpanelResource(name string) string {
+func serverOptionsSubpanelResource(name string, faithful ...bool) string {
 	root := 0
 	var controls []serverOptionsControl
 	switch name {
@@ -40,12 +40,21 @@ func serverOptionsSubpanelResource(name string) string {
 	case "advserv.wnd":
 		root = 2100
 		controls = []serverOptionsControl{{2101, "STATICTEXT"}, {2102, "CHECKBOX"}, {2103, "CHECKBOX"}, {2130, "PUSHBUTTON"}, {2104, "SCROLLLISTBOX"}, {2105, "STATICTEXT"}, {2106, "RADIOBUTTON"}, {2107, "RADIOBUTTON"}, {2108, "RADIOBUTTON"}, {2109, "RADIOBUTTON"}, {2110, "ENTRYFIELD"}}
+	case "objlst.wnd":
+		root = 1500
+		controls = []serverOptionsControl{{1510, "SCROLLLISTBOX"}, {1513, "PUSHBUTTON"}, {1514, "PUSHBUTTON"}, {1515, "PUSHBUTTON"}, {1516, "PUSHBUTTON"}}
+		for id := 1520; id <= 1533; id++ {
+			controls = append(controls, serverOptionsControl{id, "CHECKBOX"})
+		}
 	case "spelllst.wnd":
 		root = 1100
 		controls = []serverOptionsControl{{1120, "CHECKBOX"}, {1121, "CHECKBOX"}, {1122, "CHECKBOX"}, {1123, "CHECKBOX"}, {1124, "CHECKBOX"}, {1125, "CHECKBOX"}, {1126, "CHECKBOX"}, {1127, "CHECKBOX"}, {1128, "CHECKBOX"}, {1129, "CHECKBOX"}, {1130, "CHECKBOX"}, {1131, "CHECKBOX"}, {1132, "CHECKBOX"}, {1133, "CHECKBOX"}, {1110, "SCROLLLISTBOX"}, {1112, "SCROLLLISTBOX"}, {1113, "PUSHBUTTON"}, {1114, "PUSHBUTTON"}, {1115, "PUSHBUTTON"}, {1116, "PUSHBUTTON"}}
 
 	default:
 		panic(name)
+	}
+	if name == "advserv.wnd" && len(faithful) > 0 && faithful[0] {
+		controls = append(controls, serverOptionsControl{2119, "HORZSLIDER"}, serverOptionsControl{2120, "STATICTEXT"})
 	}
 	var b strings.Builder
 	fmt.Fprintf(&b, "FONT = small; WINDOW %d 0 0 300 300 USER; STATUS = ENABLED; CHILD\n", root)
@@ -54,6 +63,9 @@ func serverOptionsSubpanelResource(name string) string {
 		switch c.kind {
 		case "SCROLLLISTBOX":
 			data = "DATA = 256 1 0 0 1 0 0;"
+			if len(faithful) > 0 && faithful[0] && (c.id == 10123 || c.id == 10200) {
+				data = "DATA = 256 10 0 1 0 1 0;"
+			}
 		case "ENTRYFIELD":
 			data = "DATA = 64 -1 0 0;"
 		case "STATICTEXT":
@@ -68,8 +80,8 @@ func serverOptionsSubpanelResource(name string) string {
 	b.WriteString("END END")
 	return b.String()
 }
-func (o *serverOptionsOwner) installSubpanels(t *testing.T) *[]string {
-	for off, name := range map[uintptr]string{127824: "access.wnd", 173556: "general.wnd"} {
+func (o *serverOptionsOwner) installSubpanels(t *testing.T, faithful ...bool) *[]string {
+	for off, name := range map[uintptr]string{127824: "access.wnd", 173556: "general.wnd", 180048: "advserv.wnd"} {
 		table := unsafe.Slice((*byte)(memmap.PtrOff(0x587000, off)), 36)
 		saved := append([]byte(nil), table...)
 		t.Cleanup(func() { copy(table, saved) })
@@ -88,12 +100,12 @@ func (o *serverOptionsOwner) installSubpanels(t *testing.T) *[]string {
 			kind = "general.wnd"
 		case "advserv.wnd", "ladvserv.wnd", "wadvserv.wnd":
 			kind = "advserv.wnd"
-		case "advanced.wnd", "spelllst.wnd", "rulelist.wnd":
+		case "advanced.wnd", "spelllst.wnd", "rulelist.wnd", "objlst.wnd":
 		default:
 			return old(name, fn)
 		}
 		loads = append(loads, kind)
-		return newWindowFromString(o.c.GUI, serverOptionsSubpanelResource(kind), fn)
+		return newWindowFromString(o.c.GUI, serverOptionsSubpanelResource(kind, faithful...), fn)
 	}
 	t.Cleanup(func() { legacy.Nox_new_window_from_file = old })
 	return &loads

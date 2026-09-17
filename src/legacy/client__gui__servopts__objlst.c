@@ -26,6 +26,9 @@ int nox_xxx_guiObjlistLoad_4530C0(int a1, int a2) {
 
 	v2 = 0;
 	dword_5d4594_1045468 = nox_new_window_from_file("objlst.wnd", sub_4533D0);
+	if (!dword_5d4594_1045468) {
+		return 0;
+	}
 	nox_xxx_wndSetDrawFn_46B340(*(int*)&dword_5d4594_1045468, sub_453350);
 	sub_46B120(*(uint32_t**)&dword_5d4594_1045468, a1);
 	nox_xxx_wnd_46B280(*(int*)&dword_5d4594_1045468, a1);

@@ -207,3 +207,10 @@ The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
 because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful
 differential validation; they remain recoverable from Git at `66fa7bd4`.
+
+
+Server-panel corrected-C baseline prerequisites add **15 lines**, bringing the
+working baseline to **48,755 production lines in 79 files**, zero reference C.
+This is a pre-conversion correction, not a completed conversion-size checkpoint.
+See [SERVER_PANELS.md](SERVER_PANELS.md); record the next reduction after the Go
+conversion qualifies.

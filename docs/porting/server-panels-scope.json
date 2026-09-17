@@ -1,0 +1,364 @@
+{
+  "parent": "f5737e6a",
+  "functions": [
+    {
+      "file": "src/legacy/client__gui__servopts__objlst.c",
+      "name": "nox_xxx_guiObjlistLoad_4530C0",
+      "address": "0x4530c0",
+      "body_lines": 69
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__access.c",
+      "name": "sub_454640",
+      "address": "0x454640",
+      "body_lines": 38
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__access.c",
+      "name": "sub_454740",
+      "address": "0x454740",
+      "body_lines": 92
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__spelllst.c",
+      "name": "nox_xxx_guiSpelllistLoad_453850",
+      "address": "0x453850",
+      "body_lines": 63
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__spelllst.c",
+      "name": "sub_453C00",
+      "address": "0x453c00",
+      "body_lines": 141
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__general.c",
+      "name": "nox_xxx_gui_4AD320",
+      "address": "0x4ad320",
+      "body_lines": 52
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__general.c",
+      "name": "sub_4AD4B0",
+      "address": "0x4ad4b0",
+      "body_lines": 37
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__general.c",
+      "name": "sub_4AD840",
+      "address": "0x4ad840",
+      "body_lines": 49
+    },
+    {
+      "file": "src/legacy/client__gui__servopts__advserv.c",
+      "name": "sub_4BE2C0",
+      "address": "0x4be2c0",
+      "body_lines": 10
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453080",
+      "address": "0x453080",
+      "body_lines": 10
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_4532E0",
+      "address": "0x4532e0",
+      "body_lines": 18
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453350",
+      "address": "0x453350",
+      "body_lines": 17
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_4533D0",
+      "address": "0x4533d0",
+      "body_lines": 106
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_4535E0",
+      "address": "0x4535e0",
+      "body_lines": 7
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_4535F0",
+      "address": "0x4535f0",
+      "body_lines": 7
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453600",
+      "address": "0x453600",
+      "body_lines": 1
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453610",
+      "address": "0x453610",
+      "body_lines": 1
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453620",
+      "address": "0x453620",
+      "body_lines": 11
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453640",
+      "address": "0x453640",
+      "body_lines": 11
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453660",
+      "address": "0x453660",
+      "body_lines": 18
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453690",
+      "address": "0x453690",
+      "body_lines": 1
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_4536B0",
+      "address": "0x4536b0",
+      "body_lines": 32
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453710",
+      "address": "0x453710",
+      "body_lines": 19
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453750",
+      "address": "0x453750",
+      "body_lines": 29
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453B00",
+      "address": "0x453b00",
+      "body_lines": 19
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453B80",
+      "address": "0x453b80",
+      "body_lines": 17
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453F70",
+      "address": "0x453f70",
+      "body_lines": 1
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453F90",
+      "address": "0x453f90",
+      "body_lines": 1
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_453FA0",
+      "address": "0x453fa0",
+      "body_lines": 21
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_454000",
+      "address": "0x454000",
+      "body_lines": 1
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_454040",
+      "address": "0x454040",
+      "body_lines": 36
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_4540E0",
+      "address": "0x4540e0",
+      "body_lines": 15
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_454120",
+      "address": "0x454120",
+      "body_lines": 41
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "nox_xxx_guiServerAccessLoad_4541D0",
+      "address": "0x4541d0",
+      "body_lines": 101
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_454A90",
+      "address": "0x454a90",
+      "body_lines": 37
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "nox_xxx_windowAccessProc_454BA0",
+      "address": "0x454ba0",
+      "body_lines": 377
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_455770",
+      "address": "0x455770",
+      "body_lines": 29
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_4557D0",
+      "address": "0x4557d0",
+      "body_lines": 13
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_455800",
+      "address": "0x455800",
+      "body_lines": 34
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_455920",
+      "address": "0x455920",
+      "body_lines": 11
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_455950",
+      "address": "0x455950",
+      "body_lines": 13
+    },
+    {
+      "file": "src/legacy/GAME2.c",
+      "name": "sub_4559B0",
+      "address": "0x4559b0",
+      "body_lines": 21
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "name": "sub_4AD570",
+      "address": "0x4ad570",
+      "body_lines": 13
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "name": "nox_xxx_windowServerOptionsGeneralProc_4AD5D0",
+      "address": "0x4ad5d0",
+      "body_lines": 76
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "name": "sub_4AD820",
+      "address": "0x4ad820",
+      "body_lines": 5
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "name": "nox_xxx_loadAdvancedWnd_4BDC10",
+      "address": "0x4bdc10",
+      "body_lines": 12
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "name": "sub_4BDC70",
+      "address": "0x4bdc70",
+      "body_lines": 21
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "name": "sub_4BDD10",
+      "address": "0x4bdd10",
+      "body_lines": 26
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "name": "sub_4BDDA0",
+      "address": "0x4bdda0",
+      "body_lines": 1
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "name": "nox_xxx_windowAdvancedServProc_4BDDB0",
+      "address": "0x4bddb0",
+      "body_lines": 62
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "name": "sub_4BDF30",
+      "address": "0x4bdf30",
+      "body_lines": 13
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "name": "sub_4BDF70",
+      "address": "0x4bdf70",
+      "body_lines": 9
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "name": "sub_4BDF90",
+      "address": "0x4bdf90",
+      "body_lines": 13
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "name": "sub_4BDFD0",
+      "address": "0x4bdfd0",
+      "body_lines": 49
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "name": "sub_4BE120",
+      "address": "0x4be120",
+      "body_lines": 74
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "name": "sub_4BE320",
+      "address": "0x4be320",
+      "body_lines": 1
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "name": "sub_4BE330",
+      "address": "0x4be330",
+      "body_lines": 121
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "name": "sub_4BE610",
+      "address": "0x4be610",
+      "body_lines": 12
+    }
+  ],
+  "candidate_functions": 58,
+  "candidate_body_lines": 2135,
+  "unreachable": [
+    {
+      "name": "sub_4AD4B0",
+      "body_lines": 37,
+      "evidence": "Only call is in literal if (0) in general.c; remaining occurrence is header declaration."
+    }
+  ],
+  "live_functions": 57,
+  "live_body_lines": 2098
+}

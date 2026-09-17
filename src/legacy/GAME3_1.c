@@ -615,6 +615,9 @@ int sub_4BDC00(int a1) {
 //----- (004BDC10) --------------------------------------------------------
 int nox_xxx_loadAdvancedWnd_4BDC10(int* a1) {
 	dword_5d4594_1316708 = nox_new_window_from_file("advanced.wnd", nox_xxx_windowAdvancedServProc_4BDDB0);
+	if (!dword_5d4594_1316708) {
+		return 0;
+	}
 	sub_46B120(*(uint32_t**)&dword_5d4594_1316708, 0);
 	sub_46C690(*(int*)&dword_5d4594_1316708);
 	nox_xxx_wndShowModalMB_46A8C0(*(int*)&dword_5d4594_1316708);
@@ -807,6 +810,9 @@ int sub_4BDFD0() {
 		v3 = nox_new_window_from_file(*(const char**)getMemAt(0x587000, 180048 + 4 * v1), sub_4BE330);
 	}
 	dword_5d4594_1316972 = v3;
+	if (!dword_5d4594_1316972) {
+		return 0;
+	}
 	sub_46B120(v3, 0);
 	sub_46C690(*(int*)&dword_5d4594_1316972);
 	nox_xxx_wndShowModalMB_46A8C0(*(int*)&dword_5d4594_1316972);

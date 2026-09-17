@@ -1525,3 +1525,20 @@ other panel state. Both corrections are reversible and covered by missing-resour
 retry and tab/close contracts. They add four physical C lines before conversion.
 Because production source changes, qualify a fresh corrected C baseline rather
 than reusing the previous team's production result. See SERVER_OPTIONS.md.
+
+
+### Server-panel baseline prerequisites and compatibility notes (review after port)
+
+Five panel constructors dereference missing window resources. Independent child-process
+contracts reproduced failures for object (both modes), spell, access, advanced-tab
+and advanced-server panels. Return zero immediately after a failed root load, then
+allow a successful retry. General options already handles the failure. These five
+reversible guards add 15 C lines; qualify fresh production before freezing the
+baseline. See [SERVER_PANELS.md](SERVER_PANELS.md).
+
+Keep the observed object checkbox index/name mismatch and the upper level-limit
+checkbox's unshifted value during this port; separate contracts cover each path.
+They are candidates for later behavior cleanup. Preserve byte-oriented weapon-mask
+queries and 386 spell shift/index conventions. The panel fixtures now use shipped
+multi-selection ownership where required; this is a fixture correction. Player
+lookup is case-insensitive, while displayed-row removal is exact.
