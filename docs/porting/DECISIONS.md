@@ -1552,3 +1552,24 @@ callers; Go callers and the advanced callback table use Go directly. The numeric
 parser, name-list owner and rule picker remain outside this batch. All frozen
 captures and fresh production qualification pass; no further behavior correction
 was needed during native conversion.
+
+
+### Server-configuration baseline prerequisites (review after port)
+
+Independent contracts reproduced five existing C defects: a missing rule-picker
+resource causes child access through a null root; consecutive expired admission
+entries are skipped after removal; libc wide formatting omits the game's UTF-16
+names from admission files; Linux rule enumeration reads an empty alternate-name
+field; and settings refresh copies a 12-byte map name across its 9-byte field into
+the server-name prefix. Correct these locally before freezing: guard the missing
+root, advance the list index only for retained entries, narrow names through the
+existing game formatter, enumerate actual filenames with adequate local buffers,
+and copy exactly eight map-name bytes plus a terminator. They add two net C lines.
+See [SERVER_CONFIG.md](SERVER_CONFIG.md) for reproduction and qualification.
+
+Preserve legacy byte encoding and the rule-entry completion callback's narrow view
+of wide text. Also preserve repeated dirty notifications caused by signed weapon
+bytes, headless empty counts and video flags: identical record bytes do not imply
+an unchanged return value. These are explicit later-review items, not silent
+conversion fixes. The old disabled report function and its private setter are
+proven dead and are scheduled for removal with their no-op calls during translation.

@@ -1228,7 +1228,7 @@ int sub_4161E0() {
 	unsigned char v10; // [esp+8h] [ebp-3Ch]
 	char v11[4];       // [esp+Ch] [ebp-38h]
 	int v12;           // [esp+10h] [ebp-34h]
-	char v13[12];      // [esp+14h] [ebp-30h]
+	char v13[9];      // [esp+14h] [ebp-30h]
 	char v14[16];      // [esp+20h] [ebp-24h]
 	int v15[5];        // [esp+30h] [ebp-14h]
 
@@ -1276,9 +1276,10 @@ int sub_4161E0() {
 		strncpy((char*)getMemAt(0x5D4594, 371380 + 9), v5, 15);
 		dword_5d4594_371692 = 1;
 	}
-	strncpy(v13, (const char*)getMemAt(0x5D4594, 371380), 12);
-	if (strncmp(v13, nox_xxx_mapGetMapName_409B40(), 12)) {
-		strncpy((char*)getMemAt(0x5D4594, 371380), nox_xxx_mapGetMapName_409B40(), 12);
+	strncpy(v13, nox_xxx_mapGetMapName_409B40(), sizeof(v13) - 1);
+	v13[sizeof(v13) - 1] = 0;
+	if (memcmp(getMemAt(0x5D4594, 371380), v13, sizeof(v13))) {
+		memcpy(getMemAt(0x5D4594, 371380), v13, sizeof(v13));
 		dword_5d4594_371692 = 1;
 	}
 	v6 = 0;
@@ -1384,12 +1385,11 @@ void sub_416720() {
 	int v2 = sub_416900();
 	while (v2) {
 		int* v3 = sub_416910((int*)v2);
-		if (*(uint32_t*)(v2 + 68) || (*(uint32_t*)(v2 + 64))) {
-			if (nox_platform_get_ticks() > *(uint64_t*)(v2 + 64)) {
-				sub_416820(v0);
-			}
+		if (*(uint64_t*)(v2 + 64) && nox_platform_get_ticks() > *(uint64_t*)(v2 + 64)) {
+			sub_416820(v0);
+		} else {
+			++v0;
 		}
-		++v0;
 		v2 = (int)v3;
 	}
 }

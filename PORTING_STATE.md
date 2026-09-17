@@ -2,13 +2,41 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 46k lines** — **46,391 physical lines in 74 production
-`.c` files**, zero reference C. Latest qualified conversion removes **2,364 lines** from the corrected baseline.
+**Rough C remaining: about 46k lines** — **46,393 physical lines in 74 production
+`.c` files**, zero reference C. Latest qualified conversion removes **2,364 lines**; the next pending prerequisites currently add 2 net lines.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — qualified server-panel conversion
+## Current — server-configuration corrected C baseline qualified
+
+Parent panel conversion **80c9ca2c** is committed/pushed. The next baseline covers
+**66 functions / 838 corrected C body lines**: 64 live functions / 816 lines and
+two proven dead helpers / 22 lines. Five prerequisite corrections and preserved
+compatibility details are documented in [SERVER_CONFIG.md](docs/porting/SERVER_CONFIG.md).
+Working C is **46,393 / 74 files / zero reference C** (+2 prerequisite lines).
+
+All 26 focused roots pass; 25 new captures repeat byte-for-byte and are frozen.
+Broader default/server/highres pass **535/534/535 roots**, **58,651/58,650/58,651
+leaves**, no skips, **240 identical captures / 76,002 records**. Static preflight
+passes (0.592s). Fresh production passes in **371.49s**: three builds/ABI/interface,
+exact known asset failures, options gameplay, save/load and forced flat map.
+All four gates have the same unchanged 2,161-file source manifest; sessions joined.
+All inherited captures and gameplay references remain unchanged.
+
+Artifacts: build/port-server-config/c-{default,server,highres,production},
+c-audit.json, repeat-audit.json. Manifests: server-config-batch.json,
+server-config-tests.txt and server-config-scope.json. Original assets/archive untouched.
+
+Next: commit/push this baseline, then integrate the **uninstalled, unqualified**
+ignored native-draft files. Native-map.json and native-retained.json record the
+preliminary mapping / 32 remaining C callers. Complete caller/fixture migration,
+retire private state and proven dead helpers plus no-op calls, then test against
+unchanged expectations. Additional panel/option exports have no C callers after
+this scope moves; review before retiring. Never recopy consumed fixture drafts or
+regenerate frozen goldens during translation. No user decision/blocker.
+
+## Qualified parent — server-panel conversion
 
 This checkpoint converts **57 live functions / 2,098 corrected C body lines**.
 Corrected C baseline **c2bd3a34** was committed/pushed before translation; parent

@@ -142,6 +142,7 @@ FILE* sub_4E43F0(char* a1) {
 	FILE* v2;     // edi
 	int* i;       // esi
 	int* j;       // esi
+	char name[26];
 
 	result = nox_fs_create_text(a1);
 	v2 = result;
@@ -149,7 +150,8 @@ FILE* sub_4E43F0(char* a1) {
 		nox_fs_fprintf(result, "%s\n", getMemAt(0x587000, 202212));
 		for (i = sub_416900(); i; i = sub_416910(i)) {
 			if (!*((uint64_t*)i + 8)) {
-				nox_fs_fprintf(v2, "%S\n", i + 3);
+				nox_sprintf(name, "%S", i + 3);
+				nox_fs_fprintf(v2, "%s\n", name);
 				if (*((uint8_t*)i + 72)) {
 					nox_fs_fprintf(v2, "%s\n", i + 18);
 				} else {
@@ -159,7 +161,8 @@ FILE* sub_4E43F0(char* a1) {
 		}
 		nox_fs_fprintf(v2, "\n%s\n", getMemAt(0x587000, 202228));
 		for (j = sub_4168E0(); j; j = sub_4168F0(j)) {
-			nox_fs_fprintf(v2, "%S\n", j + 3);
+			nox_sprintf(name, "%S", j + 3);
+		nox_fs_fprintf(v2, "%s\n", name);
 		}
 		nox_fs_close(v2);
 		result = (FILE*)1;

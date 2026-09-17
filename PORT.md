@@ -19,8 +19,10 @@ scheduled pause. Server options and their object, spell, admission, general and
 advanced panels are now in Go. The panel conversion passes focused, broader
 three-target and fresh production qualification with unchanged C expectations.
 
-Production C is **46,391 physical lines in 74 files**, with zero reference C.
+Production C is **46,393 physical lines in 74 files**, with zero reference C.
 The panel conversion removes **2,364 lines** from its corrected C baseline.
+The next server-configuration C baseline is qualified with five local prerequisite
+corrections (+2 net lines); see [SERVER_CONFIG.md](docs/porting/SERVER_CONFIG.md).
 The full asset suite retains its exact three known failing packages. See
 [SERVER_PANELS.md](docs/porting/SERVER_PANELS.md) for qualification and review
 items; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.

@@ -93,6 +93,9 @@ int sub_4CEBA0(int a1, char* a2) {
 	char* v9;     // [esp+18h] [ebp+4h]
 
 	dword_5d4594_1523024 = nox_new_window_from_file("rulelist.wnd", sub_4CF060);
+	if (!dword_5d4594_1523024) {
+		return 0;
+	}
 	dword_5d4594_1523028 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1523024, 10170);
 	dword_5d4594_1523032 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1523024, 10171);
 	dword_5d4594_1523036 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1523024, 10172);
@@ -123,34 +126,30 @@ int sub_4CEBA0(int a1, char* a2) {
 
 //----- (004CED40) --------------------------------------------------------
 void* sub_4CED40(char* a1) {
-	HANDLE result;                         // eax
-	HANDLE v2;                             // ebp
-	struct _WIN32_FIND_DATAA FindFileData; // [esp+8h] [ebp-248h]
-	char FileName[64];                     // [esp+148h] [ebp-108h]
-	wchar2_t v5[100];                       // [esp+188h] [ebp-C8h]
+	struct _WIN32_FIND_DATAA data;
+	char pattern[64];
+	wchar2_t title[MAX_PATH];
 
 	nox_window_call_field_94(*(int*)&dword_5d4594_1523028, 16399, 0, 0);
-	nox_sprintf(FileName, "maps\\%s\\*.rul", a1);
-	result = FindFirstFileA(FileName, &FindFileData);
-	v2 = result;
-	if (result != (HANDLE)-1) {
-		FindFileData.cFileName[strlen(FindFileData.cAlternateFileName) + 256] = 0;
-		if (nox_strcmpi(a1, FindFileData.cAlternateFileName) && nox_strcmpi("user", FindFileData.cAlternateFileName)) {
-			nox_swprintf(v5, L"%S", FindFileData.cAlternateFileName);
-			nox_window_call_field_94(*(int*)&dword_5d4594_1523028, 16397, (int)v5, -1);
-		}
-		while (FindNextFileA(v2, &FindFileData)) {
-			FindFileData.cFileName[strlen(FindFileData.cAlternateFileName) + 256] = 0;
-			if (nox_strcmpi(a1, FindFileData.cAlternateFileName)) {
-				if (nox_strcmpi("user", FindFileData.cAlternateFileName)) {
-					nox_swprintf(v5, L"%S", FindFileData.cAlternateFileName);
-					nox_window_call_field_94(*(int*)&dword_5d4594_1523028, 16397, (int)v5, -1);
-				}
-			}
-		}
-		result = (HANDLE)FindClose(v2);
+	nox_sprintf(pattern, "maps\\%s\\*.rul", a1);
+	HANDLE find = FindFirstFileA(pattern, &data);
+	if (find == (HANDLE)-1) {
+		return find;
 	}
-	return result;
+	do {
+		if (data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+			continue;
+		}
+		char* extension = strrchr(data.cFileName, '.');
+		if (extension) {
+			*extension = 0;
+		}
+		if (nox_strcmpi(a1, data.cFileName) && nox_strcmpi("user", data.cFileName)) {
+			nox_swprintf(title, L"%S", data.cFileName);
+			nox_window_call_field_94(*(int*)&dword_5d4594_1523028, 16397, (int)title, -1);
+		}
+	} while (FindNextFileA(find, &data));
+	return (void*)FindClose(find);
 }
 
 //----- (004CEED0) --------------------------------------------------------
@@ -233,7 +232,7 @@ int sub_4CF060(int a1, unsigned int a2, int* a3, int a4) {
 	int v25;            // esi
 	int v26;            // ebx
 	const wchar2_t* v27; // eax
-	char v28[16];       // [esp+Ch] [ebp-10h]
+	char v28[MAX_PATH + 5];       // [esp+Ch] [ebp-10h]
 
 	if (a2 > 0x4007) {
 		if (a2 == 16400) {

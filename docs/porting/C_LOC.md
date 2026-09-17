@@ -204,6 +204,7 @@ target build selection and linker evidence.
 | Server-options UI, private globals, mode table and orphan cleanup | 79 | 48,740 | −1,441 | 0 |
 | Server-panel missing-resource prerequisites | 79 | 48,755 | +15 | 0 |
 | Server panels, private globals, callback table and orphan cleanup | 74 | 46,391 | −2,364 | 0 |
+| Server-configuration corrected C prerequisites | 74 | 46,393 | +2 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
@@ -215,3 +216,7 @@ Server-panel prerequisites added 15 lines before conversion. The qualified nativ
 conversion then removes **2,364 lines**, including five C translation units and
 one proven orphan. Current C: **46,391 lines / 74 files / zero reference C**.
 See [SERVER_PANELS.md](SERVER_PANELS.md).
+
+Server-configuration prerequisites add **2 net C lines** before conversion.
+The repeated/frozen C baseline passes three-target and fresh production qualification;
+current C is **46,393 lines / 74 files / zero reference C**. See SERVER_CONFIG.md.
