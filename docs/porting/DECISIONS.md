@@ -1389,3 +1389,20 @@ conversion changes no frozen expectation. Go callers avoid the C round trip and
 extra payload allocation. Treat unique terminal test names as leaf cases: recounting
 the original visibility/object-report logs corrects an 18-case overstatement in
 prior documentation. No tests were removed. See [RELIABLE_REPORTS.md](RELIABLE_REPORTS.md).
+
+
+### World-collision arithmetic and callback contracts
+
+Preserve the qualified C binary's actual floating-point boundaries for mass
+exchange, including its float32 coefficient spill and PC53 intermediates. The
+initial literal translation differed in 22 of 175 frozen rows; inspecting the
+original instructions resolved it without changing any expectation. All focused
+contracts and affected target sweeps now match. Callback ordering, raw UTF-16
+identity/history bytes, countdown signedness and clock truncation remain explicit.
+
+Retain the twenty C entry points used by callers or callback registration and
+retire the private mass-exchange interface. Invalid door angles formerly left
+adjacent coordinates uninitialized; Go initializes them to zero. Spell argument
+fields that C left uninitialized are also zeroed. These are reversible choices
+outside the established valid-input contract, recorded for later review. No C
+algorithm is kept solely for tests. See [WORLD_COLLISIONS.md](WORLD_COLLISIONS.md).

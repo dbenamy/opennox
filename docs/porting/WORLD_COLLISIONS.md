@@ -61,6 +61,31 @@ is Door, UseData is a pointer wrapper, player classes must be restored between
 cases, non-player teleport targets need a separate allocation from the player
 roster, and the save-portal flag needs an explicit fixture owner.
 
+## Native implementation review
+
+The Go implementation replaces the entire 1,016-line block with six production
+files. Twenty C entry points remain for live callers/callbacks; the charge caller
+uses the mass-exchange Go helper directly and its C interface is retired.
+Qualified production C is **53,946 lines in 82 files**, zero reference C.
+The six production Go files contain 773 physical lines.
+
+The first focused comparison matched 27 groups and exposed a floating-point
+rounding difference in mass exchange. The qualified original client instructions
+confirm that the mass sum and doubled-second-mass coefficient stay in x87 PC53
+registers, whereas the second object's difference coefficient is stored to a
+32-bit temporary before reuse. Native Go explicitly reproduces those boundaries.
+The original 175 frozen physics records and independent momentum/equal-mass
+contracts remain unchanged. Instructions and failed-run diagnostics are retained
+under build/port-world-collisions; no C algorithm is retained for testing.
+
+The review also preserves the platform clock's uint32 truncation, signed countdown
+reduction, short stage-message arguments, raw UTF-16 identity comparison, string
+copies only through their terminator, and reads after gameplay callbacks. Invalid
+door angles formerly used uninitialized adjacent coordinates; Go initializes them
+to zero, while the valid four-angle domain remains the compatibility contract.
+Projectile argument fields that C left uninitialized are zeroed; its target object
+continues to be supplied to the actual spell delivery path.
+
 ## Frozen groups
 
 | Group | Records |
@@ -94,6 +119,24 @@ roster, and the save-portal flag needs an explicit fixture owner.
 | trap-geometry | 240 |
 | undead-damage | 128 |
 
+## Native qualification
+
+Default/server/highres each pass **444 roots / 40,751 unique leaf cases**, without
+skips, and match **126 frozen groups / 42,128 records**. Wall times are 219.61s,
+321.76s and 261.40s. All three share the same **2,019 source fingerprints**; see
+`build/port-world-collisions/native-coverage-audit.json`. The focused retry passes
+all 28 groups in 119.94s. No expected hash was changed for the Go implementation.
+
+All three fresh production builds pass their ELF32/i386/SSE2/CGO and symbol audits.
+The full asset suite has exactly the known 1,553 failure entries, with 15 passing,
+3 failing and 32 no-test packages. Fresh headless gameplay (41 frames), actual save/load (7 frames) and flat rendering
+(14 frames) all pass against the prior reliable-queue native references. The flat
+scenario removes 51 uncompressed maps and verifies exact regeneration of the
+loaded map. Full production qualification takes 371.69s, with the same 2,019
+source fingerprints as the affected sweeps. Client SHA-256:
+`bd58424e6816bd0b5c1690ebcb2ca21464bd5f8f3b0e7c24427f4a27c039637c`.
+Evidence is under `build/port-world-collisions/native-production`.
+
 ## Reproduction and next gates
 
 Source `build/baseline/env.sh`, then use `tools/porting/run_batch.py` with
@@ -103,9 +146,7 @@ both the tests and manifest. Baseline evidence is under
 `build/port-world-collisions/c-*`; the production reuse audit is
 `c-production-reuse-audit.json`. Raw diagnostics stay ignored.
 
-Next: translate the connected block, retire only the unused mass-exchange C
-interface, preserve the other callback/caller interfaces, then run the broadened
-consumer suites and production integration. Expected affected scope is 444 roots /
-40,751 leaf cases and 126 groups / 42,128 records; verify counts from the actual
-qualification logs. Update C LOC and commit/push the qualified conversion.
-The one-shot freeze script is consumed. Installed exit fixture drafts are stale.
+The native phases are `native-default`, `native-server`, `native-highres` and
+`production`, each with a fresh output directory. The conversion is complete;
+next candidate is quest runtime/statistics and difficulty scaling. The one-shot
+freeze script is consumed; installed exit fixture drafts are stale.

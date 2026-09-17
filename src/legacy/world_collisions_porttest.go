@@ -34,7 +34,7 @@ func PortTestWorldCollision(op int, a, b *server.Object, normal *types.Pointf) u
 	var rv uint32
 	switch op {
 	case 0:
-		C.sub_4E86E0(ai, (*C.float)(unsafe.Pointer(b)))
+		worldCollideMass(a, b)
 	case 1:
 		C.nox_xxx_collideDoor_4E8AC0(ai, bi)
 	case 2:

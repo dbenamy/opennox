@@ -116,7 +116,6 @@ int sub_4E8390(int a1);
 unsigned char* nox_xxx_collideMonsterEventProc_4E83B0(int a1, int a2);
 unsigned char* nox_xxx_collideMimic_4E83D0(int a1, int a2);
 void nox_xxx_collidePlayer_4E8460(int a1, int a2);
-void sub_4E86E0(int a1, float* a2);
 void nox_xxx_collideProjectileGeneric_4E87B0(int a1, int a2);
 void nox_xxx_collideProjectileSpark_4E8880(int a1, int a2);
 nox_object_t* nox_xxx_doorGetSomeKey_4E8910(nox_object_t* a1, nox_object_t* a2);

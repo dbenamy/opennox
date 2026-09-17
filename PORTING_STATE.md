@@ -2,41 +2,44 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 55k lines** — **54,962 physical lines in 82 production
-`.c` files**, zero reference C. Latest qualified conversion removes **622 lines**
-from its corrected C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 54k lines** — **53,946 physical lines in 82 production
+`.c` files**, zero reference C. Latest qualified conversion removes **1,016 lines**.
+See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — world-collision C baseline qualified
+## Current — world-collision conversion qualified
 
-Latest qualified conversion **fec78429** is committed/pushed. Its native reliable
-queue passes 416 affected roots / 30,236 leaves, all 98 groups / 31,587 records,
-production builds/ABI, exact known full-suite failures, gameplay, actual save/load
-and flat rendering with exact map regeneration. See RELIABLE_REPORTS.md.
+C baseline **b22b3f1a** is committed/pushed. Its complete 1,016-line block / 21
+functions is replaced with six Go production files. Twenty C entry points remain
+for live callers/callbacks; the mass-exchange interface is retired and the Go
+charge caller invokes Go directly. All frozen expectations are unchanged.
 
-The next connected block is **21 live functions / 1,016 physical C lines** in
-GAME3_3.c, 004E86E0 through 004EBF40, ending before 004EC520. It includes obsolete
-commented projectile code. Every entry has live callers or callback registration.
-Its original-C contracts are frozen: default/server/highres and independent repeat
-each pass **28 roots / 10,515 leaves**, no skips, **28 groups / 10,541 records**.
-All four gates have identical **2,013 source fingerprints**. All 1,991 preceding
-sources are unchanged; the 22 additions are porttest-only. Production evidence
-from the previous conversion is reused with an explicit identity audit. No C
-correction was needed. See docs/porting/WORLD_COLLISIONS.md and
-build/port-world-collisions/c-production-reuse-audit.json.
+Default/server/highres pass **444 roots / 40,751 unique leaves**, no skips,
+**126 groups / 42,128 records**, in 219.61s / 321.76s / 261.40s. All share 2,019
+source fingerprints with the fresh production run. All three production builds
+and ABI audits pass; full-suite failures match exactly (1,553 entries, 3 packages).
+Gameplay41 / save-load7 / flat14 frames pass, including exact loaded-map
+regeneration. Evidence: build/port-world-collisions/native-* and
+[WORLD_COLLISIONS.md](docs/porting/WORLD_COLLISIONS.md).
 
-Next: commit/push this baseline, translate all 21 functions, retire the mass helper
-C interface and retain the other 20 for callbacks/callers. No native draft is
-installed. Then run native-default/server/highres (expected 444 roots / 40,751
-leaves, 126 groups / 42,128 records), fresh production qualification, docs/C LOC,
-commit/push, and continue. Use docs/porting/world-collisions-batch.json.
+Mass exchange initially differed in 22 frozen records. Inspecting the qualified
+C instructions identified retained PC53 intermediates and a float32 coefficient
+spill; native Go now matches all original expectations. Other reviewed choices
+are in the batch report and DECISIONS.md. No reference C was added.
 
-No running test/build sessions. The freeze script and installed exit drafts are
-CONSUMED/STALE. Do not rerun old reliable-queue install/finalize scripts either.
-Preserve untracked nox-iso-from-archive-org.7z and original assets. Source
-build/baseline/env.sh for Go commands. Never edit source during builds. No user
-blocker. Native conversion has not begun; C remains 54,962 lines / 82 files.
+Next: commit/push this qualified conversion, then quest runtime/statistics and
+difficulty scaling. Read-only candidate audit/plan under build/port-quest-runtime:
+GAME3_2.c 004D6000..004D7B40 (656 lines/44 functions), GAME3_3.c
+004E3CA0..004E4100 (238 lines/12 functions), total894/56. The unrelated player-list
+file parser is excluded. No next-batch source has been installed yet. Establish
+and commit original-C contracts before translating; prior production reuse is
+available only while production sources are identical.
+
+All builds/tests are joined; no active sessions or user blocker. Preserve the
+untracked nox-iso-from-archive-org.7z and original assets. Source
+build/baseline/env.sh for Go commands; never edit source during builds.
+World freeze/install drafts are consumed; do not rerun stale generators.
 
 <!-- /current-checkpoint -->
 

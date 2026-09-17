@@ -73,7 +73,7 @@ func stateCharge(u, t *server.Object) {
 	if t != nil {
 		damage := floatToInt32(float32(C.nox_xxx_gamedataGetFloat_419D40(internCStr("BerserkerDamage"))))
 		if t.ObjClass&0x400000 == 0 {
-			C.sub_4E86E0(inventoryInt(u), (*C.float)(t.CObj()))
+			worldCollideMass(u, t)
 		}
 		projectileDamage(t, u.FindOwnerChainPlayer(), u, damage, 2)
 		if t.ObjClass&0x20006 != 0 {

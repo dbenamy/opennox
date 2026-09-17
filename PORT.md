@@ -15,22 +15,19 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. The reliable game-message queue is qualified: **622 physical C
-lines removed** from corrected baseline `f95e7aee`, leaving **54,962 lines in 82
-files**, with zero reference C (net 615 fewer than the preceding Go conversion).
+scheduled pause. World collisions and interactions are qualified: **1,016 physical
+C lines removed** from baseline `b22b3f1a`, leaving **53,946 lines in 82 files**,
+with zero reference C. Twenty-one functions now use Go implementations.
 
-Default/server/highres each pass **416 affected roots / 30,236 leaf cases** without
-skips; **31,587 frozen records / 98 groups** match. All production builds and ABI
+Default/server/highres each pass **444 affected roots / 40,751 leaf cases** without
+skips; **42,128 frozen records / 126 groups** match. All production builds and ABI
 audits pass, the full asset suite retains exactly its known failures, and headless
-gameplay, actual save/load and flat rendering pass with exact map regeneration.
+gameplay, actual save/load and flat rendering pass, including exact map regeneration.
 
-See [RELIABLE_REPORTS.md](docs/porting/RELIABLE_REPORTS.md) for evidence and the
-prerequisite pressure-cleanup crash fix. Next: the connected world-collision and
-interaction callbacks, approximately 1,016 physical C lines / 21 functions, using
-the existing object, player, inventory, script, audio and report owners.
-The world-collision C baseline is frozen and passes 28 roots / 10,515 leaf cases
-on all three targets plus an independent repeat. See
-[WORLD_COLLISIONS.md](docs/porting/WORLD_COLLISIONS.md).
+See [WORLD_COLLISIONS.md](docs/porting/WORLD_COLLISIONS.md) for evidence, the
+floating-point rounding finding and recorded compatibility limits. Next candidate:
+quest runtime/statistics and difficulty scaling, approximately 894 C lines / 56
+functions, reusing the existing player, collision, object and report owners.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint; confident reversible
 decisions remain recorded for review.
 
