@@ -834,55 +834,650 @@
           "env",
           "OPENNOX_DISPLAY_BINARY={out}/production/bin/opennox",
           "OPENNOX_UI_SCENARIO={root}/docs/porting/tile-raster-flat.yaml",
-          "OPENNOX_DISPLAY_IMPLEMENTATION=Creature serialization C baseline",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Monster and NPC serialization in Go",
           "OPENNOX_REQUIRE_MAP_DECOMPRESSION=1",
           "OPENNOX_COMPRESS_MAPS=[\"war01a/War01A.map\"]",
           "OPENNOX_MAP_COMPRESSOR={out}/map-compress",
           "python3",
           "{root}/tools/porting/run_scenario.py",
-          "creature-xfer-flat-c",
+          "creature-xfer-flat-native",
           "compare",
-          "{root}/build/baseline/runs/item-xfer-flat-native"
+          "{root}/build/baseline/runs/creature-xfer-flat-c"
+        ]
+      }
+    ],
+    "native-default": [
+      {
+        "name": "native-default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/creature-xfer-affected-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-creature-xfer-action-arguments.json",
+            "sha256": "f42e6c0ca02e3a05d6290f05d502f23c850e7d3208df22d1def7b8f70d1ae331"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-current.json",
+            "sha256": "4c7066f977ad9d5d1f4bf42a047829a9c650eac4308b02f252d38ce10924eab8"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-edges.json",
+            "sha256": "4181955561fc0d2075358604e903a1d7570ee3703608b4d96a72aecd2aa57af0"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-historical.json",
+            "sha256": "0a2fa616be097bbc8d8d9f492fa3a8389d181671e5af85fa8e7e2107895e366d"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-references.json",
+            "sha256": "bef27611f488889453daac9b85fd6f793cc968da9cd95121aa2f06b61a8c9d91"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-stack.json",
+            "sha256": "4649d58d02b79be244555bef4a4e51bf1b45add93f1ed7472eff6c27b71ade2c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-auto-spells.json",
+            "sha256": "d52054751fa0c381c9ddd5c3a4b8abd66ee08afef8cdbe95539d443ff4adf1f7"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-buff-application.json",
+            "sha256": "eeb10d0e71494c8986fdb7dc42724f964bafe728770ac7ab6f81fa242275e32c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-buff-writer.json",
+            "sha256": "491477ed873d75d72aa98fe30c46ad9d495d489b731fa77f67b5c056dbc4a205"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-current.json",
+            "sha256": "d3bce2e0e945a46f08e4539705d5e5b51acae4a21021998801fd6400bff4c89a"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-definition-defaults.json",
+            "sha256": "2694cdd92e3157113a7851b6462f234742057c5ddeaa4bf3166b3cf4587910e3"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-equipment-order.json",
+            "sha256": "fefcfa5d72da58b690c9ab091d64e7f24ce4199889a5153cc10334bc06a6b368"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-merchant.json",
+            "sha256": "d1820f99d8a6a53c84f9313b792a1dcf73eb4cc65c83ceecf2cc3a6bb743fb7e"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-monster-historical.json",
+            "sha256": "bc3e7e0d2dcdcd12343c119c15c109f47fc75df5c0ee00cc8abf553d4eaf92a5"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-npc-historical.json",
+            "sha256": "1a3494a6e4b9316aba48108cd601de0e9473ea5d3404517cafe1b37a7bf5baff"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-paths.json",
+            "sha256": "83ac69db2230cc65c5f5cef23c335266dff56079b6582e8b268f2a8f18f95b8c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-postload.json",
+            "sha256": "5996b0b2ba26681fc5621c10546d4d807fc487a5f1427517d7660de64139c1ad"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-spell-words.json",
+            "sha256": "cf46d2dbabd9249ac09dfe091e8e607ef94a841267269850a87bed89cc2c7826"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-timestamps.json",
+            "sha256": "5f3c1e03a96daf814ea8e85d2646a2fb09072184a8058895608dd29c0c83ee71"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-voices.json",
+            "sha256": "067a08d8ad5734f304babebc0d903d89e92b79524aaad2ceed37b6a8ba6061e0"
+          },
+          {
+            "path": "{out}/capture-item-xfer-default.json",
+            "sha256": "6869329949659b6782b5fa57cb0ba222c85193e356658ff23cf27d98ff97ef62"
+          },
+          {
+            "path": "{out}/capture-item-xfer-equipment-health.json",
+            "sha256": "af7f8e014742cec75751206eb64e9cfa484c9184927f8a436db1b7831116ce56"
+          },
+          {
+            "path": "{out}/capture-item-xfer-generator-partial.json",
+            "sha256": "d2dc20501579610e180c7d21ac00a89dab1b1cfeae99a50d7422926583a83716"
+          },
+          {
+            "path": "{out}/capture-item-xfer-generator-records.json",
+            "sha256": "4d0309d232cb1ce62afa7c862e480e1fe7afef1280e87e38da73bb76d5d395c0"
+          },
+          {
+            "path": "{out}/capture-item-xfer-historical.json",
+            "sha256": "90d388662199a78f8c07c566b185df5cccacfc88c99fb11117f0818899edd063"
+          },
+          {
+            "path": "{out}/capture-item-xfer-modifiers.json",
+            "sha256": "5dec507c6294b4c666c4f14a4a43a21b5a75e97471e7d97b8b0d05d256f35b83"
+          },
+          {
+            "path": "{out}/capture-item-xfer-name-boundaries.json",
+            "sha256": "eef3c2673164b967d3bcb50983f239c98fcc7145f1b673a530e0070fb0f4156e"
+          },
+          {
+            "path": "{out}/capture-item-xfer-obelisk-minimap.json",
+            "sha256": "682faf05e991e354997ef2f75194e6e9b62fe0ce0c3c9e05cb71d86d61a41d1c"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-failures.json",
+            "sha256": "ec77c9e1785dcf9d5d4ceb9b20c86fa3dcea89f3bb0907fd9deb27e1859494f2"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-masks.json",
+            "sha256": "db3294dda28c6f942b267731f0a320ccec573e3f3af4aadc93e6c893497b2ec4"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-merge.json",
+            "sha256": "181f8397e0143fdfe072e8a5f89cd3b83a9dbc7c99011bfcd6678e0e862f6c19"
+          },
+          {
+            "path": "{out}/capture-item-xfer-weapon-charges.json",
+            "sha256": "78ce522d53ec6949f2a27ff33e3a3fe7b1cad0a2041537b4db82dc63d39752d9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          }
+        ]
+      }
+    ],
+    "native-server": [
+      {
+        "name": "native-server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/creature-xfer-affected-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-creature-xfer-action-arguments.json",
+            "sha256": "f42e6c0ca02e3a05d6290f05d502f23c850e7d3208df22d1def7b8f70d1ae331"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-current.json",
+            "sha256": "4c7066f977ad9d5d1f4bf42a047829a9c650eac4308b02f252d38ce10924eab8"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-edges.json",
+            "sha256": "4181955561fc0d2075358604e903a1d7570ee3703608b4d96a72aecd2aa57af0"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-historical.json",
+            "sha256": "0a2fa616be097bbc8d8d9f492fa3a8389d181671e5af85fa8e7e2107895e366d"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-references.json",
+            "sha256": "bef27611f488889453daac9b85fd6f793cc968da9cd95121aa2f06b61a8c9d91"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-stack.json",
+            "sha256": "4649d58d02b79be244555bef4a4e51bf1b45add93f1ed7472eff6c27b71ade2c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-auto-spells.json",
+            "sha256": "d52054751fa0c381c9ddd5c3a4b8abd66ee08afef8cdbe95539d443ff4adf1f7"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-buff-application.json",
+            "sha256": "eeb10d0e71494c8986fdb7dc42724f964bafe728770ac7ab6f81fa242275e32c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-buff-writer.json",
+            "sha256": "491477ed873d75d72aa98fe30c46ad9d495d489b731fa77f67b5c056dbc4a205"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-current.json",
+            "sha256": "d3bce2e0e945a46f08e4539705d5e5b51acae4a21021998801fd6400bff4c89a"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-definition-defaults.json",
+            "sha256": "2694cdd92e3157113a7851b6462f234742057c5ddeaa4bf3166b3cf4587910e3"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-equipment-order.json",
+            "sha256": "fefcfa5d72da58b690c9ab091d64e7f24ce4199889a5153cc10334bc06a6b368"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-merchant.json",
+            "sha256": "d1820f99d8a6a53c84f9313b792a1dcf73eb4cc65c83ceecf2cc3a6bb743fb7e"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-monster-historical.json",
+            "sha256": "bc3e7e0d2dcdcd12343c119c15c109f47fc75df5c0ee00cc8abf553d4eaf92a5"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-npc-historical.json",
+            "sha256": "1a3494a6e4b9316aba48108cd601de0e9473ea5d3404517cafe1b37a7bf5baff"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-paths.json",
+            "sha256": "83ac69db2230cc65c5f5cef23c335266dff56079b6582e8b268f2a8f18f95b8c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-postload.json",
+            "sha256": "5996b0b2ba26681fc5621c10546d4d807fc487a5f1427517d7660de64139c1ad"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-spell-words.json",
+            "sha256": "cf46d2dbabd9249ac09dfe091e8e607ef94a841267269850a87bed89cc2c7826"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-timestamps.json",
+            "sha256": "5f3c1e03a96daf814ea8e85d2646a2fb09072184a8058895608dd29c0c83ee71"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-voices.json",
+            "sha256": "067a08d8ad5734f304babebc0d903d89e92b79524aaad2ceed37b6a8ba6061e0"
+          },
+          {
+            "path": "{out}/capture-item-xfer-default.json",
+            "sha256": "6869329949659b6782b5fa57cb0ba222c85193e356658ff23cf27d98ff97ef62"
+          },
+          {
+            "path": "{out}/capture-item-xfer-equipment-health.json",
+            "sha256": "af7f8e014742cec75751206eb64e9cfa484c9184927f8a436db1b7831116ce56"
+          },
+          {
+            "path": "{out}/capture-item-xfer-generator-partial.json",
+            "sha256": "d2dc20501579610e180c7d21ac00a89dab1b1cfeae99a50d7422926583a83716"
+          },
+          {
+            "path": "{out}/capture-item-xfer-generator-records.json",
+            "sha256": "4d0309d232cb1ce62afa7c862e480e1fe7afef1280e87e38da73bb76d5d395c0"
+          },
+          {
+            "path": "{out}/capture-item-xfer-historical.json",
+            "sha256": "90d388662199a78f8c07c566b185df5cccacfc88c99fb11117f0818899edd063"
+          },
+          {
+            "path": "{out}/capture-item-xfer-modifiers.json",
+            "sha256": "5dec507c6294b4c666c4f14a4a43a21b5a75e97471e7d97b8b0d05d256f35b83"
+          },
+          {
+            "path": "{out}/capture-item-xfer-name-boundaries.json",
+            "sha256": "eef3c2673164b967d3bcb50983f239c98fcc7145f1b673a530e0070fb0f4156e"
+          },
+          {
+            "path": "{out}/capture-item-xfer-obelisk-minimap.json",
+            "sha256": "682faf05e991e354997ef2f75194e6e9b62fe0ce0c3c9e05cb71d86d61a41d1c"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-failures.json",
+            "sha256": "ec77c9e1785dcf9d5d4ceb9b20c86fa3dcea89f3bb0907fd9deb27e1859494f2"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-masks.json",
+            "sha256": "db3294dda28c6f942b267731f0a320ccec573e3f3af4aadc93e6c893497b2ec4"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-merge.json",
+            "sha256": "181f8397e0143fdfe072e8a5f89cd3b83a9dbc7c99011bfcd6678e0e862f6c19"
+          },
+          {
+            "path": "{out}/capture-item-xfer-weapon-charges.json",
+            "sha256": "78ce522d53ec6949f2a27ff33e3a3fe7b1cad0a2041537b4db82dc63d39752d9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          }
+        ]
+      }
+    ],
+    "native-highres": [
+      {
+        "name": "native-highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/creature-xfer-affected-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/capture-creature-xfer-action-arguments.json",
+            "sha256": "f42e6c0ca02e3a05d6290f05d502f23c850e7d3208df22d1def7b8f70d1ae331"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-current.json",
+            "sha256": "4c7066f977ad9d5d1f4bf42a047829a9c650eac4308b02f252d38ce10924eab8"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-edges.json",
+            "sha256": "4181955561fc0d2075358604e903a1d7570ee3703608b4d96a72aecd2aa57af0"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-historical.json",
+            "sha256": "0a2fa616be097bbc8d8d9f492fa3a8389d181671e5af85fa8e7e2107895e366d"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-references.json",
+            "sha256": "bef27611f488889453daac9b85fd6f793cc968da9cd95121aa2f06b61a8c9d91"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-action-stack.json",
+            "sha256": "4649d58d02b79be244555bef4a4e51bf1b45add93f1ed7472eff6c27b71ade2c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-auto-spells.json",
+            "sha256": "d52054751fa0c381c9ddd5c3a4b8abd66ee08afef8cdbe95539d443ff4adf1f7"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-buff-application.json",
+            "sha256": "eeb10d0e71494c8986fdb7dc42724f964bafe728770ac7ab6f81fa242275e32c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-buff-writer.json",
+            "sha256": "491477ed873d75d72aa98fe30c46ad9d495d489b731fa77f67b5c056dbc4a205"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-current.json",
+            "sha256": "d3bce2e0e945a46f08e4539705d5e5b51acae4a21021998801fd6400bff4c89a"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-definition-defaults.json",
+            "sha256": "2694cdd92e3157113a7851b6462f234742057c5ddeaa4bf3166b3cf4587910e3"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-equipment-order.json",
+            "sha256": "fefcfa5d72da58b690c9ab091d64e7f24ce4199889a5153cc10334bc06a6b368"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-merchant.json",
+            "sha256": "d1820f99d8a6a53c84f9313b792a1dcf73eb4cc65c83ceecf2cc3a6bb743fb7e"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-monster-historical.json",
+            "sha256": "bc3e7e0d2dcdcd12343c119c15c109f47fc75df5c0ee00cc8abf553d4eaf92a5"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-npc-historical.json",
+            "sha256": "1a3494a6e4b9316aba48108cd601de0e9473ea5d3404517cafe1b37a7bf5baff"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-paths.json",
+            "sha256": "83ac69db2230cc65c5f5cef23c335266dff56079b6582e8b268f2a8f18f95b8c"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-postload.json",
+            "sha256": "5996b0b2ba26681fc5621c10546d4d807fc487a5f1427517d7660de64139c1ad"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-spell-words.json",
+            "sha256": "cf46d2dbabd9249ac09dfe091e8e607ef94a841267269850a87bed89cc2c7826"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-timestamps.json",
+            "sha256": "5f3c1e03a96daf814ea8e85d2646a2fb09072184a8058895608dd29c0c83ee71"
+          },
+          {
+            "path": "{out}/capture-creature-xfer-voices.json",
+            "sha256": "067a08d8ad5734f304babebc0d903d89e92b79524aaad2ceed37b6a8ba6061e0"
+          },
+          {
+            "path": "{out}/capture-item-xfer-default.json",
+            "sha256": "6869329949659b6782b5fa57cb0ba222c85193e356658ff23cf27d98ff97ef62"
+          },
+          {
+            "path": "{out}/capture-item-xfer-equipment-health.json",
+            "sha256": "af7f8e014742cec75751206eb64e9cfa484c9184927f8a436db1b7831116ce56"
+          },
+          {
+            "path": "{out}/capture-item-xfer-generator-partial.json",
+            "sha256": "d2dc20501579610e180c7d21ac00a89dab1b1cfeae99a50d7422926583a83716"
+          },
+          {
+            "path": "{out}/capture-item-xfer-generator-records.json",
+            "sha256": "4d0309d232cb1ce62afa7c862e480e1fe7afef1280e87e38da73bb76d5d395c0"
+          },
+          {
+            "path": "{out}/capture-item-xfer-historical.json",
+            "sha256": "90d388662199a78f8c07c566b185df5cccacfc88c99fb11117f0818899edd063"
+          },
+          {
+            "path": "{out}/capture-item-xfer-modifiers.json",
+            "sha256": "5dec507c6294b4c666c4f14a4a43a21b5a75e97471e7d97b8b0d05d256f35b83"
+          },
+          {
+            "path": "{out}/capture-item-xfer-name-boundaries.json",
+            "sha256": "eef3c2673164b967d3bcb50983f239c98fcc7145f1b673a530e0070fb0f4156e"
+          },
+          {
+            "path": "{out}/capture-item-xfer-obelisk-minimap.json",
+            "sha256": "682faf05e991e354997ef2f75194e6e9b62fe0ce0c3c9e05cb71d86d61a41d1c"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-failures.json",
+            "sha256": "ec77c9e1785dcf9d5d4ceb9b20c86fa3dcea89f3bb0907fd9deb27e1859494f2"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-masks.json",
+            "sha256": "db3294dda28c6f942b267731f0a320ccec573e3f3af4aadc93e6c893497b2ec4"
+          },
+          {
+            "path": "{out}/capture-item-xfer-reward-merge.json",
+            "sha256": "181f8397e0143fdfe072e8a5f89cd3b83a9dbc7c99011bfcd6678e0e862f6c19"
+          },
+          {
+            "path": "{out}/capture-item-xfer-weapon-charges.json",
+            "sha256": "78ce522d53ec6949f2a27ff33e3a3fe7b1cad0a2041537b4db82dc63d39752d9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-read.json",
+            "sha256": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7"
+          },
+          {
+            "path": "{out}/capture-object-xfer-common-write.json",
+            "sha256": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-door-geometry.json",
+            "sha256": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee"
+          },
+          {
+            "path": "{out}/capture-object-xfer-glyph-spells.json",
+            "sha256": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629"
+          },
+          {
+            "path": "{out}/capture-object-xfer-historical.json",
+            "sha256": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-read.json",
+            "sha256": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae"
+          },
+          {
+            "path": "{out}/capture-object-xfer-light-write.json",
+            "sha256": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40"
+          },
+          {
+            "path": "{out}/capture-object-xfer-linked-payloads.json",
+            "sha256": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1"
+          },
+          {
+            "path": "{out}/capture-object-xfer-names.json",
+            "sha256": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce"
+          },
+          {
+            "path": "{out}/capture-object-xfer-owned-write.json",
+            "sha256": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925"
+          },
+          {
+            "path": "{out}/capture-object-xfer-trigger-dimensions.json",
+            "sha256": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba"
+          },
+          {
+            "path": "{out}/capture-object-xfer-typed-default.json",
+            "sha256": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3"
+          }
         ]
       }
     ]
   },
   "production": {
-    "description": "Creature serialization C baseline",
+    "description": "Monster and NPC serialization in Go",
     "assets": "build/assets/extracted/drive_c/Nox",
     "known_suite": "build/port-rule-command/full-suite.jsonl",
     "scenario_runner": "tools/porting/run_scenario.py",
-    "retained": [],
-    "retired": [],
-    "scenarios": [
-      {
-        "name": "creature-xfer-c",
-        "reference": "build/baseline/runs/item-xfer-native",
-        "scenario": "docs/porting/options-panels.yaml",
-        "env": {
-          "NOX_DEV": "true"
-        }
-      },
-      {
-        "name": "creature-xfer-save-c",
-        "reference": "build/baseline/runs/item-xfer-save-native",
-        "scenario": "docs/porting/object-xfer-save-load.yaml",
-        "env": {
-          "OPENNOX_REQUIRE_SAVE_LOAD": "1"
-        }
-      }
-    ],
-    "retained_c": [
+    "retained": [
       "nox_xxx_XFerMonster_528DB0",
+      "nox_xxx_XFerNPC_52ADE0",
+      "sub_52BAF0"
+    ],
+    "retired": [
       "nox_xxx_monsterOnSpawnSpellcaster_529BC0",
       "nox_xxx_XFer_ActionData_529CE0",
       "nox_xxx_AssignIfGreater_52A420",
       "sub_52A440",
       "nox_xxx_XFer_ReadMonsterBuffs_52AAB0",
       "nox_xxx_readNPCVoiceSet_52AD10",
-      "nox_xxx_XFerNPC_52ADE0",
-      "sub_52BA70",
-      "sub_52BAF0"
-    ]
+      "sub_52BA70"
+    ],
+    "scenarios": [
+      {
+        "name": "creature-xfer-native",
+        "reference": "build/baseline/runs/creature-xfer-c",
+        "scenario": "docs/porting/options-panels.yaml",
+        "env": {
+          "NOX_DEV": "true"
+        }
+      },
+      {
+        "name": "creature-xfer-save-native",
+        "reference": "build/baseline/runs/creature-xfer-save-c",
+        "scenario": "docs/porting/object-xfer-save-load.yaml",
+        "env": {
+          "OPENNOX_REQUIRE_SAVE_LOAD": "1"
+        }
+      }
+    ],
+    "retained_c": []
   }
 }

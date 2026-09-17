@@ -15,28 +15,26 @@ import (
 )
 
 func PortTestCreatureXferAdjust(value, delta uint32) (uint32, uint32) {
-	v := C.int(value)
-	ret := C.nox_xxx_AssignIfGreater_52A420(&v, C.int(delta))
-	return uint32(v), uint32(ret)
+	ret := creatureXferAdjust(&value, delta)
+	return value, ret
 }
 func PortTestCreatureXferHelper(op int, u *server.Object, entry unsafe.Pointer, delta uint32) uint32 {
-	addr := C.int(uintptr(u.CObj()))
 	switch op {
 	case 0:
-		return uint32(C.nox_xxx_XFer_ActionData_529CE0(addr))
+		return uint32(creatureXferAction(u))
 	case 1:
-		return uint32(C.sub_52A440(addr, C.int(uintptr(entry)), C.int(delta)))
+		return creatureXferArgument(entry, delta)
 	case 2:
-		return uint32(C.nox_xxx_XFer_ReadMonsterBuffs_52AAB0((*C.uint32_t)(u.CObj())))
+		return uint32(creatureXferBuffs(u))
 	case 3:
-		return uint32(C.nox_xxx_readNPCVoiceSet_52AD10(addr))
+		return creatureXferVoice(u)
 	case 4:
-		C.nox_xxx_monsterOnSpawnSpellcaster_529BC0(addr)
+		creatureXferDefaults(u)
 		return 0
 	case 5:
-		return uint32(C.sub_52BA70(addr))
+		return uint32(creatureXferEquipment(u))
 	case 6:
-		return uint32(C.sub_52BAF0(addr))
+		return creatureXferPostload(u)
 	default:
 		panic("unknown creature xfer helper")
 	}

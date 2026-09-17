@@ -2,43 +2,39 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 59k lines** — **58,539 physical lines in 82 production
-`.c` files**, zero reference C. Latest qualified conversion removes **1,065 lines**
-across twelve item/reward callbacks. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 57k lines** — **56,968 physical lines in 82 production
+`.c` files**, zero reference C. Latest qualified conversion removes **1,571 lines**
+across ten creature serialization functions, including one trailing separator.
+See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — creature C baseline qualified; translation next
+## Current — creature conversion qualified; next batch audit ready
 
-Item/reward conversion **a7814f6e** is committed/pushed and qualified. Creature
-helper recovery checkpoint **48c0ba80** is also pushed; subsequent callback fixtures
-and frozen expectations are uncommitted. No creature production code has changed.
+Frozen C baseline **194434ff** is committed/pushed. The native creature conversion
+is qualified and ready to commit/push. It removes ten C functions, retains three
+exports and retires seven private bridges; six Go files contain the implementation.
+No reference C remains. Current count: **56,968 / 82 files**.
 
-Current batch: GAME4_2.c from 00528DB0 through EOF, **1,570 C lines / ten functions**.
-Retain Monster/NPC callbacks and sub_52BAF0; seven helpers can become private Go.
-Current C remains **58,539 / 82 production files / zero reference C**.
+Default/server/highres each pass **309 roots / 6,645 leaf cases**, no skips. All
+**4,908 records / 44 groups** match unchanged expectations. Production builds and
+export audits pass; the suite matches exactly 1,553 known failures (15 packages
+pass / three fail / 32 skip). Gameplay matches 41 frames, actual save/reload seven,
+flat rendering fourteen plus exact map regeneration. Static checks pass. All gates
+share **1,941 unchanged source-file fingerprints**.
 
-Before freezing, default/server/highres and a separate repeat each passed **61 roots /
-5,108 leaf cases** without skips. All **4,908 records / 44 groups** matched across
-processes/targets: **1,977 creature records / twenty groups** plus 2,931 qualified
-item/common records / 24 groups. Those hashes are now installed in fixtures and
-creature-xfer-batch.json; final frozen baseline gates all pass. See
-[CREATURE_XFER.md](docs/porting/CREATURE_XFER.md) for owners, contracts and decisions.
+Artifacts: build/port-creature-xfer/native-{default,server,highres,production}.
+[CREATURE_XFER.md](docs/porting/CREATURE_XFER.md) records compatibility decisions.
 
-All three production builds/ABI pass. The full suite matches exactly 1,553 known
-failure entries (15 pass / three fail / 32 skip). Gameplay matches 41 frames,
-actual save/reload seven, flat rendering fourteen plus exact map regeneration.
-Final artifacts: build/port-creature-xfer/c-{default,server,highres,repeat} and
-c-production-final. All source fingerprints stayed unchanged.
+Next: commit/push this conversion, then begin visibility/effect reports in
+GAME4_2.c from 00522FF0 through EOF: **849 C lines / thirty functions**. Candidate
+and caller audit plus owner/test notes are under build/port-visibility-effects.
+Eight helpers have no external nonheader callers; move them with their callers.
+No next-batch source/fixture changes exist yet. No substantial blocker.
 
-Next: commit/push this frozen baseline, then translate and qualify against unchanged
-expectations. Private helper drafts under build/port-creature-xfer/native-*.go are
-uninstalled/unqualified. No substantial blocker.
-
-Preserve untracked nox-iso-from-archive-org.7z and original assets. Completed-run
-asset duplicates have verified restoration manifests. Source build/baseline/env.sh
-for every Go command. Do not edit Go/C/headers while tests/builds are running.
-Ignored fixture drafts already installed are consumed; do not reinstall them.
+Preserve untracked nox-iso-from-archive-org.7z and original assets. Source
+build/baseline/env.sh for Go commands. Do not edit Go/C/headers during tests/builds.
+Ignored native drafts are consumed; do not reinstall them over reviewed source.
 
 <!-- /current-checkpoint -->
 

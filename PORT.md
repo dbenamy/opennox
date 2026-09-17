@@ -15,22 +15,20 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Item and reward serialization is qualified: **1,065 C lines /
-twelve callbacks removed**, leaving **58,539 physical C lines in 82 files**, with
-zero reference C.
+scheduled pause. Monster/NPC serialization is qualified: **1,571 physical C lines
+removed**, leaving **56,968 lines in 82 files**, with zero reference C.
 
-All **2,931 frozen records / 24 groups** match. Default/server/highres each pass
-**178 affected roots / 3,294 leaf cases**, without skips. All three production
-builds and ABI audits pass; the full asset suite retains exactly its known failures.
-Gameplay matches **41 frames**, actual save/load **seven frames**, and flat rendering
+All **4,908 frozen records / 44 groups** match. Default/server/highres each pass
+**309 affected roots / 6,645 leaf cases**, without skips. All production builds and
+export audits pass; the full asset suite retains exactly its known failures.
+Gameplay matches **41 frames**, actual save/load **seven**, and flat rendering
 **14 frames** with exact map regeneration.
 
-See [ITEM_XFER.md](docs/porting/ITEM_XFER.md) for evidence and review notes, including
-historical reward-mask behavior and the fixture-only refactoring-tool adjustment.
-The connected monster/NPC serialization block now has a qualified frozen C baseline,
-reusing these qualified owners and stream fixtures. See
-[CREATURE_XFER.md](docs/porting/CREATURE_XFER.md) for current coverage and open gates. [PORTING_STATE.md](PORTING_STATE.md)
-is the resume checkpoint; confident reversible decisions remain recorded for review.
+See [CREATURE_XFER.md](docs/porting/CREATURE_XFER.md) for evidence and review notes,
+including historical timestamp/reserved-word behavior and glyph prefix copying.
+Next: visibility and effect reports, reusing these qualified owners.
+[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint; confident reversible
+decisions remain recorded for review.
 
 ## Goal and target
 
@@ -69,8 +67,9 @@ may precede full qualification when their evidence and remaining gates are expli
    Before launching long milestone gates, review arithmetic widths, signedness,
    pointer construction and callback behavior against C. Matching captured cases
    does not replace that review; add C contracts for newly identified boundaries.
-   Check new export signatures against every existing header declaration before
-   the first compile; CGO declaration errors can otherwise waste a full C rebuild.
+   Before the first compile, format new files, check the whitespace diff, and compare
+   new export signatures with every existing header declaration. A small late source
+   fix can invalidate the whole cgo package build and repeat the remaining C compile.
    Trace the existing C adapter when choosing a Go API: similar names can hide
    differences in coordinate space, return conventions or ownership.
 5. Run the completed-batch qualification below, review the diff and measure C LOC.

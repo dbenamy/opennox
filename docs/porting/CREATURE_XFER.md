@@ -2,20 +2,26 @@
 
 ## Current status
 
-The C baseline is frozen and qualified; translation is next.
-No creature production implementation has changed. Current C remains **58,539
-physical lines / 82 production files / zero reference C**. Recovery checkpoint
-**48c0ba80** is committed and pushed. Item/reward conversion **a7814f6e** remains
-the latest qualified conversion.
+The conversion is qualified: **1,571 physical C lines removed**, leaving **56,968
+lines / 82 production files / zero reference C**. The implementation block was
+1,570 lines; one trailing separator was also removed. Six Go files (918 lines)
+replace ten C functions. Three C exports remain; seven helpers are private Go.
 
-Before freezing, default/server/highres and a separate default process each passed
-**61 roots / 5,108 leaf cases**, without skips. All **4,908 records / 44 groups**
-matched byte for byte: **1,977 creature records / twenty groups**, plus the qualified
-2,931 item/common records / 24 groups. Frozen checks also pass on all targets and the separate repeat. All three
-production builds pass the C-symbol audit. The full asset suite matches its exact
-known 1,553 failure entries (15 packages pass / three fail / 32 skip). Gameplay
-matches 41 frames, actual save/reload seven, and flat rendering fourteen with exact
-map regeneration. All phase source fingerprints stayed unchanged.
+Default/server/highres each pass **309 affected roots / 6,645 leaf cases**, without
+skips. All **4,908 frozen records / 44 groups** match: **1,977 creature records /
+twenty groups** plus 2,931 item/common records / 24 groups. All three production
+builds/export audits pass. The full asset suite retains exactly 1,553 known failure
+entries (15 packages pass / three fail / 32 skip). Gameplay matches **41 frames**,
+actual save/reload **seven**, and flat rendering **fourteen**, with exact map
+regeneration. Static memory-map checks pass.
+
+Baseline **194434ff** and earlier recovery checkpoint **48c0ba80** were committed
+and pushed before installing the conversion. Final native artifacts:
+build/port-creature-xfer/native-{default,server,highres,production}.
+All phases kept the same **1,941 source-file fingerprints**. Source audit confirms
+no remaining references to retired helpers and an unchanged preceding C prefix,
+except the removed EOF separator. Frozen expectations were never regenerated during
+translation.
 
 ## Scope and retained interfaces
 
@@ -116,7 +122,7 @@ wrong stream return assumption, uninitialized fixture file-handle registry, wron
 waypoint field name, and an assumed no-argument idle action (shipped idle uses a
 timestamp). Each was corrected before freezing, with existing engine code unchanged.
 
-## Evidence and remaining gates
+## Baseline evidence
 
 Pre-freeze all-target/repeat artifacts:
 build/port-creature-xfer/c-{default,server,highres,repeat}-development.
@@ -125,10 +131,8 @@ The batch manifest records commands, hashes and whole-source fingerprints.
 Development logs remain under build/port-creature-xfer; 48c0ba80's helper recovery
 checks passed 1,734 cases and repeated 1,707 records before callback expansion.
 
-Next: commit/push this baseline, then translate the
-connected block, review widths/ownership/exports and qualify against these unchanged
-expectations plus the complete affected suite and production gates. Matching samples
-never replaces the direct C/Go review.
+Baseline qualification preceded translation; the native gates below reuse those
+unchanged expectations. Matching samples never replaces the direct C/Go review.
 
 Disk recovery removed only hash-verified duplicate original assets from completed
 runs, preserving logs/screenshots and restoration manifests. Original assets and
@@ -142,6 +146,29 @@ The first production manifest mistakenly requested Go-backed exports for the sti
 callbacks. The existing retained_c option corrected that configuration; no source
 or expectation changed. The final production run passes all gates.
 
-Private Go helper drafts are under build/port-creature-xfer/native-*.go. They are
-uninstalled and unqualified; review/complete them before use. No C count reduction
-is claimed by this baseline commit.
+The baseline commit claimed no C reduction; native qualification is recorded below.
+
+## Native qualification and final review
+
+The first native run passed all 23 creature roots / 2,004 leaf cases. Final affected
+selection adds actual AI, inventory, equipment, resource and spell consumers to the
+qualified item/common selection. All 309 roots pass on every target. Timings:
+default 238.4 s, server 256.3 s, highres 320.8 s, production 365.3 s. These include
+C/Go rebuilding and VM integration; they are not game-performance measurements.
+
+The C/Go review checked signed versions/timestamps, raw stream call boundaries,
+header declarations, direct calls into already-Go owners and saved-lifetime handling.
+A further compatibility note for later review: the glyph fallback copies the first
+N source spell slots, where N is the number of nonzero slots, rather than compacting
+gaps. The translation preserves that existing prefix-copy behavior.
+
+Final client SHA-256:
+77b00a0ab72453804f0d1190c31ca79bd36fad10b7625c6bc9913110999534be.
+No production correction or new known failure was needed. The now-trailing C
+separator was removed before final gates; PORT.md now puts formatting/whitespace
+review before the first compile to avoid repeating a whole cgo package rebuild.
+
+Installed native drafts under build/ are consumed and must not be reinstalled over
+reviewed source. Next candidate audit: visibility/effect reports, GAME4_2.c from
+00522FF0 through EOF (849 C lines / thirty functions), reusing the affected owners.
+That next batch has no source or fixture changes yet.
