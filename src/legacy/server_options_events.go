@@ -120,7 +120,7 @@ func serverOptionsEvent(_ *gui.Window, event int, arg uintptr, value int) int {
 		case 10149:
 			serverOptionsClose(0)
 		case 10152:
-			C.nox_xxx_loadAdvancedWnd_4BDC10((*C.int)(unsafe.Pointer(C.nox_xxx_cliGamedataGet_416590(1))))
+			serverPanelsAdvancedOpen(unsafe.Pointer(C.nox_xxx_cliGamedataGet_416590(1)))
 		case 10159:
 			parent := child.Parent()
 			child.SetParent(nil)
@@ -148,11 +148,11 @@ func serverOptionsEvent(_ *gui.Window, event int, arg uintptr, value int) int {
 				serverOptionsPlayersPanel = 0
 			}
 			if serverOptionsAccessPanel != 0 {
-				C.sub_4557D0(1)
+				serverPanelsAccessClose(true)
 				serverOptionsAccessPanel = 0
 			}
 			if serverOptionsAdvancedControl != 0 {
-				C.sub_4AD820()
+				serverPanelsGeneralClose()
 				serverOptionsGeneralPanel = 0
 			}
 			serverOptionsHideRange(root, 10161, 10163, true)

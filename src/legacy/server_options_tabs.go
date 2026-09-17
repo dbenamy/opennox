@@ -51,20 +51,20 @@ func serverOptionsTab(tab int) int {
 			serverOptionsPlayersPanel = 0
 		}
 		if serverOptionsGeneralPanel != 0 {
-			C.sub_4AD820()
+			serverPanelsGeneralClose()
 			serverOptionsGeneralPanel = 0
 		}
-		serverOptionsAccessPanel = uint32(C.nox_xxx_guiServerAccessLoad_4541D0(C.int(serverOptionsRoot)))
+		serverOptionsAccessPanel = uint32(serverPanelsAccessOpen(serverOptionsWindow(1046492)))
 		return serverOptionsTabOrder(10161)
 	case 2:
 		setRaw(general, serverOptionsTabs3, false)
 		setRaw(access, serverOptionsTabs3, !noxflags.HasGame(1))
 		if serverOptionsAccessPanel != 0 {
-			C.sub_4557D0(1)
+			serverPanelsAccessClose(true)
 			serverOptionsAccessPanel = 0
 		}
 		if serverOptionsGeneralPanel != 0 {
-			C.sub_4AD820()
+			serverPanelsGeneralClose()
 			serverOptionsGeneralPanel = 0
 		}
 		serverOptionsPlayersPanel = uint32(teamUIPlayersConstruct(serverOptionsWindow(1046492)))
@@ -76,10 +76,10 @@ func serverOptionsTab(tab int) int {
 			teamUIPlayersDestroy(true)
 			serverOptionsPlayersPanel = 0
 		} else if serverOptionsAccessPanel != 0 {
-			C.sub_4557D0(1)
+			serverPanelsAccessClose(true)
 			serverOptionsAccessPanel = 0
 		}
-		serverOptionsGeneralPanel = uint32(C.nox_xxx_gui_4AD320(C.int(serverOptionsRoot)))
+		serverOptionsGeneralPanel = uint32(serverPanelsGeneralOpen(serverOptionsWindow(1046492)))
 		return serverOptionsTabOrder(10163)
 	default:
 		return tab - 2

@@ -3,8 +3,10 @@
 ## Scope and status
 
 Corrected C baseline qualification passes. Parent **f5737e6a** is the
-qualified/pushed server-options conversion. No panel translation is installed yet.
-Current production C: **48,755 physical lines / 79 files / zero reference C**.
+qualified/pushed server-options conversion. Corrected C baseline **c2bd3a34** is
+committed/pushed. Native conversion is qualified.
+Current production C: **46,391 physical lines / 74 files / zero reference C**
+(**−2,364** from the corrected baseline).
 
 The batch contains **57 live functions / 2,098 corrected C body lines**, plus
 one **37-line orphan** to remove. It covers the remaining five servopts translation
@@ -121,3 +123,38 @@ Local evidence is under `build/port-server-panels/`. Freeze and installed fixtur
 scripts are consumed: do not recopy stale drafts or regenerate hashes to conceal a
 difference. Commit/push the qualified C baseline before installing native Go, then
 qualify, document C LOC, commit/push the conversion and continue.
+
+## Native conversion
+
+All 57 live functions now use Go. Five servopts C units and the 37-line orphan are
+removed; nine thin C exports serve remaining C callers, while all Go callers and
+fixtures call Go directly. Forty-nine function interfaces and 26 private C globals
+are retired. Advanced refresh uses a native callback table; its two obsolete blob
+callback registrations are gone. No C algorithm is retained solely for tests.
+
+Review preserved exact UTF-16 row comparison (including code-unit identity),
+change-only admission button enabling, checkbox layout's direct Y-offset writes,
+and the advanced window's original nil-root lookup position. The numeric parser,
+name-list owner and rule picker remain existing dependencies outside this batch.
+All 22 focused tests pass in 3.142s with unchanged expectations; static mapped-memory
+preflight passes in 0.378s. Broader selection extends the preceding native batch
+with the server-panel corpus; see [server-panels-tests.txt](server-panels-tests.txt)
+and [server-panels-batch.json](server-panels-batch.json).
+
+Broader native default/server/highres checks pass: **509 / 508 / 509 roots**,
+**58,212 / 58,211 / 58,212 leaves**, no skips. All **215 captures / 74,168 records**
+match across targets, the corrected C baseline and preceding native server-options
+corpus. Durations: **186.42 / 297.11 / 228.63s**. All sessions joined.
+
+Fresh native production qualification passes in **374.28s**: three binaries and
+ABI/interface audits, exact known full-suite failures (1,553 entries; 15 pass /
+3 fail / 32 no-test), headless options gameplay, save/load, and forced flat-map
+regeneration. All four native gates use one unchanged **2,148-file source manifest**.
+Client SHA-256:
+`81fdbc91cebc252b4ef2e87a5edac4462707163affa62f750f8ecc40685a3527`.
+Evidence: `build/port-server-panels/native-{default,server,highres,production}`,
+`native-audit.json` and `interface-audit.json`. Whitespace and static checks pass;
+all qualification processes are joined. Frozen expectations were not changed.
+
+The draft/install scripts are consumed. Production C falls from the corrected
+baseline's 48,755 / 79 files to **46,391 / 74 files (−2,364)**, with zero reference C.

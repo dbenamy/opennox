@@ -25,8 +25,6 @@ int nox_client_getServerPort_43B320();
 int sub_457140(int a1, wchar2_t* a2);
 int sub_43AF90(int a1);
 int sub_456DF0(int a1);
-void sub_455950(wchar2_t* a1);
-int sub_455920(wchar2_t* a1);
 int sub_43C650();
 void* sub_49BB80(char a1);
 int* nox_xxx_guiServerOptionsHide_4597E0(int a1);
@@ -234,13 +232,13 @@ func Sub_457140(a1 int, a2 *uint16) {
 	teamUIPlayerAdd(a1, alloc.GoString16(a2))
 }
 func Sub_455920(a1 *uint16) {
-	C.sub_455920((*C.ushort)(unsafe.Pointer(a1)))
+	serverPanelsPlayerAdd(a1)
 }
 func Sub_456DF0(a1 int) {
 	teamUIPlayerRemove(a1)
 }
 func Sub_455950(a1 *uint16) {
-	C.sub_455950((*C.ushort)(unsafe.Pointer(a1)))
+	serverPanelsPlayerRemove(a1)
 }
 func Nox_xxx_netChangeTeamMb_419570(a1 *server.ObjectTeam, a2 uint32) {
 	teamRuntimeLeave(a1, int(a2))

@@ -202,6 +202,8 @@ target build selection and linker evidence.
 | Team HUD/player-list UI, private globals and translation-unit cleanup | 80 | 50,177 | −1,048 | 0 |
 | Server-options missing-resource and panel ownership prerequisites | 80 | 50,181 | +4 | 0 |
 | Server-options UI, private globals, mode table and orphan cleanup | 79 | 48,740 | −1,441 | 0 |
+| Server-panel missing-resource prerequisites | 79 | 48,755 | +15 | 0 |
+| Server panels, private globals, callback table and orphan cleanup | 74 | 46,391 | −2,364 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
@@ -209,8 +211,7 @@ because the file still contains other functions. The 33 test-reference lines wer
 differential validation; they remain recoverable from Git at `66fa7bd4`.
 
 
-Server-panel corrected-C baseline prerequisites add **15 lines**, bringing the
-working baseline to **48,755 production lines in 79 files**, zero reference C.
-This is a pre-conversion correction, not a completed conversion-size checkpoint.
-See [SERVER_PANELS.md](SERVER_PANELS.md); record the next reduction after the Go
-conversion qualifies.
+Server-panel prerequisites added 15 lines before conversion. The qualified native
+conversion then removes **2,364 lines**, including five C translation units and
+one proven orphan. Current C: **46,391 lines / 74 files / zero reference C**.
+See [SERVER_PANELS.md](SERVER_PANELS.md).

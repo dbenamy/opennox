@@ -73,8 +73,6 @@ type Ptrs struct {
 	Ptr_nox_xxx_updDrawVortexSource_4CC950   unsafe.Pointer
 	Ptr_sub_4CA650                           unsafe.Pointer
 	Ptr_nox_xxx_updDrawMonsterGen_4BC920     unsafe.Pointer
-	Ptr_sub_454120                           unsafe.Pointer
-	Ptr_sub_453750                           unsafe.Pointer
 
 	Ptr_nox_xxx_strikeOgre_549220           unsafe.Pointer
 	Ptr_nox_xxx_strikeScorpion_5495B0       unsafe.Pointer

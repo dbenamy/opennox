@@ -77,18 +77,18 @@ func serverOptionsSettingsLabels(data []byte) int {
 	} else {
 		check.Field0 &^= 4
 	}
-	C.sub_453F70(unsafe.Pointer(&data[24]))
-	C.sub_4535E0((*C.int)(unsafe.Pointer(&data[44])))
-	return int(C.sub_4535F0(C.int(binary.LittleEndian.Uint32(data[48:]))))
+	serverPanelsSpellStore((*uint32)(unsafe.Pointer(&data[24])))
+	serverPanelsWeaponStore((*uint32)(unsafe.Pointer(&data[44])))
+	return int(serverPanelsArmorStore(binary.LittleEndian.Uint32(data[48:])))
 }
 func serverOptionsRead(data []byte) uintptr {
 	name := serverOptionsGetText(serverOptionsWindow(1046512), 16413, 0)
 	clear(data[9:24])
 	copy(data[9:24], name)
 	binary.LittleEndian.PutUint16(data[52:], uint16(serverOptionsSelectedMode()))
-	copy(data[24:44], unsafe.Slice((*byte)(unsafe.Pointer(C.sub_453F90())), 20))
-	copy(data[44:48], unsafe.Slice((*byte)(unsafe.Pointer(C.sub_453600())), 4))
-	binary.LittleEndian.PutUint32(data[48:], uint32(C.sub_453610()))
+	copy(data[24:44], unsafe.Slice((*byte)(unsafe.Pointer(serverPanelsSpellPointer())), 20))
+	copy(data[44:48], unsafe.Slice((*byte)(unsafe.Pointer(serverPanelsWeaponPointer())), 4))
+	binary.LittleEndian.PutUint32(data[48:], uint32(serverPanelsArmorLoad()))
 	for _, v := range []struct {
 		off uintptr
 		dst int
@@ -123,14 +123,14 @@ func serverOptionsMapToken(text string) string {
 }
 func serverOptionsRefresh() int {
 	data := serverOptionsRecord(unsafe.Pointer(C.nox_xxx_cliGamedataGet_416590(1)))
-	C.sub_453F70(unsafe.Pointer(&data[24]))
-	C.sub_4535E0((*C.int)(unsafe.Pointer(&data[44])))
-	C.sub_4535F0(C.int(binary.LittleEndian.Uint32(data[48:])))
+	serverPanelsSpellStore((*uint32)(unsafe.Pointer(&data[24])))
+	serverPanelsWeaponStore((*uint32)(unsafe.Pointer(&data[44])))
+	serverPanelsArmorStore(binary.LittleEndian.Uint32(data[48:]))
 	if serverOptionsRoot == 0 {
 		return 0
 	}
 	serverOptionsSettingsLabels(data)
-	C.sub_4BDF70((*C.int)(unsafe.Pointer(&data[0])))
+	serverPanelsAdvancedUpdate(unsafe.Pointer(&data[0]))
 	serverOptionsMapList(int(binary.LittleEndian.Uint16(data[52:])), alloc.GoString(&data[0]), false)
 	serverOptionsLimits(data)
 	return serverOptionsSetText(serverOptionsChild(10119), 16385, serverOptionsModeName(binary.LittleEndian.Uint16(data[52:])), 0)

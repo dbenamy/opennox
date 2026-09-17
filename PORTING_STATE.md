@@ -2,43 +2,47 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 49k lines** — **48,755 physical lines in 79 production
-`.c` files**, zero reference C. Latest conversion removed **1,441 lines**; current baseline prerequisites add 15.
+**Rough C remaining: about 46k lines** — **46,391 physical lines in 74 production
+`.c` files**, zero reference C. Latest qualified conversion removes **2,364 lines** from the corrected baseline.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — qualified server-panels C baseline; translate next
+## Current — qualified server-panel conversion
 
-Server-options conversion **f5737e6a is committed/pushed**. The new server-panel
-C baseline is qualified and ready for its checkpoint commit/push before translation.
-Scope: **57 live functions / 2,098 body lines**, plus one 37-line orphan to remove.
-C is **48,755 / 79 files / zero reference C** after five missing-resource guards.
-See [SERVER_PANELS.md](docs/porting/SERVER_PANELS.md) for contracts and review items.
+This checkpoint converts **57 live functions / 2,098 corrected C body lines**.
+Corrected C baseline **c2bd3a34** was committed/pushed before translation; parent
+server-options conversion is **f5737e6a**. All five remaining servopts C units,
+the 37-line orphan and 26 private C globals are removed. Nine thin C exports remain;
+49 function interfaces and two obsolete blob callback registrations are retired.
+Go callers/fixtures invoke Go directly. Advanced refresh callbacks are native;
+the shared online-mode flag remains. See [SERVER_PANELS.md](docs/porting/SERVER_PANELS.md).
 
-Default/server/highres each pass **168 roots / 12,914 leaves**, no skips, with
-**104 identical captures / 26,048 records**. The new panel corpus has **22 roots /
-22 frozen captures / 13,066 records**, plus exhaustive independent byte operations.
-Durations: **72.43 / 163.07 / 83.80s**. Fresh production passes in **391.28s**:
-three builds/ABI/interface checks, exact known 1,553 asset failures (15 pass /
-3 fail / 32 no-test), options gameplay, save/load and forced flat-map regeneration.
-All four gates share one unchanged **2,144-file source manifest**; all sessions
-joined. Static preflight passes. Client SHA:
-d9486bf2dc88515630d9b0b025b9c2f8d6ea4f2460c4a9a432d23968af4f8a71.
+All **22 focused roots** pass with unchanged expectations (3.142s); static memory
+preflight passes (0.378s). Broader default/server/highres pass **509/508/509 roots**,
+**58,212/58,211/58,212 leaves**, no skips. **215 identical captures / 74,168 records**
+match both corrected C and the preceding native corpus. Durations:
+**186.42/297.11/228.63s**. Fresh production passes in **374.28s**: three builds and
+ABI/interface checks, exact known 1,553 asset failures (15 pass / 3 fail / 32 no-test),
+options gameplay, save/load and forced flat-map regeneration. All four gates share
+one unchanged **2,148-file source manifest**; all sessions joined. Client SHA:
+81fdbc91cebc252b4ef2e87a5edac4462707163affa62f750f8ecc40685a3527.
+C is **46,391 / 74 files / zero reference C (−2,364 from corrected baseline)**.
 
-Artifacts: build/port-server-panels/c-{default,server,highres,production}, c-audit.json,
-external-reviewed.json. Manifest: server-panels-c-batch.json. Selection:
-server-panels-focused-tests.txt. Freeze/installed fixture scripts are consumed:
-never regenerate hashes or recopy old drafts over fixes.
+Artifacts: build/port-server-panels/native-{default,server,highres,production},
+native-audit.json, interface-audit.json. Manifest: server-panels-batch.json;
+selection: server-panels-tests.txt. All drafts/install/freeze scripts are consumed:
+never reinstall them or regenerate frozen expectations.
 
-No native conversion is installed. Uninstalled scalar/state drafts are in
-build/port-server-panels/native-draft (review before use). Nine C interfaces remain
-needed by other production C; migrate Go callers directly. Twenty-six private
-C globals and the advanced refresh callback table can move to Go. The shared
-online-mode flag remains. `sub_4AD4B0` has only a literal if(0) caller; remove with
-conversion. Preserve the recorded class-index and level-limit checkbox behavior.
-No blocker or user question. Continue through native qualification, docs/C LOC,
-commit/push, then the next coherent batch. About 18–20 GB free; preserve assets/archive.
+Next candidate: server configuration, admission-list persistence and rule picker
+(66 functions / 836 C body lines before reachability cleanup). Read-only scope,
+external-reference audit, test plan and uninstalled initial core fixture drafts
+are in build/port-server-config. Review before installing; no baseline tests for
+this next batch are installed yet. Audit the no-op sub_416690 and its dead private
+setter sub_4164F0; preserve actual behavior rather than restoring disabled code.
+The rule-picker missing-resource path needs a child-process contract. Continue
+corrected-C baseline/captures/qualification/commit, then native conversion.
+No blocker or user decision. About 17 GB free; preserve original assets/archive.
 
 ### Qualified parent — server options
 

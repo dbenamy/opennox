@@ -3,7 +3,6 @@ package legacy
 /*
 #include "defs.h"
 #include "client__gui__window.h"
-int sub_4BDFD0();
 char  mix_MouseKeyboardWeaponRoll(nox_object_t* playerObj, char a2);
 int getFlagValueFromFlagIndex(signed int a1);
 int  modifyWndInputHandler(int a1, int a2, int a3, int a4);
@@ -22,7 +21,7 @@ import (
 )
 
 func Sub_4BDFD0() {
-	C.sub_4BDFD0()
+	serverPanelsAdvancedServerOpen()
 }
 func Mix_MouseKeyboardWeaponRoll(a1 *server.Object, a2 int8) int {
 	return int(C.mix_MouseKeyboardWeaponRoll(asObjectC(a1), C.char(a2)))

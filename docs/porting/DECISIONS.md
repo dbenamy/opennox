@@ -1542,3 +1542,13 @@ They are candidates for later behavior cleanup. Preserve byte-oriented weapon-ma
 queries and 386 spell shift/index conventions. The panel fixtures now use shipped
 multi-selection ownership where required; this is a fixture correction. Player
 lookup is case-insensitive, while displayed-row removal is exact.
+
+
+Server-panel native review also preserves exact UTF-16 code-unit row matching,
+change-only button enabling (avoiding recursive changes to already-enabled
+children), direct checkbox Y-offset writes, and the advanced window's position
+from the original nil-root lookup. Nine thin C interfaces remain for actual C
+callers; Go callers and the advanced callback table use Go directly. The numeric
+parser, name-list owner and rule picker remain outside this batch. All frozen
+captures and fresh production qualification pass; no further behavior correction
+was needed during native conversion.

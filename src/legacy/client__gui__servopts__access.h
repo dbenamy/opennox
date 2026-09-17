@@ -3,7 +3,5 @@
 
 #include "defs.h"
 
-int sub_454640();
-int* sub_454740();
 
 #endif // NOX_PORT_CLIENT_GUI_SERVOPTS_ACCESS

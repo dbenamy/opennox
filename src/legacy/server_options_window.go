@@ -126,11 +126,11 @@ func serverOptionsClose(clearRules int) uintptr {
 		w.Destroy()
 		serverOptionsRoot = 0
 		teamUIPlayersDestroy(false)
-		C.sub_4BE610()
+		serverPanelsAdvancedServerClose()
 		serverOptionsPlayersPanel = 0
-		C.sub_4557D0(0)
+		serverPanelsAccessClose(false)
 		serverOptionsAccessPanel = 0
-		C.sub_4AD820()
+		serverPanelsGeneralClose()
 		serverOptionsGeneralPanel = 0
 		serverOptionsAdvancedControl = 0
 	}

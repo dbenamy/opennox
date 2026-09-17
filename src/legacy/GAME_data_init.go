@@ -115,8 +115,6 @@ func InitBlobData() {
 		Ptr_nox_xxx_updDrawVortexSource_4CC950:    unsafe.Pointer(C.nox_xxx_updDrawVortexSource_4CC950),
 		Ptr_sub_4CA650:                            unsafe.Pointer(C.sub_4CA650),
 		Ptr_nox_xxx_updDrawMonsterGen_4BC920:      unsafe.Pointer(C.nox_xxx_updDrawMonsterGen_4BC920),
-		Ptr_sub_454120:                            unsafe.Pointer(C.sub_454120),
-		Ptr_sub_453750:                            unsafe.Pointer(C.sub_453750),
 
 		Ptr_nox_xxx_strikeOgre_549220:           unsafe.Pointer(C.nox_xxx_strikeOgre_549220),
 		Ptr_nox_xxx_strikeScorpion_5495B0:       unsafe.Pointer(C.nox_xxx_strikeScorpion_5495B0),

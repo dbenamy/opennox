@@ -15,13 +15,13 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Server-options UI is in Go. The next server-panel batch now has a
-qualified corrected C baseline: 57 live functions / 2,098 body lines and 22 new
-frozen captures, with matching default/server/highres and fresh production checks.
+scheduled pause. Server options and their object, spell, admission, general and
+advanced panels are now in Go. The panel conversion passes focused, broader
+three-target and fresh production qualification with unchanged C expectations.
 
-Production C is **48,755 physical lines in 79 files**, with zero reference C.
-Five missing-resource guards add 15 lines before this conversion. The full asset
-suite retains its exact three known failing packages. See
+Production C is **46,391 physical lines in 74 files**, with zero reference C.
+The panel conversion removes **2,364 lines** from its corrected C baseline.
+The full asset suite retains its exact three known failing packages. See
 [SERVER_PANELS.md](docs/porting/SERVER_PANELS.md) for qualification and review
 items; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 

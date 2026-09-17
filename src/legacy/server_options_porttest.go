@@ -6,29 +6,6 @@ package legacy
 #include "GAME2.h"
 #include "GAME1.h"
 #include "client__gui__servopts__guiserv.h"
-extern uint32_t dword_5d4594_1045480;
-extern uint32_t dword_5d4594_1045484;
-extern uint32_t dword_5d4594_1045508;
-extern uint32_t dword_5d4594_1045516;
-extern uint32_t dword_5d4594_1045520;
-extern uint32_t dword_5d4594_1045528;
-extern uint32_t dword_5d4594_1045532;
-extern uint32_t dword_5d4594_1045536;
-extern uint32_t dword_5d4594_1045540;
-extern uint32_t dword_5d4594_1045544;
-extern uint32_t dword_5d4594_1045548;
-extern uint32_t dword_5d4594_1045552;
-extern uint32_t dword_5d4594_1045556;
-extern uint32_t dword_5d4594_1045576;
-extern uint32_t dword_5d4594_1045580;
-extern uint32_t dword_5d4594_1045584;
-extern uint32_t dword_5d4594_1045588;
-extern uint32_t dword_5d4594_1045596;
-extern uint32_t dword_5d4594_1309812;
-extern uint32_t dword_5d4594_1316704;
-extern uint32_t dword_5d4594_1316708;
-extern uint32_t dword_5d4594_1316712;
-extern uint32_t dword_5d4594_1316972;
 extern uint32_t dword_5d4594_1523024;
 extern uint32_t dword_5d4594_1523028;
 extern uint32_t dword_5d4594_1523032;
@@ -68,29 +45,29 @@ func PortTestServerOptionsWords() (map[string]*uint32, func()) {
 		"panel-1523044": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1523044)),
 		"panel-1523048": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1523048)),
 
-		"panel-1045480": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045480)),
-		"panel-1045484": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045484)),
-		"panel-1045508": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045508)),
-		"panel-1045516": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045516)),
-		"panel-1045520": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045520)),
-		"panel-1045528": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045528)),
-		"panel-1045532": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045532)),
-		"panel-1045536": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045536)),
-		"panel-1045540": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045540)),
-		"panel-1045544": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045544)),
-		"panel-1045548": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045548)),
-		"panel-1045552": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045552)),
-		"panel-1045556": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045556)),
-		"panel-1045576": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045576)),
-		"panel-1045580": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045580)),
-		"panel-1045584": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045584)),
-		"panel-1045588": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045588)),
-		"panel-1045596": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045596)),
-		"panel-1309812": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309812)),
-		"panel-1316704": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1316704)),
-		"panel-1316708": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1316708)),
-		"panel-1316712": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1316712)),
-		"panel-1316972": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1316972)),
+		"panel-1045480": serverPanelsWord(1045480),
+		"panel-1045484": serverPanelsWord(1045484),
+		"panel-1045508": serverPanelsWord(1045508),
+		"panel-1045516": serverPanelsWord(1045516),
+		"panel-1045520": serverPanelsWord(1045520),
+		"panel-1045528": serverPanelsWord(1045528),
+		"panel-1045532": serverPanelsWord(1045532),
+		"panel-1045536": serverPanelsWord(1045536),
+		"panel-1045540": serverPanelsWord(1045540),
+		"panel-1045544": serverPanelsWord(1045544),
+		"panel-1045548": serverPanelsWord(1045548),
+		"panel-1045552": serverPanelsWord(1045552),
+		"panel-1045556": serverPanelsWord(1045556),
+		"panel-1045576": serverPanelsWord(1045576),
+		"panel-1045580": serverPanelsWord(1045580),
+		"panel-1045584": serverPanelsWord(1045584),
+		"panel-1045588": serverPanelsWord(1045588),
+		"panel-1045596": serverPanelsWord(1045596),
+		"panel-1309812": serverPanelsWord(1309812),
+		"panel-1316704": serverPanelsWord(1316704),
+		"panel-1316708": serverPanelsWord(1316708),
+		"panel-1316712": serverPanelsWord(1316712),
+		"panel-1316972": serverPanelsWord(1316972),
 
 		"settings-updated":      (*uint32)(unsafe.Pointer(&C.nox_server_gameSettingsUpdated)),
 		"settings-record-dirty": (*uint32)(unsafe.Pointer(&C.dword_5d4594_371692)),

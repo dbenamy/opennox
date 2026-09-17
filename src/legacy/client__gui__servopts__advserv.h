@@ -3,6 +3,5 @@
 
 #include "defs.h"
 
-int sub_4BE2C0(int a1);
 
 #endif // NOX_PORT_CLIENT_GUI_SERVOPTS_ADVSERV
