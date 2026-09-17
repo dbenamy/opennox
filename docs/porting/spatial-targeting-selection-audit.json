@@ -1,0 +1,39 @@
+{
+  "parent": "world-motion-tests.txt",
+  "added": "11 spatial-targeting roots and 4 AI-combat roots",
+  "caller_and_dependency_groups": {
+    "ai_combat": {
+      "roots": 4,
+      "all_selected": true
+    },
+    "ai_main": {
+      "roots": 2,
+      "all_selected": true
+    },
+    "spell_effects": {
+      "roots": 18,
+      "all_selected": true
+    },
+    "temporary_updates": {
+      "roots": 16,
+      "all_selected": true
+    },
+    "world_motion": {
+      "roots": 25,
+      "all_selected": true
+    },
+    "collision_core": {
+      "roots": 16,
+      "all_selected": true
+    },
+    "world_geometry": {
+      "roots": 17,
+      "all_selected": true
+    },
+    "spatial_targeting": {
+      "roots": 11,
+      "all_selected": true
+    }
+  },
+  "scope": "All inherited qualified motion/collision/geometry dependencies, direct AI aim/shield and cursor callers, spell and temporary-effect ray callers. Actual cursor update wrapper is exercised by indexed cursor roots."
+}

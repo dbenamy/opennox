@@ -1,0 +1,71 @@
+{
+  "parent": "6541718f",
+  "functions": [
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "nox_xxx_projAddVelocitySmth_533080",
+      "body_lines": 14,
+      "sha256": "ad54b7bf24af66b0fd63a9ca9c471a958d3bedd601a1152b83d84b4e441a16df"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "nox_xxx_traceRay_5374B0",
+      "body_lines": 1,
+      "sha256": "eb034abd121a411d2ed819c0aa055a5a140cd1bd5034ea32de3aed387f0c2d73"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "nox_xxx_findObjectAtCursor_54AF40",
+      "body_lines": 16,
+      "sha256": "a8533642598c8d604c92c47cadc77c72b59335fde6a98d8b04625c5e19c49955"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "nox_xxx_playerCursorScanFn_54AFB0",
+      "body_lines": 113,
+      "sha256": "2fc2340fdd1cc14e85236599d35e3a096bfe041cb768fc9be8089c03999727de"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_54E6F0",
+      "body_lines": 9,
+      "sha256": "8ce57c6d23229c91c9695f4002f8e6a0e697a404ebfd52129a9082f9d836823a"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_54E730",
+      "body_lines": 30,
+      "sha256": "b6dd9651021d0ce5d4f999793027abbbf8d678abfa7206c68ecfb6900aeb6d9e"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_54E810",
+      "body_lines": 10,
+      "sha256": "8105f8a3cfd727f22c07ed3e956423d26605d8478b8eb35b697b73b27b012399"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "name": "sub_54E850",
+      "body_lines": 38,
+      "sha256": "ef915dcfa5889e686c31bad35f0a4313560bbc9ff48b01faf69477b13a7d7064"
+    },
+    {
+      "file": "src/legacy/GAME5_2.c",
+      "name": "sub_57CDB0",
+      "body_lines": 268,
+      "sha256": "a97c91014d62e8d541c0530b287f4b779762bbad061baddc8e1c0750eb373931"
+    },
+    {
+      "file": "src/legacy/GAME5_2.c",
+      "name": "sub_57F1D0",
+      "body_lines": 32,
+      "sha256": "ffd57d90edefe8a0708173f7b8ac7ced6f3a406b8dfb8a4c1576bf85ddc32c8b"
+    },
+    {
+      "file": "src/legacy/GAME5_2.c",
+      "name": "sub_57F2A0",
+      "body_lines": 23,
+      "sha256": "a5bdfc9646ddd73752bc7b52750a735e1ff1686ade9c0431e0baa31f02dcba0c"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "status": "qualified C baseline",
+  "parent": "6541718f",
+  "runs": {
+    "default": {
+      "seconds": 280.8383056689054,
+      "roots": 705,
+      "including_subtests": 43309,
+      "skips": 0,
+      "captures": 257,
+      "records": 157554
+    },
+    "server": {
+      "seconds": 389.69032381195575,
+      "roots": 704,
+      "including_subtests": 43308,
+      "skips": 0,
+      "captures": 257,
+      "records": 157554
+    },
+    "highres": {
+      "seconds": 336.4504369520582,
+      "roots": 705,
+      "including_subtests": 43309,
+      "skips": 0,
+      "captures": 257,
+      "records": 157554
+    }
+  },
+  "source_files": 2250,
+  "source_manifest_sha256": "747685a5b4308e8f56331e15afb172f79bb3606959266c1f00f30618dfde4f84",
+  "focused": {
+    "roots": 11,
+    "captures": 11,
+    "records": 26142,
+    "repeated_identical": true,
+    "frozen_pass": true
+  },
+  "production_reuse": "spatial-targeting-c-production-reuse.json",
+  "production_c_lines": 40777,
+  "production_c_files": 74,
+  "reference_c_lines": 0
+}

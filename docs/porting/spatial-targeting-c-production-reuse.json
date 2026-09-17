@@ -1,0 +1,36 @@
+{
+  "production_source_identical": true,
+  "parent": "6541718f",
+  "parent_source_files": 2244,
+  "unchanged_original_files": 2244,
+  "added_porttest_files": {
+    "src/legacy/spatial_targeting_porttest.go": "2f589e85e81588be5606c2a90595689962810a3f013816c359d0c2314e534cc2",
+    "src/spatial_targeting_cursor_porttest_test.go": "f011f19d40e92b301a6d2e7154bdea9fd57c1f9e36b73d221c97d7adb7b163d4",
+    "src/spatial_targeting_geometry_porttest_test.go": "0e3d6d6871c6aeca405f7a25bf15840056783dfa571fb0413c94688a63d8c312",
+    "src/spatial_targeting_owner_porttest_test.go": "bb3da0862054e51366929c25b48c8fea87e397b0cbb81980ce5c78eaf5616964",
+    "src/spatial_targeting_probe_porttest_test.go": "61a107a4d2489085c924c487b89af97379769cae8b83389161d2e9ba5d3dd36e",
+    "src/spatial_targeting_projectiles_porttest_test.go": "828fc1508fda21ddf884c4f1f2226528d25c1d4ab19f57fc1ca8c573e10c36f2"
+  },
+  "qualified_production": "build/port-world-motion/native-production",
+  "production_binaries": {
+    "opennox": {
+      "exit": 0,
+      "wall_seconds": 67.79324602498673,
+      "sha256": "8cca291e312db22a2ef852d9a0ed2a693552afd21d9e07fcf03efe5789ffc3b6",
+      "abi_verified": true
+    },
+    "opennox-hd": {
+      "exit": 0,
+      "wall_seconds": 9.596630189800635,
+      "sha256": "358cd3ab82a380fe9fc790785f4720e9cd687d84d2bfb4f35757aabef4bcd929",
+      "abi_verified": true
+    },
+    "opennox-server": {
+      "exit": 0,
+      "wall_seconds": 74.18745080195367,
+      "sha256": "60a0327f4986c570340f629f6546ff4d31f319f71c235c64bbe8baa796fe38bf",
+      "abi_verified": true
+    }
+  },
+  "evidence": "Every original fingerprint matches. Every added source file is guarded by //go:build porttest. Parent success and unchanged-source checks passed; all three binary hashes verified. No production sources removed or changed."
+}

@@ -8,7 +8,24 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — world-motion Go conversion qualified
+## Current — spatial-targeting C baseline qualified
+
+World-motion parent **6541718f is committed and pushed**. The connected next batch
+covers **11 live C functions / 554 body lines**. All eleven focused roots and
+**26,142 records** repeat identically and pass frozen expectations. Static mapped
+checks pass. Three broader targets pass with no skips and identical captures;
+see [SPATIAL_TARGETING.md](docs/porting/SPATIAL_TARGETING.md) and
+spatial-targeting-c-qualification.json. Production reuse verifies all **2,244**
+parent source files unchanged, six new porttest files only, and three qualified
+binary hashes. Production C is unchanged: **40,777 / 74 files / zero reference**.
+
+Next: commit/push this baseline, install the reviewed Go draft, then compare frozen
+captures and qualify three targets plus fresh production. No production changes
+have been installed. Drafts and guarded one-shot installer are under
+build/port-spatial-targeting. Do not rerun any prior batch installer or cleanup.
+The original archive and assets remain intact. No user decision is required.
+
+## Qualified parent — world-motion Go conversion (6541718f, pushed)
 
 Corrected-C baseline **e7174c35 is committed and pushed**. Native conversion now
 passes all gates: **30 C functions replaced**, six required exports retained,
@@ -30,13 +47,13 @@ Native translation errors (delayed-delete owner and alloc.New initialization)
 were caught and fixed without changing goldens. Compiled-C rounding boundaries
 are preserved; see the report and DECISIONS.md.
 
-Next: commit/push this conversion, then the connected spatial-targeting batch.
+Next: complete the connected spatial-targeting C baseline.
 Read-only proposal: **11 functions / 554 C body lines**, including projectile and
 cursor candidates, wall normals and quadrant helpers. It removes the remaining
 spatial C calls from motionTrace and its temporary C allocation. Proposal,
 reference audit and table audit are in build/port-spatial-targeting. Supply the
 shipped door table at 0x587000:196184; reuse collision/index/wall/player owners.
-No next-batch source is installed yet. This smaller connected scope is preferable
+Geometry test adapters and contracts are installed. This smaller connected scope is preferable
 to adding unrelated player-death or parser code just to reach a LOC target.
 
 **install-native.py is consumed.** Native drafts are installed; work from src.
