@@ -392,7 +392,7 @@ func Nox_xxx_decay_5116F0(a1 *server.Object) {
 	C.nox_xxx_decay_5116F0(asObjectC(a1))
 }
 func Nox_xxx_netReportDestroyObject_5289D0(a1 *server.Object) {
-	C.nox_xxx_netReportDestroyObject_5289D0(asObjectC(a1))
+	visibilityDestroyReport(a1)
 }
 func Nox_xxx_unit_511810(a1 *server.Object) {
 	C.nox_xxx_unit_511810(asObjectC(a1))
@@ -407,7 +407,7 @@ func Sub_511DE0(a1 *server.Object) {
 	C.sub_511DE0(asObjectC(a1))
 }
 func Sub_528990(a1 *server.Object) {
-	C.sub_528990(asObjectC(a1))
+	visibilityGlobalRemove(a1)
 }
 func Nox_xxx_unitNewAddShadow_4DA9A0(a1 *server.Object) {
 	C.nox_xxx_unitNewAddShadow_4DA9A0(asObjectC(a1))

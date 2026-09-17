@@ -79,7 +79,7 @@ func attackHit(t *server.Object, r *attackRecord) {
 	attackPreEffects(t, u, r.Weapon, r)
 	ccall.CallIntUPtr5(t.Damage, uintptr(t.CObj()), uintptr(r.Owner.CObj()), uintptr(r.Weapon.CObj()), uintptr(uint32(effectsTruncWord(float64(r.Damage)+0.5))), uintptr(r.Type))
 	if noxflags.HasGame(2048) && r.Owner.ObjClass&4 != 0 && t.ObjClass&2 == 0 && t.HealthData != nil && t.HealthData.Max != 0 && t.ObjFlags&0x8020 == 0 {
-		C.nox_xxx_netSendPointFx_522FF0(-117, (*C.float2)(unsafe.Pointer(&t.PosVec)))
+		visibilityFXPoint(139, t.PosVec)
 	}
 	if r.Weapon == nil {
 		u = r.Owner

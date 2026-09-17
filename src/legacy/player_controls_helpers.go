@@ -32,7 +32,7 @@ func controlRemoveGlyphs(u *server.Object) int32 {
 	typ := stateType(1565600, "Glyph")
 	for it := GetServer().S().Objs.List; it != nil; it = it.ObjNext {
 		if it.HasOwner(u) && uint32(it.TypeInd) == typ && it.ObjFlags&0x20 == 0 {
-			C.nox_xxx_netSendPointFx_522FF0(-127, (*C.float2)(unsafe.Pointer(&it.PosVec)))
+			visibilityFXPoint(129, it.PosVec)
 			GetServer().DelayedDelete(it)
 		}
 	}
@@ -47,7 +47,7 @@ func controlRemoveCreatures(u *server.Object) {
 				GetServer().DelayedDelete(item)
 				item = n
 			}
-			C.nox_xxx_netSendPointFx_522FF0(-127, (*C.float2)(unsafe.Pointer(&it.PosVec)))
+			visibilityFXPoint(129, it.PosVec)
 			GetServer().DelayedDelete(it)
 		}
 		it = next

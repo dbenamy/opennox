@@ -6,10 +6,6 @@ package legacy
 #include "GAME4.h"
 #include "GAME4_1.h"
 #include "GAME4_2.h"
-static void monster_order_message(int u, int s, int o) {
- const char* m = o==2 ? "MonUtil.c:idle" : o==3 ? "MonUtil.c:guarding" : o==4 ? "MonUtil.c:escorting" : "MonUtil.c:Hunting";
- nox_xxx_monsterCmdSend_528BD0(u,s,m,0);
-}
 */
 import "C"
 
@@ -300,7 +296,7 @@ func monsterEnactOrder(source, u *server.Object, order int) {
 		}
 	case 2:
 		if source.Class().Has(object.ClassPlayer) {
-			C.monster_order_message(C.int(uintptr(u.CObj())), C.int(uintptr(source.CObj())), 2)
+			visibilityMonsterCommand(u, source, "MonUtil.c:idle", 0)
 		}
 		combatSound(u, 17)
 		ud.StatusFlags &^= 0x40
@@ -312,7 +308,7 @@ func monsterEnactOrder(source, u *server.Object, order int) {
 			return
 		}
 		if source.Class().Has(object.ClassPlayer) {
-			C.monster_order_message(C.int(uintptr(u.CObj())), C.int(uintptr(source.CObj())), 3)
+			visibilityMonsterCommand(u, source, "MonUtil.c:guarding", 0)
 		}
 		combatSound(u, 17)
 		ud.Aggression = math.Float32frombits(0x3f000000)
@@ -327,7 +323,7 @@ func monsterEnactOrder(source, u *server.Object, order int) {
 			return
 		}
 		if source.Class().Has(object.ClassPlayer) {
-			C.monster_order_message(C.int(uintptr(u.CObj())), C.int(uintptr(source.CObj())), 4)
+			visibilityMonsterCommand(u, source, "MonUtil.c:escorting", 0)
 		}
 		combatSound(u, 17)
 		ud.StatusFlags &^= 0x40
@@ -340,7 +336,7 @@ func monsterEnactOrder(source, u *server.Object, order int) {
 		}
 		combatSound(u, 17)
 		if source.Class().Has(object.ClassPlayer) {
-			C.monster_order_message(C.int(uintptr(u.CObj())), C.int(uintptr(source.CObj())), 5)
+			visibilityMonsterCommand(u, source, "MonUtil.c:Hunting", 0)
 		}
 		ud.StatusFlags &^= 0x40
 		ud.Aggression = math.Float32frombits(0x3f547ae1)

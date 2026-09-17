@@ -38,7 +38,7 @@ func projectileGrid(p types.Pointf) (int32, int32) {
 	return floatToInt32(float32(float64(p.X) * 0.043478262)), floatToInt32(float32(float64(p.Y) * 0.043478262))
 }
 func projectileFX(code byte, u *server.Object) {
-	C.nox_xxx_netSendPointFx_522FF0(C.char(code), (*C.float2)(unsafe.Pointer(&u.PosVec)))
+	visibilityFXPoint(byte(code), u.PosVec)
 }
 func projectileFront(t, u *server.Object) bool {
 	return C.nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&t.PosVec)), C.int(int16(t.Direction1)), (*C.float2)(unsafe.Pointer(&u.PosVec)))&1 != 0

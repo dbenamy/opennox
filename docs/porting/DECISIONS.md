@@ -1327,3 +1327,27 @@ padding. The empty obelisk hook remains for objective-update callers; the transl
 serializer omits its no-op call. Existing callback header declarations and symbol
 identities remain unchanged, with address conversion restricted to the C bridges.
 See ITEM_XFER.md for frozen evidence and final qualification status.
+
+## Visibility/effects — orphan removal and entry-point contracts
+
+Remove the 47-line `sub_528030` throttle helper after a full reference audit finds
+only its definition, declaration and the new baseline fixture. No production
+caller, callback registration or dynamic symbol-lookup path reaches it. Its C
+baseline and 3,360 historical records remain recoverable at `e2616865`; the native
+implementation and test corpus omit this unreachable helper. The signed-mana
+finding in that baseline is therefore not an observed player-facing problem.
+Perform this reachability check before building future baseline fixtures.
+
+Preserve each effect entry point's coordinate domain: vampire effects cull using
+unsigned destination low words; generator-spawn effects use full signed destination
+coordinates. Reuse the existing Go viewport method only after paired C/Go contracts
+verify strict boundaries, observer-camera selection and asymmetric float stores.
+Six live C entry points remain; 24 C symbols are retired, with Go callers routed
+directly. No live gameplay behavior correction is included in this batch.
+
+Supplemental original-C scan-delay tests use real circular collider bounds. The
+old minimal fixture left bounds at the origin, which accidentally lay inside its
+small test region. Correct bounds preserve the original spatial capture and allow
+864 independent distant/empty-search scheduling contracts. See
+[VISIBILITY_EFFECTS.md](VISIBILITY_EFFECTS.md) and
+[VISIBILITY_SCAN_DELAY.md](VISIBILITY_SCAN_DELAY.md) for evidence and validation.

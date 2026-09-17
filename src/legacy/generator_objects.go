@@ -31,7 +31,7 @@ func generatorDeath(u *server.Object) {
 	Sub_4D7520(0)
 	GetServer().NoxScriptC().ScriptCallback(generatorScript(u.UpdateData, 56), u.Obj130, u, server.NoxEventGeneratorDead)
 	core.Audio.EventObj(1000, u, 0, 0)
-	C.nox_xxx_sendGeneratorBreakFX_523200((*C.float)(unsafe.Pointer(&u.PosVec)), C.char(-56))
+	visibilityFXGeneratorBreak(u.PosVec, 200)
 
 	if noxflags.HasGame(4096) && u.Obj130 != nil {
 		// The retained owner-chain service returns the terminal object.
@@ -130,7 +130,7 @@ func generatorSpawn(gen *server.Object, point *types.Pointf, src *server.Object)
 		C.int(floatToInt32(float32(float64(dir.Y)*30 + float64(pos.Y)))),
 	}
 	freeDir()
-	C.nox_xxx_sendGeneratorSpawnFX_523830((*C.int4)(unsafe.Pointer(&fx[0])), 10)
+	visibilityFXGeneratorSpawn([4]int32{int32(fx[0]), int32(fx[1]), int32(fx[2]), int32(fx[3])}, 10)
 	core.Audio.EventObj(1002, child, 0, 0)
 	return uint32(uintptr(child.CObj()))
 }

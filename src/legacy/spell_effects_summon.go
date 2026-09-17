@@ -96,7 +96,7 @@ func spellEffectSummonStart(record unsafe.Pointer) int32 {
 		duration = floatToInt32(float32(spellEffectTable("SummonDuration", 2)))
 	}
 	*spellLifeWord(record, 68) = uint32(duration) + GetServer().S().Frame()
-	C.nox_xxx_sendSummonStartFX_5236F0(C.short(n), (*C.float)(unsafe.Pointer(&pos)), C.char(byte(u.Direction1)), C.short(typ), C.short(duration))
+	visibilityFXSummonStart(uint16(n), pos, byte(u.Direction1), uint16(typ), uint16(duration))
 	return 0
 }
 func spellEffectSummonFinish(record unsafe.Pointer) int32 {
@@ -127,7 +127,7 @@ func spellEffectSummonFinish(record unsafe.Pointer) int32 {
 }
 func spellEffectSummonCancel(record unsafe.Pointer) {
 	if *controlByte(record, 85) == 0 {
-		C.nox_xxx_sendSummonCancelFX_523760(C.short(*controlHalf(record, 83)))
+		visibilityFXSummonCancel(*controlHalf(record, 83))
 		GetServer().S().Audio.EventPos(900, spellEffectPos(record, 74), 0, 0)
 	}
 }
@@ -277,7 +277,7 @@ func spellEffectBanish(u *server.Object) {
 		}
 		it = next
 	}
-	C.nox_xxx_netSendPointFx_522FF0(C.char(-127), (*C.float2)(unsafe.Pointer(&u.PosVec)))
+	visibilityFXPoint(129, u.PosVec)
 	C.nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(u.UpdateData, 1264), nil, u.CObj(), 7)
 	GetServer().DelayedDelete(u)
 }

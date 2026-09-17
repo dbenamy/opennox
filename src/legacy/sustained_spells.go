@@ -48,7 +48,7 @@ func sustainedFPS() uint32                     { return uint32(GetServer().S().T
 func sustainedGame(flag uint32) bool           { return noxflags.HasGame(noxflags.GameFlag(flag)) }
 func sustainedAudio(id int, u *server.Object)  { GetServer().S().Audio.EventObj(sound.ID(id), u, 0, 0) }
 func sustainedFX(code byte, pos types.Pointf) uint32 {
-	return uint32(C.nox_xxx_netSendPointFx_522FF0(C.char(code), (*C.float2)(unsafe.Pointer(&pos))))
+	return uint32(visibilityFXPoint(byte(code), pos))
 }
 func sustainedState(u *server.Object, state int) {
 	C.nox_xxx_playerSetState_4FA020(asObjectC(u), C.int(state))
@@ -71,11 +71,11 @@ func sustainedTableInt(name string, level uint32) int32 {
 	return floatToInt32(float32(spellEffectTable(name, int32(level)-1)))
 }
 func sustainedShieldFX(u, source *server.Object) {
-	var pos *C.float
+	var pos *types.Pointf
 	if source != nil {
-		pos = (*C.float)(unsafe.Pointer(&source.PosVec))
+		pos = &source.PosVec
 	}
-	C.nox_xxx_netSendShieldFx_523670(inventoryInt(u), pos)
+	visibilityFXShield(u, pos)
 }
 func sustainedCharges(u, item *server.Object) {
 	data := item.UseData.Ptr

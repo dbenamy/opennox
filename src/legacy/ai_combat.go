@@ -135,7 +135,7 @@ func combatFightStart(u *server.Object) {
 	combatSound(u, 5)
 	GetServer().NoxScriptC().ScriptCallback(&ud.ScriptChangeFocus, ud.CurrentEnemy, u, server.ScriptEventType(13))
 	ud.StatusFlags |= 0x100
-	C.nox_xxx_frameCounterSetCopy_5281E0()
+	visibilityFrameCopy(false)
 	Nox_xxx_unitUpdateSightMB_5281F0(u)
 	navigationStartRunning(u)
 }
@@ -149,7 +149,7 @@ func combatFight(u *server.Object) {
 	}
 	if t := ud.CurrentEnemy; t != nil {
 		h.Args[2] = uintptr(s.Frame())
-		if C.nox_xxx_checkIsKillable_528190(asObjectC(t)) == 0 {
+		if visibilityKillable(t) == 0 {
 			u.MonsterPopAction()
 			return
 		}

@@ -19,73 +19,71 @@ import (
 	"unsafe"
 )
 
-// Primitive dispatch only; the baseline exercises the actual production functions.
+// Retained entries exercise the C ABI; retired bridges call production Go directly.
+// Operation 13 belonged to the proven orphaned throttle helper and is retired.
 func PortTestVisibilityEffects(op int, a, b *server.Object, pos *types.Pointf, words *[4]int32, args [5]int32, data []byte, command string) uint32 {
-	ai, bi := C.int(uintptr(unsafe.Pointer(a))), C.int(uintptr(unsafe.Pointer(b)))
+
 	ap, bp := (*C.nox_object_t)(unsafe.Pointer(a)), (*C.nox_object_t)(unsafe.Pointer(b))
 	fp := (*C.float)(unsafe.Pointer(pos))
 	switch op {
 	case 0:
 		return uint32(C.nox_xxx_netSendPointFx_522FF0(C.char(args[0]), (*C.float2)(unsafe.Pointer(pos))))
 	case 1:
-		return uint32(C.nox_xxx_netSendFxAllCli_523030((*C.float2)(unsafe.Pointer(pos)), unsafe.Pointer(unsafe.SliceData(data)), C.int(len(data))))
+		return uint32(visibilityFXSend(*pos, data))
 	case 2:
-		return uint32(C.sub_523150(C.char(args[0]), C.char(args[1]), fp))
+		return uint32(visibilityFXPointExtra(byte(args[0]), byte(args[1]), *pos))
 	case 3:
-		return uint32(C.nox_xxx_netSparkExplosionFx_5231B0(fp, C.char(args[0])))
+		return uint32(visibilityFXSpark(*pos, byte(args[0])))
 	case 4:
-		C.nox_xxx_sendGeneratorBreakFX_523200(fp, C.char(args[0]))
+		visibilityFXGeneratorBreak(*pos, byte(args[0]))
 	case 5:
-		return uint32(C.nox_xxx_netSendVampFx_523270(C.char(args[0]), (*C.short)(unsafe.Pointer(words)), C.short(args[1])))
+		return uint32(visibilityFXVampire(byte(args[0]), *words, uint16(args[1])))
 	case 6:
-		return uint32(C.nox_xxx_netClientPredictLinear_523530(ai))
+		return uint32(visibilityFXPrediction(a))
 	case 7:
-		return uint32(C.nox_xxx_netSendShieldFx_523670(ai, fp))
+		return uint32(visibilityFXShield(a, pos))
 	case 8:
-		return uint32(C.nox_xxx_sendSummonStartFX_5236F0(C.short(args[0]), fp, C.char(args[1]), C.short(args[2]), C.short(args[3])))
+		return uint32(visibilityFXSummonStart(uint16(args[0]), *pos, byte(args[1]), uint16(args[2]), uint16(args[3])))
 	case 9:
-		return uint32(C.nox_xxx_sendSummonCancelFX_523760(C.short(args[0])))
+		return uint32(visibilityFXSummonCancel(uint16(args[0])))
 	case 10:
-		C.nox_xxx_sendGeneratorSpawnFX_523830((*C.int4)(unsafe.Pointer(words)), C.short(args[0]))
+		visibilityFXGeneratorSpawn(*words, uint16(args[0]))
 	case 11:
 		C.nox_xxx_sendArrowTrapFX_5238A0(fp, C.char(args[0]))
 	case 12:
 		return uint32(C.nox_xxx_netUpdateObjectSpecial_527E50(ap, bp))
-	case 13:
-		return uint32(int32(C.sub_528030(ai)))
 	case 14:
-		return uint32(C.nox_xxx_checkIsKillable_528190(ap))
+		return uint32(visibilityKillable(a))
 	case 15:
 		return uint32(C.nox_xxx_frameCounterSetCopyToNextFrame_5281D0())
 	case 16:
-		return uint32(C.nox_xxx_frameCounterSetCopy_5281E0())
+		return visibilityFrameCopy(false)
 	case 17:
-		C.nox_xxx_unitUpdateSightMB_5281F0(ap)
+		visibilityUpdateSight(a)
 	case 18:
-		return uint32(C.nox_xxx_aiLostSight_528560(ai, C.int(args[0])))
+		return uint32(visibilityLost(a, int(args[0])))
 	case 19:
-		C.sub_528610(ai)
+		visibilitySelectTarget(a)
 	case 20:
-		C.nox_xxx_monsterUpdateSeenEnemies_5286D0(ai, bi)
+		visibilityCandidate(a, b)
 	case 21:
-		C.nox_xxx_monsterVisionSeeEnemy_5287B0(ai, bi)
+		visibilitySee(a, b)
 	case 22:
-		return uint32(C.sub_528910(ai, bi))
+		return uint32(visibilityRemove(a, b))
 	case 23:
-		return uint32(C.sub_528950(ai, bi))
+		return uint32(bool2int(visibilityContains(a, b)))
 	case 24:
-		return uint32(C.sub_528990(ap))
+		return uint32(visibilityGlobalRemove(a))
 	case 25:
-		C.nox_xxx_netReportDestroyObject_5289D0(ap)
+		visibilityDestroyReport(a)
 	case 26:
 		return uint32(C.nox_xxx_netObjectOutOfSight_528A60(C.int(args[0]), (*C.uint32_t)(unsafe.Pointer(b))))
 	case 27:
 		return uint32(C.nox_xxx_netObjectInShadows_528A90(C.int(args[0]), (*C.uint32_t)(unsafe.Pointer(b))))
 	case 28:
-		text := append([]byte(command), 0)
-		return uint32(C.nox_xxx_monsterCmdSend_528BD0(ai, bi, (*C.char)(unsafe.Pointer(&text[0])), C.short(args[0])))
+		return uint32(visibilityMonsterCommand(a, b, command, uint16(args[0])))
 	case 29:
-		return uint32(C.nox_xxx_destroyEveryChatMB_528D60())
+		return uint32(visibilityClearChats())
 	default:
 		panic("unknown visibility/effect operation")
 	}

@@ -206,7 +206,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 		}
 		resourceAdjustHP(source, int32(heal))
 		pos := [4]int32{floatToInt32(source.PosVec.X), floatToInt32(source.PosVec.Y), floatToInt32(u.PosVec.X), floatToInt32(u.PosVec.Y)}
-		C.nox_xxx_netSendVampFx_523270(-94, (*C.short)(unsafe.Pointer(&pos)), C.short(heal))
+		visibilityFXVampire(162, pos, heal)
 	}
 	damageBall(source, u, *value)
 	if u.ObjClass&4 != 0 && *value >= 20 {
@@ -293,7 +293,7 @@ func damageGenerator(u, source, weapon *server.Object, amount, kind int32) int32
 			pos.X = float32(float64(pos.X)*22 + float64(u.PosVec.X))
 			pos.Y = float32(float64(pos.Y)*22 + float64(u.PosVec.Y))
 		}
-		C.sub_523150(-16, 26, (*C.float)(unsafe.Pointer(&pos)))
+		visibilityFXPointExtra(240, 26, pos)
 		inventorySound(1001, u, 0, 0)
 	}
 	old := u.HealthData.Cur

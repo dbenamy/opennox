@@ -184,6 +184,7 @@ target build selection and linker evidence.
 | Item serialization ownership and old wand defaults prerequisite (C fixes) | 82 | 59,604 | +2 | 0 |
 | Item and reward serialization | 82 | 58,539 | −1,065 | 0 |
 | Monster and NPC serialization (including trailing separator) | 82 | 56,968 | −1,571 | 0 |
+| Visibility and effect reports, including orphan/EOF cleanup | 82 | 56,118 | −850 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

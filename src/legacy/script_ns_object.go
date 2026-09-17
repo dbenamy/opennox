@@ -5,7 +5,6 @@ package legacy
 
 unsigned int sub_516D00(nox_object_t* a1);
 int* nox_server_scriptMoveTo_5123C0(int a1, int a2);
-int nox_xxx_destroyEveryChatMB_528D60();
 int nox_xxx_playDialogFile_44D900(unsigned char* a1, int a2);
 int nox_xxx_inventoryServPlace_4F36F0(nox_object_t* a1p, nox_object_t* a2p, int a3, int a4);
 void nox_xxx_playerCanCarryItem_513B00(nox_object_t* a1p, nox_object_t* a2p);

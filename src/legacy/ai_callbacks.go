@@ -228,7 +228,7 @@ func monsterGolemStrike(u *server.Object) bool {
 	return *memmap.PtrUint32(0x5D4594, 2491576) != 0
 }
 func monsterPointFX(u *server.Object, code byte) {
-	C.nox_xxx_netSendPointFx_522FF0(C.char(code), (*C.float2)(unsafe.Pointer(&u.PosVec)))
+	visibilityFXPoint(byte(code), u.PosVec)
 }
 func monsterDeathExplosion(u *server.Object, big bool) {
 	radius, force, damage, size := float32(96), float32(100), 96, byte(128)
@@ -240,7 +240,7 @@ func monsterDeathExplosion(u *server.Object, big bool) {
 	}
 	spellEffectPushAround(u.PosVec, radius, 10, force, u, nil, 0)
 	C.nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.float(radius), 10, C.int(damage), 7, asObjectC(u), nil)
-	C.nox_xxx_netSparkExplosionFx_5231B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.char(size))
+	visibilityFXSpark(u.PosVec, byte(size))
 	GetServer().S().Audio.EventObj(42, u, 0, 0)
 	GetServer().DelayedDelete(u)
 }

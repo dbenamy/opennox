@@ -2,45 +2,39 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 57k lines** — **56,968 physical lines in 82 production
-`.c` files**, zero reference C. Latest qualified conversion removes **1,571 lines**
-across ten creature serialization functions, including one trailing separator.
+**Rough C remaining: about 56k lines** — **56,118 physical lines in 82 production
+`.c` files**, zero reference C. Latest qualified conversion removes **850 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — visibility/effects C baseline qualified
+## Current — visibility/effects conversion qualified
 
-Creature conversion **c1e41b4d** is committed/pushed. Production C remains
-**56,968 lines / 82 files**, zero reference C. This checkpoint freezes the next
-849-line / thirty-function block in GAME4_2.c, from 00522FF0 through EOF.
+Original C baseline **6e8dccf2** and supplemental scan-delay baseline **e2616865**
+are committed/pushed. The native conversion passes all gates: default/server/highres
+383 roots / 10,772 leaf cases each, 8,962 records / 65 groups, all production builds
+and ABI audits, static checks, exact known full-suite failures, gameplay, actual
+save/load and flat rendering with exact map regeneration. All gates finished;
+there are no active build/test sessions. Production qualification took 373.9s.
 
-Default/server/highres and separate repeat each pass **84 roots / 11,688 leaf
-cases**, no skips. All **11,458 records / 65 groups** match unchanged expectations.
-All three production builds and thirty C-symbol checks pass. Full suite exactly
-matches 1,553 known failures (15 packages pass / three fail / 32 skip). Gameplay
-matches 41 frames, actual save/load seven, flat rendering fourteen plus exact map
-regeneration. Static checks pass. All final gates share **1,954 unchanged source
-fingerprints**. See docs/porting/VISIBILITY_EFFECTS.md and visibility-effects-batch.json.
-Artifacts: build/port-visibility-effects/c-{default,server,highres,repeat}-final,
-c-production. No tests/builds remain running.
+Five Go files contain 509 lines of live behavior. Six C exports remain and 24 are
+retired. The unreachable sub_528030 and its fixture are deliberately removed;
+all live frozen expectations remain unchanged. See VISIBILITY_EFFECTS.md and
+VISIBILITY_SCAN_DELAY.md for review notes and evidence.
 
-Next: commit/push this frozen C baseline, install/review the native conversion,
-route Go callers directly, retire unused exports, then qualify/commit/push and
-continue. Six functions have external C callers; the rest can lose their C exports.
-The 47-line sub_528030 helper is completely orphaned: retire it and its baseline
-fixture rather than preserve unused Go solely for testing. Native checks explicitly
-omit that retired 3,360-record group; all live expectations remain unchanged.
+Next: baseline the connected object-report encoding/delivery batch (ten functions,
+about 499 C implementation lines in GAME4_1.c and GAME4.c). Preliminary ignored
+scope notes are under build/port-object-reports. Save/quest transition functions
+are excluded after body review. No next-batch source changes yet.
 
-Ignored native-{fx,reports,seen,sight}.go drafts under build/port-visibility-effects
-are incomplete/unreviewed and NOT installed. They still need exports, caller
-routing, primitive fixture dispatch, header cleanup and arithmetic/callback audit.
-Retain the small unrelated declarations if needed outside the removed C block.
+Disk cleanup preserves logs, captures, screenshots, saves, current/preceding batch
+binaries and original assets. Older rebuildable binaries were removed with an
+inventory at build/baseline/removed-old-binaries.json. Completed scenario asset
+copies are removed only after byte verification; each run has a restoration
+manifest for build/baseline/deduplicate-run-assets.py --restore RUN.
 
 Preserve untracked nox-iso-from-archive-org.7z and original assets. Source
-build/baseline/env.sh for Go commands. Do not edit Go/C/headers during tests/builds.
-Confident reversible decisions are recorded in the batch report; no substantial
-blocker or user question. Continue after each qualified commit/push.
+build/baseline/env.sh for Go commands. No user question or substantial blocker.
 
 <!-- /current-checkpoint -->
 

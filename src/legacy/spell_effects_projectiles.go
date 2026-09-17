@@ -42,7 +42,7 @@ func spellEffectBurn(id int32, a, b, c *server.Object, record unsafe.Pointer, le
 	if u := spellEffectNew(stateType(2487732, "MediumFlame")); u != nil {
 		spellEffectCreate(u, c, pos)
 		C.nox_xxx_unitSetDecayTime_511660(asObjectC(u), C.int(floatToInt32(float32(spellEffectScalar("BurnDuration")))))
-		C.nox_xxx_netSparkExplosionFx_5231B0((*C.float)(unsafe.Pointer(&u.PosVec)), 64)
+		visibilityFXSpark(u.PosVec, 64)
 	}
 	spellEffectPosAudio(id, 0, spellEffectPos(record, 4))
 	return 1
@@ -156,7 +156,7 @@ func spellEffectCleansingFlame(id int32, a, b, c *server.Object, record unsafe.P
 			s.Objs.AddToUpdatable(u)
 			u.ObjClass |= 0x40000000
 			*temporaryFloat(u.CObj(), 112) = 0
-			C.nox_xxx_netClientPredictLinear_523530(C.int(uintptr(u.CObj())))
+			visibilityFXPrediction(u)
 		} else {
 			GetServer().DelayedDelete(u)
 		}

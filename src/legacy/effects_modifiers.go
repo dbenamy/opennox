@@ -205,7 +205,7 @@ func effectsLightning(m *server.ModifierEff, it, u, target *server.Object) {
 	}
 	ccall.CallIntUPtr5(target.Damage, uintptr(target.CObj()), uintptr(u.CObj()), uintptr(it.CObj()), uintptr(uint32(effectsTruncWord(float64(m.AttackPreHit52.Valf)))), 9)
 	pos := target.PosVec
-	C.nox_xxx_netSendPointFx_522FF0(C.char(-127), (*C.float2)(unsafe.Pointer(&pos)))
+	visibilityFXPoint(129, pos)
 	inventorySound(225, target, 0, 0)
 }
 func effectsDrainMana(m *server.ModifierEff, u, target *server.Object, damage int32) {

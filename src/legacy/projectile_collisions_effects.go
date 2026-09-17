@@ -103,7 +103,7 @@ func projectileFireball(u, t *server.Object) {
 		inner = 0
 	}
 	projectileSplash(u, t, float32(float64(damage)*0.33333334), inner, damage>>1, 1)
-	C.nox_xxx_netSparkExplosionFx_5231B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.char(*(*byte)(data)))
+	visibilityFXSpark(u.PosVec, *(*byte)(data))
 	inventorySound(42, u, 0, 0)
 	C.nox_xxx_sMakeScorch_537AF0((*C.float)(unsafe.Pointer(&u.PosVec)), 2)
 	GetServer().DelayedDelete(u)

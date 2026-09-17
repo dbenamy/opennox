@@ -2,15 +2,21 @@
 
 ## Scope and status
 
-C baseline qualified after creature conversion `c1e41b4d`. Candidate:
-GAME4_2.c from 00522FF0 through EOF, **849 physical C lines / thirty functions**.
-Production C remains **56,968 lines / 82 files**, zero reference C. No conversion
-is installed yet.
+Native conversion qualified: **850 physical C lines removed**, leaving **56,118
+lines / 82 production files**, zero reference C. The original 849-line block plus
+its trailing separator is replaced by five Go files (509 lines): 29 live behaviors
+and retirement of one proven orphan. Six C exports remain; 24 are retired.
 
-Move viewport effect reports, special object updates, frame counters, monster
-perception and seen-enemy collections together. Preserve unrelated declarations.
-Eight helpers have no external nonheader callers and can become private Go.
-Caller and scope audits: build/port-visibility-effects/{candidate,caller-audit}.json.
+Default/server/highres each pass **383 affected roots / 10,772 leaf cases**, no
+skips. All **8,962 records / 65 groups** match unchanged live expectations,
+including supplemental scan-delay contracts. All three production builds and ABI
+audits pass. Static checks pass. The full suite exactly retains 1,553 known failure
+entries (15 packages pass / three fail / 32 skip). Gameplay, actual save/load and
+flat rendering with exact map regeneration pass. Production qualification took
+373.9s; source remained unchanged. Artifacts are under
+build/port-visibility-effects/native-{default,server,highres,production}.
+Native client SHA-256:
+`58483f6c8802ebb8b80e465fdf302df1d612f2d7aca8d10774f48f4d86add3f7`.
 
 ## Baseline and independent contracts
 
@@ -124,3 +130,12 @@ unreachability when helpers are called inside the selected block.
 Expectations are in the fixture files and batch manifest. Native conversion will
 retire only the explicitly orphaned health-throttle group; no live expectation
 will be regenerated.
+
+## Supplemental original-C coverage
+
+Native review added the no-enemy scan-delay branch. Supplemental baseline
+**e2616865** preserves the original C and adds 864 cases; both separate C runs
+pass. Real circular bounds correct an origin-only fixture setup; the original
+spatial-scan capture stays unchanged. See [VISIBILITY_SCAN_DELAY.md](VISIBILITY_SCAN_DELAY.md).
+Native qualification now expects **8,962 records / 65 groups** and selects
+**383 affected roots**. All live historical expectations remain unchanged.

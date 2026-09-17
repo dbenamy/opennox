@@ -15,21 +15,18 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Monster/NPC serialization is qualified: **1,571 physical C lines
-removed**, leaving **56,968 lines in 82 files**, with zero reference C.
+scheduled pause. Visibility and effect reports are qualified: **850 physical C
+lines removed**, leaving **56,118 lines in 82 files**, with zero reference C.
 
-All **4,908 frozen records / 44 groups** match. Default/server/highres each pass
-**309 affected roots / 6,645 leaf cases**, without skips. All production builds and
-export audits pass; the full asset suite retains exactly its known failures.
-Gameplay matches **41 frames**, actual save/load **seven**, and flat rendering
-**14 frames** with exact map regeneration.
+Default/server/highres each pass **383 affected roots / 10,772 leaf cases** without
+skips; **8,962 frozen records / 65 groups** match. All production builds and ABI
+audits pass, the full asset suite retains exactly its known failures, and headless
+gameplay, actual save/load and flat rendering pass with exact map regeneration.
 
-See [CREATURE_XFER.md](docs/porting/CREATURE_XFER.md) for evidence and review notes,
-including historical timestamp/reserved-word behavior and glyph prefix copying.
-The [visibility/effects C baseline](docs/porting/VISIBILITY_EFFECTS.md) is now
-qualified: 84 roots / 11,688 leaf cases in all three targets and a separate repeat,
-with all 11,458 records / 65 groups matching and production/integration gates passing.
-Next: install that conversion, retiring its proven orphaned throttle helper.
+See [VISIBILITY_EFFECTS.md](docs/porting/VISIBILITY_EFFECTS.md) for evidence and
+review notes, including retirement of an unreachable helper and supplemental
+original-C scan scheduling contracts. Next: baseline the connected object-report
+encoding/delivery batch, approximately 499 C implementation lines.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint; confident reversible
 decisions remain recorded for review.
 

@@ -166,11 +166,11 @@ func temporaryFist(u *server.Object) {
 		x := float32(radius + float64(u.PosVec.X))
 		u.ObjFlags |= 0x80000000
 		pos := types.Ptf(x, u.PosVec.Y)
-		C.nox_xxx_netSendPointFx_522FF0(C.char(-118), (*C.float2)(unsafe.Pointer(&pos)))
+		visibilityFXPoint(138, pos)
 		pos = types.Ptf(float32(float64(u.PosVec.X)-float64(*temporaryFloat(u.CObj(), 176))), u.PosVec.Y)
-		C.nox_xxx_netSendPointFx_522FF0(C.char(-118), (*C.float2)(unsafe.Pointer(&pos)))
+		visibilityFXPoint(138, pos)
 		pos = types.Ptf(u.PosVec.X, float32(float64(*temporaryFloat(u.CObj(), 176))+float64(u.PosVec.Y)))
-		C.nox_xxx_netSendPointFx_522FF0(C.char(-118), (*C.float2)(unsafe.Pointer(&pos)))
+		visibilityFXPoint(138, pos)
 		gameplayReportEarthquake(&u.PosVec, 30)
 	}
 	if u.ZVal >= 200 && int32(u.ObjFlags) < 0 {

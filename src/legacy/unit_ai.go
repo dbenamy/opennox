@@ -101,7 +101,7 @@ func Nox_xxx_unitIsDangerous_547120(a1 *server.Object, a2 *server.Object) {
 	monsterDangerous(a1, a2)
 }
 func Nox_xxx_checkIsKillable_528190(a1 *server.Object) int {
-	return int(C.nox_xxx_checkIsKillable_528190(asObjectC(a1)))
+	return int(visibilityKillable(a1))
 }
 func Nox_xxx_polygonIsPlayerInPolygon_4217B0(a1 unsafe.Pointer, a2 int) *Nox_player_polygon_check_data {
 	return (*Nox_player_polygon_check_data)(unsafe.Pointer(C.nox_xxx_polygonIsPlayerInPolygon_4217B0((*C.int2)(a1), C.int(a2))))
@@ -119,7 +119,7 @@ func Nox_xxx_mobAction_5469B0(a1 *server.Object) {
 	monsterIdleAudio(a1)
 }
 func Nox_xxx_unitUpdateSightMB_5281F0(a1 *server.Object) {
-	C.nox_xxx_unitUpdateSightMB_5281F0(asObjectC(a1))
+	visibilityUpdateSight(a1)
 }
 func Nox_xxx_monsterMainAIFn_547210(a1 *server.Object) {
 	monsterMainAI(a1)

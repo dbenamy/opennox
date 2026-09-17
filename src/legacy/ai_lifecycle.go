@@ -148,7 +148,7 @@ func lifecycleDeadUpdate(u *server.Object) {
 	ud := u.UpdateDataMonster()
 	if lifecycleIsZombie(u) {
 		if ud.StatusFlags&0x80000 != 0 {
-			C.nox_xxx_netSparkExplosionFx_5231B0((*C.float)(unsafe.Pointer(&u.PosVec)), 100)
+			visibilityFXSpark(u.PosVec, 100)
 			lifecycleBurnDelete(u)
 		} else if GetServer().S().Frame()-ud.Field137 > ud.Field123 && ud.StatusFlags&0x100000 == 0 && ud.CurrentEnemy != nil {
 			lifecycleRaiseZombie(u)

@@ -175,7 +175,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 	objectivePickupBuffs(t)
 }
 func objectivePointFX(id byte, u *server.Object) int16 {
-	return int16(C.nox_xxx_netSendPointFx_522FF0(C.char(id), (*C.float2)(unsafe.Pointer(&u.PosVec))))
+	return int16(visibilityFXPoint(byte(id), u.PosVec))
 }
 func objectiveResetMotion(u *server.Object) {
 	for _, off := range []int{80, 84, 88, 100} {
