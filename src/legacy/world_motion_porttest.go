@@ -3,12 +3,18 @@
 package legacy
 
 /*
+#include <stdlib.h>
 #include "GAME4_1.h"
 #include "GAME4_3.h"
 #include "GAME5.h"
 extern uint32_t dword_5d4594_2488620;
 extern uint32_t dword_5d4594_2386576, dword_5d4594_2386564;
 static void motionSentryCandidate(nox_object_t* target,nox_object_t* sentry,float4* ray) {uintptr_t context[2]={(uintptr_t)sentry,(uintptr_t)ray};nox_xxx_sentry_511020((int)target,(int)context);}
+static uint32_t motionRadialWords[65];
+static void motionRadialObserve(uint32_t* unit,uint32_t code) {uint32_t n=motionRadialWords[0];if(n>=32)abort();motionRadialWords[1+2*n]=(uintptr_t)unit;motionRadialWords[2+2*n]=code;motionRadialWords[0]=n+1;}
+static uint32_t motionRadialRun(float2* point,float radius,uint32_t code) {motionRadialWords[0]=0;return sub_518040((int)point,radius,(int)motionRadialObserve,code);}
+
+static uint32_t* motionRadialSnapshot(void) {return motionRadialWords;}
 */
 import "C"
 import (
@@ -159,4 +165,15 @@ func PortTestWorldMotionTimed(op string, u, target *server.Object, arg int32) in
 		panic(op)
 	}
 	return 0
+}
+
+func PortTestWorldMotionRadial(p *types.Pointf, radius float32, code uint32) (uint32, [][2]uint32) {
+	rv := uint32(C.motionRadialRun((*C.float2)(unsafe.Pointer(p)), C.float(radius), C.uint32_t(code)))
+	words := (*[65]uint32)(unsafe.Pointer(C.motionRadialSnapshot()))
+	var rows [][2]uint32
+	for i := uint32(0); i < words[0]; i++ {
+		rows = append(rows, [2]uint32{words[1+2*i], words[2+2*i]})
+	}
+	*words = [65]uint32{}
+	return rv, rows
 }

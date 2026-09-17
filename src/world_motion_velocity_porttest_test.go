@@ -111,5 +111,5 @@ func TestWorldMotionVelocity(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "world-motion-velocity", rows, "")
+	spellbookCapture(t, "world-motion-velocity", rows, "4c75c39ed3e8685d10a1f6d95fa3e5363e77fff909ec3cd0a951dc1920482284")
 }

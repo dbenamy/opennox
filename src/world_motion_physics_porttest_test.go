@@ -62,7 +62,7 @@ func TestWorldMotionProjectileIntegration(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "world-motion-projectile-integration", rows, "")
+	spellbookCapture(t, "world-motion-projectile-integration", rows, "0d2adb0fe5e032bfb917e37e4211d031278645c441885e73be6f28ea50c4cf47")
 }
 
 func TestWorldMotionFall(t *testing.T) {
@@ -135,7 +135,7 @@ func TestWorldMotionFall(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "world-motion-fall", rows, "")
+	spellbookCapture(t, "world-motion-fall", rows, "9639947135da4e35ee81d9b0ef80fb518cecf2d79cb1e8710654e66e71e44903")
 }
 
 func TestWorldMotionActivationWrappers(t *testing.T) {
@@ -190,5 +190,5 @@ func TestWorldMotionActivationWrappers(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "world-motion-activation-wrappers", rows, "")
+	spellbookCapture(t, "world-motion-activation-wrappers", rows, "5f7e9e7038d1f9d883f1c976a0bac3ffb126a6baa7459eb09c131c76449694ff")
 }

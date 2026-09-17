@@ -60,7 +60,12 @@ func TestWorldMotionMover(t *testing.T) {
 			for _, powered := range []bool{false, true} {
 				for _, missing := range []bool{false, true} {
 					for links := 0; links < 3; links++ {
-						for motion := 0; motion < 3; motion++ {
+						for motion := 0; motion < 12; motion++ {
+							// Extra initialization cases check signed speed conversion without
+							// multiplying every unrelated state combination.
+							if motion >= 5 && (state != 0 || target != 5 || !powered || missing || links != 0) {
+								continue
+							}
 							// State 1 requires a valid current waypoint in ordinary saved state.
 							if state == 1 && missing {
 								continue
@@ -88,6 +93,14 @@ func TestWorldMotionMover(t *testing.T) {
 								u.PosVec = types.Pointf{120, 120}
 								u.NewPos = u.PosVec
 							}
+							if motion >= 3 {
+								u.PosVec = types.Pointf{100, 110}
+								if motion == 4 {
+									u.PosVec.X = 110
+								}
+								u.NewPos = u.PosVec
+								u.VelVec = types.Pointf{1, 0}
+							}
 							if powered {
 								u.ObjFlags |= 0x1000000
 							}
@@ -106,6 +119,9 @@ func TestWorldMotionMover(t *testing.T) {
 							*words = [10]uint32{}
 							words[0] = uint32(state)
 							words[1] = 8
+							if motion >= 5 {
+								words[1] = uint32([]int32{-2147483648, -9, -1, 0, 1, 9, 2147483647}[motion-5])
+							}
 							words[2] = wps[0].Index
 							words[4] = wps[0].Index
 							words[6] = wps[1].Index
@@ -136,7 +152,7 @@ func TestWorldMotionMover(t *testing.T) {
 									t.Fatal("invalid/stopped mover remained updatable", state, target)
 								}
 							}
-							if target >= 4 && state == 0 && powered && !missing && (got[0] != 1 || u.PosVec != v.PosVec || u.SpeedCur != 2 || u.SpeedBase != 2) {
+							if target >= 4 && state == 0 && powered && !missing && (got[0] != 1 || u.PosVec != v.PosVec || u.SpeedCur != float32(float64(int32(words[1]))*.25) || u.SpeedBase != float32(float64(int32(words[1]))*.25)) {
 								t.Fatal("mover initialization contract", got, u.PosVec, v.PosVec)
 							}
 							if target >= 4 && state == 1 && !powered && got[0] != 2 {
@@ -147,6 +163,11 @@ func TestWorldMotionMover(t *testing.T) {
 							}
 							if target >= 4 && state == 1 && powered && motion == 1 && math.Float32bits(u.VelVec.X) == 0 {
 								t.Fatal("axis motion lost initialized velocity")
+							}
+							if target >= 4 && state == 1 && powered && motion >= 3 {
+								if math.Float32bits(u.VelVec.Y) != 0x00800000 || (motion == 4 && math.Float32bits(u.VelVec.X) != 0x00800000) {
+									t.Fatal("zero-axis mover velocity must use FLT_MIN", motion, u.VelVec)
+								}
 							}
 							head := uint32(0)
 							if o.s.Objs.UpdatableList != nil {
@@ -159,5 +180,5 @@ func TestWorldMotionMover(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "world-motion-mover", rows, "")
+	spellbookCapture(t, "world-motion-mover", rows, "77cfed5e8d3e5e56b21b9d47c3d6138d18280dba1f5074bade9c9f059010fa6d")
 }

@@ -69,5 +69,5 @@ func TestWorldMotionShaftFall(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "world-motion-shaft-fall", rows, "")
+	spellbookCapture(t, "world-motion-shaft-fall", rows, "2109921813e9f353809b61f36257002cbcd2e13237942afd714fc681ff2f48c6")
 }

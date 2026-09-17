@@ -2,6 +2,10 @@
 
 ## Scope and status
 
+**Corrected-C baseline is frozen and fully qualified. Go conversion is next.**
+The sections below retain prerequisite findings; final validation is recorded in
+[Qualified corrected-C baseline](#qualified-corrected-c-baseline).
+
 Parent collision-core conversion **950f8f22** is qualified and pushed. This batch
 selects **30 live functions / 1,072 C body lines**: sentry registration, beams and
 reporting; timed decay queues; activation and velocity updates; radial scans;
@@ -98,3 +102,45 @@ Shooting traps, radial scan and the remaining spring/tile/monster velocity
 integration cases precede the full baseline freeze. Current C count is 41,887
 physical lines in 74 files, zero reference C: −3 orphan lines and +4 for the
 trigger correction relative to the qualified collision-core parent.
+
+## Completed fixture coverage before freeze
+
+The expanded focused run physics-11 passes all 25 root groups. Real radial
+indexing, trap enemy/facing/vision admission, actual projectile allocation and
+arrow FX now join the earlier corpus. Projectile allocations are captured and
+released between shots so the fixed test object pool remains reusable. The
+velocity integration cases exercise real springs (including activation of the
+second endpoint), actual tile-grid lookup/Hit sentinel, monster action 67,
+freeze/buff force suppression and movement synchronization thresholds.
+
+Two fixture prerequisites were exposed by the positive trap contract: the shipped
+576-byte aiming table at 0x587000:202504 must be supplied, and target objects must
+have a registered nonzero type. Type zero aliases absent fish IDs in the real
+enemy classifier. The owner now reuses PortTestCombatTables and a dedicated
+MotionTestTarget type. Shared collision ownership already restores direction
+scratch words. No production aiming or enemy-classification behavior changed.
+
+Mover contracts additionally check axis/coincident destinations returning FLT_MIN
+(0x00800000), and signed 32-bit speed initialization boundaries. The affected
+selection contains the preceding collision-core corpus plus all world-motion,
+AI-lifecycle caller and tile-worklist shared-owner contracts (690 root names;
+target build tags can omit a root). Full qualification is still pending.
+
+## Qualified corrected-C baseline
+
+All 25 focused roots and 24 captures / 9,633 records repeat unchanged. The affected
+sweeps pass 690/689/690 roots (43,124/43,123/43,124 including subtests), zero skips,
+and 245 frozen captures each in default/server/highres. Durations are
+323.62/402.75/334.67s. Fresh production passes in 380.87s: three 386/SSE2/CGO
+binaries, retained/retired symbols and no test helpers, exact known 1,553 failure
+entries (15 pass / 3 fail / 32 no-test packages), gameplay/save-load and flat-map
+regeneration. All five gates share a 2,236-file source manifest. No source job is
+active. world-motion-qualification.json records the evidence.
+
+The initial Go drafts are uninstalled. Review of the newly built C assembly shows
+that projectile integration retains both velocity intermediates through position
+addition; velocity force sums and radial/mover deltas also remain wide. Declared
+float locals alone do not identify rounding boundaries. The draft is being
+reviewed against actual stores/reloads before integration; frozen expectations
+remain unchanged. The reference audit identifies six needed world-motion C
+exports and nine collision-core exports that become unnecessary after conversion.

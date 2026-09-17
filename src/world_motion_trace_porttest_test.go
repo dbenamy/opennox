@@ -84,7 +84,7 @@ func TestWorldMotionProjectileTrace(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "world-motion-projectile-trace", rows, "")
+	spellbookCapture(t, "world-motion-projectile-trace", rows, "1049b231aa90410dfac004bc87a860a2dd75f47d94ac84ddb80ca80061ceec3c")
 }
 
 func TestWorldMotionProjectileDispatch(t *testing.T) {
@@ -166,5 +166,5 @@ func TestWorldMotionProjectileDispatch(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "world-motion-projectile-dispatch", rows, "")
+	spellbookCapture(t, "world-motion-projectile-dispatch", rows, "478ccf83f4cf473d4d318cba128c7d4b619d471ac915ba6248a14c6e0b441645")
 }

@@ -9,41 +9,44 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — world-motion corrected-C baseline recovery checkpoint
+## Current — world-motion corrected-C baseline qualified
 
-Qualified collision-core parent: **950f8f22, pushed**. Scope is **30 live
-functions / 1,072 C body lines**. No Go conversion or frozen baseline yet.
+Qualified collision-core parent: **950f8f22, pushed**; partial recovery **71888d5e,
+pushed**. World-motion scope: **30 live functions / 1,072 C body lines**. Go
+conversion is next; no native source is installed yet.
 
-Corrected-C checks pass twice: **18 roots, 17 captures / 8,122 records**,
-zero skips. physics-7.log passes in 0.278s; recovery-repeat-2 repeats every
-capture exactly and verifies unchanged source. Both sessions are joined; no
-active build. Static mapped-state checks also pass (static-2.log).
+Frozen focused baseline passes twice: **25 roots, 24 captures / 9,633 records**.
+Affected default/server/highres sweeps pass **690/689/690 roots**, and
+**43,124/43,123/43,124 tests including subtests**, no skips. All **245 captures**
+match across targets (323.62/402.75/334.67s). Fresh corrected-C production passes
+in **380.87s**: three binaries/ABI, exact 1,553 known asset failure entries
+(15 pass / 3 fail / 32 no-test packages), gameplay, save/load and flat regeneration.
+All gates share an unchanged **2,236-file source manifest**. All sessions joined.
+See WORLD_MOTION.md and world-motion-{captures,qualification,selection}.json.
 
-Two reversible C corrections are reproduced and regression-tested: sentry
-removal tests bit 31 instead of unsigned `<0`; trigger contact tolerates a nil
-result from an already-disabled script. The latter previously crashed on the
-second contact with a one-shot script. One proven orphan getter is removed.
-Current working C is **41,887 lines / 74 files / zero reference**, one line above
-the qualified parent after the corrections/removal. See WORLD_MOTION.md and
-world-motion-{scope,recovery}.json for details and the qualification limits.
+Corrected prerequisites: sentry removal tests bit 31 rather than unsigned `<0`;
+trigger tolerates a nil result from an already-disabled one-shot script. Both
+were independently reproduced before correction. One orphan getter is removed.
+C remains **41,887 lines / 74 files / zero reference**, +1 vs qualified parent.
 
-Covered: sentry lists/beams/contacts/reporting, decay queues/expiry, projectile
-integration/tracing/dispatch, activation, fall/bounce/shaft return, velocity,
-waypoint movers, scorch allocation/decay/RNG, and actual-VM trigger admission.
-Next: install/review the still-unused radial draft; add shooting trap and remaining
-spring/tile/monster velocity integration contracts. Then repeat/freeze the whole
-scope, run default/server/highres affected sweeps and fresh corrected-C production
-qualification, commit/push the baseline, and translate to Go. No user blocker.
+Coverage includes queues, sentry beams/contacts/reporting, projectile motion and
+tracing, activation, fall/shaft return, velocity/springs/floors/monster actions,
+waypoints and signed speed boundaries, scorch allocation/decay/RNG, real-VM
+triggers, radial indexing, trap target admission and real projectiles/FX.
+The trap owner reuses shipped facing data and a registered nonzero target type.
+Zero type aliases missing fish IDs in enemy classification; this was fixture-only.
 
-All installed fixture/adaptor drafts under build/port-world-motion are consumed;
-work from src. Only radial-draft.go and radial-adapter-draft.txt remain uninstalled.
-Original proposal/disassembly are historical; corrected-c-functions.json reflects
-both fixes. Do not rerun consumed install/cleanup scripts.
+Next: install/review native conversion, switch callers/fixtures to Go, retire
+unused exports, compare frozen contracts, qualify three targets and fresh
+production, document new C count, commit/push and continue. No user blocker.
+Uninstalled **native-draft/** files under build/port-world-motion contain initial
+implementations; read their REVIEW.md before using them. They are uncompiled and
+need completed arithmetic/ABI review. Corrected-C disassembly is retained there.
+Most earlier fixture installation drafts and all cleanup scripts are consumed.
 
-Disk cleanup removed **14.96 GiB** of rebuildable Go cache entries last touched
-more than six hours earlier; **24 GiB** free afterward. Recent cache entries,
-module downloads, assets, logs, captures and qualified binaries remain intact.
-Local audit: build/cleanup/cache-20260917.json.
+Disk cleanup removed **14.96 GiB** of rebuildable cache; about **23 GiB** free.
+Original assets/archive, module downloads, logs and qualified binaries remain.
+Local audit: build/cleanup/cache-20260917.json. Preserve the untracked archive.
 
 ## Qualified parent — collision-core Go conversion (950f8f22, pushed)
 

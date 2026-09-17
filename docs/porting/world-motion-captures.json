@@ -1,0 +1,126 @@
+{
+  "status": "frozen corrected C baseline; three targets and fresh production qualified",
+  "captures": [
+    {
+      "label": "world-motion-activation-wrappers",
+      "sha256": "5f7e9e7038d1f9d883f1c976a0bac3ffb126a6baa7459eb09c131c76449694ff",
+      "records": 192
+    },
+    {
+      "label": "world-motion-decay-expiry",
+      "sha256": "8594706fa8d642fc7b04d80f71a8129cf05a56bbf817dbd47c69660f72c757de",
+      "records": 28
+    },
+    {
+      "label": "world-motion-decay-queue",
+      "sha256": "dedfa60ccf2d8ee0881e3343309c8d40fb06a4eccf5bdd1ee6dec61c75eeff6f",
+      "records": 60
+    },
+    {
+      "label": "world-motion-fall",
+      "sha256": "9639947135da4e35ee81d9b0ef80fb518cecf2d79cb1e8710654e66e71e44903",
+      "records": 3456
+    },
+    {
+      "label": "world-motion-mover",
+      "sha256": "77cfed5e8d3e5e56b21b9d47c3d6138d18280dba1f5074bade9c9f059010fa6d",
+      "records": 1627
+    },
+    {
+      "label": "world-motion-projectile-dispatch",
+      "sha256": "478ccf83f4cf473d4d318cba128c7d4b619d471ac915ba6248a14c6e0b441645",
+      "records": 40
+    },
+    {
+      "label": "world-motion-projectile-integration",
+      "sha256": "0d2adb0fe5e032bfb917e37e4211d031278645c441885e73be6f28ea50c4cf47",
+      "records": 1152
+    },
+    {
+      "label": "world-motion-projectile-trace",
+      "sha256": "1049b231aa90410dfac004bc87a860a2dd75f47d94ac84ddb80ca80061ceec3c",
+      "records": 72
+    },
+    {
+      "label": "world-motion-radial-scan",
+      "sha256": "90863b691e91f392e4a7c194785655a39c041f9a391b1049024bf0d4f5853577",
+      "records": 54
+    },
+    {
+      "label": "world-motion-scorch",
+      "sha256": "4eb227450d2b6cc20d530923f59bd129613da8941f692d6008b391576bc40421",
+      "records": 160
+    },
+    {
+      "label": "world-motion-sentry-beam",
+      "sha256": "0e94eebfaf4411f215eb3c61a0028277163eb7bd29cc62964cc58b3dd8fe1d59",
+      "records": 252
+    },
+    {
+      "label": "world-motion-sentry-contacts",
+      "sha256": "2db2ee309bdcf5c60275dd723a6d32104d0c86fa68b7387c4d3dc32da82894e0",
+      "records": 640
+    },
+    {
+      "label": "world-motion-sentry-list",
+      "sha256": "3d5b8bd92e6fa7b7891ab02ae78f9f9ba68838c6617159f5405c16a2285eb4ac",
+      "records": 216
+    },
+    {
+      "label": "world-motion-sentry-packet",
+      "sha256": "4ba493dbb9e9c526c25317f0cd04c9f462e5a344afc4530b52f184545bae3859",
+      "records": 26
+    },
+    {
+      "label": "world-motion-sentry-reporting",
+      "sha256": "f30dba050bd6a3a64b64f211530a782b14175ba4f41cf59644011b67cf6639f4",
+      "records": 16
+    },
+    {
+      "label": "world-motion-shaft-fall",
+      "sha256": "2109921813e9f353809b61f36257002cbcd2e13237942afd714fc681ff2f48c6",
+      "records": 120
+    },
+    {
+      "label": "world-motion-trap-projectile",
+      "sha256": "712362128d45a3c215cf92316c77aa0daeee37e84cb4970bbd3a82d6ae24c581",
+      "records": 162
+    },
+    {
+      "label": "world-motion-trap-scan",
+      "sha256": "62ba07d987e3c2596d82c84ddea181f920df0af1e2877773dfc0d6b5c941ffdd",
+      "records": 180
+    },
+    {
+      "label": "world-motion-trap-update",
+      "sha256": "b631cb3eb8114b2067c493c670980eca66afedf3826d2e72f229c17b8b227de4",
+      "records": 252
+    },
+    {
+      "label": "world-motion-trigger",
+      "sha256": "afe829f8057a68e7b1e132ba5e902432e9530e238f71a3a32c859bca66f7c388",
+      "records": 432
+    },
+    {
+      "label": "world-motion-velocity-floor-monster",
+      "sha256": "ae49812caa6a3b740c0f09b5321e9727fb67e934be678940f560c50c773d9041",
+      "records": 96
+    },
+    {
+      "label": "world-motion-velocity-springs",
+      "sha256": "9df1b1d145760f4769076502c458b3ed614cc08a56d4bd139704d5a025d4adee",
+      "records": 96
+    },
+    {
+      "label": "world-motion-velocity-sync-threshold",
+      "sha256": "1e9bf7ba6e394e0a1e633d3000355ca5633a18fd8a665116b58f0791bea8b3d6",
+      "records": 16
+    },
+    {
+      "label": "world-motion-velocity",
+      "sha256": "4c75c39ed3e8685d10a1f6d95fa3e5363e77fff909ec3cd0a951dc1920482284",
+      "records": 288
+    }
+  ],
+  "records": 9633
+}

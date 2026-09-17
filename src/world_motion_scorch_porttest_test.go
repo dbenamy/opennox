@@ -118,5 +118,5 @@ func TestWorldMotionScorch(t *testing.T) {
 			t.Cleanup(func() { o.s.Objs.Pending = nil; *queues["decay"] = 0 })
 		})
 	}
-	spellbookCapture(t, "world-motion-scorch", rows, "")
+	spellbookCapture(t, "world-motion-scorch", rows, "4eb227450d2b6cc20d530923f59bd129613da8941f692d6008b391576bc40421")
 }

@@ -106,5 +106,5 @@ func TestWorldMotionTrigger(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "world-motion-trigger", rows, "")
+	spellbookCapture(t, "world-motion-trigger", rows, "afe829f8057a68e7b1e132ba5e902432e9530e238f71a3a32c859bca66f7c388")
 }

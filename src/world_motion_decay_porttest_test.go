@@ -128,7 +128,7 @@ func TestWorldMotionDecayQueue(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "world-motion-decay-queue", rows, "")
+	spellbookCapture(t, "world-motion-decay-queue", rows, "dedfa60ccf2d8ee0881e3343309c8d40fb06a4eccf5bdd1ee6dec61c75eeff6f")
 }
 func TestWorldMotionDecayExpiry(t *testing.T) {
 	o := newCollisionCoreOwner(t)
@@ -210,5 +210,5 @@ func TestWorldMotionDecayExpiry(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "world-motion-decay-expiry", rows, "")
+	spellbookCapture(t, "world-motion-decay-expiry", rows, "8594706fa8d642fc7b04d80f71a8129cf05a56bbf817dbd47c69660f72c757de")
 }

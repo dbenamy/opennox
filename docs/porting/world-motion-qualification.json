@@ -1,0 +1,158 @@
+{
+  "status": "corrected C baseline qualified; native conversion pending",
+  "qualified_parent": "950f8f22",
+  "recovery_commit": "71888d5e",
+  "source_files": 2236,
+  "source_manifest_sha256": "16f93b98ecf79e23c9b774d68a2e09f6b2ce9239bf1aab12999aa770a1868487",
+  "runs": {
+    "c-focused": {
+      "success": true,
+      "seconds": 50.0830124898348,
+      "roots": 25,
+      "skips": 0,
+      "tests_including_subtests": 27,
+      "captures": 24,
+      "records": 9633
+    },
+    "c-default": {
+      "success": true,
+      "seconds": 323.6165958819911,
+      "roots": 690,
+      "skips": 0,
+      "tests_including_subtests": 43124,
+      "captures": 245,
+      "records": 114004
+    },
+    "c-server": {
+      "success": true,
+      "seconds": 402.7460996489972,
+      "roots": 689,
+      "skips": 0,
+      "tests_including_subtests": 43123,
+      "captures": 245,
+      "records": 114004
+    },
+    "c-highres": {
+      "success": true,
+      "seconds": 334.67102096788585,
+      "roots": 690,
+      "skips": 0,
+      "tests_including_subtests": 43124,
+      "captures": 245,
+      "records": 114004
+    },
+    "c-production": {
+      "success": true,
+      "seconds": 380.8715608411003
+    }
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 70.1008474919945,
+        "sha256": "35bfb5a938abaa286bc8a80a2aca8bb9c896c9459aeae3b5f0e55f5980c64d6d",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.207431362941861,
+        "sha256": "676f8831bd790c8bb26381199059aa8a4d3ed18b33fee45819cd9333b2a909e7",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 76.06178401014768,
+        "sha256": "49c7f8c0cbbddb4647c9d40cb549732193e7b5789c723eb0a0c36a655982f0ea",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "world-motion-c": {
+        "exit": 0,
+        "wall_seconds": 69.36701690405607,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 68.75938614597544,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "35bfb5a938abaa286bc8a80a2aca8bb9c896c9459aeae3b5f0e55f5980c64d6d",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-world-motion/c-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/world-motion-c/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Corrected C world-motion baseline: sentry unlink and disabled trigger corrections; contracts precede Go conversion.",
+          "removed_maps": 0
+        }
+      },
+      "world-motion-save-c": {
+        "exit": 0,
+        "wall_seconds": 46.575301042059436,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 46.00901671918109,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "35bfb5a938abaa286bc8a80a2aca8bb9c896c9459aeae3b5f0e55f5980c64d6d",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-world-motion/c-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/world-motion-save-c/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Corrected C world-motion baseline: sentry unlink and disabled trigger corrections; contracts precede Go conversion.",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "7a8bc27678543aa215d193821e2dd28ab3676363fdccd3620520c5f7a2061a8b"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 53.87703872798011,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "working_c_lines": 41887,
+  "production_c_files": 74,
+  "reference_c_lines": 0
+}

@@ -22,8 +22,8 @@ pass. See [COLLISION_CORE.md](docs/porting/COLLISION_CORE.md).
 
 Current production C is **41,887 physical lines in 74 files**, with zero reference C.
 The collision-core conversion removed **1,096 lines**. The asset suite retains its
-exact three known failing packages. The world-motion C baseline is in progress, with regression-tested sentry unlink
-and one-shot trigger corrections. Its full qualification remains pending.
+exact three known failing packages. The world-motion corrected-C baseline is now frozen and fully qualified, including
+sentry unlink and one-shot trigger corrections. Its Go conversion is next.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target

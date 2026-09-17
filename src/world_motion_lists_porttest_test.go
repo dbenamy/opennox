@@ -117,5 +117,5 @@ func TestWorldMotionSentryList(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "world-motion-sentry-list", rows, "")
+	spellbookCapture(t, "world-motion-sentry-list", rows, "3d5b8bd92e6fa7b7891ab02ae78f9f9ba68838c6617159f5405c16a2285eb4ac")
 }

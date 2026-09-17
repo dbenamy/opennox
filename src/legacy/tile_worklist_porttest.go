@@ -226,3 +226,34 @@ func portTestMainGrid() (configure func(uint32), intact func() bool, free func()
 	}
 	return
 }
+
+// Reuse the owned tile grid used by the worklist contracts. Both tile halves
+// receive the requested floor kind; the production world-to-tile lookup stays live.
+func PortTestWorldMotionTileGrid() (func(int32), func() bool, func()) {
+	old := C.portTestWorklistGridGet()
+	grid, want := C.portTestWorklistGridNew(), C.portTestWorklistGridNew()
+	if grid == nil || want == nil {
+		C.portTestWorklistGridFree(grid)
+		C.portTestWorklistGridFree(want)
+		panic("world motion tile allocation")
+	}
+	C.portTestWorklistGridSet(grid)
+	configure := func(kind int32) {
+		for _, table := range []**C.obj_5D4594_2650668_t{grid, want} {
+			for _, p := range unsafe.Slice(table, 128) {
+				for i := range unsafe.Slice(p, 128) {
+					row := unsafe.Slice(p, 128)
+					row[i].field_1 = C.int(kind)
+					row[i].field_6 = C.int(kind)
+				}
+			}
+		}
+	}
+	return configure, func() bool {
+		return C.portTestWorklistGridGet() == grid && C.portTestWorklistGridEqual(grid, want) != 0
+	}, func() {
+		C.portTestWorklistGridSet(old)
+		C.portTestWorklistGridFree(grid)
+		C.portTestWorklistGridFree(want)
+	}
+}

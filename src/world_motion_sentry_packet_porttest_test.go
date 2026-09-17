@@ -61,5 +61,5 @@ func TestWorldMotionSentryPacket(t *testing.T) {
 			rows = append(rows, row{[4]uint32{math.Float32bits(v), math.Float32bits(v + 1), math.Float32bits(v + 2), math.Float32bits(v + 3)}, full, rv, append([]byte(nil), packet...), [2]uint32{scratch[2], scratch[3]}})
 		}
 	}
-	spellbookCapture(t, "world-motion-sentry-packet", rows, "")
+	spellbookCapture(t, "world-motion-sentry-packet", rows, "4ba493dbb9e9c526c25317f0cd04c9f462e5a344afc4530b52f184545bae3859")
 }

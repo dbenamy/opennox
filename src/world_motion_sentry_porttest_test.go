@@ -90,7 +90,7 @@ func TestWorldMotionSentryBeam(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "world-motion-sentry-beam", rows, "")
+	spellbookCapture(t, "world-motion-sentry-beam", rows, "0e94eebfaf4411f215eb3c61a0028277163eb7bd29cc62964cc58b3dd8fe1d59")
 }
 
 func TestWorldMotionSentryContacts(t *testing.T) {
@@ -175,7 +175,7 @@ func TestWorldMotionSentryContacts(t *testing.T) {
 		}
 		restoreFlags()
 	}
-	spellbookCapture(t, "world-motion-sentry-contacts", rows, "")
+	spellbookCapture(t, "world-motion-sentry-contacts", rows, "2db2ee309bdcf5c60275dd723a6d32104d0c86fa68b7387c4d3dc32da82894e0")
 }
 
 func TestWorldMotionSentryReporting(t *testing.T) {
@@ -234,5 +234,5 @@ func TestWorldMotionSentryReporting(t *testing.T) {
 			rows = append(rows, row{motionBits(u.PosVec), motionBits(u.Pos39), powered, math.Float32bits(angle), append([]byte(nil), packet...)})
 		}
 	}
-	spellbookCapture(t, "world-motion-sentry-reporting", rows, "")
+	spellbookCapture(t, "world-motion-sentry-reporting", rows, "f30dba050bd6a3a64b64f211530a782b14175ba4f41cf59644011b67cf6639f4")
 }
