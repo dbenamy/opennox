@@ -2,42 +2,39 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 61k lines** — **60,779 physical lines in 82 production
-`.c` files**, zero reference C. Latest conversion removed **296 lines** (268 light
-animation plus 28 unused map helpers); the next ownership prerequisite adds four. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 60k lines** — **59,602 physical lines in 82 production
+`.c` files**, zero reference C. Latest qualified conversion removes **1,177 lines**
+across eighteen object-serialization functions. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — server object serialization C baseline
+## Current — server object serialization qualified
 
-Colored-light conversion **82b2c821**, save/load integration **bc84cc35**, and
-rejected-object ownership fixes **b55e295f** are committed and pushed. The current
-batch covers eighteen functions in GAME3_3.c, 004F3E30 through EOF: **1,177 C
-lines**, including four ownership guards. None are translated in the checkout yet.
+C baseline **62a006d2** is committed and pushed. The native conversion now passes
+focused checks, all three accumulated target sweeps, static checking, all three
+production builds/ABI audits, exact known full-suite comparison and normal,
+actual save/load and flat/map-regeneration integration. See OBJECT_XFER.md for
+counts, timings, source identity and the documented prerequisite corrections.
 
-The expanded C baseline passes 21 roots / 1,297 leaf cases in default, repeat,
-server and highres, with no skips; all twelve hashes / 1,174 full object-state
-records match. Static checking passes. Current-source gameplay matches 41 frames,
-actual save/load and its repeat match seven each, and flat rendering matches 14
-with exact map regeneration. c-accumulated passes all 1,198 selected checks (1,181 root), with only the existing
-opt-in probe skip. The staged archive matches all six qualified phases across
-1,890 source files. Commit/push the baseline, then install the reviewed Go drafts.
+Eighteen functions / 1,177 C lines move to four legacy/object_xfer Go files.
+Seventeen interfaces remain as Go-backed C callbacks/exports; the private historical
+reader is retired. Go common/inventory/placement callers invoke Go directly.
+The first installed native run matched all frozen records; no goldens changed.
+Finish staged-source proof, commit and push this qualified conversion, then continue.
 
-One newly added stale-TOC case found the C factory adapter bypassing the existing
-nil-type guard. The local adapter now calls Server.NewObjectByTypeInd; corrected
-final phases have suffix 2. Original failed phases are not qualification evidence.
-All previously covered expectations are unchanged. See OBJECT_XFER.md and
-DECISIONS.md for evidence and the earlier ownership corrections.
+Next scope: twelve adjacent GAME4.c item/reward callbacks / 1,063 C lines. Retain
+the unrelated declarations after RewardMarker. Ignored build/port-item-xfer holds
+an audit and uninstalled, uncompiled fixture/implementation drafts. Review them
+before use. The audit identifies a likely failed-child ownership defect in
+MonsterGenerator and potentially undefined old charged-weapon attribute padding;
+demonstrate each against C before choosing any prerequisite correction. Use focused
+affected checks for that batch; this completed common-serialization milestone has
+already run the full accumulated corpus.
 
-Ignored build/port-object-xfer contains common_native.draft, typed_native.draft,
-world_native.draft, exports_native.draft and install_native.py. These are reviewed
-preparatory drafts, not compiled or installed. Other old *.draft files may be
-stale; never overwrite tracked fixtures with them. The manifest now includes
-native focused/accumulated phases and full production/integration qualification.
-No source edits while tests/builds run. No substantive blocker is pending.
-
-Original assets remain unchanged. Completed C scenario copies were deduplicated
-with verified restoration manifests; frames/logs/saves remain. Preserve untracked
+No substantial blocker or user question is pending. Do not rerun the consumed
+object-xfer installation script or overwrite tracked fixtures with stale drafts.
+Original assets remain unchanged. Completed scenario copies have verified
+restoration manifests; frames/logs/saves remain. Preserve untracked
 nox-iso-from-archive-org.7z. Source build/baseline/env.sh for every Go command.
 
 <!-- /current-checkpoint -->

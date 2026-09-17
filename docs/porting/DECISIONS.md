@@ -1279,3 +1279,14 @@ target checks under build/port-object-xfer; corrected c-final-default2, c-final-
 c-final-server2 and c-final-highres2 each pass all 21 roots and twelve hashes.
 Current-source gameplay, actual save/load and flat/map regeneration also pass.
 Frozen expectations for previously covered valid records are unchanged.
+
+## Object-transfer trigger callback signature
+
+Use an object-pointer parameter for the Go-backed TriggerXfer export. The old C
+float declaration immediately reinterprets its first 386 stack slot as an object
+address and later reuses that variable as numeric scratch. Registered transfer
+callbacks pass object pointers; the remaining C reference compares function
+identity. No numeric-float caller was found. Keep the symbol and callback identity,
+correct its header to nox_object_t*, and never numerically convert an address to
+float. This is an ABI description correction for the supported 386 target;
+focused registered-callback and full production ABI checks qualify it.

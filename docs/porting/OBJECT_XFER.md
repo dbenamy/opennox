@@ -157,3 +157,59 @@ use two four-byte operations. The existing stream checksum depends on operation
 boundaries, so preserve the original grouping even when decoded values and stream
 positions would be identical. The preparatory Go draft was corrected accordingly;
 no C expectation changed.
+
+## Native conversion in progress
+
+The C baseline is committed and pushed as 62a006d2. Four Go implementation/export
+files replace all eighteen scoped functions. Seventeen existing interfaces remain
+for C callers/registered callbacks, while the private historical reader is retired;
+Go common/inventory/placement wrappers invoke Go directly. The trigger pointer
+signature is documented in DECISIONS.md. Working C is 59,602 lines / 82 files.
+
+The first installed native-focused phase passes 21 roots / 1,297 leaf cases and all
+twelve frozen capture hashes in 114.871s, including compilation. No implementation
+or expectation changes were required after installation. Static checking passes.
+Accumulated default/server checks and full production qualification are running;
+accumulated highres is still due. Do not treat this as final qualification yet.
+
+All three native production binaries now pass their ABI audits (17 retained
+Go-backed symbols, one retired private symbol, no test helpers). The full asset
+suite matches exactly: 1,553 known failure entries and package outcomes 15 pass /
+3 fail / 32 skip. Native normal gameplay matches 41 frames and the explicit
+save/load scenario matches seven frames, proves saved-map reload, and resumes.
+Its saved map also matches C's SHA-256
+f4249247a267beaa3e6fb9e426769c9f0bd31a6d0fd1e95f22f22ad07b1ddc99.
+Flat rendering also matches all 14 frames with exact map regeneration. The whole
+production phase succeeds in 465.107s with unchanged source fingerprints. Client
+SHA-256: 56ac204ae1e7f3035aacffa414b70bf35ec9b341ac535e276c8c55de68b3bf2a.
+The final accumulated sweeps remain pending.
+
+## Final native qualification
+
+All five native phases pass with identical, unchanged fingerprints across
+1,894 source files. The accumulated milestone executes and finishes **1198 / 1194 / 1198**
+selected checks in default/server/highres, with only the existing opt-in
+TestMapPopulationPrerequisiteProbe skip in each. All twelve frozen groups match
+without changing expectations. Static checking also passes.
+
+| Phase | Batch-driver seconds |
+| --- | ---: |
+| native-focused | 114.871 |
+| native-default | 809.116 |
+| native-server | 901.829 |
+| native-highres | 738.743 |
+| native-production | 465.107 |
+
+The conversion removes **1,177 C lines / eighteen functions**, leaving **59,602
+physical C lines in 82 production files**, zero reference C. The remaining file
+prefix, including its existing boundary blank line, is preserved. Seventeen
+Go-backed interfaces retain callback/caller compatibility; the private historical
+reader is retired. No C algorithm is retained solely for testing.
+
+Review points: the baseline deliberately fixes failed-child and rejected-parent
+ownership and the stale-type adapter; general side-buffer cleanup and replaced
+name-buffer policy remain outside this batch. Old coordinate read grouping is
+preserved because stream checksums depend on call boundaries. Trigger uses the
+actual pointer callback signature. Repeated full saves are not assumed byte-identical;
+controlled serialization records, actual save/load artifacts and gameplay pixels
+provide the corresponding evidence. See DECISIONS.md.

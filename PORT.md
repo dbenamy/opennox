@@ -15,29 +15,22 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Colored-light animation and unused map-helper cleanup are
-qualified: **296 C lines removed**, leaving **60,779 physical lines in 82 files**,
-with zero reference C. The preceding map-reader conversion removed 617 lines;
-the light-direction prerequisite added six before those functions moved to Go.
-The object-serialization prerequisite added four C lines to correct rejected-object
-ownership before freezing its baseline.
+scheduled pause. Server common and world-object serialization is qualified:
+**1,177 C lines / eighteen functions removed**, leaving **59,602 physical lines
+in 82 files**, with zero reference C.
 
-All **8,853 frozen light records / five groups** and independent contracts match.
-Affected checks pass **34 default / 33 server / 34 highres tests**, no skips.
-All three production builds and interface audits pass; the asset suite retains
-exactly its known failures. Gameplay matches **41 frames**, and flat rendering
-matches **14 frames** with exact map regeneration.
+All **1,174 frozen object-state records / twelve groups** and **1,297 leaf cases**
+match. The accumulated milestone passes **1198 / 1194 / 1198 selected checks** in
+default/server/highres, with one existing opt-in skip per target. All three
+production binaries and ABI audits pass; the full asset suite retains exactly its
+known failures. Gameplay matches **41 frames**, actual save/load **seven frames**,
+and flat rendering **14 frames** with exact map regeneration.
 
-See [COLOR_LIGHT.md](docs/porting/COLOR_LIGHT.md) for qualification and the
-reversible degenerate-direction correction. Next: server map-object readers,
-writers and world-object transfer callbacks, about **1,177 C lines**. Include
-[save/load integration and serialization contracts](docs/porting/OBJECT_XFER.md); use a broader accumulated
-milestone at that shared serialization boundary. The C serialization baseline now passes focused checks on all three targets,
-independent capture repetition, actual save/load and rendering integration. The full
-C accumulated milestone passes 1,198 selected checks, with one existing opt-in
-skip. The baseline is ready for the Go replacement.
-[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint. Confident reversible
-decisions remain recorded for review.
+See [OBJECT_XFER.md](docs/porting/OBJECT_XFER.md) for evidence and review points.
+Next: adjacent item/reward serializers, **1,063 C lines / twelve callbacks**,
+reusing these owners and stream fixtures. Confirm the historical and nested-object
+contracts against C before freezing expectations. [PORTING_STATE.md](PORTING_STATE.md)
+is the resume checkpoint; confident reversible decisions remain recorded for review.
 
 ## Goal and target
 

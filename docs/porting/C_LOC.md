@@ -180,6 +180,7 @@ target build selection and linker evidence.
 | Colored-light degenerate-direction prerequisite (C fix) | 82 | 61,071 | +6 | 0 |
 | Colored-light animation and unused map classification cleanup | 82 | 60,775 | −296 | 0 |
 | Object-transfer rejection ownership prerequisite (C fix) | 82 | 60,779 | +4 | 0 |
+| Server common and world-object serialization | 82 | 59,602 | −1,177 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
