@@ -58,7 +58,7 @@ func spellEffectForce(u *server.Object, ctx spellEffectForceContext) {
 	u.ForceVec.X = float32(float64(acceleration)*float64(dx)/float64(d) + float64(u.ForceVec.X))
 	u.ForceVec.Y = float32(float64(acceleration)*float64(dy)/float64(d) + float64(u.ForceVec.Y))
 	if u.ObjClass&1 == 0 {
-		C.nox_xxx_unitHasCollideOrUpdateFn_537610(asObjectC(u))
+		collisionActivate(u)
 	}
 }
 func spellEffectPushUnit(u *server.Object, record unsafe.Pointer) {

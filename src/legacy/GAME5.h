@@ -5,19 +5,12 @@
 
 int sub_545E60(nox_object_t* a1);
 int sub_547DB0(int a1, float2* a2);
-void sub_548100(int2* a1, int a2);
 void sub_5481C0(int a1);
-void sub_548220(int* a1, float* a2);
-int sub_548360(int a1, int a2);
-int sub_5485B0(int a1, int a2);
 void sub_548600(nox_object_t* a1, float a2, float a3);
 void nox_xxx_collSysAddCollision_548630(int a1, unsigned int a2, float2* a3);
 void nox_xxx_allocHitArray_5486D0();
 void sub_548830(int a1);
-void nox_xxx_collide_548740();
 void sub_548860(int a1, short a2);
-void sub_5488B0(int* a1, float* a2, int a3);
-void sub_548B60();
 void nox_xxx_script_forcedialog_548CD0(nox_object_t* a1, nox_object_t* a2);
 int nox_xxx_monsterLoadStrikeFn_549040(int a1, char* a2);
 int nox_xxx_monsterLoadDieFn_5490E0(int a1, char* a2);
@@ -48,7 +41,6 @@ int sub_54A850(int a1);
 int sub_54A890(int a1);
 int sub_54A900(int a1);
 int sub_54A950(int a1);
-void sub_54AD50(int a1, int a2, int a3);
 double sub_54A990(float2* a1, float a2, int a3, float2* a4);
 nox_object_t* nox_xxx_findObjectAtCursor_54AF40(nox_object_t* a1);
 void nox_xxx_playerCursorScanFn_54AFB0(int a1, float* a2);
@@ -92,14 +84,5 @@ int sub_54FBF0(int a3);
 void nox_xxx_unitIsAttackReachable_54FC50(int a1, int a2);
 void nox_xxx_collideTrigger_54FCD0(int a1, int a2);
 float* nox_xxx_createSpark_54FD80(float a1, float a2, int a3, int a4, float a5, float a6, float a7, int a8);
-void sub_54FEF0(int a2);
-int sub_54FFC0(int2* a1, int a2);
-void sub_5504B0(int a2);
-void nox_xxx_collisionCheckCircleCircle_550D00(int a1, int a2);
-void sub_550F80(float* a1, int a2);
-void sub_551250(unsigned int a1, float* a2, int a3);
-void sub_551AE0(int a1, int a2, int a3);
-void sub_551BF0();
-void sub_551C40(int a1, int a2);
 
 #endif // NOX_PORT_GAME5

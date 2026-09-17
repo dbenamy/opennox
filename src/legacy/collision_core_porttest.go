@@ -6,9 +6,7 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_3.h"
 #include "GAME5.h"
-extern uint32_t dword_5d4594_2490508;
 int nox_xxx_collidePentagram_4EAB20(int a1);
-nox_object_t* sub_537700(void);
 static uint32_t coreContacts[1024];
 static unsigned coreContactCount;
 // This is an observation callback, not a collision implementation. Alignment
@@ -38,73 +36,72 @@ import "C"
 
 import (
 	"github.com/opennox/libs/types"
-	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
 
 func PortTestCollisionCore(op string, a, b *server.Object, p *types.Pointf, mode int32) int32 {
-	ai, bi := C.int(uintptr(a.CObj())), C.int(uintptr(b.CObj()))
+
 	switch op {
 	case "angle-queue":
 		worldAngleQueue(a.UpdateData)
 	case "shape":
 		geometryShapeBox(&a.Shape)
 	case "contains":
-		return int32(C.sub_547DB0(ai, (*C.float2)(unsafe.Pointer(p))))
+		return collisionObjectContains(a, p)
 	case "eligible":
-		return int32(C.sub_548360(ai, bi))
+		return collisionEligible(a, b)
 	case "retained":
-		return int32(C.sub_5485B0(ai, bi))
+		return collisionRetained(a, b)
 	case "pair":
-		C.sub_548220((*C.int)(a.CObj()), (*C.float)(b.CObj()))
+		collisionPair(a, b)
 	case "scan":
-		C.sub_5481C0(ai)
+		collisionScan(a)
 	case "circle-walls":
-		C.sub_54FEF0(ai)
+		collisionCircleWalls(a)
 	case "circle-box":
-		C.sub_54AD50(ai, bi, C.int(mode))
+		collisionCircleBox(a, b, mode)
 	case "gate-circle":
-		C.sub_5488B0((*C.int)(a.CObj()), (*C.float)(b.CObj()), C.int(mode))
+		collisionGateCircle(a, b, mode)
 	case "dispatch":
-		C.nox_xxx_collide_548740()
+		collisionDispatch()
 	case "angles":
-		C.sub_548B60()
+		collisionDrainAngles()
 	case "elevator":
-		C.sub_551AE0(ai, bi, C.int(mode))
+		collisionElevator(a, b, mode)
 	case "shaft":
-		C.sub_551C40(ai, bi)
+		collisionShaft(a, b)
 	case "types":
-		C.sub_551BF0()
+		collisionInitTypes()
 	case "active":
-		return int32(C.sub_537580(ai))
+		return int32(a.Field116 & 1)
 	case "activate":
-		return int32(C.nox_xxx_unitHasCollideOrUpdateFn_537610(asObjectC(a)))
+		return int32(collisionActivate(a))
 	case "remove":
-		C.sub_5375A0(ai)
+		collisionRemoveActive(a)
 	case "head":
-		return int32(C.sub_537740())
+		return int32(collisionActiveHead)
 	case "next":
-		return int32(C.sub_537750(ai))
+		return int32(collisionNextActive(a))
 	case "pop":
-		return int32(uintptr(unsafe.Pointer(C.sub_537700())))
+		return int32(collisionObjectAddress(collisionPopActive()))
 	default:
 		panic(op)
 	}
 	return 0
 }
 func PortTestCollisionCoreDistance(p *types.Pointf, radius float32, box *server.Object, out *types.Pointf) float64 {
-	return float64(C.sub_54A990((*C.float2)(unsafe.Pointer(p)), C.float(radius), C.int(uintptr(box.CObj())), (*C.float2)(unsafe.Pointer(out))))
+	return collisionBoxDistance(p, radius, box, out)
 }
 func PortTestCollisionCoreWallOpen(grid *[2]int32, u *server.Object) {
-	C.sub_548100((*C.int2)(unsafe.Pointer(grid)), C.int(uintptr(u.CObj())))
+	collisionWallOpen(grid, u)
 }
 func PortTestCollisionCoreAddHit(a, b *server.Object, sentinel uint32, normal *types.Pointf) {
 	target := C.uint(sentinel)
 	if b != nil {
 		target = C.uint(uintptr(b.CObj()))
 	}
-	C.nox_xxx_collSysAddCollision_548630(C.int(uintptr(a.CObj())), target, (*C.float2)(unsafe.Pointer(normal)))
+	collisionAddHit(a, uint32(target), normal)
 }
 func PortTestCollisionCoreObserver() (unsafe.Pointer, func(), func(map[unsafe.Pointer]uint32) [][4]uint32, func()) {
 	data := unsafe.Slice((*uint32)(unsafe.Pointer(C.coreContactData())), 1024)
@@ -133,10 +130,7 @@ func PortTestCollisionCoreObserver() (unsafe.Pointer, func(), func(map[unsafe.Po
 }
 func PortTestCollisionCorePentagram() unsafe.Pointer { return C.corePentagramPtr() }
 func PortTestCollisionCoreGlobals() (map[string]*uint32, func()) {
-	words := map[string]*uint32{"trigger": (*uint32)(unsafe.Pointer(&C.dword_5d4594_2490508))}
-	for name, off := range map[string]uintptr{"powder": 2490512, "hand": 2490516, "small": 2491792, "medium": 2491796, "large": 2491800, "meteor": 2491804, "ready": 2491808} {
-		words[name] = memmap.PtrUint32(0x5D4594, off)
-	}
+	words := map[string]*uint32{"trigger": &collisionTrigger, "powder": &collisionPowder, "hand": &collisionHand, "small": &collisionSmallFist, "medium": &collisionMediumFist, "large": &collisionLargeFist, "meteor": &collisionMeteor, "ready": &collisionTypesReady}
 	old := map[string]uint32{}
 	for n, p := range words {
 		old[n] = *p
@@ -153,7 +147,7 @@ func PortTestCollisionCoreGlobals() (map[string]*uint32, func()) {
 func PortTestCollisionCoreBuckets(ids map[unsafe.Pointer]uint32) map[uint32][][2]uint32 {
 	out := map[uint32][][2]uint32{}
 	for i := uint32(0); i < 256; i++ {
-		p := *memmap.PtrUint32(0x5D4594, 2490520+uintptr(4*i))
+		p := collisionBuckets[i]
 		for n := 0; p != 0; n++ {
 			if n >= 1024 {
 				panic("collision bucket cycle")

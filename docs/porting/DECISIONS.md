@@ -1637,3 +1637,21 @@ them. Move the private direction threshold and circle wall spans into Go, retire
 unused C interfaces, and retain twelve exports required by actual C callers. Gate
 locked-team notifications use the existing private-message adapter path so hooks
 and dispatch ownership remain consistent. See WORLD_GEOMETRY.md for qualification.
+
+## Collision-core ownership and compatibility
+
+Move the Hit indices, activation/angular heads, collision type caches and both
+force coefficients to Go once their final C readers move. Keep Hit records in the
+existing fixed C-backed 1,024-record class: callback-visible addresses and pool
+exhaustion/reset behavior are part of the contract. Ten exports remain for actual
+C callers; eighteen obsolete interfaces are retired, including five prior geometry
+exports. No C collision implementation remains solely to supply test expectations.
+
+Preserve the existing circle/box interior-distance rule and angular/contact order.
+Independent force/list contracts supplement the frozen comparisons; this batch
+makes no intentional game-rule correction. Review x87 stores/reloads for explicit
+Go arithmetic widths, including the shaft's wide height subtraction before its
+float32 store. Keep the retained absolute-value helper's observable scratch write.
+Use pointer-typed callback arguments for temporary contact normals so their lifetime
+remains visible to cgo. The radial contract exercises the remaining production C
+caller across the new double-return export. See COLLISION_CORE.md for qualification.

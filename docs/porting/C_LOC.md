@@ -209,6 +209,7 @@ target build selection and linker evidence.
 | Map polygon lifecycle, geometry, actor events and serialization | 74 | 44,401 | −1,072 | 0 |
 | Geometry prerequisite correction (unused quadrant locals; no conversion) | 74 | 44,396 | −5 | 0 |
 | World geometry, wall/circle/box responses, private threshold and wall spans | 74 | 42,982 | −1,414 | 0 |
+| Collision queues, activation, contact dispatch, private globals and separator cleanup | 74 | 41,886 | −1,096 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
@@ -243,3 +244,9 @@ The world-geometry native conversion removes **1,414 physical C lines** across
 32 functions and two private data definitions. Current C: **42,982 / 74 files /
 zero reference C**. See [WORLD_GEOMETRY.md](WORLD_GEOMETRY.md) for the frozen
 three-target comparisons and fresh production qualification.
+
+
+The collision-core conversion removes **1,096 physical C lines** across 23
+functions, eight private globals and obsolete address/separator cleanup. Current
+C: **41,886 / 74 files / zero reference C**. Ten exports remain for actual C callers;
+eighteen interfaces are retired. See [COLLISION_CORE.md](COLLISION_CORE.md).

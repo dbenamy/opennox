@@ -8,9 +8,6 @@ package legacy
 #include "GAME3_2.h"
 #include "GAME4_1.h"
 #include "GAME5.h"
-extern uint32_t dword_587000_292488, dword_587000_292492;
-extern uint32_t dword_5d4594_2491544;
-extern void* nox_alloc_hit_2491548;
 */
 import "C"
 
@@ -142,8 +139,8 @@ func PortTestWorldGeometryPhysics(op string, u, v *server.Object, words *[16]uin
 func PortTestWorldGeometryGlobals() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
 		"directionThreshold": (*uint32)(unsafe.Pointer(&geometryDirectionThreshold)),
-		"objectForce":        (*uint32)(unsafe.Pointer(&C.dword_587000_292488)),
-		"wallForce":          (*uint32)(unsafe.Pointer(&C.dword_587000_292492)),
+		"objectForce":        (*uint32)(unsafe.Pointer(&collisionObjectForce)),
+		"wallForce":          (*uint32)(unsafe.Pointer(&collisionWallForce)),
 		"gameBall":           memmap.PtrUint32(0x5D4594, 2491788),
 	}
 	old := map[string]uint32{}
@@ -159,13 +156,13 @@ func PortTestWorldGeometryGlobals() (map[string]*uint32, func()) {
 
 // Isolate the real Hit class and both indices, without replacing collision logic.
 func PortTestWorldGeometryHitOwner() (reset func(), snapshot func(map[unsafe.Pointer]uint32) [][5]uint32, restore func()) {
-	oldClass, oldHead := C.nox_alloc_hit_2491548, C.dword_5d4594_2491544
-	buckets := unsafe.Slice(memmap.PtrUint32(0x5D4594, 2490520), 256)
+	oldClass, oldHead := collisionHitClass, collisionHitHead
+	buckets := collisionBuckets[:]
 	oldBuckets := append([]uint32(nil), buckets...)
-	C.nox_alloc_hit_2491548 = nil
-	C.dword_5d4594_2491544 = 0
+	collisionHitClass = nil
+	collisionHitHead = 0
 	clear(buckets)
-	reset = func() { C.nox_xxx_allocHitArray_5486D0() }
+	reset = func() { collisionResetHits() }
 	reset()
 	snapshot = func(ids map[unsafe.Pointer]uint32) [][5]uint32 {
 		normalize := func(raw uint32) uint32 {
@@ -179,7 +176,7 @@ func PortTestWorldGeometryHitOwner() (reset func(), snapshot func(map[unsafe.Poi
 			return id
 		}
 		var rows [][5]uint32
-		for p := uint32(C.dword_5d4594_2491544); p != 0; {
+		for p := uint32(collisionHitHead); p != 0; {
 			if len(rows) >= 1024 {
 				panic("collision list cycle")
 			}
@@ -190,9 +187,9 @@ func PortTestWorldGeometryHitOwner() (reset func(), snapshot func(map[unsafe.Poi
 		return rows
 	}
 	restore = func() {
-		alloc.AsClass(C.nox_alloc_hit_2491548).Free()
-		C.nox_alloc_hit_2491548 = oldClass
-		C.dword_5d4594_2491544 = oldHead
+		alloc.AsClass(collisionHitClass).Free()
+		collisionHitClass = oldClass
+		collisionHitHead = oldHead
 		copy(buckets, oldBuckets)
 	}
 	return

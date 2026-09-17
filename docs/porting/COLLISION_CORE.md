@@ -4,8 +4,9 @@
 
 Parent **011fcb73** is qualified and pushed. This batch selects **23 reachable C
 functions / 993 body lines**, in GAME5.c and GAME4_3.c. All are in the whole-source
-live closure. Production is unchanged: **42,982 C lines / 74 files / zero reference**.
-The unchanged-C baseline is qualified below. Native conversion is next.
+live closure. Baseline production is **42,982 C lines / 74 files / zero reference**; native
+production is **41,886 / 74 files / zero reference (−1,096)**.
+The unchanged-C baseline and native conversion are qualified below.
 
 Scope: Hit class allocation/reset, bucket/pair deduplication and event dispatch;
 active collision-object queue membership/removal/pop/traversal; pair eligibility
@@ -86,3 +87,46 @@ Before starting this batch, verified duplicate assets in nine completed polygon/
 geometry runs were removed, reclaiming **4.638 GiB**. Per-run restoration manifests
 retain path, hash and metadata. Changed outputs, original assets and archive are
 untouched. The deletion invocation is consumed and must not be rerun.
+
+## Qualified native conversion
+
+Baseline **bc4a791e** is committed/pushed. The installed six-file implementation
+replaces all 23 selected functions, retains ten exports for actual C callers and
+retires eighteen interfaces (including five geometry exports whose last callers
+moved). Eight private C globals, seven mapped type-cache words and the bucket array
+move to Go ownership. The Hit pool still uses the real fixed C-backed allocator;
+record size and normal offset have compile-time checks. Root golden files remain
+byte-identical to the baseline. Focused native-3 passes all 16 roots/captures (22,848 records, 0.378s), unchanged
+from C; static native-2 passes. Broader default/server/highres pass **660/659/660 roots**,
+**42,918/42,917/42,918 tests including subtests**, zero skips, with **221 identical
+captures / 104,371 records** matching C. Durations: **275.41/387.91/328.61s**.
+All share an unchanged **2,219-file source manifest**. Fresh production passes in **375.82s**: three binaries/ABI/interface checks, the
+exact known 1,553 asset failure entries (15 passing / 3 failing / 32 no-test
+packages), gameplay comparison, explicit save/load and flat-map regeneration.
+All four gates share the same unchanged 2,219-file source; all sessions are joined. Current C is 41,886 / 74 files / zero reference (−1,096), including
+obsolete address-marker and separator cleanup.
+
+The first link check caught removal of a cgo import still needed to emit the
+existing update-springs export; restored before retry. Source/interface static
+checks pass. The reviewed angular stop uses unsigned modulo, and the retained
+absolute-value helper still receives height differences and updates its scratch.
+All install scripts/drafts are consumed; never reinstall them.
+
+The final arithmetic review preserves the shaft's wide height subtraction before
+its float32 argument store, unsigned angular-stop modulo and original unordered
+comparison behavior. Dispatch uses pointer-typed callback arguments for the local
+inverse normal, keeping its lifetime visible to cgo. The full interface audit also
+checks that every exported Go function still has the cgo import needed to emit it.
+No intentional gameplay rule changes or frozen-output changes were made.
+
+
+Final artifacts: build/port-collision-core/native-{default,server,highres,production},
+native-audit.json and native-interface-audit.json. The six production Go files are
+collision_core_{queues,dispatch,geometry,gate,heights,exports}.go. Actual Go callers
+and state owners use Go directly. Client SHA:
+71758f918f3d4ae516cbb3de252bd056f322013095e35da334f087c03753cc33.
+
+Next read-only proposal: world motion, projectile tracing and timed world objects,
+31 candidates / 1,069 body lines (30 live plus a one-line potential orphan). Review
+and reproduce the sentry-list unsigned membership comparison before freezing that
+baseline. No correction to those next-batch functions is included here.

@@ -30,7 +30,6 @@ extern unsigned int dword_5d4594_1548524;
 extern uint32_t dword_5d4594_1563096;
 extern uint32_t dword_5d4594_528252;
 extern uint32_t dword_5d4594_528260;
-extern uint32_t dword_5d4594_2488604;
 
 extern uint32_t nox_tile_def_cnt;
 extern nox_tileDef_t nox_tile_defs_arr[176];
@@ -45,7 +44,6 @@ void sub_4139C0();
 int sub_4DCF20();
 int sub_4E76C0();
 bool sub_57B140();
-nox_object_t* sub_537700();
 
 void nox_xxx_updateUnits_51B100_D();
 */
@@ -218,19 +216,19 @@ func Nox_server_checkVictory_509A60() {
 	matchRosterCheckVictory()
 }
 func Nox_xxx_allocHitArray_5486D0() {
-	C.nox_xxx_allocHitArray_5486D0()
+	collisionResetHits()
 }
 func Nox_xxx_updateObjectsVelocity_5118A0(a1 float32) {
 	C.nox_xxx_updateObjectsVelocity_5118A0(C.float(a1))
 }
 func Sub_548B60() {
-	C.sub_548B60()
+	collisionDrainAngles()
 }
 func Sub_537700() *server.Object {
-	return asObjectS(C.sub_537700())
+	return collisionPopActive()
 }
 func Nox_xxx_collide_548740() {
-	C.nox_xxx_collide_548740()
+	collisionDispatch()
 }
 func Nox_xxx_updatePoison_4EE8F0(a1 *server.Object, a2 int) {
 	resourceReducePoison(a1, int32(a2))

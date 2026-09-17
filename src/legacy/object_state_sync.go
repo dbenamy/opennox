@@ -90,7 +90,7 @@ func stateOn(u *server.Object) int8 {
 		u.ObjFlags &^= 0x40
 	}
 	if u.ObjClass&1 == 0 {
-		return int8(C.nox_xxx_unitHasCollideOrUpdateFn_537610(asObjectC(u)))
+		return int8(collisionActivate(u))
 	}
 	return int8(u.ObjClass)
 }

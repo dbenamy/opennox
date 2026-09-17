@@ -121,7 +121,7 @@ func attackNearest(t, u *server.Object) {
 		distance -= float64(t.Shape.Circle.R)
 	} else if t.Shape.Kind == 3 {
 		delta := types.Pointf{X: dx, Y: dy}
-		n := float64(C.sub_54A990((*C.float2)(unsafe.Pointer(&u.PosVec)), C.float(limit), inventoryInt(t), (*C.float2)(unsafe.Pointer(&delta))))
+		n := collisionBoxDistance(&u.PosVec, limit, t, &delta)
 		if n < 0 {
 			return
 		}

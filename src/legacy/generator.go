@@ -22,7 +22,7 @@ func generatorOccupied(p types.Pointf) uint32 {
 	*occupied = 0
 	GetServer().S().Map.EachObjInRect(types.Rectf{Min: types.Pointf{X: p.X - 15, Y: p.Y - 15}, Max: types.Pointf{X: p.X + 15, Y: p.Y + 15}}, func(t *server.Object) bool {
 		// Decompiled C converts the float view numerically; it does not mask raw class bits.
-		if uint32(math.Float32frombits(uint32(t.ObjClass)))&0x20000 == 0 && t.Field5&0x800 == 0 && C.sub_547DB0(C.int(uintptr(t.CObj())), (*C.float2)(unsafe.Pointer(&p))) == 1 {
+		if uint32(math.Float32frombits(uint32(t.ObjClass)))&0x20000 == 0 && t.Field5&0x800 == 0 && collisionObjectContains(t, &p) == 1 {
 			*occupied = 1
 		}
 		return true

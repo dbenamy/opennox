@@ -3,7 +3,6 @@ package legacy
 /*
 #include "GAME3_3.h"
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_2491552;
 char nox_xxx_unitHasCollideOrUpdateFn_537610(nox_object_t* a1);
 */
 import "C"
@@ -15,8 +14,8 @@ import (
 
 func worldAngleQueue(ud unsafe.Pointer) {
 	if *equipmentWord(ud, 28) == 0 {
-		*equipmentWord(ud, 36) = uint32(C.dword_5d4594_2491552)
-		C.dword_5d4594_2491552 = C.uint32_t(uintptr(ud))
+		*equipmentWord(ud, 36) = uint32(collisionAngleHead)
+		collisionAngleHead = uint32(uintptr(ud))
 		*equipmentWord(ud, 28) = 1
 	}
 }
@@ -90,7 +89,7 @@ func worldDoor(u *server.Object) byte {
 			} else {
 				worldAngle(u, -2)
 			}
-			return byte(C.nox_xxx_unitHasCollideOrUpdateFn_537610(asObjectC(u)))
+			return byte(collisionActivate(u))
 		}
 	}
 	return byte(current)
@@ -212,7 +211,7 @@ func worldSwitch(u *server.Object) byte {
 	if flags&0x1000000 != 0 {
 		u.ObjFlags = flags &^ 0x40
 		if u.Collide != nil && flags&0x40 != 0 {
-			return byte(C.nox_xxx_unitHasCollideOrUpdateFn_537610(asObjectC(u)))
+			return byte(collisionActivate(u))
 		}
 	} else {
 		if u.Field33 == 0 {

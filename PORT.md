@@ -15,16 +15,15 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Map polygons and world geometry/collision responses are in Go.
-The geometry batch replaces 32 live functions; all three target sweeps and fresh
-production/gameplay qualification pass. Four prerequisite corrections and the
-arithmetic compatibility review are recorded in
-[WORLD_GEOMETRY.md](docs/porting/WORLD_GEOMETRY.md).
+scheduled pause. Collision queues, activation and contact dispatch are now in Go,
+following world geometry and map polygons. The latest batch replaces 23 live
+functions; all three target sweeps and fresh production/gameplay qualification
+pass. See [COLLISION_CORE.md](docs/porting/COLLISION_CORE.md).
 
-Production C is **42,982 physical lines in 74 files**, with zero reference C.
-The geometry conversion removed **1,414 lines**. The asset suite retains its exact
-three known failing packages. The next connected candidate is collision queues,
-dispatch, activation and remaining contact geometry.
+Production C is **41,886 physical lines in 74 files**, with zero reference C.
+The collision-core conversion removed **1,096 lines**. The asset suite retains its
+exact three known failing packages. Next candidate: world motion, projectile
+contacts and timed world objects.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
@@ -81,8 +80,10 @@ may precede full qualification when their evidence and remaining gates are expli
    calculations together before rebuilding instead of rounding every C float local
    to float32 in Go. The world-geometry conversion demonstrated this distinction.
    Before the first compile, format new files, check the whitespace diff, and compare
-   new export signatures with every existing header declaration. A small late source
-   fix can invalidate the whole cgo package build and repeat the remaining C compile.
+   new export signatures with every existing header declaration. When removing a
+   cgo import, check for `//export` directives too: those still need cgo even when
+   no `C.` calls remain. A small late source fix can invalidate the whole cgo
+   package build and repeat the remaining C compile.
    Trace the existing C adapter when choosing a Go API: similar names can hide
    differences in coordinate space, return conventions or ownership.
    Check dispatch ownership when reusing an existing Go implementation: equal

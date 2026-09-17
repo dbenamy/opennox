@@ -9,7 +9,6 @@ package legacy
 import "C"
 import (
 	"github.com/opennox/libs/types"
-	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
 
@@ -44,27 +43,4 @@ func nox_xxx_math_509EA0(index C.int) C.int { return C.int(geometryDirection4Ind
 //export nox_xxx_math_509ED0
 func nox_xxx_math_509ED0(p *C.float2) C.int {
 	return C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(p))))
-}
-
-//export sub_54FFC0
-func sub_54FFC0(grid *C.int2, u C.int) C.int {
-	return C.int(geometryCircleWall((*[2]int32)(unsafe.Pointer(grid)), objectFromInt(u)))
-}
-
-//export sub_5504B0
-func sub_5504B0(u C.int) { geometryBoxWalls(objectFromInt(u)) }
-
-//export nox_xxx_collisionCheckCircleCircle_550D00
-func nox_xxx_collisionCheckCircleCircle_550D00(a, b C.int) {
-	geometryCircleCircle(objectFromInt(a), objectFromInt(b))
-}
-
-//export sub_550F80
-func sub_550F80(a *C.float, b C.int) {
-	geometryBoxBox((*server.Object)(unsafe.Pointer(a)), objectFromInt(b))
-}
-
-//export sub_551250
-func sub_551250(a C.uint, b *C.float, mode C.int) {
-	geometryGateBox(objectFromInt(C.int(a)), (*server.Object)(unsafe.Pointer(b)), int32(mode))
 }

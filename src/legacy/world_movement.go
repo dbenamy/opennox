@@ -94,7 +94,7 @@ func worldShaft(u *server.Object) byte {
 	if partner == nil {
 		return 0
 	}
-	C.nox_xxx_unitHasCollideOrUpdateFn_537610(asObjectC(u))
+	collisionActivate(u)
 	other := (*temporaryRefWord(ud, 4)).UpdateData
 	state := (*byte)(unsafe.Add(other, 12))
 	prior := (*byte)(unsafe.Add(ud, 12))

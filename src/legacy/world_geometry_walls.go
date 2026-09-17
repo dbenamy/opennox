@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME5.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -99,7 +95,7 @@ func geometryBoxWalls(u *server.Object) {
 		for x := x1; x <= x2; x++ {
 			grid := [2]int32{x, y}
 			if geometryBoxWall(&grid, u) != 0 {
-				C.sub_548100((*C.int2)(unsafe.Pointer(&grid)), C.int(uintptr(u.CObj())))
+				collisionWallOpen(&grid, u)
 			}
 		}
 	}

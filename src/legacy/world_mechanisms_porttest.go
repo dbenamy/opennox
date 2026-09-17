@@ -5,9 +5,6 @@ package legacy
 /*
 #include "GAME4_3.h"
 #include "GAME5.h"
-extern uint32_t dword_5d4594_2491552;
-extern uint32_t dword_5d4594_2488604;
-extern uint32_t dword_5d4594_2488608;
 char nox_xxx_updateDoor_53AC50(int a1);
 void nox_xxx_updatePush_53B030(int a1);
 char nox_xxx_updateToggle_53B060(uint32_t* a1);
@@ -141,8 +138,8 @@ func (p *portTestShopPools) worldPrepare() func() {
 	slot := memmap.PtrPtr(0x587000, 55744)
 	oldScratch, oldSlot := *scratch, *slot
 	*scratch, *slot = 0, unsafe.Pointer(scratch)
-	oldQueue := C.dword_5d4594_2491552
-	C.dword_5d4594_2491552 = 0
+	oldQueue := collisionAngleHead
+	collisionAngleHead = 0
 	a, b := memmap.PtrUint32(0x5d4594, 2488680), memmap.PtrUint32(0x5d4594, 2488676)
 	oldA, oldB := *a, *b
 	*a, *b = 0, 0
@@ -160,7 +157,7 @@ func (p *portTestShopPools) worldPrepare() func() {
 			f()
 		}
 		*scratch, *slot = oldScratch, oldSlot
-		C.dword_5d4594_2491552 = oldQueue
+		collisionAngleHead = oldQueue
 		*a, *b = oldA, oldB
 		restoreTypes()
 	}
@@ -216,7 +213,7 @@ func (p *portTestShopPools) worldSnapshot(out []uint32) []uint32 {
 	if w == nil {
 		return out
 	}
-	for _, v := range []uint32{*memmap.PtrUint32(0x5d4594, 527672), uint32(C.dword_5d4594_2491552), uint32(C.dword_5d4594_2488604), uint32(C.dword_5d4594_2488608), *memmap.PtrUint32(0x5d4594, 2488680), *memmap.PtrUint32(0x5d4594, 2488676)} {
+	for _, v := range []uint32{*memmap.PtrUint32(0x5d4594, 527672), uint32(collisionAngleHead), uint32(collisionActiveHead), uint32(collisionActiveTail), *memmap.PtrUint32(0x5d4594, 2488680), *memmap.PtrUint32(0x5d4594, 2488676)} {
 		out = append(out, p.normalize(v))
 	}
 	out = append(out, uint32(C.worldN()))

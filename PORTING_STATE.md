@@ -2,39 +2,54 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 43k lines** — **42,982 physical lines in 74 production
-`.c` files**, zero reference C. Latest conversion removes **1,414 lines**.
+**Rough C remaining: about 42k lines** — **41,886 physical lines in 74 production
+`.c` files**, zero reference C. Latest conversion removes **1,096 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — collision-core C baseline qualified; native conversion next
+## Current — collision-core Go conversion qualified
 
-World geometry **011fcb73 is committed/pushed**. This batch selects **23 live C
-functions / 993 body lines**. Production source remains identical to that parent.
-Sixteen focused C roots/captures pass twice with **22,848 identical records**;
-expectations are frozen. Static-3 passes. Broader default/server/highres pass
+C baseline **bc4a791e is committed/pushed**. The native conversion replaces
+**23 live functions / 993 body lines**, retires eighteen function interfaces and
+eight private C globals, and retains ten exports for actual C callers. Queue indices,
+force coefficients and type caches are Go-owned; Hit records retain the real fixed
+C-backed pool. Six production Go files implement the batch.
+
+Focused native-3 passes **16 roots/captures / 22,848 records** unchanged from C
+(0.378s); static native-2 passes. Broader default/server/highres pass
 **660/659/660 roots**, **42,918/42,917/42,918 tests including subtests**, zero skips.
-**221 captures / 104,371 records** match across all targets. Durations
-**308.57/387.42/328.98s**, one unchanged **2,213-file source manifest**.
-All sessions (43142/16593/63449) joined; no active jobs.
+**221 captures / 104,371 records** match C across all targets. Durations:
+**275.41/387.91/328.61s**. Fresh production passes **375.82s**: three binaries,
+ABI/interfaces, exact known 1,553 asset failures (15 pass / 3 fail / 32 no-test),
+gameplay, save/load and flat-map regeneration. All four gates share an unchanged
+**2,219-file source manifest**. All sessions are joined; no active job or blocker.
 
-Default's tests passed but its final manifest hash check had inherited geometry
-filenames renamed by mistake. The corrected manifest and independent c-audit
-verify all saved outputs and source identity; the original failed driver report
-is retained. Other targets' drivers pass. Production identity/reuse audit verifies
-parent's three binary hashes, successful qualification and all selected C symbols.
-See docs/porting/COLLISION_CORE.md and build/port-collision-core/c-audit.json.
+C: **41,886 / 74 files / zero reference (−1,096)**. Client SHA:
+71758f918f3d4ae516cbb3de252bd056f322013095e35da334f087c03753cc33.
+See docs/porting/COLLISION_CORE.md and the scope/batch/test manifests. Artifacts:
+build/port-collision-core/native-{default,server,highres,production}, native-audit.json,
+native-interface-audit.json. All drafts/install/freeze scripts are consumed.
+Never reinstall or regenerate frozen root expectations.
 
-Next: baseline commit/push, then native conversion. Five ignored implementation
-drafts are under build/port-collision-core/native-draft; **not installed yet**.
-Review before installation. Scope/reachability/disassembly are in the batch folder.
-All fixture draft installs and golden freeze invocations are consumed; never rerun.
-Frozen root expectations must remain unchanged. No production changes or blocker.
-The height fixture owns the absolute-value helper's relocation/scratch; preserve
-that retained helper's scratch side effects. Native interface audit should retire
-the five geometry exports whose last C callers are in this batch, and move private
-queue/force/cache ownership after whole-source verification.
+No intentional gameplay rule change. Review preserves compiled-C arithmetic widths,
+including shaft subtraction; original circle/box interior behavior; unsigned angular
+stop modulo; and pointer-typed temporary-normal callback lifetime. The first link
+check caught springs.go's still-required cgo import; restored. The C baseline's
+default driver had misnamed inherited capture paths after tests passed; independent
+corrected-manifest and cross-target audit verified every capture. Reports retain
+both issues transparently.
+
+Next: commit/push this qualified conversion, then prepare world-motion C baseline.
+Read-only proposal: **31 candidates / 1,069 body lines**, with **30 live / 1,068
+lines** and the one-line apparent orphan sub_537760. Artifacts under
+build/port-world-motion: proposal/combined-reachability/plan-draft/candidate-source,
+c-disassembly and two **uninstalled** list fixture drafts. The no-marker Hit reset
+trampoline is explicitly included. Verify final parent production identity before
+using saved disassembly. The sentry removal's uint32 `<0` membership test appears
+broken (compiled unlink branch absent); reproduce with the drafted real-list
+contract before any correction. A justified fix requires fresh corrected-C
+production qualification. No next-batch source changes are installed yet.
 
 Disk cleanup reclaimed **4.638 GiB** from nine newly completed polygon/geometry
 run copies. Each removed file matched the original asset hash; per-run manifests

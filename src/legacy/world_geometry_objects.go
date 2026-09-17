@@ -1,26 +1,18 @@
 package legacy
 
-/*
-#include "GAME5.h"
-#include "GAME4_3.h"
-extern uint32_t dword_587000_292488, dword_587000_292492;
-char nox_xxx_unitHasCollideOrUpdateFn_537610(nox_object_t* a1);
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"
 	"math"
-	"unsafe"
 )
 
-func geometryObjectForce() float32 { return math.Float32frombits(uint32(C.dword_587000_292488)) }
-func geometryWallForce() float32   { return math.Float32frombits(uint32(C.dword_587000_292492)) }
+func geometryObjectForce() float32 { return math.Float32frombits(uint32(collisionObjectForce)) }
+func geometryWallForce() float32   { return math.Float32frombits(uint32(collisionWallForce)) }
 func geometryHit(u, v *server.Object, normal *types.Pointf) {
-	C.nox_xxx_collSysAddCollision_548630(C.int(uintptr(u.CObj())), C.uint(uintptr(v.CObj())), (*C.float2)(unsafe.Pointer(normal)))
+	collisionAddHit(u, collisionObjectAddress(v), normal)
 }
-func geometryActivate(u *server.Object) { C.nox_xxx_unitHasCollideOrUpdateFn_537610(asObjectC(u)) }
+func geometryActivate(u *server.Object) { collisionActivate(u) }
 func geometryWake(u *server.Object) {
 	if u.ObjFlags&0x8000000 != 0 {
 		geometryActivate(u)

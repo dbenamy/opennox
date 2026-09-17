@@ -47,7 +47,6 @@ extern uint32_t dword_5d4594_2487932;
 extern uint32_t nox_xxx_lightningOwner_5d4594_2487900;
 extern uint32_t dword_587000_261388;
 extern uint32_t dword_5d4594_2487948;
-extern uint32_t dword_5d4594_2488608;
 extern uint32_t dword_5d4594_2488652;
 extern uint32_t dword_5d4594_3835348;
 extern uint32_t dword_5d4594_3835352;
@@ -58,7 +57,6 @@ extern uint32_t dword_5d4594_2488660;
 extern uint64_t qword_581450_10176;
 extern uint64_t qword_581450_9512;
 extern uint64_t qword_581450_9544;
-extern uint32_t dword_5d4594_2488604;
 extern uint32_t nox_xxx_lightningTargetArrayIndex_5d4594_2487904;
 extern uint32_t nox_xxx_lightningTarget_5d4594_2487908;
 extern uint32_t dword_5d4594_251572;
@@ -409,115 +407,6 @@ int sub_536E80(char* a1, int* a2) {
 
 //----- (005374B0) --------------------------------------------------------
 int nox_xxx_traceRay_5374B0(float4* a1) { return nox_xxx_mapTraceRay_535250(a1, 0, 0, 9); }
-
-//----- (00537580) --------------------------------------------------------
-int sub_537580(int a1) { return *(uint8_t*)(a1 + 464) & 1; }
-
-//----- (005375A0) --------------------------------------------------------
-void sub_5375A0(int a1) {
-	int v1;  // eax
-	int v2;  // ecx
-	char v3; // al
-
-	if (*(uint8_t*)(a1 + 464) & 1) {
-		v1 = dword_5d4594_2488604;
-		v2 = 0;
-		if (dword_5d4594_2488604) {
-			while (v1 != a1) {
-				v2 = v1;
-				v1 = *(uint32_t*)(v1 + 460);
-				if (!v1) {
-					return;
-				}
-			}
-			if (v1) {
-				if (v2) {
-					*(uint32_t*)(v2 + 460) = *(uint32_t*)(a1 + 460);
-				} else {
-					dword_5d4594_2488604 = *(uint32_t*)(a1 + 460);
-				}
-				if (a1 == dword_5d4594_2488608) {
-					dword_5d4594_2488608 = v2;
-				}
-				v3 = *(uint8_t*)(a1 + 464);
-				*(uint32_t*)(a1 + 460) = -1;
-				*(uint8_t*)(a1 + 464) = v3 & 0xFE;
-			}
-		}
-	}
-}
-
-//----- (00537610) --------------------------------------------------------
-void sub_50B500();
-char nox_xxx_unitHasCollideOrUpdateFn_537610(nox_object_t* a1p) {
-	int a1 = a1p;
-	int v1;               // eax
-	int v2;               // edx
-	int v3;               // edi
-	void (*v4)(int, int); // ecx
-	int v5;               // ecx
-
-	v1 = *(uint32_t*)(a1 + 744);
-	if (v1 || (v1 = *(uint32_t*)(a1 + 696)) != 0 && !(*(uint8_t*)(a1 + 16) & 0x40)) {
-		if ((v2 = *(uint32_t*)(a1 + 8), !(v2 & 0x400000)) && !(*(uint8_t*)(a1 + 16) & 8) ||
-			(v3 = nox_xxx_getNameId_4E3AA0("Spike"), v1 = nox_xxx_getNameId_4E3AA0("PeriodicSpike"),
-			 v2 = *(uint32_t*)(a1 + 8), v2 & 0xE080) ||
-			(v4 = *(void (**)(int, int))(a1 + 696), v4 == nox_xxx_collideFist_4EADF0) ||
-			v4 == nox_xxx_collideUndeadKiller_4EBD40 || (v5 = *(unsigned short*)(a1 + 4), (unsigned short)v5 == v3) ||
-			v5 == v1) {
-			if (*(uint8_t*)(a1 + 16) & 4) {
-				if (v2 & 0x2008) {
-					sub_50B500();
-				}
-				nullsub_30(a1);
-				LOBYTE(v1) = *(uint8_t*)(a1 + 464);
-				if (!(v1 & 1)) {
-					if (dword_5d4594_2488608) {
-						*(uint32_t*)(dword_5d4594_2488608 + 460) = a1;
-					} else {
-						dword_5d4594_2488604 = a1;
-					}
-					dword_5d4594_2488608 = a1;
-					LOBYTE(v1) = *(uint8_t*)(a1 + 464) | 1;
-					*(uint32_t*)(a1 + 460) = 0;
-					*(uint8_t*)(a1 + 464) = v1;
-				}
-			}
-		}
-	}
-	return v1;
-}
-// 5485F0: using guessed type void  nullsub_30(uint32_t);
-
-//----- (00537700) --------------------------------------------------------
-nox_object_t* sub_537700() {
-	int result;   // eax
-	uint32_t* v1; // ecx
-
-	result = dword_5d4594_2488604;
-	v1 = (uint32_t*)(dword_5d4594_2488604 + 460);
-	dword_5d4594_2488604 = *(uint32_t*)(dword_5d4594_2488604 + 460);
-	if (!dword_5d4594_2488604) {
-		dword_5d4594_2488608 = 0;
-	}
-	*v1 = -1;
-	*(uint8_t*)(result + 464) &= 0xFEu;
-	return result;
-}
-
-//----- (00537740) --------------------------------------------------------
-int sub_537740() { return dword_5d4594_2488604; }
-
-//----- (00537750) --------------------------------------------------------
-int sub_537750(int a1) {
-	int result; // eax
-
-	result = a1;
-	if (a1) {
-		result = *(uint32_t*)(a1 + 460);
-	}
-	return result;
-}
 
 //----- (00537760) --------------------------------------------------------
 unsigned int sub_537760() { return dword_5d4594_2488620 != 0 ? (unsigned int)getMemAt(0x5D4594, 2488612) : 0; }
