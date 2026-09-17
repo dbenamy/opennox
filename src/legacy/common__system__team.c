@@ -51,7 +51,6 @@ void nox_xxx_createAtImpl_4191D0(unsigned char a1, void* a2p, int a3, int a4, in
 	int v19;          // edi
 	int i;            // esi
 	int v21[3];       // [esp+0h] [ebp-110h] // FIXME: 10 bytes
-	short v22;        // [esp+8h] [ebp-108h]
 	char* v23;        // [esp+Ch] [ebp-104h]
 	wchar2_t v24[128]; // [esp+10h] [ebp-100h]
 
@@ -114,7 +113,7 @@ void nox_xxx_createAtImpl_4191D0(unsigned char a1, void* a2p, int a3, int a4, in
 				LOWORD(v21[0]) = 452;
 				HIWORD(v21[1]) = a4;
 				*(uint32_t*)((char*)&v21[0] + 2) = v13;
-				v22 = v12;
+				*(uint16_t*)((char*)v21 + 8) = v12;
 				sub_4571A0(a4, v13);
 				nox_xxx_netSendPacket1_4E5390(159, (int)&v21, 10, 0, 1);
 			}

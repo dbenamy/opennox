@@ -194,6 +194,8 @@ target build selection and linker evidence.
 | Roster padding, Flagball draw and player layout prerequisites | 82 | 53,046 | −3 | 0 |
 | Match results and roster synchronization, private globals and EOF cleanup | 82 | 52,273 | −773 | 0 |
 
+| Team message fields and clear/rebalance count prerequisites | 82 | 52,275 | +2 | 0 |
+
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
 because the file still contains other functions. The 33 test-reference lines were subsequently removed after successful

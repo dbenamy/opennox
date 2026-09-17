@@ -1459,3 +1459,23 @@ target. The legacy highres compiler flag is unconditional, whereas the root Go
 version is target-specific. Correcting that compiler flag would also change C
 rendering constants; defer that broader compatibility change for review.
 Evidence, qualification and conversion scope: [MATCH_ROSTER.md](MATCH_ROSTER.md).
+
+## Team runtime message prerequisites — review after conversion
+
+Before freezing the team baseline, zero four fixed-width local message buffers:
+rename, team change and the two client requests. Real-C regression cases reproduce
+unspecified trailing bytes; preserve lengths and populated fields. The join-member
+message separately writes its object type into an unrelated local `short`, not
+its outgoing array. Store it at byte 8 of the existing 10-byte record and remove
+the unused local. Header bytes already matched the independent contract; the
+incorrect type word was reproduced separately. These corrections are authorized,
+reversible and intended to make the existing protocol fields deterministic and
+correct. Twelve focused C roots pass after correction; broader baseline and fresh
+production qualification remain pending. See [TEAM_RUNTIME.md](TEAM_RUNTIME.md).
+
+The group/rebalance contract additionally reproduces stale team member counts:
+the clear-player caller removes membership nodes without decrementing its counter.
+Decrement only after a successful unlink; a detached matching-ID entry must not
+change the count. Keep the lower-level unlink API unchanged because other callers
+already own their decrements. This is another reversible prerequisite correction;
+combined original-C and production qualification is pending in TEAM_RUNTIME.md.

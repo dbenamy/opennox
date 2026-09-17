@@ -273,7 +273,7 @@ uint32_t* nox_xxx_objGetTeamByNetCode_418C80(int a1) {
 //----- (00418CD0) --------------------------------------------------------
 void nox_xxx_teamRenameMB_418CD0(wchar2_t* a1, wchar2_t* a2) {
 	int v2;      // eax
-	char v3[46]; // [esp+4h] [ebp-30h]
+	char v3[46] = {0}; // [esp+4h] [ebp-30h]
 
 	if (a1) {
 		sub_457010((int)a1, a2);
@@ -312,6 +312,9 @@ void sub_418D80(int a1) {
 				if (*((uint8_t*)v3 + 4) == *(uint8_t*)(a1 + 57)) {
 					sub_4571A0(*((uint32_t*)i + 515), 0);
 					sub_418E40(a1, v4);
+					if (!*(uint8_t*)(v4 + 4)) {
+						--*(uint32_t*)(a1 + 48);
+					}
 				}
 			}
 		}
@@ -514,7 +517,7 @@ int sub_4196D0(void* a1p, void* a2p, int a3, int a4) {
 	int a2 = a2p;
 	int v4;      // ecx
 	char* v5;    // eax
-	char v7[10]; // [esp+8h] [ebp-Ch]
+	char v7[10] = {0}; // [esp+8h] [ebp-Ch]
 
 	if (!a1 || !a2 || !nox_xxx_teamCompare2_419180(a1, *(uint8_t*)(a1 + 4))) {
 		return 0;
@@ -592,7 +595,7 @@ void sub_4198A0(int a1, int a2, int a3) {
 //----- (00419900) --------------------------------------------------------
 char sub_419900(int a1, int a2, short a3) {
 	char result; // al
-	char v4[10]; // [esp+0h] [ebp-Ch]
+	char v4[10] = {0}; // [esp+0h] [ebp-Ch]
 
 	result = a1;
 	if (a1 && a2) {
@@ -611,7 +614,7 @@ char sub_419900(int a1, int a2, short a3) {
 //----- (00419960) --------------------------------------------------------
 char sub_419960(int a1, int a2, short a3) {
 	char result; // al
-	char v4[10]; // [esp+0h] [ebp-Ch]
+	char v4[10] = {0}; // [esp+0h] [ebp-Ch]
 
 	result = a1;
 	if (a1 && a2) {

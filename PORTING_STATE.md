@@ -2,13 +2,42 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 52k lines** — **52,273 physical lines in 82 production
-`.c` files**, zero reference C. Latest qualified conversion removes **773 lines**.
+**Rough C remaining: about 52k lines** — **52,275 physical lines in 82 production
+`.c` files**, zero reference C. Latest conversion removed **773 lines**; team prerequisites add **2 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — match results / roster conversion qualified
+## Current — team runtime corrected C baseline qualified
+
+Match/roster conversion `12da9a9e` is pushed. This checkpoint accompanies the
+corrected team C baseline commit. Scope is **37 functions / 992 C body lines**,
+including one 62-line orphan. Two map-entry UI wrappers (21 lines) remain with their
+window owner. No native team implementation is installed.
+
+Three independently reproduced corrections: zero four fixed-width message buffers,
+write the join object's type into the actual outgoing record, and decrement counts
+after successful clear-player unlinks. Direct unlink remains count-neutral.
+See [TEAM_RUNTIME.md](docs/porting/TEAM_RUNTIME.md) and DECISIONS.md.
+
+Frozen baseline: **46 roots / 10,835 leaves / 40 groups / 10,791 records**, no skips;
+default/server/highres pass in **48.70 / 134.14 / 57.89s**, all captures identical.
+Fresh production passes in **367.10s**: three builds/ABI checks, exact known asset
+failure set, gameplay, save/load and flat rendering; 51 maps removed, one regenerated.
+All four gates share the same 2,078-file source manifest. All sessions joined.
+
+Manifest: docs/porting/team-runtime-c-batch.json. Expectations are frozen; never
+regenerate to hide differences. Artifacts: build/port-team-runtime. scope-audit.json
+and deferred-ui-wrappers.json define the scope. Recompute remaining C callers for
+the accepted 37 functions: deferred wrappers require the sub_417EC0 boolean export.
+Ignored fixture drafts are consumed/stale; do not recopy them. Native drafts under
+native-draft are unreviewed starting points, not installed or qualified code.
+
+Next: push this baseline, translate the connected batch, qualify frozen and broader
+affected tests plus fresh production, record C LOC, commit/push and continue.
+No user blocker. Source build/baseline/env.sh for Go. Preserve original assets/archive.
+
+### Last completed qualification
 
 Quest conversion `c1f80856` and corrected C baseline `bacee82b` are committed/pushed.
 The native match/roster conversion is qualified; this checkpoint accompanies its
@@ -27,14 +56,15 @@ actual save/load and flat rendering. The flat scene removes 51 loose maps and
 regenerates the selected map exactly. All four gates share 2,060 source fingerprints.
 Artifacts: build/port-match-roster/native-{focused-3,default,server,highres,production},
 native-coverage-audit.json; full detail in docs/porting/MATCH_ROSTER.md.
-All qualification processes have completed and joined. No source freeze remains.
+All match/roster qualification processes have completed and joined.
+The new team probe has its own source freeze above.
 
 The C baseline corrected roster/settings padding, the Flagball no-winner crash,
 and Go's player identifier offset (2096). Native bring-up corrected a helper name
 and unordered wall-message metadata; no frozen expectations changed. Preserve the
 unconditional C highres protocol version pending separate review.
 
-Next: audit the connected team-management scope after pushing this conversion.
+Historical next step after match/roster: audit connected team management.
 Read-only candidate inventory is build/port-match-roster/next-team-candidates.json:
 42 bodies / 1,096 C lines covering membership, team messages and objective setup.
 This is a candidate list, not an accepted scope or frozen baseline. Verify live

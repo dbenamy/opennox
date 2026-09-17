@@ -15,16 +15,16 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Match results and roster synchronization are now ported and
-qualified: 283 affected test roots / 52,837 leaf cases across all three targets,
-plus fresh production builds, gameplay, save/load and flat-rendering checks.
+scheduled pause. Match results and roster synchronization are ported. The next
+team-runtime batch now has a committed C baseline: 46 test roots / 10,835 leaf
+cases, identical captures on all three targets, and fresh production qualification.
 
-Production C is **52,273 physical lines in 82 files**, with zero reference C;
-this conversion removes **773 lines**. The full asset suite still has its exact
-three known failing packages. Next is the connected team-management batch.
-See [MATCH_ROSTER.md](docs/porting/MATCH_ROSTER.md) for evidence, prerequisite
-corrections and review decisions. [PORTING_STATE.md](PORTING_STATE.md) is the
-resume checkpoint; confident reversible decisions remain recorded for review.
+Production C is **52,275 physical lines in 82 files**, with zero reference C.
+The +2 lines since the previous conversion are prerequisite corrections to team
+message fields and clear/rebalance counts. The full asset suite retains its exact
+three known failing packages. Next is translating the 37-function team-runtime scope.
+See [TEAM_RUNTIME.md](docs/porting/TEAM_RUNTIME.md) for coverage and decisions.
+[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 
