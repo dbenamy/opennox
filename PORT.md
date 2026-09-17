@@ -15,16 +15,16 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Quest runtime is ported. The next **match results and roster C
-baseline is qualified**, with 24 roots / 10,027 cases / 10,034 frozen records on all
-three targets and fresh production, gameplay, save/load and flat-rendering gates.
+scheduled pause. Match results and roster synchronization are now ported and
+qualified: 283 affected test roots / 52,837 leaf cases across all three targets,
+plus fresh production builds, gameplay, save/load and flat-rendering checks.
 
-Independent contracts justified three prerequisite corrections: message padding,
-Flagball draws and Go's player identifier offset. Production C is now **53,046 lines
-in 82 files**, with zero reference C. The audited 767-line conversion is next.
-See [MATCH_ROSTER.md](docs/porting/MATCH_ROSTER.md) for evidence and the preserved
-C protocol-version discrepancy. [PORTING_STATE.md](PORTING_STATE.md) is the resume
-checkpoint; confident reversible decisions remain recorded for review.
+Production C is **52,273 physical lines in 82 files**, with zero reference C;
+this conversion removes **773 lines**. The full asset suite still has its exact
+three known failing packages. Next is the connected team-management batch.
+See [MATCH_ROSTER.md](docs/porting/MATCH_ROSTER.md) for evidence, prerequisite
+corrections and review decisions. [PORTING_STATE.md](PORTING_STATE.md) is the
+resume checkpoint; confident reversible decisions remain recorded for review.
 
 ## Goal and target
 

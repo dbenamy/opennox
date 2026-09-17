@@ -10,7 +10,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_2.h"
 #include "GAME4_3.h"
-int sub_4DE4D0(char a1);
 extern unsigned int dword_5d4594_2650652;
 static void* controlNormalUpdate(void) { return nox_xxx_updatePlayer_4F8100; }
 static void* controlBotUpdateAddress(void) { return nox_xxx_updatePlayerMonsterBot_4FAB20; }
@@ -76,7 +75,7 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 	controlClearWaypoints(u)
 	*controlPtr(u.CObj(), 520) = nil
 	if controlFlags(8192) {
-		C.sub_4DE4D0(C.char(*controlByte(pl, 2064)))
+		matchRosterResyncMask(*controlByte(pl, 2064))
 	}
 	result := int8(uintptr(pl))
 	if pl == nil || *equipmentWord(pl, 4700) != 0 {
@@ -217,8 +216,8 @@ func controlLeaveObserver(pl unsafe.Pointer) {
 	if controlFlags(16) && bool(C.nox_xxx_CheckGameplayFlags_417DA0(4)) {
 		controlTeamFlag(pl)
 	}
-	if controlFlags(49152) && C.sub_509D80(C.int(uintptr(pl))) == 0 {
-		C.sub_509C30((*C.nox_playerInfo)(pl))
+	if controlFlags(49152) && !matchRosterHasIdentity((*server.Player)(pl)) {
+		matchRosterRemember((*server.Player)(pl))
 	}
 	if controlFlags(4096) {
 		for it := GetServer().S().Players.FirstUnit(); it != nil; it = GetServer().S().Players.NextUnit(it) {

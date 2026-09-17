@@ -2,20 +2,17 @@
 
 ## Status and scope
 
-Baseline investigation follows qualified quest conversion `c1f80856`. No native
-conversion is installed. Audited scope is **28 C functions**, including one
-unreachable 19-line C implementation. The live scope covers roster and settings
-messages, match winner/limit selection, remembered player identities, object report
-masks, flag-state records and team assignment. Full player-arrival orchestration,
-server-ready UI transitions and the GUI-widget-backed settings reader remain with
-their separate owners.
+The native conversion is qualified against corrected C baseline `bacee82b`.
+It replaces **27 live functions** and removes one proven unreachable 19-line C
+implementation. Scope covers roster/settings messages, match winner/limit
+selection, remembered player identities, object report masks, flag-state records
+and team assignment. Full player-arrival orchestration, server-ready UI transitions
+and the GUI-widget-backed settings reader remain with separate owners.
 
-Initial scope was 770 physical C lines. The padding prerequisite adds one line:
-**767 lines** after the additional draw correction below, with working production C **53,046 / 82 files**, zero reference C.
-The expected post-conversion count is **52,279**, subject to final counter/audit.
-Initial interface audit plans 10 retained C entry points and 18 retirements.
-Exact source blocks and references are in build/port-match-roster/scope-audit.json
-and interface-plan.json; audit the actual tree again before replacement.
+The conversion removes **773 physical C lines**: 767 function lines, four private
+global lines and two EOF separators. Production C is **52,273 / 82 files**, zero
+reference C. Ten real C interfaces remain and eighteen symbols retire. The sections
+below record prerequisite discoveries, frozen baseline and final qualification.
 
 ## Message-padding prerequisite
 
@@ -143,4 +140,83 @@ match-roster-save-c and match-roster-flat-c. Expectations are committed in fixtu
 hashes and match-roster-c-batch.json; local capture payloads remain ignored.
 
 Working production C after prerequisites: **53,046 lines / 82 files**, zero
-reference C. The port itself is next; no native draft has been installed yet.
+reference C. This is the committed pre-conversion baseline.
+
+## Native implementation
+
+Baseline `bacee82b` is committed/pushed. The Go implementation is qualified. It consolidates the existing root roster encoder in server, moves
+match/roster state and algorithms to Go, and replaces the private remembered-name
+C allocation/list with Go records. The frozen list payload/order and identity
+contracts remain unchanged. Ten C entry points remain for real C callers; eighteen
+retired symbols have zero remaining source references.
+
+Removal totals **773 physical C lines**: 767 function lines, four private global
+lines and two trailing EOF separators. Working production count is **52,273 / 82
+files**, zero reference C.
+
+Native bring-up: first discovery found two nonexistent controlWord references
+(85.25s), replaced with the existing equipmentWord accessor. The next full focused
+run (137.74s) matched 20/21 groups; wall open/close used the ordered sender instead
+of the original unordered reliable sender. Payloads matched; the queue metadata
+identified the difference. Correct that flag without changing frozen expectations.
+native-focused-3 passes (136.42s), with all frozen groups unchanged. Affected selection is 283 roots / 111 test source files,
+covering direct callers and real report/queue/team/list/world/quest owners.
+
+Completed C scene deduplication reclaimed **1,660,044,319 bytes**; per-scene verified
+restoration manifests preserve the removed duplicate assets. Original assets and
+the user's archive remain untouched.
+
+### Translation review
+
+Preserve fixed 129-byte roster messages and the larger 132-byte caller scratch
+buffer, including identifiers that fill all ten transmitted bytes. The shared
+Go encoder accepts both caller extents; caller initialization controls padding.
+The remembered-name check preserves C's signed-char comparison against an unsigned
+stored class byte, including the unusual high-byte cases.
+
+Object mask shifts retain x86 count wrapping. Flag records retain their mapped
+six-byte layout, untouched padding and C-visible pointers. Winner selection keeps
+the separate team and solo-player tie passes and signed score bounds. The timeout
+coordinate converter preserves the low 16 bits of the C 64-bit conversion using
+float bits; large finite floats and masked invalid conversions both yield zero
+low bits. Existing C team membership/notification owners remain shared dependencies.
+
+All private Go callers now invoke Go directly. The retained C interfaces are GUI
+settings, complete settings, roster fanout, player IDs, objective minimap, simple
+object reports, team roster, both flag-record pointers and minimum-score winner
+selection. The unreachable C wall-destroy implementation is removed; the existing
+live Go method remains covered by the same wall fixtures.
+
+## Final native qualification
+
+| Gate | Result | Seconds |
+| --- | --- | ---: |
+| Frozen focused contracts | Pass, all 21 groups | 136.42 |
+| Affected default | Pass | 115.52 |
+| Affected server | Pass | 225.84 |
+| Affected highres | Pass | 153.84 |
+| Fresh production and headless gates | Pass | 388.13 |
+
+Each broader target runs **283 roots / 52,837 leaves / 127 capture groups /
+55,862 records**, without skips. All 127 groups match across targets; new frozen
+contracts and the 106 preceding groups remain unchanged. Selection covers 111 test
+source files and is reproduced by match-roster-tests.txt / match-roster-batch.json.
+The three sweeps and production share identical fingerprints for 2,060 source files.
+
+All three production binaries and retained/retired ABI checks pass. Full asset
+qualification preserves the exact 1,553 known failure entries and 15 pass / 3 fail /
+32 no-test package results. Gameplay, actual save/load and decoded flat-rendered
+frames match corrected C. The flat scene removes 51 loose maps and regenerates one
+selected compressed map exactly. This is bounded integration coverage, not a claim
+that the whole game or full suite is green. Native client SHA-256:
+`1676f4ba3ae34a7bb2abeced8d08021765721817841b4828dd5218355af45486`.
+
+Artifacts: build/port-match-roster/native-focused-3, native-default, native-server,
+native-highres, native-production and native-coverage-audit.json. Headless scenes:
+match-roster-native, match-roster-save-native and match-roster-flat-native.
+No C test algorithms remain. The committed C baseline and unchanged expectations
+provide recovery without depending on local captures.
+
+Completed native scene deduplication also reclaimed **1,660,044,319 bytes**, with
+verified per-scene restoration manifests. Combined C/native cleanup freed 3.32 GB;
+original assets and the archive are preserved. See dedup-native.log locally.

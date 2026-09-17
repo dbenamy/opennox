@@ -231,5 +231,5 @@ func Get_nox_client_mapSpecialRWObjectData_4AC610() unsafe.Pointer {
 }
 
 func Sub_4DE410(pli ntype.PlayerInd) {
-	C.sub_4DE410(C.int(pli))
+	matchRosterReportMask(int(pli))
 }

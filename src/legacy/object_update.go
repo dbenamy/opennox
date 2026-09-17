@@ -235,7 +235,7 @@ func Nox_xxx_unitAdjustHP_4EE460(a1 *server.Object, a2 int) {
 	resourceAdjustHP(a1, int32(a2))
 }
 func Sub_509CF0(a1 *byte, a2 player.Class, a3 uint32) int {
-	return int(C.sub_509CF0((*C.char)(unsafe.Pointer(a1)), C.char(a2), C.int(a3)))
+	return bool2int(matchRosterIdentityAllowed(GoStringP(unsafe.Pointer(a1)), byte(a2), a3))
 }
 func Sub_4D79C0(a1 *server.Object) {
 	questRuntimeReconnect(a1)

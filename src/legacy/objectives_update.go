@@ -92,7 +92,7 @@ func objectiveFlagUpdate(u *server.Object) int32 {
 	if core.Frame()-*equipmentWord(ud, 8) > uint32(30*core.TickRate()) {
 		inventorySound(305, u, 0, 0)
 		*equipmentWord(ud, 8) = 0
-		C.sub_4E82C0(C.uchar(team), 0, C.char(color), 0)
+		matchRosterFlagState(byte(team), 0, byte(color), 0)
 		Nox_xxx_unitMove_4E7010(u, *(*types.Pointf)(ud))
 		out = int32(C.nox_xxx_netInformTextMsg2_4DA180(8, (*C.uint8_t)(unsafe.Pointer(&color))))
 	}

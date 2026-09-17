@@ -2,52 +2,51 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 53k lines** — **53,046 physical lines in 82 production
-`.c` files**, zero reference C. Latest qualified conversion removes **897 lines**.
+**Rough C remaining: about 52k lines** — **52,273 physical lines in 82 production
+`.c` files**, zero reference C. Latest qualified conversion removes **773 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — match results / roster corrected C baseline
+## Current — match results / roster conversion qualified
 
-Quest conversion `c1f80856` is committed/pushed. The corrected C baseline is qualified; production C remains C. Working count is **53,046 / 82 files / zero reference C**.
-Audited conversion scope is **767 C lines / 28 functions**, including one proven
-unreachable 19-line wall-destroy implementation. Full player-arrival orchestration,
-server-ready UI and the GUI-widget-backed settings reader remain separate.
+Quest conversion `c1f80856` and corrected C baseline `bacee82b` are committed/pushed.
+The native match/roster conversion is qualified; this checkpoint accompanies its
+conversion commit.
+It removes 28 C functions (one proven orphan), two private globals and trailing
+separators: **773 physical C lines**. Ten actual C interfaces remain; eighteen
+retired symbols have no remaining source references. No reference C is retained.
 
-Three confirmed prerequisite corrections are installed: initialize roster/settings
-string padding, use the existing generic draw message for a Flagball timeout with
-no winning team, and align Go's player identifier to C offset 2096 with explicit
-padding/assertion. Player size and later offsets stay unchanged. See MATCH_ROSTER.md.
+Frozen baseline: **24 roots / 10,027 leaves / 21 groups / 10,034 records**.
+Native focused checks pass (136.42s). Broader default/server/highres checks pass
+(115.52s / 225.84s / 153.84s): **283 roots / 52,837 leaves / 127 groups /
+55,862 records**, without skips; every capture group matches across targets.
+Fresh native production passes (388.13s): three builds and ABI checks, exact known
+asset failures (1,553 entries; 15 pass / 3 fail / 32 no-test packages), gameplay,
+actual save/load and flat rendering. The flat scene removes 51 loose maps and
+regenerates the selected map exactly. All four gates share 2,060 source fingerprints.
+Artifacts: build/port-match-roster/native-{focused-3,default,server,highres,production},
+native-coverage-audit.json; full detail in docs/porting/MATCH_ROSTER.md.
+All qualification processes have completed and joined. No source freeze remains.
 
-Baseline covers **24 roots / 10,027 leaves / 21 groups / 10,034 frozen records**.
-C capture: build/port-match-roster/c-capture (44.95s). Frozen default repeat (56.54s),
-server (149.58s), and highres (67.17s) pass without skips and match every hash.
-Production build/port-match-roster/c-production passes (400.55s): all builds/ABI,
-exact known asset failures, gameplay/save and flat rendering with map regeneration.
-All qualification processes have joined. All four runs share 2,054 source fingerprints.
+The C baseline corrected roster/settings padding, the Flagball no-winner crash,
+and Go's player identifier offset (2096). Native bring-up corrected a helper name
+and unordered wall-message metadata; no frozen expectations changed. Preserve the
+unconditional C highres protocol version pending separate review.
 
-All fixtures are installed and frozen; do NOT recopy old fixture drafts. The
-scope-audit.json was refreshed after the C fixes and totals 767 lines. Native Go
-files in build/port-match-roster/native-draft are unfinished, uninstalled drafts;
-review signatures/callers, then integrate only after baseline qualification and
-commit/push. freeze-baseline.py is CONSUMED; never regenerate expectations to hide
-a difference. Initial interface plan is 10 retained / 18 retired entry points.
+Next: audit the connected team-management scope after pushing this conversion.
+Read-only candidate inventory is build/port-match-roster/next-team-candidates.json:
+42 bodies / 1,096 C lines covering membership, team messages and objective setup.
+This is a candidate list, not an accepted scope or frozen baseline. Verify live
+callers/callbacks and use actual membership/object owners before capturing cases.
+Full player-arrival orchestration and GUI settings remain separate owners.
 
-C's highres compiler flag is unconditional, so settings emit 0x000F039A on all
-three targets. Preserve that message value in this conversion; review the C/root-Go
-version discrepancy separately because the compiler flag also changes rendering.
-The timer coordinate message uses a 64-bit intermediate, unlike ordinary 32-bit
-object coordinate conversion; separate boundary contracts cover it.
-
-Next: commit/push the qualified C baseline, integrate the Go draft, qualify
-affected callers/all production targets,
-update C LOC and commit/push the conversion, then continue the next batch.
-
-Preserve original assets and untracked nox-iso-from-archive-org.7z. The completed
-quest C/native scene copies have restoration manifests after deduplication; their
-cleanup scripts are CONSUMED. Source build/baseline/env.sh for Go. No source edits
-during builds, no user blocker, and no active agent delegation.
+install-native.py and freeze-baseline.py are CONSUMED; old ignored drafts are stale.
+Never recopy them or regenerate expectations to hide a difference. Preserve original
+assets and untracked nox-iso-from-archive-org.7z. Completed scene deduplication keeps
+per-scene restoration manifests; never repeat consumed cleanup scripts.
+Source build/baseline/env.sh for Go. No source edits during builds; no user blocker
+and no active agent delegation.
 
 <!-- /current-checkpoint -->
 

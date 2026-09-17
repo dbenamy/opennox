@@ -278,7 +278,7 @@ func Sub_425F10(p *server.Player) {
 }
 
 func Sub_4DF3C0(p *server.Player) {
-	C.sub_4DF3C0((*nox_playerInfo)(p.C()))
+	matchRosterAssignTeam(p)
 }
 
 func Sub_40AA70(p *server.Player) int {
@@ -290,7 +290,7 @@ func Nox_xxx_netReportPlayerStatus_417630(p *server.Player) {
 }
 
 func Sub_509C30(p *server.Player) {
-	C.sub_509C30((*nox_playerInfo)(p.C()))
+	matchRosterRemember(p)
 }
 
 func Nox_xxx_playerLeaveObserver_0_4E6AA0(p *server.Player) {
@@ -298,7 +298,7 @@ func Nox_xxx_playerLeaveObserver_0_4E6AA0(p *server.Player) {
 }
 
 func Nox_xxx_netGuiGameSettings_4DD9B0(a1 int, a2 *server.Settings2, a3 int) {
-	C.nox_xxx_netGuiGameSettings_4DD9B0(C.char(a1), unsafe.Pointer(a2), C.int(a3))
+	matchRosterGUISettings(byte(a1), unsafe.Pointer(a2), a3)
 }
 
 func Sub_459AA0(a1 *server.Settings2) {
@@ -338,7 +338,7 @@ func Sub_4D79A0(pli ntype.PlayerInd) {
 }
 
 func Sub_4E80C0(pli ntype.PlayerInd) {
-	C.sub_4E80C0(C.char(pli))
+	matchRosterClearMask(byte(pli))
 }
 
 func Nox_xxx_player_4E3CE0() int {

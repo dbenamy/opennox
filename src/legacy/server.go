@@ -215,7 +215,7 @@ func Nox_xxx_decay_511750() {
 	C.nox_xxx_decay_511750()
 }
 func Nox_server_checkVictory_509A60() {
-	C.nox_server_checkVictory_509A60()
+	matchRosterCheckVictory()
 }
 func Nox_xxx_allocHitArray_5486D0() {
 	C.nox_xxx_allocHitArray_5486D0()
@@ -242,7 +242,7 @@ func Nox_xxx_reconAttempt_41E390() {
 	C.nox_xxx_reconAttempt_41E390()
 }
 func Sub_5096F0() {
-	C.sub_5096F0()
+	matchRosterCheckLimit()
 }
 func Sub_416720() {
 	C.sub_416720()
@@ -311,10 +311,10 @@ func Sub_57B0A0() {
 	C.sub_57B0A0()
 }
 func Sub_4DF120(a1 unsafe.Pointer) {
-	C.sub_4DF120(a1)
+	matchRosterWall((*server.Wall)(a1), 59)
 }
 func Sub_4DF180(a1 unsafe.Pointer) {
-	C.sub_4DF180(a1)
+	matchRosterWall((*server.Wall)(a1), 60)
 }
 func Nox_xxx_netUpdateObjectSpecial_527E50(a1 *server.Object, a2 *server.Object) {
 	visibilitySpecialUpdate(a1, a2)

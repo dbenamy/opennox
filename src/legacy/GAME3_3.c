@@ -168,44 +168,6 @@ FILE* sub_4E43F0(char* a1) {
 }
 
 int sub_50B510();
-//----- (004E80C0) --------------------------------------------------------
-int sub_4E80C0(char a1) {
-	int result; // eax
-	int v2;     // esi
-	int v3;     // edx
-
-	result = nox_server_getFirstObject_4DA790();
-	if (result) {
-		v2 = ~(1 << a1);
-		do {
-			v3 = v2 & *(uint32_t*)(result + 140);
-			*(uint32_t*)(result + 144) &= v2;
-			*(uint32_t*)(result + 140) = v3;
-			result = nox_server_getNextObject_4DA7A0(result);
-		} while (result);
-	}
-	return result;
-}
-
-//----- (004E82C0) --------------------------------------------------------
-int sub_4E82C0(unsigned char a1, char a2, char a3, short a4) {
-	int v4; // eax
-
-	v4 = 6 * a1;
-	*getMemU8Ptr(0x5D4594, 1567740 + v4) = a1;
-	*getMemU8Ptr(0x5D4594, 1567741 + v4) = a3;
-	*getMemU8Ptr(0x5D4594, 1567742 + v4) = a2;
-	*getMemU16Ptr(0x5D4594, 1567744 + v4) = a4;
-	return nox_xxx_netSendFlagStatus_4D95A0(255, a1, a2, a3, a4);
-}
-
-//----- (004E8310) --------------------------------------------------------
-char* sub_4E8310() { return (char*)getMemAt(0x5D4594, 1567736); }
-
-//----- (004E8320) --------------------------------------------------------
-unsigned char* sub_4E8320(unsigned char a1) { return getMemAt(0x5D4594, 1567740 + 6 * a1); }
-
-uint32_t nox_xxx_wallFlags(int i);
 //----- (004EC520) --------------------------------------------------------
 int nox_xxx_unitsHaveSameTeam_4EC520(nox_object_t* a1p, nox_object_t* a2p) {
 	int a1 = a1p;

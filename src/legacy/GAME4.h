@@ -159,7 +159,6 @@ int sub_507190(int a1, char a2);
 int sub_5071C0();
 void sub_509120(uint32_t* a1, int a2, const char* a3);
 int sub_5095E0();
-int sub_5096F0();
 
 void nox_server_scriptExecuteFnForEachGroupObj_502670(unsigned char* groupPtr, int expectedType, void (*a3)(int, int),
 													  int a4);

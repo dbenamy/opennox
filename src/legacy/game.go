@@ -426,7 +426,7 @@ func Sub_4951C0() {
 	C.sub_4951C0()
 }
 func Nox_xxx_netGameSettings_4DEF00() {
-	C.nox_xxx_netGameSettings_4DEF00()
+	matchRosterSettings()
 }
 func Nox_server_gameUnsetMapLoad_40A690() {
 	C.nox_server_gameUnsetMapLoad_40A690()

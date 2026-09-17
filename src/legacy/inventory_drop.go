@@ -64,7 +64,7 @@ func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 		inventoryMessage(7, u, uint32(value))
 		C.nox_xxx_netMarkMinimapForAll_4174B0(inventoryInt(it), 1)
 		*(*uint32)(unsafe.Add(it.UpdateData, 8)) = GetServer().S().Frame()
-		C.sub_4E82C0(C.uchar(team), 2, C.char(value), 0)
+		matchRosterFlagState(byte(team), 2, byte(value), 0)
 	}
 	glyph := inventoryCache(1568252, "Glyph")
 	if !noxflags.HasGame(2048|4096) && it.ObjFlags&0x80000 == 0 && it.ObjClass&0x10000000 == 0 && uint32(it.TypeInd) != glyph {

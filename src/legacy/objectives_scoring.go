@@ -109,7 +109,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 			netcode := t.NetCode
 			C.nox_xxx_netInformTextMsg2_4DA180(4, (*C.uint8_t)(unsafe.Pointer(&netcode)))
 			*equipmentWord(ud, 8) = 0
-			C.sub_4E82C0(C.uchar(t.TeamVal.ID), 0, C.char(color), 0)
+			matchRosterFlagState(byte(t.TeamVal.ID), 0, byte(color), 0)
 			return
 		}
 		for flag := t.InvFirstItem; flag != nil; flag = flag.InvNextItem {
@@ -133,7 +133,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 			Nox_xxx_unitRaise_4E46F0(flag, 0)
 			C.nox_xxx_netMarkMinimapForAll_4174B0(inventoryInt(flag), 1)
 			*equipmentWord(data, 8) = 0
-			C.sub_4E82C0(C.uchar(flagTeam), 0, C.char(flagColor), 0)
+			matchRosterFlagState(byte(flagTeam), 0, byte(flagColor), 0)
 			inventoryMessage(5, t, uint32(flagColor))
 			if limit > 0 {
 				for tm := core.Teams.First(); tm != nil; tm = core.Teams.Next(tm) {
@@ -171,7 +171,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 	inventoryMessage(6, t, uint32(flagColor))
 	C.nox_xxx_netUnmarkMinimapSpec_417470(inventoryInt(u), 1)
 	*equipmentWord(ud, 8) = 0
-	C.sub_4E82C0(C.uchar(team), 1, C.char(color), C.short(t.NetCode))
+	matchRosterFlagState(byte(team), 1, byte(color), uint16(t.NetCode))
 	objectivePickupBuffs(t)
 }
 func objectivePointFX(id byte, u *server.Object) int16 {

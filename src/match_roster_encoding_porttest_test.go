@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/legacy"
+	"github.com/opennox/opennox/v1/server"
 )
 
 func TestMatchRosterPlayerEncoding(t *testing.T) {
@@ -69,12 +70,12 @@ func TestMatchRosterPlayerEncoding(t *testing.T) {
 						// The existing Go caller accepts either a full scratch buffer or its
 						// shorter on-wire destination. A full identifier field has no terminator.
 						native := bytes.Repeat([]byte{fill}, 132)
-						nox_xxx_netNewPlayerMakePacket_4DDA90(native, pl)
+						server.EncodePlayerRoster(native, pl)
 						if !bytes.Equal(native, want) {
 							t.Fatalf("existing Go scratch encoding differs: %x want %x", native, want)
 						}
 						short := bytes.Repeat([]byte{fill}, 129)
-						nox_xxx_netNewPlayerMakePacket_4DDA90(short, pl)
+						server.EncodePlayerRoster(short, pl)
 						shortWant := bytes.Clone(want[:129])
 						if !bytes.Equal(short, shortWant) {
 							t.Fatalf("short Go encoding %x want %x", short, shortWant)

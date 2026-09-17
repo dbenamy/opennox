@@ -252,7 +252,7 @@ func Nox_xxx_netOnPacketRecvCli_48EA70_switch(a1 ntype.PlayerInd, a2 netmsg.Op, 
 	return int(C.nox_xxx_netOnPacketRecvCli_48EA70_switch(C.int(a1), C.int(a2), (*C.uchar)(unsafe.Pointer(&data[0])), C.int(len(data))))
 }
 func Sub_4DDE10(a1 int, a2 *server.Player) {
-	C.sub_4DDE10(C.int(a1), (*nox_playerInfo)(a2.C()))
+	matchRosterInventory(a1, a2)
 }
 func Nox_xxx_netPlayerObjSend_518C30(a1 *server.Object, a2 *server.Object, a3 int, a4 int) int {
 	return objectReportPlayer(a1, a2, a3, a4)
@@ -282,7 +282,7 @@ func Nox_xxx_netReportAcquireCreature_4D91A0(pli int, obj *server.Object) {
 	C.nox_xxx_netReportAcquireCreature_4D91A0(C.int(pli), asObjectC(obj))
 }
 func Nox_xxx_netSendSimpleObject2_4DF360(pli int, obj *server.Object) {
-	C.nox_xxx_netSendSimpleObject2_4DF360(C.int(pli), asObjectC(obj))
+	matchRosterSimpleObject(int(pli), obj)
 }
 func Nox_xxx_netCode2ChatBubble_48D850(a1 int) int {
 	return int(C.nox_xxx_netCode2ChatBubble_48D850(C.int(a1)))
