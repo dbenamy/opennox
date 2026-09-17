@@ -86,15 +86,6 @@ int nox_xxx_unitCanInteractWith_5370E0(nox_object_t* a1, nox_object_t* a2, int a
 int nox_xxx_mapCheck_537110(nox_object_t* a1, nox_object_t* a2);
 int nox_xxx_traceRay_5374B0(float4* a1);
 void nox_xxx_harpoonBreakForPlr_537520(nox_object_t* a1);
-int sub_537580(int a1);
-void sub_5375A0(int a1);
-char nox_xxx_unitHasCollideOrUpdateFn_537610(nox_object_t* a1);
-int sub_537740();
-int sub_537750(int a1);
-void sub_537770(nox_object_t* a1);
-char nox_xxx_projectileTraceHit_537850(int a1, int* a2, float2* a3);
-void nox_xxx_sMakeScorch_537AF0(float* a1, int a2);
-int nox_xxx_scorchInit_537BD0();
 int nox_xxx_playerPreAttackEffects_538290(int a1, int a2, int a3, int a4);
 int nox_xxx_playerTraceAttack_538330(int a1, int a2);
 void sub_538510(int a1, int a2);

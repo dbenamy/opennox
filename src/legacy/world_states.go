@@ -3,7 +3,6 @@ package legacy
 /*
 #include "GAME3_3.h"
 #include "GAME4_3.h"
-char nox_xxx_unitHasCollideOrUpdateFn_537610(nox_object_t* a1);
 */
 import "C"
 import (

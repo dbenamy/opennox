@@ -41,7 +41,7 @@ func spellEffectBurn(id int32, a, b, c *server.Object, record unsafe.Pointer, le
 	}
 	if u := spellEffectNew(stateType(2487732, "MediumFlame")); u != nil {
 		spellEffectCreate(u, c, pos)
-		C.nox_xxx_unitSetDecayTime_511660(asObjectC(u), C.int(floatToInt32(float32(spellEffectScalar("BurnDuration")))))
+		motionDecaySet(u, floatToInt32(float32(spellEffectScalar("BurnDuration"))))
 		visibilityFXSpark(u.PosVec, 64)
 	}
 	spellEffectPosAudio(id, 0, spellEffectPos(record, 4))

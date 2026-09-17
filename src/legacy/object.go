@@ -389,13 +389,13 @@ func Nox_xxx_unitTransferSlaves_4EC4B0(a1 *server.Object) {
 	C.nox_xxx_unitTransferSlaves_4EC4B0(asObjectC(a1))
 }
 func Nox_xxx_decay_5116F0(a1 *server.Object) {
-	C.nox_xxx_decay_5116F0(asObjectC(a1))
+	motionDecayRemove(a1)
 }
 func Nox_xxx_netReportDestroyObject_5289D0(a1 *server.Object) {
 	visibilityDestroyReport(a1)
 }
 func Nox_xxx_unit_511810(a1 *server.Object) {
-	C.nox_xxx_unit_511810(asObjectC(a1))
+	motionDeactivate(a1)
 }
 func Nox_xxx_unitRemoveChild_4EC470(a1 *server.Object) {
 	C.nox_xxx_unitRemoveChild_4EC470(asObjectC(a1))
@@ -416,7 +416,7 @@ func Nox_xxx_respawnAdd_4EC5E0(a1 *server.Object) {
 	C.nox_xxx_respawnAdd_4EC5E0(asObjectC(a1))
 }
 func Sub_5117F0(a1 *server.Object) {
-	C.sub_5117F0(asObjectC(a1))
+	motionActivate(a1)
 }
 func Nox_xxx_action_4DA9F0(a1 *server.Object) {
 	C.nox_xxx_action_4DA9F0(asObjectC(a1))

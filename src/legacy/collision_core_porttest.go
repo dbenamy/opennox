@@ -24,12 +24,8 @@ static uint32_t coreRadialResult[3];
 static void coreRadialObserve(int obj, uint32_t code) {
  coreRadialResult[0]++; coreRadialResult[1]=obj; coreRadialResult[2]=code;
 }
-static uint32_t* coreRadialRun(nox_object_t* obj, float2* point, float radius, uint32_t code) {
- struct {float2* point; float radius; void (*callback)(int,uint32_t); uint32_t code;} args = {point,radius,coreRadialObserve,code};
- memset(coreRadialResult,0,sizeof(coreRadialResult));
- sub_5180B0((int)obj,(int)&args);
- return coreRadialResult;
-}
+static void* coreRadialCallback(void) {return coreRadialObserve;}
+static uint32_t* coreRadialData(void) {return coreRadialResult;}
 static void* corePentagramPtr(void){return nox_xxx_collidePentagram_4EAB20;}
 */
 import "C"
@@ -175,7 +171,9 @@ func PortTestCollisionCoreBuckets(ids map[unsafe.Pointer]uint32) map[uint32][][2
 
 // Exercise the retained production C caller as well as its distance helper.
 func PortTestCollisionCoreRadial(u *server.Object, p *types.Pointf, radius float32, code uint32) [3]uint32 {
-	data := unsafe.Slice((*uint32)(unsafe.Pointer(C.coreRadialRun(asObjectC(u), (*C.float2)(unsafe.Pointer(p)), C.float(radius), C.uint32_t(code)))), 3)
+	data := unsafe.Slice((*uint32)(unsafe.Pointer(C.coreRadialData())), 3)
+	clear(data)
+	motionRadialCandidate(u, p, radius, C.coreRadialCallback(), code)
 	out := [3]uint32{data[0], data[1], data[2]}
 	clear(data)
 	return out

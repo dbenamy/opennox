@@ -15,15 +15,15 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Collision queues, activation and contact dispatch are now in Go,
-following world geometry and map polygons. The latest batch replaces 23 live
-functions; all three target sweeps and fresh production/gameplay qualification
-pass. See [COLLISION_CORE.md](docs/porting/COLLISION_CORE.md).
+scheduled pause. World motion, sentries, decay, projectiles, movers, shooting traps
+and contact triggers are now in Go. The latest batch replaces 30 live functions;
+all three target sweeps and fresh production/gameplay qualification pass. See
+[WORLD_MOTION.md](docs/porting/WORLD_MOTION.md).
 
-Current production C is **41,887 physical lines in 74 files**, with zero reference C.
-The collision-core conversion removed **1,096 lines**. The asset suite retains its
-exact three known failing packages. The world-motion corrected-C baseline is now frozen and fully qualified, including
-sentry unlink and one-shot trigger corrections. Its Go conversion is next.
+Current production C is **40,777 physical lines in 74 files**, with zero reference C.
+The world-motion conversion removed **1,110 lines** from its corrected-C baseline.
+The asset suite retains its exact three known failing packages. Sentry unlink and
+one-shot trigger fixes were reproduced and qualified before conversion.
 [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target

@@ -85,7 +85,7 @@ func inventoryWeaponPickup(u, it *server.Object, arg, equip int) int {
 		}
 	}
 	equipmentPickupSound(u, it)
-	C.nox_xxx_decay_5116F0(asObjectC(it))
+	motionDecayRemove(it)
 	return 1
 }
 func inventoryAmmoPickup(u, it *server.Object, arg, equip int) int {
@@ -204,6 +204,6 @@ func inventoryArmorPickup(u, it *server.Object, arg, equip int) int {
 		}
 		inventorySound(sound, u, 0, 0)
 	}
-	C.nox_xxx_decay_5116F0(asObjectC(it))
+	motionDecayRemove(it)
 	return 1
 }

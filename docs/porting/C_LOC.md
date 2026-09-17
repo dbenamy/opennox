@@ -250,3 +250,5 @@ The collision-core conversion removes **1,096 physical C lines** across 23
 functions, eight private globals and obsolete address/separator cleanup. Current
 C: **41,886 / 74 files / zero reference C**. Ten exports remain for actual C callers;
 eighteen interfaces are retired. See [COLLISION_CORE.md](COLLISION_CORE.md).
+| World-motion corrected-C prerequisites (sentry/trigger corrections and orphan removal) | 74 | 41,887 | +1 | 0 |
+| World motion, sentries, decay, projectiles, movers, traps and triggers | 74 | 40,777 | −1,110 | 0 |

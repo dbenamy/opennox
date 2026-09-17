@@ -63,7 +63,7 @@ func projectileBoom(u, t *server.Object, n *types.Pointf) {
 			}
 		}
 		projectileDamage(t, u.FindOwnerChainPlayer(), u, int32(memmap.Uint32(0x5d4594, 1567968)), 7)
-		C.nox_xxx_sMakeScorch_537AF0((*C.float)(unsafe.Pointer(&t.PosVec)), 0)
+		motionScorch(&t.PosVec, 0)
 	} else if n != nil {
 		collisionReflect(n, &u.VelVec)
 		u.Direction2 = server.Dir16(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&u.VelVec))))))
@@ -105,7 +105,7 @@ func projectileFireball(u, t *server.Object) {
 	projectileSplash(u, t, float32(float64(damage)*0.33333334), inner, damage>>1, 1)
 	visibilityFXSpark(u.PosVec, *(*byte)(data))
 	inventorySound(42, u, 0, 0)
-	C.nox_xxx_sMakeScorch_537AF0((*C.float)(unsafe.Pointer(&u.PosVec)), 2)
+	motionScorch(&u.PosVec, 2)
 	GetServer().DelayedDelete(u)
 }
 func projectilePixie(u, t *server.Object, n *types.Pointf) {

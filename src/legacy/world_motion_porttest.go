@@ -8,11 +8,9 @@ package legacy
 #include "GAME4_3.h"
 #include "GAME5.h"
 extern uint32_t dword_5d4594_2488620;
-extern uint32_t dword_5d4594_2386576, dword_5d4594_2386564;
-static void motionSentryCandidate(nox_object_t* target,nox_object_t* sentry,float4* ray) {uintptr_t context[2]={(uintptr_t)sentry,(uintptr_t)ray};nox_xxx_sentry_511020((int)target,(int)context);}
 static uint32_t motionRadialWords[65];
 static void motionRadialObserve(uint32_t* unit,uint32_t code) {uint32_t n=motionRadialWords[0];if(n>=32)abort();motionRadialWords[1+2*n]=(uintptr_t)unit;motionRadialWords[2+2*n]=code;motionRadialWords[0]=n+1;}
-static uint32_t motionRadialRun(float2* point,float radius,uint32_t code) {motionRadialWords[0]=0;return sub_518040((int)point,radius,(int)motionRadialObserve,code);}
+static void* motionRadialCallback(void) { return motionRadialObserve; }
 
 static uint32_t* motionRadialSnapshot(void) {return motionRadialWords;}
 */
@@ -28,26 +26,26 @@ import (
 func PortTestWorldMotionList(op string, u *server.Object, delay int32) uint32 {
 	switch op {
 	case "decay-set":
-		return uint32(C.nox_xxx_unitSetDecayTime_511660(asObjectC(u), C.int(delay)))
+		return motionDecaySet(u, delay)
 	case "decay-remove":
-		return uint32(C.nox_xxx_decay_5116F0(asObjectC(u)))
+		return motionDecayRemove(u)
 	case "decay-tick":
-		C.nox_xxx_decay_511750()
+		motionDecayTick()
 	case "decay-clear":
-		return uint32(C.nox_xxx_decayDestroy_5117B0())
+		return motionDecayClear()
 	case "sentry-update":
-		return uint32(C.nox_xxx_updateSentryGlobe_510E60(C.int(uintptr(u.CObj()))))
+		return motionSentryUpdate(u)
 	case "sentry-remove":
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_sentryUpdateList_510FD0((*C.uint32_t)(u.CObj())))))
+		return motionSentryRemove(u)
 	case "sentry-clear":
-		C.sub_510E50()
+		motionSentryHead = 0
 	default:
 		panic(op)
 	}
 	return 0
 }
 func PortTestWorldMotionListGlobals() (map[string]*uint32, func()) {
-	words := map[string]*uint32{"decay": (*uint32)(unsafe.Pointer(&C.dword_5d4594_2386576)), "sentry": (*uint32)(unsafe.Pointer(&C.dword_5d4594_2386564))}
+	words := map[string]*uint32{"decay": &motionDecayHead, "sentry": &motionSentryHead}
 	old := map[string]uint32{}
 	for n, p := range words {
 		old[n] = *p
@@ -63,15 +61,15 @@ func PortTestWorldMotionListGlobals() (map[string]*uint32, func()) {
 func PortTestWorldMotionPhysics(op string, u *server.Object) int8 {
 	switch op {
 	case "projectile":
-		C.sub_51B810(asObjectC(u))
+		motionProjectileStep(u)
 	case "fall":
-		C.nox_xxx_updateFallLogic_51B870(asObjectC(u))
+		motionFall(u)
 	case "activate-nonsimple":
-		return int8(C.sub_5117F0(asObjectC(u)))
+		return motionActivate(u)
 	case "activate":
-		return int8(C.sub_51B860(C.int(uintptr(u.CObj()))))
+		return collisionActivate(u)
 	case "remove-nonsimple":
-		C.nox_xxx_unit_511810(asObjectC(u))
+		motionDeactivate(u)
 	default:
 		panic(op)
 	}
@@ -79,21 +77,21 @@ func PortTestWorldMotionPhysics(op string, u *server.Object) int8 {
 }
 
 func PortTestWorldMotionVelocity(step float32) int32 {
-	return int32(C.nox_xxx_updateObjectsVelocity_5118A0(C.float(step)))
+	return motionVelocity(step)
 }
 func PortTestWorldMotionVelocityGlobals() (*[10]uint32, func()) {
-	p := (*[10]uint32)(memmap.PtrOff(0x5D4594, 2386580))
+	p := &motionVelocityTypes
 	old := *p
 	*p = [10]uint32{}
 	return p, func() { *p = old }
 }
 
 func PortTestWorldMotionSentryCandidate(target, sentry *server.Object, ray *[4]float32) {
-	C.motionSentryCandidate(asObjectC(target), asObjectC(sentry), (*C.float4)(unsafe.Pointer(ray)))
+	motionSentryContact(target, sentry, ray)
 }
-func PortTestWorldMotionSentryReport(player int32) { C.sub_511100(C.int(player)) }
+func PortTestWorldMotionSentryReport(player int32) { motionSentryReport(player) }
 func PortTestWorldMotionSentryPacket(player int32, u *server.Object) int32 {
-	return int32(C.sub_511250(C.int(player), (*C.float)(u.CObj())))
+	return motionSentryPacket(player, u)
 }
 
 func PortTestWorldMotionRoundScratch() (*[4]uint32, func()) {
@@ -104,9 +102,9 @@ func PortTestWorldMotionRoundScratch() (*[4]uint32, func()) {
 }
 
 func PortTestWorldMotionTrace(u *server.Object, target *uint32, normal *types.Pointf) int8 {
-	return int8(C.nox_xxx_projectileTraceHit_537850(C.int(uintptr(u.CObj())), (*C.int)(unsafe.Pointer(target)), (*C.float2)(unsafe.Pointer(normal))))
+	return motionTrace(u, target, normal)
 }
-func PortTestWorldMotionDispatch(u *server.Object) { C.sub_537770(asObjectC(u)) }
+func PortTestWorldMotionDispatch(u *server.Object) { motionProjectileDispatch(u) }
 func PortTestWorldMotionGlobals() (map[string]*uint32, func()) {
 	out := map[string]*uint32{"trace": (*uint32)(unsafe.Pointer(&C.dword_5d4594_2488620))}
 	for name, off := range map[string]uintptr{"grid-x": 2488612, "grid-y": 2488616, "fist-small": 2488624, "fist-medium": 2488628, "fist-large": 2488632, "scorch-ready": 2488636, "trap-reachable": 2491764, "trap-arrow": 2491768, "trap-one": 2491772, "trap-two": 2491776, "trap-fx-one": 2491780, "trap-fx-two": 2491784} {
@@ -124,9 +122,9 @@ func PortTestWorldMotionGlobals() (map[string]*uint32, func()) {
 	}
 }
 func PortTestWorldMotionScorch(pos *types.Pointf, size int32) {
-	C.nox_xxx_sMakeScorch_537AF0((*C.float)(unsafe.Pointer(pos)), C.int(size))
+	motionScorch(pos, size)
 }
-func PortTestWorldMotionScorchInit() int32 { return int32(C.nox_xxx_scorchInit_537BD0()) }
+func PortTestWorldMotionScorchInit() int32 { return motionScorchInit() }
 func PortTestWorldMotionScorchNames() (*[6]uint32, func()) {
 	p := (*[6]uint32)(memmap.PtrOff(0x587000, 276824))
 	old := *p
@@ -145,22 +143,21 @@ func PortTestWorldMotionScorchNames() (*[6]uint32, func()) {
 	}
 }
 func PortTestWorldMotionTimed(op string, u, target *server.Object, arg int32) int32 {
-	raw := C.int(uintptr(u.CObj()))
 	switch op {
 	case "mover":
-		C.nox_xxx_unitUpdateMover_54F740(raw)
+		motionMover(u)
 	case "trap-update":
-		return int32(C.nox_xxx_updateShootingTrap_54F9A0(raw))
+		return motionTrapUpdate(u)
 	case "trap-projectile":
-		C.nox_xxx_createArrowTrapProjectile_54FA80(raw, C.int(arg))
+		motionTrapProjectile(u, arg)
 	case "trap-state":
-		C.sub_54FBB0(raw)
+		motionTrapState(u)
 	case "trap-scan":
-		return int32(C.sub_54FBF0(raw))
+		return motionTrapScan(u)
 	case "trap-candidate":
-		C.nox_xxx_unitIsAttackReachable_54FC50(C.int(uintptr(target.CObj())), raw)
+		motionTrapCandidate(target, u)
 	case "trigger":
-		C.nox_xxx_collideTrigger_54FCD0(raw, C.int(uintptr(target.CObj())))
+		motionTrigger(u, target)
 	default:
 		panic(op)
 	}
@@ -168,7 +165,7 @@ func PortTestWorldMotionTimed(op string, u, target *server.Object, arg int32) in
 }
 
 func PortTestWorldMotionRadial(p *types.Pointf, radius float32, code uint32) (uint32, [][2]uint32) {
-	rv := uint32(C.motionRadialRun((*C.float2)(unsafe.Pointer(p)), C.float(radius), C.uint32_t(code)))
+	rv := motionRadial(p, radius, C.motionRadialCallback(), code)
 	words := (*[65]uint32)(unsafe.Pointer(C.motionRadialSnapshot()))
 	var rows [][2]uint32
 	for i := uint32(0); i < words[0]; i++ {

@@ -6,7 +6,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_2.h"
 #include "GAME4_3.h"
-char nox_xxx_unitHasCollideOrUpdateFn_537610(nox_object_t* a1);
 */
 import "C"
 import (

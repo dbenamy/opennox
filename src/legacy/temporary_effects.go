@@ -156,7 +156,7 @@ func temporaryTelekinesis(u *server.Object) {
 	}
 }
 func temporaryScorch(u *server.Object) {
-	C.nox_xxx_sMakeScorch_537AF0((*C.float)(unsafe.Pointer(&u.PosVec)), 2)
+	motionScorch(&u.PosVec, 2)
 }
 func temporaryFist(u *server.Object) {
 	if u.ZVal <= 0 && int32(u.ObjFlags) >= 0 {

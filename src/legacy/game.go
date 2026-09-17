@@ -329,13 +329,7 @@ func nox_xxx_mapSwitchLevel_4D12E0(a1 int) {
 	Nox_xxx_mapSwitchLevel_4D12E0(a1 != 0)
 }
 
-func Nox_xxx_sMakeScorch_537AF0(pos types.Pointf, a2 int) {
-	cpos, pfree := alloc.Make([]float32{}, 2)
-	defer pfree()
-	cpos[0] = pos.X
-	cpos[1] = pos.Y
-	C.nox_xxx_sMakeScorch_537AF0((*C.float)(unsafe.Pointer(&cpos[0])), C.int(a2))
-}
+func Nox_xxx_sMakeScorch_537AF0(pos types.Pointf, a2 int) { motionScorch(&pos, int32(a2)) }
 
 func Nox_xxx_getSomeMapName_4D0CF0() string {
 	return GoStringP(unsafe.Pointer(mapCycleNext()))

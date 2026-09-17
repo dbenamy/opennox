@@ -6,7 +6,6 @@ package legacy
 #include <stdint.h>
 #include "GAME4_3.h"
 #include "GAME3_3.h"
-extern uint32_t dword_5d4594_2386576;
 extern uint32_t dword_5d4594_1565512, dword_5d4594_1565516, dword_5d4594_1565520;
 extern uint32_t dword_5d4594_2649712;
 static uint32_t pt_life_calls[24];
@@ -97,7 +96,7 @@ func portTestLifecycleEnvironment(proxy *portTestRoamOwnerServer) func() {
 	for i, off := range scorch {
 		oldScorch[i] = *memmap.PtrUint32(0x587000, off)
 	}
-	oldDecay, oldHead, oldTail, oldSize, oldMask := C.dword_5d4594_2386576, C.dword_5d4594_1565512, C.dword_5d4594_1565516, C.dword_5d4594_1565520, C.dword_5d4594_2649712
+	oldDecay, oldHead, oldTail, oldSize, oldMask := motionDecayHead, C.dword_5d4594_1565512, C.dword_5d4594_1565516, C.dword_5d4594_1565520, C.dword_5d4594_2649712
 	*memmap.PtrUint32(0x5D4594, 1565508) = 0
 	C.dword_5d4594_1565512 = 0
 	C.dword_5d4594_1565516 = 0
@@ -131,7 +130,7 @@ func portTestLifecycleEnvironment(proxy *portTestRoamOwnerServer) func() {
 			*memmap.PtrUint32(0x587000, off) = oldScorch[i]
 		}
 		copy(seq, oldSeq)
-		C.dword_5d4594_2386576, C.dword_5d4594_1565512, C.dword_5d4594_1565516, C.dword_5d4594_1565520, C.dword_5d4594_2649712 = oldDecay, oldHead, oldTail, oldSize, oldMask
+		motionDecayHead, C.dword_5d4594_1565512, C.dword_5d4594_1565516, C.dword_5d4594_1565520, C.dword_5d4594_2649712 = oldDecay, oldHead, oldTail, oldSize, oldMask
 		proxy.core.NetList.Free()
 		proxy.core.NetList = oldNet
 		freePlayers()
@@ -155,7 +154,7 @@ func portTestLifecyclePrepare(proxy *portTestRoamOwnerServer, u, t *server.Objec
 	C.dword_5d4594_1565512 = 0
 	C.dword_5d4594_1565516 = 0
 	clear(unsafe.Slice((*byte)(memmap.PtrOff(0x5D4594, 1565524)), 64))
-	C.dword_5d4594_2386576 = 0
+	motionDecayHead = 0
 	*memmap.PtrUint32(0x5D4594, 2488532) = 0
 	*memmap.PtrUint32(0x5D4594, 2488536) = 0
 	*memmap.PtrUint32(0x5D4594, 2489456) = 0
@@ -281,7 +280,7 @@ func portTestLifecycleCall(u *server.Object, sp *PortTestLifecycleSpec) int {
 	return 0
 }
 func portTestLifecycleTrace(proxy *portTestRoamOwnerServer, h *server.HealthData, normalize func(uint32) uint32) *PortTestLifecycleResult {
-	r := &PortTestLifecycleResult{Updatable: normalize(uint32(uintptr(unsafe.Pointer(proxy.core.Objs.UpdatableList)))), Decay: normalize(uint32(C.dword_5d4594_2386576))}
+	r := &PortTestLifecycleResult{Updatable: normalize(uint32(uintptr(unsafe.Pointer(proxy.core.Objs.UpdatableList)))), Decay: normalize(uint32(motionDecayHead))}
 	for i := 0; i < int(C.pt_life_n()); i++ {
 		r.Calls = append(r.Calls, normalize(uint32(C.pt_life_value(C.int(i)))))
 	}

@@ -1,0 +1,117 @@
+package legacy
+
+/*
+#include "GAME1_1.h"
+#include "GAME5.h"
+int sub_57CDB0(int2* a1, float* a2, float2* a3);
+extern uint32_t dword_5d4594_2488620;
+*/
+import "C"
+import (
+	"github.com/opennox/libs/types"
+	"github.com/opennox/opennox/v1/common/memmap"
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
+	"github.com/opennox/opennox/v1/legacy/common/ccall"
+	"github.com/opennox/opennox/v1/server"
+	"image"
+	"math"
+	"unsafe"
+)
+
+func motionTrace(u *server.Object, target *uint32, normal *types.Pointf) int8 {
+	// The retained spatial candidate helper receives the previous point as an
+	// integer address and calls back into Go. Keep that record C-backed.
+	points, free := alloc.New([2]types.Pointf{})
+	*points = [2]types.Pointf{u.PosVec, u.NewPos}
+	defer free()
+	previous, next := &points[0], &points[1]
+	dx := float64(u.NewPos.X) - float64(u.PosVec.X)
+	dyWide := float64(u.NewPos.Y) - float64(u.PosVec.Y)
+	dy := dyWide
+	length2 := dyWide*float64(dy) + float64(dx)*float64(dx)
+	var hit *server.Object
+	var objectNormal types.Pointf
+	probe := func() bool {
+		raw := uint32(C.sub_54E810(C.int(motionAddress(u)), (*C.float2)(unsafe.Pointer(next)), C.int(uintptr(unsafe.Pointer(previous)))))
+		if raw == 0 {
+			return false
+		}
+		hit = motionObject(raw)
+		objectNormal = types.Pointf{X: float32(float64(previous.X) - float64(hit.PosVec.X)), Y: float32(float64(previous.Y) - float64(hit.PosVec.Y))}
+		return true
+	}
+	if length2 <= 36 {
+		probe()
+	} else {
+		count := int32(C.nox_double2int(C.double(math.Sqrt(length2*.027777778)))) + 1
+		*next = *previous
+		// The compiled C spills X to float32 before division, but retains Y wide.
+		sx, sy := float32(float64(float32(dx))/float64(count)), float32(dy/float64(count))
+		for i := int32(0); i < count; i++ {
+			next.X = float32(float64(next.X) + float64(sx))
+			next.Y = float32(float64(next.Y) + float64(sy))
+			if probe() {
+				break
+			}
+			*previous = *next
+		}
+	}
+	start, end := u.PosVec, u.NewPos
+	var wallPoint, wallNormal types.Pointf
+	var grid image.Point
+	wall := false
+	if !GetServer().S().MapTraceRayAt(start, end, &wallPoint, &grid, 5) {
+		*memmap.PtrUint32(0x5D4594, 2488612) = uint32(grid.X)
+		*memmap.PtrUint32(0x5D4594, 2488616) = uint32(grid.Y)
+		C.dword_5d4594_2488620 = 1
+		ray := [4]float32{start.X, start.Y, wallPoint.X, wallPoint.Y}
+		wall = C.sub_57CDB0((*C.int2)(unsafe.Pointer(&grid)), (*C.float)(unsafe.Pointer(&ray)), (*C.float2)(unsafe.Pointer(&wallNormal))) != 0
+		u.NewPos = u.PosVec
+	}
+	if hit != nil {
+		dx, dy := float64(u.PosVec.X)-float64(hit.PosVec.X), float64(u.PosVec.Y)-float64(hit.PosVec.Y)
+		wx, wy := float64(u.PosVec.X)-float64(wallPoint.X), float64(u.PosVec.Y)-float64(wallPoint.Y)
+		if !wall || dy*dy+dx*dx < wy*wy+wx*wx {
+			*normal = objectNormal
+			*target = motionAddress(hit)
+			return 1
+		}
+	}
+	if wall {
+		*normal = wallNormal
+		*target = 0
+		return 1
+	}
+	return 0
+}
+func motionProjectileDispatch(u *server.Object) {
+	if memmap.Uint32(0x5D4594, 2488624) == 0 {
+		*memmap.PtrUint32(0x5D4594, 2488624) = uint32(GetServer().S().Types.IndByID("SmallFist"))
+		*memmap.PtrUint32(0x5D4594, 2488628) = uint32(GetServer().S().Types.IndByID("MediumFist"))
+		*memmap.PtrUint32(0x5D4594, 2488632) = uint32(GetServer().S().Types.IndByID("LargeFist"))
+	}
+	if u.ObjFlags&0x60 != 0 {
+		return
+	}
+	C.dword_5d4594_2488620 = 0
+	var raw uint32
+	var normal types.Pointf
+	if motionTrace(u, &raw, &normal) == 0 {
+		return
+	}
+	t := motionObject(raw)
+	if t != nil {
+		for _, off := range []uintptr{2488624, 2488628, 2488632} {
+			if uint32(t.TypeInd) == memmap.Uint32(0x5D4594, off) {
+				return
+			}
+		}
+	}
+	ccall.CallVoidPtr3(u.Collide, u.CObj(), unsafe.Pointer(t), unsafe.Pointer(&normal))
+	C.dword_5d4594_2488620 = 0
+	if t != nil {
+		normal.X = -normal.X
+		normal.Y = -normal.Y
+		ccall.CallVoidPtr3(t.Collide, t.CObj(), u.CObj(), unsafe.Pointer(&normal))
+	}
+}

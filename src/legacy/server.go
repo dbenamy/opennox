@@ -180,7 +180,7 @@ func Nox_xxx_netReportUnitHeight_4D9020(a1 ntype.PlayerInd, a2 *server.Object) {
 	C.nox_xxx_netReportUnitHeight_4D9020(C.int(a1), asObjectC(a2))
 }
 func Sub_511100(a1 int) {
-	C.sub_511100(C.int(a1))
+	motionSentryReport(int32(a1))
 }
 func Nox_xxx_netUpdateRemotePlr_501CA0(a1 *server.Object) {
 	objectReportRemoteAudio(a1)
@@ -210,7 +210,7 @@ func Nox_xxx_updateUnits_51B100_D() {
 	C.nox_xxx_updateUnits_51B100_D()
 }
 func Nox_xxx_decay_511750() {
-	C.nox_xxx_decay_511750()
+	motionDecayTick()
 }
 func Nox_server_checkVictory_509A60() {
 	matchRosterCheckVictory()
@@ -219,7 +219,7 @@ func Nox_xxx_allocHitArray_5486D0() {
 	collisionResetHits()
 }
 func Nox_xxx_updateObjectsVelocity_5118A0(a1 float32) {
-	C.nox_xxx_updateObjectsVelocity_5118A0(C.float(a1))
+	motionVelocity(a1)
 }
 func Sub_548B60() {
 	collisionDrainAngles()
@@ -441,13 +441,13 @@ func Sub_410730() {
 	C.sub_410730()
 }
 func Nox_xxx_j_allocHitArray_511840() {
-	C.nox_xxx_j_allocHitArray_511840()
+	collisionResetHits()
 }
 func Nox_xxx_decayDestroy_5117B0() {
-	C.nox_xxx_decayDestroy_5117B0()
+	motionDecayClear()
 }
 func Sub_510E50() {
-	C.sub_510E50()
+	motionSentryHead = 0
 }
 func Sub_4D1610() {
 	C.sub_4D1610()

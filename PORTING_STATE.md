@@ -2,51 +2,48 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 42k lines** — **41,887 physical lines in 74 production
-`.c` files**, zero reference C, including the current corrected-C prerequisites.
-The latest completed conversion removed **1,096 lines**.
+**Rough C remaining: about 41k lines** — **40,777 physical lines in 74 production
+`.c` files**, zero reference C. Latest conversion: **−1,110 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — world-motion corrected-C baseline qualified
+## Current — world-motion Go conversion qualified
 
-Qualified collision-core parent: **950f8f22, pushed**; partial recovery **71888d5e,
-pushed**. World-motion scope: **30 live functions / 1,072 C body lines**. Go
-conversion is next; no native source is installed yet.
+Corrected-C baseline **e7174c35 is committed and pushed**. Native conversion now
+passes all gates: **30 C functions replaced**, six required exports retained,
+33 obsolete interfaces and two C list globals retired. Go owns the list heads and
+velocity type cache. No C algorithm remains solely for tests.
 
-Frozen focused baseline passes twice: **25 roots, 24 captures / 9,633 records**.
-Affected default/server/highres sweeps pass **690/689/690 roots**, and
-**43,124/43,123/43,124 tests including subtests**, no skips. All **245 captures**
-match across targets (323.62/402.75/334.67s). Fresh corrected-C production passes
-in **380.87s**: three binaries/ABI, exact 1,553 known asset failure entries
+Native-3 passes **25 roots / 24 captures / 9,633 records** unchanged from C
+(0.373s). Default/server/highres pass **690/689/690 roots** and
+**43,124/43,123/43,124 tests including subtests**, no skips. All **245 captures /
+114,004 records** match C. Durations: **278.76/386.65/330.78s**. Fresh production
+passes in **372.74s**: three binaries/ABI, exact known 1,553 asset failure entries
 (15 pass / 3 fail / 32 no-test packages), gameplay, save/load and flat regeneration.
-All gates share an unchanged **2,236-file source manifest**. All sessions joined.
-See WORLD_MOTION.md and world-motion-{captures,qualification,selection}.json.
+All four gates share an unchanged **2,244-file source manifest**. All sessions are
+joined; no active build or user blocker. See WORLD_MOTION.md and
+world-motion-native-qualification.json.
 
-Corrected prerequisites: sentry removal tests bit 31 rather than unsigned `<0`;
-trigger tolerates a nil result from an already-disabled one-shot script. Both
-were independently reproduced before correction. One orphan getter is removed.
-C remains **41,887 lines / 74 files / zero reference**, +1 vs qualified parent.
+The sentry unlink and disabled one-shot trigger corrections are carried forward.
+Native translation errors (delayed-delete owner and alloc.New initialization)
+were caught and fixed without changing goldens. Compiled-C rounding boundaries
+are preserved; see the report and DECISIONS.md.
 
-Coverage includes queues, sentry beams/contacts/reporting, projectile motion and
-tracing, activation, fall/shaft return, velocity/springs/floors/monster actions,
-waypoints and signed speed boundaries, scorch allocation/decay/RNG, real-VM
-triggers, radial indexing, trap target admission and real projectiles/FX.
-The trap owner reuses shipped facing data and a registered nonzero target type.
-Zero type aliases missing fish IDs in enemy classification; this was fixture-only.
+Next: commit/push this conversion, then the connected spatial-targeting batch.
+Read-only proposal: **11 functions / 554 C body lines**, including projectile and
+cursor candidates, wall normals and quadrant helpers. It removes the remaining
+spatial C calls from motionTrace and its temporary C allocation. Proposal,
+reference audit and table audit are in build/port-spatial-targeting. Supply the
+shipped door table at 0x587000:196184; reuse collision/index/wall/player owners.
+No next-batch source is installed yet. This smaller connected scope is preferable
+to adding unrelated player-death or parser code just to reach a LOC target.
 
-Next: install/review native conversion, switch callers/fixtures to Go, retire
-unused exports, compare frozen contracts, qualify three targets and fresh
-production, document new C count, commit/push and continue. No user blocker.
-Uninstalled **native-draft/** files under build/port-world-motion contain initial
-implementations; read their REVIEW.md before using them. They are uncompiled and
-need completed arithmetic/ABI review. Corrected-C disassembly is retained there.
-Most earlier fixture installation drafts and all cleanup scripts are consumed.
-
-Disk cleanup removed **14.96 GiB** of rebuildable cache; about **23 GiB** free.
-Original assets/archive, module downloads, logs and qualified binaries remain.
-Local audit: build/cleanup/cache-20260917.json. Preserve the untracked archive.
+**install-native.py is consumed.** Native drafts are installed; work from src.
+Do not rerun old fixture integration or cleanup scripts. C/native captures and
+source manifests remain in build/port-world-motion; preserve the untracked archive.
+Disk cleanup reclaimed 14.96 GiB of rebuildable cache; about **18 GiB** remains free
+following qualification. Original assets, module downloads and evidence remain.
 
 ## Qualified parent — collision-core Go conversion (950f8f22, pushed)
 

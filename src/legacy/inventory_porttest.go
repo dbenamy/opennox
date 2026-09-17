@@ -6,7 +6,7 @@ package legacy
 #include <string.h>
 #include "GAME3_3.h"
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_2386576, dword_5d4594_3484, dword_5d4594_2523804;
+extern uint32_t dword_5d4594_3484, dword_5d4594_2523804;
 extern uint32_t dword_5d4594_2488720, dword_5d4594_2488724, dword_5d4594_2488728;
 static uint32_t invTrace[4097], invUseDelete, invDropResult;
 static uint32_t* invTracePtr(void) {return invTrace;}
@@ -184,8 +184,8 @@ func (p *portTestShopPools) inventoryPrepare() func() {
 
 	walls, unchanged, freeWalls := p.proxy.core.PortTestPathWalls()
 	walls(sp.WallMode)
-	oldDecay := C.dword_5d4594_2386576
-	C.dword_5d4594_2386576 = 0
+	oldDecay := motionDecayHead
+	motionDecayHead = 0
 	C.invReset(C.int(bool2int(sp.UseDelete)), C.int(bool2int(sp.DropResult)))
 	p.identify(C.nox_xxx_dropDefault_4ED290, 55000)
 	p.identify(C.invUsePtr(), 55001)
@@ -299,7 +299,7 @@ func (p *portTestShopPools) inventoryPrepare() func() {
 		}
 		freeWalls()
 		restoreServer()
-		C.dword_5d4594_2386576 = oldDecay
+		motionDecayHead = oldDecay
 		for _, o := range p.items {
 			if o.alive {
 				o.u.UpdateData, o.u.InitData, o.u.UseData.Ptr, o.u.HealthData = nil, nil, nil, nil
@@ -483,7 +483,7 @@ func (p *portTestShopPools) inventorySnapshot() []uint32 {
 		out = append(out, *memmap.PtrUint32(0x5D4594, off))
 	}
 	out = append(out, uint32(C.dword_5d4594_2488720), uint32(C.dword_5d4594_2488724), uint32(C.dword_5d4594_2488728))
-	out = append(out, p.normalize(uint32(C.dword_5d4594_2386576)))
+	out = append(out, p.normalize(uint32(motionDecayHead)))
 	for _, b := range p.inventory.blocks {
 		for i := 0; i < 8; i++ {
 			if b[i] != 0xa5 || b[len(b)-8+i] != 0x5a {

@@ -115,7 +115,7 @@ func inventoryDrop(u, it *server.Object, pos *types.Pointf) int {
 	}
 	if noxflags.HasGame(0x2000) && !noxflags.HasGame(4096) && it.ObjClass&0x3001010 != 0 {
 		it.ObjFlags |= 0x40
-		C.nox_xxx_unit_511810(asObjectC(it))
+		motionDeactivate(it)
 	}
 	if it.Drop.Ptr != nil {
 		if fn := inventoryNativeDrops[it.Drop.Ptr]; fn != nil {

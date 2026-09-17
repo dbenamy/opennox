@@ -1667,7 +1667,22 @@ Treat a nil trigger-script callback result as no admission. An actual one-shot
 script accepts the first contact, disables itself, and returns nil on the second;
 the previous C dereference crashed. Preserve prior contact state when no result
 is returned. Both corrections are small and reversible under the standing policy.
-The partial corrected-C corpus passes twice; all-target and fresh production
-qualification remain required before the baseline freeze. See
+The corrected-C baseline is frozen and pushed as e7174c35 after all-target and
+fresh production qualification. Both corrections carry into the Go conversion. See
 [WORLD_MOTION.md](WORLD_MOTION.md). Preserve the separate signed allow-team quirk;
 values 128–255 do not match an unsigned object team byte.
+
+## World-motion ownership and rounding — review after conversion
+
+Keep the corrected-C sentry unlink and disabled-trigger fixes above. Move decay
+and sentry list heads plus velocity type IDs into Go; retain C object allocation
+and the shared trace flag while their other C users remain. Six world-motion
+exports serve real callbacks/C callers. Remove all 24 obsolete batch interfaces
+and nine collision-core interfaces rather than retaining adapters for tests.
+
+Use the compiled 386/SSE2 baseline to place float32 rounding: several declared C
+float locals stay wide in x87 registers. Preserve the actual spills and raw float
+results instead of mechanically narrowing every intermediate. The trace adapter
+still needs a C-backed temporary record for the remaining spatial C callback;
+its allocation can disappear with the next connected spatial-targeting batch.
+No C algorithm is kept solely as a reference implementation.

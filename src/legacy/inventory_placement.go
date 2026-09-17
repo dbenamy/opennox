@@ -218,7 +218,7 @@ func inventoryChest(u, opener *server.Object) {
 		next := it.InvNextItem
 		if it.Weight != 255 && it.ObjClass&2 == 0 {
 			it.ObjFlags |= 0x40
-			C.nox_xxx_unit_511810(asObjectC(it))
+			motionDeactivate(it)
 			inventoryDrop(u, it, &p[index])
 			index = (index + 1) % 3
 		}
