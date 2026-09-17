@@ -206,7 +206,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 	}
 	if bool(C.nox_common_gameFlags_check_40A5C0(4096)) {
 		old := n
-		n = floatToInt32(float32(float64(C.sub_4E40B0()) * float64(n)))
+		n = floatToInt32(float32(float64(questRuntimeFloat(202032)) * float64(n)))
 		if old > 0 && n < 1 {
 			n = 1
 		}

@@ -118,7 +118,7 @@ func rewardPlaceAnkh() {
 }
 func rewardSelectMarkers() {
 	stage := int32(rewardWord(202028))
-	players := int32(C.nox_xxx_player_4E3CE0())
+	players := int32(questRuntimeCount())
 	if C.dword_5d4594_1568288 == 0 {
 		C.dword_5d4594_1568288 = C.uint32_t(GetServer().S().Types.IndByID("RewardMarker"))
 		*memmap.PtrUint32(0x5d4594, 1568292) = uint32(GetServer().S().Types.IndByID("RewardMarkerPlus"))

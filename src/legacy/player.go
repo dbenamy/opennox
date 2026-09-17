@@ -214,7 +214,7 @@ func Sub_40A1F0(v int) {
 }
 
 func Nox_game_sendQuestStage_4D6960(v ntype.PlayerInd) {
-	C.nox_game_sendQuestStage_4D6960(C.int(v))
+	questRuntimeStageMessage(int(v), 14, 0)
 }
 
 func Nox_xxx_playerForceSendLessons_416E50(v int) {
@@ -334,7 +334,7 @@ func Sub_4FCF90(obj *server.Object, sp spell.ID, a3 int) int {
 }
 
 func Sub_4D79A0(pli ntype.PlayerInd) {
-	C.sub_4D79A0(C.char(pli))
+	questRuntimeSlotMask(uint32(pli))
 }
 
 func Sub_4E80C0(pli ntype.PlayerInd) {
@@ -342,7 +342,7 @@ func Sub_4E80C0(pli ntype.PlayerInd) {
 }
 
 func Nox_xxx_player_4E3CE0() int {
-	return int(C.nox_xxx_player_4E3CE0())
+	return int(questRuntimeCount())
 }
 
 func Sub_425E90(pl *server.Player, a2 int8) {

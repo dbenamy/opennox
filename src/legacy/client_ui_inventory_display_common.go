@@ -185,7 +185,7 @@ func nox_xxx_inventoryNameSignInit_4671E0() C.int {
 	C.nox_wcscpy(dst, (*C.wchar2_t)(memmap.PtrOff(0x5D4594, 1063676)))
 	p := uiMeterPlayer()
 	level := 0
-	if noxflags.HasGame(4096) || C.nox_xxx_isQuest_4D6F50() != 0 || C.sub_4D6F70() != 0 {
+	if noxflags.HasGame(4096) || questRuntimeWord(1556160) != 0 || questRuntimeWord(1556164) != 0 {
 		level = int(min(uint32(C.dword_5d4594_1049844), 10))
 	} else if p != nil {
 		level = int(*(*int8)(unsafe.Add(p, 3684)))

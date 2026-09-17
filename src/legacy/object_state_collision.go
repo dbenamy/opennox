@@ -26,7 +26,7 @@ func stateCloseDoor(u *server.Object, p unsafe.Pointer) {
 }
 func stateDoorNotify(u *server.Object) int32 {
 	*(*byte)(unsafe.Add(u.UpdateData, 48)) = 1
-	return int32(C.sub_4D6A20(255, inventoryInt(u)))
+	return int32(questRuntimeCodeMessage(255, u))
 }
 func stateMonsterCollision(u, t *server.Object) unsafe.Pointer {
 	return C.nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(u.UpdateData, 1272), t.CObj(), u.CObj(), 22)

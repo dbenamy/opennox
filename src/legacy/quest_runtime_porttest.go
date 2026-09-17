@@ -19,7 +19,7 @@ import (
 	"unsafe"
 )
 
-// Dispatch only: production C owns all algorithms. Fixture pointer returns are
+// Dispatch through retained C interfaces or directly into Go. Fixture pointer returns are
 // normalized independently from scalar returns by the caller-selected operation.
 func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 	ai := C.int(uintptr(unsafe.Pointer(u)))
@@ -43,7 +43,7 @@ func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 		rv = uint32(C.sub_4D61F0(ai))
 		pointerResult = true
 	case "sub_4D61B0":
-		C.sub_4D61B0(ai)
+		questRuntimeIncrement(u, 4668, 8)
 	case "sub_4D60B0":
 		rv = uint32(C.sub_4D60B0())
 	case "nox_xxx_isQuest_4D6F50":
@@ -53,21 +53,21 @@ func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 	case "sub_4D6FA0":
 		rv = uint32(C.sub_4D6FA0())
 	case "sub_4D7150":
-		rv = uint32(C.sub_4D7150())
+		rv = uint32(questRuntimeObserverDeadline())
 	case "sub_4D71F0":
-		rv = uint32(C.sub_4D71F0())
+		rv = uint32(questRuntimeSoulTimeout())
 	case "sub_4D7300":
-		rv = uint32(C.sub_4D7300())
+		rv = uint32(questRuntimeWord(1556132))
 	case "sub_4D7430":
-		rv = uint32(C.sub_4D7430())
+		rv = uint32(questRuntimeWord(1556116))
 	case "sub_4D75E0":
 		rv = uint32(C.sub_4D75E0())
 	case "sub_4D76F0":
-		rv = uint32(C.sub_4D76F0())
+		rv = uint32(questRuntimeWord(1556124))
 	case "sub_4D7A80":
-		rv = uint32(C.sub_4D7A80())
+		rv = uint32(questRuntimeDepartureTick())
 	case "sub_4D7B40":
-		rv = uint32(C.sub_4D7B40())
+		rv = uint32(questRuntimeDepartureReset())
 	case "nox_game_getQuestStage_4E3CC0":
 		rv = uint32(C.nox_game_getQuestStage_4E3CC0())
 	case "nox_xxx_player_4E3CE0":
@@ -75,67 +75,67 @@ func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 	case "sub_4E3D50":
 		rv = uint32(C.sub_4E3D50())
 	case "sub_4E4100":
-		rv = uint32(C.sub_4E4100())
+		rv = uint32(bool2int(questRuntimeRoom()))
 	case "sub_4D6540":
 		rv = uint32(C.sub_4D6540(x))
 	case "sub_4D6770":
-		rv = uint32(C.sub_4D6770(x))
+		rv = uint32(questRuntimeScoreboard(int(x)))
 	case "nox_game_sendQuestStage_4D6960":
-		rv = uint32(C.nox_game_sendQuestStage_4D6960(x))
+		rv = uint32(questRuntimeStageMessage(int(x), 14, 0))
 	case "nox_xxx_setQuest_4D6F60":
 		rv = uint32(C.nox_xxx_setQuest_4D6F60(x))
 	case "sub_4D6F80":
 		rv = uint32(C.sub_4D6F80(x))
 	case "nox_xxx_bookCreatureTest_4D70C0":
-		rv = uint32(C.nox_xxx_bookCreatureTest_4D70C0(x))
+		rv = uint32(bool2int(questRuntimeBookAllowed(int(x), 37)))
 	case "sub_4D7100":
-		rv = uint32(C.sub_4D7100(x))
+		rv = uint32(bool2int(questRuntimeBookAllowed(int(x), 111)))
 	case "sub_4D71E0":
-		rv = uint32(C.sub_4D71E0(x))
+		rv = uint32(questRuntimeSetSoulFrame(uint32(x)))
 	case "sub_4D72D0":
 		rv = uint32(C.sub_4D72D0(x))
 	case "sub_4D7440":
-		rv = uint32(C.sub_4D7440(x))
+		rv = uint32(questRuntimeSetWord(1556116, uint32(x)))
 	case "sub_4D7520":
-		rv = uint32(C.sub_4D7520(x))
+		rv = uint32(questRuntimeGateSet(uint32(x)))
 	case "sub_4D75F0":
-		rv = uint32(C.sub_4D75F0(x))
+		rv = uint32(questRuntimeSetWord(1556108, uint32(x)))
 	case "sub_4D76E0":
 		rv = uint32(C.sub_4D76E0(x))
 	case "sub_4D7A60":
 		rv = uint32(C.sub_4D7A60(x))
 	case "sub_4D66E0":
-		rv = uint32(C.sub_4D66E0(C.uint(args[0]), C.uint(args[1]), C.uint(args[2]), C.uint(args[3])))
+		rv = uint32(questRuntimeScore(args[0], args[1], args[2], args[3]))
 	case "sub_4D6880":
-		rv = uint32(C.sub_4D6880(x, C.int(args[1])))
+		rv = uint32(questRuntimeStageMessage(int(x), 13, args[1]))
 	case "sub_4D6A20":
-		rv = uint32(C.sub_4D6A20(x, ai))
+		rv = uint32(questRuntimeCodeMessage(int(x), u))
 	case "sub_4D7280":
-		rv = uint32(C.sub_4D7280(x, C.char(args[1])))
+		rv = uint32(questRuntimeSharedMessage(int(x), byte(args[1])))
 	case "sub_4D7450":
 		rv = uint32(C.sub_4D7450(x, C.short(args[1])))
 	case "sub_4D79A0":
-		rv = uint32(C.sub_4D79A0(C.char(args[0])))
+		rv = uint32(questRuntimeSlotMask(args[0]))
 	case "sub_4D79C0":
-		rv = uint32(C.sub_4D79C0(asObjectC(u)))
+		rv = uint32(questRuntimeReconnect(u))
 	case "sub_4D7480":
-		C.sub_4D7480(asObjectC(u))
+		questRuntimeGateReturn(u)
 	case "nox_server_checkWarpGate_4D7600":
-		C.nox_server_checkWarpGate_4D7600()
+		questRuntimeWarpTick()
 	case "nox_game_setQuestStage_4E3CD0":
 		C.nox_game_setQuestStage_4E3CD0(x)
 	case "sub_4E3DD0":
 		C.sub_4E3DD0() // live Go caller ignores decompiler return
 	case "sub_4E3CB0":
-		rv = uint32(C.sub_4E3CB0(C.float(math.Float32frombits(args[0]))))
+		rv = uint32(questRuntimeSetDifficulty(math.Float32frombits(args[0])))
 	case "sub_4E4080":
-		C.sub_4E4080(C.float(math.Float32frombits(args[0])))
+		questRuntimeCap(202032, "PlayerDamageCap", math.Float32frombits(args[0]))
 	case "sub_4E40C0":
-		C.sub_4E40C0(C.float(math.Float32frombits(args[0])))
+		questRuntimeCap(202036, "SystemHealthCap", math.Float32frombits(args[0]))
 	case "sub_4E3CA0":
 		return math.Float64bits(float64(C.sub_4E3CA0()))
 	case "sub_4E40B0":
-		return math.Float64bits(float64(C.sub_4E40B0()))
+		return math.Float64bits(float64(questRuntimeFloat(202032)))
 	case "sub_4E40F0":
 		return math.Float64bits(float64(C.sub_4E40F0()))
 	default:
@@ -154,9 +154,9 @@ func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 func PortTestQuestRuntimeString(op string) string {
 	switch op {
 	case "sub_4D6940":
-		return GoString(C.sub_4D6940())
+		return GoStringP(unsafe.Pointer(questRuntimeMapName(3838)))
 	case "sub_4D6950":
-		return GoString(C.sub_4D6950())
+		return GoStringP(unsafe.Pointer(questRuntimeMapName(3806)))
 	default:
 		panic(op)
 	}
@@ -200,4 +200,4 @@ func PortTestQuestRuntimeGlobals() (map[string]*uint32, func()) {
 }
 
 // This char* is a settings record, not a terminated string.
-func PortTestQuestRuntimeSettings() unsafe.Pointer { return unsafe.Pointer(C.sub_4D70B0()) }
+func PortTestQuestRuntimeSettings() unsafe.Pointer { return questRuntimeSettings() }

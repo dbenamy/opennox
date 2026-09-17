@@ -34,7 +34,6 @@ double sub_419A10(float a1);
 unsigned int sub_419A30(float a1);
 int nox_float2int(float a1);
 short nox_float2int16(float a1);
-short nox_float2int16_abs(float a1);
 float nox_double2float(double a1);
 int nox_double2int(double a1);
 double nox_xxx_gamedataGetFloat_419D40(char* a1);

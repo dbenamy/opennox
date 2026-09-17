@@ -35,7 +35,7 @@ func sub_446380() { Sub_446380() }
 func sub_445B40() int { return Sub_445B40() }
 
 func Sub_4D70B0() {
-	C.sub_4D70B0()
+	questRuntimeSettings()
 }
 
 func Sub_509CB0() {

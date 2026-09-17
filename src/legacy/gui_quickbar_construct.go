@@ -173,7 +173,7 @@ func quickbarCreate() int {
 		right.DrawData().HlImageHnd = quickbarImage("QuickBarWarriorRight")
 	} else if class == 1 || class == 2 {
 		unavailable := *bookPlayerWord(p, 3832, 0) == 0 &&
-			(!noxflags.HasGame(noxflags.GameFlag(0x2000)) || noxflags.HasGame(noxflags.GameFlag(4096)) || C.nox_xxx_isQuest_4D6F50() != 0 || C.sub_4D6F70() != 0)
+			(!noxflags.HasGame(noxflags.GameFlag(0x2000)) || noxflags.HasGame(noxflags.GameFlag(4096)) || questRuntimeWord(1556160) != 0 || questRuntimeWord(1556164) != 0)
 		if unavailable {
 			right.DrawData().BgImageHnd = quickbarImage("QuickBarWarriorRight")
 			right.DrawData().HlImageHnd = quickbarImage("QuickBarWarriorRight")

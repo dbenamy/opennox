@@ -167,7 +167,7 @@ func Nox_server_doPlayersAutoRespawn_40A5F0() int {
 	return int(C.nox_server_doPlayersAutoRespawn_40A5F0())
 }
 func Sub_4E4100() uint32 {
-	return uint32(C.sub_4E4100())
+	return uint32(bool2int(questRuntimeRoom()))
 }
 func Nox_call_objectType_parseUpdate_go(a1 unsafe.Pointer, a2 string, a3 unsafe.Pointer) int {
 	cstr := CString(a2)
@@ -238,8 +238,8 @@ func Sub_509CF0(a1 *byte, a2 player.Class, a3 uint32) int {
 	return int(C.sub_509CF0((*C.char)(unsafe.Pointer(a1)), C.char(a2), C.int(a3)))
 }
 func Sub_4D79C0(a1 *server.Object) {
-	C.sub_4D79C0(asObjectC(a1))
+	questRuntimeReconnect(a1)
 }
 func Sub_4D7480(a1 *server.Object) {
-	C.sub_4D7480(asObjectC(a1))
+	questRuntimeGateReturn(a1)
 }

@@ -36,16 +36,16 @@ func nox_server_questNextStageThreshold_4D74F0(lvl int) int {
 //export sub_4D6F30
 func sub_4D6F30() int { return Sub_4D6F30() }
 func Nox_game_getQuestStage_4E3CC0() int {
-	return int(C.nox_game_getQuestStage_4E3CC0())
+	return int(questRuntimeStage())
 }
 func Nox_xxx_getQuestStage_51A930() int {
 	return int(C.nox_xxx_getQuestStage_51A930())
 }
 func Sub_4E3D50() {
-	C.sub_4E3D50()
+	questRuntimeDifficulty()
 }
 func Sub_4E3DD0() {
-	C.sub_4E3DD0()
+	questRuntimeScaleHealth()
 }
 func Sub_4F1F20() {
 	C.sub_4F1F20()
@@ -57,7 +57,7 @@ func Sub_4D0F30() {
 	mapQuestReset()
 }
 func Nox_game_setQuestStage_4E3CD0(a1 int) {
-	C.nox_game_setQuestStage_4E3CD0(C.int(a1))
+	questRuntimeSetStage(uint32(a1))
 }
 func Sub_51A920(a1 int) {
 	C.sub_51A920(C.int(a1))
@@ -69,13 +69,13 @@ func Sub_4D10F0(a1 string) {
 	mapQuestPlayed((*byte)(unsafe.Pointer(internCStr(a1))))
 }
 func Sub_4D7520(a1 int) {
-	C.sub_4D7520(C.int(a1))
+	questRuntimeGateSet(uint32(a1))
 }
 func Sub_4D9CF0(a1 int) {
 	C.sub_4D9CF0(C.int(a1))
 }
 func Sub_4D6000(a1 *server.Object) {
-	C.sub_4D6000(asObjectC(a1))
+	questRuntimeReset(a1)
 }
 func Sub_4D9D20(a1 int, a2 *server.Object) {
 	C.sub_4D9D20(C.int(a1), asObjectC(a2))

@@ -238,7 +238,7 @@ func bookSort(class int) int {
 	p := *bookWord(1047516)
 	if *bookWord(1046868) == 1 {
 		for id := C.nox_xxx_bookGetFirstCreMB_427300(); id != 0; id = C.nox_xxx_bookGetNextCre_427320(id) {
-			if (all || *bookPlayerWord(p, 4244, int(id)) != 0) && C.nox_xxx_bookCreatureTest_4D70C0(id) != 0 {
+			if (all || *bookPlayerWord(p, 4244, int(id)) != 0) && questRuntimeBookAllowed(int(id), 37) {
 				add(int(id))
 			}
 		}

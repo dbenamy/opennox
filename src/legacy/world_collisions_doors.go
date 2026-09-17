@@ -88,7 +88,7 @@ func worldCollideDoor(a, b *server.Object) {
 	}
 	if noxflags.HasGame(noxflags.GameModeQuest) {
 		stateDoorNotify(a)
-		C.sub_4D71E0(C.int(GetServer().S().Frame()))
+		questRuntimeSetSoulFrame(GetServer().S().Frame())
 	}
 	GetServer().S().Map.EachObjInRect(rect, func(u *server.Object) bool { stateCloseDoor(u, unsafe.Pointer(&adjacent)); return true })
 	worldCollideSound(234, a)

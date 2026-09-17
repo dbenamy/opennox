@@ -1,6 +1,6 @@
 # Float-to-integer helpers — 2026-09-11
 
-Scope under investigation: 419A70/419A90/419AB0. All have remaining C callers;
+Original scope: 419A70/419A90/419AB0. At the baseline all had remaining C callers;
 any replacement must keep their declared C ABI (int, short, short). The compiled
 386 C bodies save the x87 control word, force truncate mode, perform a 32-bit
 FISTP, and restore the control word. The absolute helper applies FABS first.
@@ -58,3 +58,13 @@ Grid lookup now uses the private bit-based floatToInt32 helper. The retained
 conversion corpus checks C and native Go independently against the IEEE oracle,
 including all 684 control-word cases. C converters remain for actual C callers;
 see GRID_LOOKUP.md for measured caller costs and staged retirement.
+
+## Quest-runtime retirement
+
+The quest health scaler owned the last four production calls to 419AB0
+(`nox_float2int16_abs`). Its conversion retires the private C body and declaration.
+The fixture now exercises the two remaining live C interfaces; all three native
+results, including absolute conversion, still have independent IEEE754 assertions.
+The original three-interface corpus was rerun successfully on default/server/highres
+at corrected quest C baseline `1ee50d99`. See [QUEST_RUNTIME.md](QUEST_RUNTIME.md)
+for the native qualification. The other two C converters retain production callers.

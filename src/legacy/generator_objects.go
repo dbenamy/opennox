@@ -37,7 +37,7 @@ func generatorDeath(u *server.Object) {
 		// The retained owner-chain service returns the terminal object.
 		p := C.nox_xxx_findParentChainPlayer_4EC580(asObjectC(u.Obj130))
 		if asObjectS(p).Class().Has(4) {
-			C.sub_4D61B0(C.int(uintptr(unsafe.Pointer(p))))
+			questRuntimeIncrement(asObjectS(p), 4668, 8)
 		}
 	}
 	if t := core.NewObjectByTypeID("DestroyedGenerator"); t != nil {

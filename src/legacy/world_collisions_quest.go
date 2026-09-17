@@ -104,7 +104,7 @@ func worldCollideExit(a, b *server.Object) {
 	if quest && (*controlPtr(d, 312) != nil || *controlPtr(d, 316) != nil) {
 		return
 	}
-	if a.ObjSubClass&2 != 0 && C.sub_4D75E0() == 0 {
+	if a.ObjSubClass&2 != 0 && questRuntimeWord(1556120) == 0 {
 		return
 	}
 	if Sub_4DCC90() == 1 || Sub_4DCC10(b) == 0 || noxflags.HasGame(noxflags.GamePause) {
@@ -140,11 +140,11 @@ func worldCollideExit(a, b *server.Object) {
 		}
 		if a.ObjSubClass&1 != 0 {
 			stage := uint32(Nox_game_getQuestStage_4E3CC0()) + 1
-			C.sub_4D60E0(inventoryInt(b))
+			questRuntimeStageComplete(b)
 			pl = (*server.Player)(*controlPtr(d, 276))
 			if highest := equipmentWord(pl.C(), 4696); *highest < stage {
 				*highest = stage
-				C.sub_4D7450(C.int(uint8(pl.PlayerInd)), C.short(stage))
+				questRuntimeHighestMessage(int(uint8(pl.PlayerInd)), uint16(stage))
 			}
 			*controlPtr(d, 312) = a.CObj()
 			*controlPtr(d, 316) = nil
@@ -155,7 +155,7 @@ func worldCollideExit(a, b *server.Object) {
 		} else if a.ObjSubClass&2 != 0 {
 			*controlPtr(d, 312) = nil
 			*controlPtr(d, 316) = a.CObj()
-			C.sub_4D75F0(C.int(core.Frame()))
+			questRuntimeSetWord(1556108, core.Frame())
 			Nox_xxx_playerSetState_4FA020(b, 13)
 			Nox_xxx_playerGoObserver_4E6860((*server.Player)(*controlPtr(d, 276)), 0, 0)
 			for u := core.Players.FirstUnit(); u != nil; u = core.Players.NextUnit(u) {
@@ -180,8 +180,8 @@ func worldCollideExit(a, b *server.Object) {
 			stage := uint32(Nox_game_getQuestStage_4E3CC0())
 			threshold := uint32(Nox_server_questNextStageThreshold_4D74F0(int(stage)))
 			Nox_game_setQuestStage_4E3CD0(int(threshold - 1))
-			C.sub_4D76E0(1)
-			C.sub_4D60B0()
+			questRuntimeSetWord(1556124, 1)
+			questRuntimeResetAll()
 		}
 		GetServer().SwitchMap(alloc.GoString(mapName))
 	}
@@ -192,7 +192,7 @@ func worldCollideSoulGate(a, b *server.Object) {
 	if !noxflags.HasGame(noxflags.GameModeQuest) || b == nil || b.ObjClass&4 == 0 {
 		return
 	}
-	C.sub_4D7520(0)
+	questRuntimeGateSet(0)
 	first := true
 	for u := core.Players.FirstUnit(); u != nil; u = core.Players.NextUnit(u) {
 		if *equipmentWord(controlPlayer(u), 4792) == 1 && *controlPtr(u.UpdateData, 308) != nil {
@@ -200,7 +200,7 @@ func worldCollideSoulGate(a, b *server.Object) {
 		}
 	}
 	if first {
-		C.sub_4D71E0(C.int(core.Frame()))
+		questRuntimeSetSoulFrame(core.Frame())
 	}
 	if *controlPtr(b.UpdateData, 308) != a.CObj() || core.Frame()-*equipmentWord(d, 0) > uint32(core.TickRate()) {
 		worldCollideSound(1005, a)

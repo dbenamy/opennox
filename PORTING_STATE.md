@@ -2,50 +2,45 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 54k lines** — **53,946 physical lines in 82 production
-`.c` files**, zero reference C. Latest qualified conversion removes **1,016 lines**.
+**Rough C remaining: about 53k lines** — **53,049 physical lines in 82 production
+`.c` files**, zero reference C. Latest qualified conversion removes **897 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — corrected quest-runtime C baseline qualified
+## Current — quest-runtime native conversion qualified
 
-World-collision conversion `2e19c78d` is committed/pushed. Quest runtime is ready for
-its corrected C baseline commit: **53,946 C lines / 82 files**, zero reference C.
-One C line now reads the shipped score exponent as double rather than long double.
-The original shipped-data probe returned 2,147,483,648 instead of 37; corrected C
-returns 37. No quest Go implementation is installed yet.
+Corrected C baseline `1ee50d99` is committed/pushed. Native conversion is fully
+qualified: **53,049 C lines / 82 files / zero reference C**.
+Five Go files (558 lines) replace 897 C lines / 57 functions, with 24 retained C
+exports and 33 retired interfaces including the private absolute converter.
+All production Go callers invoke Go directly. Frozen expectations are unchanged.
 
-Corrected C default/server/highres/repeat each pass 24 roots / 8,501 leaves,
-23 groups / 8,512 records, no skips (36.48s / 122.66s / 44.42s / 8.14s). All four and
-fresh production share 2,033 fingerprints. Three production builds/ABI pass; full
-suite matches exactly 1,553 known failure entries. Gameplay (41 frames), save/load (7), flat rendering (14)
-and exact map regeneration pass (374.47s). See QUEST_RUNTIME.md and
-build/port-quest-runtime/c-fixed-* /c-production.
+Default/server/highres each pass **470 roots / 49,254 leaves**, no skips, and
+**149 groups / 50,640 records** (251.85s / 361.20s / 297.77s). Fresh production also
+passes (397.78s): all builds/ABI, the exact known 1,553 full-suite failure
+entries, gameplay 41 frames, save/load 7, flat rendering 14 and exact map regeneration.
+All gates share 2,038 source fingerprints. See QUEST_RUNTIME.md and
+build/port-quest-runtime/native-coverage-audit.json /native-production.
 
-The private absolute converter's existing two-root suite also passes all targets;
-its only remaining production callers are in the health scaler. Native scope is
-**897 C lines / 57 functions** (894/56 in the quest blocks plus 3/1 in GAME1_1.c).
-Plan 24 retained C interfaces and 33 retirements including that converter. Preserve
-the independent Go absolute-conversion assertions; remove its test-only C call.
+All builds/tests are joined. Commit/push the qualified conversion, then continue
+the connected match-results / player-roster candidate; inspect Git history first
+when resuming to avoid repeating a completed commit. Preliminary
+read-only scope is in build/port-match-roster/candidate.json (800 lines plus the
+125-line connected match-limit logic). Audit actual ownership, callbacks and callers
+before fixtures; do not treat that draft as an approved frozen scope.
 
-Next: commit/push this corrected baseline, then native conversion. Candidate and
-interface audits are in build/port-quest-runtime. Ignored native-statistics.go and
-native-gates.go are implementation drafts, formatted but not compiled or installed.
-Finish/review the remaining state/scaling/exports and direct Go caller changes.
-Update native manifest ABI requirements and add ^TestFloatInt to affected tests.
-Expected native totals: 470 roots / 49,254 leaves / 149 groups / 50,640 records;
-verify actual logs. Fresh native production compares quest-runtime-c/save-c/flat-c.
-
-All sessions are joined; no tests/builds active. Frozen expectations are corrected
-C with shipped constants. Initial zero-exponent gates and production-reuse audit
-are superseded/withdrawn. freeze-baseline.py, freeze-corrected.py and installed
-fixture drafts are CONSUMED. Never rerun them. Existing C prerequisite evidence
-and all diagnostic logs are retained under build/port-quest-runtime.
+C prerequisite and native installers/freezers in build/port-quest-runtime are
+CONSUMED; never rerun them. The two failed native discovery attempts required only
+package naming and type adapters, not behavioral fixes. The health scaler's unused
+decompiler return is now void; rationale is in DECISIONS.md. Original corrected-C
+baseline and diagnostic evidence remain locally recoverable and committed.
 
 No user blocker. Preserve untracked nox-iso-from-archive-org.7z and original assets.
-Source build/baseline/env.sh for Go; never edit source during builds. Record the
-new C LOC after conversion, commit/push, summarize and continue the next batch.
+Quest C and native scene deduplication reclaimed 1.66 GB each, preserving restoration
+manifests. About 12 GB remains free. Source build/baseline/env.sh for Go; never edit
+source during builds. Continue one qualified, documented, committed/pushed batch
+at a time without a scheduled pause.
 
 <!-- /current-checkpoint -->
 

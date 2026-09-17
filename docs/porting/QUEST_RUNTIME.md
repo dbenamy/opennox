@@ -6,7 +6,7 @@ Following qualified world-collision conversion `2e19c78d`, this connected batch
 contains **56 live functions / 894 physical C lines**: GAME3_2.c 004D6000 through
 004D7B40 (656 lines / 44 functions) and GAME3_3.c 004E3CA0 through 004E4100
 (238 lines / 12 functions). The unrelated player-list file parser is excluded.
-Production remains **53,946 C lines / 82 files**, with zero reference C.
+This C baseline had **53,946 C lines / 82 files**, with zero reference C.
 
 The final source review found that the first scoring fixture did not initialize
 its exponent table. Its zero exponent masked an original-C width bug. The shipped
@@ -75,7 +75,7 @@ identity and the side effect.
 Fixture development corrected a tick-rate argument type, restored a temporary
 generator class before its original monster cleanup, and included the existing
 buff-removal audio event before the gate-return sound. Expectations for the three scoring groups are regenerated only from the corrected
-C baseline. No Go implementation exists yet.
+C baseline. This describes the committed C baseline; native implementation follows below.
 Raw diagnostics remain ignored under build/port-quest-runtime/development*.
 
 ## Frozen groups
@@ -115,8 +115,52 @@ quest-runtime-batch.json with native-default/native-server/native-highres and
 production after conversion, comparing the corrected-C scenarios. Never edit source during gates.
 The one-shot freeze script and installed fixture drafts are consumed.
 
-The initial interface audit identifies 24 entry points needed by remaining C and
-33 candidate retirements including the private absolute converter. Review all Go callers and preambles before replacement,
-then update the native production ABI requirements. No interface has been retired
-in the C baseline. Native affected scope is expected to include the previous
-444 roots plus these 24 and the two float-conversion roots, with 149 frozen groups /50,640 records; verify from logs.
+The interface audit identified 24 entry points needed by remaining C and 33
+retirements including the private absolute converter. No interface was retired
+in the C baseline. Native ABI requirements and affected callers are qualified below.
+
+## Native implementation
+
+Five Go files implement statistics/scoring, gates/timers, state/messages, difficulty
+and health scaling, and thin C exports. Production Go callers now invoke Go directly.
+Twenty-four exports remain for C callers; 33 private interfaces are retired, including
+the last-owner absolute converter. Working C size is **53,049 physical lines in
+82 files**, zero reference C: **897 lines / 57 functions removed**.
+
+The health-scaling export now returns void. Every remaining C and Go caller ignores
+the old decompiler return, which was a mixture of temporary pointers/class/health
+values. This removes an unused return contract; scaling mutations remain covered.
+The signed-short maximum-health comparison, float32 intermediate stores, score
+aggregation over all roster units and participant equality/nonzero distinctions
+remain intentional compatibility behavior. Stage names retain the valid 31-byte
+name plus terminator contract in each 32-byte field.
+
+Static mapped-memory checks pass. Native discovery needed the flags
+package's actual Go name (`noxflags`) and explicit player-index/C-object conversions.
+The third focused run passes all 24 roots / 8,501 leaves and all 23 groups / 8,512
+frozen records (127.98s), without behavioral fixes.
+No frozen expectation has been changed for the Go conversion.
+
+Native default/server/highres each pass **470 roots / 49,254 leaf cases**, no skips,
+and **149 groups / 50,640 frozen records**, with identical 2,038 source fingerprints.
+Times: 251.85s / 361.20s / 297.77s. Evidence is under
+build/port-quest-runtime/native-default, native-server, native-highres and
+native-coverage-audit.json.
+
+Fresh production qualification passes (397.78s): all three 386/SSE2/CGO
+builds and ABI audits; the exact known full-suite result (1,553 failure entries,
+15 passing / 3 failing / 32 no-test packages); gameplay (41 frames), actual save/load
+(7 frames), and flat rendering (14 frames) with exact compressed-map regeneration.
+Production and affected tests share the same 2,038 source fingerprints.
+
+Artifacts: build/port-quest-runtime/native-production and
+build/baseline/runs/quest-runtime-native, quest-runtime-save-native,
+quest-runtime-flat-native. Client SHA256: `5d157465f395b6c8644f2b23056265239edcdad1f4426915e59335bb55b57dc8`.
+
+The native implementation is **558 Go lines in five files**, replacing 897 physical
+C lines. No frozen expectation changed during conversion. No new user decision
+or unresolved test failure was introduced.
+
+Completed C and native scenario asset copies were deduplicated after qualification,
+reclaiming 1,660,044,319 bytes per set. Ignored restoration manifests and all changed
+saves, screenshots, result files and original assets remain available.

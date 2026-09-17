@@ -191,13 +191,13 @@ func Nox_xxx_netSendObjects2Plr_519410(a1 *server.Object, a2 *server.Object) {
 	objectReportRecipient(a1, a2)
 }
 func Sub_4D6770(a1 ntype.PlayerInd) {
-	C.sub_4D6770(C.int(a1))
+	questRuntimeScoreboard(int(a1))
 }
 func Sub_4D6880(a1 int, a2 int) {
-	C.sub_4D6880(C.int(a1), C.int(a2))
+	questRuntimeStageMessage(a1, 13, uint32(a2))
 }
 func Sub_4D60B0() {
-	C.sub_4D60B0()
+	questRuntimeResetAll()
 }
 func Sub_4CFDF0(a1 int) {
 	C.sub_4CFDF0(C.int(a1))
@@ -272,16 +272,16 @@ func Sub_4183C0() {
 	C.sub_4183C0()
 }
 func Sub_4D7150() {
-	C.sub_4D7150()
+	questRuntimeObserverDeadline()
 }
 func Sub_4D71F0() {
-	C.sub_4D71F0()
+	questRuntimeSoulTimeout()
 }
 func Nox_server_checkWarpGate_4D7600() {
-	C.nox_server_checkWarpGate_4D7600()
+	questRuntimeWarpTick()
 }
 func Sub_4D7A80() {
-	C.sub_4D7A80()
+	questRuntimeDepartureTick()
 }
 func Sub_4EC720() {
 	C.sub_4EC720()
@@ -323,7 +323,7 @@ func Sub_4D15C0() {
 	C.sub_4D15C0()
 }
 func Sub_4D7B40() {
-	C.sub_4D7B40()
+	questRuntimeDepartureReset()
 }
 func Sub_41E4B0(a1 int) {
 	C.sub_41E4B0(C.int(a1))
@@ -404,13 +404,13 @@ func Sub_4165F0(a1 int, a2 int) {
 	C.sub_4165F0(C.int(a1), C.int(a2))
 }
 func Sub_4D7430() int {
-	return int(C.sub_4D7430())
+	return int(questRuntimeWord(1556116))
 }
 func Sub_4D76F0() int {
-	return int(C.sub_4D76F0())
+	return int(questRuntimeWord(1556124))
 }
 func Sub_4D76E0(a1 int) {
-	C.sub_4D76E0(C.int(a1))
+	questRuntimeSetWord(1556124, uint32(a1))
 }
 func Nox_xxx_ruleSetNoRespawn_40A5E0(a1 int) {
 	C.nox_xxx_ruleSetNoRespawn_40A5E0(C.int(a1))

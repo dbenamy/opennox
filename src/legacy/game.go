@@ -698,7 +698,7 @@ func Sub_4E81D0(a1 *server.Object) {
 	C.sub_4E81D0(asObjectC(a1))
 }
 func Sub_4D71E0(a1 int) {
-	C.sub_4D71E0(C.int(a1))
+	questRuntimeSetSoulFrame(uint32(a1))
 }
 func Nox_xxx_calcDistance_4E6C00(a1 *server.Object, a2 *server.Object) float32 {
 	return float32(C.nox_xxx_calcDistance_4E6C00(asObjectC(a1), asObjectC(a2)))

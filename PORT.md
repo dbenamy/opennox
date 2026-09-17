@@ -15,23 +15,20 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. World collisions and interactions are qualified: **1,016 physical
-C lines removed** from baseline `b22b3f1a`, leaving **53,946 lines in 82 files**,
-with zero reference C. Twenty-one functions now use Go implementations.
+scheduled pause. Quest runtime, statistics and difficulty scaling are qualified:
+**897 physical C lines / 57 functions removed**, leaving **53,049 lines in 82 files**,
+with zero reference C. Twenty-four C interfaces remain as thin Go exports.
 
-Default/server/highres each pass **444 affected roots / 40,751 leaf cases** without
-skips; **42,128 frozen records / 126 groups** match. All production builds and ABI
+Default/server/highres each pass **470 affected roots / 49,254 leaf cases** without
+skips; **50,640 frozen records / 149 groups** match. All production builds and ABI
 audits pass, the full asset suite retains exactly its known failures, and headless
 gameplay, actual save/load and flat rendering pass, including exact map regeneration.
 
-See [WORLD_COLLISIONS.md](docs/porting/WORLD_COLLISIONS.md) for evidence, the
-floating-point rounding finding and recorded compatibility limits. Next conversion:
-quest runtime/statistics and difficulty scaling. Its corrected C baseline is
-qualified, including a shipped score-constant width fix. Native scope is 897 C
-lines / 57 functions, including a private conversion helper. See
-[QUEST_RUNTIME.md](docs/porting/QUEST_RUNTIME.md).
-[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint; confident reversible
-decisions remain recorded for review.
+See [QUEST_RUNTIME.md](docs/porting/QUEST_RUNTIME.md) for qualification and the
+preceding shipped score-constant width correction. The next candidate is connected
+match results and player-roster synchronization; audit ownership and callers before
+freezing its scope. [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint;
+confident reversible decisions remain recorded for review.
 
 ## Goal and target
 

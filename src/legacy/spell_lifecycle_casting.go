@@ -56,7 +56,7 @@ func spellLifeCantCast(u *server.Object, id, queued int32) int32 {
 	if spellLifeHasBuff(u, 29) {
 		return 14
 	}
-	if C.sub_4D7100(C.int(id)) == 0 {
+	if !questRuntimeBookAllowed(int(id), 111) {
 		return 10
 	}
 	count := func(off uintptr) int32 {

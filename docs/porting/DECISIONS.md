@@ -1422,3 +1422,19 @@ restore the shipped constant. Only three scoring groups are refrozen from correc
 C; the other 20 groups remain identical. Numeric/table input audits are now explicit
 in PORT.md so nontrivial production data is checked before freezing expectations.
 See [QUEST_RUNTIME.md](QUEST_RUNTIME.md) for qualification and limitations.
+
+
+### Quest runtime native interfaces and absolute conversion
+
+The native conversion preserves all frozen corrected-C behavior, including signed
+maximum-health comparisons, float32 rounding points, all-roster score aggregation,
+and participation equality/nonzero distinctions. Retire the private C absolute
+converter with its last four production callers; keep independent Go assertions
+and the two C converters that still have production callers.
+
+The health-scaling C export now returns void. All remaining callers ignored the
+old decompiler return, whose temporary value had no coherent result contract.
+This reversible interface cleanup leaves the covered mutations unchanged. The
+stage-message builder bounds each name to its 32-byte field; the preserved valid
+contract is at most 31 name bytes plus a terminator. See
+[QUEST_RUNTIME.md](QUEST_RUNTIME.md) for complete three-target and production gates.
