@@ -11,7 +11,7 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 ## Current — world geometry/collision corrected C baseline qualified
 
 The next conversion covers **32 live functions / 1,385 corrected C body lines**.
-C baseline is qualified and ready for its commit/push; parent polygon conversion
+C baseline **9a945523 is committed/pushed**; parent polygon conversion
 is **10d3294d**. See [WORLD_GEOMETRY.md](docs/porting/WORLD_GEOMETRY.md).
 
 Sixteen focused groups pass; two separate processes agree on 15 frozen captures /
@@ -24,10 +24,19 @@ Static checks pass. Default/server/highres pass **543/542/543 roots**,
 gameplay, save/load and flat maps. All gates share unchanged **2,190-file source**;
 all sessions are joined. No native code is installed yet and no blocker exists.
 
+Supplemental player wall-association C contract: 120 records, repeated default
+and server/highres identical; frozen without modifying existing captures. Production
+source is identical to 9a945523. Supplement is ready for commit/push. Next native
+selection: 544 roots, 205 captures. Sixteen focused captures / 15,902 records.
+Native drafts are under build/port-world-geometry/native-draft (not installed):
+primitives, crossings, object responses, walls and axes. Gate, exports and caller
+migration remain. Review drafts against corrected committed C before installation.
+
 Artifacts: build/port-world-geometry/c-{default,server,highres,production},
 c-audit.json and corrected-c-functions.json. The original proposal.json contains
 pre-correction C: use committed C/current corrected snapshot for translation.
-Next: commit/push baseline, then port and requalify without changing expectations.
+Next: finish native drafts, install once, move callers and retire C, then requalify
+without changing expectations.
 Twelve C interfaces remain live outside the batch; the two force coefficients
 also retain C readers. Reuse ShapeBox.Calc and floatToInt32 where equivalent.
 At most three heavy jobs; source build/baseline/env.sh for every Go command;

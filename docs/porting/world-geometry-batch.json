@@ -438,6 +438,10 @@
           {
             "path": "{out}/capture-world-geometry-wall-response-axes.json",
             "sha256": "349fa76b36fd70f113c92803a9dfc52f7986c2c946a4fd012276df799aa72b09"
+          },
+          {
+            "path": "{out}/capture-world-geometry-player-wall.json",
+            "sha256": "6603a57f77b51e154df0f0f23ec6ea284fd9a71f55944b2dbd67f09633c592ee"
           }
         ]
       }
@@ -868,6 +872,10 @@
           {
             "path": "{out}/capture-world-geometry-wall-response-axes.json",
             "sha256": "349fa76b36fd70f113c92803a9dfc52f7986c2c946a4fd012276df799aa72b09"
+          },
+          {
+            "path": "{out}/capture-world-geometry-player-wall.json",
+            "sha256": "6603a57f77b51e154df0f0f23ec6ea284fd9a71f55944b2dbd67f09633c592ee"
           }
         ]
       }
@@ -1298,6 +1306,10 @@
           {
             "path": "{out}/capture-world-geometry-wall-response-axes.json",
             "sha256": "349fa76b36fd70f113c92803a9dfc52f7986c2c946a4fd012276df799aa72b09"
+          },
+          {
+            "path": "{out}/capture-world-geometry-player-wall.json",
+            "sha256": "6603a57f77b51e154df0f0f23ec6ea284fd9a71f55944b2dbd67f09633c592ee"
           }
         ]
       }
@@ -1770,6 +1782,10 @@
           {
             "path": "{out}/capture-world-geometry-wall-response-axes.json",
             "sha256": "349fa76b36fd70f113c92803a9dfc52f7986c2c946a4fd012276df799aa72b09"
+          },
+          {
+            "path": "{out}/capture-world-geometry-player-wall.json",
+            "sha256": "6603a57f77b51e154df0f0f23ec6ea284fd9a71f55944b2dbd67f09633c592ee"
           }
         ]
       }
@@ -2200,6 +2216,10 @@
           {
             "path": "{out}/capture-world-geometry-wall-response-axes.json",
             "sha256": "349fa76b36fd70f113c92803a9dfc52f7986c2c946a4fd012276df799aa72b09"
+          },
+          {
+            "path": "{out}/capture-world-geometry-player-wall.json",
+            "sha256": "6603a57f77b51e154df0f0f23ec6ea284fd9a71f55944b2dbd67f09633c592ee"
           }
         ]
       }
@@ -2630,6 +2650,10 @@
           {
             "path": "{out}/capture-world-geometry-wall-response-axes.json",
             "sha256": "349fa76b36fd70f113c92803a9dfc52f7986c2c946a4fd012276df799aa72b09"
+          },
+          {
+            "path": "{out}/capture-world-geometry-player-wall.json",
+            "sha256": "6603a57f77b51e154df0f0f23ec6ea284fd9a71f55944b2dbd67f09633c592ee"
           }
         ]
       }

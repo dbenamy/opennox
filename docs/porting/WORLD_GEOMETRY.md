@@ -115,3 +115,19 @@ with remaining C callers, move Go callers to direct calls, reuse the existing
 ShapeBox.Calc and floatToInt32 where their behavior matches, then repeat all gates
 without changing frozen expectations. The two force coefficients still have C
 readers outside this batch and must remain shared.
+
+### Supplemental player wall association contract
+
+After baseline **9a945523** was pushed, translation review identified the player
+update-data wall pointer at offset 296. A further 120 cases cover all eleven wall
+shapes plus absent walls, nil/non-nil update data, exact wall identity, guards and
+projection succeeding before the force/contact response. Initially the fixture
+used ClassMonster (2); the C bit is ClassPlayer (4). Correcting the fixture class
+made the intended branch observable. No production correction was needed.
+
+Two default processes and server/highres all pass and produce identical captures
+(player-wall-{a,b,server,highres}.log and associated JSON under the batch directory).
+The supplementary hash is frozen; existing 15 captures remain unchanged. Production
+source is identical to 9a945523, so its fresh production qualification applies.
+The next native selection has 544 candidate roots / 205 expected captures; focused
+coverage is now 17 roots / 16 captures / 15,902 records. No checks remain active.
