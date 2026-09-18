@@ -5,7 +5,6 @@ package opennox
 import (
 	"bytes"
 	"context"
-	"encoding/binary"
 	"fmt"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/ntype"
@@ -15,7 +14,6 @@ import (
 	"github.com/opennox/opennox/v1/server"
 	"reflect"
 	"testing"
-	"unsafe"
 )
 
 func consoleCommandRemoteOwner(t *testing.T) (*consoleCommandOwner, []server.Object) {
@@ -52,18 +50,9 @@ func TestConsoleCommandsRemoteScriptAndExecution(t *testing.T) {
 					if auth == 2 {
 						t.Cleanup(noxflags.PortTestGameFlags(2048))
 					}
-					h := serverConfigOwnBytes(t, 0x5D4594, 1548492, 12)
-					addr := uint32(uintptr(unsafe.Pointer(&h[0])))
-					for i := 0; i < 3; i++ {
-						binary.LittleEndian.PutUint32(h[4*i:], addr)
-					}
+					t.Cleanup(legacy.PortTestSessionEntryRosterOwner())
 					if auth == 3 {
-						node, free := alloc.Make([]uint32{}, 4)
-						t.Cleanup(free)
-						node[0], node[1], node[3] = addr, addr, uint32(uintptr(pl.C()))
-						ptr := uint32(uintptr(unsafe.Pointer(&node[0])))
-						binary.LittleEndian.PutUint32(h, ptr)
-						binary.LittleEndian.PutUint32(h[4:], ptr)
+						legacy.PortTestSessionEntryRoster("add", int(pl.PlayerInd))
 					}
 					s := o.c.srv.S()
 					oldVM := s.NoxScriptVM

@@ -139,6 +139,9 @@ char* nox_xxx_gameSetMapPath_409D70(char* a1) {
 		v2 = strrchr(a1, 92);
 		if (v2) {
 			v3 = strlen(v2 + 1) - 4;
+			if (v3 < 0) {
+				v3 = 0;
+			}
 			result = strncpy((char*)getMemAt(0x85B3FC, 36), v2 + 1, v3);
 		} else {
 			v3 = strlen((const char*)getMemAt(0x5D4594, 2598188)) - 4;

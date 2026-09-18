@@ -1,0 +1,370 @@
+{
+  "parent": "50c06879",
+  "functions": [
+    {
+      "name": "nox_xxx_mapValidateMB_4CF470",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 81,
+      "lines": 40,
+      "body_sha256": "63790679b17dd2869519f1a0085e6b3e555788c67bc51cc7f6444ada9d553dab",
+      "disposition": "native-private",
+      "repaired_c_lines": 40,
+      "repaired_c_sha256": "58dd8350c77cc373f6cb9fc9949395ba1bcc61c771797b6a05b7b78681c5140d"
+    },
+    {
+      "name": "nox_xxx_mapFindCrown_4CFC30",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 123,
+      "lines": 19,
+      "body_sha256": "3858237a5c68ec11f515dea91a6d88fe214d52a39f1f47335eac883e4262d415",
+      "disposition": "native-private",
+      "repaired_c_lines": 19,
+      "repaired_c_sha256": "75b6583ac88202cae19577a7dea46c4d5ef83dbebfaacebcbac380840dc17fa7"
+    },
+    {
+      "name": "sub_4CFDF0",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 144,
+      "lines": 7,
+      "body_sha256": "ba6d4ac9a70437a08b00ee5aa844793f5ff72ea3f7a98dc2829247065667bcc3",
+      "disposition": "native-private",
+      "repaired_c_lines": 7,
+      "repaired_c_sha256": "750d35faa46fd6dac7d75f51d4319345828a4489f972586eb0f31ea71739a9b0"
+    },
+    {
+      "name": "sub_4CFE00",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 153,
+      "lines": 1,
+      "body_sha256": "ab076d15c1feaf567bc754241571926779aee84d661345a9ad33bc0513f1bf90",
+      "disposition": "native-retain-c-export",
+      "repaired_c_lines": 1,
+      "repaired_c_sha256": "9177fb8669bb21ed90aa52d44bd69ba50db7f60589efc10fe54eea94233ad85b"
+    },
+    {
+      "name": "nox_xxx_mapGetTypeMB_4CFFA0",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 156,
+      "lines": 1,
+      "body_sha256": "0edf3c091178a388b95e509c0ccd7e14cedc4992fd8c1f733dcc322896b65893",
+      "disposition": "orphan",
+      "repaired_c_lines": 1,
+      "repaired_c_sha256": "675eb535f6806902f967b1e55dc7a0937dd2b9aced13f92f9329ebb20af78e54"
+    },
+    {
+      "name": "sub_4CFFC0",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 159,
+      "lines": 1,
+      "body_sha256": "4028c14fafc4d77eefd25991fbca5be0fe108bc9f61e293c23e1c39a9449a686",
+      "disposition": "native-private",
+      "repaired_c_lines": 1,
+      "repaired_c_sha256": "7e7acf2bef728ce4d988bc6545f43b79a3428e6d603a417fca678e20d08ed9e4"
+    },
+    {
+      "name": "sub_4D11A0",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 166,
+      "lines": 6,
+      "body_sha256": "8769142bc4b49da7e9157ffcb88a0cd5430dc7c87da997c172d5fffd0c229b7a",
+      "disposition": "native-private",
+      "repaired_c_lines": 6,
+      "repaired_c_sha256": "0b50a8a09013740d2b55ecf8362d3038d5222deb9b8464956fe4ccaaf097827c"
+    },
+    {
+      "name": "sub_4D11D0",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 174,
+      "lines": 16,
+      "body_sha256": "428a646e1258a87b872d73a1fb21d6161546764b626072dd71de92a7dcb85275",
+      "disposition": "native-private",
+      "repaired_c_lines": 16,
+      "repaired_c_sha256": "2f3c5ba11f0ddc35aa01beebe980638d4391faa7f3fa5f6a50895eb8af5969a9"
+    },
+    {
+      "name": "sub_4D1210",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 192,
+      "lines": 16,
+      "body_sha256": "8e9830331e1d965725f77659378bbe24d03d5a3a487aaffcc6d67d0ff401847f",
+      "disposition": "native-private",
+      "repaired_c_lines": 16,
+      "repaired_c_sha256": "a38de2f0fa61c822266a238025ffd4eae18e3ef234c1b9f4dbbb559c2bc7312a"
+    },
+    {
+      "name": "sub_4D1250",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 210,
+      "lines": 19,
+      "body_sha256": "c7ae9174c7251f8eaab30bbfe318e953f1b5f037895355de97035363753626cd",
+      "disposition": "native-private",
+      "repaired_c_lines": 19,
+      "repaired_c_sha256": "de67c1ece35f1601d5805c78f3a494c324d0c83660db8bf551d20ed93078c758"
+    },
+    {
+      "name": "sub_4D12A0",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 231,
+      "lines": 15,
+      "body_sha256": "2e312786e6533f411c45d4b09f60db945f798358d5c986fc08cab60a294d0675",
+      "disposition": "native-private",
+      "repaired_c_lines": 15,
+      "repaired_c_sha256": "f47d53210f69868c70101a749417c32a76aefb280662eb343869d0990db4a0f9"
+    },
+    {
+      "name": "nox_xxx_mapSwitchLevel_4D12E0_tileFree",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 247,
+      "lines": 11,
+      "body_sha256": "a481eceb5860e7ae642b0f2087feb92ca9f76dbe2217cf244832bb90d1477f15",
+      "disposition": "native-private",
+      "repaired_c_lines": 11,
+      "repaired_c_sha256": "e120ddb6e37024fb06687ac52474fd3f8770d6441a9735eb3f265e74f43df216"
+    },
+    {
+      "name": "sub_4D15C0",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 260,
+      "lines": 1,
+      "body_sha256": "cda6341cc432094da4f1bacc90cbd4b6aae2a9e89503380c65c9d5625de05aa0",
+      "disposition": "native-private",
+      "repaired_c_lines": 1,
+      "repaired_c_sha256": "c6564b6324b6d992cd14d8e6929727cbd3ff795b769b5c39b8094016ea81655d"
+    },
+    {
+      "name": "nox_xxx_scavengerTreasureMax_4D1600",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 263,
+      "lines": 1,
+      "body_sha256": "612b8e400c2ec31c9c156bc55185144c6412bf4817162a68dadf56233cf42f54",
+      "disposition": "native-private",
+      "repaired_c_lines": 1,
+      "repaired_c_sha256": "3fc96142d08b4cf59dd104f573283b392f8fe17cdf38d8d642bfe189ea91a557"
+    },
+    {
+      "name": "sub_4D1610",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 266,
+      "lines": 1,
+      "body_sha256": "e3bccf9d8388cca65def522eb4dde2a5e12bd02af572f7be86700841d1c0bee0",
+      "disposition": "native-private",
+      "repaired_c_lines": 1,
+      "repaired_c_sha256": "15bc14801343f0187ae62eae83a3e51d28276ae74493123c9a1b7e62d25edeea"
+    },
+    {
+      "name": "nox_xxx_servResetPlayers_4D23C0",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 270,
+      "lines": 20,
+      "body_sha256": "1c94fb6a5cf3498e44940d9344db5dda83e0d1769999092ede25bc26cf53b6dd",
+      "disposition": "native-private",
+      "repaired_c_lines": 20,
+      "repaired_c_sha256": "4b1cb1b866b949bf7aa9f799101b2e1c0e7845afd9954a4fc0223eff65346b11"
+    },
+    {
+      "name": "nox_xxx_netReportAllLatency_4D3050",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 292,
+      "lines": 38,
+      "body_sha256": "717126f01d0748e41c3e3ba6a2a562fd662982a5486121f363c352c848c89fe0",
+      "disposition": "native-private",
+      "repaired_c_lines": 38,
+      "repaired_c_sha256": "c5e78c31b9333135763c78d6d77d90b30b5cf920054d3dbd9692eb7140112f0e"
+    },
+    {
+      "name": "nox_xxx_unitNewAddShadow_4DA9A0",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 368,
+      "lines": 18,
+      "body_sha256": "83da1653d089ff6c0082fefef4460490bbdb60d5dd9f137b7157241c5a24694f",
+      "disposition": "native-private",
+      "repaired_c_lines": 18,
+      "repaired_c_sha256": "fb4cb94d4d51f6d2454426b065980fae20403d9b6856b91933c68d6b14184e0d"
+    },
+    {
+      "name": "nox_xxx_action_4DA9F0",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 388,
+      "lines": 24,
+      "body_sha256": "8160a58b62d61a94e82f455cfc858219f46eb1277f6ae2fdcc2493a00f2ef135",
+      "disposition": "native-retain-c-export",
+      "repaired_c_lines": 24,
+      "repaired_c_sha256": "9a24499666ec5120b948863fb72dca811bcde1a4c09350043e24d4c554625056"
+    },
+    {
+      "name": "nox_client_countSaveFiles_4DC550",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 414,
+      "lines": 29,
+      "body_sha256": "942066929f8708fb892df066667dcfb1e0f89651665d4d08e56b65dc52cf5516",
+      "disposition": "native-private",
+      "repaired_c_lines": 29,
+      "repaired_c_sha256": "a6085b175f7dd0e344707e4e211adb8e4df1d2d12c9c292613f299c8aab39258"
+    },
+    {
+      "name": "nox_client_countPlayerFiles02_4DC630",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 446,
+      "lines": 41,
+      "body_sha256": "1212a952b54107f2ce0489de3ccecfb7d515f84ec6cef1d4575932450f3240e6",
+      "disposition": "native-retain-c-export",
+      "repaired_c_lines": 41,
+      "repaired_c_sha256": "bb0a328820c5d84427b947a8187e50f176aa3935e1ef648de4ffaab12bf6cbcc"
+    },
+    {
+      "name": "nox_xxx_mapLoadOrSaveMB_4DCC70",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 490,
+      "lines": 7,
+      "body_sha256": "66a98761344204294ba548574ba3f1f478e16797a59073e6e50189a57c748c1e",
+      "disposition": "native-private",
+      "repaired_c_lines": 7,
+      "repaired_c_sha256": "635fb36bbbdf55aae08209614cee2bb72b187468975f637b484b9dabb7f33313"
+    },
+    {
+      "name": "nox_xxx_game_4DCCB0",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 499,
+      "lines": 19,
+      "body_sha256": "6f56b4401c984c13f5f46ce7967b74e2dca29220da474b78e80d8dd839f74b7a",
+      "disposition": "native-retain-c-export",
+      "repaired_c_lines": 19,
+      "repaired_c_sha256": "c6a88e9fddfa4e5322b6eb117ec59691f39b25a96972a08605b4f7d7d707b16b"
+    },
+    {
+      "name": "nox_xxx_gameServerReadyMB_4DD180",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 521,
+      "lines": 50,
+      "body_sha256": "56f3fa39a2531f69fe78b923ce53d48299921f3303b1ea08502f730e69148c7d",
+      "disposition": "native-private",
+      "repaired_c_lines": 50,
+      "repaired_c_sha256": "eb37a0f16ef3b1e9f30dfca9296cfa6ba77bc6215c2e16d60efde2f98ce7467f"
+    },
+    {
+      "name": "nox_xxx_netPlayerIncomingServ_4DDF60",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 574,
+      "lines": 99,
+      "body_sha256": "e94dee1590a23cd789f7d467c964c8039cceaa53990e716d21044aecb02f48c6",
+      "disposition": "native-private",
+      "repaired_c_lines": 99,
+      "repaired_c_sha256": "18877247086c6591b4226eabcf8d320d0ff52fd190fa750aecae15fa73799a7c"
+    },
+    {
+      "name": "nox_xxx_playerForceDisconnect_4DE7C0",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 677,
+      "lines": 100,
+      "body_sha256": "61249d2f3c3cf62de6b89eb4d77b38b9631ecb6771bfe47eca5410cf7194779d",
+      "disposition": "native-private",
+      "repaired_c_lines": 100,
+      "repaired_c_sha256": "00e7ea216bb92f751165d7712991d8c52cdde470b8a00088e667343e7ab7a63f"
+    },
+    {
+      "name": "sub_4DF020",
+      "file": "src/legacy/GAME3_2.c",
+      "line": 779,
+      "lines": 36,
+      "body_sha256": "3c9471e285fa1e7e3674c760fdb54d846024fda7fd2b66f2f0fa557d54cc0a59",
+      "disposition": "native-private",
+      "repaired_c_lines": 36,
+      "repaired_c_sha256": "4c5911a75ab8a23c5df52218ff3493ef1fa7545f1d2d58f9be5eaf63928c2dc6"
+    },
+    {
+      "name": "sub_409A70",
+      "file": "src/legacy/GAME1.c",
+      "line": 95,
+      "lines": 15,
+      "body_sha256": "029e22ce1a1b75cea9bdfeb9e8fa289e05aba4ca8fba223f20fe1572e0e7cbe4",
+      "disposition": "native-private",
+      "repaired_c_lines": 15,
+      "repaired_c_sha256": "3a0da1e5b7298a2c669a3e588d559d249ffe2b1ce95074797a2552d3d5726767"
+    },
+    {
+      "name": "nox_server_currentMapGetFilename_409B30",
+      "file": "src/legacy/GAME1.c",
+      "line": 112,
+      "lines": 1,
+      "body_sha256": "0f273828277ba82308f7ce4625d497a437094f2bc016b61d7c94e12ba1dd7840",
+      "disposition": "native-retain-c-export",
+      "repaired_c_lines": 1,
+      "repaired_c_sha256": "7457154ab76bb3e0dedbb8cf3076bc5c2185c2e3f0a0d7248a6f630c90f5c2d6"
+    },
+    {
+      "name": "nox_xxx_mapGetMapName_409B40",
+      "file": "src/legacy/GAME1.c",
+      "line": 115,
+      "lines": 1,
+      "body_sha256": "4fee8ba242e68ed7cddcda5f45d7149a5a41b40719c9398a76a1945e14bdb103",
+      "disposition": "native-retain-c-export",
+      "repaired_c_lines": 1,
+      "repaired_c_sha256": "7a2a91d13e5631c9b1e900abf51406235724f02195b48b40da5ab29d6fa21942"
+    },
+    {
+      "name": "sub_409B50",
+      "file": "src/legacy/GAME1.c",
+      "line": 118,
+      "lines": 7,
+      "body_sha256": "338f8de72fb0544a78b80ed2d8e44656c3db13b1d8d64b80c87aa9fe7c4a3972",
+      "disposition": "native-retain-c-export",
+      "repaired_c_lines": 7,
+      "repaired_c_sha256": "acf5f89337b43238ab0b80c859dfd4d2eb9c1d66816c46465b13185dff5fa057"
+    },
+    {
+      "name": "sub_409B80",
+      "file": "src/legacy/GAME1.c",
+      "line": 127,
+      "lines": 1,
+      "body_sha256": "994115b1b5157170028d5c970d7020fdac18eae23103d0b82fa97354a0eb716c",
+      "disposition": "native-private",
+      "repaired_c_lines": 1,
+      "repaired_c_sha256": "211504deec6a0bb015efd6f269c4fad1f933a4dc3adcca438cc4a29f002d4e7a"
+    },
+    {
+      "name": "nox_xxx_gameSetMapPath_409D70",
+      "file": "src/legacy/GAME1.c",
+      "line": 130,
+      "lines": 25,
+      "body_sha256": "5b818687d9265d8d75fb2b325c2854c40eb49357b7025ffc04cda820c4a928a5",
+      "disposition": "native-retain-c-export",
+      "repaired_c_lines": 28,
+      "repaired_c_sha256": "bf690b2ff79d97e93c96ba389aaecf07d4ad12ba2bfe2a05964bbda4a2a29a1e"
+    },
+    {
+      "name": "sub_41A000",
+      "file": "src/legacy/GAME1_1.c",
+      "line": 105,
+      "lines": 63,
+      "body_sha256": "d20b668748ca190864bb2ce0e708e7c02f9fda971894d5b2918c7b2c47046f8d",
+      "disposition": "native-private",
+      "repaired_c_lines": 63,
+      "repaired_c_sha256": "69cdd3a360c4128b66e4ecf1dfc5150b7dc6f1a7b530109a2c14f28b8679f710"
+    }
+  ],
+  "body_lines": 749,
+  "orphan_candidates": [
+    "nox_xxx_mapGetTypeMB_4CFFA0"
+  ],
+  "compatibility_glue_excluded": [
+    "nox_xxx_netSendLineMessage_4D9EB0",
+    "nox_xxx_printToAll_4D9FD0"
+  ],
+  "audit": {
+    "live": 33,
+    "orphan": 1,
+    "retained_c_exports": [
+      "sub_4CFE00",
+      "nox_xxx_action_4DA9F0",
+      "nox_client_countPlayerFiles02_4DC630",
+      "nox_xxx_game_4DCCB0",
+      "nox_server_currentMapGetFilename_409B30",
+      "nox_xxx_mapGetMapName_409B40",
+      "sub_409B50",
+      "nox_xxx_gameSetMapPath_409D70"
+    ],
+    "retired_interfaces": 26,
+    "source_reference_audit": "build/port-session-entry/caller-audit.json",
+    "orphan_note": "The similarly named root Go mapGetType function is native already; no C caller or callback references the C body."
+  }
+}

@@ -429,15 +429,15 @@ int nox_client_countSaveFiles_4DC550() {
 	if (nox_fs_access(PathName, 0) != -1) {
 		v0 = 1;
 	}
-	v6 = 13;
+	v6 = 1;
 	do {
 		v7 = nox_fs_root();
-		nox_sprintf(PathName, "%s\\Save\\SAVE%04d\\Player.plr", v7, v0);
+		nox_sprintf(PathName, "%s\\Save\\SAVE%04d\\Player.plr", v7, v6);
 		if (nox_fs_access(PathName, 0) != -1) {
 			++v0;
 		}
-		--v6;
-	} while (v6);
+		++v6;
+	} while (v6 < 14);
 	return v0;
 }
 // 4DC550: using guessed type char PathName[1024];
@@ -464,16 +464,16 @@ int nox_client_countPlayerFiles02_4DC630() {
 	if (v5 != (HANDLE)-1) {
 		if (!(FindFileData.dwFileAttributes & 0x10)) {
 			nox_sprintf(PathName, "%s%s", v11, FindFileData.cFileName);
-			sub_41A000(PathName, v10);
-			if (v10[0] & 2) {
+			memset(v10, 0, sizeof(v10));
+			if (sub_41A000(PathName, v10) && (v10[0] & 2)) {
 				v0 = 1;
 			}
 		}
 		while (FindNextFileA(v5, &FindFileData)) {
 			if (!(FindFileData.dwFileAttributes & 0x10)) {
 				nox_sprintf(PathName, "%s%s", v11, FindFileData.cFileName);
-				sub_41A000(PathName, v10);
-				if (v10[0] & 2) {
+				memset(v10, 0, sizeof(v10));
+				if (sub_41A000(PathName, v10) && (v10[0] & 2)) {
 					++v0;
 				}
 			}
@@ -783,7 +783,7 @@ char* sub_4DF020() {
 	char* v3;          // esi
 	bool v4;           // zf
 	char* i;           // esi
-	char v6[60];       // [esp+8h] [ebp-3Ch]
+	char v6[60] = {0};       // [esp+8h] [ebp-3Ch]
 
 	result = sub_459AA0((int)v6);
 	v1 = 29;

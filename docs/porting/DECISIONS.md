@@ -1882,3 +1882,16 @@ modifier, minimap and reliable-message owners. Retain only the 11 C entrypoints
 needed by the decoder and server lifecycle; two unreferenced scalar helpers retire.
 All targets, frozen captures and fresh production qualify. See
 [PLAYER_STATE.md](PLAYER_STATE.md).
+
+
+### Session entry baseline: save discovery and defined settings snapshots
+
+Independent contracts found missing manual saves after gaps, repeated character
+counts after empty/rejected metadata, and repeated settings broadcasts from
+uninitialized snapshot bytes. Before freezing C, count slots1..13 independently,
+clear each character output/check load success, and zero-initialize the GUI
+snapshot. Source review also found a negative copy length for path basenames
+shorter than four bytes; apply the existing filename branch's zero clamp there.
+These reversible corrections preserve normal shipped inputs and are review items.
+All three targets and fresh production/headless qualification pass. Details and
+failure evidence: [SESSION_ENTRY.md](SESSION_ENTRY.md).

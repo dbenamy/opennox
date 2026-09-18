@@ -1,0 +1,259 @@
+{
+  "status": "qualified repaired C baseline",
+  "parent": "50c06879",
+  "focused_roots": 20,
+  "focused_tests_including_subtests": 217,
+  "new_captures": 20,
+  "new_capture_records": 1064,
+  "targets": [
+    {
+      "target": "default",
+      "roots": 335,
+      "tests": 38963
+    },
+    {
+      "target": "server",
+      "roots": 335,
+      "tests": 38963
+    },
+    {
+      "target": "highres",
+      "roots": 335,
+      "tests": 38963
+    }
+  ],
+  "captures": 205,
+  "records": 51862,
+  "source_files": 2406,
+  "source_identity": true,
+  "capture_identity": true,
+  "frozen_c_identity": true,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 3.992973292944953,
+        "sha256": "ff3a7b8c88e5b46127e15191eeffc5153c661fafa6b8bc2128c27794849e601e",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.612553871935233,
+        "sha256": "2f5370888991cc23f88ff3aefc5d3a2058a8b7590cb744dbf167f87f58d645b7",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 70.19767839601263,
+        "sha256": "1853aff358f5b3ae9f43a39b055df8145243632722307bfbe5e620465a00ae2b",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "session-entry-c": {
+        "exit": 0,
+        "wall_seconds": 58.139796117087826,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 57.56424119602889,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "ff3a7b8c88e5b46127e15191eeffc5153c661fafa6b8bc2128c27794849e601e",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-session-entry/c-production-final/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/session-entry-c/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Session-entry repaired C baseline",
+          "removed_maps": 0
+        }
+      },
+      "session-entry-c-save": {
+        "exit": 0,
+        "wall_seconds": 44.879960231948644,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.41199239878915,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "ff3a7b8c88e5b46127e15191eeffc5153c661fafa6b8bc2128c27794849e601e",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-session-entry/c-production-final/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/session-entry-c-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Session-entry repaired C baseline",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "dd5333fca815b632fd90aa6f2d8e54afd3e685d55fb9736a6a9c314e85c8a316"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 55.27467331592925,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "flat_scenario": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 47.95526457903907,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/server-config-flat-c",
+    "binary_sha256": "ff3a7b8c88e5b46127e15191eeffc5153c661fafa6b8bc2128c27794849e601e",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-session-entry/c-production-final/production/bin/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/session-entry-c-flat/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Session-entry C",
+    "removed_maps": 51,
+    "regenerated_maps": 1
+  },
+  "frozen_captures": {
+    "source_run": "thirteenth",
+    "independent_repeat": "repeat",
+    "captures": {
+      "session-entry-character-count": {
+        "sha256": "3cc2c73b75ab94b3c711765d20cac55ea2210397d87068b7ce8b94c08b343ef6",
+        "records": 7
+      },
+      "session-entry-crown-clear": {
+        "sha256": "50efcabe4578c8031ca445e427e5c3c6804123cc6b634160b2aabf1a5c14036a",
+        "records": 16
+      },
+      "session-entry-latency": {
+        "sha256": "f44c3f8658640f0f74f8e173ef53b445ca3ef9cacb0f2c9133e1bceed4dad989",
+        "records": 18
+      },
+      "session-entry-map-flags": {
+        "sha256": "ba4aceabb3dde39ad66ef1124a15ad7f84e225252a3d222faa8b54dc5edfeee6",
+        "records": 512
+      },
+      "session-entry-map-names": {
+        "sha256": "ee9637d45867c33fc5365ce3e4e985393a8be7db0d0080a3773b1833ecccace2",
+        "records": 13
+      },
+      "session-entry-map-validation": {
+        "sha256": "d0632f95c01a1f456c5995271f6195f45f9513c7492ddf57b11a553f64ba7432",
+        "records": 10
+      },
+      "session-entry-mode-index": {
+        "sha256": "910112cb9c2efc60e78f2dace2836fef1e3f8dfd6323c331fe73fc53b894d7bc",
+        "records": 3
+      },
+      "session-entry-operator-roster": {
+        "sha256": "037ca86e9884eec01892104fdacf08504d53c333b8d773ebb4c81edac5555438",
+        "records": 19
+      },
+      "session-entry-player-departure": {
+        "sha256": "6c03b5abf6b84b11620fb8e901fbb22dd6076489c60ae46e3e24c0e8c642e7d9",
+        "records": 12
+      },
+      "session-entry-player-incoming": {
+        "sha256": "f694592f46adbfdb6df00cd4deab78083203cf984d90f76c6812a4ab9b1c22fa",
+        "records": 21
+      },
+      "session-entry-player-ready": {
+        "sha256": "e4fd775d3d66977001d334542d21dd64ad7d2ae7558b60ffc940198836acac56",
+        "records": 57
+      },
+      "session-entry-player-reset": {
+        "sha256": "46cf498a147ca4c7360a79c29c2de4b61c5620e4ad58d996fa7efbad8821ee59",
+        "records": 4
+      },
+      "session-entry-save-gate": {
+        "sha256": "4f82efc7edc9b59d88eacec88918cdf3455576b6b269d4ea4067afcc017b208f",
+        "records": 273
+      },
+      "session-entry-save-metadata": {
+        "sha256": "e01db7340caea46a3d87b232e80d79f4faa5477385d97f0bd9d92ca0a9ddb750",
+        "records": 8
+      },
+      "session-entry-save-slots": {
+        "sha256": "efc4f3ea1a8a0fe0744a31a0f66d21c27f28ded9dd34d64fa87a0a6ac00072e3",
+        "records": 57
+      },
+      "session-entry-selected-map": {
+        "sha256": "246dc13a4293d7a2764fe166e77137d4b948900e1d64a1fe974341fbb437479e",
+        "records": 5
+      },
+      "session-entry-settings-broadcast": {
+        "sha256": "5d516aeb9aa0741dafcba8811a9c5547aa4225c995db9c21385d1b108f77cbcb",
+        "records": 6
+      },
+      "session-entry-shadow-list": {
+        "sha256": "633148d06e5121c4678beb76ca6860369f5d4f88fc7c679566d848032d9ff271",
+        "records": 15
+      },
+      "session-entry-state-words": {
+        "sha256": "872947a3050a424edfab47ac3f0a3b7dabedc78b40c1ee63a60c430ccfad132a",
+        "records": 6
+      },
+      "session-entry-tile-clear": {
+        "sha256": "8140baaa250cbdb2a279e59c93719717d729ede0bd929c5a28b61b16dac7ffc6",
+        "records": 2
+      }
+    }
+  },
+  "static_mapped_memory": true,
+  "c_loc": {
+    "production": {
+      "files": 69,
+      "lines": 32608
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "manifest_correction": "The first production gate stopped at a wrong Go-export assertion for the C baseline. The corrected retained_c assertions pass in c-production-final."
+}

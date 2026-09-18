@@ -499,3 +499,16 @@ func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe
 		return uint64(C.controlsCall(C.int(op), asObjectC(u), asObjectC(t), C.int(x), C.int(y), record, (*C.char)(name)))
 	}
 }
+
+// PortTestSessionEntryInitCallback reuses the existing initializer boundary log.
+// The fixture checks that session admission invokes the unit initializer once.
+func PortTestSessionEntryInitCallback() (unsafe.Pointer, func() [][2]uintptr) {
+	C.controlsInitReset()
+	return C.controlsInitPtr(), func() [][2]uintptr {
+		var out [][2]uintptr
+		for i := 0; i < int(C.controlsInitCount()); i += 2 {
+			out = append(out, [2]uintptr{uintptr(C.controlsInitValue(C.int(i))), uintptr(C.controlsInitValue(C.int(i + 1)))})
+		}
+		return out
+	}
+}
