@@ -9,7 +9,31 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — prefab script native conversion qualified
+## Current — qualified client/server voting C baseline
+
+The voting baseline covers 34 C bodies / 999 original body lines, including one
+confirmed orphan to remove. Eighteen focused roots pass. Eight captures / 381
+records repeat byte-for-byte in separate processes and are frozen. All three
+broader targets pass 220 roots / 43,576 cases, no skips ; 168 captures / 48,969 records
+match across targets. Fresh production passes all three builds/ABI/interfaces,
+the exact known asset failures, gameplay, save/load and flat regeneration.
+All four gates used unchanged 2,348-file source and all sessions are joined.
+See [VOTES.md](docs/porting/VOTES.md) and its qualification report.
+
+Two prerequisites are qualified: initialize unused name-message bytes and withdraw
+the dispatched vote kind. Production C remains 35,521 / 72 files /zero reference.
+No vote algorithm is ported yet. Next: commit/push this qualified baseline, install
+and review the ignored native drafts, retire unused C, compare frozen captures,
+qualify fresh production, document C LOC and commit/push the conversion.
+No user decision is pending. Source is editable.
+
+Drafts under build/port-votes are not installed or compiled. native-design.md
+records caller/ownership details and proposed native bounds. The body audit is
+read-only apart from documentation; repeated original capture passes are complete.
+The preceding prefab-script installer/freezer/finalizer/deletion passes are
+consumed. Preserve the untracked asset archive.
+
+## Qualified parent — prefab script native conversion (8e8db9a1, pushed)
 
 The repaired C baseline **5c83d11a is committed and pushed**. Eighteen live
 algorithms are native, two orphan helpers removed, 24 C interfaces retired and
@@ -22,14 +46,6 @@ and static checks pass. Fresh production passes three builds/ABI/symbol checks,
 the exact known full-suite failure set, gameplay, save/load and flat regeneration.
 All sessions are joined; source is editable. Evidence: native-final-* directories
 and native-capture-audit.json under build/port-prefab-scripts.
-
-Next: commit/push this qualified conversion, then start the connected player-vote
-batch. Read-only candidate `build/port-votes/expanded-candidate.json` selects
-34 functions /999 C body lines in server vote records/update and client vote
-window/message handling. Review reachability and actual owners before fixtures;
-no next-batch source is installed. See its plan-draft.md and expanded-references.txt.
-No user question pending. Source installer/freezer/finalizer/deletion passes are
-consumed and ignored drafts are stale. Preserve the untracked asset archive.
 
 ## Qualified parent — prefab/map-runtime native conversion (d5f460cc, pushed)
 

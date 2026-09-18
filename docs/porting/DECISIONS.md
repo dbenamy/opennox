@@ -1814,3 +1814,14 @@ invalid generation directories; stop a failed source copy before using a stale
 backup. Remove two proven orphan helpers and four unused C adapters. Independent
 contracts, frozen C comparisons and fresh three-target/production integration
 qualify the final change. See [PREFAB_SCRIPTS.md](PREFAB_SCRIPTS.md).
+
+### Voting baseline corrections
+
+Independent contracts reproduced uninitialized padding in both fixed52-byte
+name messages and kind 1 withdrawal removing a kind 0 vote for the same player.
+Initialize both message temporaries and pass the dispatched kind to the private
+withdrawal helper before freezing. Wire lengths/actions/names and external
+dispatch interfaces remain unchanged. Keep quest admission settings distinct
+from the record's literal 6 minimum; their names alone do not justify changing
+that behavior. Three-target/fresh production qualification passes. Details and
+fixture limits: [VOTES.md](VOTES.md).

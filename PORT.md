@@ -22,7 +22,9 @@ setup are now native Go. Eighteen live algorithms replace C; two orphan helpers,
 
 Current production C is **35,521 physical lines in 72 files**, with zero reference
 C (−1,403 from the repaired C baseline). The next connected candidate is client/server
-player voting; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+player voting. Its repaired C baseline is qualified: 18 focused roots, 220 broader
+roots on each target, frozen captures and fresh production/integration. See
+[VOTES.md](docs/porting/VOTES.md); [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 

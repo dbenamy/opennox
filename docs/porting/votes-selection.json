@@ -1,0 +1,248 @@
+{
+  "status": "qualified repaired C baseline",
+  "functions": [
+    {
+      "name": "nox_xxx_allocVoteArray_5066D0",
+      "file": "src/legacy/GAME4.c",
+      "lines": 11,
+      "sha256": "49176b5f964eb81ddb11e5466ed973c6cc3a1fd74ba02776188079f2beb606de",
+      "repaired_body_sha256": "49176b5f964eb81ddb11e5466ed973c6cc3a1fd74ba02776188079f2beb606de"
+    },
+    {
+      "name": "sub_506720",
+      "file": "src/legacy/GAME4.c",
+      "lines": 9,
+      "sha256": "a6c22063a9d571b2a817817de2960c5ed0428f6b24aed689be389a9af376bc39",
+      "repaired_body_sha256": "a6c22063a9d571b2a817817de2960c5ed0428f6b24aed689be389a9af376bc39"
+    },
+    {
+      "name": "sub_506740",
+      "file": "src/legacy/GAME4.c",
+      "lines": 30,
+      "sha256": "913a3b1014da2c886d0263277c74c94ebb4b5e781fe8def2a91b0024f08c880f",
+      "repaired_body_sha256": "913a3b1014da2c886d0263277c74c94ebb4b5e781fe8def2a91b0024f08c880f"
+    },
+    {
+      "name": "sub_5067B0",
+      "file": "src/legacy/GAME4.c",
+      "lines": 20,
+      "sha256": "24d29d75b184604a804d65bc8ea4e982c95761944646fb3f6e4dfe902df4d474",
+      "repaired_body_sha256": "24d29d75b184604a804d65bc8ea4e982c95761944646fb3f6e4dfe902df4d474"
+    },
+    {
+      "name": "sub_506810",
+      "file": "src/legacy/GAME4.c",
+      "lines": 19,
+      "sha256": "d005b6680b8150e2039c10d2d136e5a3edf8f8180bd8796cf4a13b78149f91fd",
+      "repaired_body_sha256": "d005b6680b8150e2039c10d2d136e5a3edf8f8180bd8796cf4a13b78149f91fd"
+    },
+    {
+      "name": "nox_xxx_netSendVote_506840",
+      "file": "src/legacy/GAME4.c",
+      "lines": 7,
+      "sha256": "63ae9bcc8b63461cdb226010231be4eb54ca772398efef7d94a40637ab751006",
+      "repaired_body_sha256": "63ae9bcc8b63461cdb226010231be4eb54ca772398efef7d94a40637ab751006"
+    },
+    {
+      "name": "sub_506870",
+      "file": "src/legacy/GAME4.c",
+      "lines": 24,
+      "sha256": "ea668a00833fe5ea85a42f5d2a3d22562e3e3629b0db1384d9d9226f510bfe5f",
+      "repaired_body_sha256": "ea668a00833fe5ea85a42f5d2a3d22562e3e3629b0db1384d9d9226f510bfe5f"
+    },
+    {
+      "name": "sub_5068E0",
+      "file": "src/legacy/GAME4.c",
+      "lines": 79,
+      "sha256": "93babb897fc1276b4d2d2c830fc9af45d4e3c9ea8e9d2a1e81f585623965747c",
+      "repaired_body_sha256": "93babb897fc1276b4d2d2c830fc9af45d4e3c9ea8e9d2a1e81f585623965747c"
+    },
+    {
+      "name": "sub_506A20",
+      "file": "src/legacy/GAME4.c",
+      "lines": 37,
+      "sha256": "7650994e01d9a056ab2098a954c45a0462b953be1d37a2887c37d7d4980a714f",
+      "repaired_body_sha256": "7650994e01d9a056ab2098a954c45a0462b953be1d37a2887c37d7d4980a714f"
+    },
+    {
+      "name": "nox_xxx_voteAddMB_506AD0",
+      "file": "src/legacy/GAME4.c",
+      "lines": 12,
+      "sha256": "d47bf1228a70f104bcb8c38f2bcd05dff17f2b2548e2366283df7fc5d281b34c",
+      "repaired_body_sha256": "d47bf1228a70f104bcb8c38f2bcd05dff17f2b2548e2366283df7fc5d281b34c"
+    },
+    {
+      "name": "sub_506B00",
+      "file": "src/legacy/GAME4.c",
+      "lines": 37,
+      "sha256": "eedfed9d8d23bd771c1bd63b9d16fd38498eb6632e4d6cda24ffdf0585e9fd4b",
+      "repaired_body_sha256": "eedfed9d8d23bd771c1bd63b9d16fd38498eb6632e4d6cda24ffdf0585e9fd4b"
+    },
+    {
+      "name": "sub_506B80",
+      "file": "src/legacy/GAME4.c",
+      "lines": 69,
+      "sha256": "54a12e2280f225245470baab11afcce8a700f906835e634a02a9617446936255",
+      "repaired_body_sha256": "54a12e2280f225245470baab11afcce8a700f906835e634a02a9617446936255"
+    },
+    {
+      "name": "sub_506C90",
+      "file": "src/legacy/GAME4.c",
+      "lines": 20,
+      "sha256": "a332da8d6eed3de7d4f24bbd4e7385d59c2c849f634d2175db13079926e1362d",
+      "repaired_body_sha256": "dead7e4457bf876f0b5a298cac9d71d4089577fc62d67682ce0bce9b65cddf22"
+    },
+    {
+      "name": "sub_506D00",
+      "file": "src/legacy/GAME4.c",
+      "lines": 47,
+      "sha256": "ccb01a8d3d0cbe9b318053d26084dd67a06ffd8e5fc4cf52976d1c8d9ccba5d3",
+      "repaired_body_sha256": "c03be47c386100c6cda253464491380a5ba6b423ddf23e90a8e7b52d47a12ee9"
+    },
+    {
+      "name": "sub_506DE0",
+      "file": "src/legacy/GAME4.c",
+      "lines": 30,
+      "sha256": "6bf273df810e1972f4a903d20defa101d806aa219c1e33a77247f41eccd5c722",
+      "repaired_body_sha256": "6bf273df810e1972f4a903d20defa101d806aa219c1e33a77247f41eccd5c722"
+    },
+    {
+      "name": "sub_506E50",
+      "file": "src/legacy/GAME4.c",
+      "lines": 48,
+      "sha256": "3db62eb4bd6a569f36230659de7d8e3e98e3b5d1e59b487edfcd83f66f860567",
+      "repaired_body_sha256": "3db62eb4bd6a569f36230659de7d8e3e98e3b5d1e59b487edfcd83f66f860567"
+    },
+    {
+      "name": "sub_506F80",
+      "file": "src/legacy/GAME4.c",
+      "lines": 17,
+      "sha256": "d6745826e16d697f18c4939a0e9ad9d392ea83bb08f484496786745a29d47595",
+      "repaired_body_sha256": "d6745826e16d697f18c4939a0e9ad9d392ea83bb08f484496786745a29d47595"
+    },
+    {
+      "name": "sub_507000",
+      "file": "src/legacy/GAME4.c",
+      "lines": 22,
+      "sha256": "3c056ae9e8442a2701df106cc0b82776f9b664c396890cc31c285957e55523fb",
+      "repaired_body_sha256": "3c056ae9e8442a2701df106cc0b82776f9b664c396890cc31c285957e55523fb"
+    },
+    {
+      "name": "sub_507090",
+      "file": "src/legacy/GAME4.c",
+      "lines": 19,
+      "sha256": "287695b1be71b476da1e63a37935722d220fb2552739f9b750a3e38d11bb4d4a",
+      "repaired_body_sha256": "287695b1be71b476da1e63a37935722d220fb2552739f9b750a3e38d11bb4d4a"
+    },
+    {
+      "name": "sub_507100",
+      "file": "src/legacy/GAME4.c",
+      "lines": 38,
+      "sha256": "d0457c0a1cddb591e1dc0d3062a5d63119884745c9b88229d38aec23749e132d",
+      "repaired_body_sha256": "d0457c0a1cddb591e1dc0d3062a5d63119884745c9b88229d38aec23749e132d"
+    },
+    {
+      "name": "sub_507190",
+      "file": "src/legacy/GAME4.c",
+      "lines": 7,
+      "sha256": "84b8987ae88651942b0da4b6a32d0168155d180ee01862540ff66085c33a3255",
+      "repaired_body_sha256": "84b8987ae88651942b0da4b6a32d0168155d180ee01862540ff66085c33a3255"
+    },
+    {
+      "name": "sub_5071C0",
+      "file": "src/legacy/GAME4.c",
+      "lines": 1,
+      "sha256": "efec834a493b5d083993a74c0f95fefebb8e72f09a989a866ff6ec6e50b7fe1b",
+      "repaired_body_sha256": "efec834a493b5d083993a74c0f95fefebb8e72f09a989a866ff6ec6e50b7fe1b"
+    },
+    {
+      "name": "nox_xxx_voteUptate_506F30",
+      "file": "src/legacy/server__system__server.c",
+      "lines": 26,
+      "sha256": "2895e1d6d2de9a3bfb74b59d76311451b86c4e0b07c785630c2f1b65097553ad",
+      "repaired_body_sha256": "2895e1d6d2de9a3bfb74b59d76311451b86c4e0b07c785630c2f1b65097553ad"
+    },
+    {
+      "name": "sub_48CB10",
+      "file": "src/legacy/client__gui__guivote.c",
+      "lines": 138,
+      "sha256": "2e072e80b495ec2893821c1f5fe032879c3cbd48b7ccff93752951036e806289",
+      "repaired_body_sha256": "2e072e80b495ec2893821c1f5fe032879c3cbd48b7ccff93752951036e806289"
+    },
+    {
+      "name": "sub_48CAD0",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 8,
+      "sha256": "3b21b56673f2a5424788a25dd67c15db39e34ea22c8ed39618f000f187b56d6b",
+      "repaired_body_sha256": "3b21b56673f2a5424788a25dd67c15db39e34ea22c8ed39618f000f187b56d6b"
+    },
+    {
+      "name": "sub_48D000_initGuiKick",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 20,
+      "sha256": "d0efe77fe22d65a758f5a923e74e86d01780d6d7ad70bdaad06a4ff53ce859b6",
+      "repaired_body_sha256": "d0efe77fe22d65a758f5a923e74e86d01780d6d7ad70bdaad06a4ff53ce859b6"
+    },
+    {
+      "name": "nox_xxx_guiKick_48D0A0",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 31,
+      "sha256": "31704288512a32307278df10cac6cc5577de0cc74b594d673947e1f399d106f3",
+      "repaired_body_sha256": "31704288512a32307278df10cac6cc5577de0cc74b594d673947e1f399d106f3"
+    },
+    {
+      "name": "sub_48D120",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 82,
+      "sha256": "3fe22b685984fdbc68f09fd8ddacc1479d4fa71c51c39a8a326cec93b1713f75",
+      "repaired_body_sha256": "3fe22b685984fdbc68f09fd8ddacc1479d4fa71c51c39a8a326cec93b1713f75"
+    },
+    {
+      "name": "nox_xxx_voteSend_48D260",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 21,
+      "sha256": "3be2db8f4b92fc0c4cdefe8e967f73da6dba24102fb0376e5508c55a5414f236",
+      "repaired_body_sha256": "53b5a8343b5bd4b46e84aab69a7cfc16e7e0db3834fdcca9718de9a024254c03"
+    },
+    {
+      "name": "nox_xxx_netSendRenameMb_48D2D0",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 21,
+      "sha256": "6b5929a0a3d86dcb0657158a56bb7cf34baa87005cc08263e7decc1fb90a21a1",
+      "repaired_body_sha256": "c161148ed99d8b2434ae55701a2f485355a66248c4744cfab8349a5a7442c36c"
+    },
+    {
+      "name": "sub_48D340",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 23,
+      "sha256": "f0dc67a6b49c8e27ce4a37549512ffdcdf42f7ab6f972c3ad881045a740cc6e0",
+      "repaired_body_sha256": "f0dc67a6b49c8e27ce4a37549512ffdcdf42f7ab6f972c3ad881045a740cc6e0"
+    },
+    {
+      "name": "sub_48D3B0",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 7,
+      "sha256": "d7e6d72442aa6a782bb8072f72217cff98e46188b37735964fbfd335b2ab11ef",
+      "repaired_body_sha256": "d7e6d72442aa6a782bb8072f72217cff98e46188b37735964fbfd335b2ab11ef"
+    },
+    {
+      "name": "nox_xxx_clientVote_48D3E0",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 7,
+      "sha256": "ffde3bd03ad7d2dcae861d92a85d6e80ddf004541e9d3d7d57f6aeaab8eaa232",
+      "repaired_body_sha256": "ffde3bd03ad7d2dcae861d92a85d6e80ddf004541e9d3d7d57f6aeaab8eaa232"
+    },
+    {
+      "name": "sub_48D410",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 12,
+      "sha256": "3382dca4ecd78c02f894134373e86825a1be7c58db7db332a379cf07b34c4417",
+      "repaired_body_sha256": "3382dca4ecd78c02f894134373e86825a1be7c58db7db332a379cf07b34c4417"
+    }
+  ],
+  "body_lines": 999,
+  "qualified_parent": "8e8db9a1",
+  "orphan_candidates": [
+    "sub_5071C0"
+  ]
+}

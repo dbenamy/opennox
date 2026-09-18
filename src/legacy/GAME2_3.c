@@ -262,7 +262,7 @@ int sub_48D120() {
 char* nox_xxx_voteSend_48D260(wchar2_t* a1) {
 	char* result; // eax
 	int v2;       // esi
-	char v3[52];  // [esp+8h] [ebp-34h]
+	char v3[52] = {0};  // [esp+8h] [ebp-34h]
 
 	result = nox_common_playerInfoGetFirst_416EA0();
 	v2 = (int)result;
@@ -285,7 +285,7 @@ char* nox_xxx_voteSend_48D260(wchar2_t* a1) {
 char* nox_xxx_netSendRenameMb_48D2D0(wchar2_t* a1) {
 	char* result; // eax
 	int v2;       // esi
-	char v3[52];  // [esp+8h] [ebp-34h]
+	char v3[52] = {0};  // [esp+8h] [ebp-34h]
 
 	result = nox_common_playerInfoGetFirst_416EA0();
 	v2 = (int)result;

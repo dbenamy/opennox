@@ -1,0 +1,53 @@
+{
+  "status": "repeated repaired-C baseline",
+  "captures": [
+    {
+      "label": "votes-admission",
+      "records": 360,
+      "sha256": "40d456dc99f22a8690abce2cb475e27fd638142f58c0c64a82aa69d9247c1850",
+      "source": "src/votes_server_porttest_test.go"
+    },
+    {
+      "label": "votes-effects",
+      "records": 3,
+      "sha256": "e4cfcb9483e31973688022c4942d0fb8e61e4c4f199cc66b029a6af59b913978",
+      "source": "src/votes_effects_porttest_test.go"
+    },
+    {
+      "label": "votes-gui-full-roster",
+      "records": 2,
+      "sha256": "c6e34a15de40137ed5ce0735a64e415f4ce851b8b2ae1473dd6a2d53c92ce2ba",
+      "source": "src/votes_gui_porttest_test.go"
+    },
+    {
+      "label": "votes-gui-selection",
+      "records": 5,
+      "sha256": "4ae8b85d28d86ce5b0229b302e7f315001051479594b48b34780904445eb44b5",
+      "source": "src/votes_gui_porttest_test.go"
+    },
+    {
+      "label": "votes-gui-team",
+      "records": 1,
+      "sha256": "84c8ac471f2d0f14366578bd0a65aa5eabccae1ea5043ad64d3b2e3f09ba11ed",
+      "source": "src/votes_gui_porttest_test.go"
+    },
+    {
+      "label": "votes-gui-topics",
+      "records": 5,
+      "sha256": "76d58750ee8c0425d48d1216ff399a82f9702934553cbd8a5e7e8378a88b3c82",
+      "source": "src/votes_gui_porttest_test.go"
+    },
+    {
+      "label": "votes-quest-reset",
+      "records": 1,
+      "sha256": "5998070c2b4e57e0758d25eb8150230ab640e170add7b91655cdd14ef5f764cc",
+      "source": "src/votes_effects_porttest_test.go"
+    },
+    {
+      "label": "votes-team-admission",
+      "records": 4,
+      "sha256": "8bbb494632e2213b1ee0b222acb1babeb4d48fadcd2c6531fcb805316f8331c3",
+      "source": "src/votes_boundaries_porttest_test.go"
+    }
+  ]
+}

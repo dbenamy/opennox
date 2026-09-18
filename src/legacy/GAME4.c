@@ -586,10 +586,10 @@ void sub_506C90(int a1, int a2, wchar2_t* a3) {
 	if (a2 && *(uint8_t*)(a2 + 8) & 4) {
 		switch (a1) {
 		case 0:
-			sub_506D00(a2, a3);
+			sub_506D00(a1, a2, a3);
 			break;
 		case 1:
-			sub_506D00(a2, a3);
+			sub_506D00(a1, a2, a3);
 			break;
 		case 2:
 			sub_506DE0(a2);
@@ -604,7 +604,7 @@ void sub_506C90(int a1, int a2, wchar2_t* a3) {
 }
 
 //----- (00506D00) --------------------------------------------------------
-void sub_506D00(int a1, wchar2_t* a2) {
+void sub_506D00(int kind, int a1, wchar2_t* a2) {
 	char* v2; // esi
 	int v3;   // esi
 	int v4;   // eax
@@ -629,7 +629,7 @@ void sub_506D00(int a1, wchar2_t* a2) {
 							v4 = dword_5d4594_1599656;
 							v5 = 1 << *(uint8_t*)(*(uint32_t*)(*(uint32_t*)(a1 + 748) + 276) + 2064);
 							if (dword_5d4594_1599656) {
-								while (*(uint32_t*)v4 || *(uint32_t*)(v4 + 28) != v3 || !(v5 & *(uint32_t*)(v4 + 8))) {
+								while (*(uint32_t*)v4 != kind || *(uint32_t*)(v4 + 28) != v3 || !(v5 & *(uint32_t*)(v4 + 8))) {
 									v4 = *(uint32_t*)(v4 + 44);
 									if (!v4) {
 										return;

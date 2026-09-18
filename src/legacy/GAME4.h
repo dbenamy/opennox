@@ -115,7 +115,7 @@ int nox_xxx_voteAddMB_506AD0(int a1);
 uint32_t* sub_506B00(int a1, int a2);
 uint32_t* sub_506B80(int a1, int a2, wchar2_t* a3);
 void sub_506C90(int a1, int a2, wchar2_t* a3);
-void sub_506D00(int a1, wchar2_t* a2);
+void sub_506D00(int kind, int a1, wchar2_t* a2);
 void sub_506DE0(int a1);
 void sub_506E50(int a1, wchar2_t* a2);
 void sub_506F80(int a1);
