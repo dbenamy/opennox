@@ -52,7 +52,7 @@ func sessionClearCrowns() {
 		next := u.Next()
 		if uint32(u.TypeInd) == *cache {
 			GetServer().DelayedDelete(u)
-			C.sub_4EC6A0(C.int(uintptr(u.CObj())))
+			itemRespawnRemove(u)
 		}
 		u = next
 	}

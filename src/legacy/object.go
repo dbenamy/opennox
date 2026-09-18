@@ -410,7 +410,7 @@ func Nox_xxx_unitNewAddShadow_4DA9A0(a1 *server.Object) {
 	sessionShadowAdd(a1)
 }
 func Nox_xxx_respawnAdd_4EC5E0(a1 *server.Object) {
-	C.nox_xxx_respawnAdd_4EC5E0(asObjectC(a1))
+	itemRespawnAdd(a1)
 }
 func Sub_5117F0(a1 *server.Object) {
 	motionActivate(a1)
@@ -518,7 +518,7 @@ func Sub_4E9A30(a1, a2 *server.Object) bool {
 }
 
 func Nox_xxx_unitsHaveSameTeam_4EC520(a1, a2 *server.Object) bool {
-	return C.nox_xxx_unitsHaveSameTeam_4EC520(asObjectC(a1), asObjectC(a2)) != 0
+	return itemOwnerSameTeam(a1, a2)
 }
 
 func Nox_xxx_mapPushUnitsAround_52E040(pos types.Pointf, a2, a3, a4 float32, a5 *server.Object, a6, a7 int) {

@@ -76,3 +76,37 @@ known1,553 failure entries and15 pass /3 fail /32 skipped packages. Gameplay,
 save/load and map regeneration pass. See [C qualification](item-respawn-c-qualification.json).
 All sessions are joined. The Go draft remains separate until this baseline is
 committed and pushed.
+
+## Native implementation
+
+The C baseline is committed and pushed as **06ffe2c5**. Eight routines are native
+Go, seven C interfaces retire, and only sub_4ED050 remains exported for its live
+GAME5.c caller. Four private C globals move to Go. GAME3_3.c is removed entirely;
+production C is **31,346 physical lines /68 files /zero reference C** (−351).
+
+The native owner retains the fixed384-record allocator and60-byte layout, with
+compile-time size/offset assertions. It keeps duplicate/list ordering, return
+identity, mode and eligibility gates, unsigned frame wrap/comparison, relocation
+precision and effect ordering. The same actual object/modifier/recharge, audio,
+report and deletion owners handle downstream effects. Existing team/session
+fixtures now use the native respawn owner; their expectations are unchanged.
+
+The first native focus passed461 tests and all eight frozen captures without a
+translation correction. Static checks pass. Accumulated default/server/highres each pass344 roots /39,431 tests without skips;
+all214 captures /55,337 records match C and each other. Supplemental spell,
+projectile, collision dispatch, inventory and object-state sweeps pass82 roots
+/201 test entries per target against existing frozen expectations. These suites
+also contain internally enumerated cases beyond the test-entry count.
+
+All seven gates share unchanged2,423-file source. Three fresh production builds,
+ABI/symbol checks, exact known full-suite outcomes, gameplay, save/load and map
+regeneration pass. See [native qualification](item-respawn-native-qualification.json).
+Every tool session is joined; source is editable.
+Object-pool exhaustion during item recreation is not injected; fixed respawn-record
+pool exhaustion is explicitly covered. No C algorithms are kept solely for tests.
+
+Verified deduplication also reclaimed1,660,044,319 bytes from the three completed
+item-respawn C scenarios. Per-run restoration manifests remain. The consumed
+`deduplicate-item-respawn-c-assets.py` under build/port-item-respawn must not be
+replayed in audit/apply mode; restoration remains available. All original assets
+and the archive are unchanged.

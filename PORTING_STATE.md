@@ -2,48 +2,40 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about31.7k lines** — **31,697 physical lines in69 production
-`.c` files**, zero reference C. Latest conversion: **−914** from the repaired
-session-entry baseline. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about31.3k lines** — **31,346 physical lines in68 production
+`.c` files**, zero reference C. Latest conversion: **−351** from the repaired
+item-respawn baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — item-respawn C baseline in progress
+## Current — item-respawn native conversion qualified
 
-Session-entry native conversion **449ae4c7 is committed and pushed**.
-Its repaired C baseline is82b124f8. The native conversion
-replaces33 live routines, removes one orphan, retires26 C interfaces and two C
-globals, and retains eight Go-backed C exports. All Go callers invoke Go directly.
-See [SESSION_ENTRY.md](docs/porting/SESSION_ENTRY.md) for coverage and review items.
+Session-entry native **449ae4c7** and repaired item-respawn C baseline **06ffe2c5**
+are committed and pushed. Item-respawn conversion replaces eight routines, retires
+seven C interfaces and four globals, and retains one Go-backed C export for the
+live GAME5.c caller. GAME3_3.c is removed. See [ITEM_RESPAWN.md](docs/porting/ITEM_RESPAWN.md).
 
-All gates pass and every session is joined; source is editable. Each target passes
-336 roots /38,970 tests without skips;206 captures /51,868 records match C and each
-other. All four gates share unchanged2,415-file source. Static checks, three fresh
-production builds/ABI, exact known full-suite outcomes and three headless scenarios
-pass. Evidence: session-entry-native-qualification.json and
-`build/port-session-entry/native-{default,server,highres,production}`.
+All sessions are joined; source is editable. Each main target passes344 roots
+/39,431 tests without skips;214 captures /55,337 records match C and each other.
+Supplemental callers pass82 roots /201 test entries per target against existing
+frozen expectations. All seven gates share unchanged2,423-file source. Static
+checks, three fresh production builds/ABI, exact known full-suite results and all
+three headless scenarios pass. Evidence: item-respawn-native-qualification.json
+and build/port-item-respawn/{native-*,callers-*}.
 
-Next: item respawn and related owner-chain/team/crown helpers. Read-only candidate
-is eight functions /257 body lines in GAME3_3.c and server__system__server.c.
-`build/port-item-respawn/{selection-draft.json,plan-draft.md}` records callers and
-proposed contracts. Review the empty-respawn-list removal dereference before
-freezing C. The repaired C baseline is fully qualified: eight focused roots /461 tests and
-8 repeated/frozen captures /3,469 records. All targets pass344 roots /39,431 tests;
-214 captures /55,337 records match, including every parent capture. All four gates
-share unchanged2,422-file source. Static check, three fresh production builds/ABI,
-exact known suite and all three headless scenarios pass. Every session is joined;
-source is editable. See item-respawn-c-qualification.json and ITEM_RESPAWN.md.
+Next candidate: remaining server orchestration. Read-only audit and plan under
+build/port-server-systems select13 bodies /546 body lines in
+server__system__server.c. Twelve have outside Go callers; one is an empty private
+helper. Review the discarded pure-checksum loop for removal, and the statistics
+initializer's downstream serialization owners before final scope. No next-batch
+source is installed. No user decision is pending.
 
-Working C is31,697 (+3 empty-list guard), no reference C. Commit/push this baseline,
-then apply the reviewed native draft once and qualify. Ignored native-draft.go and
-install-native.py are NOT yet installed. No user decision is pending.
-
-`build/port-session-entry/install-native.py` is consumed; never replay it. All
-previous installers are stale; source and committed expectations take precedence.
-Disk cleanup of completed player-state native, session-entry C and nine prefab
-scenario copies is finished, with per-run restoration manifests. Cleanup scripts'
-audit/apply modes are consumed. Original assets/archive remain untouched. About6GiB
-was free before the final native scenario copy. The archive stays outside Git.
+The item-respawn and session-entry install-native.py scripts are consumed; never
+replay them. Source and committed expectations supersede ignored drafts. Completed
+session-entry native and item-respawn C scenario deduplication reclaimed
+1,660,044,319 bytes each; per-run restoration manifests preserve recovery. All
+cleanup audit/apply passes are consumed. Original assets/archive are unchanged;
+the archive remains untracked. About2.9GiB was free during final qualification.
 
 ## Qualified parent — native console commands
 

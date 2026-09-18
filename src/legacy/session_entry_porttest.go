@@ -4,7 +4,6 @@ package legacy
 
 /*
 #include "GAME1_1.h"
-extern uint32_t dword_5d4594_1568024;
 */
 import "C"
 import (
@@ -143,11 +142,11 @@ func PortTestSessionEntryMetadataTable() func() {
 func PortTestSessionEntryTileFreeHead() *uint32 { return mapPaintGlobal(paintFreeHead) }
 func PortTestSessionEntryRespawns() []*server.Object {
 	var out []*server.Object
-	for p := uint32(C.dword_5d4594_1568024); p != 0; p = *(*uint32)(unsafe.Pointer(uintptr(p) + 52)) {
+	for p := itemRespawnHead; p != nil; p = p.next {
 		if len(out) > 32 {
 			panic("respawn list cycle")
 		}
-		out = append(out, *(**server.Object)(unsafe.Pointer(uintptr(p) + 4)))
+		out = append(out, p.obj)
 	}
 	return out
 }

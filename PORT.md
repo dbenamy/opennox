@@ -15,14 +15,15 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. Session lifecycle, map entry and saved-character metadata are now native
-Go:33 live routines converted, one orphan removed,26 C interfaces retired and
-eight exports retained. See [SESSION_ENTRY.md](docs/porting/SESSION_ENTRY.md).
+pause. Item respawning and related object ownership are now native Go: eight live
+routines converted, seven C interfaces retired, one export retained and four
+private globals moved. See [ITEM_RESPAWN.md](docs/porting/ITEM_RESPAWN.md).
 
-Current production C is **31,694 physical lines in69 files**, with zero reference
-C (−914 from the repaired session-entry baseline). All three targets and fresh
-production/headless integration qualify. Item respawn and related object ownership
-are the next candidates; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Current production C is **31,346 physical lines in68 files**, with zero reference
+C (−351 from the repaired item-respawn baseline). All three targets, supplemental
+caller regressions and fresh production/headless integration qualify. Remaining
+server orchestration is the next candidate; [PORTING_STATE.md](PORTING_STATE.md)
+is the resume checkpoint.
 
 ## Goal and target
 

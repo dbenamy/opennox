@@ -179,7 +179,7 @@ func teamRuntimeCrown() int {
 			bound := u.TeamVal.ID != 0
 			if bound != noxflags.HasGamePlay(4) {
 				GetServer().DelayedDelete(u)
-				C.sub_4EC6A0(C.int(uintptr(u.CObj())))
+				itemRespawnRemove(u)
 			} else if !bound {
 				playerStateMark(u, 1)
 			} else if t := s.Teams.ByID(u.TeamVal.ID); t != nil {

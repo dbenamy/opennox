@@ -7,9 +7,6 @@ package legacy
 #include "GAME1.h"
 extern uint32_t dword_5d4594_825736;
 #include "GAME3_3.h"
-extern void* nox_alloc_respawn_1568020;
-extern uint32_t dword_5d4594_1568024;
-extern uint32_t nox_xxx_respawnAllow_587000_205200;
 */
 import "C"
 
@@ -127,18 +124,14 @@ func PortTestTeamRuntimeObject(code int) *server.ObjectTeam { return teamRuntime
 
 // Shared C respawn ownership, not a second implementation of its list logic.
 func PortTestTeamRuntimeRespawns(objects []*server.Object) func() {
-	oldPool, oldHead, oldAllow := C.nox_alloc_respawn_1568020, C.dword_5d4594_1568024, C.nox_xxx_respawnAllow_587000_205200
-	C.nox_alloc_respawn_1568020 = nil
-	C.dword_5d4594_1568024 = 0
-	if C.nox_xxx_allocItemRespawnArray_4ECA60() == 0 {
-		panic("respawn owner allocation")
-	}
-	C.sub_4EC5B0()
+	oldPool, oldHead, oldAllow := itemRespawnPool, itemRespawnHead, itemRespawnEnabled
+	itemRespawnInit()
+	itemRespawnReset()
 	for _, u := range objects {
-		C.nox_xxx_respawnAdd_4EC5E0(asObjectC(u))
+		itemRespawnAdd(u)
 	}
 	return func() {
-		C.sub_4ECA90()
-		C.nox_alloc_respawn_1568020, C.dword_5d4594_1568024, C.nox_xxx_respawnAllow_587000_205200 = oldPool, oldHead, oldAllow
+		itemRespawnFree()
+		itemRespawnPool, itemRespawnHead, itemRespawnEnabled = oldPool, oldHead, oldAllow
 	}
 }

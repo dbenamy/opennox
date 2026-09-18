@@ -1,0 +1,1 @@
+^Test(ProjectileCollision.*|SpellLifecycle.*|SustainedSpells.*|CollisionCoreDispatch|Inventory.*|ObjectState.*)$

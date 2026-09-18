@@ -37,7 +37,6 @@ extern nox_tileDef_t nox_tile_defs_arr[176];
 void nox_xxx_netlist_4DEB50();
 void nox_xxx_updateUnits_51B100();
 void sub_4E4170();
-void sub_4EC720();
 void nox_xxx_gameTick_4D2580_server_D();
 void sub_4139C0();
 int sub_4DCF20();
@@ -281,7 +280,7 @@ func Sub_4D7A80() {
 	questRuntimeDepartureTick()
 }
 func Sub_4EC720() {
-	C.sub_4EC720()
+	itemRespawnTick()
 }
 func Sub_50D890() {
 	spawnPolicyTick()
@@ -338,7 +337,7 @@ func Sub_518770() int {
 	return objectReportInit()
 }
 func Nox_xxx_allocItemRespawnArray_4ECA60() int {
-	return int(C.nox_xxx_allocItemRespawnArray_4ECA60())
+	return itemRespawnInit()
 }
 func Nox_xxx_registerShopClasses_50E2A0() int {
 	return shopInit()
@@ -368,7 +367,7 @@ func Sub_4259F0() {
 	playerGroupsFree()
 }
 func Sub_4ECA90() {
-	C.sub_4ECA90()
+	itemRespawnFree()
 }
 func Sub_506720() {
 	voteClose()
@@ -452,7 +451,7 @@ func Sub_4D1610() {
 	sessionScavengerMaximumReset()
 }
 func Sub_4EC5B0() {
-	C.sub_4EC5B0()
+	itemRespawnReset()
 }
 func Sub_50E360() {
 	shopReset()

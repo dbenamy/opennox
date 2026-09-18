@@ -220,7 +220,7 @@ func spellLifeCollide(u, target *server.Object) {
 		damage := float32(C.nox_xxx_gamedataGetFloatTable_419D70(internCStr("ShockDamage"), C.int(power)))
 		target.CallDamage(u, u, int(C.nox_float2int(C.float(damage))), 9)
 	}
-	if target.ObjClass&0x20006 != 0 && target.ObjFlags&0x8020 == 0 && C.nox_xxx_unitsHaveSameTeam_4EC520(asObjectC(target), asObjectC(u)) == 0 {
+	if target.ObjClass&0x20006 != 0 && target.ObjFlags&0x8020 == 0 && !itemOwnerSameTeam(target, u) {
 		spellLifeBuffOff(u, 0)
 	}
 	if u.ObjClass&4 != 0 && target.ObjClass&0x20000 != 0 && target.ObjFlags&0x8020 == 0 {

@@ -1,0 +1,198 @@
+{
+  "status": "qualified native conversion",
+  "parent": "449ae4c7",
+  "focused_roots": 8,
+  "focused_tests_including_subtests": 461,
+  "new_captures": 8,
+  "new_capture_records": 3469,
+  "targets": [
+    {
+      "target": "default",
+      "roots": 344,
+      "tests": 39431
+    },
+    {
+      "target": "server",
+      "roots": 344,
+      "tests": 39431
+    },
+    {
+      "target": "highres",
+      "roots": 344,
+      "tests": 39431
+    }
+  ],
+  "captures": 214,
+  "records": 55337,
+  "baseline_commit": "06ffe2c5",
+  "live_routines": 8,
+  "retained_exports": 1,
+  "retired_interfaces": 7,
+  "retired_c_globals": 4,
+  "source_files": 2423,
+  "source_identity": true,
+  "capture_identity": true,
+  "frozen_c_identity": true,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 73.70393250091001,
+        "sha256": "1bce4a43173b58055f15b6a85d3a8c95356eb297b6efd2d801d8f5ff78bed98b",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 11.119818008039147,
+        "sha256": "f1a7374b1674f9405d7e520644b3f8128f5e7fb054a30d5d33bcaa35272a0a89",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 61.4560075851623,
+        "sha256": "c7908cc902906272cca867f26915842065c6d7959514da826f9db2bc35191fe0",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "item-respawn-native": {
+        "exit": 0,
+        "wall_seconds": 62.14613582403399,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 61.564664572943,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "1bce4a43173b58055f15b6a85d3a8c95356eb297b6efd2d801d8f5ff78bed98b",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-item-respawn/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/item-respawn-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native item-respawn conversion",
+          "removed_maps": 0
+        }
+      },
+      "item-respawn-native-save": {
+        "exit": 0,
+        "wall_seconds": 45.39222139795311,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.87144381389953,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "1bce4a43173b58055f15b6a85d3a8c95356eb297b6efd2d801d8f5ff78bed98b",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-item-respawn/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/item-respawn-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native item-respawn conversion",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "8951e37d6d1bd9a188454cc663852b917651eae6c4378ee1c8464d66397c0455"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 60.08896323200315,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "flat_scenario": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 47.390860402956605,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/server-config-flat-c",
+    "binary_sha256": "1bce4a43173b58055f15b6a85d3a8c95356eb297b6efd2d801d8f5ff78bed98b",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-item-respawn/native-production/production/bin/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/item-respawn-native-flat/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Item-respawn native",
+    "removed_maps": 51,
+    "regenerated_maps": 1
+  },
+  "static_mapped_memory": true,
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 68,
+      "lines": 31346
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "caller_regressions": [
+    {
+      "target": "default",
+      "roots": 82,
+      "tests": 201,
+      "existing_frozen_expectations_pass": true
+    },
+    {
+      "target": "server",
+      "roots": 82,
+      "tests": 201,
+      "existing_frozen_expectations_pass": true
+    },
+    {
+      "target": "highres",
+      "roots": 82,
+      "tests": 201,
+      "existing_frozen_expectations_pass": true
+    }
+  ]
+}
