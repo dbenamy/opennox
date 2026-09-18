@@ -354,10 +354,6 @@ func (s *Server) nox_xxx_gameTick_4D2580_server_B(ticks uint64) bool {
 		s.ProtectTypeCheck()
 		inputSetKeyTimeoutLegacy(16)
 	}
-	if noxflags.HasGame(noxflags.GameOnline) && false && !noxflags.HasGame(noxflags.GameModeChat) && inputKeyCheckTimeoutLegacy(0xF, s.SecToFrames(60)) {
-		legacy.Nox_xxx_net_4263C0()
-		inputSetKeyTimeoutLegacy(15)
-	}
 	return true
 }
 

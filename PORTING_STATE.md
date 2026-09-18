@@ -2,68 +2,59 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 30.8k lines** — **30,819 physical lines in 68 production
-`.c` files**, zero reference C. Latest conversion: **−527** from the server
-orchestration baseline. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 28.8k lines** — **28,790 physical lines in 67 production
+`.c` files**, zero reference C. Latest conversion: **−2,029** from the statistics
+baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — server orchestration native conversion qualified
+## Current — native game statistics qualified
 
-Qualified C baseline **ec5ffeb4** is committed and pushed. Ten live routines now
-call Go directly. The no-effect replay loop, its empty helper and unused checksum
-C bridge are removed; existing checksum tests call Go with unchanged expectations.
-Two private globals move to Go. The statistics initializer remains for the next
-connected batch. See [SERVER_ORCHESTRATION.md](docs/porting/SERVER_ORCHESTRATION.md).
+Qualified C baseline **858bc315** is committed and pushed; the original full
+capture checkpoint is 05033129. Native code replaces 35 live routines and removes
+nine orphan routines behind constant-false callers. It retires 43 C function
+interfaces, seven C globals and the final server__system__server.c body/file.
+One C event entrypoint remains for player death. Go objective/team callers invoke
+Go directly. See [GAME_STATISTICS.md](docs/porting/GAME_STATISTICS.md).
 
-Native qualification passes 34 focused roots / 1,837 test entries. Each broader
-default/server/highres target passes 427 roots / 41,317 entries without skips;
-all 245 captures / 78,253 records match C. Static checks, three fresh production
-builds/ABI, the exact known full-suite result, gameplay, save/load and flat-map
-regeneration pass. No goldens were regenerated. Evidence:
-`docs/porting/server-orchestration-native-qualification.json` and
-`build/port-server-systems/native-*`. All tool sessions are joined; source is editable.
+Qualification: **17 focused roots /1,307 entries**, with all 17 captures /3,366
+records matching C. Each default/server/highres gate passes **491 roots /42,850
+entries**, no skips. All 263 captures /99,027 records match C and each other;
+all gates have identical 2,450-file source. Static checks, three fresh production
+builds/ABI, exact known full-suite failures, gameplay, save/load and flat-map
+regeneration pass. No goldens changed. Evidence:
+`docs/porting/game-statistics-native-qualification.json` and
+`build/port-game-statistics/native-*`. All tool sessions are joined; source is editable.
 
-Server orchestration conversion **bdf8cdcf** is committed and pushed.
-Next batch: game statistics/reporting, 44 connected C bodies / 2,015 body lines.
-Repaired statistics capture checkpoint **05033129 is committed and pushed**.
-Twenty-one focused roots / 1,519 entries pass in separate processes; all21 captures
-/3,968 records match and are frozen. All three broader gates pass **495 roots /
-43,062 entries**, with identical 2,450-file source. Their266 primary captures /
-82,221 records plus combat.json /17,408 records agree across targets and C hashes.
-All broader sessions are joined.
+Commit/push this qualified conversion, then proceed to the next connected batch.
+Candidate: map floor/wall serialization, optionally including window/breakable/
+secret-wall metadata to share owner qualification. Read-only notes and initial
+scope are under build/port-game-statistics/next-map-*. No next-batch fixtures or
+conversion are installed. Re-audit all callers/callbacks and scope before freezing.
+No user decision is pending.
 
-Fresh C production qualification passed: three builds/ABI, exact known full-suite
-failure set, gameplay, save/load and flat-map regeneration. All sessions are joined.
-See game-statistics-c-qualification.json. The first attempt stopped on an incorrect
-ABI manifest category; retained_c fixed it with no production source change.
+All statistics installers are consumed. install-native.py stopped after C/body
+and declaration removal on the historical noxmap inventory; its remaining caller
+cleanup section was run separately. fixture-native.py, project-live.py, freeze.py,
+qualify-c.py, finalize-live-baseline.py, qualify-native.py and
+finalize-native-docs.py are consumed. Actual source and committed evidence take
+precedence; never replay old mutation scripts.
 
-Caller-context review found nine orphan routines /543 C body lines behind
-constant-false branches. Retire these; port the 35 live routines /1,472 body lines.
-Four orphan-only test roots are retired and two mixed captures were projected
-from frozen C output. The projected C run passes **17 roots /1307 entries**;
-all17 captures /3,366 records match. Original full contracts remain in05033129.
-See game-statistics-live-captures.json and game-statistics-reachability.json.
+Completed statistics C scenario asset copies were deduplicated after byte/hash
+verification, reclaiming 1,660,044,319 bytes. Audit/apply modes of
+`deduplicate-game-statistics-c-assets.py` are consumed; restore remains available.
+Preserve restoration manifests, changed maps/saves/screenshots and run logs.
+Original assets/archive are unchanged; archive remains untracked. Native scenario
+copies are still intact. Earlier verified cleanup modes are also consumed.
 
-Next: native statistics conversion. No native source installed yet; records draft
-is under ignored build/port-game-statistics. qualify-c.py, project-live.py and
-finalize-live-baseline.py are consumed; never replay. No tests/builds active.
+## Qualified parent — server map and round orchestration
 
-The three-line sub_425CA0 correction fixes actor address selection and target row
-indices. C remains30,819/68/zero reference. Clock fixtures reuse the map-theme
-observer. All copied draft installers and freeze.py are consumed; never replay.
-No user decision is pending. Original assets/archive remain unchanged.
-
-Completed server-orchestration native scenario deduplication audit66574 and
-apply3456 are joined, reclaiming 1,660,044,319 bytes with restoration manifests.
-Those audit/apply passes are consumed; original assets/archive are unchanged.
-
-The server-orchestration, item-respawn and session-entry install-native.py scripts
-are consumed; never replay them. Source and committed expectations supersede drafts.
-Completed item-respawn native and monster-control native scenario asset copies
-were each deduplicated by 1,660,044,319 bytes. Their audit/apply passes are consumed;
-preserve restoration manifests. Original assets/archive are unchanged, and the
-archive remains untracked. Retain all run evidence and changed maps/saves.
+Native checkpoint **bdf8cdcf** is committed and pushed. Ten live routines converted;
+thirteen C function symbols and two globals retired. Its C baseline is ec5ffeb4.
+Qualification: 34 focused roots /1,837 entries; each target 427 roots /41,317 entries;
+245 captures /78,253 records match C. Fresh builds/ABI, exact known suite and three
+headless scenarios pass. C count after this parent: 30,819 lines /68 files.
+See [SERVER_ORCHESTRATION.md](docs/porting/SERVER_ORCHESTRATION.md).
 
 ## Qualified parent — native console commands
 

@@ -262,10 +262,6 @@ func Sub_41D670(a1 string) {
 	C.sub_41D670(internCStr(a1))
 }
 
-func Sub_425F10(p *server.Player) {
-	C.sub_425F10((*nox_playerInfo)(p.C()))
-}
-
 func Sub_4DF3C0(p *server.Player) {
 	matchRosterAssignTeam(p)
 }
@@ -332,10 +328,6 @@ func Sub_4E80C0(pli ntype.PlayerInd) {
 
 func Nox_xxx_player_4E3CE0() int {
 	return int(questRuntimeCount())
-}
-
-func Sub_425E90(pl *server.Player, a2 int8) {
-	C.sub_425E90(pl.C(), C.char(a2))
 }
 
 func Sub_4E55F0(pli ntype.PlayerInd) {

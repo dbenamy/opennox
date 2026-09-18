@@ -286,9 +286,7 @@ func Sub_4E4170() {
 func Nox_xxx_voteUptate_506F30() {
 	voteTick()
 }
-func Nox_xxx_net_4263C0() {
-	C.nox_xxx_net_4263C0()
-}
+
 func Nox_xxx_protectData_56F5C0() {
 	nox_xxx_protectData_56F5C0()
 }

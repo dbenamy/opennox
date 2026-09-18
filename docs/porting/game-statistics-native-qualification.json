@@ -1,0 +1,205 @@
+{
+  "status": "qualified native conversion",
+  "baseline": "858bc315",
+  "full_c_capture_checkpoint": "05033129",
+  "converted_live_bodies": 35,
+  "retired_orphan_bodies": 9,
+  "retired_c_functions": 43,
+  "retained_c_exports": [
+    "sub_425CA0"
+  ],
+  "retired_c_globals": 7,
+  "focused_roots": 17,
+  "focused_tests": 1307,
+  "new_captures": 17,
+  "new_capture_records": 3366,
+  "targets": [
+    {
+      "target": "default",
+      "roots": 491,
+      "tests": 42850
+    },
+    {
+      "target": "server",
+      "roots": 491,
+      "tests": 42850
+    },
+    {
+      "target": "highres",
+      "roots": 491,
+      "tests": 42850
+    }
+  ],
+  "captures": 263,
+  "records": 99027,
+  "source_files": 2450,
+  "source_identity": true,
+  "capture_identity": true,
+  "static": true,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 55.779893743107095,
+        "sha256": "138180dd1253fee3901884ef5d673ae3d5402868af4e2a9969dfef332210129a",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 8.53763884282671,
+        "sha256": "96f5be132317b7cc2bc1df4fb82e2db77ee3aa8e6d54966665b9fabb3bf0aac5",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 55.55690714693628,
+        "sha256": "83aa129d5b45cd932e1d242b3cea41999126757405608a4aece20e266e888d01",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "game-statistics-native": {
+        "exit": 0,
+        "wall_seconds": 75.44691286794841,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 74.90345936804079,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "138180dd1253fee3901884ef5d673ae3d5402868af4e2a9969dfef332210129a",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-game-statistics/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/game-statistics-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native game statistics",
+          "removed_maps": 0
+        }
+      },
+      "game-statistics-native-save": {
+        "exit": 0,
+        "wall_seconds": 47.76559815998189,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 47.3006331899669,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "138180dd1253fee3901884ef5d673ae3d5402868af4e2a9969dfef332210129a",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-game-statistics/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/game-statistics-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native game statistics",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "5daf83d6fc4e558272352913aa58259a0b239993412ebcb03a61e7b44016585c"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 56.011949501000345,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "flat_scenario": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 48.513210660079494,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/server-config-flat-c",
+    "binary_sha256": "138180dd1253fee3901884ef5d673ae3d5402868af4e2a9969dfef332210129a",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-game-statistics/native-production/production/bin/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/game-statistics-native-flat/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Native game statistics",
+    "removed_maps": 51,
+    "regenerated_maps": 1
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 67,
+      "lines": 28790
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "review": {
+    "live_bodies": 35,
+    "retired_orphans": 9,
+    "c_event_export": "sub_425CA0",
+    "source": {
+      "game_statistics_records.go": 101,
+      "game_statistics_porttest.go": 189,
+      "game_statistics_codec.go": 163,
+      "game_statistics_clock_porttest.go": 8,
+      "game_statistics.go": 203,
+      "game_statistics_report.go": 80
+    },
+    "review": {
+      "record_narrowing": "signed char preserved for byte, short, int constructors",
+      "strings": "NUL, ushort length and copied prefix preserved",
+      "lists": "prepend order and encode/decode state restoration preserved",
+      "match_tags": "mode1 mutable name tag vs mode2 literal; other mutations retained",
+      "random": "int32 wrap, remainder sign, 55-slot indexing, count+1 draws",
+      "runs": "unsigned input/signed char comparison and byte run counter",
+      "clock": "two frame reads; per-row array reads; registration read",
+      "ownership": "native private records; tracked C heap arrays; matching frees",
+      "entrypoints": "Go direct; one C export for death callers",
+      "dead_paths": "nine bodies retired with literal-false outer blocks"
+    }
+  }
+}

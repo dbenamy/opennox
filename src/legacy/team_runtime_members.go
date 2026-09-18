@@ -57,7 +57,7 @@ func teamRuntimeJoin(id server.TeamID, m *server.ObjectTeam, notify, code, reloc
 			pl := s.Players.ByID(code)
 			if pl != nil {
 				if noxflags.HasGame(0x8000) {
-					C.sub_425ED0(C.int(uintptr(pl.C())), 1)
+					statisticsParticipation(pl.C(), 1)
 				}
 				if u != nil && u.ObjClass&4 != 0 {
 					if relocate == 1 && !noxflags.HasGamePlay(2) && noxflags.HasGame(128) {

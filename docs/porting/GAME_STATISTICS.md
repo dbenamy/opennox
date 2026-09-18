@@ -9,9 +9,11 @@ array ownership, field construction/serialization and the report's local encodin
 helpers. Unrelated map loading routines in the same address range are excluded.
 See [game-statistics-selection.json](game-statistics-selection.json).
 
-The original-C baseline is in progress; no production conversion is installed. A three-line C prerequisite correction
-is now installed and awaiting qualification.
-C remains **30,819 lines / 68 files / zero reference C**.
+The repaired C baseline and live subset are qualified and pushed as **858bc315**.
+Native conversion is fully qualified. It replaces
+35 live bodies and removes nine unreachable bodies;43 C function interfaces and
+seven C globals retire, with only the player-event C entrypoint retained.
+Final C count: **28,790 lines /67 files /zero reference C**, −2,029.
 
 ## Caller and ownership audit
 
@@ -170,3 +172,46 @@ are unchanged. No production source changed during projection. The full21-root
 three-target and production evidence above remains applicable; no duplicate
 production run is needed for this test-only change. See
 [game-statistics-live-captures.json](game-statistics-live-captures.json).
+
+## Native implementation notes
+
+Private records and serialization buffers now use Go ownership. Report arrays
+remain compatible with their mapped layout and use the tracked allocation owner;
+fixtures release them through that same owner. Go objective/team callers invoke
+Go directly; player death in C retains sub_425CA0. The time fixture now owns a
+private Go clock hook; production uses the wall clock. The disabled initializer's
+elapsed-time origin remains zero by default, preserving the live flush behavior.
+
+The record constructors retain signed-byte narrowing, 16-bit length wrapping,
+reverse insertion order, padding and endian restoration. The encoder preserves
+signed-char run comparisons, byte-count wrapping, RNG arithmetic/consumption,
+two clock reads and report tag mutations. No transport is added; the existing
+configured-service abort branch is preserved.
+
+One reversible allocation correction: player-name arrays reserve at least ten
+bytes, extending to the actual string length plus terminator. The original fixed
+ten-byte allocation could be too short for a name in the twelve-byte player
+field. Serialized text is unchanged. Native buffers also avoid the original
+run encoder's unused final lookahead read. Neither change alters frozen output.
+
+The first native compile found use of memmap.Ptr with the two-argument API;
+corrected to PtrOff before retry. No golden changes. The original-C completed
+scenario asset copies were hash-verified and deduplicated, reclaiming
+**1,660,044,319 bytes**. Restoration manifests and run evidence remain;
+audit/apply modes of deduplicate-game-statistics-c-assets.py are consumed.
+
+## Native qualification
+
+All 17 focused roots /1,307 entries pass and all 17 captures /3,366 records match
+the qualified live C subset. Every default/server/highres gate passes 491 roots /
+42,850 entries without skips. All 263 captures /99,027 records match across targets
+and against C, including the separately captured combat corpus. All four gates
+share identical 2,450-file source; static mapped-memory checks pass.
+
+Three fresh production binaries/ABI pass, with all 43 retired function symbols and
+seven retired C globals absent. The full suite matches the exact known 1,553
+failure entries and package outcomes. Headless gameplay, save/load and flat-map
+regeneration match references. No expectations were regenerated from Go.
+See [game-statistics-native-qualification.json](game-statistics-native-qualification.json).
+Production C is **28,790 lines /67 files /zero reference C**, a reduction of 2,029.
+All sessions are joined. Native scenario assets are still intact.

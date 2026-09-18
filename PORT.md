@@ -15,16 +15,15 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. Server map/round orchestration is now native Go: ten live routines
-converted, thirteen C function symbols retired, and two private globals moved.
-See [SERVER_ORCHESTRATION.md](docs/porting/SERVER_ORCHESTRATION.md).
+pause. Game-statistics collection and report serialization are now native Go:
+35 live routines converted, nine orphan routines removed, 43 C interfaces and seven
+C globals retired. See [GAME_STATISTICS.md](docs/porting/GAME_STATISTICS.md).
 
-Current production C is **30,819 physical lines in 68 files**, with zero reference
-C (−527 from the server-orchestration baseline). All three targets, supplemental
-caller regressions and fresh production/headless integration qualify. The next
-batch is game-statistics collection and serialization. Repeated C captures are
-frozen after a small event-registration correction; all three targets and fresh
-production/headless checks qualify. The live test subset is verified against C. See [PORTING_STATE.md](PORTING_STATE.md).
+Current production C is **28,790 physical lines in 67 files**, with zero reference
+C (−2,029 from the statistics baseline). All three targets, frozen comparisons and
+fresh production/headless integration qualify. The next candidate batch is map
+floor/wall serialization and connected wall metadata sections. See
+[PORTING_STATE.md](PORTING_STATE.md).
 
 ## Goal and target
 

@@ -1916,3 +1916,21 @@ uses real connection records with nonzero addresses and checks indices/names/IPs
 The correction also admits the routine's existing absent-target branch for fresh
 actors. This is reversible and requires fresh production qualification; no C LOC
 change. See [GAME_STATISTICS.md](GAME_STATISTICS.md) for evidence and status.
+
+### Game-statistics reachability and native ownership
+
+Inspecting full caller conditions found nine statistics routines reachable only
+through constant-false branches. Retire those routines and disabled callers;
+translate the 35 live routines reached from event recording and participation.
+Keep the original full C contracts in commit05033129; project the live subset
+from those C captures and verify it on C before conversion. Do not preserve
+orphan algorithms solely to satisfy tests. The batch workflow now requires this
+caller-context audit before fixture design.
+
+Native report records use Go ownership; mapped report arrays use the existing
+tracked allocator. Extend each player-name allocation beyond the old ten-byte
+minimum when its string needs more room, and avoid the run encoder's unused
+final lookahead read. These allocation/access corrections preserve report bytes;
+all17 focused captures match C. Keep the legacy field widths, format quirks and
+configured-service behavior. Full qualification status is recorded in
+[GAME_STATISTICS.md](GAME_STATISTICS.md).

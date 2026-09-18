@@ -393,9 +393,6 @@ func (s *Server) newPlayer(ind ntype.PlayerInd, opts *PlayerOpts) int {
 	server.EncodePlayerRoster(v30[:], pl)
 	s.NetSendPacketXxx(int(ind)|0x80, v30[:129], 0, 0, 0)
 	pl.Field3676 = 2
-	if false && !noxflags.HasGame(noxflags.GameModeChat) {
-		legacy.Sub_425F10(pl)
-	}
 	s.CreateObjectAt(punit, nil, s.Map.Center())
 	s.ObjectsAddPending()
 	var start types.Pointf
@@ -592,9 +589,6 @@ func nox_xxx_playerDisconnFinish_4DE530(pli ntype.PlayerInd, a2 int8) {
 			s.sub_4D7390(pl.PlayerUnit)
 			s.delayedDeleteAllItems(pl.PlayerUnit)
 		}
-	}
-	if false && !noxflags.HasGame(noxflags.GameModeChat) {
-		legacy.Sub_425E90(pl, a2)
 	}
 	for it := s.Players.First(); it != nil; it = s.Players.Next(it) {
 		u := it.PlayerUnit

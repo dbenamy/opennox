@@ -28,7 +28,7 @@ func objectiveScore(u *server.Object) {
 }
 func objectiveQuestScore(u *server.Object) {
 	if C.dword_5d4594_2650652 != 0 && u != nil && u.UpdateData != nil {
-		C.sub_425CA0(C.int(uintptr(unsafe.Pointer(u.UpdateDataPlayer().Player))), 0)
+		statisticsEvent(unsafe.Pointer(u.UpdateDataPlayer().Player), nil)
 	}
 }
 func objectiveBallCollide(u, t *server.Object) {
@@ -125,7 +125,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 				tm := core.Teams.ByID(t.TeamVal.ID)
 				teamRuntimeLessons(tm, tm.Lessons+1)
 				if C.dword_5d4594_2650652 != 0 && playerUD != nil {
-					C.sub_425CA0(C.int(uintptr(unsafe.Pointer((*server.PlayerUpdateData)(playerUD).Player))), 0)
+					statisticsEvent(unsafe.Pointer((*server.PlayerUpdateData)(playerUD).Player), nil)
 				}
 			}
 			inventoryRemove(t, flag)

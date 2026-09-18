@@ -36,7 +36,6 @@ package legacy
 #include "client__drawable__drawable.h"
 #include "client__gui__guimeter.h"
 
-void sub_426060();
 void sub_417160();
 int sub_48C980();
 void nox_console_sendSysOpPass_4409D0(wchar2_t* a1);
@@ -426,12 +425,7 @@ func Sub_4EDD70() {
 func Sub_4573B0() {
 	teamUIRequestsReset()
 }
-func Sub_4264D0() {
-	C.sub_4264D0()
-}
-func Sub_426060() {
-	C.sub_426060()
-}
+
 func Sub_455C30() int {
 	return teamUICTFConstruct()
 }

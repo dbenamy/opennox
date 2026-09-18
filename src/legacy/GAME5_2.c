@@ -162,7 +162,7 @@ int nox_server_getNextMapGroup_57C090(int a1) {
 
 void nullsub_10(uint32_t a1) {}
 
-int sub_42CC50(void** this) { return sub_42C770(this); }
+
 
 int nox_xxx_j_inventoryNameSignInit_467460(void) { return nox_xxx_inventoryNameSignInit_4671E0(); }
 
