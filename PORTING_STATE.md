@@ -24,10 +24,29 @@ regeneration pass. No goldens were regenerated. Evidence:
 `docs/porting/server-orchestration-native-qualification.json` and
 `build/port-server-systems/native-*`. All tool sessions are joined; source is editable.
 
-Next: audit connected game-statistics collection/serialization, then establish
-its original-C contracts. `build/port-server-systems/stats-candidate.json` is only
-a read-only draft: exclude unrelated map routines and include actual private
-record helpers. No next-batch production changes yet. No user decision is pending.
+Server orchestration conversion **bdf8cdcf** is committed and pushed.
+Next batch: game statistics/reporting, 44 connected C bodies / 2,015 body lines.
+The repaired statistics C capture checkpoint passes **21 roots / 1,519 entries**
+in separate processes; all **21 captures / 3968 records** match and are frozen.
+All focused and cleanup sessions are joined. Source is editable until the broader
+gates start. **Full C qualification is still pending**: run default/server/highres
+and fresh production with game-statistics-c-batch.json before conversion.
+
+The three-line sub_425CA0 prerequisite fixes actor address selection and target
+row indices after independent contracts exposed wrong addresses and a host-index
+panic. See GAME_STATISTICS.md and DECISIONS.md. C stays **30,819 / 68 / zero
+reference C**. Fresh production is required; do not reuse the preceding binaries.
+
+The clock fixture reuses the existing map-theme observer; no linker flags or
+shared wrapper changed. Shipped report-name data and nonzero numeric scale are
+owned explicitly. Draft installers and freeze.py are consumed; do not replay.
+Five old inactive failed-run copies were deduplicated by 2,755,182,757 bytes,
+preserving their restoration manifests and failure evidence; audit/apply passes
+are consumed. Original assets/archive remain unchanged. No user decision is pending.
+
+Completed server-orchestration native scenario deduplication audit66574 and
+apply3456 are joined, reclaiming 1,660,044,319 bytes with restoration manifests.
+Those audit/apply passes are consumed; original assets/archive are unchanged.
 
 The server-orchestration, item-respawn and session-entry install-native.py scripts
 are consumed; never replay them. Source and committed expectations supersede drafts.

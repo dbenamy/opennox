@@ -22,8 +22,9 @@ See [SERVER_ORCHESTRATION.md](docs/porting/SERVER_ORCHESTRATION.md).
 Current production C is **30,819 physical lines in 68 files**, with zero reference
 C (−527 from the server-orchestration baseline). All three targets, supplemental
 caller regressions and fresh production/headless integration qualify. The next
-candidate is connected game-statistics collection and serialization; its caller
-and ownership audit is underway. See [PORTING_STATE.md](PORTING_STATE.md).
+batch is game-statistics collection and serialization. Repeated C captures are
+frozen after a small event-registration correction; broader qualification is
+pending before conversion. See [PORTING_STATE.md](PORTING_STATE.md).
 
 ## Goal and target
 

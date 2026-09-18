@@ -3458,7 +3458,7 @@ char* sub_425CA0(int a1, int a2) {
 					v13 = v4;
 					v5 = 32 * v4;
 					strcpy((char*)getMemAt(0x5D4594, 600124 + v5), (const char*)(a1 + 2096));
-					if (*(uint8_t*)(v3 + 2064) == 31) {
+					if (*(uint8_t*)(a1 + 2064) == 31) {
 						v6 = nox_xxx_net_getIP_554200(0);
 					} else {
 						v6 = nox_xxx_net_getIP_554200(*(unsigned char*)(a1 + 2064) + 1);
@@ -3473,11 +3473,11 @@ char* sub_425CA0(int a1, int a2) {
 				if (v3) {
 					if (*(int*)(v3 + 4648) == -1) {
 						v12 = (dword_5d4594_608316)++;
-						strcpy((char*)getMemAt(0x5D4594, 600124 + 32 * v13), (const char*)(v3 + 2096));
+						strcpy((char*)getMemAt(0x5D4594, 600124 + 32 * v12), (const char*)(v3 + 2096));
 						if (*(uint8_t*)(v3 + 2064) == 31) {
 							v7 = nox_xxx_net_getIP_554200(0);
 							v8 = v12;
-							*getMemU32Ptr(0x5D4594, 600136 + 32 * v13) = htonl(v7);
+							*getMemU32Ptr(0x5D4594, 600136 + 32 * v12) = htonl(v7);
 						} else {
 							v9 = nox_xxx_net_getIP_554200(*(unsigned char*)(v3 + 2064) + 1);
 							v8 = v12;

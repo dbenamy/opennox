@@ -1,0 +1,222 @@
+[
+  {
+    "symbol": "nox_xxx_net_4263C0",
+    "file": "src/legacy/GAME1_1.c",
+    "body_lines": 37
+  },
+  {
+    "symbol": "sub_425CA0",
+    "file": "src/legacy/GAME1_1.c",
+    "body_lines": 73
+  },
+  {
+    "symbol": "sub_425E90",
+    "file": "src/legacy/GAME1_1.c",
+    "body_lines": 16
+  },
+  {
+    "symbol": "sub_425ED0",
+    "file": "src/legacy/GAME1_1.c",
+    "body_lines": 16
+  },
+  {
+    "symbol": "sub_425F10",
+    "file": "src/legacy/GAME1_1.c",
+    "body_lines": 70
+  },
+  {
+    "symbol": "sub_426060",
+    "file": "src/legacy/server__system__server.c",
+    "body_lines": 52
+  },
+  {
+    "symbol": "sub_426150",
+    "file": "src/legacy/GAME1_1.c",
+    "body_lines": 54
+  },
+  {
+    "symbol": "sub_4264D0",
+    "file": "src/legacy/GAME1_1.c",
+    "body_lines": 19
+  },
+  {
+    "symbol": "sub_4282D0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 7
+  },
+  {
+    "symbol": "sub_4282F0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 89
+  },
+  {
+    "symbol": "sub_428540",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 26
+  },
+  {
+    "symbol": "sub_4285C0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 88
+  },
+  {
+    "symbol": "sub_428810",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 16
+  },
+  {
+    "symbol": "sub_428890",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 16
+  },
+  {
+    "symbol": "sub_4289D0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 55
+  },
+  {
+    "symbol": "sub_42A8B0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 40
+  },
+  {
+    "symbol": "sub_42A970",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 90
+  },
+  {
+    "symbol": "sub_42AAA0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 68
+  },
+  {
+    "symbol": "sub_42ABF0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 17
+  },
+  {
+    "symbol": "sub_42AC50",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 91
+  },
+  {
+    "symbol": "sub_42ADA0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 509
+  },
+  {
+    "symbol": "sub_42B810",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 236
+  },
+  {
+    "symbol": "sub_42BCE0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 14
+  },
+  {
+    "symbol": "sub_42BD50",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 14
+  },
+  {
+    "symbol": "sub_42BDC0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 14
+  },
+  {
+    "symbol": "sub_42BE30",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 14
+  },
+  {
+    "symbol": "sub_42BEA0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 14
+  },
+  {
+    "symbol": "sub_42C330",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 16
+  },
+  {
+    "symbol": "sub_42C360",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 8
+  },
+  {
+    "symbol": "sub_42C480",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 38
+  },
+  {
+    "symbol": "sub_42C770",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 14
+  },
+  {
+    "symbol": "sub_42C7F0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 8
+  },
+  {
+    "symbol": "sub_42C820",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 8
+  },
+  {
+    "symbol": "sub_42C8B0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 8
+  },
+  {
+    "symbol": "sub_42C8E0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 8
+  },
+  {
+    "symbol": "sub_42C910",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 8
+  },
+  {
+    "symbol": "sub_42C9A0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 17
+  },
+  {
+    "symbol": "sub_42CA00",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 18
+  },
+  {
+    "symbol": "sub_42CB20",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 18
+  },
+  {
+    "symbol": "sub_42CB80",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 19
+  },
+  {
+    "symbol": "sub_42CBF0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 17
+  },
+  {
+    "symbol": "sub_42CC50",
+    "file": "src/legacy/GAME5_2.c",
+    "body_lines": 1
+  },
+  {
+    "symbol": "sub_42CC70",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 26
+  },
+  {
+    "symbol": "sub_42CCE0",
+    "file": "src/legacy/GAME1_2.c",
+    "body_lines": 28
+  }
+]

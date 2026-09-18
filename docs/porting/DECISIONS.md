@@ -1905,3 +1905,14 @@ same no-op semantics already used for missing objects in nonempty lists. The
 three-line correction is reversible and follows the standing authorization for
 confident fixes. See [ITEM_RESPAWN.md](ITEM_RESPAWN.md). Fresh C production
 qualification precedes conversion.
+
+### Game-statistics event registration prerequisite
+
+Before freezing statistics C, fix three incorrect references in `sub_425CA0`:
+select the actor address using its own host-slot test, and store the target's new
+name/host address in the target row. Original C both selected the wrong address
+and panicked for a new host paired with a remote player. The independent fixture
+uses real connection records with nonzero addresses and checks indices/names/IPs.
+The correction also admits the routine's existing absent-target branch for fresh
+actors. This is reversible and requires fresh production qualification; no C LOC
+change. See [GAME_STATISTICS.md](GAME_STATISTICS.md) for evidence and status.

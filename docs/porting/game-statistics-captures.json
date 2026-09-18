@@ -1,0 +1,140 @@
+{
+  "status": "repeated C captures; broader qualification pending",
+  "production_parent": "bdf8cdcf",
+  "prerequisite": "three-reference correction in sub_425CA0",
+  "roots": 21,
+  "tests": 1519,
+  "captures": [
+    {
+      "label": "game-statistics-encoding",
+      "records": 216,
+      "sha256": "fe7fcd3e74257057ea9c51c1092bd53a1f6ac19d13b73d9b38c26b365aba40bc",
+      "source": "src/game_statistics_encoding_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-event-array",
+      "records": 11,
+      "sha256": "03db0e7c93fa8a801ded52b58e080a8e09861b117edcf4051b85b88f0b1841e4",
+      "source": "src/game_statistics_arrays_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-event-flush",
+      "records": 18,
+      "sha256": "8eea354d2a24357023e830948deb8544a9e0a3dc472b83147e17739a2564c458",
+      "source": "src/game_statistics_event_flush_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-events",
+      "records": 512,
+      "sha256": "fc3ac4835fe589365efb0b7e2de29c472f41365bb0b7f09aa36fad554e236993",
+      "source": "src/game_statistics_events_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-match-arrays",
+      "records": 10,
+      "sha256": "ca15b39a60dfd614175fd2a77b62954ab5182472dd990afaa925d90ea3f7b1b1",
+      "source": "src/game_statistics_arrays_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-metadata",
+      "records": 36,
+      "sha256": "fcef574e7262b724ade96dc46653d78d26366e458550d16d85884fcc3696729a",
+      "source": "src/game_statistics_metadata_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-player-bytes",
+      "records": 550,
+      "sha256": "97699f6cc76ee3ef05a579ba0dca337127aad4dea95e1c7369f1baa53ade9f87",
+      "source": "src/game_statistics_players_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-player-registration",
+      "records": 360,
+      "sha256": "85d729612d5893a0b63da8be711102e8b717137a6df578282bd7fe0995fdaf53",
+      "source": "src/game_statistics_players_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-quest-arrays",
+      "records": 9,
+      "sha256": "94de5329eb6efe52e9a8ded8457e4e476c1b165e6ad6c550db183c2a3b05b4cb",
+      "source": "src/game_statistics_quest_arrays_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-random-sequences",
+      "records": 64,
+      "sha256": "81aa19a062e9affe225e6e491b4dde1cc4a9857268dba12e6289fb9837bcc12c",
+      "source": "src/game_statistics_random_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-random-state",
+      "records": 240,
+      "sha256": "7d67170ddecd66a3ebf2d084c8792c72a6362aa3d925a46fcaf3c9c67ad218f3",
+      "source": "src/game_statistics_random_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-record-embedded-zero",
+      "records": 48,
+      "sha256": "42a0d88e6d7b7059ba3931da5a9c725682d84b4d2809f1c7469c7d1185a67b64",
+      "source": "src/game_statistics_records_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-record-endian",
+      "records": 30,
+      "sha256": "9228a19d4751fc8121f03e14082befe164c1df481c41a36249f8caf004e65db2",
+      "source": "src/game_statistics_records_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-record-length-boundaries",
+      "records": 28,
+      "sha256": "3e0a1cee6f7d0e903894ce0eb43993d9d4d187ddc02b8ed11794b60790b403a7",
+      "source": "src/game_statistics_records_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-record-ordering",
+      "records": 138,
+      "sha256": "13ce0401c6862e229ef397d1be7620143e95b7f9a1f0faa8a0b4aef20f36a978",
+      "source": "src/game_statistics_records_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-record-replacement",
+      "records": 160,
+      "sha256": "720e6933c9377cc7f6844131eabdc48a1b23825a2dd667d82aaa75cb4352eac2",
+      "source": "src/game_statistics_records_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-record-widths",
+      "records": 144,
+      "sha256": "2cb82be714e41e7b4bd372903bfeb9b9ca9f646144f848c37e1f2286c28aece7",
+      "source": "src/game_statistics_records_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-reports",
+      "records": 960,
+      "sha256": "414e5f59c9f79de28cf4069304c4f246c7b158b9c2a529399e443118af2932f0",
+      "source": "src/game_statistics_reports_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-run-encoding",
+      "records": 344,
+      "sha256": "24e68020e3d553eb34b28c8b62b0d7aca7f97aab1afa0445ed09f1d7a5801c6d",
+      "source": "src/game_statistics_runs_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-server-address",
+      "records": 42,
+      "sha256": "e34042ea02a08fce0fa91ec824b3b6363d87f772925e7cdbb5cc213bcd9d02f0",
+      "source": "src/game_statistics_arrays_porttest_test.go"
+    },
+    {
+      "label": "game-statistics-session-lifecycle",
+      "records": 48,
+      "sha256": "25eb953c9a395a7c60cb3b0689ede5f1b97e2a87a7340dfebc7c74b43b827d8a",
+      "source": "src/game_statistics_session_porttest_test.go"
+    }
+  ],
+  "records": 3968,
+  "repeat": [
+    "build/port-game-statistics/final-focus",
+    "build/port-game-statistics/final-repeat"
+  ]
+}
