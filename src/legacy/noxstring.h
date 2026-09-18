@@ -5,7 +5,6 @@
 
 int _nox_wcsicmp(const wchar2_t* string1, const wchar2_t* string2);
 int nox_strcmpi(const char* string1, const char* string2);
-int nox_strnicmp(const char* string1, const char* string2, int sz);
 wchar2_t* nox_wcscat(wchar2_t* dest, const wchar2_t* src);
 wchar2_t* nox_wcschr(wchar2_t* nox_wcs, wchar2_t wc);
 int nox_wcscmp(const wchar2_t* s1, const wchar2_t* s2);

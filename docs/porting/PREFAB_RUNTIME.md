@@ -2,16 +2,11 @@
 
 ## Scope and status
 
-The connected candidate is 40 live C functions / 1,369 original body lines:
-prefab metadata and files, cache constructors and placement, group dispatch and
-serialization, waypoint serialization and map-generation waypoint helpers.
-`sub_51D100` is an orphan candidate. The read-only selection, references and
-original bodies are under `build/port-prefab-runtime`; complete the manual
-callback/ownership audit before freezing this larger baseline.
-
-The prerequisite repair is qualified. No candidate algorithm has yet
-been replaced. The preceding quest-progress conversion is committed/pushed as
-`ae6fbe52`.
+Forty connected functions cover prefab metadata/files, cache construction and
+placement, group dispatch/serialization, waypoint serialization and generation.
+The C baseline **86654f0f** is committed and pushed. The native conversion is now qualified. Historical prerequisite
+and baseline evidence follows. Current action state is in
+[PORTING_STATE.md](../../PORTING_STATE.md).
 
 ## Reproduced prerequisite defects
 
@@ -177,3 +172,54 @@ scenario copies after SHA-256 comparison with original assets. Changed maps/save
 reports, binaries and original assets/archive remain. Per-run restoration manifests
 are saved; build/port-prefab-runtime/deduplicate-completed-assets.py --apply is
 consumed and must not be repeated. About **8.1 GiB** was free after cleanup.
+
+## Native implementation and ownership corrections
+
+Forty algorithms now run in Go. Ten C exports serve remaining callers; thirty
+interfaces and two proven orphan bodies (`sub_51D100`, `nox_strnicmp`) are retired.
+Fourteen globals move into Go; selected-prefab and instance counters remain shared
+with live C generation/script callers. Go callers use direct adapters. The obsolete
+population fixture linker wrapper is replaced by a build-tagged Go loader hook.
+There are no retained C reference algorithms. Working C is **36,917 lines / 73
+files**, a reduction of **1,583** from the qualified baseline.
+
+The first linked native run (`native-third`) passed all 26 existing roots and
+matched all **18 captures / 8,880 records byte for byte**. New independent contracts
+then reproduced the known tile/wall payload leaks and two connected wall-transfer
+defects: secret-wall data referenced the cache record/relative coordinates, and
+breakable registration received wall data rather than the actual world wall.
+Special-wall identity also failed to transfer. These were observed with real world
+owners and allocation/free observers, for secret, breakable and combined flags,
+successful placement and partial failure, plus repeated cleanup.
+
+The correction transfers secret-data ownership to the world, updates its back-reference
+and grid coordinates, transfers special-wall identity, registers the actual world
+wall, and clears replaced secret state. Clearing the cache's data pointer records
+ownership even if a later wall cannot be placed. The destructor now frees tile and
+wall payloads, plus secret data that was never transferred. A failed wall-payload
+allocation unlinks/releases its wrapper and returns failure. These are intentional,
+reversible corrections; frozen functional captures are not changed to hide them.
+
+Native bounds checks reject metadata names exceeding 63 bytes, group/waypoint names
+exceeding their 75-byte buffers, missing version-2 group name tokens, script names
+exceeding 1,024 bytes, out-of-table script opcodes, invalid record lengths, and more
+than 32 serialized waypoint links. Defined signed-version behavior, opcode 36's
+sentinel row, the 31-link interactive limit, float rounding and short DebugData
+reader behavior remain covered. Newly detected I/O failures return failure instead
+of depending on uninitialized C locals. These undefined-input choices are recorded
+for review and are not claimed as exact compatibility for malformed files.
+
+## Qualified native conversion
+
+Default, server and highres each pass **136 root tests / 1,791 including subtests**,
+without skips. All **77 captures / 30,578 records** match the original C baseline
+byte for byte. Package times are **23.492s / 23.825s / 24.097s**. The independent
+secret-to-plain replacement contract also passes with no remaining allocation.
+
+Fresh production passes all three ELF32/SSE2/CGO builds, required/retired interface
+checks, the exact known full asset-suite failures, headless gameplay, save/load and
+flat-map regeneration. All four gates share unchanged **2,323-file source**; static
+mapped-memory checks pass. See [native qualification](prefab-runtime-native-qualification.json).
+No frozen expectations changed. Production C is **36,917 lines / 73 files / zero
+reference C**, **−1,583** from baseline. Baseline qualification remains recorded
+separately; consumed installers/finalizers must not be replayed.

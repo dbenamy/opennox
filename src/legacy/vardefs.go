@@ -82,8 +82,6 @@ extern uint32_t nox_xxx_aNox_cfg_0_587000_132132;
 extern uint32_t dword_5d4594_1047520;
 extern uint32_t dword_5d4594_534808;
 extern uint32_t dword_5d4594_1197324;
-extern uint32_t dword_5d4594_1599576;
-extern uint32_t dword_5d4594_1599596;
 extern uint32_t dword_5d4594_2487556;
 extern uint32_t dword_5d4594_2516344;
 extern uint32_t dword_5d4594_1193384;
@@ -301,7 +299,6 @@ extern uint32_t dword_5d4594_3835388;
 extern uint32_t dword_5d4594_1046648;
 extern uint32_t dword_5d4594_831276;
 extern uint32_t dword_5d4594_1301816;
-extern uint32_t dword_5d4594_1599616;
 extern uint32_t dword_5d4594_1319236;
 extern uint32_t dword_5d4594_815056;
 extern uint32_t dword_5d4594_1308128;
@@ -375,7 +372,6 @@ extern uint32_t dword_5d4594_1062560;
 extern uint32_t dword_587000_183456;
 extern uint32_t nox_xxx_lightningOwner_5d4594_2487900;
 extern uint32_t dword_5d4594_1096256;
-extern uint32_t dword_5d4594_2487244;
 extern uint32_t dword_5d4594_1090280;
 extern uint32_t dword_5d4594_1200796;
 extern uint32_t dword_5d4594_1313536;
@@ -434,7 +430,6 @@ extern uint32_t dword_5d4594_832480;
 extern uint32_t dword_5d4594_1568308;
 extern uint32_t dword_5d4594_1091364;
 extern uint32_t dword_5d4594_599496;
-extern uint32_t dword_5d4594_1599644;
 extern uint32_t dword_5d4594_1563276;
 extern uint32_t nox_server_resetQuestMinVotes_229988;
 extern uint32_t dword_5d4594_1062520;
@@ -586,15 +581,6 @@ extern unsigned int nox_client_gui_flag_1556112;
 extern unsigned int nox_client_highResFloors_154952;
 extern unsigned int nox_client_highResFrontWalls_80820;
 extern unsigned int nox_player_netCode_85319C;
-extern unsigned int dword_5d4594_1599644;
-extern uint32_t dword_5d4594_1599480;
-extern uint32_t dword_5d4594_1599476;
-extern void* dword_5d4594_1599540;
-extern void* dword_5d4594_1599532;
-extern void* dword_5d4594_1599556;
-extern void* dword_5d4594_1599548;
-extern void* dword_5d4594_1599588;
-extern void* dword_5d4594_1599592;
 extern unsigned int nox_game_createOrJoin_815048;
 extern unsigned int nox_client_gui_flag_1556112;
 extern unsigned int dword_5d4594_1548524;
@@ -853,25 +839,25 @@ func Get_dword_5d4594_1316972() *gui.Window {
 	return serverPanelsWindow(1316972)
 }
 func Get_dword_5d4594_1599588() unsafe.Pointer {
-	return C.dword_5d4594_1599588
+	return mapRoomPointer(*prefabGlobal(prefabPath))
 }
 func Get_dword_5d4594_1599592() unsafe.Pointer {
-	return C.dword_5d4594_1599592
+	return mapRoomPointer(*prefabGlobal(prefabAlternate))
 }
 func Get_dword_5d4594_1599540() unsafe.Pointer {
-	return C.dword_5d4594_1599540
+	return mapRoomPointer(*prefabGlobal(prefabObjects))
 }
 func Get_dword_5d4594_1599476() int {
-	return int(C.dword_5d4594_1599476)
+	return int(*prefabGlobal(prefabPlaced))
 }
 func Get_dword_5d4594_1599548() unsafe.Pointer {
-	return C.dword_5d4594_1599548
+	return mapRoomPointer(*prefabGlobal(prefabWaypoints))
 }
 func Get_dword_5d4594_1599556() unsafe.Pointer {
-	return C.dword_5d4594_1599556
+	return mapRoomPointer(*prefabGlobal(prefabTiles))
 }
 func Get_dword_5d4594_1599532() unsafe.Pointer {
-	return C.dword_5d4594_1599532
+	return mapRoomPointer(*prefabGlobal(prefabWalls))
 }
 func Get_dword_5d4594_1200804() int {
 	return int(C.dword_5d4594_1200804)
@@ -1033,25 +1019,25 @@ func Nox_xxx_get_57AF20() int {
 }
 
 func Set_dword_5d4594_1599644(v int) {
-	C.dword_5d4594_1599644 = C.uint(v)
+	*prefabGlobal(prefabScript) = uint32(v)
 }
 func Set_dword_5d4594_1599480(v uint32) {
-	C.dword_5d4594_1599480 = C.uint(v)
+	*prefabGlobal(prefabLoaded) = uint32(v)
 }
 func Set_dword_5d4594_1599476(v int) {
-	C.dword_5d4594_1599476 = C.uint(v)
+	*prefabGlobal(prefabPlaced) = uint32(v)
 }
 func Set_dword_5d4594_1599540(v unsafe.Pointer) {
-	C.dword_5d4594_1599540 = v
+	*prefabGlobal(prefabObjects) = mapRoomRaw(v)
 }
 func Set_dword_5d4594_1599532(v unsafe.Pointer) {
-	C.dword_5d4594_1599532 = v
+	*prefabGlobal(prefabWalls) = mapRoomRaw(v)
 }
 func Set_dword_5d4594_1599556(v unsafe.Pointer) {
-	C.dword_5d4594_1599556 = v
+	*prefabGlobal(prefabTiles) = mapRoomRaw(v)
 }
 func Set_dword_5d4594_1599548(v unsafe.Pointer) {
-	C.dword_5d4594_1599548 = v
+	*prefabGlobal(prefabWaypoints) = mapRoomRaw(v)
 }
 func Get_dword_5d4594_2386836() int {
 	return int(C.dword_5d4594_2386836)
@@ -1312,10 +1298,10 @@ func Inc_nox_wol_server_result_cnt_815088() {
 	C.nox_wol_server_result_cnt_815088++
 }
 func Set_dword_5d4594_1599588(v unsafe.Pointer) {
-	C.dword_5d4594_1599588 = v
+	*prefabGlobal(prefabPath) = mapRoomRaw(v)
 }
 func Set_dword_5d4594_1599592(v unsafe.Pointer) {
-	C.dword_5d4594_1599592 = v
+	*prefabGlobal(prefabAlternate) = mapRoomRaw(v)
 }
 func Get_dword_5d4594_1599592_ptr() *uint32 {
 	return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2649712))

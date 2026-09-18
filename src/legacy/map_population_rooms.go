@@ -149,17 +149,17 @@ func mapPopulationWaypoint(point uint32) uint32 {
 	return populationEnsureWaypoint(populationPoint(point))
 }
 func populationEnsureWaypoint(p *types.Pointf) uint32 {
-	r := C.sub_51D1A0((*C.float2)(unsafe.Pointer(p)))
+	r := sub_51D1A0((*C.float2)(unsafe.Pointer(p)))
 	if r != nil {
 		return mapRoomRaw(unsafe.Pointer(r))
 	}
-	return mapRoomRaw(unsafe.Pointer(C.sub_51D120((*C.float)(unsafe.Pointer(p)))))
+	return mapRoomRaw(unsafe.Pointer(sub_51D120((*C.float)(unsafe.Pointer(p)))))
 }
 func populationWaypointConnect(a, b *types.Pointf) {
-	C.sub_51D3F0((*C.float2)(unsafe.Pointer(a)), (*C.float2)(unsafe.Pointer(b)))
+	sub_51D3F0((*C.float2)(unsafe.Pointer(a)), (*C.float2)(unsafe.Pointer(b)))
 }
 func mapPopulationHallwayWaypoints(cfg uint32) uint32 {
-	C.sub_51D0F0(-128)
+	sub_51D0F0(-128)
 	for r := mapRoomHead(); r != nil; r = r.Next {
 		mapPopulationProgress(156)
 		if r.Kind == 1 {

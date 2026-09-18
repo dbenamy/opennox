@@ -431,17 +431,7 @@ int nox_strcmpi(const char* _l, const char* _r) {
 	return ret;
 }
 
-int nox_strnicmp(const char* _l, const char* _r, int n) {
-	// MUSL implementation
-	const unsigned char *l=(void *)_l, *r=(void *)_r;
-	if (!n--) { return 0; }
-	for (; *l && *r && n && (*l == *r || tolower(*l) == tolower(*r)); l++, r++, n--);
-	int ret = tolower(*l) - tolower(*r);
-	// Old code may expect this
-	if (ret < -1) { ret = -1; }
-	if (ret > +1) { ret = +1; }
-	return ret;
-}
+
 
 long nox_wcstol(const wchar2_t* nptr, wchar2_t** endptr, int base) {
 	long result;

@@ -22,54 +22,100 @@ static void prefabRecord(int obj, int data) {
 static void* prefabObserver(void) { prefab_call_count = 0; return (void*)prefabRecord; }
 static uint32_t* prefabCalls(void) { return &prefab_calls[0][0]; }
 static unsigned int prefabCallCount(void) { return prefab_call_count; }
-static uint64_t prefabInvoke(int op, const uint32_t* v) { switch(op) {
-case 0: nox_server_scriptExecuteFnForEachGroupObj_502670((unsigned char*)(uintptr_t)v[0], (int)v[1], (void (*)(int,int))(uintptr_t)v[2], (int)v[3]); return 0;
-case 1: return (uint32_t)(nox_xxx_mapgenMakeScript_502790((FILE*)(uintptr_t)v[0], (char*)(uintptr_t)v[1]));
-case 2: return (uint32_t)(sub_5029A0((char*)(uintptr_t)v[0]));
-case 3: return (uint32_t)(sub_5029F0((int)v[0]));
-case 4: return (uint32_t)(sub_502A20());
-case 5: return (uint32_t)(sub_502A50((char*)(uintptr_t)v[0]));
-case 6: return (uint32_t)(sub_502AB0((char*)(uintptr_t)v[0]));
-case 7: return (uint32_t)(sub_502B10());
-case 8: return (uint32_t)(sub_502D70((int)v[0]));
-case 9: return (uint32_t)(uintptr_t)(sub_502DA0((char*)(uintptr_t)v[0]));
-case 10: return (uint32_t)(uintptr_t)(sub_502DF0());
-case 11: return (uint32_t)(uintptr_t)(sub_502E10((int)v[0]));
-case 12: return prefabDouble(sub_502E70((int)v[0]));
-case 13: return prefabDouble(sub_502EA0((int)v[0]));
-case 14: return (uint32_t)(nox_xxx_mapgenSaveMap_503830((int)v[0]));
-case 15: return (uint32_t)(sub_503B30((float2*)(uintptr_t)v[0]));
-case 16: return (uint32_t)(sub_503EC0((int)v[0], (float*)(uintptr_t)v[1]));
-case 17: return (uint32_t)(uintptr_t)(nox_xxx_tileAllocTileInCoordList_5040A0((int)v[0], (int)v[1], prefabFloat(v[2])));
-case 18: return (uint32_t)(nox_xxx_tileInit_504150((int)v[0], (int)v[1]));
-case 19: return (uint32_t)(uintptr_t)(sub_504290((char)v[0], (char)v[1]));
-case 20: return (uint32_t)(uintptr_t)(nox_xxx_cliWallGet_5042F0((int)v[0], (int)v[1]));
-case 21: return (uint32_t)(sub_504330((int)v[0], (int)v[1]));
-case 22: return (uint32_t)(uintptr_t)(sub_5044B0((int)v[0], prefabFloat(v[1]), prefabFloat(v[2])));
-case 23: return (uint32_t)(sub_504560((int)v[0], (int)v[1]));
-case 24: return (uint32_t)(uintptr_t)(nox_xxx_unitAddToList_5048A0((int)v[0]));
-case 25: return (uint32_t)(sub_504910((int)v[0], (int)v[1]));
-case 26: return (uint32_t)(sub_504980());
-case 27: return (uint32_t)(sub_5049C0((int)v[0]));
-case 28: return (uint32_t)(uintptr_t)(sub_5049D0());
-case 29: return (uint32_t)(sub_5049E0((int)v[0]));
-case 30: return (uint32_t)(sub_504A10((int)v[0]));
-case 31: return (uint32_t)(uintptr_t)(sub_505060());
-case 32: return (uint32_t)(nox_server_mapRWMapIntro_505080());
-case 33: return (uint32_t)(nox_server_mapRWGroupData_505C30());
-case 34: return (uint32_t)(nox_server_mapRWWaypoints_506260((uint32_t*)(uintptr_t)v[0]));
-case 35: sub_51D0E0(); return 0;
-case 36: return (uint32_t)(sub_51D0F0((char)v[0]));
-case 37: return (uint32_t)(uintptr_t)(sub_51D120((float*)(uintptr_t)v[0]));
-case 38: return (uint32_t)(uintptr_t)(sub_51D1A0((float2*)(uintptr_t)v[0]));
-case 39: return (uint32_t)(uintptr_t)(sub_51D3F0((float2*)(uintptr_t)v[0], (float2*)(uintptr_t)v[1]));
-default: abort(); } }
 */
 import "C"
-import "unsafe"
+import (
+	"github.com/opennox/opennox/v1/server"
+	"math"
+	"unsafe"
+)
 
-func PortTestPrefabCall(op int, args [6]uint32) uint64 {
-	return uint64(C.prefabInvoke(C.int(op), (*C.uint32_t)(unsafe.Pointer(&args[0]))))
+func PortTestPrefabCall(op int, v [6]uint32) uint64 {
+	switch op {
+	case 0:
+		prefabGroupEach((*server.MapGroup)(mapRoomPointer(v[0])), int32(v[1]), mapRoomPointer(v[2]), v[3])
+		return 0
+	case 1:
+		return uint64(prefabScriptScan(v[0], v[1]))
+	case 2:
+		return uint64(prefabFindName(v[0]))
+	case 3:
+		return uint64(prefabMetadataAt(int32(v[0])))
+	case 4:
+		return uint64(*prefabGlobal(prefabCount))
+	case 5:
+		return uint64(prefabSetPath(v[0], false))
+	case 6:
+		return uint64(prefabSetPath(v[0], true))
+	case 7:
+		return uint64(prefabLibrary())
+	case 8:
+		return uint64(prefabSelect(int32(v[0])))
+	case 9:
+		return uint64(prefabOpen(v[0]))
+	case 10:
+		return uint64(prefabClose())
+	case 11:
+		return uint64(prefabSeek(int32(v[0])))
+	case 12:
+		return math.Float64bits(prefabDimension(int32(v[0]), 64))
+	case 13:
+		return math.Float64bits(prefabDimension(int32(v[0]), 68))
+	case 14:
+		return uint64(prefabLoad(int32(v[0])))
+	case 15:
+		return uint64(prefabInstantiate(prefabPoint(v[0])))
+	case 16:
+		return uint64(prefabRelativePosition(v[0], prefabPoint(v[1])))
+	case 17:
+		return uint64(prefabTileNew(int32(v[0]), int32(v[1]), v[2]))
+	case 18:
+		return uint64(prefabPlaceTiles(int32(v[0]), int32(v[1])))
+	case 19:
+		return uint64(prefabWallNew(byte(v[0]), byte(v[1])))
+	case 20:
+		return uint64(prefabWallFind(int32(v[0]), int32(v[1])))
+	case 21:
+		return uint64(prefabPlaceWalls(int32(v[0]), int32(v[1])))
+	case 22:
+		return uint64(prefabWaypointNew(v[0], math.Float32frombits(v[1]), math.Float32frombits(v[2])))
+	case 23:
+		return uint64(prefabPlaceWaypoints(int32(v[0]), int32(v[1])))
+	case 24:
+		return uint64(prefabObjectNew(v[0]))
+	case 25:
+		return uint64(prefabPlaceObjects(int32(v[0]), int32(v[1])))
+	case 26:
+		return uint64(prefabObjectHead())
+	case 27:
+		return uint64(prefabObjectNext(v[0]))
+	case 28:
+		return uint64(*prefabGlobal(prefabObjects))
+	case 29:
+		return uint64(prefabNodeNext(v[0]))
+	case 30:
+		return uint64(prefabObjectRemove(v[0]))
+	case 31:
+		return uint64(prefabIntroFree())
+	case 32:
+		return uint64(prefabIntroSection())
+	case 33:
+		return uint64(prefabGroupSection())
+	case 34:
+		return uint64(prefabWaypointSection((*[8]uint32)(mapRoomPointer(v[0]))))
+	case 35:
+		prefabResetWaypoint()
+		return 0
+	case 36:
+		return uint64(prefabSetWaypointKind(byte(v[0])))
+	case 37:
+		return uint64(prefabCreateWaypoint(prefabPoint(v[0])))
+	case 38:
+		return uint64(prefabFindWaypoint(prefabPoint(v[0])))
+	case 39:
+		return uint64(prefabConnectWaypoint(prefabPoint(v[0]), prefabPoint(v[1])))
+	}
+	panic("prefab operation")
 }
 
 func PortTestPrefabObserver() unsafe.Pointer { return C.prefabObserver() }

@@ -122,7 +122,7 @@ func Nox_server_mapRWDestructableWalls_429530(_ *cryptfile.CryptFile, a1 unsafe.
 	return nil
 }
 func Nox_server_mapRWWaypoints_506260(_ *cryptfile.CryptFile, a1 unsafe.Pointer) error {
-	if ccall.CallIntPtr(C.nox_server_mapRWWaypoints_506260, a1) == 0 {
+	if prefabWaypointSection((*[8]uint32)(a1)) == 0 {
 		return fmt.Errorf("%s failed", caller(0))
 	}
 	return nil
@@ -134,7 +134,7 @@ func Nox_server_mapRWWindowWalls_4292C0(_ *cryptfile.CryptFile, a1 unsafe.Pointe
 	return nil
 }
 func Nox_server_mapRWGroupData_505C30(_ *cryptfile.CryptFile, a1 unsafe.Pointer) error {
-	if ccall.CallIntPtr(C.nox_server_mapRWGroupData_505C30, a1) == 0 {
+	if prefabGroupSection() == 0 {
 		return fmt.Errorf("%s failed", caller(0))
 	}
 	return nil
@@ -152,7 +152,7 @@ func Nox_server_mapRWPolygons_428CD0(_ *cryptfile.CryptFile, a1 unsafe.Pointer) 
 	return nil
 }
 func Nox_server_mapRWMapIntro_505080(_ *cryptfile.CryptFile, a1 unsafe.Pointer) error {
-	if ccall.CallIntPtr(C.nox_server_mapRWMapIntro_505080, a1) == 0 {
+	if prefabIntroSection() == 0 {
 		return fmt.Errorf("%s failed", caller(0))
 	}
 	return nil

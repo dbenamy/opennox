@@ -6,7 +6,6 @@ package legacy
 #include <stdlib.h>
 #include "defs.h"
 #include "GAME4_1.h"
-extern void* dword_5d4594_1599540;
 */
 import "C"
 import (
@@ -34,20 +33,20 @@ func PortTestObjectXferPendingOwners() (func() [][2]uint32, func()) {
 
 // The editor list owns its libc list nodes, while the fixture owns its objects.
 func PortTestObjectXferEditorList() (func() []*server.Object, func()) {
-	old := C.dword_5d4594_1599540
-	C.dword_5d4594_1599540 = nil
+	old := Get_dword_5d4594_1599540()
+	Set_dword_5d4594_1599540(nil)
 	read := func() (out []*server.Object) {
-		for p := C.dword_5d4594_1599540; p != nil; p = *(*unsafe.Pointer)(unsafe.Add(p, 4)) {
+		for p := Get_dword_5d4594_1599540(); p != nil; p = *(*unsafe.Pointer)(unsafe.Add(p, 4)) {
 			out = append(out, *(**server.Object)(p))
 		}
 		return
 	}
 	return read, func() {
-		for p := C.dword_5d4594_1599540; p != nil; {
+		for p := Get_dword_5d4594_1599540(); p != nil; {
 			next := *(*unsafe.Pointer)(unsafe.Add(p, 4))
 			C.free(p)
 			p = next
 		}
-		C.dword_5d4594_1599540 = old
+		Set_dword_5d4594_1599540(old)
 	}
 }

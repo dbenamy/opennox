@@ -63,7 +63,7 @@ func objectXferPlace(u *server.Object, owner, offset unsafe.Pointer) int {
 			u.PosVec.Y = float32(float64(u.PosVec.Y) - float64(y) + float64(p[1]) - 11)
 		}
 		if noxflags.HasGame(0x400000) {
-			C.nox_xxx_unitAddToList_5048A0(C.int(uintptr(u.CObj())))
+			nox_xxx_unitAddToList_5048A0(C.int(uintptr(u.CObj())))
 			return 1
 		}
 		if noxflags.HasGame(0x200000) || Sub_4E3AD0(int(u.TypeInd)) != 0 {

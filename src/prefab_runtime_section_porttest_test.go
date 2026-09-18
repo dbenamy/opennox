@@ -151,8 +151,6 @@ func TestPrefabRuntimeObjectCleanup(t *testing.T) {
 		payload := *(*unsafe.Pointer)(node)
 		if kind == 2 {
 			defer alloc.FreePtr(payload)
-		} else {
-			defer legacy.PortTestPrefabReleasePayload(payload)
 		}
 	}
 	s.Nox_xxx_free503F40()

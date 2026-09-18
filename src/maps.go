@@ -550,7 +550,8 @@ func (s *Server) Nox_xxx_free503F40() {
 				next2 = *(*unsafe.Pointer)(unsafe.Add(it2, 16))
 				legacy.Nox_xxx_tileFreeTileOne_4221E0(it2)
 			}
-			*(*unsafe.Pointer)(unsafe.Add(it, 0)) = nil
+			legacy.MapPrefabFreeNode(*(*unsafe.Pointer)(it))
+			*(*unsafe.Pointer)(it) = nil
 			legacy.MapPrefabFreeNode(it)
 		}
 	}
@@ -559,10 +560,13 @@ func (s *Server) Nox_xxx_free503F40() {
 		var next unsafe.Pointer
 		for it := legacy.Get_dword_5d4594_1599532(); it != nil; it = next {
 			next = *(*unsafe.Pointer)(unsafe.Add(it, 4))
-			if legacy.Get_dword_5d4594_1599476() == 0 && *(*uint8)(unsafe.Add(*(*unsafe.Pointer)(unsafe.Add(it, 0)), 4))&0x4 != 0 {
-				*(*unsafe.Pointer)(unsafe.Add(*(*unsafe.Pointer)(unsafe.Add(it, 0)), 4*7)) = nil
+			w := *(**server.Wall)(it)
+			// Placed secret data is moved out of the cache, even on partial failure.
+			if w.Flags4&4 != 0 && w.Data != nil {
+				legacy.MapPrefabFreeNode(w.Data)
 			}
-			*(*unsafe.Pointer)(unsafe.Add(it, 0)) = nil
+			legacy.MapPrefabFreeNode(unsafe.Pointer(w))
+			*(*unsafe.Pointer)(it) = nil
 			legacy.MapPrefabFreeNode(it)
 		}
 	}

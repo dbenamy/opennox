@@ -15,14 +15,14 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. The connected prefab/map-runtime C baseline is qualified: 40 live functions,
-18 new repeated captures, matching default/server/highres sweeps and fresh
-production/gameplay evidence. See [PREFAB_RUNTIME.md](docs/porting/PREFAB_RUNTIME.md).
+pause. The prefab/map-runtime conversion is qualified: 40 native algorithms,
+matching default/server/highres captures and fresh production/gameplay evidence.
+The connected cache ownership corrections are documented for review in
+[PREFAB_RUNTIME.md](docs/porting/PREFAB_RUNTIME.md).
 
-Current production C is **38,500 physical lines in 74 files**, with zero reference
-C. Two temporary cleanup statements fix verified loader failures before conversion.
-Next is the native conversion; [PORTING_STATE.md](PORTING_STATE.md) is the resume
-checkpoint.
+Current production C is **36,917 physical lines in 73 files**, with zero reference
+C (−1,583 this conversion). Next is the connected prefab-script/map-generation
+batch; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 

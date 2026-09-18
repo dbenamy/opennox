@@ -387,10 +387,10 @@ func Sub_56F3B0() {
 	freeProtectionRecords()
 }
 func Sub_51D0E0() {
-	C.sub_51D0E0()
+	sub_51D0E0()
 }
 func Sub_502DF0() {
-	C.sub_502DF0()
+	sub_502DF0()
 }
 func Sub_481410() {
 	tileCompositionReset()

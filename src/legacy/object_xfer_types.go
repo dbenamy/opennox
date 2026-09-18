@@ -125,7 +125,7 @@ func objectXferLegacyScript(p unsafe.Pointer) int {
 	if !cryptfile.Global().ReadOnly() {
 		return 0
 	}
-	C.nox_xxx_mapgenMakeScript_502790(nox_xxx_mapgenGetSomeFile_426A60(), (*C.char)(p))
+	nox_xxx_mapgenMakeScript_502790(nox_xxx_mapgenGetSomeFile_426A60(), (*C.char)(p))
 	if noxflags.HasGame(0x400000) {
 		return 1
 	}

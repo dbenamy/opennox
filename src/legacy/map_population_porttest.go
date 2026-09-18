@@ -22,15 +22,8 @@ extern uint32_t dword_5d4594_2487656;
 extern uint32_t dword_5d4594_2487672;
 extern uint32_t dword_5d4594_2487676;
 extern uint32_t dword_5d4594_2491616;
-extern void* dword_5d4594_1599588;
-extern void* dword_5d4594_1599592;
-extern uint32_t dword_5d4594_1599576;
-extern uint32_t dword_5d4594_1599596;
-extern uint32_t dword_5d4594_1599480;
-extern uint32_t dword_5d4594_1599476;
-extern uint32_t dword_5d4594_1599540;
 extern uint32_t dword_5d4594_3835396;
-extern uint32_t dword_5d4594_2487244,dword_5d4594_1599532,dword_5d4594_1599556,dword_5d4594_1599548,dword_5d4594_1599644,dword_5d4594_3835312;
+extern uint32_t dword_5d4594_3835312;
 static uint32_t* populationGlobal(int i){switch(i){
 case 0:return &dword_5d4594_1550916;
 case 1:return &dword_5d4594_2487564;
@@ -46,20 +39,6 @@ case 10:return &dword_5d4594_2487652;
 case 11:return &dword_5d4594_2487656;
 case 12:return &dword_5d4594_2487672;
 case 13:return &dword_5d4594_2487676;
-case 14:return &dword_5d4594_1599576;
-case 15:return &dword_5d4594_1599596;
-case 16:return &dword_5d4594_1599480;
-case 17:return &dword_5d4594_1599476;
-case 18:return &dword_5d4594_1599540;
-case 19:return &dword_5d4594_3835396;
-case 20:return &dword_5d4594_2487244;
-case 21:return &dword_5d4594_1599532;
-case 22:return &dword_5d4594_1599556;
-case 23:return &dword_5d4594_1599548;
-case 24:return &dword_5d4594_1599644;
-case 25:return &dword_5d4594_3835312;
-case 26:return (uint32_t*)&dword_5d4594_1599588;
-case 27:return (uint32_t*)&dword_5d4594_1599592;
 case 28:return &dword_5d4594_2491616;
 default:abort();}}
 */
@@ -79,7 +58,11 @@ import (
 func PortTestMapPopulation(cases []PortTestPaintSpec, owner func(*server.Server) (Server, func())) []PortTestPaintResult {
 	ext := &paintTestExtension{globals: map[string]*uint32{}}
 	for i, n := range []string{"dword_5d4594_1550916", "dword_5d4594_2487564", "dword_5d4594_2487568", "dword_5d4594_2487576", "dword_5d4594_2487580", "dword_5d4594_2487584", "dword_5d4594_2487620", "dword_5d4594_2487624", "dword_5d4594_2487628", "dword_5d4594_2487632", "dword_5d4594_2487652", "dword_5d4594_2487656", "dword_5d4594_2487672", "dword_5d4594_2487676", "dword_5d4594_1599576", "dword_5d4594_1599596", "dword_5d4594_1599480", "dword_5d4594_1599476", "dword_5d4594_1599540", "dword_5d4594_3835396", "dword_5d4594_2487244", "dword_5d4594_1599532", "dword_5d4594_1599556", "dword_5d4594_1599548", "dword_5d4594_1599644", "dword_5d4594_3835312", "dword_5d4594_1599588", "dword_5d4594_1599592", "dword_5d4594_2491616"} {
-		ext.globals[n] = (*uint32)(unsafe.Pointer(C.populationGlobal(C.int(i))))
+		if index, ok := map[string]int{"dword_5d4594_1599576": prefabMetadata, "dword_5d4594_1599596": prefabCount, "dword_5d4594_1599480": prefabLoaded, "dword_5d4594_1599476": prefabPlaced, "dword_5d4594_3835396": prefabSelected, "dword_5d4594_1599540": prefabObjects, "dword_5d4594_1599532": prefabWalls, "dword_5d4594_1599556": prefabTiles, "dword_5d4594_1599548": prefabWaypoints, "dword_5d4594_1599588": prefabPath, "dword_5d4594_1599592": prefabAlternate, "dword_5d4594_1599616": prefabIntro, "dword_5d4594_1599644": prefabScript, "dword_5d4594_3835312": prefabInstance, "dword_5d4594_2487244": prefabLastWaypoint, "nox_file_8": prefabFile}[n]; ok {
+			ext.globals[n] = prefabGlobal(index)
+		} else {
+			ext.globals[n] = (*uint32)(unsafe.Pointer(C.populationGlobal(C.int(i))))
+		}
 	}
 	for i := 0; i < 5; i++ {
 		ext.globals[fmt.Sprintf("roomGlobal%d", i)] = mapRoomGlobalWord(i)

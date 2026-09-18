@@ -5,7 +5,7 @@ package legacy
 /*
 #include "GAME3_2.h"
 #include <stdint.h>
-extern uint32_t dword_5d4594_1599596,dword_5d4594_2487524;
+extern uint32_t dword_5d4594_2487524;
 extern uint32_t dword_5d4594_1549844,dword_5d4594_1550912,dword_5d4594_1550916;
 static uint32_t* orchestrationGlobal(int i) {
  switch(i) {case 0:return &dword_5d4594_1549844;case 1:return &dword_5d4594_1550912;case 2:return &dword_5d4594_1550916;}
@@ -50,7 +50,7 @@ func PortTestMapOrchestration(cases []PortTestPaintSpec, owner func(*server.Serv
 	}
 
 	ext := &paintTestExtension{globals: map[string]*uint32{}}
-	ext.globals["areaCount"] = (*uint32)(unsafe.Pointer(&C.dword_5d4594_1599596))
+	ext.globals["areaCount"] = prefabGlobal(prefabCount)
 	ext.globals["themeLine"] = populationBlob(2487520)
 	ext.globals["themeTemplate"] = (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487524))
 	for i := 0; i < 3; i++ {

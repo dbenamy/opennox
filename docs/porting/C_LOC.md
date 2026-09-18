@@ -217,6 +217,7 @@ target build selection and linker evidence.
 | Quest variables, persistence, stage preparation, bosses and obsolete interfaces | 74 | 38,498 | −695 | 0 |
 | Prefab section-dispatch and cache-cleanup prerequisites | 74 | 38,498 | 0 | 0 |
 | Prefab/map-runtime C baseline: failed-load cleanup | 74 | 38,500 | +2 | 0 |
+| Prefab/map runtime: 40 native algorithms, two orphan bodies | 73 | 36,917 | −1,583 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

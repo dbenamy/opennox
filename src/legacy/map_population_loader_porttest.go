@@ -2,23 +2,14 @@
 
 package legacy
 
-/*
-#cgo LDFLAGS: -Wl,--wrap=sub_502D70
-int __real_sub_502D70(int index);
-*/
-import "C"
-
-// The batch owns selection/placement, while file decoding remains a service.
-// A fixture may supply an already-decoded cache and record loader requests.
-// Every other caller, including integration tests, reaches the real loader.
+// Fixtures may supply decoded caches; all other calls use the actual loader.
 var populationTestLoad func(int32) (int32, bool)
 
-//export __wrap_sub_502D70
-func __wrap_sub_502D70(index C.int) C.int {
+func populationLoadPrefab(index int32) uint32 {
 	if populationTestLoad != nil {
-		if result, ok := populationTestLoad(int32(index)); ok {
-			return C.int(result)
+		if result, ok := populationTestLoad(index); ok {
+			return uint32(result)
 		}
 	}
-	return C.__real_sub_502D70(index)
+	return prefabSelect(index)
 }

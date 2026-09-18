@@ -89,45 +89,19 @@ int nox_xxx_getSevenDwords3_501940(int a1);
 void nox_xxx_aud_501960(int a1, nox_object_t* a2, int a3, int a4);
 void nox_xxx_audCreate_501A30(int a1, float2* a2, int a3, int a4);
 void nox_xxx_gameSetAudioFadeoutMb_501AC0(int a1);
-int nox_xxx_mapgenMakeScript_502790(FILE* a1, char* a2);
 void nox_xxx_mapReset_5028E0();
-int sub_5029A0(char* a1);
-int sub_5029F0(int a1);
-int sub_502A20();
 int sub_502A50(char* a1);
 int sub_502AB0(char* a1);
 int sub_502B10();
-int sub_502D70(int a1);
-FILE* sub_502DA0(char* a1);
-FILE* sub_502DF0();
-FILE* sub_502E10(int a1);
-double sub_502E70(int a1);
-double sub_502EA0(int a1);
-int nox_xxx_mapgenSaveMap_503830(int a1);
-int sub_503B30(float2* a1);
-int sub_503EC0(int a1, float* a2);
 void nox_xxx_free_503F40();
 uint32_t* nox_xxx_tileAllocTileInCoordList_5040A0(int a1, int a2, float a3);
-int nox_xxx_tileInit_504150(int a1, int a2);
 uint32_t* sub_504290(char a1, char a2);
 uint32_t* nox_xxx_cliWallGet_5042F0(int a1, int a2);
-int sub_504330(int a1, int a2);
-uint32_t* sub_5044B0(int a1, float a2, float a3);
-int sub_504560(int a1, int a2);
 void sub_504600(char* a1, unsigned int a2, unsigned char a3);
 int sub_5046A0(uint32_t* a1, unsigned int a2);
 int sub_504720(unsigned int a1, unsigned int a2);
-uint32_t* nox_xxx_unitAddToList_5048A0(int a1);
-int sub_504910(int a1, int a2);
-int sub_504980();
-int sub_5049C0(int a1);
 void* sub_5049D0();
 int sub_5049E0(int a1);
-int sub_504A10(int a1);
-void* sub_505060();
-int nox_server_mapRWMapIntro_505080();
-int nox_server_mapRWGroupData_505C30();
-int nox_server_mapRWWaypoints_506260(uint32_t* a1);
 int nox_xxx_allocVoteArray_5066D0();
 int sub_506720();
 int sub_506740(nox_object_t* a1);
@@ -153,7 +127,7 @@ int sub_5071C0();
 void sub_509120(uint32_t* a1, int a2, const char* a3);
 int sub_5095E0();
 
-void nox_server_scriptExecuteFnForEachGroupObj_502670(unsigned char* groupPtr, int expectedType, void (*a3)(int, int),
+void nox_server_scriptExecuteFnForEachGroupObj_502670(unsigned char* groupPtr, int expectedType, void* a3,
 													  int a4);
 
 #endif // NOX_PORT_GAME4

@@ -2,13 +2,45 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 38.5k lines** — **38,500 physical lines in 74 production
-`.c` files**, zero reference C. Latest baseline repair: **+2 temporary C lines**; preceding conversion: **−695**.
+**Rough C remaining: about 36.9k lines** — **36,917 physical lines in 73 production
+`.c` files**, zero reference C. Latest conversion: **−1,583**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — prefab/map-runtime C baseline qualified
+## Current — prefab/map-runtime native conversion qualified
+
+Forty native algorithms replace the qualified C baseline **86654f0f**. Thirty C
+interfaces, fourteen globals and two orphan bodies are retired; ten C exports and
+two shared counters remain for live callers. No C reference algorithms remain.
+The tile/wall payload and special-wall ownership corrections are documented for
+review in [PREFAB_RUNTIME.md](docs/porting/PREFAB_RUNTIME.md).
+
+All three targets pass **136 roots / 1,791 tests including subtests**, no skips;
+**77 captures / 30,578 records** match the original C baseline byte for byte.
+Fresh production builds/ABI/interfaces, exact known asset failures, headless
+gameplay, save/load and flat-map regeneration pass. All gates share unchanged
+**2,323-file source**; static mapped-memory checks pass. All sessions are joined.
+See [native qualification](docs/porting/prefab-runtime-native-qualification.json).
+C is **36,917 / 73 files / zero reference**, **−1,583**.
+
+Next: commit/push this conversion, then qualify the connected prefab-script and
+map-generation candidate: **20 C functions / 1,363 body lines**, covering all
+server__script__file.c helpers, object callback/name remapping, pending-object
+references, generation initialization and bounds ordering. Read-only selection,
+original bodies, 194 references and audit notes are in build/port-prefab-scripts.
+No next-batch source is installed. Reproduce suspected name-rewrite and script
+buffer defects before freezing; use actual file/script/object owners and record
+reversible corrections. No user decision is pending.
+
+`install-native.py`, `repair-native-ownership.py`, `finalize-native.py` and prior
+baseline finalizers are **consumed**. Do not replay ignored drafts. Preserve original
+assets/archive and frozen captures. First two native compile attempts needed stale
+fixture globals and the retired C-loader linker wrapper corrected; no captured
+expectation changed. The latter is now a build-tagged Go fixture hook.
+
+## Qualified baseline — prefab/map-runtime (86654f0f, pushed)
+
 
 The connected **40-function / 1,371-body-line** baseline is qualified, with
 **18 new frozen captures / 8,880 records**, repeated in separate C processes.

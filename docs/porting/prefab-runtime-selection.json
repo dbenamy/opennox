@@ -1,5 +1,5 @@
 {
-  "status": "qualified C baseline",
+  "status": "qualified native conversion; original C source hashes retained",
   "live_functions": [
     {
       "file": "src/legacy/GAME4.c",
@@ -614,5 +614,16 @@
     "Original proposal had 1369 live body lines; two verified loader failure-close statements make 1371.",
     "Conservative graph is supplemented with source/callback review before retirement.",
     "GAME4_1.c may be removed once five live waypoint helpers and its orphan setter are retired."
-  ]
+  ],
+  "native": {
+    "live_algorithms": 40,
+    "retained_exports": 10,
+    "retired_interfaces": 30,
+    "retired_globals": 14,
+    "shared_c_counters": 2,
+    "orphan_bodies_removed": [
+      "sub_51D100",
+      "nox_strnicmp"
+    ]
+  }
 }

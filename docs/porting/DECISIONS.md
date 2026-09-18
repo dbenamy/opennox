@@ -1778,3 +1778,18 @@ The remaining tile/wall payload leak requires a coordinated ownership repair:
 placed secret-wall data retains a back-reference to the cached wall. Defer freeing
 that record until transfer and partial-failure behavior are independently tested
 in the native work. See [PREFAB_RUNTIME.md](PREFAB_RUNTIME.md).
+
+## Prefab cache payload and special-wall ownership — qualified native correction
+
+Transfer secret-wall data to the actual world wall, updating its coordinates and
+back-reference; clear the cache pointer even if later placement fails. Register
+breakable walls using the world-wall pointer, preserve their identity, and clear
+old secret state when replacing it. Release cached tile/wall payloads and secret
+data that was never transferred. Independent real-owner tests reproduced the old
+references and leaks before correction; all eighteen frozen captures already match
+the initial native translation. See [PREFAB_RUNTIME.md](PREFAB_RUNTIME.md) for
+qualification status and explicit undefined-input bounds choices. This is an
+authorized reversible correctness change, not exact preservation of the C defects.
+
+Prefab ownership corrections now pass all three targets and fresh production;
+77 existing captures remain byte-identical. See the batch native qualification.
