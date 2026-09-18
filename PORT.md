@@ -22,7 +22,7 @@ C globals retired. See [GAME_STATISTICS.md](docs/porting/GAME_STATISTICS.md).
 Current production C is **28,790 physical lines in 67 files**, with zero reference
 C (−2,029 from the statistics baseline). All three targets, frozen comparisons and
 fresh production/headless integration qualify. The map floor/wall serialization batch has repeated corrected-C captures:
-18 groups /4,125 test entries, with broader qualification pending. Current
+19 groups /4,144 test entries, all three targets and fresh production qualified. Current
 prerequisites add4 C lines (28,794 total). See
 [PORTING_STATE.md](PORTING_STATE.md).
 

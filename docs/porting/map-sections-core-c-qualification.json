@@ -1,0 +1,25 @@
+{
+  "status": "accumulated corrected C gates pass; polygon-light addition and production pending",
+  "targets": [
+    {
+      "target": "default",
+      "roots": 509,
+      "tests": 46975
+    },
+    {
+      "target": "server",
+      "roots": 509,
+      "tests": 46975
+    },
+    {
+      "target": "highres",
+      "roots": 509,
+      "tests": 46975
+    }
+  ],
+  "captures": 281,
+  "records": 103135,
+  "source_files": 2468,
+  "source_identity": true,
+  "capture_identity": true
+}

@@ -8,82 +8,50 @@ baseline (current C prerequisites add4 lines). See [C_LOC.md](docs/porting/C_LOC
 
 <!-- current-checkpoint -->
 
-## Current — native game statistics qualified
+## Current — corrected C map-section baseline qualified
 
-Qualified C baseline **858bc315** is committed and pushed; the original full
-capture checkpoint is 05033129. Native code replaces 35 live routines and removes
-nine orphan routines behind constant-false callers. It retires 43 C function
-interfaces, seven C globals and the final server__system__server.c body/file.
-One C event entrypoint remains for player death. Go objective/team callers invoke
-Go directly. See [GAME_STATISTICS.md](docs/porting/GAME_STATISTICS.md).
+Capture checkpoint **4cc84212 is committed and pushed**. Floor/wall serialization
+and window/breakable/secret metadata select18 C bodies; no Go conversion is
+installed yet. Reversible C corrections fix missing scratch-wall ownership,
+wall high-flag serialization and historical floor-region Y scaling. See
+[MAP_SECTIONS.md](docs/porting/MAP_SECTIONS.md) and the decision log.
 
-Qualification: **17 focused roots /1,307 entries**, with all 17 captures /3,366
-records matching C. Each default/server/highres gate passes **491 roots /42,850
-entries**, no skips. All 263 captures /99,027 records match C and each other;
-all gates have identical 2,450-file source. Static checks, three fresh production
-builds/ABI, exact known full-suite failures, gameplay, save/load and flat-map
-regeneration pass. No goldens changed. Evidence:
-`docs/porting/game-statistics-native-qualification.json` and
-`build/port-game-statistics/native-*`. All tool sessions are joined; source is editable.
+**19 focused roots /4,144 entries** pass. All19 captures /4,126 records repeat
+across processes and are frozen. Each target qualifies510 roots /46,994 entries:
+509 accumulated roots plus one additive polygon-light root. All282 captures
+/103,153 records match. The sole source difference between these gate partitions
+is the added light-test file; all preexisting files are identical. Final source
+is identical across light gates and production.
 
-Native statistics conversion **6035e191 is committed and pushed**.
-Next batch: map floor/wall serialization plus window/breakable/secret-wall
-metadata:18 connected C bodies /1,629 body lines. Audit and original-source
-positions are in build/port-map-sections/selection.json. The five roots are live
-map section registrations; private callbacks/helpers share the tile/wall owners.
-C fixtures are being prepared; no conversion installed. See MAP_SECTIONS.md.
-The initial tile run50473 and expanded floor run34030 passed and are joined.
-Two roots /438 entries cover324 tile records and112 current-format floor records.
-All map-section hashes are deliberately unfrozen. The generic adapter also owns
-prefab scratch records through the existing allocation observer.
+Static, three fresh binaries/ABI, exact known full-suite failures, gameplay,
+explicit save/load and compressed flat-map regeneration pass. See
+`docs/porting/map-sections-c-qualification.json`. All build/test sessions are
+joined; source is editable. Raw evidence: `build/port-map-sections/c-*` and
+`light-*`. Freeze scripts, qualify-core.py and qualify-c.py are consumed.
 
-Run84174 (metadata-original) stalled during the floor fixture's owner reset;
-stacks showed Go GC mark termination and a runnable locked-thread test goroutine.
-The owned test child3295536 was stopped with SIGQUIT;84174 is joined. Evidence:
-metadata-original/stacks.txt. No metadata assertion had run, so this is not C
-bug evidence. Observation had been enabled across the whole fixture, unlike the
-established map-theme/growth pattern. It is now bounded to section calls and
-scratch allocation; no production or shared observer changes were made.
+Next: install the reviewed Go drafts using build/port-map-sections/install-native.py
+(UNCONSUMED), then format/static preflight and frozen focused comparisons. Drafts:
+native-io, native-floor, native-metadata and native-walls; native-batch-draft.json.
+All test draft copies are consumed; actual source takes precedence. No user
+question is pending.
 
-Bounded run32870 confirmed four metadata defects plus64 wall-flag failures.
-Minimal C corrections are installed; no Go conversion is installed. Corrected
-run36785 passed6 roots /1,238 entries. Historical run77302 passed10 roots /2,435
-entries. Metadata-full9718 passed read contracts; nine writer assertions required
-the existing iterator's door/broken exclusion in their independent expectations.
-That fixture correction is installed.
+Disk cleanup removed66 superseded successful-run binaries,3,210,134,412 bytes.
+Both superseded-binaries cleanup manifests under build/port-map-sections are
+consumed. Latest statistics binaries, logs, captures and original assets/archive
+remain. Completed C scenario copies have a prepared deduplication audit; apply
+only after checking its recorded state. Preserve restoration manifests and
+changed maps/saves/screenshots. Original archive stays untracked.
 
-Historical region Y-scale corrections pass. All fixtures now pass18 roots /4,125
-entries with no skips, repeated in separate processes. All18 captures /4,108
-records match byte-for-byte and are frozen; static check passes. Sessions33068
-(superseded expectation),28295 (pass),74075 (repeat),53688 (freeze/static) joined.
-No sessions active; source editable. freeze.py is consumed.
+## Qualified parent — native game statistics
 
-This is the corrected C capture recovery checkpoint. The accumulated default,
-server and highres manifest and fresh production/headless gates remain pending.
-No Go conversion is installed. native-io-draft.go and native-floor-draft.go are
-uninstalled, unqualified sketches. All test drafts are consumed/installed.
-See MAP_SECTIONS.md and map-sections-captures.json for evidence.
-
-Removed33 superseded successful-run production binaries (1,603,731,468 bytes);
-cleanup manifest: build/port-map-sections/superseded-binaries-cleanup.json.
-Latest qualified statistics binaries, logs, captures, assets/archive are retained.
-No user decision is pending.
-
-All statistics installers are consumed. install-native.py stopped after C/body
-and declaration removal on the historical noxmap inventory; its remaining caller
-cleanup section was run separately. fixture-native.py, project-live.py, freeze.py,
-qualify-c.py, finalize-live-baseline.py, qualify-native.py and
-finalize-native-docs.py are consumed. Actual source and committed evidence take
-precedence; never replay old mutation scripts.
-
-Completed statistics C scenario asset copies were deduplicated after byte/hash
-verification, reclaiming 1,660,044,319 bytes. Audit/apply modes of
-`deduplicate-game-statistics-c-assets.py` are consumed; restore remains available.
-Preserve restoration manifests, changed maps/saves/screenshots and run logs.
-Original assets/archive are unchanged; archive remains untracked. Native scenario
-copies were also hash-verified and deduplicated, reclaiming another1,660,044,319
-bytes. Audit96630/apply62682 are joined; corresponding cleanup modes consumed.
-Earlier verified cleanup modes are also consumed.
+**6035e191** is committed and pushed; C baseline858bc315. Converted35 live routines,
+removed nine orphan routines,43 C interfaces, seven globals and the final
+server__system__server.c file.17 focused roots /1,307 entries; each target491 roots
+/42,850 entries;263 captures /99,027 records match. Fresh production/integration
+qualified. C count28,790 /67 files (−2,029); current C prerequisites add4 lines.
+See [GAME_STATISTICS.md](docs/porting/GAME_STATISTICS.md). All statistics installers,
+qualification scripts and C/native asset audit/apply modes are consumed; restore
+modes remain available. Never replay older mutation scripts.
 
 ## Qualified parent — server map and round orchestration
 

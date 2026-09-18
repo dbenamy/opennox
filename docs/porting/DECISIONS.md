@@ -1943,7 +1943,7 @@ writer losing its0x80 flag, and v3 floor regions omitting23*Y in both tile-half
 coordinate formulas. Correct these before freezing the C baseline. Preserve the
 existing wire layouts, signed/count narrowing and sentinel limitations. These
 are deliberate behavior corrections, not claims of exact original-C behavior.
-They are small and reversible;18 focused roots /4,125 entries pass, and18 captures
-/4,108 records repeat identically across processes. Fresh production qualification
-is pending because C changed. See [MAP_SECTIONS.md](MAP_SECTIONS.md) for failures,
+They are small and reversible;19 focused roots /4,144 entries pass, and19 captures
+/4,126 records repeat identically across processes. All three targets and fresh
+production/headless qualification pass. See [MAP_SECTIONS.md](MAP_SECTIONS.md) for failures,
 fixture corrections and scope.

@@ -175,3 +175,39 @@ pass after freezing. This is a recovery checkpoint; accumulated three-target
 and fresh production qualification remain pending. No Go conversion is installed.
 freeze.py is consumed. Native IO/floor sketches under build are uninstalled and
 unqualified; actual source and committed captures take precedence.
+
+## Three-target C gates and additive light contract
+
+Capture checkpoint **4cc84212** is pushed. Accumulated default/server/highres
+gates each pass **509 roots /46,975 entries**, no skips. All **281 captures
+/103,135 records** match across targets, including the18 frozen section captures.
+All three gates have identical2,468-file source. See
+map-sections-core-c-qualification.json.
+
+Translation review added a real-polygon contract: nondefault and zero level,
+containment versus nearby-edge fallback, outside fallback100, and wall-region
+inclusion/exclusion. Its18 cases pass twice and its capture is frozen. The new
+total is **19 focused roots /4,144 entries**, **19 captures /4,126 records**.
+This is an additive test-only change; qualify that group on each target and
+verify that all preexisting source hashes are unchanged, rather than repeating
+the same accumulated groups. Fresh production qualification uses the final source.
+The native batch will run the whole affected selection including the new group.
+
+A second reviewed cleanup removed33 more superseded successful-run binaries,
+reclaiming1,606,402,944 bytes; manifest suffix cleanup-2.json. Both cleanup modes
+are consumed. Original assets, latest qualified binaries and evidence remain.
+
+## Qualified C baseline
+
+All C gates now qualify: **510 roots /46,994 entries per target**, counted as the
+509-root accumulated selection plus the independently qualified light addition.
+All **282 captures /103,153 records** match across targets; the19 new section
+captures contain4,126 records. Source identity is verified within the accumulated
+gates and within the additive/production gates; their sole source difference is
+the new light-test file. No existing production/test file changed between them.
+
+Static checks, three fresh production binaries/ABI, the exact known1,553 failure
+entries /3 packages, gameplay, explicit save/load and compressed flat-map
+regeneration pass. See map-sections-c-qualification.json and c-production.
+The C count is28,794 /67 files /zero reference. Go drafts are ready for integration;
+no native source is installed at this checkpoint. qualify-c.py is consumed.

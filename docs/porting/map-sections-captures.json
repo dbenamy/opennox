@@ -1,13 +1,13 @@
 {
-  "status": "repeated corrected C captures; broader qualification pending",
+  "status": "qualified corrected C baseline",
   "production_parent": "6035e191",
   "prerequisites": [
     "missing metadata wall ownership",
     "wall high-flag serialization",
     "historical floor-region Y scale"
   ],
-  "roots": 18,
-  "tests": 4125,
+  "roots": 19,
+  "tests": 4144,
   "captures": [
     {
       "label": "map-sections-floor-current",
@@ -116,9 +116,19 @@
       "sha256": "5bdafe2aab5895f49ea57d9443df66bdc5f0345cdd06593337da74ebd0314bc0",
       "records": 192,
       "source": "src/map_sections_wall_write_porttest_test.go"
+    },
+    {
+      "label": "map-sections-wall-polygon-light",
+      "sha256": "e7a5286a956195936797f543b3612617af81de5d862303c8e2ce8e79f8fb3dff",
+      "records": 18,
+      "source": "src/map_sections_wall_light_porttest_test.go",
+      "repeat": [
+        "build/port-map-sections/light-first",
+        "build/port-map-sections/light-repeat"
+      ]
     }
   ],
-  "records": 4108,
+  "records": 4126,
   "repeat": [
     "build/port-map-sections/focused-pass",
     "build/port-map-sections/focused-repeat"

@@ -1,0 +1,192 @@
+{
+  "status": "qualified corrected C baseline",
+  "capture_commit": "4cc84212",
+  "production_parent": "6035e191",
+  "prerequisites": [
+    "missing metadata wall ownership",
+    "wall high-flag serialization",
+    "historical floor-region Y scale"
+  ],
+  "focused_roots": 19,
+  "focused_tests": 4144,
+  "new_captures": 19,
+  "new_capture_records": 4126,
+  "targets": [
+    {
+      "target": "default",
+      "roots": 510,
+      "tests": 46994,
+      "accumulated_roots": 509,
+      "accumulated_tests": 46975,
+      "additive_roots": 1,
+      "additive_tests": 19
+    },
+    {
+      "target": "server",
+      "roots": 510,
+      "tests": 46994,
+      "accumulated_roots": 509,
+      "accumulated_tests": 46975,
+      "additive_roots": 1,
+      "additive_tests": 19
+    },
+    {
+      "target": "highres",
+      "roots": 510,
+      "tests": 46994,
+      "accumulated_roots": 509,
+      "accumulated_tests": 46975,
+      "additive_roots": 1,
+      "additive_tests": 19
+    }
+  ],
+  "captures": 282,
+  "records": 103153,
+  "source_files": 2469,
+  "core_source_files": 2468,
+  "source_partition": "All accumulated gates have identical source. The only later source difference is one additive frozen polygon-light test, qualified in each target. Final source is identical across light gates and production.",
+  "source_identity_verified": true,
+  "capture_identity": true,
+  "static": true,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 74.48558791703545,
+        "sha256": "4eaabc3975528c2fe9467f5119eff1503c9d698ec10d9b6d4e3d0c1b78bbed24",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 8.223110328195617,
+        "sha256": "032980abfc58775de88476280e97e481e79cbb138e2d9a965c78abd981af92b9",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 51.58307866519317,
+        "sha256": "7be1d263e2cdfb184dad1c000a1d96f0ee488723beb6d7724ac4b5a96b92d03c",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "map-sections-c": {
+        "exit": 0,
+        "wall_seconds": 61.30073843896389,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 60.730621786089614,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "4eaabc3975528c2fe9467f5119eff1503c9d698ec10d9b6d4e3d0c1b78bbed24",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-map-sections/c-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/map-sections-c/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Floor/wall map sections corrected C baseline",
+          "removed_maps": 0
+        }
+      },
+      "map-sections-c-save": {
+        "exit": 0,
+        "wall_seconds": 47.698202229104936,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 47.24903355492279,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "4eaabc3975528c2fe9467f5119eff1503c9d698ec10d9b6d4e3d0c1b78bbed24",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-map-sections/c-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/map-sections-c-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Floor/wall map sections corrected C baseline",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "cdef4a4402d8feb6bdaec8bb8bf9969608d2e86d312596f1371846addc865cad"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "08d5290c8bb5ea8d4c12d801b2e8bf3d538000f1c283eff3523747fbf25bd8ab"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 56.19852213514969,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "flat_scenario": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 48.13393569202162,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/server-config-flat-c",
+    "binary_sha256": "4eaabc3975528c2fe9467f5119eff1503c9d698ec10d9b6d4e3d0c1b78bbed24",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-map-sections/c-production/production/bin/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/map-sections-c-flat/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Corrected C map sections",
+    "removed_maps": 51,
+    "regenerated_maps": 1
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 67,
+      "lines": 28794
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  }
+}
