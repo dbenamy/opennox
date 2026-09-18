@@ -1,0 +1,178 @@
+{
+  "status": "qualified native conversion",
+  "baseline": "15df0163",
+  "formatting_baseline": "console-commands-format-c-qualification.json",
+  "focused_roots": 25,
+  "focused_tests_including_subtests": 539,
+  "new_captures": 18,
+  "new_capture_records": 581,
+  "targets": [
+    {
+      "target": "default",
+      "roots": 300,
+      "tests_including_subtests": 20221
+    },
+    {
+      "target": "server",
+      "roots": 300,
+      "tests_including_subtests": 20221
+    },
+    {
+      "target": "highres",
+      "roots": 300,
+      "tests_including_subtests": 20221
+    }
+  ],
+  "captures": 169,
+  "records": 32019,
+  "source_identity": true,
+  "capture_identity": true,
+  "source_files": 2373,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 71.10146036697552,
+        "sha256": "23646ca723cb2469fc91a324ea8a878dda57dc2aaa8ac002e1530bc4a141b1d5",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.788001651875675,
+        "sha256": "e66ef87577b7a9d1f7c3dccb8aee025c864a15ecc3ca6f2b92f4edcd20a3cf04",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 75.39922536490485,
+        "sha256": "ee26309fe9c47257e57b1cc9c9d4ecd0ae7cd9d5187cd2d14b8295400f2445c0",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "console-commands-native": {
+        "exit": 0,
+        "wall_seconds": 77.86967340996489,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 77.21363501995802,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "23646ca723cb2469fc91a324ea8a878dda57dc2aaa8ac002e1530bc4a141b1d5",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-console-commands/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/console-commands-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native console commands: frozen C contracts and existing live owners.",
+          "removed_maps": 0
+        }
+      },
+      "console-commands-native-save": {
+        "exit": 0,
+        "wall_seconds": 47.048409981885925,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 46.54977777809836,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "23646ca723cb2469fc91a324ea8a878dda57dc2aaa8ac002e1530bc4a141b1d5",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-console-commands/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/console-commands-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native console commands: frozen C contracts and existing live owners.",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "c2a5f6ba330c5ffb5220274093c7ff0507e06f89d52b8ad352166b271ef2fc65"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 55.28748883213848,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "flat_scenario": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 48.78477803012356,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/server-config-flat-c",
+    "binary_sha256": "23646ca723cb2469fc91a324ea8a878dda57dc2aaa8ac002e1530bc4a141b1d5",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-console-commands/native-production/production/bin/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/console-commands-native-flat/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Native console commands",
+    "removed_maps": 51,
+    "regenerated_maps": 1
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 69,
+      "lines": 33267
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "selected_c_bodies_removed": 47,
+  "private_c_function_interfaces_retired": 46,
+  "c_globals_retired": 2,
+  "remaining_c_entrypoints": [
+    "nox_xxx_serverHandleClientConsole_443E90"
+  ]
+}

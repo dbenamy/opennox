@@ -272,3 +272,24 @@ func TestConsoleCommandsRemoteObserver(t *testing.T) {
 	}
 	spellbookCapture(t, "console-commands-remote-observer", rows, "41bc2c18a58c2013c5d41265675de841bcff39cf374d060f65f3d4942fa4984d")
 }
+
+// The remaining C quit-dialog caller supplies no command text for this action.
+func TestConsoleCommandsQuitObserver(t *testing.T) {
+	_, units := consoleCommandRemoteOwner(t)
+	p := units[0].UpdateDataPlayer().Player
+	p.Field3680 = 0
+	t.Cleanup(noxflags.PortTestGameFlags(noxflags.GameHost))
+	old := legacy.Nox_xxx_playerGoObserver_4E6860
+	t.Cleanup(func() { legacy.Nox_xxx_playerGoObserver_4E6860 = old })
+	calls := 0
+	legacy.Nox_xxx_playerGoObserver_4E6860 = func(pl *server.Player, force, extra int) int {
+		calls++
+		if pl != p || force != 0 || extra != 0 || legacy.PortTestConsoleSender() != p.C() {
+			t.Fatal("quit dialog observer arguments/context changed")
+		}
+		return 0
+	}
+	if legacy.PortTestConsoleRemote(p.C(), 0, nil) != 1 || calls != 1 || legacy.PortTestConsoleSender() != nil {
+		t.Fatal("quit dialog observer completion changed")
+	}
+}

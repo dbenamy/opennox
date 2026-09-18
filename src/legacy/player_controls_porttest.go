@@ -419,9 +419,9 @@ func (p *portTestShopPools) controlsAdopt(u *server.Object) {
 func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe.Pointer) uint64 {
 	switch op {
 	case 57:
-		// Run the original console handler inside the existing complete player,
+		// Run the native console handler inside the existing complete player,
 		// protection, game-data and equipment owner; x is the independent expected level.
-		result := WrapCommandC(Nox_cmd_cheat_level)(context.Background(), GetConsole(), 2, []string{"cheat", "level", GoStringP(name)})
+		result := ConsoleCommand(Nox_cmd_cheat_level)(context.Background(), GetConsole(), 2, []string{"cheat", "level", GoStringP(name)})
 		if got := *controlByte(controlPlayer(u), 3684); got != byte(x) {
 			panic(fmt.Sprintf("console level %d, want %d", got, x))
 		}

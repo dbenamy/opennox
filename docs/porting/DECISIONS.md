@@ -1839,3 +1839,22 @@ contracts from the committed baseline before translating them. Retain choice res
 for the client decoder and move disposal's only caller directly to Go. Cast dispatch
 and window-show C returns become void because all actual callers discard their
 incidental results. See [VOTES.md](VOTES.md) for evidence and qualification status.
+
+
+### Console command prerequisites and compatibility
+
+Two independent baseline contracts reproduced incorrect respawn-off flag handling
+and a mode-restricted remote-command return leaving its borrowed sender set.
+Correct both before freezing; C baseline15df0163 passes all targets and fresh
+production/integration. Keep the original numeric narrowing order, C-locale name
+comparison, low-byte UTF16 server-name conversion and final 15-byte name limit.
+
+The native registry calls Go handlers directly. Retain one C dispatcher entrypoint
+for the quit dialog's observer action, discovered by the first native compile;
+move the other private interfaces and scratch strings entirely into Go. Validate
+that entrypoint with the actual nil-text calling convention. Preserve defined
+`%%` / `%!` formatting and C's ignored string width/precision, verified with an
+additional committed-C fixture after review found the first draft's mismatch.
+Unsupported argument-taking formats without arguments have no defined C result;
+Go's no-argument path treats them as text rather than reading nonexistent arguments.
+See [CONSOLE_COMMANDS.md](CONSOLE_COMMANDS.md) for evidence and qualification state.

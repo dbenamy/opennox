@@ -15,14 +15,15 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. Client/server player voting is now native Go: 35 live routines, one orphan
-body removed, 31 interfaces and 12 globals retired. Five C entrypoints remain for
-live callers. See [VOTES.md](docs/porting/VOTES.md) for coverage and review decisions.
+pause. Console command handling is now native Go: 47 C bodies and two private
+C files removed, 46 function interfaces and two C globals retired. One C-to-Go
+entrypoint remains for the quit dialog. See
+[CONSOLE_COMMANDS.md](docs/porting/CONSOLE_COMMANDS.md) for coverage and decisions.
 
-Current production C is **34,343 physical lines in 71 files**, with zero reference
-C (−1,178 from the repaired C baseline). All three targets and fresh production /
-headless integration qualify. The next candidate is console command handling;
-[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Current production C is **33,267 physical lines in 69 files**, with zero reference
+C (−1,077 from the repaired C baseline). All three targets and fresh production /
+headless integration qualify. Player admission/status and client respawn are the
+next candidates; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 

@@ -474,25 +474,6 @@ int sub_43F0E0(uint32_t* a1) {
 	return result;
 }
 
-//----- (004417E0) --------------------------------------------------------
-void sub_4417E0(wchar2_t* a1, const char* a2) {
-	unsigned char v2; // dl
-	char* v3;         // edi
-	char v4[64];      // [esp+4h] [ebp-C0h]
-	wchar2_t v5[64];   // [esp+44h] [ebp-80h]
-
-	if (a2) {
-		strcpy(v4, a2);
-		v2 = getMemByte(0x587000, 103296);
-		v3 = &v4[strlen(v4)];
-		*(uint32_t*)v3 = *getMemU32Ptr(0x587000, 103292);
-		v3[4] = v2;
-		nox_swprintf(v5, L"%-20.20S\t\t", v4);
-		nox_wcscat(a1, v5);
-	}
-}
-// 4417E0: using guessed type char var_C0[64];
-
 //----- (00445450) --------------------------------------------------------
 wchar2_t* sub_445450() {
 	unsigned char* v0; // esi

@@ -1,0 +1,81 @@
+diff --git a/src/console_commands_format_porttest_test.go b/src/console_commands_format_porttest_test.go
+new file mode 100644
+index 00000000..cf17af1e
+--- /dev/null
++++ b/src/console_commands_format_porttest_test.go
+@@ -0,0 +1,75 @@
++//go:build porttest
++
++package opennox
++
++import (
++	"bytes"
++	"fmt"
++	"github.com/opennox/libs/strman"
++	"github.com/opennox/opennox/v1/common/ntype"
++	"github.com/opennox/opennox/v1/internal/netlist"
++	"github.com/opennox/opennox/v1/legacy"
++	"github.com/opennox/opennox/v1/legacy/common/alloc"
++	"testing"
++)
++
++func TestConsoleCommandsLiteralFormatting(t *testing.T) {
++	type row struct {
++		Action int
++		Input  string
++		Packet []byte
++		Output []consoleCommandLine
++	}
++	var rows []row
++	for _, tc := range []struct{ input, want string }{{"100%% ready %!", "100% ready !"}, {"%%!", "%!"}, {"%%%%", "%%"}} {
++		for _, action := range []int{0, 3, 5} {
++			t.Run(fmt.Sprintf("%s/%d", tc.input, action), func(t *testing.T) {
++				o, units := consoleCommandRemoteOwner(t)
++				r := row{Action: action, Input: tc.input}
++				if action == 0 {
++					configure, restore := o.c.srv.PortTestMeterStrings(strman.Entry{ID: "parsecmd.c:notyetimplemented", Vals: []strman.Variant{{Str: tc.input}}})
++					t.Cleanup(restore)
++					configure(0)
++					if !o.call(t, "allow user", false) || len(o.printer.lines) != 1 || o.printer.lines[0].Text != tc.want {
++						t.Fatal("literal console formatting", o.printer.lines, tc.want)
++					}
++					r.Output = o.printer.lines
++				} else {
++					s := o.c.srv.S()
++					s.PortTestCombatAudioReset()
++					t.Cleanup(s.PortTestCombatAudioReset)
++					text, free := alloc.CString16(tc.input)
++					defer free()
++					if legacy.PortTestConsoleRemote(units[0].UpdateDataPlayer().Player.C(), action, text) != 1 {
++						t.Fatal("broadcast result")
++					}
++					r.Packet = s.NetList.CopyPacketsA(ntype.PlayerInd(1), netlist.Kind1)
++					flags := byte(2)
++					if action == 5 {
++						flags |= 16
++					}
++					want := []byte{168, 0, 0, flags, 0, 0, 0, 0, byte(len(tc.want) + 1), 0, 0}
++					want = append(want, []byte(tc.want)...)
++					want = append(want, 0)
++					if !bytes.Equal(r.Packet, want) {
++						t.Fatalf("literal broadcast formatting: %v, want %v", r.Packet, want)
++					}
++				}
++				rows = append(rows, r)
++			})
++		}
++	}
++	t.Run("string-width-and-escaped-conversion", func(t *testing.T) {
++		o := newConsoleCommandOwner(t)
++		configure, restore := o.c.srv.PortTestMeterStrings(strman.Entry{ID: "parsecmd.c:setgamename", Vals: []strman.Variant{{Str: "name <%20.2S> %%S %!"}}})
++		t.Cleanup(restore)
++		configure(0)
++		old := alloc.GoString((*byte)(legacy.PortTestServerConfigPointer("name-get", 0, nil)))
++		t.Cleanup(func() { legacy.Nox_xxx_gameSetServername_40A440(old) })
++		if !o.call(t, "set name", false, "Alpha") || len(o.printer.lines) != 1 || o.printer.lines[0].Text != "name <Alpha> %S !" {
++			t.Fatal("string formatting", o.printer.lines)
++		}
++		rows = append(rows, row{Action: 1, Input: "Alpha", Output: o.printer.lines})
++	})
++	spellbookCapture(t, "console-commands-literal-format", rows, "1a2af9dbffa7c8495e12815c061a188dee02839ef0f710f9ff86d4303cccdec7")
++}

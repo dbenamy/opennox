@@ -6,7 +6,6 @@ package legacy
 #include "GAME2.h"
 #include "GAME3_2.h"
 
-void sub_409FB0_settings(short a1, unsigned short a2);
 int sub_489FF0(int a1, int a2, const void* a3);
 */
 import "C"
@@ -43,7 +42,7 @@ func Sub_4D0D90(a1 int) {
 	mapCycleSetEnabled(uint32(a1))
 }
 func Sub_409FB0_settings(a1 uint16, a2 uint16) {
-	C.sub_409FB0_settings(C.short(a1), C.ushort(a2))
+	serverConfigScoreSet(int16(a1), a2)
 }
 func Sub_409EC0(a1 int) {
 	serverConfigFlagsRemove(int32(a1))

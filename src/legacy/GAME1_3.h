@@ -79,7 +79,6 @@ int nox_xxx_bookDrawString_43FA80_43FD80(void* a1, wchar2_t* a2, int a3, int a4,
 int nox_draw_setTabWidth_43FE20(int a1);
 void nox_client_clearScreen_440900();
 void nox_xxx_netServerCmd_440950_empty();
-void sub_4417E0(wchar2_t* a1, const char* a2);
 wchar2_t* sub_445450();
 int nox_xxx_drawMessageLines_445530();
 int nox_xxx_guiChatMode_4456E0(int* a1);

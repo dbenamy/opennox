@@ -2,33 +2,39 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 34.3k lines** — **34,343 physical lines in 71 production
-`.c` files**, zero reference C. Latest conversion: **−1,178** from the voting C
+**Rough C remaining: about 33.3k lines** — **33,267 physical lines in 69 production
+`.c` files**, zero reference C. Latest conversion: **−1,077** from the console C
 baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — console-command C baseline in progress
+## Current — qualified native console commands
 
-Voting conversion **d57a662c is committed and pushed**. The next selection is
-47 C bodies /936 original body lines, covering console handlers and two connected
-formatting/settings helpers. See [CONSOLE_COMMANDS.md](docs/porting/CONSOLE_COMMANDS.md).
-Two C fixes are installed: respawn-off removes bit8, and mode-gated remote returns
-clear the borrowed sender. Working C is **34,344 lines /71files** (+1).
+This snapshot records the completed native console conversion. Repaired C baseline
+**15df0163 is committed and pushed**. All 47 selected C bodies are replaced; two
+C files, 46 function interfaces, two globals and three private scratch buffers
+retire. One C-to-Go dispatcher entrypoint remains for the quit dialog. See
+[CONSOLE_COMMANDS.md](docs/porting/CONSOLE_COMMANDS.md).
 
-All 23 focused groups pass in two independent processes (`final-a`, `final-b`):
-527 passing test events, no skips; 17 identical captures /571 records are frozen.
-All three target gates pass 298 roots /20,209 tests and 168 identical captures /
-32,009 records. Static mapped-memory, three fresh production builds/ABI, exact
-known full-suite comparison and three headless scenarios pass. All sessions are
-joined; source is editable. Qualification is recorded in
-`docs/porting/console-commands-c-qualification.json`.
+Final qualification: 25 focused roots /539 tests; 18 captures /581 records match C.
+Each default/server/highres gate passes 300 roots /20,221 tests without skips;
+169 captures /32,019 records match across targets and C evidence. All four gates
+have identical source. Static mapped-memory, three fresh builds/ABI, exact known
+full-suite results and three headless scenarios pass. All tool sessions are joined;
+source is editable. Evidence: `docs/porting/console-commands-native-qualification.json`
+and `build/port-console-commands/native-final-{default,server,highres}` / `native-production`.
+The formatter extension has an independently repeated C fixture patch and report.
 
-Next: commit/push this qualified repaired C baseline, then integrate/review the
-ignored native drafts under `build/port-console-commands/*.go.draft`. Drafts are
-not yet compiled or accepted; design notes are in `native-design.md`. Retire the
-47 selected C bodies and their private interfaces, adapt fixtures without changing
-frozen expectations, qualify/commit/push native and immediately continue.
+Next: commit/push this qualified snapshot, then continue the player-state batch.
+Ignored audit material in `build/port-player-state` selects 22 candidate routines /
+619 body lines in GAME1.c. Two scalar getter/setter bodies appear orphaned; audit
+remaining wrappers/callbacks before final scope. Consider the connected quit-menu
+module where ownership fits. No next-batch source changes or baseline yet.
+
+Disk: verified asset deduplication and lossless compression of completed old evidence
+reclaimed space. Restoration manifests remain local; original assets and the archive
+are unchanged. See the console report for details. Do not replay consumed cleanup
+scripts or installers. The untracked asset archive remains outside commits.
 
 
 ## Qualified parent — native client/server voting

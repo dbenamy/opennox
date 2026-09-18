@@ -1,0 +1,11 @@
+{
+  "baseline": "15df0163",
+  "test": "TestConsoleCommandsLiteralFormatting",
+  "capture": "console-commands-literal-format",
+  "sha256": "1a2af9dbffa7c8495e12815c061a188dee02839ef0f710f9ff86d4303cccdec7",
+  "records": 10,
+  "independent_processes": 2,
+  "original_c_pass": true,
+  "native_pre_fix_failed_cases": 9,
+  "production_source_changed": false
+}
