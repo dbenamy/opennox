@@ -15,14 +15,14 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. The prefab/map-runtime conversion is qualified: 40 native algorithms,
-matching default/server/highres captures and fresh production/gameplay evidence.
-The connected cache ownership corrections are documented for review in
-[PREFAB_RUNTIME.md](docs/porting/PREFAB_RUNTIME.md).
+pause. Prefab script merging, callback/name/reference adjustment and generation
+setup are now native Go. Eighteen live algorithms replace C; two orphan helpers,
+24 interfaces and five globals are retired. See
+[PREFAB_SCRIPTS.md](docs/porting/PREFAB_SCRIPTS.md) for the qualified corrections.
 
-Current production C is **36,917 physical lines in 73 files**, with zero reference
-C (−1,583 this conversion). The connected prefab-script/map-generation
-C baseline is now qualified (36,924 lines after prerequisite repairs); [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Current production C is **35,521 physical lines in 72 files**, with zero reference
+C (−1,403 from the repaired C baseline). The next connected candidate is client/server
+player voting; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 

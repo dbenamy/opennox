@@ -1,0 +1,191 @@
+{
+  "status": "qualified native prefab scripts and generation",
+  "baseline": "5c83d11a",
+  "live_algorithms": 18,
+  "removed_orphan_bodies": 2,
+  "retired_interfaces": [
+    "nox_script_readFloat_542B90",
+    "nox_script_readInt_542B70",
+    "nox_script_readWriteIii_541D80",
+    "nox_script_readWriteJjj_5418C0",
+    "nox_script_readWriteVvv_541E40",
+    "nox_script_readWriteWww_5417C0",
+    "nox_script_readWriteXxx_541A50",
+    "nox_script_readWriteYyy_542380",
+    "nox_script_shouldReadEvenMoreXxx",
+    "nox_script_shouldReadMoreXxx",
+    "nox_script_writeFloat_542BD0",
+    "nox_script_writeInt_542BB0",
+    "nox_xxx_interesting_xfer_4D0010",
+    "nox_xxx_tileInitdataClear_4D3C50",
+    "sub_4CFFE0",
+    "sub_4D39F0",
+    "sub_4D3C70",
+    "sub_4D3C80",
+    "sub_509120",
+    "sub_542BF0",
+    "sub_543110",
+    "sub_5435C0",
+    "sub_543620",
+    "sub_579C60"
+  ],
+  "retired_globals": [
+    "dword_5d4594_2489420",
+    "dword_5d4594_2489424",
+    "dword_5d4594_2489428",
+    "dword_5d4594_3835312",
+    "dword_5d4594_3835396"
+  ],
+  "targets": [
+    {
+      "target": "native-final-default",
+      "roots": 156,
+      "tests_including_subtests": 2057,
+      "package_seconds": [
+        23.784
+      ],
+      "source_files": 2341
+    },
+    {
+      "target": "native-final-server",
+      "roots": 156,
+      "tests_including_subtests": 2057,
+      "package_seconds": [
+        22.969
+      ],
+      "source_files": 2341
+    },
+    {
+      "target": "native-final-highres",
+      "roots": 156,
+      "tests_including_subtests": 2057,
+      "package_seconds": [
+        23.907
+      ],
+      "source_files": 2341
+    }
+  ],
+  "captures": 90,
+  "capture_records": 34943,
+  "identical_sources_and_captures": true,
+  "matches_c_baseline": true,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 69.88089374592528,
+        "sha256": "241675e23f6ef58b8e2fa4e50016d9d99ddc24a847d6bb497b1c65d40ad39c55",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.969058027956635,
+        "sha256": "8b66e89739a224a1a57266ee2fba736a7cc7fcfa939112f692b463628b42f901",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 73.41350793791935,
+        "sha256": "46933b013d0b4bfb49a9583d2023ea3f21cdaf9217c6a8a55472672ca5368c91",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "prefab-scripts-native": {
+        "exit": 0,
+        "wall_seconds": 62.82155313389376,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 62.198620528914034,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "241675e23f6ef58b8e2fa4e50016d9d99ddc24a847d6bb497b1c65d40ad39c55",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-prefab-scripts/native-final-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/prefab-scripts-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native prefab scripts and generation: frozen repaired C contracts and live owner integration.",
+          "removed_maps": 0
+        }
+      },
+      "prefab-scripts-native-save": {
+        "exit": 0,
+        "wall_seconds": 47.06129263085313,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 46.54317762120627,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "241675e23f6ef58b8e2fa4e50016d9d99ddc24a847d6bb497b1c65d40ad39c55",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-prefab-scripts/native-final-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/prefab-scripts-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native prefab scripts and generation: frozen repaired C contracts and live owner integration.",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "6caafb33f3fb563c5341d813cc7910be2f9db07c98ff2f375d3e8fb79bb6afac"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 54.84762174799107,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "flat_regeneration_passed": true,
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 72,
+      "lines": 35521
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "evidence": "build/port-prefab-scripts/native-final-{default,server,highres,production}"
+}

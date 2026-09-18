@@ -9,38 +9,28 @@ package legacy
 #include "server__script__file.h"
 #include "noxstring.h"
 extern uint32_t nox_tile_def_cnt;
-extern uint32_t dword_5d4594_3835396, dword_5d4594_3835312;
+
 */
 import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
-	"unsafe"
 )
 
-func prefabGlobal(i int) *uint32 {
-	switch i {
-	case prefabSelected:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_3835396))
-	case prefabInstance:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_3835312))
-	default:
-		return &prefabState[i]
-	}
-}
+func prefabGlobal(i int) *uint32 { return &prefabState[i] }
 func prefabCompareNames(a, b uint32) int {
 	return int(C.nox_strcmpi((*C.char)(mapRoomPointer(a)), (*C.char)(mapRoomPointer(b))))
 }
 func prefabTileDefinitionCount() int    { return int(C.nox_tile_def_cnt) }
-func prefabSetBounds(bounds *[8]uint32) { C.sub_4D3C80((*C.uint32_t)(unsafe.Pointer(bounds))) }
+func prefabSetBounds(bounds *[8]uint32) { prefabScriptBounds(bounds) }
 func prefabInteresting(bounds *[4]int32, index uint32) uint32 {
-	return uint32(C.nox_xxx_interesting_xfer_4D0010((*C.uint32_t)(unsafe.Pointer(bounds)), C.int(index)))
+	return prefabScriptPending(bounds, index)
 }
 func prefabAdjustScript(instance uint32, dx, dy int32) {
-	C.sub_542BF0(C.int(instance), C.int(dx), C.int(dy))
+	prefabScriptObjectNames(int32(instance), dx, dy)
 	offset := [2]int32{dx, dy}
-	C.sub_543110((*C.char)(memmap.PtrOff(0x973F18, 30760)), (*C.int)(unsafe.Pointer(&offset)))
+	prefabScriptRewrite(alloc.GoString((*byte)(memmap.PtrOff(0x973F18, 30760))), offset)
 }
 func prefabCombineScripts(a, b, c string) {
 	x, freeX := alloc.CString(a)

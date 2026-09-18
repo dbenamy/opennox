@@ -4,7 +4,6 @@ package legacy
 #include "server__script__script.h"
 #include "server__script__internal.h"
 int nox_xxx_gameIsSwitchToSolo_4DB240();
-size_t nox_script_readWriteWww_5417C0(FILE* a1, FILE* a2, FILE* a3);
 */
 import "C"
 import (
@@ -120,21 +119,6 @@ func Nox_xxx_script_511C50(a1 int) *server.Object {
 func Nox_xxx_scriptPrepareFoundUnit_511D70(a1 *server.Object) {
 	monsterCachePrepare(a1)
 }
-func Nox_script_readWriteWww_5417C0(a1 *binfile.File, a2 *binfile.File, a3 *binfile.File) {
-	// The caller owns these files; only the temporary C handles belong here.
-	created := make(map[*binfile.File]unsafe.Pointer)
-	for _, f := range []*binfile.File{a1, a2, a3} {
-		if f.Handle == nil {
-			created[f] = unsafe.Pointer(NewFileHandle(f))
-		}
-	}
-	defer func() {
-		files.Lock()
-		defer files.Unlock()
-		for f, handle := range created {
-			delete(files.byHandle, handle)
-			f.Handle = nil
-		}
-	}()
-	C.nox_script_readWriteWww_5417C0(NewFileHandle(a1), NewFileHandle(a2), NewFileHandle(a3))
+func Nox_script_readWriteWww_5417C0(a1, a2, a3 *binfile.File) {
+	prefabScriptMerge(a1, a2, a3)
 }

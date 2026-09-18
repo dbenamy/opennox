@@ -1804,3 +1804,13 @@ these reversibly before freezing the baseline; retain the C clock bridge's 32-bi
 truncation. All three targets and fresh production/integration qualify the repaired
 baseline. Remove two selection helpers with no production callers during conversion.
 Evidence and review details: [PREFAB_SCRIPTS.md](PREFAB_SCRIPTS.md).
+
+
+### Prefab script native boundaries and dispatch
+
+Preserve the clock adapter's 32-bit truncation, mixed-sign bounds and actual
+builtin-remapping predicate dispatch. Reject incomplete instruction streams and
+invalid generation directories; stop a failed source copy before using a stale
+backup. Remove two proven orphan helpers and four unused C adapters. Independent
+contracts, frozen C comparisons and fresh three-target/production integration
+qualify the final change. See [PREFAB_SCRIPTS.md](PREFAB_SCRIPTS.md).

@@ -57,7 +57,6 @@ extern uint32_t nox_server_sendMotd_108752;
 extern uint32_t dword_5d4594_1556856;
 extern uint32_t dword_5d4594_1548480;
 extern uint32_t nox_server_sanctuaryHelp_54276;
-extern uint32_t dword_5d4594_3835312;
 extern uint32_t dword_5d4594_3835388;
 extern uint32_t dword_5d4594_3835348;
 extern uint32_t dword_5d4594_3835352;
@@ -67,7 +66,6 @@ extern uint32_t dword_5d4594_3835356;
 extern uint32_t nox_server_connectionType_3596;
 extern uint32_t dword_5d4594_1550916;
 extern uint32_t dword_5d4594_2649712;
-extern uint32_t dword_5d4594_3835396;
 extern uint32_t dword_5d4594_1548476;
 
 extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
@@ -162,111 +160,7 @@ int sub_4CFFC0(int a1) { return nox_mapToGameFlags_4CFF50(*(uint32_t*)(a1 + 28))
 
 //----- (004D0010) --------------------------------------------------------
 void* nox_objectTypeGetXfer(char* id);
-int nox_xxx_interesting_xfer_4D0010(uint32_t* a1, int a2) {
-	int i;          // eax
-	uint32_t* v3;   // edi
-	char* v4;       // eax
-	int (*v5)(int); // eax
-	int v6;         // esi
-	int v7;         // eax
-	int v8;         // ecx
-	int v9;         // eax
-	int v10;        // ecx
-	int v11;        // esi
-	int v12;        // eax
-	int v13;        // ecx
-	int v14;        // esi
-	char* v15;      // eax
-	int v16;        // ecx
-	int v17;        // esi
-	char* v18;      // eax
-	int v19;        // esi
-	uint32_t* v20;  // eax
-	int v21;        // eax
-	int v22;        // esi
-	char* v23;      // eax
 
-	for (i = nox_server_getFirstObjectUninited_4DA870(); i; i = nox_server_getNextObjectUninited_4DA880(i)) {
-		*(uint32_t*)(i + 44) = *(uint32_t*)(i + 40);
-		*(uint32_t*)(i + 40) = a2++;
-	}
-	v3 = (uint32_t*)nox_server_getFirstObjectUninited_4DA870();
-	if (!v3) {
-		return a2;
-	}
-	while (1) {
-		v4 = (char*)nox_xxx_getUnitName_4E39D0((int)v3);
-		v5 = nox_objectTypeGetXfer(v4);
-		if (v5 == nox_xxx_XFerElevator_4F53D0) {
-			v6 = v3[187];
-			v7 = sub_4CFFE0(*(uint32_t*)(v6 + 8));
-			if (!v7) {
-				*(uint32_t*)(v6 + 8) = 0;
-				*(uint32_t*)(v6 + 4) = 0;
-			} else {
-				v8 = *(uint32_t*)(v7 + 40);
-				*(uint32_t*)(v6 + 4) = v7;
-				*(uint32_t*)(v6 + 8) = v8;
-			}
-		} else if (v5 == nox_xxx_XFerElevatorShaft_4F54A0) {
-			v6 = v3[187];
-			v9 = sub_4CFFE0(*(uint32_t*)(v6 + 8));
-			if (v9) {
-				v10 = *(uint32_t*)(v9 + 40);
-				*(uint32_t*)(v6 + 4) = v9;
-				*(uint32_t*)(v6 + 8) = v10;
-			} else {
-				*(uint32_t*)(v6 + 8) = 0;
-				*(uint32_t*)(v6 + 4) = 0;
-			}
-		} else if (v5 == nox_xxx_XFerTransporter_4F5300) {
-			v11 = v3[187];
-			v12 = sub_4CFFE0(*(uint32_t*)(v11 + 16));
-			if (v12) {
-				v13 = *(uint32_t*)(v12 + 40);
-				*(uint32_t*)(v11 + 12) = v12;
-				*(uint32_t*)(v11 + 16) = v13;
-			} else {
-				*(uint32_t*)(v11 + 16) = 0;
-				*(uint32_t*)(v11 + 12) = 0;
-			}
-		} else if (v5 == nox_xxx_XFerHole_4F51D0) {
-			v14 = v3[175];
-			v15 = nox_xxx_mapGetWallSize_426A70();
-			v16 = *(uint32_t*)(v14 + 12);
-			*(uint32_t*)(v14 + 8) += *a1 - 23 * *(uint32_t*)v15;
-			*(uint32_t*)(v14 + 12) = a1[1] - 23 * *((uint32_t*)v15 + 1) + v16;
-		} else if (v5 == nox_xxx_XFerExit_4F4B90) {
-			v17 = v3[175];
-			v18 = nox_xxx_mapGetWallSize_426A70();
-			*(float*)(v17 + 80) = (double)(int)(*a1 - 23 * *(uint32_t*)v18) + *(float*)(v17 + 80);
-			*(float*)(v17 + 84) = (double)(int)(a1[1] - 23 * *((uint32_t*)v18 + 1)) + *(float*)(v17 + 84);
-		} else if (v5 == nox_xxx_XFerMover_4F5730) {
-			v19 = v3[187];
-			v20 = (uint32_t*)sub_579C60(*(uint32_t*)(v19 + 8));
-			if (v20) {
-				*(uint32_t*)(v19 + 8) = *v20;
-			} else {
-				*(uint32_t*)(v19 + 8) = 0;
-			}
-			v21 = sub_4CFFE0(*(uint32_t*)(v19 + 32));
-			if (v21) {
-				*(uint32_t*)(v19 + 32) = *(uint32_t*)(v21 + 40);
-			} else {
-				*(uint32_t*)(v19 + 32) = 0;
-			}
-		} else if (v5 == nox_xxx_XFerGlyph_4F5890) {
-			v22 = v3[173];
-			v23 = nox_xxx_mapGetWallSize_426A70();
-			*(float*)(v22 + 28) = (double)(int)(*a1 - 23 * *(uint32_t*)v23) + *(float*)(v22 + 28);
-			*(float*)(v22 + 32) = (double)(int)(a1[1] - 23 * *((uint32_t*)v23 + 1)) + *(float*)(v22 + 32);
-		}
-		v3 = (uint32_t*)nox_server_getNextObjectUninited_4DA880((int)v3);
-		if (!v3) {
-			return a2;
-		}
-	}
-}
 
 //----- (004D11A0) --------------------------------------------------------
 void sub_4D11A0() {
@@ -435,200 +329,17 @@ char* nox_xxx_netReportAllLatency_4D3050() {
 }
 
 //----- (004D39F0) --------------------------------------------------------
-int sub_4D39F0(const char* a3) {
-	unsigned int v1;    // ecx
-	char v2;            // dl
-	unsigned char* v3;  // edi
-	const char* v4;     // esi
-	int v5;             // edx
-	int v6;             // eax
-	unsigned char* v7;  // edi
-	unsigned int v8;    // ecx
-	unsigned char* v9;  // edi
-	const char* v10;    // esi
-	unsigned char* v11; // edi
-	int v12;            // ecx
-	int v13;            // edx
-	int v14;            // eax
-	char* v15;          // edi
-	unsigned char v16;  // cl
-	int result;         // eax
-	char v18[2048];     // [esp+10h] [ebp-800h]
 
-	*getMemU64Ptr(0x5D4594, 1549772) = nox_platform_get_ticks();
-	memset(getMemAt(0x973F18, 35912), 0, 0x48u);
-	*getMemU32Ptr(0x973F18, 35912) = 0;
-	*getMemU32Ptr(0x973F18, 35916) = 0;
-	dword_5d4594_3835348 = 0;
-	dword_5d4594_3835356 = 255;
-	dword_5d4594_3835352 = 0;
-	dword_5d4594_3835360 = 0;
-	dword_5d4594_3835364 = 1;
-	dword_5d4594_3835368 = 1;
-	dword_5d4594_3835372 = 1;
-	*getMemU32Ptr(0x973F18, 35948) = 0;
-	*getMemU32Ptr(0x973F18, 35952) = 0;
-	*getMemU32Ptr(0x973F18, 35956) = 0;
-	dword_5d4594_3835388 = 0;
-	dword_5d4594_3835392 = 1;
-	dword_5d4594_3835396 = -1;
-	*getMemU8Ptr(0x973F18, 35972) = 2;
-	*getMemU32Ptr(0x973F18, 35976) = 0;
-	*getMemU32Ptr(0x973F18, 35980) = 0;
-	sub_51D0E0();
-	if (a3) {
-		v1 = strlen(a3) + 1;
-		v2 = v1;
-		v1 >>= 2;
-		memcpy(getMemAt(0x973F18, 42152), a3, 4 * v1);
-		v4 = &a3[4 * v1];
-		v3 = getMemAt(0x973F18, 42152 + 4 * v1);
-		LOBYTE(v1) = v2;
-		v5 = *getMemU32Ptr(0x587000, 197560);
-		memcpy(v3, v4, v1 & 3);
-		strcpy((char*)getMemAt(0x973F18, 36008), a3);
-		v6 = *getMemU32Ptr(0x587000, 197564);
-		v7 = getMemAt(0x973F18, 36008 + strlen((const char*)getMemAt(0x973F18, 36008)));
-		*(uint32_t*)v7 = *getMemU32Ptr(0x587000, 197556);
-		*((uint32_t*)v7 + 1) = v5;
-		*((uint32_t*)v7 + 2) = v6;
-		v8 = strlen(a3) + 1;
-		LOBYTE(v5) = v8;
-		v8 >>= 2;
-		memcpy(getMemAt(0x973F18, 38056), a3, 4 * v8);
-		v10 = &a3[4 * v8];
-		v9 = getMemAt(0x973F18, 38056 + 4 * v8);
-		LOBYTE(v8) = v5;
-		LOWORD(v5) = *getMemU16Ptr(0x587000, 197576);
-		memcpy(v9, v10, v8 & 3);
-		v11 = getMemAt(0x973F18, 38057 + strlen((const char*)getMemAt(0x973F18, 38056)));
-		v12 = *getMemU32Ptr(0x587000, 197572);
-		*(uint32_t*)--v11 = *getMemU32Ptr(0x587000, 197568);
-		LOBYTE(v6) = getMemByte(0x587000, 197578);
-		*((uint32_t*)v11 + 1) = v12;
-		*((uint16_t*)v11 + 4) = v5;
-		v11[10] = v6;
-		nox_fs_remove((const char*)getMemAt(0x973F18, 36008));
-		nox_fs_remove((const char*)getMemAt(0x973F18, 38056));
-	} else {
-		*getMemU8Ptr(0x973F18, 42152) = getMemByte(0x5D4594, 1549780);
-		*getMemU8Ptr(0x973F18, 40104) = getMemByte(0x5D4594, 1549784);
-		*getMemU8Ptr(0x973F18, 36008) = getMemByte(0x5D4594, 1549788);
-		*getMemU8Ptr(0x973F18, 38056) = getMemByte(0x5D4594, 1549792);
-	}
-	nox_xxx_mapReset_5028E0();
-	v13 = *getMemU32Ptr(0x587000, 197584);
-	strcpy(v18, a3);
-	v14 = *getMemU32Ptr(0x587000, 197588);
-	v15 = &v18[strlen(v18)];
-	*(uint32_t*)v15 = *getMemU32Ptr(0x587000, 197580);
-	v16 = getMemByte(0x587000, 197592);
-	*((uint32_t*)v15 + 1) = v13;
-	*((uint32_t*)v15 + 2) = v14;
-	v15[12] = v16;
-	sub_502A50(v18);
-	sub_502AB0(v18);
-	result = sub_502B10();
-	dword_5d4594_3835312 = 0;
-	*getMemU32Ptr(0x973F18, 35880) = 0;
-	*getMemU32Ptr(0x5D4594, 1599580) = 0;
-	return result;
-}
 // 4D39F0: using guessed type char var_800[2048];
 
 //----- (004D3C50) --------------------------------------------------------
-void nox_xxx_tileInitdataClear_4D3C50(const void* a1) { memcpy(getMemAt(0x973F18, 35912), a1, 0x48u); }
+
 
 //----- (004D3C70) --------------------------------------------------------
-unsigned char* sub_4D3C70() { return getMemAt(0x973F18, 35912); }
+
 
 //----- (004D3C80) --------------------------------------------------------
-uint32_t* sub_4D3C80(uint32_t* a1) {
-	uint32_t* result; // eax
-	int v2;           // ebp
-	int v3;           // ecx
-	int v4;           // edi
-	int v5;           // esi
-	int v6;           // edx
-	int v7;           // ebx
-	int v8;           // ecx
-	int v9;           // esi
-	int v10;          // [esp+10h] [ebp-10h]
-	int v11;          // [esp+14h] [ebp-Ch]
-	int v12;          // [esp+1Ch] [ebp-4h]
 
-	result = a1;
-	v2 = a1[3];
-	v10 = *a1;
-	v3 = a1[1];
-	v11 = a1[1];
-	if (v2 < v3) {
-		v3 = a1[3];
-		v10 = a1[2];
-		v11 = a1[3];
-	}
-	if (a1[5] < v3) {
-		v10 = a1[4];
-		v3 = a1[5];
-		v11 = a1[5];
-	}
-	if (a1[7] < v3) {
-		v10 = a1[6];
-		v11 = a1[7];
-	}
-	v4 = a1[2];
-	v12 = a1[3];
-	if (*a1 < v4) {
-		v4 = *a1;
-		v12 = a1[1];
-	}
-	if (a1[4] < v4) {
-		v4 = a1[4];
-		v12 = a1[5];
-	}
-	v5 = a1[6];
-	if (v5 < v4) {
-		v4 = a1[6];
-		v12 = a1[7];
-	}
-	v6 = a1[4];
-	v7 = a1[5];
-	if (*a1 > v6) {
-		v6 = *a1;
-		v7 = a1[1];
-	}
-	if (a1[2] > v6) {
-		v7 = a1[3];
-		v6 = a1[2];
-	}
-	if (v5 > v6) {
-		v6 = a1[6];
-		v7 = a1[7];
-	}
-	v8 = a1[7];
-	v9 = a1[6];
-	if (a1[1] > v8) {
-		v9 = *a1;
-		v8 = a1[1];
-	}
-	if (v2 > v8) {
-		v9 = a1[2];
-		v8 = a1[3];
-	}
-	if (a1[5] > v8) {
-		v9 = a1[4];
-		v8 = a1[5];
-	}
-	a1[6] = v9;
-	*a1 = v10;
-	a1[2] = v4;
-	a1[7] = v8;
-	a1[1] = v11;
-	a1[4] = v6;
-	a1[5] = v7;
-	a1[3] = v12;
-	return result;
-}
 
 
 

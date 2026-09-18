@@ -53,7 +53,6 @@ int sub_5798A0(int a1);
 unsigned int nox_xxx_waypoint_5798C0();
 char* sub_579A30();
 nox_waypoint_t* nox_server_getWaypointById_579C40(int a1);
-nox_waypoint_t* sub_579C60(unsigned int a1);
 int sub_579CA0();
 uint32_t* sub_579E70();
 char* sub_57A1B0(short a1);

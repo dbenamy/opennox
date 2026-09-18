@@ -22,8 +22,6 @@ extern uint32_t dword_5d4594_2487656;
 extern uint32_t dword_5d4594_2487672;
 extern uint32_t dword_5d4594_2487676;
 extern uint32_t dword_5d4594_2491616;
-extern uint32_t dword_5d4594_3835396;
-extern uint32_t dword_5d4594_3835312;
 static uint32_t* populationGlobal(int i){switch(i){
 case 0:return &dword_5d4594_1550916;
 case 1:return &dword_5d4594_2487564;

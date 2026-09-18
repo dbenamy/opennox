@@ -191,7 +191,7 @@ func Nox_xxx_netSavePlayer_41CE00() {
 	C.nox_xxx_netSavePlayer_41CE00()
 }
 func Sub_4D39F0(a1 string) {
-	C.sub_4D39F0(internCStr(a1))
+	prefabScriptGeneration(a1)
 }
 func Sub_48D4B0(a1 int) {
 	C.sub_48D4B0(C.int(a1))

@@ -74,5 +74,8 @@
       "source": "src/prefab_scripts_vm_suffix_porttest_test.go"
     }
   ],
-  "records": 4182
+  "records": 4182,
+  "retired_captures": {
+    "prefab-scripts-selection": "Both selection copy/address helpers have no production callers; remove their dedicated fixture with the orphan C bodies."
+  }
 }

@@ -2,36 +2,34 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 36.9k lines** — **36,917 physical lines in 73 production
-`.c` files**, zero reference C. Latest conversion: **−1,583**.
+**Rough C remaining: about 35.5k lines** — **35,521 physical lines in 72 production
+`.c` files**, zero reference C. Latest conversion: **−1,403** from the repaired
+baseline (−1,396 net including prerequisite repairs).
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — prefab script/generation C baseline qualified
+## Current — prefab script native conversion qualified
 
-Prefab runtime **d5f460cc is pushed**. The next repaired C baseline is qualified:
-20 selected bodies / 1,363 original lines, with 18 live algorithms to translate
-and two newly confirmed orphan helpers to delete. See
-[PREFAB_SCRIPTS.md](docs/porting/PREFAB_SCRIPTS.md) for repairs and scope audit.
+The repaired C baseline **5c83d11a is committed and pushed**. Eighteen live
+algorithms are native, two orphan helpers removed, 24 C interfaces retired and
+five counters moved to Go. No test-reference C is retained. Details and review
+items: [PREFAB_SCRIPTS.md](docs/porting/PREFAB_SCRIPTS.md).
 
-Sixteen focused roots passed twice; twelve frozen captures contain 4,182 records.
-All three targets pass 155 roots / 2,056 including subtests, with 91 identical
-captures / 34,959 records and unchanged source. Fresh production passes all three
-builds/ABI checks, exact known full-suite failures, gameplay, save/load and flat
-regeneration. All sessions are joined; no source freeze is active.
+Final default/server/highres each pass156roots /2,057 including subtests, with
+90 byte-identical captures /34,943 records matching C. Seventeen focused roots
+and static checks pass. Fresh production passes three builds/ABI/symbol checks,
+the exact known full-suite failure set, gameplay, save/load and flat regeneration.
+All sessions are joined; source is editable. Evidence: native-final-* directories
+and native-capture-audit.json under build/port-prefab-scripts.
 
-Working C is **36,924 lines / 73 files**, zero reference C (+7 prerequisite repair
-lines). No algorithm has been ported yet. Native drafts under
-build/port-prefab-scripts/native-{binary,objects,files}.go are not installed;
-read native-review.md before integration. Next: commit/push this qualified C
-baseline, integrate/review the drafts, retire interfaces and five globals, then
-focused/three-target/fresh production qualification and conversion commit/push.
-No user question is pending. The capture freezer is consumed.
-
-Disk cleanup leaves about **13 GiB free**. Older disposable Go cache entries were
-removed after all gates joined; artifacts and original assets/archive remain.
-Earlier verified scenario-copy deletion scripts and cache cleanup are consumed.
+Next: commit/push this qualified conversion, then start the connected player-vote
+batch. Read-only candidate `build/port-votes/expanded-candidate.json` selects
+34 functions /999 C body lines in server vote records/update and client vote
+window/message handling. Review reachability and actual owners before fixtures;
+no next-batch source is installed. See its plan-draft.md and expanded-references.txt.
+No user question pending. Source installer/freezer/finalizer/deletion passes are
+consumed and ignored drafts are stale. Preserve the untracked asset archive.
 
 ## Qualified parent — prefab/map-runtime native conversion (d5f460cc, pushed)
 
