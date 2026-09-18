@@ -1,0 +1,25 @@
+{
+  "status": "verified test-only baseline production reuse",
+  "parent": "4a8d73ed",
+  "original_source_files": 2272,
+  "source_files": 2280,
+  "all_original_sources_identical": true,
+  "added_porttest_only_files": [
+    "src/common/memmap/nox/blobdata/quest_progress_porttest.go",
+    "src/legacy/quest_progress_porttest.go",
+    "src/quest_progress_boss_porttest_test.go",
+    "src/quest_progress_markers_porttest_test.go",
+    "src/quest_progress_persistence_porttest_test.go",
+    "src/quest_progress_prepare_porttest_test.go",
+    "src/quest_progress_stage_porttest_test.go",
+    "src/quest_progress_variables_porttest_test.go"
+  ],
+  "source_manifest_sha256": "eafd0673e29c68124e7653a003f1ff704fce95597f752ebc000dbc9ef7e43925",
+  "reused": "build/port-monster-control/native-production",
+  "binaries": {
+    "opennox": "25ca873094ddb1749d71dccff9219ccd67addecede1a25c7e414c7a3eebf34d4",
+    "opennox-hd": "8bf3f01365241af1e4128d0ac9748552a7977afd0e2ed95b2c464a50737cde7b",
+    "opennox-server": "e7325a425692c65bdc3f8529c19424d4a63badca0ca6c855a971ba98163cb2d8"
+  },
+  "fresh_production_required_after_conversion": true
+}

@@ -8,7 +8,24 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — monster-control native conversion qualified
+## Current — quest-progress C baseline qualified
+
+Parent **4a8d73ed is committed and pushed**. The connected scope covers
+**24 live C functions / 715 body lines**, plus the proven orphan sub_51A950.
+Eleven focused captures / **3,156 records** repeat identically and pass frozen
+expectations. All three affected-target sweeps pass without skips, with matching
+captures and unchanged source across all four gates. Static mapped-state checks
+pass. Production reuse verifies 2,272 unchanged original files, eight porttest-only
+additions and all three parent binary hashes. See
+[QUEST_PROGRESS.md](docs/porting/QUEST_PROGRESS.md) and qualification reports.
+
+No production conversion is installed. Next: commit/push the baseline, finish and
+review ignored Go drafts, install, compare frozen captures, add bounded-input
+contracts and qualify all targets plus fresh production. freeze-c.py and finish-c.py
+are consumed; do not replay. Original assets/archive remain intact; about 15 GiB
+is available. No user decision is required.
+
+## Qualified parent — monster-control native conversion (4a8d73ed, pushed)
 
 C baseline **77cc1fd2 is committed and pushed**. All forty live functions are in
 Go and three proven orphans are removed. Final focused run passes sixteen roots,

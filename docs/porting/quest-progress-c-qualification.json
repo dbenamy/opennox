@@ -1,0 +1,44 @@
+{
+  "status": "qualified C baseline",
+  "parent": "4a8d73ed",
+  "runs": {
+    "default": {
+      "seconds": 179.164,
+      "roots": 494,
+      "including_subtests": 49288,
+      "skips": 0,
+      "captures": 227,
+      "records": 150824
+    },
+    "server": {
+      "seconds": 257.76,
+      "roots": 494,
+      "including_subtests": 49288,
+      "skips": 0,
+      "captures": 227,
+      "records": 150824
+    },
+    "highres": {
+      "seconds": 196.536,
+      "roots": 494,
+      "including_subtests": 49288,
+      "skips": 0,
+      "captures": 227,
+      "records": 150824
+    }
+  },
+  "source_files": 2280,
+  "source_manifest_sha256": "eafd0673e29c68124e7653a003f1ff704fce95597f752ebc000dbc9ef7e43925",
+  "focused": {
+    "roots": 11,
+    "captures": 11,
+    "records": 3156,
+    "repeated_identical": true,
+    "frozen_pass": true
+  },
+  "production_reuse": "quest-progress-c-production-reuse.json",
+  "production_c_lines": 39193,
+  "production_c_files": 74,
+  "reference_c_lines": 0,
+  "orphan_functions": 1
+}

@@ -1,0 +1,157 @@
+{
+  "live_functions": [
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "nox_xxx_journalQuestSet_500540",
+      "body_lines": 25,
+      "sha256": "ad49ea7360c4c492fcb4528ed441d6f6807714bed616358f06664a979d0be73d"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "nox_xxx_scriptGetJournal_5005E0",
+      "body_lines": 37,
+      "sha256": "6d12b5b8da133d0c0800cb023c0e3de5fe09cad1e8ee643251a3dc8a37b7de41"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "nox_xxx_journalQuestSetBool_5006B0",
+      "body_lines": 25,
+      "sha256": "9ebff359fa0f128f53250322995e76655286a7c9c1ccbb977d082146c96e05f2"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_500750",
+      "body_lines": 12,
+      "sha256": "9f0d44e5d81128d2c754742bf56c62aec2371cf26539b90b1f2c61862aea0629"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_500770",
+      "body_lines": 12,
+      "sha256": "b2465945dbdfc70d0a3449bffcf156de973d3fee70f2900333129fe201b4ae82"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_500790",
+      "body_lines": 17,
+      "sha256": "cd738541b1950217323d8fbec9ef6377c67e0cdabe0da2cb08c865d8f9302cf2"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_5007E0",
+      "body_lines": 96,
+      "sha256": "aa1d8bccb2d98d026c1e1cf5afddb705ceb93d0d459c2b23059b5782e93e4e56"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_5009B0",
+      "body_lines": 26,
+      "sha256": "b8f22367ade4ba921ea499840081d03051d512fdbf6b9fb39938620991ee7d0f"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_500A60",
+      "body_lines": 42,
+      "sha256": "d669788497f68f8733d8ae2a1e397b81a2da50ce43f0579452470fe1ba4a4a03"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_500B70",
+      "body_lines": 34,
+      "sha256": "02dd4bad8313f8dbeaad26a3f074b29b989302b01f783717c324aab0c53a92f9"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_51A500",
+      "body_lines": 30,
+      "sha256": "ad932e4b32bbea2034a1206764b5e647fac96d8dbb3f2b83c1e69a1270d24f14"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_51A550",
+      "body_lines": 19,
+      "sha256": "8a7ad3ab7193bfb8ad22c23781130b2c3af12e1b6375632e4bcd0a7f433bd08c"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_spawnHecubahQuest_51A5A0",
+      "body_lines": 81,
+      "sha256": "e143d7e5f0b61ee63b17c7318c6d686cd27705312fc352813ab20ba86e079cda"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_spawnNecroQuest_51A7A0",
+      "body_lines": 57,
+      "sha256": "c8306a0d03af6f8a0f200ac3a41145ce84c39e06d2a18e41cef518f806758b67"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_getQuestStage_51A930",
+      "body_lines": 1,
+      "sha256": "f5d56879e3d702245055d73f050d36ebd003316f53a6e877f9494ba1af972507"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_51A940",
+      "body_lines": 7,
+      "sha256": "c44d0a5fef9d8c464760fa3818c1409247b242d414d6014dc19b3cb30a319c68"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "name": "nox_script_SetQuestInt_514BE0",
+      "body_lines": 9,
+      "sha256": "5be80f2a9932867d2dfbac00a04870f13656870e5cbcd00fc0e628422e29c5ae"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "name": "nox_script_SetQuestFloat_514C10",
+      "body_lines": 9,
+      "sha256": "fc1244a426d9d54bd76c6656faa03fafc3700a13c54546736c52fbf7812cf429"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "name": "nox_script_GetQuestInt_514C40",
+      "body_lines": 9,
+      "sha256": "352ebbcb3d7abea65d950d0298fa76b0c73d5919c8322c414f112cfd48ebe586"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "name": "nox_script_GetQuestFloat_514C60",
+      "body_lines": 9,
+      "sha256": "5f8db0774d80043409ac8c1d5ac6a1986380332a864f969b088c930335426947"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "name": "nox_script_ResetQuestStatus_514C90",
+      "body_lines": 7,
+      "sha256": "ebb8e97b34898cf93640c1d1207eba6eba96d5335dae2900e72cbcc83d511c98"
+    },
+    {
+      "file": "src/legacy/server__system__server.c",
+      "name": "sub_500510",
+      "body_lines": 5,
+      "sha256": "ca033ee56911af45ae380500d99800cf27c4a423b291aa946e39daf76d1c1478"
+    },
+    {
+      "file": "src/legacy/server__system__server.c",
+      "name": "sub_51A1F0",
+      "body_lines": 139,
+      "sha256": "7ca228b50b1671bd9526d377737b4d9a0e1ae93116956ee5f87a3866c3e5e2aa"
+    },
+    {
+      "file": "src/legacy/server__system__server.c",
+      "name": "sub_51A920",
+      "body_lines": 7,
+      "sha256": "65b776e77e615e3c543b0d28593b40525a6762c6761fcc9a45e171af11d03e9b"
+    }
+  ],
+  "orphan_candidates": [
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_51A950",
+      "body_lines": 1,
+      "sha256": "98b633afea85ec3e3fc9b75e9749f54b3f0208b18f6e46ca866c50a630818ab8"
+    }
+  ],
+  "parent": "4a8d73ed"
+}
