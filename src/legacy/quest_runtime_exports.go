@@ -21,9 +21,6 @@ func sub_4D60E0(a C.int) *C.uint32_t {
 //export sub_4D6130
 func sub_4D6130(a C.int) C.int { return C.int(questRuntimeIncrement(objectFromInt(a), 4660, 2)) }
 
-//export sub_4D6170
-func sub_4D6170(a C.int) C.int { return C.int(questRuntimeIncrement(objectFromInt(a), 4664, 4)) }
-
 //export sub_4D61F0
 func sub_4D61F0(a C.int) C.int { return C.int(questRuntimeIncrement(objectFromInt(a), 4672, 16)) }
 

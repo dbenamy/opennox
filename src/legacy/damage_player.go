@@ -61,8 +61,8 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 		flagOff, kindOff = 304, 300
 	}
 	*equipmentWord(ud, flagOff) = 0
-	if player && C.nox_xxx_playerGetPossess_4DDF30(asObjectC(u)) != nil {
-		C.nox_xxx_playerObserveClear_4DDEF0(asObjectC(u))
+	if player && Nox_xxx_playerGetPossess_4DDF30(u) != nil {
+		Nox_xxx_playerObserveClear_4DDEF0(u)
 	}
 	if u.Buffs&(1<<27) != 0 && actual != nil {
 		if actual.ObjClass&1 != 0 && projectileFront(u, actual) {
@@ -111,7 +111,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 		front := C.nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&actual.PrevPos)))&1 != 0
 		if kind != 15 && eligible && front {
 			state := *(*byte)(unsafe.Add(ud, 88))
-			shield := (player && state == 16 || !player && C.nox_xxx_mobActionGet_50A020(inventoryInt(u)) == 21) && armor&0x3000000 != 0
+			shield := (player && state == 16 || !player && monsterControlHead(u) == 21) && armor&0x3000000 != 0
 			if !shield && weapons&0x400 == 0 && state == 1 && C.nox_common_mapPlrActionToStateId_4FA2B0(asObjectC(u)) == 45 && armor&0x3000000 != 0 && C.gameex_flags&0x10 != 0 {
 				shield = true
 			}
@@ -146,7 +146,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 					if player {
 						C.nox_xxx_playerSetState_4FA020(asObjectC(u), C.nox_common_randomInt_415FA0(18, 20))
 					} else {
-						C.nox_xxx_monsterAction_50A360(inventoryInt(u), 23)
+						monsterControlEnsure(u, 23)
 					}
 					value := float32(float64(C.nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamageFromBlockPercentage"))) * float64(amount))
 					damageBlockingItem(u, source, weapon, 1024, value, kind, true)
@@ -161,7 +161,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 					if player {
 						C.nox_xxx_playerSetState_4FA020(asObjectC(u), 21)
 					} else {
-						C.nox_xxx_monsterAction_50A360(inventoryInt(u), 23)
+						monsterControlEnsure(u, 23)
 					}
 					value := float32(float64(C.nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamageFromBlockPercentage"))) * float64(amount))
 					damageBlockingItem(u, source, weapon, 134184960, value, kind, true)

@@ -132,11 +132,6 @@ func nox_xxx_netReportAcquireCreature_4D91A0(a0 C.int, a1 *C.nox_object_t) C.int
 	return C.int(gameplayReportAcquireCreature(int(a0), (*server.Object)(unsafe.Pointer(a1))))
 }
 
-//export nox_xxx_netFxShield_0_4D9200
-func nox_xxx_netFxShield_0_4D9200(a0 C.int, a1 C.int) C.int {
-	return C.int(gameplayReportShield(int(a0), (*server.Object)(unsafe.Pointer(uintptr(uint32(a1))))))
-}
-
 //export nox_xxx_netMonitorCreature_4D9250
 func nox_xxx_netMonitorCreature_4D9250(a0 C.int, a1 C.int) C.int {
 	return C.int(gameplayReportMonitor(int(a0), (*server.Object)(unsafe.Pointer(uintptr(uint32(a1))))))
@@ -150,11 +145,6 @@ func nox_xxx_netReportTeamBase_4D92D0(a0 C.int, a1 C.int) C.int {
 //export nox_xxx_netSendReportNPC_4D93A0
 func nox_xxx_netSendReportNPC_4D93A0(a0 C.int, a1 C.int) *C.uint32_t {
 	return (*C.uint32_t)(unsafe.Pointer(uintptr(gameplayReportNPC(int(a0), (*server.Object)(unsafe.Pointer(uintptr(uint32(a1))))))))
-}
-
-//export nox_xxx_netSendChapterEnd_4D9560
-func nox_xxx_netSendChapterEnd_4D9560(a0 C.int, a1 C.char, a2 C.int) C.int {
-	return C.int(gameplayReportChapter(int(a0), byte(a1), int(a2)))
 }
 
 //export nox_xxx_netSendFlagStatus_4D95A0

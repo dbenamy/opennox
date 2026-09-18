@@ -438,21 +438,6 @@ func monsterDeathLoot(u *server.Object, kind int) {
 	}
 }
 
-//export nox_xxx_monsterLoadStrikeFn_549040
-func nox_xxx_monsterLoadStrikeFn_549040(a C.int, name *C.char) C.int {
-	return C.int(bool2int(monsterLoadCallback(unsafe.Pointer(uintptr(a)), C.GoString(name), 287096, 236)))
-}
-
-//export nox_xxx_monsterLoadDieFn_5490E0
-func nox_xxx_monsterLoadDieFn_5490E0(a C.int, name *C.char) C.int {
-	return C.int(bool2int(monsterLoadCallback(unsafe.Pointer(uintptr(a)), C.GoString(name), 287280, 228)))
-}
-
-//export nox_xxx_monsterLoadDeadFn_549180
-func nox_xxx_monsterLoadDeadFn_549180(a C.int, name *C.char) C.int {
-	return C.int(bool2int(monsterLoadCallback(unsafe.Pointer(uintptr(a)), C.GoString(name), 287192, 232)))
-}
-
 //export nox_xxx_strikeOgre_549220
 func nox_xxx_strikeOgre_549220(a C.float) C.int {
 	return C.int(bool2int(monsterStrike((*server.Object)(unsafe.Pointer(uintptr(math.Float32bits(float32(a))))), 0)))

@@ -232,9 +232,9 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 	case 0:
 		return uint64(C.nox_xxx_mobActionToAnimation_533790(p))
 	case 1:
-		return uint64(C.nox_xxx_monsterCanMelee_534220(p))
+		return uint64(bool2int(monsterCanMelee(u)))
 	case 2:
-		return uint64(C.nox_xxx_monsterCanShoot_534280(p))
+		return uint64(bool2int(monsterCanShoot(u)))
 	case 3:
 		return uint64(C.nox_xxx_monsterHasShield_5342C0(p))
 	case 4:
@@ -252,7 +252,7 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 	case 10:
 		return uint64(C.sub_534440(p))
 	case 11:
-		return math.Float64bits(float64(C.sub_534470(p)))
+		return math.Float64bits(float64(u.UpdateDataMonster().MonsterDef.MeleeAttackRange112))
 	case 12:
 		return uint64(bool2int(monsterRunningStatus(u)))
 	case 13:
@@ -274,7 +274,7 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 	case 21:
 		return uint64(bool2int(monsterIsPlant(u)))
 	case 22:
-		return uint64(C.nox_xxx_unitIsZombie_534A40(p))
+		return uint64(bool2int(monsterIsZombie(u)))
 	case 23:
 		target := u
 		if sp.Broadcast || sp.NilUnit {
@@ -282,7 +282,7 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 		}
 		C.nox_xxx_orderUnit_533900(asObjectC(proxy.state.source), asObjectC(target), C.int(sp.Order))
 	case 24:
-		return uint64(uintptr(unsafe.Pointer(C.nox_xxx_unitNPCActionToAnim_533D00(p))))
+		return uint64(uintptr(monsterNPCAnim(u)))
 	case 25:
 		monsterMoveAudio(u)
 	case 26, 27:

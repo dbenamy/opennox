@@ -6,8 +6,6 @@ package legacy
 #include <stdlib.h>
 #include "defs.h"
 #include "GAME4_1.h"
-extern void* nox_alloc_pendingOwn_2386916;
-extern uint32_t dword_5d4594_2386920;
 extern void* dword_5d4594_1599540;
 */
 import "C"
@@ -21,17 +19,17 @@ func PortTestObjectXferFreeName(p unsafe.Pointer) { C.free(p) }
 
 // Preserve globals while using the actual pending-ownership allocator/list.
 func PortTestObjectXferPendingOwners() (func() [][2]uint32, func()) {
-	oldPool, oldHead := C.nox_alloc_pendingOwn_2386916, C.dword_5d4594_2386920
-	if C.nox_xxx_allocPendingOwnsArray_516EE0() == 0 {
+	oldPool, oldHead := monsterPendingClass, monsterPendingHead
+	if monsterPendingInit() == 0 {
 		panic("pending ownership allocation")
 	}
 	read := func() (rows [][2]uint32) {
-		for p := unsafe.Pointer(uintptr(C.dword_5d4594_2386920)); p != nil; p = *(*unsafe.Pointer)(unsafe.Add(p, 8)) {
+		for p := unsafe.Pointer(uintptr(monsterPendingHead)); p != nil; p = *(*unsafe.Pointer)(unsafe.Add(p, 8)) {
 			rows = append(rows, *(*[2]uint32)(p))
 		}
 		return
 	}
-	return read, func() { C.sub_516F10(); C.nox_alloc_pendingOwn_2386916 = oldPool; C.dword_5d4594_2386920 = oldHead }
+	return read, func() { monsterPendingFree(); monsterPendingClass = oldPool; monsterPendingHead = oldHead }
 }
 
 // The editor list owns its libc list nodes, while the fixture owns its objects.

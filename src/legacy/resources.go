@@ -93,7 +93,7 @@ func resourceDamage(u *server.Object, amount int32) {
 				C.nox_xxx_soloMonsterKillReward_4EE500_obj_health(C.int(uintptr(u.CObj())))
 			}
 			if u.ObjClass&2 != 0 {
-				C.nox_xxx_monsterCallDieFn_50A3D0((*C.uint32_t)(u.CObj()))
+				monsterControlDeath(u)
 			} else if u.Death != nil {
 				ccall.CallVoidPtr(u.Death, u.CObj())
 			} else {

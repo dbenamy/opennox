@@ -5,7 +5,6 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME4_2.h"
-extern void* nox_monsterBin_head_2386924;
 extern uint32_t dword_5d4594_588120;
 */
 import "C"
@@ -40,12 +39,12 @@ func PortTestCreatureXferHelper(op int, u *server.Object, entry unsafe.Pointer, 
 	}
 }
 
-// Supply actual linked definitions for the production C lookup, restoring the
+// Supply actual linked definitions for the production definition lookup, restoring the
 // previous owner rather than replacing lookup behavior.
 func PortTestCreatureXferDefinitions(head unsafe.Pointer) func() {
-	old := C.nox_monsterBin_head_2386924
-	C.nox_monsterBin_head_2386924 = head
-	return func() { C.nox_monsterBin_head_2386924 = old }
+	old := monsterDefinitions
+	monsterDefinitions = (*server.MonsterDef)(head)
+	return func() { monsterDefinitions = old }
 }
 
 func PortTestCreatureXferVoiceSets(head unsafe.Pointer) func() {

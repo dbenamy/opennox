@@ -15,17 +15,16 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Spatial targeting, cursor selection and wall-contact normals are
-now in Go. The latest batch replaces eleven live functions; all three target sweeps
-and fresh production/gameplay qualification pass. See
-[SPATIAL_TARGETING.md](docs/porting/SPATIAL_TARGETING.md).
+scheduled pause. Monster controls, definitions, script selection and pending
+ownership are now in Go. Forty live functions were replaced; all three target
+sweeps and fresh production/gameplay qualification pass. See
+[MONSTER_CONTROL.md](docs/porting/MONSTER_CONTROL.md).
 
-Current production C is **40,218 physical lines in 74 files**, with zero reference C.
-This conversion removed **559 lines**, eleven obsolete interfaces and temporary C
-allocations in tracing and aim prediction. Qualification also reproduced and fixed
-an older callback bridge treating an integer token as a pointer; curve captures
-remain unchanged. The asset suite retains its exact three known failing packages.
-[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Current production C is **39,193 physical lines in 74 files**, with zero reference C.
+This conversion removed **1,025 lines**, 62 obsolete interfaces and four private C
+globals. Bounded definition parsing and rejected-record cleanup are documented for
+review. All original captures match; the asset suite retains its exact three known
+failing packages. [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 

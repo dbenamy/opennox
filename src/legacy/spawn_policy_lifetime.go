@@ -207,6 +207,3 @@ func spawnPolicyGlyphRelease(u *server.Object) {
 //
 //export sub_50E140
 func sub_50E140(a C.int) { spawnPolicyRelease(objectFromInt(a)) }
-
-//export sub_50E1E0
-func sub_50E1E0(a C.int) { spawnPolicyDeathRelease(objectFromInt(a)) }

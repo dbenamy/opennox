@@ -3,7 +3,6 @@ package legacy
 /*
 #include "defs.h"
 
-unsigned int sub_516D00(nox_object_t* a1);
 int* nox_server_scriptMoveTo_5123C0(int a1, int a2);
 int nox_xxx_playDialogFile_44D900(unsigned char* a1, int a2);
 int nox_xxx_inventoryServPlace_4F36F0(nox_object_t* a1p, nox_object_t* a2p, int a3, int a4);
@@ -39,7 +38,7 @@ func nox_xxx_inventoryServPlace_4F36F0(a1 *nox_object_t, a2 *nox_object_t, a3 in
 }
 
 func Sub_516D00(a1 *server.Object) {
-	C.sub_516D00(asObjectC(a1))
+	monsterControlRevive(a1)
 }
 func Nox_xxx_netSendChat_528AC0(a1 *server.Object, a2 string, a3 uint16) {
 	gameplayTextChat(a1, gameplayTextUnits(alloc.InternCString16(a2)), a3)

@@ -14,9 +14,6 @@ int nox_objectDropAudEvent_4EE2F0(nox_object_t* a1, nox_object_t* a2, float2* a3
 void nox_xxx_script_forcedialog_548CD0(nox_object_t* a1, nox_object_t* a2);
 wchar2_t* sub_4E39F0_obj_db(nox_object_t* a1);
 void nox_xxx_scriptDialog_548D30(nox_object_t* a1, char a2);
-void nox_server_scriptFleeFrom_515F70(nox_object_t* a1, void* a2);
-void nox_xxx_monsterActionMelee_515A30(nox_object_t* a1, float2* a2);
-void nox_xxx_monsterMissileAttack_515B80(nox_object_t* a1p, float2* a2);
 */
 import "C"
 import (
@@ -386,7 +383,7 @@ func Sub_506740(a1 *server.Object) {
 	C.sub_506740(asObjectC(a1))
 }
 func Nox_xxx_unitTransferSlaves_4EC4B0(a1 *server.Object) {
-	C.nox_xxx_unitTransferSlaves_4EC4B0(asObjectC(a1))
+	controlTransferChildren(a1)
 }
 func Nox_xxx_decay_5116F0(a1 *server.Object) {
 	motionDecayRemove(a1)
@@ -404,7 +401,7 @@ func Sub_4ECFA0(a1 *server.Object) {
 	netCodeCacheInvalidate(a1)
 }
 func Sub_511DE0(a1 *server.Object) {
-	C.sub_511DE0(asObjectC(a1))
+	monsterCacheRemove(a1)
 }
 func Sub_528990(a1 *server.Object) {
 	visibilityGlobalRemove(a1)
@@ -477,45 +474,23 @@ func Nox_xxx_scriptDialog_548D30(obj *server.Object, a2 byte) {
 	C.nox_xxx_scriptDialog_548D30(asObjectC(obj), C.char(a2))
 }
 func Nox_xxx_mobSetFightTarg_515D30(obj, targ *server.Object) {
-	C.nox_xxx_mobSetFightTarg_515D30(asObjectC(obj), asObjectC(targ))
+	monsterControlFight(obj, targ)
 }
 func Nox_server_scriptFleeFrom_515F70(obj, targ *server.Object, df int) {
-	p, free := alloc.New(struct {
-		Targ *nox_object_t
-		Dt   int32
-	}{})
-	defer free()
-	p.Targ = asObjectC(targ)
-	p.Dt = int32(df)
-	C.nox_server_scriptFleeFrom_515F70(asObjectC(obj), unsafe.Pointer(p))
+	monsterControlFlee(obj, targ, uint32(df))
 }
 func Nox_xxx_monsterGoPatrol_515680(obj *server.Object, p1, p2 types.Pointf, dist float32) {
-	p, free := alloc.New(struct {
-		P1   types.Pointf
-		P2   types.Pointf
-		Dist float32
-	}{})
-	defer free()
-	p.P1 = p1
-	p.P2 = p2
-	p.Dist = dist
-	C.nox_xxx_monsterGoPatrol_515680(asObjectC(obj), unsafe.Pointer(p))
+	monsterControlPatrol(obj, p1, p2, dist)
 }
 func Nox_xxx_monsterActionMelee_515A30(obj *server.Object, pos types.Pointf) {
-	cp, free := alloc.New(types.Pointf{})
-	defer free()
-	*cp = pos
-	C.nox_xxx_monsterActionMelee_515A30(asObjectC(obj), (*C.float2)(unsafe.Pointer(cp)))
+	monsterControlMelee(obj, &pos)
 }
 func Nox_xxx_monsterMissileAttack_515B80(obj *server.Object, pos types.Pointf) {
-	cp, free := alloc.New(types.Pointf{})
-	defer free()
-	*cp = pos
-	C.nox_xxx_monsterMissileAttack_515B80(asObjectC(obj), (*C.float2)(unsafe.Pointer(cp)))
+	monsterControlMissile(obj, &pos)
 }
 
 func Sub_516090(obj *server.Object, df int) {
-	C.sub_516090(asObjectC(obj), C.uint(df))
+	monsterControlWait(obj, uint32(df))
 }
 
 func Nox_xxx_monsterCanCast_534300(obj *server.Object) bool {

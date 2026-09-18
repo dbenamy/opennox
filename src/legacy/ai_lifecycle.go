@@ -107,7 +107,7 @@ func lifecycleBurnDelete(u *server.Object) {
 	if owner := u.ObjOwner; owner != nil && owner.Class().Has(object.ClassPlayer) {
 		pl := owner.UpdateDataPlayer().Player
 		u.ObjSubClass &^= 0x80
-		C.nox_xxx_netFxShield_0_4D9200(C.int(pl.PlayerInd), C.int(uintptr(u.CObj())))
+		gameplayReportShield(int(pl.PlayerInd), u)
 		GetServer().S().Players.Nox_xxx_netUnmarkMinimapObj_417300(ntype.PlayerInd(pl.PlayerInd), u, 1)
 	}
 	C.nox_xxx_soloMonsterKillReward_4EE500_obj_health(C.int(uintptr(u.CObj())))
@@ -229,11 +229,6 @@ func lifecycleFoodSearch(u *server.Object, radius float32, usable bool) *server.
 		return true
 	})
 	return lifecycleCandidate(candidateOff)
-}
-
-//export nox_xxx_mobRaiseZombie_534AB0
-func nox_xxx_mobRaiseZombie_534AB0(a1 C.int) C.uint {
-	return C.uint(lifecycleRaiseZombie(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(a1))))))
 }
 
 //export nox_xxx_mobSearchEdible_544A00

@@ -18,9 +18,6 @@ func nox_xxx_playerLeaveObserver_0_4E6AA0(a *C.nox_playerInfo) {
 //export nox_xxx_unitRemoveChild_4EC470
 func nox_xxx_unitRemoveChild_4EC470(a *C.nox_object_t) { controlRemoveChildren(asObjectS(a)) }
 
-//export nox_xxx_unitTransferSlaves_4EC4B0
-func nox_xxx_unitTransferSlaves_4EC4B0(a *C.nox_object_t) { controlTransferChildren(asObjectS(a)) }
-
 //export nox_xxx_plrReadVals_4EEDC0
 func nox_xxx_plrReadVals_4EEDC0(a *C.nox_object_t, b C.int) C.int {
 	return C.int(controlReadStats(asObjectS(a), int32(b)))

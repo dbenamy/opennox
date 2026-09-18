@@ -2,28 +2,36 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 40k lines** — **40,218 physical lines in 74 production
-`.c` files**, zero reference C. Latest conversion: **−559 lines**.
+**Rough C remaining: about 39k lines** — **39,193 physical lines in 74 production
+`.c` files**, zero reference C. Latest conversion: **−1,025 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — monster-control C baseline qualified
+## Current — monster-control native conversion qualified
 
-Parent **0bbaba1d is committed and pushed**. The next connected conversion covers
-**40 live functions / 1,001 body lines**, plus **three proven orphans / 31 lines**.
-Fifteen focused C roots / **20,997 records** repeat identically and pass frozen
-expectations. All three affected-target sweeps pass without skips; see
-[MONSTER_CONTROL.md](docs/porting/MONSTER_CONTROL.md) and
-monster-control-c-qualification.json. All four gates share unchanged source.
-Static mapped checks pass. Production reuse verifies 2,254 unchanged parent
-sources, ten porttest-only additions and three parent binary hashes.
+C baseline **77cc1fd2 is committed and pushed**. All forty live functions are in
+Go and three proven orphans are removed. Final focused run passes sixteen roots,
+including all **15 original captures / 20,997 records** unchanged and the new
+bounded-parser/allocation contract. All three broader targets pass without skips:
+**176 identical captures / 135,370 records** each. Fresh production passes all
+three builds/ABI/interfaces, exact known asset-suite failures, headless gameplay,
+save/load and flat-map regeneration. All four gates share unchanged source;
+all sessions are joined. See [MONSTER_CONTROL.md](docs/porting/MONSTER_CONTROL.md)
+and monster-control-native-qualification.json for exact counts and timings.
 
-No production conversion is installed. Next: commit/push this baseline, finish and
-review ignored Go drafts, install, compare frozen captures and qualify all targets
-plus fresh production. freeze-c.py and finish-c.py are consumed; do not replay.
-Original assets/archive remain intact; about 20 GiB remains free. No user decision
-is required. Parser rejected-record cleanup is recorded for later review.
+This retires **62 interfaces** and four C globals, retaining only two actual C
+entrypoints. Reversible parser limits and rejected-record cleanup are documented
+for review. No goldens changed. Production C: **39,193 / 74 files / zero reference**.
+
+Next: prepare a connected quest-progress C baseline covering journal variables,
+serialization and remaining quest-stage/boss-spawn owners. Caller and fixture
+review is underway; no next-batch source is installed. The conservative whole-src
+C reachability proposal under build/port-reachability is evidence for manual
+review only, not authorization for blindly deleting its candidates.
+
+All monster freeze/install/resume/retirement/finalization scripts are consumed;
+do not replay. Original assets/archive are intact. No user decision is required.
 
 ## Qualified parent — spatial-targeting Go conversion (0bbaba1d, pushed)
 

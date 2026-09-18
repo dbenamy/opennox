@@ -1,0 +1,156 @@
+{
+  "status": "qualified native conversion",
+  "c_baseline": "77cc1fd2",
+  "runs": {
+    "default": {
+      "seconds": 128.214,
+      "roots": 408,
+      "including_subtests": 36886,
+      "skips": 0,
+      "captures": 176,
+      "records": 135370
+    },
+    "server": {
+      "seconds": 246.016,
+      "roots": 408,
+      "including_subtests": 36886,
+      "skips": 0,
+      "captures": 176,
+      "records": 135370
+    },
+    "highres": {
+      "seconds": 172.027,
+      "roots": 408,
+      "including_subtests": 36886,
+      "skips": 0,
+      "captures": 176,
+      "records": 135370
+    }
+  },
+  "source_files": 2272,
+  "source_manifest_sha256": "484a40e53b3b7c4e3b96958db76dc10b1cf31a21d343d39a51a57a8f72aadf77",
+  "focused": {
+    "roots": 16,
+    "captures": 15,
+    "records": 20997,
+    "seconds": 0.834,
+    "matches_frozen_c": true,
+    "additional_contract": "Bounded definition fields and allocation balance on rejected records"
+  },
+  "production_seconds": 382.152520515956,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 82.16821856307797,
+        "sha256": "25ca873094ddb1749d71dccff9219ccd67addecede1a25c7e414c7a3eebf34d4",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.266296580899507,
+        "sha256": "8bf3f01365241af1e4128d0ac9748552a7977afd0e2ed95b2c464a50737cde7b",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 76.30165061308071,
+        "sha256": "e7325a425692c65bdc3f8529c19424d4a63badca0ca6c855a971ba98163cb2d8",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "monster-control-native": {
+        "exit": 0,
+        "wall_seconds": 62.06953246798366,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 61.479736304143444,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "25ca873094ddb1749d71dccff9219ccd67addecede1a25c7e414c7a3eebf34d4",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-monster-control/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/monster-control-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Monster control in Go: 40 live functions ported, 3 orphans removed, 2 C exports retained, 62 obsolete interfaces and 4 C globals retired.",
+          "removed_maps": 0
+        }
+      },
+      "monster-control-save-native": {
+        "exit": 0,
+        "wall_seconds": 44.704514445969835,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.15016340999864,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "25ca873094ddb1749d71dccff9219ccd67addecede1a25c7e414c7a3eebf34d4",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-monster-control/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/monster-control-save-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Monster control in Go: 40 live functions ported, 3 orphans removed, 2 C exports retained, 62 obsolete interfaces and 4 C globals retired.",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "d1a3293958d747186fec7c48f58a82ec6ca36e6d6855e41b28ff68b65b1cea75"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 52.84029169916175,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "production_c_lines": 39193,
+  "production_c_files": 74,
+  "reference_c_lines": 0,
+  "removed_c_lines": 1025,
+  "converted_functions": 40,
+  "orphan_functions_removed": 3,
+  "retained_exports": 2,
+  "retired_interfaces": 62,
+  "retired_c_globals": 4
+}

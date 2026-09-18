@@ -1703,3 +1703,21 @@ pointers, reproduced the original panic, and passes after the correction. This
 preserves the callback ABI and curve captures; it does not weaken cgo checking.
 The small, reversible correction follows the standing authorization. See
 [SPATIAL_TARGETING.md](SPATIAL_TARGETING.md) for full evidence and qualification.
+
+
+## Monster control ownership and bounded definitions — review after conversion
+
+Move pending-owner pool/list, monster definition list and script-cache cold flag
+into Go. Retain mapped cache record layout and two exports required by actual C
+callers. Remove 62 obsolete interfaces, including 21 upstream exports whose last
+C caller disappeared in this batch; existing fixtures call the same Go owners.
+Preserve the animation delay-255 behavior, empty-head word, action layouts, list
+quirks and compiled arithmetic. No game-rule change is intended.
+
+Free incomplete definitions on rejected callback/damage/field input and close the
+opened file on every exit. Bound names/missiles to 63 bytes plus NUL and general
+tokens to 255 plus NUL. Oversized fields stop the record without overwriting its
+neighbors; preceding accepted records and the existing load return convention are
+preserved. These reversible ownership/input corrections follow standing user
+authorization. Independent boundary/allocation-balance contracts supplement the
+unchanged original-C captures. See [MONSTER_CONTROL.md](MONSTER_CONTROL.md).

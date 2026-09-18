@@ -265,7 +265,7 @@ func portTestLifecycleCall(u *server.Object, sp *PortTestLifecycleSpec) int {
 	p := C.int(uintptr(u.CObj()))
 	switch sp.Op {
 	case 5:
-		return int(C.nox_xxx_mobRaiseZombie_534AB0(p))
+		return int(lifecycleRaiseZombie(u))
 	case 6:
 		lifecycleReset(u)
 	case 7:

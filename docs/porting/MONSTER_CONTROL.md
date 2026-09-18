@@ -2,11 +2,12 @@
 
 ## Scope and checkpoint
 
-Parent **0bbaba1d** is committed and pushed. The next connected batch covers
+C baseline **77cc1fd2** is committed and pushed. The completed batch covers
 monster action/control state, script unit selection, pending ownership and monster
 attribute loading: **40 live C functions / 1,001 body lines**. Three proven orphan
 functions add 31 lines. See [monster-control-scope.json](monster-control-scope.json).
-Production C is unchanged: **40,218 physical lines / 74 files / zero reference C**.
+Production C is now **39,193 physical lines / 74 files / zero reference C**
+(**−1,025 physical lines**).
 
 ## Reachability and test design
 
@@ -43,7 +44,7 @@ boundaries, wrapped wait/flee deadlines, movement/combat commands, copied-frame
 state, returned owned pointers and the empty-head legacy word. The first refresh/animation process passed 4,608 and 12,000 cases respectively.
 Cache sequence contracts also passed. Death/revival/chapter, pending ownership and
 definition fixtures also pass; all captures are now frozen.
-No production code has changed.
+These captures were established before any production conversion.
 
 ## Boundaries and review notes
 
@@ -60,9 +61,9 @@ No production code has changed.
   (2) has no shipped schema entry. Fixtures install original bytes and all 69
   name relocations, plus real registered callback addresses.
 - Original C leaks its 248-byte incomplete definition on a rejected callback or
-  damage type. The Go conversion will free rejected records while preserving
+  damage type. The Go conversion frees rejected records while preserving
   return/list behavior. This is a reversible ownership correction for later review;
-  original C remains unchanged for capture and production-identity reuse.
+  original C was unchanged for capture and production-identity reuse.
 - Asset copies and tests use temporary directories; the original encrypted
   monster.bin, archive and asset extraction remain unchanged.
 
@@ -88,6 +89,43 @@ inactive before the default drop stages them in the world. Frozen expectations
 were established only after these independent contracts passed. No production
 source or prior golden changed.
 
-Next: replace the forty live functions, remove the three proven orphans, retire
-obsolete C interfaces and compare every broad capture. Fresh production,
-headless gameplay, save/load and flat-map regeneration remain required.
+The qualified native conversion below completes all those gates.
+
+## Qualified native implementation
+
+C baseline **77cc1fd2 is committed and pushed**. The first native focused run
+passes all fifteen original captures unchanged (20,997 records, 0.749s). The
+conversion replaces all forty live functions and removes the three audited
+orphans. Only sub_515C80 (script-group control-byte callback) and sub_516FC0
+(load-time ownership resolution) retain C exports.
+
+An additional caller audit found 21 upstream exports whose final C callers were
+in this batch. Go production callers and existing test adapters now invoke the
+same native implementations directly. This retires **62 interfaces total**, plus
+four C globals; pending-owner pool/head, definition head and cache initialization
+state are now owned in Go. Mapped cache records retain their established layout.
+Patrol, melee, missile and flee wrappers no longer allocate temporary C records.
+
+Reversible parser ownership/input decisions for review: rejected records are
+freed; the file is closed on every opened-file exit; name and missile fields are
+limited to 63 bytes plus NUL, general token storage to 255 plus NUL. Oversized
+fields stop parsing without overwriting adjacent fields, preserving prior valid
+records and the existing outer load return convention. An independent native
+contract checks exact field boundaries and tracked allocation balance for invalid
+fields/callbacks/damage types. Defined original-C captures remain unchanged.
+
+Native-focused-2 passes sixteen roots in 0.834s, including these final interface
+retirements and the additional contract. All original fifteen captures remain
+unchanged. All three broader targets pass with zero skips and **176 identical
+captures / 135,370 records** each. See
+[monster-control-native-qualification.json](monster-control-native-qualification.json)
+for exact counts, timings, source identity and binary hashes. Fresh production
+passes all three builds/ABI/interface checks, the exact known asset-suite failures,
+headless gameplay, save/load and flat-map regeneration. All four gates share
+unchanged source, and all sessions are joined.
+install-native.py stopped at a declaration between a marker and function;
+resume-install-native.py completed it. Both are consumed, as is retire-upstream.py.
+Do not replay any of these scripts.
+
+Current artifacts: build/port-monster-control/native-{default,server,highres,production},
+native-focused-2 and upstream-retired.json. No golden expectation changed.

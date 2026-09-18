@@ -166,7 +166,6 @@ void nox_xxx_collideAnkhQuest_4EBF40(int a1, int a2);
 void nox_xxx_unitSetOwner_4EC290(nox_object_t* obj1, nox_object_t* obj2);
 void nox_xxx_unitClearOwner_4EC300(nox_object_t* obj);
 void nox_xxx_unitRemoveChild_4EC470(nox_object_t* a1);
-void nox_xxx_unitTransferSlaves_4EC4B0(nox_object_t* a1);
 int nox_xxx_unitHasThatParent_4EC4F0(nox_object_t* a1, nox_object_t* a2);
 int nox_xxx_unitsHaveSameTeam_4EC520(nox_object_t* a1, nox_object_t* a2);
 nox_object_t* nox_xxx_findParentChainPlayer_4EC580(nox_object_t* unit);

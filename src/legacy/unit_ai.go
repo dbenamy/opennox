@@ -65,11 +65,6 @@ func nox_xxx_monsterClearActionStack_50A3A0(a1 *nox_object_t) {
 	asObjectS(a1).ClearActionStack()
 }
 
-//export nox_xxx_checkMobAction_50A0D0
-func nox_xxx_checkMobAction_50A0D0(a1 *nox_object_t, a2 int) int {
-	return bool2int(asObjectS(a1).UpdateDataMonster().HasAction(ai.ActionType(a2)))
-}
-
 //export sub_50B810
 func sub_50B810(obj *nox_object_t, p *C.float2) int {
 	return bool2int(GetServer().Sub_50B810(asObjectS(obj), (*types.Pointf)(unsafe.Pointer(p))))
@@ -107,7 +102,7 @@ func Nox_xxx_polygonIsPlayerInPolygon_4217B0(a1 unsafe.Pointer, a2 int) *Nox_pla
 	return (*Nox_player_polygon_check_data)(unsafe.Pointer(mapPolygonFind((*[2]int32)(a1), uint32(a2), false)))
 }
 func Nox_xxx_mobAction_50A910(a1 *server.Object) {
-	C.nox_xxx_mobAction_50A910(asObjectC(a1))
+	monsterControlRefresh(a1)
 }
 func Nox_xxx_monsterGetSoundSet_424300(a1 *server.Object) unsafe.Pointer {
 	return unsafe.Pointer(C.nox_xxx_monsterGetSoundSet_424300(asObjectC(a1)))
@@ -125,7 +120,7 @@ func Nox_xxx_monsterMainAIFn_547210(a1 *server.Object) {
 	monsterMainAI(a1)
 }
 func Nox_xxx_updateNPCAnimData_50A850(a1 *server.Object) {
-	C.nox_xxx_updateNPCAnimData_50A850(asObjectC(a1))
+	monsterControlAnimation(a1)
 }
 func Nox_xxx_monsterPolygonEnter_421FF0(a1 *server.Object) {
 	mapPolygonMonster(a1)

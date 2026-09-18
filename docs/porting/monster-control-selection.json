@@ -215,6 +215,7 @@
     "TestMonsterControlDeath",
     "TestMonsterControlDeathInventory",
     "TestMonsterControlDeathRewards",
+    "TestMonsterControlDefinitionBoundsAndCleanup",
     "TestMonsterControlDefinitionTokens",
     "TestMonsterControlDefinitions",
     "TestMonsterControlHead",
@@ -443,5 +444,8 @@
     "WorldMotion, CollisionCore, SpatialTargeting": "Decay queues, activation, directions and target geometry.",
     "Script": "Public script command callers.",
     "PlayerControls, Resource, Equipment": "Bot definition lookup, resource-driven death entrypoint, damage-triggered action changes and ownership equipment effects."
-  }
+  },
+  "native_additions": [
+    "TestMonsterControlDefinitionBoundsAndCleanup"
+  ]
 }

@@ -11,3 +11,11 @@ func PortTestAllocationLive(ptr unsafe.Pointer) bool {
 	_, ok := allocs[ptr]
 	return ok
 }
+
+// PortTestAllocationCount lets a sequential owner check complete cleanup of
+// records which were rejected before they could enter its public list.
+func PortTestAllocationCount() int {
+	allocMu.Lock()
+	defer allocMu.Unlock()
+	return len(allocs)
+}

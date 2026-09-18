@@ -54,7 +54,7 @@ func PortTestVisibilityEffects(op int, a, b *server.Object, pos *types.Pointf, w
 	case 14:
 		return uint32(visibilityKillable(a))
 	case 15:
-		return uint32(C.nox_xxx_frameCounterSetCopyToNextFrame_5281D0())
+		return visibilityFrameCopy(true)
 	case 16:
 		return visibilityFrameCopy(false)
 	case 17:

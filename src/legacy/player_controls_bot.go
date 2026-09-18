@@ -30,7 +30,7 @@ func controlBotCreate(u *server.Object) uint32 {
 	}
 	clear(unsafe.Slice((*byte)(b), 2200))
 	*controlPtr(b, 2180) = d
-	*controlPtr(b, 484) = unsafe.Pointer(C.nox_xxx_monsterDefByTT_517560(C.int(GetServer().S().Types.IndByID("NPC"))))
+	*controlPtr(b, 484) = unsafe.Pointer(monsterDefinitionByType(uint32(GetServer().S().Types.IndByID("NPC"))))
 	for _, v := range [][2]uint32{{1336, 1048576000}, {1344, 1061997773}, {1440, 186376}, {552, 5}, {1360, 38}, {1308, 1056964608}, {1304, 1062501089}, {1312, 1125515264}, {1316, 1106247680}, {1320, 1065353216}, {1328, 1056964608}, {1352, 1065353216}, {2040, 3}, {2096, 0xffffffff}, {2100, 0xffffffff}, {0, 0xdeadface}} {
 		*equipmentWord(b, int(v[0])) = v[1]
 	}

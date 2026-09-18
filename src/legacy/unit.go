@@ -42,10 +42,10 @@ func Nox_xxx_protectMana_56F9E0(a1 int, a2 int16) {
 	nox_xxx_protectMana_56F9E0(C.int(a1), C.short(a2))
 }
 func Nox_xxx_monsterWalkTo_514110(a1 *server.Object, a2 float32, a3 float32) {
-	C.nox_xxx_monsterWalkTo_514110(asObjectC(a1), C.float(a2), C.float(a3))
+	monsterControlWalk(a1, types.Pointf{X: a2, Y: a3})
 }
 func Nox_xxx_monsterLookAt_5125A0(a1 *server.Object, a2 int) {
-	C.nox_xxx_monsterLookAt_5125A0(asObjectC(a1), C.int(a2))
+	monsterControlLook(a1, int32(a2))
 }
 func Nox_xxx_unitFreeze_4E79C0(a1 *server.Object, a2 int) {
 	C.nox_xxx_unitFreeze_4E79C0(asObjectC(a1), C.int(a2))
@@ -60,13 +60,13 @@ func Nox_server_gotoHome(a1 *server.Object) {
 	C.nox_server_gotoHome(asObjectC(a1))
 }
 func Nox_xxx_unitIdle_515820(a1 *server.Object) {
-	C.nox_xxx_unitIdle_515820(asObjectC(a1))
+	monsterControlIdle(a1, false)
 }
 func Nox_xxx_unitSetFollow_5158C0(a1 *server.Object, a2 *server.Object) {
-	C.nox_xxx_unitSetFollow_5158C0(asObjectC(a1), asObjectC(a2))
+	monsterControlFollow(a1, a2)
 }
 func Nox_xxx_unitHunt_5157A0(a1 *server.Object) {
-	C.nox_xxx_unitHunt_5157A0(asObjectC(a1))
+	monsterControlIdle(a1, true)
 }
 func Nox_xxx_playerSubGold_4FA5D0(a1 *server.Object, a2 int) {
 	resourceSubGold(a1, uint32(a2))

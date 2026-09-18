@@ -213,6 +213,7 @@ target build selection and linker evidence.
 | World-motion corrected-C prerequisites (sentry/trigger corrections and orphan removal) | 74 | 41,887 | +1 | 0 |
 | World motion, sentries, decay, projectiles, movers, traps and triggers | 74 | 40,777 | −1,110 | 0 |
 | Spatial targeting, cursor selection, wall normals and private interfaces | 74 | 40,218 | −559 | 0 |
+| Monster controls, definitions, pending ownership, script cache and obsolete interfaces | 74 | 39,193 | −1,025 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

@@ -78,7 +78,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 		actual = source
 	}
 	if u.ObjFlags&0x8000 != 0 {
-		if C.nox_xxx_unitIsZombie_534A40(inventoryInt(u)) != 0 {
+		if monsterIsZombie(u) {
 			damageSetSource(u, actual, kind)
 		}
 		return 1
@@ -271,7 +271,7 @@ func damageSkeleton(u, source, weapon *server.Object, amount, kind int32) int32 
 		if actual == nil {
 			actual = source
 		}
-		if C.nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&actual.PrevPos)))&1 != 0 && C.nox_xxx_mobActionGet_50A020(inventoryInt(u)) == 21 && uint32(*(*byte)(unsafe.Add(u.UpdateData, 481))) > uint32(*(*byte)(unsafe.Add(u.UpdateData, 480))>>1) {
+		if C.nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&actual.PrevPos)))&1 != 0 && monsterControlHead(u) == 21 && uint32(*(*byte)(unsafe.Add(u.UpdateData, 481))) > uint32(*(*byte)(unsafe.Add(u.UpdateData, 480))>>1) {
 			inventorySound(878, u, 0, 0)
 			return 1
 		}

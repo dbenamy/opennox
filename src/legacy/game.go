@@ -291,11 +291,6 @@ func nox_xxx_playerSendMOTD_4DD140(a1 int) {
 	Nox_xxx_playerSendMOTD_4DD140(ntype.PlayerInd(a1))
 }
 
-//export nox_xxx_unitCanInteractWith_5370E0
-func nox_xxx_unitCanInteractWith_5370E0(a1, a2 *nox_object_t, a3 int) int {
-	return bool2int(GetServer().S().CanInteract(asObjectS(a1), asObjectS(a2), a3))
-}
-
 //export nox_xxx_unitCanSee_536FB0
 func nox_xxx_unitCanSee_536FB0(a1, a2 *nox_object_t, a3 int) int {
 	return bool2int(GetServer().S().CanSee(asObjectS(a1), asObjectS(a2), a3))

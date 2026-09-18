@@ -112,7 +112,7 @@ func (r objectXferStream) owned(u *server.Object, wide bool) {
 		for i := 0; i < int(uint16(count)); i++ {
 			id := r.word(0)
 			if !objectXferEditor() {
-				C.sub_516F90(C.int(u.ScriptIDVal), C.int(id))
+				monsterPendingAdd(uint32(u.ScriptIDVal), uint32(id))
 			}
 		}
 	} else {

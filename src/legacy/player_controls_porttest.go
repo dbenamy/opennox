@@ -6,14 +6,12 @@ package legacy
 #include <string.h>
 #include <stdlib.h>
 #include <stdint.h>
-extern void* nox_monsterBin_head_2386924;
 extern uint32_t dword_5d4594_1565616,dword_5d4594_1568868;
 #include "GAME3_3.h"
 #include "GAME4.h"
 static void* controlsPlayerUpdatePtr(void) { return nox_xxx_updatePlayer_4F8100; }
 void nox_xxx_playerLeaveObserver_0_4E6AA0(nox_playerInfo* pl);
 void nox_xxx_unitRemoveChild_4EC470(nox_object_t* a1);
-void nox_xxx_unitTransferSlaves_4EC4B0(nox_object_t* a1p);
 int nox_xxx_plrReadVals_4EEDC0(nox_object_t* a1p, int a2);
 int sub_4EF140(int a1);
 double nox_xxx_calcBoltDamage_4EF1E0(int a1, int a2);
@@ -46,7 +44,6 @@ static void* controlsInitPtr(){return controlsInit;}
 static void* controlsFunction(int id){switch(id){
 case 5:return (void*)nox_xxx_playerLeaveObserver_0_4E6AA0;
 case 8:return (void*)nox_xxx_unitRemoveChild_4EC470;
-case 9:return (void*)nox_xxx_unitTransferSlaves_4EC4B0;
 case 11:return (void*)nox_xxx_plrReadVals_4EEDC0;
 case 12:return (void*)sub_4EF140;
 case 13:return (void*)nox_xxx_calcBoltDamage_4EF1E0;
@@ -75,7 +72,6 @@ static uint64_t controlsCall(int id,nox_object_t* u,nox_object_t* t,int x,int y,
  switch(id){
 case 5:{nox_xxx_playerLeaveObserver_0_4E6AA0((u?*(nox_playerInfo**)(*(char**)((char*)u+748)+276):0));return 0;}
 case 8:{nox_xxx_unitRemoveChild_4EC470(u);return 0;}
-case 9:{nox_xxx_unitTransferSlaves_4EC4B0(u);return 0;}
 case 11:{return (uint32_t)nox_xxx_plrReadVals_4EEDC0(u,x);}
 case 12:{return (uint32_t)sub_4EF140((int)u);}
 case 13:{double d=nox_xxx_calcBoltDamage_4EF1E0(x,(int)record);uint64_t bits;memcpy(&bits,&d,8);return bits;}
@@ -203,14 +199,14 @@ func (p *portTestShopPools) controlsPrepare() func() {
 		}
 		restoreGuide = func() { copy(table, old) }
 	}
-	oldMonster := C.nox_monsterBin_head_2386924
+	oldMonster := monsterDefinitions
 	def := (*server.MonsterDef)(p.objectiveRegion(int(unsafe.Sizeof(server.MonsterDef{}))))
 	*def = *p.proxy.combat.actor.UpdateDataMonster().MonsterDef
 	def.Next244 = nil
 	def.TypeInd240 = uint32(p.proxy.core.Types.IndByID("NPC"))
 	clear(def.Name0[:])
 	copy(def.Name0[:], "NPC")
-	C.nox_monsterBin_head_2386924 = unsafe.Pointer(def)
+	monsterDefinitions = def
 	oldStats := p.proxy.core.Players.Stats
 	if len(sp.Stats) == 4 {
 		p.proxy.core.Players.Stats.Base = sp.Stats[0]
@@ -236,7 +232,7 @@ func (p *portTestShopPools) controlsPrepare() func() {
 		restoreSpellLife()
 		restoreCorpse()
 		restoreGuide()
-		C.nox_monsterBin_head_2386924 = oldMonster
+		monsterDefinitions = oldMonster
 		Nox_xxx_inventoryServPlace_4F36F0 = oldPlace
 		restoreMods()
 		restoreTypes()
@@ -421,6 +417,9 @@ func (p *portTestShopPools) controlsAdopt(u *server.Object) {
 // covers only ABIs still used by production C. Expected captures are unchanged.
 func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe.Pointer) uint64 {
 	switch op {
+	case 9:
+		controlTransferChildren(u)
+		return 0
 	case 0:
 		return uint64(uint32(controlRemoveGlyphs(u)))
 	case 1:

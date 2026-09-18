@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5.h"
-*/
-import "C"
 import (
 	"bytes"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -51,16 +47,14 @@ func PortTestCallbackLoaders() []PortTestCallbackLoaderResult {
 				}
 				table := unsafe.Slice((*byte)(memmap.PtrOff(0x587000, 287096)), 640)
 				beforeTable := bytes.Clone(table)
-				cs, freeCS := alloc.CString(name)
 				switch kind {
 				case 0:
-					r.Success = C.nox_xxx_monsterLoadStrikeFn_549040(C.int(uintptr(def)), (*C.char)(unsafe.Pointer(cs))) != 0
+					r.Success = monsterLoadCallback(def, name, 287096, 236)
 				case 1:
-					r.Success = C.nox_xxx_monsterLoadDieFn_5490E0(C.int(uintptr(def)), (*C.char)(unsafe.Pointer(cs))) != 0
+					r.Success = monsterLoadCallback(def, name, 287280, 228)
 				case 2:
-					r.Success = C.nox_xxx_monsterLoadDeadFn_549180(C.int(uintptr(def)), (*C.char)(unsafe.Pointer(cs))) != 0
+					r.Success = monsterLoadCallback(def, name, 287192, 232)
 				}
-				freeCS()
 				r.Intact = bytes.Equal(table, beforeTable)
 				*memmap.PtrUint32(0x587000, base) = old
 				want := uint32(0xa5a5a5a5)

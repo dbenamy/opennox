@@ -32,15 +32,5 @@ func sub_4D3E30(p, out *C.float2) C.int {
 	return C.int(geometryMapCoordinates((*types.Pointf)(unsafe.Pointer(p)), (*types.Pointf)(unsafe.Pointer(out))))
 }
 
-//export nox_xxx_mathDirection4ToAngle_509E90
-func nox_xxx_mathDirection4ToAngle_509E90(index C.int) C.int {
-	return C.int(geometryDirection4Angle(int32(index)))
-}
-
 //export nox_xxx_math_509EA0
 func nox_xxx_math_509EA0(index C.int) C.int { return C.int(geometryDirection4Index(int32(index))) }
-
-//export nox_xxx_math_509ED0
-func nox_xxx_math_509ED0(p *C.float2) C.int {
-	return C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(p))))
-}

@@ -281,7 +281,7 @@ func monsterEnactOrder(source, u *server.Object, order int) {
 		return
 	}
 	if ud.MonsterDef == nil {
-		ud.MonsterDef = (*server.MonsterDef)(C.nox_xxx_monsterDefByTT_517560(C.int(u.TypeInd)))
+		ud.MonsterDef = monsterDefinitionByType(uint32(u.TypeInd))
 		if ud.MonsterDef == nil {
 			return
 		}
@@ -361,21 +361,6 @@ func nox_xxx_mobCalcDir_533CC0(p C.int, v *C.float) {
 	monsterCalcDir(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))), (*float32)(unsafe.Pointer(v)))
 }
 
-//export nox_xxx_unitNPCActionToAnim_533D00
-func nox_xxx_unitNPCActionToAnim_533D00(p C.int) *C.uchar {
-	return (*C.uchar)(monsterNPCAnim(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p))))))
-}
-
-//export nox_xxx_monsterCanMelee_534220
-func nox_xxx_monsterCanMelee_534220(p C.int) C.int {
-	return C.int(bool2int(monsterCanMelee(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))))))
-}
-
-//export nox_xxx_monsterCanShoot_534280
-func nox_xxx_monsterCanShoot_534280(p C.int) C.int {
-	return C.int(bool2int(monsterCanShoot(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))))))
-}
-
 //export nox_xxx_monsterHasShield_5342C0
 func nox_xxx_monsterHasShield_5342C0(p C.int) C.int {
 	return C.int(bool2int(monsterHasShield(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))))))
@@ -389,11 +374,6 @@ func nox_xxx_monsterCanCast_534300(p *nox_object_t) C.int {
 //export nox_xxx_monsterIsMoveing_534320
 func nox_xxx_monsterIsMoveing_534320(p C.int) C.int {
 	return C.int(bool2int(monsterMoving(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))))))
-}
-
-//export nox_xxx_unitIsZombie_534A40
-func nox_xxx_unitIsZombie_534A40(p C.int) C.int {
-	return C.int(bool2int(monsterIsZombie(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p)))))))
 }
 
 func objectFromInt(p C.int) *server.Object {
@@ -416,11 +396,6 @@ func sub_5343C0(p C.int) C.int { return C.int(bool2int(monsterAggressionMid(obje
 
 //export sub_534440
 func sub_534440(p C.int) C.int { return C.int(bool2int(monsterAggressionRetreat(objectFromInt(p)))) }
-
-//export sub_534470
-func sub_534470(p C.int) C.double {
-	return C.double(objectFromInt(p).UpdateDataMonster().MonsterDef.MeleeAttackRange112)
-}
 
 //export sub_5347C0
 func sub_5347C0(p C.int) C.int { return C.int(bool2int(monsterHasMissingHealth(objectFromInt(p)))) }

@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME4_1.h"
-int nox_xxx_loadMonsterBin_517010();
-extern void* nox_monsterBin_head_2386924;
-*/
-import "C"
 import (
 	"bytes"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -18,16 +12,16 @@ import (
 )
 
 func PortTestMonsterDefsOwner() func() {
-	old := C.nox_monsterBin_head_2386924
-	C.nox_monsterBin_head_2386924 = nil
+	old := monsterDefinitions
+	monsterDefinitions = nil
 	cb := portTestCallbackTablesEnvironment()
 	files.Lock()
 	oldFiles := files.byHandle
 	files.byHandle = make(map[unsafe.Pointer]*binfile.File)
 	files.Unlock()
 	return func() {
-		C.nox_xxx_monsterListFree_5174F0()
-		C.nox_monsterBin_head_2386924 = old
+		monsterDefinitionFree()
+		monsterDefinitions = old
 		cb()
 		files.Lock()
 		defer files.Unlock()
@@ -40,17 +34,17 @@ func PortTestMonsterDefsOwner() func() {
 func PortTestMonsterDefs(op string, id int) int {
 	switch op {
 	case "load":
-		return int(C.nox_xxx_loadMonsterBin_517010())
+		return monsterDefinitionLoad()
 	case "free":
-		return int(uintptr(unsafe.Pointer(C.nox_xxx_monsterListFree_5174F0())))
+		return int(monsterDefinitionFree())
 	case "bind":
-		return int(C.nox_xxx_monsterList_517520())
+		return monsterDefinitionBind()
 	case "lookup":
-		p := unsafe.Pointer(C.nox_xxx_monsterDefByTT_517560(C.int(id)))
+		p := unsafe.Pointer(monsterDefinitionByType(uint32(id)))
 		if p == nil {
 			return 0
 		}
-		for i, d := 1, (*server.MonsterDef)(C.nox_monsterBin_head_2386924); d != nil; i, d = i+1, d.Next244 {
+		for i, d := 1, (*server.MonsterDef)(monsterDefinitions); d != nil; i, d = i+1, d.Next244 {
 			if unsafe.Pointer(d) == p {
 				return i
 			}
@@ -66,7 +60,7 @@ func PortTestMonsterDefs(op string, id int) int {
 func PortTestMonsterDefsSnapshot() [][62]uint32 {
 	var out [][62]uint32
 	seen := map[*server.MonsterDef]bool{}
-	for d := (*server.MonsterDef)(C.nox_monsterBin_head_2386924); d != nil; d = d.Next244 {
+	for d := (*server.MonsterDef)(monsterDefinitions); d != nil; d = d.Next244 {
 		if seen[d] {
 			panic("definition list cycle")
 		}
@@ -118,7 +112,7 @@ func PortTestMonsterTokens(f *binfile.Binfile) []PortTestMonsterToken {
 		for j := range b {
 			b[j] = 0xa5
 		}
-		rv := int(C.nox_xxx_readStr_517090((*C.FILE)(h), (*C.uint8_t)(unsafe.Pointer(&b[8]))))
+		rv := bool2int(monsterDefinitionToken(f, b[8:264]))
 		r := PortTestMonsterToken{Return: rv, Buffer: bytes.Clone(b[8:264]), Intact: true}
 		for _, v := range append(bytes.Clone(b[:8]), b[264:]...) {
 			r.Intact = r.Intact && v == 0xa5

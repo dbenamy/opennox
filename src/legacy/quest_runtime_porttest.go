@@ -37,7 +37,7 @@ func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 		rv = uint32(C.sub_4D6130(ai))
 		pointerResult = true
 	case "sub_4D6170":
-		rv = uint32(C.sub_4D6170(ai))
+		rv = questRuntimeIncrement(u, 4664, 4)
 		pointerResult = true
 	case "sub_4D61F0":
 		rv = uint32(C.sub_4D61F0(ai))

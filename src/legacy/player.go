@@ -155,19 +155,9 @@ func nox_xxx_playerCameraFollow_4E6060(cplayer, cunit *nox_object_t) {
 	Nox_xxx_playerCameraFollow_4E6060(asObjectS(cplayer), asObjectS(cunit))
 }
 
-//export nox_xxx_playerGetPossess_4DDF30
-func nox_xxx_playerGetPossess_4DDF30(cplayer *nox_object_t) *nox_object_t {
-	return asObjectC(Nox_xxx_playerGetPossess_4DDF30(asObjectS(cplayer)))
-}
-
 //export nox_xxx_playerGoObserver_4E6860
 func nox_xxx_playerGoObserver_4E6860(pl *nox_playerInfo, a2 int, a3 int) int {
 	return Nox_xxx_playerGoObserver_4E6860(asPlayerS(pl), a2, a3)
-}
-
-//export nox_xxx_playerObserveClear_4DDEF0
-func nox_xxx_playerObserveClear_4DDEF0(cplayer *nox_object_t) {
-	Nox_xxx_playerObserveClear_4DDEF0(asObjectS(cplayer))
 }
 
 //export nox_xxx_playerObserveMonster_4DDE80

@@ -84,7 +84,6 @@ float* nox_xxx_mapGenPlaceObj_5279B0(float2* a1);
 float* nox_xxx_mapGenMoveObject_527A10(float* a1, float2* a2);
 int nox_xxx_mapGenOrientObj_527C60(int a1, int a2);
 int nox_xxx_mapGenFinishSpellbook_527DB0(int a1, char a2);
-int nox_xxx_frameCounterSetCopyToNextFrame_5281D0();
 int nox_xxx_XFerMonster_528DB0(nox_object_t* a1);
 void nox_xxx_XFer_WriteShopItem_52A5F0(void* a1);
 void nox_xxx_XFer_ReadShopItem_52A840(void* a1, int a2);

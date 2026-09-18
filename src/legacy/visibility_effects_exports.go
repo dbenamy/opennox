@@ -20,6 +20,3 @@ func nox_xxx_netSendPointFx_522FF0(code C.char, pos *C.float2) C.int {
 func nox_xxx_sendArrowTrapFX_5238A0(pos *C.float, extra C.char) {
 	visibilityFXArrowTrap(*(*types.Pointf)(unsafe.Pointer(pos)), byte(extra))
 }
-
-//export nox_xxx_frameCounterSetCopyToNextFrame_5281D0
-func nox_xxx_frameCounterSetCopyToNextFrame_5281D0() C.int { return C.int(visibilityFrameCopy(true)) }

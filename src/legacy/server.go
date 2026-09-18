@@ -351,19 +351,19 @@ func Nox_xxx_allocVoteArray_5066D0() int {
 	return int(C.nox_xxx_allocVoteArray_5066D0())
 }
 func Nox_xxx_monsterList_517520() int {
-	return int(C.nox_xxx_monsterList_517520())
+	return monsterDefinitionBind()
 }
 func Sub_416920() {
 	serverConfigAdmissionInit()
 }
 func Nox_xxx_allocPendingOwnsArray_516EE0() int {
-	return int(C.nox_xxx_allocPendingOwnsArray_516EE0())
+	return monsterPendingInit()
 }
 func Sub_421B10() {
 	mapPolygonReset()
 }
 func Sub_516F10() {
-	C.sub_516F10()
+	monsterPendingFree()
 }
 func Sub_4259F0() {
 	playerGroupsFree()
@@ -468,10 +468,10 @@ func Sub_4ECFE0() {
 	netCodeCacheFlush()
 }
 func Sub_511E20() {
-	C.sub_511E20()
+	monsterCacheClear()
 }
 func Sub_516F30() {
-	C.sub_516F30()
+	monsterPendingClear()
 }
 func Nox_xxx_playerBotCreate_4FA700(u *server.Object) {
 	controlBotCreate(u)
