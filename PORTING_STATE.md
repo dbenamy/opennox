@@ -25,8 +25,16 @@ build/port-map-sections/native-*. All build/test sessions are joined.
 
 Current C: **27,001 lines /67 files /zero reference**,−1,793 from corrected C:
 −1,619 bodies/global definitions plus−174 obsolete headings/blanks in touched files.
-Native conversion awaits its commit/push at this checkpoint. Next batch selection
-can proceed after pushing. No user question is pending.
+Native conversion **90fbd480 is committed and pushed**. The next smaller closing
+batch selects the three remaining C map-section serializers (MapInfo, AmbientData,
+ObjectTOC) and two ambient services: five bodies /142 lines. Its C baseline is now
+qualified: five roots /478 entries, five repeated captures /473 records, identical
+across all targets. Static passes. All parent source files remain unchanged;
+exactly five additive porttest-only files permit reuse of the parent production
+qualification. See docs/porting/MAP_METADATA.md and map-metadata-c-qualification.json.
+No native source installed yet; build sessions joined. Freeze and C qualification
+scripts are consumed; ignored native draft/installer not yet consumed.
+No user question is pending.
 
 All map-section installers, draft copies, freeze scripts and qualification scripts
 are consumed. Actual source and committed evidence take precedence. The first

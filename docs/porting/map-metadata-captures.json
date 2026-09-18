@@ -1,0 +1,36 @@
+{
+  "status": "qualified C baseline",
+  "parent": "90fbd480",
+  "captures": [
+    {
+      "label": "map-metadata-ambient",
+      "sha256": "9c5ae3da0286943222f6f9a7abfeaed1528f04945c9c9ef10556654dda43e4f3",
+      "records": 168,
+      "file": "src/map_metadata_ambient_porttest_test.go"
+    },
+    {
+      "label": "map-metadata-info",
+      "sha256": "64ae983faeb2eb437f161268ef2a4c1ad21d2de6fd25569c863256169a8214d3",
+      "records": 96,
+      "file": "src/map_metadata_info_porttest_test.go"
+    },
+    {
+      "label": "map-metadata-toc-count",
+      "sha256": "a5476323127608808b41982d4718fcd6084cd8c5f149eee0b2f8ef1b500be715",
+      "records": 5,
+      "file": "src/map_metadata_toc_count_porttest_test.go"
+    },
+    {
+      "label": "map-metadata-toc-read",
+      "sha256": "45c642b26e92d366560160986e551b8f69b61eda2afc7ba2042424b650532e45",
+      "records": 180,
+      "file": "src/map_metadata_toc_porttest_test.go"
+    },
+    {
+      "label": "map-metadata-toc-write",
+      "sha256": "227b5d9c2ad091c8af85f49989086adb822bf664600dcfd80a873a3723959181",
+      "records": 24,
+      "file": "src/map_metadata_toc_porttest_test.go"
+    }
+  ]
+}
