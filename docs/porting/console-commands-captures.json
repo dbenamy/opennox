@@ -1,0 +1,70 @@
+{
+  "console-commands-admission": {
+    "sha256": "62622506e37204de18dabfc0de05cc7311ed96ae639ca435d9d78d72eaf5e596",
+    "records": 16
+  },
+  "console-commands-level": {
+    "sha256": "ab4e4e4722faff15825a1cb506dd7978870f18d8870154732a476a01bd5dc064",
+    "records": 54
+  },
+  "console-commands-list-maps": {
+    "sha256": "b51a85c3e3ce5a5562dd6706e1fddb2729289e065632ae2a82dd0e38ff4fda2c",
+    "records": 7
+  },
+  "console-commands-list-users": {
+    "sha256": "899ef38fced123931c386587c9681a2ee55e93144c71a82bc0841fbf812d6cd0",
+    "records": 8
+  },
+  "console-commands-modes": {
+    "sha256": "f0ad09bb6a241c8d20368f84ef7827f32b6ab48db9c25d69f1b5f88e4fee8516",
+    "records": 12
+  },
+  "console-commands-mute": {
+    "sha256": "c2635c4a49873cf125ff792127bf01fd2abea90fb94bd2ce389830c7e7e17ade",
+    "records": 64
+  },
+  "console-commands-names": {
+    "sha256": "c649194609d121c8ece1be13e3edbaabb3ac82dc27beafa81d45dcd349b667fe",
+    "records": 8
+  },
+  "console-commands-numbers": {
+    "sha256": "b00aa6cb69f5532331972152ec99224081762eead747c19046d219f335ce55fd",
+    "records": 54
+  },
+  "console-commands-quality": {
+    "sha256": "234363794ddcf6f5bfeca6644e419ee290bbd64cefee287945347676c1075aad",
+    "records": 5
+  },
+  "console-commands-remote-broadcast": {
+    "sha256": "8f22016dfb993207ed9451162533808ef2acbb9eabe63e173c19ed8a48cb85f6",
+    "records": 2
+  },
+  "console-commands-remote-camera": {
+    "sha256": "8a273cb509faf709f3c51bfc4de5af18d60c1dad61fe607d9895b59911eab476",
+    "records": 12
+  },
+  "console-commands-remote-observer": {
+    "sha256": "41bc2c18a58c2013c5d41265675de841bcff39cf374d060f65f3d4942fa4984d",
+    "records": 24
+  },
+  "console-commands-remote-script": {
+    "sha256": "75cfd70bc551bcda8264b371272d410f05cef8e685f36915f6a48243bcd0713a",
+    "records": 16
+  },
+  "console-commands-spells": {
+    "sha256": "2c55920c2b0850b4bc47366b8fa8d620abd3ef1272105e3da1c5be22fd948c4c",
+    "records": 192
+  },
+  "console-commands-switches": {
+    "sha256": "98b2c315db97febcfb2c081aa9b0336c768e88397d4940f8b9ba07262f9306dc",
+    "records": 10
+  },
+  "console-commands-toggles": {
+    "sha256": "83241a0df860517c0338e8b6ef6b1f919ce8b8ed00e9fcf65ff87813249e75e2",
+    "records": 80
+  },
+  "console-commands-window": {
+    "sha256": "eca821348dda99d925d23fd31c196fe46562465447b0780ece2407b9152636d4",
+    "records": 7
+  }
+}

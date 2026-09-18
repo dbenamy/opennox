@@ -1,0 +1,337 @@
+{
+  "functions": [
+    {
+      "name": "nox_cmd_set_sysop",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 10,
+      "body_sha256": "cde3561a445eb768caf5cc4e44fb1ebf86820c366b8d19a8399a66bbca951c93",
+      "repaired_body_sha256": "cde3561a445eb768caf5cc4e44fb1ebf86820c366b8d19a8399a66bbca951c93"
+    },
+    {
+      "name": "sub_440A20",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 7,
+      "body_sha256": "e20e71184a2d0898f071686d402648de271f4af4431f9570f2fdc1279ed8c78f",
+      "repaired_body_sha256": "e20e71184a2d0898f071686d402648de271f4af4431f9570f2fdc1279ed8c78f"
+    },
+    {
+      "name": "nox_cmd_set_cycle",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 20,
+      "body_sha256": "9f17ee491701725864d1050afb7a188852052c62fda4d419d43423c08312b50a",
+      "repaired_body_sha256": "9f17ee491701725864d1050afb7a188852052c62fda4d419d43423c08312b50a"
+    },
+    {
+      "name": "nox_cmd_set_weapons",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 23,
+      "body_sha256": "dae8a00f27be733981e425eb4661e808e08312e53bf1849d14a96ab2fe96cfce",
+      "repaired_body_sha256": "dae8a00f27be733981e425eb4661e808e08312e53bf1849d14a96ab2fe96cfce"
+    },
+    {
+      "name": "nox_cmd_set_staffs",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 23,
+      "body_sha256": "b4b6159a4ad6303749cc9973c95e9f54a5294cd0f4b73b0e183bab2661d10362",
+      "repaired_body_sha256": "b4b6159a4ad6303749cc9973c95e9f54a5294cd0f4b73b0e183bab2661d10362"
+    },
+    {
+      "name": "nox_cmd_set_name",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 44,
+      "body_sha256": "5b6b3cfb492d81496b7d395aa51a8a131b65dc3dfc90f45dc51b7056c6f26c8c",
+      "repaired_body_sha256": "5b6b3cfb492d81496b7d395aa51a8a131b65dc3dfc90f45dc51b7056c6f26c8c"
+    },
+    {
+      "name": "nox_cmd_set_mnstrs",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 49,
+      "body_sha256": "173e649e2a109bc1a95d888c9728c3180a00aeee33ba0bf97a4cc06e9e0262f8",
+      "repaired_body_sha256": "a89e53c34375f8b8206e3ea65e3ebb66fc77136bd04c15d17d9628abfc42ba95"
+    },
+    {
+      "name": "nox_cmd_set_spell",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 54,
+      "body_sha256": "7012e906050ec2056516dcce1d5e39d559480c254f1c482ab48d97afaba19f30",
+      "repaired_body_sha256": "7012e906050ec2056516dcce1d5e39d559480c254f1c482ab48d97afaba19f30"
+    },
+    {
+      "name": "nox_cmd_ban",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 37,
+      "body_sha256": "f04f4cd0bd139e9c818c2512781c4c4563a6730653efa883db236cf5356123bf",
+      "repaired_body_sha256": "f04f4cd0bd139e9c818c2512781c4c4563a6730653efa883db236cf5356123bf"
+    },
+    {
+      "name": "nox_cmd_allow_user",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 6,
+      "body_sha256": "7babdda1e67e28d65d725c535dedf09a9b84d91e287290b18190ee586e639a3e",
+      "repaired_body_sha256": "7babdda1e67e28d65d725c535dedf09a9b84d91e287290b18190ee586e639a3e"
+    },
+    {
+      "name": "nox_cmd_allow_ip",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 6,
+      "body_sha256": "d1c3cbf19e6a75320cb6a539ac903162d5870bade52a568fb7d629f230bdb828",
+      "repaired_body_sha256": "d1c3cbf19e6a75320cb6a539ac903162d5870bade52a568fb7d629f230bdb828"
+    },
+    {
+      "name": "nox_cmd_kick",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 28,
+      "body_sha256": "6117057893f44cec2f466a396fa3cdac671a12d5d7191cef5f56754b4e6a0b71",
+      "repaired_body_sha256": "6117057893f44cec2f466a396fa3cdac671a12d5d7191cef5f56754b4e6a0b71"
+    },
+    {
+      "name": "nox_cmd_set_players",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 31,
+      "body_sha256": "9eab06abdaa1a8f2e6e73433cefaa73e31bf3a94cfb4c8b31978f895c701c752",
+      "repaired_body_sha256": "9eab06abdaa1a8f2e6e73433cefaa73e31bf3a94cfb4c8b31978f895c701c752"
+    },
+    {
+      "name": "nox_cmd_set_spellpts",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 6,
+      "body_sha256": "95affc0c79b22014de3b3c3cc677307f6f8f56c417f1e5cd16723c5f69524c89",
+      "repaired_body_sha256": "95affc0c79b22014de3b3c3cc677307f6f8f56c417f1e5cd16723c5f69524c89"
+    },
+    {
+      "name": "nox_cmd_list_users",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 26,
+      "body_sha256": "d59389ae0f26ce1bcbe9a4720a69645ee5b3f77cadd510f2a663f2196cb16042",
+      "repaired_body_sha256": "d59389ae0f26ce1bcbe9a4720a69645ee5b3f77cadd510f2a663f2196cb16042"
+    },
+    {
+      "name": "sub_57A0F0",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 14,
+      "body_sha256": "b336697738fbbc682d4adac8f15e0f237f6a6febb1c06d6f4fe1ad99da725e2b",
+      "repaired_body_sha256": "b336697738fbbc682d4adac8f15e0f237f6a6febb1c06d6f4fe1ad99da725e2b"
+    },
+    {
+      "name": "sub_57A130",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 11,
+      "body_sha256": "e79ae8acb80f8ff1699820b2a24a569a2a5a87faf3eda439c9f125923ab36e40",
+      "repaired_body_sha256": "e79ae8acb80f8ff1699820b2a24a569a2a5a87faf3eda439c9f125923ab36e40"
+    },
+    {
+      "name": "nox_cmd_unmute",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 34,
+      "body_sha256": "3627e96de145bf7d137a2572bfc820d609a6671018b75cd412fb421aa02cf148",
+      "repaired_body_sha256": "3627e96de145bf7d137a2572bfc820d609a6671018b75cd412fb421aa02cf148"
+    },
+    {
+      "name": "sub_57A080",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 14,
+      "body_sha256": "a65c048e7dc1b156cdc38be40ca1993556f28ad67046079fffa1bbabb11715f7",
+      "repaired_body_sha256": "a65c048e7dc1b156cdc38be40ca1993556f28ad67046079fffa1bbabb11715f7"
+    },
+    {
+      "name": "sub_57A0C0",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 11,
+      "body_sha256": "d59a9ae70820adc0dda21ea328eb291874db5ce90c135eb5d5395312094bc4c0",
+      "repaired_body_sha256": "d59a9ae70820adc0dda21ea328eb291874db5ce90c135eb5d5395312094bc4c0"
+    },
+    {
+      "name": "nox_cmd_mute",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 34,
+      "body_sha256": "bcc09afe2c34a99019be003213fd046dcb732d32b5f1f344e1234f4db2a6f684",
+      "repaired_body_sha256": "bcc09afe2c34a99019be003213fd046dcb732d32b5f1f344e1234f4db2a6f684"
+    },
+    {
+      "name": "nox_xxx_serverHandleClientConsole_443E90",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 166,
+      "body_sha256": "2f74c827601bf62e4f761c292b56bbb46c482dcfa8d9f03b85120482cb8bb02b",
+      "repaired_body_sha256": "e90995b69ef9952c0440826ec92a07b41bea828b65c33e5cfab828c718ba2c46"
+    },
+    {
+      "name": "nox_cmd_offonly1",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 7,
+      "body_sha256": "f2a58b3c499001cb17134b8dd690ff482d071bc225f23fbab190299a31125c65",
+      "repaired_body_sha256": "f2a58b3c499001cb17134b8dd690ff482d071bc225f23fbab190299a31125c65"
+    },
+    {
+      "name": "nox_cmd_offonly2",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 33,
+      "body_sha256": "aa48a670e51d5b208df3db9068799931f4c8728e55b6aad66cbe648a1f87e3b3",
+      "repaired_body_sha256": "aa48a670e51d5b208df3db9068799931f4c8728e55b6aad66cbe648a1f87e3b3"
+    },
+    {
+      "name": "nox_cmd_set_net_debug",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 7,
+      "body_sha256": "71b641c45e8c97d94b7c890023494af2959c80a157423193b7f44acd0d53d90e",
+      "repaired_body_sha256": "71b641c45e8c97d94b7c890023494af2959c80a157423193b7f44acd0d53d90e"
+    },
+    {
+      "name": "nox_cmd_unset_net_debug",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 7,
+      "body_sha256": "8335c532af9cfb5d60e99be9bef159bb7cc8bceff7d24688df19c59626c2dc2a",
+      "repaired_body_sha256": "8335c532af9cfb5d60e99be9bef159bb7cc8bceff7d24688df19c59626c2dc2a"
+    },
+    {
+      "name": "nox_cmd_show_info",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 5,
+      "body_sha256": "0907e1ab258440e405eadb387256bb724879eb6dc6acd45b59e61774d5ea4300",
+      "repaired_body_sha256": "0907e1ab258440e405eadb387256bb724879eb6dc6acd45b59e61774d5ea4300"
+    },
+    {
+      "name": "nox_cmd_show_mem",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 5,
+      "body_sha256": "91897bb4a87df1ae08946dfc017cb5dedee481026cc8c61b3fac616d688a073f",
+      "repaired_body_sha256": "91897bb4a87df1ae08946dfc017cb5dedee481026cc8c61b3fac616d688a073f"
+    },
+    {
+      "name": "nox_cmd_show_rank",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 6,
+      "body_sha256": "fd60e965eb3ebdfe70e72179eeed401e37596bea9c5e2106bb1fbfe781aaa16b",
+      "repaired_body_sha256": "fd60e965eb3ebdfe70e72179eeed401e37596bea9c5e2106bb1fbfe781aaa16b"
+    },
+    {
+      "name": "nox_cmd_show_motd",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 7,
+      "body_sha256": "fe1573a3c6106ee6da5865f39b79d6ec01041b826be695c65588ef3d454056d7",
+      "repaired_body_sha256": "fe1573a3c6106ee6da5865f39b79d6ec01041b826be695c65588ef3d454056d7"
+    },
+    {
+      "name": "nox_cmd_show_seq",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 7,
+      "body_sha256": "8e180239b2549cffc2b4f3bfa84e15103cbf4365d9dd75337fcc005ae98351d7",
+      "repaired_body_sha256": "8e180239b2549cffc2b4f3bfa84e15103cbf4365d9dd75337fcc005ae98351d7"
+    },
+    {
+      "name": "nox_cmd_list_maps",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 28,
+      "body_sha256": "d5593afc04b36bd45bd67e23324669c7cf555c993564717cae059df00c24f276",
+      "repaired_body_sha256": "d5593afc04b36bd45bd67e23324669c7cf555c993564717cae059df00c24f276"
+    },
+    {
+      "name": "nox_cmd_cheat_ability",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 12,
+      "body_sha256": "2104e17bad98c29ca0da7f4271fc20bfc904561091d1e8d5431288fe48b19854",
+      "repaired_body_sha256": "2104e17bad98c29ca0da7f4271fc20bfc904561091d1e8d5431288fe48b19854"
+    },
+    {
+      "name": "nox_cmd_cheat_level",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 17,
+      "body_sha256": "badab9cafe8f48765c6f524b02101990eb620e1a1dc4070b51459f3aed946e82",
+      "repaired_body_sha256": "badab9cafe8f48765c6f524b02101990eb620e1a1dc4070b51459f3aed946e82"
+    },
+    {
+      "name": "nox_cmd_window",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 17,
+      "body_sha256": "b0abbfefeabd5fe782dd60efd820b025c969895ded19ae7ba1a4def313dc7e2c",
+      "repaired_body_sha256": "b0abbfefeabd5fe782dd60efd820b025c969895ded19ae7ba1a4def313dc7e2c"
+    },
+    {
+      "name": "nox_cmd_set_qual_modem",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 8,
+      "body_sha256": "ce1828d32cbbf6dc554546b26e9e35de469d51fea13cb38cc860aa657bd275ca",
+      "repaired_body_sha256": "ce1828d32cbbf6dc554546b26e9e35de469d51fea13cb38cc860aa657bd275ca"
+    },
+    {
+      "name": "nox_cmd_set_qual_isdn",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 8,
+      "body_sha256": "469910237aaf0da8066de129bc79e3049bcb266c69c62389f90fafd1a0c3dae7",
+      "repaired_body_sha256": "469910237aaf0da8066de129bc79e3049bcb266c69c62389f90fafd1a0c3dae7"
+    },
+    {
+      "name": "nox_cmd_set_qual_cable",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 8,
+      "body_sha256": "a35909557f8beabffd0b7570594ff45cc305027b097b41b2e3060a7f85c7ec88",
+      "repaired_body_sha256": "a35909557f8beabffd0b7570594ff45cc305027b097b41b2e3060a7f85c7ec88"
+    },
+    {
+      "name": "nox_cmd_set_qual_t1",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 8,
+      "body_sha256": "5a0910d4a2bda10e1671b08167935d2e623db8680a37647c5496f36bf698a5f3",
+      "repaired_body_sha256": "5a0910d4a2bda10e1671b08167935d2e623db8680a37647c5496f36bf698a5f3"
+    },
+    {
+      "name": "nox_cmd_set_qual_lan",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 8,
+      "body_sha256": "188db806e2d01a506d130f08446cb745c473e6f08f29ef4dac748e861e86b648",
+      "repaired_body_sha256": "188db806e2d01a506d130f08446cb745c473e6f08f29ef4dac748e861e86b648"
+    },
+    {
+      "name": "nox_cmd_set_time",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 16,
+      "body_sha256": "83253a57a6be216e098fc39ee8af457ba938f408c71bc2a5ebf97856fe8e19d1",
+      "repaired_body_sha256": "83253a57a6be216e098fc39ee8af457ba938f408c71bc2a5ebf97856fe8e19d1"
+    },
+    {
+      "name": "nox_cmd_set_lessons",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 16,
+      "body_sha256": "6079d75eb01db97ba6f07fdd5e4ef451f207fece898d340b34a2f98a257c1df8",
+      "repaired_body_sha256": "6079d75eb01db97ba6f07fdd5e4ef451f207fece898d340b34a2f98a257c1df8"
+    },
+    {
+      "name": "nox_cmd_menu_options",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 6,
+      "body_sha256": "de90bfb4649683dacc484416f6c471114a104c6d680ae58acb658eddde507bd5",
+      "repaired_body_sha256": "de90bfb4649683dacc484416f6c471114a104c6d680ae58acb658eddde507bd5"
+    },
+    {
+      "name": "nox_cmd_menu_vidopt",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 4,
+      "body_sha256": "ee9d737007929a44307d80826871e5ad245e408ad9ada47b66e927f99b3eb699",
+      "repaired_body_sha256": "ee9d737007929a44307d80826871e5ad245e408ad9ada47b66e927f99b3eb699"
+    },
+    {
+      "name": "nox_cmd_reenter",
+      "file": "src/legacy/client__system__parsecmd.c",
+      "lines": 6,
+      "body_sha256": "051c10188544d78f311a04c7ec64394dbb17c2db30db9149d1af54e894d236e7",
+      "repaired_body_sha256": "051c10188544d78f311a04c7ec64394dbb17c2db30db9149d1af54e894d236e7"
+    },
+    {
+      "name": "sub_4417E0",
+      "file": "src/legacy/GAME1_3.c",
+      "lines": 16,
+      "body_sha256": "306eb1439bd96f7ab0c2118f18d54461ee0fc4d08369840d31abbecbf1ffe778",
+      "repaired_body_sha256": "306eb1439bd96f7ab0c2118f18d54461ee0fc4d08369840d31abbecbf1ffe778"
+    },
+    {
+      "name": "sub_409FB0_settings",
+      "file": "src/legacy/common__system__settings.c",
+      "lines": 20,
+      "body_sha256": "a66ef74757e6364b6c6d04045ec5a2e44be3a5c80d4d4bc5e80820f988f0f0f4",
+      "repaired_body_sha256": "a66ef74757e6364b6c6d04045ec5a2e44be3a5c80d4d4bc5e80820f988f0f0f4"
+    }
+  ],
+  "parent": "d57a662c",
+  "status": "candidate; baseline not frozen",
+  "bodies": 47,
+  "body_lines": 936
+}

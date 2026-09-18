@@ -8,7 +8,30 @@ baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — qualified native client/server voting
+## Current — console-command C baseline in progress
+
+Voting conversion **d57a662c is committed and pushed**. The next selection is
+47 C bodies /936 original body lines, covering console handlers and two connected
+formatting/settings helpers. See [CONSOLE_COMMANDS.md](docs/porting/CONSOLE_COMMANDS.md).
+Two C fixes are installed: respawn-off removes bit8, and mode-gated remote returns
+clear the borrowed sender. Working C is **34,344 lines /71files** (+1).
+
+All 23 focused groups pass in two independent processes (`final-a`, `final-b`):
+527 passing test events, no skips; 17 identical captures /571 records are frozen.
+All three target gates pass 298 roots /20,209 tests and 168 identical captures /
+32,009 records. Static mapped-memory, three fresh production builds/ABI, exact
+known full-suite comparison and three headless scenarios pass. All sessions are
+joined; source is editable. Qualification is recorded in
+`docs/porting/console-commands-c-qualification.json`.
+
+Next: commit/push this qualified repaired C baseline, then integrate/review the
+ignored native drafts under `build/port-console-commands/*.go.draft`. Drafts are
+not yet compiled or accepted; design notes are in `native-design.md`. Retire the
+47 selected C bodies and their private interfaces, adapt fixtures without changing
+frozen expectations, qualify/commit/push native and immediately continue.
+
+
+## Qualified parent — native client/server voting
 
 The repaired C baseline **5572b500 is committed and pushed**. Thirty-five live
 routines are native Go; 36 C bodies removed (one orphan), 31 interfaces retired,
@@ -24,7 +47,7 @@ save/load and flat regeneration. All sessions are joined; source is editable.
 No user decision is pending. Evidence is under build/port-votes/native-* and in
 [votes-native-qualification.json](docs/porting/votes-native-qualification.json).
 
-Next: commit/push this conversion, then establish the console-command baseline.
+Next: establish and qualify the console-command C baseline.
 Read-only candidate audit: build/port-console-commands/audit-plan.md,
 selection-draft.json and references.json. No candidate source changes yet.
 Both voting install-native.py and extend-lifecycle.py are consumed; never replay.

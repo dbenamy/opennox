@@ -211,7 +211,7 @@ int nox_cmd_set_mnstrs(int tokInd, int tokCnt, wchar2_t** tokens) {
 				return 1;
 			}
 			if (!_nox_wcsicmp(tokens[3], L"off")) {
-				sub_409E70(8);
+				sub_409EC0(8);
 				nox_server_gameSettingsUpdated_40A670();
 				v5 = nox_strman_loadString_40F1D0("cmd_token:off", 0, "C:\\NoxPost\\src\\Client\\System\\parsecmd.c",
 												  2796);
@@ -600,6 +600,7 @@ int nox_xxx_serverHandleClientConsole_443E90(nox_playerInfo* pl, char a2, wchar2
 	nox_console_playerWhoSent_823692 = pl;
 	if (a2 != 4 && a2 != 5 && a2) {
 		if (nox_common_gameFlags_check_40A5C0(49152)) {
+			nox_console_playerWhoSent_823692 = 0;
 			return 1;
 		}
 	}
