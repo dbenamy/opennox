@@ -1,0 +1,126 @@
+{
+  "status": "repeated corrected C captures; broader qualification pending",
+  "production_parent": "6035e191",
+  "prerequisites": [
+    "missing metadata wall ownership",
+    "wall high-flag serialization",
+    "historical floor-region Y scale"
+  ],
+  "roots": 18,
+  "tests": 4125,
+  "captures": [
+    {
+      "label": "map-sections-floor-current",
+      "sha256": "ea601ffce1ae9335d4add46e23c0eec4da09da8a3de4362a9828ba2be8030902",
+      "records": 112,
+      "source": "src/map_sections_floor_porttest_test.go"
+    },
+    {
+      "label": "map-sections-floor-historical-region",
+      "sha256": "cbf18d8bf7739ae2ff2e6be3bf769c04c596b5f392e6b3fc221a6d34f99b84b2",
+      "records": 24,
+      "source": "src/map_sections_floor_historical_region_porttest_test.go"
+    },
+    {
+      "label": "map-sections-floor-historical",
+      "sha256": "85af9fb637c0096b22da58c9d79bc7d8c81a9a5fa427bfa19942e89df8125415",
+      "records": 189,
+      "source": "src/map_sections_floor_historical_porttest_test.go"
+    },
+    {
+      "label": "map-sections-floor-ordering",
+      "sha256": "fcae64f6894e2611956fc0d708ae1cc0addbc0d73f83a0a474f7f2740ac38879",
+      "records": 1,
+      "source": "src/map_sections_ordering_porttest_test.go"
+    },
+    {
+      "label": "map-sections-floor-region-write",
+      "sha256": "39e55c1ff2e304b58ca09a3899229a4fbfe43ab5fa5a7b20e5ae83efb6e4df1a",
+      "records": 8,
+      "source": "src/map_sections_floor_region_write_porttest_test.go"
+    },
+    {
+      "label": "map-sections-floor-region",
+      "sha256": "67448dfa8e2c593cd525b87a8634b3271ab410329af5ae0061db5d1ab0d52fb1",
+      "records": 24,
+      "source": "src/map_sections_region_porttest_test.go"
+    },
+    {
+      "label": "map-sections-metadata-count",
+      "sha256": "f92926a92ffb8c20b223a2eadc5f26071a07338a5a8baa7a23a55faefa38a6c0",
+      "records": 12,
+      "source": "src/map_sections_ordering_porttest_test.go"
+    },
+    {
+      "label": "map-sections-metadata-missing",
+      "sha256": "de4633140b0c35be625c3f8cde0bd7ea05bd548ac0332cc5668b32ef5f83030b",
+      "records": 4,
+      "source": "src/map_sections_metadata_porttest_test.go"
+    },
+    {
+      "label": "map-sections-metadata-read",
+      "sha256": "a72fdec825a58414df696a32304bf3d048c22c3fa1b04398dc78eac343ff5f71",
+      "records": 384,
+      "source": "src/map_sections_metadata_read_porttest_test.go"
+    },
+    {
+      "label": "map-sections-metadata-write",
+      "sha256": "bb31322318332a0809d1777c596875e47d28911ce16bd3f867b87f145f108488",
+      "records": 48,
+      "source": "src/map_sections_metadata_write_porttest_test.go"
+    },
+    {
+      "label": "map-sections-tile-records",
+      "sha256": "c2f5fba52dd7cfa74468c5b35cbe38c4efe9e90a6b218a65b251bc865b730b39",
+      "records": 324,
+      "source": "src/map_sections_tiles_porttest_test.go"
+    },
+    {
+      "label": "map-sections-version-rejection",
+      "sha256": "64e9e80a9c3a9efde15e8a3dda7ef0453e09ddaab6b0f5b90c79c0936ebcf6ef",
+      "records": 20,
+      "source": "src/map_sections_version_porttest_test.go"
+    },
+    {
+      "label": "map-sections-wall-historical",
+      "sha256": "113c21fe58bd8ba04f97d01d6e94767956aabe7a36ade0b8d4321d0ab30bc5a8",
+      "records": 768,
+      "source": "src/map_sections_wall_historical_porttest_test.go"
+    },
+    {
+      "label": "map-sections-wall-overlay",
+      "sha256": "34cdfe9f57636c288b91b6c487afd91fd43a4503d35b6284b0f7013abb8acada",
+      "records": 1014,
+      "source": "src/map_sections_wall_overlay_porttest_test.go"
+    },
+    {
+      "label": "map-sections-wall-read",
+      "sha256": "e129a8d4d42be1e28dd501a9c8a20636a2926e73920292bdb21705923bbc3a7b",
+      "records": 576,
+      "source": "src/map_sections_wall_read_porttest_test.go"
+    },
+    {
+      "label": "map-sections-wall-region",
+      "sha256": "c48644df05641db6ab3f1e44c1942987bbeb977f5c82b1bbed8ff51a5cd0bad7",
+      "records": 192,
+      "source": "src/map_sections_wall_region_porttest_test.go"
+    },
+    {
+      "label": "map-sections-wall-v2-sprites",
+      "sha256": "0b8474fa3b00d726674cc5c3f58b465274c55fcb1a59959051686885be1952e6",
+      "records": 216,
+      "source": "src/map_sections_wall_sprites_porttest_test.go"
+    },
+    {
+      "label": "map-sections-wall-write",
+      "sha256": "5bdafe2aab5895f49ea57d9443df66bdc5f0345cdd06593337da74ebd0314bc0",
+      "records": 192,
+      "source": "src/map_sections_wall_write_porttest_test.go"
+    }
+  ],
+  "records": 4108,
+  "repeat": [
+    "build/port-map-sections/focused-pass",
+    "build/port-map-sections/focused-repeat"
+  ]
+}

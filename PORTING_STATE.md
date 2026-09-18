@@ -2,9 +2,9 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 28.8k lines** — **28,790 physical lines in 67 production
+**Rough C remaining: about 28.8k lines** — **28,794 physical lines in 67 production
 `.c` files**, zero reference C. Latest conversion: **−2,029** from the statistics
-baseline. See [C_LOC.md](docs/porting/C_LOC.md).
+baseline (current C prerequisites add4 lines). See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
@@ -26,11 +26,47 @@ regeneration pass. No goldens changed. Evidence:
 `docs/porting/game-statistics-native-qualification.json` and
 `build/port-game-statistics/native-*`. All tool sessions are joined; source is editable.
 
-Commit/push this qualified conversion, then proceed to the next connected batch.
-Candidate: map floor/wall serialization, optionally including window/breakable/
-secret-wall metadata to share owner qualification. Read-only notes and initial
-scope are under build/port-game-statistics/next-map-*. No next-batch fixtures or
-conversion are installed. Re-audit all callers/callbacks and scope before freezing.
+Native statistics conversion **6035e191 is committed and pushed**.
+Next batch: map floor/wall serialization plus window/breakable/secret-wall
+metadata:18 connected C bodies /1,629 body lines. Audit and original-source
+positions are in build/port-map-sections/selection.json. The five roots are live
+map section registrations; private callbacks/helpers share the tile/wall owners.
+C fixtures are being prepared; no conversion installed. See MAP_SECTIONS.md.
+The initial tile run50473 and expanded floor run34030 passed and are joined.
+Two roots /438 entries cover324 tile records and112 current-format floor records.
+All map-section hashes are deliberately unfrozen. The generic adapter also owns
+prefab scratch records through the existing allocation observer.
+
+Run84174 (metadata-original) stalled during the floor fixture's owner reset;
+stacks showed Go GC mark termination and a runnable locked-thread test goroutine.
+The owned test child3295536 was stopped with SIGQUIT;84174 is joined. Evidence:
+metadata-original/stacks.txt. No metadata assertion had run, so this is not C
+bug evidence. Observation had been enabled across the whole fixture, unlike the
+established map-theme/growth pattern. It is now bounded to section calls and
+scratch allocation; no production or shared observer changes were made.
+
+Bounded run32870 confirmed four metadata defects plus64 wall-flag failures.
+Minimal C corrections are installed; no Go conversion is installed. Corrected
+run36785 passed6 roots /1,238 entries. Historical run77302 passed10 roots /2,435
+entries. Metadata-full9718 passed read contracts; nine writer assertions required
+the existing iterator's door/broken exclusion in their independent expectations.
+That fixture correction is installed.
+
+Historical region Y-scale corrections pass. All fixtures now pass18 roots /4,125
+entries with no skips, repeated in separate processes. All18 captures /4,108
+records match byte-for-byte and are frozen; static check passes. Sessions33068
+(superseded expectation),28295 (pass),74075 (repeat),53688 (freeze/static) joined.
+No sessions active; source editable. freeze.py is consumed.
+
+This is the corrected C capture recovery checkpoint. The accumulated default,
+server and highres manifest and fresh production/headless gates remain pending.
+No Go conversion is installed. native-io-draft.go and native-floor-draft.go are
+uninstalled, unqualified sketches. All test drafts are consumed/installed.
+See MAP_SECTIONS.md and map-sections-captures.json for evidence.
+
+Removed33 superseded successful-run production binaries (1,603,731,468 bytes);
+cleanup manifest: build/port-map-sections/superseded-binaries-cleanup.json.
+Latest qualified statistics binaries, logs, captures, assets/archive are retained.
 No user decision is pending.
 
 All statistics installers are consumed. install-native.py stopped after C/body
@@ -45,7 +81,9 @@ verification, reclaiming 1,660,044,319 bytes. Audit/apply modes of
 `deduplicate-game-statistics-c-assets.py` are consumed; restore remains available.
 Preserve restoration manifests, changed maps/saves/screenshots and run logs.
 Original assets/archive are unchanged; archive remains untracked. Native scenario
-copies are still intact. Earlier verified cleanup modes are also consumed.
+copies were also hash-verified and deduplicated, reclaiming another1,660,044,319
+bytes. Audit96630/apply62682 are joined; corresponding cleanup modes consumed.
+Earlier verified cleanup modes are also consumed.
 
 ## Qualified parent — server map and round orchestration
 

@@ -1,0 +1,679 @@
+{
+  "roots": [
+    "nox_server_mapRWFloorMap_422230",
+    "nox_server_mapRWWallMap_429B20",
+    "nox_server_mapRWWindowWalls_4292C0",
+    "nox_server_mapRWDestructableWalls_429530",
+    "nox_server_mapRWSecretWalls_4297C0"
+  ],
+  "functions": [
+    {
+      "symbol": "nox_server_mapRWDestructableWalls_429530",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 9813,
+      "end": 11501,
+      "line": 351,
+      "lines": 57,
+      "references": [
+        {
+          "file": "src/legacy/maps.go",
+          "line": 119,
+          "text": "if ccall.CallIntPtr(C.nox_server_mapRWDestructableWalls_429530, a1) == 0 {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 351,
+          "text": "int nox_server_mapRWDestructableWalls_429530(uint32_t* a1) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 15,
+          "text": "int nox_server_mapRWDestructableWalls_429530(uint32_t* a1);"
+        }
+      ],
+      "calls": [
+        "getMemAt",
+        "getMemI16Ptr",
+        "getMemU16Ptr",
+        "getMemU32Ptr",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_crypt_IsReadOnly",
+        "nox_server_getWallAtGrid_410580",
+        "nox_server_mapRWDestructableWalls_429530",
+        "nox_xxx_cliWallGet_5042F0",
+        "nox_xxx_fileReadWrite_426AC0_file3_fread",
+        "nox_xxx_mapGetWallSize_426A70",
+        "nox_xxx_wallBreackableListAdd_410840",
+        "nox_xxx_wallForeachFn_410640",
+        "sub_428170"
+      ]
+    },
+    {
+      "symbol": "nox_server_mapRWFloorMap_422230",
+      "file": "src/legacy/GAME1_1.c",
+      "start": 60743,
+      "end": 70181,
+      "line": 2228,
+      "lines": 371,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "line": 2228,
+          "text": "int nox_server_mapRWFloorMap_422230(int a1) {"
+        },
+        {
+          "file": "src/legacy/maps.go",
+          "line": 107,
+          "text": "if ccall.CallIntPtr(C.nox_server_mapRWFloorMap_422230, a1) == 0 {"
+        },
+        {
+          "file": "src/legacy/GAME1_1.h",
+          "line": 90,
+          "text": "int nox_server_mapRWFloorMap_422230(int a1);"
+        }
+      ],
+      "calls": [
+        "BYTE1",
+        "COERCE_FLOAT",
+        "HIBYTE",
+        "LOBYTE",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_crypt_IsReadOnly",
+        "nox_server_mapRWFloorMap_422230",
+        "nox_xxx_fileReadWrite_426AC0_file3_fread",
+        "nox_xxx_tileAllocTileInCoordList_5040A0",
+        "nox_xxx_tileReadOne_422A40",
+        "nox_xxx_tile_422C10",
+        "nox_xxx_wallMath_427F30",
+        "sub_428170"
+      ]
+    },
+    {
+      "symbol": "nox_server_mapRWSecretWalls_4297C0",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 12632,
+      "end": 15102,
+      "line": 443,
+      "lines": 90,
+      "references": [
+        {
+          "file": "src/legacy/maps.go",
+          "line": 113,
+          "text": "if ccall.CallIntPtr(C.nox_server_mapRWSecretWalls_4297C0, a1) == 0 {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 443,
+          "text": "int nox_server_mapRWSecretWalls_4297C0(uint32_t* a1) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 19,
+          "text": "int nox_server_mapRWSecretWalls_4297C0(uint32_t* a1);"
+        }
+      ],
+      "calls": [
+        "calloc",
+        "getMemAt",
+        "getMemI16Ptr",
+        "getMemU16Ptr",
+        "getMemU32Ptr",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_crypt_IsReadOnly",
+        "nox_server_getWallAtGrid_410580",
+        "nox_server_mapRWSecretWalls_4297C0",
+        "nox_xxx_cliWallGet_5042F0",
+        "nox_xxx_fileReadWrite_426AC0_file3_fread",
+        "nox_xxx_mapGetWallSize_426A70",
+        "nox_xxx_wallForeachFn_410640",
+        "nox_xxx_wallSecretBlock_410760",
+        "sub_428170"
+      ]
+    },
+    {
+      "symbol": "nox_server_mapRWWallMap_429B20",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 16502,
+      "end": 23463,
+      "line": 573,
+      "lines": 204,
+      "references": [
+        {
+          "file": "src/legacy/maps.go",
+          "line": 101,
+          "text": "if ccall.CallIntPtr(C.nox_server_mapRWWallMap_429B20, a1) == 0 {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 573,
+          "text": "int nox_server_mapRWWallMap_429B20(uint32_t* a1) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 22,
+          "text": "int nox_server_mapRWWallMap_429B20(uint32_t* a1);"
+        }
+      ],
+      "calls": [
+        "BYTE2",
+        "LOBYTE",
+        "getMemAt",
+        "getMemByte",
+        "getMemIntPtr",
+        "getMemU32Ptr",
+        "getMemU8Ptr",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_crypt_IsReadOnly",
+        "nox_server_getWallAtGrid_410580",
+        "nox_server_mapRWWallMap_429B20",
+        "nox_xxx_fileReadWrite_426AC0_file3_fread",
+        "nox_xxx_mapWallGetHpByTile_410E20",
+        "nox_xxx_mapWallMaxVariation_410DD0",
+        "nox_xxx_polygonIsPlayerInPolygon_4217B0",
+        "nox_xxx_wallBreakableCounterClear_429520",
+        "nox_xxx_wallCreateAt_410250",
+        "nox_xxx_wallForeachFn_410640",
+        "nox_xxx_wallGet_426A30",
+        "nox_xxx_wallMath_427F30",
+        "nox_xxx_wallSecretCounterClear_4297B0",
+        "nox_xxx_wallTileByName_410D60",
+        "nox_xxx_wall_42A6C0",
+        "sub_421990",
+        "sub_428170",
+        "sub_42A150",
+        "sub_504290"
+      ]
+    },
+    {
+      "symbol": "nox_server_mapRWWindowWalls_4292C0",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 7160,
+      "end": 8682,
+      "line": 261,
+      "lines": 55,
+      "references": [
+        {
+          "file": "src/legacy/maps.go",
+          "line": 131,
+          "text": "if ccall.CallIntPtr(C.nox_server_mapRWWindowWalls_4292C0, a1) == 0 {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 261,
+          "text": "int nox_server_mapRWWindowWalls_4292C0(uint32_t* a1) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 11,
+          "text": "int nox_server_mapRWWindowWalls_4292C0(uint32_t* a1);"
+        }
+      ],
+      "calls": [
+        "getMemAt",
+        "getMemI16Ptr",
+        "getMemU16Ptr",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_crypt_IsReadOnly",
+        "nox_server_getWallAtGrid_410580",
+        "nox_server_mapRWWindowWalls_4292C0",
+        "nox_xxx_cliWallGet_5042F0",
+        "nox_xxx_fileReadWrite_426AC0_file3_fread",
+        "nox_xxx_mapGetWallSize_426A70",
+        "nox_xxx_wallForeachFn_410640",
+        "sub_428170"
+      ]
+    },
+    {
+      "symbol": "nox_xxx_tileReadOne_422A40",
+      "file": "src/legacy/GAME1_1.c",
+      "start": 70259,
+      "end": 72617,
+      "line": 2601,
+      "lines": 75,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "line": 2343,
+          "text": "nox_xxx_tileReadOne_422A40(v62, v54);"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "line": 2372,
+          "text": "nox_xxx_tileReadOne_422A40(v62, (uint8_t*)(&ptr_5D4594_2650668[v48][v49].field_1));"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "line": 2376,
+          "text": "nox_xxx_tileReadOne_422A40(v62, (uint8_t*)(&ptr_5D4594_2650668[v48][v49].field_6));"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "line": 2517,
+          "text": "nox_xxx_tileReadOne_422A40(v62, v38);"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "line": 2533,
+          "text": "nox_xxx_tileReadOne_422A40(v62, v38);"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "line": 2582,
+          "text": "nox_xxx_tileReadOne_422A40(v62, v31 + 4);"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "line": 2587,
+          "text": "nox_xxx_tileReadOne_422A40(v62, v32 + 24);"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "line": 2601,
+          "text": "unsigned char nox_xxx_tileReadOne_422A40(int a1, uint8_t* a2) {"
+        },
+        {
+          "file": "src/legacy/GAME1_1.h",
+          "line": 91,
+          "text": "unsigned char nox_xxx_tileReadOne_422A40(int a1, uint8_t* a2);"
+        }
+      ],
+      "calls": [
+        "LOBYTE",
+        "LOWORD",
+        "nox_crypt_IsReadOnly",
+        "nox_xxx_fileReadWrite_426AC0_file3_fread",
+        "nox_xxx_tileListAddNewSubtile_422160",
+        "nox_xxx_tileReadOne_422A40"
+      ]
+    },
+    {
+      "symbol": "nox_xxx_tile_422C10",
+      "file": "src/legacy/GAME1_1.c",
+      "start": 72695,
+      "end": 83690,
+      "line": 2678,
+      "lines": 436,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "line": 2302,
+          "text": "return nox_xxx_tile_422C10(v62, a1);"
+        },
+        {
+          "file": "src/legacy/GAME1_1.c",
+          "line": 2678,
+          "text": "int nox_xxx_tile_422C10(int a1, int a2) {"
+        },
+        {
+          "file": "src/legacy/GAME1_1.h",
+          "line": 92,
+          "text": "int nox_xxx_tile_422C10(int a1, int a2);"
+        }
+      ],
+      "calls": [
+        "COERCE_FLOAT",
+        "LOBYTE",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_crypt_IsReadOnly",
+        "nox_xxx_fileReadWrite_426AC0_file3_fread",
+        "nox_xxx_tileAllocTileInCoordList_5040A0",
+        "nox_xxx_tileListAddNewSubtile_422160",
+        "nox_xxx_tile_422C10",
+        "nox_xxx_wallMath_427F30",
+        "sub_428170"
+      ]
+    },
+    {
+      "symbol": "nox_xxx_wallBreakableCounterClear_429520",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 9647,
+      "end": 9735,
+      "line": 348,
+      "lines": 1,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 348,
+          "text": "void nox_xxx_wallBreakableCounterClear_429520() { *getMemU32Ptr(0x5D4594, 741344) = 0; }"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 611,
+          "text": "nox_xxx_wallBreakableCounterClear_429520();"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 14,
+          "text": "void nox_xxx_wallBreakableCounterClear_429520();"
+        }
+      ],
+      "calls": [
+        "getMemU32Ptr",
+        "nox_xxx_wallBreakableCounterClear_429520"
+      ]
+    },
+    {
+      "symbol": "nox_xxx_wallSecretCounterClear_4297B0",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 12469,
+      "end": 12554,
+      "line": 440,
+      "lines": 1,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 440,
+          "text": "void nox_xxx_wallSecretCounterClear_4297B0() { *getMemU32Ptr(0x5D4594, 741352) = 0; }"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 610,
+          "text": "nox_xxx_wallSecretCounterClear_4297B0();"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 18,
+          "text": "void nox_xxx_wallSecretCounterClear_4297B0();"
+        }
+      ],
+      "calls": [
+        "getMemU32Ptr",
+        "nox_xxx_wallSecretCounterClear_4297B0"
+      ]
+    },
+    {
+      "symbol": "nox_xxx_wall_4296E0",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 11579,
+      "end": 11890,
+      "line": 410,
+      "lines": 11,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 401,
+          "text": "nox_xxx_wallForeachFn_410640(nox_xxx_wall_4296E0, (int)a1);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 410,
+          "text": "void nox_xxx_wall_4296E0(uint8_t* a1, uint32_t* a2) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 16,
+          "text": "void nox_xxx_wall_4296E0(uint8_t* a1, uint32_t* a2);"
+        }
+      ],
+      "calls": [
+        "getMemU16Ptr",
+        "nox_xxx_wallMath_427F30",
+        "nox_xxx_wall_4296E0"
+      ]
+    },
+    {
+      "symbol": "sub_429450",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 8760,
+      "end": 9065,
+      "line": 318,
+      "lines": 11,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 309,
+          "text": "nox_xxx_wallForeachFn_410640(sub_429450, (int)a1);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 318,
+          "text": "void sub_429450(uint8_t* a1, uint32_t* a2) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 12,
+          "text": "void sub_429450(uint8_t* a1, uint32_t* a2);"
+        }
+      ],
+      "calls": [
+        "getMemU16Ptr",
+        "nox_xxx_wallMath_427F30",
+        "sub_429450"
+      ]
+    },
+    {
+      "symbol": "sub_4294B0",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 9143,
+      "end": 9569,
+      "line": 331,
+      "lines": 15,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 311,
+          "text": "nox_xxx_wallForeachFn_410640(sub_4294B0, (int)a1);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 331,
+          "text": "void sub_4294B0(uint8_t* a1, uint32_t* a2) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 13,
+          "text": "void sub_4294B0(uint8_t* a1, uint32_t* a2);"
+        }
+      ],
+      "calls": [
+        "nox_xxx_fileReadWrite_426AC0_file3_fread",
+        "nox_xxx_wallMath_427F30",
+        "sub_4294B0"
+      ]
+    },
+    {
+      "symbol": "sub_429740",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 11968,
+      "end": 12391,
+      "line": 423,
+      "lines": 15,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 403,
+          "text": "nox_xxx_wallForeachFn_410640(sub_429740, (int)a1);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 423,
+          "text": "void sub_429740(uint8_t* a1, uint32_t* a2) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 17,
+          "text": "void sub_429740(uint8_t* a1, uint32_t* a2);"
+        }
+      ],
+      "calls": [
+        "nox_xxx_fileReadWrite_426AC0_file3_fread",
+        "nox_xxx_wallMath_427F30",
+        "sub_429740"
+      ]
+    },
+    {
+      "symbol": "sub_429A00",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 15180,
+      "end": 15482,
+      "line": 535,
+      "lines": 11,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 463,
+          "text": "nox_xxx_wallForeachFn_410640(sub_429A00, (int)a1);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 535,
+          "text": "void sub_429A00(uint8_t* a1, uint32_t* a2) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 20,
+          "text": "void sub_429A00(uint8_t* a1, uint32_t* a2);"
+        }
+      ],
+      "calls": [
+        "getMemU16Ptr",
+        "nox_xxx_wallMath_427F30",
+        "sub_429A00"
+      ]
+    },
+    {
+      "symbol": "sub_429A60",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 15560,
+      "end": 16424,
+      "line": 548,
+      "lines": 23,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 465,
+          "text": "nox_xxx_wallForeachFn_410640(sub_429A60, (int)a1);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 548,
+          "text": "void sub_429A60(int a1, uint32_t* a2) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 21,
+          "text": "void sub_429A60(int a1, uint32_t* a2);"
+        }
+      ],
+      "calls": [
+        "nox_xxx_fileReadWrite_426AC0_file3_fread",
+        "nox_xxx_wallMath_427F30",
+        "sub_429A60"
+      ]
+    },
+    {
+      "symbol": "sub_42A0F0",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 23541,
+      "end": 24141,
+      "line": 779,
+      "lines": 18,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 635,
+          "text": "nox_xxx_wallForeachFn_410640(sub_42A0F0, 0);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 779,
+          "text": "int sub_42A0F0(int a1) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 850,
+          "text": "nox_xxx_wallForeachFn_410640(sub_42A0F0, 0);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 23,
+          "text": "int sub_42A0F0(int a1);"
+        }
+      ],
+      "calls": [
+        "getMemIntPtr",
+        "getMemU32Ptr",
+        "sub_42A0F0"
+      ]
+    },
+    {
+      "symbol": "sub_42A150",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 24219,
+      "end": 30767,
+      "line": 799,
+      "lines": 217,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 618,
+          "text": "return sub_42A150(v28, a1);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 799,
+          "text": "int sub_42A150(short a1, uint32_t* a2) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 24,
+          "text": "int sub_42A150(short a1, uint32_t* a2);"
+        }
+      ],
+      "calls": [
+        "BYTE2",
+        "LOBYTE",
+        "getMemAt",
+        "getMemByte",
+        "getMemIntPtr",
+        "getMemU32Ptr",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_crypt_IsReadOnly",
+        "nox_server_getWallAtGrid_410580",
+        "nox_xxx_fileReadWrite_426AC0_file3_fread",
+        "nox_xxx_mapWallGetHpByTile_410E20",
+        "nox_xxx_mapWallMaxVariation_410DD0",
+        "nox_xxx_polygonIsPlayerInPolygon_4217B0",
+        "nox_xxx_wallCreateAt_410250",
+        "nox_xxx_wallForeachFn_410640",
+        "nox_xxx_wallGet_426A30",
+        "nox_xxx_wallMath_427F30",
+        "nox_xxx_wall_42A6C0",
+        "sub_421990",
+        "sub_428170",
+        "sub_42A150",
+        "sub_42A650",
+        "sub_504290"
+      ]
+    },
+    {
+      "symbol": "sub_42A650",
+      "file": "src/legacy/GAME1_2.c",
+      "start": 30845,
+      "end": 31157,
+      "line": 1018,
+      "lines": 18,
+      "references": [
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 982,
+          "text": "sub_42A650(v21);"
+        },
+        {
+          "file": "src/legacy/GAME1_2.c",
+          "line": 1018,
+          "text": "int sub_42A650(unsigned char* a1) {"
+        },
+        {
+          "file": "src/legacy/GAME1_2.h",
+          "line": 25,
+          "text": "int sub_42A650(unsigned char* a1);"
+        }
+      ],
+      "calls": [
+        "nox_xxx_getWallSprite_46A3B0",
+        "sub_42A650"
+      ]
+    }
+  ]
+}

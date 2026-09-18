@@ -1934,3 +1934,16 @@ final lookahead read. These allocation/access corrections preserve report bytes;
 all17 focused captures match C. Keep the legacy field widths, format quirks and
 configured-service behavior. Full qualification status is recorded in
 [GAME_STATISTICS.md](GAME_STATISTICS.md).
+
+## Map-section prerequisites — review with conversion
+
+Independent original-C contracts exposed missing scratch-wall lookups reusing a
+previous wall/region pointer, unattached secret records leaking, the current wall
+writer losing its0x80 flag, and v3 floor regions omitting23*Y in both tile-half
+coordinate formulas. Correct these before freezing the C baseline. Preserve the
+existing wire layouts, signed/count narrowing and sentinel limitations. These
+are deliberate behavior corrections, not claims of exact original-C behavior.
+They are small and reversible;18 focused roots /4,125 entries pass, and18 captures
+/4,108 records repeat identically across processes. Fresh production qualification
+is pending because C changed. See [MAP_SECTIONS.md](MAP_SECTIONS.md) for failures,
+fixture corrections and scope.

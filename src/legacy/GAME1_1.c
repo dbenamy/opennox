@@ -3064,7 +3064,7 @@ int nox_xxx_tile_422C10(int a1, int a2) {
 				if ((uint8_t)a1) {
 					if (v46 & 1) {
 						v64 = (v48 - 23) / 46;
-						v66 = (v46 + 23) / 46;
+						v66 = (23 * v46 + 23) / 46;
 						if (nox_common_gameFlags_check_40A5C0(0x400000)) {
 							v52 = *nox_xxx_tileAllocTileInCoordList_5040A0(v64, v66, COERCE_FLOAT(1));
 						} else {
@@ -3073,7 +3073,7 @@ int nox_xxx_tile_422C10(int a1, int a2) {
 						}
 					} else {
 						v49 = v48 / 46;
-						v51 = v46 / 46;
+						v51 = 23 * v46 / 46;
 						if (nox_common_gameFlags_check_40A5C0(0x400000)) {
 							v52 = *nox_xxx_tileAllocTileInCoordList_5040A0(v49, v51, COERCE_FLOAT(2));
 						} else {
