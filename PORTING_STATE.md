@@ -8,7 +8,24 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — spatial-targeting Go conversion qualified
+## Current — monster-control C baseline qualified
+
+Parent **0bbaba1d is committed and pushed**. The next connected conversion covers
+**40 live functions / 1,001 body lines**, plus **three proven orphans / 31 lines**.
+Fifteen focused C roots / **20,997 records** repeat identically and pass frozen
+expectations. All three affected-target sweeps pass without skips; see
+[MONSTER_CONTROL.md](docs/porting/MONSTER_CONTROL.md) and
+monster-control-c-qualification.json. All four gates share unchanged source.
+Static mapped checks pass. Production reuse verifies 2,254 unchanged parent
+sources, ten porttest-only additions and three parent binary hashes.
+
+No production conversion is installed. Next: commit/push this baseline, finish and
+review ignored Go drafts, install, compare frozen captures and qualify all targets
+plus fresh production. freeze-c.py and finish-c.py are consumed; do not replay.
+Original assets/archive remain intact; about 20 GiB remains free. No user decision
+is required. Parser rejected-record cleanup is recorded for later review.
+
+## Qualified parent — spatial-targeting Go conversion (0bbaba1d, pushed)
 
 C baseline **76ba09f8 is committed and pushed**. The native conversion replaces
 **11 functions / 554 body lines**, retains one ray export for a real C spell caller,
@@ -29,8 +46,8 @@ a pointer. A deterministic regression reproduced it before correction; typed poi
 pointers plus an integer token now preserve the callback ABI. No goldens changed.
 Production C: **40,218 / 74 files / zero reference (−559)**.
 
-Next after committing/pushing: monster control and definitions. Read-only proposal
-covers **40 live functions / 1,001 body lines** and three orphan candidates / 31 lines.
+Next: complete monster-control C contracts. The proposal
+covers **40 live functions / 1,001 body lines** and three proven orphans / 31 lines.
 Comment-only name matches are not callers. Complete dynamic/preamble reachability
 and shipped table review, then reuse AI owners for C contracts. Proposal/reference/
 table audits are under build/port-monster-control. No next-batch source is installed.

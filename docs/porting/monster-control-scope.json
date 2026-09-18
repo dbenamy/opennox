@@ -1,0 +1,265 @@
+{
+  "parent": "0bbaba1d",
+  "live_functions": [
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_509FF0",
+      "body_lines": 9,
+      "sha256": "a87056d294ea1e14839c42cdf55a2ed8e28e1b93cbf7c0badeeb391a62892495"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_mobActionGet_50A020",
+      "body_lines": 3,
+      "sha256": "6f42bde6e0d0c267ab08b714df6e0ce0486d1ea06b9466ae059424f727c69936"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_monsterAction_50A360",
+      "body_lines": 11,
+      "sha256": "51b2c89066d32163c32367e120fad51ca9845af09d8022f3bd213a9da4d00ab4"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_monsterCallDieFn_50A3D0",
+      "body_lines": 82,
+      "sha256": "c44c00bf5a7a868f41e1e5a84de12f06ab2661259adf1467bfadfc253e848749"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_updateNPCAnimData_50A850",
+      "body_lines": 48,
+      "sha256": "3f0b6abfe79286a072ed69500cfbeca1eb073ccbcb9ef63f2fdec6987c70d24e"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_mobAction_50A910",
+      "body_lines": 92,
+      "sha256": "5ebd1fe4adad6416327931a391f78e46089b8c46dd5b6abcb286af9320010606"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_script_511C50",
+      "body_lines": 20,
+      "sha256": "78d401651a7536616a1a25d0ec273034f2e077880490da5813aae03b6b67f00e"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_511CB0",
+      "body_lines": 14,
+      "sha256": "d61ddc08998b2c0425f7b1938e28bdca207546b270b3e48a6d9667b33bf370fa"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_511CE0",
+      "body_lines": 21,
+      "sha256": "9c58f038eb03740b81f3276580fc353937186f9a2a25e99cba14f75a105e1a32"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_511D20",
+      "body_lines": 16,
+      "sha256": "ff52fc20c52e41eb82ebcb8525c18fec3a372d2a87c19004845ca2a83b27aab4"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_scriptPrepareFoundUnit_511D70",
+      "body_lines": 20,
+      "sha256": "bc200350c5af765a462856e73f386d02fb3e1bfa9abe6f08f73a31f860cea176"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_511DC0",
+      "body_lines": 10,
+      "sha256": "19fe2d6189705689b26216e3216e02be92f81a720555e3ee31f70c5620de8843"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_511DE0",
+      "body_lines": 21,
+      "sha256": "be1531c8b6c0c1630bc26ed06271dd126d24930df7eeb5e920cc7ff446480d0d"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_511E20",
+      "body_lines": 19,
+      "sha256": "35dc1852f42f0070b8ef488473935db4b646ae44ac9e6d7b6cc70a94d8e38d91"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_monsterLookAt_5125A0",
+      "body_lines": 22,
+      "sha256": "9b79c297367669f60c8a0228d529a8a4fa9ec027e09986ac7906fa298a03bc26"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_monsterWalkTo_514110",
+      "body_lines": 20,
+      "sha256": "6bc1c17fe630269085d8590a1605d1c97f138303b5f99c10b1bb6719c57ca674"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_monsterGoPatrol_515680",
+      "body_lines": 27,
+      "sha256": "b15a774ec5dde8e5b2515e0d355213060cfebda1dc0712ce67f5035ecf01ebfe"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_unitHunt_5157A0",
+      "body_lines": 12,
+      "sha256": "18e35f730d1c410aa726e188ea03ccb7e54df18d934ebbad51eca80ca06b8fe2"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_unitIdle_515820",
+      "body_lines": 12,
+      "sha256": "b165c57cb3ebbea13d1d16a18bfb6d7a962b0cc4bd0720cf722e7db8f4bda01c"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_unitSetFollow_5158C0",
+      "body_lines": 25,
+      "sha256": "34dfec935d8b7415a819ac489891a799cb9a0a20785e2ce360f7d399343902df"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_monsterActionMelee_515A30",
+      "body_lines": 35,
+      "sha256": "18708d9aebf2446f44a326e00a0a30de3bcac3478567830b156cb4af956a2190"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_monsterMissileAttack_515B80",
+      "body_lines": 29,
+      "sha256": "db2760e886f3fd6165b92225eb0994f0ed7f04ec45882bbcf91fe1a3efaf75f4"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_515C80",
+      "body_lines": 12,
+      "sha256": "4619a9eb6cd78a2e31cf82f3060d36eb5b9ac970a126c9b206acfd2783b47ba4"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_mobSetFightTarg_515D30",
+      "body_lines": 34,
+      "sha256": "336ffad575565ed292f2ca5a52f9ad79460b68b098de10e587be83334169b979"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_server_scriptFleeFrom_515F70",
+      "body_lines": 34,
+      "sha256": "951385b1a36b567ad04ff960b7a8c2439acf84cd4c1dff53f5c24caaf7163011"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_516090",
+      "body_lines": 22,
+      "sha256": "0464c0ec09cb4e481ac0725af6f918c7edec6e605200cded65bbd16a4721f8b7"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_516570",
+      "body_lines": 18,
+      "sha256": "bcf9a9c896bc2db8a4fa028318fe3502a6dfcf0768b05d4c95ca305056eea239"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_516D00",
+      "body_lines": 15,
+      "sha256": "77340d47ad39883b7aed4916024cdefc13874ad26c1722faa48c6b3ceba6f953"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_allocPendingOwnsArray_516EE0",
+      "body_lines": 5,
+      "sha256": "0dc6a099b85ca55e62be5b47a9ee4a20fbb58b48a60b90b5032e758f94fc5431"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_516F10",
+      "body_lines": 9,
+      "sha256": "ff670a81a109852cdae94450351611e2de6524a41921d8c190dd294c0c1514f1"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_516F30",
+      "body_lines": 4,
+      "sha256": "8ccd7038fce1a0578f87ed0df697e449bfbc09cf5b12190fef870d1e5858e05b"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_516F90",
+      "body_lines": 12,
+      "sha256": "ff454c78d0b43047be32fd800cb46e0ce21158f5ba28ff6ea468b8d783be4c60"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_516FC0",
+      "body_lines": 18,
+      "sha256": "89eb211773bb4c0b7f1335e3d2cd7baefd84709c24ed33d4f79d6787b739e458"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_loadMonsterBin_517010",
+      "body_lines": 20,
+      "sha256": "e01259049618af2b73cf68a6c76eaf7a316db1c6ac3840d2a664816473169131"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_readStr_517090",
+      "body_lines": 38,
+      "sha256": "18dae5274b766ad70120548715dc9ba753249d29063ca2fec0229597c3e78e3b"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_517140",
+      "body_lines": 12,
+      "sha256": "002ab33189bcdd8e276456f98c300c49731e9ea948cea7fbc45e59b174b44ceb"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_servParseMonsterDef_517170",
+      "body_lines": 128,
+      "sha256": "f55663bf07382591c6e8507344b1b89122376912178454b5958ce64d25ee0f07"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_monsterListFree_5174F0",
+      "body_lines": 15,
+      "sha256": "3ec641865cd24faa73237946d0302baff0ce80b15e3db37c026f1f5e0a5b636b"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_monsterList_517520",
+      "body_lines": 22,
+      "sha256": "690ad28b00148838c12bb2088a3dc8df4e17d805cc854ff5789b8302d8e10bec"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_monsterDefByTT_517560",
+      "body_lines": 15,
+      "sha256": "82f6de111f3ca4adf94abe9aa27edfca72c58571056c5e8f2fd2c1715a1d6367"
+    }
+  ],
+  "orphan_candidates": [
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_monsterActionIsCondition_50A010",
+      "body_lines": 7,
+      "sha256": "f4540435ce149e73de45d9f266e2b1deca5c283bb84b3e1cca4b27548a91a221"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "nox_xxx_monsterIsActionScheduled_50A090",
+      "body_lines": 17,
+      "sha256": "a9ad0794b66e93c2b07f4fdf3c7986048c691f8b40e79a1bf3abcb47c956e0d0"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_50CAC0",
+      "body_lines": 7,
+      "sha256": "93ebc401aeb53aea944b70379306f48ce54340c42f8c9a65449e15a55fbd34e5"
+    }
+  ]
+}

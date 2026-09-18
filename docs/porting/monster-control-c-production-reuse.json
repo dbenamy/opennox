@@ -1,0 +1,27 @@
+{
+  "status": "verified test-only baseline production reuse",
+  "parent": "0bbaba1d",
+  "original_source_files": 2254,
+  "source_files": 2264,
+  "all_original_sources_identical": true,
+  "added_porttest_only_files": [
+    "src/common/memmap/nox/blobdata/monster_control_porttest.go",
+    "src/legacy/monster_control_defs_porttest.go",
+    "src/legacy/monster_control_porttest.go",
+    "src/monster_control_cache_porttest_test.go",
+    "src/monster_control_commands_porttest_test.go",
+    "src/monster_control_defs_porttest_test.go",
+    "src/monster_control_lifecycle_porttest_test.go",
+    "src/monster_control_outcomes_porttest_test.go",
+    "src/monster_control_pending_porttest_test.go",
+    "src/monster_control_refresh_porttest_test.go"
+  ],
+  "source_manifest_sha256": "9c90af2455fa247b9712a3313e1cecc86ab4dfddd1532b91773ad2fae70a1f08",
+  "reused": "build/port-spatial-targeting/native-production",
+  "binaries": {
+    "opennox": "335eaf99f15e587884c201776e2cb4ed9a0c15f03524931409a18cc94efb64cb",
+    "opennox-hd": "2d3f7becffd2335e01d13d7fe8914fe70acb1c33a8a25e084e444c61d78c04fb",
+    "opennox-server": "ec4b1b2588fdb61817814833b5e64c9dff90386ae188a0396efbe4c3fb773924"
+  },
+  "fresh_production_required_after_conversion": true
+}

@@ -1,0 +1,44 @@
+{
+  "status": "qualified C baseline",
+  "parent": "0bbaba1d",
+  "runs": {
+    "default": {
+      "seconds": 159.708,
+      "roots": 407,
+      "including_subtests": 36885,
+      "skips": 0,
+      "captures": 176,
+      "records": 135370
+    },
+    "server": {
+      "seconds": 241.016,
+      "roots": 407,
+      "including_subtests": 36885,
+      "skips": 0,
+      "captures": 176,
+      "records": 135370
+    },
+    "highres": {
+      "seconds": 176.184,
+      "roots": 407,
+      "including_subtests": 36885,
+      "skips": 0,
+      "captures": 176,
+      "records": 135370
+    }
+  },
+  "source_files": 2264,
+  "source_manifest_sha256": "9c90af2455fa247b9712a3313e1cecc86ab4dfddd1532b91773ad2fae70a1f08",
+  "focused": {
+    "roots": 15,
+    "captures": 15,
+    "records": 20997,
+    "repeated_identical": true,
+    "frozen_pass": true
+  },
+  "production_reuse": "monster-control-c-production-reuse.json",
+  "production_c_lines": 40218,
+  "production_c_files": 74,
+  "reference_c_lines": 0,
+  "orphan_functions": 3
+}
