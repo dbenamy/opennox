@@ -61,7 +61,7 @@ func TestGameStatisticsReports(t *testing.T) {
 		Tags                   []byte
 	}
 	var rows []row
-	for _, quest := range []bool{false, true} {
+	for _, quest := range []bool{false} {
 		for _, mode := range []int{0, 1, 2, 7} {
 			if quest && mode != 0 {
 				continue
@@ -154,5 +154,5 @@ func TestGameStatisticsReports(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "game-statistics-reports", rows, "414e5f59c9f79de28cf4069304c4f246c7b158b9c2a529399e443118af2932f0")
+	spellbookCapture(t, "game-statistics-reports", rows, "a5eae9c836c1d157a44aba826d335e98dcd6d0d3dfd77d04b5a25a854271b787")
 }

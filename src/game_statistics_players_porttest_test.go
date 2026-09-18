@@ -32,7 +32,7 @@ func TestGameStatisticsPlayerBytes(t *testing.T) {
 	for _, flags := range []uint32{0, 4096, 8192, 12288, 8193} {
 		for _, index := range []int32{-1, 0, 1, 31, 254} {
 			for _, value := range []int32{-2147483648, -129, -128, -1, 0, 1, 127, 128, 255, 256, 2147483647} {
-				for _, op := range []string{"completion", "participation"} {
+				for _, op := range []string{"participation"} {
 					func() {
 						defer noxflags.PortTestGameFlags(noxflags.GameFlag(flags))()
 						for i := range data {
@@ -57,7 +57,7 @@ func TestGameStatisticsPlayerBytes(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "game-statistics-player-bytes", rows, "97699f6cc76ee3ef05a579ba0dca337127aad4dea95e1c7369f1baa53ade9f87")
+	spellbookCapture(t, "game-statistics-player-bytes", rows, "d1f638fc2484253256e3fd8dfa0190c51f0b3f6b33602d41247e95001e980bf9")
 }
 func TestGameStatisticsPlayerRegistration(t *testing.T) {
 	o := newMatchRosterOwner(t)

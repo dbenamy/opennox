@@ -26,23 +26,33 @@ regeneration pass. No goldens were regenerated. Evidence:
 
 Server orchestration conversion **bdf8cdcf** is committed and pushed.
 Next batch: game statistics/reporting, 44 connected C bodies / 2,015 body lines.
-The repaired statistics C capture checkpoint passes **21 roots / 1,519 entries**
-in separate processes; all **21 captures / 3968 records** match and are frozen.
-All focused and cleanup sessions are joined. Source is editable until the broader
-gates start. **Full C qualification is still pending**: run default/server/highres
-and fresh production with game-statistics-c-batch.json before conversion.
+Repaired statistics capture checkpoint **05033129 is committed and pushed**.
+Twenty-one focused roots / 1,519 entries pass in separate processes; all21 captures
+/3,968 records match and are frozen. All three broader gates pass **495 roots /
+43,062 entries**, with identical 2,450-file source. Their266 primary captures /
+82,221 records plus combat.json /17,408 records agree across targets and C hashes.
+All broader sessions are joined.
 
-The three-line sub_425CA0 prerequisite fixes actor address selection and target
-row indices after independent contracts exposed wrong addresses and a host-index
-panic. See GAME_STATISTICS.md and DECISIONS.md. C stays **30,819 / 68 / zero
-reference C**. Fresh production is required; do not reuse the preceding binaries.
+Fresh C production qualification passed: three builds/ABI, exact known full-suite
+failure set, gameplay, save/load and flat-map regeneration. All sessions are joined.
+See game-statistics-c-qualification.json. The first attempt stopped on an incorrect
+ABI manifest category; retained_c fixed it with no production source change.
 
-The clock fixture reuses the existing map-theme observer; no linker flags or
-shared wrapper changed. Shipped report-name data and nonzero numeric scale are
-owned explicitly. Draft installers and freeze.py are consumed; do not replay.
-Five old inactive failed-run copies were deduplicated by 2,755,182,757 bytes,
-preserving their restoration manifests and failure evidence; audit/apply passes
-are consumed. Original assets/archive remain unchanged. No user decision is pending.
+Caller-context review found nine orphan routines /543 C body lines behind
+constant-false branches. Retire these; port the 35 live routines /1,472 body lines.
+Four orphan-only test roots are retired and two mixed captures were projected
+from frozen C output. The projected C run passes **17 roots /1307 entries**;
+all17 captures /3,366 records match. Original full contracts remain in05033129.
+See game-statistics-live-captures.json and game-statistics-reachability.json.
+
+Next: native statistics conversion. No native source installed yet; records draft
+is under ignored build/port-game-statistics. qualify-c.py, project-live.py and
+finalize-live-baseline.py are consumed; never replay. No tests/builds active.
+
+The three-line sub_425CA0 correction fixes actor address selection and target row
+indices. C remains30,819/68/zero reference. Clock fixtures reuse the map-theme
+observer. All copied draft installers and freeze.py are consumed; never replay.
+No user decision is pending. Original assets/archive remain unchanged.
 
 Completed server-orchestration native scenario deduplication audit66574 and
 apply3456 are joined, reclaiming 1,660,044,319 bytes with restoration manifests.

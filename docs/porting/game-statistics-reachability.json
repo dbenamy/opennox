@@ -1,0 +1,89 @@
+{
+  "live": [
+    "nox_xxx_net_4263C0",
+    "sub_425CA0",
+    "sub_425ED0",
+    "sub_425F10",
+    "sub_4282F0",
+    "sub_428540",
+    "sub_428810",
+    "sub_42A8B0",
+    "sub_42A970",
+    "sub_42AAA0",
+    "sub_42ABF0",
+    "sub_42AC50",
+    "sub_42ADA0",
+    "sub_42BCE0",
+    "sub_42BD50",
+    "sub_42BDC0",
+    "sub_42BE30",
+    "sub_42BEA0",
+    "sub_42C330",
+    "sub_42C360",
+    "sub_42C480",
+    "sub_42C770",
+    "sub_42C7F0",
+    "sub_42C820",
+    "sub_42C8B0",
+    "sub_42C8E0",
+    "sub_42C910",
+    "sub_42C9A0",
+    "sub_42CA00",
+    "sub_42CB20",
+    "sub_42CB80",
+    "sub_42CBF0",
+    "sub_42CC50",
+    "sub_42CC70",
+    "sub_42CCE0"
+  ],
+  "orphan": [
+    "sub_425E90",
+    "sub_426060",
+    "sub_426150",
+    "sub_4264D0",
+    "sub_4282D0",
+    "sub_4285C0",
+    "sub_428890",
+    "sub_4289D0",
+    "sub_42B810"
+  ],
+  "roots": [
+    "sub_425CA0",
+    "sub_425ED0"
+  ],
+  "disabled_go_callers": [
+    "src/game.go:940-942",
+    "src/game.go:959-971",
+    "src/server.go:357-360",
+    "src/player.go:396-398",
+    "src/player.go:596-598"
+  ],
+  "production_parent": "05033129",
+  "reason": "Inspecting full Go callsite conditions found literal false guards; textual references alone are not live roots.",
+  "live_c_body_lines": 1472,
+  "orphan_c_body_lines": 543,
+  "outside_roots": {
+    "sub_425CA0": [
+      "src/legacy/GAME5.c player death",
+      "src/legacy/objectives_scoring.go objective scores"
+    ],
+    "sub_425ED0": [
+      "src/legacy/team_runtime_members.go participation"
+    ]
+  },
+  "native_test_plan": {
+    "retire_roots": [
+      "TestGameStatisticsServerAddress",
+      "TestGameStatisticsMetadata",
+      "TestGameStatisticsQuestArrays",
+      "TestGameStatisticsSessionLifecycle"
+    ],
+    "project_captures": {
+      "game-statistics-player-bytes": "keep Op == participation",
+      "game-statistics-reports": "keep Quest == false"
+    },
+    "remaining_roots": 17,
+    "remaining_records": 3366,
+    "requirements": "Derive projected hashes from committed C captures; verify on C before conversion. No native golden regeneration."
+  }
+}

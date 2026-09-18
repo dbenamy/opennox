@@ -113,36 +113,3 @@ func TestGameStatisticsEventArray(t *testing.T) {
 	}
 	spellbookCapture(t, "game-statistics-event-array", rows, "03db0e7c93fa8a801ded52b58e080a8e09861b117edcf4051b85b88f0b1841e4")
 }
-func TestGameStatisticsServerAddress(t *testing.T) {
-	data := serverConfigOwnBytes(t, 0x5D4594, 741304, 28)
-	type row struct {
-		Name string
-		Port uint32
-		Data []byte
-	}
-	var rows []row
-	for _, name := range []string{"", "127.0.0.1", "192.0.2.111", "1234567890123456", "12345678901234567", "a\x00ignored"} {
-		for _, port := range []uint32{0, 1, 18590, 65535, 65536, 0x80000000, 0xffffffff} {
-			for i := range data {
-				data[i] = 0xa5
-			}
-			want := bytes.Clone(data)
-			b, free := alloc.Make([]byte{}, len(name)+1)
-			copy(b, name)
-			legacy.PortTestStatisticsCall("address", unsafe.Pointer(&b[0]), nil, int32(port))
-			free()
-			binary.LittleEndian.PutUint32(want, port)
-			text := []byte(name)
-			if i := bytes.IndexByte(text, 0); i >= 0 {
-				text = text[:i]
-			}
-			clear(want[12:28])
-			copy(want[12:28], text)
-			if !bytes.Equal(data, want) {
-				t.Fatal("server address truncation/padding or neighboring bytes")
-			}
-			rows = append(rows, row{name, port, bytes.Clone(data)})
-		}
-	}
-	spellbookCapture(t, "game-statistics-server-address", rows, "e34042ea02a08fce0fa91ec824b3b6363d87f772925e7cdbb5cc213bcd9d02f0")
-}

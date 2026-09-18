@@ -23,8 +23,8 @@ Current production C is **30,819 physical lines in 68 files**, with zero referen
 C (−527 from the server-orchestration baseline). All three targets, supplemental
 caller regressions and fresh production/headless integration qualify. The next
 batch is game-statistics collection and serialization. Repeated C captures are
-frozen after a small event-registration correction; broader qualification is
-pending before conversion. See [PORTING_STATE.md](PORTING_STATE.md).
+frozen after a small event-registration correction; all three targets and fresh
+production/headless checks qualify. The live test subset is verified against C. See [PORTING_STATE.md](PORTING_STATE.md).
 
 ## Goal and target
 
@@ -52,7 +52,9 @@ may precede full qualification when their evidence and remaining gates are expli
    ownership and observable effects. Move callers with private helpers when useful.
    Check whole-repository reachability before building fixtures: a function with no
    external callers may be a live private helper or completely orphaned. Audit
-   callbacks, registrations and C preambles too. Remove proven unreachable code
+   callbacks, registrations and C preambles too. Inspect the enclosing caller
+   conditions: a textual reference inside a constant-false branch is not a live
+   entrypoint. Follow the reachable private-helper graph from actual roots. Remove proven unreachable code
    with documented evidence instead of translating it solely to keep tests alive.
 2. Build a recoverable C baseline using real owners and reusable fixtures. Cover
    boundaries, return values, mutations, signedness/overflow, layout, serialization,

@@ -114,7 +114,7 @@ Static mapped-memory checks pass. The automatic event-flush boundary is covered
 at 253/254/255 existing rows, with actual report arrays and roster rebuilding.
 Embedded-zero string versus binary payloads have separate contracts.
 
-This is a recoverable capture checkpoint, **not yet a fully qualified C baseline**.
+At capture checkpoint05033129 this was **not yet a fully qualified C baseline**.
 The three broader targets and fresh production/headless qualification remain.
 Use [game-statistics-c-batch.json](game-statistics-c-batch.json). Its selection adds
 statistics, objective scoring, damage, object death and AI combat to the preceding
@@ -125,3 +125,48 @@ reclaiming **2,755,182,757 bytes**. Their recorded exit statuses were preserved;
 only files matching the original assets byte-for-byte were removed. Restoration
 manifests, failure logs, changed maps/saves and screenshots remain. The audit/apply
 passes of `build/port-game-statistics/deduplicate-old-failed-assets.py` are consumed.
+
+## Conversion reachability refinement
+
+The full Go callsite review found literal-false guards around statistics session
+initialization, finalization, periodic reporting, join registration and departure
+completion. A textual reference is not sufficient evidence of a live root.
+Follow the two remaining live entrypoints: event recording (`sub_425CA0`, C player
+death and Go objectives) and participation (`sub_425ED0`, Go team membership).
+Their private-helper closure contains **35 C bodies / 1,472 body lines**.
+
+**Nine C bodies / 543 body lines are orphaned** and will retire with their disabled
+callers, not be translated solely to preserve test coverage. This also removes
+the final body from server__system__server.c. The original C checkpoint preserves
+the complete source and contracts. See
+[game-statistics-reachability.json](game-statistics-reachability.json).
+
+Before conversion, retire four orphan-only test roots and project the two mixed
+captures from the committed C data: keep participation cases and non-quest
+reports. Verify those projected hashes on C. Seventeen live-contract roots /
+3,366 captured records remain; event-triggered flushing already covers the live
+reporting lifecycle. Generic modes within the still-live match serializer retain
+their frozen contracts. Do not regenerate expectations from Go results.
+
+The first production attempt built successfully but its manifest incorrectly
+classified original-C routines as Go-backed exports. They are now listed under
+`retained_c`; all44 symbols were verified present in the first binary. The fresh
+production rerun is under `c-production-final`. This is a qualification-metadata
+correction, not an application failure or production-source change.
+
+## Qualified C baseline and live projection
+
+All three targets pass **495 roots /43,062 test entries** without skips. The
+267 captures /99,629 records (including combat) agree across targets; all21 new
+statistics captures match the frozen hashes. All four gates have the same2,450
+source-file hashes. Three fresh production builds/ABI, exact known full-suite
+failures, gameplay, save/load and flat-map regeneration pass. See
+[game-statistics-c-qualification.json](game-statistics-c-qualification.json).
+
+The live-only test projection is now independently verified on that same C
+implementation: **17 roots /1307 entries**,17 captures /3,366 records. Two hashes
+were computed by filtering qualified C capture records; all remaining hashes
+are unchanged. No production source changed during projection. The full21-root
+three-target and production evidence above remains applicable; no duplicate
+production run is needed for this test-only change. See
+[game-statistics-live-captures.json](game-statistics-live-captures.json).
