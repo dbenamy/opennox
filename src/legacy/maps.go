@@ -40,6 +40,7 @@ var (
 	mapLog                            = log.New("map")
 	Nox_common_checkMapFile           func(name string) error
 	Nox_xxx_mapWriteSectionsMB_426E20 func(a1 unsafe.Pointer) int
+	Nox_xxx_mapReadSection            func(*cryptfile.CryptFile, unsafe.Pointer, string) (bool, error)
 )
 
 //export nox_common_checkMapFile_4CFE10
@@ -53,7 +54,12 @@ func nox_common_checkMapFile_4CFE10(name *C.char) int {
 
 //export nox_xxx_mapReadSection_426EA0
 func nox_xxx_mapReadSection_426EA0(a1 unsafe.Pointer, cname *C.char, cerr *C.uint) int {
-	panic("TODO")
+	ok, err := Nox_xxx_mapReadSection(cryptfile.Global(), a1, GoString(cname))
+	*cerr = C.uint(bool2int(err != nil))
+	if err != nil {
+		mapLog.Println(err)
+	}
+	return bool2int(ok)
 }
 
 //export nox_xxx_mapWriteSectionsMB_426E20

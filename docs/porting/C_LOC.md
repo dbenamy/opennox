@@ -215,6 +215,7 @@ target build selection and linker evidence.
 | Spatial targeting, cursor selection, wall normals and private interfaces | 74 | 40,218 | −559 | 0 |
 | Monster controls, definitions, pending ownership, script cache and obsolete interfaces | 74 | 39,193 | −1,025 | 0 |
 | Quest variables, persistence, stage preparation, bosses and obsolete interfaces | 74 | 38,498 | −695 | 0 |
+| Prefab section-dispatch and cache-cleanup prerequisites | 74 | 38,498 | 0 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

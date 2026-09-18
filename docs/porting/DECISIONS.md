@@ -1744,3 +1744,21 @@ Boss current HP truncates the wide product to int64 and then uint16; maximum HP
 uses a separately rounded float32 product and the original converter. Compiled C
 confirms both paths. Preserve byte-wrapped generator caps, signed minion-stage
 admission and exact RNG order. See [QUEST_PROGRESS.md](QUEST_PROGRESS.md).
+
+
+## Prefab prerequisites — review with the map-runtime conversion
+
+Connect the previously unimplemented C section bridge to the existing Go registry.
+Set both recognized/error results consistently and retain the caller's unknown-name
+object fallback. Match the Go cache-node destructor to the existing C allocation
+and removal paths; group references retain their separate tracked allocator. This
+is narrower than changing all constructors/callers to a new ownership convention.
+Both prior failures were reproduced through real entrypoints and are covered by
+independent tests, all three affected sweeps and fresh production qualification.
+No C algorithm or frozen expectation changed.
+
+Preserve the existing DebugData reader's permissive short reads in this bridge
+repair; consider stricter section validation separately. Audit tile/wall/waypoint
+payload lifetime in the larger batch: the current cleanup regression establishes
+node-wrapper ownership and explicitly owns its payload allocations. See
+[PREFAB_RUNTIME.md](PREFAB_RUNTIME.md).

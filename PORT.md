@@ -15,16 +15,14 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Quest variables, persistence, stage preparation and boss spawning
-are now in Go. Twenty-four live functions were replaced; all three target sweeps
-and fresh production/gameplay qualification pass. See
-[QUEST_PROGRESS.md](docs/porting/QUEST_PROGRESS.md).
+scheduled pause. Prefab prerequisites are now qualified: nonempty prefab sections
+reach the existing Go reader, and cache cleanup uses the allocator that created
+the nodes. All three affected target sweeps and fresh production/gameplay checks
+pass. See [PREFAB_RUNTIME.md](docs/porting/PREFAB_RUNTIME.md).
 
-Current production C is **38,498 physical lines in 74 files**, with zero reference C.
-This conversion removed **695 lines**, 24 obsolete interfaces and one private C
-global. Bounded names and partial-save handling are documented for review. All
-original captures match; the asset suite retains its exact three known failing
-packages. [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Current production C remains **38,498 physical lines in 74 files**, with zero
+reference C. Next is the connected 40-function prefab/map-runtime C baseline.
+[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 

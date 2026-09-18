@@ -1,0 +1,219 @@
+{
+  "status": "qualified prerequisite repair; candidate algorithms remain C",
+  "parent": "ae6fbe52de3211ba126afa03a15cd0e1a33b0a7e",
+  "sources": {
+    "identical_files": 2289,
+    "all_four_gates_unchanged": true
+  },
+  "targets": {
+    "default": {
+      "roots": 111,
+      "passed_including_subtests": 1756,
+      "package_seconds": 22.787,
+      "wall_seconds": 29.170532788150012,
+      "artifact": "build/port-prefab-runtime/prerequisite-final-default",
+      "no_skips": true
+    },
+    "server": {
+      "roots": 111,
+      "passed_including_subtests": 1756,
+      "package_seconds": 22.719,
+      "wall_seconds": 151.26589816785417,
+      "artifact": "build/port-prefab-runtime/prerequisite-final-server",
+      "no_skips": true
+    },
+    "highres": {
+      "roots": 111,
+      "passed_including_subtests": 1756,
+      "package_seconds": 22.049,
+      "wall_seconds": 83.77208563894965,
+      "artifact": "build/port-prefab-runtime/prerequisite-final-highres",
+      "no_skips": true
+    }
+  },
+  "captures": {
+    "captures": {
+      "capture-map-polygons-reset-storage.json": "1d97ea3a13709c53c99cb70bc3ff7e27c72087097735d070d6fbfea3f6efac7b",
+      "capture-object-xfer-linked-payloads.json": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1",
+      "capture-map-polygons-construction-remap.json": "1a9735f5b52561323d965f919bb3cbd9d29166e0be657757b5bca5d96e31b49c",
+      "capture-object-xfer-light-read.json": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae",
+      "capture-object-xfer-common-read.json": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7",
+      "capture-object-xfer-historical.json": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9",
+      "capture-map-polygons-section-versions.json": "bace02065cb0367da8838352caccf569aafccb988a08f301efafba0574f7bd32",
+      "capture-object-xfer-glyph-spells.json": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629",
+      "capture-map-polygons-record-defaults.json": "529907abf39663b16a3d01a69300471ec33c2a081b9422c40562f07f22ef97e9",
+      "capture-object-xfer-door-geometry.json": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee",
+      "capture-object-xfer-owned-write.json": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925",
+      "capture-map-polygons-ambient-color.json": "3fe22379e6019d9f50b623343623adc1e1412b1c8a94410e31d2510232b6b46e",
+      "capture-object-xfer-common-write.json": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae",
+      "capture-map-polygons-secret-awards.json": "e9a9d51234dcf62c138e4ac2fc52c109236a72d3b02c20cd533e507c05bd9466",
+      "capture-map-polygons-edge-projection.json": "4c9a362464b7954459d8bf61b8cf8841a3bf8d085b451f4018f5246a8268306f",
+      "capture-object-xfer-trigger-dimensions.json": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba",
+      "capture-map-polygons-containment-cache.json": "acdec3c27122a1de1c3d634b33241f6a49a2d13459d7f9b3a523995a3f76bd18",
+      "capture-map-polygons-nearest-vertices.json": "878f3cd54d120a0ae23ff3531f64ed4fdb122873a46401ed5df1acbabb9c6eaf",
+      "capture-object-xfer-names.json": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce",
+      "capture-object-xfer-typed-default.json": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3",
+      "capture-map-polygons-actor-transitions.json": "91eeec1f6c35c55eba8be10ed8d93c2d68e7c1663ca29686c171a6ff70208838",
+      "capture-object-xfer-light-write.json": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40",
+      "capture-map-polygons-vertex-selection.json": "b4ff24bd1afdbbef8a5adc33b279fe0459df7b87ac133e0761ebd654f758659b",
+      "population-prefab-fit.json": "7114c7a58942367bbc1e7f0f7ccd9ddf1f4abfc575a355b56bc95697e5f8c982",
+      "population-prefab-coordinates.json": "1b826c72dd1e76b9153961d9358908c70e8e806282e7a3991f85392c9f1c79f7",
+      "population-nearest-candidates.json": "0f84062fdb352e5d9d479283cecf3fa8ed78072b93c3fcc4f41164c8dc1644c0",
+      "population-density.json": "680cfec7e104aec4b264beb3d904ee197682ee4751151e8fe23b8b6bd7a0121f",
+      "population-spellbooks.json": "4eae1521c723d148df339d6bcd66ad211e60e199a009ff622d5e11574758fa87",
+      "population-enchantments.json": "8e56d5d57bf09e587c8b89e5a6851ba7959334557c486086aa6e853dc0011e53",
+      "population-prefab-rooms.json": "3701254012c99f415e2acce33d915e54da1019f8fc95d5f194d369a223264283",
+      "population-metadata-allocation.json": "a23067eec70b2a22aa0b0506e200413c6c8eb3451a88198634ec49acf75b9ef4",
+      "population-spell-names.json": "54fe4affdd6b4204f15637f46188c7b4a48a7129a32853bff6c764982b9b4e94",
+      "population-metadata-lookup.json": "e4f6190c41d3347ae5213187f1cf4ce352695f8e76fcbe69304de91d232d2465",
+      "population-prefab-selection.json": "941beab1a9a6ced897d26b946b3a10f8a95996743d5eba59744dda32534b2efa",
+      "population-exit-placement.json": "3681c1c2a83c88155deec6160c49a05275997e0b3dacff4f6dfbdddc22ec7ce0",
+      "population-prerequisite-spell-name.json": "262c6a1f8b82716dc0dba2a20c65d4d3a5a7fc62fb1a974931a22ba433115201",
+      "population-prefab-retries.json": "d3b2a639de4a3e71775df89c1d438b204976bd7cbc33cce812ba1ca735befe20",
+      "population-prefab-file.json": "6bacfa0e2fb5e266daaa326d4905ddc94440ce7435fa9dfb6d730b65930526fd",
+      "population-progress.json": "f02af611ad1e0f30297b87a64c6fc5c38706ae66678de48bcfe3a250e1c4b83b",
+      "population-modifier-boundaries.json": "64b4b284b59e2a12e3721e9261c61ad3ff99589e2d3b42fb18073d0829a5bac7",
+      "population-prerequisite-finale-point.json": "951e391ef00d428d314b5ca7b331008a69ba2a460dd3d5016ed2861867f9ced8",
+      "population-marker-removal.json": "8015f1479da21cdc2bbb3b7bae62ccac61513e44b13efc9427ba0af7c312e6e4",
+      "population-distances.json": "bd84b31080b63296ce3d2167dc0a470af932cf5d38f23b40713c07c6299f351e",
+      "population-prerequisite-point-output.json": "f2af01909de1b8e8e1568f3fdd9f034599eec724c1d1accb2749d4ada2bf4091",
+      "population-distance-ordering.json": "34455011e5c651e9a7e3ce83c71810fe717df1c71cfd9c48d583795459d2dbcd",
+      "population-prefab-metadata.json": "9a48d406111848c219837f8c542a58d1d263d8ed1092e71fb1d51910bafd874f",
+      "population-inventories.json": "a3ad3db53de783a380935ac877ca96a01186b00f08cebbe52ac4a58467a06a69",
+      "population-waypoint-connections.json": "a2734d97ba8a421447c01850463462b2d58f5f406cbf0fbe50f64ff0a360b296",
+      "population-room-objects.json": "41195716a81493e1398583b0752de06e99f201b7186b529d27b631be60001840",
+      "population-exit-names.json": "b70d73afbe5ccecaf530305bffe486014828819cb9ccda02b949d5e27160a5ab",
+      "population-prefab-replacement.json": "3634752b04b1c1b3016e6adbecf4aadb1e621fdd5dcf66a568f98139a99616f8",
+      "population-globals.json": "56196bd1588ecb1dfdb1502795a5d10b2161700d23dd54d891ff2c8c1e74d02c",
+      "population-prerequisite-spellbook-invalid.json": "59be353e080807aaafefd8424f3ea5ac73fcc83a483de893cc4518050a54067f",
+      "population-hallway-waypoints.json": "75433daa1ebea601f0b6cd95e7aee519950eb201833873473b528358609a9351",
+      "population-population-ordering.json": "e143b287fb7fcef3d1ec3029bf9f7f91c308f48f206365faefdda9d9d93a4b5e",
+      "population-decoded-placement.json": "ef23514391c6a155ae0008c8ac6e43c8ef4e74c0247b1d13187f66d0f4622834",
+      "population-plain-items.json": "1b2b57f6d677d29db733f1f2b27c3e80347205aead0e9e0ab76f0887183aa727",
+      "population-prefab-connections.json": "66ca1de38a249cfb583e177b31f80ebb4845acb08a08452be485a430f803c9cc",
+      "population-prefab-candidates.json": "a9e86f3efc8611497a6abbb757b92e920c1d0a3340d250424f4be27f220602e5"
+    },
+    "capture_count": 59,
+    "records": 21698,
+    "targets_equal": true
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 73.08342575398274,
+        "sha256": "0d1198e9f58758894c10d5b13ea9a99763f865130358a7557e1f710feddbe26d",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.690473603084683,
+        "sha256": "c22a9f817fa2d7fbf3b6468edb5afca5edb1a34a500c31a02c35b46af5263492",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 78.7315207500942,
+        "sha256": "9f00f75468b8a55ccb9ae7a9f7f253ba6ace309ab9d3833ec98db0b35fd80238",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "prefab-prerequisite": {
+        "exit": 0,
+        "wall_seconds": 61.59009694191627,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 60.93831374403089,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "0d1198e9f58758894c10d5b13ea9a99763f865130358a7557e1f710feddbe26d",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-prefab-runtime/prerequisite-final-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/prefab-prerequisite/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Prefab prerequisites: connect C section dispatch to the existing Go registry and match Go cache-node cleanup to the C allocator.",
+          "removed_maps": 0
+        }
+      },
+      "prefab-prerequisite-save": {
+        "exit": 0,
+        "wall_seconds": 46.44802323891781,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.93358258390799,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "0d1198e9f58758894c10d5b13ea9a99763f865130358a7557e1f710feddbe26d",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-prefab-runtime/prerequisite-final-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/prefab-prerequisite-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Prefab prerequisites: connect C section dispatch to the existing Go registry and match Go cache-node cleanup to the C allocator.",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "6daff448b0f1ad264c584987031a080bc0bfe2336bc82684ded466a32a009c7a"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 54.62199028884061,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "production_artifact": "build/port-prefab-runtime/prerequisite-final-production",
+  "production_wall_seconds": 377.6780795569066,
+  "c_loc": {
+    "production_lines": 38498,
+    "production_files": 74,
+    "reference_lines": 0,
+    "delta": 0
+  },
+  "reproductions": {
+    "section": "build/port-prefab-runtime/section-reproduce.log",
+    "cleanup": "build/port-prefab-runtime/cleanup-reproduce.log"
+  },
+  "static_preflight": "build/port-prefab-runtime/prerequisite-static-final.log"
+}

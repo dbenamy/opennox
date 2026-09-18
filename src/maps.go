@@ -524,7 +524,7 @@ func (s *Server) Nox_xxx_free503F40() {
 			if legacy.Get_dword_5d4594_1599476() == 0 {
 				s.Objs.FreeObject(asObject(*(*unsafe.Pointer)(unsafe.Add(v0, 0))).SObj())
 			}
-			alloc.FreePtr(v0)
+			legacy.MapPrefabFreeNode(v0)
 		}
 	}
 
@@ -535,7 +535,7 @@ func (s *Server) Nox_xxx_free503F40() {
 			if legacy.Get_dword_5d4594_1599476() == 0 {
 				*(*unsafe.Pointer)(unsafe.Add(it, 0)) = nil
 			}
-			alloc.FreePtr(it)
+			legacy.MapPrefabFreeNode(it)
 		}
 	}
 
@@ -550,7 +550,7 @@ func (s *Server) Nox_xxx_free503F40() {
 				legacy.Nox_xxx_tileFreeTileOne_4221E0(it2)
 			}
 			*(*unsafe.Pointer)(unsafe.Add(it, 0)) = nil
-			alloc.FreePtr(it)
+			legacy.MapPrefabFreeNode(it)
 		}
 	}
 
@@ -562,7 +562,7 @@ func (s *Server) Nox_xxx_free503F40() {
 				*(*unsafe.Pointer)(unsafe.Add(*(*unsafe.Pointer)(unsafe.Add(it, 0)), 4*7)) = nil
 			}
 			*(*unsafe.Pointer)(unsafe.Add(it, 0)) = nil
-			alloc.FreePtr(it)
+			legacy.MapPrefabFreeNode(it)
 		}
 	}
 

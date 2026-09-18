@@ -3,12 +3,33 @@
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
 **Rough C remaining: about 38.5k lines** — **38,498 physical lines in 74 production
-`.c` files**, zero reference C. Latest conversion: **−695 lines**.
+`.c` files**, zero reference C. Latest prerequisite: **0 C lines changed**; preceding conversion: **−695**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — quest-progress native conversion qualified
+## Current — prefab prerequisites qualified
+
+The section bridge and cache-node cleanup repairs are qualified. All three targets
+pass **111 roots / 1,756 tests including subtests** without skips, with **59 identical
+captures / 21,698 records**. Fresh production passes all builds/ABI/interfaces,
+exact known asset failures, headless gameplay, save/load and flat-map regeneration.
+All four gates share unchanged **2,289-file source**; sessions are joined. See
+[PREFAB_RUNTIME.md](docs/porting/PREFAB_RUNTIME.md) and its qualification report.
+C remains **38,498 / 74 files / zero reference**. No candidate algorithm is ported yet.
+
+Next: complete the **40-function / 1,369-body-line** prefab/map-runtime C baseline.
+Ignored drafts under build/port-prefab-runtime include operations, globals, shipped
+tables, metadata/script contracts, the interface audit and baseline-plan-draft.md.
+They are not installed or validated; review before copying. Ten entrypoints appear
+to require remaining C exports. Complete payload-lifetime and callback audits,
+add file/group/waypoint/placement contracts, repeat captures and freeze. Reuse this
+production evidence only if the subsequent baseline changes tests/docs alone.
+The existing DebugData reader's permissive short reads are documented for review.
+No user decision is pending. Do not replay finish-prerequisite.py or consumed
+quest/monster installers. Preserve original assets and the archive.
+
+## Qualified parent — quest-progress native conversion (ae6fbe52, pushed)
 
 C baseline **1c915175 is committed and pushed**. Twenty-four live functions are
 in Go and the orphan getter is removed. Final focused run passes twelve roots,
