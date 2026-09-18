@@ -81,6 +81,12 @@
     "session-entry-tile-clear": {
       "sha256": "8140baaa250cbdb2a279e59c93719717d729ede0bd929c5a28b61b16dac7ffc6",
       "records": 2
+    },
+    "session-entry-departure-results": {
+      "sha256": "fb0743a3accb9c608ca55cb1db4f78339b2bcb99a128e45f47f0e6f6a4ce89d6",
+      "records": 6,
+      "source_run": "departure-first",
+      "independent_repeat": "departure-repeat"
     }
   }
 }

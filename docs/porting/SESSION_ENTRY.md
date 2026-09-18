@@ -13,8 +13,8 @@ GAME3_2.c remain compatibility glue. See [selection](session-entry-selection.jso
 
 ## Contracts and owners
 
-Nineteen new test roots produce20 captures /1,064 records. The first completed
-focused run also includes the existing console-script fixture:20 roots /217 tests
+Twenty new test roots produce21 captures /1,070 records. The completed
+focused corpus also includes the existing console-script fixture:21 roots /224 tests
 including subtests. Additional loops check every16-bit input against three mode
 tables,512 map-flag combinations and all16,384 tile cells. Case counts do not
 replace the independent assertions below.
@@ -79,9 +79,10 @@ untouched string tail, two adapter/type compile errors, and missing ability-mana
 initialization in the reset owner. Twelfth and thirteenth focused runs pass.
 Raw evidence stays under build/port-session-entry. Thirteenth run and its independent
 repeat match all20 new captures byte-for-byte; expectations are frozen. Static
-mapped-memory checks pass. Default/server/highres each pass335 roots /38,963 tests
-without skips. All205 accumulated captures /51,862 records match C and each other;
-all four gates have identical2,406-file source. Three fresh ELF32/SSE2/CGO binaries
+mapped-memory checks pass. Default/server/highres each pass336 roots /38,970 tests
+without skips. All206 accumulated captures /51,868 records match C and each other;
+all three final target gates have identical2,407-file source. The production gate
+has identical production source; its sole difference is the added porttest file. Three fresh ELF32/SSE2/CGO binaries
 and ABI assertions pass; the full asset suite has the exact1,553 known failure
 entries and15 passing /3 failing /32 skipped packages. Options/gameplay, save/load
 and flat regeneration scenarios pass. See [qualification](session-entry-c-qualification.json).
@@ -89,9 +90,11 @@ and flat regeneration scenarios pass. See [qualification](session-entry-c-qualif
 The initial production gate stopped at a manifest assertion that incorrectly
 expected Go-backed exports for C baseline routines. Corrected retained-C assertions
 pass in c-production-final; no source change was needed. All gate sessions are joined.
-A final departure edge-case extension (match reset/elimination winner) is drafted
-but not installed. Qualify it against C before conversion; production can be reused
-if that extension changes only porttest source.
+Baseline **adb06d4e is committed and pushed**. A six-case departure extension now
+covers match reset with zero/one remaining player and elimination winner selection.
+Its first run and independent repeat match; the new capture is frozen. Final
+accumulated target sweeps pass. Production-source identity is verified, so the
+qualified production builds/scenarios are reused. All sessions are joined.
 
 ## Local disk recovery
 

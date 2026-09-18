@@ -33,11 +33,15 @@ All C qualification gates are joined and pass:335 roots /38,963 tests per target
 Three fresh production builds/ABI, exact known full-suite outcomes and three
 headless scenarios pass. First production manifest assertion was corrected without
 source changes; use c-production-final. See session-entry-c-qualification.json.
-Commit/push this repaired C baseline, then install and C-qualify the ignored
-`departure-results.draft` extension before translating. Production may be reused
-for this porttest-only extension after verifying production-source identity.
-Ignored native-*.draft files are uninstalled, uncompiled translation drafts; review
-before using. Source is editable; no running gates remain.
+Repaired C baseline **adb06d4e is committed and pushed**. The six-case departure
+match-reset/winner extension is installed, independently repeated, frozen and
+qualified. Final targets each pass336 roots /38,970 tests with206 matching captures
+/51,868 records and identical2,407-file source. Production-source identity is
+verified; only the new porttest file differs from c-production-final. All sessions
+are joined. Commit/push this extension, then install the native conversion.
+Ignored native-{maps,files,objects,roster,lifecycle,exports,porttest}.draft files
+are uninstalled, uncompiled translations. Review before using. No native source
+has been installed. Source is editable; no active checks remain.
 
 Native player-state scenario asset deduplication is completed and verified:
 1,660,044,319 bytes reclaimed; per-run restoration manifests preserved. Cleanup
