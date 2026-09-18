@@ -15,16 +15,14 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. Prefab script merging, callback/name/reference adjustment and generation
-setup are now native Go. Eighteen live algorithms replace C; two orphan helpers,
-24 interfaces and five globals are retired. See
-[PREFAB_SCRIPTS.md](docs/porting/PREFAB_SCRIPTS.md) for the qualified corrections.
+pause. Client/server player voting is now native Go: 35 live routines, one orphan
+body removed, 31 interfaces and 12 globals retired. Five C entrypoints remain for
+live callers. See [VOTES.md](docs/porting/VOTES.md) for coverage and review decisions.
 
-Current production C is **35,521 physical lines in 72 files**, with zero reference
-C (−1,403 from the repaired C baseline). The next connected candidate is client/server
-player voting. Its repaired C baseline is qualified: 18 focused roots, 220 broader
-roots on each target, frozen captures and fresh production/integration. See
-[VOTES.md](docs/porting/VOTES.md); [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Current production C is **34,343 physical lines in 71 files**, with zero reference
+C (−1,178 from the repaired C baseline). All three targets and fresh production /
+headless integration qualify. The next candidate is console command handling;
+[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 

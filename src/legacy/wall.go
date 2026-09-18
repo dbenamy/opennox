@@ -4,7 +4,6 @@ package legacy
 #include "GAME1.h"
 #include "GAME4_1.h"
 extern void* dword_5d4594_251560;
-extern uint32_t dword_5d4594_1599656;
 */
 import "C"
 import (
@@ -175,7 +174,7 @@ func nox_xxx_wall_4DF1E0(a1 int) {
 }
 
 func Sub_5071C0() bool {
-	return C.dword_5d4594_1599656 != 0
+	return voteHead != nil
 }
 
 func Nox_xxx_math_509ED0(pos types.Pointf) int {

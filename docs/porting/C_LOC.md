@@ -220,6 +220,7 @@ target build selection and linker evidence.
 | Prefab/map runtime: 40 native algorithms, two orphan bodies | 73 | 36,917 | −1,583 | 0 |
 | Prefab-script corrected C prerequisites (`5c83d11a`) | 73 | 36,924 | +7 | 0 |
 | Prefab scripts/generation: 18 native algorithms, two orphan bodies, five globals | 72 | 35,521 | −1,403 | 0 |
+| Client/server voting: 35 native routines, one orphan body, twelve globals | 71 | 34,343 | −1,178 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

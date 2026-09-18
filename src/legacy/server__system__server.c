@@ -44,7 +44,6 @@ extern uint32_t dword_5d4594_608316;
 extern uint32_t dword_5d4594_1569756;
 extern uint32_t dword_5d4594_1568024;
 extern uint32_t dword_5d4594_1548476;
-extern uint32_t dword_5d4594_1599656;
 
 void nullsub_25(uint32_t a1) {}
 
@@ -650,40 +649,9 @@ void sub_4F1F20() {
 
 //----- (00500510) --------------------------------------------------------
 
-
-//----- (00506F30) --------------------------------------------------------
-void nox_xxx_voteUptate_506F30() {
-	uint32_t* result; // eax
-	uint32_t* v1;     // esi
-
-	result = *(uint32_t**)&dword_5d4594_1599656;
-	if (dword_5d4594_1599656) {
-		do {
-			v1 = (uint32_t*)result[11];
-			switch (*result) {
-			case 0:
-			case 1:
-				sub_506F80((int)result);
-				break;
-			case 2:
-				sub_507090((int)result);
-				break;
-			case 3:
-				sub_507100((int)result);
-				break;
-			default:
-				break;
-			}
-			result = v1;
-		} while (v1);
-	}
-}
-
 //----- (0051A1F0) --------------------------------------------------------
 
-
 //----- (0051A920) --------------------------------------------------------
-
 
 void nox_xxx_updateUnits_51B100_D() {
 	uint8_t* v32 = nox_xxx_wallSecretGetFirstWall_410780();

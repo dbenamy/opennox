@@ -1,0 +1,57 @@
+{
+  "baseline": "5572b500",
+  "original_c": [
+    {
+      "name": "sub_48D450",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 16,
+      "sha256": "6f3e044b41cd9f293ac6ab5dea7d73e1c31f94779f9b9c20065df1a28736d9e4",
+      "repaired_body_sha256": "6f3e044b41cd9f293ac6ab5dea7d73e1c31f94779f9b9c20065df1a28736d9e4"
+    },
+    {
+      "name": "sub_48D4A0",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 8,
+      "sha256": "ecf44da7194dc56e92ef8ca8380e8e172b3cc55451079dce82889a37eec6a0a7",
+      "repaired_body_sha256": "ecf44da7194dc56e92ef8ca8380e8e172b3cc55451079dce82889a37eec6a0a7"
+    }
+  ],
+  "capture_sha256": "25fb1756584bd1ecf2a6ca296409873270af73387827cd64009bfb2963c94441",
+  "records": 6,
+  "targets": [
+    "default",
+    "server",
+    "highres"
+  ],
+  "repeat_identical": true,
+  "source_checkout": "5572b500 (isolated checkout with test-only dispatch and lifecycle contract additions)",
+  "production_evidence": "The original bodies were present in the qualified5572b500 production builds; focused lifecycle coverage was added before replacing them.",
+  "original_c_checks": {
+    "b": {
+      "pass": true,
+      "package_seconds": [
+        0.06
+      ]
+    },
+    "repeat": {
+      "pass": true,
+      "package_seconds": [
+        0.047
+      ]
+    },
+    "server": {
+      "pass": true,
+      "package_seconds": [
+        0.039
+      ]
+    },
+    "highres": {
+      "pass": true,
+      "package_seconds": [
+        0.04
+      ]
+    }
+  },
+  "reproduction_patch": "docs/porting/votes-lifecycle-c.patch",
+  "patch_sha256": "4a3874297d6e073a79f1c89ce752b7ed02621a51ab065dbf60a2134d0a077128"
+}

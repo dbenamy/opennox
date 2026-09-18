@@ -1825,3 +1825,17 @@ dispatch interfaces remain unchanged. Keep quest admission settings distinct
 from the record's literal 6 minimum; their names alone do not justify changing
 that behavior. Three-target/fresh production qualification passes. Details and
 fixture limits: [VOTES.md](VOTES.md).
+
+### Voting native boundaries and interface retirement
+
+Bound client name messages to 24 UTF-16 units plus terminator and selection
+snapshots to 32 names of 27 units plus terminator. Preserve raw UTF-16 comparisons
+and row text. Return without showing the vote window if its local team object is
+missing. Clear the allocation-class handle after shutdown so repeated close and
+restart are safe. Independent native contracts cover these reversible decisions.
+
+The initial scope audit missed GUI disposal and choice reset; add original-C
+contracts from the committed baseline before translating them. Retain choice reset
+for the client decoder and move disposal's only caller directly to Go. Cast dispatch
+and window-show C returns become void because all actual callers discard their
+incidental results. See [VOTES.md](VOTES.md) for evidence and qualification status.

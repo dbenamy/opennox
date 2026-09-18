@@ -464,7 +464,7 @@ func Nox_game_initOptionsInGame_4ADAD0() int {
 	return optionsInGame.construct()
 }
 func Sub_48D000_initGuiKick() int {
-	return int(C.sub_48D000_initGuiKick())
+	return voteGUIInit()
 }
 func Sub_4C3760() int {
 	return bindingInGame.construct()
@@ -542,7 +542,7 @@ func Sub_4AE3B0() {
 	optionsDestroy()
 }
 func Sub_48D450() {
-	C.sub_48D450()
+	voteGUIClose()
 }
 func Sub_4C4220() {
 	bindingDestroy()

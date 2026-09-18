@@ -2,36 +2,36 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 35.5k lines** — **35,521 physical lines in 72 production
-`.c` files**, zero reference C. Latest conversion: **−1,403** from the repaired
-baseline (−1,396 net including prerequisite repairs).
-See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 34.3k lines** — **34,343 physical lines in 71 production
+`.c` files**, zero reference C. Latest conversion: **−1,178** from the voting C
+baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — qualified client/server voting C baseline
+## Current — qualified native client/server voting
 
-The voting baseline covers 34 C bodies / 999 original body lines, including one
-confirmed orphan to remove. Eighteen focused roots pass. Eight captures / 381
-records repeat byte-for-byte in separate processes and are frozen. All three
-broader targets pass 220 roots / 43,576 cases, no skips ; 168 captures / 48,969 records
-match across targets. Fresh production passes all three builds/ABI/interfaces,
-the exact known asset failures, gameplay, save/load and flat regeneration.
-All four gates used unchanged 2,348-file source and all sessions are joined.
-See [VOTES.md](docs/porting/VOTES.md) and its qualification report.
+The repaired C baseline **5572b500 is committed and pushed**. Thirty-five live
+routines are native Go; 36 C bodies removed (one orphan), 31 interfaces retired,
+five C entrypoints retained and 12 globals moved. Two neighboring GUI lifecycle
+helpers were separately C-qualified from that committed baseline before conversion.
+Their reproducible fixture patch and evidence are tracked; see [VOTES.md](docs/porting/VOTES.md).
 
-Two prerequisites are qualified: initialize unused name-message bytes and withdraw
-the dispatched vote kind. Production C remains 35,521 / 72 files /zero reference.
-No vote algorithm is ported yet. Next: commit/push this qualified baseline, install
-and review the ignored native drafts, retire unused C, compare frozen captures,
-qualify fresh production, document C LOC and commit/push the conversion.
-No user decision is pending. Source is editable.
+All 22 focused roots pass and nine captures /387 records match C. Each target
+passes 224 roots /43,580 cases without skips; all169 captures /48,975 records match
+C and each other. Four gates share unchanged 2,352-file source. Static checks and
+fresh production pass: three builds/ABI, exact known full-suite results, gameplay,
+save/load and flat regeneration. All sessions are joined; source is editable.
+No user decision is pending. Evidence is under build/port-votes/native-* and in
+[votes-native-qualification.json](docs/porting/votes-native-qualification.json).
 
-Drafts under build/port-votes are not installed or compiled. native-design.md
-records caller/ownership details and proposed native bounds. The body audit is
-read-only apart from documentation; repeated original capture passes are complete.
-The preceding prefab-script installer/freezer/finalizer/deletion passes are
-consumed. Preserve the untracked asset archive.
+Next: commit/push this conversion, then establish the console-command baseline.
+Read-only candidate audit: build/port-console-commands/audit-plan.md,
+selection-draft.json and references.json. No candidate source changes yet.
+Both voting install-native.py and extend-lifecycle.py are consumed; never replay.
+Original assets/archive are unchanged. Completed voting C scenarios have verified
+asset restoration manifests after reclaiming about1.55GiB; changed maps/saves,
+reports and binaries remain. The isolated C lifecycle checkout remains for evidence.
+Previous prefab installers/deletion passes are also consumed.
 
 ## Qualified parent — prefab script native conversion (8e8db9a1, pushed)
 

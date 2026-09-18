@@ -36,7 +36,6 @@ extern nox_tileDef_t nox_tile_defs_arr[176];
 
 void nox_xxx_netlist_4DEB50();
 void nox_xxx_updateUnits_51B100();
-void nox_xxx_voteUptate_506F30();
 void sub_4E4170();
 void sub_4EC720();
 void nox_xxx_gameTick_4D2580_server_D();
@@ -291,7 +290,7 @@ func Sub_4E4170() {
 	C.sub_4E4170()
 }
 func Nox_xxx_voteUptate_506F30() {
-	C.nox_xxx_voteUptate_506F30()
+	voteTick()
 }
 func Nox_xxx_net_4263C0() {
 	C.nox_xxx_net_4263C0()
@@ -348,7 +347,7 @@ func Nox_xxx_allocMonsterRelatedArrays_50D780() int {
 	return spawnPolicyInit()
 }
 func Nox_xxx_allocVoteArray_5066D0() int {
-	return int(C.nox_xxx_allocVoteArray_5066D0())
+	return voteInit()
 }
 func Nox_xxx_monsterList_517520() int {
 	return monsterDefinitionBind()
@@ -372,7 +371,7 @@ func Sub_4ECA90() {
 	C.sub_4ECA90()
 }
 func Sub_506720() {
-	C.sub_506720()
+	voteClose()
 }
 func Sub_50D820() {
 	spawnPolicyFree()

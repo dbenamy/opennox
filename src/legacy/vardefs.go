@@ -25,7 +25,6 @@ extern uint32_t dword_5d4594_1309820;
 extern uint32_t dword_5d4594_1062508;
 extern uint32_t dword_5d4594_1049864;
 extern uint32_t dword_5d4594_1062512;
-extern uint32_t dword_5d4594_1599656;
 extern uint32_t dword_5d4594_1049500;
 extern uint32_t dword_5d4594_3798840;
 extern void* dword_587000_155144;
@@ -55,7 +54,6 @@ extern uint32_t dword_5d4594_251572;
 extern uint32_t dword_5d4594_1303452;
 extern uint32_t dword_5d4594_2386224;
 extern uint32_t dword_5d4594_815016;
-extern uint32_t dword_5d4594_1197312;
 extern uint32_t dword_5d4594_831236;
 extern uint32_t dword_5d4594_1047540;
 extern uint32_t dword_5d4594_1320964;
@@ -81,13 +79,11 @@ extern uint32_t dword_5d4594_1064856;
 extern uint32_t nox_xxx_aNox_cfg_0_587000_132132;
 extern uint32_t dword_5d4594_1047520;
 extern uint32_t dword_5d4594_534808;
-extern uint32_t dword_5d4594_1197324;
 extern uint32_t dword_5d4594_2487556;
 extern uint32_t dword_5d4594_2516344;
 extern uint32_t dword_5d4594_1193384;
 extern uint32_t nox_wol_servers_sorting_166704;
 extern uint32_t dword_5d4594_3798832;
-extern uint32_t dword_5d4594_1197320;
 extern void* nox_alloc_pixelSpan_1301844;
 extern uint32_t dword_5d4594_3798808;
 extern uint32_t dword_5d4594_1062524;
@@ -130,7 +126,6 @@ extern uint32_t dword_5d4594_1049496;
 extern void* dword_587000_93164;
 extern uint32_t dword_5d4594_1098624;
 extern uint32_t dword_5d4594_1569672;
-extern uint32_t dword_5d4594_1197316;
 extern uint32_t dword_5d4594_1320968;
 extern uint64_t qword_581450_9544;
 extern uint64_t qword_5d4594_1567940;
@@ -220,7 +215,6 @@ extern uint32_t dword_5d4594_1098592;
 extern uint32_t dword_5d4594_1321032;
 extern uint32_t dword_5d4594_251720;
 extern uint32_t dword_5d4594_1320932;
-extern uint32_t dword_5d4594_1197332;
 extern uint32_t dword_5d4594_1319056;
 extern uint32_t dword_5d4594_1047528;
 extern uint32_t dword_5d4594_608316;
@@ -246,12 +240,10 @@ extern uint32_t dword_5d4594_741356;
 extern uint32_t dword_5d4594_1197356;
 extern uint32_t dword_5d4594_1045436;
 extern uint32_t dword_5d4594_1321800;
-extern uint32_t dword_5d4594_1197336;
 extern uint32_t dword_5d4594_1197352;
 extern void* dword_5d4594_826036;
 extern uint32_t dword_5d4594_1064860;
 extern uint32_t dword_5d4594_1062468;
-extern uint32_t dword_5d4594_1197328;
 extern uint32_t dword_5d4594_1090044;
 extern uint32_t dword_5d4594_1305748;
 extern void* nox_alloc_respawn_1568020;
@@ -310,7 +302,6 @@ extern uint32_t dword_5d4594_251716;
 extern uint32_t dword_5d4594_251708;
 extern uint32_t dword_5d4594_1063120;
 extern uint32_t dword_5d4594_1062496;
-extern void* nox_alloc_vote_1599652;
 extern uint32_t dword_5d4594_1049804;
 extern uint32_t dword_5d4594_1090112;
 extern uint32_t dword_5d4594_3807140;
@@ -329,7 +320,6 @@ extern uint32_t dword_5d4594_1308120;
 extern uint32_t dword_5d4594_1568868;
 extern uint32_t dword_5d4594_1090108;
 extern uint32_t dword_5d4594_1308108;
-extern uint32_t dword_5d4594_1197308;
 extern uint32_t dword_5d4594_814548;
 extern uint32_t dword_5d4594_1308132;
 extern uint32_t dword_5d4594_2386228;
@@ -429,7 +419,6 @@ extern uint32_t dword_5d4594_1568308;
 extern uint32_t dword_5d4594_1091364;
 extern uint32_t dword_5d4594_599496;
 extern uint32_t dword_5d4594_1563276;
-extern uint32_t nox_server_resetQuestMinVotes_229988;
 extern uint32_t dword_5d4594_1062520;
 extern uint32_t dword_5d4594_831260;
 extern uint32_t dword_5d4594_1049516;
@@ -450,7 +439,6 @@ extern uint32_t dword_5d4594_1563320;
 extern uint32_t dword_5d4594_1313692;
 extern uint32_t dword_5d4594_1599688;
 extern uint32_t dword_5d4594_1307724;
-extern uint32_t nox_server_kickQuestPlayerMinVotes_229992;
 extern uint32_t dword_5d4594_1096272;
 extern uint32_t dword_5d4594_1096636;
 extern uint32_t dword_5d4594_1522956;
@@ -762,10 +750,10 @@ func Get_nox_server_connectionType_3596() int {
 	return int(C.nox_server_connectionType_3596)
 }
 func Get_nox_server_resetQuestMinVotes_229988() int {
-	return int(C.nox_server_resetQuestMinVotes_229988)
+	return int(voteQuestResetSetting)
 }
 func Get_nox_server_kickQuestPlayerMinVotes_229992() int {
-	return int(C.nox_server_kickQuestPlayerMinVotes_229992)
+	return int(voteQuestKickSetting)
 }
 func Get_dword_5d4594_816340() int {
 	return int(C.dword_5d4594_816340)
@@ -1248,10 +1236,10 @@ func Set_nox_server_connectionType_3596(v int) {
 	C.nox_server_connectionType_3596 = C.uint(v)
 }
 func Set_nox_server_resetQuestMinVotes_229988(v int) {
-	C.nox_server_resetQuestMinVotes_229988 = C.uint(v)
+	voteQuestResetSetting = uint32(v)
 }
 func Set_nox_server_kickQuestPlayerMinVotes_229992(v int) {
-	C.nox_server_kickQuestPlayerMinVotes_229992 = C.uint(v)
+	voteQuestKickSetting = uint32(v)
 }
 func Set_dword_5d4594_1308156(v unsafe.Pointer) {
 	C.dword_5d4594_1308156 = v

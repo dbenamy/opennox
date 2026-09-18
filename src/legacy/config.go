@@ -19,8 +19,6 @@ extern unsigned int nox_client_highResFloors_154952;
 extern unsigned int nox_client_fadeObjects_80836;
 extern unsigned int nox_client_renderBubbles_80844;
 extern uint32_t nox_server_connectionType_3596;
-extern uint32_t nox_server_kickQuestPlayerMinVotes_229992;
-extern uint32_t nox_server_resetQuestMinVotes_229988;
 extern uint32_t nox_server_sanctuaryHelp_54276;
 extern uint32_t nox_server_sendMotd_108752;
 */

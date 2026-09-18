@@ -238,11 +238,26 @@
       "lines": 12,
       "sha256": "3382dca4ecd78c02f894134373e86825a1be7c58db7db332a379cf07b34c4417",
       "repaired_body_sha256": "3382dca4ecd78c02f894134373e86825a1be7c58db7db332a379cf07b34c4417"
+    },
+    {
+      "name": "sub_48D450",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 16,
+      "sha256": "6f3e044b41cd9f293ac6ab5dea7d73e1c31f94779f9b9c20065df1a28736d9e4",
+      "repaired_body_sha256": "6f3e044b41cd9f293ac6ab5dea7d73e1c31f94779f9b9c20065df1a28736d9e4"
+    },
+    {
+      "name": "sub_48D4A0",
+      "file": "src/legacy/GAME2_3.c",
+      "lines": 8,
+      "sha256": "ecf44da7194dc56e92ef8ca8380e8e172b3cc55451079dce82889a37eec6a0a7",
+      "repaired_body_sha256": "ecf44da7194dc56e92ef8ca8380e8e172b3cc55451079dce82889a37eec6a0a7"
     }
   ],
-  "body_lines": 999,
+  "body_lines": 1023,
   "qualified_parent": "8e8db9a1",
   "orphan_candidates": [
     "sub_5071C0"
-  ]
+  ],
+  "lifecycle_extension": "Original C at5572b500; repeated default/server/highres contracts in isolated checkout before replacement."
 }

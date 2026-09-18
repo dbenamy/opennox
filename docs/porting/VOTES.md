@@ -2,14 +2,17 @@
 
 ## Scope and status
 
-The preceding prefab-script conversion **8e8db9a1 is committed and pushed**.
-This connected candidate covers **34 C bodies / 999 original body lines** in
-server vote allocation/lists/update, player/team thresholds, quest actions,
-client vote-window state/selection and message construction. General message
-decoding stays outside translation scope and is audited as a caller.
-[Selection](votes-selection.json) records original source hashes. One C list-present
-helper appears orphaned; its Go wrapper already reads the state directly. Confirm
-reachability before selecting contracts. No algorithm is ported or oracle frozen.
+The repaired C baseline **5572b500 is committed and pushed**. Native Go now
+implements 35 live routines covering server vote allocation/lists/update,
+player/team thresholds, quest actions, client window lifecycle/selection and
+message construction. One orphan C helper is removed. General message decoding
+remains outside translation scope and is tested as a caller.
+[Selection](votes-selection.json) records the 36 original bodies and hashes.
+
+The working conversion removes **1,178 physical C lines**, leaving **34,343 in
+71 production files**, zero reference C. Five C entrypoints remain for live C
+callers; 31 interfaces and 12 C globals are retired. Both name snapshot arrays
+are Go-owned. Native qualification passes; see PORTING_STATE.md.
 
 ## Baseline strategy
 
@@ -133,5 +136,65 @@ Production qualification took 369.7s. No original assets were changed.
 and [reviewed test selection](votes-tests.txt) record the evidence. Raw artifacts
 are build/port-votes/final-{a,b}, c-{default,server,highres,production} and
  target-capture-audit.json. Production C remains 35,521 / 72 files /zero reference.
-No voting algorithm has been converted yet. The ignored native drafts await
-integration after the qualified baseline is committed and pushed.
+This baseline remains the oracle for the native conversion. Ignored installation
+scripts are consumed and draft files are stale; installed source is authoritative.
+
+## Lifecycle audit extension
+
+The first native compile exposed two neighboring lifecycle routines omitted from
+the original selection: `sub_48D450` (window disposal) and `sub_48D4A0` (choice
+reset). Their reads of moved state required conversion together. Before translating
+them, an isolated checkout of 5572b500 exercised the original C with real windows,
+capture/stack ownership, repeat disposal and reinitialization. Six records matched
+across default/server/highres and a separate repeat. The added fixture and C adapter
+are recoverable as [a test-only patch](votes-lifecycle-c.patch); its hash, original
+source identity and results are in [the extension report](votes-lifecycle-c-qualification.json).
+The original baseline's 220-root result does not include this extension.
+
+The window indicator helper uses separate state and stays outside scope. Disposal
+now has a direct Go caller; choice reset retains its C entrypoint for the client
+decoder. This raises the complete frozen set to nine captures /387 records.
+
+## Native implementation and review decisions
+
+The fixed-capacity allocator preserves the 52-byte record layout and borrowed
+object/team ownership. Closing clears the allocator handle explicitly because
+`ClassT.Free` has a value receiver. Native contracts close twice and restart three
+times. Update/removal traversal preserves next-link capture and the C callback
+order, including reading the player through its borrowed update data after the
+service callback. Quest settings still gate admission separately from the literal
+record minimum. Threshold subtraction keeps its unsigned zero-player behavior.
+
+GUI player rows and name comparison preserve raw UTF-16 units. Native copies bound
+outgoing names to 24 units plus terminator in the existing 52-byte message, and
+selection snapshots to 32 names of 27 units plus terminator. Valid baseline cases
+are unchanged. A missing local team object now returns without showing the vote
+window; this replaces a nil dereference. These reversible boundary decisions have
+independent native contracts and are recorded for review.
+
+All actual callers ignore the old cast dispatch and show-window return values.
+Their retained C declarations now return void instead of exposing incidental
+pointer-derived decompiler results. Three other C entrypoints retain their types.
+Production qualification checks the retained and retired symbols.
+
+The first missing-team native test panicked during fixture team creation because
+its string/message service was not installed. Reusing the existing team-fixture
+setup fixed it without a production change. The final focused run passes 22 roots,
+all nine captures match C byte-for-byte, and static mapped-memory checks pass.
+
+## Qualified native conversion
+
+Default/server/highres each pass **224 roots /43,580 cases**, with no skips.
+All **169 captures /48,975 records** match across targets, including every original
+C capture. The four gates share unchanged 2,352-file source. Fresh production
+passes all three 386/SSE2/CGO builds, ABI and retained/retired interface checks.
+The asset suite exactly matches the known 1,553 failure entries and package
+outcomes. Gameplay/options panels, save/load and flat-map regeneration match
+existing references. All test/build sessions are joined.
+
+[Native qualification](votes-native-qualification.json) records the results.
+Local evidence: build/port-votes/native-{default,server,highres,production},
+native-third.*, native-static.log and native-capture-audit.json. No C algorithms
+remain solely for tests. Completed C scenario asset copies were SHA-256 verified
+against originals before deduplication, reclaiming 1,660,044,319 bytes; each run
+retains its restoration manifest, changed maps/saves and complete reports.

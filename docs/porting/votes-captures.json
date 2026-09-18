@@ -48,6 +48,12 @@
       "records": 4,
       "sha256": "8bbb494632e2213b1ee0b222acb1babeb4d48fadcd2c6531fcb805316f8331c3",
       "source": "src/votes_boundaries_porttest_test.go"
+    },
+    {
+      "label": "votes-gui-lifecycle",
+      "records": 6,
+      "sha256": "25fb1756584bd1ecf2a6ca296409873270af73387827cd64009bfb2963c94441",
+      "source": "src/votes_lifecycle_porttest_test.go"
     }
   ]
 }

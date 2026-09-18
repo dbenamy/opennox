@@ -380,7 +380,7 @@ func Sub_50E210(a1 *server.Object) {
 	spawnPolicyGlyphRelease(a1)
 }
 func Sub_506740(a1 *server.Object) {
-	C.sub_506740(asObjectC(a1))
+	voteRemovePlayer(a1)
 }
 func Nox_xxx_unitTransferSlaves_4EC4B0(a1 *server.Object) {
 	controlTransferChildren(a1)
