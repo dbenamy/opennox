@@ -1,0 +1,237 @@
+[
+  {
+    "symbol": "nox_xxx_unitsHaveSameTeam_4EC520",
+    "path": "src/legacy/GAME3_3.c",
+    "line": 70,
+    "body_lines": 25,
+    "sha256": "dd2ef8d864d9b0d77336b17114204cb0a9f7fcb7789fd2bdde4518620cafbf2c",
+    "references": [
+      {
+        "path": "src/legacy/spell_lifecycle_casting.go",
+        "line": 223,
+        "text": "if target.ObjClass&0x20006 != 0 && target.ObjFlags&0x8020 == 0 && C.nox_xxx_unitsHaveSameTeam_4EC520(asObjectC(target), asObjectC(u)) == 0 {"
+      },
+      {
+        "path": "src/legacy/GAME3_3.h",
+        "line": 169,
+        "text": "int nox_xxx_unitsHaveSameTeam_4EC520(nox_object_t* a1, nox_object_t* a2);"
+      },
+      {
+        "path": "src/legacy/GAME3_3.c",
+        "line": 70,
+        "text": "int nox_xxx_unitsHaveSameTeam_4EC520(nox_object_t* a1p, nox_object_t* a2p) {"
+      },
+      {
+        "path": "src/legacy/object.go",
+        "line": 521,
+        "text": "return C.nox_xxx_unitsHaveSameTeam_4EC520(asObjectC(a1), asObjectC(a2)) != 0"
+      }
+    ],
+    "disposition": "retire C interface; native Go callers"
+  },
+  {
+    "symbol": "sub_4EC5B0",
+    "path": "src/legacy/GAME3_3.c",
+    "line": 97,
+    "body_lines": 5,
+    "sha256": "93dfbcb521a00bfda063e79c539c1d6c793043539d4ede1b3c982ab9eeacfc66",
+    "references": [
+      {
+        "path": "src/legacy/GAME3_3.h",
+        "line": 171,
+        "text": "void sub_4EC5B0();"
+      },
+      {
+        "path": "src/legacy/server.go",
+        "line": 455,
+        "text": "C.sub_4EC5B0()"
+      },
+      {
+        "path": "src/legacy/GAME3_3.c",
+        "line": 97,
+        "text": "void sub_4EC5B0() {"
+      },
+      {
+        "path": "src/legacy/team_runtime_porttest.go",
+        "line": 136,
+        "text": "C.sub_4EC5B0()"
+      }
+    ],
+    "disposition": "retire C interface; native Go callers"
+  },
+  {
+    "symbol": "nox_xxx_respawnAdd_4EC5E0",
+    "path": "src/legacy/GAME3_3.c",
+    "line": 104,
+    "body_lines": 37,
+    "sha256": "20558729c74a3655f5b0f70b06bc10a1aab1bf78ffd33662870fb6926173a6e7",
+    "references": [
+      {
+        "path": "src/legacy/GAME3_3.h",
+        "line": 172,
+        "text": "uint32_t* nox_xxx_respawnAdd_4EC5E0(nox_object_t* a1);"
+      },
+      {
+        "path": "src/legacy/GAME3_3.c",
+        "line": 104,
+        "text": "uint32_t* nox_xxx_respawnAdd_4EC5E0(nox_object_t* a1p) {"
+      },
+      {
+        "path": "src/legacy/team_runtime_porttest.go",
+        "line": 138,
+        "text": "C.nox_xxx_respawnAdd_4EC5E0(asObjectC(u))"
+      },
+      {
+        "path": "src/legacy/object.go",
+        "line": 413,
+        "text": "C.nox_xxx_respawnAdd_4EC5E0(asObjectC(a1))"
+      }
+    ],
+    "disposition": "retire C interface; native Go callers"
+  },
+  {
+    "symbol": "sub_4EC6A0",
+    "path": "src/legacy/GAME3_3.c",
+    "line": 143,
+    "body_lines": 37,
+    "sha256": "fa27c468fa1d431d42aee865d5b739277281d8d0c1ea786f23b40ee8f0982c8f",
+    "references": [
+      {
+        "path": "src/legacy/team_runtime_map.go",
+        "line": 182,
+        "text": "C.sub_4EC6A0(C.int(uintptr(u.CObj())))"
+      },
+      {
+        "path": "src/legacy/GAME3_3.h",
+        "line": 173,
+        "text": "void sub_4EC6A0(int a1);"
+      },
+      {
+        "path": "src/legacy/GAME3_3.c",
+        "line": 143,
+        "text": "void sub_4EC6A0(int a1) {"
+      },
+      {
+        "path": "src/legacy/session_entry_objects.go",
+        "line": 55,
+        "text": "C.sub_4EC6A0(C.int(uintptr(u.CObj())))"
+      }
+    ],
+    "disposition": "retire C interface; native Go callers"
+  },
+  {
+    "symbol": "nox_xxx_allocItemRespawnArray_4ECA60",
+    "path": "src/legacy/GAME3_3.c",
+    "line": 179,
+    "body_lines": 4,
+    "sha256": "3f42668aa216c412536e1d521ced0ca4ac74ff64e9415c346ea8c3ceb2d1fc2a",
+    "references": [
+      {
+        "path": "src/server.go",
+        "line": 681,
+        "text": "return errors.New(\"nox_xxx_allocItemRespawnArray_4ECA60 failed\")"
+      },
+      {
+        "path": "src/legacy/GAME3_3.h",
+        "line": 174,
+        "text": "int nox_xxx_allocItemRespawnArray_4ECA60();"
+      },
+      {
+        "path": "src/legacy/server.go",
+        "line": 341,
+        "text": "return int(C.nox_xxx_allocItemRespawnArray_4ECA60())"
+      },
+      {
+        "path": "src/legacy/GAME3_3.c",
+        "line": 179,
+        "text": "int nox_xxx_allocItemRespawnArray_4ECA60() {"
+      },
+      {
+        "path": "src/legacy/team_runtime_porttest.go",
+        "line": 133,
+        "text": "if C.nox_xxx_allocItemRespawnArray_4ECA60() == 0 {"
+      }
+    ],
+    "disposition": "retire C interface; native Go callers"
+  },
+  {
+    "symbol": "sub_4ECA90",
+    "path": "src/legacy/GAME3_3.c",
+    "line": 185,
+    "body_lines": 1,
+    "sha256": "0ba4e498c65a01b807c2cbd73f8d73782267aac5d4656734e1c16aaec2c452d9",
+    "references": [
+      {
+        "path": "src/legacy/GAME3_3.h",
+        "line": 175,
+        "text": "void sub_4ECA90();"
+      },
+      {
+        "path": "src/legacy/server.go",
+        "line": 371,
+        "text": "C.sub_4ECA90()"
+      },
+      {
+        "path": "src/legacy/GAME3_3.c",
+        "line": 185,
+        "text": "void sub_4ECA90() { nox_free_alloc_class(*(void**)&nox_alloc_respawn_1568020); }"
+      },
+      {
+        "path": "src/legacy/team_runtime_porttest.go",
+        "line": 141,
+        "text": "C.sub_4ECA90()"
+      }
+    ],
+    "disposition": "retire C interface; native Go callers"
+  },
+  {
+    "symbol": "sub_4ED050",
+    "path": "src/legacy/GAME3_3.c",
+    "line": 188,
+    "body_lines": 19,
+    "sha256": "530a56564f823d8d341f26b70890cc36926164b0f50aaae24d657a45783a83c0",
+    "references": [
+      {
+        "path": "src/legacy/GAME3_3.h",
+        "line": 181,
+        "text": "void sub_4ED050(int a1, int a2);"
+      },
+      {
+        "path": "src/legacy/GAME3_3.c",
+        "line": 188,
+        "text": "void sub_4ED050(int a1, int a2) {"
+      },
+      {
+        "path": "src/legacy/GAME5.c",
+        "line": 618,
+        "text": "sub_4ED050(a1, a2);"
+      }
+    ],
+    "disposition": "retain C export"
+  },
+  {
+    "symbol": "sub_4EC720",
+    "path": "src/legacy/server__system__server.c",
+    "line": 392,
+    "body_lines": 132,
+    "sha256": "46b81faa03cea8d8d015b8fbb5681eb386e9289c2609af68d09c90a891b9cf8f",
+    "references": [
+      {
+        "path": "src/legacy/server.go",
+        "line": 40,
+        "text": "void sub_4EC720();"
+      },
+      {
+        "path": "src/legacy/server.go",
+        "line": 284,
+        "text": "C.sub_4EC720()"
+      },
+      {
+        "path": "src/legacy/server__system__server.c",
+        "line": 392,
+        "text": "void sub_4EC720() {"
+      }
+    ],
+    "disposition": "retire C interface; native Go callers"
+  }
+]

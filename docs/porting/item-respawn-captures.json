@@ -1,0 +1,38 @@
+{
+  "source_run": "seventh",
+  "independent_repeat": "repeat",
+  "captures": {
+    "item-respawn-crown-attribution": {
+      "sha256": "daf09a95d6809349bf9c6d1cdd5669a61bf0966a39eb2bc40b37b902ccb7cf70",
+      "records": 24
+    },
+    "item-respawn-list": {
+      "sha256": "3db2efd780abb907035c60837b212ec4250505bb6e1f1ed56278a76bae67b289",
+      "records": 18
+    },
+    "item-respawn-owner-teams": {
+      "sha256": "9c5ac1b7c160b8dac43293459b3f1bb828fa3b05098e86533156905f3a52bb3f",
+      "records": 2592
+    },
+    "item-respawn-pool-capacity": {
+      "sha256": "ed53d98969f543ca3ebee9cf431b0b3eecaea97659534239421ab6e0fad4073c",
+      "records": 386
+    },
+    "item-respawn-recreation": {
+      "sha256": "9749924edadc73189643338ebfe7643f86b8adbe65b14fccfdfcc6190443f2cd",
+      "records": 6
+    },
+    "item-respawn-relocation": {
+      "sha256": "cabc108e6d22035170b003a11f3d6b46a1e033932283dd450ef37127d3a094c4",
+      "records": 36
+    },
+    "item-respawn-replacement": {
+      "sha256": "49bd4d214a3a47f4b83b0c42c91c7c9eeb99b6bedd1b2a5efdcdf3b3ed91fd5a",
+      "records": 3
+    },
+    "item-respawn-scheduling": {
+      "sha256": "52d93cc47d8292a8c650d6014bf902a3d41c604d021e2b7ab7208501dda12bec",
+      "records": 404
+    }
+  }
+}

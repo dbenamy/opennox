@@ -1895,3 +1895,13 @@ shorter than four bytes; apply the existing filename branch's zero clamp there.
 These reversible corrections preserve normal shipped inputs and are review items.
 All three targets and fresh production/headless qualification pass. Details and
 failure evidence: [SESSION_ENTRY.md](SESSION_ENTRY.md).
+
+### Item-respawn empty-list removal
+
+Before translating item respawn, add an early return when the C list head is null.
+The original sub_4EC6A0 dereferenced head+4 before its later head test. This is a
+source-proven invalid access; the new empty/repeated-removal contracts check the
+same no-op semantics already used for missing objects in nonempty lists. The
+three-line correction is reversible and follows the standing authorization for
+confident fixes. See [ITEM_RESPAWN.md](ITEM_RESPAWN.md). Fresh C production
+qualification precedes conversion.

@@ -2,15 +2,16 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about31.7k lines** — **31,694 physical lines in69 production
+**Rough C remaining: about31.7k lines** — **31,697 physical lines in69 production
 `.c` files**, zero reference C. Latest conversion: **−914** from the repaired
 session-entry baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — session/map-entry native conversion qualified
+## Current — item-respawn C baseline in progress
 
-Repaired C baseline **82b124f8 is committed and pushed**. The native conversion
+Session-entry native conversion **449ae4c7 is committed and pushed**.
+Its repaired C baseline is82b124f8. The native conversion
 replaces33 live routines, removes one orphan, retires26 C interfaces and two C
 globals, and retains eight Go-backed C exports. All Go callers invoke Go directly.
 See [SESSION_ENTRY.md](docs/porting/SESSION_ENTRY.md) for coverage and review items.
@@ -26,7 +27,16 @@ Next: item respawn and related owner-chain/team/crown helpers. Read-only candida
 is eight functions /257 body lines in GAME3_3.c and server__system__server.c.
 `build/port-item-respawn/{selection-draft.json,plan-draft.md}` records callers and
 proposed contracts. Review the empty-respawn-list removal dereference before
-freezing C. No next-batch source is installed and no user decision is pending.
+freezing C. The repaired C baseline is fully qualified: eight focused roots /461 tests and
+8 repeated/frozen captures /3,469 records. All targets pass344 roots /39,431 tests;
+214 captures /55,337 records match, including every parent capture. All four gates
+share unchanged2,422-file source. Static check, three fresh production builds/ABI,
+exact known suite and all three headless scenarios pass. Every session is joined;
+source is editable. See item-respawn-c-qualification.json and ITEM_RESPAWN.md.
+
+Working C is31,697 (+3 empty-list guard), no reference C. Commit/push this baseline,
+then apply the reviewed native draft once and qualify. Ignored native-draft.go and
+install-native.py are NOT yet installed. No user decision is pending.
 
 `build/port-session-entry/install-native.py` is consumed; never replay it. All
 previous installers are stale; source and committed expectations take precedence.
@@ -1303,3 +1313,8 @@ manifests preserve how to recreate them. Original assets/archive, changed files
 and all reports remain. About **20 GiB** is free. The spatial-targeting
 **deduplicate-completed-assets.py --apply is consumed; never repeat deletion mode.**
 See build/port-spatial-targeting/completed-assets-{plan,audit}.json and applied log.
+
+<!-- item-respawn-disk -->
+Session-entry native asset deduplication is complete:1,660,044,319 bytes reclaimed.
+Audit29716/apply32358 are joined; the script under build/port-item-respawn is
+consumed. Original assets/archive are unchanged.

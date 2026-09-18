@@ -148,6 +148,9 @@ void sub_4EC6A0(int a1) {
 	int v5;       // ecx
 
 	v1 = dword_5d4594_1568024;
+	if (!v1) {
+		return;
+	}
 	if (*(uint32_t*)(dword_5d4594_1568024 + 4) == a1) {
 		v2 = *(uint64_t**)&dword_5d4594_1568024;
 		dword_5d4594_1568024 = *(uint32_t*)(dword_5d4594_1568024 + 52);
