@@ -2,13 +2,13 @@ package legacy
 
 /*
 #include <stdint.h>
-#include <stdlib.h>
 */
 import "C"
 
 import (
 	"unsafe"
 
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -38,13 +38,9 @@ func sub_5798A0(a1 C.int) C.int {
 
 //export sub_579E70
 func sub_579E70() *C.uint32_t {
-	p := C.calloc(1, C.size_t(unsafe.Sizeof(server.Waypoint{})))
-	if p == nil {
-		return nil
-	}
-	wp := (*server.Waypoint)(unsafe.Pointer(p))
+	wp, _ := alloc.New(server.Waypoint{})
 	wp.Flags |= 0x1000000
-	return (*C.uint32_t)(p)
+	return (*C.uint32_t)(unsafe.Pointer(wp))
 }
 
 func waypointEnabledMask(wp *server.Waypoint, mask byte) bool {

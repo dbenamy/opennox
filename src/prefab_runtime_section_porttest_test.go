@@ -142,14 +142,18 @@ func TestPrefabRuntimeObjectCleanup(t *testing.T) {
 		t.Fatal("C cache allocation failed")
 	}
 	s := &Server{Server: &server.Server{}}
-	// Cover the other three C node constructors with their original payload owners.
+	// Cover the other three C node constructors with their respective payload owners.
 	for kind := 0; kind < 3; kind++ {
 		node := legacy.PortTestPrefabCacheNode(kind)
 		if node == nil {
 			t.Fatal("cache node allocation failed")
 		}
 		payload := *(*unsafe.Pointer)(node)
-		defer legacy.PortTestPrefabReleasePayload(payload)
+		if kind == 2 {
+			defer alloc.FreePtr(payload)
+		} else {
+			defer legacy.PortTestPrefabReleasePayload(payload)
+		}
 	}
 	s.Nox_xxx_free503F40()
 	if legacy.Get_dword_5d4594_1599540() != nil {

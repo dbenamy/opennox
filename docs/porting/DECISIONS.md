@@ -1762,3 +1762,19 @@ repair; consider stricter section validation separately. Audit tile/wall/waypoin
 payload lifetime in the larger batch: the current cleanup regression establishes
 node-wrapper ownership and explicitly owns its payload allocations. See
 [PREFAB_RUNTIME.md](PREFAB_RUNTIME.md).
+
+
+## Prefab baseline — waypoint ownership and failed-file cleanup
+
+Real prefab-waypoint transfer followed by normal server teardown reproduced an
+allocator mismatch. Use the receiving server owner's tracked allocator and release
+unplaced waypoint payloads with that same allocator; raw cache wrappers retain
+their matching allocator. Independent allocation-balance tests cover both placement
+states. Complete prefab-file tests also reproduced unclosed files on bad magic and
+unknown object type. Close those two failure paths using the existing helper.
+These reversible corrections are qualified before freezing the larger C baseline.
+
+The remaining tile/wall payload leak requires a coordinated ownership repair:
+placed secret-wall data retains a back-reference to the cached wall. Defer freeing
+that record until transfer and partial-failure behavior are independently tested
+in the native work. See [PREFAB_RUNTIME.md](PREFAB_RUNTIME.md).

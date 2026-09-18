@@ -1,0 +1,354 @@
+{
+  "status": "qualified C baseline",
+  "scope": "40 live functions / 1371 C body lines",
+  "targets": [
+    {
+      "target": "default",
+      "roots": 133,
+      "tests_including_subtests": 1780,
+      "package_seconds": [
+        27.1
+      ],
+      "captures": 77,
+      "records": 30578,
+      "source_files": 2314
+    },
+    {
+      "target": "server",
+      "roots": 133,
+      "tests_including_subtests": 1780,
+      "package_seconds": [
+        26.746
+      ],
+      "captures": 77,
+      "records": 30578,
+      "source_files": 2314
+    },
+    {
+      "target": "highres",
+      "roots": 133,
+      "tests_including_subtests": 1780,
+      "package_seconds": [
+        27.184
+      ],
+      "captures": 77,
+      "records": 30578,
+      "source_files": 2314
+    }
+  ],
+  "captures_identical": true,
+  "source_files": 2314,
+  "same_source_all_gates": true,
+  "source_sha256": "df886780476c95d67c3b6cfc1231effd2cc58c33bc3039b456872cfdeb81b0aa",
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 79.79101679194719,
+        "sha256": "2f496bd84baee8f3dc965abc420af04080ddfe46b90a4d2b3e3a5d83eaa1084a",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 8.964356824057177,
+        "sha256": "3d7c4d601819d9c1840e120d1bc9e2e415d04d8ef05b80228a4830d46221419f",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 69.12029360816814,
+        "sha256": "635f797cd1394b665ff0cf59739da5a5e621b58f51593581da0db62dc4f97102",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "prefab-runtime-c": {
+        "exit": 0,
+        "wall_seconds": 69.37495072302409,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 68.27258451702073,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "2f496bd84baee8f3dc965abc420af04080ddfe46b90a4d2b3e3a5d83eaa1084a",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-prefab-runtime/c-baseline-production-resume/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/prefab-runtime-c/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Prefab/map-runtime C baseline, with waypoint ownership and failed-file cleanup repairs.",
+          "removed_maps": 0
+        }
+      },
+      "prefab-runtime-c-save": {
+        "exit": 0,
+        "wall_seconds": 47.22491533192806,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 46.69996633497067,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "2f496bd84baee8f3dc965abc420af04080ddfe46b90a4d2b3e3a5d83eaa1084a",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-prefab-runtime/c-baseline-production-resume/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/prefab-runtime-c-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Prefab/map-runtime C baseline, with waypoint ownership and failed-file cleanup repairs.",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "9cf57b7eca7ae9ca661f71f0fa183f329dde8766770afc85c3c3637eed39fc8b"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 59.63355296803638,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    },
+    "reused_production_from": "/root/src/opennox/build/port-prefab-runtime/c-baseline-production/production"
+  },
+  "gates": {
+    "c-baseline-default": {
+      "batch": "prefab-runtime",
+      "phase": "default",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/prefab-runtime-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-prefab-runtime/c-baseline-default/tests.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-prefab-runtime/c-baseline-default/tests-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 87.86445077089593
+        }
+      ],
+      "revision": "4f1037259a5b8b893b478deab44e8ece788bac72",
+      "source_unchanged": true,
+      "wall_seconds": 88.07691215001978,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 74,
+          "lines": 38500
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "c-baseline-server": {
+      "batch": "prefab-runtime",
+      "phase": "server",
+      "success": true,
+      "steps": [
+        {
+          "name": "server",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/prefab-runtime-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-prefab-runtime/c-baseline-server/tests.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-prefab-runtime/c-baseline-server/tests-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 197.85458782315254
+        }
+      ],
+      "revision": "4f1037259a5b8b893b478deab44e8ece788bac72",
+      "source_unchanged": true,
+      "wall_seconds": 198.05978746409528,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 74,
+          "lines": 38500
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "c-baseline-highres": {
+      "batch": "prefab-runtime",
+      "phase": "highres",
+      "success": true,
+      "steps": [
+        {
+          "name": "highres",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/prefab-runtime-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-prefab-runtime/c-baseline-highres/tests.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-prefab-runtime/c-baseline-highres/tests-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 101.18640644894913
+        }
+      ],
+      "revision": "4f1037259a5b8b893b478deab44e8ece788bac72",
+      "source_unchanged": true,
+      "wall_seconds": 101.38460209500045,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 74,
+          "lines": 38500
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "c-baseline-production-resume": {
+      "batch": "prefab-runtime",
+      "phase": "production",
+      "success": true,
+      "steps": [
+        {
+          "name": "compressor-build",
+          "command": [
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-o",
+            "/root/src/opennox/build/port-prefab-runtime/c-baseline-production-resume/map-compress",
+            "/root/src/opennox/tools/porting/map_compress.go"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.2193429919425398
+        },
+        {
+          "name": "production",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/qualify_production.py",
+            "/root/src/opennox/docs/porting/prefab-runtime-batch.json",
+            "--out",
+            "/root/src/opennox/build/port-prefab-runtime/c-baseline-production-resume/production",
+            "--reuse-production-from",
+            "/root/src/opennox/build/port-prefab-runtime/c-baseline-production/production"
+          ],
+          "exit": 0,
+          "wall_seconds": 117.00915900501423
+        },
+        {
+          "name": "flat-gameplay",
+          "command": [
+            "env",
+            "OPENNOX_DISPLAY_BINARY=/root/src/opennox/build/port-prefab-runtime/c-baseline-production-resume/production/bin/opennox",
+            "OPENNOX_UI_SCENARIO=/root/src/opennox/docs/porting/tile-raster-flat.yaml",
+            "OPENNOX_DISPLAY_IMPLEMENTATION=Prefab runtime baseline",
+            "OPENNOX_REQUIRE_MAP_DECOMPRESSION=1",
+            "OPENNOX_COMPRESS_MAPS=[\"war01a/War01A.map\"]",
+            "OPENNOX_MAP_COMPRESSOR=/root/src/opennox/build/port-prefab-runtime/c-baseline-production-resume/map-compress",
+            "python3",
+            "/root/src/opennox/tools/porting/run_scenario.py",
+            "prefab-runtime-flat",
+            "compare",
+            "/root/src/opennox/build/baseline/runs/server-config-flat-c"
+          ],
+          "exit": 0,
+          "wall_seconds": 50.636778545798734
+        }
+      ],
+      "revision": "4f1037259a5b8b893b478deab44e8ece788bac72",
+      "source_unchanged": true,
+      "wall_seconds": 168.2960854829289,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 74,
+          "lines": 38500
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    }
+  },
+  "static_mapped_memory": "passed",
+  "production_c": {
+    "files": 74,
+    "lines": 38500
+  },
+  "test_reference_c": 0,
+  "notes": [
+    "Initial production invocation built and checked all binaries and the exact known suite, then stopped on an existing scenario directory name. No scenario ran in that failed invocation.",
+    "Corrected scenario names resumed with verified identical source, binary hashes and gate settings. All gameplay, save/load and flat regeneration checks pass.",
+    "18 new captures / 8880 records repeat in separate original-C processes. Existing captures remain unchanged."
+  ]
+}

@@ -1,0 +1,618 @@
+{
+  "status": "qualified C baseline",
+  "live_functions": [
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "nox_server_scriptExecuteFnForEachGroupObj_502670",
+      "line": 103,
+      "body_lines": 60,
+      "sha256": "1676b16c98a3ff4632e5cd04e7a131c5d227c8fedf352296e1fbd7a3db35b46b"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "nox_xxx_mapgenMakeScript_502790",
+      "line": 165,
+      "body_lines": 50,
+      "sha256": "c5ec3159a33125dd9a8c35313a16783e5171544592fa84aba99aa6dc5a02787c"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_5029A0",
+      "line": 217,
+      "body_lines": 15,
+      "sha256": "9e9ad51961ab65bdc4c791e583c04b06b6a7f728d2e01f0b04825d75777a4771"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_5029F0",
+      "line": 234,
+      "body_lines": 10,
+      "sha256": "ff3d29390546870b25a811c91455cadd080e0b52e1461708ce5f4a70855f6743"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_502A20",
+      "line": 246,
+      "body_lines": 1,
+      "sha256": "9938aaf29c4c315fe8c2d73dce4060c5838ae7b4481d61e6d414e7d5edbae461"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_502A50",
+      "line": 249,
+      "body_lines": 13,
+      "sha256": "2f4a453e8b8b39c457d09190c1885bb1531e1212b82e0ffbe6daba4b4f191e94"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_502AB0",
+      "line": 264,
+      "body_lines": 12,
+      "sha256": "bdcdcce876b1abd1ff6694620966c4645cce43f065e25b20009bd919afb5073f"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_502B10",
+      "line": 278,
+      "body_lines": 66,
+      "sha256": "74755623de87d1e2f193583502e341328ef8d22c8eb7c5948f2396495a9b0cd7"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_502D70",
+      "line": 347,
+      "body_lines": 7,
+      "sha256": "82e5fc09e70241832b2e2d8402fc4787084969422391ceed73edc1fa5f61a237"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_502DA0",
+      "line": 356,
+      "body_lines": 11,
+      "sha256": "f1c4511ba5ad4789ff40466608100d0e9f14253ec91b487f0a94693408cfcf8f"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_502DF0",
+      "line": 369,
+      "body_lines": 10,
+      "sha256": "4bccb32b66cc19ca93ef2cedc90a96ae4839783bc4d4426b7f7edbcd714e359f"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_502E10",
+      "line": 381,
+      "body_lines": 7,
+      "sha256": "2f2ae4019cf428eb7c534dab5186057d72a298be0f942751e265dd0ca49c03f9"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_502E70",
+      "line": 390,
+      "body_lines": 10,
+      "sha256": "c7f666e6893bc1eee5e8d18c01236ebc50118a7dbd483d33ab11ff1217cd4381"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_502EA0",
+      "line": 402,
+      "body_lines": 10,
+      "sha256": "613ee7cfa919fc65c4c1ec4f5138bca7730027e0e2fb0aa42216650883f9ae5f"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "nox_xxx_mapgenSaveMap_503830",
+      "line": 414,
+      "body_lines": 100,
+      "sha256": "f1898b9f17fa47666a5efef889e87334203a3a10f8904ff24240e57e08715117"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_503B30",
+      "line": 520,
+      "body_lines": 115,
+      "sha256": "861f2ab56ac3ed32b6f7ebaa4edc06eb02e8b80e8b3e74331b7ef8832570edb0"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_503EC0",
+      "line": 637,
+      "body_lines": 17,
+      "sha256": "4f3f5dd69a78ce67320cc4cdef9e1e2dd709de4f4c67e6f4e35836991a9704f5"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "nox_xxx_tileAllocTileInCoordList_5040A0",
+      "line": 656,
+      "body_lines": 40,
+      "sha256": "49594b51154f1784e162638cf1130529a247621636ea9cf0ad2a0968a77f7a4c"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "nox_xxx_tileInit_504150",
+      "line": 700,
+      "body_lines": 51,
+      "sha256": "2343d252c19fc390c1bfc5871a1c56317890212b14c34c635536b5eff99900a9"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_504290",
+      "line": 753,
+      "body_lines": 22,
+      "sha256": "94bd8895f7851de15b9a08f1b2fe1ed7e08f568a362728bafccd1587daa4a470"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "nox_xxx_cliWallGet_5042F0",
+      "line": 777,
+      "body_lines": 15,
+      "sha256": "613e2e9e8985f4ad6c283a1c2966058b26af911206f26a3dc8450195b943d554"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_504330",
+      "line": 794,
+      "body_lines": 70,
+      "sha256": "d67e6d9b4863c2b451b66aa4b77115f11e93d46711e04e55d3c8e0dc9ec868d6"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_5044B0",
+      "line": 866,
+      "body_lines": 38,
+      "sha256": "6ba7da5d19670d6bbee1969c90a5c123ba2648d31650a45601b7ea4a68943b12"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_504560",
+      "line": 907,
+      "body_lines": 18,
+      "sha256": "8faf6e1e606528b9164938f332f4bc5b2e31b330dff9555d0f824c67f56bdeaa"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "nox_xxx_unitAddToList_5048A0",
+      "line": 927,
+      "body_lines": 25,
+      "sha256": "12259405db6ff030d3418058bdc90abb163d3029ede3d3c4d1a002dbe0c6ca40"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_504910",
+      "line": 954,
+      "body_lines": 19,
+      "sha256": "e71d55ba8245dfd37f8c04df3ab41f8ae1a467d86c392b082c24a3c8191dd517"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_504980",
+      "line": 975,
+      "body_lines": 13,
+      "sha256": "e4a553dfd97bc76e06b952e738262fda2f4cc61abbb642040c337c04890e0735"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_5049C0",
+      "line": 990,
+      "body_lines": 9,
+      "sha256": "870791b695d95d53d514c7dfc57c6447fa771384d8bce4d355847101ad676316"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_5049D0",
+      "line": 1001,
+      "body_lines": 1,
+      "sha256": "a6260205c224143337232f60155f1eda7fc81e9d55b2e1a3e18b24a7ecabe162"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_5049E0",
+      "line": 1004,
+      "body_lines": 9,
+      "sha256": "16c41bf56cdbb87ce5756a757ef73d1b646517f6105fc865568949a8b5b7549d"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_504A10",
+      "line": 1015,
+      "body_lines": 43,
+      "sha256": "2009cae5d77bbe1558ef0d7e108f0149af05e29e939e8cd033d18b2608ce65f0"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_505060",
+      "line": 1060,
+      "body_lines": 10,
+      "sha256": "ea3511f98e496a79069850ce57282dddf8bce43e327787a83b2346bc8bf45f57"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "nox_server_mapRWMapIntro_505080",
+      "line": 1072,
+      "body_lines": 106,
+      "sha256": "20a0da1f5ec14ced400f6bace6f690ccb356783beb0af7f50bd9492e6cc4a883"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "nox_server_mapRWGroupData_505C30",
+      "line": 1183,
+      "body_lines": 136,
+      "sha256": "9e51690dc27bf5e86578a715b6ae9884c3461e287f7f692bacf3b5c73fc5a9aa"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "nox_server_mapRWWaypoints_506260",
+      "line": 1323,
+      "body_lines": 174,
+      "sha256": "367e5b5223b8b815dad3ec6508eaf327601ad45a9aae9798ad1f5b7844944aaa"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_51D0E0",
+      "line": 201,
+      "body_lines": 1,
+      "sha256": "01c8b76bec5f7af5eb9422be551d08a841b68421b79c8f4dda9ce0742178ed30"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_51D0F0",
+      "line": 204,
+      "body_lines": 4,
+      "sha256": "ed819075f57c777ca1bf8ccdfeee19fb6f6eeab2634e1e4b2776a46ec0e35c3b"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_51D120",
+      "line": 220,
+      "body_lines": 22,
+      "sha256": "7363c3eaa678d6b1799b2cc30e6005225e51de51b7a675d2fb288e850b8732d7"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_51D1A0",
+      "line": 245,
+      "body_lines": 10,
+      "sha256": "3267d48468d61f3b7167f05b531fb2806f9083786e0229854a8de560c420d371"
+    },
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_51D3F0",
+      "line": 257,
+      "body_lines": 21,
+      "sha256": "a88a61256a3e15e9821c56ad1be1f27e468f538973360352de6b5a25a983f74c"
+    }
+  ],
+  "live_count": 40,
+  "body_lines": 1371,
+  "interfaces": [
+    {
+      "name": "nox_server_mapRWGroupData_505C30",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/maps.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "nox_server_mapRWMapIntro_505080",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/maps.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "nox_server_mapRWWaypoints_506260",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/maps.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "nox_server_scriptExecuteFnForEachGroupObj_502670",
+      "outside_live_c_callers": [
+        "nox_script_SetRoamFlagGroup_515CB0"
+      ],
+      "production_roots": [],
+      "retain_export": true
+    },
+    {
+      "name": "nox_xxx_cliWallGet_5042F0",
+      "outside_live_c_callers": [
+        "nox_server_mapRWDestructableWalls_429530",
+        "nox_server_mapRWSecretWalls_4297C0",
+        "nox_server_mapRWWindowWalls_4292C0"
+      ],
+      "production_roots": [],
+      "retain_export": true
+    },
+    {
+      "name": "nox_xxx_mapgenMakeScript_502790",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/object_xfer_types.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "nox_xxx_mapgenSaveMap_503830",
+      "outside_live_c_callers": [],
+      "production_roots": [],
+      "retain_export": false
+    },
+    {
+      "name": "nox_xxx_tileAllocTileInCoordList_5040A0",
+      "outside_live_c_callers": [
+        "nox_server_mapRWFloorMap_422230",
+        "nox_xxx_tile_422C10"
+      ],
+      "production_roots": [],
+      "retain_export": true
+    },
+    {
+      "name": "nox_xxx_tileInit_504150",
+      "outside_live_c_callers": [],
+      "production_roots": [],
+      "retain_export": false
+    },
+    {
+      "name": "nox_xxx_unitAddToList_5048A0",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/object_xfer_world.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_5029A0",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_prefabs.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_5029F0",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_prefabs.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_502A20",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_prefabs.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_502A50",
+      "outside_live_c_callers": [
+        "sub_4D39F0"
+      ],
+      "production_roots": [],
+      "retain_export": true
+    },
+    {
+      "name": "sub_502AB0",
+      "outside_live_c_callers": [
+        "sub_4D39F0"
+      ],
+      "production_roots": [],
+      "retain_export": true
+    },
+    {
+      "name": "sub_502B10",
+      "outside_live_c_callers": [
+        "sub_4D39F0"
+      ],
+      "production_roots": [],
+      "retain_export": true
+    },
+    {
+      "name": "sub_502D70",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_prefabs.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_502DA0",
+      "outside_live_c_callers": [],
+      "production_roots": [],
+      "retain_export": false
+    },
+    {
+      "name": "sub_502DF0",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/server.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_502E10",
+      "outside_live_c_callers": [],
+      "production_roots": [],
+      "retain_export": false
+    },
+    {
+      "name": "sub_502E70",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_prefabs.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_502EA0",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_prefabs.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_503B30",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_prefabs.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_503EC0",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_prefabs.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_504290",
+      "outside_live_c_callers": [
+        "nox_server_mapRWWallMap_429B20",
+        "sub_42A150"
+      ],
+      "production_roots": [],
+      "retain_export": true
+    },
+    {
+      "name": "sub_504330",
+      "outside_live_c_callers": [],
+      "production_roots": [],
+      "retain_export": false
+    },
+    {
+      "name": "sub_5044B0",
+      "outside_live_c_callers": [],
+      "production_roots": [],
+      "retain_export": false
+    },
+    {
+      "name": "sub_504560",
+      "outside_live_c_callers": [],
+      "production_roots": [],
+      "retain_export": false
+    },
+    {
+      "name": "sub_504910",
+      "outside_live_c_callers": [],
+      "production_roots": [],
+      "retain_export": false
+    },
+    {
+      "name": "sub_504980",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_prefabs.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_5049C0",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_prefabs.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_5049D0",
+      "outside_live_c_callers": [
+        "sub_542BF0"
+      ],
+      "production_roots": [],
+      "retain_export": true
+    },
+    {
+      "name": "sub_5049E0",
+      "outside_live_c_callers": [
+        "sub_542BF0"
+      ],
+      "production_roots": [],
+      "retain_export": true
+    },
+    {
+      "name": "sub_504A10",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_prefabs.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_505060",
+      "outside_live_c_callers": [],
+      "production_roots": [],
+      "retain_export": false
+    },
+    {
+      "name": "sub_51D0E0",
+      "outside_live_c_callers": [
+        "sub_4D39F0"
+      ],
+      "production_roots": [
+        "src/legacy/server.go"
+      ],
+      "retain_export": true
+    },
+    {
+      "name": "sub_51D0F0",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_rooms.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_51D120",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_rooms.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_51D1A0",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_rooms.go"
+      ],
+      "retain_export": false
+    },
+    {
+      "name": "sub_51D3F0",
+      "outside_live_c_callers": [],
+      "production_roots": [
+        "src/legacy/map_population_rooms.go"
+      ],
+      "retain_export": false
+    }
+  ],
+  "orphan_candidates": [
+    {
+      "file": "src/legacy/GAME4_1.c",
+      "name": "sub_51D100",
+      "line": 210,
+      "body_lines": 7,
+      "sha256": "d64b33583b5aeb2f694394e9535a99f33f304a7a6c0d6151fd514aa502151fcf"
+    },
+    {
+      "file": "src/legacy/noxstring.c",
+      "name": "nox_strnicmp",
+      "line": 434,
+      "body_lines": 11,
+      "sha256": "4b88c567a8c85f997fc3544fc5b060cfe9c4ee9d072de3ade0a808d7b07e492a"
+    }
+  ],
+  "notes": [
+    "Original proposal had 1369 live body lines; two verified loader failure-close statements make 1371.",
+    "Conservative graph is supplemented with source/callback review before retirement.",
+    "GAME4_1.c may be removed once five live waypoint helpers and its orphan setter are retired."
+  ]
+}

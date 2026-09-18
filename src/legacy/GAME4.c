@@ -458,6 +458,7 @@ int nox_xxx_mapgenSaveMap_503830(int a1) {
 	}
 	nox_fs_fread(v1, &v10, 4);
 	if (v10 != -889266515) {
+		sub_502DF0();
 		return 0;
 	}
 	nox_fs_fread(v1, v19, 4);
@@ -492,6 +493,7 @@ int nox_xxx_mapgenSaveMap_503830(int a1) {
 			v2 = nox_xxx_newObjectByTypeID_4E3810(v27);
 			v3 = (int)v2;
 			if (!v2) {
+				sub_502DF0();
 				return 0;
 			}
 			if (!((int (*)(uint32_t*, int4*))v2[176])(v2, &v25)) {

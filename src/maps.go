@@ -533,6 +533,7 @@ func (s *Server) Nox_xxx_free503F40() {
 		for it := legacy.Get_dword_5d4594_1599548(); it != nil; it = next {
 			next = *(*unsafe.Pointer)(unsafe.Add(it, 4))
 			if legacy.Get_dword_5d4594_1599476() == 0 {
+				alloc.Free(*(**server.Waypoint)(it))
 				*(*unsafe.Pointer)(unsafe.Add(it, 0)) = nil
 			}
 			legacy.MapPrefabFreeNode(it)

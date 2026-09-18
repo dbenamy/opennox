@@ -95,3 +95,85 @@ nonzero table in script-file contracts, not zero-filled fixture storage. Preserv
 C's tile-orientation low-byte interpretation, the wall-group dispatch fallthrough,
 version signedness and file positioning until independently qualified. Audit
 cache payload lifetime and the unknown-object loader failure's file closure.
+
+
+## Larger C baseline in progress
+
+Prerequisite commit **4f103725 is pushed**. New test-only dispatch/global/table
+helpers and scalar/file/group/waypoint contracts are being added; no captures are
+frozen. Metadata, paths, library enumeration and all shipped script descriptors
+currently pass 2,880 capture records. Group read/write contracts and actual
+waypoint link resolution are also passing.
+
+A subsequent real lifecycle regression reproduced `incorrect free` when a
+prefab-created waypoint is transferred into the server and destroyed by normal
+server teardown (`c-lifetime-before.log`). Its allocation helper used raw C
+allocation while the receiving owner uses the tracked Go allocator. A repair
+changes that existing Go helper to the receiving owner's allocator and releases
+unplaced waypoint payloads during cache cleanup. The allocation-byte ABI fixture
+uses the same matching release. The new disposal contract observes actual
+allocation/free balance for both placement states. This repair is **not yet
+qualified**; a fresh production gate is required before freezing the larger C
+baseline. The previously qualified wrapper repair remains unchanged.
+
+Baseline fixture corrections so far: anchor generated adapter prototypes to
+actual declarations, check both path setters' defined 1/0 returns and nil clearing,
+and use `GameHost | GameFlag22` for the actual group's allocation admission.
+These corrected independent fixture assumptions, not production algorithms.
+
+
+The expanded exploratory suite passes **23 root tests / 8,823 capture records**
+before the loader expansion. Coverage now includes complete cache allocation
+records, file open/rewind/seek/close, actual object pending-list placement, group
+traversal through real owners, waypoint generation, all 32 serialized waypoint
+link slots, signed section versions, introductions, and relative-coordinate
+mutation. Floor/wall placement reuses guarded painting owners. Its overlay input
+was corrected from an undefined fixture border index to a real defined border;
+a separate assertion now requires the overlay allocation to be observable.
+
+Complete prefab-file contracts reproduce open files on bad magic and unknown
+object types in every tested header version (`c-loader-before.log`). Two C failure
+exits now invoke the existing close helper; the focused rebuilt run is pending.
+This is an intentional pre-baseline correction for review, alongside the waypoint
+allocator correction. It adds two temporary C lines before conversion. Valid
+DebugData, GroupData and WayPoints sections, bounds offsets and optional header
+extensions passed the same independent contracts.
+
+Payload audit: the old destructor also drops tile/wall payload pointers without
+freeing them. Placed secret-wall data still refers back to the cached wall record,
+so simply freeing all wall payloads would introduce a dangling pointer. Preserve
+this evidence while qualifying the C baseline; resolve the transfer/back-reference
+and allocation balance together in the native ownership work, with an independent
+regression. This known issue does not justify changing frozen functional captures.
+
+
+## Qualified larger C baseline
+
+The final original-C suite repeats **18 new captures / 8,880 records** in separate
+processes before locking expected hashes. All three target sweeps pass **133 root
+tests / 1,780 including subtests**, with **77 byte-identical captures / 30,578
+records** each. Package times: default **27.100s**, server **26.746s**, highres
+**27.184s**. The previous ownership and file-close repairs now pass their focused
+contracts and all broader gates. Initialization, direct instantiation and the
+inverted selected-loader return convention are covered too.
+
+Fresh production passes all three builds/ABI/interfaces, the exact 1,553 known
+asset-suite failures (15 passing, three failing, 32 skipped packages), headless
+gameplay, save/load and flat-map regeneration. The first production invocation
+stopped before gameplay because a copied scenario name already existed. Corrected
+names resumed with source/binary/gate identity checks, reusing the fresh successful
+build and suite evidence. All final gates share the same **2,314 source files**;
+static mapped-memory checks pass. No sources changed during any gate.
+
+Production C is **38,500 physical lines / 74 files / zero reference C**. The scope
+is now 1,371 live body lines after two failure-close statements. See
+[selection](prefab-runtime-selection.json), [captures](prefab-runtime-captures.json)
+and [qualification](prefab-runtime-c-qualification.json). The 40 algorithm bodies
+remain C at this baseline. Proceed with the native conversion and ownership audit;
+keep all frozen expectations unchanged. Baseline freezer/finalizer are consumed.
+
+Disk maintenance reclaimed **3.092 GiB** from six completed prerequisite/quest
+scenario copies after SHA-256 comparison with original assets. Changed maps/saves,
+reports, binaries and original assets/archive remain. Per-run restoration manifests
+are saved; build/port-prefab-runtime/deduplicate-completed-assets.py --apply is
+consumed and must not be repeated. About **8.1 GiB** was free after cleanup.

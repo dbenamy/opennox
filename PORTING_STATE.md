@@ -2,32 +2,48 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 38.5k lines** — **38,498 physical lines in 74 production
-`.c` files**, zero reference C. Latest prerequisite: **0 C lines changed**; preceding conversion: **−695**.
+**Rough C remaining: about 38.5k lines** — **38,500 physical lines in 74 production
+`.c` files**, zero reference C. Latest baseline repair: **+2 temporary C lines**; preceding conversion: **−695**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — prefab prerequisites qualified
+## Current — prefab/map-runtime C baseline qualified
 
-The section bridge and cache-node cleanup repairs are qualified. All three targets
-pass **111 roots / 1,756 tests including subtests** without skips, with **59 identical
-captures / 21,698 records**. Fresh production passes all builds/ABI/interfaces,
-exact known asset failures, headless gameplay, save/load and flat-map regeneration.
-All four gates share unchanged **2,289-file source**; sessions are joined. See
-[PREFAB_RUNTIME.md](docs/porting/PREFAB_RUNTIME.md) and its qualification report.
-C remains **38,498 / 74 files / zero reference**. No candidate algorithm is ported yet.
+The connected **40-function / 1,371-body-line** baseline is qualified, with
+**18 new frozen captures / 8,880 records**, repeated in separate C processes.
+All three target sweeps pass **133 roots / 1,780 tests including subtests**, with
+**77 identical captures / 30,578 records** per target. All gates share unchanged
+**2,314-file source**. Static mapped-memory checks pass. Fresh production binaries,
+ABI/interfaces, exact known asset failures, headless gameplay, save/load and flat
+regeneration pass. See [PREFAB_RUNTIME.md](docs/porting/PREFAB_RUNTIME.md) and its
+[C qualification report](docs/porting/prefab-runtime-c-qualification.json).
 
-Next: complete the **40-function / 1,369-body-line** prefab/map-runtime C baseline.
-Ignored drafts under build/port-prefab-runtime include operations, globals, shipped
-tables, metadata/script contracts, the interface audit and baseline-plan-draft.md.
-They are not installed or validated; review before copying. Ten entrypoints appear
-to require remaining C exports. Complete payload-lifetime and callback audits,
-add file/group/waypoint/placement contracts, repeat captures and freeze. Reuse this
-production evidence only if the subsequent baseline changes tests/docs alone.
-The existing DebugData reader's permissive short reads are documented for review.
-No user decision is pending. Do not replay finish-prerequisite.py or consumed
-quest/monster installers. Preserve original assets and the archive.
+The waypoint allocation/disposal mismatch and two loader failure paths leaving
+files open are repaired before freezing. C is **38,500 lines / 74 files / zero
+reference C** (+2 temporary cleanup statements). No selected C algorithm is ported
+yet. The initial production run stopped on a reused scenario directory name;
+corrected names resumed using hash-verified fresh build/suite evidence.
+
+Next: port and retire the selected C bodies/interfaces, compare every frozen
+capture unchanged, qualify three targets and fresh production, record C LOC,
+commit/push and continue. Ten exports appear necessary for external C callers.
+Native design and an uninstalled initial state/helper draft are in
+build/port-prefab-runtime/native-design.md and native-state.go. Review drafts before
+use. Audit cached tile/wall payload release together with secret-wall data's
+back-reference and partial-placement ownership; do not simply free a record still
+referenced by the world. The known leak is documented for native ownership work.
+
+freeze-captures.py, finish-c-baseline.py and finish-prerequisite.py are consumed;
+never replay them. Do not rerun old quest/monster installers. No user decision is
+pending. Preserve original assets/archive and frozen captures.
+
+
+Disk maintenance reclaimed **3.092 GiB** from six completed prerequisite/quest
+scenario copies after SHA-256 comparison with original assets. Changed maps/saves,
+reports, binaries and original assets/archive remain. Per-run restoration manifests
+are saved; build/port-prefab-runtime/deduplicate-completed-assets.py --apply is
+consumed and must not be repeated. About **8.1 GiB** was free after cleanup.
 
 ## Qualified parent — quest-progress native conversion (ae6fbe52, pushed)
 

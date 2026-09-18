@@ -1,0 +1,114 @@
+{
+  "status": "repeated original-C baseline",
+  "captures": [
+    {
+      "label": "prefab-runtime-cache-records",
+      "records": 130,
+      "sha256": "0770aaf6b42c27a54a3a820cf16dcc3fd9d12e39dac81d01bba808e7e11338e6",
+      "source": "src/prefab_runtime_cache_records_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-file-controls",
+      "records": 19,
+      "sha256": "344ab19b7f1347660d72d0a2df78b69e61b6b0d5254ebec6b086a3a54cd4f104",
+      "source": "src/prefab_runtime_file_controls_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-group-read",
+      "records": 4080,
+      "sha256": "2d32f5e357d1c8225a40d321b87ba711684ebc563c276be5908d4ea9cfb49856",
+      "source": "src/prefab_runtime_groups_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-group-traversal",
+      "records": 216,
+      "sha256": "db758da6df8102b5bc297afdf42452240aeaf9ce8236d875aaa0385dc3955006",
+      "source": "src/prefab_runtime_traversal_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-group-write",
+      "records": 108,
+      "sha256": "a5bcbf34b3562ff77dddacc304e4c99aa08f3dbc17618da65059f61a46d18eb3",
+      "source": "src/prefab_runtime_group_write_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-instantiation",
+      "records": 25,
+      "sha256": "a23c80e5fc62fa92f886f9079e041c1a5dea413dd4ef05154e175b102169af8c",
+      "source": "src/prefab_runtime_instantiation_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-intro",
+      "records": 96,
+      "sha256": "2c445d2eb2b9856f886c209f3174c26e3df5825104572c62c118da7166fd6135",
+      "source": "src/prefab_runtime_intro_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-library",
+      "records": 12,
+      "sha256": "247b891633bef2c5cbb718145b39fc270a8649f9828b4322fa13a9c9ca2293d9",
+      "source": "src/prefab_runtime_library_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-loader",
+      "records": 32,
+      "sha256": "cef02ad3be4b23437be6a875e7673108a0709803c50c1c669565aae9855ce0b6",
+      "source": "src/prefab_runtime_loader_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-metadata",
+      "records": 1116,
+      "sha256": "9342a1ef9d41f510d01a9d3714ade6d0ff6395746379d6fa499bbecff125a133",
+      "source": "src/prefab_runtime_metadata_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-object-list",
+      "records": 54,
+      "sha256": "513f6d2b61450d490e6bb1516d3811cddd9fd791966aa5c8db1e6f7a32f12b32",
+      "source": "src/prefab_runtime_objects_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-object-placement",
+      "records": 4,
+      "sha256": "926acfa9d64ae80722835b7e0577e65d9bfc77d1856ef291ab5416fdc4b91c96",
+      "source": "src/prefab_runtime_objects_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-paths",
+      "records": 24,
+      "sha256": "75c22902d77b3dd4c3a9d4d71e7b159b68c12cd6510126343fd6c4e62d43fef5",
+      "source": "src/prefab_runtime_paths_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-placement",
+      "records": 180,
+      "sha256": "e165d6659adb39a9b0fa159554c9ee1bbe90d52db5663a101a7e29c928e5970d",
+      "source": "src/prefab_runtime_placement_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-relative-coordinates",
+      "records": 216,
+      "sha256": "805d23e46fc3ad50c13f455889d1a9c7d176dbc549b130a9cf7ad498ddc8fbe6",
+      "source": "src/prefab_runtime_relative_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-scripts",
+      "records": 1728,
+      "sha256": "0f6a38490f447ac5b9dc12fe662c6155de5b61117b24e0c446e1006bfd888db4",
+      "source": "src/prefab_runtime_script_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-waypoint-generation",
+      "records": 84,
+      "sha256": "399afa48848d51d2932880d3f82caeefbda71a815127c16a170fc6e59a0cb9bb",
+      "source": "src/prefab_runtime_generation_porttest_test.go"
+    },
+    {
+      "label": "prefab-runtime-waypoint-sections",
+      "records": 756,
+      "sha256": "0820d8ae08b9447ea29965fce70b9b5caeea997d3bdd0fb2edb12d7f5e72d010",
+      "source": "src/prefab_runtime_waypoint_sections_porttest_test.go"
+    }
+  ],
+  "records": 8880
+}

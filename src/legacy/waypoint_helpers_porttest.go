@@ -107,7 +107,7 @@ func PortTestWaypointAllocations(count int) [][]byte {
 		for j := range raw {
 			raw[j] = 0xa5
 		}
-		C.free(unsafe.Pointer(p))
+		alloc.FreePtr(unsafe.Pointer(p))
 	}
 	return out
 }

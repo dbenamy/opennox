@@ -14,15 +14,15 @@
 
 ## Current status
 
-The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Prefab prerequisites are now qualified: nonempty prefab sections
-reach the existing Go reader, and cache cleanup uses the allocator that created
-the nodes. All three affected target sweeps and fresh production/gameplay checks
-pass. See [PREFAB_RUNTIME.md](docs/porting/PREFAB_RUNTIME.md).
+The revised process continues successive qualified batches without a scheduled
+pause. The connected prefab/map-runtime C baseline is qualified: 40 live functions,
+18 new repeated captures, matching default/server/highres sweeps and fresh
+production/gameplay evidence. See [PREFAB_RUNTIME.md](docs/porting/PREFAB_RUNTIME.md).
 
-Current production C remains **38,498 physical lines in 74 files**, with zero
-reference C. Next is the connected 40-function prefab/map-runtime C baseline.
-[PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Current production C is **38,500 physical lines in 74 files**, with zero reference
+C. Two temporary cleanup statements fix verified loader failures before conversion.
+Next is the native conversion; [PORTING_STATE.md](PORTING_STATE.md) is the resume
+checkpoint.
 
 ## Goal and target
 
