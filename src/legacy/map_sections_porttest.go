@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME1_2.h"
-extern uint32_t dword_5d4594_741356, dword_5d4594_741364;
-*/
-import "C"
-
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -53,8 +46,8 @@ type PortTestMapSectionResult struct {
 // opening an owned file and invoking the selected C section entrypoint.
 func PortTestMapSections(cases []PortTestMapSectionSpec, dir string, owner func(*server.Server) (Server, func())) []PortTestMapSectionResult {
 	ext := &paintTestExtension{globals: map[string]*uint32{
-		"section-max-x": (*uint32)(unsafe.Pointer(&C.dword_5d4594_741356)),
-		"section-max-y": (*uint32)(unsafe.Pointer(&C.dword_5d4594_741364)),
+		"section-max-x": &mapSectionMaxX,
+		"section-max-y": &mapSectionMaxY,
 	}}
 	for name, off := range map[string]uintptr{"map-min-x": 739980, "map-min-y": 739984, "map-width": 739988, "wall-load-flags": 739992, "window-count": 741336, "breakable-count": 741340, "breakable-index": 741344, "secret-count": 741348, "secret-index": 741352, "min-x": 741360, "min-y": 741368, "magic-wall": 741372} {
 		ext.globals["section-"+name] = memmap.PtrUint32(0x5D4594, off)
@@ -179,17 +172,17 @@ func PortTestMapSections(cases []PortTestMapSectionSpec, dir string, owner func(
 		defer themeObserve(false, 0)
 		switch spec.Function {
 		case "tile":
-			ret = uint32(C.nox_xxx_tileReadOne_422A40(C.int(args[0]), (*C.uint8_t)(mapRoomPointer(args[1]))))
+			ret = mapSectionTile((*[5]uint32)(mapRoomPointer(args[1])))
 		case "floor":
-			ret = uint32(C.nox_server_mapRWFloorMap_422230(C.int(args[0])))
+			ret = mapSectionFloor((*[8]uint32)(mapRoomPointer(args[0])))
 		case "walls":
-			ret = uint32(C.nox_server_mapRWWallMap_429B20((*C.uint32_t)(mapRoomPointer(args[0]))))
+			ret = mapSectionWalls((*[8]uint32)(mapRoomPointer(args[0])))
 		case "windows":
-			ret = uint32(C.nox_server_mapRWWindowWalls_4292C0((*C.uint32_t)(mapRoomPointer(args[0]))))
+			ret = mapSectionMetadata(0, (*[8]uint32)(mapRoomPointer(args[0])))
 		case "breakable":
-			ret = uint32(C.nox_server_mapRWDestructableWalls_429530((*C.uint32_t)(mapRoomPointer(args[0]))))
+			ret = mapSectionMetadata(1, (*[8]uint32)(mapRoomPointer(args[0])))
 		case "secret":
-			ret = uint32(C.nox_server_mapRWSecretWalls_4297C0((*C.uint32_t)(mapRoomPointer(args[0]))))
+			ret = mapSectionMetadata(2, (*[8]uint32)(mapRoomPointer(args[0])))
 		default:
 			panic(spec.Function)
 		}

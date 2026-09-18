@@ -1,0 +1,180 @@
+{
+  "status": "qualified native map sections",
+  "c_baseline": "71633546",
+  "focused_roots": 19,
+  "focused_tests": 4144,
+  "focused_captures": 19,
+  "focused_records": 4126,
+  "targets": [
+    {
+      "target": "default",
+      "roots": 510,
+      "tests": 46994
+    },
+    {
+      "target": "server",
+      "roots": 510,
+      "tests": 46994
+    },
+    {
+      "target": "highres",
+      "roots": 510,
+      "tests": 46994
+    }
+  ],
+  "captures": 282,
+  "records": 103153,
+  "source_files": 2473,
+  "source_identity": true,
+  "capture_identity": true,
+  "static": true,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 56.67049817997031,
+        "sha256": "8e6f956a5c1a64e8b765187557615d3b1f377b91967cafa6a5e8ca0a74597c4d",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 8.619947412982583,
+        "sha256": "f4b8ccf35bc35d97871eba1c2161e0d9af7295b7a0cbf33efcf69ded269dc07a",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 52.68277488206513,
+        "sha256": "7d3093e56fa5a2025eef0b5b752d70e552f25335582d3b0c3d7ce52d3d16b76d",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "map-sections-native": {
+        "exit": 0,
+        "wall_seconds": 62.78601042111404,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 62.23513390705921,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "8e6f956a5c1a64e8b765187557615d3b1f377b91967cafa6a5e8ca0a74597c4d",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-map-sections/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/map-sections-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native floor/wall map sections",
+          "removed_maps": 0
+        }
+      },
+      "map-sections-native-save": {
+        "exit": 0,
+        "wall_seconds": 47.20207328093238,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 46.72437651804648,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "8e6f956a5c1a64e8b765187557615d3b1f377b91967cafa6a5e8ca0a74597c4d",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-map-sections/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/map-sections-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native floor/wall map sections",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "72b61aabc47532b9b92d4e80833660eaa6bc5e1b1f77db722c203030f17392df"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "08d5290c8bb5ea8d4c12d801b2e8bf3d538000f1c283eff3523747fbf25bd8ab"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 55.56984120304696,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "flat_scenario": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 49.16214807401411,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/server-config-flat-c",
+    "binary_sha256": "8e6f956a5c1a64e8b765187557615d3b1f377b91967cafa6a5e8ca0a74597c4d",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-map-sections/native-production/production/bin/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/map-sections-native-flat/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Native floor and wall map sections",
+    "removed_maps": 51,
+    "regenerated_maps": 1
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 67,
+      "lines": 27001
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "retired_c_functions": 18,
+  "retired_c_globals": 2,
+  "c_reduction": {
+    "total": 1793,
+    "bodies_and_globals": 1619,
+    "obsolete_headings_and_blank_lines": 174
+  },
+  "initial_native_difference": "257 metadata checksum fields only; restored original eight-byte coordinate IO grouping. No frozen expectations changed."
+}

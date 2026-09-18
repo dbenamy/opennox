@@ -15,16 +15,15 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. Game-statistics collection and report serialization are now native Go:
-35 live routines converted, nine orphan routines removed, 43 C interfaces and seven
-C globals retired. See [GAME_STATISTICS.md](docs/porting/GAME_STATISTICS.md).
+pause. Floor/wall map serialization and connected metadata are now native Go:
+18 C routines and two private C globals retired, with direct Go section callers.
+Historical readers remain; unreachable old writer branches are removed. See
+[MAP_SECTIONS.md](docs/porting/MAP_SECTIONS.md).
 
-Current production C is **28,790 physical lines in 67 files**, with zero reference
-C (−2,029 from the statistics baseline). All three targets, frozen comparisons and
-fresh production/headless integration qualify. The map floor/wall serialization batch has repeated corrected-C captures:
-19 groups /4,144 test entries, all three targets and fresh production qualified. Current
-prerequisites add4 C lines (28,794 total). See
-[PORTING_STATE.md](PORTING_STATE.md).
+Current production C is **27,001 physical lines in 67 files**, with zero reference
+C (−1,793 from the corrected map-section baseline, including174 obsolete heading
+and blank lines). Frozen comparisons, all three targets and fresh production/
+headless integration qualify. See [PORTING_STATE.md](PORTING_STATE.md).
 
 ## Goal and target
 

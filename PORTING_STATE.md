@@ -2,45 +2,44 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 28.8k lines** — **28,794 physical lines in 67 production
-`.c` files**, zero reference C. Latest conversion: **−2,029** from the statistics
-baseline (current C prerequisites add4 lines). See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 27k lines** — **27,001 physical lines in 67 production
+`.c` files**, zero reference C. Latest conversion: **−1,793** from
+the qualified corrected C map-section baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — corrected C map-section baseline qualified
+## Current — native map sections qualified
 
-Capture checkpoint **4cc84212 is committed and pushed**. Floor/wall serialization
-and window/breakable/secret metadata select18 C bodies; no Go conversion is
-installed yet. Reversible C corrections fix missing scratch-wall ownership,
-wall high-flag serialization and historical floor-region Y scaling. See
-[MAP_SECTIONS.md](docs/porting/MAP_SECTIONS.md) and the decision log.
+Corrected C baseline **71633546** and capture checkpoint4cc84212 are pushed.
+Native Go replaces18 C bodies, removes two private C globals and moves all five
+section callers directly to Go. Historical readers remain; unreachable old write
+branches are removed. See [MAP_SECTIONS.md](docs/porting/MAP_SECTIONS.md).
 
-**19 focused roots /4,144 entries** pass. All19 captures /4,126 records repeat
-across processes and are frozen. Each target qualifies510 roots /46,994 entries:
-509 accumulated roots plus one additive polygon-light root. All282 captures
-/103,153 records match. The sole source difference between these gate partitions
-is the added light-test file; all preexisting files are identical. Final source
-is identical across light gates and production.
+**19 focused roots /4,144 entries**,19 captures /4,126 records match C. Each target
+passes **510 roots /46,994 entries**, no skips. All282 captures /103,153 records
+match C and each other; all native gates have identical source. Static, three fresh
+production binaries/ABI, exact known full-suite failures, gameplay, explicit
+save/load and compressed flat-map regeneration pass. No golden changed.
+Evidence: docs/porting/map-sections-native-qualification.json and
+build/port-map-sections/native-*. All build/test sessions are joined.
 
-Static, three fresh binaries/ABI, exact known full-suite failures, gameplay,
-explicit save/load and compressed flat-map regeneration pass. See
-`docs/porting/map-sections-c-qualification.json`. All build/test sessions are
-joined; source is editable. Raw evidence: `build/port-map-sections/c-*` and
-`light-*`. Freeze scripts, qualify-core.py and qualify-c.py are consumed.
+Current C: **27,001 lines /67 files /zero reference**,−1,793 from corrected C:
+−1,619 bodies/global definitions plus−174 obsolete headings/blanks in touched files.
+Native conversion awaits its commit/push at this checkpoint. Next batch selection
+can proceed after pushing. No user question is pending.
 
-Next: install the reviewed Go drafts using build/port-map-sections/install-native.py
-(UNCONSUMED), then format/static preflight and frozen focused comparisons. Drafts:
-native-io, native-floor, native-metadata and native-walls; native-batch-draft.json.
-All test draft copies are consumed; actual source takes precedence. No user
-question is pending.
+All map-section installers, draft copies, freeze scripts and qualification scripts
+are consumed. Actual source and committed evidence take precedence. The first
+native run differed only in metadata checksums; original8-byte IO boundaries were
+restored without golden changes. Do not replay old source-mutation scripts.
 
-Disk cleanup removed66 superseded successful-run binaries,3,210,134,412 bytes.
-Both superseded-binaries cleanup manifests under build/port-map-sections are
-consumed. Latest statistics binaries, logs, captures and original assets/archive
-remain. Completed C scenario copies have a prepared deduplication audit; apply
-only after checking its recorded state. Preserve restoration manifests and
-changed maps/saves/screenshots. Original archive stays untracked.
+Disk:99 superseded successful-run binaries removed in three audits, reclaiming
+4,819,397,352 bytes. C scenario assets were deduplicated after hash verification,
+reclaiming1,660,044,319 bytes. Their audit/apply modes are consumed; restore mode
+remains available. Native scenario copies were also verified/deduplicated (1,660,044,319 bytes);
+audit83161/apply93403 are joined and consumed. Restore modes remain available.
+Preserve all restoration manifests, changed maps/saves/screenshots and original
+assets/archive. The archive remains untracked.
 
 ## Qualified parent — native game statistics
 

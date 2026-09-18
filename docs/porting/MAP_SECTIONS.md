@@ -1,24 +1,29 @@
 # Floor and wall map sections
 
-## Scope and baseline
+## Current result
 
-Native statistics checkpoint **6035e191** is committed and pushed. The next batch
-selects **18 connected C bodies /1,629 body lines**: FloorMap, WallMap,
-WindowWalls, DestructableWalls and SecretWalls, their historical format readers,
-private wall-iteration callbacks and counter resets. The five roots are registered
-in src/maps.go and invoked through legacy/maps.go. All are live; historical
-readers remain reachable through format-version dispatch. No conversion installed.
-See [map-sections-selection.json](map-sections-selection.json).
+FloorMap, WallMap, WindowWalls, DestructableWalls and SecretWalls now use Go.
+All18 selected C bodies/interfaces and two private C globals retire. The five
+registered Go callers invoke Go directly; no C algorithm is retained for tests.
+Historical readers remain reachable; proven unreachable historical writer branches
+are omitted. Selection/reachability evidence is in
+[map-sections-selection.json](map-sections-selection.json).
 
-Production C is **28,794 physical lines /67 files /zero reference C** after the
-small prerequisites (+4 lines); no selected body has yet been converted.
-Baseline fixtures are being prepared. Reuse the existing map-painting extension
-owner for tile grids, subtile pools, normal and generation wall ownership,
-normalized pointers and full state snapshots. Exercise actual cryptfile IO with
-plaintext test files. Keep independent small wire-format contracts alongside C
-captures; report file consumption, return values, mutations and serialization.
+Corrected C baseline71633546 is pushed. Native qualification passes **19 focused
+roots /4,144 entries**, with19 captures /4,126 records matching C. Each target
+passes **510 roots /46,994 entries**, no skips. All **282 captures /103,153 records**
+match C and each other; all native gates have identical source. Static checks,
+three fresh production binaries/ABI, exact known asset-suite outcomes, gameplay,
+explicit save/load and compressed flat-map regeneration pass. See
+[map-sections-native-qualification.json](map-sections-native-qualification.json).
 
-## Planned contracts
+C remaining: **27,001 physical lines /67 files /zero reference**. The−1,793
+reduction includes−1,619 bodies/global definitions and−174 obsolete address-heading
+and blank lines in the touched files. The implementation preserves the corrected
+C behavior, including IO call boundaries that affect the existing map checksum.
+No frozen expectations changed during conversion.
+
+## Contract scope
 
 - Tile records: scalar narrowing, signed variations, subtile order, zero/nonzero
   chains, pool-block boundaries and byte-sized count wrap. Writing also normalizes
@@ -211,3 +216,44 @@ entries /3 packages, gameplay, explicit save/load and compressed flat-map
 regeneration pass. See map-sections-c-qualification.json and c-production.
 The C count is28,794 /67 files /zero reference. Go drafts are ready for integration;
 no native source is installed at this checkpoint. qualify-c.py is consumed.
+
+## Native integration in progress
+
+Qualified C baseline **71633546** is pushed. Installed all18 native replacements,
+retired their C interfaces and two private globals, and moved the five Go callers
+and original fixture directly to Go. Historical writer-only branches disappear;
+all live historical readers remain. Current C is27,001 physical lines /67 files
+/zero reference:−1,619 from body/global removal and−174 obsolete address-heading
+plus blank lines removed from the two touched C files (including prior empty
+headings). Total−1,793 from corrected C.
+
+The first native comparison matched all file bytes, return values and state.
+Only metadata checksums differed (257 records across four captures): coordinates
+had been split into two4-byte IO calls. Existing cryptfile checksum updates invert
+once per call, making call boundaries observable. Restore one8-byte coordinate
+operation for window/breakable reads and all metadata writes. No golden changed.
+Evidence: native-focus; corrected run:native-focus-fixed.
+
+Completed C asset copies were hash-verified and deduplicated, reclaiming
+1,660,044,319 bytes. Audit/apply modes are consumed; restore is supported by
+deduplicate-map-sections-c-assets.py and each run's restoration manifest.
+Installer/draft copies are consumed; actual native source supersedes them.
+
+The corrected native focused sweep passes all19 roots /4,144 entries; all19
+captures /4,126 records match frozen C exactly. Static checks pass. Default
+accumulated gate also passes; remaining gates and fresh production are underway.
+A third audited superseded-binary cleanup reclaimed1,609,262,940 bytes; its
+cleanup-3.json manifest is consumed. Original/latest artifacts remain protected.
+
+## Final native qualification
+
+All native gates and production are complete. Raw evidence is under
+build/port-map-sections/native-{focus-fixed,default,server,highres,production}.
+The initial native-focus checksum-only mismatch is retained as diagnostic evidence;
+its corrected successor passes all frozen records. All installers and qualification
+scripts are consumed. Original assets and committed C baselines provide recovery.
+
+Native scenario copies were also hash-verified and deduplicated after qualification,
+reclaiming1,660,044,319 bytes. Audit/apply modes of the native asset cleanup script
+are consumed; restore remains available. Changed maps/saves, screenshots and all
+comparison evidence remain. Original assets/archive are unchanged.

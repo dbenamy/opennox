@@ -1947,3 +1947,13 @@ They are small and reversible;19 focused roots /4,144 entries pass, and19 captur
 /4,126 records repeat identically across processes. All three targets and fresh
 production/headless qualification pass. See [MAP_SECTIONS.md](MAP_SECTIONS.md) for failures,
 fixture corrections and scope.
+
+## Map-section IO boundaries — preserve existing checksum behavior
+
+The existing cryptfile checksum complements once per ReadWrite operation. Changing
+an8-byte coordinate operation to two4-byte operations preserves file bytes but
+changes map checksums. The first native fixture caught257 such metadata differences;
+restore the original grouping and keep every frozen expectation. All bytes, state,
+returns and checksums now match corrected C in all targets, and production/save-load
+qualification passes. Do not “simplify” these boundaries without an explicit format
+compatibility decision. See [MAP_SECTIONS.md](MAP_SECTIONS.md).

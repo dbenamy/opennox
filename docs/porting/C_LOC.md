@@ -231,6 +231,8 @@ target build selection and linker evidence.
 | Item respawn, owner teams and crown attribution | 68 | 31,346 | −351 | 0 |
 | Server map/round orchestration | 68 | 30,819 | −527 | 0 |
 | Game-statistics collection and serialization |67|28,790|−2,029|0|
+| Map-section prerequisite corrections |67|28,794|+4|0|
+| Floor/wall map sections and obsolete heading cleanup |67|27,001|−1,793|0|
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
@@ -271,3 +273,7 @@ The collision-core conversion removes **1,096 physical C lines** across 23
 functions, eight private globals and obsolete address/separator cleanup. Current
 C: **41,886 / 74 files / zero reference C**. Ten exports remain for actual C callers;
 eighteen interfaces are retired. See [COLLISION_CORE.md](COLLISION_CORE.md).
+
+The map-section conversion removes18 C bodies and two private globals. The
+physical reduction includes1,619 body/global lines and174 obsolete address-heading
+and blank lines in the touched C files. See [MAP_SECTIONS.md](MAP_SECTIONS.md).
