@@ -2,15 +2,44 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 33.3k lines** — **33,267 physical lines in 69 production
+**Rough C remaining: about 33.3k lines** — **33,268 physical lines in 69 production
 `.c` files**, zero reference C. Latest conversion: **−1,077** from the console C
 baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — qualified native console commands
+## Current — player-state C baseline in progress
 
-This snapshot records the completed native console conversion. Repaired C baseline
+Console conversion **a72dd6c6 is committed and pushed**. The next candidate is
+22 routines /619 body lines in GAME1.c; two appear orphaned. See
+[PLAYER_STATE.md](docs/porting/PLAYER_STATE.md). New files install a thin C adapter
+and independent competitor-count matrix using actual player and team owners.
+The original competitor loop failed 35 independently specified team-mode cases:
+it counted empty teams if any eligible player existed. A membership predicate is
+now added to C before freezing; no non-team cases failed. The fixture also explicitly
+accounts for the shared owner's active unitless player record.
+
+Final focused C captures repeat exactly in separate processes: 16 roots /18,542
+tests including subtests, 16 captures /18,779 records. All expectations are now
+frozen; static mapped-memory checks pass. The signed flag-capacity boundary is
+included. All earlier focused sessions are joined.
+
+Default/server/highres each pass 316 roots /38,763 tests without skips. All185
+captures /50,798 records match across targets and the focused C captures; 2,382
+source files are identical. The three target sessions are joined.
+Fresh production passes three builds/ABI, exact known suite results and all three
+headless scenarios. Four gates share identical source. All sessions are joined;
+source is editable. The C baseline is ready to commit/push, then install and qualify
+the native conversion. Draft Go files and the NOT YET RUN install-native.py are
+under build/port-player-state; inspect before use. Actual C is 33,268 lines /69 files.
+
+Completed console-native run asset deduplication recovered 1,660,044,319 bytes;
+restoration manifests remain in each run. The new script under build/port-player-state
+is consumed; do not repeat its audit/apply. Original assets/archive are unchanged.
+
+## Qualified parent — native console commands
+
+Commit **a72dd6c6** records the completed native console conversion. Repaired C baseline
 **15df0163 is committed and pushed**. All 47 selected C bodies are replaced; two
 C files, 46 function interfaces, two globals and three private scratch buffers
 retire. One C-to-Go dispatcher entrypoint remains for the quit dialog. See
@@ -25,11 +54,11 @@ source is editable. Evidence: `docs/porting/console-commands-native-qualificatio
 and `build/port-console-commands/native-final-{default,server,highres}` / `native-production`.
 The formatter extension has an independently repeated C fixture patch and report.
 
-Next: commit/push this qualified snapshot, then continue the player-state batch.
+The player-state batch now follows this qualified snapshot.
 Ignored audit material in `build/port-player-state` selects 22 candidate routines /
 619 body lines in GAME1.c. Two scalar getter/setter bodies appear orphaned; audit
 remaining wrappers/callbacks before final scope. Consider the connected quit-menu
-module where ownership fits. No next-batch source changes or baseline yet.
+module where ownership fits. Player-state fixtures and the prerequisite C correction are now in progress.
 
 Disk: verified asset deduplication and lossless compression of completed old evidence
 reclaimed space. Restoration manifests remain local; original assets and the archive

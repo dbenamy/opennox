@@ -1,0 +1,230 @@
+{
+  "status": "qualified repaired C baseline",
+  "parent": "a72dd6c6",
+  "focused_roots": 16,
+  "focused_tests_including_subtests": 18542,
+  "new_captures": 16,
+  "new_capture_records": 18779,
+  "targets": [
+    {
+      "target": "default",
+      "roots": 316,
+      "tests": 38763
+    },
+    {
+      "target": "server",
+      "roots": 316,
+      "tests": 38763
+    },
+    {
+      "target": "highres",
+      "roots": 316,
+      "tests": 38763
+    }
+  ],
+  "captures": 185,
+  "records": 50798,
+  "source_files": 2382,
+  "source_identity": true,
+  "capture_identity": true,
+  "frozen_c_identity": true,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 76.43303402885795,
+        "sha256": "7791e735e8010d887df1d523538d87be88bf41bf0f5552327f393e254496d8a9",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.944870863109827,
+        "sha256": "c2a699b4737ff0c5d4c6aa152cecc6b2cc3f6e7ca109e667980855a06bc6f8e4",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 75.4237216541078,
+        "sha256": "9c3a787f11f240566cd6dd7c9b7e460550a91b08cd325658acb745a68eaae88f",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "player-state-c": {
+        "exit": 0,
+        "wall_seconds": 58.67948948498815,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 58.048878632020205,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "7791e735e8010d887df1d523538d87be88bf41bf0f5552327f393e254496d8a9",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-player-state/c-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/player-state-c/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Player-state repaired C baseline",
+          "removed_maps": 0
+        }
+      },
+      "player-state-c-save": {
+        "exit": 0,
+        "wall_seconds": 46.51912377215922,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.98009872389957,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "7791e735e8010d887df1d523538d87be88bf41bf0f5552327f393e254496d8a9",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-player-state/c-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/player-state-c-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Player-state repaired C baseline",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "507929bbe71165a0f5e7f4f407c006869254e6dce7b25e853947f7e7d13050c0"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 54.52139081386849,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "frozen_captures": [
+    {
+      "label": "player-state-admission",
+      "sha256": "150b26ab05b80357613901711a2f326214e3947e3f00a65519969af168295678",
+      "records": 5400
+    },
+    {
+      "label": "player-state-all-status",
+      "sha256": "fd7515a95162a5b259e0277bf4c8cac080ca06719cd749a68fcb6adfbe237d9e",
+      "records": 12
+    },
+    {
+      "label": "player-state-competitors",
+      "sha256": "8d2a7d504ddda0d77d9908dedeaf43a737bda956c1a2fc9e3f3174697cb45afe",
+      "records": 128
+    },
+    {
+      "label": "player-state-elapsed",
+      "sha256": "40d2325331f8d923e2871f5b2194efafe466d3841045006933216f83e5ecafe1",
+      "records": 54
+    },
+    {
+      "label": "player-state-equipment",
+      "sha256": "f6ddedbaaff8eb114dcdb94cea890753c8d9004d40e065a04733e05083e40655",
+      "records": 240
+    },
+    {
+      "label": "player-state-lessons",
+      "sha256": "ac639dad790ab66e5a0384e6dadcc48ead50096d8474a2a7dce2b1ae02f2cf77",
+      "records": 3
+    },
+    {
+      "label": "player-state-minimap",
+      "sha256": "26c572bbbcda004d4055c7b2ff2dc1fdb055c5ecc0eeadb9784cb3d1941e3470",
+      "records": 9
+    },
+    {
+      "label": "player-state-name",
+      "sha256": "c145961b9f3244dd556195174c4d8d69013c2c4d6f248c15c3139fa228869fc6",
+      "records": 8
+    },
+    {
+      "label": "player-state-reentry",
+      "sha256": "b125e602a59a40b515c26d30ca16e8b1f539d38faf15b67959b7d445b26145b9",
+      "records": 5
+    },
+    {
+      "label": "player-state-respawn-missing-colors",
+      "sha256": "08c8df8ca6b3d107768611375df4807478f3b115d85ce852641b3bc02cf11992",
+      "records": 2
+    },
+    {
+      "label": "player-state-respawn",
+      "sha256": "400939b1312e2cfe1badda6a3d6cffb96772c3b4f72161ae28bc76702dc0063b",
+      "records": 320
+    },
+    {
+      "label": "player-state-status-timer",
+      "sha256": "b67ad580389467d5e4f63b3617430fd58fa1dab0419f38134f90de86b92a79ca",
+      "records": 72
+    },
+    {
+      "label": "player-state-status",
+      "sha256": "e50bce99eee95e155f56fa161a4d83c5b3affe4d1644e9cdbc0461d7e6ecb589",
+      "records": 810
+    },
+    {
+      "label": "player-state-sudden-death",
+      "sha256": "4da2d318ac3783dbbd75c0a22ab3500e2c6313b1fe7863d35b5e7bb4559a68f3",
+      "records": 36
+    },
+    {
+      "label": "player-state-team-admission",
+      "sha256": "4975d06634b697d4cd7f43c1abeb1efcd14677eecfd826fa523419024062adcf",
+      "records": 11520
+    },
+    {
+      "label": "player-state-unequip",
+      "sha256": "8936d5370316146f30b40954bafae5aa0a659baeafdca3fc537dfd33878ffdcf",
+      "records": 160
+    }
+  ],
+  "static_mapped_memory": true,
+  "c_loc": {
+    "production": {
+      "files": 69,
+      "lines": 33268
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  }
+}

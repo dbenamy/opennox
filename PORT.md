@@ -20,10 +20,11 @@ C files removed, 46 function interfaces and two C globals retired. One C-to-Go
 entrypoint remains for the quit dialog. See
 [CONSOLE_COMMANDS.md](docs/porting/CONSOLE_COMMANDS.md) for coverage and decisions.
 
-Current production C is **33,267 physical lines in 69 files**, with zero reference
-C (−1,077 from the repaired C baseline). All three targets and fresh production /
-headless integration qualify. Player admission/status and client respawn are the
-next candidates; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Current production C is **33,268 physical lines in 69 files**, with zero reference
+C. Console conversion removed 1,077 lines; the player-state C prerequisite adds
+one membership-check line. The player-state baseline now passes all three targets
+and fresh production/headless integration; native conversion follows. See
+[PLAYER_STATE.md](docs/porting/PLAYER_STATE.md); [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 

@@ -213,7 +213,8 @@ int sub_40A770() {
 		if (v2) {
 			while (1) {
 				v3 = *(uint32_t*)(*(uint32_t*)(v2 + 748) + 276);
-				if (!(*(uint8_t*)(v3 + 3680) & 1) &&
+				if (nox_xxx_teamCompare2_419180(v2 + 48, v1[57]) &&
+					!(*(uint8_t*)(v3 + 3680) & 1) &&
 					(*(uint8_t*)(v3 + 2064) != 31 ||
 					 !nox_common_getEngineFlag(NOX_ENGINE_FLAG_DISABLE_GRAPHICS_RENDERING))) {
 					break;

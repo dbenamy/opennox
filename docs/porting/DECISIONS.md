@@ -1858,3 +1858,15 @@ additional committed-C fixture after review found the first draft's mismatch.
 Unsupported argument-taking formats without arguments have no defined C result;
 Go's no-argument path treats them as text rather than reading nonexistent arguments.
 See [CONSOLE_COMMANDS.md](CONSOLE_COMMANDS.md) for evidence and qualification state.
+
+
+### Player-state team-count prerequisite
+
+The original active-competitor team loop counted an empty team whenever any
+eligible player existed elsewhere. Independent tests with real memberships failed
+35 team-mode cases and no non-team cases. Add the same membership predicate used
+by the neighboring per-team counter before freezing the C baseline. Preserve
+non-team player-record counting, including active players without units, and the
+distinct status0x20 rule in the multiple-participants query. This is a reversible
+correctness fix for review; evidence and qualification state are in
+[PLAYER_STATE.md](PLAYER_STATE.md).

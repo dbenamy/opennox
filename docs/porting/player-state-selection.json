@@ -1,0 +1,164 @@
+{
+  "functions": [
+    {
+      "name": "sub_40A770",
+      "file": "src/legacy/GAME1.c",
+      "line": 190,
+      "lines": 43,
+      "body_sha256": "c40ff31036b145d31168193eb0923508ecc6a29e56cf35b15a3cc5af7523c78e"
+    },
+    {
+      "name": "nox_xxx_countNonEliminatedPlayersInTeam_40A830",
+      "file": "src/legacy/GAME1.c",
+      "line": 235,
+      "lines": 24,
+      "body_sha256": "03879a35662acecc79381feb9864abd0d759d522737889f90ca9ddea52d87951"
+    },
+    {
+      "name": "nox_xxx_gamePlayIsAnyPlayers_40A8A0",
+      "file": "src/legacy/GAME1.c",
+      "line": 261,
+      "lines": 51,
+      "body_sha256": "ba873ae9fe952d2b7e162bf1ed72e0b6defee57aa5e657beed5f0dffc0433ea9"
+    },
+    {
+      "name": "sub_40A970",
+      "file": "src/legacy/GAME1.c",
+      "line": 314,
+      "lines": 20,
+      "body_sha256": "c3803fb1f1e0731638e183ed924c93815dad0bb79a9f202ac48dd05420e4dcee"
+    },
+    {
+      "name": "sub_40AA00",
+      "file": "src/legacy/GAME1.c",
+      "line": 336,
+      "lines": 1,
+      "body_sha256": "8a720b501cf4f1748660ea731d2ee951f06b24ee0562443cabd8eed72d7161ee"
+    },
+    {
+      "name": "sub_40AA20",
+      "file": "src/legacy/GAME1.c",
+      "line": 339,
+      "lines": 1,
+      "body_sha256": "fc9759581d0f36b8a06eebba8600ea64f56d4c663a81c851fe17ae2bd3f39fbb"
+    },
+    {
+      "name": "sub_40AA30",
+      "file": "src/legacy/GAME1.c",
+      "line": 342,
+      "lines": 7,
+      "body_sha256": "99dc2c61ac3b9eb8ee12588aab2442e06a069f2ab9dfa3b88a6f3ab3baa5c56d"
+    },
+    {
+      "name": "sub_40AA40",
+      "file": "src/legacy/GAME1.c",
+      "line": 351,
+      "lines": 1,
+      "body_sha256": "9a94c6d92a166a99bb711ab1e929618988f046eed6a83cafa803dcfd9da9b44e"
+    },
+    {
+      "name": "sub_40AA60",
+      "file": "src/legacy/GAME1.c",
+      "line": 354,
+      "lines": 7,
+      "body_sha256": "d7ea1ce4b9b12d0ab12ac66b1573cebf5be20241a9f10c4b2db0c29bcd16172f"
+    },
+    {
+      "name": "sub_40AA70",
+      "file": "src/legacy/GAME1.c",
+      "line": 363,
+      "lines": 67,
+      "body_sha256": "472f181ae69e30429961e302655bb14b97281fe27fdf42523dc6cd89b7ee7930"
+    },
+    {
+      "name": "nox_xxx_playerForceSendLessons_416E50",
+      "file": "src/legacy/GAME1.c",
+      "line": 1009,
+      "lines": 17,
+      "body_sha256": "c5512935ae4ee262d5d707a9766f1461ab77c9ee41d7a286e061bd3867fcbdf3"
+    },
+    {
+      "name": "nox_xxx_playerByName_4170D0",
+      "file": "src/legacy/GAME1.c",
+      "line": 1028,
+      "lines": 18,
+      "body_sha256": "304cd14a046913285abf5ea60c74b923938bc6db30bc273b274b82301d52bc73"
+    },
+    {
+      "name": "nox_xxx_playerMapTracksObj_4173D0",
+      "file": "src/legacy/GAME1.c",
+      "line": 1048,
+      "lines": 23,
+      "body_sha256": "8c0feb28193bdde5bbabe765e0b130de085b221e27f8fdbc9a3e7648b64c0edd"
+    },
+    {
+      "name": "nox_xxx_netUnmarkMinimapSpec_417470",
+      "file": "src/legacy/GAME1.c",
+      "line": 1073,
+      "lines": 11,
+      "body_sha256": "fa0594d2fe84084d2a9d610fa0786fc33f57a2a27e1b5cd97776cbeb960021e2"
+    },
+    {
+      "name": "nox_xxx_netMarkMinimapForAll_4174B0",
+      "file": "src/legacy/GAME1.c",
+      "line": 1086,
+      "lines": 11,
+      "body_sha256": "37146bbacf7930762c3611bbc46685aec4b23deff64b6807180e0b1e9469ebf2"
+    },
+    {
+      "name": "nox_xxx_netNeedTimestampStatus_4174F0",
+      "file": "src/legacy/GAME1.c",
+      "line": 1099,
+      "lines": 13,
+      "body_sha256": "31ade54536b857f7312b63f3a279fecdb6c3146a284589c61d0eb51b79933d06"
+    },
+    {
+      "name": "nox_xxx_playerUnsetStatus_417530",
+      "file": "src/legacy/GAME1.c",
+      "line": 1114,
+      "lines": 31,
+      "body_sha256": "6165288cdadc36c1412023d5642d52e9923a79049e5f58612eeeb4e65d449d81"
+    },
+    {
+      "name": "nox_xxx_sendAllClientStatus_4175C0",
+      "file": "src/legacy/GAME1.c",
+      "line": 1148,
+      "lines": 17,
+      "body_sha256": "331ac9ecf560b2cb8ec5805460e1afca49b1e0c3e44e9ce6898944a2571cc303"
+    },
+    {
+      "name": "nox_xxx_netReportPlayerStatus_417630",
+      "file": "src/legacy/GAME1.c",
+      "line": 1167,
+      "lines": 13,
+      "body_sha256": "00fc365b97cc27cbd4a19f07c4b6abdd643598b138dff83e09930d091de74544"
+    },
+    {
+      "name": "nox_xxx_cliPlayerRespawn_417680",
+      "file": "src/legacy/GAME1.c",
+      "line": 1182,
+      "lines": 149,
+      "body_sha256": "b280de0347ed32770c119aca4180c7c7e6b783a7e7531407bdab3f0d9e32866e"
+    },
+    {
+      "name": "nox_xxx_clientEquipWeaponArmor_417AA0",
+      "file": "src/legacy/GAME1.c",
+      "line": 1333,
+      "lines": 57,
+      "body_sha256": "5c6193f8ebb3aee21a764c97e73f34f3b73560d02cf7721825ae2296822aff61"
+    },
+    {
+      "name": "sub_417B80",
+      "file": "src/legacy/GAME1.c",
+      "line": 1392,
+      "lines": 37,
+      "body_sha256": "a8371e49bfceb72a4d9eb3cec17744ea78e1c57c2daf2d19ac1980b58481fc74"
+    }
+  ],
+  "baseline_parent": "a72dd6c6",
+  "status": "candidate scope; C contracts in progress",
+  "orphan_candidates": [
+    "sub_40AA20",
+    "sub_40AA30"
+  ]
+}
