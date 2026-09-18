@@ -195,7 +195,7 @@ func Get_nox_xxx_updatePlayerMonsterBot_4FAB20() unsafe.Pointer {
 }
 
 func Nox_xxx_netNeedTimestampStatus_4174F0(pl *server.Player, v int) {
-	C.nox_xxx_netNeedTimestampStatus_4174F0((*nox_playerInfo)(pl.C()), C.int(v))
+	playerStateAddStatus(pl, uint32(v))
 }
 
 func Sub_40A1F0(v int) {
@@ -207,7 +207,7 @@ func Nox_game_sendQuestStage_4D6960(v ntype.PlayerInd) {
 }
 
 func Nox_xxx_playerForceSendLessons_416E50(v int) {
-	C.nox_xxx_playerForceSendLessons_416E50(C.int(v))
+	playerStateLessons(int32(v))
 }
 
 func Get_nox_xxx_updatePlayerObserver_4E62F0() unsafe.Pointer {
@@ -231,7 +231,7 @@ func Get_nox_xxx_updatePlayer_4F8100() unsafe.Pointer {
 }
 
 func Nox_xxx_playerUnsetStatus_417530(p *server.Player, a2 int) {
-	C.nox_xxx_playerUnsetStatus_417530((*nox_playerInfo)(p.C()), C.int(a2))
+	playerStateRemoveStatus(p, uint32(a2))
 }
 
 func Nox_xxx_playerResetImportantCtr_4E4F40(v ntype.PlayerInd) {
@@ -271,11 +271,11 @@ func Sub_4DF3C0(p *server.Player) {
 }
 
 func Sub_40AA70(p *server.Player) int {
-	return int(C.sub_40AA70((*nox_playerInfo)(p.C())))
+	return playerStateAdmission(p)
 }
 
 func Nox_xxx_netReportPlayerStatus_417630(p *server.Player) {
-	C.nox_xxx_netReportPlayerStatus_417630((*nox_playerInfo)(p.C()))
+	playerStateReport(p)
 }
 
 func Sub_509C30(p *server.Player) {

@@ -34,7 +34,7 @@ func inventoryCrownDrop(u, it *server.Object, pos *types.Pointf) int {
 	core.ObjClearOwner(it)
 	Nox_xxx_spellBuffOff_4FF5B0(u, 30)
 	inventoryMessage(11, u, uint32(u.TeamVal.ID))
-	C.nox_xxx_netMarkMinimapForAll_4174B0(inventoryInt(it), 1)
+	playerStateMark(it, 1)
 	return 1
 }
 func inventoryTreasureDrop(u, it *server.Object, pos *types.Pointf) int {

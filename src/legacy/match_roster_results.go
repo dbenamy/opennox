@@ -121,7 +121,7 @@ func matchRosterCheckVictory() {
 				unit = u
 			}
 		}
-		if C.nox_xxx_gamePlayIsAnyPlayers_40A8A0() == 0 {
+		if playerStateMultiple() == 0 {
 			return
 		}
 		noxflags.SetGame(8)

@@ -181,10 +181,10 @@ func teamRuntimeCrown() int {
 				GetServer().DelayedDelete(u)
 				C.sub_4EC6A0(C.int(uintptr(u.CObj())))
 			} else if !bound {
-				C.nox_xxx_netMarkMinimapForAll_4174B0(C.int(uintptr(u.CObj())), 1)
+				playerStateMark(u, 1)
 			} else if t := s.Teams.ByID(u.TeamVal.ID); t != nil {
 				*teamRuntimeWord(t, 76) = uint32(uintptr(u.CObj()))
-				C.nox_xxx_netMarkMinimapForAll_4174B0(C.int(uintptr(u.CObj())), 1)
+				playerStateMark(u, 1)
 			}
 		}
 		u = next

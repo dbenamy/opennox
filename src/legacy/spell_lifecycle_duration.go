@@ -11,7 +11,6 @@ import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/opennox/v1/server"
 	"runtime"
-	"unsafe"
 )
 
 func spellLifeCancelDurations(mode int32) int32 {
@@ -114,6 +113,7 @@ func spellLifeRayMessage(p *server.DurSpell) uint32 {
 func spellLifeSendRay(p *server.DurSpell, buf [7]byte) uint32 {
 	reliableEnqueue(255, buf[:], nil, 1, 1)
 	runtime.KeepAlive(buf)
-	C.nox_xxx_netMarkMinimapForAll_4174B0(C.int(uintptr(p.Caster16.CObj())), 2)
-	return uint32(uintptr(unsafe.Pointer(C.nox_xxx_netMarkMinimapForAll_4174B0(C.int(uintptr(p.Target48.CObj())), 2))))
+	playerStateMark(p.Caster16, 2)
+	playerStateMark(p.Target48, 2)
+	return 0
 }

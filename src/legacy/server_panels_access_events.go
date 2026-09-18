@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -11,7 +7,6 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/ntype"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
 
@@ -169,7 +164,7 @@ func serverPanelsAccessEvent(_ *gui.Window, event int, arg uintptr, value int) i
 			selection := uiListSelection(uiListData(list))
 			for i := 0; selection[i] >= 0; i++ {
 				name := unsafe.Pointer(uintptr(teamUIEvent(list, 16406, uintptr(selection[i]), 0)))
-				player := (*server.Player)(unsafe.Pointer(C.nox_xxx_playerByName_4170D0((*C.wchar2_t)(name))))
+				player := playerStateByName((*uint16)(name))
 				if player == nil || player.PlayerInd == 31 {
 					continue
 				}

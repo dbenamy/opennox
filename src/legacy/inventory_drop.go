@@ -62,7 +62,7 @@ func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 		team := it.TeamVal.ID
 		value := C.sub_4ECBD0(inventoryInt(it))
 		inventoryMessage(7, u, uint32(value))
-		C.nox_xxx_netMarkMinimapForAll_4174B0(inventoryInt(it), 1)
+		playerStateMark(it, 1)
 		*(*uint32)(unsafe.Add(it.UpdateData, 8)) = GetServer().S().Frame()
 		matchRosterFlagState(byte(team), 2, byte(value), 0)
 	}

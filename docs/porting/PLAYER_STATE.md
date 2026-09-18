@@ -1,65 +1,70 @@
-# Player admission, status and respawn
+# Player admission, status and displayed equipment
 
-Qualified repaired C baseline after console conversion **a72dd6c6**.
-Candidate selection: 22 routines /619 body lines in GAME1.c, covering player/team
-eligibility, sudden-death admission state, name lookup, minimap tracking/fanout,
-status messages, client respawn and displayed equipment. Current production C
-is **33,268 lines /69 files /zero reference C** after the one-line prerequisite fix.
+Repaired C baseline **81146f36 is committed and pushed**. Native conversion
+replaces **20 live routines**, removes **two orphan bodies**, retires **11 C
+interfaces** and retains **11 exports** for decoder/server lifecycle callers.
+Production C is **32,605 physical lines /69 files /zero reference C**, **−663**.
 
-Two candidate scalar helpers (`sub_40AA20`, `sub_40AA30`) occur only in their C
-definitions and header declarations across src; remove them as orphaned bodies
-rather than translating/testing them. Audit other wrappers and callback reachability
-before finalizing scope. C clients remain in the decoder and server lifecycle code;
-Go callers should move directly to native helpers at conversion.
+## Baseline correction for review
 
-Reuse actual sparse-player, update-data, team membership and report queue owners.
-The initial competitor-count matrix distinguishes player records from player units,
-occupied teams from empty teams, observer/status0x20 semantics, missing units and
-the dedicated host slot. Create membership through the real team owner, not by
-setting a team ID alone. The original active-competitor team loop omitted its membership check. After fixing
-an initial fixture omission (the shared owner has an active unitless fourth player),
-the third C run reproduced 35 incorrect team-mode results and no non-team failures.
-The C prerequisite correction adds the same real membership predicate used by the
-neighboring per-team count. Empty teams now contribute zero; occupied teams count
-once. This reversible behavior correction is recorded for review before conversion.
+The original active-competitor loop counted empty teams whenever any eligible
+player existed elsewhere. Independent contracts using actual memberships failed
+35 team-mode cases and no non-team cases. Add the same membership predicate used
+by the neighboring per-team counter before freezing. Non-team counting still
+includes active player records without units. The separate multiple-participants
+query keeps its status bit 0x20 behavior and does not exclude the headless host slot.
+This reversible correction adds one C line to the baseline (33,268).
 
-The sixth focused C run passes seven roots. Status contracts check mask0x423,
-low16 object IDs, host gating, exact seven-byte payloads and broadcast recipients.
-Timer contracts distinguish host/chat/participant/minute/previous-state gates and
-advance time before a second observer clear to verify the deadline is not restarted.
-Admission covers quest threshold6, nil callers, re-entry, positive signed scores,
-frame wrap, selected special-mode bytes, remembered groups and team/flag limits.
+## Contracts and native behavior
 
-The eighth C run passes 14 roots. Equipment contracts exercise both slot arrays,
-full capacity, empty slots, unknown player/modifier IDs, mask narrowing and every
-respawn mask bit across classes and game modes. Slots retain their sixth word.
-Minimap contracts use real allocated circular lists, active-player fanout, repeated
-mark/merged flags, partial removal, middle/head/final unlink, invalid indices and
-nil objects. Lesson reset includes the unitless active player and emits messages
-only for players with units. Whole-roster status includes every active player.
+- Actual sparse player records, units, teams, report queues and modifier owners.
+  Quest limit of 6, nil admission callers, re-entry, signed score/flag-capacity values,
+  remembered team identities, team limits and selected special-mode bytes.
+- Sudden-death data conversion, status reset, frame wrap and strict 20-second
+  boundary; re-entry setter preserves all 32 bits.
+- Exact seven-byte status messages, low 16-bit IDs, mask 0x423, host gating and recipients.
+  Timer startup distinguishes host/chat/participants/configuration/previous state;
+  clearing observer status again after time advances does not restart it.
+- Whole-roster status includes the active unitless player. Lesson reset clears all
+  active records and emits messages only for players with units. Queue contracts
+  account for head insertion and the connection mask versus destination fields.
+- Name lookup preserves first-match ordering, nil inputs and raw UTF-16 with
+  ASCII case folding, matching the existing C locale; non-ASCII units stay intact.
+- Minimap tests use real allocated circular lists: fanout, duplicate mark/merged
+  flags, partial removal, middle/head/final unlink, invalid indices and nil objects.
+- Equipment tests cover full/empty slot arrays, unknown players/modifiers, every
+  respawn mask bit, classes and game modes. Unused modifier fields and each slot's
+  sixth word are preserved. Missing base-color data returns after clearing slots.
 
-Queue assertions account for the actual reliable owner: insertion is at the head,
-and the stored connection mask is distinct from the per-message destination. Two
-initial fixture assumptions about those properties were corrected after inspecting
-the queue implementation; no production change was needed.
+Go callers invoke native helpers directly. The two orphan scalar helpers have no
+callers/registrations across source and are removed without replacement tests.
+No test-reference C remains. Scope stays with this connected behavior batch.
 
-Scope stays with these connected 20 live routines and two orphan helpers, rather
-than adding unrelated GUI lifecycle code solely to reach a line-count target.
-Completed console-native scenario copies were hash-verified against original assets
-and deduplicated, recovering 1,660,044,319 bytes. Per-run restoration manifests
-preserve paths, hashes and metadata; changed files, reports and original assets stay.
+## Qualification
 
-Final focused C qualification repeats exactly in two processes: 16 roots /18,542
-tests including subtests; 16 captures /18,779 records. Frozen expectations are in
-the tests. Added final boundaries include signed flag capacity, all re-entry word
-bits, retained modifier pointers during unequip, missing-color early return, and
-non-ASCII name comparison in the existing C locale. Static mapped-memory passes.
-Three-target and fresh-production baseline qualification pass.
+Focused native checks pass **16 roots /18,542 tests including subtests**. All 16
+captures /18,779 records match the independently repeated frozen C baseline.
+Default/server/highres each pass **316 roots /38,763 tests**, without skips.
+All 185 captures /50,798 records match each other and C byte for byte. Static
+mapped-memory validation and interface audits pass. Fresh native production passes three ELF32/SSE2/CGO builds and ABI checks, the
+exact known full-suite results (1,553 failure entries; 15 pass /3 fail /32 skip
+packages), and options/gameplay, save/load and flat-map scenarios. All four gates
+share unchanged 2,386-file source. All sessions are joined. See
+[C qualification](player-state-c-qualification.json) and
+[native qualification](player-state-native-qualification.json).
 
-Default/server/highres each pass 316 roots /38,763 tests without skips. All185
-captures /50,798 records are identical across targets, including the 16 focused C
-captures. The three gates share 2,382 source files. Fresh production passes: three ELF32/SSE2/CGO binaries and ABI checks; exact known
-full-suite results (1,553 failure entries; 15 pass /3 fail /32 skip packages);
-options/gameplay, save/load and flat-map scenarios. All four gates share identical
-source. No native implementation is installed yet. See
-[player-state-c-qualification.json](player-state-c-qualification.json).
+## Process and storage notes
+
+The installer's first import cleanup touched 14 unrelated files, including directive-only
+cgo files. The check was interrupted and all 14 files restored exactly from the
+baseline before restarting. An unused import in a changed file was then removed.
+PORT.md now explicitly preserves `#cgo` imports and confines cleanup to batch files.
+The final change does not alter those unrelated files; the installer is consumed.
+
+Hash-verified deduplication of completed console-native and player-state-C scenario
+assets recovered 1,660,044,319 bytes each. Per-run manifests preserve restoration
+paths, hashes and metadata. Twelve inactive compiler temporary directories older
+than 24 hours were removed after checking process references (579,880,242 bytes).
+Original assets and the archive are unchanged. Lossless compression of 775 old evidence files recovered another 2,877,720,135
+bytes. Decompressed hashes were verified before deleting originals; restoration
+manifests remain under build/port-player-state. Cleanup scripts are consumed.

@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -164,7 +160,7 @@ func serverPanelsAccessRefresh() uintptr {
 	if w == nil {
 		return 0
 	}
-	serverOptionsSetText(serverPanelsWindow(1045592), 16414, strconv.Itoa(int(C.int(serverConfigLimitGet()))), 0)
+	serverOptionsSetText(serverPanelsWindow(1045592), 16414, strconv.Itoa(int(serverConfigLimitGet())), 0)
 	if noxflags.HasGame(1) {
 		allowed, blocked := serverPanelsWindow(1045532), serverPanelsWindow(1045528)
 		teamUIEvent(blocked, 16399, 0, 0)
@@ -216,7 +212,7 @@ func serverPanelsPlayerRemove(name *uint16) {
 }
 func serverPanelsSelectedPlayer(list *gui.Window, index int32) *server.Player {
 	p := unsafe.Pointer(uintptr(teamUIEvent(list, 16406, uintptr(index), 0)))
-	return (*server.Player)(unsafe.Pointer(C.nox_xxx_playerByName_4170D0((*C.wchar2_t)(p))))
+	return playerStateByName((*uint16)(p))
 }
 func serverPanelsAccessSelected() bool {
 	list := serverPanelsWindow(1045536)

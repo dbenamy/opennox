@@ -15,16 +15,15 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. Console command handling is now native Go: 47 C bodies and two private
-C files removed, 46 function interfaces and two C globals retired. One C-to-Go
-entrypoint remains for the quit dialog. See
-[CONSOLE_COMMANDS.md](docs/porting/CONSOLE_COMMANDS.md) for coverage and decisions.
+pause. Player admission, status, minimap tracking and displayed equipment are now
+native Go: 20 live routines converted, two orphan bodies removed, 11 C interfaces
+retired and 11 exports retained for live decoder/server lifecycle callers. See
+[PLAYER_STATE.md](docs/porting/PLAYER_STATE.md) for coverage and review items.
 
-Current production C is **33,268 physical lines in 69 files**, with zero reference
-C. Console conversion removed 1,077 lines; the player-state C prerequisite adds
-one membership-check line. The player-state baseline now passes all three targets
-and fresh production/headless integration; native conversion follows. See
-[PLAYER_STATE.md](docs/porting/PLAYER_STATE.md); [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Current production C is **32,605 physical lines in 69 files**, with zero reference
+C (−663 from the repaired player-state baseline). All three targets and fresh
+production/headless integration qualify. Session lifecycle and map-entry helpers
+are the next candidates; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 
@@ -82,7 +81,9 @@ may precede full qualification when their evidence and remaining gates are expli
    Before the first compile, format new files, check the whitespace diff, and compare
    new export signatures with every existing header declaration. When removing a
    cgo import, check for `//export` directives too: those still need cgo even when
-   no `C.` calls remain. A small late source fix can invalidate the whole cgo
+   no `C.` calls remain. Imports with `#cgo` directives also carry build settings
+   without direct calls; preserve them. Limit import cleanup to the files changed
+   by the batch. A small late source fix can invalidate the whole cgo
    package build and repeat the remaining C compile.
    Trace the existing C adapter when choosing a Go API: similar names can hide
    differences in coordinate space, return conventions or ownership.

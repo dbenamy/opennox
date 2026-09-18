@@ -214,7 +214,7 @@ func objectiveBallReset(old *server.Object) int {
 	*(*uint64)(unsafe.Add(ud, 8)) = uint64(uint32(PlatformTicks()))
 	*equipmentWord(ud, 20) = uint32(floatToInt32(float32(core.Balance.Float("FlagballPossDuration"))))
 	*temporaryFloat(ud, 24) = float32(core.Balance.Float("FlagballResetVel"))
-	C.nox_xxx_netMarkMinimapForAll_4174B0(inventoryInt(ball), 1)
+	playerStateMark(ball, 1)
 	GetServer().CreateObjectAt(ball, nil, types.Pointf{})
 	core.ObjClearOwner(ball)
 	objectiveRememberOwner(ball, nil)

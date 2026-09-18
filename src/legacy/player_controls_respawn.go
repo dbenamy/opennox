@@ -208,7 +208,7 @@ func controlLeaveObserver(pl unsafe.Pointer) {
 	if u == nil || *controlPtr(u.CObj(), 744) == C.controlBotUpdateAddress() {
 		return
 	}
-	C.nox_xxx_playerUnsetStatus_417530((*C.nox_playerInfo)(pl), 289)
+	playerStateRemoveStatus((*server.Player)(pl), 289)
 	spellLifeBuffOff(u, int32(0))
 	*controlPtr(u.CObj(), 744) = C.controlNormalUpdate()
 	u.ObjFlags &^= 0x40

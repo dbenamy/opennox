@@ -1,0 +1,200 @@
+{
+  "targets": [
+    {
+      "target": "default",
+      "roots": 316,
+      "tests": 38763
+    },
+    {
+      "target": "server",
+      "roots": 316,
+      "tests": 38763
+    },
+    {
+      "target": "highres",
+      "roots": 316,
+      "tests": 38763
+    }
+  ],
+  "status": "qualified native conversion",
+  "baseline": "81146f36",
+  "focused_roots": 16,
+  "focused_tests_including_subtests": 18542,
+  "new_captures": 16,
+  "new_capture_records": 18779,
+  "static_mapped_memory": true,
+  "c_loc": {
+    "production": {
+      "files": 69,
+      "lines": 32605
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "interfaces": {
+    "retained": [
+      "nox_xxx_cliPlayerRespawn_417680",
+      "nox_xxx_clientEquipWeaponArmor_417AA0",
+      "nox_xxx_gamePlayIsAnyPlayers_40A8A0",
+      "nox_xxx_netNeedTimestampStatus_4174F0",
+      "nox_xxx_playerForceSendLessons_416E50",
+      "nox_xxx_playerUnsetStatus_417530",
+      "nox_xxx_sendAllClientStatus_4175C0",
+      "sub_40A770",
+      "sub_40A970",
+      "sub_40AA70",
+      "sub_417B80"
+    ],
+    "retired": [
+      "nox_xxx_countNonEliminatedPlayersInTeam_40A830",
+      "nox_xxx_netMarkMinimapForAll_4174B0",
+      "nox_xxx_netReportPlayerStatus_417630",
+      "nox_xxx_netUnmarkMinimapSpec_417470",
+      "nox_xxx_playerByName_4170D0",
+      "nox_xxx_playerMapTracksObj_4173D0",
+      "sub_40AA00",
+      "sub_40AA20",
+      "sub_40AA30",
+      "sub_40AA40",
+      "sub_40AA60"
+    ]
+  },
+  "flat_gameplay": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 46.63381300284527,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/server-config-flat-c",
+    "binary_sha256": "4f4007083c3c37bc6e048cfdbd3dfeaaf6fe85e98625ade16d57142e54982639",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-player-state/native-production/production/bin/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/player-state-native-flat/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Player-state native",
+    "removed_maps": 51,
+    "regenerated_maps": 1
+  },
+  "captures": 185,
+  "records": 50798,
+  "source_files": 2386,
+  "source_identity": true,
+  "capture_identity": true,
+  "original_c_identity": true,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 75.73953904304653,
+        "sha256": "4f4007083c3c37bc6e048cfdbd3dfeaaf6fe85e98625ade16d57142e54982639",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.597553954925388,
+        "sha256": "7c200720d667672d66a95673bb9e688c61d8f7cf9491bc91b47cab56559e953b",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 74.07252113311552,
+        "sha256": "34df3f5baeee65b7a8e3904c0f5dbcfb083cef9400b00c512f3d6d9b5ee87325",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "player-state-native": {
+        "exit": 0,
+        "wall_seconds": 64.82625558995642,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 64.32995432103053,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "4f4007083c3c37bc6e048cfdbd3dfeaaf6fe85e98625ade16d57142e54982639",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-player-state/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/player-state-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native player-state conversion",
+          "removed_maps": 0
+        }
+      },
+      "player-state-native-save": {
+        "exit": 0,
+        "wall_seconds": 44.97021459904499,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.501044288044795,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "4f4007083c3c37bc6e048cfdbd3dfeaaf6fe85e98625ade16d57142e54982639",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-player-state/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/player-state-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native player-state conversion",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "0f11660d1eb9ae1a36c5e17acadfd0d589d95a9e3e41a525412b69c02694cf6f"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 54.810166496085,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  }
+}

@@ -107,7 +107,7 @@ func Nox_cmd_menu_options(_ int, _ []string) bool {
 func Nox_cmd_menu_vidopt(_ int, _ []string) bool { optionsShow(); return true }
 func Nox_cmd_reenter(_ int, _ []string) bool {
 	if !noxflags.HasGame(8192) {
-		C.sub_40AA60(1)
+		playerStateReentry(1)
 	}
 	return true
 }

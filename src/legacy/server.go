@@ -200,7 +200,7 @@ func Sub_4CFDF0(a1 int) {
 	C.sub_4CFDF0(C.int(a1))
 }
 func Nox_xxx_playerMapTracksObj_4173D0(a1 int, a2 *server.Object) int {
-	return int(C.nox_xxx_playerMapTracksObj_4173D0(C.int(a1), asObjectC(a2)))
+	return playerStateTracks(a1, a2)
 }
 func Sub_519710(a1 unsafe.Pointer) int {
 	return objectReportSchedule((*server.PlayerUpdateData)(a1))
@@ -245,16 +245,16 @@ func Sub_416720() {
 	serverConfigExpire()
 }
 func Sub_40AA00() int {
-	return int(C.sub_40AA00())
+	return playerStateElapsed()
 }
 func Sub_40AA40() int {
-	return int(C.sub_40AA40())
+	return int(playerStateThreshold())
 }
 func Nox_xxx_countNonEliminatedPlayersInTeam_40A830(a1 *server.Team) int {
-	return int(C.nox_xxx_countNonEliminatedPlayersInTeam_40A830((*nox_team_t)(a1.C())))
+	return playerStateTeamPlayers(a1)
 }
 func Sub_40A770() int {
-	return int(C.sub_40A770())
+	return playerStateCompetitors()
 }
 func Sub_40A6B0() int {
 	return int(C.int(serverConfigRateDirtyGet()))

@@ -226,5 +226,29 @@
       "files": 0,
       "lines": 0
     }
+  },
+  "flat_gameplay": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 49.265447275014594,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/server-config-flat-c",
+    "binary_sha256": "7791e735e8010d887df1d523538d87be88bf41bf0f5552327f393e254496d8a9",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-player-state/c-production/production/bin/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/player-state-c-flat/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Player-state repaired C",
+    "removed_maps": 51,
+    "regenerated_maps": 1
   }
 }

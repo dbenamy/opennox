@@ -2,40 +2,41 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 33.3k lines** — **33,268 physical lines in 69 production
-`.c` files**, zero reference C. Latest conversion: **−1,077** from the console C
+**Rough C remaining: about 32.6k lines** — **32,605 physical lines in 69 production
+`.c` files**, zero reference C. Latest conversion: **−663** from the player-state C
 baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — player-state C baseline in progress
+## Current — player-state native conversion qualified
 
-Console conversion **a72dd6c6 is committed and pushed**. The next candidate is
-22 routines /619 body lines in GAME1.c; two appear orphaned. See
-[PLAYER_STATE.md](docs/porting/PLAYER_STATE.md). New files install a thin C adapter
-and independent competitor-count matrix using actual player and team owners.
-The original competitor loop failed 35 independently specified team-mode cases:
-it counted empty teams if any eligible player existed. A membership predicate is
-now added to C before freezing; no non-team cases failed. The fixture also explicitly
-accounts for the shared owner's active unitless player record.
+Repaired C baseline **81146f36 is committed and pushed**. The native conversion
+is qualified and ready to commit/push: 20 live routines, two orphan bodies removed,
+11 C interfaces retired and 11 exports retained. Go callers invoke native helpers.
+See [PLAYER_STATE.md](docs/porting/PLAYER_STATE.md).
 
-Final focused C captures repeat exactly in separate processes: 16 roots /18,542
-tests including subtests, 16 captures /18,779 records. All expectations are now
-frozen; static mapped-memory checks pass. The signed flag-capacity boundary is
-included. All earlier focused sessions are joined.
+Focused native checks pass 16 roots /18,542 tests. All16 captures /18,779records
+match repeated C. Default/server/highres each pass316 roots /38,763tests without
+skips. All185 captures /50,798records match C and each other. Four gates share
+2,386 source files. Static mapped-memory, fresh builds/ABI, exact known suite and
+three headless scenarios pass. Every tool session is joined; source is editable.
+Evidence: docs/porting/player-state-native-qualification.json and
+build/port-player-state/native-{default,server,highres,production}.
+The install-native.py and all cleanup scripts are consumed; never replay them.
 
-Default/server/highres each pass 316 roots /38,763 tests without skips. All185
-captures /50,798 records match across targets and the focused C captures; 2,382
-source files are identical. The three target sessions are joined.
-Fresh production passes three builds/ABI, exact known suite results and all three
-headless scenarios. Four gates share identical source. All sessions are joined;
-source is editable. The C baseline is ready to commit/push, then install and qualify
-the native conversion. Draft Go files and the NOT YET RUN install-native.py are
-under build/port-player-state; inspect before use. Actual C is 33,268 lines /69 files.
+Next: commit/push this qualified snapshot, then audit the connected session/map-entry
+candidate. Read-only GAME3_2.c function/reference inventories and next-candidate
+notes are under build/port-player-state. The map-type C helper appears orphaned
+(the same-named root Go helper is already native). Two variadic text routines are
+existing C compatibility glue. Audit wrappers/registrations before final selection.
+No next-batch source is installed and no user decision is pending.
 
-Completed console-native run asset deduplication recovered 1,660,044,319 bytes;
-restoration manifests remain in each run. The new script under build/port-player-state
-is consumed; do not repeat its audit/apply. Original assets/archive are unchanged.
+Disk: verified scenario-asset deduplication recovered1,660,044,319bytes each from
+console-native and player-state-C runs. Per-run restoration manifests remain.
+Twelve inactive compiler temporary directories older than24hours were removed
+(579,880,242bytes). Lossless compression of775 completed old logs/captures recovered
+2,877,720,135bytes; restoration manifest is under build/port-player-state.
+Original assets and the archive remain unchanged and outside Git.
 
 ## Qualified parent — native console commands
 

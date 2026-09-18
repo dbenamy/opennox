@@ -2,81 +2,67 @@
 
 package legacy
 
-/*
-#include "GAME1.h"
-*/
-import "C"
-import (
-	"github.com/opennox/opennox/v1/server"
-	"unsafe"
-)
+import "github.com/opennox/opennox/v1/server"
 
 func PortTestPlayerStateQuery(op string, pl *server.Player, tm *server.Team) int {
 	switch op {
 	case "competitors":
-		return int(C.sub_40A770())
+		return playerStateCompetitors()
 	case "team-players":
-		return int(C.nox_xxx_countNonEliminatedPlayersInTeam_40A830((*C.nox_team_t)(unsafe.Pointer(tm))))
+		return playerStateTeamPlayers(tm)
 	case "multiple":
-		return int(C.nox_xxx_gamePlayIsAnyPlayers_40A8A0())
+		return playerStateMultiple()
 	case "admission":
-		return int(C.sub_40AA70((*C.nox_playerInfo)(unsafe.Pointer(pl))))
+		return playerStateAdmission(pl)
 	case "elapsed":
-		return int(C.sub_40AA00())
+		return playerStateElapsed()
 	case "threshold":
-		return int(C.sub_40AA40())
+		return int(playerStateThreshold())
 	default:
 		panic(op)
 	}
 }
-
-func PortTestPlayerStateReset() { C.sub_40A970() }
-
+func PortTestPlayerStateReset() { playerStateReset() }
 func PortTestPlayerStateStatus(op string, pl *server.Player, flags uint32) {
-	p := (*C.nox_playerInfo)(unsafe.Pointer(pl))
 	switch op {
 	case "add":
-		C.nox_xxx_netNeedTimestampStatus_4174F0(p, C.int(flags))
+		playerStateAddStatus(pl, flags)
 	case "remove":
-		C.nox_xxx_playerUnsetStatus_417530(p, C.int(flags))
+		playerStateRemoveStatus(pl, flags)
 	case "report":
-		C.nox_xxx_netReportPlayerStatus_417630(p)
+		playerStateReport(pl)
 	case "all":
-		C.nox_xxx_sendAllClientStatus_4175C0(C.int(uintptr(unsafe.Pointer(pl))))
+		playerStateAllStatus(pl)
 	case "lessons":
-		C.nox_xxx_playerForceSendLessons_416E50(C.int(flags))
+		playerStateLessons(int32(flags))
 	default:
 		panic(op)
 	}
 }
-func PortTestPlayerStateName(name *uint16) *server.Player {
-	return (*server.Player)(unsafe.Pointer(C.nox_xxx_playerByName_4170D0((*C.wchar2_t)(unsafe.Pointer(name)))))
-}
+func PortTestPlayerStateName(name *uint16) *server.Player { return playerStateByName(name) }
 func PortTestPlayerStateMinimap(op string, obj *server.Object, index int, flags uint32) int {
 	switch op {
 	case "tracks":
-		return int(C.nox_xxx_playerMapTracksObj_4173D0(C.int(index), (*C.nox_object_t)(unsafe.Pointer(obj))))
+		return playerStateTracks(index, obj)
 	case "mark":
-		C.nox_xxx_netMarkMinimapForAll_4174B0(C.int(uintptr(unsafe.Pointer(obj))), C.int(flags))
+		playerStateMark(obj, flags)
 	case "unmark":
-		C.nox_xxx_netUnmarkMinimapSpec_417470(C.int(uintptr(unsafe.Pointer(obj))), C.int(flags))
+		playerStateUnmark(obj, flags)
 	default:
 		panic(op)
 	}
 	return 0
 }
-
 func PortTestPlayerStateEquipment(op string, pl *server.Player, command byte, code, mask uint32, mods *[4]byte) {
 	switch op {
 	case "respawn":
-		C.nox_xxx_cliPlayerRespawn_417680(C.int(uintptr(unsafe.Pointer(pl))), C.char(command))
+		playerStateRespawn(pl, command)
 	case "equip":
-		C.nox_xxx_clientEquipWeaponArmor_417AA0(C.char(command), C.int(code), C.int(mask), C.int(uintptr(unsafe.Pointer(mods))))
+		playerStateEquip(command, code, mask, mods)
 	case "unequip":
-		C.sub_417B80(C.char(command), C.int(code), C.int(mask))
+		playerStateUnequip(command, code, mask)
 	default:
 		panic(op)
 	}
 }
-
-func PortTestPlayerStateReentry(value int32) int32 { return int32(C.sub_40AA60(C.int(value))) }
+func PortTestPlayerStateReentry(value int32) int32 { return playerStateReentry(value) }

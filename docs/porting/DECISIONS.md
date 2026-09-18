@@ -1870,3 +1870,15 @@ non-team player-record counting, including active players without units, and the
 distinct status0x20 rule in the multiple-participants query. This is a reversible
 correctness fix for review; evidence and qualification state are in
 [PLAYER_STATE.md](PLAYER_STATE.md).
+
+
+### Player-state native compatibility
+
+Keep the two different eligibility rules (active competitors versus multiple
+participants), signed admission limits, wrapping frame subtraction and the exact
+status-report mask. Preserve raw UTF-16 name units with C-locale ASCII folding,
+fixed equipment-slot capacity and each slot's untouched sixth word. Reuse actual
+modifier, minimap and reliable-message owners. Retain only the 11 C entrypoints
+needed by the decoder and server lifecycle; two unreferenced scalar helpers retire.
+All targets, frozen captures and fresh production qualify. See
+[PLAYER_STATE.md](PLAYER_STATE.md).

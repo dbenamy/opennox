@@ -131,7 +131,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 			inventoryRemove(t, flag)
 			GetServer().CreateObjectAt(flag, nil, *(*types.Pointf)(data))
 			Nox_xxx_unitRaise_4E46F0(flag, 0)
-			C.nox_xxx_netMarkMinimapForAll_4174B0(inventoryInt(flag), 1)
+			playerStateMark(flag, 1)
 			*equipmentWord(data, 8) = 0
 			matchRosterFlagState(byte(flagTeam), 0, byte(flagColor), 0)
 			inventoryMessage(5, t, uint32(flagColor))
@@ -169,7 +169,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 	*equipmentWord(unsafe.Pointer((*server.PlayerUpdateData)(playerUD).Player), 4) |= 1
 	C.sub_4D82F0(255, (*C.uint32_t)(u.CObj()))
 	inventoryMessage(6, t, uint32(flagColor))
-	C.nox_xxx_netUnmarkMinimapSpec_417470(inventoryInt(u), 1)
+	playerStateUnmark(u, 1)
 	*equipmentWord(ud, 8) = 0
 	matchRosterFlagState(byte(team), 1, byte(color), uint16(t.NetCode))
 	objectivePickupBuffs(t)

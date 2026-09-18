@@ -93,7 +93,7 @@ func inventoryCrownPickup(u, it *server.Object, arg int) int {
 		spellLifeApplyBuff(u, 30, 0, 5)
 		inventorySound(313, u, 0, 0)
 		inventoryMessage(10, u, uint32(u.TeamVal.ID))
-		C.nox_xxx_netUnmarkMinimapSpec_417470(inventoryInt(it), 1)
+		playerStateUnmark(it, 1)
 	}
 	*(*uint32)(unsafe.Add(data, 4)) = 0
 	return rv

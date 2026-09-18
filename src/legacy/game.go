@@ -521,7 +521,7 @@ func Sub_459870() unsafe.Pointer {
 	return serverOptionsListHead()
 }
 func Nox_xxx_gamePlayIsAnyPlayers_40A8A0() int {
-	return int(C.nox_xxx_gamePlayIsAnyPlayers_40A8A0())
+	return playerStateMultiple()
 }
 func Sub_40A250() {
 	serverConfigTimerInit()
@@ -533,7 +533,7 @@ func Nox_xxx_mapLoadRequired_4DCC80() int {
 	return int(C.nox_xxx_mapLoadRequired_4DCC80())
 }
 func Sub_40A970() {
-	C.sub_40A970()
+	playerStateReset()
 }
 func Nox_gui_itemAmount_free_4C03E0() {
 	uiAmountFree()
