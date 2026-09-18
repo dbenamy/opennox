@@ -519,7 +519,7 @@ func (s *serverObjects) ObjectsClearPending() {
 }
 
 func (s *serverObjects) PendingByScriptID(sid int) *Object {
-	for it := s.Pending; it != nil; it.Next() {
+	for it := s.Pending; it != nil; it = it.Next() {
 		if it.ScriptIDVal == sid {
 			return it
 		}

@@ -1,0 +1,78 @@
+{
+  "status": "repeated repaired-C baseline",
+  "captures": [
+    {
+      "label": "prefab-scripts-bounds",
+      "records": 608,
+      "sha256": "79fd4a29af468edf4876dd3ab1ef00f1fdb8548e20fac8e6cf0125671e4a5249",
+      "source": "src/prefab_scripts_bounds_porttest_test.go"
+    },
+    {
+      "label": "prefab-scripts-callbacks",
+      "records": 1512,
+      "sha256": "8b4d6b80aaac00b0fe268422e78fb195387e265d61cec1110e83e9355d5f8b85",
+      "source": "src/prefab_scripts_callbacks_porttest_test.go"
+    },
+    {
+      "label": "prefab-scripts-generation",
+      "records": 3,
+      "sha256": "ce1620e8a963bba41f4e1913d30ae4123fd0214f2cb6d0126d9cc4d0d4e46ee6",
+      "source": "src/prefab_scripts_generation_porttest_test.go"
+    },
+    {
+      "label": "prefab-scripts-instructions",
+      "records": 1815,
+      "sha256": "4fea75fdbe7823de766a93eb683ab1372f3af885ef9b7153012511bf693db4db",
+      "source": "src/prefab_scripts_binary_porttest_test.go"
+    },
+    {
+      "label": "prefab-scripts-merge",
+      "records": 9,
+      "sha256": "5a16ebfaf33c3731ef58412af035f8d79559c4de46cb6fe5b3f70afddfd22f89",
+      "source": "src/prefab_scripts_binary_porttest_test.go"
+    },
+    {
+      "label": "prefab-scripts-object-names",
+      "records": 30,
+      "sha256": "1039c556f4a46d91f3d2be32adf3b571b904e2a8676e35b83d87ffbeed7117ad",
+      "source": "src/prefab_scripts_objects_porttest_test.go"
+    },
+    {
+      "label": "prefab-scripts-pending-groups",
+      "records": 1,
+      "sha256": "2ccbfeeed37252eff482d6cb951a0645bbd7a861f001ccb46431d9a637481aa5",
+      "source": "src/prefab_scripts_groups_porttest_test.go"
+    },
+    {
+      "label": "prefab-scripts-pending",
+      "records": 16,
+      "sha256": "9e5398ec1b43f8f876605a9d257ba3885e3c684cd242ea348aea0520bd1543e8",
+      "source": "src/prefab_scripts_pending_porttest_test.go"
+    },
+    {
+      "label": "prefab-scripts-rewrite",
+      "records": 24,
+      "sha256": "9001bcea8d67d8ebd5311cc78d92443f99dbb29349a15b8776be9cdd1083c68b",
+      "source": "src/prefab_scripts_rewrite_porttest_test.go"
+    },
+    {
+      "label": "prefab-scripts-scalars",
+      "records": 144,
+      "sha256": "dbd866060474f624e7fde5101562bb32ac302c7c73bbbfe3d2297d1d23256796",
+      "source": "src/prefab_scripts_files_porttest_test.go"
+    },
+    {
+      "label": "prefab-scripts-selection",
+      "records": 16,
+      "sha256": "23d7b05b93611ab27013ec3ecdf9d215be547ec563e0893429ec8095ff5f28dc",
+      "source": "src/prefab_scripts_bounds_porttest_test.go"
+    },
+    {
+      "label": "prefab-scripts-vm-suffix",
+      "records": 4,
+      "sha256": "3cd5b4e1a22206e268fa54e58e1d861c6fd8e29f64187ee715582bb5e448f70f",
+      "source": "src/prefab_scripts_vm_suffix_porttest_test.go"
+    }
+  ],
+  "records": 4182
+}

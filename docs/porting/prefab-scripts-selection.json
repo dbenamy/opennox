@@ -1,0 +1,147 @@
+{
+  "status": "C baseline in progress; original selection before repairs",
+  "functions": [
+    {
+      "file": "src/legacy/server__script__file.c",
+      "name": "nox_script_readInt_542B70",
+      "line": 16,
+      "body_lines": 5,
+      "sha256": "beac08eadaba1ace3a856b6e0eda74c54a434ac96883d452ba5576c2543304d0"
+    },
+    {
+      "file": "src/legacy/server__script__file.c",
+      "name": "nox_script_readFloat_542B90",
+      "line": 23,
+      "body_lines": 5,
+      "sha256": "147d56fa85af07f4b44b468e69a70af2be979fbe6529f1876deb3a1ddda59f5b"
+    },
+    {
+      "file": "src/legacy/server__script__file.c",
+      "name": "nox_script_writeFloat_542BD0",
+      "line": 30,
+      "body_lines": 1,
+      "sha256": "434cdfdbfe690ed3b6e6b3a5420b1f1ec9cb6861f394a6aa64753a5f0edde928"
+    },
+    {
+      "file": "src/legacy/server__script__file.c",
+      "name": "nox_script_writeInt_542BB0",
+      "line": 33,
+      "body_lines": 1,
+      "sha256": "62eef154f631d2e687c9b8801f05dc5df75df4cddd1f4070eb8b9d61842389a1"
+    },
+    {
+      "file": "src/legacy/server__script__file.c",
+      "name": "nox_script_readWriteYyy_542380",
+      "line": 36,
+      "body_lines": 308,
+      "sha256": "434659faf7b9918b1753308a8f05dc06ec4c2b29bdbf790de55e62384ea20d42"
+    },
+    {
+      "file": "src/legacy/server__script__file.c",
+      "name": "nox_script_readWriteJjj_5418C0",
+      "line": 346,
+      "body_lines": 38,
+      "sha256": "6c5979b24ec903c2f762ed610166be5b9fc65374284af3d88aa9e8745fa6bcda"
+    },
+    {
+      "file": "src/legacy/server__script__file.c",
+      "name": "nox_script_readWriteVvv_541E40",
+      "line": 386,
+      "body_lines": 105,
+      "sha256": "1cbd70c318cc006f221a90cf8a0b3e13279f2390c2b30b8ddace236df2ea0f3e"
+    },
+    {
+      "file": "src/legacy/server__script__file.c",
+      "name": "nox_script_readWriteIii_541D80",
+      "line": 493,
+      "body_lines": 26,
+      "sha256": "6a80bd3028ac2062715b06f97282906216e2a8404154c26a222e6a79a4ab7fef"
+    },
+    {
+      "file": "src/legacy/server__script__file.c",
+      "name": "nox_script_readWriteXxx_541A50",
+      "line": 521,
+      "body_lines": 71,
+      "sha256": "6aadb834909a4a067efa99bd3aad6f9310aa4ad9ab9f7eeda2bf468bef1ff599"
+    },
+    {
+      "file": "src/legacy/server__script__file.c",
+      "name": "nox_script_readWriteWww_5417C0",
+      "line": 594,
+      "body_lines": 21,
+      "sha256": "2916c203ce5a34c2016d290afe7dae6bbe69dd645d23b26cca28f2e148b1b8a0"
+    },
+    {
+      "file": "src/legacy/server__script__file.c",
+      "name": "sub_543110",
+      "line": 617,
+      "body_lines": 103,
+      "sha256": "482084efec3681e29bb99ee3797aa826627815091f37bd1a7834466ecf68973a"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "sub_542BF0",
+      "line": 729,
+      "body_lines": 184,
+      "sha256": "18bee75caae7ed55303d2d9ccf783b4925a2ab2610b49212263432b47c65f380"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "sub_5435C0",
+      "line": 916,
+      "body_lines": 6,
+      "sha256": "5ff2d8bdd136e6a64c8764a606fbbff7083f5357b7b28bf471a212490065f87d"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "name": "sub_543620",
+      "line": 924,
+      "body_lines": 6,
+      "sha256": "f7ec41a4b2e47a910cbd01e86062e5e6dfed5f395b0776f70c596517746f0974"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "name": "sub_509120",
+      "line": 856,
+      "body_lines": 191,
+      "sha256": "c79af0b2cb31b464e20d8913d45cad528739557eb40ec0f1f9a07368dc39bec4"
+    },
+    {
+      "file": "src/legacy/GAME3_2.c",
+      "name": "nox_xxx_interesting_xfer_4D0010",
+      "line": 165,
+      "body_lines": 105,
+      "sha256": "9495125707bdba3eb67bcc61636767312f6e3fbf5075aaf35dbfaed91cd1ed3d"
+    },
+    {
+      "file": "src/legacy/GAME3_2.c",
+      "name": "sub_4D39F0",
+      "line": 438,
+      "body_lines": 99,
+      "sha256": "4c6e5e21dc5425019f996177b99b3c36ddb0ffc668c55ff8840e2f4920f08c27"
+    },
+    {
+      "file": "src/legacy/GAME3_2.c",
+      "name": "nox_xxx_tileInitdataClear_4D3C50",
+      "line": 540,
+      "body_lines": 1,
+      "sha256": "293ea8280eb24719f16d7d9ca9bbb0dc8a7875aa687a8995b71c2a04d2848253"
+    },
+    {
+      "file": "src/legacy/GAME3_2.c",
+      "name": "sub_4D3C70",
+      "line": 543,
+      "body_lines": 1,
+      "sha256": "10a5c18d2774f8bf451c0d99274e3cd71dd111de321d9fa40b13b7f02c84748d"
+    },
+    {
+      "file": "src/legacy/GAME3_2.c",
+      "name": "sub_4D3C80",
+      "line": 546,
+      "body_lines": 86,
+      "sha256": "6fde6c82427c2fae7e70b357aee82665cb00d04be0bb72ae2d4dcc6485a95259"
+    }
+  ],
+  "count": 20,
+  "body_lines": 1363
+}

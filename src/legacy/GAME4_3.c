@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdio.h>
 
 #include "GAME1.h"
 #include "GAME1_1.h"
@@ -914,16 +915,18 @@ char* sub_542BF0(int a1, int a2, int a3) {
 
 //----- (005435C0) --------------------------------------------------------
 char* sub_5435C0(int a1, int a2, int a3, int a4) {
-	nox_sprintf((char*)getMemAt(0x5D4594, 2489164), "%s%%%d%%%d%%%d", a1, a2, a3, a4);
-	strlen((const char*)getMemAt(0x5D4594, 2489164));
-	strcpy((char*)getMemAt(0x5D4594, 2489164), "ERROR_NAME_TOO_LONG!");
-	return (char*)getMemAt(0x5D4594, 2489164);
+	char* name = (char*)getMemAt(0x5D4594, 2489164);
+	if (snprintf(name, 256, "%s%%%d%%%d%%%d", (const char*)a1, a2, a3, a4) >= 256) {
+		strcpy(name, "ERROR_NAME_TOO_LONG!");
+	}
+	return name;
 }
 
 //----- (00543620) --------------------------------------------------------
 char* sub_543620(int a1, int a2) {
-	nox_sprintf((char*)getMemAt(0x5D4594, 2489164), "%s%%%d", a1, a2);
-	strlen((const char*)getMemAt(0x5D4594, 2489164));
-	strcpy((char*)getMemAt(0x5D4594, 2489164), "ERROR_NAME_TOO_LONG!");
-	return (char*)getMemAt(0x5D4594, 2489164);
+	char* name = (char*)getMemAt(0x5D4594, 2489164);
+	if (snprintf(name, 256, "%s%%%d", (const char*)a1, a2) >= 256) {
+		strcpy(name, "ERROR_NAME_TOO_LONG!");
+	}
+	return name;
 }

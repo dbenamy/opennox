@@ -8,7 +8,32 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — prefab/map-runtime native conversion qualified
+## Current — prefab script/generation C baseline qualified
+
+Prefab runtime **d5f460cc is pushed**. The next repaired C baseline is qualified:
+20 selected bodies / 1,363 original lines, with 18 live algorithms to translate
+and two newly confirmed orphan helpers to delete. See
+[PREFAB_SCRIPTS.md](docs/porting/PREFAB_SCRIPTS.md) for repairs and scope audit.
+
+Sixteen focused roots passed twice; twelve frozen captures contain 4,182 records.
+All three targets pass 155 roots / 2,056 including subtests, with 91 identical
+captures / 34,959 records and unchanged source. Fresh production passes all three
+builds/ABI checks, exact known full-suite failures, gameplay, save/load and flat
+regeneration. All sessions are joined; no source freeze is active.
+
+Working C is **36,924 lines / 73 files**, zero reference C (+7 prerequisite repair
+lines). No algorithm has been ported yet. Native drafts under
+build/port-prefab-scripts/native-{binary,objects,files}.go are not installed;
+read native-review.md before integration. Next: commit/push this qualified C
+baseline, integrate/review the drafts, retire interfaces and five globals, then
+focused/three-target/fresh production qualification and conversion commit/push.
+No user question is pending. The capture freezer is consumed.
+
+Disk cleanup leaves about **13 GiB free**. Older disposable Go cache entries were
+removed after all gates joined; artifacts and original assets/archive remain.
+Earlier verified scenario-copy deletion scripts and cache cleanup are consumed.
+
+## Qualified parent — prefab/map-runtime native conversion (d5f460cc, pushed)
 
 Forty native algorithms replace the qualified C baseline **86654f0f**. Thirty C
 interfaces, fourteen globals and two orphan bodies are retired; ten C exports and
@@ -24,7 +49,7 @@ gameplay, save/load and flat-map regeneration pass. All gates share unchanged
 See [native qualification](docs/porting/prefab-runtime-native-qualification.json).
 C is **36,917 / 73 files / zero reference**, **−1,583**.
 
-Next: commit/push this conversion, then qualify the connected prefab-script and
+Next: qualify the connected prefab-script and
 map-generation candidate: **20 C functions / 1,363 body lines**, covering all
 server__script__file.c helpers, object callback/name remapping, pending-object
 references, generation initialization and bounds ordering. Read-only selection,

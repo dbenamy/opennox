@@ -1793,3 +1793,14 @@ authorized reversible correctness change, not exact preservation of the C defect
 
 Prefab ownership corrections now pass all three targets and fresh production;
 77 existing captures remain byte-identical. See the batch native qualification.
+
+
+### Prefab script prerequisites and reachability
+
+Independent contracts reproduced operand narrowing, unconditional name replacement,
+a reserved-name scalar buffer, merge destination/handle lifecycle failures, an
+unadvanced pending-object loop, and swapped VM coordinate suffix parsing. Correct
+these reversibly before freezing the baseline; retain the C clock bridge's 32-bit
+truncation. All three targets and fresh production/integration qualify the repaired
+baseline. Remove two selection helpers with no production callers during conversion.
+Evidence and review details: [PREFAB_SCRIPTS.md](PREFAB_SCRIPTS.md).

@@ -21,8 +21,8 @@ The connected cache ownership corrections are documented for review in
 [PREFAB_RUNTIME.md](docs/porting/PREFAB_RUNTIME.md).
 
 Current production C is **36,917 physical lines in 73 files**, with zero reference
-C (−1,583 this conversion). Next is the connected prefab-script/map-generation
-batch; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+C (−1,583 this conversion). The connected prefab-script/map-generation
+C baseline is now qualified (36,924 lines after prerequisite repairs); [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 

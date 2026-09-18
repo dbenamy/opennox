@@ -1,0 +1,153 @@
+{
+  "status": "qualified repaired C baseline",
+  "parent": "d5f460cc",
+  "targets": [
+    {
+      "target": "c-default",
+      "roots": 155,
+      "tests_including_subtests": 2056,
+      "package_seconds": [
+        23.336
+      ]
+    },
+    {
+      "target": "c-server",
+      "roots": 155,
+      "tests_including_subtests": 2056,
+      "package_seconds": [
+        23.627
+      ]
+    },
+    {
+      "target": "c-highres",
+      "roots": 155,
+      "tests_including_subtests": 2056,
+      "package_seconds": [
+        24.492
+      ]
+    }
+  ],
+  "capture_count": 91,
+  "capture_records": 34959,
+  "identical_target_captures": true,
+  "identical_target_sources": true,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 73.25639416300692,
+        "sha256": "1a21aaf917eb54be0dff48d311ab0b6529cacb2c7106d269983d16bb73340c80",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.695946195162833,
+        "sha256": "90da032e1e29dce50d2a9c80d443ddc61da9a8d40e75a34992581ac7e517a45e",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 76.3327322609257,
+        "sha256": "d832b2bcf6b752357a9257689de3beb0ef3acf5c3e2e388fd17fe13de97eceff",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "prefab-scripts-c": {
+        "exit": 0,
+        "wall_seconds": 58.71999513194896,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 58.09680657996796,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "1a21aaf917eb54be0dff48d311ab0b6529cacb2c7106d269983d16bb73340c80",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-prefab-scripts/c-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/prefab-scripts-c/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Repaired C baseline for prefab script merging, name suffixes, pending references and generation initialization.",
+          "removed_maps": 0
+        }
+      },
+      "prefab-scripts-c-save": {
+        "exit": 0,
+        "wall_seconds": 47.44654759392142,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 46.888512056088075,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "1a21aaf917eb54be0dff48d311ab0b6529cacb2c7106d269983d16bb73340c80",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-prefab-scripts/c-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/prefab-scripts-c-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Repaired C baseline for prefab script merging, name suffixes, pending references and generation initialization.",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "7284bc47bd7e1adbedb0b87cfebd733d2e1d85cfcda549b1fa10085d04aedbf2"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 54.99622401804663,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "source_unchanged": true,
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 73,
+      "lines": 36924
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "evidence": "build/port-prefab-scripts/c-{default,server,highres,production}"
+}

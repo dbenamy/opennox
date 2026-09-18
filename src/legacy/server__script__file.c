@@ -38,10 +38,10 @@ int nox_script_readWriteYyy_542380(FILE* f1, FILE* f2, int a3) {
 	int v6;     // ebx
 	int v7;     // edi
 	int v8;     // edi
-	char v9;    // bl
-	char v10;   // di
-	char v11;   // di
-	char v12;   // al
+	int v9;    // bl
+	int v10;   // di
+	int v11;   // di
+	int v12;   // al
 	int v13;    // edi
 	int v15;    // edi
 	float v16;  // [esp+14h] [ebp+4h]
@@ -397,15 +397,17 @@ int nox_script_readWriteVvv_541E40(FILE* a1, FILE* a2, FILE* a3) {
 	int v14;   // [esp+38h] [ebp-100Ch]
 	int v15;   // [esp+3Ch] [ebp-1008h]
 	int v16;   // [esp+40h] [ebp-1004h]
-	int v17;   // [esp+44h] [ebp-1000h]
+	char v17[4096];   // [esp+44h] [ebp-1000h]
 
 	v4 = 4;
 	nox_fs_fread(a1, &v17, 4u);
 	nox_fs_fread(a2, &v17, 4u);
 	nox_fs_fwrite(a3, &v17, 4);
 	nox_fs_fread(a1, &v4, 4u);
+	if (v4 >= sizeof(v17)) return 0;
 	nox_fs_fread(a1, &v17, v4);
 	nox_fs_fread(a2, &v4, 4u);
+	if (v4 >= sizeof(v17)) return 0;
 	nox_fs_fread(a2, &v17, v4);
 	nox_fs_fwrite(a3, &v4, 4);
 	nox_fs_fwrite(a3, &v17, v4);
@@ -441,8 +443,10 @@ int nox_script_readWriteVvv_541E40(FILE* a1, FILE* a2, FILE* a3) {
 	nox_fs_fread(a2, &v17, v4);
 	nox_fs_fwrite(a3, &v17, v4);
 	nox_fs_fread(a1, &v4, 4u);
+	if (v4 >= sizeof(v17)) return 0;
 	nox_fs_fread(a1, &v17, v4);
 	nox_fs_fread(a2, &v4, 4u);
+	if (v4 >= sizeof(v17)) return 0;
 	nox_fs_fread(a2, &v17, v4);
 	nox_fs_fwrite(a3, &v4, 4);
 	nox_fs_fwrite(a3, &v17, v4);
