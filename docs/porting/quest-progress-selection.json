@@ -351,6 +351,7 @@
     "TestPlayerControlsWeaponMappings",
     "TestQuestProgressBossMarkers",
     "TestQuestProgressBosses",
+    "TestQuestProgressBoundedInput",
     "TestQuestProgressBuiltins",
     "TestQuestProgressEmptyMapping",
     "TestQuestProgressGeneratorMapping",

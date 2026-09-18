@@ -137,7 +137,7 @@ func PortTestQuestRuntime(op string, u *server.Object, args [4]uint32) uint64 {
 	case "sub_4E40B0":
 		return math.Float64bits(float64(questRuntimeFloat(202032)))
 	case "sub_4E40F0":
-		return math.Float64bits(float64(C.sub_4E40F0()))
+		return math.Float64bits(questRuntimeFloat(202036))
 	default:
 		panic("unknown quest runtime operation: " + op)
 	}

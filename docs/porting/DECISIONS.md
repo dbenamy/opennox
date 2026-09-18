@@ -1721,3 +1721,26 @@ neighbors; preceding accepted records and the existing load return convention ar
 preserved. These reversible ownership/input corrections follow standing user
 authorization. Independent boundary/allocation-balance contracts supplement the
 unchanged original-C captures. See [MONSTER_CONTROL.md](MONSTER_CONTROL.md).
+
+
+## Quest progress ownership and input limits — review after conversion
+
+Keep the private quest-variable list in Go, preserving its qualified record layout,
+serialization order, old-kind retention on updates, and first-occurrence suffix
+matching. Three exports remain for actual C reset/save/load callers; 24 obsolete
+interfaces and the list-head C global are removed. The namespace and mapped table
+state remain compatible with their existing owners. Registered VM builtins invoke
+Go directly; separate modern-script API TODOs are outside this behavior-preserving
+batch.
+
+Reject overlong names/namespaces instead of overwriting adjacent fields, and reject
+truncated save records or excessive counts at EOF. A later malformed record keeps
+previous accepted entries; load still clears the old list before rejecting a
+version. Independent tests cover every truncation position, size boundaries,
+embedded NUL and large counts. These small reversible corrections follow standing
+authorization; no defined-input C capture changed.
+
+Boss current HP truncates the wide product to int64 and then uint16; maximum HP
+uses a separately rounded float32 product and the original converter. Compiled C
+confirms both paths. Preserve byte-wrapped generator caps, signed minion-stage
+admission and exact RNG order. See [QUEST_PROGRESS.md](QUEST_PROGRESS.md).

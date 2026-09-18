@@ -15,16 +15,16 @@
 ## Current status
 
 The revised process is adopted: continue successive qualified batches without a
-scheduled pause. Monster controls, definitions, script selection and pending
-ownership are now in Go. Forty live functions were replaced; all three target
-sweeps and fresh production/gameplay qualification pass. See
-[MONSTER_CONTROL.md](docs/porting/MONSTER_CONTROL.md).
+scheduled pause. Quest variables, persistence, stage preparation and boss spawning
+are now in Go. Twenty-four live functions were replaced; all three target sweeps
+and fresh production/gameplay qualification pass. See
+[QUEST_PROGRESS.md](docs/porting/QUEST_PROGRESS.md).
 
-Current production C is **39,193 physical lines in 74 files**, with zero reference C.
-This conversion removed **1,025 lines**, 62 obsolete interfaces and four private C
-globals. Bounded definition parsing and rejected-record cleanup are documented for
-review. All original captures match; the asset suite retains its exact three known
-failing packages. [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
+Current production C is **38,498 physical lines in 74 files**, with zero reference C.
+This conversion removed **695 lines**, 24 obsolete interfaces and one private C
+global. Bounded names and partial-save handling are documented for review. All
+original captures match; the asset suite retains its exact three known failing
+packages. [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target
 

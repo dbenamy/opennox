@@ -2,28 +2,39 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 39k lines** — **39,193 physical lines in 74 production
-`.c` files**, zero reference C. Latest conversion: **−1,025 lines**.
+**Rough C remaining: about 38.5k lines** — **38,498 physical lines in 74 production
+`.c` files**, zero reference C. Latest conversion: **−695 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — quest-progress C baseline qualified
+## Current — quest-progress native conversion qualified
 
-Parent **4a8d73ed is committed and pushed**. The connected scope covers
-**24 live C functions / 715 body lines**, plus the proven orphan sub_51A950.
-Eleven focused captures / **3,156 records** repeat identically and pass frozen
-expectations. All three affected-target sweeps pass without skips, with matching
-captures and unchanged source across all four gates. Static mapped-state checks
-pass. Production reuse verifies 2,272 unchanged original files, eight porttest-only
-additions and all three parent binary hashes. See
-[QUEST_PROGRESS.md](docs/porting/QUEST_PROGRESS.md) and qualification reports.
+C baseline **1c915175 is committed and pushed**. Twenty-four live functions are
+in Go and the orphan getter is removed. Final focused run passes twelve roots,
+including all **11 original captures / 3,156 records** unchanged and the new
+bounded-name/partial-save contract. All three broader targets pass without skips,
+with **227 identical captures / 150,824 records** each. Fresh production passes
+all builds/ABI/interfaces, exact known asset failures, headless gameplay, save/load
+and flat-map regeneration. All four gates share unchanged source; sessions are
+joined. See [QUEST_PROGRESS.md](docs/porting/QUEST_PROGRESS.md) and its native
+qualification report for counts and timings.
 
-No production conversion is installed. Next: commit/push the baseline, finish and
-review ignored Go drafts, install, compare frozen captures, add bounded-input
-contracts and qualify all targets plus fresh production. freeze-c.py and finish-c.py
-are consumed; do not replay. Original assets/archive remain intact; about 15 GiB
-is available. No user decision is required.
+This retires **24 interfaces** and one C global, retaining only three actual C
+entrypoints. The list is Go owned. Reversible name/file limits and the separately
+rounded boss-health conversions are documented for review. No goldens changed.
+Production C: **38,498 / 74 files / zero reference**.
+
+Next: qualify the connected prefab/map-runtime candidate under
+build/port-prefab-runtime: **40 live functions / 1,369 body lines** plus the orphan
+waypoint setter. Reuse actual population/file/group/waypoint owners; finish the
+manual callback, numeric table and source-reference audit before baseline fixtures.
+No next-batch source is installed. The orphan nox_strnicmp lost its last caller
+in quest reset and can be audited alongside the next cleanup without rerunning
+this completed qualification solely for eleven source lines.
+
+All quest freeze/install/retirement/finalization scripts are consumed; never replay.
+Original assets/archive remain intact. No pending user decision.
 
 ## Qualified parent — monster-control native conversion (4a8d73ed, pushed)
 

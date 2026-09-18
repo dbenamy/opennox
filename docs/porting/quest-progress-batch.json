@@ -3111,7 +3111,7 @@
     ]
   },
   "production": {
-    "description": "Quest variables, persistence, stage preparation and boss spawning: qualification manifest; update retired interfaces after conversion.",
+    "description": "Quest progress in Go: variables, persistence, stage setup and bosses; private list owned in Go, three actual C entrypoints retained and 24 obsolete interfaces plus one C global retired.",
     "assets": "build/assets/extracted/drive_c/Nox",
     "known_suite": "build/port-rule-command/full-suite.jsonl",
     "scenario_runner": "tools/porting/run_scenario.py",
@@ -3268,7 +3268,6 @@
       "sub_4E3CA0",
       "sub_4E3D50",
       "sub_4E3DD0",
-      "sub_4E40F0",
       "sub_4E4F30",
       "sub_4E55F0",
       "sub_4E8310",
@@ -3283,7 +3282,10 @@
       "sub_5095E0",
       "sub_515C80",
       "sub_516FC0",
-      "sub_51B860"
+      "sub_51B860",
+      "sub_5007E0",
+      "sub_500A60",
+      "sub_500B70"
     ],
     "retired": [
       "dword_587000_129656",
@@ -3787,7 +3789,32 @@
       "sub_57CDB0",
       "sub_57F1D0",
       "sub_57F2A0",
-      "table_313272"
+      "table_313272",
+      "nox_script_GetQuestFloat_514C60",
+      "nox_script_GetQuestInt_514C40",
+      "nox_script_ResetQuestStatus_514C90",
+      "nox_script_SetQuestFloat_514C10",
+      "nox_script_SetQuestInt_514BE0",
+      "nox_xxx_getQuestStage_51A930",
+      "nox_xxx_journalQuestSetBool_5006B0",
+      "nox_xxx_journalQuestSet_500540",
+      "nox_xxx_scriptGetJournal_5005E0",
+      "nox_xxx_spawnHecubahQuest_51A5A0",
+      "nox_xxx_spawnNecroQuest_51A7A0",
+      "sub_500510",
+      "sub_500750",
+      "sub_500770",
+      "sub_500790",
+      "sub_5009B0",
+      "sub_51A1F0",
+      "sub_51A500",
+      "sub_51A550",
+      "sub_51A920",
+      "sub_51A940",
+      "sub_51A950",
+      "dword_5d4594_1570272",
+      "sub_4E40F0",
+      "nox_xxx_objectTypeByIndHealthData"
     ],
     "scenarios": [
       {

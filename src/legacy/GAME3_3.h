@@ -33,7 +33,6 @@ void nox_game_setQuestStage_4E3CD0(int a1);
 int nox_xxx_player_4E3CE0();
 int sub_4E3D50();
 void sub_4E3DD0();
-double sub_4E40F0();
 void nox_xxx_unitNeedSync_4E44F0(nox_object_t* a1);
 int* sub_4E4500(nox_object_t* a1, int a2, int a3, int a4);
 int nox_xxx_unitSetHP_4E4560(nox_object_t* obj, unsigned short amount);

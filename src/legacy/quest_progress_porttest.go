@@ -2,30 +2,20 @@
 
 package legacy
 
-/*
-#include "GAME4.h"
-#include "GAME4_1.h"
-extern uint32_t dword_5d4594_1570272;
-void sub_500510(const char*);
-int sub_51A920(int);
-void sub_51A1F0(int);
-*/
-import "C"
-
 import (
 	"bytes"
 	"math"
+	"strings"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/common/memmap"
-	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 )
 
 // Own the actual C list, mapped namespace/scratch buffers and separator bytes.
 func PortTestQuestProgressOwner() func() {
-	old := C.dword_5d4594_1570272
-	C.dword_5d4594_1570272 = 0
+	old := questProgressHead
+	questProgressHead = nil
 	type saved struct{ dst, data []byte }
 	var regions []saved
 	for _, r := range [][3]uintptr{{0x5D4594, 1570008, 264}, {0x587000, 217952, 2}, {0x587000, 217960, 2}, {0x5D4594, 2388656, 20}} {
@@ -37,7 +27,7 @@ func PortTestQuestProgressOwner() func() {
 	*memmap.PtrUint16(0x587000, 217960) = ':'
 	return func() {
 		PortTestQuestProgress("reset", "*:*", 0)
-		C.dword_5d4594_1570272 = old
+		questProgressHead = old
 		for _, r := range regions {
 			copy(r.dst, r.data)
 		}
@@ -45,46 +35,48 @@ func PortTestQuestProgressOwner() func() {
 }
 
 func PortTestQuestProgress(op, name string, value uint32) uint64 {
-	str, free := alloc.CString(name)
-	defer free()
-	p := (*C.char)(unsafe.Pointer(str))
 	var ptr unsafe.Pointer
 	switch op {
 	case "namespace":
-		C.sub_500510(p)
+		questProgressNamespace(name)
 	case "namespace-nil":
-		C.sub_500510(nil)
+		/* Preserve the namespace on a nil C input. */
 	case "set-int":
-		ptr = unsafe.Pointer(C.nox_xxx_journalQuestSet_500540(p, C.int(value)))
+		ptr = unsafe.Pointer(questProgressSet(name, value, 0))
 	case "set-float":
-		ptr = unsafe.Pointer(C.nox_xxx_journalQuestSetBool_5006B0(p, C.int(value)))
+		ptr = unsafe.Pointer(questProgressSet(name, value, 1))
 	case "find":
-		ptr = unsafe.Pointer(C.nox_xxx_scriptGetJournal_5005E0(p))
+		ptr = unsafe.Pointer(questProgressFind(name))
 	case "int":
-		return uint64(uint32(C.sub_500750(p)))
+		return uint64(questProgressInt(name))
 	case "float":
-		return math.Float64bits(float64(C.sub_500770(p)))
+		return math.Float64bits(questProgressFloat(name))
 	case "reset":
-		C.sub_5007E0(p) // Every production caller ignores the incidental return.
+		questProgressReset(name) // Every production caller ignores the incidental return.
 	case "qualify":
-		return uint64(C.sub_5009B0(p))
+		qualified := strings.Contains(questProgressCString(name), ":")
+		text, ok := questProgressQualify(name)
+		if qualified && ok {
+			return uint64(len(text) + 1)
+		}
+		return 0
 	case "write":
-		return uint64(C.sub_500A60())
+		return uint64(questProgressWrite())
 	case "read":
-		return uint64(C.sub_500B70())
+		return uint64(questProgressRead())
 	case "stage-set":
-		return uint64(uint32(C.sub_51A920(C.int(value))))
+		return uint64(uint32(questProgressSetStage(value)))
 	case "stage":
-		return uint64(uint32(C.nox_xxx_getQuestStage_51A930()))
+		return uint64(uint32(questProgressStage()))
 	case "minions-set":
-		return uint64(uint32(C.sub_51A940(C.int(value))))
+		return uint64(uint32(questProgressSetMinions(value)))
 	default:
 		panic(op)
 	}
 	if ptr == nil {
 		return 0
 	}
-	for i, n := uint64(1), uintptr(C.dword_5d4594_1570272); n != 0; i++ {
+	for i, n := uint64(1), uintptr(unsafe.Pointer(questProgressHead)); n != 0; i++ {
 		if unsafe.Pointer(n) == ptr {
 			return i
 		}
@@ -99,7 +91,7 @@ func PortTestQuestProgressSnapshot() [][37]uint32 {
 	var out [][37]uint32
 	seen := map[uintptr]bool{}
 	previous := uintptr(0)
-	for n := uintptr(C.dword_5d4594_1570272); n != 0; {
+	for n := uintptr(unsafe.Pointer(questProgressHead)); n != 0; {
 		if seen[n] {
 			panic("quest list cycle")
 		}
@@ -126,15 +118,15 @@ func PortTestQuestProgressSnapshot() [][37]uint32 {
 func PortTestQuestProgressObject(op string, u *server.Object, stage int) uint32 {
 	switch op {
 	case "generator-type":
-		return uint32(C.sub_51A500(C.int(uintptr(unsafe.Pointer(u)))))
+		return questProgressGeneratorType(u)
 	case "generator-init":
-		C.sub_51A550()
+		questProgressInitMapping()
 	case "prepare":
-		C.sub_51A1F0(C.int(stage))
+		questProgressPrepare(stage)
 	case "hecubah":
-		C.nox_xxx_spawnHecubahQuest_51A5A0((*C.int)(unsafe.Pointer(&u.PosVec)))
+		questProgressSpawnBoss(u.PosVec, true)
 	case "necro":
-		C.nox_xxx_spawnNecroQuest_51A7A0((*C.int)(unsafe.Pointer(&u.PosVec)))
+		questProgressSpawnBoss(u.PosVec, false)
 	default:
 		panic(op)
 	}

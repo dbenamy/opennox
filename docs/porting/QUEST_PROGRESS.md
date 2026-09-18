@@ -8,7 +8,8 @@ qualification and wildcard reset, registered builtins, save/load records, genera
 type mapping and stage preparation, Hecubah/Necromancer spawning and stage state.
 Manual whole-source/header/preamble review confirms sub_51A950 has only its
 definition and header declaration; it is an orphan to remove. See [quest-progress-scope.json](quest-progress-scope.json).
-Production C remains **39,193 physical lines / 74 files / zero reference C**.
+Production C is now **38,498 physical lines / 74 files / zero reference C**
+(**−695 physical lines**).
 
 ## Baseline design
 
@@ -85,5 +86,55 @@ porttest-only files, all three binary hashes checked).
 The initial focused manifest had its pattern argument at the wrong command index;
 that driver invocation failed before tests ran. The corrected c-frozen-2 run passes
 on exactly the same source as the three successful sweeps. No captures changed.
-Source remains entirely C for this batch. Commit/push this baseline before installing
-the reviewed Go drafts. Fresh production is required after conversion.
+The C baseline was committed/pushed before installing the Go drafts. Fresh
+production qualification after conversion is recorded below.
+
+
+## Qualified native implementation
+
+C baseline **1c915175 is committed and pushed**. The twenty-four live functions
+are replaced, the orphan getter is removed, and the quest-variable list now uses
+Go records with the qualified 148-byte layout. Only reset/read/write retain C
+exports. Twenty-four obsolete interfaces (including two upstream bridges) and one private
+C global are retired;
+script builtins now call Go through their registered VM entries.
+
+Compiled-C review confirms the two boss health conversions have distinct widths:
+current HP truncates the wide product to int64 before its 16-bit store, while max
+HP converts a spilled float32 copy. Preserve both, byte-wrapped generator limits,
+signed minion-stage comparison, exact RNG order and first-occurrence suffix matching.
+
+Reversible decisions for review: reject names or composed namespaces exceeding
+131 bytes instead of overwriting adjacent fields; reject truncated save records
+and stop at EOF even if the record count is oversized. Preserve already accepted
+records on a later malformed record and the original clearing-before-version-check
+behavior. An independent native test covers these limits, all truncation positions,
+large counts and embedded-NUL C-string semantics. This does not change the frozen
+captures for defined original input. Full native qualification is complete.
+
+
+First native focused run passes all twelve roots with eleven unchanged captures /
+3,156 records. Final caller review retires the scalar-health and type-health C
+bridges whose last C users were the boss factories. The existing scalar fixture
+now invokes its same Go implementation directly. Static mapped checks pass;
+focused-2 and full native qualification pass. Current C is **38,498 lines /
+74 files / zero reference C**; the net physical reduction is **695 lines**.
+The raw C-to-Go body count differs because existing address markers and layout
+remain. No artificial blank-line cleanup is counted as translated algorithms.
+
+
+## Completed native qualification
+
+Final focused-2 passes twelve roots in 0.164s; eleven frozen captures / **3,156
+records** remain unchanged. All three affected-target sweeps pass without skips
+and reproduce all **227 captures / 150,824 records** from C. Fresh production
+passes three binaries, ABI/interface checks, the exact known asset-suite failures,
+headless gameplay, save/load and forced flat-map regeneration. All four gates share
+unchanged source and every session is joined. See
+[quest-progress-native-qualification.json](quest-progress-native-qualification.json)
+for exact counts, timings, source identity and binary hashes.
+
+No golden expectation changed. All freeze/install/retirement/finalization scripts
+are consumed. Current artifacts: build/port-quest-progress/native-{default,server,
+highres,production}, native-focused-2, native-interface-audit.json and
+upstream-retired.json. Original assets/archive remain intact.

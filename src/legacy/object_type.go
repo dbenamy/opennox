@@ -57,15 +57,6 @@ func nox_xxx_newObjectWithTypeInd_4E3450(ind int) *nox_object_t {
 	return asObjectC(s.NewObjectByTypeInd(ind))
 }
 
-//export nox_xxx_objectTypeByIndHealthData
-func nox_xxx_objectTypeByIndHealthData(ind int) unsafe.Pointer {
-	t := GetServer().S().Types.ByInd(ind)
-	if t == nil {
-		return nil
-	}
-	return t.Health().C()
-}
-
 //export sub_4F40A0
 func sub_4F40A0(a1 *nox_object_t) C.char { return C.char(GetServer().S().Sub_4F40A0(asObjectS(a1))) }
 

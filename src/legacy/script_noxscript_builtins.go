@@ -2,11 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-int nox_script_SetQuestInt_514BE0();
-int nox_script_SetQuestFloat_514C10();
-int nox_script_GetQuestInt_514C40();
-int nox_script_GetQuestFloat_514C60();
-int nox_script_ResetQuestStatus_514C90();
 int nox_script_SetRoamFlag_515C40();
 int nox_script_SetRoamFlagGroup_515CB0();
 int nox_script_JournalDelete_515550();
@@ -81,11 +76,11 @@ func Sub_512E80(str string) int {
 }
 
 var noxScriptBuiltins = [asm.BuiltinGetScore + 1]noxscript.Builtin{
-	asm.BuiltinSetQuestStatus:      wrapScriptC(C.nox_script_SetQuestInt_514BE0),
-	asm.BuiltinSetQuestStatusFloat: wrapScriptC(C.nox_script_SetQuestFloat_514C10),
-	asm.BuiltinGetQuestStatus:      wrapScriptC(C.nox_script_GetQuestInt_514C40),
-	asm.BuiltinGetQuestStatusFloat: wrapScriptC(C.nox_script_GetQuestFloat_514C60),
-	asm.BuiltinResetQuestStatus:    wrapScriptC(C.nox_script_ResetQuestStatus_514C90),
+	asm.BuiltinSetQuestStatus:      func(vm noxscript.VM) int { name := vm.PopString(); questProgressSet(name, vm.PopU32(), 0); return 0 },
+	asm.BuiltinSetQuestStatusFloat: func(vm noxscript.VM) int { name := vm.PopString(); questProgressSet(name, vm.PopU32(), 1); return 0 },
+	asm.BuiltinGetQuestStatus:      func(vm noxscript.VM) int { vm.PushU32(questProgressInt(vm.PopString())); return 0 },
+	asm.BuiltinGetQuestStatusFloat: func(vm noxscript.VM) int { vm.PushF32(float32(questProgressFloat(vm.PopString()))); return 0 },
+	asm.BuiltinResetQuestStatus:    func(vm noxscript.VM) int { questProgressReset(vm.PopString()); return 0 },
 	asm.BuiltinSetRoamFlag:         wrapScriptC(C.nox_script_SetRoamFlag_515C40),
 	asm.BuiltinGroupSetRoamFlag:    wrapScriptC(C.nox_script_SetRoamFlagGroup_515CB0),
 	asm.BuiltinJournalDelete:       wrapScriptC(C.nox_script_JournalDelete_515550),

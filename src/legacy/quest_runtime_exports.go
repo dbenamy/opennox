@@ -76,6 +76,3 @@ func sub_4E3D50() C.int { return C.int(questRuntimeDifficulty()) }
 
 //export sub_4E3DD0
 func sub_4E3DD0() { questRuntimeScaleHealth() }
-
-//export sub_4E40F0
-func sub_4E40F0() C.double { return C.double(questRuntimeFloat(202036)) }
