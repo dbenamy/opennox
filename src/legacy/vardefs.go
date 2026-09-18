@@ -363,7 +363,6 @@ extern uint32_t dword_5d4594_1313536;
 extern uint32_t dword_5d4594_1308152;
 extern uint32_t dword_5d4594_1098596;
 extern uint32_t dword_5d4594_1047524;
-extern uint32_t dword_5d4594_1563096;
 extern uint32_t dword_5d4594_1062564;
 extern uint32_t dword_5d4594_1308144;
 extern uint32_t dword_5d4594_1049524;
@@ -430,7 +429,6 @@ extern uint32_t dword_5d4594_3807116;
 extern uint32_t dword_5d4594_815100;
 extern uint32_t dword_5d4594_1321036;
 extern uint32_t dword_5d4594_1049808;
-extern uint32_t dword_5d4594_1568300;
 extern uint32_t dword_5d4594_1563320;
 extern uint32_t dword_5d4594_1313692;
 extern uint32_t dword_5d4594_1599688;
@@ -578,7 +576,6 @@ extern void* dword_5d4594_830232;
 extern void* dword_5d4594_830236;
 extern unsigned int dword_5d4594_831220;
 extern uint32_t dword_5d4594_831260;
-extern uint32_t dword_5d4594_1563096;
 extern uint32_t dword_5d4594_831224;
 extern unsigned int dword_5d4594_251744;
 extern unsigned int nox_game_createOrJoin_815048;
@@ -1074,7 +1071,7 @@ func Set_dword_5d4594_831224(v int) {
 	C.dword_5d4594_831224 = C.uint(v)
 }
 func Set_dword_5d4594_1563096(v int) {
-	C.dword_5d4594_1563096 = C.uint(v)
+	orchestrationRestoreCleanup = uint32(v)
 }
 func Set_nox_win_width(v int) {
 	C.nox_win_width = C.int(v)

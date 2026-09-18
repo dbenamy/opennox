@@ -9,7 +9,6 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4_2.h"
 extern uint32_t dword_5d4594_1049844;
-extern uint32_t dword_5d4594_1563096;
 void nox_xxx_monstersAllBelongToHost_4DB6A0();
 void nox_xxx_unitsNewAddToList_4DAC00();
 int sub_41C280(void* a1);

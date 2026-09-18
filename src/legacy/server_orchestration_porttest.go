@@ -4,18 +4,6 @@ package legacy
 
 /*
 #include "defs.h"
-void sub_4D2160();
-void sub_4D22B0();
-void sub_4DBA30(int);
-int nox_xxx_mapLoadRequired_4DCC80();
-void sub_4E4170();
-int sub_4EDD70();
-int sub_4EF660(nox_object_t*);
-void sub_4F1F20();
-void nox_xxx_updateUnits_51B100_D();
-bool sub_57B140();
-extern uint32_t dword_5d4594_1563096;
-extern uint32_t dword_5d4594_1568300;
 extern uint32_t dword_5d4594_2488728;
 extern uint32_t dword_5d4594_1568280, dword_5d4594_1568288;
 int nox_xxx_initChest_4F0400(int);
@@ -28,31 +16,31 @@ import "unsafe"
 func PortTestServerOrchestration(op string, u *server.Object, arg int32) uint32 {
 	switch op {
 	case "flags":
-		C.sub_4D2160()
+		orchestrationRoundFlags()
 	case "players":
-		C.sub_4D22B0()
+		orchestrationTransitionPlayers()
 	case "restore":
-		C.sub_4DBA30(C.int(arg))
+		orchestrationRestore(arg)
 	case "load-state":
-		return uint32(C.nox_xxx_mapLoadRequired_4DCC80())
+		return uint32(orchestrationLoadState())
 	case "difficulty":
-		C.sub_4E4170()
+		orchestrationDifficulty()
 	case "drop-flags":
-		return uint32(C.sub_4EDD70())
+		orchestrationDropFlags()
 	case "reset-player":
-		return uint32(C.sub_4EF660(asObjectC(u)))
+		return orchestrationResetPlayer(u)
 	case "rewards":
-		C.sub_4F1F20()
+		orchestrationRewards()
 	case "walls":
-		C.nox_xxx_updateUnits_51B100_D()
+		orchestrationWalls()
 	case "timeout":
-		return uint32(bool2int(bool(C.sub_57B140())))
+		return uint32(bool2int(orchestrationTimeout()))
 	}
 	return 0
 }
 
 func PortTestServerOrchestrationGlobals() (map[string]*uint32, func()) {
-	words := map[string]*uint32{"ankh-marker": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1568280)), "selected-marker": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1568288)), "drop-table": (*uint32)(unsafe.Pointer(&C.dword_5d4594_2488728)), "restore-cleanup": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1563096)), "reward-marker": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1568300))}
+	words := map[string]*uint32{"ankh-marker": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1568280)), "selected-marker": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1568288)), "drop-table": (*uint32)(unsafe.Pointer(&C.dword_5d4594_2488728)), "restore-cleanup": &orchestrationRestoreCleanup, "reward-marker": &orchestrationRewardMarker}
 	saved := map[string]uint32{}
 	for k, p := range words {
 		saved[k] = *p

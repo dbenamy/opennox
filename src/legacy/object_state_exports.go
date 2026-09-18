@@ -106,9 +106,6 @@ func nox_xxx_objectSetOn_4E75B0(a *C.nox_object_t) C.char { return C.char(stateO
 //export nox_xxx_objectSetOff_4E7600
 func nox_xxx_objectSetOff_4E7600(a *C.nox_object_t) C.int { return C.int(stateOff(asObjectS(a))) }
 
-//export sub_4E7700
-func sub_4E7700(a C.int) C.int { return C.int(stateChecksum(objectFromInt(a))) }
-
 //export nox_xxx_inventoryGetFirst_4E7980
 func nox_xxx_inventoryGetFirst_4E7980(a C.int) C.int {
 	return inventoryInt(objectFromInt(a).InvFirstItem)

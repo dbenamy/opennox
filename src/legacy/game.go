@@ -36,17 +36,11 @@ package legacy
 #include "client__drawable__drawable.h"
 #include "client__gui__guimeter.h"
 
-int sub_4EDD70();
 void sub_426060();
 void sub_417160();
-void sub_4D2160();
-void sub_4D22B0();
-void sub_4DBA30(int a1);
 int sub_48C980();
 void nox_console_sendSysOpPass_4409D0(wchar2_t* a1);
 int  nox_server_loadMapFile_4CF5F0(char* a1, int a2);
-int nox_xxx_mapLoadRequired_4DCC80();
-int  sub_4EF660(nox_object_t* a1p);
 int nox_xxx_guiChatIconLoad_445650();
 int nox_xxx_loadGuides_427070();
 void sub_41CAC0(char* a1, void* a2);
@@ -427,7 +421,7 @@ func Sub_409B80() string {
 	return GoStringP(unsafe.Pointer(sessionSelectedMap()))
 }
 func Sub_4EDD70() {
-	C.sub_4EDD70()
+	orchestrationDropFlags()
 }
 func Sub_4573B0() {
 	teamUIRequestsReset()
@@ -514,7 +508,7 @@ func Sub_48C980() int {
 	return int(C.sub_48C980())
 }
 func Sub_4D22B0() {
-	C.sub_4D22B0()
+	orchestrationTransitionPlayers()
 }
 func Sub_459870() unsafe.Pointer {
 	return serverOptionsListHead()
@@ -526,10 +520,10 @@ func Sub_40A250() {
 	serverConfigTimerInit()
 }
 func Sub_4D2160() {
-	C.sub_4D2160()
+	orchestrationRoundFlags()
 }
 func Nox_xxx_mapLoadRequired_4DCC80() int {
-	return int(C.nox_xxx_mapLoadRequired_4DCC80())
+	return int(orchestrationLoadState())
 }
 func Sub_40A970() {
 	playerStateReset()
@@ -666,10 +660,10 @@ func Sub_57AAA0(a1 string, a2 *server.Settings2, a3 unsafe.Pointer) {
 	ruleWrite(ruleCString(a1), a2, (*C.nox_list_item_t)(a3))
 }
 func Sub_4EF660(a1 *server.Object) {
-	C.sub_4EF660(asObjectC(a1))
+	orchestrationResetPlayer(a1)
 }
 func Sub_4DBA30(a1 bool) {
-	C.sub_4DBA30(C.int(bool2int(a1)))
+	orchestrationRestore(int32(bool2int(a1)))
 }
 func Nox_xxx_isUnit_4E5B50(a1 *server.Object) int {
 	return int(C.nox_xxx_isUnit_4E5B50(asObjectC(a1)))

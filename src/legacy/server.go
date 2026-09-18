@@ -27,7 +27,6 @@ package legacy
 extern unsigned int dword_5d4594_2650652;
 extern unsigned int dword_5d4594_2649712;
 extern unsigned int dword_5d4594_1548524;
-extern uint32_t dword_5d4594_1563096;
 extern uint32_t dword_5d4594_528252;
 extern uint32_t dword_5d4594_528260;
 
@@ -36,14 +35,10 @@ extern nox_tileDef_t nox_tile_defs_arr[176];
 
 void nox_xxx_netlist_4DEB50();
 void nox_xxx_updateUnits_51B100();
-void sub_4E4170();
 void nox_xxx_gameTick_4D2580_server_D();
 void sub_4139C0();
 int sub_4DCF20();
-int sub_4E76C0();
-bool sub_57B140();
 
-void nox_xxx_updateUnits_51B100_D();
 */
 import "C"
 import (
@@ -205,7 +200,7 @@ func Sub_519710(a1 unsafe.Pointer) int {
 	return objectReportSchedule((*server.PlayerUpdateData)(a1))
 }
 func Nox_xxx_updateUnits_51B100_D() {
-	C.nox_xxx_updateUnits_51B100_D()
+	orchestrationWalls()
 }
 func Nox_xxx_decay_511750() {
 	motionDecayTick()
@@ -286,7 +281,7 @@ func Sub_50D890() {
 	spawnPolicyTick()
 }
 func Sub_4E4170() {
-	C.sub_4E4170()
+	orchestrationDifficulty()
 }
 func Nox_xxx_voteUptate_506F30() {
 	voteTick()
@@ -294,14 +289,11 @@ func Nox_xxx_voteUptate_506F30() {
 func Nox_xxx_net_4263C0() {
 	C.nox_xxx_net_4263C0()
 }
-func Sub_4E76C0() {
-	C.sub_4E76C0()
-}
 func Nox_xxx_protectData_56F5C0() {
 	nox_xxx_protectData_56F5C0()
 }
 func Sub_57B140() bool {
-	return bool(C.sub_57B140())
+	return orchestrationTimeout()
 }
 func Sub_57B0A0() {
 	C.sub_57B0A0()

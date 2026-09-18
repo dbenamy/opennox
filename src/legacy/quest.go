@@ -6,7 +6,6 @@ package legacy
 #include "GAME3_2.h"
 #include "GAME3_3.h"
 #include "GAME4_1.h"
-void sub_4F1F20();
 extern unsigned int nox_client_gui_flag_1556112;
 */
 import "C"
@@ -46,7 +45,7 @@ func Sub_4E3DD0() {
 	questRuntimeScaleHealth()
 }
 func Sub_4F1F20() {
-	C.sub_4F1F20()
+	orchestrationRewards()
 }
 func Nox_xxx_getQuestMapFile_4D0F60() string {
 	return GoStringP(unsafe.Pointer(mapQuestChoose()))

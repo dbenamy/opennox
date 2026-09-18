@@ -15,17 +15,15 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. Item respawning and related object ownership are now native Go: eight live
-routines converted, seven C interfaces retired, one export retained and four
-private globals moved. See [ITEM_RESPAWN.md](docs/porting/ITEM_RESPAWN.md).
+pause. Server map/round orchestration is now native Go: ten live routines
+converted, thirteen C function symbols retired, and two private globals moved.
+See [SERVER_ORCHESTRATION.md](docs/porting/SERVER_ORCHESTRATION.md).
 
-Current production C is **31,346 physical lines in68 files**, with zero reference
-C (−351 from the repaired item-respawn baseline). All three targets, supplemental
-caller regressions and fresh production/headless integration qualify. Remaining
-server orchestration now has a qualified original-C baseline: 16 focused roots
-and 1,923 repeated/frozen records, plus all three broader target gates. Its Go
-conversion is next; see [SERVER_ORCHESTRATION.md](docs/porting/SERVER_ORCHESTRATION.md)
-and [PORTING_STATE.md](PORTING_STATE.md).
+Current production C is **30,819 physical lines in 68 files**, with zero reference
+C (−527 from the server-orchestration baseline). All three targets, supplemental
+caller regressions and fresh production/headless integration qualify. The next
+candidate is connected game-statistics collection and serialization; its caller
+and ownership audit is underway. See [PORTING_STATE.md](PORTING_STATE.md).
 
 ## Goal and target
 

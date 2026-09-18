@@ -31,7 +31,6 @@ case 18:return (void*)nox_xxx_spawnSomeBarrel_4E7470;
 case 19:return (void*)sub_4E7540;
 case 20:return (void*)nox_xxx_objectSetOn_4E75B0;
 case 21:return (void*)nox_xxx_objectSetOff_4E7600;
-case 22:return (void*)sub_4E7700;
 case 23:return (void*)nox_xxx_inventoryGetFirst_4E7980;
 case 24:return (void*)nox_xxx_inventoryGetNext_4E7990;
 case 25:return (void*)sub_4E79B0;
@@ -77,7 +76,6 @@ case 18:{nox_xxx_spawnSomeBarrel_4E7470((int)u,(int)record);return 0;}
 case 19:{sub_4E7540(u,t);return 0;}
 case 20:{return (uint32_t)nox_xxx_objectSetOn_4E75B0(u);}
 case 21:{return (uint32_t)nox_xxx_objectSetOff_4E7600(u);}
-case 22:{return (uint32_t)sub_4E7700((int)u);}
 case 23:{return (uint32_t)nox_xxx_inventoryGetFirst_4E7980((int)u);}
 case 24:{return (uint32_t)nox_xxx_inventoryGetNext_4E7990((int)u);}
 case 25:{return (uint32_t)sub_4E79B0(x);}
@@ -228,7 +226,9 @@ func (p *portTestShopPools) objectStateItems() {
 		u.HealthData = hp
 	}
 	for i := 0; i < 44; i++ {
-		p.identify(C.stateFunction(C.int(i)), 89000+uint32(i))
+		if fn := C.stateFunction(C.int(i)); fn != nil {
+			p.identify(fn, 89000+uint32(i))
+		}
 	}
 	for _, id := range []int{1, 2, 3, 4, 5, 100, 101, 102} {
 		if u := p.temporaryRef(id); u != nil {
@@ -249,7 +249,11 @@ func (p *portTestShopPools) objectStateAction(a PortTestShopAction) uint32 {
 	state := p.temporary.world.objectives.attack
 	u := p.temporaryRef(attack.Actor)
 	pointerReturn := a.Op == 1226 && u != nil && u.ObjClass&2 != 0 && u.ObjFlags&0x8002 == 0
-	state.state.result = uint64(C.stateCall(C.int(a.Op-1200), asObjectC(p.temporaryRef(attack.Actor)), asObjectC(p.temporaryRef(sp.Target)), C.int(sp.X), C.int(sp.Y), C.int(sp.Z), C.uint32_t(sp.FloatBits), state.record))
+	if a.Op == 1222 {
+		state.state.result = uint64(stateChecksum(u))
+	} else {
+		state.state.result = uint64(C.stateCall(C.int(a.Op-1200), asObjectC(p.temporaryRef(attack.Actor)), asObjectC(p.temporaryRef(sp.Target)), C.int(sp.X), C.int(sp.Y), C.int(sp.Z), C.uint32_t(sp.FloatBits), state.record))
+	}
 	// Freeze's char return truncates the C-owned action-stack pointer. Check the
 	// actual byte before replacing the address-dependent value with its identity.
 	if pointerReturn {

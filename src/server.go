@@ -366,9 +366,6 @@ func sub_446040() uint32 {
 }
 
 func (s *Server) nox_xxx_gameTick_4D2580_server_E() {
-	if noxflags.HasEngine(noxflags.EngineReplayWrite | noxflags.EngineReplayRead) {
-		legacy.Sub_4E76C0()
-	}
 	if nox_xxx_gameGet_4DB1B0() {
 		s.nox_xxx_gameTick_4D2580_server_D()
 	}

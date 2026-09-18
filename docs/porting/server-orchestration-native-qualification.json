@@ -1,0 +1,179 @@
+{
+  "status": "qualified native conversion",
+  "baseline_commit": "ec5ffeb4",
+  "focused_roots": 34,
+  "focused_tests_including_subtests": 1837,
+  "new_captures": 16,
+  "new_capture_records": 1923,
+  "targets": [
+    {
+      "target": "default",
+      "roots": 427,
+      "tests": 41317
+    },
+    {
+      "target": "server",
+      "roots": 427,
+      "tests": 41317
+    },
+    {
+      "target": "highres",
+      "roots": 427,
+      "tests": 41317
+    }
+  ],
+  "captures": 245,
+  "records": 78253,
+  "converted_live_routines": 10,
+  "removed_no_effect_bodies": 2,
+  "retired_checksum_export": 1,
+  "retired_c_function_symbols": 13,
+  "retired_c_globals": 2,
+  "new_exports": 0,
+  "source_files": 2434,
+  "source_identity": true,
+  "capture_identity": true,
+  "frozen_c_identity": true,
+  "static": true,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 51.261312877060845,
+        "sha256": "859b6fe92251e32cf3b328c83b7f4b89aeece5fa60edd5cba70c32a808d6a79d",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 8.356121130054817,
+        "sha256": "19f7ddbfccc674dc79c8c07caad07e81ee86d6a878621b72a5767fd944d2b3f6",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 50.0756152831018,
+        "sha256": "1a38816297859408359bff14f12a82087052d86bc52de0fb962a49cc62f54084",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "server-orchestration-native": {
+        "exit": 0,
+        "wall_seconds": 71.07300393190235,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 70.52175912703387,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "859b6fe92251e32cf3b328c83b7f4b89aeece5fa60edd5cba70c32a808d6a79d",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-server-systems/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/server-orchestration-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native server orchestration conversion",
+          "removed_maps": 0
+        }
+      },
+      "server-orchestration-native-save": {
+        "exit": 0,
+        "wall_seconds": 45.5638956069015,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.041099262889475,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "859b6fe92251e32cf3b328c83b7f4b89aeece5fa60edd5cba70c32a808d6a79d",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-server-systems/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/server-orchestration-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native server orchestration conversion",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "6f041e16a682fed6a6018c9f54cb86250ea36249d30bffdc35e79f6f8eadec77"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 55.587798290885985,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "flat_scenario": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 48.291194786084816,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/server-config-flat-c",
+    "binary_sha256": "859b6fe92251e32cf3b328c83b7f4b89aeece5fa60edd5cba70c32a808d6a79d",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-server-systems/native-production/production/bin/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/server-orchestration-native-flat/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Server orchestration native",
+    "removed_maps": 51,
+    "regenerated_maps": 1
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 68,
+      "lines": 30819
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  }
+}

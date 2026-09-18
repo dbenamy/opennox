@@ -229,6 +229,7 @@ target build selection and linker evidence.
 | Session lifecycle, map entry and save metadata | 69 | 31,694 | −914 | 0 |
 | Item-respawn empty-list guard prerequisite | 69 | 31,697 | +3 | 0 |
 | Item respawn, owner teams and crown attribution | 68 | 31,346 | −351 | 0 |
+| Server map/round orchestration | 68 | 30,819 | −527 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

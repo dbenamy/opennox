@@ -2,56 +2,39 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about31.3k lines** — **31,346 physical lines in68 production
-`.c` files**, zero reference C. Latest conversion: **−351** from the repaired
-item-respawn baseline. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 30.8k lines** — **30,819 physical lines in 68 production
+`.c` files**, zero reference C. Latest conversion: **−527** from the server
+orchestration baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — server-orchestration C baseline in progress
+## Current — server orchestration native conversion qualified
 
-Item-respawn native **5822c9c6**, its repaired C baseline **06ffe2c5**, and session-entry
-native **449ae4c7** are committed and pushed. Item-respawn conversion replaces eight routines, retires
-seven C interfaces and four globals, and retains one Go-backed C export for the
-live GAME5.c caller. GAME3_3.c is removed. See [ITEM_RESPAWN.md](docs/porting/ITEM_RESPAWN.md).
+Qualified C baseline **ec5ffeb4** is committed and pushed. Ten live routines now
+call Go directly. The no-effect replay loop, its empty helper and unused checksum
+C bridge are removed; existing checksum tests call Go with unchanged expectations.
+Two private globals move to Go. The statistics initializer remains for the next
+connected batch. See [SERVER_ORCHESTRATION.md](docs/porting/SERVER_ORCHESTRATION.md).
 
-All sessions are joined; source is editable. Each main target passes344 roots
-/39,431 tests without skips;214 captures /55,337 records match C and each other.
-Supplemental callers pass82 roots /201 test entries per target against existing
-frozen expectations. All seven gates share unchanged2,423-file source. Static
-checks, three fresh production builds/ABI, exact known full-suite results and all
-three headless scenarios pass. Evidence: item-respawn-native-qualification.json
-and build/port-item-respawn/{native-*,callers-*}.
+Native qualification passes 34 focused roots / 1,837 test entries. Each broader
+default/server/highres target passes 427 roots / 41,317 entries without skips;
+all 245 captures / 78,253 records match C. Static checks, three fresh production
+builds/ABI, the exact known full-suite result, gameplay, save/load and flat-map
+regeneration pass. No goldens were regenerated. Evidence:
+`docs/porting/server-orchestration-native-qualification.json` and
+`build/port-server-systems/native-*`. All tool sessions are joined; source is editable.
 
-Current candidate:12 bodies /494 body lines in server__system__server.c, ten live
-operations and a discarded pure-checksum loop plus its empty helper. Statistics
-initialization stays with its serialization owners for a separate batch. Read-only
-selection/caller drafts under build/port-server-systems still include that excluded
-initializer; final selection must reflect SERVER_ORCHESTRATION.md.
+Next: audit connected game-statistics collection/serialization, then establish
+its original-C contracts. `build/port-server-systems/stats-candidate.json` is only
+a read-only draft: exclude unrelated map routines and include actual private
+record helpers. No next-batch production changes yet. No user decision is pending.
 
-The original-C orchestration baseline qualifies: 16 focused roots / 1,819 test
-entries and 16 repeated/frozen captures / 1,923 records. All three broader targets
-pass 427 roots / 41,317 tests without skips; 245 captures / 78,253 records match
-across targets and their frozen expectations. Gates share identical 2,433-file
-source; static checks pass. All sessions are joined; source is editable.
-
-Only ten porttest-constrained source files were added. Production source is
-identical to 5822c9c6, whose production/ABI/known-suite/headless evidence is reused
-explicitly. See SERVER_ORCHESTRATION.md, server-orchestration-c-qualification.json
-and server-orchestration-production-reuse.json. Next: commit/push this baseline,
-translate the selected routines and retire the no-effect checksum loop/bridge,
-then qualify fresh native production. No user decision is pending.
-
-Item-respawn native scenario asset deduplication audit1806 and apply64197 joined
-successfully, reclaiming 1,660,044,319 bytes; restoration manifests are retained.
-The audit/apply passes are consumed. About 3.2 GiB was free during qualification.
-
-The item-respawn and session-entry install-native.py scripts are consumed; never
-replay them. Source and committed expectations supersede ignored drafts. Completed
-session-entry native and item-respawn C scenario deduplication reclaimed
-1,660,044,319 bytes each; per-run restoration manifests preserve recovery. All
-cleanup audit/apply passes are consumed. Original assets/archive are unchanged;
-the archive remains untracked. About2.9GiB was free during final qualification.
+The server-orchestration, item-respawn and session-entry install-native.py scripts
+are consumed; never replay them. Source and committed expectations supersede drafts.
+Completed item-respawn native and monster-control native scenario asset copies
+were each deduplicated by 1,660,044,319 bytes. Their audit/apply passes are consumed;
+preserve restoration manifests. Original assets/archive are unchanged, and the
+archive remains untracked. Retain all run evidence and changed maps/saves.
 
 ## Qualified parent — native console commands
 
