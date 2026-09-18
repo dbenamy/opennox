@@ -47,7 +47,7 @@ func Nox_cmd_show_info(_ int, _ []string) bool {
 	return true
 }
 func Nox_cmd_show_mem(_ int, _ []string) bool {
-	C.nox_server_currentMapGetFilename_409B30()
+	sessionMapFilename()
 	Nox_xxx_gameLoopMemDump_413E30()
 	return true
 }

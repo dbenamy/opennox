@@ -15,14 +15,13 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. Player admission, status, minimap tracking and displayed equipment are now
-native Go: 20 live routines converted, two orphan bodies removed, 11 C interfaces
-retired and 11 exports retained for live decoder/server lifecycle callers. See
-[PLAYER_STATE.md](docs/porting/PLAYER_STATE.md) for coverage and review items.
+pause. Session lifecycle, map entry and saved-character metadata are now native
+Go:33 live routines converted, one orphan removed,26 C interfaces retired and
+eight exports retained. See [SESSION_ENTRY.md](docs/porting/SESSION_ENTRY.md).
 
-Current production C is **32,605 physical lines in 69 files**, with zero reference
-C (−663 from the repaired player-state baseline). All three targets and fresh
-production/headless integration qualify. Session lifecycle and map-entry helpers
+Current production C is **31,694 physical lines in69 files**, with zero reference
+C (−914 from the repaired session-entry baseline). All three targets and fresh
+production/headless integration qualify. Item respawn and related object ownership
 are the next candidates; [PORTING_STATE.md](PORTING_STATE.md) is the resume checkpoint.
 
 ## Goal and target

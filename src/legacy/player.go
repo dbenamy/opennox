@@ -165,7 +165,7 @@ func nox_xxx_playerObserveMonster_4DDE80(cplayer, cunit *nox_object_t) {
 	Nox_xxx_playerObserveMonster_4DDE80(asObjectS(cplayer), asObjectS(cunit))
 }
 func Nox_xxx_scavengerTreasureMax_4D1600() uint32 {
-	return uint32(C.nox_xxx_scavengerTreasureMax_4D1600())
+	return uint32(sessionScavengerMaximum())
 }
 
 func Nox_xxx_netMsgFadeBeginPlayer(ind int, dir int, a3 int) {
@@ -187,7 +187,7 @@ func ClientSetPlayerNetCode(id int) {
 }
 
 func Nox_xxx_playerForceDisconnect_4DE7C0(ind ntype.PlayerInd) {
-	C.nox_xxx_playerForceDisconnect_4DE7C0(C.int(ind))
+	sessionPlayerDeparture(int32(ind))
 }
 
 func Get_nox_xxx_updatePlayerMonsterBot_4FAB20() unsafe.Pointer {

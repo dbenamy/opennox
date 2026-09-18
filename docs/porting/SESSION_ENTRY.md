@@ -1,9 +1,10 @@
 # Session lifecycle and map entry
 
-Repaired C baseline in progress after qualified player-state conversion **50c06879**.
+Native conversion follows repaired C baseline **82b124f8** (initial baseline
+**adb06d4e**) and qualified player-state conversion **50c06879**.
 Selection: **33 live routines and one orphan**, originally749 body lines across
 GAME3_2.c, map-name/mode helpers in GAME1.c, and saved-character metadata loading in
-GAME1_1.c. Current production C is **32,608 physical lines /69 files /zero reference C**.
+GAME1_1.c. The repaired baseline has **32,608 physical C lines /69 files /zero reference C**.
 
 The whole-source caller audit includes C conditionals, Go wrappers, headers and
 embedded C preambles. Eight entrypoints must remain for outside C callers;26
@@ -104,3 +105,35 @@ remain. Each run has a restoration manifest. The consumed cleanup script is
 `build/port-session-entry/deduplicate-player-state-native-assets.py`; never replay
 its audit/apply modes. Its --restore mode remains available for those three runs.
 Original assets and the untracked archive are unchanged.
+
+## Native conversion
+
+All33 live routines are native Go; the one orphan C body is removed. Eight
+Go-backed C exports remain for live C callers;26 interfaces and two extracted C
+globals retire. Go callers invoke native functions directly. The operator roster,
+shadow head and latency cursor are privately owned by Go. The original two varargs
+formatting wrappers remain in GAME3_2.c. No C algorithms are retained for tests.
+
+Review preserves signed16-bit mode narrowing,32-bit timing arithmetic, ASCII map
+comparison, terminator/tail behavior, and the packed1278-byte metadata copy (the Go
+container is1280 bytes). File and crypt adapters retain their existing error and
+callback behavior. Shadow removal preserves stale links on the detached object;
+roster membership still uses each player's current index. Existing allocation,
+object deletion, report, shop, quest, tile and metadata-parser owners are reused.
+
+First native focus passed21 roots /224 tests and all21 new captures without a
+translation correction. Static mapped-memory checks pass. Default/server/highres
+all pass336 roots /38,970 tests without skips; all206 captures /51,868 records
+match the final C baseline byte-for-byte. All four gates share unchanged2,415-file source. Three fresh production builds/ABI,
+the exact known full-suite results, gameplay, save/load and map regeneration pass.
+Final production and source identity are recorded in [native qualification](session-entry-native-qualification.json).
+Production C is **31,694 physical lines /69 files /zero reference C**, **−914**
+from the repaired baseline.
+
+Additional verified deduplication reclaimed1,660,044,319 bytes from the three
+completed session-entry C scenarios and4,980,132,957 bytes from nine completed
+prefab scenarios. Per-run restoration manifests preserve original hashes and
+paths. Both scripts under build/port-session-entry are consumed: never replay
+`deduplicate-session-entry-c-assets.py` or
+`deduplicate-prefab-completed-assets.py` audit/apply modes. Their restore modes
+remain available. Original assets/archive are untouched.

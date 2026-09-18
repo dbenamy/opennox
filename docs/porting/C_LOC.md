@@ -225,6 +225,8 @@ target build selection and linker evidence.
 | Console commands: 47 native routines, two C globals, two private C files | 69 | 33,267 | −1,077 | 0 |
 | Player-state C prerequisite: count only teams with eligible members | 69 | 33,268 | +1 | 0 |
 | Player admission/status/equipment: 20 native routines, two orphan bodies | 69 | 32,605 | −663 | 0 |
+| Session-entry baseline corrections | 69 | 32,608 | +3 | 0 |
+| Session lifecycle, map entry and save metadata | 69 | 31,694 | −914 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

@@ -1,0 +1,178 @@
+{
+  "status": "qualified native conversion",
+  "baseline_commit": "82b124f8",
+  "focused_roots": 21,
+  "focused_tests_including_subtests": 224,
+  "new_captures": 21,
+  "new_capture_records": 1070,
+  "targets": [
+    {
+      "target": "default",
+      "roots": 336,
+      "tests": 38970
+    },
+    {
+      "target": "server",
+      "roots": 336,
+      "tests": 38970
+    },
+    {
+      "target": "highres",
+      "roots": 336,
+      "tests": 38970
+    }
+  ],
+  "captures": 206,
+  "records": 51868,
+  "source_files": 2415,
+  "source_identity": true,
+  "capture_identity": true,
+  "frozen_c_identity": true,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 87.24793765204959,
+        "sha256": "5c6bf1653c82c5c78231b68abf6c4c092f6fd2d6a40d30a066cc63b96492a5e1",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.653468545991927,
+        "sha256": "752ccae292374e37a067d0c1d15920c6850e667e21cd8bc3ad22e916697e19d2",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 66.96476092305966,
+        "sha256": "966dae576f79a8295abab84703af03b5def6b0bfde04f041d886a0342feb8905",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "session-entry-native": {
+        "exit": 0,
+        "wall_seconds": 64.64496685494669,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 64.01272114901803,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "5c6bf1653c82c5c78231b68abf6c4c092f6fd2d6a40d30a066cc63b96492a5e1",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-session-entry/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/session-entry-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native session-entry conversion",
+          "removed_maps": 0
+        }
+      },
+      "session-entry-native-save": {
+        "exit": 0,
+        "wall_seconds": 45.291850263020024,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.71444530412555,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "5c6bf1653c82c5c78231b68abf6c4c092f6fd2d6a40d30a066cc63b96492a5e1",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-session-entry/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/session-entry-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native session-entry conversion",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "bac90341c4fe88281625ccc0b2bbb80ecc87336adabeea86d387c48021399887"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "cf25954fbc51ba2f037c2969dd3eaca7b2c6ef451033a8195c6b9809d4eeac8c"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 55.11237265286036,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "flat_scenario": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 48.34514245111495,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/server-config-flat-c",
+    "binary_sha256": "5c6bf1653c82c5c78231b68abf6c4c092f6fd2d6a40d30a066cc63b96492a5e1",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-session-entry/native-production/production/bin/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/session-entry-native-flat/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Session-entry native",
+    "removed_maps": 51,
+    "regenerated_maps": 1
+  },
+  "static_mapped_memory": true,
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 69,
+      "lines": 31694
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "live_routines": 33,
+  "orphan_removed": 1,
+  "retained_exports": 8,
+  "retired_interfaces": 26,
+  "retired_c_globals": 2
+}

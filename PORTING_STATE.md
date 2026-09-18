@@ -2,56 +2,38 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 32.6k lines** — **32,608 physical lines in 69 production
-`.c` files**, zero reference C. Latest conversion: **−663** from the player-state C
-baseline. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about31.7k lines** — **31,694 physical lines in69 production
+`.c` files**, zero reference C. Latest conversion: **−914** from the repaired
+session-entry baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — session/map-entry C baseline in progress
+## Current — session/map-entry native conversion qualified
 
-Player-state native conversion **50c06879 is committed and pushed**. See
-[PLAYER_STATE.md](docs/porting/PLAYER_STATE.md): 20 live routines, two orphan bodies,
-11 interfaces retired, 11 exports retained; −663 C lines. All316 target roots,
-185 C-matching captures, source identity, fresh production/ABI, exact known suite
-and three headless scenarios qualify. All player-state/push/cleanup sessions joined.
+Repaired C baseline **82b124f8 is committed and pushed**. The native conversion
+replaces33 live routines, removes one orphan, retires26 C interfaces and two C
+globals, and retains eight Go-backed C exports. All Go callers invoke Go directly.
+See [SESSION_ENTRY.md](docs/porting/SESSION_ENTRY.md) for coverage and review items.
 
-Next candidate:34 routines /749 body lines across GAME3_2.c, map-name/game-mode
-helpers and save metadata loading. See [SESSION_ENTRY.md](docs/porting/SESSION_ENTRY.md).
-Caller audit identifies one likely C orphan despite a similarly named native Go
-function. Two existing text varargs shims remain compatibility glue. Continue wrapper
-and ownership audit before final scope.
+All gates pass and every session is joined; source is editable. Each target passes
+336 roots /38,970 tests without skips;206 captures /51,868 records match C and each
+other. All four gates share unchanged2,415-file source. Static checks, three fresh
+production builds/ABI, exact known full-suite outcomes and three headless scenarios
+pass. Evidence: session-entry-native-qualification.json and
+`build/port-session-entry/native-{default,server,highres,production}`.
 
-The completed focused C run66122 and independent repeat6603 are joined and pass.
-Twenty roots /217 tests include19 new session roots plus the retained console
-fixture. All20 new captures /1064 records repeat byte-for-byte and are frozen.
-Static mapped-memory checks pass. Selection audit:33 live routines, one C orphan,
-eight retained exports and26 interfaces to retire. Repaired C is32608 lines.
+Next: item respawn and related owner-chain/team/crown helpers. Read-only candidate
+is eight functions /257 body lines in GAME3_3.c and server__system__server.c.
+`build/port-item-respawn/{selection-draft.json,plan-draft.md}` records callers and
+proposed contracts. Review the empty-respawn-list removal dereference before
+freezing C. No next-batch source is installed and no user decision is pending.
 
-All C qualification gates are joined and pass:335 roots /38,963 tests per target,
-205 captures /51,862 records match; all2,406 source files identical across gates.
-Three fresh production builds/ABI, exact known full-suite outcomes and three
-headless scenarios pass. First production manifest assertion was corrected without
-source changes; use c-production-final. See session-entry-c-qualification.json.
-Repaired C baseline **adb06d4e is committed and pushed**. The six-case departure
-match-reset/winner extension is installed, independently repeated, frozen and
-qualified. Final targets each pass336 roots /38,970 tests with206 matching captures
-/51,868 records and identical2,407-file source. Production-source identity is
-verified; only the new porttest file differs from c-production-final. All sessions
-are joined. Commit/push this extension, then install the native conversion.
-Ignored native-{maps,files,objects,roster,lifecycle,exports,porttest}.draft files
-are uninstalled, uncompiled translations. Review before using. No native source
-has been installed. Source is editable; no active checks remain.
-
-Native player-state scenario asset deduplication is completed and verified:
-1,660,044,319 bytes reclaimed; per-run restoration manifests preserved. Cleanup
-script `build/port-session-entry/deduplicate-player-state-native-assets.py` is
-consumed: never repeat audit/apply modes. About3.9GiB free before new gate outputs.
-
-Prior install-native.py and cleanup scripts are consumed; never replay them.
-Disk: original assets/archive are untouched. Per-run deduplication and older-evidence
-compression restoration manifests remain under build/port-player-state and the
-completed scenario directories. The archive remains untracked.
+`build/port-session-entry/install-native.py` is consumed; never replay it. All
+previous installers are stale; source and committed expectations take precedence.
+Disk cleanup of completed player-state native, session-entry C and nine prefab
+scenario copies is finished, with per-run restoration manifests. Cleanup scripts'
+audit/apply modes are consumed. Original assets/archive remain untouched. About6GiB
+was free before the final native scenario copy. The archive stays outside Git.
 
 ## Qualified parent — native console commands
 

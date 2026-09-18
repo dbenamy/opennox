@@ -122,7 +122,7 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 			}
 			name := C.GoString((*C.char)(*controlPtr(memmap.PtrOff(0x587000, 206376), 4*int(class))))
 			result = int8(controlRaw(makeItem(name)))
-		} else if controlFlags(4096) && C.sub_4CFE00() >= 0 {
+		} else if controlFlags(4096) && sessionMapState() >= 0 {
 			attrs = [5]uint32{}
 			if class == 1 {
 				attrs[2] = byName("Replenishment1")

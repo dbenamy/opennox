@@ -51,7 +51,6 @@ int nox_xxx_guiChatIconLoad_445650();
 int nox_xxx_loadGuides_427070();
 void sub_41CAC0(char* a1, void* a2);
 
-void nox_xxx_mapSwitchLevel_4D12E0_tileFree();
 */
 import "C"
 import (
@@ -347,7 +346,7 @@ func Nox_server_testTwoPointsAndDirection_4E6E50(p1 types.Pointf, dir int16, p2 
 }
 
 func Nox_xxx_mapLoadOrSaveMB_4DCC70(v int) {
-	C.nox_xxx_mapLoadOrSaveMB_4DCC70(C.int(v))
+	sessionLoadStateSet(int32(v))
 }
 func Sub_44E560() unsafe.Pointer {
 	return unsafe.Pointer(briefingCreateWindow())
@@ -356,7 +355,7 @@ func Nox_xxx_serverOptionsGetServername_40A4C0() string {
 	return GoString((*C.char)(unsafe.Pointer(serverConfigNameGet())))
 }
 func Nox_xxx_mapGetMapName_409B40() string {
-	return GoString(C.nox_xxx_mapGetMapName_409B40())
+	return GoStringP(unsafe.Pointer(sessionMapName()))
 }
 func Nox_xxx_servGetPlrLimit_409FA0() int {
 	return int(C.int(serverConfigLimitGet()))
@@ -425,7 +424,7 @@ func Sub_46DCC0() {
 	scoreboardCollect()
 }
 func Sub_409B80() string {
-	return GoString(C.sub_409B80())
+	return GoStringP(unsafe.Pointer(sessionSelectedMap()))
 }
 func Sub_4EDD70() {
 	C.sub_4EDD70()
@@ -602,7 +601,7 @@ func Sub_41D1A0(a1 int) {
 	C.sub_41D1A0(C.int(a1))
 }
 func Nox_xxx_netPlayerIncomingServ_4DDF60(a1 int) {
-	C.nox_xxx_netPlayerIncomingServ_4DDF60(C.int(a1))
+	sessionPlayerIncoming(int32(a1))
 }
 func Nox_xxx_plrLoad_41A480(a1 string) int {
 	str := CString(a1)
@@ -658,7 +657,7 @@ func Sub_500510(a1 string) {
 	questProgressNamespace(a1)
 }
 func Nox_xxx_mapSwitchLevel_4D12E0_tileFree() {
-	C.nox_xxx_mapSwitchLevel_4D12E0_tileFree()
+	sessionClearTiles()
 }
 func Sub_57A1E0(a1 *server.Settings2, a2 string, a3 unsafe.Pointer, a4 int, a5 noxflags.GameFlag) {
 	ruleLoad(a1, ruleCString(a2), (*C.nox_list_item_t)(a3), byte(a4), uint16(a5))

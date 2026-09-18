@@ -160,7 +160,7 @@ func Sub_460630() {
 	quickbarRememberMouseSequence()
 }
 func Nox_xxx_game_4DCCB0() int {
-	return int(C.nox_xxx_game_4DCCB0())
+	return int(sessionSaveAllowed())
 }
 func Sub_554290() uint32 {
 	return pingMinimum()

@@ -170,7 +170,7 @@ func gameFrame() uint32 {
 	return GetServer().S().Frame()
 }
 func Sub_409A70(a1 int) int {
-	return int(C.sub_409A70(C.short(a1)))
+	return int(sessionModeIndex(int16(a1)))
 }
 func Nox_xxx_netInformTextMsg2_4DA180(a1 int, a2 unsafe.Pointer) {
 	C.nox_xxx_netInformTextMsg2_4DA180(C.int(a1), (*C.uchar)(a2))
@@ -197,7 +197,7 @@ func Sub_4D60B0() {
 	questRuntimeResetAll()
 }
 func Sub_4CFDF0(a1 int) {
-	C.sub_4CFDF0(C.int(a1))
+	sessionMapStateSet(int32(a1))
 }
 func Nox_xxx_playerMapTracksObj_4173D0(a1 int, a2 *server.Object) int {
 	return playerStateTracks(a1, a2)
@@ -263,7 +263,7 @@ func Sub_40A6A0(a1 int) {
 	serverConfigRateDirtySet(int32(a1))
 }
 func Nox_xxx_netReportAllLatency_4D3050() {
-	C.nox_xxx_netReportAllLatency_4D3050()
+	sessionReportLatency()
 }
 func Sub_4183C0() {
 	teamRuntimeNearest()
@@ -317,7 +317,7 @@ func Nox_xxx_netUpdateObjectSpecial_527E50(a1 *server.Object, a2 *server.Object)
 	visibilitySpecialUpdate(a1, a2)
 }
 func Sub_4D15C0() {
-	C.sub_4D15C0()
+	sessionScavengerReset()
 }
 func Sub_4D7B40() {
 	questRuntimeDepartureReset()
@@ -419,7 +419,7 @@ func Sub_456050() {
 	teamUIHUDHide(true)
 }
 func Nox_xxx_mapFindCrown_4CFC30() {
-	C.nox_xxx_mapFindCrown_4CFC30()
+	sessionClearCrowns()
 }
 func Nox_xxx_mapInfoSetCapflag_417EA0() int {
 	return teamUIMapCTF()
@@ -449,7 +449,7 @@ func Sub_510E50() {
 	motionSentryHead = 0
 }
 func Sub_4D1610() {
-	C.sub_4D1610()
+	sessionScavengerMaximumReset()
 }
 func Sub_4EC5B0() {
 	C.sub_4EC5B0()

@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_2.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -44,7 +39,7 @@ func inventoryTreasureDrop(u, it *server.Object, pos *types.Pointf) int {
 	if u.ObjClass&4 != 0 && noxflags.HasGame(64) {
 		pl := u.UpdateDataPlayer().Player
 		pl.Field2152--
-		pl.Field2156 = uint32(C.nox_xxx_scavengerTreasureMax_4D1600())
+		pl.Field2156 = uint32(sessionScavengerMaximum())
 		gameplayReportScavenger(u)
 		inventorySound(308, u, 0, 0)
 	}

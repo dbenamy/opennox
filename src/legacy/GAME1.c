@@ -91,70 +91,11 @@ int nox_xxx_parseString_409470(FILE* a1, uint8_t* a2) {
 	return 1;
 }
 
-//----- (00409A70) --------------------------------------------------------
-int sub_409A70(short a1) {
-	int result;        // eax
-	unsigned char* v2; // ecx
 
-	result = 0;
-	v2 = getMemAt(0x587000, 4704);
-	while (*(uint32_t*)v2 != (a1 & 0x17F0)) {
-		v2 += 4;
-		++result;
-		if ((int)v2 >= (int)getMemAt(0x587000, 4728)) {
-			return 0;
-		}
-	}
-	return result;
-}
 
-//----- (00409B30) --------------------------------------------------------
-char* nox_server_currentMapGetFilename_409B30() { return (char*)getMemAt(0x5D4594, 2598188); }
 
-//----- (00409B40) --------------------------------------------------------
-char* nox_xxx_mapGetMapName_409B40() { return (char*)getMemAt(0x85B3FC, 36); }
 
-//----- (00409B50) --------------------------------------------------------
-unsigned int sub_409B50(const char* a1) {
-	unsigned int result; // eax
 
-	result = strlen(a1) + 1;
-	memcpy(getMemAt(0x5D4594, 3452), a1, result);
-	return result;
-}
-
-//----- (00409B80) --------------------------------------------------------
-char* sub_409B80() { return (char*)getMemAt(0x5D4594, 3452); }
-
-//----- (00409D70) --------------------------------------------------------
-char* nox_xxx_gameSetMapPath_409D70(char* a1) {
-	char* result;  // eax
-	char* v2;      // eax
-	signed int v3; // esi
-
-	result = (char*)nox_strcmpi((const char*)getMemAt(0x5D4594, 2598188), a1);
-	if (result) {
-		strncpy((char*)getMemAt(0x5D4594, 2598188), a1, 0x50u);
-		*getMemU8Ptr(0x5D4594, 2598267) = 0;
-		v2 = strrchr(a1, 92);
-		if (v2) {
-			v3 = strlen(v2 + 1) - 4;
-			if (v3 < 0) {
-				v3 = 0;
-			}
-			result = strncpy((char*)getMemAt(0x85B3FC, 36), v2 + 1, v3);
-		} else {
-			v3 = strlen((const char*)getMemAt(0x5D4594, 2598188)) - 4;
-			if (v3 < 0) {
-				v3 = 0;
-			}
-			result = strncpy((char*)getMemAt(0x85B3FC, 36), (const char*)getMemAt(0x5D4594, 2598188), v3);
-		}
-		*getMemU8Ptr(0x85B3FC, 36 + v3) = 0;
-		nox_server_gameSettingsUpdated = 1;
-	}
-	return result;
-}
 
 
 

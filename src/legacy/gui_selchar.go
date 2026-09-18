@@ -139,9 +139,7 @@ func Nox_xxx_bookShowMB_45AD70(a1 int) {
 	bookShow(a1)
 }
 func Sub_41A000(a1 string, a2 *server.SaveGameInfo) int {
-	cstr := CString(a1)
-	defer StrFree(cstr)
-	return int(C.sub_41A000(cstr, (*C.nox_savegame_xxx)(unsafe.Pointer(a2))))
+	return int(sessionSaveMetadata(a1, a2))
 }
 func Get_sub_4A18E0() unsafe.Pointer {
 	return C.sub_4A18E0

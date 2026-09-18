@@ -40,14 +40,14 @@ func serverOptionsApply() int8 {
 	cycle := data[57] != 0
 	result := int8(data[57])
 	if cycle {
-		p := C.sub_409B80()
-		selected = GoString(p)
+		p := sessionSelectedMap()
+		selected = alloc.GoString(p)
 		result = int8(uintptr(unsafe.Pointer(p)))
 	}
 	if selected == "" {
 		return result
 	}
-	different := !mapASCIIEqual(selected, GoString(C.nox_xxx_mapGetMapName_409B40()))
+	different := !mapASCIIEqual(selected, GoStringP(unsafe.Pointer(sessionMapName())))
 	serverConfigSlotCopy(int32(1), int32(0))
 	current := serverOptionsRecord(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlotSelect(int32(0))))))
 	Nox_xxx_gameSetServername_40A440(alloc.GoString(&current[9]))
@@ -76,7 +76,7 @@ func serverOptionsApply() int8 {
 		sub_4537F0()
 		head := (*C.nox_list_item_t)(serverOptionsListHead())
 		ruleWrite("user.rul", (*server.Settings2)(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlot(int32(1)))))), head)
-		sub_57A950(C.nox_server_currentMapGetFilename_409B30())
+		commandRulesMap(alloc.GoString(sessionMapFilename()))
 		ruleLoad((*server.Settings2)(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlot(int32(0)))))), "user.rul", head, 3, uint16(noxflags.GetGame()))
 	}
 	return int8(serverOptionsClose(0))

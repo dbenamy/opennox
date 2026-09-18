@@ -48,7 +48,7 @@ func Nox_xxx_loadModifyers_4158C0() {
 }
 
 func Sub_4D11A0() {
-	C.sub_4D11A0()
+	sessionRosterInit()
 }
 
 func Sub_431370() int {
@@ -94,7 +94,7 @@ func Sub_42EDC0() {
 }
 
 func Sub_4D11D0() {
-	C.sub_4D11D0()
+	sessionRosterClear()
 }
 
 func Sub_4D0DA0() {

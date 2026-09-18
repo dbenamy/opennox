@@ -110,7 +110,7 @@ func Nox_xxx_mapGenStart_4D4320() int {
 	return int(mapOrchestrationStart())
 }
 func Nox_xxx_servResetPlayers_4D23C0() {
-	C.nox_xxx_servResetPlayers_4D23C0()
+	sessionResetPlayers()
 }
 func Nox_xxx_gameLoopMemDump_413E30() {
 	C.nox_xxx_gameLoopMemDump_413E30()
@@ -155,7 +155,7 @@ func Sub_459DA0() int {
 	return bool2int(serverOptionsRoot != 0)
 }
 func Sub_4DF020() {
-	C.sub_4DF020()
+	sessionBroadcastSettings()
 }
 func Sub_4161E0() {
 	serverConfigRefresh()
@@ -203,7 +203,7 @@ func Sub_459D50(a1 int) {
 	serverOptionsDirty(a1)
 }
 func Nox_xxx_gameSetMapPath_409D70(a1 string) {
-	C.nox_xxx_gameSetMapPath_409D70(internCStr(a1))
+	sessionSetMapPath((*byte)(unsafe.Pointer(internCStr(a1))))
 }
 func Nox_xxx_gui_43E1A0(a1 int) {
 	C.nox_xxx_gui_43E1A0(C.int(a1))
@@ -214,7 +214,7 @@ func Nox_xxx_printCentered_445490(str string) {
 	C.nox_xxx_printCentered_445490(wstr)
 }
 func Nox_xxx_mapValidateMB_4CF470(a1 string, a2 uint32) int {
-	return int(C.nox_xxx_mapValidateMB_4CF470(internCStr(a1), C.int(a2)))
+	return int(sessionMapValidate((*byte)(unsafe.Pointer(internCStr(a1))), a2))
 }
 func Nox_xxx_copyServerIPAndPort_431790(a1 string) {
 	C.nox_xxx_copyServerIPAndPort_431790(internCStr(a1))

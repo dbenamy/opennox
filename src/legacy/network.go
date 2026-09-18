@@ -256,16 +256,16 @@ func Nox_xxx_netPlayerObjSend_518C30(a1 *server.Object, a2 *server.Object, a3 in
 	return objectReportPlayer(a1, a2, a3, a4)
 }
 func Nox_xxx_gameServerReadyMB_4DD180(a1 int) {
-	C.nox_xxx_gameServerReadyMB_4DD180(C.int(a1))
+	sessionPlayerReady(int32(a1))
 }
 func Nox_xxx_teamCompare2_419180(t *server.ObjectTeam, id server.TeamID) int {
 	return int(teamRuntimeBool(teamRuntimeContains(t, id)))
 }
 func Sub_4D12A0(a1 int) int {
-	return int(C.sub_4D12A0(C.int(a1)))
+	return int(sessionRosterContains(int32(a1)))
 }
 func Sub_4D1210(a1 int) {
-	C.sub_4D1210(C.int(a1))
+	sessionRosterAdd(int32(a1))
 }
 func Nox_net_importantACK_4E55A0(a1 int, a2 int) {
 	reliableACK(a1, uint32(a2))

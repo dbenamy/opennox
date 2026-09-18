@@ -108,11 +108,11 @@ func inventoryTreasurePickup(u, it *server.Object, arg int) int {
 	pl := u.UpdateDataPlayer().Player
 	inventorySound(307, u, 0, 0)
 	pl.Field2152++
-	pl.Field2156 = uint32(C.nox_xxx_scavengerTreasureMax_4D1600())
+	pl.Field2156 = uint32(sessionScavengerMaximum())
 	gameplayReportScavenger(u)
 	core := GetServer().S()
 	if !u.TeamVal.Has() {
-		if pl.Field2152 == uint32(C.nox_xxx_scavengerTreasureMax_4D1600()) {
+		if pl.Field2152 == uint32(sessionScavengerMaximum()) {
 			noxflags.SetGame(8)
 			C.nox_xxx_changeScore_4D8E90(inventoryInt(u), 1)
 			C.nox_xxx_netReportLesson_4D8EF0(asObjectC(u))
@@ -132,7 +132,7 @@ func inventoryTreasurePickup(u, it *server.Object, arg int) int {
 				total += other.UpdateDataPlayer().Player.Field2152
 			}
 		}
-		if total == uint32(C.nox_xxx_scavengerTreasureMax_4D1600()) {
+		if total == uint32(sessionScavengerMaximum()) {
 			noxflags.SetGame(8)
 		}
 	}

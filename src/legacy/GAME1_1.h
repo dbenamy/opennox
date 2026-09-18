@@ -33,7 +33,6 @@ double nox_xxx_gamedataGetFloatTable_419D70(char* a1, int a2);
 void sub_419E10(nox_object_t* a1, int a2);
 int sub_419E60(nox_object_t* a1);
 int sub_419EA0();
-int sub_41A000(char* a1, nox_savegame_xxx* sv);
 int nox_xxx_cliPlrInfoLoadFromFile_41A2E0(char* a1, int a2);
 int nox_xxx_plrLoad_41A480(char* a1);
 int sub_41A590(void* a1, void* a2);

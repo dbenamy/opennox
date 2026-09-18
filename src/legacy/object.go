@@ -407,7 +407,7 @@ func Sub_528990(a1 *server.Object) {
 	visibilityGlobalRemove(a1)
 }
 func Nox_xxx_unitNewAddShadow_4DA9A0(a1 *server.Object) {
-	C.nox_xxx_unitNewAddShadow_4DA9A0(asObjectC(a1))
+	sessionShadowAdd(a1)
 }
 func Nox_xxx_respawnAdd_4EC5E0(a1 *server.Object) {
 	C.nox_xxx_respawnAdd_4EC5E0(asObjectC(a1))
@@ -416,7 +416,7 @@ func Sub_5117F0(a1 *server.Object) {
 	motionActivate(a1)
 }
 func Nox_xxx_action_4DA9F0(a1 *server.Object) {
-	C.nox_xxx_action_4DA9F0(asObjectC(a1))
+	sessionShadowRemove(a1)
 }
 func Nox_xxx_unitPostCreateNotify_4E7F10(a1 *server.Object) {
 	C.nox_xxx_unitPostCreateNotify_4E7F10(asObjectC(a1))
