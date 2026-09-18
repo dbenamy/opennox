@@ -1,0 +1,74 @@
+[
+  {
+    "symbol": "nullsub_25",
+    "body_lines": 1,
+    "sha256": "b37dbfada577c9ee8169784886c378c9f183f7c1b1a197ecacbe1666f2e5da20",
+    "disposition": "remove no-effect loop/helper"
+  },
+  {
+    "symbol": "sub_4D2160",
+    "body_lines": 27,
+    "sha256": "3e59060a37a2ed2170ddc6765bca15d42cc2d6581ac5a9e24d955b3e334f150c",
+    "disposition": "convert to Go"
+  },
+  {
+    "symbol": "sub_4D22B0",
+    "body_lines": 40,
+    "sha256": "fad026fea47c093c06cbb4ccea54b90d77c549c0420d9e4edf0ad9245f9cb713",
+    "disposition": "convert to Go"
+  },
+  {
+    "symbol": "sub_4DBA30",
+    "body_lines": 181,
+    "sha256": "9a99cbc97ec9d8bedc0091e32000feb90ad5599003a70e32ac57f7966f31ace5",
+    "disposition": "convert to Go"
+  },
+  {
+    "symbol": "nox_xxx_mapLoadRequired_4DCC80",
+    "body_lines": 1,
+    "sha256": "eedbaf2877ec6e6a3a38cc4dcf093482f2f2de9493f25b71b3c5a0bdc2daf3ec",
+    "disposition": "convert to Go"
+  },
+  {
+    "symbol": "sub_4E4170",
+    "body_lines": 11,
+    "sha256": "20958850abbd815cf0bbb5dc37afe37a9aa3b602f06723f05b9601c5b9c56f56",
+    "disposition": "convert to Go"
+  },
+  {
+    "symbol": "sub_4E76C0",
+    "body_lines": 14,
+    "sha256": "15ce994c3d9d3cd0556763286dd896ba3457434160404b87869b055bbbab5e62",
+    "disposition": "remove no-effect loop/helper"
+  },
+  {
+    "symbol": "sub_4EDD70",
+    "body_lines": 24,
+    "sha256": "6cc4398f7b239bbebe4f29f117bf6364ba11f223ce140b3d3f597be1415be703",
+    "disposition": "convert to Go"
+  },
+  {
+    "symbol": "sub_4EF660",
+    "body_lines": 21,
+    "sha256": "e3a09706638664db56e5b0812a342b5f18fe2b52ca5e18b8510465984b2a05e8",
+    "disposition": "convert to Go"
+  },
+  {
+    "symbol": "sub_4F1F20",
+    "body_lines": 74,
+    "sha256": "ad15a2772cbde6235ce4883d9c482b145d7c3f6858dae0edd7c2c1f63acb896c",
+    "disposition": "convert to Go"
+  },
+  {
+    "symbol": "nox_xxx_updateUnits_51B100_D",
+    "body_lines": 87,
+    "sha256": "840ac10f3c9b9bd2b6f95efbcbcbbd0f56377493e9d403c2d68460a2e0418136",
+    "disposition": "convert to Go"
+  },
+  {
+    "symbol": "sub_57B140",
+    "body_lines": 13,
+    "sha256": "111cb46eab22b026bbede9cf105ecd84dce8989c2d33bd99424c359ed9b8a21a",
+    "disposition": "convert to Go"
+  }
+]

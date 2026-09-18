@@ -1,0 +1,105 @@
+{
+  "implementation": "original C",
+  "roots": 16,
+  "tests": 1819,
+  "records": 1923,
+  "repeat_identical": true,
+  "captures": [
+    {
+      "label": "server-orchestration-difficulty-timing",
+      "sha256": "6359cabe21d8bbc4cf1a2777e04decc953103b293ba6b4ba12b26b886625492f",
+      "records": 512,
+      "source": "src/server_orchestration_timing_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-drop-flags",
+      "sha256": "c00d68b59aa24f3682ea00d5e567353cb977228ce1c6deeb4c928595b3f6048c",
+      "records": 24,
+      "source": "src/server_orchestration_flags_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-fresh-loadout",
+      "sha256": "70a384882d1bb5ea31f977c2b1b546a794ccbdfbba03a0627073cae743a8aabb",
+      "records": 8,
+      "source": "src/server_orchestration_transition_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-load-state",
+      "sha256": "06bc7ceb21e4856acda9505ef77ee3b0f98be4968aefcff276f21d005f92f82a",
+      "records": 6,
+      "source": "src/server_orchestration_timing_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-open-shop-transition",
+      "sha256": "961f0ce56da23ec77b65914361581b1b1e55a750f55141a2c260a11ff3dfe9a7",
+      "records": 1,
+      "source": "src/server_orchestration_transition_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-player-reset",
+      "sha256": "9e62b5a235e909219f97b671b718a09595b8765cdc82c56704e7db01d4473225",
+      "records": 40,
+      "source": "src/server_orchestration_player_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-player-transition",
+      "sha256": "438fe05865744301dbb154d101fd3e36b93834d4ea8d68f6b75d1c47b9cd0062",
+      "records": 32,
+      "source": "src/server_orchestration_transition_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-restore-cleanup",
+      "sha256": "34a83850ba357e5e09632fca92fe90cedcb6af31273181d33613243af694d33d",
+      "records": 72,
+      "source": "src/server_orchestration_restore_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-restore-integration",
+      "sha256": "3425da6b38be9af303273132e17ec9a8a60444b6c2f4e96ead8abc3a0fde070a",
+      "records": 6,
+      "source": "src/server_orchestration_restore_integration_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-restore-references",
+      "sha256": "b67b978535164aab1445f86e1e15d6ddc26c7fb02eaac125dfce421d21a9b7ea",
+      "records": 128,
+      "source": "src/server_orchestration_restore_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-restore-scheduling",
+      "sha256": "d403b0c816b97a573960c1e385629836caa0ccb6fddc9cc0962cb61c78d4eadd",
+      "records": 84,
+      "source": "src/server_orchestration_restore_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-restore-without-host",
+      "sha256": "5b92921676d1f7a7a3fc00b61832ba60a6ce24bb2d8bf634386ed5519b5bf6ca",
+      "records": 8,
+      "source": "src/server_orchestration_restore_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-rewards",
+      "sha256": "17d07dde8a77dc78ee93b67c2c6823d9144128565e3870ebb02d88312f749ad7",
+      "records": 105,
+      "source": "src/server_orchestration_rewards_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-round-flags",
+      "sha256": "77fbf4346cfe311cdfcb2bfb63345a00d61945d5e98aa2e84b9e8238dd1a0842",
+      "records": 72,
+      "source": "src/server_orchestration_flags_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-secret-walls",
+      "sha256": "a3f5a14c8ee0a72b5764ee7e96308824cd461dc55bb2e50a88f1ded0e25f3607",
+      "records": 725,
+      "source": "src/server_orchestration_walls_porttest_test.go"
+    },
+    {
+      "label": "server-orchestration-timeout",
+      "sha256": "b65850caac85b5853b8bde9049aa58adbe5182b0424ab8f7a49e5d69b2301ba4",
+      "records": 100,
+      "source": "src/server_orchestration_timing_porttest_test.go"
+    }
+  ]
+}

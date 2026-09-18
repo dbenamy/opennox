@@ -1,0 +1,63 @@
+{
+  "status": "qualified original-C baseline",
+  "parent": "5822c9c6",
+  "focused_roots": 16,
+  "focused_tests_including_subtests": 1819,
+  "new_captures": 16,
+  "new_capture_records": 1923,
+  "targets": [
+    {
+      "target": "default",
+      "roots": 427,
+      "tests": 41317
+    },
+    {
+      "target": "server",
+      "roots": 427,
+      "tests": 41317
+    },
+    {
+      "target": "highres",
+      "roots": 427,
+      "tests": 41317
+    }
+  ],
+  "captures": 245,
+  "records": 78253,
+  "source_files": 2433,
+  "source_identity": true,
+  "capture_identity": true,
+  "frozen_c_identity": true,
+  "static": true,
+  "production_reuse": {
+    "parent_commit": "5822c9c6",
+    "reused_qualification": "docs/porting/item-respawn-native-qualification.json",
+    "reused_source": "build/port-item-respawn/native-production/source.json",
+    "production_source_identical": true,
+    "changed_or_added_files": [
+      "src/legacy/server_orchestration_porttest.go",
+      "src/server/server_orchestration_porttest.go",
+      "src/server_orchestration_flags_porttest_test.go",
+      "src/server_orchestration_player_porttest_test.go",
+      "src/server_orchestration_restore_integration_porttest_test.go",
+      "src/server_orchestration_restore_porttest_test.go",
+      "src/server_orchestration_rewards_porttest_test.go",
+      "src/server_orchestration_timing_porttest_test.go",
+      "src/server_orchestration_transition_porttest_test.go",
+      "src/server_orchestration_walls_porttest_test.go"
+    ],
+    "parent_files": 2423,
+    "current_files": 2433,
+    "qualification_sha256": "8c8be6dbb3469b055f5a052d2514cf039b208e1078b5e5510b0dd0b5c7fc792d"
+  },
+  "c_loc": {
+    "production": {
+      "files": 68,
+      "lines": 31346
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  }
+}

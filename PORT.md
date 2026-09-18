@@ -22,8 +22,10 @@ private globals moved. See [ITEM_RESPAWN.md](docs/porting/ITEM_RESPAWN.md).
 Current production C is **31,346 physical lines in68 files**, with zero reference
 C (−351 from the repaired item-respawn baseline). All three targets, supplemental
 caller regressions and fresh production/headless integration qualify. Remaining
-server orchestration is the next candidate; [PORTING_STATE.md](PORTING_STATE.md)
-is the resume checkpoint.
+server orchestration now has a qualified original-C baseline: 16 focused roots
+and 1,923 repeated/frozen records, plus all three broader target gates. Its Go
+conversion is next; see [SERVER_ORCHESTRATION.md](docs/porting/SERVER_ORCHESTRATION.md)
+and [PORTING_STATE.md](PORTING_STATE.md).
 
 ## Goal and target
 

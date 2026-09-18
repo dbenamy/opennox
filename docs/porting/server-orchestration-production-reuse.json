@@ -1,0 +1,21 @@
+{
+  "parent_commit": "5822c9c6",
+  "reused_qualification": "docs/porting/item-respawn-native-qualification.json",
+  "reused_source": "build/port-item-respawn/native-production/source.json",
+  "production_source_identical": true,
+  "changed_or_added_files": [
+    "src/legacy/server_orchestration_porttest.go",
+    "src/server/server_orchestration_porttest.go",
+    "src/server_orchestration_flags_porttest_test.go",
+    "src/server_orchestration_player_porttest_test.go",
+    "src/server_orchestration_restore_integration_porttest_test.go",
+    "src/server_orchestration_restore_porttest_test.go",
+    "src/server_orchestration_rewards_porttest_test.go",
+    "src/server_orchestration_timing_porttest_test.go",
+    "src/server_orchestration_transition_porttest_test.go",
+    "src/server_orchestration_walls_porttest_test.go"
+  ],
+  "parent_files": 2423,
+  "current_files": 2433,
+  "qualification_sha256": "8c8be6dbb3469b055f5a052d2514cf039b208e1078b5e5510b0dd0b5c7fc792d"
+}
