@@ -86,3 +86,13 @@ under build are not installed or qualified. The interface audit currently retain
 18 actual C entry points plus three stored voice callbacks (21 total); 41 can
 become private Go functions. Review the complete adapter return conventions too:
 the existing Go timer adapters return nil/zero for raw/interpolated setters.
+
+## C qualification complete
+
+Baseline **e30b952e** is committed/pushed. Fresh production in
+`c-final-production` passes all three binaries and ABI checks, the exact known
+full-suite failure set (1,553 entries; 32 skipped, 15 passed, three failed packages),
+gameplay and explicit save/load. All 2,583 source fingerprints match the three
+affected target sweeps. Every build/test session is joined; no outstanding builds.
+Native conversion is next. The physical C baseline is 22,410 /66 files, zero
+reference C, including ten test-only observer lines.

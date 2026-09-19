@@ -1,5 +1,5 @@
 {
-  "status": "repeated three-target C captures; frozen qualification pending",
+  "status": "frozen and qualified C baseline",
   "parent": "50f0711d",
   "repeats": {
     "default": "c-final-focused-second",

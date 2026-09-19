@@ -58,9 +58,10 @@ The lifecycle-third sweep passes 11 root tests and static-baseline passes.
 Real event/pool/cache/voice owners are installed. All 17 captures /820 records
 are now frozen after three identical target runs. Affected sweeps pass 51 root
 plus five timer tests per target; 36 artifacts /2,353 records match, with all
-2,583 source fingerprints identical. Fresh C production runs in c-final-production
-(session 8357); join it before any Go/C edits. Baseline is not production-qualified
-yet. All fixture drafts and freeze.py are consumed. Native drafts are uninstalled.
+2,583 source fingerprints identical. Fresh C production in c-final-production passes all three binaries/ABI, exact
+known full-suite results, gameplay and explicit save/load. Baseline e30b952e is
+committed/pushed; all build/test sessions are joined. Native conversion is next.
+All fixture drafts and freeze.py are consumed. Native drafts are uninstalled.
 Use tracked source over drafts.
 
 ## Qualified parent — native combat overlays
