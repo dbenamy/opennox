@@ -62,12 +62,37 @@ Fixture corrections: correct color encoding,11px cap-height plus4px line spacing
 and capsule geometry independently expressed as distance to its vertical segment.
 All earlier capture hashes remain unchanged.
 
-Next: install/review the ignored hud-draft.go and chat-events-draft.go (NOT yet
-installed), then complete hover enumeration, paper-doll and ordered Escape coverage.
-HUD draft owns actual windows and observes existing FPS/drag functions; review its
-cleanup and empty dragged-item state. Chat draft covers resize/clamp/composition
-widths and low16 submission length with actual queue bytes. Earlier installed
-hover/pickup/drawing drafts and hover-box insertion are consumed. Never recopy them.
+Extended checkpoint **ac2c9182** is committed and pushed. Continued source adds
+HUDVisibility and ChatDrawingAndSubmit: c-hud-second passes21 roots, all nineteen
+preceding captures unchanged; static-hud passes. c-hud-initial reached chat submit
+without an owned netlist; fixed by initializing/restoring the real queue. Both jobs
+are joined. New evidence:192 HUD state cases,33 chat resize/composition cases and
+24 submission length/mode cases. All these installed drafts are consumed.
+
+EscapeOrder passes352 cases in c-escape-initial (22 roots, joined), covering
+actual controllers and simultaneous close behavior. Hover enumeration and
+DollAssets were installed next. DollAssets passes111 shipped asset loads/table
+slots, including the null name. Enumeration initially failed because the reused
+effects fixture's GetMousePos overrides the real input position. A client proxy now
+delegates just that getter to the owned input device; index, renderer and selection
+remain real. The failed runs are joined and superseded; no expectations weakened.
+
+Thirty contract roots now pass in c-escape-complete-initial (session34962 joined).
+This includes full paper-doll composition, conversation blink borders, Escape
+through the chat callback, quantity/quickbar/identify closure, and pending book
+additions. All26 earlier captures match c-blink-second, and all29 captures there
+match the thirty-root run. The book/doll fixture corrections are documented in
+the batch report. No final goldens are frozen and production qualification remains
+pending. Installed drafts are consumed; never recopy them over corrected source.
+
+The all-target development sweep passes30/28/30 roots and31/29/31 captures on
+default/server/highres, with no skips and2,746 matching source fingerprints.
+Every shared capture agrees, and the default captures repeat independently from
+c-escape-complete-initial. Static-contracts passes. All jobs are joined.
+See client-interaction-contract-{batch,checkpoint}.json and contract-tests.txt.
+The two server omissions are the client-only hover geometry/enumeration roots.
+Next: affected accumulated corpus and fresh production qualification, then final
+baseline review/freeze before translation. No final baseline or port is claimed.
 
 Disk cleanup removed62 rebuildable Go cache data files >=64MiB, each unaccessed and
 unmodified for six hours, after all builds were joined. Reclaimed4,364,972,826 bytes.

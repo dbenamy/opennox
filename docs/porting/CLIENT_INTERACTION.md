@@ -80,8 +80,8 @@ raw callback slots, original tables, return conventions and pointer lifetimes.
 Text review found that Go callers can supply full strings to fixed centered-message
 rows and the chat-format temporary. Do not capture writes beyond their storage
 as compatibility expectations. Establish supported boundaries and make any
-justified reversible prerequisite correction before freezing; none is installed
-in this checkpoint. Then repeat original captures, qualify the affected three
+justified reversible prerequisite correction before freezing; the text
+prerequisites described below are now installed. Then repeat original captures, qualify the affected three
 targets and production evidence, commit the final baseline, and translate.
 
 Completed final session-dialog scenario copies were hash-deduplicated after their
@@ -148,3 +148,41 @@ Disk maintenance removed62 reproducible Go cache entries >=64MiB, unmodified and
 unaccessed for six hours, only after every build joined. Reclaimed4,364,972,826 bytes;
 ignored audit/removal manifests remain. Assets, source, binaries and qualification
 evidence were preserved. Removal is consumed; Go regenerates missing cache data.
+
+
+## Additional controller and rendering contracts
+
+The default development run `c-escape-complete-initial` passes30 roots without
+skips. All26 captures from `c-doll-layer-initial` match `c-blink-second`; all29
+captures from that run match the new thirty-root run. All-target repetition is
+in progress; these are observed development results, not the frozen baseline.
+
+New contracts exercise192 HUD combinations,33 chat layout cases and24 submit
+cases;352 ordered Escape combinations run both directly and through the actual
+chat key callback. Eight combinations cover quantity, expanded quickbar and
+identification closure before conversation dispatch. Another45 cases cover
+pending spellbook addition completion and the earlier modal gates, with actual
+particle records and RNG consumption captured.
+
+Rendering uses111 shipped paper-doll asset names/table slots,256 independent
+material/layer cases,640 full composition cases and108 conversation blink cases.
+Full composition checks gender/base/bald choices, armor/cloak/weapon ordering,
+palette state, background and nonempty pixels. Hover enumeration uses the actual
+spatial index in both insertion orders and two world offsets.
+
+Fixture corrections preserve production behavior: initialize the actual queue
+before chat submission; delegate mouse position to the owned input rather than
+the reused synthetic getter; explicitly assign allocated point coordinates
+because alloc.New does not copy its sample; advance frame sequence with Input.Tick
+rather than its separate event counter. The first blink run was terminated and
+joined after that counter mistake, and supplies no accepted evidence. All
+installed source drafts are consumed. No additional production changes were made.
+
+
+The [contract checkpoint](client-interaction-contract-checkpoint.json) now records
+30/28/30 passing roots and31/29/31 captures on default/server/highres. All shared
+captures match, default independently repeats, static-contracts passes, and2,746
+source fingerprints agree. Both client-only hover roots are excluded on server.
+Rerun [the contract batch](client-interaction-contract-batch.json) with the desired
+`--phase default|server|highres` and a fresh output directory. This checkpoint
+remains separate from final baseline and production qualification.

@@ -163,3 +163,118 @@ func TestClientInteractionHoverCircleAndGates(t *testing.T) {
 	}
 	interactionCapture(t, "hover-circle-gates", captured)
 }
+
+// The effects fixture supplies a synthetic mouse getter; this integration check
+// delegates that boundary to the actual owned input device.
+type interactionHoverMouseClient struct {
+	legacy.Client
+	input interface{ GetMousePos() image.Point }
+}
+
+func (c *interactionHoverMouseClient) GetMousePos() image.Point { return c.input.GetMousePos() }
+
+func TestClientInteractionHoverEnumeration(t *testing.T) {
+	o := newInventoryTransactionOwner(t, "Polyp", "Glyph", "HoverItem")
+	o.reset(t)
+	oldClient := legacy.GetClient
+	proxy := &interactionHoverMouseClient{oldClient(), o.c.Inp}
+	legacy.GetClient = func() legacy.Client { return proxy }
+	defer func() { legacy.GetClient = oldClient }()
+	words, restore := legacy.PortTestClientInteractionWords()
+	defer restore()
+	serverConfigOwnBytes(t, 0x852978, 8, 4)
+	depth := serverConfigOwnBytes(t, 0x5D4594, 1096628, 4)
+	glyph := serverConfigOwnBytes(t, 0x5D4594, 1096632, 4)
+	serverConfigOwnBytes(t, 0x5D4594, 1096648, 4)
+	restoreTypes := o.c.srv.Server.PortTestRewardTypes([]string{"Glyph"}, nil, true, 0, 0)
+	defer restoreTypes()
+	restoreGlyph := legacy.PortTestClientInteractionGlyphCache(uint32(o.c.Things.TypeByID("Glyph").Index()))
+	defer restoreGlyph()
+	if o.c.srv.Types.IndByID("Glyph") == 0 {
+		t.Fatal("nonempty server Glyph lookup")
+	}
+	oldOffset := partViewportOff
+	defer func() { partViewportOff = oldOffset }()
+	o.c.Inp.SetMouseBounds(image.Rect(0, 0, 256, 256))
+	var objects []*client.Drawable
+	for i := 0; i < 4; i++ {
+		dr := o.item(t, "HoverItem", uint32(i+1))
+		dr.ObjClass = 0x200
+		dr.ObjFlags = 0
+		dr.Buffs = 0
+		dr.DrawFuncPtr = legacy.PortTestSpriteAnimationCallback(2)
+		dr.PosVec = image.Pt(100, 100)
+		dr.ZSizeMin = 0
+		dr.ZSizeMax = 20
+		dr.Shape.Kind = server.ShapeKindCircle
+		dr.Shape.Circle.R = 10
+		if i == 1 || i == 2 {
+			dr.ZVal = 1
+		}
+		if i == 3 {
+			dr.PosVec = image.Pt(500, 500)
+			dr.Shape.Circle.R = 1000
+		}
+		objects = append(objects, dr)
+	}
+	var indexed []*client.Drawable
+	remove := func() {
+		for _, dr := range indexed {
+			o.c.Objs.Index2DRemove(dr, dr.GetExt())
+		}
+		indexed = nil
+	}
+	defer remove()
+	type row struct {
+		Reverse       bool
+		Offset        image.Point
+		Hover, Usable int
+		Depth         uint32
+		Glyph         int
+	}
+	var captured []row
+	for _, reverse := range []bool{false, true} {
+		for _, offset := range []image.Point{{0, 0}, {20, 20}} {
+			remove()
+			order := []int{0, 1, 2, 3}
+			want := 2
+			if reverse {
+				order = []int{0, 2, 1, 3}
+				want = 1
+			}
+			for _, i := range order {
+				o.c.Objs.AddIndex2D(objects[i])
+				indexed = append(indexed, objects[i])
+			}
+			partViewportOff = offset
+			o.c.Inp.ChangeMousePos(image.Pt(100, 90).Sub(offset), true)
+			binary.LittleEndian.PutUint32(depth, 0x7fffffff)
+			*words["dword_5d4594_1096636"] = 0x7fffffff
+			*words["dword_5d4594_1096640"] = uint32(uintptr(objects[3].C()))
+			*words["nox_client_spriteUnderCursorXxx_1096644"] = uint32(uintptr(objects[3].C()))
+			clear(glyph)
+			interactionCall("nox_xxx_clientEnumHover_476FA0")
+			selected := uint32(uintptr(objects[want].C()))
+			if *words["dword_5d4594_1096640"] != selected || *words["nox_client_spriteUnderCursorXxx_1096644"] != selected || binary.LittleEndian.Uint32(depth) != 101 || *words["dword_5d4594_1096636"] != 101 || binary.LittleEndian.Uint32(glyph) != uint32(o.c.srv.Types.IndByID("Glyph")) {
+				index := func(v uint32) int {
+					for i, dr := range objects {
+						if v == uint32(uintptr(dr.C())) {
+							return i
+						}
+					}
+					return -1
+				}
+				var visits []int
+				o.c.Objs.EachInRect(image.Rect(4, -6, 196, 186), func(dr *client.Drawable) { visits = append(visits, index(uint32(uintptr(dr.C())))) })
+				t.Fatal("hover enumeration spatial bound/order/reset/translation", reverse, offset, "selected", index(*words["dword_5d4594_1096640"]), index(*words["nox_client_spriteUnderCursorXxx_1096644"]), "depth", binary.LittleEndian.Uint32(depth), *words["dword_5d4594_1096636"], "glyph", binary.LittleEndian.Uint32(glyph), o.c.srv.Types.IndByID("Glyph"), "mouse", o.c.Inp.GetMousePos(), "visits", visits)
+			}
+			captured = append(captured, row{reverse, offset, want, want, 101, o.c.srv.Types.IndByID("Glyph")})
+		}
+	}
+	remove()
+	interactionCall("nox_xxx_clientEnumHover_476FA0")
+	if *words["dword_5d4594_1096640"] != 0 || *words["nox_client_spriteUnderCursorXxx_1096644"] != 0 || binary.LittleEndian.Uint32(depth) != 0 || *words["dword_5d4594_1096636"] != 0 {
+		t.Fatal("empty hover enumeration clears previous selection")
+	}
+	interactionCapture(t, "hover-enumeration", captured)
+}
