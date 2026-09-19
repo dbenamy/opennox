@@ -1,0 +1,146 @@
+[
+  {
+    "symbol": "nox_xxx_cliPlrInfoLoadFromFile_41A2E0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 3724,
+    "end": 5537,
+    "line": 116,
+    "lines": 67
+  },
+  {
+    "symbol": "nox_xxx_plrLoad_41A480",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 5615,
+    "end": 6644,
+    "line": 185,
+    "lines": 46
+  },
+  {
+    "symbol": "sub_41A590",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 6722,
+    "end": 11697,
+    "line": 233,
+    "lines": 154
+  },
+  {
+    "symbol": "sub_41AA30",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 11775,
+    "end": 14133,
+    "line": 389,
+    "lines": 72
+  },
+  {
+    "symbol": "sub_41AC30",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 14305,
+    "end": 22876,
+    "line": 465,
+    "lines": 352
+  },
+  {
+    "symbol": "sub_41B3B0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 23003,
+    "end": 23183,
+    "line": 820,
+    "lines": 13
+  },
+  {
+    "symbol": "sub_41B3E0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 23261,
+    "end": 23624,
+    "line": 835,
+    "lines": 16
+  },
+  {
+    "symbol": "nox_xxx_guiFieldbook_41B420",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 23702,
+    "end": 26046,
+    "line": 853,
+    "lines": 97
+  },
+  {
+    "symbol": "nox_xxx_guiSpellbook_41B660",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 26173,
+    "end": 29989,
+    "line": 953,
+    "lines": 154
+  },
+  {
+    "symbol": "nox_xxx_guiEnchantment_41B9C0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 30157,
+    "end": 35311,
+    "line": 1111,
+    "lines": 163
+  },
+  {
+    "symbol": "sub_41BEC0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 35438,
+    "end": 37314,
+    "line": 1277,
+    "lines": 70
+  },
+  {
+    "symbol": "sub_41C080",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 37473,
+    "end": 38940,
+    "line": 1351,
+    "lines": 50
+  },
+  {
+    "symbol": "sub_41C280",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 39048,
+    "end": 40191,
+    "line": 1404,
+    "lines": 44
+  },
+  {
+    "symbol": "nox_xxx_parseFileInfoData_41C3B0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 40269,
+    "end": 44758,
+    "line": 1450,
+    "lines": 91
+  },
+  {
+    "symbol": "sub_41C780",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 44836,
+    "end": 46304,
+    "line": 1543,
+    "lines": 49
+  },
+  {
+    "symbol": "sub_41CAC0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 46382,
+    "end": 47561,
+    "line": 1594,
+    "lines": 54
+  },
+  {
+    "symbol": "nox_xxx_netSavePlayer_41CE00",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 47639,
+    "end": 47875,
+    "line": 1650,
+    "lines": 8
+  },
+  {
+    "symbol": "sub_41CEE0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 47953,
+    "end": 48842,
+    "line": 1660,
+    "lines": 40
+  }
+]

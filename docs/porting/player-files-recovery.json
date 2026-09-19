@@ -1,0 +1,104 @@
+{
+  "status": "partial C baseline; not frozen or converted",
+  "parent": "d7f52707",
+  "focused_runs": [
+    "metadata-write-initial",
+    "recovery-repeat"
+  ],
+  "root_tests": 18,
+  "captures": [
+    {
+      "name": "capture-player-files-attributes-read.json",
+      "records": 54,
+      "sha256": "1af6495bd98c46fda79ea158a8904d98cefa456204300ad97a66bc33df6b00d8"
+    },
+    {
+      "name": "capture-player-files-attributes-write.json",
+      "records": 25,
+      "sha256": "5e075027ec6a87113bb3b8c513c3fdbbd153ea1652e34a00d863307e4689fe1a"
+    },
+    {
+      "name": "capture-player-files-book-read-gates.json",
+      "records": 422,
+      "sha256": "700a93921052f26facf5e0c41c71e32e96b5b3519004bf4f8fcf5649710bf516"
+    },
+    {
+      "name": "capture-player-files-fieldbook-restore.json",
+      "records": 20,
+      "sha256": "a1a95b881d8f64baf6a81cf20436b549f65e5aaae7f57f825aec7f1a92b93741"
+    },
+    {
+      "name": "capture-player-files-fieldbook-write.json",
+      "records": 18,
+      "sha256": "7aed107c6b8bb79fff6519189fc6da13cff8d72310e619133641dfadbecbbfa7"
+    },
+    {
+      "name": "capture-player-files-gui-read.json",
+      "records": 7,
+      "sha256": "ed2464d247bfd1dc8e7f9e3f3715b6fe061a8ae72b8b0647d9b352401d697416"
+    },
+    {
+      "name": "capture-player-files-gui-write.json",
+      "records": 12,
+      "sha256": "e3c0a77762c7f303349b5cfa1915a4d746599f17e179f6478584bd621cf13fca"
+    },
+    {
+      "name": "capture-player-files-inventory-filter.json",
+      "records": 40,
+      "sha256": "0b9a189afb810d9cc23469d5bb4c00b5a2f2191107225f198b10c21d1f48b09e"
+    },
+    {
+      "name": "capture-player-files-inventory-grid-count.json",
+      "records": 5,
+      "sha256": "720f7af495eb06338fd3d3ef49031797e42cb98cde34f5ab76223987f88c4adb"
+    },
+    {
+      "name": "capture-player-files-journal-gates.json",
+      "records": 50,
+      "sha256": "b6fae4cbd71eaa0386f9fdd041a515dbffb709a8c40b51dcbd2867319ce3101e"
+    },
+    {
+      "name": "capture-player-files-metadata-read.json",
+      "records": 24,
+      "sha256": "f3222f98d7e387c1e442c700ef2481069702b7007e5df5052eb32259a07aed9c"
+    },
+    {
+      "name": "capture-player-files-metadata-write.json",
+      "records": 24,
+      "sha256": "8e338797b1d56fa43a3535e0d4b8281b8e67d583eec9ec90e25f22aa5b0f57ea"
+    },
+    {
+      "name": "capture-player-files-music-read.json",
+      "records": 112,
+      "sha256": "094b460d3653e9bd480cc4286f92576a549bf948be0be6af064c4a64802e1055"
+    },
+    {
+      "name": "capture-player-files-music-write.json",
+      "records": 24,
+      "sha256": "7bad1d4a672d72e080da6d754e8aa044299a931df691d34aa30ca2e818f5f201"
+    },
+    {
+      "name": "capture-player-files-spellbook-restore.json",
+      "records": 90,
+      "sha256": "7b5d2fdd038d54d4c071d416b128e12954884e21cad4cc4c92e36221c86df72a"
+    },
+    {
+      "name": "capture-player-files-spellbook-write.json",
+      "records": 54,
+      "sha256": "28b567c24791640d4fe503a790bfc18b16eb5b896ebdb0506b297ba134462acd"
+    },
+    {
+      "name": "capture-player-files-status-write.json",
+      "records": 25,
+      "sha256": "d8030ab510bf7605a09f9bb0e86a93711f4e9729b390cefbf554e443e4212ad4"
+    }
+  ],
+  "records": 1006,
+  "static": "static-recovery.log passes",
+  "production_c": {
+    "files": 65,
+    "lines": 21083,
+    "reference_lines": 0
+  },
+  "remaining": "See PLAYER_FILES.md. Production algorithms unchanged; complete baseline qualification still pending."
+}

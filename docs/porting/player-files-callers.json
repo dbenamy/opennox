@@ -1,0 +1,207 @@
+{
+  "roots": {
+    "nox_xxx_guiEnchantment_41B9C0": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 109,
+        "text": "{\"FieldGuide Data\", 0x8, &nox_xxx_guiFieldbook_41B420}, {\"Spellbook Data\", 0x5, &nox_xxx_guiSpellbook_41B660}, {\"Enchantment Data\", 0x6, &nox_xxx_guiEnchantment_41B9C0},"
+      },
+      {
+        "file": "src/legacy/save.go",
+        "line_after_candidate_removal": 148,
+        "text": "if C.nox_xxx_guiEnchantment_41B9C0(u.CObj(), pinfo.C()) == 0 {"
+      }
+    ],
+    "nox_xxx_guiSpellbook_41B660": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 109,
+        "text": "{\"FieldGuide Data\", 0x8, &nox_xxx_guiFieldbook_41B420}, {\"Spellbook Data\", 0x5, &nox_xxx_guiSpellbook_41B660}, {\"Enchantment Data\", 0x6, &nox_xxx_guiEnchantment_41B9C0},"
+      },
+      {
+        "file": "src/legacy/save.go",
+        "line_after_candidate_removal": 138,
+        "text": "if C.nox_xxx_guiSpellbook_41B660(u.CObj(), pinfo.C()) == 0 {"
+      }
+    ],
+    "sub_41C280": [
+      {
+        "file": "src/legacy/save.go",
+        "line_after_candidate_removal": 178,
+        "text": "if C.sub_41C280(nil) == 0 {"
+      },
+      {
+        "file": "src/legacy/GAME_data_init.go",
+        "line_after_candidate_removal": 63,
+        "text": "Ptr_sub_41C280:                            unsafe.Pointer(C.sub_41C280),"
+      }
+    ],
+    "sub_41C780": [
+      {
+        "file": "src/legacy/save.go",
+        "line_after_candidate_removal": 198,
+        "text": "if C.sub_41C780(0) == 0 {"
+      },
+      {
+        "file": "src/legacy/GAME_data_init.go",
+        "line_after_candidate_removal": 65,
+        "text": "Ptr_sub_41C780:                            unsafe.Pointer(C.sub_41C780),"
+      }
+    ],
+    "sub_41AA30": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 108,
+        "text": "{\"Attrib Data\", 0x2, &sub_41A590},     {\"Status Data\", 0x3, &sub_41AA30},    {\"Inventory Data\", 0x4, &sub_41AC30},"
+      },
+      {
+        "file": "src/legacy/save.go",
+        "line_after_candidate_removal": 108,
+        "text": "if C.sub_41AA30(u.CObj(), pinfo.C()) == 0 {"
+      }
+    ],
+    "sub_41B3E0": [],
+    "sub_41BEC0": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 110,
+        "text": "{\"Journal Data\", 0x9, &sub_41BEC0},    {\"Game Data\", 0xa, &sub_41C080},      {\"PAD_DATA\", 0xb, &sub_41C200},"
+      },
+      {
+        "file": "src/legacy/save.go",
+        "line_after_candidate_removal": 158,
+        "text": "if C.sub_41BEC0(u.CObj(), pinfo.C()) == 0 {"
+      }
+    ],
+    "sub_41AC30": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 108,
+        "text": "{\"Attrib Data\", 0x2, &sub_41A590},     {\"Status Data\", 0x3, &sub_41AA30},    {\"Inventory Data\", 0x4, &sub_41AC30},"
+      },
+      {
+        "file": "src/legacy/save.go",
+        "line_after_candidate_removal": 118,
+        "text": "if C.sub_41AC30(u.CObj(), pinfo.C()) == 0 {"
+      }
+    ],
+    "sub_41C080": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 110,
+        "text": "{\"Journal Data\", 0x9, &sub_41BEC0},    {\"Game Data\", 0xa, &sub_41C080},      {\"PAD_DATA\", 0xb, &sub_41C200},"
+      },
+      {
+        "file": "src/legacy/save.go",
+        "line_after_candidate_removal": 168,
+        "text": "if C.sub_41C080(u.CObj(), pinfo.C()) == 0 {"
+      }
+    ],
+    "nox_xxx_netSavePlayer_41CE00": [
+      {
+        "file": "src/legacy/client__gui__guiquit.c",
+        "line_after_candidate_removal": 105,
+        "text": "nox_xxx_netSavePlayer_41CE00();"
+      },
+      {
+        "file": "src/legacy/gameloop.go",
+        "line_after_candidate_removal": 191,
+        "text": "C.nox_xxx_netSavePlayer_41CE00()"
+      }
+    ],
+    "sub_41CEE0": [
+      {
+        "file": "src/legacy/gui_quit.go",
+        "line_after_candidate_removal": 82,
+        "text": "C.sub_41CEE0(p, C.int(a2))"
+      }
+    ],
+    "nox_xxx_guiFieldbook_41B420": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 109,
+        "text": "{\"FieldGuide Data\", 0x8, &nox_xxx_guiFieldbook_41B420}, {\"Spellbook Data\", 0x5, &nox_xxx_guiSpellbook_41B660}, {\"Enchantment Data\", 0x6, &nox_xxx_guiEnchantment_41B9C0},"
+      },
+      {
+        "file": "src/legacy/save.go",
+        "line_after_candidate_removal": 128,
+        "text": "if C.nox_xxx_guiFieldbook_41B420(u.CObj(), pinfo.C()) == 0 {"
+      }
+    ],
+    "sub_41A590": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 108,
+        "text": "{\"Attrib Data\", 0x2, &sub_41A590},     {\"Status Data\", 0x3, &sub_41AA30},    {\"Inventory Data\", 0x4, &sub_41AC30},"
+      },
+      {
+        "file": "src/legacy/save.go",
+        "line_after_candidate_removal": 98,
+        "text": "if C.sub_41A590(u.CObj(), pinfo.C()) == 0 {"
+      }
+    ],
+    "nox_xxx_plrLoad_41A480": [
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 2888,
+        "text": "nox_xxx_plrLoad_41A480((char*)getMemAt(0x85B3FC, 10984));"
+      },
+      {
+        "file": "src/legacy/game.go",
+        "line_after_candidate_removal": 597,
+        "text": "return int(C.nox_xxx_plrLoad_41A480(str))"
+      }
+    ],
+    "sub_41CAC0": [
+      {
+        "file": "src/legacy/game.go",
+        "line_after_candidate_removal": 687,
+        "text": "C.sub_41CAC0(internCStr(a1), unsafe.Pointer(&data[0]))"
+      }
+    ],
+    "nox_xxx_parseFileInfoData_41C3B0": [
+      {
+        "file": "src/legacy/save.go",
+        "line_after_candidate_removal": 188,
+        "text": "if C.nox_xxx_parseFileInfoData_41C3B0(0) == 0 {"
+      },
+      {
+        "file": "src/legacy/GAME_data_init.go",
+        "line_after_candidate_removal": 64,
+        "text": "Ptr_nox_xxx_parseFileInfoData_41C3B0:      unsafe.Pointer(C.nox_xxx_parseFileInfoData_41C3B0),"
+      }
+    ],
+    "nox_xxx_cliPlrInfoLoadFromFile_41A2E0": [
+      {
+        "file": "src/legacy/quest.go",
+        "line_after_candidate_removal": 96,
+        "text": "return int(C.nox_xxx_cliPlrInfoLoadFromFile_41A2E0(internCStr(a1), C.int(a2)))"
+      }
+    ],
+    "sub_41B3B0": []
+  },
+  "edges": {
+    "nox_xxx_guiEnchantment_41B9C0": [],
+    "nox_xxx_guiSpellbook_41B660": [],
+    "sub_41C280": [],
+    "sub_41C780": [],
+    "sub_41AA30": [],
+    "sub_41B3E0": [],
+    "sub_41BEC0": [],
+    "sub_41AC30": [
+      "sub_41B3B0",
+      "sub_41B3E0"
+    ],
+    "sub_41C080": [],
+    "nox_xxx_netSavePlayer_41CE00": [],
+    "sub_41CEE0": [],
+    "nox_xxx_guiFieldbook_41B420": [],
+    "sub_41A590": [],
+    "nox_xxx_plrLoad_41A480": [],
+    "sub_41CAC0": [],
+    "nox_xxx_parseFileInfoData_41C3B0": [],
+    "nox_xxx_cliPlrInfoLoadFromFile_41A2E0": [],
+    "sub_41B3B0": []
+  },
+  "provisionally_unreachable": []
+}

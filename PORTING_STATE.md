@@ -42,10 +42,20 @@ Completed C/native scenario copies were verified and deduplicated, reclaiming
 completed-assets logs/plan and each run’s deduplicated-assets.json for restoration;
 original assets/archive, captures, modified saves and binaries remain.
 
-Read-only next candidate: remaining player-file sections in GAME1_1.c, 18 bodies
+Native conversion **d7f52707** is committed/pushed. The next baseline is active:
+remaining player-file sections in GAME1_1.c, 18 bodies
 /1,540 body lines. `build/port-player-files/selection-draft.json` and caller audit
 find 16 external roots and all 18 reachable. The unrelated briefing gate helpers
-were excluded. No next-batch source changes or fixtures are installed.
+were excluded. The tracked scope, caller audit, focused manifest and actual-C dispatcher are
+installed. metadata-write-initial and recovery-repeat pass 18 roots; 17 new
+captures /1,006 records match exactly across runs. The existing journal
+save/load golden also passes. Static-recovery passes. All sessions are joined.
+Music/attributes, book writes/gates/real awards, status writes, inventory helpers,
+journal gates, metadata and GUI section contracts are covered. Production source
+is identical to d7f52707; no new expectations frozen and no conversion started.
+This is a partial C-baseline recovery checkpoint. See PLAYER_FILES.md for gaps.
+Installed fixture drafts are consumed. The ignored status-read-draft.go is NOT
+installed or tested yet; it is the next prepared fixture for review/integration.
 
 ## Qualified parent — native client audio streams
 
