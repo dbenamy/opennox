@@ -13,17 +13,12 @@ package legacy
 #include "GAME5_2.h"
 extern unsigned int dword_5d4594_2649712;
 extern unsigned int dword_5d4594_2660032;
-extern unsigned int dword_5d4594_814548;
 extern unsigned int dword_5d4594_2650652;
 extern unsigned int nox_player_netCode_85319C;
-extern unsigned long long qword_5d4594_814956;
 extern uint32_t dword_5d4594_1200804;
 extern uint32_t dword_5d4594_1200832;
-unsigned int nox_client_getServerAddr_43B300();
 void nox_xxx_playerInitColors_461460(nox_playerInfo* pl);
-int nox_client_getServerPort_43B320();
 int sub_457140(int a1, wchar2_t* a2);
-int sub_43AF90(int a1);
 int sub_456DF0(int a1);
 int sub_43C650();
 int* nox_xxx_guiServerOptionsHide_4597E0(int a1);
@@ -145,11 +140,11 @@ func sub_43CF40() { Sub_43CF40() }
 func sub_43CF70() { Sub_43CF70() }
 
 func ClientGetServerPort() int {
-	return int(C.nox_client_getServerPort_43B320())
+	return int(nox_client_getServerPort_43B320())
 }
 
 func Sub_43AF90(v int) {
-	C.dword_5d4594_814548 = C.uint(v)
+	browserUI.connectionState = C.uint(v)
 }
 
 func Nox_xxx_netSendPacket_4E5030(a1 int, buf []byte, a4, a5, a6 int) int {
@@ -157,7 +152,7 @@ func Nox_xxx_netSendPacket_4E5030(a1 int, buf []byte, a4, a5, a6 int) int {
 }
 
 func Nox_client_getServerAddr_43B300() netip.Addr {
-	return int2ip(uint32(C.nox_client_getServerAddr_43B300()))
+	return int2ip(uint32(nox_client_getServerAddr_43B300()))
 }
 
 func Nox_xxx_netSendLineMessage_4D9EB0(u *server.Object, s string) bool {

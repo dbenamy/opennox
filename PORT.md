@@ -14,23 +14,19 @@
 
 ## Current status
 
-Character creation, class selection, palettes, preview and initial player files
-are now Go: 23 C bodies converted, 16 private interfaces and 27 named C owners
-retired, and two C translation units removed. Seven selected interfaces remain
-for live C entries and animation callback slots. See
-[CHARACTER_CREATION.md](docs/porting/CHARACTER_CREATION.md).
+The server browser is now Go: 64 live routines converted, one orphan removed,
+58 private C interfaces and 34 named C owners retired. Seven selected interfaces
+remain for live C entries and animation slots. See
+[SERVER_BROWSER.md](docs/porting/SERVER_BROWSER.md).
 
-Latest qualified production C is **16,851 physical lines in 59 files**, zero
-reference C: **−1,193** from the preceding qualified baseline. All 174 affected
-roots pass on three targets with exact C captures. Fresh production binaries,
-known-suite comparison and headless gameplay/save-load qualify. See
+Latest qualified production C is **14,691 physical lines in 58 files**, zero
+reference C: **−2,160** from the preceding qualified baseline. All 197 affected
+roots pass on three targets with 142 exact C captures. Fresh production binaries,
+known-suite comparison and browser/gameplay/save-load qualify. See
 [PORTING_STATE.md](PORTING_STATE.md).
 
-The server-browser C baseline is now qualified:65 selected bodies /2,067 lines,
-190 affected roots on all three targets,18 new captures /72,402 records, plus two
-matching isolated headless runs. Production is unchanged. Next is the connected
-Go conversion; see [SERVER_BROWSER.md](docs/porting/SERVER_BROWSER.md). The old
-configuration callback table remains a separate reachability audit.
+The next audit follows 12 old configuration callbacks and their blob table before
+choosing whether to remove or port them.
 
 ## Goal and target
 
@@ -102,6 +98,10 @@ may precede full qualification when their evidence and remaining gates are expli
    character-creation scenario caught a numeric WindowNewChild ID interpreted as
    a window pointer; button-only fixtures had valid pointers and missed it.
    Include resource-parser notifications in independent event contracts.
+   For GUI batches, run a fresh default-client scenario before the full production
+   sweep. The browser scenario caught static-label pointer lifetime and a thumb
+   child/parent mix-up that focused contracts missed. Keep the original reference
+   screens unchanged and repeat final qualification on the corrected source.
    Trace the existing C adapter when choosing a Go API: similar names can hide
    differences in coordinate space, return conventions or ownership.
    For libc parsers, establish saturation, direct float32 rounding, incomplete

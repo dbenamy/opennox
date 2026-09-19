@@ -78,9 +78,15 @@ func TestServerBrowserResortSelection(t *testing.T) {
 			t.Fatal("resort invalidated selected server")
 		}
 		rows = append(rows, r)
+		legacy.PortTestServerBrowserCollectionClear()
+		// C's detached selected record survives clearing the rebuilt list. Native
+		// ownership must retain those bytes without retaining every old list node.
+		selectedAfterClear := unsafe.Pointer(uintptr(*words["dword_5d4594_814624"]))
+		if !reflect.DeepEqual(unsafe.Slice((*byte)(selectedAfterClear), 169)[12:], before) {
+			t.Fatal("clearing rebuilt list invalidated selected server")
+		}
 		*words["dword_5d4594_814624"] = 0
 		cleanup()
-		legacy.PortTestServerBrowserCollectionClear()
 		for _, w := range lists {
 			w.Func94(gui.AsWindowEvent(16399, 0, 0))
 		}

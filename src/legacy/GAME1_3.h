@@ -3,10 +3,6 @@
 
 #include "defs.h"
 
-void nox_client_xxx_switchChatMap_43B510();
-int sub_43B6D0();
-unsigned short* sub_43BC10(wchar2_t* a1, unsigned char a2);
-int nox_sprintAddrPort_43BC80(const char* addr, unsigned short port, char* dst);
 int sub_43BDB0();
 void nox_game_decStateInd_43BDC0();
 void nox_game_addStateCode_43BDD0(int a1);

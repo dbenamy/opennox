@@ -29,7 +29,6 @@
 #include "client__shell__noxworld.h"
 #include "client__shell__optsback.h"
 #include "client__shell__selchar.h"
-#include "client__shell__selclass.h"
 #include "client__shell__selcolor.h"
 
 #include "client__draw__drawrays.h"
@@ -56,7 +55,6 @@ extern uint32_t dword_5d4594_1309756;
 extern uint32_t dword_5d4594_1309832;
 extern uint32_t dword_5d4594_1313540;
 extern uint32_t dword_5d4594_1309824;
-extern uint32_t dword_5d4594_1307720;
 extern uint32_t nox_server_connectionType_3596;
 extern void* dword_587000_122852;
 extern uint32_t dword_5d4594_1309828;
@@ -65,7 +63,6 @@ extern uint32_t dword_5d4594_1309728;
 extern uint32_t dword_5d4594_1309732;
 extern uint64_t qword_581450_9552;
 extern void* dword_587000_93164;
-extern uint32_t dword_5d4594_1307716;
 extern void* dword_587000_127004;
 extern uint32_t dword_5d4594_1309748;
 extern uint32_t dword_5d4594_1309720;
@@ -83,148 +80,25 @@ nox_gui_animation* nox_wnd_xxx_1309740 = 0;
 
 
 //----- (004A2560) --------------------------------------------------------
-int sub_4A2560(uint32_t* a1, int a2) {
-	double v2; // st7
-	double v3; // st6
 
-	v2 = (double)(*(short*)(a2 + 44) - *a1);
-	v3 = (double)(*(short*)(a2 + 46) - a1[1]);
-	return sqrt(v3 * v3 + v2 * v2) <= *getMemDoublePtr(0x581450, 9720);
-}
 
 //----- (004A25C0) --------------------------------------------------------
-int sub_4A25C0(uint32_t* a1, int* a2) {
-	int v2;  // edi
-	int* v3; // esi
 
-	v2 = 0;
-	v3 = nox_common_list_getFirstSafe_425890(a2);
-	if (!v3) {
-		return 0;
-	}
-	do {
-		if (sub_4A2560(a1, (int)v3)) {
-			++v2;
-		}
-		v3 = nox_common_list_getNextSafe_4258A0(v3);
-	} while (v3);
-	return v2;
-}
 
 //----- (004A2610) --------------------------------------------------------
-int sub_4A2610(int a1, uint32_t* a2, int* a3) {
-	int* i;             // esi
-	int v4;             // eax
-	uint32_t* v5;       // esi
-	uint32_t* v6;       // ebx
-	uint32_t* v7;       // edi
-	uint32_t* v8;       // ebp
-	char* v9;           // eax
-	int v10;            // ebx
-	unsigned char* v11; // esi
-	uint32_t* v13;      // [esp+Ch] [ebp-150h]
-	char* v14;          // [esp+10h] [ebp-14Ch]
-	int v15[2];         // [esp+14h] [ebp-148h]
-	char v16[64];       // [esp+1Ch] [ebp-140h]
-	wchar2_t v17[128];   // [esp+5Ch] [ebp-100h]
 
-	dword_5d4594_1307720 = 0;
-	for (i = nox_common_list_getFirstSafe_425890(a3); i; i = nox_common_list_getNextSafe_4258A0(i)) {
-		if (sub_4A2560(a2, (int)i)) {
-			v4 = dword_5d4594_1307720;
-			*getMemU32Ptr(0x5D4594, 1307316 + 4 * dword_5d4594_1307720) = i;
-			dword_5d4594_1307720 = v4 + 1;
-		}
-	}
-	if (dword_5d4594_1307720 > 0) {
-		dword_5d4594_1307716 = nox_new_window_from_file("proxlist.wnd", *(uint32_t*)(a1 + 376));
-		sub_4A2830(*a2 + 216, a2[1] + 27, v15);
-		nox_window_setPos_46A9B0(*(uint32_t**)&dword_5d4594_1307716, v15[0], v15[1]);
-		nox_xxx_wnd_46B280(*(int*)&dword_5d4594_1307716, a1);
-		v5 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1307716, 10064);
-		v6 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1307716, 10062);
-		v13 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1307716, 10063);
-		v7 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1307716, 10061);
-		v8 = (uint32_t*)v7[8];
-		v14 = nox_xxx_gLoadImg_42F970("UISlider");
-		v9 = nox_xxx_gLoadImg_42F970("UISliderLit");
-		sub_4B5700((int)v5, 0, 0, (int)v14, (int)v9, (int)v9);
-		nox_xxx_wnd_46B280((int)v5, (int)v7);
-		nox_xxx_wnd_46B280((int)v6, (int)v7);
-		nox_xxx_wnd_46B280((int)v13, (int)v7);
-		v8[9] = v5;
-		v8[7] = v6;
-		v8[8] = v13;
-		*(uint32_t*)(v5[100] + 8) = 16;
-		*(uint32_t*)(v5[100] + 12) = 10;
-		v10 = 0;
-		if (dword_5d4594_1307720 > 0) {
-			v11 = getMemAt(0x5D4594, 1307316);
-			do {
-				if (*(uint8_t*)(*(uint32_t*)v11 + 120)) {
-					strncpy(v16, (const char*)(*(uint32_t*)v11 + 120), 0xFu);
-					v16[15] = 0;
-				} else {
-					nox_sprintAddrPort_43BC80(*(uint32_t*)v11 + 12, *(uint16_t*)(*(uint32_t*)v11 + 109), v16);
-				}
-				nox_swprintf(v17, L"%S   %dms", v16, *(uint32_t*)(*(uint32_t*)v11 + 96));
-				nox_window_call_field_94((int)v7, 16397, (int)v17, -1);
-				++v10;
-				v11 += 4;
-			} while (v10 < *(int*)&dword_5d4594_1307720);
-		}
-	}
-	return dword_5d4594_1307716;
-}
 
 //----- (004A2830) --------------------------------------------------------
-uint32_t* sub_4A2830(int a1, int a2, uint32_t* a3) {
-	uint32_t* result; // eax
 
-	result = a3;
-	*a3 = a1 - 100;
-	a3[1] = a2 - 20;
-	if (a1 - 100 + 200 > 600) {
-		*a3 = 400;
-	}
-	if (a2 - 20 + 200 > 451) {
-		a3[1] = 251;
-	}
-	if (a3[1] < 27) {
-		a3[1] = 27;
-	}
-	if ((int)*a3 < 216) {
-		*a3 = 216;
-	}
-	return result;
-}
 
 //----- (004A2890) --------------------------------------------------------
-int sub_4A2890() {
-	int result; // eax
 
-	result = dword_5d4594_1307716;
-	if (dword_5d4594_1307716) {
-		result = nox_xxx_windowDestroyMB_46C4E0(*(uint32_t**)&dword_5d4594_1307716);
-		dword_5d4594_1307716 = 0;
-	}
-	return result;
-}
 
 //----- (004A28B0) --------------------------------------------------------
-int sub_4A28B0() { return dword_5d4594_1307716 != 0; }
+
 
 //----- (004A28C0) --------------------------------------------------------
-int sub_4A28C0(int a1) {
-	int result; // eax
 
-	if (a1 < *(int*)&dword_5d4594_1307720) {
-		result = *getMemU32Ptr(0x5D4594, 1307316 + 4 * a1);
-	} else {
-		result = 0;
-	}
-	return result;
-}
 
 //----- (004A7A80) --------------------------------------------------------
 int sub_4A7A80(const char* a1) {
@@ -467,7 +341,7 @@ int sub_4A7D50(char* a1) {
 }
 
 //----- (004A7EF0) --------------------------------------------------------
-char* sub_4A7EF0() { return (char*)getMemAt(0x5D4594, 1308732); }
+
 
 //----- (004A9C80) --------------------------------------------------------
 int nox_xxx_compassGenStrings_4A9C80() {

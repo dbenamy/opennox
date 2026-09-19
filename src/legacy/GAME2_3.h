@@ -76,17 +76,6 @@ int nox_client_copyRect_49F6F0(int xLeft, int yTop, int a3, int a4);
 void sub_49F7C0_def();
 void nox_xxx_wndDraw_49F7F0();
 int sub_49F860();
-void sub_49FDB0(int a1);
-uint32_t* sub_49FF20();
-int* sub_49FFA0(int a1);
-char* sub_4A0020();
-int nox_wol_servers_addResult_4A0030(nox_gui_server_ent_t* srv);
-void nox_wol_servers_sortBtnHandler_4A0290(int id);
-int* sub_4A0360();
-int* sub_4A0390();
-int sub_4A0410(const char* a1, short a2);
-int* sub_4A0490(int a1);
-int* sub_4A04C0(int a1);
 nox_window* nox_new_window_from_file(char* cname, void* fnc);
 
 

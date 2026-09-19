@@ -2,47 +2,56 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 16.9k lines** — **16,851 physical lines in 59
-production `.c` files**, zero reference C; down 1,193 this chunk.
+**Qualified C remaining: about 14.7k lines** — **14,691 physical lines in 58
+production `.c` files**, zero reference C; down 2,160 this chunk.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — server-browser original C baseline qualified
+## Current — server-browser Go conversion qualified
 
-Qualified character-creation parent **d8133587** is committed/pushed. The new
-browser baseline is qualified and ready to commit; native source is unchanged.
-Selected65 bodies /2,067 lines:64 reachable routines plus one nine-line orphan.
-Plan7 retained exports,58 retired selected interfaces,34 C owners moved; retain
-2 shared connection flags. See [SERVER_BROWSER.md](docs/porting/SERVER_BROWSER.md)
-and [conversion plan](docs/porting/server-browser-plan.md).
+Original-C baseline **04061130** and qualified production parent **d8133587** are
+committed/pushed. The connected browser batch is native: 64 live algorithms,
+one nine-line orphan removed, 58 private selected interfaces and 34 C global owners
+retired. Seven selected exports remain. The empty noxworld C file and previously
+deferred character initializer adapter/header are removed. Two shared C connection
+flags remain. See [SERVER_BROWSER.md](docs/porting/SERVER_BROWSER.md).
 
-All190 directly affected roots pass on default/server/highres without skips.
-All142 captures /100,275 records match across targets;18 new browser captures
-/72,402 records were independently repeated and frozen. All2,685 source
-fingerprints agree. Static-c-final passes. Production source and all3 parent
-binary hashes are unchanged/reverified. Isolated browser scenario capture/repeat
-pass with6 exact screens:open,sort,close,reopen,host class selection.
+All 197 affected roots pass on default/server/highres without skips; all142 artifacts
+/100,275 records match original C, including18 browser captures /72,402 records.
+All 2,703 source fingerprints agree across tests and production. Static checks,
+three fresh binaries/ABI inventories, exact known suite (1,553 failure entries;
+15 pass /3 fail /32 skip packages), six-screen browser, character-creation/gameplay
+and explicit save/load scenarios pass. No goldens changed.
 
-All sessions joined:qualified default39416/server36544/highres82262; latest
-static command completed synchronously. No builds/tests/scenarios running.
-Final evidence:build/port-server-browser/c-qualified-{default,server,highres},
-static-c-final.log, tracked C qualification and production-identity reports.
-Freeze.py, qualification generators and all copied fixture drafts are CONSUMED;
-do not replay installers/freezers or regenerate expected hashes.
+Evidence: build/port-server-browser/native-final-{default,server,highres,production},
+static-native-final.log and tracked native-qualification.json. All sessions joined.
+All source installers, baseline freezers, boundary-retirement and qualification
+scripts are CONSUMED. Original selection byte offsets are stale; never replay them.
 
-Next:commit/push this baseline, then implement the native browser as one connected
-batch. Preserve original C output, including unsigned radius arithmetic, four-region
-fallback, signed-short high-port lookup, libc IPv4 forms and unconditional highres
-host-description version. Own selected records across re-sort; original C leaks
-old nodes. Numeric construction notifications and the100-entry proximity popup
-boundary now have independent contracts. Keep12 old config callbacks deferred.
-Retire the previously deferred unused character initializer C adapter and empty
-selclass header with native changes, retaining the active Go initializer hook.
+Review notes: preserve byte-widened UI strings, signed-short high-port lookup,
+unsigned geometry behavior, unconditional C highres description and distinct
+32/64-bit deadline additions. Keep one 169-byte selected-record snapshot and one
+12-byte sentinel across browser closure; gameplay still reads the endpoint.
+Zero formerly undefined map-polygon metadata and password-header padding.
+Original C leaked abandoned lists; native sorting reuses nodes.
 
-Disk:about4.4GiB free. Completed browser asset copies reclaimed1,112,777,500 bytes;
-audit8570/apply90667 joined, helper CONSUMED except restoration. Keep manifests,
-screens/logs, original assets/archive, captures and binaries.
+Initial headless runs exposed freed static-label text and an offset applied to
+the scrollbar parent rather than its thumb. Persistent text and correct child
+target fix both. The label-lifetime regression demonstrated the failure before
+fixing; all final gates use corrected source and unchanged expectations. Earlier
+failed native-release/native-reviewed runs remain diagnostic evidence only.
+
+Disk cleanup: completed C browser copies reclaimed 1,112,777,500 bytes; old inactive
+compiler-cache entries reclaimed 7,527,475,663 bytes; three completed native browser
+copies reclaimed 1,669,166,250 bytes. Deletion scripts are consumed; keep restoration
+manifests, captures, screenshots/logs, originals/archive and qualified binaries.
+
+Next: commit/push this native batch, then audit the 12 old config callbacks. Read-only
+preview/table-reference/dynamic-access inventories are under build/port-config-callbacks.
+Literal registrations exist but no table reader or incoming raw pointer has been
+found. Finish tracing dynamic accesses before removing callbacks. No next-batch
+source changes are installed; no user decision pending.
 
 ## Qualified parent — character-creation Go conversion qualified
 

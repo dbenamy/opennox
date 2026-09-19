@@ -2063,3 +2063,21 @@ production algorithms were corrected. Three targets, fresh binaries/ABI, exact
 known suite and gameplay/save-load qualify. C:21,083 /65 files /zero reference,
 −1,327 from the C baseline (which included ten test-adapter lines). See
 [CLIENT_AUDIO_EVENTS.md](CLIENT_AUDIO_EVENTS.md) for evidence and review details.
+
+
+## Server-browser ownership and deterministic initialization
+
+Re-sort reuses nodes and snapshots the selected 169-byte record before replacing
+or freeing it. Keep that snapshot and one 12-byte list sentinel for the browser/
+session lifetime, because gameplay reads the endpoint after browser close. This
+replaces the original abandoned-list leaks. Zero formerly undefined password
+header padding and map-polygon temporary metadata. Preserve defined text, payload,
+clock-width, coordinate and high-port behavior; these reversible choices are
+recorded for review. Exact C captures and fresh browser/gameplay/save-load qualify.
+
+Native validation caught two translation bugs: temporary static-label text was
+freed although the widget retains its pointer, and the scrollbar image offset was
+applied to its parent instead of its thumb child. Persistent GUI text and the
+correct child target now match the unchanged original-C screens. A real-widget
+lifetime regression reproduced the first failure before the fix. See
+[SERVER_BROWSER.md](SERVER_BROWSER.md) for contracts and complete evidence.

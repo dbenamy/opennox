@@ -140,10 +140,10 @@ func Sub_41FA40() string {
 	return GoString(C.sub_41FA40())
 }
 func Sub_43AF40() int {
-	return int(C.sub_43AF40())
+	return int(sub_43AF40())
 }
 func Sub_43AA70() {
-	C.sub_43AA70()
+	sub_43AA70()
 }
 func Nox_server_gameDoSwitchMap_40A680() int {
 	return int(C.int(serverConfigUpdatedGet()))

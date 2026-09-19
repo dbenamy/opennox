@@ -41,7 +41,6 @@
 extern uint32_t dword_8531A0_2572;
 extern uint32_t dword_5d4594_1200776;
 extern uint32_t dword_5d4594_1200796;
-extern uint32_t dword_5d4594_1305788;
 extern uint32_t nox_server_sanctuaryHelp_54276;
 extern uint32_t dword_5d4594_1305748;
 extern uint32_t dword_5d4594_1197352;
@@ -49,7 +48,6 @@ extern uint32_t dword_5d4594_1197356;
 extern uint32_t dword_5d4594_1193712;
 extern uint32_t nox_server_connectionType_3596;
 extern void* nox_alloc_pixelSpan_1301844;
-extern uint32_t nox_wol_servers_sorting_166704;
 extern uint32_t dword_5d4594_1305680;
 extern uint32_t dword_5d4594_1301848;
 extern uint32_t dword_5d4594_1303452;
@@ -64,7 +62,6 @@ extern uint32_t nox_color_black_2650656;
 
 nox_render_data_t* nox_draw_curDrawData_3799572 = 0;
 
-nox_list_item_t nox_gui_wol_servers_list = {0};
 
 void nox_gui_winParentsReset_4A0CF0();
 nox_window* nox_gui_winParentsTop_4A14F0();
@@ -830,329 +827,33 @@ int sub_49CA60(int a1, int a2, int* a3, int a4) {
 int sub_49CB40() { return dword_5d4594_1305684 != 0; }
 
 //----- (0049FDB0) --------------------------------------------------------
-void sub_49FDB0(int a1) {
-	unsigned char* v1; // ebx
-	int j;             // esi
-	int v3;            // eax
-	unsigned char* v4; // ebx
-	int i;             // esi
-	int v6;            // eax
-	int v7;            // [esp+0h] [ebp-90h]
-	char v8[140];      // [esp+4h] [ebp-8Ch]
 
-	if (!dword_5d4594_1305788) {
-		if (0) {
-			v7 = 0;
-			if (*getMemU32Ptr(0x587000, 166016 + 4 * a1) > 0) {
-				v4 = getMemAt(0x587000, 166032 + 80 * a1);
-				do {
-					for (i = 0; i < (char)*v4; ++i) {
-						v6 = 8 * (12 * a1 + (char)v4[i + 1]);
-						sub_420DA0(*getMemFloatPtr(0x587000, 165360 + v6), *getMemFloatPtr(0x587000, 165364 + v6));
-					}
-					strcpy(&v8[4], *((const char**)v4 + 3));
-					sub_4211D0((int)v8);
-					sub_4214D0();
-					v4 += 16;
-					++v7;
-				} while (v7 < *getMemIntPtr(0x587000, 166016 + 4 * a1));
-			}
-		} else {
-			v1 = getMemAt(0x587000, 165744);
-			do {
-				for (j = 0; j < (char)*v1; ++j) {
-					v3 = 8 * (char)v1[j + 1];
-					sub_420DA0(*getMemFloatPtr(0x587000, 165104 + v3), *getMemFloatPtr(0x587000, 165108 + v3));
-				}
-				strcpy(&v8[4], *((const char**)v1 + 3));
-				sub_4211D0((int)v8);
-				sub_4214D0();
-				v1 += 16;
-			} while ((int)v1 < (int)getMemAt(0x587000, 166016));
-		}
-		dword_5d4594_1305788 = 1;
-	}
-}
 
 //----- (0049FF20) --------------------------------------------------------
-uint32_t* sub_49FF20() {
-	uint32_t* result; // eax
 
-	result = *(uint32_t**)&dword_5d4594_1305788;
-	if (dword_5d4594_1305788) {
-		result = sub_421B10();
-		dword_5d4594_1305788 = 0;
-	}
-	return result;
-}
 
 //----- (0049FFA0) --------------------------------------------------------
-int* sub_49FFA0(int a1) {
-	int* result; // eax
-	int* v2;     // esi
-	int* v3;     // edi
 
-	if (!*getMemU32Ptr(0x5D4594, 1305808)) {
-		nox_common_list_clear_425760(&nox_gui_wol_servers_list);
-	}
-	result = nox_common_list_getFirstSafe_425890(&nox_gui_wol_servers_list);
-	v2 = result;
-	if (result) {
-		do {
-			v3 = nox_common_list_getNextSafe_4258A0(v2);
-			nox_common_list_remove_425920((uint32_t**)v2);
-			if (a1) {
-				nox_xxx_windowDestroyMB_46C4E0((uint32_t*)v2[7]);
-			}
-			free(v2);
-			v2 = v3;
-		} while (v3);
-		*getMemU32Ptr(0x5D4594, 1305808) = 1;
-	} else {
-		*getMemU32Ptr(0x5D4594, 1305808) = 1;
-	}
-	return result;
-}
 
 //----- (004A0020) --------------------------------------------------------
-char* sub_4A0020() { return &nox_gui_wol_servers_list; }
+
 
 //----- (004A0030) --------------------------------------------------------
-int nox_wol_servers_addResult_4A0030(nox_gui_server_ent_t* srv) {
-	int* v3;     // edi
-	wchar2_t* v6; // ebp
-	wchar2_t* v7; // eax
-	wchar2_t* v8; // ebp
-	wchar2_t* v9; // eax
 
-	nox_gui_server_ent_t* rec = calloc(1, sizeof(nox_gui_server_ent_t));
-	memcpy(rec, srv, sizeof(nox_gui_server_ent_t));
-
-	int v2 = 0;
-	switch (nox_wol_servers_sorting_166704) {
-	case 0: // by name (asc)
-		if (nox_gui_wol_servers_list.field_1 == &nox_gui_wol_servers_list) {
-			return sub_425790(&nox_gui_wol_servers_list, rec);
-		}
-		v3 = nox_common_list_getFirstSafe_425890(&nox_gui_wol_servers_list);
-		if (!v3) {
-			nox_common_list_append_4258E0(&nox_gui_wol_servers_list, rec);
-			return 0;
-		}
-		do {
-			if (nox_strcmpi(rec->server_name, (const char*)v3 + 120) <= 0) {
-				nox_common_list_append_4258E0((int)v3, rec);
-				return v2;
-			}
-			++v2;
-			v3 = nox_common_list_getNextSafe_4258A0(v3);
-		} while (v3);
-		nox_common_list_append_4258E0(&nox_gui_wol_servers_list, rec);
-		return v2;
-	case 1: // by name (desc)
-		if (nox_gui_wol_servers_list.field_1 == &nox_gui_wol_servers_list) {
-			return sub_425790(&nox_gui_wol_servers_list, rec);
-		}
-		v3 = nox_common_list_getFirstSafe_425890(&nox_gui_wol_servers_list);
-		if (!v3) {
-			nox_common_list_append_4258E0(&nox_gui_wol_servers_list, rec);
-			return 0;
-		}
-		while (nox_strcmpi(rec->server_name, (const char*)v3 + 120) < 0) {
-			++v2;
-			v3 = nox_common_list_getNextSafe_4258A0(v3);
-			if (!v3) {
-				nox_common_list_append_4258E0(&nox_gui_wol_servers_list, rec);
-				return v2;
-			}
-		}
-		nox_common_list_append_4258E0((int)v3, rec);
-		return v2;
-	case 2: // by players (asc)
-		rec->sort_key = rec->players;
-		return sub_425790(&nox_gui_wol_servers_list, rec);
-	case 3: // by players (desc)
-		rec->sort_key = 32 - rec->players;
-		return sub_425790(&nox_gui_wol_servers_list, rec);
-	case 4: // by mode (asc)
-		if (nox_gui_wol_servers_list.field_1 == &nox_gui_wol_servers_list) {
-			return sub_425790(&nox_gui_wol_servers_list, rec);
-		}
-		v6 = nox_gui_wol_gameModeString_43BCB0(rec->flags);
-		v3 = nox_common_list_getFirstSafe_425890(&nox_gui_wol_servers_list);
-		if (!v3) {
-			nox_common_list_append_4258E0(&nox_gui_wol_servers_list, rec);
-			return 0;
-		}
-		while (1) {
-			v7 = nox_gui_wol_gameModeString_43BCB0(*(uint16_t*)((char*)v3 + 163));
-			if (nox_wcscmp(v6, v7) <= 0) {
-				nox_common_list_append_4258E0((int)v3, rec);
-				return v2;
-			}
-			++v2;
-			v3 = nox_common_list_getNextSafe_4258A0(v3);
-			if (!v3) {
-				nox_common_list_append_4258E0(&nox_gui_wol_servers_list, rec);
-				return v2;
-			}
-		}
-	case 5: // by mode (desc)
-		if (nox_gui_wol_servers_list.field_1 == &nox_gui_wol_servers_list) {
-			return sub_425790(&nox_gui_wol_servers_list, rec);
-		}
-		v8 = nox_gui_wol_gameModeString_43BCB0(rec->flags);
-		v3 = nox_common_list_getFirstSafe_425890(&nox_gui_wol_servers_list);
-		if (!v3) {
-			nox_common_list_append_4258E0(&nox_gui_wol_servers_list, rec);
-			return 0;
-		}
-		while (1) {
-			v9 = nox_gui_wol_gameModeString_43BCB0(*(uint16_t*)((char*)v3 + 163));
-			if (nox_wcscmp(v8, v9) >= 0) {
-				break;
-			}
-			++v2;
-			v3 = nox_common_list_getNextSafe_4258A0(v3);
-			if (!v3) {
-				nox_common_list_append_4258E0(&nox_gui_wol_servers_list, rec);
-				return v2;
-			}
-		}
-		nox_common_list_append_4258E0((int)v3, rec);
-		return v2;
-	case 6: // by ping (asc)
-		rec->sort_key = rec->ping;
-		return sub_425790(&nox_gui_wol_servers_list, rec);
-	case 7: // by ping (desc)
-		rec->sort_key = 1000 - rec->ping;
-		return sub_425790(&nox_gui_wol_servers_list, rec);
-	case 8: // by status (asc)
-		rec->sort_key = rec->status & 0x30;
-		return sub_425790(&nox_gui_wol_servers_list, rec);
-	case 9: // by status (desc)
-		rec->sort_key = 48 - (rec->status & 0x30);
-		return sub_425790(&nox_gui_wol_servers_list, rec);
-	default:
-		return 0;
-	}
-}
 
 //----- (004A0290) --------------------------------------------------------
-void nox_wol_servers_sortBtnHandler_4A0290(int id) {
-	switch (id - 10047) {
-	case 0:
-		nox_wol_servers_sorting_166704 = (nox_wol_servers_sorting_166704 == 0) + 0;
-		break;
-	case 1:
-		nox_wol_servers_sorting_166704 = (nox_wol_servers_sorting_166704 == 2) + 2;
-		break;
-	case 2:
-		nox_wol_servers_sorting_166704 = (nox_wol_servers_sorting_166704 == 4) + 4;
-		break;
-	case 3:
-		nox_wol_servers_sorting_166704 = (nox_wol_servers_sorting_166704 == 6) + 6;
-		break;
-	case 4:
-		nox_wol_servers_sorting_166704 = (nox_wol_servers_sorting_166704 == 8) + 8;
-		break;
-	}
-}
+
 
 //----- (004A0360) --------------------------------------------------------
-int* sub_4A0360() {
-	int* result; // eax
-	int* i;      // esi
 
-	result = nox_common_list_getFirstSafe_425890(&nox_gui_wol_servers_list);
-	for (i = result; result; i = result) {
-		nox_gui_wol_newServerLine_43B7C0(i);
-		result = nox_common_list_getNextSafe_4258A0(i);
-	}
-	return result;
-}
 
 //----- (004A0390) --------------------------------------------------------
-int* sub_4A0390() {
-	uint32_t* v0; // ecx
-	int* v1;      // esi
-	int* v2;      // edi
-	int v4[3];    // [esp+0h] [ebp-Ch]
-	uint32_t* v5; // [esp+4h] [ebp-8h]
 
-	nox_common_list_clear_425760(&v4);
-	v0 = nox_gui_wol_servers_list.field_1;
-	v4[0] = nox_gui_wol_servers_list.field_0;
-	v5 = nox_gui_wol_servers_list.field_1;
-	if (nox_gui_wol_servers_list.field_0) {
-		*(uint32_t*)((uint32_t)nox_gui_wol_servers_list.field_0 + 4) = &v4;
-		v0 = v5;
-	}
-	if (v0) {
-		*v0 = &v4;
-	}
-	nox_common_list_clear_425760(&nox_gui_wol_servers_list);
-	v1 = nox_common_list_getFirstSafe_425890(&v4);
-	if (v1) {
-		do {
-			v2 = nox_common_list_getNextSafe_4258A0(v1);
-			nox_wol_servers_addResult_4A0030(v1);
-			v1 = v2;
-		} while (v2);
-	}
-	return sub_4A0360();
-}
 
 //----- (004A0410) --------------------------------------------------------
-int sub_4A0410(const char* a1, short a2) {
-	int* v2; // edi
 
-	v2 = nox_common_list_getFirstSafe_425890(&nox_gui_wol_servers_list);
-	if (!v2) {
-		return 1;
-	}
-	while (strcmp(a1, (const char*)v2 + 12) || a2 != *(uint16_t*)((char*)v2 + 109)) {
-		v2 = nox_common_list_getNextSafe_4258A0(v2);
-		if (!v2) {
-			return 1;
-		}
-	}
-	return 0;
-}
 
 //----- (004A0490) --------------------------------------------------------
-int* sub_4A0490(int a1) {
-	int* result; // eax
 
-	result = nox_common_list_getFirstSafe_425890(&nox_gui_wol_servers_list);
-	if (!result) {
-		return 0;
-	}
-	while (result[9] != a1) {
-		result = nox_common_list_getNextSafe_4258A0(result);
-		if (!result) {
-			return 0;
-		}
-	}
-	return result;
-}
 
 //----- (004A04C0) --------------------------------------------------------
-int* sub_4A04C0(int a1) {
-	int v1;      // esi
-	int* result; // eax
-
-	v1 = 0;
-	result = nox_common_list_getFirstSafe_425890(&nox_gui_wol_servers_list);
-	if (!result) {
-		return 0;
-	}
-	while (a1 != v1) {
-		++v1;
-		result = nox_common_list_getNextSafe_4258A0(result);
-		if (!result) {
-			return 0;
-		}
-	}
-	return result;
-}

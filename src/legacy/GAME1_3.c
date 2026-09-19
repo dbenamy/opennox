@@ -44,11 +44,9 @@ extern uint32_t dword_5d4594_825744;
 extern uint32_t dword_5d4594_816372;
 extern void* dword_587000_81128;
 extern uint32_t dword_5d4594_816368;
-extern uint32_t dword_5d4594_815044;
 extern uint32_t dword_587000_93156;
 extern uint32_t dword_5d4594_826028;
 extern uint32_t dword_5d4594_816348;
-extern uint32_t dword_587000_87412;
 extern nox_window* nox_wnd_quitMenu_825760;
 void* dword_5d4594_830236 = 0;
 void* dword_5d4594_830232 = 0;
@@ -66,64 +64,17 @@ uint32_t dword_5d4594_816376 = 0;
 //----- (0043B510) --------------------------------------------------------
 void nox_client_gui_set_flag_815132(int v);
 char* nox_client_getChatMap_49FF40(short* a1);
-void nox_client_xxx_switchChatMap_43B510() {
-	short v0;     // ax
-	char* result; // eax
-	char* v2;     // edi
-	short v5;     // cx
-	int v6;       // [esp+0h] [ebp-54h]
-	char v7[80];  // [esp+4h] [ebp-50h]
 
-	nox_client_gui_set_flag_815132(0);
-	nox_xxx_setGameFlags_40A4D0(5);
-	nox_xxx_setMouseBounds_430A70(0, nox_win_width - 1, 0, nox_win_height - 1);
-	v6 = *getMemU32Ptr(0x5D4594, 814916);
-	if (0) {
-		v0 = *getMemU16Ptr(0x5D4594, 814916) - *getMemU16Ptr(0x587000, 87528 + 8 * dword_587000_87412);
-		HIWORD(v6) -= *getMemU16Ptr(0x587000, 87530 + 8 * dword_587000_87412);
-		LOWORD(v6) = v0;
-	}
-	strcpy(v7, nox_client_getChatMap_49FF40(&v6));
-	if (!strchr(v7, '.')) {
-		sub_409B50(v7);
-		v2 = &v7[strlen(v7) + 1];
-		*(uint32_t*)--v2 = *getMemU32Ptr(0x587000, 90856);
-		v2[4] = 0;
-		if (!nox_common_getEngineFlag(/*NOX_ENGINE_FLAG_REPLAY_WRITE |*/ NOX_ENGINE_FLAG_REPLAY_READ)) {
-			nox_xxx_gameSetMapPath_409D70(v7);
-		}
-		nox_common_gameFlags_unset_40A540(55280);
-		nox_xxx_setGameFlags_40A4D0(128);
-		result = sub_4165D0(0);
-		v5 = *((uint16_t*)result + 26) & 0x280F;
-		LOBYTE(v5) = result[52] & 0xF | 0x80;
-		*((uint16_t*)result + 26) = v5;
-	}
-}
 // 43B510: using guessed type char var_50[80];
 
 //----- (0043B6D0) --------------------------------------------------------
-int sub_43B6D0() { return dword_5d4594_815044; }
+
 
 //----- (0043BC10) --------------------------------------------------------
-unsigned short* sub_43BC10(wchar2_t* a1, unsigned char a2) {
-	const size_t a1_len = nox_wcslen(a1);
-	wchar2_t* a1_last_char = &a1[a1_len];
 
-	int a1v = 0;
-	do {
-		nox_xxx_drawGetStringSize_43F840(0, a1, &a1v, 0, 0);
-		*a1_last_char = 0;
-		--a1_last_char;
-	} while (a1v + 5 > a2);
-
-	return a1;
-}
 
 //----- (0043BC80) --------------------------------------------------------
-int nox_sprintAddrPort_43BC80(const char* addr, unsigned short port, char* dst) {
-	return nox_sprintf(dst, "%s:%d", addr, port);
-}
+
 
 //----- (0043BDB0) --------------------------------------------------------
 int sub_43BDB0() { return *getMemU32Ptr(0x5D4594, 815092); }

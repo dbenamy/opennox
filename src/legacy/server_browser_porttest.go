@@ -13,16 +13,16 @@ import (
 )
 
 func PortTestServerBrowserMode(mode uint16) string {
-	return alloc.GoString16((*uint16)(unsafe.Pointer(C.nox_gui_wol_gameModeString_43BCB0(C.short(mode)))))
+	return alloc.GoString16((*uint16)(unsafe.Pointer(nox_gui_wol_gameModeString_43BCB0(C.short(mode)))))
 }
 func PortTestServerBrowserHit(point, record unsafe.Pointer) int {
-	return int(C.sub_4A2560((*C.uint32_t)(point), C.int(uintptr(record))))
+	return int(sub_4A2560((*C.uint32_t)(point), C.int(uintptr(record))))
 }
 func PortTestServerBrowserClamp(x, y int32, out unsafe.Pointer) uintptr {
-	return uintptr(unsafe.Pointer(C.sub_4A2830(C.int(x), C.int(y), (*C.uint32_t)(out))))
+	return uintptr(unsafe.Pointer(sub_4A2830(C.int(x), C.int(y), (*C.uint32_t)(out))))
 }
 func PortTestServerBrowserCount(point, head unsafe.Pointer) int {
-	return int(C.sub_4A25C0((*C.uint32_t)(point), (*C.int)(head)))
+	return int(sub_4A25C0((*C.uint32_t)(point), (*C.int)(head)))
 }
 func PortTestServerBrowserList(items []unsafe.Pointer) (unsafe.Pointer, func()) {
 	head, free := alloc.New(legacyListNode{})
@@ -43,10 +43,10 @@ func PortTestServerBrowserList(items []unsafe.Pointer) (unsafe.Pointer, func()) 
 }
 
 func PortTestServerBrowserPopup(parent, point, head unsafe.Pointer) unsafe.Pointer {
-	return unsafe.Pointer(uintptr(uint32(C.sub_4A2610(C.int(uintptr(parent)), (*C.uint32_t)(point), (*C.int)(head)))))
+	return unsafe.Pointer(uintptr(uint32(sub_4A2610(C.int(uintptr(parent)), (*C.uint32_t)(point), (*C.int)(head)))))
 }
-func PortTestServerBrowserPopupShown() bool { return C.sub_4A28B0() != 0 }
+func PortTestServerBrowserPopupShown() bool { return sub_4A28B0() != 0 }
 func PortTestServerBrowserPopupAt(i int) unsafe.Pointer {
-	return unsafe.Pointer(uintptr(uint32(C.sub_4A28C0(C.int(i)))))
+	return unsafe.Pointer(uintptr(uint32(sub_4A28C0(C.int(i)))))
 }
-func PortTestServerBrowserPopupClose() { C.sub_4A2890() }
+func PortTestServerBrowserPopupClose() { sub_4A2890() }

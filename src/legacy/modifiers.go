@@ -134,9 +134,6 @@ func nox_xxx_equipClothFindDefByTT_413270(a1 int32) unsafe.Pointer {
 	return GetServer().S().Modif.Nox_xxx_equipClothFindDefByTT413270(int(a1)).C()
 }
 
-//export sub_4A5E90_A
-func sub_4A5E90_A() { Sub_4A5E90_A() }
-
 //export nox_xxx_fireEffect_4E0550
 func nox_xxx_fireEffect_4E0550(a1 unsafe.Pointer, a2p, a3p, a4p *nox_object_t) {
 	GetServer().S().Nox_xxx_fireEffect_4E0550(a1, asObjectS(a2p), asObjectS(a3p), asObjectS(a4p))
