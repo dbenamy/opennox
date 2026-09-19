@@ -1,18 +1,19 @@
 {
-  "status": "reviewed conversion interface plan; baseline still in progress",
+  "status": "qualified native conversion; seven selected C interfaces retained",
   "retained": [
     "nox_game_showSelClass_4A4840",
-    "sub_4A7A70"
-  ],
-  "retired": [
+    "sub_4A7A70",
+    "nox_game_showSelColor_4A5D00",
     "sub_4A4970",
     "sub_4A49A0",
+    "sub_4A6890",
+    "sub_4A6C90"
+  ],
+  "retired": [
     "sub_4A49D0",
     "sub_4A5E90",
     "sub_4A61E0",
-    "sub_4A6890",
     "sub_4A6B50",
-    "sub_4A6C90",
     "sub_4A6D20",
     "sub_4A6DC0",
     "sub_4A7270",
@@ -23,13 +24,17 @@
     "sub_4A7A60",
     "sub_4A4A20",
     "sub_4A4B70",
-    "nox_game_showSelColor_4A5D00",
     "sub_4A68C0",
     "sub_4A75C0"
   ],
   "retained_reason": {
     "nox_game_showSelClass_4A4840": "live C entry calls in GAME1_2 and noxworld; Go state callback pointer getter also used",
-    "sub_4A7A70": "live C admission setters in GAME1_2 and noxworld"
+    "sub_4A7A70": "live C admission setters in GAME1_2 and noxworld",
+    "nox_game_showSelColor_4A5D00": "existing C-layout animation callback slot; thin Go export only",
+    "sub_4A4970": "existing C-layout animation callback slot; thin Go export only",
+    "sub_4A49A0": "existing C-layout animation callback slot; thin Go export only",
+    "sub_4A6890": "existing C-layout animation callback slot; thin Go export only",
+    "sub_4A6C90": "existing C-layout animation callback slot; thin Go export only"
   },
   "native_go_callers": [
     "legacy/game.go state registrations",
@@ -67,7 +72,7 @@
   ],
   "notes": [
     "All23 selected routines are live through direct roots or registered callbacks.",
-    "Private native window/event/draw/animation callbacks can move together.",
+    "Window/event/draw callbacks become Go; five animation callback addresses retain thin C exports to avoid changing shared animation infrastructure.",
     "Keep three modifier setter Go APIs while moving their storage.",
     "Original mapped palette and packed state words remain owned fields with fixtures preserving surrounding bytes.",
     "13 adjacent configuration callbacks remain separate and untouched."

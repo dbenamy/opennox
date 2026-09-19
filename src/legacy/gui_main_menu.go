@@ -22,6 +22,7 @@ int nox_client_drawGeneralCallback_4A2200();
 */
 import "C"
 import (
+	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/client/gui"
@@ -97,7 +98,7 @@ func Nox_client_countSaveFiles_4DC550() int {
 	return int(sessionSaveSlots())
 }
 func Sub_4A7A60(a1 int) {
-	C.sub_4A7A60(C.int(a1))
+	characterUI.defaults = uint32(a1)
 }
 func Nox_client_lockScreenBriefing_450160(a1 int, a2 int, a3 int) {
 	briefingShow(a1, a2, byte(a3))
@@ -109,7 +110,7 @@ func Sub_4D6F80(a1 int) {
 	questRuntimeSetWord(1556164, uint32(a1))
 }
 func Sub_4A7A70(a1 int) {
-	C.sub_4A7A70(C.int(a1))
+	*memmap.PtrUint32(0x5D4594, 1308168) = uint32(a1)
 }
 
 func Get_nox_game_showSelChar_4A4DB0() unsafe.Pointer {

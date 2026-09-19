@@ -248,6 +248,7 @@ target build selection and linker evidence.
 | Player-file sections, inventory restoration and framing | 65 | 19,482 | −1,601 | 0 |
 | Spell, ability and guide awards and catalogs | 61 | 18,662 | −820 | 0 |
 | Resource-definition parsers, sound sets and catalog linking | 61 | 18,044 | −618 | 0 |
+| Character creation, palettes, preview and player files | 59 | 16,851 | −1,193 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

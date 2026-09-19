@@ -85,10 +85,10 @@ func init() {
 		return optionsMenu.construct() != 0
 	})
 	gui.RegisterState(client.StateClassSelect, "ClassSelect", func() bool {
-		return C.nox_game_showSelClass_4A4840() != 0
+		return characterShowClass() != 0
 	})
 	gui.RegisterState(client.StateColorSelect, "ColorSelect", func() bool {
-		return C.nox_game_showSelColor_4A5D00() != 0
+		return characterShowColor() != 0
 	})
 	gui.RegisterState(client.StateServerList, "ServerList", func() bool {
 		return C.nox_game_showGameSel_4379F0() != 0

@@ -2,40 +2,47 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about18.0k lines** — **18,044 physical lines in61
-production `.c` files**, zero reference C; down618 this chunk.
+**Qualified C remaining: about 16.9k lines** — **16,851 physical lines in 59
+production `.c` files**, zero reference C; down 1,193 this chunk.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — character-creation C baseline qualified
+## Current — character-creation Go conversion qualified
 
-Qualified resource-definition conversion **6052e5b7** is committed/pushed.
-Character creation selects 23 bodies /1,042 C body lines. Production is unchanged;
-20 new porttest-only files provide the baseline. See
-[CHARACTER_CREATION.md](docs/porting/CHARACTER_CREATION.md).
+C baseline **dd4debb6** is committed/pushed. All 23 selected bodies are Go;
+16 private interfaces and 27 named C owners retire, and two C files are removed.
+Seven thin selected C exports remain for live entries and animation slots.
+See [CHARACTER_CREATION.md](docs/porting/CHARACTER_CREATION.md).
 
-All 173 affected roots pass without skips on default/server/highres. All 142
-captures /13,807 records and 2,679 source fingerprints agree across targets.
-Two independent focused runs agree; 16 new captures /889 records are frozen.
-Static checks pass. All sessions, including 95276/16231/65709, are joined.
-freeze.py and qualify-c.py are CONSUMED. No builds/tests remain active.
+All 174 affected roots pass on default/server/highres without skips. All 142
+captures /13,807 records match C, including 16 new captures /889 records. All
+2,672 source fingerprints agree across tests and production. Static memory checks,
+three fresh ELF32/386/SSE2/CGO binaries/ABI inventories, exact known full suite
+(1,553 failure entries;15 pass /3 fail /32 skip packages), extended character
+creation/gameplay and explicit save/load qualify. No goldens changed.
 
-Production identity with the qualified parent is recorded; parent binary hashes
-were checked. The extended original-C headless scenario and independent repeat
-pass. Native conversion must build and qualify fresh production. Next: commit/push
-this C baseline, then translate the selected routines against frozen expectations.
-Review animation callback ownership before retiring interfaces; existing gui.Anim
-stores C callback pointers, so the interface plan may need a documented adjustment.
+Final evidence: build/port-character-creation/native-reviewed-{default,server,
+highres,production}, static-native-reviewed.log and native-qualification.json.
+All sessions joined. All installers, freezers and qualification generators are
+CONSUMED. Source and frozen expectations govern; never replay old installers.
 
-File normalization covers verified temporary paths/timestamps and two unused,
-nonserialized save-record padding bytes. Initial fixture mistakes (destroyed entry
-widget during owner reset; omitted expected UTF-16 terminator) are fixed and
-recorded. All installed source drafts and audit/apply cleanup scripts are CONSUMED.
+Review notes: the first headless native run found event22's numeric child ID
+interpreted as a pointer. Fixed by checking event type before decoding arguments;
+an eight-ID independent regression now passes, and all gates were rerun. Preserve
+legacy first-character name cleanup and UTF-16-as-byte-string filenames. Native
+save records zero two unused, nonserialized padding bytes. Shared animation
+callback storage stays unchanged; callback logic itself is Go.
 
-Disk: about 2.5 GiB free. Completed original/repeat scenario asset copies were
-hash-verified and deduplicated, reclaiming 1,112,777,430 bytes; retain restoration
-manifests/helpers, captures, saves, source assets and the original archive.
+Disk: old cache cleanup reclaimed 4,924,575,701 bytes from 18,704 checked old
+entries. Three completed native scenario copies reclaimed another 1,669,136,451 bytes;
+audit11424/apply65743 joined and are CONSUMED. About 5.7 GiB free;
+keep restoration manifests/helper, captures, saves, assets/archive and binaries.
+Next commit/push this qualified conversion, then begin the server-browser baseline.
+Read-only selection/callers and plan are under build/port-server-browser: 21 bodies
+/1,174 lines. Audit the old configuration callback table before translating it.
+The now-unused sub_4A5E90_A C adapter (implementation already Go) and empty
+selclass header can retire with that next source batch; retain the active Go hook.
 
 ## Qualified parent — resource-definition Go conversion qualified
 
@@ -1547,3 +1554,9 @@ Character-creation candidate refined by read-only review:23 UI bodies /1,042 bod
 lines (ui-selection-draft.json);13 adjacent configuration bodies /217 lines are
 separate and deferred. Name helper/test drafts exist only under build, NOT installed
 or run. Original36-body selection remains as provenance. No next-batch source edits.
+
+<!-- next-candidate -->
+Read-only next candidate: build/port-server-browser/{selection-draft,callers-draft}.json
+and plan-draft.md, 21 bodies /1,174 body lines. No next-batch source installed.
+Review the apparently unconsumed old configuration callback table and disabled
+online branches before deciding reachability; coordinate getter has live callers.

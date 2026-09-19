@@ -14,20 +14,21 @@
 
 ## Current status
 
-Resource-definition parsers, client thing fields, sound sets and catalog linking
-are now Go:24 live C bodies converted, three orphaned bodies and a private list
-head removed. One interface remains for a live C caller. See
-[RESOURCE_DEFINITIONS.md](docs/porting/RESOURCE_DEFINITIONS.md).
+Character creation, class selection, palettes, preview and initial player files
+are now Go: 23 C bodies converted, 16 private interfaces and 27 named C owners
+retired, and two C translation units removed. Seven selected interfaces remain
+for live C entries and animation callback slots. See
+[CHARACTER_CREATION.md](docs/porting/CHARACTER_CREATION.md).
 
-Latest qualified production C is **18,044 physical lines in61 files**, zero reference C:
-**−618** from the preceding qualified baseline. Frozen comparisons, all three targets,
-fresh production binaries and headless gameplay/save-load qualify. See
+Latest qualified production C is **16,851 physical lines in 59 files**, zero
+reference C: **−1,193** from the preceding qualified baseline. All 174 affected
+roots pass on three targets with exact C captures. Fresh production binaries,
+known-suite comparison and headless gameplay/save-load qualify. See
 [PORTING_STATE.md](PORTING_STATE.md).
 
-Character creation: the original-C baseline is qualified for 23 connected UI
-bodies /1,042 C body lines. Its 16 new captures /889 records are frozen, and all
-173 affected roots pass on three targets. Native conversion is next.
-Adjacent configuration callbacks are a separate deferred batch.
+Next candidate: server-browser UI and map/list selection, initially 21 connected
+bodies /1,174 C body lines. Audit the deferred old configuration callback table's
+actual consumers before deciding whether those setters are reachable.
 
 ## Goal and target
 
@@ -95,6 +96,10 @@ may precede full qualification when their evidence and remaining gates are expli
    without direct calls; preserve them. Limit import cleanup to the files changed
    by the batch. A small late source fix can invalidate the whole cgo
    package build and repeat the remaining C compile.
+   For GUI dispatch, check the event kind before decoding its arguments. The
+   character-creation scenario caught a numeric WindowNewChild ID interpreted as
+   a window pointer; button-only fixtures had valid pointers and missed it.
+   Include resource-parser notifications in independent event contracts.
    Trace the existing C adapter when choosing a Go API: similar names can hide
    differences in coordinate space, return conventions or ownership.
    For libc parsers, establish saturation, direct float32 rounding, incomplete
