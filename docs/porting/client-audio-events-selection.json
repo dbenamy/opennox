@@ -1,0 +1,498 @@
+[
+  {
+    "symbol": "sub_43DA80",
+    "file": "src/legacy/GAME1_3.c",
+    "start": 6233,
+    "end": 6524,
+    "line": 198,
+    "lines": 13
+  },
+  {
+    "symbol": "sub_43DAD0",
+    "file": "src/legacy/GAME1_3.c",
+    "start": 6602,
+    "end": 6790,
+    "line": 213,
+    "lines": 6
+  },
+  {
+    "symbol": "sub_43DB20",
+    "file": "src/legacy/GAME1_3.c",
+    "start": 6868,
+    "end": 6916,
+    "line": 221,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_43DB30",
+    "file": "src/legacy/GAME1_3.c",
+    "start": 6994,
+    "end": 7098,
+    "line": 224,
+    "lines": 7
+  },
+  {
+    "symbol": "sub_43DB40",
+    "file": "src/legacy/GAME1_3.c",
+    "start": 7176,
+    "end": 7284,
+    "line": 233,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_43DB60",
+    "file": "src/legacy/GAME1_3.c",
+    "start": 7362,
+    "end": 7768,
+    "line": 236,
+    "lines": 19
+  },
+  {
+    "symbol": "sub_43DBA0",
+    "file": "src/legacy/GAME1_3.c",
+    "start": 7846,
+    "end": 8097,
+    "line": 257,
+    "lines": 11
+  },
+  {
+    "symbol": "sub_43DC00",
+    "file": "src/legacy/GAME1_3.c",
+    "start": 8175,
+    "end": 8220,
+    "line": 270,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_43DC10",
+    "file": "src/legacy/GAME1_3.c",
+    "start": 8298,
+    "end": 8443,
+    "line": 273,
+    "lines": 9
+  },
+  {
+    "symbol": "sub_43DC30",
+    "file": "src/legacy/GAME1_3.c",
+    "start": 8521,
+    "end": 8568,
+    "line": 284,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_43EDB0",
+    "file": "src/legacy/GAME1_3.c",
+    "start": 10006,
+    "end": 10307,
+    "line": 324,
+    "lines": 13
+  },
+  {
+    "symbol": "sub_43EE00",
+    "file": "src/legacy/GAME1_3.c",
+    "start": 10385,
+    "end": 12980,
+    "line": 339,
+    "lines": 121
+  },
+  {
+    "symbol": "sub_43F0E0",
+    "file": "src/legacy/GAME1_3.c",
+    "start": 13273,
+    "end": 13614,
+    "line": 465,
+    "lines": 21
+  },
+  {
+    "symbol": "sub_44D960",
+    "file": "src/legacy/GAME2.c",
+    "start": 4793,
+    "end": 4839,
+    "line": 146,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_44D970",
+    "file": "src/legacy/GAME2.c",
+    "start": 4917,
+    "end": 5063,
+    "line": 149,
+    "lines": 9
+  },
+  {
+    "symbol": "sub_44D990",
+    "file": "src/legacy/GAME2.c",
+    "start": 5141,
+    "end": 5189,
+    "line": 160,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_450750",
+    "file": "src/legacy/GAME2.c",
+    "start": 5267,
+    "end": 5334,
+    "line": 163,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_450760",
+    "file": "src/legacy/GAME2.c",
+    "start": 5412,
+    "end": 5529,
+    "line": 166,
+    "lines": 7
+  },
+  {
+    "symbol": "sub_451850",
+    "file": "src/legacy/GAME2.c",
+    "start": 5607,
+    "end": 6481,
+    "line": 175,
+    "lines": 30
+  },
+  {
+    "symbol": "sub_451920",
+    "file": "src/legacy/GAME2.c",
+    "start": 6559,
+    "end": 6813,
+    "line": 207,
+    "lines": 17
+  },
+  {
+    "symbol": "sub_451970",
+    "file": "src/legacy/GAME2.c",
+    "start": 6891,
+    "end": 7181,
+    "line": 226,
+    "lines": 13
+  },
+  {
+    "symbol": "sub_4519C0",
+    "file": "src/legacy/GAME2.c",
+    "start": 7259,
+    "end": 10288,
+    "line": 241,
+    "lines": 104
+  },
+  {
+    "symbol": "sub_451BE0",
+    "file": "src/legacy/GAME2.c",
+    "start": 10366,
+    "end": 11658,
+    "line": 347,
+    "lines": 57
+  },
+  {
+    "symbol": "sub_451CA0",
+    "file": "src/legacy/GAME2.c",
+    "start": 11736,
+    "end": 12029,
+    "line": 406,
+    "lines": 21
+  },
+  {
+    "symbol": "sub_451F30",
+    "file": "src/legacy/GAME2.c",
+    "start": 12107,
+    "end": 12562,
+    "line": 429,
+    "lines": 15
+  },
+  {
+    "symbol": "sub_451F90",
+    "file": "src/legacy/GAME2.c",
+    "start": 12640,
+    "end": 13021,
+    "line": 446,
+    "lines": 22
+  },
+  {
+    "symbol": "sub_451FE0",
+    "file": "src/legacy/GAME2.c",
+    "start": 13099,
+    "end": 13262,
+    "line": 470,
+    "lines": 5
+  },
+  {
+    "symbol": "sub_452010",
+    "file": "src/legacy/GAME2.c",
+    "start": 13340,
+    "end": 13651,
+    "line": 477,
+    "lines": 18
+  },
+  {
+    "symbol": "sub_452050",
+    "file": "src/legacy/GAME2.c",
+    "start": 13729,
+    "end": 14761,
+    "line": 497,
+    "lines": 39
+  },
+  {
+    "symbol": "sub_452120",
+    "file": "src/legacy/GAME2.c",
+    "start": 14839,
+    "end": 15536,
+    "line": 538,
+    "lines": 28
+  },
+  {
+    "symbol": "sub_452190",
+    "file": "src/legacy/GAME2.c",
+    "start": 15614,
+    "end": 15696,
+    "line": 568,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_4521A0",
+    "file": "src/legacy/GAME2.c",
+    "start": 15774,
+    "end": 16270,
+    "line": 571,
+    "lines": 31
+  },
+  {
+    "symbol": "sub_4521F0",
+    "file": "src/legacy/GAME2.c",
+    "start": 16348,
+    "end": 16824,
+    "line": 604,
+    "lines": 19
+  },
+  {
+    "symbol": "sub_452230",
+    "file": "src/legacy/GAME2.c",
+    "start": 16902,
+    "end": 17389,
+    "line": 625,
+    "lines": 19
+  },
+  {
+    "symbol": "nox_xxx_draw_452300",
+    "file": "src/legacy/GAME2.c",
+    "start": 17467,
+    "end": 18096,
+    "line": 646,
+    "lines": 33
+  },
+  {
+    "symbol": "sub_4523D0",
+    "file": "src/legacy/GAME2.c",
+    "start": 18174,
+    "end": 18429,
+    "line": 681,
+    "lines": 15
+  },
+  {
+    "symbol": "sub_452410",
+    "file": "src/legacy/GAME2.c",
+    "start": 18507,
+    "end": 19072,
+    "line": 698,
+    "lines": 19
+  },
+  {
+    "symbol": "sub_452490",
+    "file": "src/legacy/GAME2.c",
+    "start": 19150,
+    "end": 19534,
+    "line": 719,
+    "lines": 24
+  },
+  {
+    "symbol": "sub_452510",
+    "file": "src/legacy/GAME2.c",
+    "start": 19612,
+    "end": 20114,
+    "line": 745,
+    "lines": 29
+  },
+  {
+    "symbol": "sub_452690",
+    "file": "src/legacy/GAME2.c",
+    "start": 20192,
+    "end": 20421,
+    "line": 776,
+    "lines": 9
+  },
+  {
+    "symbol": "sub_4526D0",
+    "file": "src/legacy/GAME2.c",
+    "start": 20499,
+    "end": 20584,
+    "line": 787,
+    "lines": 4
+  },
+  {
+    "symbol": "sub_4526F0",
+    "file": "src/legacy/GAME2.c",
+    "start": 20662,
+    "end": 21008,
+    "line": 793,
+    "lines": 22
+  },
+  {
+    "symbol": "sub_452810",
+    "file": "src/legacy/GAME2.c",
+    "start": 21086,
+    "end": 21518,
+    "line": 817,
+    "lines": 25
+  },
+  {
+    "symbol": "nox_xxx_clientPlaySoundSpecial_452D80",
+    "file": "src/legacy/GAME2.c",
+    "start": 21596,
+    "end": 22046,
+    "line": 844,
+    "lines": 20
+  },
+  {
+    "symbol": "sub_452DC0",
+    "file": "src/legacy/GAME2.c",
+    "start": 22124,
+    "end": 22444,
+    "line": 866,
+    "lines": 17
+  },
+  {
+    "symbol": "sub_452E10",
+    "file": "src/legacy/GAME2.c",
+    "start": 22522,
+    "end": 22855,
+    "line": 885,
+    "lines": 18
+  },
+  {
+    "symbol": "sub_452E90",
+    "file": "src/legacy/GAME2.c",
+    "start": 22933,
+    "end": 23135,
+    "line": 905,
+    "lines": 12
+  },
+  {
+    "symbol": "sub_452EB0",
+    "file": "src/legacy/GAME2.c",
+    "start": 23213,
+    "end": 23411,
+    "line": 919,
+    "lines": 10
+  },
+  {
+    "symbol": "sub_452EE0",
+    "file": "src/legacy/GAME2.c",
+    "start": 23489,
+    "end": 23653,
+    "line": 931,
+    "lines": 7
+  },
+  {
+    "symbol": "sub_452F10",
+    "file": "src/legacy/GAME2.c",
+    "start": 23731,
+    "end": 23966,
+    "line": 940,
+    "lines": 13
+  },
+  {
+    "symbol": "sub_452F50",
+    "file": "src/legacy/GAME2.c",
+    "start": 24044,
+    "end": 24155,
+    "line": 955,
+    "lines": 6
+  },
+  {
+    "symbol": "sub_452F80",
+    "file": "src/legacy/GAME2.c",
+    "start": 24233,
+    "end": 24359,
+    "line": 963,
+    "lines": 6
+  },
+  {
+    "symbol": "sub_452FA0",
+    "file": "src/legacy/GAME2.c",
+    "start": 24437,
+    "end": 24599,
+    "line": 971,
+    "lines": 13
+  },
+  {
+    "symbol": "sub_452FE0",
+    "file": "src/legacy/GAME2.c",
+    "start": 24677,
+    "end": 24784,
+    "line": 986,
+    "lines": 6
+  },
+  {
+    "symbol": "sub_453050",
+    "file": "src/legacy/GAME2.c",
+    "start": 24862,
+    "end": 24908,
+    "line": 994,
+    "lines": 1
+  },
+  {
+    "symbol": "nox_xxx____setargv_9_453060",
+    "file": "src/legacy/GAME2.c",
+    "start": 24986,
+    "end": 25049,
+    "line": 997,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_453070",
+    "file": "src/legacy/GAME2.c",
+    "start": 25127,
+    "end": 25175,
+    "line": 1000,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_451CF0",
+    "file": "src/legacy/client__audio__audevent.c",
+    "start": 204,
+    "end": 1103,
+    "line": 9,
+    "lines": 43
+  },
+  {
+    "symbol": "sub_451DC0",
+    "file": "src/legacy/client__audio__audevent.c",
+    "start": 1181,
+    "end": 1934,
+    "line": 54,
+    "lines": 36
+  },
+  {
+    "symbol": "sub_451E80",
+    "file": "src/legacy/client__audio__audevent.c",
+    "start": 2012,
+    "end": 3069,
+    "line": 92,
+    "lines": 47
+  },
+  {
+    "symbol": "sub_452580",
+    "file": "src/legacy/client__audio__audevent.c",
+    "start": 3147,
+    "end": 4180,
+    "line": 141,
+    "lines": 37
+  },
+  {
+    "symbol": "sub_452770",
+    "file": "src/legacy/client__audio__audevent.c",
+    "start": 4258,
+    "end": 4884,
+    "line": 180,
+    "lines": 26
+  }
+]

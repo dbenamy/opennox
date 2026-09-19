@@ -310,6 +310,16 @@ int sub_43E8C0(int a1) {
 	return result;
 }
 
+// Test builds can supply deterministic device readiness and buffer observations.
+#ifdef NOX_PORT_TEST_AUDIO_EVENTS
+extern void* nox_porttest_audio_event_user_data(uintptr_t h);
+extern int nox_porttest_audio_event_buffer_ready(uintptr_t h);
+extern void nox_porttest_audio_event_load_buffer(uintptr_t h, uint32_t n, void* p, uint32_t size);
+#define AIL_sample_user_data(h) nox_porttest_audio_event_user_data((uintptr_t)(h))
+#define AIL_sample_buffer_ready(h) nox_porttest_audio_event_buffer_ready((uintptr_t)(h))
+#define AIL_load_sample_buffer(h, n, p, size) nox_porttest_audio_event_load_buffer((uintptr_t)(h), (n), (p), (size))
+#endif
+
 //----- (0043EDB0) --------------------------------------------------------
 void sub_43EDB0(HSAMPLE a1) {
 	int v1;     // eax

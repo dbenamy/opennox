@@ -1,0 +1,113 @@
+{
+  "status": "repeated three-target C captures; frozen qualification pending",
+  "parent": "50f0711d",
+  "repeats": {
+    "default": "c-final-focused-second",
+    "server": "c-repeat-server",
+    "highres": "c-repeat-highres"
+  },
+  "captures": [
+    {
+      "label": "client-audio-events-cache-selection",
+      "sha256": "15375124c1d2487d11826cc044e17119ae8b245e38e94ec34d922989340428ce",
+      "records": 16,
+      "file": "src/client_audio_events_callbacks_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-callbacks",
+      "sha256": "ad422347fc17ee50af583c31bb66bb469cb223fbdcb29bfdf7063a309fe7c9f5",
+      "records": 36,
+      "file": "src/client_audio_events_callbacks_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-defaults",
+      "sha256": "56af29b0eb48e725aabe552edee2e0a323adcc263fbc4ce2e3cc9536dd75c24a",
+      "records": 3,
+      "file": "src/client_audio_events_defaults_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-formats",
+      "sha256": "eb436ababe23e799cb8b3706c718d37944e984a76198642cf04c7eb6dabab366",
+      "records": 80,
+      "file": "src/client_audio_events_primitives_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-lifecycle",
+      "sha256": "f4a1d69b5487f298ae3956c12ff445616b8a4abbdd30536b01a265b7bd5dbbb9",
+      "records": 3,
+      "file": "src/client_audio_events_lifecycle_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-loop",
+      "sha256": "682112c39a1d22f526674356e36b70460dbc5b42d47ed3f47f90f55c71ddb8cf",
+      "records": 16,
+      "file": "src/client_audio_events_playback_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-manager",
+      "sha256": "a008535113388e3e3698aef54bcadc10b40e846bee4a76484720f8005b5fa98a",
+      "records": 9,
+      "file": "src/client_audio_events_manager_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-music-queue",
+      "sha256": "f4395e653e79f5fcc1873a02955619b263d6f577f3eb71ea8fc9956b71f15527",
+      "records": 51,
+      "file": "src/client_audio_events_music_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-playback-failures",
+      "sha256": "ffbfab9bb7a6c9c741e2a51b86e35847521835be5038fbab93e7234b4afad0ae",
+      "records": 6,
+      "file": "src/client_audio_events_playback_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-pool",
+      "sha256": "ce0e76b6349c21ffb2dd4353f72f6b6d46178b433b2929eec6b98bc5856e2272",
+      "records": 1,
+      "file": "src/client_audio_events_manager_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-priority",
+      "sha256": "b4dbccbbb8183c8193a5421f01b30e90cb222d08b08a4723aad955ffb0437baa",
+      "records": 31,
+      "file": "src/client_audio_events_priority_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-public-playback",
+      "sha256": "e84346df2fb66f8af0b5f5691f8f415244e46440a034a734673f994e55ac69ef",
+      "records": 45,
+      "file": "src/client_audio_events_public_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-refill",
+      "sha256": "d86f646a4552e05e0b79022da44102c82a9f8b5d1ec5b52d4e6b27ecf774e44b",
+      "records": 26,
+      "file": "src/client_audio_events_refill_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-sample-selection",
+      "sha256": "12f95ad035cb3236b0df15137aacdb246d6c8001e387e415250c20ef6825e689",
+      "records": 80,
+      "file": "src/client_audio_events_selection_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-scheduling",
+      "sha256": "4c4dd7452358569dd09ee7f4ff20bfda1414311150f39742bd859134c5a61b60",
+      "records": 23,
+      "file": "src/client_audio_events_lifecycle_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-switches",
+      "sha256": "d9a0e015f39022e53fae462ae0516a2a8b40d51667d38eb811d1d7dc4bbbde0c",
+      "records": 296,
+      "file": "src/client_audio_events_primitives_porttest_test.go"
+    },
+    {
+      "label": "client-audio-events-volume-pan",
+      "sha256": "fe0eb2ad08d6994b9917a47e3609564f4e3f6df6dca2a5a29490d17ca17436dd",
+      "records": 98,
+      "file": "src/client_audio_events_primitives_porttest_test.go"
+    }
+  ]
+}

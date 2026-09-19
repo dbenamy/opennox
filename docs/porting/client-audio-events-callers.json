@@ -1,0 +1,686 @@
+{
+  "roots": {
+    "sub_452770": [],
+    "sub_4521A0": [],
+    "sub_452510": [],
+    "sub_43DC30": [
+      {
+        "file": "src/legacy/config_legacy.go",
+        "line_after_candidate_removal": 21,
+        "text": "return int(C.sub_43DC30())"
+      }
+    ],
+    "sub_451920": [],
+    "sub_451FE0": [],
+    "nox_xxx_clientPlaySoundSpecial_452D80": [
+      {
+        "file": "src/legacy/client_ui_inventory_place.go",
+        "line_after_candidate_removal": 138,
+        "text": "C.nox_xxx_clientPlaySoundSpecial_452D80(895, 100)"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_place.go",
+        "line_after_candidate_removal": 161,
+        "text": "C.nox_xxx_clientPlaySoundSpecial_452D80(895, 100)"
+      },
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 870,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(312, 100);"
+      },
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 957,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(309, 100);"
+      },
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 997,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(309, 100);"
+      },
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 1042,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(309, 100);"
+      },
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 1144,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(309, 100);"
+      },
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 1825,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(297, 100 * (600 - v226) / 600);"
+      },
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 2157,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(310, 100);"
+      },
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 2898,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(1008, 100);"
+      },
+      {
+        "file": "src/legacy/client__gui__guiggovr.c",
+        "line_after_candidate_removal": 33,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(1007, 100);"
+      },
+      {
+        "file": "src/legacy/client__shell__selclass.c",
+        "line_after_candidate_removal": 43,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(921, 100);"
+      },
+      {
+        "file": "src/legacy/client__shell__selclass.c",
+        "line_after_candidate_removal": 57,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(920, 100);"
+      },
+      {
+        "file": "src/legacy/client_ui_trade_state.go",
+        "line_after_candidate_removal": 52,
+        "text": "func uiTradeSound(id int) { C.nox_xxx_clientPlaySoundSpecial_452D80(C.int(id), 100) }"
+      },
+      {
+        "file": "src/legacy/client__gui__gamewin__gamewin.c",
+        "line_after_candidate_removal": 32,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(925, 100);"
+      },
+      {
+        "file": "src/legacy/client__shell__noxworld.c",
+        "line_after_candidate_removal": 109,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(922, 100);"
+      },
+      {
+        "file": "src/legacy/client__shell__noxworld.c",
+        "line_after_candidate_removal": 683,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(766, 100);"
+      },
+      {
+        "file": "src/legacy/client__gui__guigen.c",
+        "line_after_candidate_removal": 31,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(897, 50);"
+      },
+      {
+        "file": "src/legacy/GAME2_2.c",
+        "line_after_candidate_removal": 331,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(766, 100);"
+      },
+      {
+        "file": "src/legacy/GAME2_2.c",
+        "line_after_candidate_removal": 744,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(766, 100);"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_window_state.go",
+        "line_after_candidate_removal": 85,
+        "text": "C.nox_xxx_clientPlaySoundSpecial_452D80(789, 100)"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_window_state.go",
+        "line_after_candidate_removal": 102,
+        "text": "C.nox_xxx_clientPlaySoundSpecial_452D80(790, 100)"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line_after_candidate_removal": 654,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(766, 100);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line_after_candidate_removal": 742,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(231, 100);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line_after_candidate_removal": 763,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(766, 100);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line_after_candidate_removal": 807,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(766, 100);"
+      },
+      {
+        "file": "src/legacy/GAME1_3.c",
+        "line_after_candidate_removal": 496,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(766, 100);"
+      },
+      {
+        "file": "src/legacy/sound.go",
+        "line_after_candidate_removal": 21,
+        "text": "C.nox_xxx_clientPlaySoundSpecial_452D80(C.int(a1), C.int(a2))"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_window_events.go",
+        "line_after_candidate_removal": 52,
+        "text": "C.nox_xxx_clientPlaySoundSpecial_452D80(766, 100)"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_window_events.go",
+        "line_after_candidate_removal": 63,
+        "text": "C.nox_xxx_clientPlaySoundSpecial_452D80(766, 100)"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_window_input.go",
+        "line_after_candidate_removal": 166,
+        "text": "C.nox_xxx_clientPlaySoundSpecial_452D80(791, 100)"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_window_input.go",
+        "line_after_candidate_removal": 314,
+        "text": "C.nox_xxx_clientPlaySoundSpecial_452D80(792, 100)"
+      },
+      {
+        "file": "src/legacy/GAME1_2.c",
+        "line_after_candidate_removal": 555,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(923, 100);"
+      },
+      {
+        "file": "src/legacy/GAME3.c",
+        "line_after_candidate_removal": 299,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(923, 100);"
+      },
+      {
+        "file": "src/legacy/GAME3.c",
+        "line_after_candidate_removal": 433,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(923, 100);"
+      },
+      {
+        "file": "src/legacy/GAME3.c",
+        "line_after_candidate_removal": 804,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(920, 100);"
+      },
+      {
+        "file": "src/legacy/GAME3.c",
+        "line_after_candidate_removal": 898,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(921, 100);"
+      },
+      {
+        "file": "src/legacy/client__gui__guiquit.c",
+        "line_after_candidate_removal": 56,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(766, 100);"
+      },
+      {
+        "file": "src/legacy/client__gui__guiquit.c",
+        "line_after_candidate_removal": 226,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(921, 100);"
+      },
+      {
+        "file": "src/legacy/client__network__inform.c",
+        "line_after_candidate_removal": 119,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(305, 100);"
+      },
+      {
+        "file": "src/legacy/client__network__inform.c",
+        "line_after_candidate_removal": 131,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(306, 100);"
+      },
+      {
+        "file": "src/legacy/client__network__inform.c",
+        "line_after_candidate_removal": 143,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(303, 100);"
+      },
+      {
+        "file": "src/legacy/client__network__inform.c",
+        "line_after_candidate_removal": 153,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(304, 100);"
+      },
+      {
+        "file": "src/legacy/client__network__inform.c",
+        "line_after_candidate_removal": 162,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(305, 100);"
+      },
+      {
+        "file": "src/legacy/GAME3_1.c",
+        "line_after_candidate_removal": 302,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(1022, 100);"
+      },
+      {
+        "file": "src/legacy/GAME3_1.c",
+        "line_after_candidate_removal": 373,
+        "text": "nox_xxx_clientPlaySoundSpecial_452D80(766, 100);"
+      }
+    ],
+    "sub_452EE0": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 389,
+        "text": "sub_452EE0((int)result, v3);"
+      }
+    ],
+    "sub_451850": [
+      {
+        "file": "src/legacy/audio_ail.go",
+        "line_after_candidate_removal": 357,
+        "text": "C.sub_451850(C.int(uintptr(a1)), a2)"
+      }
+    ],
+    "sub_450760": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 1392,
+        "text": "sub_450760(v5);"
+      },
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 1395,
+        "text": "sub_450760(0);"
+      }
+    ],
+    "sub_452F10": [],
+    "sub_43DA80": [
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 2786,
+        "text": "sub_43DA80();"
+      },
+      {
+        "file": "src/legacy/script_ns_audio.go",
+        "line_after_candidate_removal": 11,
+        "text": "C.sub_43DA80()"
+      }
+    ],
+    "sub_452410": [],
+    "sub_452230": [],
+    "sub_43EE00": [
+      {
+        "file": "src/legacy/audio_ail.go",
+        "line_after_candidate_removal": 271,
+        "text": "C.sub_43EE00(unsafe.Pointer(v))"
+      }
+    ],
+    "sub_44D990": [
+      {
+        "file": "src/legacy/config_legacy.go",
+        "line_after_candidate_removal": 18,
+        "text": "return int(C.sub_44D990())"
+      }
+    ],
+    "sub_452EB0": [
+      {
+        "file": "src/drawable.go",
+        "line_after_candidate_removal": 247,
+        "text": "if p := sub_452EB0(&dr.Field_124, &dr.Field_125, &dr.Field_126); p != nil {"
+      },
+      {
+        "file": "src/drawable.go",
+        "line_after_candidate_removal": 252,
+        "text": "func sub_452EB0(a0 *unsafe.Pointer, a1, a2 *uint32) unsafe.Pointer {"
+      },
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 379,
+        "text": "result = (int*)sub_452EB0(v13);"
+      }
+    ],
+    "sub_4526D0": [],
+    "sub_43DAD0": [
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 2791,
+        "text": "sub_43DAD0();"
+      },
+      {
+        "file": "src/legacy/script_ns_audio.go",
+        "line_after_candidate_removal": 14,
+        "text": "C.sub_43DAD0()"
+      }
+    ],
+    "sub_450750": [
+      {
+        "file": "src/save.go",
+        "line_after_candidate_removal": 777,
+        "text": "func sub_450750() byte {"
+      },
+      {
+        "file": "src/save.go",
+        "line_after_candidate_removal": 843,
+        "text": "save.Stage = sub_450750()"
+      },
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 1390,
+        "text": "LOBYTE(v5) = sub_450750();"
+      }
+    ],
+    "sub_452190": [],
+    "nox_xxx_draw_452300": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 386,
+        "text": "result = nox_xxx_draw_452300(v17);"
+      }
+    ],
+    "sub_452690": [],
+    "sub_452E10": [
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 2065,
+        "text": "sub_452E10(v317, v321, v338);"
+      }
+    ],
+    "sub_44D960": [
+      {
+        "file": "src/legacy/audio_ail.go",
+        "line_after_candidate_removal": 291,
+        "text": "C.sub_44D960()"
+      }
+    ],
+    "sub_452050": [],
+    "sub_43DC00": [
+      {
+        "file": "src/legacy/audio_ail.go",
+        "line_after_candidate_removal": 287,
+        "text": "C.sub_43DC00()"
+      }
+    ],
+    "sub_4526F0": [],
+    "sub_451DC0": [],
+    "sub_451F90": [],
+    "sub_452490": [],
+    "sub_452FA0": [],
+    "sub_453050": [
+      {
+        "file": "src/legacy/audio_ail.go",
+        "line_after_candidate_removal": 295,
+        "text": "C.sub_453050()"
+      }
+    ],
+    "sub_451F30": [],
+    "sub_452580": [],
+    "sub_452810": [],
+    "sub_43DBA0": [
+      {
+        "file": "src/legacy/gameloop.go",
+        "line_after_candidate_removal": 134,
+        "text": "C.sub_43DBA0()"
+      }
+    ],
+    "sub_451E80": [],
+    "sub_451CF0": [],
+    "sub_452F80": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 390,
+        "text": "sub_452F80((int)v15, v16);"
+      }
+    ],
+    "sub_44D970": [
+      {
+        "file": "src/legacy/gui_options_state.go",
+        "line_after_candidate_removal": 112,
+        "text": "C.sub_44D970()"
+      }
+    ],
+    "sub_43DB40": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 1573,
+        "text": "v2 = sub_43DB40(i);"
+      }
+    ],
+    "sub_452120": [],
+    "sub_4523D0": [
+      {
+        "file": "src/legacy/drawable.go",
+        "line_after_candidate_removal": 223,
+        "text": "C.sub_4523D0(p)"
+      },
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 395,
+        "text": "result = (int*)sub_4523D0(result);"
+      }
+    ],
+    "sub_451970": [
+      {
+        "file": "src/legacy/main.go",
+        "line_after_candidate_removal": 109,
+        "text": "C.sub_451970()"
+      }
+    ],
+    "sub_452F50": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 384,
+        "text": "result = (int*)sub_452F50((int)v14, v3);"
+      }
+    ],
+    "sub_43F0E0": [
+      {
+        "file": "src/legacy/audio_ail.go",
+        "line_after_candidate_removal": 267,
+        "text": "return int(C.sub_43F0E0((*C.uint)(v)))"
+      }
+    ],
+    "sub_4519C0": [
+      {
+        "file": "src/legacy/client.go",
+        "line_after_candidate_removal": 107,
+        "text": "C.sub_4519C0()"
+      }
+    ],
+    "sub_43EDB0": [
+      {
+        "file": "src/legacy/audio_ail.go",
+        "line_after_candidate_removal": 275,
+        "text": "C.sub_43EDB0((C.HSAMPLE)(unsafe.Pointer(v)))"
+      }
+    ],
+    "nox_xxx____setargv_9_453060": [
+      {
+        "file": "src/legacy/gui_options_state.go",
+        "line_after_candidate_removal": 106,
+        "text": "C.nox_xxx____setargv_9_453060()"
+      }
+    ],
+    "sub_452010": [],
+    "sub_43DB20": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 1565,
+        "text": "v4 = sub_43DB20();"
+      }
+    ],
+    "sub_4521F0": [],
+    "sub_452FE0": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 383,
+        "text": "sub_452FE0((int)result, v16);"
+      }
+    ],
+    "sub_453070": [
+      {
+        "file": "src/legacy/config_legacy.go",
+        "line_after_candidate_removal": 15,
+        "text": "return int(C.sub_453070())"
+      }
+    ],
+    "sub_43DB60": [
+      {
+        "file": "src/legacy/gameloop.go",
+        "line_after_candidate_removal": 107,
+        "text": "C.sub_43DB60()"
+      }
+    ],
+    "sub_452DC0": [
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 2068,
+        "text": "sub_452DC0(v317, v321, v338);"
+      }
+    ],
+    "sub_451CA0": [],
+    "sub_451BE0": [],
+    "sub_43DC10": [
+      {
+        "file": "src/legacy/gui_options_state.go",
+        "line_after_candidate_removal": 118,
+        "text": "C.sub_43DC10()"
+      }
+    ],
+    "sub_452E90": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 391,
+        "text": "result = (int*)sub_452E90(v13, (int)v15);"
+      }
+    ],
+    "sub_43DB30": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line_after_candidate_removal": 1587,
+        "text": "sub_43DB30(v4);"
+      }
+    ]
+  },
+  "edges": {
+    "sub_452770": [
+      "sub_451CF0"
+    ],
+    "sub_4521A0": [],
+    "sub_452510": [
+      "sub_4523D0",
+      "sub_452580"
+    ],
+    "sub_43DC30": [],
+    "sub_451920": [],
+    "sub_451FE0": [],
+    "nox_xxx_clientPlaySoundSpecial_452D80": [
+      "nox_xxx_draw_452300",
+      "sub_452510",
+      "sub_452EE0"
+    ],
+    "sub_452EE0": [
+      "sub_452F10"
+    ],
+    "sub_451850": [
+      "sub_451920"
+    ],
+    "sub_450760": [],
+    "sub_452F10": [],
+    "sub_43DA80": [],
+    "sub_452410": [],
+    "sub_452230": [
+      "sub_451FE0"
+    ],
+    "sub_43EE00": [],
+    "sub_44D990": [],
+    "sub_452EB0": [],
+    "sub_4526D0": [],
+    "sub_43DAD0": [],
+    "sub_450750": [],
+    "sub_452190": [],
+    "nox_xxx_draw_452300": [
+      "sub_452230"
+    ],
+    "sub_452690": [],
+    "sub_452E10": [
+      "nox_xxx_draw_452300",
+      "sub_452510",
+      "sub_452EE0",
+      "sub_452F80"
+    ],
+    "sub_44D960": [],
+    "sub_452050": [],
+    "sub_43DC00": [],
+    "sub_4526F0": [
+      "sub_452690"
+    ],
+    "sub_451DC0": [
+      "sub_451E80",
+      "sub_451F30",
+      "sub_451F90"
+    ],
+    "sub_451F90": [],
+    "sub_452490": [],
+    "sub_452FA0": [],
+    "sub_453050": [],
+    "sub_451F30": [],
+    "sub_452580": [
+      "sub_452690",
+      "sub_4526D0",
+      "sub_4526F0",
+      "sub_452770",
+      "sub_452810"
+    ],
+    "sub_452810": [],
+    "sub_43DBA0": [
+      "sub_43DAD0"
+    ],
+    "sub_451E80": [],
+    "sub_451CF0": [
+      "sub_451CA0"
+    ],
+    "sub_452F80": [
+      "sub_452FA0"
+    ],
+    "sub_44D970": [],
+    "sub_43DB40": [],
+    "sub_452120": [
+      "sub_451FE0",
+      "sub_452190",
+      "sub_4521A0",
+      "sub_4523D0"
+    ],
+    "sub_4523D0": [
+      "sub_451F90",
+      "sub_452410"
+    ],
+    "sub_451970": [
+      "sub_4521F0",
+      "sub_452230"
+    ],
+    "sub_452F50": [
+      "sub_452F10"
+    ],
+    "sub_43F0E0": [],
+    "sub_4519C0": [
+      "sub_451BE0",
+      "sub_451CA0",
+      "sub_451DC0",
+      "sub_451FE0",
+      "sub_452010",
+      "sub_452050",
+      "sub_452120",
+      "sub_4523D0",
+      "sub_452490",
+      "sub_452510"
+    ],
+    "sub_43EDB0": [],
+    "nox_xxx____setargv_9_453060": [],
+    "sub_452010": [],
+    "sub_43DB20": [],
+    "sub_4521F0": [
+      "sub_451FE0",
+      "sub_4523D0"
+    ],
+    "sub_452FE0": [
+      "sub_452FA0"
+    ],
+    "sub_453070": [],
+    "sub_43DB60": [
+      "sub_43DA80"
+    ],
+    "sub_452DC0": [
+      "nox_xxx_draw_452300",
+      "sub_452510",
+      "sub_452EE0",
+      "sub_452F80"
+    ],
+    "sub_451CA0": [
+      "sub_451CF0"
+    ],
+    "sub_451BE0": [
+      "sub_4523D0"
+    ],
+    "sub_43DC10": [],
+    "sub_452E90": [],
+    "sub_43DB30": []
+  },
+  "provisionally_unreachable": []
+}

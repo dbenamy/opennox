@@ -45,14 +45,23 @@ The helper preserves per-run restore manifests; original assets,
 archive, changed save files, captures and binaries remain. Earlier stale compiler
 cache cleanup reclaimed 8,618,371,198 bytes and is consumed.
 
-Next: commit/push this qualified conversion, then continue with client audio
-events/playback. Read-only candidate:
+Native conversion **50f0711d** is committed/pushed. Next audio events/playback
+baseline is active; see CLIENT_AUDIO_EVENTS.md. Read-only candidate:
 `build/port-client-audio-events/selection-draft.json` and `caller-audit-draft.json`.
 The revised scope has 62 bodies / 1,182 body lines and 35 external roots, all reachable:
 audio event scheduling/playback, music/dialog controls, sample refill and AIL format
 mapping in GAME2.c, GAME1_3.c and client__audio__audevent.c. Adjacent GUI overlay
-helpers are excluded. No next-batch source has been installed. Reuse the current
-stream/cache/driver fixtures and qualified production where source identity allows.
+helpers are excluded. Tracked next-batch scope/audit and focused manifest are installed; fixtures are next.
+Production algorithms are unchanged; a test-only C adapter adds ten lines
+(current working C 22,410). Fresh C production qualification is planned.
+The lifecycle-third sweep passes 11 root tests and static-baseline passes.
+Real event/pool/cache/voice owners are installed. All 17 captures /820 records
+are now frozen after three identical target runs. Affected sweeps pass 51 root
+plus five timer tests per target; 36 artifacts /2,353 records match, with all
+2,583 source fingerprints identical. Fresh C production runs in c-final-production
+(session 8357); join it before any Go/C edits. Baseline is not production-qualified
+yet. All fixture drafts and freeze.py are consumed. Native drafts are uninstalled.
+Use tracked source over drafts.
 
 ## Qualified parent — native combat overlays
 
@@ -1420,3 +1429,22 @@ reachability and ownership audit remain; no next-batch source is installed.
 Prepared but NOT RUN: deduplicate-client-audio-streams-completed-assets.py can
 audit completed C/native scenario copies only after production finishes. Its
 apply mode must not run until the independent hash/inactivity audit is reviewed.
+
+
+## Active continuation — client audio events C baseline
+
+Qualified parent **50f0711d** is pushed. Tracked scope/audit: 62 bodies / 1,182 body
+lines, 35 external roots, all reachable. The C dispatcher and actual global owners
+are installed. Format/volume/pan/switch and music/default contracts passed
+(primitives-initial and music-defaults-initial); both sessions are joined.
+Refill-initial is joined: ordinary refill and scratch guards passed; the fixture
+was corrected to assert the existing empty-chunk termination convention.
+
+selection-refill-second is active (session54366); no source edits until joined.
+It adds actual-RNG sample selection and reruns corrected refill boundaries. The
+C refill bodies use a test-only external-device observer, with normal AIL fallback
+when no fixture owner exists. The conditional adapter block changes the C file;
+production algorithms remain unchanged. Reaudit baseline identity or rerun C
+production qualification. No goldens frozen. Remaining: connected event ownership,
+scheduling/spatial contracts, fixture review/repeats, baseline qualification/commit.
+Installed build-dispatcher.py and music/selection drafts are CONSUMED.
