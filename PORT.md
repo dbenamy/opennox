@@ -14,16 +14,14 @@
 
 ## Current status
 
-Client audio events, playback, scheduling and sample refill are now Go, with
-62 C bodies converted. See [CLIENT_AUDIO_EVENTS.md](docs/porting/CLIENT_AUDIO_EVENTS.md).
+Player-file sections, inventory restoration and client/server save framing are now
+Go:18 C bodies converted, six interfaces retained for live C callers/callbacks.
+See [PLAYER_FILES.md](docs/porting/PLAYER_FILES.md).
 
-Current production C is **21,083 physical lines in 65 files**, zero reference C:
-**−1,327** from the qualified baseline. Frozen comparisons, all three targets and
-fresh production/headless integration qualify. See [PORTING_STATE.md](PORTING_STATE.md).
-
-Player-file sections now have a qualified C baseline:18 bodies /1,540 body lines,
-36 new frozen captures and 146 affected tests passing on each target. The next
-step is their Go conversion. See [PLAYER_FILES.md](docs/porting/PLAYER_FILES.md).
+Latest qualified production C is **19,482 physical lines in65 files**, zero reference C:
+**−1,601** from the qualified baseline. Frozen comparisons, all three targets,
+fresh production binaries and headless gameplay/save-load qualify. See
+[PORTING_STATE.md](PORTING_STATE.md).
 
 ## Goal and target
 
@@ -51,7 +49,11 @@ may precede full qualification when their evidence and remaining gates are expli
    ownership and observable effects. Move callers with private helpers when useful.
    Check whole-repository reachability before building fixtures: a function with no
    external callers may be a live private helper or completely orphaned. Audit
-   callbacks, registrations and C preambles too. Inspect the enclosing caller
+   callbacks, registrations and C preambles too. A prototype filter must never
+   discard a `return function(...)` call. After removing C bodies, also run a
+   literal symbol search across every remaining C file; the player-file audit
+   caught a live character-creation caller that its declaration filter missed.
+   Inspect the enclosing caller
    conditions: a textual reference inside a constant-false branch is not a live
    entrypoint. Follow the reachable private-helper graph from actual roots. Remove proven unreachable code
    with documented evidence instead of translating it solely to keep tests alive.

@@ -42,7 +42,6 @@ void nox_console_sendSysOpPass_4409D0(wchar2_t* a1);
 int  nox_server_loadMapFile_4CF5F0(char* a1, int a2);
 int nox_xxx_guiChatIconLoad_445650();
 int nox_xxx_loadGuides_427070();
-void sub_41CAC0(char* a1, void* a2);
 
 */
 import "C"
@@ -592,9 +591,7 @@ func Nox_xxx_netPlayerIncomingServ_4DDF60(a1 int) {
 	sessionPlayerIncoming(int32(a1))
 }
 func Nox_xxx_plrLoad_41A480(a1 string) int {
-	str := CString(a1)
-	defer StrFree(str)
-	return int(C.nox_xxx_plrLoad_41A480(str))
+	return playerFileClientLoad(a1)
 }
 func Sub_465DE0(a1 int) {
 	uiInventorySetWindowLevel(a1)
@@ -684,7 +681,7 @@ func Get_nox_game_showMainMenu_4A1C00() unsafe.Pointer {
 	return C.nox_game_showMainMenu_4A1C00
 }
 func Sub_41CAC0(a1 string, data []byte) {
-	C.sub_41CAC0(internCStr(a1), unsafe.Pointer(&data[0]))
+	playerFileExtract(a1, unsafe.Pointer(&data[0]))
 }
 func Nox_xxx_spell_4FE680(a1 *server.Object, a2 float32) {
 	spellLifeCounterBooks(a1, float32(a2))

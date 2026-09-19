@@ -95,7 +95,7 @@ func Sub_41A590(cf *cryptfile.CryptFile, u *server.Object, pinfo *server.PlayerI
 	old := cryptfile.Global()
 	cryptfile.SetGlobal(cf)
 	defer cryptfile.SetGlobal(old)
-	if C.sub_41A590(u.CObj(), pinfo.C()) == 0 {
+	if playerFileAttributes(u, pinfo.C()) == 0 {
 		return errors.New("failed")
 	}
 	return nil
@@ -105,7 +105,7 @@ func Sub_41AA30(cf *cryptfile.CryptFile, u *server.Object, pinfo *server.PlayerI
 	old := cryptfile.Global()
 	cryptfile.SetGlobal(cf)
 	defer cryptfile.SetGlobal(old)
-	if C.sub_41AA30(u.CObj(), pinfo.C()) == 0 {
+	if playerFileStatus(u) == 0 {
 		return errors.New("failed")
 	}
 	return nil
@@ -115,7 +115,7 @@ func Sub_41AC30(cf *cryptfile.CryptFile, u *server.Object, pinfo *server.PlayerI
 	old := cryptfile.Global()
 	cryptfile.SetGlobal(cf)
 	defer cryptfile.SetGlobal(old)
-	if C.sub_41AC30(u.CObj(), pinfo.C()) == 0 {
+	if playerFileInventory(u) == 0 {
 		return errors.New("failed")
 	}
 	return nil
@@ -125,7 +125,7 @@ func Nox_xxx_guiFieldbook_41B420(cf *cryptfile.CryptFile, u *server.Object, pinf
 	old := cryptfile.Global()
 	cryptfile.SetGlobal(cf)
 	defer cryptfile.SetGlobal(old)
-	if C.nox_xxx_guiFieldbook_41B420(u.CObj(), pinfo.C()) == 0 {
+	if playerFileGuides(u) == 0 {
 		return errors.New("failed")
 	}
 	return nil
@@ -135,7 +135,7 @@ func Nox_xxx_guiSpellbook_41B660(cf *cryptfile.CryptFile, u *server.Object, pinf
 	old := cryptfile.Global()
 	cryptfile.SetGlobal(cf)
 	defer cryptfile.SetGlobal(old)
-	if C.nox_xxx_guiSpellbook_41B660(u.CObj(), pinfo.C()) == 0 {
+	if playerFileSpells(u) == 0 {
 		return errors.New("failed")
 	}
 	return nil
@@ -145,7 +145,7 @@ func Nox_xxx_guiEnchantment_41B9C0(cf *cryptfile.CryptFile, u *server.Object, pi
 	old := cryptfile.Global()
 	cryptfile.SetGlobal(cf)
 	defer cryptfile.SetGlobal(old)
-	if C.nox_xxx_guiEnchantment_41B9C0(u.CObj(), pinfo.C()) == 0 {
+	if playerFileEnchantment(u) == 0 {
 		return errors.New("failed")
 	}
 	return nil
@@ -155,7 +155,7 @@ func Sub_41BEC0(cf *cryptfile.CryptFile, u *server.Object, pinfo *server.PlayerI
 	old := cryptfile.Global()
 	cryptfile.SetGlobal(cf)
 	defer cryptfile.SetGlobal(old)
-	if C.sub_41BEC0(u.CObj(), pinfo.C()) == 0 {
+	if playerFileJournal(u) == 0 {
 		return errors.New("failed")
 	}
 	return nil
@@ -165,7 +165,7 @@ func Sub_41C080(cf *cryptfile.CryptFile, u *server.Object, pinfo *server.PlayerI
 	old := cryptfile.Global()
 	cryptfile.SetGlobal(cf)
 	defer cryptfile.SetGlobal(old)
-	if C.sub_41C080(u.CObj(), pinfo.C()) == 0 {
+	if playerFileGame(u) == 0 {
 		return errors.New("failed")
 	}
 	return nil
@@ -175,7 +175,7 @@ func Sub_41C280(cf *cryptfile.CryptFile) error {
 	old := cryptfile.Global()
 	cryptfile.SetGlobal(cf)
 	defer cryptfile.SetGlobal(old)
-	if C.sub_41C280(nil) == 0 {
+	if playerFileGUI() == 0 {
 		return errors.New("failed")
 	}
 	return nil
@@ -185,7 +185,7 @@ func Nox_xxx_parseFileInfoData_41C3B0(cf *cryptfile.CryptFile) error {
 	old := cryptfile.Global()
 	cryptfile.SetGlobal(cf)
 	defer cryptfile.SetGlobal(old)
-	if C.nox_xxx_parseFileInfoData_41C3B0(0) == 0 {
+	if playerFileMetadata() == 0 {
 		return errors.New("failed")
 	}
 	return nil
@@ -195,7 +195,7 @@ func Sub_41C780(cf *cryptfile.CryptFile) error {
 	old := cryptfile.Global()
 	cryptfile.SetGlobal(cf)
 	defer cryptfile.SetGlobal(old)
-	if C.sub_41C780(0) == 0 {
+	if playerFileMusic() == 0 {
 		return errors.New("failed")
 	}
 	return nil

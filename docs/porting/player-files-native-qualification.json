@@ -1,0 +1,242 @@
+{
+  "status": "qualified native conversion",
+  "c_baseline": "583caebb",
+  "source_files": 2630,
+  "targets": {
+    "default": {
+      "root_tests": 146,
+      "captures": 66,
+      "records": 6567,
+      "wall_seconds": 74.89677211199887
+    },
+    "server": {
+      "root_tests": 146,
+      "captures": 66,
+      "records": 6567,
+      "wall_seconds": 234.7517119909171
+    },
+    "highres": {
+      "root_tests": 146,
+      "captures": 66,
+      "records": 6567,
+      "wall_seconds": 138.1276080191601
+    }
+  },
+  "captures": {
+    "capture-object-xfer-linked-payloads.json": "6946cc7db7dc6e75cadd9a1b6258c4d403fd18a9db8b74526109d68f20fb40e1",
+    "capture-player-files-inventory-restore.json": "c20170bae6d622d70c4109d2120965045f944b376d5a31fa70ac3248d6dc42d1",
+    "capture-player-files-enchantment-write.json": "8029dca6811bc5d66d6111baa1f0f8f850a72360902fec4477ea8c3c7db7621e",
+    "capture-quickbar-save-owners.json": "c2cc5eaacb5cfcd2f0a557bfa221f5e1d62e82982435c34dddbeefdb79281335",
+    "capture-player-files-gui-write.json": "e3c0a77762c7f303349b5cfa1915a4d746599f17e179f6478584bd621cf13fca",
+    "capture-player-files-status-read.json": "f44884ed7ec9ff2bce3e603d6b8668d2e599693083ca60cb0a8dac6e8d5dabde",
+    "capture-player-files-metadata-read.json": "f3222f98d7e387c1e442c700ef2481069702b7007e5df5052eb32259a07aed9c",
+    "capture-object-xfer-light-read.json": "0303ab7ca0cc845fed75282423d4a78145699fb668d1f785c3807e4b6b9325ae",
+    "capture-player-state-unequip.json": "8936d5370316146f30b40954bafae5aa0a659baeafdca3fc537dfd33878ffdcf",
+    "capture-player-files-save-request.json": "ed6cfa07b11659fac798ac9c2839fd833cabd3e2c5746ada0a1a5fcbb3706a2c",
+    "capture-player-files-enchantment-read-gates.json": "64886e8b29df9b824e3aec9d986b10e54f198a6df21ae3004ec5fe900a498b82",
+    "capture-player-files-game-write.json": "4faa8d82874e368a1976e292426c1b26728c0d8e9a1b70403f6764af4a6d2659",
+    "capture-object-xfer-common-read.json": "275370459efd1056acaf282f58e260cb43dd006b8dbd1704866ec2985f00dfd7",
+    "capture-player-files-music-read.json": "094b460d3653e9bd480cc4286f92576a549bf948be0be6af064c4a64802e1055",
+    "capture-object-xfer-historical.json": "9c480b3dbfb9af885662e3dc682335a5b3bccbd0475fef2fd6ce063660e840b9",
+    "capture-player-files-section-extraction.json": "51d2556dee434201136375c841b2a6a1b39bdfdd05d12ea671e61c34566355cb",
+    "capture-object-xfer-glyph-spells.json": "0964c4ccf793cb6cca791706d267b4aac0f560b99d50d96250d88bdfa5b76629",
+    "capture-player-files-inventory-write.json": "5aeafb8bf2017761ab93bcec563743e5e387cd3dfe54799a7bc4b8c869ca4f93",
+    "capture-player-files-client-write-framing.json": "7697610f1cb2e4f8c45d119af35fd83745c2fea1135458e9e3eff466ea360bee",
+    "capture-player-state-equipment.json": "f6ddedbaaff8eb114dcdb94cea890753c8d9004d40e065a04733e05083e40655",
+    "capture-player-files-fieldbook-write.json": "7aed107c6b8bb79fff6519189fc6da13cff8d72310e619133641dfadbecbbfa7",
+    "capture-item-xfer-obelisk-minimap.json": "682faf05e991e354997ef2f75194e6e9b62fe0ce0c3c9e05cb71d86d61a41d1c",
+    "capture-object-xfer-door-geometry.json": "20c9ae17e8ca3d17e152622396e7dab9776b3321b76c4763b12866577b9329ee",
+    "capture-player-files-ability-restore.json": "5864836439dfbc2bc0cd5328ad9d8fac8f9ad01191908a7a1045299962097273",
+    "capture-object-xfer-owned-write.json": "44c7ed44a24050b30e90cda145d94733de7ebafbe3df1dc825019b94cc948925",
+    "capture-player-files-music-write.json": "7bad1d4a672d72e080da6d754e8aa044299a931df691d34aa30ca2e818f5f201",
+    "capture-quest-progress-variables.json": "cb92b508cb4c1e0639c62f1e34db005d831d3f677e0a5a9a82d84f1f1154e97e",
+    "capture-item-xfer-equipment-health.json": "af7f8e014742cec75751206eb64e9cfa484c9184927f8a436db1b7831116ce56",
+    "capture-item-xfer-generator-records.json": "4d0309d232cb1ce62afa7c862e480e1fe7afef1280e87e38da73bb76d5d395c0",
+    "capture-player-files-quest-inventory-write.json": "a6aef744f32b4d327a5d615760706de043c6dd14d7c00d57395ae9be6547695d",
+    "capture-player-files-quest-fieldbook.json": "da0503b71453aa9c202f6327cc8247fed241ec061a68f54e83f1d966992b5934",
+    "capture-player-files-gui-read.json": "ed2464d247bfd1dc8e7f9e3f3715b6fe061a8ae72b8b0647d9b352401d697416",
+    "capture-player-state-name.json": "c145961b9f3244dd556195174c4d8d69013c2c4d6f248c15c3139fa228869fc6",
+    "capture-item-xfer-name-boundaries.json": "eef3c2673164b967d3bcb50983f239c98fcc7145f1b673a530e0070fb0f4156e",
+    "capture-player-files-inventory-grid-count.json": "720f7af495eb06338fd3d3ef49031797e42cb98cde34f5ab76223987f88c4adb",
+    "capture-object-xfer-common-write.json": "47adcc6cb17fea591b9dd7bb3d8ad584c581432e09ed57b123dc77cbe7338fae",
+    "capture-item-xfer-weapon-charges.json": "78ce522d53ec6949f2a27ff33e3a3fe7b1cad0a2041537b4db82dc63d39752d9",
+    "capture-item-xfer-default.json": "6869329949659b6782b5fa57cb0ba222c85193e356658ff23cf27d98ff97ef62",
+    "capture-item-xfer-generator-partial.json": "d2dc20501579610e180c7d21ac00a89dab1b1cfeae99a50d7422926583a83716",
+    "capture-player-files-attributes-unit-read.json": "26f4dcee6107f1886d4d4a9a60716a03360741fcaa002c25c53502b134c94657",
+    "capture-player-files-inventory-read-gates.json": "b4573334b0e09325ca4481b62c34e7c916cd9a1d227763aa57887b8f62c40300",
+    "capture-object-xfer-trigger-dimensions.json": "ccaa201395324e84466376f5406aa82be0c098c3b35c7c9b6026fed8e21463ba",
+    "capture-player-files-server-load-framing.json": "26372fb3cc108c066e1cfaa4838157828ff623c62447f3db03b1a7a6a2732de7",
+    "capture-player-files-fieldbook-restore.json": "a1a95b881d8f64baf6a81cf20436b549f65e5aaae7f57f825aec7f1a92b93741",
+    "capture-player-files-spellbook-write.json": "28b567c24791640d4fe503a790bfc18b16eb5b896ebdb0506b297ba134462acd",
+    "capture-quickbar-save-spells.json": "9a89dda2d6bc2811cbab65c3339e69375934bc4b1951135a99319bd8b08af81a",
+    "capture-player-files-journal-gates.json": "b6fae4cbd71eaa0386f9fdd041a515dbffb709a8c40b51dcbd2867319ce3101e",
+    "capture-player-files-attributes-write.json": "5e075027ec6a87113bb3b8c513c3fdbbd153ea1652e34a00d863307e4689fe1a",
+    "capture-object-xfer-names.json": "128626fc068730414326b95ea2478602099ed42e92690ad3fafb0f97961809ce",
+    "capture-player-files-attributes-read.json": "1af6495bd98c46fda79ea158a8904d98cefa456204300ad97a66bc33df6b00d8",
+    "capture-player-files-metadata-write.json": "8e338797b1d56fa43a3535e0d4b8281b8e67d583eec9ec90e25f22aa5b0f57ea",
+    "capture-item-xfer-reward-failures.json": "ec77c9e1785dcf9d5d4ceb9b20c86fa3dcea89f3bb0907fd9deb27e1859494f2",
+    "capture-player-files-game-read.json": "2f801bf8f4613210c142515717612d7efe31944b4e4ac2f14c250e0bdd934184",
+    "capture-player-files-client-load-framing.json": "702d5394b25b7e24191777ec89dc509213e685511eba963212c7c7df222c5d21",
+    "capture-player-files-spellbook-restore.json": "7b5d2fdd038d54d4c071d416b128e12954884e21cad4cc4c92e36221c86df72a",
+    "capture-item-xfer-reward-merge.json": "181f8397e0143fdfe072e8a5f89cd3b83a9dbc7c99011bfcd6678e0e862f6c19",
+    "capture-object-xfer-typed-default.json": "d7afffaf6c7195147aa27a1f4ea8ed0c792cb5f27de697480693611d4e0082b3",
+    "capture-item-xfer-historical.json": "90d388662199a78f8c07c566b185df5cccacfc88c99fb11117f0818899edd063",
+    "capture-player-files-quest-spellbook.json": "85d4baeb3cb3fdaa75dd8c3dca8e508f0e54e4fa6fc4d25ec363ddd13dc93d91",
+    "capture-object-xfer-light-write.json": "92cd3416e7d581f5ae2da5d84d4f96bdc814e29f43bba583aa89e69fe7ebfc40",
+    "capture-item-xfer-reward-masks.json": "db3294dda28c6f942b267731f0a320ccec573e3f3af4aadc93e6c893497b2ec4",
+    "capture-player-files-enchantment-apply.json": "482fe7ad0787b71b0a003781ef39b60a23848cdc29679219c7f47f8ed0b8a5d4",
+    "capture-player-files-book-read-gates.json": "700a93921052f26facf5e0c41c71e32e96b5b3519004bf4f8fcf5649710bf516",
+    "capture-item-xfer-modifiers.json": "5dec507c6294b4c666c4f14a4a43a21b5a75e97471e7d97b8b0d05d256f35b83",
+    "capture-player-files-status-write.json": "d8030ab510bf7605a09f9bb0e86a93711f4e9729b390cefbf554e443e4212ad4",
+    "capture-player-files-inventory-filter.json": "0b9a189afb810d9cc23469d5bb4c00b5a2f2191107225f198b10c21d1f48b09e"
+  },
+  "production": "build/port-player-files/native-final-production/production/production.json",
+  "production_summary": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 69.77649257704616,
+        "sha256": "2cc4bee90aac2c5deee9eb39216f4ae1365de9da923c601680bd140cc0cec1ef",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.018305907025933,
+        "sha256": "3103b00681aa839492ff388f966849b0cad0f950f661c9405710b89a2a8411a9",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 54.76947973505594,
+        "sha256": "1b44adc11b3ab83d9a0cea7a1c79b18bc442e6608ab51322221f60d705ad8442",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "player-files-native": {
+        "exit": 0,
+        "wall_seconds": 62.149801968131214,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 61.579257949022576,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "2cc4bee90aac2c5deee9eb39216f4ae1365de9da923c601680bd140cc0cec1ef",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-player-files/native-final-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/player-files-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native player-file sections, historical formats, inventory restoration and client/server framing; six C interfaces retained",
+          "removed_maps": 0
+        }
+      },
+      "player-files-native-save": {
+        "exit": 0,
+        "wall_seconds": 45.685730521101505,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.186528250109404,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "2cc4bee90aac2c5deee9eb39216f4ae1365de9da923c601680bd140cc0cec1ef",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-player-files/native-final-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/player-files-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native player-file sections, historical formats, inventory restoration and client/server framing; six C interfaces retained",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "754853624f1ca7d864430a7d59b7e5516060614983446471d819058bcf86f6b7"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "08d5290c8bb5ea8d4c12d801b2e8bf3d538000f1c283eff3523747fbf25bd8ab"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 56.6785119951237,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "static": "build/port-player-files/static-native-qualified.log",
+  "retained": [
+    "nox_xxx_netSavePlayer_41CE00",
+    "nox_xxx_parseFileInfoData_41C3B0",
+    "nox_xxx_plrLoad_41A480",
+    "sub_41C280",
+    "sub_41C780",
+    "sub_41CEE0"
+  ],
+  "retired": [
+    "nox_xxx_cliPlrInfoLoadFromFile_41A2E0",
+    "nox_xxx_guiEnchantment_41B9C0",
+    "nox_xxx_guiFieldbook_41B420",
+    "nox_xxx_guiSpellbook_41B660",
+    "sub_41A590",
+    "sub_41AA30",
+    "sub_41AC30",
+    "sub_41B3B0",
+    "sub_41B3E0",
+    "sub_41BEC0",
+    "sub_41C080",
+    "sub_41CAC0",
+    "table_55816",
+    "table_55816_cnt"
+  ],
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 65,
+      "lines": 19482
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "frozen_expectations_changed": false,
+  "review_notes": [
+    "Fieldbook flags corrected from byte to uint32 after independent write contract failure.",
+    "Caller audit corrected: return-call statements are not prototypes; character creation retains client writer C export.",
+    "Signed versions, per-field IO/checksum boundaries, inventory ordering, mapped client callbacks and cleanup reviewed against C."
+  ]
+}

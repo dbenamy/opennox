@@ -1,14 +1,19 @@
-# Player-file sections — qualified C baseline
+# Player-file sections — qualified Go conversion
 
-Qualified parent: **d7f52707**, client audio events and playback. Production C
-remains **21,083 physical lines /65 files /zero reference C**.
+C baseline **583caebb**; qualified production parent **d7f52707**. All18 selected
+bodies are now Go. Production C is **19,482 physical lines /65 files /zero reference
+C**, down **1,601 lines**. Six C interfaces remain for live callers and mapped
+callbacks; twelve private interfaces and the server section table retire.
 
-Current status: **36 C captures /1,951 records frozen**, repeated identically across
-37 focused roots on default/server/highres. Frozen affected qualification passes
-146 roots per target: all 66 artifacts /6,567 records match, with identical 2,623
-source fingerprints.
-Production remains identical to the qualified parent; see the production-identity
-JSON. No conversion has begun. Earlier progress notes below are historical.
+All146 affected roots pass on default/server/highres. All66 captures /6,567 records
+match the frozen C baseline exactly; all2,630 source fingerprints agree. Fresh
+production binaries pass ABI checks, the full suite matches its known failure and
+package-result sets exactly, and headless gameplay plus explicit save/load pass.
+Static memory-map checks pass. See [native qualification](player-files-native-qualification.json).
+The36 new player-file captures contain1,951 records; no frozen expectations changed.
+
+Earlier progress notes below are historical. The production-identity report applies
+to the test-only C baseline; the conversion has fresh production evidence.
 
 The batch selects 18 functions /1,540 body lines in GAME1_1.c: player attributes,
 status, inventory, field guide/spellbook/enchantments, journal, game and GUI data,
@@ -197,3 +202,34 @@ or unchecked indices. Native code must preserve supported/historical behavior;
 any intentional format or error-handling change needs separate recorded evidence.
 The capture index freezes only validated timestamp and temporary-path
 normalization. All other section bytes, effects and reports remain exact.
+
+C baseline583caebb is committed/pushed. The18-body Go conversion is installed;
+six outside-C/callback exports remain and twelve private interfaces retire.
+The shared object-transfer stream preserves serialized field call boundaries;
+server section dispatch is native, while the client mapped callback table retains
+its actual exported functions. Go callers and the journal fixture call Go directly.
+Working C is19,482 physical lines /65 files /zero reference, down1,601 from C.
+Static-native-initial passes; initial native qualification began against locked expectations.
+No native qualification is claimed yet. All native drafts/install script are consumed.
+
+Initial native discovery failed on a Cgo extern spelling inconsistent with the
+existing unsigned-int local-player-code declaration; corrected. The second build
+found a real C caller of sub_41CEE0 in character creation (selcolor.c). The original
+caller audit's broad prototype regex had treated a return-call as a declaration.
+The tracked audit is corrected, and literal scanning across all remaining C files
+confirms three C entry points plus three mapped callbacks. Six exports remain;
+twelve private interfaces and two server-table symbols retire. This changes only
+the interface inventory, not the batch algorithms or frozen expected behavior.
+
+Native-fourth compiles and passes 36/37 focused roots. The independent fieldbook
+write contract caught a native width error: learned-guide flags are uint32 rows
+starting at player offset4248 (index1), not bytes. Corrected the native view to
+uint32 at4244; frozen captures and contracts remain unchanged. The preceding
+third attempt only required explicit Go player-index casts.
+
+Final native qualification is complete. Default/server/highres affected checks
+passed in74.897s/234.752s/138.128s; all sessions are joined. Fresh production took
+303.975s and verifies three Go-backed ABI inventories, absence of retired symbols
+and porttest helpers, and the exact known full-suite result (1,553 failure entries;
+15 pass /3 fail /32 skipped packages). Gameplay and explicit save/load scenarios
+both pass. No intentional gameplay or file-format change was introduced.

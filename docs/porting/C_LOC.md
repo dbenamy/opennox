@@ -245,6 +245,7 @@ target build selection and linker evidence.
 | Client audio streams, cache and driver queues | 66 | 22,400 | −1,261 | 0 |
 | Client audio events C test adapter (`e30b952e`) | 66 | 22,410 | +10 | 0 |
 | Client audio events, playback and sample refill | 65 | 21,083 | −1,327 | 0 |
+| Player-file sections, inventory restoration and framing | 65 | 19,482 | −1,601 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

@@ -93,5 +93,5 @@ func Nox_xxx_createAtImpl_4191D0(a1 server.TeamID, a2 *server.ObjectTeam, a3 int
 	teamRuntimeJoin(a1, a2, a3, a4, a5)
 }
 func Nox_xxx_cliPlrInfoLoadFromFile_41A2E0(a1 string, a2 ntype.PlayerInd) int {
-	return int(C.nox_xxx_cliPlrInfoLoadFromFile_41A2E0(internCStr(a1), C.int(a2)))
+	return playerFileServerLoad(a1, int(a2))
 }

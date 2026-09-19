@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1_1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
@@ -38,7 +34,7 @@ func PortTestJournal(op int, a, b, c uintptr) uint32 {
 	case 10:
 		journalDraw(int(a), int(b), int(c))
 	case 11:
-		return uint32(C.sub_41BEC0(unsafe.Pointer(a), nil))
+		return uint32(playerFileJournal((*server.Object)(unsafe.Pointer(a))))
 	}
 	return 0
 }

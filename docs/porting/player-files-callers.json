@@ -114,6 +114,11 @@
         "file": "src/legacy/gui_quit.go",
         "line_after_candidate_removal": 82,
         "text": "C.sub_41CEE0(p, C.int(a2))"
+      },
+      {
+        "file": "src/legacy/client__shell__selcolor.c",
+        "line_after_candidate_removal": 328,
+        "text": "return sub_41CEE0((int)v25, 1);"
       }
     ],
     "nox_xxx_guiFieldbook_41B420": [
@@ -203,5 +208,6 @@
     "nox_xxx_cliPlrInfoLoadFromFile_41A2E0": [],
     "sub_41B3B0": []
   },
-  "provisionally_unreachable": []
+  "provisionally_unreachable": [],
+  "audit_correction": "The original prototype filter incorrectly skipped a return statement. Full literal scanning of all remaining C files confirms three outside C calls: client load, save request, client writer. Three stored client section callbacks also retain exports."
 }

@@ -3,51 +3,13 @@
 package legacy
 
 /*
-#include <stdint.h>
 #include "GAME1_1.h"
-int nox_xxx_cliPlrInfoLoadFromFile_41A2E0(char* path, int pind);
-int nox_xxx_plrLoad_41A480(char* a1);
-int sub_41A590(void* a1p, void* a2p);
-int sub_41AA30(void* a1p, void* a2p);
-int sub_41AC30(void* a1p, void* a2p);
-int sub_41B3B0();
-int sub_41B3E0(int a1);
-int nox_xxx_guiFieldbook_41B420(void* a1p, void* a2p);
-int nox_xxx_guiSpellbook_41B660(void* a1p, void* a2p);
-int nox_xxx_guiEnchantment_41B9C0(void* a1p, void* a2p);
-int sub_41BEC0(void* a1p, void* a2p);
-int sub_41C080(void* a1p, void* a2p);
-int sub_41C280(void* a1);
-int nox_xxx_parseFileInfoData_41C3B0(int a1);
-int sub_41C780(int a1);
-void sub_41CAC0(char* a1, void* a2);
-int nox_xxx_netSavePlayer_41CE00();
-int sub_41CEE0(void* a1p, int a2);
-static uint32_t nox_porttest_player_files_call(int op, uint32_t a0,uint32_t a1){switch(op){
-case 0: return (uint32_t)nox_xxx_cliPlrInfoLoadFromFile_41A2E0((char*)a0,(int)a1);
-case 1: return (uint32_t)nox_xxx_plrLoad_41A480((char*)a0);
-case 2: return (uint32_t)sub_41A590((void*)a0,(void*)a1);
-case 3: return (uint32_t)sub_41AA30((void*)a0,(void*)a1);
-case 4: return (uint32_t)sub_41AC30((void*)a0,(void*)a1);
-case 5: return (uint32_t)sub_41B3B0();
-case 6: return (uint32_t)sub_41B3E0((int)a0);
-case 7: return (uint32_t)nox_xxx_guiFieldbook_41B420((void*)a0,(void*)a1);
-case 8: return (uint32_t)nox_xxx_guiSpellbook_41B660((void*)a0,(void*)a1);
-case 9: return (uint32_t)nox_xxx_guiEnchantment_41B9C0((void*)a0,(void*)a1);
-case 10: return (uint32_t)sub_41BEC0((void*)a0,(void*)a1);
-case 11: return (uint32_t)sub_41C080((void*)a0,(void*)a1);
-case 12: return (uint32_t)sub_41C280((void*)a0);
-case 13: return (uint32_t)nox_xxx_parseFileInfoData_41C3B0((int)a0);
-case 14: return (uint32_t)sub_41C780((int)a0);
-case 15: sub_41CAC0((char*)a0,(void*)a1); return 0;
-case 16: return (uint32_t)nox_xxx_netSavePlayer_41CE00();
-case 17: return (uint32_t)sub_41CEE0((void*)a0,(int)a1);
-}return 0;}
 */
 import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
+	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
 
@@ -78,15 +40,51 @@ func PortTestPlayerFileCall(name string, args ...uint32) uint32 {
 	}
 	var a [2]uint32
 	copy(a[:], args)
-	for i, n := range portTestPlayerFileNames {
-		if name == n {
-			return uint32(C.nox_porttest_player_files_call(C.int(i), C.uint32_t(a[0]), C.uint32_t(a[1])))
-		}
+	p0 := unsafe.Pointer(uintptr(a[0]))
+	u := (*server.Object)(p0)
+	switch name {
+	case "nox_xxx_cliPlrInfoLoadFromFile_41A2E0":
+		return uint32(playerFileServerLoad(alloc.GoString((*byte)(p0)), int(int32(a[1]))))
+	case "nox_xxx_plrLoad_41A480":
+		return uint32(C.nox_xxx_plrLoad_41A480((*C.char)(p0)))
+	case "sub_41A590":
+		return uint32(playerFileAttributes(u, unsafe.Pointer(uintptr(a[1]))))
+	case "sub_41AA30":
+		return uint32(playerFileStatus(u))
+	case "sub_41AC30":
+		return uint32(playerFileInventory(u))
+	case "sub_41B3B0":
+		return uint32(playerFileInventoryCount())
+	case "sub_41B3E0":
+		return uint32(bool2int(playerFileInventoryAllowed(u)))
+	case "nox_xxx_guiFieldbook_41B420":
+		return uint32(playerFileGuides(u))
+	case "nox_xxx_guiSpellbook_41B660":
+		return uint32(playerFileSpells(u))
+	case "nox_xxx_guiEnchantment_41B9C0":
+		return uint32(playerFileEnchantment(u))
+	case "sub_41BEC0":
+		return uint32(playerFileJournal(u))
+	case "sub_41C080":
+		return uint32(playerFileGame(u))
+	case "sub_41C280":
+		return uint32(C.sub_41C280(p0))
+	case "nox_xxx_parseFileInfoData_41C3B0":
+		return uint32(C.nox_xxx_parseFileInfoData_41C3B0(C.int(a[0])))
+	case "sub_41C780":
+		return uint32(C.sub_41C780(C.int(a[0])))
+	case "nox_xxx_netSavePlayer_41CE00":
+		return uint32(C.nox_xxx_netSavePlayer_41CE00())
+	case "sub_41CEE0":
+		return uint32(C.sub_41CEE0(p0, C.int(a[1])))
+	case "sub_41CAC0":
+		playerFileExtract(alloc.GoString((*byte)(p0)), unsafe.Pointer(uintptr(a[1])))
+		return 0
 	}
 	panic("unknown player file operation: " + name)
 }
 
-// Own the real client section table and actual C callbacks, including sentinel.
+// Own the real client section table and actual exported callbacks, including sentinel.
 func PortTestPlayerFileClientSections() func() {
 	table := unsafe.Slice(memmap.PtrUint32(0x587000, 55936), 12)
 	old := append([]uint32(nil), table...)

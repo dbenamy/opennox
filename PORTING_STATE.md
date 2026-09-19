@@ -2,44 +2,41 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 21k lines** — **21,083 physical lines in 65 production
-`.c` files**, zero reference C. Latest qualified conversion: **−1,327** from its C
-baseline. See [C_LOC.md](docs/porting/C_LOC.md).
+**Qualified C remaining: about19.5k lines** — **19,482 physical lines in65
+production `.c` files**, zero reference C; down1,601 this chunk.
+See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — player-file C baseline qualified
+## Current — player-file conversion qualified, ready to commit
 
-Qualified production parent **d7f52707** (client audio events). Recovery checkpoints
-**33a1248a** and **af59461e** are pushed. This baseline selects 18 bodies /1,540 C
-body lines in GAME1_1.c, including the owned server section table; all are live.
+C baseline **583caebb** is pushed. All18 selected bodies are Go, with six retained
+C interfaces and twelve private interfaces retired. The owned server section table
+is native dispatch; the client mapped table keeps its exported callbacks.
 
-Thirty-six new frozen captures /1,951 records agree across default/server/highres.
-The affected suite passes **146 root tests per target**, with **66 artifacts /
-6,567 records** identical across all targets and all 2,623 source fingerprints
-matching. Static memory-map checks pass. All test/build sessions are joined.
-Production source is unchanged since d7f52707; its three binaries, exact known
-full-suite result, gameplay and explicit save/load qualify the C production side.
-See [PLAYER_FILES.md](docs/porting/PLAYER_FILES.md), the capture index, C
-qualification and production-identity JSON under docs/porting.
+All146 affected roots pass on each target with no skips; all66 artifacts /6,567
+records match C exactly and all2,630 source fingerprints match. The36 new captures
+contain1,951 records. Static-native-qualified passes. Fresh production validates
+three ELF32/386/SSE2/CGO binaries and their interface inventories, exact known full
+suite (1,553 failure entries;15 pass /3 fail /32 skip packages), headless gameplay
+and explicit save/load. **All sessions are joined; no builds/tests running.**
 
-No conversion has begun. Next: translate the18 bodies, route Go callers directly,
-retain only required outside-C/callback exports, compare frozen expectations,
-then qualify all targets and fresh native production/save-load. Do not regenerate
-hashes to accommodate conversion mismatches. Review section tables before retiring
-exports; the client mapped table also has outside users.
+The independent fieldbook writer contract caught a native byte/uint32 layout error,
+now fixed. The caller audit had misclassified a return-call as a prototype; the
+client writer C export is retained for character creation. No frozen expectations
+or gameplay/file-format behavior changed. See [PLAYER_FILES.md](docs/porting/PLAYER_FILES.md)
+and player-files-native-qualification.json for evidence and review limits.
 
-Local evidence: build/port-player-files/c-final-{default,server,highres},
-c-affected-default, c-focused-{server,highres}, inventory-restore-third and
-static-quest-inventory.log. All installed drafts and freeze.py are **CONSUMED**.
-Never replay them. Actual source and frozen expectations are authoritative.
+Next: commit/push this qualified conversion, then select the next connected batch.
+Local evidence: build/port-player-files/native-final-{default,server,highres,production},
+native-fifth and static-native-qualified.log. All drafts, installers and freeze.py
+are **CONSUMED**; never replay them. Actual source and frozen expectations govern.
 
-Disk cleanup reclaimed **8,604,874,683 bytes (8.014 GiB)** from 98,529 audited,
-unchanged regular Go build-cache entries older than 12 hours. Four empty cache
-directories were retained after the initial unlink stopped on a directory.
-Audit/partial/applied manifests are under build/port-player-files; the audit is
-consumed. All sessions are joined; about 11 GiB is free. Assets, module cache,
-captures, logs, saves and production binaries remain intact.
+Disk cleanup reclaimed **8,604,874,683 bytes (8.014 GiB)** from98,529 audited regular
+Go cache files older than12 hours; four empty cache directories were retained.
+Audit/partial/applied manifests under build/port-player-files are consumed. Assets,
+module cache, captures, saves and production binaries remain intact; about10 GiB
+free before the final scenarios. Preserve assets and the local original archive.
 
 ## Qualified parent — native client audio events
 
