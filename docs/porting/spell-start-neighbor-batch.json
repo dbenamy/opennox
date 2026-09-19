@@ -1,0 +1,877 @@
+{
+  "batch": "Spell start neighboring projectile/update C contracts",
+  "env": {
+    "OPENNOX_SPELLBOOK_CAPTURE": "{out}/capture",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_COMBAT_CAPTURE": "{out}/combat.json",
+    "OPENNOX_MAP_POPULATION_CAPTURE": "{out}/population",
+    "OPENNOX_TILE_RASTER_CAPTURE": "{out}/tile-raster",
+    "OPENNOX_TILE_COMPOSITION_CAPTURE": "{out}/tile-composition",
+    "OPENNOX_CLIENT_AUDIO_CAPTURE": "{out}/audio",
+    "OPENNOX_CLIENT_AUDIO_ASSETS_CAPTURE": "{out}/audio-assets",
+    "OPENNOX_SESSION_DIALOGS_CAPTURE": "{out}/session-dialogs",
+    "OPENNOX_BRIEFING_CAPTURE": "{out}/briefing",
+    "OPENNOX_BRIEFING_WINDOW_CAPTURE": "{out}/briefing-window",
+    "OPENNOX_INVENTORY_WINDOW_CAPTURE": "{out}/inventory-window",
+    "OPENNOX_CLIENT_INTERACTION_CAPTURE": "{out}/interaction",
+    "OPENNOX_JOURNAL_CAPTURE": "{out}/journal",
+    "OPENNOX_CALLBACK_CAPTURE": "{out}/callbacks",
+    "OPENNOX_STATE_CAPTURE": "{out}/state",
+    "OPENNOX_MAIN_CAPTURE": "{out}/main"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/spell-start-neighbor-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/callbacks-projectile-arrow-kinds.json",
+            "sha256": "930eb0b839a789b8be1bef431890b29c6766ac065be3fe2dc98a70c56a3091b1"
+          },
+          {
+            "path": "{out}/callbacks-projectile-arrow-modifiers.json",
+            "sha256": "d0ca525209c43f16ea2092c0cec754b337e01125581cad2121cec22a5811346d"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-00.json",
+            "sha256": "fd58bfa5381475f5c24bdbc1a0f780c2498338d69adec6bd80cac6311e57fee5"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-01.json",
+            "sha256": "486a9e2c2226aeaa5643e8853ae0073c99b8172960221ab19b6dd9189389c985"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-02.json",
+            "sha256": "c45cf4736175bc6fe5601e926af18ea5a272b3ecc6c45f8102a9f37af7a75275"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-03.json",
+            "sha256": "f36dceed6dfdf8f84ded7cc1947a0201403771989c91e750fe69dc60710a6e83"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-06.json",
+            "sha256": "82f6ee8efa3f820600299f3e6c7efe26ebfe20550d95b966be6e8f10c8df18e8"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-07.json",
+            "sha256": "21acb7fc4962a3a67fb0dae9f9df41206a13857596ea4dd958dce4f4aee4a8e7"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-09.json",
+            "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-10.json",
+            "sha256": "84d2c2c96edddfaa95f1369d02486f5a82ba1857db5554420e3cf83327d261a1"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-11.json",
+            "sha256": "46994269c469cfb324e4307de838057ad6d18c333612f3e8600b36d0190e51f2"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-12.json",
+            "sha256": "2a547eb505b4750dcaf50219fade4977eb957c093ab043ca8bede74050e7c2c7"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-13.json",
+            "sha256": "e03e592fb7122158ed63176a99425595c272273d165a099ff950b6f1d96ddd70"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-14.json",
+            "sha256": "b2f910b9bde78ffede9dae5ff52f4bc3a660ae7338b579a79c0dec03571064b9"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-15.json",
+            "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-16.json",
+            "sha256": "f48c8516c7ce9926b5c372ad150b239026382d8a998c3c21b462a0f9389b67aa"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-17.json",
+            "sha256": "d64c6561b28653ce58aeaed6ca14321db31fc399cecf69ebcfaa8782c6f9100a"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-18.json",
+            "sha256": "fde322a90af59da1b9e9edea6a2095f48e555142695c0b7fcc2d4c7f85d653ed"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-22.json",
+            "sha256": "ffb843c2c64df9349d8853aebe31458bf5bab0ecf783fec54cb574711456b80f"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-23.json",
+            "sha256": "60fc9f8741637c0b5363a3c79bff2913ce82178ca8b10b5abd17c65fed59d8f4"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-24.json",
+            "sha256": "d55820ca0f862d0c2522454c5c75f02936498c5eb18f3d2eb87c20fcefc53fcc"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-25.json",
+            "sha256": "e77e437d295f754ddec930060b39e76fdd3235177e88118e685c4c5108de4fd9"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-26.json",
+            "sha256": "66200f608be755d71eecb3e3c2542a84861d286f93145c9c035b7fdb808b742a"
+          },
+          {
+            "path": "{out}/callbacks-projectile-bomb.json",
+            "sha256": "0983c79b62342f546554bd4492df95e4f0759221f0723e939daba9d92b7d25e8"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-05.json",
+            "sha256": "4d2bd05dcf4f57bda20e5aaabb6d96b7fa6f5546db5151f014fd43e598449dd1"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-08.json",
+            "sha256": "ec12a673a654ff81ae5cad3b8a09a912a4856f25da23d743265a7756a2f41ea1"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-12.json",
+            "sha256": "eda20dfe39bedf76677d843113c40988beb53c483b67a0f20d82376d72494386"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-16.json",
+            "sha256": "e08ad412edb54e30f1049877727210139b2913ba82793857155b9aa484f125aa"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-18.json",
+            "sha256": "829259713cfff516461d24fd7bccf1b82f4a8881a62161ba75f246732511623b"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-25.json",
+            "sha256": "ea50faa02c3c2921816768bc564c905d68648714fe9abbc3721214cfdcc4bf24"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-26.json",
+            "sha256": "a39440a7e942adbac7ce34ca54c557d8978d02932cc25c56e605ccb87ee0669e"
+          },
+          {
+            "path": "{out}/callbacks-projectile-chakram-owner.json",
+            "sha256": "c45f0ff1c07832d116c1747eef59ca4e60b90e14370efa6b374b972a57629b12"
+          },
+          {
+            "path": "{out}/callbacks-projectile-chakram.json",
+            "sha256": "e8a0e4177e0c6a127b46e5edb7162f1bec6f47cdd9e0afba4b875dfaace16465"
+          },
+          {
+            "path": "{out}/callbacks-projectile-damage-clock.json",
+            "sha256": "c406efa01ca507029d1344d8db31022fb42a1d74a6d17d8b86391a54bac7a289"
+          },
+          {
+            "path": "{out}/callbacks-projectile-death.json",
+            "sha256": "ecaa58153a297c10373c5b2af0b69a8720b8b18a055011130bee79561ffaa7c8"
+          },
+          {
+            "path": "{out}/callbacks-projectile-mana-clock.json",
+            "sha256": "513b5d98f58604edb6be71b4904152769bc5b1df23fdef10ba313ea147176812"
+          },
+          {
+            "path": "{out}/callbacks-projectile-named-damage.json",
+            "sha256": "2b8ff32d5e1f00f0e2434938130c426c0631a5afc10b2f1ce85627e906d5b6f0"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-01.json",
+            "sha256": "3d05a9f2edd2bb62722b9269b7bca2639c4cd94f2f05ccdcf56fd12d3f17ea7b"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-05.json",
+            "sha256": "7175ea0dba63fc9265bca0af38621439e33a0b49d17fcaa94161a1e8cde1eeeb"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-09.json",
+            "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-10.json",
+            "sha256": "c028f3711eb3d679ab8f377b13f1b52d15e70f612e243c57296c680e6e4e4eff"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-11.json",
+            "sha256": "3bafcb9ccf10d9081ba2e190e27baa5de0c3b315ad11e871f98aa955cc80ed16"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-12.json",
+            "sha256": "b164b5ab7cee831d2b023daade6ffcb92211f69d9d0362cfa25b4777a37dee81"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-13.json",
+            "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-15.json",
+            "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-22.json",
+            "sha256": "d3d95ec458d2deea9276128e4503b79166cfa54086f811d925e496623350b2ca"
+          },
+          {
+            "path": "{out}/callbacks-projectile-positive.json",
+            "sha256": "f976096fb1a974940a6f7eb840b1ad9392e396360847cfea1afad61006b10c61"
+          },
+          {
+            "path": "{out}/callbacks-projectile-selection.json",
+            "sha256": "66773e9f40cbeda61794a8db16c928e43a56858fefa41984c16e02cd1933af9a"
+          },
+          {
+            "path": "{out}/callbacks-projectile-splash.json",
+            "sha256": "80722f4708ecf4ac24e675237c5fea1b77455d68c2374820604061b0088a0c4a"
+          },
+          {
+            "path": "{out}/callbacks-temporary-acquisition.json",
+            "sha256": "23f800d848c47a0084539f7296acac45e0c961785db3b310e1c929cbadccd620"
+          },
+          {
+            "path": "{out}/callbacks-temporary-area-callbacks.json",
+            "sha256": "819fb7b42eccaa7620356f0b6fc26d893d08ed11aeeb7c08bb0b1712ffeec132"
+          },
+          {
+            "path": "{out}/callbacks-temporary-area-owners.json",
+            "sha256": "e847ce54985f5f63863019f898a82b0233c989c8aa6a9b3986cf8d4ee152b51d"
+          },
+          {
+            "path": "{out}/callbacks-temporary-break.json",
+            "sha256": "fc108ef077e38a5e9add745b4ddebe44205542af66d1acf264649e74615a3301"
+          },
+          {
+            "path": "{out}/callbacks-temporary-frame-wrap.json",
+            "sha256": "e2a94f1b18934a56c1fda975fc23f66aa9d74190c23d2816b67bfa101290bfeb"
+          },
+          {
+            "path": "{out}/callbacks-temporary-homing.json",
+            "sha256": "bfe1328dbc18848552a38ea6b67d4503250b2198a5ed6521c25d86bf09f274ef"
+          },
+          {
+            "path": "{out}/callbacks-temporary-impact.json",
+            "sha256": "138ebbb8f2c08e608444b2768fff2c32d75f6ec239125c670ff90e395aba7742"
+          },
+          {
+            "path": "{out}/callbacks-temporary-lifetime.json",
+            "sha256": "9af722e94b2f49e5fa0c20838d11d6b08dbf477893196d3b7145ab6d7b0c8cc8"
+          },
+          {
+            "path": "{out}/callbacks-temporary-missing-owners.json",
+            "sha256": "7eaaf2179a87626cf8070cac2f568d6ea39729ec44ce7b20193a8cd4c9111231"
+          },
+          {
+            "path": "{out}/callbacks-temporary-owner-effects.json",
+            "sha256": "bf8c2c58c3341e38b2614f9d56cad66a31bbbcd28d1df272bb19dd6c92521667"
+          },
+          {
+            "path": "{out}/callbacks-temporary-positive.json",
+            "sha256": "2db9ae4931a3e239144749592c7fa49209fb0a6dc681462f01d6d9e60ea2cdc9"
+          },
+          {
+            "path": "{out}/callbacks-temporary-random-streams.json",
+            "sha256": "7a8f5a17662714a284d092bca069c7a41f0ad42114682320a1ee9eb00e084a42"
+          },
+          {
+            "path": "{out}/callbacks-temporary-spark.json",
+            "sha256": "06a5b0b427a1658f4253cfd5547b87b16ddce24abf01d5cfb8c5757e37af840a"
+          },
+          {
+            "path": "{out}/callbacks-temporary-spawners.json",
+            "sha256": "77d9b032a437f721b226ff4d0576f7c0c6444f6e20313139068886eaa44a6b1e"
+          },
+          {
+            "path": "{out}/callbacks-temporary-tick-rates.json",
+            "sha256": "73ed23edd8a225b7c566e9ee3987ba66503e7738f514ae86ce94bd00e994393e"
+          },
+          {
+            "path": "{out}/callbacks-temporary-trails.json",
+            "sha256": "6a8b2595f571ee5668c8c29beb434834e0ee6364013d68d5b3f74d653301e9cf"
+          }
+        ]
+      }
+    ],
+    "server": [
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/spell-start-neighbor-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/callbacks-projectile-arrow-kinds.json",
+            "sha256": "930eb0b839a789b8be1bef431890b29c6766ac065be3fe2dc98a70c56a3091b1"
+          },
+          {
+            "path": "{out}/callbacks-projectile-arrow-modifiers.json",
+            "sha256": "d0ca525209c43f16ea2092c0cec754b337e01125581cad2121cec22a5811346d"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-00.json",
+            "sha256": "fd58bfa5381475f5c24bdbc1a0f780c2498338d69adec6bd80cac6311e57fee5"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-01.json",
+            "sha256": "486a9e2c2226aeaa5643e8853ae0073c99b8172960221ab19b6dd9189389c985"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-02.json",
+            "sha256": "c45cf4736175bc6fe5601e926af18ea5a272b3ecc6c45f8102a9f37af7a75275"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-03.json",
+            "sha256": "f36dceed6dfdf8f84ded7cc1947a0201403771989c91e750fe69dc60710a6e83"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-06.json",
+            "sha256": "82f6ee8efa3f820600299f3e6c7efe26ebfe20550d95b966be6e8f10c8df18e8"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-07.json",
+            "sha256": "21acb7fc4962a3a67fb0dae9f9df41206a13857596ea4dd958dce4f4aee4a8e7"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-09.json",
+            "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-10.json",
+            "sha256": "84d2c2c96edddfaa95f1369d02486f5a82ba1857db5554420e3cf83327d261a1"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-11.json",
+            "sha256": "46994269c469cfb324e4307de838057ad6d18c333612f3e8600b36d0190e51f2"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-12.json",
+            "sha256": "2a547eb505b4750dcaf50219fade4977eb957c093ab043ca8bede74050e7c2c7"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-13.json",
+            "sha256": "e03e592fb7122158ed63176a99425595c272273d165a099ff950b6f1d96ddd70"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-14.json",
+            "sha256": "b2f910b9bde78ffede9dae5ff52f4bc3a660ae7338b579a79c0dec03571064b9"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-15.json",
+            "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-16.json",
+            "sha256": "f48c8516c7ce9926b5c372ad150b239026382d8a998c3c21b462a0f9389b67aa"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-17.json",
+            "sha256": "d64c6561b28653ce58aeaed6ca14321db31fc399cecf69ebcfaa8782c6f9100a"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-18.json",
+            "sha256": "fde322a90af59da1b9e9edea6a2095f48e555142695c0b7fcc2d4c7f85d653ed"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-22.json",
+            "sha256": "ffb843c2c64df9349d8853aebe31458bf5bab0ecf783fec54cb574711456b80f"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-23.json",
+            "sha256": "60fc9f8741637c0b5363a3c79bff2913ce82178ca8b10b5abd17c65fed59d8f4"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-24.json",
+            "sha256": "d55820ca0f862d0c2522454c5c75f02936498c5eb18f3d2eb87c20fcefc53fcc"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-25.json",
+            "sha256": "e77e437d295f754ddec930060b39e76fdd3235177e88118e685c4c5108de4fd9"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-26.json",
+            "sha256": "66200f608be755d71eecb3e3c2542a84861d286f93145c9c035b7fdb808b742a"
+          },
+          {
+            "path": "{out}/callbacks-projectile-bomb.json",
+            "sha256": "0983c79b62342f546554bd4492df95e4f0759221f0723e939daba9d92b7d25e8"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-05.json",
+            "sha256": "4d2bd05dcf4f57bda20e5aaabb6d96b7fa6f5546db5151f014fd43e598449dd1"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-08.json",
+            "sha256": "ec12a673a654ff81ae5cad3b8a09a912a4856f25da23d743265a7756a2f41ea1"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-12.json",
+            "sha256": "eda20dfe39bedf76677d843113c40988beb53c483b67a0f20d82376d72494386"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-16.json",
+            "sha256": "e08ad412edb54e30f1049877727210139b2913ba82793857155b9aa484f125aa"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-18.json",
+            "sha256": "829259713cfff516461d24fd7bccf1b82f4a8881a62161ba75f246732511623b"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-25.json",
+            "sha256": "ea50faa02c3c2921816768bc564c905d68648714fe9abbc3721214cfdcc4bf24"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-26.json",
+            "sha256": "a39440a7e942adbac7ce34ca54c557d8978d02932cc25c56e605ccb87ee0669e"
+          },
+          {
+            "path": "{out}/callbacks-projectile-chakram-owner.json",
+            "sha256": "c45f0ff1c07832d116c1747eef59ca4e60b90e14370efa6b374b972a57629b12"
+          },
+          {
+            "path": "{out}/callbacks-projectile-chakram.json",
+            "sha256": "e8a0e4177e0c6a127b46e5edb7162f1bec6f47cdd9e0afba4b875dfaace16465"
+          },
+          {
+            "path": "{out}/callbacks-projectile-damage-clock.json",
+            "sha256": "c406efa01ca507029d1344d8db31022fb42a1d74a6d17d8b86391a54bac7a289"
+          },
+          {
+            "path": "{out}/callbacks-projectile-death.json",
+            "sha256": "ecaa58153a297c10373c5b2af0b69a8720b8b18a055011130bee79561ffaa7c8"
+          },
+          {
+            "path": "{out}/callbacks-projectile-mana-clock.json",
+            "sha256": "513b5d98f58604edb6be71b4904152769bc5b1df23fdef10ba313ea147176812"
+          },
+          {
+            "path": "{out}/callbacks-projectile-named-damage.json",
+            "sha256": "2b8ff32d5e1f00f0e2434938130c426c0631a5afc10b2f1ce85627e906d5b6f0"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-01.json",
+            "sha256": "3d05a9f2edd2bb62722b9269b7bca2639c4cd94f2f05ccdcf56fd12d3f17ea7b"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-05.json",
+            "sha256": "7175ea0dba63fc9265bca0af38621439e33a0b49d17fcaa94161a1e8cde1eeeb"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-09.json",
+            "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-10.json",
+            "sha256": "c028f3711eb3d679ab8f377b13f1b52d15e70f612e243c57296c680e6e4e4eff"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-11.json",
+            "sha256": "3bafcb9ccf10d9081ba2e190e27baa5de0c3b315ad11e871f98aa955cc80ed16"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-12.json",
+            "sha256": "b164b5ab7cee831d2b023daade6ffcb92211f69d9d0362cfa25b4777a37dee81"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-13.json",
+            "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-15.json",
+            "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-22.json",
+            "sha256": "d3d95ec458d2deea9276128e4503b79166cfa54086f811d925e496623350b2ca"
+          },
+          {
+            "path": "{out}/callbacks-projectile-positive.json",
+            "sha256": "f976096fb1a974940a6f7eb840b1ad9392e396360847cfea1afad61006b10c61"
+          },
+          {
+            "path": "{out}/callbacks-projectile-selection.json",
+            "sha256": "66773e9f40cbeda61794a8db16c928e43a56858fefa41984c16e02cd1933af9a"
+          },
+          {
+            "path": "{out}/callbacks-projectile-splash.json",
+            "sha256": "80722f4708ecf4ac24e675237c5fea1b77455d68c2374820604061b0088a0c4a"
+          },
+          {
+            "path": "{out}/callbacks-temporary-acquisition.json",
+            "sha256": "23f800d848c47a0084539f7296acac45e0c961785db3b310e1c929cbadccd620"
+          },
+          {
+            "path": "{out}/callbacks-temporary-area-callbacks.json",
+            "sha256": "819fb7b42eccaa7620356f0b6fc26d893d08ed11aeeb7c08bb0b1712ffeec132"
+          },
+          {
+            "path": "{out}/callbacks-temporary-area-owners.json",
+            "sha256": "e847ce54985f5f63863019f898a82b0233c989c8aa6a9b3986cf8d4ee152b51d"
+          },
+          {
+            "path": "{out}/callbacks-temporary-break.json",
+            "sha256": "fc108ef077e38a5e9add745b4ddebe44205542af66d1acf264649e74615a3301"
+          },
+          {
+            "path": "{out}/callbacks-temporary-frame-wrap.json",
+            "sha256": "e2a94f1b18934a56c1fda975fc23f66aa9d74190c23d2816b67bfa101290bfeb"
+          },
+          {
+            "path": "{out}/callbacks-temporary-homing.json",
+            "sha256": "bfe1328dbc18848552a38ea6b67d4503250b2198a5ed6521c25d86bf09f274ef"
+          },
+          {
+            "path": "{out}/callbacks-temporary-impact.json",
+            "sha256": "138ebbb8f2c08e608444b2768fff2c32d75f6ec239125c670ff90e395aba7742"
+          },
+          {
+            "path": "{out}/callbacks-temporary-lifetime.json",
+            "sha256": "9af722e94b2f49e5fa0c20838d11d6b08dbf477893196d3b7145ab6d7b0c8cc8"
+          },
+          {
+            "path": "{out}/callbacks-temporary-missing-owners.json",
+            "sha256": "7eaaf2179a87626cf8070cac2f568d6ea39729ec44ce7b20193a8cd4c9111231"
+          },
+          {
+            "path": "{out}/callbacks-temporary-owner-effects.json",
+            "sha256": "bf8c2c58c3341e38b2614f9d56cad66a31bbbcd28d1df272bb19dd6c92521667"
+          },
+          {
+            "path": "{out}/callbacks-temporary-positive.json",
+            "sha256": "2db9ae4931a3e239144749592c7fa49209fb0a6dc681462f01d6d9e60ea2cdc9"
+          },
+          {
+            "path": "{out}/callbacks-temporary-random-streams.json",
+            "sha256": "7a8f5a17662714a284d092bca069c7a41f0ad42114682320a1ee9eb00e084a42"
+          },
+          {
+            "path": "{out}/callbacks-temporary-spark.json",
+            "sha256": "06a5b0b427a1658f4253cfd5547b87b16ddce24abf01d5cfb8c5757e37af840a"
+          },
+          {
+            "path": "{out}/callbacks-temporary-spawners.json",
+            "sha256": "77d9b032a437f721b226ff4d0576f7c0c6444f6e20313139068886eaa44a6b1e"
+          },
+          {
+            "path": "{out}/callbacks-temporary-tick-rates.json",
+            "sha256": "73ed23edd8a225b7c566e9ee3987ba66503e7738f514ae86ce94bd00e994393e"
+          },
+          {
+            "path": "{out}/callbacks-temporary-trails.json",
+            "sha256": "6a8b2595f571ee5668c8c29beb434834e0ee6364013d68d5b3f74d653301e9cf"
+          }
+        ]
+      }
+    ],
+    "highres": [
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/spell-start-neighbor-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/callbacks-projectile-arrow-kinds.json",
+            "sha256": "930eb0b839a789b8be1bef431890b29c6766ac065be3fe2dc98a70c56a3091b1"
+          },
+          {
+            "path": "{out}/callbacks-projectile-arrow-modifiers.json",
+            "sha256": "d0ca525209c43f16ea2092c0cec754b337e01125581cad2121cec22a5811346d"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-00.json",
+            "sha256": "fd58bfa5381475f5c24bdbc1a0f780c2498338d69adec6bd80cac6311e57fee5"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-01.json",
+            "sha256": "486a9e2c2226aeaa5643e8853ae0073c99b8172960221ab19b6dd9189389c985"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-02.json",
+            "sha256": "c45cf4736175bc6fe5601e926af18ea5a272b3ecc6c45f8102a9f37af7a75275"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-03.json",
+            "sha256": "f36dceed6dfdf8f84ded7cc1947a0201403771989c91e750fe69dc60710a6e83"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-06.json",
+            "sha256": "82f6ee8efa3f820600299f3e6c7efe26ebfe20550d95b966be6e8f10c8df18e8"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-07.json",
+            "sha256": "21acb7fc4962a3a67fb0dae9f9df41206a13857596ea4dd958dce4f4aee4a8e7"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-09.json",
+            "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-10.json",
+            "sha256": "84d2c2c96edddfaa95f1369d02486f5a82ba1857db5554420e3cf83327d261a1"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-11.json",
+            "sha256": "46994269c469cfb324e4307de838057ad6d18c333612f3e8600b36d0190e51f2"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-12.json",
+            "sha256": "2a547eb505b4750dcaf50219fade4977eb957c093ab043ca8bede74050e7c2c7"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-13.json",
+            "sha256": "e03e592fb7122158ed63176a99425595c272273d165a099ff950b6f1d96ddd70"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-14.json",
+            "sha256": "b2f910b9bde78ffede9dae5ff52f4bc3a660ae7338b579a79c0dec03571064b9"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-15.json",
+            "sha256": "23cc0165b0b0e8ae9fa8817260dc3e484cb8a23c1cfb395adbddd1c943345ded"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-16.json",
+            "sha256": "f48c8516c7ce9926b5c372ad150b239026382d8a998c3c21b462a0f9389b67aa"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-17.json",
+            "sha256": "d64c6561b28653ce58aeaed6ca14321db31fc399cecf69ebcfaa8782c6f9100a"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-18.json",
+            "sha256": "fde322a90af59da1b9e9edea6a2095f48e555142695c0b7fcc2d4c7f85d653ed"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-22.json",
+            "sha256": "ffb843c2c64df9349d8853aebe31458bf5bab0ecf783fec54cb574711456b80f"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-23.json",
+            "sha256": "60fc9f8741637c0b5363a3c79bff2913ce82178ca8b10b5abd17c65fed59d8f4"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-24.json",
+            "sha256": "d55820ca0f862d0c2522454c5c75f02936498c5eb18f3d2eb87c20fcefc53fcc"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-25.json",
+            "sha256": "e77e437d295f754ddec930060b39e76fdd3235177e88118e685c4c5108de4fd9"
+          },
+          {
+            "path": "{out}/callbacks-projectile-basic-26.json",
+            "sha256": "66200f608be755d71eecb3e3c2542a84861d286f93145c9c035b7fdb808b742a"
+          },
+          {
+            "path": "{out}/callbacks-projectile-bomb.json",
+            "sha256": "0983c79b62342f546554bd4492df95e4f0759221f0723e939daba9d92b7d25e8"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-05.json",
+            "sha256": "4d2bd05dcf4f57bda20e5aaabb6d96b7fa6f5546db5151f014fd43e598449dd1"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-08.json",
+            "sha256": "ec12a673a654ff81ae5cad3b8a09a912a4856f25da23d743265a7756a2f41ea1"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-12.json",
+            "sha256": "eda20dfe39bedf76677d843113c40988beb53c483b67a0f20d82376d72494386"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-16.json",
+            "sha256": "e08ad412edb54e30f1049877727210139b2913ba82793857155b9aa484f125aa"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-18.json",
+            "sha256": "829259713cfff516461d24fd7bccf1b82f4a8881a62161ba75f246732511623b"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-25.json",
+            "sha256": "ea50faa02c3c2921816768bc564c905d68648714fe9abbc3721214cfdcc4bf24"
+          },
+          {
+            "path": "{out}/callbacks-projectile-buffs-26.json",
+            "sha256": "a39440a7e942adbac7ce34ca54c557d8978d02932cc25c56e605ccb87ee0669e"
+          },
+          {
+            "path": "{out}/callbacks-projectile-chakram-owner.json",
+            "sha256": "c45f0ff1c07832d116c1747eef59ca4e60b90e14370efa6b374b972a57629b12"
+          },
+          {
+            "path": "{out}/callbacks-projectile-chakram.json",
+            "sha256": "e8a0e4177e0c6a127b46e5edb7162f1bec6f47cdd9e0afba4b875dfaace16465"
+          },
+          {
+            "path": "{out}/callbacks-projectile-damage-clock.json",
+            "sha256": "c406efa01ca507029d1344d8db31022fb42a1d74a6d17d8b86391a54bac7a289"
+          },
+          {
+            "path": "{out}/callbacks-projectile-death.json",
+            "sha256": "ecaa58153a297c10373c5b2af0b69a8720b8b18a055011130bee79561ffaa7c8"
+          },
+          {
+            "path": "{out}/callbacks-projectile-mana-clock.json",
+            "sha256": "513b5d98f58604edb6be71b4904152769bc5b1df23fdef10ba313ea147176812"
+          },
+          {
+            "path": "{out}/callbacks-projectile-named-damage.json",
+            "sha256": "2b8ff32d5e1f00f0e2434938130c426c0631a5afc10b2f1ce85627e906d5b6f0"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-01.json",
+            "sha256": "3d05a9f2edd2bb62722b9269b7bca2639c4cd94f2f05ccdcf56fd12d3f17ea7b"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-05.json",
+            "sha256": "7175ea0dba63fc9265bca0af38621439e33a0b49d17fcaa94161a1e8cde1eeeb"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-09.json",
+            "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-10.json",
+            "sha256": "c028f3711eb3d679ab8f377b13f1b52d15e70f612e243c57296c680e6e4e4eff"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-11.json",
+            "sha256": "3bafcb9ccf10d9081ba2e190e27baa5de0c3b315ad11e871f98aa955cc80ed16"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-12.json",
+            "sha256": "b164b5ab7cee831d2b023daade6ffcb92211f69d9d0362cfa25b4777a37dee81"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-13.json",
+            "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-15.json",
+            "sha256": "2f5b7ad4649204f92f044fe76c3cec7ced9075b4e5a7d6baeacc73092d887977"
+          },
+          {
+            "path": "{out}/callbacks-projectile-normal-22.json",
+            "sha256": "d3d95ec458d2deea9276128e4503b79166cfa54086f811d925e496623350b2ca"
+          },
+          {
+            "path": "{out}/callbacks-projectile-positive.json",
+            "sha256": "f976096fb1a974940a6f7eb840b1ad9392e396360847cfea1afad61006b10c61"
+          },
+          {
+            "path": "{out}/callbacks-projectile-selection.json",
+            "sha256": "66773e9f40cbeda61794a8db16c928e43a56858fefa41984c16e02cd1933af9a"
+          },
+          {
+            "path": "{out}/callbacks-projectile-splash.json",
+            "sha256": "80722f4708ecf4ac24e675237c5fea1b77455d68c2374820604061b0088a0c4a"
+          },
+          {
+            "path": "{out}/callbacks-temporary-acquisition.json",
+            "sha256": "23f800d848c47a0084539f7296acac45e0c961785db3b310e1c929cbadccd620"
+          },
+          {
+            "path": "{out}/callbacks-temporary-area-callbacks.json",
+            "sha256": "819fb7b42eccaa7620356f0b6fc26d893d08ed11aeeb7c08bb0b1712ffeec132"
+          },
+          {
+            "path": "{out}/callbacks-temporary-area-owners.json",
+            "sha256": "e847ce54985f5f63863019f898a82b0233c989c8aa6a9b3986cf8d4ee152b51d"
+          },
+          {
+            "path": "{out}/callbacks-temporary-break.json",
+            "sha256": "fc108ef077e38a5e9add745b4ddebe44205542af66d1acf264649e74615a3301"
+          },
+          {
+            "path": "{out}/callbacks-temporary-frame-wrap.json",
+            "sha256": "e2a94f1b18934a56c1fda975fc23f66aa9d74190c23d2816b67bfa101290bfeb"
+          },
+          {
+            "path": "{out}/callbacks-temporary-homing.json",
+            "sha256": "bfe1328dbc18848552a38ea6b67d4503250b2198a5ed6521c25d86bf09f274ef"
+          },
+          {
+            "path": "{out}/callbacks-temporary-impact.json",
+            "sha256": "138ebbb8f2c08e608444b2768fff2c32d75f6ec239125c670ff90e395aba7742"
+          },
+          {
+            "path": "{out}/callbacks-temporary-lifetime.json",
+            "sha256": "9af722e94b2f49e5fa0c20838d11d6b08dbf477893196d3b7145ab6d7b0c8cc8"
+          },
+          {
+            "path": "{out}/callbacks-temporary-missing-owners.json",
+            "sha256": "7eaaf2179a87626cf8070cac2f568d6ea39729ec44ce7b20193a8cd4c9111231"
+          },
+          {
+            "path": "{out}/callbacks-temporary-owner-effects.json",
+            "sha256": "bf8c2c58c3341e38b2614f9d56cad66a31bbbcd28d1df272bb19dd6c92521667"
+          },
+          {
+            "path": "{out}/callbacks-temporary-positive.json",
+            "sha256": "2db9ae4931a3e239144749592c7fa49209fb0a6dc681462f01d6d9e60ea2cdc9"
+          },
+          {
+            "path": "{out}/callbacks-temporary-random-streams.json",
+            "sha256": "7a8f5a17662714a284d092bca069c7a41f0ad42114682320a1ee9eb00e084a42"
+          },
+          {
+            "path": "{out}/callbacks-temporary-spark.json",
+            "sha256": "06a5b0b427a1658f4253cfd5547b87b16ddce24abf01d5cfb8c5757e37af840a"
+          },
+          {
+            "path": "{out}/callbacks-temporary-spawners.json",
+            "sha256": "77d9b032a437f721b226ff4d0576f7c0c6444f6e20313139068886eaa44a6b1e"
+          },
+          {
+            "path": "{out}/callbacks-temporary-tick-rates.json",
+            "sha256": "73ed23edd8a225b7c566e9ee3987ba66503e7738f514ae86ce94bd00e994393e"
+          },
+          {
+            "path": "{out}/callbacks-temporary-trails.json",
+            "sha256": "6a8b2595f571ee5668c8c29beb434834e0ee6364013d68d5b3f74d653301e9cf"
+          }
+        ]
+      }
+    ]
+  }
+}

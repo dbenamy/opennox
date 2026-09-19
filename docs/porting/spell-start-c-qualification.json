@@ -1,0 +1,109 @@
+{
+  "status": "qualified C baseline; production reused",
+  "qualified_parent": "1dc9e771",
+  "bodies": 2,
+  "body_lines": 118,
+  "private_owner": "nox_cheat_charmall",
+  "focused_cases": 2616,
+  "focused_roots": 6,
+  "frozen_captures": 5,
+  "targets": {
+    "affected-default": {
+      "roots": 97,
+      "captures": 357,
+      "skips": [],
+      "evidence": "build/port-spell-start/c-affected-default"
+    },
+    "affected-server": {
+      "roots": 97,
+      "captures": 357,
+      "skips": [],
+      "evidence": "build/port-spell-start/c-affected-server"
+    },
+    "affected-highres": {
+      "roots": 97,
+      "captures": 357,
+      "skips": [],
+      "evidence": "build/port-spell-start/c-affected-highres"
+    },
+    "neighbors-default": {
+      "roots": 31,
+      "captures": 65,
+      "skips": [],
+      "evidence": "build/port-spell-start/c-neighbors-default"
+    },
+    "neighbors-server": {
+      "roots": 31,
+      "captures": 65,
+      "skips": [],
+      "evidence": "build/port-spell-start/c-neighbors-server"
+    },
+    "neighbors-highres": {
+      "roots": 31,
+      "captures": 65,
+      "skips": [],
+      "evidence": "build/port-spell-start/c-neighbors-highres"
+    }
+  },
+  "capture_note": "Primary runners enforced five new hashes plus inherited literal contracts. Neighbor runners enforced inherited literals. Full capture inventories were compared and frozen after all six sweeps. Each family is identical across all three targets; root selections are disjoint.",
+  "source_files": 2792,
+  "reused_production": {
+    "parent": "1dc9e771",
+    "production_source_identical": true,
+    "porttest_only_changes": [
+      "src/legacy/spell_start_porttest.go",
+      "src/legacy/sustained_spells_porttest.go",
+      "src/spell_start_porttest_test.go",
+      "src/sustained_spells_porttest_test.go"
+    ],
+    "binaries": {
+      "opennox": {
+        "sha256": "0190f52c5aac2c82dab6e47bbbfb842bba0538db007e02c52e7355ec07a92450",
+        "selected_c_symbols": [
+          "nox_xxx_castPixies_540440",
+          "sub_530A30_spell_execdur",
+          "nox_cheat_charmall"
+        ]
+      },
+      "opennox-hd": {
+        "sha256": "eb8f17002eed7b1e44cc9c6ce0f90682af55923b059789d9b5eba0f521596304",
+        "selected_c_symbols": [
+          "nox_xxx_castPixies_540440",
+          "sub_530A30_spell_execdur",
+          "nox_cheat_charmall"
+        ]
+      },
+      "opennox-server": {
+        "sha256": "48d64559268fd88a9a1718f085a37a7beb2f0321b416e6d06b90848463c97a16",
+        "selected_c_symbols": [
+          "nox_xxx_castPixies_540440",
+          "sub_530A30_spell_execdur",
+          "nox_cheat_charmall"
+        ]
+      }
+    },
+    "reused_evidence": "build/port-unit-gameplay/native-production",
+    "reused_full_suite": {
+      "exit": 1,
+      "wall_seconds": 56.85427754512057,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    },
+    "reused_scenarios": [
+      "unit-gameplay-native",
+      "unit-gameplay-native-save"
+    ]
+  },
+  "static": "build/port-spell-start/static-current.log",
+  "c_loc": {
+    "files": 42,
+    "lines": 10184,
+    "reference_lines": 0
+  }
+}

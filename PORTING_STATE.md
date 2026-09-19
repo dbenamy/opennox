@@ -8,10 +8,40 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Current — spell start C baseline qualified
+
+Qualified native parent **1dc9e771** is pushed. Production remains unchanged:
+10,184 lines /42 files /zero reference C. The new baseline is ready for commit/
+push: two callbacks /118 body lines, plus the charm-control owner and Go callers
+when converting. All2,616 focused C cases pass in separate final/repeat processes;
+five capture expectations are frozen.
+
+Default/server/highres each pass97 primary roots /357 captures plus31 neighboring
+roots /65 captures (128 disjoint roots /422 identical captures), no skips. All
+source fingerprints match the checkout. Static-current passes. Production identity
+confirms four test-only source changes and rehashes all three parent binaries and
+selected C symbols. Parent production/integration is explicitly reused. See
+SPELL_START.md and spell-start-c-qualification.json. All test/build jobs are joined,
+including primary51729/73882/73362 and neighbors40374/54986/39449.
+
+Native draft and install-native.py under build/port-spell-start are NOT installed
+or consumed. Review/integrate after baseline commit, then run both selections and
+fresh native production/ABI/full-suite/gameplay/save-load. The draft preserves
+float32 teleport delay versus direct-double Pixie count conversion, wide position
+arithmetic and nil-owner creation interface semantics. No user question is pending.
+
+The unit-gameplay native scenario asset cleanup is complete: audit7312/apply99908
+joined,1,112,747,701 bytes reclaimed. Its apply script is CONSUMED; run restoration
+manifests remain. Old-test cache audit31507/apply49247 are joined:59 superseded
+legacy porttest archives (2,993,980,258 bytes) removed after identity/open-file
+checks. That apply script is CONSUMED. Production binaries, captures, logs,
+source and original assets/archive are retained. New C-capture dedup audit45211/apply87417 are joined:890 duplicate files share
+verified immutable contents, reclaiming1,601,817,981 bytes. Its apply script is
+CONSUMED; all capture paths and hashes remain.
+
 ## Current — unit gameplay Go conversion qualified
 
-Original-C baseline **c4a1c3b0** is pushed. Native implementation is fully qualified
-and ready for commit/push. Twenty C bodies are removed, including one unreachable
+Original-C baseline **c4a1c3b0** is pushed. Native conversion **1dc9e771** is committed and pushed. Twenty C bodies are removed, including one unreachable
 duplicate. Private callers now invoke Go directly; three registered use/update
 callbacks retain Go-backed C exports. Five empty C files are removed. GAME4.c
 retains its live charm-control owner for the next spell batch.

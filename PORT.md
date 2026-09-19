@@ -14,12 +14,13 @@
 
 ## Current status
 
-The unit-gameplay Go conversion is fully qualified against original-C baseline
-`c4a1c3b0`:8,464 focused cases; default/server/highres each pass238 affected roots
-and242 exact captures. Fresh three-target production/ABI, exact known full-suite
-comparison, gameplay and save/load all pass. Next: the remaining spell
-creation/start callbacks and their duration/factory fixtures.
-See [UNIT_GAMEPLAY.md](docs/porting/UNIT_GAMEPLAY.md).
+The spell creation/start original-C baseline is qualified:2,616 focused cases,
+with default/server/highres each passing128 affected roots and422 identical
+captures across primary and neighboring selections. Production is unchanged
+from pushed `1dc9e771`, so its qualified binaries/integration evidence are reused.
+Next: convert the two callbacks and private charm-control owner, then run fresh
+native qualification. See [SPELL_START.md](docs/porting/SPELL_START.md).
+The preceding [unit gameplay conversion](docs/porting/UNIT_GAMEPLAY.md) is pushed.
 
 C remaining is **10,184 physical lines in42 files**, zero reference C.
 This conversion removes636 lines and five C files.

@@ -1,0 +1,16 @@
+[
+  {
+    "symbol": "nox_xxx_castPixies_540440",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 2210,
+    "end": 4231,
+    "body_lines": 61
+  },
+  {
+    "symbol": "sub_530A30_spell_execdur",
+    "file": "src/legacy/server__magic__spell__execdur.c",
+    "start": 206,
+    "end": 1833,
+    "body_lines": 57
+  }
+]

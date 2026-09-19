@@ -1,0 +1,146 @@
+{
+  "nox_xxx_castPixies_540440": [
+    {
+      "file": "src/legacy/spells.go",
+      "line": 336,
+      "text": "return Nox_spells_call_intint6_go(C.nox_xxx_castPixies_540440, spellID, a2, a3, a4, sa, lvl)",
+      "porttest": false
+    },
+    {
+      "file": "src/legacy/spell_start_porttest.go",
+      "line": 178,
+      "text": "got := uint32(C.nox_xxx_castPixies_540440(C.int(id), 0, inventoryInt(owner), inventoryInt(origin), 0, C.int(level)))",
+      "porttest": true
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 93,
+      "text": "int nox_xxx_castPixies_540440(int a1, int a2, int a3, int a4, int a5, int a6) {",
+      "porttest": false
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 172,
+      "text": "int nox_xxx_castPixies_540440(int a1, int a2, int a3, int a4, int a5, int a6);",
+      "porttest": false
+    }
+  ],
+  "sub_530A30_spell_execdur": [
+    {
+      "file": "src/legacy/spells.go",
+      "line": 572,
+      "text": "return C.sub_530A30_spell_execdur",
+      "porttest": false
+    },
+    {
+      "file": "src/legacy/server__magic__spell__execdur.c",
+      "line": 9,
+      "text": "int sub_530A30_spell_execdur(int a1) {",
+      "porttest": false
+    },
+    {
+      "file": "src/legacy/spell_start_porttest.go",
+      "line": 73,
+      "text": "got := uint32(C.sub_530A30_spell_execdur(C.int(uintptr(record))))",
+      "porttest": true
+    },
+    {
+      "file": "src/legacy/server__magic__spell__execdur.h",
+      "line": 6,
+      "text": "int sub_530A30_spell_execdur(int a1);",
+      "porttest": false
+    }
+  ],
+  "nox_cheat_charmall": [
+    {
+      "file": "src/legacy/spell_start_porttest.go",
+      "line": 8,
+      "text": "extern int nox_cheat_charmall;",
+      "porttest": true
+    },
+    {
+      "file": "src/legacy/spell_start_porttest.go",
+      "line": 222,
+      "text": "old := C.nox_cheat_charmall",
+      "porttest": true
+    },
+    {
+      "file": "src/legacy/spell_start_porttest.go",
+      "line": 223,
+      "text": "defer func() { C.nox_cheat_charmall = old }()",
+      "porttest": true
+    },
+    {
+      "file": "src/legacy/spell_start_porttest.go",
+      "line": 227,
+      "text": "out = append(out, int32(C.nox_cheat_charmall))",
+      "porttest": true
+    },
+    {
+      "file": "src/legacy/parsecmd.go",
+      "line": 5,
+      "text": "extern int nox_cheat_charmall;",
+      "porttest": false
+    },
+    {
+      "file": "src/legacy/parsecmd.go",
+      "line": 10,
+      "text": "func CheatCharmAll(v bool) { C.nox_cheat_charmall = C.int(bool2int(v)) }",
+      "porttest": false
+    },
+    {
+      "file": "src/legacy/spell_effects_summon.go",
+      "line": 13,
+      "text": "extern int nox_cheat_charmall;",
+      "porttest": false
+    },
+    {
+      "file": "src/legacy/spell_effects_summon.go",
+      "line": 155,
+      "text": "if source.ObjClass&4 != 0 && C.nox_cheat_charmall == 0 {",
+      "porttest": false
+    },
+    {
+      "file": "src/legacy/spell_effects_summon.go",
+      "line": 206,
+      "text": "if C.nox_cheat_charmall == 0 {",
+      "porttest": false
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "line": 1,
+      "text": "int nox_cheat_charmall = 0;",
+      "porttest": false
+    },
+    {
+      "file": "src/legacy/spell_effects_porttest.go",
+      "line": 20,
+      "text": "extern int nox_cheat_charmall;",
+      "porttest": true
+    },
+    {
+      "file": "src/legacy/spell_effects_porttest.go",
+      "line": 125,
+      "text": "oldCharm, oldDoor, oldGlyph, oldOther := C.nox_cheat_charmall, C.dword_5d4594_2487708, C.dword_5d4594_2487712, C.dword_5d4594_2487804",
+      "porttest": true
+    },
+    {
+      "file": "src/legacy/spell_effects_porttest.go",
+      "line": 126,
+      "text": "C.nox_cheat_charmall = C.int(bool2int(sp.CharmAll))",
+      "porttest": true
+    },
+    {
+      "file": "src/legacy/spell_effects_porttest.go",
+      "line": 174,
+      "text": "C.nox_cheat_charmall = oldCharm",
+      "porttest": true
+    },
+    {
+      "file": "src/legacy/spell_effects_porttest.go",
+      "line": 254,
+      "text": "out = append(out, p.normalize(uint32(C.dword_5d4594_2487708)), p.normalize(uint32(C.dword_5d4594_2487712)), p.normalize(uint32(C.dword_5d4594_2487804)), uint32(C.nox_cheat_charmall))",
+      "porttest": true
+    }
+  ]
+}

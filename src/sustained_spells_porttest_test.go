@@ -13,6 +13,12 @@ import (
 )
 
 var sustainedHashes = map[string]string{
+	"spell-start-teleport":          "6112ea902a0f0121c448b61c38b93fda9b80c6e6adff0e4cfe2869ea92ed57bf",
+	"spell-start-teleport-rounding": "0718bb71eb62a801a04e6b6574d6d13d93a5811c3daa55315f5c1dcb33902b63",
+	"spell-start-pixies":            "9792f3b0d696ccbab1376c1954e9edbd8a2494689eec2c39e30e0603b4124398",
+	"spell-start-pixie-owners":      "46a5c94313e51dbc6099aef8610c42c80d9dfd9e5424c9205e2244efc146a676",
+	"spell-start-pixie-limits":      "c77ca049cf8c68aff923d5db0356c92d98f2b879db72bba55b1ff0bd7b366eaf",
+
 	"sustained-duration-00":     "30e2f42703d8ddc5c2e2874239bd42fd2042f7383d570ab8384a5b664753f337",
 	"sustained-duration-05":     "d831d98b422a72b62b05e8954dfd6b5c41357d392734cefd4ba0e967c375c890",
 	"sustained-duration-06":     "c8f0f7ae25f1dbe7b034fb58d278d0e441f22a062dd1a247e7bad7940b0c72e6",

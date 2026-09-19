@@ -154,6 +154,7 @@ import (
 )
 
 type PortTestSustainedSpellsSpec struct {
+	Start            *PortTestSpellStartSpec
 	RecordDamageRefs []int
 	Caches           map[uintptr]uint32
 	CacheRefs        map[uintptr]int
@@ -260,6 +261,10 @@ func (p *portTestShopPools) sustainedAction(a PortTestShopAction) uint32 {
 	q := int32(sp.Effects.Ints[0])
 	var out uint32
 	switch a.Op - 1700 {
+	case 53:
+		out = p.spellStartTeleportContract(record)
+	case 54:
+		out = p.spellStartPixieContract(u, t, record)
 	case 1:
 		out = sustainedTransferMana(u, t, q)
 	case 2:
