@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1_2.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/internal/cryptfile"
 	"os"
@@ -32,11 +27,11 @@ func PortTestMapMetadata(spec PortTestMapSectionIO, dir string) PortTestMapSecti
 	var ret uint32
 	switch spec.Function {
 	case "info":
-		ret = uint32(C.nox_server_mapRWMapInfo_42A6E0())
+		ret = mapMetadataInfo()
 	case "ambient":
-		ret = uint32(C.nox_server_mapRWAmbientData_429200())
+		ret = mapMetadataAmbient()
 	case "toc":
-		ret = uint32(C.nox_server_mapRWObjectTOC_428B30())
+		ret = mapMetadataTOC()
 	default:
 		panic(spec.Function)
 	}

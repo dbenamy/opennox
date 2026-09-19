@@ -28,23 +28,8 @@ var (
 	Sub_4E3AD0             func(ind int) int
 )
 
-//export sub_42BFB0
-func sub_42BFB0() { Sub_42BFB0() }
-
 //export nox_xxx_objectTOCgetTT_42C2B0
 func nox_xxx_objectTOCgetTT_42C2B0(a1 C.ushort) int { return Nox_xxx_objectTOCgetTT(uint16(a1)) }
-
-//export sub_42C310
-func sub_42C310(a1 C.int, a2 C.ushort) { Sub_42C310(int(a1), uint16(a2)) }
-
-//export sub_42C2E0
-func sub_42C2E0(a1 int) C.ushort { return C.ushort(Sub_42C2E0(a1)) }
-
-//export sub_42C300
-func sub_42C300() C.ushort { return C.ushort(Sub_42C300()) }
-
-//export sub_42BFE0
-func sub_42BFE0() { Sub_42BFE0() }
 
 //export sub_4E3AD0
 func sub_4E3AD0(ind int) int { return Sub_4E3AD0(ind) }

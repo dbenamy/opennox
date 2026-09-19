@@ -42,7 +42,41 @@ qualified parent production binaries/scenarios. See
 No C prerequisite correction was needed. Initial writer expectations used the
 wrong numeric value for GameFlag22; checking its declaration corrected the test
 and added both neighboring flag values before freezing. Six C-to-Go adapters
-become unreferenced with this conversion and will retire with the five C bodies.
+became unreferenced and retired with the five C bodies.
 
-The freeze and C qualification scripts are consumed. Native implementation is
-still an ignored draft, not installed.
+## Native result
+
+C checkpoint **f3181558** is committed and pushed. Go now implements all three
+serializers and ambient state access. All section callers and population ambient
+initialization call Go directly. Five C function interfaces and six obsolete
+C-to-Go adapters retire; the dictionary's existing real Go services remain.
+No C algorithms are retained for testing. No captured expectation changed.
+
+Each target passes **515 roots /47,472 entries**, with no skips. All **287 captures
+/103,626 records** match the C evidence and each other. All target and production
+gates have identical **2,479-file source**. Static, three fresh production builds
+and ABI checks, the exact known full-suite failures, headless gameplay, explicit
+save/load, and compressed flat-map regeneration pass. See
+[native qualification](map-metadata-native-qualification.json).
+
+Current production C: **26,836 physical lines /67 files**, zero reference C,
+**−165** from the parent. This includes the selected bodies and adjacent obsolete
+address headings, annotations and blank lines; it is not 165 executable lines.
+No production behavior correction or user decision was needed for this batch.
+
+The freeze, qualification and installer scripts are consumed. Actual source wins
+over ignored drafts; never replay old source mutations.
+
+## Disk maintenance
+
+Removed42 superseded successful-run binaries after verifying recorded hashes,
+reports, recoverable revisions and that none was running: **2,048,072,488 bytes**.
+Audit: build/port-map-metadata/superseded-binaries-cleanup.json. Current parent
+binaries, logs, captures and original assets/archive were preserved. Audit/apply
+modes are consumed.
+
+Native scenario copies were hash-verified and deduplicated after qualification,
+reclaiming **1,660,044,319 bytes**. Changed maps/saves/screenshots and restoration
+manifests remain. Restore with
+`build/port-map-metadata/deduplicate-map-metadata-native-assets.py --restore RUN`;
+audit/apply are consumed. Original assets are unchanged.

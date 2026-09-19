@@ -143,16 +143,6 @@ func sub_434990(r, g, b int) {
 	})
 }
 
-//export sub_4349C0
-func sub_4349C0(a1 *C.uint) {
-	arr := unsafe.Slice(a1, 3)
-	GetClient().R2().Data().SetLightColor(noxrender.RGB{
-		R: int(arr[0]),
-		G: int(arr[1]),
-		B: int(arr[2]),
-	})
-}
-
 //export sub_47D370
 func sub_47D370(a1 int) {
 	GetClient().R2().Set_dword_5d4594_3799484(a1)

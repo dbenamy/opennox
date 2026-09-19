@@ -15,15 +15,14 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. Floor/wall map serialization and connected metadata are now native Go:
-18 C routines and two private C globals retired, with direct Go section callers.
-Historical readers remain; unreachable old writer branches are removed. See
-[MAP_SECTIONS.md](docs/porting/MAP_SECTIONS.md).
+pause. The remaining C map metadata serializers are now Go: MapInfo, AmbientData
+and ObjectTOC, plus ambient state access. Five C bodies and six C-to-Go adapters
+retired. See [MAP_METADATA.md](docs/porting/MAP_METADATA.md).
 
-Current production C is **27,001 physical lines in 67 files**, with zero reference
-C (−1,793 from the corrected map-section baseline, including174 obsolete heading
-and blank lines). Frozen comparisons, all three targets and fresh production/
-headless integration qualify. See [PORTING_STATE.md](PORTING_STATE.md).
+Current production C is **26,836 physical lines in 67 files**, with zero reference
+C (−165 in this batch, including adjacent obsolete headings and blanks). Frozen
+comparisons, all three targets and fresh production/headless integration qualify.
+See [PORTING_STATE.md](PORTING_STATE.md).
 
 ## Goal and target
 

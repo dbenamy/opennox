@@ -160,6 +160,6 @@ func mapPopulationFinish(cfg uint32) {
 	mapPaintSelectObject((*C.char)(unsafe.Pointer(name)))
 	free()
 	mapPaintPlaceObject(&pos)
-	C.sub_469B90((*C.int)(mapRoomPointer(cfg + 536)))
+	mapMetadataSetAmbient(*(*[3]uint32)(mapRoomPointer(cfg + 536)))
 	mapPopulationMetadataFree()
 }

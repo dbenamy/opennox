@@ -31,7 +31,6 @@ import (
 	"github.com/opennox/opennox/v1/common/ntype"
 	"github.com/opennox/opennox/v1/internal/cryptfile"
 	"github.com/opennox/opennox/v1/legacy/cnxz"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -92,7 +91,7 @@ func sub_51A100() {
 }
 
 func Nox_server_mapRWMapInfo_42A6E0(_ *cryptfile.CryptFile, a1 unsafe.Pointer) error {
-	if ccall.CallIntPtr(C.nox_server_mapRWMapInfo_42A6E0, a1) == 0 {
+	if mapMetadataInfo() == 0 {
 		return fmt.Errorf("%s failed", caller(0))
 	}
 	return nil
@@ -140,7 +139,7 @@ func Nox_server_mapRWGroupData_505C30(_ *cryptfile.CryptFile, a1 unsafe.Pointer)
 	return nil
 }
 func Nox_server_mapRWAmbientData_429200(_ *cryptfile.CryptFile, a1 unsafe.Pointer) error {
-	if ccall.CallIntPtr(C.nox_server_mapRWAmbientData_429200, a1) == 0 {
+	if mapMetadataAmbient() == 0 {
 		return fmt.Errorf("%s failed", caller(0))
 	}
 	return nil
@@ -158,7 +157,7 @@ func Nox_server_mapRWMapIntro_505080(_ *cryptfile.CryptFile, a1 unsafe.Pointer) 
 	return nil
 }
 func Nox_server_mapRWObjectTOC_428B30(_ *cryptfile.CryptFile, a1 unsafe.Pointer) error {
-	if ccall.CallIntPtr(C.nox_server_mapRWObjectTOC_428B30, a1) == 0 {
+	if mapMetadataTOC() == 0 {
 		return fmt.Errorf("%s failed", caller(0))
 	}
 	return nil

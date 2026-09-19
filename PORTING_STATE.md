@@ -2,52 +2,56 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 27k lines** — **27,001 physical lines in 67 production
-`.c` files**, zero reference C. Latest conversion: **−1,793** from
-the qualified corrected C map-section baseline. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 27k lines** — **26,836 physical lines in 67 production
+`.c` files**, zero reference C. Latest conversion: **−165** from
+the qualified map metadata C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — native map sections qualified
+## Current — native map metadata qualified
 
-Corrected C baseline **71633546** and capture checkpoint4cc84212 are pushed.
-Native Go replaces18 C bodies, removes two private C globals and moves all five
-section callers directly to Go. Historical readers remain; unreachable old write
-branches are removed. See [MAP_SECTIONS.md](docs/porting/MAP_SECTIONS.md).
+C checkpoint **f3181558** is committed and pushed. Native Go replaces five C bodies
+and retires six obsolete C-to-Go adapters; three section callers and population
+ambient setup call Go directly. See [MAP_METADATA.md](docs/porting/MAP_METADATA.md).
 
-**19 focused roots /4,144 entries**,19 captures /4,126 records match C. Each target
-passes **510 roots /46,994 entries**, no skips. All282 captures /103,153 records
-match C and each other; all native gates have identical source. Static, three fresh
-production binaries/ABI, exact known full-suite failures, gameplay, explicit
-save/load and compressed flat-map regeneration pass. No golden changed.
-Evidence: docs/porting/map-sections-native-qualification.json and
-build/port-map-sections/native-*. All build/test sessions are joined.
+Five focused roots /478 entries, five captures /473 records match C. Each target
+passes **515 roots /47,472 entries**, no skips. All **287 captures /103,626 records**
+match C and each other. All target and production gates have identical 2,479-file
+source. Static, three fresh production binaries/ABI, exact known full-suite
+failures, gameplay, explicit save/load and compressed flat-map regeneration pass.
+No golden changed; no production behavior correction was needed.
+Evidence: docs/porting/map-metadata-native-qualification.json and
+build/port-map-metadata/native-*. All build/test sessions are joined.
 
-Current C: **27,001 lines /67 files /zero reference**,−1,793 from corrected C:
-−1,619 bodies/global definitions plus−174 obsolete headings/blanks in touched files.
-Native conversion **90fbd480 is committed and pushed**. The next smaller closing
-batch selects the three remaining C map-section serializers (MapInfo, AmbientData,
-ObjectTOC) and two ambient services: five bodies /142 lines. Its C baseline is now
-qualified: five roots /478 entries, five repeated captures /473 records, identical
-across all targets. Static passes. All parent source files remain unchanged;
-exactly five additive porttest-only files permit reuse of the parent production
-qualification. See docs/porting/MAP_METADATA.md and map-metadata-c-qualification.json.
-No native source installed yet; build sessions joined. Freeze and C qualification
-scripts are consumed; ignored native draft/installer not yet consumed.
-No user question is pending.
+Current C: **26,836 physical lines /67 files /zero reference**,−165 including
+adjacent obsolete headings, annotations and blanks. Native conversion is ready
+for commit/push. Next candidate: player death/scoring and respawn corpse creation,
+seven bodies /677 lines; read-only audit in build/port-player-death/selection-candidate.json.
+No source for that next batch is installed. No user question is pending.
 
-All map-section installers, draft copies, freeze scripts and qualification scripts
-are consumed. Actual source and committed evidence take precedence. The first
-native run differed only in metadata checksums; original8-byte IO boundaries were
-restored without golden changes. Do not replay old source-mutation scripts.
+All map-metadata freeze, qualification, installer and finalization scripts are
+consumed. Actual source wins over ignored drafts. Do not replay mutation scripts.
 
-Disk:99 superseded successful-run binaries removed in three audits, reclaiming
-4,819,397,352 bytes. C scenario assets were deduplicated after hash verification,
-reclaiming1,660,044,319 bytes. Their audit/apply modes are consumed; restore mode
-remains available. Native scenario copies were also verified/deduplicated (1,660,044,319 bytes);
-audit83161/apply93403 are joined and consumed. Restore modes remain available.
-Preserve all restoration manifests, changed maps/saves/screenshots and original
+Disk:42 more superseded successful-run binaries removed, reclaiming2,048,072,488
+bytes. Audit: build/port-map-metadata/superseded-binaries-cleanup.json. Audit/apply
+consumed; current parent binaries preserved. Earlier map-section cleanup removed
+99 binaries (4,819,397,352 bytes) and deduplicated C/native scenario assets
+(1,660,044,319 bytes each). Their audit/apply modes are consumed; restore modes and
+manifests remain available. Preserve changed maps/saves/screenshots and original
 assets/archive. The archive remains untracked.
+Map-metadata native scenario assets were also verified/deduplicated, reclaiming
+1,660,044,319 bytes. Audit/apply consumed; restore mode remains available at
+build/port-map-metadata/deduplicate-map-metadata-native-assets.py.
+
+## Qualified parent — native floor/wall map sections
+
+**90fbd480** is committed and pushed; corrected C baseline71633546. Eighteen C
+bodies and two globals retired.19 focused roots /4,144 entries; each target510
+roots /46,994 entries;282 captures /103,153 records match. Fresh production and
+headless integration qualify. C count27,001 /67 files (−1,793 including174 obsolete
+headings/blanks). See [MAP_SECTIONS.md](docs/porting/MAP_SECTIONS.md). All scripts
+are consumed. Preserve original IO grouping: split coordinate IO changed only
+checksums on the initial native run; grouping was restored without golden changes.
 
 ## Qualified parent — native game statistics
 

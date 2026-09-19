@@ -233,6 +233,7 @@ target build selection and linker evidence.
 | Game-statistics collection and serialization |67|28,790|−2,029|0|
 | Map-section prerequisite corrections |67|28,794|+4|0|
 | Floor/wall map sections and obsolete heading cleanup |67|27,001|−1,793|0|
+| Map metadata serializers and ambient access (native) | 67 | 26,836 | −165 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

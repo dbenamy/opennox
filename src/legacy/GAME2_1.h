@@ -68,8 +68,6 @@ int sub_467BB0();
 int sub_467C10();
 int sub_467C80();
 char* sub_469920(nox_point* a1);
-int sub_469B90(int* a1);
-char* nox_xxx_getAmbientColor_469BB0();
 int sub_469FA0();
 void* nox_xxx_getWallSprite_46A3B0(int a1, int a2, int a3, int a4);
 void nox_xxx_getWallDrawOffset_46A3F0(int a1, int a2, int a3, int a4, int* px, int* py);
