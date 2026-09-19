@@ -2014,3 +2014,12 @@ only a test-adapter signature correction; the first behavioral comparison passed
 Twenty-one private interfaces and eight private C globals retire, leaving eleven
 exports for actual C callers. Current C:24,411 lines /66 files /zero reference,
 −957. See COMBAT_OVERLAYS.md and its native qualification report.
+
+
+Client presentation pre-baseline correction: test-created persistent rays filled
+all96 pointer slots, then a97th allocation escaped ownership (live count98 ->99
+including two endpoints). No code updates the old limit counter. Move the existing
+free-slot scan before allocation; full tables now reject creation. Duplicate
+removal, first-free-slot reuse and full cleanup pass independent contracts. This
+reversible correction is recorded for review and qualified before translation.
+Frozen baseline fc842bfa and CLIENT_PRESENTATION.md contain the evidence.

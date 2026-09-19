@@ -39,20 +39,25 @@ pass (4,619 records) in presentation-gui-owner: ordering, copy, floor compositio
 equipment, phoneme initialization and frame rendering. The phoneme owner now
 creates and releases a real GUI; earlier failures were fixture-only (missing GUI,
 386 integer constant typing and named image-handle typing). Production is unchanged.
-Client presentation C recovery checkpoint:16 captures /7,744 records repeated
-identically across default/server/highres, same source fingerprints, now frozen.
-All repeat sessions joined. The final floor cases include image/sprite offsets
-and inactive/missing-image exits. All copied contract drafts and freeze.py are
-CONSUMED. Native-rays-draft.go is UNINSTALLED and requires review.
-Original 97th-ray leak is repaired by finding a free slot before allocation;
-original failure presentation-rays-fields, corrected contract pass subsequently.
-This is a baseline recovery checkpoint, NOT completed batch qualification.
-Affected265-root manifest client-presentation-c-batch.json is ready; fresh all-target
-production/full-suite/gameplay/save-load qualification is required. C24,412 /66 files
-/zero reference; selected22 bodies /716 lines. No Go conversion installed yet.
-Native combat scenario duplicates reclaimed1,112,747,701 bytes; restore helper
-build/port-combat-overlays/deduplicate-combat-overlays-native-assets.py --restore NAME.
-Its audit/apply modes are consumed; original assets/archive remain untouched.
+Client presentation C baseline **fc842bfa** is committed/pushed and qualified.
+All16 frozen captures /7,744 records match three targets. Affected default/highres
+265 roots /184 captures /278,640 records, server264 /183 /271,728; shared captures
+match exactly, with existing client-only occlusion exclusion. All2,545 source
+fingerprints match, including fresh production qualification: three binaries/ABI,
+known full-suite result set, gameplay and explicit save/load. See
+client-presentation-c-qualification.json. All build/test sessions are joined.
+First production gate caught a manifest classification mistake (C bodies listed
+as Go exports); corrected retained_c manifest qualified without source changes.
+Original97th-ray leak repaired before freezing; all capacity/reuse/cleanup pass.
+C24,412 /66 files /zero reference; selected22 bodies /716 C lines.
+Native drafts effects/floor/rays/exports/bridge and install-native.py under
+build/port-client-spell-presentation are prepared but NOT INSTALLED. Review then
+install once. Keep4 C exports for remaining decoder callers; retire18 private
+interfaces and the private chant-tree C global. Test bridge will exercise all4
+retained exports through C. All fixture drafts and freeze.py are consumed.
+Completed C scenario duplicates reclaimed another1,112,747,701 bytes; all cleanup
+sessions joined. Audit/apply are consumed. Original assets/archive are untouched;
+restoration helper deduplicate-client-presentation-c-assets.py --restore NAME.
 
 ## Qualified parent — native speech bubbles
 

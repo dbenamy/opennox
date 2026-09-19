@@ -57,3 +57,20 @@ Completed native combat scenario copies were deduplicated after content-hash and
 inactive-process checks, reclaiming1,112,747,701 bytes. The restoration helper is
 build/port-combat-overlays/deduplicate-combat-overlays-native-assets.py; only its
 --restore NAME mode should be reused. Original assets/archive remain untouched.
+
+## C qualification
+
+Frozen checkpoint **fc842bfa** qualifies: default/highres265 roots,184 captures,
+278,640 records; server264 roots,183 captures,271,728 records. Every shared capture
+matches. The sole absent server capture is the established client-only occlusion
+case. All2,545 source fingerprints match between targets and fresh production.
+Three fresh binaries and ABI checks, exact known full-suite failure multiset,
+headless gameplay and explicit save/load pass. See client-presentation-c-qualification.json.
+The initial production gate rejected a manifest classification error (original C
+bodies listed as Go-backed exports); the corrected retained_c manifest passed.
+
+Translation plan: four exports remain for real decoder calls (ray add/remove,
+Turn Undead, equipment). Eighteen private interfaces and the private chant-tree
+C global retire. Preserve the four real C call paths in the test bridge. The
+three formerly pointer-valued returns have no consumer and can become void in
+both export and header. Native drafts are uninstalled pending integration.
