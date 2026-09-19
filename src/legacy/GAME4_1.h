@@ -25,7 +25,6 @@ void sub_510E20(int a1);
 signed int nox_xxx_updateSentryGlobe_510E60(int a1);
 void nox_xxx_updateSprings_5113A0();
 int nox_xxx_unitSetDecayTime_511660(nox_object_t* a1, int a2);
-int sub_515C80(int a1, uint8_t* a2);
 void sub_516FC0();
 int sub_517590(float a1, float a2);
 void nox_xxx_moveUpdateSpecial_517970(nox_object_t* unit);

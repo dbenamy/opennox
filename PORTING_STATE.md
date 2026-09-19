@@ -2,46 +2,38 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about11.4k lines** — **11,404 physical lines in49
-production `.c` files**, zero reference C. The script prerequisite removes **5 lines**.
+**Qualified C remaining: about11k lines** — **10,953 physical lines in48
+production `.c` files**, zero reference C. This conversion removes **451 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Current — script-binding Go conversion qualified
 
-## Current — script-binding corrected C baseline qualified
+Corrected C baseline **5a9a3164** and prerequisite **990974ec** are pushed.
+The Go conversion is fully qualified:19 bodies, nine private bridge exports and
+two C owners retire. All184 affected roots per target pass with no skips and all
+107 frozen captures unchanged. Static checks, three production builds/ABI,
+exact1553 known full-suite failures (15 pass /3 fail /32 skip packages), and fresh
+gameplay/save-load comparisons pass. Source fingerprints agree across all gates.
+Every test/build/scenario job, including production41496, is joined.
 
-Prerequisite **990974ec** is pushed. The19-body /373-line C baseline now passes
-184 affected roots per target with no skips and identical107 captured files.
-Nine new captures and the independent journal-name boundary are frozen. Static
-checks, all three fresh production binaries/ABI, exact1553 full-suite failures
-(15 pass /3 fail /32 skip packages), gameplay and save/load scenarios pass.
-All source fingerprints agree. Every job, including production49299, is joined.
+See [SCRIPT_BINDINGS.md](docs/porting/SCRIPT_BINDINGS.md) and tracked
+`script-bindings-native-{batch,qualification}.json`. Evidence is under
+`build/port-script-builtins/native-affected-*`, `native-production`,
+`native-focused.log` and `static-native.log`. Commit/push this qualified native
+conversion, then continue the three inventory routines. XP/level remains C.
 
-See [SCRIPT_BINDINGS.md](docs/porting/SCRIPT_BINDINGS.md), script-bindings-batch.json
-and script-bindings-c-qualification.json. C is **11,404 lines /49 files /zero
-reference C**. No native code is installed. Commit/push this C baseline, reclaim
-verified duplicate assets from its two completed scenarios if needed, then install
-and qualify the Go conversion. Carry/drop, startup cleanup and halberd replacement
-are the following inventory batch; the XP/level helper remains C in this batch.
+`native-draft.go` and `install-native.py` are CONSUMED. Never replay them over
+reviewed source or regenerate frozen expectations to hide a native failure.
+Read-only next-batch caller audit/fixture notes are in
+`build/port-script-inventory`; no next-batch source is installed yet.
 
-Native-draft.go and install-native.py under build/port-script-builtins are reviewed
-advisory drafts and NOT CONSUMED. The installer takes the committed C-baseline
-revision and exact-matches its19 selected bodies before removing them. Review
-its effects, Go formatting, imports and remaining C references before testing.
-Movement/registry/ownership test drafts are CONSUMED. Do not replay them over
-reviewed src/script_bindings* files or regenerate frozen captures for native
-failures. Keep the original failed fixture runs as diagnostics.
-
-Original22-body selection-draft.json has stale offsets; use the tracked19-body
-selection/current audit. Expected native retirement:19 C interfaces, nine bridge
-exports and two owners. All9 selected bridge references are inside the batch;
-whole-source address and callback audits found no outside registrations.
-
-Disk is about1.9GiB free. Previous online-session asset deletion mode is CONSUMED
-(1,669,136,451 bytes reclaimed). The two new script-bindings-c scenario asset
-copies have not been deduplicated. Preserve original assets/archive and all
-screenshots/saves/logs. No user decision is pending.
+Completed script-binding C scenario asset copies reclaimed1,112,747,701 bytes;
+50 old rebuildable Go cache archives reclaimed2,289,188,222 bytes. Their audited
+deletion modes are CONSUMED. Preserve original assets/archive and all screenshots,
+saves/logs; completed runs retain restoration manifests. The two new native
+scenario copies have not been deduplicated. No user decision is pending.
 
 ## Current — legacy online session conversion qualified
 

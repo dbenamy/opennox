@@ -258,6 +258,7 @@ target build selection and linker evidence.
 | Client interaction completed:78 live routines, orphan/interface/owner retirement | 50 | 11,898 | −937 (−1,558 from C baseline) | 0 |
 | Legacy online session state, unreachable service paths and log formatter | 49 | 11,409 | −489 | 0 |
 | Script-binding corrected C baseline (production qualified; no conversion yet) | 49 | 11,404 | −5 | 0 |
+| Script bindings, movement and callback transfer Go conversion | 48 | 10,953 | −451 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

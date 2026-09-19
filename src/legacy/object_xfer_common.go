@@ -37,7 +37,7 @@ func (r objectXferStream) word(v uint32) uint32 {
 }
 func objectXferEditor() bool { return noxflags.HasGame(0x600000) }
 func objectXferScript(p, name unsafe.Pointer) int {
-	return int(C.nox_xxx_xferReadScriptHandler_4F5580(C.int(uintptr(p)), (*C.char)(name)))
+	return scriptBindingCallback(p, name)
 }
 func (r objectXferStream) name(u *server.Object) bool {
 	n := r.byte(byte(len(alloc.GoString((*byte)(u.IDPtr)))))

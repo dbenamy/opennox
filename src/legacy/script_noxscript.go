@@ -36,11 +36,6 @@ func nox_xxx_netGetUnitCodeServ_578AC0(cobj *nox_object_t) C.uint {
 	return C.uint(GetServer().S().GetUnitNetCode(asObjectS(cobj)))
 }
 
-//export nox_server_scriptValToObjectPtr_511B60
-func nox_server_scriptValToObjectPtr_511B60(val int) *nox_object_t {
-	return asObjectC(GetServer().NoxScriptC().ScriptToObject(val))
-}
-
 //export nox_script_push
 func nox_script_push(v int) {
 	GetServer().NoxScriptC().PushI32(int32(v))
@@ -61,20 +56,6 @@ func nox_script_popf() C.float {
 	return C.float(GetServer().NoxScriptC().PopF32())
 }
 
-//export nox_script_indexByEvent
-func nox_script_indexByEvent(cname *C.char) int {
-	return GetServer().S().NoxScriptVM.ScriptIndexByName(GoString(cname))
-}
-
-//export nox_script_getString_512E40
-func nox_script_getString_512E40(i int) *C.char {
-	s, ok := GetServer().S().NoxScriptVM.LookupString(uint32(i))
-	if !ok {
-		return nil
-	}
-	return internCStr(s)
-}
-
 //export nox_setImaginaryCaster
 func nox_setImaginaryCaster() int { return Nox_setImaginaryCaster() }
 
@@ -93,12 +74,6 @@ func nox_script_callByIndex_507310(index int, a2 unsafe.Pointer, a3 unsafe.Point
 	if err := GetServer().S().NoxScriptVM.CallByIndex(index, AsObjectP(a2), AsObjectP(a3)); err != nil {
 		scriptLog.Println(err)
 	}
-}
-
-//export nox_script_callbackName
-func nox_script_callbackName(h int) *C.char {
-	s := GetServer().S().NoxScriptVM.ScriptNameByIndex(h)
-	return internCStr(s)
 }
 
 //export nox_script_objCallbackName_508CB0

@@ -1,0 +1,59 @@
+{
+  "status": "qualified native conversion",
+  "c_baseline": "5a9a3164",
+  "bodies": 19,
+  "body_lines": 373,
+  "retired_functions": 28,
+  "moved_owners": 2,
+  "targets": {
+    "default": {
+      "roots": 184,
+      "skips": [],
+      "manifest_hashes_enforced": 107,
+      "evidence": "build/port-script-builtins/native-affected-default"
+    },
+    "server": {
+      "roots": 184,
+      "skips": [],
+      "manifest_hashes_enforced": 107,
+      "evidence": "build/port-script-builtins/native-affected-server"
+    },
+    "highres": {
+      "roots": 184,
+      "skips": [],
+      "manifest_hashes_enforced": 107,
+      "evidence": "build/port-script-builtins/native-affected-highres"
+    }
+  },
+  "production": "build/port-script-builtins/native-production/production/production.json",
+  "full_suite": {
+    "exit": 1,
+    "wall_seconds": 57.13273842493072,
+    "failure_entries": 1553,
+    "packages": {
+      "skip": 32,
+      "pass": 15,
+      "fail": 3
+    },
+    "exact_failure_multiset_match": true,
+    "exact_package_result_match": true
+  },
+  "scenarios": {
+    "script-bindings-native": {
+      "exit": 0,
+      "binary_sha256": "6780d57da8782711afa5377b8db26b57ded68c2a53890660aef07871742c91ef"
+    },
+    "script-bindings-native-save": {
+      "exit": 0,
+      "binary_sha256": "6780d57da8782711afa5377b8db26b57ded68c2a53890660aef07871742c91ef"
+    }
+  },
+  "static": "build/port-script-builtins/static-native.log",
+  "source_files": 2764,
+  "c_loc": {
+    "files": 48,
+    "lines": 10953,
+    "reference_lines": 0
+  },
+  "physical_c_reduction": 451
+}

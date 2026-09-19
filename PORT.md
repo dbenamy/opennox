@@ -14,23 +14,15 @@
 
 ## Current status
 
-The script-binding corrected C baseline is qualified:19 bodies /373 body lines,
-184 affected roots per target,107 identical captures, fresh production/ABI,
-exact known full-suite outcomes and gameplay/save-load scenarios. C is now
-**11,404 physical lines in49 files**, zero reference C. The next step is its Go
-conversion. See [SCRIPT_BINDINGS.md](docs/porting/SCRIPT_BINDINGS.md).
+The script-binding Go conversion is qualified:19 bodies,28 retired C interfaces
+and two owners moved to Go. All three targets pass184 affected roots and107 frozen
+captures, fresh production/ABI checks, exact known full-suite outcomes, and
+headless gameplay/save-load comparisons. C remaining is **10,953 physical lines
+in48 files**, zero reference C: **451 fewer lines** in this batch.
+See [SCRIPT_BINDINGS.md](docs/porting/SCRIPT_BINDINGS.md).
 
-The remaining legacy online-session helpers now use Go or reduce to their
-reachable empty-state behavior. Six owners move to Go; eleven unused owners,
-27 private selected C interfaces and the old C log callback are retired. Only the
-briefing-state setter remains exported for its live decoder caller. See
-[ONLINE_SESSION.md](docs/porting/ONLINE_SESSION.md).
-
-Latest qualified production C is **11,409 physical lines in49 files**, zero
-reference C: **489 fewer lines** in this batch. All-target affected tests/captures,
-fresh production builds/ABI, exact known full-suite outcomes, and dialog/gameplay/
-save-load scenarios pass. A stale mapping-reader test minimum was replaced with
-round-trip checks and an independent fixture as the C-owner inventory shrank.
+Next: inventory capacity/drop selection, startup inventory cleanup and halberd
+replacement, the last three routines in the legacy script builtin C file.
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 Previous completed GUI batches include

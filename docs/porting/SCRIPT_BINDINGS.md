@@ -1,4 +1,4 @@
-# Script bindings and object commands — C baseline qualified
+# Script bindings and object commands — Go conversion qualified
 
 Qualified parent: **c425197f**, with **11,409 physical C lines in 49 files**,
 zero reference C. The initial candidate covered 22 bodies (472 original body lines) in
@@ -47,24 +47,8 @@ contracts. All three targets pass all three selected roots with no skips and ide
 source fingerprints. This is a recovery prerequisite,
 not a completed conversion or a fully qualified production baseline.
 
-Working C is **11,404 physical lines / 49 files / zero reference C**, five fewer
-than the qualified parent. Freeze the remaining original-C contracts and run
-fresh production qualification before converting the selected functions. Old
-ignored selection offsets predate this correction and must be regenerated.
-
-## Remaining baseline work
-
-Cover journal one/all-player dispatch, actual group traversal, experience and
-owner/pet commands, talking/trading state, startup inventory changes, shipped
-halberd selection, string-registry capacity/lifetime, actual AI action stacks,
-mover state and carry/drop selection. Audit host-player preconditions rather than
-silently inventing new behavior for unsupported states.
-
-Callback transfer needs actual cryptfile read/write fixtures and VM callback
-lookup: signed version checks, empty names, embedded terminators, 1023/1024-byte
-read boundaries, editor/runtime modes, exact consumed bytes and untouched fields
-on early rejection. Reuse existing object-transfer and compiled-script fixtures.
-The broader batch is not yet frozen, converted or qualified.
+The prerequisite leaves11,404 physical C lines /49 files /zero reference C,
+five fewer than its parent. It is committed as990974ec.
 
 ## C contracts and qualification progress
 
@@ -83,12 +67,11 @@ setup lacked localization data; the real notification path rejected that setup.
 The corrected fixture installs the existing string-manager fixture. Neither
 failure required a production change. Preserve the failed logs as diagnostics.
 
-All three `c-affected-*` runs pass183 root tests, no skips, and all nine frozen
-captures. Before fresh production gates, translation review adds an independent
-journal-name boundary contract: embedded NUL terminates the lookup, invalid
-string indexes become empty names, and both can address an existing empty-name
-entry. This new root does not modify any frozen capture. Its focused run and final
-all-target evidence are still pending. No native implementation is installed.
+The initial three `c-affected-*` runs passed183 roots. Translation review then
+added72 independent journal-name boundary cases: embedded NUL terminates lookup,
+invalid string indexes become empty names, and both can address an existing
+empty-name entry. This does not alter any frozen capture. Final sweeps include
+all184 roots with no skips.
 
 The original-C body uses extent at object offset40 to associate movers. The
 fixture makes extent and network code different and verifies all matching movers,
@@ -101,8 +84,8 @@ mover type. Nineteen selected C interfaces and nine now-private bridge exports
 can retire after whole-source checking: the four journal remove/update adapters,
 roam-byte callback, object resolver, VM string lookup, callback name and callback
 index lookup. Keep actual VM dispatch order and remaining inventory C routes.
-The draft at `build/port-script-builtins/native-draft.go` is advisory and has not
-been installed or tested. Review against frozen C before use.
+The native draft and installer have now been consumed. Do not replay them over
+reviewed source.
 
 Final C target sweeps now pass184 roots each with no skips. All107 captured files
 are byte-identical across default/server/highres; the nine new hashes remain
@@ -110,8 +93,8 @@ unchanged. The manifest now records all107 for native qualification. The final C
 runners enforced the nine new hashes and the selected tests' inherited contracts;
 the107-file inventory was compared and frozen after those runs. Source
 fingerprints are identical across all three final runs. Static checks pass.
-Fresh C production binaries/ABI and exact1553 full-suite failures pass; the two
-integration scenarios are still running in production session49299.
+Fresh C production binaries/ABI and exact1553 full-suite failures pass; both
+integration scenarios also completed successfully.
 
 ## Corrected C baseline qualified
 
@@ -121,5 +104,44 @@ packages. Fresh gameplay and save/load scenarios both pass against the preceding
 qualified references. Final184-root target sweeps, production and static source
 are identical by fingerprint. All jobs, including production49299, are joined.
 See script-bindings-c-qualification.json and script-bindings-batch.json. Current
-C remains11,404 physical lines /49 files /zero reference C. This commits the
-recoverable C oracle before installing the reviewed Go draft.
+C remains11,404 physical lines /49 files /zero reference C. Commit5a9a3164 preserves
+the recoverable C oracle before the Go conversion.
+
+## Native conversion qualified
+
+Nineteen selected bodies now use Go. Thirteen legacy VM table entries dispatch
+directly to Go; movement, journal and callback-transfer callers use private Go
+helpers. Nineteen private selected interfaces and nine bridge exports retire.
+The script-string counter and cached mover type move to Go; their existing Go
+accessors remain. The last three inventory C routines and their live interfaces
+remain for the following batch. XP still invokes the existing C level helper.
+
+The native semantic review preserves VM pop order, journal name termination and
+16-bit statuses, recursive group traversal, owner/list mutations, low-byte roam
+flags, shipped direction data with wide floating-point intermediates, mover
+extent matching, signed callback versions, length rejection and stream positions.
+Callback transfer contracts cover432 read/write cases with real cryptfile and VM
+owners. String storage retains the existing allocation/lifetime behavior; later
+cleanup needs a separate reachability and ownership decision.
+
+Focused native validation passes all14 roots and all nine unchanged new captures.
+Static validation and all184-root /107-capture target sweeps pass. The full
+production gates use
+`script-bindings-native-batch.json`; all pass. Qualified C is
+**10,953 physical lines /48 files /zero reference C**, a451-line reduction.
+The removed C translation unit is `server__script__script.c`.
+
+Evidence is under `build/port-script-builtins/native-focused.log`,
+`static-native.log`, `native-affected-*` and `native-production`.
+The installer, native draft, completed-C-asset deletion and old-archive-cache
+cleanup modes are CONSUMED. Asset deduplication reclaimed1,112,747,701 bytes;
+verified old rebuildable Go cache archives reclaimed2,289,188,222 bytes.
+Original assets/archive and scenario evidence remain intact.
+
+Fresh default/highres/server binaries pass their ABI checks, including retirement
+of28 functions and two owners. The full suite exactly matches1553 known failure
+entries and15 pass /3 fail /32 skip packages. Fresh gameplay and save/load
+scenarios pass against the corrected C baseline references. All source
+fingerprints agree; production41496 and every other job are joined. No native
+source corrections or golden changes were needed during qualification.
+See `script-bindings-native-qualification.json` for the final evidence inventory.

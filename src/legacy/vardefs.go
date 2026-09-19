@@ -394,7 +394,6 @@ extern uint32_t dword_5d4594_2488656;
 extern uint32_t dword_5d4594_2386552;
 extern uint32_t dword_5d4594_3835368;
 extern uint32_t dword_5d4594_830272;
-extern uint32_t dword_5d4594_2386836;
 extern uint32_t dword_5d4594_2490504;
 extern uint32_t dword_5d4594_1316452;
 extern uint32_t dword_5d4594_1049692;
@@ -503,7 +502,6 @@ extern uint32_t dword_5d4594_3798836;
 extern uint32_t dword_5d4594_3798840;
 extern uint32_t dword_8531A0_2576;
 extern uint32_t dword_8531A0_2572;
-extern unsigned int dword_5d4594_1599628;
 extern void* nox_video_tileBuf_ptr_3798796;
 extern void* nox_video_tileBuf_end_3798844;
 
@@ -837,7 +835,7 @@ func Get_nox_client_gui_flag_1556112() int {
 }
 
 func Set_dword_5d4594_1599628(v int) {
-	C.dword_5d4594_1599628 = C.uint(v)
+	scriptBindingStringCount = uint32(v)
 }
 
 func Sub_41E2F0() int {
@@ -878,10 +876,10 @@ func Set_dword_5d4594_1599548(v unsafe.Pointer) {
 	*prefabGlobal(prefabWaypoints) = mapRoomRaw(v)
 }
 func Get_dword_5d4594_2386836() int {
-	return int(C.dword_5d4594_2386836)
+	return int(scriptBindingMoverType)
 }
 func Set_dword_5d4594_2386836(v int) {
-	C.dword_5d4594_2386836 = C.uint(v)
+	scriptBindingMoverType = uint32(v)
 }
 func Set_dword_5d4594_2386848(v int) {
 	C.dword_5d4594_2386848 = C.int(v)
