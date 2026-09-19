@@ -26,38 +26,28 @@ build/port-map-metadata/native-*. All build/test sessions are joined.
 Current C: **26,836 physical lines /67 files /zero reference**,−165 including
 adjacent obsolete headings, annotations and blanks. Native conversion **00131036 is committed and pushed**. Next candidate: player death/scoring and respawn corpse creation,
 seven bodies /677 lines; read-only audit in build/port-player-death/selection-candidate.json.
-The next batch's C bridge and initial arena-team contracts are installed.
-Original C confirmed a null-team crash for an unteamed killer / teamed victim.
-A two-line guard is installed. Fourteen default-target groups now pass, with
-1,101 capture records (1,115 entries). Coverage includes scoring/team boundaries,
-assist expiry and frame wrap, actual registered dispatch, online source messages,
-quest lives/penalty/RNG, abilities/enchantments, cooperative pending-load cleanup,
-crown transfer and corpse cache/spawn/decay. See PLAYER_DEATH.md and
-player-death-checkpoint.json. Current working C is26,838 /67 files; the selected
-seven bodies are679 lines after the guard. Last completed conversion remains26,836.
+The player-death C baseline is now fully qualified:14 focused captures /1,101
+records; each target passes318 roots /24,386 entries, no skips. All149 captures /
+33,295 records match across targets, with identical2,496-file source for tests and
+fresh production. Static memory checks, three production binaries/ABI, the exact
+known full-suite failure set, gameplay and save/load pass. The C prerequisite is
+an absent-team guard (+2 lines); working C26,838 /67 files, zero reference.
+See docs/porting/player-death-c-qualification.json and PLAYER_DEATH.md.
 
-Focused independent target repeats passed on all three targets:14 captures,
-1,101 records, identical source and bytes. Frozen literals are installed.
-The thirteen-group freeze script is consumed; the added statistics contract also
-repeated on all targets before its literal was frozen. Static memory checks pass.
-The previous317-root affected selection passed on each target (24,337 entries,
-148 captures /33,247 records, byte-identical). A final318-root sweep and fresh C
-production qualification are next. No native translation is installed. Three
-uncompiled implementation drafts exist under build/port-player-death/native-*-draft.go;
-review before installation. All fixture draft copies are consumed.
+Next: install and qualify the native player-death drafts. Four formatted but
+uncompiled drafts and a guarded install-native.py are under build/port-player-death.
+The installer requires qualified C source identity; it is unconsumed. Native
+manifest draft is there too. All build/test/cleanup sessions are joined.
+All C capture-freezing scripts and copied fixture drafts are consumed. Preserve
+frozen literals; actual source wins over ignored drafts.
 
-Disk: the latest cleanup removed twelve superseded map-section/statistics binaries,
-reclaiming584,677,176bytes. build/port-player-death/cleanup-binaries.py audit/apply
-are consumed; keep its JSON manifest. Latest map-metadata binaries preserved.
-Earlier map-metadata cleanup removed42 superseded binaries (2,048,072,488bytes)
-and deduplicated scenario assets (1,660,044,319bytes). Earlier map-section cleanup
-removed99 binaries (4,819,397,352bytes) and deduplicated C/native scenario assets
-(1,660,044,319bytes each). All audit/apply modes are consumed; restore modes and
-manifests remain. Preserve changed maps/saves/screenshots and original assets/archive.
-The archive remains untracked.
-
-All map-metadata freeze, qualification, installer and finalization scripts are
-consumed. Actual source wins over ignored drafts. Do not replay mutation scripts.
+Disk cleanup manifests remain under build/port-player-death. Twelve old binaries
+(584,677,176bytes) and72 compressed binaries (1,648,354,499bytes) were removed after
+verification. Completed C scenario assets were verified/deduplicated, reclaiming
+1,112,747,701bytes; restore mode remains in deduplicate-player-death-c-assets.py.
+All audit/apply modes are consumed. Latest C and map-metadata production binaries,
+logs/captures and original assets/archive remain. Earlier cleanup/restore records
+remain under build/port-map-{sections,metadata}; do not replay their apply modes.
 
 ## Qualified parent — native floor/wall map sections
 

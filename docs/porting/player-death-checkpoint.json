@@ -1,5 +1,5 @@
 {
-  "status": "repeated three-target C contracts; frozen expectations installed; full qualification pending",
+  "status": "qualified C baseline; native conversion next",
   "parent": "00131036",
   "production_change": "Guard absent killer team before reading/updating arena team score (+2 C lines).",
   "passed_default_roots": 14,
@@ -76,9 +76,9 @@
     }
   ],
   "pending": [
-    "all-target affected corpus and fresh C production qualification",
     "native conversion and qualification"
   ],
   "records": 1101,
-  "evidence": "build/port-player-death/statistics-repeat-{default,server,highres}"
+  "evidence": "build/port-player-death/statistics-repeat-{default,server,highres}",
+  "qualification": "docs/porting/player-death-c-qualification.json"
 }

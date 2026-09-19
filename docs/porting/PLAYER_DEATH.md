@@ -117,3 +117,18 @@ Further disk cleanup removed72 superseded compressed binaries (1,648,354,499byte
 after verifying each decompressed hash against its successful build/ABI report and
 checking successful gameplay qualification. Manifests/logs/captures and latest
 qualified binaries remain. Audit/apply consumed; retain the cleanup JSON.
+
+## Qualified C baseline
+
+The final318-root selection passes on default/server/highres:24,386 entries each,
+no skips. All149 captures /33,295 records match; the14 focused captures contain
+1,101 records. All target and fresh production checks use identical2,496-file source.
+Static checks, three production binaries/ABI, exact known full-suite failures,
+headless gameplay and explicit save/load pass. See
+[player-death-c-qualification.json](player-death-c-qualification.json).
+
+The production correction remains only the absent-team score guard. C is26,838
+physical lines /67 files /zero reference. All qualification sessions are joined.
+C scenario deduplication reclaimed1,112,747,701bytes after full verification;
+restore manifests retain timestamps, modes and hashes. Original assets are unchanged.
+Native drafts and the guarded installer are prepared but unconsumed.
