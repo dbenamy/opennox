@@ -2081,3 +2081,16 @@ applied to its parent instead of its thumb child. Persistent GUI text and the
 correct child target now match the unchanged original-C screens. A real-widget
 lifetime regression reproduced the first failure before the fix. See
 [SERVER_BROWSER.md](SERVER_BROWSER.md) for contracts and complete evidence.
+
+## Session-dialog MOTD buffer correction
+
+The file/transfer path accepts message lines longer than the display routine's
+256-byte split buffer and 256-unit wide-format buffer. Replace these two locals
+with input-sized temporary allocations before capturing the port baseline.
+Preserve byte widening and line handling; the existing listbox still owns and
+truncates each displayed row to255 units. Do not freeze undefined writes beyond
+the old buffers. A regression through the actual dialog covers lengths through
+4,096 bytes and verifies subsequent lines and unchanged input. This is a
+reversible prerequisite under the user's standing authorization; see
+[SESSION_DIALOGS.md](SESSION_DIALOGS.md). All-target captures, fresh builds/ABI, exact known suite and filter/gameplay/
+save-load qualification pass.

@@ -1,0 +1,1050 @@
+{
+  "sub_4896E0": [
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 487,
+      "text": "int sub_4896E0() {",
+      "selected_owner": "sub_4896E0"
+    },
+    {
+      "file": "src/legacy/main.go",
+      "line": 85,
+      "text": "C.sub_4896E0()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 76,
+      "text": "int sub_4896E0();",
+      "selected_owner": null
+    }
+  ],
+  "sub_489870": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 54,
+      "text": "return uintptr(uint32(C.sub_489870()))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/server_browser_events.go",
+      "line": 128,
+      "text": "C.sub_489870()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/server_browser_events.go",
+      "line": 144,
+      "text": "C.sub_489870()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/server_browser_lifecycle.go",
+      "line": 100,
+      "text": "C.sub_489870()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 495,
+      "text": "int sub_489870() {",
+      "selected_owner": "sub_489870"
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 783,
+      "text": "sub_489870();",
+      "selected_owner": "sub_489FB0"
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 77,
+      "text": "int sub_489870();",
+      "selected_owner": null
+    }
+  ],
+  "nox_xxx_checkSomeFlagsOnJoin_4899C0": [
+    {
+      "file": "src/legacy/session_dialogs_filter_porttest.go",
+      "line": 32,
+      "text": "v := int(C.nox_xxx_checkSomeFlagsOnJoin_4899C0((*C.nox_gui_server_ent_t)(p)))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 541,
+      "text": "int nox_xxx_checkSomeFlagsOnJoin_4899C0(nox_gui_server_ent_t* srv) {",
+      "selected_owner": "nox_xxx_checkSomeFlagsOnJoin_4899C0"
+    },
+    {
+      "file": "src/legacy/gui_noxworld.go",
+      "line": 233,
+      "text": "return int(C.nox_xxx_checkSomeFlagsOnJoin_4899C0(a1.C()))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 78,
+      "text": "int nox_xxx_checkSomeFlagsOnJoin_4899C0(nox_gui_server_ent_t* srv);",
+      "selected_owner": null
+    }
+  ],
+  "sub_489B80": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 52,
+      "text": "return uintptr(unsafe.Pointer(C.sub_489B80(C.int(uintptr(w)))))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 627,
+      "text": "uint32_t* sub_489B80(int a1) {",
+      "selected_owner": "sub_489B80"
+    },
+    {
+      "file": "src/legacy/server_browser_window.go",
+      "line": 94,
+      "text": "browserUI.filter = C.uint32_t(uintptr(unsafe.Pointer(C.sub_489B80(C.int(uintptr(root.C()))))))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 79,
+      "text": "uint32_t* sub_489B80(int a1);",
+      "selected_owner": null
+    }
+  ],
+  "sub_489DC0": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 56,
+      "text": "C.sub_489DC0()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 691,
+      "text": "sub_489DC0();",
+      "selected_owner": "sub_489B80"
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 708,
+      "text": "void sub_489DC0() {",
+      "selected_owner": "sub_489DC0"
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 763,
+      "text": "sub_489DC0();",
+      "selected_owner": "nox_xxx_windowMplayFilterProc_489E70"
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 80,
+      "text": "void sub_489DC0();",
+      "selected_owner": null
+    }
+  ],
+  "nox_xxx_windowMplayFilterProc_489E70": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 63,
+      "text": "return uintptr(uint32(C.nox_xxx_windowMplayFilterProc_489E70(C.int(uintptr(w)), C.int(code), (*C.int)(unsafe.Pointer(uintptr(a))), C.int(b))))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 642,
+      "text": "result = nox_new_window_from_file(\"filter.wnd\", nox_xxx_windowMplayFilterProc_489E70);",
+      "selected_owner": "sub_489B80"
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 650,
+      "text": "nox_xxx_wndSetProc_46B2C0(*(int*)&dword_5d4594_1193384, nox_xxx_windowMplayFilterProc_489E70);",
+      "selected_owner": "sub_489B80"
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 728,
+      "text": "int nox_xxx_windowMplayFilterProc_489E70(int a1, int a2, int* a3, int a4) {",
+      "selected_owner": "nox_xxx_windowMplayFilterProc_489E70"
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 81,
+      "text": "int nox_xxx_windowMplayFilterProc_489E70(int a1, int a2, int* a3, int a4);",
+      "selected_owner": null
+    }
+  ],
+  "sub_489FB0": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 59,
+      "text": "return uintptr(uint32(C.sub_489FB0()))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/server_browser_lifecycle.go",
+      "line": 60,
+      "text": "C.sub_489FB0()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 778,
+      "text": "int sub_489FB0() {",
+      "selected_owner": "sub_489FB0"
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 82,
+      "text": "int sub_489FB0();",
+      "selected_owner": null
+    }
+  ],
+  "sub_489FF0": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 11,
+      "text": "int sub_489FF0(int,int,const void*);",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 61,
+      "text": "return uintptr(uint32(C.sub_489FF0(C.int(a), C.int(b), w)))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 792,
+      "text": "int sub_489FF0(int a1, int a2, const void* a3) {",
+      "selected_owner": "sub_489FF0"
+    },
+    {
+      "file": "src/legacy/config_legacy.go",
+      "line": 9,
+      "text": "int sub_489FF0(int a1, int a2, const void* a3);",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/config_legacy.go",
+      "line": 54,
+      "text": "C.sub_489FF0(C.int(a1), C.int(a2), a3)",
+      "selected_owner": null
+    }
+  ],
+  "nox_xxx_quitDialogYes_445B20": [
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 280,
+      "text": "// 445B20: using guessed type int nox_xxx_quitDialogYes_445B20();",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 284,
+      "text": "void nox_xxx_quitDialogYes_445B20() {",
+      "selected_owner": "nox_xxx_quitDialogYes_445B20"
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 288,
+      "text": "// 445B20: using guessed type int nox_xxx_quitDialogYes_445B20();",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 76,
+      "text": "void nox_xxx_quitDialogYes_445B20();",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 126,
+      "text": "nox_xxx_dialogMsgBoxCreate_449A10(nox_wnd_quitMenu_825760, (int)v13, (int)v22, 56, nox_xxx_quitDialogYes_445B20,",
+      "selected_owner": "nox_xxx_menuGameOnButton_445840"
+    }
+  ],
+  "nox_xxx_quitDialogNo_445B30": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 100,
+      "text": "return uintptr(uint32(C.nox_xxx_quitDialogNo_445B30()))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 291,
+      "text": "int nox_xxx_quitDialogNo_445B30() { return nox_xxx_wndSetCaptureMain_46ADC0(nox_wnd_quitMenu_825760); }",
+      "selected_owner": "nox_xxx_quitDialogNo_445B30"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 77,
+      "text": "int nox_xxx_quitDialogNo_445B30();",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 127,
+      "text": "nox_xxx_quitDialogNo_445B30);",
+      "selected_owner": "nox_xxx_menuGameOnButton_445840"
+    }
+  ],
+  "sub_445BA0": [
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 294,
+      "text": "void sub_445BA0() { sub_413A00(0); }",
+      "selected_owner": "sub_445BA0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 78,
+      "text": "void sub_445BA0();",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 72,
+      "text": "nox_xxx_dialogMsgBoxCreate_449A10(0, (int)v15, (int)v23, 56, sub_445B40, sub_445BA0);",
+      "selected_owner": "nox_xxx_menuGameOnButton_445840"
+    }
+  ],
+  "sub_445C20": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 102,
+      "text": "C.sub_445C20()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 297,
+      "text": "void sub_445C20() {",
+      "selected_owner": "sub_445C20"
+    },
+    {
+      "file": "src/legacy/gui_dialog.go",
+      "line": 74,
+      "text": "C.sub_445C20()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 79,
+      "text": "void sub_445C20();",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/client_ui_shop_draw.go",
+      "line": 8,
+      "text": "void sub_445C20(void);",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/client_ui_shop_draw.go",
+      "line": 120,
+      "text": "C.sub_445C20()",
+      "selected_owner": null
+    }
+  ],
+  "sub_445FF0": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 98,
+      "text": "return uintptr(unsafe.Pointer(C.sub_445FF0()))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/maps.go",
+      "line": 187,
+      "text": "C.sub_445FF0()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 305,
+      "text": "uint32_t* sub_445FF0() {",
+      "selected_owner": "sub_445FF0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 80,
+      "text": "uint32_t* sub_445FF0();",
+      "selected_owner": null
+    }
+  ],
+  "nox_gui_xxx_check_446360": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 96,
+      "text": "return uintptr(C.nox_gui_xxx_check_446360())",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/gui_book_state.go",
+      "line": 217,
+      "text": "if C.nox_gui_xxx_check_446360() != 0 || optionsVisible() != 0 {",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/gui.go",
+      "line": 130,
+      "text": "return int(C.nox_gui_xxx_check_446360())",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/client_ui_inventory_window_state.go",
+      "line": 67,
+      "text": "if v := int(C.nox_gui_xxx_check_446360()); v != 0 {",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 322,
+      "text": "unsigned int nox_gui_xxx_check_446360() {",
+      "selected_owner": "nox_gui_xxx_check_446360"
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 489,
+      "text": "result = nox_gui_xxx_check_446360();",
+      "selected_owner": "nox_xxx_motd_4467F0"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 125,
+      "text": "sub_478030() != 1 && nox_gui_xxx_check_446360() != 1) {",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 153,
+      "text": "sub_47A260() != 1 && nox_gui_xxx_check_446360() != 1) {",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 384,
+      "text": "if (sub_459DA0() || nox_gui_xxx_check_446360() || sub_49CB40() || sub_49C810() || sub_446950() || sub_4706A0() ||",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/gui_book_animation.go",
+      "line": 93,
+      "text": "if !noxflags.HasGame(noxflags.GameModeCoop) || C.nox_gui_xxx_check_446360() == 1 || C.nox_xxx_gameGet_4DB1B0() == 1 {",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/gui_console.go",
+      "line": 7,
+      "text": "unsigned int nox_gui_xxx_check_446360();",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 83,
+      "text": "unsigned int nox_gui_xxx_check_446360();",
+      "selected_owner": null
+    }
+  ],
+  "nox_motd_4463E0": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 78,
+      "text": "return uintptr(uint32(C.nox_motd_4463E0(C.int(a))))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/server.go",
+      "line": 321,
+      "text": "C.nox_motd_4463E0(C.int(a1))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 334,
+      "text": "int nox_motd_4463E0(int a1) {",
+      "selected_owner": "nox_motd_4463E0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 85,
+      "text": "int nox_motd_4463E0(int a1);",
+      "selected_owner": null
+    }
+  ],
+  "sub_446490": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 18,
+      "text": "static uintptr_t port_test_motd_free(int slot) { return (uintptr_t)sub_446490(slot); }",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 358,
+      "text": "void* sub_446490(int a1) {",
+      "selected_owner": "sub_446490"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 185,
+      "text": "sub_446490(0);",
+      "selected_owner": "sub_4AB390"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 86,
+      "text": "void* sub_446490(int a1);",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/gui_quit.go",
+      "line": 54,
+      "text": "C.sub_446490(C.int(v))",
+      "selected_owner": null
+    }
+  ],
+  "nox_xxx_guiMotdLoad_4465C0": [
+    {
+      "file": "src/game.go",
+      "line": 1047,
+      "text": "return errors.New(\"nox_xxx_guiMotdLoad_4465C0 failed\")",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 65,
+      "text": "return uintptr(uint32(C.nox_xxx_guiMotdLoad_4465C0()))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 485,
+      "text": "return uint32(C.nox_xxx_guiMotdLoad_4465C0())",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 372,
+      "text": "int nox_xxx_guiMotdLoad_4465C0() {",
+      "selected_owner": "nox_xxx_guiMotdLoad_4465C0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 87,
+      "text": "int nox_xxx_guiMotdLoad_4465C0();",
+      "selected_owner": null
+    }
+  ],
+  "sub_4466C0": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 74,
+      "text": "return uintptr(uint32(C.sub_4466C0(C.int(uintptr(w)), C.int(code), C.int(a), C.int(b))))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 382,
+      "text": "v0 = nox_new_window_from_file(\"motd.wnd\", sub_4466C0);",
+      "selected_owner": "nox_xxx_guiMotdLoad_4465C0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 405,
+      "text": "int sub_4466C0(int a1, int a2, int a3, int a4) {",
+      "selected_owner": "sub_4466C0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 88,
+      "text": "int sub_4466C0(int a1, int a2, int a3, int a4);",
+      "selected_owner": null
+    }
+  ],
+  "sub_4466F0": [
+    {
+      "file": "src/legacy/session_dialogs_line_porttest.go",
+      "line": 32,
+      "text": "next := C.sub_4466F0((*C.char)(unsafe.Pointer(src)), (*C.uint8_t)(out))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 414,
+      "text": "char* sub_4466F0(char* a1, uint8_t* a2) {",
+      "selected_owner": "sub_4466F0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 512,
+      "text": "v2 = sub_4466F0(v2, v4);",
+      "selected_owner": "nox_xxx_motd_4467F0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 89,
+      "text": "char* sub_4466F0(char* a1, uint8_t* a2);",
+      "selected_owner": null
+    }
+  ],
+  "nox_xxx_motdAddSomeTextMB_446730": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 19,
+      "text": "static uintptr_t port_test_motd_add(uint8_t* text) { return (uintptr_t)nox_xxx_motdAddSomeTextMB_446730(text); }",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 451,
+      "text": "uint8_t* nox_xxx_motdAddSomeTextMB_446730(uint8_t* a1) {",
+      "selected_owner": "nox_xxx_motdAddSomeTextMB_446730"
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 519,
+      "text": "nox_xxx_motdAddSomeTextMB_446730(v4);",
+      "selected_owner": "nox_xxx_motd_4467F0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 522,
+      "text": "nox_xxx_motdAddSomeTextMB_446730(v4);",
+      "selected_owner": "nox_xxx_motd_4467F0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 90,
+      "text": "uint8_t* nox_xxx_motdAddSomeTextMB_446730(uint8_t* a1);",
+      "selected_owner": null
+    }
+  ],
+  "sub_446780": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 67,
+      "text": "return uintptr(uint32(C.sub_446780()))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/gui_selchar.go",
+      "line": 115,
+      "text": "C.sub_446780()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 720,
+      "text": "if (sub_446780()) {",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 408,
+      "text": "sub_446780();",
+      "selected_owner": "sub_4466C0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 469,
+      "text": "int sub_446780() {",
+      "selected_owner": "sub_446780"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 91,
+      "text": "int sub_446780();",
+      "selected_owner": null
+    }
+  ],
+  "nox_xxx_motd_4467F0": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 71,
+      "text": "C.nox_xxx_motd_4467F0()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/client_draw.go",
+      "line": 82,
+      "text": "C.nox_xxx_motd_4467F0()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/console_commands_misc.go",
+      "line": 64,
+      "text": "C.nox_xxx_motd_4467F0()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 482,
+      "text": "void nox_xxx_motd_4467F0() {",
+      "selected_owner": "nox_xxx_motd_4467F0"
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 92,
+      "text": "void nox_xxx_motd_4467F0();",
+      "selected_owner": null
+    }
+  ],
+  "sub_446950": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 69,
+      "text": "return uintptr(uint32(C.sub_446950()))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 539,
+      "text": "int sub_446950() { return dword_5d4594_826028 && !(nox_xxx_wndGetFlags_46ADA0(*(int*)&dword_5d4594_826028) & 0x10); }",
+      "selected_owner": "sub_446950"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 384,
+      "text": "if (sub_459DA0() || nox_gui_xxx_check_446360() || sub_49CB40() || sub_49C810() || sub_446950() || sub_4706A0() ||",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 93,
+      "text": "int sub_446950();",
+      "selected_owner": null
+    }
+  ],
+  "sub_4AB260": [
+    {
+      "file": "src/game.go",
+      "line": 1056,
+      "text": "return errors.New(\"sub_4AB260 failed\")",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 82,
+      "text": "return uintptr(uint32(C.sub_4AB260()))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 491,
+      "text": "return int(C.sub_4AB260())",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 133,
+      "text": "int sub_4AB260() {",
+      "selected_owner": "sub_4AB260"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 27,
+      "text": "int sub_4AB260();",
+      "selected_owner": null
+    }
+  ],
+  "sub_4AB340": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 90,
+      "text": "return uintptr(uint32(C.sub_4AB340(C.int(uintptr(w)), C.int(code), C.int(a), C.int(b))))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 139,
+      "text": "nox_xxx_wndSetWindowProc_46B300(*(int*)&dword_5d4594_1309748, sub_4AB340);",
+      "selected_owner": "sub_4AB260"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 148,
+      "text": "int sub_4AB340(int a1, int a2, int a3, int a4) {",
+      "selected_owner": "sub_4AB340"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 28,
+      "text": "int sub_4AB340(int a1, int a2, int a3, int a4);",
+      "selected_owner": null
+    }
+  ],
+  "sub_4AB390": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 92,
+      "text": "return uintptr(uint32(C.sub_4AB390(C.int(uintptr(w)), C.int(code), (*C.int)(unsafe.Pointer(uintptr(a))), C.int(b))))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 138,
+      "text": "dword_5d4594_1309748 = nox_new_window_from_file(\"discon.wnd\", sub_4AB390);",
+      "selected_owner": "sub_4AB260"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 163,
+      "text": "int sub_4AB390(int a1, int a2, int* a3, int a4) {",
+      "selected_owner": "sub_4AB390"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 29,
+      "text": "int sub_4AB390(int a1, int a2, int* a3, int a4);",
+      "selected_owner": null
+    }
+  ],
+  "sub_4AB420": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 94,
+      "text": "return uintptr(uint32(C.sub_4AB420((*C.int)(w))))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 137,
+      "text": "nox_window_set_all_funcs(*(uint32_t**)&dword_5d4594_1309756, 0, sub_4AB420, 0);",
+      "selected_owner": "sub_4AB260"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 198,
+      "text": "int sub_4AB420(int* a1) {",
+      "selected_owner": "sub_4AB420"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 30,
+      "text": "int sub_4AB420(int* a1);",
+      "selected_owner": null
+    }
+  ],
+  "sub_4AB470": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 84,
+      "text": "return uintptr(uint32(C.sub_4AB470()))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 551,
+      "text": "C.sub_4AB470()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 212,
+      "text": "int sub_4AB470() {",
+      "selected_owner": "sub_4AB470"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 31,
+      "text": "int sub_4AB470();",
+      "selected_owner": null
+    }
+  ],
+  "sub_4AB4A0": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 86,
+      "text": "return uintptr(uint32(C.sub_4AB4A0(C.int(a))))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 608,
+      "text": "C.sub_4AB4A0(C.int(a1))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 224,
+      "text": "int sub_4AB4A0(int a1) {",
+      "selected_owner": "sub_4AB4A0"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 32,
+      "text": "int sub_4AB4A0(int a1);",
+      "selected_owner": null
+    }
+  ],
+  "sub_4AB4D0": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 88,
+      "text": "return uintptr(uint32(C.sub_4AB4D0(C.int(a))))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 611,
+      "text": "C.sub_4AB4D0(C.int(a1))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 187,
+      "text": "sub_4AB4D0(0);",
+      "selected_owner": "sub_4AB390"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 191,
+      "text": "sub_4AB4D0(0);",
+      "selected_owner": "sub_4AB390"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 236,
+      "text": "int sub_4AB4D0(int a1) {",
+      "selected_owner": "sub_4AB4D0"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 33,
+      "text": "int sub_4AB4D0(int a1);",
+      "selected_owner": null
+    }
+  ],
+  "nox_xxx_menuGameOnButton_445840": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 108,
+      "text": "return uintptr(uint32(C.nox_xxx_menuGameOnButton_445840((*C.uint32_t)(w), C.int(code), (*C.int)(unsafe.Pointer(uintptr(a))), C.int(b))))",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.h",
+      "line": 6,
+      "text": "int nox_xxx_menuGameOnButton_445840(uint32_t* a1, int a2, int* a3, int a4);",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 30,
+      "text": "int nox_xxx_menuGameOnButton_445840(uint32_t* a1, int a2, int* a3, int a4) {",
+      "selected_owner": "nox_xxx_menuGameOnButton_445840"
+    },
+    {
+      "file": "src/legacy/gui_quit.go",
+      "line": 86,
+      "text": "return C.nox_xxx_menuGameOnButton_445840",
+      "selected_owner": null
+    }
+  ],
+  "sub_445C40": [
+    {
+      "file": "src/legacy/session_dialogs_ui_porttest.go",
+      "line": 105,
+      "text": "C.sub_445C40()",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 737,
+      "text": "sub_445C40();",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 286,
+      "text": "sub_445C40();",
+      "selected_owner": "nox_xxx_quitDialogYes_445B20"
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 300,
+      "text": "sub_445C40();",
+      "selected_owner": "sub_445C20"
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.h",
+      "line": 8,
+      "text": "void sub_445C40();",
+      "selected_owner": null
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 59,
+      "text": "sub_445C40();",
+      "selected_owner": "nox_xxx_menuGameOnButton_445840"
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 82,
+      "text": "sub_445C40();",
+      "selected_owner": "nox_xxx_menuGameOnButton_445840"
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 101,
+      "text": "sub_445C40();",
+      "selected_owner": "nox_xxx_menuGameOnButton_445840"
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 134,
+      "text": "sub_445C40();",
+      "selected_owner": "nox_xxx_menuGameOnButton_445840"
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 142,
+      "text": "sub_445C40();",
+      "selected_owner": "nox_xxx_menuGameOnButton_445840"
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 152,
+      "text": "sub_445C40();",
+      "selected_owner": "nox_xxx_menuGameOnButton_445840"
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 159,
+      "text": "sub_445C40();",
+      "selected_owner": "nox_xxx_menuGameOnButton_445840"
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 167,
+      "text": "sub_445C40();",
+      "selected_owner": "nox_xxx_menuGameOnButton_445840"
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 175,
+      "text": "sub_445C40();",
+      "selected_owner": "nox_xxx_menuGameOnButton_445840"
+    },
+    {
+      "file": "src/legacy/client__gui__guiquit.c",
+      "line": 197,
+      "text": "void sub_445C40() {",
+      "selected_owner": "sub_445C40"
+    },
+    {
+      "file": "src/legacy/gui_quit.go",
+      "line": 62,
+      "text": "C.sub_445C40()",
+      "selected_owner": null
+    }
+  ]
+}

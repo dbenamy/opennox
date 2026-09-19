@@ -2,13 +2,47 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 14.5k lines** — **14,451 physical lines in 58
-production `.c` files**, zero reference C; down 240 this chunk.
+**Qualified C remaining: about 14.5k lines** — **14,457 physical lines in 58
+production `.c` files**, zero reference C; +6 prerequisite correction lines.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — orphaned configuration callbacks qualified
+## Current — session dialogs corrected C baseline qualified
+
+Qualified parent `e6245c82`; the connected32-body /907-line C selection covers
+server filters, MOTD, disconnect and quit menus. The original-C baseline and
+independent contracts are complete. See [SESSION_DIALOGS.md](docs/porting/SESSION_DIALOGS.md).
+
+Corrected two fixed MOTD buffers before freezing: input-sized temporary storage
+preserves line handling and byte widening; the listbox retains its255-unit row
+limit. Working/qualified C is14,457 /58 /zero reference (+6 prerequisite lines).
+Default/highres:307 roots /227 captures; server:306 /226, because the existing
+world-selection test is !server. All shared captures match, all142 parent captures
+are unchanged, and nine new dialog captures repeat independently. All2,715 source
+fingerprints agree. Static, fresh three-target builds/ABI, exact known suite
+(1,553 failure entries;15 pass /3 fail /32 skip packages),13-screen filter,
+character-creation/gameplay and save/load all pass.
+
+All sessions joined. Evidence:build/port-session-dialogs/c-{default,server,highres,production}
+and the tracked C qualification/capture manifests. Commit/push this baseline,
+then convert31 live bodies and remove the proven no-op4896E0 cleanup. Preserve
+its Go wrapper's independent context reset. Four selected interfaces still have
+unselected C callers:446360,446780,446950,445C40. Audit callback slots before
+retiring the others. Move actual briefing/inventory/options owner views with them.
+
+An initial native filter draft is under build/port-session-dialogs/native-filter-draft.go;
+NOT installed, formatted, compiled or accepted. All installed fixture drafts and
+qualify-c.py are CONSUMED. Do not replay stale source drafts or selection offsets.
+About2.7GiB is free; hash-audit completed C scenario copies before the native builds
+need more room. Preserve original assets/archive, captures, changed saves and logs.
+
+Fixture review notes: the server owner seeds two teams; quit contracts now control
+counts0/2/256. MOTD's quest gate reads runtime state1556160 independently of game
+flags. Empty/nil row slices both mean no rows. These were corrected test assumptions,
+not production behavior changes. No unresolved user question.
+
+## Qualified parent — orphaned configuration callbacks
 
 Browser parent **c857b71f** is committed/pushed. Twelve unreachable callbacks,
 216 function-body lines plus 24 separator lines, and their declaration/registration
@@ -30,15 +64,7 @@ Qualified browser asset audit18221/apply39728 reclaimed 1,669,136,451 bytes;
 deduplicate-final-browser-assets.py deletion is CONSUMED. Preserve restoration
 manifests, changed saves and all screenshots/logs plus original assets/archive.
 
-Next: commit/push this cleanup, then the connected session-dialog/filter batch.
-Read-only proposal under build/port-session-dialogs: 32 bodies /901 lines,
-caller/owner inventories and plan. Nine local owner candidates plus shared
-main/client flag 2650652; include briefing, inventory/options and browser owners.
-Four MOTD-line/filter fixture drafts are NOT installed, compiled or run. The
-filter draft leaves same-rule-file comparison for actual rule-file tests. Audit
-MOTD caller buffer bounds separately from the line helper. The old 4896E0 cleanup
-appears a no-op because 1193360 has no writer; finish that audit before retiring it.
-No next-batch source changes installed and no user decision pending.
+The cleanup is pushed; the active session-dialog baseline is described above.
 
 ## Qualified parent — server-browser Go conversion
 

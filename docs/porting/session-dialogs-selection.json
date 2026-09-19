@@ -1,0 +1,290 @@
+[
+  {
+    "file": "src/legacy/GAME2_2.c",
+    "symbol": "sub_4896E0",
+    "body_lines": 6,
+    "start": 14614,
+    "end": 14717,
+    "line": 487,
+    "lines": 6
+  },
+  {
+    "file": "src/legacy/GAME2_2.c",
+    "symbol": "sub_489870",
+    "body_lines": 44,
+    "start": 14795,
+    "end": 16577,
+    "line": 495,
+    "lines": 44
+  },
+  {
+    "file": "src/legacy/GAME2_2.c",
+    "symbol": "nox_xxx_checkSomeFlagsOnJoin_4899C0",
+    "body_lines": 84,
+    "start": 16655,
+    "end": 18623,
+    "line": 541,
+    "lines": 84
+  },
+  {
+    "file": "src/legacy/GAME2_2.c",
+    "symbol": "sub_489B80",
+    "body_lines": 79,
+    "start": 18701,
+    "end": 21439,
+    "line": 627,
+    "lines": 79
+  },
+  {
+    "file": "src/legacy/GAME2_2.c",
+    "symbol": "sub_489DC0",
+    "body_lines": 18,
+    "start": 21517,
+    "end": 22242,
+    "line": 708,
+    "lines": 18
+  },
+  {
+    "file": "src/legacy/GAME2_2.c",
+    "symbol": "nox_xxx_windowMplayFilterProc_489E70",
+    "body_lines": 48,
+    "start": 22320,
+    "end": 23474,
+    "line": 728,
+    "lines": 48
+  },
+  {
+    "file": "src/legacy/GAME2_2.c",
+    "symbol": "sub_489FB0",
+    "body_lines": 12,
+    "start": 23552,
+    "end": 23864,
+    "line": 778,
+    "lines": 12
+  },
+  {
+    "file": "src/legacy/GAME2_2.c",
+    "symbol": "sub_489FF0",
+    "body_lines": 8,
+    "start": 23942,
+    "end": 24156,
+    "line": 792,
+    "lines": 8
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "nox_xxx_quitDialogYes_445B20",
+    "body_lines": 4,
+    "start": 8297,
+    "end": 8378,
+    "line": 284,
+    "lines": 4
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "nox_xxx_quitDialogNo_445B30",
+    "body_lines": 1,
+    "start": 8522,
+    "end": 8625,
+    "line": 291,
+    "lines": 1
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "sub_445BA0",
+    "body_lines": 1,
+    "start": 8703,
+    "end": 8739,
+    "line": 294,
+    "lines": 1
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "sub_445C20",
+    "body_lines": 6,
+    "start": 8817,
+    "end": 8939,
+    "line": 297,
+    "lines": 6
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "sub_445FF0",
+    "body_lines": 15,
+    "start": 9017,
+    "end": 9390,
+    "line": 305,
+    "lines": 15
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "nox_gui_xxx_check_446360",
+    "body_lines": 10,
+    "start": 9468,
+    "end": 9706,
+    "line": 322,
+    "lines": 10
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "nox_motd_4463E0",
+    "body_lines": 22,
+    "start": 9784,
+    "end": 10414,
+    "line": 334,
+    "lines": 22
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "sub_446490",
+    "body_lines": 12,
+    "start": 10492,
+    "end": 10768,
+    "line": 358,
+    "lines": 12
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "nox_xxx_guiMotdLoad_4465C0",
+    "body_lines": 31,
+    "start": 10846,
+    "end": 11964,
+    "line": 372,
+    "lines": 31
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "sub_4466C0",
+    "body_lines": 7,
+    "start": 12042,
+    "end": 12193,
+    "line": 405,
+    "lines": 7
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "sub_4466F0",
+    "body_lines": 35,
+    "start": 12271,
+    "end": 12718,
+    "line": 414,
+    "lines": 35
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "nox_xxx_motdAddSomeTextMB_446730",
+    "body_lines": 11,
+    "start": 12796,
+    "end": 13160,
+    "line": 451,
+    "lines": 16
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "sub_446780",
+    "body_lines": 11,
+    "start": 13238,
+    "end": 13623,
+    "line": 469,
+    "lines": 11
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "nox_xxx_motd_4467F0",
+    "body_lines": 54,
+    "start": 13701,
+    "end": 15312,
+    "line": 482,
+    "lines": 55
+  },
+  {
+    "file": "src/legacy/GAME1_3.c",
+    "symbol": "sub_446950",
+    "body_lines": 1,
+    "start": 15390,
+    "end": 15507,
+    "line": 539,
+    "lines": 1
+  },
+  {
+    "file": "src/legacy/GAME3.c",
+    "symbol": "sub_4AB260",
+    "body_lines": 13,
+    "start": 3741,
+    "end": 4541,
+    "line": 133,
+    "lines": 13
+  },
+  {
+    "file": "src/legacy/GAME3.c",
+    "symbol": "sub_4AB340",
+    "body_lines": 13,
+    "start": 4619,
+    "end": 4878,
+    "line": 148,
+    "lines": 13
+  },
+  {
+    "file": "src/legacy/GAME3.c",
+    "symbol": "sub_4AB390",
+    "body_lines": 33,
+    "start": 4956,
+    "end": 5484,
+    "line": 163,
+    "lines": 33
+  },
+  {
+    "file": "src/legacy/GAME3.c",
+    "symbol": "sub_4AB420",
+    "body_lines": 12,
+    "start": 5562,
+    "end": 5831,
+    "line": 198,
+    "lines": 12
+  },
+  {
+    "file": "src/legacy/GAME3.c",
+    "symbol": "sub_4AB470",
+    "body_lines": 10,
+    "start": 5909,
+    "end": 6171,
+    "line": 212,
+    "lines": 10
+  },
+  {
+    "file": "src/legacy/GAME3.c",
+    "symbol": "sub_4AB4A0",
+    "body_lines": 10,
+    "start": 6249,
+    "end": 6470,
+    "line": 224,
+    "lines": 10
+  },
+  {
+    "file": "src/legacy/GAME3.c",
+    "symbol": "sub_4AB4D0",
+    "body_lines": 18,
+    "start": 6548,
+    "end": 7166,
+    "line": 236,
+    "lines": 18
+  },
+  {
+    "file": "src/legacy/client__gui__guiquit.c",
+    "symbol": "nox_xxx_menuGameOnButton_445840",
+    "body_lines": 165,
+    "start": 717,
+    "end": 4651,
+    "line": 30,
+    "lines": 165
+  },
+  {
+    "file": "src/legacy/client__gui__guiquit.c",
+    "symbol": "sub_445C40",
+    "body_lines": 107,
+    "start": 4729,
+    "end": 9323,
+    "line": 197,
+    "lines": 107
+  }
+]

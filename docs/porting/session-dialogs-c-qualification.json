@@ -1,0 +1,33 @@
+{
+  "status": "qualified corrected C baseline",
+  "parent": "e6245c82",
+  "source_files": 2715,
+  "targets": {
+    "default": {
+      "root_tests": 307,
+      "captures": 227,
+      "wall_seconds": 76.39359629689716
+    },
+    "server": {
+      "root_tests": 306,
+      "captures": 226,
+      "wall_seconds": 226.6500637640711
+    },
+    "highres": {
+      "root_tests": 307,
+      "captures": 227,
+      "wall_seconds": 140.35162690700963
+    }
+  },
+  "capture_manifest": "docs/porting/session-dialogs-c-captures.json",
+  "production": "build/port-session-dialogs/c-production/production/production.json",
+  "static": "build/port-session-dialogs/static-c-final.log",
+  "c_loc": {
+    "files": 58,
+    "lines": 14457,
+    "reference_lines": 0,
+    "prerequisite_delta": 6
+  },
+  "correction": "Input-sized temporary MOTD line and wide-text buffers; existing 255-unit listbox row limit preserved.",
+  "target_difference": "TestClientInventoryWindowWorldSelection and its artifact are !server."
+}

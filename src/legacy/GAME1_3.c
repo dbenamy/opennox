@@ -450,12 +450,17 @@ char* sub_4466F0(char* a1, uint8_t* a2) {
 //----- (00446730) --------------------------------------------------------
 uint8_t* nox_xxx_motdAddSomeTextMB_446730(uint8_t* a1) {
 	uint8_t* result; // eax
-	wchar2_t v2[256]; // [esp+0h] [ebp-200h]
+	wchar2_t* v2;
 
 	result = a1;
 	if (*a1) {
+		v2 = calloc(strlen((char*)a1) + 1, sizeof(*v2));
+		if (!v2) {
+			return 0;
+		}
 		nox_swprintf(v2, L"%S", a1);
 		result = (uint8_t*)nox_window_call_field_94(*(int*)&dword_5d4594_826032, 16397, (int)v2, -1);
+		free(v2);
 	}
 	return result;
 }
@@ -479,7 +484,7 @@ void nox_xxx_motd_4467F0() {
 	uint32_t* v1;        // eax
 	char* v2;            // esi
 	uint32_t* v3;        // eax
-	char v4[256];        // [esp+0h] [ebp-100h]
+	char* v4;
 
 	result = nox_gui_xxx_check_446360();
 	if (!result) {
@@ -502,7 +507,7 @@ void nox_xxx_motd_4467F0() {
 								*(uint32_t*)(dword_5d4594_826028 + 4) |= 8u;
 								*(uint32_t*)(dword_5d4594_826032 + 4) |= 8u;
 								v2 = *(char**)getMemAt(0x5D4594, 826060);
-								if (*getMemU32Ptr(0x5D4594, 826060)) {
+								if (v2 && (v4 = calloc(strlen(v2) + 2, 1))) {
 									while (1) {
 										v2 = sub_4466F0(v2, v4);
 										if (!v2) {
@@ -516,6 +521,7 @@ void nox_xxx_motd_4467F0() {
 									if (v4[0]) {
 										nox_xxx_motdAddSomeTextMB_446730(v4);
 									}
+									free(v4);
 								}
 								v3 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_826028, 4202);
 								nox_xxx_windowFocus_46B500((int)v3);
