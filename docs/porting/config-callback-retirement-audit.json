@@ -1,0 +1,102 @@
+{
+  "status": "unreachable callback table; remove callbacks and registrations",
+  "range": [
+    171912,
+    172172
+  ],
+  "literal_refs": [
+    {
+      "file": "src/common/memmap/nox/blobdata/blob_init.go",
+      "line": 1276,
+      "text": "\t*memmap.PtrPtr(0x587000, 171928) = p.Ptr_sub_4A7A80"
+    },
+    {
+      "file": "src/common/memmap/nox/blobdata/blob_init.go",
+      "line": 1277,
+      "text": "\t*memmap.PtrPtr(0x587000, 171948) = p.Ptr_sub_4A7AC0"
+    },
+    {
+      "file": "src/common/memmap/nox/blobdata/blob_init.go",
+      "line": 1278,
+      "text": "\t*memmap.PtrPtr(0x587000, 171968) = p.Ptr_sub_4A7B00"
+    },
+    {
+      "file": "src/common/memmap/nox/blobdata/blob_init.go",
+      "line": 1279,
+      "text": "\t*memmap.PtrPtr(0x587000, 171988) = p.Ptr_sub_4A7B40"
+    },
+    {
+      "file": "src/common/memmap/nox/blobdata/blob_init.go",
+      "line": 1280,
+      "text": "\t*memmap.PtrPtr(0x587000, 172008) = p.Ptr_sub_4A7BA0"
+    },
+    {
+      "file": "src/common/memmap/nox/blobdata/blob_init.go",
+      "line": 1281,
+      "text": "\t*memmap.PtrPtr(0x587000, 172028) = p.Ptr_sub_4A7BC0"
+    },
+    {
+      "file": "src/common/memmap/nox/blobdata/blob_init.go",
+      "line": 1282,
+      "text": "\t*memmap.PtrPtr(0x587000, 172048) = p.Ptr_sub_4A7C00"
+    },
+    {
+      "file": "src/common/memmap/nox/blobdata/blob_init.go",
+      "line": 1283,
+      "text": "\t*memmap.PtrPtr(0x587000, 172068) = p.Ptr_sub_4A7C40"
+    },
+    {
+      "file": "src/common/memmap/nox/blobdata/blob_init.go",
+      "line": 1284,
+      "text": "\t*memmap.PtrPtr(0x587000, 172088) = p.Ptr_sub_4A7C60"
+    },
+    {
+      "file": "src/common/memmap/nox/blobdata/blob_init.go",
+      "line": 1285,
+      "text": "\t*memmap.PtrPtr(0x587000, 172108) = p.Ptr_sub_4A7CE0"
+    },
+    {
+      "file": "src/common/memmap/nox/blobdata/blob_init.go",
+      "line": 1286,
+      "text": "\t*memmap.PtrPtr(0x587000, 172128) = p.Ptr_sub_4A7D00"
+    },
+    {
+      "file": "src/common/memmap/nox/blobdata/blob_init.go",
+      "line": 1287,
+      "text": "\t*memmap.PtrPtr(0x587000, 172148) = p.Ptr_sub_4A7D50"
+    }
+  ],
+  "raw_pointers": [],
+  "baseline": "c857b71f",
+  "symbols": [
+    "sub_4A7A80",
+    "sub_4A7AC0",
+    "sub_4A7B00",
+    "sub_4A7B40",
+    "sub_4A7BA0",
+    "sub_4A7BC0",
+    "sub_4A7C00",
+    "sub_4A7C40",
+    "sub_4A7C60",
+    "sub_4A7CE0",
+    "sub_4A7D00",
+    "sub_4A7D50"
+  ],
+  "body_lines": 216,
+  "table_range_exclusive": [
+    171912,
+    172172
+  ],
+  "historical_evidence": {
+    "391c59fd": "Removed the file-reader caller of sub_4A7DF0",
+    "d15e0aec": "Removed sub_4A7DF0, the parser that indexed callback slot171928 +20*index"
+  },
+  "review": [
+    "All current symbol uses were definitions/declarations and registration plumbing.",
+    "No incoming raw pointer into the table in any shipped blob dat file (byte-aligned scan).",
+    "No other source literal address inside the table; adjacent172172 is a game-mode name string.",
+    "Dynamic table helpers use separate sound, modifier, AI, reward, GUI, player-file and map-theme tables.",
+    "Coordinate backing words still have live browser readers and remain unchanged.",
+    "Original blob bytes and offsets remain unchanged; only unused callback relocations retire."
+  ]
+}

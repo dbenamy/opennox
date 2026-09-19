@@ -35,18 +35,6 @@ type Ptrs struct {
 	Ptr_sub_43E9F0                           unsafe.Pointer
 	Ptr_sub_43EA20                           unsafe.Pointer
 	Ptr_sub_43EC10                           unsafe.Pointer
-	Ptr_sub_4A7A80                           unsafe.Pointer
-	Ptr_sub_4A7AC0                           unsafe.Pointer
-	Ptr_sub_4A7B00                           unsafe.Pointer
-	Ptr_sub_4A7B40                           unsafe.Pointer
-	Ptr_sub_4A7BA0                           unsafe.Pointer
-	Ptr_sub_4A7BC0                           unsafe.Pointer
-	Ptr_sub_4A7C00                           unsafe.Pointer
-	Ptr_sub_4A7C40                           unsafe.Pointer
-	Ptr_sub_4A7C60                           unsafe.Pointer
-	Ptr_sub_4A7CE0                           unsafe.Pointer
-	Ptr_sub_4A7D00                           unsafe.Pointer
-	Ptr_sub_4A7D50                           unsafe.Pointer
 	Ptr_nox_xxx_updDrawColorlight_4CE390     unsafe.Pointer
 	Ptr_nox_xxx_updDrawCloud_4CE1D0          unsafe.Pointer
 	Ptr_sub_4CE360                           unsafe.Pointer

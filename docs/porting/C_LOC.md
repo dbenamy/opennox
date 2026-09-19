@@ -250,6 +250,7 @@ target build selection and linker evidence.
 | Resource-definition parsers, sound sets and catalog linking | 61 | 18,044 | −618 | 0 |
 | Character creation, palettes, preview and player files | 59 | 16,851 | −1,193 | 0 |
 | Server browser Go conversion | 58 | 14,691 | −2,160 | 0 |
+| Retire orphaned command-file configuration callbacks | 58 | 14,451 | −240 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

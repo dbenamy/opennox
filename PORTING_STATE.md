@@ -2,13 +2,45 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 14.7k lines** — **14,691 physical lines in 58
-production `.c` files**, zero reference C; down 2,160 this chunk.
+**Qualified C remaining: about 14.5k lines** — **14,451 physical lines in 58
+production `.c` files**, zero reference C; down 240 this chunk.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — server-browser Go conversion qualified
+## Current — orphaned configuration callbacks qualified
+
+Browser parent **c857b71f** is committed/pushed. Twelve unreachable callbacks,
+216 function-body lines plus 24 separator lines, and their declaration/registration
+plumbing are removed. Commits `391c59fd` and `d15e0aec` removed their caller/parser
+in 2022; current literal/dynamic/raw-blob audit finds no table reader. Live browser
+coordinate storage remains. See
+[CONFIG_CALLBACK_RETIREMENT.md](docs/porting/CONFIG_CALLBACK_RETIREMENT.md).
+
+All 197 affected roots pass on default/server/highres, no skips, with 142 exact
+original-C artifacts. All 2,703 source fingerprints agree. Static checks, three
+fresh binaries/ABI inventories (all twelve retired symbols absent), exact known
+suite (1,553 failure entries; 15 pass /3 fail /32 skip packages), browser,
+character-creation/gameplay and save/load pass. No goldens changed and no C
+algorithms kept for tests. All sessions joined; final qualification evidence is
+under build/port-config-callbacks/final-* and the tracked qualification report.
+remove.py and qualification/finalization scripts are CONSUMED.
+
+Qualified browser asset audit18221/apply39728 reclaimed 1,669,136,451 bytes;
+deduplicate-final-browser-assets.py deletion is CONSUMED. Preserve restoration
+manifests, changed saves and all screenshots/logs plus original assets/archive.
+
+Next: commit/push this cleanup, then the connected session-dialog/filter batch.
+Read-only proposal under build/port-session-dialogs: 32 bodies /901 lines,
+caller/owner inventories and plan. Nine local owner candidates plus shared
+main/client flag 2650652; include briefing, inventory/options and browser owners.
+Four MOTD-line/filter fixture drafts are NOT installed, compiled or run. The
+filter draft leaves same-rule-file comparison for actual rule-file tests. Audit
+MOTD caller buffer bounds separately from the line helper. The old 4896E0 cleanup
+appears a no-op because 1193360 has no writer; finish that audit before retiring it.
+No next-batch source changes installed and no user decision pending.
+
+## Qualified parent — server-browser Go conversion
 
 Original-C baseline **04061130** and qualified production parent **d8133587** are
 committed/pushed. The connected browser batch is native: 64 live algorithms,
