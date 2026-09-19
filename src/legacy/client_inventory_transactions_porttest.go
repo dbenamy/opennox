@@ -75,7 +75,7 @@ func PortTestInventoryTransaction(op int, a, b, c, d uintptr) uint32 {
 		C.nox_client_invAlterWeapon_4672C0()
 		return 0
 	case 25:
-		return uint32(C.sub_467B00(C.int(a), C.int(b)))
+		return uint32(uiInventoryCapacity(int32(a), int32(b)))
 	default:
 		panic("inventory transaction operation")
 	}

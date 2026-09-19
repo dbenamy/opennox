@@ -477,8 +477,6 @@ extern unsigned int dword_5d4594_1064868;
 extern unsigned int gameex_flags;
 
 
-extern int dword_5d4594_2386848;
-extern unsigned int dword_5d4594_2386852;
 
 
 extern unsigned int nox_client_translucentFrontWalls_805844;
@@ -882,10 +880,10 @@ func Set_dword_5d4594_2386836(v int) {
 	scriptBindingMoverType = uint32(v)
 }
 func Set_dword_5d4594_2386848(v int) {
-	C.dword_5d4594_2386848 = C.int(v)
+	scriptInventoryReserved = int32(v)
 }
 func Set_dword_5d4594_2386852(v int) {
-	C.dword_5d4594_2386852 = C.uint(v)
+	scriptInventoryNotice = uint32(v)
 }
 func Set_dword_5d4594_815104(v int) {
 	browserUI.retry = C.int(v)
@@ -1128,7 +1126,7 @@ func Inc_dword_5d4594_2516356() {
 	C.dword_5d4594_2516356++
 }
 func Inc_dword_5d4594_2386848() {
-	C.dword_5d4594_2386848++
+	scriptInventoryReserved++
 }
 func Inc_nox_wol_server_result_cnt_815088() {
 	browserUI.resultCount++

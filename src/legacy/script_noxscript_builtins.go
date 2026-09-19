@@ -1,17 +1,10 @@
 package legacy
 
-/*
-#include "defs.h"
-int nox_script_OblivionGive_516890();
-void nox_script_StartupScreen_516600_A();
-*/
-import "C"
 import (
 	"unsafe"
 
 	"github.com/opennox/noxscript/ns/asm"
 
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server/noxscript"
 )
 
@@ -19,12 +12,6 @@ var (
 	Nox_script_shouldReadMoreXxx     func(fi asm.Builtin) bool
 	Nox_script_shouldReadEvenMoreXxx func(fi asm.Builtin) bool
 )
-
-func wrapScriptC(fnc unsafe.Pointer) noxscript.Builtin {
-	return func(_ noxscript.VM) int {
-		return ccall.CallIntVoid(fnc)
-	}
-}
 
 func CallScriptBuiltin(fi asm.Builtin) (int, bool) {
 	if fi < 0 || int(fi) >= len(noxScriptBuiltins) {
@@ -39,7 +26,7 @@ func CallScriptBuiltin(fi asm.Builtin) (int, bool) {
 }
 
 func Nox_script_StartupScreen_516600_A() {
-	C.nox_script_StartupScreen_516600_A()
+	scriptInventoryStartup()
 }
 
 func Sub_512E80(str string) int {
@@ -65,6 +52,6 @@ var noxScriptBuiltins = [asm.BuiltinGetScore + 1]noxscript.Builtin{
 	asm.BuiltinBecomeEnemy:         func(vm noxscript.VM) int { return scriptBindingOwnership(vm, 3) },
 	asm.BuiltinUnknownb8:           func(vm noxscript.VM) int { return scriptBindingSubclass(vm, 0x100) },
 	asm.BuiltinUnknownb9:           func(vm noxscript.VM) int { return scriptBindingSubclass(vm, 0x80) },
-	asm.BuiltinSetHalberd:          wrapScriptC(C.nox_script_OblivionGive_516890),
+	asm.BuiltinSetHalberd:          scriptInventoryHalberd,
 	asm.BuiltinIsTrading:           func(vm noxscript.VM) int { return scriptBindingHostState(vm, true) },
 }

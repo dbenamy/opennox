@@ -2,40 +2,42 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about11k lines** — **10,953 physical lines in48
-production `.c` files**, zero reference C. This conversion removes **451 lines**.
+**Qualified C remaining: about10.8k lines** — **10,820 physical lines in47
+production `.c` files**, zero reference C. This conversion removes **133 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — script inventory C baseline qualified
+## Current — script inventory Go conversion qualified
 
-Qualified native parent **5a755193** (script bindings) is pushed. The inventory
-batch selects the final three script builtin C routines /94 body lines. All four
-new contract roots pass1,640 cases; four hashes are frozen. Primary affected
-sweeps pass279 default/highres roots and276 server roots, no skips. A separate
-shop-caller supplement passes31 roots on each target. Captures:281 primary client,
-278 primary server, plus25 shop files each. All shared captures match; three
-client-only hover/world-selection captures are correctly absent on server.
+C baseline **33a08d49** and native parent **5a755193** are pushed. The conversion
+is fully qualified: three bodies, six private bridge exports, two C owners and
+the last script builtin C file retire. All Go capacity callers use the private
+helper; builtin dispatch is entirely Go. Current C:10,820 lines /47 files /zero
+reference C,133 fewer lines.
 
-Static checks pass. Production source is identical to5a755193; its three binaries,
-ABI, exact1553 full-suite failures and gameplay/save-load qualification are
-reused after source/hash checks. All six C sweeps and every Go job are joined.
-See [SCRIPT_INVENTORY.md](docs/porting/SCRIPT_INVENTORY.md) and tracked
-script-inventory-{batch,shop-batch,c-qualification}.json. C remains10,953 lines /
-48 files /zero reference C. No inventory production code has changed.
+Focused contracts pass1,640 cases. Full default/highres gates pass310 roots and
+306 frozen captures each; server passes307 roots and303 captures. No skips; the
+three missing server captures are explicitly client-only tests. Static, fresh
+three-target production/ABI, exact1553 known full-suite failures (15 pass /3 fail
+/32 skip packages), and gameplay/save-load comparisons pass. All source
+fingerprints agree. Every test/build/scenario job, including production97935,
+is joined. See SCRIPT_INVENTORY.md and native-{batch,qualification}.json.
 
-Commit/push the C baseline, then review/install the native draft and installer
-under build/port-script-inventory (NOT CONSUMED). The installer takes the exact
-committed baseline revision. Fixture drafts are CONSUMED. Never replay them over
-reviewed source or regenerate frozen captures to hide native failures. Native
-qualification must include both primary and shop selections on each target,
-fresh production/ABI, exact full-suite comparison and fresh scenarios.
+Commit/push this qualified conversion, then continue the connected unit-gameplay
+candidate. Read-only selection/callers/notes under `build/port-unit-gameplay`
+cover22 bodies /523 body lines /857 file lines. One C subclass helper appears
+orphaned beside an existing Go implementation; confirm registrations. The shipped
+AI name table's index39 is empty, unlike the enum String fallback used by older
+fixtures. New contracts must cover that boundary. No next-batch source is installed.
 
-All completed script-binding C/native scenario asset deduplications are CONSUMED;
-each pair reclaimed1,112,747,701 bytes. Preserve original assets/archive and all
-screenshots/saves/logs; restoration manifests remain. The audited cleanup of80 old rebuildable cache archives reclaimed
-4,577,910,898 bytes. Session25535 is joined and deletion mode is CONSUMED. No user decision is pending.
+All inventory/native fixture drafts and install-native.py are CONSUMED. Never
+replay them over reviewed source or regenerate frozen captures for native
+failures. The new native scenario asset copies have not been deduplicated.
+All previous asset/cache deletion modes are consumed. Original assets/archive,
+screenshots, saves and logs remain intact. Identical completed inventory captures share verified file contents via hard links,
+reclaiming3,411,706,979 duplicate bytes. Session79820 is joined; that mode is
+CONSUMED. Keep these evidence files immutable; all paths and hashes remain. No user decision is pending.
 
 ## Current — legacy online session conversion qualified
 

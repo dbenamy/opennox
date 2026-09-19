@@ -5,7 +5,6 @@ package legacy
 
 int nox_xxx_playDialogFile_44D900(unsigned char* a1, int a2);
 int nox_xxx_inventoryServPlace_4F36F0(nox_object_t* a1p, nox_object_t* a2p, int a3, int a4);
-void nox_xxx_playerCanCarryItem_513B00(nox_object_t* a1p, nox_object_t* a2p);
 void nox_xxx_unitAdjustHP_4EE460(nox_object_t* unit, int dv);
 */
 import "C"
@@ -25,7 +24,7 @@ func Nox_server_scriptMoveTo_5123C0(a1 *server.Object, a2 *server.Waypoint) {
 	scriptBindingMove(a1, a2)
 }
 func Nox_xxx_playerCanCarryItem_513B00(a1 *server.Object, a2 *server.Object) {
-	C.nox_xxx_playerCanCarryItem_513B00(asObjectC(a1), asObjectC(a2))
+	scriptInventoryCarry(a1, a2)
 }
 
 //export nox_xxx_inventoryServPlace_4F36F0

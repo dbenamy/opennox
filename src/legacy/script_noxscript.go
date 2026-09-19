@@ -36,26 +36,6 @@ func nox_xxx_netGetUnitCodeServ_578AC0(cobj *nox_object_t) C.uint {
 	return C.uint(GetServer().S().GetUnitNetCode(asObjectS(cobj)))
 }
 
-//export nox_script_push
-func nox_script_push(v int) {
-	GetServer().NoxScriptC().PushI32(int32(v))
-}
-
-//export nox_script_pop
-func nox_script_pop() int {
-	return int(GetServer().NoxScriptC().PopI32())
-}
-
-//export nox_script_pushf
-func nox_script_pushf(v C.float) {
-	GetServer().NoxScriptC().PushF32(float32(v))
-}
-
-//export nox_script_popf
-func nox_script_popf() C.float {
-	return C.float(GetServer().NoxScriptC().PopF32())
-}
-
 //export nox_setImaginaryCaster
 func nox_setImaginaryCaster() int { return Nox_setImaginaryCaster() }
 

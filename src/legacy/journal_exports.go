@@ -32,10 +32,5 @@ func nox_xxx_journalUpdateEntry_4276B0(p *C.nox_playerInfo, name *C.journal_cons
 	return C.int(uintptr(unsafe.Pointer(journalUpdate((*server.Player)(unsafe.Pointer(p)), alloc.GoString((*byte)(unsafe.Pointer(name))), uint16(flags)))))
 }
 
-//export sub_4277B0
-func sub_4277B0(u *C.nox_object_t, mask C.ushort) C.int {
-	return C.int(journalRemoveMask((*server.Object)(unsafe.Pointer(u)), uint16(mask)))
-}
-
 //export nox_xxx_cliBuildJournalString_469BC0
 func nox_xxx_cliBuildJournalString_469BC0() { journalMeasure() }

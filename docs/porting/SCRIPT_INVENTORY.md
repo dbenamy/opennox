@@ -1,4 +1,4 @@
-# Script inventory commands — C baseline qualified
+# Script inventory commands — Go conversion qualified
 
 Qualified parent: **5a755193**, 10,953 physical C lines /48 files /zero reference C.
 Select the three remaining routines in `server__script__builtin.c`: carry-capacity
@@ -101,3 +101,42 @@ nine source differences are porttest-only and checking all three binary hashes.
 The selected nine function symbols and two owners are present in every parent
 binary. See script-inventory-c-qualification.json. No C correction or production
 change was needed. C remains10,953 physical lines /48 files /zero reference C.
+
+## Native conversion installed
+
+C baseline33a08d49 is committed/pushed. Three commands now use Go; six private
+bridges and two C-owned counters retire. All Go capacity callers invoke the
+private typed helper, and the final builtin-table C wrapper is removed. The
+script builtin C translation unit is deleted. Whole remaining C/header search
+finds no retired references. The compatibility implementation is unchanged.
+
+Working C:10,820 physical lines /47 files /zero reference C,133 fewer lines.
+Native-draft.go and install-native.py are CONSUMED. Focused native contracts pass
+all1,640 cases and four frozen hashes. Static passes. Full native target gates
+pass310 roots /306 captures for default/highres and307 /303 for server, with no
+skips. All source fingerprints agree. Production97935 is still running; this
+working conversion is not yet the qualified production checkpoint.
+
+## Native conversion qualified
+
+Fresh default/highres/server production binaries and ABI audits pass, including
+retirement of nine functions and two owners. The full suite exactly matches1553
+known failure entries and15 pass /3 fail /32 skip packages. Fresh gameplay and
+save/load scenarios pass against qualified script-binding-native references.
+All source fingerprints agree, and production97935 is joined. No native source
+correction or golden change was needed after installation. See
+script-inventory-native-qualification.json for the final evidence inventory.
+
+Qualified C is **10,820 physical lines /47 files /zero reference C** (−133).
+Valid host-player and halberd-index preconditions are preserved; this conversion
+does not introduce new behavior for invalid original records. C literal stack
+adapters and the last wrapScriptC helper are gone; normal dispatch priority stays
+unchanged. Private Go callers invoke capacity, journal and inventory helpers
+directly. The retained mapped Glyph cache and chapter flag keep their existing
+owner/initialization behavior.
+
+Completed C/native capture copies were hash-verified and deduplicated with hard
+links, retaining all evidence paths and hashes. This reclaims3,411,706,979 duplicate
+bytes across1,527 files. The plan retains per-path metadata; the application mode
+is CONSUMED. Treat qualified captures as immutable and always use fresh output
+directories. Raw logs, source/qualification manifests and unique captures remain.

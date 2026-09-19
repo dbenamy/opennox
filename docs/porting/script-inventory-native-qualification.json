@@ -1,0 +1,62 @@
+{
+  "status": "qualified native conversion",
+  "c_baseline": "33a08d49",
+  "bodies": 3,
+  "body_lines": 94,
+  "retired_functions": 9,
+  "moved_owners": 2,
+  "targets": {
+    "default": {
+      "primary_roots": 279,
+      "shop_roots": 31,
+      "skips": [],
+      "manifest_hashes_enforced": 306,
+      "evidence": "build/port-script-inventory/native-affected-default"
+    },
+    "server": {
+      "primary_roots": 276,
+      "shop_roots": 31,
+      "skips": [],
+      "manifest_hashes_enforced": 303,
+      "evidence": "build/port-script-inventory/native-affected-server"
+    },
+    "highres": {
+      "primary_roots": 279,
+      "shop_roots": 31,
+      "skips": [],
+      "manifest_hashes_enforced": 306,
+      "evidence": "build/port-script-inventory/native-affected-highres"
+    }
+  },
+  "production": "build/port-script-inventory/native-production/production/production.json",
+  "full_suite": {
+    "exit": 1,
+    "wall_seconds": 56.68945361091755,
+    "failure_entries": 1553,
+    "packages": {
+      "skip": 32,
+      "pass": 15,
+      "fail": 3
+    },
+    "exact_failure_multiset_match": true,
+    "exact_package_result_match": true
+  },
+  "scenarios": {
+    "script-inventory-native": {
+      "exit": 0,
+      "binary_sha256": "e6b744e1a472c3da29b125a193f5f20c81b089ecb2ec9ce77d013f9529c0d2e7"
+    },
+    "script-inventory-native-save": {
+      "exit": 0,
+      "binary_sha256": "e6b744e1a472c3da29b125a193f5f20c81b089ecb2ec9ce77d013f9529c0d2e7"
+    }
+  },
+  "static": "build/port-script-inventory/static-native.log",
+  "source_files": 2769,
+  "c_loc": {
+    "files": 47,
+    "lines": 10820,
+    "reference_lines": 0
+  },
+  "physical_c_reduction": 133
+}

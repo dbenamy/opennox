@@ -24,7 +24,7 @@ func interactionPickup(dr *client.Drawable) {
 		return
 	}
 	typ := dr.TypeIDVal
-	if typ == memmap.Uint32(0x5D4594, 1064928) || typ == memmap.Uint32(0x5D4594, 1064932) || typ == memmap.Uint32(0x5D4594, 1064936) || sub_467B00(C.int(typ), 1) != 0 {
+	if typ == memmap.Uint32(0x5D4594, 1064928) || typ == memmap.Uint32(0x5D4594, 1064932) || typ == memmap.Uint32(0x5D4594, 1064936) || uiInventoryCapacity(int32(typ), 1) != 0 {
 		uiInventoryItemRequest(115, dr)
 		return
 	}

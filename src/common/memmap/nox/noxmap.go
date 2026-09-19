@@ -1146,8 +1146,6 @@ var noxMemmap = []struct {
 	{0x5D4594, 2386572, 4, "dword_5d4594_2386572"},                  // 0x81B020
 	{0x5D4594, 2386576, 4, "dword_5d4594_2386576"},                  // 0x81B024
 	{0x5D4594, 2386840, 4, "nox_xxx_wallSounds_2386840"},            // 0x81B12C
-	{0x5D4594, 2386848, 4, "dword_5d4594_2386848"},                  // 0x81B134
-	{0x5D4594, 2386852, 4, "dword_5d4594_2386852"},                  // 0x81B138
 	{0x5D4594, 2386860, 4, "nox_script_objGold"},                    // 0x81B140
 	{0x5D4594, 2386872, 4, "nox_script_objTelekinesisHand"},         // 0x81B14C
 	{0x5D4594, 2386916, 4, "nox_alloc_pendingOwn_2386916"},          // 0x81B178

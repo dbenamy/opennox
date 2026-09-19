@@ -154,14 +154,14 @@ func uiShopCarryWarning() {
 	Nox_xxx_printCentered_445490(uiShopString("pickup.c:CarryingTooMuch"))
 }
 func uiShopBuySingle(typ uint32, code uint16) {
-	if sub_467B00(C.int(typ), 1) != 0 {
+	if uiInventoryCapacity(int32(typ), 1) != 0 {
 		uiInventoryTrade(22, code)
 	} else {
 		uiShopCarryWarning()
 	}
 }
 func uiShopBuyMultiple(typ, count uint32) {
-	if sub_467B00(C.int(typ), C.int(count)) != 0 {
+	if uiInventoryCapacity(int32(typ), int32(count)) != 0 {
 		uiShopMultiple(23, uint16(typ), byte(count))
 	} else {
 		uiShopCarryWarning()

@@ -98,7 +98,6 @@ nox_playerInfo_journal* nox_xxx_journalEntryAdd_427490(nox_playerInfo* a1, char*
 void nox_xxx_comJournalEntryAdd_427500(nox_object_t* a1, char* a2, short a3);
 int nox_xxx_journalEntryRemove_427590(nox_playerInfo* a1p, const char* a2);
 int nox_xxx_journalUpdateEntry_4276B0(nox_playerInfo* a1p, const char* a2, short a3);
-int sub_4277B0(nox_object_t* a1p, unsigned short a2);
 int sub_427980(float4* a1, float4* a2);
 
 

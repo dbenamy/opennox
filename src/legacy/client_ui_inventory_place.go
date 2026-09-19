@@ -91,8 +91,7 @@ func uiInventoryDragCopy() {
 //export nox_xxx_cliInventorySpriteUpd_465A30
 func nox_xxx_cliInventorySpriteUpd_465A30() { uiInventoryDragCopy() }
 
-//export sub_467B00
-func sub_467B00(typ, quantity C.int) C.int {
+func uiInventoryCapacity(typ, quantity int32) int32 {
 	count := 0
 	grid := uiInventoryGrid()
 	for row := 0; row < 20; row++ {
@@ -117,7 +116,7 @@ func sub_467B00(typ, quantity C.int) C.int {
 			}
 		}
 	}
-	return C.int(count)
+	return int32(count)
 }
 func uiInventoryAlterWeapon() {
 	playerDr := uiInventoryDrawable(memmap.Uint32(0x852978, 8))

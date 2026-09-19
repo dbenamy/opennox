@@ -14,17 +14,18 @@
 
 ## Current status
 
-The script-binding Go conversion is qualified:19 bodies,28 retired C interfaces
-and two owners moved to Go. All three targets pass184 affected roots and107 frozen
-captures, fresh production/ABI checks, exact known full-suite outcomes, and
-headless gameplay/save-load comparisons. C remaining is **10,953 physical lines
-in48 files**, zero reference C: **451 fewer lines** in this batch.
-See [SCRIPT_BINDINGS.md](docs/porting/SCRIPT_BINDINGS.md).
+The script inventory Go conversion is qualified: carry/drop selection, startup
+cleanup and halberd replacement now use Go. The final script builtin C file,
+nine private C interfaces and two owners retire. All-target affected contracts,
+frozen captures, fresh production/ABI, exact known full-suite outcomes, and
+headless gameplay/save-load comparisons pass. C remaining is **10,820 physical
+lines in47 files**, zero reference C: **133 fewer lines** in this batch.
+See [SCRIPT_INVENTORY.md](docs/porting/SCRIPT_INVENTORY.md).
 
-The following inventory C baseline is now qualified: capacity/drop selection,
-startup cleanup and halberd replacement, the last three routines in the legacy
-script builtin C file. It has1,640 new contract cases and all-target affected
-coverage, including client shop callers. Next: its Go conversion.
+The preceding [script-binding conversion](docs/porting/SCRIPT_BINDINGS.md)
+removed451 lines. Next: audit the remaining unit-gameplay helpers together,
+including experience/rewards, AI metadata, item/spell callbacks and descriptions.
+The read-only candidate spans22 bodies /857 C file lines.
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 Previous completed GUI batches include

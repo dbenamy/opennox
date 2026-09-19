@@ -63,7 +63,6 @@ char* sub_467870(int a1, int a2);
 int sub_4678B0();
 int sub_4678C0();
 char* sub_467930(int a1, int a2, int a3);
-int sub_467B00(int a1, int a2);
 int sub_467BB0();
 int sub_467C10();
 int sub_467C80();

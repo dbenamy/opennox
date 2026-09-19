@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-extern int dword_5d4594_2386848;
-extern unsigned int dword_5d4594_2386852;
-*/
-import "C"
 import (
 	"fmt"
 	"github.com/opennox/libs/object"
@@ -58,10 +53,10 @@ func (p *portTestShopPools) scriptCarryContract() []uint32 {
 	if got := int(PortTestInventoryTransaction(25, uintptr(target.TypeInd), 1, 0, 0)); got != sp.Capacity {
 		panic(fmt.Sprintf("carry capacity %d want %d", got, sp.Capacity))
 	}
-	reserved, notice := C.dword_5d4594_2386848, C.dword_5d4594_2386852
-	defer func() { C.dword_5d4594_2386848, C.dword_5d4594_2386852 = reserved, notice }()
-	C.dword_5d4594_2386848 = C.int(sp.Reserved)
-	C.dword_5d4594_2386852 = C.uint(sp.Notice)
+	reserved, notice := scriptInventoryReserved, scriptInventoryNotice
+	defer func() { scriptInventoryReserved, scriptInventoryNotice = reserved, notice }()
+	scriptInventoryReserved = int32(sp.Reserved)
+	scriptInventoryNotice = uint32(sp.Notice)
 	glyph := memmap.PtrUint32(0x5D4594, 2386856)
 	oldGlyph := *glyph
 	defer func() { *glyph = oldGlyph }()
@@ -88,10 +83,10 @@ func (p *portTestShopPools) scriptCarryContract() []uint32 {
 		} else if len(after) != len(before) || p.proxy.core.Rand.Logic.Index() != rng {
 			panic("carry unexpected drop/RNG")
 		}
-		if uint32(C.dword_5d4594_2386852) != wantNotice || int32(C.dword_5d4594_2386848) != sp.Reserved {
+		if uint32(scriptInventoryNotice) != wantNotice || int32(scriptInventoryReserved) != sp.Reserved {
 			panic("carry counters")
 		}
-		out = append(out, uint32(sp.Capacity), uint32(C.dword_5d4594_2386852), uint32(p.proxy.core.Rand.Logic.Index()))
+		out = append(out, uint32(sp.Capacity), uint32(scriptInventoryNotice), uint32(p.proxy.core.Rand.Logic.Index()))
 	}
 	if *glyph != uint32(p.proxy.core.Types.IndByID("Glyph")) {
 		panic("carry Glyph type cache")
