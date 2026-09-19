@@ -45,6 +45,11 @@ case 17: return (uint32_t)sub_41CEE0((void*)a0,(int)a1);
 }return 0;}
 */
 import "C"
+import (
+	"github.com/opennox/opennox/v1/common/memmap"
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
+	"unsafe"
+)
 
 var portTestPlayerFileNames = []string{
 	"nox_xxx_cliPlrInfoLoadFromFile_41A2E0",
@@ -79,4 +84,28 @@ func PortTestPlayerFileCall(name string, args ...uint32) uint32 {
 		}
 	}
 	panic("unknown player file operation: " + name)
+}
+
+// Own the real client section table and actual C callbacks, including sentinel.
+func PortTestPlayerFileClientSections() func() {
+	table := unsafe.Slice(memmap.PtrUint32(0x587000, 55936), 12)
+	old := append([]uint32(nil), table...)
+	clear(table)
+	names := []string{"GUI Data", "File Info Data", "Music Data"}
+	ids := []uint32{7, 1, 12}
+	callbacks := []unsafe.Pointer{unsafe.Pointer(C.sub_41C280), unsafe.Pointer(C.nox_xxx_parseFileInfoData_41C3B0), unsafe.Pointer(C.sub_41C780)}
+	var frees []func()
+	for i, name := range names {
+		p, free := alloc.CString(name)
+		frees = append(frees, free)
+		table[3*i] = uint32(uintptr(unsafe.Pointer(p)))
+		table[3*i+1] = ids[i]
+		table[3*i+2] = uint32(uintptr(callbacks[i]))
+	}
+	return func() {
+		copy(table, old)
+		for _, free := range frees {
+			free()
+		}
+	}
 }

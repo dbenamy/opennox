@@ -7,9 +7,11 @@ package legacy
 extern uint32_t dword_5d4594_2516344;
 extern uint32_t dword_5d4594_2516348;
 extern uint32_t dword_5d4594_2516328;
+extern uint32_t dword_587000_66116;
 */
 import "C"
 import (
+	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/internal/protection"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"unsafe"
@@ -38,4 +40,18 @@ func PortTestPlayerFileRecords() (ids [2]uint32, reset func(), snapshot func() [
 	}
 	reset()
 	return
+}
+
+// PortTestPlayerFileEnchants owns the actual iteration table and live count.
+func PortTestPlayerFileEnchants(ids []uint32) func() {
+	if len(ids) > 29 {
+		panic("enchant table capacity")
+	}
+	table := unsafe.Slice(memmap.PtrUint32(0x587000, 66000), 29)
+	old := append([]uint32(nil), table...)
+	count := C.dword_587000_66116
+	clear(table)
+	copy(table, ids)
+	C.dword_587000_66116 = C.uint32_t(len(ids))
+	return func() { copy(table, old); C.dword_587000_66116 = count }
 }

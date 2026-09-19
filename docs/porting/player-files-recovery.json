@@ -2,15 +2,25 @@
   "status": "partial C baseline; not frozen or converted",
   "parent": "d7f52707",
   "focused_runs": [
-    "metadata-write-initial",
-    "recovery-repeat"
+    "inventory-read-initial",
+    "recovery-second-repeat"
   ],
-  "root_tests": 18,
+  "root_tests": 33,
   "captures": [
+    {
+      "name": "capture-player-files-ability-restore.json",
+      "records": 36,
+      "sha256": "5864836439dfbc2bc0cd5328ad9d8fac8f9ad01191908a7a1045299962097273"
+    },
     {
       "name": "capture-player-files-attributes-read.json",
       "records": 54,
       "sha256": "1af6495bd98c46fda79ea158a8904d98cefa456204300ad97a66bc33df6b00d8"
+    },
+    {
+      "name": "capture-player-files-attributes-unit-read.json",
+      "records": 56,
+      "sha256": "26f4dcee6107f1886d4d4a9a60716a03360741fcaa002c25c53502b134c94657"
     },
     {
       "name": "capture-player-files-attributes-write.json",
@@ -23,6 +33,31 @@
       "sha256": "700a93921052f26facf5e0c41c71e32e96b5b3519004bf4f8fcf5649710bf516"
     },
     {
+      "name": "capture-player-files-client-load-framing.json",
+      "records": 8,
+      "sha256": "702d5394b25b7e24191777ec89dc509213e685511eba963212c7c7df222c5d21"
+    },
+    {
+      "name": "capture-player-files-client-write-framing.json",
+      "records": 8,
+      "sha256": "7697610f1cb2e4f8c45d119af35fd83745c2fea1135458e9e3eff466ea360bee"
+    },
+    {
+      "name": "capture-player-files-enchantment-apply.json",
+      "records": 140,
+      "sha256": "482fe7ad0787b71b0a003781ef39b60a23848cdc29679219c7f47f8ed0b8a5d4"
+    },
+    {
+      "name": "capture-player-files-enchantment-read-gates.json",
+      "records": 128,
+      "sha256": "64886e8b29df9b824e3aec9d986b10e54f198a6df21ae3004ec5fe900a498b82"
+    },
+    {
+      "name": "capture-player-files-enchantment-write.json",
+      "records": 96,
+      "sha256": "8029dca6811bc5d66d6111baa1f0f8f850a72360902fec4477ea8c3c7db7621e"
+    },
+    {
       "name": "capture-player-files-fieldbook-restore.json",
       "records": 20,
       "sha256": "a1a95b881d8f64baf6a81cf20436b549f65e5aaae7f57f825aec7f1a92b93741"
@@ -31,6 +66,16 @@
       "name": "capture-player-files-fieldbook-write.json",
       "records": 18,
       "sha256": "7aed107c6b8bb79fff6519189fc6da13cff8d72310e619133641dfadbecbbfa7"
+    },
+    {
+      "name": "capture-player-files-game-read.json",
+      "records": 90,
+      "sha256": "2f801bf8f4613210c142515717612d7efe31944b4e4ac2f14c250e0bdd934184"
+    },
+    {
+      "name": "capture-player-files-game-write.json",
+      "records": 9,
+      "sha256": "4faa8d82874e368a1976e292426c1b26728c0d8e9a1b70403f6764af4a6d2659"
     },
     {
       "name": "capture-player-files-gui-read.json",
@@ -51,6 +96,16 @@
       "name": "capture-player-files-inventory-grid-count.json",
       "records": 5,
       "sha256": "720f7af495eb06338fd3d3ef49031797e42cb98cde34f5ab76223987f88c4adb"
+    },
+    {
+      "name": "capture-player-files-inventory-read-gates.json",
+      "records": 112,
+      "sha256": "b4573334b0e09325ca4481b62c34e7c916cd9a1d227763aa57887b8f62c40300"
+    },
+    {
+      "name": "capture-player-files-inventory-write.json",
+      "records": 15,
+      "sha256": "5aeafb8bf2017761ab93bcec563743e5e387cd3dfe54799a7bc4b8c869ca4f93"
     },
     {
       "name": "capture-player-files-journal-gates.json",
@@ -78,6 +133,21 @@
       "sha256": "7bad1d4a672d72e080da6d754e8aa044299a931df691d34aa30ca2e818f5f201"
     },
     {
+      "name": "capture-player-files-save-request.json",
+      "records": 10,
+      "sha256": "ed6cfa07b11659fac798ac9c2839fd833cabd3e2c5746ada0a1a5fcbb3706a2c"
+    },
+    {
+      "name": "capture-player-files-section-extraction.json",
+      "records": 13,
+      "sha256": "51d2556dee434201136375c841b2a6a1b39bdfdd05d12ea671e61c34566355cb"
+    },
+    {
+      "name": "capture-player-files-server-load-framing.json",
+      "records": 7,
+      "sha256": "26372fb3cc108c066e1cfaa4838157828ff623c62447f3db03b1a7a6a2732de7"
+    },
+    {
       "name": "capture-player-files-spellbook-restore.json",
       "records": 90,
       "sha256": "7b5d2fdd038d54d4c071d416b128e12954884e21cad4cc4c92e36221c86df72a"
@@ -88,17 +158,23 @@
       "sha256": "28b567c24791640d4fe503a790bfc18b16eb5b896ebdb0506b297ba134462acd"
     },
     {
+      "name": "capture-player-files-status-read.json",
+      "records": 108,
+      "sha256": "f44884ed7ec9ff2bce3e603d6b8668d2e599693083ca60cb0a8dac6e8d5dabde"
+    },
+    {
       "name": "capture-player-files-status-write.json",
       "records": 25,
       "sha256": "d8030ab510bf7605a09f9bb0e86a93711f4e9729b390cefbf554e443e4212ad4"
     }
   ],
-  "records": 1006,
-  "static": "static-recovery.log passes",
+  "records": 1842,
+  "static": "static-inventory.log passes",
+  "production_identity": "No tracked production source changes since d7f52707; all added source is porttest-only.",
   "production_c": {
     "files": 65,
     "lines": 21083,
     "reference_lines": 0
   },
-  "remaining": "See PLAYER_FILES.md. Production algorithms unchanged; complete baseline qualification still pending."
+  "remaining": "Populated inventory reads, quest filter/equipment writes and book validity/level gates; baseline review and affected-target qualification remain."
 }

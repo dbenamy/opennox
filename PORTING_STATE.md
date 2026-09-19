@@ -54,8 +54,19 @@ Music/attributes, book writes/gates/real awards, status writes, inventory helper
 journal gates, metadata and GUI section contracts are covered. Production source
 is identical to d7f52707; no new expectations frozen and no conversion started.
 This is a partial C-baseline recovery checkpoint. See PLAYER_FILES.md for gaps.
-Installed fixture drafts are consumed. The ignored status-read-draft.go is NOT
-installed or tested yet; it is the next prepared fixture for review/integration.
+Recovery checkpoint **33a1248a** is committed/pushed. Subsequent status, enchantment,
+ability, game, extraction, real-player attributes and outer file read/write tests
+pass. client-write-second passed 31 roots; its 29 prior captures match
+attributes-unit-initial exactly. inventory-write-second passed 32 roots.
+Static-inventory passes. Inventory read gates and independent loaded-report checks
+pass in inventory-read-initial and recovery-second-repeat (33 roots each).
+All 32 captures /1842 records repeat exactly. All sessions are joined.
+All installed drafts, including inventory write/read, are CONSUMED.
+Remaining: populated inventory reads, quest-mode inventory/equipment writes and
+book validity/level gates; review and affected targets before freezing.
+No expectations frozen; production remains unchanged at 21,083 C lines.
+The updated recovery JSON records this partial baseline; it is not qualification
+of a conversion. Next: finish substantive inventory and quest-book contracts.
 
 ## Qualified parent — native client audio streams
 
