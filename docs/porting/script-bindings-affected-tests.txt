@@ -1,0 +1,1 @@
+^Test(ScriptBindings|Journal|MonsterControl|PrefabScripts|PrefabRuntime|PlayerControls|ObjectState|ObjectXfer|CreatureXfer|QuestProgress|WorldCollisionsScriptTriggers)

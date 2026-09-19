@@ -1,11 +1,14 @@
-# Script bindings and object commands — C baseline in progress
+# Script bindings and object commands — C baseline qualified
 
 Qualified parent: **c425197f**, with **11,409 physical C lines in 49 files**,
-zero reference C. The candidate covers 22 bodies (472 original body lines) in
+zero reference C. The initial candidate covered 22 bodies (472 original body lines) in
 `server__script__builtin.c` and `server__script__script.c`: the remaining builtin
 table entries, movement/carry commands, string registry and callback transfer.
-Whole-source textual reachability finds all 22 connected; owner and dispatch
-review and baseline contracts are still in progress.
+The current batch selects **19 bodies /373 corrected C body lines**. Carry/drop,
+startup inventory cleanup and halberd replacement will form the following
+inventory batch because they share client/server inventory fixture requirements.
+The current owner/dispatch audit finds all19 reachable from18 external-reference
+roots. The production XP/level helper remains C; this batch moves its VM binding.
 
 ## Predicate and signature prerequisite
 
@@ -62,3 +65,61 @@ lookup: signed version checks, empty names, embedded terminators, 1023/1024-byte
 read boundaries, editor/runtime modes, exact consumed bytes and untouched fields
 on early rejection. Reuse existing object-transfer and compiled-script fixtures.
 The broader batch is not yet frozen, converted or qualified.
+
+## C contracts and qualification progress
+
+Thirteen new roots pass together in `initial-contracts-c.log`. Nine captures are
+frozen from that original-C run; callback, movement, group and string-registry
+captures also repeat identically in independent processes. The new contracts
+include432 callback read/write cases,1620 AI movement cases,432 group cases,
+32 talking/trading cases,280 journal cases,1027 registry writes plus reset/reuse,
+480 ownership cases,128 mover cases, and60 experience cases below the next-level
+threshold, alongside the prerequisite cases. The experience binding calls the
+unchanged C level helper and exercises real player mutations/notifications.
+
+Initial mover setup used an unregistered type ID; actual state synchronization
+rejected it. The corrected fixture uses registered types. Initial experience
+setup lacked localization data; the real notification path rejected that setup.
+The corrected fixture installs the existing string-manager fixture. Neither
+failure required a production change. Preserve the failed logs as diagnostics.
+
+All three `c-affected-*` runs pass183 root tests, no skips, and all nine frozen
+captures. Before fresh production gates, translation review adds an independent
+journal-name boundary contract: embedded NUL terminates the lookup, invalid
+string indexes become empty names, and both can address an existing empty-name
+entry. This new root does not modify any frozen capture. Its focused run and final
+all-target evidence are still pending. No native implementation is installed.
+
+The original-C body uses extent at object offset40 to associate movers. The
+fixture makes extent and network code different and verifies all matching movers,
+updatable-list order, and repeated calls without duplicate insertion. The early
+read-only prose described this field incorrectly; the source audit and contracts
+establish the correct extent lookup.
+
+Two private owners can move with this batch: the script-string counter and cached
+mover type. Nineteen selected C interfaces and nine now-private bridge exports
+can retire after whole-source checking: the four journal remove/update adapters,
+roam-byte callback, object resolver, VM string lookup, callback name and callback
+index lookup. Keep actual VM dispatch order and remaining inventory C routes.
+The draft at `build/port-script-builtins/native-draft.go` is advisory and has not
+been installed or tested. Review against frozen C before use.
+
+Final C target sweeps now pass184 roots each with no skips. All107 captured files
+are byte-identical across default/server/highres; the nine new hashes remain
+unchanged. The manifest now records all107 for native qualification. The final C
+runners enforced the nine new hashes and the selected tests' inherited contracts;
+the107-file inventory was compared and frozen after those runs. Source
+fingerprints are identical across all three final runs. Static checks pass.
+Fresh C production binaries/ABI and exact1553 full-suite failures pass; the two
+integration scenarios are still running in production session49299.
+
+## Corrected C baseline qualified
+
+Fresh default/highres/server production binaries and ABI checks pass. The full
+suite matches exactly1553 known failure entries and15 pass /3 fail /32 skip
+packages. Fresh gameplay and save/load scenarios both pass against the preceding
+qualified references. Final184-root target sweeps, production and static source
+are identical by fingerprint. All jobs, including production49299, are joined.
+See script-bindings-c-qualification.json and script-bindings-batch.json. Current
+C remains11,404 physical lines /49 files /zero reference C. This commits the
+recoverable C oracle before installing the reviewed Go draft.

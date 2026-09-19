@@ -1,0 +1,135 @@
+[
+  {
+    "symbol": "sub_512E80",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 1041,
+    "end": 1278,
+    "lines": 10
+  },
+  {
+    "symbol": "nox_server_scriptMoveTo_5123C0",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 2660,
+    "end": 3932,
+    "lines": 44
+  },
+  {
+    "symbol": "nox_xxx_moverGoTo_5124C0",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 4010,
+    "end": 4267,
+    "lines": 12
+  },
+  {
+    "symbol": "nox_xxx_scriptMonsterRoam_512930",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 4345,
+    "end": 4883,
+    "lines": 24
+  },
+  {
+    "symbol": "nox_server_gotoHome",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 4961,
+    "end": 5785,
+    "lines": 30
+  },
+  {
+    "symbol": "nox_script_JournalDelete_515550",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 6253,
+    "end": 6653,
+    "lines": 18
+  },
+  {
+    "symbol": "nox_script_JournalEdit_5155A0",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 6731,
+    "end": 7184,
+    "lines": 20
+  },
+  {
+    "symbol": "nox_script_SetRoamFlag_515C40",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 7262,
+    "end": 7544,
+    "lines": 15
+  },
+  {
+    "symbol": "nox_script_SetRoamFlagGroup_515CB0",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 7622,
+    "end": 7997,
+    "lines": 13
+  },
+  {
+    "symbol": "nox_script_GiveExp_516190",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 8075,
+    "end": 8340,
+    "lines": 13
+  },
+  {
+    "symbol": "nox_script_IsTalking_5166A0",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 8984,
+    "end": 9237,
+    "lines": 12
+  },
+  {
+    "symbol": "nox_script_PlayerIsTrading_5166E0",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 9315,
+    "end": 9574,
+    "lines": 12
+  },
+  {
+    "symbol": "nox_script_MakeFriendly_516720",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 9652,
+    "end": 10095,
+    "lines": 21
+  },
+  {
+    "symbol": "nox_script_MakeEnemy_516760",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 10173,
+    "end": 10477,
+    "lines": 15
+  },
+  {
+    "symbol": "nox_script_builtin_516790",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 10555,
+    "end": 10815,
+    "lines": 13
+  },
+  {
+    "symbol": "nox_script_BecomePet_5167D0",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 10893,
+    "end": 11237,
+    "lines": 17
+  },
+  {
+    "symbol": "nox_script_BecomeEnemy_516810",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 11315,
+    "end": 11696,
+    "lines": 17
+  },
+  {
+    "symbol": "nox_script_builtin_516850",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 11774,
+    "end": 12038,
+    "lines": 13
+  },
+  {
+    "symbol": "nox_xxx_xferReadScriptHandler_4F5580",
+    "file": "src/legacy/server__script__script.c",
+    "start": 531,
+    "end": 1909,
+    "lines": 54
+  }
+]

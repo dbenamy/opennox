@@ -1,0 +1,61 @@
+{
+  "status": "qualified corrected-C baseline",
+  "prerequisite": "990974ec",
+  "qualified_parent": "c425197f",
+  "bodies": 19,
+  "body_lines": 373,
+  "targets": {
+    "default": {
+      "roots": 184,
+      "skips": [],
+      "new_manifest_hashes_enforced_at_run": 9,
+      "frozen_captures": 107,
+      "evidence": "build/port-script-builtins/c-affected-final-default"
+    },
+    "server": {
+      "roots": 184,
+      "skips": [],
+      "new_manifest_hashes_enforced_at_run": 9,
+      "frozen_captures": 107,
+      "evidence": "build/port-script-builtins/c-affected-final-server"
+    },
+    "highres": {
+      "roots": 184,
+      "skips": [],
+      "new_manifest_hashes_enforced_at_run": 9,
+      "frozen_captures": 107,
+      "evidence": "build/port-script-builtins/c-affected-final-highres"
+    }
+  },
+  "capture_note": "All107 captures are identical across three targets and frozen in the manifest; the C runners enforced9 newly added hashes plus inherited test assertions.",
+  "production": "build/port-script-builtins/c-production/production/production.json",
+  "full_suite": {
+    "exit": 1,
+    "wall_seconds": 56.715765808941796,
+    "failure_entries": 1553,
+    "packages": {
+      "skip": 32,
+      "pass": 15,
+      "fail": 3
+    },
+    "exact_failure_multiset_match": true,
+    "exact_package_result_match": true
+  },
+  "scenarios": {
+    "script-bindings-c": {
+      "exit": 0,
+      "binary_sha256": "f3919fb3d7e341c6caa9f9ec3402a86ef561cae46b6f2bdd5e00c96715a5f180"
+    },
+    "script-bindings-c-save": {
+      "exit": 0,
+      "binary_sha256": "f3919fb3d7e341c6caa9f9ec3402a86ef561cae46b6f2bdd5e00c96715a5f180"
+    }
+  },
+  "static": "build/port-script-builtins/static-c.log",
+  "source_files": 2764,
+  "c_loc": {
+    "files": 49,
+    "lines": 11404,
+    "reference_lines": 0
+  }
+}

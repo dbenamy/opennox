@@ -14,12 +14,11 @@
 
 ## Current status
 
-The next script-binding batch has a checked C prerequisite: two
-missing-object predicates now return false instead of reading an unpassed
-argument. See [SCRIPT_BINDINGS.md](docs/porting/SCRIPT_BINDINGS.md) for contracts,
-remaining baseline work and the explicit qualification boundary. Working C is
-11,404 lines; the last fully qualified checkpoint below remains11,409.
-
+The script-binding corrected C baseline is qualified:19 bodies /373 body lines,
+184 affected roots per target,107 identical captures, fresh production/ABI,
+exact known full-suite outcomes and gameplay/save-load scenarios. C is now
+**11,404 physical lines in49 files**, zero reference C. The next step is its Go
+conversion. See [SCRIPT_BINDINGS.md](docs/porting/SCRIPT_BINDINGS.md).
 
 The remaining legacy online-session helpers now use Go or reduce to their
 reachable empty-state behavior. Six owners move to Go; eleven unused owners,

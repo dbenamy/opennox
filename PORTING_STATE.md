@@ -2,35 +2,46 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about11.4k lines** — **11,409 physical lines in49
-production `.c` files**, zero reference C. This batch removes **489 lines**.
+**Qualified C remaining: about11.4k lines** — **11,404 physical lines in49
+production `.c` files**, zero reference C. The script prerequisite removes **5 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
 
-## Current — script-binding C prerequisite checked
+## Current — script-binding corrected C baseline qualified
 
-Qualified parent **c425197f** is committed and pushed. The next22-body candidate
-is under review. Actual VM tests reproduced undefined missing-object results in
-two predicates; the correction returns false and matches their no-argument ABI.
-SetRoamFlag loses an unused read of another unpassed argument. The original C
-passes8192 valid-object cases. Corrected missing-object and6144 roam contracts
-pass on all three targets with no skips; see [SCRIPT_BINDINGS.md](docs/porting/SCRIPT_BINDINGS.md).
+Prerequisite **990974ec** is pushed. The19-body /373-line C baseline now passes
+184 affected roots per target with no skips and identical107 captured files.
+Nine new captures and the independent journal-name boundary are frozen. Static
+checks, all three fresh production binaries/ABI, exact1553 full-suite failures
+(15 pass /3 fail /32 skip packages), gameplay and save/load scenarios pass.
+All source fingerprints agree. Every job, including production49299, is joined.
 
-Working C is **11,404 lines /49 files /zero reference C**; the fully qualified
-checkpoint remains11,409. The broader C baseline is not frozen or production
-qualified, and no selected behavior has moved to Go yet. Preserve original
-failure evidence; failed initial roam runs were a fixture setup error. Final
-runs are `build/port-script-builtins/prerequisite-final-{default,server,highres}`.
-All test jobs are joined. Regenerate selection offsets
-before using the earlier read-only draft after the C prerequisite correction.
+See [SCRIPT_BINDINGS.md](docs/porting/SCRIPT_BINDINGS.md), script-bindings-batch.json
+and script-bindings-c-qualification.json. C is **11,404 lines /49 files /zero
+reference C**. No native code is installed. Commit/push this C baseline, reclaim
+verified duplicate assets from its two completed scenarios if needed, then install
+and qualify the Go conversion. Carry/drop, startup cleanup and halberd replacement
+are the following inventory batch; the XP/level helper remains C in this batch.
 
-Three completed online-session native scenario copies were hash-deduplicated,
-reclaiming1,669,136,451 bytes. Audit/apply jobs joined; deletion mode in
-`build/port-old-online/deduplicate-native-assets.py` is CONSUMED. Per-run
-restoration manifests remain; original assets/archive/screenshots/saves/logs
-are preserved. No user decision is pending.
+Native-draft.go and install-native.py under build/port-script-builtins are reviewed
+advisory drafts and NOT CONSUMED. The installer takes the committed C-baseline
+revision and exact-matches its19 selected bodies before removing them. Review
+its effects, Go formatting, imports and remaining C references before testing.
+Movement/registry/ownership test drafts are CONSUMED. Do not replay them over
+reviewed src/script_bindings* files or regenerate frozen captures for native
+failures. Keep the original failed fixture runs as diagnostics.
+
+Original22-body selection-draft.json has stale offsets; use the tracked19-body
+selection/current audit. Expected native retirement:19 C interfaces, nine bridge
+exports and two owners. All9 selected bridge references are inside the batch;
+whole-source address and callback audits found no outside registrations.
+
+Disk is about1.9GiB free. Previous online-session asset deletion mode is CONSUMED
+(1,669,136,451 bytes reclaimed). The two new script-bindings-c scenario asset
+copies have not been deduplicated. Preserve original assets/archive and all
+screenshots/saves/logs. No user decision is pending.
 
 ## Current — legacy online session conversion qualified
 

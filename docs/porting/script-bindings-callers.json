@@ -1,0 +1,598 @@
+{
+  "nox_xxx_xferReadScriptHandler_4F5580": [
+    {
+      "file": "src/legacy/server__script__script.c",
+      "line": 21,
+      "text": "int nox_xxx_xferReadScriptHandler_4F5580(int a1, char* a2) {",
+      "selected_owner": "nox_xxx_xferReadScriptHandler_4F5580",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__script.h",
+      "line": 9,
+      "text": "int nox_xxx_xferReadScriptHandler_4F5580(int a1, char* a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/object_xfer_common.go",
+      "line": 40,
+      "text": "return int(C.nox_xxx_xferReadScriptHandler_4F5580(C.int(uintptr(p)), (*C.char)(name)))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_script_GiveExp_516190": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 13,
+      "text": "int nox_script_GiveExp_516190();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 78,
+      "text": "asm.BuiltinGiveXp:              wrapScriptC(C.nox_script_GiveExp_516190),",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 306,
+      "text": "int nox_script_GiveExp_516190() {",
+      "selected_owner": "nox_script_GiveExp_516190",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_script_MakeEnemy_516760": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 16,
+      "text": "int nox_script_MakeEnemy_516760();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 81,
+      "text": "asm.BuiltinMakeEnemy:           wrapScriptC(C.nox_script_MakeEnemy_516760),",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 396,
+      "text": "int nox_script_MakeEnemy_516760() {",
+      "selected_owner": "nox_script_MakeEnemy_516760",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_xxx_scriptMonsterRoam_512930": [
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 159,
+      "text": "void nox_xxx_scriptMonsterRoam_512930(nox_object_t* obj) {",
+      "selected_owner": "nox_xxx_scriptMonsterRoam_512930",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/unit.go",
+      "line": 57,
+      "text": "C.nox_xxx_scriptMonsterRoam_512930(asObjectC(a1))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.h",
+      "line": 8,
+      "text": "void nox_xxx_scriptMonsterRoam_512930(nox_object_t* obj);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_script_BecomeEnemy_516810": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 18,
+      "text": "int nox_script_BecomeEnemy_516810();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 83,
+      "text": "asm.BuiltinBecomeEnemy:         wrapScriptC(C.nox_script_BecomeEnemy_516810),",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 447,
+      "text": "int nox_script_BecomeEnemy_516810() {",
+      "selected_owner": "nox_script_BecomeEnemy_516810",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_script_BecomePet_5167D0": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 17,
+      "text": "int nox_script_BecomePet_5167D0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 82,
+      "text": "asm.BuiltinBecomePet:           wrapScriptC(C.nox_script_BecomePet_5167D0),",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 428,
+      "text": "int nox_script_BecomePet_5167D0() {",
+      "selected_owner": "nox_script_BecomePet_5167D0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_script_PlayerIsTrading_5166E0": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 22,
+      "text": "int nox_script_PlayerIsTrading_5166E0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 87,
+      "text": "asm.BuiltinIsTrading:           wrapScriptC(C.nox_script_PlayerIsTrading_5166E0),",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 359,
+      "text": "int nox_script_PlayerIsTrading_5166E0() {",
+      "selected_owner": "nox_script_PlayerIsTrading_5166E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_script_IsTalking_5166A0": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 14,
+      "text": "int nox_script_IsTalking_5166A0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 79,
+      "text": "asm.BuiltinIsTalking:           wrapScriptC(C.nox_script_IsTalking_5166A0),",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 345,
+      "text": "int nox_script_IsTalking_5166A0() {",
+      "selected_owner": "nox_script_IsTalking_5166A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_server_gotoHome": [
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 185,
+      "text": "void nox_server_gotoHome(nox_object_t* obj) {",
+      "selected_owner": "nox_server_gotoHome",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/unit.go",
+      "line": 10,
+      "text": "void nox_server_gotoHome(nox_object_t* obj);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/unit.go",
+      "line": 60,
+      "text": "C.nox_server_gotoHome(asObjectC(a1))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_512E80": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 24,
+      "text": "int sub_512E80(wchar2_t* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 65,
+      "text": "return int(C.sub_512E80(cstr))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_bindings_porttest.go",
+      "line": 8,
+      "text": "int sub_512E80(wchar2_t*);",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_bindings_porttest.go",
+      "line": 25,
+      "text": "return int(C.sub_512E80((*C.wchar2_t)(text)))",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 42,
+      "text": "int sub_512E80(wchar2_t* a1) {",
+      "selected_owner": "sub_512E80",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_server_scriptMoveTo_5123C0": [
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 99,
+      "text": "int* nox_server_scriptMoveTo_5123C0(int a1, int a2) {",
+      "selected_owner": "nox_server_scriptMoveTo_5123C0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_ns_object.go",
+      "line": 6,
+      "text": "int* nox_server_scriptMoveTo_5123C0(int a1, int a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_ns_object.go",
+      "line": 26,
+      "text": "C.nox_server_scriptMoveTo_5123C0(C.int(uintptr(a1.CObj())), C.int(uintptr(a2.C())))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_script_JournalDelete_515550": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 7,
+      "text": "int nox_script_JournalDelete_515550();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 76,
+      "text": "asm.BuiltinJournalDelete:       wrapScriptC(C.nox_script_JournalDelete_515550),",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 232,
+      "text": "int nox_script_JournalDelete_515550() {",
+      "selected_owner": "nox_script_JournalDelete_515550",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_script_SetRoamFlagGroup_515CB0": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 6,
+      "text": "int nox_script_SetRoamFlagGroup_515CB0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 75,
+      "text": "asm.BuiltinGroupSetRoamFlag:    wrapScriptC(C.nox_script_SetRoamFlagGroup_515CB0),",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 291,
+      "text": "int nox_script_SetRoamFlagGroup_515CB0() {",
+      "selected_owner": "nox_script_SetRoamFlagGroup_515CB0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_script_MakeFriendly_516720": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 15,
+      "text": "int nox_script_MakeFriendly_516720();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 80,
+      "text": "asm.BuiltinMakeFriendly:        wrapScriptC(C.nox_script_MakeFriendly_516720),",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 373,
+      "text": "int nox_script_MakeFriendly_516720() {",
+      "selected_owner": "nox_script_MakeFriendly_516720",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_script_builtin_516850": [
+    {
+      "file": "src/server/script_vm_old_panic.go",
+      "line": 50,
+      "text": "// override opcode 185 from nox_script_builtin_516850 to new func 1",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": true
+    },
+    {
+      "file": "src/server/script_vm_old_panic.go",
+      "line": 76,
+      "text": "// Panic's replacement for nox_script_builtin_516850 (opcode 185)",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": true
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 20,
+      "text": "int nox_script_builtin_516850(void);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 85,
+      "text": "asm.BuiltinUnknownb9:           wrapScriptC(C.nox_script_builtin_516850),",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 466,
+      "text": "int nox_script_builtin_516850(void) {",
+      "selected_owner": "nox_script_builtin_516850",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_xxx_moverGoTo_5124C0": [
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 129,
+      "text": "result = (int*)nox_xxx_moverGoTo_5124C0((uint32_t*)a1, (uint32_t*)a2);",
+      "selected_owner": "nox_server_scriptMoveTo_5123C0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 135,
+      "text": "nox_xxx_moverGoTo_5124C0(i, (uint32_t*)a2);",
+      "selected_owner": "nox_server_scriptMoveTo_5123C0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 145,
+      "text": "int nox_xxx_moverGoTo_5124C0(uint32_t* a1, uint32_t* a2) {",
+      "selected_owner": "nox_xxx_moverGoTo_5124C0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.h",
+      "line": 7,
+      "text": "int nox_xxx_moverGoTo_5124C0(uint32_t* a1, uint32_t* a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_script_SetRoamFlag_515C40": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 5,
+      "text": "int nox_script_SetRoamFlag_515C40(void);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 74,
+      "text": "asm.BuiltinSetRoamFlag:         wrapScriptC(C.nox_script_SetRoamFlag_515C40),",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 274,
+      "text": "int nox_script_SetRoamFlag_515C40(void) {",
+      "selected_owner": "nox_script_SetRoamFlag_515C40",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_script_JournalEdit_5155A0": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 8,
+      "text": "int nox_script_JournalEdit_5155A0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 77,
+      "text": "asm.BuiltinJournalEdit:         wrapScriptC(C.nox_script_JournalEdit_5155A0),",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 252,
+      "text": "int nox_script_JournalEdit_5155A0() {",
+      "selected_owner": "nox_script_JournalEdit_5155A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_script_builtin_516790": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 19,
+      "text": "int nox_script_builtin_516790(void);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 84,
+      "text": "asm.BuiltinUnknownb8:           wrapScriptC(C.nox_script_builtin_516790),",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 413,
+      "text": "int nox_script_builtin_516790(void) {",
+      "selected_owner": "nox_script_builtin_516790",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ]
+}

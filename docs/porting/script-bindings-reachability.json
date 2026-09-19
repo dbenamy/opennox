@@ -1,0 +1,104 @@
+{
+  "roots": [
+    "nox_script_BecomeEnemy_516810",
+    "nox_script_BecomePet_5167D0",
+    "nox_script_GiveExp_516190",
+    "nox_script_IsTalking_5166A0",
+    "nox_script_JournalDelete_515550",
+    "nox_script_JournalEdit_5155A0",
+    "nox_script_MakeEnemy_516760",
+    "nox_script_MakeFriendly_516720",
+    "nox_script_PlayerIsTrading_5166E0",
+    "nox_script_SetRoamFlagGroup_515CB0",
+    "nox_script_SetRoamFlag_515C40",
+    "nox_script_builtin_516790",
+    "nox_script_builtin_516850",
+    "nox_server_gotoHome",
+    "nox_server_scriptMoveTo_5123C0",
+    "nox_xxx_scriptMonsterRoam_512930",
+    "nox_xxx_xferReadScriptHandler_4F5580",
+    "sub_512E80"
+  ],
+  "reachable": [
+    "nox_script_BecomeEnemy_516810",
+    "nox_script_BecomePet_5167D0",
+    "nox_script_GiveExp_516190",
+    "nox_script_IsTalking_5166A0",
+    "nox_script_JournalDelete_515550",
+    "nox_script_JournalEdit_5155A0",
+    "nox_script_MakeEnemy_516760",
+    "nox_script_MakeFriendly_516720",
+    "nox_script_PlayerIsTrading_5166E0",
+    "nox_script_SetRoamFlagGroup_515CB0",
+    "nox_script_SetRoamFlag_515C40",
+    "nox_script_builtin_516790",
+    "nox_script_builtin_516850",
+    "nox_server_gotoHome",
+    "nox_server_scriptMoveTo_5123C0",
+    "nox_xxx_moverGoTo_5124C0",
+    "nox_xxx_scriptMonsterRoam_512930",
+    "nox_xxx_xferReadScriptHandler_4F5580",
+    "sub_512E80"
+  ],
+  "unreached": [],
+  "edges": {
+    "nox_xxx_xferReadScriptHandler_4F5580": [
+      "nox_xxx_xferReadScriptHandler_4F5580"
+    ],
+    "nox_script_GiveExp_516190": [
+      "nox_script_GiveExp_516190"
+    ],
+    "nox_script_MakeEnemy_516760": [
+      "nox_script_MakeEnemy_516760"
+    ],
+    "nox_xxx_scriptMonsterRoam_512930": [
+      "nox_xxx_scriptMonsterRoam_512930"
+    ],
+    "nox_script_BecomeEnemy_516810": [
+      "nox_script_BecomeEnemy_516810"
+    ],
+    "nox_script_BecomePet_5167D0": [
+      "nox_script_BecomePet_5167D0"
+    ],
+    "nox_script_PlayerIsTrading_5166E0": [
+      "nox_script_PlayerIsTrading_5166E0"
+    ],
+    "nox_script_IsTalking_5166A0": [
+      "nox_script_IsTalking_5166A0"
+    ],
+    "nox_server_gotoHome": [
+      "nox_server_gotoHome"
+    ],
+    "sub_512E80": [
+      "sub_512E80"
+    ],
+    "nox_server_scriptMoveTo_5123C0": [
+      "nox_server_scriptMoveTo_5123C0",
+      "nox_xxx_moverGoTo_5124C0"
+    ],
+    "nox_script_JournalDelete_515550": [
+      "nox_script_JournalDelete_515550"
+    ],
+    "nox_script_SetRoamFlagGroup_515CB0": [
+      "nox_script_SetRoamFlagGroup_515CB0"
+    ],
+    "nox_script_MakeFriendly_516720": [
+      "nox_script_MakeFriendly_516720"
+    ],
+    "nox_script_builtin_516850": [
+      "nox_script_builtin_516850"
+    ],
+    "nox_xxx_moverGoTo_5124C0": [
+      "nox_xxx_moverGoTo_5124C0"
+    ],
+    "nox_script_SetRoamFlag_515C40": [
+      "nox_script_SetRoamFlag_515C40"
+    ],
+    "nox_script_JournalEdit_5155A0": [
+      "nox_script_JournalEdit_5155A0"
+    ],
+    "nox_script_builtin_516790": [
+      "nox_script_builtin_516790"
+    ]
+  }
+}
