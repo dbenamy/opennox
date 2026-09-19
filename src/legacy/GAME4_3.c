@@ -68,176 +68,27 @@ extern unsigned int gameex_flags;
 void nox_xxx_lightningSpellDuration_52FFD0(int a1, int a2, int a3);
 int nox_xxx_waypoint_579F00(float2* a1, nox_object_t* a2);
 void sub_4FF310(nox_object_t* a1);
-char nox_xxx_monsterPlayHurtSound_532800(nox_object_t* a1p) {
-	int a1 = a1p;
-	int v1; // eax
-	int v2; // edi
 
-	LOBYTE(v1) = *(uint8_t*)(a1 + 8);
-	v2 = *(uint32_t*)(a1 + 748);
-	if (v1 & 2) {
-		LOBYTE(v1) = (unsigned char)gameFrame();
-		if (gameFrame() >= *(int*)(v2 + 532)) {
-			*(uint32_t*)(v2 + 532) =
-				gameFrame() + nox_common_randomInt_415FA0(2 * gameFPS(), 4 * gameFPS());
-			v1 = nox_xxx_monsterGetSoundSet_424300(a1);
-			if (v1) {
-				nox_xxx_aud_501960(*(uint32_t*)(v1 + 8), a1, 0, 0);
-			}
-		}
-	}
-	return v1;
-}
 
-int sub_532880(int a1) {
-	int result; // eax
 
-	result = *(uint32_t*)(a1 + 748);
-	if (!*(uint32_t*)(result + 520)) {
-		*(uint32_t*)(result + 520) = gameFrame();
-	}
-	return result;
-}
 
-int sub_534020(int a1) { return (*(uint32_t*)(a1 + 12) >> 10) & 1; }
 
-void nox_ai_debug_print(char* str);
-void nox_ai_debug_printf_5341A0(char* a1, ...) {
-	va_list va; // [esp+8h] [ebp+8h]
 
-	va_start(va, a1);
-	if (nox_common_getEngineFlag(NOX_ENGINE_FLAG_ENABLE_SHOW_AI)) {
-		nox_vsprintf((char*)getMemAt(0x5D4594, 2487996), a1, va);
-		nox_ai_debug_print((char*)getMemAt(0x5D4594, 2487996));
-	}
-}
 
-char* sub_5345B0(int a1) {
-	unsigned char* v1; // ecx
-	int v2;            // eax
 
-	v1 = getMemAt(0x587000, 262056);
-	while (1) {
-		if (*(uint32_t*)v1 == a1) {
-			v2 = 0;
-			while (1) {
-				if (v2 == a1) {
-					return *(char**)getMemAt(0x587000, 261768 + 4 * v2);
-				}
-				if (++v2 >= 39) {
-					goto LABEL_6;
-				}
-			}
-		}
-	LABEL_6:
-		v1 += 4;
-		if ((int)v1 >= (int)getMemAt(0x587000, 262072)) {
-			return *(char**)getMemAt(0x587000, 261920);
-		}
-	}
-}
 
-int nox_xxx_actionNByNameMB_5345F0(const char* a1) {
-	int v1;          // ebp
-	const char** v2; // edi
 
-	v1 = 0;
-	v2 = (const char**)getMemAt(0x587000, 261768);
-	while (strcmp(*v2, a1)) {
-		++v2;
-		++v1;
-		if ((int)v2 >= (int)getMemAt(0x587000, 261924)) {
-			return 38;
-		}
-	}
-	return v1;
-}
 
-char* sub_534650(int a1) {
-	int v1; // eax
 
-	v1 = 0;
-	while (v1 != a1) {
-		if (++v1 >= 72) {
-			return 0;
-		}
-	}
-	return *(char**)getMemAt(0x587000, 261768 + 4 * v1);
-}
 
-int nox_xxx_actionByName_534670(const char* a1) {
-	int v1;          // ebp
-	const char** v2; // edi
 
-	v1 = 0;
-	v2 = (const char**)getMemAt(0x587000, 261768);
-	while (strcmp(*v2, a1)) {
-		++v2;
-		++v1;
-		if ((int)v2 >= (int)getMemAt(0x587000, 262056)) {
-			return 0;
-		}
-	}
-	return v1;
-}
 
-void nox_xxx_updateUndeadKiller_53E190(int a1) {
-	int v1; // eax
 
-	v1 = **(uint32_t**)(a1 + 700);
-	if (v1 && *(uint8_t*)(v1 + 88) & 1) {
-		nox_xxx_delayedDeleteObject_4E5CC0(a1);
-	} else if ((unsigned int)(gameFrame() - *(uint32_t*)(a1 + 136)) > 0x46) {
-		nox_xxx_delayedDeleteObject_4E5CC0(a1);
-	}
-}
 
-int nox_xxx_useRead_53F7C0(int a1, int a2) {
-	int v2; // esi
-	int v3; // ecx
 
-	if (*(uint8_t*)(a1 + 8) & 4) {
-		v2 = *(uint32_t*)(a2 + 736);
-		v3 = *(uint32_t*)(v2 + 256);
-		if ((gameFrame() - v3 > (unsigned int)(3 * gameFPS()) || !v3) &&
-			nox_xxx_mapCheck_537110(a1, a2) == 1) {
-			nox_xxx_netPriMsgToPlayer_4DA2C0(a1, (const char*)v2, 1);
-			*(uint32_t*)(v2 + 256) = gameFrame();
-		}
-	}
-	return 1;
-}
 
-int sub_53F830(int a1, int a2) {
-	int v2; // esi
-	int v3; // ebx
-	int v4; // edi
-	int v5; // ecx
-	int v6; // eax
-	int v7; // eax
-	int v8; // edx
 
-	v2 = a1;
-	if (*(uint8_t*)(a1 + 8) & 4) {
-		v3 = *(uint32_t*)(a1 + 748);
-		v4 = *(uint32_t*)(a2 + 736);
-		v5 = *(uint32_t*)(v4 + 256);
-		if ((gameFrame() - v5 > (unsigned int)(3 * gameFPS()) || !v5) &&
-			nox_xxx_mapCheck_537110(a1, a2) == 1) {
-			if (sub_4D75E0()) {
-				v6 = nox_game_getQuestStage_4E3CC0();
-				v7 = nox_server_questNextStageThreshold_4D74F0(v6);
-				v8 = *(uint32_t*)(v3 + 276);
-				a1 = v7;
-				nox_xxx_netInformTextMsg_4DA0F0(*(unsigned char*)(v8 + 2064), 21, &a1);
-			} else {
-				nox_xxx_netPriMsgToPlayer_4DA2C0(v2, "GeneralPrint:WarpClosed", 1);
-			}
-			*(uint32_t*)(v4 + 256) = gameFrame();
-		}
-	}
-	return 1;
-}
+
 
 int nox_xxx_castPixies_540440(int a1, int a2, int a3, int a4, int a5, int a6) {
 	int v6;        // ebx

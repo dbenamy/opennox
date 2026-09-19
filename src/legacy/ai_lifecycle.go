@@ -110,7 +110,7 @@ func lifecycleBurnDelete(u *server.Object) {
 		gameplayReportShield(int(pl.PlayerInd), u)
 		GetServer().S().Players.Nox_xxx_netUnmarkMinimapObj_417300(ntype.PlayerInd(pl.PlayerInd), u, 1)
 	}
-	C.nox_xxx_soloMonsterKillReward_4EE500_obj_health(C.int(uintptr(u.CObj())))
+	unitMonsterReward(u)
 	Nox_xxx_sMakeScorch_537AF0(u.PosVec, 1)
 	GetServer().DelayedDelete(u)
 }

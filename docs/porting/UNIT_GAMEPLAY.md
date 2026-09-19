@@ -2,16 +2,16 @@
 
 ## Scope and status
 
-Qualified parent `ae81334f` is pushed. The accepted conversion boundary covers20 C bodies (405 body lines) in seven
+Original-C baseline `c4a1c3b0` and qualified native parent `ae81334f` are pushed. The accepted conversion boundary covers20 C bodies (405 body lines) in seven
 files: experience/rewards, AI orders, hurt/damage timers and action metadata,
 object use/update callbacks, dialogue and localized item/NPC descriptions.
 The two spell creation/start entries from the initial22-body candidate are
 deferred to the next batch with their duration/factory fixtures. This keeps the
 current unit-helper qualification connected; it is a reversible scope decision.
 The tracked selection is authoritative; the caller inventory retains the initial
-22-body audit for provenance. Production is
-still C; remaining production C is 10,820 lines / 47 files / zero reference C.
-The baseline is in progress, not qualified or frozen.
+22-body audit for provenance. The original-C baseline is qualified and frozen. Native implementation is fully qualified. Remaining C is10,184 lines /42
+files /zero reference C (636 physical lines removed). The five empty C units are removed; GAME4.c retains its live
+charm-control owner for the following spell batch.
 
 Read-only selection/caller inventories and diagnostic logs are under
 `build/port-unit-gameplay`. Existing controls, creature transfer, lifecycle,
@@ -135,3 +135,35 @@ CONSUMED; restoration manifests remain in both completed run directories.
 Completed C capture deduplication reclaimed1,969,117,384 bytes across490 identical
 files. All paths and hashes remain; contents are immutable. Audit/apply manifests
 are under build/port-unit-gameplay; apply mode is CONSUMED.
+
+## Native integration
+
+Private callers now invoke Go directly. The three registered use/update callbacks
+retain Go-backed C exports. The C debug formatting/printing interface and the
+unreachable duplicate are removed; no original algorithms remain solely for
+tests. Small varargs adapters still call the existing production wide formatter.
+
+Source review preserves XP subtraction/store rounding, signed level lookup,
+unsigned timer arithmetic, exact action tables, raw UTF16 name units and shared
+name buffers, dialogue mutation order and real notification/audio owners. The
+first compile exposed a draft typo (`alloc.StrLen16`); using existing generic
+`alloc.StrLen` fixes it without decoding UTF16. Static-memory checks pass. All native qualification gates pass; frozen
+expectations have not changed. Ignored install-native.py is consumed.
+
+## Native qualification
+
+All8,464 focused cases pass. Default/server/highres each execute238 affected roots
+and enforce242 frozen capture hashes, with no skips. Source fingerprints match
+across all sweeps, production and the reviewed checkout. Fresh production binaries
+pass the inherited and new ABI/export audits. The full asset suite matches the
+exact1,553 known failure entries and15 pass /3 fail /32 skip package outcomes.
+Fresh gameplay and save/load scenarios match the preceding script-inventory
+native references. All jobs are joined. See the tracked native manifest and
+`unit-gameplay-native-qualification.json`; full logs are under
+`build/port-unit-gameplay/native-*`.
+
+Physical C decreases10,820 →10,184 (−636),47 →42 files, zero reference C. This
+includes removed bodies and obsolete scaffolding in emptied files. No new product
+behavior was introduced. The original assets/archive remain unchanged. Completed
+captures are byte-verified hard links to C references to limit disk consumption;
+the three deduplication apply scripts are consumed and captures remain immutable.

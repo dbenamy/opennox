@@ -7,7 +7,6 @@ int sub_545E60(nox_object_t* a1);
 void sub_548600(nox_object_t* a1, float a2, float a3);
 void sub_548830(int a1);
 void sub_548860(int a1, short a2);
-void nox_xxx_script_forcedialog_548CD0(nox_object_t* a1, nox_object_t* a2);
 int nox_xxx_strikeOgre_549220(float a1);
 int nox_xxx_strikeMonsterDefault_549380(float a1);
 int nox_xxx_strikeScorpion_5495B0(float a1);

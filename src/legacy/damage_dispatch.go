@@ -227,7 +227,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 			}
 		}
 		if mob != nil && GetServer().S().IsEnemyTo(u, mob) {
-			C.sub_532880(inventoryInt(mob))
+			unitDamageTimer(mob)
 		}
 	}
 	if u.Buffs&(1<<26) != 0 && kind != 5 {

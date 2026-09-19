@@ -9,9 +9,6 @@ package legacy
 #include "GAME4_3.h"
 #include "GAME5.h"
 extern uint32_t dword_5d4594_2489460;
-static void main_ai_frustrated(int u) {
- nox_ai_debug_printf_5341A0("%d: %s(#%d) FRUSTRATED\n",gameFrame(),nox_xxx_getUnitName_4E39D0((nox_object_t*)u),*(int*)(u+36));
-}
 */
 import "C"
 
@@ -270,7 +267,7 @@ func monsterMainAI(u *server.Object) {
 			ud.Field125 = math.Float32bits(u.PosVec.X)
 			ud.Field126 = math.Float32bits(u.PosVec.Y)
 		} else if uint32(core.Frame()-ud.Field124) > uint32(int32(core.TickRate())>>1) {
-			C.main_ai_frustrated(combatPtr(u))
+			unitDebug(1, GetServer().S().Frame(), u.NetCode, GetServer().S().Types.ByInd(int(u.TypeInd)).ID())
 			ud.StatusFlags |= 0x200000
 			if ud.HasAction(6) || ud.HasAction(14) || ud.HasAction(24) {
 				ud.Field127 = core.Frame()

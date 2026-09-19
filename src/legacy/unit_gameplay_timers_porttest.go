@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"fmt"
@@ -34,7 +29,7 @@ func unitGameplayTimerContract(proxy *portTestRoamOwnerServer, u *server.Object,
 	expectedRNG := *proxy.core.Rand.Logic
 	expectedDelay := uint32(expectedRNG.IntClamp(int(2*sp.FPS), int(4*sp.FPS)))
 	if sp.Op == 29 {
-		C.sub_532880(C.int(uintptr(u.CObj())))
+		unitDamageTimer(u)
 		want := sp.Deadline
 		if want == 0 {
 			want = sp.Frame
@@ -43,7 +38,7 @@ func unitGameplayTimerContract(proxy *portTestRoamOwnerServer, u *server.Object,
 			panic("damage timer first write")
 		}
 		proxy.core.SetFrame(sp.Frame + 1)
-		C.sub_532880(C.int(uintptr(u.CObj())))
+		unitDamageTimer(u)
 		if want == 0 {
 			want = sp.Frame + 1
 		}
@@ -52,7 +47,7 @@ func unitGameplayTimerContract(proxy *portTestRoamOwnerServer, u *server.Object,
 		}
 	} else {
 		// The original char result is unused by every production caller.
-		C.nox_xxx_monsterPlayHurtSound_532800(asObjectC(u))
+		unitHurtSound(u)
 		active := !sp.NilUnit && sp.Frame >= sp.Deadline
 		events := proxy.core.PortTestCombatAudioSnapshot()
 		wantAudio := 0

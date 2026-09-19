@@ -264,7 +264,7 @@ func monsterOrder(owner, unit *server.Object, order int) {
 		return
 	}
 	if owner.Class().Has(object.ClassPlayer) && (order == 3 || order == 4 || order == 5) {
-		C.nox_xxx_orderUnitLocal_500C70(C.int(owner.UpdateDataPlayer().Player.PlayerInd), C.int(order))
+		unitLocalOrder(int(owner.UpdateDataPlayer().Player.PlayerInd), int32(order))
 	}
 	for v := owner.Field129; v != nil; v = v.Field128 {
 		if v.Class().Has(object.ClassMonster) && v.UpdateDataMonster().StatusFlags&0x80 != 0 {

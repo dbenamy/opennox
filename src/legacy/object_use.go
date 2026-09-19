@@ -41,8 +41,8 @@ func init() {
 	}, unsafe.Sizeof(server.PotionUseData{}))
 
 	server.RegisterObjectUse("FireWandUse", C.nox_xxx_useFireWand_53F670, func(u, it *server.Object) bool { return effectsFireWand(u, it) != 0 }, 0)
-	server.RegisterObjectUseC("ReadUse", C.nox_xxx_useRead_53F7C0, 260)
-	server.RegisterObjectUseC("WarpReadUse", C.sub_53F830, 260)
+	server.RegisterObjectUse("ReadUse", C.nox_xxx_useRead_53F7C0, func(u, it *server.Object) bool { return unitRead(u, it, false) }, 260)
+	server.RegisterObjectUse("WarpReadUse", C.sub_53F830, func(u, it *server.Object) bool { return unitRead(u, it, true) }, 260)
 	server.RegisterObjectUse("WandUse", C.nox_xxx_useLesserFireballStaff_53F290, func(u, it *server.Object) bool { return effectsLesserFireball(u, it) != 0 }, 116)
 	server.RegisterObjectUse("WandCastUse", C.nox_xxx_useWandCastSpell_53F4F0, func(u, it *server.Object) bool { return effectsWandCast(u, it) != 0 }, 116)
 	server.RegisterObjectUseC("SpellRewardUse", C.nox_xxx_useSpellReward_53F9E0, unsafe.Sizeof(server.SpellRewardUseData{}))

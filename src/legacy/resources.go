@@ -90,7 +90,7 @@ func resourceDamage(u *server.Object, amount int32) {
 			u.ObjFlags |= 0x8000
 			Nox_xxx_spellBuffOff_4FF5B0(u, 16)
 			if !monsterIsZombie(u) {
-				C.nox_xxx_soloMonsterKillReward_4EE500_obj_health(C.int(uintptr(u.CObj())))
+				unitMonsterReward(u)
 			}
 			if u.ObjClass&2 != 0 {
 				monsterControlDeath(u)

@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "server__object__health.h"
-*/
-import "C"
-
 import (
 	"fmt"
 	"github.com/opennox/libs/object"
@@ -79,7 +74,7 @@ func (p *portTestShopPools) unitRewardContract() []uint32 {
 	default:
 		panic("reward mode")
 	}
-	C.nox_xxx_soloMonsterKillReward_4EE500_obj_health(C.int(uintptr(arg.CObj())))
+	unitMonsterReward(arg)
 	got := math.Float32bits(*(*float32)(unsafe.Add(u.CObj(), 28)))
 	if got != sp.WantXP {
 		panic(fmt.Sprintf("reward XP %08x want %08x", got, sp.WantXP))

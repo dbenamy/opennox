@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME4.h"
-#include "GAME5.h"
-void nox_xxx_scriptDialog_548D30(nox_object_t* a1, char a2);
-*/
-import "C"
-
 import (
 	"fmt"
 	"github.com/opennox/libs/object"
@@ -29,7 +22,7 @@ func (p *portTestShopPools) unitOrderContract() []uint32 {
 	pl := p.proxy.core.Players.ByInd(ntype.PlayerInd(sp.X))
 	word := (*uint32)(unsafe.Add(unsafe.Pointer(pl), 3648))
 	*word = 0xabcdef01
-	result := C.nox_xxx_orderUnitLocal_500C70(C.int(sp.X), C.int(sp.Y))
+	result := unitLocalOrder(int(sp.X), sp.Y)
 	if *word != uint32(sp.Y) {
 		panic("local order full-width state")
 	}
@@ -92,12 +85,12 @@ func (p *portTestShopPools) unitDialogueContract() []uint32 {
 	}
 	wanted := 0
 	if sp.Finish {
-		C.nox_xxx_scriptDialog_548D30(asObjectC(u), C.char(sp.Response))
+		unitFinishDialogue(u, sp.Response)
 		if sp.Gate != 1 && sp.Gate != 2 && sp.Gate != 9 {
 			wanted = 2
 		}
 	} else {
-		C.nox_xxx_script_forcedialog_548CD0(asObjectC(player), asObjectC(monster))
+		unitForceDialogue(player, monster)
 		if sp.Gate == 0 {
 			wanted = 1
 		}

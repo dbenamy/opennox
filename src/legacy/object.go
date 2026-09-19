@@ -11,9 +11,6 @@ package legacy
 #include "GAME4_3.h"
 void nox_xxx_updateHarpoon_54F380(nox_object_t* a1);
 int nox_objectDropAudEvent_4EE2F0(nox_object_t* a1, nox_object_t* a2, float2* a3);
-void nox_xxx_script_forcedialog_548CD0(nox_object_t* a1, nox_object_t* a2);
-wchar2_t* sub_4E39F0_obj_db(nox_object_t* a1);
-void nox_xxx_scriptDialog_548D30(nox_object_t* a1, char a2);
 */
 import "C"
 import (
@@ -465,13 +462,13 @@ func Nox_object_setGold_4FA620(obj *server.Object, v int) {
 	resourceSetGold(obj, int32(v))
 }
 func Nox_xxx_script_forcedialog_548CD0(obj, obj2 *server.Object) {
-	C.nox_xxx_script_forcedialog_548CD0(asObjectC(obj), asObjectC(obj2))
+	unitForceDialogue(obj, obj2)
 }
 func Sub_4E39F0_obj_db(obj *server.Object) string {
-	return GoWString(C.sub_4E39F0_obj_db(asObjectC(obj)))
+	return alloc.GoString16(unitNPCName(obj))
 }
 func Nox_xxx_scriptDialog_548D30(obj *server.Object, a2 byte) {
-	C.nox_xxx_scriptDialog_548D30(asObjectC(obj), C.char(a2))
+	unitFinishDialogue(obj, a2)
 }
 func Nox_xxx_mobSetFightTarg_515D30(obj, targ *server.Object) {
 	monsterControlFight(obj, targ)

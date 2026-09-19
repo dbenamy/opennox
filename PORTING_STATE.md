@@ -2,43 +2,39 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about10.8k lines** — **10,820 physical lines in47
-production `.c` files**, zero reference C. The last conversion removed **133 lines**.
+**Qualified C remaining: about10.2k lines** — **10,184 physical lines in42
+production `.c` files**, zero reference C. The last conversion removed **636 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — unit gameplay C baseline qualified
+## Current — unit gameplay Go conversion qualified
 
-Qualified native parent **ae81334f** is committed/pushed. Production remains
-unchanged:10,820 C lines /47 files /zero reference C. Unit-gameplay selection is
-20 bodies/405 body lines across seven files, including one unreachable C duplicate.
-Pixie creation and teleport-begin callbacks are deferred to the following spell
-batch; retain GAME4.c's live nox_cheat_charmall owner until that batch.
+Original-C baseline **c4a1c3b0** is pushed. Native implementation is fully qualified
+and ready for commit/push. Twenty C bodies are removed, including one unreachable
+duplicate. Private callers now invoke Go directly; three registered use/update
+callbacks retain Go-backed C exports. Five empty C files are removed. GAME4.c
+retains its live charm-control owner for the next spell batch.
 
-All14 focused roots /8,464 cases pass twice in separate processes with identical
-captures. All14 new expectations are frozen. Default/server/highres each pass
-238 affected roots and242 identical captures, no skips, matching source
-fingerprints. Runner manifests enforced14 new hashes plus inherited literals;
-full242-capture inventories were compared/frozen afterward. Static-current
-passes. All23 changed source files are porttest-only; all three parent binaries
-rehash correctly and all22 audited symbols exist. Parent production/ABI, exact
-known full-suite outcomes and gameplay/save-load evidence are reused explicitly.
-See UNIT_GAMEPLAY.md and unit-gameplay-{selection,callers,batch,c-qualification}.json.
+All8,464 focused cases pass against frozen C expectations. Default/server/highres
+each pass238 affected roots and242 exact captures, no skips. All source
+fingerprints match, including current source. Static checks pass. Fresh three
+production binaries pass ABI/export audits. The full suite matches all1,553 known
+failure entries and15 pass /3 fail /32 skip packages. Gameplay and save/load both
+pass against the preceding native references. All jobs are JOINED, including
+sweep44277 and production63578. The first compile's helper-name typo was fixed;
+no frozen expectation changed. See UNIT_GAMEPLAY.md and the native qualification.
 
-All test/build/scenario jobs are JOINED, including affected63274/58879/97567.
-Commit/push this baseline, then integrate the native drafts against the frozen
-expectations. Native-*-draft.go under build/port-unit-gameplay are NOT installed
-or qualified; review them and move every private caller. Keep the three live
-use/update C callbacks. Ignored installed fixture drafts are CONSUMED.
+Next: original-C fixtures for Pixie creation and teleport start, then move their
+private callers and the charm-control owner. Do not replay ignored native or
+fixture installers: they are CONSUMED.
 
-Inventory scenario asset deduplication is complete:1,112,747,701 bytes reclaimed;
-audit95397/apply42019 joined and apply mode CONSUMED. Original assets/archive,
-saves/screenshots/logs and restoration manifests remain. Completed C captures
-now share verified immutable contents via hard links:490 duplicates and
-1,969,117,384 bytes reclaimed. Audit1368/apply90581 are joined; apply mode
-CONSUMED. Keep all future qualification output directories fresh.
-The checked-in source is ready for baseline commit; no user question is pending.
+Completed asset/C-capture deduplication is CONSUMED. All three native capture
+sets now share verified identical contents with C references, retaining every
+path/hash; their dedup scripts are also CONSUMED. Four superseded C test binaries
+were removed (265,466,284 bytes); final baseline binary and all logs remain.
+Original assets/archive, saves/screenshots and restoration manifests remain.
+Always use fresh output directories; completed shared captures are immutable.
 
 ## Current — legacy online session conversion qualified
 

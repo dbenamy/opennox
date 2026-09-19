@@ -14,18 +14,16 @@
 
 ## Current status
 
-The unit-gameplay original-C baseline is qualified:20 selected bodies (one
-unreachable duplicate),405 body lines across seven files. All8,464 focused cases
-repeat exactly; default/server/highres each pass238 affected roots and242
-identical captures. Production is unchanged from pushed `ae81334f`, so its
-qualified binaries and gameplay/save-load evidence are reused. Next: convert
-this batch, preserving frozen expectations. The two spell creation/start
-callbacks follow with their duration/factory fixtures.
+The unit-gameplay Go conversion is fully qualified against original-C baseline
+`c4a1c3b0`:8,464 focused cases; default/server/highres each pass238 affected roots
+and242 exact captures. Fresh three-target production/ABI, exact known full-suite
+comparison, gameplay and save/load all pass. Next: the remaining spell
+creation/start callbacks and their duration/factory fixtures.
 See [UNIT_GAMEPLAY.md](docs/porting/UNIT_GAMEPLAY.md).
 
-C remaining is **10,820 physical lines in47 files**, zero reference C.
-The preceding [script inventory conversion](docs/porting/SCRIPT_INVENTORY.md)
-removed133 lines. See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
+C remaining is **10,184 physical lines in42 files**, zero reference C.
+This conversion removes636 lines and five C files.
+See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 Previous completed GUI batches include
 [client interaction](docs/porting/CLIENT_INTERACTION.md), the

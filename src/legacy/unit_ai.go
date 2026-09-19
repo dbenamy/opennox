@@ -18,7 +18,6 @@ import (
 
 	"github.com/opennox/libs/types"
 
-	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/unit/ai"
 	"github.com/opennox/opennox/v1/server"
 )
@@ -30,13 +29,6 @@ var (
 
 type Nox_player_polygon_check_data struct {
 	Field_0 [35]uint32
-}
-
-//export nox_ai_debug_print
-func nox_ai_debug_print(str *C.char) {
-	if noxflags.HasEngine(noxflags.EngineShowAI) {
-		ai.Log.Printf("%s", GoString(str))
-	}
 }
 
 //export sub_545E60
@@ -108,7 +100,7 @@ func Nox_xxx_monsterGetSoundSet_424300(a1 *server.Object) unsafe.Pointer {
 	return resourceMonsterSound(a1)
 }
 func Nox_xxx_monsterPlayHurtSound_532800(a1 *server.Object) {
-	C.nox_xxx_monsterPlayHurtSound_532800(asObjectC(a1))
+	unitHurtSound(a1)
 }
 func Nox_xxx_mobAction_5469B0(a1 *server.Object) {
 	monsterIdleAudio(a1)

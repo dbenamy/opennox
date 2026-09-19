@@ -51,7 +51,7 @@ func playerFileGUI() int {
 		}
 		order = r.byte(order)
 		if r.read() && noxflags.HasGame(2048) {
-			C.nox_xxx_orderUnitLocal_500C70(C.int(uint8(p.PlayerInd)), C.int(order))
+			unitLocalOrder(int(uint8(p.PlayerInd)), int32(order))
 		}
 	}
 	return 1

@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -20,12 +13,12 @@ func creatureXferArgument(entry unsafe.Pointer, delta uint32) uint32 {
 	r := objectXferStream{cryptfile.Global()}
 	id := (*uint32)(entry)
 	var name [256]byte
-	initial := GoString(C.sub_534650(C.int(*id)))
+	initial := alloc.GoString(unitActionName(int32(*id), false))
 	copy(name[:], initial)
 	n := r.byte(byte(len(initial)))
 	r.raw(unsafe.Pointer(&name[0]), int(n))
 	name[n] = 0
-	*id = uint32(C.nox_xxx_actionByName_534670((*C.char)(unsafe.Pointer(&name[0]))))
+	*id = uint32(unitActionIndex(alloc.GoString(&name[0]), false))
 	count := r.byte(*memmap.PtrUint8(0x587000, 255604+uintptr(16*(*id))))
 	for j := uint32(0); j < uint32(count); j++ {
 		p := unsafe.Add(entry, 4+8*j)

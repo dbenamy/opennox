@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "server__gamemech__explevel.h"
-double nox_xxx_unitGiveXP_4EF270(int a1, float a2);
-*/
-import "C"
-
 import (
 	"fmt"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -52,11 +46,11 @@ func (p *portTestShopPools) unitExperienceContract() []uint32 {
 	result := float64(0)
 	switch sp.Op {
 	case 0:
-		C.sub_4EF2E0_exp_level(C.int(uintptr(u.CObj())))
+		unitExperienceLevel(u)
 	case 1:
-		C.nox_xxx_plyrGiveExp_4EF3A0_exp_level(C.int(uintptr(u.CObj())), C.float(amount))
+		unitGiveExperience(u, amount)
 	case 2:
-		result = float64(C.nox_xxx_unitGiveXP_4EF270(C.int(uintptr(u.CObj())), C.float(amount)))
+		result = unitRewardExperience(u, amount)
 		want := float64(0)
 		if before < amount {
 			want = float64(float32(float64(float32(amount-before))*float64(float32(0.01)) + 1))

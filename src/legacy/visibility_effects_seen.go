@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME3_3.h"
-#include "GAME4_3.h"
-static void visibility_lost_debug(nox_object_t* target) {
- nox_ai_debug_printf_5341A0("%d: Lost sight of %s(#%d)\n",gameFrame(),nox_xxx_getUnitName_4E39D0(target),((uint32_t*)target)[9]);
-}
-*/
-import "C"
-
 import (
 	"math"
 	"unsafe"
@@ -43,7 +33,7 @@ func visibilityLost(u *server.Object, index int) int {
 	ud := u.UpdateData
 	slots := visibilitySlots(ud)
 	v := slots[index]
-	C.visibility_lost_debug((*C.nox_object_t)(v.CObj()))
+	unitDebug(0, GetServer().S().Frame(), v.NetCode, GetServer().S().Types.ByInd(int(v.TypeInd)).ID())
 	GetServer().NoxScriptC().ScriptCallback((*server.ScriptCallback)(unsafe.Add(ud, 1296)), slots[index], u, server.ScriptEventType(15))
 	selected := visibilityObject(ud, 1196)
 	if slots[index] == *selected {

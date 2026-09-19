@@ -1,0 +1,104 @@
+{
+  "status": "qualified native conversion",
+  "c_baseline": "c4a1c3b0",
+  "bodies_removed": 20,
+  "orphan_bodies_removed": 1,
+  "body_lines": 405,
+  "retired_interfaces": [
+    "nox_ai_debug_printf_5341A0",
+    "nox_xxx_actionByName_534670",
+    "nox_xxx_actionNByNameMB_5345F0",
+    "nox_xxx_itemGetName_4E77E0_obj_util",
+    "nox_xxx_monsterPlayHurtSound_532800",
+    "nox_xxx_orderUnitLocal_500C70",
+    "nox_xxx_plyrGiveExp_4EF3A0_exp_level",
+    "nox_xxx_scriptDialog_548D30",
+    "nox_xxx_script_forcedialog_548CD0",
+    "nox_xxx_soloMonsterKillReward_4EE500_obj_health",
+    "nox_xxx_unitGiveXP_4EF270",
+    "sub_4E39F0_obj_db",
+    "sub_4EF2E0_exp_level",
+    "sub_532880",
+    "sub_534020",
+    "sub_5345B0",
+    "sub_534650",
+    "nox_ai_debug_print"
+  ],
+  "retained_callbacks": [
+    "nox_xxx_updateUndeadKiller_53E190",
+    "nox_xxx_useRead_53F7C0",
+    "sub_53F830"
+  ],
+  "focused_cases": 8464,
+  "targets": {
+    "default": {
+      "roots": 238,
+      "skips": [],
+      "manifest_hashes_enforced": 242,
+      "evidence": "build/port-unit-gameplay/native-affected-default"
+    },
+    "server": {
+      "roots": 238,
+      "skips": [],
+      "manifest_hashes_enforced": 242,
+      "evidence": "build/port-unit-gameplay/native-affected-server"
+    },
+    "highres": {
+      "roots": 238,
+      "skips": [],
+      "manifest_hashes_enforced": 242,
+      "evidence": "build/port-unit-gameplay/native-affected-highres"
+    }
+  },
+  "production": "build/port-unit-gameplay/native-production/production/production.json",
+  "builds": {
+    "opennox": {
+      "exit": 0,
+      "wall_seconds": 67.02896625408903,
+      "sha256": "0190f52c5aac2c82dab6e47bbbfb842bba0538db007e02c52e7355ec07a92450",
+      "abi_verified": true
+    },
+    "opennox-hd": {
+      "exit": 0,
+      "wall_seconds": 9.934204838005826,
+      "sha256": "eb8f17002eed7b1e44cc9c6ce0f90682af55923b059789d9b5eba0f521596304",
+      "abi_verified": true
+    },
+    "opennox-server": {
+      "exit": 0,
+      "wall_seconds": 67.58909468306229,
+      "sha256": "48d64559268fd88a9a1718f085a37a7beb2f0321b416e6d06b90848463c97a16",
+      "abi_verified": true
+    }
+  },
+  "full_suite": {
+    "exit": 1,
+    "wall_seconds": 56.85427754512057,
+    "failure_entries": 1553,
+    "packages": {
+      "skip": 32,
+      "pass": 15,
+      "fail": 3
+    },
+    "exact_failure_multiset_match": true,
+    "exact_package_result_match": true
+  },
+  "scenarios": {
+    "unit-gameplay-native": {
+      "exit": 0,
+      "binary_sha256": "0190f52c5aac2c82dab6e47bbbfb842bba0538db007e02c52e7355ec07a92450"
+    },
+    "unit-gameplay-native-save": {
+      "exit": 0,
+      "binary_sha256": "0190f52c5aac2c82dab6e47bbbfb842bba0538db007e02c52e7355ec07a92450"
+    }
+  },
+  "static": "build/port-unit-gameplay/native-static.log",
+  "source_files": 2790,
+  "c_loc": {
+    "files": 42,
+    "lines": 10184,
+    "reference_lines": 0
+  },
+  "physical_c_reduction": 636
+}

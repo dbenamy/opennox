@@ -107,7 +107,7 @@ func tradeIntro(s *shopSession) uint32 {
 	var b [86]byte
 	b[0], b[1] = 0xc9, 13
 	binary.LittleEndian.PutUint16(b[2:], vendor.TypeInd)
-	tradeCopyWide(b[4:54], (*uint16)(unsafe.Pointer(C.sub_4E39F0_obj_db(asObjectC(vendor)))), 24)
+	tradeCopyWide(b[4:54], unitNPCName(vendor), 24)
 	copy(b[54:], alloc.GoString((*byte)(unsafe.Add(vendor.InitData, 1684))))
 	return shopSend(player, b[:], 1)
 }
@@ -121,7 +121,7 @@ func tradePeerIntro(u *server.Object, s *shopSession) uint32 {
 		name = &other.UpdateDataPlayer().Player.NameFinal[0]
 	} else {
 		// The original alternate-side NPC path also names Units[1].
-		name = (*uint16)(unsafe.Pointer(C.sub_4E39F0_obj_db(asObjectC(s.Units[1]))))
+		name = unitNPCName(s.Units[1])
 	}
 	var b [52]byte
 	b[0], b[1] = 0xc9, 12

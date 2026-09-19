@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "server__gamemech__explevel.h"
-*/
-import "C"
-
 import (
 	"strings"
 	"unsafe"
@@ -85,7 +80,7 @@ func scriptBindingRoamByte(vm noxscript.VM, group bool) int {
 func scriptBindingGiveXP(vm noxscript.VM) int {
 	xp := vm.PopF32()
 	if u := scriptBindingObject(vm); u != nil {
-		C.nox_xxx_plyrGiveExp_4EF3A0_exp_level(C.int(uintptr(u.CObj())), C.float(xp))
+		unitGiveExperience(u, xp)
 	}
 	return 0
 }

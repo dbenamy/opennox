@@ -196,10 +196,10 @@ func creatureXferStats(r objectXferStream, u *server.Object, v int, npc bool) {
 			var name [256]byte
 			n := r.byte(0)
 			r.raw(unsafe.Pointer(&name[0]), int(n))
-			*word(1360) = uint32(C.nox_xxx_actionNByNameMB_5345F0((*C.char)(unsafe.Pointer(&name[0]))))
+			*word(1360) = uint32(unitActionIndex(alloc.GoString(&name[0]), true))
 		} else {
-			name := C.sub_5345B0(C.int(*word(1360)))
-			n := r.byte(byte(len(GoString(name))))
+			name := unitActionName(int32(*word(1360)), true)
+			n := r.byte(byte(len(alloc.GoString(name))))
 			r.raw(unsafe.Pointer(name), int(n))
 		}
 	}

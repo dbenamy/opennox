@@ -123,7 +123,7 @@ func objectDeathArmor(u *server.Object) {
 		key += "Plural"
 	}
 	format := internWStr(core.Strings().GetStringInFile(strman.ID(key), "Die.c"))
-	name := C.nox_xxx_itemGetName_4E77E0_obj_util(C.int(uintptr(u.CObj())))
+	name := (*C.wchar2_t)(unsafe.Pointer(unitItemName(u)))
 	C.deathLineMessage(C.int(uintptr(unsafe.Pointer(holder))), format, name)
 	core.Audio.EventPos(id, *pos, 0, 0)
 	GetServer().DelayedDelete(u)
@@ -140,11 +140,11 @@ func objectDeathWeapon(u *server.Object) {
 	var name *C.wchar2_t
 	switch {
 	case u.Material&16 != 0:
-		name = C.nox_xxx_itemGetName_4E77E0_obj_util(C.int(uintptr(u.CObj())))
+		name = (*C.wchar2_t)(unsafe.Pointer(unitItemName(u)))
 		key = "WeaponDieMetal"
 		id = 818
 	case u.Material&8 != 0:
-		name = C.nox_xxx_itemGetName_4E77E0_obj_util(C.int(uintptr(u.CObj())))
+		name = (*C.wchar2_t)(unsafe.Pointer(unitItemName(u)))
 		key = "WeaponDieWood"
 		id = 819
 	default:

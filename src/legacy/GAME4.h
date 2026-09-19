@@ -76,7 +76,6 @@ int nox_xxx_spellBuffOff_4FF5B0(nox_object_t* a1, int a2);
 char* sub_5007E0(char* a1);
 int sub_500A60();
 int sub_500B70();
-int nox_xxx_orderUnitLocal_500C70(int owner, int orderType);
 int nox_xxx_creatureIsMonitored_500CC0(nox_object_t* a1, nox_object_t* a2);
 bool nox_xxx_checkSummonedCreaturesLimit_500D70(nox_object_t* a1, int a2);
 int nox_xxx_summonStart_500DA0(int a1);
