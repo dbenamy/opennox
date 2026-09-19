@@ -79,6 +79,12 @@
       "sha256": "8f05687cde6b2c9ed738c998d2584aca47e10c0a8577082276ca380fc778eb60",
       "records": 360,
       "file": "src/player_death_recent_porttest_test.go"
+    },
+    {
+      "label": "player-death-statistics",
+      "sha256": "c6f280903ae925e7c3b4dc37b0ba6f0516abf6a8b43a119c79955dfbfdbb1218",
+      "records": 48,
+      "file": "src/player_death_statistics_porttest_test.go"
     }
   ]
 }

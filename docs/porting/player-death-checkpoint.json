@@ -2,7 +2,7 @@
   "status": "repeated three-target C contracts; frozen expectations installed; full qualification pending",
   "parent": "00131036",
   "production_change": "Guard absent killer team before reading/updating arena team score (+2 C lines).",
-  "passed_default_roots": 13,
+  "passed_default_roots": 14,
   "captures": [
     {
       "file": "capture-player-death-ability-cleanup.json",
@@ -68,12 +68,17 @@
       "file": "capture-player-death-recent-assist.json",
       "records": 360,
       "sha256": "8f05687cde6b2c9ed738c998d2584aca47e10c0a8577082276ca380fc778eb60"
+    },
+    {
+      "file": "capture-player-death-statistics.json",
+      "records": 48,
+      "sha256": "c6f280903ae925e7c3b4dc37b0ba6f0516abf6a8b43a119c79955dfbfdbb1218"
     }
   ],
   "pending": [
     "all-target affected corpus and fresh C production qualification",
     "native conversion and qualification"
   ],
-  "records": 1053,
-  "evidence": "build/port-player-death/cleanup-first"
+  "records": 1101,
+  "evidence": "build/port-player-death/statistics-repeat-{default,server,highres}"
 }

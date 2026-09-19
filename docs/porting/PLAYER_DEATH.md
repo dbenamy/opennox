@@ -98,3 +98,22 @@ Disk cleanup verified twelve superseded map-section/statistics binaries against
 successful reports and recorded hashes, reclaiming 584,677,176 bytes. The latest
 map-metadata production binaries remain. Audit and apply are consumed at
 build/port-player-death/cleanup-binaries.py; its JSON manifest remains.
+
+## Final pre-conversion review
+
+The317-root affected selection passed on all three targets:24,337 entries each,
+148 captures /33,247 records identical. Reviewing the callee graph found that
+match-statistics recording was disabled in the new death fixtures. An additional
+48-case contract now checks actor/target event pairs through arena/elimination
+scoring, including environment deaths, self/friendly kills, assists and the logging
+gate. All14 focused captures /1,101 records repeat identically across targets.
+The extra literal is frozen. A final318-root sweep and fresh production run remain.
+
+All43 external game operations used by these bodies already have Go-backed
+exports. Conversion can use those implementations directly. Three ignored native
+drafts are prepared but not compiled or installed; they are not qualification.
+
+Further disk cleanup removed72 superseded compressed binaries (1,648,354,499bytes),
+after verifying each decompressed hash against its successful build/ABI report and
+checking successful gameplay qualification. Manifests/logs/captures and latest
+qualified binaries remain. Audit/apply consumed; retain the cleanup JSON.

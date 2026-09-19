@@ -28,20 +28,23 @@ adjacent obsolete headings, annotations and blanks. Native conversion **00131036
 seven bodies /677 lines; read-only audit in build/port-player-death/selection-candidate.json.
 The next batch's C bridge and initial arena-team contracts are installed.
 Original C confirmed a null-team crash for an unteamed killer / teamed victim.
-A two-line guard is installed. Thirteen default-target groups now pass, with
-1,053 capture records (1,066 entries). Coverage includes scoring/team boundaries,
+A two-line guard is installed. Fourteen default-target groups now pass, with
+1,101 capture records (1,115 entries). Coverage includes scoring/team boundaries,
 assist expiry and frame wrap, actual registered dispatch, online source messages,
 quest lives/penalty/RNG, abilities/enchantments, cooperative pending-load cleanup,
 crown transfer and corpse cache/spawn/decay. See PLAYER_DEATH.md and
 player-death-checkpoint.json. Current working C is26,838 /67 files; the selected
 seven bodies are679 lines after the guard. Last completed conversion remains26,836.
 
-Focused independent target repeats passed on all three targets:13 captures,
-1,053 records, identical source and bytes. Frozen literals are installed;
-build/port-player-death/freeze.py is consumed. Static memory checks pass.
-Broader317-root selection and fresh C production qualification are next. The C
-manifest now selects affected tests. No native translation. All fixture draft
-copies are consumed; actual source takes precedence. No active test sessions.
+Focused independent target repeats passed on all three targets:14 captures,
+1,101 records, identical source and bytes. Frozen literals are installed.
+The thirteen-group freeze script is consumed; the added statistics contract also
+repeated on all targets before its literal was frozen. Static memory checks pass.
+The previous317-root affected selection passed on each target (24,337 entries,
+148 captures /33,247 records, byte-identical). A final318-root sweep and fresh C
+production qualification are next. No native translation is installed. Three
+uncompiled implementation drafts exist under build/port-player-death/native-*-draft.go;
+review before installation. All fixture draft copies are consumed.
 
 Disk: the latest cleanup removed twelve superseded map-section/statistics binaries,
 reclaiming584,677,176bytes. build/port-player-death/cleanup-binaries.py audit/apply
@@ -1359,3 +1362,7 @@ See build/port-spatial-targeting/completed-assets-{plan,audit}.json and applied 
 Session-entry native asset deduplication is complete:1,660,044,319 bytes reclaimed.
 Audit29716/apply32358 are joined; the script under build/port-item-respawn is
 consumed. Original assets/archive are unchanged.
+
+Latest disk cleanup:72 verified superseded compressed binaries removed,
+1,648,354,499bytes reclaimed. Audit/apply in build/port-player-death/cleanup-compressed.py
+are consumed; preserve superseded-compressed-binaries.json and all reports.
