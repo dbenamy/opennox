@@ -15,14 +15,12 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. Player death, arena/elimination/King of the Realm scoring, notification and
-corpse creation are now Go. Seven C bodies and six private interfaces retired;
-the registered PlayerDie callback retains a Go-backed C export. See
-[PLAYER_DEATH.md](docs/porting/PLAYER_DEATH.md).
+pause. Speech-bubble lifecycle, placement and rendering are now Go; conversion
+**f588409c** is pushed. See [CHAT_BUBBLES.md](docs/porting/CHAT_BUBBLES.md).
 
-Current production C is **26,145 physical lines in 67 files**, with zero reference
-C (−693 in this batch, including adjacent obsolete headings and blanks). Frozen
-comparisons, all three targets and fresh production/headless integration qualify.
+Current production C is **25,368 physical lines in 67 files**, with zero reference
+C (−779 in the latest conversion). Client combat overlays are the active batch;
+independent contracts and prerequisite repairs precede freezing its C baseline.
 See [PORTING_STATE.md](PORTING_STATE.md).
 
 ## Goal and target

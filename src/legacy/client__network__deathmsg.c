@@ -15,7 +15,7 @@ int sub_4952E0(uint16_t* a1) {
 	int v8;          // [esp-4h] [ebp-108h]
 	wchar2_t* v9;     // [esp-4h] [ebp-108h]
 	int v10;         // [esp+0h] [ebp-104h]
-	wchar2_t v11[32]; // [esp+4h] [ebp-100h]
+	wchar2_t v11[32] = {0}; // [esp+4h] [ebp-100h]
 	wchar2_t v12[32]; // [esp+44h] [ebp-C0h]
 	wchar2_t v13[64]; // [esp+84h] [ebp-80h]
 

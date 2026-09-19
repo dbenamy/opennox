@@ -1,0 +1,120 @@
+{
+  "status": "repeated three-target C captures; frozen qualification pending",
+  "parent": "f588409c",
+  "captures": [
+    {
+      "label": "combat-overlay-ally-capacity",
+      "sha256": "b2a6b68dc8a5a40bee80a07648c873da8635cf1a4bf318a681900bfde18925b4",
+      "records": 4,
+      "file": "src/combat_overlays_allies_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-ally-clear",
+      "sha256": "6647908fd8f09ac378705487bcd8294c74736f8dd31d6a69cabff09b1e934e33",
+      "records": 1,
+      "file": "src/combat_overlays_allies_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-ally-updates",
+      "sha256": "70b1d05a12bf2c83257756d44f66426f221b4ec0ead81b4ed66234f7c039e404",
+      "records": 100,
+      "file": "src/combat_overlays_allies_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-effect-go-callers",
+      "sha256": "c7168259e8edf0fe765a6cb133766455e0d9b4f9b74946d25b058614e835a0ac",
+      "records": 2,
+      "file": "src/combat_overlays_effect_callers_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-effect-history",
+      "sha256": "18d29386e73d4cb08d44a912b63b843801ac3afff7eb48c4f358a54a5b87849b",
+      "records": 150,
+      "file": "src/combat_overlays_effect_history_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-effect-links",
+      "sha256": "b6741034fb488dd05b7c66266400a790a7d61d9c4b87cd742d0d64b7a47327dc",
+      "records": 5,
+      "file": "src/combat_overlays_effect_links_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-feed-expiry",
+      "sha256": "7f89fa48222dcf56d9423d495eb94df054fd1f33c50afdd82bf473cb91daa9f4",
+      "records": 75,
+      "file": "src/combat_overlays_feed_ring_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-feed-icons",
+      "sha256": "5f430d9f048f645c2ed811f38d3ab04dfb648b75fe2d6350a70dcc44a1f0bb89",
+      "records": 28,
+      "file": "src/combat_overlays_feed_icons_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-feed-init",
+      "sha256": "15aba33dfe878d04f44f298815689c16ebfcb9a01a287142c416d9e02a44a9ba",
+      "records": 2,
+      "file": "src/combat_overlays_feed_icons_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-feed-literal-names",
+      "sha256": "88a778ab89d59a8dea16b4d5353642f3461a837b590f92370a8ba532ffa3a7b0",
+      "records": 9,
+      "file": "src/combat_overlays_names_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-feed-messages",
+      "sha256": "aaf58bcb1120058302b0405319ceb497072f1916b162742611464f3dc64bdf65",
+      "records": 27,
+      "file": "src/combat_overlays_feed_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-feed-ring",
+      "sha256": "8f2d85668556cb4f57fa869d5ea924c97c655ec084ab69515f6fafc094e49d5c",
+      "records": 205,
+      "file": "src/combat_overlays_feed_ring_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-feed-substitution",
+      "sha256": "dac6b47f81df2407076c63296225158c978beb1b4f0276959d682fc52af6c8be",
+      "records": 16,
+      "file": "src/combat_overlays_feed_icons_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-friend-capacity",
+      "sha256": "e7c16f023a28f10c9788ba3bcdd21196a7396e09f302e591ef4da038003523b5",
+      "records": 2,
+      "file": "src/combat_overlays_friends_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-friends",
+      "sha256": "ff06a0e526210dc4dfd16c3778c42d2899b497719f443822e079c277892befb3",
+      "records": 12,
+      "file": "src/combat_overlays_friends_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-health-capacity",
+      "sha256": "ad754626403d9d3ffb690ac246d568aea509405f002db3014a35cc4d31072f0e",
+      "records": 2,
+      "file": "src/combat_overlays_health_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-health-drawing",
+      "sha256": "841071d01acebf704edbfb14b52bc42dcd4a164f579a8e59938b1ef23e124af5",
+      "records": 50,
+      "file": "src/combat_overlays_health_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-health-list",
+      "sha256": "c47dba99defead97ece290a555bf0d67e1d3f2d223a822e7f0e51cf50cbbff6b",
+      "records": 15,
+      "file": "src/combat_overlays_health_porttest_test.go"
+    },
+    {
+      "label": "combat-overlay-shared-bubble-text",
+      "sha256": "2869508bf1024f25a3de80815f64a6dec513a327cffa2a69da0e363ee7b19159",
+      "records": 2,
+      "file": "src/combat_overlays_shared_bubble_porttest_test.go"
+    }
+  ]
+}

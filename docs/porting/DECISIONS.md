@@ -1975,3 +1975,31 @@ This prevents appending through freed storage and is a reversible production
 correction to review later. Corrected C and native lifecycle contracts, repeated
 three-target captures and fresh production qualification now pass; see
 [CHAT_BUBBLES.md](CHAT_BUBBLES.md).
+
+## Combat-overlay prerequisite — literal player names
+
+Independent glyph observations show the original C kill feed turns a player name
+containing two percent signs into one. Three paths incorrectly use the name as a
+format string. Copy the already bounded player-name field literally instead; the
+assist prefix still uses its fixed formatting template. This is a reversible UI
+correction made before freezing the C baseline. Corrected qualification is pending;
+see [COMBAT_OVERLAYS.md](COMBAT_OVERLAYS.md).
+
+## Combat-overlay prerequisite — missing victim lookup
+
+Consecutive original-C console notifications reuse the prior victim's name when
+the next victim is absent or unknown. The independent notification contract
+reproduces18 failures. Initialize that local name buffer to empty before lookup,
+preserving known-player formatting. This reversible correction is included before
+baseline capture; see [COMBAT_OVERLAYS.md](COMBAT_OVERLAYS.md).
+
+### Combat overlays: correct the shared effect link layout before freezing
+
+Independent real-allocation contracts reproduced failed membership and incomplete
+cleanup with Go DrawableFX.Next at byte16. Original C attach/detach stores the
+per-drawable next link at64; byte16 belongs to movement history. Move Next to64,
+retain byte16 as uint32 and assert the link offset at compile time. Remove the
+small-pointer cleanup workaround that masked the wrong field. Both caller
+contracts pass in effect-layout-corrected; wider qualification remains. This is
+a reversible prerequisite repair for review, not an intentional trail algorithm
+change. Production C LOC remains25,368/67 files/zero reference.

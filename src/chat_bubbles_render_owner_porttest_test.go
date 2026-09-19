@@ -17,9 +17,9 @@ type chatBubbleRenderOwner struct {
 	words map[string]*uint32
 }
 
-func newChatBubbleRenderOwner(t *testing.T) *chatBubbleRenderOwner {
+func newChatBubbleRenderOwner(t *testing.T, extraNames ...string) *chatBubbleRenderOwner {
 	t.Helper()
-	o := &chatBubbleRenderOwner{objectRenderOwner: newObjectRenderOwner(t), chatBubbleStorage: newChatBubbleStorage(t)}
+	o := &chatBubbleRenderOwner{objectRenderOwner: newObjectRenderOwner(t, extraNames...), chatBubbleStorage: newChatBubbleStorage(t)}
 	t.Cleanup(o.c.srv.PortTestMinimapTeamColors())
 	var restore func()
 	o.words, restore = legacy.PortTestChatBubbleRenderGlobals()

@@ -2,7 +2,6 @@ package opennox
 
 import (
 	"image"
-	"math"
 	"unsafe"
 
 	"github.com/opennox/libs/object"
@@ -305,11 +304,7 @@ func (c *Client) sub_495B00(dr *client.Drawable) {
 	aclass := alloc.AsClassT[client.DrawableFX](*memmap.PtrPtr(0x5D4594, 1203868))
 	for p := dr.Field_114; p != nil; p = next {
 		next = p.Next
-		if uintptr(next.C()) < math.MaxUint16 {
-			// FIXME: Sometimes this pointer contains garbage.
-			//        Equip throwable like shuriken or chakram and fire it. Once it hits, this will eventually trigger.
-			next = nil
-		}
+
 		legacy.Sub_495B50(p)
 		aclass.FreeObjectFirst(p)
 	}

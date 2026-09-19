@@ -27,9 +27,31 @@ Fixture corrections used the actual cap height, inclusive C rectangle helper,
 and owned team-color definitions. No frozen expectation changed during translation.
 Every chat copied draft, freezer and installer is consumed; actual source wins.
 
-Read-only next candidate: 31 client combat overlay functions /827 body lines, with
-caller references in build/port-chat-bubbles/next-combat-overlays-candidate.json.
-Scope/owner review is still pending; no next-batch source changes are installed.
+Speech-bubble conversion **f588409c** is committed/pushed. Next batch is active:
+32 client combat overlay functions /871 C body lines, with tracked caller audit
+combat-overlays-selection.json. Ally/friend/health and literal-name contracts pass.
+C now copies names literally and clears a missing-victim buffer before formatting;
+physical C LOC is unchanged. Health fixture colors are opaque; the original feed
+format/vector tables are owned explicitly. Additional equal-width bubble glyph/
+pixel and effect-link contracts pass without changing old chat captures.
+
+Effect membership and cleanup independently reproduced the Go Next offset 16/64
+mismatch. Next now occupies byte 64, with a compile-time assertion; offset 16 is
+history, and the obsolete small-pointer cleanup workaround is removed. Both
+caller contracts pass. The sprite fixture needed explicit draw-data initialization:
+alloc.New does not copy its argument. All 19 focused groups /707 records pass,
+and default/server/highres captures match with identical source. Goldens are frozen.
+
+All repeat/static sessions are joined; static checks pass. Broader
+176-root selection and fresh production qualification remain. The freezer and
+all copied fixture drafts are consumed. Native draft combat_overlays.go exists
+only under build/port-combat-overlays/native-draft; do not install before C
+qualification. See [COMBAT_OVERLAYS.md](docs/porting/COMBAT_OVERLAYS.md).
+
+Additional disk cleanup removed 131 older regenerable Go compiler artifacts,
+reclaiming 6,444,559,234 bytes with no builds running. Removal is consumed;
+build/port-combat-overlays/removed-stale-go-cache.json records the paths.
+Go regenerates these on demand; source/assets/captures/binaries are preserved.
 
 Disk cleanup compressed 49 verified completed logs, reclaiming 2,239,764,149 bytes.
 The two manifests under build/port-chat-bubbles record original/gzip paths and
