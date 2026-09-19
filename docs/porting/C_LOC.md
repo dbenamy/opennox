@@ -253,6 +253,7 @@ target build selection and linker evidence.
 | Retire orphaned command-file configuration callbacks | 58 | 14,451 | −240 | 0 |
 | Session dialogs: MOTD buffer prerequisite (C baseline) | 58 | 14,457 | +6 | 0 |
 | Session dialogs and server filters: native Go | 57 | 13,442 | −1,015 | 0 |
+| Client interaction text prerequisites (qualified C baseline) | 57 | 13,456 | +14 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

@@ -2,107 +2,50 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 13.4k lines** — **13,442 physical lines in 57
-production `.c` files**, zero reference C; this conversion removes **1,015 lines**.
+**Qualified C remaining: about 13.5k lines** — **13,456 physical lines in 57
+production `.c` files**, zero reference C; text prerequisites add **14 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Active — client interaction C baseline
+## Current — client interaction corrected C baseline qualified
 
-Qualified production parent **b30f96a3** is committed/pushed. Thirteen original-C
-contract roots pass in c-timing-initial and independently repeat in c-initial-repeat
-with every capture unchanged; static-timing passes. All jobs are joined.
-Recovery checkpoint **6c851a78** is committed/pushed, **not a qualified C baseline**.
-Its production source was unchanged, C13,442 /57 files /zero reference. The working
-prerequisites below now modify production and need fresh qualification.
-See [CLIENT_INTERACTION.md](docs/porting/CLIENT_INTERACTION.md) and the tracked
-initial manifest/checkpoint for portable rerun instructions and remaining gates.
+The83-body /1,496-line connected batch is qualified and its original-C captures
+are frozen in this checkpoint. Recovery checkpoint **c856a315** is pushed.
+Qualified production C is13,456 /57 files /zero reference (+14
+text-prerequisite lines from the previous qualified production b30f96a3).
 
-Coverage includes primitives, text state, actual chat/resource ownership, indicator
-drawing,714 talk/use/trade queue cases, key/vote, game-over, conversation, help,
-clock/cursor and modal/frame ordering. Corrected fixture assumptions: resource
-background images use a separate loader; named font registration does not replace
-renderer fallback. No production behavior was changed to satisfy those contracts.
-No final goldens are frozen. Installed test drafts are consumed; never recopy them.
-Remaining: hover enumeration, paper-doll drawing, chat draw/submit/input, HUD
-visibility and Escape ordering; then full baseline.
-Text prerequisites are now installed but unqualified: centered rows copy at most
-317 UTF-16 units, chat formatting allocates from input length, and the shared console
-formatter uses a bounded512-unit fast path plus input-sized retry. The latter has
-two remaining C call sites; synchronous Go console printing owns its string before
-return. Working C13,456 /57 files /zero reference (+14 prerequisite lines; the
-header correction is outside the C LOC measure).
+Default/server/highres pass493/490/493 affected roots, with227/226/227 unchanged
+parent artifacts and31/29/31 interaction captures. Independent contract repeats
+match exactly; all2,746 source fingerprints agree. Static checks, three fresh
+production binaries/ABI, exact1,553 known full-suite failure entries (15 pass /
+3 fail /32 skip packages), and four headless scenarios pass. Scenarios cover
+dialogs, gameplay, save/load and nine inventory screens. All test/build/scenario
+jobs are joined, including production session4620.
 
-The first long-text run (c-messages-initial/session21268) was deliberately terminated
-and joined during discovery when review found the additional fixed512-unit console
-buffer. It produced no accepted test evidence. All children in its process group
-were joined/absent before edits. Sixteen roots pass in c-messages-second (session86817 joined), with all thirteen
-earlier capture hashes unchanged. New independent contracts cover centered-row neighbors,
-full console text, chat count/encoding boundaries, and mixed variadic console
-formatting across the stack/heap threshold. Qualification and final capture freeze
-remain pending; the broader scope is still incomplete.
+See [CLIENT_INTERACTION.md](docs/porting/CLIENT_INTERACTION.md), the tracked
+client-interaction-batch.json, c-captures.json and c-qualification.json. Evidence:
+`build/port-client-interaction/c-affected-*` and `c-production`. Corrections bound
+centered rows, allocate chat formatting by input length and bound shared console
+formatting with a dynamic retry; DECISIONS.md records the reversible choices.
 
-The 83-body selection/reachability/owner audits and review notes remain under
-`build/port-client-interaction`. Scope review must include non-dword named owners,
-raw registrations, text storage bounds and GUI callback lifetime. Draft dispatcher
-is now installed: do not copy it over later edits. Next: finish rendering, pickup, cursor and ordered modal/escape contracts, then baseline
-qualification before conversion. Preserve the parent native manifest and captures.
+Next: translate79 live routines/inlines,
+remove four unreachable bodies, and move their private owners/callers to Go.
+The connection-dialog owner is written only by its unreachable creation graph;
+retire the artificial MOTD gate6 explicitly and compare every surviving row with
+the old frozen capture. Ten selected symbols have outside C references; review
+raw callback96 separately. Read native-review-notes.md and the interface previews
+under ignored build/ before conversion. They are advisory, not final export lists.
+No native implementation is installed yet. Keep packet reorder/update decoding
+separate. No user decision is pending.
 
-Extended development checkpoint passes19/18/19 roots and matching captures on
-default/server/highres, no skips;2,737 source fingerprints agree. The nineteen
-default captures repeat unchanged from c-hover-second. Static-extended passes.
-All jobs are joined. See client-interaction-extended-{batch,checkpoint}.json and
-extended-tests.txt. This is not a production qualification or final frozen baseline.
-New coverage:27 centered-text boundaries,624 chat cases,44 console-format cases,
-48 pixel/expiry cases,90 pickup/secondary cases, and2,250 circle/box hover boundary
-points plus18 eligibility gates and depth ordering. Hover uses actual client
-visibility, deliberately unavailable in the server build; that is its sole omission.
-Fixture corrections: correct color encoding,11px cap-height plus4px line spacing,
-and capsule geometry independently expressed as distance to its vertical segment.
-All earlier capture hashes remain unchanged.
-
-Extended checkpoint **ac2c9182** is committed and pushed. Continued source adds
-HUDVisibility and ChatDrawingAndSubmit: c-hud-second passes21 roots, all nineteen
-preceding captures unchanged; static-hud passes. c-hud-initial reached chat submit
-without an owned netlist; fixed by initializing/restoring the real queue. Both jobs
-are joined. New evidence:192 HUD state cases,33 chat resize/composition cases and
-24 submission length/mode cases. All these installed drafts are consumed.
-
-EscapeOrder passes352 cases in c-escape-initial (22 roots, joined), covering
-actual controllers and simultaneous close behavior. Hover enumeration and
-DollAssets were installed next. DollAssets passes111 shipped asset loads/table
-slots, including the null name. Enumeration initially failed because the reused
-effects fixture's GetMousePos overrides the real input position. A client proxy now
-delegates just that getter to the owned input device; index, renderer and selection
-remain real. The failed runs are joined and superseded; no expectations weakened.
-
-Thirty contract roots now pass in c-escape-complete-initial (session34962 joined).
-This includes full paper-doll composition, conversation blink borders, Escape
-through the chat callback, quantity/quickbar/identify closure, and pending book
-additions. All26 earlier captures match c-blink-second, and all29 captures there
-match the thirty-root run. The book/doll fixture corrections are documented in
-the batch report. No final goldens are frozen and production qualification remains
-pending. Installed drafts are consumed; never recopy them over corrected source.
-
-The all-target development sweep passes30/28/30 roots and31/29/31 captures on
-default/server/highres, with no skips and2,746 matching source fingerprints.
-Every shared capture agrees, and the default captures repeat independently from
-c-escape-complete-initial. Static-contracts passes. All jobs are joined.
-See client-interaction-contract-{batch,checkpoint}.json and contract-tests.txt.
-The two server omissions are the client-only hover geometry/enumeration roots.
-Next: affected accumulated corpus and fresh production qualification, then final
-baseline review/freeze before translation. No final baseline or port is claimed.
-
-Disk cleanup removed62 rebuildable Go cache data files >=64MiB, each unaccessed and
-unmodified for six hours, after all builds were joined. Reclaimed4,364,972,826 bytes.
-The audit/removal manifests under build/port-client-interaction are retained;
-removal is consumed. Assets, source and qualification evidence were untouched.
-
-All three final session-dialog scenario copies have now been hash-deduplicated:
-1,669,136,451 additional bytes reclaimed. Audit/apply jobs are joined; deletion
-mode of deduplicate-native-qualified-assets.py is consumed. Per-run restoration
-manifests and references remain; original assets/archive are unchanged.
+All installed source drafts and freeze-c.py are CONSUMED. Never recopy them over
+current source or regenerate frozen captures to hide a native mismatch. The old
+session-dialog source installers and qualification finalizers are consumed too.
+Completed C-scenario copies were hash-deduplicated after all jobs joined, reclaiming
+2,225,495,437 bytes. Audit/apply are complete; deduplicate-c-assets.py deletion
+mode is CONSUMED. Restoration manifests and all qualification evidence remain;
+original assets/archive are unchanged. About3.6 GiB is free.
 
 ## Current — session dialogs Go conversion qualified
 

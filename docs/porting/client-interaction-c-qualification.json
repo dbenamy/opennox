@@ -1,0 +1,41 @@
+{
+  "status": "qualified corrected C baseline",
+  "production_parent": "b30f96a3",
+  "contract_checkpoint": "c856a315",
+  "source_files": 2746,
+  "targets": {
+    "default": {
+      "root_tests": 493,
+      "interaction_captures": 31,
+      "inherited_captures": 227,
+      "wall_seconds": 152.26085942983627
+    },
+    "server": {
+      "root_tests": 490,
+      "interaction_captures": 29,
+      "inherited_captures": 226,
+      "wall_seconds": 149.61876917700283
+    },
+    "highres": {
+      "root_tests": 493,
+      "interaction_captures": 31,
+      "inherited_captures": 227,
+      "wall_seconds": 149.57670269999653
+    }
+  },
+  "capture_manifest": "docs/porting/client-interaction-c-captures.json",
+  "production": "build/port-client-interaction/c-production/production/production.json",
+  "static": "build/port-client-interaction/static-contracts.log",
+  "c_loc": {
+    "files": 57,
+    "lines": 13456,
+    "reference_lines": 0,
+    "prerequisite_delta": 14
+  },
+  "corrections": [
+    "Bound centered row text to317 UTF-16 units plus NUL",
+    "Input-sized chat formatting allocation",
+    "Bounded shared console formatting with dynamic retry"
+  ],
+  "target_difference": "Server omits actual client hover geometry/enumeration and inherited inventory world selection."
+}

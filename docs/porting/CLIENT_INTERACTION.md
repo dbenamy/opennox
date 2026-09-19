@@ -1,10 +1,10 @@
-# Client interaction and remaining game dialogs — C baseline in development
+# Client interaction and remaining game dialogs — qualified C baseline
 
-Qualified production parent: `b30f96a3`, **13,442 C lines /57 files /zero reference C**.
-Recovery checkpoint `6c851a78` added tests only, with production unchanged.
-The working text prerequisites below now change production and remain unqualified.
-This is not the completed C baseline or a conversion; the parent's production
-qualification remains the last qualified production evidence.
+The corrected C baseline is now qualified and frozen; conversion is next.
+Production C: **13,456 lines /57 files /zero reference C**, +14 prerequisite lines
+from parent `b30f96a3`. Recovery checkpoints `6c851a78`, `ac2c9182` and `c856a315`
+preceded full qualification. Historical development sections below describe their
+then-pending gates; the final qualification section supersedes those statuses.
 
 ## Scope and reachability
 
@@ -186,3 +186,49 @@ source fingerprints agree. Both client-only hover roots are excluded on server.
 Rerun [the contract batch](client-interaction-contract-batch.json) with the desired
 `--phase default|server|highres` and a fresh output directory. This checkpoint
 remains separate from final baseline and production qualification.
+
+
+## Corrected-C qualification in progress
+
+Recovery checkpoint `c856a315` is pushed. The affected selection passes493/490/493
+roots on default/server/highres in152.3/149.6/149.6 seconds, without skips. All
+227/226/227 inherited captures and31/29/31 new interaction captures agree with
+the preceding observations. Source fingerprints agree across all runs.
+The [qualification batch](client-interaction-batch.json) retains the parent's
+exact capture gates and adds inventory, quickbar, spellbook, console, visibility
+and chat dependencies. Fresh production qualification also compares the existing
+nine-screen inventory-window scenario, alongside dialog/gameplay/save-load.
+
+The refreshed literal caller audit still finds four unreachable bodies. Ten
+selected symbols have references in C outside the selected bodies, primarily
+client decoding and centered notices; review callback slots separately before
+retiring interfaces. Forty-nine selected symbols have Go-to-C references to route
+directly to native Go. The ignored previews are audit aids, not final retirement
+lists. C remains13,456 physical lines in57 files, zero test-reference C.
+
+
+## Final corrected-C qualification
+
+All493/490/493 affected roots pass on default/server/highres. All227/226/227 parent
+captures remain unchanged, and31/29/31 interaction captures agree across targets
+and independent repeats. The two hover roots and inherited inventory world
+selection are client-only. Static checks and all2,746 source fingerprints agree.
+
+Three fresh binaries verify ELF32/i386/SSE2/CGO, required interfaces, retired
+symbols and absence of test helpers. The asset suite matches the exact1,553 known
+failure entries and15 pass /3 fail /32 skip package outcomes. Headless dialog,
+gameplay, save/load and nine-screen inventory scenarios all match their existing
+references with replacement disabled. Evidence is under c-affected-* and
+c-production in build/port-client-interaction; all jobs are joined.
+
+[Qualification](client-interaction-c-qualification.json) and
+[frozen interaction captures](client-interaction-c-captures.json) record the
+accepted baseline. [The batch manifest](client-interaction-batch.json) now enforces
+those hashes alongside the inherited captures. No C algorithms are retained
+solely for tests. Translation and native qualification are next.
+
+
+After qualification, verified duplicate files in the four completed C scenario
+copies were removed, reclaiming2,225,495,437 bytes. Restoration manifests preserve
+paths, hashes and metadata. Original assets/archive and captures/reports remain;
+the deduplication script's deletion mode is consumed.
