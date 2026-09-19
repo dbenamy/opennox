@@ -34,7 +34,6 @@ package legacy
 #include "client__drawable__update__telwake.h"
 #include "client__drawable__update__vortexup.h"
 extern void* nox_xxx_aClosewoodengat_587000_133480;
-extern void* dword_587000_155144;
 extern void* dword_587000_127004;
 extern void* dword_587000_93164;
 extern void* dword_587000_122852;
@@ -50,7 +49,6 @@ import (
 func InitBlobData() {
 	blobdata.Init(&blobdata.Ptrs{
 		Ptr_nox_xxx_aClosewoodengat_587000_133480: &C.nox_xxx_aClosewoodengat_587000_133480,
-		Ptr_dword_587000_155144:                   &C.dword_587000_155144,
 		Ptr_dword_587000_127004:                   &C.dword_587000_127004,
 		Ptr_dword_587000_93164:                    &C.dword_587000_93164,
 		Ptr_dword_587000_122852:                   &C.dword_587000_122852,

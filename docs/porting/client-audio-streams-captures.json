@@ -1,5 +1,5 @@
 {
-  "status": "repeated three-target C captures; frozen qualification pending",
+  "status": "qualified C baseline; native captures match unchanged",
   "parent": "eeaf1030",
   "repeats": {
     "default": "dispatch-final",

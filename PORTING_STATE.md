@@ -2,70 +2,57 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 24k lines** — **23,661 physical lines in 66 production
-`.c` files**, zero reference C. Latest qualified conversion: **−764**;
-qualified WAV baseline corrections add13 lines.
-See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 22k lines** — **22,400 physical lines in 66 production
+`.c` files**, zero reference C. Latest qualified conversion: **−1,261** from the
+corrected C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — native client presentation qualified
+## Current — native client audio streams qualified
 
-C baseline **fc842bfa**, qualification checkpoint **9e9c8419**. All 22 bodies are
-Go; four real C decoder exports remain, 18 private interfaces and the private
-chant-tree C global retire. All 16 focused captures /7,744 records match unchanged
-on the first native build. Affected default/highres: 265 roots, 184 captures,
-278,640 records; server: 264 roots, 183 captures, 271,728 records. Every shared
-capture matches C; server excludes the established client-only occlusion case.
-All 2,549 native source fingerprints match across targets and production.
+C baseline **2f4dbfea**, qualification checkpoint **419a85dc**; both are pushed.
+All 70 bodies are Go. Twenty-two interfaces remain for real C callers or stored
+callbacks; 48 private interfaces and the driver C global retire. Shared layouts
+retain C-heap ownership. Go callers invoke Go directly.
 
-Static checks, three fresh production binaries/ABI, the exact known full-suite
-failure set, headless gameplay and explicit save/load pass. Direct nm verifies
-retirement of the private C global. All build/test sessions are joined. See
-[CLIENT_PRESENTATION.md](docs/porting/CLIENT_PRESENTATION.md) and its qualification
-JSON. Current C: **23,648 /66 files /zero reference**, −764 from the corrected
-baseline. The prior ray-capacity correction added one explanatory C comment.
+The first native build passed all 16 frozen captures / 927 records unchanged.
+Each affected default/server/highres sweep passes 34 root-package and five timer
+package tests. All 19 captured artifacts / 1,533 records match C exactly; existing
+audio/list contracts also validate their embedded goldens. All 2,569 native source
+fingerprints match across targets and fresh production. Static memory-map checks,
+three binaries/ABI, exact known full-suite results (1,553 failure entries; 32 skipped,
+15 passed, three failed packages), fresh gameplay and explicit save/load pass.
+All build/test sessions are joined. Frozen expectations were not changed.
 
-The capacity contract found and fixed an original untracked 97th ray allocation
-before freezing. The first production gate needed a manifest classification
-correction; no native golden or production behavior correction was needed.
-All fixture/native drafts, install-native.py and freeze.py are CONSUMED.
-Installed source wins; never replay these files. Evidence and restoration helpers
-remain under build/port-client-spell-presentation.
+Reports: [CLIENT_AUDIO_STREAMS.md](docs/porting/CLIENT_AUDIO_STREAMS.md), tracked
+C/native qualification JSON and capture index. Local evidence is under
+`build/port-client-audio-streams`: successful C production is `c-qualified-production`;
+native evidence is `native-focused`, `native-final-{default,server,highres,production}`
+and `static-native.log`. The first C production attempt used a copied reference to
+the preceding manifest and does not qualify the batch; the corrected rerun passed.
 
-Disk cleanup: completed C and native scenario pairs each reclaimed
-1,112,747,701 bytes after hash/inactivity checks. Their deduplication audit/apply
-modes are consumed; --restore NAME remains available. Six superseded combat-overlay
-binaries reclaimed 292,252,548 bytes; hashes/revisions/rebuild instructions are in
-build/port-combat-overlays/removed-superseded-binaries.json. Original assets, archive,
-all captures and this batch's C/native production binaries are retained.
+The WAV path/format corrections and clock/cache compatibility decisions are recorded
+for review in the batch report and DECISIONS.md. The first qualified parent before
+this batch was client presentation **eeaf1030** (C 23,648); corrected audio C was
+23,661, and the native conversion removes 1,261 physical lines.
 
-Client presentation conversion **eeaf1030** is committed/pushed. Next batch active:
-70 audio stream/cache/driver-queue C bodies /1,109 lines, all reachable from25
-external roots. Tracked scope/caller audit and CLIENT_AUDIO_STREAMS.md describe it.
-The corrected selector has unique declarations; discard the earlier provisional
-graph that mistook three indented call sites for definitions.
-Frozen audio C checkpoint **2f4dbfea** is committed/pushed and now fully qualified.
-70 bodies /1,122 lines (original1,109);16 focused captures /927 records. Each
-final target passes34 root-package +5 timer-package tests;19 artifact captures
-/1,533 records match. Existing audio/list tests validate embedded goldens too.
-All2,563 source fingerprints match C targets and successful fresh production.
-Three binaries/ABI, exact known suite (1553 entries;32 skip/15 pass/3 fail), gameplay
-and explicit save/load pass. static-c-qualified.log passed. All sessions joined.
+**Consumed:** freeze.py, install-native.py, generate-native-adapters.py, all fixture
+and native drafts. Never replay them; installed source is authoritative.
 
-Successful production: c-qualified-production, session5702 joined. The earlier
-c-final-production used a copied reference to the previous batch manifest and
-failed on an existing scenario name; it does not qualify this batch. The manifest
-reference is fixed and successful evidence is in client-audio-streams-c-qualification.json.
+Disk cleanup completed for four C/native scenario copies after hash/inactivity
+checks, reclaiming 2,225,495,402 bytes. Audit/apply sessions are joined and consumed.
+The helper preserves per-run restore manifests; original assets,
+archive, changed save files, captures and binaries remain. Earlier stale compiler
+cache cleanup reclaimed 8,618,371,198 bytes and is consumed.
 
-The WAV path/format corrections and clock/cache compatibility decisions are in
-CLIENT_AUDIO_STREAMS.md. Current C23661 /66 files /zero reference, +13 prerequisite.
-Next: install/review native drafts and run frozen comparisons, then full native
-qualification/commit/push.22 interfaces remain required by C/callbacks;48 areprivate.
-Ignored native-draft files (types/buffers/io/voices/devices/exports/porttest.go),
-native-bindings.json, retained.json and generate-native-adapters.py are prepared,
-formatted but UNCOMPILED and NOT INSTALLED. Source C still wins. freeze.py and all
-installed fixture drafts are CONSUMED. Original assets/archive/captures untouched.
+Next: commit/push this qualified conversion, then continue with client audio
+events/playback. Read-only candidate:
+`build/port-client-audio-events/selection-draft.json` and `caller-audit-draft.json`.
+The revised scope has 62 bodies / 1,182 body lines and 35 external roots, all reachable:
+audio event scheduling/playback, music/dialog controls, sample refill and AIL format
+mapping in GAME2.c, GAME1_3.c and client__audio__audevent.c. Adjacent GUI overlay
+helpers are excluded. No next-batch source has been installed. Reuse the current
+stream/cache/driver fixtures and qualified production where source identity allows.
 
 ## Qualified parent — native combat overlays
 
@@ -1423,3 +1410,13 @@ About 2.9 GiB was free after cleanup, before C production qualification.
 Read-only next candidate: build/port-client-spell-presentation/selection-draft.json
 and plan-draft.md. Twenty-two client spell/item presentation bodies; caller audit
 and boundary review remain before accepting the next batch. No source installed.
+
+
+Read-only next candidate: build/port-client-audio-events/selection-draft.json,
+56 bodies /1,031 body lines across audio event scheduling/playback and dialog
+queue helpers in GAME2.c, GAME1_3.c and client__audio__audevent.c. Whole-repository
+reachability and ownership audit remain; no next-batch source is installed.
+
+Prepared but NOT RUN: deduplicate-client-audio-streams-completed-assets.py can
+audit completed C/native scenario copies only after production finishes. Its
+apply mode must not run until the independent hash/inactivity audit is reviewed.

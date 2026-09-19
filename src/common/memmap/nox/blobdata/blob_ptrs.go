@@ -6,7 +6,6 @@ import (
 
 type Ptrs struct {
 	Ptr_nox_xxx_aClosewoodengat_587000_133480 *unsafe.Pointer
-	Ptr_dword_587000_155144                   *unsafe.Pointer
 	Ptr_dword_587000_127004                   *unsafe.Pointer
 	Ptr_dword_587000_93164                    *unsafe.Pointer
 	Ptr_dword_587000_122852                   *unsafe.Pointer

@@ -3264,7 +3264,6 @@ func Init(p *Ptrs) {
 	*memmap.PtrPtr(0x587000, 316784) = memmap.PtrOff(0x581450, 11564)
 	*memmap.PtrUint32(0x587000, 316808) = 0xDEADBEEF
 	*p.Ptr_nox_xxx_aClosewoodengat_587000_133480 = memmap.PtrOff(0x5D4594, 1049220)
-	*p.Ptr_dword_587000_155144 = memmap.PtrOff(0x5D4594, 1193204)
 	*p.Ptr_dword_587000_127004 = memmap.PtrOff(0x5D4594, 1045324)
 	*p.Ptr_dword_587000_93164 = memmap.PtrOff(0x5D4594, 816244)
 	*p.Ptr_dword_587000_122852 = memmap.PtrOff(0x5D4594, 830980)

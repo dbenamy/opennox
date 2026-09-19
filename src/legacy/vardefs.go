@@ -27,7 +27,6 @@ extern uint32_t dword_5d4594_1049864;
 extern uint32_t dword_5d4594_1062512;
 extern uint32_t dword_5d4594_1049500;
 extern uint32_t dword_5d4594_3798840;
-extern void* dword_587000_155144;
 extern uint32_t dword_5d4594_1047516;
 extern uint32_t dword_5d4594_1308084;
 extern uint32_t dword_5d4594_3798824;
@@ -945,7 +944,7 @@ func Get_dword_5d4594_1548524() int {
 	return int(C.dword_5d4594_1548524)
 }
 func Get_dword_587000_155144() unsafe.Pointer {
-	return C.dword_587000_155144
+	return unsafe.Pointer(audioStreamRoot())
 }
 func Get_nox_alloc_magicEnt_1569668() unsafe.Pointer {
 	return C.nox_alloc_magicEnt_1569668

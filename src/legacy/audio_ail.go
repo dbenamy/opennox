@@ -14,7 +14,6 @@ int sub_43EE00(void* a1);
 int sub_43F060(uint32_t* a1);
 int sub_43F0E0(uint32_t* a1);
 char* sub_413890();
-int sub_486640(void* a1, int a2);
 int nox_xxx_parseSoundSetBin_424170(char* a1);
 
 extern void* dword_587000_127004;
@@ -30,7 +29,6 @@ extern void* dword_587000_122852;
 extern void* dword_587000_81128;
 extern void* dword_587000_93164;
 extern void* dword_5d4594_805984;
-extern void* dword_587000_155144;
 */
 import "C"
 import (
@@ -323,7 +321,7 @@ func sub_4863B0(p unsafe.Pointer) int {
 }
 
 func Sub_486640(a1 unsafe.Pointer, a2 int) int {
-	return int(C.sub_486640(a1, C.int(a2)))
+	return int(int32(audioStreamScaleVolume(a1, uint32(a2))))
 }
 
 func Get_dword_5d4594_805984() unsafe.Pointer {
@@ -360,19 +358,19 @@ func Sub_451850(a1 unsafe.Pointer, a2 unsafe.Pointer) {
 }
 
 func Sub_486FA0(a1 int) {
-	C.sub_486FA0(C.int(a1))
+	audioStreamDeviceRegister((*audioStreamDescriptor)(unsafe.Pointer(uintptr(a1))))
 }
 
 func Sub_487D00(a1 unsafe.Pointer) {
-	C.sub_487D00((*C.uint)(a1))
+	audioStreamByteRate((*audioStreamFormat)(a1))
 }
 
 func Sub_487150(a1 int, a2 unsafe.Pointer) unsafe.Pointer {
-	return unsafe.Pointer(C.sub_487150(C.int(a1), a2))
+	return unsafe.Pointer(audioStreamContextAcquire(int32(a1), (*audioStreamFormat)(a2)))
 }
 
 func Sub_487790(a1 unsafe.Pointer, a2 int) int {
-	return int(C.sub_487790(C.int(uintptr(a1)), C.int(a2)))
+	return int(audioStreamVoiceCreateMany((*audioStreamContext)(a1), int32(a2)))
 }
 
 //export sub_44D8F0

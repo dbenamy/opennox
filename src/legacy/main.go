@@ -114,11 +114,11 @@ func Sub_431270() {
 }
 
 func Sub_4875F0() {
-	C.sub_4875F0()
+	audioStreamContextDestroyAll()
 }
 
 func Sub_4870A0() {
-	C.sub_4870A0()
+	audioStreamDeviceDestroyAll()
 }
 
 func Sub_431290() {
