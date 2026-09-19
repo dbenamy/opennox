@@ -1957,3 +1957,12 @@ restore the original grouping and keep every frozen expectation. All bytes, stat
 returns and checksums now match corrected C in all targets, and production/save-load
 qualification passes. Do not “simplify” these boundaries without an explicit format
 compatibility decision. See [MAP_SECTIONS.md](MAP_SECTIONS.md).
+
+## Arena scoring prerequisite — unteamed killer
+
+An original-C contract confirms a null-team read when an unteamed player kills a
+teamed player. Guard the absent killer team's score update while preserving the
+player's score increase. This is a small, reversible correction before the next
+C baseline, requiring fresh production qualification. Preserve the separate
+historical suicide/environment death-counter behavior. See
+[PLAYER_DEATH.md](PLAYER_DEATH.md) for evidence and pending qualification.

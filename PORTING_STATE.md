@@ -24,10 +24,19 @@ Evidence: docs/porting/map-metadata-native-qualification.json and
 build/port-map-metadata/native-*. All build/test sessions are joined.
 
 Current C: **26,836 physical lines /67 files /zero reference**,−165 including
-adjacent obsolete headings, annotations and blanks. Native conversion is ready
-for commit/push. Next candidate: player death/scoring and respawn corpse creation,
+adjacent obsolete headings, annotations and blanks. Native conversion **00131036 is committed and pushed**. Next candidate: player death/scoring and respawn corpse creation,
 seven bodies /677 lines; read-only audit in build/port-player-death/selection-candidate.json.
-No source for that next batch is installed. No user question is pending.
+The next batch's C bridge and initial arena-team contracts are installed.
+Original C confirmed a null-team crash for an unteamed killer / teamed victim.
+A two-line guard is installed. Seven default-target groups now pass /608 capture
+records (615 entries), including scoring/assists/wrap/message order, corpse cache
+and spawn/failure/RNG, and basic death cleanup/audio. This is a recovery checkpoint,
+not a frozen or fully qualified C baseline. Current working C is26,838 /67 files;
+last completed conversion remains26,836. Fresh C production qualification required.
+Remaining coverage: crown transfer, full death modes/recent-assist timing,
+abilities/buffs and quest cleanup. See PLAYER_DEATH.md and player-death-checkpoint.json.
+All test sessions are joined; source editable. All copied drafts are consumed;
+actual source takes precedence. No native next-batch translation, no user question.
 
 All map-metadata freeze, qualification, installer and finalization scripts are
 consumed. Actual source wins over ignored drafts. Do not replay mutation scripts.

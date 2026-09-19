@@ -466,7 +466,9 @@ void nox_xxx_playerUpdateScore_54D980(int a1, int a2, int a3, int a4) {
 		}
 		nox_xxx_changeScore_4D8E90(a2, 1);
 		nox_xxx_netReportLesson_4D8EF0(a2);
-		nox_xxx_netChangeTeamID_419090((int)v5, *((uint32_t*)v5 + 13) + 1);
+		if (v5) {
+			nox_xxx_netChangeTeamID_419090((int)v5, *((uint32_t*)v5 + 13) + 1);
+		}
 		if (dword_5d4594_2650652 && v6 && v17) {
 			sub_425CA0(*(uint32_t*)(v6 + 276), *(uint32_t*)(v17 + 276));
 		}

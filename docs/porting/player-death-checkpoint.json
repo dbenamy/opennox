@@ -1,0 +1,50 @@
+{
+  "status": "in-progress C contracts; not a qualified or frozen baseline",
+  "parent": "00131036",
+  "production_change": "Guard absent killer team before reading/updating arena team score (+2 C lines).",
+  "passed_default_roots": 7,
+  "captures": [
+    {
+      "file": "capture-player-death-arena-assists.json",
+      "records": 180,
+      "sha256": "93f3684188a03dc47d951c6dc1555942f1f178192853e955fe3ed04b8f77b1c7"
+    },
+    {
+      "file": "capture-player-death-arena-teams.json",
+      "records": 9,
+      "sha256": "2c1b28f2a60feda96bfab163bb401a00cb325345a814ecfa02f89bf85db5ae6a"
+    },
+    {
+      "file": "capture-player-death-corpse-cache.json",
+      "records": 15,
+      "sha256": "0bd912a573c12f4630d349fa5a93e0211ece9909b57529c5bc54dd4d197eba47"
+    },
+    {
+      "file": "capture-player-death-corpse-spawn.json",
+      "records": 160,
+      "sha256": "2698eb4beb23a79dfd24854e89dd87892ab015d32714496d91643487abf19db8"
+    },
+    {
+      "file": "capture-player-death-elimination.json",
+      "records": 144,
+      "sha256": "b1616b25cd55a28ade72129055ec77c14967018064a8baaf69cba74c661efeea"
+    },
+    {
+      "file": "capture-player-death-kotr-scoring.json",
+      "records": 96,
+      "sha256": "8ccad6deae22d77cbe0462a344a096b77736ff2bbed80f715cada7502af80381"
+    },
+    {
+      "file": "capture-player-death-lifecycle.json",
+      "records": 4,
+      "sha256": "1b3e763016a6be377a0956f0b45a2ab8516dcd2951621b9ee9502267c05f829f"
+    }
+  ],
+  "pending": [
+    "remaining lifecycle/quest/assist timing contracts",
+    "crown transfer",
+    "independent repeat and frozen expectations",
+    "all-target and fresh C production qualification",
+    "native conversion and full qualification"
+  ]
+}
