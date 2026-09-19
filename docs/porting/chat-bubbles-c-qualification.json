@@ -1,0 +1,40 @@
+{
+  "status": "qualified C baseline",
+  "parent": "b16f1a90",
+  "checkpoint": "5bf9ca6b",
+  "production_correction": "Update tail when explicitly removing the final bubble (+2 C lines).",
+  "targets": [
+    {
+      "target": "default",
+      "roots": 151,
+      "tests": 1707
+    },
+    {
+      "target": "server",
+      "roots": 150,
+      "tests": 1706
+    },
+    {
+      "target": "highres",
+      "roots": 151,
+      "tests": 1707
+    }
+  ],
+  "captures": 65,
+  "records": 17984,
+  "focused_captures": 12,
+  "focused_records": 552,
+  "source_files": 2509,
+  "source_identity": true,
+  "capture_identity": true,
+  "production": {
+    "path": "build/port-chat-bubbles/c-final-production-cabi/production/production.json",
+    "fresh": true,
+    "success": true
+  },
+  "static": true,
+  "c_loc": {
+    "lines": 26147,
+    "files": 67
+  }
+}

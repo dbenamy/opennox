@@ -89,3 +89,27 @@ Their 12 captures /552 records are byte-identical. Expected SHA-256 values are n
 installed in the unchanged contracts and indexed in chat-bubbles-captures.json.
 The freeze script and copied fixture drafts are consumed. Frozen affected-target
 and fresh production qualification remain; this is not a converted/qualified batch.
+
+Frozen checkpoint **5bf9ca6b** is committed/pushed. Broader qualification is active.
+A further forty verified successful historical target logs were compressed using
+the same lossless checks, reclaiming 1,844,486,695 bytes. The separate manifest is
+compressed-historical-logs.json under build/port-chat-bubbles; its script is also
+consumed. Total log cleanup: 49 files /2,239,764,149 bytes reclaimed.
+
+Affected targets pass on identical 2,509-file source: default/highres 151 roots /
+1,707 entries; server 150 /1,706 because TestClientObjectRenderOcclusion is excluded
+by its existing client-only build constraint. All 65 captures /17,984 records match.
+The first production binary builds, but the ABI manifest incorrectly listed the
+still-C bubble symbols as Go-backed exports. Move those thirteen expectations to
+retained_c and rerun production; no source or frozen expectation changed.
+
+## Qualified C baseline
+
+Frozen affected tests and fresh production qualification pass on identical
+2,509-file source. All 65 captures /17,984 records match; all twelve focused hashes
+are unchanged. Three production binaries pass ABI checks; the full suite matches
+exactly 1,553 known failure entries and package outcomes. Fresh gameplay and
+explicit save/load pass. Evidence: chat-bubbles-c-qualification.json and
+build/port-chat-bubbles/c-final-{default,server,highres,production-cabi}.
+All build/test sessions are joined. The Go draft remains isolated under build;
+production source is still corrected C (26,147 lines /67 files /zero reference).

@@ -43,10 +43,17 @@ the real cap height and inclusive C-facing rectangle boundary. Pixel tests use
 real drawing, player names, team colors and multiple/clipped/hidden/empty bubbles.
 Static passes. Focused C evidence: build/port-chat-bubbles/c-focused-palette-*.
 
-Next: qualify the frozen C baseline against 151 affected roots in three targets
-and fresh production builds/ABI/gameplay/save-load. Then convert this graph.
-No C translation or final C qualification yet. All chat copied fixture drafts and
-the freeze.py installer are consumed; actual source wins. See
+The frozen C baseline is fully qualified: default/highres 151 roots /1,707 entries;
+server 150 /1,706 (existing client-only occlusion test excluded). All 65 captures /
+17,984 records match on identical 2,509-file source. Three fresh binaries/ABI,
+exact known full-suite failures, gameplay and save/load pass. The production
+manifest's C/export classification was corrected; no source expectations changed.
+Evidence: chat-bubbles-c-qualification.json and c-final-production-cabi.
+
+Next: install/review the isolated 13-body Go draft, keeping only remove/clear
+exports for actual C decoder callers. All tests/builds are joined. Installer is
+prepared but NOT consumed; it verifies the qualified source and absent destinations.
+Copied fixture drafts and freeze.py are consumed; actual source wins. See
 [CHAT_BUBBLES.md](docs/porting/CHAT_BUBBLES.md).
 
 Disk: verified player-death cleanup removed twelve old binaries (584,677,176 bytes)
@@ -1372,3 +1379,10 @@ consumed. Original assets/archive are unchanged.
 Latest disk cleanup:72 verified superseded compressed binaries removed,
 1,648,354,499bytes reclaimed. Audit/apply in build/port-player-death/cleanup-compressed.py
 are consumed; preserve superseded-compressed-binaries.json and all reports.
+
+Chat-bubble disk cleanup: 49 completed historical test logs were losslessly
+compressed after verifying decompression against originals, reclaiming
+2,239,764,149 bytes. Manifests: build/port-chat-bubbles/compressed-completed-logs.json
+and compressed-historical-logs.json. Restore individual original paths with gzip -dk.
+Both compression scripts are consumed; captures/reports/assets/archive remain.
+About 2.9 GiB was free after cleanup, before C production qualification.
