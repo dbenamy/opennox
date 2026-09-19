@@ -197,7 +197,6 @@ extern uint32_t dword_5d4594_1203864;
 extern uint32_t dword_5d4594_832508;
 extern uint32_t dword_5d4594_3835356;
 extern uint32_t nox_client_renderBubbles_80844;
-extern void* nox_alloc_chat_1197364;
 extern uint32_t dword_5d4594_832516;
 extern uint32_t nox_xxx_aNox_cfg_0_587000_132136;
 extern uint32_t dword_5d4594_832496;
@@ -290,7 +289,6 @@ extern uint32_t nox_client_connError_814552;
 extern uint32_t dword_5d4594_10984;
 extern uint32_t dword_587000_145668;
 extern uint32_t dword_587000_180480;
-extern uint32_t dword_5d4594_1197372;
 extern uint32_t dword_5d4594_251716;
 extern uint32_t dword_5d4594_251708;
 extern uint32_t dword_5d4594_1063120;
@@ -530,7 +528,6 @@ extern unsigned int dword_5d4594_2649712;
 extern unsigned int dword_587000_145664;
 extern unsigned int dword_587000_145668;
 extern unsigned int nox_gameDisableMapDraw_5d4594_2650672;
-extern void* nox_alloc_chat_1197364;
 extern uint32_t dword_5d4594_1090120;
 extern nox_window* dword_5d4594_1090048;
 extern nox_window* dword_5d4594_1090100;
@@ -771,7 +768,7 @@ func Get_dword_5d4594_3798820() int {
 	return int(C.dword_5d4594_3798820)
 }
 func Get_nox_alloc_chat_1197364() unsafe.Pointer {
-	return C.nox_alloc_chat_1197364
+	return chatBubblePool
 }
 func Get_dword_5d4594_2660032() int {
 	return int(C.dword_5d4594_2660032)
@@ -1164,7 +1161,7 @@ func Set_dword_5d4594_3799452(v int) {
 	C.dword_5d4594_3799452 = C.uint(v)
 }
 func Set_nox_alloc_chat_1197364(v unsafe.Pointer) {
-	C.nox_alloc_chat_1197364 = v
+	chatBubblePool = v
 }
 func Set_dword_587000_145664(v int) {
 	C.dword_587000_145664 = C.uint(v)

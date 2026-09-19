@@ -283,5 +283,5 @@ func Nox_xxx_netSendSimpleObject2_4DF360(pli int, obj *server.Object) {
 	matchRosterSimpleObject(int(pli), obj)
 }
 func Nox_xxx_netCode2ChatBubble_48D850(a1 int) int {
-	return int(C.nox_xxx_netCode2ChatBubble_48D850(C.int(a1)))
+	return int(uintptr(unsafe.Pointer(chatBubbleLookup(uint32(a1)))))
 }

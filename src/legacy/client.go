@@ -9,7 +9,6 @@ void nox_xxx_sprite_49C4F0();
 void sub_49A630();
 void sub_49BBB0();
 void sub_479280();
-void nox_xxx_createTextBubble_48D880(void* a1, wchar2_t* a2);
 */
 import "C"
 import (
@@ -141,5 +140,5 @@ func Nox_xxx_createTextBubble_48D880(pck []byte, text string) {
 	defer pfree()
 	ctext, tfree := CWString(text)
 	defer tfree()
-	C.nox_xxx_createTextBubble_48D880(unsafe.Pointer(&cpck[0]), ctext)
+	chatBubbleCreate(unsafe.Pointer(&cpck[0]), (*uint16)(unsafe.Pointer(ctext)))
 }

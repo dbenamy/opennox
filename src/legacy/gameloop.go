@@ -164,7 +164,7 @@ func Sub_473960() {
 	C.sub_473960()
 }
 func Sub_48D800() {
-	C.sub_48D800()
+	chatBubbleDestroy()
 }
 func Sub_49A8C0() {
 	C.sub_49A8C0()

@@ -1965,12 +1965,13 @@ teamed player. Guard the absent killer team's score update while preserving the
 player's score increase. This is a small, reversible correction before the next
 C baseline, requiring fresh production qualification. Preserve the separate
 historical suicide/environment death-counter behavior. See
-[PLAYER_DEATH.md](PLAYER_DEATH.md) for evidence and pending qualification.
+[PLAYER_DEATH.md](PLAYER_DEATH.md) for evidence and completed qualification.
 
 ## Speech-bubble prerequisite — explicit tail removal
 
 The independent original-C remove/append test exposes a stale tail after deleting
 the last bubble. Update the tail to the predecessor, matching expiry removal.
 This prevents appending through freed storage and is a reversible production
-correction to review later. Corrected lifecycle contracts pass. A fresh C baseline
-and production qualification are required before translation; see CHAT_BUBBLES.md.
+correction to review later. Corrected C and native lifecycle contracts, repeated
+three-target captures and fresh production qualification now pass; see
+[CHAT_BUBBLES.md](CHAT_BUBBLES.md).

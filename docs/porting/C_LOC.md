@@ -237,6 +237,7 @@ target build selection and linker evidence.
 | Player death C prerequisite: absent-team guard (checkpoint) | 67 | 26,838 | +2 | 0 |
 | Player death, scoring and corpse creation (native) | 67 | 26,145 | −693 | 0 |
 | Speech-bubble tail prerequisite (not a conversion) | 67 | 26,147 | +2 | 0 |
+| Client speech bubbles (qualified native) | 67 | 25,368 | −779 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

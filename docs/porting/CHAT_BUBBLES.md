@@ -1,7 +1,23 @@
-# Client speech bubbles — baseline in progress
+# Client speech bubbles — qualified native
 
-Qualified parent: **b16f1a90**, native player death. Production C is now 26,147
-physical lines /67 files /zero reference. This batch has not converted C yet.
+Qualified C baseline: **bf03e4d6**. All thirteen selected C bodies and two private
+C globals are replaced by Go. Production C is **25,368 lines /67 files /zero
+reference C**, a reduction of **779** from corrected C. The original tail-removal
+bug was corrected before the C baseline. Only remove/clear retain C exports for
+the live decoder; all other adapters use Go directly.
+
+Native focused contracts match all twelve frozen captures /552 records. Affected
+default/highres pass 151 roots /1,707 entries; server 150 /1,706 (its existing
+client-only occlusion exclusion). All 65 captures /17,984 records match C and each
+other. The three target and production gates use identical 2,514-file source.
+Static, all three production binaries/ABI, exact known full-suite failures,
+headless gameplay and explicit save/load pass. See
+[qualification](chat-bubbles-native-qualification.json) and
+build/port-chat-bubbles/native-*.
+
+The sections below preserve the baseline history, fixture corrections and recovery
+notes. Every fixture draft, freezer and native installer mentioned is consumed.
+Actual source wins; do not replay ignored mutation scripts.
 
 ## Scope and strategy
 
@@ -113,3 +129,41 @@ explicit save/load pass. Evidence: chat-bubbles-c-qualification.json and
 build/port-chat-bubbles/c-final-{default,server,highres,production-cabi}.
 All build/test sessions are joined. The Go draft remains isolated under build;
 production source is still corrected C (26,147 lines /67 files /zero reference).
+
+## Native conversion in progress
+
+Qualified C **bf03e4d6** is pushed. The guarded installer is consumed. Thirteen C
+bodies and two private C globals are replaced by five Go files; mapped list-head
+storage remains shared with the existing renderer owner. Go adapters call directly;
+only remove/clear exports remain for the C decoder. The original allocation class,
+692-byte layout and offsets are preserved, with compile-time size/offset checks.
+Geometry keeps the original mixed signed/unsigned comparisons and moving-bubble
+visibility gate. Native static checks pass; focused validation is pending. Current
+C: 25,368 /67 files /zero reference (-779 including obsolete comments/headings).
+
+Completed C scenario copies were verified against original asset hashes and
+deduplicated after qualification, reclaiming 1,112,747,701 bytes. Original assets,
+changed scenario files and all evidence remain. Restore manifests are in each run;
+helper: build/port-chat-bubbles/deduplicate-chat-bubbles-c-assets.py. Its audit/apply
+modes are consumed. Native fixtures read original assets, not these scenario copies.
+
+Native focused validation passes on its first build/run: 12 roots /563 entries,
+all twelve frozen captures /552 records unchanged. Static checks pass. Affected
+three-target native sweeps and fresh production qualification remain.
+
+## Final native review
+
+The first native focused run passed without changing any expected hash. The
+conversion retains UTF-16 copy/termination, allocation reuse, list order, unsigned
+frame comparison, renderer cap-height padding, inclusive HUD boundaries,
+static/dynamic drawable selection, 16-bit coordinate truncation, historical
+visibility/overlap decisions, two-pass outlines, text/name colors and draw order.
+Compile-time checks enforce the 692-byte storage size and critical field offsets.
+No C algorithm is retained solely for testing; remove/clear fixtures also exercise
+the two retained live C bridges. Fresh production uses the same source as all
+native target gates. The only production correction was the pre-baseline tail fix.
+
+After native qualification, the two native scenario copies were likewise verified
+and deduplicated, reclaiming another1,112,747,701 bytes. Their restore manifests
+remain in the runs; helper: deduplicate-chat-bubbles-native-assets.py under the
+batch build directory. Both C/native dedup audit/apply modes are consumed.

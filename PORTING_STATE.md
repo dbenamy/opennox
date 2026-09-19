@@ -2,67 +2,52 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 26k lines** — **26,147 physical lines in 67 production
-`.c` files**, zero reference C. Latest conversion: **−693** from the qualified
-player-death C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 25k lines** — **25,368 physical lines in 67 production
+`.c` files**, zero reference C. Latest conversion: **−779** from qualified speech-
+bubble C. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — native player death qualified
+## Current — native speech bubbles qualified
 
-C baseline **4c3191c1** is committed and pushed. Native conversion and qualification
-are recorded together in this checkpoint. Seven C bodies are replaced by Go;
-six private interfaces are removed. The actual PlayerDie registration retains its
-Go-backed C export, and the live respawn caller uses Go directly.
-See [PLAYER_DEATH.md](docs/porting/PLAYER_DEATH.md).
+C baseline **bf03e4d6** is pushed. Thirteen C bodies and two private C globals are
+replaced by Go. Only remove/clear retain exports for the live C decoder; other
+adapters call Go directly. See [CHAT_BUBBLES.md](docs/porting/CHAT_BUBBLES.md).
 
-Fourteen focused captures /1,101 records match C. Each target passes **318 roots /
-24,386 entries**, no skips. All **149 captures /33,295 records** match C and each
-other. Target and fresh production gates use identical 2,500-file source. Static,
-three production binaries/ABI, exact known full-suite failures, gameplay and
-explicit save/load pass. Evidence: player-death-native-qualification.json and
-build/port-player-death/native-*.
+All twelve focused captures /552 records match C; the first native focused run
+passed. Affected default/highres pass 151 roots /1,707 entries, server 150 /1,706
+(existing client-only occlusion exclusion). All 65 captures /17,984 records match
+C and each other. Target and production gates use identical 2,514-file source.
+Static, three fresh binaries/ABI, exact known full-suite failures, gameplay and
+explicit save/load pass. Evidence: chat-bubbles-native-qualification.json and
+build/port-chat-bubbles/native-*. All build/test sessions are joined.
 
-The C prerequisite fixes an unteamed killer / teamed victim null-team score access
-(+2 lines). The native focused tests caught a player-slot/network-ID lookup mistake;
-ByInd now preserves C behavior. No frozen expectation changed. Current C is
-**26,145 /67 files /zero reference**,−693 including adjacent headings/blanks.
-All build/test/cleanup sessions are joined; source editable.
+The C prerequisite repaired explicit tail removal before freezing the baseline.
+Fixture corrections used the actual cap height, inclusive C rectangle helper,
+and owned team-color definitions. No frozen expectation changed during translation.
+Every chat copied draft, freezer and installer is consumed; actual source wins.
 
-All player-death installers/freezing scripts and copied drafts/manifests are
-consumed. Actual source wins; do not replay ignored mutation scripts.
+Read-only next candidate: 31 client combat overlay functions /827 body lines, with
+caller references in build/port-chat-bubbles/next-combat-overlays-candidate.json.
+Scope/owner review is still pending; no next-batch source changes are installed.
 
-Next batch is active: 13 connected speech-bubble lifecycle/layout/drawing C bodies
-/740 corrected body lines. Original C failed the explicit tail-removal invariant;
-a two-line tail correction passes independent contracts. Current production C is
-26,147 (+2 prerequisite), with no speech-bubble conversion yet.
+Disk cleanup compressed 49 verified completed logs, reclaiming 2,239,764,149 bytes.
+The two manifests under build/port-chat-bubbles record original/gzip paths and
+hashes; restore an individual log with gzip -dk. Both compression scripts are
+consumed. Completed C scenario deduplication reclaimed 1,112,747,701 bytes; its
+restore helper is deduplicate-chat-bubbles-c-assets.py. Audit/apply modes are
+consumed. Native scenario deduplication reclaimed another 1,112,747,701 bytes;
+its restore helper is deduplicate-chat-bubbles-native-assets.py (audit/apply also
+consumed). Preserve all manifests, original assets and the untracked archive.
 
-All three targets pass 12 focused roots /563 entries. The 12 captures /552 records
-match across identical source and are now frozen. Geometry/HUD contracts preserve
-the real cap height and inclusive C-facing rectangle boundary. Pixel tests use
-real drawing, player names, team colors and multiple/clipped/hidden/empty bubbles.
-Static passes. Focused C evidence: build/port-chat-bubbles/c-focused-palette-*.
+## Qualified parent — native player death
 
-The frozen C baseline is fully qualified: default/highres 151 roots /1,707 entries;
-server 150 /1,706 (existing client-only occlusion test excluded). All 65 captures /
-17,984 records match on identical 2,509-file source. Three fresh binaries/ABI,
-exact known full-suite failures, gameplay and save/load pass. The production
-manifest's C/export classification was corrected; no source expectations changed.
-Evidence: chat-bubbles-c-qualification.json and c-final-production-cabi.
-
-Next: install/review the isolated 13-body Go draft, keeping only remove/clear
-exports for actual C decoder callers. All tests/builds are joined. Installer is
-prepared but NOT consumed; it verifies the qualified source and absent destinations.
-Copied fixture drafts and freeze.py are consumed; actual source wins. See
-[CHAT_BUBBLES.md](docs/porting/CHAT_BUBBLES.md).
-
-Disk: verified player-death cleanup removed twelve old binaries (584,677,176 bytes)
-and 72 compressed binaries (1,648,354,499 bytes). C and native scenario copies each
-reclaimed 1,112,747,701 bytes through verified deduplication. Their restore modes and
-manifests remain under build/port-player-death; all audit/apply modes are consumed.
-Latest C/native binaries, logs/captures and original assets/archive remain. Earlier
-cleanup/restore records remain under build/port-map-{sections,metadata}; do not
-replay their apply modes. The archive remains untracked.
+**b16f1a90**, C baseline 4c3191c1: seven C bodies replaced, six private interfaces
+removed. Fourteen focused captures /1,101 records; each target 318 roots /24,386
+entries; 149 captures /33,295 records match. Fresh production/gameplay/save-load
+qualified. C 26,145 /67 files (−693). See [PLAYER_DEATH.md](docs/porting/PLAYER_DEATH.md).
+All its copied drafts/installers and cleanup apply modes are consumed; restoration
+manifests remain under build/port-player-death.
 
 ## Qualified parent — native map metadata
 
