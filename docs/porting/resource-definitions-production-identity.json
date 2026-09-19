@@ -1,0 +1,26 @@
+{
+  "parent": "45c36984",
+  "production_source_identical": true,
+  "unchanged_source_files": 2639,
+  "added_porttest_sources": [
+    "src/legacy/resource_definitions_catalog_porttest.go",
+    "src/legacy/resource_definitions_client_porttest.go",
+    "src/legacy/resource_definitions_porttest.go",
+    "src/legacy/resource_definitions_sound_porttest.go",
+    "src/resource_definitions_catalog_porttest_test.go",
+    "src/resource_definitions_client_porttest_test.go",
+    "src/resource_definitions_images_porttest_test.go",
+    "src/resource_definitions_names_porttest_test.go",
+    "src/resource_definitions_numeric_porttest_test.go",
+    "src/resource_definitions_parsers_porttest_test.go",
+    "src/resource_definitions_sound_porttest_test.go",
+    "src/server/resource_definitions_porttest.go"
+  ],
+  "production_evidence": "build/port-book-awards/native-final-production/production/production.json",
+  "binary_hashes_reverified": {
+    "opennox": "45b11e18cc70c62af11d1bba4d0e33a6248daed67326c91cb2fe1e53a3a5502a",
+    "opennox-hd": "c88c42a8fae33f84313cc43e8b98ea220b3c71d047f8489b8850efb4a5722889",
+    "opennox-server": "308cde2309942974e65a1280df4dbb3f42473d29100490208b8b634d29cc5faf"
+  },
+  "native_requires_fresh_production": true
+}

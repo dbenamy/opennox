@@ -23,8 +23,9 @@ Latest qualified production C is **18,662 physical lines in61 files**, zero refe
 fresh production binaries and headless gameplay/save-load qualify. See
 [PORTING_STATE.md](PORTING_STATE.md).
 
-Next candidate: resource-definition parsers and sound-set loading. Caller auditing
-and original-C contracts precede conversion.
+Next batch: resource-definition parsers and sound-set loading. Its original-C
+baseline qualifies149 affected roots per target with15 new frozen captures. See
+[RESOURCE_DEFINITIONS.md](docs/porting/RESOURCE_DEFINITIONS.md).
 
 ## Goal and target
 

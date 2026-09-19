@@ -1,0 +1,52 @@
+{
+  "status": "literal caller audit; C baseline in progress",
+  "retained": [
+    "nox_xxx_monsterGetSoundSet_424300"
+  ],
+  "retired": [
+    "nox_xxx_parseString_409470",
+    "set_bitmask_flags_from_plus_separated_names_423930",
+    "set_one_bitmask_flag_by_name_4239C0",
+    "sub_4240F0",
+    "nox_xxx_parseSoundSetBin_424170",
+    "nox_xxx_setNPCVoiceSet_424320",
+    "nox_xxx_getDefaultSoundSet_424350",
+    "sub_5361B0",
+    "sub_536260",
+    "sub_5364E0",
+    "sub_536550",
+    "sub_536580",
+    "sub_5365B0",
+    "sub_536600",
+    "sub_536B40",
+    "sub_536D80",
+    "sub_536DA0",
+    "sub_536DE0",
+    "nox_xxx_collideDamageLoad_536E10",
+    "sub_536E50",
+    "sub_536E80",
+    "nox_parse_thing_light_dir",
+    "nox_parse_thing_light_penumbra",
+    "nox_parse_thing_client_update",
+    "nox_parse_thing_pretty_image",
+    "sub_4F0640"
+  ],
+  "orphans": [
+    "set_bitmask_flags_from_plus_separated_names_423930",
+    "set_one_bitmask_flag_by_name_4239C0",
+    "nox_xxx_setNPCVoiceSet_424320"
+  ],
+  "notes": [
+    "All14 server parsers move registered Go callers directly.",
+    "All4 client thing parsers move registered Go callers directly.",
+    "Token reader and sound-field setter are live through soundset loader.",
+    "Soundset catalog head remains shared: audit its Go/C users before ownership changes."
+  ],
+  "owned_global": {
+    "name": "dword_5d4594_588120",
+    "initial": 0,
+    "interpretation": "sound-set list head",
+    "outside_production_users": [],
+    "other_fixture_owner": "creature_xfer_porttest.go"
+  }
+}

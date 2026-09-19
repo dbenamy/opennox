@@ -1,0 +1,77 @@
+[
+  {
+    "file": "capture-resource-definitions-catalog-links.json",
+    "records": 32,
+    "sha256": "204c57215cc922f7babe66caed6ae3d2287788a7a23fe03487f7f4da2eea5a9e"
+  },
+  {
+    "file": "capture-resource-definitions-client-update.json",
+    "records": 6,
+    "sha256": "3bc939f3a3f9577cdc472555eaef96e9c68cebc8f5ad4408d6fba387818996c8"
+  },
+  {
+    "file": "capture-resource-definitions-damage.json",
+    "records": 160,
+    "sha256": "cd08a99e8925b080d9cba84ad3894dd2de4ed3868958782fa108c16c869d8193"
+  },
+  {
+    "file": "capture-resource-definitions-images.json",
+    "records": 17,
+    "sha256": "9f5f274a1852436da768837d8f63c2b48733bac98aabd3df5be698abd3daefa6"
+  },
+  {
+    "file": "capture-resource-definitions-integers.json",
+    "records": 136,
+    "sha256": "d3ff3ccb83d92bece2f7cba7012329bca4641f700d04f3aac1343417397065ac"
+  },
+  {
+    "file": "capture-resource-definitions-light.json",
+    "records": 1464,
+    "sha256": "9bc95a1eda3d846bcdfabe3f5ac8580695a1d2234d72a5b4aa53bc2e0732d0ed"
+  },
+  {
+    "file": "capture-resource-definitions-monster-sound.json",
+    "records": 14,
+    "sha256": "4f65333521fd007a469cfde08293e2d59910cfd8975c3dc9de6bd86d0311e724"
+  },
+  {
+    "file": "capture-resource-definitions-names.json",
+    "records": 28,
+    "sha256": "4c05d91e19a8ee0d2e8cf662db9f091ba7a8b715928a3d998a19174288176b3f"
+  },
+  {
+    "file": "capture-resource-definitions-partial-scans.json",
+    "records": 32,
+    "sha256": "fa07e29ada7387a239e3111df79dca23618a1eaaf2fc04637fefbdd6bbbc6232"
+  },
+  {
+    "file": "capture-resource-definitions-registrations.json",
+    "records": 42,
+    "sha256": "1140e7333f923de5511bd0db84f4aabebacaadb4b199f9188cff788bfc8216df"
+  },
+  {
+    "file": "capture-resource-definitions-soundsets.json",
+    "records": 11,
+    "sha256": "a4d95d2ff7116089942401a5392dae43c4d34142be8999ed356d1be4670bc806"
+  },
+  {
+    "file": "capture-resource-definitions-tokens.json",
+    "records": 10,
+    "sha256": "c8627ee90ecb326269a119ab4c087500c09bb298354aa52bbdd1b40f0fad47b0"
+  },
+  {
+    "file": "capture-resource-definitions-wand-partial.json",
+    "records": 24,
+    "sha256": "edd04b87e361c4577d9df24ae64bd46f802802ed751f44e9ab3f5720d09146f4"
+  },
+  {
+    "file": "capture-resource-definitions-wands.json",
+    "records": 240,
+    "sha256": "3444ef187eef4184171d60689e31d99be7c4f839c8b981cb39413918a7f121b2"
+  },
+  {
+    "file": "capture-resource-definitions-numeric-edges.json",
+    "records": 34,
+    "sha256": "c4f59d1908e91b3ef89b39716c54d8cc9173e8aa823abba2c224b9d2ff88e149"
+  }
+]

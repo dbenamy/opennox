@@ -1,0 +1,218 @@
+[
+  {
+    "symbol": "nox_xxx_parseString_409470",
+    "file": "src/legacy/GAME1.c",
+    "start": 1576,
+    "end": 2337,
+    "line": 55,
+    "lines": 38
+  },
+  {
+    "symbol": "set_bitmask_flags_from_plus_separated_names_423930",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 12272,
+    "end": 12693,
+    "line": 587,
+    "lines": 14
+  },
+  {
+    "symbol": "set_one_bitmask_flag_by_name_4239C0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 12695,
+    "end": 12941,
+    "line": 602,
+    "lines": 10
+  },
+  {
+    "symbol": "sub_4240F0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 12943,
+    "end": 13417,
+    "line": 613,
+    "lines": 22
+  },
+  {
+    "symbol": "nox_xxx_parseSoundSetBin_424170",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 13419,
+    "end": 14232,
+    "line": 636,
+    "lines": 33
+  },
+  {
+    "symbol": "nox_xxx_monsterGetSoundSet_424300",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 14234,
+    "end": 14495,
+    "line": 670,
+    "lines": 14
+  },
+  {
+    "symbol": "nox_xxx_setNPCVoiceSet_424320",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 14497,
+    "end": 14745,
+    "line": 685,
+    "lines": 14
+  },
+  {
+    "symbol": "nox_xxx_getDefaultSoundSet_424350",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 14747,
+    "end": 15058,
+    "line": 700,
+    "lines": 18
+  },
+  {
+    "symbol": "sub_5361B0",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 4496,
+    "end": 5081,
+    "line": 184,
+    "lines": 25
+  },
+  {
+    "symbol": "sub_536260",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 5083,
+    "end": 6110,
+    "line": 210,
+    "lines": 45
+  },
+  {
+    "symbol": "sub_5364E0",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 6112,
+    "end": 6571,
+    "line": 256,
+    "lines": 21
+  },
+  {
+    "symbol": "sub_536550",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 6573,
+    "end": 6674,
+    "line": 278,
+    "lines": 5
+  },
+  {
+    "symbol": "sub_536580",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 6676,
+    "end": 6768,
+    "line": 284,
+    "lines": 4
+  },
+  {
+    "symbol": "sub_5365B0",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 6770,
+    "end": 7047,
+    "line": 289,
+    "lines": 14
+  },
+  {
+    "symbol": "sub_536600",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 7049,
+    "end": 7119,
+    "line": 304,
+    "lines": 4
+  },
+  {
+    "symbol": "sub_536B40",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 7121,
+    "end": 7295,
+    "line": 309,
+    "lines": 7
+  },
+  {
+    "symbol": "sub_536D80",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 7297,
+    "end": 7367,
+    "line": 317,
+    "lines": 4
+  },
+  {
+    "symbol": "sub_536DA0",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 7369,
+    "end": 7558,
+    "line": 322,
+    "lines": 9
+  },
+  {
+    "symbol": "sub_536DE0",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 7560,
+    "end": 7656,
+    "line": 332,
+    "lines": 5
+  },
+  {
+    "symbol": "nox_xxx_collideDamageLoad_536E10",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 7658,
+    "end": 7937,
+    "line": 338,
+    "lines": 12
+  },
+  {
+    "symbol": "sub_536E50",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 7939,
+    "end": 8050,
+    "line": 351,
+    "lines": 7
+  },
+  {
+    "symbol": "sub_536E80",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 8052,
+    "end": 8219,
+    "line": 359,
+    "lines": 10
+  },
+  {
+    "symbol": "nox_parse_thing_light_dir",
+    "file": "src/legacy/client__drawable__drawdb.c",
+    "start": 655,
+    "end": 1038,
+    "line": 28,
+    "lines": 13
+  },
+  {
+    "symbol": "nox_parse_thing_light_penumbra",
+    "file": "src/legacy/client__drawable__drawdb.c",
+    "start": 1116,
+    "end": 1491,
+    "line": 43,
+    "lines": 12
+  },
+  {
+    "symbol": "nox_parse_thing_client_update",
+    "file": "src/legacy/client__drawable__drawdb.c",
+    "start": 1569,
+    "end": 2208,
+    "line": 57,
+    "lines": 26
+  },
+  {
+    "symbol": "nox_parse_thing_pretty_image",
+    "file": "src/legacy/client__drawable__drawdb.c",
+    "start": 2286,
+    "end": 2839,
+    "line": 85,
+    "lines": 16
+  },
+  {
+    "symbol": "sub_4F0640",
+    "file": "src/legacy/client__drawable__drawdb.c",
+    "start": 2917,
+    "end": 5007,
+    "line": 103,
+    "lines": 74
+  }
+]

@@ -1,0 +1,521 @@
+{
+  "nox_xxx_parseString_409470": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 651,
+      "text": "while (nox_xxx_parseString_409470(v2, v6)) {"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 659,
+      "text": "while (nox_xxx_parseString_409470(v2, v6) && strcmp(v6, \"END\") && nox_xxx_parseString_409470(v2, v7)) {"
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 12,
+      "text": "int nox_xxx_parseString_409470(FILE* a1, uint8_t* a2);"
+    },
+    {
+      "file": "src/legacy/GAME1.c",
+      "line": 55,
+      "text": "int nox_xxx_parseString_409470(FILE* a1, uint8_t* a2) {"
+    }
+  ],
+  "set_bitmask_flags_from_plus_separated_names_423930": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 587,
+      "text": "void set_bitmask_flags_from_plus_separated_names_423930(const char* input, uint32_t* bitmask,"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 138,
+      "text": "void set_bitmask_flags_from_plus_separated_names_423930(const char* input, uint32_t* bitmask,"
+    }
+  ],
+  "set_one_bitmask_flag_by_name_4239C0": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 597,
+      "text": "set_one_bitmask_flag_by_name_4239C0(cur_value, bitmask, allowed_names);"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 602,
+      "text": "int set_one_bitmask_flag_by_name_4239C0(char* name, uint32_t* bitmask, const char** allowed_names) {"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 79,
+      "text": "int set_one_bitmask_flag_by_name_4239C0(char* name, uint32_t* bitmask, const char** allowed_names);"
+    }
+  ],
+  "sub_4240F0": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 613,
+      "text": "int sub_4240F0(int a1, const char* a2, int a3) {"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 661,
+      "text": "if (!sub_4240F0((int)v3, v6, v5)) {"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 80,
+      "text": "int sub_4240F0(int a1, const char* a2, int a3);"
+    }
+  ],
+  "nox_xxx_parseSoundSetBin_424170": [
+    {
+      "file": "src/audio_ail.go",
+      "line": 208,
+      "text": "func nox_xxx_parseSoundSetBin_424170(path string) error {"
+    },
+    {
+      "file": "src/things.go",
+      "line": 63,
+      "text": "if err := nox_xxx_parseSoundSetBin_424170(\"soundset.bin\"); err != nil {"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 636,
+      "text": "int nox_xxx_parseSoundSetBin_424170(char* a1) {"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 81,
+      "text": "int nox_xxx_parseSoundSetBin_424170(char* a1);"
+    },
+    {
+      "file": "src/legacy/audio_ail.go",
+      "line": 14,
+      "text": "int nox_xxx_parseSoundSetBin_424170(char* a1);"
+    },
+    {
+      "file": "src/legacy/audio_ail.go",
+      "line": 276,
+      "text": "return int(C.nox_xxx_parseSoundSetBin_424170(internCStr(path)))"
+    }
+  ],
+  "nox_xxx_monsterGetSoundSet_424300": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 670,
+      "text": "void* nox_xxx_monsterGetSoundSet_424300(nox_object_t* a1p) {"
+    },
+    {
+      "file": "src/legacy/damage_dispatch.go",
+      "line": 183,
+      "text": "set := C.nox_xxx_monsterGetSoundSet_424300(asObjectC(source))"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 82,
+      "text": "void* nox_xxx_monsterGetSoundSet_424300(nox_object_t* a1);"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 83,
+      "text": "v1 = nox_xxx_monsterGetSoundSet_424300(a1);"
+    },
+    {
+      "file": "src/legacy/unit_ai.go",
+      "line": 108,
+      "text": "return unsafe.Pointer(C.nox_xxx_monsterGetSoundSet_424300(asObjectC(a1)))"
+    }
+  ],
+  "nox_xxx_setNPCVoiceSet_424320": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 685,
+      "text": "int nox_xxx_setNPCVoiceSet_424320(int a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 83,
+      "text": "int nox_xxx_setNPCVoiceSet_424320(int a1, int a2);"
+    }
+  ],
+  "nox_xxx_getDefaultSoundSet_424350": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 700,
+      "text": "const char** nox_xxx_getDefaultSoundSet_424350(const char* a1) {"
+    },
+    {
+      "file": "src/legacy/unit_monster.go",
+      "line": 5,
+      "text": "const char** nox_xxx_getDefaultSoundSet_424350(const char* a1);"
+    },
+    {
+      "file": "src/legacy/unit_monster.go",
+      "line": 39,
+      "text": "return unsafe.Pointer(C.nox_xxx_getDefaultSoundSet_424350(internCStr(name)))"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 84,
+      "text": "const char** nox_xxx_getDefaultSoundSet_424350(const char* a1);"
+    }
+  ],
+  "sub_5361B0": [
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 184,
+      "text": "char* sub_5361B0(char* a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 64,
+      "text": "char* sub_5361B0(char* a1, int a2);"
+    },
+    {
+      "file": "src/legacy/object_use.go",
+      "line": 56,
+      "text": "server.RegisterObjectUseParse(\"WandCastUse\", wrapObjectUseParseC(C.sub_5361B0))"
+    }
+  ],
+  "sub_536260": [
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 210,
+      "text": "char* sub_536260(char* a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 65,
+      "text": "char* sub_536260(char* a1, int a2);"
+    },
+    {
+      "file": "src/legacy/object_use.go",
+      "line": 55,
+      "text": "server.RegisterObjectUseParse(\"WandUse\", wrapObjectUseParseC(C.sub_536260))"
+    }
+  ],
+  "sub_5364E0": [
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 256,
+      "text": "int sub_5364E0(char* a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/object_update.go",
+      "line": 108,
+      "text": "server.RegisterObjectUpdateParse(\"SkullUpdate\", wrapObjectUpdateParseC(C.sub_5364E0))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 66,
+      "text": "int sub_5364E0(char* a1, int a2);"
+    }
+  ],
+  "sub_536550": [
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 278,
+      "text": "int sub_536550(char* a1, uint32_t* a2) {"
+    },
+    {
+      "file": "src/legacy/object_update.go",
+      "line": 103,
+      "text": "server.RegisterObjectUpdateParse(\"PushUpdate\", wrapObjectUpdateParseC(C.sub_536550))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 67,
+      "text": "int sub_536550(char* a1, uint32_t* a2);"
+    }
+  ],
+  "sub_536580": [
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 284,
+      "text": "int sub_536580(char* a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/object_update.go",
+      "line": 106,
+      "text": "server.RegisterObjectUpdateParse(\"LoopAndDamageUpdate\", wrapObjectUpdateParseC(C.sub_536580))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 68,
+      "text": "int sub_536580(char* a1, int a2);"
+    }
+  ],
+  "sub_5365B0": [
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 289,
+      "text": "int sub_5365B0(char* a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/object_update.go",
+      "line": 104,
+      "text": "server.RegisterObjectUpdateParse(\"TriggerUpdate\", wrapObjectUpdateParseC(C.sub_5365B0))"
+    },
+    {
+      "file": "src/legacy/object_update.go",
+      "line": 105,
+      "text": "server.RegisterObjectUpdateParse(\"ToggleUpdate\", wrapObjectUpdateParseC(C.sub_5365B0))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 69,
+      "text": "int sub_5365B0(char* a1, int a2);"
+    }
+  ],
+  "sub_536600": [
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 304,
+      "text": "int sub_536600(char* a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/object_update.go",
+      "line": 107,
+      "text": "server.RegisterObjectUpdateParse(\"LifetimeUpdate\", wrapObjectUpdateParseC(C.sub_536600))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 70,
+      "text": "int sub_536600(char* a1, int a2);"
+    }
+  ],
+  "sub_536B40": [
+    {
+      "file": "src/legacy/object_death.go",
+      "line": 35,
+      "text": "server.RegisterObjectDeathParse(\"CreateObjectDie\", wrapObjectDeathParseC(C.sub_536B40))"
+    },
+    {
+      "file": "src/legacy/object_death.go",
+      "line": 36,
+      "text": "server.RegisterObjectDeathParse(\"SpawnObjectDie\", wrapObjectDeathParseC(C.sub_536B40))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 309,
+      "text": "int sub_536B40(char* a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 71,
+      "text": "int sub_536B40(char* a1, int a2);"
+    }
+  ],
+  "sub_536D80": [
+    {
+      "file": "src/legacy/object_collide.go",
+      "line": 85,
+      "text": "server.RegisterObjectCollideParse(\"ProjectileCollide\", wrapObjectCollideParseC(C.sub_536D80))"
+    },
+    {
+      "file": "src/legacy/object_collide.go",
+      "line": 86,
+      "text": "server.RegisterObjectCollideParse(\"ProjectileSparkCollide\", wrapObjectCollideParseC(C.sub_536D80))"
+    },
+    {
+      "file": "src/legacy/object_collide.go",
+      "line": 90,
+      "text": "server.RegisterObjectCollideParse(\"WallReflectCollide\", wrapObjectCollideParseC(C.sub_536D80))"
+    },
+    {
+      "file": "src/legacy/object_collide.go",
+      "line": 91,
+      "text": "server.RegisterObjectCollideParse(\"WallReflectSparkCollide\", wrapObjectCollideParseC(C.sub_536D80))"
+    },
+    {
+      "file": "src/legacy/object_collide.go",
+      "line": 92,
+      "text": "server.RegisterObjectCollideParse(\"PixieCollide\", wrapObjectCollideParseC(C.sub_536D80))"
+    },
+    {
+      "file": "src/legacy/object_collide.go",
+      "line": 95,
+      "text": "server.RegisterObjectCollideParse(\"YellowStarShotCollide\", wrapObjectCollideParseC(C.sub_536D80))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 317,
+      "text": "int sub_536D80(char* a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 72,
+      "text": "int sub_536D80(char* a1, int a2);"
+    }
+  ],
+  "sub_536DA0": [
+    {
+      "file": "src/legacy/object_collide.go",
+      "line": 93,
+      "text": "server.RegisterObjectCollideParse(\"AudioEventCollide\", wrapObjectCollideParseC(C.sub_536DA0))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 322,
+      "text": "int sub_536DA0(char* a1, int* a2) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 73,
+      "text": "int sub_536DA0(char* a1, int* a2);"
+    }
+  ],
+  "sub_536DE0": [
+    {
+      "file": "src/legacy/object_collide.go",
+      "line": 89,
+      "text": "server.RegisterObjectCollideParse(\"SparkExplosionCollide\", wrapObjectCollideParseC(C.sub_536DE0))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 332,
+      "text": "int sub_536DE0(char* a1, uint8_t* a2) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 74,
+      "text": "int sub_536DE0(char* a1, uint8_t* a2);"
+    }
+  ],
+  "nox_xxx_collideDamageLoad_536E10": [
+    {
+      "file": "src/legacy/object_collide.go",
+      "line": 87,
+      "text": "server.RegisterObjectCollideParse(\"DamageCollide\", wrapObjectCollideParseC(C.nox_xxx_collideDamageLoad_536E10))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 338,
+      "text": "int nox_xxx_collideDamageLoad_536E10(char* a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 75,
+      "text": "int nox_xxx_collideDamageLoad_536E10(char* a1, int a2);"
+    }
+  ],
+  "sub_536E50": [
+    {
+      "file": "src/legacy/object_collide.go",
+      "line": 88,
+      "text": "server.RegisterObjectCollideParse(\"ManaDrainCollide\", wrapObjectCollideParseC(C.sub_536E50))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 351,
+      "text": "int sub_536E50(char* a1, uint8_t* a2) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 76,
+      "text": "int sub_536E50(char* a1, uint8_t* a2);"
+    }
+  ],
+  "sub_536E80": [
+    {
+      "file": "src/legacy/object_collide.go",
+      "line": 94,
+      "text": "server.RegisterObjectCollideParse(\"MonsterArrowCollide\", wrapObjectCollideParseC(C.sub_536E80))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 359,
+      "text": "int sub_536E80(char* a1, int* a2) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 77,
+      "text": "int sub_536E80(char* a1, int* a2);"
+    }
+  ],
+  "nox_parse_thing_light_dir": [
+    {
+      "file": "src/legacy/object_type_client.go",
+      "line": 7,
+      "text": "bool nox_parse_thing_light_dir(nox_thing* obj, nox_memfile* f, char* attr_value);"
+    },
+    {
+      "file": "src/legacy/object_type_client.go",
+      "line": 26,
+      "text": "client.RegisterThingParse(\"LIGHTDIRECTION\", wrapClientThingFuncC(C.nox_parse_thing_light_dir))"
+    },
+    {
+      "file": "src/legacy/client__drawable__drawdb.c",
+      "line": 28,
+      "text": "bool nox_parse_thing_light_dir(nox_thing* obj, nox_memfile* f, char* attr_value) {"
+    }
+  ],
+  "nox_parse_thing_light_penumbra": [
+    {
+      "file": "src/legacy/object_type_client.go",
+      "line": 8,
+      "text": "bool nox_parse_thing_light_penumbra(nox_thing* obj, nox_memfile* f, char* attr_value);"
+    },
+    {
+      "file": "src/legacy/object_type_client.go",
+      "line": 27,
+      "text": "client.RegisterThingParse(\"LIGHTPENUMBRA\", wrapClientThingFuncC(C.nox_parse_thing_light_penumbra))"
+    },
+    {
+      "file": "src/legacy/client__drawable__drawdb.c",
+      "line": 43,
+      "text": "bool nox_parse_thing_light_penumbra(nox_thing* obj, nox_memfile* f, char* attr_value) {"
+    }
+  ],
+  "nox_parse_thing_client_update": [
+    {
+      "file": "src/legacy/object_type_client.go",
+      "line": 9,
+      "text": "bool nox_parse_thing_client_update(nox_thing* obj, nox_memfile* f, char* attr_value);"
+    },
+    {
+      "file": "src/legacy/object_type_client.go",
+      "line": 28,
+      "text": "client.RegisterThingParse(\"CLIENTUPDATE\", wrapClientThingFuncC(C.nox_parse_thing_client_update))"
+    },
+    {
+      "file": "src/legacy/client__drawable__drawdb.c",
+      "line": 57,
+      "text": "bool nox_parse_thing_client_update(nox_thing* obj, nox_memfile* f, char* attr_value) {"
+    }
+  ],
+  "nox_parse_thing_pretty_image": [
+    {
+      "file": "src/legacy/object_type_client.go",
+      "line": 10,
+      "text": "bool nox_parse_thing_pretty_image(nox_thing* obj, nox_memfile* f, char* attr_value);"
+    },
+    {
+      "file": "src/legacy/object_type_client.go",
+      "line": 29,
+      "text": "client.RegisterThingParse(\"PRETTYIMAGE\", wrapClientThingFuncC(C.nox_parse_thing_pretty_image))"
+    },
+    {
+      "file": "src/legacy/client__drawable__drawdb.c",
+      "line": 85,
+      "text": "bool nox_parse_thing_pretty_image(nox_thing* obj, nox_memfile* f, char* attr_value) {"
+    }
+  ],
+  "sub_4F0640": [
+    {
+      "file": "src/legacy/client__drawable__drawdb.c",
+      "line": 103,
+      "text": "int sub_4F0640() {"
+    },
+    {
+      "file": "src/legacy/things.go",
+      "line": 14,
+      "text": "int sub_4F0640();"
+    },
+    {
+      "file": "src/legacy/things.go",
+      "line": 37,
+      "text": "C.sub_4F0640()"
+    }
+  ]
+}

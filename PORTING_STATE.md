@@ -8,7 +8,34 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — book-award Go conversion qualified
+## Current — resource-definition original-C baseline qualified
+
+Qualified parent **45c36984** is pushed. Scope27 bodies /476 body lines:24 live,
+three orphaned. All149 affected roots pass on all targets without skips, with63
+artifacts /30,040 records identical. Fifteen new frozen captures cover2,250 records.
+All2,651 source fingerprints agree; static-c-final passes. Parent production source
+identity and binary hashes are verified; twelve new sources are porttest-only.
+**All sessions are joined; no builds/tests running.** Production remains C.
+
+See [RESOURCE_DEFINITIONS.md](docs/porting/RESOURCE_DEFINITIONS.md) and qualification
+JSON. Evidence: `build/port-resource-definitions/c-qualified-{default,server,highres}`.
+The first soundset fixture assumed conventional comments; corrected contracts now
+preserve the existing SkipLine behavior (stop at first non-newline). Arrow parsing
+also preserves first-value reuse. Numeric edges cover overflow and float32 rounding.
+
+Next commit/push baseline, then translate. One C export remains (monster sound
+lookup);23 live private interfaces, three orphans and the sound-set list head retire.
+Move the existing creature-xfer fixture owner with that head. Native number/parser
+drafts are prepared ONLY under build; review against C before installation.
+Installed fixture drafts, freeze.py and qualify-c.py are CONSUMED; never replay.
+
+Disk: completed player-file/book-award scenario asset deduplication reclaimed
+2,225,495,402 bytes after hash/inactivity checks. All cleanup sessions joined;
+audit/apply modes are CONSUMED. Preserve restoration manifests and --restore mode.
+Original assets/archive, saves, captures and binaries remain. About6.7 GiB free
+immediately after cleanup, before the final C runs.
+
+## Qualified parent — book-award Go conversion
 
 C baseline **27554f1f** is committed/pushed. All26 selected bodies and the private
 counter are Go; seven C interfaces remain, nineteen private interfaces and one C
@@ -20,7 +47,7 @@ All2,639 source fingerprints agree, static-native-final passes, and no frozen
 expectations changed. Fresh production validates three ELF32/386/SSE2/CGO binaries,
 interface inventories, exact known full-suite results (1,553 failure entries;
 15 pass /3 fail /32 skip packages), headless gameplay and explicit save/load.
-**All sessions are joined; no builds/tests running.**
+All book-award sessions are joined.
 
 See [BOOK_AWARDS.md](docs/porting/BOOK_AWARDS.md) and
 book-awards-native-qualification.json. Evidence:
@@ -34,7 +61,7 @@ were added to the native affected selection for callers moved to Go.
 
 Next candidate: `build/port-resource-definitions/{selection-draft,callers-draft}.json`
 and plan-draft.md.27 bodies /476 body lines; three appear orphaned. Verify roots,
-then original-C contracts for the24 live functions. No next-batch source installed.
+then original-C contracts for the24 live functions. Next-batch fixture sources are installed; see active checkpoint above.
 
 ## Qualified parent — player-file conversion
 
