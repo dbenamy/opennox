@@ -1,0 +1,897 @@
+{
+  "batch": "Legacy online session baseline affected corpus",
+  "env": {
+    "OPENNOX_SPELLBOOK_CAPTURE": "{out}/capture",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_COMBAT_CAPTURE": "{out}/combat.json",
+    "OPENNOX_MAP_POPULATION_CAPTURE": "{out}/population",
+    "OPENNOX_TILE_RASTER_CAPTURE": "{out}/tile-raster",
+    "OPENNOX_TILE_COMPOSITION_CAPTURE": "{out}/tile-composition",
+    "OPENNOX_CLIENT_AUDIO_CAPTURE": "{out}/audio",
+    "OPENNOX_CLIENT_AUDIO_ASSETS_CAPTURE": "{out}/audio-assets",
+    "OPENNOX_SESSION_DIALOGS_CAPTURE": "{out}/session-dialogs",
+    "OPENNOX_BRIEFING_CAPTURE": "{out}/briefing",
+    "OPENNOX_BRIEFING_WINDOW_CAPTURE": "{out}/briefing-window",
+    "OPENNOX_INVENTORY_WINDOW_CAPTURE": "{out}/inventory-window",
+    "OPENNOX_CLIENT_INTERACTION_CAPTURE": "{out}/interaction"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/online-session-affected-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/briefing-chapter-table.json",
+            "sha256": "5d224a483890f3cea8ffdf54b224c1c0d784e3edc31ca85975b10de8203d3a68"
+          },
+          {
+            "path": "{out}/briefing-instructions-layouts.json",
+            "sha256": "4e62403c41d948dd6d6f0dae238b9592af299496b83b805dac7e6d4178cd9c35"
+          },
+          {
+            "path": "{out}/briefing-missing-duplicate-ids.json",
+            "sha256": "620310c8ca7616fc5bb15c033c05b6345ff85af22013ef7bc582332bb120866e"
+          },
+          {
+            "path": "{out}/briefing-score-comparison.json",
+            "sha256": "311e6d15c549a800678406c7cca805312e7b8e668917891ab178eb8813ec2b72"
+          },
+          {
+            "path": "{out}/briefing-selection-reports.json",
+            "sha256": "ef25a95ac5036e2cd617b51cb034d4ea9a24571103644c33112b07d50da1daec"
+          },
+          {
+            "path": "{out}/briefing-shipped-window.json",
+            "sha256": "ce442082b9c3b2c3d8ea55ec3ce3104f46d125b6373dbacb730d248419edcfa8"
+          },
+          {
+            "path": "{out}/briefing-sprite-lifecycle.json",
+            "sha256": "7db12f469ed96b02a77965c93413e7de683c906d77a368fe578336c15752a67a"
+          },
+          {
+            "path": "{out}/briefing-stage-caption-image.json",
+            "sha256": "3fdbe48d8581876862202e9a81fd41d9f3a31e3618afdc7fbf6bda94beb506ce"
+          },
+          {
+            "path": "{out}/briefing-statistics-layouts.json",
+            "sha256": "16380893b8863b712b14ff8c301da8ac16c7610fa8753bba3589bad71bed8fc6"
+          },
+          {
+            "path": "{out}/briefing-title-frames.json",
+            "sha256": "95f69e75ca5ccc15a6d5cbcc62dc45426dc2d9047dcd1906d7b09c61a7db2691"
+          },
+          {
+            "path": "{out}/briefing-win-reports.json",
+            "sha256": "0bd03ef1c9b7e8870a3270a18eadfce560273bb9c0f9b6b14b26123c63267f77"
+          },
+          {
+            "path": "{out}/briefing-window-chapters.json",
+            "sha256": "a4df6e50ccc7ed6b1e4ef82e4aa1f846161932d7bc088d80a608660ee63a47da"
+          },
+          {
+            "path": "{out}/briefing-window-credits.json",
+            "sha256": "ad2b70eae228be79a0e24321cdc8c508b4493e92f0ab0be37b9fcf17cc7ee03c"
+          },
+          {
+            "path": "{out}/briefing-window-draw-modes.json",
+            "sha256": "a5d747c5dfdadfa530f70050f2d57a145710980f5676b274ef247d9b61a6527b"
+          },
+          {
+            "path": "{out}/briefing-window-fade-voice.json",
+            "sha256": "a3b60c202cb929d8539017723bcbf36eaf9213ecfa82b5d94aff8136cdb07e6b"
+          },
+          {
+            "path": "{out}/briefing-window-helpers.json",
+            "sha256": "b37e15d030aa36eb1b9a4d85d542ea79e9836a9748e46f5bf392d9d11ce4d1d4"
+          },
+          {
+            "path": "{out}/briefing-window-input-gates.json",
+            "sha256": "2bf11a87ab6696367a6e0762e9246956d141e4143a9044218a3d0cae8f606c10"
+          },
+          {
+            "path": "{out}/briefing-window-quest-modes.json",
+            "sha256": "bac57ea5e5d5d083c086746c0b0d835d4e0943234f01a6bded878cb5ad2c7b16"
+          },
+          {
+            "path": "{out}/briefing-window-resource-failure.json",
+            "sha256": "bc2787510b727cac7db6dd110c7d622c545ed25abb6782172d2ce117a5b5f6fc"
+          },
+          {
+            "path": "{out}/briefing-window-shipped-lifecycle.json",
+            "sha256": "90bc3bace550577c1332484db1a44de7fcfc7c8f1aa935e046c5231a70405c11"
+          },
+          {
+            "path": "{out}/briefing-window-timed-dismissal.json",
+            "sha256": "a2aba758cbbbdf61177a2892ff27a1bf3fea99175155a2da75f9fa46d413dac9"
+          },
+          {
+            "path": "{out}/briefing-window-voice.json",
+            "sha256": "6fc5c0c7dfcd819bccda0bff30fd032c7540401eaf097c0a0d0b72d8210ad40c"
+          },
+          {
+            "path": "{out}/capture-character-creation-admission-words.json",
+            "sha256": "6556110b7ca7eaab61969ef66aa9784d9c29e1a70212f7c0c2642600fddaeab3"
+          },
+          {
+            "path": "{out}/capture-character-creation-animation-cleanup.json",
+            "sha256": "f6b84f79806e4922936852eb4718363032b8b05cda42c1b41cc2112bdabd1e92"
+          },
+          {
+            "path": "{out}/capture-character-creation-appearance.json",
+            "sha256": "42a587e5a5f800883beeb06fb24a64cb8a8935a3d104455310de017c2d5fb010"
+          },
+          {
+            "path": "{out}/capture-character-creation-class-events.json",
+            "sha256": "0f973e847e3df35b60b4d148bfbaa0c55ab28039788a98a2f4da098596cefdee"
+          },
+          {
+            "path": "{out}/capture-character-creation-class-shade.json",
+            "sha256": "090f1637c55b06703bd95696345b66eaf91acce739a16b27f288ae20baff0c8b"
+          },
+          {
+            "path": "{out}/capture-character-creation-construction-failures.json",
+            "sha256": "91244c69d14d1b7af0f34867dd4dd59969fc86432a014482f7a74caca61fc31a"
+          },
+          {
+            "path": "{out}/capture-character-creation-files.json",
+            "sha256": "18408533122efd720371bb4999e81fcd60d24456d4f248065c1edb7f78d06055"
+          },
+          {
+            "path": "{out}/capture-character-creation-initial-appearance.json",
+            "sha256": "709996138e19f5cb8fb971fb3b87cccd26cf26217bdcaa199364ef50a413d075"
+          },
+          {
+            "path": "{out}/capture-character-creation-names.json",
+            "sha256": "0d67a9e55b3853feb5e4f7209f32997cb7733da71dcf8b93521104552c0ad463"
+          },
+          {
+            "path": "{out}/capture-character-creation-palette-events.json",
+            "sha256": "c9ab688f0a6a3b23c032ffdadc355057dd34c6b47066d73796e28eeceb07c9ee"
+          },
+          {
+            "path": "{out}/capture-character-creation-palette-match.json",
+            "sha256": "177ecd3c53ebaf6dfc108c08e410c84cc31a797e5dfde810e8169bf3e47a04fa"
+          },
+          {
+            "path": "{out}/capture-character-creation-palette-menu.json",
+            "sha256": "12bc7a25ca85dcaad6e3dad893a3821811288ff5c6216833f0c5f137e6772225"
+          },
+          {
+            "path": "{out}/capture-character-creation-palette-outside.json",
+            "sha256": "2252743928e0d2856b28410e64af0f94732abe4f9569b75af1382410adc30166"
+          },
+          {
+            "path": "{out}/capture-character-creation-preview.json",
+            "sha256": "7e4e4ff4483deb28183c7d6caf95ac408461cf0edbe31d4e90c1c1b5bbacba9c"
+          },
+          {
+            "path": "{out}/capture-character-creation-quickbar.json",
+            "sha256": "953a75e4c3e882a572759feca49cbfca8472ae3a88d853ec3572abd77a802e14"
+          },
+          {
+            "path": "{out}/capture-character-creation-swatch-pixels.json",
+            "sha256": "453728fb5ee8e7b81d76343558f5d26cd1e8e6aa313053af1341dbb81c5c6519"
+          },
+          {
+            "path": "{out}/capture-server-browser-address-formatting.json",
+            "sha256": "83fe9df285956bee14e1d664665b665222aee8fb741094abd9db75a8e647a623"
+          },
+          {
+            "path": "{out}/capture-server-browser-collection.json",
+            "sha256": "83c721cd211500d5bc8b586fdc192ccd2ec96052d7fae124f70b73a798f18bb0"
+          },
+          {
+            "path": "{out}/capture-server-browser-details.json",
+            "sha256": "7e50692b5c088e67d7f8e04e5988ea28bef7a028f72126efdafeeaebdc6ed741"
+          },
+          {
+            "path": "{out}/capture-server-browser-host-description.json",
+            "sha256": "173636c317bef2a11ab205a50ccd52181952dfbc65aaf9b4b084a0bb530faf74"
+          },
+          {
+            "path": "{out}/capture-server-browser-lan-rows.json",
+            "sha256": "80f3bb8361995c6540ce3b09d291438433592014853abe88a1082f4800113630"
+          },
+          {
+            "path": "{out}/capture-server-browser-map-hit.json",
+            "sha256": "1edf2217bb2f7a85446a91b97e4b85af2ea43e10861ef5a5ab1055b402adf04d"
+          },
+          {
+            "path": "{out}/capture-server-browser-map-list.json",
+            "sha256": "9b1dc57391bc90f8d356f84d8f397a9eae3f0230f90d000a535fc071252fed68"
+          },
+          {
+            "path": "{out}/capture-server-browser-map-markers.json",
+            "sha256": "cb06c5c8ad309b364b0f0d1cc28f3737bc5a2688d6609c440e7cee8f29b726ba"
+          },
+          {
+            "path": "{out}/capture-server-browser-mode-names.json",
+            "sha256": "8d9eaaff7082ea232196f4ebfe730c643bf75d3070c6d875e0a37ca486f14295"
+          },
+          {
+            "path": "{out}/capture-server-browser-name-width.json",
+            "sha256": "840800b220f259e61e4d6f9c4e893fa43800bbbcbd8b6e04d4d97b0731a9821e"
+          },
+          {
+            "path": "{out}/capture-server-browser-popup-clamp.json",
+            "sha256": "1c2ff85279dd3a9c8a979e8ad2d5e82a9acdd2df7ab50eb217ec6b280e178260"
+          },
+          {
+            "path": "{out}/capture-server-browser-proximity-popup.json",
+            "sha256": "b2879bab13cb61613d89de00fd656c54683507e4d8a7c799e5addf0de13364f8"
+          },
+          {
+            "path": "{out}/capture-server-browser-refresh-gates.json",
+            "sha256": "b0a9da6be4b3bf0edced07a776421d3e62a83ac954cb6f945bf0d138e192d6a8"
+          },
+          {
+            "path": "{out}/capture-server-browser-resort.json",
+            "sha256": "66311dd1593b90d9818319d28a55f53385dbe218e7dcf1937884d3a879bd25a9"
+          },
+          {
+            "path": "{out}/capture-server-browser-selected-endpoint.json",
+            "sha256": "cd479701a8db191cf882b8216bfe888c763bbd09542bead8de93955e2ea2ecff"
+          },
+          {
+            "path": "{out}/capture-server-browser-sort-buttons.json",
+            "sha256": "120969dcd7bc15721779a06438dbf30618ee225b6cb324070b16ffe5074a62a1"
+          },
+          {
+            "path": "{out}/capture-server-browser-state-words.json",
+            "sha256": "ba62d2f4c7d3587d4fc0d9bb0f92103864f1884b7a24deadd8acab48526916cf"
+          },
+          {
+            "path": "{out}/capture-server-browser-timers.json",
+            "sha256": "5dc27892376e936abcc8b6f23149c34de9b143fb20614295294400e0fe25dd07"
+          },
+          {
+            "path": "{out}/session-dialogs-disconnect-resource.json",
+            "sha256": "c5c10a2afb9216c5527f7654a25bc3701acf9b599ad29cca0f7e1b3c2079a01a"
+          },
+          {
+            "path": "{out}/session-dialogs-filter-actions.json",
+            "sha256": "9ddd66f1951bffe4a6b8c5139a06cf126d8b1ce3aa3ef341f4ca3f66af393533"
+          },
+          {
+            "path": "{out}/session-dialogs-filter-resource.json",
+            "sha256": "9db17fca7f2e07fd260fc15c79440e8aab760591d5d6f80b037ca5f12c3f396b"
+          },
+          {
+            "path": "{out}/session-dialogs-filter-rules.json",
+            "sha256": "b9c45823dee1451df7f11b5b00f947bd03c85557602719e24bc5eabc7b54a94b"
+          },
+          {
+            "path": "{out}/session-dialogs-motd-display.json",
+            "sha256": "74fed68ae25ba22964717563ccdc54727bd5e9de41fc2a939e3c1d675b9f8c0e"
+          },
+          {
+            "path": "{out}/session-dialogs-motd-files.json",
+            "sha256": "49423dd7a80905d113c5039515e9ac2fd90de89b69b4bad2b811cdc5c346eb14"
+          },
+          {
+            "path": "{out}/session-dialogs-motd-resource.json",
+            "sha256": "7e2405eb4d756252aa207f3f6e24ac7928cb3cbee9fcbea61a2fb666bee579b4"
+          },
+          {
+            "path": "{out}/session-dialogs-quit-callbacks.json",
+            "sha256": "42976a0acb85e7ce34685e539bb0a957ef0b27bef099fcdd271c9194935999f4"
+          },
+          {
+            "path": "{out}/session-dialogs-quit-modes.json",
+            "sha256": "0c8da5d5350b5c83161a12ad9c9a08ef1d76cc5872225562b5b13e9047c6feb6"
+          },
+          {
+            "path": "{out}/capture-online-session-timers.json",
+            "sha256": "5446e38fc183cd560c640b03ce20608f75e8ae5e020987d88d36d1edccadd788"
+          },
+          {
+            "path": "{out}/capture-online-session-status.json",
+            "sha256": "1f382ef8226064f42ad3fdad3e3c1be492b1760d99d0176b5e04944a8b30b3e7"
+          }
+        ]
+      }
+    ],
+    "server": [
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/online-session-affected-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/briefing-chapter-table.json",
+            "sha256": "5d224a483890f3cea8ffdf54b224c1c0d784e3edc31ca85975b10de8203d3a68"
+          },
+          {
+            "path": "{out}/briefing-instructions-layouts.json",
+            "sha256": "4e62403c41d948dd6d6f0dae238b9592af299496b83b805dac7e6d4178cd9c35"
+          },
+          {
+            "path": "{out}/briefing-missing-duplicate-ids.json",
+            "sha256": "620310c8ca7616fc5bb15c033c05b6345ff85af22013ef7bc582332bb120866e"
+          },
+          {
+            "path": "{out}/briefing-score-comparison.json",
+            "sha256": "311e6d15c549a800678406c7cca805312e7b8e668917891ab178eb8813ec2b72"
+          },
+          {
+            "path": "{out}/briefing-selection-reports.json",
+            "sha256": "ef25a95ac5036e2cd617b51cb034d4ea9a24571103644c33112b07d50da1daec"
+          },
+          {
+            "path": "{out}/briefing-shipped-window.json",
+            "sha256": "ce442082b9c3b2c3d8ea55ec3ce3104f46d125b6373dbacb730d248419edcfa8"
+          },
+          {
+            "path": "{out}/briefing-sprite-lifecycle.json",
+            "sha256": "7db12f469ed96b02a77965c93413e7de683c906d77a368fe578336c15752a67a"
+          },
+          {
+            "path": "{out}/briefing-stage-caption-image.json",
+            "sha256": "3fdbe48d8581876862202e9a81fd41d9f3a31e3618afdc7fbf6bda94beb506ce"
+          },
+          {
+            "path": "{out}/briefing-statistics-layouts.json",
+            "sha256": "16380893b8863b712b14ff8c301da8ac16c7610fa8753bba3589bad71bed8fc6"
+          },
+          {
+            "path": "{out}/briefing-title-frames.json",
+            "sha256": "95f69e75ca5ccc15a6d5cbcc62dc45426dc2d9047dcd1906d7b09c61a7db2691"
+          },
+          {
+            "path": "{out}/briefing-win-reports.json",
+            "sha256": "0bd03ef1c9b7e8870a3270a18eadfce560273bb9c0f9b6b14b26123c63267f77"
+          },
+          {
+            "path": "{out}/briefing-window-chapters.json",
+            "sha256": "a4df6e50ccc7ed6b1e4ef82e4aa1f846161932d7bc088d80a608660ee63a47da"
+          },
+          {
+            "path": "{out}/briefing-window-credits.json",
+            "sha256": "ad2b70eae228be79a0e24321cdc8c508b4493e92f0ab0be37b9fcf17cc7ee03c"
+          },
+          {
+            "path": "{out}/briefing-window-draw-modes.json",
+            "sha256": "a5d747c5dfdadfa530f70050f2d57a145710980f5676b274ef247d9b61a6527b"
+          },
+          {
+            "path": "{out}/briefing-window-fade-voice.json",
+            "sha256": "a3b60c202cb929d8539017723bcbf36eaf9213ecfa82b5d94aff8136cdb07e6b"
+          },
+          {
+            "path": "{out}/briefing-window-helpers.json",
+            "sha256": "b37e15d030aa36eb1b9a4d85d542ea79e9836a9748e46f5bf392d9d11ce4d1d4"
+          },
+          {
+            "path": "{out}/briefing-window-input-gates.json",
+            "sha256": "2bf11a87ab6696367a6e0762e9246956d141e4143a9044218a3d0cae8f606c10"
+          },
+          {
+            "path": "{out}/briefing-window-quest-modes.json",
+            "sha256": "bac57ea5e5d5d083c086746c0b0d835d4e0943234f01a6bded878cb5ad2c7b16"
+          },
+          {
+            "path": "{out}/briefing-window-resource-failure.json",
+            "sha256": "bc2787510b727cac7db6dd110c7d622c545ed25abb6782172d2ce117a5b5f6fc"
+          },
+          {
+            "path": "{out}/briefing-window-shipped-lifecycle.json",
+            "sha256": "90bc3bace550577c1332484db1a44de7fcfc7c8f1aa935e046c5231a70405c11"
+          },
+          {
+            "path": "{out}/briefing-window-timed-dismissal.json",
+            "sha256": "a2aba758cbbbdf61177a2892ff27a1bf3fea99175155a2da75f9fa46d413dac9"
+          },
+          {
+            "path": "{out}/briefing-window-voice.json",
+            "sha256": "6fc5c0c7dfcd819bccda0bff30fd032c7540401eaf097c0a0d0b72d8210ad40c"
+          },
+          {
+            "path": "{out}/capture-character-creation-admission-words.json",
+            "sha256": "6556110b7ca7eaab61969ef66aa9784d9c29e1a70212f7c0c2642600fddaeab3"
+          },
+          {
+            "path": "{out}/capture-character-creation-animation-cleanup.json",
+            "sha256": "f6b84f79806e4922936852eb4718363032b8b05cda42c1b41cc2112bdabd1e92"
+          },
+          {
+            "path": "{out}/capture-character-creation-appearance.json",
+            "sha256": "42a587e5a5f800883beeb06fb24a64cb8a8935a3d104455310de017c2d5fb010"
+          },
+          {
+            "path": "{out}/capture-character-creation-class-events.json",
+            "sha256": "0f973e847e3df35b60b4d148bfbaa0c55ab28039788a98a2f4da098596cefdee"
+          },
+          {
+            "path": "{out}/capture-character-creation-class-shade.json",
+            "sha256": "090f1637c55b06703bd95696345b66eaf91acce739a16b27f288ae20baff0c8b"
+          },
+          {
+            "path": "{out}/capture-character-creation-construction-failures.json",
+            "sha256": "91244c69d14d1b7af0f34867dd4dd59969fc86432a014482f7a74caca61fc31a"
+          },
+          {
+            "path": "{out}/capture-character-creation-files.json",
+            "sha256": "18408533122efd720371bb4999e81fcd60d24456d4f248065c1edb7f78d06055"
+          },
+          {
+            "path": "{out}/capture-character-creation-initial-appearance.json",
+            "sha256": "709996138e19f5cb8fb971fb3b87cccd26cf26217bdcaa199364ef50a413d075"
+          },
+          {
+            "path": "{out}/capture-character-creation-names.json",
+            "sha256": "0d67a9e55b3853feb5e4f7209f32997cb7733da71dcf8b93521104552c0ad463"
+          },
+          {
+            "path": "{out}/capture-character-creation-palette-events.json",
+            "sha256": "c9ab688f0a6a3b23c032ffdadc355057dd34c6b47066d73796e28eeceb07c9ee"
+          },
+          {
+            "path": "{out}/capture-character-creation-palette-match.json",
+            "sha256": "177ecd3c53ebaf6dfc108c08e410c84cc31a797e5dfde810e8169bf3e47a04fa"
+          },
+          {
+            "path": "{out}/capture-character-creation-palette-menu.json",
+            "sha256": "12bc7a25ca85dcaad6e3dad893a3821811288ff5c6216833f0c5f137e6772225"
+          },
+          {
+            "path": "{out}/capture-character-creation-palette-outside.json",
+            "sha256": "2252743928e0d2856b28410e64af0f94732abe4f9569b75af1382410adc30166"
+          },
+          {
+            "path": "{out}/capture-character-creation-preview.json",
+            "sha256": "7e4e4ff4483deb28183c7d6caf95ac408461cf0edbe31d4e90c1c1b5bbacba9c"
+          },
+          {
+            "path": "{out}/capture-character-creation-quickbar.json",
+            "sha256": "953a75e4c3e882a572759feca49cbfca8472ae3a88d853ec3572abd77a802e14"
+          },
+          {
+            "path": "{out}/capture-character-creation-swatch-pixels.json",
+            "sha256": "453728fb5ee8e7b81d76343558f5d26cd1e8e6aa313053af1341dbb81c5c6519"
+          },
+          {
+            "path": "{out}/capture-server-browser-address-formatting.json",
+            "sha256": "83fe9df285956bee14e1d664665b665222aee8fb741094abd9db75a8e647a623"
+          },
+          {
+            "path": "{out}/capture-server-browser-collection.json",
+            "sha256": "83c721cd211500d5bc8b586fdc192ccd2ec96052d7fae124f70b73a798f18bb0"
+          },
+          {
+            "path": "{out}/capture-server-browser-details.json",
+            "sha256": "7e50692b5c088e67d7f8e04e5988ea28bef7a028f72126efdafeeaebdc6ed741"
+          },
+          {
+            "path": "{out}/capture-server-browser-host-description.json",
+            "sha256": "173636c317bef2a11ab205a50ccd52181952dfbc65aaf9b4b084a0bb530faf74"
+          },
+          {
+            "path": "{out}/capture-server-browser-lan-rows.json",
+            "sha256": "80f3bb8361995c6540ce3b09d291438433592014853abe88a1082f4800113630"
+          },
+          {
+            "path": "{out}/capture-server-browser-map-hit.json",
+            "sha256": "1edf2217bb2f7a85446a91b97e4b85af2ea43e10861ef5a5ab1055b402adf04d"
+          },
+          {
+            "path": "{out}/capture-server-browser-map-list.json",
+            "sha256": "9b1dc57391bc90f8d356f84d8f397a9eae3f0230f90d000a535fc071252fed68"
+          },
+          {
+            "path": "{out}/capture-server-browser-map-markers.json",
+            "sha256": "cb06c5c8ad309b364b0f0d1cc28f3737bc5a2688d6609c440e7cee8f29b726ba"
+          },
+          {
+            "path": "{out}/capture-server-browser-mode-names.json",
+            "sha256": "8d9eaaff7082ea232196f4ebfe730c643bf75d3070c6d875e0a37ca486f14295"
+          },
+          {
+            "path": "{out}/capture-server-browser-name-width.json",
+            "sha256": "840800b220f259e61e4d6f9c4e893fa43800bbbcbd8b6e04d4d97b0731a9821e"
+          },
+          {
+            "path": "{out}/capture-server-browser-popup-clamp.json",
+            "sha256": "1c2ff85279dd3a9c8a979e8ad2d5e82a9acdd2df7ab50eb217ec6b280e178260"
+          },
+          {
+            "path": "{out}/capture-server-browser-proximity-popup.json",
+            "sha256": "b2879bab13cb61613d89de00fd656c54683507e4d8a7c799e5addf0de13364f8"
+          },
+          {
+            "path": "{out}/capture-server-browser-refresh-gates.json",
+            "sha256": "b0a9da6be4b3bf0edced07a776421d3e62a83ac954cb6f945bf0d138e192d6a8"
+          },
+          {
+            "path": "{out}/capture-server-browser-resort.json",
+            "sha256": "66311dd1593b90d9818319d28a55f53385dbe218e7dcf1937884d3a879bd25a9"
+          },
+          {
+            "path": "{out}/capture-server-browser-selected-endpoint.json",
+            "sha256": "cd479701a8db191cf882b8216bfe888c763bbd09542bead8de93955e2ea2ecff"
+          },
+          {
+            "path": "{out}/capture-server-browser-sort-buttons.json",
+            "sha256": "120969dcd7bc15721779a06438dbf30618ee225b6cb324070b16ffe5074a62a1"
+          },
+          {
+            "path": "{out}/capture-server-browser-state-words.json",
+            "sha256": "ba62d2f4c7d3587d4fc0d9bb0f92103864f1884b7a24deadd8acab48526916cf"
+          },
+          {
+            "path": "{out}/capture-server-browser-timers.json",
+            "sha256": "5dc27892376e936abcc8b6f23149c34de9b143fb20614295294400e0fe25dd07"
+          },
+          {
+            "path": "{out}/session-dialogs-disconnect-resource.json",
+            "sha256": "c5c10a2afb9216c5527f7654a25bc3701acf9b599ad29cca0f7e1b3c2079a01a"
+          },
+          {
+            "path": "{out}/session-dialogs-filter-actions.json",
+            "sha256": "9ddd66f1951bffe4a6b8c5139a06cf126d8b1ce3aa3ef341f4ca3f66af393533"
+          },
+          {
+            "path": "{out}/session-dialogs-filter-resource.json",
+            "sha256": "9db17fca7f2e07fd260fc15c79440e8aab760591d5d6f80b037ca5f12c3f396b"
+          },
+          {
+            "path": "{out}/session-dialogs-filter-rules.json",
+            "sha256": "b9c45823dee1451df7f11b5b00f947bd03c85557602719e24bc5eabc7b54a94b"
+          },
+          {
+            "path": "{out}/session-dialogs-motd-display.json",
+            "sha256": "74fed68ae25ba22964717563ccdc54727bd5e9de41fc2a939e3c1d675b9f8c0e"
+          },
+          {
+            "path": "{out}/session-dialogs-motd-files.json",
+            "sha256": "49423dd7a80905d113c5039515e9ac2fd90de89b69b4bad2b811cdc5c346eb14"
+          },
+          {
+            "path": "{out}/session-dialogs-motd-resource.json",
+            "sha256": "7e2405eb4d756252aa207f3f6e24ac7928cb3cbee9fcbea61a2fb666bee579b4"
+          },
+          {
+            "path": "{out}/session-dialogs-quit-callbacks.json",
+            "sha256": "42976a0acb85e7ce34685e539bb0a957ef0b27bef099fcdd271c9194935999f4"
+          },
+          {
+            "path": "{out}/session-dialogs-quit-modes.json",
+            "sha256": "0c8da5d5350b5c83161a12ad9c9a08ef1d76cc5872225562b5b13e9047c6feb6"
+          },
+          {
+            "path": "{out}/capture-online-session-timers.json",
+            "sha256": "5446e38fc183cd560c640b03ce20608f75e8ae5e020987d88d36d1edccadd788"
+          },
+          {
+            "path": "{out}/capture-online-session-status.json",
+            "sha256": "1f382ef8226064f42ad3fdad3e3c1be492b1760d99d0176b5e04944a8b30b3e7"
+          }
+        ]
+      }
+    ],
+    "highres": [
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/online-session-affected-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/briefing-chapter-table.json",
+            "sha256": "5d224a483890f3cea8ffdf54b224c1c0d784e3edc31ca85975b10de8203d3a68"
+          },
+          {
+            "path": "{out}/briefing-instructions-layouts.json",
+            "sha256": "4e62403c41d948dd6d6f0dae238b9592af299496b83b805dac7e6d4178cd9c35"
+          },
+          {
+            "path": "{out}/briefing-missing-duplicate-ids.json",
+            "sha256": "620310c8ca7616fc5bb15c033c05b6345ff85af22013ef7bc582332bb120866e"
+          },
+          {
+            "path": "{out}/briefing-score-comparison.json",
+            "sha256": "311e6d15c549a800678406c7cca805312e7b8e668917891ab178eb8813ec2b72"
+          },
+          {
+            "path": "{out}/briefing-selection-reports.json",
+            "sha256": "ef25a95ac5036e2cd617b51cb034d4ea9a24571103644c33112b07d50da1daec"
+          },
+          {
+            "path": "{out}/briefing-shipped-window.json",
+            "sha256": "ce442082b9c3b2c3d8ea55ec3ce3104f46d125b6373dbacb730d248419edcfa8"
+          },
+          {
+            "path": "{out}/briefing-sprite-lifecycle.json",
+            "sha256": "7db12f469ed96b02a77965c93413e7de683c906d77a368fe578336c15752a67a"
+          },
+          {
+            "path": "{out}/briefing-stage-caption-image.json",
+            "sha256": "3fdbe48d8581876862202e9a81fd41d9f3a31e3618afdc7fbf6bda94beb506ce"
+          },
+          {
+            "path": "{out}/briefing-statistics-layouts.json",
+            "sha256": "16380893b8863b712b14ff8c301da8ac16c7610fa8753bba3589bad71bed8fc6"
+          },
+          {
+            "path": "{out}/briefing-title-frames.json",
+            "sha256": "95f69e75ca5ccc15a6d5cbcc62dc45426dc2d9047dcd1906d7b09c61a7db2691"
+          },
+          {
+            "path": "{out}/briefing-win-reports.json",
+            "sha256": "0bd03ef1c9b7e8870a3270a18eadfce560273bb9c0f9b6b14b26123c63267f77"
+          },
+          {
+            "path": "{out}/briefing-window-chapters.json",
+            "sha256": "a4df6e50ccc7ed6b1e4ef82e4aa1f846161932d7bc088d80a608660ee63a47da"
+          },
+          {
+            "path": "{out}/briefing-window-credits.json",
+            "sha256": "ad2b70eae228be79a0e24321cdc8c508b4493e92f0ab0be37b9fcf17cc7ee03c"
+          },
+          {
+            "path": "{out}/briefing-window-draw-modes.json",
+            "sha256": "a5d747c5dfdadfa530f70050f2d57a145710980f5676b274ef247d9b61a6527b"
+          },
+          {
+            "path": "{out}/briefing-window-fade-voice.json",
+            "sha256": "a3b60c202cb929d8539017723bcbf36eaf9213ecfa82b5d94aff8136cdb07e6b"
+          },
+          {
+            "path": "{out}/briefing-window-helpers.json",
+            "sha256": "b37e15d030aa36eb1b9a4d85d542ea79e9836a9748e46f5bf392d9d11ce4d1d4"
+          },
+          {
+            "path": "{out}/briefing-window-input-gates.json",
+            "sha256": "2bf11a87ab6696367a6e0762e9246956d141e4143a9044218a3d0cae8f606c10"
+          },
+          {
+            "path": "{out}/briefing-window-quest-modes.json",
+            "sha256": "bac57ea5e5d5d083c086746c0b0d835d4e0943234f01a6bded878cb5ad2c7b16"
+          },
+          {
+            "path": "{out}/briefing-window-resource-failure.json",
+            "sha256": "bc2787510b727cac7db6dd110c7d622c545ed25abb6782172d2ce117a5b5f6fc"
+          },
+          {
+            "path": "{out}/briefing-window-shipped-lifecycle.json",
+            "sha256": "90bc3bace550577c1332484db1a44de7fcfc7c8f1aa935e046c5231a70405c11"
+          },
+          {
+            "path": "{out}/briefing-window-timed-dismissal.json",
+            "sha256": "a2aba758cbbbdf61177a2892ff27a1bf3fea99175155a2da75f9fa46d413dac9"
+          },
+          {
+            "path": "{out}/briefing-window-voice.json",
+            "sha256": "6fc5c0c7dfcd819bccda0bff30fd032c7540401eaf097c0a0d0b72d8210ad40c"
+          },
+          {
+            "path": "{out}/capture-character-creation-admission-words.json",
+            "sha256": "6556110b7ca7eaab61969ef66aa9784d9c29e1a70212f7c0c2642600fddaeab3"
+          },
+          {
+            "path": "{out}/capture-character-creation-animation-cleanup.json",
+            "sha256": "f6b84f79806e4922936852eb4718363032b8b05cda42c1b41cc2112bdabd1e92"
+          },
+          {
+            "path": "{out}/capture-character-creation-appearance.json",
+            "sha256": "42a587e5a5f800883beeb06fb24a64cb8a8935a3d104455310de017c2d5fb010"
+          },
+          {
+            "path": "{out}/capture-character-creation-class-events.json",
+            "sha256": "0f973e847e3df35b60b4d148bfbaa0c55ab28039788a98a2f4da098596cefdee"
+          },
+          {
+            "path": "{out}/capture-character-creation-class-shade.json",
+            "sha256": "090f1637c55b06703bd95696345b66eaf91acce739a16b27f288ae20baff0c8b"
+          },
+          {
+            "path": "{out}/capture-character-creation-construction-failures.json",
+            "sha256": "91244c69d14d1b7af0f34867dd4dd59969fc86432a014482f7a74caca61fc31a"
+          },
+          {
+            "path": "{out}/capture-character-creation-files.json",
+            "sha256": "18408533122efd720371bb4999e81fcd60d24456d4f248065c1edb7f78d06055"
+          },
+          {
+            "path": "{out}/capture-character-creation-initial-appearance.json",
+            "sha256": "709996138e19f5cb8fb971fb3b87cccd26cf26217bdcaa199364ef50a413d075"
+          },
+          {
+            "path": "{out}/capture-character-creation-names.json",
+            "sha256": "0d67a9e55b3853feb5e4f7209f32997cb7733da71dcf8b93521104552c0ad463"
+          },
+          {
+            "path": "{out}/capture-character-creation-palette-events.json",
+            "sha256": "c9ab688f0a6a3b23c032ffdadc355057dd34c6b47066d73796e28eeceb07c9ee"
+          },
+          {
+            "path": "{out}/capture-character-creation-palette-match.json",
+            "sha256": "177ecd3c53ebaf6dfc108c08e410c84cc31a797e5dfde810e8169bf3e47a04fa"
+          },
+          {
+            "path": "{out}/capture-character-creation-palette-menu.json",
+            "sha256": "12bc7a25ca85dcaad6e3dad893a3821811288ff5c6216833f0c5f137e6772225"
+          },
+          {
+            "path": "{out}/capture-character-creation-palette-outside.json",
+            "sha256": "2252743928e0d2856b28410e64af0f94732abe4f9569b75af1382410adc30166"
+          },
+          {
+            "path": "{out}/capture-character-creation-preview.json",
+            "sha256": "7e4e4ff4483deb28183c7d6caf95ac408461cf0edbe31d4e90c1c1b5bbacba9c"
+          },
+          {
+            "path": "{out}/capture-character-creation-quickbar.json",
+            "sha256": "953a75e4c3e882a572759feca49cbfca8472ae3a88d853ec3572abd77a802e14"
+          },
+          {
+            "path": "{out}/capture-character-creation-swatch-pixels.json",
+            "sha256": "453728fb5ee8e7b81d76343558f5d26cd1e8e6aa313053af1341dbb81c5c6519"
+          },
+          {
+            "path": "{out}/capture-server-browser-address-formatting.json",
+            "sha256": "83fe9df285956bee14e1d664665b665222aee8fb741094abd9db75a8e647a623"
+          },
+          {
+            "path": "{out}/capture-server-browser-collection.json",
+            "sha256": "83c721cd211500d5bc8b586fdc192ccd2ec96052d7fae124f70b73a798f18bb0"
+          },
+          {
+            "path": "{out}/capture-server-browser-details.json",
+            "sha256": "7e50692b5c088e67d7f8e04e5988ea28bef7a028f72126efdafeeaebdc6ed741"
+          },
+          {
+            "path": "{out}/capture-server-browser-host-description.json",
+            "sha256": "173636c317bef2a11ab205a50ccd52181952dfbc65aaf9b4b084a0bb530faf74"
+          },
+          {
+            "path": "{out}/capture-server-browser-lan-rows.json",
+            "sha256": "80f3bb8361995c6540ce3b09d291438433592014853abe88a1082f4800113630"
+          },
+          {
+            "path": "{out}/capture-server-browser-map-hit.json",
+            "sha256": "1edf2217bb2f7a85446a91b97e4b85af2ea43e10861ef5a5ab1055b402adf04d"
+          },
+          {
+            "path": "{out}/capture-server-browser-map-list.json",
+            "sha256": "9b1dc57391bc90f8d356f84d8f397a9eae3f0230f90d000a535fc071252fed68"
+          },
+          {
+            "path": "{out}/capture-server-browser-map-markers.json",
+            "sha256": "cb06c5c8ad309b364b0f0d1cc28f3737bc5a2688d6609c440e7cee8f29b726ba"
+          },
+          {
+            "path": "{out}/capture-server-browser-mode-names.json",
+            "sha256": "8d9eaaff7082ea232196f4ebfe730c643bf75d3070c6d875e0a37ca486f14295"
+          },
+          {
+            "path": "{out}/capture-server-browser-name-width.json",
+            "sha256": "840800b220f259e61e4d6f9c4e893fa43800bbbcbd8b6e04d4d97b0731a9821e"
+          },
+          {
+            "path": "{out}/capture-server-browser-popup-clamp.json",
+            "sha256": "1c2ff85279dd3a9c8a979e8ad2d5e82a9acdd2df7ab50eb217ec6b280e178260"
+          },
+          {
+            "path": "{out}/capture-server-browser-proximity-popup.json",
+            "sha256": "b2879bab13cb61613d89de00fd656c54683507e4d8a7c799e5addf0de13364f8"
+          },
+          {
+            "path": "{out}/capture-server-browser-refresh-gates.json",
+            "sha256": "b0a9da6be4b3bf0edced07a776421d3e62a83ac954cb6f945bf0d138e192d6a8"
+          },
+          {
+            "path": "{out}/capture-server-browser-resort.json",
+            "sha256": "66311dd1593b90d9818319d28a55f53385dbe218e7dcf1937884d3a879bd25a9"
+          },
+          {
+            "path": "{out}/capture-server-browser-selected-endpoint.json",
+            "sha256": "cd479701a8db191cf882b8216bfe888c763bbd09542bead8de93955e2ea2ecff"
+          },
+          {
+            "path": "{out}/capture-server-browser-sort-buttons.json",
+            "sha256": "120969dcd7bc15721779a06438dbf30618ee225b6cb324070b16ffe5074a62a1"
+          },
+          {
+            "path": "{out}/capture-server-browser-state-words.json",
+            "sha256": "ba62d2f4c7d3587d4fc0d9bb0f92103864f1884b7a24deadd8acab48526916cf"
+          },
+          {
+            "path": "{out}/capture-server-browser-timers.json",
+            "sha256": "5dc27892376e936abcc8b6f23149c34de9b143fb20614295294400e0fe25dd07"
+          },
+          {
+            "path": "{out}/session-dialogs-disconnect-resource.json",
+            "sha256": "c5c10a2afb9216c5527f7654a25bc3701acf9b599ad29cca0f7e1b3c2079a01a"
+          },
+          {
+            "path": "{out}/session-dialogs-filter-actions.json",
+            "sha256": "9ddd66f1951bffe4a6b8c5139a06cf126d8b1ce3aa3ef341f4ca3f66af393533"
+          },
+          {
+            "path": "{out}/session-dialogs-filter-resource.json",
+            "sha256": "9db17fca7f2e07fd260fc15c79440e8aab760591d5d6f80b037ca5f12c3f396b"
+          },
+          {
+            "path": "{out}/session-dialogs-filter-rules.json",
+            "sha256": "b9c45823dee1451df7f11b5b00f947bd03c85557602719e24bc5eabc7b54a94b"
+          },
+          {
+            "path": "{out}/session-dialogs-motd-display.json",
+            "sha256": "74fed68ae25ba22964717563ccdc54727bd5e9de41fc2a939e3c1d675b9f8c0e"
+          },
+          {
+            "path": "{out}/session-dialogs-motd-files.json",
+            "sha256": "49423dd7a80905d113c5039515e9ac2fd90de89b69b4bad2b811cdc5c346eb14"
+          },
+          {
+            "path": "{out}/session-dialogs-motd-resource.json",
+            "sha256": "7e2405eb4d756252aa207f3f6e24ac7928cb3cbee9fcbea61a2fb666bee579b4"
+          },
+          {
+            "path": "{out}/session-dialogs-quit-callbacks.json",
+            "sha256": "42976a0acb85e7ce34685e539bb0a957ef0b27bef099fcdd271c9194935999f4"
+          },
+          {
+            "path": "{out}/session-dialogs-quit-modes.json",
+            "sha256": "0c8da5d5350b5c83161a12ad9c9a08ef1d76cc5872225562b5b13e9047c6feb6"
+          },
+          {
+            "path": "{out}/capture-online-session-timers.json",
+            "sha256": "5446e38fc183cd560c640b03ce20608f75e8ae5e020987d88d36d1edccadd788"
+          },
+          {
+            "path": "{out}/capture-online-session-status.json",
+            "sha256": "1f382ef8226064f42ad3fdad3e3c1be492b1760d99d0176b5e04944a8b30b3e7"
+          }
+        ]
+      }
+    ]
+  }
+}

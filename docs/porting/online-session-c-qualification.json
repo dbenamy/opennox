@@ -1,0 +1,44 @@
+{
+  "status": "qualified C baseline with unchanged parent production reuse",
+  "parent": "cc21d5db",
+  "source_files": 2753,
+  "selection_bodies": 28,
+  "body_lines": 475,
+  "targets": {
+    "default": {
+      "roots": 120,
+      "inherited_captures": 65,
+      "wall_seconds": 89.76812059083022
+    },
+    "server": {
+      "roots": 120,
+      "inherited_captures": 65,
+      "wall_seconds": 175.7059386849869
+    },
+    "highres": {
+      "roots": 120,
+      "inherited_captures": 65,
+      "wall_seconds": 90.29251605900936
+    }
+  },
+  "captures": {
+    "capture-online-session-timers.json": "5446e38fc183cd560c640b03ce20608f75e8ae5e020987d88d36d1edccadd788",
+    "capture-online-session-status.json": "1f382ef8226064f42ad3fdad3e3c1be492b1760d99d0176b5e04944a8b30b3e7"
+  },
+  "independent_repeat": "build/port-old-online/c-contract-repeat",
+  "production_identity": {
+    "qualified_parent": "cc21d5db",
+    "qualified_production": "build/port-client-interaction/native-production/production/production.json",
+    "source_differences": [
+      "src/legacy/online_session_porttest.go",
+      "src/online_session_porttest_test.go"
+    ],
+    "production_source_identical": true
+  },
+  "static": "build/port-old-online/static-contracts.log",
+  "c_loc": {
+    "lines": 11898,
+    "files": 50,
+    "reference_lines": 0
+  }
+}

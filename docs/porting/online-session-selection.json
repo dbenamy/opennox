@@ -1,0 +1,198 @@
+[
+  {
+    "symbol": "sub_41D1A0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 2486,
+    "end": 2602,
+    "lines": 7
+  },
+  {
+    "symbol": "sub_41D1B0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 2604,
+    "end": 2664,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_41D650",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 2666,
+    "end": 2859,
+    "lines": 12
+  },
+  {
+    "symbol": "sub_41D670",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 2861,
+    "end": 3068,
+    "lines": 12
+  },
+  {
+    "symbol": "sub_41D6C0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 3070,
+    "end": 5145,
+    "lines": 99
+  },
+  {
+    "symbol": "sub_41DA10",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 5147,
+    "end": 5408,
+    "lines": 13
+  },
+  {
+    "symbol": "sub_41DA70",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 5410,
+    "end": 5830,
+    "lines": 18
+  },
+  {
+    "symbol": "sub_41E2F0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 5832,
+    "end": 5880,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_41E370",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 5882,
+    "end": 6056,
+    "lines": 10
+  },
+  {
+    "symbol": "nox_xxx_reconAttempt_41E390",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 6058,
+    "end": 6637,
+    "lines": 24
+  },
+  {
+    "symbol": "nox_xxx_reconStart_41E400",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 6639,
+    "end": 7078,
+    "lines": 14
+  },
+  {
+    "symbol": "sub_41E470",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 7080,
+    "end": 7355,
+    "lines": 9
+  },
+  {
+    "symbol": "sub_41E4B0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 7357,
+    "end": 7473,
+    "lines": 7
+  },
+  {
+    "symbol": "sub_41EC30",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 7475,
+    "end": 8150,
+    "lines": 37
+  },
+  {
+    "symbol": "sub_41F4B0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 8152,
+    "end": 8643,
+    "lines": 27
+  },
+  {
+    "symbol": "sub_41F790",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 8645,
+    "end": 8917,
+    "lines": 15
+  },
+  {
+    "symbol": "sub_41F800",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 8919,
+    "end": 9086,
+    "lines": 12
+  },
+  {
+    "symbol": "sub_41FA40",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 9088,
+    "end": 9152,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_41FA50",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 9154,
+    "end": 9252,
+    "lines": 5
+  },
+  {
+    "symbol": "sub_41FBE0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 9254,
+    "end": 9528,
+    "lines": 11
+  },
+  {
+    "symbol": "nox_xxx_officialStringCmp_41FDE0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 9530,
+    "end": 10136,
+    "lines": 24
+  },
+  {
+    "symbol": "sub_4200E0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 10138,
+    "end": 10197,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_420100",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 10199,
+    "end": 10263,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_420230",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 10265,
+    "end": 10926,
+    "lines": 41
+  },
+  {
+    "symbol": "sub_420360",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 10928,
+    "end": 12171,
+    "lines": 65
+  },
+  {
+    "symbol": "sub_4207E0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 12173,
+    "end": 12233,
+    "lines": 1
+  },
+  {
+    "symbol": "sub_40E090",
+    "file": "src/legacy/GAME1.c",
+    "start": 1500,
+    "end": 1545,
+    "lines": 1
+  },
+  {
+    "symbol": "nox_xxx_networkLog_printf_413D30",
+    "file": "src/legacy/common__log.c",
+    "start": 192,
+    "end": 359,
+    "lines": 6
+  }
+]

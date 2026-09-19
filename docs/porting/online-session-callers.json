@@ -1,0 +1,1075 @@
+{
+  "sub_41E470": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 288,
+      "text": "result = sub_41E470();",
+      "selected_owner": "nox_xxx_reconAttempt_41E390",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 314,
+      "text": "int sub_41E470() {",
+      "selected_owner": "sub_41E470",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 45,
+      "text": "return uint32(C.sub_41E470())",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gui_selchar.go",
+      "line": 103,
+      "text": "C.sub_41E470()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 55,
+      "text": "int sub_41E470();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_41F4B0": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 370,
+      "text": "int sub_41F4B0() {",
+      "selected_owner": "sub_41F4B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 55,
+      "text": "return uint32(C.sub_41F4B0())",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 58,
+      "text": "int sub_41F4B0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gui_quit.go",
+      "line": 45,
+      "text": "C.sub_41F4B0()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_41F800": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 107,
+      "text": "result = sub_41F800(v0);",
+      "selected_owner": "sub_41D650",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 414,
+      "text": "int sub_41F800(const char* a1) {",
+      "selected_owner": "sub_41F800",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 60,
+      "text": "int sub_41F800(const char* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_networkLog_printf_413D30": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 282,
+      "text": "nox_xxx_networkLog_printf_413D30(\"RECON: Attempting to re-login\");",
+      "selected_owner": "nox_xxx_reconAttempt_41E390",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 303,
+      "text": "nox_xxx_networkLog_printf_413D30(\"RECON: Starting reconnection process frame (%d)\",",
+      "selected_owner": "nox_xxx_reconStart_41E400",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 317,
+      "text": "nox_xxx_networkLog_printf_413D30(\"RECON: TryReconnectAgain called on frame (%d)\", gameFrame());",
+      "selected_owner": "sub_41E470",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/common__log.h",
+      "line": 4,
+      "text": "void nox_xxx_networkLog_printf_413D30(char* fmt, ...);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/common__log.c",
+      "line": 8,
+      "text": "void nox_xxx_networkLog_printf_413D30(char* fmt, ...) {",
+      "selected_owner": "nox_xxx_networkLog_printf_413D30",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_4207E0": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 457,
+      "text": "v0 = sub_4207E0();",
+      "selected_owner": "nox_xxx_officialStringCmp_41FDE0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 584,
+      "text": "int sub_4207E0() { return *getMemU32Ptr(0x5D4594, 534812); }",
+      "selected_owner": "sub_4207E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 69,
+      "text": "int sub_4207E0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_41E4B0": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 294,
+      "text": "result = sub_41E4B0(1);",
+      "selected_owner": "nox_xxx_reconAttempt_41E390",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 324,
+      "text": "int sub_41E4B0(int a1) {",
+      "selected_owner": "sub_41E4B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 47,
+      "text": "return uint32(C.sub_41E4B0(C.int(a)))",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server.go",
+      "line": 315,
+      "text": "C.sub_41E4B0(C.int(a1))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 56,
+      "text": "int sub_41E4B0(int a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_4200E0": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 123,
+      "text": "v1 = sub_4200E0();",
+      "selected_owner": "sub_41D670",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 174,
+      "text": "v2 = sub_4200E0();",
+      "selected_owner": "sub_41D6C0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 199,
+      "text": "v5 = sub_4200E0();",
+      "selected_owner": "sub_41D6C0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 221,
+      "text": "v8 = sub_4200E0();",
+      "selected_owner": "sub_41D6C0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 472,
+      "text": "int sub_4200E0() { return *getMemU32Ptr(0x587000, 60072); }",
+      "selected_owner": "sub_4200E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 65,
+      "text": "int sub_4200E0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_420100": [
+    {
+      "file": "src/gui_noxworld.go",
+      "line": 322,
+      "text": "func sub_420100() int { return int(memmap.Uint32(0x587000, 60072) >> 8) }",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 474,
+      "text": "int sub_420100() { return *getMemU32Ptr(0x587000, 60072) >> 8; }",
+      "selected_owner": "sub_420100",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 66,
+      "text": "int sub_420100();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_41DA10": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 228,
+      "text": "int sub_41DA10(int a1) {",
+      "selected_owner": "sub_41DA10",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 59,
+      "text": "return uint32(C.sub_41DA10(C.int(a)))",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gui_selchar.go",
+      "line": 130,
+      "text": "C.sub_41DA10(C.int(a1))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 48,
+      "text": "int sub_41DA10(int a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_41D670": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 115,
+      "text": "int sub_41D670(char* a1) {",
+      "selected_owner": "sub_41D670",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/player.go",
+      "line": 262,
+      "text": "C.sub_41D670(internCStr(a1))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 65,
+      "text": "return uint32(C.sub_41D670(nil))",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 46,
+      "text": "int sub_41D670(char* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_41FBE0": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 435,
+      "text": "int sub_41FBE0(uint32_t* a1, uint32_t* a2) {",
+      "selected_owner": "sub_41FBE0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 454,
+      "text": "if (sub_41FBE0(&v3, &v4) != 1) {",
+      "selected_owner": "nox_xxx_officialStringCmp_41FDE0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 63,
+      "text": "int sub_41FBE0(uint32_t* a1, uint32_t* a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_40E090": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 283,
+      "text": "sub_40E090();",
+      "selected_owner": "nox_xxx_reconAttempt_41E390",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1.h",
+      "line": 54,
+      "text": "void sub_40E090();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1.c",
+      "line": 54,
+      "text": "void sub_40E090() { dword_5d4594_10984 = 0; }",
+      "selected_owner": "sub_40E090",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_41FA40": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 106,
+      "text": "v0 = sub_41FA40();",
+      "selected_owner": "sub_41D650",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 427,
+      "text": "char* sub_41FA40() { return (char*)getMemAt(0x5D4594, 534756); }",
+      "selected_owner": "sub_41FA40",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 61,
+      "text": "char* sub_41FA40();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gameloop.go",
+      "line": 140,
+      "text": "return GoString(C.sub_41FA40())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_41D1A0": [
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 3052,
+      "text": "sub_41D1A0(*(unsigned char*)(data + 2));",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 92,
+      "text": "int sub_41D1A0(int a1) {",
+      "selected_owner": "sub_41D1A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 49,
+      "text": "return uint32(C.sub_41D1A0(C.int(a)))",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 43,
+      "text": "int sub_41D1A0(int a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 585,
+      "text": "C.sub_41D1A0(C.int(a1))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_420360": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 518,
+      "text": "int sub_420360(char* a1, uint16_t* a2) {",
+      "selected_owner": "sub_420360",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 68,
+      "text": "int sub_420360(char* a1, uint16_t* a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game_statistics.go",
+      "line": 169,
+      "text": "if C.sub_420360(&address[0], &value) != 0 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_xxx_reconAttempt_41E390": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 274,
+      "text": "int nox_xxx_reconAttempt_41E390() {",
+      "selected_owner": "nox_xxx_reconAttempt_41E390",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 43,
+      "text": "return uint32(C.nox_xxx_reconAttempt_41E390())",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/server.go",
+      "line": 233,
+      "text": "C.nox_xxx_reconAttempt_41E390()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 53,
+      "text": "int nox_xxx_reconAttempt_41E390();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_41D650": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 102,
+      "text": "int sub_41D650() {",
+      "selected_owner": "sub_41D650",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 51,
+      "text": "return uint32(C.sub_41D650())",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/parsecmd_maps.go",
+      "line": 13,
+      "text": "C.sub_41D650()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 45,
+      "text": "int sub_41D650();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_420230": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 120,
+      "text": "if (!sub_420230(v4, &v3)) {",
+      "selected_owner": "sub_41D670",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 150,
+      "text": "if (!sub_420230(v14, &v9)) {",
+      "selected_owner": "sub_41D6C0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 476,
+      "text": "int sub_420230(char* a1, uint16_t* a2) {",
+      "selected_owner": "sub_420230",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 67,
+      "text": "int sub_420230(char* a1, uint16_t* a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_officialStringCmp_41FDE0": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 284,
+      "text": "result = nox_xxx_officialStringCmp_41FDE0();",
+      "selected_owner": "nox_xxx_reconAttempt_41E390",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 447,
+      "text": "int nox_xxx_officialStringCmp_41FDE0() {",
+      "selected_owner": "nox_xxx_officialStringCmp_41FDE0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 63,
+      "text": "return uint32(C.nox_xxx_officialStringCmp_41FDE0())",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 64,
+      "text": "int nox_xxx_officialStringCmp_41FDE0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_41E370": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 263,
+      "text": "int sub_41E370() {",
+      "selected_owner": "sub_41E370",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 293,
+      "text": "sub_41E370();",
+      "selected_owner": "nox_xxx_reconAttempt_41E390",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 38,
+      "text": "return uint32(C.sub_41E370())",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 52,
+      "text": "int sub_41E370();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_41FA50": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 429,
+      "text": "void sub_41FA50(const char* a1) {",
+      "selected_owner": "sub_41FA50",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 461,
+      "text": "sub_41FA50(v3);",
+      "selected_owner": "nox_xxx_officialStringCmp_41FDE0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 62,
+      "text": "void sub_41FA50(const char* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_41E2F0": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 261,
+      "text": "int sub_41E2F0() { return dword_5d4594_527988; }",
+      "selected_owner": "sub_41E2F0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 361,
+      "text": "result = sub_41E2F0();",
+      "selected_owner": "sub_41EC30",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 363,
+      "text": "v4 = sub_41E2F0();",
+      "selected_owner": "sub_41EC30",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 390,
+      "text": "result = sub_41E2F0();",
+      "selected_owner": "sub_41F4B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 392,
+      "text": "v3 = sub_41E2F0();",
+      "selected_owner": "sub_41F4B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 61,
+      "text": "return uint32(C.sub_41E2F0())",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 50,
+      "text": "int sub_41E2F0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_41D1B0": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 100,
+      "text": "int sub_41D1B0() { return *getMemU32Ptr(0x5D4594, 527720); }",
+      "selected_owner": "sub_41D1B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 44,
+      "text": "int sub_41D1B0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_reconStart_41E400": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 299,
+      "text": "void nox_xxx_reconStart_41E400() {",
+      "selected_owner": "nox_xxx_reconStart_41E400",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 40,
+      "text": "C.nox_xxx_reconStart_41E400()",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gui_selchar.go",
+      "line": 106,
+      "text": "C.nox_xxx_reconStart_41E400()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 54,
+      "text": "void nox_xxx_reconStart_41E400();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_41EC30": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 332,
+      "text": "int sub_41EC30() {",
+      "selected_owner": "sub_41EC30",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 53,
+      "text": "return uint32(C.sub_41EC30())",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 57,
+      "text": "int sub_41EC30();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gui_quit.go",
+      "line": 49,
+      "text": "C.sub_41EC30()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_41F790": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 398,
+      "text": "uint32_t* sub_41F790(const char* a1) {",
+      "selected_owner": "sub_41F790",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 418,
+      "text": "v1 = sub_41F790(a1);",
+      "selected_owner": "sub_41F800",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 59,
+      "text": "uint32_t* sub_41F790(const char* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_41D6C0": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 128,
+      "text": "int sub_41D6C0() {",
+      "selected_owner": "sub_41D6C0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 67,
+      "text": "return uint32(C.sub_41D6C0())",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/network.go",
+      "line": 189,
+      "text": "C.sub_41D6C0()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 47,
+      "text": "int sub_41D6C0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_41DA70": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 242,
+      "text": "int sub_41DA70(int a1, short a2) {",
+      "selected_owner": "sub_41DA70",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 364,
+      "text": "result = sub_41DA70(v4, 10);",
+      "selected_owner": "sub_41EC30",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 393,
+      "text": "result = sub_41DA70(v3, 11);",
+      "selected_owner": "sub_41F4B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/online_session_porttest.go",
+      "line": 57,
+      "text": "return uint32(C.sub_41DA70(C.int(a), C.short(b)))",
+      "selected_owner": null,
+      "fixture": true,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 49,
+      "text": "int sub_41DA70(int a1, short a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gui_dialog.go",
+      "line": 71,
+      "text": "C.sub_41DA70(C.int(a1), C.short(a2))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ]
+}

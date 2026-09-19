@@ -8,6 +8,22 @@ from its corrected C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — legacy online session C baseline qualified
+
+Qualified parent **cc21d5db** is pushed. The28-body /475-line connected scope has
+frozen C captures. Default/server/highres each pass120 affected roots; all
+inherited captures remain unchanged. New timer/status captures match across all
+three targets and an independent default repeat. Static checks pass. Production
+source differs from cc21d5db only by the two porttest files, so its qualified
+production/ABI/full-suite/four-scenario evidence is reused explicitly.
+
+All jobs are joined (including sessions9082/49013/82234 and repeat59363).
+C remains11,898 /50 files /zero reference. See ONLINE_SESSION.md and tracked
+online-session-{selection,batch,c-qualification}.json. Next: commit/push this
+baseline, translate live state/timers and retire unreachable service/list paths,
+then qualify fresh native production. build/port-old-online/native-draft.go is
+NOT installed; review it before use. No user decision is pending.
+
 ## Current — client interaction Go conversion qualified
 
 C baseline **dd7e94f4** and first50-routine recovery **8febbadb** are pushed.
@@ -38,8 +54,10 @@ cleanup-interfaces.py, freeze-c.py and freeze-native.py are CONSUMED. Do not rep
 them or regenerate goldens to hide differences. All recorded deletion modes are
 also consumed. Original assets/archive remain unchanged. Completed C asset copies
 and stale rebuildable cache entries reclaimed about7.7GiB during this conversion;
-per-run restoration and deletion manifests remain. Final native scenario copies
-have not yet been deduplicated.
+per-run restoration and deletion manifests remain. Five completed native scenario copies were subsequently hash-deduplicated,
+reclaiming2,781,854,423 bytes. Their restoration manifests remain. The native
+asset audit/apply sessions are joined and deduplicate-native-assets.py deletion
+mode is CONSUMED. Original assets/archive and screenshots/saves/logs remain.
 
 Next: audit the remaining old online-service helpers or select the next connected
 live batch. A read-only provisional21-body /359-line candidate and caller audit

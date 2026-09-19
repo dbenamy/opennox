@@ -1,0 +1,159 @@
+{
+  "roots": [
+    "nox_xxx_reconAttempt_41E390",
+    "nox_xxx_reconStart_41E400",
+    "sub_41D1A0",
+    "sub_41D650",
+    "sub_41D670",
+    "sub_41D6C0",
+    "sub_41DA10",
+    "sub_41DA70",
+    "sub_41E470",
+    "sub_41E4B0",
+    "sub_41EC30",
+    "sub_41F4B0",
+    "sub_41FA40",
+    "sub_420100",
+    "sub_420360"
+  ],
+  "reachable": [
+    "nox_xxx_networkLog_printf_413D30",
+    "nox_xxx_officialStringCmp_41FDE0",
+    "nox_xxx_reconAttempt_41E390",
+    "nox_xxx_reconStart_41E400",
+    "sub_40E090",
+    "sub_41D1A0",
+    "sub_41D650",
+    "sub_41D670",
+    "sub_41D6C0",
+    "sub_41DA10",
+    "sub_41DA70",
+    "sub_41E2F0",
+    "sub_41E370",
+    "sub_41E470",
+    "sub_41E4B0",
+    "sub_41EC30",
+    "sub_41F4B0",
+    "sub_41F790",
+    "sub_41F800",
+    "sub_41FA40",
+    "sub_41FA50",
+    "sub_41FBE0",
+    "sub_4200E0",
+    "sub_420100",
+    "sub_420230",
+    "sub_420360",
+    "sub_4207E0"
+  ],
+  "unreached": [
+    "sub_41D1B0"
+  ],
+  "edges": {
+    "sub_41E470": [
+      "nox_xxx_networkLog_printf_413D30",
+      "sub_41E470"
+    ],
+    "sub_41F4B0": [
+      "sub_41DA70",
+      "sub_41E2F0",
+      "sub_41F4B0"
+    ],
+    "sub_41F800": [
+      "sub_41F790",
+      "sub_41F800"
+    ],
+    "nox_xxx_networkLog_printf_413D30": [
+      "nox_xxx_networkLog_printf_413D30"
+    ],
+    "sub_4207E0": [
+      "sub_4207E0"
+    ],
+    "sub_41E4B0": [
+      "sub_41E4B0"
+    ],
+    "sub_4200E0": [
+      "sub_4200E0"
+    ],
+    "sub_420100": [
+      "sub_420100"
+    ],
+    "sub_41DA10": [
+      "sub_41DA10"
+    ],
+    "sub_41D670": [
+      "sub_41D670",
+      "sub_4200E0",
+      "sub_420230"
+    ],
+    "sub_41FBE0": [
+      "sub_41FBE0"
+    ],
+    "sub_40E090": [
+      "sub_40E090"
+    ],
+    "sub_41FA40": [
+      "sub_41FA40"
+    ],
+    "sub_41D1A0": [
+      "sub_41D1A0"
+    ],
+    "sub_420360": [
+      "sub_420360"
+    ],
+    "nox_xxx_reconAttempt_41E390": [
+      "nox_xxx_networkLog_printf_413D30",
+      "nox_xxx_officialStringCmp_41FDE0",
+      "nox_xxx_reconAttempt_41E390",
+      "sub_40E090",
+      "sub_41E370",
+      "sub_41E470",
+      "sub_41E4B0"
+    ],
+    "sub_41D650": [
+      "sub_41D650",
+      "sub_41F800",
+      "sub_41FA40"
+    ],
+    "sub_420230": [
+      "sub_420230"
+    ],
+    "nox_xxx_officialStringCmp_41FDE0": [
+      "nox_xxx_officialStringCmp_41FDE0",
+      "sub_41FA50",
+      "sub_41FBE0",
+      "sub_4207E0"
+    ],
+    "sub_41E370": [
+      "sub_41E370"
+    ],
+    "sub_41FA50": [
+      "sub_41FA50"
+    ],
+    "sub_41E2F0": [
+      "sub_41E2F0"
+    ],
+    "sub_41D1B0": [
+      "sub_41D1B0"
+    ],
+    "nox_xxx_reconStart_41E400": [
+      "nox_xxx_networkLog_printf_413D30",
+      "nox_xxx_reconStart_41E400"
+    ],
+    "sub_41EC30": [
+      "sub_41DA70",
+      "sub_41E2F0",
+      "sub_41EC30"
+    ],
+    "sub_41F790": [
+      "sub_41F790"
+    ],
+    "sub_41D6C0": [
+      "sub_41D6C0",
+      "sub_4200E0",
+      "sub_420230"
+    ],
+    "sub_41DA70": [
+      "sub_41DA70"
+    ]
+  }
+}
