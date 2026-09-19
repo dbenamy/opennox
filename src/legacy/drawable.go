@@ -6,7 +6,6 @@ extern int nox_drawable_count;
 extern void* dword_5d4594_1096640;
 extern void* nox_client_spriteUnderCursorXxx_1096644;
 int sub_4523D0(void* a1);
-int sub_49C520(nox_drawable* a1);
 void sub_45A9B0(nox_drawable* a1, nox_drawable* a2);
 int nox_xxx_unitSpriteCheckAlly_4951F0(int a1);
 void nox_xxx_draw_44C650_free_kind(void* lpMem, int kind);
@@ -227,7 +226,7 @@ func Sub_495FC0(p *client.DrawableFX, dr *client.Drawable) {
 	combatFXAttach((*combatFX)(p.C()), dr)
 }
 func Sub_49C520(dr *client.Drawable) int {
-	return int(C.sub_49C520((*nox_drawable)(dr.C())))
+	return bool2int(presentationRayContains(dr))
 }
 func Sub_45A9B0(a1, a2 *client.Drawable) {
 	C.sub_45A9B0((*nox_drawable)(a1.C()), (*nox_drawable)(a2.C()))

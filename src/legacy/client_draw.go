@@ -63,11 +63,11 @@ func Nox_xxx_clientEnumHover_476FA0() {
 }
 
 func Nox_xxx_spriteDeleteSomeList_49C4B0() {
-	C.nox_xxx_spriteDeleteSomeList_49C4B0()
+	presentationTransientClear()
 }
 
 func Sub_49BBC0() {
-	C.sub_49BBC0()
+	presentationChantTick()
 }
 
 func Nox_xxx_polygonDrawColor_421B80() {
@@ -111,10 +111,10 @@ func Nox_xxx_drawWalls_473C10(vp *noxrender.Viewport, a2 *server.Wall) {
 	worldWallDraw(vp, a2)
 }
 func Sub_4761B0(dr *client.Drawable) int {
-	return int(C.sub_4761B0((*nox_drawable)(dr.C())))
+	return int(presentationDrawableY(dr))
 }
 func Sub_476080(a1 unsafe.Pointer) int {
-	return int(C.sub_476080((*C.uchar)(a1)))
+	return int(presentationWallY((*[8]byte)(a1)))
 }
 func Sub_459DB0(dr *client.Drawable) int {
 	return int(C.sub_459DB0((*nox_drawable)(dr.C())))

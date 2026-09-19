@@ -239,6 +239,8 @@ target build selection and linker evidence.
 | Speech-bubble tail prerequisite (not a conversion) | 67 | 26,147 | +2 | 0 |
 | Client speech bubbles (qualified native) | 67 | 25,368 | −779 | 0 |
 | Client combat overlays (qualified native) | 66 | 24,411 | −957 | 0 |
+| Client presentation ray-capacity prerequisite (`fc842bfa`) | 66 | 24,412 | +1 | 0 |
+| Client world, spell and item presentation | 66 | 23,648 | −764 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

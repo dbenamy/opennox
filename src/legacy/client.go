@@ -4,8 +4,6 @@ package legacy
 #include "noxstring.h"
 void sub_4519C0();
 void sub_44D3A0();
-void nox_xxx_sprite_49C4F0();
-void sub_49BBB0();
 void sub_479280();
 */
 import "C"
@@ -122,7 +120,7 @@ func Sub_45D810() {
 }
 
 func Nox_xxx_sprite_49C4F0() {
-	C.nox_xxx_sprite_49C4F0()
+	presentationRayClear()
 }
 
 func Sub_49A630() {
@@ -130,7 +128,7 @@ func Sub_49A630() {
 }
 
 func Sub_49BBB0() {
-	C.sub_49BBB0()
+	presentationChantClear()
 }
 
 func Nox_xxx_createTextBubble_48D880(pck []byte, text string) {

@@ -14,14 +14,14 @@
 
 ## Current status
 
-The revised process continues successive qualified batches without a scheduled
-pause. Client combat overlays are now Go: ally/friend membership, kill feed and
-console notifications, attached effects and floating health changes. See
-[COMBAT_OVERLAYS.md](docs/porting/COMBAT_OVERLAYS.md).
+Client world, spell and item presentation is now Go: draw ordering and floor sprite
+composition, phoneme icons and chanting, shields, particles, ray ownership, book
+rewards and equipment appearance. See
+[CLIENT_PRESENTATION.md](docs/porting/CLIENT_PRESENTATION.md).
 
-Current production C is **24,411 physical lines in 66 files**, with zero reference
-C (−957 in this conversion). Frozen comparisons, all three targets and fresh
-production/headless integration qualify. See [PORTING_STATE.md](PORTING_STATE.md).
+Current production C is **23,648 physical lines in 66 files**, with zero reference
+C (**−764** from the corrected baseline). Frozen comparisons, all three targets
+and fresh production/headless integration qualify. See [PORTING_STATE.md](PORTING_STATE.md).
 
 ## Goal and target
 

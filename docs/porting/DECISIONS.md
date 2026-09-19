@@ -2023,3 +2023,12 @@ free-slot scan before allocation; full tables now reject creation. Duplicate
 removal, first-free-slot reuse and full cleanup pass independent contracts. This
 reversible correction is recorded for review and qualified before translation.
 Frozen baseline fc842bfa and CLIENT_PRESENTATION.md contain the evidence.
+
+
+Client presentation translation qualifies with four remaining decoder exports.
+The three unused pointer-valued results became void in both headers and exports;
+C callers and the test bridge still exercise the actual interfaces. Eighteen
+private interfaces and the private chant-tree C global retire. All frozen C
+captures passed on the first native build, and all affected targets plus fresh
+production/gameplay/save-load qualify. C:23,648 /66 files /zero reference,
+−764 from the corrected baseline. See CLIENT_PRESENTATION.md.

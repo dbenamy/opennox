@@ -179,7 +179,7 @@ func Sub_417CF0() {
 	GetServer().TeamsRemoveActive(false)
 }
 func Sub_499450() {
-	C.sub_499450()
+	presentationShieldDestroy()
 }
 func Sub_4959D0() {
 	combatFriendDestroy()

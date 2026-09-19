@@ -3,16 +3,9 @@
 
 #include "defs.h"
 
-int sub_476080(unsigned char* a1);
-int sub_4761B0(nox_drawable* a1p);
 void nox_video_setCutSize_4766A0(int a1);
 int nox_video_getCutSize_4766D0();
 void nox_draw_setCutSize_476700(int cutPerc, int a2);
-void* sub_476AE0(nox_draw_viewport_t* vp, nox_drawable* dr);
-short sub_476D70(uint32_t* a1, int* a2, unsigned int a3);
-int nox_client_setPhonemeFrame_476E00(int a1);
-uint32_t* sub_476E20();
-int sub_476E90();
 unsigned int nox_xxx_packetGetMarshall_476F40();
 void nox_xxx_clientEnumHover_476FA0();
 void nox_xxx_clientOnCursorHover_477050(int arg0, int a2);

@@ -384,7 +384,7 @@ func Sub_494F00() int {
 	return int(C.sub_494F00())
 }
 func Nox_xxx_loadReflSheild_499360() int {
-	return int(C.nox_xxx_loadReflSheild_499360())
+	return bool2int(presentationShieldInit())
 }
 func Nox_xxx_allocClassListFriends_495980() int {
 	return bool2int(combatFriendInit())
@@ -439,7 +439,7 @@ func Nox_xxx_bookInit_45B9D0() int {
 	return bookInit()
 }
 func Sub_476E20() unsafe.Pointer {
-	return unsafe.Pointer(C.sub_476E20())
+	return presentationPhonemeInit().C()
 }
 func Sub_4BFAD0() int {
 	return int(C.sub_4BFAD0())

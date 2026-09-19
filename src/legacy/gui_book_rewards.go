@@ -30,7 +30,7 @@ func bookFind(id, limit int) int {
 	return limit
 }
 func bookRewardPresent(kind, id, auto int) {
-	C.nox_xxx_bookRewardCli_499CF0((*C.int)(unsafe.Pointer(uintptr(kind))), C.int(id), C.int(auto))
+	presentationBookReward(kind, id, auto)
 }
 func bookSpellFamily(id int) int {
 	for _, pair := range [][2]int{{0x1000, 0x2000}, {0x4000, 0x8000}, {0x10000, 0x20000}} {

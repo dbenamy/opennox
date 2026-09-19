@@ -2,62 +2,61 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 24k lines** — **24,412 physical lines in 66 production
-`.c` files**, zero reference C. Latest qualified conversion: **−957**.
+**Rough C remaining: about 24k lines** — **23,648 physical lines in 66 production
+`.c` files**, zero reference C. Latest qualified conversion: **−764**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — native combat overlays qualified
+## Current — native client presentation qualified
 
-C baseline **6998b8ba** is pushed. All 32 bodies are Go; 11 live C exports remain,
-21 private interfaces and eight private C globals retire. All 19 focused captures
-/707 records match. Affected default/highres 176 roots /2,039 entries, server 175
-/2,038; all 84 captures /18,691 records match C and each other. Static, three fresh
-production binaries/ABI, exact known full-suite failures, gameplay and explicit
-save/load pass. All build/test sessions are joined. See
-[COMBAT_OVERLAYS.md](docs/porting/COMBAT_OVERLAYS.md) and native qualification JSON.
+C baseline **fc842bfa**, qualification checkpoint **9e9c8419**. All 22 bodies are
+Go; four real C decoder exports remain, 18 private interfaces and the private
+chant-tree C global retire. All 16 focused captures /7,744 records match unchanged
+on the first native build. Affected default/highres: 265 roots, 184 captures,
+278,640 records; server: 264 roots, 183 captures, 271,728 records. Every shared
+capture matches C; server excludes the established client-only occlusion case.
+All 2,549 native source fingerprints match across targets and production.
 
-The first native build found a test-adapter signature mismatch; the first actual
-behavioral comparison then passed. No frozen expectation changed. Pre-baseline
-repairs: literal feed names, empty missing-victim text, and Go FX Next at byte 64.
-Every combat fixture draft, freezer, installer and copied native draft/bridge is
-consumed. Actual source wins. The native doc finalizer is consumed too.
+Static checks, three fresh production binaries/ABI, the exact known full-suite
+failure set, headless gameplay and explicit save/load pass. Direct nm verifies
+retirement of the private C global. All build/test sessions are joined. See
+[CLIENT_PRESENTATION.md](docs/porting/CLIENT_PRESENTATION.md) and its qualification
+JSON. Current C: **23,648 /66 files /zero reference**, −764 from the corrected
+baseline. The prior ray-capacity correction added one explanatory C comment.
 
-Disk: removed 131 older regenerable Go compiler artifacts (6,444,559,234 bytes),
-recorded in build/port-combat-overlays/removed-stale-go-cache.json. Completed C
-scenario asset deduplication reclaimed 1,112,747,701 bytes. Audit/apply modes of
-deduplicate-combat-overlays-c-assets.py are consumed; --restore remains available.
-Original assets/archive, captures and current qualified binaries remain.
+The capacity contract found and fixed an original untracked 97th ray allocation
+before freezing. The first production gate needed a manifest classification
+correction; no native golden or production behavior correction was needed.
+All fixture/native drafts, install-native.py and freeze.py are CONSUMED.
+Installed source wins; never replay these files. Evidence and restoration helpers
+remain under build/port-client-spell-presentation.
 
-Combat-overlay conversion **15836cdb** is committed/pushed. Next batch active:
-22 client world/spell/item presentation bodies /715 C lines, with tracked scope
-and caller audit in CLIENT_PRESENTATION.md and client-presentation-selection.json.
-The four world-rendering helpers are intentionally included in the same frame
-pipeline batch, using existing floor owners. Seven original-C contract groups
-pass (4,619 records) in presentation-gui-owner: ordering, copy, floor composition,
-equipment, phoneme initialization and frame rendering. The phoneme owner now
-creates and releases a real GUI; earlier failures were fixture-only (missing GUI,
-386 integer constant typing and named image-handle typing). Production is unchanged.
-Client presentation C baseline **fc842bfa** is committed/pushed and qualified.
-All16 frozen captures /7,744 records match three targets. Affected default/highres
-265 roots /184 captures /278,640 records, server264 /183 /271,728; shared captures
-match exactly, with existing client-only occlusion exclusion. All2,545 source
-fingerprints match, including fresh production qualification: three binaries/ABI,
-known full-suite result set, gameplay and explicit save/load. See
-client-presentation-c-qualification.json. All build/test sessions are joined.
-First production gate caught a manifest classification mistake (C bodies listed
-as Go exports); corrected retained_c manifest qualified without source changes.
-Original97th-ray leak repaired before freezing; all capacity/reuse/cleanup pass.
-C24,412 /66 files /zero reference; selected22 bodies /716 C lines.
-Native drafts effects/floor/rays/exports/bridge and install-native.py under
-build/port-client-spell-presentation are prepared but NOT INSTALLED. Review then
-install once. Keep4 C exports for remaining decoder callers; retire18 private
-interfaces and the private chant-tree C global. Test bridge will exercise all4
-retained exports through C. All fixture drafts and freeze.py are consumed.
-Completed C scenario duplicates reclaimed another1,112,747,701 bytes; all cleanup
-sessions joined. Audit/apply are consumed. Original assets/archive are untouched;
-restoration helper deduplicate-client-presentation-c-assets.py --restore NAME.
+Disk cleanup: completed C and native scenario pairs each reclaimed
+1,112,747,701 bytes after hash/inactivity checks. Their deduplication audit/apply
+modes are consumed; --restore NAME remains available. Six superseded combat-overlay
+binaries reclaimed 292,252,548 bytes; hashes/revisions/rebuild instructions are in
+build/port-combat-overlays/removed-superseded-binaries.json. Original assets, archive,
+all captures and this batch's C/native production binaries are retained.
+
+Next candidate audit: audio streaming, pooled buffers and driver queues across
+GAME2_2 addresses 486640–487D60 and GAME3_1 addresses 4BD280–4BDC00. The ignored
+build/port-client-audio-streams/selection-draft.json lists 70 unique bodies /1,109
+lines. It is provisional: complete whole-repository caller/callback audit before
+fixtures or translation. Existing audio asset owners may be reused. No new batch
+source, tests or goldens are installed yet.
+
+## Qualified parent — native combat overlays
+
+**15836cdb**, C baseline **6998b8ba**: 32 bodies, 21 private interfaces and eight
+private globals retired. Eleven live C exports remain. Nineteen focused captures
+/707 records and 84 affected captures /18,691 records match; three fresh production
+binaries, exact known full-suite results, gameplay and save/load qualified.
+C was 24,411 /66 files /zero reference (−957). Pre-baseline fixes preserved literal
+feed names, cleared missing-victim text and corrected the Go DrawableFX link offset.
+See COMBAT_OVERLAYS.md. All installers/freezers are consumed. Older compiler-cache
+and scenario deduplication manifests remain; superseded binaries can be rebuilt
+from their recorded revisions. Original assets/archive remain untouched.
 
 ## Qualified parent — native speech bubbles
 

@@ -1,0 +1,33 @@
+{
+  "status": "qualified native client presentation",
+  "baseline": "fc842bfa",
+  "qualified_baseline_docs": "9e9c8419",
+  "source_files": 2549,
+  "targets": {
+    "default": {
+      "roots": 265,
+      "captures": 184,
+      "capture_records": 278640
+    },
+    "server": {
+      "roots": 264,
+      "captures": 183,
+      "capture_records": 271728
+    },
+    "highres": {
+      "roots": 265,
+      "captures": 184,
+      "capture_records": 278640
+    }
+  },
+  "server_exclusion": "existing client-only effects-object-render-occlusion.json",
+  "production": "build/port-client-spell-presentation/native-final-production/production/production.json",
+  "static": "build/port-client-spell-presentation/static-native.log",
+  "global_retirement": "build/port-client-spell-presentation/native-global-retirement.json",
+  "c_loc": {
+    "files": 66,
+    "lines": 23648,
+    "reference_lines": 0,
+    "change_from_corrected_baseline": -764
+  }
+}
