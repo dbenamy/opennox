@@ -1,0 +1,102 @@
+{
+  "status": "repeated three-target C captures; frozen qualification pending",
+  "parent": "15836cdb",
+  "captures": [
+    {
+      "label": "client-presentation-bake",
+      "sha256": "3e5c37ae93a6a95623dc84ab9841ea05208ca8ba220324a4dc4e971611d8bace",
+      "records": 1346,
+      "file": "src/client_presentation_bake_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-book-reward",
+      "sha256": "ca478b6c0369733893d64dd6a1eff38171702cfe904cc65f88d7e6f465189fea",
+      "records": 144,
+      "file": "src/client_presentation_book_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-bubbles",
+      "sha256": "4425d8e44275b3bcaf2929870ee96f2af55e83dd291943381a26641b974df65b",
+      "records": 1296,
+      "file": "src/client_presentation_bubbles_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-chant",
+      "sha256": "b014fbb6c8afb9f4db3ed018029da4ddb19b7c20fb515e69ea2941aac5a1bfcd",
+      "records": 720,
+      "file": "src/client_presentation_chant_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-copy",
+      "sha256": "bd2af18d4698d259b904b7358337abf5cd841072f4a90faf1c08ba5f90294257",
+      "records": 160,
+      "file": "src/client_presentation_copy_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-drawable-order",
+      "sha256": "d840310aac294772c1afdb25616e6209357cbd349c36ccdf8262e93855579a42",
+      "records": 1728,
+      "file": "src/client_presentation_order_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-equipment",
+      "sha256": "754bb1b502147ebfd3e05e75fd959b94c367ee9cc9b8c25012f11d9edf843489",
+      "records": 300,
+      "file": "src/client_presentation_equipment_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-phoneme-frames",
+      "sha256": "aa5b01bccabf35ac0a89c2ccd1e59e756788f895ac77902bac04d35a00ce65c5",
+      "records": 160,
+      "file": "src/client_presentation_phoneme_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-phoneme-init",
+      "sha256": "eb549fa8fb07fcd7ededc62cf78655230cfbf73c8206ef01106356c8bbe66521",
+      "records": 9,
+      "file": "src/client_presentation_phoneme_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-ray-capacity",
+      "sha256": "ec224161b48942a1f1d7eb48f629c27f1b073ea56c10cb7b7d2cfc891e5b8e16",
+      "records": 193,
+      "file": "src/client_presentation_rays_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-ray-events",
+      "sha256": "fb17d15996b07ed5de6bd7c7b3a7101565866bfa4e5bb47df3b1144670de5dbc",
+      "records": 528,
+      "file": "src/client_presentation_rays_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-shield-draw",
+      "sha256": "625a6c127c1aa5989c04e14c5a6a7f8a7f143ff7ca02c01898abb3edf889d1da",
+      "records": 120,
+      "file": "src/client_presentation_shield_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-shield-ownership",
+      "sha256": "feddc7a6eb3a9b0d95050a893601332d1892bee425d3fc003398741753822400",
+      "records": 9,
+      "file": "src/client_presentation_shield_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-transient-rays",
+      "sha256": "46467824e7795de28a5cd2a58d6b6e59b0c6a08acdfb37665a47a2d9b087f62e",
+      "records": 5,
+      "file": "src/client_presentation_transient_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-turn-undead",
+      "sha256": "2f10703654404cc7870ce5d166d9b362a53e619ace1aeaa913d490203c401f56",
+      "records": 108,
+      "file": "src/client_presentation_particles_porttest_test.go"
+    },
+    {
+      "label": "client-presentation-wall-order",
+      "sha256": "ca2bc375ae21e4975a8c7e70341c048092896877c0d3251f128b2ea35babed9a",
+      "records": 918,
+      "file": "src/client_presentation_order_porttest_test.go"
+    }
+  ]
+}

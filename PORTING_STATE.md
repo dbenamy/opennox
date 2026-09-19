@@ -2,7 +2,7 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 24k lines** — **24,411 physical lines in 66 production
+**Rough C remaining: about 24k lines** — **24,412 physical lines in 66 production
 `.c` files**, zero reference C. Latest qualified conversion: **−957**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
@@ -29,6 +29,30 @@ recorded in build/port-combat-overlays/removed-stale-go-cache.json. Completed C
 scenario asset deduplication reclaimed 1,112,747,701 bytes. Audit/apply modes of
 deduplicate-combat-overlays-c-assets.py are consumed; --restore remains available.
 Original assets/archive, captures and current qualified binaries remain.
+
+Combat-overlay conversion **15836cdb** is committed/pushed. Next batch active:
+22 client world/spell/item presentation bodies /715 C lines, with tracked scope
+and caller audit in CLIENT_PRESENTATION.md and client-presentation-selection.json.
+The four world-rendering helpers are intentionally included in the same frame
+pipeline batch, using existing floor owners. Seven original-C contract groups
+pass (4,619 records) in presentation-gui-owner: ordering, copy, floor composition,
+equipment, phoneme initialization and frame rendering. The phoneme owner now
+creates and releases a real GUI; earlier failures were fixture-only (missing GUI,
+386 integer constant typing and named image-handle typing). Production is unchanged.
+Client presentation C recovery checkpoint:16 captures /7,744 records repeated
+identically across default/server/highres, same source fingerprints, now frozen.
+All repeat sessions joined. The final floor cases include image/sprite offsets
+and inactive/missing-image exits. All copied contract drafts and freeze.py are
+CONSUMED. Native-rays-draft.go is UNINSTALLED and requires review.
+Original 97th-ray leak is repaired by finding a free slot before allocation;
+original failure presentation-rays-fields, corrected contract pass subsequently.
+This is a baseline recovery checkpoint, NOT completed batch qualification.
+Affected265-root manifest client-presentation-c-batch.json is ready; fresh all-target
+production/full-suite/gameplay/save-load qualification is required. C24,412 /66 files
+/zero reference; selected22 bodies /716 lines. No Go conversion installed yet.
+Native combat scenario duplicates reclaimed1,112,747,701 bytes; restore helper
+build/port-combat-overlays/deduplicate-combat-overlays-native-assets.py --restore NAME.
+Its audit/apply modes are consumed; original assets/archive remain untouched.
 
 ## Qualified parent — native speech bubbles
 

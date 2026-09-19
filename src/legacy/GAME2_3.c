@@ -1118,6 +1118,16 @@ uint32_t* nox_xxx_clientAddRayEffect_49C160(int a1) {
 			default:
 				return result;
 			}
+			// Reserve a tracked slot before allocating a persistent ray.
+			v13 = 0;
+			v14 = getMemAt(0x5D4594, 1303924);
+			while (*(uint32_t*)v14) {
+				v14 += 4;
+				++v13;
+				if ((int)v14 >= (int)getMemAt(0x5D4594, 1304308)) {
+					return 0;
+				}
+			}
 			result = (uint32_t*)nox_xxx_spriteLoadAdd_45A360_drawable(v12, v11, v9 + v10 / 2);
 			if (!result) {
 				return result;
@@ -1125,16 +1135,7 @@ uint32_t* nox_xxx_clientAddRayEffect_49C160(int a1) {
 			*((uint8_t*)result + 432) = 1;
 			*(uint32_t*)((char*)result + 437) = *(unsigned short*)(a1 + 3);
 			*(uint32_t*)((char*)result + 441) = *(unsigned short*)(a1 + 5);
-			v13 = 0;
 			*(uint32_t*)((char*)result + 433) = *(unsigned char*)(a1 + 2);
-			v14 = getMemAt(0x5D4594, 1303924);
-			while (*(uint32_t*)v14) {
-				v14 += 4;
-				++v13;
-				if ((int)v14 >= (int)getMemAt(0x5D4594, 1304308)) {
-					return result;
-				}
-			}
 			*getMemU32Ptr(0x5D4594, 1303924 + 4 * v13) = result;
 		}
 	}
