@@ -5,7 +5,6 @@ package legacy
 /*
 #include "server__magic__spell__execdur.h"
 #include "GAME4_3.h"
-extern int nox_cheat_charmall;
 */
 import "C"
 
@@ -14,6 +13,7 @@ import (
 	"fmt"
 	"github.com/opennox/libs/object"
 	"github.com/opennox/libs/prand"
+	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/strman"
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -175,7 +175,7 @@ func (p *portTestShopPools) spellStartPixieContract(owner, origin *server.Object
 	}
 	before := len(p.proxy.life.created)
 	audioBefore := len(core.PortTestCombatAudioSnapshot())
-	got := uint32(C.nox_xxx_castPixies_540440(C.int(id), 0, inventoryInt(owner), inventoryInt(origin), 0, C.int(level)))
+	got := uint32(spellStartPixies(spell.ID(id), owner, origin, int(int32(level))))
 	created := p.proxy.life.created[before:]
 	if got != 1 || len(created) != len(want) || core.Rand.Logic.Index() != rng.Index() {
 		panic(fmt.Sprintf("pixie count/RNG: got %d/%d/%d want 1/%d/%d", got, len(created), core.Rand.Logic.Index(), len(want), rng.Index()))
@@ -219,12 +219,12 @@ func (p *portTestShopPools) spellStartPixieContract(owner, origin *server.Object
 
 // PortTestSpellCharmControl checks the actual command setter and restores its owner.
 func PortTestSpellCharmControl(values []bool) []int32 {
-	old := C.nox_cheat_charmall
-	defer func() { C.nox_cheat_charmall = old }()
+	old := spellCharmAll
+	defer func() { spellCharmAll = old }()
 	var out []int32
 	for _, v := range values {
 		CheatCharmAll(v)
-		out = append(out, int32(C.nox_cheat_charmall))
+		out = append(out, int32(bool2int(spellCharmAll)))
 	}
 	return out
 }

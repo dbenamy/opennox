@@ -17,7 +17,6 @@ static uint32_t spellEffectsForceValue(int i){return spellEffectsForceLog[i];}
 #include <string.h>
 #include "GAME4.h"
 #include "GAME1_1.h"
-extern int nox_cheat_charmall;
 extern uint32_t dword_5d4594_2487708,dword_5d4594_2487712,dword_5d4594_2487804;
 #include "GAME4_2.h"
 #include "GAME4_3.h"
@@ -122,8 +121,8 @@ func (p *portTestShopPools) spellEffectsPrepare() func() {
 		p.controlsAdopt(u)
 		return u
 	}
-	oldCharm, oldDoor, oldGlyph, oldOther := C.nox_cheat_charmall, C.dword_5d4594_2487708, C.dword_5d4594_2487712, C.dword_5d4594_2487804
-	C.nox_cheat_charmall = C.int(bool2int(sp.CharmAll))
+	oldCharm, oldDoor, oldGlyph, oldOther := spellCharmAll, C.dword_5d4594_2487708, C.dword_5d4594_2487712, C.dword_5d4594_2487804
+	CheatCharmAll(sp.CharmAll)
 	C.dword_5d4594_2487708 = 0
 	C.dword_5d4594_2487712 = 0
 	C.dword_5d4594_2487804 = 0
@@ -171,7 +170,7 @@ func (p *portTestShopPools) spellEffectsPrepare() func() {
 		for i, off := range spellEffectsCacheOffsets {
 			*memmap.PtrUint32(0x5d4594, off) = old[i]
 		}
-		C.nox_cheat_charmall = oldCharm
+		spellCharmAll = oldCharm
 		C.dword_5d4594_2487708 = oldDoor
 		C.dword_5d4594_2487712 = oldGlyph
 		C.dword_5d4594_2487804 = oldOther
@@ -251,7 +250,7 @@ func (p *portTestShopPools) spellEffectsSnapshot(out []uint32) []uint32 {
 	for i := 0; i < int(C.spellEffectsForceCount()); i++ {
 		out = append(out, p.normalize(uint32(C.spellEffectsForceValue(C.int(i)))))
 	}
-	out = append(out, p.normalize(uint32(C.dword_5d4594_2487708)), p.normalize(uint32(C.dword_5d4594_2487712)), p.normalize(uint32(C.dword_5d4594_2487804)), uint32(C.nox_cheat_charmall))
+	out = append(out, p.normalize(uint32(C.dword_5d4594_2487708)), p.normalize(uint32(C.dword_5d4594_2487712)), p.normalize(uint32(C.dword_5d4594_2487804)), uint32(bool2int(spellCharmAll)))
 	for _, off := range spellEffectsCacheOffsets {
 		out = append(out, p.normalize(*memmap.PtrUint32(0x5d4594, off)))
 	}

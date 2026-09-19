@@ -2,44 +2,43 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about10.2k lines** — **10,184 physical lines in42
-production `.c` files**, zero reference C. The last conversion removed **636 lines**.
+**Qualified C remaining: about 10k lines** — **9,963 physical lines in 39
+production `.c` files**, zero reference C. The last conversion removed **221 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — spell start C baseline qualified
+## Current — spell start Go conversion qualified
 
-Qualified native parent **1dc9e771** is pushed. Production remains unchanged:
-10,184 lines /42 files /zero reference C. The new baseline is ready for commit/
-push: two callbacks /118 body lines, plus the charm-control owner and Go callers
-when converting. All2,616 focused C cases pass in separate final/repeat processes;
-five capture expectations are frozen.
+C baseline **2c299a2a** is pushed. Native conversion is fully qualified. Pixie
+creation and charm control are private Go; teleport start retains its registered
+Go-backed C export. Three emptied C files are removed. All 2,616 focused cases
+match frozen expectations. Default/server/highres each pass 108 primary roots /
+368 captures plus 31 neighboring roots /65 captures, without skips. All source
+fingerprints match the final checkout. Static checks pass.
 
-Default/server/highres each pass97 primary roots /357 captures plus31 neighboring
-roots /65 captures (128 disjoint roots /422 identical captures), no skips. All
-source fingerprints match the checkout. Static-current passes. Production identity
-confirms four test-only source changes and rehashes all three parent binaries and
-selected C symbols. Parent production/integration is explicitly reused. See
-SPELL_START.md and spell-start-c-qualification.json. All test/build jobs are joined,
-including primary51729/73882/73362 and neighbors40374/54986/39449.
+Fresh three-target production binaries pass ABI audits. The full suite matches
+all 1,553 known failure entries and 15 pass /3 fail /32 skip packages. Headless
+gameplay and save/load pass against unit-gameplay references. All jobs are joined,
+including highres driver 74605 and production 93986. See
+[SPELL_START.md](docs/porting/SPELL_START.md) and its native qualification JSON.
 
-Native draft and install-native.py under build/port-spell-start are NOT installed
-or consumed. Review/integrate after baseline commit, then run both selections and
-fresh native production/ABI/full-suite/gameplay/save-load. The draft preserves
-float32 teleport delay versus direct-double Pixie count conversion, wide position
-arithmetic and nil-owner creation interface semantics. No user question is pending.
+Review retained the existing formatted line-message wrapper and added its 11
+inherited GameplayText roots/hashes; no frozen expectation changed. Cleanup's
+activity check initially mistook a sibling log filename for the output directory;
+the corrected path-boundary check allowed verified cleanup to resume. Test and
+production results were unaffected.
 
-The unit-gameplay native scenario asset cleanup is complete: audit7312/apply99908
-joined,1,112,747,701 bytes reclaimed. Its apply script is CONSUMED; run restoration
-manifests remain. Old-test cache audit31507/apply49247 are joined:59 superseded
-legacy porttest archives (2,993,980,258 bytes) removed after identity/open-file
-checks. That apply script is CONSUMED. Production binaries, captures, logs,
-source and original assets/archive are retained. New C-capture dedup audit45211/apply87417 are joined:890 duplicate files share
-verified immutable contents, reclaiming1,601,817,981 bytes. Its apply script is
-CONSUMED; all capture paths and hashes remain.
+Ignored fixture/native installers and applied deduplication scripts are CONSUMED.
+Do not replay them or overwrite reviewed source with an older draft. Completed
+captures are immutable; use fresh output directories. Original assets/archive,
+qualified binaries, logs, snapshots and asset restoration manifests remain.
 
-## Current — unit gameplay Go conversion qualified
+Next: audit the connected client drawable/update-stream owners and select the
+next original-C baseline. No next-batch source changes yet; no user question is
+pending.
+
+## Previous — unit gameplay Go conversion qualified
 
 Original-C baseline **c4a1c3b0** is pushed. Native conversion **1dc9e771** is committed and pushed. Twenty C bodies are removed, including one unreachable
 duplicate. Private callers now invoke Go directly; three registered use/update

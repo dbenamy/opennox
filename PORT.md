@@ -14,16 +14,14 @@
 
 ## Current status
 
-The spell creation/start original-C baseline is qualified:2,616 focused cases,
-with default/server/highres each passing128 affected roots and422 identical
-captures across primary and neighboring selections. Production is unchanged
-from pushed `1dc9e771`, so its qualified binaries/integration evidence are reused.
-Next: convert the two callbacks and private charm-control owner, then run fresh
-native qualification. See [SPELL_START.md](docs/porting/SPELL_START.md).
-The preceding [unit gameplay conversion](docs/porting/UNIT_GAMEPLAY.md) is pushed.
+The spell creation/start conversion is qualified. Pixie creation, teleport start
+and private charm control now use Go. Default/server/highres each pass 139
+selected test roots and 433 exact captures; fresh production, ABI, full-suite
+comparison and headless gameplay/save-load checks pass.
+See [SPELL_START.md](docs/porting/SPELL_START.md).
 
-C remaining is **10,184 physical lines in42 files**, zero reference C.
-This conversion removes636 lines and five C files.
+C remaining is **9,963 physical lines in 39 files**, zero reference C.
+This conversion removes 221 lines and three C files.
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 Previous completed GUI batches include

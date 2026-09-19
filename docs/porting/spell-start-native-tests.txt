@@ -1,0 +1,1 @@
+^Test(Spell(Start|Lifecycle|Effects)|SustainedSpells|AI(Spell|Combat)|PlayerControls|UnitGameplay|GameplayText)

@@ -1,0 +1,105 @@
+{
+  "status": "qualified native conversion",
+  "c_baseline": "2c299a2a",
+  "bodies": 2,
+  "body_lines": 118,
+  "moved_owners": 1,
+  "retired_interfaces": [
+    "nox_xxx_castPixies_540440",
+    "nox_cheat_charmall"
+  ],
+  "retained_callbacks": [
+    "sub_530A30_spell_execdur"
+  ],
+  "focused_cases": 2616,
+  "targets": {
+    "affected-default": {
+      "roots": 108,
+      "manifest_hashes_enforced": 368,
+      "skips": [],
+      "evidence": "build/port-spell-start/native-affected-default"
+    },
+    "affected-server": {
+      "roots": 108,
+      "manifest_hashes_enforced": 368,
+      "skips": [],
+      "evidence": "build/port-spell-start/native-affected-server"
+    },
+    "affected-highres": {
+      "roots": 108,
+      "manifest_hashes_enforced": 368,
+      "skips": [],
+      "evidence": "build/port-spell-start/native-affected-highres"
+    },
+    "neighbors-default": {
+      "roots": 31,
+      "manifest_hashes_enforced": 65,
+      "skips": [],
+      "evidence": "build/port-spell-start/native-neighbors-default"
+    },
+    "neighbors-server": {
+      "roots": 31,
+      "manifest_hashes_enforced": 65,
+      "skips": [],
+      "evidence": "build/port-spell-start/native-neighbors-server"
+    },
+    "neighbors-highres": {
+      "roots": 31,
+      "manifest_hashes_enforced": 65,
+      "skips": [],
+      "evidence": "build/port-spell-start/native-neighbors-highres"
+    }
+  },
+  "extra_native_scope": "11 inherited GameplayText roots and audited-C literal capture hashes; also qualified in parent 1dc9e771. Existing formatted-message wrapper retained for localization formatting.",
+  "production": "build/port-spell-start/native-production/production/production.json",
+  "builds": {
+    "opennox": {
+      "exit": 0,
+      "wall_seconds": 77.65684162615798,
+      "sha256": "824e0fecf6390dcb12cfd6ee98d49e74d311b664c2f65b93886581026fef3d7a",
+      "abi_verified": true
+    },
+    "opennox-hd": {
+      "exit": 0,
+      "wall_seconds": 9.6984167417977,
+      "sha256": "6ddfaa715dcd19031f8eb356b5ddb3c56a8570c9668febe5c4d4f1c4533b4a82",
+      "abi_verified": true
+    },
+    "opennox-server": {
+      "exit": 0,
+      "wall_seconds": 65.9840050979983,
+      "sha256": "26955c592efde53996983932ab218cc4cebd13beb84c3ecb60319abbf2958228",
+      "abi_verified": true
+    }
+  },
+  "full_suite": {
+    "exit": 1,
+    "wall_seconds": 60.49377309298143,
+    "failure_entries": 1553,
+    "packages": {
+      "skip": 32,
+      "pass": 15,
+      "fail": 3
+    },
+    "exact_failure_multiset_match": true,
+    "exact_package_result_match": true
+  },
+  "scenarios": {
+    "spell-start-native": {
+      "exit": 0,
+      "binary_sha256": "824e0fecf6390dcb12cfd6ee98d49e74d311b664c2f65b93886581026fef3d7a"
+    },
+    "spell-start-native-save": {
+      "exit": 0,
+      "binary_sha256": "824e0fecf6390dcb12cfd6ee98d49e74d311b664c2f65b93886581026fef3d7a"
+    }
+  },
+  "static": "build/port-spell-start/static-native-final.log",
+  "source_files": 2790,
+  "c_loc": {
+    "files": 39,
+    "lines": 9963,
+    "reference_lines": 0
+  },
+  "physical_c_reduction": 221
+}

@@ -10,7 +10,6 @@ package legacy
 #include "GAME4_2.h"
 #include "GAME4_3.h"
 #include "server__script__script.h"
-extern int nox_cheat_charmall;
 */
 import "C"
 import (
@@ -152,7 +151,7 @@ func spellEffectCharmStart(record unsafe.Pointer) int32 {
 	}
 	if target.ObjClass&2 != 0 && !server.Nox_xxx_creatureIsMonitored_500CC0(source, target) {
 		guide := int32(bookGuideCharmable(uint32(target.TypeInd)))
-		if source.ObjClass&4 != 0 && C.nox_cheat_charmall == 0 {
+		if source.ObjClass&4 != 0 && !spellCharmAll {
 			if guide == 0 {
 				resourcePriority(source, "Summon.c:CreatureNotCharmable")
 				*controlPtr(record, 48) = nil
@@ -203,7 +202,7 @@ func spellEffectCharmFinish(record unsafe.Pointer) int32 {
 	if *spellLifeWord(record, 68)-1 != s.Frame() {
 		return 0
 	}
-	if C.nox_cheat_charmall == 0 {
+	if !spellCharmAll {
 		if u.ObjSubClass&0x2000 != 0 {
 			resourcePriority(source, "Summon.c:CreatureControlImpossible")
 			return fail()

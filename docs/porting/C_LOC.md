@@ -261,6 +261,7 @@ target build selection and linker evidence.
 | Script bindings, movement and callback transfer Go conversion | 48 | 10,953 | −451 | 0 |
 | Script inventory commands and private bridges Go conversion | 47 | 10,820 | −133 | 0 |
 | Unit gameplay helpers | 42 | 10,184 | −636 | 0 |
+| Spell creation and start | 39 | 9,963 | −221 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

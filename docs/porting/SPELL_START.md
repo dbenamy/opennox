@@ -1,7 +1,8 @@
 # Spell creation and start callbacks
 
-Qualified parent `1dc9e771` is pushed. The original-C baseline is qualified and frozen; production remains unchanged. Remaining C:
-10,184 lines /42 files /zero reference C.
+Original-C baseline `2c299a2a` is pushed; native conversion is fully qualified.
+Remaining C: **9,963 lines /39 files /zero reference C**, down 221 lines and three
+files from qualified parent `1dc9e771`.
 
 The two callbacks previously deferred from unit gameplay cover Pixie spawning
 and teleport start (118 body lines). Move the charm-control owner and its Go
@@ -67,3 +68,36 @@ full-suite and gameplay/save-load evidence is explicitly reused; no fresh C
 production/scenario run is claimed. See `spell-start-c-qualification.json`.
 All test/build jobs are joined. Next: integrate the ignored native draft and run
 both affected selections and fresh production qualification before committing.
+
+## Qualified native conversion
+
+C baseline `2c299a2a` is pushed. Both callbacks and the private charm-control owner
+are now Go. The registered teleport callback keeps its C ABI; the Pixie caller
+invokes Go directly. Three emptied C units are deleted: working-tree count9,963
+lines /39 files /zero reference C (−221), now qualified.
+
+The first Go focused run matches all2,616 frozen cases. Review then restored the
+existing formatted line-message wrapper for teleport localization, preserving
+escaped-percent handling instead of bypassing the formatter. This uses existing
+production code; no algorithm is kept solely for testing. The native sweep adds
+all11 inherited GameplayText roots and their audited-C literal hashes. Those
+cases were also qualified in parent1dc9e771; their source/expectations are unchanged.
+Native scope is108 primary roots /368 captures plus31 neighbors /65 captures.
+Static-native-final and final focused checks pass. All six target sweeps pass:
+139 distinct roots and 433 exact capture hashes per target, without skips.
+Source fingerprints match each other, production and the final checkout.
+The 11 text hashes come from unchanged audited-C literals; the parent qualified
+those tests but did not emit their capture files.
+
+Fresh default/highres/server binaries pass ABI/export audits. The full suite
+matches exactly 1,553 known failure entries and 15 pass /3 fail /32 skip packages.
+Headless gameplay and explicit save/load pass against the preceding unit-gameplay
+references. See `spell-start-native-qualification.json` for detailed evidence.
+All test/build/scenario jobs are joined.
+
+One ignored cleanup activity check falsely matched a sibling log filename as
+inside an active output directory. Requiring a path boundary fixed the check;
+default neighboring tests resumed separately. This did not change source,
+expectations or successful test results. Completed matching captures share verified
+storage; deduplication applications are consumed.
+The ignored installer is consumed; the reviewed source supersedes its draft.
