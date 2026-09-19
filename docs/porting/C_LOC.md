@@ -241,6 +241,7 @@ target build selection and linker evidence.
 | Client combat overlays (qualified native) | 66 | 24,411 | −957 | 0 |
 | Client presentation ray-capacity prerequisite (`fc842bfa`) | 66 | 24,412 | +1 | 0 |
 | Client world, spell and item presentation | 66 | 23,648 | −764 | 0 |
+| Client audio WAV baseline corrections (qualification pending) | 66 | 23,661 | +13 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

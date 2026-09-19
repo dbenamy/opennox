@@ -1,0 +1,420 @@
+{
+  "roots": {
+    "sub_487100": [],
+    "sub_487590": [],
+    "sub_4BD2E0": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 658,
+        "text": "v1 = sub_4BD2E0(*(uint32_t***)&dword_5d4594_1045436);"
+      },
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 661,
+        "text": "v1 = sub_4BD2E0(*(uint32_t***)&dword_5d4594_1045436);"
+      }
+    ],
+    "sub_4BD680": [],
+    "sub_486DB0": [],
+    "sub_487090": [],
+    "sub_4BDB20": [
+      {
+        "file": "src/legacy/client__audio__audevent.c",
+        "line_after_candidate_removal": 160,
+        "text": "sub_4BDB20(a1[44]);"
+      }
+    ],
+    "sub_4BDB30": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 706,
+        "text": "sub_4BDB30(*(uint32_t*)(a1 + 176));"
+      }
+    ],
+    "sub_486FE0": [],
+    "sub_487150": [
+      {
+        "file": "src/legacy/audio_ail.go",
+        "line_after_candidate_removal": 371,
+        "text": "return unsafe.Pointer(C.sub_487150(C.int(a1), a2))"
+      }
+    ],
+    "sub_4BDB90": [
+      {
+        "file": "src/legacy/client__audio__audevent.c",
+        "line_after_candidate_removal": 189,
+        "text": "sub_4BDB90(a1, v2);"
+      },
+      {
+        "file": "src/legacy/client__audio__audevent.c",
+        "line_after_candidate_removal": 192,
+        "text": "sub_4BDB90(a1, 0);"
+      },
+      {
+        "file": "src/legacy/client__audio__audevent.c",
+        "line_after_candidate_removal": 198,
+        "text": "sub_4BDB90(a1, v2);"
+      },
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 729,
+        "text": "sub_4BDB90((uint32_t*)v1, (uint32_t*)a1[74]);"
+      }
+    ],
+    "sub_4BDB40": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 735,
+        "text": "if (!sub_4BDB40(a1[44])) {"
+      }
+    ],
+    "sub_487680": [
+      {
+        "file": "src/legacy/GAME1_2.c",
+        "line_after_candidate_removal": 238,
+        "text": "sub_487680(dword_5d4594_805984);"
+      }
+    ],
+    "sub_4877D0": [],
+    "sub_4876A0": [],
+    "sub_4BD650": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 438,
+        "text": "sub_4BD650(*(uint32_t*)(a1 + 4 * v2 + 40));"
+      }
+    ],
+    "sub_4BD840": [],
+    "sub_4BDC00": [],
+    "sub_4870A0": [
+      {
+        "file": "src/legacy/main.go",
+        "line_after_candidate_removal": 121,
+        "text": "C.sub_4870A0()"
+      }
+    ],
+    "sub_4BD9B0": [],
+    "sub_487030": [],
+    "sub_486AA0": [],
+    "sub_4BD280": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 193,
+        "text": "dword_5d4594_1045436 = sub_4BD280(200, 576);"
+      }
+    ],
+    "sub_487D30": [],
+    "sub_487790": [
+      {
+        "file": "src/legacy/audio_ail.go",
+        "line_after_candidate_removal": 375,
+        "text": "return int(C.sub_487790(C.int(uintptr(a1)), C.int(a2)))"
+      }
+    ],
+    "sub_4BDA60": [],
+    "sub_4871C0": [],
+    "sub_4872C0": [],
+    "sub_487970": [
+      {
+        "file": "src/legacy/GAME1_2.c",
+        "line_after_candidate_removal": 246,
+        "text": "sub_487970(dword_5d4594_805984, -1);"
+      }
+    ],
+    "sub_486E90": [],
+    "sub_487750": [],
+    "sub_4BD690": [],
+    "sub_4BD7A0": [],
+    "sub_4BD7C0": [],
+    "sub_4BD470": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 434,
+        "text": "sub_4BD470(*(uint32_t***)&dword_5d4594_1045424, *(short*)(*(uint32_t*)(a1 + 36) + 2 * a2 + 128));"
+      }
+    ],
+    "sub_487C30": [],
+    "sub_4873C0": [],
+    "sub_4870E0": [],
+    "sub_4BD660": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 458,
+        "text": "sub_4BD660(*v3);"
+      }
+    ],
+    "sub_487310": [],
+    "sub_4BDA80": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 704,
+        "text": "sub_4BDA80(*(uint32_t*)(a1 + 176));"
+      },
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 829,
+        "text": "sub_4BDA80((int)v3);"
+      }
+    ],
+    "sub_486E30": [],
+    "sub_487C80": [],
+    "sub_4BD300": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 473,
+        "text": "return sub_4BD300(*(uint32_t**)&dword_5d4594_1045436, a1);"
+      }
+    ],
+    "sub_486B60": [],
+    "sub_4875F0": [
+      {
+        "file": "src/legacy/main.go",
+        "line_after_candidate_removal": 117,
+        "text": "C.sub_4875F0()"
+      }
+    ],
+    "sub_487810": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 823,
+        "text": "v3 = sub_487810(*(int*)&dword_5d4594_1045428, 1);"
+      }
+    ],
+    "sub_487910": [],
+    "sub_4BD340": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 192,
+        "text": "dword_5d4594_1045424 = sub_4BD340(a3, 0x100000, 200, 0x2000);"
+      }
+    ],
+    "sub_486E00": [],
+    "sub_4866D0": [],
+    "sub_4877F0": [],
+    "sub_4875B0": [],
+    "sub_487050": [],
+    "sub_4BD600": [],
+    "sub_4BD710": [
+      {
+        "file": "src/legacy/client__audio__audevent.c",
+        "line_after_candidate_removal": 42,
+        "text": "result = sub_4BD710(a1[v9 + 10]);"
+      }
+    ],
+    "sub_486FA0": [
+      {
+        "file": "src/legacy/audio_ail.go",
+        "line_after_candidate_removal": 363,
+        "text": "C.sub_486FA0(C.int(a1))"
+      }
+    ],
+    "sub_487C50": [],
+    "sub_4BD940": [],
+    "sub_487360": [],
+    "sub_4875D0": [],
+    "sub_487070": [],
+    "sub_486640": [
+      {
+        "file": "src/legacy/audio_ail.go",
+        "line_after_candidate_removal": 326,
+        "text": "return int(C.sub_486640(a1, C.int(a2)))"
+      }
+    ],
+    "sub_4BD3C0": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 230,
+        "text": "sub_4BD3C0(*(void**)&dword_5d4594_1045424);"
+      }
+    ],
+    "sub_487D60": [],
+    "sub_4BD720": [],
+    "sub_4BD420": [],
+    "sub_4BD8C0": [],
+    "sub_487D00": [
+      {
+        "file": "src/legacy/audio_ail.go",
+        "line_after_candidate_removal": 367,
+        "text": "C.sub_487D00((*C.uint)(a1))"
+      }
+    ],
+    "sub_4BD2D0": [
+      {
+        "file": "src/legacy/GAME2.c",
+        "line_after_candidate_removal": 234,
+        "text": "sub_4BD2D0(*(void**)&dword_5d4594_1045436);"
+      }
+    ]
+  },
+  "edges": {
+    "sub_487D60": [],
+    "sub_487D30": [],
+    "sub_487D00": [],
+    "sub_487C80": [],
+    "sub_487C50": [],
+    "sub_487C30": [],
+    "sub_487970": [
+      "sub_4877D0",
+      "sub_4877F0",
+      "sub_4BDA80"
+    ],
+    "sub_487910": [
+      "sub_4877D0",
+      "sub_4877F0",
+      "sub_4BDA60"
+    ],
+    "sub_487810": [
+      "sub_4877D0",
+      "sub_4877F0"
+    ],
+    "sub_4877F0": [],
+    "sub_4877D0": [],
+    "sub_487790": [
+      "sub_487750"
+    ],
+    "sub_487750": [
+      "sub_486E30",
+      "sub_4BD720"
+    ],
+    "sub_4876A0": [],
+    "sub_487680": [
+      "sub_4872C0",
+      "sub_4876A0"
+    ],
+    "sub_4875F0": [
+      "sub_4875B0",
+      "sub_4875D0",
+      "sub_487680"
+    ],
+    "sub_4875D0": [],
+    "sub_4875B0": [],
+    "sub_487590": [],
+    "sub_4873C0": [
+      "sub_4BD840"
+    ],
+    "sub_487360": [
+      "sub_4870E0",
+      "sub_487100"
+    ],
+    "sub_487310": [],
+    "sub_4872C0": [
+      "sub_487910"
+    ],
+    "sub_4871C0": [
+      "sub_4872C0",
+      "sub_4873C0",
+      "sub_487590"
+    ],
+    "sub_487150": [
+      "sub_4871C0",
+      "sub_487310",
+      "sub_487360"
+    ],
+    "sub_487100": [],
+    "sub_4870E0": [],
+    "sub_4870A0": [
+      "sub_487070",
+      "sub_4870E0",
+      "sub_487100"
+    ],
+    "sub_487090": [],
+    "sub_487070": [
+      "sub_487030",
+      "sub_487090"
+    ],
+    "sub_487050": [],
+    "sub_487030": [],
+    "sub_486FE0": [
+      "sub_487030"
+    ],
+    "sub_486FA0": [
+      "sub_486FE0",
+      "sub_487050"
+    ],
+    "sub_486E90": [],
+    "sub_486E30": [],
+    "sub_486E00": [],
+    "sub_486DB0": [],
+    "sub_486B60": [
+      "sub_4866D0",
+      "sub_486E00"
+    ],
+    "sub_486AA0": [
+      "sub_4866D0"
+    ],
+    "sub_4866D0": [],
+    "sub_486640": [],
+    "sub_4BDC00": [],
+    "sub_4BDB90": [
+      "sub_487C80"
+    ],
+    "sub_4BDB40": [
+      "sub_4BD840"
+    ],
+    "sub_4BDB30": [],
+    "sub_4BDB20": [],
+    "sub_4BDA80": [],
+    "sub_4BDA60": [
+      "sub_486E90",
+      "sub_4BD7A0",
+      "sub_4BDA80"
+    ],
+    "sub_4BD9B0": [],
+    "sub_4BD940": [
+      "sub_4BDB90"
+    ],
+    "sub_4BD8C0": [],
+    "sub_4BD840": [],
+    "sub_4BD7C0": [
+      "sub_4BD8C0",
+      "sub_4BD940",
+      "sub_4BD9B0",
+      "sub_4BDC00"
+    ],
+    "sub_4BD7A0": [],
+    "sub_4BD720": [
+      "sub_4BD7A0",
+      "sub_4BD7C0",
+      "sub_4BDC00"
+    ],
+    "sub_4BD710": [],
+    "sub_4BD690": [
+      "sub_487D60",
+      "sub_4BD300"
+    ],
+    "sub_4BD680": [],
+    "sub_4BD660": [],
+    "sub_4BD650": [],
+    "sub_4BD600": [
+      "sub_4BD680",
+      "sub_4BD690"
+    ],
+    "sub_4BD470": [
+      "sub_486AA0",
+      "sub_486B60",
+      "sub_486DB0",
+      "sub_486E00",
+      "sub_487C30",
+      "sub_487C50",
+      "sub_487D30",
+      "sub_4BD2E0",
+      "sub_4BD420",
+      "sub_4BD600",
+      "sub_4BD690"
+    ],
+    "sub_4BD420": [],
+    "sub_4BD3C0": [
+      "sub_4BD2D0",
+      "sub_4BD690"
+    ],
+    "sub_4BD340": [
+      "sub_4BD280",
+      "sub_4BD3C0"
+    ],
+    "sub_4BD300": [],
+    "sub_4BD2E0": [],
+    "sub_4BD2D0": [],
+    "sub_4BD280": []
+  },
+  "provisionally_unreachable": []
+}

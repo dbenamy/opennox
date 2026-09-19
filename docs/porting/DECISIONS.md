@@ -2032,3 +2032,13 @@ private interfaces and the private chant-tree C global retire. All frozen C
 captures passed on the first native build, and all affected targets plus fresh
 production/gameplay/save-load qualify. C:23,648 /66 files /zero reference,
 −764 from the corrected baseline. See CLIENT_PRESENTATION.md.
+
+
+Client audio stream baseline corrections (qualification in progress): the override
+reader's decompiled local path array provided only36 bytes, aborting on an ordinary
+long directory name. Use a separate bounded280-byte path; unsupported lengths fall
+back to the packed audio file. Require a complete WAV format chunk and nonzero
+channels before using its metadata; otherwise close the override and preserve bag
+fallback. Keep the 32-bit C clock narrowing and existing cache/zero-request behavior.
+Independent contracts and reproduction logs are in CLIENT_AUDIO_STREAMS.md. These
+reversible choices are recorded for later review; native translation is pending.

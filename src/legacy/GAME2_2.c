@@ -524,9 +524,11 @@ int sub_486B60(int a1, int a2) {
 	int v10;      // ecx
 	int v12;      // [esp+10h] [ebp-12Ch]
 	char v13[8];  // [esp+14h] [ebp-128h]
-	char v14[16]; // [esp+1Ch] [ebp-120h]
-	int v15[12];  // [esp+2Ch] [ebp-110h]
+	char v14[16] = {0}; // [esp+1Ch] [ebp-120h]
+	int v15[3];  // [esp+2Ch] [ebp-110h]
 
+	char path[280]; // Catalog directory (260 bytes), sample name (16), extension.
+	int have_format = 0;
 	v12 = 1;
 	v2 = sub_4866D0((uint32_t*)a1, a2);
 	sub_486E00(a1);
@@ -542,10 +544,10 @@ int sub_486B60(int a1, int a2) {
 	if (!*(uint32_t*)(a1 + 276)) {
 		return v12;
 	}
-	strcpy((char*)&v15[3], (const char*)(a1 + 8));
-	strcat((char*)&v15[3], (const char*)v2);
-	strcat((char*)&v15[3], ".wav");
-	v6 = nox_fs_open((const char*)&v15[3]);
+	if (snprintf(path, sizeof(path), "%s%s.wav", (const char*)(a1 + 8), (const char*)v2) >= sizeof(path)) {
+		return v12;
+	}
+	v6 = nox_fs_open(path);
 	v7 = v6;
 	v8 = 0;
 	*(uint32_t*)(a1 + 272) = v6;
@@ -553,7 +555,7 @@ int sub_486B60(int a1, int a2) {
 		return v12;
 	}
 	if (nox_binfile_fread_raw_40ADD0((char*)v15, 0xCu, 1u, v6) != 1 || v15[0] != 1179011410 || v15[2] != 1163280727) {
-		printf("error: '%s' is bad - cannot read\n", &v15[3]);
+		printf("error: '%s' is bad - cannot read\n", path);
 		if (*(uint32_t*)(a1 + 272)) {
 			nox_fs_close(*(FILE**)(a1 + 272));
 			*(uint32_t*)(a1 + 272) = 0;
@@ -565,7 +567,11 @@ int sub_486B60(int a1, int a2) {
 	}
 	while (1) {
 		if (*(uint32_t*)v13 == 544501094) {
-			nox_binfile_fread_raw_40ADD0(v14, 0x10u, 1u, v7);
+			if (*(uint32_t*)&v13[4] < 16 || nox_binfile_fread_raw_40ADD0(v14, 0x10u, 1u, v7) != 1 ||
+				!*(uint16_t*)&v14[2]) {
+				goto invalid_wave;
+			}
+			have_format = 1;
 			nox_fs_fseek_cur(v7, *(uint32_t*)&v13[4] - 16);
 			goto LABEL_15;
 		}
@@ -580,6 +586,9 @@ int sub_486B60(int a1, int a2) {
 	}
 	v8 = *(uint32_t*)&v13[4];
 LABEL_18:
+	if (!have_format) {
+		goto invalid_wave;
+	}
 	*(uint32_t*)(v2 + 28) = 2;
 	if (*(unsigned short*)&v14[12] / (int)*(unsigned short*)&v14[2] == 2) {
 		*(uint32_t*)(v2 + 28) = 6;
@@ -594,6 +603,10 @@ LABEL_18:
 	*(uint32_t*)(a1 + 284) = v8;
 	*(uint32_t*)(a1 + 280) = v10;
 	return 1;
+invalid_wave:
+	nox_fs_close(*(FILE**)(a1 + 272));
+	*(uint32_t*)(a1 + 272) = 0;
+	return v12;
 }
 
 //----- (00486DB0) --------------------------------------------------------

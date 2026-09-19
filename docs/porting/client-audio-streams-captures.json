@@ -1,0 +1,107 @@
+{
+  "status": "repeated three-target C captures; frozen qualification pending",
+  "parent": "eeaf1030",
+  "repeats": {
+    "default": "dispatch-final",
+    "server": "c-repeat-server",
+    "highres": "c-repeat-highres"
+  },
+  "captures": [
+    {
+      "label": "client-audio-streams-buffers",
+      "sha256": "c949de7087a94661e02ffaaab2a990098ea039b04dfe6bfabce103a7ef873107",
+      "records": 5,
+      "file": "src/client_audio_streams_buffers_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-bulk-voices",
+      "sha256": "780b0b7ddd68bde5f2796d8732f52cb8e2f88053aba28c0af8791606bc30a72f",
+      "records": 30,
+      "file": "src/client_audio_streams_queues_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-cache",
+      "sha256": "f29bb95cf6491c2cd0a8c4f89ddb1c9068a3f8ad184591beb52920f4ebcbe788",
+      "records": 6,
+      "file": "src/client_audio_streams_cache_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-constructor-failures",
+      "sha256": "757a0cd5cc6ed7234a6ae3031c05d007d221db239c7591e365abb19202deae16",
+      "records": 3,
+      "file": "src/client_audio_streams_lifecycle_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-device-queues",
+      "sha256": "0c739b1f28c82f45e7e096fc6e8988677f72e933384353b9b40f4d5a3719d930",
+      "records": 6,
+      "file": "src/client_audio_streams_queues_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-formats",
+      "sha256": "55c5d1ef0b2f877c59e932257ffea3adb650d36db69ab395a33d989c5435731e",
+      "records": 660,
+      "file": "src/client_audio_streams_primitives_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-lifecycle",
+      "sha256": "9b993b6ff2a581ab0fac6b509b5fd9787415941c333faf3c62c20558691aa38a",
+      "records": 9,
+      "file": "src/client_audio_streams_lifecycle_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-pool",
+      "sha256": "e8dbc94935fff466d9b26e66c7386e3cc57a254bd2e31bafd8d14e57267e55e4",
+      "records": 35,
+      "file": "src/client_audio_streams_pool_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-read-bounds",
+      "sha256": "e6823b5cc70db53e5de59d293944ffd24ec0b0c998fea6deb49b289cd6b38a6b",
+      "records": 48,
+      "file": "src/client_audio_streams_read_bounds_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-reads",
+      "sha256": "a57303642d989dc3b084434f6bd921a2959bf47ee6f6c9176a04303c48523577",
+      "records": 10,
+      "file": "src/client_audio_streams_io_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-references",
+      "sha256": "01f43c735b5b453cd1f0efd19864e529783ef2f5e4b188795384d4a7ec3ccb47",
+      "records": 8,
+      "file": "src/client_audio_streams_pool_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-tick-bounds",
+      "sha256": "143e11db0194c3588315a61d5b466291ccbfc6f3441423be97a2b4b414d4992b",
+      "records": 11,
+      "file": "src/client_audio_streams_selection_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-tick-dispatch",
+      "sha256": "d783f5cc3d55de1770cf2c229589e1fa581b3e1c5eba60308f4ea1fde03e45ef",
+      "records": 30,
+      "file": "src/client_audio_streams_tick_dispatch_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-timer-mix",
+      "sha256": "017bd63d5ed700098509c8d657443f6c52c093b0e0ca8260904a7adc24eff32e",
+      "records": 8,
+      "file": "src/client_audio_streams_mix_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-voice-callbacks",
+      "sha256": "c943b91267474994193c301ed0591041d011000c61eb4119ef82fcc586c9bca9",
+      "records": 42,
+      "file": "src/client_audio_streams_callbacks_porttest_test.go"
+    },
+    {
+      "label": "client-audio-streams-voice-selection",
+      "sha256": "bb084550a6f8ed2f6339034c52808dfe092bfbe4bb37694d8b672621730ee925",
+      "records": 16,
+      "file": "src/client_audio_streams_selection_porttest_test.go"
+    }
+  ]
+}
