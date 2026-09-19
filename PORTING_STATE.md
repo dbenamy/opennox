@@ -8,7 +8,36 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — resource-definition Go conversion qualified
+## Current — character-creation C baseline qualified
+
+Qualified resource-definition conversion **6052e5b7** is committed/pushed.
+Character creation selects 23 bodies /1,042 C body lines. Production is unchanged;
+20 new porttest-only files provide the baseline. See
+[CHARACTER_CREATION.md](docs/porting/CHARACTER_CREATION.md).
+
+All 173 affected roots pass without skips on default/server/highres. All 142
+captures /13,807 records and 2,679 source fingerprints agree across targets.
+Two independent focused runs agree; 16 new captures /889 records are frozen.
+Static checks pass. All sessions, including 95276/16231/65709, are joined.
+freeze.py and qualify-c.py are CONSUMED. No builds/tests remain active.
+
+Production identity with the qualified parent is recorded; parent binary hashes
+were checked. The extended original-C headless scenario and independent repeat
+pass. Native conversion must build and qualify fresh production. Next: commit/push
+this C baseline, then translate the selected routines against frozen expectations.
+Review animation callback ownership before retiring interfaces; existing gui.Anim
+stores C callback pointers, so the interface plan may need a documented adjustment.
+
+File normalization covers verified temporary paths/timestamps and two unused,
+nonserialized save-record padding bytes. Initial fixture mistakes (destroyed entry
+widget during owner reset; omitted expected UTF-16 terminator) are fixed and
+recorded. All installed source drafts and audit/apply cleanup scripts are CONSUMED.
+
+Disk: about 2.5 GiB free. Completed original/repeat scenario asset copies were
+hash-verified and deduplicated, reclaiming 1,112,777,430 bytes; retain restoration
+manifests/helpers, captures, saves, source assets and the original archive.
+
+## Qualified parent — resource-definition Go conversion qualified
 
 C baseline **b078430c** is pushed. All24 live bodies are Go; three orphaned bodies
 and a private C list head are removed. One C export remains for monster sounds.

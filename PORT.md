@@ -24,7 +24,9 @@ Latest qualified production C is **18,044 physical lines in61 files**, zero refe
 fresh production binaries and headless gameplay/save-load qualify. See
 [PORTING_STATE.md](PORTING_STATE.md).
 
-Next batch: character creation,23 connected UI bodies /1,042 C body lines.
+Character creation: the original-C baseline is qualified for 23 connected UI
+bodies /1,042 C body lines. Its 16 new captures /889 records are frozen, and all
+173 affected roots pass on three targets. Native conversion is next.
 Adjacent configuration callbacks are a separate deferred batch.
 
 ## Goal and target

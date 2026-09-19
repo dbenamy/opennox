@@ -1,0 +1,2258 @@
+{
+  "dword_587000_171388": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 373,
+      "text": "uint32_t dword_587000_171388 = 0x1;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 21,
+      "text": "extern uint32_t dword_587000_171388;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 71,
+      "text": "if (dword_587000_171388) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 59,
+      "text": "extern uint32_t dword_587000_171388;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 379,
+      "text": "result = dword_587000_171388;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 380,
+      "text": "if (!dword_587000_171388) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 881,
+      "text": "dword_587000_171388 = 1;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 936,
+      "text": "dword_587000_171388 = a1;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 364,
+      "text": "extern uint32_t dword_587000_171388;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 140,
+      "text": "{0x587000, 171388, 4, \"dword_587000_171388\"},                          // 0x5B0D7C",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1307724": [
+    {
+      "file": "src/legacy/client__shell__selclass.c",
+      "line": 10,
+      "text": "extern uint32_t dword_5d4594_1307724;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selclass.c",
+      "line": 51,
+      "text": "*(uint8_t*)(dword_5d4594_1307724 + 66) = v7 - 89;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selclass.c",
+      "line": 76,
+      "text": "result = (void*)*(unsigned char*)(dword_5d4594_1307724 + 66);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selclass.c",
+      "line": 85,
+      "text": "if (*(uint8_t*)(dword_5d4594_1307724 + 66)) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 422,
+      "text": "uint32_t dword_5d4594_1307724 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 55,
+      "text": "extern uint32_t dword_5d4594_1307724;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 265,
+      "text": "dword_5d4594_1307724 = nox_xxx_getHostInfoPtr_431770();",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 415,
+      "text": "extern uint32_t dword_5d4594_1307724;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 900,
+      "text": "{0x5D4594, 1307724, 4, \"dword_5d4594_1307724\"},                 // 0x7139E0",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1307736": [
+    {
+      "file": "src/legacy/client__shell__selclass.c",
+      "line": 12,
+      "text": "extern uint32_t dword_5d4594_1307736;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selclass.c",
+      "line": 50,
+      "text": "v8 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1307736, 605);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 212,
+      "text": "uint32_t dword_5d4594_1307736 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 78,
+      "text": "extern uint32_t dword_5d4594_1307736;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 268,
+      "text": "dword_5d4594_1307736 = result;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 271,
+      "text": "result = nox_gui_makeAnimation_43C5B0(*(uint32_t**)&dword_5d4594_1307736, 0, 0, 0, -460, 0, 20, 0, -40);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 277,
+      "text": "v1 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1307736, 601);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 279,
+      "text": "v2 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1307736, 603);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 281,
+      "text": "v3 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1307736, 602);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 283,
+      "text": "*getMemU32Ptr(0x5D4594, 1307728) = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1307736, 610);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 309,
+      "text": "nox_xxx_windowDestroyMB_46C4E0(*(uint32_t**)&dword_5d4594_1307736);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 205,
+      "text": "extern uint32_t dword_5d4594_1307736;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 902,
+      "text": "{0x5D4594, 1307736, 4, \"dword_5d4594_1307736\"},                 // 0x7139EC",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1307784": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 6,
+      "text": "uint32_t dword_5d4594_1307784 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 35,
+      "text": "extern uint32_t dword_5d4594_1307784;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 50,
+      "text": "dword_5d4594_1307784 = v0;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 119,
+      "text": "nox_wcscpy(*(wchar2_t**)&dword_5d4594_1307784, v0);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 120,
+      "text": "if (!sub_4A6B50(*(wchar2_t**)&dword_5d4594_1307784)) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 122,
+      "text": "nox_wcscpy(*(wchar2_t**)&dword_5d4594_1307784, v2);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 126,
+      "text": "v4 = dword_5d4594_1307784 + 71;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 127,
+      "text": "*(uint16_t*)(dword_5d4594_1307784 + 71) = *(uint16_t*)v3;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 132,
+      "text": "v8 = dword_5d4594_1307784 + 68;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 133,
+      "text": "*(uint16_t*)(dword_5d4594_1307784 + 68) = *(uint16_t*)v7;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 136,
+      "text": "v5 = dword_5d4594_1307784 + 71;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 137,
+      "text": "v6 = dword_5d4594_1307784 + 68;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 138,
+      "text": "*(uint16_t*)(dword_5d4594_1307784 + 68) = *(uint16_t*)(dword_5d4594_1307784 + 71);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 142,
+      "text": "v11 = dword_5d4594_1307784 + 74;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 145,
+      "text": "*(uint16_t*)(dword_5d4594_1307784 + 74) = *(uint16_t*)v12;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 148,
+      "text": "v9 = dword_5d4594_1307784 + 71;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 149,
+      "text": "v10 = dword_5d4594_1307784 + 74;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 150,
+      "text": "*(uint16_t*)(dword_5d4594_1307784 + 74) = *(uint16_t*)(dword_5d4594_1307784 + 71);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 154,
+      "text": "v15 = dword_5d4594_1307784 + 77;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 157,
+      "text": "*(uint16_t*)(dword_5d4594_1307784 + 77) = *(uint16_t*)v16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 160,
+      "text": "v13 = dword_5d4594_1307784 + 71;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 161,
+      "text": "v14 = dword_5d4594_1307784 + 77;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 162,
+      "text": "*(uint16_t*)(dword_5d4594_1307784 + 77) = *(uint16_t*)(dword_5d4594_1307784 + 71);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 166,
+      "text": "v19 = dword_5d4594_1307784 + 80;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 169,
+      "text": "*(uint16_t*)(dword_5d4594_1307784 + 80) = *(uint16_t*)v20;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 172,
+      "text": "v17 = dword_5d4594_1307784 + 71;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 173,
+      "text": "v18 = dword_5d4594_1307784 + 80;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 174,
+      "text": "*(uint16_t*)(dword_5d4594_1307784 + 80) = *(uint16_t*)(dword_5d4594_1307784 + 71);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 177,
+      "text": "*(uint8_t*)(dword_5d4594_1307784 + 83) = *(uint32_t*)(dword_5d4594_1308116 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 178,
+      "text": "*(uint8_t*)(dword_5d4594_1307784 + 84) = *(uint32_t*)(dword_5d4594_1308120 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 179,
+      "text": "*(uint8_t*)(dword_5d4594_1307784 + 85) = *(uint32_t*)(dword_5d4594_1308124 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 180,
+      "text": "*(uint8_t*)(dword_5d4594_1307784 + 86) = *(uint32_t*)(dword_5d4594_1308128 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 181,
+      "text": "result = *(wchar2_t**)&dword_5d4594_1307784;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 182,
+      "text": "*(uint8_t*)(dword_5d4594_1307784 + 87) = *(uint32_t*)(dword_5d4594_1308132 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 229,
+      "text": "v3 = *(uint8_t*)(dword_5d4594_1307784 + 66);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 95,
+      "text": "extern uint32_t dword_5d4594_1307784;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 381,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_1308152, 16414, *(int*)&dword_5d4594_1307784, 0);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 382,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308096, 2, (uint8_t*)(dword_5d4594_1307784 + 71));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 383,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308100, 1, (uint8_t*)(dword_5d4594_1307784 + 68));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 384,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308104, 1, (uint8_t*)(dword_5d4594_1307784 + 74));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 385,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308108, 1, (uint8_t*)(dword_5d4594_1307784 + 77));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 386,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308112, 1, (uint8_t*)(dword_5d4594_1307784 + 80));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 387,
+      "text": "*(uint32_t*)(dword_5d4594_1308116 + 32) = *(unsigned char*)(dword_5d4594_1307784 + 83) << 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 388,
+      "text": "*(uint32_t*)(dword_5d4594_1308120 + 32) = *(unsigned char*)(dword_5d4594_1307784 + 84) << 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 389,
+      "text": "*(uint32_t*)(dword_5d4594_1308124 + 32) = *(unsigned char*)(dword_5d4594_1307784 + 85) << 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 390,
+      "text": "*(uint32_t*)(dword_5d4594_1308128 + 32) = *(unsigned char*)(dword_5d4594_1307784 + 86) << 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 391,
+      "text": "result = *(unsigned char*)(dword_5d4594_1307784 + 87) << 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 669,
+      "text": "nox_client_drawImageAt_47D2C0(*getMemU32Ptr(0x973A20, 16 + 4 * *(unsigned char*)(dword_5d4594_1307784 + 67)),",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 672,
+      "text": "nox_client_drawImageAt_47D2C0(*getMemU32Ptr(0x973A20, 24 + 4 * *(unsigned char*)(dword_5d4594_1307784 + 67)),",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 676,
+      "text": "v22 = *(unsigned char*)(dword_5d4594_1307784 + 67);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 883,
+      "text": "if (*(uint8_t*)(dword_5d4594_1307784 + 66) == 0) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 885,
+      "text": "} else if (*(uint8_t*)(dword_5d4594_1307784 + 66) == 1) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 887,
+      "text": "} else if (*(uint8_t*)(dword_5d4594_1307784 + 66) == 2) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 8,
+      "text": "extern uint32_t dword_5d4594_1307784;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 910,
+      "text": "{0x5D4594, 1307784, 4, \"dword_5d4594_1307784\"},                 // 0x713A1C",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1307792": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 493,
+      "text": "uint32_t dword_5d4594_1307792 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 47,
+      "text": "extern uint32_t dword_5d4594_1307792;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 788,
+      "text": "result = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308088, *(int*)&dword_5d4594_1307792);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 811,
+      "text": "dword_5d4594_1307792 = v6;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 819,
+      "text": "dword_5d4594_1307792 = v6;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 828,
+      "text": "dword_5d4594_1307792 = v6;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 485,
+      "text": "extern uint32_t dword_5d4594_1307792;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 911,
+      "text": "{0x5D4594, 1307792, 4, \"dword_5d4594_1307792\"},                 // 0x713A24",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308084": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 29,
+      "text": "uint32_t dword_5d4594_1308084 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 34,
+      "text": "extern uint32_t dword_5d4594_1308084;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 53,
+      "text": "dword_5d4594_1308084 = result;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 56,
+      "text": "result = nox_gui_makeAnimation_43C5B0(*(uint32_t**)&dword_5d4594_1308084, 0, 0, 0, -440, 0, 20, 0, -40);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 64,
+      "text": "v3 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, i);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 68,
+      "text": "v5 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, j);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 77,
+      "text": "dword_5d4594_1308088 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 760);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 82,
+      "text": "v7 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 740);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 92,
+      "text": "extern uint32_t dword_5d4594_1308084;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 344,
+      "text": "v1 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 720);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 347,
+      "text": "v2 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 721);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 350,
+      "text": "v3 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 722);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 353,
+      "text": "v4 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 723);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 356,
+      "text": "v5 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 724);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 359,
+      "text": "v6 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 725);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 362,
+      "text": "v7 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 726);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 365,
+      "text": "v8 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 727);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 368,
+      "text": "v9 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 728);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 371,
+      "text": "v10 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 729);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 374,
+      "text": "dword_5d4594_1308136 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 711);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 375,
+      "text": "dword_5d4594_1308140 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 712);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 376,
+      "text": "dword_5d4594_1308144 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 713);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 377,
+      "text": "dword_5d4594_1308148 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 714);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 378,
+      "text": "dword_5d4594_1308152 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 751);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 414,
+      "text": "v5 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, *a1 - 10);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 416,
+      "text": "result = (unsigned char*)nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, *a1 + 10);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 421,
+      "text": "v6 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, *a1 - 10);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 508,
+      "text": "nox_xxx_windowDestroyMB_46C4E0(*(uint32_t**)&dword_5d4594_1308084);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 836,
+      "text": "v7 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, v6 - 20);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 31,
+      "text": "extern uint32_t dword_5d4594_1308084;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 912,
+      "text": "{0x5D4594, 1308084, 4, \"dword_5d4594_1308084\"},                 // 0x713B48",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308088": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 96,
+      "text": "uint32_t dword_5d4594_1308088 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 33,
+      "text": "extern uint32_t dword_5d4594_1308088;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 77,
+      "text": "dword_5d4594_1308088 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 760);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 78,
+      "text": "nox_xxx_wndSetProc_46B2C0(*(int*)&dword_5d4594_1308088, sub_4A7330);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 79,
+      "text": "nox_xxx_wndSetWindowProc_46B300(*(int*)&dword_5d4594_1308088, sub_4A7270);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 80,
+      "text": "sub_46B120(*(uint32_t**)&dword_5d4594_1308088, 0);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 89,
+      "text": "extern uint32_t dword_5d4594_1308088;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 509,
+      "text": "nox_xxx_windowDestroyMB_46C4E0(*(uint32_t**)&dword_5d4594_1308088);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 785,
+      "text": "nox_xxx_wnd_46C6E0(*(int*)&dword_5d4594_1308088);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 786,
+      "text": "result = (uint32_t*)nox_window_set_hidden(*(int*)&dword_5d4594_1308088, 1);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 788,
+      "text": "result = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308088, *(int*)&dword_5d4594_1307792);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 914,
+      "text": "result = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308088, v1);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 925,
+      "text": "nox_xxx_wndShowModalMB_46A8C0(*(int*)&dword_5d4594_1308088);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 926,
+      "text": "sub_46C690(*(int*)&dword_5d4594_1308088);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 927,
+      "text": "return nox_window_setPos_46A9B0(*(uint32_t**)&dword_5d4594_1308088, a1 - *(uint32_t*)(dword_5d4594_1308088 + 8),",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 928,
+      "text": "a2 - *(uint32_t*)(dword_5d4594_1308088 + 12) / 2);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 93,
+      "text": "extern uint32_t dword_5d4594_1308088;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 913,
+      "text": "{0x5D4594, 1308088, 4, \"dword_5d4594_1308088\"},                 // 0x713B4C",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308096": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 436,
+      "text": "uint32_t dword_5d4594_1308096 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 18,
+      "text": "extern uint32_t dword_5d4594_1308096;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 124,
+      "text": "v3 = getMemAt(0x5D4594, 1307796 + 3 * ((*(uint32_t*)(dword_5d4594_1308096 + 32) >> 16) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 125,
+      "text": "32 * (unsigned short)*(uint32_t*)(dword_5d4594_1308096 + 32)));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 232,
+      "text": "v4 = getMemAt(0x5D4594, 1307796 + 3 * ((*(uint32_t*)(dword_5d4594_1308096 + 32) >> 16) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 233,
+      "text": "32 * (unsigned short)*(uint32_t*)(dword_5d4594_1308096 + 32)));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 54,
+      "text": "extern uint32_t dword_5d4594_1308096;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 345,
+      "text": "dword_5d4594_1308096 = v1;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 382,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308096, 2, (uint8_t*)(dword_5d4594_1307784 + 71));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 617,
+      "text": "v1 = ((unsigned short)(*(uint32_t*)(dword_5d4594_1308096 + 32) >> 16)) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 618,
+      "text": "32 * *(unsigned short*)(dword_5d4594_1308096 + 32);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 429,
+      "text": "extern uint32_t dword_5d4594_1308096;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 915,
+      "text": "{0x5D4594, 1308096, 4, \"dword_5d4594_1308096\"},                 // 0x713B54",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308100": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 316,
+      "text": "uint32_t dword_5d4594_1308100 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 26,
+      "text": "extern uint32_t dword_5d4594_1308100;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 130,
+      "text": "v7 = getMemAt(0x5D4594, 1307796 + 3 * ((*(uint32_t*)(dword_5d4594_1308100 + 32) >> 16) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 131,
+      "text": "32 * (unsigned short)*(uint32_t*)(dword_5d4594_1308100 + 32)));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 239,
+      "text": "v8 = (*(uint32_t*)(dword_5d4594_1308100 + 32) >> 16) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 240,
+      "text": "32 * (unsigned short)*(uint32_t*)(dword_5d4594_1308100 + 32);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 66,
+      "text": "extern uint32_t dword_5d4594_1308100;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 348,
+      "text": "dword_5d4594_1308100 = v2;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 383,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308100, 1, (uint8_t*)(dword_5d4594_1307784 + 68));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 624,
+      "text": "v5 = ((unsigned short)(*(uint32_t*)(dword_5d4594_1308100 + 32) >> 16)) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 625,
+      "text": "32 * *(unsigned short*)(dword_5d4594_1308100 + 32);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 307,
+      "text": "extern uint32_t dword_5d4594_1308100;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 916,
+      "text": "{0x5D4594, 1308100, 4, \"dword_5d4594_1308100\"},                 // 0x713B58",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308104": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 452,
+      "text": "uint32_t dword_5d4594_1308104 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 17,
+      "text": "extern uint32_t dword_5d4594_1308104;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 143,
+      "text": "v12 = getMemAt(0x5D4594, 1307796 + 3 * ((*(uint32_t*)(dword_5d4594_1308104 + 32) >> 16) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 144,
+      "text": "32 * (unsigned short)*(uint32_t*)(dword_5d4594_1308104 + 32)));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 250,
+      "text": "v10 = getMemAt(0x5D4594, 1307796 + 3 * ((*(uint32_t*)(dword_5d4594_1308104 + 32) >> 16) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 251,
+      "text": "32 * (unsigned short)*(uint32_t*)(dword_5d4594_1308104 + 32)));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 51,
+      "text": "extern uint32_t dword_5d4594_1308104;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 351,
+      "text": "dword_5d4594_1308104 = v3;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 384,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308104, 1, (uint8_t*)(dword_5d4594_1307784 + 74));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 658,
+      "text": "v18 = (unsigned short)(*(uint32_t*)(dword_5d4594_1308104 + 32) >> 16);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 659,
+      "text": "v19 = v18 + 32 * *(unsigned short*)(dword_5d4594_1308104 + 32);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 663,
+      "text": "v19, v17, getMemByte(0x5D4594, 1307798 + 3 * (v18 + 32 * *(unsigned short*)(dword_5d4594_1308104 + 32))));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 445,
+      "text": "extern uint32_t dword_5d4594_1308104;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 917,
+      "text": "{0x5D4594, 1308104, 4, \"dword_5d4594_1308104\"},                 // 0x713B5C",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308108": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 312,
+      "text": "uint32_t dword_5d4594_1308108 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 28,
+      "text": "extern uint32_t dword_5d4594_1308108;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 155,
+      "text": "v16 = getMemAt(0x5D4594, 1307796 + 3 * ((*(uint32_t*)(dword_5d4594_1308108 + 32) >> 16) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 156,
+      "text": "32 * (unsigned short)*(uint32_t*)(dword_5d4594_1308108 + 32)));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 261,
+      "text": "v11 = (*(uint32_t*)(dword_5d4594_1308108 + 32) >> 16) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 262,
+      "text": "32 * (unsigned short)*(uint32_t*)(dword_5d4594_1308108 + 32);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 68,
+      "text": "extern uint32_t dword_5d4594_1308108;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 354,
+      "text": "dword_5d4594_1308108 = v4;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 385,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308108, 1, (uint8_t*)(dword_5d4594_1307784 + 77));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 633,
+      "text": "v10 = (unsigned short)(*(uint32_t*)(dword_5d4594_1308108 + 32) >> 16);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 634,
+      "text": "v11 = v10 + 32 * *(unsigned short*)(dword_5d4594_1308108 + 32);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 638,
+      "text": "getMemByte(0x5D4594, 1307798 + 3 * (v10 + 32 * *(unsigned short*)(dword_5d4594_1308108 + 32))));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 303,
+      "text": "extern uint32_t dword_5d4594_1308108;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 918,
+      "text": "{0x5D4594, 1308108, 4, \"dword_5d4594_1308108\"},                 // 0x713B60",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308112": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 401,
+      "text": "uint32_t dword_5d4594_1308112 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 19,
+      "text": "extern uint32_t dword_5d4594_1308112;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 167,
+      "text": "v20 = getMemAt(0x5D4594, 1307796 + 3 * ((*(uint32_t*)(dword_5d4594_1308112 + 32) >> 16) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 168,
+      "text": "32 * (unsigned short)*(uint32_t*)(dword_5d4594_1308112 + 32)));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 270,
+      "text": "v12 = getMemAt(0x5D4594, 1307796 + 3 * ((*(uint32_t*)(dword_5d4594_1308112 + 32) >> 16) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 271,
+      "text": "32 * (unsigned short)*(uint32_t*)(dword_5d4594_1308112 + 32)));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 56,
+      "text": "extern uint32_t dword_5d4594_1308112;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 357,
+      "text": "dword_5d4594_1308112 = v5;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 386,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308112, 1, (uint8_t*)(dword_5d4594_1307784 + 80));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 646,
+      "text": "v14 = (unsigned short)(*(uint32_t*)(dword_5d4594_1308112 + 32) >> 16);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 647,
+      "text": "v15 = v14 + 32 * *(unsigned short*)(dword_5d4594_1308112 + 32);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 651,
+      "text": "v15, v13, getMemByte(0x5D4594, 1307798 + 3 * (v14 + 32 * *(unsigned short*)(dword_5d4594_1308112 + 32))));",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 392,
+      "text": "extern uint32_t dword_5d4594_1308112;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 919,
+      "text": "{0x5D4594, 1308112, 4, \"dword_5d4594_1308112\"},                 // 0x713B64",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308116": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 321,
+      "text": "uint32_t dword_5d4594_1308116 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 25,
+      "text": "extern uint32_t dword_5d4594_1308116;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 177,
+      "text": "*(uint8_t*)(dword_5d4594_1307784 + 83) = *(uint32_t*)(dword_5d4594_1308116 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 278,
+      "text": "v25[1219] = *(uint32_t*)(dword_5d4594_1308116 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 64,
+      "text": "extern uint32_t dword_5d4594_1308116;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 360,
+      "text": "dword_5d4594_1308116 = v6;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 387,
+      "text": "*(uint32_t*)(dword_5d4594_1308116 + 32) = *(unsigned char*)(dword_5d4594_1307784 + 83) << 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 691,
+      "text": "v30 = ((unsigned short)(*(uint32_t*)(dword_5d4594_1308116 + 32) >> 16)) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 692,
+      "text": "32 * *(unsigned short*)(dword_5d4594_1308116 + 32);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 312,
+      "text": "extern uint32_t dword_5d4594_1308116;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 920,
+      "text": "{0x5D4594, 1308116, 4, \"dword_5d4594_1308116\"},                 // 0x713B68",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308120": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 309,
+      "text": "uint32_t dword_5d4594_1308120 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 29,
+      "text": "extern uint32_t dword_5d4594_1308120;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 178,
+      "text": "*(uint8_t*)(dword_5d4594_1307784 + 84) = *(uint32_t*)(dword_5d4594_1308120 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 279,
+      "text": "v25[1220] = *(uint32_t*)(dword_5d4594_1308120 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 69,
+      "text": "extern uint32_t dword_5d4594_1308120;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 363,
+      "text": "dword_5d4594_1308120 = v7;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 388,
+      "text": "*(uint32_t*)(dword_5d4594_1308120 + 32) = *(unsigned char*)(dword_5d4594_1307784 + 84) << 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 707,
+      "text": "v36 = ((unsigned short)(*(uint32_t*)(dword_5d4594_1308120 + 32) >> 16)) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 708,
+      "text": "32 * *(unsigned short*)(dword_5d4594_1308120 + 32);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 300,
+      "text": "extern uint32_t dword_5d4594_1308120;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 921,
+      "text": "{0x5D4594, 1308120, 4, \"dword_5d4594_1308120\"},                 // 0x713B6C",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308124": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 278,
+      "text": "uint32_t dword_5d4594_1308124 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 31,
+      "text": "extern uint32_t dword_5d4594_1308124;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 179,
+      "text": "*(uint8_t*)(dword_5d4594_1307784 + 85) = *(uint32_t*)(dword_5d4594_1308124 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 280,
+      "text": "v25[1221] = *(uint32_t*)(dword_5d4594_1308124 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 71,
+      "text": "extern uint32_t dword_5d4594_1308124;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 366,
+      "text": "dword_5d4594_1308124 = v8;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 389,
+      "text": "*(uint32_t*)(dword_5d4594_1308124 + 32) = *(unsigned char*)(dword_5d4594_1307784 + 85) << 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 714,
+      "text": "v39 = ((unsigned short)(*(uint32_t*)(dword_5d4594_1308124 + 32) >> 16)) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 715,
+      "text": "32 * *(unsigned short*)(dword_5d4594_1308124 + 32);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 269,
+      "text": "extern uint32_t dword_5d4594_1308124;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 922,
+      "text": "{0x5D4594, 1308124, 4, \"dword_5d4594_1308124\"},                 // 0x713B70",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308128": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 287,
+      "text": "uint32_t dword_5d4594_1308128 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 30,
+      "text": "extern uint32_t dword_5d4594_1308128;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 180,
+      "text": "*(uint8_t*)(dword_5d4594_1307784 + 86) = *(uint32_t*)(dword_5d4594_1308128 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 281,
+      "text": "v25[1222] = *(uint32_t*)(dword_5d4594_1308128 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 70,
+      "text": "extern uint32_t dword_5d4594_1308128;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 369,
+      "text": "dword_5d4594_1308128 = v9;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 390,
+      "text": "*(uint32_t*)(dword_5d4594_1308128 + 32) = *(unsigned char*)(dword_5d4594_1307784 + 86) << 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 733,
+      "text": "v45 = ((unsigned short)(*(uint32_t*)(dword_5d4594_1308128 + 32) >> 16)) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 734,
+      "text": "32 * *(unsigned short*)(dword_5d4594_1308128 + 32);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 278,
+      "text": "extern uint32_t dword_5d4594_1308128;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 923,
+      "text": "{0x5D4594, 1308128, 4, \"dword_5d4594_1308128\"},                 // 0x713B74",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308132": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 314,
+      "text": "uint32_t dword_5d4594_1308132 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 27,
+      "text": "extern uint32_t dword_5d4594_1308132;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 182,
+      "text": "*(uint8_t*)(dword_5d4594_1307784 + 87) = *(uint32_t*)(dword_5d4594_1308132 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 282,
+      "text": "v25[1223] = *(uint32_t*)(dword_5d4594_1308132 + 32) >> 16;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 67,
+      "text": "extern uint32_t dword_5d4594_1308132;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 372,
+      "text": "dword_5d4594_1308132 = v10;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 392,
+      "text": "*(uint32_t*)(dword_5d4594_1308132 + 32) = result;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 740,
+      "text": "v48 = ((unsigned short)(*(uint32_t*)(dword_5d4594_1308132 + 32) >> 16)) +",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 741,
+      "text": "32 * *(unsigned short*)(dword_5d4594_1308132 + 32);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 305,
+      "text": "extern uint32_t dword_5d4594_1308132;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 924,
+      "text": "{0x5D4594, 1308132, 4, \"dword_5d4594_1308132\"},                 // 0x713B78",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308136": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 461,
+      "text": "uint32_t dword_5d4594_1308136 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 16,
+      "text": "extern uint32_t dword_5d4594_1308136;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 129,
+      "text": "if (*(uint8_t*)(dword_5d4594_1308136 + 4) & 8) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 238,
+      "text": "if (*(uint8_t*)(dword_5d4594_1308136 + 4) & 8) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 49,
+      "text": "extern uint32_t dword_5d4594_1308136;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 374,
+      "text": "dword_5d4594_1308136 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 711);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 668,
+      "text": "if (*(uint8_t*)(dword_5d4594_1308136 + 4) & 8) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 453,
+      "text": "extern uint32_t dword_5d4594_1308136;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 925,
+      "text": "{0x5D4594, 1308136, 4, \"dword_5d4594_1308136\"},                 // 0x713B7C",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308140": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 366,
+      "text": "uint32_t dword_5d4594_1308140 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 22,
+      "text": "extern uint32_t dword_5d4594_1308140;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 141,
+      "text": "if (*(uint8_t*)(dword_5d4594_1308140 + 4) & 8) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 249,
+      "text": "if (*(uint8_t*)(dword_5d4594_1308140 + 4) & 8) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 60,
+      "text": "extern uint32_t dword_5d4594_1308140;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 375,
+      "text": "dword_5d4594_1308140 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 712);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 656,
+      "text": "v17 = dword_5d4594_1308140;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 657,
+      "text": "if (*(uint8_t*)(dword_5d4594_1308140 + 4) & 8) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 357,
+      "text": "extern uint32_t dword_5d4594_1308140;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 926,
+      "text": "{0x5D4594, 1308140, 4, \"dword_5d4594_1308140\"},                 // 0x713B80",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308144": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 358,
+      "text": "uint32_t dword_5d4594_1308144 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 23,
+      "text": "extern uint32_t dword_5d4594_1308144;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 153,
+      "text": "if (*(uint8_t*)(dword_5d4594_1308144 + 4) & 8) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 260,
+      "text": "if (*(uint8_t*)(dword_5d4594_1308144 + 4) & 8) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 61,
+      "text": "extern uint32_t dword_5d4594_1308144;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 376,
+      "text": "dword_5d4594_1308144 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 713);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 631,
+      "text": "v9 = dword_5d4594_1308144;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 632,
+      "text": "if (*(uint8_t*)(dword_5d4594_1308144 + 4) & 8) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 349,
+      "text": "extern uint32_t dword_5d4594_1308144;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 927,
+      "text": "{0x5D4594, 1308144, 4, \"dword_5d4594_1308144\"},                 // 0x713B84",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308148": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 376,
+      "text": "uint32_t dword_5d4594_1308148 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 20,
+      "text": "extern uint32_t dword_5d4594_1308148;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 165,
+      "text": "if (*(uint8_t*)(dword_5d4594_1308148 + 4) & 8) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 269,
+      "text": "if (*(uint8_t*)(dword_5d4594_1308148 + 4) & 8) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 58,
+      "text": "extern uint32_t dword_5d4594_1308148;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 377,
+      "text": "dword_5d4594_1308148 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 714);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 644,
+      "text": "v13 = dword_5d4594_1308148;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 645,
+      "text": "if (*(uint8_t*)(dword_5d4594_1308148 + 4) & 8) {",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 367,
+      "text": "extern uint32_t dword_5d4594_1308148;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 928,
+      "text": "{0x5D4594, 1308148, 4, \"dword_5d4594_1308148\"},                 // 0x713B88",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308152": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 354,
+      "text": "uint32_t dword_5d4594_1308152 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 24,
+      "text": "extern uint32_t dword_5d4594_1308152;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 74,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_1308152, 16414, (int)v6, 0);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 114,
+      "text": "v0 = (wchar2_t*)nox_window_call_field_94(*(int*)&dword_5d4594_1308152, 16413, 0, 0);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 219,
+      "text": "v0 = (wchar2_t*)nox_window_call_field_94(*(int*)&dword_5d4594_1308152, 16413, 0, 0);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 62,
+      "text": "extern uint32_t dword_5d4594_1308152;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 378,
+      "text": "dword_5d4594_1308152 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1308084, 751);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 381,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_1308152, 16414, *(int*)&dword_5d4594_1307784, 0);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 345,
+      "text": "extern uint32_t dword_5d4594_1308152;",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 929,
+      "text": "{0x5D4594, 1308152, 4, \"dword_5d4594_1308152\"},                 // 0x713B8C",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308156": [
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 108,
+      "text": "void* dword_5d4594_1308156 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 685,
+      "text": "v29 = dword_5d4594_1308156;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 686,
+      "text": "LOBYTE(v25) = *(uint8_t*)(i + (uint32_t)dword_5d4594_1308156 + 14);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 687,
+      "text": "LOBYTE(v23) = *(uint8_t*)(i + (uint32_t)dword_5d4594_1308156 + 13);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 688,
+      "text": "LOBYTE(v29) = *(uint8_t*)(i + (uint32_t)dword_5d4594_1308156 + 12);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 697,
+      "text": "nox_draw_setMaterial_4341D0(*(uint32_t*)((uint32_t)dword_5d4594_1308156 + 40), v32);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 576,
+      "text": "extern void* dword_5d4594_1308156;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 1210,
+      "text": "C.dword_5d4594_1308156 = v",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 930,
+      "text": "{0x5D4594, 1308156, 4, \"dword_5d4594_1308156\"},                 // 0x713B90",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308160": [
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 109,
+      "text": "void* dword_5d4594_1308160 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 701,
+      "text": "v35 = dword_5d4594_1308160;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 702,
+      "text": "LOBYTE(v25) = *(uint8_t*)((uint32_t)dword_5d4594_1308160 + j + 14);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 703,
+      "text": "LOBYTE(v23) = *(uint8_t*)((uint32_t)dword_5d4594_1308160 + j + 13);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 704,
+      "text": "LOBYTE(v35) = *(uint8_t*)((uint32_t)dword_5d4594_1308160 + j + 12);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 713,
+      "text": "nox_draw_setMaterial_4341D0(*(uint32_t*)((uint32_t)dword_5d4594_1308160 + 40), v38);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 720,
+      "text": "nox_draw_setMaterial_4341D0(*(uint32_t*)((uint32_t)dword_5d4594_1308160 + 44), v52);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 577,
+      "text": "extern void* dword_5d4594_1308160;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 1213,
+      "text": "C.dword_5d4594_1308160 = v",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 931,
+      "text": "{0x5D4594, 1308160, 4, \"dword_5d4594_1308160\"},                 // 0x713B94",
+      "selected_body": false
+    }
+  ],
+  "dword_5d4594_1308164": [
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 110,
+      "text": "void* dword_5d4594_1308164 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 727,
+      "text": "v44 = dword_5d4594_1308164;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 728,
+      "text": "LOBYTE(v25) = *(uint8_t*)(k + (uint32_t)dword_5d4594_1308164 + 14);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 729,
+      "text": "LOBYTE(v23) = *(uint8_t*)(k + (uint32_t)dword_5d4594_1308164 + 13);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 730,
+      "text": "LOBYTE(v44) = *(uint8_t*)(k + (uint32_t)dword_5d4594_1308164 + 12);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 739,
+      "text": "nox_draw_setMaterial_4341D0(*(uint32_t*)((uint32_t)dword_5d4594_1308164 + 40), v47);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 746,
+      "text": "nox_draw_setMaterial_4341D0(*(uint32_t*)((uint32_t)dword_5d4594_1308164 + 36), v53);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 578,
+      "text": "extern void* dword_5d4594_1308164;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 1216,
+      "text": "C.dword_5d4594_1308164 = v",
+      "selected_body": false
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 932,
+      "text": "{0x5D4594, 1308164, 4, \"dword_5d4594_1308164\"},                 // 0x713B98",
+      "selected_body": false
+    }
+  ],
+  "nox_wnd_xxx_1307732": [
+    {
+      "file": "src/legacy/client__shell__selclass.c",
+      "line": 11,
+      "text": "extern nox_gui_animation* nox_wnd_xxx_1307732;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selclass.c",
+      "line": 40,
+      "text": "nox_wnd_xxx_1307732->field_13 = nox_game_showSelColor_4A5D00;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 104,
+      "text": "nox_gui_animation* nox_wnd_xxx_1307732 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 272,
+      "text": "nox_wnd_xxx_1307732 = result;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 274,
+      "text": "nox_wnd_xxx_1307732->field_0 = 600;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 275,
+      "text": "nox_wnd_xxx_1307732->field_12 = sub_4A4970;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 276,
+      "text": "nox_wnd_xxx_1307732->fnc_done_out = sub_4A49A0;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 297,
+      "text": "nox_wnd_xxx_1307732->state = NOX_GUI_ANIM_OUT;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 307,
+      "text": "v0 = nox_wnd_xxx_1307732->field_13;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 308,
+      "text": "nox_gui_freeAnimation_43C570(nox_wnd_xxx_1307732);",
+      "selected_body": true
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 901,
+      "text": "{0x5D4594, 1307732, 4, \"nox_wnd_xxx_1307732\"},                  // 0x7139E8",
+      "selected_body": false
+    }
+  ],
+  "nox_wnd_xxx_1308092": [
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 32,
+      "text": "extern nox_gui_animation* nox_wnd_xxx_1308092;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 57,
+      "text": "nox_wnd_xxx_1308092 = result;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 59,
+      "text": "nox_wnd_xxx_1308092->field_0 = 700;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 60,
+      "text": "nox_wnd_xxx_1308092->field_12 = sub_4A6890;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 61,
+      "text": "nox_wnd_xxx_1308092->fnc_done_out = sub_4A6C90;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 105,
+      "text": "nox_gui_animation* nox_wnd_xxx_1308092 = 0;",
+      "selected_body": false
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 431,
+      "text": "nox_wnd_xxx_1308092->state = NOX_GUI_ANIM_OUT;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 506,
+      "text": "v0 = nox_wnd_xxx_1308092->field_13;",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 507,
+      "text": "nox_gui_freeAnimation_43C570(nox_wnd_xxx_1308092);",
+      "selected_body": true
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 892,
+      "text": "nox_wnd_xxx_1308092->field_13 = 0;",
+      "selected_body": true
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 914,
+      "text": "{0x5D4594, 1308092, 4, \"nox_wnd_xxx_1308092\"},                  // 0x713B50",
+      "selected_body": false
+    }
+  ]
+}

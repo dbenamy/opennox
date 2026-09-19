@@ -1,0 +1,45 @@
+{
+  "status": "original C production identical to qualified parent",
+  "parent": "6052e5b7",
+  "test_only_new_files": [
+    "src/character_creation_appearance_porttest_test.go",
+    "src/character_creation_class_porttest_test.go",
+    "src/character_creation_construction_porttest_test.go",
+    "src/character_creation_defaults_porttest_test.go",
+    "src/character_creation_events_porttest_test.go",
+    "src/character_creation_files_porttest_test.go",
+    "src/character_creation_lifecycle_porttest_test.go",
+    "src/character_creation_names_porttest_test.go",
+    "src/character_creation_palette_porttest_test.go",
+    "src/character_creation_preview_porttest_test.go",
+    "src/character_creation_quickbar_porttest_test.go",
+    "src/legacy/character_creation_appearance_porttest.go",
+    "src/legacy/character_creation_class_porttest.go",
+    "src/legacy/character_creation_construction_porttest.go",
+    "src/legacy/character_creation_defaults_porttest.go",
+    "src/legacy/character_creation_events_porttest.go",
+    "src/legacy/character_creation_lifecycle_porttest.go",
+    "src/legacy/character_creation_porttest.go",
+    "src/legacy/character_creation_preview_porttest.go",
+    "src/legacy/character_creation_quickbar_porttest.go"
+  ],
+  "parent_production": "build/port-resource-definitions/native-release-production/production/production.json",
+  "parent_binary_hashes": {
+    "opennox": "0044818032db246e5f6bd9923a500f4f285c98500e991bda82e9e83b4bb3f589",
+    "opennox-hd": "82bc4b3487b0da3cdf103910aa97c166e79a0e8fd12bb0221bb1c452503a4719",
+    "opennox-server": "d424aba2bb1f9a40199bdba13a98a8dbaabb5e1e95cbfce058ccb37a121d5019"
+  },
+  "new_headless_scenarios": {
+    "character-creation-c": {
+      "result": "build/baseline/runs/character-creation-c/result.json",
+      "sha256": "5f3b07880c7e23c74c9e0acc7c085cfe1c15d83fe0512ab824441f7f033c1e87",
+      "binary_sha256": "0044818032db246e5f6bd9923a500f4f285c98500e991bda82e9e83b4bb3f589"
+    },
+    "character-creation-c-repeat": {
+      "result": "build/baseline/runs/character-creation-c-repeat/result.json",
+      "sha256": "d22c30622f4fd793ec29ae3167c92c3f5ae5833038148809b5ce48154050e1ea",
+      "binary_sha256": "0044818032db246e5f6bd9923a500f4f285c98500e991bda82e9e83b4bb3f589"
+    }
+  },
+  "native_requirement": "fresh native production/ABI/full-suite/gameplay/save-load and extended character scenario comparison"
+}

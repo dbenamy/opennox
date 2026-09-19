@@ -1,0 +1,98 @@
+[
+  {
+    "label": "character-creation-admission-words",
+    "sha256": "6556110b7ca7eaab61969ef66aa9784d9c29e1a70212f7c0c2642600fddaeab3",
+    "records": 6,
+    "fixture": "src/character_creation_construction_porttest_test.go"
+  },
+  {
+    "label": "character-creation-animation-cleanup",
+    "sha256": "f6b84f79806e4922936852eb4718363032b8b05cda42c1b41cc2112bdabd1e92",
+    "records": 2,
+    "fixture": "src/character_creation_lifecycle_porttest_test.go"
+  },
+  {
+    "label": "character-creation-appearance",
+    "sha256": "42a587e5a5f800883beeb06fb24a64cb8a8935a3d104455310de017c2d5fb010",
+    "records": 288,
+    "fixture": "src/character_creation_appearance_porttest_test.go"
+  },
+  {
+    "label": "character-creation-class-events",
+    "sha256": "0f973e847e3df35b60b4d148bfbaa0c55ab28039788a98a2f4da098596cefdee",
+    "records": 32,
+    "fixture": "src/character_creation_class_porttest_test.go"
+  },
+  {
+    "label": "character-creation-class-shade",
+    "sha256": "090f1637c55b06703bd95696345b66eaf91acce739a16b27f288ae20baff0c8b",
+    "records": 6,
+    "fixture": "src/character_creation_class_porttest_test.go"
+  },
+  {
+    "label": "character-creation-construction-failures",
+    "sha256": "91244c69d14d1b7af0f34867dd4dd59969fc86432a014482f7a74caca61fc31a",
+    "records": 4,
+    "fixture": "src/character_creation_construction_porttest_test.go"
+  },
+  {
+    "label": "character-creation-files",
+    "sha256": "18408533122efd720371bb4999e81fcd60d24456d4f248065c1edb7f78d06055",
+    "records": 42,
+    "fixture": "src/character_creation_files_porttest_test.go"
+  },
+  {
+    "label": "character-creation-initial-appearance",
+    "sha256": "709996138e19f5cb8fb971fb3b87cccd26cf26217bdcaa199364ef50a413d075",
+    "records": 4,
+    "fixture": "src/character_creation_defaults_porttest_test.go"
+  },
+  {
+    "label": "character-creation-names",
+    "sha256": "0d67a9e55b3853feb5e4f7209f32997cb7733da71dcf8b93521104552c0ad463",
+    "records": 18,
+    "fixture": "src/character_creation_names_porttest_test.go"
+  },
+  {
+    "label": "character-creation-palette-events",
+    "sha256": "c9ab688f0a6a3b23c032ffdadc355057dd34c6b47066d73796e28eeceb07c9ee",
+    "records": 32,
+    "fixture": "src/character_creation_events_porttest_test.go"
+  },
+  {
+    "label": "character-creation-palette-match",
+    "sha256": "177ecd3c53ebaf6dfc108c08e410c84cc31a797e5dfde810e8169bf3e47a04fa",
+    "records": 99,
+    "fixture": "src/character_creation_palette_porttest_test.go"
+  },
+  {
+    "label": "character-creation-palette-menu",
+    "sha256": "12bc7a25ca85dcaad6e3dad893a3821811288ff5c6216833f0c5f137e6772225",
+    "records": 24,
+    "fixture": "src/character_creation_palette_porttest_test.go"
+  },
+  {
+    "label": "character-creation-palette-outside",
+    "sha256": "2252743928e0d2856b28410e64af0f94732abe4f9569b75af1382410adc30166",
+    "records": 32,
+    "fixture": "src/character_creation_events_porttest_test.go"
+  },
+  {
+    "label": "character-creation-preview",
+    "sha256": "7e4e4ff4483deb28183c7d6caf95ac408461cf0edbe31d4e90c1c1b5bbacba9c",
+    "records": 96,
+    "fixture": "src/character_creation_preview_porttest_test.go"
+  },
+  {
+    "label": "character-creation-quickbar",
+    "sha256": "953a75e4c3e882a572759feca49cbfca8472ae3a88d853ec3572abd77a802e14",
+    "records": 108,
+    "fixture": "src/character_creation_quickbar_porttest_test.go"
+  },
+  {
+    "label": "character-creation-swatch-pixels",
+    "sha256": "453728fb5ee8e7b81d76343558f5d26cd1e8e6aa313053af1341dbb81c5c6519",
+    "records": 96,
+    "fixture": "src/character_creation_palette_porttest_test.go"
+  }
+]

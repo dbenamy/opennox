@@ -1,0 +1,523 @@
+{
+  "nox_game_showSelClass_4A4840": [
+    {
+      "file": "src/legacy/gui_main_menu.go",
+      "line": 119,
+      "text": "return C.nox_game_showSelClass_4A4840"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 930,
+      "text": "nox_game_showSelClass_4A4840();"
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 88,
+      "text": "return C.nox_game_showSelClass_4A4840() != 0"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 872,
+      "text": "nox_game_showSelClass_4A4840();"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 257,
+      "text": "int nox_game_showSelClass_4A4840() {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 20,
+      "text": "int nox_game_showSelClass_4A4840();"
+    }
+  ],
+  "nox_game_showSelColor_4A5D00": [
+    {
+      "file": "src/legacy/client__shell__selclass.c",
+      "line": 40,
+      "text": "nox_wnd_xxx_1307732->field_13 = nox_game_showSelColor_4A5D00;"
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 91,
+      "text": "return C.nox_game_showSelColor_4A5D00() != 0"
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 38,
+      "text": "int nox_game_showSelColor_4A5D00() {"
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.h",
+      "line": 6,
+      "text": "int nox_game_showSelColor_4A5D00();"
+    }
+  ],
+  "sub_4A4970": [
+    {
+      "file": "src/legacy/client__shell__selclass.c",
+      "line": 39,
+      "text": "sub_4A4970();"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 275,
+      "text": "nox_wnd_xxx_1307732->field_12 = sub_4A4970;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 296,
+      "text": "int sub_4A4970() {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 21,
+      "text": "int sub_4A4970();"
+    }
+  ],
+  "sub_4A49A0": [
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 276,
+      "text": "nox_wnd_xxx_1307732->fnc_done_out = sub_4A49A0;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 304,
+      "text": "int sub_4A49A0() {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 22,
+      "text": "int sub_4A49A0();"
+    }
+  ],
+  "sub_4A49D0": [
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 278,
+      "text": "nox_xxx_wndSetDrawFn_46B340((int)v1, sub_4A49D0);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 280,
+      "text": "nox_xxx_wndSetDrawFn_46B340((int)v2, sub_4A49D0);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 282,
+      "text": "nox_xxx_wndSetDrawFn_46B340((int)v3, sub_4A49D0);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 315,
+      "text": "int sub_4A49D0(int yTop, int a2) {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 23,
+      "text": "int sub_4A49D0(int yTop, int a2);"
+    }
+  ],
+  "sub_4A4A20": [
+    {
+      "file": "src/legacy/client__shell__selclass.h",
+      "line": 6,
+      "text": "int sub_4A4A20(int a1, int a2, int* a3, int a4);"
+    },
+    {
+      "file": "src/legacy/client__shell__selclass.c",
+      "line": 15,
+      "text": "int sub_4A4A20(int a1, int a2, int* a3, int a4) {"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 267,
+      "text": "result = nox_new_window_from_file(\"SelClass.wnd\", sub_4A4A20);"
+    }
+  ],
+  "sub_4A4B70": [
+    {
+      "file": "src/legacy/client__shell__selclass.h",
+      "line": 8,
+      "text": "void* sub_4A4B70(int a1);"
+    },
+    {
+      "file": "src/legacy/client__shell__selclass.c",
+      "line": 37,
+      "text": "sub_4A4B70(v5);"
+    },
+    {
+      "file": "src/legacy/client__shell__selclass.c",
+      "line": 62,
+      "text": "void* sub_4A4B70(int a1) {"
+    }
+  ],
+  "sub_4A5E90": [
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 62,
+      "text": "sub_4A5E90();"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 329,
+      "text": "int sub_4A5E90() {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 26,
+      "text": "int sub_4A5E90();"
+    }
+  ],
+  "sub_4A61E0": [
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 382,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308096, 2, (uint8_t*)(dword_5d4594_1307784 + 71));"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 383,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308100, 1, (uint8_t*)(dword_5d4594_1307784 + 68));"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 384,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308104, 1, (uint8_t*)(dword_5d4594_1307784 + 74));"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 385,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308108, 1, (uint8_t*)(dword_5d4594_1307784 + 77));"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 386,
+      "text": "sub_4A61E0(*(uint32_t**)&dword_5d4594_1308112, 1, (uint8_t*)(dword_5d4594_1307784 + 80));"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 398,
+      "text": "unsigned char* sub_4A61E0(uint32_t* a1, int a2, unsigned char* a3) {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 27,
+      "text": "unsigned char* sub_4A61E0(uint32_t* a1, int a2, unsigned char* a3);"
+    }
+  ],
+  "sub_4A6890": [
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 60,
+      "text": "nox_wnd_xxx_1308092->field_12 = sub_4A6890;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 430,
+      "text": "int sub_4A6890() {"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 891,
+      "text": "sub_4A6890();"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 28,
+      "text": "int sub_4A6890();"
+    }
+  ],
+  "sub_4A68C0": [
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 90,
+      "text": "wchar2_t* sub_4A68C0() {"
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.h",
+      "line": 7,
+      "text": "wchar2_t* sub_4A68C0();"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 434,
+      "text": "sub_4A68C0();"
+    }
+  ],
+  "sub_4A6B50": [
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 120,
+      "text": "if (!sub_4A6B50(*(wchar2_t**)&dword_5d4594_1307784)) {"
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 225,
+      "text": "if (!sub_4A6B50((wchar2_t*)&v25[1224])) {"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 439,
+      "text": "int sub_4A6B50(wchar2_t* a1) {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 29,
+      "text": "int sub_4A6B50(wchar2_t* a1);"
+    }
+  ],
+  "sub_4A6C90": [
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 61,
+      "text": "nox_wnd_xxx_1308092->fnc_done_out = sub_4A6C90;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 503,
+      "text": "int sub_4A6C90() {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 30,
+      "text": "int sub_4A6C90();"
+    }
+  ],
+  "sub_4A6D20": [
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 65,
+      "text": "nox_xxx_wndSetDrawFn_46B340((int)v3, sub_4A6D20);"
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 69,
+      "text": "nox_xxx_wndSetDrawFn_46B340((int)v5, sub_4A6D20);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 526,
+      "text": "int sub_4A6D20(int a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 31,
+      "text": "int sub_4A6D20(int a1, int a2);"
+    }
+  ],
+  "sub_4A6DC0": [
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 83,
+      "text": "nox_xxx_wndSetDrawFn_46B340((int)v7, sub_4A6DC0);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 560,
+      "text": "int sub_4A6DC0(uint32_t* a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 32,
+      "text": "int sub_4A6DC0(uint32_t* a1, int a2);"
+    }
+  ],
+  "sub_4A7270": [
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 79,
+      "text": "nox_xxx_wndSetWindowProc_46B300(*(int*)&dword_5d4594_1308088, sub_4A7270);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 763,
+      "text": "int sub_4A7270(int a1, int a2, unsigned int a3, int a4) {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 33,
+      "text": "int sub_4A7270(int a1, int a2, unsigned int a3, int a4);"
+    }
+  ],
+  "sub_4A72D0": [
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 776,
+      "text": "sub_4A72D0(0xDEADu);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 782,
+      "text": "uint32_t* sub_4A72D0(unsigned short a1) {"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 873,
+      "text": "sub_4A72D0(v6 - 761);"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 34,
+      "text": "uint32_t* sub_4A72D0(unsigned short a1);"
+    }
+  ],
+  "sub_4A7330": [
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 52,
+      "text": "result = nox_new_window_from_file(\"SelColor.wnd\", sub_4A7330);"
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 78,
+      "text": "nox_xxx_wndSetProc_46B2C0(*(int*)&dword_5d4594_1308088, sub_4A7330);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 797,
+      "text": "int sub_4A7330(int a1, int a2, int* a3, unsigned int a4) {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 35,
+      "text": "int sub_4A7330(int a1, int a2, int* a3, unsigned int a4);"
+    }
+  ],
+  "sub_4A7530": [
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 812,
+      "text": "sub_4A7530(2u);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 820,
+      "text": "sub_4A7530(1u);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 829,
+      "text": "sub_4A7530(0);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 907,
+      "text": "uint32_t* sub_4A7530(unsigned short a1) {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 36,
+      "text": "uint32_t* sub_4A7530(unsigned short a1);"
+    }
+  ],
+  "sub_4A7580": [
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 813,
+      "text": "sub_4A7580((unsigned short)a4, v5);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 821,
+      "text": "sub_4A7580((unsigned short)a4, v5);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 830,
+      "text": "sub_4A7580((unsigned short)a4, v5);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 924,
+      "text": "int sub_4A7580(int a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 37,
+      "text": "int sub_4A7580(int a1, int a2);"
+    }
+  ],
+  "sub_4A75C0": [
+    {
+      "file": "src/legacy/client__shell__selcolor.c",
+      "line": 187,
+      "text": "int sub_4A75C0() {"
+    },
+    {
+      "file": "src/legacy/client__shell__selcolor.h",
+      "line": 8,
+      "text": "int sub_4A75C0();"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 882,
+      "text": "if (sub_4A75C0()) {"
+    }
+  ],
+  "sub_4A7A60": [
+    {
+      "file": "src/legacy/gui_main_menu.go",
+      "line": 100,
+      "text": "C.sub_4A7A60(C.int(a1))"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 932,
+      "text": "int sub_4A7A60(int a1) {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 38,
+      "text": "int sub_4A7A60(int a1);"
+    }
+  ],
+  "sub_4A7A70": [
+    {
+      "file": "src/legacy/gui_main_menu.go",
+      "line": 112,
+      "text": "C.sub_4A7A70(C.int(a1))"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 916,
+      "text": "sub_4A7A70(1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 923,
+      "text": "sub_4A7A70(1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 929,
+      "text": "sub_4A7A70(0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 862,
+      "text": "sub_4A7A70(1);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 867,
+      "text": "sub_4A7A70(1);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 871,
+      "text": "sub_4A7A70(0);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 941,
+      "text": "int sub_4A7A70(int a1) {"
+    },
+    {
+      "file": "src/legacy/GAME3.h",
+      "line": 39,
+      "text": "int sub_4A7A70(int a1);"
+    }
+  ]
+}
