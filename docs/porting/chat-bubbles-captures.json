@@ -1,0 +1,78 @@
+{
+  "status": "repeated three-target C captures; frozen qualification pending",
+  "parent": "b16f1a90",
+  "captures": [
+    {
+      "label": "chat-bubble-attachment-visibility",
+      "sha256": "56f4ed39c8e782bd37551fdd619060394e746fc7ffb4ed944bd305b81fca4076",
+      "records": 24,
+      "file": "src/chat_bubbles_attachment_porttest_test.go"
+    },
+    {
+      "label": "chat-bubble-candidate-arrange",
+      "sha256": "42f57ce354f507073c34ed38f4d413e27a63fac7706b94cbdd2e1db418fdde18",
+      "records": 48,
+      "file": "src/chat_bubbles_attachment_porttest_test.go"
+    },
+    {
+      "label": "chat-bubble-create-replace",
+      "sha256": "acd8e05d2eb585e9f2076388a920cd4b60d23b06130f3302274c721288f8efcc",
+      "records": 54,
+      "file": "src/chat_bubbles_lifecycle_porttest_test.go"
+    },
+    {
+      "label": "chat-bubble-empty-drawing",
+      "sha256": "931975f4bcde125d552e7274894ff359085770a9442ef583bc949abc91f7fa05",
+      "records": 1,
+      "file": "src/chat_bubbles_drawing_porttest_test.go"
+    },
+    {
+      "label": "chat-bubble-expiry",
+      "sha256": "e820394c3b135ab1ee3a6dcc0c24daea88aec8cc79390e13f6f8bdf046b00d01",
+      "records": 96,
+      "file": "src/chat_bubbles_layout_porttest_test.go"
+    },
+    {
+      "label": "chat-bubble-hud-placement",
+      "sha256": "5da8c1f3b8929f9910f672c358d2fab277c2c8cb1bb40ff109caa658fc0995c4",
+      "records": 144,
+      "file": "src/chat_bubbles_placement_porttest_test.go"
+    },
+    {
+      "label": "chat-bubble-layout-single",
+      "sha256": "a71c483ce24b72cfdee13fc4e299a7da334a5c25b51b049fc36dcaa7cd733eb9",
+      "records": 30,
+      "file": "src/chat_bubbles_layout_porttest_test.go"
+    },
+    {
+      "label": "chat-bubble-overlap-shift",
+      "sha256": "9aa60d424a458b934e9ce2fd87617c1fe115b0565ee4ae0fb8fb796b099a979d",
+      "records": 57,
+      "file": "src/chat_bubbles_geometry_porttest_test.go"
+    },
+    {
+      "label": "chat-bubble-pixels",
+      "sha256": "4c9ad61cf27bfc2003153eb47c7267749172f559a769a2ab0924a05440d9b3f6",
+      "records": 6,
+      "file": "src/chat_bubbles_layout_porttest_test.go"
+    },
+    {
+      "label": "chat-bubble-player-drawing",
+      "sha256": "695e0ecafe1411dcef50aa3ad388d11ff6164f8097cc452b0c21bca1db0098c0",
+      "records": 24,
+      "file": "src/chat_bubbles_drawing_porttest_test.go"
+    },
+    {
+      "label": "chat-bubble-regions",
+      "sha256": "70dac7866c424a0c8f34142ae8692904768a01714af84b160f4bcf871ebbb79b",
+      "records": 64,
+      "file": "src/chat_bubbles_geometry_porttest_test.go"
+    },
+    {
+      "label": "chat-bubble-remove-append",
+      "sha256": "07be6a642f156cd485e4e6240940dd0d549d8953b7cb64aada53a4db5c397fa5",
+      "records": 4,
+      "file": "src/chat_bubbles_lifecycle_porttest_test.go"
+    }
+  ]
+}

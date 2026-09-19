@@ -1,0 +1,440 @@
+[
+  {
+    "symbol": "sub_48D800",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 7437,
+    "end": 7628,
+    "line": 265,
+    "lines": 8,
+    "references": [
+      {
+        "file": "src/legacy/GAME2_3.h",
+        "line": 19,
+        "text": "int sub_48D800();"
+      },
+      {
+        "file": "src/legacy/gameloop.go",
+        "line": 167,
+        "text": "\tC.sub_48D800()"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 265,
+        "text": "int sub_48D800() {"
+      }
+    ],
+    "calls": [
+      "nox_free_alloc_class",
+      "sub_48D800"
+    ]
+  },
+  {
+    "symbol": "nox_xxx_netCode2ChatBubble_48D850",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 7706,
+    "end": 8013,
+    "line": 275,
+    "lines": 15,
+    "references": [
+      {
+        "file": "src/legacy/network.go",
+        "line": 286,
+        "text": "\treturn int(C.nox_xxx_netCode2ChatBubble_48D850(C.int(a1)))"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 275,
+        "text": "int nox_xxx_netCode2ChatBubble_48D850(int a1) {"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 300,
+        "text": "\tv2 = (wchar2_t*)nox_xxx_netCode2ChatBubble_48D850(*(unsigned short*)(a1 + 1));"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 1015,
+        "text": "\tv1 = nox_xxx_netCode2ChatBubble_48D850(a1);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.h",
+        "line": 20,
+        "text": "int nox_xxx_netCode2ChatBubble_48D850(int a1);"
+      }
+    ],
+    "calls": [
+      "nox_xxx_netCode2ChatBubble_48D850"
+    ]
+  },
+  {
+    "symbol": "nox_xxx_createTextBubble_48D880",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 8091,
+    "end": 9451,
+    "line": 292,
+    "lines": 50,
+    "references": [
+      {
+        "file": "src/legacy/client.go",
+        "line": 12,
+        "text": "void nox_xxx_createTextBubble_48D880(void* a1, wchar2_t* a2);"
+      },
+      {
+        "file": "src/legacy/client.go",
+        "line": 144,
+        "text": "\tC.nox_xxx_createTextBubble_48D880(unsafe.Pointer(&cpck[0]), ctext)"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 292,
+        "text": "void nox_xxx_createTextBubble_48D880(void* a1p, wchar2_t* a2) {"
+      }
+    ],
+    "calls": [
+      "nox_alloc_class_new_obj_zero",
+      "nox_wcscpy",
+      "nox_xxx_createTextBubble_48D880",
+      "nox_xxx_netCode2ChatBubble_48D850"
+    ]
+  },
+  {
+    "symbol": "sub_48D990",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 9529,
+    "end": 14005,
+    "line": 344,
+    "lines": 143,
+    "references": [
+      {
+        "file": "src/legacy/draw.go",
+        "line": 461,
+        "text": "\tC.sub_48D990((*nox_draw_viewport_t)(GetClient().Viewport().C()))"
+      },
+      {
+        "file": "src/legacy/GAME2_3.h",
+        "line": 21,
+        "text": "void sub_48D990(nox_draw_viewport_t* a1);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 344,
+        "text": "void sub_48D990(nox_draw_viewport_t* a1p) {"
+      }
+    ],
+    "calls": [
+      "nox_client_drawAddPoint_49F500",
+      "nox_client_drawLineFromPoints_49E4B0",
+      "nox_client_drawSetColor_434460",
+      "nox_common_playerInfoGetByID_417040",
+      "nox_xxx_drawSetColor_4343E0",
+      "nox_xxx_drawSetTextColor_434390",
+      "nox_xxx_drawStringWrapHL_43FD00",
+      "nox_xxx_getTeamByID_418AB0",
+      "nox_xxx_guiFontHeightMB_43F320",
+      "nox_xxx_materialGetTeamColor_418D50",
+      "nox_xxx_objGetTeamByNetCode_418C80",
+      "sub_437260",
+      "sub_437290",
+      "sub_48D990",
+      "sub_48DCF0"
+    ]
+  },
+  {
+    "symbol": "sub_48DCF0",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 14083,
+    "end": 18144,
+    "line": 489,
+    "lines": 137,
+    "references": [
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 379,
+        "text": "\tsub_48DCF0(a1);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 489,
+        "text": "void sub_48DCF0(uint32_t* a1) {"
+      },
+      {
+        "file": "src/legacy/GAME2_3.h",
+        "line": 22,
+        "text": "void sub_48DCF0(uint32_t* a1);"
+      }
+    ],
+    "calls": [
+      "nox_alloc_class_free_obj_first",
+      "nox_common_gameFlags_check_40A5C0",
+      "nox_xxx_drawGetStringSize_43F840",
+      "nox_xxx_guiFontHeightMB_43F320",
+      "nox_xxx_netClearHighBit_578B30",
+      "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+      "nox_xxx_netSpriteByCodeStatic_45A720",
+      "nox_xxx_netTestHighBit_578B70",
+      "sub_48DCF0",
+      "sub_48E000",
+      "sub_48E240"
+    ]
+  },
+  {
+    "symbol": "sub_48E000",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 18316,
+    "end": 20600,
+    "line": 630,
+    "lines": 86,
+    "references": [
+      {
+        "file": "src/legacy/GAME2_3.h",
+        "line": 23,
+        "text": "bool sub_48E000(int4* a1, uint32_t* a2);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 593,
+        "text": "\t\t\t\tsub_48E000(&a1a, (uint32_t*)(v2 + 664));"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 630,
+        "text": "bool sub_48E000(int4* a1, uint32_t* a2) {"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 911,
+        "text": "\tsub_48E000(&a1a, &a2a);"
+      }
+    ],
+    "calls": [
+      "nox_client_getRenderGUI",
+      "nox_xxx_pointInRect_4281F0",
+      "sub_467C80",
+      "sub_48E000",
+      "sub_4C3260"
+    ]
+  },
+  {
+    "symbol": "sub_48E240",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 21007,
+    "end": 23347,
+    "line": 725,
+    "lines": 127,
+    "references": [
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 622,
+        "text": "\t\tsub_48E240((int)v3, (uint32_t*)v2);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 725,
+        "text": "char sub_48E240(int a1, uint32_t* a2) {"
+      },
+      {
+        "file": "src/legacy/GAME2_3.h",
+        "line": 24,
+        "text": "char sub_48E240(int a1, uint32_t* a2);"
+      }
+    ],
+    "calls": [
+      "sub_48E240",
+      "sub_48E480",
+      "sub_48E530",
+      "sub_48E5C0",
+      "sub_48E6A0"
+    ]
+  },
+  {
+    "symbol": "sub_48E480",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 23425,
+    "end": 23849,
+    "line": 854,
+    "lines": 16,
+    "references": [
+      {
+        "file": "src/legacy/GAME2_3.h",
+        "line": 25,
+        "text": "int sub_48E480(uint32_t* a1, uint32_t* a2);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 753,
+        "text": "\t\t\t\t\tv2 = sub_48E480(a2, v5);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 854,
+        "text": "int sub_48E480(uint32_t* a1, uint32_t* a2) {"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 926,
+        "text": "\t\t\t\tv9 = sub_48E480(a1, v6);"
+      }
+    ],
+    "calls": [
+      "nox_xxx_guiFontHeightMB_43F320",
+      "sub_48E480"
+    ]
+  },
+  {
+    "symbol": "sub_48E530",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 23927,
+    "end": 24259,
+    "line": 872,
+    "lines": 19,
+    "references": [
+      {
+        "file": "src/legacy/GAME2_3.h",
+        "line": 26,
+        "text": "int sub_48E530(int a1, int a2);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 768,
+        "text": "\t\t\t\tswitch (sub_48E530(v3[162] + v3[168] / 2, v3[163] + v3[169] / 2)) {"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 872,
+        "text": "int sub_48E530(int a1, int a2) {"
+      }
+    ],
+    "calls": [
+      "sub_48E530"
+    ]
+  },
+  {
+    "symbol": "sub_48E5C0",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 24337,
+    "end": 25260,
+    "line": 893,
+    "lines": 50,
+    "references": [
+      {
+        "file": "src/legacy/GAME2_3.h",
+        "line": 27,
+        "text": "int sub_48E5C0(uint32_t* a1, int a2, int a3);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 814,
+        "text": "\t\t\t\t\t\tv2 = sub_48E5C0(v3, v12, v13);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 834,
+        "text": "\t\t\t\t\t\t\tv2 = sub_48E5C0(v3, v12, v13);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 893,
+        "text": "int sub_48E5C0(uint32_t* a1, int a2, int a3) {"
+      }
+    ],
+    "calls": [
+      "nox_xxx_guiFontHeightMB_43F320",
+      "sub_48E000",
+      "sub_48E480",
+      "sub_48E5C0"
+    ]
+  },
+  {
+    "symbol": "sub_48E6A0",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 25338,
+    "end": 26675,
+    "line": 945,
+    "lines": 63,
+    "references": [
+      {
+        "file": "src/legacy/GAME2_3.h",
+        "line": 28,
+        "text": "int* sub_48E6A0(char a1, uint32_t* a2, uint32_t* a3, int* a4, int* a5);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 813,
+        "text": "\t\t\t\t\t\tsub_48E6A0(v14, v3, v5, &v12, &v13);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 833,
+        "text": "\t\t\t\t\t\t\tsub_48E6A0(v14, v3, v5, &v12, &v13);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 945,
+        "text": "int* sub_48E6A0(char a1, uint32_t* a2, uint32_t* a3, int* a4, int* a5) {"
+      }
+    ],
+    "calls": [
+      "nox_xxx_guiFontHeightMB_43F320",
+      "sub_48E6A0"
+    ]
+  },
+  {
+    "symbol": "sub_48E8E0",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 26753,
+    "end": 27311,
+    "line": 1010,
+    "lines": 22,
+    "references": [
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line": 2540,
+        "text": "\t\t\t\tsub_48E8E0(*(unsigned short*)(data + 1));"
+      },
+      {
+        "file": "src/legacy/GAME2_3.h",
+        "line": 29,
+        "text": "void sub_48E8E0(int a1);"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 1010,
+        "text": "void sub_48E8E0(int a1) {"
+      }
+    ],
+    "calls": [
+      "nox_alloc_class_free_obj_first",
+      "nox_xxx_netCode2ChatBubble_48D850",
+      "sub_48E8E0"
+    ]
+  },
+  {
+    "symbol": "sub_48E940",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 27389,
+    "end": 27514,
+    "line": 1034,
+    "lines": 4,
+    "references": [
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line": 2538,
+        "text": "\t\t\t\tsub_48E940();"
+      },
+      {
+        "file": "src/legacy/GAME2_3.h",
+        "line": 30,
+        "text": "void sub_48E940();"
+      },
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 1032,
+        "text": "void sub_48E940() {"
+      }
+    ],
+    "calls": [
+      "nox_alloc_class_free_all",
+      "sub_48E940"
+    ]
+  }
+]

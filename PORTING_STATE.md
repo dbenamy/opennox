@@ -2,7 +2,7 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 26k lines** — **26,145 physical lines in 67 production
+**Rough C remaining: about 26k lines** — **26,147 physical lines in 67 production
 `.c` files**, zero reference C. Latest conversion: **−693** from the qualified
 player-death C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
@@ -30,11 +30,24 @@ ByInd now preserves C behavior. No frozen expectation changed. Current C is
 All build/test/cleanup sessions are joined; source editable.
 
 All player-death installers/freezing scripts and copied drafts/manifests are
-consumed. Actual source wins; do not replay ignored mutation scripts. Next candidate:
-client speech-bubble layout/drawing and possibly related dialogue operations.
-A provisional 21-body /878-line bubble audit is at
-build/port-player-death/next-bubble-audit.json. Audit its live graph and scope before
-starting fixtures. No next-batch source changes or tests are installed yet.
+consumed. Actual source wins; do not replay ignored mutation scripts.
+
+Next batch is active: 13 connected speech-bubble lifecycle/layout/drawing C bodies
+/740 corrected body lines. Original C failed the explicit tail-removal invariant;
+a two-line tail correction passes independent contracts. Current production C is
+26,147 (+2 prerequisite), with no speech-bubble conversion yet.
+
+All three targets pass 12 focused roots /563 entries. The 12 captures /552 records
+match across identical source and are now frozen. Geometry/HUD contracts preserve
+the real cap height and inclusive C-facing rectangle boundary. Pixel tests use
+real drawing, player names, team colors and multiple/clipped/hidden/empty bubbles.
+Static passes. Focused C evidence: build/port-chat-bubbles/c-focused-palette-*.
+
+Next: qualify the frozen C baseline against 151 affected roots in three targets
+and fresh production builds/ABI/gameplay/save-load. Then convert this graph.
+No C translation or final C qualification yet. All chat copied fixture drafts and
+the freeze.py installer are consumed; actual source wins. See
+[CHAT_BUBBLES.md](docs/porting/CHAT_BUBBLES.md).
 
 Disk: verified player-death cleanup removed twelve old binaries (584,677,176 bytes)
 and 72 compressed binaries (1,648,354,499 bytes). C and native scenario copies each

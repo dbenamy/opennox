@@ -1023,6 +1023,8 @@ void sub_48E8E0(int a1) {
 		v3 = *(uint32_t*)(v1 + 684);
 		if (v3) {
 			*(uint32_t*)(v3 + 688) = *(uint32_t*)(v1 + 688);
+		} else {
+			dword_5d4594_1197372 = *(uint32_t*)(v1 + 688);
 		}
 		nox_alloc_class_free_obj_first(*(unsigned int**)&nox_alloc_chat_1197364, (uint64_t*)v1);
 	}
