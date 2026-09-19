@@ -8,7 +8,36 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — player-file conversion qualified, ready to commit
+## Current — book-award C baseline preparation
+
+Player-file conversion **a8015048** is committed and pushed. The next connected
+batch selects26 C bodies /629 body lines: guide catalog loading/lookups, saved
+enchantment enumeration, ability-name lookup, spell/guide/ability awards and
+reports, their item-use callbacks and two associated client messages. Selection
+and literal caller occurrences are recorded in docs/porting/book-awards-*.json.
+Three report helpers have no outside callers but are live through selected award
+functions. Production is unchanged; no new captures or expectations are frozen.
+Fifteen new captures /6,763 records are frozen after exact repeated agreement
+across default/server/highres. The105-root affected suites pass with81 artifacts /
+12,248 records agreeing and identical source fingerprints. Both reliable and
+direct-send messages are captured; exact independent rejection-message checks
+pass. Guide loading/partial failure, item consumption, sounds, client messages,
+shop closure and all17 quest single-level IDs are covered too.
+
+Final frozen C qualification passes all105 roots on each target:81 artifacts /
+12,248 records agree and all2,640 source fingerprints match. Static-c-final passes.
+**All sessions are joined; no builds/tests running.** Production source remains
+identical to a8015048; its production evidence is reused. C is19,482 /65 /zero
+reference. Next: commit/push this qualified baseline, then install/complete the Go
+translation against frozen expectations. The catalog draft exists only at
+build/port-book-awards/native-catalog-draft.go and is NOT yet installed. All
+other drafts/freezing actions are CONSUMED; never replay them.
+
+The spell-family code caps/folds the original ID rather than the family member.
+New cases explicitly preserve this legacy behavior for later review. No gameplay
+correction is made in this batch.
+
+## Qualified parent — player-file conversion
 
 C baseline **583caebb** is pushed. All18 selected bodies are Go, with six retained
 C interfaces and twelve private interfaces retired. The owned server section table
@@ -27,7 +56,7 @@ client writer C export is retained for character creation. No frozen expectation
 or gameplay/file-format behavior changed. See [PLAYER_FILES.md](docs/porting/PLAYER_FILES.md)
 and player-files-native-qualification.json for evidence and review limits.
 
-Next: commit/push this qualified conversion, then select the next connected batch.
+The qualified conversion is pushed as a8015048; continue the book-award baseline.
 Local evidence: build/port-player-files/native-final-{default,server,highres,production},
 native-fifth and static-native-qualified.log. All drafts, installers and freeze.py
 are **CONSUMED**; never replay them. Actual source and frozen expectations govern.

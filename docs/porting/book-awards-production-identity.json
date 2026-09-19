@@ -1,0 +1,25 @@
+{
+  "parent": "a8015048",
+  "production_identical": true,
+  "changed_source_files": [],
+  "added_source_files": [
+    "src/book_awards_catalog_porttest_test.go",
+    "src/book_awards_families_porttest_test.go",
+    "src/book_awards_gates_porttest_test.go",
+    "src/book_awards_loader_porttest_test.go",
+    "src/book_awards_messages_porttest_test.go",
+    "src/book_awards_spell_boundaries_porttest_test.go",
+    "src/book_awards_use_porttest_test.go",
+    "src/client/book_awards_porttest.go",
+    "src/legacy/book_awards_porttest.go",
+    "src/legacy/book_awards_shop_porttest.go"
+  ],
+  "condition": "Every added/changed src file is excluded by the porttest build constraint; no existing production source changed.",
+  "reused_qualification": "docs/porting/player-files-native-qualification.json",
+  "reused_production": "build/port-player-files/native-final-production/production/production.json",
+  "binary_hashes_reverified": {
+    "opennox": "2cc4bee90aac2c5deee9eb39216f4ae1365de9da923c601680bd140cc0cec1ef",
+    "opennox-hd": "3103b00681aa839492ff388f966849b0cad0f950f661c9405710b89a2a8411a9",
+    "opennox-server": "1b44adc11b3ab83d9a0cea7a1c79b18bc442e6608ab51322221f60d705ad8442"
+  }
+}

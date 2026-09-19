@@ -23,6 +23,10 @@ Latest qualified production C is **19,482 physical lines in65 files**, zero refe
 fresh production binaries and headless gameplay/save-load qualify. See
 [PORTING_STATE.md](PORTING_STATE.md).
 
+Spell, ability and field-guide awards are the next batch:26 bodies /629 C body
+lines plus one private counter. Its C captures are frozen and all-target baseline
+qualification passes. See [BOOK_AWARDS.md](docs/porting/BOOK_AWARDS.md).
+
 ## Goal and target
 
 Replace OpenNox's remaining C implementation with Go while preserving observable

@@ -1,0 +1,444 @@
+{
+  "status": "literal occurrences outside selected bodies; declarations included for manual review",
+  "roots": {
+    "sub_424CB0": [
+      {
+        "file": "src/legacy/creature_xfer_stream.go",
+        "line_after_candidate_removal": 74,
+        "text": "count := r.byte(byte(C.sub_424CB0(C.int(uintptr(u.CObj())))))"
+      },
+      {
+        "file": "src/legacy/player_files_enchantment.go",
+        "line_after_candidate_removal": 84,
+        "text": "r.byte(byte(C.sub_424CB0(inventoryInt(u))))"
+      },
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 89,
+        "text": "char sub_424CB0(int a1);"
+      }
+    ],
+    "sub_424D00": [
+      {
+        "file": "src/legacy/creature_xfer_stream.go",
+        "line_after_candidate_removal": 98,
+        "text": "for i := int(C.sub_424D00()); i != -1; i = int(C.sub_424D20(C.int(i))) {"
+      },
+      {
+        "file": "src/legacy/player_files_enchantment.go",
+        "line_after_candidate_removal": 85,
+        "text": "for id := int32(C.sub_424D00()); id != -1; id = int32(C.sub_424D20(C.int(id))) {"
+      },
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 90,
+        "text": "int sub_424D00();"
+      }
+    ],
+    "sub_424D20": [
+      {
+        "file": "src/legacy/creature_xfer_stream.go",
+        "line_after_candidate_removal": 98,
+        "text": "for i := int(C.sub_424D00()); i != -1; i = int(C.sub_424D20(C.int(i))) {"
+      },
+      {
+        "file": "src/legacy/player_files_enchantment.go",
+        "line_after_candidate_removal": 85,
+        "text": "for id := int32(C.sub_424D00()); id != -1; id = int32(C.sub_424D20(C.int(id))) {"
+      },
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 91,
+        "text": "int sub_424D20(int a1);"
+      }
+    ],
+    "nox_xxx_abilityNameToN_424D80": [
+      {
+        "file": "src/spells_abil.go",
+        "line_after_candidate_removal": 119,
+        "text": "func (a *serverAbilities) nox_xxx_abilityNameToN_424D80(name string) server.Ability {"
+      },
+      {
+        "file": "src/spells_abil.go",
+        "line_after_candidate_removal": 429,
+        "text": "abil := a.nox_xxx_abilityNameToN_424D80(id)"
+      },
+      {
+        "file": "src/script_ns_spell.go",
+        "line_after_candidate_removal": 127,
+        "text": "a := s.s.abilities.nox_xxx_abilityNameToN_424D80(string(name))"
+      },
+      {
+        "file": "src/xfer.go",
+        "line_after_candidate_removal": 82,
+        "text": "v4 = int(s.abilities.nox_xxx_abilityNameToN_424D80(name))"
+      },
+      {
+        "file": "src/legacy/item_xfer_world.go",
+        "line_after_candidate_removal": 135,
+        "text": "id = int(C.nox_xxx_abilityNameToN_424D80((*C.char)(unsafe.Pointer(&name[0]))))"
+      },
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 92,
+        "text": "int nox_xxx_abilityNameToN_424D80(const char* a1);"
+      },
+      {
+        "file": "src/legacy/gui_quickbar_save.go",
+        "line_after_candidate_removal": 37,
+        "text": "s.ID = uint32(C.nox_xxx_abilityNameToN_424D80((*C.char)(unsafe.Pointer(p))))"
+      },
+      {
+        "file": "src/legacy/item_xfer_rewards.go",
+        "line_after_candidate_removal": 106,
+        "text": "*p = byte(C.nox_xxx_abilityNameToN_424D80((*C.char)(unsafe.Pointer(&buf[0]))))"
+      },
+      {
+        "file": "src/legacy/player_files_sections.go",
+        "line_after_candidate_removal": 215,
+        "text": "aid := C.nox_xxx_abilityNameToN_424D80(internCStr(name))"
+      }
+    ],
+    "nox_xxx_guide_427010": [
+      {
+        "file": "src/legacy/server__network__sdecode.c",
+        "line_after_candidate_removal": 307,
+        "text": "v88[3] = nox_xxx_guide_427010(*(const char**)(v61 + 736));"
+      },
+      {
+        "file": "src/legacy/item_xfer_world.go",
+        "line_after_candidate_removal": 137,
+        "text": "id = int(C.nox_xxx_guide_427010((*C.char)(unsafe.Pointer(&name[0]))))"
+      },
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 129,
+        "text": "int nox_xxx_guide_427010(const char* a1);"
+      },
+      {
+        "file": "src/legacy/player_files_sections.go",
+        "line_after_candidate_removal": 151,
+        "text": "id := uint32(C.nox_xxx_guide_427010(internCStr(name)))"
+      },
+      {
+        "file": "src/legacy/gui_summon_render.go",
+        "line_after_candidate_removal": 24,
+        "text": "return uint32(C.sub_427430(C.nox_xxx_guide_427010(name)))"
+      },
+      {
+        "file": "src/legacy/player_controls_messages.go",
+        "line_after_candidate_removal": 60,
+        "text": "id := C.nox_xxx_guide_427010(name)"
+      },
+      {
+        "file": "src/legacy/quest_eligibility.go",
+        "line_after_candidate_removal": 63,
+        "text": "return questEligibilityListed(207796, uint32(C.nox_xxx_guide_427010((*C.char)(u.UseData.Ptr))))"
+      }
+    ],
+    "nox_xxx_guideNameByN_427230": [
+      {
+        "file": "src/legacy/item_xfer_world.go",
+        "line_after_candidate_removal": 157,
+        "text": "name = GoString(C.nox_xxx_guideNameByN_427230(C.int(id)))"
+      },
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 130,
+        "text": "char* nox_xxx_guideNameByN_427230(int a1);"
+      },
+      {
+        "file": "src/legacy/player_files_sections.go",
+        "line_after_candidate_removal": 167,
+        "text": "playerFileName(r, GoString(C.nox_xxx_guideNameByN_427230(C.int(i))))"
+      },
+      {
+        "file": "src/legacy/spell_effects_summon.go",
+        "line_after_candidate_removal": 77,
+        "text": "typ := GetServer().S().Types.IndByID(GoString(C.nox_xxx_guideNameByN_427230(C.int(guide))))"
+      }
+    ],
+    "nox_xxx_guiCreatureGetName_427240": [
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 3084,
+        "text": "v350 = nox_xxx_guiCreatureGetName_427240(*(unsigned char*)(data + 2));"
+      },
+      {
+        "file": "src/legacy/client__network__cdecode.c",
+        "line_after_candidate_removal": 3089,
+        "text": "v351 = nox_xxx_guiCreatureGetName_427240(*(unsigned char*)(data + 2));"
+      },
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 131,
+        "text": "int nox_xxx_guiCreatureGetName_427240(int a1);"
+      },
+      {
+        "file": "src/legacy/gui_book_state.go",
+        "line_after_candidate_removal": 147,
+        "text": "return (*wchar2_t)(unsafe.Pointer(uintptr(uint32(C.nox_xxx_guiCreatureGetName_427240(C.int(id))))))"
+      },
+      {
+        "file": "src/legacy/client_ui_tooltip.go",
+        "line_after_candidate_removal": 83,
+        "text": "title = (*uint16)(unsafe.Pointer(uintptr(uint32(C.nox_xxx_guiCreatureGetName_427240(C.int(metadata))))))"
+      },
+      {
+        "file": "src/legacy/gui_book_render.go",
+        "line_after_candidate_removal": 34,
+        "text": "return GoWStringP(unsafe.Pointer(uintptr(uint32(C.nox_xxx_guiCreatureGetName_427240(C.int(id))))))"
+      }
+    ],
+    "nox_xxx_creatureIsCharmableByTT_4272B0": [
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 132,
+        "text": "int nox_xxx_creatureIsCharmableByTT_4272B0(int a1);"
+      },
+      {
+        "file": "src/legacy/spell_effects_summon.go",
+        "line_after_candidate_removal": 153,
+        "text": "guide := int32(C.nox_xxx_creatureIsCharmableByTT_4272B0(C.int(target.TypeInd)))"
+      },
+      {
+        "file": "src/legacy/spell_effects_summon.go",
+        "line_after_candidate_removal": 211,
+        "text": "guide := int(C.nox_xxx_creatureIsCharmableByTT_4272B0(C.int(u.TypeInd)))"
+      }
+    ],
+    "nox_xxx_guideGetDescById_4272E0": [
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 133,
+        "text": "int nox_xxx_guideGetDescById_4272E0(int a1);"
+      },
+      {
+        "file": "src/legacy/gui_book_render.go",
+        "line_after_candidate_removal": 140,
+        "text": "raw := C.nox_xxx_guideGetDescById_4272E0(C.int(id))"
+      }
+    ],
+    "nox_xxx_bookGetFirstCreMB_427300": [
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 134,
+        "text": "int nox_xxx_bookGetFirstCreMB_427300();"
+      },
+      {
+        "file": "src/legacy/gui_book_state.go",
+        "line_after_candidate_removal": 240,
+        "text": "for id := C.nox_xxx_bookGetFirstCreMB_427300(); id != 0; id = C.nox_xxx_bookGetNextCre_427320(id) {"
+      }
+    ],
+    "nox_xxx_bookGetNextCre_427320": [
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 135,
+        "text": "int nox_xxx_bookGetNextCre_427320(int a1);"
+      },
+      {
+        "file": "src/legacy/gui_book_state.go",
+        "line_after_candidate_removal": 240,
+        "text": "for id := C.nox_xxx_bookGetFirstCreMB_427300(); id != 0; id = C.nox_xxx_bookGetNextCre_427320(id) {"
+      }
+    ],
+    "nox_xxx_bookGetCreatureImg_427400": [
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 136,
+        "text": "int nox_xxx_bookGetCreatureImg_427400(int a1);"
+      },
+      {
+        "file": "src/legacy/gui_book_render.go",
+        "line_after_candidate_removal": 139,
+        "text": "bookDrawImage(uint32(C.nox_xxx_bookGetCreatureImg_427400(C.int(id))), image.Pt((108-imageWidth)/2+pos.X+24, y+dy+textSize.Y+2))"
+      }
+    ],
+    "sub_427430": [
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 137,
+        "text": "int sub_427430(int a1);"
+      },
+      {
+        "file": "src/legacy/gui_summon_render.go",
+        "line_after_candidate_removal": 24,
+        "text": "return uint32(C.sub_427430(C.nox_xxx_guide_427010(name)))"
+      }
+    ],
+    "nox_xxx_guideGetUnitSize_427460": [
+      {
+        "file": "src/spell_summon.go",
+        "line_after_candidate_removal": 23,
+        "text": "sz := nox_xxx_guideGetUnitSize_427460(ind)"
+      },
+      {
+        "file": "src/spell_summon.go",
+        "line_after_candidate_removal": 27,
+        "text": "func nox_xxx_guideGetUnitSize_427460(ind int) int {"
+      },
+      {
+        "file": "src/legacy/GAME1_1.h",
+        "line_after_candidate_removal": 138,
+        "text": "unsigned char nox_xxx_guideGetUnitSize_427460(int a1);"
+      },
+      {
+        "file": "src/legacy/gui_book_render.go",
+        "line_after_candidate_removal": 120,
+        "text": "size := int(C.nox_xxx_guideGetUnitSize_427460(C.int(id)))"
+      },
+      {
+        "file": "src/legacy/spell_effects_summon.go",
+        "line_after_candidate_removal": 90,
+        "text": "switch C.nox_xxx_guideGetUnitSize_427460(C.int(guide)) {"
+      },
+      {
+        "file": "src/legacy/spell_effects_summon.go",
+        "line_after_candidate_removal": 169,
+        "text": "size := int32(C.nox_xxx_guideGetUnitSize_427460(C.int(guide)))"
+      }
+    ],
+    "nox_xxx_loadGuides_427070": [
+      {
+        "file": "src/game.go",
+        "line_after_candidate_removal": 534,
+        "text": "return errors.New(\"nox_xxx_loadGuides_427070 failed\")"
+      },
+      {
+        "file": "src/legacy/game.go",
+        "line_after_candidate_removal": 44,
+        "text": "int nox_xxx_loadGuides_427070();"
+      },
+      {
+        "file": "src/legacy/game.go",
+        "line_after_candidate_removal": 380,
+        "text": "return int(C.nox_xxx_loadGuides_427070())"
+      }
+    ],
+    "nox_xxx_netAbilityReport_4D8060": [],
+    "nox_xxx_abilGetSuccess_4FB960_ability": [
+      {
+        "file": "src/legacy/server__ability__ability.h",
+        "line_after_candidate_removal": 6,
+        "text": "void nox_xxx_abilGetSuccess_4FB960_ability(int a1);"
+      },
+      {
+        "file": "src/legacy/client__network__inform.c",
+        "line_after_candidate_removal": 96,
+        "text": "nox_xxx_abilGetSuccess_4FB960_ability(*(uint32_t*)(a1 + 2));"
+      }
+    ],
+    "nox_xxx_abilityRewardServ_4FB9C0_ability": [
+      {
+        "file": "src/legacy/server__ability__ability.h",
+        "line_after_candidate_removal": 7,
+        "text": "int nox_xxx_abilityRewardServ_4FB9C0_ability(int a1, int a2, int a3);"
+      },
+      {
+        "file": "src/legacy/player_controls_stats.go",
+        "line_after_candidate_removal": 36,
+        "text": "C.nox_xxx_abilityRewardServ_4FB9C0_ability(inventoryInt(u), C.int(ability), C.int(notify))"
+      },
+      {
+        "file": "src/legacy/player_files_sections.go",
+        "line_after_candidate_removal": 216,
+        "text": "C.nox_xxx_abilityRewardServ_4FB9C0_ability(inventoryInt(u), aid, 0)"
+      }
+    ],
+    "nox_xxx_netReportGuideAward_4D8000": [],
+    "nox_xxx_awardBeastGuide_4FAE80_magic_plyrgide": [
+      {
+        "file": "src/legacy/player_files_sections.go",
+        "line_after_candidate_removal": 155,
+        "text": "C.nox_xxx_awardBeastGuide_4FAE80_magic_plyrgide(inventoryInt(u), C.int(id), 0)"
+      },
+      {
+        "file": "src/legacy/server__magic__plyrgide.h",
+        "line_after_candidate_removal": 6,
+        "text": "int nox_xxx_awardBeastGuide_4FAE80_magic_plyrgide(int a1, int a2, int a3);"
+      }
+    ],
+    "nox_xxx_netSendSpellAward_4D7F90": [],
+    "nox_xxx_abilGetError_4FB0B0_magic_plyrspel": [
+      {
+        "file": "src/legacy/server__magic__plyrspel.h",
+        "line_after_candidate_removal": 6,
+        "text": "void nox_xxx_abilGetError_4FB0B0_magic_plyrspel(int a1);"
+      },
+      {
+        "file": "src/legacy/client__network__inform.c",
+        "line_after_candidate_removal": 86,
+        "text": "nox_xxx_abilGetError_4FB0B0_magic_plyrspel(*(uint32_t*)(a1 + 2));"
+      }
+    ],
+    "nox_xxx_spellGrantToPlayer_4FB550": [
+      {
+        "file": "src/legacy/spells.go",
+        "line_after_candidate_removal": 256,
+        "text": "return int(C.nox_xxx_spellGrantToPlayer_4FB550(asObjectC(a1), C.int(a2), C.int(a3), C.int(a4), C.int(a5)))"
+      },
+      {
+        "file": "src/legacy/server__magic__plyrspel.h",
+        "line_after_candidate_removal": 8,
+        "text": "int nox_xxx_spellGrantToPlayer_4FB550(nox_object_t* a1, int a2, int a3, int a4, int a5);"
+      },
+      {
+        "file": "src/legacy/script_ns_spell.go",
+        "line_after_candidate_removal": 6,
+        "text": "int nox_xxx_spellGrantToPlayer_4FB550(nox_object_t* a1, int a2, int a3, int a4, int a5);"
+      }
+    ],
+    "sub_53F930": [
+      {
+        "file": "src/legacy/GAME4_3.h",
+        "line_after_candidate_removal": 191,
+        "text": "int sub_53F930(int a1, int a2);"
+      },
+      {
+        "file": "src/legacy/object_use.go",
+        "line_after_candidate_removal": 53,
+        "text": "server.RegisterObjectUseC(\"FieldGuideUse\", C.sub_53F930, unsafe.Sizeof(server.FieldGuideUseData{}))"
+      },
+      {
+        "file": "src/legacy/object_use.go",
+        "line_after_candidate_removal": 125,
+        "text": "return C.sub_53F930"
+      }
+    ],
+    "nox_xxx_useSpellReward_53F9E0": [
+      {
+        "file": "src/legacy/GAME4_3.h",
+        "line_after_candidate_removal": 192,
+        "text": "int nox_xxx_useSpellReward_53F9E0(int a1, int a2);"
+      },
+      {
+        "file": "src/legacy/object_use.go",
+        "line_after_candidate_removal": 51,
+        "text": "server.RegisterObjectUseC(\"SpellRewardUse\", C.nox_xxx_useSpellReward_53F9E0, unsafe.Sizeof(server.SpellRewardUseData{}))"
+      },
+      {
+        "file": "src/legacy/object_use.go",
+        "line_after_candidate_removal": 109,
+        "text": "return C.nox_xxx_useSpellReward_53F9E0"
+      }
+    ],
+    "nox_xxx_useAbilityReward_53FAE0": [
+      {
+        "file": "src/legacy/GAME4_3.h",
+        "line_after_candidate_removal": 193,
+        "text": "int nox_xxx_useAbilityReward_53FAE0(int a1, int a2);"
+      },
+      {
+        "file": "src/legacy/object_use.go",
+        "line_after_candidate_removal": 52,
+        "text": "server.RegisterObjectUseC(\"AbilityRewardUse\", C.nox_xxx_useAbilityReward_53FAE0, unsafe.Sizeof(server.AbilityRewardUseData{}))"
+      },
+      {
+        "file": "src/legacy/object_use.go",
+        "line_after_candidate_removal": 113,
+        "text": "return C.nox_xxx_useAbilityReward_53FAE0"
+      }
+    ]
+  }
+}

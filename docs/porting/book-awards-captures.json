@@ -1,0 +1,101 @@
+{
+  "status": "frozen and qualified C baseline",
+  "parent": "a8015048",
+  "repeats": {
+    "default": "c-observed-default",
+    "server": "c-observed-server",
+    "highres": "c-observed-highres"
+  },
+  "captures": [
+    {
+      "label": "book-awards-ability-guide-gates",
+      "sha256": "1a3f6f6bea2dfe9e7576058a8f2e9c77f0a3eeea3fd8b8940ee3bf4813a43aee",
+      "records": 140,
+      "file": "src/book_awards_gates_porttest_test.go"
+    },
+    {
+      "label": "book-awards-client-messages",
+      "sha256": "7887f0dc5c68830813a51897ff64bfae0078add1736f404c6def4efe4e49bb10",
+      "records": 42,
+      "file": "src/book_awards_messages_porttest_test.go"
+    },
+    {
+      "label": "book-awards-enchant-count-gates",
+      "sha256": "34696b525798a612cf158b3af3bb1ad4ea4c6b5b883da56c601373d2eab49ac3",
+      "records": 3,
+      "file": "src/book_awards_catalog_porttest_test.go"
+    },
+    {
+      "label": "book-awards-enchant-enumeration",
+      "sha256": "147ba5b3916727d0829b3e2e8fc18136af8acc708c38d7522e5097b33abfe582",
+      "records": 190,
+      "file": "src/book_awards_catalog_porttest_test.go"
+    },
+    {
+      "label": "book-awards-guide-catalog",
+      "sha256": "9aa02736c9568b5d391ba099e358969c96d8aa7a6e6e40f7070c8892b83ac576",
+      "records": 1120,
+      "file": "src/book_awards_catalog_porttest_test.go"
+    },
+    {
+      "label": "book-awards-guide-loader",
+      "sha256": "a81fad93f689996661ea885cef1f3200d8e8f1f90d7416cd905de18f072e4716",
+      "records": 8,
+      "file": "src/book_awards_loader_porttest_test.go"
+    },
+    {
+      "label": "book-awards-item-use",
+      "sha256": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f",
+      "records": 576,
+      "file": "src/book_awards_use_porttest_test.go"
+    },
+    {
+      "label": "book-awards-name-lookup",
+      "sha256": "b4ea2fb4c67750f8f81a0b22dbf94f06b42e7f824db604e61af545797e81847e",
+      "records": 77,
+      "file": "src/book_awards_catalog_porttest_test.go"
+    },
+    {
+      "label": "book-awards-notifications",
+      "sha256": "4bf2890ec127bf24d27a049029c865a2273d1d1da644d692903a5ffd80a8f22f",
+      "records": 144,
+      "file": "src/book_awards_families_porttest_test.go"
+    },
+    {
+      "label": "book-awards-quest-single-level",
+      "sha256": "b263803b962140d736d45963ca32bdd3ad92aa492a9d11c15e0758c8dc0f9d36",
+      "records": 544,
+      "file": "src/book_awards_spell_boundaries_porttest_test.go"
+    },
+    {
+      "label": "book-awards-reports",
+      "sha256": "bee7c31f90aa97f5454f2be51ee6ea2629bd9f4de1fc0f7e65619e3b64febd13",
+      "records": 3024,
+      "file": "src/book_awards_gates_porttest_test.go"
+    },
+    {
+      "label": "book-awards-shop-closure",
+      "sha256": "8b1a99658f3b7d10a968b7f1a208298c1b8a6d02c5f2049ea59e40dafd84c2d2",
+      "records": 9,
+      "file": "src/book_awards_messages_porttest_test.go"
+    },
+    {
+      "label": "book-awards-spell-families",
+      "sha256": "59287c41d176682d7f0889b2b43d795d25ab5f931349f3371e38f0941a803ac0",
+      "records": 360,
+      "file": "src/book_awards_families_porttest_test.go"
+    },
+    {
+      "label": "book-awards-spell-gates",
+      "sha256": "805d5b23953e73421d91fee801c8d3159cbc1bbe2135a4ba1e41b6b16d63b841",
+      "records": 486,
+      "file": "src/book_awards_gates_porttest_test.go"
+    },
+    {
+      "label": "book-awards-spell-notification-gates",
+      "sha256": "e7a22b1cdc1b1b3277bcd211e402b1ee2aaef6aaa607c97e6cee62232df16dca",
+      "records": 40,
+      "file": "src/book_awards_spell_boundaries_porttest_test.go"
+    }
+  ]
+}

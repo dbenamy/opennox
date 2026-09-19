@@ -1,0 +1,49 @@
+{
+  "status": "reviewed plan; original C implementations still active",
+  "retained": [
+    "nox_xxx_guide_427010",
+    "nox_xxx_guiCreatureGetName_427240",
+    "nox_xxx_abilGetSuccess_4FB960_ability",
+    "nox_xxx_abilGetError_4FB0B0_magic_plyrspel",
+    "sub_53F930",
+    "nox_xxx_useSpellReward_53F9E0",
+    "nox_xxx_useAbilityReward_53FAE0"
+  ],
+  "retired": [
+    "nox_xxx_abilityNameToN_424D80",
+    "nox_xxx_abilityRewardServ_4FB9C0_ability",
+    "nox_xxx_awardBeastGuide_4FAE80_magic_plyrgide",
+    "nox_xxx_bookGetCreatureImg_427400",
+    "nox_xxx_bookGetFirstCreMB_427300",
+    "nox_xxx_bookGetNextCre_427320",
+    "nox_xxx_creatureIsCharmableByTT_4272B0",
+    "nox_xxx_guideGetDescById_4272E0",
+    "nox_xxx_guideGetUnitSize_427460",
+    "nox_xxx_guideNameByN_427230",
+    "nox_xxx_loadGuides_427070",
+    "nox_xxx_netAbilityReport_4D8060",
+    "nox_xxx_netReportGuideAward_4D8000",
+    "nox_xxx_netSendSpellAward_4D7F90",
+    "nox_xxx_spellGrantToPlayer_4FB550",
+    "sub_424CB0",
+    "sub_424D00",
+    "sub_424D20",
+    "sub_427430"
+  ],
+  "owned_global": {
+    "name": "dword_587000_66116",
+    "initial": 29,
+    "interpretation": "signed int32 enchantment count",
+    "outside_production_users": []
+  },
+  "internal_only_live_helpers": [
+    "nox_xxx_netAbilityReport_4D8060",
+    "nox_xxx_netReportGuideAward_4D8000",
+    "nox_xxx_netSendSpellAward_4D7F90"
+  ],
+  "notes": [
+    "Four literal C caller roots plus three registered item-use C callbacks require exports.",
+    "Move remaining Go callers to native helpers and remove private C declarations.",
+    "Update existing player-file enchantment owner to follow the Go count when the C global retires."
+  ]
+}

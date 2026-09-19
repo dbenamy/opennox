@@ -1,0 +1,210 @@
+[
+  {
+    "symbol": "sub_424CB0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 18326,
+    "end": 18692,
+    "line": 766,
+    "lines": 20
+  },
+  {
+    "symbol": "sub_424D00",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 18770,
+    "end": 18938,
+    "line": 788,
+    "lines": 10
+  },
+  {
+    "symbol": "sub_424D20",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 19016,
+    "end": 19377,
+    "line": 800,
+    "lines": 15
+  },
+  {
+    "symbol": "nox_xxx_abilityNameToN_424D80",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 19455,
+    "end": 19867,
+    "line": 817,
+    "lines": 21
+  },
+  {
+    "symbol": "nox_xxx_guide_427010",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 22821,
+    "end": 23098,
+    "line": 955,
+    "lines": 15
+  },
+  {
+    "symbol": "nox_xxx_guideNameByN_427230",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 23176,
+    "end": 23273,
+    "line": 972,
+    "lines": 1
+  },
+  {
+    "symbol": "nox_xxx_guiCreatureGetName_427240",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 23351,
+    "end": 23589,
+    "line": 975,
+    "lines": 10
+  },
+  {
+    "symbol": "nox_xxx_creatureIsCharmableByTT_4272B0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 23667,
+    "end": 23986,
+    "line": 987,
+    "lines": 15
+  },
+  {
+    "symbol": "nox_xxx_guideGetDescById_4272E0",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 24064,
+    "end": 24161,
+    "line": 1004,
+    "lines": 1
+  },
+  {
+    "symbol": "nox_xxx_bookGetFirstCreMB_427300",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 24239,
+    "end": 24522,
+    "line": 1007,
+    "lines": 15
+  },
+  {
+    "symbol": "nox_xxx_bookGetNextCre_427320",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 24600,
+    "end": 24941,
+    "line": 1024,
+    "lines": 18
+  },
+  {
+    "symbol": "nox_xxx_bookGetCreatureImg_427400",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 25019,
+    "end": 25214,
+    "line": 1044,
+    "lines": 10
+  },
+  {
+    "symbol": "sub_427430",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 25292,
+    "end": 25464,
+    "line": 1056,
+    "lines": 10
+  },
+  {
+    "symbol": "nox_xxx_guideGetUnitSize_427460",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 25542,
+    "end": 25646,
+    "line": 1068,
+    "lines": 1
+  },
+  {
+    "symbol": "nox_xxx_loadGuides_427070",
+    "file": "src/legacy/common__magic__comguide.c",
+    "start": 145,
+    "end": 1884,
+    "line": 6,
+    "lines": 64
+  },
+  {
+    "symbol": "nox_xxx_netAbilityReport_4D8060",
+    "file": "src/legacy/server__ability__ability.c",
+    "start": 284,
+    "end": 739,
+    "line": 13,
+    "lines": 17
+  },
+  {
+    "symbol": "nox_xxx_abilGetSuccess_4FB960_ability",
+    "file": "src/legacy/server__ability__ability.c",
+    "start": 817,
+    "end": 1077,
+    "line": 32,
+    "lines": 7
+  },
+  {
+    "symbol": "nox_xxx_abilityRewardServ_4FB9C0_ability",
+    "file": "src/legacy/server__ability__ability.c",
+    "start": 1155,
+    "end": 2567,
+    "line": 41,
+    "lines": 48
+  },
+  {
+    "symbol": "nox_xxx_netReportGuideAward_4D8000",
+    "file": "src/legacy/server__magic__plyrgide.c",
+    "start": 229,
+    "end": 651,
+    "line": 10,
+    "lines": 17
+  },
+  {
+    "symbol": "nox_xxx_awardBeastGuide_4FAE80_magic_plyrgide",
+    "file": "src/legacy/server__magic__plyrgide.c",
+    "start": 729,
+    "end": 2866,
+    "line": 29,
+    "lines": 77
+  },
+  {
+    "symbol": "nox_xxx_netSendSpellAward_4D7F90",
+    "file": "src/legacy/server__magic__plyrspel.c",
+    "start": 396,
+    "end": 884,
+    "line": 17,
+    "lines": 18
+  },
+  {
+    "symbol": "nox_xxx_abilGetError_4FB0B0_magic_plyrspel",
+    "file": "src/legacy/server__magic__plyrspel.c",
+    "start": 962,
+    "end": 1226,
+    "line": 37,
+    "lines": 7
+  },
+  {
+    "symbol": "nox_xxx_spellGrantToPlayer_4FB550",
+    "file": "src/legacy/server__magic__plyrspel.c",
+    "start": 1304,
+    "end": 5298,
+    "line": 46,
+    "lines": 124
+  },
+  {
+    "symbol": "sub_53F930",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 12021,
+    "end": 12734,
+    "line": 466,
+    "lines": 24
+  },
+  {
+    "symbol": "nox_xxx_useSpellReward_53F9E0",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 12812,
+    "end": 13885,
+    "line": 492,
+    "lines": 35
+  },
+  {
+    "symbol": "nox_xxx_useAbilityReward_53FAE0",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 13963,
+    "end": 14794,
+    "line": 529,
+    "lines": 29
+  }
+]
