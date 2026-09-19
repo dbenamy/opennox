@@ -1,4 +1,4 @@
-# Client combat overlays — C baseline in progress
+# Client combat overlays — qualified C baseline
 
 Qualified parent: **f588409c**, native speech bubbles. Production C remains
 **25,368 lines /67 files /zero reference**. No conversion in this batch yet.
@@ -74,3 +74,14 @@ Removed 131 older regenerable Go compiler artifacts with all builds joined,
 reclaiming 6,444,559,234 bytes. removed-stale-go-cache.json records the paths and
 reason. Go regenerates these on demand. Original assets/archive, source,
 production binaries and captures remain. Removal is consumed.
+
+## C qualification
+
+Recovery checkpoint **83600c2e** is pushed. The frozen affected corpus passes
+176 roots /2,771 entries on default/highres and175 /2,770 on server (the existing
+client-only occlusion exclusion). All84 captures /18,691 records match across
+targets, including19 focused captures /707 records. Static checks, three fresh
+production binaries/ABI, the exact known full-suite result, gameplay and explicit
+save/load pass. See combat-overlays-c-qualification.json for source identity and
+artifact paths. All sessions are joined. The native draft and installer are
+prepared under build/port-combat-overlays; neither is installed yet.

@@ -42,11 +42,13 @@ caller contracts pass. The sprite fixture needed explicit draw-data initializati
 alloc.New does not copy its argument. All 19 focused groups /707 records pass,
 and default/server/highres captures match with identical source. Goldens are frozen.
 
-All repeat/static sessions are joined; static checks pass. Broader
-176-root selection and fresh production qualification remain. The freezer and
-all copied fixture drafts are consumed. Native draft combat_overlays.go exists
-only under build/port-combat-overlays/native-draft; do not install before C
-qualification. See [COMBAT_OVERLAYS.md](docs/porting/COMBAT_OVERLAYS.md).
+Recovery checkpoint **83600c2e** is pushed. The C baseline now qualifies: affected
+default/highres176 roots and server175; all84 captures /18,691 records match.
+Static, three fresh production binaries/ABI, exact known full-suite failures,
+gameplay and explicit save/load pass with identical source. All sessions joined.
+See combat-overlays-c-qualification.json. The freezer and fixture drafts are
+consumed. Native drafts and install-native.py are prepared but not installed;
+install only after recording this qualified baseline.
 
 Additional disk cleanup removed 131 older regenerable Go compiler artifacts,
 reclaiming 6,444,559,234 bytes with no builds running. Removal is consumed;
