@@ -1,0 +1,38 @@
+{
+  "status": "original C production identical to qualified parent",
+  "parent": "d8133587",
+  "test_only_new_files": [
+    "src/legacy/server_browser_collection_porttest.go",
+    "src/legacy/server_browser_porttest.go",
+    "src/legacy/server_browser_state_porttest.go",
+    "src/server_browser_advertisement_porttest_test.go",
+    "src/server_browser_collection_porttest_test.go",
+    "src/server_browser_details_porttest_test.go",
+    "src/server_browser_geometry_porttest_test.go",
+    "src/server_browser_map_porttest_test.go",
+    "src/server_browser_popup_porttest_test.go",
+    "src/server_browser_resort_porttest_test.go",
+    "src/server_browser_rows_porttest_test.go",
+    "src/server_browser_state_porttest_test.go",
+    "src/server_browser_timers_porttest_test.go"
+  ],
+  "parent_production": "build/port-character-creation/native-reviewed-production/production/production.json",
+  "parent_binary_hashes": {
+    "opennox": "3684989a4b35604bb8f162d5e261c0d948202a74b857e12d43d077eea881b6cb",
+    "opennox-hd": "f3e1f3586d2af4eff0d6b84de07cb405ef67c750ce7f9f26fa8153cd9cc40f98",
+    "opennox-server": "354da740c5545bf8e8b66796c63900fd8121812c68b8dacf0546d9a526e95c4e"
+  },
+  "new_headless_scenarios": {
+    "server-browser-c-initial": {
+      "result": "build/baseline/runs/server-browser-c-initial/result.json",
+      "sha256": "81b3a918fc80829454a1a8d0d4c7a43d968d9be40731ba21f46ba62cc53f4443",
+      "binary_sha256": "3684989a4b35604bb8f162d5e261c0d948202a74b857e12d43d077eea881b6cb"
+    },
+    "server-browser-c-repeat": {
+      "result": "build/baseline/runs/server-browser-c-repeat/result.json",
+      "sha256": "4ea7f0d9738092568986f104e90f48c4723a028905b413e0109cd8befe76805e",
+      "binary_sha256": "3684989a4b35604bb8f162d5e261c0d948202a74b857e12d43d077eea881b6cb"
+    }
+  },
+  "native_requirement": "fresh native production/ABI/full-suite/gameplay/save-load and isolated browser scenario comparison"
+}

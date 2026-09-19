@@ -26,9 +26,11 @@ roots pass on three targets with exact C captures. Fresh production binaries,
 known-suite comparison and headless gameplay/save-load qualify. See
 [PORTING_STATE.md](PORTING_STATE.md).
 
-Next candidate: server-browser UI and map/list selection, initially 21 connected
-bodies /1,174 C body lines. Audit the deferred old configuration callback table's
-actual consumers before deciding whether those setters are reachable.
+The server-browser C baseline is now qualified:65 selected bodies /2,067 lines,
+190 affected roots on all three targets,18 new captures /72,402 records, plus two
+matching isolated headless runs. Production is unchanged. Next is the connected
+Go conversion; see [SERVER_BROWSER.md](docs/porting/SERVER_BROWSER.md). The old
+configuration callback table remains a separate reachability audit.
 
 ## Goal and target
 

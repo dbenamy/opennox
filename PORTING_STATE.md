@@ -8,7 +8,43 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — character-creation Go conversion qualified
+## Current — server-browser original C baseline qualified
+
+Qualified character-creation parent **d8133587** is committed/pushed. The new
+browser baseline is qualified and ready to commit; native source is unchanged.
+Selected65 bodies /2,067 lines:64 reachable routines plus one nine-line orphan.
+Plan7 retained exports,58 retired selected interfaces,34 C owners moved; retain
+2 shared connection flags. See [SERVER_BROWSER.md](docs/porting/SERVER_BROWSER.md)
+and [conversion plan](docs/porting/server-browser-plan.md).
+
+All190 directly affected roots pass on default/server/highres without skips.
+All142 captures /100,275 records match across targets;18 new browser captures
+/72,402 records were independently repeated and frozen. All2,685 source
+fingerprints agree. Static-c-final passes. Production source and all3 parent
+binary hashes are unchanged/reverified. Isolated browser scenario capture/repeat
+pass with6 exact screens:open,sort,close,reopen,host class selection.
+
+All sessions joined:qualified default39416/server36544/highres82262; latest
+static command completed synchronously. No builds/tests/scenarios running.
+Final evidence:build/port-server-browser/c-qualified-{default,server,highres},
+static-c-final.log, tracked C qualification and production-identity reports.
+Freeze.py, qualification generators and all copied fixture drafts are CONSUMED;
+do not replay installers/freezers or regenerate expected hashes.
+
+Next:commit/push this baseline, then implement the native browser as one connected
+batch. Preserve original C output, including unsigned radius arithmetic, four-region
+fallback, signed-short high-port lookup, libc IPv4 forms and unconditional highres
+host-description version. Own selected records across re-sort; original C leaks
+old nodes. Numeric construction notifications and the100-entry proximity popup
+boundary now have independent contracts. Keep12 old config callbacks deferred.
+Retire the previously deferred unused character initializer C adapter and empty
+selclass header with native changes, retaining the active Go initializer hook.
+
+Disk:about4.4GiB free. Completed browser asset copies reclaimed1,112,777,500 bytes;
+audit8570/apply90667 joined, helper CONSUMED except restoration. Keep manifests,
+screens/logs, original assets/archive, captures and binaries.
+
+## Qualified parent — character-creation Go conversion qualified
 
 C baseline **dd4debb6** is committed/pushed. All 23 selected bodies are Go;
 16 private interfaces and 27 named C owners retire, and two C files are removed.
@@ -38,9 +74,9 @@ Disk: old cache cleanup reclaimed 4,924,575,701 bytes from 18,704 checked old
 entries. Three completed native scenario copies reclaimed another 1,669,136,451 bytes;
 audit11424/apply65743 joined and are CONSUMED. About 5.7 GiB free;
 keep restoration manifests/helper, captures, saves, assets/archive and binaries.
-Next commit/push this qualified conversion, then begin the server-browser baseline.
-Read-only selection/callers and plan are under build/port-server-browser: 21 bodies
-/1,174 lines. Audit the old configuration callback table before translating it.
+Conversion **d8133587** is committed/pushed; the next baseline has started.
+The initial21-body browser candidate has since expanded to65 bodies /2,067 lines;
+see the current checkpoint and tracked server-browser plan above.
 The now-unused sub_4A5E90_A C adapter (implementation already Go) and empty
 selclass header can retire with that next source batch; retain the active Go hook.
 
@@ -1556,7 +1592,7 @@ separate and deferred. Name helper/test drafts exist only under build, NOT insta
 or run. Original36-body selection remains as provenance. No next-batch source edits.
 
 <!-- next-candidate -->
-Read-only next candidate: build/port-server-browser/{selection-draft,callers-draft}.json
-and plan-draft.md, 21 bodies /1,174 body lines. No next-batch source installed.
+Historical initial server-browser candidate:21 bodies /1,174 lines. Superseded
+by the current65-body baseline and tracked plan; do not resume the initial scope.
 Review the apparently unconsumed old configuration callback table and disabled
 online branches before deciding reachability; coordinate getter has live callers.

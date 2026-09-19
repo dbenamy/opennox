@@ -1,0 +1,110 @@
+[
+  {
+    "label": "server-browser-address-formatting",
+    "sha256": "83fe9df285956bee14e1d664665b665222aee8fb741094abd9db75a8e647a623",
+    "records": 25,
+    "fixture": "src/server_browser_state_porttest_test.go"
+  },
+  {
+    "label": "server-browser-collection",
+    "sha256": "83c721cd211500d5bc8b586fdc192ccd2ec96052d7fae124f70b73a798f18bb0",
+    "records": 70,
+    "fixture": "src/server_browser_collection_porttest_test.go"
+  },
+  {
+    "label": "server-browser-details",
+    "sha256": "7e50692b5c088e67d7f8e04e5988ea28bef7a028f72126efdafeeaebdc6ed741",
+    "records": 192,
+    "fixture": "src/server_browser_details_porttest_test.go"
+  },
+  {
+    "label": "server-browser-host-description",
+    "sha256": "173636c317bef2a11ab205a50ccd52181952dfbc65aaf9b4b084a0bb530faf74",
+    "records": 48,
+    "fixture": "src/server_browser_advertisement_porttest_test.go"
+  },
+  {
+    "label": "server-browser-lan-rows",
+    "sha256": "80f3bb8361995c6540ce3b09d291438433592014853abe88a1082f4800113630",
+    "records": 864,
+    "fixture": "src/server_browser_rows_porttest_test.go"
+  },
+  {
+    "label": "server-browser-map-hit",
+    "sha256": "1edf2217bb2f7a85446a91b97e4b85af2ea43e10861ef5a5ab1055b402adf04d",
+    "records": 4732,
+    "fixture": "src/server_browser_geometry_porttest_test.go"
+  },
+  {
+    "label": "server-browser-map-list",
+    "sha256": "9b1dc57391bc90f8d356f84d8f397a9eae3f0230f90d000a535fc071252fed68",
+    "records": 35,
+    "fixture": "src/server_browser_geometry_porttest_test.go"
+  },
+  {
+    "label": "server-browser-map-markers",
+    "sha256": "cb06c5c8ad309b364b0f0d1cc28f3737bc5a2688d6609c440e7cee8f29b726ba",
+    "records": 280,
+    "fixture": "src/server_browser_map_porttest_test.go"
+  },
+  {
+    "label": "server-browser-mode-names",
+    "sha256": "8d9eaaff7082ea232196f4ebfe730c643bf75d3070c6d875e0a37ca486f14295",
+    "records": 65536,
+    "fixture": "src/server_browser_geometry_porttest_test.go"
+  },
+  {
+    "label": "server-browser-name-width",
+    "sha256": "840800b220f259e61e4d6f9c4e893fa43800bbbcbd8b6e04d4d97b0731a9821e",
+    "records": 24,
+    "fixture": "src/server_browser_rows_porttest_test.go"
+  },
+  {
+    "label": "server-browser-popup-clamp",
+    "sha256": "1c2ff85279dd3a9c8a979e8ad2d5e82a9acdd2df7ab50eb217ec6b280e178260",
+    "records": 210,
+    "fixture": "src/server_browser_geometry_porttest_test.go"
+  },
+  {
+    "label": "server-browser-proximity-popup",
+    "sha256": "b2879bab13cb61613d89de00fd656c54683507e4d8a7c799e5addf0de13364f8",
+    "records": 8,
+    "fixture": "src/server_browser_popup_porttest_test.go"
+  },
+  {
+    "label": "server-browser-refresh-gates",
+    "sha256": "b0a9da6be4b3bf0edced07a776421d3e62a83ac954cb6f945bf0d138e192d6a8",
+    "records": 8,
+    "fixture": "src/server_browser_timers_porttest_test.go"
+  },
+  {
+    "label": "server-browser-resort",
+    "sha256": "66311dd1593b90d9818319d28a55f53385dbe218e7dcf1937884d3a879bd25a9",
+    "records": 10,
+    "fixture": "src/server_browser_resort_porttest_test.go"
+  },
+  {
+    "label": "server-browser-selected-endpoint",
+    "sha256": "cd479701a8db191cf882b8216bfe888c763bbd09542bead8de93955e2ea2ecff",
+    "records": 240,
+    "fixture": "src/server_browser_state_porttest_test.go"
+  },
+  {
+    "label": "server-browser-sort-buttons",
+    "sha256": "120969dcd7bc15721779a06438dbf30618ee225b6cb324070b16ffe5074a62a1",
+    "records": 96,
+    "fixture": "src/server_browser_state_porttest_test.go"
+  },
+  {
+    "label": "server-browser-state-words",
+    "sha256": "ba62d2f4c7d3587d4fc0d9bb0f92103864f1884b7a24deadd8acab48526916cf",
+    "records": 10,
+    "fixture": "src/server_browser_state_porttest_test.go"
+  },
+  {
+    "label": "server-browser-timers",
+    "sha256": "5dc27892376e936abcc8b6f23149c34de9b143fb20614295294400e0fe25dd07",
+    "records": 14,
+    "fixture": "src/server_browser_timers_porttest_test.go"
+  }
+]

@@ -1,0 +1,557 @@
+{
+  "dword_587000_87408": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 163,
+        "text": "uint32_t dword_587000_87408 = 0x1;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 642,
+        "text": "return int(C.dword_587000_87408)"
+      }
+    ]
+  },
+  "dword_587000_87412": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 35,
+        "text": "uint32_t dword_587000_87412 = 0xffffffff;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 636,
+        "text": "return int(C.dword_587000_87412)"
+      }
+    ]
+  },
+  "dword_5d4594_1305788": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 322,
+        "text": "uint32_t dword_5d4594_1305788 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "dword_5d4594_1307716": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 101,
+        "text": "uint32_t dword_5d4594_1307716 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "dword_5d4594_1307720": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 241,
+        "text": "uint32_t dword_5d4594_1307720 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "dword_5d4594_528252": {
+    "outside_c": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line": 267,
+        "text": "dword_5d4594_528252 = 0;"
+      },
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line": 278,
+        "text": "result = dword_5d4594_528252;"
+      },
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line": 279,
+        "text": "if (dword_5d4594_528252) {"
+      },
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line": 300,
+        "text": "if (dword_5d4594_528252 != 1 && dword_5d4594_528256 != 1) {"
+      },
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line": 305,
+        "text": "dword_5d4594_528252 = 1;"
+      },
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 152,
+        "text": "uint32_t dword_5d4594_528252 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 657,
+        "text": "return int(C.dword_5d4594_528252)"
+      }
+    ]
+  },
+  "dword_5d4594_528256": {
+    "outside_c": [
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line": 268,
+        "text": "dword_5d4594_528256 = 0;"
+      },
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line": 280,
+        "text": "result = dword_5d4594_528256;"
+      },
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line": 281,
+        "text": "if (!dword_5d4594_528256) {"
+      },
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line": 286,
+        "text": "dword_5d4594_528256 = 1;"
+      },
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line": 300,
+        "text": "if (dword_5d4594_528252 != 1 && dword_5d4594_528256 != 1) {"
+      },
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line": 306,
+        "text": "dword_5d4594_528256 = 0;"
+      },
+      {
+        "file": "src/legacy/GAME1_1.c",
+        "line": 318,
+        "text": "dword_5d4594_528256 = 0;"
+      },
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 93,
+        "text": "uint32_t dword_5d4594_528256 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 795,
+        "text": "return int(C.dword_5d4594_528256)"
+      }
+    ]
+  },
+  "dword_5d4594_814548": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 305,
+        "text": "uint32_t dword_5d4594_814548 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/network.go",
+        "line": 152,
+        "text": "C.dword_5d4594_814548 = C.uint(v)"
+      }
+    ]
+  },
+  "dword_5d4594_814624": {
+    "outside_c": [
+      {
+        "file": "src/legacy/GAME1_2.c",
+        "line": 126,
+        "text": "void* dword_5d4594_814624 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 747,
+        "text": "return C.dword_5d4594_814624"
+      }
+    ]
+  },
+  "dword_5d4594_814984": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 57,
+        "text": "uint32_t dword_5d4594_814984 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 651,
+        "text": "return AsWindowP(C.dword_5d4594_814984)"
+      }
+    ]
+  },
+  "dword_5d4594_814988": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 164,
+        "text": "uint32_t dword_5d4594_814988 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "dword_5d4594_814992": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 300,
+        "text": "uint32_t dword_5d4594_814992 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "dword_5d4594_814996": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 198,
+        "text": "uint32_t dword_5d4594_814996 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 648,
+        "text": "return AsWindowP(C.dword_5d4594_814996)"
+      }
+    ]
+  },
+  "dword_5d4594_815000": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 28,
+        "text": "uint32_t dword_5d4594_815000 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 639,
+        "text": "return AsWindowP(C.dword_5d4594_815000)"
+      }
+    ]
+  },
+  "dword_5d4594_815004": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 8,
+        "text": "nox_window* dword_5d4594_815004 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 940,
+        "text": "return asWindow(C.dword_5d4594_815004)"
+      }
+    ]
+  },
+  "dword_5d4594_815016": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 54,
+        "text": "uint32_t dword_5d4594_815016 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "dword_5d4594_815020": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 71,
+        "text": "uint32_t dword_5d4594_815020 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "dword_5d4594_815024": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 69,
+        "text": "uint32_t dword_5d4594_815024 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "dword_5d4594_815028": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 66,
+        "text": "uint32_t dword_5d4594_815028 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "dword_5d4594_815032": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 73,
+        "text": "uint32_t dword_5d4594_815032 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "dword_5d4594_815044": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 110,
+        "text": "uint32_t dword_5d4594_815044 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 633,
+        "text": "return int(C.dword_5d4594_815044)"
+      }
+    ]
+  },
+  "dword_5d4594_815052": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 420,
+        "text": "uint32_t dword_5d4594_815052 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 626,
+        "text": "return uint32(C.dword_5d4594_815052)"
+      }
+    ]
+  },
+  "dword_5d4594_815056": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 281,
+        "text": "uint32_t dword_5d4594_815056 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 993,
+        "text": "C.dword_5d4594_815056 = C.uint(v)"
+      }
+    ]
+  },
+  "dword_5d4594_815096": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 426,
+        "text": "uint32_t dword_5d4594_815096 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "dword_5d4594_815100": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 400,
+        "text": "uint32_t dword_5d4594_815100 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "dword_5d4594_815104": {
+    "outside_c": [
+      {
+        "file": "src/legacy/client__shell__noxworld.c",
+        "line": 57,
+        "text": "int dword_5d4594_815104 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 981,
+        "text": "C.dword_5d4594_815104 = C.int(v)"
+      }
+    ]
+  },
+  "nox_client_connError_814552": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 282,
+        "text": "uint32_t nox_client_connError_814552 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 990,
+        "text": "C.nox_client_connError_814552 = C.uint(v)"
+      }
+    ]
+  },
+  "nox_game_createOrJoin_815048": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 43,
+        "text": "uint32_t nox_game_createOrJoin_815048 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 645,
+        "text": "return int(C.nox_game_createOrJoin_815048)"
+      },
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 996,
+        "text": "C.nox_game_createOrJoin_815048 = C.uint(v)"
+      }
+    ]
+  },
+  "nox_gui_wol_servers_list": {
+    "outside_c": [
+      {
+        "file": "src/legacy/GAME2_3.c",
+        "line": 67,
+        "text": "nox_list_item_t nox_gui_wol_servers_list = {0};"
+      }
+    ],
+    "go_owners": []
+  },
+  "nox_wnd_xxx_815040": {
+    "outside_c": [
+      {
+        "file": "src/legacy/client__shell__noxworld.c",
+        "line": 58,
+        "text": "nox_gui_animation* nox_wnd_xxx_815040 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "nox_wol_server_result_cnt_815088": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 99,
+        "text": "uint32_t nox_wol_server_result_cnt_815088 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 630,
+        "text": "return int(C.nox_wol_server_result_cnt_815088)"
+      },
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 984,
+        "text": "C.nox_wol_server_result_cnt_815088 = C.uint(v)"
+      },
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 1224,
+        "text": "C.nox_wol_server_result_cnt_815088++"
+      }
+    ]
+  },
+  "nox_wol_servers_sorting_166704": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 85,
+        "text": "uint32_t nox_wol_servers_sorting_166704 = 0x6;"
+      }
+    ],
+    "go_owners": []
+  },
+  "nox_wol_wnd_gameList_815012": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 9,
+        "text": "uint32_t nox_wol_wnd_gameList_815012 = 0;"
+      }
+    ],
+    "go_owners": []
+  },
+  "nox_wol_wnd_world_814980": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 5,
+        "text": "nox_window* nox_wol_wnd_world_814980 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 936,
+        "text": "return asWindow(C.nox_wol_wnd_world_814980)"
+      }
+    ]
+  },
+  "qword_5d4594_814956": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 134,
+        "text": "uint64_t qword_5d4594_814956 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 1200,
+        "text": "C.qword_5d4594_814956 = C.ulonglong(v)"
+      }
+    ]
+  },
+  "qword_5d4594_815068": {
+    "outside_c": [
+      {
+        "file": "src/legacy/vardefs.c",
+        "line": 133,
+        "text": "uint64_t qword_5d4594_815068 = 0;"
+      }
+    ],
+    "go_owners": [
+      {
+        "file": "src/legacy/vardefs.go",
+        "line": 987,
+        "text": "C.qword_5d4594_815068 = C.ulonglong(v)"
+      }
+    ]
+  }
+}

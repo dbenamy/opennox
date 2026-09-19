@@ -1,0 +1,3361 @@
+{
+  "dword_587000_87408": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 38,
+      "text": "extern uint32_t dword_587000_87408;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 116,
+      "text": "sub_46ACE0(*(uint32_t**)&nox_wol_wnd_world_814980, 10047, 10051, dword_587000_87408 == 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 225,
+      "text": "if (dword_587000_87408 == 1) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 260,
+      "text": "if (!dword_587000_87408) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 289,
+      "text": "dword_587000_87408 = 1;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1008,
+      "text": "if (dword_587000_87408) { // LAN games"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 163,
+      "text": "uint32_t dword_587000_87408 = 0x1;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 91,
+      "text": "extern uint32_t dword_587000_87408;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 528,
+      "text": "if (dword_587000_87408 == 1) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 791,
+      "text": "if (dword_587000_87408 == 1) {"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 159,
+      "text": "extern uint32_t dword_587000_87408;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 567,
+      "text": "extern uint32_t dword_587000_87408;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 642,
+      "text": "return int(C.dword_587000_87408)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 75,
+      "text": "{0x587000, 87408, 4, \"dword_587000_87408\"},                            // 0x59C570"
+    }
+  ],
+  "dword_587000_87412": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 51,
+      "text": "extern uint32_t dword_587000_87412;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 94,
+      "text": "dword_587000_87412 = -1;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 101,
+      "text": "if ((sub_4A1BE0(0), *(int*)&dword_587000_87412 != -1)) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 169,
+      "text": "dword_587000_87412 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 719,
+      "text": "dword_587000_87412 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 731,
+      "text": "dword_587000_87412 = 1;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 744,
+      "text": "dword_587000_87412 = 2;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 756,
+      "text": "dword_587000_87412 = 3;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 821,
+      "text": "if (*(int*)&dword_587000_87412 != -1) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 829,
+      "text": "dword_587000_87412 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 851,
+      "text": "if (*(int*)&dword_587000_87412 != -1) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 859,
+      "text": "dword_587000_87412 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 943,
+      "text": "nox_xxx_wndSetIcon_46AE60(*(int*)&dword_5d4594_814984, *getMemU32Ptr(0x5D4594, 814900 + 4 * dword_587000_87412));"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 955,
+      "text": "sub_46ACE0(*(uint32_t**)&dword_5d4594_814984, *v1, v1[1], v0 != dword_587000_87412);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 960,
+      "text": "sub_49FDB0(*(int*)&dword_587000_87412);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1068,
+      "text": "if (*(int*)&dword_587000_87412 == -1) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1080,
+      "text": "*(uint16_t*)(a1 + 44) -= *getMemU16Ptr(0x587000, 87528 + 8 * dword_587000_87412);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1081,
+      "text": "*(uint16_t*)(a1 + 46) -= *getMemU16Ptr(0x587000, 87530 + 8 * dword_587000_87412);"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 35,
+      "text": "uint32_t dword_587000_87412 = 0xffffffff;"
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 51,
+      "text": "extern uint32_t dword_587000_87412;"
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 82,
+      "text": "v0 = *getMemU16Ptr(0x5D4594, 814916) - *getMemU16Ptr(0x587000, 87528 + 8 * dword_587000_87412);"
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 83,
+      "text": "HIWORD(v6) -= *getMemU16Ptr(0x587000, 87530 + 8 * dword_587000_87412);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 104,
+      "text": "extern uint32_t dword_587000_87412;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 489,
+      "text": "if (*(int*)&dword_587000_87412 == -1) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 641,
+      "text": "if (*(int*)&dword_587000_87412 == -1) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 853,
+      "text": "v3 = a2 + *getMemU16Ptr(0x587000, 87530 + 8 * dword_587000_87412) - 27;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 854,
+      "text": "*getMemU16Ptr(0x5D4594, 814916) = a1 + *getMemU16Ptr(0x587000, 87528 + 8 * dword_587000_87412) - 216;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 558,
+      "text": "extern int dword_587000_87412;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 636,
+      "text": "return int(C.dword_587000_87412)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 76,
+      "text": "{0x587000, 87412, 4, \"dword_587000_87412\"},                            // 0x59C574"
+    }
+  ],
+  "dword_5d4594_1305788": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 322,
+      "text": "uint32_t dword_5d4594_1305788 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 44,
+      "text": "extern uint32_t dword_5d4594_1305788;"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 843,
+      "text": "if (!dword_5d4594_1305788) {"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 873,
+      "text": "dword_5d4594_1305788 = 1;"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 881,
+      "text": "result = *(uint32_t**)&dword_5d4594_1305788;"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 882,
+      "text": "if (dword_5d4594_1305788) {"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 884,
+      "text": "dword_5d4594_1305788 = 0;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 313,
+      "text": "extern uint32_t dword_5d4594_1305788;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 889,
+      "text": "{0x5D4594, 1305788, 4, \"dword_5d4594_1305788\"},                 // 0x713250"
+    }
+  ],
+  "dword_5d4594_1307716": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 101,
+      "text": "uint32_t dword_5d4594_1307716 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 68,
+      "text": "extern uint32_t dword_5d4594_1307716;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 140,
+      "text": "dword_5d4594_1307716 = nox_new_window_from_file(\"proxlist.wnd\", *(uint32_t*)(a1 + 376));"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 142,
+      "text": "nox_window_setPos_46A9B0(*(uint32_t**)&dword_5d4594_1307716, v15[0], v15[1]);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 143,
+      "text": "nox_xxx_wnd_46B280(*(int*)&dword_5d4594_1307716, a1);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 144,
+      "text": "v5 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1307716, 10064);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 145,
+      "text": "v6 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1307716, 10062);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 146,
+      "text": "v13 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1307716, 10063);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 147,
+      "text": "v7 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1307716, 10061);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 177,
+      "text": "return dword_5d4594_1307716;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 206,
+      "text": "result = dword_5d4594_1307716;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 207,
+      "text": "if (dword_5d4594_1307716) {"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 208,
+      "text": "result = nox_xxx_windowDestroyMB_46C4E0(*(uint32_t**)&dword_5d4594_1307716);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 209,
+      "text": "dword_5d4594_1307716 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 215,
+      "text": "int sub_4A28B0() { return dword_5d4594_1307716 != 0; }"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 98,
+      "text": "extern uint32_t dword_5d4594_1307716;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 898,
+      "text": "{0x5D4594, 1307716, 4, \"dword_5d4594_1307716\"},                 // 0x7139D8"
+    }
+  ],
+  "dword_5d4594_1307720": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 241,
+      "text": "uint32_t dword_5d4594_1307720 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 59,
+      "text": "extern uint32_t dword_5d4594_1307720;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 131,
+      "text": "dword_5d4594_1307720 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 134,
+      "text": "v4 = dword_5d4594_1307720;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 135,
+      "text": "*getMemU32Ptr(0x5D4594, 1307316 + 4 * dword_5d4594_1307720) = i;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 136,
+      "text": "dword_5d4594_1307720 = v4 + 1;"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 139,
+      "text": "if (dword_5d4594_1307720 > 0) {"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 161,
+      "text": "if (dword_5d4594_1307720 > 0) {"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 174,
+      "text": "} while (v10 < *(int*)&dword_5d4594_1307720);"
+    },
+    {
+      "file": "src/legacy/GAME3.c",
+      "line": 221,
+      "text": "if (a1 < *(int*)&dword_5d4594_1307720) {"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 233,
+      "text": "extern uint32_t dword_5d4594_1307720;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 899,
+      "text": "{0x5D4594, 1307720, 4, \"dword_5d4594_1307720\"},                 // 0x7139DC"
+    }
+  ],
+  "dword_5d4594_528252": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 53,
+      "text": "extern uint32_t dword_5d4594_528252;"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 267,
+      "text": "dword_5d4594_528252 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 278,
+      "text": "result = dword_5d4594_528252;"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 279,
+      "text": "if (dword_5d4594_528252) {"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 300,
+      "text": "if (dword_5d4594_528252 != 1 && dword_5d4594_528256 != 1) {"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 305,
+      "text": "dword_5d4594_528252 = 1;"
+    },
+    {
+      "file": "src/legacy/server.go",
+      "line": 30,
+      "text": "extern uint32_t dword_5d4594_528252;"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 152,
+      "text": "uint32_t dword_5d4594_528252 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 92,
+      "text": "extern uint32_t dword_5d4594_528252;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 930,
+      "text": "if (dword_5d4594_528252 && dword_5d4594_528256) {"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 148,
+      "text": "extern uint32_t dword_5d4594_528252;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 657,
+      "text": "return int(C.dword_5d4594_528252)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 280,
+      "text": "{0x5D4594, 528252, 4, \"dword_5d4594_528252\"},                     // 0x655510"
+    }
+  ],
+  "dword_5d4594_528256": [
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 56,
+      "text": "extern uint32_t dword_5d4594_528256;"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 268,
+      "text": "dword_5d4594_528256 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 280,
+      "text": "result = dword_5d4594_528256;"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 281,
+      "text": "if (!dword_5d4594_528256) {"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 286,
+      "text": "dword_5d4594_528256 = 1;"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 300,
+      "text": "if (dword_5d4594_528252 != 1 && dword_5d4594_528256 != 1) {"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 306,
+      "text": "dword_5d4594_528256 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_1.c",
+      "line": 318,
+      "text": "dword_5d4594_528256 = 0;"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 93,
+      "text": "uint32_t dword_5d4594_528256 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 96,
+      "text": "extern uint32_t dword_5d4594_528256;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 930,
+      "text": "if (dword_5d4594_528252 && dword_5d4594_528256) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 950,
+      "text": "if (dword_5d4594_528256) {"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 90,
+      "text": "extern uint32_t dword_5d4594_528256;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 526,
+      "text": "extern uint32_t dword_5d4594_528256;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 795,
+      "text": "return int(C.dword_5d4594_528256)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 281,
+      "text": "{0x5D4594, 528256, 4, \"dword_5d4594_528256\"},                     // 0x655514"
+    }
+  ],
+  "dword_5d4594_814548": [
+    {
+      "file": "src/legacy/network.go",
+      "line": 16,
+      "text": "extern unsigned int dword_5d4594_814548;"
+    },
+    {
+      "file": "src/legacy/network.go",
+      "line": 152,
+      "text": "C.dword_5d4594_814548 = C.uint(v)"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 32,
+      "text": "extern uint32_t dword_5d4594_814548;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 223,
+      "text": "dword_5d4594_814548 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 304,
+      "text": "if (dword_5d4594_814548) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 305,
+      "text": "switch (dword_5d4594_814548) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 343,
+      "text": "dword_5d4594_814548 = 9;"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 305,
+      "text": "uint32_t dword_5d4594_814548 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 86,
+      "text": "extern uint32_t dword_5d4594_814548;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 1002,
+      "text": "int sub_43AF80() { return dword_5d4594_814548; }"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 1009,
+      "text": "dword_5d4594_814548 = a1;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 296,
+      "text": "extern uint32_t dword_5d4594_814548;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 395,
+      "text": "{0x5D4594, 814548, 4, \"dword_5d4594_814548\"},                     // 0x69B368"
+    }
+  ],
+  "dword_5d4594_814624": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 43,
+      "text": "extern void* dword_5d4594_814624;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 658,
+      "text": "dword_5d4594_814624 = sub_4A28C0(a4);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 659,
+      "text": "nox_client_gui_serverInfoBlockCheckExp_439370(&mpos, dword_5d4594_814624);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 694,
+      "text": "dword_5d4594_814624 = sub_4A0490(v5 - 10070);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 695,
+      "text": "nox_client_gui_serverInfoBlockCheckExp_439370(&mpos, dword_5d4594_814624);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 126,
+      "text": "void* dword_5d4594_814624 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 729,
+      "text": "dword_5d4594_814624 = sub_4A04C0(a4);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 730,
+      "text": "nox_client_gui_serverInfoBlockCheckExp_439370(&pos, dword_5d4594_814624);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 1024,
+      "text": "result = inet_addr((const char*)((uint32_t)dword_5d4594_814624 + 12));"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 1039,
+      "text": "result = *(unsigned short*)((uint32_t)dword_5d4594_814624 + 163);"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 490,
+      "text": "extern void* dword_5d4594_814624;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 747,
+      "text": "return C.dword_5d4594_814624"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 397,
+      "text": "{0x5D4594, 814624, 4, \"dword_5d4594_814624\"},                     // 0x69B3B4"
+    }
+  ],
+  "dword_5d4594_814984": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 48,
+      "text": "extern uint32_t dword_5d4594_814984;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 112,
+      "text": "nox_xxx_wnd_46ABB0(*(int*)&dword_5d4594_814984, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 140,
+      "text": "dword_5d4594_814984 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10020);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 142,
+      "text": "nox_xxx_wndSetWindowProc_46B300(*(int*)&dword_5d4594_814984, sub_439D00);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 173,
+      "text": "sub_46ACE0(*(uint32_t**)&dword_5d4594_814984, 10620, 10631, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 251,
+      "text": "nox_xxx_wndSetDrawFn_46B340(*(int*)&dword_5d4594_814984, sub_438E30);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 283,
+      "text": "nox_window_set_hidden(*(int*)&dword_5d4594_814984, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 365,
+      "text": "if ((!wndIsShown_nox_xxx_wndIsShown_46ACC0(*(int*)&dword_5d4594_814984) ||"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 790,
+      "text": "nox_window_set_hidden(*(int*)&dword_5d4594_814984, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 941,
+      "text": "nox_window_set_hidden(*(int*)&dword_5d4594_814984, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 943,
+      "text": "nox_xxx_wndSetIcon_46AE60(*(int*)&dword_5d4594_814984, *getMemU32Ptr(0x5D4594, 814900 + 4 * dword_587000_87412));"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 951,
+      "text": "sub_46ACE0(*(uint32_t**)&dword_5d4594_814984, 10600, 10611, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 955,
+      "text": "sub_46ACE0(*(uint32_t**)&dword_5d4594_814984, *v1, v1[1], v0 != dword_587000_87412);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1082,
+      "text": "v4 = nox_gui_newButtonOrCheckbox_4A91A0(*(int*)&dword_5d4594_814984, 1192, *(short*)(a1 + 44) - 10,"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 57,
+      "text": "uint32_t dword_5d4594_814984 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 101,
+      "text": "extern uint32_t dword_5d4594_814984;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 895,
+      "text": "nox_xxx_wndClearCaptureMain_46ADE0(*(int*)&dword_5d4594_814984);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 1051,
+      "text": "return nox_xxx_wnd_46ABB0(*(int*)&dword_5d4594_814984, 0);"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 568,
+      "text": "extern void* dword_5d4594_814984;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 651,
+      "text": "return AsWindowP(C.dword_5d4594_814984)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 400,
+      "text": "{0x5D4594, 814984, 4, \"dword_5d4594_814984\"},                     // 0x69B51C"
+    }
+  ],
+  "dword_5d4594_814988": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 37,
+      "text": "extern uint32_t dword_5d4594_814988;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 141,
+      "text": "dword_5d4594_814988 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10021);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 143,
+      "text": "nox_xxx_wndSetWindowProc_46B300(*(int*)&dword_5d4594_814988, sub_439D00);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 144,
+      "text": "nox_xxx_wndSetProc_46B2C0(*(int*)&dword_5d4594_814988, nox_xxx_windowMultiplayerSub_439E70);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 170,
+      "text": "nox_window_set_hidden(*(int*)&dword_5d4594_814988, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 284,
+      "text": "nox_window_set_hidden(*(int*)&dword_5d4594_814988, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 366,
+      "text": "!wndIsShown_nox_xxx_wndIsShown_46ACC0(*(int*)&dword_5d4594_814988) ||"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 791,
+      "text": "nox_window_set_hidden(*(int*)&dword_5d4594_814988, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 942,
+      "text": "nox_window_set_hidden(*(int*)&dword_5d4594_814988, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1076,
+      "text": "uint32_t* v3 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_814988, v1);"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 164,
+      "text": "uint32_t dword_5d4594_814988 = 0;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 160,
+      "text": "extern uint32_t dword_5d4594_814988;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 401,
+      "text": "{0x5D4594, 814988, 4, \"dword_5d4594_814988\"},                     // 0x69B520"
+    }
+  ],
+  "dword_5d4594_814992": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 33,
+      "text": "extern uint32_t dword_5d4594_814992;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 149,
+      "text": "dword_5d4594_814992 = sub_489B80(*(int*)&nox_wol_wnd_world_814980);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 278,
+      "text": "if (!wndIsShown_nox_xxx_wndIsShown_46ACC0(*(int*)&dword_5d4594_814992)) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 279,
+      "text": "nox_window_set_hidden(*(int*)&dword_5d4594_814992, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 792,
+      "text": "nox_window_set_hidden(*(int*)&dword_5d4594_814992, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 815,
+      "text": "if (!wndIsShown_nox_xxx_wndIsShown_46ACC0(*(int*)&dword_5d4594_814992)) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 844,
+      "text": "if (!wndIsShown_nox_xxx_wndIsShown_46ACC0(*(int*)&dword_5d4594_814992)) {"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 300,
+      "text": "uint32_t dword_5d4594_814992 = 0;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 291,
+      "text": "extern uint32_t dword_5d4594_814992;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 402,
+      "text": "{0x5D4594, 814992, 4, \"dword_5d4594_814992\"},                     // 0x69B524"
+    }
+  ],
+  "dword_5d4594_814996": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 36,
+      "text": "extern uint32_t dword_5d4594_814996;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 145,
+      "text": "dword_5d4594_814996 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10011);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 172,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_814996, 16385, (int)v5, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 288,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_814996, 16385, (int)v0, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 796,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_814996, 16385, (int)v21, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 949,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_814996, 16385, (int)v2, 0);"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 198,
+      "text": "uint32_t dword_5d4594_814996 = 0;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 569,
+      "text": "extern void* dword_5d4594_814996;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 648,
+      "text": "return AsWindowP(C.dword_5d4594_814996)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 403,
+      "text": "{0x5D4594, 814996, 4, \"dword_5d4594_814996\"},                     // 0x69B528"
+    }
+  ],
+  "dword_5d4594_815000": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 52,
+      "text": "extern uint32_t dword_5d4594_815000;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 111,
+      "text": "nox_window_set_hidden(dword_5d4594_815000, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 148,
+      "text": "dword_5d4594_815000 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10033);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 166,
+      "text": "nox_window_set_hidden(dword_5d4594_815000, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 205,
+      "text": "v12 = nox_xxx_wndGetChildByID_46B0C0(dword_5d4594_815000, 10032);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 206,
+      "text": "v13 = nox_xxx_wndGetChildByID_46B0C0(dword_5d4594_815000, 10035);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 207,
+      "text": "v14 = nox_xxx_wndGetChildByID_46B0C0(dword_5d4594_815000, 10036);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 369,
+      "text": "wndIsShown_nox_xxx_wndIsShown_46ACC0(dword_5d4594_815000)) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 415,
+      "text": "sub_46B120(dword_5d4594_815000, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 416,
+      "text": "nox_xxx_wndShowModalMB_46A8C0(dword_5d4594_815000);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 417,
+      "text": "sub_46C690(dword_5d4594_815000);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 418,
+      "text": "nox_window_setPos_46A9B0(dword_5d4594_815000, a1->field_0, a1->field_4);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 967,
+      "text": "nox_xxx_wnd_46C6E0(dword_5d4594_815000);"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 28,
+      "text": "uint32_t dword_5d4594_815000 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 105,
+      "text": "extern uint32_t dword_5d4594_815000;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 613,
+      "text": "if (!wndIsShown_nox_xxx_wndIsShown_46ACC0(*(int*)&dword_5d4594_815000)) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 614,
+      "text": "memcpy(v2, *(const void**)&dword_5d4594_815000, sizeof(v2));"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 620,
+      "text": "nox_window_set_hidden(*(int*)&dword_5d4594_815000, 1);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 623,
+      "text": "nox_xxx_wnd_46C6E0(*(int*)&dword_5d4594_815000);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 898,
+      "text": "if (dword_5d4594_815000 && !*(uint32_t*)(dword_5d4594_815000 + 396)) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 899,
+      "text": "nox_xxx_wnd_46C6E0(*(int*)&dword_5d4594_815000);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 900,
+      "text": "nox_xxx_windowDestroyMB_46C4E0(*(uint32_t**)&dword_5d4594_815000);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 901,
+      "text": "dword_5d4594_815000 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 1050,
+      "text": "nox_xxx_wnd_46C6E0(*(int*)&dword_5d4594_815000);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 1060,
+      "text": "nox_window_set_hidden(*(int*)&dword_5d4594_815000, 1);"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 570,
+      "text": "extern void* dword_5d4594_815000;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 639,
+      "text": "return AsWindowP(C.dword_5d4594_815000)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 404,
+      "text": "{0x5D4594, 815000, 4, \"dword_5d4594_815000\"},                     // 0x69B52C"
+    }
+  ],
+  "dword_5d4594_815004": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 54,
+      "text": "extern nox_window* dword_5d4594_815004;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 147,
+      "text": "dword_5d4594_815004 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10034);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 208,
+      "text": "v15 = *(uint32_t**)((uint32_t)dword_5d4594_815004 + 32);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 209,
+      "text": "nox_xxx_wnd_46B280((int)v12, dword_5d4594_815004);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 210,
+      "text": "nox_xxx_wnd_46B280((int)v13, dword_5d4594_815004);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 211,
+      "text": "nox_xxx_wnd_46B280((int)v14, dword_5d4594_815004);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 459,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16399, 0, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 461,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, nameTitle, 14);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 469,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, wbuf, -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 471,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, getMemAt(0x587000, 89332), -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 473,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, hostTitle, 14);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 476,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, wbuf, -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 478,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, getMemAt(0x587000, 89396), -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 480,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, pingTitle, 14);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 486,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, wbuf, -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 487,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, getMemAt(0x587000, 89464), -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 489,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, modeTitle, 14);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 491,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, gameMode, -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 493,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)getMemAt(0x587000, 89520), -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 495,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, stageTitle, 14);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 497,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, wbuf, -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 499,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)getMemAt(0x587000, 89580), -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 501,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, mapTitle, 14);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 505,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, wbuf, -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 506,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)getMemAt(0x587000, 89636), -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 514,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)v33, 6);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 516,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)v10, 6);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 518,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)getMemAt(0x587000, 89788), -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 520,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, playersTitle, 14);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 522,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, wbuf, -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 526,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)getMemAt(0x587000, 89860), -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 528,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, resTitle, 14);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 530,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, rstr, -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 531,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)getMemAt(0x587000, 89916), -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 533,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)v14, 14);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 550,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, v19, 4);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 557,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)v20, 4);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 559,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)getMemAt(0x587000, 90024), -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 562,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)v22, 14);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 571,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, v26, -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 586,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)v27, 4);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 588,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)getMemAt(0x587000, 90132), -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 591,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)v29, 14);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 599,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, result, -1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 607,
+      "text": "nox_window_call_field_94(dword_5d4594_815004, 16397, (int)v32, 4);"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 8,
+      "text": "nox_window* dword_5d4594_815004 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 107,
+      "text": "extern nox_window* dword_5d4594_815004;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 573,
+      "text": "**(uint32_t**)(*(uint32_t*)((uint32_t)dword_5d4594_815004 + 32) + 28) = 10035;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 574,
+      "text": "**(uint32_t**)(*(uint32_t*)((uint32_t)dword_5d4594_815004 + 32) + 32) = 10036;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 575,
+      "text": "**(uint32_t**)(*(uint32_t*)((uint32_t)dword_5d4594_815004 + 32) + 36) = 10032;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 10,
+      "text": "extern nox_window* dword_5d4594_815004;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 561,
+      "text": "extern nox_window* dword_5d4594_815004;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 940,
+      "text": "return asWindow(C.dword_5d4594_815004)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 405,
+      "text": "{0x5D4594, 815004, 4, \"dword_5d4594_815004\"},                     // 0x69B530"
+    }
+  ],
+  "dword_5d4594_815016": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 49,
+      "text": "extern uint32_t dword_5d4594_815016;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 151,
+      "text": "dword_5d4594_815016 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10038);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 646,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815016, a2, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 668,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815016, 0x4000, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1018,
+      "text": "nox_window_call_field_94(dword_5d4594_815016, 16397, wbuf, 4);"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 54,
+      "text": "uint32_t dword_5d4594_815016 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 102,
+      "text": "extern uint32_t dword_5d4594_815016;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 563,
+      "text": "sub_46B120(*(uint32_t**)&dword_5d4594_815016, *(int*)&nox_wol_wnd_gameList_815012);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 564,
+      "text": "nox_xxx_wndSetWindowProc_46B300(*(int*)&dword_5d4594_815016, sub_438EF0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 576,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815016, 16408,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 586,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815016, 16409,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 596,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815016, 16410,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 691,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815016, 16391, *(uint32_t*)(v6 + 28), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 700,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815016, 16391, *(uint32_t*)(v5 + 32), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 722,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815016, 16403, a4, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 734,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815016, a2, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 741,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815016, a2, (int)a3, a4);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 753,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815016, 0x4000, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 764,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815016, 16412, v5, 0);"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 53,
+      "text": "extern uint32_t dword_5d4594_815016;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 407,
+      "text": "{0x5D4594, 815016, 4, \"dword_5d4594_815016\"},                     // 0x69B53C"
+    }
+  ],
+  "dword_5d4594_815020": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 45,
+      "text": "extern uint32_t dword_5d4594_815020;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 152,
+      "text": "dword_5d4594_815020 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10039);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 647,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815020, a2, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 669,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815020, 0x4000, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1021,
+      "text": "nox_window_call_field_94(dword_5d4594_815020, 16397, wbuf, 4);"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 71,
+      "text": "uint32_t dword_5d4594_815020 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 98,
+      "text": "extern uint32_t dword_5d4594_815020;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 565,
+      "text": "sub_46B120(*(uint32_t**)&dword_5d4594_815020, *(int*)&nox_wol_wnd_gameList_815012);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 566,
+      "text": "nox_xxx_wndSetWindowProc_46B300(*(int*)&dword_5d4594_815020, sub_438EF0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 578,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815020, 16408,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 588,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815020, 16409,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 598,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815020, 16410,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 692,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815020, 16391, *(uint32_t*)(v6 + 28), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 701,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815020, 16391, *(uint32_t*)(v5 + 32), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 723,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815020, 16403, a4, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 735,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815020, a2, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 742,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815020, a2, (int)a3, a4);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 754,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815020, 0x4000, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 765,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815020, 16412, v5, 0);"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 68,
+      "text": "extern uint32_t dword_5d4594_815020;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 408,
+      "text": "{0x5D4594, 815020, 4, \"dword_5d4594_815020\"},                     // 0x69B540"
+    }
+  ],
+  "dword_5d4594_815024": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 46,
+      "text": "extern uint32_t dword_5d4594_815024;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 153,
+      "text": "dword_5d4594_815024 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10040);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 648,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, a2, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 670,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, 0x4000, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1026,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, 16397, (int)getMemAt(0x5D4594, 814772), 4);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1028,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, 16397, v6, 4);"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 69,
+      "text": "uint32_t dword_5d4594_815024 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 99,
+      "text": "extern uint32_t dword_5d4594_815024;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 567,
+      "text": "sub_46B120(*(uint32_t**)&dword_5d4594_815024, *(int*)&nox_wol_wnd_gameList_815012);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 568,
+      "text": "nox_xxx_wndSetWindowProc_46B300(*(int*)&dword_5d4594_815024, sub_438EF0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 580,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, 16408,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 590,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, 16409,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 600,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, 16410,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 693,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, 16391, *(uint32_t*)(v6 + 28), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 702,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, 16391, *(uint32_t*)(v5 + 32), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 724,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, 16403, a4, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 736,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, a2, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 743,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, a2, (int)a3, a4);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 755,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, 0x4000, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 766,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815024, 16412, v5, 0);"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 67,
+      "text": "extern uint32_t dword_5d4594_815024;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 409,
+      "text": "{0x5D4594, 815024, 4, \"dword_5d4594_815024\"},                     // 0x69B544"
+    }
+  ],
+  "dword_5d4594_815028": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 47,
+      "text": "extern uint32_t dword_5d4594_815028;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 154,
+      "text": "dword_5d4594_815028 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10041);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 649,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815028, a2, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 671,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815028, 0x4000, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1036,
+      "text": "nox_window_call_field_94(dword_5d4594_815028, 16397, wbuf, 4);"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 66,
+      "text": "uint32_t dword_5d4594_815028 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 100,
+      "text": "extern uint32_t dword_5d4594_815028;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 569,
+      "text": "sub_46B120(*(uint32_t**)&dword_5d4594_815028, *(int*)&nox_wol_wnd_gameList_815012);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 570,
+      "text": "nox_xxx_wndSetWindowProc_46B300(*(int*)&dword_5d4594_815028, sub_438EF0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 582,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815028, 16408,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 592,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815028, 16409,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 602,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815028, 16410,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 694,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815028, 16391, *(uint32_t*)(v6 + 28), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 703,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815028, 16391, *(uint32_t*)(v5 + 32), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 725,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815028, 16403, a4, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 737,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815028, a2, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 744,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815028, a2, (int)a3, a4);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 756,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815028, 0x4000, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 767,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815028, 16412, v5, 0);"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 64,
+      "text": "extern uint32_t dword_5d4594_815028;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 410,
+      "text": "{0x5D4594, 815028, 4, \"dword_5d4594_815028\"},                     // 0x69B548"
+    }
+  ],
+  "dword_5d4594_815032": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 44,
+      "text": "extern uint32_t dword_5d4594_815032;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 155,
+      "text": "dword_5d4594_815032 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10042);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 650,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815032, a2, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 672,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815032, 0x4000, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1061,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815032, 16397, wbuf, 4);"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 73,
+      "text": "uint32_t dword_5d4594_815032 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 97,
+      "text": "extern uint32_t dword_5d4594_815032;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 571,
+      "text": "sub_46B120(*(uint32_t**)&dword_5d4594_815032, *(int*)&nox_wol_wnd_gameList_815012);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 572,
+      "text": "nox_xxx_wndSetWindowProc_46B300(*(int*)&dword_5d4594_815032, sub_438EF0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 584,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815032, 16408,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 594,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815032, 16409,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 604,
+      "text": "return nox_window_call_field_94(*(int*)&dword_5d4594_815032, 16410,"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 695,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815032, 16391, *(uint32_t*)(v6 + 28), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 704,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815032, 16391, *(uint32_t*)(v5 + 32), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 726,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815032, 16403, a4, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 738,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815032, a2, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 745,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815032, a2, (int)a3, a4);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 757,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815032, 0x4000, (int)a3, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 768,
+      "text": "nox_window_call_field_94(*(int*)&dword_5d4594_815032, 16412, v5, 0);"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 70,
+      "text": "extern uint32_t dword_5d4594_815032;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 411,
+      "text": "{0x5D4594, 815032, 4, \"dword_5d4594_815032\"},                     // 0x69B54C"
+    }
+  ],
+  "dword_5d4594_815044": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 41,
+      "text": "extern uint32_t dword_5d4594_815044;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 105,
+      "text": "dword_5d4594_815044 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 221,
+      "text": "dword_5d4594_815044 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 368,
+      "text": "!nox_game_createOrJoin_815048 && !dword_5d4594_815044 && !dword_5d4594_815052 &&"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 398,
+      "text": "dword_5d4594_815044 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 905,
+      "text": "if (v9 != 5999 || dword_5d4594_815044) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 918,
+      "text": "dword_5d4594_815044 = 1;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 925,
+      "text": "dword_5d4594_815044 = 1;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 931,
+      "text": "dword_5d4594_815044 = 1;"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 110,
+      "text": "uint32_t dword_5d4594_815044 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 47,
+      "text": "extern uint32_t dword_5d4594_815044;"
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 106,
+      "text": "int sub_43B6D0() { return dword_5d4594_815044; }"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 94,
+      "text": "extern uint32_t dword_5d4594_815044;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 619,
+      "text": "if (!dword_5d4594_815044 && !nox_xxx_wndPointInWnd_46AAB0(v2, mpos.x, mpos.y)) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 889,
+      "text": "dword_5d4594_815044 = 0;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 107,
+      "text": "extern uint32_t dword_5d4594_815044;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 562,
+      "text": "extern unsigned int dword_5d4594_815044;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 633,
+      "text": "return int(C.dword_5d4594_815044)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 413,
+      "text": "{0x5D4594, 815044, 4, \"dword_5d4594_815044\"},                     // 0x69B558"
+    }
+  ],
+  "dword_5d4594_815052": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 30,
+      "text": "extern uint32_t dword_5d4594_815052;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 222,
+      "text": "dword_5d4594_815052 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 368,
+      "text": "!nox_game_createOrJoin_815048 && !dword_5d4594_815044 && !dword_5d4594_815052 &&"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 420,
+      "text": "uint32_t dword_5d4594_815052 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 82,
+      "text": "extern uint32_t dword_5d4594_815052;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 934,
+      "text": "dword_5d4594_815052 = 1;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 996,
+      "text": "int sub_43AF30() { return dword_5d4594_815052; }"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 413,
+      "text": "extern uint32_t dword_5d4594_815052;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 626,
+      "text": "return uint32(C.dword_5d4594_815052)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 415,
+      "text": "{0x5D4594, 815052, 4, \"dword_5d4594_815052\"},                     // 0x69B560"
+    }
+  ],
+  "dword_5d4594_815056": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 35,
+      "text": "extern uint32_t dword_5d4594_815056;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 420,
+      "text": "dword_5d4594_815056 = 1;"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 281,
+      "text": "uint32_t dword_5d4594_815056 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 89,
+      "text": "extern uint32_t dword_5d4594_815056;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 622,
+      "text": "dword_5d4594_815056 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 1023,
+      "text": "if (dword_5d4594_815056) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 1032,
+      "text": "int nox_client_getServerPort_43B320() { return dword_5d4594_815056 != 0 ? *getMemU32Ptr(0x5D4594, 814604) : 0; }"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 1038,
+      "text": "if (dword_5d4594_815056) {"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 272,
+      "text": "extern uint32_t dword_5d4594_815056;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 571,
+      "text": "extern uint32_t dword_5d4594_815056;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 993,
+      "text": "C.dword_5d4594_815056 = C.uint(v)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 416,
+      "text": "{0x5D4594, 815056, 4, \"dword_5d4594_815056\"},                     // 0x69B564"
+    }
+  ],
+  "dword_5d4594_815096": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 29,
+      "text": "extern uint32_t dword_5d4594_815096;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 234,
+      "text": "if (dword_5d4594_815096) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 239,
+      "text": "dword_5d4594_815096 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 981,
+      "text": "dword_5d4594_815096 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 983,
+      "text": "dword_5d4594_815096 = 1;"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 426,
+      "text": "uint32_t dword_5d4594_815096 = 0;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 419,
+      "text": "extern uint32_t dword_5d4594_815096;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 420,
+      "text": "{0x5D4594, 815096, 4, \"dword_5d4594_815096\"},                     // 0x69B58C"
+    }
+  ],
+  "dword_5d4594_815100": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 31,
+      "text": "extern uint32_t dword_5d4594_815100;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 240,
+      "text": "} else if (dword_5d4594_815100) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 245,
+      "text": "dword_5d4594_815100 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 997,
+      "text": "dword_5d4594_815100 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 999,
+      "text": "dword_5d4594_815100 = 1;"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 400,
+      "text": "uint32_t dword_5d4594_815100 = 0;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 392,
+      "text": "extern uint32_t dword_5d4594_815100;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 421,
+      "text": "{0x5D4594, 815100, 4, \"dword_5d4594_815100\"},                     // 0x69B590"
+    }
+  ],
+  "dword_5d4594_815104": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 57,
+      "text": "int dword_5d4594_815104 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 893,
+      "text": "if (dword_5d4594_815104) {"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 565,
+      "text": "extern int dword_5d4594_815104;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 981,
+      "text": "C.dword_5d4594_815104 = C.int(v)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 422,
+      "text": "{0x5D4594, 815104, 4, \"dword_5d4594_815104\"},                     // 0x69B594"
+    }
+  ],
+  "nox_client_connError_814552": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 34,
+      "text": "extern uint32_t nox_client_connError_814552;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 389,
+      "text": "v0 = nox_client_connError_814552;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 390,
+      "text": "if (nox_client_connError_814552 != 8 && nox_client_connError_814552 != 9 && nox_client_connError_814552 != 10) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 393,
+      "text": "v0 = nox_client_connError_814552;"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 282,
+      "text": "uint32_t nox_client_connError_814552 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 88,
+      "text": "extern uint32_t nox_client_connError_814552;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 1015,
+      "text": "nox_client_connError_814552 = a1;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 273,
+      "text": "extern uint32_t nox_client_connError_814552;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 560,
+      "text": "extern unsigned int nox_client_connError_814552;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 990,
+      "text": "C.nox_client_connError_814552 = C.uint(v)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 396,
+      "text": "{0x5D4594, 814552, 4, \"nox_client_connError_814552\"},             // 0x69B36C"
+    }
+  ],
+  "nox_game_createOrJoin_815048": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 50,
+      "text": "extern uint32_t nox_game_createOrJoin_815048;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 93,
+      "text": "nox_game_createOrJoin_815048 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 113,
+      "text": "if (nox_game_createOrJoin_815048) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 220,
+      "text": "nox_game_createOrJoin_815048 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 368,
+      "text": "!nox_game_createOrJoin_815048 && !dword_5d4594_815044 && !dword_5d4594_815052 &&"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 702,
+      "text": "if (nox_game_createOrJoin_815048) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 773,
+      "text": "nox_game_createOrJoin_815048 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 782,
+      "text": "nox_game_createOrJoin_815048 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 788,
+      "text": "nox_game_createOrJoin_815048 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 811,
+      "text": "nox_game_createOrJoin_815048 = 1;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 839,
+      "text": "nox_game_createOrJoin_815048 = 1;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 944,
+      "text": "if (nox_game_createOrJoin_815048 == 1) {"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 43,
+      "text": "uint32_t nox_game_createOrJoin_815048 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 103,
+      "text": "extern uint32_t nox_game_createOrJoin_815048;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 631,
+      "text": "if (nox_game_createOrJoin_815048 && sub_438DD0(mpos.x, mpos.y)) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 824,
+      "text": "if (nox_xxx_wndGetID_46B0A0(a1) == 10020 && nox_game_createOrJoin_815048 == 1) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 933,
+      "text": "nox_game_createOrJoin_815048 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 999,
+      "text": "int sub_43AF40() { return nox_game_createOrJoin_815048; }"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 43,
+      "text": "extern uint32_t nox_game_createOrJoin_815048;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 514,
+      "text": "extern unsigned int nox_game_createOrJoin_815048;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 533,
+      "text": "extern unsigned int nox_game_createOrJoin_815048;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 566,
+      "text": "extern unsigned int nox_game_createOrJoin_815048;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 645,
+      "text": "return int(C.nox_game_createOrJoin_815048)"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 996,
+      "text": "C.nox_game_createOrJoin_815048 = C.uint(v)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 414,
+      "text": "{0x5D4594, 815048, 4, \"nox_game_createOrJoin_815048\"},            // 0x69B55C"
+    }
+  ],
+  "nox_wnd_xxx_815040": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 58,
+      "text": "nox_gui_animation* nox_wnd_xxx_815040 = 0;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 106,
+      "text": "nox_wnd_xxx_815040->state = NOX_GUI_ANIM_IN;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 107,
+      "text": "nox_wnd_xxx_815040->fnc_done_out = sub_438330;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 132,
+      "text": "nox_wnd_xxx_815040 ="
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 134,
+      "text": "if (!nox_wnd_xxx_815040) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 137,
+      "text": "nox_wnd_xxx_815040->field_0 = 10000;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 138,
+      "text": "nox_wnd_xxx_815040->field_12 = sub_438370;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 139,
+      "text": "nox_wnd_xxx_815040->fnc_done_out = sub_438330;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 90,
+      "text": "extern nox_gui_animation* nox_wnd_xxx_815040;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 537,
+      "text": "v0 = nox_wnd_xxx_815040->field_13;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 538,
+      "text": "nox_gui_freeAnimation_43C570(nox_wnd_xxx_815040);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 550,
+      "text": "if (nox_wnd_xxx_815040->state == NOX_GUI_ANIM_OUT_DONE) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 553,
+      "text": "nox_wnd_xxx_815040->state = NOX_GUI_ANIM_OUT;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 1049,
+      "text": "nox_wnd_xxx_815040->fnc_done_out = sub_43B490;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 412,
+      "text": "{0x5D4594, 815040, 4, \"nox_wnd_xxx_815040\"},                      // 0x69B554"
+    }
+  ],
+  "nox_wol_server_result_cnt_815088": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 42,
+      "text": "extern uint32_t nox_wol_server_result_cnt_815088;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 229,
+      "text": "nox_wol_server_result_cnt_815088 = 0;"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 99,
+      "text": "uint32_t nox_wol_server_result_cnt_815088 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 95,
+      "text": "extern uint32_t nox_wol_server_result_cnt_815088;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 504,
+      "text": "if (nox_wol_server_result_cnt_815088) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 505,
+      "text": "sub_46AD20(*(uint32_t**)&nox_wol_wnd_world_814980, 10070, nox_wol_server_result_cnt_815088 + 10069, a1);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 727,
+      "text": "if (a4 < *(int*)&nox_wol_server_result_cnt_815088) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 909,
+      "text": "nox_wol_server_result_cnt_815088 = 0;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 96,
+      "text": "extern uint32_t nox_wol_server_result_cnt_815088;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 564,
+      "text": "extern unsigned int nox_wol_server_result_cnt_815088;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 630,
+      "text": "return int(C.nox_wol_server_result_cnt_815088)"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 984,
+      "text": "C.nox_wol_server_result_cnt_815088 = C.uint(v)"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 1224,
+      "text": "C.nox_wol_server_result_cnt_815088++"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 419,
+      "text": "{0x5D4594, 815088, 4, \"nox_wol_server_result_cnt_815088\"},        // 0x69B584"
+    }
+  ],
+  "nox_wol_servers_addResult_4A0030": [
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 83,
+      "text": "int nox_wol_servers_addResult_4A0030(nox_gui_server_ent_t* srv);"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 921,
+      "text": "int nox_wol_servers_addResult_4A0030(nox_gui_server_ent_t* srv) {"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 1099,
+      "text": "nox_wol_servers_addResult_4A0030(v1);"
+    },
+    {
+      "file": "src/legacy/gui_noxworld.go",
+      "line": 236,
+      "text": "C.nox_wol_servers_addResult_4A0030(a1.C())"
+    }
+  ],
+  "nox_wol_servers_sortBtnHandler_4A0290": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 715,
+      "text": "nox_wol_servers_sortBtnHandler_4A0290(v5);"
+    },
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 84,
+      "text": "void nox_wol_servers_sortBtnHandler_4A0290(int id);"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 1042,
+      "text": "void nox_wol_servers_sortBtnHandler_4A0290(int id) {"
+    }
+  ],
+  "nox_wol_servers_sorting_166704": [
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 85,
+      "text": "uint32_t nox_wol_servers_sorting_166704 = 0x6;"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 52,
+      "text": "extern uint32_t nox_wol_servers_sorting_166704;"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 932,
+      "text": "switch (nox_wol_servers_sorting_166704) {"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 1045,
+      "text": "nox_wol_servers_sorting_166704 = (nox_wol_servers_sorting_166704 == 0) + 0;"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 1048,
+      "text": "nox_wol_servers_sorting_166704 = (nox_wol_servers_sorting_166704 == 2) + 2;"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 1051,
+      "text": "nox_wol_servers_sorting_166704 = (nox_wol_servers_sorting_166704 == 4) + 4;"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 1054,
+      "text": "nox_wol_servers_sorting_166704 = (nox_wol_servers_sorting_166704 == 6) + 6;"
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 1057,
+      "text": "nox_wol_servers_sorting_166704 = (nox_wol_servers_sorting_166704 == 8) + 8;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 82,
+      "text": "extern uint32_t nox_wol_servers_sorting_166704;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 138,
+      "text": "{0x587000, 166704, 4, \"nox_wol_servers_sorting_166704\"},               // 0x5AFB30"
+    }
+  ],
+  "nox_wol_wnd_gameList_815012": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 53,
+      "text": "extern uint32_t nox_wol_wnd_gameList_815012;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 146,
+      "text": "nox_wol_wnd_gameList_815012 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10037);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 164,
+      "text": "nox_xxx_wndSetProc_46B2C0(*(int*)&nox_wol_wnd_gameList_815012, nox_xxx_windowMultiplayerSub_439E70);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 165,
+      "text": "nox_window_set_hidden(*(int*)&nox_wol_wnd_gameList_815012, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 192,
+      "text": "v8 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_gameList_815012, 10053);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 193,
+      "text": "v9 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_gameList_815012, 10043);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 194,
+      "text": "v10 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_gameList_815012, 10044);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 195,
+      "text": "v11 = *(uint32_t**)(nox_wol_wnd_gameList_815012 + 32);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 196,
+      "text": "nox_xxx_wnd_46B280((int)v8, *(int*)&nox_wol_wnd_gameList_815012);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 197,
+      "text": "nox_xxx_wnd_46B280((int)v9, *(int*)&nox_wol_wnd_gameList_815012);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 198,
+      "text": "nox_xxx_wnd_46B280((int)v10, *(int*)&nox_wol_wnd_gameList_815012);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 282,
+      "text": "nox_window_set_hidden(*(int*)&nox_wol_wnd_gameList_815012, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 367,
+      "text": "!wndIsShown_nox_xxx_wndIsShown_46ACC0(*(int*)&nox_wol_wnd_gameList_815012)) &&"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 789,
+      "text": "nox_window_set_hidden(*(int*)&nox_wol_wnd_gameList_815012, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1009,
+      "text": "nox_window_call_field_94(nox_wol_wnd_gameList_815012, 16397, (int)getMemAt(0x587000, 91164), 4);"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 9,
+      "text": "uint32_t nox_wol_wnd_gameList_815012 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 106,
+      "text": "extern uint32_t nox_wol_wnd_gameList_815012;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 529,
+      "text": "nox_window_call_field_94(*(int*)&nox_wol_wnd_gameList_815012, 16399, 0, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 561,
+      "text": "nox_xxx_wndSetProc_46B2C0(*(int*)&nox_wol_wnd_gameList_815012, sub_439050);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 562,
+      "text": "nox_xxx_wndSetWindowProc_46B300(*(int*)&nox_wol_wnd_gameList_815012, sub_438EF0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 563,
+      "text": "sub_46B120(*(uint32_t**)&dword_5d4594_815016, *(int*)&nox_wol_wnd_gameList_815012);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 565,
+      "text": "sub_46B120(*(uint32_t**)&dword_5d4594_815020, *(int*)&nox_wol_wnd_gameList_815012);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 567,
+      "text": "sub_46B120(*(uint32_t**)&dword_5d4594_815024, *(int*)&nox_wol_wnd_gameList_815012);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 569,
+      "text": "sub_46B120(*(uint32_t**)&dword_5d4594_815028, *(int*)&nox_wol_wnd_gameList_815012);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 571,
+      "text": "sub_46B120(*(uint32_t**)&dword_5d4594_815032, *(int*)&nox_wol_wnd_gameList_815012);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 577,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 28), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 579,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 28), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 581,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 28), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 583,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 28), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 585,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 28), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 587,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 32), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 589,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 32), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 591,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 32), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 593,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 32), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 595,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 32), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 597,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 36), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 599,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 36), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 601,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 36), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 603,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 36), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 605,
+      "text": "*(uint32_t*)(*(uint32_t*)(nox_wol_wnd_gameList_815012 + 32) + 36), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 621,
+      "text": "nox_window_call_field_94(*(int*)&nox_wol_wnd_gameList_815012, 16403, -1, 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 690,
+      "text": "nox_window_call_field_94(*(int*)&nox_wol_wnd_gameList_815012, 16391, *(uint32_t*)(v6 + 28), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 699,
+      "text": "nox_window_call_field_94(*(int*)&nox_wol_wnd_gameList_815012, 16391, *(uint32_t*)(v5 + 32), 0);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 751,
+      "text": "if (a3 == nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_gameList_815012, 10043) ||"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 752,
+      "text": "a3 == nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_gameList_815012, 10044)) {"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 11,
+      "text": "extern uint32_t nox_wol_wnd_gameList_815012;"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 406,
+      "text": "{0x5D4594, 815012, 4, \"nox_wol_wnd_gameList_815012\"},             // 0x69B538"
+    }
+  ],
+  "nox_wol_wnd_world_814980": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 55,
+      "text": "extern nox_window* nox_wol_wnd_world_814980;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 104,
+      "text": "if (nox_wol_wnd_world_814980) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 110,
+      "text": "nox_window_set_hidden(*(int*)&nox_wol_wnd_world_814980, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 116,
+      "text": "sub_46ACE0(*(uint32_t**)&nox_wol_wnd_world_814980, 10047, 10051, dword_587000_87408 == 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 118,
+      "text": "v25 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10010);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 119,
+      "text": "nox_window_call_field_94(*(int*)&nox_wol_wnd_world_814980, 16391, (int)v25, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 120,
+      "text": "v26 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10010);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 121,
+      "text": "nox_window_call_field_94(*(int*)&nox_wol_wnd_world_814980, 16391, (int)v26, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 125,
+      "text": "nox_wol_wnd_world_814980 = nox_new_window_from_file(\"noxworld.wnd\", nox_xxx_windowMultiplayerSub_439E70);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 126,
+      "text": "if (!nox_wol_wnd_world_814980) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 130,
+      "text": "nox_xxx_wndShowModalMB_46A8C0(*(int*)&nox_wol_wnd_world_814980);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 131,
+      "text": "nox_window_set_all_funcs(*(uint32_t**)&nox_wol_wnd_world_814980, sub_439D00, 0, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 133,
+      "text": "nox_gui_makeAnimation_43C5B0(*(uint32_t**)&nox_wol_wnd_world_814980, 0, 0, 0, -480, 0, 20, 0, -40);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 140,
+      "text": "dword_5d4594_814984 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10020);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 141,
+      "text": "dword_5d4594_814988 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10021);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 145,
+      "text": "dword_5d4594_814996 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10011);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 146,
+      "text": "nox_wol_wnd_gameList_815012 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10037);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 147,
+      "text": "dword_5d4594_815004 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10034);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 148,
+      "text": "dword_5d4594_815000 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10033);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 149,
+      "text": "dword_5d4594_814992 = sub_489B80(*(int*)&nox_wol_wnd_world_814980);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 150,
+      "text": "*getMemU32Ptr(0x5D4594, 815008) = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10001);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 151,
+      "text": "dword_5d4594_815016 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10038);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 152,
+      "text": "dword_5d4594_815020 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10039);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 153,
+      "text": "dword_5d4594_815024 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10040);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 154,
+      "text": "dword_5d4594_815028 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10041);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 155,
+      "text": "dword_5d4594_815032 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10042);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 156,
+      "text": "v2 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10002);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 160,
+      "text": "v3 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10003);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 162,
+      "text": "v4 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10046);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 167,
+      "text": "nox_xxx_wnd_46B280(*getMemIntPtr(0x5D4594, 815008), *(int*)&nox_wol_wnd_world_814980);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 252,
+      "text": "v19 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10054);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 254,
+      "text": "v20 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10055);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 256,
+      "text": "v21 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10056);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 258,
+      "text": "v22 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10057);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 261,
+      "text": "sub_46ACE0(*(uint32_t**)&nox_wol_wnd_world_814980, 10047, 10051, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 264,
+      "text": "v23 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10002);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 265,
+      "text": "nox_window_call_field_94(*(int*)&nox_wol_wnd_world_814980, 16391, (int)v23, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 267,
+      "text": "v24 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10020);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 285,
+      "text": "sub_46AD20(*(uint32_t**)&nox_wol_wnd_world_814980, 10006, 10007, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 286,
+      "text": "sub_46ACE0(*(uint32_t**)&nox_wol_wnd_world_814980, 10047, 10051, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 387,
+      "text": "nox_xxx_dialogMsgBoxCreate_449A10(*(int*)&nox_wol_wnd_world_814980, 0, 0, 0, 0, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 409,
+      "text": "nox_xxx_dialogMsgBoxCreate_449A10(nox_wol_wnd_world_814980, 0, (int)v3, 33, 0, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 692,
+      "text": "*getMemU32Ptr(0x5D4594, 815036) = sub_4A2610(*(int*)&nox_wol_wnd_world_814980, &v30, v7);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 793,
+      "text": "sub_46AD20(*(uint32_t**)&nox_wol_wnd_world_814980, 10006, 10007, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 794,
+      "text": "sub_46ACE0(*(uint32_t**)&nox_wol_wnd_world_814980, 10047, 10051, 1);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 806,
+      "text": "nox_xxx_dialogMsgBoxCreate_449A10(*(int*)&nox_wol_wnd_world_814980, 0, (int)v23, 33, 0, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 825,
+      "text": "v17 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, v16);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 826,
+      "text": "nox_window_call_field_94(*(int*)&nox_wol_wnd_world_814980, 16391, (int)v17, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 830,
+      "text": "v18 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10020);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 855,
+      "text": "v17 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, v16);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 856,
+      "text": "nox_window_call_field_94(*(int*)&nox_wol_wnd_world_814980, 16391, (int)v17, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 860,
+      "text": "v18 = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&nox_wol_wnd_world_814980, 10020);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 969,
+      "text": "return nox_xxx_dialogMsgBoxCreate_449A10(*(int*)&nox_wol_wnd_world_814980, 0, (int)v0, 34, 0, 0);"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 976,
+      "text": "if (nox_wol_wnd_world_814980) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 992,
+      "text": "if (nox_wol_wnd_world_814980) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 1066,
+      "text": "*(uint32_t*)&buf[16] = nox_wol_wnd_world_814980;"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 5,
+      "text": "nox_window* nox_wol_wnd_world_814980 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 108,
+      "text": "extern nox_window* nox_wol_wnd_world_814980;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 505,
+      "text": "sub_46AD20(*(uint32_t**)&nox_wol_wnd_world_814980, 10070, nox_wol_server_result_cnt_815088 + 10069, a1);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 624,
+      "text": "nox_xxx_windowFocus_46B500(*(int*)&nox_wol_wnd_world_814980);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 629,
+      "text": "nox_xxx_windowFocus_46B500(*(int*)&nox_wol_wnd_world_814980);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 884,
+      "text": "nox_xxx_windowFocus_46B500(*(int*)&nox_wol_wnd_world_814980);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 903,
+      "text": "if (nox_wol_wnd_world_814980) {"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 904,
+      "text": "nox_xxx_windowDestroyMB_46C4E0(*(uint32_t**)&nox_wol_wnd_world_814980);"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 905,
+      "text": "nox_wol_wnd_world_814980 = 0;"
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 1059,
+      "text": "nox_window_set_hidden(*(int*)&nox_wol_wnd_world_814980, 1);"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 7,
+      "text": "extern nox_window* nox_wol_wnd_world_814980;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 563,
+      "text": "extern nox_window* nox_wol_wnd_world_814980;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 936,
+      "text": "return asWindow(C.nox_wol_wnd_world_814980)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 399,
+      "text": "{0x5D4594, 814980, 4, \"nox_wol_wnd_world_814980\"},                // 0x69B518"
+    }
+  ],
+  "qword_5d4594_814956": [
+    {
+      "file": "src/legacy/network.go",
+      "line": 19,
+      "text": "extern unsigned long long qword_5d4594_814956;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 39,
+      "text": "extern uint64_t qword_5d4594_814956;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 311,
+      "text": "if ((unsigned long long)nox_platform_get_ticks() < *(uint64_t*)&qword_5d4594_814956) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 320,
+      "text": "*(uint64_t*)&qword_5d4594_814956 = nox_platform_get_ticks() + 20000;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 875,
+      "text": "*(uint64_t*)&qword_5d4594_814956 = nox_platform_get_ticks() + 20000;"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 134,
+      "text": "uint64_t qword_5d4594_814956 = 0;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 131,
+      "text": "extern uint64_t qword_5d4594_814956;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 1200,
+      "text": "C.qword_5d4594_814956 = C.ulonglong(v)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 398,
+      "text": "{0x5D4594, 814956, 8, \"qword_5d4594_814956\"},                     // 0x69B500"
+    }
+  ],
+  "qword_5d4594_815068": [
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 40,
+      "text": "extern uint64_t qword_5d4594_815068;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 224,
+      "text": "*(uint64_t*)&qword_5d4594_815068 = nox_platform_get_ticks() + 1000;"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 370,
+      "text": "if (nox_platform_get_ticks() > qword_5d4594_815068) {"
+    },
+    {
+      "file": "src/legacy/client__shell__noxworld.c",
+      "line": 894,
+      "text": "*(uint64_t*)&qword_5d4594_815068 = nox_platform_get_ticks() + 1000;"
+    },
+    {
+      "file": "src/legacy/vardefs.c",
+      "line": 133,
+      "text": "uint64_t qword_5d4594_815068 = 0;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 130,
+      "text": "extern uint64_t qword_5d4594_815068;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 987,
+      "text": "C.qword_5d4594_815068 = C.ulonglong(v)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 418,
+      "text": "{0x5D4594, 815068, 8, \"qword_5d4594_815068\"},                     // 0x69B570"
+    }
+  ]
+}

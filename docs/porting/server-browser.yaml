@@ -1,0 +1,21 @@
+# Run with OPENNOX_ISOLATE_NETWORK=1 for deterministic empty discovery results.
+# Menu and browser coordinates use 2x scaling.
+steps:
+- {action: click, name: dismiss title, x: 320, y: 240, dt: 300}
+- {action: click, name: multiplayer, x: 560, y: 336, dt: 100}
+- {action: screen, name: browser_initial, dt: 120}
+- {action: click, name: sort names, x: 528, y: 80, dt: 10}
+- {action: screen, name: browser_name_sort, dt: 10}
+- {action: click, name: reverse names, x: 528, y: 80, dt: 10}
+- {action: click, name: sort occupancy, x: 700, y: 80, dt: 10}
+- {action: click, name: sort mode, x: 825, y: 80, dt: 10}
+- {action: click, name: sort ping, x: 947, y: 80, dt: 10}
+- {action: click, name: sort status, x: 1065, y: 80, dt: 10}
+- {action: screen, name: browser_sorted, dt: 20}
+- {action: click, name: back to menu, x: 230, y: 848, dt: 20}
+- {action: screen, name: browser_closed, dt: 100}
+- {action: click, name: reopen multiplayer, x: 560, y: 336, dt: 100}
+- {action: screen, name: browser_reopened, dt: 120}
+- {action: click, name: host game, x: 230, y: 130, dt: 20}
+- {action: screen, name: browser_host, dt: 100}
+- {action: quit, dt: 20}

@@ -61,6 +61,13 @@ env = dict(os.environ,GODEBUG=os.environ.get('GODEBUG','')+',randautoseed=0',
            NOX_E2E_OVERRIDE='true' if mode=='capture' else 'false')
 cmd = ['xvfb-run','-a','-s','-screen 0 1280x960x24 -nolisten tcp',str(binary),
        '-data',str(run/'data'),'-window','-pprof','127.0.0.1:0']
+isolated_network = os.environ.get('OPENNOX_ISOLATE_NETWORK') == '1'
+if isolated_network:
+    # Browser scenarios must not depend on public lobby or LAN discoveries.
+    # Bring up loopback only in the child's namespace; host networking is intact.
+    env['NOX_LOBBY_ADDR'] = 'http://127.0.0.1:9'
+    cmd = ['unshare', '--net', '--', 'sh', '-c',
+           'ip link set lo up && exec "$@"', 'scenario-net', *cmd]
 start = time.monotonic()
 with (run/'output.log').open('w') as log:
     try:
@@ -71,6 +78,7 @@ report = dict(exit=code,process_exit=code,elapsed=time.monotonic()-start,capture
               godebug=env['GODEBUG'],reference=str(reference) if reference else None,
               binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),command=cmd,
               display_implementation=os.environ.get('OPENNOX_DISPLAY_IMPLEMENTATION',''),
+              isolated_network=isolated_network,
               removed_maps=len(removed))
 if code == 0 and removed:
     regenerated=[]
