@@ -205,13 +205,19 @@ size_t nox_xxx_cmdSayDo_46A4B0(wchar2_t* a1, int a2) {
 	const wchar2_t* v5; // edi
 	char v6;           // al
 	int v7;            // eax
-	char v8[520];      // [esp+Ch] [ebp-208h]
+	char* v8;
 
 	v2 = nox_xxx_netSpriteByCodeDynamic_45A6F0(nox_player_netCode_85319C);
 	v3 = nox_wcsspn(a1, L" ");
 	result = nox_wcslen(a1);
 	if (v3 != result) {
 		v5 = &a1[v3];
+		// Console callers can exceed the chat widget's input limit. Keep the original
+		// byte-sized wire count, but give formatting enough room for every input unit.
+		size_t units = nox_wcslen(v5);
+		if (units > (SIZE_MAX - 13) / 2) return 0;
+		v8 = malloc(13 + 2 * units);
+		if (!v8) return 0;
 		v8[0] = -88; // MSG_TEXT_MESSAGE
 		*(uint16_t*)&v8[9] = 0;
 		*(uint16_t*)&v8[1] = nox_player_netCode_85319C;
@@ -241,6 +247,7 @@ size_t nox_xxx_cmdSayDo_46A4B0(wchar2_t* a1, int a2) {
 			*(uint16_t*)&v8[4] = -1;
 		}
 		result = nox_netlist_addToMsgListCli_40EBC0(31, 0, v8, v7 * (unsigned char)v8[8] + 11);
+		free(v8);
 	}
 	return result;
 }

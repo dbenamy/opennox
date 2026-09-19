@@ -13,8 +13,9 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 Qualified production parent **b30f96a3** is committed/pushed. Thirteen original-C
 contract roots pass in c-timing-initial and independently repeat in c-initial-repeat
 with every capture unchanged; static-timing passes. All jobs are joined.
-This is a test-development recovery checkpoint, **not a qualified C baseline**.
-Production source is unchanged; C remains13,442 /57 files /zero reference.
+Recovery checkpoint **6c851a78** is committed/pushed, **not a qualified C baseline**.
+Its production source was unchanged, C13,442 /57 files /zero reference. The working
+prerequisites below now modify production and need fresh qualification.
 See [CLIENT_INTERACTION.md](docs/porting/CLIENT_INTERACTION.md) and the tracked
 initial manifest/checkpoint for portable rerun instructions and remaining gates.
 
@@ -24,18 +25,54 @@ clock/cursor and modal/frame ordering. Corrected fixture assumptions: resource
 background images use a separate loader; named font registration does not replace
 renderer fallback. No production behavior was changed to satisfy those contracts.
 No final goldens are frozen. Installed test drafts are consumed; never recopy them.
-Remaining: cursor hover, centered messages/chat lengths, paper-doll drawing, pickup,
-secondary-weapon sends, HUD visibility and escape ordering; then full baseline.
-Text review found fixed-buffer boundaries to address before freezing undefined
-cases: centered-message rows and the chat-format temporary. Decisions remain to
-be implemented/qualified; no C prerequisite correction is installed yet.
+Remaining: hover enumeration, paper-doll drawing, chat draw/submit/input, HUD
+visibility and Escape ordering; then full baseline.
+Text prerequisites are now installed but unqualified: centered rows copy at most
+317 UTF-16 units, chat formatting allocates from input length, and the shared console
+formatter uses a bounded512-unit fast path plus input-sized retry. The latter has
+two remaining C call sites; synchronous Go console printing owns its string before
+return. Working C13,456 /57 files /zero reference (+14 prerequisite lines; the
+header correction is outside the C LOC measure).
+
+The first long-text run (c-messages-initial/session21268) was deliberately terminated
+and joined during discovery when review found the additional fixed512-unit console
+buffer. It produced no accepted test evidence. All children in its process group
+were joined/absent before edits. Sixteen roots pass in c-messages-second (session86817 joined), with all thirteen
+earlier capture hashes unchanged. New independent contracts cover centered-row neighbors,
+full console text, chat count/encoding boundaries, and mixed variadic console
+formatting across the stack/heap threshold. Qualification and final capture freeze
+remain pending; the broader scope is still incomplete.
 
 The 83-body selection/reachability/owner audits and review notes remain under
 `build/port-client-interaction`. Scope review must include non-dword named owners,
 raw registrations, text storage bounds and GUI callback lifetime. Draft dispatcher
-is now installed: do not copy it over later edits. Next: contracts for real resource
-lifecycle, rendering, game actions and ordered modal/escape behavior, then baseline
+is now installed: do not copy it over later edits. Next: finish rendering, pickup, cursor and ordered modal/escape contracts, then baseline
 qualification before conversion. Preserve the parent native manifest and captures.
+
+Extended development checkpoint passes19/18/19 roots and matching captures on
+default/server/highres, no skips;2,737 source fingerprints agree. The nineteen
+default captures repeat unchanged from c-hover-second. Static-extended passes.
+All jobs are joined. See client-interaction-extended-{batch,checkpoint}.json and
+extended-tests.txt. This is not a production qualification or final frozen baseline.
+New coverage:27 centered-text boundaries,624 chat cases,44 console-format cases,
+48 pixel/expiry cases,90 pickup/secondary cases, and2,250 circle/box hover boundary
+points plus18 eligibility gates and depth ordering. Hover uses actual client
+visibility, deliberately unavailable in the server build; that is its sole omission.
+Fixture corrections: correct color encoding,11px cap-height plus4px line spacing,
+and capsule geometry independently expressed as distance to its vertical segment.
+All earlier capture hashes remain unchanged.
+
+Next: install/review the ignored hud-draft.go and chat-events-draft.go (NOT yet
+installed), then complete hover enumeration, paper-doll and ordered Escape coverage.
+HUD draft owns actual windows and observes existing FPS/drag functions; review its
+cleanup and empty dragged-item state. Chat draft covers resize/clamp/composition
+widths and low16 submission length with actual queue bytes. Earlier installed
+hover/pickup/drawing drafts and hover-box insertion are consumed. Never recopy them.
+
+Disk cleanup removed62 rebuildable Go cache data files >=64MiB, each unaccessed and
+unmodified for six hours, after all builds were joined. Reclaimed4,364,972,826 bytes.
+The audit/removal manifests under build/port-client-interaction are retained;
+removal is consumed. Assets, source and qualification evidence were untouched.
 
 All three final session-dialog scenario copies have now been hash-deduplicated:
 1,669,136,451 additional bytes reclaimed. Audit/apply jobs are joined; deletion

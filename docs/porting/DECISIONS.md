@@ -2111,3 +2111,25 @@ corrected Go uses EndPos and an independent three-position regression. Preserve
 unrestricted-filter return-before-read ordering and the raw MOTD visibility flags.
 All frozen captures and final fresh production scenarios remain unchanged. See
 [SESSION_DIALOGS.md](SESSION_DIALOGS.md).
+
+
+### Client interaction text prerequisites — production qualification pending
+
+Direct Go console callers can exceed GUI input limits. Before freezing the C
+baseline, bound centered text to317 UTF-16 units plus NUL (full text still reaches
+the console), allocate the chat-format temporary from input length, and replace
+the console formatter's static512-unit unbounded write with bounded local formatting
+and a correctly copied variadic retry into allocated storage. Preserve ordinary
+text, encoding/byte-count wrap, leading spaces, control words and queue results.
+Return failure for impossible allocation sizes or allocation failure. These are
+reversible prerequisite corrections to previously undefined out-of-array writes;
+review the truncation choice after the port. Existing UTF-16 code-unit semantics
+are preserved, including a split surrogate at the centered-text boundary.
+
+Focused independent contracts pass on default/server/highres, including the
+console helper's mixed-argument retry. Full production/affected-corpus qualification
+is still pending; the last production-qualified parent is b30f96a3. The shared
+console helper also serves a localized notice in client decoding, which stays in
+the affected review scope. Working C13,456 /57 files /zero reference (+14 lines);
+headers are excluded from that count. See CLIENT_INTERACTION.md and the extended
+checkpoint manifest for exact evidence and remaining gates.

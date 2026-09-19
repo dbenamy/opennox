@@ -4,6 +4,7 @@ package legacy
 
 /*
 #include "defs.h"
+#include "client__gui__guicon.h"
 #include <stdint.h>
 void nox_xxx_clientTalk_42E7B0(nox_drawable* a1p);
 void nox_xxx_clientCollideOrUse_42E810(nox_drawable* a1p);
@@ -84,6 +85,9 @@ int sub_49B6E0();
 int nox_xxx_guiChatIconLoad_445650();
 int sub_48C9F0(int* a1);
 int sub_48C980();
+static int port_test_interaction_console(wchar2_t* format, wchar2_t* wide, char* narrow, int number) {
+	return nox_gui_console_Printf_450C00(NOX_CONSOLE_RED, format, wide, narrow, number);
+}
 static uint64_t port_test_interaction(int op,uintptr_t a0,uintptr_t a1,uintptr_t a2,uintptr_t a3,uintptr_t a4,uintptr_t a5,uintptr_t a6) {
 switch(op) {
 case 0: nox_xxx_clientTalk_42E7B0((nox_drawable*)a0); return 0;
@@ -170,6 +174,7 @@ return 0;
 }
 */
 import "C"
+import "unsafe"
 
 func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 	var a [7]uintptr
@@ -339,4 +344,8 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 		panic(op)
 	}
 	return uint64(C.port_test_interaction(C.int(id), C.uintptr_t(a[0]), C.uintptr_t(a[1]), C.uintptr_t(a[2]), C.uintptr_t(a[3]), C.uintptr_t(a[4]), C.uintptr_t(a[5]), C.uintptr_t(a[6])))
+}
+
+func PortTestClientInteractionConsole(format, wide *uint16, narrow *byte, number int32) int {
+	return int(C.port_test_interaction_console((*C.wchar2_t)(unsafe.Pointer(format)), (*C.wchar2_t)(unsafe.Pointer(wide)), (*C.char)(unsafe.Pointer(narrow)), C.int(number)))
 }

@@ -204,55 +204,55 @@
     "symbol": "nox_xxx_cmdSayDo_46A4B0",
     "line": 201,
     "start": 6755,
-    "end": 7896,
-    "lines": 46
+    "end": 8169,
+    "lines": 53
   },
   {
     "file": "src/legacy/GAME2_1.c",
     "symbol": "sub_46A5D0",
-    "line": 249,
-    "start": 7974,
-    "end": 8787,
+    "line": 256,
+    "start": 8247,
+    "end": 9060,
     "lines": 26
   },
   {
     "file": "src/legacy/GAME2_1.c",
     "symbol": "sub_46A6A0",
-    "line": 277,
-    "start": 8865,
-    "end": 9358,
+    "line": 284,
+    "start": 9138,
+    "end": 9631,
     "lines": 15
   },
   {
     "file": "src/legacy/GAME2_1.c",
     "symbol": "sub_46A730",
-    "line": 294,
-    "start": 9436,
-    "end": 10225,
+    "line": 301,
+    "start": 9709,
+    "end": 10498,
     "lines": 20
   },
   {
     "file": "src/legacy/GAME2_1.c",
     "symbol": "sub_46A7E0",
-    "line": 316,
-    "start": 10303,
-    "end": 10504,
+    "line": 323,
+    "start": 10576,
+    "end": 10777,
     "lines": 9
   },
   {
     "file": "src/legacy/GAME2_1.c",
     "symbol": "sub_46A820",
-    "line": 327,
-    "start": 10582,
-    "end": 10835,
+    "line": 334,
+    "start": 10855,
+    "end": 11108,
     "lines": 9
   },
   {
     "file": "src/legacy/GAME2_1.c",
     "symbol": "sub_46A860",
-    "line": 338,
-    "start": 10913,
-    "end": 11261,
+    "line": 345,
+    "start": 11186,
+    "end": 11534,
     "lines": 14
   },
   {
@@ -604,8 +604,8 @@
     "symbol": "nox_xxx_printCentered_445490",
     "line": 7,
     "start": 208,
-    "end": 912,
-    "lines": 19
+    "end": 1123,
+    "lines": 26
   },
   {
     "file": "src/legacy/client__gui__guiggovr.c",

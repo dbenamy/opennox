@@ -66,3 +66,11 @@ func PortTestClientInteractionWords() (map[string]*uint32, func()) {
 		}
 	}
 }
+
+// PortTestClientInteractionGlyphCache binds the existing eligibility cache to the
+// fixture's actual Things table and restores the preceding owner's value.
+func PortTestClientInteractionGlyphCache(id uint32) func() {
+	old := glyphClientType
+	glyphClientType = id
+	return func() { glyphClientType = old }
+}

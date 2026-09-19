@@ -15,7 +15,14 @@ void nox_xxx_printCentered_445490(wchar2_t* a1) {
 			v1 = 0;
 			*(unsigned int*)&dword_5d4594_825736 = 0;
 		}
-		nox_wcscpy(getMemU16Ptr(0x5D4594, 823804 + 644 * v1), a1);
+		// Each row has 318 text units before its expiry word, including the terminator.
+		wchar2_t* text = getMemU16Ptr(0x5D4594, 823804 + 644 * v1);
+		size_t length = 0;
+		while (length < 317 && a1[length]) {
+			text[length] = a1[length];
+			++length;
+		}
+		text[length] = 0;
 		v2 = 644 * *(unsigned int*)&dword_5d4594_825736;
 		*getMemUintPtr(0x5D4594, 824440 + v2) = gameFrame() + 4 * gameFPS() + gameFPS();
 		*getMemU8Ptr(0x5D4594, 824444 + v2) = 0;
