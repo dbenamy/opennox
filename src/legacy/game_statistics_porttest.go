@@ -5,7 +5,6 @@ package legacy
 /*
 #include <stdlib.h>
 #include <stdint.h>
-extern uint32_t dword_5d4594_534808;
 */
 import "C"
 import "unsafe"
@@ -146,7 +145,6 @@ func PortTestStatisticsGlobals() (map[string]*uint32, func()) {
 		"array-count": &statisticsArrayCount,
 		"random-a":    &statisticsRandomA,
 		"random-b":    &statisticsRandomB,
-		"services":    (*uint32)(unsafe.Pointer(&C.dword_5d4594_534808)),
 	}
 	saved := map[string]uint32{}
 	for k, p := range words {

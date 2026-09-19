@@ -2,27 +2,52 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about11.9k lines** — **11,898 physical lines in50
-production `.c` files**, zero reference C. This batch removes **1,558 lines**
-from its corrected C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
+**Qualified C remaining: about11.4k lines** — **11,409 physical lines in49
+production `.c` files**, zero reference C. This batch removes **489 lines**.
+See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Active — legacy online session C baseline qualified
+## Current — legacy online session conversion qualified
 
-Qualified parent **cc21d5db** is pushed. The28-body /475-line connected scope has
-frozen C captures. Default/server/highres each pass120 affected roots; all
-inherited captures remain unchanged. New timer/status captures match across all
-three targets and an independent default repeat. Static checks pass. Production
-source differs from cc21d5db only by the two porttest files, so its qualified
-production/ABI/full-suite/four-scenario evidence is reused explicitly.
+C baseline **f73daa4e** and qualified parent **cc21d5db** are pushed. The28-body /
+475-line connected scope is complete: live retry/status/briefing/map behavior is
+Go, unreachable list/service/account branches are retired, and empty legacy queue
+failure callbacks remain. Six owners move to Go; eleven unused owners,27 private
+selected interfaces and the old C logging callback retire. sub_41D1A0 remains
+exported for its actual C decoder caller. The log formatter C unit is removed.
 
-All jobs are joined (including sessions9082/49013/82234 and repeat59363).
-C remains11,898 /50 files /zero reference. See ONLINE_SESSION.md and tracked
-online-session-{selection,batch,c-qualification}.json. Next: commit/push this
-baseline, translate live state/timers and retire unreachable service/list paths,
-then qualify fresh native production. build/port-old-online/native-draft.go is
-NOT installed; review it before use. No user decision is pending.
+Default/server/highres each pass120 affected roots and67 manifest captures,
+including28,800 timer/state/log cases and exact inherited expectations. Static
+checks pass. Fresh three-target production binaries pass ABI/export audits. The
+full suite matches all1,553 known failure entries and15 pass /3 fail /32 skip
+packages. Dialog, gameplay and save/load scenarios all pass. Production session
+36843 and every other test/build/scenario job are joined.
+
+The first production run exposed TestReadMemmap's stale1,396-variable minimum
+when the inventory reached1,379. The corrected tooling test checks actual mapping
+round-trip preservation plus an independent four-entry fixture; it passes. This
+was the only source change after affected sweeps, verified by fingerprints; no
+production or affected-test source changed. Final production/full-suite evidence
+uses the corrected test. The failed run is retained and is not qualification.
+
+See [ONLINE_SESSION.md](docs/porting/ONLINE_SESSION.md) and tracked
+online-session-native-{batch,qualification}.json. Evidence:
+`build/port-old-online/native-affected-*`, `static-native.log`,
+`memmap-tooling.log` and `native-production-final`.
+
+Native-draft.go, install-native.py and freeze-native.py are CONSUMED. Do not replay
+them over reviewed source. Original assets/archive remain untouched. All past
+asset/cache deletion modes are consumed; per-run restoration manifests remain.
+Five completed client-interaction native copies reclaimed2,781,854,423 bytes.
+Online-session native scenario copies have not yet been deduplicated.
+
+Next: commit/push this qualified conversion, then audit the remaining script
+bindings/object commands/callback transfer. Read-only selection under
+`build/port-script-builtins` has22 bodies /472 lines; two predicate callbacks
+use an unpassed argument for missing-object results. Review/correct that undefined
+case before freezing a new C baseline. No candidate source or tests are installed.
+No user decision is pending.
 
 ## Current — client interaction Go conversion qualified
 
@@ -1737,3 +1762,10 @@ C body lines spanning remaining chat/cursor/interaction/game GUI. Selection is
 provisional; audit actual callers, callbacks and shared owners before committing
 to scope. No next-batch source installed. Keep packet reorder/update decoding
 separate; choose connected behavior, not neighboring addresses.
+
+
+Read-only next candidate: build/port-script-builtins/selection-draft.json and
+plan-draft.md,22 remaining script/object/callback-transfer bodies /472 lines.
+Two predicate callbacks have an unpassed-argument fallback to review before a C
+baseline. No source/tests installed for this candidate. Finish the active online
+session conversion and push before beginning the next implementation.

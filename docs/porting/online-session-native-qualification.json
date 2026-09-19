@@ -1,0 +1,146 @@
+{
+  "status": "qualified native conversion",
+  "c_baseline": "f73daa4e",
+  "qualified_parent": "cc21d5db",
+  "source_files": 2753,
+  "targets": {
+    "default": {
+      "roots": 120,
+      "manifest_captures": 67,
+      "wall_seconds": 200.8861741940491
+    },
+    "server": {
+      "roots": 120,
+      "manifest_captures": 67,
+      "wall_seconds": 204.04840236180462
+    },
+    "highres": {
+      "roots": 120,
+      "manifest_captures": 67,
+      "wall_seconds": 202.78554147202522
+    }
+  },
+  "production": "build/port-old-online/native-production-final/production/production.json",
+  "static": "build/port-old-online/static-native.log",
+  "tooling_only_delta": {
+    "default": {
+      "source_differences": [
+        "src/internal/blobs/memmap_test.go"
+      ],
+      "production_and_affected_test_source_identical": true,
+      "before": "3e58daa8590fe3d058952defa3ff1cd625ef04f510d3b44b34075de98e3ebc59",
+      "after": "158a3056011c767931afcdd8f67ff3fe7bc83c7157c007664fd30cfc4cfccf67"
+    },
+    "server": {
+      "source_differences": [
+        "src/internal/blobs/memmap_test.go"
+      ],
+      "production_and_affected_test_source_identical": true,
+      "before": "3e58daa8590fe3d058952defa3ff1cd625ef04f510d3b44b34075de98e3ebc59",
+      "after": "158a3056011c767931afcdd8f67ff3fe7bc83c7157c007664fd30cfc4cfccf67"
+    },
+    "highres": {
+      "source_differences": [
+        "src/internal/blobs/memmap_test.go"
+      ],
+      "production_and_affected_test_source_identical": true,
+      "before": "3e58daa8590fe3d058952defa3ff1cd625ef04f510d3b44b34075de98e3ebc59",
+      "after": "158a3056011c767931afcdd8f67ff3fe7bc83c7157c007664fd30cfc4cfccf67"
+    }
+  },
+  "tooling_test": "build/port-old-online/memmap-tooling.log",
+  "retirement": {
+    "retained": [
+      "sub_41D1A0"
+    ],
+    "retired": [
+      "nox_xxx_networkLog_print",
+      "nox_xxx_networkLog_printf_413D30",
+      "nox_xxx_officialStringCmp_41FDE0",
+      "nox_xxx_reconAttempt_41E390",
+      "nox_xxx_reconStart_41E400",
+      "sub_40E090",
+      "sub_41D1B0",
+      "sub_41D650",
+      "sub_41D670",
+      "sub_41D6C0",
+      "sub_41DA10",
+      "sub_41DA70",
+      "sub_41E2F0",
+      "sub_41E370",
+      "sub_41E470",
+      "sub_41E4B0",
+      "sub_41EC30",
+      "sub_41F4B0",
+      "sub_41F790",
+      "sub_41F800",
+      "sub_41FA40",
+      "sub_41FA50",
+      "sub_41FBE0",
+      "sub_4200E0",
+      "sub_420100",
+      "sub_420230",
+      "sub_420360",
+      "sub_4207E0"
+    ],
+    "moved_owners": {
+      "dword_5d4594_10984": "onlineConnectionFailed",
+      "dword_5d4594_527988": "onlineSessionStatus",
+      "dword_5d4594_528252": "onlineRetryPending",
+      "dword_5d4594_528256": "onlineRetryActive",
+      "dword_5d4594_528260": "onlineRetryDeadline",
+      "dword_5d4594_528264": "onlineRetryOrigin"
+    },
+    "retired_owners": [
+      "dword_587000_60044",
+      "dword_5d4594_2660652",
+      "dword_5d4594_529316",
+      "dword_5d4594_529332",
+      "dword_5d4594_529336",
+      "dword_5d4594_529340",
+      "dword_5d4594_531648",
+      "dword_5d4594_531652",
+      "dword_5d4594_531656",
+      "dword_5d4594_534808",
+      "nox_log_buf"
+    ]
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 49,
+      "lines": 11409
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "delta_from_baseline": -489,
+  "full_suite": {
+    "exit": 1,
+    "wall_seconds": 54.010272945975885,
+    "failure_entries": 1553,
+    "packages": {
+      "skip": 32,
+      "pass": 15,
+      "fail": 3
+    },
+    "exact_failure_multiset_match": true,
+    "exact_package_result_match": true
+  },
+  "scenarios": {
+    "online-session-native-ui": {
+      "exit": 0,
+      "wall_seconds": 22.568675738060847
+    },
+    "online-session-native": {
+      "exit": 0,
+      "wall_seconds": 68.02962179388851
+    },
+    "online-session-native-save": {
+      "exit": 0,
+      "wall_seconds": 45.02430183487013
+    }
+  }
+}

@@ -2150,3 +2150,19 @@ without dereferencing it. This preserves the32-bit value and avoids constructing
 invalid Go pointers from scalar state. Existing boundary contracts cover the
 values. Both decisions are reversible and recorded for later review; neither
 changes a reachable game feature. See CLIENT_INTERACTION.md.
+
+### Legacy online session reachability and shrinking mapping inventory
+
+Keep live retry/status/briefing/map-marker behavior, while retiring list/service
+branches whose population code is gone. The account selector remains at−1 and all
+twelve shipped legacy queue pointers remain zero; preserve their live failure
+callbacks rather than inventing unreachable state for tests. Root-visible state
+moves to Go, and the final C log formatter retires with its three callers.
+C timer captures include28,800 boundary cases and exact signed-frame log order.
+
+The full-suite mapping-reader test required at least1,396 C variables. Removing17
+owners crosses that historical threshold without breaking parsing. Replace this
+count with actual mapping round-trip preservation and a small independent parser
+fixture. This is a reversible test-infrastructure correction, not a change to
+production mapping behavior. Other known suite failures remain recorded. See
+[ONLINE_SESSION.md](ONLINE_SESSION.md).

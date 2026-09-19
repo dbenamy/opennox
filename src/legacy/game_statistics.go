@@ -164,11 +164,7 @@ func statisticsSend(report unsafe.Pointer, mode int) uint32 {
 	data := statisticsReport(report, mode, int16(memmap.Uint32(0x5D4594, 741308)))
 	_, n := statisticsEncode(data)
 	*memmap.PtrInt32(0x5D4594, 741312) = n
-	var address [72]C.char
-	value := C.ushort(mode)
-	if C.sub_420360(&address[0], &value) != 0 {
-		C.abort()
-	}
+	// The legacy service directory has no population path.
 	return 1
 }
 func statisticsFlush() uint32 {

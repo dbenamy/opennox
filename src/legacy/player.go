@@ -259,7 +259,7 @@ func Sub_425AD0(a1 int, a2 *uint16) unsafe.Pointer {
 }
 
 func Sub_41D670(a1 string) {
-	C.sub_41D670(internCStr(a1))
+	// The former service list has no population path.
 }
 
 func Sub_4DF3C0(p *server.Player) {

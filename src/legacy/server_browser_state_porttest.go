@@ -8,8 +8,6 @@ package legacy
 #include "GAME1_3.h"
 #include "GAME2_3.h"
 #include "client__shell__noxworld.h"
-extern uint32_t dword_5d4594_528252;
-extern uint32_t dword_5d4594_528256;
 */
 import "C"
 import "unsafe"
@@ -21,8 +19,8 @@ func PortTestServerBrowserWords() (map[string]*uint32, func()) {
 		"dword_5d4594_1305788":             (*uint32)(unsafe.Pointer(&browserUI.polygonsReady)),
 		"dword_5d4594_1307716":             (*uint32)(unsafe.Pointer(&browserUI.popup)),
 		"dword_5d4594_1307720":             (*uint32)(unsafe.Pointer(&browserUI.popupCount)),
-		"dword_5d4594_528252":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_528252)),
-		"dword_5d4594_528256":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_528256)),
+		"dword_5d4594_528252":              (*uint32)(unsafe.Pointer(&onlineRetryPending)),
+		"dword_5d4594_528256":              (*uint32)(unsafe.Pointer(&onlineRetryActive)),
 		"dword_5d4594_814548":              (*uint32)(unsafe.Pointer(&browserUI.connectionState)),
 		"dword_5d4594_814624":              (*uint32)(unsafe.Pointer(&browserUI.selected)),
 		"dword_5d4594_814984":              (*uint32)(unsafe.Pointer(&browserUI.mapWindow)),

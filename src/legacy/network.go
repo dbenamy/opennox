@@ -77,11 +77,6 @@ func ip2int(ip netip.Addr) uint32 {
 	return v
 }
 
-//export nox_xxx_networkLog_print
-func nox_xxx_networkLog_print(cstr *C.char) {
-	NetworkLogPrint(GoString(cstr))
-}
-
 //export nox_client_setServerConnectAddr_435720
 func nox_client_setServerConnectAddr_435720(addr *C.char) {
 	ClientSetServerHost(GoString(addr))
@@ -186,7 +181,7 @@ func Sub_43C650() {
 }
 
 func Sub_41D6C0() {
-	C.sub_41D6C0()
+	// The former service list has no population path.
 }
 
 func Sub_49C7A0() {

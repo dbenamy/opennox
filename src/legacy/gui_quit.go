@@ -42,11 +42,11 @@ func Sub_509CB0() {
 }
 
 func Sub_41F4B0() {
-	C.sub_41F4B0()
+	onlineSessionListCleanup()
 }
 
 func Sub_41EC30() {
-	C.sub_41EC30()
+	onlineSessionListCleanup()
 }
 
 func Sub_446490(v int) {

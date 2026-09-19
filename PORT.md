@@ -14,19 +14,21 @@
 
 ## Current status
 
-Client interaction and the remaining game dialogs now use Go:78 live routines
-translated, four orphan bodies and one constant-false getter removed,67 private C
-exports retired, and20 state owners moved to Go. Eleven selected exports remain
-for actual C callers/callbacks. Four former session-dialog exports are also retired.
-See [CLIENT_INTERACTION.md](docs/porting/CLIENT_INTERACTION.md).
+The remaining legacy online-session helpers now use Go or reduce to their
+reachable empty-state behavior. Six owners move to Go; eleven unused owners,
+27 private selected C interfaces and the old C log callback are retired. Only the
+briefing-state setter remains exported for its live decoder caller. See
+[ONLINE_SESSION.md](docs/porting/ONLINE_SESSION.md).
 
-Latest qualified production C is **11,898 physical lines in50 files**, zero
-reference C: **1,558 fewer lines** than this batch's corrected C baseline.
-Default/server/highres affected captures, fresh production builds/ABI, exact known
-full-suite outcomes and dialog/gameplay/save-load/inventory scenarios all pass.
-See [PORTING_STATE.md](PORTING_STATE.md) for the current recovery checkpoint.
+Latest qualified production C is **11,409 physical lines in49 files**, zero
+reference C: **489 fewer lines** in this batch. All-target affected tests/captures,
+fresh production builds/ABI, exact known full-suite outcomes, and dialog/gameplay/
+save-load scenarios pass. A stale mapping-reader test minimum was replaced with
+round-trip checks and an independent fixture as the C-owner inventory shrank.
+See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
-Previous completed GUI batches include the
+Previous completed GUI batches include
+[client interaction](docs/porting/CLIENT_INTERACTION.md), the
 [server browser](docs/porting/SERVER_BROWSER.md) and
 [session dialogs](docs/porting/SESSION_DIALOGS.md).
 

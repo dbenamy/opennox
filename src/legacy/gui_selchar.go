@@ -100,10 +100,10 @@ func sub_450580() { Sub_450580() }
 func sub_4DB170(a1 int, a2 unsafe.Pointer, a3 int) { Sub_4DB170(a1 != 0, a2, a3) }
 
 func Sub_41E470() {
-	C.sub_41E470()
+	onlineSessionRetry()
 }
 func Nox_xxx_reconStart_41E400() {
-	C.nox_xxx_reconStart_41E400()
+	onlineSessionStart()
 }
 func Sub_467C10() int {
 	return uiInventoryCloseWindow()
@@ -127,7 +127,7 @@ func Nox_xxx_playerAnimCheck_4372B0() int {
 	return int(nox_xxx_playerAnimCheck_4372B0())
 }
 func Sub_41DA10(a1 int) {
-	C.sub_41DA10(C.int(a1))
+	// The legacy queue allocator is gone; every queue remains empty.
 }
 func Nox_xxx_bookHideMB_45ACA0(a1 int) int {
 	return bookHide(a1)

@@ -68,7 +68,7 @@ func sub_44A4B0() { Sub_44A4B0() }
 func sub_44A360(a1 int) { Sub_44A360(a1) }
 
 func Sub_41DA70(a1, a2 int) {
-	C.sub_41DA70(C.int(a1), C.short(a2))
+	onlineSessionEvent()
 }
 func Sub_445C20() {
 	sessionQuitHide()

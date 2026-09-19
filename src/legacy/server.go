@@ -27,8 +27,6 @@ package legacy
 extern unsigned int dword_5d4594_2650652;
 extern unsigned int dword_5d4594_2649712;
 extern unsigned int dword_5d4594_1548524;
-extern uint32_t dword_5d4594_528252;
-extern uint32_t dword_5d4594_528260;
 
 extern uint32_t nox_tile_def_cnt;
 extern nox_tileDef_t nox_tile_defs_arr[176];
@@ -230,7 +228,7 @@ func Nox_xxx_updateUnitBuffs_4FF620(a1 *server.Object) {
 	spellLifeUpdateBuffs(a1)
 }
 func Nox_xxx_reconAttempt_41E390() {
-	C.nox_xxx_reconAttempt_41E390()
+	onlineSessionAttempt()
 }
 func Sub_5096F0() {
 	matchRosterCheckLimit()
@@ -312,7 +310,7 @@ func Sub_4D7B40() {
 	questRuntimeDepartureReset()
 }
 func Sub_41E4B0(a1 int) {
-	C.sub_41E4B0(C.int(a1))
+	onlineSessionMarker(uint32(a1))
 }
 func Sub_4E4ED0() {
 	reliableResetSequences()

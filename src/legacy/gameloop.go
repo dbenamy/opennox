@@ -137,7 +137,7 @@ func Nox_xxx_getHostInfoPtr_431770() *server.PlayerInfo {
 	return (*server.PlayerInfo)(unsafe.Pointer(C.nox_xxx_getHostInfoPtr_431770()))
 }
 func Sub_41FA40() string {
-	return GoString(C.sub_41FA40())
+	return "" // The former account selector remains unset.
 }
 func Sub_43AF40() int {
 	return int(sub_43AF40())

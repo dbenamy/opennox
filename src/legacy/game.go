@@ -582,7 +582,7 @@ func Nox_xxx_servGamedataGet_40A020(a1 uint16) int {
 	return int(C.short(serverConfigScore(int16(a1))))
 }
 func Sub_41D1A0(a1 int) {
-	C.sub_41D1A0(C.int(a1))
+	onlineSessionBriefing(uint32(a1))
 }
 func Nox_xxx_netPlayerIncomingServ_4DDF60(a1 int) {
 	sessionPlayerIncoming(int32(a1))

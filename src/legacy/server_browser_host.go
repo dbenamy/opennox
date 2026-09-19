@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include "GAME1_2.h"
-extern uint32_t dword_5d4594_528252;
-extern uint32_t dword_5d4594_528256;
 */
 import "C"
 import (
@@ -15,7 +13,7 @@ import (
 )
 
 func browserHostDescription() *byte {
-	if C.dword_5d4594_528252 != 0 && C.dword_5d4594_528256 != 0 {
+	if onlineRetryPending != 0 && onlineRetryActive != 0 {
 		NetworkLogPrint("RECON: Posting server to WOL")
 	}
 	browserUI.creating = 0
@@ -33,7 +31,7 @@ func browserHostDescription() *byte {
 	r[111+len(name)] = 0
 	if memmap.Uint32(0x5D4594, 1556160) != 0 {
 		stage := uint32(1)
-		if C.dword_5d4594_528256 != 0 {
+		if onlineRetryActive != 0 {
 			stage = questRuntimeStage()
 		}
 		binary.LittleEndian.PutUint16(r[165:], uint16(stage))

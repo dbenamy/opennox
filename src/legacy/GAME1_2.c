@@ -80,9 +80,7 @@ extern uint32_t dword_5d4594_3807116;
 extern uint32_t dword_5d4594_3807152;
 extern uint32_t dword_5d4594_3807136;
 extern uint32_t dword_5d4594_3807140;
-extern uint32_t dword_5d4594_528252;
 extern void* nox_alloc_screenParticles_806044;
-extern uint32_t dword_5d4594_528256;
 extern uint32_t nox_color_white_2523948;
 extern uint32_t dword_8531A0_2576;
 

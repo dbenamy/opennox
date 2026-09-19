@@ -34,7 +34,6 @@ extern uint32_t dword_5d4594_527656;
 extern uint32_t dword_5d4594_251712;
 extern uint32_t dword_5d4594_251708;
 extern uint32_t dword_5d4594_251716;
-extern uint32_t dword_5d4594_10984;
 extern uint32_t dword_5d4594_251720;
 extern uint32_t dword_5d4594_251744;
 extern uint32_t dword_5d4594_3484;
@@ -51,7 +50,7 @@ extern int ptr_5D4594_2650668_cap;
 uint32_t nox_tile_def_cnt = 0;
 nox_tileDef_t nox_tile_defs_arr[176] = {0};
 
-void sub_40E090() { dword_5d4594_10984 = 0; }
+
 
 uint8_t* nox_xxx_doorAttachWall_410360(int a1, int a2, int a3) {
 	uint8_t* result; // eax
