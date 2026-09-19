@@ -157,5 +157,5 @@ func TestPlayerFilesClientWriteFraming(t *testing.T) {
 			rows = append(rows, map[string]any{"mode": mode, "missing": false, "return": ret, "ids": ids, "payloads": payloads})
 		}
 	}
-	spellbookCapture(t, "player-files-client-write-framing", rows, "")
+	spellbookCapture(t, "player-files-client-write-framing", rows, "7697610f1cb2e4f8c45d119af35fd83745c2fea1135458e9e3eff466ea360bee")
 }

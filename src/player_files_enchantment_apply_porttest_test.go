@@ -80,5 +80,5 @@ func TestPlayerFilesEnchantmentApply(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-enchantment-apply", rows, "")
+	spellbookCapture(t, "player-files-enchantment-apply", rows, "482fe7ad0787b71b0a003781ef39b60a23848cdc29679219c7f47f8ed0b8a5d4")
 }

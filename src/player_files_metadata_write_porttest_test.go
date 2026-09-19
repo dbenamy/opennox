@@ -114,5 +114,5 @@ func TestPlayerFilesMetadataWrite(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-metadata-write", rows, "")
+	spellbookCapture(t, "player-files-metadata-write", rows, "8e338797b1d56fa43a3535e0d4b8281b8e67d583eec9ec90e25f22aa5b0f57ea")
 }

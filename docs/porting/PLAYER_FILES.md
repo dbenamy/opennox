@@ -1,7 +1,14 @@
-# Player-file sections — C baseline in progress
+# Player-file sections — qualified C baseline
 
 Qualified parent: **d7f52707**, client audio events and playback. Production C
 remains **21,083 physical lines /65 files /zero reference C**.
+
+Current status: **36 C captures /1,951 records frozen**, repeated identically across
+37 focused roots on default/server/highres. Frozen affected qualification passes
+146 roots per target: all 66 artifacts /6,567 records match, with identical 2,623
+source fingerprints.
+Production remains identical to the qualified parent; see the production-identity
+JSON. No conversion has begun. Earlier progress notes below are historical.
 
 The batch selects 18 functions /1,540 body lines in GAME1_1.c: player attributes,
 status, inventory, field guide/spellbook/enchantments, journal, game and GUI data,
@@ -141,3 +148,52 @@ table points to the actual controlled Gold type and the staff limit is explicitl
 No populated successful inventory read is claimed yet. All sessions are joined.
 Production source identity against d7f52707 is unchanged; this is a recovery
 checkpoint with unfinished C baseline work, not a completed port.
+
+Recovery af59461e is pushed. Quest-books-initial passes 35 roots, adding 80 spell
+and nine guide cases. Spell level comparison is signed: 0xffffffff is -1 and
+passes the <=3 quest gate. Actual enabled reward rows, disabled rows and guide
+family eligibility are covered with real award/checksum/report owners.
+
+Review found that the new inventory reader owner had omitted warrior strength,
+which is the carrying-capacity denominator even for a wizard. It now supplies
+40 explicitly; production is unchanged. Populated inventory restoration exposed
+a missing fixture spatial index in the actual pickup path. The existing empty-map
+owner is now installed, with map cleanup and item unlinking before release.
+The second sweep includes quest writer filtering, equipped records for excluded
+items, selected quivers and actual nontrivial inventory-limit acceptance/rejection.
+Static-quest-inventory passes; the runtime sweep is in progress.
+
+Inventory-restore-third passes 37 roots /36 new captures /1,951 records. The
+second attempt found two fixture expectations to correct from source: the
+constant 1161297920 encodes float2944 (not2000), and the filter bit0x40 is distinct
+from the named ClassImmobile enum. Populated read ownership, values, order,
+positions, saved IDs/quest renumbering and completion reports now pass. Twelve
+quest writes check class/Glyph exclusion, unfiltered equipped/quiver tails and
+limits accepting2 items at3 versus rejecting at1. No production correction.
+
+The affected selection (146 root declarations) covers the new sections, journal
+and quickbar save owners, object/item transfers, server inventory/equipment,
+quest eligibility, resources, player stats/name, inventory notifications, quest
+variables and spell lifecycle/duration. UI grid/selection queries and secondary
+notifications cover the writer's client inventory dependencies. It deliberately
+omits unrelated drawing, tooltip and input suites. c-affected-default passes;
+all 36 player-file captures match inventory-restore-third and c-focused-highres
+exactly, with identical source fingerprints. Server focused qualification is
+still running before expectations can be frozen.
+
+Final frozen C qualification passes all 146 roots on each target with no skips:
+default 136.643s, server 132.037s, highres 132.064s. All66 artifacts /6,567 records
+match exactly across targets; all 2,623 source fingerprints match current source.
+The production-identity report verifies every added/changed source file is behind
+the porttest constraint. The qualified d7f52707 production binaries, known full
+suite result, fresh gameplay and explicit save/load are reused as planned.
+Static-quest-inventory passes. All sessions are joined. No C algorithms changed.
+
+Review limits: full equipped-weapon restoration, registered stat/name bookkeeping,
+nonempty magic-wall sections and gameplay save/load also rely on their existing
+dependency contracts and production integration. The batch does not promise safe
+handling of arbitrary corrupt files where the original uses uninitialized reads
+or unchecked indices. Native code must preserve supported/historical behavior;
+any intentional format or error-handling change needs separate recorded evidence.
+The capture index freezes only validated timestamp and temporary-path
+normalization. All other section bytes, effects and reports remain exact.

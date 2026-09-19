@@ -94,7 +94,7 @@ func TestPlayerFilesSpellbookWrite(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-spellbook-write", rows, "")
+	spellbookCapture(t, "player-files-spellbook-write", rows, "28b567c24791640d4fe503a790bfc18b16eb5b896ebdb0506b297ba134462acd")
 }
 
 func TestPlayerFilesBookReadGates(t *testing.T) {
@@ -146,5 +146,5 @@ func TestPlayerFilesBookReadGates(t *testing.T) {
 		u.NetCode = 1001
 		rows = append(rows, map[string]any{"section": section.name, "missing_player": true, "return": ret, "position": pos})
 	}
-	spellbookCapture(t, "player-files-book-read-gates", rows, "")
+	spellbookCapture(t, "player-files-book-read-gates", rows, "700a93921052f26facf5e0c41c71e32e96b5b3519004bf4f8fcf5649710bf516")
 }

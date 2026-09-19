@@ -134,5 +134,5 @@ func TestPlayerFilesInventoryWrite(t *testing.T) {
 			rows = append(rows, map[string]any{"flags": uint32(gf), "case": which, "return": ret, "bytes": got, "position": pos, "queue": o.state()})
 		}
 	}
-	spellbookCapture(t, "player-files-inventory-write", rows, "")
+	spellbookCapture(t, "player-files-inventory-write", rows, "5aeafb8bf2017761ab93bcec563743e5e387cd3dfe54799a7bc4b8c869ca4f93")
 }

@@ -42,5 +42,5 @@ func TestPlayerFilesSaveRequest(t *testing.T) {
 			rows = append(rows, map[string]any{"flags": uint32(gf), "code": value, "return": ret, "queue": state, "local": local})
 		}
 	}
-	spellbookCapture(t, "player-files-save-request", rows, "")
+	spellbookCapture(t, "player-files-save-request", rows, "ed6cfa07b11659fac798ac9c2839fd833cabd3e2c5746ada0a1a5fcbb3706a2c")
 }

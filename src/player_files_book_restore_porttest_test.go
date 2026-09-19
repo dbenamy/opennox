@@ -107,5 +107,5 @@ func TestPlayerFilesSpellbookRestore(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-spellbook-restore", rows, "")
+	spellbookCapture(t, "player-files-spellbook-restore", rows, "7b5d2fdd038d54d4c071d416b128e12954884e21cad4cc4c92e36221c86df72a")
 }

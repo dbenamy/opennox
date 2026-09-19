@@ -66,7 +66,7 @@ func TestPlayerFilesGUIWrite(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-gui-write", rows, "")
+	spellbookCapture(t, "player-files-gui-write", rows, "e3c0a77762c7f303349b5cfa1915a4d746599f17e179f6478584bd621cf13fca")
 }
 func TestPlayerFilesGUIRead(t *testing.T) {
 	q := newQuickbarOwner(t)
@@ -111,5 +111,5 @@ func TestPlayerFilesGUIRead(t *testing.T) {
 		}
 		rows = append(rows, map[string]any{"version": version, "return": ret, "position": pos, "row": selected, "trap_row": trap})
 	}
-	spellbookCapture(t, "player-files-gui-read", rows, "")
+	spellbookCapture(t, "player-files-gui-read", rows, "ed2464d247bfd1dc8e7f9e3f3715b6fe061a8ae72b8b0647d9b352401d697416")
 }

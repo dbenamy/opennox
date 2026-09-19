@@ -71,7 +71,7 @@ func TestPlayerFilesGameWrite(t *testing.T) {
 			rows = append(rows, map[string]any{"flags": uint32(gf), "name": name, "return": ret, "position": pos, "bytes": got, "record_tail": bytes.Clone(raw[4760:])})
 		}
 	}
-	spellbookCapture(t, "player-files-game-write", rows, "")
+	spellbookCapture(t, "player-files-game-write", rows, "4faa8d82874e368a1976e292426c1b26728c0d8e9a1b70403f6764af4a6d2659")
 }
 func TestPlayerFilesGameRead(t *testing.T) {
 	o, raw, _, audio := playerFileGameOwner(t)
@@ -142,5 +142,5 @@ func TestPlayerFilesGameRead(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-game-read", rows, "")
+	spellbookCapture(t, "player-files-game-read", rows, "2f801bf8f4613210c142515717612d7efe31944b4e4ac2f14c250e0bdd934184")
 }

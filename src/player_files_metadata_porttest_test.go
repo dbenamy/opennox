@@ -101,5 +101,5 @@ func TestPlayerFilesMetadataRead(t *testing.T) {
 			rows = append(rows, map[string]any{"version": version, "case": kind, "return": ret, "position": pos, "info": bytes.Clone(raw)})
 		}
 	}
-	spellbookCapture(t, "player-files-metadata-read", rows, "")
+	spellbookCapture(t, "player-files-metadata-read", rows, "f3222f98d7e387c1e442c700ef2481069702b7007e5df5052eb32259a07aed9c")
 }

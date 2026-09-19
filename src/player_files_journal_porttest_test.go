@@ -50,5 +50,5 @@ func TestPlayerFilesJournalGates(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-journal-gates", rows, "")
+	spellbookCapture(t, "player-files-journal-gates", rows, "b6fae4cbd71eaa0386f9fdd041a515dbffb709a8c40b51dcbd2867319ce3101e")
 }

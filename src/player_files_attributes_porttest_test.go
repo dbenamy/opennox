@@ -111,7 +111,7 @@ func TestPlayerFilesAttributesWrite(t *testing.T) {
 		t.Fatal("nil player info")
 	}
 	rows = append(rows, map[string]any{"nil_info": true, "return": ret, "position": pos})
-	spellbookCapture(t, "player-files-attributes-write", rows, "")
+	spellbookCapture(t, "player-files-attributes-write", rows, "5e075027ec6a87113bb3b8c513c3fdbbd153ea1652e34a00d863307e4689fe1a")
 }
 func TestPlayerFilesAttributesRead(t *testing.T) {
 	raw := playerFileInfoOwner(t)
@@ -157,5 +157,5 @@ func TestPlayerFilesAttributesRead(t *testing.T) {
 			rows = append(rows, map[string]any{"version": version, "name": name, "return": ret, "position": pos, "info": append([]byte(nil), raw...)})
 		}
 	}
-	spellbookCapture(t, "player-files-attributes-read", rows, "")
+	spellbookCapture(t, "player-files-attributes-read", rows, "1af6495bd98c46fda79ea158a8904d98cefa456204300ad97a66bc33df6b00d8")
 }

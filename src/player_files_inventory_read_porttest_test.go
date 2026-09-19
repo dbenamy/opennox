@@ -14,13 +14,15 @@ import (
 	"unsafe"
 )
 
-func TestPlayerFilesInventoryReadGates(t *testing.T) {
+func newPlayerFileInventoryReadOwner(t *testing.T) *matchRosterOwner {
+	t.Helper()
 	o := newMatchRosterOwner(t)
 	t.Cleanup(o.s.PortTestInventoryEnvironment(false, nil, nil))
 	t.Cleanup(o.s.PortTestInventoryDisplayBalance())
 	oldStats := o.s.Players.Stats
 	t.Cleanup(func() { o.s.Players.Stats = oldStats })
 	o.s.Players.Stats.Base = server.ClassStats{Health: 25, Mana: 15, Speed: 1500, Strength: 10}
+	o.s.Players.Stats.Warrior = server.ClassStats{Health: 150, Mana: 60, Speed: 4000, Strength: 40}
 	o.s.Players.Stats.Wizard = server.ClassStats{Health: 80, Mana: 150, Speed: 3500, Strength: 20}
 	carry := memmap.PtrFloat64(0x581450, 10216)
 	oldCarry := *carry
@@ -30,6 +32,9 @@ func TestPlayerFilesInventoryReadGates(t *testing.T) {
 	t.Cleanup(restore)
 	configure(map[string]float64{"ForceOfNatureStaffLimit": 3})
 	limitTypes := serverConfigOwnBytes(t, 0x5D4594, 1568356, 52)
+	if o.s.Types.IndByID("PortGold") == 0 {
+		t.Fatal("missing inventory limit type")
+	}
 	for i := 0; i < 13; i++ {
 		binary.LittleEndian.PutUint32(limitTypes[i*4:], uint32(o.s.Types.IndByID("PortGold")))
 	}
@@ -45,6 +50,15 @@ func TestPlayerFilesInventoryReadGates(t *testing.T) {
 	t.Cleanup(free)
 	u.HealthData = hp
 	*(*byte)(unsafe.Add(unsafe.Pointer(p), 2251)) = 1
+	return o
+}
+
+func TestPlayerFilesInventoryReadGates(t *testing.T) {
+	o := newPlayerFileInventoryReadOwner(t)
+	u := &o.units[0]
+	ud := u.UpdateDataPlayer()
+	p := ud.Player
+	hp := u.HealthData
 	var rows []map[string]any
 	for _, version := range []uint16{0, 1, 2, 3, 4, 0x8000, 0xffff} {
 		for _, gf := range []flags.GameFlag{0, 2048, 4096, 8192} {
@@ -135,5 +149,5 @@ func TestPlayerFilesInventoryReadGates(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-inventory-read-gates", rows, "")
+	spellbookCapture(t, "player-files-inventory-read-gates", rows, "b4573334b0e09325ca4481b62c34e7c916cd9a1d227763aa57887b8f62c40300")
 }

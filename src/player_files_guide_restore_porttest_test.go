@@ -101,5 +101,5 @@ func TestPlayerFilesFieldbookRestore(t *testing.T) {
 			rows = append(rows, map[string]any{"version": version, "count": count, "return": ret, "position": pos, "guides": bytes.Clone(raw[4248:4408]), "records": records, "queue": state})
 		}
 	}
-	spellbookCapture(t, "player-files-fieldbook-restore", rows, "")
+	spellbookCapture(t, "player-files-fieldbook-restore", rows, "a1a95b881d8f64baf6a81cf20436b549f65e5aaae7f57f825aec7f1a92b93741")
 }

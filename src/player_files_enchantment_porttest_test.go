@@ -115,5 +115,5 @@ func TestPlayerFilesEnchantmentWrite(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-enchantment-write", rows, "")
+	spellbookCapture(t, "player-files-enchantment-write", rows, "8029dca6811bc5d66d6111baa1f0f8f850a72360902fec4477ea8c3c7db7621e")
 }

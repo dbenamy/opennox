@@ -108,5 +108,5 @@ func TestPlayerFilesAbilityRestore(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-ability-restore", rows, "")
+	spellbookCapture(t, "player-files-ability-restore", rows, "5864836439dfbc2bc0cd5328ad9d8fac8f9ad01191908a7a1045299962097273")
 }

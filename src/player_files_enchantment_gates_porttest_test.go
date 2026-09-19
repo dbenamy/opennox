@@ -72,5 +72,5 @@ func TestPlayerFilesEnchantmentReadGates(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-enchantment-read-gates", rows, "")
+	spellbookCapture(t, "player-files-enchantment-read-gates", rows, "64886e8b29df9b824e3aec9d986b10e54f198a6df21ae3004ec5fe900a498b82")
 }

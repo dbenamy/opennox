@@ -127,5 +127,5 @@ func TestPlayerFilesStatusRead(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-status-read", rows, "")
+	spellbookCapture(t, "player-files-status-read", rows, "f44884ed7ec9ff2bce3e603d6b8668d2e599693083ca60cb0a8dac6e8d5dabde")
 }

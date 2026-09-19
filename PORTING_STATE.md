@@ -8,65 +8,48 @@ baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — native client audio events qualified
+## Current — player-file C baseline qualified
 
-C baseline **e30b952e**, qualification checkpoint **994d7b3c**; both are pushed.
-All 62 bodies are Go. Twenty-one interfaces remain for 18 actual C entry points
-and three stored voice callbacks. Forty-one private interfaces and two cache/pool
-C globals retire. Shared layouts retain C-heap ownership; Go callers invoke Go.
+Qualified production parent **d7f52707** (client audio events). Recovery checkpoints
+**33a1248a** and **af59461e** are pushed. This baseline selects 18 bodies /1,540 C
+body lines in GAME1_1.c, including the owned server section table; all are live.
 
-The first native build passed all 17 frozen captures /820 records unchanged.
-Affected default/server/highres each pass 51 root-package plus five timer tests.
-All 36 artifacts /2,353 records match C, with all 2,590 native source fingerprints
-identical across targets and fresh production. Static memory-map checks, three
-binaries/ABI, exact known full-suite results (1,553 failure entries; 32 skipped,
-15 passed, three failed packages), gameplay and explicit save/load all pass.
-Every build/test session is joined. Frozen expectations were not changed.
+Thirty-six new frozen captures /1,951 records agree across default/server/highres.
+The affected suite passes **146 root tests per target**, with **66 artifacts /
+6,567 records** identical across all targets and all 2,623 source fingerprints
+matching. Static memory-map checks pass. All test/build sessions are joined.
+Production source is unchanged since d7f52707; its three binaries, exact known
+full-suite result, gameplay and explicit save/load qualify the C production side.
+See [PLAYER_FILES.md](docs/porting/PLAYER_FILES.md), the capture index, C
+qualification and production-identity JSON under docs/porting.
 
-Report: [CLIENT_AUDIO_EVENTS.md](docs/porting/CLIENT_AUDIO_EVENTS.md), tracked
-C/native qualification JSON and capture index. Local evidence is under
-`build/port-client-audio-events`: `c-final-focused-second`, `c-repeat-{server,highres}`,
-`c-final-{default,server,highres,production}`, `native-initial`,
-`native-final-{default,server,highres,production}` and `static-native-final.log`.
+No conversion has begun. Next: translate the18 bodies, route Go callers directly,
+retain only required outside-C/callback exports, compare frozen expectations,
+then qualify all targets and fresh native production/save-load. Do not regenerate
+hashes to accommodate conversion mismatches. Review section tables before retiring
+exports; the client mapped table also has outside users.
 
-Clock/deadline, sample-refill, zero-serial, deferred-pan and device-completion
-conventions are recorded for review in the report and DECISIONS.md. No production
-algorithm corrections were made. The ten baseline C test-adapter lines disappear
-with the conversion. Current C is 21,083 /65 files /zero reference.
+Local evidence: build/port-player-files/c-final-{default,server,highres},
+c-affected-default, c-focused-{server,highres}, inventory-restore-third and
+static-quest-inventory.log. All installed drafts and freeze.py are **CONSUMED**.
+Never replay them. Actual source and frozen expectations are authoritative.
 
-**Consumed:** all fixture/native drafts, build-dispatcher.py, freeze.py,
-install-native.py and generate-native-adapters.py. Never replay them; installed
-source, frozen expectations and qualification records are authoritative.
-Completed C/native scenario copies were verified and deduplicated, reclaiming
-2,225,495,402 bytes. Audit/apply sessions are joined and consumed. Preserve
-completed-assets logs/plan and each run’s deduplicated-assets.json for restoration;
-original assets/archive, captures, modified saves and binaries remain.
+Disk cleanup reclaimed **8,604,874,683 bytes (8.014 GiB)** from 98,529 audited,
+unchanged regular Go build-cache entries older than 12 hours. Four empty cache
+directories were retained after the initial unlink stopped on a directory.
+Audit/partial/applied manifests are under build/port-player-files; the audit is
+consumed. All sessions are joined; about 11 GiB is free. Assets, module cache,
+captures, logs, saves and production binaries remain intact.
 
-Native conversion **d7f52707** is committed/pushed. The next baseline is active:
-remaining player-file sections in GAME1_1.c, 18 bodies
-/1,540 body lines. `build/port-player-files/selection-draft.json` and caller audit
-find 16 external roots and all 18 reachable. The unrelated briefing gate helpers
-were excluded. The tracked scope, caller audit, focused manifest and actual-C dispatcher are
-installed. metadata-write-initial and recovery-repeat pass 18 roots; 17 new
-captures /1,006 records match exactly across runs. The existing journal
-save/load golden also passes. Static-recovery passes. All sessions are joined.
-Music/attributes, book writes/gates/real awards, status writes, inventory helpers,
-journal gates, metadata and GUI section contracts are covered. Production source
-is identical to d7f52707; no new expectations frozen and no conversion started.
-This is a partial C-baseline recovery checkpoint. See PLAYER_FILES.md for gaps.
-Recovery checkpoint **33a1248a** is committed/pushed. Subsequent status, enchantment,
-ability, game, extraction, real-player attributes and outer file read/write tests
-pass. client-write-second passed 31 roots; its 29 prior captures match
-attributes-unit-initial exactly. inventory-write-second passed 32 roots.
-Static-inventory passes. Inventory read gates and independent loaded-report checks
-pass in inventory-read-initial and recovery-second-repeat (33 roots each).
-All 32 captures /1842 records repeat exactly. All sessions are joined.
-All installed drafts, including inventory write/read, are CONSUMED.
-Remaining: populated inventory reads, quest-mode inventory/equipment writes and
-book validity/level gates; review and affected targets before freezing.
-No expectations frozen; production remains unchanged at 21,083 C lines.
-The updated recovery JSON records this partial baseline; it is not qualification
-of a conversion. Next: finish substantive inventory and quest-book contracts.
+## Qualified parent — native client audio events
+
+C baseline **e30b952e**, qualification **994d7b3c**, conversion **d7f52707** are
+pushed. All62 bodies are Go;21 C interfaces remain and 41 private interfaces retire.
+All three targets, ABI/builds, exact known full-suite results and fresh gameplay/
+save-load pass. C is 21,083 lines /65 files /zero reference, down 1,327 lines.
+Details: [CLIENT_AUDIO_EVENTS.md](docs/porting/CLIENT_AUDIO_EVENTS.md). Completed
+C/native scenario asset copies were verified/deduplicated, reclaiming 2,225,495,402
+bytes. Their cleanup scripts are consumed; preserve restoration manifests.
 
 ## Qualified parent — native client audio streams
 
@@ -186,7 +169,7 @@ helpers were separately C-qualified from that committed baseline before conversi
 Their reproducible fixture patch and evidence are tracked; see [VOTES.md](docs/porting/VOTES.md).
 
 All 22 focused roots pass and nine captures /387 records match C. Each target
-passes 224 roots /43,580 cases without skips; all169 captures /48,975 records match
+passes 224 roots /43,580 cases without skips; all 169 captures /48,975 records match
 C and each other. Four gates share unchanged 2,352-file source. Static checks and
 fresh production pass: three builds/ABI, exact known full-suite results, gameplay,
 save/load and flat regeneration. All sessions are joined; source is editable.

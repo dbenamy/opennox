@@ -81,5 +81,5 @@ func TestPlayerFilesFieldbookWrite(t *testing.T) {
 			rows = append(rows, map[string]any{"flags": uint32(gf), "pattern": pattern, "return": ret, "bytes": got, "position": pos})
 		}
 	}
-	spellbookCapture(t, "player-files-fieldbook-write", rows, "")
+	spellbookCapture(t, "player-files-fieldbook-write", rows, "7aed107c6b8bb79fff6519189fc6da13cff8d72310e619133641dfadbecbbfa7")
 }

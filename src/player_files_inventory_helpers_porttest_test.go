@@ -49,7 +49,7 @@ func TestPlayerFilesInventoryGridCount(t *testing.T) {
 		}
 		rows = append(rows, map[string]any{"pattern": pattern, "count": got})
 	}
-	spellbookCapture(t, "player-files-inventory-grid-count", rows, "")
+	spellbookCapture(t, "player-files-inventory-grid-count", rows, "720f7af495eb06338fd3d3ef49031797e42cb98cde34f5ab76223987f88c4adb")
 }
 
 func TestPlayerFilesInventoryFilter(t *testing.T) {
@@ -87,5 +87,5 @@ func TestPlayerFilesInventoryFilter(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-inventory-filter", rows, "")
+	spellbookCapture(t, "player-files-inventory-filter", rows, "0b9a189afb810d9cc23469d5bb4c00b5a2f2191107225f198b10c21d1f48b09e")
 }

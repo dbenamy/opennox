@@ -129,5 +129,5 @@ func TestPlayerFilesAttributesUnitRead(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-attributes-unit-read", rows, "")
+	spellbookCapture(t, "player-files-attributes-unit-read", rows, "26f4dcee6107f1886d4d4a9a60716a03360741fcaa002c25c53502b134c94657")
 }

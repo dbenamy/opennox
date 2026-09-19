@@ -72,7 +72,7 @@ func TestPlayerFilesMusicWrite(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-music-write", rows, "")
+	spellbookCapture(t, "player-files-music-write", rows, "7bad1d4a672d72e080da6d754e8aa044299a931df691d34aa30ca2e818f5f201")
 }
 func TestPlayerFilesMusicRead(t *testing.T) {
 	words, restore := legacy.PortTestAudioEventGlobals()
@@ -138,5 +138,5 @@ func TestPlayerFilesMusicRead(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-files-music-read", rows, "")
+	spellbookCapture(t, "player-files-music-read", rows, "094b460d3653e9bd480cc4286f92576a549bf948be0be6af064c4a64802e1055")
 }

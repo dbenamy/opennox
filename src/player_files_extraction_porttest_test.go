@@ -93,5 +93,5 @@ func TestPlayerFilesSectionExtraction(t *testing.T) {
 		t.Fatal("missing extraction changed output")
 	}
 	rows = append(rows, map[string]any{"missing": true})
-	spellbookCapture(t, "player-files-section-extraction", rows, "")
+	spellbookCapture(t, "player-files-section-extraction", rows, "51d2556dee434201136375c841b2a6a1b39bdfdd05d12ea671e61c34566355cb")
 }

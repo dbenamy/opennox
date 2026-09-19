@@ -21,6 +21,10 @@ Current production C is **21,083 physical lines in 65 files**, zero reference C:
 **−1,327** from the qualified baseline. Frozen comparisons, all three targets and
 fresh production/headless integration qualify. See [PORTING_STATE.md](PORTING_STATE.md).
 
+Player-file sections now have a qualified C baseline:18 bodies /1,540 body lines,
+36 new frozen captures and 146 affected tests passing on each target. The next
+step is their Go conversion. See [PLAYER_FILES.md](docs/porting/PLAYER_FILES.md).
+
 ## Goal and target
 
 Replace OpenNox's remaining C implementation with Go while preserving observable

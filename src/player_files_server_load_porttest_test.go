@@ -135,5 +135,5 @@ func TestPlayerFilesServerLoadFraming(t *testing.T) {
 		rows = append(rows, map[string]any{"case": which, "return": ret, "health": *hp, "mana": ud.ManaCur, "max_mana": ud.ManaMax, "queue": o.state()})
 		p.PlayerUnit = u
 	}
-	spellbookCapture(t, "player-files-server-load-framing", rows, "")
+	spellbookCapture(t, "player-files-server-load-framing", rows, "26372fb3cc108c066e1cfaa4838157828ff623c62447f3db03b1a7a6a2732de7")
 }

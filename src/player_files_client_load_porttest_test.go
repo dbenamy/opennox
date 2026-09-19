@@ -139,5 +139,5 @@ func TestPlayerFilesClientLoadFraming(t *testing.T) {
 		}
 		rows = append(rows, map[string]any{"case": which, "return": ret, "path_updated": success, "slots": append([]uint32(nil), q.bar[:50]...), "music": state})
 	}
-	spellbookCapture(t, "player-files-client-load-framing", rows, "")
+	spellbookCapture(t, "player-files-client-load-framing", rows, "702d5394b25b7e24191777ec89dc509213e685511eba963212c7c7df222c5d21")
 }

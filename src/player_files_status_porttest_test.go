@@ -63,5 +63,5 @@ func TestPlayerFilesStatusWrite(t *testing.T) {
 			rows = append(rows, map[string]any{"flags": uint32(gf), "value": v, "return": ret, "bytes": got, "position": pos, "saved": append([]uint32(nil), saved...)})
 		}
 	}
-	spellbookCapture(t, "player-files-status-write", rows, "")
+	spellbookCapture(t, "player-files-status-write", rows, "d8030ab510bf7605a09f9bb0e86a93711f4e9729b390cefbf554e443e4212ad4")
 }
