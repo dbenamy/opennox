@@ -1,0 +1,47 @@
+{
+  "batch": "Client interaction C contracts (incomplete baseline)",
+  "env": {
+    "OPENNOX_SPELLBOOK_CAPTURE": "{out}/capture",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_COMBAT_CAPTURE": "{out}/combat.json",
+    "OPENNOX_MAP_POPULATION_CAPTURE": "{out}/population",
+    "OPENNOX_TILE_RASTER_CAPTURE": "{out}/tile-raster",
+    "OPENNOX_TILE_COMPOSITION_CAPTURE": "{out}/tile-composition",
+    "OPENNOX_CLIENT_AUDIO_CAPTURE": "{out}/audio",
+    "OPENNOX_CLIENT_AUDIO_ASSETS_CAPTURE": "{out}/audio-assets",
+    "OPENNOX_SESSION_DIALOGS_CAPTURE": "{out}/session-dialogs",
+    "OPENNOX_BRIEFING_CAPTURE": "{out}/briefing",
+    "OPENNOX_BRIEFING_WINDOW_CAPTURE": "{out}/briefing-window",
+    "OPENNOX_INVENTORY_WINDOW_CAPTURE": "{out}/inventory-window",
+    "OPENNOX_CLIENT_INTERACTION_CAPTURE": "{out}/interaction"
+  },
+  "phases": {
+    "focused": [
+      {
+        "name": "initial-contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-interaction-initial-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ]
+      }
+    ]
+  }
+}

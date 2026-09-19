@@ -1,0 +1,440 @@
+{
+  "roots": [
+    "nox_client_chatStart_46A430",
+    "nox_client_drawable_testBuff_4356C0",
+    "nox_client_mousePriKey_430AF0",
+    "nox_client_setMousePos_430B10",
+    "nox_xxx_cliShowHelpGui_49C560",
+    "nox_xxx_cliToggleObsWindow_4357A0",
+    "nox_xxx_clientCollideOrUse_42E810",
+    "nox_xxx_clientEnumHover_476FA0",
+    "nox_xxx_clientIsObserver_4372E0",
+    "nox_xxx_clientPickup_46C140",
+    "nox_xxx_clientReportSecondaryWeapon_4BF010",
+    "nox_xxx_clientTalk_42E7B0",
+    "nox_xxx_clientTrade_42E850",
+    "nox_xxx_cmdSayDo_46A4B0",
+    "nox_xxx_consoleEsc_49B7A0",
+    "nox_xxx_cursor_430B00",
+    "nox_xxx_drawMessageLines_445530",
+    "nox_xxx_guiChatIconLoad_445650",
+    "nox_xxx_guiChatShowHide_445730",
+    "nox_xxx_guiCursor_477600",
+    "nox_xxx_initTime_435570",
+    "nox_xxx_packetGetMarshall_476F40",
+    "nox_xxx_playerAnimCheck_4372B0",
+    "nox_xxx_printCentered_445490",
+    "sub_430AA0",
+    "sub_435700",
+    "sub_435F60",
+    "sub_436550",
+    "sub_437100",
+    "sub_445450",
+    "sub_445770",
+    "sub_469FA0",
+    "sub_46A4A0",
+    "sub_46A730",
+    "sub_46A860",
+    "sub_4799A0",
+    "sub_479D10",
+    "sub_47A260",
+    "sub_48C980",
+    "sub_48D4B0",
+    "sub_49B3E0",
+    "sub_49B490",
+    "sub_49B4B0",
+    "sub_49B6E0",
+    "sub_49C7A0",
+    "sub_49C810",
+    "sub_49CB40",
+    "sub_4BF7E0",
+    "sub_4BFAD0",
+    "sub_4BFBB0",
+    "sub_4BFC90",
+    "sub_4BFD10",
+    "sub_4BFD30",
+    "sub_4C3390",
+    "sub_4C34A0"
+  ],
+  "reachable": [
+    "nox_client_chatStart_46A430",
+    "nox_client_drawable_testBuff_4356C0",
+    "nox_client_mousePriKey_430AF0",
+    "nox_client_setMousePos_430B10",
+    "nox_xxx_cliShowHelpGui_49C560",
+    "nox_xxx_cliToggleObsWindow_4357A0",
+    "nox_xxx_clientCollideOrUse_42E810",
+    "nox_xxx_clientEnumHover_476FA0",
+    "nox_xxx_clientIsObserver_4372E0",
+    "nox_xxx_clientOnCursorHover_477050",
+    "nox_xxx_clientPickup_46C140",
+    "nox_xxx_clientReportSecondaryWeapon_4BF010",
+    "nox_xxx_clientTalk_42E7B0",
+    "nox_xxx_clientTrade_42E850",
+    "nox_xxx_cmdSayDo_46A4B0",
+    "nox_xxx_consoleEsc_49B7A0",
+    "nox_xxx_cursor_430B00",
+    "nox_xxx_drawMessageLines_445530",
+    "nox_xxx_guiChatIconLoad_445650",
+    "nox_xxx_guiChatMode_4456E0",
+    "nox_xxx_guiChatShowHide_445730",
+    "nox_xxx_guiCursor_477600",
+    "nox_xxx_guiDialog_479B00",
+    "nox_xxx_initTime_435570",
+    "nox_xxx_packetGetMarshall_476F40",
+    "nox_xxx_playerAnimCheck_4372B0",
+    "nox_xxx_printCentered_445490",
+    "nox_xxx_showObserverWindow_48CA70",
+    "nox_xxx_wnd_49C760",
+    "sub_430AA0",
+    "sub_435700",
+    "sub_435F60",
+    "sub_436550",
+    "sub_437100",
+    "sub_445450",
+    "sub_445770",
+    "sub_469FA0",
+    "sub_46A4A0",
+    "sub_46A5D0",
+    "sub_46A6A0",
+    "sub_46A730",
+    "sub_46A7E0",
+    "sub_46A820",
+    "sub_46A860",
+    "sub_479950",
+    "sub_4799A0",
+    "sub_479BE0",
+    "sub_479C40",
+    "sub_479CB0",
+    "sub_479D00",
+    "sub_479D10",
+    "sub_47A260",
+    "sub_48C980",
+    "sub_48C9F0",
+    "sub_48D4B0",
+    "sub_49B3E0",
+    "sub_49B420",
+    "sub_49B490",
+    "sub_49B4B0",
+    "sub_49B6B0",
+    "sub_49B6E0",
+    "sub_49C7A0",
+    "sub_49C810",
+    "sub_49CB40",
+    "sub_4BF7E0",
+    "sub_4BF9F0",
+    "sub_4BFAD0",
+    "sub_4BFB70",
+    "sub_4BFBB0",
+    "sub_4BFBF0",
+    "sub_4BFC70",
+    "sub_4BFC90",
+    "sub_4BFCD0",
+    "sub_4BFD10",
+    "sub_4BFD30",
+    "sub_4C3390",
+    "sub_4C3410",
+    "sub_4C3460",
+    "sub_4C34A0"
+  ],
+  "unreached": [
+    "sub_435690",
+    "sub_49C820",
+    "sub_49C910",
+    "sub_49CA60"
+  ],
+  "edges": {
+    "nox_xxx_cursor_430B00": [
+      "nox_xxx_cursor_430B00"
+    ],
+    "nox_xxx_consoleEsc_49B7A0": [
+      "nox_xxx_consoleEsc_49B7A0",
+      "nox_xxx_guiCursor_477600",
+      "sub_46A6A0",
+      "sub_479950"
+    ],
+    "sub_49C7A0": [
+      "sub_49C7A0"
+    ],
+    "sub_445450": [
+      "sub_445450"
+    ],
+    "sub_4C3460": [
+      "sub_4C3460"
+    ],
+    "nox_xxx_cmdSayDo_46A4B0": [
+      "nox_xxx_cmdSayDo_46A4B0"
+    ],
+    "nox_xxx_packetGetMarshall_476F40": [
+      "nox_xxx_packetGetMarshall_476F40"
+    ],
+    "sub_49B420": [
+      "sub_49B420",
+      "sub_49B6B0"
+    ],
+    "nox_xxx_clientCollideOrUse_42E810": [
+      "nox_xxx_clientCollideOrUse_42E810"
+    ],
+    "sub_46A6A0": [
+      "sub_46A6A0"
+    ],
+    "sub_4BFC70": [
+      "sub_4BFC70"
+    ],
+    "sub_4BF7E0": [
+      "sub_4BF7E0",
+      "sub_4BF9F0"
+    ],
+    "nox_xxx_clientIsObserver_4372E0": [
+      "nox_xxx_clientIsObserver_4372E0"
+    ],
+    "nox_client_setMousePos_430B10": [
+      "nox_client_setMousePos_430B10"
+    ],
+    "sub_4BFB70": [
+      "sub_4BFB70"
+    ],
+    "sub_435F60": [
+      "sub_435F60"
+    ],
+    "nox_xxx_drawMessageLines_445530": [
+      "nox_xxx_drawMessageLines_445530"
+    ],
+    "sub_49C820": [
+      "sub_49C820",
+      "sub_49C910",
+      "sub_49CA60"
+    ],
+    "sub_4BFBF0": [
+      "sub_4BFBF0"
+    ],
+    "sub_49B490": [
+      "sub_49B490"
+    ],
+    "sub_4BFBB0": [
+      "sub_4BFB70",
+      "sub_4BFBB0",
+      "sub_4BFBF0",
+      "sub_4BFC70"
+    ],
+    "sub_47A260": [
+      "sub_47A260"
+    ],
+    "sub_435690": [
+      "sub_435690"
+    ],
+    "nox_xxx_guiChatMode_4456E0": [
+      "nox_xxx_guiChatMode_4456E0"
+    ],
+    "sub_479D10": [
+      "sub_479D10"
+    ],
+    "nox_xxx_clientEnumHover_476FA0": [
+      "nox_xxx_clientEnumHover_476FA0",
+      "nox_xxx_clientOnCursorHover_477050"
+    ],
+    "sub_46A730": [
+      "sub_46A5D0",
+      "sub_46A730",
+      "sub_46A7E0",
+      "sub_46A820"
+    ],
+    "sub_46A4A0": [
+      "sub_46A4A0"
+    ],
+    "nox_xxx_playerAnimCheck_4372B0": [
+      "nox_xxx_playerAnimCheck_4372B0"
+    ],
+    "sub_469FA0": [
+      "sub_469FA0"
+    ],
+    "nox_xxx_clientTalk_42E7B0": [
+      "nox_xxx_clientTalk_42E7B0"
+    ],
+    "nox_xxx_guiDialog_479B00": [
+      "nox_xxx_guiDialog_479B00",
+      "sub_479950"
+    ],
+    "nox_xxx_initTime_435570": [
+      "nox_xxx_initTime_435570"
+    ],
+    "nox_xxx_guiCursor_477600": [
+      "nox_xxx_guiCursor_477600"
+    ],
+    "nox_xxx_cliToggleObsWindow_4357A0": [
+      "nox_xxx_cliToggleObsWindow_4357A0",
+      "nox_xxx_showObserverWindow_48CA70"
+    ],
+    "sub_479950": [
+      "sub_479950"
+    ],
+    "nox_xxx_cliShowHelpGui_49C560": [
+      "nox_xxx_cliShowHelpGui_49C560",
+      "nox_xxx_wnd_49C760",
+      "sub_49C7A0"
+    ],
+    "sub_49CB40": [
+      "sub_49CB40"
+    ],
+    "sub_48C980": [
+      "sub_48C980",
+      "sub_48C9F0"
+    ],
+    "sub_49B3E0": [
+      "sub_49B3E0",
+      "sub_49B420"
+    ],
+    "sub_4C3410": [
+      "sub_4C3410"
+    ],
+    "nox_xxx_clientPickup_46C140": [
+      "nox_xxx_clientPickup_46C140",
+      "nox_xxx_printCentered_445490"
+    ],
+    "sub_4BFCD0": [
+      "sub_4BFC70",
+      "sub_4BFCD0"
+    ],
+    "sub_49B6B0": [
+      "sub_49B6B0"
+    ],
+    "sub_49C910": [
+      "sub_49C910"
+    ],
+    "sub_479D00": [
+      "sub_479D00"
+    ],
+    "sub_46A820": [
+      "nox_xxx_cmdSayDo_46A4B0",
+      "sub_46A6A0",
+      "sub_46A820"
+    ],
+    "sub_48D4B0": [
+      "sub_48D4B0",
+      "sub_4C3460"
+    ],
+    "sub_4C3390": [
+      "sub_4C3390",
+      "sub_4C3410"
+    ],
+    "sub_46A860": [
+      "sub_46A860"
+    ],
+    "sub_48C9F0": [
+      "sub_48C9F0"
+    ],
+    "sub_49CA60": [
+      "nox_xxx_cliShowHelpGui_49C560",
+      "sub_49CA60"
+    ],
+    "sub_49B4B0": [
+      "sub_49B4B0"
+    ],
+    "sub_435700": [
+      "sub_435700"
+    ],
+    "sub_430AA0": [
+      "sub_430AA0"
+    ],
+    "nox_xxx_clientOnCursorHover_477050": [
+      "nox_client_drawable_testBuff_4356C0",
+      "nox_xxx_clientOnCursorHover_477050"
+    ],
+    "sub_4BF9F0": [
+      "sub_4BF9F0"
+    ],
+    "sub_4C34A0": [
+      "sub_4C34A0"
+    ],
+    "nox_xxx_showObserverWindow_48CA70": [
+      "nox_xxx_showObserverWindow_48CA70"
+    ],
+    "nox_xxx_clientReportSecondaryWeapon_4BF010": [
+      "nox_xxx_clientReportSecondaryWeapon_4BF010"
+    ],
+    "sub_46A7E0": [
+      "nox_xxx_consoleEsc_49B7A0",
+      "sub_46A7E0"
+    ],
+    "sub_479BE0": [
+      "sub_479BE0"
+    ],
+    "nox_client_chatStart_46A430": [
+      "nox_client_chatStart_46A430"
+    ],
+    "sub_437100": [
+      "sub_437100"
+    ],
+    "nox_xxx_guiChatIconLoad_445650": [
+      "nox_xxx_guiChatIconLoad_445650",
+      "nox_xxx_guiChatMode_4456E0"
+    ],
+    "sub_436550": [
+      "sub_436550",
+      "sub_49C810",
+      "sub_49CB40"
+    ],
+    "sub_4BFAD0": [
+      "sub_4BFAD0"
+    ],
+    "nox_client_drawable_testBuff_4356C0": [
+      "nox_client_drawable_testBuff_4356C0"
+    ],
+    "sub_445770": [
+      "sub_445770"
+    ],
+    "sub_49B6E0": [
+      "sub_49B6E0"
+    ],
+    "sub_479CB0": [
+      "sub_479CB0"
+    ],
+    "sub_4799A0": [
+      "nox_xxx_guiDialog_479B00",
+      "sub_4799A0",
+      "sub_479BE0",
+      "sub_479C40",
+      "sub_479CB0",
+      "sub_479D00"
+    ],
+    "sub_49C810": [
+      "sub_49C810"
+    ],
+    "nox_xxx_printCentered_445490": [
+      "nox_xxx_printCentered_445490"
+    ],
+    "nox_xxx_clientTrade_42E850": [
+      "nox_xxx_clientTrade_42E850",
+      "sub_47A260"
+    ],
+    "sub_4BFD30": [
+      "sub_4BFD30"
+    ],
+    "sub_4BFC90": [
+      "sub_4BFB70",
+      "sub_4BFC70",
+      "sub_4BFC90",
+      "sub_4BFCD0"
+    ],
+    "sub_479C40": [
+      "sub_479C40"
+    ],
+    "nox_xxx_wnd_49C760": [
+      "nox_xxx_wnd_49C760",
+      "sub_49C7A0"
+    ],
+    "nox_client_mousePriKey_430AF0": [
+      "nox_client_mousePriKey_430AF0"
+    ],
+    "nox_xxx_guiChatShowHide_445730": [
+      "nox_xxx_guiChatShowHide_445730"
+    ],
+    "sub_4BFD10": [
+      "sub_4BFB70",
+      "sub_4BFD10"
+    ],
+    "sub_46A5D0": [
+      "sub_46A5D0"
+    ]
+  }
+}

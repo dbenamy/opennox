@@ -1,0 +1,3444 @@
+{
+  "nox_xxx_cursor_430B00": [
+    {
+      "file": "src/legacy/input_c.go",
+      "line": 191,
+      "text": "return int(C.nox_xxx_cursor_430B00())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 209,
+      "text": "int nox_xxx_cursor_430B00() { return nox_xxx_useAudio_587000_80772; }",
+      "selected_owner": "nox_xxx_cursor_430B00",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 23,
+      "text": "int nox_xxx_cursor_430B00();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_consoleEsc_49B7A0": [
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 53,
+      "text": "void nox_xxx_consoleEsc_49B7A0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 682,
+      "text": "void nox_xxx_consoleEsc_49B7A0() {",
+      "selected_owner": "nox_xxx_consoleEsc_49B7A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 321,
+      "text": "nox_xxx_consoleEsc_49B7A0();",
+      "selected_owner": "sub_46A7E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gui_console.go",
+      "line": 6,
+      "text": "void nox_xxx_consoleEsc_49B7A0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gui_console.go",
+      "line": 37,
+      "text": "C.nox_xxx_consoleEsc_49B7A0()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_49C7A0": [
+    {
+      "file": "src/legacy/network.go",
+      "line": 193,
+      "text": "C.sub_49C7A0()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 61,
+      "text": "int sub_49C7A0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 762,
+      "text": "sub_49C7A0();",
+      "selected_owner": "nox_xxx_wnd_49C760",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 769,
+      "text": "int sub_49C7A0() {",
+      "selected_owner": "sub_49C7A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__chathelp.c",
+      "line": 73,
+      "text": "result = (uint32_t*)sub_49C7A0();",
+      "selected_owner": "nox_xxx_cliShowHelpGui_49C560",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_445450": [
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 2546,
+      "text": "sub_445450();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 367,
+      "text": "C.sub_445450()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 173,
+      "text": "wchar2_t* sub_445450() {",
+      "selected_owner": "sub_445450",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 71,
+      "text": "wchar2_t* sub_445450();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_4C3460": [
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 95,
+      "text": "result = sub_4C3460(0);",
+      "selected_owner": "sub_48D4B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 97,
+      "text": "result = sub_4C3460(1);",
+      "selected_owner": "sub_48D4B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 62,
+      "text": "int sub_4C3460(int a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 416,
+      "text": "int sub_4C3460(int a1) { return nox_window_set_hidden(*(int*)&dword_5d4594_1321216, a1); }",
+      "selected_owner": "sub_4C3460",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_xxx_cmdSayDo_46A4B0": [
+    {
+      "file": "src/parsecmd_send.go",
+      "line": 31,
+      "text": "func nox_xxx_cmdSayDo_46A4B0(text string, a2 int) {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/parsecmd_exec.go",
+      "line": 71,
+      "text": "nox_xxx_cmdSayDo_46A4B0(text, 0)",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/parsecmd_send.go",
+      "line": 16,
+      "text": "C.nox_xxx_cmdSayDo_46A4B0(cstr, C.int(a2))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 201,
+      "text": "size_t nox_xxx_cmdSayDo_46A4B0(wchar2_t* a1, int a2) {",
+      "selected_owner": "nox_xxx_cmdSayDo_46A4B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 330,
+      "text": "nox_xxx_cmdSayDo_46A4B0(*(wchar2_t**)&dword_5d4594_1064864, *getMemIntPtr(0x5D4594, 1064872));",
+      "selected_owner": "sub_46A820",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 76,
+      "text": "size_t nox_xxx_cmdSayDo_46A4B0(wchar2_t* a1, int a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_packetGetMarshall_476F40": [
+    {
+      "file": "src/legacy/ctrlevent.go",
+      "line": 80,
+      "text": "return uint32(C.nox_xxx_packetGetMarshall_476F40())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 81,
+      "text": "unsigned int nox_xxx_packetGetMarshall_476F40() {",
+      "selected_owner": "nox_xxx_packetGetMarshall_476F40",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 9,
+      "text": "unsigned int nox_xxx_packetGetMarshall_476F40();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_49B420": [
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 50,
+      "text": "int sub_49B420(int a1, int a2, int* a3, int a4);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 635,
+      "text": "result = nox_new_window_from_file(\"GGOver.wnd\", sub_49B420);",
+      "selected_owner": "sub_49B3E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 646,
+      "text": "int sub_49B420(int a1, int a2, int* a3, int a4) {",
+      "selected_owner": "sub_49B420",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_xxx_clientCollideOrUse_42E810": [
+    {
+      "file": "src/legacy/ctrlevent.go",
+      "line": 76,
+      "text": "C.nox_xxx_clientCollideOrUse_42E810((*nox_drawable)(dr.C()))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 134,
+      "text": "void nox_xxx_clientCollideOrUse_42E810(nox_drawable* a1p) {",
+      "selected_owner": "nox_xxx_clientCollideOrUse_42E810",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 12,
+      "text": "void nox_xxx_clientCollideOrUse_42E810(nox_drawable* a1p);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_46A6A0": [
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 690,
+      "text": "if (!sub_46A6A0() && v0 != 1) {",
+      "selected_owner": "nox_xxx_consoleEsc_49B7A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 277,
+      "text": "int sub_46A6A0() {",
+      "selected_owner": "sub_46A6A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 332,
+      "text": "sub_46A6A0();",
+      "selected_owner": "sub_46A820",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 78,
+      "text": "int sub_46A6A0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_4BFC70": [
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 37,
+      "text": "int sub_4BFC70();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 313,
+      "text": "sub_4BFC70();",
+      "selected_owner": "sub_4BFBB0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 342,
+      "text": "int sub_4BFC70() {",
+      "selected_owner": "sub_4BFC70",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 361,
+      "text": "sub_4BFC70();",
+      "selected_owner": "sub_4BFC90",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 375,
+      "text": "sub_4BFC70();",
+      "selected_owner": "sub_4BFCD0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_4BF7E0": [
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 31,
+      "text": "short sub_4BF7E0(uint32_t* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client_ui_inventory_window_draw.go",
+      "line": 87,
+      "text": "C.sub_4BF7E0((*C.uint32_t)(unsafe.Pointer(&point[0])))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 127,
+      "text": "short sub_4BF7E0(uint32_t* a1) {",
+      "selected_owner": "sub_4BF7E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_xxx_clientIsObserver_4372E0": [
+    {
+      "file": "src/legacy/client_ui_meters_draw.go",
+      "line": 64,
+      "text": "if C.nox_xxx_clientIsObserver_4372E0() != 0 || C.nox_gameDisableMapDraw_5d4594_2650672 != 0 || noxflags.HasGame(9437184) {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/input_c.go",
+      "line": 176,
+      "text": "return int(C.nox_xxx_clientIsObserver_4372E0())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 435,
+      "text": "int nox_xxx_clientIsObserver_4372E0() {",
+      "selected_owner": "nox_xxx_clientIsObserver_4372E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 65,
+      "text": "int nox_xxx_clientIsObserver_4372E0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_client_setMousePos_430B10": [
+    {
+      "file": "src/input_c.go",
+      "line": 71,
+      "text": "func nox_client_setMousePos_430B10(x, y int) {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 212,
+      "text": "void nox_client_setMousePos_430B10(int x, int y) { nox_client_changeMousePos_430A00(x, y, true); }",
+      "selected_owner": "nox_client_setMousePos_430B10",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 24,
+      "text": "void nox_client_setMousePos_430B10(int x, int y);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_4BFB70": [
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 34,
+      "text": "void sub_4BFB70(int a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 297,
+      "text": "void sub_4BFB70(int a1) {",
+      "selected_owner": "sub_4BFB70",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 314,
+      "text": "sub_4BFB70(0);",
+      "selected_owner": "sub_4BFBB0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 319,
+      "text": "sub_4BFB70(1);",
+      "selected_owner": "sub_4BFBB0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 360,
+      "text": "sub_4BFB70(0);",
+      "selected_owner": "sub_4BFC90",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 385,
+      "text": "sub_4BFB70(0);",
+      "selected_owner": "sub_4BFD10",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_435F60": [
+    {
+      "file": "src/legacy/console_commands_misc.go",
+      "line": 46,
+      "text": "C.sub_435F60()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 372,
+      "text": "int sub_435F60() {",
+      "selected_owner": "sub_435F60",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 58,
+      "text": "int sub_435F60();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_drawMessageLines_445530": [
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 189,
+      "text": "int nox_xxx_drawMessageLines_445530() {",
+      "selected_owner": "nox_xxx_drawMessageLines_445530",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/minimap_render.go",
+      "line": 69,
+      "text": "return int(C.nox_xxx_drawMessageLines_445530())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 72,
+      "text": "int nox_xxx_drawMessageLines_445530();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_49C820": [
+    {
+      "file": "src/legacy/client__gui__conntype.c",
+      "line": 15,
+      "text": "int sub_49C820() {",
+      "selected_owner": "sub_49C820",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__conntype.h",
+      "line": 6,
+      "text": "int sub_49C820();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_4BFBF0": [
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 36,
+      "text": "int sub_4BFBF0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 318,
+      "text": "sub_4BFBF0();",
+      "selected_owner": "sub_4BFBB0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 324,
+      "text": "int sub_4BFBF0() {",
+      "selected_owner": "sub_4BFBF0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_49B490": [
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 51,
+      "text": "int sub_49B490();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 542,
+      "text": "C.sub_49B490()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 666,
+      "text": "int sub_49B490() {",
+      "selected_owner": "sub_49B490",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_4BFBB0": [
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 3025,
+      "text": "sub_4BFBB0((uint32_t*)*(unsigned char*)(data + 2));",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 35,
+      "text": "void sub_4BFBB0(uint32_t* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 309,
+      "text": "void sub_4BFBB0(uint32_t* a1) {",
+      "selected_owner": "sub_4BFBB0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_47A260": [
+    {
+      "file": "src/legacy/gui_book_state.go",
+      "line": 281,
+      "text": "result = int(C.sub_47A260())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 420,
+      "text": "int sub_47A260() { return dword_5d4594_1123520; }",
+      "selected_owner": "sub_47A260",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/input_c.go",
+      "line": 188,
+      "text": "return int(C.sub_47A260())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gui_book_pages.go",
+      "line": 23,
+      "text": "return p != 0 && C.sub_478030() == 0 && C.sub_47A260() == 0 && *(*byte)(unsafe.Pointer(uintptr(p) + 120))&2 != 0",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 153,
+      "text": "sub_47A260() != 1 && nox_gui_xxx_check_446360() != 1) {",
+      "selected_owner": "nox_xxx_clientTrade_42E850",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 43,
+      "text": "int sub_47A260();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_435690": [
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 329,
+      "text": "uint32_t* sub_435690(uint32_t* a1) {",
+      "selected_owner": "sub_435690",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 51,
+      "text": "uint32_t* sub_435690(uint32_t* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_guiChatMode_4456E0": [
+    {
+      "file": "src/legacy/client__gui__chaticon.c",
+      "line": 21,
+      "text": "nox_window_set_all_funcs(*(unsigned int**)&dword_5d4594_825744, 0, nox_xxx_guiChatMode_4456E0, 0);",
+      "selected_owner": "nox_xxx_guiChatIconLoad_445650",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 250,
+      "text": "int nox_xxx_guiChatMode_4456E0(int* a1) {",
+      "selected_owner": "nox_xxx_guiChatMode_4456E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 73,
+      "text": "int nox_xxx_guiChatMode_4456E0(int* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_479D10": [
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 409,
+      "text": "int sub_479D10() {",
+      "selected_owner": "sub_479D10",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 548,
+      "text": "C.sub_479D10()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 42,
+      "text": "int sub_479D10();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_clientEnumHover_476FA0": [
+    {
+      "file": "src/legacy/client_draw.go",
+      "line": 62,
+      "text": "C.nox_xxx_clientEnumHover_476FA0()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 93,
+      "text": "void nox_xxx_clientEnumHover_476FA0() {",
+      "selected_owner": "nox_xxx_clientEnumHover_476FA0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 10,
+      "text": "void nox_xxx_clientEnumHover_476FA0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_46A730": [
+    {
+      "file": "src/game.go",
+      "line": 1031,
+      "text": "return errors.New(\"sub_46A730 failed\")",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 476,
+      "text": "return unsafe.Pointer(C.sub_46A730())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 294,
+      "text": "uint32_t* sub_46A730() {",
+      "selected_owner": "sub_46A730",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 79,
+      "text": "uint32_t* sub_46A730();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_46A4A0": [
+    {
+      "file": "src/legacy/gui.go",
+      "line": 122,
+      "text": "return int(C.sub_46A4A0())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 198,
+      "text": "int sub_46A4A0() { return dword_5d4594_1064868; }",
+      "selected_owner": "sub_46A4A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 75,
+      "text": "int sub_46A4A0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_playerAnimCheck_4372B0": [
+    {
+      "file": "src/legacy/gui_selchar.go",
+      "line": 127,
+      "text": "return int(C.nox_xxx_playerAnimCheck_4372B0())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 420,
+      "text": "int nox_xxx_playerAnimCheck_4372B0() {",
+      "selected_owner": "nox_xxx_playerAnimCheck_4372B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 64,
+      "text": "int nox_xxx_playerAnimCheck_4372B0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_469FA0": [
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 180,
+      "text": "int sub_469FA0() { return *getMemU32Ptr(0x5D4594, 1064848); }",
+      "selected_owner": "sub_469FA0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client_ui_inventory_window_events.go",
+      "line": 65,
+      "text": "height := int32(C.sub_469FA0()) - 150",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 71,
+      "text": "int sub_469FA0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_clientTalk_42E7B0": [
+    {
+      "file": "src/legacy/ctrlevent.go",
+      "line": 72,
+      "text": "C.nox_xxx_clientTalk_42E7B0((*nox_drawable)(dr.C()))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 118,
+      "text": "void nox_xxx_clientTalk_42E7B0(nox_drawable* a1p) {",
+      "selected_owner": "nox_xxx_clientTalk_42E7B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 11,
+      "text": "void nox_xxx_clientTalk_42E7B0(nox_drawable* a1p);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_guiDialog_479B00": [
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 284,
+      "text": "result = nox_new_window_from_file(\"Dialog.wnd\", nox_xxx_guiDialog_479B00);",
+      "selected_owner": "sub_4799A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 317,
+      "text": "int nox_xxx_guiDialog_479B00(int a1, int a2, int* a3, int a4) {",
+      "selected_owner": "nox_xxx_guiDialog_479B00",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 37,
+      "text": "int nox_xxx_guiDialog_479B00(int a1, int a2, int* a3, int a4);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_initTime_435570": [
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 961,
+      "text": "nox_xxx_initTime_435570();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 1001,
+      "text": "nox_xxx_initTime_435570();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 1049,
+      "text": "nox_xxx_initTime_435570();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 1148,
+      "text": "nox_xxx_initTime_435570();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 373,
+      "text": "C.nox_xxx_initTime_435570()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 320,
+      "text": "long long nox_xxx_initTime_435570() {",
+      "selected_owner": "nox_xxx_initTime_435570",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 48,
+      "text": "long long nox_xxx_initTime_435570();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_guiCursor_477600": [
+    {
+      "file": "src/ctrlevent.go",
+      "line": 339,
+      "text": "if noxflags.HasGame(noxflags.GameModeCoop) && nox_xxx_guiCursor_477600() == 0 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/ctrlevent.go",
+      "line": 343,
+      "text": "if noxflags.HasGame(noxflags.GameModeCoop) && nox_xxx_guiCursor_477600() == 0 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/client_draw.go",
+      "line": 99,
+      "text": "if legacy.Sub_478030() == 0 && nox_xxx_guiCursor_477600() == 0 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/gui.go",
+      "line": 69,
+      "text": "if !c.Inp.GetKeyFlag(key) && !c.Inp.IsPressed(key) && nox_xxx_guiCursor_477600() == 0 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/input_c.go",
+      "line": 67,
+      "text": "func nox_xxx_guiCursor_477600() uint32 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/input_c.go",
+      "line": 281,
+      "text": "if nox_xxx_guiCursor_477600() != 0 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/input_c.go",
+      "line": 405,
+      "text": "if nox_client_gui_flag_815132 != 0 || nox_xxx_guiCursor_477600() != 0 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/gui_minimap.go",
+      "line": 13,
+      "text": "if nox_xxx_guiCursor_477600() != 1 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gui_book_state.go",
+      "line": 203,
+      "text": "if C.nox_xxx_guiCursor_477600() != 0 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 253,
+      "text": "int nox_xxx_guiCursor_477600() { return *getMemU32Ptr(0x5D4594, 1096672); }",
+      "selected_owner": "nox_xxx_guiCursor_477600",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client_ui_inventory_window_state.go",
+      "line": 73,
+      "text": "if v := int(C.nox_xxx_guiCursor_477600()); v != 0 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 686,
+      "text": "if (!nox_xxx_guiCursor_477600() && !nox_video_inFadeTransition_44E0D0()) {",
+      "selected_owner": "nox_xxx_consoleEsc_49B7A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/ai_main.go",
+      "line": 161,
+      "text": "if noxflags.HasGame(2048) && C.nox_xxx_guiCursor_477600() == 0 && u.Field5&16 != 0 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 12,
+      "text": "int nox_xxx_guiCursor_477600();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_cliToggleObsWindow_4357A0": [
+    {
+      "file": "src/legacy/client_draw.go",
+      "line": 78,
+      "text": "C.nox_xxx_cliToggleObsWindow_4357A0()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 360,
+      "text": "int nox_xxx_cliToggleObsWindow_4357A0() {",
+      "selected_owner": "nox_xxx_cliToggleObsWindow_4357A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 57,
+      "text": "int nox_xxx_cliToggleObsWindow_4357A0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_479950": [
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 256,
+      "text": "int sub_479950() {",
+      "selected_owner": "sub_479950",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 331,
+      "text": "sub_479950();",
+      "selected_owner": "nox_xxx_guiDialog_479B00",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 710,
+      "text": "} else if (!sub_478040() && !sub_479950()) {",
+      "selected_owner": "nox_xxx_consoleEsc_49B7A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 35,
+      "text": "int sub_479950();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_cliShowHelpGui_49C560": [
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 2184,
+      "text": "nox_xxx_cliShowHelpGui_49C560();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__chathelp.h",
+      "line": 6,
+      "text": "uint32_t* nox_xxx_cliShowHelpGui_49C560();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/session_entry_lifecycle.go",
+      "line": 75,
+      "text": "C.nox_xxx_cliShowHelpGui_49C560()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 809,
+      "text": "nox_xxx_cliShowHelpGui_49C560();",
+      "selected_owner": "sub_49CA60",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__chathelp.c",
+      "line": 18,
+      "text": "uint32_t* nox_xxx_cliShowHelpGui_49C560() {",
+      "selected_owner": "nox_xxx_cliShowHelpGui_49C560",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_49CB40": [
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 64,
+      "text": "int sub_49CB40();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 827,
+      "text": "int sub_49CB40() { return dword_5d4594_1305684 != 0; }",
+      "selected_owner": "sub_49CB40",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 384,
+      "text": "if (sub_459DA0() || nox_gui_xxx_check_446360() || sub_49CB40() || sub_49C810() || sub_446950() || sub_4706A0() ||",
+      "selected_owner": "sub_436550",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/session_dialogs_motd.go",
+      "line": 135,
+      "text": "if !noxflags.HasEngine(noxflags.EngineNoRendering) && sessionMOTDRoot != nil && sessionMOTDRoot.Flags&gui.StatusHidden != 0 && Sub_44A4A0() == 0 && C.sub_49C810() == 0 && C.sub_49CB40() == 0 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_48C980": [
+    {
+      "file": "src/game.go",
+      "line": 1065,
+      "text": "return errors.New(\"sub_48C980 failed\")",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 40,
+      "text": "int sub_48C980();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 500,
+      "text": "return int(C.sub_48C980())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__guiobs.c",
+      "line": 33,
+      "text": "int sub_48C980() {",
+      "selected_owner": "sub_48C980",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_49B3E0": [
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 49,
+      "text": "int sub_49B3E0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 464,
+      "text": "return int(C.sub_49B3E0())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 632,
+      "text": "int sub_49B3E0() {",
+      "selected_owner": "sub_49B3E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_4C3410": [
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 61,
+      "text": "int sub_4C3410(int* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 396,
+      "text": "nox_window_set_all_funcs(*(uint32_t**)&dword_5d4594_1321216, 0, sub_4C3410, 0);",
+      "selected_owner": "sub_4C3390",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 402,
+      "text": "int sub_4C3410(int* a1) {",
+      "selected_owner": "sub_4C3410",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_xxx_clientPickup_46C140": [
+    {
+      "file": "src/legacy/client__gui__gamewin__gamewin.c",
+      "line": 13,
+      "text": "void nox_xxx_clientPickup_46C140(nox_drawable* a1p) {",
+      "selected_owner": "nox_xxx_clientPickup_46C140",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/input_c.go",
+      "line": 222,
+      "text": "C.nox_xxx_clientPickup_46C140((*nox_drawable)(a1.C()))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__gamewin__gamewin.h",
+      "line": 7,
+      "text": "void nox_xxx_clientPickup_46C140(nox_drawable* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_4BFCD0": [
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 39,
+      "text": "int sub_4BFCD0(int a1, int a2, int* a3, int a4);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 357,
+      "text": "result = nox_new_window_from_file(\"SKey.wnd\", sub_4BFCD0);",
+      "selected_owner": "sub_4BFC90",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 368,
+      "text": "int sub_4BFCD0(int a1, int a2, int* a3, int a4) {",
+      "selected_owner": "sub_4BFCD0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_49B6B0": [
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 52,
+      "text": "int sub_49B6B0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 654,
+      "text": "sub_49B6B0();",
+      "selected_owner": "sub_49B420",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 658,
+      "text": "sub_49B6B0();",
+      "selected_owner": "sub_49B420",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 675,
+      "text": "int sub_49B6B0() {",
+      "selected_owner": "sub_49B6B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_49C910": [
+    {
+      "file": "src/legacy/client__gui__conntype.c",
+      "line": 25,
+      "text": "sub_49C910();",
+      "selected_owner": "sub_49C820",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__conntype.c",
+      "line": 42,
+      "text": "uint32_t* sub_49C910() {",
+      "selected_owner": "sub_49C910",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__conntype.h",
+      "line": 7,
+      "text": "uint32_t* sub_49C910();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_479D00": [
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 289,
+      "text": "nox_gui_winSetFunc96_46B070(*(int*)&dword_5d4594_1123524, sub_479D00);",
+      "selected_owner": "sub_4799A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 406,
+      "text": "int sub_479D00() { return 1; }",
+      "selected_owner": "sub_479D00",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 41,
+      "text": "int sub_479D00();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_46A820": [
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 299,
+      "text": "result = nox_new_window_from_file(\"GuiChat.wnd\", sub_46A820);",
+      "selected_owner": "sub_46A730",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 327,
+      "text": "int sub_46A820(int a1, int a2, int a3, int a4) {",
+      "selected_owner": "sub_46A820",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 81,
+      "text": "int sub_46A820(int a1, int a2, int a3, int a4);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_48D4B0": [
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 2873,
+      "text": "sub_48D4B0(*(unsigned char*)(data + 2));",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 11,
+      "text": "int sub_48D4B0(int a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 90,
+      "text": "int sub_48D4B0(int a1) {",
+      "selected_owner": "sub_48D4B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gameloop.go",
+      "line": 197,
+      "text": "C.sub_48D4B0(C.int(a1))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_4C3390": [
+    {
+      "file": "src/game.go",
+      "line": 1062,
+      "text": "return errors.New(\"sub_4C3390 failed\")",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 497,
+      "text": "return int(C.sub_4C3390())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 60,
+      "text": "int sub_4C3390();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 392,
+      "text": "int sub_4C3390() {",
+      "selected_owner": "sub_4C3390",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_46A860": [
+    {
+      "file": "src/legacy/game.go",
+      "line": 569,
+      "text": "C.sub_46A860()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 338,
+      "text": "int sub_46A860() {",
+      "selected_owner": "sub_46A860",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 82,
+      "text": "int sub_46A860();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_48C9F0": [
+    {
+      "file": "src/legacy/client__gui__guiobs.c",
+      "line": 15,
+      "text": "int sub_48C9F0(int* a1) {",
+      "selected_owner": "sub_48C9F0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__guiobs.c",
+      "line": 37,
+      "text": "nox_window_set_all_funcs(*(uint32_t**)&dword_5d4594_1193712, 0, sub_48C9F0, 0);",
+      "selected_owner": "sub_48C980",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_49CA60": [
+    {
+      "file": "src/legacy/client__gui__conntype.c",
+      "line": 20,
+      "text": "dword_5d4594_1305684 = nox_new_window_from_file(\"conntype.wnd\", sub_49CA60);",
+      "selected_owner": "sub_49C820",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 63,
+      "text": "int sub_49CA60(int a1, int a2, int* a3, int a4);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 796,
+      "text": "int sub_49CA60(int a1, int a2, int* a3, int a4) {",
+      "selected_owner": "sub_49CA60",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_49B4B0": [
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 2909,
+      "text": "sub_49B4B0((unsigned short*)data);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__guiggovr.c",
+      "line": 14,
+      "text": "int sub_49B4B0(unsigned short* a1) {",
+      "selected_owner": "sub_49B4B0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__guiggovr.h",
+      "line": 6,
+      "text": "int sub_49B4B0(unsigned short* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_435700": [
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 979,
+      "text": "sub_435700(v400, v147);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 1021,
+      "text": "sub_435700(v393, v176);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 1077,
+      "text": "sub_435700(v391, v150);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 1090,
+      "text": "sub_435700(v391, v150);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 1099,
+      "text": "sub_435700(v391, v150);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 1126,
+      "text": "sub_435700(v391, v150);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 1215,
+      "text": "sub_435700(v394, v164);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 351,
+      "text": "wchar2_t* sub_435700(wchar2_t* a1, int a2) {",
+      "selected_owner": "sub_435700",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 55,
+      "text": "wchar2_t* sub_435700(wchar2_t* a1, int a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_430AA0": [
+    {
+      "file": "src/legacy/gui_options.go",
+      "line": 59,
+      "text": "C.sub_430AA0(C.int(v))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 185,
+      "text": "int sub_430AA0(int a1) {",
+      "selected_owner": "sub_430AA0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 21,
+      "text": "int sub_430AA0(int a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_clientOnCursorHover_477050": [
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 109,
+      "text": "nox_xxx_forEachSprite_49AB00(&v2, nox_xxx_clientOnCursorHover_477050, &mpos);",
+      "selected_owner": "nox_xxx_clientEnumHover_476FA0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 114,
+      "text": "void nox_xxx_clientOnCursorHover_477050(int arg0, int a2) {",
+      "selected_owner": "nox_xxx_clientOnCursorHover_477050",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 11,
+      "text": "void nox_xxx_clientOnCursorHover_477050(int arg0, int a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_4BF9F0": [
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 32,
+      "text": "short sub_4BF9F0(int a1, int a2, int a3, int a4, int a5, int a6, int a7);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 168,
+      "text": "sub_4BF9F0(1 << v5, v6, v2, v13, (int)v14, v5, 0);",
+      "selected_owner": "sub_4BF7E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 174,
+      "text": "sub_4BF9F0(2, v7, v2, v13, (int)v14, 0, 1);",
+      "selected_owner": "sub_4BF7E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 180,
+      "text": "sub_4BF9F0(1 << v8, v9, v2, v13, (int)v14, v8, 0);",
+      "selected_owner": "sub_4BF7E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 190,
+      "text": "LOWORD(v3) = sub_4BF9F0(1 << v10, v11, v2, v13, (int)v15, v10, 0);",
+      "selected_owner": "sub_4BF7E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 200,
+      "text": "short sub_4BF9F0(int a1, int a2, int a3, int a4, int a5, int a6, int a7) {",
+      "selected_owner": "sub_4BF9F0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_4C34A0": [
+    {
+      "file": "src/legacy/game.go",
+      "line": 554,
+      "text": "C.sub_4C34A0()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 63,
+      "text": "int sub_4C34A0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 419,
+      "text": "int sub_4C34A0() {",
+      "selected_owner": "sub_4C34A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_xxx_showObserverWindow_48CA70": [
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 8,
+      "text": "int nox_xxx_showObserverWindow_48CA70(int a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 87,
+      "text": "int nox_xxx_showObserverWindow_48CA70(int a1) { return nox_window_set_hidden(*(int*)&dword_5d4594_1193712, a1); }",
+      "selected_owner": "nox_xxx_showObserverWindow_48CA70",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 364,
+      "text": "result = nox_xxx_showObserverWindow_48CA70(0);",
+      "selected_owner": "nox_xxx_cliToggleObsWindow_4357A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 366,
+      "text": "result = nox_xxx_showObserverWindow_48CA70(1);",
+      "selected_owner": "nox_xxx_cliToggleObsWindow_4357A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_xxx_clientReportSecondaryWeapon_4BF010": [
+    {
+      "file": "src/legacy/client_ui_inventory_stack.go",
+      "line": 62,
+      "text": "return int(C.nox_xxx_clientReportSecondaryWeapon_4BF010(0))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client_ui_inventory_stack.go",
+      "line": 66,
+      "text": "return int(C.nox_xxx_clientReportSecondaryWeapon_4BF010(C.int(uiInventoryPointer(cell.Drawable.C()))))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 30,
+      "text": "int nox_xxx_clientReportSecondaryWeapon_4BF010(int a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 119,
+      "text": "int nox_xxx_clientReportSecondaryWeapon_4BF010(int a1) {",
+      "selected_owner": "nox_xxx_clientReportSecondaryWeapon_4BF010",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_46A7E0": [
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 307,
+      "text": "nox_xxx_wndSetWindowProc_46B300(*(int*)&dword_5d4594_1064860, sub_46A7E0);",
+      "selected_owner": "sub_46A730",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 316,
+      "text": "int sub_46A7E0(uint32_t* a1, int a2, int a3, int a4) {",
+      "selected_owner": "sub_46A7E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 80,
+      "text": "int sub_46A7E0(uint32_t* a1, int a2, int a3, int a4);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_479BE0": [
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 287,
+      "text": "nox_xxx_wndSetWindowProc_46B300(result, sub_479BE0);",
+      "selected_owner": "sub_4799A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 359,
+      "text": "int sub_479BE0(uint32_t* a1, int a2, unsigned int a3, int a4) {",
+      "selected_owner": "sub_479BE0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 38,
+      "text": "int sub_479BE0(uint32_t* a1, int a2, unsigned int a3, int a4);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_client_chatStart_46A430": [
+    {
+      "file": "src/legacy/ctrlevent.go",
+      "line": 104,
+      "text": "C.nox_client_chatStart_46A430(C.int(v))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 183,
+      "text": "void nox_client_chatStart_46A430(int a1) {",
+      "selected_owner": "nox_client_chatStart_46A430",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 74,
+      "text": "void nox_client_chatStart_46A430(int a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_437100": [
+    {
+      "file": "src/legacy/client_draw.go",
+      "line": 54,
+      "text": "C.sub_437100()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 399,
+      "text": "void sub_437100() {",
+      "selected_owner": "sub_437100",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 60,
+      "text": "void sub_437100();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_guiChatIconLoad_445650": [
+    {
+      "file": "src/game.go",
+      "line": 1059,
+      "text": "return errors.New(\"nox_xxx_guiChatIconLoad_445650 failed\")",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__chaticon.c",
+      "line": 14,
+      "text": "int nox_xxx_guiChatIconLoad_445650() {",
+      "selected_owner": "nox_xxx_guiChatIconLoad_445650",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 43,
+      "text": "int nox_xxx_guiChatIconLoad_445650();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 494,
+      "text": "return int(C.nox_xxx_guiChatIconLoad_445650())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_436550": [
+    {
+      "file": "src/legacy/client__system__client.c",
+      "line": 20,
+      "text": "if (!sub_436550()) {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 381,
+      "text": "int sub_436550() {",
+      "selected_owner": "sub_436550",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 59,
+      "text": "int sub_436550();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_4BFAD0": [
+    {
+      "file": "src/game.go",
+      "line": 982,
+      "text": "return errors.New(\"sub_4BFAD0 failed\")",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 443,
+      "text": "return int(C.sub_4BFAD0())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 33,
+      "text": "int sub_4BFAD0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 263,
+      "text": "int sub_4BFAD0() {",
+      "selected_owner": "sub_4BFAD0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_client_drawable_testBuff_4356C0": [
+    {
+      "file": "src/client/drawable.go",
+      "line": 735,
+      "text": "func (s *Drawable) HasEnchant(v server.EnchantID) bool { // nox_client_drawable_testBuff_4356C0",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 1234,
+      "text": "LODWORD(v5) = nox_client_drawable_testBuff_4356C0(v5, 15);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 1241,
+      "text": "if (v135 != 1 || nox_client_drawable_testBuff_4356C0(v134, 15) ||",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 1254,
+      "text": "!nox_client_drawable_testBuff_4356C0(*getMemIntPtr(0x852978, 8), 15)) {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 152,
+      "text": "if (!((v3 & 0x8000) == 0 && (!nox_client_drawable_testBuff_4356C0(arg0, 0) ||",
+      "selected_owner": "nox_xxx_clientOnCursorHover_477050",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 153,
+      "text": "nox_client_drawable_testBuff_4356C0(*getMemIntPtr(0x852978, 8), 21)))) {",
+      "selected_owner": "nox_xxx_clientOnCursorHover_477050",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 339,
+      "text": "bool nox_client_drawable_testBuff_4356C0(nox_drawable* dr, char a2) {",
+      "selected_owner": "nox_client_drawable_testBuff_4356C0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 53,
+      "text": "bool nox_client_drawable_testBuff_4356C0(nox_drawable* dr, char a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_445770": [
+    {
+      "file": "src/legacy/game.go",
+      "line": 557,
+      "text": "C.sub_445770()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 267,
+      "text": "int sub_445770() {",
+      "selected_owner": "sub_445770",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 75,
+      "text": "int sub_445770();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_49B6E0": [
+    {
+      "file": "src/legacy/client__gui__guiggovr.c",
+      "line": 67,
+      "text": "int sub_49B6E0() {",
+      "selected_owner": "sub_49B6E0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client_draw.go",
+      "line": 90,
+      "text": "C.sub_49B6E0()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__guiggovr.h",
+      "line": 7,
+      "text": "int sub_49B6E0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_479CB0": [
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 288,
+      "text": "nox_xxx_wndSetDrawFn_46B340(*(int*)&dword_5d4594_1123524, sub_479CB0);",
+      "selected_owner": "sub_4799A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 394,
+      "text": "int sub_479CB0(int a1, int a2) {",
+      "selected_owner": "sub_479CB0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 40,
+      "text": "int sub_479CB0(int a1, int a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_4799A0": [
+    {
+      "file": "src/game.go",
+      "line": 1020,
+      "text": "return errors.New(\"sub_4799A0 failed\")",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 270,
+      "text": "int sub_4799A0() {",
+      "selected_owner": "sub_4799A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/game.go",
+      "line": 473,
+      "text": "return int(C.sub_4799A0())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 36,
+      "text": "int sub_4799A0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_49C810": [
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 62,
+      "text": "int sub_49C810();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 793,
+      "text": "int sub_49C810() { return dword_5d4594_1305680 != 0; }",
+      "selected_owner": "sub_49C810",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 384,
+      "text": "if (sub_459DA0() || nox_gui_xxx_check_446360() || sub_49CB40() || sub_49C810() || sub_446950() || sub_4706A0() ||",
+      "selected_owner": "sub_436550",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/session_dialogs_motd.go",
+      "line": 135,
+      "text": "if !noxflags.HasEngine(noxflags.EngineNoRendering) && sessionMOTDRoot != nil && sessionMOTDRoot.Flags&gui.StatusHidden != 0 && Sub_44A4A0() == 0 && C.sub_49C810() == 0 && C.sub_49CB40() == 0 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_xxx_printCentered_445490": [
+    {
+      "file": "src/server.go",
+      "line": 304,
+      "text": "nox_xxx_printCentered_445490(str)",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/server.go",
+      "line": 311,
+      "text": "nox_xxx_printCentered_445490(str)",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/server.go",
+      "line": 314,
+      "text": "nox_xxx_printCentered_445490(fmt.Sprintf(str, min))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/server.go",
+      "line": 317,
+      "text": "nox_xxx_printCentered_445490(str)",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/parsecmd_maps.go",
+      "line": 87,
+      "text": "nox_xxx_printCentered_445490(v6)",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/parsecmd_maps.go",
+      "line": 104,
+      "text": "nox_xxx_printCentered_445490(fmt.Sprintf(str, fname))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/parsecmd_maps.go",
+      "line": 113,
+      "text": "nox_xxx_printCentered_445490(fmt.Sprintf(str, fname))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/network_client.go",
+      "line": 239,
+      "text": "nox_xxx_printCentered_445490(fmt.Sprintf(format, pl.Name()))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/network_client.go",
+      "line": 271,
+      "text": "nox_xxx_printCentered_445490(msg)",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/network_client.go",
+      "line": 423,
+      "text": "nox_xxx_printCentered_445490(text)",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/gameex.go",
+      "line": 208,
+      "text": "nox_xxx_printCentered_445490(alloc.GoStringS(buf1))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/gameex.go",
+      "line": 212,
+      "text": "nox_xxx_printCentered_445490(alloc.GoStringS(buf1))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/gameex.go",
+      "line": 334,
+      "text": "nox_xxx_printCentered_445490(\"only server can change these options\")",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/save.go",
+      "line": 156,
+      "text": "nox_xxx_printCentered_445490(str)",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/save.go",
+      "line": 190,
+      "text": "nox_xxx_printCentered_445490(str)",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/gameloop.go",
+      "line": 837,
+      "text": "func nox_xxx_printCentered_445490(str string) {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/gameloop.go",
+      "line": 891,
+      "text": "nox_xxx_printCentered_445490(v7)",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/gameloop.go",
+      "line": 894,
+      "text": "nox_xxx_printCentered_445490(fmt.Sprintf(v8, v14))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__guimsg.c",
+      "line": 7,
+      "text": "void nox_xxx_printCentered_445490(wchar2_t* a1) {",
+      "selected_owner": "nox_xxx_printCentered_445490",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 871,
+      "text": "nox_xxx_printCentered_445490(v395);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 940,
+      "text": "nox_xxx_printCentered_445490(v406);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 2156,
+      "text": "nox_xxx_printCentered_445490(v38);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 2180,
+      "text": "nox_xxx_printCentered_445490(v401);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 3075,
+      "text": "nox_xxx_printCentered_445490(v405);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 3094,
+      "text": "nox_xxx_printCentered_445490(v403);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 3112,
+      "text": "nox_xxx_printCentered_445490(v404);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__cdecode.c",
+      "line": 3126,
+      "text": "nox_xxx_printCentered_445490(v402);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__gamewin__gamewin.c",
+      "line": 35,
+      "text": "nox_xxx_printCentered_445490(v3);",
+      "selected_owner": "nox_xxx_clientPickup_46C140",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gameex.go",
+      "line": 11,
+      "text": "void  nox_xxx_printCentered_445490(wchar2_t* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__guimsg.h",
+      "line": 6,
+      "text": "void nox_xxx_printCentered_445490(wchar2_t* a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 93,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 107,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 118,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 130,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 142,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 152,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 161,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 172,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 183,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 196,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 205,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 218,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 225,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 232,
+      "text": "nox_xxx_printCentered_445490(v11);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 238,
+      "text": "nox_xxx_printCentered_445490(v12);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 245,
+      "text": "nox_xxx_printCentered_445490(v2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 251,
+      "text": "nox_xxx_printCentered_445490(v3);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 257,
+      "text": "nox_xxx_printCentered_445490(v4);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 263,
+      "text": "nox_xxx_printCentered_445490(v5);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 282,
+      "text": "nox_xxx_printCentered_445490(v63);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 286,
+      "text": "nox_xxx_printCentered_445490(v44);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 293,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 310,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 319,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 331,
+      "text": "nox_xxx_printCentered_445490(v62);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__network__inform.c",
+      "line": 340,
+      "text": "nox_xxx_printCentered_445490(v63);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/gameloop.go",
+      "line": 214,
+      "text": "C.nox_xxx_printCentered_445490(wstr)",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_xxx_clientTrade_42E850": [
+    {
+      "file": "src/legacy/ctrlevent.go",
+      "line": 68,
+      "text": "C.nox_xxx_clientTrade_42E850((*nox_drawable)(dr.C()))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 147,
+      "text": "void nox_xxx_clientTrade_42E850(nox_drawable* a1p) {",
+      "selected_owner": "nox_xxx_clientTrade_42E850",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 13,
+      "text": "void nox_xxx_clientTrade_42E850(nox_drawable* a1p);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_4BFD30": [
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 41,
+      "text": "int sub_4BFD30();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client_ui_inventory_window_draw.go",
+      "line": 62,
+      "text": "if noxflags.HasGame(4096) && C.sub_4BFD30() != 0 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client_ui_inventory_window_hit.go",
+      "line": 107,
+      "text": "if hit(1049828) && C.sub_4BFD30() == 1 {",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 389,
+      "text": "int sub_4BFD30() { return dword_5d4594_1319056; }",
+      "selected_owner": "sub_4BFD30",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_4BFC90": [
+    {
+      "file": "src/legacy/game.go",
+      "line": 467,
+      "text": "return int(C.sub_4BFC90())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 38,
+      "text": "int sub_4BFC90();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 354,
+      "text": "int sub_4BFC90() {",
+      "selected_owner": "sub_4BFC90",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_479C40": [
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 307,
+      "text": "nox_xxx_wndSetDrawFn_46B340((int)v7, sub_479C40);",
+      "selected_owner": "sub_4799A0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.c",
+      "line": 380,
+      "text": "int sub_479C40(uint32_t* a1, int a2) {",
+      "selected_owner": "sub_479C40",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_2.h",
+      "line": 39,
+      "text": "int sub_479C40(uint32_t* a1, int a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_wnd_49C760": [
+    {
+      "file": "src/legacy/GAME2_3.h",
+      "line": 60,
+      "text": "int nox_xxx_wnd_49C760(int a1, int a2, int* a3, int a4);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_3.c",
+      "line": 755,
+      "text": "int nox_xxx_wnd_49C760(int a1, int a2, int* a3, int a4) {",
+      "selected_owner": "nox_xxx_wnd_49C760",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/client__gui__chathelp.c",
+      "line": 33,
+      "text": "result = nox_new_window_from_file(*(const char**)getMemAt(0x587000, 164512 + 4 * v0), nox_xxx_wnd_49C760);",
+      "selected_owner": "nox_xxx_cliShowHelpGui_49C560",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "nox_client_mousePriKey_430AF0": [
+    {
+      "file": "src/legacy/ctrlevent.go",
+      "line": 172,
+      "text": "return int(C.nox_client_mousePriKey_430AF0())",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.c",
+      "line": 206,
+      "text": "int nox_client_mousePriKey_430AF0() { return dword_5d4594_805820; }",
+      "selected_owner": "nox_client_mousePriKey_430AF0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_2.h",
+      "line": 22,
+      "text": "int nox_client_mousePriKey_430AF0();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "nox_xxx_guiChatShowHide_445730": [
+    {
+      "file": "src/legacy/GAME1_3.c",
+      "line": 264,
+      "text": "int nox_xxx_guiChatShowHide_445730(int a1) { return nox_window_set_hidden(*(int*)&dword_5d4594_825744, a1); }",
+      "selected_owner": "nox_xxx_guiChatShowHide_445730",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/main.go",
+      "line": 132,
+      "text": "C.nox_xxx_guiChatShowHide_445730(C.int(bool2int(v)))",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME1_3.h",
+      "line": 74,
+      "text": "int nox_xxx_guiChatShowHide_445730(int a1);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ],
+  "sub_4BFD10": [
+    {
+      "file": "src/legacy/game.go",
+      "line": 539,
+      "text": "C.sub_4BFD10()",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.h",
+      "line": 40,
+      "text": "void sub_4BFD10();",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME3_1.c",
+      "line": 382,
+      "text": "void sub_4BFD10() {",
+      "selected_owner": "sub_4BFD10",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    }
+  ],
+  "sub_46A5D0": [
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 249,
+      "text": "int sub_46A5D0(uint32_t* a1, int a2) {",
+      "selected_owner": "sub_46A5D0",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.c",
+      "line": 306,
+      "text": "nox_xxx_wndSetDrawFn_46B340((int)result, sub_46A5D0);",
+      "selected_owner": "sub_46A730",
+      "fixture": false,
+      "declaration": false,
+      "comment": false
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 77,
+      "text": "int sub_46A5D0(uint32_t* a1, int a2);",
+      "selected_owner": null,
+      "fixture": false,
+      "declaration": true,
+      "comment": false
+    }
+  ]
+}

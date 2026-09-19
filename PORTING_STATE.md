@@ -8,6 +8,40 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — client interaction C baseline
+
+Qualified production parent **b30f96a3** is committed/pushed. Thirteen original-C
+contract roots pass in c-timing-initial and independently repeat in c-initial-repeat
+with every capture unchanged; static-timing passes. All jobs are joined.
+This is a test-development recovery checkpoint, **not a qualified C baseline**.
+Production source is unchanged; C remains13,442 /57 files /zero reference.
+See [CLIENT_INTERACTION.md](docs/porting/CLIENT_INTERACTION.md) and the tracked
+initial manifest/checkpoint for portable rerun instructions and remaining gates.
+
+Coverage includes primitives, text state, actual chat/resource ownership, indicator
+drawing,714 talk/use/trade queue cases, key/vote, game-over, conversation, help,
+clock/cursor and modal/frame ordering. Corrected fixture assumptions: resource
+background images use a separate loader; named font registration does not replace
+renderer fallback. No production behavior was changed to satisfy those contracts.
+No final goldens are frozen. Installed test drafts are consumed; never recopy them.
+Remaining: cursor hover, centered messages/chat lengths, paper-doll drawing, pickup,
+secondary-weapon sends, HUD visibility and escape ordering; then full baseline.
+Text review found fixed-buffer boundaries to address before freezing undefined
+cases: centered-message rows and the chat-format temporary. Decisions remain to
+be implemented/qualified; no C prerequisite correction is installed yet.
+
+The 83-body selection/reachability/owner audits and review notes remain under
+`build/port-client-interaction`. Scope review must include non-dword named owners,
+raw registrations, text storage bounds and GUI callback lifetime. Draft dispatcher
+is now installed: do not copy it over later edits. Next: contracts for real resource
+lifecycle, rendering, game actions and ordered modal/escape behavior, then baseline
+qualification before conversion. Preserve the parent native manifest and captures.
+
+All three final session-dialog scenario copies have now been hash-deduplicated:
+1,669,136,451 additional bytes reclaimed. Audit/apply jobs are joined; deletion
+mode of deduplicate-native-qualified-assets.py is consumed. Per-run restoration
+manifests and references remain; original assets/archive are unchanged.
+
 ## Current — session dialogs Go conversion qualified
 
 C baseline `29d96787` supplies the unchanged frozen expectations. All 31 live

@@ -1,0 +1,1 @@
+^TestClientInteraction(MouseModes|DrawablePredicates|ObserverAndToggle|IndicatorWindows|ChatLifecycle|TextState|ActionMessages|KeyAndVoteWindows|GameOver|Conversation|HelpDialog|ClocksAndCursor|ModalFrameGate)$

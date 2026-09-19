@@ -1,0 +1,32 @@
+{
+  "status": "test-development checkpoint; C baseline incomplete",
+  "production_parent": "b30f96a3",
+  "production_source_unchanged": true,
+  "default_roots": 13,
+  "static": "build/port-client-interaction/static-timing.log",
+  "evidence": "build/port-client-interaction/c-timing-initial",
+  "observed_capture_hashes": {
+    "interaction-actions.json": "7038a6f9d560874adc7e0ff2abac92fcd586f555e123badc95767b942d777edd",
+    "interaction-chat-lifecycle.json": "783f64a9b9fd654ab803fdd3d705ba0d89f727bfd174bacfa04e56ad4c419cde",
+    "interaction-clock.json": "97c3cf3d4bffff99c2621e58b1f7e68a1d5e7a5c1508cfc9c951ba85a87ae933",
+    "interaction-conversation.json": "db1a0ef8998cef49134d877e9635d79ec3ff022684a156a119cd1cc55e3f322a",
+    "interaction-drawable-predicates.json": "ab986d615edd3ef1b766e31320a725d73d4469e590784916ea44f3aff7380cd2",
+    "interaction-game-over.json": "47d207dddb4e70e1401b96172ba990ac90370148164ef8755769f5c8af44da47",
+    "interaction-help.json": "e5169541298a732a73f3f8717bc5b56d815642f32ab0553a2fcdeadf36e470ad",
+    "interaction-indicators.json": "1e7e37fe8c890deeef5dafd1cd84091cf98ec234241041b8489f4e1d95373765",
+    "interaction-key-vote.json": "3ac66d769617cc7678cf69527368d4d95b7bcf2d99f4d0001e891082afa9b7aa",
+    "interaction-modal-frame.json": "72c18baa91b8b697dd2e0c1866f4b91894ac27f80245607ca9a297d8bb5ab9d0",
+    "interaction-mouse-modes.json": "7e87c03637e684cf8269b418521f2480f06b880c28287e4b21ec178c0052ebbc",
+    "interaction-observer.json": "1c647ed88396b47abd5a671fb7f6fea356373c1b7c6dedf25bf9198b1030f677",
+    "interaction-text-state.json": "2268029cadd00de303616e9e8ba66eca59ca0e784a7a1dd8c72540d593174425"
+  },
+  "pending": [
+    "remaining behavior/ownership contracts",
+    "independent repeat and final capture freeze",
+    "affected default/server/highres qualification",
+    "production identity review or fresh qualification if prerequisites change",
+    "Go conversion and native qualification"
+  ],
+  "independent_repeat": "build/port-client-interaction/c-initial-repeat",
+  "repeat_matches_all_captures": true
+}
