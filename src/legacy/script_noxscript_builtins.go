@@ -2,7 +2,7 @@ package legacy
 
 /*
 #include "defs.h"
-int nox_script_SetRoamFlag_515C40();
+int nox_script_SetRoamFlag_515C40(void);
 int nox_script_SetRoamFlagGroup_515CB0();
 int nox_script_JournalDelete_515550();
 int nox_script_JournalEdit_5155A0();
@@ -16,8 +16,8 @@ int nox_script_MakeFriendly_516720();
 int nox_script_MakeEnemy_516760();
 int nox_script_BecomePet_5167D0();
 int nox_script_BecomeEnemy_516810();
-int nox_script_builtin_516790();
-int nox_script_builtin_516850();
+int nox_script_builtin_516790(void);
+int nox_script_builtin_516850(void);
 int nox_script_OblivionGive_516890();
 int nox_script_PlayerIsTrading_5166E0();
 void nox_script_StartupScreen_516600_A();

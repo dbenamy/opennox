@@ -2166,3 +2166,15 @@ count with actual mapping round-trip preservation and a small independent parser
 fixture. This is a reversible test-infrastructure correction, not a change to
 production mapping behavior. Other known suite failures remain recorded. See
 [ONLINE_SESSION.md](ONLINE_SESSION.md).
+
+## Missing-object script predicates — review with script-binding conversion
+
+Builtins184/185 now return false when object resolution fails. Their C bodies
+previously read a parameter that the actual no-argument callback dispatcher never
+supplied; both legacy-table and normal VM routes reproduce nonzero missing-object
+results. Signatures now match the dispatcher. SetRoamFlag also loses its unpassed
+parameter and unused initializer; its live popped-byte behavior is unchanged.
+This is an intentional, reversible correction under the standing policy, not
+preservation of undefined C behavior. Valid-object bits and higher-priority VM
+compatibility overrides are unchanged. See [SCRIPT_BINDINGS.md](SCRIPT_BINDINGS.md)
+for independent contracts, original evidence and qualification status.

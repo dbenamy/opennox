@@ -271,13 +271,12 @@ int nox_script_JournalEdit_5155A0() {
 }
 
 //----- (00515C40) --------------------------------------------------------
-int nox_script_SetRoamFlag_515C40(int a1) {
+int nox_script_SetRoamFlag_515C40(void) {
 	char v1; // bl
 	int v2;  // eax
 	int v3;  // eax
 	char v5; // [esp+1h] [ebp-1h]
 
-	v5 = HIBYTE(a1);
 	v1 = nox_script_pop();
 	v2 = nox_script_pop();
 	v3 = nox_server_scriptValToObjectPtr_511B60(v2);
@@ -411,18 +410,16 @@ int nox_script_MakeEnemy_516760() {
 }
 
 //----- (00516790) --------------------------------------------------------
-int nox_script_builtin_516790(void* this) {
+int nox_script_builtin_516790(void) {
 	int v1;   // eax
 	int v2;   // eax
-	void* v4; // [esp+0h] [ebp-4h]
 
-	v4 = this;
 	v1 = nox_script_pop();
 	v2 = nox_server_scriptValToObjectPtr_511B60(v1);
 	if (v2) {
 		nox_script_push((*(uint32_t*)(v2 + 12) >> 8) & 1);
 	} else {
-		nox_script_push((int)v4);
+		nox_script_push(0);
 	}
 	return 0;
 }
@@ -466,18 +463,16 @@ int nox_script_BecomeEnemy_516810() {
 }
 
 //----- (00516850) --------------------------------------------------------
-int nox_script_builtin_516850(void* this) {
+int nox_script_builtin_516850(void) {
 	int v1;   // eax
 	int v2;   // eax
-	void* v4; // [esp+0h] [ebp-4h]
 
-	v4 = this;
 	v1 = nox_script_pop();
 	v2 = nox_server_scriptValToObjectPtr_511B60(v1);
 	if (v2) {
 		nox_script_push((*(uint32_t*)(v2 + 12) & 0xFFu) >> 7);
 	} else {
-		nox_script_push((int)v4);
+		nox_script_push(0);
 	}
 	return 0;
 }

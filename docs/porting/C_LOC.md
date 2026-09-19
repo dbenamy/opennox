@@ -257,6 +257,7 @@ target build selection and linker evidence.
 | Client interaction first50 routines (recovery; final qualification pending) | 53 | 12,835 | −621 | 0 |
 | Client interaction completed:78 live routines, orphan/interface/owner retirement | 50 | 11,898 | −937 (−1,558 from C baseline) | 0 |
 | Legacy online session state, unreachable service paths and log formatter | 49 | 11,409 | −489 | 0 |
+| Script-binding ABI prerequisite (focused checks; production qualification pending) | 49 | 11,404 | −5 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

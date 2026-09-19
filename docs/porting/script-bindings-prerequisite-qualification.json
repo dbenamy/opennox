@@ -1,0 +1,231 @@
+{
+  "default": {
+    "evidence": "build/port-script-builtins/prerequisite-final-default",
+    "result": {
+      "batch": "Script binding ABI prerequisite contracts",
+      "phase": "default",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/script-bindings-prerequisite-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-script-builtins/prerequisite-final-default/tests.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-script-builtins/prerequisite-final-default/tests-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 78.44422790501267
+        }
+      ],
+      "revision": "c425197f688ea5dc0783670dd348d3bddb52cc74",
+      "source_unchanged": true,
+      "wall_seconds": 78.69592286483385,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 49,
+          "lines": 11404
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "tests": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 3,
+      "selected_root_tests": 3,
+      "exit": 0,
+      "started_tests": 3,
+      "completed_tests": 3,
+      "started_root_tests": 3,
+      "completed_root_tests": 3,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 78.35515835299157
+    }
+  },
+  "server": {
+    "evidence": "build/port-script-builtins/prerequisite-final-server",
+    "result": {
+      "batch": "Script binding ABI prerequisite contracts",
+      "phase": "server",
+      "success": true,
+      "steps": [
+        {
+          "name": "server",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/script-bindings-prerequisite-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-script-builtins/prerequisite-final-server/tests.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-script-builtins/prerequisite-final-server/tests-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 80.4741315129213
+        }
+      ],
+      "revision": "c425197f688ea5dc0783670dd348d3bddb52cc74",
+      "source_unchanged": true,
+      "wall_seconds": 80.71706791478209,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 49,
+          "lines": 11404
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "tests": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 3,
+      "selected_root_tests": 3,
+      "exit": 0,
+      "started_tests": 3,
+      "completed_tests": 3,
+      "started_root_tests": 3,
+      "completed_root_tests": 3,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 80.38488910789602
+    }
+  },
+  "highres": {
+    "evidence": "build/port-script-builtins/prerequisite-final-highres",
+    "result": {
+      "batch": "Script binding ABI prerequisite contracts",
+      "phase": "highres",
+      "success": true,
+      "steps": [
+        {
+          "name": "highres",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/script-bindings-prerequisite-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-script-builtins/prerequisite-final-highres/tests.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-script-builtins/prerequisite-final-highres/tests-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 79.85225546592847
+        }
+      ],
+      "revision": "c425197f688ea5dc0783670dd348d3bddb52cc74",
+      "source_unchanged": true,
+      "wall_seconds": 80.09205908305012,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 49,
+          "lines": 11404
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "tests": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 3,
+      "selected_root_tests": 3,
+      "exit": 0,
+      "started_tests": 3,
+      "completed_tests": 3,
+      "started_root_tests": 3,
+      "completed_root_tests": 3,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 79.76360929803923
+    }
+  },
+  "kind": "Focused C ABI prerequisite recovery; broader C baseline and production qualification pending",
+  "qualified_parent": "c425197f",
+  "c_loc": {
+    "files": 49,
+    "lines": 11404,
+    "reference_lines": 0
+  },
+  "original_valid_object_contract": {
+    "path": "build/port-script-builtins/object-predicates-original.log",
+    "sha256": "e469a8e574e0df4b0cd2a5e20f284a7d157cf22d9df26274324c773ba20ed6c3",
+    "cases": 8192,
+    "result": "pass"
+  },
+  "original_missing_object_contract": {
+    "path": "build/port-script-builtins/missing-object-original.log",
+    "sha256": "39e9de16767b51bf77a0b82c225ff4e2f23e8179f9ba2b2c7361a493b7a0bc85",
+    "cases": 16,
+    "result": "expected failure reproduced"
+  }
+}

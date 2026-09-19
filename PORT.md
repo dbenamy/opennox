@@ -14,6 +14,13 @@
 
 ## Current status
 
+The next script-binding batch has a checked C prerequisite: two
+missing-object predicates now return false instead of reading an unpassed
+argument. See [SCRIPT_BINDINGS.md](docs/porting/SCRIPT_BINDINGS.md) for contracts,
+remaining baseline work and the explicit qualification boundary. Working C is
+11,404 lines; the last fully qualified checkpoint below remains11,409.
+
+
 The remaining legacy online-session helpers now use Go or reduce to their
 reachable empty-state behavior. Six owners move to Go; eleven unused owners,
 27 private selected C interfaces and the old C log callback are retired. Only the

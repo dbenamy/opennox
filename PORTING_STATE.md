@@ -8,6 +8,30 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+
+## Current — script-binding C prerequisite checked
+
+Qualified parent **c425197f** is committed and pushed. The next22-body candidate
+is under review. Actual VM tests reproduced undefined missing-object results in
+two predicates; the correction returns false and matches their no-argument ABI.
+SetRoamFlag loses an unused read of another unpassed argument. The original C
+passes8192 valid-object cases. Corrected missing-object and6144 roam contracts
+pass on all three targets with no skips; see [SCRIPT_BINDINGS.md](docs/porting/SCRIPT_BINDINGS.md).
+
+Working C is **11,404 lines /49 files /zero reference C**; the fully qualified
+checkpoint remains11,409. The broader C baseline is not frozen or production
+qualified, and no selected behavior has moved to Go yet. Preserve original
+failure evidence; failed initial roam runs were a fixture setup error. Final
+runs are `build/port-script-builtins/prerequisite-final-{default,server,highres}`.
+All test jobs are joined. Regenerate selection offsets
+before using the earlier read-only draft after the C prerequisite correction.
+
+Three completed online-session native scenario copies were hash-deduplicated,
+reclaiming1,669,136,451 bytes. Audit/apply jobs joined; deletion mode in
+`build/port-old-online/deduplicate-native-assets.py` is CONSUMED. Per-run
+restoration manifests remain; original assets/archive/screenshots/saves/logs
+are preserved. No user decision is pending.
+
 ## Current — legacy online session conversion qualified
 
 C baseline **f73daa4e** and qualified parent **cc21d5db** are pushed. The28-body /
