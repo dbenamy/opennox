@@ -1,0 +1,396 @@
+{
+  "batch": "Script inventory client-shop caller supplement",
+  "env": {
+    "OPENNOX_SPELLBOOK_CAPTURE": "{out}/capture",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_DECODE_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_COMBAT_CAPTURE": "{out}/combat.json",
+    "OPENNOX_MAP_POPULATION_CAPTURE": "{out}/population",
+    "OPENNOX_TILE_RASTER_CAPTURE": "{out}/tile-raster",
+    "OPENNOX_TILE_COMPOSITION_CAPTURE": "{out}/tile-composition",
+    "OPENNOX_CLIENT_AUDIO_CAPTURE": "{out}/audio",
+    "OPENNOX_CLIENT_AUDIO_ASSETS_CAPTURE": "{out}/audio-assets",
+    "OPENNOX_SESSION_DIALOGS_CAPTURE": "{out}/session-dialogs",
+    "OPENNOX_BRIEFING_CAPTURE": "{out}/briefing",
+    "OPENNOX_BRIEFING_WINDOW_CAPTURE": "{out}/briefing-window",
+    "OPENNOX_INVENTORY_WINDOW_CAPTURE": "{out}/inventory-window",
+    "OPENNOX_CLIENT_INTERACTION_CAPTURE": "{out}/interaction",
+    "OPENNOX_JOURNAL_CAPTURE": "{out}/journal",
+    "OPENNOX_CALLBACK_CAPTURE": "{out}/callbacks",
+    "OPENNOX_SHOP_UI_CAPTURE": "{out}/shop"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/script-inventory-shop-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/shop-allocation-failure.json",
+            "sha256": "a6172e37d31db9828c26ccd5b3e6ad9178f3b8a717712065f635e851154e38fd"
+          },
+          {
+            "path": "{out}/shop-asset-windows.json",
+            "sha256": "67eb669972110888bf4157d370444250a43d0864fe2af97b6c4d66bc4309185a"
+          },
+          {
+            "path": "{out}/shop-buy-inventory-full.json",
+            "sha256": "45e05279e2548674622698aa62ba7d003eb4023305f5ed57a90cfc26834ef8cf"
+          },
+          {
+            "path": "{out}/shop-buy-quantity.json",
+            "sha256": "ac58373a27af486283e577ed8308f8cc03f689a5dc619568c260169a4f59f097"
+          },
+          {
+            "path": "{out}/shop-cancel-request.json",
+            "sha256": "75314d8d499d2219e4c6be20717266c70c6f289c384addf9581f510af2b0f32c"
+          },
+          {
+            "path": "{out}/shop-close-quantity.json",
+            "sha256": "7be4a66be4354d0127737e77b8661254dea295c17f4ff14d969dd56c019bbecd"
+          },
+          {
+            "path": "{out}/shop-construction.json",
+            "sha256": "5edc5d6e24302ef67b7304f51458b25e95515d6e3fcc0a52c72ccd63b15dcf16"
+          },
+          {
+            "path": "{out}/shop-draw-modes.json",
+            "sha256": "0278ece430375cb4cda9120053ad5d10ae84dfa7326ef7af4e5f276e5a664b97"
+          },
+          {
+            "path": "{out}/shop-drawable-lookup.json",
+            "sha256": "5d0a8fa2b6472b7dc4731461e4856ad6c24bfd224372946213278a5c91a9e30d"
+          },
+          {
+            "path": "{out}/shop-gold-dialog.json",
+            "sha256": "cfd53b45d46df280376abed4a2e144db637a044e1f215ce20b13b416517dddb1"
+          },
+          {
+            "path": "{out}/shop-grid-draw-hover.json",
+            "sha256": "44463ee20cabfb2527c7ce103ad7bec568936bd5f057ccfe4a3b8b516f2b290c"
+          },
+          {
+            "path": "{out}/shop-missing-resource.json",
+            "sha256": "077a0e9ea4be91f2722c5f27503563fd934caa47ce8c49a881a7a3404c82b993"
+          },
+          {
+            "path": "{out}/shop-modes.json",
+            "sha256": "2b088fe335d717b7e31b737ed30fb76b15d2f3332b92e2ab8afa825503bf12e7"
+          },
+          {
+            "path": "{out}/shop-mouse-events.json",
+            "sha256": "23e23b26a7deaaa8c33059888e39acd46196a5b17881e5e912af950b47db665b"
+          },
+          {
+            "path": "{out}/shop-panel-modes.json",
+            "sha256": "0195f932ae8177a9e2efd6039f1ea9298e67ce6259c82ddcefebb4a30e14e681"
+          },
+          {
+            "path": "{out}/shop-remove-codes.json",
+            "sha256": "bdf4610203c09715c0b36bb614e70cb72ece8fae2767d51a5ceb92d93955d6f2"
+          },
+          {
+            "path": "{out}/shop-requests.json",
+            "sha256": "0e850090c6c21a84b4ff4e8d3a4d736c6505b0b955386c57a32bd108087e87bb"
+          },
+          {
+            "path": "{out}/shop-reset-ownership.json",
+            "sha256": "b1c703af467247bd27b890e742770177450e44c52b24f58da236fc7ed3f015f5"
+          },
+          {
+            "path": "{out}/shop-scroll.json",
+            "sha256": "095b221e2b2afb94e80d169e3733c94899148647bd63175d12d1edd8b7dc4bfe"
+          },
+          {
+            "path": "{out}/shop-sell-repair-quantity.json",
+            "sha256": "e872a354a1574158235f0a6fc0b45caac1e24e33857f72da18e03053c4481a5f"
+          },
+          {
+            "path": "{out}/shop-shopkeeper-pictures.json",
+            "sha256": "2cd3e566fe0e5d20a306475425815ec8bfaf703b7f12def8222cced73794a9db"
+          },
+          {
+            "path": "{out}/shop-start-close.json",
+            "sha256": "e8db70fd55728a8feb4f874adcd98afa3697fd9cf67d3837a734f9c0d2e9e9f3"
+          },
+          {
+            "path": "{out}/shop-stock-capacity.json",
+            "sha256": "ca3d769f1bff64454877f63cc895959f7a4ee67b63e0ce82da401ded7bf16a75"
+          },
+          {
+            "path": "{out}/shop-stock-modifiers.json",
+            "sha256": "d4f53bb932fd27e8c644a33fd43a4945a299d95a33d8ecf0cd957c96f1aed30f"
+          },
+          {
+            "path": "{out}/shop-stock-selection.json",
+            "sha256": "fec65809865c55ea6ca661fe9bc5f3dc28a0b0fe95921026e62c213588b6081f"
+          }
+        ]
+      }
+    ],
+    "server": [
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/script-inventory-shop-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/shop-allocation-failure.json",
+            "sha256": "a6172e37d31db9828c26ccd5b3e6ad9178f3b8a717712065f635e851154e38fd"
+          },
+          {
+            "path": "{out}/shop-asset-windows.json",
+            "sha256": "67eb669972110888bf4157d370444250a43d0864fe2af97b6c4d66bc4309185a"
+          },
+          {
+            "path": "{out}/shop-buy-inventory-full.json",
+            "sha256": "45e05279e2548674622698aa62ba7d003eb4023305f5ed57a90cfc26834ef8cf"
+          },
+          {
+            "path": "{out}/shop-buy-quantity.json",
+            "sha256": "ac58373a27af486283e577ed8308f8cc03f689a5dc619568c260169a4f59f097"
+          },
+          {
+            "path": "{out}/shop-cancel-request.json",
+            "sha256": "75314d8d499d2219e4c6be20717266c70c6f289c384addf9581f510af2b0f32c"
+          },
+          {
+            "path": "{out}/shop-close-quantity.json",
+            "sha256": "7be4a66be4354d0127737e77b8661254dea295c17f4ff14d969dd56c019bbecd"
+          },
+          {
+            "path": "{out}/shop-construction.json",
+            "sha256": "5edc5d6e24302ef67b7304f51458b25e95515d6e3fcc0a52c72ccd63b15dcf16"
+          },
+          {
+            "path": "{out}/shop-draw-modes.json",
+            "sha256": "0278ece430375cb4cda9120053ad5d10ae84dfa7326ef7af4e5f276e5a664b97"
+          },
+          {
+            "path": "{out}/shop-drawable-lookup.json",
+            "sha256": "5d0a8fa2b6472b7dc4731461e4856ad6c24bfd224372946213278a5c91a9e30d"
+          },
+          {
+            "path": "{out}/shop-gold-dialog.json",
+            "sha256": "cfd53b45d46df280376abed4a2e144db637a044e1f215ce20b13b416517dddb1"
+          },
+          {
+            "path": "{out}/shop-grid-draw-hover.json",
+            "sha256": "44463ee20cabfb2527c7ce103ad7bec568936bd5f057ccfe4a3b8b516f2b290c"
+          },
+          {
+            "path": "{out}/shop-missing-resource.json",
+            "sha256": "077a0e9ea4be91f2722c5f27503563fd934caa47ce8c49a881a7a3404c82b993"
+          },
+          {
+            "path": "{out}/shop-modes.json",
+            "sha256": "2b088fe335d717b7e31b737ed30fb76b15d2f3332b92e2ab8afa825503bf12e7"
+          },
+          {
+            "path": "{out}/shop-mouse-events.json",
+            "sha256": "23e23b26a7deaaa8c33059888e39acd46196a5b17881e5e912af950b47db665b"
+          },
+          {
+            "path": "{out}/shop-panel-modes.json",
+            "sha256": "0195f932ae8177a9e2efd6039f1ea9298e67ce6259c82ddcefebb4a30e14e681"
+          },
+          {
+            "path": "{out}/shop-remove-codes.json",
+            "sha256": "bdf4610203c09715c0b36bb614e70cb72ece8fae2767d51a5ceb92d93955d6f2"
+          },
+          {
+            "path": "{out}/shop-requests.json",
+            "sha256": "0e850090c6c21a84b4ff4e8d3a4d736c6505b0b955386c57a32bd108087e87bb"
+          },
+          {
+            "path": "{out}/shop-reset-ownership.json",
+            "sha256": "b1c703af467247bd27b890e742770177450e44c52b24f58da236fc7ed3f015f5"
+          },
+          {
+            "path": "{out}/shop-scroll.json",
+            "sha256": "095b221e2b2afb94e80d169e3733c94899148647bd63175d12d1edd8b7dc4bfe"
+          },
+          {
+            "path": "{out}/shop-sell-repair-quantity.json",
+            "sha256": "e872a354a1574158235f0a6fc0b45caac1e24e33857f72da18e03053c4481a5f"
+          },
+          {
+            "path": "{out}/shop-shopkeeper-pictures.json",
+            "sha256": "2cd3e566fe0e5d20a306475425815ec8bfaf703b7f12def8222cced73794a9db"
+          },
+          {
+            "path": "{out}/shop-start-close.json",
+            "sha256": "e8db70fd55728a8feb4f874adcd98afa3697fd9cf67d3837a734f9c0d2e9e9f3"
+          },
+          {
+            "path": "{out}/shop-stock-capacity.json",
+            "sha256": "ca3d769f1bff64454877f63cc895959f7a4ee67b63e0ce82da401ded7bf16a75"
+          },
+          {
+            "path": "{out}/shop-stock-modifiers.json",
+            "sha256": "d4f53bb932fd27e8c644a33fd43a4945a299d95a33d8ecf0cd957c96f1aed30f"
+          },
+          {
+            "path": "{out}/shop-stock-selection.json",
+            "sha256": "fec65809865c55ea6ca661fe9bc5f3dc28a0b0fe95921026e62c213588b6081f"
+          }
+        ]
+      }
+    ],
+    "highres": [
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/script-inventory-shop-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.jsonl",
+          "--result",
+          "{out}/tests-result.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/shop-allocation-failure.json",
+            "sha256": "a6172e37d31db9828c26ccd5b3e6ad9178f3b8a717712065f635e851154e38fd"
+          },
+          {
+            "path": "{out}/shop-asset-windows.json",
+            "sha256": "67eb669972110888bf4157d370444250a43d0864fe2af97b6c4d66bc4309185a"
+          },
+          {
+            "path": "{out}/shop-buy-inventory-full.json",
+            "sha256": "45e05279e2548674622698aa62ba7d003eb4023305f5ed57a90cfc26834ef8cf"
+          },
+          {
+            "path": "{out}/shop-buy-quantity.json",
+            "sha256": "ac58373a27af486283e577ed8308f8cc03f689a5dc619568c260169a4f59f097"
+          },
+          {
+            "path": "{out}/shop-cancel-request.json",
+            "sha256": "75314d8d499d2219e4c6be20717266c70c6f289c384addf9581f510af2b0f32c"
+          },
+          {
+            "path": "{out}/shop-close-quantity.json",
+            "sha256": "7be4a66be4354d0127737e77b8661254dea295c17f4ff14d969dd56c019bbecd"
+          },
+          {
+            "path": "{out}/shop-construction.json",
+            "sha256": "5edc5d6e24302ef67b7304f51458b25e95515d6e3fcc0a52c72ccd63b15dcf16"
+          },
+          {
+            "path": "{out}/shop-draw-modes.json",
+            "sha256": "0278ece430375cb4cda9120053ad5d10ae84dfa7326ef7af4e5f276e5a664b97"
+          },
+          {
+            "path": "{out}/shop-drawable-lookup.json",
+            "sha256": "5d0a8fa2b6472b7dc4731461e4856ad6c24bfd224372946213278a5c91a9e30d"
+          },
+          {
+            "path": "{out}/shop-gold-dialog.json",
+            "sha256": "cfd53b45d46df280376abed4a2e144db637a044e1f215ce20b13b416517dddb1"
+          },
+          {
+            "path": "{out}/shop-grid-draw-hover.json",
+            "sha256": "44463ee20cabfb2527c7ce103ad7bec568936bd5f057ccfe4a3b8b516f2b290c"
+          },
+          {
+            "path": "{out}/shop-missing-resource.json",
+            "sha256": "077a0e9ea4be91f2722c5f27503563fd934caa47ce8c49a881a7a3404c82b993"
+          },
+          {
+            "path": "{out}/shop-modes.json",
+            "sha256": "2b088fe335d717b7e31b737ed30fb76b15d2f3332b92e2ab8afa825503bf12e7"
+          },
+          {
+            "path": "{out}/shop-mouse-events.json",
+            "sha256": "23e23b26a7deaaa8c33059888e39acd46196a5b17881e5e912af950b47db665b"
+          },
+          {
+            "path": "{out}/shop-panel-modes.json",
+            "sha256": "0195f932ae8177a9e2efd6039f1ea9298e67ce6259c82ddcefebb4a30e14e681"
+          },
+          {
+            "path": "{out}/shop-remove-codes.json",
+            "sha256": "bdf4610203c09715c0b36bb614e70cb72ece8fae2767d51a5ceb92d93955d6f2"
+          },
+          {
+            "path": "{out}/shop-requests.json",
+            "sha256": "0e850090c6c21a84b4ff4e8d3a4d736c6505b0b955386c57a32bd108087e87bb"
+          },
+          {
+            "path": "{out}/shop-reset-ownership.json",
+            "sha256": "b1c703af467247bd27b890e742770177450e44c52b24f58da236fc7ed3f015f5"
+          },
+          {
+            "path": "{out}/shop-scroll.json",
+            "sha256": "095b221e2b2afb94e80d169e3733c94899148647bd63175d12d1edd8b7dc4bfe"
+          },
+          {
+            "path": "{out}/shop-sell-repair-quantity.json",
+            "sha256": "e872a354a1574158235f0a6fc0b45caac1e24e33857f72da18e03053c4481a5f"
+          },
+          {
+            "path": "{out}/shop-shopkeeper-pictures.json",
+            "sha256": "2cd3e566fe0e5d20a306475425815ec8bfaf703b7f12def8222cced73794a9db"
+          },
+          {
+            "path": "{out}/shop-start-close.json",
+            "sha256": "e8db70fd55728a8feb4f874adcd98afa3697fd9cf67d3837a734f9c0d2e9e9f3"
+          },
+          {
+            "path": "{out}/shop-stock-capacity.json",
+            "sha256": "ca3d769f1bff64454877f63cc895959f7a4ee67b63e0ce82da401ded7bf16a75"
+          },
+          {
+            "path": "{out}/shop-stock-modifiers.json",
+            "sha256": "d4f53bb932fd27e8c644a33fd43a4945a299d95a33d8ecf0cd957c96f1aed30f"
+          },
+          {
+            "path": "{out}/shop-stock-selection.json",
+            "sha256": "fec65809865c55ea6ca661fe9bc5f3dc28a0b0fe95921026e62c213588b6081f"
+          }
+        ]
+      }
+    ]
+  }
+}

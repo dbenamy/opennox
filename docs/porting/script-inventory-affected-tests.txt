@@ -1,0 +1,1 @@
+^Test(ScriptInventory|ScriptBindings|Journal|Inventory|Equipment|PlayerControls|ClientInventory|ClientInteraction|ShopUI|SessionEntry|ObjectState|ObjectXfer|CreatureXfer)

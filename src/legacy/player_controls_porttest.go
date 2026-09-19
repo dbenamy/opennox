@@ -111,6 +111,9 @@ import (
 )
 
 type PortTestPlayerControlsSpec struct {
+	ScriptHalberd         *PortTestScriptHalberdSpec
+	ScriptCarry           *PortTestScriptCarrySpec
+	ScriptStartup         *PortTestScriptStartupSpec
 	Reports               *PortTestGameplayReportsSpec
 	SpellLifecycle        *PortTestSpellLifecycleSpec
 	ByteReturn            int // 1: player record address; 2: last created item address, checked before normalization.
@@ -129,6 +132,8 @@ type PortTestPlayerControlsSpec struct {
 	BotWords              map[int]uint32
 }
 type portTestPlayerControls struct {
+	scriptInit     func() [][2]uintptr
+	scriptDeletes  []*server.Object
 	spellLifecycle *portTestSpellLifecycle
 	classes        map[*server.Object][2]uint32
 	transitions    []uint32
@@ -228,7 +233,9 @@ func (p *portTestShopPools) controlsPrepare() func() {
 	}
 	restoreReports := p.gameplayReportsPrepare()
 	restoreSpellLife := p.spellLifePrepare()
+	restoreScript := p.scriptInventoryPrepare()
 	return func() {
+		restoreScript()
 		restoreReports()
 		restoreSpellLife()
 		restoreCorpse()
@@ -315,7 +322,16 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 	if sp.NullRecord {
 		record = nil
 	}
-	if a.Op == 1456 {
+	if a.Op == 1460 {
+		st.transitions = append(st.transitions, p.scriptHalberdContract()...)
+		st.result = 0
+	} else if a.Op == 1459 {
+		st.transitions = append(st.transitions, p.scriptCarryContract()...)
+		st.result = 0
+	} else if a.Op == 1458 {
+		st.transitions = append(st.transitions, p.scriptStartupContract()...)
+		st.result = 0
+	} else if a.Op == 1456 {
 		u := p.temporaryRef(spec.Actor)
 		st.transitions = append(st.transitions, uint32(C.controlsCall(45, asObjectC(u), nil, 0, 0, record, nil)))
 		for _, v := range unsafe.Slice((*uint32)(u.CObj()), 193) {

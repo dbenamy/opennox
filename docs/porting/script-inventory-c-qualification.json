@@ -1,0 +1,162 @@
+{
+  "status": "qualified C baseline; production reused",
+  "qualified_parent": "5a755193",
+  "bodies": 3,
+  "body_lines": 94,
+  "targets": {
+    "affected-default": {
+      "roots": 279,
+      "skips": [],
+      "captures": 281,
+      "evidence": "build/port-script-inventory/c-affected-default"
+    },
+    "affected-server": {
+      "roots": 276,
+      "skips": [],
+      "captures": 278,
+      "evidence": "build/port-script-inventory/c-affected-server"
+    },
+    "affected-highres": {
+      "roots": 279,
+      "skips": [],
+      "captures": 281,
+      "evidence": "build/port-script-inventory/c-affected-highres"
+    },
+    "shop-default": {
+      "roots": 31,
+      "skips": [],
+      "captures": 25,
+      "evidence": "build/port-script-inventory/c-shop-default"
+    },
+    "shop-server": {
+      "roots": 31,
+      "skips": [],
+      "captures": 25,
+      "evidence": "build/port-script-inventory/c-shop-server"
+    },
+    "shop-highres": {
+      "roots": 31,
+      "skips": [],
+      "captures": 25,
+      "evidence": "build/port-script-inventory/c-shop-highres"
+    }
+  },
+  "capture_note": "C primary runners enforced four newly frozen hashes plus inherited literal contracts; full inventories compared and frozen after runs. Shop supplement enforced inherited literal contracts; inventory frozen after runs. Default/highres are identical and all server captures match corresponding client captures.",
+  "server_omitted_captures": [
+    "interaction-hover-circle-gates.json",
+    "interaction-hover-enumeration.json",
+    "inventory-window-world-selection.json"
+  ],
+  "source_files": 2769,
+  "reused_production": {
+    "qualified_parent": "5a755193",
+    "production_evidence": "build/port-script-builtins/native-production/production",
+    "production_source_identical": true,
+    "differences_are_porttest_only": [
+      "src/common/memmap/nox/blobdata/player_controls_porttest.go",
+      "src/legacy/inventory_porttest.go",
+      "src/legacy/player_controls_porttest.go",
+      "src/legacy/script_inventory_carry_porttest.go",
+      "src/legacy/script_inventory_halberd_porttest.go",
+      "src/legacy/script_inventory_porttest.go",
+      "src/legacy/shop_pools_porttest.go",
+      "src/script_inventory_porttest_test.go",
+      "src/server/script_inventory_porttest.go"
+    ],
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 78.66580913192593,
+        "sha256": "6780d57da8782711afa5377b8db26b57ded68c2a53890660aef07871742c91ef",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.58521558297798,
+        "sha256": "2512b9329062df6cd89ee6449ba93e8bab0915f57642f365140dfde4161c689a",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 70.13545115990564,
+        "sha256": "d44ca4194a622986aade2ed927dd94bf78e182f2ead2e092750760e6ba50b401",
+        "abi_verified": true
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 57.13273842493072,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    },
+    "scenarios": {
+      "script-bindings-native": {
+        "exit": 0,
+        "binary_sha256": "6780d57da8782711afa5377b8db26b57ded68c2a53890660aef07871742c91ef"
+      },
+      "script-bindings-native-save": {
+        "exit": 0,
+        "binary_sha256": "6780d57da8782711afa5377b8db26b57ded68c2a53890660aef07871742c91ef"
+      }
+    }
+  },
+  "selected_c_abi": {
+    "opennox": {
+      "present": [
+        "nox_xxx_playerCanCarryItem_513B00",
+        "nox_script_StartupScreen_516600_A",
+        "nox_script_OblivionGive_516890",
+        "sub_467B00",
+        "sub_4277B0",
+        "nox_script_push",
+        "nox_script_pushf",
+        "nox_script_pop",
+        "nox_script_popf",
+        "dword_5d4594_2386848",
+        "dword_5d4594_2386852"
+      ]
+    },
+    "opennox-hd": {
+      "present": [
+        "nox_xxx_playerCanCarryItem_513B00",
+        "nox_script_StartupScreen_516600_A",
+        "nox_script_OblivionGive_516890",
+        "sub_467B00",
+        "sub_4277B0",
+        "nox_script_push",
+        "nox_script_pushf",
+        "nox_script_pop",
+        "nox_script_popf",
+        "dword_5d4594_2386848",
+        "dword_5d4594_2386852"
+      ]
+    },
+    "opennox-server": {
+      "present": [
+        "nox_xxx_playerCanCarryItem_513B00",
+        "nox_script_StartupScreen_516600_A",
+        "nox_script_OblivionGive_516890",
+        "sub_467B00",
+        "sub_4277B0",
+        "nox_script_push",
+        "nox_script_pushf",
+        "nox_script_pop",
+        "nox_script_popf",
+        "dword_5d4594_2386848",
+        "dword_5d4594_2386852"
+      ]
+    }
+  },
+  "static": "build/port-script-inventory/static-final-c.log",
+  "c_loc": {
+    "files": 48,
+    "lines": 10953,
+    "reference_lines": 0
+  }
+}

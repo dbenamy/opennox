@@ -21,8 +21,10 @@ headless gameplay/save-load comparisons. C remaining is **10,953 physical lines
 in48 files**, zero reference C: **451 fewer lines** in this batch.
 See [SCRIPT_BINDINGS.md](docs/porting/SCRIPT_BINDINGS.md).
 
-Next: inventory capacity/drop selection, startup inventory cleanup and halberd
-replacement, the last three routines in the legacy script builtin C file.
+The following inventory C baseline is now qualified: capacity/drop selection,
+startup cleanup and halberd replacement, the last three routines in the legacy
+script builtin C file. It has1,640 new contract cases and all-target affected
+coverage, including client shop callers. Next: its Go conversion.
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 Previous completed GUI batches include

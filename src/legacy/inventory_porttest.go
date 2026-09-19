@@ -513,3 +513,13 @@ func (p *portTestShopPools) inventorySnapshot() []uint32 {
 	}
 	return out
 }
+
+// Raw boundary records for independent selection contracts; these are copied
+// before a later call can change the shared fixture trace.
+func portTestInventoryDropCalls() []uint32 {
+	b := unsafe.Slice((*uint32)(unsafe.Pointer(C.invTracePtr())), 4097)
+	if b[0] > 680 {
+		panic("inventory callback trace overflow")
+	}
+	return append([]uint32(nil), b[1:1+6*b[0]]...)
+}

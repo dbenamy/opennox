@@ -9,3 +9,6 @@ func PortTestPlayerAbilityTable() []byte { return append([]byte(nil), data587000
 func PortTestPlayerWeight() []byte       { return append([]byte(nil), data581450[10216:10224]...) }
 
 func PortTestPlayerCorpsePoints() []byte { return append([]byte(nil), data587000[280376:281168]...) }
+
+// Shipped four-item SetHalberd name storage. Pointers are relocated by the owner.
+func PortTestScriptInventoryNames() []byte { return append([]byte(nil), data587000[247352:247416]...) }

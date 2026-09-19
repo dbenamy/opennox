@@ -1,0 +1,336 @@
+{
+  "nox_xxx_playerCanCarryItem_513B00": [
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 38,
+      "text": "void nox_xxx_playerCanCarryItem_513B00(nox_object_t* a1p, nox_object_t* a2p) {"
+    },
+    {
+      "file": "src/legacy/script_ns_object.go",
+      "line": 8,
+      "text": "void nox_xxx_playerCanCarryItem_513B00(nox_object_t* a1p, nox_object_t* a2p);"
+    },
+    {
+      "file": "src/legacy/script_ns_object.go",
+      "line": 28,
+      "text": "C.nox_xxx_playerCanCarryItem_513B00(asObjectC(a1), asObjectC(a2))"
+    }
+  ],
+  "nox_script_StartupScreen_516600_A": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 6,
+      "text": "void nox_script_StartupScreen_516600_A();"
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 42,
+      "text": "C.nox_script_StartupScreen_516600_A()"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 82,
+      "text": "void nox_script_StartupScreen_516600_A() {"
+    }
+  ],
+  "nox_script_OblivionGive_516890": [
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 5,
+      "text": "int nox_script_OblivionGive_516890();"
+    },
+    {
+      "file": "src/legacy/script_noxscript_builtins.go",
+      "line": 68,
+      "text": "asm.BuiltinSetHalberd:          wrapScriptC(C.nox_script_OblivionGive_516890),"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 106,
+      "text": "int nox_script_OblivionGive_516890() {"
+    }
+  ],
+  "dword_5d4594_2386848": [
+    {
+      "file": "src/script_noxscript.go",
+      "line": 33,
+      "text": "legacy.Set_dword_5d4594_2386848(0)"
+    },
+    {
+      "file": "src/object.go",
+      "line": 1158,
+      "text": "legacy.Set_dword_5d4594_2386848(0)"
+    },
+    {
+      "file": "src/object.go",
+      "line": 1169,
+      "text": "legacy.Inc_dword_5d4594_2386848()"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 35,
+      "text": "int dword_5d4594_2386848 = 0;"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 51,
+      "text": "if (sub_467B00(*(unsigned short*)(a2 + 4), 1) - *(int*)&dword_5d4594_2386848 <= 0) {"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 480,
+      "text": "extern int dword_5d4594_2386848;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 884,
+      "text": "func Set_dword_5d4594_2386848(v int) {"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 885,
+      "text": "C.dword_5d4594_2386848 = C.int(v)"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 1130,
+      "text": "func Inc_dword_5d4594_2386848() {"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 1131,
+      "text": "C.dword_5d4594_2386848++"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 1149,
+      "text": "{0x5D4594, 2386848, 4, \"dword_5d4594_2386848\"},                  // 0x81B134"
+    }
+  ],
+  "dword_5d4594_2386852": [
+    {
+      "file": "src/script_noxscript.go",
+      "line": 34,
+      "text": "legacy.Set_dword_5d4594_2386852(0)"
+    },
+    {
+      "file": "src/object.go",
+      "line": 1159,
+      "text": "legacy.Set_dword_5d4594_2386852(0)"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 36,
+      "text": "unsigned int dword_5d4594_2386852 = 0;"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 73,
+      "text": "if (!dword_5d4594_2386852) {"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 75,
+      "text": "dword_5d4594_2386852 = 1;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 481,
+      "text": "extern unsigned int dword_5d4594_2386852;"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 887,
+      "text": "func Set_dword_5d4594_2386852(v int) {"
+    },
+    {
+      "file": "src/legacy/vardefs.go",
+      "line": 888,
+      "text": "C.dword_5d4594_2386852 = C.uint(v)"
+    },
+    {
+      "file": "src/common/memmap/nox/noxmap.go",
+      "line": 1150,
+      "text": "{0x5D4594, 2386852, 4, \"dword_5d4594_2386852\"},                  // 0x81B138"
+    }
+  ],
+  "sub_467B00": [
+    {
+      "file": "src/legacy/client_ui_inventory_place.go",
+      "line": 94,
+      "text": "//export sub_467B00"
+    },
+    {
+      "file": "src/legacy/client_ui_inventory_place.go",
+      "line": 95,
+      "text": "func sub_467B00(typ, quantity C.int) C.int {"
+    },
+    {
+      "file": "src/legacy/client_ui_shop_input.go",
+      "line": 157,
+      "text": "if sub_467B00(C.int(typ), 1) != 0 {"
+    },
+    {
+      "file": "src/legacy/client_ui_shop_input.go",
+      "line": 164,
+      "text": "if sub_467B00(C.int(typ), C.int(count)) != 0 {"
+    },
+    {
+      "file": "src/legacy/client_interaction_pickup.go",
+      "line": 27,
+      "text": "if typ == memmap.Uint32(0x5D4594, 1064928) || typ == memmap.Uint32(0x5D4594, 1064932) || typ == memmap.Uint32(0x5D4594, 1064936) || sub_467B00(C.int(typ), 1) != 0 {"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 51,
+      "text": "if (sub_467B00(*(unsigned short*)(a2 + 4), 1) - *(int*)&dword_5d4594_2386848 <= 0) {"
+    },
+    {
+      "file": "src/legacy/GAME2_1.h",
+      "line": 66,
+      "text": "int sub_467B00(int a1, int a2);"
+    },
+    {
+      "file": "src/legacy/client_inventory_transactions_porttest.go",
+      "line": 78,
+      "text": "return uint32(C.sub_467B00(C.int(a), C.int(b)))"
+    }
+  ],
+  "sub_4277B0": [
+    {
+      "file": "src/legacy/journal_exports.go",
+      "line": 35,
+      "text": "//export sub_4277B0"
+    },
+    {
+      "file": "src/legacy/journal_exports.go",
+      "line": 36,
+      "text": "func sub_4277B0(u *C.nox_object_t, mask C.ushort) C.int {"
+    },
+    {
+      "file": "src/legacy/GAME1_1.h",
+      "line": 101,
+      "text": "int sub_4277B0(nox_object_t* a1p, unsigned short a2);"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 92,
+      "text": "sub_4277B0(i, 0xEu);"
+    }
+  ],
+  "nox_script_push": [
+    {
+      "file": "src/server/script_vm_old_panic.go",
+      "line": 79,
+      "text": "historical comment only; compatibility implementation unchanged",
+      "classification": "comment"
+    },
+    {
+      "file": "src/server/script_vm_old_panic.go",
+      "line": 82,
+      "text": "historical comment only; compatibility implementation unchanged",
+      "classification": "comment"
+    },
+    {
+      "file": "src/legacy/script_noxscript.go",
+      "line": 39,
+      "text": "//export nox_script_push"
+    },
+    {
+      "file": "src/legacy/script_noxscript.go",
+      "line": 40,
+      "text": "func nox_script_push(v int) {"
+    },
+    {
+      "file": "src/legacy/server__script__internal.h",
+      "line": 6,
+      "text": "void nox_script_push(int val);"
+    }
+  ],
+  "nox_script_pushf": [
+    {
+      "file": "src/legacy/script_noxscript.go",
+      "line": 49,
+      "text": "//export nox_script_pushf"
+    },
+    {
+      "file": "src/legacy/script_noxscript.go",
+      "line": 50,
+      "text": "func nox_script_pushf(v C.float) {"
+    },
+    {
+      "file": "src/legacy/server__script__internal.h",
+      "line": 7,
+      "text": "void nox_script_pushf(float val);"
+    }
+  ],
+  "nox_script_pop": [
+    {
+      "file": "src/server/script_vm_old_panic.go",
+      "line": 78,
+      "text": "historical comment only; compatibility implementation unchanged",
+      "classification": "comment"
+    },
+    {
+      "file": "src/server/script_vm_old_panic.go",
+      "line": 80,
+      "text": "historical comment only; compatibility implementation unchanged",
+      "classification": "comment"
+    },
+    {
+      "file": "src/server/script_vm_old_panic.go",
+      "line": 97,
+      "text": "historical comment only; compatibility implementation unchanged",
+      "classification": "comment"
+    },
+    {
+      "file": "src/server/script_vm_old_panic.go",
+      "line": 99,
+      "text": "historical comment only; compatibility implementation unchanged",
+      "classification": "comment"
+    },
+    {
+      "file": "src/server/script_vm_old_panic.go",
+      "line": 100,
+      "text": "historical comment only; compatibility implementation unchanged",
+      "classification": "comment"
+    },
+    {
+      "file": "src/legacy/script_noxscript.go",
+      "line": 44,
+      "text": "//export nox_script_pop"
+    },
+    {
+      "file": "src/legacy/script_noxscript.go",
+      "line": 45,
+      "text": "func nox_script_pop() int {"
+    },
+    {
+      "file": "src/legacy/server__script__builtin.c",
+      "line": 115,
+      "text": "v2 = nox_script_pop();"
+    },
+    {
+      "file": "src/legacy/server__script__internal.h",
+      "line": 8,
+      "text": "int nox_script_pop();"
+    }
+  ],
+  "nox_script_popf": [
+    {
+      "file": "src/legacy/script_noxscript.go",
+      "line": 54,
+      "text": "//export nox_script_popf"
+    },
+    {
+      "file": "src/legacy/script_noxscript.go",
+      "line": 55,
+      "text": "func nox_script_popf() C.float {"
+    },
+    {
+      "file": "src/legacy/server__script__internal.h",
+      "line": 9,
+      "text": "float nox_script_popf();"
+    }
+  ]
+}

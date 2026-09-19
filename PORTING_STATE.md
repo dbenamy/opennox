@@ -8,32 +8,34 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — script-binding Go conversion qualified
+## Current — script inventory C baseline qualified
 
-Corrected C baseline **5a9a3164** and prerequisite **990974ec** are pushed.
-The Go conversion is fully qualified:19 bodies, nine private bridge exports and
-two C owners retire. All184 affected roots per target pass with no skips and all
-107 frozen captures unchanged. Static checks, three production builds/ABI,
-exact1553 known full-suite failures (15 pass /3 fail /32 skip packages), and fresh
-gameplay/save-load comparisons pass. Source fingerprints agree across all gates.
-Every test/build/scenario job, including production41496, is joined.
+Qualified native parent **5a755193** (script bindings) is pushed. The inventory
+batch selects the final three script builtin C routines /94 body lines. All four
+new contract roots pass1,640 cases; four hashes are frozen. Primary affected
+sweeps pass279 default/highres roots and276 server roots, no skips. A separate
+shop-caller supplement passes31 roots on each target. Captures:281 primary client,
+278 primary server, plus25 shop files each. All shared captures match; three
+client-only hover/world-selection captures are correctly absent on server.
 
-See [SCRIPT_BINDINGS.md](docs/porting/SCRIPT_BINDINGS.md) and tracked
-`script-bindings-native-{batch,qualification}.json`. Evidence is under
-`build/port-script-builtins/native-affected-*`, `native-production`,
-`native-focused.log` and `static-native.log`. Commit/push this qualified native
-conversion, then continue the three inventory routines. XP/level remains C.
+Static checks pass. Production source is identical to5a755193; its three binaries,
+ABI, exact1553 full-suite failures and gameplay/save-load qualification are
+reused after source/hash checks. All six C sweeps and every Go job are joined.
+See [SCRIPT_INVENTORY.md](docs/porting/SCRIPT_INVENTORY.md) and tracked
+script-inventory-{batch,shop-batch,c-qualification}.json. C remains10,953 lines /
+48 files /zero reference C. No inventory production code has changed.
 
-`native-draft.go` and `install-native.py` are CONSUMED. Never replay them over
-reviewed source or regenerate frozen expectations to hide a native failure.
-Read-only next-batch caller audit/fixture notes are in
-`build/port-script-inventory`; no next-batch source is installed yet.
+Commit/push the C baseline, then review/install the native draft and installer
+under build/port-script-inventory (NOT CONSUMED). The installer takes the exact
+committed baseline revision. Fixture drafts are CONSUMED. Never replay them over
+reviewed source or regenerate frozen captures to hide native failures. Native
+qualification must include both primary and shop selections on each target,
+fresh production/ABI, exact full-suite comparison and fresh scenarios.
 
-Completed script-binding C scenario asset copies reclaimed1,112,747,701 bytes;
-50 old rebuildable Go cache archives reclaimed2,289,188,222 bytes. Their audited
-deletion modes are CONSUMED. Preserve original assets/archive and all screenshots,
-saves/logs; completed runs retain restoration manifests. The two new native
-scenario copies have not been deduplicated. No user decision is pending.
+All completed script-binding C/native scenario asset deduplications are CONSUMED;
+each pair reclaimed1,112,747,701 bytes. Preserve original assets/archive and all
+screenshots/saves/logs; restoration manifests remain. The audited cleanup of80 old rebuildable cache archives reclaimed
+4,577,910,898 bytes. Session25535 is joined and deletion mode is CONSUMED. No user decision is pending.
 
 ## Current — legacy online session conversion qualified
 

@@ -1,0 +1,23 @@
+[
+  {
+    "symbol": "nox_xxx_playerCanCarryItem_513B00",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 883,
+    "end": 2109,
+    "lines": 43
+  },
+  {
+    "symbol": "nox_script_StartupScreen_516600_A",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 2111,
+    "end": 2675,
+    "lines": 23
+  },
+  {
+    "symbol": "nox_script_OblivionGive_516890",
+    "file": "src/legacy/server__script__builtin.c",
+    "start": 2677,
+    "end": 3361,
+    "lines": 28
+  }
+]

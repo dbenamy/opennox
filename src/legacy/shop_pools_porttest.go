@@ -182,6 +182,7 @@ func (p *portTestShopPools) own(u *server.Object, id uint32) *portTestShopOwned 
 	return o
 }
 func (p *portTestShopPools) observeDelete(u *server.Object) {
+	p.scriptInventoryObserveDelete(u)
 	// Creations remain owned by the enclosing lifecycle fixture after deletion.
 	if p.proxy.callbacks.shop.spec.TemporaryUpdates != nil {
 		for _, created := range p.proxy.life.created {
