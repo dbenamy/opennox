@@ -232,3 +232,26 @@ After qualification, verified duplicate files in the four completed C scenario
 copies were removed, reclaiming2,225,495,437 bytes. Restoration manifests preserve
 paths, hashes and metadata. Original assets/archive and captures/reports remain;
 the deduplication script's deletion mode is consumed.
+
+
+## Native conversion recovery checkpoint — first50 live routines
+
+The first50 live bodies are Go; unused sub_435690 and four empty C translation
+units are removed. Default contracts pass all30 roots and all31 frozen C hashes
+in native-controls-initial; static-native-controls passes. This is an intermediate
+recovery checkpoint, not completed conversion or production qualification.
+Working C: **12,835 lines /53 files /zero reference**, down621 from the C baseline.
+Temporary C exports and owners deliberately remain until the connected conversion
+and caller audit finish. The last production-qualified source is `dd7e94f4`.
+
+The chat C adapter initially used AsWindowEvent, which maps raw key states3 and
+all-ones to boolean pressed/state2. The Escape contract caught this: only exact2
+may trigger Escape. The adapter now uses RawEvent, and every capture matches
+without changing expectations. The shared native chat formatter preserves raw
+UTF-16, encoding and byte-count wrap while allocating only the queued message.
+The shared C console formatter remains for its other production caller; the new
+centered-message preamble contains only a localized-call adapter.
+
+Remaining: hover, conversation, game-over/help, paper-doll composition/materials,
+Escape, the orphan connection graph, private-owner/interface cleanup, and full
+native qualification. No other prerequisite behavior changes are introduced.

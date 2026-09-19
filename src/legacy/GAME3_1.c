@@ -116,12 +116,7 @@ void* nox_gui_itemAmount_dialog_1319228 = 0;
 // 487CA0: using guessed type void  nullsub_9(uint32_t);
 
 //----- (004BF010) --------------------------------------------------------
-int nox_xxx_clientReportSecondaryWeapon_4BF010(int a1) {
-	char v3[3]; // [esp+0h] [ebp-4h]
-	v3[0] = -32;
-	*(uint16_t*)&v3[1] = nox_xxx_netGetUnitCodeCli_578B00(a1);
-	return nox_xxx_netClientSend2_4E53C0(31, v3, 3, 0, 1);
-}
+
 
 //----- (004BF7E0) --------------------------------------------------------
 short sub_4BF7E0(uint32_t* a1) {
@@ -294,135 +289,40 @@ int sub_4BFAD0() {
 }
 
 //----- (004BFB70) --------------------------------------------------------
-void sub_4BFB70(int a1) {
-	if (dword_5d4594_1319056) {
-		dword_5d4594_1319056 = a1;
-	} else {
-		if (a1 == 1) {
-			nox_xxx_clientPlaySoundSpecial_452D80(1022, 100);
-		}
-		dword_5d4594_1319056 = a1;
-	}
-}
+
 
 //----- (004BFBB0) --------------------------------------------------------
-void sub_4BFBB0(uint32_t* a1) {
-	if (dword_5d4594_1319056) {
-		if (dword_5d4594_1319056 == 1) {
-			if (!a1) {
-				sub_4BFC70();
-				sub_4BFB70(0);
-			}
-		}
-	} else if (a1 == (uint32_t*)1) {
-		sub_4BFBF0();
-		sub_4BFB70(1);
-	}
-}
+
 
 //----- (004BFBF0) --------------------------------------------------------
-int sub_4BFBF0() {
-	int result; // eax
-	int v1;     // [esp+0h] [ebp-8h]
-	int v2;     // [esp+4h] [ebp-4h]
 
-	result = dword_5d4594_1319060;
-	if (dword_5d4594_1319060) {
-		nox_window_set_hidden(*(int*)&dword_5d4594_1319060, 0);
-		nox_xxx_wnd_46ABB0(*(int*)&dword_5d4594_1319060, 1);
-		nox_window_get_size(*(int*)&dword_5d4594_1319060, &v2, &v1);
-		nox_window_setPos_46A9B0(*(uint32_t**)&dword_5d4594_1319060, nox_win_width / 2 - v2 / 2,
-								 nox_win_height / 2 - v1 / 2);
-		result = nox_xxx_windowFocus_46B500(0);
-	}
-	return result;
-}
 
 //----- (004BFC70) --------------------------------------------------------
-int sub_4BFC70() {
-	int result; // eax
 
-	result = dword_5d4594_1319060;
-	if (dword_5d4594_1319060) {
-		nox_window_set_hidden(*(int*)&dword_5d4594_1319060, 1);
-		result = nox_xxx_windowFocus_46B500(0);
-	}
-	return result;
-}
 
 //----- (004BFC90) --------------------------------------------------------
-int sub_4BFC90() {
-	int result; // eax
 
-	result = nox_new_window_from_file("SKey.wnd", sub_4BFCD0);
-	dword_5d4594_1319060 = result;
-	if (result) {
-		sub_4BFB70(0);
-		sub_4BFC70();
-		result = 1;
-	}
-	return result;
-}
 
 //----- (004BFCD0) --------------------------------------------------------
-int sub_4BFCD0(int a1, int a2, int* a3, int a4) {
-	int v3; // esi
 
-	if (a2 == 16391) {
-		v3 = nox_xxx_wndGetID_46B0A0(a3);
-		nox_xxx_clientPlaySoundSpecial_452D80(766, 100);
-		if (v3 == 10803) {
-			sub_4BFC70();
-		}
-	}
-	return 0;
-}
 
 //----- (004BFD10) --------------------------------------------------------
-void sub_4BFD10() {
-	nox_xxx_windowDestroyMB_46C4E0(*(uint32_t**)&dword_5d4594_1319060);
-	dword_5d4594_1319060 = 0;
-	sub_4BFB70(0);
-}
+
 
 //----- (004BFD30) --------------------------------------------------------
-int sub_4BFD30() { return dword_5d4594_1319056; }
+
 
 //----- (004C3390) --------------------------------------------------------
-int sub_4C3390() {
-	*getMemU32Ptr(0x5D4594, 1321220) = nox_xxx_gLoadImg_42F970("VoteInProgress");
-	dword_5d4594_1321216 = nox_window_new(0, 136, nox_win_width - 50, nox_win_height / 2 - 100, 50, 50, 0);
-	nox_xxx_wndSetIcon_46AE60(*(int*)&dword_5d4594_1321216, *getMemIntPtr(0x5D4594, 1321220));
-	nox_window_set_all_funcs(*(uint32_t**)&dword_5d4594_1321216, 0, sub_4C3410, 0);
-	nox_window_set_hidden(*(int*)&dword_5d4594_1321216, 1);
-	return 1;
-}
+
 
 //----- (004C3410) --------------------------------------------------------
-int sub_4C3410(int* a1) {
-	int* v1; // esi
-	int v2;  // edx
-	int v4;  // [esp+4h] [ebp-4h]
 
-	v1 = a1;
-	nox_client_wndGetPosition_46AA60(a1, &a1, &v4);
-	v2 = v1[25];
-	a1 = (int*)((char*)a1 + v1[24]);
-	nox_client_drawImageAt_47D2C0(v1[15], (int)a1, v2 + v4);
-	return 1;
-}
 
 //----- (004C3460) --------------------------------------------------------
-int sub_4C3460(int a1) { return nox_window_set_hidden(*(int*)&dword_5d4594_1321216, a1); }
+
 
 //----- (004C34A0) --------------------------------------------------------
-int sub_4C34A0() {
-	int result; // eax
 
-	result = nox_xxx_windowDestroyMB_46C4E0(*(uint32_t**)&dword_5d4594_1321216);
-	dword_5d4594_1321216 = 0;
-	return result;
-}
 
 //----- (004CA540) --------------------------------------------------------
 int nox_xxx_sprite_4CA540(uint32_t* a1, int a2) {

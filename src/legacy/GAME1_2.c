@@ -115,47 +115,13 @@ void* dword_5d4594_805984 = 0;
 // 42CC50: using guessed type int sub_42CC50(uint32_t);
 
 //----- (0042E7B0) --------------------------------------------------------
-void nox_xxx_clientTalk_42E7B0(nox_drawable* a1p) {
-	int a1 = a1p;
-	int v1;   // esi
-	short v2; // ax
 
-	v1 = a1;
-	if (a1 && (!dword_8531A0_2576 || !(*(uint8_t*)(dword_8531A0_2576 + 3680) & 3)) &&
-		sub_478030() != 1 && nox_gui_xxx_check_446360() != 1) {
-		v2 = *(uint16_t*)(v1 + 128);
-		LOWORD(a1) = 464;
-		HIWORD(a1) = v2;
-		nox_netlist_addToMsgListCli_40EBC0(31, 0, &a1, 4);
-	}
-}
 
 //----- (0042E810) --------------------------------------------------------
-void nox_xxx_clientCollideOrUse_42E810(nox_drawable* a1p) {
-	int a1 = a1p;
-	int v1; // [esp-4h] [ebp-4h]
 
-	if (a1 && (!dword_8531A0_2576 || !(*(uint8_t*)(dword_8531A0_2576 + 3680) & 3))) {
-		v1 = a1;
-		LOBYTE(a1) = 123;
-		*(uint16_t*)((char*)&a1 + 1) = nox_xxx_netGetUnitCodeCli_578B00(v1);
-		nox_netlist_addToMsgListCli_40EBC0(31, 0, &a1, 3);
-	}
-}
 
 //----- (0042E850) --------------------------------------------------------
-void nox_xxx_clientTrade_42E850(nox_drawable* a1p) {
-	int a1 = a1p;
-	int v1; // esi
 
-	v1 = a1;
-	if (a1 && (!dword_8531A0_2576 || !(*(uint8_t*)(dword_8531A0_2576 + 3680) & 3)) &&
-		sub_47A260() != 1 && nox_gui_xxx_check_446360() != 1) {
-		LOWORD(a1) = 5577;
-		HIWORD(a1) = nox_xxx_netGetUnitCodeCli_578B00(v1);
-		nox_netlist_addToMsgListCli_40EBC0(31, 0, &a1, 4);
-	}
-}
 
 //----- (0042EB90) --------------------------------------------------------
 int sub_42EB90(int a1) {
@@ -182,34 +148,16 @@ void sub_42EDC0() {
 }
 
 //----- (00430AA0) --------------------------------------------------------
-int sub_430AA0(int a1) {
-	int result; // eax
 
-	result = a1 - 1;
-	if (a1 == 1) {
-		dword_5d4594_805820 = 1;
-		nox_xxx_useAudio_587000_80772 = 9;
-	} else {
-		result = a1 - 2;
-		if (a1 == 2) {
-			dword_5d4594_805820 = 2;
-			nox_xxx_useAudio_587000_80772 = 13;
-		} else {
-			dword_5d4594_805820 = 0;
-			nox_xxx_useAudio_587000_80772 = 5;
-		}
-	}
-	return result;
-}
 
 //----- (00430AF0) --------------------------------------------------------
-int nox_client_mousePriKey_430AF0() { return dword_5d4594_805820; }
+
 
 //----- (00430B00) --------------------------------------------------------
-int nox_xxx_cursor_430B00() { return nox_xxx_useAudio_587000_80772; }
+
 
 //----- (00430B10) --------------------------------------------------------
-void nox_client_setMousePos_430B10(int x, int y) { nox_client_changeMousePos_430A00(x, y, true); }
+
 
 //----- (00431270) --------------------------------------------------------
 void sub_431270() {
@@ -317,131 +265,35 @@ void sub_435150(uint8_t* a1, char* a2) {
 }
 
 //----- (00435570) --------------------------------------------------------
-long long nox_xxx_initTime_435570() {
-	long long result; // rax
 
-	result = nox_platform_get_ticks();
-	*getMemU64Ptr(0x5D4594, 811908) = result;
-	return result;
-}
 
 //----- (00435690) --------------------------------------------------------
-uint32_t* sub_435690(uint32_t* a1) {
-	uint32_t* result; // eax
 
-	result = a1;
-	*a1 = *getMemU32Ptr(0x5D4594, 811364);
-	a1[1] = *getMemU32Ptr(0x5D4594, 811368);
-	return result;
-}
 
 //----- (004356C0) --------------------------------------------------------
-bool nox_client_drawable_testBuff_4356C0(nox_drawable* dr, char a2) {
-	int a1 = dr;
-	int result; // eax
 
-	result = a1;
-	if (a1) {
-		result = ((1 << a2) & *(uint32_t*)(a1 + 124)) != 0;
-	}
-	return result;
-}
 
 //----- (00435700) --------------------------------------------------------
-wchar2_t* sub_435700(wchar2_t* a1, int a2) {
-	wchar2_t* result; // eax
 
-	result = nox_wcscpy((wchar2_t*)getMemAt(0x5D4594, 811376), a1);
-	*getMemU32Ptr(0x5D4594, 811060) = a2;
-	return result;
-}
 
 //----- (004357A0) --------------------------------------------------------
-int nox_xxx_cliToggleObsWindow_4357A0() {
-	int result; // eax
 
-	if (dword_8531A0_2576 && *(uint8_t*)(dword_8531A0_2576 + 3680) & 1) {
-		result = nox_xxx_showObserverWindow_48CA70(0);
-	} else {
-		result = nox_xxx_showObserverWindow_48CA70(1);
-	}
-	return result;
-}
 
 //----- (00435F60) --------------------------------------------------------
-int sub_435F60() {
-	int result; // eax
 
-	result = 1 - dword_5d4594_811904;
-	dword_5d4594_811904 = 1 - dword_5d4594_811904;
-	return result;
-}
 
 //----- (00436550) --------------------------------------------------------
-int sub_436550() {
-	int v0; // eax
 
-	if (sub_459DA0() || nox_gui_xxx_check_446360() || sub_49CB40() || sub_49C810() || sub_446950() || sub_4706A0() ||
-		nox_gui_console_flagXxx_451410()) {
-		v0 = gameFrame();
-	} else {
-		v0 = gameFrame();
-		if (gameFrame() != 2) {
-			return gameFrame() - *getMemU32Ptr(0x5D4594, 811920) == 1;
-		}
-	}
-	*getMemU32Ptr(0x5D4594, 811920) = v0;
-	return 1;
-}
 
 //----- (00437100) --------------------------------------------------------
 void sub_4706C0(int a1);
-void sub_437100() {
-	int result; // eax
 
-	int flag = nox_client_getRenderGUI();
-	if (*getMemU32Ptr(0x5D4594, 811064) != flag &&
-		!nox_common_getEngineFlag(NOX_ENGINE_FLAG_DISABLE_GRAPHICS_RENDERING)) {
-		*getMemU32Ptr(0x5D4594, 811064) = flag;
-		sub_4721A0(flag);
-		sub_460EA0(flag);
-		nox_window_set_visible_unk5(flag);
-		sub_45D500(flag);
-		sub_455A00(flag);
-		sub_455F10(flag);
-		sub_4706C0(flag);
-		if (!flag) {
-			sub_478000();
-		}
-	}
-}
 
 //----- (004372B0) --------------------------------------------------------
-int nox_xxx_playerAnimCheck_4372B0() {
-	int v0;     // eax
-	int result; // eax
 
-	result = 1;
-	if (*getMemU32Ptr(0x852978, 8)) {
-		v0 = *(uint32_t*)(*getMemU32Ptr(0x852978, 8) + 276);
-		if (v0 != 1 && v0 != 2 && v0 != 51) {
-			result = 0;
-		}
-	}
-	return result;
-}
 
 //----- (004372E0) --------------------------------------------------------
-int nox_xxx_clientIsObserver_4372E0() {
-	int result; // eax
 
-	if (dword_8531A0_2576 && *(uint32_t*)(dword_8531A0_2576 + 2092) == 1) {
-		result = (*(uint32_t*)(dword_8531A0_2576 + 3680) & 3) != 0;
-	} else {
-		result = 0;
-	}
-	return result;
-}
 
 //----- (00437320) --------------------------------------------------------
 

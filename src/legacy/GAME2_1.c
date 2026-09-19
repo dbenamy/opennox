@@ -177,185 +177,34 @@ char* sub_461520() {
 }
 
 //----- (00469FA0) --------------------------------------------------------
-int sub_469FA0() { return *getMemU32Ptr(0x5D4594, 1064848); }
+
 
 //----- (0046A430) --------------------------------------------------------
-void nox_client_chatStart_46A430(int a1) {
-	if (!nox_common_gameFlags_check_40A5C0(2048)) {
-		if (!dword_5d4594_1064868) {
-			**(uint16_t**)&dword_5d4594_1064864 = 0;
-			*(uint16_t*)(dword_5d4594_1064864 + 1052) = 0;
-			nox_xxx_wndShowModalMB_46A8C0(*(int*)&dword_5d4594_1064856);
-			sub_46C690(*(int*)&dword_5d4594_1064856);
-			nox_xxx_windowFocus_46B500(*(int*)&dword_5d4594_1064860);
-			dword_5d4594_1064868 = 1;
-			*getMemU32Ptr(0x5D4594, 1064872) = a1;
-		}
-	}
-}
+
 
 //----- (0046A4A0) --------------------------------------------------------
-int sub_46A4A0() { return dword_5d4594_1064868; }
+
 
 //----- (0046A4B0) --------------------------------------------------------
-size_t nox_xxx_cmdSayDo_46A4B0(wchar2_t* a1, int a2) {
-	uint32_t* v2;      // ebp
-	size_t v3;         // edi
-	size_t result;     // eax
-	const wchar2_t* v5; // edi
-	char v6;           // al
-	int v7;            // eax
-	char* v8;
 
-	v2 = nox_xxx_netSpriteByCodeDynamic_45A6F0(nox_player_netCode_85319C);
-	v3 = nox_wcsspn(a1, L" ");
-	result = nox_wcslen(a1);
-	if (v3 != result) {
-		v5 = &a1[v3];
-		// Console callers can exceed the chat widget's input limit. Keep the original
-		// byte-sized wire count, but give formatting enough room for every input unit.
-		size_t units = nox_wcslen(v5);
-		if (units > (SIZE_MAX - 13) / 2) return 0;
-		v8 = malloc(13 + 2 * units);
-		if (!v8) return 0;
-		v8[0] = -88; // MSG_TEXT_MESSAGE
-		*(uint16_t*)&v8[9] = 0;
-		*(uint16_t*)&v8[1] = nox_player_netCode_85319C;
-		v8[3] = 0;
-		if (nox_xxx_cliCanTalkMB_4100F0((short*)a1)) {
-			v6 = v8[3] | 2;
-		} else {
-			v6 = v8[3] | 4;
-		}
-		v8[3] = v6;
-		if (a2) {
-			v8[3] |= 1u;
-		}
-		v8[8] = nox_wcslen(v5) + 1;
-		if (v8[3] & 4) {
-			nox_wcscpy((wchar2_t*)&v8[11], v5);
-			v7 = 2;
-		} else {
-			nox_sprintf(&v8[11], "%S", v5);
-			v7 = 1;
-		}
-		if (v2) {
-			*(uint16_t*)&v8[4] = *((uint16_t*)v2 + 6);
-			*(uint16_t*)&v8[6] = *((uint16_t*)v2 + 8);
-		} else {
-			*(uint16_t*)&v8[6] = -1;
-			*(uint16_t*)&v8[4] = -1;
-		}
-		result = nox_netlist_addToMsgListCli_40EBC0(31, 0, v8, v7 * (unsigned char)v8[8] + 11);
-		free(v8);
-	}
-	return result;
-}
 
 //----- (0046A5D0) --------------------------------------------------------
-int sub_46A5D0(uint32_t* a1, int a2) {
-	int v2;  // ecx
-	bool v3; // sf
-	int v5;  // [esp+4h] [ebp-8h]
-	int v6;  // [esp+8h] [ebp-4h]
 
-	v5 = 0;
-	v6 = 0;
-	nox_xxx_wndShowModalMB_46A8C0(*(int*)&dword_5d4594_1064856);
-	nox_xxx_windowFocus_46B500(*(int*)&dword_5d4594_1064860);
-	nox_xxx_drawGetStringSize_43F840(0, *(unsigned short**)&dword_5d4594_1064864, &v5, 0, 0);
-	nox_xxx_drawGetStringSize_43F840(0, (unsigned short*)(dword_5d4594_1064864 + 512), &v6, 0, 0);
-	v3 = v5 + v6 - 90 < 0;
-	v5 += v6 + 10;
-	v2 = v5;
-	if (v5 < 100) {
-		v2 = 100;
-		v5 = v2;
-	} else if (v5 > 320) {
-		v2 = 320;
-		v5 = v2;
-	}
-	nox_window_setPos_46A9B0(*(uint32_t**)&dword_5d4594_1064856, (nox_win_width - v2) / 2, *(uint32_t*)(dword_5d4594_1064856 + 20));
-	sub_46AB20(a1, v5, 20);
-	return nox_xxx_wndEditDrawNoImage_488160((int)a1, a2);
-}
 
 //----- (0046A6A0) --------------------------------------------------------
-int sub_46A6A0() {
-	if (wndIsShown_nox_xxx_wndIsShown_46ACC0(*(int*)&dword_5d4594_1064856)) {
-		return 0;
-	}
-	if (nox_xxx_wndGetFocus_46B4F0() == dword_5d4594_1064860) {
-		nox_xxx_windowFocus_46B500(0);
-	}
-	nox_xxx_wnd_46C6E0(*(int*)&dword_5d4594_1064856);
-	nox_window_set_hidden(*(int*)&dword_5d4594_1064856, 1);
-	*(uint32_t*)(dword_5d4594_1064856 + 4) &= 0xFFFFFFF7;
-	*(uint32_t*)(dword_5d4594_1064860 + 4) &= 0xFFFFFFF7;
-	set_dword_5d4594_3799468(1);
-	dword_5d4594_1064868 = 0;
-	return 1;
-}
+
 
 //----- (0046A730) --------------------------------------------------------
-uint32_t* sub_46A730() {
-	uint32_t* result; // eax
 
-	*getMemU32Ptr(0x5D4594, 1064876) = nox_win_width / 2;
-	*getMemU32Ptr(0x5D4594, 1064880) = 2 * nox_win_height / 3;
-	result = nox_new_window_from_file("GuiChat.wnd", sub_46A820);
-	dword_5d4594_1064856 = result;
-	if (result) {
-		nox_window_setPos_46A9B0(result, *getMemIntPtr(0x5D4594, 1064876), *getMemIntPtr(0x5D4594, 1064880));
-		result = nox_xxx_wndGetChildByID_46B0C0(*(uint32_t**)&dword_5d4594_1064856, 9201);
-		dword_5d4594_1064860 = result;
-		if (result) {
-			nox_xxx_wndSetDrawFn_46B340((int)result, sub_46A5D0);
-			nox_xxx_wndSetWindowProc_46B300(*(int*)&dword_5d4594_1064860, sub_46A7E0);
-			result = *(uint32_t**)&dword_5d4594_1064856;
-			dword_5d4594_1064864 = *(uint32_t*)(dword_5d4594_1064860 + 32);
-		}
-	}
-	return result;
-}
 
 //----- (0046A7E0) --------------------------------------------------------
-int sub_46A7E0(uint32_t* a1, int a2, int a3, int a4) {
-	if (a2 != 21 || a3 != 1) {
-		return nox_xxx_wndEditProc_487D70(a1, a2, a3, a4);
-	}
-	if (a4 == 2) {
-		nox_xxx_consoleEsc_49B7A0();
-	}
-	return 1;
-}
+
 
 //----- (0046A820) --------------------------------------------------------
-int sub_46A820(int a1, int a2, int a3, int a4) {
-	if (a2 == 16415) {
-		if (*(uint16_t*)(dword_5d4594_1064864 + 1052)) {
-			nox_xxx_cmdSayDo_46A4B0(*(wchar2_t**)&dword_5d4594_1064864, *getMemIntPtr(0x5D4594, 1064872));
-		}
-		sub_46A6A0();
-	}
-	return 0;
-}
+
 
 //----- (0046A860) --------------------------------------------------------
-int sub_46A860() {
-	int result; // eax
 
-	result = dword_5d4594_1064856;
-	if (dword_5d4594_1064856) {
-		result = nox_xxx_windowDestroyMB_46C4E0(*(uint32_t**)&dword_5d4594_1064856);
-		dword_5d4594_1064856 = 0;
-	}
-	dword_5d4594_1064860 = 0;
-	dword_5d4594_1064864 = 0;
-	dword_5d4594_1064868 = 0;
-	*getMemU32Ptr(0x5D4594, 1064872) = 0;
-	return result;
-}
 
 //----- (00473920) --------------------------------------------------------
 void nox_xxx____setargv_11_473920() { *getMemU32Ptr(0x5D4594, 1096520) = 1; }

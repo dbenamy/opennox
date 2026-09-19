@@ -84,7 +84,7 @@ void sub_48C580(pixel8888* a1, int num) {
 }
 
 //----- (0048CA70) --------------------------------------------------------
-int nox_xxx_showObserverWindow_48CA70(int a1) { return nox_window_set_hidden(*(int*)&dword_5d4594_1193712, a1); }
+
 
 //----- (0048D4B0) --------------------------------------------------------
 int sub_48D4B0(int a1) {

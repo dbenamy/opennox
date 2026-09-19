@@ -11,7 +11,8 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 ## Current — client interaction corrected C baseline qualified
 
 The83-body /1,496-line connected batch is qualified and its original-C captures
-are frozen in this checkpoint. Recovery checkpoint **c856a315** is pushed.
+are frozen in baseline **dd7e94f4**, committed/pushed. Recovery checkpoint
+**c856a315** is also pushed.
 Qualified production C is13,456 /57 files /zero reference (+14
 text-prerequisite lines from the previous qualified production b30f96a3).
 
@@ -36,8 +37,35 @@ retire the artificial MOTD gate6 explicitly and compare every surviving row with
 the old frozen capture. Ten selected symbols have outside C references; review
 raw callback96 separately. Read native-review-notes.md and the interface previews
 under ignored build/ before conversion. They are advisory, not final export lists.
-No native implementation is installed yet. Keep packet reorder/update decoding
-separate. No user decision is pending.
+Native conversion is in progress. The first16 GAME1_2 routines pass all30 contract
+roots and31 exact C captures in native-primitives-initial; static passes and its
+job is joined. The unused sub_435690 body is removed. Ten additional indicator
+and centered-message routines are now installed, for26 live routines translated.
+Temporary C exports and existing C owners keep this connected conversion buildable;
+retire private interfaces/owners before final qualification. The shared production
+console formatter remains in C for its other live caller, with only an argument
+adapter in the Go preamble. No completed native conversion is claimed.
+
+Native-messages-initial passes30 roots and31 exact captures; static passes and
+its job is joined. The three empty C units (chaticon/guiobs/guimsg) are removed.
+Ten chat routines are now installed, for36 live routines translated.
+Native-chat-initial joined with one failing root: ChatEscapeKey. The native C
+adapter used AsWindowEvent, which collapses raw key states3/all-ones to state2.
+It now passes RawEvent, preserving the original exact state2 comparison. All
+other29 roots passed; this failed run is not qualification.
+
+Twelve key/vote and two pickup/secondary routines are also installed, for50 live
+routines translated. Empty gamewin.c is removed. Native-controls-initial,
+**session68297**, is joined: all30 roots pass and all31 C capture hashes match.
+Static-native-controls passes. Working C is12,835 physical lines /53 files /zero
+reference, a621-line decrease from the frozen baseline; final qualification is
+still pending. The installed chat/key/vote drafts are consumed. Temporary C
+exports/owners still need final retirement. An ignored native-hover-draft.go
+contains four additional routines, NOT installed or compiled. No jobs are active. Original selection offsets are stale in changed
+files; remove subsequent bodies by matching their exact frozen baseline text,
+never replay original offsets against the working tree. Installed indicator draft
+and removal snippets are consumed. All31 original hashes remain frozen unchanged.
+Keep packet reorder/update decoding separate. No user decision is pending.
 
 All installed source drafts and freeze-c.py are CONSUMED. Never recopy them over
 current source or regenerate frozen captures to hide a native mismatch. The old
