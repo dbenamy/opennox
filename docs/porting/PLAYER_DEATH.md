@@ -2,133 +2,100 @@
 
 ## Scope
 
-Seven connected C bodies /677 original body lines: registered PlayerDie handler,
-arena/elimination/king-of-the-realm scoring, death notification, respawn corpse
-creation and its type-cache initializer. Parent **00131036** is committed and
-pushed (26,836 C lines /67 files). Caller audit is currently in
-build/port-player-death/selection-candidate.json; its original offsets precede
-the C prerequisite below. Refresh positions before using an installer.
+Seven C bodies are now Go: PlayerDie, arena/elimination/King of the Realm scoring,
+death notification, corpse cache initialization and corpse spawning. The registered
+PlayerDie callback retains its C signature; six private C interfaces are removed.
+The live respawn caller invokes Go directly. No C algorithms remain solely for tests.
 
-The death callback requires a minimal C-to-Go export while its registration uses
-a C function pointer. Move the native respawn caller directly to Go; private
-scoring/cache helpers need no exported interfaces. Actual callers discard the
-historical return values; contracts capture owned state and observable effects.
+The corrected C baseline contains 679 body lines. The conversion removes **693
+physical C lines**, including adjacent obsolete headings and blanks, leaving
+**26,145 lines in 67 production C files**, with zero reference C.
 
-## C prerequisite — review later
+## Behavior and contracts
 
-Original C crashes when an unteamed player kills a teamed player in arena mode.
-The ordinary scoring branch reads the absent killer team's score before passing
-it to the already nil-tolerant Go team service. The isolated contract confirms
-SIGSEGV in `nox_xxx_playerUpdateScore_54D980` for victim-team=1/killer-team=0.
-Evidence: build/port-player-death/original-teams/tests.jsonl; the test process
-terminated and is joined. No production/gameplay process was involved.
+Fourteen focused capture groups cover 1,101 cases through real player/team,
+object-factory, inventory, RNG, audio, ability, message-queue and statistics owners.
+The lifecycle tests invoke the actual registered PlayerDie callback.
 
-Guard only the team-score update when the killer has no team. Keep the player
-score increase and all other scoring behavior. This adds two C lines before
-freezing; corrected initial arena/corpse-cache contracts pass. A fresh C production qualification
-is required because production changed. No expectations have been frozen yet.
+- Arena and elimination: assigned/unassigned/friendly teams, environmental and
+  self deaths, assists, signed score and unsigned death-count wrap, exact message
+  bytes and ordering, and match-statistics actor/target attribution.
+- King of the Realm: owned crowns, fractional point conversion, team scoring,
+  friendly/self penalties, held/unheld crown transfer and transfer disablement.
+- Recent assists: strict ten-second expiry, frame wrap, missing/inactive players,
+  unavailable network codes, and exclusion of the victim and killer.
+- Death lifecycle: online source/weapon reporting, owned projectiles and monsters,
+  state/mana/casting cleanup, active abilities/cooldowns/enchantments, male/female
+  and special-cause sounds, and cooperative pending-character-load cancellation.
+- Quest: remaining lives, exhaustion, fractional starting lives, gold/statistics
+  penalties, reset messages, per-player slots and exact RNG consumption.
+- Corpses: shipped suffix/direction/position tables, missing object definitions,
+  untouched center slot, early allocation failure, position rounding, flags and
+  exactly one decay-duration draw per created object.
 
-Arena suicide/environment paths subtract lessons without incrementing the death
-counter. The subtraction service was inspected and does not add that increment.
-Preserve this historical rule explicitly; this port does not change scoring policy.
+Preserve the historical scoring asymmetries. Arena self/environment deaths without
+an assist subtract a lesson without incrementing the death count. King of the Realm
+with no player killer leaves the victim's death count alone. Unteamed enemy kills
+can assign a dropped crown to the killer; the teamed scoring branch does not.
+The crown-drop adapter's second argument is a pending-owner pointer despite its
+old parameter name `stamp`; captures normalize only that identified pointer.
 
-## Contracts in progress
+Preserve the low-byte-only reset of TrapSpellsCnt, game-mode precedence and
+queue ordering. The callback's historical integer return has no reader in the
+actual caller/dispatch graph; the Go export returns zero with the same C signature.
 
-Use the existing real match-roster owner for players, teams and score messages.
-The initial arena matrix covers both assigned and unassigned teams. Corpse-cache
-contracts use shipped direction suffixes and real definitions, missing definitions,
-initial cache values, untouched direction 4, and surrounding storage.
+## Corrections and review notes
 
-Planned remaining coverage: score/death wrapping, assistants and their distinct
-player-info gate, game modes/crown ownership, actual message bytes and order,
-registered death dispatch and cleanup, quest lives, recent-assist frame wrap,
-corpse creation positions, factory failure and per-object decay RNG consumption.
-Reuse the existing controls corpus for integrated respawn behavior.
+Independent arena contracts exposed an original-C null-team dereference for an
+unteamed killer and teamed victim. The baseline adds a two-line guard around that
+team-score update. The player still gains the lesson. This is a small, reversible
+prerequisite correction, documented for later review in DECISIONS.md. Original
+failure evidence: build/port-player-death/original-teams/tests.jsonl.
 
-## Recovery
+Fixture corrections preserved a valid player roster by allocating separate monster
+and projectile sources, explicitly initialized zeroed allocations, restored temporary
+class changes before typed snapshots, and initialized the real ability manager.
+They did not change production behavior or frozen expectations.
 
-No native translation is installed. Initial C bridge and contracts are tracked as
-working changes. Original bridge/blob/cache draft copies under build/port-player-death
-are consumed; actual source takes precedence. Do not edit source while tests run.
+Review added 48 death-driven statistics contracts before conversion, because the
+initial scoring fixtures had disabled recording. The first native run then caught
+six valid-assist failures: Players.ByID uses network codes, whereas the C adapter
+uses Players.ByInd for player slots. The native implementation was corrected;
+no golden was regenerated to hide the difference.
 
-Additional fixture review: restore the temporarily non-player actor's class before
-calling the typed player snapshot API. Crown team-award notifications precede
-player-score notifications, unlike arena's ordering; the expectation was corrected
-against C. The real wrapper ability manager must be initialized for death cleanup.
-These are fixture corrections, not additional production changes.
+## Qualification
 
-## Recovery checkpoint
+C baseline **4c3191c1** is committed and pushed. Independent focused captures repeat
+identically in separate processes on all three targets. The full affected selection
+covers death/controls, inventory/respawn, object state, roster/team/gameplay reports,
+quest/spell lifecycle, statistics, objectives/rewards, session and orchestration.
 
-Thirteen default-target roots pass, with **1,053 capture records** (1,066 test entries).
-This is an in-progress checkpoint, **not a frozen or qualified C baseline**.
-The only production change is the two-line absent-team guard. Tests, the original
-failure and current capture hashes are recoverable from the checkpoint and
-[player-death-checkpoint.json](player-death-checkpoint.json). Repeated captures, all-target affected-corpus checks and fresh production
-qualification precede the native conversion. All three focused target repeats passed with identical source and capture bytes
-under build/port-player-death/c-{default,server,highres}. Frozen literals are
-installed; affected-corpus and fresh production qualification remain.
+Both C and native pass **318 roots /24,386 entries per target**, no skips. All
+**149 captures /33,295 records** match across targets and between implementations.
+Each implementation's target and production gates use identical source fingerprints.
+Static checks, three fresh 386/SSE2/CGO production binaries and ABI checks, exact
+known full-suite failures, headless gameplay and explicit save/load pass.
 
-## Extended contracts
+See [C qualification](player-death-c-qualification.json),
+[native qualification](player-death-native-qualification.json),
+[capture index](player-death-captures.json) and
+[selection/caller audit](player-death-selection.json). Raw evidence is under
+build/port-player-death/c-final-* and native-*.
 
-The actual registered PlayerDie callback covers recent-assist expiry (strictly less
-than ten seconds), frame wrap, missing/inactive candidates, self/killer exclusion,
-online source attribution and weapon-style reset. Separate C-allocated monster and
-projectile objects preserve a valid registered player roster. The initial fixture
-incorrectly changed a registered player into a monster and interrupted iteration;
-this was corrected without changing production. alloc.New supplies zero storage,
-so fixture class/type fields are assigned explicitly after allocation.
+## Recovery and disk
 
-Quest contracts check life decrement and exhaustion, fractional starting lives,
-gold penalty, statistic/reset messages and exact RNG consumption. Ability cleanup
-starts with active execution lists, cooldowns and nonzero enchantment arrays.
-Cooperative death cancels pending character loading, including frame wrap.
+All installer/freezing scripts and copied drafts are consumed. Actual source and
+committed expectations take precedence; do not replay ignored mutation scripts.
+Original assets and the archive remain unchanged and outside Git.
 
-Crown contracts cover held/unheld objects, teams, friendly deaths and transfer
-disablement. Preserve the historical asymmetry: the unteamed enemy branch can
-assign a dropped crown to the killer; the teamed scoring branch does not. The
-second drop argument is a pending-owner pointer, despite the existing adapter's
-parameter name `stamp`. Normalize only that identified pointer in captures.
+Verified cleanup removed twelve superseded binaries (584,677,176 bytes) and
+72 older compressed binaries (1,648,354,499 bytes), preserving successful build/ABI
+reports and manifests. Completed C scenario copies were verified and deduplicated,
+reclaiming 1,112,747,701 bytes. Restore manifests preserve file hashes, modes and
+timestamps; restore mode remains in deduplicate-player-death-c-assets.py. Audit
+and apply modes are consumed. Latest production binaries and raw evidence remain.
 
-The affected selection includes 317 roots from death/controls, inventory/respawn,
-object state, roster/team/gameplay reports, quest/spell lifecycle, statistics,
-objectives/rewards, session and orchestration owners. Focused capture repeats
-remain 13 roots; broader checks follow frozen literals. Static memory checks pass.
-
-Disk cleanup verified twelve superseded map-section/statistics binaries against
-successful reports and recorded hashes, reclaiming 584,677,176 bytes. The latest
-map-metadata production binaries remain. Audit and apply are consumed at
-build/port-player-death/cleanup-binaries.py; its JSON manifest remains.
-
-## Final pre-conversion review
-
-The317-root affected selection passed on all three targets:24,337 entries each,
-148 captures /33,247 records identical. Reviewing the callee graph found that
-match-statistics recording was disabled in the new death fixtures. An additional
-48-case contract now checks actor/target event pairs through arena/elimination
-scoring, including environment deaths, self/friendly kills, assists and the logging
-gate. All14 focused captures /1,101 records repeat identically across targets.
-The extra literal is frozen. A final318-root sweep and fresh production run remain.
-
-All43 external game operations used by these bodies already have Go-backed
-exports. Conversion can use those implementations directly. Three ignored native
-drafts are prepared but not compiled or installed; they are not qualification.
-
-Further disk cleanup removed72 superseded compressed binaries (1,648,354,499bytes),
-after verifying each decompressed hash against its successful build/ABI report and
-checking successful gameplay qualification. Manifests/logs/captures and latest
-qualified binaries remain. Audit/apply consumed; retain the cleanup JSON.
-
-## Qualified C baseline
-
-The final318-root selection passes on default/server/highres:24,386 entries each,
-no skips. All149 captures /33,295 records match; the14 focused captures contain
-1,101 records. All target and fresh production checks use identical2,496-file source.
-Static checks, three production binaries/ABI, exact known full-suite failures,
-headless gameplay and explicit save/load pass. See
-[player-death-c-qualification.json](player-death-c-qualification.json).
-
-The production correction remains only the absent-team score guard. C is26,838
-physical lines /67 files /zero reference. All qualification sessions are joined.
-C scenario deduplication reclaimed1,112,747,701bytes after full verification;
-restore manifests retain timestamps, modes and hashes. Original assets are unchanged.
-Native drafts and the guarded installer are prepared but unconsumed.
+Completed native scenario copies were also verified/deduplicated, reclaiming
+1,112,747,701 bytes. Their restore mode remains in
+build/port-player-death/deduplicate-player-death-native-assets.py; audit/apply are
+consumed. All build/test/cleanup sessions are joined.

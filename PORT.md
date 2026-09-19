@@ -15,12 +15,13 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. The remaining C map metadata serializers are now Go: MapInfo, AmbientData
-and ObjectTOC, plus ambient state access. Five C bodies and six C-to-Go adapters
-retired. See [MAP_METADATA.md](docs/porting/MAP_METADATA.md).
+pause. Player death, arena/elimination/King of the Realm scoring, notification and
+corpse creation are now Go. Seven C bodies and six private interfaces retired;
+the registered PlayerDie callback retains a Go-backed C export. See
+[PLAYER_DEATH.md](docs/porting/PLAYER_DEATH.md).
 
-Current production C is **26,836 physical lines in 67 files**, with zero reference
-C (−165 in this batch, including adjacent obsolete headings and blanks). Frozen
+Current production C is **26,145 physical lines in 67 files**, with zero reference
+C (−693 in this batch, including adjacent obsolete headings and blanks). Frozen
 comparisons, all three targets and fresh production/headless integration qualify.
 See [PORTING_STATE.md](PORTING_STATE.md).
 

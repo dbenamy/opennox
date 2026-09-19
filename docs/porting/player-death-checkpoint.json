@@ -1,5 +1,5 @@
 {
-  "status": "qualified C baseline; native conversion next",
+  "status": "qualified native conversion",
   "parent": "00131036",
   "production_change": "Guard absent killer team before reading/updating arena team score (+2 C lines).",
   "passed_default_roots": 14,
@@ -75,10 +75,13 @@
       "sha256": "c6f280903ae925e7c3b4dc37b0ba6f0516abf6a8b43a119c79955dfbfdbb1218"
     }
   ],
-  "pending": [
-    "native conversion and qualification"
-  ],
+  "pending": [],
   "records": 1101,
   "evidence": "build/port-player-death/statistics-repeat-{default,server,highres}",
-  "qualification": "docs/porting/player-death-c-qualification.json"
+  "qualification": "docs/porting/player-death-native-qualification.json",
+  "c_loc": {
+    "lines": 26145,
+    "files": 67
+  },
+  "c_reduction": 693
 }

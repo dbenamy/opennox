@@ -229,7 +229,7 @@ func controlLeaveObserver(pl unsafe.Pointer) {
 }
 func controlMakeCorpse(u *server.Object, settings unsafe.Pointer) {
 	if C.dword_5d4594_2650652 == 0 || *equipmentWord(settings, 58) != 0 {
-		C.nox_xxx_respawnPlayerImpl_53FBC0((*C.float)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)))
+		playerCorpseCreate(u.PosVec, int32(int16(u.Direction1)))
 	}
 }
 func controlRespawn(u *server.Object) int16 {

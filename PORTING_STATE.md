@@ -2,52 +2,55 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 27k lines** — **26,836 physical lines in 67 production
-`.c` files**, zero reference C. Latest conversion: **−165** from
-the qualified map metadata C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 26k lines** — **26,145 physical lines in 67 production
+`.c` files**, zero reference C. Latest conversion: **−693** from the qualified
+player-death C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — native map metadata qualified
+## Current — native player death qualified
 
-C checkpoint **f3181558** is committed and pushed. Native Go replaces five C bodies
-and retires six obsolete C-to-Go adapters; three section callers and population
-ambient setup call Go directly. See [MAP_METADATA.md](docs/porting/MAP_METADATA.md).
+C baseline **4c3191c1** is committed and pushed. Native conversion and qualification
+are recorded together in this checkpoint. Seven C bodies are replaced by Go;
+six private interfaces are removed. The actual PlayerDie registration retains its
+Go-backed C export, and the live respawn caller uses Go directly.
+See [PLAYER_DEATH.md](docs/porting/PLAYER_DEATH.md).
 
-Five focused roots /478 entries, five captures /473 records match C. Each target
-passes **515 roots /47,472 entries**, no skips. All **287 captures /103,626 records**
-match C and each other. All target and production gates have identical 2,479-file
-source. Static, three fresh production binaries/ABI, exact known full-suite
-failures, gameplay, explicit save/load and compressed flat-map regeneration pass.
-No golden changed; no production behavior correction was needed.
-Evidence: docs/porting/map-metadata-native-qualification.json and
-build/port-map-metadata/native-*. All build/test sessions are joined.
+Fourteen focused captures /1,101 records match C. Each target passes **318 roots /
+24,386 entries**, no skips. All **149 captures /33,295 records** match C and each
+other. Target and fresh production gates use identical 2,500-file source. Static,
+three production binaries/ABI, exact known full-suite failures, gameplay and
+explicit save/load pass. Evidence: player-death-native-qualification.json and
+build/port-player-death/native-*.
 
-Current C: **26,836 physical lines /67 files /zero reference**,−165 including
-adjacent obsolete headings, annotations and blanks. Native conversion **00131036 is committed and pushed**. Next candidate: player death/scoring and respawn corpse creation,
-seven bodies /677 lines; read-only audit in build/port-player-death/selection-candidate.json.
-The player-death C baseline is now fully qualified:14 focused captures /1,101
-records; each target passes318 roots /24,386 entries, no skips. All149 captures /
-33,295 records match across targets, with identical2,496-file source for tests and
-fresh production. Static memory checks, three production binaries/ABI, the exact
-known full-suite failure set, gameplay and save/load pass. The C prerequisite is
-an absent-team guard (+2 lines); working C26,838 /67 files, zero reference.
-See docs/porting/player-death-c-qualification.json and PLAYER_DEATH.md.
+The C prerequisite fixes an unteamed killer / teamed victim null-team score access
+(+2 lines). The native focused tests caught a player-slot/network-ID lookup mistake;
+ByInd now preserves C behavior. No frozen expectation changed. Current C is
+**26,145 /67 files /zero reference**,−693 including adjacent headings/blanks.
+All build/test/cleanup sessions are joined; source editable.
 
-Next: install and qualify the native player-death drafts. Four formatted but
-uncompiled drafts and a guarded install-native.py are under build/port-player-death.
-The installer requires qualified C source identity; it is unconsumed. Native
-manifest draft is there too. All build/test/cleanup sessions are joined.
-All C capture-freezing scripts and copied fixture drafts are consumed. Preserve
-frozen literals; actual source wins over ignored drafts.
+All player-death installers/freezing scripts and copied drafts/manifests are
+consumed. Actual source wins; do not replay ignored mutation scripts. Next candidate:
+client speech-bubble layout/drawing and possibly related dialogue operations.
+A provisional 21-body /878-line bubble audit is at
+build/port-player-death/next-bubble-audit.json. Audit its live graph and scope before
+starting fixtures. No next-batch source changes or tests are installed yet.
 
-Disk cleanup manifests remain under build/port-player-death. Twelve old binaries
-(584,677,176bytes) and72 compressed binaries (1,648,354,499bytes) were removed after
-verification. Completed C scenario assets were verified/deduplicated, reclaiming
-1,112,747,701bytes; restore mode remains in deduplicate-player-death-c-assets.py.
-All audit/apply modes are consumed. Latest C and map-metadata production binaries,
-logs/captures and original assets/archive remain. Earlier cleanup/restore records
-remain under build/port-map-{sections,metadata}; do not replay their apply modes.
+Disk: verified player-death cleanup removed twelve old binaries (584,677,176 bytes)
+and 72 compressed binaries (1,648,354,499 bytes). C and native scenario copies each
+reclaimed 1,112,747,701 bytes through verified deduplication. Their restore modes and
+manifests remain under build/port-player-death; all audit/apply modes are consumed.
+Latest C/native binaries, logs/captures and original assets/archive remain. Earlier
+cleanup/restore records remain under build/port-map-{sections,metadata}; do not
+replay their apply modes. The archive remains untracked.
+
+## Qualified parent — native map metadata
+
+**00131036** is committed and pushed; C baseline f3181558. Five C bodies and six
+adapters retired. Five focused roots /478 entries; each target 515 roots /47,472
+entries; 287 captures /103,626 records match. Fresh production, gameplay, save/load
+and compressed flat-map regeneration qualify. C 26,836 /67 files (−165).
+See [MAP_METADATA.md](docs/porting/MAP_METADATA.md). All its scripts are consumed.
 
 ## Qualified parent — native floor/wall map sections
 
