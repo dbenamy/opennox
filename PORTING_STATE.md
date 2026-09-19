@@ -28,29 +28,33 @@ adjacent obsolete headings, annotations and blanks. Native conversion **00131036
 seven bodies /677 lines; read-only audit in build/port-player-death/selection-candidate.json.
 The next batch's C bridge and initial arena-team contracts are installed.
 Original C confirmed a null-team crash for an unteamed killer / teamed victim.
-A two-line guard is installed. Seven default-target groups now pass /608 capture
-records (615 entries), including scoring/assists/wrap/message order, corpse cache
-and spawn/failure/RNG, and basic death cleanup/audio. This is a recovery checkpoint,
-not a frozen or fully qualified C baseline. Current working C is26,838 /67 files;
-last completed conversion remains26,836. Fresh C production qualification required.
-Remaining coverage: crown transfer, full death modes/recent-assist timing,
-abilities/buffs and quest cleanup. See PLAYER_DEATH.md and player-death-checkpoint.json.
-All test sessions are joined; source editable. All copied drafts are consumed;
-actual source takes precedence. No native next-batch translation, no user question.
+A two-line guard is installed. Thirteen default-target groups now pass, with
+1,053 capture records (1,066 entries). Coverage includes scoring/team boundaries,
+assist expiry and frame wrap, actual registered dispatch, online source messages,
+quest lives/penalty/RNG, abilities/enchantments, cooperative pending-load cleanup,
+crown transfer and corpse cache/spawn/decay. See PLAYER_DEATH.md and
+player-death-checkpoint.json. Current working C is26,838 /67 files; the selected
+seven bodies are679 lines after the guard. Last completed conversion remains26,836.
+
+Focused independent target repeats passed on all three targets:13 captures,
+1,053 records, identical source and bytes. Frozen literals are installed;
+build/port-player-death/freeze.py is consumed. Static memory checks pass.
+Broader317-root selection and fresh C production qualification are next. The C
+manifest now selects affected tests. No native translation. All fixture draft
+copies are consumed; actual source takes precedence. No active test sessions.
+
+Disk: the latest cleanup removed twelve superseded map-section/statistics binaries,
+reclaiming584,677,176bytes. build/port-player-death/cleanup-binaries.py audit/apply
+are consumed; keep its JSON manifest. Latest map-metadata binaries preserved.
+Earlier map-metadata cleanup removed42 superseded binaries (2,048,072,488bytes)
+and deduplicated scenario assets (1,660,044,319bytes). Earlier map-section cleanup
+removed99 binaries (4,819,397,352bytes) and deduplicated C/native scenario assets
+(1,660,044,319bytes each). All audit/apply modes are consumed; restore modes and
+manifests remain. Preserve changed maps/saves/screenshots and original assets/archive.
+The archive remains untracked.
 
 All map-metadata freeze, qualification, installer and finalization scripts are
 consumed. Actual source wins over ignored drafts. Do not replay mutation scripts.
-
-Disk:42 more superseded successful-run binaries removed, reclaiming2,048,072,488
-bytes. Audit: build/port-map-metadata/superseded-binaries-cleanup.json. Audit/apply
-consumed; current parent binaries preserved. Earlier map-section cleanup removed
-99 binaries (4,819,397,352 bytes) and deduplicated C/native scenario assets
-(1,660,044,319 bytes each). Their audit/apply modes are consumed; restore modes and
-manifests remain available. Preserve changed maps/saves/screenshots and original
-assets/archive. The archive remains untracked.
-Map-metadata native scenario assets were also verified/deduplicated, reclaiming
-1,660,044,319 bytes. Audit/apply consumed; restore mode remains available at
-build/port-map-metadata/deduplicate-map-metadata-native-assets.py.
 
 ## Qualified parent — native floor/wall map sections
 

@@ -101,5 +101,5 @@ func TestPlayerDeathLifecycle(t *testing.T) {
 			})
 		}
 	}
-	spellbookCapture(t, "player-death-lifecycle", rows, "")
+	spellbookCapture(t, "player-death-lifecycle", rows, "1b3e763016a6be377a0956f0b45a2ab8516dcd2951621b9ee9502267c05f829f")
 }

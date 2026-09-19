@@ -1,0 +1,315 @@
+[
+  {
+    "symbol": "nox_xxx_diePlayer_54D2B0",
+    "file": "src/legacy/GAME5.c",
+    "start": 2493,
+    "end": 8345,
+    "line": 94,
+    "lines": 200,
+    "references": [
+      {
+        "file": "src/legacy/GAME5.h",
+        "line": 50,
+        "text": "int nox_xxx_diePlayer_54D2B0(int a1);"
+      },
+      {
+        "file": "src/legacy/GAME5.c",
+        "line": 94,
+        "text": "int nox_xxx_diePlayer_54D2B0(int a1) {"
+      },
+      {
+        "file": "src/legacy/object_death.go",
+        "line": 20,
+        "text": "\tserver.RegisterObjectDeath(\"PlayerDie\", C.nox_xxx_diePlayer_54D2B0, 0)"
+      },
+      {
+        "file": "src/legacy/player_death_porttest.go",
+        "line": 27,
+        "text": "\t\tC.nox_xxx_diePlayer_54D2B0(raw(unsafe.Pointer(victim)))"
+      }
+    ],
+    "calls": [
+      "BYTE1",
+      "gameFPS",
+      "gameFrame",
+      "getMemU32Ptr",
+      "nox_common_gameFlags_check_40A5C0",
+      "nox_common_playerInfoFromNum_417090",
+      "nox_float2int",
+      "nox_server_getObjectFromNetCode_4ECCB0",
+      "nox_xxx_action_4DA9F0",
+      "nox_xxx_aud_501960",
+      "nox_xxx_diePlayer_54D2B0",
+      "nox_xxx_dropAllItems_4EDA40",
+      "nox_xxx_findParentChainPlayer_4EC580",
+      "nox_xxx_gamePlayIsAnyPlayers_40A8A0",
+      "nox_xxx_gamedataGetFloat_419D40",
+      "nox_xxx_getNameId_4E3AA0",
+      "nox_xxx_netInformTextMsg2_4DA180",
+      "nox_xxx_netNotifyPlayerDied_54DF00",
+      "nox_xxx_netSendPacket0_4E5420",
+      "nox_xxx_playerCancelAbils_4FC180",
+      "nox_xxx_playerCancelSpells_4FEAE0",
+      "nox_xxx_playerHandleElimDeath_54D7A0",
+      "nox_xxx_playerHandleKotrDeath_54DC40",
+      "nox_xxx_playerRemoveSpawnedStuff_4E5AD0",
+      "nox_xxx_playerSetState_4FA020",
+      "nox_xxx_playerUpdateScore_54D980",
+      "nox_xxx_protectMana_56F9E0",
+      "nox_xxx_servGamedataGet_40A020",
+      "nox_xxx_setUnitBuffFlags_4E48F0",
+      "nox_xxx_shopCancelSession_510DC0",
+      "nox_xxx_unitClearBuffs_4FF580",
+      "sub_4D6000",
+      "sub_4D6130",
+      "sub_4DB170",
+      "sub_4FC0B0",
+      "sub_54CBD0"
+    ]
+  },
+  {
+    "symbol": "nox_xxx_playerHandleElimDeath_54D7A0",
+    "file": "src/legacy/GAME5.c",
+    "start": 8471,
+    "end": 10556,
+    "line": 297,
+    "lines": 81,
+    "references": [
+      {
+        "file": "src/legacy/GAME5.h",
+        "line": 51,
+        "text": "void nox_xxx_playerHandleElimDeath_54D7A0(int a1, int a2);"
+      },
+      {
+        "file": "src/legacy/GAME5.c",
+        "line": 242,
+        "text": "\t\t\tnox_xxx_playerHandleElimDeath_54D7A0(v1, v24);"
+      },
+      {
+        "file": "src/legacy/GAME5.c",
+        "line": 297,
+        "text": "void nox_xxx_playerHandleElimDeath_54D7A0(int a1, int a2) {"
+      },
+      {
+        "file": "src/legacy/player_death_porttest.go",
+        "line": 31,
+        "text": "\t\tC.nox_xxx_playerHandleElimDeath_54D7A0(raw(unsafe.Pointer(victim)), raw(unsafe.Pointer(killer)))"
+      }
+    ],
+    "calls": [
+      "nox_xxx_changeScore_4D8E90",
+      "nox_xxx_getTeamByID_418AB0",
+      "nox_xxx_netChangeTeamID_419090",
+      "nox_xxx_netReportLesson_4D8EF0",
+      "nox_xxx_playerHandleElimDeath_54D7A0",
+      "nox_xxx_playerIncrementElimDeath_4D8D40",
+      "nox_xxx_playerSubLessons_4D8EC0",
+      "nox_xxx_servObjectHasTeam_419130",
+      "sub_425CA0"
+    ]
+  },
+  {
+    "symbol": "nox_xxx_playerUpdateScore_54D980",
+    "file": "src/legacy/GAME5.c",
+    "start": 10634,
+    "end": 14820,
+    "line": 380,
+    "lines": 171,
+    "references": [
+      {
+        "file": "src/legacy/GAME5.h",
+        "line": 52,
+        "text": "void nox_xxx_playerUpdateScore_54D980(int a1, int a2, int a3, int a4);"
+      },
+      {
+        "file": "src/legacy/GAME5.c",
+        "line": 238,
+        "text": "\t\t\tnox_xxx_playerUpdateScore_54D980(v1, v24, v2, v6);"
+      },
+      {
+        "file": "src/legacy/GAME5.c",
+        "line": 380,
+        "text": "void nox_xxx_playerUpdateScore_54D980(int a1, int a2, int a3, int a4) {"
+      },
+      {
+        "file": "src/legacy/player_death_porttest.go",
+        "line": 29,
+        "text": "\t\tC.nox_xxx_playerUpdateScore_54D980(raw(unsafe.Pointer(victim)), raw(unsafe.Pointer(killer)), raw(unsafe.Pointer(assist)), raw(pl))"
+      }
+    ],
+    "calls": [
+      "nox_xxx_changeScore_4D8E90",
+      "nox_xxx_getTeamByID_418AB0",
+      "nox_xxx_netChangeTeamID_419090",
+      "nox_xxx_netReportLesson_4D8EF0",
+      "nox_xxx_playerIncrementElimDeath_4D8D40",
+      "nox_xxx_playerSubLessons_4D8EC0",
+      "nox_xxx_playerUpdateScore_54D980",
+      "nox_xxx_servObjectHasTeam_419130",
+      "sub_425CA0"
+    ]
+  },
+  {
+    "symbol": "nox_xxx_playerHandleKotrDeath_54DC40",
+    "file": "src/legacy/GAME5.c",
+    "start": 14898,
+    "end": 18576,
+    "line": 553,
+    "lines": 114,
+    "references": [
+      {
+        "file": "src/legacy/GAME5.h",
+        "line": 53,
+        "text": "void nox_xxx_playerHandleKotrDeath_54DC40(int a1, int a2);"
+      },
+      {
+        "file": "src/legacy/GAME5.c",
+        "line": 240,
+        "text": "\t\t\tnox_xxx_playerHandleKotrDeath_54DC40(v1, v24);"
+      },
+      {
+        "file": "src/legacy/GAME5.c",
+        "line": 553,
+        "text": "void nox_xxx_playerHandleKotrDeath_54DC40(int a1, int a2) {"
+      },
+      {
+        "file": "src/legacy/player_death_porttest.go",
+        "line": 33,
+        "text": "\t\tC.nox_xxx_playerHandleKotrDeath_54DC40(raw(unsafe.Pointer(victim)), raw(unsafe.Pointer(killer)))"
+      }
+    ],
+    "calls": [
+      "nox_float2int",
+      "nox_xxx_CheckGameplayFlags_417DA0",
+      "nox_xxx_changeScore_4D8E90",
+      "nox_xxx_gamedataGetFloat_419D40",
+      "nox_xxx_getTeamByID_418AB0",
+      "nox_xxx_netChangeTeamID_419090",
+      "nox_xxx_netReportLesson_4D8EF0",
+      "nox_xxx_playerHandleKotrDeath_54DC40",
+      "nox_xxx_playerIncrementElimDeath_4D8D40",
+      "nox_xxx_playerSubLessons_4D8EC0",
+      "nox_xxx_servObjectHasTeam_419130",
+      "nox_xxx_unitIsCrown_4E7BE0",
+      "sub_425CA0",
+      "sub_4ED050"
+    ]
+  },
+  {
+    "symbol": "nox_xxx_netNotifyPlayerDied_54DF00",
+    "file": "src/legacy/GAME5.c",
+    "start": 18654,
+    "end": 18929,
+    "line": 669,
+    "lines": 11,
+    "references": [
+      {
+        "file": "src/legacy/GAME5.h",
+        "line": 54,
+        "text": "void nox_xxx_netNotifyPlayerDied_54DF00(int a1);"
+      },
+      {
+        "file": "src/legacy/GAME5.c",
+        "line": 254,
+        "text": "\tnox_xxx_netNotifyPlayerDied_54DF00(v1);"
+      },
+      {
+        "file": "src/legacy/GAME5.c",
+        "line": 669,
+        "text": "void nox_xxx_netNotifyPlayerDied_54DF00(int a1) {"
+      },
+      {
+        "file": "src/legacy/player_death_porttest.go",
+        "line": 35,
+        "text": "\t\tC.nox_xxx_netNotifyPlayerDied_54DF00(raw(unsafe.Pointer(victim)))"
+      }
+    ],
+    "calls": [
+      "LOBYTE",
+      "nox_xxx_netNotifyPlayerDied_54DF00",
+      "nox_xxx_netSendPacket1_4E5390"
+    ]
+  },
+  {
+    "symbol": "nox_xxx_respawnPlayerImpl_53FBC0",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 14872,
+    "end": 15990,
+    "line": 560,
+    "lines": 43,
+    "references": [
+      {
+        "file": "src/legacy/player_controls_respawn.go",
+        "line": 232,
+        "text": "\t\tC.nox_xxx_respawnPlayerImpl_53FBC0((*C.float)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)))"
+      },
+      {
+        "file": "src/legacy/GAME4_3.c",
+        "line": 560,
+        "text": "uint32_t* nox_xxx_respawnPlayerImpl_53FBC0(float* a1, int a2) {"
+      },
+      {
+        "file": "src/legacy/player_death_porttest.go",
+        "line": 42,
+        "text": "\tC.nox_xxx_respawnPlayerImpl_53FBC0((*C.float)(unsafe.Pointer(&pos)), C.int(angle))"
+      },
+      {
+        "file": "src/legacy/GAME4_3.h",
+        "line": 194,
+        "text": "uint32_t* nox_xxx_respawnPlayerImpl_53FBC0(float* a1, int a2);"
+      }
+    ],
+    "calls": [
+      "LOBYTE",
+      "gameFPS",
+      "getMemFloatPtr",
+      "getMemIntPtr",
+      "getMemU32Ptr",
+      "nox_common_gameFlags_check_40A5C0",
+      "nox_common_randomInt_415FA0",
+      "nox_xxx_createAt_4DAA50",
+      "nox_xxx_createCorpse_53FCA0",
+      "nox_xxx_math_509EA0",
+      "nox_xxx_newObjectWithTypeInd_4E3450",
+      "nox_xxx_respawnPlayerImpl_53FBC0",
+      "nox_xxx_unitSetDecayTime_511660"
+    ]
+  },
+  {
+    "symbol": "nox_xxx_createCorpse_53FCA0",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 16068,
+    "end": 18102,
+    "line": 605,
+    "lines": 59,
+    "references": [
+      {
+        "file": "src/legacy/GAME4_3.h",
+        "line": 195,
+        "text": "void nox_xxx_createCorpse_53FCA0();"
+      },
+      {
+        "file": "src/legacy/player_death_porttest.go",
+        "line": 40,
+        "text": "func PortTestPlayerCorpseCache() { C.nox_xxx_createCorpse_53FCA0() }"
+      },
+      {
+        "file": "src/legacy/GAME4_3.c",
+        "line": 573,
+        "text": "\t\tnox_xxx_createCorpse_53FCA0();"
+      },
+      {
+        "file": "src/legacy/GAME4_3.c",
+        "line": 605,
+        "text": "void nox_xxx_createCorpse_53FCA0() {"
+      }
+    ],
+    "calls": [
+      "getMemAt",
+      "getMemU32Ptr",
+      "nox_sprintf",
+      "nox_xxx_createCorpse_53FCA0",
+      "nox_xxx_getNameId_4E3AA0"
+    ]
+  }
+]

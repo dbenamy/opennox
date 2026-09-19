@@ -1,0 +1,84 @@
+{
+  "status": "repeated three-target C captures; frozen qualification pending",
+  "parent": "b48ff89b",
+  "captures": [
+    {
+      "label": "player-death-ability-cleanup",
+      "sha256": "1eeebe561b4108072aabe293a989d27651625e41899098da0478b06f5f8d8c40",
+      "records": 12,
+      "file": "src/player_death_cleanup_porttest_test.go"
+    },
+    {
+      "label": "player-death-arena-assists",
+      "sha256": "93f3684188a03dc47d951c6dc1555942f1f178192853e955fe3ed04b8f77b1c7",
+      "records": 180,
+      "file": "src/player_death_assists_porttest_test.go"
+    },
+    {
+      "label": "player-death-arena-teams",
+      "sha256": "2c1b28f2a60feda96bfab163bb401a00cb325345a814ecfa02f89bf85db5ae6a",
+      "records": 9,
+      "file": "src/player_death_scoring_porttest_test.go"
+    },
+    {
+      "label": "player-death-coop-pending-load",
+      "sha256": "1c6082164c09eb67926cb79bb4f6bf3b3d5296ea9fae26db2780c8906e43a2e8",
+      "records": 3,
+      "file": "src/player_death_coop_porttest_test.go"
+    },
+    {
+      "label": "player-death-corpse-cache",
+      "sha256": "0bd912a573c12f4630d349fa5a93e0211ece9909b57529c5bc54dd4d197eba47",
+      "records": 15,
+      "file": "src/player_death_corpse_cache_porttest_test.go"
+    },
+    {
+      "label": "player-death-corpse-spawn",
+      "sha256": "2698eb4beb23a79dfd24854e89dd87892ab015d32714496d91643487abf19db8",
+      "records": 160,
+      "file": "src/player_death_corpse_spawn_porttest_test.go"
+    },
+    {
+      "label": "player-death-crown-transfer",
+      "sha256": "521c860f04a5c8337632f1ff4ddf3e8dcf04072996b2e73d38261b73df28b08e",
+      "records": 16,
+      "file": "src/player_death_crown_porttest_test.go"
+    },
+    {
+      "label": "player-death-elimination",
+      "sha256": "b1616b25cd55a28ade72129055ec77c14967018064a8baaf69cba74c661efeea",
+      "records": 144,
+      "file": "src/player_death_elimination_porttest_test.go"
+    },
+    {
+      "label": "player-death-information",
+      "sha256": "7a1e35d219a88681678478726557941f3b251a95a5e27809816c5f6c0cacef49",
+      "records": 42,
+      "file": "src/player_death_information_porttest_test.go"
+    },
+    {
+      "label": "player-death-kotr-scoring",
+      "sha256": "8ccad6deae22d77cbe0462a344a096b77736ff2bbed80f715cada7502af80381",
+      "records": 96,
+      "file": "src/player_death_kotr_porttest_test.go"
+    },
+    {
+      "label": "player-death-lifecycle",
+      "sha256": "1b3e763016a6be377a0956f0b45a2ab8516dcd2951621b9ee9502267c05f829f",
+      "records": 4,
+      "file": "src/player_death_lifecycle_porttest_test.go"
+    },
+    {
+      "label": "player-death-quest-lives",
+      "sha256": "759bfb0a0387cda1ce34303575437c0b1e1368638dab1e25301945a390ef8ddf",
+      "records": 12,
+      "file": "src/player_death_quest_porttest_test.go"
+    },
+    {
+      "label": "player-death-recent-assist",
+      "sha256": "8f05687cde6b2c9ed738c998d2584aca47e10c0a8577082276ca380fc778eb60",
+      "records": 360,
+      "file": "src/player_death_recent_porttest_test.go"
+    }
+  ]
+}

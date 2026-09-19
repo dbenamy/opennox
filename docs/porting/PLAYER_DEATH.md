@@ -59,10 +59,42 @@ These are fixture corrections, not additional production changes.
 
 ## Recovery checkpoint
 
-Seven default-target roots pass, with **608 capture records** (615 test entries).
+Thirteen default-target roots pass, with **1,053 capture records** (1,066 test entries).
 This is an in-progress checkpoint, **not a frozen or qualified C baseline**.
 The only production change is the two-line absent-team guard. Tests, the original
 failure and current capture hashes are recoverable from the checkpoint and
-[player-death-checkpoint.json](player-death-checkpoint.json). Remaining lifecycle,
-quest, assist timing and crown-transfer coverage plus repeat/all-target/production
-qualification precede the native conversion. No source/test sessions are active.
+[player-death-checkpoint.json](player-death-checkpoint.json). Repeated captures, all-target affected-corpus checks and fresh production
+qualification precede the native conversion. All three focused target repeats passed with identical source and capture bytes
+under build/port-player-death/c-{default,server,highres}. Frozen literals are
+installed; affected-corpus and fresh production qualification remain.
+
+## Extended contracts
+
+The actual registered PlayerDie callback covers recent-assist expiry (strictly less
+than ten seconds), frame wrap, missing/inactive candidates, self/killer exclusion,
+online source attribution and weapon-style reset. Separate C-allocated monster and
+projectile objects preserve a valid registered player roster. The initial fixture
+incorrectly changed a registered player into a monster and interrupted iteration;
+this was corrected without changing production. alloc.New supplies zero storage,
+so fixture class/type fields are assigned explicitly after allocation.
+
+Quest contracts check life decrement and exhaustion, fractional starting lives,
+gold penalty, statistic/reset messages and exact RNG consumption. Ability cleanup
+starts with active execution lists, cooldowns and nonzero enchantment arrays.
+Cooperative death cancels pending character loading, including frame wrap.
+
+Crown contracts cover held/unheld objects, teams, friendly deaths and transfer
+disablement. Preserve the historical asymmetry: the unteamed enemy branch can
+assign a dropped crown to the killer; the teamed scoring branch does not. The
+second drop argument is a pending-owner pointer, despite the existing adapter's
+parameter name `stamp`. Normalize only that identified pointer in captures.
+
+The affected selection includes 317 roots from death/controls, inventory/respawn,
+object state, roster/team/gameplay reports, quest/spell lifecycle, statistics,
+objectives/rewards, session and orchestration owners. Focused capture repeats
+remain 13 roots; broader checks follow frozen literals. Static memory checks pass.
+
+Disk cleanup verified twelve superseded map-section/statistics binaries against
+successful reports and recorded hashes, reclaiming 584,677,176 bytes. The latest
+map-metadata production binaries remain. Audit and apply are consumed at
+build/port-player-death/cleanup-binaries.py; its JSON manifest remains.

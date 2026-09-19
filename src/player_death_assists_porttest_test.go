@@ -123,5 +123,5 @@ func TestPlayerDeathArenaAssists(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-death-arena-assists", rows, "")
+	spellbookCapture(t, "player-death-arena-assists", rows, "93f3684188a03dc47d951c6dc1555942f1f178192853e955fe3ed04b8f77b1c7")
 }

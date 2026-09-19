@@ -116,5 +116,5 @@ func TestPlayerDeathElimination(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-death-elimination", rows, "")
+	spellbookCapture(t, "player-death-elimination", rows, "b1616b25cd55a28ade72129055ec77c14967018064a8baaf69cba74c661efeea")
 }

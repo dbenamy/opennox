@@ -76,5 +76,5 @@ func TestPlayerDeathArenaTeams(t *testing.T) {
 			})
 		}
 	}
-	spellbookCapture(t, "player-death-arena-teams", rows, "")
+	spellbookCapture(t, "player-death-arena-teams", rows, "2c1b28f2a60feda96bfab163bb401a00cb325345a814ecfa02f89bf85db5ae6a")
 }

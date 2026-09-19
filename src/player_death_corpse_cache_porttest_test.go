@@ -73,5 +73,5 @@ func TestPlayerDeathCorpseCache(t *testing.T) {
 			})
 		}
 	}
-	spellbookCapture(t, "player-death-corpse-cache", rows, "")
+	spellbookCapture(t, "player-death-corpse-cache", rows, "0bd912a573c12f4630d349fa5a93e0211ece9909b57529c5bc54dd4d197eba47")
 }

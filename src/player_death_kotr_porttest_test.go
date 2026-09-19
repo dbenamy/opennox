@@ -156,5 +156,5 @@ func TestPlayerDeathKotrScoring(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-death-kotr-scoring", rows, "")
+	spellbookCapture(t, "player-death-kotr-scoring", rows, "8ccad6deae22d77cbe0462a344a096b77736ff2bbed80f715cada7502af80381")
 }

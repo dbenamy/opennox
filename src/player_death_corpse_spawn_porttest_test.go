@@ -130,5 +130,5 @@ func TestPlayerDeathCorpseSpawn(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "player-death-corpse-spawn", rows, "")
+	spellbookCapture(t, "player-death-corpse-spawn", rows, "2698eb4beb23a79dfd24854e89dd87892ab015d32714496d91643487abf19db8")
 }

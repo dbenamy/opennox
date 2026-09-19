@@ -1,9 +1,14 @@
 {
-  "status": "in-progress C contracts; not a qualified or frozen baseline",
+  "status": "repeated three-target C contracts; frozen expectations installed; full qualification pending",
   "parent": "00131036",
   "production_change": "Guard absent killer team before reading/updating arena team score (+2 C lines).",
-  "passed_default_roots": 7,
+  "passed_default_roots": 13,
   "captures": [
+    {
+      "file": "capture-player-death-ability-cleanup.json",
+      "records": 12,
+      "sha256": "1eeebe561b4108072aabe293a989d27651625e41899098da0478b06f5f8d8c40"
+    },
     {
       "file": "capture-player-death-arena-assists.json",
       "records": 180,
@@ -13,6 +18,11 @@
       "file": "capture-player-death-arena-teams.json",
       "records": 9,
       "sha256": "2c1b28f2a60feda96bfab163bb401a00cb325345a814ecfa02f89bf85db5ae6a"
+    },
+    {
+      "file": "capture-player-death-coop-pending-load.json",
+      "records": 3,
+      "sha256": "1c6082164c09eb67926cb79bb4f6bf3b3d5296ea9fae26db2780c8906e43a2e8"
     },
     {
       "file": "capture-player-death-corpse-cache.json",
@@ -25,9 +35,19 @@
       "sha256": "2698eb4beb23a79dfd24854e89dd87892ab015d32714496d91643487abf19db8"
     },
     {
+      "file": "capture-player-death-crown-transfer.json",
+      "records": 16,
+      "sha256": "521c860f04a5c8337632f1ff4ddf3e8dcf04072996b2e73d38261b73df28b08e"
+    },
+    {
       "file": "capture-player-death-elimination.json",
       "records": 144,
       "sha256": "b1616b25cd55a28ade72129055ec77c14967018064a8baaf69cba74c661efeea"
+    },
+    {
+      "file": "capture-player-death-information.json",
+      "records": 42,
+      "sha256": "7a1e35d219a88681678478726557941f3b251a95a5e27809816c5f6c0cacef49"
     },
     {
       "file": "capture-player-death-kotr-scoring.json",
@@ -38,13 +58,22 @@
       "file": "capture-player-death-lifecycle.json",
       "records": 4,
       "sha256": "1b3e763016a6be377a0956f0b45a2ab8516dcd2951621b9ee9502267c05f829f"
+    },
+    {
+      "file": "capture-player-death-quest-lives.json",
+      "records": 12,
+      "sha256": "759bfb0a0387cda1ce34303575437c0b1e1368638dab1e25301945a390ef8ddf"
+    },
+    {
+      "file": "capture-player-death-recent-assist.json",
+      "records": 360,
+      "sha256": "8f05687cde6b2c9ed738c998d2584aca47e10c0a8577082276ca380fc778eb60"
     }
   ],
   "pending": [
-    "remaining lifecycle/quest/assist timing contracts",
-    "crown transfer",
-    "independent repeat and frozen expectations",
-    "all-target and fresh C production qualification",
-    "native conversion and full qualification"
-  ]
+    "all-target affected corpus and fresh C production qualification",
+    "native conversion and qualification"
+  ],
+  "records": 1053,
+  "evidence": "build/port-player-death/cleanup-first"
 }

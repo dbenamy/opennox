@@ -41,3 +41,10 @@ func PortTestPlayerCorpseCache() { C.nox_xxx_createCorpse_53FCA0() }
 func PortTestPlayerCorpseCreate(pos types.Pointf, angle int32) {
 	C.nox_xxx_respawnPlayerImpl_53FBC0((*C.float)(unsafe.Pointer(&pos)), C.int(angle))
 }
+
+// Own the real lookup cache so assist resolution cannot retain fixture objects.
+func PortTestPlayerDeathLookupOwner() func() {
+	oldState, oldInit := netCodeCacheState, netCodeCacheNeedInit
+	netCodeCacheState, netCodeCacheNeedInit = netCodeCacheStorage{}, 1
+	return func() { netCodeCacheState, netCodeCacheNeedInit = oldState, oldInit }
+}
