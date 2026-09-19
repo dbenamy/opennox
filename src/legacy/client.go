@@ -3,10 +3,8 @@ package legacy
 /*
 #include "noxstring.h"
 void sub_4519C0();
-int sub_495430();
 void sub_44D3A0();
 void nox_xxx_sprite_49C4F0();
-void sub_49A630();
 void sub_49BBB0();
 void sub_479280();
 */
@@ -112,7 +110,7 @@ func Sub_4519C0() {
 }
 
 func Sub_495430() {
-	C.sub_495430()
+	combatFeedDraw()
 }
 
 func Sub_479280() {
@@ -128,7 +126,7 @@ func Nox_xxx_sprite_49C4F0() {
 }
 
 func Sub_49A630() {
-	C.sub_49A630()
+	combatHealthClear()
 }
 
 func Sub_49BBB0() {

@@ -15,13 +15,13 @@
 ## Current status
 
 The revised process continues successive qualified batches without a scheduled
-pause. Speech-bubble lifecycle, placement and rendering are now Go; conversion
-**f588409c** is pushed. See [CHAT_BUBBLES.md](docs/porting/CHAT_BUBBLES.md).
+pause. Client combat overlays are now Go: ally/friend membership, kill feed and
+console notifications, attached effects and floating health changes. See
+[COMBAT_OVERLAYS.md](docs/porting/COMBAT_OVERLAYS.md).
 
-Current production C is **25,368 physical lines in 67 files**, with zero reference
-C (−779 in the latest conversion). Client combat overlays are the active batch;
-independent contracts and prerequisite repairs precede freezing its C baseline.
-See [PORTING_STATE.md](PORTING_STATE.md).
+Current production C is **24,411 physical lines in 66 files**, with zero reference
+C (−957 in this conversion). Frozen comparisons, all three targets and fresh
+production/headless integration qualify. See [PORTING_STATE.md](PORTING_STATE.md).
 
 ## Goal and target
 

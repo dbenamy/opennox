@@ -2,67 +2,42 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Rough C remaining: about 25k lines** — **25,368 physical lines in 67 production
-`.c` files**, zero reference C. Latest conversion: **−779** from qualified speech-
-bubble C. See [C_LOC.md](docs/porting/C_LOC.md).
+**Rough C remaining: about 24k lines** — **24,411 physical lines in 66 production
+`.c` files**, zero reference C. Latest qualified conversion: **−957**.
+See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — native speech bubbles qualified
+## Current — native combat overlays qualified
 
-C baseline **bf03e4d6** is pushed. Thirteen C bodies and two private C globals are
-replaced by Go. Only remove/clear retain exports for the live C decoder; other
-adapters call Go directly. See [CHAT_BUBBLES.md](docs/porting/CHAT_BUBBLES.md).
+C baseline **6998b8ba** is pushed. All 32 bodies are Go; 11 live C exports remain,
+21 private interfaces and eight private C globals retire. All 19 focused captures
+/707 records match. Affected default/highres 176 roots /2,039 entries, server 175
+/2,038; all 84 captures /18,691 records match C and each other. Static, three fresh
+production binaries/ABI, exact known full-suite failures, gameplay and explicit
+save/load pass. All build/test sessions are joined. See
+[COMBAT_OVERLAYS.md](docs/porting/COMBAT_OVERLAYS.md) and native qualification JSON.
 
-All twelve focused captures /552 records match C; the first native focused run
-passed. Affected default/highres pass 151 roots /1,707 entries, server 150 /1,706
-(existing client-only occlusion exclusion). All 65 captures /17,984 records match
-C and each other. Target and production gates use identical 2,514-file source.
-Static, three fresh binaries/ABI, exact known full-suite failures, gameplay and
-explicit save/load pass. Evidence: chat-bubbles-native-qualification.json and
-build/port-chat-bubbles/native-*. All build/test sessions are joined.
+The first native build found a test-adapter signature mismatch; the first actual
+behavioral comparison then passed. No frozen expectation changed. Pre-baseline
+repairs: literal feed names, empty missing-victim text, and Go FX Next at byte 64.
+Every combat fixture draft, freezer, installer and copied native draft/bridge is
+consumed. Actual source wins. The native doc finalizer is consumed too.
 
-The C prerequisite repaired explicit tail removal before freezing the baseline.
-Fixture corrections used the actual cap height, inclusive C rectangle helper,
-and owned team-color definitions. No frozen expectation changed during translation.
-Every chat copied draft, freezer and installer is consumed; actual source wins.
+Disk: removed 131 older regenerable Go compiler artifacts (6,444,559,234 bytes),
+recorded in build/port-combat-overlays/removed-stale-go-cache.json. Completed C
+scenario asset deduplication reclaimed 1,112,747,701 bytes. Audit/apply modes of
+deduplicate-combat-overlays-c-assets.py are consumed; --restore remains available.
+Original assets/archive, captures and current qualified binaries remain.
 
-Speech-bubble conversion **f588409c** is committed/pushed. Next batch is active:
-32 client combat overlay functions /871 C body lines, with tracked caller audit
-combat-overlays-selection.json. Ally/friend/health and literal-name contracts pass.
-C now copies names literally and clears a missing-victim buffer before formatting;
-physical C LOC is unchanged. Health fixture colors are opaque; the original feed
-format/vector tables are owned explicitly. Additional equal-width bubble glyph/
-pixel and effect-link contracts pass without changing old chat captures.
+## Qualified parent — native speech bubbles
 
-Effect membership and cleanup independently reproduced the Go Next offset 16/64
-mismatch. Next now occupies byte 64, with a compile-time assertion; offset 16 is
-history, and the obsolete small-pointer cleanup workaround is removed. Both
-caller contracts pass. The sprite fixture needed explicit draw-data initialization:
-alloc.New does not copy its argument. All 19 focused groups /707 records pass,
-and default/server/highres captures match with identical source. Goldens are frozen.
-
-Recovery checkpoint **83600c2e** is pushed. The C baseline now qualifies: affected
-default/highres176 roots and server175; all84 captures /18,691 records match.
-Static, three fresh production binaries/ABI, exact known full-suite failures,
-gameplay and explicit save/load pass with identical source. All sessions joined.
-See combat-overlays-c-qualification.json. The freezer and fixture drafts are
-consumed. Native drafts and install-native.py are prepared but not installed;
-install only after recording this qualified baseline.
-
-Additional disk cleanup removed 131 older regenerable Go compiler artifacts,
-reclaiming 6,444,559,234 bytes with no builds running. Removal is consumed;
-build/port-combat-overlays/removed-stale-go-cache.json records the paths.
-Go regenerates these on demand; source/assets/captures/binaries are preserved.
-
-Disk cleanup compressed 49 verified completed logs, reclaiming 2,239,764,149 bytes.
-The two manifests under build/port-chat-bubbles record original/gzip paths and
-hashes; restore an individual log with gzip -dk. Both compression scripts are
-consumed. Completed C scenario deduplication reclaimed 1,112,747,701 bytes; its
-restore helper is deduplicate-chat-bubbles-c-assets.py. Audit/apply modes are
-consumed. Native scenario deduplication reclaimed another 1,112,747,701 bytes;
-its restore helper is deduplicate-chat-bubbles-native-assets.py (audit/apply also
-consumed). Preserve all manifests, original assets and the untracked archive.
+**f588409c**, C baseline **bf03e4d6**: 13 bodies and two private globals replaced;
+12 captures /552 records, all target comparisons and fresh production qualified.
+C 25,368 /67 files /zero reference (−779). See CHAT_BUBBLES.md. All its mutation
+scripts are consumed. Its C/native asset restoration helpers and compressed-log
+manifests remain under build/port-chat-bubbles; restore individual gzip logs with
+gzip -dk. Preserve original assets and the untracked archive.
 
 ## Qualified parent — native player death
 
@@ -1395,3 +1370,7 @@ compressed after verifying decompression against originals, reclaiming
 and compressed-historical-logs.json. Restore individual original paths with gzip -dk.
 Both compression scripts are consumed; captures/reports/assets/archive remain.
 About 2.9 GiB was free after cleanup, before C production qualification.
+
+Read-only next candidate: build/port-client-spell-presentation/selection-draft.json
+and plan-draft.md. Twenty-two client spell/item presentation bodies; caller audit
+and boundary review remain before accepting the next batch. No source installed.

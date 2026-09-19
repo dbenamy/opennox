@@ -375,7 +375,7 @@ func Nox_xxx_initTime_435570() {
 	C.nox_xxx_initTime_435570()
 }
 func Nox_xxx_allocArrayHealthChanges_49A5F0() int {
-	return int(C.nox_xxx_allocArrayHealthChanges_49A5F0())
+	return bool2int(combatHealthInit())
 }
 func Nox_xxx_loadGuides_427070() int {
 	return int(C.nox_xxx_loadGuides_427070())
@@ -387,10 +387,10 @@ func Nox_xxx_loadReflSheild_499360() int {
 	return int(C.nox_xxx_loadReflSheild_499360())
 }
 func Nox_xxx_allocClassListFriends_495980() int {
-	return int(C.nox_xxx_allocClassListFriends_495980())
+	return bool2int(combatFriendInit())
 }
 func Sub_4958F0() {
-	C.sub_4958F0()
+	combatFeedInit()
 }
 func Sub_460380() {
 	quickbarClearAbilities()
@@ -402,7 +402,7 @@ func Nox_xxx_cliPrepareGameplay2_4721D0() {
 	nox_xxx_cliPrepareGameplay2_4721D0()
 }
 func Sub_4951C0() {
-	C.sub_4951C0()
+	combatAllyClear()
 }
 func Nox_xxx_netGameSettings_4DEF00() {
 	matchRosterSettings()

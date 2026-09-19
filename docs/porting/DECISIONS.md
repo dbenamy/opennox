@@ -2003,3 +2003,14 @@ small-pointer cleanup workaround that masked the wrong field. Both caller
 contracts pass in effect-layout-corrected; wider qualification remains. This is
 a reversible prerequisite repair for review, not an intentional trail algorithm
 change. Production C LOC remains25,368/67 files/zero reference.
+
+### Combat overlays: qualified native outcome
+
+C baseline 6998b8ba and its three prerequisite repairs are qualified. The native
+32-body conversion passes all 19 focused groups /707 records and all 84 affected
+captures /18,691 records unchanged. Three fresh binaries, exact known full-suite
+results, gameplay and explicit save/load pass. The first native discovery needed
+only a test-adapter signature correction; the first behavioral comparison passed.
+Twenty-one private interfaces and eight private C globals retire, leaving eleven
+exports for actual C callers. Current C:24,411 lines /66 files /zero reference,
+−957. See COMBAT_OVERLAYS.md and its native qualification report.

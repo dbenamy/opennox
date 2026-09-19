@@ -167,7 +167,7 @@ func Sub_48D800() {
 	chatBubbleDestroy()
 }
 func Sub_49A8C0() {
-	C.sub_49A8C0()
+	combatHealthDestroy()
 }
 func Sub_4E4DE0() {
 	reliableInit()
@@ -182,7 +182,7 @@ func Sub_499450() {
 	C.sub_499450()
 }
 func Sub_4959D0() {
-	C.sub_4959D0()
+	combatFriendDestroy()
 }
 func Sub_49AEA0() {
 	C.sub_49AEA0()

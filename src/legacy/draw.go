@@ -507,5 +507,5 @@ func Sub_474B40(dr *client.Drawable) int {
 	return bool2int(worldWallPlayerVisible(dr))
 }
 func Sub_495BB0(dr *client.Drawable, vp *noxrender.Viewport) {
-	C.sub_495BB0((*nox_drawable)(dr.C()), (*nox_draw_viewport_t)(vp.C()))
+	combatFXDraw(vp, dr)
 }

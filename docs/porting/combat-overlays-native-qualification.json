@@ -1,0 +1,84 @@
+{
+  "status": "qualified native combat overlays",
+  "c_baseline": "6998b8ba",
+  "targets": [
+    {
+      "target": "default",
+      "roots": 176,
+      "tests": 2039
+    },
+    {
+      "target": "server",
+      "roots": 175,
+      "tests": 2038
+    },
+    {
+      "target": "highres",
+      "roots": 176,
+      "tests": 2039
+    }
+  ],
+  "captures": 84,
+  "records": 18691,
+  "focused_captures": 19,
+  "focused_records": 707,
+  "source_files": 2531,
+  "source_identity": true,
+  "capture_identity": true,
+  "c_baseline_identity": true,
+  "retired_c_globals": [
+    {
+      "binary": "build/port-combat-overlays/native-final-production/production/bin/opennox",
+      "retired_globals": [
+        "dword_5d4594_1203832",
+        "dword_5d4594_1203836",
+        "dword_5d4594_1203840",
+        "dword_5d4594_1203864",
+        "dword_5d4594_1301776",
+        "dword_5d4594_1301780",
+        "nox_alloc_friendList_1203860",
+        "nox_alloc_healthChange_1301772"
+      ],
+      "absent": true
+    },
+    {
+      "binary": "build/port-combat-overlays/native-final-production/production/bin/opennox-hd",
+      "retired_globals": [
+        "dword_5d4594_1203832",
+        "dword_5d4594_1203836",
+        "dword_5d4594_1203840",
+        "dword_5d4594_1203864",
+        "dword_5d4594_1301776",
+        "dword_5d4594_1301780",
+        "nox_alloc_friendList_1203860",
+        "nox_alloc_healthChange_1301772"
+      ],
+      "absent": true
+    },
+    {
+      "binary": "build/port-combat-overlays/native-final-production/production/bin/opennox-server",
+      "retired_globals": [
+        "dword_5d4594_1203832",
+        "dword_5d4594_1203836",
+        "dword_5d4594_1203840",
+        "dword_5d4594_1203864",
+        "dword_5d4594_1301776",
+        "dword_5d4594_1301780",
+        "nox_alloc_friendList_1203860",
+        "nox_alloc_healthChange_1301772"
+      ],
+      "absent": true
+    }
+  ],
+  "production": {
+    "path": "build/port-combat-overlays/native-final-production/production/production.json",
+    "fresh": true,
+    "success": true
+  },
+  "static": true,
+  "c_loc": {
+    "lines": 24411,
+    "files": 66,
+    "change": -957
+  }
+}

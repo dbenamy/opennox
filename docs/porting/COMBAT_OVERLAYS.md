@@ -1,7 +1,21 @@
-# Client combat overlays — qualified C baseline
+# Client combat overlays — qualified native
 
-Qualified parent: **f588409c**, native speech bubbles. Production C remains
-**25,368 lines /67 files /zero reference**. No conversion in this batch yet.
+Qualified C baseline: **6998b8ba**. All 32 selected bodies are now Go. Eleven
+exports remain for live C callers; 21 private interfaces and eight private C
+globals retire. Production C: **24,411 physical lines /66 files /zero reference**,
+a reduction of **957** including obsolete declarations and headings.
+
+All 19 focused groups /707 records match unchanged C goldens. The first behavioral
+comparison passed after correcting a test-adapter signature. Affected default and
+high-resolution suites pass 176 roots /2,039 entries, server 175 /2,038 (the existing
+client-only occlusion exclusion). All 84 captures /18,691 records match C and each
+other. Target and production gates use identical 2,531-file source.
+Static, three fresh production binaries/ABI, the exact known full-suite failures,
+headless gameplay and explicit save/load pass. See
+[qualification](combat-overlays-native-qualification.json).
+
+The baseline history below records prerequisite repairs and fixture diagnostics.
+All copied drafts, freezers and installers are consumed; actual source wins.
 
 Scope: 32 connected client presentation bodies /871 original C body lines:
 ally slots, friend membership, kill-feed ring/drawing and console notifications,
@@ -78,10 +92,40 @@ production binaries and captures remain. Removal is consumed.
 ## C qualification
 
 Recovery checkpoint **83600c2e** is pushed. The frozen affected corpus passes
-176 roots /2,771 entries on default/highres and175 /2,770 on server (the existing
-client-only occlusion exclusion). All84 captures /18,691 records match across
-targets, including19 focused captures /707 records. Static checks, three fresh
+176 roots /2,039 entries on default/highres and 175 /2,038 on server (the existing
+client-only occlusion exclusion). All 84 captures /18,691 records match across
+targets, including 19 focused captures /707 records. Static checks, three fresh
 production binaries/ABI, the exact known full-suite result, gameplay and explicit
 save/load pass. See combat-overlays-c-qualification.json for source identity and
 artifact paths. All sessions are joined. The native draft and installer are
 prepared under build/port-combat-overlays; neither is installed yet.
+
+## Native implementation in progress
+
+Qualified C baseline **6998b8ba** is pushed. All 32 selected bodies are replaced
+by Go; 11 exports remain for live C callers and 21 private interfaces retire.
+Eight private C globals move to Go. Production C is now **24,411 lines /66 files /
+zero reference**, a reduction of **957** including obsolete declarations/headings.
+The first native focused run is active; broader/native production qualification
+remains. Installer, native bridge and copied drafts are consumed; do not replay.
+Frozen expectations are unchanged.
+
+The native production package compiled on the first attempt; discovery caught a
+test-adapter argument shape mismatch. Restoring the existing array interface
+allowed the first behavioral run to pass all19 groups /707 records against the
+unchanged C goldens. Native static checks pass. Wider target gates are active.
+
+## Final review
+
+The conversion preserves the ally slot's reserved bytes, duplicate and capacity
+rules, friend and health list ordering, signed health amounts, uint32 age wrap,
+feed substitutions and row limit, literal player names, actual metadata/icon
+selection, and renderer ordering. Attached effects retain both linked lists,
+byte-sized count/alpha arithmetic, the extra history slot and the original
+axis-equality stopping rule. Compile-time assertions enforce storage sizes and
+the per-drawable effect link at byte 64. Private Go callers bypass C; only actual
+remaining C callers retain exports. No C algorithm is kept solely for tests.
+
+The three production prerequisites were frozen and qualified before translation:
+literal feed-name copies, an empty missing-victim console buffer, and the correct
+Go effect-link offset. No frozen expectation changed during the native port.

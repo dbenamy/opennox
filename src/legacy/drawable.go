@@ -5,9 +5,7 @@ package legacy
 extern int nox_drawable_count;
 extern void* dword_5d4594_1096640;
 extern void* nox_client_spriteUnderCursorXxx_1096644;
-void sub_495B50(void* a1);
 int sub_4523D0(void* a1);
-void sub_495FC0(void* a1, nox_drawable* a2);
 int sub_49C520(nox_drawable* a1);
 void sub_45A9B0(nox_drawable* a1, nox_drawable* a2);
 int nox_xxx_unitSpriteCheckAlly_4951F0(int a1);
@@ -220,13 +218,13 @@ func Set_nox_client_spriteUnderCursorXxx_1096644(dr *client.Drawable) {
 	C.nox_client_spriteUnderCursorXxx_1096644 = dr.C()
 }
 func Sub_495B50(fx *client.DrawableFX) {
-	C.sub_495B50(fx.C())
+	combatFXDetach((*combatFX)(fx.C()))
 }
 func Sub_4523D0(p unsafe.Pointer) {
 	C.sub_4523D0(p)
 }
 func Sub_495FC0(p *client.DrawableFX, dr *client.Drawable) {
-	C.sub_495FC0(p.C(), (*nox_drawable)(dr.C()))
+	combatFXAttach((*combatFX)(p.C()), dr)
 }
 func Sub_49C520(dr *client.Drawable) int {
 	return int(C.sub_49C520((*nox_drawable)(dr.C())))
@@ -235,7 +233,7 @@ func Sub_45A9B0(a1, a2 *client.Drawable) {
 	C.sub_45A9B0((*nox_drawable)(a1.C()), (*nox_drawable)(a2.C()))
 }
 func Nox_xxx_unitSpriteCheckAlly_4951F0(id int) bool {
-	return C.nox_xxx_unitSpriteCheckAlly_4951F0(C.int(id)) != 0
+	return combatAllyLookup(uint32(id)) != nil
 }
 func Nox_xxx_draw_44C650_free_kind(ptr unsafe.Pointer, kind int) {
 	C.nox_xxx_draw_44C650_free_kind(ptr, C.int(kind))

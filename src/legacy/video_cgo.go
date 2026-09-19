@@ -128,7 +128,7 @@ func Sub_430B50(a1 int, a2 int, a3 int, a4 int) {
 	uiRenderBounds(a1, a2, a3, a4)
 }
 func Sub_495A80(a1 uint32) int {
-	return int(C.sub_495A80(C.int(a1)))
+	return bool2int(combatFriendHas(a1))
 }
 
 func Get_sub_47FCE0() unsafe.Pointer {

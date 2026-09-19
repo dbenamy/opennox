@@ -43,7 +43,6 @@ int nox_thing_player_draw(nox_draw_viewport_t* a1, nox_drawable* dr);
 int nox_thing_vector_animate_draw(nox_draw_viewport_t* a1, nox_drawable* dr);
 int nox_thing_npc_draw(nox_draw_viewport_t* a1, nox_drawable* dr);
 int nox_thing_released_soul_draw(nox_draw_viewport_t* a1, nox_drawable* dr);
-int sub_495180(int a1, uint16_t* a2, uint16_t* a3, uint8_t* a4);
 */
 import "C"
 import (
@@ -176,10 +175,10 @@ func Nox_xxx_drawObject_4C4770_draw(vp *noxrender.Viewport, dr *client.Drawable,
 }
 func Sub_495180(id int) (cur, max int, alt, ok bool) {
 	var (
-		curV, maxV C.uint16_t
-		altV       C.uint8_t
+		curV, maxV uint16
+		altV       byte
 	)
-	ok = C.sub_495180(C.int(id), &curV, &maxV, &altV) != 0
+	ok = combatAllyRead(uint32(id), &curV, &maxV, &altV)
 	return int(curV), int(maxV), altV != 0, ok
 }
 
