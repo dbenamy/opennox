@@ -1,4 +1,4 @@
-# Client audio streams, buffer cache and driver queues — baseline in progress
+# Client audio streams, buffer cache and driver queues — C baseline qualified
 
 Qualified parent: **eeaf1030**, client world/spell/item presentation.
 Parent production C: **23,648 physical lines /66 files /zero reference C**.
@@ -92,3 +92,24 @@ All three focused targets now pass with identical source fingerprints and identi
 in client-audio-streams-captures.json. All sessions are joined. freeze.py and the
 installed drafts are consumed. This is a recoverable C checkpoint; affected target
 sweeps and fresh C production remain before native implementation.
+
+
+## Qualified C baseline
+
+Frozen checkpoint **2f4dbfea** is pushed. All affected targets pass34 root-package
+and5 timer-package tests each; their19 capture files /1,533 records match exactly.
+Existing audio-asset/list contracts also validate their embedded frozen hashes;
+their optional artifact output was not enabled. All2,563 source fingerprints match
+across affected targets and successful production qualification. Three fresh
+binaries pass the complete ABI checks, including all70 original C symbols and the
+driver global. The exact known full suite matches1,553 failure entries and package
+outcomes32 skipped /15 passed /3 failed. Fresh gameplay and explicit save/load pass.
+
+The first production command accidentally referenced the previous batch manifest;
+its binaries/suite passed but its scenario name was already in use. The corrected
+manifest was rerun in `c-qualified-production` and passed. Only that successful
+report qualifies this batch. See client-audio-streams-c-qualification.json.
+
+Current C is23,661 physical lines /66 files /zero reference. Translation is next;
+22 C interfaces are required by remaining C callers or stored device callbacks.
+The other48 can become private Go helpers. Drafts are not yet installed or tested.

@@ -1,0 +1,48 @@
+{
+  "status": "qualified C baseline with WAV corrections",
+  "checkpoint": "2f4dbfea",
+  "source_files": 2563,
+  "targets": {
+    "default": {
+      "root_package_tests": 34,
+      "all_package_tests": 39,
+      "captures": 19,
+      "capture_records": 1533
+    },
+    "server": {
+      "root_package_tests": 34,
+      "all_package_tests": 39,
+      "captures": 19,
+      "capture_records": 1533
+    },
+    "highres": {
+      "root_package_tests": 34,
+      "all_package_tests": 39,
+      "captures": 19,
+      "capture_records": 1533
+    }
+  },
+  "production": "build/port-client-audio-streams/c-qualified-production/production/production.json",
+  "static": "build/port-client-audio-streams/static-c-qualified.log",
+  "captures": {
+    "capture-client-audio-streams-buffers.json": "c949de7087a94661e02ffaaab2a990098ea039b04dfe6bfabce103a7ef873107",
+    "capture-client-audio-streams-bulk-voices.json": "780b0b7ddd68bde5f2796d8732f52cb8e2f88053aba28c0af8791606bc30a72f",
+    "capture-client-audio-streams-cache.json": "f29bb95cf6491c2cd0a8c4f89ddb1c9068a3f8ad184591beb52920f4ebcbe788",
+    "capture-client-audio-streams-constructor-failures.json": "757a0cd5cc6ed7234a6ae3031c05d007d221db239c7591e365abb19202deae16",
+    "capture-client-audio-streams-device-queues.json": "0c739b1f28c82f45e7e096fc6e8988677f72e933384353b9b40f4d5a3719d930",
+    "capture-client-audio-streams-formats.json": "55c5d1ef0b2f877c59e932257ffea3adb650d36db69ab395a33d989c5435731e",
+    "capture-client-audio-streams-lifecycle.json": "9b993b6ff2a581ab0fac6b509b5fd9787415941c333faf3c62c20558691aa38a",
+    "capture-client-audio-streams-pool.json": "e8dbc94935fff466d9b26e66c7386e3cc57a254bd2e31bafd8d14e57267e55e4",
+    "capture-client-audio-streams-read-bounds.json": "e6823b5cc70db53e5de59d293944ffd24ec0b0c998fea6deb49b289cd6b38a6b",
+    "capture-client-audio-streams-reads.json": "a57303642d989dc3b084434f6bd921a2959bf47ee6f6c9176a04303c48523577",
+    "capture-client-audio-streams-references.json": "01f43c735b5b453cd1f0efd19864e529783ef2f5e4b188795384d4a7ec3ccb47",
+    "capture-client-audio-streams-tick-bounds.json": "143e11db0194c3588315a61d5b466291ccbfc6f3441423be97a2b4b414d4992b",
+    "capture-client-audio-streams-tick-dispatch.json": "d783f5cc3d55de1770cf2c229589e1fa581b3e1c5eba60308f4ea1fde03e45ef",
+    "capture-client-audio-streams-timer-mix.json": "017bd63d5ed700098509c8d657443f6c52c093b0e0ca8260904a7adc24eff32e",
+    "capture-client-audio-streams-voice-callbacks.json": "c943b91267474994193c301ed0591041d011000c61eb4119ef82fcc586c9bca9",
+    "capture-client-audio-streams-voice-selection.json": "bb084550a6f8ed2f6339034c52808dfe092bfbe4bb37694d8b672621730ee925",
+    "capture-object-reports-observer-audio.json": "c24c4dabf2e9263649f481637dda56c05f2a971ea4e43bc519a377e61cbe13ed",
+    "capture-world-collisions-audio-frames.json": "d5ee2d5f4a469647a4ee0b2de44cc21eec3f945125d0dbff81218882278a4e0c",
+    "capture-world-collisions-pentagram.json": "c2e746a185434d3dffcf7990cd5cf416c6b9094abdb9642e6c21fc906eae870d"
+  }
+}

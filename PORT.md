@@ -19,9 +19,11 @@ composition, phoneme icons and chanting, shields, particles, ray ownership, book
 rewards and equipment appearance. See
 [CLIENT_PRESENTATION.md](docs/porting/CLIENT_PRESENTATION.md).
 
-Current production C is **23,648 physical lines in 66 files**, with zero reference
-C (**−764** from the corrected baseline). Frozen comparisons, all three targets
-and fresh production/headless integration qualify. See [PORTING_STATE.md](PORTING_STATE.md).
+Latest conversion removed **764 physical C lines**. The next audio-stream baseline
+is now qualified, with two WAV-reader corrections: current production C is
+**23,661 physical lines in66 files**, zero reference C. Frozen comparisons, all
+three targets and fresh production/headless integration qualify. See
+[PORTING_STATE.md](PORTING_STATE.md) and [the audio batch](docs/porting/CLIENT_AUDIO_STREAMS.md).
 
 ## Goal and target
 

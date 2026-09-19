@@ -1318,7 +1318,7 @@
         "command": [
           "python3",
           "{root}/tools/porting/qualify_production.py",
-          "{root}/docs/porting/client-presentation-native-batch.json",
+          "{root}/docs/porting/client-audio-streams-c-batch.json",
           "--out",
           "{out}/production"
         ]

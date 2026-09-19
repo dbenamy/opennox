@@ -4,7 +4,7 @@ Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
 **Rough C remaining: about 24k lines** — **23,661 physical lines in 66 production
 `.c` files**, zero reference C. Latest qualified conversion: **−764**;
-current WAV baseline corrections add13 lines and await full qualification.
+qualified WAV baseline corrections add13 lines.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
@@ -45,26 +45,27 @@ Client presentation conversion **eeaf1030** is committed/pushed. Next batch acti
 external roots. Tracked scope/caller audit and CLIENT_AUDIO_STREAMS.md describe it.
 The corrected selector has unique declarations; discard the earlier provisional
 graph that mistook three indented call sites for definitions.
-Test-only70-function dispatcher and connected audio fixtures are installed.
-Corrected C scope:70 bodies /1,122 body lines (original1,109). All three focused targets
-pass16 roots /16 captures /927 records with identical captures and source
-fingerprints. All sessions are joined.
-Default dispatch-final session61681 and highres session82841 are joined. The
-correct-environment static check passed (static-c-qualified.log). The preliminary
-static-c.log used the wrong relative environment path and is not qualification.
+Frozen audio C checkpoint **2f4dbfea** is committed/pushed and now fully qualified.
+70 bodies /1,122 lines (original1,109);16 focused captures /927 records. Each
+final target passes34 root-package +5 timer-package tests;19 artifact captures
+/1,533 records match. Existing audio/list tests validate embedded goldens too.
+All2,563 source fingerprints match C targets and successful fresh production.
+Three binaries/ABI, exact known suite (1553 entries;32 skip/15 pass/3 fail), gameplay
+and explicit save/load pass. static-c-qualified.log passed. All sessions joined.
 
-The original WAV reader aborted on an ordinary longer path (36-byte local buffer).
-C now has a separate bounded path and complete/nonzero-channel format validation;
-invalid formats preserve packed-file fallback. All independent contracts pass
-on default/highres. Keep C clock32-bit narrowing, cache failure ownership and
-zero-request bulk voice behavior. CLIENT_AUDIO_STREAMS.md records these decisions.
-All16 captures are now frozen. freeze.py is CONSUMED; never replay it. All installed *-draft.go files are
-consumed; tracked source wins. native-design.md is a read-only implementation plan.
+Successful production: c-qualified-production, session5702 joined. The earlier
+c-final-production used a copied reference to the previous batch manifest and
+failed on an existing scenario name; it does not qualify this batch. The manifest
+reference is fixed and successful evidence is in client-audio-streams-c-qualification.json.
 
-Remaining: commit/push frozen C checkpoint, affected all-target sweeps and fresh
-C production (parent reuse invalidated by WAV corrections), then conversion.
-The affected manifest includes explicit audio/list/timer contracts and fresh
-production/gameplay/save-load. Original assets/archive/captures remain intact.
+The WAV path/format corrections and clock/cache compatibility decisions are in
+CLIENT_AUDIO_STREAMS.md. Current C23661 /66 files /zero reference, +13 prerequisite.
+Next: install/review native drafts and run frozen comparisons, then full native
+qualification/commit/push.22 interfaces remain required by C/callbacks;48 areprivate.
+Ignored native-draft files (types/buffers/io/voices/devices/exports/porttest.go),
+native-bindings.json, retained.json and generate-native-adapters.py are prepared,
+formatted but UNCOMPILED and NOT INSTALLED. Source C still wins. freeze.py and all
+installed fixture drafts are CONSUMED. Original assets/archive/captures untouched.
 
 ## Qualified parent — native combat overlays
 
