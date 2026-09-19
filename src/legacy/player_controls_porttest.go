@@ -111,6 +111,11 @@ import (
 )
 
 type PortTestPlayerControlsSpec struct {
+	UnitRead              *PortTestUnitReadSpec
+	UnitReward            *PortTestUnitRewardSpec
+	UnitUpdate            *PortTestUnitUpdateSpec
+	UnitDialogue          *PortTestUnitDialogueSpec
+	UnitExperience        *PortTestUnitExperienceSpec
 	ScriptHalberd         *PortTestScriptHalberdSpec
 	ScriptCarry           *PortTestScriptCarrySpec
 	ScriptStartup         *PortTestScriptStartupSpec
@@ -322,7 +327,25 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 	if sp.NullRecord {
 		record = nil
 	}
-	if a.Op == 1460 {
+	if a.Op == 1466 {
+		st.transitions = append(st.transitions, p.unitReadContract()...)
+		st.result = 0
+	} else if a.Op == 1465 {
+		st.transitions = append(st.transitions, p.unitRewardContract()...)
+		st.result = 0
+	} else if a.Op == 1464 {
+		st.transitions = append(st.transitions, p.unitUpdateContract()...)
+		st.result = 0
+	} else if a.Op == 1463 {
+		st.transitions = append(st.transitions, p.unitDialogueContract()...)
+		st.result = 0
+	} else if a.Op == 1462 {
+		st.transitions = append(st.transitions, p.unitOrderContract()...)
+		st.result = 0
+	} else if a.Op == 1461 {
+		st.transitions = append(st.transitions, p.unitExperienceContract()...)
+		st.result = 0
+	} else if a.Op == 1460 {
 		st.transitions = append(st.transitions, p.scriptHalberdContract()...)
 		st.result = 0
 	} else if a.Op == 1459 {

@@ -1,0 +1,1 @@
+^Test(UnitGameplay|CreatureXfer|AI(MonsterState|Main|Lifecycle|Combat)|VisibilityEffects|PlayerControls|PlayerFilesClient|Inventory|Resources|ObjectDeath|Shop|ScriptBindings|GameplayReports|GameplayText|ScriptInventory|Damage)

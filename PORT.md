@@ -14,19 +14,18 @@
 
 ## Current status
 
-The script inventory Go conversion is qualified: carry/drop selection, startup
-cleanup and halberd replacement now use Go. The final script builtin C file,
-nine private C interfaces and two owners retire. All-target affected contracts,
-frozen captures, fresh production/ABI, exact known full-suite outcomes, and
-headless gameplay/save-load comparisons pass. C remaining is **10,820 physical
-lines in47 files**, zero reference C: **133 fewer lines** in this batch.
-See [SCRIPT_INVENTORY.md](docs/porting/SCRIPT_INVENTORY.md).
+The unit-gameplay original-C baseline is qualified:20 selected bodies (one
+unreachable duplicate),405 body lines across seven files. All8,464 focused cases
+repeat exactly; default/server/highres each pass238 affected roots and242
+identical captures. Production is unchanged from pushed `ae81334f`, so its
+qualified binaries and gameplay/save-load evidence are reused. Next: convert
+this batch, preserving frozen expectations. The two spell creation/start
+callbacks follow with their duration/factory fixtures.
+See [UNIT_GAMEPLAY.md](docs/porting/UNIT_GAMEPLAY.md).
 
-The preceding [script-binding conversion](docs/porting/SCRIPT_BINDINGS.md)
-removed451 lines. Next: audit the remaining unit-gameplay helpers together,
-including experience/rewards, AI metadata, item/spell callbacks and descriptions.
-The read-only candidate spans22 bodies /857 C file lines.
-See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
+C remaining is **10,820 physical lines in47 files**, zero reference C.
+The preceding [script inventory conversion](docs/porting/SCRIPT_INVENTORY.md)
+removed133 lines. See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 Previous completed GUI batches include
 [client interaction](docs/porting/CLIENT_INTERACTION.md), the

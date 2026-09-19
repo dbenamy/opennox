@@ -1,0 +1,142 @@
+[
+  {
+    "symbol": "sub_4EF2E0_exp_level",
+    "file": "src/legacy/server__gamemech__explevel.c",
+    "start": 307,
+    "end": 1003,
+    "lines": 19
+  },
+  {
+    "symbol": "nox_xxx_plyrGiveExp_4EF3A0_exp_level",
+    "file": "src/legacy/server__gamemech__explevel.c",
+    "start": 1081,
+    "end": 1561,
+    "lines": 12
+  },
+  {
+    "symbol": "nox_xxx_unitGiveXP_4EF270",
+    "file": "src/legacy/server__object__health.c",
+    "start": 247,
+    "end": 711,
+    "lines": 17
+  },
+  {
+    "symbol": "nox_xxx_soloMonsterKillReward_4EE500_obj_health",
+    "file": "src/legacy/server__object__health.c",
+    "start": 789,
+    "end": 1802,
+    "lines": 49
+  },
+  {
+    "symbol": "nox_xxx_orderUnitLocal_500C70",
+    "file": "src/legacy/GAME4.c",
+    "start": 2018,
+    "end": 2215,
+    "lines": 4
+  },
+  {
+    "symbol": "nox_xxx_monsterPlayHurtSound_532800",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 2188,
+    "end": 2709,
+    "lines": 20
+  },
+  {
+    "symbol": "sub_532880",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 2711,
+    "end": 2891,
+    "lines": 9
+  },
+  {
+    "symbol": "sub_534020",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 2893,
+    "end": 2961,
+    "lines": 1
+  },
+  {
+    "symbol": "nox_ai_debug_printf_5341A0",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 2999,
+    "end": 3289,
+    "lines": 9
+  },
+  {
+    "symbol": "sub_5345B0",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 3291,
+    "end": 3744,
+    "lines": 24
+  },
+  {
+    "symbol": "nox_xxx_actionNByNameMB_5345F0",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 3746,
+    "end": 4036,
+    "lines": 15
+  },
+  {
+    "symbol": "sub_534650",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 4038,
+    "end": 4206,
+    "lines": 11
+  },
+  {
+    "symbol": "nox_xxx_actionByName_534670",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 4208,
+    "end": 4494,
+    "lines": 15
+  },
+  {
+    "symbol": "nox_xxx_updateUndeadKiller_53E190",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 4496,
+    "end": 4796,
+    "lines": 10
+  },
+  {
+    "symbol": "nox_xxx_useRead_53F7C0",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 4798,
+    "end": 5201,
+    "lines": 15
+  },
+  {
+    "symbol": "sub_53F830",
+    "file": "src/legacy/GAME4_3.c",
+    "start": 5203,
+    "end": 5986,
+    "lines": 30
+  },
+  {
+    "symbol": "nox_xxx_script_forcedialog_548CD0",
+    "file": "src/legacy/GAME5.c",
+    "start": 945,
+    "end": 1483,
+    "lines": 24
+  },
+  {
+    "symbol": "nox_xxx_scriptDialog_548D30",
+    "file": "src/legacy/GAME5.c",
+    "start": 1561,
+    "end": 2261,
+    "lines": 26
+  },
+  {
+    "symbol": "sub_4E39F0_obj_db",
+    "file": "src/legacy/server__dbase__objdb.c",
+    "start": 145,
+    "end": 970,
+    "lines": 34
+  },
+  {
+    "symbol": "nox_xxx_itemGetName_4E77E0_obj_util",
+    "file": "src/legacy/server__object__objutil.c",
+    "start": 145,
+    "end": 2362,
+    "lines": 61
+  }
+]

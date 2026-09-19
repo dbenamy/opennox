@@ -1,0 +1,441 @@
+{
+  "sub_4EF2E0_exp_level": [
+    {
+      "file": "src/legacy/server__gamemech__explevel.c",
+      "line": 13,
+      "text": "void sub_4EF2E0_exp_level(int a1) {"
+    },
+    {
+      "file": "src/legacy/server__gamemech__explevel.c",
+      "line": 44,
+      "text": "sub_4EF2E0_exp_level(a1);"
+    },
+    {
+      "file": "src/legacy/server__object__health.c",
+      "line": 25,
+      "text": "sub_4EF2E0_exp_level(a1);"
+    },
+    {
+      "file": "src/legacy/server__gamemech__explevel.h",
+      "line": 8,
+      "text": "void sub_4EF2E0_exp_level(int a1);"
+    }
+  ],
+  "nox_xxx_plyrGiveExp_4EF3A0_exp_level": [
+    {
+      "file": "src/legacy/server__gamemech__explevel.c",
+      "line": 34,
+      "text": "void nox_xxx_plyrGiveExp_4EF3A0_exp_level(int a1, float a2) {"
+    },
+    {
+      "file": "src/legacy/script_bindings.go",
+      "line": 88,
+      "text": "C.nox_xxx_plyrGiveExp_4EF3A0_exp_level(C.int(uintptr(u.CObj())), C.float(xp))"
+    },
+    {
+      "file": "src/legacy/server__gamemech__explevel.h",
+      "line": 9,
+      "text": "void nox_xxx_plyrGiveExp_4EF3A0_exp_level(int a1, float a2);"
+    }
+  ],
+  "nox_xxx_unitGiveXP_4EF270": [
+    {
+      "file": "src/legacy/server__object__health.c",
+      "line": 11,
+      "text": "double nox_xxx_unitGiveXP_4EF270(int a1, float a2) {"
+    },
+    {
+      "file": "src/legacy/server__object__health.c",
+      "line": 72,
+      "text": "v6 = nox_xxx_unitGiveXP_4EF270(v4, *(float*)(v1 + 28));"
+    }
+  ],
+  "nox_xxx_soloMonsterKillReward_4EE500_obj_health": [
+    {
+      "file": "src/legacy/ai_lifecycle.go",
+      "line": 113,
+      "text": "C.nox_xxx_soloMonsterKillReward_4EE500_obj_health(C.int(uintptr(u.CObj())))"
+    },
+    {
+      "file": "src/legacy/server__object__health.h",
+      "line": 6,
+      "text": "void nox_xxx_soloMonsterKillReward_4EE500_obj_health(int a1);"
+    },
+    {
+      "file": "src/legacy/server__object__health.c",
+      "line": 30,
+      "text": "void nox_xxx_soloMonsterKillReward_4EE500_obj_health(int a1) {"
+    },
+    {
+      "file": "src/legacy/resources.go",
+      "line": 93,
+      "text": "C.nox_xxx_soloMonsterKillReward_4EE500_obj_health(C.int(uintptr(u.CObj())))"
+    }
+  ],
+  "nox_xxx_orderUnitLocal_500C70": [
+    {
+      "file": "src/legacy/GAME4.h",
+      "line": 79,
+      "text": "int nox_xxx_orderUnitLocal_500C70(int owner, int orderType);"
+    },
+    {
+      "file": "src/legacy/player_files_client_sections.go",
+      "line": 54,
+      "text": "C.nox_xxx_orderUnitLocal_500C70(C.int(uint8(p.PlayerInd)), C.int(order))"
+    },
+    {
+      "file": "src/legacy/GAME4.c",
+      "line": 66,
+      "text": "int nox_xxx_orderUnitLocal_500C70(int owner, int orderType) {"
+    },
+    {
+      "file": "src/legacy/ai_monster_state.go",
+      "line": 267,
+      "text": "C.nox_xxx_orderUnitLocal_500C70(C.int(owner.UpdateDataPlayer().Player.PlayerInd), C.int(order))"
+    }
+  ],
+  "nox_xxx_monsterPlayHurtSound_532800": [
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 71,
+      "text": "char nox_xxx_monsterPlayHurtSound_532800(nox_object_t* a1p) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 34,
+      "text": "char nox_xxx_monsterPlayHurtSound_532800(nox_object_t* a1);"
+    },
+    {
+      "file": "src/legacy/unit_ai.go",
+      "line": 111,
+      "text": "C.nox_xxx_monsterPlayHurtSound_532800(asObjectC(a1))"
+    }
+  ],
+  "sub_532880": [
+    {
+      "file": "src/legacy/damage_dispatch.go",
+      "line": 230,
+      "text": "C.sub_532880(inventoryInt(mob))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 92,
+      "text": "int sub_532880(int a1) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 35,
+      "text": "int sub_532880(int a1);"
+    }
+  ],
+  "sub_534020": [
+    {
+      "file": "src/unit_ai_path.go",
+      "line": 499,
+      "text": "if a1.ObjFlags&0x4000 != 0 || sub_534020(a1) != 0 {"
+    },
+    {
+      "file": "src/object.go",
+      "line": 1390,
+      "text": "func sub_534020(a1 *server.Object) int32 {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 102,
+      "text": "int sub_534020(int a1) { return (*(uint32_t*)(a1 + 12) >> 10) & 1; }"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 44,
+      "text": "int sub_534020(int a1);"
+    }
+  ],
+  "nox_ai_debug_printf_5341A0": [
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 105,
+      "text": "void nox_ai_debug_printf_5341A0(char* a1, ...) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 45,
+      "text": "void nox_ai_debug_printf_5341A0(char* a1, ...);"
+    },
+    {
+      "file": "src/legacy/visibility_effects_seen.go",
+      "line": 8,
+      "text": "nox_ai_debug_printf_5341A0(\"%d: Lost sight of %s(#%d)\\n\",gameFrame(),nox_xxx_getUnitName_4E39D0(target),((uint32_t*)target)[9]);"
+    },
+    {
+      "file": "src/legacy/ai_main.go",
+      "line": 13,
+      "text": "nox_ai_debug_printf_5341A0(\"%d: %s(#%d) FRUSTRATED\\n\",gameFrame(),nox_xxx_getUnitName_4E39D0((nox_object_t*)u),*(int*)(u+36));"
+    }
+  ],
+  "sub_5345B0": [
+    {
+      "file": "src/legacy/creature_xfer_fields.go",
+      "line": 201,
+      "text": "name := C.sub_5345B0(C.int(*word(1360)))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 115,
+      "text": "char* sub_5345B0(int a1) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 53,
+      "text": "char* sub_5345B0(int a1);"
+    }
+  ],
+  "nox_xxx_actionNByNameMB_5345F0": [
+    {
+      "file": "src/legacy/creature_xfer_fields.go",
+      "line": 199,
+      "text": "*word(1360) = uint32(C.nox_xxx_actionNByNameMB_5345F0((*C.char)(unsafe.Pointer(&name[0]))))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 140,
+      "text": "int nox_xxx_actionNByNameMB_5345F0(const char* a1) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 54,
+      "text": "int nox_xxx_actionNByNameMB_5345F0(const char* a1);"
+    }
+  ],
+  "sub_534650": [
+    {
+      "file": "src/legacy/creature_xfer_stream.go",
+      "line": 23,
+      "text": "initial := GoString(C.sub_534650(C.int(*id)))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 156,
+      "text": "char* sub_534650(int a1) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 55,
+      "text": "char* sub_534650(int a1);"
+    }
+  ],
+  "nox_xxx_actionByName_534670": [
+    {
+      "file": "src/legacy/creature_xfer_stream.go",
+      "line": 28,
+      "text": "*id = uint32(C.nox_xxx_actionByName_534670((*C.char)(unsafe.Pointer(&name[0]))))"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 168,
+      "text": "int nox_xxx_actionByName_534670(const char* a1) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 56,
+      "text": "int nox_xxx_actionByName_534670(const char* a1);"
+    }
+  ],
+  "nox_xxx_updateUndeadKiller_53E190": [
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 184,
+      "text": "void nox_xxx_updateUndeadKiller_53E190(int a1) {"
+    },
+    {
+      "file": "src/legacy/object_update.go",
+      "line": 96,
+      "text": "server.RegisterObjectUpdate(\"UndeadKillerUpdate\", C.nox_xxx_updateUndeadKiller_53E190, 0)"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 148,
+      "text": "void nox_xxx_updateUndeadKiller_53E190(int a1);"
+    }
+  ],
+  "nox_xxx_useRead_53F7C0": [
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 195,
+      "text": "int nox_xxx_useRead_53F7C0(int a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 174,
+      "text": "int nox_xxx_useRead_53F7C0(int a1, int a2);"
+    },
+    {
+      "file": "src/legacy/object_use.go",
+      "line": 44,
+      "text": "server.RegisterObjectUseC(\"ReadUse\", C.nox_xxx_useRead_53F7C0, 260)"
+    }
+  ],
+  "sub_53F830": [
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 211,
+      "text": "int sub_53F830(int a1, int a2) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 175,
+      "text": "int sub_53F830(int a1, int a2);"
+    },
+    {
+      "file": "src/legacy/object_use.go",
+      "line": 45,
+      "text": "server.RegisterObjectUseC(\"WarpReadUse\", C.sub_53F830, 260)"
+    }
+  ],
+  "nox_xxx_castPixies_540440": [
+    {
+      "file": "src/legacy/spells.go",
+      "line": 336,
+      "text": "return Nox_spells_call_intint6_go(C.nox_xxx_castPixies_540440, spellID, a2, a3, a4, sa, lvl)"
+    },
+    {
+      "file": "src/legacy/GAME4_3.c",
+      "line": 242,
+      "text": "int nox_xxx_castPixies_540440(int a1, int a2, int a3, int a4, int a5, int a6) {"
+    },
+    {
+      "file": "src/legacy/GAME4_3.h",
+      "line": 180,
+      "text": "int nox_xxx_castPixies_540440(int a1, int a2, int a3, int a4, int a5, int a6);"
+    }
+  ],
+  "nox_xxx_script_forcedialog_548CD0": [
+    {
+      "file": "src/network_server.go",
+      "line": 317,
+      "text": "nox_xxx_script_forcedialog_548CD0(u, obj)"
+    },
+    {
+      "file": "src/script_ns_dialog.go",
+      "line": 39,
+      "text": "nox_xxx_script_forcedialog_548CD0(other, obj)"
+    },
+    {
+      "file": "src/object.go",
+      "line": 1334,
+      "text": "func nox_xxx_script_forcedialog_548CD0(obj, obj2 *server.Object) {"
+    },
+    {
+      "file": "src/legacy/GAME5.h",
+      "line": 10,
+      "text": "void nox_xxx_script_forcedialog_548CD0(nox_object_t* a1, nox_object_t* a2);"
+    },
+    {
+      "file": "src/legacy/GAME5.c",
+      "line": 36,
+      "text": "void nox_xxx_script_forcedialog_548CD0(nox_object_t* a1p, nox_object_t* a2p) {"
+    },
+    {
+      "file": "src/legacy/object.go",
+      "line": 14,
+      "text": "void nox_xxx_script_forcedialog_548CD0(nox_object_t* a1, nox_object_t* a2);"
+    },
+    {
+      "file": "src/legacy/object.go",
+      "line": 468,
+      "text": "C.nox_xxx_script_forcedialog_548CD0(asObjectC(obj), asObjectC(obj2))"
+    }
+  ],
+  "nox_xxx_scriptDialog_548D30": [
+    {
+      "file": "src/legacy/GAME5.c",
+      "line": 62,
+      "text": "void nox_xxx_scriptDialog_548D30(nox_object_t* a1p, char a2) {"
+    },
+    {
+      "file": "src/legacy/object.go",
+      "line": 16,
+      "text": "void nox_xxx_scriptDialog_548D30(nox_object_t* a1, char a2);"
+    },
+    {
+      "file": "src/legacy/object.go",
+      "line": 474,
+      "text": "C.nox_xxx_scriptDialog_548D30(asObjectC(obj), C.char(a2))"
+    }
+  ],
+  "sub_530A30_spell_execdur": [
+    {
+      "file": "src/legacy/spells.go",
+      "line": 572,
+      "text": "return C.sub_530A30_spell_execdur"
+    },
+    {
+      "file": "src/legacy/server__magic__spell__execdur.c",
+      "line": 9,
+      "text": "int sub_530A30_spell_execdur(int a1) {"
+    },
+    {
+      "file": "src/legacy/server__magic__spell__execdur.h",
+      "line": 6,
+      "text": "int sub_530A30_spell_execdur(int a1);"
+    }
+  ],
+  "sub_4E39F0_obj_db": [
+    {
+      "file": "src/legacy/server__dbase__objdb.c",
+      "line": 6,
+      "text": "wchar2_t* sub_4E39F0_obj_db(nox_object_t* a1p) {"
+    },
+    {
+      "file": "src/legacy/server__dbase__objdb.h",
+      "line": 6,
+      "text": "wchar2_t* sub_4E39F0_obj_db(nox_object_t* a1);"
+    },
+    {
+      "file": "src/legacy/trade_engine.go",
+      "line": 110,
+      "text": "tradeCopyWide(b[4:54], (*uint16)(unsafe.Pointer(C.sub_4E39F0_obj_db(asObjectC(vendor)))), 24)"
+    },
+    {
+      "file": "src/legacy/trade_engine.go",
+      "line": 124,
+      "text": "name = (*uint16)(unsafe.Pointer(C.sub_4E39F0_obj_db(asObjectC(s.Units[1]))))"
+    },
+    {
+      "file": "src/legacy/object.go",
+      "line": 15,
+      "text": "wchar2_t* sub_4E39F0_obj_db(nox_object_t* a1);"
+    },
+    {
+      "file": "src/legacy/object.go",
+      "line": 471,
+      "text": "return GoWString(C.sub_4E39F0_obj_db(asObjectC(obj)))"
+    }
+  ],
+  "nox_xxx_itemGetName_4E77E0_obj_util": [
+    {
+      "file": "src/legacy/server__object__objutil.h",
+      "line": 6,
+      "text": "wchar2_t* nox_xxx_itemGetName_4E77E0_obj_util(int a1);"
+    },
+    {
+      "file": "src/legacy/server__object__objutil.c",
+      "line": 6,
+      "text": "wchar2_t* nox_xxx_itemGetName_4E77E0_obj_util(int a1) {"
+    },
+    {
+      "file": "src/legacy/object_death_native.go",
+      "line": 126,
+      "text": "name := C.nox_xxx_itemGetName_4E77E0_obj_util(C.int(uintptr(u.CObj())))"
+    },
+    {
+      "file": "src/legacy/object_death_native.go",
+      "line": 143,
+      "text": "name = C.nox_xxx_itemGetName_4E77E0_obj_util(C.int(uintptr(u.CObj())))"
+    },
+    {
+      "file": "src/legacy/object_death_native.go",
+      "line": 147,
+      "text": "name = C.nox_xxx_itemGetName_4E77E0_obj_util(C.int(uintptr(u.CObj())))"
+    }
+  ]
+}

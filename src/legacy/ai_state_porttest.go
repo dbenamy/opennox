@@ -228,6 +228,9 @@ func portTestMonsterStatePrepare(proxy *portTestRoamOwnerServer, u *server.Objec
 
 func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, sp *PortTestMonsterStateSpec) uint64 {
 	p := C.int(uintptr(u.CObj()))
+	if sp.Op == 28 || sp.Op == 29 {
+		return unitGameplayTimerContract(proxy, u, sp)
+	}
 	switch sp.Op {
 	case 0:
 		return uint64(C.nox_xxx_mobActionToAnimation_533790(p))

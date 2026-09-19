@@ -3,41 +3,42 @@
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
 **Qualified C remaining: about10.8k lines** — **10,820 physical lines in47
-production `.c` files**, zero reference C. This conversion removes **133 lines**.
+production `.c` files**, zero reference C. The last conversion removed **133 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — script inventory Go conversion qualified
+## Current — unit gameplay C baseline qualified
 
-C baseline **33a08d49** and native parent **5a755193** are pushed. The conversion
-is fully qualified: three bodies, six private bridge exports, two C owners and
-the last script builtin C file retire. All Go capacity callers use the private
-helper; builtin dispatch is entirely Go. Current C:10,820 lines /47 files /zero
-reference C,133 fewer lines.
+Qualified native parent **ae81334f** is committed/pushed. Production remains
+unchanged:10,820 C lines /47 files /zero reference C. Unit-gameplay selection is
+20 bodies/405 body lines across seven files, including one unreachable C duplicate.
+Pixie creation and teleport-begin callbacks are deferred to the following spell
+batch; retain GAME4.c's live nox_cheat_charmall owner until that batch.
 
-Focused contracts pass1,640 cases. Full default/highres gates pass310 roots and
-306 frozen captures each; server passes307 roots and303 captures. No skips; the
-three missing server captures are explicitly client-only tests. Static, fresh
-three-target production/ABI, exact1553 known full-suite failures (15 pass /3 fail
-/32 skip packages), and gameplay/save-load comparisons pass. All source
-fingerprints agree. Every test/build/scenario job, including production97935,
-is joined. See SCRIPT_INVENTORY.md and native-{batch,qualification}.json.
+All14 focused roots /8,464 cases pass twice in separate processes with identical
+captures. All14 new expectations are frozen. Default/server/highres each pass
+238 affected roots and242 identical captures, no skips, matching source
+fingerprints. Runner manifests enforced14 new hashes plus inherited literals;
+full242-capture inventories were compared/frozen afterward. Static-current
+passes. All23 changed source files are porttest-only; all three parent binaries
+rehash correctly and all22 audited symbols exist. Parent production/ABI, exact
+known full-suite outcomes and gameplay/save-load evidence are reused explicitly.
+See UNIT_GAMEPLAY.md and unit-gameplay-{selection,callers,batch,c-qualification}.json.
 
-Commit/push this qualified conversion, then continue the connected unit-gameplay
-candidate. Read-only selection/callers/notes under `build/port-unit-gameplay`
-cover22 bodies /523 body lines /857 file lines. One C subclass helper appears
-orphaned beside an existing Go implementation; confirm registrations. The shipped
-AI name table's index39 is empty, unlike the enum String fallback used by older
-fixtures. New contracts must cover that boundary. No next-batch source is installed.
+All test/build/scenario jobs are JOINED, including affected63274/58879/97567.
+Commit/push this baseline, then integrate the native drafts against the frozen
+expectations. Native-*-draft.go under build/port-unit-gameplay are NOT installed
+or qualified; review them and move every private caller. Keep the three live
+use/update C callbacks. Ignored installed fixture drafts are CONSUMED.
 
-All inventory/native fixture drafts and install-native.py are CONSUMED. Never
-replay them over reviewed source or regenerate frozen captures for native
-failures. The new native scenario asset copies have not been deduplicated.
-All previous asset/cache deletion modes are consumed. Original assets/archive,
-screenshots, saves and logs remain intact. Identical completed inventory captures share verified file contents via hard links,
-reclaiming3,411,706,979 duplicate bytes. Session79820 is joined; that mode is
-CONSUMED. Keep these evidence files immutable; all paths and hashes remain. No user decision is pending.
+Inventory scenario asset deduplication is complete:1,112,747,701 bytes reclaimed;
+audit95397/apply42019 joined and apply mode CONSUMED. Original assets/archive,
+saves/screenshots/logs and restoration manifests remain. Completed C captures
+now share verified immutable contents via hard links:490 duplicates and
+1,969,117,384 bytes reclaimed. Audit1368/apply90581 are joined; apply mode
+CONSUMED. Keep all future qualification output directories fresh.
+The checked-in source is ready for baseline commit; no user question is pending.
 
 ## Current — legacy online session conversion qualified
 
