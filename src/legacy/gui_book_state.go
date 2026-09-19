@@ -214,7 +214,7 @@ func bookShow(force int) {
 	bookSound(925)
 }
 func bookOpen(force int) {
-	if C.nox_gui_xxx_check_446360() != 0 || optionsVisible() != 0 {
+	if sessionQuitShown() != 0 || optionsVisible() != 0 {
 		return
 	}
 	if force != 0 || C.nox_xxx_get_57AF20() == 0 {

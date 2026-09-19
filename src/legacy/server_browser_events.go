@@ -125,7 +125,7 @@ func browserEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 		GetClient().ChangeMousePos(image.Pt(408, 239), true)
 		browserMarkersEnable(0)
 		if !browserHidden(browserWindow(uint32(browserUI.filter))) {
-			C.sub_489870()
+			sessionFilterSave()
 		}
 		questRuntimeSetWord(1556160, 1)
 		nox_xxx_cliShowHideTubes_470AA0(1)
@@ -141,7 +141,7 @@ func browserEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 		GetClient().ChangeMousePos(image.Pt(408, 239), true)
 		browserMarkersEnable(0)
 		if !browserHidden(browserWindow(uint32(browserUI.filter))) {
-			C.sub_489870()
+			sessionFilterSave()
 		}
 		if noxflags.HasGame(0x2000000) || Sub_4D6F30() != 0 {
 			return nil

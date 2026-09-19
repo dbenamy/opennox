@@ -60,3 +60,12 @@ func TestSessionServerFilterPredicates(t *testing.T) {
 		}
 	}
 }
+
+// The original C returns before touching srv for every mode except1/2.
+func TestSessionFilterUnrestrictedBypass(t *testing.T) {
+	for _, mode := range []uint32{0, 3, 0x80000000, 0xffffffff} {
+		if legacy.PortTestSessionFilterWithoutRecord(mode) != 1 {
+			t.Fatal("unrestricted mode", mode)
+		}
+	}
+}

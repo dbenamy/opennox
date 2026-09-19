@@ -5,7 +5,6 @@ package legacy
 extern int nox_win_width, nox_win_height;
 extern uint32_t nox_color_white_2523948, nox_color_yellow_2589772;
 int sub_478E50(int,int,unsigned int);
-void sub_445C20(void);
 */
 import "C"
 import (
@@ -117,7 +116,7 @@ func uiShopPicture(typ uint32) uint32 {
 }
 func uiShopStart(name *uint16, greeting string, typ uint32) int {
 	child := uiShopWindow().ChildByID(3810)
-	C.sub_445C20()
+	sessionQuitHide()
 	*uiShopWord(1098624) = 1
 	*uiShopWord(1098628) = 1
 	w := uiShopWindow()

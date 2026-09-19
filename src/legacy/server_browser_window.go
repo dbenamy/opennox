@@ -91,7 +91,7 @@ func browserShow() int {
 	browserUI.detailList = (*C.nox_window)(details.C())
 	panel := root.ChildByID(10033)
 	browserUI.detailPanel = panel.C()
-	browserUI.filter = C.uint32_t(uintptr(unsafe.Pointer(C.sub_489B80(C.int(uintptr(root.C()))))))
+	browserUI.filter = C.uint32_t(uintptr(sessionFilterOpen(root).C()))
 	*memmap.PtrUint32(0x5D4594, 815008) = uint32(uintptr(root.ChildByID(10001).C()))
 	for i, p := range []*C.uint32_t{&browserUI.playersColumn, &browserUI.modeColumn, &browserUI.mapColumn, &browserUI.pingColumn, &browserUI.statusColumn} {
 		*p = C.uint32_t(uintptr(root.ChildByID(uint(10038 + i)).C()))

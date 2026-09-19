@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1_3.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"unsafe"
@@ -29,7 +24,7 @@ func PortTestMOTDLine(input string) PortTestMOTDLineResult {
 	for i := range raw {
 		raw[i] = 0xa5
 	}
-	next := C.sub_4466F0((*C.char)(unsafe.Pointer(src)), (*C.uint8_t)(out))
+	next := sessionMOTDLine(src, (*byte)(out))
 	r := PortTestMOTDLineResult{Text: alloc.GoString((*byte)(out)), Next: -1, Guard: true, InputUnchanged: alloc.GoString(src) == input}
 	if next != nil {
 		r.Next = int(uintptr(unsafe.Pointer(next)) - uintptr(unsafe.Pointer(src)))

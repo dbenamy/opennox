@@ -71,5 +71,5 @@ func Sub_41DA70(a1, a2 int) {
 	C.sub_41DA70(C.int(a1), C.short(a2))
 }
 func Sub_445C20() {
-	C.sub_445C20()
+	sessionQuitHide()
 }

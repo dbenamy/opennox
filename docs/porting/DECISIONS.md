@@ -2094,3 +2094,20 @@ the old buffers. A regression through the actual dialog covers lengths through
 reversible prerequisite under the user's standing authorization; see
 [SESSION_DIALOGS.md](SESSION_DIALOGS.md). All-target captures, fresh builds/ABI, exact known suite and filter/gameplay/
 save-load qualification pass.
+
+
+## Session-dialog native ownership and boundary review
+
+Move nine window/file owners to Go while preserving the C heap lifetime of MOTD
+file contents. Reject file lengths that cannot fit the signed 32-bit allocation
+and handle allocation failure by returning failure; the old wrapped-size/nil
+access cases were undefined and are not compatibility goldens. This reversible
+choice is recorded for review. Normal file counts, short-read zero tails, byte
+widening and ownership match the qualified C baseline.
+
+Disconnect centering reads EndPos at C offsets24/28, including initial resource
+position. The shipped origin-zero resource masked an initial SizeVal translation;
+corrected Go uses EndPos and an independent three-position regression. Preserve
+unrestricted-filter return-before-read ordering and the raw MOTD visibility flags.
+All frozen captures and final fresh production scenarios remain unchanged. See
+[SESSION_DIALOGS.md](SESSION_DIALOGS.md).

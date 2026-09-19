@@ -14,7 +14,6 @@ extern uint32_t dword_5d4594_1090120;
 extern uint32_t dword_5d4594_2516328;
 extern uint32_t dword_5d4594_1049504;
 extern uint32_t dword_5d4594_1046868;
-extern uint32_t dword_5d4594_1193380;
 extern void* dword_5d4594_1123524;
 extern uint32_t dword_5d4594_529316;
 extern uint32_t dword_5d4594_1309820;
@@ -59,9 +58,7 @@ extern uint32_t dword_5d4594_1565512;
 extern uint32_t dword_5d4594_1301848;
 extern uint32_t dword_5d4594_1321232;
 extern uint32_t dword_5d4594_1305680;
-extern uint32_t dword_5d4594_1193360;
 extern uint32_t dword_5d4594_1049520;
-extern uint32_t dword_5d4594_1309748;
 extern uint32_t dword_5d4594_1049856;
 extern uint32_t dword_5d4594_1064856;
 extern uint32_t nox_xxx_aNox_cfg_0_587000_132132;
@@ -69,7 +66,6 @@ extern uint32_t dword_5d4594_1047520;
 extern uint32_t dword_5d4594_534808;
 extern uint32_t dword_5d4594_2487556;
 extern uint32_t dword_5d4594_2516344;
-extern uint32_t dword_5d4594_1193384;
 extern uint32_t dword_5d4594_3798832;
 extern void* nox_alloc_pixelSpan_1301844;
 extern uint32_t dword_5d4594_3798808;
@@ -78,7 +74,6 @@ extern uint32_t dword_5d4594_1062528;
 extern uint32_t dword_5d4594_1522604;
 extern uint32_t dword_5d4594_3798816;
 extern uint32_t dword_5d4594_528256;
-extern uint32_t dword_5d4594_826028;
 extern uint32_t dword_5d4594_2487524;
 extern uint32_t dword_5d4594_1522612;
 extern uint32_t nox_xxx_lightningTargetArrayIndex_5d4594_2487904;
@@ -195,7 +190,6 @@ extern uint32_t dword_5d4594_1046932;
 extern uint32_t dword_5d4594_1321224;
 extern uint32_t dword_587000_122848;
 extern uint32_t dword_5d4594_831220;
-extern uint32_t dword_5d4594_826032;
 extern uint32_t dword_5d4594_2487708;
 extern uint32_t nox_xxx_waypointCounterMB_587000_154948;
 extern uint32_t dword_5d4594_1565616;
@@ -205,7 +199,6 @@ extern uint32_t dword_5d4594_1096252;
 extern uint32_t dword_5d4594_1197356;
 extern uint32_t dword_5d4594_1321800;
 extern uint32_t dword_5d4594_1197352;
-extern void* dword_5d4594_826036;
 extern uint32_t dword_5d4594_1064860;
 extern uint32_t dword_5d4594_1062468;
 extern uint32_t dword_5d4594_1090044;
@@ -232,7 +225,6 @@ extern uint32_t dword_5d4594_1096284;
 extern uint32_t dword_5d4594_2487624;
 extern uint32_t dword_5d4594_1309832;
 extern uint32_t dword_5d4594_2487576;
-extern uint32_t dword_5d4594_1309756;
 extern uint32_t dword_5d4594_1309736;
 extern uint32_t nox_client_gui_flag_1556112;
 extern uint32_t dword_5d4594_1301812;
@@ -1197,7 +1189,7 @@ func Set_dword_5d4594_1123520(v int) {
 	C.dword_5d4594_1123520 = C.uint(v)
 }
 func Get_dword_5d4594_826036() *byte {
-	return (*byte)(C.dword_5d4594_826036)
+	return sessionMOTDFile
 }
 func Get_dword_8531A0_2576() *server.Player {
 	return AsPlayerP(unsafe.Pointer(uintptr(C.dword_8531A0_2576)))

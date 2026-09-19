@@ -2,45 +2,55 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 14.5k lines** — **14,457 physical lines in 58
-production `.c` files**, zero reference C; +6 prerequisite correction lines.
+**Qualified C remaining: about 13.4k lines** — **13,442 physical lines in 57
+production `.c` files**, zero reference C; this conversion removes **1,015 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — session dialogs corrected C baseline qualified
+## Current — session dialogs Go conversion qualified
 
-Qualified parent `e6245c82`; the connected32-body /907-line C selection covers
-server filters, MOTD, disconnect and quit menus. The original-C baseline and
-independent contracts are complete. See [SESSION_DIALOGS.md](docs/porting/SESSION_DIALOGS.md).
+C baseline `29d96787` supplies the unchanged frozen expectations. All 31 live
+selected bodies are translated or inlined; proven no-op4896E0 and its unused
+storage are removed. Four exports remain for actual C callers; 28 private C
+interfaces, nine C owners and the guiquit C translation unit are retired.
 
-Corrected two fixed MOTD buffers before freezing: input-sized temporary storage
-preserves line handling and byte widening; the listbox retains its255-unit row
-limit. Working/qualified C is14,457 /58 /zero reference (+6 prerequisite lines).
-Default/highres:307 roots /227 captures; server:306 /226, because the existing
-world-selection test is !server. All shared captures match, all142 parent captures
-are unchanged, and nine new dialog captures repeat independently. All2,715 source
-fingerprints agree. Static, fresh three-target builds/ABI, exact known suite
-(1,553 failure entries;15 pass /3 fail /32 skip packages),13-screen filter,
-character-creation/gameplay and save/load all pass.
+Final default/server/highres sweeps pass 309/308/309 roots and 227/226/227 exact
+artifacts, with no skips. Static checks, fresh three-target binaries/ABI, exact
+known full-suite outcomes and filter/gameplay/save-load scenarios all pass.
+See [SESSION_DIALOGS.md](docs/porting/SESSION_DIALOGS.md) and the tracked native
+qualification manifest. Evidence: `build/port-session-dialogs/native-qualified-*`.
+All qualification jobs are joined; no unresolved source correction or user question.
 
-All sessions joined. Evidence:build/port-session-dialogs/c-{default,server,highres,production}
-and the tracked C qualification/capture manifests. Commit/push this baseline,
-then convert31 live bodies and remove the proven no-op4896E0 cleanup. Preserve
-its Go wrapper's independent context reset. Four selected interfaces still have
-unselected C callers:446360,446780,446950,445C40. Audit callback slots before
-retiring the others. Move actual briefing/inventory/options owner views with them.
+Review preserved unrestricted-filter return-before-read ordering, raw MOTD
+visibility flags and disconnect EndPos centering. Independent nil-record and
+off-origin resource contracts cover the first and last details. The MOTD reader
+returns failure for unrepresentable file lengths/allocation failure; recorded
+for review in DECISIONS.md. The prerequisite long-line correction was separately
+qualified and committed in the C baseline.
 
-An initial native filter draft is under build/port-session-dialogs/native-filter-draft.go;
-NOT installed, formatted, compiled or accepted. All installed fixture drafts and
-qualify-c.py are CONSUMED. Do not replay stale source drafts or selection offsets.
-About2.7GiB is free; hash-audit completed C scenario copies before the native builds
-need more room. Preserve original assets/archive, captures, changed saves and logs.
+All installed drafts, integration scripts and qualification scripts are consumed.
+Do not replay them. Completed C and initial native scenario asset copies were
+hash-deduplicated, reclaiming 3,338,302,701 bytes. Their restoration manifests,
+original assets/archive, screenshots, saves and reports remain. Both deletion
+scripts are consumed; use their restore modes only if an old run needs its data.
 
-Fixture review notes: the server owner seeds two teams; quit contracts now control
-counts0/2/256. MOTD's quest gate reads runtime state1556160 independently of game
-flags. Empty/nil row slices both mean no rows. These were corrected test assumptions,
-not production behavior changes. No unresolved user question.
+Next candidate: `build/port-client-interaction/{selection-draft.json,callers-draft.json,
+reachability-draft.json,review-notes.md}`. Provisional 83 bodies /1,482 C body lines
+cover chat/cursor/interaction and remaining game GUI. Four apparently orphaned
+bodies and the connection-dialog owner have no live creation path; confirm the
+registration/raw-address audit before retirement. Its old MOTD fixture gate is
+artificial and must be explicitly retired/projected if the owner is removed.
+No next-batch source is installed. Keep packet reorder/update decoding separate.
+
+## Qualified parent — session-dialog corrected C baseline
+
+Baseline `29d96787` qualified 32 bodies /907 body lines after replacing two
+fixed MOTD temporary buffers with input-sized storage. C:14,457 /58 files /zero
+reference (+6 prerequisite lines). Default/highres307 roots, server306; captures
+227/226/227, all shared hashes equal and all142 parent artifacts unchanged.
+Fresh builds/ABI, known suite, filter/gameplay/save-load qualified. Historical
+scripts and draft offsets are consumed. See the batch report for full evidence.
 
 ## Qualified parent — orphaned configuration callbacks
 
@@ -1663,3 +1673,9 @@ Historical initial server-browser candidate:21 bodies /1,174 lines. Superseded
 by the current65-body baseline and tracked plan; do not resume the initial scope.
 Review the apparently unconsumed old configuration callback table and disabled
 online branches before deciding reachability; coordinate getter has live callers.
+
+Read-only next candidate under build/port-client-interaction:83 functions /1,482
+C body lines spanning remaining chat/cursor/interaction/game GUI. Selection is
+provisional; audit actual callers, callbacks and shared owners before committing
+to scope. No next-batch source installed. Keep packet reorder/update decoding
+separate; choose connected behavior, not neighboring addresses.

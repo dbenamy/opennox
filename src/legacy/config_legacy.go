@@ -6,7 +6,6 @@ package legacy
 #include "GAME2.h"
 #include "GAME3_2.h"
 
-int sub_489FF0(int a1, int a2, const void* a3);
 */
 import "C"
 import "unsafe"
@@ -51,7 +50,7 @@ func Sub_4D0DC0(a1 uint32, a2 int) {
 	mapCycleSetIndex(a1, uint32(a2))
 }
 func Sub_489FF0(a1 int, a2 int, a3 unsafe.Pointer) {
-	C.sub_489FF0(C.int(a1), C.int(a2), a3)
+	sessionFilterConfig(a1, a2, a3)
 }
 func Sub_4D0DE0(a1 uint32) int {
 	return int(mapCycleGetIndex(a1))

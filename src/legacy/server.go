@@ -318,7 +318,7 @@ func Sub_4E4ED0() {
 	reliableResetSequences()
 }
 func Nox_motd_4463E0(a1 int) {
-	C.nox_motd_4463E0(C.int(a1))
+	sessionMOTDRead(a1)
 }
 func Sub_4259C0() {
 	playerGroupsInit()

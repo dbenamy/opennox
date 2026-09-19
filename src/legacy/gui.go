@@ -127,5 +127,5 @@ func Nox_xxx_wndEditProc_487D70(a1 *gui.Window, ev gui.WindowEvent) gui.RawEvent
 }
 
 func Nox_gui_xxx_check_446360() int {
-	return int(C.nox_gui_xxx_check_446360())
+	return int(sessionQuitShown())
 }

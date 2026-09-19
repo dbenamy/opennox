@@ -482,13 +482,13 @@ func Nox_xxx_guiDrawRank_46E870() uint32 {
 	return uint32(uintptr(unsafe.Pointer(scoreboardConstruct())))
 }
 func Nox_xxx_guiMotdLoad_4465C0() uint32 {
-	return uint32(C.nox_xxx_guiMotdLoad_4465C0())
+	return uint32(uintptr(sessionMOTDOpen().C()))
 }
 func Nox_xxx_guiSummonCreatureLoad_4C1D80() int {
 	return summonCreate()
 }
 func Sub_4AB260() int {
-	return int(C.sub_4AB260())
+	return int(sessionDisconnectOpen())
 }
 func Nox_xxx_guiChatIconLoad_445650() int {
 	return int(C.nox_xxx_guiChatIconLoad_445650())
@@ -548,7 +548,7 @@ func Sub_479D10() {
 	C.sub_479D10()
 }
 func Sub_4AB470() {
-	C.sub_4AB470()
+	sessionDisconnectClose()
 }
 func Sub_4C34A0() {
 	C.sub_4C34A0()
@@ -605,10 +605,10 @@ func Sub_4181F0(a1 int) {
 	teamRuntimeBalance(a1 != 0)
 }
 func Sub_4AB4A0(a1 int) {
-	C.sub_4AB4A0(C.int(a1))
+	sessionDisconnectIconShow(a1)
 }
 func Sub_4AB4D0(a1 int) {
-	C.sub_4AB4D0(C.int(a1))
+	sessionDisconnectShow(a1)
 }
 func Sub_4721A0(a1 int) {
 	sub_4721A0(a1)

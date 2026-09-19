@@ -184,7 +184,7 @@ func Nox_xxx_colorInit_4C4FD0() {
 }
 
 func Sub_445FF0() {
-	C.sub_445FF0()
+	sessionQuitColors()
 }
 
 func Sub_470680() {

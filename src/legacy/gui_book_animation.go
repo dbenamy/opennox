@@ -90,7 +90,7 @@ func bookAdd(kind, id int) {
 		C.sub_57AF30(0, C.int(kind))
 	}
 	*bookWord(1046648) = uint32(nox_xxx_bookGet_430B40_get_mouse_prev_seq())
-	if !noxflags.HasGame(noxflags.GameModeCoop) || C.nox_gui_xxx_check_446360() == 1 || C.nox_xxx_gameGet_4DB1B0() == 1 {
+	if !noxflags.HasGame(noxflags.GameModeCoop) || sessionQuitShown() == 1 || C.nox_xxx_gameGet_4DB1B0() == 1 {
 		bookFinishAddition()
 	}
 }

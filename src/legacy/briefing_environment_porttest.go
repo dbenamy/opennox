@@ -30,8 +30,6 @@ extern uint32_t dword_5d4594_831244;
 extern uint32_t dword_5d4594_831256;
 extern uint32_t dword_5d4594_831260;
 extern uint32_t dword_5d4594_831276;
-extern uint32_t dword_5d4594_826028;
-extern uint32_t dword_5d4594_826032;
 extern void* dword_5d4594_805984;
 extern nox_window* nox_win_unk1;
 extern nox_screenParticle* nox_screenParticles_head;
@@ -49,8 +47,8 @@ import "unsafe"
 
 func PortTestBriefingWords() (map[string]*uint32, func()) {
 	m := map[string]*uint32{
-		"dword_5d4594_826028":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_826028)),
-		"dword_5d4594_826032":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_826032)),
+		"dword_5d4594_826028":              (*uint32)(unsafe.Pointer(&sessionMOTDRoot)),
+		"dword_5d4594_826032":              (*uint32)(unsafe.Pointer(&sessionMOTDList)),
 		"dword_5d4594_805984":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_805984)),
 		"nox_win_unk1":                     (*uint32)(unsafe.Pointer(&C.nox_win_unk1)),
 		"nox_screenParticles_head":         (*uint32)(unsafe.Pointer(&C.nox_screenParticles_head)),

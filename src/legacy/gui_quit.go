@@ -6,7 +6,6 @@ package legacy
 #include "GAME1_3.h"
 #include "GAME3_2.h"
 #include "GAME4_1.h"
-extern nox_window* nox_wnd_quitMenu_825760;
 extern unsigned int dword_5d4594_2650652;
 extern uint32_t dword_5d4594_830272;
 int* nox_xxx_guiServerOptionsHide_4597E0(int a1);
@@ -51,7 +50,7 @@ func Sub_41EC30() {
 }
 
 func Sub_446490(v int) {
-	C.sub_446490(C.int(v))
+	sessionMOTDFree(v)
 }
 
 func Nox_xxx_guiServerOptionsHide_4597E0(v int) {
@@ -59,11 +58,11 @@ func Nox_xxx_guiServerOptionsHide_4597E0(v int) {
 }
 
 func Sub_445C40() {
-	C.sub_445C40()
+	sessionQuitToggle()
 }
 
 func Set_nox_wnd_quitMenu_825760(win *gui.Window) {
-	C.nox_wnd_quitMenu_825760 = (*nox_window)(win.C())
+	sessionQuitRoot = win
 }
 
 func Nox_xxx____setargv_4_44B000() {
@@ -80,8 +79,4 @@ func Set_dword_5d4594_2650652(v int) {
 
 func Sub_41CEE0(p unsafe.Pointer, a2 int) {
 	playerFileClientWrite(p, a2)
-}
-
-func Get_nox_xxx_menuGameOnButton_445840() unsafe.Pointer {
-	return C.nox_xxx_menuGameOnButton_445840
 }

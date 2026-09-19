@@ -61,7 +61,7 @@ func Nox_cmd_show_motd(_ int, t []string) bool {
 	if len(t) != 2 {
 		return false
 	}
-	C.nox_xxx_motd_4467F0()
+	sessionMOTDShow()
 	return true
 }
 func Nox_cmd_show_seq(_ int, t []string) bool {

@@ -112,7 +112,7 @@ func Nox_xxx_guiServerOptionsTryHide_4574D0() int {
 	return serverOptionsTryClose()
 }
 func Sub_446780() {
-	C.sub_446780()
+	sessionMOTDClose()
 }
 func Sub_460660() {
 	quickbarCancelCapture()

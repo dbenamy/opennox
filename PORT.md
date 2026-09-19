@@ -19,17 +19,18 @@ The server browser is now Go: 64 live routines converted, one orphan removed,
 remain for live C entries and animation slots. See
 [SERVER_BROWSER.md](docs/porting/SERVER_BROWSER.md).
 
-Latest qualified production C is **14,457 physical lines in 58 files**, zero
-reference C: **+6 prerequisite correction lines** for two MOTD temporary buffers.
-The connected session-dialog C baseline now qualifies with307 affected roots on
-client/highres and306 on server, frozen captures, fresh production binaries and
-headless scenarios. See [SESSION_DIALOGS.md](docs/porting/SESSION_DIALOGS.md) and
+Latest qualified production C is **13,442 physical lines in 57 files**, zero
+reference C. The session-dialog conversion removes **1,015 C lines**: server
+filters, MOTD, disconnect and quit menus now use Go, with four exports retained
+for remaining C callers. All-target captures and fresh production qualification
+pass. See [SESSION_DIALOGS.md](docs/porting/SESSION_DIALOGS.md) and
 [PORTING_STATE.md](PORTING_STATE.md).
 
-Twelve orphaned configuration callbacks have also been removed after tracing
-their table and the historical removal of its parser. See
+Twelve orphaned configuration callbacks were also removed after tracing their
+table and the historical removal of its parser. See
 [CONFIG_CALLBACK_RETIREMENT.md](docs/porting/CONFIG_CALLBACK_RETIREMENT.md).
-Next is the Go conversion of the qualified server-filter, MOTD, disconnect and quit-menu batch.
+Next is the connected client-interaction and remaining game-dialog batch;
+its provisional scope and reachability audit are under review.
 
 ## Goal and target
 

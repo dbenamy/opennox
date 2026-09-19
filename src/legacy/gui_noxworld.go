@@ -230,7 +230,7 @@ func Sub_437860(a1 int, a2 int) int {
 	return int(sub_437860(C.int(a1), C.int(a2)))
 }
 func Nox_xxx_checkSomeFlagsOnJoin_4899C0(a1 *Nox_gui_server_ent_t) int {
-	return int(C.nox_xxx_checkSomeFlagsOnJoin_4899C0(a1.C()))
+	return int(sessionFilterAccept(unsafe.Pointer(a1)))
 }
 func Nox_wol_servers_addResult_4A0030(a1 *Nox_gui_server_ent_t) {
 	nox_wol_servers_addResult_4A0030(a1.C())

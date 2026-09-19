@@ -1,0 +1,79 @@
+{
+  "status": "qualified native session dialogs and filters",
+  "baseline": "29d96787",
+  "source_files": 2720,
+  "targets": {
+    "default": {
+      "root_tests": 309,
+      "captures": 227,
+      "wall_seconds": 141.58816857798956
+    },
+    "server": {
+      "root_tests": 308,
+      "captures": 226,
+      "wall_seconds": 139.78852340299636
+    },
+    "highres": {
+      "root_tests": 309,
+      "captures": 227,
+      "wall_seconds": 141.0763967221137
+    }
+  },
+  "capture_manifest": "docs/porting/session-dialogs-c-captures.json",
+  "production": "build/port-session-dialogs/native-qualified-production/production/production.json",
+  "static": "build/port-session-dialogs/static-native-qualified.log",
+  "c_loc": {
+    "files": 57,
+    "lines": 13442,
+    "reference_lines": 0,
+    "delta": -1015
+  },
+  "retained_selected": [
+    "nox_gui_xxx_check_446360",
+    "sub_445C40",
+    "sub_446780",
+    "sub_446950"
+  ],
+  "retired_selected": [
+    "sub_4896E0",
+    "sub_489870",
+    "nox_xxx_checkSomeFlagsOnJoin_4899C0",
+    "sub_489B80",
+    "sub_489DC0",
+    "nox_xxx_windowMplayFilterProc_489E70",
+    "sub_489FB0",
+    "sub_489FF0",
+    "nox_xxx_quitDialogYes_445B20",
+    "nox_xxx_quitDialogNo_445B30",
+    "sub_445BA0",
+    "sub_445C20",
+    "sub_445FF0",
+    "nox_motd_4463E0",
+    "sub_446490",
+    "nox_xxx_guiMotdLoad_4465C0",
+    "sub_4466C0",
+    "sub_4466F0",
+    "nox_xxx_motdAddSomeTextMB_446730",
+    "nox_xxx_motd_4467F0",
+    "sub_4AB260",
+    "sub_4AB340",
+    "sub_4AB390",
+    "sub_4AB420",
+    "sub_4AB470",
+    "sub_4AB4A0",
+    "sub_4AB4D0",
+    "nox_xxx_menuGameOnButton_445840"
+  ],
+  "retired_owners": [
+    "dword_5d4594_1193380",
+    "dword_5d4594_1193384",
+    "dword_5d4594_826028",
+    "dword_5d4594_826032",
+    "dword_5d4594_826036",
+    "dword_5d4594_1309748",
+    "dword_5d4594_1309756",
+    "nox_wnd_quitMenu_825760",
+    "dword_5d4594_1193360"
+  ],
+  "target_difference": "World-selection contract and artifact are !server. Native adds independent unrestricted-filter nil-record and off-origin window-resource contracts."
+}

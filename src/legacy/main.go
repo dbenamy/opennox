@@ -82,7 +82,6 @@ func Sub_413920() {
 
 func Sub_431380() {
 	uiEntryContext = false
-	C.sub_4896E0()
 }
 
 func Nox_xxx_tileFree_410FC0_free() {

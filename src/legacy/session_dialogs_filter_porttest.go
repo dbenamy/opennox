@@ -29,7 +29,7 @@ func PortTestSessionFilter(mode uint32, filters [11]uint32, record [169]byte) (i
 	p, free := alloc.Malloc(169)
 	defer free()
 	copy(unsafe.Slice((*byte)(p), 169), record[:])
-	v := int(C.nox_xxx_checkSomeFlagsOnJoin_4899C0((*C.nox_gui_server_ent_t)(p)))
+	v := sessionFilterAccept(p)
 	unchanged := true
 	for i, b := range unsafe.Slice((*byte)(p), 169) {
 		if b != record[i] {
@@ -55,4 +55,12 @@ func PortTestSessionFilterRules() func() {
 		restoreTable()
 		GetServer = oldGet
 	}
+}
+
+func PortTestSessionFilterWithoutRecord(mode uint32) int {
+	p := sessionFilterMode(0)
+	old := *p
+	defer func() { *p = old }()
+	*p = mode
+	return sessionFilterAccept(nil)
 }

@@ -64,7 +64,7 @@ func uiInventoryWindowOpenState() bool {
 func sub_467C80() C.int { return C.int(bool2int(uiInventoryWindowOpenState())) }
 
 func uiInventoryOpenWindow() int {
-	if v := int(C.nox_gui_xxx_check_446360()); v != 0 {
+	if v := int(sessionQuitShown()); v != 0 {
 		return v
 	}
 	if v := optionsVisible(); v != 0 {

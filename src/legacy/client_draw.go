@@ -79,7 +79,7 @@ func Nox_xxx_cliToggleObsWindow_4357A0() {
 }
 
 func Nox_xxx_motd_4467F0() {
-	C.nox_xxx_motd_4467F0()
+	sessionMOTDShow()
 }
 
 func Sub_42EBA0() int {

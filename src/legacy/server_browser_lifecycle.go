@@ -57,7 +57,7 @@ func browserConnectionReset() int {
 }
 func browserClose() int {
 	browserWindow(uint32(uintptr(browserUI.mapWindow))).Capture(false)
-	C.sub_489FB0()
+	sessionFilterClose()
 	browserPopupClose()
 	detail := browserWindow(uint32(uintptr(browserUI.detailPanel)))
 	if detail != nil && detail.Parent() == nil {
@@ -97,7 +97,7 @@ func browserShowList() int {
 	w := browserWindow(uint32(browserUI.filter))
 	if !browserHidden(w) {
 		w.SetHidden(true)
-		C.sub_489870()
+		sessionFilterSave()
 	}
 	browserWindow(uint32(browserUI.gameList)).SetHidden(false)
 	browserWindow(uint32(uintptr(browserUI.mapWindow))).SetHidden(true)
