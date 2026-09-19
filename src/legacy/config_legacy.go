@@ -12,13 +12,13 @@ import "C"
 import "unsafe"
 
 func Sub_453070() int {
-	return int(C.sub_453070())
+	return int(int32(*audioEventPlayback))
 }
 func Sub_44D990() int {
-	return int(C.sub_44D990())
+	return int(audioEventDialogEnabled())
 }
 func Sub_43DC30() int {
-	return int(C.sub_43DC30())
+	return int(audioEventMusicEnabled())
 }
 func Nox_xxx_sysopGetPass_40A630() string {
 	return GoWString((*C.wchar2_t)(unsafe.Pointer(serverConfigPasswordGet())))

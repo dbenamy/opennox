@@ -23,3 +23,11 @@ func nox_porttest_client_sound(id, volume C.int) {
 		fn(int(id), int(volume))
 	}
 }
+
+func init() {
+	audioEventPlayObserver = func(id, volume int) {
+		if f := portTestClientSoundObserver; f != nil {
+			f(id, volume)
+		}
+	}
+}

@@ -104,7 +104,7 @@ func nox_client_quit_4460C0() {
 	Nox_client_quit_4460C0()
 }
 func Sub_43DB60() {
-	C.sub_43DB60()
+	audioEventMusicEnter()
 }
 func Nox_xxx_mapGenStart_4D4320() int {
 	return int(mapOrchestrationStart())
@@ -131,7 +131,7 @@ func Sub_473930() {
 	C.sub_473930()
 }
 func Sub_43DBA0() {
-	C.sub_43DBA0()
+	audioEventMusicLeave()
 }
 func Nox_xxx_getHostInfoPtr_431770() *server.PlayerInfo {
 	return (*server.PlayerInfo)(unsafe.Pointer(C.nox_xxx_getHostInfoPtr_431770()))

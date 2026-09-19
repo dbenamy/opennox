@@ -103,19 +103,19 @@ func optionsToggle(ch int) {
 		if optionsEnabled(ch) == 1 {
 			Sub_453050()
 		} else {
-			C.nox_xxx____setargv_9_453060()
+			*audioEventPlayback = 1
 		}
 	case 1:
 		if optionsEnabled(ch) == 1 {
 			Sub_44D960()
 		} else {
-			C.sub_44D970()
+			audioEventDialogEnable()
 		}
 	case 2:
 		if optionsEnabled(ch) == 1 {
 			Sub_43DC00()
 		} else {
-			C.sub_43DC10()
+			audioEventMusicEnable()
 			t := optionsTimer(ch)
 			// Enabling music resets its target from the current volume.
 			t.SetRaw(t.Current >> 16)

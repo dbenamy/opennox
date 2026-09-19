@@ -49,7 +49,7 @@ func uiInventoryPanelEvents(w *gui.Window, event int, a, b uintptr) int {
 		}
 		C.dword_5d4594_1062512 = C.uint32_t(v)
 		uiInventorySliderValue(slider, 16394, (*gui.SliderData)(slider.WidgetData).Max-uint32(v), 0)
-		C.nox_xxx_clientPlaySoundSpecial_452D80(766, 100)
+		audioEventPlay(766, 100, 0, 0)
 	case 9103:
 		v := int32(C.dword_5d4594_1062512) + 50
 		max := int32((*gui.SliderData)(slider.WidgetData).Max)
@@ -60,7 +60,7 @@ func uiInventoryPanelEvents(w *gui.Window, event int, a, b uintptr) int {
 		}
 		C.dword_5d4594_1062512 = C.uint32_t(v)
 		uiInventorySliderValue(slider, 16394, uint32(max-v), 0)
-		C.nox_xxx_clientPlaySoundSpecial_452D80(766, 100)
+		audioEventPlay(766, 100, 0, 0)
 	case 9105:
 		height := int32(C.sub_469FA0()) - 150
 		if uiInventoryMode() == 5 {

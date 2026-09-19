@@ -106,7 +106,7 @@ func Nox_common_maplist_free_4D0970() {
 }
 
 func Sub_451970() {
-	C.sub_451970()
+	audioEventFree()
 }
 
 func Sub_431270() {

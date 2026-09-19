@@ -82,7 +82,7 @@ func uiInventoryOpenWindow() int {
 	state := memmap.PtrUint8(0x5D4594, 1049868)
 	if *state == 0 || *state == 3 {
 		*state = 1
-		C.nox_xxx_clientPlaySoundSpecial_452D80(789, 100)
+		audioEventPlay(789, 100, 0, 0)
 	}
 	C.dword_5d4594_1062512 = C.dword_5d4594_1062516
 	return int(int32(C.dword_5d4594_1062516))
@@ -99,7 +99,7 @@ func uiInventoryCloseWindow() int {
 		return 0
 	}
 	*memmap.PtrUint8(0x5D4594, 1049868) = 3
-	C.nox_xxx_clientPlaySoundSpecial_452D80(790, 100)
+	audioEventPlay(790, 100, 0, 0)
 	if uiInventoryMode() == 5 {
 		uiInventoryCloseIdentify()
 	}

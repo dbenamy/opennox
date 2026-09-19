@@ -14,11 +14,11 @@
 
 ## Current status
 
-Client audio streams, sample caching and driver/voice queues are now Go, with
-70 C bodies converted. See [CLIENT_AUDIO_STREAMS.md](docs/porting/CLIENT_AUDIO_STREAMS.md).
+Client audio events, playback, scheduling and sample refill are now Go, with
+62 C bodies converted. See [CLIENT_AUDIO_EVENTS.md](docs/porting/CLIENT_AUDIO_EVENTS.md).
 
-Current production C is **22,400 physical lines in66 files**, zero reference C:
-**−1,261** from the qualified baseline. Frozen comparisons, all three targets and
+Current production C is **21,083 physical lines in 65 files**, zero reference C:
+**−1,327** from the qualified baseline. Frozen comparisons, all three targets and
 fresh production/headless integration qualify. See [PORTING_STATE.md](PORTING_STATE.md).
 
 ## Goal and target

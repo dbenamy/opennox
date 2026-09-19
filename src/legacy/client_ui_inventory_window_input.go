@@ -163,7 +163,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 						Nox_xxx_cursorSetDraggedItem_477690(dr)
 						InputSetKeyTimeoutLegacy(0)
 						*(*[2]int32)(memmap.PtrOff(0x5D4594, 1062572)) = [2]int32{int32(pos.X), int32(pos.Y)}
-						C.nox_xxx_clientPlaySoundSpecial_452D80(791, 100)
+						audioEventPlay(791, 100, 0, 0)
 						return 1
 					}
 				}
@@ -311,7 +311,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 			uiInventoryRestoreDrag()
 			return 1
 		}
-		C.nox_xxx_clientPlaySoundSpecial_452D80(792, 100)
+		audioEventPlay(792, 100, 0, 0)
 		source := uiInventorySourceCell()
 		if source.Alternate != 0 {
 			target.Alternate = source.Alternate

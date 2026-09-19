@@ -18,7 +18,7 @@ var (
 )
 
 func Nox_xxx_clientPlaySoundSpecial_452D80(a1 sound.ID, a2 int) {
-	C.nox_xxx_clientPlaySoundSpecial_452D80(C.int(a1), C.int(a2))
+	audioEventPlay(int32(a1), int32(a2), 0, 0)
 }
 
 func Sub_4133D0(a1 *server.Object) int {

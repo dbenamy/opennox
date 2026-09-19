@@ -2051,3 +2051,15 @@ C-heap ownership,32-bit clock narrowing and existing cache/zero-request behavior
 Affected all-target checks, fresh binaries/ABI, exact known suite and gameplay/
 save-load qualify. Current C22400 /66 files /zero reference, −1261 from corrected C.
 See CLIENT_AUDIO_STREAMS.md.
+
+
+Client audio events qualify natively: 62 bodies translated, 21 required exports
+retained, 41 private interfaces and two cache/pool C globals retired. All frozen
+captures passed on the first native build. Preserve 32-bit clock narrowing, strict
+deadline comparison, repeated manager RNG selections, empty-chunk termination,
+the initial zero-serial handle convention, and deferred pan updates. The recording
+fixture delivers the real device completion notification before voice reuse. No
+production algorithms were corrected. Three targets, fresh binaries/ABI, exact
+known suite and gameplay/save-load qualify. C:21,083 /65 files /zero reference,
+−1,327 from the C baseline (which included ten test-adapter lines). See
+[CLIENT_AUDIO_EVENTS.md](CLIENT_AUDIO_EVENTS.md) for evidence and review details.

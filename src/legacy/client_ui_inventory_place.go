@@ -135,7 +135,7 @@ func uiInventoryAlterWeapon() {
 	dequip := func(dr *client.Drawable) {
 		C.dword_5d4594_1062492 = C.uint32_t(uiInventoryPointer(dr.C()))
 		uiInventoryDequipRequest(dr)
-		C.nox_xxx_clientPlaySoundSpecial_452D80(895, 100)
+		audioEventPlay(895, 100, 0, 0)
 	}
 	if alt != nil && GetServer().S().Weapons.Nox_xxx_ammoCheck_415880(int(alt.Drawable.TypeIDVal)) == 2 {
 		typ := GetServer().S().Weapons.Sub_415840(2)
@@ -158,7 +158,7 @@ func uiInventoryAlterWeapon() {
 	if alt != nil {
 		alt.Drawable.NetCode32 = alt.Codes[0]
 		uiInventoryEquipRequest(alt.Drawable)
-		C.nox_xxx_clientPlaySoundSpecial_452D80(895, 100)
+		audioEventPlay(895, 100, 0, 0)
 	}
 }
 

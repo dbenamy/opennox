@@ -9,10 +9,7 @@ package legacy
 
 void sub_43E910(int a1);
 void sub_43E8E0(int a1);
-void sub_43EDB0(HSAMPLE a1);
-int sub_43EE00(void* a1);
 int sub_43F060(uint32_t* a1);
-int sub_43F0E0(uint32_t* a1);
 char* sub_413890();
 int nox_xxx_parseSoundSetBin_424170(char* a1);
 
@@ -21,10 +18,6 @@ extern uint32_t dword_5d4594_816376;
 extern uint32_t dword_5d4594_831084;
 extern uint32_t dword_5d4594_831092;
 
-void sub_43DC00();
-void sub_44D960();
-void sub_453050();
-int sub_451850(int a2, void* a3);
 extern void* dword_587000_122852;
 extern void* dword_587000_81128;
 extern void* dword_587000_93164;
@@ -264,15 +257,15 @@ func Get_dword_587000_127004() unsafe.Pointer {
 }
 
 func Sub_43F0E0(v unsafe.Pointer) int {
-	return int(C.sub_43F0E0((*C.uint)(v)))
+	return int(audioEventSampleFormat((*audioStreamFormat)(v)))
 }
 
 func Sub_43EE00(v *AudioSample) {
-	C.sub_43EE00(unsafe.Pointer(v))
+	audioEventSampleRefill(v)
 }
 
 func Sub_43EDB0(v ail.Sample) {
-	C.sub_43EDB0((C.HSAMPLE)(unsafe.Pointer(v)))
+	audioEventSampleEnded(v)
 }
 
 func Sub_413890() string {
@@ -284,15 +277,15 @@ func Nox_xxx_parseSoundSetBin_424170(path string) int {
 }
 
 func Sub_43DC00() {
-	C.sub_43DC00()
+	audioEventMusicDisable()
 }
 
 func Sub_44D960() {
-	C.sub_44D960()
+	audioEventDialogDisable()
 }
 
 func Sub_453050() {
-	C.sub_453050()
+	*audioEventPlayback = 0
 }
 
 func Get_dword_5d4594_816376() ail.Driver {
@@ -354,7 +347,7 @@ func sub_4862E0(a1 unsafe.Pointer, a2 int32) int {
 }
 
 func Sub_451850(a1 unsafe.Pointer, a2 unsafe.Pointer) {
-	C.sub_451850(C.int(uintptr(a1)), a2)
+	audioEventInit((*audioStreamContext)(a1), (*audioStreamCatalog)(a2))
 }
 
 func Sub_486FA0(a1 int) {

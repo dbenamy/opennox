@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "noxstring.h"
-void sub_4519C0();
-void sub_44D3A0();
-void sub_479280();
-*/
-import "C"
 import (
 	"image"
 	"image/color"
@@ -104,7 +97,7 @@ var (
 )
 
 func Sub_4519C0() {
-	C.sub_4519C0()
+	audioEventUpdate()
 }
 
 func Sub_495430() {

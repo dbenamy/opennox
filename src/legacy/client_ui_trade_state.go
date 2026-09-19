@@ -49,7 +49,7 @@ func uiTradeDragged() *client.Drawable { return uiInventoryDrawable(uint32(C.dwo
 func uiTradeSource() *uiTradeCell {
 	return (*uiTradeCell)(unsafe.Pointer(uintptr(C.dword_5d4594_1320972)))
 }
-func uiTradeSound(id int) { C.nox_xxx_clientPlaySoundSpecial_452D80(C.int(id), 100) }
+func uiTradeSound(id int) { audioEventPlay(int32(id), 100, 0, 0) }
 func uiTradeString(id string) string {
 	return GetServer().S().Strings().GetStringInFile(strman.ID(id), "guitrade.c")
 }
