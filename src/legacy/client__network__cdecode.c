@@ -3022,7 +3022,7 @@ int nox_xxx_netOnPacketRecvCli_48EA70_switch(int a1, int op, unsigned char* data
 			return 5;
 		case 0x18u:
 			if (nox_client_isConnected_43C700() == 1) {
-				sub_4BFBB0((uint32_t*)*(unsigned char*)(data + 2));
+				sub_4BFBB0(*(unsigned char*)(data + 2));
 			}
 			return 3;
 		case 0x19u:

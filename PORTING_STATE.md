@@ -2,78 +2,51 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 13.5k lines** — **13,456 physical lines in 57
-production `.c` files**, zero reference C; text prerequisites add **14 lines**.
-See [C_LOC.md](docs/porting/C_LOC.md).
+**Qualified C remaining: about11.9k lines** — **11,898 physical lines in50
+production `.c` files**, zero reference C. This batch removes **1,558 lines**
+from its corrected C baseline. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — client interaction corrected C baseline qualified
+## Current — client interaction Go conversion qualified
 
-The83-body /1,496-line connected batch is qualified and its original-C captures
-are frozen in baseline **dd7e94f4**, committed/pushed. Recovery checkpoint
-**c856a315** is also pushed.
-Qualified production C is13,456 /57 files /zero reference (+14
-text-prerequisite lines from the previous qualified production b30f96a3).
+C baseline **dd7e94f4** and first50-routine recovery **8febbadb** are pushed.
+The full83-body selection is complete:78 live routines translated, four orphan
+bodies removed and the unreachable connection-dialog getter retired. Twenty
+private owners move to Go;67 private selected exports and four old session-dialog
+exports are retired. Eleven selected exports remain for live C callers/callbacks.
 
-Default/server/highres pass493/490/493 affected roots, with227/226/227 unchanged
-parent artifacts and31/29/31 interaction captures. Independent contract repeats
-match exactly; all2,746 source fingerprints agree. Static checks, three fresh
-production binaries/ABI, exact1,553 known full-suite failure entries (15 pass /
-3 fail /32 skip packages), and four headless scenarios pass. Scenarios cover
-dialogs, gameplay, save/load and nine inventory screens. All test/build/scenario
-jobs are joined, including production session4620.
+Default/server/highres pass493/490/493 affected roots with31/29/31 exact interaction
+captures and227/226/227 inherited captures. The only explicit projection removes
+MOTD's artificial gate6: all72 surviving rows are byte-identical to the filtered
+80-row C capture. The original baseline manifest/hashes remain unchanged.
+
+Static checks, fresh three-target production binaries/ABI, exact1,553 known
+full-suite failures (15 pass /3 fail /32 skip packages), and all four headless
+scenarios pass. The separate fresh-binary inventory preflight also passes all
+nine screens. Source fingerprints agree across all final target/production runs.
+Every job is joined, including production session50913. No source correction or
+user decision remains pending for this batch.
 
 See [CLIENT_INTERACTION.md](docs/porting/CLIENT_INTERACTION.md), the tracked
-client-interaction-batch.json, c-captures.json and c-qualification.json. Evidence:
-`build/port-client-interaction/c-affected-*` and `c-production`. Corrections bound
-centered rows, allocate chat formatting by input length and bound shared console
-formatting with a dynamic retry; DECISIONS.md records the reversible choices.
+client-interaction-native-{batch,qualification}.json and MOTD projection manifest.
+Evidence is under `build/port-client-interaction/native-affected-*`,
+`native-preflight`, and `native-production`.
 
-Next: translate79 live routines/inlines,
-remove four unreachable bodies, and move their private owners/callers to Go.
-The connection-dialog owner is written only by its unreachable creation graph;
-retire the artificial MOTD gate6 explicitly and compare every surviving row with
-the old frozen capture. Ten selected symbols have outside C references; review
-raw callback96 separately. Read native-review-notes.md and the interface previews
-under ignored build/ before conversion. They are advisory, not final export lists.
-Native conversion is in progress. The first16 GAME1_2 routines pass all30 contract
-roots and31 exact C captures in native-primitives-initial; static passes and its
-job is joined. The unused sub_435690 body is removed. Ten additional indicator
-and centered-message routines are now installed, for26 live routines translated.
-Temporary C exports and existing C owners keep this connected conversion buildable;
-retire private interfaces/owners before final qualification. The shared production
-console formatter remains in C for its other live caller, with only an argument
-adapter in the Go preamble. No completed native conversion is claimed.
+All source installers/drafts, cleanup-dispatch.py, cleanup-owners.py,
+cleanup-interfaces.py, freeze-c.py and freeze-native.py are CONSUMED. Do not replay
+them or regenerate goldens to hide differences. All recorded deletion modes are
+also consumed. Original assets/archive remain unchanged. Completed C asset copies
+and stale rebuildable cache entries reclaimed about7.7GiB during this conversion;
+per-run restoration and deletion manifests remain. Final native scenario copies
+have not yet been deduplicated.
 
-Native-messages-initial passes30 roots and31 exact captures; static passes and
-its job is joined. The three empty C units (chaticon/guiobs/guimsg) are removed.
-Ten chat routines are now installed, for36 live routines translated.
-Native-chat-initial joined with one failing root: ChatEscapeKey. The native C
-adapter used AsWindowEvent, which collapses raw key states3/all-ones to state2.
-It now passes RawEvent, preserving the original exact state2 comparison. All
-other29 roots passed; this failed run is not qualification.
-
-Twelve key/vote and two pickup/secondary routines are also installed, for50 live
-routines translated. Empty gamewin.c is removed. Native-controls-initial,
-**session68297**, is joined: all30 roots pass and all31 C capture hashes match.
-Static-native-controls passes. Working C is12,835 physical lines /53 files /zero
-reference, a621-line decrease from the frozen baseline; final qualification is
-still pending. The installed chat/key/vote drafts are consumed. Temporary C
-exports/owners still need final retirement. An ignored native-hover-draft.go
-contains four additional routines, NOT installed or compiled. No jobs are active. Original selection offsets are stale in changed
-files; remove subsequent bodies by matching their exact frozen baseline text,
-never replay original offsets against the working tree. Installed indicator draft
-and removal snippets are consumed. All31 original hashes remain frozen unchanged.
-Keep packet reorder/update decoding separate. No user decision is pending.
-
-All installed source drafts and freeze-c.py are CONSUMED. Never recopy them over
-current source or regenerate frozen captures to hide a native mismatch. The old
-session-dialog source installers and qualification finalizers are consumed too.
-Completed C-scenario copies were hash-deduplicated after all jobs joined, reclaiming
-2,225,495,437 bytes. Audit/apply are complete; deduplicate-c-assets.py deletion
-mode is CONSUMED. Restoration manifests and all qualification evidence remain;
-original assets/archive are unchanged. About3.6 GiB is free.
+Next: audit the remaining old online-service helpers or select the next connected
+live batch. A read-only provisional21-body /359-line candidate and caller audit
+are under `build/port-old-online`; textual Go-wrapper roots need enclosing-caller
+and owner-writer analysis. No source or tests for that candidate are installed.
+Keep packet update/reorder decoding separate unless its behavior is explicitly
+selected. Commit/push the qualified conversion before beginning new source work.
 
 ## Current — session dialogs Go conversion qualified
 

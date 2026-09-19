@@ -104,7 +104,7 @@ func uiInventoryStatusTooltip(pos image.Point) int {
 			uiInventoryTooltipKey("thing.db:AnkhGUI")
 			return 1
 		}
-		if hit(1049828) && C.sub_4BFD30() == 1 {
+		if hit(1049828) && sub_4BFD30() == 1 {
 			uiInventoryTooltipKey("GeneralPrint:TooltipKeyIcon")
 			return 1
 		}

@@ -59,7 +59,7 @@ func uiInventoryDrawWindow(w *gui.Window) int {
 		r.DrawString(uiInventorySmallFont(), "X "+strconv.FormatInt(int64(memmap.Int32(0x5D4594, 1050012)), 10), image.Pt(x+20, y+9))
 		copy(unsafe.Slice((*int32)(memmap.PtrOff(0x5D4594, 1049812)), 4), []int32{int32(x - 30), int32(y - 20), int32(x + 30), int32(y + 20)})
 	}
-	if noxflags.HasGame(4096) && C.sub_4BFD30() != 0 {
+	if noxflags.HasGame(4096) && sub_4BFD30() != 0 {
 		xx, yy := x+66, y+5
 		uiMeterImage(memmap.Uint32(0x5D4594, 1050004), image.Pt(xx-64, yy-58))
 		copy(unsafe.Slice((*int32)(memmap.PtrOff(0x5D4594, 1049828)), 4), []int32{int32(xx - 30), int32(yy - 20), int32(xx + 30), int32(yy + 20)})
@@ -84,7 +84,7 @@ func uiInventoryDrawWindow(w *gui.Window) int {
 			switch memmap.Uint8(0x5D4594, 1049870) {
 			case 0:
 				point := [2]int32{int32(pos.X), int32(pos.Y)}
-				C.sub_4BF7E0((*C.uint32_t)(unsafe.Pointer(&point[0])))
+				sub_4BF7E0((*C.uint32_t)(unsafe.Pointer(&point[0])))
 				uiMeterImage(memmap.Uint32(0x5D4594, 1049908), pos)
 			case 1:
 				uiInventoryStats(pos)

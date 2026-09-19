@@ -2133,3 +2133,20 @@ The shared console helper's localized client-decoding caller remains in scope.
 Qualified C13,456 /57 files /zero reference (+14 lines); headers are excluded.
 See CLIENT_INTERACTION.md and client-interaction-c-qualification.json. The
 centered-text truncation choice remains recorded for later review.
+
+### Client interaction: unreachable dialog and scalar interface
+
+Retire the connection-type dialog's unreachable creation/update/callback graph,
+its sole owner, and its constant-false visibility getter. Whole-repository caller
+and callback review found no live entry. The former MOTD fixture deliberately
+injected that dead owner; remove its gate6 explicitly rather than retaining dead
+production state for testing. Preserve all72 surviving rows, unchanged and in
+original order, from the80-row C baseline. The native manifest records the exact
+projection while the original C capture hashes stay frozen.
+
+Change the retained key-update C argument from uint32_t* to uint32_t. Its sole C
+caller passes a numeric byte, and the implementation compares numeric state
+without dereferencing it. This preserves the32-bit value and avoids constructing
+invalid Go pointers from scalar state. Existing boundary contracts cover the
+values. Both decisions are reversible and recorded for later review; neither
+changes a reachable game feature. See CLIENT_INTERACTION.md.

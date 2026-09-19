@@ -65,19 +65,19 @@ func Nox_xxx_guiSpellTargetClickCheckSend_45DBB0() {
 }
 
 func Nox_xxx_clientTrade_42E850(dr *client.Drawable) {
-	C.nox_xxx_clientTrade_42E850((*nox_drawable)(dr.C()))
+	nox_xxx_clientTrade_42E850((*nox_drawable)(dr.C()))
 }
 
 func Nox_xxx_clientTalk_42E7B0(dr *client.Drawable) {
-	C.nox_xxx_clientTalk_42E7B0((*nox_drawable)(dr.C()))
+	nox_xxx_clientTalk_42E7B0((*nox_drawable)(dr.C()))
 }
 
 func Nox_xxx_clientCollideOrUse_42E810(dr *client.Drawable) {
-	C.nox_xxx_clientCollideOrUse_42E810((*nox_drawable)(dr.C()))
+	nox_xxx_clientCollideOrUse_42E810((*nox_drawable)(dr.C()))
 }
 
 func Nox_xxx_packetGetMarshall_476F40() uint32 {
-	return uint32(C.nox_xxx_packetGetMarshall_476F40())
+	return uint32(nox_xxx_packetGetMarshall_476F40())
 }
 
 func Nox_xxx_clientUpdateButtonRow_45E110(ind int) {
@@ -101,7 +101,7 @@ func Sub_4C01C0(a1, a2 int, a3 unsafe.Pointer, a4 int) {
 }
 
 func Nox_client_chatStart_46A430(v int) {
-	C.nox_client_chatStart_46A430(C.int(v))
+	nox_client_chatStart_46A430(C.int(v))
 }
 
 func Nox_client_toggleSpellbook_45AC70() {
@@ -169,7 +169,7 @@ func Sub_554300() uint32 {
 	return pingAverage()
 }
 func Nox_client_mousePriKey_430AF0() int {
-	return int(C.nox_client_mousePriKey_430AF0())
+	return int(nox_client_mousePriKey_430AF0())
 }
 func Sub_42EB90(a1 int) {
 	C.sub_42EB90(C.int(a1))

@@ -46,7 +46,6 @@ extern uint32_t dword_5d4594_1047520;
 extern uint32_t dword_5d4594_2523804;
 extern uint32_t dword_5d4594_1309820;
 extern uint32_t dword_5d4594_1321228;
-extern uint32_t dword_5d4594_1319056;
 extern uint32_t dword_5d4594_1319232;
 extern uint32_t dword_5d4594_1319236;
 extern uint32_t dword_5d4594_1319248;
@@ -77,7 +76,7 @@ func PortTestInventoryWindowWords() (map[string]*uint32, func()) {
 		"dword_5d4594_1319248":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1319248)),
 		"dword_5d4594_1319236":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1319236)),
 		"dword_5d4594_1319232":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1319232)),
-		"dword_5d4594_1319056":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1319056)),
+		"dword_5d4594_1319056":                              (*uint32)(unsafe.Pointer(&interactionKeyState)),
 		"nox_wnd_quitMenu_825760":                           (*uint32)(unsafe.Pointer(&sessionQuitRoot)),
 		"dword_5d4594_1321228":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321228)),
 		"dword_5d4594_1309820":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309820)),

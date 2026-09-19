@@ -43,7 +43,7 @@ func Nox_cmd_unset_net_debug(_ int, t []string) bool {
 }
 func Nox_cmd_show_info(_ int, _ []string) bool {
 	Nox_xxx_clientPlaySoundSpecial_452D80(921, 100)
-	C.sub_435F60()
+	sub_435F60()
 	return true
 }
 func Nox_cmd_show_mem(_ int, _ []string) bool {

@@ -2,10 +2,7 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t dword_5d4594_1064856, dword_5d4594_1064860;
-extern uint32_t dword_5d4594_1064864, dword_5d4594_1064868;
 extern int nox_win_width, nox_win_height;
-void nox_xxx_consoleEsc_49B7A0();
 */
 import "C"
 
@@ -21,14 +18,14 @@ import (
 )
 
 func interactionChatRoot() *gui.Window {
-	return (*gui.Window)(unsafe.Pointer(uintptr(C.dword_5d4594_1064856)))
+	return (*gui.Window)(unsafe.Pointer(uintptr(interactionChatRootWord)))
 }
 func interactionChatEdit() *gui.Window {
-	return (*gui.Window)(unsafe.Pointer(uintptr(C.dword_5d4594_1064860)))
+	return (*gui.Window)(unsafe.Pointer(uintptr(interactionChatEditWord)))
 }
-func interactionChatData() unsafe.Pointer { return unsafe.Pointer(uintptr(C.dword_5d4594_1064864)) }
+func interactionChatData() unsafe.Pointer { return unsafe.Pointer(uintptr(interactionChatDataWord)) }
 func interactionChatStart(team uint32) {
-	if noxflags.HasGame(2048) || C.dword_5d4594_1064868 != 0 {
+	if noxflags.HasGame(2048) || interactionChatActive != 0 {
 		return
 	}
 	data := interactionChatData()
@@ -37,7 +34,7 @@ func interactionChatStart(team uint32) {
 	interactionChatRoot().ShowModal()
 	interactionChatRoot().StackPush()
 	GetClient().Cli().GUI.Focus(interactionChatEdit())
-	C.dword_5d4594_1064868 = 1
+	interactionChatActive = 1
 	*memmap.PtrUint32(0x5D4594, 1064872) = team
 }
 func interactionSay(text *uint16, team int) uint32 {
@@ -95,7 +92,7 @@ func interactionChatClose() int {
 	root.Flags &^= 8
 	edit.Flags &^= 8
 	g.ValYYY = 1
-	C.dword_5d4594_1064868 = 0
+	interactionChatActive = 0
 	return 1
 }
 func interactionChatOpen() *gui.Window {
@@ -103,19 +100,19 @@ func interactionChatOpen() *gui.Window {
 	*memmap.PtrUint32(0x5D4594, 1064876) = uint32(x)
 	*memmap.PtrUint32(0x5D4594, 1064880) = uint32(y)
 	root := Nox_new_window_from_file("GuiChat.wnd", interactionChatEvent)
-	C.dword_5d4594_1064856 = C.uint32_t(uintptr(root.C()))
+	interactionChatRootWord = uint32(uintptr(root.C()))
 	if root == nil {
 		return nil
 	}
 	root.SetPos(image.Pt(int(x), int(y)))
 	edit := root.ChildByID(9201)
-	C.dword_5d4594_1064860 = C.uint32_t(uintptr(edit.C()))
+	interactionChatEditWord = uint32(uintptr(edit.C()))
 	if edit == nil {
 		return nil
 	}
 	edit.SetDraw(interactionChatDraw)
 	edit.SetFunc93(interactionChatKey)
-	C.dword_5d4594_1064864 = C.uint32_t(uintptr(edit.WidgetData))
+	interactionChatDataWord = uint32(uintptr(edit.WidgetData))
 	return root
 }
 func interactionChatKey(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
@@ -124,7 +121,7 @@ func interactionChatKey(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 		return uiEntryInput(w, ev)
 	}
 	if b == 2 {
-		C.nox_xxx_consoleEsc_49B7A0()
+		nox_xxx_consoleEsc_49B7A0()
 	}
 	return gui.RawEventResp(1)
 }
@@ -142,49 +139,39 @@ func interactionChatDestroy() int {
 	result := 0
 	if root := interactionChatRoot(); root != nil {
 		root.Destroy()
-		C.dword_5d4594_1064856 = 0
+		interactionChatRootWord = 0
 	}
-	C.dword_5d4594_1064860 = 0
-	C.dword_5d4594_1064864 = 0
-	C.dword_5d4594_1064868 = 0
+	interactionChatEditWord = 0
+	interactionChatDataWord = 0
+	interactionChatActive = 0
 	*memmap.PtrUint32(0x5D4594, 1064872) = 0
 	return result
 }
 
-//export sub_469FA0
 func sub_469FA0() C.int { return C.int(memmap.Uint32(0x5D4594, 1064848)) }
 
-//export nox_client_chatStart_46A430
 func nox_client_chatStart_46A430(v C.int) { interactionChatStart(uint32(v)) }
 
-//export sub_46A4A0
-func sub_46A4A0() C.int { return C.int(C.dword_5d4594_1064868) }
+func sub_46A4A0() C.int { return C.int(interactionChatActive) }
 
-//export nox_xxx_cmdSayDo_46A4B0
 func nox_xxx_cmdSayDo_46A4B0(text *C.ushort, v C.int) C.size_t {
 	return C.size_t(interactionSay((*uint16)(unsafe.Pointer(text)), int(v)))
 }
 
-//export sub_46A5D0
 func sub_46A5D0(w *C.uint32_t, d C.int) C.int {
 	return C.int(interactionChatDraw((*gui.Window)(unsafe.Pointer(w)), (*gui.WindowData)(unsafe.Pointer(uintptr(uint32(d))))))
 }
 
-//export sub_46A6A0
 func sub_46A6A0() C.int { return C.int(interactionChatClose()) }
 
-//export sub_46A730
 func sub_46A730() *C.uint32_t { return (*C.uint32_t)(interactionChatOpen().C()) }
 
-//export sub_46A7E0
 func sub_46A7E0(w *C.uint32_t, code, a, b C.int) C.int {
 	return C.int(gui.EventRespInt(interactionChatKey((*gui.Window)(unsafe.Pointer(w)), &gui.RawEvent{Event: int(code), Arg1: uintptr(uint32(a)), Arg2: uintptr(uint32(b))})))
 }
 
-//export sub_46A820
 func sub_46A820(w, code, a, b C.int) C.int {
 	return C.int(gui.EventRespInt(interactionChatEvent((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), &gui.RawEvent{Event: int(code), Arg1: uintptr(uint32(a)), Arg2: uintptr(uint32(b))})))
 }
 
-//export sub_46A860
 func sub_46A860() C.int { return C.int(interactionChatDestroy()) }

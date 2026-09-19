@@ -119,7 +119,7 @@ func sub_46B120(a1, a2 *nox_window) int {
 }
 
 func Sub_46A4A0() int {
-	return int(C.sub_46A4A0())
+	return int(sub_46A4A0())
 }
 
 func Nox_xxx_wndEditProc_487D70(a1 *gui.Window, ev gui.WindowEvent) gui.RawEventResp {

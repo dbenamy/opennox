@@ -124,7 +124,7 @@ func Sub_4602F0() {
 	quickbarClearSlots()
 }
 func Nox_xxx_playerAnimCheck_4372B0() int {
-	return int(C.nox_xxx_playerAnimCheck_4372B0())
+	return int(nox_xxx_playerAnimCheck_4372B0())
 }
 func Sub_41DA10(a1 int) {
 	C.sub_41DA10(C.int(a1))

@@ -194,7 +194,7 @@ func Sub_4D39F0(a1 string) {
 	prefabScriptGeneration(a1)
 }
 func Sub_48D4B0(a1 int) {
-	C.sub_48D4B0(C.int(a1))
+	sub_48D4B0(C.int(a1))
 }
 func Nox_xxx_set3512_40A340(a1 int) {
 	serverConfig3512Set(int32(a1))
@@ -211,7 +211,7 @@ func Nox_xxx_gui_43E1A0(a1 int) {
 func Nox_xxx_printCentered_445490(str string) {
 	wstr, free := CWString(str)
 	defer free()
-	C.nox_xxx_printCentered_445490(wstr)
+	nox_xxx_printCentered_445490(wstr)
 }
 func Nox_xxx_mapValidateMB_4CF470(a1 string, a2 uint32) int {
 	return int(sessionMapValidate((*byte)(unsafe.Pointer(internCStr(a1))), a2))

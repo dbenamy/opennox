@@ -59,11 +59,11 @@ func uiInventorySetAlternate(cell *uiInventoryCell) int {
 	C.dword_5d4594_1062480 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(cell)))
 	uiInventoryClearAlternateFlags()
 	if cell == nil {
-		return int(C.nox_xxx_clientReportSecondaryWeapon_4BF010(0))
+		return int(nox_xxx_clientReportSecondaryWeapon_4BF010(0))
 	}
 	cell.Drawable.NetCode32 = cell.Codes[0]
 	cell.Alternate = 1
-	return int(C.nox_xxx_clientReportSecondaryWeapon_4BF010(C.int(uiInventoryPointer(cell.Drawable.C()))))
+	return int(nox_xxx_clientReportSecondaryWeapon_4BF010(C.int(uiInventoryPointer(cell.Drawable.C()))))
 }
 
 //export nox_xxx_clientSetAltWeapon_461550

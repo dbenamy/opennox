@@ -158,7 +158,7 @@ func monsterMainAI(u *server.Object) {
 			core.Audio.EventObj(sound.ID(id), u, 0, 0)
 		}
 	}
-	if noxflags.HasGame(2048) && C.nox_xxx_guiCursor_477600() == 0 && u.Field5&16 != 0 {
+	if noxflags.HasGame(2048) && nox_xxx_guiCursor_477600() == 0 && u.Field5&16 != 0 {
 		if host := core.Players.HostUnit(); host != nil && host.ObjFlags&2 == 0 && !ud.HasAction(2) {
 			p := host.UpdateDataPlayer()
 			mouse := p.Player.CursorVec

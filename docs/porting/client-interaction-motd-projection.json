@@ -1,0 +1,9 @@
+{
+  "baseline": "dd7e94f4",
+  "original_sha256": "2666ad7aacd222ef06a0198a352ce0d44c398145cc5a3a050f230e82be7cfed7",
+  "projected_sha256": "74fed68ae25ba22964717563ccdc54727bd5e9de41fc2a939e3c1d675b9f8c0e",
+  "original_rows": 80,
+  "retained_rows": 72,
+  "projection": "retain rows whose Gate != 6, in original order; preserve every field",
+  "reason": "Gate 6 injected the owner of an unreachable connection-dialog graph; owner and graph retired."
+}

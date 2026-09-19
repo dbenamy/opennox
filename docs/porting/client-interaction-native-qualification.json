@@ -1,0 +1,188 @@
+{
+  "status": "qualified native conversion",
+  "c_baseline": "dd7e94f4",
+  "recovery_checkpoint": "8febbadb",
+  "source_files": 2751,
+  "targets": {
+    "default": {
+      "root_tests": 493,
+      "interaction_captures": 31,
+      "inherited_captures": 227,
+      "wall_seconds": 345.4847420710139
+    },
+    "server": {
+      "root_tests": 490,
+      "interaction_captures": 29,
+      "inherited_captures": 226,
+      "wall_seconds": 343.0202171939891
+    },
+    "highres": {
+      "root_tests": 493,
+      "interaction_captures": 31,
+      "inherited_captures": 227,
+      "wall_seconds": 347.5827830720227
+    }
+  },
+  "production": "build/port-client-interaction/native-production/production/production.json",
+  "static": "build/port-client-interaction/static-native-cleanup.log",
+  "preflight": "build/baseline/runs/client-interaction-native-preflight/result.json",
+  "translated_live_routines": 78,
+  "orphan_bodies_removed": 4,
+  "constant_false_getter_removed": "sub_49CB40",
+  "interfaces": {
+    "retained": [
+      "nox_client_drawable_testBuff_4356C0",
+      "nox_xxx_cliShowHelpGui_49C560",
+      "nox_xxx_initTime_435570",
+      "nox_xxx_printCentered_445490",
+      "sub_435700",
+      "sub_436550",
+      "sub_445450",
+      "sub_479D00",
+      "sub_48D4B0",
+      "sub_49B4B0",
+      "sub_4BFBB0"
+    ],
+    "retired": [
+      "nox_client_chatStart_46A430",
+      "nox_client_mousePriKey_430AF0",
+      "nox_client_setMousePos_430B10",
+      "nox_xxx_cliToggleObsWindow_4357A0",
+      "nox_xxx_clientCollideOrUse_42E810",
+      "nox_xxx_clientEnumHover_476FA0",
+      "nox_xxx_clientIsObserver_4372E0",
+      "nox_xxx_clientOnCursorHover_477050",
+      "nox_xxx_clientPickup_46C140",
+      "nox_xxx_clientReportSecondaryWeapon_4BF010",
+      "nox_xxx_clientTalk_42E7B0",
+      "nox_xxx_clientTrade_42E850",
+      "nox_xxx_cmdSayDo_46A4B0",
+      "nox_xxx_consoleEsc_49B7A0",
+      "nox_xxx_cursor_430B00",
+      "nox_xxx_drawMessageLines_445530",
+      "nox_xxx_guiChatIconLoad_445650",
+      "nox_xxx_guiChatMode_4456E0",
+      "nox_xxx_guiChatShowHide_445730",
+      "nox_xxx_guiCursor_477600",
+      "nox_xxx_guiDialog_479B00",
+      "nox_xxx_packetGetMarshall_476F40",
+      "nox_xxx_playerAnimCheck_4372B0",
+      "nox_xxx_showObserverWindow_48CA70",
+      "nox_xxx_wnd_49C760",
+      "sub_430AA0",
+      "sub_435F60",
+      "sub_437100",
+      "sub_445770",
+      "sub_469FA0",
+      "sub_46A4A0",
+      "sub_46A5D0",
+      "sub_46A6A0",
+      "sub_46A730",
+      "sub_46A7E0",
+      "sub_46A820",
+      "sub_46A860",
+      "sub_479950",
+      "sub_4799A0",
+      "sub_479BE0",
+      "sub_479C40",
+      "sub_479CB0",
+      "sub_479D10",
+      "sub_47A260",
+      "sub_48C980",
+      "sub_48C9F0",
+      "sub_49B3E0",
+      "sub_49B420",
+      "sub_49B490",
+      "sub_49B6B0",
+      "sub_49B6E0",
+      "sub_49C7A0",
+      "sub_49C810",
+      "sub_4BF7E0",
+      "sub_4BF9F0",
+      "sub_4BFAD0",
+      "sub_4BFB70",
+      "sub_4BFBF0",
+      "sub_4BFC70",
+      "sub_4BFC90",
+      "sub_4BFCD0",
+      "sub_4BFD10",
+      "sub_4BFD30",
+      "sub_4C3390",
+      "sub_4C3410",
+      "sub_4C3460",
+      "sub_4C34A0"
+    ],
+    "session_retired": [
+      "nox_gui_xxx_check_446360",
+      "sub_445C40",
+      "sub_446780",
+      "sub_446950"
+    ]
+  },
+  "owners_moved_to_go": {
+    "dword_5d4594_1064856": "interactionChatRootWord",
+    "dword_5d4594_1064860": "interactionChatEditWord",
+    "dword_5d4594_1064864": "interactionChatDataWord",
+    "dword_5d4594_1064868": "interactionChatActive",
+    "dword_5d4594_1096636": "interactionHoverDepth",
+    "dword_5d4594_1096640": "interactionHoverDrawable",
+    "dword_5d4594_1123520": "interactionConversationActive",
+    "dword_5d4594_1123524": "interactionConversationRoot",
+    "dword_5d4594_1193712": "interactionObserverIcon",
+    "dword_5d4594_1303452": "interactionGameOverRootWord",
+    "dword_5d4594_1305680": "interactionHelpRootWord",
+    "dword_5d4594_1319056": "interactionKeyState",
+    "dword_5d4594_1319060": "interactionKeyRootWord",
+    "dword_5d4594_1321216": "interactionVoteIcon",
+    "dword_5d4594_805820": "interactionPrimaryKey",
+    "dword_5d4594_811904": "interactionDrawToggle",
+    "dword_5d4594_825736": "interactionMessageHead",
+    "dword_5d4594_825744": "interactionChatIcon",
+    "nox_client_spriteUnderCursorXxx_1096644": "interactionUsableCursorDrawable",
+    "nox_xxx_useAudio_587000_80772": "interactionCursorMode"
+  },
+  "orphan_owner_removed": "dword_5d4594_1305684",
+  "motd_projection": "docs/porting/client-interaction-motd-projection.json",
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 50,
+      "lines": 11898
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "delta_from_baseline": -1558,
+  "full_suite": {
+    "exit": 1,
+    "wall_seconds": 56.4918933599256,
+    "failure_entries": 1553,
+    "packages": {
+      "skip": 32,
+      "pass": 15,
+      "fail": 3
+    },
+    "exact_failure_multiset_match": true,
+    "exact_package_result_match": true
+  },
+  "scenarios": {
+    "client-interaction-native-ui": {
+      "exit": 0,
+      "wall_seconds": 21.90129580302164
+    },
+    "client-interaction-native": {
+      "exit": 0,
+      "wall_seconds": 65.98189881606959
+    },
+    "client-interaction-native-save": {
+      "exit": 0,
+      "wall_seconds": 44.72363504883833
+    },
+    "client-interaction-native-inventory": {
+      "exit": 0,
+      "wall_seconds": 52.681165740825236
+    }
+  }
+}

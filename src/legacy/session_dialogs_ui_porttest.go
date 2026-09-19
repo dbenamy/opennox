@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t dword_5d4594_1305680,dword_5d4594_1305684;
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"unsafe"
@@ -14,8 +9,7 @@ import (
 
 func PortTestSessionDialogWords() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
-		"otherDialogA":   (*uint32)(unsafe.Pointer(&C.dword_5d4594_1305680)),
-		"otherDialogB":   (*uint32)(unsafe.Pointer(&C.dword_5d4594_1305684)),
+		"otherDialogA":   (*uint32)(unsafe.Pointer(&interactionHelpRootWord)),
 		"filter":         (*uint32)(unsafe.Pointer(&sessionFilterRoot)),
 		"filterControls": (*uint32)(unsafe.Pointer(&sessionFilterControls)),
 		"disconnect":     (*uint32)(unsafe.Pointer(&sessionDisconnectRoot)),

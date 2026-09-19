@@ -40,10 +40,8 @@ func interactionReportSecondary(dr *client.Drawable) int {
 	return reliableClientSend(31, msg[:], nil, 1)
 }
 
-//export nox_xxx_clientPickup_46C140
 func nox_xxx_clientPickup_46C140(dr *nox_drawable) { interactionPickup(asDrawable(dr)) }
 
-//export nox_xxx_clientReportSecondaryWeapon_4BF010
 func nox_xxx_clientReportSecondaryWeapon_4BF010(dr C.int) C.int {
 	return C.int(interactionReportSecondary((*client.Drawable)(unsafe.Pointer(uintptr(uint32(dr))))))
 }

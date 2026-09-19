@@ -3,8 +3,6 @@ package legacy
 /*
 #include "defs.h"
 extern int nox_drawable_count;
-extern void* dword_5d4594_1096640;
-extern void* nox_client_spriteUnderCursorXxx_1096644;
 int sub_4523D0(void* a1);
 void sub_45A9B0(nox_drawable* a1, nox_drawable* a2);
 int nox_xxx_unitSpriteCheckAlly_4951F0(int a1);
@@ -198,23 +196,23 @@ func CallDrawFunc(s *client.Drawable, vp *noxrender.Viewport) int {
 }
 
 func Nox_xxx_spriteGetMB_476F80() *client.Drawable {
-	return asDrawable((*nox_drawable)(C.dword_5d4594_1096640))
+	return asDrawable((*nox_drawable)(interactionHoverDrawable))
 }
 
 func Nox_xxx_clientGetSpriteAtCursor_476F90() *client.Drawable {
-	return asDrawable((*nox_drawable)(C.nox_client_spriteUnderCursorXxx_1096644))
+	return asDrawable((*nox_drawable)(interactionUsableCursorDrawable))
 }
 func Get_dword_5d4594_1096640() *client.Drawable {
-	return AsDrawableP(C.dword_5d4594_1096640)
+	return AsDrawableP(interactionHoverDrawable)
 }
 func Set_dword_5d4594_1096640(dr *client.Drawable) {
-	C.dword_5d4594_1096640 = dr.C()
+	interactionHoverDrawable = dr.C()
 }
 func Get_nox_client_spriteUnderCursorXxx_1096644() *client.Drawable {
-	return AsDrawableP(C.nox_client_spriteUnderCursorXxx_1096644)
+	return AsDrawableP(interactionUsableCursorDrawable)
 }
 func Set_nox_client_spriteUnderCursorXxx_1096644(dr *client.Drawable) {
-	C.nox_client_spriteUnderCursorXxx_1096644 = dr.C()
+	interactionUsableCursorDrawable = dr.C()
 }
 func Sub_495B50(fx *client.DrawableFX) {
 	combatFXDetach((*combatFX)(fx.C()))

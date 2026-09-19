@@ -61,7 +61,7 @@ func sub_471450(p *C.uint32_t) int { return uiMeterLabel((*gui.Window)(unsafe.Po
 func uiMeterMiniBar(w *gui.Window) int {
 	index := int(uintptr(w.WidgetData))
 	m := &uiMeters()[index]
-	if C.nox_xxx_clientIsObserver_4372E0() != 0 || C.nox_gameDisableMapDraw_5d4594_2650672 != 0 || noxflags.HasGame(9437184) {
+	if nox_xxx_clientIsObserver_4372E0() != 0 || C.nox_gameDisableMapDraw_5d4594_2650672 != 0 || noxflags.HasGame(9437184) {
 		return 1
 	}
 	x := int(C.nox_win_width)/2 + 15

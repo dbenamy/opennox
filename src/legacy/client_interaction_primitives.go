@@ -2,13 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t dword_5d4594_805820;
-extern uint32_t nox_xxx_useAudio_587000_80772;
-extern uint32_t dword_5d4594_811904;
-int sub_47A260();
-int sub_49CB40();
-int sub_49C810();
-int nox_xxx_showObserverWindow_48CA70(int);
 */
 import "C"
 
@@ -43,7 +36,7 @@ func interactionUse(dr *client.Drawable) {
 	uiInventoryItemRequest(123, dr)
 }
 func interactionTrade(dr *client.Drawable) {
-	if dr == nil || interactionPlayerBlocked() || C.sub_47A260() == 1 || sessionQuitShown() == 1 {
+	if dr == nil || interactionPlayerBlocked() || sub_47A260() == 1 || sessionQuitShown() == 1 {
 		return
 	}
 	var msg [4]byte
@@ -54,16 +47,16 @@ func interactionTrade(dr *client.Drawable) {
 func interactionMouseMode(v int32) int32 {
 	switch v {
 	case 1:
-		C.dword_5d4594_805820 = 1
-		C.nox_xxx_useAudio_587000_80772 = 9
+		interactionPrimaryKey = 1
+		interactionCursorMode = 9
 		return 0
 	case 2:
-		C.dword_5d4594_805820 = 2
-		C.nox_xxx_useAudio_587000_80772 = 13
+		interactionPrimaryKey = 2
+		interactionCursorMode = 13
 		return 0
 	default:
-		C.dword_5d4594_805820 = 0
-		C.nox_xxx_useAudio_587000_80772 = 5
+		interactionPrimaryKey = 0
+		interactionCursorMode = 5
 		return v - 2
 	}
 }
@@ -94,15 +87,15 @@ func interactionObserverToggle() int {
 	if p != nil && p.Field3680&1 != 0 {
 		show = 0
 	}
-	return int(C.nox_xxx_showObserverWindow_48CA70(C.int(show)))
+	return int(nox_xxx_showObserverWindow_48CA70(C.int(show)))
 }
-func interactionDrawToggle() uint32 {
-	v := 1 - uint32(C.dword_5d4594_811904)
-	C.dword_5d4594_811904 = C.uint32_t(v)
+func interactionToggleDrawing() uint32 {
+	v := 1 - uint32(interactionDrawToggle)
+	interactionDrawToggle = uint32(v)
 	return v
 }
 func interactionFrameGate() int {
-	if serverOptionsRoot != 0 || sessionQuitShown() != 0 || C.sub_49CB40() != 0 || C.sub_49C810() != 0 || sessionMOTDShown() != 0 || scoreboardEnabled() || Nox_gui_console_flagXxx_451410() != 0 {
+	if serverOptionsRoot != 0 || sessionQuitShown() != 0 || sub_49C810() != 0 || sessionMOTDShown() != 0 || scoreboardEnabled() || Nox_gui_console_flagXxx_451410() != 0 {
 		*memmap.PtrUint32(0x5D4594, 811920) = GetServer().S().Frame()
 		return 1
 	}
@@ -140,28 +133,20 @@ func interactionIsObserver() int {
 	return bool2int(p != nil && *(*uint32)(unsafe.Pointer(&p.Active)) == 1 && p.Field3680&3 != 0)
 }
 
-// These temporary entries keep the connected conversion buildable. The final
-// caller audit removes every entry without a remaining C caller or callback.
-//
-//export nox_xxx_clientTalk_42E7B0
+// Legacy-shaped Go adapters preserve numeric conventions for existing callers.
+// Only entries with live C callers retain an export.
 func nox_xxx_clientTalk_42E7B0(dr *nox_drawable) { interactionTalk(asDrawable(dr)) }
 
-//export nox_xxx_clientCollideOrUse_42E810
 func nox_xxx_clientCollideOrUse_42E810(dr *nox_drawable) { interactionUse(asDrawable(dr)) }
 
-//export nox_xxx_clientTrade_42E850
 func nox_xxx_clientTrade_42E850(dr *nox_drawable) { interactionTrade(asDrawable(dr)) }
 
-//export sub_430AA0
 func sub_430AA0(v C.int) C.int { return C.int(interactionMouseMode(int32(v))) }
 
-//export nox_client_mousePriKey_430AF0
-func nox_client_mousePriKey_430AF0() C.int { return C.int(C.dword_5d4594_805820) }
+func nox_client_mousePriKey_430AF0() C.int { return C.int(interactionPrimaryKey) }
 
-//export nox_xxx_cursor_430B00
-func nox_xxx_cursor_430B00() C.int { return C.int(C.nox_xxx_useAudio_587000_80772) }
+func nox_xxx_cursor_430B00() C.int { return C.int(interactionCursorMode) }
 
-//export nox_client_setMousePos_430B10
 func nox_client_setMousePos_430B10(x, y C.int) {
 	GetClient().ChangeMousePos(image.Pt(int(x), int(y)), true)
 }
@@ -179,20 +164,15 @@ func sub_435700(text *C.ushort, v C.int) *C.ushort {
 	return (*C.ushort)(unsafe.Pointer(interactionTextState((*uint16)(unsafe.Pointer(text)), uint32(v))))
 }
 
-//export nox_xxx_cliToggleObsWindow_4357A0
 func nox_xxx_cliToggleObsWindow_4357A0() C.int { return C.int(interactionObserverToggle()) }
 
-//export sub_435F60
-func sub_435F60() C.int { return C.int(interactionDrawToggle()) }
+func sub_435F60() C.int { return C.int(interactionToggleDrawing()) }
 
 //export sub_436550
 func sub_436550() C.int { return C.int(interactionFrameGate()) }
 
-//export sub_437100
 func sub_437100() { interactionHUDVisibility() }
 
-//export nox_xxx_playerAnimCheck_4372B0
 func nox_xxx_playerAnimCheck_4372B0() C.int { return C.int(interactionPlayerAnimation()) }
 
-//export nox_xxx_clientIsObserver_4372E0
 func nox_xxx_clientIsObserver_4372E0() C.int { return C.int(interactionIsObserver()) }

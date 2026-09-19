@@ -14,24 +14,21 @@
 
 ## Current status
 
-The server browser is now Go: 64 live routines converted, one orphan removed,
-58 private C interfaces and 34 named C owners retired. Seven selected interfaces
-remain for live C entries and animation slots. See
-[SERVER_BROWSER.md](docs/porting/SERVER_BROWSER.md).
+Client interaction and the remaining game dialogs now use Go:78 live routines
+translated, four orphan bodies and one constant-false getter removed,67 private C
+exports retired, and20 state owners moved to Go. Eleven selected exports remain
+for actual C callers/callbacks. Four former session-dialog exports are also retired.
+See [CLIENT_INTERACTION.md](docs/porting/CLIENT_INTERACTION.md).
 
-Latest qualified production C is **13,456 physical lines in 57 files**, zero
-reference C. The session-dialog conversion removes **1,015 C lines**: server
-filters, MOTD, disconnect and quit menus now use Go, with four exports retained
-for remaining C callers. All-target captures and fresh production qualification
-pass. See [SESSION_DIALOGS.md](docs/porting/SESSION_DIALOGS.md) and
-[PORTING_STATE.md](PORTING_STATE.md).
+Latest qualified production C is **11,898 physical lines in50 files**, zero
+reference C: **1,558 fewer lines** than this batch's corrected C baseline.
+Default/server/highres affected captures, fresh production builds/ABI, exact known
+full-suite outcomes and dialog/gameplay/save-load/inventory scenarios all pass.
+See [PORTING_STATE.md](PORTING_STATE.md) for the current recovery checkpoint.
 
-Twelve orphaned configuration callbacks were also removed after tracing their
-table and the historical removal of its parser. See
-[CONFIG_CALLBACK_RETIREMENT.md](docs/porting/CONFIG_CALLBACK_RETIREMENT.md).
-The connected client-interaction and remaining game-dialog batch now has a
-qualified, frozen C baseline. Text prerequisites add14 C lines; translation is
-next. See [CLIENT_INTERACTION.md](docs/porting/CLIENT_INTERACTION.md).
+Previous completed GUI batches include the
+[server browser](docs/porting/SERVER_BROWSER.md) and
+[session dialogs](docs/porting/SESSION_DIALOGS.md).
 
 ## Goal and target
 

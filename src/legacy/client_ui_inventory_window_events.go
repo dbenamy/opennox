@@ -62,7 +62,7 @@ func uiInventoryPanelEvents(w *gui.Window, event int, a, b uintptr) int {
 		uiInventorySliderValue(slider, 16394, uint32(max-v), 0)
 		audioEventPlay(766, 100, 0, 0)
 	case 9105:
-		height := int32(C.sub_469FA0()) - 150
+		height := int32(sub_469FA0()) - 150
 		if uiInventoryMode() == 5 {
 			return 0
 		}

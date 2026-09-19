@@ -51,7 +51,7 @@ func Sub_436F50() {
 }
 
 func Sub_437100() {
-	C.sub_437100()
+	sub_437100()
 }
 
 func Sub_470DE0() {
@@ -59,7 +59,7 @@ func Sub_470DE0() {
 }
 
 func Nox_xxx_clientEnumHover_476FA0() {
-	C.nox_xxx_clientEnumHover_476FA0()
+	nox_xxx_clientEnumHover_476FA0()
 }
 
 func Nox_xxx_spriteDeleteSomeList_49C4B0() {
@@ -75,7 +75,7 @@ func Nox_xxx_polygonDrawColor_421B80() {
 }
 
 func Nox_xxx_cliToggleObsWindow_4357A0() {
-	C.nox_xxx_cliToggleObsWindow_4357A0()
+	nox_xxx_cliToggleObsWindow_4357A0()
 }
 
 func Nox_xxx_motd_4467F0() {
@@ -87,7 +87,7 @@ func Sub_42EBA0() int {
 }
 
 func Sub_49B6E0() {
-	C.sub_49B6E0()
+	sub_49B6E0()
 }
 
 func Get_nox_thing_glow_orb_draw() unsafe.Pointer {

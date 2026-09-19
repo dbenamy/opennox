@@ -65,13 +65,11 @@ extern uint32_t dword_5d4594_1320972;
 extern uint32_t dword_5d4594_1321208;
 extern uint32_t dword_5d4594_1321800;
 extern uint32_t dword_5d4594_1321224;
-extern uint32_t dword_5d4594_1319056;
 extern uint32_t dword_5d4594_1320932;
 extern uint32_t dword_5d4594_1321032;
 extern uint32_t dword_5d4594_1319264;
 extern uint32_t dword_5d4594_1321044;
 extern uint32_t dword_5d4594_1319232;
-extern uint32_t dword_5d4594_1321216;
 extern nox_window* dword_5d4594_1321236;
 extern nox_window* dword_5d4594_1321240;
 extern nox_window* dword_5d4594_1321248;
@@ -86,7 +84,6 @@ extern uint32_t dword_5d4594_1316408;
 extern uint64_t qword_581450_9512;
 extern uint64_t qword_581450_9544;
 extern uint32_t dword_5d4594_1320968;
-extern uint32_t dword_5d4594_1319060;
 extern uint32_t dword_5d4594_1522632;
 extern uint32_t dword_5d4594_1321252;
 extern uint32_t dword_5d4594_1522612;
@@ -119,174 +116,15 @@ void* nox_gui_itemAmount_dialog_1319228 = 0;
 
 
 //----- (004BF7E0) --------------------------------------------------------
-short sub_4BF7E0(uint32_t* a1) {
-	int v1;             // esi
-	int v2;             // ebp
-	int v3;             // eax
-	int v4;             // edi
-	int v5;             // ebx
-	int v6;             // eax
-	int v7;             // eax
-	int v8;             // ebx
-	int v9;             // eax
-	int v10;            // ebx
-	int v11;            // eax
-	int v13;            // [esp+10h] [ebp-4h]
-	unsigned char* v14; // [esp+18h] [ebp+4h]
-	unsigned char* v15; // [esp+18h] [ebp+4h]
 
-	v1 = a1[1] + 15;
-	v2 = *a1 + 11;
-	v13 = a1[1] + 15;
-	nox_client_drawSetColor_434460(nox_color_black_2650656);
-	nox_client_drawRectFilledOpaque_49CE30(v2, v1, 200, 200);
-	LOWORD(v3) = *getMemU16Ptr(0x852978, 8);
-	if (*getMemU32Ptr(0x852978, 8)) {
-		v4 = dword_8531A0_2576;
-		if (dword_8531A0_2576) {
-			nox_draw_setMaterial_4341D0(1, *(uint32_t*)(dword_8531A0_2576 + 2296));
-			nox_draw_setMaterial_4341D0(2, *(uint32_t*)(v4 + 2304));
-			nox_draw_setMaterial_4341D0(3, *(uint32_t*)(v4 + 2312));
-			nox_draw_setMaterial_4341D0(4, *(uint32_t*)(v4 + 2308));
-			nox_draw_setMaterial_4341D0(5, *(uint32_t*)(v4 + 2300));
-			nox_draw_setMaterial_4341D0(6, *(uint32_t*)(v4 + 2292));
-			if (*(uint32_t*)(v4 + 2292) == *(uint32_t*)(v4 + 2296)) {
-				nox_client_drawImageAt_47D2C0(*getMemU32Ptr(0x973A20, 24 + 4 * *(unsigned char*)(v4 + 2252)), v2, v1);
-			} else {
-				nox_client_drawImageAt_47D2C0(*getMemU32Ptr(0x973A20, 16 + 4 * *(unsigned char*)(v4 + 2252)), v2, v1);
-			}
-			v5 = 0;
-			v14 = getMemAt(0x973A20, 32 + 104 * *(unsigned char*)(v4 + 2252));
-			do {
-				if (*(uint32_t*)v4 & (1 << v5) && !((1 << v5) & 0x3000000)) {
-					v6 = sub_415CD0((char*)(1 << v5));
-					sub_4BF9F0(1 << v5, v6, v2, v13, (int)v14, v5, 0);
-				}
-				++v5;
-			} while (v5 < 26);
-			if (*(uint8_t*)v4 & 2) {
-				v7 = sub_415CD0((char*)2);
-				sub_4BF9F0(2, v7, v2, v13, (int)v14, 0, 1);
-			}
-			v8 = 0;
-			do {
-				if (*(uint32_t*)v4 & (1 << v8) && (1 << v8) & 0x3000000) {
-					v9 = sub_415CD0((char*)(1 << v8));
-					sub_4BF9F0(1 << v8, v9, v2, v13, (int)v14, v8, 0);
-				}
-				++v8;
-			} while (v8 < 26);
-			v10 = 0;
-			v15 = getMemAt(0x973A20, 256 + 108 * *(unsigned char*)(v4 + 2252));
-			do {
-				v3 = *(uint32_t*)(v4 + 4);
-				if (v3 & (1 << v10)) {
-					v11 = sub_415840((char*)(1 << v10));
-					LOWORD(v3) = sub_4BF9F0(1 << v10, v11, v2, v13, (int)v15, v10, 0);
-				}
-				++v10;
-			} while (v10 < 27);
-		}
-	}
-	return v3;
-}
 
 //----- (004BF9F0) --------------------------------------------------------
-short sub_4BF9F0(int a1, int a2, int a3, int a4, int a5, int a6, int a7) {
-	int v7;        // eax
-	int v8;        // esi
-	uint32_t* v9;  // eax
-	int v10;       // edx
-	int v11;       // ecx
-	uint32_t* v12; // ebx
-	int v13;       // ebp
-	int v14;       // edi
-	uint8_t* v15;  // esi
-	int* v16;      // edi
-	uint8_t** v17; // esi
-	int v18;       // ebx
-	uint8_t* v19;  // eax
 
-	v7 = sub_461600(a2);
-	v8 = v7;
-	if (v7) {
-		if (*(uint32_t*)(v7 + 112) & 0x2000000) {
-			v9 = nox_xxx_equipClothFindDefByTT_413270(*(uint32_t*)(v7 + 108));
-		} else {
-			v9 = nox_xxx_getProjectileClassById_413250(*(uint32_t*)(v7 + 108));
-		}
-		v12 = v9;
-		if (v9) {
-			v13 = v8 + 432;
-			v14 = 1;
-			v15 = v9 + 4;
-			do {
-				LOBYTE(v9) = v15[1];
-				LOBYTE(v11) = *v15;
-				LOBYTE(v10) = *(v15 - 1);
-				nox_draw_setMaterial_4340A0(v14++, v10, v11, (int)v9);
-				v15 += 3;
-			} while (v14 < 7);
-			v16 = v12 + 9;
-			v17 = (uint8_t**)v13;
-			v18 = 4;
-			do {
-				v19 = *v17;
-				if (*v17) {
-					LOBYTE(v11) = v19[26];
-					LOBYTE(v10) = v19[25];
-					LOBYTE(v19) = v19[24];
-					nox_draw_setMaterial_4340A0(*v16, (int)v19, v10, v11);
-				}
-				++v17;
-				++v16;
-				--v18;
-			} while (v18);
-		}
-		if (a7) {
-			nox_client_drawImageAt_47D2C0(*getMemIntPtr(0x5D4594, 1319052), a3, a4);
-		} else {
-			nox_client_drawImageAt_47D2C0(*(uint32_t*)(a5 + 4 * a6), a3, a4);
-		}
-	}
-	return v7;
-}
 // 4BFA4C: variable 'v10' is possibly undefined
 // 4BFA4C: variable 'v11' is possibly undefined
 
 //----- (004BFAD0) --------------------------------------------------------
-int sub_4BFAD0() {
-	int v0;         // esi
-	int v1;         // ebx
-	int i;          // edi
-	char* v3;       // eax
-	const char* v4; // ecx
-	int v5;         // ebp
-	int v6;         // ebp
 
-	v0 = 0;
-	v1 = 0;
-	for (i = 0; i < 8; i += 4) {
-		v3 = nox_xxx_gLoadImg_42F970(*(const char**)getMemAt(0x587000, 180960 + i));
-		v4 = *(const char**)getMemAt(0x587000, 180968 + i);
-		*getMemU32Ptr(0x973A20, 16 + i) = v3;
-		*getMemU32Ptr(0x973A20, 24 + i) = nox_xxx_gLoadImg_42F970(v4);
-		v5 = 26;
-		do {
-			*getMemU32Ptr(0x973A20, 32 + v1) = nox_xxx_gLoadImg_42F970(*(const char**)getMemAt(0x587000, 180976 + v1));
-			v1 += 4;
-			--v5;
-		} while (v5);
-		v6 = 27;
-		do {
-			*getMemU32Ptr(0x973A20, 256 + v0) = nox_xxx_gLoadImg_42F970(*(const char**)getMemAt(0x587000, 181184 + v0));
-			v0 += 4;
-			--v6;
-		} while (v6);
-	}
-	*getMemU32Ptr(0x5D4594, 1319052) = nox_xxx_gLoadImg_42F970("MaleMedievalCloakTop");
-	return 1;
-}
 
 //----- (004BFB70) --------------------------------------------------------
 

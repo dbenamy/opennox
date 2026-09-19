@@ -4,7 +4,6 @@ package legacy
 #include "defs.h"
 #include "client__gui__guicon.h"
 #include "common__strman.h"
-extern uint32_t dword_5d4594_825736;
 extern uint32_t nox_color_black_2650656, nox_color_white_2523948;
 extern int nox_win_width;
 // Retain the shared production formatter and its localized argument convention.
@@ -41,18 +40,18 @@ func interactionMessagesClear() *uint16 {
 		*memmap.PtrUint32(0x5D4594, 824440+off) = 0
 		*memmap.PtrUint8(0x5D4594, 824444+off) = 0
 	}
-	C.dword_5d4594_825736 = 0
+	interactionMessageHead = 0
 	return result
 }
 func interactionCentered(text *uint16) {
 	if text == nil {
 		return
 	}
-	slot := uint32(C.dword_5d4594_825736) + 1
+	slot := uint32(interactionMessageHead) + 1
 	if slot == 3 {
 		slot = 0
 	}
-	C.dword_5d4594_825736 = C.uint32_t(slot)
+	interactionMessageHead = uint32(slot)
 	off := uintptr(slot * 644)
 	dst := unsafe.Slice(memmap.PtrUint16(0x5D4594, 823804+off), 318)
 	i := 0
@@ -73,7 +72,7 @@ func interactionMessagesDraw() int32 {
 	r := GetClient().R2()
 	vp := GetClient().Viewport()
 	y := 3*int32(vp.Size.Y)/4 + int32(vp.Screen.Min.Y) - 15
-	slot := uint32(C.dword_5d4594_825736)
+	slot := uint32(interactionMessageHead)
 	face := r.GetFonts().AsFont(nil)
 	for row := 0; row < 3; row++ {
 		off := uintptr(slot * 644)
@@ -117,5 +116,4 @@ func nox_xxx_printCentered_445490(text *C.ushort) {
 	interactionCentered((*uint16)(unsafe.Pointer(text)))
 }
 
-//export nox_xxx_drawMessageLines_445530
 func nox_xxx_drawMessageLines_445530() C.int { return C.int(interactionMessagesDraw()) }

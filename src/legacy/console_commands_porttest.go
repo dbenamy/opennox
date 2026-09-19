@@ -5,7 +5,6 @@ package legacy
 /*
 #include "defs.h"
 #include "client__system__parsecmd.h"
-extern uint32_t dword_5d4594_825736;
 */
 import "C"
 import (
@@ -13,12 +12,12 @@ import (
 )
 
 func PortTestConsoleContext() func() {
-	head := C.dword_5d4594_825736
-	C.dword_5d4594_825736 = 0
+	head := interactionMessageHead
+	interactionMessageHead = 0
 	mode, sender := consoleCommandServer, consoleCommandSender
 	consoleCommandSender = nil
 	return func() {
-		C.dword_5d4594_825736 = head
+		interactionMessageHead = head
 		consoleCommandServer, consoleCommandSender = mode, sender
 	}
 }

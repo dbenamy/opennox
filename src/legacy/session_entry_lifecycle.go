@@ -72,7 +72,7 @@ func sessionPlayerReady(index int32) {
 	}
 	if index == 31 && noxflags.HasGame(128) {
 		if Get_nox_server_sanctuaryHelp_54276() == 1 {
-			C.nox_xxx_cliShowHelpGui_49C560()
+			nox_xxx_cliShowHelpGui_49C560()
 			Nox_xxx_netStatsMultiplier_4D9C20(pl.PlayerUnit)
 			return
 		}

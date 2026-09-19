@@ -190,7 +190,7 @@ func Sub_41D6C0() {
 }
 
 func Sub_49C7A0() {
-	C.sub_49C7A0()
+	sub_49C7A0()
 }
 func Sub_467CA0() {
 	uiInventoryResetClosedScroll()

@@ -200,7 +200,7 @@ func bookHide(reset int) int {
 	return 1
 }
 func bookShow(force int) {
-	if C.nox_xxx_guiCursor_477600() != 0 {
+	if nox_xxx_guiCursor_477600() != 0 {
 		return
 	}
 	if Nox_xxx_playerAnimCheck_4372B0() != 0 && noxflags.HasGame(noxflags.GameModeCoop) {
@@ -278,7 +278,7 @@ func bookTemporaryShow(show int) int {
 	if show != 0 {
 		return bookHideWindow(bookRoot(), false)
 	}
-	result = int(C.sub_47A260())
+	result = int(sub_47A260())
 	if result == 0 {
 		result = bookHideWindow(bookRoot(), true)
 	}

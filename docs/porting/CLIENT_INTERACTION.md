@@ -1,10 +1,14 @@
-# Client interaction and remaining game dialogs — qualified C baseline
+# Client interaction and remaining game dialogs — Go conversion qualified
 
-The corrected C baseline is now qualified and frozen; conversion is next.
-Production C: **13,456 lines /57 files /zero reference C**, +14 prerequisite lines
-from parent `b30f96a3`. Recovery checkpoints `6c851a78`, `ac2c9182` and `c856a315`
-preceded full qualification. Historical development sections below describe their
-then-pending gates; the final qualification section supersedes those statuses.
+All78 live routines now use Go. Four orphan bodies and the connection-dialog's
+constant-false visibility getter are removed;67 private C exports, four previous
+session-dialog exports and21 C owners are retired (20 owners move to Go).
+Eleven selected exports remain for actual C callers and the raw tooltip callback.
+
+Production C: **11,898 lines /50 files /zero reference C**, **−1,558** from the
+qualified corrected C baseline **dd7e94f4**. Checkpoint **8febbadb** preserved the
+first50 translated routines. Historical development sections below describe their
+then-current gates; final native qualification below supersedes those statuses.
 
 ## Scope and reachability
 
@@ -255,3 +259,61 @@ centered-message preamble contains only a localized-call adapter.
 Remaining: hover, conversation, game-over/help, paper-doll composition/materials,
 Escape, the orphan connection graph, private-owner/interface cleanup, and full
 native qualification. No other prerequisite behavior changes are introduced.
+
+## Native implementation and retirement review (qualification pending)
+
+All78 routines with live behavior now use Go. The remaining selected getter was
+constant false after the connection-dialog graph became unreachable; it and four
+orphan bodies are retired. Default contract runs before ownership/interface
+cleanup match all31 frozen C captures, including hover geometry, paper-doll
+materials/pixels and actual resource-window callbacks.
+
+The final caller audit retains11 C entries: ten actual external C roots and the
+conversation tooltip callback stored in raw window slot96. Go callers and the
+porttest dispatcher call Go directly;67 private selected exports and four former
+session-dialog exports are retired. Twenty private C state owners move to Go;
+the player owner remains shared with live C. Legacy32-bit window/data handles
+retain their representation. The key-update argument carries scalar state; its
+retained ABI uses uint32_t rather than constructing a pointer from that state.
+
+The MOTD fixture formerly injected the unreachable connection-dialog owner in
+gate6. Its eight rows are explicitly retired. The native manifest expects the
+original80-row C capture filtered to72 rows, preserving gate IDs, order and every
+remaining field. See [projection provenance](client-interaction-motd-projection.json).
+The original C manifest and all31 interaction hashes remain unchanged.
+
+Implementation checks caught two adapter details: raw key states must not be
+normalized by AsWindowEvent, while static text controls require its typed
+text-update event. The corrected paths match the C captures. The first ownership
+cleanup build also caught three state/helper name collisions; they were renamed
+before rerunning. Failed development runs are retained locally and are not
+qualification evidence. The shared console formatting adapter remains because
+its production formatter still has another live C caller.
+
+Ownership/interface cleanup now passes all30 default contract roots and all31
+unchanged C capture hashes (native-cleanup-second); static memory-access checks
+pass. The literal remaining-C/header audit finds no retired interface references.
+Working production C is11,898 physical lines in50 files, zero reference C.
+All-target affected tests and fresh production/scenario qualification remain pending.
+
+Final read-only format review also decoded the shipped CSF entries: all three
+numeric game-over labels use %d, matching the native formatter and boundary
+contracts. The mapped no-argument label source has no remaining writer or format
+specifier supplied by shipped initialization; its native copy preserves the
+existing text behavior.
+
+## Final native qualification
+
+[Native manifest](client-interaction-native-batch.json) and
+[qualification record](client-interaction-native-qualification.json) preserve the
+completed evidence. Default/server/highres pass493/490/493 affected roots, no
+skips, all31/29/31 frozen interaction captures and227/226/227 inherited captures.
+The one explicit MOTD projection is verified byte-for-byte on all three targets.
+
+All source fingerprints agree. Static memory checks pass. Three fresh production
+binaries pass ELF32/i386/SSE2/CGO and retained/retired-symbol audits, with no test
+helpers. The complete asset suite exactly matches all1,553 known failure entries
+and15 pass /3 fail /32 skip package outcomes. Fresh dialog, gameplay, save/load
+and nine-screen inventory scenarios all pass against the qualified C runs. A
+separate inventory preflight also passed before the full production sweep.
+All jobs are joined; no native correction or user question remains pending.

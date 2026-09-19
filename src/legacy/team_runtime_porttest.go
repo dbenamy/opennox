@@ -2,14 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME1.h"
-extern uint32_t dword_5d4594_825736;
-#include "GAME3_3.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
@@ -92,7 +84,9 @@ func PortTestTeamRuntimeMap(op string, arg int) int {
 		panic(op)
 	}
 }
-func PortTestTeamRuntimeTextIndex() *uint32 { return (*uint32)(unsafe.Pointer(&C.dword_5d4594_825736)) }
+func PortTestTeamRuntimeTextIndex() *uint32 {
+	return (*uint32)(unsafe.Pointer(&interactionMessageHead))
+}
 func PortTestTeamRuntimeOther(op string, tm *server.Team, member *server.ObjectTeam, a, b int) int {
 	switch op {
 	case "group":

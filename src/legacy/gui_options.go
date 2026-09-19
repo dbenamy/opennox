@@ -56,7 +56,7 @@ func Sub_4CBD30() {
 }
 
 func Sub_430AA0(v int) {
-	C.sub_430AA0(C.int(v))
+	sub_430AA0(C.int(v))
 }
 
 func Sub_4C35B0(v int) {

@@ -76,9 +76,6 @@
 
 #include <time.h>
 
-extern uint32_t nox_xxx_useAudio_587000_80772;
-extern uint32_t dword_5d4594_811904;
-extern uint32_t dword_5d4594_805820;
 extern uint32_t dword_5d4594_3807116;
 extern uint32_t dword_5d4594_3807152;
 extern uint32_t dword_5d4594_3807136;

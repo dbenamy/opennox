@@ -37,10 +37,8 @@ package legacy
 #include "client__gui__guimeter.h"
 
 void sub_417160();
-int sub_48C980();
 void nox_console_sendSysOpPass_4409D0(wchar2_t* a1);
 int  nox_server_loadMapFile_4CF5F0(char* a1, int a2);
-int nox_xxx_guiChatIconLoad_445650();
 
 */
 import "C"
@@ -364,13 +362,13 @@ func Sub_49FF20() {
 	sub_49FF20()
 }
 func Sub_445450() {
-	C.sub_445450()
+	sub_445450()
 }
 func Sub_45DB90() {
 	quickbarResetFlash()
 }
 func Nox_xxx_initTime_435570() {
-	C.nox_xxx_initTime_435570()
+	nox_xxx_initTime_435570()
 }
 func Nox_xxx_allocArrayHealthChanges_49A5F0() int {
 	return bool2int(combatHealthInit())
@@ -440,7 +438,7 @@ func Sub_476E20() unsafe.Pointer {
 	return presentationPhonemeInit().C()
 }
 func Sub_4BFAD0() int {
-	return int(C.sub_4BFAD0())
+	return int(sub_4BFAD0())
 }
 func Nox_xxx_wndCreateInventoryMB_465E00() uint32 {
 	return uint32(uiInventoryCreateWindow())
@@ -461,19 +459,19 @@ func Sub_478110() int {
 	return uiShopInit()
 }
 func Sub_49B3E0() int {
-	return int(C.sub_49B3E0())
+	return int(sub_49B3E0())
 }
 func Sub_4BFC90() int {
-	return int(C.sub_4BFC90())
+	return int(sub_4BFC90())
 }
 func Nox_gui_itemAmount_init_4BFEF0() int {
 	return uiAmountInit()
 }
 func Sub_4799A0() int {
-	return int(C.sub_4799A0())
+	return int(sub_4799A0())
 }
 func Sub_46A730() unsafe.Pointer {
-	return unsafe.Pointer(C.sub_46A730())
+	return unsafe.Pointer(sub_46A730())
 }
 func Sub_4C3500() int {
 	return int(bindingYesNo())
@@ -491,13 +489,13 @@ func Sub_4AB260() int {
 	return int(sessionDisconnectOpen())
 }
 func Nox_xxx_guiChatIconLoad_445650() int {
-	return int(C.nox_xxx_guiChatIconLoad_445650())
+	return int(nox_xxx_guiChatIconLoad_445650())
 }
 func Sub_4C3390() int {
-	return int(C.sub_4C3390())
+	return int(sub_4C3390())
 }
 func Sub_48C980() int {
-	return int(C.sub_48C980())
+	return int(sub_48C980())
 }
 func Sub_4D22B0() {
 	orchestrationTransitionPlayers()
@@ -536,25 +534,25 @@ func Nox_xxx_closeP2PTradeWnd_4C12A0() {
 	uiTradeDestroy()
 }
 func Sub_4BFD10() {
-	C.sub_4BFD10()
+	sub_4BFD10()
 }
 func Sub_49B490() {
-	C.sub_49B490()
+	sub_49B490()
 }
 func Sub_478F80() {
 	uiShopDestroy()
 }
 func Sub_479D10() {
-	C.sub_479D10()
+	sub_479D10()
 }
 func Sub_4AB470() {
 	sessionDisconnectClose()
 }
 func Sub_4C34A0() {
-	C.sub_4C34A0()
+	sub_4C34A0()
 }
 func Sub_445770() {
-	C.sub_445770()
+	sub_445770()
 }
 func Sub_456240() {
 	teamUIHUDDestroy(true)
@@ -566,7 +564,7 @@ func Sub_4505E0() {
 	briefingDestroy()
 }
 func Sub_46A860() {
-	C.sub_46A860()
+	sub_46A860()
 }
 func Sub_467980() {
 	uiInventoryResetWindow()

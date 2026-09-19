@@ -51,10 +51,13 @@ func TestSessionMOTDDisplayLinesAndGates(t *testing.T) {
 		ptr, free := alloc.CString(text)
 		binary.LittleEndian.PutUint32(message, uint32(uintptr(unsafe.Pointer(ptr))))
 		for gate := 0; gate < 10; gate++ {
+			// Gate 6 only injected the retired, unreachable connection-dialog owner.
+			if gate == 6 {
+				continue
+			}
 			noxflags.ResetEngine()
 			dialog = 0
 			*words["otherDialogA"] = 0
-			*words["otherDialogB"] = 0
 			q.SetHidden(gate != 1)
 			w.SetHidden(gate != 2)
 			if gate == 3 {
@@ -65,9 +68,6 @@ func TestSessionMOTDDisplayLinesAndGates(t *testing.T) {
 			}
 			if gate == 5 {
 				*words["otherDialogA"] = 1
-			}
-			if gate == 6 {
-				*words["otherDialogB"] = 1
 			}
 			clear(quest)
 			if gate == 7 || gate == 8 {

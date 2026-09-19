@@ -4,6 +4,5 @@
 #include "defs.h"
 
 int sub_445B40();
-void sub_445C40();
 
 #endif // NOX_PORT_CLIENT_GUI_GUIQUIT

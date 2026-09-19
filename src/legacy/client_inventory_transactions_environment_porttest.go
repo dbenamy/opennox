@@ -15,7 +15,6 @@ extern uint32_t dword_5d4594_1062564;
 extern uint32_t dword_5d4594_1049796_inventory_click_column_index;
 extern uint32_t dword_5d4594_1049800_inventory_click_row_index;
 extern uint32_t dword_5d4594_1049856;
-extern uint32_t dword_5d4594_825736;
 */
 import "C"
 import "unsafe"
@@ -34,7 +33,7 @@ func PortTestInventoryTransactionWords() ([]*uint32, func()) {
 		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1049796_inventory_click_column_index)),
 		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1049800_inventory_click_row_index)),
 		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1049856)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_825736)),
+		(*uint32)(unsafe.Pointer(&interactionMessageHead)),
 	}
 	old := make([]uint32, len(words))
 	for i, p := range words {

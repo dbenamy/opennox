@@ -123,7 +123,6 @@ func TestClientInteractionModalFrameGate(t *testing.T) {
 	defer motd.Destroy()
 	*sessions["quit"] = uint32(uintptr(quit.C()))
 	*sessions["motd"] = uint32(uintptr(motd.C()))
-	*sessions["otherDialogB"] = 0
 	oldConsole := legacy.Nox_gui_console_flagXxx_451410
 	defer func() { legacy.Nox_gui_console_flagXxx_451410 = oldConsole }()
 	var consoleCalls, consoleValue int

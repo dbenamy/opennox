@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME2_3.h"
-*/
-import "C"
 import (
 	"io"
 	"strings"
@@ -132,7 +128,7 @@ func sessionMOTDShow() {
 	if questRuntimeWord(1556160) != 0 && noxflags.HasGame(128) {
 		return
 	}
-	if !noxflags.HasEngine(noxflags.EngineNoRendering) && sessionMOTDRoot != nil && sessionMOTDRoot.Flags&gui.StatusHidden != 0 && Sub_44A4A0() == 0 && C.sub_49C810() == 0 && C.sub_49CB40() == 0 {
+	if !noxflags.HasEngine(noxflags.EngineNoRendering) && sessionMOTDRoot != nil && sessionMOTDRoot.Flags&gui.StatusHidden != 0 && Sub_44A4A0() == 0 && sub_49C810() == 0 {
 		sessionMOTDRoot.ShowModal()
 		// The legacy child lookup with a nil parent (ID4100) never finds a window.
 		sessionMOTDRoot.Flags |= gui.StatusEnabled
