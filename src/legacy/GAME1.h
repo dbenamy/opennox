@@ -9,7 +9,6 @@ extern int nox_server_gameSettingsUpdated;
 void nox_common_setEngineFlag(const nox_engine_flag flags);
 void nox_common_resetEngineFlag(const nox_engine_flag flags);
 bool nox_common_getEngineFlag(const nox_engine_flag flags);
-int nox_xxx_parseString_409470(FILE* a1, uint8_t* a2);
 void nox_client_setVersion_409AE0(unsigned int vers);
 char* nox_server_currentMapGetFilename_409B30();
 char* nox_xxx_mapGetMapName_409B40();

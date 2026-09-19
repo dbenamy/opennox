@@ -3,12 +3,9 @@ package legacy
 /*
 #include "GAME4_3.h"
 
-static int nox_call_objectType_parseUse_go(int (*fnc)(char*, void*), char* arg1, void* arg2) { return fnc(arg1, arg2); }
 */
 import "C"
 import (
-	"fmt"
-	"strings"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/server"
@@ -52,23 +49,8 @@ func init() {
 	server.RegisterObjectUseC("AbilityRewardUse", C.nox_xxx_useAbilityReward_53FAE0, unsafe.Sizeof(server.AbilityRewardUseData{}))
 	server.RegisterObjectUseC("FieldGuideUse", C.sub_53F930, unsafe.Sizeof(server.FieldGuideUseData{}))
 
-	server.RegisterObjectUseParse("WandUse", wrapObjectUseParseC(C.sub_536260))
-	server.RegisterObjectUseParse("WandCastUse", wrapObjectUseParseC(C.sub_5361B0))
-}
-
-func wrapObjectUseParseC(ptr unsafe.Pointer) server.ObjectParseFunc {
-	return func(objt *server.ObjectType, args []string) error {
-		if Nox_call_objectType_parseUse_go(ptr, strings.Join(args, " "), objt.UseData.Ptr) == 0 {
-			return fmt.Errorf("cannot parse use data for %q", objt.ID())
-		}
-		return nil
-	}
-}
-
-func Nox_call_objectType_parseUse_go(a1 unsafe.Pointer, a2 string, a3 unsafe.Pointer) int {
-	cstr := CString(a2)
-	defer StrFree(cstr)
-	return int(C.nox_call_objectType_parseUse_go((*[0]byte)(a1), cstr, a3))
+	server.RegisterObjectUseParse("WandUse", resourceObjectParser("use", "wand"))
+	server.RegisterObjectUseParse("WandCastUse", resourceObjectParser("use", "wandcast"))
 }
 
 //export nox_xxx_useMushroom_53ECE0

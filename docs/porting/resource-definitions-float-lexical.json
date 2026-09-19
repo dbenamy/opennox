@@ -1,0 +1,1601 @@
+{
+  "origin": "Local Linux/386 libc sscanf(input, \"%f %f%n\") probe; fields initialized to 0xa5a5a5a5",
+  "cases": [
+    {
+      "input": "infi 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "infinit 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "infx 2",
+      "assignments": 1,
+      "first": "7f800000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "infinityx 2",
+      "assignments": 1,
+      "first": "7f800000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "1e 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "1e+ 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "0x 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "0x. 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "0x1 2",
+      "assignments": 2,
+      "first": "3f800000",
+      "second": "40000000",
+      "end": 5
+    },
+    {
+      "input": "0x1p 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "nan(foo) 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 10
+    },
+    {
+      "input": "-nan 2",
+      "assignments": 2,
+      "first": "ffc00000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": ". 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "0x1p+ 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "nan(1) 2",
+      "assignments": 2,
+      "first": "7fc00001",
+      "second": "40000000",
+      "end": 8
+    },
+    {
+      "input": "-nan(0x123) 2",
+      "assignments": 2,
+      "first": "ffc00123",
+      "second": "40000000",
+      "end": 13
+    },
+    {
+      "input": "nan(012) 2",
+      "assignments": 2,
+      "first": "7fc0000a",
+      "second": "40000000",
+      "end": 10
+    },
+    {
+      "input": "nan(1_2) 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 10
+    },
+    {
+      "input": "nan() 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "nan(0b1) 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 10
+    },
+    {
+      "input": "nan(0o12) 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "nan(01_2) 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "nan(foo 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "nan(-1) 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "nan(99999999999999999999999999999) 2",
+      "assignments": 2,
+      "first": "7fffffff",
+      "second": "40000000",
+      "end": 36
+    },
+    {
+      "input": " 2",
+      "assignments": 1,
+      "first": "40000000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "- 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+ 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "  2",
+      "assignments": 1,
+      "first": "40000000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-  2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+  2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "\t 2",
+      "assignments": 1,
+      "first": "40000000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-\t 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+\t 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "\u000b 2",
+      "assignments": 1,
+      "first": "40000000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-\u000b 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+\u000b 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "\f 2",
+      "assignments": 1,
+      "first": "40000000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-\f 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+\f 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-+ 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "++ 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-- 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+- 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "++1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-++1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+++1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "--1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "---1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+--1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+-1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-+-1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "++-1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-. 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+. 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": ".5 2",
+      "assignments": 2,
+      "first": "3f000000",
+      "second": "40000000",
+      "end": 4
+    },
+    {
+      "input": "-.5 2",
+      "assignments": 2,
+      "first": "bf000000",
+      "second": "40000000",
+      "end": 5
+    },
+    {
+      "input": "+.5 2",
+      "assignments": 2,
+      "first": "3f000000",
+      "second": "40000000",
+      "end": 5
+    },
+    {
+      "input": "1. 2",
+      "assignments": 2,
+      "first": "3f800000",
+      "second": "40000000",
+      "end": 4
+    },
+    {
+      "input": "-1. 2",
+      "assignments": 2,
+      "first": "bf800000",
+      "second": "40000000",
+      "end": 5
+    },
+    {
+      "input": "+1. 2",
+      "assignments": 2,
+      "first": "3f800000",
+      "second": "40000000",
+      "end": 5
+    },
+    {
+      "input": "1.2.3 2",
+      "assignments": 2,
+      "first": "3f99999a",
+      "second": "3e99999a",
+      "end": 5
+    },
+    {
+      "input": "-1.2.3 2",
+      "assignments": 2,
+      "first": "bf99999a",
+      "second": "3e99999a",
+      "end": 6
+    },
+    {
+      "input": "+1.2.3 2",
+      "assignments": 2,
+      "first": "3f99999a",
+      "second": "3e99999a",
+      "end": 6
+    },
+    {
+      "input": "-1e 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+1e 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-1e+ 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+1e+ 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "1e- 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-1e- 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+1e- 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "1e++2 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-1e++2 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+1e++2 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "1e--2 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-1e--2 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+1e--2 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "1e+-2 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-1e+-2 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+1e+-2 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "1E2 2",
+      "assignments": 2,
+      "first": "42c80000",
+      "second": "40000000",
+      "end": 5
+    },
+    {
+      "input": "-1E2 2",
+      "assignments": 2,
+      "first": "c2c80000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "+1E2 2",
+      "assignments": 2,
+      "first": "42c80000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "1e+2 2",
+      "assignments": 2,
+      "first": "42c80000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "-1e+2 2",
+      "assignments": 2,
+      "first": "c2c80000",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "+1e+2 2",
+      "assignments": 2,
+      "first": "42c80000",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "1e-2 2",
+      "assignments": 2,
+      "first": "3c23d70a",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "-1e-2 2",
+      "assignments": 2,
+      "first": "bc23d70a",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "+1e-2 2",
+      "assignments": 2,
+      "first": "3c23d70a",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "1e2x 2",
+      "assignments": 1,
+      "first": "42c80000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-1e2x 2",
+      "assignments": 1,
+      "first": "c2c80000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+1e2x 2",
+      "assignments": 1,
+      "first": "42c80000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-0x 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+0x 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "0X 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-0X 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+0X 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-0x. 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+0x. 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-0x1 2",
+      "assignments": 2,
+      "first": "bf800000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "+0x1 2",
+      "assignments": 2,
+      "first": "3f800000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "0x.1 2",
+      "assignments": 2,
+      "first": "3d800000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "-0x.1 2",
+      "assignments": 2,
+      "first": "bd800000",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "+0x.1 2",
+      "assignments": 2,
+      "first": "3d800000",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "0x1. 2",
+      "assignments": 2,
+      "first": "3f800000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "-0x1. 2",
+      "assignments": 2,
+      "first": "bf800000",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "+0x1. 2",
+      "assignments": 2,
+      "first": "3f800000",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "0x1e2 2",
+      "assignments": 2,
+      "first": "43f10000",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "-0x1e2 2",
+      "assignments": 2,
+      "first": "c3f10000",
+      "second": "40000000",
+      "end": 8
+    },
+    {
+      "input": "+0x1e2 2",
+      "assignments": 2,
+      "first": "43f10000",
+      "second": "40000000",
+      "end": 8
+    },
+    {
+      "input": "0x1g 2",
+      "assignments": 1,
+      "first": "3f800000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-0x1g 2",
+      "assignments": 1,
+      "first": "bf800000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+0x1g 2",
+      "assignments": 1,
+      "first": "3f800000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "0x1e+2 2",
+      "assignments": 2,
+      "first": "41f00000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "-0x1e+2 2",
+      "assignments": 2,
+      "first": "c1f00000",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "+0x1e+2 2",
+      "assignments": 2,
+      "first": "41f00000",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "-0x1p 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+0x1p 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-0x1p+ 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+0x1p+ 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "0x1p- 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-0x1p- 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+0x1p- 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "0x1p2 2",
+      "assignments": 2,
+      "first": "40800000",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "-0x1p2 2",
+      "assignments": 2,
+      "first": "c0800000",
+      "second": "40000000",
+      "end": 8
+    },
+    {
+      "input": "+0x1p2 2",
+      "assignments": 2,
+      "first": "40800000",
+      "second": "40000000",
+      "end": 8
+    },
+    {
+      "input": "0X1P2 2",
+      "assignments": 2,
+      "first": "40800000",
+      "second": "40000000",
+      "end": 7
+    },
+    {
+      "input": "-0X1P2 2",
+      "assignments": 2,
+      "first": "c0800000",
+      "second": "40000000",
+      "end": 8
+    },
+    {
+      "input": "+0X1P2 2",
+      "assignments": 2,
+      "first": "40800000",
+      "second": "40000000",
+      "end": 8
+    },
+    {
+      "input": "0x1.p0 2",
+      "assignments": 2,
+      "first": "3f800000",
+      "second": "40000000",
+      "end": 8
+    },
+    {
+      "input": "-0x1.p0 2",
+      "assignments": 2,
+      "first": "bf800000",
+      "second": "40000000",
+      "end": 9
+    },
+    {
+      "input": "+0x1.p0 2",
+      "assignments": 2,
+      "first": "3f800000",
+      "second": "40000000",
+      "end": 9
+    },
+    {
+      "input": "-+0x1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "++0x1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "0x+1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-0x+1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+0x+1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "0b1 2",
+      "assignments": 1,
+      "first": "00000000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-0b1 2",
+      "assignments": 1,
+      "first": "80000000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+0b1 2",
+      "assignments": 1,
+      "first": "00000000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "0o12 2",
+      "assignments": 1,
+      "first": "00000000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-0o12 2",
+      "assignments": 1,
+      "first": "80000000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+0o12 2",
+      "assignments": 1,
+      "first": "00000000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "inf 2",
+      "assignments": 2,
+      "first": "7f800000",
+      "second": "40000000",
+      "end": 5
+    },
+    {
+      "input": "-inf 2",
+      "assignments": 2,
+      "first": "ff800000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "+inf 2",
+      "assignments": 2,
+      "first": "7f800000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "in 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-in 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+in 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-infi 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+infi 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-infinit 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+infinit 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "infinite 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-infinite 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+infinite 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "infinity 2",
+      "assignments": 2,
+      "first": "7f800000",
+      "second": "40000000",
+      "end": 10
+    },
+    {
+      "input": "-infinity 2",
+      "assignments": 2,
+      "first": "ff800000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "+infinity 2",
+      "assignments": 2,
+      "first": "7f800000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "INF 2",
+      "assignments": 2,
+      "first": "7f800000",
+      "second": "40000000",
+      "end": 5
+    },
+    {
+      "input": "-INF 2",
+      "assignments": 2,
+      "first": "ff800000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "+INF 2",
+      "assignments": 2,
+      "first": "7f800000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "INFINITY 2",
+      "assignments": 2,
+      "first": "7f800000",
+      "second": "40000000",
+      "end": 10
+    },
+    {
+      "input": "-INFINITY 2",
+      "assignments": 2,
+      "first": "ff800000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "+INFINITY 2",
+      "assignments": 2,
+      "first": "7f800000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "InfiniTy 2",
+      "assignments": 2,
+      "first": "7f800000",
+      "second": "40000000",
+      "end": 10
+    },
+    {
+      "input": "-InfiniTy 2",
+      "assignments": 2,
+      "first": "ff800000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "+InfiniTy 2",
+      "assignments": 2,
+      "first": "7f800000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "-infx 2",
+      "assignments": 1,
+      "first": "ff800000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+infx 2",
+      "assignments": 1,
+      "first": "7f800000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "nan 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 5
+    },
+    {
+      "input": "+nan 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "NAN 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 5
+    },
+    {
+      "input": "-NAN 2",
+      "assignments": 2,
+      "first": "ffc00000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "+NAN 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "NaN 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 5
+    },
+    {
+      "input": "-NaN 2",
+      "assignments": 2,
+      "first": "ffc00000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "+NaN 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 6
+    },
+    {
+      "input": "-nan() 2",
+      "assignments": 2,
+      "first": "ffc00000",
+      "second": "40000000",
+      "end": 8
+    },
+    {
+      "input": "+nan() 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 8
+    },
+    {
+      "input": "-nan(1) 2",
+      "assignments": 2,
+      "first": "ffc00001",
+      "second": "40000000",
+      "end": 9
+    },
+    {
+      "input": "+nan(1) 2",
+      "assignments": 2,
+      "first": "7fc00001",
+      "second": "40000000",
+      "end": 9
+    },
+    {
+      "input": "-nan(012) 2",
+      "assignments": 2,
+      "first": "ffc0000a",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "+nan(012) 2",
+      "assignments": 2,
+      "first": "7fc0000a",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "nan(0x123) 2",
+      "assignments": 2,
+      "first": "7fc00123",
+      "second": "40000000",
+      "end": 12
+    },
+    {
+      "input": "+nan(0x123) 2",
+      "assignments": 2,
+      "first": "7fc00123",
+      "second": "40000000",
+      "end": 13
+    },
+    {
+      "input": "nan(0XABC) 2",
+      "assignments": 2,
+      "first": "7fc00abc",
+      "second": "40000000",
+      "end": 12
+    },
+    {
+      "input": "-nan(0XABC) 2",
+      "assignments": 2,
+      "first": "ffc00abc",
+      "second": "40000000",
+      "end": 13
+    },
+    {
+      "input": "+nan(0XABC) 2",
+      "assignments": 2,
+      "first": "7fc00abc",
+      "second": "40000000",
+      "end": 13
+    },
+    {
+      "input": "nan(0129) 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "-nan(0129) 2",
+      "assignments": 2,
+      "first": "ffc00000",
+      "second": "40000000",
+      "end": 12
+    },
+    {
+      "input": "+nan(0129) 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 12
+    },
+    {
+      "input": "nan(123foo) 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 13
+    },
+    {
+      "input": "-nan(123foo) 2",
+      "assignments": 2,
+      "first": "ffc00000",
+      "second": "40000000",
+      "end": 14
+    },
+    {
+      "input": "+nan(123foo) 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 14
+    },
+    {
+      "input": "-nan(1_2) 2",
+      "assignments": 2,
+      "first": "ffc00000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "+nan(1_2) 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "-nan(0b1) 2",
+      "assignments": 2,
+      "first": "ffc00000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "+nan(0b1) 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "-nan(0o12) 2",
+      "assignments": 2,
+      "first": "ffc00000",
+      "second": "40000000",
+      "end": 12
+    },
+    {
+      "input": "+nan(0o12) 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 12
+    },
+    {
+      "input": "-nan(foo) 2",
+      "assignments": 2,
+      "first": "ffc00000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "+nan(foo) 2",
+      "assignments": 2,
+      "first": "7fc00000",
+      "second": "40000000",
+      "end": 11
+    },
+    {
+      "input": "-nan(foo 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+nan(foo 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-nan(-1) 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+nan(-1) 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "nan(+1) 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-nan(+1) 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+nan(+1) 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "nan(é) 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-nan(é) 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+nan(é) 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "nan(0xFFFFFFFFFFFFFFFFF) 2",
+      "assignments": 2,
+      "first": "7fffffff",
+      "second": "40000000",
+      "end": 26
+    },
+    {
+      "input": "-nan(0xFFFFFFFFFFFFFFFFF) 2",
+      "assignments": 2,
+      "first": "ffffffff",
+      "second": "40000000",
+      "end": 27
+    },
+    {
+      "input": "+nan(0xFFFFFFFFFFFFFFFFF) 2",
+      "assignments": 2,
+      "first": "7fffffff",
+      "second": "40000000",
+      "end": 27
+    },
+    {
+      "input": "nan(123)foo 2",
+      "assignments": 1,
+      "first": "7fc0007b",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-nan(123)foo 2",
+      "assignments": 1,
+      "first": "ffc0007b",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+nan(123)foo 2",
+      "assignments": 1,
+      "first": "7fc0007b",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "İNF 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-İNF 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+İNF 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": " 1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "- 1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+ 1 2",
+      "assignments": 0,
+      "first": "a5a5a5a5",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "1 2 2",
+      "assignments": 1,
+      "first": "3f800000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "-1 2 2",
+      "assignments": 1,
+      "first": "bf800000",
+      "second": "a5a5a5a5",
+      "end": -1
+    },
+    {
+      "input": "+1 2 2",
+      "assignments": 1,
+      "first": "3f800000",
+      "second": "a5a5a5a5",
+      "end": -1
+    }
+  ]
+}

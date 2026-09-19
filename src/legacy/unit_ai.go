@@ -105,7 +105,7 @@ func Nox_xxx_mobAction_50A910(a1 *server.Object) {
 	monsterControlRefresh(a1)
 }
 func Nox_xxx_monsterGetSoundSet_424300(a1 *server.Object) unsafe.Pointer {
-	return unsafe.Pointer(C.nox_xxx_monsterGetSoundSet_424300(asObjectC(a1)))
+	return resourceMonsterSound(a1)
 }
 func Nox_xxx_monsterPlayHurtSound_532800(a1 *server.Object) {
 	C.nox_xxx_monsterPlayHurtSound_532800(asObjectC(a1))

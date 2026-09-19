@@ -11,7 +11,6 @@ package legacy
 #include "GAME4.h"
 extern uint32_t nox_tile_def_cnt;
 extern uint32_t dword_5d4594_251572;
-int sub_4F0640();
 */
 import "C"
 import (
@@ -34,7 +33,7 @@ func nox_xxx_objectTOCgetTT_42C2B0(a1 C.ushort) int { return Nox_xxx_objectTOCge
 //export sub_4E3AD0
 func sub_4E3AD0(ind int) int { return Sub_4E3AD0(ind) }
 func Sub_4F0640() {
-	C.sub_4F0640()
+	resourceLinkCatalogs()
 }
 func Sub_485CF0() {
 	floorAssetFree()

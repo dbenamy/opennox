@@ -2,38 +2,45 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about18.7k lines** — **18,662 physical lines in61
-production `.c` files**, zero reference C; down820 this chunk.
+**Qualified C remaining: about18.0k lines** — **18,044 physical lines in61
+production `.c` files**, zero reference C; down618 this chunk.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — resource-definition original-C baseline qualified
+## Current — resource-definition Go conversion qualified
 
-Qualified parent **45c36984** is pushed. Scope27 bodies /476 body lines:24 live,
-three orphaned. All149 affected roots pass on all targets without skips, with63
-artifacts /30,040 records identical. Fifteen new frozen captures cover2,250 records.
-All2,651 source fingerprints agree; static-c-final passes. Parent production source
-identity and binary hashes are verified; twelve new sources are porttest-only.
-**All sessions are joined; no builds/tests running.** Production remains C.
+C baseline **b078430c** is pushed. All24 live bodies are Go; three orphaned bodies
+and a private C list head are removed. One C export remains for monster sounds.
+Go registrations/callers and the creature-xfer fixture use the native owners.
 
-See [RESOURCE_DEFINITIONS.md](docs/porting/RESOURCE_DEFINITIONS.md) and qualification
-JSON. Evidence: `build/port-resource-definitions/c-qualified-{default,server,highres}`.
-The first soundset fixture assumed conventional comments; corrected contracts now
-preserve the existing SkipLine behavior (stop at first non-newline). Arrow parsing
-also preserves first-value reuse. Numeric edges cover overflow and float32 rounding.
+All152 affected roots pass on default/server/highres without skips. All63 artifacts
+/30,040 records match original C;15 new frozen captures contain2,250 records.
+All2,659 source fingerprints agree. Static checks and fresh production qualify:
+three ELF32/386/SSE2/CGO binaries/ABI inventories, exact known full-suite results
+(1,553 failure entries;15 pass /3 fail /32 skip packages), gameplay and save/load.
+See [RESOURCE_DEFINITIONS.md](docs/porting/RESOURCE_DEFINITIONS.md) and
+resource-definitions-native-qualification.json. Final evidence:
+`build/port-resource-definitions/native-release-{default,server,highres,production}`.
+All sessions joined; no builds/tests running. All installers, copied drafts,
+freeze/qualification generators are CONSUMED. No frozen expectations changed.
 
-Next commit/push baseline, then translate. One C export remains (monster sound
-lookup);23 live private interfaces, three orphans and the sound-set list head retire.
-Move the existing creature-xfer fixture owner with that head. Native number/parser
-drafts are prepared ONLY under build; review against C before installation.
-Installed fixture drafts, freeze.py and qualify-c.py are CONSUMED; never replay.
+Review decisions: preserve legacy comment skipping and MonsterArrow first-value
+reuse. Close failed sound-set readers on every exit, retaining partial results and
+original diagnostics. Use narrow deterministic fallbacks for undefined malformed
+inputs. Retained-C ABI, repeated reader cleanup and228 libc lexical contracts pass.
 
-Disk: completed player-file/book-award scenario asset deduplication reclaimed
-2,225,495,402 bytes after hash/inactivity checks. All cleanup sessions joined;
-audit/apply modes are CONSUMED. Preserve restoration manifests and --restore mode.
-Original assets/archive, saves, captures and binaries remain. About6.7 GiB free
-immediately after cleanup, before the final C runs.
+Next: character creation,23 connected UI bodies /1,042 body lines. Read-only
+selection/global audit and name fixture drafts exist under build/port-character-creation;
+none installed yet. Adjacent13 configuration routines /217 body lines are deferred.
+Review actual UI resources, animation, palettes, names, preview pixels and saved
+player files. Literal global audit must also follow the three vardefs.go modifier
+setters used by root modifiers.go. No next-batch source edits before this commit.
+
+Disk: prior four completed scenario copies reclaimed2,225,495,402 bytes; this
+batch's two completed copies reclaimed1,112,747,701 bytes. Audit/apply helpers
+are CONSUMED; keep manifests and --restore helpers. Original assets/archive,
+saves, captures and production binaries remain. About3.9 GiB free after cleanup.
 
 ## Qualified parent — book-award Go conversion
 
@@ -1500,3 +1507,14 @@ production algorithms remain unchanged. Reaudit baseline identity or rerun C
 production qualification. No goldens frozen. Remaining: connected event ownership,
 scheduling/spatial contracts, fixture review/repeats, baseline qualification/commit.
 Installed build-dispatcher.py and music/selection drafts are CONSUMED.
+
+
+Read-only next candidate: build/port-character-creation/selection-draft.json and
+plan-draft.md,36 bodies /1,259 body lines across GAME3 class/color/config helpers
+and client shell selclass/selcolor. Caller/callback/global review remains. No source
+installed for this candidate. Mapped appearance parser callbacks are live roots.
+
+Character-creation candidate refined by read-only review:23 UI bodies /1,042 body
+lines (ui-selection-draft.json);13 adjacent configuration bodies /217 lines are
+separate and deferred. Name helper/test drafts exist only under build, NOT installed
+or run. Original36-body selection remains as provenance. No next-batch source edits.

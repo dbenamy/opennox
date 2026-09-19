@@ -17,13 +17,10 @@ extern unsigned int dword_5d4594_2650652;
 
 void nox_xxx_updateProjectile_53AC10(nox_object_t* a1);
 void nox_xxx_updateDeathBall_53D080(nox_object_t* a1);
-static int nox_call_objectType_parseUpdate_go(int (*fnc)(char*, void*), char* arg1, void* arg2) { return fnc(arg1, arg2); }
 void nox_xxx___mkgmtime_538280(nox_object_t* a1);
 */
 import "C"
 import (
-	"fmt"
-	"strings"
 	"unsafe"
 
 	"github.com/opennox/libs/player"
@@ -100,12 +97,12 @@ func init() {
 	server.RegisterObjectUpdate("HarpoonUpdate", C.nox_xxx_updateHarpoon_54F380, 4)
 	server.RegisterObjectUpdate("MonsterGeneratorUpdate", C.nox_xxx_updateMonsterGenerator_54E930, 164)
 
-	server.RegisterObjectUpdateParse("PushUpdate", wrapObjectUpdateParseC(C.sub_536550))
-	server.RegisterObjectUpdateParse("TriggerUpdate", wrapObjectUpdateParseC(C.sub_5365B0))
-	server.RegisterObjectUpdateParse("ToggleUpdate", wrapObjectUpdateParseC(C.sub_5365B0))
-	server.RegisterObjectUpdateParse("LoopAndDamageUpdate", wrapObjectUpdateParseC(C.sub_536580))
-	server.RegisterObjectUpdateParse("LifetimeUpdate", wrapObjectUpdateParseC(C.sub_536600))
-	server.RegisterObjectUpdateParse("SkullUpdate", wrapObjectUpdateParseC(C.sub_5364E0))
+	server.RegisterObjectUpdateParse("PushUpdate", resourceObjectParser("update", "push"))
+	server.RegisterObjectUpdateParse("TriggerUpdate", resourceObjectParser("update", "trigger"))
+	server.RegisterObjectUpdateParse("ToggleUpdate", resourceObjectParser("update", "trigger"))
+	server.RegisterObjectUpdateParse("LoopAndDamageUpdate", resourceObjectParser("update", "triple"))
+	server.RegisterObjectUpdateParse("LifetimeUpdate", resourceObjectParser("update", "lifetime"))
+	server.RegisterObjectUpdateParse("SkullUpdate", resourceObjectParser("update", "skull"))
 }
 
 //export nox_xxx_updatePlayer_4F8100
@@ -153,27 +150,13 @@ func Get_nox_xxx___mkgmtime_538280() unsafe.Pointer {
 	return C.nox_xxx___mkgmtime_538280
 }
 
-func wrapObjectUpdateParseC(ptr unsafe.Pointer) server.ObjectParseFunc {
-	return func(objt *server.ObjectType, args []string) error {
-
-		if Nox_call_objectType_parseUpdate_go(ptr, strings.Join(args, " "), objt.UpdateData) == 0 {
-			return fmt.Errorf("cannot parse update data for %q", objt.ID())
-		}
-		return nil
-	}
-}
-
 func Nox_server_doPlayersAutoRespawn_40A5F0() int {
 	return int(C.int(serverConfigRespawnGet()))
 }
 func Sub_4E4100() uint32 {
 	return uint32(bool2int(questRuntimeRoom()))
 }
-func Nox_call_objectType_parseUpdate_go(a1 unsafe.Pointer, a2 string, a3 unsafe.Pointer) int {
-	cstr := CString(a2)
-	defer StrFree(cstr)
-	return int(C.nox_call_objectType_parseUpdate_go((*[0]byte)(a1), cstr, a3))
-}
+
 func Nox_xxx_questCheckSecretArea_421C70(a1 *server.Object) {
 	mapPolygonPlayer(a1)
 }

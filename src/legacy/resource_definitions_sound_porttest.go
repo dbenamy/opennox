@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME1.h"
-#include "GAME1_1.h"
-extern uint32_t dword_5d4594_588120;
-*/
-import "C"
 import (
 	"bytes"
 	"github.com/opennox/opennox/v1/internal/binfile"
@@ -17,15 +10,15 @@ import (
 )
 
 func PortTestResourceSoundOwner() func() {
-	old := C.dword_5d4594_588120
-	C.dword_5d4594_588120 = 0
+	old := resourceSoundHead
+	resourceSoundHead = nil
 	files.Lock()
 	oldFiles := files.byHandle
 	files.byHandle = make(map[unsafe.Pointer]*binfile.File)
 	files.Unlock()
 	return func() {
 		PortTestResourceSoundClear()
-		C.dword_5d4594_588120 = old
+		resourceSoundHead = old
 		files.Lock()
 		defer files.Unlock()
 		for _, f := range files.byHandle {
@@ -35,13 +28,13 @@ func PortTestResourceSoundOwner() func() {
 	}
 }
 func PortTestResourceSoundClear() {
-	for p := unsafe.Pointer(uintptr(C.dword_5d4594_588120)); p != nil; {
+	for p := resourceSoundHead; p != nil; {
 		next := *(*unsafe.Pointer)(unsafe.Add(p, 76))
-		C.free(*(*unsafe.Pointer)(p))
-		C.free(p)
+		alloc.FreePtr(*(*unsafe.Pointer)(p))
+		alloc.FreePtr(p)
 		p = next
 	}
-	C.dword_5d4594_588120 = 0
+	resourceSoundHead = nil
 }
 
 type PortTestResourceSoundRow struct {
@@ -51,7 +44,7 @@ type PortTestResourceSoundRow struct {
 
 func PortTestResourceSounds() []PortTestResourceSoundRow {
 	var out []PortTestResourceSoundRow
-	for p := unsafe.Pointer(uintptr(C.dword_5d4594_588120)); p != nil; p = *(*unsafe.Pointer)(unsafe.Add(p, 76)) {
+	for p := resourceSoundHead; p != nil; p = *(*unsafe.Pointer)(unsafe.Add(p, 76)) {
 		if len(out) > 100 {
 			panic("sound list cycle")
 		}
@@ -65,12 +58,12 @@ func PortTestResourceSounds() []PortTestResourceSoundRow {
 	return out
 }
 func PortTestResourceSoundLookup(name string) int {
-	p := C.nox_xxx_getDefaultSoundSet_424350(internCStr(name))
+	p := resourceSoundByName(name)
 	if p == nil {
 		return 0
 	}
 	i := 1
-	for it := unsafe.Pointer(uintptr(C.dword_5d4594_588120)); it != nil; it = *(*unsafe.Pointer)(unsafe.Add(it, 76)) {
+	for it := resourceSoundHead; it != nil; it = *(*unsafe.Pointer)(unsafe.Add(it, 76)) {
 		if it == unsafe.Pointer(p) {
 			return i
 		}
@@ -88,7 +81,7 @@ func PortTestResourceTokens(f *binfile.Binfile) []PortTestMonsterToken {
 		for j := range b {
 			b[j] = 0xa5
 		}
-		rv := int(C.nox_xxx_parseString_409470(h, (*C.uint8_t)(unsafe.Pointer(&b[8]))))
+		rv := bool2int(resourceToken(f, b[8:264]))
 		r := PortTestMonsterToken{Return: rv, Buffer: bytes.Clone(b[8:264]), Intact: true}
 		for _, v := range append(bytes.Clone(b[:8]), b[264:]...) {
 			r.Intact = r.Intact && v == 0xa5

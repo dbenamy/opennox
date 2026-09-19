@@ -6,13 +6,10 @@ package legacy
 #include "GAME5.h"
 
 int nox_objectCollideDefault(int a1, int a2, float* a3);
-static int nox_call_objectType_parseCollide_go(int (*fnc)(char*, void*), char* arg1, void* arg2) { return fnc(arg1, arg2); }
 void nox_xxx_collideDeathBall_4E9E90(nox_object_t* a1, nox_object_t* a2, float* a3);
 */
 import "C"
 import (
-	"fmt"
-	"strings"
 	"unsafe"
 
 	"github.com/opennox/libs/spell"
@@ -82,31 +79,17 @@ func init() {
 	server.RegisterObjectCollide("SoulGateCollide", C.sub_4EBE40, 4)
 	server.RegisterObjectCollide("AnkhCollide", C.nox_xxx_collideAnkhQuest_4EBF40, 0)
 
-	server.RegisterObjectCollideParse("ProjectileCollide", wrapObjectCollideParseC(C.sub_536D80))
-	server.RegisterObjectCollideParse("ProjectileSparkCollide", wrapObjectCollideParseC(C.sub_536D80))
-	server.RegisterObjectCollideParse("DamageCollide", wrapObjectCollideParseC(C.nox_xxx_collideDamageLoad_536E10))
-	server.RegisterObjectCollideParse("ManaDrainCollide", wrapObjectCollideParseC(C.sub_536E50))
-	server.RegisterObjectCollideParse("SparkExplosionCollide", wrapObjectCollideParseC(C.sub_536DE0))
-	server.RegisterObjectCollideParse("WallReflectCollide", wrapObjectCollideParseC(C.sub_536D80))
-	server.RegisterObjectCollideParse("WallReflectSparkCollide", wrapObjectCollideParseC(C.sub_536D80))
-	server.RegisterObjectCollideParse("PixieCollide", wrapObjectCollideParseC(C.sub_536D80))
-	server.RegisterObjectCollideParse("AudioEventCollide", wrapObjectCollideParseC(C.sub_536DA0))
-	server.RegisterObjectCollideParse("MonsterArrowCollide", wrapObjectCollideParseC(C.sub_536E80))
-	server.RegisterObjectCollideParse("YellowStarShotCollide", wrapObjectCollideParseC(C.sub_536D80))
-}
-
-func wrapObjectCollideParseC(ptr unsafe.Pointer) server.ObjectParseFunc {
-	return func(objt *server.ObjectType, args []string) error {
-		if Nox_call_objectType_parseCollide_go(ptr, strings.Join(args, " "), objt.CollideData) == 0 {
-			return fmt.Errorf("cannot parse collide data for %q", objt.ID())
-		}
-		return nil
-	}
-}
-func Nox_call_objectType_parseCollide_go(a1 unsafe.Pointer, a2 string, a3 unsafe.Pointer) int {
-	cstr := CString(a2)
-	defer StrFree(cstr)
-	return int(C.nox_call_objectType_parseCollide_go((*[0]byte)(a1), cstr, a3))
+	server.RegisterObjectCollideParse("ProjectileCollide", resourceObjectParser("collide", "projectile"))
+	server.RegisterObjectCollideParse("ProjectileSparkCollide", resourceObjectParser("collide", "projectile"))
+	server.RegisterObjectCollideParse("DamageCollide", resourceObjectParser("collide", "damage"))
+	server.RegisterObjectCollideParse("ManaDrainCollide", resourceObjectParser("collide", "mana"))
+	server.RegisterObjectCollideParse("SparkExplosionCollide", resourceObjectParser("collide", "spark"))
+	server.RegisterObjectCollideParse("WallReflectCollide", resourceObjectParser("collide", "projectile"))
+	server.RegisterObjectCollideParse("WallReflectSparkCollide", resourceObjectParser("collide", "projectile"))
+	server.RegisterObjectCollideParse("PixieCollide", resourceObjectParser("collide", "projectile"))
+	server.RegisterObjectCollideParse("AudioEventCollide", resourceObjectParser("collide", "audio"))
+	server.RegisterObjectCollideParse("MonsterArrowCollide", resourceObjectParser("collide", "arrow"))
+	server.RegisterObjectCollideParse("YellowStarShotCollide", resourceObjectParser("collide", "projectile"))
 }
 
 //export nox_xxx_collideDeathBall_4E9E90

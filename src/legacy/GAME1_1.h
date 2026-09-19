@@ -76,12 +76,7 @@ uint32_t* sub_421B10();
 int sub_422140(int a1);
 int* nox_xxx_tileListAddNewSubtile_422160(int a1, int a2, int a3, int a4);
 int nox_xxx_tileFreeTile_422200(int a1);
-int set_one_bitmask_flag_by_name_4239C0(char* name, uint32_t* bitmask, const char** allowed_names);
-int sub_4240F0(int a1, const char* a2, int a3);
-int nox_xxx_parseSoundSetBin_424170(char* a1);
 void* nox_xxx_monsterGetSoundSet_424300(nox_object_t* a1);
-int nox_xxx_setNPCVoiceSet_424320(int a1, int a2);
-const char** nox_xxx_getDefaultSoundSet_424350(const char* a1);
 void* nox_xxx_updateSpellRelated_424830(void* a1, int a2);
 int nox_xxx_enchantByName_424880(char* a1);
 char* nox_xxx_getEnchantName_4248F0(int a1);
@@ -135,7 +130,5 @@ int nox_xxx_comUpdateEntryAll_427770(const char* a1, short a2);
 int sub_4277B0(nox_object_t* a1p, unsigned short a2);
 int sub_427980(float4* a1, float4* a2);
 
-void set_bitmask_flags_from_plus_separated_names_423930(const char* input, uint32_t* bitmask,
-														const char** allowed_names);
 
 #endif // NOX_PORT_GAME1_1

@@ -11,7 +11,6 @@ void sub_43E910(int a1);
 void sub_43E8E0(int a1);
 int sub_43F060(uint32_t* a1);
 char* sub_413890();
-int nox_xxx_parseSoundSetBin_424170(char* a1);
 
 extern void* dword_587000_127004;
 extern uint32_t dword_5d4594_816376;
@@ -273,7 +272,7 @@ func Sub_413890() string {
 }
 
 func Nox_xxx_parseSoundSetBin_424170(path string) int {
-	return int(C.nox_xxx_parseSoundSetBin_424170(internCStr(path)))
+	return resourceSoundLoad(path)
 }
 
 func Sub_43DC00() {

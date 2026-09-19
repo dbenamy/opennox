@@ -180,7 +180,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 	if u != weapon || u.ObjClass&0x1001000 == 0 {
 		play := true
 		if source != nil && source.ObjClass&2 != 0 && source.UpdateData != nil {
-			set := C.nox_xxx_monsterGetSoundSet_424300(asObjectC(source))
+			set := resourceMonsterSound(source)
 			if set != nil {
 				sound := *(*C.int)(unsafe.Add(set, 32))
 				if sound != 0 && C.nox_xxx_getSevenDwords3_501940(sound) > 0 {

@@ -14,18 +14,18 @@
 
 ## Current status
 
-Spell, ability and field-guide awards and catalogs are now Go:26 C bodies and
-one private counter converted. Seven interfaces remain for live C callers/callbacks.
-See [BOOK_AWARDS.md](docs/porting/BOOK_AWARDS.md).
+Resource-definition parsers, client thing fields, sound sets and catalog linking
+are now Go:24 live C bodies converted, three orphaned bodies and a private list
+head removed. One interface remains for a live C caller. See
+[RESOURCE_DEFINITIONS.md](docs/porting/RESOURCE_DEFINITIONS.md).
 
-Latest qualified production C is **18,662 physical lines in61 files**, zero reference C:
-**−820** from the qualified baseline. Frozen comparisons, all three targets,
+Latest qualified production C is **18,044 physical lines in61 files**, zero reference C:
+**−618** from the preceding qualified baseline. Frozen comparisons, all three targets,
 fresh production binaries and headless gameplay/save-load qualify. See
 [PORTING_STATE.md](PORTING_STATE.md).
 
-Next batch: resource-definition parsers and sound-set loading. Its original-C
-baseline qualifies149 affected roots per target with15 new frozen captures. See
-[RESOURCE_DEFINITIONS.md](docs/porting/RESOURCE_DEFINITIONS.md).
+Next batch: character creation,23 connected UI bodies /1,042 C body lines.
+Adjacent configuration callbacks are a separate deferred batch.
 
 ## Goal and target
 
@@ -95,6 +95,12 @@ may precede full qualification when their evidence and remaining gates are expli
    package build and repeat the remaining C compile.
    Trace the existing C adapter when choosing a Go API: similar names can hide
    differences in coordinate space, return conventions or ownership.
+   For libc parsers, establish saturation, direct float32 rounding, incomplete
+   tokens, ASCII keyword matching and NaN payloads before final target sweeps.
+   Small ignored library probes can settle these cheaply; retain independent Go
+   contracts for the results. Review file adapters' diagnostics and closure at the
+   same time. The resource-definition batch found these details late and repeated
+   qualification unnecessarily; complete this review before starting long gates.
    Check dispatch ownership when reusing an existing Go implementation: equal
    output under the default configuration can hide different hooks or queues.
    The team score port caught this through accumulated objective-scoring captures.

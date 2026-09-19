@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME4_2.h"
-extern uint32_t dword_5d4594_588120;
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
@@ -48,9 +42,9 @@ func PortTestCreatureXferDefinitions(head unsafe.Pointer) func() {
 }
 
 func PortTestCreatureXferVoiceSets(head unsafe.Pointer) func() {
-	old := C.dword_5d4594_588120
-	C.dword_5d4594_588120 = C.uint32_t(uintptr(head))
-	return func() { C.dword_5d4594_588120 = old }
+	old := resourceSoundHead
+	resourceSoundHead = head
+	return func() { resourceSoundHead = old }
 }
 func PortTestCreatureXferLookupOwner() func() {
 	old, init := netCodeCacheState, netCodeCacheNeedInit
