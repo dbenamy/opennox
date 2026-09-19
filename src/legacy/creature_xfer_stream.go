@@ -71,7 +71,7 @@ func creatureXferBuffs(u *server.Object) int {
 	if version <= 0 || version > 2 {
 		return 0
 	}
-	count := r.byte(byte(C.sub_424CB0(C.int(uintptr(u.CObj())))))
+	count := r.byte(byte(bookEnchantCountActive(u)))
 	if r.read() {
 		for i := 0; i < int(count); i++ {
 			var name [256]byte
@@ -95,7 +95,7 @@ func creatureXferBuffs(u *server.Object) int {
 		}
 		return 1
 	}
-	for i := int(C.sub_424D00()); i != -1; i = int(C.sub_424D20(C.int(i))) {
+	for i := int(bookEnchantFirst()); i != -1; i = int(bookEnchantNext(int32(i))) {
 		id := server.EnchantID(i)
 		if !u.HasEnchant(id) {
 			continue

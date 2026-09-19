@@ -2,40 +2,39 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about19.5k lines** — **19,482 physical lines in65
-production `.c` files**, zero reference C; down1,601 this chunk.
+**Qualified C remaining: about18.7k lines** — **18,662 physical lines in61
+production `.c` files**, zero reference C; down820 this chunk.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — book-award C baseline preparation
+## Current — book-award Go conversion qualified
 
-Player-file conversion **a8015048** is committed and pushed. The next connected
-batch selects26 C bodies /629 body lines: guide catalog loading/lookups, saved
-enchantment enumeration, ability-name lookup, spell/guide/ability awards and
-reports, their item-use callbacks and two associated client messages. Selection
-and literal caller occurrences are recorded in docs/porting/book-awards-*.json.
-Three report helpers have no outside callers but are live through selected award
-functions. Production is unchanged; no new captures or expectations are frozen.
-Fifteen new captures /6,763 records are frozen after exact repeated agreement
-across default/server/highres. The105-root affected suites pass with81 artifacts /
-12,248 records agreeing and identical source fingerprints. Both reliable and
-direct-send messages are captured; exact independent rejection-message checks
-pass. Guide loading/partial failure, item consumption, sounds, client messages,
-shop closure and all17 quest single-level IDs are covered too.
+C baseline **27554f1f** is committed/pushed. All26 selected bodies and the private
+counter are Go; seven C interfaces remain, nineteen private interfaces and one C
+counter retire. Four C translation units are removed. Go callers use native helpers.
 
-Final frozen C qualification passes all105 roots on each target:81 artifacts /
-12,248 records agree and all2,640 source fingerprints match. Static-c-final passes.
-**All sessions are joined; no builds/tests running.** Production source remains
-identical to a8015048; its production evidence is reused. C is19,482 /65 /zero
-reference. Next: commit/push this qualified baseline, then install/complete the Go
-translation against frozen expectations. The catalog draft exists only at
-build/port-book-awards/native-catalog-draft.go and is NOT yet installed. All
-other drafts/freezing actions are CONSUMED; never replay them.
+All108 affected roots pass on default/server/highres without skips. All81 captures
+/12,248 records match original C exactly; the15 new captures cover6,763 records.
+All2,639 source fingerprints agree, static-native-final passes, and no frozen
+expectations changed. Fresh production validates three ELF32/386/SSE2/CGO binaries,
+interface inventories, exact known full-suite results (1,553 failure entries;
+15 pass /3 fail /32 skip packages), headless gameplay and explicit save/load.
+**All sessions are joined; no builds/tests running.**
 
-The spell-family code caps/folds the original ID rather than the family member.
-New cases explicitly preserve this legacy behavior for later review. No gameplay
-correction is made in this batch.
+See [BOOK_AWARDS.md](docs/porting/BOOK_AWARDS.md) and
+book-awards-native-qualification.json. Evidence:
+`build/port-book-awards/native-final-{default,server,highres,production}`.
+All drafts, move-callers.py and finalize-native.py are CONSUMED; never replay.
+
+Review decisions: preserve spell-family cap/bookkeeping on the original ID, and
+unknown field-guide item consumption when admission passes though award rejects
+ID0. No gameplay correction was made. Existing stats and book-tooltip contracts
+were added to the native affected selection for callers moved to Go.
+
+Next candidate: `build/port-resource-definitions/{selection-draft,callers-draft}.json`
+and plan-draft.md.27 bodies /476 body lines; three appear orphaned. Verify roots,
+then original-C contracts for the24 live functions. No next-batch source installed.
 
 ## Qualified parent — player-file conversion
 

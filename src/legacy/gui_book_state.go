@@ -144,7 +144,7 @@ func bookHideWindow(w *gui.Window, hidden bool) int {
 }
 func bookName(id int) *wchar2_t {
 	if *bookWord(1046868) == 1 {
-		return (*wchar2_t)(unsafe.Pointer(uintptr(uint32(C.nox_xxx_guiCreatureGetName_427240(C.int(id))))))
+		return (*wchar2_t)(unsafe.Pointer(uintptr(uint32(bookGuideCreatureName(int32(id))))))
 	}
 	if bookClass(*bookWord(1047516)) != 0 {
 		return nox_xxx_spellTitle_424930(id)
@@ -237,7 +237,7 @@ func bookSort(class int) int {
 	all := noxflags.HasGame(noxflags.GameFlag(0x2000)) && !noxflags.HasGame(noxflags.GameModeQuest)
 	p := *bookWord(1047516)
 	if *bookWord(1046868) == 1 {
-		for id := C.nox_xxx_bookGetFirstCreMB_427300(); id != 0; id = C.nox_xxx_bookGetNextCre_427320(id) {
+		for id := bookGuideFirst(); id != 0; id = bookGuideNext(int32(id)) {
 			if (all || *bookPlayerWord(p, 4244, int(id)) != 0) && questRuntimeBookAllowed(int(id), 37) {
 				add(int(id))
 			}

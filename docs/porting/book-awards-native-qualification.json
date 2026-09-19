@@ -1,0 +1,264 @@
+{
+  "status": "qualified native conversion",
+  "c_baseline": "27554f1f",
+  "source_files": 2639,
+  "targets": {
+    "default": {
+      "root_tests": 108,
+      "captures": 81,
+      "records": 12248,
+      "wall_seconds": 238.13691174401902
+    },
+    "server": {
+      "root_tests": 108,
+      "captures": 81,
+      "records": 12248,
+      "wall_seconds": 238.12305042007938
+    },
+    "highres": {
+      "root_tests": 108,
+      "captures": 81,
+      "records": 12248,
+      "wall_seconds": 243.06761425593868
+    }
+  },
+  "captures": {
+    "capture-asset-pages.json": "aab7dc659cb46b961797c2661d6c6279761120cdc35582f4415584b3a5a29cdc",
+    "capture-book-awards-ability-guide-gates.json": "1a3f6f6bea2dfe9e7576058a8f2e9c77f0a3eeea3fd8b8940ee3bf4813a43aee",
+    "capture-book-awards-client-messages.json": "7887f0dc5c68830813a51897ff64bfae0078add1736f404c6def4efe4e49bb10",
+    "capture-book-awards-enchant-count-gates.json": "34696b525798a612cf158b3af3bb1ad4ea4c6b5b883da56c601373d2eab49ac3",
+    "capture-book-awards-enchant-enumeration.json": "147ba5b3916727d0829b3e2e8fc18136af8acc708c38d7522e5097b33abfe582",
+    "capture-book-awards-guide-catalog.json": "9aa02736c9568b5d391ba099e358969c96d8aa7a6e6e40f7070c8892b83ac576",
+    "capture-book-awards-guide-loader.json": "a81fad93f689996661ea885cef1f3200d8e8f1f90d7416cd905de18f072e4716",
+    "capture-book-awards-item-use.json": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f",
+    "capture-book-awards-name-lookup.json": "b4ea2fb4c67750f8f81a0b22dbf94f06b42e7f824db604e61af545797e81847e",
+    "capture-book-awards-notifications.json": "4bf2890ec127bf24d27a049029c865a2273d1d1da644d692903a5ffd80a8f22f",
+    "capture-book-awards-quest-single-level.json": "b263803b962140d736d45963ca32bdd3ad92aa492a9d11c15e0758c8dc0f9d36",
+    "capture-book-awards-reports.json": "bee7c31f90aa97f5454f2be51ee6ea2629bd9f4de1fc0f7e65619e3b64febd13",
+    "capture-book-awards-shop-closure.json": "8b1a99658f3b7d10a968b7f1a208298c1b8a6d02c5f2049ea59e40dafd84c2d2",
+    "capture-book-awards-spell-families.json": "59287c41d176682d7f0889b2b43d795d25ab5f931349f3371e38f0941a803ac0",
+    "capture-book-awards-spell-gates.json": "805d5b23953e73421d91fee801c8d3159cbc1bbe2135a4ba1e41b6b16d63b841",
+    "capture-book-awards-spell-notification-gates.json": "e7a22b1cdc1b1b3277bcd211e402b1ee2aaef6aaa607c97e6cee62232df16dca",
+    "capture-client-presentation-book-reward.json": "ca478b6c0369733893d64dd6a1eff38171702cfe904cc65f88d7e6f465189fea",
+    "capture-creature-xfer-buff-application.json": "eeb10d0e71494c8986fdb7dc42724f964bafe728770ac7ab6f81fa242275e32c",
+    "capture-creature-xfer-buff-writer.json": "491477ed873d75d72aa98fe30c46ad9d495d489b731fa77f67b5c056dbc4a205",
+    "capture-guide-knowledge.json": "41cbab5370d0016108127726202c919ca2736572537f4789c57476bacb6bb431",
+    "capture-icons-tooltips.json": "4620f33300afa75b363e009048b010db88a549fef9b68d385d51ed473f09c1b8",
+    "capture-immediate-addition.json": "597f41128ade2b3812f0a169bf4cffcf70f538cbed07fef48a2184e4d4303c5c",
+    "capture-item-xfer-default.json": "6869329949659b6782b5fa57cb0ba222c85193e356658ff23cf27d98ff97ef62",
+    "capture-item-xfer-equipment-health.json": "af7f8e014742cec75751206eb64e9cfa484c9184927f8a436db1b7831116ce56",
+    "capture-item-xfer-generator-partial.json": "d2dc20501579610e180c7d21ac00a89dab1b1cfeae99a50d7422926583a83716",
+    "capture-item-xfer-generator-records.json": "4d0309d232cb1ce62afa7c862e480e1fe7afef1280e87e38da73bb76d5d395c0",
+    "capture-item-xfer-historical.json": "90d388662199a78f8c07c566b185df5cccacfc88c99fb11117f0818899edd063",
+    "capture-item-xfer-modifiers.json": "5dec507c6294b4c666c4f14a4a43a21b5a75e97471e7d97b8b0d05d256f35b83",
+    "capture-item-xfer-name-boundaries.json": "eef3c2673164b967d3bcb50983f239c98fcc7145f1b673a530e0070fb0f4156e",
+    "capture-item-xfer-obelisk-minimap.json": "682faf05e991e354997ef2f75194e6e9b62fe0ce0c3c9e05cb71d86d61a41d1c",
+    "capture-item-xfer-reward-failures.json": "ec77c9e1785dcf9d5d4ceb9b20c86fa3dcea89f3bb0907fd9deb27e1859494f2",
+    "capture-item-xfer-reward-masks.json": "db3294dda28c6f942b267731f0a320ccec573e3f3af4aadc93e6c893497b2ec4",
+    "capture-item-xfer-reward-merge.json": "181f8397e0143fdfe072e8a5f89cd3b83a9dbc7c99011bfcd6678e0e862f6c19",
+    "capture-item-xfer-weapon-charges.json": "78ce522d53ec6949f2a27ff33e3a3fe7b1cad0a2041537b4db82dc63d39752d9",
+    "capture-metadata-lists.json": "9f76a37a072dcf0d4d4f217e9155b1758a6062c240cc62bae5448eeb20dcbbd9",
+    "capture-name-compare.json": "d377183956fc746b21e47de689c0c8aab363edfd87bd1c78bd03e2f136c91693",
+    "capture-player-files-ability-restore.json": "5864836439dfbc2bc0cd5328ad9d8fac8f9ad01191908a7a1045299962097273",
+    "capture-player-files-attributes-read.json": "1af6495bd98c46fda79ea158a8904d98cefa456204300ad97a66bc33df6b00d8",
+    "capture-player-files-attributes-unit-read.json": "26f4dcee6107f1886d4d4a9a60716a03360741fcaa002c25c53502b134c94657",
+    "capture-player-files-attributes-write.json": "5e075027ec6a87113bb3b8c513c3fdbbd153ea1652e34a00d863307e4689fe1a",
+    "capture-player-files-book-read-gates.json": "700a93921052f26facf5e0c41c71e32e96b5b3519004bf4f8fcf5649710bf516",
+    "capture-player-files-client-load-framing.json": "702d5394b25b7e24191777ec89dc509213e685511eba963212c7c7df222c5d21",
+    "capture-player-files-client-write-framing.json": "7697610f1cb2e4f8c45d119af35fd83745c2fea1135458e9e3eff466ea360bee",
+    "capture-player-files-enchantment-apply.json": "482fe7ad0787b71b0a003781ef39b60a23848cdc29679219c7f47f8ed0b8a5d4",
+    "capture-player-files-enchantment-read-gates.json": "64886e8b29df9b824e3aec9d986b10e54f198a6df21ae3004ec5fe900a498b82",
+    "capture-player-files-enchantment-write.json": "8029dca6811bc5d66d6111baa1f0f8f850a72360902fec4477ea8c3c7db7621e",
+    "capture-player-files-fieldbook-restore.json": "a1a95b881d8f64baf6a81cf20436b549f65e5aaae7f57f825aec7f1a92b93741",
+    "capture-player-files-fieldbook-write.json": "7aed107c6b8bb79fff6519189fc6da13cff8d72310e619133641dfadbecbbfa7",
+    "capture-player-files-game-read.json": "2f801bf8f4613210c142515717612d7efe31944b4e4ac2f14c250e0bdd934184",
+    "capture-player-files-game-write.json": "4faa8d82874e368a1976e292426c1b26728c0d8e9a1b70403f6764af4a6d2659",
+    "capture-player-files-gui-read.json": "ed2464d247bfd1dc8e7f9e3f3715b6fe061a8ae72b8b0647d9b352401d697416",
+    "capture-player-files-gui-write.json": "e3c0a77762c7f303349b5cfa1915a4d746599f17e179f6478584bd621cf13fca",
+    "capture-player-files-inventory-filter.json": "0b9a189afb810d9cc23469d5bb4c00b5a2f2191107225f198b10c21d1f48b09e",
+    "capture-player-files-inventory-grid-count.json": "720f7af495eb06338fd3d3ef49031797e42cb98cde34f5ab76223987f88c4adb",
+    "capture-player-files-inventory-read-gates.json": "b4573334b0e09325ca4481b62c34e7c916cd9a1d227763aa57887b8f62c40300",
+    "capture-player-files-inventory-restore.json": "c20170bae6d622d70c4109d2120965045f944b376d5a31fa70ac3248d6dc42d1",
+    "capture-player-files-inventory-write.json": "5aeafb8bf2017761ab93bcec563743e5e387cd3dfe54799a7bc4b8c869ca4f93",
+    "capture-player-files-journal-gates.json": "b6fae4cbd71eaa0386f9fdd041a515dbffb709a8c40b51dcbd2867319ce3101e",
+    "capture-player-files-metadata-read.json": "f3222f98d7e387c1e442c700ef2481069702b7007e5df5052eb32259a07aed9c",
+    "capture-player-files-metadata-write.json": "8e338797b1d56fa43a3535e0d4b8281b8e67d583eec9ec90e25f22aa5b0f57ea",
+    "capture-player-files-music-read.json": "094b460d3653e9bd480cc4286f92576a549bf948be0be6af064c4a64802e1055",
+    "capture-player-files-music-write.json": "7bad1d4a672d72e080da6d754e8aa044299a931df691d34aa30ca2e818f5f201",
+    "capture-player-files-quest-fieldbook.json": "da0503b71453aa9c202f6327cc8247fed241ec061a68f54e83f1d966992b5934",
+    "capture-player-files-quest-inventory-write.json": "a6aef744f32b4d327a5d615760706de043c6dd14d7c00d57395ae9be6547695d",
+    "capture-player-files-quest-spellbook.json": "85d4baeb3cb3fdaa75dd8c3dca8e508f0e54e4fa6fc4d25ec363ddd13dc93d91",
+    "capture-player-files-save-request.json": "ed6cfa07b11659fac798ac9c2839fd833cabd3e2c5746ada0a1a5fcbb3706a2c",
+    "capture-player-files-section-extraction.json": "51d2556dee434201136375c841b2a6a1b39bdfdd05d12ea671e61c34566355cb",
+    "capture-player-files-server-load-framing.json": "26372fb3cc108c066e1cfaa4838157828ff623c62447f3db03b1a7a6a2732de7",
+    "capture-player-files-spellbook-restore.json": "7b5d2fdd038d54d4c071d416b128e12954884e21cad4cc4c92e36221c86df72a",
+    "capture-player-files-spellbook-write.json": "28b567c24791640d4fe503a790bfc18b16eb5b896ebdb0506b297ba134462acd",
+    "capture-player-files-status-read.json": "f44884ed7ec9ff2bce3e603d6b8668d2e599693083ca60cb0a8dac6e8d5dabde",
+    "capture-player-files-status-write.json": "d8030ab510bf7605a09f9bb0e86a93711f4e9729b390cefbf554e443e4212ad4",
+    "capture-quickbar-ability-state.json": "d4e2e826f1bf4948aaea4ea4554199d98ee69773c3525ae2634e4147426211e7",
+    "capture-quickbar-save-owners.json": "c2cc5eaacb5cfcd2f0a557bfa221f5e1d62e82982435c34dddbeefdb79281335",
+    "capture-quickbar-save-spells.json": "9a89dda2d6bc2811cbab65c3339e69375934bc4b1951135a99319bd8b08af81a",
+    "capture-quickbar-slot-events.json": "b825d46dbc297d029353da80d9adcd293298693edbd2b0ad1601e8d04d74d63b",
+    "capture-quickbar-slot-mutation.json": "0bc7ff3461e8544461840edae1ce82f71eee2facc995b966d3067c69f382046e",
+    "capture-render.json": "e09d57ec73188ed7cb8c4e81bcbd736b5da2be8268b9df78362241a41b9cd37a",
+    "capture-reward-presentation.json": "9a8999bbd4fafd2f203f7ba506ae1cf62e8a11fa3fb4198feb2c4b9384670134",
+    "capture-spell-knowledge.json": "c03cf5fc9649ff34021a66f171c18a90ffea75afb568d222963621fb9b70a2e3",
+    "capture-trap-reward.json": "29207f4112ef3aec75695a466de5ece07a6e4a8e7464552d041c9f34a191f839"
+  },
+  "production": "build/port-book-awards/native-final-production/production/production.json",
+  "production_summary": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 49.52592031401582,
+        "sha256": "45b11e18cc70c62af11d1bba4d0e33a6248daed67326c91cb2fe1e53a3a5502a",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 8.194090916076675,
+        "sha256": "c88c42a8fae33f84313cc43e8b98ea220b3c71d047f8489b8850efb4a5722889",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 48.938366611953825,
+        "sha256": "308cde2309942974e65a1280df4dbb3f42473d29100490208b8b634d29cc5faf",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "book-awards-native": {
+        "exit": 0,
+        "wall_seconds": 58.44683335791342,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 57.888407381949946,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-c",
+          "binary_sha256": "45b11e18cc70c62af11d1bba4d0e33a6248daed67326c91cb2fe1e53a3a5502a",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-book-awards/native-final-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/book-awards-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native spell, ability and guide awards, catalog loading and item use; seven retained C interfaces",
+          "removed_maps": 0
+        }
+      },
+      "book-awards-native-save": {
+        "exit": 0,
+        "wall_seconds": 45.57017785683274,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.096096634166315,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/server-config-save-c",
+          "binary_sha256": "45b11e18cc70c62af11d1bba4d0e33a6248daed67326c91cb2fe1e53a3a5502a",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-book-awards/native-final-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/book-awards-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native spell, ability and guide awards, catalog loading and item use; seven retained C interfaces",
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "671ac12cb334409bb1799bce1a5ca0a1c286d34df21fb7172aea6efca08b03f5"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "08d5290c8bb5ea8d4c12d801b2e8bf3d538000f1c283eff3523747fbf25bd8ab"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 56.23184242518619,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "static": "build/port-book-awards/static-native-final.log",
+  "retained": [
+    "nox_xxx_guide_427010",
+    "nox_xxx_guiCreatureGetName_427240",
+    "nox_xxx_abilGetSuccess_4FB960_ability",
+    "nox_xxx_abilGetError_4FB0B0_magic_plyrspel",
+    "sub_53F930",
+    "nox_xxx_useSpellReward_53F9E0",
+    "nox_xxx_useAbilityReward_53FAE0"
+  ],
+  "retired": [
+    "nox_xxx_abilityNameToN_424D80",
+    "nox_xxx_abilityRewardServ_4FB9C0_ability",
+    "nox_xxx_awardBeastGuide_4FAE80_magic_plyrgide",
+    "nox_xxx_bookGetCreatureImg_427400",
+    "nox_xxx_bookGetFirstCreMB_427300",
+    "nox_xxx_bookGetNextCre_427320",
+    "nox_xxx_creatureIsCharmableByTT_4272B0",
+    "nox_xxx_guideGetDescById_4272E0",
+    "nox_xxx_guideGetUnitSize_427460",
+    "nox_xxx_guideNameByN_427230",
+    "nox_xxx_loadGuides_427070",
+    "nox_xxx_netAbilityReport_4D8060",
+    "nox_xxx_netReportGuideAward_4D8000",
+    "nox_xxx_netSendSpellAward_4D7F90",
+    "nox_xxx_spellGrantToPlayer_4FB550",
+    "sub_424CB0",
+    "sub_424D00",
+    "sub_424D20",
+    "sub_427430",
+    "dword_587000_66116"
+  ],
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 61,
+      "lines": 18662
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "frozen_expectations_changed": false,
+  "review_notes": [
+    "Preserve original-ID cap and bookkeeping in spell-family awards.",
+    "Preserve unknown field-guide item consumption after admission even though award rejects ID0.",
+    "Native affected selection adds existing stats and book-tooltip contracts for moved callers."
+  ]
+}

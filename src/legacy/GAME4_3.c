@@ -68,7 +68,6 @@ extern unsigned int gameex_flags;
 void nox_xxx_lightningSpellDuration_52FFD0(int a1, int a2, int a3);
 int nox_xxx_waypoint_579F00(float2* a1, nox_object_t* a2);
 void sub_4FF310(nox_object_t* a1);
-//----- (00532800) --------------------------------------------------------
 char nox_xxx_monsterPlayHurtSound_532800(nox_object_t* a1p) {
 	int a1 = a1p;
 	int v1; // eax
@@ -90,7 +89,6 @@ char nox_xxx_monsterPlayHurtSound_532800(nox_object_t* a1p) {
 	return v1;
 }
 
-//----- (00532880) --------------------------------------------------------
 int sub_532880(int a1) {
 	int result; // eax
 
@@ -101,12 +99,8 @@ int sub_532880(int a1) {
 	return result;
 }
 
-//----- (00533080) --------------------------------------------------------
-
-//----- (00534020) --------------------------------------------------------
 int sub_534020(int a1) { return (*(uint32_t*)(a1 + 12) >> 10) & 1; }
 
-//----- (005341A0) --------------------------------------------------------
 void nox_ai_debug_print(char* str);
 void nox_ai_debug_printf_5341A0(char* a1, ...) {
 	va_list va; // [esp+8h] [ebp+8h]
@@ -118,7 +112,6 @@ void nox_ai_debug_printf_5341A0(char* a1, ...) {
 	}
 }
 
-//----- (005345B0) --------------------------------------------------------
 char* sub_5345B0(int a1) {
 	unsigned char* v1; // ecx
 	int v2;            // eax
@@ -144,7 +137,6 @@ char* sub_5345B0(int a1) {
 	}
 }
 
-//----- (005345F0) --------------------------------------------------------
 int nox_xxx_actionNByNameMB_5345F0(const char* a1) {
 	int v1;          // ebp
 	const char** v2; // edi
@@ -161,7 +153,6 @@ int nox_xxx_actionNByNameMB_5345F0(const char* a1) {
 	return v1;
 }
 
-//----- (00534650) --------------------------------------------------------
 char* sub_534650(int a1) {
 	int v1; // eax
 
@@ -174,7 +165,6 @@ char* sub_534650(int a1) {
 	return *(char**)getMemAt(0x587000, 261768 + 4 * v1);
 }
 
-//----- (00534670) --------------------------------------------------------
 int nox_xxx_actionByName_534670(const char* a1) {
 	int v1;          // ebp
 	const char** v2; // edi
@@ -191,7 +181,6 @@ int nox_xxx_actionByName_534670(const char* a1) {
 	return v1;
 }
 
-//----- (005361B0) --------------------------------------------------------
 char* sub_5361B0(char* a1, int a2) {
 	char* result; // eax
 	char v3;      // al
@@ -218,7 +207,6 @@ char* sub_5361B0(char* a1, int a2) {
 	return result;
 }
 
-//----- (00536260) --------------------------------------------------------
 char* sub_536260(char* a1, int a2) {
 	char* result; // eax
 	char v3;      // al
@@ -265,7 +253,6 @@ char* sub_536260(char* a1, int a2) {
 	return result;
 }
 
-//----- (005364E0) --------------------------------------------------------
 int sub_5364E0(char* a1, int a2) {
 	unsigned int v2; // ecx
 	char v3;         // al
@@ -287,22 +274,18 @@ int sub_5364E0(char* a1, int a2) {
 	*(uint32_t*)(a2 + 12) = 0;
 	return result;
 }
-// 5364E0: using guessed type char var_100[256];
 
-//----- (00536550) --------------------------------------------------------
 int sub_536550(char* a1, uint32_t* a2) {
 	sscanf(a1, "%f %f", a2, a2 + 2);
 	a2[1] = *a2;
 	return 1;
 }
 
-//----- (00536580) --------------------------------------------------------
 int sub_536580(char* a1, int a2) {
 	sscanf(a1, "%d %d %d", a2, a2 + 4, a2 + 8);
 	return 1;
 }
 
-//----- (005365B0) --------------------------------------------------------
 int sub_5365B0(char* a1, int a2) {
 	char* v2; // eax
 	char* v3; // eax
@@ -318,13 +301,11 @@ int sub_5365B0(char* a1, int a2) {
 	return 1;
 }
 
-//----- (00536600) --------------------------------------------------------
 int sub_536600(char* a1, int a2) {
 	sscanf(a1, "%d", a2);
 	return 1;
 }
 
-//----- (00536B40) --------------------------------------------------------
 int sub_536B40(char* a1, int a2) {
 	char v3[64]; // [esp+4h] [ebp-40h]
 
@@ -333,13 +314,11 @@ int sub_536B40(char* a1, int a2) {
 	return 1;
 }
 
-//----- (00536D80) --------------------------------------------------------
 int sub_536D80(char* a1, int a2) {
 	sscanf(a1, "%d", a2);
 	return 1;
 }
 
-//----- (00536DA0) --------------------------------------------------------
 int sub_536DA0(char* a1, int* a2) {
 	int v2;       // eax
 	char v4[256]; // [esp+0h] [ebp-100h]
@@ -350,14 +329,12 @@ int sub_536DA0(char* a1, int* a2) {
 	return v2 != 0;
 }
 
-//----- (00536DE0) --------------------------------------------------------
 int sub_536DE0(char* a1, uint8_t* a2) {
 	sscanf(a1, "%d", &a1);
 	*a2 = (uint8_t)a1;
 	return 1;
 }
 
-//----- (00536E10) --------------------------------------------------------
 int nox_xxx_collideDamageLoad_536E10(char* a1, int a2) {
 	char* v2; // eax
 	char* v3; // eax
@@ -371,7 +348,6 @@ int nox_xxx_collideDamageLoad_536E10(char* a1, int a2) {
 	return v4 != 18;
 }
 
-//----- (00536E50) --------------------------------------------------------
 int sub_536E50(char* a1, uint8_t* a2) {
 	char* v2; // eax
 
@@ -380,7 +356,6 @@ int sub_536E50(char* a1, uint8_t* a2) {
 	return 1;
 }
 
-//----- (00536E80) --------------------------------------------------------
 int sub_536E80(char* a1, int* a2) {
 	char* v2; // eax
 	char* v3; // eax
@@ -392,16 +367,6 @@ int sub_536E80(char* a1, int* a2) {
 	return 1;
 }
 
-//----- (005374B0) --------------------------------------------------------
-
-
-//----- (00537850) --------------------------------------------------------
-
-// 537A87: variable 'v24' is possibly undefined
-
-
-
-//----- (0053E190) --------------------------------------------------------
 void nox_xxx_updateUndeadKiller_53E190(int a1) {
 	int v1; // eax
 
@@ -413,7 +378,6 @@ void nox_xxx_updateUndeadKiller_53E190(int a1) {
 	}
 }
 
-//----- (0053F7C0) --------------------------------------------------------
 int nox_xxx_useRead_53F7C0(int a1, int a2) {
 	int v2; // esi
 	int v3; // ecx
@@ -430,7 +394,6 @@ int nox_xxx_useRead_53F7C0(int a1, int a2) {
 	return 1;
 }
 
-//----- (0053F830) --------------------------------------------------------
 int sub_53F830(int a1, int a2) {
 	int v2; // esi
 	int v3; // ebx
@@ -462,101 +425,6 @@ int sub_53F830(int a1, int a2) {
 	return 1;
 }
 
-//----- (0053F930) --------------------------------------------------------
-int sub_53F930(int a1, int a2) {
-	int v2;     // ebx
-	int v3;     // esi
-	int result; // eax
-
-	if (!(*(uint8_t*)(a1 + 8) & 4)) {
-		return 0;
-	}
-	v2 = *(uint32_t*)(a1 + 748);
-	v3 = nox_xxx_guide_427010(*(const char**)(a2 + 736));
-	if (nox_common_gameFlags_check_40A5C0(4096) && *(uint8_t*)(*(uint32_t*)(v2 + 276) + 2251) != 2) {
-		nox_xxx_netPriMsgToPlayer_4DA2C0(a1, "pickup.c:ObjectEquipClassFail", 0);
-		return 0;
-	}
-	if (*(uint32_t*)(*(uint32_t*)(v2 + 276) + 4 * v3 + 4244)) {
-		nox_xxx_netPriMsgToPlayer_4DA2C0(a1, "objcoll.c:AlreadyHaveGuide", 0);
-		result = 0;
-	} else {
-		nox_xxx_awardBeastGuide_4FAE80_magic_plyrgide(a1, v3, 1);
-		nox_xxx_delayedDeleteObject_4E5CC0(a2);
-		result = 1;
-	}
-	return result;
-}
-
-//----- (0053F9E0) --------------------------------------------------------
-int nox_xxx_useSpellReward_53F9E0(int a1, int a2) {
-	unsigned char* v2; // ebx
-	int v3;            // ebp
-	int v4;            // edi
-	int v5;            // ecx
-	char v6;           // al
-
-	v2 = *(unsigned char**)(a2 + 736);
-	v3 = 0;
-	v4 = *(uint32_t*)(a1 + 748);
-	if (!(*(uint8_t*)(a1 + 8) & 4)) {
-		return 0;
-	}
-	v5 = *(uint32_t*)(v4 + 276);
-	v6 = *(uint8_t*)(v5 + 2251);
-	if (v6 != 1 && v6 != 2) {
-		nox_xxx_netPriMsgToPlayer_4DA2C0(a1, "use.c:SpellRewardClassFail", 0);
-		nox_xxx_aud_501960(925, a1, 2, *(uint32_t*)(a1 + 36));
-		return 0;
-	}
-	if (nox_xxx_playerCheckSpellClass_57AEA0(*(unsigned char*)(v5 + 2251), *v2)) {
-		nox_xxx_netPriMsgToPlayer_4DA2C0(a1, "use.c:SpellRewardClassFail", 0);
-		nox_xxx_aud_501960(925, a1, 2, *(uint32_t*)(a1 + 36));
-		return 0;
-	}
-	if (nox_common_gameFlags_check_40A5C0(6144) && !*(uint32_t*)(*(uint32_t*)(v4 + 276) + 4 * *v2 + 3696)) {
-		v3 = 1;
-	}
-	if (nox_xxx_spellGrantToPlayer_4FB550(a1, *v2, 1, v3, 0)) {
-		nox_xxx_delayedDeleteObject_4E5CC0(a2);
-	} else {
-		nox_xxx_aud_501960(925, a1, 2, *(uint32_t*)(a1 + 36));
-	}
-	return 1;
-}
-
-//----- (0053FAE0) --------------------------------------------------------
-int nox_xxx_useAbilityReward_53FAE0(int a1, int a2) {
-	unsigned char* v2; // ebx
-	int v3;            // ebp
-	int v4;            // edi
-	int result;        // eax
-
-	v2 = *(unsigned char**)(a2 + 736);
-	v3 = 0;
-	v4 = *(uint32_t*)(a1 + 748);
-	if (!(*(uint8_t*)(a1 + 8) & 4)) {
-		return 0;
-	}
-	if (*(uint8_t*)(*(uint32_t*)(v4 + 276) + 2251)) {
-		nox_xxx_netPriMsgToPlayer_4DA2C0(a1, "pickup.c:ObjectEquipClassFail", 0);
-		nox_xxx_aud_501960(925, a1, 2, *(uint32_t*)(a1 + 36));
-		result = 0;
-	} else {
-		if (nox_common_gameFlags_check_40A5C0(6144) && !*(uint32_t*)(*(uint32_t*)(v4 + 276) + 4 * *v2 + 3696)) {
-			v3 = 1;
-		}
-		if (nox_xxx_abilityRewardServ_4FB9C0_ability(a1, *v2, v3)) {
-			nox_xxx_delayedDeleteObject_4E5CC0(a2);
-		} else {
-			nox_xxx_aud_501960(925, a1, 2, *(uint32_t*)(a1 + 36));
-		}
-		result = 1;
-	}
-	return result;
-}
-
-//----- (00540440) --------------------------------------------------------
 int nox_xxx_castPixies_540440(int a1, int a2, int a3, int a4, int a5, int a6) {
 	int v6;        // ebx
 	int v7;        // eax
@@ -619,12 +487,4 @@ int nox_xxx_castPixies_540440(int a1, int a2, int a3, int a4, int a5, int a6) {
 	return 1;
 }
 
-//----- (00542BF0) --------------------------------------------------------
 void* nox_objectTypeGetXfer(char* id);
-
-// 543110: using guessed type char NewFileName[2048];
-
-//----- (005435C0) --------------------------------------------------------
-
-
-//----- (00543620) --------------------------------------------------------

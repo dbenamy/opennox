@@ -305,7 +305,6 @@ void* nox_alloc_spawn_2386216 = 0;
 uint32_t dword_5d4594_2487672 = 0;
 void* nox_alloc_magicEnt_1569668 = 0;
 uint32_t dword_5d4594_814992 = 0;
-uint32_t dword_587000_66116 = 0x1d;
 uint32_t dword_5d4594_2487564 = 0;
 uint32_t dword_5d4594_3804684 = 0;
 uint32_t dword_5d4594_1308120 = 0;

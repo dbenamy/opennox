@@ -14,18 +14,17 @@
 
 ## Current status
 
-Player-file sections, inventory restoration and client/server save framing are now
-Go:18 C bodies converted, six interfaces retained for live C callers/callbacks.
-See [PLAYER_FILES.md](docs/porting/PLAYER_FILES.md).
+Spell, ability and field-guide awards and catalogs are now Go:26 C bodies and
+one private counter converted. Seven interfaces remain for live C callers/callbacks.
+See [BOOK_AWARDS.md](docs/porting/BOOK_AWARDS.md).
 
-Latest qualified production C is **19,482 physical lines in65 files**, zero reference C:
-**−1,601** from the qualified baseline. Frozen comparisons, all three targets,
+Latest qualified production C is **18,662 physical lines in61 files**, zero reference C:
+**−820** from the qualified baseline. Frozen comparisons, all three targets,
 fresh production binaries and headless gameplay/save-load qualify. See
 [PORTING_STATE.md](PORTING_STATE.md).
 
-Spell, ability and field-guide awards are the next batch:26 bodies /629 C body
-lines plus one private counter. Its C captures are frozen and all-target baseline
-qualification passes. See [BOOK_AWARDS.md](docs/porting/BOOK_AWARDS.md).
+Next candidate: resource-definition parsers and sound-set loading. Caller auditing
+and original-C contracts precede conversion.
 
 ## Goal and target
 

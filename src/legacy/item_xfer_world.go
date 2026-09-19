@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -132,9 +127,9 @@ func itemXferRewardMarker(u *server.Object) int {
 				case 0:
 					id = int(spell.ParseID(alloc.GoString(&name[0])))
 				case 1:
-					id = int(C.nox_xxx_abilityNameToN_424D80((*C.char)(unsafe.Pointer(&name[0]))))
+					id = int(bookAbilityID(alloc.GoString(&name[0])))
 				case 2:
-					id = int(C.nox_xxx_guide_427010((*C.char)(unsafe.Pointer(&name[0]))))
+					id = int(bookGuideID(alloc.GoString(&name[0])))
 				}
 				if id == 0 {
 					return 0
@@ -154,7 +149,7 @@ func itemXferRewardMarker(u *server.Object) int {
 				case 1:
 					name = server.Ability(id).String()
 				case 2:
-					name = GoString(C.nox_xxx_guideNameByN_427230(C.int(id)))
+					name = alloc.GoString(bookGuideName(int32(id)))
 				}
 				n := int(r.byte(byte(len(name))))
 				r.cf.ReadWrite([]byte(name)[:n])

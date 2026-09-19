@@ -57,7 +57,7 @@ func controlGuideLevel(u, target *server.Object) int32 {
 		return 0
 	}
 	name := C.nox_xxx_getUnitName_4E39D0((*C.nox_object_t)(target.CObj()))
-	id := C.nox_xxx_guide_427010(name)
+	id := bookGuideID(GoString(name))
 	if id == 0 {
 		return 0
 	}

@@ -1,68 +1,63 @@
-# Spell, ability and guide awards — qualified C baseline
+# Spell, ability and guide awards — native conversion
 
-Qualified parent **a8015048**; production C remains **19,482 lines /65 files /zero
-reference C**. The selection has26 bodies /629 body lines across six C files,
-plus the private signed enchantment counter. It connects catalog/name lookup and
-guide loading to spell, ability and guide awards, their reports, item-use callbacks
-and associated client messages. This batch reuses player-file owners and captures.
+All 26 selected C bodies and the private signed enchantment counter are now Go.
+Seven C interfaces remain for four direct caller roots and three registered item-use
+callbacks; nineteen private interfaces and the C counter are retired. Four C
+translation units were removed. Go callers invoke native helpers directly.
 
-**C captures are frozen:**15 new artifacts /6,763 records, repeated exactly across
-all three targets. The105-root affected suites pass with81 artifacts /12,248
-records agreeing. Final runs against frozen literals pass on all three targets, with identical
-2,640 source fingerprints; static checks pass. No production changes.
-Production identity with a8015048 is verified; its production evidence is reused.
-Earlier progress notes below are historical.
+Production C: **18,662 physical lines in 61 files, zero reference C**, down **820**.
+The reduction includes 629 selected body lines, the counter, and obsolete comments,
+address markers and blank lines in touched C files. Header removal is not counted.
+Original C baseline: **27554f1f**; qualified parent: **a8015048**.
 
-The caller audit records literal references including declarations, avoiding the
-prototype-filter error from player files. Three report helpers are private but
-live through selected award functions. Existing Go callers and registered use
-callbacks must move with private helpers; retain exports required by remaining C.
+## Qualification
 
-Coverage plan: independently specified catalog lookup order, bounds and row widths;
-real guide-loader state and partial failure; enchantment list count/order; reward
-class/ID/level gates, signed overrides and family propagation; bookkeeping bits,
-reliable packet bytes/recipients/order, notification gates, deferred audio, item
-consumption and shop closure. Existing player-file restoration, book UI, quickbar,
-item-transfer, spell-class and player-message contracts remain affected dependencies.
+- All **108 affected roots** pass without skips on default, server and highres.
+  All **81 captures / 12,248 records** match C exactly across the three targets.
+  The 15 new frozen captures contain 6,763 records. No frozen expectations changed.
+- All **2,639 source fingerprints** agree across tests and production qualification.
+  Static memory checks pass. The native selection adds existing player-stats and
+  book-tooltip contracts for callers moved to Go.
+- Three fresh production binaries qualify on ELF32/386/SSE2/CGO, including retained
+  and retired symbols and absence of test helpers. Full suite matches the exact
+  known 1,553 failure entries and package outcomes: 15 pass, 3 fail, 32 skip.
+- Fresh headless gameplay and explicit save/load pass against existing references.
+  These scenarios complement the focused contracts; they do not exercise every
+  class, award or family branch. Physical display/audio remain manual checks.
 
-No production edits, captures or frozen expectations yet. Preserve original C
-behavior unless an independently justified correction is recorded before freezing.
-Reuse the qualified parent production evidence only if source identity holds;
-qualify fresh production after conversion.
+Evidence: [native qualification](book-awards-native-qualification.json),
+[C qualification](book-awards-c-qualification.json),
+[selection](book-awards-selection.json), [literal callers](book-awards-callers.json),
+[interface plan](book-awards-interface-plan.json),
+[native manifest](book-awards-native-batch.json).
+Local runs: `build/port-book-awards/native-final-{default,server,highres,production}`
+and `static-native-final.log`. All drafts/installers are consumed.
 
-Eight initial contracts now cover name/catalog/enchantment lookup, exact report
-bytes, reward ID/level gates, signed overrides, family propagation and notifications.
-The first discovery needed a loader prototype in the test adapter; c-second is
-running after that fix. No production changes or frozen expectations.
+## Contracts and review decisions
 
-Decision for review: family spell propagation historically caps the original
-spell instead of each family member, and folds family bookkeeping using that
-same original ID. Preserve this observable behavior during the port; tests
-exercise it explicitly rather than silently correcting it.
+Coverage includes catalog order/bounds/row widths, loader partial failure, localized
+strings and image lookup, enchantment count/order, class/ID/level gates, all 17
+quest single-level spell IDs, signed overrides, uint32 wrap, family propagation,
+bookkeeping, exact report bytes and recipients, both reliable and direct message
+queues, notification conditions, deferred audio, item consumption and shop closure.
+Fixtures use real player, object, catalog, queue, audio and shop owners. Only external
+image-resource loading is observed through its existing boundary.
 
-Expanded c-third passes15/16 roots. The loader fixture incorrectly prefixed
-colon-qualified string IDs with the source filename; corrected the fixture keys.
-Item use, sound routing, centered/console messages, and real attached-shop closure
-pass. Unknown field-guide names preserve the existing item-use behavior: when
-the class/known-guide gates admit them, the item is consumed even though the
-award rejects ID0. This is another separately reviewable legacy behavior.
+Two legacy behaviors are preserved for separate review:
 
-The26-body scope also owns the signed enchantment count, initialized to29 in
-vardefs.c. Only selected bodies read it; move it to Go and retire the C symbol,
-updating the existing player-file fixture owner. Negative-count gates are explicit.
-The final interface plan retains seven C exports (four direct callers and three
-registered item-use callbacks) and retires nineteen private interfaces.
+- Spell-family propagation applies its quest cap and bookkeeping to the original
+  spell ID, rather than consistently using the family member. Independent contracts
+  explicitly preserve this behavior.
+- An unknown field-guide item is consumed when class/known-guide admission passes,
+  even though awarding guide ID zero fails.
 
-The expanded105-root suite passes default/server/highres. Fifteen new captures
-now cover6,763 records, including all17 quest single-level spell IDs and the
-coop notification exclusions. Final observation review found that rejection and
-private messages use a different queue from reliable award packets. The new
-captures now include both queues, with independent exact recipient/packet
-assertions for failures and item-use messages. c-direct-default is running;
-no expectations have been frozen. All installed drafts are consumed.
+The native enchantment iterator checks a nonpositive signed count before subtracting
+one, preserving the minimum-int gate. The existing spell-class predicate was
+extracted without logic changes; its ABI contract remains selected.
 
-Final frozen qualification:105 affected roots pass per target, with all81
-artifacts /12,248 records matching exactly and2,640 source fingerprints agreeing.
-Static-c-final passes. Both message queues now have complete observations; exact
-direct-packet contracts pass. All sessions are joined. The native catalog draft
-is prepared only under build/port-book-awards; production remains original C.
+The C fixture review corrected colon-qualified localization IDs, added observations
+of the separate direct-message queue, and fixed a fixture observer that assumed
+player class in deliberate non-player tests. Owner cleanup now remains valid after
+fatal assertions. All were corrected before freezing. Production C was unchanged;
+its baseline reused the parent's production evidence after source-identity and
+binary-hash checks. The native conversion always received fresh production checks.

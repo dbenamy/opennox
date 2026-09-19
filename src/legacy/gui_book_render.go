@@ -31,7 +31,7 @@ func bookFormatInt(format string, number int) string {
 	return alloc.GoString16(&dst[0])
 }
 func bookCreatureName(id int) string {
-	return GoWStringP(unsafe.Pointer(uintptr(uint32(C.nox_xxx_guiCreatureGetName_427240(C.int(id))))))
+	return GoWStringP(unsafe.Pointer(uintptr(uint32(bookGuideCreatureName(int32(id))))))
 }
 func bookDrawList(w *gui.Window) int {
 	r := GetClient().R2()
@@ -117,7 +117,7 @@ func bookDrawList(w *gui.Window) int {
 	var desc string
 	hasDesc := false
 	if mode == 1 {
-		size := int(C.nox_xxx_guideGetUnitSize_427460(C.int(id)))
+		size := int(bookGuideSize(int32(id)))
 		label := bookText("Size") + " "
 		imageWidth, dy := 0, 0
 		switch size {
@@ -136,8 +136,8 @@ func bookDrawList(w *gui.Window) int {
 		}
 		y := pos.Y + 51 + height + 2
 		textSize := title(bookCreatureName(id), y)
-		bookDrawImage(uint32(C.nox_xxx_bookGetCreatureImg_427400(C.int(id))), image.Pt((108-imageWidth)/2+pos.X+24, y+dy+textSize.Y+2))
-		raw := C.nox_xxx_guideGetDescById_4272E0(C.int(id))
+		bookDrawImage(uint32(bookGuideImage(int32(id))), image.Pt((108-imageWidth)/2+pos.X+24, y+dy+textSize.Y+2))
+		raw := bookGuideDescription(int32(id))
 		hasDesc = raw != 0
 		desc = GoWStringP(unsafe.Pointer(uintptr(uint32(raw))))
 	} else if class == 0 {

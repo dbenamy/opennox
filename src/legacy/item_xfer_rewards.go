@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -103,7 +98,7 @@ func itemXferAbilityReward(u *server.Object) int {
 	r.raw(unsafe.Pointer(&buf[0]), n)
 	buf[n] = 0
 	// Use the same name resolver as the C callback, including invalid names.
-	*p = byte(C.nox_xxx_abilityNameToN_424D80((*C.char)(unsafe.Pointer(&buf[0]))))
+	*p = byte(bookAbilityID(alloc.GoString(&buf[0])))
 	return objectXferFinish(r, u, v, saved)
 }
 func itemXferFieldGuide(u *server.Object) int {

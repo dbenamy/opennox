@@ -80,7 +80,7 @@ func uiItemTooltip(dr *client.Drawable) *uint16 {
 		case 1:
 			title = (*uint16)(unsafe.Pointer(nox_xxx_spellTitle_424930(int(metadata))))
 		case 2:
-			title = (*uint16)(unsafe.Pointer(uintptr(uint32(C.nox_xxx_guiCreatureGetName_427240(C.int(metadata))))))
+			title = (*uint16)(unsafe.Pointer(uintptr(uint32(bookGuideCreatureName(int32(metadata))))))
 		case 4:
 			title = alloc.InternCString16(Nox_xxx_abilityGetName_0_425260(int(metadata)))
 		}

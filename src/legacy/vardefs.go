@@ -296,7 +296,6 @@ extern void* nox_alloc_spawn_2386216;
 extern uint32_t dword_5d4594_2487672;
 extern void* nox_alloc_magicEnt_1569668;
 extern uint32_t dword_5d4594_814992;
-extern uint32_t dword_587000_66116;
 extern uint32_t dword_5d4594_2487564;
 extern uint32_t dword_5d4594_3804684;
 extern uint32_t dword_5d4594_1308120;

@@ -33,7 +33,7 @@ func controlGiveAbilities(u *server.Object, level int8, notify int32) {
 		if controlFlags(4096) || questRuntimeWord(1556160) != 0 || questRuntimeWord(1556164) != 0 {
 			*equipmentWord(pl, 3696+4*i) = 0
 		} else {
-			C.nox_xxx_abilityRewardServ_4FB9C0_ability(inventoryInt(u), C.int(ability), C.int(notify))
+			bookAwardAbility(u, int32(ability), int32(notify))
 		}
 	}
 }

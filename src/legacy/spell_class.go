@@ -9,6 +9,10 @@ import (
 
 //export nox_xxx_playerCheckSpellClass_57AEA0
 func nox_xxx_playerCheckSpellClass_57AEA0(class, ind C.int) C.int {
+	return C.int(playerSpellClassCheck(int32(class), int32(ind)))
+}
+
+func playerSpellClassCheck(class, ind int32) int32 {
 	flags := GetServer().S().Spells.Flags(spell.ID(ind))
 	// Keep the raw int: narrowing to the byte-sized class enum accepts invalid inputs.
 	var allowed things.SpellFlags

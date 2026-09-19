@@ -17,6 +17,7 @@ import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 	"math"
 	"unsafe"
@@ -74,7 +75,7 @@ func spellEffectSummonStart(record unsafe.Pointer) int32 {
 	if spellEffectSummonPosition(record, unsafe.Pointer(&pos)) == 0 {
 		return 1
 	}
-	typ := GetServer().S().Types.IndByID(GoString(C.nox_xxx_guideNameByN_427230(C.int(guide))))
+	typ := GetServer().S().Types.IndByID(alloc.GoString(bookGuideName(int32(guide))))
 	seq := memmap.PtrUint16(0x5d4594, 1570276)
 	n := *seq
 	*seq++
@@ -87,7 +88,7 @@ func spellEffectSummonStart(record unsafe.Pointer) int32 {
 	*controlHalf(record, 83) = n
 	*controlByte(record, 85) = 0
 	duration := int32(uintptr(record))
-	switch C.nox_xxx_guideGetUnitSize_427460(C.int(guide)) {
+	switch bookGuideSize(int32(guide)) {
 	case 1:
 		duration = floatToInt32(float32(spellEffectTable("SummonDuration", 0)))
 	case 2:
@@ -150,7 +151,7 @@ func spellEffectCharmStart(record unsafe.Pointer) int32 {
 		return 1
 	}
 	if target.ObjClass&2 != 0 && !server.Nox_xxx_creatureIsMonitored_500CC0(source, target) {
-		guide := int32(C.nox_xxx_creatureIsCharmableByTT_4272B0(C.int(target.TypeInd)))
+		guide := int32(bookGuideCharmable(uint32(target.TypeInd)))
 		if source.ObjClass&4 != 0 && C.nox_cheat_charmall == 0 {
 			if guide == 0 {
 				resourcePriority(source, "Summon.c:CreatureNotCharmable")
@@ -166,7 +167,7 @@ func spellEffectCharmStart(record unsafe.Pointer) int32 {
 			}
 		}
 		duration := int32(uintptr(record))
-		size := int32(C.nox_xxx_guideGetUnitSize_427460(C.int(guide)))
+		size := int32(bookGuideSize(int32(guide)))
 		switch {
 		case size <= 1:
 			duration = floatToInt32(float32(spellEffectTable("CharmSmallDuration", level-1)))
@@ -208,7 +209,7 @@ func spellEffectCharmFinish(record unsafe.Pointer) int32 {
 			return fail()
 		}
 		if source.ObjClass&4 != 0 {
-			guide := int(C.nox_xxx_creatureIsCharmableByTT_4272B0(C.int(u.TypeInd)))
+			guide := int(bookGuideCharmable(uint32(u.TypeInd)))
 			if !Nox_xxx_checkSummonedCreaturesLimit_500D70(source, guide) {
 				resourcePriority(source, "Summon.c:CreatureControlFailed")
 				return fail()

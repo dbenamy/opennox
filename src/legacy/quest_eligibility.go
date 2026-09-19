@@ -8,6 +8,7 @@ import "C"
 
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
@@ -60,7 +61,7 @@ func questEligibilityBook(u *server.Object) bool {
 		return questEligibilityListed(207108, uint32(*(*byte)(u.UseData.Ptr)))
 	}
 	if sub&2 != 0 {
-		return questEligibilityListed(207796, uint32(C.nox_xxx_guide_427010((*C.char)(u.UseData.Ptr))))
+		return questEligibilityListed(207796, uint32(bookGuideID(alloc.GoString((*byte)(u.UseData.Ptr)))))
 	}
 	if sub&4 != 0 {
 		return questEligibilityAbility(uint32(*(*byte)(u.UseData.Ptr)))

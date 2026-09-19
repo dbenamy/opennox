@@ -41,7 +41,6 @@ int sub_48C980();
 void nox_console_sendSysOpPass_4409D0(wchar2_t* a1);
 int  nox_server_loadMapFile_4CF5F0(char* a1, int a2);
 int nox_xxx_guiChatIconLoad_445650();
-int nox_xxx_loadGuides_427070();
 
 */
 import "C"
@@ -377,7 +376,7 @@ func Nox_xxx_allocArrayHealthChanges_49A5F0() int {
 	return bool2int(combatHealthInit())
 }
 func Nox_xxx_loadGuides_427070() int {
-	return int(C.nox_xxx_loadGuides_427070())
+	return int(bookLoadGuides())
 }
 func Sub_494F00() int {
 	return int(C.sub_494F00())

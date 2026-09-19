@@ -7,7 +7,6 @@ package legacy
 extern uint32_t dword_5d4594_2516344;
 extern uint32_t dword_5d4594_2516348;
 extern uint32_t dword_5d4594_2516328;
-extern uint32_t dword_587000_66116;
 */
 import "C"
 import (
@@ -49,9 +48,9 @@ func PortTestPlayerFileEnchants(ids []uint32) func() {
 	}
 	table := unsafe.Slice(memmap.PtrUint32(0x587000, 66000), 29)
 	old := append([]uint32(nil), table...)
-	count := C.dword_587000_66116
+	count := bookEnchantN
 	clear(table)
 	copy(table, ids)
-	C.dword_587000_66116 = C.uint32_t(len(ids))
-	return func() { copy(table, old); C.dword_587000_66116 = count }
+	bookEnchantN = int32(len(ids))
+	return func() { copy(table, old); bookEnchantN = count }
 }

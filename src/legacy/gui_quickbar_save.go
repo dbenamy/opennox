@@ -33,9 +33,7 @@ func quickbarSaveRows(b *quickbarRecord, rows, slots int, class byte) int {
 					text, _, _ := strings.Cut(string(name[:size[0]]), "\x00")
 					s.ID = uint32(spell.ParseID(text))
 				} else {
-					p, free := alloc.CString(string(name[:size[0]]))
-					s.ID = uint32(C.nox_xxx_abilityNameToN_424D80((*C.char)(unsafe.Pointer(p))))
-					free()
+					s.ID = uint32(bookAbilityID(alloc.GoStringS(name[:size[0]])))
 				}
 			} else {
 				var name string

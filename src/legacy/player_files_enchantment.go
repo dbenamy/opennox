@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-*/
-import "C"
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/server"
@@ -81,8 +77,8 @@ func playerFileEnchantment(u *server.Object) int {
 				}
 			}
 		} else {
-			r.byte(byte(C.sub_424CB0(inventoryInt(u))))
-			for id := int32(C.sub_424D00()); id != -1; id = int32(C.sub_424D20(C.int(id))) {
+			r.byte(byte(bookEnchantCountActive(u)))
+			for id := int32(bookEnchantFirst()); id != -1; id = int32(bookEnchantNext(int32(id))) {
 				if !spellLifeHasBuff(u, int32(int8(id))) {
 					continue
 				}

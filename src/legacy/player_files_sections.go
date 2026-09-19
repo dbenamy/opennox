@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME3_3.h"
-#include "server__magic__plyrgide.h"
-#include "server__magic__plyrspel.h"
-#include "server__ability__ability.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/spell"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -148,11 +140,11 @@ func playerFileGuides(u *server.Object) int {
 		}
 		for i := 0; i < int(count); i++ {
 			name := playerFileName(r, "")
-			id := uint32(C.nox_xxx_guide_427010(internCStr(name)))
+			id := uint32(bookGuideID(name))
 			if noxflags.HasGame(4096) && !questEligibilityBeast(id) {
 				return 0
 			}
-			C.nox_xxx_awardBeastGuide_4FAE80_magic_plyrgide(inventoryInt(u), C.int(id), 0)
+			bookAwardGuide(u, int32(id), 0)
 		}
 	} else {
 		count := byte(0)
@@ -164,7 +156,7 @@ func playerFileGuides(u *server.Object) int {
 		r.byte(count)
 		for i := 1; i <= 40; i++ {
 			if known[i] != 0 {
-				playerFileName(r, GoString(C.nox_xxx_guideNameByN_427230(C.int(i))))
+				playerFileName(r, alloc.GoString(bookGuideName(int32(i))))
 			}
 		}
 	}
@@ -212,8 +204,8 @@ func playerFileSpells(u *server.Object) int {
 			if version < 3 || class != 0 {
 				Nox_xxx_spellGrantToPlayer_4FB550(u, id, 0, 0, int(int32(level)))
 			} else {
-				aid := C.nox_xxx_abilityNameToN_424D80(internCStr(name))
-				C.nox_xxx_abilityRewardServ_4FB9C0_ability(inventoryInt(u), aid, 0)
+				aid := bookAbilityID(name)
+				bookAwardAbility(u, aid, 0)
 			}
 		}
 	} else {
