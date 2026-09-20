@@ -318,3 +318,20 @@ matching captures. Static checks pass; jobs 28720/39226/52358 are joined. See
 game-messages-client-appearance-fixtures.json. Fourth audited cache cleanup is
 complete (60333 joined): 3,262,857,596 bytes reclaimed; scripts consumed. Next:
 light intensity and enchantment reports. Production C remains unchanged.
+
+Appearance checkpoint **2c50982e** is pushed. Light intensity passes 96 routing and
+numeric cases alongside the frozen particle-light contracts (40418 joined).
+The test uses the actual qualified particle-light entry, not Drawable.SetLightIntensity:
+the former preserves the C helper's double-width fixed-point calculation. Independent
+clamp/intensity/fixed-point assertions accompany whole-record parity. Working
+follow-up covers object/item enchantment gates and restoration to a controlled,
+nonzero type intensity. Enchantment first probe 61442 is running; join before edits.
+The enchantment draft is consumed. No production C changed.
+
+Light/enchantment follow-up passes 6,624 additional cases, including independently
+specified restoration gates and exact local UI word/byte writes. The accumulated
+repeat passes 156 root runs (52 roots, three repetitions), 52,414 message cases
+and thirty matching separate-process captures. Static checks pass; all jobs
+40418/61442/61025 are joined. See game-messages-client-light-fixtures.json. Next:
+visual-effect creation dispatch, including cached type ownership and allocation
+failure. Production C remains unchanged at 8,820 lines /38 files.
