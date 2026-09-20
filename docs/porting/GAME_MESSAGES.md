@@ -522,3 +522,22 @@ suppress writes; count/max arithmetic wraps. Whole-record, input immutability,
 text-ring and audio contracts accompany captures. All jobs are joined. See
 client-progress-reports-c-checkpoint.json. C remains 7,897 physical lines; this
 checkpoint adds fixtures only. Continue inventory and other selected coverage.
+
+The next fixture checkpoint adds pickup (576), inventory notifications (432),
+generator status (1,536) and modifier reports (4,096): **14,460 total new cases**.
+Three combined repeats each pass eleven roots without skips and eight identical
+capture hashes, with fixed source. Static checks pass. Pickup covers connection
+and host modes, masked IDs, stacks, modifier descriptor order/missing IDs and real
+allocation exhaustion, including exact failure-report bytes in each queue.
+Notification cases cover drops, valid/invalid equipment and missing items.
+Generator cases verify full drawable records, countdown rising edges and lighting
+flag clearing. Modifier reports cover every byte ID, static/dynamic match and
+mismatch, missing objects, exact writes and untouched tail canaries.
+
+Fixture corrections: host mode uses the ordinary client message list, client mode
+the reliable queue; RedApple cannot equip; Equipped is uint32. A local repeat
+pattern initially had two lines and was rejected before execution; the corrected
+one-line union ran all eleven intended roots. These are fixture/tooling fixes,
+with no production changes. All jobs joined. See
+client-progress-inventory-c-checkpoint.json. C remains **7,897 /37 files**.
+Continue remaining selected coverage without pausing at this checkpoint.

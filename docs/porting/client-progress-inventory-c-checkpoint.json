@@ -1,0 +1,147 @@
+{
+  "status": "partial original-C fixture checkpoint; entire progress/effects scope not yet qualified or frozen",
+  "production_revision": "f9268ef1aa34089d994b8c4db3c2aa8e3ae09670",
+  "production_c_lines": 7897,
+  "captures": [
+    {
+      "file": "interaction-game-progress-stats.json",
+      "sha256": "d2a30d710a41b17794ef7709cc7739f82181e2a8c226dae0d842d6deece21609",
+      "cases": 768
+    },
+    {
+      "file": "interaction-game-progress-lessons.json",
+      "sha256": "8b7a11c36470fa91db908d1c17b721a88c69a23160bbd709da68b2dc99a6faa6",
+      "cases": 3456
+    },
+    {
+      "file": "interaction-game-progress-experience.json",
+      "sha256": "aaa23af6e23b4c04151a50fc83d8d97ea6056d84539782341114234181b8e313",
+      "cases": 12
+    },
+    {
+      "file": "interaction-game-progress-treasure.json",
+      "sha256": "451cfbd465ccf8482c20ea2540b0b8473a60d73bf7cfb8b90bd94d45289b8369",
+      "cases": 3584
+    },
+    {
+      "file": "interaction-game-progress-extended-status.json",
+      "sha256": "e27bdc33fbb5d5823a326fa07989cabb779b8d9a22f05487a57f979a34288ea9",
+      "cases": 1536
+    },
+    {
+      "file": "interaction-game-progress-inventory-notifications.json",
+      "sha256": "56e31836fc096f728ca409568296a2d9583a30d45e656dede35d55b55e4663d8",
+      "cases": 432
+    },
+    {
+      "file": "interaction-game-progress-modifier-report.json",
+      "sha256": "cad5d6e1f5cb5f583aafb18b27185c3400e4f0e1017ee9ed10d165c3ca5a2428",
+      "cases": 4096
+    },
+    {
+      "file": "interaction-game-progress-pickup.json",
+      "sha256": "366e6c7c28485bf766e3dde630f24cc3f700d92835374160202f84b4311a4ca8",
+      "cases": 576
+    }
+  ],
+  "runs": [
+    {
+      "path": "build/port-game-messages/progress-inventory-final-repeat-1",
+      "tests": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 11,
+        "selected_root_tests": 11,
+        "exit": 0,
+        "started_tests": 11,
+        "completed_tests": 11,
+        "started_root_tests": 11,
+        "completed_root_tests": 11,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 8.81532795005478
+      },
+      "source_unchanged": true
+    },
+    {
+      "path": "build/port-game-messages/progress-inventory-final-repeat-2",
+      "tests": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 11,
+        "selected_root_tests": 11,
+        "exit": 0,
+        "started_tests": 11,
+        "completed_tests": 11,
+        "started_root_tests": 11,
+        "completed_root_tests": 11,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 8.586014070082456
+      },
+      "source_unchanged": true
+    },
+    {
+      "path": "build/port-game-messages/progress-inventory-final-repeat-3",
+      "tests": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 11,
+        "selected_root_tests": 11,
+        "exit": 0,
+        "started_tests": 11,
+        "completed_tests": 11,
+        "started_root_tests": 11,
+        "completed_root_tests": 11,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 8.86174788302742
+      },
+      "source_unchanged": true
+    }
+  ],
+  "source_sha256": {
+    "src/game_messages_client_inventory_porttest_test.go": "da290e37af71d97b733127c767d7403839e5d37232a6682da4793ba9da98eca0",
+    "src/game_messages_client_modifier_porttest_test.go": "e421a317a77528166b02b4ee3014b1493d3b911df5aa119be0a4e96426a177f0",
+    "src/game_messages_client_progress_porttest_test.go": "5496e82b41e7e1dfbb992706f8134d10e0849b60a3e32b443d4898763d19a74d",
+    "src/game_messages_client_stats_porttest_test.go": "2eb04c7f2a4e64264ae30f478e71ef85c0e39217fba87e0add6b8b5fa010572d",
+    "src/game_messages_client_status_porttest_test.go": "5b1a89b6b42d23369b9df91a0bcd75d9ee2b9440c34b78aca10d873ebe3bab70"
+  },
+  "remaining": "Client status UI, creature/award/winner, effects and map-progress coverage; final three-target baseline qualification."
+}

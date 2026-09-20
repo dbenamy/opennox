@@ -43,18 +43,24 @@ The compass-image initializer joins progress drawing because they share the real
 owner and Go callers. BlueSpark/VioletSpark named globals have their last C uses
 in this scope and should move to Go with their existing initializer.
 
-Four new C fixtures pass **7,820 cases**: stats 768, lessons 3,456,
-experience 12 and treasure 3,584. Three separate-process repeats each pass seven
-roots without skips and reproduce all four reviewed capture hashes. Source
-fingerprints match; all jobs, including repeat driver 42393, are joined.
-[Partial checkpoint](docs/porting/client-progress-reports-c-checkpoint.json).
+Eight new C fixtures now pass **14,460 cases**, including pickup 576,
+drop/equip/unequip 432, generator status 1,536 and modifier reports 4,096.
+Three combined repeats each pass eleven roots without skips and reproduce all
+eight capture hashes; source fingerprints match. Static checks pass. All jobs,
+including repeat driver 2457, are joined. See the
+[partial checkpoint](docs/porting/client-progress-inventory-c-checkpoint.json).
 This is test-only progress, not a qualified/frozen whole-scope baseline.
-Production remains identical to f9268ef1. Next: inventory-message coverage using
-the existing real inventory transaction owner.
+Production remains identical to f9268ef1; first fixture checkpoint 11a9df13 is pushed.
+Next: remaining visual-effect messages and shared state. No source job is active.
+
+Review notes: pickup failure reports use the client message list in host mode and
+the reliable queue in client mode; fixtures check both. Non-equippable items must
+not acquire an equipment flag. Earlier fixture-only failures are corrected;
+original expectations for the preceding completed batch remain untouched.
 
 Continue original-C coverage, reusable owner/caller audit, repeated captures and
-three-target baseline qualification before translation. Remaining effect, winner,
-inventory and map-progress branches are not yet covered by the new fixtures.
+three-target baseline qualification before translation. Remaining effect, winner, creature, client-status UI, award and map-progress
+branches still need new fixtures.
 No question or approval is pending; continue after each committed checkpoint.
 
 ## Recovery and storage
