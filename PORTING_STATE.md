@@ -41,18 +41,19 @@ Scope: three client/server dispatch and notice bodies /3,841 body lines. See
 No conversion is installed, no runtime goldens are frozen, and the whole scope
 is not yet qualified.
 
-Current fixture coverage: **52,414 cases /30 message roots**, plus **22 inherited
-roots**. Three repetitions pass **156 root runs**, with **30 matching captures**
+Current fixture coverage: **52,702 cases /31 message roots**, plus **22 inherited
+roots**. Three repetitions pass **159 root runs**, with **31 matching captures**
 across processes. Static mapped-memory checks pass. All jobs are joined, including
-40418/61442/61025. Latest evidence:
-[game-messages-client-light-fixtures.json](docs/porting/game-messages-client-light-fixtures.json).
+77269/5048. Latest evidence:
+[game-messages-client-fx-fixtures.json](docs/porting/game-messages-client-fx-fixtures.json).
 Prior pushed checkpoints include 767e00ce (health), 78dffc6b (walls), and 82656d33
-(inventory reports); 6dbeda4e adds equipment; 2c50982e adds appearance; light/enchantment is the current checkpoint being committed.
+(inventory reports); 6dbeda4e adds equipment; 2c50982e adds appearance; 91b47845 adds light/enchantment; simple effects are the current checkpoint being committed.
 
 Covered families include notices, server aliases/waypoints/inventory actions,
 client object creation/update/lifetime/control, friend lists, health/meters,
 magic/secret walls, inventory reports and player/NPC equipment. Remaining client
-families and positive server actions still need coverage. Next: visual-effect creation and remaining drawable effects.
+families and positive server actions still need coverage. Next: review the tested client-state/notices conversion boundary (~900 lines),
+excluding shared effect blocks. See GAME_MESSAGES.md for the provisional audit.
 
 Review notes: client dispatch sometimes modifies its input; equip clears the
 identifier high bit, while unequip preserves it. Health-change notifications queue

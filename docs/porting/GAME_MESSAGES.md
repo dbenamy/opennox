@@ -335,3 +335,18 @@ and thirty matching separate-process captures. Static checks pass; all jobs
 40418/61442/61025 are joined. See game-messages-client-light-fixtures.json. Next:
 visual-effect creation dispatch, including cached type ownership and allocation
 failure. Production C remains unchanged at 8,820 lines /38 files.
+
+Six simple effect-creation messages pass 288 cases: cached/uncached/overridden type
+IDs, allocation failure, signed coordinates, teleport/poof Y offsets, exact cache
+writes and complete normalized drawable/list captures. The accumulated repeat
+passes 159 root runs (53 roots, three repetitions), 52,702 message cases and
+thirty-one matching captures. Static checks pass; jobs 77269/5048 are joined.
+See game-messages-client-fx-fixtures.json. Production C remains unchanged.
+
+Boundary review in progress: tested client-state cases plus all notices appear to
+form a roughly 900-line connected conversion that need not wait for the remaining
+trade, complex effects and server actions. The ignored covered-client-boundary-
+review.json is provisional: its literal-label tally does not assign shared effect
+blocks correctly. Exclude the entire shared effect block from the first conversion,
+and audit goto targets, ownership and remaining callers before accepting this split.
+No selection change, baseline freeze or native installation has happened yet.

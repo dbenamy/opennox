@@ -25,7 +25,7 @@ This conversion removes 447 lines, including four unused or test-only helpers.
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The remaining client/server game-message dispatch and notice baseline is in
-progress: 52,414 cases across 30 message roots, with accumulated repeated checks
+progress: 52,702 cases across 31 message roots, with accumulated repeated checks
 and matching captures. Production is unchanged; see
 [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) for remaining coverage.
 
