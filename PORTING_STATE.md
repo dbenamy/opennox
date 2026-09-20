@@ -59,7 +59,13 @@ root-only rebuild/repeat in 39 seconds. Keep this setting for single-job focused
 builds; it does not establish a controlled performance comparison. Fifteen
 verified superseded test-cache archives were removed, recovering 1,131,099,228
 bytes. Cleanup scripts are consumed; qualified binaries/evidence/assets remain.
-Next: equipment and the remaining positive server actions, then client families.
+Working follow-up adds 96 equipment cases with explicit equipped-flag contracts.
+Equipment passes with eleven message roots and three inherited roots, including
+three repetitions and equal captures (8563/33993 joined). Working follow-up adds
+144 pickup cases for carrying limits and the GameEx class/item hook. Jobs 96744/2714 are joined and pass: 2,762 message cases, 45 root runs
+over three repetitions, and twelve identical separate-process captures. See
+game-messages-inventory-fixtures.json. Remaining server actions
+and client families are still ahead. Client input-write sites are documented.
 
 ## Previous — client drawable state Go conversion qualified
 

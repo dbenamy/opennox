@@ -139,3 +139,34 @@ test process. The earlier legacy-plus-root rebuild took 124.990 seconds, so thes
 numbers are not a controlled speed ratio. Fifteen verified superseded test-cache
 archives were removed (1,131,099,228 bytes). Audit/apply scripts are consumed;
 qualified binaries, captures, original assets/archive and saves remain.
+
+Client input ownership differs from the server/notice families: the C complex-
+object case updates the animation nibble in the message, and several equipment
+and creature/NPC cases rewrite unit-code words. Preserve and capture these writes;
+do not apply the read-only-input assertion indiscriminately to client dispatch.
+The read-only audit list is `build/port-game-messages/client-input-writes.json`.
+The real connected gate is mapped word 5D4594+815764; fixture that owner instead
+of replacing the connectivity predicate.
+
+The server pickup case deliberately calls the live GameEx `OnLibraryNotice_420`
+hook, not the commented-out ordinary inventory placement call. Preserve that
+entry and its class/item behavior while GameEx remains C; a similarly named Go
+placement API is not a substitute. Include weight-limit and hook-routing coverage
+before converting pickup. The remaining C hook is production code, not a test
+reference, and can be selected with its GameEx peers in a later batch.
+
+Equipment passes 96 cases with explicit equipment-flag contracts, all prior message
+roots and three inherited roots (equipment owners, bow/ammo and waypoints).
+Three repetitions pass 42 root runs; eleven captures match across processes.
+Evidence is under `equipment-{first,repeat}`; those jobs are joined.
+
+Working pickup probe: 144 cases cover exact/over-limit/maximum carrying values,
+player-state gates, full-range ordinary IDs, and the GameEx type/class decision.
+The fixture observes the existing placement boundary with exact actor/item/flag
+arguments and independent expected call counts. The expected rejection route
+uses qualified private-message/audio operations, with a controlled nonempty mapped
+class-failure key. Jobs 96744 and 2714 are joined and pass. Twelve message roots cover 2,762
+cases; three repetitions with three inherited roots give 45 passing root runs.
+All twelve captures match across processes. See
+[game-messages-inventory-fixtures.json](game-messages-inventory-fixtures.json).
+Production C is unchanged; remaining C stays 8,820 lines in 38 files.

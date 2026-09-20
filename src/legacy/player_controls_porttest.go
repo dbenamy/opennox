@@ -106,42 +106,46 @@ import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/memmap/nox/blobdata"
+	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
 	"math"
 	"unsafe"
 )
 
 type PortTestPlayerControlsSpec struct {
-	GameMessageCheckCalls bool
-	GameMessageCallKind   uint32
-	GameMessage           []byte // Optional original game-message dispatch over this real owner.
-	GameMessageLength     int
-	UnitRead              *PortTestUnitReadSpec
-	UnitReward            *PortTestUnitRewardSpec
-	UnitUpdate            *PortTestUnitUpdateSpec
-	UnitDialogue          *PortTestUnitDialogueSpec
-	UnitExperience        *PortTestUnitExperienceSpec
-	ScriptHalberd         *PortTestScriptHalberdSpec
-	ScriptCarry           *PortTestScriptCarrySpec
-	ScriptStartup         *PortTestScriptStartupSpec
-	Reports               *PortTestGameplayReportsSpec
-	SpellLifecycle        *PortTestSpellLifecycleSpec
-	ByteReturn            int // 1: player record address; 2: last created item address, checked before normalization.
-	Corpse                bool
-	Guide                 bool
-	Disallowed            uint8
-	NullRecord, Modifiers bool
-	Equipment             bool
-	Stats                 []server.ClassStats
-	MonsterRefs           []int
-	UpdateByRef           map[int]map[int]uint32
-	Target                int
-	X, Y                  int32
-	Name                  *string
-	Bot                   bool
-	BotWords              map[int]uint32
+	GameMessagePickupCalls *int
+	GameMessageEquipped    *bool
+	GameMessageCheckCalls  bool
+	GameMessageCallKind    uint32
+	GameMessage            []byte // Optional original game-message dispatch over this real owner.
+	GameMessageLength      int
+	UnitRead               *PortTestUnitReadSpec
+	UnitReward             *PortTestUnitRewardSpec
+	UnitUpdate             *PortTestUnitUpdateSpec
+	UnitDialogue           *PortTestUnitDialogueSpec
+	UnitExperience         *PortTestUnitExperienceSpec
+	ScriptHalberd          *PortTestScriptHalberdSpec
+	ScriptCarry            *PortTestScriptCarrySpec
+	ScriptStartup          *PortTestScriptStartupSpec
+	Reports                *PortTestGameplayReportsSpec
+	SpellLifecycle         *PortTestSpellLifecycleSpec
+	ByteReturn             int // 1: player record address; 2: last created item address, checked before normalization.
+	Corpse                 bool
+	Guide                  bool
+	Disallowed             uint8
+	NullRecord, Modifiers  bool
+	Equipment              bool
+	Stats                  []server.ClassStats
+	MonsterRefs            []int
+	UpdateByRef            map[int]map[int]uint32
+	Target                 int
+	X, Y                   int32
+	Name                   *string
+	Bot                    bool
+	BotWords               map[int]uint32
 }
 type portTestPlayerControls struct {
+	messagePickups int
 	scriptInit     func() [][2]uintptr
 	scriptDeletes  []*server.Object
 	spellLifecycle *portTestSpellLifecycle
@@ -186,7 +190,17 @@ func (p *portTestShopPools) controlsPrepare() func() {
 		restoreMods = p.proxy.core.PortTestControlsModifiers(mods, names)
 	}
 	oldPlace := Nox_xxx_inventoryServPlace_4F36F0
-	Nox_xxx_inventoryServPlace_4F36F0 = func(u, t *server.Object, a, b int) bool { p.controlsAdopt(t); return oldPlace(u, t, a, b) }
+	Nox_xxx_inventoryServPlace_4F36F0 = func(u, t *server.Object, a, b int) bool {
+		if sp.GameMessagePickupCalls != nil {
+			st.messagePickups++
+			actor := p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack.Actor
+			if u != p.temporaryRef(actor) || t != p.temporaryRef(sp.Target) || a != 1 || b != 1 {
+				panic("game pickup placement arguments")
+			}
+		}
+		p.controlsAdopt(t)
+		return oldPlace(u, t, a, b)
+	}
 	restoreCorpse := func() {}
 	if sp.Corpse {
 		cache := memmap.PtrUint32(0x5d4594, 2488736)
@@ -396,6 +410,18 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 		}
 	}
 
+	if sp.GameMessageEquipped != nil {
+		target := p.temporaryRef(sp.Target)
+		got := target.ObjFlags&0x100 != 0
+		if got != *sp.GameMessageEquipped {
+			panic(fmt.Sprintf("game-message equipment flag: %v want %v", got, *sp.GameMessageEquipped))
+		}
+	}
+
+	if sp.GameMessagePickupCalls != nil && st.messagePickups != *sp.GameMessagePickupCalls {
+		panic(fmt.Sprintf("game pickup calls: %d want %d", st.messagePickups, *sp.GameMessagePickupCalls))
+	}
+
 	if a.Op == 1444 {
 		u := p.temporaryRef(spec.Actor)
 		ptr := *(*unsafe.Pointer)(unsafe.Add(u.UpdateData, 292))
@@ -488,6 +514,22 @@ func (p *portTestShopPools) controlsAdopt(u *server.Object) {
 // covers only ABIs still used by production C. Expected captures are unchanged.
 func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe.Pointer) uint64 {
 	switch op {
+	case 72:
+		Nox_xxx_inventoryServPlace_4F36F0(u, t, 1, 1)
+		return 0
+	case 73:
+		gameplayTextPrivate(u, alloc.InternCString("pickup.c:ObjectEquipClassFail"), 0)
+		inventorySound(925, u, 2, int(u.NetCode))
+		return 0
+	case 74:
+		gameplayTextPrivate(u, alloc.InternCString("pickup.c:CarryingTooMuch"), 0)
+		return 0
+	case 70:
+		equipmentTryEquip(u, t)
+		return 0
+	case 71:
+		equipmentTryDequip(u, t)
+		return 0
 	case 68:
 		pos := types.Pointf{X: math.Float32frombits(uint32(x)), Y: math.Float32frombits(uint32(y))}
 		inventoryTargetDrop(u, t, &pos)
