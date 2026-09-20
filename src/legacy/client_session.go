@@ -242,7 +242,7 @@ func clientGameSession(ind int, op netmsg.Op, data []byte) int {
 	case 203:
 		interactionMessagesClear()
 	case 204:
-		C.sub_48D5A0(C.int(uintptr(unsafe.Pointer(&data[0]))))
+		clientSequenceEnqueue(data)
 	case 205:
 		quickbarAbilityReward(int(data[1]), int(data[2]&0x7f), uintptr(data[2]>>7))
 	case 206:

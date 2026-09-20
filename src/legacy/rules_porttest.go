@@ -166,7 +166,7 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 		if head == nil {
 			panic("fixture allocation failed")
 		}
-		C.nox_common_list_clear_425760(head)
+		listClear((*legacyListNode)(unsafe.Pointer(head)))
 		defer func() { C.sub_57ADF0((*C.int)(unsafe.Pointer(head))); C.free(unsafe.Pointer(head)) }()
 		for _, line := range spec.SeedRejected {
 			text := utf16.Encode([]rune(line))

@@ -6,21 +6,6 @@ package legacy
 import "C"
 import "unsafe"
 
-//export nox_common_list_clear_425760
-func nox_common_list_clear_425760(p *C.nox_list_item_t) {
-	listClear((*legacyListNode)(unsafe.Pointer(p)))
-}
-
-//export sub_425770
-func sub_425770(p unsafe.Pointer) unsafe.Pointer {
-	return unsafe.Pointer(listInit((*legacyListNode)(p)))
-}
-
-//export sub_425790
-func sub_425790(p *C.int, q *C.uint) C.int {
-	return C.int(listAscending((*legacyListNode)(unsafe.Pointer(p)), (*legacyListNode)(unsafe.Pointer(q))))
-}
-
 //export sub_4257F0
 func sub_4257F0(p *C.int, q *C.uint) {
 	listDescending((*legacyListNode)(unsafe.Pointer(p)), (*legacyListNode)(unsafe.Pointer(q)))

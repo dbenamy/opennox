@@ -8,7 +8,6 @@ package legacy
 extern nox_list_item_t nox_common_maplist;
 extern uint32_t dword_5d4594_1548476;
 extern uint32_t dword_5d4594_1548480;
-void nox_common_list_clear_425760(nox_list_item_t* list);
 */
 import "C"
 import (
@@ -49,7 +48,7 @@ func PortTestMapCatalogOpen(seed int) *PortTestMapCatalog {
 		clear(raw)
 	}
 	save(unsafe.Pointer(&C.nox_common_maplist), 12)
-	C.nox_common_list_clear_425760(&C.nox_common_maplist)
+	listClear((*legacyListNode)(unsafe.Pointer(&C.nox_common_maplist)))
 	save(unsafe.Pointer(&C.dword_5d4594_1548476), 4)
 	save(unsafe.Pointer(&C.dword_5d4594_1548480), 4)
 	save(memmap.PtrOff(0x5D4594, 1524108), 1024)

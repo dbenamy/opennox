@@ -31,4 +31,17 @@ The console walk only traverses the list and returns null; its caller discards
 that value. Removing the walk preserves the command's successful return and lack
 of output. No original C is retained solely for tests.
 
-Native implementation and qualification are pending.
+## Native qualification
+
+[Native qualification](client-sequence-native-qualification.json) passes all 32
+selected roots in default/server/highres, no skips, and all four frozen captures.
+The selection includes the list, map-catalog and rules fixtures whose obsolete
+C adapters now call Go directly. Fresh production binaries and ABI checks,
+exact known-suite comparison, headless gameplay and explicit save/load pass.
+No correction was needed after the native implementation was installed.
+
+Six live helpers move to Go; the inert console walk and four Go-backed exports
+are removed. Shared list algorithms are unchanged, and foreign queue records keep
+their layout and allocation ownership. Physical C falls by 145 lines to 4,458 in 33
+files, with zero reference C. The retired symbols are recorded in
+[client-sequence-retired.json](client-sequence-retired.json).

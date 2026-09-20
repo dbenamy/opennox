@@ -14,13 +14,19 @@
 
 ## Current status
 
+The ordered client message queue is now Go, removing another 145 C lines and
+four unused interfaces. Its 32 affected tests pass across all three profiles;
+four captures /1,699 cases match the C baseline, and fresh production/ABI,
+known-suite comparison and headless gameplay/save-load pass. See
+[CLIENT_SEQUENCE.md](docs/porting/CLIENT_SEQUENCE.md).
+
 The client settings, team, trade and quest dispatcher and its private ball HUD
 helper are now Go and fully qualified. The conversion removes 1,536 C lines and 146
 unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skips,
 and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
 comparison, headless gameplay and save/load checks pass.
 
-C remaining is **4,603 physical lines in 33 files**, zero reference C. See
+C remaining is **4,458 physical lines in 33 files**, zero reference C. See
 [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) and
 [the native qualification](docs/porting/client-session-native-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.

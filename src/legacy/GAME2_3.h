@@ -6,13 +6,6 @@
 void sub_48C580(pixel8888* a1, int num);
 unsigned int sub_48C6B0(int a1, int a2);
 int sub_48CAD0();
-int sub_48D4F0(unsigned short a1, unsigned short a2);
-int sub_48D560(unsigned short a1);
-uint32_t* sub_48D5A0(int a1);
-int sub_48D660();
-int sub_48D740();
-void sub_48D760();
-int* sub_48D7B0();
 nox_point sub_499290(int a1);
 int sub_4992B0(int a1, int a2);
 void nox_xxx_drawPointMB_499B70(int xLeft, int yTop, int a3);

@@ -42,13 +42,13 @@ type PortTestClientSequenceState struct {
 	Nodes          []PortTestClientSequenceNode
 }
 
-// Own the existing C queue without substituting its insertion or lookup rules.
+// Own the live queue without substituting its insertion or lookup rules.
 func PortTestClientSequenceOwner() (func(), func() PortTestClientSequenceState, func()) {
 	raw := unsafe.Slice(memmap.PtrUint8(0x5D4594, 1197340), 24)
 	saved := bytes.Clone(raw)
 	ready, pending := C.dword_5d4594_1197352, C.dword_5d4594_1197356
-	C.sub_48D740()
-	reset := func() { C.sub_48D760(); C.sub_48D740() }
+	clientSequenceInit()
+	reset := func() { clientSequenceFree(); clientSequenceInit() }
 	snapshot := func() PortTestClientSequenceState {
 		r := PortTestClientSequenceState{Current: memmap.Uint16(0x5D4594, 1197360)}
 		head := (*C.nox_list_item_t)(memmap.PtrOff(0x5D4594, 1197340))

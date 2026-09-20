@@ -21,7 +21,6 @@ int sub_457140(int a1, wchar2_t* a2);
 int sub_456DF0(int a1);
 int sub_43C650();
 void* nox_xxx_spriteGetMB_476F80();
-int nox_xxx_netOnPacketRecvCli_48EA70(int a1, unsigned char* data, int sz);
 static int nox_xxx_netSendLineMessage_go(nox_object_t* a1, wchar2_t* str) {
 	return nox_xxx_netSendLineMessage_4D9EB0(a1, str);
 }
@@ -115,11 +114,6 @@ func nox_xxx_net_getIP_554200(a1 int) uint32 {
 	return ip2int(GetServer().S().GetExtIP(conn))
 }
 
-//export nox_xxx_netOnPacketRecvCli_48EA70
-func nox_xxx_netOnPacketRecvCli_48EA70(ind int, buf *byte, sz int) int {
-	return Nox_xxx_netOnPacketRecvCli_48EA70(ntype.PlayerInd(ind), buf, sz)
-}
-
 //export sub_43C6E0
 func sub_43C6E0() int { return Sub_43C6E0() }
 
@@ -186,7 +180,7 @@ func Sub_467CA0() {
 	uiInventoryResetClosedScroll()
 }
 func Sub_48D660() {
-	C.sub_48D660()
+	clientSequencePoll()
 }
 func Sub_40A220() int {
 	return int(C.int(serverConfigTimerGet()))

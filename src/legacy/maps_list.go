@@ -2,10 +2,8 @@ package legacy
 
 /*
 #include "defs.h"
-void nox_common_list_clear_425760(nox_list_item_t* list);
 extern nox_list_item_t nox_common_maplist;
 void nox_common_scanAddMap(char* filename);
-void* sub_425770(void* a1p);
 */
 import "C"
 import "unsafe"

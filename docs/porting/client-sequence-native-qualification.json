@@ -1,0 +1,151 @@
+{
+  "status": "qualified native ordered client queue",
+  "baseline_revision": "5ace4f66",
+  "baseline": "client-sequence-c-qualification.json",
+  "moved_live_helpers": 6,
+  "removed_inert_helpers": 1,
+  "retired_go_backed_exports": 4,
+  "captured_cases": 1699,
+  "captures": 4,
+  "targets": {
+    "default": {
+      "roots": 32,
+      "skips": 0,
+      "captures": 4,
+      "wall_seconds": 137.2338626999408
+    },
+    "server": {
+      "roots": 32,
+      "skips": 0,
+      "captures": 4,
+      "wall_seconds": 131.14155294303782
+    },
+    "highres": {
+      "roots": 32,
+      "skips": 0,
+      "captures": 4,
+      "wall_seconds": 48.30463184090331
+    }
+  },
+  "source_manifest_sha256": "dc38caa625ba05c0a33b3ff702b828f1750c33db5b6565a3b5fe9fb6bf5dab3b",
+  "production_c": {
+    "files": 33,
+    "lines": 4458,
+    "change": -145,
+    "test_reference_lines": 0
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 73.28078396106139,
+        "sha256": "9e514146986562dc803d83d51ff26537d982d4ccffbe9b3b5b7ca36f218b30fa",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.326450551860034,
+        "sha256": "538268038bd2d35decb86ef704061ddef711e33505d1cdbe82f777ad65f8d72e",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 72.05231251684017,
+        "sha256": "ff6785e2c9a09640ec31c11806e3737c080a5b492fc89d5f58e9b2aa4d10b395",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "client-sequence-native": {
+        "exit": 0,
+        "wall_seconds": 70.93095649592578,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 69.41151436208747,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+          "binary_sha256": "9e514146986562dc803d83d51ff26537d982d4ccffbe9b3b5b7ca36f218b30fa",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-client-sequence/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/client-sequence-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "native ordered client message queue",
+          "isolated_network": false,
+          "removed_maps": 0
+        }
+      },
+      "client-sequence-native-save": {
+        "exit": 0,
+        "wall_seconds": 45.545584364794195,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.069238543044776,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "9e514146986562dc803d83d51ff26537d982d4ccffbe9b3b5b7ca36f218b30fa",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-client-sequence/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/client-sequence-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "native ordered client message queue",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "0857a4c4f1f510e946bf0036170bff93c9c3d1da2a87effe887fefc62f8b9257"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 60.908012146828696,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "review": [
+    "Preserves pending-cursor clearing on pre-timeout polling and no retry for future-only insertion.",
+    "Preserves uint32 clock narrowing followed by uint64 subtraction and strict greater than 30000 timeout.",
+    "Preserves foreign allocation/layout, payload copy, sequence ordering/wrap and ignored callback return.",
+    "Retired list-initialization and insertion test adapters call existing Go owners; list algorithms are unchanged."
+  ]
+}

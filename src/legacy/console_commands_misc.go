@@ -68,7 +68,7 @@ func Nox_cmd_show_seq(_ int, t []string) bool {
 	if len(t) != 2 {
 		return false
 	}
-	C.sub_48D7B0()
+	// The former queue walk produced no output or state changes.
 	return true
 }
 func Nox_cmd_list_maps(_ int, _ []string) bool {

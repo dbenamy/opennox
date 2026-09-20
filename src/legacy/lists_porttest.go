@@ -57,9 +57,9 @@ func (f *PortTestLists) id(p unsafe.Pointer) int {
 }
 func (f *PortTestLists) Init(i int, head bool, key uint32) {
 	if head {
-		C.nox_common_list_clear_425760((*C.nox_list_item_t)(f.ptr(i)))
+		listClear((*legacyListNode)(f.ptr(i)))
 	} else {
-		if C.sub_425770(f.ptr(i)) != f.ptr(i) {
+		if unsafe.Pointer(listInit((*legacyListNode)(f.ptr(i)))) != f.ptr(i) {
 			panic("node init return identity")
 		}
 		f.nodes[i].Key = key
@@ -90,7 +90,7 @@ func (f *PortTestLists) Op(op string, a, b int) int {
 	case "prepend":
 		return f.id(unsafe.Pointer(C.sub_425900((*C.uint)(p), (*C.uint)(q))))
 	case "ascending":
-		return int(C.sub_425790((*C.int)(p), (*C.uint)(q)))
+		return listAscending((*legacyListNode)(p), (*legacyListNode)(q))
 	case "descending":
 		C.sub_4257F0((*C.int)(p), (*C.uint)(q))
 		return 0

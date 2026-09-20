@@ -1,0 +1,17 @@
+{
+  "c_functions": [
+    "sub_48D4F0",
+    "sub_48D560",
+    "sub_48D5A0",
+    "sub_48D660",
+    "sub_48D740",
+    "sub_48D760",
+    "sub_48D7B0"
+  ],
+  "go_backed_exports": [
+    "sub_425770",
+    "sub_425790",
+    "nox_common_list_clear_425760",
+    "nox_xxx_netOnPacketRecvCli_48EA70"
+  ]
+}

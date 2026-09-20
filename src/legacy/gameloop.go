@@ -123,7 +123,7 @@ func Sub_4E4EF0() {
 	reliableResetRates()
 }
 func Sub_48D740() {
-	C.sub_48D740()
+	clientSequenceInit()
 }
 func Sub_473930() {
 	C.sub_473930()
@@ -171,7 +171,7 @@ func Sub_4E4DE0() {
 	reliableInit()
 }
 func Sub_48D760() {
-	C.sub_48D760()
+	clientSequenceFree()
 }
 func Sub_417CF0() {
 	GetServer().TeamsRemoveActive(false)

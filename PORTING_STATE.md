@@ -2,21 +2,26 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 4.6k lines** — **4,603 physical lines in 33
-production `.c` files**, zero reference C. Latest conversion removes 1,536 lines.
+**Qualified C remaining: about 4.5k lines** — **4,458 physical lines in 33
+production `.c` files**, zero reference C. Latest conversion removes 145 lines.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Active — ordered client queue C baseline qualified
+## Current — ordered client queue qualified
 
-Nine roots pass in default/server/highres, plus an independent default repeat;
-four captures /1,699 cases match. Production is unchanged from 0c2ff233.
-See [CLIENT_SEQUENCE.md](docs/porting/CLIENT_SEQUENCE.md). All C baseline jobs
-are joined. Next install the reviewed native draft, retire four unused Go-backed
-C exports, qualify affected owners and fresh production, then commit/push.
-C remains4,603 /33 files. Ignored `build/port-client-sequence/install-native.py`
-is NOT consumed. Native scenario asset cleanup49995 is joined/CONSUMED.
+Six live helpers are Go; one inert console walk and four Go-backed C exports are
+removed. All 32 roots pass in default/server/highres with no skips; all four C
+captures /1,699 cases match. Fresh production/ABI, exact known-suite comparison,
+headless gameplay and save/load pass. All jobs joined, source fingerprints match.
+See [CLIENT_SEQUENCE.md](docs/porting/CLIENT_SEQUENCE.md). Baseline 5ace4f66 is
+pushed. The native installer and finalizer are CONSUMED; do not replay them.
+
+Review: preserve the pre-timeout pending-cursor clearing, future-only insertion
+behavior and clock narrowing/subtraction. No goldens changed to accept Go.
+Next: remaining connected client presentation/lifecycle helpers. Read-only
+inventory, plan and palette test draft are at `build/port-client-render-helpers`;
+none installed. Confirm the apparently unused focus registry before making tests.
 
 
 ## Current — native client dispatch qualified
