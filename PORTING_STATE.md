@@ -41,19 +41,18 @@ Scope: three client/server dispatch and notice bodies /3,841 body lines. See
 No conversion is installed, no runtime goldens are frozen, and the whole scope
 is not yet qualified.
 
-Current fixture coverage: **32,442 cases /26 message roots**, plus **21 inherited
-roots**. Three repetitions pass **141 root runs**, with **26 matching captures**
+Current fixture coverage: **45,790 cases /28 message roots**, plus **21 inherited
+roots**. Three repetitions pass **147 root runs**, with **28 matching captures**
 across processes. Static mapped-memory checks pass. All jobs are joined, including
-47271/85335/12730. Latest evidence:
-[game-messages-client-equipment-fixtures.json](docs/porting/game-messages-client-equipment-fixtures.json).
+28720/39226/52358. Latest evidence:
+[game-messages-client-appearance-fixtures.json](docs/porting/game-messages-client-appearance-fixtures.json).
 Prior pushed checkpoints include 767e00ce (health), 78dffc6b (walls), and 82656d33
-(inventory reports); equipment is the current checkpoint being committed.
+(inventory reports); 6dbeda4e adds equipment; appearance is the current checkpoint being committed.
 
 Covered families include notices, server aliases/waypoints/inventory actions,
 client object creation/update/lifetime/control, friend lists, health/meters,
 magic/secret walls, inventory reports and player/NPC equipment. Remaining client
-families and positive server actions still need coverage. Next: NPC appearance
-and remaining drawable attribute/effect reports.
+families and positive server actions still need coverage. Next: light intensity/enchantment reports and remaining drawable effects.
 
 Review notes: client dispatch sometimes modifies its input; equip clears the
 identifier high bit, while unequip preserves it. Health-change notifications queue
@@ -63,9 +62,9 @@ for a separate wall-owner review. No production behavior was changed to fix test
 
 Single-job focused builds use compiler GOMEMLIMIT=1536MiB and
 `-exec='env GOMEMLIMIT=768MiB'` for the actual 386 test, GOMAXPROCS=2. This is not a
-measured performance guarantee for concurrent builds. Three completed cache
+measured performance guarantee for concurrent builds. Four completed cache
 cleanups removed only verified superseded test archives (1,131,099,228;
-1,130,553,318; and 1,133,631,892 bytes). Their scripts are consumed; original
+1,130,553,318; 1,133,631,892; and 3,262,857,596 bytes). Their scripts are consumed; original
 assets/archive, qualified binaries and evidence remain. The inventory-scalars and
 client-equipment drafts/installers are consumed; never replay over reviewed source.
 No question or approval is pending. Continue after each committed checkpoint.

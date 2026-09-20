@@ -301,3 +301,20 @@ repetitions), 32,442 message cases and twenty-six matching captures. Static chec
 pass; jobs 47271/85335/12730 are joined. See
 game-messages-client-equipment-fixtures.json. Production C is unchanged.
 Next: NPC appearance and remaining drawable attribute/effect reports.
+
+Equipment checkpoint **6dbeda4e** is pushed. Working follow-up adds NPC appearance
+(pool exhaustion, existing record reset, six independent RGB555 conversions and
+input-code rewriting), light-color fields and local-player flag replacement.
+The latter restores fixture ownership flags after each assertion so arbitrary
+wire values cannot alter cleanup. NPC first probe 28720 passed and is joined;
+appearance-first 39226 is running. Join before source edits.
+A fourth cache audit identifies 43 superseded root test archives /3,262,857,596
+bytes before 6dbeda4e; audit 31850 is joined. Apply is prepared but not yet run.
+
+Appearance follow-up passes 13,348 additional cases: NPC appearance 9,216,
+light-color fields 4,096, and player flags 36. The accumulated repeat passes
+147 root runs (49 roots, three repetitions), 45,790 message cases and twenty-eight
+matching captures. Static checks pass; jobs 28720/39226/52358 are joined. See
+game-messages-client-appearance-fixtures.json. Fourth audited cache cleanup is
+complete (60333 joined): 3,262,857,596 bytes reclaimed; scripts consumed. Next:
+light intensity and enchantment reports. Production C remains unchanged.

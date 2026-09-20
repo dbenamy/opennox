@@ -29,7 +29,7 @@ func TestGameMessageClientObjectFields(t *testing.T) {
 		for present := 0; present < 2; present++ {
 			for static := 0; static < 2; static++ {
 				for special := 0; special < 2; special++ {
-					for _, kind := range []int{55, 56, 57, 94, 95, 107} {
+					for _, kind := range []int{55, 56, 57, 92, 94, 95, 107} {
 						values := []uint32{0, 1, 255, 65535, 0x80000000, 0xffffffff}
 						if kind == 55 || kind == 56 {
 							values = []uint32{0, 1}
@@ -83,6 +83,9 @@ func TestGameMessageClientObjectFields(t *testing.T) {
 							if kind == 55 || kind == 56 {
 								data = data[:3]
 							}
+							if kind == 92 {
+								data = append(data, 255-byte(value), byte(value)^0x5a)
+							}
 							before := bytes.Clone(data)
 							if on != 0 && present != 0 {
 								switch kind {
@@ -93,6 +96,11 @@ func TestGameMessageClientObjectFields(t *testing.T) {
 									if special != 0 {
 										binary.LittleEndian.PutUint32(want[300:], 0)
 									}
+								case 92:
+									binary.LittleEndian.PutUint32(want[136:], 2)
+									binary.LittleEndian.PutUint32(want[152:], value)
+									binary.LittleEndian.PutUint32(want[156:], 255-value)
+									binary.LittleEndian.PutUint32(want[160:], value^0x5a)
 								case 94:
 									binary.LittleEndian.PutUint16(want[104:], uint16(value))
 								case 95:
