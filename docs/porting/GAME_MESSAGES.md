@@ -197,3 +197,13 @@ with fifteen captures equal across processes and 17,290 message cases total.
 All jobs are joined; see game-messages-client-object-fixtures.json.
 A second audited cleanup removed fifteen superseded root test-cache archives
 (1,130,553,318 bytes); scripts are consumed. Production C remains unchanged.
+
+Client object checkpoint **3e010c73** is pushed. The next lifetime fixture covers
+out-of-sight and shadow messages using real object/list owners: connection and
+missing-target gates, static/dynamic removal, local-player protection, fading,
+animation draw-data exemptions and frame-wrap deadlines. It checks exact consumed
+length, unchanged input, object count/identity, active flags, shadow fields and
+fade deadlines. All 576 lifetime cases pass. The accumulated repeat passes 66 root runs
+(22 roots, three repetitions), 17,866 message cases and sixteen equal captures
+across processes. Static mapped-memory checks pass. Jobs 55452/11844 are joined.
+See game-messages-client-lifetime-fixtures.json. No production code changed.

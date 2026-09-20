@@ -78,6 +78,14 @@ fallback; it was corrected before accepting captures, with no production change.
 A second verified superseded test-cache cleanup recovered 1,130,553,318 bytes;
 its audit/apply scripts are consumed. Qualified evidence/assets remain.
 
+Latest client lifetime extension passes 576 cases. Accumulated coverage is
+17,866 message cases /16 message roots, plus six inherited roots; three repeats
+pass 66 root runs and sixteen captures match across processes. Static mapped-
+memory checks pass. All jobs are joined (55452/11844 included). See
+[game-messages-client-lifetime-fixtures.json](docs/porting/game-messages-client-lifetime-fixtures.json).
+Next: remaining client object/control reports and server dispatch families.
+No conversion installed; C remains 8,820 lines in 38 files.
+
 ## Previous — client drawable state Go conversion qualified
 
 C baseline **8266e740** and native conversion **df2e1155** are pushed. Fifteen live
