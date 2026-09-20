@@ -105,20 +105,28 @@ Thirteenth fixture-cache cleanup is CONSUMED:14 verified superseded root test
 archives /1,111,570,010 bytes removed. Current music-fixture archives and all
 legacy/production archives were preserved; cleanup job6383 is joined.
 
-Current fixture work: probe17 passes16 roots /50,692 captured cases plus256
-outgoing-client no-op contracts. New coverage is rewards, secondary/quiver,
-book-data priority, poison, creature monitoring and acknowledgements. Both independent repeats
-pass all16 roots without skips, with identical source fingerprints and all frozen
-hashes. See [checkpoint](docs/porting/client-session-owners-c-checkpoint.json). No production
-source changed. Rewards required signed-char notification interpretation and RNG
-reset between expected/actual calls. Book data needed the shop-active named word
-from PortTestInventoryWindowWords. Monitoring deliberately tests all eight mask
-bits; fixture cleanup now removes all bits before ordinary drawable deletion
-(which removes normal bits1/2), avoiding stale test list links. Ally coverage
-includes missing/existing/full records. Probe16 had a fixture compile error from
-an omitted ntype.PlayerInd cast; corrected in probe17. Failed logs are preserved.
-Installed inventory/book/monitor/ack drafts are CONSUMED. Objective/summon drafts
-are prepared but NOT INSTALLED; both repeats are finished and joined.
+Owner checkpoint **784db95e** is committed and pushed. The next UI/settings
+checkpoint passes **28 roots /60,196 captured cases /40 labels**, plus256 no-op
+contracts. Probe23 and two independent repeats agree on all hashes. Both repeats
+have identical source fingerprints and no skips; all jobs are joined. No
+production source changed. See [checkpoint](docs/porting/client-session-ui-c-checkpoint.json).
+
+Added objective HUD, summon commands, chat/message clearing, console results,
+sequence queue, settings, vote, journal and briefing coverage. Sequence timestamps
+use the C wrapper's uint32 tick truncation even in64-bit storage. All previous
+captures are unchanged. The new test-only sequence owner saves/restores the real
+C queue and globals; it does not replace insertion/lookup behavior. Earlier signed
+char, RNG, shop-word and minimap fixture corrections remain recorded in previous
+checkpoints. Failed probe20 had an incorrect64-bit timestamp expectation; fixed
+before probes21–23 and repeats. No frozen hash was regenerated.
+
+All installed UI/settings/sequence/journal/briefing drafts are CONSUMED. Death and
+forget drafts are prepared but NOT INSTALLED. Next: qualify those plus respawn,
+then team changes, trade/session transitions and gauntlet. The sole-caller39-line
+client__gui__guifb.c helper should join the conversion after final caller audit.
+C remains6,139 lines /35 files /zero reference C. Full three-profile production,
+ABI, full-suite and gameplay qualification remains due at the completed boundary.
+Continue without pausing.
 
 Finished client-session probes1–16 and first/expanded repeats are consolidated:
 88 byte-identical capture files /574,101,167 logical bytes. Exact hashes and
@@ -129,6 +137,18 @@ Fourteenth fixture-cache cleanup is CONSUMED: seven superseded root test archive
 556,809,336 bytes removed after SHA256/size/mtime/open-file checks. The audit
 preserved archives containing the current player-camera fixture and all legacy/
 production archives. Original assets and all qualification artifacts are preserved.
+
+Additional finished-owner-probe consolidation is CONSUMED:46 identical files /
+710,589,110 logical bytes; only finished probes through17 and their repeats were
+included, with active probe18 excluded. Fifteenth fixture-cache cleanup is also
+CONSUMED: eight superseded root test archives /639,237,160 bytes removed with
+hash/size/mtime/open-file checks. Current objective-HUD and all legacy/production
+archives are preserved. All cleanup jobs are joined.
+
+Finished UI-probe consolidation is CONSUMED:60 identical files /793,789,467
+logical bytes; only finished probes through21 and prior repeats were included,
+with active probe22 excluded. Exact contents and hashes verified; all paths and
+failed-status logs preserved. All cleanup jobs are joined.
 
 ## Recovery and storage
 

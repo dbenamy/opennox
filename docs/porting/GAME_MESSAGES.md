@@ -758,3 +758,16 @@ state and detach all test minimap bits between cases. Failed fixture probes rema
 recorded; no production behavior changed. See [checkpoint](client-session-owners-c-checkpoint.json).
 Production remains eb10a62b; C remains6,139 lines /35 files /zero reference C.
 Full production qualification is still due at the completed client-dispatch boundary.
+
+### UI, settings and ordered-message baseline
+
+The latest partial C baseline passes28 roots /60,196 captured cases across40
+labels, plus256 no-op contracts. Two independent repeats match all frozen hashes
+and source fingerprints without skips. Added objective HUD, summon commands,
+chat/message clearing, console results, sequence queue, three settings formats,
+vote UI, journal and chapter-end transitions. The sequence owner exercises actual
+C list/allocation routines; timestamps preserve the C wrapper's32-bit truncation.
+Settings tests use real spell definitions, timer, settings dialog and notifications.
+See [checkpoint](client-session-ui-c-checkpoint.json). Production remains eb10a62b;
+C remains6,139 lines /35 files /zero reference C. Remaining labels are team,
+trade/session transitions, player death/respawn/forget and gauntlet.

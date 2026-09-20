@@ -1,0 +1,221 @@
+{
+  "status": "partial original-C baseline; team/trade/session/death/respawn/gauntlet coverage remains",
+  "production_revision": "eb10a62b",
+  "parent_checkpoint": "784db95e",
+  "production_c_lines": 6139,
+  "production_c_files": 35,
+  "reference_c_lines": 0,
+  "covered_client_labels": [
+    166,
+    167,
+    171,
+    174,
+    175,
+    176,
+    177,
+    178,
+    179,
+    180,
+    181,
+    189,
+    195,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    209,
+    210,
+    211,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    223,
+    224,
+    225,
+    226,
+    229,
+    230,
+    231,
+    235,
+    237,
+    238
+  ],
+  "total_cases": 60196,
+  "additional_uncaptured_noop_contracts": 256,
+  "new_captured_cases": 9504,
+  "captures": [
+    {
+      "file": "interaction-game-client-session-ack.json",
+      "cases": 240,
+      "sha256": "f8e7b30467fbf368386690c25af0553f73003257918492117bd5b3d125106a2b"
+    },
+    {
+      "file": "interaction-game-client-session-audio.json",
+      "cases": 224,
+      "sha256": "ed87a210c0abea0a2976d97bbd75d0b9aca7745b7502b7e2e0b69c1c75321db3"
+    },
+    {
+      "file": "interaction-game-client-session-book-data.json",
+      "cases": 2648,
+      "sha256": "1b5105e7c9e74c0760a71e664c38c56d931e78d7821288a93c47c70e95b03227"
+    },
+    {
+      "file": "interaction-game-client-session-briefing.json",
+      "cases": 300,
+      "sha256": "7c03bbc2a388c608572b7f9e7e892e484efd05d7f806ef00f2766b79bc1b46e9"
+    },
+    {
+      "file": "interaction-game-client-session-chat-clear.json",
+      "cases": 56,
+      "sha256": "cdc688111eefa4fe2d7b958d11e6881f44f44f8381a310013ef89a88e6577f2d"
+    },
+    {
+      "file": "interaction-game-client-session-console-result.json",
+      "cases": 512,
+      "sha256": "51b1505a38417d0853fd6af6e9ecc711718c03bfe97e58cf749123b64ce34fc1"
+    },
+    {
+      "file": "interaction-game-client-session-drawables.json",
+      "cases": 24576,
+      "sha256": "433b84fd0952596c154a780fe64a8491df2788496658ba9506fe878a0ff49163"
+    },
+    {
+      "file": "interaction-game-client-session-inventory.json",
+      "cases": 768,
+      "sha256": "46cd8a94645d6588d95b534c4c2ebc1c6136d4b9d3bdce1a0b2b8067770656c4"
+    },
+    {
+      "file": "interaction-game-client-session-journal.json",
+      "cases": 960,
+      "sha256": "0cbad115856c50d3d44557b0ce8e1490d9b9f0203dc9c09463ff9d42b1fdd290"
+    },
+    {
+      "file": "interaction-game-client-session-latency.json",
+      "cases": 240,
+      "sha256": "3a44bd50c7c01909a28640d2b25890d3d3fec2a1122e2379061a0111a809cbde"
+    },
+    {
+      "file": "interaction-game-client-session-messages-clear.json",
+      "cases": 30,
+      "sha256": "39fce02135d57967811a87da080ae98d982776f2edd2cf025e2d76ff1f322a6f"
+    },
+    {
+      "file": "interaction-game-client-session-monitor.json",
+      "cases": 816,
+      "sha256": "240e1293c10214c43183a7c3bce78adfd2d3c9b437375401e7e1ea3b32a4c6ba"
+    },
+    {
+      "file": "interaction-game-client-session-music.json",
+      "cases": 864,
+      "sha256": "33fda0a552615b10bf0c520272f9a93731abed6126363deb68132a70d3a5ba06"
+    },
+    {
+      "file": "interaction-game-client-session-objectives.json",
+      "cases": 2304,
+      "sha256": "5fe213a8a98e85a35e4dd49c36f94474c81c2be380fad13374d8f5b78abcbf6f"
+    },
+    {
+      "file": "interaction-game-client-session-player-camera.json",
+      "cases": 192,
+      "sha256": "4a508b3eab058f4cca9084df164763608de7464a127406039dbb80cc54fcd785"
+    },
+    {
+      "file": "interaction-game-client-session-player-creation.json",
+      "cases": 48,
+      "sha256": "d0adc0bdb471654f0cdcb6540a87261c993dfccf6437909548ae91f862c31f9d"
+    },
+    {
+      "file": "interaction-game-client-session-player-objects.json",
+      "cases": 3072,
+      "sha256": "b3f9bdf5b911c2b32e0e0ac580a91ccc7ed13de746f418618cb5f677521b2625"
+    },
+    {
+      "file": "interaction-game-client-session-poison.json",
+      "cases": 6144,
+      "sha256": "c5cc58f4f1555522329479db8a67f92bf5752a2956d48ee382c28898b3fb532b"
+    },
+    {
+      "file": "interaction-game-client-session-prediction.json",
+      "cases": 6168,
+      "sha256": "fb15459b03bc0a08d46bc570210fe39033fd0ec2d4a9a0e50f1e9674b9bb9b3b"
+    },
+    {
+      "file": "interaction-game-client-session-quickbar.json",
+      "cases": 660,
+      "sha256": "67948e1990848248305b44acb06958a306770ed4806e5ad9ec39d6830404400d"
+    },
+    {
+      "file": "interaction-game-client-session-rewards.json",
+      "cases": 1872,
+      "sha256": "6a2f42fd35cb83f018164be708c46f2df2ed60c2700070c717500cd01ca91f90"
+    },
+    {
+      "file": "interaction-game-client-session-sequence.json",
+      "cases": 624,
+      "sha256": "4197d85b99121e34e5522f3602957f71cbc9b525011a03191230076901d5ce09"
+    },
+    {
+      "file": "interaction-game-client-session-settings-ui.json",
+      "cases": 128,
+      "sha256": "351670a9de9233b5523b38633ac3f1dbb24b2c85245641b242f461ac722d8cdf"
+    },
+    {
+      "file": "interaction-game-client-session-settings.json",
+      "cases": 2160,
+      "sha256": "7592d67de378a827b3729d7a8d3529981163135b89414be55d00a9a349a0069d"
+    },
+    {
+      "file": "interaction-game-client-session-settings2.json",
+      "cases": 384,
+      "sha256": "34a8c7f4c25d541377b3850ddf68dc41e82d56ccce75be36e0714e2cbb14e92d"
+    },
+    {
+      "file": "interaction-game-client-session-summon-command.json",
+      "cases": 1024,
+      "sha256": "86731e688946bfaf932121aeed1c4a56d16c57b08ef3d542a9f9b0af4d794c4e"
+    },
+    {
+      "file": "interaction-game-client-session-timer.json",
+      "cases": 2160,
+      "sha256": "f91e7e35e303e99b0fe173692299b6d026094b1d1b271531ad33c8d26bf6c1f7"
+    },
+    {
+      "file": "interaction-game-client-session-vote.json",
+      "cases": 1022,
+      "sha256": "6363fc7d681b627c6f59a2f40c86145e2068e81d9cd8255aa4b6d23224369d11"
+    }
+  ],
+  "runs": [
+    {
+      "path": "build/port-game-messages/client-session-ui-c-repeat-1",
+      "roots": 28,
+      "no_skips": true,
+      "source_unchanged": true
+    },
+    {
+      "path": "build/port-game-messages/client-session-ui-c-repeat-2",
+      "roots": 28,
+      "no_skips": true,
+      "source_unchanged": true
+    }
+  ],
+  "source_manifest_sha256": "24041aad014ca754e3e78252cd9c67b48129cf71e34c83c34647e87e586d50ae",
+  "original_probe": "build/port-game-messages/client-session-c-probe-23",
+  "production_unchanged": true,
+  "fixture_review": [
+    "Objective HUD checks localized text, selected images, status-byte and carrier-ID isolation.",
+    "Settings freshness compares generation values unsigned; host bypass and old-CTF-bit/new-ball transition semantics are preserved.",
+    "Settings2 applies real spell definitions, signed duration plus truncated ticks, and notification gates. SettingsUI checks copied records and actual labels/masks.",
+    "Sequence queue uses actual C allocation/list routines; duplicate payload preservation, 10000-value wrap exclusion, ready cursor and uint32 C tick truncation are checked.",
+    "Journal checks list links, duplicate names, field isolation and measured text height. Briefing checks actual modal owner and remembered losses.",
+    "Chat sentinel57005 clears all; other full16-bit IDs remove only matching bubble. Vote submessages ignore connection gate; all unknown selectors return -1."
+  ],
+  "scope_followup": "Include the sole-caller 39-line client__gui__guifb.c ball HUD helper after final reachability audit."
+}
