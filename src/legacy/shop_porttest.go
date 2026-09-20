@@ -25,6 +25,7 @@ import (
 )
 
 type PortTestShopItem struct {
+	NetCode                       *uint32
 	Pickup                        bool
 	Type                          uint16
 	Class, Subclass, Flags, Worth uint32

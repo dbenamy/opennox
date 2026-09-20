@@ -63,6 +63,7 @@ const (
 	PortTestTradeBuyMany
 	PortTestTradeSellQuote
 	PortTestTradeSell
+	PortTestTradeMessage
 )
 
 func portTestTradeCache() [12]uint32 {
@@ -170,6 +171,8 @@ func (p *portTestShopPools) engineAction(a PortTestShopAction, q unsafe.Pointer)
 		unit = C.int(uintptr(u.CObj()))
 	}
 	switch a.Op {
+	case PortTestTradeMessage:
+		return p.portTestServerTrade(a, (*shopSession)(q))
 	case PortTestTradeRemove:
 		return tradeRemoveStock((*shopSession)(q), item)
 	case PortTestTradeCreatePlayer:

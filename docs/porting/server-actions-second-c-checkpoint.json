@@ -1,0 +1,80 @@
+{
+  "status": "partial original-C server actions checkpoint; trade opening/offers and final baseline qualification remain",
+  "production_revision": "f8607de2",
+  "production_c_lines": 6641,
+  "production_c_files": 36,
+  "additional_captured_cases": 1374,
+  "total_new_captured_cases": 2324,
+  "captures": [
+    {
+      "file": "interaction-game-server-secondary-weapon.json",
+      "cases": 480,
+      "sha256": "f924ad7cd6bd403723f8abf5b2002d84da8a08a2191850ffc66934021f8bdf73"
+    },
+    {
+      "file": "interaction-game-server-inventory-failure.json",
+      "cases": 150,
+      "sha256": "15094f70fd4369de5d681a9c4047da39ef7657d0e408a35d8b0c7a9549927989"
+    },
+    {
+      "file": "interaction-game-server-book-request.json",
+      "cases": 320,
+      "sha256": "d349cf51f1b1e37f67854074a9f5de6cbe662352f402680b64efe05c213e78a9"
+    },
+    {
+      "file": "interaction-game-server-creature-command.json",
+      "cases": 320,
+      "sha256": "c5cb8dca7ac5a35ff7fdd271bad8c123bfbd7fbfe1cab219dd89d20d2e7429ab"
+    },
+    {
+      "file": "interaction-game-server-spell-request.json",
+      "cases": 720,
+      "sha256": "f68b6402c03719cfc97614afa7c5d7a83c3b9e218ee1fe13a327f01aab8986f6"
+    },
+    {
+      "file": "interaction-game-server-spell-friendly-target.json",
+      "cases": 32,
+      "sha256": "09b931b60ec37c7f7fd6725edbe6e5bf5f43d78a88160d9f0e8e25cc77023785"
+    },
+    {
+      "file": "interaction-game-server-collision.json",
+      "cases": 90,
+      "sha256": "55420664c3847cee3d2ca07efc756a85cc8828c32532ff0486498e76fdfa0c19"
+    },
+    {
+      "file": "interaction-game-server-gauntlet-respawn.json",
+      "cases": 36,
+      "sha256": "282b016aebebb4df0f780b6b570743e0f50b0c98e030c5b97c6b863862175c96"
+    },
+    {
+      "file": "interaction-game-server-trade-transactions.json",
+      "cases": 176,
+      "sha256": "6e06a319fc5ddcd753a30573a0cdb3e03697553aaf6eba7ac19fe662f9d46ef2"
+    }
+  ],
+  "runs": [
+    {
+      "path": "build/port-game-messages/server-actions-c-probe-10",
+      "roots": 40,
+      "no_skips": true
+    },
+    {
+      "path": "build/port-game-messages/server-actions-second-repeat-1",
+      "roots": 40,
+      "no_skips": true
+    },
+    {
+      "path": "build/port-game-messages/server-actions-second-repeat-2",
+      "roots": 40,
+      "no_skips": true
+    }
+  ],
+  "source_manifest_sha256": "ba3649b5666ab9c985d7c46c53591a2c674ce7ed29b89d2ed2651e2b2068268f",
+  "notes": [
+    "Original C dispatcher remains intact.",
+    "Complete gameplay state is compared with qualified operations; callback identity, lengths, input immutability and queue contents have independent contracts.",
+    "Gauntlet leave routing and normal/quest/reset vote withdrawal have separate contracts.",
+    "The 11 trade types include cancellations, acceptance, withdrawal, purchases, sales and repair requests.",
+    "No frozen expectations or production behavior changed."
+  ]
+}

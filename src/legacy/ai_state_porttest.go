@@ -29,6 +29,7 @@ import (
 // Direction is intentionally a signed raw 16-bit table index. All Float fields
 // are IEEE float32 bits, except Frame/FPS and status fields which are raw uint32.
 type PortTestMonsterStateSpec struct {
+	ServerCommand                                                       *PortTestServerCreatureCommandSpec
 	Order                                                               int
 	Source                                                              int // 0 nil, 1 ordinary owner, 2 player
 	Broadcast, Own, Second, SecondEnabled, AnimData, NilHealth, NilUnit bool
@@ -279,6 +280,10 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 	case 22:
 		return uint64(bool2int(monsterIsZombie(u)))
 	case 23:
+		if sp.ServerCommand != nil {
+			portTestServerCreatureCommand(proxy, u, sp)
+			return 0
+		}
 		target := u
 		if sp.Broadcast || sp.NilUnit {
 			target = nil

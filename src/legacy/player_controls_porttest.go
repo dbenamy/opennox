@@ -113,37 +113,40 @@ import (
 )
 
 type PortTestPlayerControlsSpec struct {
-	GameMessagePickupCalls *int
-	GameMessageEquipped    *bool
-	GameMessageSecondary   *int // Expected temporaryRef identity at update-data byte108.
-	GameMessageCheckCalls  bool
-	GameMessageCallKind    uint32
-	GameMessage            []byte // Optional original game-message dispatch over this real owner.
-	GameMessageLength      int
-	UnitRead               *PortTestUnitReadSpec
-	UnitReward             *PortTestUnitRewardSpec
-	UnitUpdate             *PortTestUnitUpdateSpec
-	UnitDialogue           *PortTestUnitDialogueSpec
-	UnitExperience         *PortTestUnitExperienceSpec
-	ScriptHalberd          *PortTestScriptHalberdSpec
-	ScriptCarry            *PortTestScriptCarrySpec
-	ScriptStartup          *PortTestScriptStartupSpec
-	Reports                *PortTestGameplayReportsSpec
-	SpellLifecycle         *PortTestSpellLifecycleSpec
-	ByteReturn             int // 1: player record address; 2: last created item address, checked before normalization.
-	Corpse                 bool
-	Guide                  bool
-	Disallowed             uint8
-	NullRecord, Modifiers  bool
-	Equipment              bool
-	Stats                  []server.ClassStats
-	MonsterRefs            []int
-	UpdateByRef            map[int]map[int]uint32
-	Target                 int
-	X, Y                   int32
-	Name                   *string
-	Bot                    bool
-	BotWords               map[int]uint32
+	GameMessagePickupCalls   *int
+	GameMessageEquipped      *bool
+	GameMessageSecondary     *int // Expected temporaryRef identity at update-data byte108.
+	GameMessageSpell         *PortTestServerSpellSpec
+	GameMessageNullCollision bool
+	GameMessageCollision     *bool
+	GameMessageCheckCalls    bool
+	GameMessageCallKind      uint32
+	GameMessage              []byte // Optional original game-message dispatch over this real owner.
+	GameMessageLength        int
+	UnitRead                 *PortTestUnitReadSpec
+	UnitReward               *PortTestUnitRewardSpec
+	UnitUpdate               *PortTestUnitUpdateSpec
+	UnitDialogue             *PortTestUnitDialogueSpec
+	UnitExperience           *PortTestUnitExperienceSpec
+	ScriptHalberd            *PortTestScriptHalberdSpec
+	ScriptCarry              *PortTestScriptCarrySpec
+	ScriptStartup            *PortTestScriptStartupSpec
+	Reports                  *PortTestGameplayReportsSpec
+	SpellLifecycle           *PortTestSpellLifecycleSpec
+	ByteReturn               int // 1: player record address; 2: last created item address, checked before normalization.
+	Corpse                   bool
+	Guide                    bool
+	Disallowed               uint8
+	NullRecord, Modifiers    bool
+	Equipment                bool
+	Stats                    []server.ClassStats
+	MonsterRefs              []int
+	UpdateByRef              map[int]map[int]uint32
+	Target                   int
+	X, Y                     int32
+	Name                     *string
+	Bot                      bool
+	BotWords                 map[int]uint32
 }
 type portTestPlayerControls struct {
 	messagePickups int
@@ -347,6 +350,9 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 	if sp.NullRecord {
 		record = nil
 	}
+	if sp.GameMessageNullCollision {
+		p.temporaryRef(sp.Target).Collide = nil
+	}
 	if len(sp.GameMessage) != 0 {
 		data := bytes.Clone(sp.GameMessage)
 		before := bytes.Clone(data)
@@ -358,6 +364,9 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 		}
 		// The direct comparison operation is void. Validate dispatch length above,
 		// then compare its complete gameplay state with that qualified operation.
+		st.result = 0
+	} else if a.Op == 1477 {
+		p.portTestServerSpellDirect()
 		st.result = 0
 	} else if a.Op == 1466 {
 		st.transitions = append(st.transitions, p.unitReadContract()...)
@@ -397,6 +406,12 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 		st.result = controlsInvoke(a.Op-1400, p.temporaryRef(spec.Actor), p.temporaryRef(sp.Target), sp.X, sp.Y, record, st.name)
 	}
 
+	if sp.GameMessageSpell != nil {
+		p.portTestServerSpellCheck()
+	}
+	if sp.GameMessageCollision != nil {
+		portTestWorldCollisionCheck(p.temporaryRef(spec.Actor), p.temporaryRef(sp.Target), *sp.GameMessageCollision)
+	}
 	if sp.GameMessageCheckCalls {
 		calls := portTestInventoryDropCalls()
 		if sp.GameMessageCallKind == 0 {
@@ -523,6 +538,15 @@ func (p *portTestShopPools) controlsAdopt(u *server.Object) {
 // covers only ABIs still used by production C. Expected captures are unchanged.
 func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe.Pointer) uint64 {
 	switch op {
+	case 79:
+		*equipmentWord(u.UpdateData, 548) = 0
+		controlRespawn(u)
+		return 0
+	case 78:
+		if t.Collide != nil {
+			t.CallCollide(int(uintptr(u.CObj())), 0)
+		}
+		return 0
 	case 75:
 		equipmentSecondary(u, t)
 		return 0

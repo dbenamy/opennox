@@ -55,6 +55,7 @@ const (
 )
 
 type PortTestShopAction struct {
+	ServerMessage     *PortTestServerTradeSpec
 	Op, Session, Item int
 	Side              int
 	Value             uint32
@@ -301,6 +302,9 @@ func (p *portTestShopPools) run() {
 		u := p.proxy.core.NewObjectByTypeInd(23)
 		u.TypeInd, u.ObjClass, u.ObjSubClass, u.ObjFlags = spec.Type, object.Class(spec.Class), object.SubClass(spec.Subclass), object.Flags(spec.Flags)
 		u.Worth, u.NetCode = spec.Worth, uint32(70000+i)
+		if spec.NetCode != nil {
+			u.NetCode = *spec.NetCode
+		}
 		init, _ := alloc.Make([]byte{}, 20)
 		u.InitData = unsafe.Pointer(&init[0])
 		if spec.Health {

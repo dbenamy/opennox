@@ -54,7 +54,40 @@ baseline writer; no frozen expectations were changed. Continue with positive
 creature commands, spells, collision callbacks, trades and gauntlet actions.
 Production remains unchanged from f8607de2. No question is pending; continue after commit/push.
 
+The first server checkpoint is committed and pushed as **158d8de6** (push26031
+joined). The next checkpoint adds creature commands320, spell requests720,
+friendly-target spell cases32, collision callbacks90, gauntlet respawns36 and
+trade transactions176: **1,374 additional captured cases**, or2,324 across the
+nine new captures. Leave routing and vote withdrawal add independent contracts.
+Probe10 and two repeats pass40 roots each, no skips, with identical hashes/source.
+See [the second partial checkpoint](docs/porting/server-actions-second-c-checkpoint.json). Trade opening/offers, remaining boundaries and
+full baseline qualification still precede conversion.
+
+Fixture corrections: the collision check now reads the actual world callback
+recorder and checks exact object arguments; the C-heap spell-ID buffer is explicitly
+initialized; friendly-target tests use the actual caster/enemy relationship rather
+than an unrelated AI current-enemy setting. An omitted fixture import was fixed
+before the passing build. Failed probes remain recorded as failed, and no frozen
+expectation or production code changed.
+
 ## Recovery and storage
+
+Server capture consolidation server-actions-first and server-actions-creature is
+CONSUMED (931,271,931 and310,423,977 logical bytes), all jobs joined. Finished
+probe consolidation server-actions-finished is also CONSUMED (577,780,810 bytes).
+The latter includes failed probes: only identical capture bytes share storage;
+their failure status and all logs/paths are preserved. The separate ignored
+deduplicate-finished-captures.py requires a terminal result, unchanged source,
+no active output users, and matching names/sizes/SHA256 before linking.
+
+The tenth cache cleanup is CONSUMED:11 superseded porttest archives,
+727,254,776 bytes, cutofff8607de2; audit58900/apply67603 joined. Original assets,
+archive and all qualification evidence are preserved.
+
+Further completed capture consolidation is CONSUMED: server-actions-finished-second
+(465,140,604 bytes), server-actions-second-probe (536,294,079), and
+server-actions-second-repeat-one and -two (642,308,264 each). All audit/apply jobs are joined;
+all paths, bytes, logs and pass/fail status are preserved.
 
 Completed native gameplay/save asset deduplication is CONSUMED:1,112,747,701
 original-identical bytes removed (audit51461/apply98382 joined). Restoration uses

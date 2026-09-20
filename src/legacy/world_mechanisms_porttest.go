@@ -88,6 +88,7 @@ import (
 	"github.com/opennox/libs/object"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
+	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
 
@@ -208,6 +209,18 @@ func (p *portTestShopPools) worldAction(a PortTestShopAction) uint32 {
 	p.temporary.result = uint32(C.worldCall(C.int(a.Op-700), asObjectC(p.items[a.Item].u), asObjectC(p.temporaryRef(sp.Target)), C.int(a.Value)))
 	return p.temporary.result
 }
+func portTestWorldCollisionCheck(actor, target *server.Object, called bool) {
+	if !called {
+		if C.worldN() != 0 {
+			panic("unexpected world collision callback")
+		}
+		return
+	}
+	if C.worldN() != 3 || uint32(C.worldValue(0)) != uint32(uintptr(target.CObj())) || uint32(C.worldValue(1)) != uint32(uintptr(actor.CObj())) || C.worldValue(2) != 0 {
+		panic("world collision callback count or arguments")
+	}
+}
+
 func (p *portTestShopPools) worldSnapshot(out []uint32) []uint32 {
 	w := p.temporary.world
 	if w == nil {
