@@ -33,7 +33,7 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 	case 7:
 		return uint32(sub_467430())
 	case 8:
-		return uint32(C.sub_467440(C.int(a)))
+		return uint32(sub_467440(int(a)))
 	case 9:
 		return uint32(sub_467450(int(a)))
 	case 10:

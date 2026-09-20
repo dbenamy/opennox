@@ -107,7 +107,6 @@ func uiInventoryUnlink(code uint32) *client.Drawable {
 	return nil
 }
 
-//export sub_462040
 func sub_462040(code C.int) {
 	found := uiInventoryFindCode(uint32(code))
 	var src *client.Drawable
@@ -181,7 +180,6 @@ func sub_462040(code C.int) {
 	}
 }
 
-//export sub_4624D0
 func sub_4624D0(code C.int) C.int {
 	dr := uiInventoryUnlink(uint32(code))
 	if dr == nil {

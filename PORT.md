@@ -14,19 +14,17 @@
 
 ## Current status
 
-Client game-state messages and notices are now Go and fully qualified. The batch
-moves 42 client cases plus the notice dispatcher, retires 36 obsolete C interfaces,
-and moves the fade-object setting. Default/server/highres pass 266/263/266 affected
-roots, all 32 frozen captures and ten new boundary cases. Fresh production/ABI,
-exact full-suite comparison and headless gameplay/save-load checks pass. See
-[GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md).
+Client progress, winner reports and visual effects are now Go and fully qualified.
+This batch moves55 client cases and six helpers, including map-progress drawing,
+retires32 obsolete Go-backed C interfaces and moves three named owners. Default,
+server and high-resolution checks pass378/374/378 roots and all63 frozen captures.
+Fresh production/ABI, exact full-suite comparison and headless gameplay/save-load
+checks pass. See [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md).
 
-C remaining is **7,901 physical lines in 37 files**, zero reference C.
-This conversion removes **923 lines**; the subsequently qualified green-bolt
-correction adds four lines. Remaining client/server dispatch stays in
-the production C fallback for subsequent connected batches. The next candidate
-covers client progress, equipment/winner reports and effects; its helper and owner
-audit is in progress. See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
+C remaining is **6,641 physical lines in36 files**, zero reference C.
+This conversion removes **1,260 lines**. Next is the remaining server player-action
+dispatcher, followed by the remaining client settings/team/session messages.
+See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in
 [WORLD_GRID.md](docs/porting/WORLD_GRID.md).
@@ -206,6 +204,10 @@ Do not promise wording that prevents interruptions or weaken port quality to try
 to avoid them.
 
 ## Testing strategy
+
+When retiring C callbacks, preserve names used to assign stable capture IDs:
+replace their addresses with nil instead of deleting sorted-table entries. Keep
+frozen expectations unchanged; do not mistake an ID shift for a behavior change.
 
 Use focused tests during implementation, then broaden at the completed batch
 boundary. Do not repeat the entire qualification for each small internal helper.

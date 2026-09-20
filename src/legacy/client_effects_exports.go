@@ -15,7 +15,6 @@ import (
 	"unsafe"
 )
 
-//export sub_499490
 func sub_499490(typ C.int, p *C.uint16_t, x, y C.int, speed, period C.char) {
 	effectCreateOrb(int(typ), (*[4]uint16)(unsafe.Pointer(p)), int(x), int(y), byte(speed), byte(period))
 }
@@ -30,7 +29,6 @@ func nox_xxx_makePointFxCli_499610(typ, count, speed, ttl, x, y C.int) C.int {
 	return C.int(effectCreatePointSparks(int(typ), int(count), int(speed), int(ttl), int(x), int(y)))
 }
 
-//export nox_xxx_drawEnergyBolt_499710
 func nox_xxx_drawEnergyBolt_499710(x, y C.int, z C.short, typ C.int) C.int {
 	return C.int(effectCreateEnergySparks(int(x), int(y), int16(z), int(typ)))
 }
@@ -41,7 +39,6 @@ func sub_499950(typ C.int, from, to *C.int2, z C.ushort, velocity C.char) C.int 
 	return C.int(uintptr(unsafe.Pointer(dr)))
 }
 
-//export nox_xxx_makeLightningParticles_4999D0
 func nox_xxx_makeLightningParticles_4999D0(typ C.int, from, to *C.int2) C.int {
 	return C.int(effectLightningParticles(int(typ), AsPoint(unsafe.Pointer(from)), AsPoint(unsafe.Pointer(to))))
 }
@@ -56,7 +53,6 @@ func sub_49A150(pos *C.int2, typ C.int, amount C.uchar) C.int {
 	return C.int(effectSparkBurst(AsPoint(unsafe.Pointer(pos)), int(typ), byte(amount)))
 }
 
-//export nox_xxx_netDrawRays_49BDD0
 func nox_xxx_netDrawRays_49BDD0(packet *C.uchar) C.int {
 	return C.int(effectDispatchRay((*[9]byte)(unsafe.Pointer(packet))))
 }

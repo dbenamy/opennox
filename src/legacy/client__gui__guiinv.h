@@ -3,9 +3,6 @@
 
 #include "defs.h"
 
-int nox_xxx_spritePickup_461660(int a1, int a2, void* a3);
-void sub_461A80(int a1);
-void sub_462040(int a1);
 int sub_462740();
 int sub_4627F0(uint32_t* a1);
 void nox_client_makePlayerStatsDlg_463880(int* a1);

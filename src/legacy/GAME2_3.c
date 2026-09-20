@@ -39,8 +39,6 @@
 #include "operators.h"
 
 extern uint32_t dword_8531A0_2572;
-extern uint32_t dword_5d4594_1200776;
-extern uint32_t dword_5d4594_1200796;
 extern uint32_t nox_server_sanctuaryHelp_54276;
 extern uint32_t dword_5d4594_1305748;
 extern uint32_t dword_5d4594_1197352;
@@ -222,113 +220,10 @@ int* sub_48D7B0() {
 }
 
 //----- (004947E0) --------------------------------------------------------
-char* sub_4947E0(int a1) {
-	short v1;     // ax
-	int v2;       // edi
-	char* result; // eax
-	int i;        // esi
 
-	if (nox_common_gameFlags_check_40A5C0(1)) {
-		v1 = nox_common_gameFlags_getVal_40A5B0();
-		v2 = (unsigned short)nox_xxx_servGamedataGet_40A020(v1);
-	} else {
-		v2 = *((unsigned short*)nox_xxx_cliGamedataGet_416590(0) + 27);
-	}
-	result = nox_common_playerInfoGetFirst_416EA0();
-	for (i = (int)result; result; i = (int)result) {
-		if (!(*(uint8_t*)(i + 3680) & 1)) {
-			if (i == a1) {
-				if (nox_common_gameFlags_check_40A5C0(1024)) {
-					if (*(uint32_t*)(i + 2140) >= v2) {
-						*(uint32_t*)(i + 2140) = v2 - 1;
-					}
-				} else {
-					*(uint32_t*)(i + 2136) = v2;
-				}
-			} else if (nox_common_gameFlags_check_40A5C0(1024)) {
-				if (*(uint32_t*)(i + 2140) < v2) {
-					*(uint32_t*)(i + 2140) = v2;
-				}
-			} else if (*(uint32_t*)(i + 2136) >= v2) {
-				*(uint32_t*)(i + 2136) = v2 - 1;
-			}
-		}
-		result = nox_common_playerInfoGetNext_416EE0(i);
-	}
-	return result;
-}
 
 //----- (004948B0) --------------------------------------------------------
-int sub_4948B0(int a1) {
-	short v1;   // ax
-	int v2;     // edi
-	char* i;    // esi
-	int result; // eax
-	int j;      // ebp
-	char* v6;   // eax
-	char* v7;   // esi
-	int k;      // ebp
-	char* v9;   // eax
-	char* v10;  // esi
 
-	if (nox_common_gameFlags_check_40A5C0(1)) {
-		v1 = nox_common_gameFlags_getVal_40A5B0();
-		v2 = (unsigned short)nox_xxx_servGamedataGet_40A020(v1);
-	} else {
-		v2 = *((unsigned short*)nox_xxx_cliGamedataGet_416590(0) + 27);
-	}
-	for (i = nox_server_teamFirst_418B10(); i; i = nox_server_teamNext_418B60((int)i)) {
-		if (i == (char*)a1) {
-			if (!nox_common_gameFlags_check_40A5C0(1024)) {
-				*((uint32_t*)i + 13) = v2;
-			}
-		} else if (!nox_common_gameFlags_check_40A5C0(1024) && *((uint32_t*)i + 13) >= v2) {
-			*((uint32_t*)i + 13) = v2 - 1;
-		}
-	}
-	if (nox_common_gameFlags_check_40A5C0(1)) {
-		result = nox_xxx_getFirstPlayerUnit_4DA7C0();
-		for (j = result; result; j = result) {
-			if (!nox_xxx_teamCompare2_419180(j + 48, *(uint8_t*)(a1 + 57))) {
-				v6 = nox_common_playerInfoGetByID_417040(*(uint32_t*)(j + 36));
-				v7 = v6;
-				if (v6) {
-					if (!(v6[3680] & 1)) {
-						if (nox_common_gameFlags_check_40A5C0(1024)) {
-							if (*((uint32_t*)v7 + 535) < v2) {
-								*((uint32_t*)v7 + 535) = v2;
-							}
-						} else if (*((uint32_t*)v7 + 534) >= v2) {
-							*((uint32_t*)v7 + 534) = v2 - 1;
-						}
-					}
-				}
-			}
-			result = nox_xxx_getNextPlayerUnit_4DA7F0(j);
-		}
-	} else {
-		result = nox_xxx_cliGetSpritePlayer_45A000();
-		for (k = result; result; k = result) {
-			if (!nox_xxx_teamCompare2_419180(k + 24, *(uint8_t*)(a1 + 57))) {
-				v9 = nox_common_playerInfoGetByID_417040(*(uint32_t*)(k + 128));
-				v10 = v9;
-				if (v9) {
-					if (!(v9[3680] & 1)) {
-						if (nox_common_gameFlags_check_40A5C0(1024)) {
-							if (*((uint32_t*)v10 + 535) < v2) {
-								*((uint32_t*)v10 + 535) = v2;
-							}
-						} else if (*((uint32_t*)v10 + 534) >= v2) {
-							*((uint32_t*)v10 + 534) = v2 - 1;
-						}
-					}
-				}
-			}
-			result = sub_45A010(k);
-		}
-	}
-	return result;
-}
 
 //----- (00494F00) --------------------------------------------------------
 

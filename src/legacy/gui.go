@@ -43,7 +43,6 @@ func asWindowData(data *C.nox_window_data) *gui.WindowData {
 //export nox_client_gui_set_flag_815132
 func nox_client_gui_set_flag_815132(v int) { Nox_client_gui_set_flag_815132(v) }
 
-//export nox_client_onClientStatusA
 func nox_client_onClientStatusA(v int) { Nox_client_onClientStatusA(v) }
 
 //export nox_client_setRenderGUI

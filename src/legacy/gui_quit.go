@@ -8,7 +8,6 @@ package legacy
 #include "GAME4_1.h"
 extern unsigned int dword_5d4594_2650652;
 extern uint32_t dword_5d4594_830272;
-int* nox_xxx_guiServerOptionsHide_4597E0(int a1);
 */
 import "C"
 import (

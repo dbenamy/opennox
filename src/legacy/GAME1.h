@@ -118,8 +118,6 @@ nox_playerInfo* nox_common_playerInfoFromNum_417090(int i);
 nox_playerInfo* nox_common_playerInfoFromNumRaw(int i);
 void nox_xxx_netMarkMinimapObject_417190(int a1, nox_object_t* a2, unsigned int a3);
 void nox_xxx_netUnmarkMinimapObj_417300(int a1, nox_object_t* a2, unsigned int a3);
-int nox_xxx_netNeedTimestampStatus_4174F0(nox_playerInfo* a1, int a2);
-char nox_xxx_playerUnsetStatus_417530(nox_playerInfo* a1, int a2);
 char* nox_xxx_sendAllClientStatus_4175C0(int a1);
 void nox_xxx_cliPlayerRespawn_417680(int a1, char a2);
 void nox_xxx_SetGameplayFlag_417D50(int a1);

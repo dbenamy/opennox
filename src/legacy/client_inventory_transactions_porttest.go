@@ -22,9 +22,9 @@ func PortTestInventoryTransaction(op int, a, b, c, d uintptr) uint32 {
 	case 0:
 		return uint32(C.nox_xxx_clientSetAltWeapon_461550(C.int(a)))
 	case 1:
-		return uint32(C.nox_xxx_send2ServInvenFail_461630(C.short(a)))
+		return uint32(nox_xxx_send2ServInvenFail_461630(C.short(a)))
 	case 2:
-		return uint32(C.nox_xxx_spritePickup_461660(C.int(a), C.int(b), unsafe.Pointer(c)))
+		return uint32(nox_xxx_spritePickup_461660(C.int(a), C.int(b), unsafe.Pointer(c)))
 	case 3:
 		return uint32(uiInventoryNewStack(uint32(a), uint32(b), unsafe.Pointer(c), (*[2]int32)(unsafe.Pointer(d))))
 	case 4:
@@ -32,7 +32,7 @@ func PortTestInventoryTransaction(op int, a, b, c, d uintptr) uint32 {
 	case 5:
 		return uint32(uiInventoryClearAlternateFlags())
 	case 6:
-		C.sub_461A80(C.int(a))
+		sub_461A80(C.int(a))
 		return 0
 	case 7:
 		return uint32(uintptr(unsafe.Pointer(C.sub_461B50())))
@@ -41,7 +41,7 @@ func PortTestInventoryTransaction(op int, a, b, c, d uintptr) uint32 {
 	case 9:
 		return uint32(uintptr(unsafe.Pointer(uiInventoryUnlink(uint32(a)))))
 	case 10:
-		C.sub_462040(C.int(a))
+		sub_462040(C.int(a))
 		return 0
 	case 11:
 		return uint32(uiInventoryEquipmentSlot(uiInventoryDrawable(uint32(a))))
@@ -50,7 +50,7 @@ func PortTestInventoryTransaction(op int, a, b, c, d uintptr) uint32 {
 	case 13:
 		return uint32(uintptr(unsafe.Pointer(uiInventoryInsertEquipment(uiInventoryDrawable(uint32(a)), int(b)))))
 	case 14:
-		return uint32(C.sub_4624D0(C.int(a)))
+		return uint32(sub_4624D0(C.int(a)))
 	case 15:
 		return uint32(C.sub_4649B0(C.int(a), C.int(b), C.int(c)))
 	case 16:

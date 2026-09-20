@@ -40,7 +40,7 @@ func PortTestObjectDrawHelper(op int, dr *client.Drawable, arg unsafe.Pointer, v
 	case 3:
 		return uint32(uintptr(unsafe.Pointer(C.sub_4B9650(C.int(value)))))
 	case 5:
-		return uint32(C.sub_4BC720(C.int(uintptr(dr.C()))))
+		return uint32(sub_4BC720(C.int(uintptr(dr.C()))))
 	case 6:
 		return uint32(C.nox_xxx_updDrawMonsterGen_4BC920())
 	case 7:

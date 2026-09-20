@@ -75,30 +75,7 @@ extern uint32_t nox_color_black_2650656;
 nox_gui_animation* nox_wnd_xxx_1309740 = 0;
 
 //----- (004A9C80) --------------------------------------------------------
-int nox_xxx_compassGenStrings_4A9C80() {
-	int v0;            // edi
-	unsigned char* v1; // esi
-	int v2;            // edi
-	unsigned char* v3; // esi
-	char v5[64];       // [esp+8h] [ebp-40h]
 
-	*getMemU32Ptr(0x5D4594, 1309664) = 0;
-	v0 = 0;
-	v1 = getMemAt(0x5D4594, 1309644);
-	do {
-		nox_sprintf(v5, "Compass%d", ++v0);
-		*(uint32_t*)v1 = nox_xxx_gLoadImg_42F970(v5);
-		v1 += 4;
-	} while ((int)v1 < (int)getMemAt(0x5D4594, 1309660));
-	v2 = 0;
-	v3 = getMemAt(0x5D4594, 1309516);
-	do {
-		nox_sprintf(v5, "CompassMainArrow%d", ++v2);
-		*(uint32_t*)v3 = nox_xxx_gLoadImg_42F970(v5);
-		v3 += 4;
-	} while ((int)v3 < (int)getMemAt(0x5D4594, 1309644));
-	return 1;
-}
 
 //----- (004AEE30) --------------------------------------------------------
 long long sub_4AEE30() {

@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include "GAME3.h"
-extern uint32_t dword_5d4594_1200776;
-extern uint32_t dword_5d4594_1200796;
 */
 import "C"
 import (
@@ -117,8 +115,8 @@ func drawableEffectTypes() int {
 		*memmap.PtrUint32(0x5D4594, 1200772) = 0
 		return 0
 	}
-	C.dword_5d4594_1200776 = C.uint32_t(effectType("BlueSpark"))
-	if C.dword_5d4594_1200776 == 0 {
+	clientGameBlueSpark = effectType("BlueSpark")
+	if clientGameBlueSpark == 0 {
 		return 0
 	}
 	for i, name := range []string{"YellowSpark", "CyanSpark", "GreenSpark", "Puff"} {
@@ -136,20 +134,17 @@ func drawableEffectTypes() int {
 			return 0
 		}
 	}
-	C.dword_5d4594_1200796 = C.uint32_t(effectType("VioletSpark"))
-	return bool2int(C.dword_5d4594_1200796 != 0)
+	clientGameVioletSpark = effectType("VioletSpark")
+	return bool2int(clientGameVioletSpark != 0)
 }
 
-//export nox_xxx_netHandleSummonPacket_4B7C40
 func nox_xxx_netHandleSummonPacket_4B7C40(owner C.short, p *C.ushort, typ C.ushort, dir C.uchar, value C.short) *C.uint32_t {
 	n := drawableSummonStart(int16(owner), *(*[2]uint16)(unsafe.Pointer(p)), uint16(typ), byte(dir), int16(value))
 	return (*C.uint32_t)(unsafe.Pointer(uintptr(n)))
 }
 
-//export sub_4B7EE0
 func sub_4B7EE0(owner C.short) { drawableSummonStop(int16(owner)) }
 
-//export nox_xxx_fxShield_4B8090
 func nox_xxx_fxShield_4B8090(code C.uint, dir C.int) *C.uint32_t {
 	return (*C.uint32_t)(unsafe.Pointer(drawableShield(uint32(code), int(dir))))
 }

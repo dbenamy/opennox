@@ -77,7 +77,6 @@ func nox_xxx_servCompareTeams_419150(a, b C.int) C.int {
 	return teamRuntimeBool(teamRuntimeMemberInt(a).SameAs(teamRuntimeMemberInt(b)))
 }
 
-//export nox_xxx_teamCompare2_419180
 func nox_xxx_teamCompare2_419180(m unsafe.Pointer, id C.uchar) C.int {
 	return teamRuntimeBool(teamRuntimeContains(teamRuntimeMember(m), server.TeamID(id)))
 }

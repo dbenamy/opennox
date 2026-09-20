@@ -130,7 +130,6 @@ extern uint32_t dword_5d4594_2487248;
 
 extern uint32_t dword_5d4594_2487532;
 extern uint32_t nox_server_connectionType_3596;
-extern uint32_t dword_5d4594_1200804;
 extern uint32_t dword_5d4594_1049484;
 extern uint32_t dword_5d4594_1319232;
 extern uint32_t dword_5d4594_1046656;
@@ -689,7 +688,7 @@ func Get_dword_5d4594_1599532() unsafe.Pointer {
 	return mapRoomPointer(*prefabGlobal(prefabWalls))
 }
 func Get_dword_5d4594_1200804() int {
-	return int(C.dword_5d4594_1200804)
+	return int(clientGameMapFrame)
 }
 func Get_nox_gameDisableMapDraw_5d4594_2650672() int {
 	return int(C.nox_gameDisableMapDraw_5d4594_2650672)
@@ -1103,7 +1102,7 @@ func Set_qword_5d4594_814956(v uint64) {
 	browserUI.connectionDeadline = C.ulonglong(v)
 }
 func Set_dword_5d4594_1200804(v uint32) {
-	C.dword_5d4594_1200804 = C.uint(v)
+	clientGameMapFrame = v
 }
 func Set_dword_5d4594_1200832(v int) {
 	C.dword_5d4594_1200832 = C.uint(v)

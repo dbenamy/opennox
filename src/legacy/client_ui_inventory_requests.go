@@ -51,7 +51,6 @@ func nox_xxx_trade_4657B0(v C.short) C.int { return C.int(uiInventoryTrade(30, u
 //export nox_xxx_clientTrade_465870
 func nox_xxx_clientTrade_465870(v C.short) C.int { return C.int(uiInventoryTrade(28, uint16(v))) }
 
-//export nox_xxx_send2ServInvenFail_461630
 func nox_xxx_send2ServInvenFail_461630(v C.short) C.int {
 	msg := [3]byte{241, byte(v), byte(uint16(v) >> 8)}
 	return C.int(reliableClientSend(31, msg[:], nil, 0))

@@ -2,68 +2,68 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 7.9k lines** — **7,901 physical lines in 37
-production `.c` files**, zero reference C. The last conversion removed **923 lines**;
-the subsequent green-bolt correction added four lines.
+**Qualified C remaining: about 6.6k lines** — **6,641 physical lines in 36
+production `.c` files**, zero reference C. This conversion removes **1,260 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — green-bolt correction qualified
+## Current — client progress, winners and effects qualified
 
-The new client-effects baseline found message152 adding 432 to a typed drawable
-pointer, advancing 221,184 bytes instead of the intended byte offset432. The C
-handler now checks allocation and addresses the actual effect record. This is an
-explicit correction of undefined writes, made under the standing reversible-choice
-policy. See [DECISIONS.md](docs/porting/DECISIONS.md) and
-[the qualification](docs/porting/green-bolt-correction-qualification.json).
+Moved55 client labels /41 whole groups and six private C helpers to Go, including
+individual/team score adjustment, compass initialization and map-progress drawing.
+BlueSpark, VioletSpark and the map-frame gate now have Go owners. Retired32 unused
+Go-backed C exports, six C functions and three named C globals; test adapters call
+Go directly. No C implementation is retained for testing.
 
-Default/server/highres pass **282/279/282 roots**, no skips, all **47 captures /
-75,276 cases** (including 22,382 newly added progress/effects cases), plus ten
-inherited native boundary cases. All final source fingerprints match. Fresh three
-production binaries pass ABI checks; the full asset suite matches all1,553 known
-failure entries and15 pass /3 fail /32 skip packages. Headless character creation/
-gameplay and explicit save/load pass, including continuation after saved-map load.
-Every qualification job is joined, including production41364. Correction
-**f37ec35a** is committed and pushed. No question is pending.
+Default/server/highres pass **378/374/378 roots**, no skips, all **63 frozen
+captures /122,204 cases**, with identical source fingerprints. This scope adds
+69,310 original-C cases. Three fresh production binaries pass ABI checks; the
+full suite matches all1,553 known failure entries and15 pass /3 fail /32 skip
+packages. Headless gameplay and explicit save/load, including continuation after
+loading, both pass. All jobs are joined, including production37588.
+See [the qualification](docs/porting/client-progress-effects-native-qualification.json).
+The original-C baseline is committed and pushed as **a2b8342c**.
 
-## Active — finish client progress/effects baseline, then translate
+The interface cleanup initially shifted sorted callback IDs in summon captures.
+Retired names now remain nil entries, preserving the original capture namespace
+without restoring C exports or changing expectations. Two direct-call test-adapter
+casts were corrected. Initial source-edit scripts and all native drafts/installers
+are CONSUMED; never replay them. The final qualification includes these fixes.
 
-Earlier fixture checkpoints **11a9df13** and **c3659afb** are pushed. This corrected
-checkpoint adds seven effect roots and qualifies the green-bolt fix separately.
-The complete next port is still **55 client labels /41 whole groups /1,060 case
-lines plus six C helpers /180 lines: 1,240 body lines**. Selection/hashes:
-[client-progress-effects-selection.json](docs/porting/client-progress-effects-selection.json).
-Move three named owners with their last C callers: BlueSpark, VioletSpark and the
-map-frame gate1200804 (preserve its Go map-use/endgame callers). The compass-image
-initializer and map-progress renderer move together with their existing Go callers.
+## Next — remaining server player-action dispatcher
 
-The complete original-C baseline is now frozen: **378/374/378 roots** pass
-for default/server/highres with no skips, matching source fingerprints, and all
-**63 captures /122,204 cases**. This scope contributes **69,310 cases**, including
-11,520 individual winner,19,440 team winner and432 wide-coordinate sentry cases.
-All qualification jobs are joined. Production remains byte-identical to qualified
-f37ec35a; its production/ABI/full-suite/gameplay/save-load evidence applies to this
-test-only checkpoint. See [the complete baseline](docs/porting/client-progress-effects-c-qualification.json).
-
-Next: review/install the four ignored native drafts (client-game-progress,
-client-game-effects, client-game-winners, client-map-progress), migrate the three
-named owners and callers, and retire only interfaces proven unused across C, Go,
-C preambles and callbacks. The read-only prepare-progress-install.py creates a
-hash-guarded C preview; it does not install source. Native qualification must rerun
-all production gates. No native draft is yet installed or qualified.
-
-Earlier fixture checkpoints 11a9df13, c3659afb,3bfc175e,3cc4b1e2 and45f829e3 are
-pushed. Winner and wide-sentry fixture drafts are CONSUMED; do not replay them.
-The first individual-winner probe hung because fixture player indices were unset;
-that process was terminated and joined, the indices corrected, and all final
-checks passed. Wide sentry tests independently cover differing signed spark and
-unsigned audio distance arithmetic. No question is pending.
+Audit and finish the whole remaining server dispatcher (16 top-level labels,
+476 physical C lines), reusing the existing pickup/drop/use/equipment/waypoint/
+alias contracts and extending positive creature, spell, collision, book, vote,
+trade and endgame coverage as needed. This is a smaller coherent batch because it
+can retire an entire dispatcher and reuse substantial existing C evidence.
+Read-only candidate inventories are in build/port-game-messages; they are not yet
+a selected or frozen baseline. The remaining client dispatcher has48 labels for
+a subsequent connected batch. No question is pending; continue after commit/push.
 
 ## Recovery and storage
 
+Final native capture deduplication labels progress-native-qualified-default,
+-server and -highres are CONSUMED:888,744,852 /875,151,930 /888,744,852 bytes.
+Audit/apply33075/25265,50979/34923 and74241/49946 are joined; every artifact path
+and byte is preserved. Initial native probe consolidation progress-native-first
+(audit29776/apply34665) is also CONSUMED.
+
+Cross-batch capture consolidation all-completed-progress is CONSUMED:56 completed
+artifact directories,1,772 identical paths consolidated (6,811,658,706 logical
+bytes; physical savings are lower because some paths already shared inodes).
+Audit82843/apply91179 are joined. All paths and bytes are preserved. The smaller
+cross-batch-progress audit was superseded without applying it.
+
+Completed progress-effects capture deduplication labels preflight, final-pair and
+final-triple are CONSUMED; they reclaimed874,949,805 +1,763,694,657 +888,744,852
+bytes while retaining every path and exact contents. Audit/apply jobs are joined.
+
 Ignored install/retirement/fixture scripts are CONSUMED; never replay over reviewed
-source. All eight cache cleanup plans are consumed; the eighth reclaimed 2,175,941,830 bytes
+source. All nine cache cleanup plans are consumed; the ninth reclaimed891,057,562 bytes
+from12 superseded porttest archives (cutoffa2b8342c; audit2363/apply94557 joined).
+ the eighth reclaimed 2,175,941,830 bytes
 from28 superseded porttest archives (cutoff45f829e3; audit10847/apply50157 joined).
 Earlier plans remain consumed; the seventh reclaimed 2,179,969,050 bytes
 from30 superseded porttest archives (cutoff3cc4b1e2; audit78044/apply7540 joined).

@@ -1,5 +1,5 @@
 {
-  "status": "complete original-C baseline qualified; ready for native translation",
+  "status": "native conversion fully qualified; original selection hashes describe the frozen C baseline",
   "production_parent": "f9268ef1",
   "file": "src/legacy/client__network__cdecode.c",
   "file_sha256": "5974c5f09a04424752606f61ef19b920a0dcb05513949578df61a604ec355489",
@@ -1032,5 +1032,6 @@
     "lines": 7897,
     "reference_lines": 0
   },
-  "baseline_qualification": "client-progress-effects-c-qualification.json"
+  "baseline_qualification": "client-progress-effects-c-qualification.json",
+  "native_qualification": "client-progress-effects-native-qualification.json"
 }

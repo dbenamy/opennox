@@ -79,7 +79,6 @@ func nox_game_exit_xxx2() {
 	Nox_game_exit_xxx2()
 }
 
-//export sub_470510
 func sub_470510() {
 	Sub_470510()
 }

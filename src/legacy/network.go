@@ -15,13 +15,11 @@ extern unsigned int dword_5d4594_2649712;
 extern unsigned int dword_5d4594_2660032;
 extern unsigned int dword_5d4594_2650652;
 extern unsigned int nox_player_netCode_85319C;
-extern uint32_t dword_5d4594_1200804;
 extern uint32_t dword_5d4594_1200832;
 void nox_xxx_playerInitColors_461460(nox_playerInfo* pl);
 int sub_457140(int a1, wchar2_t* a2);
 int sub_456DF0(int a1);
 int sub_43C650();
-int* nox_xxx_guiServerOptionsHide_4597E0(int a1);
 void* nox_xxx_spriteGetMB_476F80();
 int nox_xxx_netOnPacketRecvCli_48EA70(int a1, unsigned char* data, int sz);
 static int nox_xxx_netSendLineMessage_go(nox_object_t* a1, wchar2_t* str) {
@@ -237,6 +235,12 @@ func Sub_49BB80(a1 byte) {
 }
 func Nox_xxx_netOnPacketRecvCli_48EA70_switch(a1 ntype.PlayerInd, a2 netmsg.Op, data []byte) int {
 	if n, handled := clientGameState(a2, data); handled {
+		return n
+	}
+	if n, handled := clientGameProgress(a2, data); handled {
+		return n
+	}
+	if n, handled := clientGameEffects(int(a1), a2, data); handled {
 		return n
 	}
 	return int(C.nox_xxx_netOnPacketRecvCli_48EA70_switch(C.int(a1), C.int(a2), (*C.uchar)(unsafe.Pointer(&data[0])), C.int(len(data))))

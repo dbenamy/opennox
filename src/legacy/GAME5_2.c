@@ -164,7 +164,7 @@ void nullsub_10(uint32_t a1) {}
 
 
 
-int nox_xxx_j_inventoryNameSignInit_467460(void) { return nox_xxx_inventoryNameSignInit_4671E0(); }
+
 
 void nullsub_30(uint32_t a1) {}
 void nullsub_29(void) {}

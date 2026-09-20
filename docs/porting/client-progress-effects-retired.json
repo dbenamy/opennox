@@ -1,0 +1,59 @@
+{
+  "retired_exports": [
+    "nox_client_onClientStatusA",
+    "nox_xxx_cliSummonCreat_4C2E50",
+    "nox_xxx_cliSummonOnDieOrBanish_4C3140",
+    "nox_xxx_clientAddRayEffect_49C160",
+    "nox_xxx_clientRemoveRayEffect_49C450",
+    "nox_xxx_drawEnergyBolt_499710",
+    "nox_xxx_fxDrawTurnUndead_499880",
+    "nox_xxx_fxShield_4B8090",
+    "nox_xxx_guiServerOptionsHide_4597E0",
+    "nox_xxx_initTime_435570",
+    "nox_xxx_makeLightningParticles_4999D0",
+    "nox_xxx_netCliProcUpdateStream_494A60",
+    "nox_xxx_netCliUpdateStream2_494C30",
+    "nox_xxx_netDrawRays_49BDD0",
+    "nox_xxx_netHandleSummonPacket_4B7C40",
+    "nox_xxx_netNeedTimestampStatus_4174F0",
+    "nox_xxx_netSpellRewardCli_45CFE0",
+    "nox_xxx_playerUnsetStatus_417530",
+    "nox_xxx_send2ServInvenFail_461630",
+    "nox_xxx_spritePickup_461660",
+    "nox_xxx_teamCompare2_419180",
+    "sub_435700",
+    "sub_461A80",
+    "sub_462040",
+    "sub_4624D0",
+    "sub_467440",
+    "sub_470510",
+    "sub_470C40",
+    "sub_499490",
+    "sub_4B7EE0",
+    "sub_4BC720",
+    "sub_4C5020"
+  ],
+  "removed_helpers": [
+    "nox_xxx_j_inventoryNameSignInit_467460",
+    "nox_xxx____setargv_11_473920",
+    "sub_4947E0",
+    "sub_4948B0",
+    "nox_xxx_mapGenClientText_4A9D00",
+    "nox_xxx_compassGenStrings_4A9C80"
+  ],
+  "passive_map_entries": [
+    {
+      "file": "src/legacy/book_porttest.go",
+      "symbol": "nox_xxx_netSpellRewardCli_45CFE0"
+    },
+    {
+      "file": "src/legacy/summon_porttest.go",
+      "symbol": "nox_xxx_cliSummonCreat_4C2E50"
+    },
+    {
+      "file": "src/legacy/summon_porttest.go",
+      "symbol": "nox_xxx_cliSummonOnDieOrBanish_4C3140"
+    }
+  ],
+  "capture_labels": "Retired addresses become nil while names remain in sorted normalization tables, preserving prior capture IDs."
+}

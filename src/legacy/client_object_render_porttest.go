@@ -11,7 +11,6 @@ extern uint32_t dword_8531A0_2576;
 extern unsigned int nox_player_netCode_85319C;
 extern nox_render_data_t* nox_draw_curDrawData_3799572;
 extern int nox_win_height;
-int sub_4C5020(int);
 void sub_4C5050();
 void nox_xxx_wndDraw_49F7F0();
 int sub_49F860();
@@ -106,7 +105,7 @@ func PortTestObjectRenderBeam(op int, vp *noxrender.Viewport, a [4]int32) uint32
 		*(*uint16)(unsafe.Pointer(&packet[3])) = uint16(a[1])
 		*(*uint16)(unsafe.Pointer(&packet[5])) = uint16(a[2])
 		*(*uint16)(unsafe.Pointer(&packet[7])) = uint16(a[3])
-		return uint32(C.sub_4C5020(C.int(uintptr(unsafe.Pointer(&packet[0])))))
+		return uint32(sub_4C5020(C.int(uintptr(unsafe.Pointer(&packet[0])))))
 	case 2:
 		C.sub_4C5050()
 		return 0

@@ -26,7 +26,7 @@ func PortTestMeterCall(op int, w *gui.Window, a, b, c, d int) uint32 {
 	case 2:
 		return uint32(uintptr(uiMeterInitColors()))
 	case 3:
-		return uint32(C.sub_470C40(C.int(a)))
+		return uint32(sub_470C40(int(a)))
 	case 4:
 		return uint32(nox_xxx_cliSetTotalHealth_470C80(a, b))
 	case 5:

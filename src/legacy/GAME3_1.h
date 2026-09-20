@@ -5,7 +5,6 @@
 
 int sub_4B9470(const char** a1);
 uint32_t* sub_4B9650(int a1);
-int sub_4BC720(int a1);
 int nox_xxx_updDrawMonsterGen_4BC920();
 uint32_t* sub_4BD280(int a1, int a2);
 void sub_4BD2D0(void* lpMem);
@@ -42,8 +41,6 @@ int nox_xxx_prepareP2PTrade_4C1BF0();
 int sub_4C1CA0(int a1);
 int sub_4C26F0(void* yTop);
 int sub_4C2C20(uint32_t* a1, int a2, unsigned int a3);
-char nox_xxx_cliSummonCreat_4C2E50(int a1, int a2, int a3);
-void nox_xxx_cliSummonOnDieOrBanish_4C3140(int a1, void* a2);
 int sub_4C3260();
 void nox_video_drawCircleColored_4C3270(int a1, int a2, int a3, int a4);
 int sub_4C35B0(int a1);
@@ -52,7 +49,6 @@ void sub_4C3B70();
 void sub_4C4260();
 int sub_4C4280();
 int sub_4C42A0(int2* a1, int2* a2, int* a3, int* a4);
-int sub_4C5020(int a1);
 void sub_4C5050();
 int sub_4C5630(int a1, int a2, int a3);
 int nox_xxx_sprite_4CA540(uint32_t* a1, int a2);

@@ -12,7 +12,6 @@ func nox_xxx_guiServerOptsLoad_457500() C.int { return C.int(serverOptionsConstr
 //export nox_xxx_guiServerOptionsTryHide_4574D0
 func nox_xxx_guiServerOptionsTryHide_4574D0() C.int { return C.int(serverOptionsTryClose()) }
 
-//export nox_xxx_guiServerOptionsHide_4597E0
 func nox_xxx_guiServerOptionsHide_4597E0(value C.int) *C.int {
 	return (*C.int)(unsafe.Pointer(serverOptionsClose(int(value))))
 }

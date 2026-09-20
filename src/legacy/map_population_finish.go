@@ -8,7 +8,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_2.h"
 #include "common__strman.h"
-#include "client__gui__guigen.h"
 static void populationPrint(wchar2_t* text) { nox_xxx_printToAll_4D9FD0(0,text); }
 */
 import "C"
@@ -34,7 +33,7 @@ func mapPopulationProgress(flag byte) {
 		seq := *populationBlob(2487572)
 		data := [3]byte{flag, byte(seq), byte(seq >> 8)}
 		*populationBlob(2487572)++
-		C.nox_xxx_mapGenClientText_4A9D00((*C.uchar)(unsafe.Pointer(&data[0])))
+		clientMapProgress(data[:])
 		*populationGlobal(2) = now
 	}
 }

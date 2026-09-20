@@ -15,7 +15,6 @@ func nox_xxx_bookHideMB_45ACA0(reset C.int) C.int { return C.int(bookHide(int(re
 //export sub_45CFC0
 func sub_45CFC0() C.int { return C.int(bookShown()) }
 
-//export nox_xxx_netSpellRewardCli_45CFE0
 func nox_xxx_netSpellRewardCli_45CFE0(id, rank, notify, autoAdd C.int) {
 	bookSpellReward(int(id), int(rank), int(notify), int(autoAdd))
 }

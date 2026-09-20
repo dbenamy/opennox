@@ -154,14 +154,14 @@ func PortTestSummonCallbacks() map[string]unsafe.Pointer {
 		"sub_4C2D90":                            nil,
 		"sub_4C2DD0":                            nil,
 		"sub_4C2E00":                            nil,
-		"nox_xxx_cliSummonCreat_4C2E50":         C.nox_xxx_cliSummonCreat_4C2E50,
+		"nox_xxx_cliSummonCreat_4C2E50":         nil, // Preserve stable capture IDs after retiring the C export.
 		"sub_4C2EF0":                            nil,
 		"sub_4C2F20":                            nil,
 		"sub_4C2F70":                            nil,
 		"sub_4C2FD0":                            nil,
 		"sub_4C3030":                            nil,
 		"sub_4C30C0":                            nil,
-		"nox_xxx_cliSummonOnDieOrBanish_4C3140": C.nox_xxx_cliSummonOnDieOrBanish_4C3140,
+		"nox_xxx_cliSummonOnDieOrBanish_4C3140": nil, // Preserve stable capture IDs after retiring the C export.
 		"sub_4C31D0":                            nil,
 		"sub_4C3210":                            nil,
 		"nox_xxx_sprite_4C3220":                 nil,

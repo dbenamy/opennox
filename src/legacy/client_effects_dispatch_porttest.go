@@ -28,7 +28,7 @@ func PortTestClientEffects(op int, vp *noxrender.Viewport, dr *client.Drawable, 
 	case 45:
 		return uint32(effectPrepareLightning())
 	case 0:
-		C.sub_499490(C.int(a[0]), (*C.uint16_t)(data), C.int(a[1]), C.int(a[2]), C.char(a[3]), C.char(a[4]))
+		sub_499490(C.int(a[0]), (*C.uint16_t)(data), C.int(a[1]), C.int(a[2]), C.char(a[3]), C.char(a[4]))
 		return 0
 	case 1:
 		C.sub_499520(C.int(a[0]), (*C.short)(data), C.short(a[1]), C.char(a[2]), C.char(a[3]))
@@ -36,17 +36,17 @@ func PortTestClientEffects(op int, vp *noxrender.Viewport, dr *client.Drawable, 
 	case 2:
 		return uint32(C.nox_xxx_makePointFxCli_499610(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5])))
 	case 3:
-		return uint32(C.nox_xxx_drawEnergyBolt_499710(C.int(a[0]), C.int(a[1]), C.short(a[2]), C.int(a[3])))
+		return uint32(nox_xxx_drawEnergyBolt_499710(C.int(a[0]), C.int(a[1]), C.short(a[2]), C.int(a[3])))
 	case 4:
 		return uint32(C.sub_499950(C.int(a[0]), (*C.int2)(unsafe.Add(data, 0)), (*C.int2)(unsafe.Add(data, 8)), C.ushort(a[1]), C.char(a[2])))
 	case 5:
-		return uint32(C.nox_xxx_makeLightningParticles_4999D0(C.int(a[0]), (*C.int2)(unsafe.Add(data, 0)), (*C.int2)(unsafe.Add(data, 8))))
+		return uint32(nox_xxx_makeLightningParticles_4999D0(C.int(a[0]), (*C.int2)(unsafe.Add(data, 0)), (*C.int2)(unsafe.Add(data, 8))))
 	case 6:
 		return uint32(C.nox_xxx_draw_499E70(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5]), C.int(a[6])))
 	case 7:
 		return uint32(C.sub_49A150((*C.int2)(unsafe.Add(data, 0)), C.int(a[0]), C.uchar(a[1])))
 	case 8:
-		return uint32(C.nox_xxx_netDrawRays_49BDD0((*C.uchar)(data)))
+		return uint32(nox_xxx_netDrawRays_49BDD0((*C.uchar)(data)))
 	case 9:
 		return uint32(effectLightningStep(uint32(a[0]), uint32(a[1])))
 	case 10:

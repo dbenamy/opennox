@@ -30,7 +30,6 @@ func sub_467420(v C.char) C.char { *memmap.PtrUint8(0x5D4594, 1062536) = byte(v)
 
 func sub_467430() C.uchar { return C.uchar(memmap.Uint8(0x5D4594, 1062536)) }
 
-//export sub_467440
 func sub_467440(v int) int { *memmap.PtrUint32(0x5D4594, 1062544) = uint32(v); return v }
 
 func sub_467450(v int) int { *memmap.PtrUint32(0x5D4594, 1062548) = uint32(v); return v }

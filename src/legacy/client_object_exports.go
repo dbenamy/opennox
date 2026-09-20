@@ -155,7 +155,6 @@ func sub_4B9650(typ C.int) *C.uint32_t {
 	return (*C.uint32_t)(unsafe.Pointer(uintptr(objectBaseMaterials(int(typ)))))
 }
 
-//export sub_4BC720
 func sub_4BC720(p C.int) C.int {
 	return C.int(uintptr(objectGeneratorCountdown((*client.Drawable)(unsafe.Pointer(uintptr(uint32(p)))))))
 }

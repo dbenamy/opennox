@@ -29,12 +29,10 @@ func nox_xxx_playerForceSendLessons_416E50(send C.int) *C.char {
 	return nil
 }
 
-//export nox_xxx_netNeedTimestampStatus_4174F0
 func nox_xxx_netNeedTimestampStatus_4174F0(pl *C.nox_playerInfo, mask C.int) C.int {
 	return C.int(playerStateAddStatus((*server.Player)(unsafe.Pointer(pl)), uint32(mask)))
 }
 
-//export nox_xxx_playerUnsetStatus_417530
 func nox_xxx_playerUnsetStatus_417530(pl *C.nox_playerInfo, mask C.int) C.char {
 	return C.char(playerStateRemoveStatus((*server.Player)(unsafe.Pointer(pl)), uint32(mask)))
 }

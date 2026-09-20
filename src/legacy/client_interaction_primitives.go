@@ -151,14 +151,12 @@ func nox_client_setMousePos_430B10(x, y C.int) {
 	GetClient().ChangeMousePos(image.Pt(int(x), int(y)), true)
 }
 
-//export nox_xxx_initTime_435570
 func nox_xxx_initTime_435570() C.longlong { return C.longlong(interactionInitTime()) }
 
 func nox_client_drawable_testBuff_4356C0(dr *nox_drawable, bit C.char) C.bool {
 	return C.bool(interactionHasBuff(asDrawable(dr), uint8(bit)))
 }
 
-//export sub_435700
 func sub_435700(text *C.ushort, v C.int) *C.ushort {
 	return (*C.ushort)(unsafe.Pointer(interactionTextState((*uint16)(unsafe.Pointer(text)), uint32(v))))
 }

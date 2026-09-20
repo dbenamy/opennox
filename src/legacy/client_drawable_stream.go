@@ -130,12 +130,10 @@ func drawableStreamNext(p unsafe.Pointer, player int, pos *[2]int32) int32 {
 	return int32(n)
 }
 
-//export nox_xxx_netCliProcUpdateStream_494A60
 func nox_xxx_netCliProcUpdateStream_494A60(p *C.uchar, player C.int, pos *C.uint32_t) C.int {
 	return C.int(drawableStreamFirst(unsafe.Pointer(p), int(player), (*[2]int32)(unsafe.Pointer(pos))))
 }
 
-//export nox_xxx_netCliUpdateStream2_494C30
 func nox_xxx_netCliUpdateStream2_494C30(p *C.uchar, player C.int, pos *C.int) *C.uchar {
 	n := drawableStreamNext(unsafe.Pointer(p), int(player), (*[2]int32)(unsafe.Pointer(pos)))
 	return (*C.uchar)(unsafe.Pointer(uintptr(uint32(n))))

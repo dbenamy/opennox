@@ -1,0 +1,159 @@
+{
+  "status": "qualified native client progress, winner and effects conversion",
+  "baseline_revision": "a2b8342c",
+  "baseline": "client-progress-effects-c-qualification.json",
+  "selected_client_labels": 55,
+  "selected_whole_groups": 41,
+  "moved_c_helpers": 6,
+  "retired_go_backed_c_exports": 32,
+  "moved_named_owners": 3,
+  "frozen_captures": 63,
+  "captured_cases": 122204,
+  "next_scope_cases": 69310,
+  "targets": {
+    "default": {
+      "artifact_directory": "build/port-game-messages/progress-native-final-default-3",
+      "roots": 378,
+      "skips": 0,
+      "source_unchanged": true,
+      "wall_seconds": 274.35502035100944
+    },
+    "server": {
+      "artifact_directory": "build/port-game-messages/progress-native-final-server-2",
+      "roots": 374,
+      "skips": 0,
+      "source_unchanged": true,
+      "wall_seconds": 266.4365750220604
+    },
+    "highres": {
+      "artifact_directory": "build/port-game-messages/progress-native-final-highres",
+      "roots": 378,
+      "skips": 0,
+      "source_unchanged": true,
+      "wall_seconds": 192.52294546598569
+    }
+  },
+  "production_c": {
+    "files": 36,
+    "lines": 6641,
+    "change": -1260,
+    "test_reference_lines": 0
+  },
+  "source_manifest_sha256": "6f48b9be04ab8e2d9cd7cc3404d018d7bfa3af5632082ebd16ecd188e2d3afc9",
+  "production_artifacts": "build/port-game-messages/progress-native-production/production",
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 75.1187468089629,
+        "sha256": "c41001e06857bcf6c4ba4f62b5091e05678826a9f83fc9640f39bd895697b71f",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.53170131216757,
+        "sha256": "bcafdc6a4d1a4909e5a1f526da20336af7c11d27aa45e4831cc68b71515248d9",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 74.2319562828634,
+        "sha256": "f9b08ca5cbfbd86a831c70e45af4e6668adfd286d0297f51dc1550c385ebfe30",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "client-progress-effects-native": {
+        "exit": 0,
+        "wall_seconds": 68.63955594995059,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 67.1521695619449,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+          "binary_sha256": "c41001e06857bcf6c4ba4f62b5091e05678826a9f83fc9640f39bd895697b71f",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-game-messages/progress-native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/client-progress-effects-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Move client progress, winner, map-progress and visual-effects dispatch plus six helpers and three named owners to Go.",
+          "isolated_network": false,
+          "removed_maps": 0
+        }
+      },
+      "client-progress-effects-native-save": {
+        "exit": 0,
+        "wall_seconds": 46.149830050067976,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.694093588972464,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "c41001e06857bcf6c4ba4f62b5091e05678826a9f83fc9640f39bd895697b71f",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-game-messages/progress-native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/client-progress-effects-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Move client progress, winner, map-progress and visual-effects dispatch plus six helpers and three named owners to Go.",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1392,
+                "sha256": "a50374206368b1bbdb1ccd07055ca1221e217d612196dda0e4c6738f387046a6"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 59.0668907451909,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "notes": [
+    "All original-C capture expectations are unchanged.",
+    "Retired callback names remain nil entries to preserve sorted normalization IDs; no C wrappers or algorithms remain for tests.",
+    "The initial native implementation passed all captures before interface retirement. Final qualification includes the test-adapter and normalization fixes.",
+    "Three named owners move to Go storage; historical mapped-address labels are not aliases for those owners.",
+    "Wide sentry coordinates retain unsigned sound distance and signed spark distance semantics."
+  ]
+}

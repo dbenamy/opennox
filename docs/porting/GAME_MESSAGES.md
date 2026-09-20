@@ -616,3 +616,32 @@ manifests; 1,112,747,701 bytes of original-identical assets were removed. Use
 Original assets/archive, changed files, saves/screenshots and evidence remain.
 All cleanup plans and installed drafts are consumed. Continue with duration-effect
 message158; its ignored draft is not yet installed.
+
+## Client progress, winner reports and effects — complete
+
+Baseline a2b8342c freezes all55 selected client labels /41 whole groups and six
+helpers:63 captures /122,204 cases, including69,310 cases for this scope. Native
+qualification passes378/374/378 default/server/highres roots with no skips and
+identical source, all frozen hashes unchanged. Fresh production/ABI checks pass;
+the full suite exactly matches1,553 known failure entries and15 pass /3 fail /32
+skip packages. Headless gameplay and explicit save/load/continuation both pass.
+See [the qualification](client-progress-effects-native-qualification.json) and
+[the reproducible manifest](client-progress-effects-native-batch.json).
+
+The conversion moves stats, equipment/progress reports, individual/team winners,
+creatures, particles/rays, stream dispatch and map-progress rendering. Six private
+C helpers disappear,32 Go-backed C exports are retired, and BlueSpark, VioletSpark
+and the map-frame gate move to Go storage. Test adapters invoke Go; there is no C
+reference implementation. C remaining: **6,641 physical lines /36 files**, down
+**1,260 lines**, zero reference C. Existing client/server fallback behavior stays
+in production for the next batches.
+
+Review notes: wide sentry coordinates preserve differing unsigned audio and signed
+spark distance arithmetic; winner fixtures cover score underflow, frame gates and
+UI/clock ordering. Retiring callback addresses required retaining nil table entries
+to keep sorted capture IDs stable. No expectations were regenerated. The earlier
+green-bolt correction remains the separately documented intentional behavior fix.
+
+Next, finish the remaining server action dispatcher as one coherent batch, reusing
+existing C contracts and extending positive action coverage. The old fixture drafts
+and installation/retirement scripts referenced above are consumed.

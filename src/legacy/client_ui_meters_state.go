@@ -80,7 +80,6 @@ func uiMeterInitColors() unsafe.Pointer {
 	return memmap.PtrOff(0x5D4594, 1096268)
 }
 
-//export sub_470C40
 func sub_470C40(v int) int {
 	C.dword_5d4594_1096264 = C.uint32_t(v)
 	m := &uiMeters()[0]
