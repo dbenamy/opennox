@@ -14,20 +14,19 @@
 
 ## Current status
 
-Server player-action dispatch and its two private pickup helpers are now Go and
-fully qualified. The conversion retires38 unused C interfaces. Default/server/
-high-resolution checks pass567/563/567 roots, no skips, and all75 frozen captures.
-Fresh production/ABI, exact full-suite comparison and headless gameplay/save-load
-checks pass. See [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) and
-[the qualification](docs/porting/server-actions-native-qualification.json).
+The remaining client settings, team, trade and quest dispatcher is now implemented
+in Go, together with its private ball HUD helper. It removes1,536 C lines and146
+unused Go-backed C exports. All64 focused client-session tests pass, including
+five independent boundary/failure contracts; all59 frozen C captures match.
+Full native profile and production qualification is still running.
 
-C remaining is **6,139 physical lines in35 files**, zero reference C.
-This conversion removes **502 lines**. A subsequent replay-buffer copy correction
-passes focused regressions on all three profiles. Next are the remaining client
-settings/team/session messages. Their original-C baseline currently covers
-all48 labels, with77,666 captured cases across59 test groups
-and matching independent checks across all three profiles. Fresh production/ABI,
-full-suite and headless gameplay/save-load checks pass; native conversion follows.
+Working-tree C remaining is **4,603 physical lines in33 files**, zero reference C.
+The preceding fully qualified production checkpoint had6,139 lines in35 files.
+The complete original-C baseline is qualified, including broad627/623/627-root
+checks, corrected cross-build capture normalization, fresh production/ABI,
+exact full-suite comparison and headless gameplay/save-load. See
+[GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) and
+[the C qualification](docs/porting/client-session-c-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in

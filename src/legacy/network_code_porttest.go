@@ -46,5 +46,5 @@ func PortTestClientCodes(specs []PortTestClientCode) []PortTestClientCodeResult 
 }
 
 func PortTestNetworkBits(value uint32) (clear, flag uint32) {
-	return uint32(C.nox_xxx_netClearHighBit_578B30(C.short(value))), uint32(C.nox_xxx_netTestHighBit_578B70(C.uint(value)))
+	return uint32(nox_xxx_netClearHighBit_578B30(C.short(value))), uint32(nox_xxx_netTestHighBit_578B70(C.uint(value)))
 }

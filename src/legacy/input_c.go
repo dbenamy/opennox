@@ -43,7 +43,6 @@ var (
 	Nox_input_reset_430140                   func(a1 int)
 )
 
-//export nox_xxx_setKeybTimeout_4160D0
 func nox_xxx_setKeybTimeout_4160D0(key int) int {
 	InputSetKeyTimeoutLegacy(byte(key))
 	return key
@@ -54,7 +53,6 @@ func nox_xxx_checkKeybTimeout_4160F0(key C.uchar, dt C.uint) C.bool {
 	return C.bool(InputKeyCheckTimeoutLegacy(byte(key), uint32(dt)))
 }
 
-//export sub_416120
 func sub_416120(key C.uchar) C.bool { return C.bool(Sub_416120(byte(key))) }
 
 //export sub_416170

@@ -6,7 +6,6 @@ package legacy
 import "C"
 import "unsafe"
 
-//export sub_4C1CA0
 func sub_4C1CA0(command C.int) C.int { return C.int(summonSetCommand(uint32(command))) }
 
 func nox_xxx_cliSummonCreat_4C2E50(code, typ, quiet C.int) C.char {

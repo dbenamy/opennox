@@ -43,12 +43,8 @@ int nox_xxx_bookHideMB_45ACA0(int a1);
 int nox_xxx_bookClickSpell_45B1F0();
 int nox_xxx_bookClickCreature_45B200();
 int sub_45CFC0();
-void nox_xxx_netGuideRewardCli_45D140(int a1, int a2);
 int* nox_xxx_bookSetForward_45D200(int* a1, int a2, int2* a3);
 void nox_xxx_abilityReward_45D290(int a1, char* a2, int a3);
-int sub_45D320(int a1);
-int sub_45D400(int a1);
-char* nox_xxx_clientQuestDisableAbility_45D4A0(int a1);
 int sub_45D500(int a1);
 void nox_xxx_bookFillAll_45D570(int a1, int a2);
 int sub_45D9B0();
@@ -103,7 +99,7 @@ func PortTestBookInvoke(op string, a [4]uint32) uint32 {
 		nox_xxx_netSpellRewardCli_45CFE0(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]))
 		return 0
 	case "nox_xxx_netGuideRewardCli_45D140":
-		C.nox_xxx_netGuideRewardCli_45D140(C.int(a[0]), C.int(a[1]))
+		nox_xxx_netGuideRewardCli_45D140(C.int(a[0]), C.int(a[1]))
 		return 0
 	case "nox_xxx_bookSetForward_45D200":
 		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_bookSetForward_45D200((*C.int)(unsafe.Pointer(uintptr(a[0]))), C.int(a[1]), (*C.int2)(unsafe.Pointer(uintptr(a[2])))))))
@@ -111,11 +107,11 @@ func PortTestBookInvoke(op string, a [4]uint32) uint32 {
 		C.nox_xxx_abilityReward_45D290(C.int(a[0]), (*C.char)(unsafe.Pointer(uintptr(a[1]))), C.int(a[2]))
 		return 0
 	case "sub_45D320":
-		return uint32(C.sub_45D320(C.int(a[0])))
+		return uint32(sub_45D320(C.int(a[0])))
 	case "sub_45D400":
-		return uint32(C.sub_45D400(C.int(a[0])))
+		return uint32(sub_45D400(C.int(a[0])))
 	case "nox_xxx_clientQuestDisableAbility_45D4A0":
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_clientQuestDisableAbility_45D4A0(C.int(a[0])))))
+		return uint32(uintptr(unsafe.Pointer(nox_xxx_clientQuestDisableAbility_45D4A0(C.int(a[0])))))
 	case "sub_45D500":
 		return uint32(C.sub_45D500(C.int(a[0])))
 	case "sub_45D550":
@@ -166,12 +162,12 @@ func PortTestBookCallbacks() map[string]unsafe.Pointer {
 		"nox_xxx_bookWndFn_45CC10":                 nil,
 		"sub_45CFC0":                               unsafe.Pointer(C.sub_45CFC0),
 		"nox_xxx_netSpellRewardCli_45CFE0":         nil, // Preserve stable capture IDs after retiring the C export.
-		"nox_xxx_netGuideRewardCli_45D140":         unsafe.Pointer(C.nox_xxx_netGuideRewardCli_45D140),
+		"nox_xxx_netGuideRewardCli_45D140":         nil,
 		"nox_xxx_bookSetForward_45D200":            unsafe.Pointer(C.nox_xxx_bookSetForward_45D200),
 		"nox_xxx_abilityReward_45D290":             unsafe.Pointer(C.nox_xxx_abilityReward_45D290),
-		"sub_45D320":                               unsafe.Pointer(C.sub_45D320),
-		"sub_45D400":                               unsafe.Pointer(C.sub_45D400),
-		"nox_xxx_clientQuestDisableAbility_45D4A0": unsafe.Pointer(C.nox_xxx_clientQuestDisableAbility_45D4A0),
+		"sub_45D320":                               nil,
+		"sub_45D400":                               nil,
+		"nox_xxx_clientQuestDisableAbility_45D4A0": nil,
 		"sub_45D500":                               unsafe.Pointer(C.sub_45D500),
 		"sub_45D550":                               nil,
 		"nox_xxx_bookFillAll_45D570":               unsafe.Pointer(C.nox_xxx_bookFillAll_45D570),

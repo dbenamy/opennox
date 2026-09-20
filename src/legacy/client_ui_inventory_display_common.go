@@ -108,7 +108,6 @@ func sub_463370(w *C.uint32_t, pos *C.nox_point, out *C.uint32_t) C.int {
 	return C.int(p.Y)
 }
 
-//export sub_463420
 func sub_463420(v C.int) C.int { *memmap.PtrUint32(0x5D4594, 1050012) = uint32(v); return v }
 
 func uiInventoryHitRect(p image.Point, offset uintptr) bool {
@@ -199,7 +198,6 @@ func nox_xxx_inventoryNameSignInit_4671E0() C.int {
 	return C.int(C.inventoryFormatText(dst, (*C.wchar2_t)(unsafe.Pointer(internWStr(uiInventoryText("ElaborateNameFormat")))), (*C.wchar2_t)(unsafe.Add(p, 4704)), (*C.wchar2_t)(unsafe.Pointer(internWStr(title)))))
 }
 
-//export sub_467750
 func sub_467750(code C.int, status C.char) C.int {
 	if code != 0 {
 		if found := uiInventoryFindCode(uint32(code)); found != nil {

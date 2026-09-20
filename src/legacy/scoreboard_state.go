@@ -248,18 +248,14 @@ func scoreboardYellow() uint32     { return Get_nox_color_yellow_2589772() }
 func scoreboardWhite() uint32      { return Get_nox_color_white_2523948() }
 func scoreboardTitleColor() uint32 { return Get_dword_8531A0_2572() }
 
-//export sub_470580
 func sub_470580() int { return bool2int(scoreboardVisible()) }
 
-//export sub_4705B0
 func sub_4705B0() { scoreboardOpen() }
 
-//export sub_4705F0
 func sub_4705F0(action, team C.char, code C.short) C.char {
 	return C.char(scoreboardSetFlag(byte(action), byte(team), uint16(code)))
 }
 
-//export sub_470650
 func sub_470650(action C.char, code C.short) C.char {
 	return C.char(scoreboardSetBall(byte(action), uint16(code)))
 }

@@ -145,7 +145,6 @@ func uiInventorySetWindowLevel(level int) int {
 	return int(nox_xxx_inventoryNameSignInit_4671E0())
 }
 
-//export sub_465DE0
 func sub_465DE0(level C.int) C.int { return C.int(uiInventorySetWindowLevel(int(level))) }
 
 func uiInventoryCancelDrag() int {

@@ -194,7 +194,7 @@ func controlResetPlayer(u *server.Object) int32 {
 }
 func controlTeamFlag(pl unsafe.Pointer) {
 	u := controlObject(pl, 2056)
-	team := unsafe.Pointer(C.nox_xxx_getTeamByID_418AB0(C.int(*controlByte(u.CObj(), 52))))
+	team := unsafe.Pointer(nox_xxx_getTeamByID_418AB0(int(*controlByte(u.CObj(), 52))))
 	flag := controlObject(team, 76)
 	if flag != nil && flag.InvHolder == nil {
 		C.sub_4F3400(inventoryInt(u), inventoryInt(flag), 1)

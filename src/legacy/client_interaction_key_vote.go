@@ -100,7 +100,6 @@ func interactionVoteDestroy() int {
 
 func sub_4BFB70(v C.int) { interactionSetKeyState(uint32(v)) }
 
-//export sub_4BFBB0
 func sub_4BFBB0(v C.uint32_t) { interactionKeyUpdate(uintptr(v)) }
 
 func sub_4BFBF0() C.int { return C.int(interactionKeyShow()) }

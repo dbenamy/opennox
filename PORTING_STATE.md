@@ -8,6 +8,24 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — native client-dispatch recovery checkpoint
+
+Native probe3 passes all64 client-session roots. All59 frozen original-C captures
+match exactly (77,666 cases). The five additional contracts cover105 fixed wire
+formats plus variable lengths, long team names, failed drawable allocation,
+quest selector bounds and null-versus-empty quest titles. No C reference retained.
+The conversion removes1,536 C lines and146 exports; provisional remaining C is
+4,603 lines /33 files. Full native qualification is NOT complete yet.
+
+Default full native qualification is active (session95092); server precompile is
+active (session23503). NO Go/C edits until all builds/tests finish. Native probe
+consolidation is CONSUMED:85 captures /934,452,568 logical bytes; job91911 joined.
+All consumed native installers/drafts are stale after the two implementation fixes.
+Next: finish default/server/highres and production/ABI/full-suite/headless/save-load,
+record C LOC and qualification, commit/push, then continue to the next batch.
+
+
+
 ## Active — client-dispatch C baseline qualified; Go conversion next
 
 See [qualification](docs/porting/client-session-c-qualification.json). Original C
@@ -2281,3 +2299,31 @@ Final-highres is active (session8380), with full627-root selection and134 hashes
 four final gates and records the broad-test/corrected-fixture evidence precisely.
 Literal header/C++/assembly audit found no additional non-declaration callers of
 the146 candidate retired exports. No production Go/C source has changed yet.
+
+C baseline a9b34bef is committed and pushed. Final-highres8380 joined PASS627
+roots/no skips/all134 hashes/static. Production73880 joined PASS:three fresh
+binaries/ABI, exact1,553 known failure entries (15 pass/3 fail/32 skip packages),
+headless gameplay and explicit save/load. All final source fingerprints match.
+Final-repeat dedup is CONSUMED:117 captures /1,326,721,433 logical bytes. Final-
+highres dedup is CONSUMED:645 captures /3,015,354,939 bytes. All cleanup joined.
+
+Native installer and146-export retirement scripts are now CONSUMED. Five Go
+implementation files and three test files are installed; the old dispatcher and
+private ball HUD C files are removed. Physical C is provisionally4,603 lines in33
+files (−1,536); zero reference C. Do not call the conversion qualified yet.
+Native probe1 is active (session84587), all64 client-session roots, asset env set;
+NO Go/C edits while it runs. Native manifest and retired-interface record are now
+tracked-path drafts under docs/porting. Retired callback map keys/slots remain nil
+at the same indices. No frozen captures were changed by the native installation.
+
+Native probe1 joined with a single compile error: audioEventPlay's final selector
+argument is int, not int32. Fixed the local selector type. Native probe2 is active
+(session98847), same64-root selection. No frozen hash change. Installed sources
+now supersede the consumed drafts; do not replay installers or overwrite sources
+from those drafts. C count stays4,603/33, provisional pending native qualification.
+
+Native probe2 joined after26 frozen captures (all match), then exposed an added
+unconditional GetServer().S() dependency in message clearing, which legitimately
+runs without a server object. Moved server lookups into only the branches that
+need them in main and quest dispatch. This fixes the port, not the fixture.
+Native probe3 is active (session35067), all64 roots. No Go/C edits until joined.

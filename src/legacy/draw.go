@@ -71,7 +71,6 @@ func nox_xxx_getSomeCoods_435670(a1 *C.int2) {
 	a1.field_4 = C.int(p.Y)
 }
 
-//export nox_xxx_cliUpdateCameraPos_435600
 func nox_xxx_cliUpdateCameraPos_435600(x, y int) {
 	Nox_xxx_cliUpdateCameraPos_435600(x, y)
 }
@@ -412,7 +411,6 @@ func sub_473970(a1, a2p *C.int2) {
 	a2p.field_4 = C.int(a2.Y)
 }
 
-//export nox_client_isConnected_43C700
 func nox_client_isConnected_43C700() int {
 	return bool2int(Nox_client_isConnected())
 }

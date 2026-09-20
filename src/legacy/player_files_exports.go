@@ -6,7 +6,6 @@ package legacy
 import "C"
 import "unsafe"
 
-//export nox_xxx_plrLoad_41A480
 func nox_xxx_plrLoad_41A480(path *C.char) C.int { return C.int(playerFileClientLoad(GoString(path))) }
 
 //export sub_41C280

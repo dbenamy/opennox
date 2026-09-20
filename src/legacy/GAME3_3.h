@@ -50,8 +50,6 @@ int sub_4E4C90(nox_object_t* a1, unsigned int a2);
 int sub_4E4F30(int a1);
 int nox_xxx_playerResetImportantCtr_4E4F40(int a1);
 int nox_xxx_netSendPacket1_4E5390(int a1, int a2, int a3, int a4, int a5);
-int nox_xxx_netClientSend2_4E53C0(int a1, void* a2, int a3, int a4, int a5);
-int nox_net_importantACK_4E55A0(int a1, int a2);
 int sub_4E55F0(unsigned char a1);
 void nox_xxx_playerRemoveSpawnedStuff_4E5AD0(nox_object_t* a1);
 int nox_xxx_isUnit_4E5B50(nox_object_t* a1p);

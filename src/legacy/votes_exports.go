@@ -23,5 +23,4 @@ func sub_48CAD0() C.int { return C.int(voteGUIHide()) }
 //export sub_48CB10
 func sub_48CB10(topic C.int) { voteGUIShow(uint32(topic)) }
 
-//export sub_48D4A0
 func sub_48D4A0() C.int { return C.int(voteGUIReset()) }

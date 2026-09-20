@@ -106,8 +106,6 @@ func sub_438BD0() C.int { return C.int(browserConnectionError()) }
 
 func sub_43B630() *C.uint32_t { browserAttemptConnect(); return nil }
 
-//export sub_43B6E0
 func sub_43B6E0() { browserNotice(false) }
 
-//export sub_43B750
 func sub_43B750() { browserNotice(true) }

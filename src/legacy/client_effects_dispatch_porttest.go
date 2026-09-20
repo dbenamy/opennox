@@ -34,7 +34,7 @@ func PortTestClientEffects(op int, vp *noxrender.Viewport, dr *client.Drawable, 
 		C.sub_499520(C.int(a[0]), (*C.short)(data), C.short(a[1]), C.char(a[2]), C.char(a[3]))
 		return 0
 	case 2:
-		return uint32(C.nox_xxx_makePointFxCli_499610(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5])))
+		return uint32(nox_xxx_makePointFxCli_499610(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5])))
 	case 3:
 		return uint32(nox_xxx_drawEnergyBolt_499710(C.int(a[0]), C.int(a[1]), C.short(a[2]), C.int(a[3])))
 	case 4:
@@ -44,7 +44,7 @@ func PortTestClientEffects(op int, vp *noxrender.Viewport, dr *client.Drawable, 
 	case 6:
 		return uint32(C.nox_xxx_draw_499E70(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5]), C.int(a[6])))
 	case 7:
-		return uint32(C.sub_49A150((*C.int2)(unsafe.Add(data, 0)), C.int(a[0]), C.uchar(a[1])))
+		return uint32(sub_49A150((*C.int2)(unsafe.Add(data, 0)), C.int(a[0]), C.uchar(a[1])))
 	case 8:
 		return uint32(nox_xxx_netDrawRays_49BDD0((*C.uchar)(data)))
 	case 9:

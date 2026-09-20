@@ -54,7 +54,6 @@ func uiMeterPlayer() unsafe.Pointer   { return unsafe.Pointer(uintptr(C.dword_85
 func uiMeterColor(r, g, b int) uint32 { return uint32(nox_color_rgb_4344A0(r, g, b)) }
 func uiMeterMode() uint32             { return uint32(C.dword_5d4594_1096252) }
 
-//export nox_xxx_cliShowHideTubes_470AA0
 func nox_xxx_cliShowHideTubes_470AA0(v int) {
 	C.dword_5d4594_1096252 = C.uint32_t(v)
 	if memmap.Uint32(0x5D4594, 1093176) != 0 {

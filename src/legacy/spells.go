@@ -112,7 +112,6 @@ func nox_xxx_spellGetAud44_424800(ind, a2 int) int {
 	return int(GetServer().S().Spells.DefByInd(spell.ID(ind)).GetAudio(a2))
 }
 
-//export nox_xxx_spellTitle_424930
 func nox_xxx_spellTitle_424930(ind int) *wchar2_t {
 	s, ok := Nox_xxx_spellTitle_424930(ind)
 	if !ok {

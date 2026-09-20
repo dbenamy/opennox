@@ -133,7 +133,6 @@ func uiMeterInit() int {
 	return 1
 }
 
-//export nox_xxx_cliPrepareGameplay2_4721D0
 func nox_xxx_cliPrepareGameplay2_4721D0() int {
 	if w := uiMeterMainWindow(); w != nil {
 		w.Destroy()

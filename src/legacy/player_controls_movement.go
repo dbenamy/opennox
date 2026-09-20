@@ -31,7 +31,7 @@ func controlFindStart(out *types.Pointf, u *server.Object) {
 	team := int32(0)
 	if u.TeamVal.Has() {
 		team = int32(*controlByte(u.CObj(), 52))
-		C.nox_xxx_getTeamByID_418AB0(C.int(team))
+		nox_xxx_getTeamByID_418AB0(int(team))
 	}
 	var last, best *server.Object
 	var choices []*server.Object

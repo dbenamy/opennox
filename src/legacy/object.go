@@ -186,7 +186,6 @@ func nox_init_npc(npc unsafe.Pointer, id int) {
 	GetServer().S().NPCs.Set((*server.NPC)(npc), id)
 }
 
-//export nox_npc_set_328
 func nox_npc_set_328(id, val int) {
 	GetServer().S().NPCs.Set328(id, val)
 }

@@ -108,10 +108,8 @@ func interactionMessagesDraw() int32 {
 	panic("unreachable message row")
 }
 
-//export sub_445450
 func sub_445450() *C.ushort { return (*C.ushort)(unsafe.Pointer(interactionMessagesClear())) }
 
-//export nox_xxx_printCentered_445490
 func nox_xxx_printCentered_445490(text *C.ushort) {
 	interactionCentered((*uint16)(unsafe.Pointer(text)))
 }

@@ -155,7 +155,6 @@ func sub_461EF0(code int) *C.char {
 	return (*C.char)(unsafe.Pointer(uiInventoryFindCode(uint32(code))))
 }
 
-//export sub_4676D0
 func sub_4676D0(code int) int { return int(uintptr(unsafe.Pointer(uiInventoryItem(uint32(code))))) }
 
 //export sub_467700

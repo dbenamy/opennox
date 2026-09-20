@@ -129,7 +129,7 @@ func bookSetForward(kind uintptr, id int, pos image.Point) uintptr {
 	return uintptr(unsafe.Pointer(bookWord(1046960 + 4*uintptr(index))))
 }
 func bookAbilityReward(id int, notify uintptr, auto int) {
-	p := C.nox_common_playerInfoGetByID_417040(C.int(C.nox_player_netCode_85319C))
+	p := nox_common_playerInfoGetByID_417040(int(C.nox_player_netCode_85319C))
 	if p == nil {
 		return
 	}
@@ -182,7 +182,7 @@ func bookRemoveAbility(id int) uintptr {
 		*bookPlayerWord(p, 3696, id) = 0
 	}
 	quickbarRemove(uint32(id))
-	p := C.nox_common_playerInfoGetByID_417040(C.int(C.nox_player_netCode_85319C))
+	p := nox_common_playerInfoGetByID_417040(int(C.nox_player_netCode_85319C))
 	if p == nil {
 		return 0
 	}

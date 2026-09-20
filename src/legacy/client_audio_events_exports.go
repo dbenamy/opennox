@@ -9,10 +9,8 @@ package legacy
 import "C"
 import "unsafe"
 
-//export sub_43DA80
 func sub_43DA80() C.int { return C.int(audioEventMusicSave()) }
 
-//export sub_43DAD0
 func sub_43DAD0() { audioEventMusicRestore() }
 
 //export sub_43DB20
@@ -52,15 +50,12 @@ func sub_4526F0(a0 C.int) C.int {
 	return C.int(audioEventVoiceEnded((*audioStreamVoice)(unsafe.Pointer(uintptr(uint32(a0))))))
 }
 
-//export nox_xxx_clientPlaySoundSpecial_452D80
 func nox_xxx_clientPlaySoundSpecial_452D80(a0 C.int, a1 C.int) {
 	audioEventPlay(int32(a0), int32(a1), 0, 0)
 }
 
-//export sub_452DC0
 func sub_452DC0(a0 C.int, a1 C.int, a2 C.int) { audioEventPlay(int32(a0), int32(a1), int32(a2), 1) }
 
-//export sub_452E10
 func sub_452E10(a0 C.int, a1 C.int, a2 C.int) { audioEventPlay(int32(a0), int32(a1), int32(a2), 2) }
 
 //export sub_452E90

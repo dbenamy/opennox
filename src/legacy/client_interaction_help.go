@@ -92,7 +92,6 @@ func interactionHelpOpen() uintptr {
 	return 0
 }
 
-//export nox_xxx_cliShowHelpGui_49C560
 func nox_xxx_cliShowHelpGui_49C560() *C.uint32_t {
 	return (*C.uint32_t)(unsafe.Pointer(interactionHelpOpen()))
 }
@@ -105,7 +104,6 @@ func sub_49C7A0() C.int { return C.int(interactionHelpClose()) }
 
 func sub_49C810() C.int { return C.int(bool2int(interactionHelpRootWord != 0)) }
 
-//export sub_48D4B0
 func sub_48D4B0(v C.int) C.int {
 	*memmap.PtrUint32(0x5D4594, 1197304) = uint32(v)
 	hidden := 1

@@ -27,12 +27,10 @@ func nox_xxx_netGetUnitCodeCli_578B00(a1 C.int) C.uint {
 	return C.uint(code)
 }
 
-//export nox_xxx_netClearHighBit_578B30
 func nox_xxx_netClearHighBit_578B30(a1 C.short) C.int {
 	return C.int(uint16(a1) & 0x7fff)
 }
 
-//export nox_xxx_netTestHighBit_578B70
 func nox_xxx_netTestHighBit_578B70(a1 C.uint) C.uint {
 	return (a1 >> 15) & 1
 }

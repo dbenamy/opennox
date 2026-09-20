@@ -64,7 +64,7 @@ func PortTestBookAwardCall(name string, args ...uint32) uint32 {
 	case "nox_xxx_guideNameByN_427230":
 		return uint32(uintptr(unsafe.Pointer(bookGuideName(int32(a[0])))))
 	case "nox_xxx_guiCreatureGetName_427240":
-		return uint32(C.nox_xxx_guiCreatureGetName_427240(C.int(a[0])))
+		return uint32(nox_xxx_guiCreatureGetName_427240(C.int(a[0])))
 	case "nox_xxx_creatureIsCharmableByTT_4272B0":
 		return uint32(bookGuideCharmable(a[0]))
 	case "nox_xxx_guideGetDescById_4272E0":

@@ -46,7 +46,7 @@ func PortTestPlayerFileCall(name string, args ...uint32) uint32 {
 	case "nox_xxx_cliPlrInfoLoadFromFile_41A2E0":
 		return uint32(playerFileServerLoad(alloc.GoString((*byte)(p0)), int(int32(a[1]))))
 	case "nox_xxx_plrLoad_41A480":
-		return uint32(C.nox_xxx_plrLoad_41A480((*C.char)(p0)))
+		return uint32(nox_xxx_plrLoad_41A480((*C.char)(p0)))
 	case "sub_41A590":
 		return uint32(playerFileAttributes(u, unsafe.Pointer(uintptr(a[1]))))
 	case "sub_41AA30":

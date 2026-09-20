@@ -43,7 +43,6 @@ func nox_xxx_sendAllClientStatus_4175C0(to C.int) *C.char {
 	return nil
 }
 
-//export nox_xxx_cliPlayerRespawn_417680
 func nox_xxx_cliPlayerRespawn_417680(pl C.int, mask C.char) {
 	playerStateRespawn((*server.Player)(unsafe.Pointer(uintptr(uint32(pl)))), byte(mask))
 }

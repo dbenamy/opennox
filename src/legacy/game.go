@@ -96,7 +96,6 @@ func init() {
 	})
 }
 
-//export nox_xxx_gameGetPlayState_4356B0
 func nox_xxx_gameGetPlayState_4356B0() int {
 	return GameGetPlayState()
 }
@@ -268,7 +267,6 @@ func sub_4537F0() {
 	GetServer().S().Sub4537F0()
 }
 
-//export sub_41CC00
 func sub_41CC00(cstr *C.char) {
 	Sub_41CC00(GoString(cstr))
 }

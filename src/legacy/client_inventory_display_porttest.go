@@ -38,7 +38,7 @@ func PortTestInventoryDisplay(op int, a, b, c uintptr) uint64 {
 	case 5:
 		return uint64(uiInventoryScaledDurability(uiInventoryDrawable(uint32(a)), (*float32)(unsafe.Pointer(b)), (*float32)(unsafe.Pointer(c))))
 	case 6:
-		return uint64(uint32(C.sub_463420(C.int(a))))
+		return uint64(uint32(sub_463420(C.int(a))))
 	case 7:
 		C.nox_client_makePlayerStatsDlg_463880((*C.int)(unsafe.Pointer(a)))
 		return 0
@@ -57,7 +57,7 @@ func PortTestInventoryDisplay(op int, a, b, c uintptr) uint64 {
 	case 14:
 		return uint64(uint32(C.nox_xxx_inventoryNameSignInit_4671E0()))
 	case 15:
-		return uint64(uint32(C.sub_467750(C.int(a), C.char(b))))
+		return uint64(uint32(sub_467750(C.int(a), C.char(b))))
 	default:
 		panic("inventory display operation")
 	}

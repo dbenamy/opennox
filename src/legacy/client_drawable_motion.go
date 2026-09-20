@@ -27,13 +27,11 @@ func nox_drawable_next_45A070(dr *nox_drawable) *nox_drawable {
 	return (*nox_drawable)(asDrawable(dr).NextPtr.C())
 }
 
-//export nox_xxx_spriteSetActiveMB_45A990_drawable
 func nox_xxx_spriteSetActiveMB_45A990_drawable(p C.int) C.int {
 	(*client.Drawable)(unsafe.Pointer(uintptr(uint32(p)))).SetActive()
 	return p
 }
 
-//export nox_xxx_spriteSetFrameMB_45AB80
 func nox_xxx_spriteSetFrameMB_45AB80(p, value C.int) C.int {
 	(*client.Drawable)(unsafe.Pointer(uintptr(uint32(p)))).SetFrameMB(int(value))
 	return p

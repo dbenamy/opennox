@@ -74,7 +74,6 @@ func sub_43DE40(fnc unsafe.Pointer) int {
 	return 1
 }
 
-//export nox_game_exit_xxx2
 func nox_game_exit_xxx2() {
 	Nox_game_exit_xxx2()
 }

@@ -40,7 +40,7 @@ func damageBall(source, u *server.Object, amount int32) {
 		objectiveRememberOwner(it, u)
 		ind := *(*byte)(unsafe.Add(source.CObj(), 52))
 		if it.TeamVal.Has() {
-			t := C.nox_xxx_getTeamByID_418AB0(C.int(ind))
+			t := nox_xxx_getTeamByID_418AB0(int(ind))
 			if t != nil {
 				teamRuntimeSwitch(it.TeamPtr(), asTeamP(unsafe.Pointer(t)), int(it.NetCode), 0)
 			}

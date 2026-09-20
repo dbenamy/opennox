@@ -26,9 +26,7 @@ static int nox_xxx_netSendLineMessage_go(nox_object_t* a1, wchar2_t* str) {
 	return nox_xxx_netSendLineMessage_4D9EB0(a1, str);
 }
 
-nox_drawable* nox_xxx_netSpriteByCodeDynamic_45A6F0(int a1);
 
-int nox_xxx_netOnPacketRecvCli_48EA70_switch(int a1, int op, unsigned char* data, int sz);
 */
 import "C"
 import (
@@ -242,7 +240,7 @@ func Nox_xxx_netOnPacketRecvCli_48EA70_switch(a1 ntype.PlayerInd, a2 netmsg.Op, 
 	if n, handled := clientGameEffects(int(a1), a2, data); handled {
 		return n
 	}
-	return int(C.nox_xxx_netOnPacketRecvCli_48EA70_switch(C.int(a1), C.int(a2), (*C.uchar)(unsafe.Pointer(&data[0])), C.int(len(data))))
+	return clientGameSession(int(a1), a2, data)
 }
 func Sub_4DDE10(a1 int, a2 *server.Player) {
 	matchRosterInventory(a1, a2)

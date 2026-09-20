@@ -73,7 +73,7 @@ func PortTestClientDrawParticle(op int, vp *noxrender.Viewport, dr *client.Drawa
 	case 15:
 		return int64(C.sub_484CE0(li, C.float(math.Float32frombits(uint32(a[0])))))
 	case 16:
-		return int64(C.nox_xxx_spriteChangeIntensity_484D70_light_intensity(li, C.float(math.Float32frombits(uint32(a[0])))))
+		return int64(nox_xxx_spriteChangeIntensity_484D70_light_intensity(li, C.float(math.Float32frombits(uint32(a[0])))))
 	case 17:
 		return int64(initParticlePalettes())
 	case 18:

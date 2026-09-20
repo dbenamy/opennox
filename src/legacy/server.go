@@ -154,7 +154,6 @@ func gameFPS() uint32 {
 	return GetServer().S().TickRate()
 }
 
-//export gameFrame
 func gameFrame() uint32 {
 	return GetServer().S().Frame()
 }

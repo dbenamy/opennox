@@ -94,7 +94,6 @@ func sub_467680() {
 //export nox_xxx_wndGetHandle_4676A0
 func nox_xxx_wndGetHandle_4676A0() *C.nox_window { return C.dword_5d4594_1062452 }
 
-//export sub_467740
 func sub_467740(v int) int { C.dword_5d4594_1062488 = C.uint32_t(v); return v }
 
 //export sub_4678C0

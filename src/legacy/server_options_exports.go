@@ -26,7 +26,6 @@ func sub_459AA0(data unsafe.Pointer) *C.char {
 	return (*C.char)(unsafe.Pointer(serverOptionsRead(serverOptionsRecord(data))))
 }
 
-//export sub_459C30
 func sub_459C30() C.int { return C.int(serverOptionsRefresh()) }
 
 //export sub_459D50
@@ -35,7 +34,6 @@ func sub_459D50(value C.int) C.int { return C.int(serverOptionsDirty(int(value))
 //export sub_459D80
 func sub_459D80(value C.int) C.int { return C.int(serverOptionsVisible(int(value))) }
 
-//export sub_459DA0
 func sub_459DA0() C.int { return C.int(bool2int(serverOptionsRoot != 0)) }
 
 // Tooltip callbacks are stored by the GUI through its existing C function-pointer ABI.

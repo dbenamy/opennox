@@ -81,7 +81,7 @@ func uiInventoryStatusTooltip(pos image.Point) int {
 		}
 		if index < 0 {
 			spell := C.nox_xxx_getEnchantSpell_424920(C.int(i))
-			uiCursorTooltip((*uint16)(unsafe.Pointer(C.nox_xxx_spellTitle_424930(spell))))
+			uiCursorTooltip((*uint16)(unsafe.Pointer(nox_xxx_spellTitle_424930(int(spell)))))
 			return 1
 		}
 	}

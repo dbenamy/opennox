@@ -119,7 +119,6 @@ func nox_common_playerInfoCount_416F40() int {
 	return GetServer().S().Players.Count()
 }
 
-//export nox_common_playerInfoGetByID_417040
 func nox_common_playerInfoGetByID_417040(id int) *nox_playerInfo {
 	return (*nox_playerInfo)(GetServer().S().Players.ByID(id).C())
 }

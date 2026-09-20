@@ -27,8 +27,8 @@ func PortTestChatBubbleCreate(data unsafe.Pointer, text *uint16) {
 func PortTestChatBubbleLookup(code uint32) unsafe.Pointer {
 	return unsafe.Pointer(chatBubbleLookup(code))
 }
-func PortTestChatBubbleRemove(code uint32) { C.sub_48E8E0(C.int(code)) }
-func PortTestChatBubbleClear()             { C.sub_48E940() }
+func PortTestChatBubbleRemove(code uint32) { sub_48E8E0(C.int(code)) }
+func PortTestChatBubbleClear()             { sub_48E940() }
 func PortTestChatBubbleDestroy()           { chatBubbleDestroy() }
 
 func PortTestChatBubbleLayout(v *noxrender.Viewport) { chatBubbleLayout(v) }

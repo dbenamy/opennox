@@ -14,12 +14,10 @@ var (
 	Nox_xxx_moveUpdateSpecial_517970 func(obj *server.Object)
 )
 
-//export nox_xxx_setGameFlags_40A4D0
 func nox_xxx_setGameFlags_40A4D0(f C.uint) {
 	noxflags.SetGame(noxflags.GameFlag(f))
 }
 
-//export nox_common_gameFlags_unset_40A540
 func nox_common_gameFlags_unset_40A540(f C.uint) {
 	noxflags.UnsetGame(noxflags.GameFlag(f))
 }

@@ -24,7 +24,6 @@ func sub_499520(typ C.int, p *C.short, angle C.short, direction, period C.char) 
 	effectCreateOrbit(int(typ), (*[4]int16)(unsafe.Pointer(p)), int16(angle), byte(direction), byte(period))
 }
 
-//export nox_xxx_makePointFxCli_499610
 func nox_xxx_makePointFxCli_499610(typ, count, speed, ttl, x, y C.int) C.int {
 	return C.int(effectCreatePointSparks(int(typ), int(count), int(speed), int(ttl), int(x), int(y)))
 }
@@ -48,7 +47,6 @@ func nox_xxx_draw_499E70(kind, x, y, width, height, axis, direction C.int) C.int
 	return C.int(effectScreenParticles(int(kind), int(x), int(y), int(width), int(height), int(axis), int(direction)))
 }
 
-//export sub_49A150
 func sub_49A150(pos *C.int2, typ C.int, amount C.uchar) C.int {
 	return C.int(effectSparkBurst(AsPoint(unsafe.Pointer(pos)), int(typ), byte(amount)))
 }

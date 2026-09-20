@@ -5,7 +5,6 @@ package legacy
 extern int nox_drawable_count;
 int sub_4523D0(void* a1);
 void sub_45A9B0(nox_drawable* a1, nox_drawable* a2);
-int nox_xxx_unitSpriteCheckAlly_4951F0(int a1);
 void nox_xxx_draw_44C650_free_kind(void* lpMem, int kind);
 static int go_nox_drawable_call_draw_func(nox_draw_viewport_t* vp, nox_drawable* dr) {
 	return dr->draw_func(vp, dr);
@@ -55,47 +54,38 @@ func nox_drawable_find_49ABF0(pt *C.nox_point, r int) *nox_drawable {
 	return (*nox_drawable)(GetClient().Nox_drawable_find(image.Point{X: int(pt.x), Y: int(pt.y)}, r).C())
 }
 
-//export nox_xxx_spriteLoadAdd_45A360_drawable
 func nox_xxx_spriteLoadAdd_45A360_drawable(id, x, y int) *nox_drawable {
 	return (*nox_drawable)(GetClient().Nox_xxx_spriteLoadAdd_45A360_drawable(id, image.Pt(x, y)).C())
 }
 
-//export nox_xxx_sprite_45A110_drawable
 func nox_xxx_sprite_45A110_drawable(dr *nox_drawable) {
 	GetClient().Cli().Objs.List34Add(asDrawable(dr))
 }
 
-//export nox_xxx_netSpriteByCodeStatic_45A720
 func nox_xxx_netSpriteByCodeStatic_45A720(id int) *nox_drawable {
 	return (*nox_drawable)(GetClient().Cli().Objs.ByNetCodeStatic(id).C())
 }
 
-//export nox_xxx_netSpriteByCodeDynamic_45A6F0
 func nox_xxx_netSpriteByCodeDynamic_45A6F0(id int) *nox_drawable {
 	return (*nox_drawable)(GetClient().Cli().Objs.ByNetCodeDynamic(id).C())
 }
 
-//export nox_xxx_cliRemoveHealthbar_459E30
 func nox_xxx_cliRemoveHealthbar_459E30(dr *nox_drawable, v uint8) {
 	GetClient().Cli().Objs.RemoveHealthBar(asDrawable(dr), v)
 }
 
-//export sub_45A670
 func sub_45A670(a1 uint32) {
 	GetClient().Sub_45A670(a1)
 }
 
-//export nox_xxx_spriteTransparentDecay_49B950
 func nox_xxx_spriteTransparentDecay_49B950(dr *nox_drawable, a2 int) {
 	GetClient().Cli().Objs.TransparentDecay(asDrawable(dr), a2)
 }
 
-//export sub_459DD0
 func sub_459DD0(dr *nox_drawable, a2 uint8) {
 	GetClient().Cli().Objs.MinimapAdd(asDrawable(dr), a2)
 }
 
-//export nox_xxx_spriteToList_49BC80_drawable
 func nox_xxx_spriteToList_49BC80_drawable(dr *nox_drawable) {
 	GetClient().Cli().Objs.List5Add(asDrawable(dr))
 }
@@ -176,7 +166,6 @@ func nox_xxx_updateSpritePosition_49AA90(dr *nox_drawable, x, y int) {
 	GetClient().Cli().Nox_xxx_updateSpritePosition_49AA90(asDrawable(dr), x, y)
 }
 
-//export nox_xxx_spriteCreate_48E970
 func nox_xxx_spriteCreate_48E970(typeID int, code uint16, x, y int) *nox_drawable {
 	return (*nox_drawable)(GetClient().Nox_xxx_spriteCreate_48E970(typeID, code, x, y).C())
 }

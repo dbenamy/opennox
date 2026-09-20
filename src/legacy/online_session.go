@@ -76,5 +76,4 @@ func onlineSessionListCleanup() uint32 {
 	return onlineSessionStatus
 }
 
-//export sub_41D1A0
 func sub_41D1A0(v C.int) C.int { return C.int(onlineSessionBriefing(uint32(v))) }

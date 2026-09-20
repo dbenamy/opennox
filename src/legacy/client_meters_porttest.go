@@ -21,7 +21,7 @@ func PortTestMeterCall(op int, w *gui.Window, a, b, c, d int) uint32 {
 	case 0:
 		return uiMeterMode()
 	case 1:
-		C.nox_xxx_cliShowHideTubes_470AA0(C.int(a))
+		nox_xxx_cliShowHideTubes_470AA0(int(a))
 		return 0
 	case 2:
 		return uint32(uintptr(uiMeterInitColors()))
@@ -76,7 +76,7 @@ func PortTestMeterCall(op int, w *gui.Window, a, b, c, d int) uint32 {
 	case 26:
 		return uint32(C.sub_4721A0(C.int(a)))
 	case 27:
-		return uint32(C.nox_xxx_cliPrepareGameplay2_4721D0())
+		return uint32(nox_xxx_cliPrepareGameplay2_4721D0())
 	case 28:
 		uiMeterQuickPotion(0)
 		return 0

@@ -4,7 +4,6 @@ package legacy
 #include <stdint.h>
 #include "defs.h"
 int sub_4133D0(nox_object_t* a1);
-void nox_xxx_clientPlaySoundSpecial_452D80(int a1, int a2);
 */
 import "C"
 import (

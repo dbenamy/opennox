@@ -8,8 +8,6 @@ package legacy
 #include "GAME1_3.h"
 #include "GAME2.h"
 #include "client__audio__audevent.h"
-int sub_43DA80();
-void sub_43DAD0();
 int sub_43DB20();
 int sub_43DB30(int a1);
 char* sub_43DB40(int a1);
@@ -19,9 +17,6 @@ uint32_t* nox_xxx_draw_452300(uint32_t* a1);
 int sub_4523D0(void* a1p);
 int sub_4526D0(int a1);
 int sub_4526F0(int a1);
-void nox_xxx_clientPlaySoundSpecial_452D80(int a1, int a2);
-void sub_452DC0(int a1, int a2, int a3);
-void sub_452E10(int a1, int a2, int a3);
 int sub_452E90(uint32_t* a1, int a2);
 int sub_452EB0(int* a1);
 int sub_452EE0(int a1, int a2);
@@ -41,8 +36,6 @@ extern uint32_t dword_5d4594_816372;
 extern uint32_t dword_5d4594_816376;
 extern uint32_t dword_5d4594_831092;
 static uint64_t nox_porttest_audio_event_call(int op,uint64_t a0,uint64_t a1,uint64_t a2,uint64_t a3){switch(op){
-case 0: return (uint64_t)(int64_t)sub_43DA80();
-case 1: sub_43DAD0(); return 0;
 case 2: return (uint64_t)(int64_t)sub_43DB20();
 case 3: return (uint64_t)(int64_t)sub_43DB30((int)a0);
 case 4: return (uint64_t)(uintptr_t)sub_43DB40((int)a0);
@@ -52,9 +45,6 @@ case 34: return (uint64_t)(uintptr_t)nox_xxx_draw_452300((uint32_t*)a0);
 case 35: return (uint64_t)(int64_t)sub_4523D0((void*)a0);
 case 40: return (uint64_t)(int64_t)sub_4526D0((int)a0);
 case 41: return (uint64_t)(int64_t)sub_4526F0((int)a0);
-case 43: nox_xxx_clientPlaySoundSpecial_452D80((int)a0,(int)a1); return 0;
-case 44: sub_452DC0((int)a0,(int)a1,(int)a2); return 0;
-case 45: sub_452E10((int)a0,(int)a1,(int)a2); return 0;
 case 46: return (uint64_t)(int64_t)sub_452E90((uint32_t*)a0,(int)a1);
 case 47: return (uint64_t)(int64_t)sub_452EB0((int*)a0);
 case 48: return (uint64_t)(int64_t)sub_452EE0((int)a0,(int)a1);
@@ -172,6 +162,20 @@ func PortTestAudioEventCall(name string, args ...uint64) uint64 {
 	var a [4]uint64
 	copy(a[:], args)
 	switch name {
+	case "sub_43DA80":
+		return uint64(int64(int32(audioEventMusicSave())))
+	case "sub_43DAD0":
+		audioEventMusicRestore()
+		return 0
+	case "nox_xxx_clientPlaySoundSpecial_452D80":
+		audioEventPlay(int32(a[0]), int32(a[1]), 0, 0)
+		return 0
+	case "sub_452DC0":
+		audioEventPlay(int32(a[0]), int32(a[1]), int32(a[2]), 1)
+		return 0
+	case "sub_452E10":
+		audioEventPlay(int32(a[0]), int32(a[1]), int32(a[2]), 2)
+		return 0
 	case "sub_43DB60":
 		return uint64(int64(int32(audioEventMusicEnter())))
 	case "sub_43DBA0":

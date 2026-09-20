@@ -129,7 +129,6 @@ func sub_49B490() C.int { return C.int(interactionGameOverDestroy()) }
 
 func sub_49B6B0() C.int { return C.int(interactionGameOverHide()) }
 
-//export sub_49B4B0
 func sub_49B4B0(data *C.ushort) C.int {
 	return C.int(interactionGameOverShow((*uint16)(unsafe.Pointer(data))))
 }

@@ -68,7 +68,7 @@ func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related
 	case 11:
 		return uint32(C.nox_xxx_netSendPacket1_4E5390(a, b, n, obj, C.int(priority)))
 	case 12:
-		return uint32(C.nox_xxx_netClientSend2_4E53C0(a, p, n, obj, C.int(priority)))
+		return uint32(nox_xxx_netClientSend2_4E53C0(a, p, n, obj, C.int(priority)))
 	case 13:
 		return uint32(nox_xxx_netSendPacket0_4E5420(a, p, n, obj, C.int(priority)))
 	case 14:
@@ -76,7 +76,7 @@ func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related
 	case 15:
 		reliableAcknowledge(arg, (*reliableMessage)(unsafe.Pointer(uintptr(node))), to)
 	case 16:
-		return uint32(C.nox_net_importantACK_4E55A0(a, C.int(arg)))
+		return uint32(nox_net_importantACK_4E55A0(a, C.int(arg)))
 	case 17:
 		return uint32(C.sub_4E55F0(C.uchar(to)))
 	case 18:

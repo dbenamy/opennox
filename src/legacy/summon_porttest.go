@@ -134,7 +134,7 @@ func PortTestSummonWords() (map[string]*uint32, func()) {
 }
 func PortTestSummonCallbacks() map[string]unsafe.Pointer {
 	return map[string]unsafe.Pointer{
-		"sub_4C1CA0":                            C.sub_4C1CA0,
+		"sub_4C1CA0":                            nil,
 		"nox_xxx_guiDrawSummonBox_4C1FE0":       nil,
 		"nox_xxx_wndSummonGet_4C2410":           nil,
 		"nox_xxx_guiDrawSummon_4C2440":          nil,

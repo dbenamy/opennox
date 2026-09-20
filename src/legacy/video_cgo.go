@@ -104,7 +104,6 @@ func nox_xxx_cursorSetDraggedItem_477690(a1 *nox_drawable) {
 //export nox_xxx_cursorResetDraggedItem_4776A0
 func nox_xxx_cursorResetDraggedItem_4776A0() { Nox_xxx_cursorResetDraggedItem_4776A0() }
 
-//export sub_478000
 func sub_478000() int { return Sub_478000() }
 func Sub_4AEE30() {
 	C.sub_4AEE30()

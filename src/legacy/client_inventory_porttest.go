@@ -62,11 +62,11 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 	case 20:
 		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_wndGetHandle_4676A0())))
 	case 21:
-		return uint32(C.sub_4676D0(C.int(a)))
+		return uint32(sub_4676D0(int(a)))
 	case 22:
 		return uint32(C.sub_467700(C.int(a)))
 	case 23:
-		return uint32(C.sub_467740(C.int(a)))
+		return uint32(sub_467740(int(a)))
 	case 24:
 		return uint32(C.sub_467810(C.int(a), C.int(b)))
 	case 25:

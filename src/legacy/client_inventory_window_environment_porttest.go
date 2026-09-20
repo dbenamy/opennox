@@ -148,7 +148,7 @@ func PortTestInventoryWindowCallbacks() []unsafe.Pointer {
 		nil,
 		nil,
 		C.sub_465CD0,
-		C.sub_465DE0,
+		nil,
 		nil,
 		nil,
 		nil,

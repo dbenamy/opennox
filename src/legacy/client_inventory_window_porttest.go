@@ -48,7 +48,7 @@ func PortTestInventoryWindow(op int, a, b, c, d uintptr) uint32 {
 		C.sub_465CD0((*C.uint32_t)(unsafe.Pointer(a)), C.int(b), C.int(c), C.int(d))
 		return 0
 	case 14:
-		return uint32(C.sub_465DE0(C.int(a)))
+		return uint32(sub_465DE0(C.int(a)))
 	case 15:
 		return uint32(uiInventoryCreateWindow())
 	case 16:

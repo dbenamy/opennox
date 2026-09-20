@@ -99,7 +99,6 @@ func sub_484CE0(p C.int, value C.float) C.int {
 	return C.int(particleLightIntensity(unsafe.Pointer(uintptr(uint32(p))), float32(value), false))
 }
 
-//export nox_xxx_spriteChangeIntensity_484D70_light_intensity
 func nox_xxx_spriteChangeIntensity_484D70_light_intensity(p C.int, value C.float) C.int {
 	return C.int(particleLightIntensity(unsafe.Pointer(uintptr(uint32(p))), float32(value), true))
 }

@@ -73,7 +73,6 @@ func sub_4FBEA0(a1 unsafe.Pointer, abil, cd int) {
 	GetServer().S().Abils.SetCooldown(a1, server.Ability(abil), cd)
 }
 
-//export nox_xxx_abilityGetName_0_425260
 func nox_xxx_abilityGetName_0_425260(ca int) *wchar2_t {
 	return internWStr(Nox_xxx_abilityGetName_0_425260(ca))
 }

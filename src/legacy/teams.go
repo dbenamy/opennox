@@ -37,7 +37,6 @@ func nox_server_teamByXxx_418AE0(a1 int) *nox_team_t {
 	return (*nox_team_t)(GetServer().S().Teams.ByXxx(a1).C())
 }
 
-//export nox_xxx_getTeamByID_418AB0
 func nox_xxx_getTeamByID_418AB0(a1 int) *nox_team_t {
 	return (*nox_team_t)(GetServer().S().Teams.ByID(server.TeamID(a1)).C())
 }
@@ -52,12 +51,10 @@ func nox_server_teamNext_418B60(t *nox_team_t) *nox_team_t {
 	return (*nox_team_t)(GetServer().S().Teams.Next(asTeam(t)).C())
 }
 
-//export nox_server_teamTitle_418C20
 func nox_server_teamTitle_418C20(a1 int) *wchar2_t {
 	return internWStr(GetServer().S().Teams.TeamTitle(server.TeamColor(a1)))
 }
 
-//export nox_xxx_teamCreate_4186D0
 func nox_xxx_teamCreate_4186D0(a1 C.char) *nox_team_t {
 	return (*nox_team_t)(GetServer().S().Teams.Create(server.TeamID(a1)).C())
 }
@@ -73,17 +70,14 @@ func nox_xxx_getTeamCounter_417DD0() C.uchar {
 	return C.uchar(GetServer().S().Teams.Count())
 }
 
-//export nox_server_teamsResetYyy_417D00
 func nox_server_teamsResetYyy_417D00() int {
 	return GetServer().TeamsResetYyy()
 }
 
-//export nox_server_teamsZzz_419030
 func nox_server_teamsZzz_419030(a1 int) int {
 	return GetServer().TeamsRemoveActive(a1 != 0)
 }
 
-//export sub_418F20
 func sub_418F20(t *nox_team_t, a2 int) {
 	GetServer().TeamRemove(asTeam(t), a2 != 0)
 }
