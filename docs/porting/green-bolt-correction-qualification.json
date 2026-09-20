@@ -1,0 +1,394 @@
+{
+  "status": "qualified green-bolt correction; remaining progress/effects conversion baseline still in development",
+  "parent": "c3659afbc3d7bb71aa387dd87c38fa101a8885b8",
+  "correction": "Message152 now checks allocation and addresses effect data at byte432 instead of drawable432. This intentionally replaces undefined out-of-object writes.",
+  "production_c": {
+    "lines": 7901,
+    "files": 37,
+    "test_reference_lines": 0,
+    "change": 4
+  },
+  "targets": {
+    "default": {
+      "path": "build/port-game-messages/green-fix-default",
+      "roots": 282,
+      "no_skips": true,
+      "source_unchanged": true,
+      "wall_seconds": 93.72797413403168,
+      "source_manifest_sha256": "b299df036240f650efbddb14c3524fc5c4e8528a938597624dc9088f5f8bb86d"
+    },
+    "server": {
+      "path": "build/port-game-messages/green-fix-server",
+      "roots": 279,
+      "no_skips": true,
+      "source_unchanged": true,
+      "wall_seconds": 203.47012182301842,
+      "source_manifest_sha256": "b299df036240f650efbddb14c3524fc5c4e8528a938597624dc9088f5f8bb86d"
+    },
+    "highres": {
+      "path": "build/port-game-messages/green-fix-highres",
+      "roots": 282,
+      "no_skips": true,
+      "source_unchanged": true,
+      "wall_seconds": 122.19889033492655,
+      "source_manifest_sha256": "b299df036240f650efbddb14c3524fc5c4e8528a938597624dc9088f5f8bb86d"
+    }
+  },
+  "captures": [
+    {
+      "file": "interaction-game-client-effect-creation.json",
+      "cases": 288,
+      "sha256": "b3c8e3b4417cf398ffeb33b636cb6fb711f6bf378ee91c4f1eed0f282a32d5a1"
+    },
+    {
+      "file": "interaction-game-client-enchantments.json",
+      "cases": 6528,
+      "sha256": "2ee0b33fe5e32a8c92687d748e1c7135adc8e05bd14d14c24f15656f5ea308df"
+    },
+    {
+      "file": "interaction-game-client-friends.json",
+      "cases": 104,
+      "sha256": "bc7bf35ae59a03ffa60ba09d2d1244b0059bf85bee554b7f4236742632fb72d3"
+    },
+    {
+      "file": "interaction-game-client-health-changes.json",
+      "cases": 200,
+      "sha256": "e4a8a4815f8e023c89a361271aafa1fea2a57a8776f35a985c6e9e380b3ebc44"
+    },
+    {
+      "file": "interaction-game-client-health-meters.json",
+      "cases": 6396,
+      "sha256": "b58a7b586d248be5cf651117f09fd1eafc2480947056b032419c8d1c18704013"
+    },
+    {
+      "file": "interaction-game-client-inventory-scalars.json",
+      "cases": 484,
+      "sha256": "3a0d15522657b3ea687f07c91cc6db0aa34f4cde3f4315f0a9c1fac65bb79344"
+    },
+    {
+      "file": "interaction-game-client-item-updates.json",
+      "cases": 1440,
+      "sha256": "415b99de1a66c809b18b5052280ef50852299d3a5d145630cc3740e4294dbbf4"
+    },
+    {
+      "file": "interaction-game-client-light-intensity.json",
+      "cases": 96,
+      "sha256": "2d96d4769dbeb80eba583df584011d89609341a521b1be317553172a4cc05f2d"
+    },
+    {
+      "file": "interaction-game-client-magic-walls.json",
+      "cases": 480,
+      "sha256": "cb2a35d1554a65375ffa9a23f3f61b019b9410ee3334a5069955d53f03f21514"
+    },
+    {
+      "file": "interaction-game-client-npc-appearance.json",
+      "cases": 9216,
+      "sha256": "e098533e75567579e072f3cae860c3aab27ca490b0c3ef441e258567e842bb0f"
+    },
+    {
+      "file": "interaction-game-client-npc-equipment.json",
+      "cases": 480,
+      "sha256": "c6e4be9ee750ea913ddf232494f1e6c24c6498f2d6307c07ef7ff4e5fcce2a04"
+    },
+    {
+      "file": "interaction-game-client-object-camera.json",
+      "cases": 192,
+      "sha256": "01f99d23f0ba88a2ca32d34758d3cb1356e476c1e2a763c6e5c923a6b9958872"
+    },
+    {
+      "file": "interaction-game-client-object-creation.json",
+      "cases": 96,
+      "sha256": "3612813f684153f0bf9cd1529ba13f18396face79bb9cadf7177d4ed45a704d0"
+    },
+    {
+      "file": "interaction-game-client-object-fields.json",
+      "cases": 16544,
+      "sha256": "aa8208f5ad7d6f3544a20f7e66b2edf1c4aca5bcc730ab3a12cac0fd0d4f91ca"
+    },
+    {
+      "file": "interaction-game-client-object-lifetime.json",
+      "cases": 576,
+      "sha256": "b663112d245ba55189840a8500a6bd0db85e610f89dec46f61f07d26a55f8c3f"
+    },
+    {
+      "file": "interaction-game-client-objects.json",
+      "cases": 6144,
+      "sha256": "205e0ba58c2589d9f352fd80934260436fe953adb98ab7e9e7232cb4be1aeca6"
+    },
+    {
+      "file": "interaction-game-client-player-equipment.json",
+      "cases": 320,
+      "sha256": "daa13e35d14478968ba0fa786a3602f072498a4407af43d8ee5983283b1b6965"
+    },
+    {
+      "file": "interaction-game-client-player-flags.json",
+      "cases": 36,
+      "sha256": "1df1be8a2a646e113912e80657cf165ba48b8431fb0e7a222de92be5ce7108ad"
+    },
+    {
+      "file": "interaction-game-client-player-unequip.json",
+      "cases": 320,
+      "sha256": "a8a480f1ae637f43c20c108a8e8ac4bac9b8d5414ccff06711e0442bf29ac20b"
+    },
+    {
+      "file": "interaction-game-client-secret-walls.json",
+      "cases": 192,
+      "sha256": "8b0a14ad28f2c30ad4b228c1ad745c465e96af7ce4f8d0dc672ac6983c63f6a2"
+    },
+    {
+      "file": "interaction-game-notice-awards.json",
+      "cases": 42,
+      "sha256": "f06c320e539db39d410eed453e30ff51493228f4774609607c3086bd0cb9a718"
+    },
+    {
+      "file": "interaction-game-notice-death-feed.json",
+      "cases": 27,
+      "sha256": "fea08824ac5e02cc22716d18ebf61660bba7dac92d74f87cbb950bca2211797f"
+    },
+    {
+      "file": "interaction-game-notice-spell-dialog.json",
+      "cases": 6,
+      "sha256": "0532c23b1468d507b9a0a45aed408289007da36afeb8a069bc83a8a1d20e0e2f"
+    },
+    {
+      "file": "interaction-game-notice-teams.json",
+      "cases": 96,
+      "sha256": "17960351d3433da6ee18761451662c30dba4d51ed84b217bf42ef84ecb0bcb50"
+    },
+    {
+      "file": "interaction-game-notice-text.json",
+      "cases": 287,
+      "sha256": "4d13c598690f13c5652c0171b4b96312a072448c8760feb6f6f9813c8014f441"
+    },
+    {
+      "file": "interaction-game-server-aliases.json",
+      "cases": 765,
+      "sha256": "43497117cd970ffe3b9c05942463a60f6af2be6096ea6b0f3532f75befd2b2dd"
+    },
+    {
+      "file": "interaction-game-server-drop-use.json",
+      "cases": 48,
+      "sha256": "60be3d81a4691490326593cbff2cc2fd5b77049ebe7070ca31a2c53b2fa16ec0"
+    },
+    {
+      "file": "interaction-game-server-equipment.json",
+      "cases": 96,
+      "sha256": "853e8f26df19fb8d80f2a4430f65b65012b9a49c084ee2c8e904f5b36ec228ab"
+    },
+    {
+      "file": "interaction-game-server-missing-targets.json",
+      "cases": 84,
+      "sha256": "1ff307812220cc72c87776a1f94b0817b86b060d2de1de04e1b66bf56af7e37b"
+    },
+    {
+      "file": "interaction-game-server-pickup.json",
+      "cases": 144,
+      "sha256": "4adf1974394325e1ba3c435a802d099edb8ff75da5dcc44abe806ee55d5b3603"
+    },
+    {
+      "file": "interaction-game-server-unknown.json",
+      "cases": 987,
+      "sha256": "f9a58f004a2c2317e6f08508f058c3bb3faa47022ca6fdbf421e4d2a940ffdb3"
+    },
+    {
+      "file": "interaction-game-server-waypoints.json",
+      "cases": 180,
+      "sha256": "8d83113ed0985a1c0c78576e1db44e0888a0997248ab10ce0fd131297df63af5"
+    },
+    {
+      "file": "interaction-game-progress-stats.json",
+      "cases": 768,
+      "sha256": "d2a30d710a41b17794ef7709cc7739f82181e2a8c226dae0d842d6deece21609"
+    },
+    {
+      "file": "interaction-game-progress-lessons.json",
+      "cases": 3456,
+      "sha256": "8b7a11c36470fa91db908d1c17b721a88c69a23160bbd709da68b2dc99a6faa6"
+    },
+    {
+      "file": "interaction-game-progress-experience.json",
+      "cases": 12,
+      "sha256": "aaa23af6e23b4c04151a50fc83d8d97ea6056d84539782341114234181b8e313"
+    },
+    {
+      "file": "interaction-game-progress-treasure.json",
+      "cases": 3584,
+      "sha256": "451cfbd465ccf8482c20ea2540b0b8473a60d73bf7cfb8b90bd94d45289b8369"
+    },
+    {
+      "file": "interaction-game-progress-extended-status.json",
+      "cases": 1536,
+      "sha256": "e27bdc33fbb5d5823a326fa07989cabb779b8d9a22f05487a57f979a34288ea9"
+    },
+    {
+      "file": "interaction-game-progress-inventory-notifications.json",
+      "cases": 432,
+      "sha256": "56e31836fc096f728ca409568296a2d9583a30d45e656dede35d55b55e4663d8"
+    },
+    {
+      "file": "interaction-game-progress-modifier-report.json",
+      "cases": 4096,
+      "sha256": "cad5d6e1f5cb5f583aafb18b27185c3400e4f0e1017ee9ed10d165c3ca5a2428"
+    },
+    {
+      "file": "interaction-game-progress-pickup.json",
+      "cases": 576,
+      "sha256": "366e6c7c28485bf766e3dde630f24cc3f700d92835374160202f84b4311a4ca8"
+    },
+    {
+      "file": "interaction-game-progress-arrow-trap.json",
+      "cases": 288,
+      "sha256": "5503aae53429db3c9b56f6e05e298e757560900edef5a24bd36b604753f43c6d"
+    },
+    {
+      "file": "interaction-game-progress-delta-z.json",
+      "cases": 6144,
+      "sha256": "fa5c42de729c190fd148336d162ab30452fff8b44e88064805261efbc66c7746"
+    },
+    {
+      "file": "interaction-game-progress-green-bolt.json",
+      "cases": 432,
+      "sha256": "28119e9d97db4c39d9ac401698b6ecf4fe9c72da01bab9946ddc283454712fbc"
+    },
+    {
+      "file": "interaction-game-progress-point-sparks.json",
+      "cases": 288,
+      "sha256": "d3ff41edc9a18e711c5c9bcc6d061a68cc1504d77bde53f416507f5a5f26cd2a"
+    },
+    {
+      "file": "interaction-game-progress-ray-effects.json",
+      "cases": 378,
+      "sha256": "9edc2dd931fe60d0cfff10e10cf8e080ad4f483b0e1ce1edd9abcb73cb73f6d4"
+    },
+    {
+      "file": "interaction-game-progress-smoke.json",
+      "cases": 384,
+      "sha256": "3d1c9fe761eb1d92292a2504b7c6c61e66f0ee36663994422334e2d6b3e218fc"
+    },
+    {
+      "file": "interaction-game-progress-white-flash.json",
+      "cases": 8,
+      "sha256": "9e77a17c250deacad5aff88b8a214646bb5afa8013a9eb7636a4fd9b0b9c0002"
+    }
+  ],
+  "additional_native_boundary_cases": 10,
+  "new_progress_effect_cases": 22382,
+  "source_sha256": {
+    "src/game_messages_client_effect_fields_porttest_test.go": "9e15437b563fb5aebf2559505df276aaf75d51bd5421cd6ede2e30b0125224de",
+    "src/game_messages_client_point_sparks_porttest_test.go": "77a32752c1df9d83f363d83b677832e903bf7eb964dd2eac0eb6d3a5e7f95543",
+    "src/game_messages_client_ray_effects_porttest_test.go": "1cbced32cfb021f20d1e81f3c63dd29fc3e5a07b3b22899f48906707344ce5fc",
+    "src/game_messages_client_simple_effects_porttest_test.go": "45d25e20d2be7c8219fcd04bd6bc46f45c1a1646500927548b2e37cbd954acb6",
+    "src/game_messages_client_smoke_porttest_test.go": "d744865bf64a771398f624715a62f0778d8823d5984660ab665928cf076292d4",
+    "src/legacy/client__network__cdecode.c": "5974c5f09a04424752606f61ef19b920a0dcb05513949578df61a604ec355489"
+  },
+  "production_path": "build/port-game-messages/green-fix-production",
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 72.07902955496684,
+        "sha256": "ad7d44a1702936faa23b9bc99fff316ff0a893cfd2089173704aa05c5a2bdae3",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.575612772023305,
+        "sha256": "86800833297c675305b66844aca0c1ed47999a8f87eb6929aa4668ef29785355",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 74.68565500504337,
+        "sha256": "87ec8a6b5b45fe549ac7417a39004b00777f6ec385c4090811753778ff5d31a1",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "green-bolt-correction": {
+        "exit": 0,
+        "wall_seconds": 72.89173966809176,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 72.31071002897806,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+          "binary_sha256": "ad7d44a1702936faa23b9bc99fff316ff0a893cfd2089173704aa05c5a2bdae3",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-game-messages/green-fix-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/green-bolt-correction/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Correct green-bolt drawable effect offset and handle allocation failure; additional client progress/effects baseline fixtures",
+          "isolated_network": false,
+          "removed_maps": 0
+        }
+      },
+      "green-bolt-correction-save": {
+        "exit": 0,
+        "wall_seconds": 46.48587424401194,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 46.00219280901365,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "ad7d44a1702936faa23b9bc99fff316ff0a893cfd2089173704aa05c5a2bdae3",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-game-messages/green-fix-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/green-bolt-correction-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Correct green-bolt drawable effect offset and handle allocation failure; additional client progress/effects baseline fixtures",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "4672e11ea1b61d0d40a76c5895a823da711eff96b24821f1e9c82fab271af8d4"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 57.90450144209899,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "remaining": "Continue remaining progress/effects fixtures before translating the selected 1240 C body lines. This checkpoint qualifies the corrective change, not complete coverage of that next port."
+}

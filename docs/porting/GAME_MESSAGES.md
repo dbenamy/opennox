@@ -541,3 +541,52 @@ one-line union ran all eleven intended roots. These are fixture/tooling fixes,
 with no production changes. All jobs joined. See
 client-progress-inventory-c-checkpoint.json. C remains **7,897 /37 files**.
 Continue remaining selected coverage without pausing at this checkpoint.
+
+## Green-bolt correction during effects baseline development
+
+The new message-152 contract found a typed-pointer arithmetic bug: the C expression
+adds 432 to a `nox_drawable*` returned by spriteLoadAdd, advancing 432*512 bytes.
+Its intended 13-byte effect record at byte offset 432 remained untouched. Original
+probe output and source are retained under progress-effects-third/fourth and Git.
+The handler now checks allocation success and advances 432 bytes. Failure consumes
+11 bytes without writing an effect. This is a deliberate correction of undefined
+writes under the standing reversible-decision policy, recorded in DECISIONS.md.
+No old frozen golden was changed. Current C is 7,901 lines (+4); fresh production
+qualification is required before freezing this corrected baseline.
+
+Continued owner audit also selected the named map-frame gate
+`dword_5d4594_1200804`: its last C reads are the four winner messages, while
+network_client.go reads/writes it for map-use/endgame handling. Move that owner
+with the winner messages, preserving those Go callers. This raises the selected
+named-owner count to three; it does not add C function bodies.
+
+## Qualified green-bolt correction and effects checkpoint
+
+All jobs are joined. Default/server/highres pass **282/279/282 roots**, no skips,
+47 exact message captures /75,276 cases, with identical final source fingerprints.
+The seven new effect roots add7,922 cases: smoke384, delta-Z6,144, white flash8,
+arrow trap288, green bolt432, point sparks288 and ray effects378. Added to the
+preceding14,460 progress/inventory cases, the next scope has22,382 captured cases
+so far. The previous32 frozen expectations remain unchanged. See
+[green-bolt-correction-qualification.json](green-bolt-correction-qualification.json).
+
+Fresh three-target production binaries and ABI checks pass. The full asset suite
+matches exactly1,553 known failures (15 pass /3 fail /32 skip packages). Headless
+character creation/gameplay and save/load pass against the drawable references,
+including continuation after reload. This qualifies the small C correction and
+its tests; it does not claim complete baseline coverage or translation of the
+remaining progress/effects scope. C is **7,901 lines /37 files /zero reference C**.
+
+Fixture development found and corrected a canary placed in drawable list-link
+word107; effect checks now start at byte432 and retain trailing canaries and whole
+record comparisons. Named BlueSpark/VioletSpark backing-blob checks use the existing
+explicit owner, satisfying static-memory checks. No production expectation was
+weakened. Point-spark/ray dispatch comparisons reuse already-qualified particle
+helpers and additionally check message fields, allocation schedules and ownership.
+
+Storage: a sixth verified cache cleanup removed32 superseded porttest archives /
+2,219,981,278 bytes. Final default/server/highres capture deduplication preserved
+all paths and bytes while sharing617,563,932 /616,816,664 /617,563,932 bytes.
+All those plans are consumed. Original assets/archive and all qualification
+binaries, captures, saves and screenshots remain. Continue the remaining scope;
+particle-bursts-draft.go is an uninstalled draft for messages150/163.

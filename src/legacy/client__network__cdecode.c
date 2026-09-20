@@ -1353,13 +1353,17 @@ int nox_xxx_netOnPacketRecvCli_48EA70_switch(int a1, int op, unsigned char* data
 			*getMemU32Ptr(0x5D4594, 1200844) = nox_xxx_getTTByNameSpriteMB_44CFC0("GreenZap");
 		}
 		if (nox_client_isConnected_43C700()) {
-			LODWORD(v5) = nox_xxx_spriteLoadAdd_45A360_drawable(
+			LODWORD(v5) = (uintptr_t)nox_xxx_spriteLoadAdd_45A360_drawable(
 							  *getMemIntPtr(0x5D4594, 1200844),
 							  *(unsigned short*)(data + 1) +
 								  (*(unsigned short*)(data + 5) - *(unsigned short*)(data + 1)) / 2,
 							  *(unsigned short*)(data + 3) +
-								  (*(unsigned short*)(data + 7) - *(unsigned short*)(data + 3)) / 2) +
-						  432;
+								  (*(unsigned short*)(data + 7) - *(unsigned short*)(data + 3)) / 2);
+			if (!(uint32_t)v5) {
+				return 11;
+			}
+			// Effect data is 432 bytes into the drawable, not 432 drawables.
+			LODWORD(v5) += 432;
 			*(uint8_t*)v5 = 0;
 			*(uint32_t*)(v5 + 5) = *(uint32_t*)(data + 1);
 			HIDWORD(v5) = *(uint32_t*)(data + 5);

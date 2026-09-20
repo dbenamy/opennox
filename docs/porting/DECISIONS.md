@@ -8,6 +8,23 @@ for later review. Continue without asking for confirmation. Record behavior
 changes explicitly, with evidence and validation; do not label them exact
 compatibility. Ask when confidence is insufficient or reversal would be costly.
 
+## Green-bolt effect record — correction qualified
+
+Original client message 152 adds 432 to a `nox_drawable*`. Since that type is
+512 bytes (asserted in defs.h), this advances 221,184 bytes, not the intended
+432-byte effect-data offset. Independent message contracts found the allocated
+record untouched. The production handler now checks allocation success and adds
+432 bytes before writing the existing 13-byte packed record. Allocation failure
+returns the normal consumed length, 11, without effect writes.
+
+This is an explicit bug fix, not exact preservation of undefined out-of-object
+writes. Chosen under the standing reversible-decision policy. Preserve unsigned
+coordinate midpoint truncation, cache initialization before the connection gate,
+input bytes and packed field ordering. Fresh three-target and production qualification pass, including ABI, the exact
+known full-suite results, and headless gameplay/save-load. See the tracked
+[qualification](green-bolt-correction-qualification.json).
+Status and validation: [GAME_MESSAGES.md](GAME_MESSAGES.md), PORTING_STATE.md.
+
 ## Locked-door message padding — approved, review with Go conversion
 
 Initialize unused bytes in the fixed 52-byte notification. The client interprets

@@ -2,10 +2,10 @@
   "status": "selected connected candidate; helper/owner audit and C baseline coverage in progress",
   "production_parent": "f9268ef1",
   "file": "src/legacy/client__network__cdecode.c",
-  "file_sha256": "e7b9992dd4efc9dd17b4b5738e30a7127d89a57e95645451c8779295dd64b61e",
+  "file_sha256": "5974c5f09a04424752606f61ef19b920a0dcb05513949578df61a604ec355489",
   "client_cases": 55,
   "whole_groups": 41,
-  "case_lines": 1056,
+  "case_lines": 1060,
   "groups": [
     {
       "opcodes": [
@@ -768,7 +768,7 @@
         "case 0x98u: // MSG_FX_GREEN_BOLT"
       ],
       "start_line": 1351,
-      "lines": 20,
+      "lines": 24,
       "gotos": [],
       "calls": [
         "HIDWORD",
@@ -780,7 +780,8 @@
         "nox_xxx_getTTByNameSpriteMB_44CFC0",
         "nox_xxx_spriteLoadAdd_45A360_drawable"
       ],
-      "sha256": "1712a24c8dc5986bf7fe8d748dd7914ed51fbc031279262da944e090bc807f83"
+      "sha256": "d749ace2306e4bfc58be404e401ee5ef0311465bd850d6a68f399584b5621f4d",
+      "original_sha256": "1712a24c8dc5986bf7fe8d748dd7914ed51fbc031279262da944e090bc807f83"
     },
     {
       "opcodes": [
@@ -789,7 +790,7 @@
       "labels": [
         "case 0x9Au: // MSG_FX_WHITE_FLASH"
       ],
-      "start_line": 1371,
+      "start_line": 1375,
       "lines": 5,
       "gotos": [],
       "calls": [
@@ -810,7 +811,7 @@
         "case 0x9Cu: // MSG_FX_ASSEMBLING_MAP",
         "case 0x9Du: // MSG_FX_POPULATING_MAP"
       ],
-      "start_line": 1376,
+      "start_line": 1380,
       "lines": 7,
       "gotos": [],
       "calls": [
@@ -827,7 +828,7 @@
       "labels": [
         "case 0x9Eu: // MSG_FX_DURATION_SPELL"
       ],
-      "start_line": 1383,
+      "start_line": 1387,
       "lines": 29,
       "gotos": [],
       "calls": [
@@ -847,7 +848,7 @@
       "labels": [
         "case 0x9Fu: // MSG_FX_DELTAZ_SPELL_START"
       ],
-      "start_line": 1412,
+      "start_line": 1416,
       "lines": 21,
       "gotos": [],
       "calls": [
@@ -870,7 +871,7 @@
       "labels": [
         "case 0xA0u: // MSG_FX_TURN_UNDEAD"
       ],
-      "start_line": 1433,
+      "start_line": 1437,
       "lines": 6,
       "gotos": [],
       "calls": [
@@ -887,7 +888,7 @@
       "labels": [
         "case 0xA1u: // MSG_FX_ARROW_TRAP"
       ],
-      "start_line": 1439,
+      "start_line": 1443,
       "lines": 24,
       "gotos": [],
       "calls": [
@@ -909,7 +910,7 @@
       "labels": [
         "case 0xA2u: // MSG_FX_VAMPIRISM"
       ],
-      "start_line": 1463,
+      "start_line": 1467,
       "lines": 28,
       "gotos": [],
       "calls": [
@@ -932,7 +933,7 @@
       "labels": [
         "case 0xA4u: // MSG_UPDATE_STREAM"
       ],
-      "start_line": 1491,
+      "start_line": 1495,
       "lines": 20,
       "gotos": [],
       "calls": [
@@ -1006,16 +1007,29 @@
   "helper_body_lines": 180,
   "c_loc": {
     "files": 37,
-    "lines": 7897,
+    "lines": 7901,
     "reference_lines": 0
   },
-  "selected_body_lines": 1236,
+  "selected_body_lines": 1240,
   "owners_to_move": [
     "dword_5d4594_1200776 (BlueSpark)",
-    "dword_5d4594_1200796 (VioletSpark)"
+    "dword_5d4594_1200796 (VioletSpark)",
+    "dword_5d4594_1200804 (map-frame gate shared with Go map-use/endgame callers)"
   ],
   "existing_non_dispatch_callers": [
     "src/legacy/map_population_finish.go: map-generation progress drawing",
-    "src/legacy/video_client.go: compass image initialization"
-  ]
+    "src/legacy/video_client.go: compass image initialization",
+    "src/network_client.go: map-use and endgame reads/resets of the map-frame gate"
+  ],
+  "original_file_sha256": "e7b9992dd4efc9dd17b4b5738e30a7127d89a57e95645451c8779295dd64b61e",
+  "baseline_correction": {
+    "message": 152,
+    "reason": "Correct typed pointer +432 (432 drawables) to byte offset432, with allocation failure guard. Original writes were outside the allocated drawable.",
+    "qualification": "Qualified separately: green-bolt-correction-qualification.json; remaining full-scope baseline coverage is still in development."
+  },
+  "original_c_loc": {
+    "files": 37,
+    "lines": 7897,
+    "reference_lines": 0
+  }
 }
