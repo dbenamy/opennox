@@ -693,3 +693,15 @@ baseline. Interface retirement also required a fixture-only normalization fix:
 nil callback addresses receive no ID, while reserved slots preserve dynamic IDs.
 Frozen expectations were not regenerated. A separate replay-buffer copy defect
 was identified and queued for its own regression/fix after this conversion.
+
+
+### Replay adapter correction
+
+After server-action qualification, a focused regression showed that the replay
+adapter allocated zero-filled storage without copying the recorded message. It
+now clones the input onto the C heap. Empty input bypasses allocation and reaches
+the existing empty-message handler; previously it panicked on zero allocation.
+Two regressions pass on all three profiles with real player owners, concatenated
+alias payloads, frame updates and unchanged input. See [focused results](replay-copy-qualification.json).
+C remains6,139 lines /35 files /zero reference C. This is a separate reversible
+correctness fix; full-suite/scenario evidence belongs to the preceding conversion.

@@ -1,0 +1,51 @@
+{
+  "status": "qualified focused replay message copy correction",
+  "parent_revision": "926313c3",
+  "before_fix": {
+    "artifact": "build/port-game-messages/replay-copy-before.log",
+    "result": "TestReplayMessageCopy fails: recorded 0x25 is dispatched as zero and rejected"
+  },
+  "corrections": [
+    "Copy replay bytes into the C-allocated buffer with alloc.CloneSlice.",
+    "Route empty messages directly to the existing empty-message handler; the C allocator rejects zero-length allocations."
+  ],
+  "tests": [
+    "TestReplayMessageCopy",
+    "TestReplayMessagePayloadCopy"
+  ],
+  "coverage": [
+    "Three actual player owners",
+    "Keep-alive and trailing bytes",
+    "Empty input and frame update",
+    "Two concatenated alias updates at first/last valid slots",
+    "All payload bytes, untouched neighboring slots and unchanged input"
+  ],
+  "targets": {
+    "default": {
+      "success": true,
+      "artifact": "build/port-game-messages/replay-copy-qualified-default.log",
+      "log_sha256": "6cd9159f0f2aa476460ed87190d1363fb9419d2ef35a3d6e83bad1060cac1d9c"
+    },
+    "server": {
+      "success": true,
+      "artifact": "build/port-game-messages/replay-copy-qualified-server.log",
+      "log_sha256": "3fc70df647cb460bcfcb0f000db2909c5dea019a3d99df370e4537e10ae7b8d7"
+    },
+    "highres": {
+      "success": true,
+      "artifact": "build/port-game-messages/replay-copy-qualified-highres.log",
+      "log_sha256": "5d64ad5fce0ddaf710e1c412879d996cd63d1602b4bddc43942bf807e4481f30"
+    }
+  },
+  "production_c": {
+    "files": 35,
+    "lines": 6139,
+    "change": 0,
+    "test_reference_lines": 0
+  },
+  "scope": "Focused correction to the replay-only adapter; all three profiles tested. The preceding conversion production/ABI and gameplay qualification remains recorded separately; no full-suite or scenario rerun is claimed.",
+  "source_sha256": {
+    "src/network_server.go": "73efe288d61b088411c9d72de555f3ea1511bcfb9420e24a309f7146ac3481a4",
+    "src/replay_message_copy_porttest_test.go": "a7d4df9f5d7be0695f9ca3d4fd86b8a57b0d2d9c525c7b283af42019e15964d6"
+  }
+}

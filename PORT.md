@@ -22,8 +22,9 @@ checks pass. See [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) and
 [the qualification](docs/porting/server-actions-native-qualification.json).
 
 C remaining is **6,139 physical lines in35 files**, zero reference C.
-This conversion removes **502 lines**. Next is a focused replay-buffer copy fix,
-then the remaining client settings/team/session messages.
+This conversion removes **502 lines**. A subsequent replay-buffer copy correction
+passes focused regressions on all three profiles. Next are the remaining client
+settings/team/session messages.
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in

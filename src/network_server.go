@@ -20,7 +20,10 @@ import (
 )
 
 func (s *Server) onPacket(ind ntype.PlayerInd, data []byte) bool {
-	cdata, cfree := alloc.Make([]byte{}, len(data))
+	if len(data) == 0 {
+		return s.onPacketRaw(ind, nil)
+	}
+	cdata, cfree := alloc.CloneSlice(data)
 	defer cfree()
 	return s.onPacketRaw(ind, cdata)
 }

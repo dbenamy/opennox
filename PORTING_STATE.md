@@ -21,8 +21,8 @@ binaries pass ABI checks. The full suite matches all1,553 known failure entries
 and15 pass /3 fail /32 skip packages. Headless gameplay and explicit save/load
 continuation pass reference comparisons. All qualification jobs are joined.
 See [the qualification](docs/porting/server-actions-native-qualification.json).
-Original-C baseline **3839c872** is committed and pushed; this native conversion
-is ready to commit and push. Prior qualified production is **f8607de2**.
+Original-C baseline **3839c872** and native conversion **926313c3** are committed
+and pushed. Prior qualified production is **f8607de2**.
 
 Decision for review: incomplete actions return-1 before fields/owners are read.
 The caller formerly checked consumed length only after dispatch. Contracts cover
@@ -35,14 +35,26 @@ slots when assigning dynamic capture IDs. Expected hashes are unchanged; failed
 probes remain recorded as failed. All ignored installers/retirement scripts are
 CONSUMED. Never replay them.
 
-## Next — replay copy correction, then remaining client messages
+## Current follow-up — replay copy correction qualified
 
-`Server.onPacket` allocates its replay buffer from an empty slice instead of the
-supplied bytes; its only caller is replay dispatch. Add a focused regression,
-confirm failure, and correct the copy in a separate commit. Ignored test draft:
-`build/port-game-messages/replay_message_copy_test.go.draft`; not installed yet.
-Then audit the remaining48 client message labels for a connected conversion batch.
-Continue without pausing; no user decision is pending.
+The replay-only `Server.onPacket` adapter now copies the supplied bytes into its
+C-allocated buffer and routes empty messages directly to the existing handler.
+The before-fix regression demonstrated that0x25 became zero and was rejected.
+Empty input also exposed the existing zero-allocation panic. Two regressions now
+pass on default/server/highres, covering three real player owners, keep-alives,
+empty messages, frame updates, two concatenated alias updates at slots0/254,
+neighbor preservation and unchanged input. A missing stream fixture owner was
+corrected before the final passing runs. All jobs are joined.
+See [focused qualification](docs/porting/replay-copy-qualification.json).
+C remains6,139 lines /35 files /zero reference C. This small follow-up does not
+claim another full-suite/scenario run; the preceding conversion evidence remains
+separate. Ready to commit and push.
+
+## Next — remaining client messages
+
+Audit the remaining48 client message labels for a connected conversion batch,
+reusing real client owners and frozen captures. Continue without pausing; no
+user decision is pending. The replay test draft is now consumed.
 
 ## Recovery and storage
 
