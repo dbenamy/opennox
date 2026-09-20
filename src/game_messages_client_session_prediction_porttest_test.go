@@ -38,7 +38,7 @@ func TestGameMessageClientSessionPrediction(t *testing.T) {
 					for _, frame := range []uint32{0, 0xffffffff} {
 						for variant := 0; variant < 256; variant++ {
 							// Invalid types have no motion fields to decode. Keep representative bytes;
-							// the existing factory loses its allocation on type-lookup failure.
+							// the original factory lost its allocation on type-lookup failure.
 							if present == 0 && typ == 0 && variant != 0 && variant != 127 && variant != 255 {
 								continue
 							}

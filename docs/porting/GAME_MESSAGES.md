@@ -733,3 +733,14 @@ roots pass on all targets, with unchanged message and existing creation/motion
 captures. See [qualification](drawable-type-pool-qualification.json).
 C remains6,139 lines /35 files /zero reference C. This is a reversible correctness
 fix during baseline development; full client-dispatch qualification remains ahead.
+
+### Player updates and quickbar baseline
+
+The expanded original-C checkpoint covers38,204 cases in ten captures across16
+labels. Player/camera/creation adds3,312 cases; quickbar adds660. Two independent
+repeats pass ten roots without skips and match all frozen hashes. Player updates
+and spell timers are connection-independent; ability updates are gated. Camera
+throttling uses key8 and full local IDs. All prior captures remain unchanged.
+See [checkpoint](client-session-expanded-c-checkpoint.json). Production remains
+eb10a62b; C remains6,139 lines /35 files /zero reference C. Remaining client
+message coverage and full conversion qualification are still pending.

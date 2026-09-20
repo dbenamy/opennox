@@ -57,7 +57,7 @@ the dispatcher (1,497 total physical lines including the large old local-variabl
 block and includes). See client-session-messages-selection.json. Scope includes
 settings, teams, audio, UI state and session transitions. Two named settings
 owners have been identified; the complete caller/interface audit remains.
-Production is unchanged from7943a813. No native implementation is installed.
+Production is unchanged fromeb10a62b. No native implementation is installed.
 
 The first C baseline checkpoint covers **28,064 cases /five captures /ten labels**:
 drawables24,576, audio224, timer2,160, latency240 and music864. Probe6 and two
@@ -83,14 +83,23 @@ lookups consumed drawable slots. A separate regression failed after1,024 unknown
 lookups. The fix returns that slot to the pool before returning nil. All three
 profiles pass nine roots, no skips, with all six message captures unchanged plus
 the existing creation/motion captures. See [focused qualification](docs/porting/drawable-type-pool-qualification.json).
-The fix and prediction coverage are ready to commit and push. C remains6,139 lines
+The fix and prediction coverage are committed and pushed as eb10a62b. C remains6,139 lines
 /35 files /zero reference C. All jobs are joined. Full production qualification
 will run at the completed client-dispatch boundary; no scenario rerun is claimed
 for this focused correction.
 
-Next: player-object updates, camera/creation, then remaining settings/team/UI/
-session paths. Ignored player fixture drafts are prepared but NOT INSTALLED.
-No native client dispatcher is installed. Continue without pausing.
+Expanded C checkpoint: **38,204 cases /ten captures /16 labels**, adding
+3,972 player/camera/creation and quickbar cases. Probe10 and two independent
+repeats pass all ten roots without skips, identical source and capture hashes;
+all six earlier captures are unchanged. See
+[expanded checkpoint](docs/porting/client-session-expanded-c-checkpoint.json).
+Player updates check key8 camera throttling, full local IDs, connection-independent
+updates, static/dynamic lookup, animation-byte placement and creation failures.
+Quickbar checks ability state/flags/reset and full-width spell timer IDs, including
+connection gates, frame wrap and untouched records. Player drafts are CONSUMED.
+All jobs are joined. No native client dispatcher is installed.
+Next: reward/inventory messages, then remaining settings/team/UI/session paths.
+Continue without pausing. C remains6,139 lines /35 files /zero reference C.
 
 Thirteenth fixture-cache cleanup is CONSUMED:14 verified superseded root test
 archives /1,111,570,010 bytes removed. Current music-fixture archives and all
