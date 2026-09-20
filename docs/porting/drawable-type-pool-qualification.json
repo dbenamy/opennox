@@ -1,0 +1,44 @@
+{
+  "status": "qualified focused drawable type-lookup allocation fix",
+  "parent_revision": "3767cb9c",
+  "before_fix": "build/port-game-messages/drawable-type-pool-before.log",
+  "before_fix_result": "After1,024 unknown-type lookups, a valid drawable allocation fails.",
+  "correction": "Return the allocated slot to its pool when DrawableLinkThing fails, before returning nil.",
+  "targets": {
+    "default": {
+      "artifact_directory": "build/port-game-messages/drawable-type-pool-default",
+      "roots": 9,
+      "no_skips": true,
+      "source_unchanged": true
+    },
+    "server": {
+      "artifact_directory": "build/port-game-messages/drawable-type-pool-server",
+      "roots": 9,
+      "no_skips": true,
+      "source_unchanged": true
+    },
+    "highres": {
+      "artifact_directory": "build/port-game-messages/drawable-type-pool-highres",
+      "roots": 9,
+      "no_skips": true,
+      "source_unchanged": true
+    }
+  },
+  "production_c": {
+    "lines": 6139,
+    "files": 35,
+    "change": 0,
+    "test_reference_lines": 0
+  },
+  "scope": "Focused three-profile correction; previous production/ABI and gameplay results remain separate. Full production qualification will run at the completed client-dispatch boundary.",
+  "source_manifest_sha256": "3c83051fd2a06f387fbf50ff9bfff34c34a66d2604d098c488dd583f1ff0c33b",
+  "additional_original_c_capture": {
+    "file": "interaction-game-client-session-prediction.json",
+    "cases": 6168,
+    "sha256": "fb15459b03bc0a08d46bc570210fe39033fd0ec2d4a9a0e50f1e9674b9bb9b3b",
+    "original_capture": "build/port-game-messages/client-session-c-probe-8/interaction-game-client-session-prediction.json",
+    "coverage": "Connection and creation gates, full byte domains of signed velocity/drag, marked IDs, word-only token writes, update-list membership and execution of the actual installed motion callback."
+  },
+  "frozen_client_session_captures": 6,
+  "captured_client_session_cases": 34232
+}

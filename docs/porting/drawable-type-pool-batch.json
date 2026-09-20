@@ -1,0 +1,202 @@
+{
+  "batch": "drawable-type-pool-fix",
+  "env": {
+    "GOMAXPROCS": "2",
+    "GOMEMLIMIT": "768MiB",
+    "OPENNOX_CLIENT_INTERACTION_CAPTURE": "{out}/interaction"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/drawable-type-pool-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-game-client-session-audio.json",
+            "sha256": "ed87a210c0abea0a2976d97bbd75d0b9aca7745b7502b7e2e0b69c1c75321db3"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-drawables.json",
+            "sha256": "433b84fd0952596c154a780fe64a8491df2788496658ba9506fe878a0ff49163"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-latency.json",
+            "sha256": "3a44bd50c7c01909a28640d2b25890d3d3fec2a1122e2379061a0111a809cbde"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-music.json",
+            "sha256": "33fda0a552615b10bf0c520272f9a93731abed6126363deb68132a70d3a5ba06"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-timer.json",
+            "sha256": "f91e7e35e303e99b0fe173692299b6d026094b1d1b271531ad33c8d26bf6c1f7"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-prediction.json",
+            "sha256": "fb15459b03bc0a08d46bc570210fe39033fd0ec2d4a9a0e50f1e9674b9bb9b3b"
+          }
+        ]
+      }
+    ],
+    "server": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest,server",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/drawable-type-pool-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-game-client-session-audio.json",
+            "sha256": "ed87a210c0abea0a2976d97bbd75d0b9aca7745b7502b7e2e0b69c1c75321db3"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-drawables.json",
+            "sha256": "433b84fd0952596c154a780fe64a8491df2788496658ba9506fe878a0ff49163"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-latency.json",
+            "sha256": "3a44bd50c7c01909a28640d2b25890d3d3fec2a1122e2379061a0111a809cbde"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-music.json",
+            "sha256": "33fda0a552615b10bf0c520272f9a93731abed6126363deb68132a70d3a5ba06"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-timer.json",
+            "sha256": "f91e7e35e303e99b0fe173692299b6d026094b1d1b271531ad33c8d26bf6c1f7"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-prediction.json",
+            "sha256": "fb15459b03bc0a08d46bc570210fe39033fd0ec2d4a9a0e50f1e9674b9bb9b3b"
+          }
+        ]
+      }
+    ],
+    "highres": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest,highres",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/drawable-type-pool-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-game-client-session-audio.json",
+            "sha256": "ed87a210c0abea0a2976d97bbd75d0b9aca7745b7502b7e2e0b69c1c75321db3"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-drawables.json",
+            "sha256": "433b84fd0952596c154a780fe64a8491df2788496658ba9506fe878a0ff49163"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-latency.json",
+            "sha256": "3a44bd50c7c01909a28640d2b25890d3d3fec2a1122e2379061a0111a809cbde"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-music.json",
+            "sha256": "33fda0a552615b10bf0c520272f9a93731abed6126363deb68132a70d3a5ba06"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-timer.json",
+            "sha256": "f91e7e35e303e99b0fe173692299b6d026094b1d1b271531ad33c8d26bf6c1f7"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-prediction.json",
+            "sha256": "fb15459b03bc0a08d46bc570210fe39033fd0ec2d4a9a0e50f1e9674b9bb9b3b"
+          }
+        ]
+      }
+    ]
+  }
+}

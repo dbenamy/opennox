@@ -74,8 +74,27 @@ Latency uses all16 ID bits without a connection gate. Music checks queue capacit
 restore semantics, level isolation and volume clamping. Failed fixture probes are
 retained as failed; no frozen expectation or production source changed.
 
-All baseline test jobs are joined. Continue remaining coverage before converting
-this dispatcher. No user decision is pending.
+First C checkpoint **3767cb9c** is committed and pushed. Prediction adds6,168
+cases with actual motion callback execution; probe8 passes and all five frozen
+captures remain unchanged. There are now34,232 cases in six captures.
+
+Prediction fixture repetition exposed an existing Go factory leak: failed type
+lookups consumed drawable slots. A separate regression failed after1,024 unknown
+lookups. The fix returns that slot to the pool before returning nil. All three
+profiles pass nine roots, no skips, with all six message captures unchanged plus
+the existing creation/motion captures. See [focused qualification](docs/porting/drawable-type-pool-qualification.json).
+The fix and prediction coverage are ready to commit and push. C remains6,139 lines
+/35 files /zero reference C. All jobs are joined. Full production qualification
+will run at the completed client-dispatch boundary; no scenario rerun is claimed
+for this focused correction.
+
+Next: player-object updates, camera/creation, then remaining settings/team/UI/
+session paths. Ignored player fixture drafts are prepared but NOT INSTALLED.
+No native client dispatcher is installed. Continue without pausing.
+
+Thirteenth fixture-cache cleanup is CONSUMED:14 verified superseded root test
+archives /1,111,570,010 bytes removed. Current music-fixture archives and all
+legacy/production archives were preserved; cleanup job6383 is joined.
 
 ## Recovery and storage
 

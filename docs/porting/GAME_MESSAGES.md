@@ -719,3 +719,17 @@ and [checkpoint](client-session-first-c-checkpoint.json).
 Production remains7943a813; C remains6,139 lines /35 files /zero reference C.
 Settings, team, UI and session-transition coverage remain before native conversion.
 Continue from this recovery checkpoint without pausing.
+
+
+### Prediction coverage and drawable allocation correction
+
+Prediction adds6,168 C cases, including signed velocity/drag byte domains,
+marked-ID handling, word-only token writes and execution of the actual installed
+motion callback. All six session captures /34,232 cases match across three profiles.
+Repeated missing-type tests exposed a pre-existing Go factory leak: an allocated
+slot was lost when type lookup failed. A regression reproduces exhaustion after
+1,024 failed lookups; the slot is now returned before the nil result. Nine focused
+roots pass on all targets, with unchanged message and existing creation/motion
+captures. See [qualification](drawable-type-pool-qualification.json).
+C remains6,139 lines /35 files /zero reference C. This is a reversible correctness
+fix during baseline development; full client-dispatch qualification remains ahead.

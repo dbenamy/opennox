@@ -48,6 +48,7 @@ func (c *Client) Nox_new_drawable_for_thing(typeID int) *client.Drawable {
 		return nil
 	}
 	if c.DrawableLinkThing(dr, typeID) == 0 {
+		c.Objs.Alloc.FreeObjectFirst(dr)
 		return nil
 	}
 	draw := dr.DrawFuncPtr
