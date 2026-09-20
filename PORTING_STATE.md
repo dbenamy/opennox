@@ -39,19 +39,24 @@ map-frame gate1200804 (preserve its Go map-use/endgame callers). The compass-ima
 initializer and map-progress renderer move together with their existing Go callers.
 
 Remaining new coverage: winner messages86–89, client-status UI106, creatures108/109,
-spell award111, summon/shield126–128, spark explosion147, sentry149, ricochet150,
-map progress155–157, duration effects158, turn undead160, vampirism162, mana-bomb
-cancel163 and update stream164. The corrected baseline is not yet complete or frozen
-for that full scope. Existing32 frozen game-message captures remain unchanged.
+spell award111, sentry149, map progress155–157 . The corrected baseline is
+not yet complete or frozen for that full scope. Existing32 frozen game-message
+captures remain unchanged.
 
 New ricochet/mana-bomb fixtures pass540 cases, update streams360,
 summon creation/cancellation720, and shields288: **1,908 new cases**, bringing
 this next scope to **24,290 cases**. Three repeats each pass eleven effect roots
 /9,830 cases with identical hashes and source, no skips. All jobs are joined,
 including45806. See [the partial checkpoint](docs/porting/client-effects-second-c-checkpoint.json).
-Production is unchanged from qualified f37ec35a; the whole selected baseline is
-still incomplete. Next: review/install **duration-message-draft.go** (unconsumed)
-for158, then continue remaining selected families. No question is pending.
+Fixture checkpoint **3bfc175e** is committed and pushed. Production is unchanged
+from qualified f37ec35a. Duration effects pass2,048 cases, spark explosion672,
+turn undead216 and vampirism1,512: **4,448 additional cases**, next-scope total
+**28,738 cases**. Three separate repeats pass all15 selected effect roots with
+identical captures (14,278 rows), source unchanged, no skips. Probes57949,91472,
+5354 and repeat19358 are joined PASS; static checks pass. See
+[the third fixture checkpoint](docs/porting/client-effects-third-c-checkpoint.json).
+The full selected baseline remains incomplete. Sentry fixture draft is prepared
+under build but not installed. No question is pending.
 Other installer/draft scripts, including particle-bursts-draft.go,
 shield-message-draft.go and record-green-fix.py, are CONSUMED; do not replay them.
 

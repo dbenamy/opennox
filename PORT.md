@@ -21,8 +21,9 @@ roots, all 32 frozen captures and ten new boundary cases. Fresh production/ABI,
 exact full-suite comparison and headless gameplay/save-load checks pass. See
 [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md).
 
-C remaining is **7,897 physical lines in 37 files**, zero reference C.
-This conversion removes **923 lines**. Remaining client/server dispatch stays in
+C remaining is **7,901 physical lines in 37 files**, zero reference C.
+This conversion removes **923 lines**; the subsequently qualified green-bolt
+correction adds four lines. Remaining client/server dispatch stays in
 the production C fallback for subsequent connected batches. The next candidate
 covers client progress, equipment/winner reports and effects; its helper and owner
 audit is in progress. See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
