@@ -39,7 +39,7 @@ map-frame gate1200804 (preserve its Go map-use/endgame callers). The compass-ima
 initializer and map-progress renderer move together with their existing Go callers.
 
 Remaining new coverage: winner messages86–89, client-status UI106, creatures108/109,
-spell award111, sentry149, map progress155–157 . The corrected baseline is
+spell award111, sentry149, map progress155–157. The corrected baseline is
 not yet complete or frozen for that full scope. Existing32 frozen game-message
 captures remain unchanged.
 
@@ -55,15 +55,27 @@ turn undead216 and vampirism1,512: **4,448 additional cases**, next-scope total
 identical captures (14,278 rows), source unchanged, no skips. Probes57949,91472,
 5354 and repeat19358 are joined PASS; static checks pass. See
 [the third fixture checkpoint](docs/porting/client-effects-third-c-checkpoint.json).
-The full selected baseline remains incomplete. Sentry fixture draft is prepared
-under build but not installed. No question is pending.
+Fixture checkpoint **3cc4b1e2** is committed and pushed. The full selected baseline
+remains incomplete. Sentry1,296, spell awards60, client status6,144, creatures144
+and map progress1,536 add **9,180 cases**: next-scope total **37,918 cases**.
+Three repeats each pass21 roots /24,994 captured rows with identical hashes,
+no skips and unchanged source; repeat13389 and map-progress14675 are joined PASS.
+The original extended-status fixture is unchanged and included in the final sweep.
+Fixture corrections and evidence:
+[the fourth checkpoint](docs/porting/client-progress-fourth-c-checkpoint.json).
+Remaining baseline: winner messages86–89 and score-adjustment helpers. An individual
+winner draft is prepared under build but NOT installed. No source jobs active.
+Installed sentry/client-status/map-progress drafts are CONSUMED.
+No question is pending.
 Other installer/draft scripts, including particle-bursts-draft.go,
 shield-message-draft.go and record-green-fix.py, are CONSUMED; do not replay them.
 
 ## Recovery and storage
 
 Ignored install/retirement/fixture scripts are CONSUMED; never replay over reviewed
-source. All six cache cleanup plans are consumed; the sixth reclaimed 2,219,981,278 bytes
+source. All seven cache cleanup plans are consumed; the seventh reclaimed 2,179,969,050 bytes
+from30 superseded porttest archives (cutoff3cc4b1e2; audit78044/apply7540 joined).
+Earlier plans remain consumed; the sixth reclaimed 2,219,981,278 bytes
 from 32 verified superseded porttest archives (cutoff f9268ef1). Completed capture deduplication
 plans original-state, first-native-state, final-native-state and green-fix
 default/server/highres preserve all paths

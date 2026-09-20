@@ -1,0 +1,219 @@
+{
+  "status": "partial original-C progress/effects checkpoint; winner messages and score helpers remain before whole-scope baseline",
+  "production_revision": "f37ec35a",
+  "production_c_lines": 7901,
+  "new_cases": 9180,
+  "scope_cases_so_far": 37918,
+  "captures": [
+    {
+      "file": "interaction-game-progress-arrow-trap.json",
+      "cases": 288,
+      "sha256": "5503aae53429db3c9b56f6e05e298e757560900edef5a24bd36b604753f43c6d"
+    },
+    {
+      "file": "interaction-game-progress-client-status.json",
+      "cases": 6144,
+      "sha256": "414ae3bb5b6cb549e9e71271bfa82c45fe367e1f36e34a3f236606b418872638"
+    },
+    {
+      "file": "interaction-game-progress-creatures.json",
+      "cases": 144,
+      "sha256": "0144b13c7f6ca53c2c707e667d8a79e65b9145dd39102b276eda7a22ca8ff914"
+    },
+    {
+      "file": "interaction-game-progress-delta-z.json",
+      "cases": 6144,
+      "sha256": "fa5c42de729c190fd148336d162ab30452fff8b44e88064805261efbc66c7746"
+    },
+    {
+      "file": "interaction-game-progress-duration-effects.json",
+      "cases": 2048,
+      "sha256": "735df8111278d389b326e79428f2b4c86d989274cd5c37362c529b72314965be"
+    },
+    {
+      "file": "interaction-game-progress-extended-status.json",
+      "cases": 1536,
+      "sha256": "e27bdc33fbb5d5823a326fa07989cabb779b8d9a22f05487a57f979a34288ea9"
+    },
+    {
+      "file": "interaction-game-progress-green-bolt.json",
+      "cases": 432,
+      "sha256": "28119e9d97db4c39d9ac401698b6ecf4fe9c72da01bab9946ddc283454712fbc"
+    },
+    {
+      "file": "interaction-game-progress-map-progress.json",
+      "cases": 1536,
+      "sha256": "7547f8abe96159fbe4b1a3e646e7a80edf52f2e45ea36871116c9393025bf2bf"
+    },
+    {
+      "file": "interaction-game-progress-particle-bursts.json",
+      "cases": 540,
+      "sha256": "230d2d147f2712bc3445a2cd6fadd40304e5360169d94680dff88360ce8fa803"
+    },
+    {
+      "file": "interaction-game-progress-point-sparks.json",
+      "cases": 288,
+      "sha256": "d3ff41edc9a18e711c5c9bcc6d061a68cc1504d77bde53f416507f5a5f26cd2a"
+    },
+    {
+      "file": "interaction-game-progress-ray-effects.json",
+      "cases": 378,
+      "sha256": "9edc2dd931fe60d0cfff10e10cf8e080ad4f483b0e1ce1edd9abcb73cb73f6d4"
+    },
+    {
+      "file": "interaction-game-progress-sentry.json",
+      "cases": 1296,
+      "sha256": "e932179f46db473a50caff2f8705bfb183046460e399b49d311671de620830ca"
+    },
+    {
+      "file": "interaction-game-progress-shield-effects.json",
+      "cases": 288,
+      "sha256": "742dfb73013d359d343b231b38d53c3051f2e1fc68e5e9381df4d494c46d88ae"
+    },
+    {
+      "file": "interaction-game-progress-smoke.json",
+      "cases": 384,
+      "sha256": "3d1c9fe761eb1d92292a2504b7c6c61e66f0ee36663994422334e2d6b3e218fc"
+    },
+    {
+      "file": "interaction-game-progress-spark-explosion.json",
+      "cases": 672,
+      "sha256": "bf71e3a05b8e913aad846339a58b6efd364ee1a66e3b2f392a1d5276dc184be3"
+    },
+    {
+      "file": "interaction-game-progress-spell-award.json",
+      "cases": 60,
+      "sha256": "3f74492da5315a7f75ea7e2f4f646a419ec04b8da7ed13e7f31f006907c470dd"
+    },
+    {
+      "file": "interaction-game-progress-summon-effects.json",
+      "cases": 720,
+      "sha256": "0d7fe718c22e98f549bf3015d4cffec0f60e04bd3d0dca432dfce63651be8b7b"
+    },
+    {
+      "file": "interaction-game-progress-turn-undead.json",
+      "cases": 216,
+      "sha256": "52a08637693fffba34ebe21adb430299bc8c6b894313cebe38fd711b3adf81b3"
+    },
+    {
+      "file": "interaction-game-progress-update-stream.json",
+      "cases": 360,
+      "sha256": "4421fed6e4c9e9d818623e656ebb46879c34e0d24be056f22580754a746e89d6"
+    },
+    {
+      "file": "interaction-game-progress-vampirism.json",
+      "cases": 1512,
+      "sha256": "aa8df8496415f59abd1f6441aee71018fed0aae7597cc98bca5fe72da02a6ffb"
+    },
+    {
+      "file": "interaction-game-progress-white-flash.json",
+      "cases": 8,
+      "sha256": "9e77a17c250deacad5aff88b8a214646bb5afa8013a9eb7636a4fd9b0b9c0002"
+    }
+  ],
+  "runs": [
+    {
+      "path": "build/port-game-messages/effects-fourth-repeat-1",
+      "tests": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 21,
+        "selected_root_tests": 21,
+        "exit": 0,
+        "started_tests": 21,
+        "completed_tests": 21,
+        "started_root_tests": 21,
+        "completed_root_tests": 21,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 14.065125755034387
+      },
+      "source_unchanged": true
+    },
+    {
+      "path": "build/port-game-messages/effects-fourth-repeat-2",
+      "tests": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 21,
+        "selected_root_tests": 21,
+        "exit": 0,
+        "started_tests": 21,
+        "completed_tests": 21,
+        "started_root_tests": 21,
+        "completed_root_tests": 21,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 13.653807759983465
+      },
+      "source_unchanged": true
+    },
+    {
+      "path": "build/port-game-messages/effects-fourth-repeat-3",
+      "tests": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 21,
+        "selected_root_tests": 21,
+        "exit": 0,
+        "started_tests": 21,
+        "completed_tests": 21,
+        "started_root_tests": 21,
+        "completed_root_tests": 21,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 13.625152015825734
+      },
+      "source_unchanged": true
+    }
+  ],
+  "source_sha256": {
+    "src/game_messages_client_sentry_porttest_test.go": "0b08310242e16834c45280bba6eb45e794061519aca60826140090fb1c81eeed",
+    "src/game_messages_client_spell_award_porttest_test.go": "eeb36a10cb64c68d89ea5e8a899bf6b001acdebcbe67d32d1495e03d5415671e",
+    "src/game_messages_client_ui_status_porttest_test.go": "968b479fcf6a042e6e464535d08d312369e8be00b76caf3eb18470206a160652",
+    "src/game_messages_client_creatures_porttest_test.go": "362d4a2ef1faf27ccf89f0a34c86f44db2945a1f36b67a71a5ffed9b369052bb",
+    "src/game_messages_client_map_progress_porttest_test.go": "cdc2f5960041c3b133b1c51484cae326e6e8746a77632ea469cecb36c61b0591"
+  },
+  "fixture_corrections": [
+    "Creature fixture releases its ordinary world sprites separately from inventory-owned objects.",
+    "Map-progress strings use guigen.c-qualified IDs; real renderer exercises visible compass images, screen bounds and all32 frames.",
+    "Client UI status lives in a separate file; pre-existing extended-status fixture is restored byte-for-byte and included in the final repeat selection."
+  ],
+  "remaining": "Winner messages86\u201389 and two score-adjustment helpers; complete target baseline before translating."
+}
