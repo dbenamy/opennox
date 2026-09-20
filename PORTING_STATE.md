@@ -34,10 +34,16 @@ CONSUMED; ignored drafts are stale. Original assets, archive, qualified binaries
 captures/results and asset restore manifests remain. Completed shared captures
 are immutable; use fresh output directories. No user question is pending.
 
-Next: finish auditing the world grid/wall and numeric-owner batch. Grid lookup
-already has a qualified native implementation; most former C callers have moved.
-Read GRID_LOOKUP.md, FLOAT_INT.md and the ignored next-scope-notes.md before retiring
-staged C duplicates. No next-batch source changes yet.
+Next batch: the original-C world grid/wall baseline is qualified; production is
+unchanged. Seven focused roots have frozen, repeated captures. Default/server/
+highres pass 294/293/294 roots with no skips and 347 identical captures. The one
+server exclusion is explicitly `!server`. Static checks and production identity
+against `df2e1155` pass. All jobs are joined. See [WORLD_GRID.md](docs/porting/WORLD_GRID.md).
+Next: translate the selected owners/helpers and remove audited unused interfaces,
+then compare against this committed baseline. The ignored numeric draft is not
+installed; fixture drafts and applied cleanup scripts must not be replayed.
+Grid lookup already has a qualified native implementation. Read GRID_LOOKUP.md,
+FLOAT_INT.md and the ignored next-scope-notes.md before retiring staged duplicates.
 
 ## Previous — spell start Go conversion qualified
 

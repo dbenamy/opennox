@@ -1,0 +1,117 @@
+{
+  "status": "qualified original-C baseline",
+  "parent": "df2e1155",
+  "selection": {
+    "definitions": 24,
+    "body_lines": 364,
+    "unused_or_test_only": 4
+  },
+  "focused": {
+    "roots": 7,
+    "numeric_rows": 8352,
+    "secret_sequences": 360,
+    "trig_words": 12288,
+    "attachment_cases": 42,
+    "map_save_cases": 12,
+    "drawable_save_cases": 216,
+    "allocation_cases": 7,
+    "hashes": {
+      "world-attachments": "1a2bcd41ef8bf0a054af8affa09c50988c48c4b53cbdb02793742baf5fcd0fc8",
+      "world-grid-allocation": "1ee00c2f2c174e339681f954e1db52615f75ff9408df434e2787c6e11c952dd8",
+      "world-numeric": "3dca5eb8c03908873ee1400086c07f389559e3add4b6cb962b9742a7cd47b8ac",
+      "world-save-drawables": "4a642d41cd2980a6fa6a950b46817194425606f381cf4ee7dd36f718db5deb94",
+      "world-save": "5d3a18efb63c740b213dab4601409eb8800faa17fcf836199d498d1bb2652548",
+      "world-secrets": "b1ce975c8e3d95e3e6214cd784341e3c0acbf1f2f2c9c1814423df6f6e8e69b8",
+      "world-tables": "5fa9a38a75f46830c5615e3ccfbf30db32e451d5e536fa5789f560bf1dbb50c6"
+    }
+  },
+  "targets": {
+    "default": {
+      "roots": 294,
+      "captures": 347,
+      "skips": [],
+      "evidence": "build/port-world-grid/c-default"
+    },
+    "server": {
+      "roots": 293,
+      "captures": 347,
+      "skips": [],
+      "evidence": "build/port-world-grid/c-server"
+    },
+    "highres": {
+      "roots": 294,
+      "captures": 347,
+      "skips": [],
+      "evidence": "build/port-world-grid/c-highres"
+    }
+  },
+  "tag_difference": "TestFloorEligibility is explicitly !server; no runtime skips",
+  "driver_hash_timing": "Seven new captures enforced during sweeps; inherited tests enforce committed literals. Full equal cross-target inventory frozen afterward for native qualification.",
+  "production_identity": {
+    "parent": "df2e1155",
+    "test_only_changes": [
+      "src/common/memmap/nox/blobdata/world_grid_porttest.go",
+      "src/legacy/map_theme_allocator_porttest.go",
+      "src/legacy/world_grid_allocation_porttest.go",
+      "src/legacy/world_grid_attachment_porttest.go",
+      "src/legacy/world_grid_numeric_porttest.go",
+      "src/legacy/world_grid_secrets_porttest.go",
+      "src/legacy/world_grid_tables_porttest.go",
+      "src/world_grid_allocation_porttest_test.go",
+      "src/world_grid_attachment_porttest_test.go",
+      "src/world_grid_drawable_save_porttest_test.go",
+      "src/world_grid_numeric_porttest_test.go",
+      "src/world_grid_save_porttest_test.go",
+      "src/world_grid_secrets_porttest_test.go",
+      "src/world_grid_tables_porttest_test.go"
+    ],
+    "binaries": {
+      "opennox": {
+        "path": "build/port-client-drawable/native-production/production/bin/opennox",
+        "sha256": "ca2133b36ae265f1aad5788a0189a63980c610d3fb78e47f830a5ec783e961f5"
+      },
+      "opennox-hd": {
+        "path": "build/port-client-drawable/native-production/production/bin/opennox-hd",
+        "sha256": "79dd8aa6e3d6d117fea56b81e1d6393e4ec1754ac6ef56c51e530d76baeaec89"
+      },
+      "opennox-server": {
+        "path": "build/port-client-drawable/native-production/production/bin/opennox-server",
+        "sha256": "124a13f852c8c29cd600291a727658f8bd4dc64b6c9d55c78145b6497dd544d8"
+      }
+    },
+    "retained_raw_c": [
+      "nox_xxx_doorAttachWall_410360",
+      "sub_410390",
+      "sub_410550",
+      "sub_410730",
+      "nox_xxx_wallSecretBlock_410760",
+      "nox_xxx_wallSecretGetFirstWall_410780",
+      "nox_xxx_wallSecretNext_410790",
+      "sub_4107A0",
+      "nox_xxx_tileAlloc_410F60_init",
+      "nox_xxx_tileFree_410FC0_free",
+      "nox_xxx_tileNFromPoint_411160",
+      "nox_xxx_mapTileAllowTeleport_411A90",
+      "nox_xxx_initSinCosTables_414C90",
+      "sub_419A10",
+      "sub_419A30",
+      "nox_float2int16",
+      "nox_double2float",
+      "nox_xxx_wallGet_426A30",
+      "nox_xxx_mapGetWallSize_426A70",
+      "nox_xxx_mapWall_426A80",
+      "nox_xxx_mapCountWallsMB_51DEA0",
+      "sub_51DED0",
+      "nox_xxx_mapSaveMap_51E010",
+      "nox_xxx_map_51E140"
+    ],
+    "reused_production": "build/port-client-drawable/native-production/production/production.json"
+  },
+  "static": "build/port-world-grid/static-c.log",
+  "c_loc": {
+    "files": 39,
+    "lines": 9267,
+    "reference_lines": 0
+  },
+  "source_files": 2816
+}

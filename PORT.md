@@ -24,6 +24,10 @@ C remaining is **9,267 physical lines in 39 files**, zero reference C.
 This conversion removes 696 lines, including one unused C duplicate.
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
+The next [world grid/wall batch](docs/porting/WORLD_GRID.md) now has a qualified
+original-C baseline: 294/293/294 affected roots and 347 identical captures across
+default/server/highres. Production remains at the qualified drawable conversion.
+
 Previous completed GUI batches include
 [client interaction](docs/porting/CLIENT_INTERACTION.md), the
 [server browser](docs/porting/SERVER_BROWSER.md) and

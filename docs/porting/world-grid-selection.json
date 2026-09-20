@@ -1,0 +1,170 @@
+[
+  {
+    "symbol": "nox_xxx_doorAttachWall_410360",
+    "file": "src/legacy/GAME1.c",
+    "start": 1466,
+    "end": 1739,
+    "body_lines": 12
+  },
+  {
+    "symbol": "sub_410390",
+    "file": "src/legacy/GAME1.c",
+    "start": 1741,
+    "end": 2460,
+    "body_lines": 24
+  },
+  {
+    "symbol": "sub_410550",
+    "file": "src/legacy/GAME1.c",
+    "start": 2462,
+    "end": 2726,
+    "body_lines": 15
+  },
+  {
+    "symbol": "sub_410730",
+    "file": "src/legacy/GAME1.c",
+    "start": 2728,
+    "end": 3033,
+    "body_lines": 17
+  },
+  {
+    "symbol": "nox_xxx_wallSecretBlock_410760",
+    "file": "src/legacy/GAME1.c",
+    "start": 3035,
+    "end": 3205,
+    "body_lines": 8
+  },
+  {
+    "symbol": "nox_xxx_wallSecretGetFirstWall_410780",
+    "file": "src/legacy/GAME1.c",
+    "start": 3207,
+    "end": 3284,
+    "body_lines": 1
+  },
+  {
+    "symbol": "nox_xxx_wallSecretNext_410790",
+    "file": "src/legacy/GAME1.c",
+    "start": 3286,
+    "end": 3423,
+    "body_lines": 10
+  },
+  {
+    "symbol": "sub_4107A0",
+    "file": "src/legacy/GAME1.c",
+    "start": 3425,
+    "end": 3915,
+    "body_lines": 23
+  },
+  {
+    "symbol": "nox_xxx_tileAlloc_410F60_init",
+    "file": "src/legacy/GAME1.c",
+    "start": 3917,
+    "end": 4295,
+    "body_lines": 14
+  },
+  {
+    "symbol": "nox_xxx_tileFree_410FC0_free",
+    "file": "src/legacy/GAME1.c",
+    "start": 4297,
+    "end": 4475,
+    "body_lines": 8
+  },
+  {
+    "symbol": "nox_xxx_tileNFromPoint_411160",
+    "file": "src/legacy/GAME1.c",
+    "start": 4477,
+    "end": 5847,
+    "body_lines": 56
+  },
+  {
+    "symbol": "nox_xxx_mapTileAllowTeleport_411A90",
+    "file": "src/legacy/GAME1.c",
+    "start": 5849,
+    "end": 6811,
+    "body_lines": 22
+  },
+  {
+    "symbol": "nox_xxx_initSinCosTables_414C90",
+    "file": "src/legacy/GAME1.c",
+    "start": 10754,
+    "end": 11569,
+    "body_lines": 28
+  },
+  {
+    "symbol": "sub_419A10",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 1181,
+    "end": 1353,
+    "body_lines": 5
+  },
+  {
+    "symbol": "sub_419A30",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 1355,
+    "end": 1719,
+    "body_lines": 12
+  },
+  {
+    "symbol": "nox_float2int16",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 1770,
+    "end": 1821,
+    "body_lines": 1
+  },
+  {
+    "symbol": "nox_double2float",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 1823,
+    "end": 1878,
+    "body_lines": 1
+  },
+  {
+    "symbol": "nox_xxx_wallGet_426A30",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 3792,
+    "end": 3864,
+    "body_lines": 1
+  },
+  {
+    "symbol": "nox_xxx_mapGetWallSize_426A70",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 3866,
+    "end": 3949,
+    "body_lines": 1
+  },
+  {
+    "symbol": "nox_xxx_mapWall_426A80",
+    "file": "src/legacy/GAME1_1.c",
+    "start": 3951,
+    "end": 4075,
+    "body_lines": 4
+  },
+  {
+    "symbol": "nox_xxx_mapCountWallsMB_51DEA0",
+    "file": "src/legacy/GAME4_2.c",
+    "start": 2307,
+    "end": 2685,
+    "body_lines": 12
+  },
+  {
+    "symbol": "sub_51DED0",
+    "file": "src/legacy/GAME4_2.c",
+    "start": 2763,
+    "end": 3594,
+    "body_lines": 32
+  },
+  {
+    "symbol": "nox_xxx_mapSaveMap_51E010",
+    "file": "src/legacy/GAME4_2.c",
+    "start": 3728,
+    "end": 4651,
+    "body_lines": 35
+  },
+  {
+    "symbol": "nox_xxx_map_51E140",
+    "file": "src/legacy/GAME4_2.c",
+    "start": 4852,
+    "end": 5558,
+    "body_lines": 22
+  }
+]
