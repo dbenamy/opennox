@@ -48,13 +48,34 @@ corrected before the final passing runs. All jobs are joined.
 See [focused qualification](docs/porting/replay-copy-qualification.json).
 C remains6,139 lines /35 files /zero reference C. This small follow-up does not
 claim another full-suite/scenario run; the preceding conversion evidence remains
-separate. Ready to commit and push.
+separate. Replay correction **7943a813** is committed and pushed.
 
-## Next — remaining client messages
+## Active — remaining client messages C baseline
 
-Audit the remaining48 client message labels for a connected conversion batch,
-reusing real client owners and frozen captures. Continue without pausing; no
-user decision is pending. The replay test draft is now consumed.
+Selection:48 top-level labels,1,048 lines from the first case through the end of
+the dispatcher (1,497 total physical lines including the large old local-variable
+block and includes). See client-session-messages-selection.json. Scope includes
+settings, teams, audio, UI state and session transitions. Two named settings
+owners have been identified; the complete caller/interface audit remains.
+Production is unchanged from7943a813. No native implementation is installed.
+
+The first C baseline checkpoint covers **28,064 cases /five captures /ten labels**:
+drawables24,576, audio224, timer2,160, latency240 and music864. Probe6 and two
+independent five-root repeats pass with identical hashes; the repeats have
+identical source fingerprints and no skips. See
+[the checkpoint](docs/porting/client-session-first-c-checkpoint.json) and
+[repeat manifest](docs/porting/client-session-first-c-batch.json).
+
+Fixture review corrected two pentagram field assumptions: class bit0x80000 and
+Field_72 (offset288), not object flags or AnimStart. Light constants are explicitly
+initialized. Audio checks actual queued metadata/volume/pan/priority. Timer checks
+freshness across frame wrap, retry routes, signed duration and notification order.
+Latency uses all16 ID bits without a connection gate. Music checks queue capacity,
+restore semantics, level isolation and volume clamping. Failed fixture probes are
+retained as failed; no frozen expectation or production source changed.
+
+All baseline test jobs are joined. Continue remaining coverage before converting
+this dispatcher. No user decision is pending.
 
 ## Recovery and storage
 

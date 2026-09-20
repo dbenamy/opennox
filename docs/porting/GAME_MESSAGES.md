@@ -705,3 +705,17 @@ Two regressions pass on all three profiles with real player owners, concatenated
 alias payloads, frame updates and unchanged input. See [focused results](replay-copy-qualification.json).
 C remains6,139 lines /35 files /zero reference C. This is a separate reversible
 correctness fix; full-suite/scenario evidence belongs to the preceding conversion.
+
+
+## Remaining client session messages: first C checkpoint
+
+The remaining dispatcher has48 labels and1,497 physical C lines, including old
+local declarations. The first baseline freezes five captures /28,064 cases across
+ten labels: door/obelisk/pentagram updates, audio, timer status, player latency and
+music state/queue transitions. The original run and two independent repeats agree;
+all five test roots complete without skips. See [selection](client-session-messages-selection.json)
+and [checkpoint](client-session-first-c-checkpoint.json).
+
+Production remains7943a813; C remains6,139 lines /35 files /zero reference C.
+Settings, team, UI and session-transition coverage remain before native conversion.
+Continue from this recovery checkpoint without pausing.

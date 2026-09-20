@@ -1,0 +1,71 @@
+{
+  "status": "partial original-C client session message baseline; remaining settings/team/UI/session paths still require coverage before conversion",
+  "production_revision": "7943a813",
+  "production_c_lines": 6139,
+  "production_c_files": 35,
+  "reference_c_lines": 0,
+  "covered_client_labels": [
+    166,
+    167,
+    178,
+    179,
+    180,
+    211,
+    215,
+    229,
+    230,
+    231
+  ],
+  "new_cases": 28064,
+  "captures": [
+    {
+      "file": "interaction-game-client-session-audio.json",
+      "cases": 224,
+      "sha256": "ed87a210c0abea0a2976d97bbd75d0b9aca7745b7502b7e2e0b69c1c75321db3"
+    },
+    {
+      "file": "interaction-game-client-session-drawables.json",
+      "cases": 24576,
+      "sha256": "433b84fd0952596c154a780fe64a8491df2788496658ba9506fe878a0ff49163"
+    },
+    {
+      "file": "interaction-game-client-session-latency.json",
+      "cases": 240,
+      "sha256": "3a44bd50c7c01909a28640d2b25890d3d3fec2a1122e2379061a0111a809cbde"
+    },
+    {
+      "file": "interaction-game-client-session-music.json",
+      "cases": 864,
+      "sha256": "33fda0a552615b10bf0c520272f9a93731abed6126363deb68132a70d3a5ba06"
+    },
+    {
+      "file": "interaction-game-client-session-timer.json",
+      "cases": 2160,
+      "sha256": "f91e7e35e303e99b0fe173692299b6d026094b1d1b271531ad33c8d26bf6c1f7"
+    }
+  ],
+  "original_probe": "build/port-game-messages/client-session-c-probe-6",
+  "runs": [
+    {
+      "path": "build/port-game-messages/client-session-first-c-repeat-1",
+      "roots": 5,
+      "no_skips": true,
+      "source_unchanged": true
+    },
+    {
+      "path": "build/port-game-messages/client-session-first-c-repeat-2",
+      "roots": 5,
+      "no_skips": true,
+      "source_unchanged": true
+    }
+  ],
+  "source_manifest_sha256": "9b850c7aeda2ff2afb2f33aa2c975436be84e2cb07a563458d8eeaeb0f0800ee",
+  "fixture_review": [
+    "Pentagram changes drawable class bit0x80000 and Field_72 at byte288; unchanged flags and AnimStart are checked.",
+    "Particle environment initializes nonzero light constants.",
+    "Audio uses actual queued events and checks metadata identity, signed pan, encoded volume and priority.",
+    "Timer checks frame-wrap freshness, retry routing, signed duration, tick calls and notification-before-deadline-update ordering.",
+    "Latency lookup preserves all16 ID bits and runs independently of connection state."
+  ],
+  "production_unchanged": true
+}

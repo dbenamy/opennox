@@ -1,0 +1,663 @@
+{
+  "status": "selection audit; original-C baseline not frozen",
+  "parent_revision": "7943a813",
+  "source": "src/legacy/client__network__cdecode.c",
+  "source_sha256": "d083c5d60d0abbdb5987430c9e05bacfff8f20595f0fa16cbfadd25d0a3b29d1",
+  "physical_c_lines": 1497,
+  "top_level_labels": 48,
+  "cases": [
+    {
+      "label": "0xA6u",
+      "message": "MSG_AUDIO_EVENT",
+      "line": 450,
+      "lines": 1,
+      "calls": []
+    },
+    {
+      "label": "0xA7u",
+      "message": "MSG_AUDIO_PLAYER_EVENT",
+      "line": 451,
+      "lines": 14,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "sub_452DC0",
+        "sub_452E10"
+      ]
+    },
+    {
+      "label": "171",
+      "message": "MSG_IMPORTANT_ACK",
+      "line": 465,
+      "lines": 5,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_net_importantACK_4E55A0"
+      ]
+    },
+    {
+      "label": "0xAEu",
+      "message": "MSG_OUTGOING_CLIENT",
+      "line": 470,
+      "lines": 2,
+      "calls": []
+    },
+    {
+      "label": "0xAFu",
+      "message": "MSG_GAME_SETTINGS",
+      "line": 472,
+      "lines": 51,
+      "calls": [
+        "nox_client_setVersion_409AE0",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_common_gameFlags_unset_40A540",
+        "nox_common_playerInfoGetFirst_416EA0",
+        "nox_common_playerInfoGetNext_416EE0",
+        "nox_game_exit_xxx2",
+        "nox_xxx_cliGamedataGet_416590",
+        "nox_xxx_cliPlayerRespawn_417680",
+        "nox_xxx_gameGetPlayState_4356B0",
+        "nox_xxx_get3512_40A350",
+        "nox_xxx_mapGetMapName_409B40",
+        "nox_xxx_servSetPlrLimit_409F80",
+        "nox_xxx_set3512_40A340",
+        "nox_xxx_setGameFlags_40A4D0",
+        "sub_409E40",
+        "sub_455A50",
+        "sub_455C10",
+        "sub_455F60",
+        "sub_456050"
+      ]
+    },
+    {
+      "label": "0xB0u",
+      "message": "MSG_GAME_SETTINGS_2",
+      "line": 523,
+      "lines": 30,
+      "calls": [
+        "getMemAt",
+        "getMemU32Ptr",
+        "nox_client_isConnected_43C700",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_strman_loadString_40F1D0",
+        "nox_xxx_cliGamedataGet_416590",
+        "nox_xxx_clientPlaySoundSpecial_452D80",
+        "nox_xxx_printCentered_445490",
+        "sub_40A1F0",
+        "sub_40A310",
+        "sub_4540E0"
+      ]
+    },
+    {
+      "label": "0xB1u",
+      "message": "MSG_UPDATE_GUI_GAME_SETTINGS",
+      "line": 553,
+      "lines": 31,
+      "calls": [
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_strman_loadString_40F1D0",
+        "nox_swprintf",
+        "nox_xxx_cliGamedataGet_416590",
+        "nox_xxx_cliSetSettingsAcquired_4169D0",
+        "nox_xxx_cliShowHelpGui_49C560",
+        "nox_xxx_printCentered_445490",
+        "sub_4165F0",
+        "sub_4169C0",
+        "sub_4573A0",
+        "sub_459C30",
+        "sub_459DA0"
+      ]
+    },
+    {
+      "label": "0xB2u",
+      "message": "MSG_DOOR_ANGLE",
+      "line": 584,
+      "lines": 12,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_netTestHighBit_578B70"
+      ]
+    },
+    {
+      "label": "0xB3u",
+      "message": "MSG_OBELISK_CHARGE",
+      "line": 596,
+      "lines": 19,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_netTestHighBit_578B70",
+        "nox_xxx_spriteChangeIntensity_484D70_light_intensity",
+        "nox_xxx_spriteSetActiveMB_45A990_drawable",
+        "nox_xxx_spriteSetFrameMB_45AB80"
+      ]
+    },
+    {
+      "label": "0xB4u",
+      "message": "MSG_PENTAGRAM_ACTIVATE",
+      "line": 615,
+      "lines": 21,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_netTestHighBit_578B70",
+        "nox_xxx_spriteChangeIntensity_484D70_light_intensity",
+        "nox_xxx_spriteSetFrameMB_45AB80"
+      ]
+    },
+    {
+      "label": "0xB5u",
+      "message": "MSG_CLIENT_PREDICT_LINEAR",
+      "line": 636,
+      "lines": 18,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_spriteCreate_48E970",
+        "nox_xxx_spriteToList_49BC80_drawable"
+      ]
+    },
+    {
+      "label": "0xBDu",
+      "message": "MSG_SYSOP_RESULT",
+      "line": 654,
+      "lines": 12,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_gui_console_Printf_450C00",
+        "nox_strman_loadString_40F1D0"
+      ]
+    },
+    {
+      "label": "0xC3u",
+      "message": "MSG_PLAYER_OBJ",
+      "line": 666,
+      "lines": 31,
+      "calls": [
+        "nox_common_getEngineFlag",
+        "nox_xxx_cliUpdateCameraPos_435600",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netTestHighBit_578B70",
+        "nox_xxx_setKeybTimeout_4160D0",
+        "nox_xxx_spriteCreate_48E970",
+        "nox_xxx_spriteSetFrameMB_45AB80",
+        "sub_416120"
+      ]
+    },
+    {
+      "label": "0xC4u",
+      "message": "MSG_TEAM_MSG",
+      "line": 697,
+      "lines": 141,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_common_playerInfoGetByID_417040",
+        "nox_server_teamTitle_418C20",
+        "nox_server_teamsResetYyy_417D00",
+        "nox_server_teamsZzz_419030",
+        "nox_swprintf",
+        "nox_wcsncpy",
+        "nox_xxx_createAtImpl_4191D0",
+        "nox_xxx_getTeamByID_418AB0",
+        "nox_xxx_netChangeTeamID_419090",
+        "nox_xxx_netChangeTeamMb_419570",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_netTestHighBit_578B70",
+        "nox_xxx_objGetTeamByNetCode_418C80",
+        "nox_xxx_spriteCreate_48E970",
+        "nox_xxx_teamCreate_4186D0",
+        "nox_xxx_teamRenameMB_418CD0",
+        "sub_418800",
+        "sub_418830",
+        "sub_418D80",
+        "sub_418F20",
+        "sub_4196D0",
+        "sub_419900",
+        "sub_456EA0",
+        "sub_456FA0",
+        "sub_4571A0",
+        "sub_457230"
+      ]
+    },
+    {
+      "label": "0xC5u",
+      "message": "MSG_KICK_NOTIFICATION",
+      "line": 838,
+      "lines": 3,
+      "calls": [
+        "sub_43B6E0"
+      ]
+    },
+    {
+      "label": "0xC6u",
+      "message": "MSG_TIMEOUT_NOTIFICATION",
+      "line": 841,
+      "lines": 3,
+      "calls": [
+        "sub_43B750"
+      ]
+    },
+    {
+      "label": "0xC9u",
+      "message": "MSG_SERVER_QUIT_ACK",
+      "line": 844,
+      "lines": 83,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_xxx_cliStartShopDlg_478FD0",
+        "nox_xxx_netP2PStartTrade_4C1320",
+        "nox_xxx_prepareP2PTrade_4C1BF0",
+        "nox_xxx_tradeClientAddItem_4C1790",
+        "sub_479280",
+        "sub_479300",
+        "sub_479480",
+        "sub_479520",
+        "sub_4795E0",
+        "sub_479740",
+        "sub_4C1590",
+        "sub_4C15D0",
+        "sub_4C1B50",
+        "sub_4C1BC0"
+      ]
+    },
+    {
+      "label": "0xCAu",
+      "message": "MSG_CHAT_KILL",
+      "line": 927,
+      "lines": 9,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "sub_48E8E0",
+        "sub_48E940"
+      ]
+    },
+    {
+      "label": "0xCBu",
+      "message": "MSG_MESSAGES_KILL",
+      "line": 936,
+      "lines": 5,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "sub_445450"
+      ]
+    },
+    {
+      "label": "0xCCu",
+      "message": "MSG_SEQ_IMPORTANT",
+      "line": 941,
+      "lines": 6,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "sub_48D5A0"
+      ]
+    },
+    {
+      "label": "0xCDu",
+      "message": "MSG_REPORT_ABILITY_AWARD",
+      "line": 947,
+      "lines": 11,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_xxx_netAbilityRewardCli_4611E0"
+      ]
+    },
+    {
+      "label": "0xCEu",
+      "message": "MSG_REPORT_ABILITY_STATE",
+      "line": 958,
+      "lines": 5,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "sub_461090"
+      ]
+    },
+    {
+      "label": "0xCFu",
+      "message": "MSG_REPORT_ACTIVE_ABILITIES",
+      "line": 963,
+      "lines": 5,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "sub_461120"
+      ]
+    },
+    {
+      "label": "0xD1u",
+      "message": "MSG_REPORT_GUIDE_AWARD",
+      "line": 968,
+      "lines": 5,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_xxx_netGuideRewardCli_45D140"
+      ]
+    },
+    {
+      "label": "0xD2u",
+      "message": "MSG_INTERESTING_ID",
+      "line": 973,
+      "lines": 24,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_xxx_cliRemoveHealthbar_459E30",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_netTestHighBit_578B70",
+        "nox_xxx_spriteCreate_48E970",
+        "sub_459DD0"
+      ]
+    },
+    {
+      "label": "0xD3u",
+      "message": "MSG_TIMER_STATUS",
+      "line": 997,
+      "lines": 16,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_xxx_netClientSend2_4E53C0",
+        "sub_40A1F0",
+        "sub_40A310"
+      ]
+    },
+    {
+      "label": "0xD5u",
+      "message": "MSG_JOURNAL_MSG",
+      "line": 1013,
+      "lines": 26,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_xxx_cliBuildJournalString_469BC0",
+        "nox_xxx_journalEntryAdd_427490",
+        "nox_xxx_journalEntryRemove_427590",
+        "nox_xxx_journalUpdateEntry_4276B0"
+      ]
+    },
+    {
+      "label": "0xD6u",
+      "message": "MSG_CHAPTER_END",
+      "line": 1039,
+      "lines": 5,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_client_lockScreenBriefing_450160"
+      ]
+    },
+    {
+      "label": "0xD7u",
+      "message": "MSG_REPORT_ALL_LATENCY",
+      "line": 1044,
+      "lines": 7,
+      "calls": [
+        "nox_common_playerInfoGetByID_417040"
+      ]
+    },
+    {
+      "label": "0xD8u",
+      "message": "MSG_REPORT_FLAG_STATUS",
+      "line": 1051,
+      "lines": 6,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "sub_455D80",
+        "sub_4705F0"
+      ]
+    },
+    {
+      "label": "0xD9u",
+      "message": "MSG_REPORT_BALL_STATUS",
+      "line": 1057,
+      "lines": 6,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "sub_456140",
+        "sub_470650"
+      ]
+    },
+    {
+      "label": "0xDAu",
+      "message": "MSG_REPORT_OBJECT_POISON",
+      "line": 1063,
+      "lines": 10,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_npc_set_328",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_unitSpriteCheckAlly_4951F0",
+        "sub_4950F0"
+      ]
+    },
+    {
+      "label": "0xDBu",
+      "message": "MSG_REPORT_MONITOR_CREATURE",
+      "line": 1073,
+      "lines": 15,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_netTestHighBit_578B70",
+        "nox_xxx_spriteCreate_48E970",
+        "sub_459DD0",
+        "sub_495060"
+      ]
+    },
+    {
+      "label": "0xDCu",
+      "message": "MSG_REPORT_UNMONITOR_CREATURE",
+      "line": 1088,
+      "lines": 17,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_xxx_cliRemoveHealthbar_459E30",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_netTestHighBit_578B70",
+        "sub_4950C0"
+      ]
+    },
+    {
+      "label": "0xDFu",
+      "message": "MSG_REPORT_SPELL_STAT",
+      "line": 1105,
+      "lines": 3,
+      "calls": [
+        "sub_460EB0"
+      ]
+    },
+    {
+      "label": "0xE0u",
+      "message": "MSG_REPORT_SECONDARY_WEAPON",
+      "line": 1108,
+      "lines": 12,
+      "calls": [
+        "nox_common_getEngineFlag",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netTestHighBit_578B70",
+        "sub_467750"
+      ]
+    },
+    {
+      "label": "0xE1u",
+      "message": "MSG_REPORT_LAST_QUIVER",
+      "line": 1120,
+      "lines": 4,
+      "calls": [
+        "nox_xxx_netClearHighBit_578B30",
+        "sub_467740"
+      ]
+    },
+    {
+      "label": "0xE2u",
+      "message": "MSG_INFO_BOOK_DATA",
+      "line": 1124,
+      "lines": 16,
+      "calls": [
+        "nox_common_getEngineFlag",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_netTestHighBit_578B70",
+        "sub_4676D0",
+        "sub_478080"
+      ]
+    },
+    {
+      "label": "0xE5u",
+      "message": "MSG_MUSIC_EVENT",
+      "line": 1140,
+      "lines": 5,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "sub_43D9B0"
+      ]
+    },
+    {
+      "label": "0xE6u",
+      "message": "MSG_MUSIC_PUSH_EVENT",
+      "line": 1145,
+      "lines": 5,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "sub_43DA80"
+      ]
+    },
+    {
+      "label": "0xE7u",
+      "message": "MSG_MUSIC_POP_EVENT",
+      "line": 1150,
+      "lines": 5,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "sub_43DAD0"
+      ]
+    },
+    {
+      "label": "0xE8u",
+      "message": "MSG_PLAYER_DIED",
+      "line": 1155,
+      "lines": 44,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_common_playerInfoGetByID_417040",
+        "nox_xxx_cliRemoveHealthbar_459E30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "sub_478000",
+        "sub_4BFE40"
+      ]
+    },
+    {
+      "label": "0xE9u",
+      "message": "MSG_PLAYER_RESPAWN",
+      "line": 1199,
+      "lines": 16,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_common_playerInfoGetByID_417040",
+        "nox_xxx_cliPlayerRespawn_417680",
+        "sub_45A670"
+      ]
+    },
+    {
+      "label": "0xEAu",
+      "message": "MSG_FORGET_DRAWABLES",
+      "line": 1215,
+      "lines": 6,
+      "calls": [
+        "nox_common_gameFlags_check_40A5C0",
+        "sub_45A670"
+      ]
+    },
+    {
+      "label": "0xEBu",
+      "message": "MSG_RESET_ABILITIES",
+      "line": 1221,
+      "lines": 6,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "sub_4610D0"
+      ]
+    },
+    {
+      "label": "0xEDu",
+      "message": "MSG_REPORT_CREATURE_CMD",
+      "line": 1227,
+      "lines": 5,
+      "calls": [
+        "nox_client_isConnected_43C700",
+        "sub_4C1CA0"
+      ]
+    },
+    {
+      "label": "0xEEu",
+      "message": "MSG_VOTE",
+      "line": 1232,
+      "lines": 9,
+      "calls": [
+        "sub_48D4A0",
+        "sub_48D4B0"
+      ]
+    },
+    {
+      "label": "0xF0u",
+      "message": "MSG_GAUNTLET",
+      "line": 1241,
+      "lines": 257,
+      "calls": [
+        "getMemAt",
+        "getMemIntPtr",
+        "getMemU32Ptr",
+        "nox_client_isConnected_43C700",
+        "nox_client_showQuestBriefing2_450980",
+        "nox_client_showQuestBriefing_450A30",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_common_playerInfoGetByID_417040",
+        "nox_strman_loadString_40F1D0",
+        "nox_swprintf",
+        "nox_xxx_abilityGetName_0_425260",
+        "nox_xxx_cliPrepareGameplay1_460E60",
+        "nox_xxx_cliPrepareGameplay2_4721D0",
+        "nox_xxx_cliShowHideTubes_470AA0",
+        "nox_xxx_clientPlaySoundSpecial_452D80",
+        "nox_xxx_clientQuestDisableAbility_45D4A0",
+        "nox_xxx_clientQuestWinScreen_450770",
+        "nox_xxx_getTTByNameSpriteMB_44CFC0",
+        "nox_xxx_guiCreatureGetName_427240",
+        "nox_xxx_makePointFxCli_499610",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_plrLoad_41A480",
+        "nox_xxx_printCentered_445490",
+        "nox_xxx_spellTitle_424930",
+        "nox_xxx_spriteLoadAdd_45A360_drawable",
+        "nox_xxx_spriteTransparentDecay_49B950",
+        "nox_xxx_sprite_45A110_drawable",
+        "sub_41CC00",
+        "sub_41D1A0",
+        "sub_45D320",
+        "sub_45D400",
+        "sub_460380",
+        "sub_463420",
+        "sub_465DE0",
+        "sub_470580",
+        "sub_4705B0",
+        "sub_48D4A0",
+        "sub_49A150",
+        "sub_49B4B0",
+        "sub_4BFBB0"
+      ]
+    }
+  ],
+  "scope": "Remaining complete client dispatcher and its private locals; evaluate named owners and C-interface retirement after whole-repository caller audit."
+}
