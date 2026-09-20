@@ -249,7 +249,7 @@ func controlRespawn(u *server.Object) int16 {
 	if controlFlags(4096) {
 		controlDefaultItems(u, 1, 1)
 		*controlByte(d, 452+int(*controlByte(controlPlayer(u), 2064))) = 250
-		C.nox_xxx_netPriMsgToPlayer_4DA2C0((*C.nox_object_t)(u.CObj()), internCStr("GeneralPrint:Respawn"), 0)
+		nox_xxx_netPriMsgToPlayer_4DA2C0((*C.nox_object_t)(u.CObj()), internCStr("GeneralPrint:Respawn"), 0)
 	} else {
 		controlDefaultItems(u, 1, 0)
 	}

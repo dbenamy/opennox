@@ -667,3 +667,29 @@ Decision for review in the native conversion: reject incomplete actions before
 reading their fields. The current caller checks consumed size only afterward.
 Complete messages retain the frozen behavior; separate native-only contracts
 will check every incomplete prefix without accessing gameplay owners.
+
+
+## Server actions: native conversion qualified
+
+All16 dispatcher cases and two private pickup helpers now run in Go. The native
+path preserves explicit player/update owners, full-width dynamic object codes,
+raw inventory-failure codes, spell queue ordering, trade admission and transaction
+ordering, alias bytes, vote routing and gauntlet respawn behavior. Thirty-eight
+unused C exports are retired; remaining C callers keep their required interfaces.
+No C algorithm is retained solely for testing.
+
+Default/server/highres pass **567/563/567 roots**, no skips, with identical source
+and all **75 frozen captures /124,920 cases** unchanged. Three fresh production
+binaries pass ABI checks. The full suite matches1,553 known failure entries and
+15 pass /3 fail /32 skip packages. Headless gameplay and explicit save/load
+continuation match their references. See [qualification](server-actions-native-qualification.json),
+[manifest](server-actions-native-batch.json) and [retired interfaces](server-actions-retired.json).
+C remaining: **6,139 physical lines in35 files**, down **502 lines**, zero reference C.
+
+Decision for review: reject incomplete actions before field/owner access, since
+the caller validates consumed size only after dispatch. Independent contracts
+cover every incomplete prefix of34 formats; complete messages preserve the C
+baseline. Interface retirement also required a fixture-only normalization fix:
+nil callback addresses receive no ID, while reserved slots preserve dynamic IDs.
+Frozen expectations were not regenerated. A separate replay-buffer copy defect
+was identified and queued for its own regression/fix after this conversion.

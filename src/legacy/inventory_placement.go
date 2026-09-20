@@ -55,7 +55,7 @@ func inventoryTargetDrop(u, it *server.Object, pos *types.Pointf) int {
 		target.Y = float32(float64(y)*75/float64(storedLength) + float64(origin.Y))
 	}
 	if !GetServer().S().MapTraceRayAt(origin, target, nil, nil, 0) {
-		C.nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr("drop.c:DropNotAllowed"), 0)
+		nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr("drop.c:DropNotAllowed"), 0)
 		inventorySound(925, u, 2, int(u.NetCode))
 		return 0
 	}

@@ -88,8 +88,8 @@ func spellLifeRayMessage(p *server.DurSpell) uint32 {
 			return result
 		}
 		buf[1] = 6
-		binary.LittleEndian.PutUint16(buf[3:], uint16(C.nox_xxx_netGetUnitCodeServ_578AC0(asObjectC(p.Target48))))
-		binary.LittleEndian.PutUint16(buf[5:], uint16(C.nox_xxx_netGetUnitCodeServ_578AC0(asObjectC(p.Caster16))))
+		binary.LittleEndian.PutUint16(buf[3:], uint16(nox_xxx_netGetUnitCodeServ_578AC0(asObjectC(p.Target48))))
+		binary.LittleEndian.PutUint16(buf[5:], uint16(nox_xxx_netGetUnitCodeServ_578AC0(asObjectC(p.Caster16))))
 		return spellLifeSendRay(p, buf)
 	case 43:
 		for sub := p.Sub108; sub != nil; sub = sub.Next {
@@ -106,8 +106,8 @@ func spellLifeRayMessage(p *server.DurSpell) uint32 {
 	if p.Target48 == nil {
 		return result
 	}
-	binary.LittleEndian.PutUint16(buf[5:], uint16(C.nox_xxx_netGetUnitCodeServ_578AC0(asObjectC(p.Target48))))
-	binary.LittleEndian.PutUint16(buf[3:], uint16(C.nox_xxx_netGetUnitCodeServ_578AC0(asObjectC(p.Caster16))))
+	binary.LittleEndian.PutUint16(buf[5:], uint16(nox_xxx_netGetUnitCodeServ_578AC0(asObjectC(p.Target48))))
+	binary.LittleEndian.PutUint16(buf[3:], uint16(nox_xxx_netGetUnitCodeServ_578AC0(asObjectC(p.Caster16))))
 	return spellLifeSendRay(p, buf)
 }
 func spellLifeSendRay(p *server.DurSpell, buf [7]byte) uint32 {

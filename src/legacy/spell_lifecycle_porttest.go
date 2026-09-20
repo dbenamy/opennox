@@ -11,7 +11,6 @@ extern uint32_t dword_5d4594_1569672;
 unsigned short sub_4FD030(int a1, short a2);
 void nox_xxx_collide_4FDF90(int a1, int a2);
 int nox_xxx_spellGetPhoneme_4FE1C0(int a1, char a2);
-int nox_xxx_spellByBookInsert_4FE340(int a1, int* a2, int a3, int a4, int a5);
 int sub_4FEA70(int a1, float2* a2);
 int nox_xxx_playerCancelSpells_4FEAE0(nox_object_t* a1p);
 char* nox_xxx_netStartDurationRaySpell_4FF130(int a1);
@@ -26,7 +25,6 @@ static void* spellLifeFunction(int id){switch(id){
 case 6:return sub_4FD030;
 case 11:return nox_xxx_collide_4FDF90;
 case 12:return nox_xxx_spellGetPhoneme_4FE1C0;
-case 13:return nox_xxx_spellByBookInsert_4FE340;
 case 16:return sub_4FEA70;
 case 17:return nox_xxx_playerCancelSpells_4FEAE0;
 case 20:return nox_xxx_netStartDurationRaySpell_4FF130;
@@ -177,6 +175,7 @@ func (p *portTestShopPools) spellLifeItems() {
 	if sp == nil {
 		return
 	}
+	p.reservedFunctionIDs += 1
 	st := p.spellLifeState()
 	u := p.temporaryRef(p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack.Actor)
 	for i := 0; i < 29; i++ {

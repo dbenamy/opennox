@@ -359,7 +359,7 @@ func tradeLimit(key string) uint32 {
 	return uint32(floatToInt32(float32(GetServer().S().Balance.Float(key))))
 }
 func tradePriority(u *server.Object, key string) {
-	C.nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr(key), 0)
+	nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr(key), 0)
 }
 func tradeReportGold(u *server.Object) {
 	gameplayReportPlayerStat(int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), u)

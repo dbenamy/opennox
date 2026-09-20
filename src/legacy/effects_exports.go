@@ -225,7 +225,6 @@ func nox_xxx_useFireWand_53F670(a1 C.int, a2 C.int) C.int {
 	return C.int(effectsFireWand(objectFromInt(a1), objectFromInt(a2)))
 }
 
-//export nox_xxx_useByNetCode_53F8E0
 func nox_xxx_useByNetCode_53F8E0(a1 C.int, a2 C.int) C.int {
 	return C.int(effectsUse(objectFromInt(a1), objectFromInt(a2)))
 }

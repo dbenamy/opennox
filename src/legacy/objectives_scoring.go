@@ -40,7 +40,7 @@ func objectiveBallCollide(u, t *server.Object) {
 		if *temporaryRefWord(ud, 0) == t && team != nil && objectiveTeamCount(team) > 1 {
 			last := memmap.PtrUint32(0x5d4594, 1568008)
 			if core.Frame()-*last > 45 {
-				C.nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), internCStr("objcoll.c:CantPickupBall"), 0)
+				nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), internCStr("objcoll.c:CantPickupBall"), 0)
 				*last = core.Frame()
 			}
 			inventorySound(928, u, 0, 0)
@@ -154,7 +154,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 	}
 	tm := core.Teams.ByID(u.TeamVal.ID)
 	if tm == nil || objectiveTeamCount(tm) == 0 {
-		C.nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), internCStr("objcoll.c:FlagNoTeam"), 0)
+		nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), internCStr("objcoll.c:FlagNoTeam"), 0)
 		return
 	}
 	for flag := t.InvFirstItem; flag != nil; flag = flag.InvNextItem {

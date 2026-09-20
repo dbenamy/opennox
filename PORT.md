@@ -14,19 +14,16 @@
 
 ## Current status
 
-Client progress, winner reports and visual effects are now Go and fully qualified.
-This batch moves55 client cases and six helpers, including map-progress drawing,
-retires32 obsolete Go-backed C interfaces and moves three named owners. Default,
-server and high-resolution checks pass378/374/378 roots and all63 frozen captures.
+Server player-action dispatch and its two private pickup helpers are now Go and
+fully qualified. The conversion retires38 unused C interfaces. Default/server/
+high-resolution checks pass567/563/567 roots, no skips, and all75 frozen captures.
 Fresh production/ABI, exact full-suite comparison and headless gameplay/save-load
-checks pass. See [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md).
+checks pass. See [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) and
+[the qualification](docs/porting/server-actions-native-qualification.json).
 
-C remaining is **6,641 physical lines in36 files**, zero reference C.
-This conversion removes **1,260 lines**. Next is the remaining server player-action
-dispatcher, followed by the remaining client settings/team/session messages.
-The complete server-action C baseline now passes518/514/518 test roots across
-default/server/highres, with75 frozen captures including2,716 new action cases.
-The Go conversion is next; see [its baseline](docs/porting/server-actions-c-qualification.json).
+C remaining is **6,139 physical lines in35 files**, zero reference C.
+This conversion removes **502 lines**. Next is a focused replay-buffer copy fix,
+then the remaining client settings/team/session messages.
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in

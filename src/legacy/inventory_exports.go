@@ -11,7 +11,6 @@ import (
 
 func inventoryPos(p unsafe.Pointer) *types.Pointf { return (*types.Pointf)(p) }
 
-//export sub_4ED0C0
 func sub_4ED0C0(u, it *nox_object_t) { inventoryRemove(asObjectS(u), asObjectS(it)) }
 
 //export nox_xxx_inventoryPutImpl_4F3070
@@ -44,7 +43,6 @@ func nox_xxx_dropTreasure_4ED710(u, it C.int, p *C.int) C.int {
 	return C.int(inventoryTreasureDrop(objectFromInt(u), objectFromInt(it), inventoryPos(unsafe.Pointer(p))))
 }
 
-//export nox_xxx_drop_4ED790
 func nox_xxx_drop_4ED790(u, it *nox_object_t, p *C.float2) C.int {
 	return C.int(inventoryDrop(asObjectS(u), asObjectS(it), inventoryPos(unsafe.Pointer(p))))
 }

@@ -157,7 +157,6 @@ func nox_xxx_netSendBallStatus_4D95F0(a0 C.int, a1 C.char, a2 C.short) C.int {
 	return C.int(gameplayReportBall(int(a0), byte(a1), uint16(a2)))
 }
 
-//export nox_xxx_netReportSpellStat_4D9630
 func nox_xxx_netReportSpellStat_4D9630(a0 C.int, a1 C.int, a2 C.char) C.int {
 	return C.int(gameplayReportSpellStat(int(a0), uint32(a1), byte(a2)))
 }

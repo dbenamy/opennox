@@ -42,7 +42,7 @@ func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 	}
 	if u.ObjClass&4 != 0 && inventoryDroppable(it) && equipmentDropPolicy(it, 1) != 0 {
 		if u.ObjFlags&0x8020 == 0 {
-			C.nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr("drop.c:CantDropThat"), 0)
+			nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr("drop.c:CantDropThat"), 0)
 			inventorySound(925, u, 2, int(u.NetCode))
 		}
 		return 0

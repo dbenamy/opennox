@@ -55,7 +55,6 @@ func nox_savegame_rm_4DBE10(cname *C.char, rmDir int) {
 //export nox_client_countPlayerFiles04_4DC7D0
 func nox_client_countPlayerFiles04_4DC7D0() int { return Nox_client_countPlayerFiles04_4DC7D0() }
 
-//export nox_xxx_gameGet_4DB1B0
 func nox_xxx_gameGet_4DB1B0() int { return bool2int(Nox_xxx_gameGet_4DB1B0()) }
 
 //export sub_4DCC90
@@ -76,7 +75,6 @@ func sub_4DCC10(a1p *nox_object_t) int { return Sub_4DCC10(asObjectS(a1p)) }
 //export sub_4DCFB0
 func sub_4DCFB0(a1p *nox_object_t) { Sub_4DCFB0(asObjectS(a1p)) }
 
-//export sub_4DD0B0
 func sub_4DD0B0(a1p *nox_object_t) { Sub_4DD0B0(asObjectS(a1p)) }
 func Nox_xxx_destroyEveryChatMB_528D60() {
 	visibilityClearChats()

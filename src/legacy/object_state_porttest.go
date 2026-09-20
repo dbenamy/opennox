@@ -31,8 +31,6 @@ case 18:return (void*)nox_xxx_spawnSomeBarrel_4E7470;
 case 19:return (void*)sub_4E7540;
 case 20:return (void*)nox_xxx_objectSetOn_4E75B0;
 case 21:return (void*)nox_xxx_objectSetOff_4E7600;
-case 23:return (void*)nox_xxx_inventoryGetFirst_4E7980;
-case 24:return (void*)nox_xxx_inventoryGetNext_4E7990;
 case 25:return (void*)sub_4E79B0;
 case 26:return (void*)nox_xxx_unitFreeze_4E79C0;
 case 27:return (void*)nox_xxx_unitUnFreeze_4E7A60;
@@ -76,8 +74,6 @@ case 18:{nox_xxx_spawnSomeBarrel_4E7470((int)u,(int)record);return 0;}
 case 19:{sub_4E7540(u,t);return 0;}
 case 20:{return (uint32_t)nox_xxx_objectSetOn_4E75B0(u);}
 case 21:{return (uint32_t)nox_xxx_objectSetOff_4E7600(u);}
-case 23:{return (uint32_t)nox_xxx_inventoryGetFirst_4E7980((int)u);}
-case 24:{return (uint32_t)nox_xxx_inventoryGetNext_4E7990((int)u);}
 case 25:{return (uint32_t)sub_4E79B0(x);}
 case 26:{return (uint32_t)nox_xxx_unitFreeze_4E79C0(u,x);}
 case 27:{return (uint32_t)nox_xxx_unitUnFreeze_4E7A60(u,x);}
@@ -204,6 +200,7 @@ func (p *portTestShopPools) objectStateItems() {
 	if sp == nil {
 		return
 	}
+	p.reservedFunctionIDs += 2
 	if sp.ActorName != "" {
 		u := p.temporaryRef(p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack.Actor)
 		u.IDPtr = p.objectiveString(sp.ActorName)
@@ -251,6 +248,10 @@ func (p *portTestShopPools) objectStateAction(a PortTestShopAction) uint32 {
 	pointerReturn := a.Op == 1226 && u != nil && u.ObjClass&2 != 0 && u.ObjFlags&0x8002 == 0
 	if a.Op == 1222 {
 		state.state.result = uint64(stateChecksum(u))
+	} else if a.Op == 1223 {
+		state.state.result = uint64(uint32(nox_xxx_inventoryGetFirst_4E7980(C.int(uintptr(u.CObj())))))
+	} else if a.Op == 1224 {
+		state.state.result = uint64(uint32(nox_xxx_inventoryGetNext_4E7990(C.int(uintptr(u.CObj())))))
 	} else {
 		state.state.result = uint64(C.stateCall(C.int(a.Op-1200), asObjectC(p.temporaryRef(attack.Actor)), asObjectC(p.temporaryRef(sp.Target)), C.int(sp.X), C.int(sp.Y), C.int(sp.Z), C.uint32_t(sp.FloatBits), state.record))
 	}

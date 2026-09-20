@@ -230,7 +230,6 @@ func nox_xxx_unitHasThatParent_4EC4F0(obj, owner *nox_object_t) int {
 	return bool2int(asObjectS(obj).HasOwner(asObjectS(owner)))
 }
 
-//export nox_xxx_unitIsEnemyTo_5330C0
 func nox_xxx_unitIsEnemyTo_5330C0(a, b *nox_object_t) int {
 	return bool2int(GetServer().S().IsEnemyTo(asObjectS(a), asObjectS(b)))
 }

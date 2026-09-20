@@ -21,11 +21,8 @@ nox_object_t* nox_xxx_playerRespawnItem_4EF750(nox_object_t* a1p, char* a2, int*
 char nox_xxx_playerMakeDefItems_4EF7D0(int a1, int a2, int a3);
 char nox_xxx_unitInitPlayer_4EFE80(nox_object_t* a1p);
 int sub_4EFF10(int a1);
-int nox_xxx_equipedItemByCode_4F7920(int a1, int a2);
-void nox_xxx_playerSetCustomWP_4F79A0(int a1, int a2, int a3);
 void nox_xxx_mapFindPlayerStart_4F7AB0(float2* a1, nox_object_t* a2p);
 int nox_xxx_weaponGetStaminaByType_4F7E80(int a1);
-short nox_xxx_playerRespawn_4F7EF0(nox_object_t* a1p);
 int sub_4FA280(int a1);
 int nox_common_mapPlrActionToStateId_4FA2B0(nox_object_t* a1p);
 int nox_xxx_checkInversionEffect_4FA4F0(int a1, int a2);
@@ -53,11 +50,8 @@ case 17:return (void*)nox_xxx_playerRespawnItem_4EF750;
 case 18:return (void*)nox_xxx_playerMakeDefItems_4EF7D0;
 case 20:return (void*)nox_xxx_unitInitPlayer_4EFE80;
 case 21:return (void*)sub_4EFF10;
-case 22:return (void*)nox_xxx_equipedItemByCode_4F7920;
-case 24:return (void*)nox_xxx_playerSetCustomWP_4F79A0;
 case 26:return (void*)nox_xxx_mapFindPlayerStart_4F7AB0;
 case 31:return (void*)nox_xxx_weaponGetStaminaByType_4F7E80;
-case 32:return (void*)nox_xxx_playerRespawn_4F7EF0;
 case 41:return (void*)sub_4FA280;
 case 42:return (void*)nox_common_mapPlrActionToStateId_4FA2B0;
 case 43:return (void*)nox_xxx_checkInversionEffect_4FA4F0;
@@ -81,11 +75,8 @@ case 17:{return (uint32_t)nox_xxx_playerRespawnItem_4EF750(u,name,(int*)record,x
 case 18:{return (uint32_t)nox_xxx_playerMakeDefItems_4EF7D0((int)u,x,y);}
 case 20:{return (uint32_t)nox_xxx_unitInitPlayer_4EFE80(u);}
 case 21:{return (uint32_t)sub_4EFF10((int)u);}
-case 22:{return (uint32_t)nox_xxx_equipedItemByCode_4F7920((int)u,x);}
-case 24:{nox_xxx_playerSetCustomWP_4F79A0((int)u,x,y);return 0;}
 case 26:{nox_xxx_mapFindPlayerStart_4F7AB0((float2*)record,u);return 0;}
 case 31:{return (uint32_t)nox_xxx_weaponGetStaminaByType_4F7E80(x);}
-case 32:{return (uint32_t)nox_xxx_playerRespawn_4F7EF0(u);}
 case 41:{return (uint32_t)sub_4FA280(x);}
 case 42:{return (uint32_t)nox_common_mapPlrActionToStateId_4FA2B0(u);}
 case 43:{return (uint32_t)nox_xxx_checkInversionEffect_4FA4F0((int)u,(int)t);}
@@ -297,6 +288,7 @@ func (p *portTestShopPools) controlsItems() {
 	if a.Controls == nil {
 		return
 	}
+	p.reservedFunctionIDs += 3
 	st := p.temporary.world.objectives.attack.controls
 	p.identify(C.controlsInitPtr(), 91600)
 	p.identify(C.controlsPlayerUpdatePtr(), 91601)
@@ -538,6 +530,13 @@ func (p *portTestShopPools) controlsAdopt(u *server.Object) {
 // covers only ABIs still used by production C. Expected captures are unchanged.
 func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe.Pointer) uint64 {
 	switch op {
+	case 22:
+		return uint64(uint32(nox_xxx_equipedItemByCode_4F7920(C.int(uintptr(u.CObj())), C.int(x))))
+	case 24:
+		nox_xxx_playerSetCustomWP_4F79A0(C.int(uintptr(u.CObj())), C.int(x), C.int(y))
+		return 0
+	case 32:
+		return uint64(uint32(int32(nox_xxx_playerRespawn_4F7EF0(asObjectC(u)))))
 	case 79:
 		*equipmentWord(u.UpdateData, 548) = 0
 		controlRespawn(u)

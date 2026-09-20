@@ -145,7 +145,6 @@ func nox_xxx_spellPhonemes_424A20(ind, ind2 int) C.char {
 	return C.char(GetServer().S().Spells.Phoneme(spell.ID(ind), ind2))
 }
 
-//export nox_xxx_spellHasFlags_424A50
 func nox_xxx_spellHasFlags_424A50(ind, flags int) C.bool {
 	return C.bool(GetServer().S().Spells.HasFlags(spell.ID(ind), things.SpellFlags(flags)))
 }

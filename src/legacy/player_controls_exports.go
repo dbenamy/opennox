@@ -55,12 +55,10 @@ func nox_xxx_unitInitPlayer_4EFE80(a *C.nox_object_t) C.char {
 //export sub_4EFF10
 func sub_4EFF10(a C.int) C.int { return C.int(controlResetPlayer(objectFromInt(a))) }
 
-//export nox_xxx_equipedItemByCode_4F7920
 func nox_xxx_equipedItemByCode_4F7920(a, b C.int) C.int {
 	return inventoryInt(controlEquippedByCode(objectFromInt(a), uint32(b)))
 }
 
-//export nox_xxx_playerSetCustomWP_4F79A0
 func nox_xxx_playerSetCustomWP_4F79A0(a, b, c C.int) {
 	controlSetWaypoint(objectFromInt(a), uint32(b), uint32(c))
 }
@@ -75,7 +73,6 @@ func nox_xxx_weaponGetStaminaByType_4F7E80(a C.int) C.int {
 	return C.int(controlWeaponStamina(uint32(a)))
 }
 
-//export nox_xxx_playerRespawn_4F7EF0
 func nox_xxx_playerRespawn_4F7EF0(a *C.nox_object_t) C.short {
 	return C.short(controlRespawn(asObjectS(a)))
 }

@@ -28,7 +28,6 @@ static int nox_xxx_netSendLineMessage_go(nox_object_t* a1, wchar2_t* str) {
 
 nox_drawable* nox_xxx_netSpriteByCodeDynamic_45A6F0(int a1);
 
-int nox_xxx_netOnPacketRecvServ_51BAD0_net_sdecode_switch(int a1, unsigned char* data, int dsz, nox_playerInfo* v8p, nox_object_t* unitp, void* v10p);
 int nox_xxx_netOnPacketRecvCli_48EA70_switch(int a1, int op, unsigned char* data, int sz);
 */
 import "C"
@@ -269,9 +268,7 @@ func Nox_net_importantACK_4E55A0(a1 int, a2 int) {
 func Sub_4196D0(a1 unsafe.Pointer, a2 unsafe.Pointer, a3 int, a4 int) {
 	teamRuntimeSwitch(teamRuntimeMember(a1), asTeamP(a2), a3, a4)
 }
-func Nox_xxx_netOnPacketRecvServ_51BAD0_net_sdecode_switch(a1 ntype.PlayerInd, data []byte, a4 *server.Player, a5 *server.Object, a6 unsafe.Pointer) int {
-	return int(C.nox_xxx_netOnPacketRecvServ_51BAD0_net_sdecode_switch(C.int(a1), (*C.uchar)(unsafe.Pointer(&data[0])), C.int(len(data)), (*nox_playerInfo)(a4.C()), asObjectC(a5), a6))
-}
+
 func Nox_xxx_netReportAcquireCreature_4D91A0(pli int, obj *server.Object) {
 	C.nox_xxx_netReportAcquireCreature_4D91A0(C.int(pli), asObjectC(obj))
 }

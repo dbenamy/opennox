@@ -9,12 +9,10 @@ import (
 	"unsafe"
 )
 
-//export sub_506870
 func sub_506870(kind C.int, player C.int, name *C.wchar2_t) {
 	voteCast(uint32(kind), (*server.Object)(unsafe.Pointer(uintptr(uint32(player)))), (*uint16)(unsafe.Pointer(name)))
 }
 
-//export sub_506C90
 func sub_506C90(kind C.int, player C.int, name *C.wchar2_t) {
 	voteWithdraw(uint32(kind), (*server.Object)(unsafe.Pointer(uintptr(uint32(player)))), (*uint16)(unsafe.Pointer(name)))
 }

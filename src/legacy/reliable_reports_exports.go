@@ -26,7 +26,6 @@ func nox_xxx_netClientSend2_4E53C0(to C.int, data unsafe.Pointer, size, related,
 	return C.int(reliableClientSend(int(to), unsafe.Slice((*byte)(data), int(size)), (*server.Object)(unsafe.Pointer(uintptr(uint32(related)))), int(priority)))
 }
 
-//export nox_xxx_netSendPacket0_4E5420
 func nox_xxx_netSendPacket0_4E5420(to C.int, data unsafe.Pointer, size, related, priority C.int) C.int {
 	return C.int(reliableEnqueue(int(to), unsafe.Slice((*byte)(data), int(size)), (*server.Object)(unsafe.Pointer(uintptr(uint32(related)))), int(priority), 0))
 }

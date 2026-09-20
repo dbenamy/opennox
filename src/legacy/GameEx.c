@@ -27,7 +27,6 @@ unsigned int gameex_flags = 0x1E;
 int nox_CharToOemW(const wchar2_t* pSrc, char* pDst) { return nox_sprintf(pDst, "%S", pSrc); }
 
 //----- (10001C20) --------------------------------------------------------
-char getPlayerClassFromObjPtr(int a1) { return *(uint8_t*)(*(uint32_t*)(*(uint32_t*)(a1 + 748) + 276) + 2251); }
 
 //----- (10001D40) --------------------------------------------------------
 char playerInfoStructParser_0(void* a1p) {
@@ -178,31 +177,6 @@ char playerDropATrap(int playerObj) {
 	return v8;
 }
 
-void OnLibraryNotice_420(uint32_t arg1, uint32_t arg2, uint32_t arg3, uint32_t arg4) {
-	int v23 = arg1;
-	int v19 = arg2;
-	uint32_t* v16 = getPlayerClassFromObjPtr(arg1);
-	if (*(uint8_t*)(v19 + 0xA) != 17) {
-		nox_xxx_inventoryServPlace_4F36F0(v23, v19, 1, 1);
-		return;
-	}
-	char v17 = *(uint8_t*)(v19 + 4);
-	if (v17 != 0x6A) {
-		if ((v17 == 0x6B || v17 == 0x6D) && (uint8_t)v16) {
-			goto ifIsWarrior;
-		}
-		nox_xxx_inventoryServPlace_4F36F0(v23, v19, 1, 1);
-		return;
-	}
-	if ((uint8_t)v16 == 1) {
-		nox_xxx_inventoryServPlace_4F36F0(v23, v19, 1, 1);
-		return;
-	}
-ifIsWarrior:
-	nox_xxx_netPriMsgToPlayer_4DA2C0(v23, (const char*)getMemAt(0x587000, 215732),
-									 0); // 0x5BBAB4 = pickup.c:ObjectEquipClassFail
-	nox_xxx_aud_501960(925, v23, 2, *(uint32_t*)(v23 + 36));
-}
 
 //----- (10004330) --------------------------------------------------------
 int getFlagValueFromFlagIndex(signed int a1) {

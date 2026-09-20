@@ -31,7 +31,6 @@ func nox_script_activatorResolveObjs_51B0C0() {
 	GetServer().NoxScriptC().ActResolveObjs()
 }
 
-//export nox_xxx_netGetUnitCodeServ_578AC0
 func nox_xxx_netGetUnitCodeServ_578AC0(cobj *nox_object_t) C.uint {
 	return C.uint(GetServer().S().GetUnitNetCode(asObjectS(cobj)))
 }

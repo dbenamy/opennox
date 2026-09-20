@@ -84,7 +84,6 @@ int nox_xxx_countObserverPlayers_425BF0();
 char* sub_425CA0(int a1, int a2);
 int nox_xxx_mapWriteSectionsMB_426E20(void* a1);
 int nox_xxx_mapReadSection_426EA0(void* a1, char* name, uint32_t* a3);
-int nox_xxx_guide_427010(const char* a1);
 int nox_xxx_guiCreatureGetName_427240(int a1);
 nox_playerInfo_journal* nox_xxx_journalEntryAdd_427490(nox_playerInfo* a1, char* a2, short a3);
 void nox_xxx_comJournalEntryAdd_427500(nox_object_t* a1, char* a2, short a3);

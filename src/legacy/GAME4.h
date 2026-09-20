@@ -15,11 +15,8 @@ int nox_xxx_XFerObelisk_4F6F60(int* a1);
 int nox_xxx_XFerToxicCloud_4F70A0(int a1);
 int nox_xxx_XFerMonsterGen_4F7130(int* a1);
 int nox_xxx_XFerRewardMarker_4F74D0(int* a1);
-int nox_xxx_equipedItemByCode_4F7920(int a1, int a2);
-void nox_xxx_playerSetCustomWP_4F79A0(int a1, int a2, int a3);
 void nox_xxx_mapFindPlayerStart_4F7AB0(float2* a1, nox_object_t* a2p);
 int nox_xxx_weaponGetStaminaByType_4F7E80(int a1);
-short nox_xxx_playerRespawn_4F7EF0(nox_object_t* a1);
 void nox_xxx_updatePlayer_4F8100(nox_object_t* a1);
 void nox_xxx_animPlayerGetFrameRange_4F9F90(int a1, int* a2, int* a3);
 int nox_xxx_unitGetStrength_4F9FD0(int a1);
@@ -55,7 +52,6 @@ int nox_xxx_spellAccept_4FD400(int a1, nox_object_t* a2, nox_object_t* a3p, nox_
 int nox_xxx_castSpellByUser_4FDD20(int a1, nox_object_t* a2, void* a3);
 void nox_xxx_collide_4FDF90(int a1, int a2);
 int nox_xxx_spellGetPhoneme_4FE1C0(int a1, char a2);
-int nox_xxx_spellByBookInsert_4FE340(int a1, int* a2, int a3, int a4, int a5);
 void sub_4FE8A0(int a1);
 void* nox_xxx_spellCastedFirst_4FE930();
 void* nox_xxx_spellCastedNext_4FE940(void* a1);
@@ -101,8 +97,6 @@ int sub_5046A0(uint32_t* a1, unsigned int a2);
 int sub_504720(unsigned int a1, unsigned int a2);
 void* sub_5049D0();
 int sub_5049E0(int a1);
-void sub_506870(int a1, int a2, wchar2_t* a3);
-void sub_506C90(int a1, int a2, wchar2_t* a3);
 int sub_5095E0();
 
 void nox_server_scriptExecuteFnForEachGroupObj_502670(unsigned char* groupPtr, int expectedType, void* a3,

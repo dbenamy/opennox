@@ -2,93 +2,47 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 6.6k lines** — **6,641 physical lines in 36
-production `.c` files**, zero reference C. This conversion removes **1,260 lines**.
+**Qualified C remaining: about6.1k lines** — **6,139 physical lines in35
+production `.c` files**, zero reference C. This conversion removes **502 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — client progress, winners and effects qualified
+## Current — server player-action conversion qualified
 
-Moved55 client labels /41 whole groups and six private C helpers to Go, including
-individual/team score adjustment, compass initialization and map-progress drawing.
-BlueSpark, VioletSpark and the map-frame gate now have Go owners. Retired32 unused
-Go-backed C exports, six C functions and three named C globals; test adapters call
-Go directly. No C implementation is retained for testing.
+Moved16 dispatcher cases and two private pickup helpers to Go. Retired38 unused
+Go-backed C exports after auditing remaining callers; tests call Go directly.
+No original C implementation is retained for tests.
 
-Default/server/highres pass **378/374/378 roots**, no skips, all **63 frozen
-captures /122,204 cases**, with identical source fingerprints. This scope adds
-69,310 original-C cases. Three fresh production binaries pass ABI checks; the
-full suite matches all1,553 known failure entries and15 pass /3 fail /32 skip
-packages. Headless gameplay and explicit save/load, including continuation after
-loading, both pass. All jobs are joined, including production37588.
-See [the qualification](docs/porting/client-progress-effects-native-qualification.json).
-The original-C baseline is committed and pushed as **a2b8342c**. Native conversion
-**f8607de2** is committed and pushed.
+Default/server/highres pass **567/563/567 roots**, no skips, with all **75 frozen
+captures /124,920 cases**, including2,716 new original-C cases. All profiles and
+production checks have identical source fingerprints. Three fresh production
+binaries pass ABI checks. The full suite matches all1,553 known failure entries
+and15 pass /3 fail /32 skip packages. Headless gameplay and explicit save/load
+continuation pass reference comparisons. All qualification jobs are joined.
+See [the qualification](docs/porting/server-actions-native-qualification.json).
+Original-C baseline **3839c872** is committed and pushed; this native conversion
+is ready to commit and push. Prior qualified production is **f8607de2**.
 
-The interface cleanup initially shifted sorted callback IDs in summon captures.
-Retired names now remain nil entries, preserving the original capture namespace
-without restoring C exports or changing expectations. Two direct-call test-adapter
-casts were corrected. Initial source-edit scripts and all native drafts/installers
-are CONSUMED; never replay them. The final qualification includes these fixes.
+Decision for review: incomplete actions return-1 before fields/owners are read.
+The caller formerly checked consumed length only after dispatch. Contracts cover
+every incomplete prefix of34 formats; complete-action captures are unchanged.
+The change is reversible and within the standing authorization.
 
-## Next — remaining server player-action dispatcher
+Fixture correction: retired effects callback41 became nil, which was initially
+assigned an ID and changed captured zeros. Skip nil and reserve removed callback
+slots when assigning dynamic capture IDs. Expected hashes are unchanged; failed
+probes remain recorded as failed. All ignored installers/retirement scripts are
+CONSUMED. Never replay them.
 
-Audit and finish the whole remaining server dispatcher (16 top-level labels,
-476 physical C lines), reusing the existing pickup/drop/use/equipment/waypoint/
-alias contracts and extending positive creature, spell, collision, book, vote,
-trade and endgame coverage as needed. This is a smaller coherent batch because it
-can retire an entire dispatcher and reuse substantial existing C evidence.
-Selection and helper hashes are in
-[server-actions-selection.json](docs/porting/server-actions-selection.json); coverage
-is not yet complete or frozen. The pickup class helper and its private class
-accessor move with their only dispatcher caller. The remaining client dispatcher has48 labels for
-a subsequent connected batch. Existing vote admission/withdrawal tests also reach
-the C dispatcher. New secondary-weapon480, inventory-failure150 and book-request320 contracts pass:
-**950 new cases**, three repeated32-root sweeps, no skips, identical hashes and
-source. Probe57564 and repeats69155 are joined PASS. Existing server/vote captures
-are unchanged. See [the partial checkpoint](docs/porting/server-actions-first-c-checkpoint.json).
-The initial secondary fixture assumed marked IDs merely clear a bit; it now uses
-actual extent lookup and includes full-width net codes. New captures use the
-baseline writer; no frozen expectations were changed. Continue with positive
-creature commands, spells, collision callbacks, trades and gauntlet actions.
-Production remains unchanged from f8607de2. No question is pending; continue after commit/push.
+## Next — replay copy correction, then remaining client messages
 
-The first server checkpoint is committed and pushed as **158d8de6** (push26031
-joined). The next checkpoint adds creature commands320, spell requests720,
-friendly-target spell cases32, collision callbacks90, gauntlet respawns36 and
-trade transactions176: **1,374 additional captured cases**, or2,324 across the
-nine new captures. Leave routing and vote withdrawal add independent contracts.
-Probe10 and two repeats pass40 roots each, no skips, with identical hashes/source.
-See [the second partial checkpoint](docs/porting/server-actions-second-c-checkpoint.json). Trade opening/offers, remaining boundaries and
-full baseline qualification still precede conversion.
-
-Fixture corrections: the collision check now reads the actual world callback
-recorder and checks exact object arguments; the C-heap spell-ID buffer is explicitly
-initialized; friendly-target tests use the actual caster/enemy relationship rather
-than an unrelated AI current-enemy setting. An omitted fixture import was fixed
-before the passing build. Failed probes remain recorded as failed, and no frozen
-expectation or production code changed.
-
-Second partial checkpoint **997762fa** is committed and pushed (push32026 joined).
-The remaining trade contracts now pass probe11: opening180, offers36 and
-without-session176; all nine prior captures match unchanged. There are now2,716
-new captured cases in12 files. The complete baseline manifest freezes75 files,
-including the63 prior client captures. Default/server/highres qualification passes518/514/518 roots, no skips, with
-identical source and all75 captures. See [the complete C baseline](docs/porting/server-actions-c-qualification.json). The related inventory,
-equipment, controls, creature, spell and shop suites are included.
-
-The ignored server_actions.go.draft is prepared but NOT INSTALLED; production
-still matches f8607de2. A recursive C and Go-call audit identifies38 candidate
-obsolete Go-backed C exports after this dispatcher is removed. Qualify and commit
-the full C baseline before installing the draft or retiring those interfaces.
-
-Review decision for the upcoming conversion: the caller validates consumed size
-only after dispatch. The Go draft adds preflight lengths so incomplete actions
-return-1 without accessing owners or mutating input. Complete-action behavior
-still must match the frozen C captures. A separate ignored native-only test draft
-covers every incomplete prefix of all selected action/subaction sizes. This is a
-small, reversible correction under the standing authorization; no question is pending.
+`Server.onPacket` allocates its replay buffer from an empty slice instead of the
+supplied bytes; its only caller is replay dispatch. Add a focused regression,
+confirm failure, and correct the copy in a separate commit. Ignored test draft:
+`build/port-game-messages/replay_message_copy_test.go.draft`; not installed yet.
+Then audit the remaining48 client message labels for a connected conversion batch.
+Continue without pausing; no user decision is pending.
 
 ## Recovery and storage
 
@@ -2006,3 +1960,37 @@ Complete server baseline capture deduplication server-actions-full-server and
 -highres is CONSUMED:2,025,980,850 and2,039,573,772 logical bytes. All audit/apply
 jobs joined, preserving every path and byte. All three baseline qualification
 jobs81046/1015/14986 are joined PASS.
+
+Server-action continuation: interface retirement is installed. Native probe2
+compiled and direct-operation comparisons agreed, but five frozen captures
+failed because the retired effects callback slot41 returned nil and the fixture
+assigned address zero ID66141. Native probe3 is checking a local nil guard plus
+reserved callback slots to preserve existing dynamic capture IDs; expected
+hashes are unchanged. All earlier jobs are joined. The full native manifest and
+pattern now exist at docs/porting/server-actions-native-{batch.json,tests.txt};
+qualification is pending, so f8607de2 remains the last qualified production.
+Completed-capture cleanup server-actions-native-first-two is CONSUMED:
+45 byte-identical copies share storage (1,010,854,877 logical bytes), preserving
+paths, contents and failed-run diagnostics. Original assets/archive untouched.
+Native probe3 is now joined PASS:47 roots, no skips, all12 new frozen captures
+and the older embedded server captures unchanged. The complete default-profile
+sweep is running on the same frozen source. Cleanup server-actions-native-third
+is CONSUMED (28 copies /776,305,208 logical bytes), and twelfth-fixture-cache is
+CONSUMED (12 verified superseded test archives /809,903,246 bytes removed).
+Complete native default profile is joined PASS:567 roots, no skips, all75 frozen
+captures unchanged. Native server profile is running; highres and production
+qualification remain pending. No source mutation during these checks.
+Native server profile is joined PASS:563 roots, no skips, all75 frozen captures.
+Highres precompile32722 is joined PASS; highres qualification is now running.
+Production80628 is joined PASS:three fresh binaries/ABI, exact full-suite known
+failure multiset (1,553 entries;15 pass/3 fail/32 skip), and headless gameplay plus
+explicit save/load continuation. Both scenarios pass reference comparisons.
+Default/server completed-capture deduplication is CONSUMED:2,039,573,772 and
+2,025,980,850 logical bytes, preserving all paths and contents.
+Native highres99927 is joined PASS (567 roots/no skips/all75 frozen captures).
+All native qualification source fingerprints match. Completed scenario asset
+cleanup deduplicate-server-actions-native-assets.py --apply is CONSUMED:
+1,112,747,701 unchanged bytes reclaimed. Restore individual runs with that
+script's --restore NAME; originals, changed saves and screenshots are preserved.
+Native highres capture deduplication is CONSUMED:506 identical files share
+storage (2,039,573,772 logical bytes); all cleanup jobs are joined.

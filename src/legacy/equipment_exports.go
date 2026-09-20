@@ -47,7 +47,6 @@ func sub_53A6C0(u C.int, it *nox_object_t) { equipmentPickupSound(objectFromInt(
 //export sub_53AAB0
 func sub_53AAB0(it C.int) { equipmentDropSound(objectFromInt(it)) }
 
-//export sub_53AB90
 func sub_53AB90(u, it C.int) { equipmentSecondary(objectFromInt(u), objectFromInt(it)) }
 
 //export sub_53E2D0

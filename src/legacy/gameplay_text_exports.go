@@ -33,8 +33,7 @@ func nox_xxx_netInformTextMsg2_4DA180(kind C.int, data *C.uint8_t) C.int {
 	return C.int(gameplayTextInformationAll(int(kind), unsafe.Pointer(data)))
 }
 
-//export nox_xxx_netPriMsgToPlayer_4DA2C0
-func nox_xxx_netPriMsgToPlayer_4DA2C0(u *C.nox_object_t, text *C.gameplay_text_const_char, flag C.char) {
+func nox_xxx_netPriMsgToPlayer_4DA2C0(u *C.nox_object_t, text *C.char, flag C.char) {
 	gameplayTextPrivate((*server.Object)(unsafe.Pointer(u)), (*byte)(unsafe.Pointer(text)), byte(flag))
 }
 

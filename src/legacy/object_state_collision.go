@@ -32,7 +32,7 @@ func stateMonsterCollision(u, t *server.Object) unsafe.Pointer {
 	return C.nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(u.UpdateData, 1272), t.CObj(), u.CObj(), 22)
 }
 func stateMimicCollision(u, t *server.Object) unsafe.Pointer {
-	if t != nil && t.ObjFlags&0x8000 == 0 && t.ObjClass&6 != 0 && C.nox_xxx_unitIsEnemyTo_5330C0(asObjectC(u), asObjectC(t)) != 0 && !u.MonsterActionIsScheduled(15) {
+	if t != nil && t.ObjFlags&0x8000 == 0 && t.ObjClass&6 != 0 && nox_xxx_unitIsEnemyTo_5330C0(asObjectC(u), asObjectC(t)) != 0 && !u.MonsterActionIsScheduled(15) {
 		if st := u.MonsterPushAction(43); st != nil {
 			*equipmentWord(unsafe.Pointer(st), 4) = GetServer().S().Frame()
 		}

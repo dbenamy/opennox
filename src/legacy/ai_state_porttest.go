@@ -288,7 +288,7 @@ func portTestMonsterStateCall(proxy *portTestRoamOwnerServer, u *server.Object, 
 		if sp.Broadcast || sp.NilUnit {
 			target = nil
 		}
-		C.nox_xxx_orderUnit_533900(asObjectC(proxy.state.source), asObjectC(target), C.int(sp.Order))
+		nox_xxx_orderUnit_533900(asObjectC(proxy.state.source), asObjectC(target), C.int(sp.Order))
 	case 24:
 		return uint64(uintptr(monsterNPCAnim(u)))
 	case 25:

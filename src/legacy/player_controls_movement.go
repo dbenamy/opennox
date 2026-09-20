@@ -150,7 +150,7 @@ func controlInputAttack(u *server.Object) {
 		if *controlByte(data, 108) != 0 || *controlByte(data, 109) == 0 {
 			setAttack()
 			C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1)
-			C.nox_xxx_useByNetCode_53F8E0(inventoryInt(u), inventoryInt(it))
+			nox_xxx_useByNetCode_53F8E0(inventoryInt(u), inventoryInt(it))
 		} else if controlSubStamina(u, 45) != 0 {
 			*equipmentWord(data, 96) |= 2
 			setAttack()

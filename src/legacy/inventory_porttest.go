@@ -27,13 +27,11 @@ static void* invDropPtr(void){return invDrop;}
 static uint64_t invCall(int op,nox_object_t* u,nox_object_t* it,int value,int arg,float radius,float2* pos) {
  int up=(int)(uintptr_t)u, ip=(int)(uintptr_t)it;
  switch(op) {
- case 0: sub_4ED0C0(u, it);return 0;
  case 1: return (uint32_t)(uintptr_t)nox_xxx_dropDefault_4ED290(u,it,pos);
  case 2: return (uint32_t)(uintptr_t)nox_GlyphDrop_4ED500(up,ip,pos);
  case 3: return (uint32_t)(uintptr_t)nox_xxx_dropTrap_4ED580(up,ip,pos);
  case 4: return (uint32_t)(uintptr_t)nox_xxx_dropCrown_4ED5E0(up,ip,(int*)pos);
  case 5: return (uint32_t)(uintptr_t)nox_xxx_dropTreasure_4ED710(up,ip,(int*)pos);
- case 6: return (uint32_t)(uintptr_t)nox_xxx_drop_4ED790(u,it,pos);
  case 7: return (uint32_t)(uintptr_t)nox_xxx_drop_4ED810(up,ip,(float*)pos);
  case 8: return (uint32_t)(uintptr_t)nox_xxx_invForceDropItem_4ED930(up,(uint32_t*)it);
  case 9: return (uint32_t)(uintptr_t)sub_4ED970(radius,(float2*)((char*)u+56),pos);
@@ -438,6 +436,10 @@ func (p *portTestShopPools) inventoryAction(a PortTestShopAction) uint32 {
 	}
 	var out uint64
 	switch a.Op {
+	case PortTestInventory4ED0C0:
+		sub_4ED0C0(asObjectC(u), asObjectC(it))
+	case PortTestInventory4ED790:
+		out = uint64(uint32(nox_xxx_drop_4ED790(asObjectC(u), asObjectC(it), pos)))
 	case PortTestInventory4EDCD0:
 		out = uint64(bool2int(inventoryDropEligible(u, it)))
 	case PortTestInventory4EE2A0:

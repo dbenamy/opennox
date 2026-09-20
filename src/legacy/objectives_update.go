@@ -72,7 +72,7 @@ func objectivePickupBuffs(u *server.Object) uint32 {
 		if out == 0 {
 			continue
 		}
-		out = uint32(bool2int(bool(C.nox_xxx_spellHasFlags_424A50(C.int(out), 0x80000))))
+		out = uint32(bool2int(bool(nox_xxx_spellHasFlags_424A50(int(out), 0x80000))))
 		if out != 0 {
 			out = uint32(spellLifeBuffOff(u, int32(enc)))
 		}

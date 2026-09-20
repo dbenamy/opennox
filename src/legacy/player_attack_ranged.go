@@ -107,7 +107,7 @@ func attackBow(u, it *server.Object) int {
 	kind := attackWeaponBits(it)
 	b := (*byte)(it.UseData.Ptr)
 	quest := noxflags.HasGame(4096)
-	msg := func(s string) { C.nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr(s), 0) }
+	msg := func(s string) { nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr(s), 0) }
 	emptySound := func() {
 		if kind == 4 {
 			if !quest {

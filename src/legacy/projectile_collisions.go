@@ -209,7 +209,7 @@ func projectileSpark(u, t *server.Object, n *types.Pointf) {
 			*(*byte)(unsafe.Add(t.CObj(), 541))++
 			*(*uint16)(unsafe.Add(t.CObj(), 542)) = 1000
 			if t.ObjClass&4 != 0 {
-				C.nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), internCStr("objcoll.c:WebbingSlow"), 0)
+				nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), internCStr("objcoll.c:WebbingSlow"), 0)
 			}
 		}
 	default:
@@ -227,7 +227,7 @@ func projectileWeb(u, t *server.Object) {
 			spellLifeApplyBuff(t, 4, int16(uint16(GetServer().S().TickRate())*4), 3)
 		}
 		if t.ObjClass&4 != 0 {
-			C.nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), internCStr("objcoll.c:WebbingSlow"), 0)
+			nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), internCStr("objcoll.c:WebbingSlow"), 0)
 		}
 	}
 }

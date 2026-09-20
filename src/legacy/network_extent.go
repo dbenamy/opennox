@@ -7,17 +7,19 @@ import "C"
 
 import "unsafe"
 
-//export nox_xxx_packetDynamicUnitCode_578B40
 func nox_xxx_packetDynamicUnitCode_578B40(value C.int) C.int {
-	code := uint32(value)
+	return C.int(networkDynamicUnitCode(uint32(value)))
+}
+
+func networkDynamicUnitCode(code uint32) uint32 {
 	if code&0x8000 == 0 {
-		return value
+		return code
 	}
 	obj := GetServer().S().Objs.GetObjectByInd(int(code &^ 0x8000))
 	if obj == nil {
 		return 0
 	}
-	return C.int(obj.NetCode)
+	return obj.NetCode
 }
 
 //export nox_xxx_netGetUnitByExtent_4ED020

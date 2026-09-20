@@ -110,7 +110,7 @@ func monsterPoisonMessage(u, t *server.Object, kind int) {
 	}
 	p, free := alloc.CString(name)
 	defer free()
-	C.nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), (*C.char)(unsafe.Pointer(p)), 0)
+	nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), (*C.char)(unsafe.Pointer(p)), 0)
 }
 
 // kind follows the shipped strike table. Wasp applies poison before force;

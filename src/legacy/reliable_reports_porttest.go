@@ -70,7 +70,7 @@ func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related
 	case 12:
 		return uint32(C.nox_xxx_netClientSend2_4E53C0(a, p, n, obj, C.int(priority)))
 	case 13:
-		return uint32(C.nox_xxx_netSendPacket0_4E5420(a, p, n, obj, C.int(priority)))
+		return uint32(nox_xxx_netSendPacket0_4E5420(a, p, n, obj, C.int(priority)))
 	case 14:
 		return uint32(reliableCoalesce(to, data, related, priority))
 	case 15:

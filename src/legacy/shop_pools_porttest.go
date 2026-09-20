@@ -115,6 +115,7 @@ type portTestShopPools struct {
 	owned               []*portTestShopOwned
 	items               []*portTestShopOwned
 	ids                 map[uint32]uint32
+	reservedFunctionIDs int // Preserve capture IDs formerly occupied by retired C callbacks.
 	steps               []PortTestShopStep
 	initialAlive        int
 	players             func() [][]uint32
@@ -273,6 +274,7 @@ func (p *portTestShopPools) prepare() {
 	p.cleanup()
 	p.initialAlive = p.proxy.core.Objs.Alive
 	p.ids = make(map[uint32]uint32)
+	p.reservedFunctionIDs = 0
 	p.steps = nil
 }
 func (p *portTestShopPools) run() {
@@ -436,7 +438,7 @@ func (p *portTestShopPools) run() {
 				panic("shop fixture packet")
 			}
 		case PortTestShopWithdraw:
-			rv = uint32(C.nox_xxx_tradeP2PAddOfferMB_50FE20(C.int(uintptr(q)), C.int(a.Value)))
+			rv = uint32(nox_xxx_tradeP2PAddOfferMB_50FE20(C.int(uintptr(q)), C.int(a.Value)))
 		case PortTestShopInventory:
 			owner := (*server.Object)(shopTestPointer(words[2+a.Side]))
 			it := p.items[a.Item].u
@@ -446,13 +448,13 @@ func (p *portTestShopPools) run() {
 			}
 			owner.InvFirstItem = it
 		case PortTestShopRepairQuote:
-			rv = uint32(uintptr(unsafe.Pointer(C.sub_5108D0(C.int(words[2+a.Side]), C.int(uintptr(q)), C.int(a.Value)))))
+			rv = uint32(uintptr(unsafe.Pointer(sub_5108D0(C.int(words[2+a.Side]), C.int(uintptr(q)), C.int(a.Value)))))
 		case PortTestShopRepair:
-			rv = uint32(uintptr(unsafe.Pointer(C.sub_510AE0((*C.int)(shopTestPointer(words[2+a.Side])), C.int(uintptr(q)), (*C.uint32_t)(shopTestPointer(a.Value))))))
+			rv = uint32(uintptr(unsafe.Pointer(sub_510AE0((*C.int)(shopTestPointer(words[2+a.Side])), C.int(uintptr(q)), (*C.uint32_t)(shopTestPointer(a.Value))))))
 		case PortTestShopSell:
-			C.sub_510D10((*C.int)(shopTestPointer(words[2+a.Side])), C.int(uintptr(q)), C.int(a.Item), C.uint(a.Value))
+			sub_510D10((*C.int)(shopTestPointer(words[2+a.Side])), C.int(uintptr(q)), C.int(a.Item), C.uint(a.Value))
 		case PortTestShopLookup:
-			rv = uint32(C.sub_510DE0(C.int(words[2+a.Side]), C.int(a.Value)))
+			rv = uint32(sub_510DE0(C.int(words[2+a.Side]), C.int(a.Value)))
 		case PortTestShopDetach:
 			rv = uint32(shopDetach((*shopSession)(q), (*server.Object)(shopTestPointer(words[2+a.Side]))))
 		case PortTestShopLoad:
@@ -487,7 +489,7 @@ func (p *portTestShopPools) run() {
 				n = w[2]
 			}
 			if a.Op == PortTestShopAccept {
-				C.nox_xxx_tradeAccept_50F5A0(C.int(uintptr(q)), C.int(words[2+a.Side]))
+				nox_xxx_tradeAccept_50F5A0(C.int(uintptr(q)), C.int(words[2+a.Side]))
 			} else {
 				C.nox_xxx_shopCancelSession_510DC0(q)
 			}
@@ -589,7 +591,7 @@ func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 				}
 				seen[n] = true
 				if _, ok := p.ids[uint32(uintptr(n))]; !ok {
-					p.identify(n, uint32(90000+len(p.ids)))
+					p.identify(n, uint32(90000+len(p.ids)+p.reservedFunctionIDs))
 				}
 				nodes = append(nodes, n)
 				n = shopTestPointer(shopTestWords(n, 4)[2])

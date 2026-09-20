@@ -13,8 +13,7 @@ import (
 	"unsafe"
 )
 
-//export nox_xxx_guide_427010
-func nox_xxx_guide_427010(name *C.book_award_const_char) C.int {
+func nox_xxx_guide_427010(name *C.char) C.int {
 	return C.int(bookGuideID(alloc.GoString((*byte)(unsafe.Pointer(name)))))
 }
 

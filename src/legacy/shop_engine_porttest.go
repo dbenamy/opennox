@@ -19,11 +19,7 @@ static void* portTestTradePickupPtr(void) {return portTestTradePickup;}
 extern uint32_t dword_5d4594_2386548;
 extern uint32_t dword_5d4594_2386552;
 extern uint32_t dword_5d4594_2386560;
-static int portTestTradeOffer(int session, int unit, void* item) {
- float bits;
- memcpy(&bits, &item, 4);
- return nox_xxx_tradeP2PAddOffer2_50F820_trade(session, unit, bits);
-}
+
 */
 import "C"
 
@@ -194,7 +190,7 @@ func (p *portTestShopPools) engineAction(a PortTestShopAction, q unsafe.Pointer)
 		if a.Side != 0 {
 			left, right = right, left
 		}
-		return p.engineAdopt(unsafe.Pointer(C.nox_xxx_servShopStart_50EF10_trade(C.int(uintptr(left.CObj())), C.int(uintptr(right.CObj())))))
+		return p.engineAdopt(unsafe.Pointer(nox_xxx_servShopStart_50EF10_trade(C.int(uintptr(left.CObj())), C.int(uintptr(right.CObj())))))
 	case PortTestTradeIntro:
 		return tradeIntro((*shopSession)(q))
 	case PortTestTradePeerIntro:
@@ -216,15 +212,15 @@ func (p *portTestShopPools) engineAction(a PortTestShopAction, q unsafe.Pointer)
 	case PortTestTradeIsGem:
 		return uint32(bool2int(tradeIsGem(item)))
 	case PortTestTradeAddOffer:
-		return uint32(C.portTestTradeOffer(session, unit, item.CObj()))
+		return tradeAddOffer((*shopSession)(q), u, item)
 	case PortTestTradeBuy:
-		C.sub_5100C0_trade(unit, (*C.uint32_t)(q), C.int(a.Value))
+		sub_5100C0_trade(unit, (*C.uint32_t)(q), C.int(a.Value))
 	case PortTestTradeBuyMany:
-		return uint32(uintptr(unsafe.Pointer(C.sub_510640_trade(unit, session, C.int(item.TypeInd), (*C.float)(shopTestPointer(a.Value))))))
+		return uint32(uintptr(unsafe.Pointer(sub_510640_trade(unit, session, C.int(item.TypeInd), (*C.float)(shopTestPointer(a.Value))))))
 	case PortTestTradeSellQuote:
-		return uint32(uintptr(unsafe.Pointer(C.sub_5109C0_trade((*C.int)(u.CObj()), session, (*C.uint32_t)(shopTestPointer(a.Value))))))
+		return uint32(uintptr(unsafe.Pointer(sub_5109C0_trade((*C.int)(u.CObj()), session, (*C.uint32_t)(shopTestPointer(a.Value))))))
 	case PortTestTradeSell:
-		return uint32(uintptr(unsafe.Pointer(C.sub_510BE0_trade((*C.int)(u.CObj()), session, (*C.uint32_t)(shopTestPointer(a.Value))))))
+		return uint32(uintptr(unsafe.Pointer(sub_510BE0_trade((*C.int)(u.CObj()), session, (*C.uint32_t)(shopTestPointer(a.Value))))))
 	default:
 		panic("trade fixture operation")
 	}

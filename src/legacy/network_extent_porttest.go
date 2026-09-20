@@ -81,7 +81,7 @@ func PortTestNetworkExtent(specs []PortTestExtentSpec, codes []uint32, noServer 
 	out := make([]PortTestExtentSnapshot, 0, len(codes))
 	for _, code := range codes {
 		s := PortTestExtentSnapshot{
-			DynamicResult:    uint32(C.nox_xxx_packetDynamicUnitCode_578B40(C.int(code))),
+			DynamicResult:    uint32(nox_xxx_packetDynamicUnitCode_578B40(C.int(code))),
 			FoundIndex:       -3,
 			ObjectsUnchanged: unchanged(),
 		}

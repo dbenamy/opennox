@@ -63,7 +63,6 @@ case 37:return (void*)nox_xxx_useLesserFireballStaff_53F290;
 case 38:return (void*)nox_xxx_wandShot_53F480;
 case 39:return (void*)nox_xxx_useWandCastSpell_53F4F0;
 case 40:return (void*)nox_xxx_useFireWand_53F670;
-case 41:return (void*)nox_xxx_useByNetCode_53F8E0;
 case 42:return (void*)nullsub_22;case 43:return (void*)nullsub_36;default:return 0;}}
 static uint64_t effectsCall(int op,nox_object_t* u,nox_object_t* it,nox_object_t* target,void* mod,uint32_t* scalar,int value,int side,float2* pos){
  int up=(int)u,ip=(int)it,tp=(int)target,mp=(int)mod;
@@ -108,7 +107,6 @@ case 36:return (uint32_t)nox_xxx_useLesserFireballStaff_53F290(up,(uint32_t*)it)
 case 37:return (uint32_t)nox_xxx_wandShot_53F480(up,value,(int*)pos,(uint32_t*)side);
 case 38:return (uint32_t)nox_xxx_useWandCastSpell_53F4F0(up,(uint32_t*)it);
 case 39:return (uint32_t)nox_xxx_useFireWand_53F670(up,ip);
-case 40:return (uint32_t)nox_xxx_useByNetCode_53F8E0(up,ip);
 }
 return 0;
 }
@@ -198,6 +196,7 @@ func (p *portTestShopPools) effectsUseItems() {
 	if sp == nil {
 		return
 	}
+	p.reservedFunctionIDs += 1
 	if clock := sp.ExpectedClock; clock != nil && (p.proxy.core.Frame() != clock[0] || uint32(p.proxy.core.TickRate()) != clock[1]) {
 		panic("effects fixture clock was overwritten")
 	}
@@ -206,7 +205,9 @@ func (p *portTestShopPools) effectsUseItems() {
 	}
 
 	for i := 1; i <= 43; i++ {
-		p.identify(C.effectsFunction(C.int(i)), 66100+uint32(i))
+		if fn := C.effectsFunction(C.int(i)); fn != nil {
+			p.identify(fn, 66100+uint32(i))
+		}
 	}
 	for i, s := range sp.Modifiers {
 		m := (*server.ModifierEff)(unsafe.Add(p.proxy.callbacks.shop.ptr(8), i*144))
@@ -303,7 +304,11 @@ func (p *portTestShopPools) effectsUseAction(a PortTestShopAction) uint32 {
 	if a.Op == PortTestEffects53F480 && a.Value == 0xfffffffe {
 		a.Value = uint32(p.effectsUse.projectiles[0])
 	}
-	p.effectsUse.result = uint64(C.effectsCall(C.int(a.Op-500), asObjectC(u), asObjectC(it), asObjectC(p.effectsUseTarget(sp.Target)), mod, (*C.uint32_t)(unsafe.Pointer(p.effectsUse.scalar)), C.int(a.Value), C.int(a.Side), (*C.float2)(unsafe.Pointer(p.inventory.pos))))
+	if a.Op == PortTestEffects53F8E0 {
+		p.effectsUse.result = uint64(uint32(effectsUse(u, it)))
+	} else {
+		p.effectsUse.result = uint64(C.effectsCall(C.int(a.Op-500), asObjectC(u), asObjectC(it), asObjectC(p.effectsUseTarget(sp.Target)), mod, (*C.uint32_t)(unsafe.Pointer(p.effectsUse.scalar)), C.int(a.Value), C.int(a.Side), (*C.float2)(unsafe.Pointer(p.inventory.pos))))
+	}
 	return uint32(p.effectsUse.result)
 }
 func (p *portTestShopPools) effectsUseSnapshot() []uint32 {

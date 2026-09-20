@@ -351,7 +351,6 @@ func nox_xxx_mobActionToAnimation_533790(p C.int) C.int {
 	return C.int(monsterActionToAnimation(asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p))))))
 }
 
-//export nox_xxx_orderUnit_533900
 func nox_xxx_orderUnit_533900(a, b *nox_object_t, o C.int) {
 	monsterOrder(asObjectS(a), asObjectS(b), int(o))
 }

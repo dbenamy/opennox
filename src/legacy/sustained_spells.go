@@ -84,7 +84,7 @@ func sustainedCharges(u, item *server.Object) {
 func sustainedTagPacket(u, target *server.Object, mode byte) uint32 {
 	var b [7]byte
 	b[0] = 210
-	binary.LittleEndian.PutUint16(b[1:], uint16(C.nox_xxx_netGetUnitCodeServ_578AC0(asObjectC(target))))
+	binary.LittleEndian.PutUint16(b[1:], uint16(nox_xxx_netGetUnitCodeServ_578AC0(asObjectC(target))))
 	binary.LittleEndian.PutUint16(b[3:], target.TypeInd)
 	b[5] = mode
 	b[6] = 1

@@ -19,7 +19,7 @@ import (
 )
 
 func inventoryPriMessage(u *server.Object, key string) {
-	C.nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr(key), 0)
+	nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr(key), 0)
 }
 func inventoryWeaponPickup(u, it *server.Object, arg, equip int) int {
 	if u.ObjClass&4 != 0 && noxflags.HasGame(4096) && it.ObjSubClass&0x200000 != 0 {

@@ -44,7 +44,6 @@ static uint64_t eqCall(int op,nox_object_t* u,nox_object_t* it,int value,int sid
  case 6:return (uint32_t)sub_53A680(up);
  case 7:sub_53A6C0(up,it);return 0;
  case 8:sub_53AAB0(ip);return 0;
- case 9:sub_53AB90(up,ip);return 0;
  case 10:return (uint32_t)sub_53E2D0(ip);
  case 11:return (uint32_t)nox_xxx_recalculateArmorVal_53E300((uint32_t*)u);
  case 12:return (uint32_t)sub_53E3A0(up,it);
@@ -271,7 +270,12 @@ func (p *portTestShopPools) equipmentAction(a PortTestShopAction) uint32 {
 	if !sp.Inventory.NilItem && a.Item >= 0 {
 		it = p.items[a.Item].u
 	}
-	p.equipment.result = uint64(C.eqCall(C.int(a.Op-400), asObjectC(u), asObjectC(it), C.int(a.Value), C.int(a.Side)))
+	if a.Op == 409 {
+		equipmentSecondary(u, it)
+		p.equipment.result = 0
+	} else {
+		p.equipment.result = uint64(C.eqCall(C.int(a.Op-400), asObjectC(u), asObjectC(it), C.int(a.Value), C.int(a.Side)))
+	}
 	return uint32(p.equipment.result)
 }
 func (p *portTestShopPools) equipmentSnapshot() []uint32 {

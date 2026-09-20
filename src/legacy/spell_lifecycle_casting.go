@@ -213,7 +213,7 @@ func spellLifeCreateFly(u, target *server.Object, id int32) *server.Object {
 	return out
 }
 func spellLifeCollide(u, target *server.Object) {
-	if spellLifeHasBuff(u, 22) && target.ObjFlags&0x8008 == 0 && target.ObjClass&6 != 0 && C.nox_xxx_unitIsEnemyTo_5330C0(asObjectC(u), asObjectC(target)) != 0 {
+	if spellLifeHasBuff(u, 22) && target.ObjFlags&0x8008 == 0 && target.ObjClass&6 != 0 && nox_xxx_unitIsEnemyTo_5330C0(asObjectC(u), asObjectC(target)) != 0 {
 		power := int32(u.BuffsPower[22]) - 1
 		GetServer().S().Audio.EventObj(135, u, 0, 0)
 		spellLifeBuffOff(u, 22)
