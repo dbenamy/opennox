@@ -33,91 +33,42 @@ CONSUMED and stale. Every successful native capture set shares verified identica
 storage with C references; use fresh output paths. Original assets/archive,
 qualified binaries, captures and failure evidence remain. No question is pending.
 
-Next: audit remaining client/server game-message dispatch and notices. The ignored
-next-dispatch-audit-draft.json finds 145 named client C cases and 16 server cases,
-with no apparent overlap with the corresponding Go outer cases. Complete the
-control-flow, callback and ownership audit before installing fixtures or freezing
-expectations. The baseline fixture work below is not a production conversion.
+## Active — original-C game-message baseline
 
-Next-batch work has started: [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md)
-records the 3,841-line dispatch/notice scope and fixture plan. A thin C adapter and
-seven contracts pass 2,210 cases, three repetitions and a separate process,
-with seven byte-identical captures. All jobs are joined. No runtime goldens are
-frozen and the combined dispatch scope is not qualified; production is unchanged.
-See GAME_MESSAGES.md and game-messages-initial-fixtures.json. Next: real server
-action contracts and the larger client dispatcher families.
+Production remains identical to qualified **0d5a03b2**: **8,820 C lines /38 files**.
+Scope: three client/server dispatch and notice bodies /3,841 body lines. See
+[GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) for audit, coverage and review notes.
+No conversion is installed, no runtime goldens are frozen, and the whole scope
+is not yet qualified.
 
-Partial fixture checkpoint **33630cba** is pushed. The working extension now
-passes ten message roots (2,522 cases) plus inherited waypoint roots, including
-180 waypoint, 84 missing-target and 48 drop/use contracts. All guard assertions
-pass. Repeated and separate-process captures match; static checks pass. All jobs
-are joined. See game-messages-action-fixtures.json. Runtime goldens are not yet
-frozen, and the whole dispatch scope is still incomplete. Production is unchanged.
+Current fixture coverage: **32,442 cases /26 message roots**, plus **21 inherited
+roots**. Three repetitions pass **141 root runs**, with **26 matching captures**
+across processes. Static mapped-memory checks pass. All jobs are joined, including
+47271/85335/12730. Latest evidence:
+[game-messages-client-equipment-fixtures.json](docs/porting/game-messages-client-equipment-fixtures.json).
+Prior pushed checkpoints include 767e00ce (health), 78dffc6b (walls), and 82656d33
+(inventory reports); equipment is the current checkpoint being committed.
 
-A compiler-only heap trial (1536 MiB, test runtime still 768 MiB) completed the
-root-only rebuild/repeat in 39 seconds. Keep this setting for single-job focused
-builds; it does not establish a controlled performance comparison. Fifteen
-verified superseded test-cache archives were removed, recovering 1,131,099,228
-bytes. Cleanup scripts are consumed; qualified binaries/evidence/assets remain.
-Working follow-up adds 96 equipment cases with explicit equipped-flag contracts.
-Equipment passes with eleven message roots and three inherited roots, including
-three repetitions and equal captures (8563/33993 joined). Working follow-up adds
-144 pickup cases for carrying limits and the GameEx class/item hook. Jobs 96744/2714 are joined and pass: 2,762 message cases, 45 root runs
-over three repetitions, and twelve identical separate-process captures. See
-game-messages-inventory-fixtures.json. Remaining server actions
-and client families are still ahead. Client input-write sites are documented.
+Covered families include notices, server aliases/waypoints/inventory actions,
+client object creation/update/lifetime/control, friend lists, health/meters,
+magic/secret walls, inventory reports and player/NPC equipment. Remaining client
+families and positive server actions still need coverage. Next: NPC appearance
+and remaining drawable attribute/effect reports.
 
-Current partial baseline: equipment/pickup checkpoint **f006b516** is pushed.
-Client object updates/creation and height/frame fields add 14,528 cases; all
-15 message roots now cover 17,290 cases. Three repetitions with six inherited
-roots pass 63 root runs and fifteen separate-process captures match. All jobs
-are joined, including 10694/15884. See game-messages-client-object-fixtures.json.
-No runtime goldens are frozen; remaining dispatch families are still ahead.
-The initial new position expectation missed the qualified owner's out-of-map
-fallback; it was corrected before accepting captures, with no production change.
-A second verified superseded test-cache cleanup recovered 1,130,553,318 bytes;
-its audit/apply scripts are consumed. Qualified evidence/assets remain.
+Review notes: client dispatch sometimes modifies its input; equip clears the
+identifier high bit, while unequip preserves it. Health-change notifications queue
+while disconnected. Wall tests use full owner Reset between cases: duplicate-
+position DeleteAtGrid cleanup exposed an existing row-index inconsistency, recorded
+for a separate wall-owner review. No production behavior was changed to fix tests.
 
-Latest client lifetime extension passes 576 cases. Accumulated coverage is
-17,866 message cases /16 message roots, plus six inherited roots; three repeats
-pass 66 root runs and sixteen captures match across processes. Static mapped-
-memory checks pass. All jobs are joined (55452/11844 included). See
-[game-messages-client-lifetime-fixtures.json](docs/porting/game-messages-client-lifetime-fixtures.json).
-Next: remaining client object/control reports and server dispatch families.
-No conversion installed; C remains 8,820 lines in 38 files.
-
-Latest original-C checkpoint extends object controls and friend lists:
-**22,130 message cases /17 roots**, plus eight inherited roots. Three repetitions
-pass **75 root runs**, with **17 matching captures** across processes. Static
-mapped-memory checks pass; all jobs are joined (53591/49579/80295 included).
-See [game-messages-client-control-fixtures.json](docs/porting/game-messages-client-control-fixtures.json).
-Production remains identical to 0d5a03b2; no runtime goldens are frozen and no
-conversion is installed. Next: client health/wall/equipment/effect reports and
-remaining positive server actions. Original archive/assets are preserved; only
-the asset archive should remain untracked after committing this checkpoint.
-
-Latest health-message checkpoint: **28,726 cases /19 message roots**, plus
-12 inherited roots. Three repetitions pass **93 root runs** and **19 matching
-captures**; static mapped-memory checks pass. All test jobs are joined, including
-34761/25150. See game-messages-client-health-fixtures.json. Production unchanged.
-Next: wall reports. A third superseded-cache audit is in progress (67029); inspect
-its fresh plan before cleanup. No runtime goldens are frozen yet.
-
-Latest wall-message checkpoint: **29,398 cases /21 message roots**, plus
-14 inherited roots. Three repetitions pass **105 root runs** and **21 matching
-captures**; static checks pass. All jobs are joined (25813/36629 included).
-See game-messages-client-wall-fixtures.json and GAME_MESSAGES.md for the duplicate-
-position cleanup finding. Production unchanged; C remains 8,820 lines /38 files.
-Third superseded-cache cleanup recovered 1,133,631,892 bytes; its scripts are
-consumed, jobs 67029/88187 joined. Next: inventory scalar/durability/charge reports.
-The ignored inventory-scalars.draft is prepared, not yet installed.
-
-Latest client inventory report checkpoint: **31,322 cases /23 message roots**,
-plus 18 inherited roots. Three repetitions pass **123 root runs** and **23 matching
-captures**; static checks pass. Jobs 32355/80982 are joined. See
-[game-messages-client-inventory-fixtures.json](docs/porting/game-messages-client-inventory-fixtures.json).
-The inventory-scalars draft is consumed; client-equipment.draft is prepared,
-not installed. Next: player/NPC equipment dispatch contracts. Production unchanged.
+Single-job focused builds use compiler GOMEMLIMIT=1536MiB and
+`-exec='env GOMEMLIMIT=768MiB'` for the actual 386 test, GOMAXPROCS=2. This is not a
+measured performance guarantee for concurrent builds. Three completed cache
+cleanups removed only verified superseded test archives (1,131,099,228;
+1,130,553,318; and 1,133,631,892 bytes). Their scripts are consumed; original
+assets/archive, qualified binaries and evidence remain. The inventory-scalars and
+client-equipment drafts/installers are consumed; never replay over reviewed source.
+No question or approval is pending. Continue after each committed checkpoint.
 
 ## Previous — client drawable state Go conversion qualified
 

@@ -283,3 +283,21 @@ The inventory-scalars draft is CONSUMED. Next: equipment dispatch using the exis
 player/NPC owners and independent insertion/capacity/modifier contracts. The
 ignored client-equipment draft is prepared but not yet installed. Production C
 is unchanged at 8,820 lines /38 files; the full dispatch baseline is incomplete.
+
+Client inventory report checkpoint **82656d33** is pushed. The player/NPC equipment
+fixture is installed and its first probe is running (47271). It retains the
+qualified owners and independent mask, capacity, modifier identity and canary
+expectations, while calling the original dispatcher. Ordinary equip messages
+supply the implicit all-255 modifier bytes; modifiable equip messages retain their
+explicit bytes. Static-player identifiers are cleared in place only when connected.
+The equipment draft/installer is consumed; never replay over reviewed source.
+
+Player/NPC equip and player unequip pass 1,120 captured cases, plus missing-NPC
+assertions. These preserve the distinct aggregate-mask behavior at full capacity,
+modifier pointer identity, untouched slot tails, and connectivity gates. Unequip
+preserves the input identifier including its high bit; equip clears that bit only
+when connected. The accumulated repeat passes 141 root runs (47 roots, three
+repetitions), 32,442 message cases and twenty-six matching captures. Static checks
+pass; jobs 47271/85335/12730 are joined. See
+game-messages-client-equipment-fixtures.json. Production C is unchanged.
+Next: NPC appearance and remaining drawable attribute/effect reports.

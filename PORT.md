@@ -24,8 +24,10 @@ C remaining is **8,820 physical lines in 38 files**, zero reference C.
 This conversion removes 447 lines, including four unused or test-only helpers.
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
-Next: audit the remaining client/server game-message dispatch and notices,
-reusing the qualified gameplay owners and adding dispatch-level contracts.
+The remaining client/server game-message dispatch and notice baseline is in
+progress: 32,442 cases across 26 message roots, with accumulated repeated checks
+and matching captures. Production is unchanged; see
+[GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) for remaining coverage.
 
 Previous completed GUI batches include
 [client interaction](docs/porting/CLIENT_INTERACTION.md), the
