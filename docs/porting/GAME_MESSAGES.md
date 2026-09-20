@@ -207,3 +207,21 @@ fade deadlines. All 576 lifetime cases pass. The accumulated repeat passes 66 ro
 (22 roots, three repetitions), 17,866 message cases and sixteen equal captures
 across processes. Static mapped-memory checks pass. Jobs 55452/11844 are joined.
 See game-messages-client-lifetime-fixtures.json. No production code changed.
+
+The follow-up field fixture includes object enable/disable and byte-sized frame
+reports, preserving the conditional draw-callback clearing for class bit 0x40000.
+Its independent whole-record contracts pass; no old runtime golden was changed
+(the combined baseline is not frozen yet). A new friend-list fixture exercises
+add/remove/reset through original C with the qualified list owner, including
+capacity, duplicate-first removal and normalization of the identifier high bit.
+Its first run includes the inherited friend-list roots. Production is unchanged.
+
+Object controls and friend lists pass the accumulated repeat: 22,130 message
+cases /17 roots, plus eight inherited roots; three repetitions give 75 passing
+root runs and seventeen equal separate-process captures. Static mapped-memory
+checks pass. Jobs 53591/49579/80295 are joined. See
+[game-messages-client-control-fixtures.json](game-messages-client-control-fixtures.json).
+Only porttest sources changed since qualified production 0d5a03b2. No runtime
+goldens are frozen and the combined dispatch scope is not yet qualified.
+Remaining C stays 8,820 lines in 38 files. Next families include client health,
+wall, equipment and effect reports, plus outstanding positive server actions.

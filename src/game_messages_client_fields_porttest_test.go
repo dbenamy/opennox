@@ -29,9 +29,11 @@ func TestGameMessageClientObjectFields(t *testing.T) {
 		for present := 0; present < 2; present++ {
 			for static := 0; static < 2; static++ {
 				for special := 0; special < 2; special++ {
-					for _, kind := range []int{94, 95, 107} {
+					for _, kind := range []int{55, 56, 57, 94, 95, 107} {
 						values := []uint32{0, 1, 255, 65535, 0x80000000, 0xffffffff}
-						if kind != 107 {
+						if kind == 55 || kind == 56 {
+							values = []uint32{0, 1}
+						} else if kind != 107 {
 							values = nil
 							for n := 0; n < 256; n++ {
 								values = append(values, uint32(n))
@@ -50,6 +52,13 @@ func TestGameMessageClientObjectFields(t *testing.T) {
 							}
 							if special != 0 {
 								dr.ObjClass |= object.Class(2)
+							}
+							if kind == 55 || kind == 56 {
+								dr.ObjFlags = (dr.ObjFlags &^ object.Flags(0x1000000)) | object.Flags(value<<24)
+								dr.DrawFuncPtr = legacy.Get_nox_thing_animate_draw()
+								if special != 0 {
+									dr.ObjClass |= object.Class(0x40000)
+								}
 							}
 							dr.ObjSubClass = 0x40000
 							dr.NetCode32 = 17
@@ -71,14 +80,24 @@ func TestGameMessageClientObjectFields(t *testing.T) {
 								data = data[:3]
 								data = binary.LittleEndian.AppendUint32(data, value)
 							}
+							if kind == 55 || kind == 56 {
+								data = data[:3]
+							}
 							before := bytes.Clone(data)
 							if on != 0 && present != 0 {
 								switch kind {
+								case 55:
+									binary.LittleEndian.PutUint32(want[120:], uint32(dr.ObjFlags)|0x1000000)
+								case 56:
+									binary.LittleEndian.PutUint32(want[120:], uint32(dr.ObjFlags)&^0x1000000)
+									if special != 0 {
+										binary.LittleEndian.PutUint32(want[300:], 0)
+									}
 								case 94:
 									binary.LittleEndian.PutUint16(want[104:], uint16(value))
 								case 95:
 									binary.LittleEndian.PutUint16(want[104:], uint16(-int32(value)))
-								case 107:
+								case 57, 107:
 									if special == 0 {
 										binary.LittleEndian.PutUint32(want[308:], value)
 										binary.LittleEndian.PutUint32(want[312:], 91)

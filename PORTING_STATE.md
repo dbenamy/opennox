@@ -86,6 +86,16 @@ memory checks pass. All jobs are joined (55452/11844 included). See
 Next: remaining client object/control reports and server dispatch families.
 No conversion installed; C remains 8,820 lines in 38 files.
 
+Latest original-C checkpoint extends object controls and friend lists:
+**22,130 message cases /17 roots**, plus eight inherited roots. Three repetitions
+pass **75 root runs**, with **17 matching captures** across processes. Static
+mapped-memory checks pass; all jobs are joined (53591/49579/80295 included).
+See [game-messages-client-control-fixtures.json](docs/porting/game-messages-client-control-fixtures.json).
+Production remains identical to 0d5a03b2; no runtime goldens are frozen and no
+conversion is installed. Next: client health/wall/equipment/effect reports and
+remaining positive server actions. Original archive/assets are preserved; only
+the asset archive should remain untracked after committing this checkpoint.
+
 ## Previous — client drawable state Go conversion qualified
 
 C baseline **8266e740** and native conversion **df2e1155** are pushed. Fifteen live
