@@ -237,3 +237,35 @@ The combined repeat passes 93 root runs (31 roots, three repetitions), 28,726
 message cases and nineteen equal captures across processes. Static checks pass;
 jobs 34761/25150 are joined. See game-messages-client-health-fixtures.json.
 Production is unchanged; remaining C is 8,820 lines /38 files. Next: wall reports.
+
+## Wall reports in progress
+
+Magic-wall add/change/remove uses the real grid and row-index owners. Tests cover
+connection gates, even/odd grid positions, door/broken filtering, existing/missing
+walls, byte-field extremes and unchanged neighboring wall payload. Secret-wall
+open/close uses the actual secret-list head and production lookup, including host
+mode suppression, the signed 16-bit lookup boundary, flags and optional close data.
+A thin porttest owner borrows one real wall and restores the prior list head; no
+production algorithm is substituted.
+
+Review later: the first magic-wall probe used repeated DeleteAtGrid calls for
+cleanup. Duplicate-position records exposed an existing row-index inconsistency:
+position lookup selects the newest record but deleteByY locates the first record
+at that coordinate. This can leave stale row links between fixture cases. Use the
+full wall-owner Reset between cases so the dispatcher tests are isolated. The
+production deletion behavior is outside this dispatch conversion and has not been
+changed; investigate it as a separate wall-owner correction with its own baseline.
+The initial fixture failure and corrected run are retained under walls-first and
+walls-corrected. A missing closing brace in the new secret fixture was corrected
+before its first build; no production code or frozen expectation changed.
+
+Third cache cleanup recovered 1,133,631,892 bytes from fifteen verified superseded
+root test archives. Audit/apply scripts are consumed; qualified evidence/assets
+remain. Jobs 67029/88187 are joined.
+
+The corrected wall probes pass all 672 cases. Accumulated qualification passes
+105 root runs (35 roots, three repetitions), 29,398 message cases and twenty-one
+matching separate-process captures. Static mapped-memory checks pass; jobs
+25813/36629 are joined. See game-messages-client-wall-fixtures.json. All retained
+wall expectations are unchanged. Next: inventory scalar, durability and charge
+reports. The inventory-scalars draft is prepared but not installed.

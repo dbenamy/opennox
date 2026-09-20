@@ -103,6 +103,15 @@ captures**; static mapped-memory checks pass. All test jobs are joined, includin
 Next: wall reports. A third superseded-cache audit is in progress (67029); inspect
 its fresh plan before cleanup. No runtime goldens are frozen yet.
 
+Latest wall-message checkpoint: **29,398 cases /21 message roots**, plus
+14 inherited roots. Three repetitions pass **105 root runs** and **21 matching
+captures**; static checks pass. All jobs are joined (25813/36629 included).
+See game-messages-client-wall-fixtures.json and GAME_MESSAGES.md for the duplicate-
+position cleanup finding. Production unchanged; C remains 8,820 lines /38 files.
+Third superseded-cache cleanup recovered 1,133,631,892 bytes; its scripts are
+consumed, jobs 67029/88187 joined. Next: inventory scalar/durability/charge reports.
+The ignored inventory-scalars.draft is prepared, not yet installed.
+
 ## Previous — client drawable state Go conversion qualified
 
 C baseline **8266e740** and native conversion **df2e1155** are pushed. Fifteen live

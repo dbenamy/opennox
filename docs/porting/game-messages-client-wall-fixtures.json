@@ -1,0 +1,121 @@
+{
+  "status": "partial original-C wall-message checkpoint; combined scope not qualified",
+  "production_parent": "0d5a03b2",
+  "message_roots": 21,
+  "cases": 29398,
+  "repetitions": 3,
+  "root_passes": 105,
+  "captures": {
+    "game-client-friends": {
+      "rows": 104,
+      "sha256": "bc7bf35ae59a03ffa60ba09d2d1244b0059bf85bee554b7f4236742632fb72d3",
+      "separate_process_equal": true
+    },
+    "game-client-health-changes": {
+      "rows": 200,
+      "sha256": "e4a8a4815f8e023c89a361271aafa1fea2a57a8776f35a985c6e9e380b3ebc44",
+      "separate_process_equal": true
+    },
+    "game-client-health-meters": {
+      "rows": 6396,
+      "sha256": "b58a7b586d248be5cf651117f09fd1eafc2480947056b032419c8d1c18704013",
+      "separate_process_equal": true
+    },
+    "game-client-magic-walls": {
+      "rows": 480,
+      "sha256": "cb2a35d1554a65375ffa9a23f3f61b019b9410ee3334a5069955d53f03f21514",
+      "separate_process_equal": true
+    },
+    "game-client-object-creation": {
+      "rows": 96,
+      "sha256": "3612813f684153f0bf9cd1529ba13f18396face79bb9cadf7177d4ed45a704d0",
+      "separate_process_equal": true
+    },
+    "game-client-object-fields": {
+      "rows": 12448,
+      "sha256": "fd897b18b6439a9bd9792ca3515504c8d84bfdae51b69557fd689b81ebb6b501",
+      "separate_process_equal": true
+    },
+    "game-client-object-lifetime": {
+      "rows": 576,
+      "sha256": "b663112d245ba55189840a8500a6bd0db85e610f89dec46f61f07d26a55f8c3f",
+      "separate_process_equal": true
+    },
+    "game-client-objects": {
+      "rows": 6144,
+      "sha256": "205e0ba58c2589d9f352fd80934260436fe953adb98ab7e9e7232cb4be1aeca6",
+      "separate_process_equal": true
+    },
+    "game-client-secret-walls": {
+      "rows": 192,
+      "sha256": "8b0a14ad28f2c30ad4b228c1ad745c465e96af7ce4f8d0dc672ac6983c63f6a2",
+      "separate_process_equal": true
+    },
+    "game-notice-awards": {
+      "rows": 42,
+      "sha256": "f06c320e539db39d410eed453e30ff51493228f4774609607c3086bd0cb9a718",
+      "separate_process_equal": true
+    },
+    "game-notice-death-feed": {
+      "rows": 27,
+      "sha256": "fea08824ac5e02cc22716d18ebf61660bba7dac92d74f87cbb950bca2211797f",
+      "separate_process_equal": true
+    },
+    "game-notice-spell-dialog": {
+      "rows": 6,
+      "sha256": "0532c23b1468d507b9a0a45aed408289007da36afeb8a069bc83a8a1d20e0e2f",
+      "separate_process_equal": true
+    },
+    "game-notice-teams": {
+      "rows": 96,
+      "sha256": "17960351d3433da6ee18761451662c30dba4d51ed84b217bf42ef84ecb0bcb50",
+      "separate_process_equal": true
+    },
+    "game-notice-text": {
+      "rows": 287,
+      "sha256": "4d13c598690f13c5652c0171b4b96312a072448c8760feb6f6f9813c8014f441",
+      "separate_process_equal": true
+    },
+    "game-server-aliases": {
+      "rows": 765,
+      "sha256": "43497117cd970ffe3b9c05942463a60f6af2be6096ea6b0f3532f75befd2b2dd",
+      "separate_process_equal": true
+    },
+    "game-server-drop-use": {
+      "rows": 48,
+      "sha256": "60be3d81a4691490326593cbff2cc2fd5b77049ebe7070ca31a2c53b2fa16ec0",
+      "separate_process_equal": true
+    },
+    "game-server-equipment": {
+      "rows": 96,
+      "sha256": "853e8f26df19fb8d80f2a4430f65b65012b9a49c084ee2c8e904f5b36ec228ab",
+      "separate_process_equal": true
+    },
+    "game-server-missing-targets": {
+      "rows": 84,
+      "sha256": "1ff307812220cc72c87776a1f94b0817b86b060d2de1de04e1b66bf56af7e37b",
+      "separate_process_equal": true
+    },
+    "game-server-pickup": {
+      "rows": 144,
+      "sha256": "4adf1974394325e1ba3c435a802d099edb8ff75da5dcc44abe806ee55d5b3603",
+      "separate_process_equal": true
+    },
+    "game-server-unknown": {
+      "rows": 987,
+      "sha256": "f9a58f004a2c2317e6f08508f058c3bb3faa47022ca6fdbf421e4d2a940ffdb3",
+      "separate_process_equal": true
+    },
+    "game-server-waypoints": {
+      "rows": 180,
+      "sha256": "8d83113ed0985a1c0c78576e1db44e0888a0997248ab10ce0fd131297df63af5",
+      "separate_process_equal": true
+    }
+  },
+  "static_check": "passed",
+  "evidence": [
+    "build/port-game-messages/walls-corrected.log",
+    "build/port-game-messages/walls-repeat.log",
+    "build/port-game-messages/static-walls.log"
+  ]
+}
