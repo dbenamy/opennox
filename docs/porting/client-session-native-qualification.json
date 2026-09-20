@@ -1,0 +1,158 @@
+{
+  "status": "qualified native client session conversion",
+  "baseline_revision": "a9b34bef",
+  "implementation_revision": "faef9336",
+  "baseline": "client-session-c-qualification.json",
+  "selected_top_level_cases": 48,
+  "moved_c_helpers": 1,
+  "retired_go_backed_c_exports": 146,
+  "frozen_captures": 134,
+  "captured_cases": 202586,
+  "new_captured_cases": 77666,
+  "independent_contract_roots": 5,
+  "targets": {
+    "default": {
+      "artifact_directory": "build/port-game-messages/client-session-native-final-default",
+      "roots": 632,
+      "skips": 0,
+      "source_unchanged": true,
+      "wall_seconds": 350.4626163819339
+    },
+    "server": {
+      "artifact_directory": "build/port-game-messages/client-session-native-final-server",
+      "roots": 628,
+      "skips": 0,
+      "source_unchanged": true,
+      "wall_seconds": 347.54508635611273
+    },
+    "highres": {
+      "artifact_directory": "build/port-game-messages/client-session-native-final-highres",
+      "roots": 632,
+      "skips": 0,
+      "source_unchanged": true,
+      "wall_seconds": 353.7733926619403
+    }
+  },
+  "production_c": {
+    "files": 33,
+    "lines": 4603,
+    "change": -1536,
+    "test_reference_lines": 0
+  },
+  "source_manifest_sha256": "e6750293754e2ca35f34c81b1284acf7dad11fa94d6ec4194f5a2d9ac2009853",
+  "production_artifacts": "build/port-game-messages/client-session-native-final-production/production",
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 70.10239493404515,
+        "sha256": "be63bd24683d27c13a1b7262c72d34bb3533eecde03029c65ded8f6c0dd05992",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.044432062190026,
+        "sha256": "ff5e8fbf18711932be5c6a4865be4d2578b6bcee2f89b7a1edc9377570a7489e",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 67.35860128188506,
+        "sha256": "a8212e0555e5c06c882a08dc12f0e2fd3bf96c1a983d57eb46e0393aebd4a9cf",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "client-session-native": {
+        "exit": 0,
+        "wall_seconds": 75.93115420499817,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 74.34802982606925,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+          "binary_sha256": "be63bd24683d27c13a1b7262c72d34bb3533eecde03029c65ded8f6c0dd05992",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-game-messages/client-session-native-final-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/client-session-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "native client settings, team, trade and quest dispatch",
+          "isolated_network": false,
+          "removed_maps": 0
+        }
+      },
+      "client-session-native-save": {
+        "exit": 0,
+        "wall_seconds": 47.41039215400815,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.6216151509434,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "be63bd24683d27c13a1b7262c72d34bb3533eecde03029c65ded8f6c0dd05992",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-game-messages/client-session-native-final-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/client-session-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "native client settings, team, trade and quest dispatch",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "a63d95381c85d2a5569c46261a7c2af16250a30932dca258b90a8862f557a5f0"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 60.42908469005488,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "review": [
+    "Incomplete records fail before owner access:105 fixed formats and all nonzero byte-sized team-name/sequence lengths.",
+    "Long team names use bounded Go UTF-16 storage; failed team/green-bolt allocations are guarded; connected quest notice33 rejects out-of-range selectors, while disconnected handling preserves consumed length.",
+    "Preserves the four-byte weapon-record clearing offset, unsigned generation/frame comparisons, narrowed team IDs, and null-versus-empty quest titles.",
+    "Test calls to the retired C interfaces now use existing Go owners; retired callback slots remain named/indexed and nil without changing frozen expectations."
+  ]
+}

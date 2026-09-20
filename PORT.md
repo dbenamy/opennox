@@ -14,19 +14,15 @@
 
 ## Current status
 
-The remaining client settings, team, trade and quest dispatcher is now implemented
-in Go, together with its private ball HUD helper. It removes1,536 C lines and146
-unused Go-backed C exports. All64 focused client-session tests pass, including
-five independent boundary/failure contracts; all59 frozen C captures match.
-Full native profile and production qualification is still running.
+The client settings, team, trade and quest dispatcher and its private ball HUD
+helper are now Go and fully qualified. The conversion removes 1,536 C lines and 146
+unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skips,
+and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
+comparison, headless gameplay and save/load checks pass.
 
-Working-tree C remaining is **4,603 physical lines in33 files**, zero reference C.
-The preceding fully qualified production checkpoint had6,139 lines in35 files.
-The complete original-C baseline is qualified, including broad627/623/627-root
-checks, corrected cross-build capture normalization, fresh production/ABI,
-exact full-suite comparison and headless gameplay/save-load. See
+C remaining is **4,603 physical lines in 33 files**, zero reference C. See
 [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) and
-[the C qualification](docs/porting/client-session-c-qualification.json).
+[the native qualification](docs/porting/client-session-native-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in

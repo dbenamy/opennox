@@ -813,3 +813,19 @@ existing owner IDs. The original failed server capture gate remains recorded;
 all other hashes are unchanged. Production C remains6,139 lines /35 files.
 Native translation also preserves null-title formatting identified in nox_swprintf;
 independent contracts distinguish absent titles from valid empty strings.
+
+### Native client-session conversion qualified
+
+[Qualification](client-session-native-qualification.json) covers 48 client labels
+and the private ball HUD helper. It retires 146 Go-backed C exports and removes
+1,536 C lines, leaving 4,603 in 33 files with zero reference C. Default/server/highres
+pass 632/628/632 roots, no skips, and all 134 frozen captures /202,586 cases. Fresh
+production/ABI, exact known-suite comparison and headless gameplay/save-load pass.
+
+Native contracts reject incomplete records before owner access, handle long team
+names and failed drawable creation, bound connected quest class selectors, and
+preserve null-versus-empty title formatting. Disconnected valid handling and the
+original death-record clearing offset are preserved. The first running native
+probe caught an extra unconditional server dependency in message clearing; the
+port now looks up a server only in branches that need one. No goldens were changed
+to accept native behavior. Retired test callback slots keep their stable IDs.

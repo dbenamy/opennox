@@ -2,29 +2,30 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about6.1k lines** — **6,139 physical lines in35
-production `.c` files**, zero reference C. This conversion removes **502 lines**.
+**Qualified C remaining: about 4.6k lines** — **4,603 physical lines in 33
+production `.c` files**, zero reference C. Latest conversion removes 1,536 lines.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Active — native client-dispatch recovery checkpoint
+## Current — native client dispatch qualified
 
-Native probe3 passes all64 client-session roots. All59 frozen original-C captures
-match exactly (77,666 cases). The five additional contracts cover105 fixed wire
-formats plus variable lengths, long team names, failed drawable allocation,
-quest selector bounds and null-versus-empty quest titles. No C reference retained.
-The conversion removes1,536 C lines and146 exports; provisional remaining C is
-4,603 lines /33 files. Full native qualification is NOT complete yet.
+All 48 remaining client-dispatch labels and the private ball HUD helper are Go.
+Retired 146 unused C exports; no original C body is kept for tests. Default/server/
+highres pass 632/628/632 roots with no skips and 134 matching captures /202,586 cases.
+Five additional contract roots cover incomplete records, long names, failed
+allocations, quest selector bounds and null-versus-empty titles. Fresh production/
+ABI, exact full-suite comparison and headless gameplay/save-load all pass. Final
+source fingerprints match and all jobs are joined. See
+[qualification](docs/porting/client-session-native-qualification.json).
 
-Default full native qualification is active (session95092); server precompile is
-active (session23503). NO Go/C edits until all builds/tests finish. Native probe
-consolidation is CONSUMED:85 captures /934,452,568 logical bytes; job91911 joined.
-All consumed native installers/drafts are stale after the two implementation fixes.
-Next: finish default/server/highres and production/ABI/full-suite/headless/save-load,
-record C LOC and qualification, commit/push, then continue to the next batch.
-
-
+Original-C baseline a9b34bef and implementation recovery faef9336 are pushed.
+All ignored installers, retirement scripts and installed drafts are CONSUMED.
+Do not replay them. Earlier active-job notes below are historical.
+Review: preserve the C death-record offset; safely handle C's invalid name lengths,
+failed allocations and invalid connected quest selectors. Do not reintroduce the
+unconditional server lookup that native probe 2 caught in message clearing.
+Next: select the remaining connected helper batch from 4,603 C lines and continue.
 
 ## Active — client-dispatch C baseline qualified; Go conversion next
 
@@ -2327,3 +2328,22 @@ unconditional GetServer().S() dependency in message clearing, which legitimately
 runs without a server object. Moved server lookups into only the branches that
 need them in main and quest dispatch. This fixes the port, not the fixture.
 Native probe3 is active (session35067), all64 roots. No Go/C edits until joined.
+
+Native implementation recovery commit faef9336 is pushed. It explicitly records
+focused success and pending full qualification. Default95092 remains active;
+server precompile23503 joined PASS. Highres precompile is active (session56296).
+No source edits while either job runs. The broad native gates use the committed
+`docs/porting/client-session-native-batch.json`; all59 session hashes still match.
+
+Native full default and server qualification PASS:632/628 roots, no skips, all134
+hashes and static checks; unchanged source. Highres process2619337 is active
+(session handle lost across compaction; observe result.json and process exit).
+Fresh production is active, session17826. NO source edits until both finish.
+Native-server capture dedup82150 and original-C scenario asset cleanup13327
+are joined and CONSUMED. Next queue batch audit and test drafts are ignored at
+`build/port-client-sequence`; no next-batch source installed.
+
+Native qualification finalizer is CONSUMED. All four final gates passed and
+production17826 is joined; highres process2619337 exited successfully. Native-
+highres dedup73564 is joined/CONSUMED:645 copies /3,015,354,939 bytes. No jobs
+remain active at the qualification checkpoint. Next queue drafts are NOT installed.

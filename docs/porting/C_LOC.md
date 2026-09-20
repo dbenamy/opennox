@@ -268,6 +268,7 @@ target build selection and linker evidence.
 | Green-bolt effect record correction | 37 | 7,901 | +4 | 0 |
 | Client progress, winner reports, map progress and effects | 36 | 6,641 | −1,260 | 0 |
 | Server player actions, pickup helpers and C interface retirement | 35 | 6,139 | −502 | 0 |
+| Client settings/team/trade/quest dispatch and private ball HUD helper | 33 | 4,603 | −1,536 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall
