@@ -170,3 +170,30 @@ cases; three repetitions with three inherited roots give 45 passing root runs.
 All twelve captures match across processes. See
 [game-messages-inventory-fixtures.json](game-messages-inventory-fixtures.json).
 Production C is unchanged; remaining C stays 8,820 lines in 38 files.
+
+## Client object-update baseline in progress
+
+The first client dispatch fixture reuses the real drawable owner for simple and
+complex object updates: connected/disconnected, all 256 status bytes, three frame
+boundaries, ordinary/special-monster animation, and uint16 position boundaries.
+It independently checks return length, lookup identity, drawable count, animation
+state, activity words and exact input mutation. The initial position expectation
+missed the qualified update helper's out-of-map fallback to (50,50); inspection
+confirmed the 5888 boundary and the test was corrected before accepting captures.
+No production source or frozen expectation changed. Creation, lookup variants,
+camera and object lifetime branches remain to cover.
+
+Existing-object updates pass 6,144 independent cases; creation adds 96 cases for
+ordinary/static identifiers, missing types, coordinate boundaries and camera-only
+messages. The first combined repeat passes 60 root runs with fourteen matching
+captures across processes (39278 initial fixture failure, 43072 corrected,
+68593 creation, 93151 repeat: all joined). The fixture error is explained above.
+Height and animation-frame dispatch now pass another 8,288 cases: every height
+byte, full-width frame values, present/missing targets, static/dynamic lookup,
+connection gates and the special monster frame rule. These compare the complete
+raw drawable before/after with only independently specified fields changed;
+message input is read-only. Final accumulated repeat passes 63 root runs (21 roots, three repetitions),
+with fifteen captures equal across processes and 17,290 message cases total.
+All jobs are joined; see game-messages-client-object-fixtures.json.
+A second audited cleanup removed fifteen superseded root test-cache archives
+(1,130,553,318 bytes); scripts are consumed. Production C remains unchanged.

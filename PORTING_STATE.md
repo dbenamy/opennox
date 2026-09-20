@@ -67,6 +67,17 @@ over three repetitions, and twelve identical separate-process captures. See
 game-messages-inventory-fixtures.json. Remaining server actions
 and client families are still ahead. Client input-write sites are documented.
 
+Current partial baseline: equipment/pickup checkpoint **f006b516** is pushed.
+Client object updates/creation and height/frame fields add 14,528 cases; all
+15 message roots now cover 17,290 cases. Three repetitions with six inherited
+roots pass 63 root runs and fifteen separate-process captures match. All jobs
+are joined, including 10694/15884. See game-messages-client-object-fixtures.json.
+No runtime goldens are frozen; remaining dispatch families are still ahead.
+The initial new position expectation missed the qualified owner's out-of-map
+fallback; it was corrected before accepting captures, with no production change.
+A second verified superseded test-cache cleanup recovered 1,130,553,318 bytes;
+its audit/apply scripts are consumed. Qualified evidence/assets remain.
+
 ## Previous — client drawable state Go conversion qualified
 
 C baseline **8266e740** and native conversion **df2e1155** are pushed. Fifteen live
