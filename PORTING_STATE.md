@@ -33,16 +33,29 @@ source. Original goldens stayed unchanged. Unterminated notice text now returns
 zero without effects; the former C walk had no defined result for that input.
 The earlier duplicate-position wall-row inconsistency remains recorded separately.
 
-## Next — client progress, equipment/winner reports and effects
+## Active — original-C client progress/effects baseline
 
-Provisional candidate: client kinds 72–164, **55 labels /41 whole groups /1,056 C
-case lines**, no incoming/outgoing goto edges. Audit the five remaining C helpers
-and their owners too: inventory-name forwarding, white-flash state, player/team
-winner adjustments, and map-generation progress drawing (also called by Go map
-population). Evidence is under build/port-game-messages/remaining-client-groups.json
-and remaining-progress-effects-helper-audit.json. This is not a frozen selection.
-Continue the audit and original-C fixtures after committing/pushing this conversion.
-Reuse this qualified production evidence when the next baseline only changes tests.
+Qualified conversion **f9268ef1** is committed and pushed. The next scope is
+**55 labels /41 whole groups /1,056 case lines plus six C helpers /180 lines**:
+**1,236 body lines**. Scope and hashes are in
+[client-progress-effects-selection.json](docs/porting/client-progress-effects-selection.json).
+The compass-image initializer joins progress drawing because they share the real
+owner and Go callers. BlueSpark/VioletSpark named globals have their last C uses
+in this scope and should move to Go with their existing initializer.
+
+Four new C fixtures pass **7,820 cases**: stats 768, lessons 3,456,
+experience 12 and treasure 3,584. Three separate-process repeats each pass seven
+roots without skips and reproduce all four reviewed capture hashes. Source
+fingerprints match; all jobs, including repeat driver 42393, are joined.
+[Partial checkpoint](docs/porting/client-progress-reports-c-checkpoint.json).
+This is test-only progress, not a qualified/frozen whole-scope baseline.
+Production remains identical to f9268ef1. Next: inventory-message coverage using
+the existing real inventory transaction owner.
+
+Continue original-C coverage, reusable owner/caller audit, repeated captures and
+three-target baseline qualification before translation. Remaining effect, winner,
+inventory and map-progress branches are not yet covered by the new fixtures.
+No question or approval is pending; continue after each committed checkpoint.
 
 ## Recovery and storage
 

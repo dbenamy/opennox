@@ -1,0 +1,124 @@
+{
+  "status": "partial original-C fixture checkpoint; whole scope not yet qualified or frozen",
+  "production_revision": "f9268ef1aa34089d994b8c4db3c2aa8e3ae09670",
+  "production_c_lines": 7897,
+  "captures": [
+    {
+      "file": "interaction-game-progress-stats.json",
+      "sha256": "d2a30d710a41b17794ef7709cc7739f82181e2a8c226dae0d842d6deece21609",
+      "cases": 768
+    },
+    {
+      "file": "interaction-game-progress-lessons.json",
+      "sha256": "8b7a11c36470fa91db908d1c17b721a88c69a23160bbd709da68b2dc99a6faa6",
+      "cases": 3456
+    },
+    {
+      "file": "interaction-game-progress-experience.json",
+      "sha256": "aaa23af6e23b4c04151a50fc83d8d97ea6056d84539782341114234181b8e313",
+      "cases": 12
+    },
+    {
+      "file": "interaction-game-progress-treasure.json",
+      "sha256": "451cfbd465ccf8482c20ea2540b0b8473a60d73bf7cfb8b90bd94d45289b8369",
+      "cases": 3584
+    }
+  ],
+  "runs": [
+    {
+      "path": "build/port-game-messages/progress-reports-repeat-1",
+      "tests": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 7,
+        "selected_root_tests": 7,
+        "exit": 0,
+        "started_tests": 7,
+        "completed_tests": 7,
+        "started_root_tests": 7,
+        "completed_root_tests": 7,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 7.413709759013727
+      },
+      "source_unchanged": true
+    },
+    {
+      "path": "build/port-game-messages/progress-reports-repeat-2",
+      "tests": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 7,
+        "selected_root_tests": 7,
+        "exit": 0,
+        "started_tests": 7,
+        "completed_tests": 7,
+        "started_root_tests": 7,
+        "completed_root_tests": 7,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 7.378007551888004
+      },
+      "source_unchanged": true
+    },
+    {
+      "path": "build/port-game-messages/progress-reports-repeat-3",
+      "tests": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 7,
+        "selected_root_tests": 7,
+        "exit": 0,
+        "started_tests": 7,
+        "completed_tests": 7,
+        "started_root_tests": 7,
+        "completed_root_tests": 7,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 7.2751107988879085
+      },
+      "source_unchanged": true
+    }
+  ],
+  "source_sha256": {
+    "src/game_messages_client_progress_porttest_test.go": "5496e82b41e7e1dfbb992706f8134d10e0849b60a3e32b443d4898763d19a74d",
+    "src/game_messages_client_stats_porttest_test.go": "2eb04c7f2a4e64264ae30f478e71ef85c0e39217fba87e0add6b8b5fa010572d"
+  },
+  "remaining": "Inventory, winner, effects and map-progress coverage; final three-target baseline qualification."
+}

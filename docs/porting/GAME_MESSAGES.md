@@ -493,3 +493,32 @@ Completed scenario asset copies were verified against originals before removing
 deduplicate-client-state-assets.py restore command preserve recovery; generated
 saves, screenshots, logs and changed files remain. The cleanup is complete and its
 plan consumed. Original assets/archive are unchanged.
+
+## Client progress/effects baseline development
+
+Qualified client-state conversion **f9268ef1** is pushed. The next selected scope
+has 55 client labels /41 whole groups /1,056 case lines plus six live C helpers
+/180 lines, **1,236 body lines** total. The compass-image initializer belongs with
+map-progress rendering. Its Go video caller and the map-population progress caller
+move together with those helpers. BlueSpark/VioletSpark named globals also have
+their last C consumers in this selection; their existing Go initializer and test
+owner must move with them. Other mapped progress state remains shared through its
+existing addresses. Selection/hashes: client-progress-effects-selection.json.
+
+Player stats pass 768 C cases and inherited inventory name/stats checks. The
+fixture verifies every byte of the player record, nonoverlapping field writes,
+read-only input, missing players, unsigned values, signed display levels, and the
+host-mode distinction between suppressing record writes and refreshing the title.
+Lesson, experience and treasure fixtures also pass; no whole-scope baseline is frozen.
+Production is unchanged from f9268ef1 and will reuse its qualification for the
+next test-only baseline.
+
+The partial progress-report checkpoint now covers 7,820 cases, repeated in three
+separate processes with identical four capture hashes and seven completed roots
+per run, without skips. Lesson elimination compares signed values while storing
+full-width scores. Treasure updates require a strictly newer unsigned frame, but
+announcements use the resulting stored values even when host/stale-frame gates
+suppress writes; count/max arithmetic wraps. Whole-record, input immutability,
+text-ring and audio contracts accompany captures. All jobs are joined. See
+client-progress-reports-c-checkpoint.json. C remains 7,897 physical lines; this
+checkpoint adds fixtures only. Continue inventory and other selected coverage.

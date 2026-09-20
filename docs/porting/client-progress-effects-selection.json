@@ -1,0 +1,1021 @@
+{
+  "status": "selected connected candidate; helper/owner audit and C baseline coverage in progress",
+  "production_parent": "f9268ef1",
+  "file": "src/legacy/client__network__cdecode.c",
+  "file_sha256": "e7b9992dd4efc9dd17b4b5738e30a7127d89a57e95645451c8779295dd64b61e",
+  "client_cases": 55,
+  "whole_groups": 41,
+  "case_lines": 1056,
+  "groups": [
+    {
+      "opcodes": [
+        72
+      ],
+      "labels": [
+        "case 72: // MSG_REPORT_STATS"
+      ],
+      "start_line": 455,
+      "lines": 24,
+      "gotos": [],
+      "calls": [
+        "LOWORD",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_common_getEngineFlag",
+        "nox_float2int",
+        "nox_xxx_j_inventoryNameSignInit_467460",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netTestHighBit_578B70"
+      ],
+      "sha256": "92290c6eb2401bd86a00a3a0cb6a527d5798c65a359d6356bfa13a9e42e7025c"
+    },
+    {
+      "opcodes": [
+        75
+      ],
+      "labels": [
+        "case 75: // MSG_REPORT_PICKUP"
+      ],
+      "start_line": 479,
+      "lines": 20,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_getEngineFlag",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netTestHighBit_578B70",
+        "nox_xxx_send2ServInvenFail_461630",
+        "nox_xxx_spritePickup_461660"
+      ],
+      "sha256": "20c97126198b3945db329fe00d9776714faf389da657108570ab3749cb9438e3"
+    },
+    {
+      "opcodes": [
+        76
+      ],
+      "labels": [
+        "case 76: // MSG_REPORT_MODIFIABLE_PICKUP"
+      ],
+      "start_line": 499,
+      "lines": 22,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_getEngineFlag",
+        "nox_xxx_modifGetDescById_413330",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netTestHighBit_578B70",
+        "nox_xxx_send2ServInvenFail_461630",
+        "nox_xxx_spritePickup_461660",
+        "while"
+      ],
+      "sha256": "81eb9708d78eed4e6f73a5d513fe87b567b107b14d95eb5363e3da2bedab71d3"
+    },
+    {
+      "opcodes": [
+        77
+      ],
+      "labels": [
+        "case 77: // MSG_REPORT_DROP"
+      ],
+      "start_line": 521,
+      "lines": 11,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_getEngineFlag",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netTestHighBit_578B70",
+        "sub_461A80"
+      ],
+      "sha256": "1ad1a70b092568b32485c54c05c705e30ca1ac24011da174924e40f55b01256e"
+    },
+    {
+      "opcodes": [
+        78
+      ],
+      "labels": [
+        "case 78: // MSG_REPORT_LESSON"
+      ],
+      "start_line": 532,
+      "lines": 25,
+      "gotos": [],
+      "calls": [
+        "gameFrame",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_common_playerInfoGetByID_417040",
+        "nox_strman_loadString_40F1D0",
+        "nox_swprintf",
+        "nox_xxx_cliGamedataGet_416590",
+        "nox_xxx_clientPlaySoundSpecial_452D80",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_printCentered_445490"
+      ],
+      "sha256": "4fdaccb09f366b240a2e44f69e50658baef44f861e9df7f2dda8004b2fe95c0f"
+    },
+    {
+      "opcodes": [
+        85
+      ],
+      "labels": [
+        "case 85: // MSG_REPORT_TREASURE_COUNT"
+      ],
+      "start_line": 557,
+      "lines": 26,
+      "gotos": [],
+      "calls": [
+        "HIWORD",
+        "WORD2",
+        "gameFrame",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_common_getEngineFlag",
+        "nox_common_playerInfoGetByID_417040",
+        "nox_strman_loadString_40F1D0",
+        "nox_swprintf",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netTestHighBit_578B70",
+        "nox_xxx_printCentered_445490"
+      ],
+      "sha256": "8ffd3cdb389d9104b83029e7e18a788602096abd518b09282d119b51c3ce8eb9"
+    },
+    {
+      "opcodes": [
+        86
+      ],
+      "labels": [
+        "case 86: // MSG_REPORT_FLAG_BALL_WINNER"
+      ],
+      "start_line": 583,
+      "lines": 37,
+      "gotos": [],
+      "calls": [
+        "HIDWORD",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_common_getEngineFlag",
+        "nox_strman_loadString_40F1D0",
+        "nox_swprintf",
+        "nox_xxx_clientPlaySoundSpecial_452D80",
+        "nox_xxx_getTeamByID_418AB0",
+        "nox_xxx_guiServerOptionsHide_4597E0",
+        "nox_xxx_initTime_435570",
+        "nox_xxx_netTestHighBit_578B70",
+        "nox_xxx_objGetTeamByNetCode_418C80",
+        "nox_xxx_setGameFlags_40A4D0",
+        "nox_xxx_teamCompare2_419180",
+        "sub_435700",
+        "sub_470510"
+      ],
+      "sha256": "134793e4689634a8151777aa92422abf033b7c942a832161b3da8a8ce43de9e0"
+    },
+    {
+      "opcodes": [
+        87
+      ],
+      "labels": [
+        "case 87: // MSG_REPORT_FLAG_WINNER"
+      ],
+      "start_line": 620,
+      "lines": 42,
+      "gotos": [
+        "LABEL_600"
+      ],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_common_getEngineFlag",
+        "nox_strman_loadString_40F1D0",
+        "nox_swprintf",
+        "nox_wcscat",
+        "nox_xxx_clientPlaySoundSpecial_452D80",
+        "nox_xxx_getTeamByID_418AB0",
+        "nox_xxx_guiServerOptionsHide_4597E0",
+        "nox_xxx_initTime_435570",
+        "nox_xxx_objGetTeamByNetCode_418C80",
+        "nox_xxx_setGameFlags_40A4D0",
+        "nox_xxx_teamCompare2_419180",
+        "sub_435700",
+        "sub_470510"
+      ],
+      "sha256": "a13a6f3fc27a8b1421264279c00992bdc56b4edc6480fc93b78240ddddb18121"
+    },
+    {
+      "opcodes": [
+        88
+      ],
+      "labels": [
+        "case 88: // MSG_REPORT_DEATHMATCH_WINNER"
+      ],
+      "start_line": 662,
+      "lines": 105,
+      "gotos": [
+        "LABEL_559"
+      ],
+      "calls": [
+        "HIDWORD",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_common_getEngineFlag",
+        "nox_common_playerInfoGetByID_417040",
+        "nox_strman_loadString_40F1D0",
+        "nox_swprintf",
+        "nox_wcscat",
+        "nox_xxx_clientPlaySoundSpecial_452D80",
+        "nox_xxx_guiServerOptionsHide_4597E0",
+        "nox_xxx_initTime_435570",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_setGameFlags_40A4D0",
+        "sub_435700",
+        "sub_470510",
+        "sub_4947E0"
+      ],
+      "sha256": "1696d8baf789acd2ef0ecfad60b7622a6e69994aa2379beaa60ca268857d228a"
+    },
+    {
+      "opcodes": [
+        89
+      ],
+      "labels": [
+        "case 89: // MSG_REPORT_DEATHMATCH_TEAM_WINNER"
+      ],
+      "start_line": 767,
+      "lines": 89,
+      "gotos": [
+        "LABEL_585"
+      ],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_common_getEngineFlag",
+        "nox_strman_loadString_40F1D0",
+        "nox_swprintf",
+        "nox_wcscat",
+        "nox_xxx_clientPlaySoundSpecial_452D80",
+        "nox_xxx_getTeamByID_418AB0",
+        "nox_xxx_guiServerOptionsHide_4597E0",
+        "nox_xxx_initTime_435570",
+        "nox_xxx_objGetTeamByNetCode_418C80",
+        "nox_xxx_setGameFlags_40A4D0",
+        "nox_xxx_teamCompare2_419180",
+        "sub_435700",
+        "sub_470510",
+        "sub_4948B0"
+      ],
+      "sha256": "0eb969a66b2fc2cbb4bd6276413f2c14878d037d8f91f269c6683f976b3e8675"
+    },
+    {
+      "opcodes": [
+        96
+      ],
+      "labels": [
+        "case 96: // MSG_REPORT_EQUIP"
+      ],
+      "start_line": 856,
+      "lines": 10,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_getEngineFlag",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netTestHighBit_578B70",
+        "sub_462040"
+      ],
+      "sha256": "c6619c2b0993f6b65db6aa5b23a9b75481237cfb96b9ed025ad5d75be5613e62"
+    },
+    {
+      "opcodes": [
+        97
+      ],
+      "labels": [
+        "case 97: // MSG_REPORT_DEQUIP"
+      ],
+      "start_line": 866,
+      "lines": 10,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_getEngineFlag",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netTestHighBit_578B70",
+        "sub_4624D0"
+      ],
+      "sha256": "274c22e2267dd9f032e5051d8a102f50aea7f9ef2ec15b805be1e8ff811db6c5"
+    },
+    {
+      "opcodes": [
+        101
+      ],
+      "labels": [
+        "case 101: // MSG_REPORT_X_STATUS"
+      ],
+      "start_line": 876,
+      "lines": 35,
+      "gotos": [],
+      "calls": [
+        "HIDWORD",
+        "LODWORD",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_getEngineFlag",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_netTestHighBit_578B70",
+        "sub_4BC720"
+      ],
+      "sha256": "d6386c7f76217720ceb56eaa109caeac3d028325e67f564c73621353a794759f"
+    },
+    {
+      "opcodes": [
+        103
+      ],
+      "labels": [
+        "case 103: // MSG_REPORT_MODIFIER"
+      ],
+      "start_line": 911,
+      "lines": 27,
+      "gotos": [],
+      "calls": [
+        "LODWORD",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_getEngineFlag",
+        "nox_xxx_modifGetDescById_413330",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_netTestHighBit_578B70",
+        "while"
+      ],
+      "sha256": "aee75e1ad2c703c4fe53bbe3fc877ac1432785ea8366296aa90e8733d5ca4bdf"
+    },
+    {
+      "opcodes": [
+        106
+      ],
+      "labels": [
+        "case 106: // MSG_REPORT_CLIENT_STATUS"
+      ],
+      "start_line": 938,
+      "lines": 16,
+      "gotos": [],
+      "calls": [
+        "HIDWORD",
+        "WORD2",
+        "if",
+        "nox_client_onClientStatusA",
+        "nox_common_gameFlags_check_40A5C0",
+        "nox_common_getEngineFlag",
+        "nox_common_playerInfoGetByID_417040",
+        "nox_xxx_netNeedTimestampStatus_4174F0",
+        "nox_xxx_playerUnsetStatus_417530",
+        "sub_470C40"
+      ],
+      "sha256": "2e156b7484f42db85a3f3082ee37102cbc753e7744feae892de41c5875d729c6"
+    },
+    {
+      "opcodes": [
+        108
+      ],
+      "labels": [
+        "case 108: // MSG_REPORT_ACQUIRE_CREATURE"
+      ],
+      "start_line": 954,
+      "lines": 21,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_cliSummonCreat_4C2E50",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_netTestHighBit_578B70",
+        "nox_xxx_spriteCreate_48E970",
+        "sub_459DD0",
+        "sub_495060"
+      ],
+      "sha256": "e11171bf43dcdcdf031e6cac0bb554d2206aedc6b0ae26470160478fd6befbf3"
+    },
+    {
+      "opcodes": [
+        109
+      ],
+      "labels": [
+        "case 109: // MSG_REPORT_LOSE_CREATURE"
+      ],
+      "start_line": 975,
+      "lines": 25,
+      "gotos": [],
+      "calls": [
+        "LODWORD",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_cliRemoveHealthbar_459E30",
+        "nox_xxx_cliSummonOnDieOrBanish_4C3140",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_netTestHighBit_578B70",
+        "sub_4950C0"
+      ],
+      "sha256": "d9907e3308db9519f0185352f6bc293de287ddc2e22d1897fa3161b6a443a397"
+    },
+    {
+      "opcodes": [
+        110
+      ],
+      "labels": [
+        "case 110: // MSG_REPORT_EXPERIENCE"
+      ],
+      "start_line": 1000,
+      "lines": 6,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "sub_467440"
+      ],
+      "sha256": "c1b31f12909fa9ae158171525a25ac692bc251fbc032ea88c98bcebb8591426b"
+    },
+    {
+      "opcodes": [
+        111
+      ],
+      "labels": [
+        "case 111: // MSG_REPORT_SPELL_AWARD"
+      ],
+      "start_line": 1006,
+      "lines": 10,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_netSpellRewardCli_45CFE0"
+      ],
+      "sha256": "e29b34328bc976c4206b41d1a07a1521fd5e01f21332217fd7af470116dba93b"
+    },
+    {
+      "opcodes": [
+        125,
+        140,
+        141,
+        142
+      ],
+      "labels": [
+        "case 125: // MSG_FX_PLASMA",
+        "case 140: // MSG_FX_LIGHTNING",
+        "case 141: // MSG_FX_ENERGY_BOLT",
+        "case 142: // MSG_FX_CHAIN_LIGHTNING_BOLT"
+      ],
+      "start_line": 1016,
+      "lines": 25,
+      "gotos": [
+        "LABEL_732"
+      ],
+      "calls": [
+        "HIWORD",
+        "LOBYTE",
+        "LOWORD",
+        "WORD2",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_drawEnergyBolt_499710",
+        "nox_xxx_makeLightningParticles_4999D0",
+        "nox_xxx_netDrawRays_49BDD0"
+      ],
+      "sha256": "99efa8a2113342aba69e62a153184974c7d0ad27a085db5991334cc61bafdd6b"
+    },
+    {
+      "opcodes": [
+        126
+      ],
+      "labels": [
+        "case 0x7Eu: // MSG_FX_SUMMON"
+      ],
+      "start_line": 1041,
+      "lines": 7,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_netHandleSummonPacket_4B7C40"
+      ],
+      "sha256": "3ade745e0549f54ab5089271ceda2a7088a317fdd1b2cc46f52a25e74ef06536"
+    },
+    {
+      "opcodes": [
+        127
+      ],
+      "labels": [
+        "case 0x7Fu: // MSG_FX_SUMMON_CANCEL"
+      ],
+      "start_line": 1048,
+      "lines": 5,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "sub_4B7EE0"
+      ],
+      "sha256": "5c6a4fa30c06e7dea28168e64a6097d350b0a2a0838177f7ab54e91767868590"
+    },
+    {
+      "opcodes": [
+        128
+      ],
+      "labels": [
+        "case 0x80u: // MSG_FX_SHIELD"
+      ],
+      "start_line": 1053,
+      "lines": 5,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_fxShield_4B8090"
+      ],
+      "sha256": "f01310eec7654eadaf67931b6cce507cd217f7cb1c7ae549613cb2b59155edf9"
+    },
+    {
+      "opcodes": [
+        129
+      ],
+      "labels": [
+        "case 0x81u: // MSG_FX_BLUE_SPARKS"
+      ],
+      "start_line": 1058,
+      "lines": 7,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_makePointFxCli_499610"
+      ],
+      "sha256": "4ce7ee398f1903f3782c275967c31aebf0f5af8945d8fac398d338743f9aaea0"
+    },
+    {
+      "opcodes": [
+        130
+      ],
+      "labels": [
+        "case 0x82u: // MSG_FX_YELLOW_SPARKS"
+      ],
+      "start_line": 1065,
+      "lines": 7,
+      "gotos": [],
+      "calls": [
+        "getMemIntPtr",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_makePointFxCli_499610"
+      ],
+      "sha256": "261e2814544769ab1f5f15d5637d4430bb92a5115c89ff415e984f02f8eeb5d1"
+    },
+    {
+      "opcodes": [
+        131
+      ],
+      "labels": [
+        "case 0x83u: // MSG_FX_CYAN_SPARKS"
+      ],
+      "start_line": 1072,
+      "lines": 7,
+      "gotos": [],
+      "calls": [
+        "getMemIntPtr",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_makePointFxCli_499610"
+      ],
+      "sha256": "f826259fbb9c8144d9ed38630156f3a445dcb32003326d598622723a1c044ff0"
+    },
+    {
+      "opcodes": [
+        132
+      ],
+      "labels": [
+        "case 0x84u: // MSG_FX_VIOLET_SPARKS"
+      ],
+      "start_line": 1079,
+      "lines": 6,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_makePointFxCli_499610"
+      ],
+      "sha256": "4fc35af18a513316250cd73c6fb4de76620f01f6cc6fae369484b2c9609d1c57"
+    },
+    {
+      "opcodes": [
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        163
+      ],
+      "labels": [
+        "case 0x85u: // MSG_FX_EXPLOSION",
+        "case 0x86u: // MSG_FX_LESSER_EXPLOSION",
+        "case 0x87u: // MSG_FX_COUNTERSPELL_EXPLOSION",
+        "case 0x88u: // MSG_FX_THIN_EXPLOSION",
+        "case 0x89u: // MSG_FX_TELEPORT",
+        "case 0x8Au: // MSG_FX_SMOKE_BLAST",
+        "case 0x8Bu: // MSG_FX_DAMAGE_POOF",
+        "case 0xA3u: // MSG_FX_MANA_BOMB_CANCEL"
+      ],
+      "start_line": 1085,
+      "lines": 154,
+      "gotos": [],
+      "calls": [
+        "LODWORD",
+        "for",
+        "gameFrame",
+        "getMemIntPtr",
+        "getMemU32Ptr",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_randomIntMinMax_415FF0",
+        "nox_float2int",
+        "nox_xxx_gamedataGetFloat_419D40",
+        "nox_xxx_getTTByNameSpriteMB_44CFC0",
+        "nox_xxx_spriteLoadAdd_45A360_drawable",
+        "nox_xxx_sprite_45A110_drawable",
+        "switch",
+        "while"
+      ],
+      "sha256": "7b61ff1d92c5b2f361250ab46073878b164b22030a1aef5fb5499c09760147d4"
+    },
+    {
+      "opcodes": [
+        143,
+        144,
+        145
+      ],
+      "labels": [
+        "case 0x8Fu: // MSG_FX_DRAIN_MANA",
+        "case 0x90u: // MSG_FX_CHARM",
+        "case 0x91u: // MSG_FX_GREATER_HEAL"
+      ],
+      "start_line": 1239,
+      "lines": 7,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_netDrawRays_49BDD0"
+      ],
+      "sha256": "b80d075da491ac67b9248c7c6f2d826a425e980d425c72c4c09c58afc3567f01"
+    },
+    {
+      "opcodes": [
+        147
+      ],
+      "labels": [
+        "case 0x93u: // MSG_FX_SPARK_EXPLOSION"
+      ],
+      "start_line": 1246,
+      "lines": 21,
+      "gotos": [],
+      "calls": [
+        "LODWORD",
+        "getMemIntPtr",
+        "getMemU32Ptr",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_getTTByNameSpriteMB_44CFC0",
+        "nox_xxx_spriteLoadAdd_45A360_drawable",
+        "nox_xxx_sprite_45A110_drawable",
+        "sub_49A150"
+      ],
+      "sha256": "3de7372802ca18bd32cdc44d5e93452a9787b66b5a00e2022deea141e0736113"
+    },
+    {
+      "opcodes": [
+        149
+      ],
+      "labels": [
+        "case 0x95u: // MSG_FX_SENTRY_RAY"
+      ],
+      "start_line": 1267,
+      "lines": 52,
+      "gotos": [],
+      "calls": [
+        "LODWORD",
+        "gameFrame",
+        "getMemU32Ptr",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_randomIntMinMax_415FF0",
+        "nox_double2int",
+        "nox_xxx_checkGameFlagPause_413A50",
+        "nox_xxx_clientPlaySoundSpecial_452D80",
+        "nox_xxx_spriteLoadAdd_45A360_drawable",
+        "nox_xxx_sprite_45A110_drawable",
+        "sqrt",
+        "sub_4C5020"
+      ],
+      "sha256": "3fe04a3ecdb149623e4f287f70ec9a36636563024b4aec7547a20d7b45b5a664"
+    },
+    {
+      "opcodes": [
+        150
+      ],
+      "labels": [
+        "case 0x96u: // MSG_FX_RICOCHET"
+      ],
+      "start_line": 1319,
+      "lines": 32,
+      "gotos": [],
+      "calls": [
+        "LODWORD",
+        "gameFrame",
+        "getMemIntPtr",
+        "getMemU32Ptr",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_randomIntMinMax_415FF0",
+        "nox_xxx_getTTByNameSpriteMB_44CFC0",
+        "nox_xxx_spriteLoadAdd_45A360_drawable",
+        "nox_xxx_sprite_45A110_drawable",
+        "while"
+      ],
+      "sha256": "9750fa7cba06fed93a7149704b51e50f056dc5de54b8c7a0894e293e06af8531"
+    },
+    {
+      "opcodes": [
+        152
+      ],
+      "labels": [
+        "case 0x98u: // MSG_FX_GREEN_BOLT"
+      ],
+      "start_line": 1351,
+      "lines": 20,
+      "gotos": [],
+      "calls": [
+        "HIDWORD",
+        "LODWORD",
+        "getMemIntPtr",
+        "getMemU32Ptr",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_getTTByNameSpriteMB_44CFC0",
+        "nox_xxx_spriteLoadAdd_45A360_drawable"
+      ],
+      "sha256": "1712a24c8dc5986bf7fe8d748dd7914ed51fbc031279262da944e090bc807f83"
+    },
+    {
+      "opcodes": [
+        154
+      ],
+      "labels": [
+        "case 0x9Au: // MSG_FX_WHITE_FLASH"
+      ],
+      "start_line": 1371,
+      "lines": 5,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx____setargv_11_473920"
+      ],
+      "sha256": "fdcfcfcdd2181c6641c78c2a1190205a1844f6c463427e483504d75885c29340"
+    },
+    {
+      "opcodes": [
+        155,
+        156,
+        157
+      ],
+      "labels": [
+        "case 0x9Bu: // MSG_FX_GENERATING_MAP",
+        "case 0x9Cu: // MSG_FX_ASSEMBLING_MAP",
+        "case 0x9Du: // MSG_FX_POPULATING_MAP"
+      ],
+      "start_line": 1376,
+      "lines": 7,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_mapGenClientText_4A9D00"
+      ],
+      "sha256": "cf8a14952c2302830d727d70efd32b616139716eeb18948b935c0cdf8479a200"
+    },
+    {
+      "opcodes": [
+        158
+      ],
+      "labels": [
+        "case 0x9Eu: // MSG_FX_DURATION_SPELL"
+      ],
+      "start_line": 1383,
+      "lines": 29,
+      "gotos": [],
+      "calls": [
+        "LOBYTE",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_clientAddRayEffect_49C160",
+        "nox_xxx_clientRemoveRayEffect_49C450",
+        "switch"
+      ],
+      "sha256": "a535a9e4eb042e586fbc1a8e55ffcc5742c5ed6f964aea6a837b810308de3635"
+    },
+    {
+      "opcodes": [
+        159
+      ],
+      "labels": [
+        "case 0x9Fu: // MSG_FX_DELTAZ_SPELL_START"
+      ],
+      "start_line": 1412,
+      "lines": 21,
+      "gotos": [],
+      "calls": [
+        "HIDWORD",
+        "LODWORD",
+        "gameFrame",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_netClearHighBit_578B30",
+        "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+        "nox_xxx_netSpriteByCodeStatic_45A720",
+        "nox_xxx_netTestHighBit_578B70"
+      ],
+      "sha256": "f058d1a05d616d5a0e247fc6c3387623e0614ffebec51453174a55040a87bf26"
+    },
+    {
+      "opcodes": [
+        160
+      ],
+      "labels": [
+        "case 0xA0u: // MSG_FX_TURN_UNDEAD"
+      ],
+      "start_line": 1433,
+      "lines": 6,
+      "gotos": [],
+      "calls": [
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_fxDrawTurnUndead_499880"
+      ],
+      "sha256": "f878961c45a0e242ad586fd06d97b60744506b73efd553b2ee96623811c4cbbb"
+    },
+    {
+      "opcodes": [
+        161
+      ],
+      "labels": [
+        "case 0xA1u: // MSG_FX_ARROW_TRAP"
+      ],
+      "start_line": 1439,
+      "lines": 24,
+      "gotos": [],
+      "calls": [
+        "LODWORD",
+        "getMemIntPtr",
+        "getMemU32Ptr",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_xxx_getTTByNameSpriteMB_44CFC0",
+        "nox_xxx_spriteLoadAdd_45A360_drawable",
+        "nox_xxx_sprite_45A110_drawable"
+      ],
+      "sha256": "3fbf703340121672211d8082059db7178986f2a3039a1124b866015b4556e25f"
+    },
+    {
+      "opcodes": [
+        162
+      ],
+      "labels": [
+        "case 0xA2u: // MSG_FX_VAMPIRISM"
+      ],
+      "start_line": 1463,
+      "lines": 28,
+      "gotos": [],
+      "calls": [
+        "LOBYTE",
+        "getMemIntPtr",
+        "getMemU32Ptr",
+        "if",
+        "nox_client_isConnected_43C700",
+        "nox_common_randomIntMinMax_415FF0",
+        "nox_xxx_getTTByNameSpriteMB_44CFC0",
+        "sub_499490",
+        "while"
+      ],
+      "sha256": "28084636a651d2c40ce9c457b051fb600ccc729c827486b7131a94a9a5baca08"
+    },
+    {
+      "opcodes": [
+        164
+      ],
+      "labels": [
+        "case 0xA4u: // MSG_UPDATE_STREAM"
+      ],
+      "start_line": 1491,
+      "lines": 20,
+      "gotos": [],
+      "calls": [
+        "LODWORD",
+        "if",
+        "nox_xxx_netCliProcUpdateStream_494A60",
+        "nox_xxx_netCliUpdateStream2_494C30",
+        "return",
+        "while"
+      ],
+      "sha256": "8213260a30c47b69b95dfa52e3f4e062f84c3af9779eaf79e1c260fc36a5febd"
+    }
+  ],
+  "cross_boundary_gotos": [],
+  "additional_c_helpers": [
+    {
+      "symbol": "nox_xxx_j_inventoryNameSignInit_467460",
+      "file": "src/legacy/GAME5_2.c",
+      "start": 4721,
+      "end": 4820,
+      "line": 167,
+      "body_lines": 1,
+      "sha256": "6e18cea8a8f5e5d1c8af6110bf5f780c24542063d9aa4de239da43fc36dff0e0"
+    },
+    {
+      "symbol": "nox_xxx____setargv_11_473920",
+      "file": "src/legacy/GAME2_1.c",
+      "start": 6486,
+      "end": 6563,
+      "line": 204,
+      "body_lines": 1,
+      "sha256": "c816a2cc694e056c2440b44f87b6e7ed4ddb122289b93d83c5c82bf0438f550d"
+    },
+    {
+      "symbol": "sub_4947E0",
+      "file": "src/legacy/GAME2_3.c",
+      "start": 6225,
+      "end": 7214,
+      "line": 225,
+      "body_lines": 35,
+      "sha256": "c3c3ec0a3437f6e6962d2d2bc1034291a32600c76020acc1737550543de35f0e"
+    },
+    {
+      "symbol": "sub_4948B0",
+      "file": "src/legacy/GAME2_3.c",
+      "start": 7292,
+      "end": 9309,
+      "line": 262,
+      "body_lines": 70,
+      "sha256": "0f44f70f3a5f284342d52441da0e702c5984deb1a056765400edfc8317b78942"
+    },
+    {
+      "symbol": "nox_xxx_mapGenClientText_4A9D00",
+      "file": "src/legacy/client__gui__guigen.c",
+      "start": 389,
+      "end": 2345,
+      "line": 16,
+      "body_lines": 49,
+      "sha256": "5e843d6ce120e1d32573392eb5d8585ca9c138bf6f20f127413c076a01be7ddf"
+    },
+    {
+      "symbol": "nox_xxx_compassGenStrings_4A9C80",
+      "file": "src/legacy/GAME3.c",
+      "start": 2230,
+      "end": 2886,
+      "line": 78,
+      "body_lines": 24,
+      "sha256": "1d2b747c2db5ea21ab4bbca65bcc6f4c36a811fb3bb0d68198d9894f0b5d807c"
+    }
+  ],
+  "helper_body_lines": 180,
+  "c_loc": {
+    "files": 37,
+    "lines": 7897,
+    "reference_lines": 0
+  },
+  "selected_body_lines": 1236,
+  "owners_to_move": [
+    "dword_5d4594_1200776 (BlueSpark)",
+    "dword_5d4594_1200796 (VioletSpark)"
+  ],
+  "existing_non_dispatch_callers": [
+    "src/legacy/map_population_finish.go: map-generation progress drawing",
+    "src/legacy/video_client.go: compass image initialization"
+  ]
+}
