@@ -1,0 +1,163 @@
+{
+  "status": "partial original-C progress/effects fixture checkpoint; full selected baseline still incomplete",
+  "production_revision": "f37ec35a",
+  "production_c_lines": 7901,
+  "new_cases": 1908,
+  "scope_cases_so_far": 24290,
+  "captures": [
+    {
+      "file": "interaction-game-progress-arrow-trap.json",
+      "cases": 288,
+      "sha256": "5503aae53429db3c9b56f6e05e298e757560900edef5a24bd36b604753f43c6d"
+    },
+    {
+      "file": "interaction-game-progress-delta-z.json",
+      "cases": 6144,
+      "sha256": "fa5c42de729c190fd148336d162ab30452fff8b44e88064805261efbc66c7746"
+    },
+    {
+      "file": "interaction-game-progress-green-bolt.json",
+      "cases": 432,
+      "sha256": "28119e9d97db4c39d9ac401698b6ecf4fe9c72da01bab9946ddc283454712fbc"
+    },
+    {
+      "file": "interaction-game-progress-particle-bursts.json",
+      "cases": 540,
+      "sha256": "230d2d147f2712bc3445a2cd6fadd40304e5360169d94680dff88360ce8fa803"
+    },
+    {
+      "file": "interaction-game-progress-point-sparks.json",
+      "cases": 288,
+      "sha256": "d3ff41edc9a18e711c5c9bcc6d061a68cc1504d77bde53f416507f5a5f26cd2a"
+    },
+    {
+      "file": "interaction-game-progress-ray-effects.json",
+      "cases": 378,
+      "sha256": "9edc2dd931fe60d0cfff10e10cf8e080ad4f483b0e1ce1edd9abcb73cb73f6d4"
+    },
+    {
+      "file": "interaction-game-progress-shield-effects.json",
+      "cases": 288,
+      "sha256": "742dfb73013d359d343b231b38d53c3051f2e1fc68e5e9381df4d494c46d88ae"
+    },
+    {
+      "file": "interaction-game-progress-smoke.json",
+      "cases": 384,
+      "sha256": "3d1c9fe761eb1d92292a2504b7c6c61e66f0ee36663994422334e2d6b3e218fc"
+    },
+    {
+      "file": "interaction-game-progress-summon-effects.json",
+      "cases": 720,
+      "sha256": "0d7fe718c22e98f549bf3015d4cffec0f60e04bd3d0dca432dfce63651be8b7b"
+    },
+    {
+      "file": "interaction-game-progress-update-stream.json",
+      "cases": 360,
+      "sha256": "4421fed6e4c9e9d818623e656ebb46879c34e0d24be056f22580754a746e89d6"
+    },
+    {
+      "file": "interaction-game-progress-white-flash.json",
+      "cases": 8,
+      "sha256": "9e77a17c250deacad5aff88b8a214646bb5afa8013a9eb7636a4fd9b0b9c0002"
+    }
+  ],
+  "runs": [
+    {
+      "path": "build/port-game-messages/effects-second-repeat-1",
+      "tests": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 11,
+        "selected_root_tests": 11,
+        "exit": 0,
+        "started_tests": 11,
+        "completed_tests": 11,
+        "started_root_tests": 11,
+        "completed_root_tests": 11,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 7.478661169996485
+      },
+      "source_unchanged": true
+    },
+    {
+      "path": "build/port-game-messages/effects-second-repeat-2",
+      "tests": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 11,
+        "selected_root_tests": 11,
+        "exit": 0,
+        "started_tests": 11,
+        "completed_tests": 11,
+        "started_root_tests": 11,
+        "completed_root_tests": 11,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 7.812186609953642
+      },
+      "source_unchanged": true
+    },
+    {
+      "path": "build/port-game-messages/effects-second-repeat-3",
+      "tests": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 11,
+        "selected_root_tests": 11,
+        "exit": 0,
+        "started_tests": 11,
+        "completed_tests": 11,
+        "started_root_tests": 11,
+        "completed_root_tests": 11,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 7.862527295947075
+      },
+      "source_unchanged": true
+    }
+  ],
+  "source_sha256": {
+    "src/game_messages_client_particle_bursts_porttest_test.go": "aeb22cdb28ff02bfb1e7b0b9ee338edab05c255f7c315c74b3f50d9cfa1a6fd9",
+    "src/game_messages_client_shield_effects_porttest_test.go": "a3e53ab82b8f0a466aa2cbbf3582da44f670d80a6798264468202d5b2efe9e3f",
+    "src/game_messages_client_summon_effects_porttest_test.go": "9449371206127661dff0893b46e8be13668dc80da075428f5c3f3838de28ea7b",
+    "src/game_messages_client_update_stream_porttest_test.go": "2f82905d677165f21dcbb2a0d48b657f578fc264a490d9085e7c908ec31255ac"
+  },
+  "remaining": "Duration effects, remaining visual effects, winner/status/creature/award messages and map-progress helpers; final whole-scope baseline qualification before translation."
+}

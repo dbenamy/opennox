@@ -24,7 +24,8 @@ inherited native boundary cases. All final source fingerprints match. Fresh thre
 production binaries pass ABI checks; the full asset suite matches all1,553 known
 failure entries and15 pass /3 fail /32 skip packages. Headless character creation/
 gameplay and explicit save/load pass, including continuation after saved-map load.
-Every job is joined, including production41364. No question is pending.
+Every qualification job is joined, including production41364. Correction
+**f37ec35a** is committed and pushed. No question is pending.
 
 ## Active — finish client progress/effects baseline, then translate
 
@@ -40,15 +41,19 @@ initializer and map-progress renderer move together with their existing Go calle
 Remaining new coverage: winner messages86–89, client-status UI106, creatures108/109,
 spell award111, summon/shield126–128, spark explosion147, sentry149, ricochet150,
 map progress155–157, duration effects158, turn undead160, vampirism162, mana-bomb
-cancel163 and earthquake164. The corrected baseline is not yet complete or frozen
+cancel163 and update stream164. The corrected baseline is not yet complete or frozen
 for that full scope. Existing32 frozen game-message captures remain unchanged.
 
-Next: review/install ignored **particle-bursts-draft.go** (not yet consumed) for
-ricochet150 and mana-bomb cancel163, then continue the remaining selected families.
-All source jobs are joined; no source edits are pending beyond the qualified fix
-and tests. Other installer/draft scripts, including record-green-fix.py, are
-CONSUMED after recording this checkpoint; do not replay them over later work.
-Continue immediately after committing/pushing this correction.
+New ricochet/mana-bomb fixtures pass540 cases, update streams360,
+summon creation/cancellation720, and shields288: **1,908 new cases**, bringing
+this next scope to **24,290 cases**. Three repeats each pass eleven effect roots
+/9,830 cases with identical hashes and source, no skips. All jobs are joined,
+including45806. See [the partial checkpoint](docs/porting/client-effects-second-c-checkpoint.json).
+Production is unchanged from qualified f37ec35a; the whole selected baseline is
+still incomplete. Next: review/install **duration-message-draft.go** (unconsumed)
+for158, then continue remaining selected families. No question is pending.
+Other installer/draft scripts, including particle-bursts-draft.go,
+shield-message-draft.go and record-green-fix.py, are CONSUMED; do not replay them.
 
 ## Recovery and storage
 
@@ -60,7 +65,10 @@ default/server/highres preserve all paths
 and bytes while sharing identical storage; use fresh run/output directories.
 Completed scenario copies also have verified asset restoration manifests (1,112,747,701
 duplicate bytes removed); use deduplicate-client-state-assets.py --restore NAME
-if those historical run copies need their unchanged assets restored. Original
+if those historical run copies need their unchanged assets restored.
+The green-bolt-correction gameplay/save runs also have completed verified restoration
+manifests; deduplicate-green-fix-assets.py --restore NAME restores their unchanged
+assets. That separate cleanup reclaimed another1,112,747,701 bytes and is consumed. Original
 assets/archive, binaries, captures, saves and failure evidence remain available.
 Single-job focused builds use compiler GOMEMLIMIT=1536MiB and test runtime 768MiB,
 GOMAXPROCS=2. Final target runs overlapped with separate outputs and fixed source.

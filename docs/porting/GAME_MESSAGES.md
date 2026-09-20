@@ -590,3 +590,29 @@ all paths and bytes while sharing617,563,932 /616,816,664 /617,563,932 bytes.
 All those plans are consumed. Original assets/archive and all qualification
 binaries, captures, saves and screenshots remain. Continue the remaining scope;
 particle-bursts-draft.go is an uninstalled draft for messages150/163.
+
+## Further particle, stream, summon and shield C fixtures
+
+The next test-only checkpoint adds **1,908 cases**: ricochet/mana-bomb bursts540,
+update-stream framing360, summon start/cancel720 and shields288. Three independent
+repeats each pass eleven effect roots /9,830 cases, no skips, identical capture
+hashes and source fingerprints. The seven previously qualified effect hashes are
+unchanged. Static checks pass. New-scope coverage totals **24,290 cases** so far;
+remaining production C stays **7,901 lines /37 files**. See
+client-effects-second-c-checkpoint.json. This is not full-scope qualification.
+
+Contracts include exact burst RNG use/fields and frame wrapping; float32 radius
+narrowing before truncation; stream consumed-length/terminator/early-return behavior
+and alias reports even when disconnected; full summon owner IDs and cancellation
+of real parent/child allocations; and shield direction, duplicate suppression and
+static/dynamic owner lookups. A summon snapshot initially omitted its unlinked
+child and failed the existing ownership check; it now supplies that actual owner.
+Message164 is update-stream dispatch (a checkpoint label calling it earthquake
+was corrected). No production behavior or prior expectation changed.
+
+The completed green-bolt gameplay/save copies now have verified restoration
+manifests; 1,112,747,701 bytes of original-identical assets were removed. Use
+`deduplicate-green-fix-assets.py --restore NAME` for those historical copies.
+Original assets/archive, changed files, saves/screenshots and evidence remain.
+All cleanup plans and installed drafts are consumed. Continue with duration-effect
+message158; its ignored draft is not yet installed.
