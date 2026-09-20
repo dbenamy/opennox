@@ -8,6 +8,19 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — client-dispatch C baseline qualified; Go conversion next
+
+See [qualification](docs/porting/client-session-c-qualification.json). Original C
+covers48 labels /59 roots /77,666 captured cases. Broad default/server/highres
+behavior checks pass627/623/627 roots with no skips. The server capture gate found
+one fixture address: quest-start user-data word92 stores quickbar row pointers.
+After using existing stable row IDs, default/server59-root repeats and fullhighres
+pass all applicable hashes with identical source fingerprints. No production
+source changed. Fresh production/ABI/full-suite/headless/save-load pass.
+C remains6,139 lines /35 files /zero reference C before installing the conversion.
+All C qualification jobs are joined. Native drafts/install/retirement scripts
+remain NOT consumed until explicitly recorded below.
+
 ## Active — complete client-dispatch C baseline
 
 All48 remaining top-level labels now have original-C coverage:59 test roots,
@@ -2213,3 +2226,58 @@ real encrypted files are tested. Full original-C qualification is still pending.
 Seventeenth cache audit is running (session95742), preserving archives with the
 quest-start fixture and every legacy/production archive. Do not replay completed
 cleanup scripts.
+
+Continuation after afd9d520 (pushed): full original-C default boundary passes627
+roots, no skips, all134 frozen hashes and static checks, source unchanged.
+Server boundary is active (session25299); no Go/C checkout edits until joined.
+Complete-repeat consolidation is CONSUMED:182 identical captures /1,533,829,208
+logical bytes. Default-boundary dedup is CONSUMED:640 captures /2,443,830,736
+logical bytes; paths/hashes/status preserved. All cleanup jobs are joined.
+Native implementation is drafted, NOT installed, in ignored
+`build/port-game-messages/client_session{,_settings,_team,_trade,_quest}.go.draft`.
+Two NOT-installed test drafts are `client_session_lengths_test.go.draft` and
+`client_session_corrections_test.go.draft`; four new roots cover incomplete records,
+long names, failed drawable creation and invalid quest selectors. Drafts are
+formatted but not compiled. Whole-C caller scan and Go owner map are in
+`client-session-caller-audit.json` / `client-session-owner-map.json`; export/callback
+retirement review remains pending. Do not confuse the draft with a qualified port.
+
+Server boundary25299 joined:623 roots pass without skips, but the run correctly
+fails its frozen-hash gate on quest-start only. Window user-data word92 contains
+quickbar row addresses, which vary across builds. The quest-start snapshot now
+uses its existing combined owner's row-address normalization. Probe52 passes;
+`quest-start-normalization-audit.json` verifies all564 changed values are only
+that field and map to already established spellbook/quickbar row IDs. No gameplay
+source changed. The old failed run remains failed. Server-boundary dedup is
+CONSUMED:640 identical captures /2,988,503,054 logical bytes; cleanup66741 joined.
+
+Corrected C final-default is active (session30645), using
+`client-session-complete-c-final-batch.json`. Default/server rerun59 client roots
+plus static checks after the localized fixture fix; their broad627/623-root
+behavior runs above remain evidence for unchanged tests/production. Highres will
+run the full627 roots, then fresh production/ABI/full-suite/headless/save-load.
+All final runs use corrected source identity. Installer and retirement scripts
+are NOT consumed and guard those gates. Retirement audit found146 newly unneeded
+Go-backed C exports, including the ball helper's tooltip setter. Five audio
+fixture calls move from their C switch to existing Go owners; callback slots
+retain names/indices with nil retired addresses. Native manifest draft is
+`build/port-game-messages/client-session-native-batch.draft.json`.
+
+Final-default30645 joined PASS:59 roots/no skips/all59 hashes/static. Final-server
+is active (session84934). The source-review draft also preserves C's "(null)"
+formatting for absent spell/guide titles versus valid empty titles; a fifth native
+contract root is drafted in `client_session_titles_test.go.draft` (NOT installed).
+All three native test drafts install together after C gates.
+Second historical-capture archival is CONSUMED:92 unique files,3,239,221,622 bytes
+recovered with round-trip SHA256 verification. Current client-session and last
+server-action evidence were excluded. Manifest:
+`build/archived-captures-20260920-03/manifest.json`; restore with
+`python3 build/port-game-messages/archive-finished-captures-2.py restore`.
+Archive job56665 is joined; roughly5GiB free after starting final-server.
+
+Final-server84934 joined PASS:59 roots/no skips/all59 corrected hashes/static.
+Final-highres is active (session8380), with full627-root selection and134 hashes.
+`finish-client-session-c-final.py` is prepared but NOT consumed; it verifies all
+four final gates and records the broad-test/corrected-fixture evidence precisely.
+Literal header/C++/assembly audit found no additional non-declaration callers of
+the146 candidate retired exports. No production Go/C source has changed yet.

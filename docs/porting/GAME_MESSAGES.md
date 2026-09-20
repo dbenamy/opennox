@@ -802,3 +802,14 @@ drawable allocation and quest notice33 string-table bounds. These avoid undefine
 C behavior and need independent tests, not invented C goldens. Quest startup uses
 real quickbar, meter, encrypted-file load and vote owners; only the separately
 qualified file-transfer boundary is observed.
+
+### Client-session baseline qualification
+
+[Qualification](client-session-c-qualification.json) records broad627/623/627-root
+default/server/highres behavior checks, corrected59-root default/server repeats,
+and fresh production/ABI/full-suite/headless/save-load. The only baseline fixture
+correction normalizes the quickbar row pointer in quest-start window word92 using
+existing owner IDs. The original failed server capture gate remains recorded;
+all other hashes are unchanged. Production C remains6,139 lines /35 files.
+Native translation also preserves null-title formatting identified in nox_swprintf;
+independent contracts distinguish absent titles from valid empty strings.

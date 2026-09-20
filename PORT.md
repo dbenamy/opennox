@@ -26,7 +26,8 @@ This conversion removes **502 lines**. A subsequent replay-buffer copy correctio
 passes focused regressions on all three profiles. Next are the remaining client
 settings/team/session messages. Their original-C baseline currently covers
 all48 labels, with77,666 captured cases across59 test groups
-and two matching independent repeats. Full profile checks precede conversion.
+and matching independent checks across all three profiles. Fresh production/ABI,
+full-suite and headless gameplay/save-load checks pass; native conversion follows.
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in

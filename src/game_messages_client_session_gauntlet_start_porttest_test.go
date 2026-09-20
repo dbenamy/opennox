@@ -55,7 +55,14 @@ func TestGameMessageClientSessionGauntletStart(t *testing.T) {
 		Transfers        []string
 	}
 	snapshot := func() state {
-		return state{q.snapshot("quest start", 0), q.meterOwner.invoke(t, 0, 0, 0, nil, 0, 0, 0, 0), *vote["choice"], *vote["previousChoice"], append([]string(nil), transfers...)}
+		meters := q.meterOwner.invoke(t, 0, 0, 0, nil, 0, 0, 0, 0)
+		// Quickbar slot windows store their row pointer in user-data word92.
+		// The general meter snapshot leaves that scalar/pointer union untouched;
+		// this combined owner can identify row addresses through its dataRefs.
+		for _, words := range meters.Windows {
+			words[92] = q.normalize(words[92])
+		}
+		return state{q.snapshot("quest start", 0), meters, *vote["choice"], *vote["previousChoice"], append([]string(nil), transfers...)}
 	}
 	type row struct {
 		On, Host, Quest, Class, File int
@@ -120,7 +127,6 @@ func TestGameMessageClientSessionGauntletStart(t *testing.T) {
 						n := legacy.Nox_xxx_netOnPacketRecvCli_48EA70_switch(0, netmsg.Op(240), data)
 						got := snapshot()
 						if n != 2 || !bytes.Equal(input, data) || !reflect.DeepEqual(got, want) {
-							interactionCapture(t, "quest-start-diff", []state{want, got})
 							t.Fatal("quest start route", on, host, quest, class, file, n)
 						}
 						rows = append(rows, row{on, host, quest, class, file, got})

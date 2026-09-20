@@ -120,7 +120,7 @@
           },
           {
             "path": "{out}/interaction-game-client-session-gauntlet-start.json",
-            "sha256": "3b7bfad6c7864384c9f08f7d238a348801b63e8997af0fce652441d4939e22d8"
+            "sha256": "593e57e667f4bc22775c4de13d53bb0fa325863e0add06378ba71d54e487a428"
           },
           {
             "path": "{out}/interaction-game-client-session-gauntlet-static-marker.json",
