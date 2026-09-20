@@ -787,3 +787,18 @@ confirms this C behavior and protects record tails. Preserve it in translation.
 Remaining: team/trade, other gauntlet branches and settings177 name/help coverage,
 then complete baseline and native qualification. Sole-caller audit confirms the
 39-line ball HUD helper belongs with the dispatcher.
+
+### Complete client-session original-C checkpoint
+
+The [complete checkpoint](client-session-complete-c-checkpoint.json) covers all48
+remaining dispatcher labels:59 roots,77,666 captured cases, two independent
+matching repeats, no skips. This adds11,760 cases covering teams, trade/shop,
+settings notices and the remaining quest paths. All previous hashes are unchanged.
+Full profile and production qualification precedes translation. C remains6,139
+physical lines /35 files /zero reference C.
+
+Native corrections to review: bounded long team names, failed team/green-bolt
+drawable allocation and quest notice33 string-table bounds. These avoid undefined
+C behavior and need independent tests, not invented C goldens. Quest startup uses
+real quickbar, meter, encrypted-file load and vote owners; only the separately
+qualified file-transfer boundary is observed.

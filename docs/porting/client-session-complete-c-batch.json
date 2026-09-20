@@ -1,0 +1,269 @@
+{
+  "batch": "client-session-complete-c",
+  "env": {
+    "GOMAXPROCS": "2",
+    "GOMEMLIMIT": "768MiB",
+    "OPENNOX_CLIENT_INTERACTION_CAPTURE": "{out}/interaction",
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-session-first-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-game-client-session-ack.json",
+            "sha256": "f8e7b30467fbf368386690c25af0553f73003257918492117bd5b3d125106a2b"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-audio.json",
+            "sha256": "ed87a210c0abea0a2976d97bbd75d0b9aca7745b7502b7e2e0b69c1c75321db3"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-book-data.json",
+            "sha256": "1b5105e7c9e74c0760a71e664c38c56d931e78d7821288a93c47c70e95b03227"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-briefing.json",
+            "sha256": "7c03bbc2a388c608572b7f9e7e892e484efd05d7f806ef00f2766b79bc1b46e9"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-chat-clear.json",
+            "sha256": "cdc688111eefa4fe2d7b958d11e6881f44f44f8381a310013ef89a88e6577f2d"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-console-result.json",
+            "sha256": "51b1505a38417d0853fd6af6e9ecc711718c03bfe97e58cf749123b64ce34fc1"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-death.json",
+            "sha256": "0a7b12054e5f77d8e1514966833c8aa19e0dcf8a7934aec96731aa212bdf4762"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-disconnect.json",
+            "sha256": "fef211969827c347fd0872d9a925869dc459bfebb6170f30e4d9cec4b1a348fd"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-drawables.json",
+            "sha256": "433b84fd0952596c154a780fe64a8491df2788496658ba9506fe878a0ff49163"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-forget.json",
+            "sha256": "9a41006f6348153fa43d62638f641f02b20379d0463b484b70e9f4328dfb888a"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-book-removal.json",
+            "sha256": "bb32adfe8072df01843b3edd62f969f06161308a271fd88bca375ad8ef3ca28e"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-briefing.json",
+            "sha256": "897451aa36c10e801bb630f8024c7796e5570d27d56d818c8659dca2e22199ce"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-gameover.json",
+            "sha256": "4e0a50e093e9ca2177a6fea3e887f9c0ee54c91e2a8023d952d756a17faaec5a"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-green-bolt.json",
+            "sha256": "87b032ac3c722385c2efd6f252d3f16f76c5c1886b6fbcaa07646f8de328755f"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-key.json",
+            "sha256": "0c94e8fa684d974d8881b76ae6c91298885b454ecad3c37112bdda08dacd7809"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-level.json",
+            "sha256": "e456bfd31d659f8aacad729fedd2c0fc3f4a8bf42232709dac68f35e1336ec4d"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-notices.json",
+            "sha256": "ad1094c8315a94a67d4c6f8f8b62e9d0751a97f6cc9161cca5836caed99ba8f5"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-participation.json",
+            "sha256": "e5d88e1bcffe7fe02034ab2774c546657d2d7775a4ea9e8a85db8754824f212e"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-particles.json",
+            "sha256": "2bd9d17e78d37f66d55ca96dad7001026382357e8eee6e473ba55ba0145c1bb0"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-player.json",
+            "sha256": "05f76bd6f83f2ec6333f8c7d16041675ff8ba5cbc640f527cf095ac775e5b063"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-scoreboard.json",
+            "sha256": "2f45085b58c091faa071ce2b418c7e2dc46a8e42c6ee5bdbbedbd8505ec105e6"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-selectors.json",
+            "sha256": "09da8005a59e6c095680b68f058e6a247ee65c2f0bb7403802e2cdab6521d16d"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-stage.json",
+            "sha256": "4d0065fce5def13f082aad05ca67437be881de295a9c1d030deb6bcd03c109b2"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-start.json",
+            "sha256": "3b7bfad6c7864384c9f08f7d238a348801b63e8997af0fce652441d4939e22d8"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-gauntlet-static-marker.json",
+            "sha256": "e535ea413757aa7a6b899366857ab9931cf63eab637ecfd65d4e9512c0df10c2"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-inventory.json",
+            "sha256": "46cd8a94645d6588d95b534c4c2ebc1c6136d4b9d3bdce1a0b2b8067770656c4"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-journal.json",
+            "sha256": "0cbad115856c50d3d44557b0ce8e1490d9b9f0203dc9c09463ff9d42b1fdd290"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-latency.json",
+            "sha256": "3a44bd50c7c01909a28640d2b25890d3d3fec2a1122e2379061a0111a809cbde"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-messages-clear.json",
+            "sha256": "39fce02135d57967811a87da080ae98d982776f2edd2cf025e2d76ff1f322a6f"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-monitor.json",
+            "sha256": "240e1293c10214c43183a7c3bce78adfd2d3c9b437375401e7e1ea3b32a4c6ba"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-music.json",
+            "sha256": "33fda0a552615b10bf0c520272f9a93731abed6126363deb68132a70d3a5ba06"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-objectives.json",
+            "sha256": "5fe213a8a98e85a35e4dd49c36f94474c81c2be380fad13374d8f5b78abcbf6f"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-player-camera.json",
+            "sha256": "4a508b3eab058f4cca9084df164763608de7464a127406039dbb80cc54fcd785"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-player-creation.json",
+            "sha256": "d0adc0bdb471654f0cdcb6540a87261c993dfccf6437909548ae91f862c31f9d"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-player-objects.json",
+            "sha256": "b3f9bdf5b911c2b32e0e0ac580a91ccc7ed13de746f418618cb5f677521b2625"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-poison.json",
+            "sha256": "c5cc58f4f1555522329479db8a67f92bf5752a2956d48ee382c28898b3fb532b"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-prediction.json",
+            "sha256": "fb15459b03bc0a08d46bc570210fe39033fd0ec2d4a9a0e50f1e9674b9bb9b3b"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-quickbar.json",
+            "sha256": "67948e1990848248305b44acb06958a306770ed4806e5ad9ec39d6830404400d"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-respawn.json",
+            "sha256": "b64c63efbdf154a2b672a2a3458d77e5ef1a1d95774a47f08da0b694df0d2d33"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-rewards.json",
+            "sha256": "6a2f42fd35cb83f018164be708c46f2df2ed60c2700070c717500cd01ca91f90"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-sequence.json",
+            "sha256": "4197d85b99121e34e5522f3602957f71cbc9b525011a03191230076901d5ce09"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-settings-notices.json",
+            "sha256": "9a4d98e32baf27f8b711117883a6c17de59a5c8fde321c22069929d94756baee"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-settings-ui.json",
+            "sha256": "351670a9de9233b5523b38633ac3f1dbb24b2c85245641b242f461ac722d8cdf"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-settings.json",
+            "sha256": "7592d67de378a827b3729d7a8d3529981163135b89414be55d00a9a349a0069d"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-settings2.json",
+            "sha256": "34a8c7f4c25d541377b3850ddf68dc41e82d56ccce75be36e0714e2cbb14e92d"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-shop.json",
+            "sha256": "0f9b72f1b10bf7b6f2a3038b7ea994602814a5dcba657526ecf257be4982137a"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-summon-command.json",
+            "sha256": "86731e688946bfaf932121aeed1c4a56d16c57b08ef3d542a9f9b0af4d794c4e"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-team-create.json",
+            "sha256": "90168434d364956101a0c3835d75337caa3961258baf0ca9144b884184ad42b3"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-team-join.json",
+            "sha256": "ff71e070217a55200883b43903024c0a1050e282b6fe4a8e365fab7eea7585d6"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-team-local-host.json",
+            "sha256": "b441f46a44875bea454d39eebee0d5a9f63cb3fd01b5f09e3c5c29fda0a4f1c6"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-team-local-request.json",
+            "sha256": "3b08d997d58564123597a154dfda8d9b24391bbbfc4f6c6d47dc949797d5c9ef"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-team-members.json",
+            "sha256": "2cb036725fd9bb277ba1023a67c0f9372f4d79d40a2940ccff056f132ca71802"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-team-player.json",
+            "sha256": "6044c73fcc01a316f4bf37507e23dffe34ddc1baafceddad3bd60afceae1772d"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-team-state.json",
+            "sha256": "fb6c86b7667bff5ead3791c69333c43f4ed2f6242678fdc4c6bb92d12f8be68a"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-team-trade-selectors.json",
+            "sha256": "a84f294b9a58d6cf1089ceb59f3a8b56ae86dd0c7f583b531150cbb725a562b2"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-team-ui.json",
+            "sha256": "f9358f97898a656977b10b2ec74e736530258690c3270d13328433026f732a6b"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-timer.json",
+            "sha256": "f91e7e35e303e99b0fe173692299b6d026094b1d1b271531ad33c8d26bf6c1f7"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-trade.json",
+            "sha256": "0be68315ef7780c17741c2d3002daf7a722613fe4b4d4fe09a5d7c8a9c4a709e"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-vote.json",
+            "sha256": "6363fc7d681b627c6f59a2f40c86145e2068e81d9cd8255aa4b6d23224369d11"
+          }
+        ]
+      }
+    ]
+  }
+}

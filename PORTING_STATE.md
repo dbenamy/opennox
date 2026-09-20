@@ -8,6 +8,33 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — complete client-dispatch C baseline
+
+All48 remaining top-level labels now have original-C coverage:59 test roots,
+77,666 captured cases, two independent repeats with no skips and identical source
+fingerprints. All35 preceding capture hashes remain unchanged. See
+[checkpoint](docs/porting/client-session-complete-c-checkpoint.json).
+Production C remains6,139 lines /35 files; no production conversion in this
+checkpoint. Next: full default/server/highres and production boundary, then the
+1,497-line dispatcher plus its39-line sole-caller ball HUD helper.
+
+Probe50 quest-start and combined probe51 pass. All probes1–51 and both complete
+repeats are joined. Seventeenth cache cleanup is CONSUMED:10 superseded root test
+archives /808,339,516 bytes. Earlier notes naming those jobs active are historical.
+Completed-capture archival recovered3,235,988,546 bytes after gzip round-trip SHA256
+verification;42 unique files and every hardlink alias are listed in
+`build/archived-captures-20260920-02/manifest.json`. Restore all with
+`python3 build/port-game-messages/archive-finished-captures.py restore`.
+Archive apply is CONSUMED; assets, ISO archive, active outputs and source preserved.
+The first archive audit found no fully owned hardlink groups and changed no files.
+
+Review later: native team names safely handle20+UTF-16 units, team joins and green
+bolts guard failed drawable allocation, and quest notice33 bounds its string-table
+selector. Original C has undefined behavior there; separate native contracts must
+cover corrections. Preserve the documented death-record clearing offset.
+
+
+
 ## Current — server player-action conversion qualified
 
 Moved16 dispatcher cases and two private pickup helpers to Go. Retired38 unused
@@ -2128,6 +2155,61 @@ storage (2,039,573,772 logical bytes); all cleanup jobs are joined.
 Lifecycle probe consolidation is CONSUMED:3 files /25,445,636 logical bytes.
 Lifecycle combined-probe consolidation is CONSUMED:34 files /325,433,158 logical
 bytes. All paths, content and failed diagnostics preserved; active repeat excluded.
-Team-state draft is prepared under build/port-game-messages/team-state.draft,
-NOT installed. Team lookup uses the existing byte TeamID conversion, including
+Team-state and team-create drafts are installed/CONSUMED. Trade-dispatch draft
+is also installed/CONSUMED. Probe30 found the creation fixture needed the real
+team registry/string owner; it now uses newMatchRosterOwner. Probe31 exposed
+the original C temporary-name capacity defect (see below). Probe32 is running
+(session34024), covering team creation/rename/score and trade dispatch. Team lookup uses the existing byte TeamID conversion, including
 wide wire IDs whose low byte matches a team; preserve that behavior.
+
+Lifecycle checkpoint cad58447 is committed and pushed. Both repeats pass35 roots
+and all35 hashes with unchanged, identical source fingerprints. Lifecycle repeat1
+and repeat2 consolidations are CONSUMED:35 files /325,458,859 logical bytes each.
+All completed jobs are joined; original archive/assets remain untouched.
+
+Review later — team creation: C uses wchar2_t v386[20], copies the wire name count
+and then writes its terminator at that count. Probe31 with21 units trips the C
+checked copy;20 units would put the terminator past the array. Original-C fixture
+now uses0–19 units. During native conversion, use bounded Go UTF-16 handling and
+add separate20/21/max-count tests rather than preserve undefined C behavior.
+The downstream team-name owner already bounds stored names to20 units. Do not
+claim those longer-name cases as matching an original-C baseline.
+
+Continuation after cad58447: probe33 passes team creation/rename/score, all trade
+and shop dispatch fixtures (real windows, stock, quantities and gold dialog).
+Team membership/join/player and settings-name/help fixtures are installed.
+Probe34 was a fixture compile failure (core-vs-wrapper server methods); probe35
+needed localized join-message ownership. Probe36 incorrectly tried observing a
+concrete print function; probe37 uses the existing real message/console owner
+and is active (session19421). No production code changed.
+Sixteenth fixture-cache cleanup is CONSUMED:15 superseded root test archives /
+1,205,268,060 bytes, preserving current shop-fixture and all legacy/production
+archives. Audit/apply jobs are joined. Settings-notices and team-join/player
+drafts are installed/CONSUMED; gauntlet-participation draft is NOT installed.
+
+Probe37 joined PASS (team membership/join/player plus settings notices/help).
+Probe41 passed team UI, participation and book removal; its only failure was
+missing OPENNOX_SPELLBOOK_ASSETS for the key window. Probe42, with the extracted
+asset root configured, passes key/stage/game-over. Include that env var in the
+next baseline manifest. Probe43 passes green bolt, particles and static marker.
+All associated drafts are installed/CONSUMED. Probe44 is active (session16503):
+scoreboard and inventory level panels. No source edits while it runs.
+Probe38 was a fixture constant-width compile error; probe39/40 corrected team-list
+setup/direct-call expectations. No production fix or frozen-hash change resulted.
+Remaining gauntlet coverage: entry setup0 and localized rewards30–33. Team0's
+local join/request flag still needs a focused check. Team1's original C failed
+allocation path forms pointer24; native should safely handle nil instead, with
+separate tests, like longer team names. Current C remains6,139 lines /35 files.
+
+Probe44 joined PASS: scoreboard and inventory level. Probe45's reward-notice
+fixture omitted ability-definition validity; field24=1 fixes the fixture.
+Probe46 notices pass but quest-start direct comparison used an unavailable
+interaction helper alias; switched to existing PortTestVoteGUI("reset-choice").
+Probe47 is active (session36695): localized notices, quest start, team local
+client requests and host assignment. All drafts for these are installed/CONSUMED.
+Quest-start executes real quickbar/meter/file-read/vote owners, observing the
+separately qualified Sub_41CC00 file-transfer boundary; both missing and empty
+real encrypted files are tested. Full original-C qualification is still pending.
+Seventeenth cache audit is running (session95742), preserving archives with the
+quest-start fixture and every legacy/production archive. Do not replay completed
+cleanup scripts.
