@@ -269,3 +269,17 @@ matching separate-process captures. Static mapped-memory checks pass; jobs
 25813/36629 are joined. See game-messages-client-wall-fixtures.json. All retained
 wall expectations are unchanged. Next: inventory scalar, durability and charge
 reports. The inventory-scalars draft is prepared but not installed.
+
+## Client inventory reports
+
+Armor/gold/stat-modifier storage and item durability/charges add 1,924 cases.
+Contracts check exact float bit patterns and neighboring storage, full drawable
+records, stack lookup and dragged-item precedence, high-bit code normalization,
+equipped-state equality, real meter values/visibility, and unchanged input/grid.
+Accumulated checks pass 123 root runs (41 roots, three repetitions), 31,322 message
+cases and twenty-three matching captures across processes. Static checks pass;
+jobs 32355/80982 are joined. See game-messages-client-inventory-fixtures.json.
+The inventory-scalars draft is CONSUMED. Next: equipment dispatch using the existing
+player/NPC owners and independent insertion/capacity/modifier contracts. The
+ignored client-equipment draft is prepared but not yet installed. Production C
+is unchanged at 8,820 lines /38 files; the full dispatch baseline is incomplete.

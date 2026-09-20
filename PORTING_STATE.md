@@ -112,6 +112,13 @@ Third superseded-cache cleanup recovered 1,133,631,892 bytes; its scripts are
 consumed, jobs 67029/88187 joined. Next: inventory scalar/durability/charge reports.
 The ignored inventory-scalars.draft is prepared, not yet installed.
 
+Latest client inventory report checkpoint: **31,322 cases /23 message roots**,
+plus 18 inherited roots. Three repetitions pass **123 root runs** and **23 matching
+captures**; static checks pass. Jobs 32355/80982 are joined. See
+[game-messages-client-inventory-fixtures.json](docs/porting/game-messages-client-inventory-fixtures.json).
+The inventory-scalars draft is consumed; client-equipment.draft is prepared,
+not installed. Next: player/NPC equipment dispatch contracts. Production unchanged.
+
 ## Previous — client drawable state Go conversion qualified
 
 C baseline **8266e740** and native conversion **df2e1155** are pushed. Fifteen live
