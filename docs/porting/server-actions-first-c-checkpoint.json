@@ -1,0 +1,49 @@
+{
+  "status": "partial original-C server-actions checkpoint; creature/spell/collision/trade/gauntlet paths remain before full baseline",
+  "production_revision": "f8607de2",
+  "production_c_lines": 6641,
+  "production_c_files": 36,
+  "new_cases": 950,
+  "captures": [
+    {
+      "file": "interaction-game-server-secondary-weapon.json",
+      "cases": 480,
+      "sha256": "f924ad7cd6bd403723f8abf5b2002d84da8a08a2191850ffc66934021f8bdf73"
+    },
+    {
+      "file": "interaction-game-server-inventory-failure.json",
+      "cases": 150,
+      "sha256": "15094f70fd4369de5d681a9c4047da39ef7657d0e408a35d8b0c7a9549927989"
+    },
+    {
+      "file": "interaction-game-server-book-request.json",
+      "cases": 320,
+      "sha256": "d349cf51f1b1e37f67854074a9f5de6cbe662352f402680b64efe05c213e78a9"
+    }
+  ],
+  "runs": [
+    {
+      "path": "build/port-game-messages/server-actions-first-repeat-1",
+      "roots": 32,
+      "no_skips": true
+    },
+    {
+      "path": "build/port-game-messages/server-actions-first-repeat-2",
+      "roots": 32,
+      "no_skips": true
+    },
+    {
+      "path": "build/port-game-messages/server-actions-first-repeat-3",
+      "roots": 32,
+      "no_skips": true
+    }
+  ],
+  "source_manifest_sha256": "9beaf58d3d672862249159ddfd9b214a83ea8102a21b523862ede39d42599d5c",
+  "notes": [
+    "Secondary weapon IDs cover full-width net codes resolved through distinct object extents.",
+    "Inventory failure uses the full input ID without extent conversion and reports even when the drop callback returns false.",
+    "Book requests cover inventory/stock/world precedence, guide lookup, output code encoding and unchanged storage.",
+    "Existing game-message and vote capture expectations remain unchanged.",
+    "No production change; source-identical production evidence remains f8607de2."
+  ]
+}

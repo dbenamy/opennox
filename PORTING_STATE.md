@@ -23,7 +23,8 @@ full suite matches all1,553 known failure entries and15 pass /3 fail /32 skip
 packages. Headless gameplay and explicit save/load, including continuation after
 loading, both pass. All jobs are joined, including production37588.
 See [the qualification](docs/porting/client-progress-effects-native-qualification.json).
-The original-C baseline is committed and pushed as **a2b8342c**.
+The original-C baseline is committed and pushed as **a2b8342c**. Native conversion
+**f8607de2** is committed and pushed.
 
 The interface cleanup initially shifted sorted callback IDs in summon captures.
 Retired names now remain nil entries, preserving the original capture namespace
@@ -38,11 +39,27 @@ Audit and finish the whole remaining server dispatcher (16 top-level labels,
 alias contracts and extending positive creature, spell, collision, book, vote,
 trade and endgame coverage as needed. This is a smaller coherent batch because it
 can retire an entire dispatcher and reuse substantial existing C evidence.
-Read-only candidate inventories are in build/port-game-messages; they are not yet
-a selected or frozen baseline. The remaining client dispatcher has48 labels for
-a subsequent connected batch. No question is pending; continue after commit/push.
+Selection and helper hashes are in
+[server-actions-selection.json](docs/porting/server-actions-selection.json); coverage
+is not yet complete or frozen. The pickup class helper and its private class
+accessor move with their only dispatcher caller. The remaining client dispatcher has48 labels for
+a subsequent connected batch. Existing vote admission/withdrawal tests also reach
+the C dispatcher. New secondary-weapon480, inventory-failure150 and book-request320 contracts pass:
+**950 new cases**, three repeated32-root sweeps, no skips, identical hashes and
+source. Probe57564 and repeats69155 are joined PASS. Existing server/vote captures
+are unchanged. See [the partial checkpoint](docs/porting/server-actions-first-c-checkpoint.json).
+The initial secondary fixture assumed marked IDs merely clear a bit; it now uses
+actual extent lookup and includes full-width net codes. New captures use the
+baseline writer; no frozen expectations were changed. Continue with positive
+creature commands, spells, collision callbacks, trades and gauntlet actions.
+Production remains unchanged from f8607de2. No question is pending; continue after commit/push.
 
 ## Recovery and storage
+
+Completed native gameplay/save asset deduplication is CONSUMED:1,112,747,701
+original-identical bytes removed (audit51461/apply98382 joined). Restoration uses
+deduplicate-progress-native-assets.py --restore NAME. Original assets/archive,
+changed files, saves, screenshots and evidence are preserved.
 
 Final native capture deduplication labels progress-native-qualified-default,
 -server and -highres are CONSUMED:888,744,852 /875,151,930 /888,744,852 bytes.

@@ -115,6 +115,7 @@ import (
 type PortTestPlayerControlsSpec struct {
 	GameMessagePickupCalls *int
 	GameMessageEquipped    *bool
+	GameMessageSecondary   *int // Expected temporaryRef identity at update-data byte108.
 	GameMessageCheckCalls  bool
 	GameMessageCallKind    uint32
 	GameMessage            []byte // Optional original game-message dispatch over this real owner.
@@ -410,6 +411,14 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 		}
 	}
 
+	if sp.GameMessageSecondary != nil {
+		actor := p.temporaryRef(spec.Actor)
+		got := *(*unsafe.Pointer)(unsafe.Add(actor.UpdateData, 108))
+		want := p.temporaryRef(*sp.GameMessageSecondary).CObj()
+		if got != want {
+			panic(fmt.Sprintf("game-message secondary weapon identity: message %v expected object %d", sp.GameMessage, *sp.GameMessageSecondary))
+		}
+	}
 	if sp.GameMessageEquipped != nil {
 		target := p.temporaryRef(sp.Target)
 		got := target.ObjFlags&0x100 != 0
@@ -514,6 +523,13 @@ func (p *portTestShopPools) controlsAdopt(u *server.Object) {
 // covers only ABIs still used by production C. Expected captures are unchanged.
 func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe.Pointer) uint64 {
 	switch op {
+	case 75:
+		equipmentSecondary(u, t)
+		return 0
+	case 76:
+		inventoryDrop(u, t, &u.PosVec)
+		gameplayTextPrivate(u, alloc.InternCString("pickup.c:CarryingTooMuch"), 0)
+		return 0
 	case 72:
 		Nox_xxx_inventoryServPlace_4F36F0(u, t, 1, 1)
 		return 0
