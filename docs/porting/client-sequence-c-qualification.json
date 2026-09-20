@@ -1,0 +1,69 @@
+{
+  "status": "qualified original C queue baseline",
+  "production_revision": "0c2ff233",
+  "production_qualification": "client-session-native-qualification.json",
+  "production_source_unchanged": true,
+  "added_test_files": [
+    "src/client_sequence_porttest_test.go"
+  ],
+  "targets": {
+    "c-default1": {
+      "roots": 9,
+      "skips": 0,
+      "captures": 4,
+      "source_unchanged": true,
+      "wall_seconds": 11.818341845879331
+    },
+    "c-default2": {
+      "roots": 9,
+      "skips": 0,
+      "captures": 4,
+      "source_unchanged": true,
+      "wall_seconds": 11.28734328201972
+    },
+    "c-server": {
+      "roots": 9,
+      "skips": 0,
+      "captures": 4,
+      "source_unchanged": true,
+      "wall_seconds": 42.6268465758767
+    },
+    "c-highres": {
+      "roots": 9,
+      "skips": 0,
+      "captures": 4,
+      "source_unchanged": true,
+      "wall_seconds": 43.40145611297339
+    }
+  },
+  "captures": [
+    {
+      "path": "{out}/interaction-client-sequence-delivery-lengths.json",
+      "sha256": "25d8ce027c7122be6f3a9bbe9a3f8785604731f105e4d51c6d02ec8efcd87b7a"
+    },
+    {
+      "path": "{out}/interaction-client-sequence-delivery.json",
+      "sha256": "9d2e301a6c4a125841709e36a6419521bcbcc95bfbd2c7acd451ade45458003b"
+    },
+    {
+      "path": "{out}/interaction-client-sequence-tick-wrap.json",
+      "sha256": "a39c6f5bbd89464bd209ed404e362a76f7af469738aaea3d7c6c9ac8f1a4d52a"
+    },
+    {
+      "path": "{out}/interaction-game-client-session-sequence.json",
+      "sha256": "4197d85b99121e34e5522f3602957f71cbc9b525011a03191230076901d5ce09"
+    }
+  ],
+  "captured_cases": 1699,
+  "new_captured_cases": 1075,
+  "production_c": {
+    "files": 33,
+    "lines": 4603
+  },
+  "review": [
+    "A pre-timeout poll clears pending; later idle polls do not retry that gap. Future-only insertion does not seed pending. Preserve both.",
+    "Clock narrows to uint32 then is promoted to uint64 before subtraction; backward/wrapped clocks expire the gap.",
+    "Callback result is ignored; zero through255-byte payloads are delivered to player index31.",
+    "The console queue walk has no output or mutation; remove the traversal while preserving command return."
+  ]
+}

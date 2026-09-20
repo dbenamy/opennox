@@ -1,0 +1,214 @@
+{
+  "batch": "client-sequence-c",
+  "env": {
+    "GOMAXPROCS": "2",
+    "GOMEMLIMIT": "768MiB",
+    "OPENNOX_CLIENT_INTERACTION_CAPTURE": "{out}/interaction"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-sequence-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-client-sequence-delivery-lengths.json",
+            "sha256": "25d8ce027c7122be6f3a9bbe9a3f8785604731f105e4d51c6d02ec8efcd87b7a"
+          },
+          {
+            "path": "{out}/interaction-client-sequence-delivery.json",
+            "sha256": "9d2e301a6c4a125841709e36a6419521bcbcc95bfbd2c7acd451ade45458003b"
+          },
+          {
+            "path": "{out}/interaction-client-sequence-tick-wrap.json",
+            "sha256": "a39c6f5bbd89464bd209ed404e362a76f7af469738aaea3d7c6c9ac8f1a4d52a"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-sequence.json",
+            "sha256": "4197d85b99121e34e5522f3602957f71cbc9b525011a03191230076901d5ce09"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "server": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest,server",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-sequence-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-client-sequence-delivery-lengths.json",
+            "sha256": "25d8ce027c7122be6f3a9bbe9a3f8785604731f105e4d51c6d02ec8efcd87b7a"
+          },
+          {
+            "path": "{out}/interaction-client-sequence-delivery.json",
+            "sha256": "9d2e301a6c4a125841709e36a6419521bcbcc95bfbd2c7acd451ade45458003b"
+          },
+          {
+            "path": "{out}/interaction-client-sequence-tick-wrap.json",
+            "sha256": "a39c6f5bbd89464bd209ed404e362a76f7af469738aaea3d7c6c9ac8f1a4d52a"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-sequence.json",
+            "sha256": "4197d85b99121e34e5522f3602957f71cbc9b525011a03191230076901d5ce09"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "highres": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest,highres",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-sequence-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-client-sequence-delivery-lengths.json",
+            "sha256": "25d8ce027c7122be6f3a9bbe9a3f8785604731f105e4d51c6d02ec8efcd87b7a"
+          },
+          {
+            "path": "{out}/interaction-client-sequence-delivery.json",
+            "sha256": "9d2e301a6c4a125841709e36a6419521bcbcc95bfbd2c7acd451ade45458003b"
+          },
+          {
+            "path": "{out}/interaction-client-sequence-tick-wrap.json",
+            "sha256": "a39c6f5bbd89464bd209ed404e362a76f7af469738aaea3d7c6c9ac8f1a4d52a"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-sequence.json",
+            "sha256": "4197d85b99121e34e5522f3602957f71cbc9b525011a03191230076901d5ce09"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ]
+  }
+}

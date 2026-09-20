@@ -1,0 +1,1 @@
+^(TestClientSequence.*|TestGameMessageClientSessionSequence|TestIntrusiveLists.*|TestConsoleCommandsInformation)$

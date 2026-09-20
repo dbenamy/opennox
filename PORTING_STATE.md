@@ -8,6 +8,17 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — ordered client queue C baseline qualified
+
+Nine roots pass in default/server/highres, plus an independent default repeat;
+four captures /1,699 cases match. Production is unchanged from 0c2ff233.
+See [CLIENT_SEQUENCE.md](docs/porting/CLIENT_SEQUENCE.md). All C baseline jobs
+are joined. Next install the reviewed native draft, retire four unused Go-backed
+C exports, qualify affected owners and fresh production, then commit/push.
+C remains4,603 /33 files. Ignored `build/port-client-sequence/install-native.py`
+is NOT consumed. Native scenario asset cleanup49995 is joined/CONSUMED.
+
+
 ## Current — native client dispatch qualified
 
 All 48 remaining client-dispatch labels and the private ball HUD helper are Go.
