@@ -37,7 +37,15 @@ Next: audit remaining client/server game-message dispatch and notices. The ignor
 next-dispatch-audit-draft.json finds 145 named client C cases and 16 server cases,
 with no apparent overlap with the corresponding Go outer cases. Complete the
 control-flow, callback and ownership audit before installing fixtures or freezing
-expectations; no next-batch source has been installed.
+expectations. The baseline fixture work below is not a production conversion.
+
+Next-batch work has started: [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md)
+records the 3,841-line dispatch/notice scope and fixture plan. A thin C adapter and
+seven contracts pass 2,210 cases, three repetitions and a separate process,
+with seven byte-identical captures. All jobs are joined. No runtime goldens are
+frozen and the combined dispatch scope is not qualified; production is unchanged.
+See GAME_MESSAGES.md and game-messages-initial-fixtures.json. Next: real server
+action contracts and the larger client dispatcher families.
 
 ## Previous — client drawable state Go conversion qualified
 

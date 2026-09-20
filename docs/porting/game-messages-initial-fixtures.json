@@ -1,0 +1,54 @@
+{
+  "status": "partial original-C fixture checkpoint; combined scope not qualified",
+  "production_parent": "0d5a03b2",
+  "roots": 7,
+  "cases": 2210,
+  "captures": {
+    "game-notice-awards": {
+      "rows": 42,
+      "sha256": "f06c320e539db39d410eed453e30ff51493228f4774609607c3086bd0cb9a718",
+      "earlier_process_equal": true,
+      "separate_process_equal": true
+    },
+    "game-notice-death-feed": {
+      "rows": 27,
+      "sha256": "fea08824ac5e02cc22716d18ebf61660bba7dac92d74f87cbb950bca2211797f",
+      "earlier_process_equal": true,
+      "separate_process_equal": true
+    },
+    "game-notice-spell-dialog": {
+      "rows": 6,
+      "sha256": "0532c23b1468d507b9a0a45aed408289007da36afeb8a069bc83a8a1d20e0e2f",
+      "earlier_process_equal": true,
+      "separate_process_equal": true
+    },
+    "game-notice-teams": {
+      "rows": 96,
+      "sha256": "17960351d3433da6ee18761451662c30dba4d51ed84b217bf42ef84ecb0bcb50",
+      "earlier_process_equal": true,
+      "separate_process_equal": true
+    },
+    "game-notice-text": {
+      "rows": 287,
+      "sha256": "4d13c598690f13c5652c0171b4b96312a072448c8760feb6f6f9813c8014f441",
+      "earlier_process_equal": true,
+      "separate_process_equal": true
+    },
+    "game-server-aliases": {
+      "rows": 765,
+      "sha256": "43497117cd970ffe3b9c05942463a60f6af2be6096ea6b0f3532f75befd2b2dd",
+      "earlier_process_equal": false,
+      "separate_process_equal": true
+    },
+    "game-server-unknown": {
+      "rows": 987,
+      "sha256": "f9a58f004a2c2317e6f08508f058c3bb3faa47022ca6fdbf421e4d2a940ffdb3",
+      "earlier_process_equal": false,
+      "separate_process_equal": true
+    }
+  },
+  "evidence": [
+    "build/port-game-messages/seven-repeat.log",
+    "build/port-game-messages/seven-separate.log"
+  ]
+}

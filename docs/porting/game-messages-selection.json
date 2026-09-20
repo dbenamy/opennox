@@ -1,0 +1,26 @@
+[
+  {
+    "symbol": "nox_xxx_netOnPacketRecvCli_48EA70_switch",
+    "file": "src/legacy/client__network__cdecode.c",
+    "start": 2140,
+    "end": 105724,
+    "body_lines": 3064,
+    "line": 73
+  },
+  {
+    "symbol": "nox_xxx_netOnPacketRecvServ_51BAD0_net_sdecode_switch",
+    "file": "src/legacy/server__network__sdecode.c",
+    "start": 719,
+    "end": 14862,
+    "body_lines": 449,
+    "line": 28
+  },
+  {
+    "symbol": "nox_client_handlePacketInform_4C9BF0",
+    "file": "src/legacy/client__network__inform.c",
+    "start": 477,
+    "end": 11589,
+    "body_lines": 328,
+    "line": 18
+  }
+]
