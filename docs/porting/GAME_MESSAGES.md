@@ -744,3 +744,17 @@ throttling uses key8 and full local IDs. All prior captures remain unchanged.
 See [checkpoint](client-session-expanded-c-checkpoint.json). Production remains
 eb10a62b; C remains6,139 lines /35 files /zero reference C. Remaining client
 message coverage and full conversion qualification are still pending.
+
+### Reward, inventory, monitoring and acknowledgement baseline
+
+The next C checkpoint covers50,692 captured cases in16 captures across27 labels,
+plus256 outgoing-client no-op contracts. Two independent repeats pass all16 roots
+without skips; all previous hashes are unchanged. New cases cover signed ability
+notifications, guide families, deterministic particle output, secondary/quiver
+updates, shop/inventory/world book-data priority, poison, creature monitoring and
+reliable acknowledgement routing. Monitoring checks missing/existing/full ally
+records and preserves the original raw-ID unmonitor behavior. Fixtures own RNG
+state and detach all test minimap bits between cases. Failed fixture probes remain
+recorded; no production behavior changed. See [checkpoint](client-session-owners-c-checkpoint.json).
+Production remains eb10a62b; C remains6,139 lines /35 files /zero reference C.
+Full production qualification is still due at the completed client-dispatch boundary.

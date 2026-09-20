@@ -88,7 +88,7 @@ The fix and prediction coverage are committed and pushed as eb10a62b. C remains6
 will run at the completed client-dispatch boundary; no scenario rerun is claimed
 for this focused correction.
 
-Expanded C checkpoint: **38,204 cases /ten captures /16 labels**, adding
+Expanded C checkpoint **5e846e1c** is committed and pushed: **38,204 cases /ten captures /16 labels**, adding
 3,972 player/camera/creation and quickbar cases. Probe10 and two independent
 repeats pass all ten roots without skips, identical source and capture hashes;
 all six earlier captures are unchanged. See
@@ -104,6 +104,31 @@ Continue without pausing. C remains6,139 lines /35 files /zero reference C.
 Thirteenth fixture-cache cleanup is CONSUMED:14 verified superseded root test
 archives /1,111,570,010 bytes removed. Current music-fixture archives and all
 legacy/production archives were preserved; cleanup job6383 is joined.
+
+Current fixture work: probe17 passes16 roots /50,692 captured cases plus256
+outgoing-client no-op contracts. New coverage is rewards, secondary/quiver,
+book-data priority, poison, creature monitoring and acknowledgements. Both independent repeats
+pass all16 roots without skips, with identical source fingerprints and all frozen
+hashes. See [checkpoint](docs/porting/client-session-owners-c-checkpoint.json). No production
+source changed. Rewards required signed-char notification interpretation and RNG
+reset between expected/actual calls. Book data needed the shop-active named word
+from PortTestInventoryWindowWords. Monitoring deliberately tests all eight mask
+bits; fixture cleanup now removes all bits before ordinary drawable deletion
+(which removes normal bits1/2), avoiding stale test list links. Ally coverage
+includes missing/existing/full records. Probe16 had a fixture compile error from
+an omitted ntype.PlayerInd cast; corrected in probe17. Failed logs are preserved.
+Installed inventory/book/monitor/ack drafts are CONSUMED. Objective/summon drafts
+are prepared but NOT INSTALLED; both repeats are finished and joined.
+
+Finished client-session probes1–16 and first/expanded repeats are consolidated:
+88 byte-identical capture files /574,101,167 logical bytes. Exact hashes and
+contents verified, no open capture files, active probe17 excluded; failed logs
+and all paths preserved. consolidate-client-session-probes.py is CONSUMED.
+
+Fourteenth fixture-cache cleanup is CONSUMED: seven superseded root test archives,
+556,809,336 bytes removed after SHA256/size/mtime/open-file checks. The audit
+preserved archives containing the current player-camera fixture and all legacy/
+production archives. Original assets and all qualification artifacts are preserved.
 
 ## Recovery and storage
 

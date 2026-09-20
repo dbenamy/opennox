@@ -1,0 +1,148 @@
+{
+  "status": "partial original-C client dispatcher baseline; remaining UI/settings/team/session paths pending",
+  "production_revision": "eb10a62b",
+  "parent_checkpoint": "5e846e1c",
+  "production_c_lines": 6139,
+  "production_c_files": 35,
+  "reference_c_lines": 0,
+  "covered_client_labels": [
+    166,
+    167,
+    171,
+    174,
+    178,
+    179,
+    180,
+    181,
+    195,
+    205,
+    206,
+    207,
+    209,
+    210,
+    211,
+    215,
+    218,
+    219,
+    220,
+    223,
+    224,
+    225,
+    226,
+    229,
+    230,
+    231,
+    235
+  ],
+  "total_cases": 50692,
+  "additional_uncaptured_noop_contracts": 256,
+  "new_captured_cases": 12488,
+  "captures": [
+    {
+      "file": "interaction-game-client-session-ack.json",
+      "cases": 240,
+      "sha256": "f8e7b30467fbf368386690c25af0553f73003257918492117bd5b3d125106a2b"
+    },
+    {
+      "file": "interaction-game-client-session-audio.json",
+      "cases": 224,
+      "sha256": "ed87a210c0abea0a2976d97bbd75d0b9aca7745b7502b7e2e0b69c1c75321db3"
+    },
+    {
+      "file": "interaction-game-client-session-book-data.json",
+      "cases": 2648,
+      "sha256": "1b5105e7c9e74c0760a71e664c38c56d931e78d7821288a93c47c70e95b03227"
+    },
+    {
+      "file": "interaction-game-client-session-drawables.json",
+      "cases": 24576,
+      "sha256": "433b84fd0952596c154a780fe64a8491df2788496658ba9506fe878a0ff49163"
+    },
+    {
+      "file": "interaction-game-client-session-inventory.json",
+      "cases": 768,
+      "sha256": "46cd8a94645d6588d95b534c4c2ebc1c6136d4b9d3bdce1a0b2b8067770656c4"
+    },
+    {
+      "file": "interaction-game-client-session-latency.json",
+      "cases": 240,
+      "sha256": "3a44bd50c7c01909a28640d2b25890d3d3fec2a1122e2379061a0111a809cbde"
+    },
+    {
+      "file": "interaction-game-client-session-monitor.json",
+      "cases": 816,
+      "sha256": "240e1293c10214c43183a7c3bce78adfd2d3c9b437375401e7e1ea3b32a4c6ba"
+    },
+    {
+      "file": "interaction-game-client-session-music.json",
+      "cases": 864,
+      "sha256": "33fda0a552615b10bf0c520272f9a93731abed6126363deb68132a70d3a5ba06"
+    },
+    {
+      "file": "interaction-game-client-session-player-camera.json",
+      "cases": 192,
+      "sha256": "4a508b3eab058f4cca9084df164763608de7464a127406039dbb80cc54fcd785"
+    },
+    {
+      "file": "interaction-game-client-session-player-creation.json",
+      "cases": 48,
+      "sha256": "d0adc0bdb471654f0cdcb6540a87261c993dfccf6437909548ae91f862c31f9d"
+    },
+    {
+      "file": "interaction-game-client-session-player-objects.json",
+      "cases": 3072,
+      "sha256": "b3f9bdf5b911c2b32e0e0ac580a91ccc7ed13de746f418618cb5f677521b2625"
+    },
+    {
+      "file": "interaction-game-client-session-poison.json",
+      "cases": 6144,
+      "sha256": "c5cc58f4f1555522329479db8a67f92bf5752a2956d48ee382c28898b3fb532b"
+    },
+    {
+      "file": "interaction-game-client-session-prediction.json",
+      "cases": 6168,
+      "sha256": "fb15459b03bc0a08d46bc570210fe39033fd0ec2d4a9a0e50f1e9674b9bb9b3b"
+    },
+    {
+      "file": "interaction-game-client-session-quickbar.json",
+      "cases": 660,
+      "sha256": "67948e1990848248305b44acb06958a306770ed4806e5ad9ec39d6830404400d"
+    },
+    {
+      "file": "interaction-game-client-session-rewards.json",
+      "cases": 1872,
+      "sha256": "6a2f42fd35cb83f018164be708c46f2df2ed60c2700070c717500cd01ca91f90"
+    },
+    {
+      "file": "interaction-game-client-session-timer.json",
+      "cases": 2160,
+      "sha256": "f91e7e35e303e99b0fe173692299b6d026094b1d1b271531ad33c8d26bf6c1f7"
+    }
+  ],
+  "runs": [
+    {
+      "path": "build/port-game-messages/client-session-owners-c-repeat-1",
+      "roots": 16,
+      "no_skips": true,
+      "source_unchanged": true
+    },
+    {
+      "path": "build/port-game-messages/client-session-owners-c-repeat-2",
+      "roots": 16,
+      "no_skips": true,
+      "source_unchanged": true
+    }
+  ],
+  "source_manifest_sha256": "c0fdb37f81c46f6b3a67583603ae841dd473dcdb2e4ab8a6db0fd6a6ba90db83",
+  "original_probe": "build/port-game-messages/client-session-c-probe-17",
+  "production_unchanged": true,
+  "fixture_review": [
+    "Ability notification follows signed char high bit; low seven bits carry rank.",
+    "Reset both random generators before direct-owner and dispatcher reward calls; particle bytes are hashed without omitting fields.",
+    "Book data writes only selected drawable word432, prioritizing active shop, inventory, then static/dynamic world lookup.",
+    "Poison masks the ID, respects connection state and preserves neighboring NPC/ally records.",
+    "Monitoring covers allocation success/failure, existing/static/dynamic objects, all-bit mask boundaries and missing/existing/full ally records. Unmonitor removes ally using raw ID.",
+    "Fixture cleanup detaches all minimap bits before ordinary deletion, which removes normal mask3 only.",
+    "ACK routes full32-bit frame and player index to the real reliable owner; reserved outgoing-client message is a no-op."
+  ]
+}

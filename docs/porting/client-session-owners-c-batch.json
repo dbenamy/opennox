@@ -1,0 +1,96 @@
+{
+  "batch": "client-session-owners-c",
+  "env": {
+    "GOMAXPROCS": "2",
+    "GOMEMLIMIT": "768MiB",
+    "OPENNOX_CLIENT_INTERACTION_CAPTURE": "{out}/interaction"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/client-session-first-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-game-client-session-ack.json",
+            "sha256": "f8e7b30467fbf368386690c25af0553f73003257918492117bd5b3d125106a2b"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-audio.json",
+            "sha256": "ed87a210c0abea0a2976d97bbd75d0b9aca7745b7502b7e2e0b69c1c75321db3"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-book-data.json",
+            "sha256": "1b5105e7c9e74c0760a71e664c38c56d931e78d7821288a93c47c70e95b03227"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-drawables.json",
+            "sha256": "433b84fd0952596c154a780fe64a8491df2788496658ba9506fe878a0ff49163"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-inventory.json",
+            "sha256": "46cd8a94645d6588d95b534c4c2ebc1c6136d4b9d3bdce1a0b2b8067770656c4"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-latency.json",
+            "sha256": "3a44bd50c7c01909a28640d2b25890d3d3fec2a1122e2379061a0111a809cbde"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-monitor.json",
+            "sha256": "240e1293c10214c43183a7c3bce78adfd2d3c9b437375401e7e1ea3b32a4c6ba"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-music.json",
+            "sha256": "33fda0a552615b10bf0c520272f9a93731abed6126363deb68132a70d3a5ba06"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-player-camera.json",
+            "sha256": "4a508b3eab058f4cca9084df164763608de7464a127406039dbb80cc54fcd785"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-player-creation.json",
+            "sha256": "d0adc0bdb471654f0cdcb6540a87261c993dfccf6437909548ae91f862c31f9d"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-player-objects.json",
+            "sha256": "b3f9bdf5b911c2b32e0e0ac580a91ccc7ed13de746f418618cb5f677521b2625"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-poison.json",
+            "sha256": "c5cc58f4f1555522329479db8a67f92bf5752a2956d48ee382c28898b3fb532b"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-prediction.json",
+            "sha256": "fb15459b03bc0a08d46bc570210fe39033fd0ec2d4a9a0e50f1e9674b9bb9b3b"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-quickbar.json",
+            "sha256": "67948e1990848248305b44acb06958a306770ed4806e5ad9ec39d6830404400d"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-rewards.json",
+            "sha256": "6a2f42fd35cb83f018164be708c46f2df2ed60c2700070c717500cd01ca91f90"
+          },
+          {
+            "path": "{out}/interaction-game-client-session-timer.json",
+            "sha256": "f91e7e35e303e99b0fe173692299b6d026094b1d1b271531ad33c8d26bf6c1f7"
+          }
+        ]
+      }
+    ]
+  }
+}
