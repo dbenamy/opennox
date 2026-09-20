@@ -6,15 +6,13 @@ package legacy
 #include <stdint.h>
 #include "GAME1.h"
 #include "GAME4_1.h"
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
-extern uint32_t nox_tile_def_cnt;
-extern nox_tileDef_t nox_tile_defs_arr[176];
 */
 import "C"
 
 import (
 	"bytes"
 	"fmt"
+	"github.com/opennox/libs/types"
 	"slices"
 	"unsafe"
 
@@ -48,11 +46,11 @@ func portTestGeneratorTileEnvironment() (configure func(tileID int, cold bool), 
 	cellPrefix := cellMem[:guardWords]
 	cellSuffix := cellMem[guardWords+cellWords:]
 
-	tiles := unsafe.Slice((*server.TileDef)(unsafe.Pointer(&C.nox_tile_defs_arr[0])), 176)
+	tiles := unsafe.Slice((*server.TileDef)(unsafe.Pointer(&worldTileDefinitions[0])), 176)
 	tileBytes := unsafe.Slice((*byte)(unsafe.Pointer(unsafe.SliceData(tiles))), len(tiles)*int(unsafe.Sizeof(server.TileDef{})))
 	oldTiles := bytes.Clone(tileBytes)
-	oldCount := C.nox_tile_def_cnt
-	oldGrid := C.ptr_5D4594_2650668
+	oldCount := worldTileDefinitionCount
+	oldGrid := worldTileGrid
 	cacheOff := [...]uintptr{26516, 26520, 26524, 26528, 26532}
 	oldCache := make([]uint32, len(cacheOff))
 	for i, off := range cacheOff {
@@ -107,7 +105,7 @@ func portTestGeneratorTileEnvironment() (configure func(tileID int, cold bool), 
 		} {
 			copy(tiles[i+1].NameBuf[:], name)
 		}
-		C.nox_tile_def_cnt = 176
+		worldTileDefinitionCount = 176
 		for i, off := range cacheOff {
 			if cold {
 				*memmap.PtrUint32(0x587000, off) = 0xffffffff
@@ -127,7 +125,7 @@ func portTestGeneratorTileEnvironment() (configure func(tileID int, cold bool), 
 			}
 		}
 		wantGrid = (**C.obj_5D4594_2650668_t)(unsafe.Pointer(&rows[1]))
-		C.ptr_5D4594_2650668 = wantGrid
+		worldTileGrid = wantGrid
 
 		wantRows = slices.Clone(rows)
 		wantCells = slices.Clone(cells)
@@ -140,7 +138,7 @@ func portTestGeneratorTileEnvironment() (configure func(tileID int, cold bool), 
 		if wantRows == nil {
 			return false
 		}
-		if C.ptr_5D4594_2650668 != wantGrid || C.nox_tile_def_cnt != 176 ||
+		if worldTileGrid != wantGrid || worldTileDefinitionCount != 176 ||
 			!slices.Equal(rows, wantRows) || !slices.Equal(cells, wantCells) ||
 			!bytes.Equal(tileBytes, wantTiles) || !bytes.Equal(edges, wantEdges) ||
 			!bytes.Equal(left, baseLeft) || !bytes.Equal(right, baseRight) {
@@ -160,9 +158,9 @@ func portTestGeneratorTileEnvironment() (configure func(tileID int, cold bool), 
 		return warm || original
 	}
 	restore = func() {
-		C.ptr_5D4594_2650668 = oldGrid
+		worldTileGrid = oldGrid
 		copy(tileBytes, oldTiles)
-		C.nox_tile_def_cnt = oldCount
+		worldTileDefinitionCount = oldCount
 		for i, off := range cacheOff {
 			*memmap.PtrUint32(0x587000, off) = oldCache[i]
 		}
@@ -187,7 +185,7 @@ func PortTestGeneratorTileContracts() (cases int, intact bool) {
 			for _, xy := range [][2]float32{{100, 100}, {55, 55}, {145, 100}, {100, 145}, {128.5, 193.25}, {0, 0}, {500, 700}, {2000, 2000}} {
 				p, free := alloc.New([2]float32{})
 				*p = xy
-				got := C.nox_xxx_mapTileAllowTeleport_411A90((*C.float2)(unsafe.Pointer(p))) != 0
+				got := worldTileWater(*(*types.Pointf)(unsafe.Pointer(p)))
 				free()
 				want := tile >= 1 && tile <= 5 && xy != [2]float32{55, 55} && xy != [2]float32{0, 0}
 				if got != want {

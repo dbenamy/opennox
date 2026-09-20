@@ -8,7 +8,6 @@ package legacy
 #include "GAME4_3.h"
 #include "server__script__file.h"
 #include "noxstring.h"
-extern uint32_t nox_tile_def_cnt;
 
 */
 import "C"
@@ -22,7 +21,7 @@ func prefabGlobal(i int) *uint32 { return &prefabState[i] }
 func prefabCompareNames(a, b uint32) int {
 	return int(C.nox_strcmpi((*C.char)(mapRoomPointer(a)), (*C.char)(mapRoomPointer(b))))
 }
-func prefabTileDefinitionCount() int    { return int(C.nox_tile_def_cnt) }
+func prefabTileDefinitionCount() int    { return int(worldTileDefinitionCount) }
 func prefabSetBounds(bounds *[8]uint32) { prefabScriptBounds(bounds) }
 func prefabInteresting(bounds *[4]int32, index uint32) uint32 {
 	return prefabScriptPending(bounds, index)
@@ -43,7 +42,7 @@ func prefabCombineScripts(a, b, c string) {
 }
 func prefabTransferWallData(src, dst *server.Wall) {
 	if dst.Flags4&4 != 0 {
-		C.sub_4107A0(dst.Data)
+		worldSecretRemove(dst.Data)
 		dst.Data = nil
 		dst.Flags4 &^= 4
 	}
@@ -56,7 +55,7 @@ func prefabTransferWallData(src, dst *server.Wall) {
 		src.Data = nil
 		data := (*[8]uint32)(dst.Data)
 		data[1], data[2], data[3] = uint32(dst.X5), uint32(dst.Y6), mapRoomRaw(dst.C())
-		C.nox_xxx_wallSecretBlock_410760((*C.uint32_t)(dst.Data))
+		worldSecretInsert(dst.Data)
 	}
 	if src.Flags4&8 != 0 && dst.Flags4&8 == 0 {
 		dst.Flags4 |= 8

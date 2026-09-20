@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-*/
-import "C"
-
 import "unsafe"
 
 func subtileContains(point *[2]int32, category int32) bool {
@@ -50,9 +45,4 @@ func findSubtileAt(head *[5]uint32, point *[2]int32, fallback int32) int32 {
 		}
 	}
 	return result
-}
-
-//export sub_411350
-func sub_411350(head, point *C.int, fallback C.int) C.int {
-	return C.int(findSubtileAt((*[5]uint32)(unsafe.Pointer(head)), (*[2]int32)(unsafe.Pointer(point)), int32(fallback)))
 }

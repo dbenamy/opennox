@@ -118,8 +118,6 @@ nox_window* nox_win_unk5 = 0;
 nox_window* dword_5d4594_1062452 = 0;
 
 
-obj_5D4594_2650668_t** ptr_5D4594_2650668 = 0;
-const int ptr_5D4594_2650668_cap = 128;
 
 nox_inventory_cell_t nox_client_inventory_grid_1050020[NOX_INVENTORY_CELLS_MAX] = {0};
 

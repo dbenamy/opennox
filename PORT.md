@@ -14,19 +14,18 @@
 
 ## Current status
 
-The client drawable state conversion is qualified: compact update streams,
-state accessors, motion callbacks and summon/shield effects now use Go. All three
-targets pass 88 affected roots and 69 exact captures, with fresh production/ABI,
-full-suite comparison and headless gameplay/save-load qualification.
-See [CLIENT_DRAWABLE_STATE.md](docs/porting/CLIENT_DRAWABLE_STATE.md).
+The world grid, wall storage and map serialization conversion is qualified.
+Shared grid/tile/secret-list owners and the remaining numeric/table helpers now
+use Go. Default/server/highres pass 294/293/294 affected roots and 347 frozen
+captures, with fresh production/ABI, full-suite comparison and headless
+gameplay/save-load qualification. See [WORLD_GRID.md](docs/porting/WORLD_GRID.md).
 
-C remaining is **9,267 physical lines in 39 files**, zero reference C.
-This conversion removes 696 lines, including one unused C duplicate.
+C remaining is **8,820 physical lines in 38 files**, zero reference C.
+This conversion removes 447 lines, including four unused or test-only helpers.
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
-The next [world grid/wall batch](docs/porting/WORLD_GRID.md) now has a qualified
-original-C baseline: 294/293/294 affected roots and 347 identical captures across
-default/server/highres. Production remains at the qualified drawable conversion.
+Next: audit the remaining client/server game-message dispatch and notices,
+reusing the qualified gameplay owners and adding dispatch-level contracts.
 
 Previous completed GUI batches include
 [client interaction](docs/porting/CLIENT_INTERACTION.md), the
@@ -92,6 +91,10 @@ may precede full qualification when their evidence and remaining gates are expli
    x87 registers; preserve its observable store/reload boundaries. Review related
    calculations together before rebuilding instead of rounding every C float local
    to float32 in Go. The world-geometry conversion demonstrated this distinction.
+   For mapped ABI words that can contain integers, write addresses as raw integer
+   words. A Go pointer assignment can make its write barrier scan the previous
+   integer bits as a managed pointer; the world-grid broad sweep caught this under
+   active GC. Keep foreign list links in their original raw representation too.
    Before the first compile, format new files, check the whitespace diff, and compare
    new export signatures with every existing header declaration. When removing a
    cgo import, check for `//export` directives too: those still need cgo even when

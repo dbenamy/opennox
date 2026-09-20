@@ -212,7 +212,7 @@ func Nox_xxx_cliShowHideTubes_470AA0(v int) {
 }
 
 func Sub_51DED0() int {
-	return int(C.sub_51DED0())
+	return worldSaveDrawables()
 }
 
 func Sub_428170(a1, a2 unsafe.Pointer) {

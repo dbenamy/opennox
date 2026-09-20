@@ -52,7 +52,7 @@ func worldShaftCandidate(t, u *server.Object) {
 	partner := *temporaryRefWord(u.UpdateData, 4)
 	height := equipmentWord(partner.UpdateData, 16)
 	delta := float32(float64(t.ZVal) + 64 - float64(int32(*height)))
-	if float64(C.sub_419A10(C.float(delta))) < 10 {
+	if float64(worldAbsScratch(float32(delta))) < 10 {
 		Nox_xxx_unitMove_4E7010(t, partner.PosVec)
 		Nox_xxx_unitRaise_4E46F0(t, float32(int32(*height)))
 	}
@@ -67,7 +67,7 @@ func worldElevatorCandidate(t, u *server.Object) {
 		return
 	}
 	delta := float32(float64(t.ZVal) - float64(int32(*equipmentWord(ud, 16))))
-	if !(float64(C.sub_419A10(C.float(delta))) < 10) {
+	if !(float64(worldAbsScratch(float32(delta))) < 10) {
 		return
 	}
 	tooBig := false

@@ -57,11 +57,11 @@ func Sub_431370() int {
 }
 
 func Nox_xxx_tileAlloc_410F60_init() int {
-	return int(C.nox_xxx_tileAlloc_410F60_init())
+	return int(worldGridAllocate())
 }
 
 func Nox_xxx_initSinCosTables_414C90() {
-	C.nox_xxx_initSinCosTables_414C90()
+	worldInitTrigTables()
 }
 
 func Nox_xxx_loadMapCycle_4D0A30() {
@@ -85,7 +85,7 @@ func Sub_431380() {
 }
 
 func Nox_xxx_tileFree_410FC0_free() {
-	C.nox_xxx_tileFree_410FC0_free()
+	worldGridFreeRows()
 }
 
 func Sub_42EDC0() {

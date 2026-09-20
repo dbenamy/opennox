@@ -27,10 +27,6 @@ extern uint32_t dword_5d4594_3835392;
 extern uint32_t dword_5d4594_588084;
 extern uint32_t dword_5d4594_251572;
 extern uint32_t dword_5d4594_2489436;
-extern void* dword_5d4594_251560;
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
-extern nox_tileDef_t nox_tile_defs_arr[176];
-extern uint32_t nox_tile_def_cnt;
 int* nox_xxx_tileListAddNewSubtile_422160(int a1, int a2, int a3, int a4);
 int nox_xxx_tileFreeTile_422200(int a1);
 unsigned char nox_xxx_wall_42A6C0(unsigned char a1, unsigned char a2);
@@ -77,9 +73,6 @@ case 9:return &dword_5d4594_3835392;
 case 10:return &dword_5d4594_588084;
 case 11:return &dword_5d4594_251572;
 case 12:return &dword_5d4594_2489436;
-case 13:return (uint32_t*)&ptr_5D4594_2650668;
-case 14:return (uint32_t*)&dword_5d4594_251560;
-case 15:return &nox_tile_def_cnt;
 default:abort();}}
 static void* paintXfer(int i){return i ? (void*)nox_xxx_XFerSpellReward_4F5F30:(void*)nox_xxx_XFerDoor_4F4CB0;}
 static unsigned short paintCW(){unsigned short cw;__asm__ __volatile__("fnstcw %0":"=m"(cw));return cw;}
@@ -187,7 +180,16 @@ func paintGlobals() map[string]*uint32 {
 	names := []string{"dword_5d4594_2487248", "dword_5d4594_3835348", "dword_5d4594_3835352", "dword_5d4594_3835356", "dword_5d4594_3835360", "dword_5d4594_3835364", "dword_5d4594_3835368", "dword_5d4594_3835372", "dword_5d4594_3835388", "dword_5d4594_3835392", "dword_5d4594_588084", "dword_5d4594_251572", "dword_5d4594_2489436", "grid", "secretWalls", "tileCount"}
 	out := map[string]*uint32{}
 	for i, n := range names {
-		out[n] = (*uint32)(unsafe.Pointer(C.paintGlobal(C.int(i))))
+		switch i {
+		case 13:
+			out[n] = (*uint32)(unsafe.Pointer(&worldTileGrid))
+		case 14:
+			out[n] = (*uint32)(unsafe.Pointer(&worldSecretHead))
+		case 15:
+			out[n] = &worldTileDefinitionCount
+		default:
+			out[n] = (*uint32)(unsafe.Pointer(C.paintGlobal(C.int(i))))
+		}
 	}
 	for n, off := range map[string]uintptr{"tile": 35912, "tileFlag": 35916, "wall": 35948, "wallDir": 35952, "wallVariation": 35956, "worklistError": 22200} {
 		out[n] = memmap.PtrUint32(0x973F18, off)
@@ -445,7 +447,7 @@ func (f *paintTestFixture) snapshot(ret uint32) (out PortTestPaintStep) {
 			out.Objects[i] = f.norm(v)
 		}
 	}
-	out.Tables = map[string][32]byte{"tiles": sha256.Sum256(unsafe.Slice((*byte)(unsafe.Pointer(&C.nox_tile_defs_arr[0])), 176*int(unsafe.Sizeof(server.TileDef{})))), "borders": sha256.Sum256(portTestEdgeTable()), "edgeMap": sha256.Sum256(unsafe.Slice(memmap.PtrUint8(0x587000, 282736), 576))}
+	out.Tables = map[string][32]byte{"tiles": sha256.Sum256(unsafe.Slice((*byte)(unsafe.Pointer(&worldTileDefinitions[0])), 176*int(unsafe.Sizeof(server.TileDef{})))), "borders": sha256.Sum256(portTestEdgeTable()), "edgeMap": sha256.Sum256(unsafe.Slice(memmap.PtrUint8(0x587000, 282736), 576))}
 	out.Tables["wallDirections"] = sha256.Sum256(unsafe.Slice(memmap.PtrUint8(0x587000, 71276), 200))
 	out.Tables["monsterAngles"] = sha256.Sum256(unsafe.Slice(memmap.PtrUint8(0x587000, 230052), 40))
 	out.Tables["wallMasks"] = sha256.Sum256(unsafe.Slice(memmap.PtrUint8(0x587000, 255052), 64))
@@ -490,7 +492,7 @@ func portTestMapPainting(cases []PortTestPaintSpec, owner func(*server.Server) (
 		old := bytes.Clone(unsafe.Slice((*byte)(p), n))
 		restore = append(restore, func() { copy(unsafe.Slice((*byte)(p), n), old) })
 	}
-	saveBytes(unsafe.Pointer(&C.nox_tile_defs_arr[0]), 176*int(unsafe.Sizeof(server.TileDef{})))
+	saveBytes(unsafe.Pointer(&worldTileDefinitions[0]), 176*int(unsafe.Sizeof(server.TileDef{})))
 	saveBytes(unsafe.Pointer(&portTestEdgeTable()[0]), len(portTestEdgeTable()))
 	saveBytes(memmap.PtrOff(0x973F18, 16200), 6000)
 	for off, data := range blobdata.PortTestMapPaintingTables() {
@@ -554,7 +556,7 @@ func paintTestCase(sp PortTestPaintSpec, owners *server.PortTestPaintOwners, glo
 	*globs["dword_5d4594_251572"] = 2
 	*globs["dword_5d4594_3835356"] = 255
 	*globs["dword_5d4594_3835392"] = 500
-	tiles := unsafe.Slice((*server.TileDef)(unsafe.Pointer(&C.nox_tile_defs_arr[0])), 176)
+	tiles := unsafe.Slice((*server.TileDef)(unsafe.Pointer(&worldTileDefinitions[0])), 176)
 	clear(tiles)
 	for i, name := range []string{"PaintTile", "PaintTileTwo"} {
 		copy(tiles[i].NameBuf[:], name)

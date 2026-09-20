@@ -263,6 +263,7 @@ target build selection and linker evidence.
 | Unit gameplay helpers | 42 | 10,184 | −636 | 0 |
 | Spell creation and start | 39 | 9,963 | −221 | 0 |
 | Client drawable state and streams | 39 | 9,267 | −696 | 0 |
+| World grid, wall storage and map serialization | 38 | 8,820 | −447 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

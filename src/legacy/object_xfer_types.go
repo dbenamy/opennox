@@ -114,7 +114,7 @@ func objectXferDoor(u *server.Object) int {
 		halfY := memmap.Int32(0x587000, 196188+8*uintptr(orientation)) / 2
 		x := int32(int64((float64(halfX) + float64(u.PosVec.X)) * 0.043478262))
 		y := int32(int64((float64(halfY) + float64(u.PosVec.Y)) * 0.043478262))
-		C.nox_xxx_doorAttachWall_410360(C.int(uintptr(u.CObj())), C.int(x), C.int(y))
+		worldDoorAttach(u.CObj(), int(x), int(y))
 		*objectXferWord(p, 16) = uint32(x)
 		*objectXferWord(p, 20) = uint32(y)
 		*(*byte)(unsafe.Add(p, 1)) = byte(state)

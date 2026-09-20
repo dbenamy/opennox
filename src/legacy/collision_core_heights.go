@@ -32,7 +32,7 @@ func collisionElevator(e, u *server.Object, mode int32) {
 	}
 	height := float64(int32(*equipmentWord(ud, 16)))
 	delta := float32(float64(u.ZVal) - height)
-	if float64(C.sub_419A10(C.float(delta))) > 10 {
+	if float64(worldAbsScratch(float32(delta))) > 10 {
 		if height > float64(u.ZVal) {
 			if u.Shape.Kind == server.ShapeKindCircle {
 				collisionCircleBox(u, e, 0)
@@ -72,7 +72,7 @@ func collisionShaft(e, u *server.Object) {
 	height := float32(heightWide)
 	// C spills height for later use, but subtracts the original wide value.
 	delta := float32(float64(u.ZVal) - heightWide)
-	if float64(C.sub_419A10(C.float(delta))) > 10 {
+	if float64(worldAbsScratch(float32(delta))) > 10 {
 		if height <= -10 {
 			u.ObjFlags |= 0x40000
 			u.Pos39 = e.NewPos

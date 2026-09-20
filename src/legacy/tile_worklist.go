@@ -3,7 +3,6 @@ package legacy
 /*
 #include "GAME4_2.h"
 extern uint32_t dword_5d4594_2487248;
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
 */
 import "C"
 
@@ -25,7 +24,7 @@ func pushTileFill(x, y, flags, key int32) {
 	if x <= 0 || x >= 127 || y <= 0 || y >= 127 || flags&3 == 0 {
 		return
 	}
-	rows := (*[128]*[128]C.obj_5D4594_2650668_t)(unsafe.Pointer(C.ptr_5D4594_2650668))
+	rows := (*[128]*[128]C.obj_5D4594_2650668_t)(unsafe.Pointer(worldTileGrid))
 	cell := &rows[x][y]
 	if !(flags&2 != 0 && int32(cell.field_6) == key || flags&1 != 0 && int32(cell.field_1) == key) {
 		return

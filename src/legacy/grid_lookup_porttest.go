@@ -4,12 +4,6 @@ package legacy
 
 /*
 #include "GAME1.h"
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
-static uint32_t porttest_grid_bench(float2* point, unsigned n) {
- uint32_t sum=0;
- for (unsigned i=0;i<n;i++) sum+=nox_xxx_tileNFromPoint_411160(point);
- return sum;
-}
 */
 import "C"
 
@@ -93,13 +87,13 @@ func portTestGridLookup(inputs [][2]uint32, listCount int, goWrapper bool, bench
 	left := unsafe.Slice(memmap.PtrUint8(0x85B3FC, portTestEdgeBase-8), 8)
 	right := unsafe.Slice(memmap.PtrUint8(0x85B3FC, uintptr(portTestEdgeBase+len(table))), 8)
 	oldLeft, oldRight := append([]byte(nil), left...), append([]byte(nil), right...)
-	oldGrid := C.ptr_5D4594_2650668
+	oldGrid := worldTileGrid
 	defer func() {
-		C.ptr_5D4594_2650668 = oldGrid
+		worldTileGrid = oldGrid
 		copy(table, oldTable)
 		copy(left, oldLeft)
 		copy(right, oldRight)
-		out.Restored = C.ptr_5D4594_2650668 == oldGrid && bytes.Equal(table, oldTable) && bytes.Equal(left, oldLeft) && bytes.Equal(right, oldRight)
+		out.Restored = worldTileGrid == oldGrid && bytes.Equal(table, oldTable) && bytes.Equal(left, oldLeft) && bytes.Equal(right, oldRight)
 	}()
 	table[52], table[53] = 3, 3
 	for i := range left {
@@ -108,7 +102,7 @@ func portTestGridLookup(inputs [][2]uint32, listCount int, goWrapper bool, bench
 	wantLeft, wantRight := append([]byte(nil), left...), append([]byte(nil), right...)
 	wantTable := append([]byte(nil), table...)
 	installed := (**C.obj_5D4594_2650668_t)(unsafe.Pointer(&rows[1]))
-	C.ptr_5D4594_2650668 = installed
+	worldTileGrid = installed
 	out.Results = make([]int32, len(inputs))
 	out.InputGuardsOK, out.PointerUnchanged = true, true
 	for i, b := range inputs {
@@ -120,15 +114,17 @@ func portTestGridLookup(inputs [][2]uint32, listCount int, goWrapper bool, bench
 					out.Checksum += uint32(Nox_xxx_tileNFromPoint_411160(p))
 				}
 			} else {
-				out.Checksum = uint32(C.porttest_grid_bench((*C.float2)(unsafe.Pointer(&point[1])), C.uint(benchN)))
+				for n := 0; n < benchN; n++ {
+					out.Checksum += uint32(tileAtPoint(*(*types.Pointf)(unsafe.Pointer(&point[1]))))
+				}
 			}
 		} else if goWrapper {
 			out.Results[i] = int32(Nox_xxx_tileNFromPoint_411160(types.Pointf{X: math.Float32frombits(b[0]), Y: math.Float32frombits(b[1])}))
 		} else {
-			out.Results[i] = int32(C.nox_xxx_tileNFromPoint_411160((*C.float2)(unsafe.Pointer(&point[1]))))
+			out.Results[i] = int32(tileAtPoint(*(*types.Pointf)(unsafe.Pointer(&point[1]))))
 		}
 		out.InputGuardsOK = out.InputGuardsOK && point[0] == 0x12345678 && point[1] == b[0] && point[2] == b[1] && point[3] == 0x76543210
-		out.PointerUnchanged = out.PointerUnchanged && C.ptr_5D4594_2650668 == installed
+		out.PointerUnchanged = out.PointerUnchanged && worldTileGrid == installed
 	}
 	out.GridUnchanged = slices.Equal(rows, wantRows) && slices.Equal(cells, wantCells)
 	out.NodesUnchanged = slices.Equal(nodes, wantNodes)

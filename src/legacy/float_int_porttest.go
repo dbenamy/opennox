@@ -20,7 +20,6 @@ static void porttest_float_int_calls(uint32_t bits, int *out) {
  union { uint32_t bits; float value; } input;
  input.bits = bits;
  out[0] = nox_float2int(input.value);
- out[1] = nox_float2int16(input.value);
 }
 */
 import "C"
@@ -37,7 +36,7 @@ type PortTestFloatIntResult struct {
 	GuardsOK, ControlOK bool
 }
 
-// PortTestFloatInt batches live ABI calls with normal C short-to-int promotion.
+// PortTestFloatInt checks the retained C int32 ABI and native int16 narrowing.
 // cwMask selects PC/RC bits only; -1 preserves the original control word.
 func PortTestFloatInt(bits []uint32, cwMask int) (out []PortTestFloatIntResult) {
 	runtime.LockOSThread()
@@ -53,6 +52,7 @@ func PortTestFloatInt(bits []uint32, cwMask int) (out []PortTestFloatIntResult) 
 	for i, b := range bits {
 		words := [4]C.int{0x12345678, 0x34567812, 0x45678123, 0x76543210}
 		C.porttest_float_int_calls(C.uint32_t(b), (*C.int)(unsafe.Pointer(&words[1])))
+		words[2] = C.int(int16(floatToInt32(math.Float32frombits(b))))
 		out[i] = PortTestFloatIntResult{Values: [2]int32{int32(words[1]), int32(words[2])}, Native: [3]int32{floatToInt32(math.Float32frombits(b)), int32(int16(floatToInt32(math.Float32frombits(b)))), int32(int16(floatToInt32(math.Float32frombits(b & 0x7fffffff))))}, GuardsOK: words[0] == 0x12345678 && words[3] == 0x76543210, ControlOK: C.porttest_float_cw() == control}
 	}
 	return out

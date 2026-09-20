@@ -6,8 +6,6 @@ package legacy
 #include <stdlib.h>
 #include "GAME1.h"
 #include "GAME2_2.h"
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
-extern const int ptr_5D4594_2650668_cap;
 extern uint32_t nox_xxx_waypointCounterMB_587000_154948;
 */
 import "C"
@@ -20,19 +18,19 @@ import (
 // Use the production grid allocator; its row-free routine leaves the pointer
 // table to its caller. Restore the previous owner after freeing this test grid.
 func PortTestTileCompositionGrid() (*[128]*[128][11]uint32, *uint32, func()) {
-	old := C.ptr_5D4594_2650668
+	old := worldTileGrid
 	counter := C.nox_xxx_waypointCounterMB_587000_154948
-	if C.ptr_5D4594_2650668_cap != 128 {
+	if worldTileGridCapacity != 128 {
 		panic("unexpected tile grid capacity")
 	}
-	if C.nox_xxx_tileAlloc_410F60_init() == 0 {
+	if worldGridAllocate() == 0 {
 		panic("tile grid allocation")
 	}
-	rows := (*[128]*[128][11]uint32)(unsafe.Pointer(C.ptr_5D4594_2650668))
+	rows := (*[128]*[128][11]uint32)(unsafe.Pointer(worldTileGrid))
 	return rows, (*uint32)(unsafe.Pointer(&C.nox_xxx_waypointCounterMB_587000_154948)), func() {
-		C.nox_xxx_tileFree_410FC0_free()
-		C.free(unsafe.Pointer(C.ptr_5D4594_2650668))
-		C.ptr_5D4594_2650668 = old
+		worldGridFreeRows()
+		C.free(unsafe.Pointer(worldTileGrid))
+		worldTileGrid = old
 		C.nox_xxx_waypointCounterMB_587000_154948 = counter
 	}
 }

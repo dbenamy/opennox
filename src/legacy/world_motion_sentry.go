@@ -101,7 +101,7 @@ func motionSentryReport(player int32) {
 func motionSentryPacket(player int32, u *server.Object) int32 {
 	msg := [9]byte{0x95}
 	for i, v := range [4]float32{u.PosVec.X, u.PosVec.Y, u.Pos39.X, u.Pos39.Y} {
-		binary.LittleEndian.PutUint16(msg[1+i*2:], uint16(C.sub_419A30(C.float(v))))
+		binary.LittleEndian.PutUint16(msg[1+i*2:], uint16(worldRoundScratch(float32(v))))
 	}
 	return int32(bool2int(GetServer().S().NetList.AddToMsgListCli(ntype.PlayerInd(player), netlist.Kind(1), msg[:])))
 }

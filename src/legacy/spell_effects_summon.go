@@ -41,7 +41,7 @@ func spellEffectSummonPosition(record, output unsafe.Pointer) int32 {
 			pos.X = float32(dx*50/float64(length) + float64(u.PosVec.X))
 			pos.Y = float32(float64(fy)*50/float64(length) + float64(u.PosVec.Y))
 		}
-		if spellEffectTrace(u.PosVec, pos, 9) && C.nox_xxx_mapTileAllowTeleport_411A90((*C.float2)(unsafe.Pointer(&pos))) == 0 {
+		if spellEffectTrace(u.PosVec, pos, 9) && !worldTileWater(pos) {
 			*(*types.Pointf)(output) = pos
 			return 1
 		}

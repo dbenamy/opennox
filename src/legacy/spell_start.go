@@ -20,7 +20,7 @@ func spellStartTeleport(d *server.DurSpell) uint32 {
 		d.Target48 = d.Caster16
 	}
 	caster, target := d.Caster16, d.Target48
-	if C.nox_xxx_mapTileAllowTeleport_411A90((*C.float2)(unsafe.Pointer(&d.Pos2))) != 0 {
+	if worldTileWater(d.Pos2) {
 		text := GetServer().S().Strings().GetStringInFile(strman.ID("UnseenTarget"), "C:\\NoxPost\\src\\Server\\Magic\\Spell\\ExecDur.c")
 		Nox_xxx_netSendLineMessage_4D9EB0(target, text)
 		sustainedAudio(231, target)

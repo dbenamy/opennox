@@ -1,7 +1,8 @@
 # World grid, wall storage and map serialization
 
 Qualified parent `df2e1155` is pushed: **9,267 C lines /39 files /zero reference C**.
-The original-C baseline is qualified; production source is unchanged.
+Original-C baseline `d4a6a628` is qualified and pushed. The native conversion is
+fully qualified: **8,820 C lines in 38 files**, zero reference C (447 fewer).
 
 The connected selection covers tile-grid allocation/lookup and water eligibility,
 door/wall attachment and secret-wall lists, wall bounds and map serialization,
@@ -38,10 +39,10 @@ The batch selection and caller inventory are provisional until fixture review.
 The seven new focused expectations are now frozen after repeated original-C runs;
 the broader three-target baseline is qualified.
 
-## Baseline work in progress
+## Original-C fixture development
 
-Production remains identical to `df2e1155`; no conversion has started. The first
-three focused original-C roots pass in `build/port-world-grid/second.log`:
+At this baseline, production remained identical to `df2e1155`. The first
+three focused original-C roots passed in `build/port-world-grid/second.log`:
 
 - Numeric scratch: 8,352 rows covering both pointer aliases, raw IEEE inputs,
   negative early returns, fractional rounding and large values. A separate first
@@ -112,11 +113,72 @@ archives, current test archives, qualified binaries and evidence were retained.
 
 ## Recovery
 
-All original-C qualification jobs are joined. No production conversion has begun.
+All original-C qualification jobs are joined.
 The seven new hashes were enforced during every sweep; existing tests also checked
 their committed expectations. The complete equal 347-file inventory was then
 frozen for native comparison. Completed server/highres captures share storage with
 default after hash verification; treat them as immutable and use fresh output
 paths. The two capture deduplication plans are consumed (1,185,269,604 bytes saved).
-The ignored numeric implementation draft is uninstalled and unqualified. Other
-ignored fixture drafts are stale; do not replay them over the reviewed source.
+The ignored numeric implementation draft and owner installer are consumed and
+stale; do not replay them or fixture drafts over the reviewed source.
+
+## Native conversion and review notes
+
+C baseline `d4a6a628` is committed and pushed. The working conversion moves the
+selected live behaviors and grid/tile/secret-list owners to Go. Four unused or
+test-only C helpers retire, along with the now-unused Go-backed `sub_411350` C
+bridge. The remaining C decoder secret-wall lookup keeps a Go-backed export.
+`GAME4_2.c` is empty and removed. Working C is **8,820 lines /38 files /zero
+reference C** (447 fewer), now fully qualified.
+
+The first compile found an adapter pointer conversion and an unused import; both
+were fixed before comparison. No expectation has changed. The current focused
+native run includes the seven new roots and the existing grid/IEEE/subtile checks.
+Ignored installers and the numeric draft are now consumed and must not be replayed.
+
+Reversible decision for review: map saving rejects paths shorter than four bytes
+or at least 1024 bytes. The old implementation subtracted four from an unsigned
+string length and copied into fixed 1024-byte C buffers; those inputs were outside
+its valid domain. Two native-only contracts check clean rejection without opening
+files. Valid-path behavior stays subject to the frozen encrypted output captures.
+The Go save path reacquires the global cryptfile after callbacks, matching the
+original dispatch behavior. The orchestration fixture now substitutes the same
+serialization boundary through a Go service instead of retaining a C link wrapper.
+
+The first broad native default run completed 265 roots before exposing a Go write
+barrier bug in the numeric scratch address store. The slot's old value is an
+arbitrary ABI word (the test uses `0x13572468`), not necessarily a managed pointer.
+Writing it through `*unsafe.Pointer` made GC inspect the old bits as a pointer.
+The store now uses `uint32(uintptr(address))`, matching the original C uint32_t
+write. This is a production conversion correction, not a changed expectation.
+The failed output remains under `native-default`; successful reruns will use fresh
+paths. The corrected focused comparison passes, followed by successful final
+default and server sweeps.
+
+A further 15 pre-conversion test-cache archives were verified and removed,
+reclaiming 1,122,457,854 bytes. The corresponding cleanup plan is consumed.
+
+The scratch correction passes all 14 focused roots. List insertion and predecessor
+relinking also now write raw uint32 words. An additional native-only independent
+contract seeds an uninserted node's next word with integer data; insertion must
+overwrite it without inspecting the prior value, as the original C assignment did.
+The resulting list/payload captures are unchanged. Final broad sweeps use fresh
+`native-default-final` and `native-server` directories.
+
+## Final qualification
+
+Default/server/highres pass 294/293/294 roots without skips; all 347 captures
+match the original-C baseline. Final static checks pass. Three fresh production
+binaries pass build and ABI/export audits. The full suite matches exactly the
+1,553 known failures. Headless gameplay and explicit save/load pass against the
+previous drawable references. All source fingerprints match the final checkout;
+no frozen expectation changed. All jobs are joined. See
+[world-grid-native-qualification.json](world-grid-native-qualification.json).
+
+Successful native capture sets share storage with the C baseline after byte
+verification, saving another 1,777,904,406 bytes. Shared completed evidence is
+immutable. Applied cleanup plans are consumed; use fresh output directories.
+
+World-grid completed scenario cleanup reclaimed 1,112,747,701 bytes after verifying
+original asset hashes. Per-run restore manifests preserve recovery; original
+assets/archive and changed saves remain. The cleanup script is consumed.

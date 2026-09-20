@@ -60,8 +60,6 @@ extern uint32_t nox_color_yellow_2589772;
 extern nox_render_data_t* nox_draw_curDrawData_3799572;
 
 
-extern uint32_t nox_tile_def_cnt;
-extern nox_tileDef_t nox_tile_defs_arr[176];
 
 uint32_t dword_5d4594_1193156 = 0;
 uint8_t** nox_pixbuffer_rows_3798784 = 0;

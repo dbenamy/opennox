@@ -49,7 +49,7 @@ func mapDrawableTyped(kind, typ int) int {
 			// C stores X in a signed local; the inline Y expression divides unsigned.
 			x := int32(uint32(d.PosVec.X) + uint32(dx))
 			y := uint32(d.PosVec.Y) + uint32(dy)
-			C.sub_410390(C.int(uintptr(d.C())), C.int(x/23), C.int(y/23))
+			worldDrawableAttach(d, int(x/23), int(y/23))
 		} else if uint32(d.Class())&0x200 != 0 {
 			w, h := float32(int32(r.u32())), float32(int32(r.u32()))
 			if w > 60 {

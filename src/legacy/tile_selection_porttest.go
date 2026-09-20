@@ -5,11 +5,7 @@ package legacy
 /*
 #include <stdint.h>
 #include "GAME4_1.h"
-extern uint32_t nox_tile_def_cnt;
-extern nox_tileDef_t nox_tile_defs_arr[176];
 extern uint32_t dword_5d4594_3835348;
-static void* portTestTileDefs(void) { return nox_tile_defs_arr; }
-static uint32_t* portTestTileCount(void) { return &nox_tile_def_cnt; }
 */
 import "C"
 
@@ -53,8 +49,8 @@ type PortTestTileVariationResult struct {
 type portTestTileState struct{ selected, variation, flag, beforeSelected, afterFlag uint32 }
 
 func portTestTilePtrs() ([]server.TileDef, *uint32, *uint32, *uint32, *uint32) {
-	table := unsafe.Slice((*server.TileDef)(C.portTestTileDefs()), portTestTileCount)
-	count := (*uint32)(unsafe.Pointer(C.portTestTileCount()))
+	table := unsafe.Slice((*server.TileDef)(unsafe.Pointer(&worldTileDefinitions[0])), portTestTileCount)
+	count := (*uint32)(unsafe.Pointer(unsafe.Pointer(&worldTileDefinitionCount)))
 	selected := memmap.PtrUint32(0x973F18, 35912)
 	flag := memmap.PtrUint32(0x973F18, 35916)
 	variation := (*uint32)(unsafe.Pointer(&C.dword_5d4594_3835348))

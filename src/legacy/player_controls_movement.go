@@ -99,7 +99,7 @@ func controlNearStart(u *server.Object, out *types.Pointf) int32 {
 	var result C.int
 	for i := 0; i < 32; i++ {
 		C.sub_4ED970(60, (*C.float2)(unsafe.Pointer(&u.PosVec)), (*C.float2)(unsafe.Pointer(out)))
-		result = C.nox_xxx_mapTileAllowTeleport_411A90((*C.float2)(unsafe.Pointer(out)))
+		result = C.int(bool2int(worldTileWater(*out)))
 		if result == 0 {
 			break
 		}

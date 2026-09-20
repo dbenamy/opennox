@@ -72,7 +72,7 @@ func mapPaintMakeWall(pos *types.Pointf) uint32 {
 }
 func mapPaintUnlinkSecret(w *server.Wall) {
 	if w.Data != nil {
-		C.sub_4107A0(w.Data)
+		worldSecretRemove(w.Data)
 		w.Data = nil
 	}
 }

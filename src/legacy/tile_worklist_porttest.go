@@ -7,7 +7,6 @@ package legacy
 #include <stdlib.h>
 #include <string.h>
 #include "GAME4_2.h"
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
 extern uint32_t dword_5d4594_2487248;
 
 static obj_5D4594_2650668_t** portTestWorklistGridNew(void) {
@@ -24,8 +23,6 @@ static void portTestWorklistGridFree(obj_5D4594_2650668_t** p) {
 	for (int i = 0; i < 128; i++) free(p[i]);
 	free(p);
 }
-static obj_5D4594_2650668_t** portTestWorklistGridGet(void) { return ptr_5D4594_2650668; }
-static void portTestWorklistGridSet(obj_5D4594_2650668_t** p) { ptr_5D4594_2650668 = p; }
 static void portTestWorklistCellSet(obj_5D4594_2650668_t** p, int x, int y, uint32_t one, uint32_t two) {
 	p[x][y].field_1 = one; p[x][y].field_6 = two;
 }
@@ -123,7 +120,7 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 	queue := portTestWorklistQueue()
 	left := unsafe.Slice(memmap.PtrUint8(0x973F18, 16192), 8)
 	right := unsafe.Slice(memmap.PtrUint8(0x973F18, 22204), 8)
-	oldGrid := C.portTestWorklistGridGet()
+	oldGrid := worldTileGrid
 	snap.Before = portTestWorklistState(count, overflow, queue, left, right)
 	grid, expected := C.portTestWorklistGridNew(), C.portTestWorklistGridNew()
 	if grid == nil || expected == nil {
@@ -136,13 +133,13 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 		*count, *overflow = snap.Before.Count, snap.Before.Overflow
 		copy(left, snap.Before.Left)
 		copy(right, snap.Before.Right)
-		C.portTestWorklistGridSet(oldGrid)
+		worldTileGrid = oldGrid
 		C.portTestWorklistGridFree(grid)
 		C.portTestWorklistGridFree(expected)
 		snap.AfterRestore = portTestWorklistState(count, overflow, queue, left, right)
-		snap.GridPointerRestored = C.portTestWorklistGridGet() == oldGrid
+		snap.GridPointerRestored = worldTileGrid == oldGrid
 	}()
-	C.portTestWorklistGridSet(grid)
+	worldTileGrid = grid
 	copy(queue, initialQueue)
 	*count, *overflow = initialCount, initialOverflow
 	for i := range left {
@@ -169,12 +166,12 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 			wantGrid := grid
 			if s.NilGrid {
 				wantGrid = nil
-				C.portTestWorklistGridSet(nil)
+				worldTileGrid = nil
 			}
 			C.sub_51DD50(C.int(s.X), C.int(s.Y), C.int(s.Flags), C.int(s.Key))
-			pointerOK := C.portTestWorklistGridGet() == wantGrid
+			pointerOK := worldTileGrid == wantGrid
 			if s.NilGrid {
-				C.portTestWorklistGridSet(grid)
+				worldTileGrid = grid
 			}
 			v0, ok0 := portTestWorklistOutValue(s.PopX, words, count, overflow, queue)
 			v1, ok1 := portTestWorklistOutValue(s.PopY, words, count, overflow, queue)
@@ -185,7 +182,7 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 			v0, ok0 := portTestWorklistOutValue(s.PopX, words, count, overflow, queue)
 			v1, ok1 := portTestWorklistOutValue(s.PopY, words, count, overflow, queue)
 			v2, ok2 := portTestWorklistOutValue(s.PopZ, words, count, overflow, queue)
-			snap.Results = append(snap.Results, PortTestTileWorklistResult{Return: int(ret), Count: *count, Overflow: *overflow, Outputs: [3]uint32{v0, v1, v2}, OutputReadable: [3]bool{ok0, ok1, ok2}, Queue: append([]uint32(nil), queue...), GridUnchanged: C.portTestWorklistGridEqual(grid, expected) != 0, GridPointerUnchanged: C.portTestWorklistGridGet() == grid, QueueGuardsUnchanged: string(left) == string(wantLeft) && string(right) == string(wantRight), OutputGuardsOK: words[0] == 0xa0a0a0a0 && words[4] == 0xb0b0b0b0})
+			snap.Results = append(snap.Results, PortTestTileWorklistResult{Return: int(ret), Count: *count, Overflow: *overflow, Outputs: [3]uint32{v0, v1, v2}, OutputReadable: [3]bool{ok0, ok1, ok2}, Queue: append([]uint32(nil), queue...), GridUnchanged: C.portTestWorklistGridEqual(grid, expected) != 0, GridPointerUnchanged: worldTileGrid == grid, QueueGuardsUnchanged: string(left) == string(wantLeft) && string(right) == string(wantRight), OutputGuardsOK: words[0] == 0xa0a0a0a0 && words[4] == 0xb0b0b0b0})
 		} else {
 			C.free(mem)
 			panic("invalid worklist operation")
@@ -197,12 +194,12 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 
 // portTestMainGrid provides real C/Go tile lookups for dodge decisions.
 func portTestMainGrid() (configure func(uint32), intact func() bool, free func()) {
-	old := C.portTestWorklistGridGet()
+	old := worldTileGrid
 	grid, expected := C.portTestWorklistGridNew(), C.portTestWorklistGridNew()
 	if grid == nil || expected == nil {
 		panic("main fixture grid allocation")
 	}
-	C.portTestWorklistGridSet(grid)
+	worldTileGrid = grid
 	last := ^uint32(0)
 	configure = func(tile uint32) {
 		if tile == last {
@@ -217,10 +214,10 @@ func portTestMainGrid() (configure func(uint32), intact func() bool, free func()
 		}
 	}
 	intact = func() bool {
-		return C.portTestWorklistGridGet() == grid && C.portTestWorklistGridEqual(grid, expected) != 0
+		return worldTileGrid == grid && C.portTestWorklistGridEqual(grid, expected) != 0
 	}
 	free = func() {
-		C.portTestWorklistGridSet(old)
+		worldTileGrid = old
 		C.portTestWorklistGridFree(grid)
 		C.portTestWorklistGridFree(expected)
 	}
@@ -230,14 +227,14 @@ func portTestMainGrid() (configure func(uint32), intact func() bool, free func()
 // Reuse the owned tile grid used by the worklist contracts. Both tile halves
 // receive the requested floor kind; the production world-to-tile lookup stays live.
 func PortTestWorldMotionTileGrid() (func(int32), func() bool, func()) {
-	old := C.portTestWorklistGridGet()
+	old := worldTileGrid
 	grid, want := C.portTestWorklistGridNew(), C.portTestWorklistGridNew()
 	if grid == nil || want == nil {
 		C.portTestWorklistGridFree(grid)
 		C.portTestWorklistGridFree(want)
 		panic("world motion tile allocation")
 	}
-	C.portTestWorklistGridSet(grid)
+	worldTileGrid = grid
 	configure := func(kind int32) {
 		for _, table := range []**C.obj_5D4594_2650668_t{grid, want} {
 			for _, p := range unsafe.Slice(table, 128) {
@@ -250,10 +247,10 @@ func PortTestWorldMotionTileGrid() (func(int32), func() bool, func()) {
 		}
 	}
 	return configure, func() bool {
-		return C.portTestWorklistGridGet() == grid && C.portTestWorklistGridEqual(grid, want) != 0
-	}, func() {
-		C.portTestWorklistGridSet(old)
-		C.portTestWorklistGridFree(grid)
-		C.portTestWorklistGridFree(want)
-	}
+			return worldTileGrid == grid && C.portTestWorklistGridEqual(grid, want) != 0
+		}, func() {
+			worldTileGrid = old
+			C.portTestWorklistGridFree(grid)
+			C.portTestWorklistGridFree(want)
+		}
 }

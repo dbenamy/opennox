@@ -44,33 +44,16 @@
 
 extern uint32_t dword_5d4594_588084;
 extern uint32_t nox_player_netCode_85319C;
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
-extern int ptr_5D4594_2650668_cap;
 
-double sub_419A10(float a1) {
-	*getMemFloatPtr(0x5D4594, 527672) = a1;
-	**(uint32_t**)getMemAt(0x587000, 55744) &= 0x7FFFFFFFu;
-	return *getMemFloatPtr(0x5D4594, 527672);
-}
 
-unsigned int sub_419A30(float a1) {
-	unsigned int result; // eax
 
-	if (a1 < 0.0) {
-		return 0;
-	}
-	*getMemU32Ptr(0x5D4594, 527668) = getMemAt(0x5D4594, 527676);
-	*getMemFloatPtr(0x5D4594, 527676) = a1 + 8388608.0;
-	result = 0x7fffff & *getMemU32Ptr(0x5D4594, 527676);
-	*getMemU32Ptr(0x5D4594, 527680) = 0x7fffff & *getMemU32Ptr(0x5D4594, 527676);
-	return result;
-}
+
 
 int nox_float2int(float a1) { return (int)a1; }
 
-short nox_float2int16(float a1) { return (int)a1; }
 
-float nox_double2float(double a1) { return (float)a1; }
+
+
 
 int nox_double2int(double a1) { return (int)a1; }
 
@@ -218,13 +201,4 @@ int nox_xxx_countObserverPlayers_425BF0() {
 		}
 	}
 	return v0;
-}
-
-int nox_xxx_wallGet_426A30() { return *getMemU32Ptr(0x5D4594, 739992); }
-
-char* nox_xxx_mapGetWallSize_426A70() { return (char*)getMemAt(0x5D4594, 739980); }
-
-void nox_xxx_mapWall_426A80(int* a1) {
-	*getMemU32Ptr(0x5D4594, 739980) = a1[0];
-	*getMemU32Ptr(0x5D4594, 739984) = a1[1];
 }

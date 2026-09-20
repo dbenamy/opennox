@@ -28,8 +28,6 @@ extern unsigned int dword_5d4594_2650652;
 extern unsigned int dword_5d4594_2649712;
 extern unsigned int dword_5d4594_1548524;
 
-extern uint32_t nox_tile_def_cnt;
-extern nox_tileDef_t nox_tile_defs_arr[176];
 
 void nox_xxx_netlist_4DEB50();
 void nox_xxx_updateUnits_51B100();
@@ -424,7 +422,7 @@ func Nox_xxx_toggleAllTeamFlags_418690(a1 int) {
 	teamRuntimeToggle(a1 != 0)
 }
 func Sub_410730() {
-	C.sub_410730()
+	worldSecretClear()
 }
 func Nox_xxx_j_allocHitArray_511840() {
 	collisionResetHits()
@@ -481,7 +479,7 @@ func Sub_4FCEB0(a1 bool) {
 var _ = [1]struct{}{}[60-unsafe.Sizeof(server.TileDef{})]
 
 func Get_nox_tile_defs_arr() []server.TileDef {
-	ptr := (*server.TileDef)(unsafe.Pointer(&C.nox_tile_defs_arr[0]))
-	sz := int(C.nox_tile_def_cnt)
-	return unsafe.Slice(ptr, len(C.nox_tile_defs_arr))[:sz]
+	ptr := (*server.TileDef)(unsafe.Pointer(&worldTileDefinitions[0]))
+	sz := int(worldTileDefinitionCount)
+	return unsafe.Slice(ptr, len(worldTileDefinitions))[:sz]
 }

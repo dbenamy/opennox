@@ -9,7 +9,6 @@ import (
 	"github.com/opennox/opennox/v1/common/unit/ai"
 	"github.com/opennox/opennox/v1/server"
 	"math"
-	"unsafe"
 )
 
 var motionVelocityTypes [10]uint32
@@ -115,7 +114,7 @@ func motionVelocity(step float32) int32 {
 			if s.MapTraceRayAt(u.NewPos, next, nil, nil, flags) {
 				u.NewPos = next
 			}
-			if u.ObjFlags&0x4000 == 0 && u.HealthData != nil && C.nox_xxx_tileNFromPoint_411160((*C.float2)(unsafe.Pointer(&u.NewPos))) == 6 {
+			if u.ObjFlags&0x4000 == 0 && u.HealthData != nil && tileAtPoint(u.NewPos) == 6 {
 				normal := types.Pointf{}
 				collisionAddHit(u, 6, &normal)
 			}

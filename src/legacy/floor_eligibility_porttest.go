@@ -4,7 +4,6 @@ package legacy
 
 /*
 #include "GAME1.h"
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
 */
 import "C"
 
@@ -34,12 +33,12 @@ func PortTestFloorEligibility(inputs []PortTestFloorInput) (out PortTestFloorRes
 	defer freeRows()
 	cells, freeCells := alloc.Make([]uint32{}, 128*11+4)
 	defer freeCells()
-	oldGrid, oldFlags := C.ptr_5D4594_2650668, noxflags.GetEngine()
+	oldGrid, oldFlags := worldTileGrid, noxflags.GetEngine()
 	defer func() {
-		C.ptr_5D4594_2650668 = oldGrid
+		worldTileGrid = oldGrid
 		noxflags.ResetEngine()
 		noxflags.SetEngine(oldFlags)
-		out.Restored = C.ptr_5D4594_2650668 == oldGrid && noxflags.GetEngine() == oldFlags
+		out.Restored = worldTileGrid == oldGrid && noxflags.GetEngine() == oldFlags
 	}()
 	for i := range rows {
 		rows[i] = 0x31313131
@@ -60,7 +59,7 @@ func PortTestFloorEligibility(inputs []PortTestFloorInput) (out PortTestFloorRes
 		}
 		wantCells := append([]uint32(nil), cells...)
 		installed := (**C.obj_5D4594_2650668_t)(unsafe.Pointer(&rows[1]))
-		C.ptr_5D4594_2650668 = installed
+		worldTileGrid = installed
 		noxflags.ResetEngine()
 		noxflags.SetEngine(noxflags.EngineFlag(in.Flags))
 		// Invalid values in other position fields detect using the wrong viewport corner.
@@ -69,11 +68,11 @@ func PortTestFloorEligibility(inputs []PortTestFloorInput) (out PortTestFloorRes
 		arg := &vp
 		if in.NilViewport {
 			arg = nil
-			C.ptr_5D4594_2650668 = nil
+			worldTileGrid = nil
 			installed = nil
 		}
 		out.Values = append(out.Values, Nox_xxx_drawAllMB_475810_draw_B(arg))
-		out.Unchanged = out.Unchanged && vp == before && noxflags.GetEngine() == noxflags.EngineFlag(in.Flags) && C.ptr_5D4594_2650668 == installed && slices.Equal(rows, wantRows) && slices.Equal(cells, wantCells)
+		out.Unchanged = out.Unchanged && vp == before && noxflags.GetEngine() == noxflags.EngineFlag(in.Flags) && worldTileGrid == installed && slices.Equal(rows, wantRows) && slices.Equal(cells, wantCells)
 	}
 	return out
 }

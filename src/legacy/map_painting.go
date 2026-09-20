@@ -5,7 +5,6 @@ package legacy
 extern uint32_t dword_5d4594_3835348, dword_5d4594_3835352, dword_5d4594_3835356, dword_5d4594_3835360;
 extern uint32_t dword_5d4594_3835364, dword_5d4594_3835368, dword_5d4594_3835372;
 extern uint32_t dword_5d4594_3835388, dword_5d4594_3835392, dword_5d4594_588084, dword_5d4594_2487248;
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
 */
 import "C"
 
@@ -57,7 +56,7 @@ func mapPaintGlobal(i int) *uint32 {
 	panic("map painting global")
 }
 func mapPaintCell(x, y int32) *[11]uint32 {
-	rows := (*[128]*[128][11]uint32)(unsafe.Pointer(C.ptr_5D4594_2650668))
+	rows := (*[128]*[128][11]uint32)(unsafe.Pointer(worldTileGrid))
 	return &rows[x][y]
 }
 func mapPaintSelection(off uintptr) *uint32 { return memmap.PtrUint32(0x973F18, off) }

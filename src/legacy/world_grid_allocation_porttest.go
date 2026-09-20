@@ -5,7 +5,6 @@ package legacy
 /*
 #include <stdlib.h>
 #include "GAME1.h"
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
 void worldGridAllocObserve(int fail);
 void worldGridAllocStop(void);
 int worldGridAllocStat(int index);
@@ -27,13 +26,13 @@ type PortTestWorldGridAllocation struct {
 func PortTestWorldGridAllocate(failAt int) (r PortTestWorldGridAllocation) {
 	runtime.LockOSThread()
 	defer runtime.UnlockOSThread()
-	oldGrid := C.ptr_5D4594_2650668
+	oldGrid := worldTileGrid
 	r.FailAt = failAt
 	r.Zero = true
 	C.worldGridAllocObserve(C.int(failAt))
-	defer func() { C.worldGridAllocStop(); C.ptr_5D4594_2650668 = oldGrid }()
-	r.Return = int(C.nox_xxx_tileAlloc_410F60_init())
-	outer := unsafe.Pointer(C.ptr_5D4594_2650668)
+	defer func() { C.worldGridAllocStop(); worldTileGrid = oldGrid }()
+	r.Return = int(worldGridAllocate())
+	outer := unsafe.Pointer(worldTileGrid)
 	if outer != nil {
 		rows := unsafe.Slice((*unsafe.Pointer)(outer), 128)
 		for _, p := range rows {
@@ -45,10 +44,10 @@ func PortTestWorldGridAllocate(failAt int) (r PortTestWorldGridAllocation) {
 			}
 		}
 		before := int(C.worldGridAllocStat(-1))
-		C.nox_xxx_tileFree_410FC0_free()
+		worldGridFreeRows()
 		r.RowsFreed = int(C.worldGridAllocStat(-2))
 		r.OuterRetained = C.worldGridAllocContains(outer) != 0
-		r.OuterRetained = r.OuterRetained && unsafe.Pointer(C.ptr_5D4594_2650668) == outer
+		r.OuterRetained = r.OuterRetained && unsafe.Pointer(worldTileGrid) == outer
 		r.Remaining = before - r.RowsFreed
 		C.free(outer)
 	}

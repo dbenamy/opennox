@@ -88,7 +88,7 @@ func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 	return 1
 }
 func inventoryTrapDrop(u, it *server.Object, pos *types.Pointf) int {
-	if C.nox_xxx_mapTileAllowTeleport_411A90((*C.float2)(unsafe.Pointer(pos))) != 0 {
+	if worldTileWater(*pos) {
 		inventorySound(925, u, 2, int(u.NetCode))
 		return 0
 	}

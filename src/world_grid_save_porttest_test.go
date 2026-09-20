@@ -8,6 +8,7 @@ import (
 	"image"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 	"unsafe"
 
@@ -28,6 +29,12 @@ func TestWorldGridMapSave(t *testing.T) {
 	oldFile := cryptfile.Global()
 	cryptfile.SetGlobal(nil)
 	t.Cleanup(func() { cryptfile.Close(); cryptfile.SetGlobal(oldFile) })
+	// Native-only contracts for inputs outside the former C buffer domain.
+	for _, path := range []string{"", strings.Repeat("a", 1024)} {
+		if legacy.Nox_xxx_mapSaveMap_51E010(path, 0) || cryptfile.Global() != nil {
+			t.Fatal("invalid path accepted or opened a file")
+		}
+	}
 	oldSections := noxMapSections
 	t.Cleanup(func() { noxMapSections = oldSections })
 	for _, reg := range [][3]uintptr{{0x587000, 253112, 5}, {0x5D4594, 2487252, 8}, {0x5D4594, 739980, 8}} {

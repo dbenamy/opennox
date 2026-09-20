@@ -14,14 +14,6 @@ static void world_numeric_env(fenv_t *saved) {
  cw = (cw & ~0x0f00) | 0x0200;
  __asm__ volatile("fldcw %0" : : "m"(cw));
 }
-static double world_numeric_abs(uint32_t bits) {
- union { uint32_t bits; float value; } in = {bits};
- return sub_419A10(in.value);
-}
-static uint32_t world_numeric_round(uint32_t bits) {
- union { uint32_t bits; float value; } in = {bits};
- return sub_419A30(in.value);
-}
 */
 import "C"
 
@@ -64,10 +56,10 @@ func PortTestWorldNumeric(inputs []uint32) (out []PortTestWorldNumericResult) {
 				*slot = unsafe.Pointer(tail)
 			}
 			r := PortTestWorldNumericResult{Input: bits, Redirect: redirect}
-			r.Abs = math.Float64bits(float64(C.world_numeric_abs(C.uint32_t(bits))))
+			r.Abs = math.Float64bits(worldAbsScratch(math.Float32frombits(bits)))
 			r.Scratch = words[1]
 			r.Pointed = *(*uint32)(*slot)
-			r.Rounded = uint32(C.world_numeric_round(C.uint32_t(bits)))
+			r.Rounded = worldRoundScratch(math.Float32frombits(bits))
 			negative := math.Float32frombits(bits) < 0
 			r.PointerOK = words[0] == uint32(uintptr(unsafe.Pointer(&words[2])))
 			if negative {

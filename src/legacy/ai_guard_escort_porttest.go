@@ -4,7 +4,6 @@ package legacy
 
 /*
 #include "GAME1.h"
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
 */
 import "C"
 
@@ -39,7 +38,7 @@ var portTestGuardGrids [2]unsafe.Pointer
 func portTestGuardEscortEnvironment() func() {
 	mimic, plant := memmap.PtrUint32(0x5D4594, 2488524), memmap.PtrUint32(0x5D4594, 2488528)
 	oldMimic, oldPlant := *mimic, *plant
-	oldGrid, oldGrids := C.ptr_5D4594_2650668, portTestGuardGrids
+	oldGrid, oldGrids := worldTileGrid, portTestGuardGrids
 	*mimic, *plant = 2, 3
 	var blocks, wants [][]uint32
 	var frees []func()
@@ -72,7 +71,7 @@ func portTestGuardEscortEnvironment() func() {
 		for i, b := range blocks {
 			ok = ok && slices.Equal(b, wants[i])
 		}
-		C.ptr_5D4594_2650668 = oldGrid
+		worldTileGrid = oldGrid
 		portTestGuardGrids = oldGrids
 		*mimic, *plant = oldMimic, oldPlant
 		for _, f := range frees {
@@ -94,7 +93,7 @@ func portTestGuardEscortPrepare(proxy *portTestRoamOwnerServer, u, target *serve
 	if sp.Water {
 		grid = 1
 	}
-	C.ptr_5D4594_2650668 = (**C.obj_5D4594_2650668_t)(portTestGuardGrids[grid])
+	worldTileGrid = (**C.obj_5D4594_2650668_t)(portTestGuardGrids[grid])
 	u.NetCode = sp.NetCode
 	u.Direction1, u.Direction2 = server.Dir16(sp.Direction), server.Dir16(sp.Desired)
 	if !sp.Reaction {

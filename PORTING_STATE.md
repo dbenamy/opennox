@@ -2,48 +2,50 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 9.3k lines** — **9,267 physical lines in 39
-production `.c` files**, zero reference C. The last conversion removed **696 lines**.
+**Qualified C remaining: about 8.8k lines** — **8,820 physical lines in 38
+production `.c` files**, zero reference C. The last conversion removed **447 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — client drawable state Go conversion qualified
+## Current — world grid and map serialization Go conversion qualified
 
-Original-C baseline **8266e740** is pushed. Native conversion is fully qualified:
-fifteen live bodies and two private owners move to Go; one unused C minimap
-duplicate retires. Eleven interfaces retain Go exports for actual C callers and
-registrations. Blue/Violet spark caches retain their C decoder ownership.
+Original-C baseline **d4a6a628** is pushed. Twenty live behaviors move to or reuse
+qualified Go implementations; four unused/test-only C helpers retire. Grid, tile
+and secret-list owners move with their callers. Only the secret-wall lookup keeps
+a selected Go-backed export for its actual C decoder caller. GAME4_2.c is removed.
 
-Nine focused roots preserve eight frozen captures containing 18,414 result rows,
-plus independent shield-scan, terminator and link checks. The broader default,
-server and highres sweeps each pass 88 roots /69 frozen captures, no skips. All
-source fingerprints match the final checkout. Static-native-final passes.
+Default/server/highres pass 294/293/294 roots, no skips, and all 347 frozen C
+captures. Final static checks pass; source fingerprints match throughout. Fresh
+three-target production builds and ABI audits pass. The full suite matches exactly
+all 1,553 known failures. Headless gameplay and explicit save/load pass against
+the drawable references. All drivers, including production 6845, are joined.
+See [WORLD_GRID.md](docs/porting/WORLD_GRID.md) and its native qualification JSON.
 
-Fresh three-target production binaries pass ABI/export audits. Full-suite results
-match exactly all 1,553 known failures and 15 pass /3 fail /32 skip packages.
-Headless gameplay and explicit save/load pass against spell-start references.
-All jobs, including production 65250, are joined. See
-[CLIENT_DRAWABLE_STATE.md](docs/porting/CLIENT_DRAWABLE_STATE.md) and its native
-qualification JSON. No frozen expectation changed. Initial missing integer casts
-were fixed before qualification; the earlier shield fixture correction preceded
-C baseline freezing.
+Review notes: raw ABI address/list stores use uint32 to avoid Go write barriers
+inspecting former integer data. The first broad sweep exposed that issue; the
+corrected final sweeps pass without changing frozen expectations. Map saving now
+rejects paths shorter than four or at least 1024 bytes before opening files; these
+were outside the former fixed-buffer implementation's valid domain.
 
-The native installer, applied cache cleanup and capture deduplication scripts are
-CONSUMED; ignored drafts are stale. Original assets, archive, qualified binaries,
-captures/results and asset restore manifests remain. Completed shared captures
-are immutable; use fresh output directories. No user question is pending.
+Ignored numeric drafts, installers and applied cache/capture cleanup scripts are
+CONSUMED and stale. Every successful native capture set shares verified identical
+storage with C references; use fresh output paths. Original assets/archive,
+qualified binaries, captures and failure evidence remain. No question is pending.
 
-Next batch: the original-C world grid/wall baseline is qualified; production is
-unchanged. Seven focused roots have frozen, repeated captures. Default/server/
-highres pass 294/293/294 roots with no skips and 347 identical captures. The one
-server exclusion is explicitly `!server`. Static checks and production identity
-against `df2e1155` pass. All jobs are joined. See [WORLD_GRID.md](docs/porting/WORLD_GRID.md).
-Next: translate the selected owners/helpers and remove audited unused interfaces,
-then compare against this committed baseline. The ignored numeric draft is not
-installed; fixture drafts and applied cleanup scripts must not be replayed.
-Grid lookup already has a qualified native implementation. Read GRID_LOOKUP.md,
-FLOAT_INT.md and the ignored next-scope-notes.md before retiring staged duplicates.
+Next: audit remaining client/server game-message dispatch and notices. The ignored
+next-dispatch-audit-draft.json finds 145 named client C cases and 16 server cases,
+with no apparent overlap with the corresponding Go outer cases. Complete the
+control-flow, callback and ownership audit before installing fixtures or freezing
+expectations; no next-batch source has been installed.
+
+## Previous — client drawable state Go conversion qualified
+
+C baseline **8266e740** and native conversion **df2e1155** are pushed. Fifteen live
+bodies and two owners moved to Go; one unused minimap duplicate retired. Three
+targets each passed 88 roots /69 frozen captures, plus production/ABI, exact known
+full-suite comparison and gameplay/save-load. That checkpoint had 9,267 C lines
+in 39 files. See [CLIENT_DRAWABLE_STATE.md](docs/porting/CLIENT_DRAWABLE_STATE.md).
 
 ## Previous — spell start Go conversion qualified
 
@@ -1863,3 +1865,7 @@ plan-draft.md,22 remaining script/object/callback-transfer bodies /472 lines.
 Two predicate callbacks have an unpassed-argument fallback to review before a C
 baseline. No source/tests installed for this candidate. Finish the active online
 session conversion and push before beginning the next implementation.
+
+World-grid completed scenario cleanup reclaimed 1,112,747,701 bytes after verifying
+original asset hashes. Per-run restore manifests preserve recovery; original
+assets/archive and changed saves remain. The cleanup script is consumed.

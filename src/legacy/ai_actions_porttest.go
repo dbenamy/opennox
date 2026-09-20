@@ -5,7 +5,6 @@ package legacy
 /*
 #include "GAME1.h"
 #include "GAME4_3.h"
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
 */
 import "C"
 
@@ -111,9 +110,9 @@ func PortTestAIActions(specs []PortTestAIActionSpec) (out []PortTestAIActionResu
 		}
 	}
 	wantRows, wantCells := slices.Clone(rows), slices.Clone(cells)
-	oldGrid := C.ptr_5D4594_2650668
+	oldGrid := worldTileGrid
 	installed := (**C.obj_5D4594_2650668_t)(unsafe.Pointer(&rows[1]))
-	C.ptr_5D4594_2650668 = installed
+	worldTileGrid = installed
 	dirs := unsafe.Slice(memmap.PtrUint8(0x587000, 194128), 2064)
 	oldDirs := bytes.Clone(dirs)
 	for i := range dirs {
@@ -126,9 +125,9 @@ func PortTestAIActions(specs []PortTestAIActionSpec) (out []PortTestAIActionResu
 	}
 	wantDirs := bytes.Clone(dirs)
 	defer func() {
-		C.ptr_5D4594_2650668 = oldGrid
+		worldTileGrid = oldGrid
 		copy(dirs, oldDirs)
-		restored = C.ptr_5D4594_2650668 == oldGrid && bytes.Equal(dirs, oldDirs)
+		restored = worldTileGrid == oldGrid && bytes.Equal(dirs, oldDirs)
 	}()
 	for _, sp := range specs {
 		// Preserve server registration while resetting all public object bytes.
@@ -216,7 +215,7 @@ func PortTestAIActions(specs []PortTestAIActionSpec) (out []PortTestAIActionResu
 				r.GuardsOK = r.GuardsOK && b[i] == byte(0xa0+i) && b[len(b)-8+i] == byte(0xc0+i)
 			}
 		}
-		r.ReadOnlyOK = r.ReadOnlyOK && C.ptr_5D4594_2650668 == installed
+		r.ReadOnlyOK = r.ReadOnlyOK && worldTileGrid == installed
 		out = append(out, r)
 	}
 	if !slices.Equal(rows, wantRows) || !slices.Equal(cells, wantCells) || !bytes.Equal(dirs, wantDirs) {

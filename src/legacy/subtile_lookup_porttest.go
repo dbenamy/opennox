@@ -46,7 +46,7 @@ func portTestSubtileTable() []byte {
 	return unsafe.Slice(memmap.PtrUint8(0x85B3FC, portTestSubtileBase), portTestSubtileRows*portTestSubtileRowSize)
 }
 
-// PortTestSubtileLookup exercises the native point helper and live 411350 ABI. Nodes and the
+// PortTestSubtileLookup exercises the native point helper and private list helper. Nodes and the
 // two-word point are C allocations, so C link pointers never point into Go.
 func PortTestSubtileLookup(specs []PortTestSubtileLookupSpec) (out PortTestSubtileLookupSnapshot) {
 	table := portTestSubtileTable()
@@ -125,7 +125,7 @@ func PortTestSubtileLookup(specs []PortTestSubtileLookupSpec) (out PortTestSubti
 			if !s.NilPoint {
 				p = &pw[1]
 			}
-			ret = C.sub_411350(head, p, C.int(s.Fallback))
+			ret = C.int(findSubtileAt((*[5]uint32)(unsafe.Pointer(head)), (*[2]int32)(unsafe.Pointer(p)), int32(s.Fallback)))
 		} else {
 			panic("invalid subtile mode")
 		}

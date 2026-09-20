@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/memmap/nox/blobdata"
@@ -51,13 +46,13 @@ func PortTestWorldTables() (r PortTestWorldTablesResult) {
 	clear(sine)
 	clear(acos)
 	*flag = 0
-	r.ColdReturn = int8(C.nox_xxx_initSinCosTables_414C90())
+	r.ColdReturn = int8(worldInitTrigTables())
 	r.Sine = append([]uint32(nil), sine...)
 	r.Acos = append([]uint32(nil), acos...)
 	r.WarmUnchanged = *flag == 1
 	for _, f := range []byte{1, 2, 127, 128, 255} {
 		*flag = f
-		r.WarmReturns = append(r.WarmReturns, int8(C.nox_xxx_initSinCosTables_414C90()))
+		r.WarmReturns = append(r.WarmReturns, int8(worldInitTrigTables()))
 		r.WarmUnchanged = r.WarmUnchanged && *flag == f
 		for i, v := range sine {
 			r.WarmUnchanged = r.WarmUnchanged && v == r.Sine[i]

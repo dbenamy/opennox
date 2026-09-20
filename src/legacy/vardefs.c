@@ -110,7 +110,6 @@ uint32_t dword_5d4594_1309728 = 0;
 uint32_t dword_5d4594_1309836 = 0;
 uint32_t dword_5d4594_1320992 = 0;
 uint32_t dword_5d4594_1047552 = 0;
-void* dword_5d4594_251560 = 0;
 uint32_t dword_5d4594_3484 = 0;
 void* nox_alloc_screenParticles_806044 = 0;
 uint32_t dword_5d4594_1309828 = 0;

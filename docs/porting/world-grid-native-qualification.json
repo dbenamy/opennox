@@ -1,0 +1,119 @@
+{
+  "status": "qualified native conversion",
+  "c_baseline": "d4a6a628",
+  "bodies": 24,
+  "body_lines": 364,
+  "live_bodies": 20,
+  "unused_or_test_only_bodies": 4,
+  "moved_owners": [
+    "worldTileGrid",
+    "worldTileDefinitions",
+    "worldTileDefinitionCount",
+    "worldSecretHead"
+  ],
+  "retained_callbacks": [
+    "sub_410550"
+  ],
+  "retired_interfaces": [
+    "nox_xxx_doorAttachWall_410360",
+    "sub_410390",
+    "sub_410730",
+    "nox_xxx_wallSecretBlock_410760",
+    "nox_xxx_wallSecretGetFirstWall_410780",
+    "nox_xxx_wallSecretNext_410790",
+    "sub_4107A0",
+    "nox_xxx_tileAlloc_410F60_init",
+    "nox_xxx_tileFree_410FC0_free",
+    "nox_xxx_tileNFromPoint_411160",
+    "nox_xxx_mapTileAllowTeleport_411A90",
+    "nox_xxx_initSinCosTables_414C90",
+    "sub_419A10",
+    "sub_419A30",
+    "nox_float2int16",
+    "nox_double2float",
+    "nox_xxx_wallGet_426A30",
+    "nox_xxx_mapGetWallSize_426A70",
+    "nox_xxx_mapWall_426A80",
+    "nox_xxx_mapCountWallsMB_51DEA0",
+    "sub_51DED0",
+    "nox_xxx_mapSaveMap_51E010",
+    "nox_xxx_map_51E140"
+  ],
+  "additional_retired_bridge": "sub_411350",
+  "focused_roots": 7,
+  "native_additional_contracts": [
+    "invalid map-save paths reject before opening",
+    "secret insertion overwrites integer next-word data"
+  ],
+  "targets": {
+    "default": {
+      "roots": 294,
+      "manifest_hashes_enforced": 347,
+      "skips": [],
+      "evidence": "build/port-world-grid/native-default-final"
+    },
+    "server": {
+      "roots": 293,
+      "manifest_hashes_enforced": 347,
+      "skips": [],
+      "evidence": "build/port-world-grid/native-server"
+    },
+    "highres": {
+      "roots": 294,
+      "manifest_hashes_enforced": 347,
+      "skips": [],
+      "evidence": "build/port-world-grid/native-highres"
+    }
+  },
+  "production": "build/port-world-grid/native-production/production/production.json",
+  "builds": {
+    "opennox": {
+      "exit": 0,
+      "wall_seconds": 66.87306947307661,
+      "sha256": "59d1108ee686efd6126de792f88456c2bae8f7edc686025c622920d308bcf075",
+      "abi_verified": true
+    },
+    "opennox-hd": {
+      "exit": 0,
+      "wall_seconds": 9.636185307987034,
+      "sha256": "3167b55c957eb535579b5154a958dd81a9a16c66a3a01c22f5401e0d49f1506a",
+      "abi_verified": true
+    },
+    "opennox-server": {
+      "exit": 0,
+      "wall_seconds": 70.20375330909155,
+      "sha256": "6619355dbf3939f41670c74248464ddc9bd156cb2384e6384b75ace8ca14c427",
+      "abi_verified": true
+    }
+  },
+  "full_suite": {
+    "exit": 1,
+    "wall_seconds": 58.964596641017124,
+    "failure_entries": 1553,
+    "packages": {
+      "skip": 32,
+      "pass": 15,
+      "fail": 3
+    },
+    "exact_failure_multiset_match": true,
+    "exact_package_result_match": true
+  },
+  "scenarios": {
+    "world-grid-native": {
+      "exit": 0,
+      "binary_sha256": "59d1108ee686efd6126de792f88456c2bae8f7edc686025c622920d308bcf075"
+    },
+    "world-grid-native-save": {
+      "exit": 0,
+      "binary_sha256": "59d1108ee686efd6126de792f88456c2bae8f7edc686025c622920d308bcf075"
+    }
+  },
+  "static": "build/port-world-grid/static-native-final.log",
+  "source_files": 2818,
+  "c_loc": {
+    "files": 38,
+    "lines": 8820,
+    "reference_lines": 0
+  },
+  "physical_c_reduction": 447
+}

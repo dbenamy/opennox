@@ -41,7 +41,7 @@ func generatorRadial(radius float32, origin types.Pointf, out *types.Pointf, des
 		next := float64(angle) + 1.8849558
 		angle = float32(next)
 		p := types.Pointf{X: float32(float64(C.cos(C.double(next)))*float64(radius) + float64(origin.X)), Y: float32(float64(C.sin(C.double(angle)))*float64(radius) + float64(origin.Y))}
-		if core.MapTraceRay(origin, p, flags) && generatorOccupied(p) == 0 && C.nox_xxx_mapTileAllowTeleport_411A90((*C.float2)(unsafe.Pointer(&p))) == 0 {
+		if core.MapTraceRay(origin, p, flags) && generatorOccupied(p) == 0 && !worldTileWater(p) {
 			*out = p
 			return 1
 		}
@@ -65,7 +65,7 @@ func generatorPlace(u *server.Object, out *types.Pointf, player, descriptor *ser
 		if descriptor.ObjFlags&0x4000 != 0 {
 			flags = 5
 		}
-		if generatorOccupied(p) == 0 && core.MapTraceRay(u.PosVec, p, flags) && C.nox_xxx_mapTileAllowTeleport_411A90((*C.float2)(unsafe.Pointer(&p))) == 0 {
+		if generatorOccupied(p) == 0 && core.MapTraceRay(u.PosVec, p, flags) && !worldTileWater(p) {
 			*out = p
 			d := types.Pointf{X: player.PosVec.X - p.X, Y: player.PosVec.Y - p.Y}
 			direction := server.Dir16(Nox_xxx_math_509ED0(d))

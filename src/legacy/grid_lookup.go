@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "GAME1.h"
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
 */
 import "C"
 
@@ -21,7 +20,7 @@ func tileAtPoint(p types.Pointf) int32 {
 		return -1
 	}
 	u, v := floatToInt32(float32(x))%46, floatToInt32(float32(y))%46
-	rows := (*[128]*[128]C.obj_5D4594_2650668_t)(unsafe.Pointer(C.ptr_5D4594_2650668))
+	rows := (*[128]*[128]C.obj_5D4594_2650668_t)(unsafe.Pointer(worldTileGrid))
 	var fallback int32
 	var head unsafe.Pointer
 	var local [2]int32

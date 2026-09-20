@@ -88,7 +88,7 @@ func Nox_xxx_monstersAllBelongToHost_4DB6A0() {
 	C.nox_xxx_monstersAllBelongToHost_4DB6A0()
 }
 func Nox_xxx_mapSaveMap_51E010(a1 string, a2 int) bool {
-	return C.nox_xxx_mapSaveMap_51E010(internCStr(a1), C.int(a2)) != 0
+	return worldMapSaveService(a1, a2)
 }
 
 func Sub_41A590(cf *cryptfile.CryptFile, u *server.Object, pinfo *server.PlayerInfo) error {

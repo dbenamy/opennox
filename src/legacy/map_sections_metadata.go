@@ -140,7 +140,7 @@ func mapSectionMetadata(kind int, region *[8]uint32) uint32 {
 					}
 				}
 				if !generation {
-					C.nox_xxx_wallSecretBlock_410760((*C.uint32_t)(w.Data))
+					worldSecretInsert(w.Data)
 				}
 			}
 		} else if data != nil {

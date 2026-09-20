@@ -3,8 +3,6 @@ package legacy
 /*
 #include "GAME1.h"
 #include "GAME3_3.h"
-extern obj_5D4594_2650668_t** ptr_5D4594_2650668;
-extern const int ptr_5D4594_2650668_cap;
 */
 import "C"
 import (
@@ -58,8 +56,8 @@ func sessionClearCrowns() {
 	}
 }
 func sessionClearTiles() {
-	count := int(C.ptr_5D4594_2650668_cap)
-	grid := unsafe.Slice((*unsafe.Pointer)(unsafe.Pointer(C.ptr_5D4594_2650668)), count)
+	count := int(worldTileGridCapacity)
+	grid := unsafe.Slice((*unsafe.Pointer)(unsafe.Pointer(worldTileGrid)), count)
 	for y := 0; y < count; y++ {
 		for x := 0; x < count; x++ {
 			p := unsafe.Add(grid[x], 44*y)

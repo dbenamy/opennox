@@ -50,7 +50,7 @@ func PortTestPrefabCacheNode(kind int) unsafe.Pointer {
 func PortTestPrefabReleasePayload(p unsafe.Pointer) { C.free(p) }
 
 func PortTestPrefabRawAllocation(size int) unsafe.Pointer { return mapRoomCalloc(1, uintptr(size)) }
-func PortTestPrefabClearSecrets()                         { C.sub_410730() }
+func PortTestPrefabClearSecrets()                         { worldSecretClear() }
 func PortTestPrefabSecretList() (*uint32, func()) {
 	p := paintGlobals()["secretWalls"]
 	old := *p

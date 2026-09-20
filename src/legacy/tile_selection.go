@@ -3,7 +3,6 @@ package legacy
 /*
 #include "GAME4_1.h"
 #include "noxstring.h"
-extern nox_tileDef_t nox_tile_defs_arr[176];
 extern uint32_t dword_5d4594_3835348;
 */
 import "C"
@@ -17,7 +16,7 @@ import (
 )
 
 func tileDefinitionsAll() *[176]server.TileDef {
-	return (*[176]server.TileDef)(unsafe.Pointer(&C.nox_tile_defs_arr[0]))
+	return (*[176]server.TileDef)(unsafe.Pointer(&worldTileDefinitions[0]))
 }
 
 func selectTileName(name *C.char) bool {

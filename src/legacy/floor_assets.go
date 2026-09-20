@@ -3,7 +3,6 @@ package legacy
 /*
 #include <stdlib.h>
 #include "defs.h"
-extern uint32_t nox_tile_def_cnt;
 extern uint32_t dword_5d4594_251572;
 */
 import "C"
@@ -38,10 +37,10 @@ func floorAssetFacade(tile *server.TileDef) bool {
 	}
 }
 func floorAssetDefinition(f *binfile.MemFile, scratch []byte) int {
-	if uint32(C.nox_tile_def_cnt) >= 176 {
+	if uint32(worldTileDefinitionCount) >= 176 {
 		return 0
 	}
-	tile := &tileDefinitionsAll()[uint32(C.nox_tile_def_cnt)]
+	tile := &tileDefinitionsAll()[uint32(worldTileDefinitionCount)]
 	f.Skip(4)
 	name := floorAssetName(f)
 	clear(tile.NameBuf[:31])
@@ -77,7 +76,7 @@ func floorAssetDefinition(f *binfile.MemFile, scratch []byte) int {
 			scratch[n] = 0
 		}
 	}
-	C.nox_tile_def_cnt++
+	worldTileDefinitionCount++
 	return 1
 }
 func edgeAssetDefinition(f *binfile.MemFile, scratch []byte) int {
@@ -179,7 +178,7 @@ func floorAssetBind(f *binfile.MemFile, scratch []byte) int {
 	f.Skip(4)
 	name := floorAssetName(f)
 	index := -1
-	for i := 0; i < int(C.nox_tile_def_cnt); i++ {
+	for i := 0; i < int(worldTileDefinitionCount); i++ {
 		if tileDefinitionsAll()[i].Name() == name {
 			index = i
 			break
@@ -240,7 +239,7 @@ func edgeAssetBind(f *binfile.MemFile, scratch []byte) int {
 	return 0
 }
 func floorAssetFree() {
-	for i := 0; i < int(C.nox_tile_def_cnt); i++ {
+	for i := 0; i < int(worldTileDefinitionCount); i++ {
 		p := &tileDefinitionsAll()[i].Data32
 		if *p != nil {
 			C.free(*p)
