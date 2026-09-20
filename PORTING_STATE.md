@@ -47,6 +47,20 @@ frozen and the combined dispatch scope is not qualified; production is unchanged
 See GAME_MESSAGES.md and game-messages-initial-fixtures.json. Next: real server
 action contracts and the larger client dispatcher families.
 
+Partial fixture checkpoint **33630cba** is pushed. The working extension now
+passes ten message roots (2,522 cases) plus inherited waypoint roots, including
+180 waypoint, 84 missing-target and 48 drop/use contracts. All guard assertions
+pass. Repeated and separate-process captures match; static checks pass. All jobs
+are joined. See game-messages-action-fixtures.json. Runtime goldens are not yet
+frozen, and the whole dispatch scope is still incomplete. Production is unchanged.
+
+A compiler-only heap trial (1536 MiB, test runtime still 768 MiB) completed the
+root-only rebuild/repeat in 39 seconds. Keep this setting for single-job focused
+builds; it does not establish a controlled performance comparison. Fifteen
+verified superseded test-cache archives were removed, recovering 1,131,099,228
+bytes. Cleanup scripts are consumed; qualified binaries/evidence/assets remain.
+Next: equipment and the remaining positive server actions, then client families.
+
 ## Previous — client drawable state Go conversion qualified
 
 C baseline **8266e740** and native conversion **df2e1155** are pushed. Fifteen live

@@ -107,10 +107,15 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/memmap/nox/blobdata"
 	"github.com/opennox/opennox/v1/server"
+	"math"
 	"unsafe"
 )
 
 type PortTestPlayerControlsSpec struct {
+	GameMessageCheckCalls bool
+	GameMessageCallKind   uint32
+	GameMessage           []byte // Optional original game-message dispatch over this real owner.
+	GameMessageLength     int
 	UnitRead              *PortTestUnitReadSpec
 	UnitReward            *PortTestUnitRewardSpec
 	UnitUpdate            *PortTestUnitUpdateSpec
@@ -327,7 +332,19 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 	if sp.NullRecord {
 		record = nil
 	}
-	if a.Op == 1466 {
+	if len(sp.GameMessage) != 0 {
+		data := bytes.Clone(sp.GameMessage)
+		before := bytes.Clone(data)
+		u := p.temporaryRef(spec.Actor)
+		pl := u.UpdateDataPlayer().Player
+		got := Nox_xxx_netOnPacketRecvServ_51BAD0_net_sdecode_switch(pl.PlayerIndex(), data, pl, u, u.UpdateData)
+		if got != sp.GameMessageLength || !bytes.Equal(data, before) {
+			panic(fmt.Sprintf("game-message length/input: %d want %d", got, sp.GameMessageLength))
+		}
+		// The direct comparison operation is void. Validate dispatch length above,
+		// then compare its complete gameplay state with that qualified operation.
+		st.result = 0
+	} else if a.Op == 1466 {
 		st.transitions = append(st.transitions, p.unitReadContract()...)
 		st.result = 0
 	} else if a.Op == 1465 {
@@ -363,6 +380,20 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 		st.result = uint64(C.controlsCall(46, asObjectC(u), nil, 0, 0, record, nil))
 	} else {
 		st.result = controlsInvoke(a.Op-1400, p.temporaryRef(spec.Actor), p.temporaryRef(sp.Target), sp.X, sp.Y, record, st.name)
+	}
+
+	if sp.GameMessageCheckCalls {
+		calls := portTestInventoryDropCalls()
+		if sp.GameMessageCallKind == 0 {
+			if len(calls) != 0 {
+				panic("disabled game action invoked inventory callback")
+			}
+		} else {
+			actor, target := p.temporaryRef(spec.Actor), p.temporaryRef(sp.Target)
+			if len(calls) != 6 || calls[0] != sp.GameMessageCallKind || calls[1] != uint32(uintptr(actor.CObj())) || calls[2] != uint32(uintptr(target.CObj())) {
+				panic(fmt.Sprintf("game action inventory callback: %v kind %d", calls, sp.GameMessageCallKind))
+			}
+		}
 	}
 
 	if a.Op == 1444 {
@@ -457,6 +488,13 @@ func (p *portTestShopPools) controlsAdopt(u *server.Object) {
 // covers only ABIs still used by production C. Expected captures are unchanged.
 func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe.Pointer) uint64 {
 	switch op {
+	case 68:
+		pos := types.Pointf{X: math.Float32frombits(uint32(x)), Y: math.Float32frombits(uint32(y))}
+		inventoryTargetDrop(u, t, &pos)
+		return 0
+	case 69:
+		effectsUse(u, t)
+		return 0
 	case 57:
 		// Run the native console handler inside the existing complete player,
 		// protection, game-data and equipment owner; x is the independent expected level.

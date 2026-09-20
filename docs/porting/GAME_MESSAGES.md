@@ -87,3 +87,55 @@ scope is not qualified and production remains identical to `0d5a03b2`.
 Next: reuse the full player-controls owner for actual server actions, then cover
 the client dispatch families and nested trade/game variants. The server-storage
 draft is consumed and must not overwrite reviewed source. C remains 8,820 lines.
+
+Partial fixture checkpoint `33630cba` is pushed. The next installed contract routes
+waypoint messages through the existing complete player-controls owner. It compares
+180 cases against the qualified coordinate operation: all three slots, absent or
+existing waypoint objects, six full-width state values, and five coordinate pairs
+including uint16 bounds. Dispatch return length and unchanged input are checked
+before comparing normalized gameplay state; no gameplay field is excluded.
+The inherited waypoint roots run alongside it. First job 70551 is in progress.
+
+Owner audit to finish with client conversion: the fade-objects setting is defined
+in cdecode but also used by Go drawing, config and the advanced-video checkbox's
+pointer getter. Move that owner and preserve all three access paths. Blue/Violet
+spark caches have Go initializer/effect consumers and C dispatcher reads; their
+remaining GAME2_3 references are declarations. The notice-state word 1200768 is
+read/written by the client dispatcher. Move these actual owners, update fixtures,
+and audit mapped metadata rather than leaving obsolete C definitions behind.
+
+Waypoint dispatch passes all 180 paired-state cases and inherited waypoint hashes
+(job 70551 joined). The optional fixture route checks the original C consumed
+length and read-only input, then compares every existing normalized owner field
+against the separately qualified direct operation. Eighty-four missing-target
+server-action cases are now installed and running with all message roots and
+inherited waypoints (53145); positive inventory/spell/trade actions remain.
+
+Build-speed trial: the compiler exceeded its inherited 768 MiB soft heap limit
+while compiling the large root test package. This single-job focused run gives
+build tools 1536 MiB but launches the actual 386 test through
+`-exec='env GOMEMLIMIT=768MiB'`. GOMAXPROCS stays 2. The VM had 5.2 GiB available
+before the trial; test-runtime limits and test scope are unchanged. Evaluate
+elapsed time and peak memory before adopting this for other runs.
+
+The nine message roots plus inherited waypoints pass (53145 joined, 33.159 seconds
+including compilation); all preceding seven captures remain identical. Working
+follow-up adds 48 positive/disabled drop and item-use cases against qualified
+operations, with independent callback count, kind, actor and item identities.
+These prevent an unexercised positive path from matching another no-op. Job 58089
+is running; source must remain unchanged until joined.
+
+## Action fixture checkpoint
+
+Ten message roots pass 2,522 cases, plus the inherited waypoint root. Final guard
+assertions pass for every owner; repeated and separate-process outputs match all
+ten captures. Static checks pass. All jobs are joined. See
+[game-messages-action-fixtures.json](game-messages-action-fixtures.json).
+This is still a partial original-C baseline, not a conversion milestone.
+
+The repeat with a root-only rebuild took 39.076 seconds. Continue the compiler-only
+1536 MiB allowance for single-job focused checks, preserving 768 MiB for the 386
+test process. The earlier legacy-plus-root rebuild took 124.990 seconds, so these
+numbers are not a controlled speed ratio. Fifteen verified superseded test-cache
+archives were removed (1,131,099,228 bytes). Audit/apply scripts are consumed;
+qualified binaries, captures, original assets/archive and saves remain.
