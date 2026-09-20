@@ -1,0 +1,175 @@
+{
+  "sub_459DB0": [
+    "src/legacy/client_drawable_state_porttest.go:43:\t\treturn uintptr(C.sub_459DB0(p))",
+    "src/legacy/client_draw.go:120:\treturn int(C.sub_459DB0((*nox_drawable)(dr.C())))",
+    "src/legacy/GAME2.h:66:int sub_459DB0(nox_drawable* dr);",
+    "src/legacy/GAME2.c:151:int sub_459DB0(nox_drawable* dr) {"
+  ],
+  "nox_xxx_cliNextMinimapObj_459EC0": [
+    "src/legacy/client_drawable_state_porttest.go:53:\t\treturn uintptr(C.nox_xxx_cliNextMinimapObj_459EC0(C.int(uintptr(dr.C()))))",
+    "src/legacy/GAME2.c:157:int nox_xxx_cliNextMinimapObj_459EC0(int a1) {",
+    "src/legacy/GAME2.c:160:\t\tprintf(\"nox_xxx_cliNextMinimapObj_459EC0: infinite loop!\\n\");",
+    "src/legacy/GAME2.h:70:int nox_xxx_cliNextMinimapObj_459EC0(int a1);"
+  ],
+  "sub_45A010": [
+    "src/client/drawable.go:766:func (s *Drawable) Field104() *Drawable { // sub_45A010",
+    "src/legacy/client_drawable_state_porttest.go:51:\t\treturn uintptr(unsafe.Pointer(C.sub_45A010(p)))",
+    "src/legacy/GAME2.h:72:nox_drawable* sub_45A010(nox_drawable* dr);",
+    "src/legacy/GAME2_3.c:334:\t\t\tresult = sub_45A010(k);",
+    "src/legacy/GAME2.c:168:nox_drawable* sub_45A010(nox_drawable* dr) { return dr->field_104; }"
+  ],
+  "nox_drawable_next_45A070": [
+    "src/legacy/GAME2.c:171:nox_drawable* nox_drawable_next_45A070(nox_drawable* a1) {",
+    "src/legacy/GAME3.c:200:\t\tv2 = nox_drawable_next_45A070(v2);",
+    "src/legacy/client_drawable_state_porttest.go:49:\t\treturn uintptr(unsafe.Pointer(C.nox_drawable_next_45A070(p)))",
+    "src/legacy/GAME4_2.c:117:\t\tv0 = (int*)nox_drawable_next_45A070((int)v0);",
+    "src/legacy/GAME2.h:74:nox_drawable* nox_drawable_next_45A070(nox_drawable* a1);"
+  ],
+  "nox_xxx_spriteSetActiveMB_45A990_drawable": [
+    "src/legacy/client__network__cdecode.c:2213:\t\t\t\tnox_xxx_spriteSetActiveMB_45A990_drawable(v5);",
+    "src/legacy/client_drawable_state_porttest.go:45:\t\treturn uintptr(C.nox_xxx_spriteSetActiveMB_45A990_drawable(C.int(uintptr(dr.C()))))",
+    "src/legacy/GAME2.c:183:int nox_xxx_spriteSetActiveMB_45A990_drawable(int a1) {",
+    "src/legacy/GAME2.h:81:int nox_xxx_spriteSetActiveMB_45A990_drawable(int a1);"
+  ],
+  "nox_xxx_spriteSetFrameMB_45AB80": [
+    "src/legacy/client__network__cdecode.c:485:\t\t\t\tnox_xxx_spriteSetFrameMB_45AB80(v5, *(unsigned char*)(data + 10));",
+    "src/legacy/client__network__cdecode.c:649:\t\tnox_xxx_spriteSetFrameMB_45AB80(v5, *(unsigned char*)(data + 3));",
+    "src/legacy/client__network__cdecode.c:1497:\t\tnox_xxx_spriteSetFrameMB_45AB80(v5, *(uint32_t*)(data + 3));",
+    "src/legacy/client__network__cdecode.c:2216:\t\t\t\tnox_xxx_spriteSetFrameMB_45AB80(v22, 8 * *(unsigned char*)(data + 3) / 50);",
+    "src/legacy/client__network__cdecode.c:2239:\t\t\t\tnox_xxx_spriteSetFrameMB_45AB80(v26, *(unsigned char*)(data + 3));",
+    "src/legacy/client__network__cdecode.c:2284:\t\t\t\tnox_xxx_spriteSetFrameMB_45AB80((int)v27, *(unsigned char*)(data + 10));",
+    "src/legacy/client_drawable_state_porttest.go:47:\t\treturn uintptr(C.nox_xxx_spriteSetFrameMB_45AB80(C.int(uintptr(dr.C())), C.int(value)))",
+    "src/legacy/GAME2.h:82:int nox_xxx_spriteSetFrameMB_45AB80(int a1, int a2);",
+    "src/legacy/GAME2_3.c:418:\t\t\tnox_xxx_spriteSetFrameMB_45AB80((int)v16, v25);",
+    "src/legacy/GAME2_3.c:530:\t\t\tnox_xxx_spriteSetFrameMB_45AB80(v19, *(unsigned char*)++v14);",
+    "src/legacy/GAME2.c:267:int nox_xxx_spriteSetFrameMB_45AB80(int a1, int a2) {"
+  ],
+  "nox_xxx_netCliProcUpdateStream_494A60": [
+    "src/legacy/client__network__cdecode.c:2037:\t\tv15 = (unsigned char*)(nox_xxx_netCliProcUpdateStream_494A60((unsigned char*)(data + 1), a1, v384) + data +",
+    "src/legacy/client_drawable_state_porttest.go:30:\t\tret = int32(C.nox_xxx_netCliProcUpdateStream_494A60((*C.uchar)(unsafe.Pointer(&packet[0])), 31, (*C.uint32_t)(unsafe.Pointer(&coords[0]))))",
+    "src/legacy/network_alias_callers_porttest.go:132:\t\t\ts.ReturnRaw = uint32(C.nox_xxx_netCliProcUpdateStream_494A60(",
+    "src/legacy/GAME2_3.c:341:int nox_xxx_netCliProcUpdateStream_494A60(unsigned char* a1, int a2, uint32_t* a3) {",
+    "src/legacy/GAME2_3.h:23:int nox_xxx_netCliProcUpdateStream_494A60(unsigned char* a1, int a2, uint32_t* a3);"
+  ],
+  "nox_xxx_netCliUpdateStream2_494C30": [
+    "src/legacy/client__network__cdecode.c:2043:\t\t\tLODWORD(v5) = nox_xxx_netCliUpdateStream2_494C30(v15, a1, v384);",
+    "src/legacy/client_drawable_state_porttest.go:32:\t\tret = int32(uintptr(unsafe.Pointer(C.nox_xxx_netCliUpdateStream2_494C30((*C.uchar)(unsafe.Pointer(&packet[0])), 31, (*C.int)(unsafe.Pointer(&coords[0]))))))",
+    "src/legacy/GAME2_3.h:24:unsigned char* nox_xxx_netCliUpdateStream2_494C30(unsigned char* a1, int a2, int* a3);",
+    "src/legacy/GAME2_3.c:428:unsigned char* nox_xxx_netCliUpdateStream2_494C30(unsigned char* a1, int a2, int* a3) {",
+    "src/legacy/network_alias_callers_porttest.go:146:\t\t\tret := C.nox_xxx_netCliUpdateStream2_494C30("
+  ],
+  "sub_494F00": [
+    "src/game.go:538:\t\treturn errors.New(\"sub_494F00 failed\")",
+    "src/legacy/GAME2_3.h:25:int sub_494F00();",
+    "src/legacy/game.go:380:\treturn int(C.sub_494F00())",
+    "src/legacy/GAME2_3.c:555:int sub_494F00() {"
+  ],
+  "nox_xxx_sprite_4CA540": [
+    "src/legacy/client__network__cdecode.c:2257:\t\t\t*(uint32_t*)(v5 + 460) = nox_xxx_sprite_4CA540;",
+    "src/legacy/client_drawable_state_porttest.go:59:\t\treturn int(C.nox_xxx_sprite_4CA540((*C.uint32_t)(vp.C()), C.int(uintptr(dr.C()))))",
+    "src/legacy/GAME3_1.c:166:int nox_xxx_sprite_4CA540(uint32_t* a1, int a2) {",
+    "src/legacy/GAME3_1.h:58:int nox_xxx_sprite_4CA540(uint32_t* a1, int a2);",
+    "src/legacy/client_presentation_effects.go:140:\t\tdr.Field_115 = C.nox_xxx_sprite_4CA540"
+  ],
+  "sub_4CA650": [
+    "src/legacy/client_drawable_state_porttest.go:61:\treturn int(C.sub_4CA650(C.int(uintptr(vp.C())), C.int(uintptr(dr.C()))))",
+    "src/legacy/GAME3_1.c:210:int sub_4CA650(int a1, int a2) {",
+    "src/legacy/GAME3_1.h:59:int sub_4CA650(int a1, int a2);",
+    "src/legacy/GAME_data_init.go:102:\t\tPtr_sub_4CA650:                            unsafe.Pointer(C.sub_4CA650),"
+  ],
+  "nox_xxx_netHandleSummonPacket_4B7C40": [
+    "src/legacy/client__network__cdecode.c:1588:\t\t\tnox_xxx_netHandleSummonPacket_4B7C40(*(uint16_t*)(data + 5), (unsigned short*)(data + 1),",
+    "src/legacy/GAME3.h:37:uint32_t* nox_xxx_netHandleSummonPacket_4B7C40(short a1, unsigned short* a2, unsigned short a3, unsigned char a4,",
+    "src/legacy/GAME3.c:151:uint32_t* nox_xxx_netHandleSummonPacket_4B7C40(short a1, unsigned short* a2, unsigned short a3, unsigned char a4,"
+  ],
+  "sub_4B7EE0": [
+    "src/legacy/client__network__cdecode.c:1595:\t\t\tsub_4B7EE0(*(uint16_t*)(data + 1));",
+    "src/legacy/GAME3.h:39:void sub_4B7EE0(short a1);",
+    "src/legacy/GAME3.c:186:void sub_4B7EE0(short a1) {"
+  ],
+  "nox_xxx_spriteShieldLoad_4B7F90": [
+    "src/legacy/GAME3.h:40:int nox_xxx_spriteShieldLoad_4B7F90();",
+    "src/legacy/GAME3.c:212:int nox_xxx_spriteShieldLoad_4B7F90() {",
+    "src/legacy/GAME3.c:241:\t\tnox_xxx_spriteShieldLoad_4B7F90();"
+  ],
+  "nox_xxx_fxShield_4B8090": [
+    "src/legacy/GAME3.h:41:uint32_t* nox_xxx_fxShield_4B8090(unsigned int a1, int a2);",
+    "src/legacy/GAME3.c:232:uint32_t* nox_xxx_fxShield_4B8090(unsigned int a1, int a2) {",
+    "src/legacy/client__network__cdecode.c:1600:\t\t\tnox_xxx_fxShield_4B8090(*(unsigned short*)(data + 1), *(unsigned char*)(data + 3));"
+  ],
+  "nox_xxx_spriteScanForShield_4B81E0": [
+    "src/legacy/GAME3.h:42:void nox_xxx_spriteScanForShield_4B81E0(int a1, int a2);",
+    "src/legacy/GAME3.c:286:\t\tnox_xxx_forEachSprite_49AB00(&v7, nox_xxx_spriteScanForShield_4B81E0, (int)&a1);",
+    "src/legacy/GAME3.c:302:void nox_xxx_spriteScanForShield_4B81E0(int a1, int a2) {"
+  ],
+  "reachability_notes": {
+    "nox_xxx_cliNextMinimapObj_459EC0": "C symbol has only its definition, diagnostic string and header declaration. Address/name searches also identify an existing separate Go Drawable method, called directly by Go minimap traversal; no registration calls the C duplicate. Retire the C duplicate without translation or a test-only C caller.",
+    "private_owners": [
+      "dword_5d4594_1313740",
+      "dword_5d4594_1313788"
+    ],
+    "shared_c_owners": [
+      "dword_5d4594_1200776",
+      "dword_5d4594_1200796"
+    ],
+    "additional_affected_fixture": "client_object_drawing_porttest.go saves/captures the summon cache owner; include ClientObjectDrawing roots when moving it."
+  },
+  "dword_5d4594_1313740": [
+    "src/common/memmap/nox/noxmap.go:938:\t{0x5D4594, 1313740, 4, \"dword_5d4594_1313740\"},                 // 0x715160",
+    "src/legacy/client_drawable_effects_porttest.go:8:extern uint32_t dword_5d4594_1313740;",
+    "src/legacy/client_drawable_effects_porttest.go:48:\twords := []*uint32{(*uint32)(unsafe.Pointer(&C.dword_5d4594_1313740)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1313788)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1200776)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1200796))}",
+    "src/legacy/vardefs.go:245:extern uint32_t dword_5d4594_1313740;",
+    "src/legacy/GAME3.c:52:extern uint32_t dword_5d4594_1313740;",
+    "src/legacy/GAME3.c:190:\tif (!dword_5d4594_1313740) {",
+    "src/legacy/GAME3.c:191:\t\tdword_5d4594_1313740 = nox_xxx_getTTByNameSpriteMB_44CFC0(\"BlueSpark\");",
+    "src/legacy/GAME3.c:205:\tnox_xxx_makePointFxCli_499610(*(int*)&dword_5d4594_1313740, 50, 1000, 30, *(uint32_t*)(v2 + 12),",
+    "src/legacy/vardefs.c:250:uint32_t dword_5d4594_1313740 = 0;",
+    "src/legacy/client_object_drawing_porttest.go:23:extern uint32_t dword_5d4594_1313740;",
+    "src/legacy/client_object_drawing_porttest.go:103:\tblack, blue, text, summon := C.nox_color_black_2650656, C.nox_color_blue_2650684, C.dword_8531A0_2572, C.dword_5d4594_1313740",
+    "src/legacy/client_object_drawing_porttest.go:105:\t\tC.nox_color_black_2650656, C.nox_color_blue_2650684, C.dword_8531A0_2572, C.dword_5d4594_1313740 = black, blue, text, summon",
+    "src/legacy/client_object_drawing_porttest.go:120:\tC.dword_5d4594_1313740 = 0",
+    "src/legacy/client_object_drawing_porttest.go:135:\treturn []uint32{uint32(C.nox_color_black_2650656), uint32(C.nox_color_blue_2650684), uint32(C.dword_8531A0_2572), uint32(C.dword_5d4594_1313740)}",
+    "src/legacy/client_object_animation.go:5:extern uint32_t dword_5d4594_1313740;",
+    "src/legacy/client_object_animation.go:131:\tif C.dword_5d4594_1313740 == 0 {",
+    "src/legacy/client_object_animation.go:132:\t\tC.dword_5d4594_1313740 = C.uint32_t(effectType(\"BlueSpark\"))",
+    "src/legacy/client_object_animation.go:143:\t\teffectCreatePointSparks(int(C.dword_5d4594_1313740), 50, 1000, 30, pos.X, pos.Y)"
+  ],
+  "dword_5d4594_1313788": [
+    "src/common/memmap/nox/noxmap.go:939:\t{0x5D4594, 1313788, 4, \"dword_5d4594_1313788\"},                 // 0x715190",
+    "src/legacy/client_drawable_effects_porttest.go:9:extern uint32_t dword_5d4594_1313788;",
+    "src/legacy/client_drawable_effects_porttest.go:48:\twords := []*uint32{(*uint32)(unsafe.Pointer(&C.dword_5d4594_1313740)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1313788)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1200776)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1200796))}",
+    "src/legacy/vardefs.go:377:extern uint32_t dword_5d4594_1313788;",
+    "src/legacy/GAME3.c:46:extern uint32_t dword_5d4594_1313788;",
+    "src/legacy/GAME3.c:285:\t\tdword_5d4594_1313788 = 0;",
+    "src/legacy/GAME3.c:287:\t\tresult = *(uint32_t**)&dword_5d4594_1313788;",
+    "src/legacy/GAME3.c:288:\t\tif (dword_5d4594_1313788 != 1) {",
+    "src/legacy/GAME3.c:308:\t\t\tdword_5d4594_1313788 = 1;",
+    "src/legacy/vardefs.c:380:uint32_t dword_5d4594_1313788 = 0;"
+  ],
+  "dword_5d4594_1200776": [
+    "src/common/memmap/nox/noxmap.go:810:\t{0x5D4594, 1200776, 4, \"dword_5d4594_1200776\"},                 // 0x6F981C",
+    "src/legacy/client__network__cdecode.c:50:extern uint32_t dword_5d4594_1200776;",
+    "src/legacy/client__network__cdecode.c:1579:\t\t\tnox_xxx_makeLightningParticles_4999D0(*(int*)&dword_5d4594_1200776, &v379, &v377);",
+    "src/legacy/client__network__cdecode.c:1582:\t\t\t\t\t\t\t\t\t\t  *(int*)&dword_5d4594_1200776);",
+    "src/legacy/client__network__cdecode.c:1607:\t\tnox_xxx_makePointFxCli_499610(*(int*)&dword_5d4594_1200776, 50, 1000, 30, *(short*)(data + 1),",
+    "src/legacy/client_drawable_effects_porttest.go:10:extern uint32_t dword_5d4594_1200776;",
+    "src/legacy/client_drawable_effects_porttest.go:48:\twords := []*uint32{(*uint32)(unsafe.Pointer(&C.dword_5d4594_1313740)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1313788)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1200776)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1200796))}",
+    "src/legacy/vardefs.go:329:extern uint32_t dword_5d4594_1200776;",
+    "src/legacy/vardefs.c:333:uint32_t dword_5d4594_1200776 = 0;",
+    "src/legacy/GAME2_3.c:42:extern uint32_t dword_5d4594_1200776;",
+    "src/legacy/GAME2_3.c:565:\tdword_5d4594_1200776 = result;"
+  ],
+  "dword_5d4594_1200796": [
+    "src/common/memmap/nox/noxmap.go:811:\t{0x5D4594, 1200796, 4, \"dword_5d4594_1200796\"},                 // 0x6F9830",
+    "src/legacy/client__network__cdecode.c:51:extern uint32_t dword_5d4594_1200796;",
+    "src/legacy/client__network__cdecode.c:1626:\t\t\tnox_xxx_makePointFxCli_499610(*(int*)&dword_5d4594_1200796, 25, 500, 25, *(short*)(data + 1),",
+    "src/legacy/client__network__cdecode.c:1838:\t\t\t\tLODWORD(v5) = nox_xxx_spriteLoadAdd_45A360_drawable(*(int*)&dword_5d4594_1200796, v230, v231);",
+    "src/legacy/client_drawable_effects_porttest.go:11:extern uint32_t dword_5d4594_1200796;",
+    "src/legacy/client_drawable_effects_porttest.go:48:\twords := []*uint32{(*uint32)(unsafe.Pointer(&C.dword_5d4594_1313740)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1313788)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1200776)), (*uint32)(unsafe.Pointer(&C.dword_5d4594_1200796))}",
+    "src/legacy/vardefs.go:275:extern uint32_t dword_5d4594_1200796;",
+    "src/legacy/vardefs.c:280:uint32_t dword_5d4594_1200796 = 0;",
+    "src/legacy/GAME2_3.c:43:extern uint32_t dword_5d4594_1200796;",
+    "src/legacy/GAME2_3.c:588:\t\t\t\t\t\t\t\tdword_5d4594_1200796 = nox_xxx_getTTByNameSpriteMB_44CFC0(\"VioletSpark\");",
+    "src/legacy/GAME2_3.c:589:\t\t\t\t\t\t\t\treturn dword_5d4594_1200796 != 0;"
+  ]
+}

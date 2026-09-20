@@ -1,0 +1,114 @@
+[
+  {
+    "symbol": "sub_459DB0",
+    "file": "src/legacy/GAME2.c",
+    "start": 4939,
+    "end": 5061,
+    "body_lines": 4
+  },
+  {
+    "symbol": "nox_xxx_cliNextMinimapObj_459EC0",
+    "file": "src/legacy/GAME2.c",
+    "start": 5139,
+    "end": 5352,
+    "body_lines": 9
+  },
+  {
+    "symbol": "sub_45A010",
+    "file": "src/legacy/GAME2.c",
+    "start": 5430,
+    "end": 5498,
+    "body_lines": 1
+  },
+  {
+    "symbol": "nox_drawable_next_45A070",
+    "file": "src/legacy/GAME2.c",
+    "start": 5576,
+    "end": 5751,
+    "body_lines": 10
+  },
+  {
+    "symbol": "nox_xxx_spriteSetActiveMB_45A990_drawable",
+    "file": "src/legacy/GAME2.c",
+    "start": 5829,
+    "end": 5968,
+    "body_lines": 7
+  },
+  {
+    "symbol": "nox_xxx_spriteSetFrameMB_45AB80",
+    "file": "src/legacy/GAME2.c",
+    "start": 7945,
+    "end": 8243,
+    "body_lines": 10
+  },
+  {
+    "symbol": "nox_xxx_netCliProcUpdateStream_494A60",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 9544,
+    "end": 11775,
+    "body_lines": 85
+  },
+  {
+    "symbol": "nox_xxx_netCliUpdateStream2_494C30",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 11853,
+    "end": 14789,
+    "body_lines": 125
+  },
+  {
+    "symbol": "sub_494F00",
+    "file": "src/legacy/GAME2_3.c",
+    "start": 14867,
+    "end": 16144,
+    "body_lines": 45
+  },
+  {
+    "symbol": "nox_xxx_sprite_4CA540",
+    "file": "src/legacy/GAME3_1.c",
+    "start": 5099,
+    "end": 6154,
+    "body_lines": 42
+  },
+  {
+    "symbol": "sub_4CA650",
+    "file": "src/legacy/GAME3_1.c",
+    "start": 6232,
+    "end": 7440,
+    "body_lines": 44
+  },
+  {
+    "symbol": "nox_xxx_netHandleSummonPacket_4B7C40",
+    "file": "src/legacy/GAME3.c",
+    "start": 4178,
+    "end": 5069,
+    "body_lines": 33
+  },
+  {
+    "symbol": "sub_4B7EE0",
+    "file": "src/legacy/GAME3.c",
+    "start": 5147,
+    "end": 5874,
+    "body_lines": 24
+  },
+  {
+    "symbol": "nox_xxx_spriteShieldLoad_4B7F90",
+    "file": "src/legacy/GAME3.c",
+    "start": 5952,
+    "end": 6866,
+    "body_lines": 16
+  },
+  {
+    "symbol": "nox_xxx_fxShield_4B8090",
+    "file": "src/legacy/GAME3.c",
+    "start": 7038,
+    "end": 8816,
+    "body_lines": 66
+  },
+  {
+    "symbol": "nox_xxx_spriteScanForShield_4B81E0",
+    "file": "src/legacy/GAME3.c",
+    "start": 8988,
+    "end": 9309,
+    "body_lines": 11
+  }
+]

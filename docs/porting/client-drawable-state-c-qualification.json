@@ -1,0 +1,101 @@
+{
+  "status": "qualified original-C baseline",
+  "parent": "ad78ea93",
+  "selection": {
+    "definitions": 16,
+    "body_lines": 532,
+    "unused_duplicate": 1
+  },
+  "focused": {
+    "roots": 9,
+    "capture_rows": 18414,
+    "shield_scan_cases": 432,
+    "terminator_cases": 2,
+    "hashes": {
+      "bounds": "fbb13bc9de414585770058fd962f71959b57461c657216e237e9afbacf2fcddc",
+      "creation": "c0ec09e0e7d08f59d7e0d0e833c8ae5bf4432ce89a15d3d79245751fa9e38d44",
+      "motion": "58190061966a66b15cd8fc4eabd62a05885f4c199f89119233c6604b21fb910f",
+      "shields": "21ef9ab037949226b7d734d33d391908f0d7934c68e49808e14fbe03d25e09a3",
+      "state": "6fc328fa72079b952f904b5afa1901bbfdb44027757034c2b38d6d0122fc830e",
+      "streams": "aeede2ef66f63bc96a79e320d4db973c7440abf25c8df72eb2a9426fcb84a154",
+      "summons": "3f62476ae211c3b83079c10265b0785555b336312529fbeb4944207c2e0bfa28",
+      "types": "7844c843adee3ec01b4c248eca24b12b677c2ab35bf3df0484ff6d42891b148b"
+    }
+  },
+  "targets": {
+    "default": {
+      "roots": 88,
+      "captures": 69,
+      "skips": [],
+      "evidence": "build/port-client-drawable/c-default"
+    },
+    "server": {
+      "roots": 88,
+      "captures": 69,
+      "skips": [],
+      "evidence": "build/port-client-drawable/c-server"
+    },
+    "highres": {
+      "roots": 88,
+      "captures": 69,
+      "skips": [],
+      "evidence": "build/port-client-drawable/c-highres"
+    }
+  },
+  "driver_hash_timing": "Eight new captures enforced during all sweeps; inherited tests enforce their own committed literals. Full equal cross-target inventory frozen afterward for native qualification.",
+  "production_identity": {
+    "parent": "ad78ea93",
+    "test_only_changes": [
+      "src/client/drawable_state_porttest.go",
+      "src/client_drawable_creation_porttest_test.go",
+      "src/client_drawable_init_porttest_test.go",
+      "src/client_drawable_motion_porttest_test.go",
+      "src/client_drawable_shield_porttest_test.go",
+      "src/client_drawable_state_porttest_test.go",
+      "src/client_drawable_stream_porttest_test.go",
+      "src/client_drawable_summon_porttest_test.go",
+      "src/legacy/client_drawable_effects_porttest.go",
+      "src/legacy/client_drawable_state_porttest.go"
+    ],
+    "binaries": {
+      "opennox": {
+        "path": "build/port-spell-start/native-production/production/bin/opennox",
+        "sha256": "824e0fecf6390dcb12cfd6ee98d49e74d311b664c2f65b93886581026fef3d7a"
+      },
+      "opennox-hd": {
+        "path": "build/port-spell-start/native-production/production/bin/opennox-hd",
+        "sha256": "6ddfaa715dcd19031f8eb356b5ddb3c56a8570c9668febe5c4d4f1c4533b4a82"
+      },
+      "opennox-server": {
+        "path": "build/port-spell-start/native-production/production/bin/opennox-server",
+        "sha256": "26955c592efde53996983932ab218cc4cebd13beb84c3ecb60319abbf2958228"
+      }
+    },
+    "retained_raw_c": [
+      "sub_459DB0",
+      "nox_xxx_cliNextMinimapObj_459EC0",
+      "sub_45A010",
+      "nox_drawable_next_45A070",
+      "nox_xxx_spriteSetActiveMB_45A990_drawable",
+      "nox_xxx_spriteSetFrameMB_45AB80",
+      "nox_xxx_netCliProcUpdateStream_494A60",
+      "nox_xxx_netCliUpdateStream2_494C30",
+      "sub_494F00",
+      "nox_xxx_sprite_4CA540",
+      "sub_4CA650",
+      "nox_xxx_netHandleSummonPacket_4B7C40",
+      "sub_4B7EE0",
+      "nox_xxx_spriteShieldLoad_4B7F90",
+      "nox_xxx_fxShield_4B8090",
+      "nox_xxx_spriteScanForShield_4B81E0"
+    ],
+    "reused_production": "build/port-spell-start/native-production/production/production.json"
+  },
+  "static": "build/port-client-drawable/static-c.log",
+  "c_loc": {
+    "files": 39,
+    "lines": 9963,
+    "reference_lines": 0
+  },
+  "source_files": 2800
+}

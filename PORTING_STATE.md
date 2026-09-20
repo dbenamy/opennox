@@ -8,7 +8,33 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — spell start Go conversion qualified
+## Current — client drawable state C baseline in progress
+
+Qualified parent **ad78ea93** is committed and pushed. New original-C fixtures
+are in the working tree; no selected production body has changed. Read
+[CLIENT_DRAWABLE_STATE.md](docs/porting/CLIENT_DRAWABLE_STATE.md).
+
+Selection: 16 definitions /532 body lines, including one proven unused minimap
+C duplicate. Nine focused roots pass final and repeat runs; eight captures freeze
+18,414 result rows, supplemented by 432 shield-scan cases, terminators and links.
+All three targets pass 88 affected roots without skips and identical captures.
+Source fingerprints match the final checkout. All test jobs are joined. Static C
+checks pass. Ten source changes are porttest-only; parent production/integration
+are explicitly reused after binary rehash and raw-C symbol audits. See the C
+qualification JSON for exact evidence and capture-freeze timing.
+
+Ignored native drafts and installer are NOT installed or qualified. Review them
+against the committed C baseline before integration. No production source has
+changed. The first shield-scan fixture omitted explicit initialization of an
+allocated key; fixed before freezing. No production correction was needed.
+
+Next: commit/push this C baseline, then install and qualify the Go conversion.
+An obsolete test-cache audit (59495) is running; inspect its plan before applying.
+
+Spell-start scenario asset deduplication is consumed; original assets and all
+scenario results/restoration manifests remain. Current C is unchanged: 9,963.
+
+## Previous — spell start Go conversion qualified
 
 C baseline **2c299a2a** is pushed. Native conversion is fully qualified. Pixie
 creation and charm control are private Go; teleport start retains its registered
