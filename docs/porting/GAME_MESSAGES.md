@@ -225,3 +225,15 @@ Only porttest sources changed since qualified production 0d5a03b2. No runtime
 goldens are frozen and the combined dispatch scope is not yet qualified.
 Remaining C stays 8,820 lines in 38 files. Next families include client health,
 wall, equipment and effect reports, plus outstanding positive server actions.
+
+## Client health reports
+
+Health-change queues and meter reports add 6,596 independent cases, including
+signed health amounts, full-width health/mana maxima, null player owners, ally
+updates, high-bit identifiers, exact player-record writes and actual cooldowns.
+Health-change notifications deliberately queue while disconnected; the other
+selected reports retain their connection gates. This is established C behavior.
+The combined repeat passes 93 root runs (31 roots, three repetitions), 28,726
+message cases and nineteen equal captures across processes. Static checks pass;
+jobs 34761/25150 are joined. See game-messages-client-health-fixtures.json.
+Production is unchanged; remaining C is 8,820 lines /38 files. Next: wall reports.

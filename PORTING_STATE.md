@@ -96,6 +96,13 @@ conversion is installed. Next: client health/wall/equipment/effect reports and
 remaining positive server actions. Original archive/assets are preserved; only
 the asset archive should remain untracked after committing this checkpoint.
 
+Latest health-message checkpoint: **28,726 cases /19 message roots**, plus
+12 inherited roots. Three repetitions pass **93 root runs** and **19 matching
+captures**; static mapped-memory checks pass. All test jobs are joined, including
+34761/25150. See game-messages-client-health-fixtures.json. Production unchanged.
+Next: wall reports. A third superseded-cache audit is in progress (67029); inspect
+its fresh plan before cleanup. No runtime goldens are frozen yet.
+
 ## Previous — client drawable state Go conversion qualified
 
 C baseline **8266e740** and native conversion **df2e1155** are pushed. Fifteen live
