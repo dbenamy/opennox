@@ -83,5 +83,5 @@ func TestGameMessageClientNPCAppearance(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-npc-appearance", rows)
+	gameMessageCapture(t, "game-client-npc-appearance", rows)
 }

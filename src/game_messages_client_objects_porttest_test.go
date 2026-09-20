@@ -104,7 +104,7 @@ func TestGameMessageClientObjects(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-objects", rows)
+	gameMessageCapture(t, "game-client-objects", rows)
 }
 
 func TestGameMessageClientObjectCreation(t *testing.T) {
@@ -209,5 +209,5 @@ func TestGameMessageClientObjectCreation(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-object-creation", rows)
+	gameMessageCapture(t, "game-client-object-creation", rows)
 }

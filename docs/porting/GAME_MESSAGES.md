@@ -350,3 +350,52 @@ review.json is provisional: its literal-label tally does not assign shared effec
 blocks correctly. Exclude the entire shared effect block from the first conversion,
 and audit goto targets, ownership and remaining callers before accepting this split.
 No selection change, baseline freeze or native installation has happened yet.
+
+## Revised conversion boundary: client state and notices
+
+The next conversion will move 42 client-state opcode cases (39 complete switch
+blocks, 576 C lines) and the entire 328-line notice dispatcher: 904 body lines.
+The wider 3,841-line dispatch scope remains the overall audit, but waiting for
+unrelated trade, complex effects and positive server actions is unnecessary.
+This is a reversible batch-boundary decision under the user's standing authority;
+review it later against qualification cost and actual progress. Shared effect
+blocks remain wholly in C for the next batch, including the six tested simple
+creation cases. Server action fixtures remain useful inherited coverage.
+
+The exact source-boundary audit is currently under build/port-game-messages:
+client-state-boundary-review.json /client-state-cases.txt. All selected shared
+labels move together; there are no goto edges into or out of selected blocks.
+All 52 non-notice called gameplay helpers already have Go definitions; notice
+calls also resolve to Go except formatting/string primitives. The routing adapter
+will try the native selected cases and leave the remaining production C dispatcher
+as fallback. No C algorithm will be retained solely for testing.
+
+Move the fade-objects owner with its last C consumer, preserving Go drawing,
+configuration and the advanced-video checkbox pointer. The selected secret-wall
+cases are the last C callers of sub_410550; retire that export and call the private
+Go lookup. The notice C entry has only the selected client case and test adapter;
+remove its C body/header once converted. Other dispatch globals stay with their
+actual remaining C consumers.
+
+The final camera contract passes 192 cases: actual cooldown state, unsigned
+coordinates, full-width local-ID comparison, frame wrap, and camera updates even
+when sprite creation fails. First probe 32727 and accumulated repeat 93391 are
+joined. The repeat passes 162 root runs (54 roots, three repetitions), with 32
+identical separate-process captures totaling 52,894 cases. Reviewed expectations
+are frozen in game-messages-frozen-captures.json and enforced by the Go capture
+helper. No native source is installed yet.
+
+The tracked client-game-state-selection.json preserves exact C groups, source
+hashes, and the accepted conversion boundary. The broad affected test selection
+also includes combat overlays, client meters/inventory/presentation, player state,
+drawables, world grids, interaction, gameplay text and book awards. Default/server/highres pass 265/262/265 selected roots without skips.
+All 32 frozen captures and static mapped-memory checks pass on all three targets.
+Source fingerprints are unchanged across each run.
+
+Original-C client-state/notices qualification is complete. See
+client-game-state-c-qualification.json. All 1,334 tracked production files match
+qualified 0d5a03b2, so its production builds/ABI, exact known full-suite result,
+and headless gameplay/save-load evidence are reused. Fresh production qualification
+is required after native conversion. Fifth audited cache cleanup removed 32
+superseded test archives /2,155,476,020 bytes; scripts are consumed. All baseline
+and cleanup jobs are joined. Next: native conversion; do not stop at this checkpoint.

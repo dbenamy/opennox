@@ -99,5 +99,5 @@ func TestGameMessageClientMagicWalls(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-magic-walls", rows)
+	gameMessageCapture(t, "game-client-magic-walls", rows)
 }

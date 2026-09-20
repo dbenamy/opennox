@@ -79,5 +79,5 @@ func TestGameMessageClientLightIntensity(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-light-intensity", rows)
+	gameMessageCapture(t, "game-client-light-intensity", rows)
 }

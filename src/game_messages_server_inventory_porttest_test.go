@@ -80,5 +80,5 @@ func TestGameMessageServerDropAndUse(t *testing.T) {
 			t.Fatalf("drop/use dispatch differs from qualified direct action: case %d", i)
 		}
 	}
-	interactionCapture(t, "game-server-drop-use", got)
+	gameMessageCapture(t, "game-server-drop-use", got)
 }

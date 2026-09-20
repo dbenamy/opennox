@@ -83,5 +83,5 @@ func TestGameMessageClientSecretWalls(t *testing.T) {
 			restoreFlags()
 		}
 	}
-	interactionCapture(t, "game-client-secret-walls", rows)
+	gameMessageCapture(t, "game-client-secret-walls", rows)
 }

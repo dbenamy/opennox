@@ -75,5 +75,5 @@ func TestGameMessageNoticeDeathFeed(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-notice-death-feed", rows)
+	gameMessageCapture(t, "game-notice-death-feed", rows)
 }

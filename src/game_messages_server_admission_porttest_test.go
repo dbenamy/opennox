@@ -59,5 +59,5 @@ func TestGameMessageServerMissingTargets(t *testing.T) {
 			t.Fatalf("missing-target message changed gameplay state: case %d", i)
 		}
 	}
-	interactionCapture(t, "game-server-missing-targets", got)
+	gameMessageCapture(t, "game-server-missing-targets", got)
 }

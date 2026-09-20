@@ -141,5 +141,5 @@ func TestGameMessageNoticeTeams(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-notice-teams", rows)
+	gameMessageCapture(t, "game-notice-teams", rows)
 }

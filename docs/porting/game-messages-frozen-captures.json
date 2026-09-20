@@ -1,0 +1,167 @@
+{
+  "production_parent": "0d5a03b2",
+  "cases": 52894,
+  "captures": {
+    "game-client-effect-creation": {
+      "rows": 288,
+      "sha256": "b3c8e3b4417cf398ffeb33b636cb6fb711f6bf378ee91c4f1eed0f282a32d5a1",
+      "separate_process_equal": true
+    },
+    "game-client-enchantments": {
+      "rows": 6528,
+      "sha256": "2ee0b33fe5e32a8c92687d748e1c7135adc8e05bd14d14c24f15656f5ea308df",
+      "separate_process_equal": true
+    },
+    "game-client-friends": {
+      "rows": 104,
+      "sha256": "bc7bf35ae59a03ffa60ba09d2d1244b0059bf85bee554b7f4236742632fb72d3",
+      "separate_process_equal": true
+    },
+    "game-client-health-changes": {
+      "rows": 200,
+      "sha256": "e4a8a4815f8e023c89a361271aafa1fea2a57a8776f35a985c6e9e380b3ebc44",
+      "separate_process_equal": true
+    },
+    "game-client-health-meters": {
+      "rows": 6396,
+      "sha256": "b58a7b586d248be5cf651117f09fd1eafc2480947056b032419c8d1c18704013",
+      "separate_process_equal": true
+    },
+    "game-client-inventory-scalars": {
+      "rows": 484,
+      "sha256": "3a0d15522657b3ea687f07c91cc6db0aa34f4cde3f4315f0a9c1fac65bb79344",
+      "separate_process_equal": true
+    },
+    "game-client-item-updates": {
+      "rows": 1440,
+      "sha256": "415b99de1a66c809b18b5052280ef50852299d3a5d145630cc3740e4294dbbf4",
+      "separate_process_equal": true
+    },
+    "game-client-light-intensity": {
+      "rows": 96,
+      "sha256": "2d96d4769dbeb80eba583df584011d89609341a521b1be317553172a4cc05f2d",
+      "separate_process_equal": true
+    },
+    "game-client-magic-walls": {
+      "rows": 480,
+      "sha256": "cb2a35d1554a65375ffa9a23f3f61b019b9410ee3334a5069955d53f03f21514",
+      "separate_process_equal": true
+    },
+    "game-client-npc-appearance": {
+      "rows": 9216,
+      "sha256": "e098533e75567579e072f3cae860c3aab27ca490b0c3ef441e258567e842bb0f",
+      "separate_process_equal": true
+    },
+    "game-client-npc-equipment": {
+      "rows": 480,
+      "sha256": "c6e4be9ee750ea913ddf232494f1e6c24c6498f2d6307c07ef7ff4e5fcce2a04",
+      "separate_process_equal": true
+    },
+    "game-client-object-camera": {
+      "rows": 192,
+      "sha256": "01f99d23f0ba88a2ca32d34758d3cb1356e476c1e2a763c6e5c923a6b9958872",
+      "separate_process_equal": true
+    },
+    "game-client-object-creation": {
+      "rows": 96,
+      "sha256": "3612813f684153f0bf9cd1529ba13f18396face79bb9cadf7177d4ed45a704d0",
+      "separate_process_equal": true
+    },
+    "game-client-object-fields": {
+      "rows": 16544,
+      "sha256": "aa8208f5ad7d6f3544a20f7e66b2edf1c4aca5bcc730ab3a12cac0fd0d4f91ca",
+      "separate_process_equal": true
+    },
+    "game-client-object-lifetime": {
+      "rows": 576,
+      "sha256": "b663112d245ba55189840a8500a6bd0db85e610f89dec46f61f07d26a55f8c3f",
+      "separate_process_equal": true
+    },
+    "game-client-objects": {
+      "rows": 6144,
+      "sha256": "205e0ba58c2589d9f352fd80934260436fe953adb98ab7e9e7232cb4be1aeca6",
+      "separate_process_equal": true
+    },
+    "game-client-player-equipment": {
+      "rows": 320,
+      "sha256": "daa13e35d14478968ba0fa786a3602f072498a4407af43d8ee5983283b1b6965",
+      "separate_process_equal": true
+    },
+    "game-client-player-flags": {
+      "rows": 36,
+      "sha256": "1df1be8a2a646e113912e80657cf165ba48b8431fb0e7a222de92be5ce7108ad",
+      "separate_process_equal": true
+    },
+    "game-client-player-unequip": {
+      "rows": 320,
+      "sha256": "a8a480f1ae637f43c20c108a8e8ac4bac9b8d5414ccff06711e0442bf29ac20b",
+      "separate_process_equal": true
+    },
+    "game-client-secret-walls": {
+      "rows": 192,
+      "sha256": "8b0a14ad28f2c30ad4b228c1ad745c465e96af7ce4f8d0dc672ac6983c63f6a2",
+      "separate_process_equal": true
+    },
+    "game-notice-awards": {
+      "rows": 42,
+      "sha256": "f06c320e539db39d410eed453e30ff51493228f4774609607c3086bd0cb9a718",
+      "separate_process_equal": true
+    },
+    "game-notice-death-feed": {
+      "rows": 27,
+      "sha256": "fea08824ac5e02cc22716d18ebf61660bba7dac92d74f87cbb950bca2211797f",
+      "separate_process_equal": true
+    },
+    "game-notice-spell-dialog": {
+      "rows": 6,
+      "sha256": "0532c23b1468d507b9a0a45aed408289007da36afeb8a069bc83a8a1d20e0e2f",
+      "separate_process_equal": true
+    },
+    "game-notice-teams": {
+      "rows": 96,
+      "sha256": "17960351d3433da6ee18761451662c30dba4d51ed84b217bf42ef84ecb0bcb50",
+      "separate_process_equal": true
+    },
+    "game-notice-text": {
+      "rows": 287,
+      "sha256": "4d13c598690f13c5652c0171b4b96312a072448c8760feb6f6f9813c8014f441",
+      "separate_process_equal": true
+    },
+    "game-server-aliases": {
+      "rows": 765,
+      "sha256": "43497117cd970ffe3b9c05942463a60f6af2be6096ea6b0f3532f75befd2b2dd",
+      "separate_process_equal": true
+    },
+    "game-server-drop-use": {
+      "rows": 48,
+      "sha256": "60be3d81a4691490326593cbff2cc2fd5b77049ebe7070ca31a2c53b2fa16ec0",
+      "separate_process_equal": true
+    },
+    "game-server-equipment": {
+      "rows": 96,
+      "sha256": "853e8f26df19fb8d80f2a4430f65b65012b9a49c084ee2c8e904f5b36ec228ab",
+      "separate_process_equal": true
+    },
+    "game-server-missing-targets": {
+      "rows": 84,
+      "sha256": "1ff307812220cc72c87776a1f94b0817b86b060d2de1de04e1b66bf56af7e37b",
+      "separate_process_equal": true
+    },
+    "game-server-pickup": {
+      "rows": 144,
+      "sha256": "4adf1974394325e1ba3c435a802d099edb8ff75da5dcc44abe806ee55d5b3603",
+      "separate_process_equal": true
+    },
+    "game-server-unknown": {
+      "rows": 987,
+      "sha256": "f9a58f004a2c2317e6f08508f058c3bb3faa47022ca6fdbf421e4d2a940ffdb3",
+      "separate_process_equal": true
+    },
+    "game-server-waypoints": {
+      "rows": 180,
+      "sha256": "8d83113ed0985a1c0c78576e1db44e0888a0997248ab10ce0fd131297df63af5",
+      "separate_process_equal": true
+    }
+  },
+  "status": "qualified original-C baseline for selected client-state and notices"
+}

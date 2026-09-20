@@ -125,5 +125,5 @@ func TestGameMessageClientEnchantments(t *testing.T) {
 		}
 	}
 	clear(local)
-	interactionCapture(t, "game-client-enchantments", rows)
+	gameMessageCapture(t, "game-client-enchantments", rows)
 }

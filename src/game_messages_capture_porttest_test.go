@@ -1,0 +1,71 @@
+//go:build porttest
+
+package opennox
+
+import (
+	"crypto/sha256"
+	"encoding/json"
+	"fmt"
+	"os"
+	"testing"
+)
+
+// These expectations were reviewed and repeated against original C before the
+// client-state/notice conversion. Never regenerate them to hide a port mismatch.
+var gameMessageGolden = map[string]string{
+	"game-client-effect-creation":   "b3c8e3b4417cf398ffeb33b636cb6fb711f6bf378ee91c4f1eed0f282a32d5a1",
+	"game-client-enchantments":      "2ee0b33fe5e32a8c92687d748e1c7135adc8e05bd14d14c24f15656f5ea308df",
+	"game-client-friends":           "bc7bf35ae59a03ffa60ba09d2d1244b0059bf85bee554b7f4236742632fb72d3",
+	"game-client-health-changes":    "e4a8a4815f8e023c89a361271aafa1fea2a57a8776f35a985c6e9e380b3ebc44",
+	"game-client-health-meters":     "b58a7b586d248be5cf651117f09fd1eafc2480947056b032419c8d1c18704013",
+	"game-client-inventory-scalars": "3a0d15522657b3ea687f07c91cc6db0aa34f4cde3f4315f0a9c1fac65bb79344",
+	"game-client-item-updates":      "415b99de1a66c809b18b5052280ef50852299d3a5d145630cc3740e4294dbbf4",
+	"game-client-light-intensity":   "2d96d4769dbeb80eba583df584011d89609341a521b1be317553172a4cc05f2d",
+	"game-client-magic-walls":       "cb2a35d1554a65375ffa9a23f3f61b019b9410ee3334a5069955d53f03f21514",
+	"game-client-npc-appearance":    "e098533e75567579e072f3cae860c3aab27ca490b0c3ef441e258567e842bb0f",
+	"game-client-npc-equipment":     "c6e4be9ee750ea913ddf232494f1e6c24c6498f2d6307c07ef7ff4e5fcce2a04",
+	"game-client-object-camera":     "01f99d23f0ba88a2ca32d34758d3cb1356e476c1e2a763c6e5c923a6b9958872",
+	"game-client-object-creation":   "3612813f684153f0bf9cd1529ba13f18396face79bb9cadf7177d4ed45a704d0",
+	"game-client-object-fields":     "aa8208f5ad7d6f3544a20f7e66b2edf1c4aca5bcc730ab3a12cac0fd0d4f91ca",
+	"game-client-object-lifetime":   "b663112d245ba55189840a8500a6bd0db85e610f89dec46f61f07d26a55f8c3f",
+	"game-client-objects":           "205e0ba58c2589d9f352fd80934260436fe953adb98ab7e9e7232cb4be1aeca6",
+	"game-client-player-equipment":  "daa13e35d14478968ba0fa786a3602f072498a4407af43d8ee5983283b1b6965",
+	"game-client-player-flags":      "1df1be8a2a646e113912e80657cf165ba48b8431fb0e7a222de92be5ce7108ad",
+	"game-client-player-unequip":    "a8a480f1ae637f43c20c108a8e8ac4bac9b8d5414ccff06711e0442bf29ac20b",
+	"game-client-secret-walls":      "8b0a14ad28f2c30ad4b228c1ad745c465e96af7ce4f8d0dc672ac6983c63f6a2",
+	"game-notice-awards":            "f06c320e539db39d410eed453e30ff51493228f4774609607c3086bd0cb9a718",
+	"game-notice-death-feed":        "fea08824ac5e02cc22716d18ebf61660bba7dac92d74f87cbb950bca2211797f",
+	"game-notice-spell-dialog":      "0532c23b1468d507b9a0a45aed408289007da36afeb8a069bc83a8a1d20e0e2f",
+	"game-notice-teams":             "17960351d3433da6ee18761451662c30dba4d51ed84b217bf42ef84ecb0bcb50",
+	"game-notice-text":              "4d13c598690f13c5652c0171b4b96312a072448c8760feb6f6f9813c8014f441",
+	"game-server-aliases":           "43497117cd970ffe3b9c05942463a60f6af2be6096ea6b0f3532f75befd2b2dd",
+	"game-server-drop-use":          "60be3d81a4691490326593cbff2cc2fd5b77049ebe7070ca31a2c53b2fa16ec0",
+	"game-server-equipment":         "853e8f26df19fb8d80f2a4430f65b65012b9a49c084ee2c8e904f5b36ec228ab",
+	"game-server-missing-targets":   "1ff307812220cc72c87776a1f94b0817b86b060d2de1de04e1b66bf56af7e37b",
+	"game-server-pickup":            "4adf1974394325e1ba3c435a802d099edb8ff75da5dcc44abe806ee55d5b3603",
+	"game-server-unknown":           "f9a58f004a2c2317e6f08508f058c3bb3faa47022ca6fdbf421e4d2a940ffdb3",
+	"game-server-waypoints":         "8d83113ed0985a1c0c78576e1db44e0888a0997248ab10ce0fd131297df63af5",
+}
+
+func gameMessageCapture(t *testing.T, name string, v any) {
+	t.Helper()
+	b, err := json.MarshalIndent(v, "", "  ")
+	if err != nil {
+		t.Fatal(err)
+	}
+	b = append(b, '\n')
+	want, ok := gameMessageGolden[name]
+	if !ok {
+		t.Fatalf("missing frozen message capture %s", name)
+	}
+	got := fmt.Sprintf("%x", sha256.Sum256(b))
+	if got != want {
+		t.Fatalf("%s: got %s want original C %s", name, got, want)
+	}
+	if p := os.Getenv("OPENNOX_CLIENT_INTERACTION_CAPTURE"); p != "" {
+		if err := os.WriteFile(p+"-"+name+".json", b, 0600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	t.Logf("%s: %s", name, got)
+}

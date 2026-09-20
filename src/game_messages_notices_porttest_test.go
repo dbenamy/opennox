@@ -149,5 +149,5 @@ func TestGameMessageNoticeText(t *testing.T) {
 	for kind := 22; kind < 256; kind++ {
 		run(kind, 0xffffffff, 3, nil, 0, 0, "")
 	}
-	interactionCapture(t, "game-notice-text", rows)
+	gameMessageCapture(t, "game-notice-text", rows)
 }

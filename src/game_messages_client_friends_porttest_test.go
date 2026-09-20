@@ -76,5 +76,5 @@ func TestGameMessageClientFriends(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-friends", rows)
+	gameMessageCapture(t, "game-client-friends", rows)
 }

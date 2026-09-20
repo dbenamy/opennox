@@ -54,5 +54,5 @@ func TestGameMessageClientPlayerFlags(t *testing.T) {
 		}
 	}
 	clear(local)
-	interactionCapture(t, "game-client-player-flags", rows)
+	gameMessageCapture(t, "game-client-player-flags", rows)
 }

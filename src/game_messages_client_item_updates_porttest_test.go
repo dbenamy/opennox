@@ -127,5 +127,5 @@ func TestGameMessageClientItemUpdates(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-item-updates", rows)
+	gameMessageCapture(t, "game-client-item-updates", rows)
 }

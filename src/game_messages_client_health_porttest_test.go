@@ -49,7 +49,7 @@ func TestGameMessageClientHealthChanges(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-health-changes", rows)
+	gameMessageCapture(t, "game-client-health-changes", rows)
 }
 
 func TestGameMessageClientHealthMeters(t *testing.T) {
@@ -190,5 +190,5 @@ func TestGameMessageClientHealthMeters(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-health-meters", rows)
+	gameMessageCapture(t, "game-client-health-meters", rows)
 }

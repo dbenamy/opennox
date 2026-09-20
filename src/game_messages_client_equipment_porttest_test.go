@@ -144,7 +144,7 @@ func TestGameMessageClientNPCEquipment(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-npc-equipment", rows)
+	gameMessageCapture(t, "game-client-npc-equipment", rows)
 }
 
 func TestGameMessageClientPlayerEquipment(t *testing.T) {
@@ -216,7 +216,7 @@ func TestGameMessageClientPlayerEquipment(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-player-equipment", rows)
+	gameMessageCapture(t, "game-client-player-equipment", rows)
 }
 
 func TestGameMessageClientPlayerUnequip(t *testing.T) {
@@ -279,5 +279,5 @@ func TestGameMessageClientPlayerUnequip(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-player-unequip", rows)
+	gameMessageCapture(t, "game-client-player-unequip", rows)
 }

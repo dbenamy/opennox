@@ -91,5 +91,5 @@ func TestGameMessageServerPickup(t *testing.T) {
 			t.Fatalf("pickup dispatch differs from independent weight/class decision: case %d input %+v", i, inputs[i])
 		}
 	}
-	interactionCapture(t, "game-server-pickup", got)
+	gameMessageCapture(t, "game-server-pickup", got)
 }

@@ -120,5 +120,5 @@ func TestGameMessageClientObjectLifetime(t *testing.T) {
 		}
 	}
 	clear(local)
-	interactionCapture(t, "game-client-object-lifetime", rows)
+	gameMessageCapture(t, "game-client-object-lifetime", rows)
 }

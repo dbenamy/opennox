@@ -83,5 +83,5 @@ func TestGameMessageClientEffectCreation(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-effect-creation", rows)
+	gameMessageCapture(t, "game-client-effect-creation", rows)
 }

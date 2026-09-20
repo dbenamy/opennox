@@ -52,5 +52,5 @@ func TestGameMessageServerWaypoints(t *testing.T) {
 			t.Fatalf("waypoint dispatch state differs from qualified coordinate operation: case %d", i)
 		}
 	}
-	interactionCapture(t, "game-server-waypoints", got)
+	gameMessageCapture(t, "game-server-waypoints", got)
 }

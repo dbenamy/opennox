@@ -123,5 +123,5 @@ func TestGameMessageClientObjectFields(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-object-fields", rows)
+	gameMessageCapture(t, "game-client-object-fields", rows)
 }

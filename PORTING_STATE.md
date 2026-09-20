@@ -33,41 +33,46 @@ CONSUMED and stale. Every successful native capture set shares verified identica
 storage with C references; use fresh output paths. Original assets/archive,
 qualified binaries, captures and failure evidence remain. No question is pending.
 
-## Active — original-C game-message baseline
+## Active — client-state and notice baseline qualification
 
 Production remains identical to qualified **0d5a03b2**: **8,820 C lines /38 files**.
-Scope: three client/server dispatch and notice bodies /3,841 body lines. See
-[GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) for audit, coverage and review notes.
-No conversion is installed, no runtime goldens are frozen, and the whole scope
-is not yet qualified.
+The next conversion covers **42 client-state cases /39 whole switch groups
+(576 C lines), plus the entire notice dispatcher (328 lines): 904 body lines**.
+Remaining effects, trade and server dispatch stay in the production C fallback
+for following batches. This reversible boundary decision is recorded in
+[GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) and
+[client-game-state-selection.json](docs/porting/client-game-state-selection.json).
 
-Current fixture coverage: **52,702 cases /31 message roots**, plus **22 inherited
-roots**. Three repetitions pass **159 root runs**, with **31 matching captures**
-across processes. Static mapped-memory checks pass. All jobs are joined, including
-77269/5048. Latest evidence:
-[game-messages-client-fx-fixtures.json](docs/porting/game-messages-client-fx-fixtures.json).
-Prior pushed checkpoints include 767e00ce (health), 78dffc6b (walls), and 82656d33
-(inventory reports); 6dbeda4e adds equipment; 2c50982e adds appearance; 91b47845 adds light/enchantment; simple effects are the current checkpoint being committed.
+Reviewed original-C expectations are frozen: **52,894 cases /32 message roots**,
+plus **22 inherited roots**. The accumulated three-repeat pass completed all
+162 root runs, with 32 identical captures. Camera probe/repeat jobs 32727/93391
+are joined. No native source is installed. Default broad qualification passes
+all **265 selected roots**, no skips, all frozen captures and static checks.
+Server/highres pass **262/265 roots**, no skips, all captures and static checks.
+All jobs (8095/61792/89300) are joined; source fingerprints match throughout.
+See [client-game-state-c-qualification.json](docs/porting/client-game-state-c-qualification.json).
+All 1,334 tracked production files match 0d5a03b2; its production/ABI, full-suite
+and headless scenario evidence is reused for this test-only baseline.
 
-Covered families include notices, server aliases/waypoints/inventory actions,
-client object creation/update/lifetime/control, friend lists, health/meters,
-magic/secret walls, inventory reports and player/NPC equipment. Remaining client
-families and positive server actions still need coverage. Next: review the tested client-state/notices conversion boundary (~900 lines),
-excluding shared effect blocks. See GAME_MESSAGES.md for the provisional audit.
+Next: commit/push the recoverable baseline, translate
+selected cases/notices, retire their last C-only bridges and move the fade-object
+owner. Keep existing runtime goldens unchanged. The notice implementation draft
+under build/port-game-messages is uninstalled and unqualified. Whole-repository
+helper-use audit is client-state-symbol-uses.json in that directory; check remaining
+case and Go C-selector uses before retiring each export.
 
-Review notes: client dispatch sometimes modifies its input; equip clears the
-identifier high bit, while unequip preserves it. Health-change notifications queue
-while disconnected. Wall tests use full owner Reset between cases: duplicate-
-position DeleteAtGrid cleanup exposed an existing row-index inconsistency, recorded
-for a separate wall-owner review. No production behavior was changed to fix tests.
+Review notes: equip clears the identifier high bit; unequip preserves it.
+Health-change notifications queue while disconnected. Camera updates can occur
+when sprite creation fails. Wall tests use full owner Reset: duplicate-position
+DeleteAtGrid cleanup exposed an existing row-index inconsistency, recorded for
+separate review. No production behavior was changed to fix these tests.
 
 Single-job focused builds use compiler GOMEMLIMIT=1536MiB and
-`-exec='env GOMEMLIMIT=768MiB'` for the actual 386 test, GOMAXPROCS=2. This is not a
-measured performance guarantee for concurrent builds. Four completed cache
-cleanups removed only verified superseded test archives (1,131,099,228;
-1,130,553,318; 1,133,631,892; and 3,262,857,596 bytes). Their scripts are consumed; original
-assets/archive, qualified binaries and evidence remain. The inventory-scalars and
-client-equipment drafts/installers are consumed; never replay over reviewed source.
+`-exec='env GOMEMLIMIT=768MiB'` for the actual 386 test, GOMAXPROCS=2.
+Five completed cache cleanups removed only verified superseded test archives
+(1,131,099,228; 1,130,553,318; 1,133,631,892; 3,262,857,596; and 2,155,476,020 bytes).
+Their scripts are consumed; original assets/archive, qualified binaries and evidence
+remain. Prior fixture installers are consumed; never replay over reviewed source.
 No question or approval is pending. Continue after each committed checkpoint.
 
 ## Previous — client drawable state Go conversion qualified

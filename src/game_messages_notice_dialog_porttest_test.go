@@ -70,5 +70,5 @@ func TestGameMessageNoticeSpellAndDialog(t *testing.T) {
 		}
 		rows = append(rows, map[string]any{"dialog": i, "return": n, "calls": calls})
 	}
-	interactionCapture(t, "game-notice-spell-dialog", rows)
+	gameMessageCapture(t, "game-notice-spell-dialog", rows)
 }

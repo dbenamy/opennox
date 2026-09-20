@@ -42,7 +42,7 @@ func TestGameMessageServerUnknownKinds(t *testing.T) {
 			run(240, sub)
 		}
 	}
-	interactionCapture(t, "game-server-unknown", rows)
+	gameMessageCapture(t, "game-server-unknown", rows)
 }
 
 func TestGameMessageServerAliasStorage(t *testing.T) {
@@ -78,5 +78,5 @@ func TestGameMessageServerAliasStorage(t *testing.T) {
 			rows = append(rows, row{slot, uint16(values[0]), uint16(values[1]), values[2], n, bytes.Clone(raw[16+8*slot : 16+8*(slot+1)])})
 		}
 	}
-	interactionCapture(t, "game-server-aliases", rows)
+	gameMessageCapture(t, "game-server-aliases", rows)
 }

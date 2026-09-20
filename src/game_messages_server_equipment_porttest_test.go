@@ -76,5 +76,5 @@ func TestGameMessageServerEquipment(t *testing.T) {
 			t.Fatalf("equipment dispatch differs from qualified direct action: case %d", i)
 		}
 	}
-	interactionCapture(t, "game-server-equipment", got)
+	gameMessageCapture(t, "game-server-equipment", got)
 }

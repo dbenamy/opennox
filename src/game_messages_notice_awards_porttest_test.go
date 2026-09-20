@@ -66,5 +66,5 @@ func TestGameMessageNoticeAwards(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-notice-awards", rows)
+	gameMessageCapture(t, "game-notice-awards", rows)
 }

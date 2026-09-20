@@ -1,0 +1,57 @@
+{
+  "status": "qualified original-C baseline for selected client-state and notices",
+  "production_parent": "0d5a03b2",
+  "selected_c_body_lines": 904,
+  "message_cases": 52894,
+  "message_roots": 32,
+  "repetitions": 3,
+  "repeat_root_runs": 162,
+  "frozen_captures": 32,
+  "targets": {
+    "default": {
+      "roots": 265,
+      "selected_roots": 265,
+      "skips": 0,
+      "captures": 32,
+      "source_unchanged": true,
+      "artifact": "build/port-game-messages/c-state-default",
+      "wall_seconds": 121.31495281099342
+    },
+    "server": {
+      "roots": 262,
+      "selected_roots": 262,
+      "skips": 0,
+      "captures": 32,
+      "source_unchanged": true,
+      "artifact": "build/port-game-messages/c-state-server",
+      "wall_seconds": 211.4730984561611
+    },
+    "highres": {
+      "roots": 265,
+      "selected_roots": 265,
+      "skips": 0,
+      "captures": 32,
+      "source_unchanged": true,
+      "artifact": "build/port-game-messages/c-state-highres",
+      "wall_seconds": 123.53685735096224
+    }
+  },
+  "production_identity": {
+    "revision": "0d5a03b2",
+    "files_checked": 1334,
+    "differences": []
+  },
+  "reused_production_qualification": "docs/porting/world-grid-native-qualification.json; unchanged production reuses three-target builds/ABI, exact 1553 known full-suite failures, gameplay and save/load. Native conversion must rerun these gates.",
+  "c_loc": {
+    "files": 38,
+    "lines": 8820,
+    "reference_lines": 0
+  },
+  "cache_cleanup": {
+    "files": 32,
+    "bytes": 2155476020,
+    "classification": "superseded porttest archives before 2d7cc289",
+    "plan": "build/port-game-messages/fifth-fixture-cache-plan.json",
+    "consumed": true
+  }
+}

@@ -1,0 +1,522 @@
+{
+  "status": "qualified original-C baseline for selected client-state and notices",
+  "file": "src/legacy/client__network__cdecode.c",
+  "file_sha256": "1eda76d9726d2c861efcc2244f04bc28edc556949138cee5ae23228fee35b852",
+  "opcodes": [
+    47,
+    48,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    59,
+    60,
+    61,
+    62,
+    65,
+    66,
+    67,
+    68,
+    69,
+    71,
+    73,
+    74,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    100,
+    102,
+    104,
+    105,
+    107,
+    169,
+    221,
+    222
+  ],
+  "groups": [
+    {
+      "opcodes": [
+        47
+      ],
+      "start": 16082,
+      "end": 16643,
+      "start_line": 457,
+      "lines": 14,
+      "sha256": "5d08ae680f86cc6d7e6f281f23225ce831ca1947c5a253010c9eff4eda51af9c"
+    },
+    {
+      "opcodes": [
+        48
+      ],
+      "start": 16643,
+      "end": 18131,
+      "start_line": 471,
+      "lines": 37,
+      "sha256": "ce0cea02ebe5ca6b28f96234b685b6fa8220019b24d4e812891fae222531555b"
+    },
+    {
+      "opcodes": [
+        50
+      ],
+      "start": 18131,
+      "end": 19139,
+      "start_line": 508,
+      "lines": 35,
+      "sha256": "41907eb9b38acabab6e5fadf1b4cab297c85d384a3861c41114990da31c16d18"
+    },
+    {
+      "opcodes": [
+        51
+      ],
+      "start": 19139,
+      "end": 20396,
+      "start_line": 543,
+      "lines": 38,
+      "sha256": "e9d0b38ec6078e4ed573a24d7946e63fc54ef763008ec8cddd3070ebc947014f"
+    },
+    {
+      "opcodes": [
+        52
+      ],
+      "start": 20396,
+      "end": 20605,
+      "start_line": 581,
+      "lines": 7,
+      "sha256": "f619fde2be548fc8d059071134fb41e4d6c59509e544aab6a91b0d3a6b55dc2c"
+    },
+    {
+      "opcodes": [
+        53
+      ],
+      "start": 20605,
+      "end": 20797,
+      "start_line": 588,
+      "lines": 7,
+      "sha256": "d2085c0ff9a89c84c3e5b6f9baaddf4691a7cb7ce8f34365875786cf9fcaf56b"
+    },
+    {
+      "opcodes": [
+        54
+      ],
+      "start": 20797,
+      "end": 20902,
+      "start_line": 595,
+      "lines": 5,
+      "sha256": "4a33b76499a769cb5c180c925cae31d596a79f36b1ccd7d9b4efa468c083909b"
+    },
+    {
+      "opcodes": [
+        55
+      ],
+      "start": 20902,
+      "end": 21486,
+      "start_line": 600,
+      "lines": 17,
+      "sha256": "5fb69b39f8eb7024572ee7596047bbedb55e383363ba3ae0fd9acbb3b8543918"
+    },
+    {
+      "opcodes": [
+        56
+      ],
+      "start": 21486,
+      "end": 22154,
+      "start_line": 617,
+      "lines": 20,
+      "sha256": "9c54e94f0711eb9b9acc0f9c2d7749abb6f8a0fba3b26be2f2c7e3a60e961f11"
+    },
+    {
+      "opcodes": [
+        57
+      ],
+      "start": 22154,
+      "end": 22620,
+      "start_line": 637,
+      "lines": 14,
+      "sha256": "ba5ed20ee56fe87d2610dacdc0b7b2dfb82a9dd506b46c75c5dadad89bc5f05e"
+    },
+    {
+      "opcodes": [
+        59
+      ],
+      "start": 22620,
+      "end": 22986,
+      "start_line": 651,
+      "lines": 14,
+      "sha256": "21ea06c9a63c7a31f72f74c01c4cd677b2801c283e16413fde6020336a311bb7"
+    },
+    {
+      "opcodes": [
+        60
+      ],
+      "start": 22986,
+      "end": 23379,
+      "start_line": 665,
+      "lines": 16,
+      "sha256": "26d23623c48b99c767741e43d14d1e2b58f042c802b9e0139188fd27df72217d"
+    },
+    {
+      "opcodes": [
+        61
+      ],
+      "start": 23379,
+      "end": 23934,
+      "start_line": 681,
+      "lines": 17,
+      "sha256": "4a7e81297d5df359c44cb80a951c3badeedda8f033ced4d3c8913fb15576737f"
+    },
+    {
+      "opcodes": [
+        62
+      ],
+      "start": 23934,
+      "end": 24251,
+      "start_line": 698,
+      "lines": 8,
+      "sha256": "91aaa683cfd9a28a3f1e26e1d7719921cf991b9a70e4d83c0b7bda8d0e19cd52"
+    },
+    {
+      "opcodes": [
+        65
+      ],
+      "start": 24251,
+      "end": 24716,
+      "start_line": 706,
+      "lines": 13,
+      "sha256": "6a9cf6f3c72756c32ee00c6df92e57e3a45247dd359102a6adfec5e3d01ae29a"
+    },
+    {
+      "opcodes": [
+        66
+      ],
+      "start": 24716,
+      "end": 25085,
+      "start_line": 719,
+      "lines": 7,
+      "sha256": "a79abc6ad8d46750acd260a9f4769b4dfe4c0f06a5c271249cbac99de5da8490"
+    },
+    {
+      "opcodes": [
+        67
+      ],
+      "start": 25085,
+      "end": 25216,
+      "start_line": 726,
+      "lines": 5,
+      "sha256": "742fbf69b869dc7659c8b80ae86caea740db48b71486020ce031c893cfc3dd52"
+    },
+    {
+      "opcodes": [
+        68
+      ],
+      "start": 25216,
+      "end": 25603,
+      "start_line": 731,
+      "lines": 11,
+      "sha256": "a642adba7553fcbc580d6ebafb83739e9575b1c7f626f6b69077bb0256207de2"
+    },
+    {
+      "opcodes": [
+        69
+      ],
+      "start": 25603,
+      "end": 26034,
+      "start_line": 742,
+      "lines": 14,
+      "sha256": "59ab99249a9145bd1e345f7fed505f0aa9d56fb1361e0e9dd2593948115b1ac6"
+    },
+    {
+      "opcodes": [
+        71
+      ],
+      "start": 26034,
+      "end": 26213,
+      "start_line": 756,
+      "lines": 6,
+      "sha256": "0d69151b635eb233a2426bfda7f2705a3df2cb23f041222ec3f97d7986dbc8be"
+    },
+    {
+      "opcodes": [
+        73
+      ],
+      "start": 27140,
+      "end": 27285,
+      "start_line": 786,
+      "lines": 6,
+      "sha256": "06ec13882d615c0ab5943ea4e87a25a3a63006c104893d9e5af6be841cd92929"
+    },
+    {
+      "opcodes": [
+        74
+      ],
+      "start": 27285,
+      "end": 27438,
+      "start_line": 792,
+      "lines": 7,
+      "sha256": "56b5ff5e5d95420de0ee62a2a5cb694c0179c043555a00ebf8e0959bd6dfb5c2"
+    },
+    {
+      "opcodes": [
+        79,
+        80
+      ],
+      "start": 30003,
+      "end": 30580,
+      "start_line": 877,
+      "lines": 16,
+      "sha256": "d2384657a1a890d3e8c6ba5ebad32e42366c481b2882ba2c3e47b3f8179d49b6"
+    },
+    {
+      "opcodes": [
+        81,
+        82
+      ],
+      "start": 30580,
+      "end": 31145,
+      "start_line": 893,
+      "lines": 19,
+      "sha256": "7721a6ef6f9fc33f9e4857d8b6c27a7e0538512affefaa62d5bc417c8743aa81"
+    },
+    {
+      "opcodes": [
+        83,
+        84
+      ],
+      "start": 31145,
+      "end": 31376,
+      "start_line": 912,
+      "lines": 7,
+      "sha256": "eab389c1e3f51d4e25652d4e6b900acdbc97afbb48013012a2498d95b6fdfe01"
+    },
+    {
+      "opcodes": [
+        90
+      ],
+      "start": 41535,
+      "end": 42636,
+      "start_line": 1218,
+      "lines": 30,
+      "sha256": "3212a7ab102cac44afa8b649678ace89b2f9650725f74e5c9e5d4c1884c221f1"
+    },
+    {
+      "opcodes": [
+        91
+      ],
+      "start": 42636,
+      "end": 43203,
+      "start_line": 1248,
+      "lines": 13,
+      "sha256": "2509b269df9bed7871e7cc00df835d91bcb8580f0537a476b2eb7be02cf84f44"
+    },
+    {
+      "opcodes": [
+        92
+      ],
+      "start": 43203,
+      "end": 43897,
+      "start_line": 1261,
+      "lines": 17,
+      "sha256": "4c2a8e0b3c1f560fb685acf0b27c735e25ce02f32fabe40a8f17cdc8c62a1a2a"
+    },
+    {
+      "opcodes": [
+        93
+      ],
+      "start": 43897,
+      "end": 44530,
+      "start_line": 1278,
+      "lines": 17,
+      "sha256": "b96871eb8065a867f0614398a8a6b4d73223ff66c88dfcb4170505097527012a"
+    },
+    {
+      "opcodes": [
+        94
+      ],
+      "start": 44530,
+      "end": 44998,
+      "start_line": 1295,
+      "lines": 13,
+      "sha256": "7671d29cae41638101e4a0e886a81cc26e559a375ddc3265a05d02c80562a7cc"
+    },
+    {
+      "opcodes": [
+        95
+      ],
+      "start": 44998,
+      "end": 45499,
+      "start_line": 1308,
+      "lines": 14,
+      "sha256": "0da1eba0587e7cf881e8188d0786f52241cb009184827eabf7ba84455507b14e"
+    },
+    {
+      "opcodes": [
+        100
+      ],
+      "start": 46154,
+      "end": 46416,
+      "start_line": 1342,
+      "lines": 8,
+      "sha256": "0aaecbfe838ff9732891f954c47270a5a09fb60da1dc780db1cb075d5024434f"
+    },
+    {
+      "opcodes": [
+        102
+      ],
+      "start": 47401,
+      "end": 47633,
+      "start_line": 1385,
+      "lines": 6,
+      "sha256": "cecfa2a1e397d2706df2631862470d1ecf550b6b8c4a09df21d703d015688d79"
+    },
+    {
+      "opcodes": [
+        104
+      ],
+      "start": 48487,
+      "end": 48933,
+      "start_line": 1418,
+      "lines": 14,
+      "sha256": "1e581e57ae6d2a4c2c0c320ffafc05b8764d4ccd29d0445b688f908e3740b1ad"
+    },
+    {
+      "opcodes": [
+        105
+      ],
+      "start": 48933,
+      "end": 49762,
+      "start_line": 1432,
+      "lines": 34,
+      "sha256": "cd5e28ad26895430a299d4d7b5c4d07a30a6ba16c6aac8625a879c65fa32ec13"
+    },
+    {
+      "opcodes": [
+        107
+      ],
+      "start": 50391,
+      "end": 51001,
+      "start_line": 1482,
+      "lines": 17,
+      "sha256": "d7c8a2b7e9abad0a933589da33da4050eaf5a00621e4d719a8ed7289cb7f85f2"
+    },
+    {
+      "opcodes": [
+        169
+      ],
+      "start": 71057,
+      "end": 71135,
+      "start_line": 2071,
+      "lines": 2,
+      "sha256": "e0385385c0c97193e982317dd6a618d571d7d66ca09807264c545fe09a6f0e99"
+    },
+    {
+      "opcodes": [
+        221
+      ],
+      "start": 91907,
+      "end": 92574,
+      "start_line": 2713,
+      "lines": 17,
+      "sha256": "222eaebd0baa7fa83a7dabca769fc63439bbe040be711d38d269016bf13ba875"
+    },
+    {
+      "opcodes": [
+        222
+      ],
+      "start": 92574,
+      "end": 93052,
+      "start_line": 2730,
+      "lines": 14,
+      "sha256": "39d010947f3d32e37d87ac8f4097c50bcb2e5a45859b9a2d16a30af9fe70cf4a"
+    }
+  ],
+  "body_lines": 576,
+  "calls": [
+    "gameFPS",
+    "gameFrame",
+    "getMemIntPtr",
+    "getMemU32Ptr",
+    "int",
+    "nox_client_drawable_testBuff_4356C0",
+    "nox_client_handlePacketInform_4C9BF0",
+    "nox_client_isConnected_43C700",
+    "nox_color_rgb_4344A0",
+    "nox_common_gameFlags_check_40A5C0",
+    "nox_common_getEngineFlag",
+    "nox_get_thing",
+    "nox_init_npc",
+    "nox_new_npc",
+    "nox_npc_by_id",
+    "nox_server_getWallAtGrid_410580",
+    "nox_xxx_cliAddHealthChange_49A650",
+    "nox_xxx_cliAddObjFriend_4959F0",
+    "nox_xxx_cliDestroyObj_45A9A0",
+    "nox_xxx_cliSetManaAndMax_470CE0",
+    "nox_xxx_cliSetMana_470D10",
+    "nox_xxx_cliSetTotalHealth_470C80",
+    "nox_xxx_cliUpdateCameraPos_435600",
+    "nox_xxx_clientEquipWeaponArmor_417AA0",
+    "nox_xxx_clientEquip_49A3D0",
+    "nox_xxx_mapDelWallAtPt_410430",
+    "nox_xxx_netClearHighBit_578B30",
+    "nox_xxx_netSpriteByCodeDynamic_45A6F0",
+    "nox_xxx_netSpriteByCodeStatic_45A720",
+    "nox_xxx_netTestHighBit_578B70",
+    "nox_xxx_setKeybTimeout_4160D0",
+    "nox_xxx_spriteChangeIntensity_484D70_light_intensity",
+    "nox_xxx_spriteChangeLightColor_484BE0",
+    "nox_xxx_spriteCreate_48E970",
+    "nox_xxx_spriteDeleteStatic_45A4E0_drawable",
+    "nox_xxx_spriteSetFrameMB_45AB80",
+    "nox_xxx_spriteTransparentDecay_49B950",
+    "nox_xxx_unitSpriteCheckAlly_4951F0",
+    "nox_xxx_wallCreateAt_410250",
+    "sub_410550",
+    "sub_416120",
+    "sub_417B80",
+    "sub_467410",
+    "sub_467420",
+    "sub_467430",
+    "sub_467450",
+    "sub_467470",
+    "sub_467490",
+    "sub_4675E0",
+    "sub_467930",
+    "sub_470CB0",
+    "sub_470D20",
+    "sub_495120",
+    "sub_495150",
+    "sub_4959B0",
+    "sub_495A20"
+  ],
+  "cross_boundary_gotos": [],
+  "notice_body_lines": 328,
+  "production_parent": "0d5a03b2",
+  "notice": {
+    "symbol": "nox_client_handlePacketInform_4C9BF0",
+    "file": "src/legacy/client__network__inform.c",
+    "start": 477,
+    "end": 11589,
+    "body_lines": 328,
+    "line": 18
+  },
+  "owners_to_move": [
+    "nox_client_fadeObjects_80836"
+  ],
+  "retire_exports": [
+    "nox_client_handlePacketInform_4C9BF0",
+    "sub_410550"
+  ],
+  "remaining_dispatch": "original C fallback for all unselected cases"
+}

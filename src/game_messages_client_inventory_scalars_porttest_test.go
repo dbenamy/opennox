@@ -78,5 +78,5 @@ func TestGameMessageClientInventoryScalars(t *testing.T) {
 			}
 		}
 	}
-	interactionCapture(t, "game-client-inventory-scalars", rows)
+	gameMessageCapture(t, "game-client-inventory-scalars", rows)
 }
