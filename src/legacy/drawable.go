@@ -110,11 +110,6 @@ func nox_new_drawable_for_thing(i int) *nox_drawable {
 	return (*nox_drawable)(GetClient().Nox_new_drawable_for_thing(i).C())
 }
 
-//export nox_xxx_spriteDeleteStatic_45A4E0_drawable
-func nox_xxx_spriteDeleteStatic_45A4E0_drawable(dr *nox_drawable) {
-	GetClient().Nox_xxx_spriteDeleteStatic_45A4E0_drawable(asDrawable(dr))
-}
-
 //export nox_xxx_cliDestroyObj_45A9A0
 func nox_xxx_cliDestroyObj_45A9A0(dr *nox_drawable) {
 	GetClient().Cli().Nox_xxx_cliDestroyObj_45A9A0(asDrawable(dr))

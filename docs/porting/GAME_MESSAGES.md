@@ -1,8 +1,16 @@
 # Game-message dispatch and player notices
 
 Qualified parent: `0d5a03b2` (pushed), 8,820 C lines in 38 files, zero reference C.
-Production algorithms are unchanged. This is original-C baseline development;
-no expectations are frozen and no conversion is installed.
+Original-C client-state/notices baseline **beb38b24** is qualified and pushed:
+52,894 captured cases, 32 frozen captures, 265/262/265 affected target roots.
+The selected 904-body-line conversion is fully qualified. Current C is
+**7,897 lines /37 files**, zero reference C: **923 physical lines removed**.
+Final native sweeps pass 266/263/266 roots and every frozen capture, plus ten
+independent boundary cases. Fresh production/ABI, exact known full-suite and
+headless gameplay/save-load checks pass. See
+[client-game-state-native-qualification.json](client-game-state-native-qualification.json),
+[the revised boundary](#revised-conversion-boundary-client-state-and-notices), and
+[native progress](#native-client-statenotices-conversion-in-progress).
 
 ## Scope and audit
 
@@ -20,7 +28,9 @@ artifacts, not approved conversion instructions.
 
 ## Testing plan
 
-Build the original-C baseline by behavior family, then qualify the combined scope.
+Build original-C baselines by behavior family, then qualify each accepted connected
+conversion boundary. The first boundary is client state and notices; the remaining
+client/server dispatch follows in subsequent batches.
 Reuse actual players, teams, drawable/object pools, inventory, wall, text and
 serialization owners. Observe only external effects where an existing fixture
 already provides the boundary. Every selected case needs a recorded contract for
@@ -44,7 +54,7 @@ captures in separate processes before freezing. The final native batch must pass
 three-target comparisons, ABI/export audits, exact known full-suite comparison,
 and fresh headless gameplay plus explicit save/load.
 
-## Current work
+## Baseline development history
 
 A thin original-C notice adapter and the first text-notice fixture are installed.
 The fixture uses existing real player/text/audio owners and independently checks
@@ -399,3 +409,87 @@ and headless gameplay/save-load evidence are reused. Fresh production qualificat
 is required after native conversion. Fifth audited cache cleanup removed 32
 superseded test archives /2,155,476,020 bytes; scripts are consumed. All baseline
 and cleanup jobs are joined. Next: native conversion; do not stop at this checkpoint.
+
+## Native client-state/notices conversion in progress
+
+Baseline **beb38b24** is pushed. The selected 42 cases now route through private
+Go before the remaining production C fallback. The full notice dispatcher is Go,
+using the existing inform.c localization namespace, formatter, audio and dialog
+owners. The fade-object setting is Go-owned, including the advanced-video pointer.
+Thirty-six obsolete C interfaces retire with their last C callers; tests call Go
+directly. An exact whole-repository search finds no remaining C-body/cgo uses of
+those interfaces. The native manifest retains the remaining required callbacks
+and checks that retired symbols are absent from fresh production binaries.
+
+Implementation review preserves full-wire versus masked identifiers, equip-only
+input rewriting, disconnected health-change queuing, signed health deltas/current
+health, unsigned creation/camera coordinates, light fixed-point arithmetic,
+secret-wall signed lookup, NPC reset/allocation behavior, and actual owner hooks.
+The existing particle-light helper is reused instead of the similarly named
+Drawable method. Notice kind 15 returns zero for a missing terminator within the
+supplied slice; the former C strlen read outside that valid message domain. This
+reversible invalid-input choice needs no user decision and remains for later review.
+
+Working C count is **7,897 lines /37 files**, zero reference C (923 lines removed).
+This is not yet qualified. The first compile found an unused import left by adapter
+retirement; it is removed. Static mapped-memory preflight passes. Default native
+frozen/affected qualification is running; remaining target and production gates
+are pending. Ignored installation/retirement scripts are consumed.
+
+Native default qualification passes all 265 selected roots, no skips, all 32 frozen
+message captures and static checks (73254 joined). The C fallback has no callers
+that bypass the updated Go adapter. Production ABI checks explicitly include both
+remaining dispatchers and the animation callback used by lifetime handling.
+Completed original-C target captures now share verified identical storage: 401
+copies /1,070,110,014 bytes reclaimed, with all paths and contents preserved.
+The original-state deduplication plan is consumed; use fresh output directories.
+
+All initial native target sweeps pass 265/262/265 roots, no skips, all frozen
+captures and static checks. Subsequent source review caught a fixture gap:
+unknown spell titles reach the C formatter as NULL and print "(null)". The initial
+Go draft discarded the lookup boolean and used an empty title. A standalone
+386 probe of the actual noxstring.c formatter confirms "Cast (null)". The native
+implementation now distinguishes unknown spells from valid empty titles. Seven
+independent title boundary cases and three unterminated-notice cases are added;
+no original frozen capture is changed. Final three-target qualification is repeated
+on this corrected source before production gates. These extra contracts live in
+the native-only test selection; the committed original-C selection stays intact.
+
+Final native sweeps pass 266/263/266 roots, no skips, all 32 frozen captures and
+static checks, with matching source fingerprints. Production gates are running.
+Final target captures share verified identical storage with C references: 603
+copies /1,605,538,655 bytes reclaimed; the preceding superseded native runs also
+share 603 copies /1,605,538,655 bytes. Each cleanup has a separate consumed plan.
+
+Next candidate audit (not an accepted/frozen selection): remaining client kinds
+72–164 comprise 55 labels /41 whole groups /1,056 C case lines with no incoming
+or outgoing goto edges. This connects progress/equipment/winner reports with
+visual effects. Five additional live C helpers need consideration alongside the
+cases: inventory-name initialization forwarding, white-flash state, player/team
+winner score adjustment, and map-generation progress rendering. The latter also
+has a Go map-population caller. Include these real dependencies rather than
+assuming every remaining dispatcher call already targets Go. Ignored audit files:
+remaining-client-groups.json and remaining-progress-effects-helper-audit.json.
+
+## Qualified client-state/notices checkpoint
+
+All final jobs are joined, including production 43757. Default/server/highres
+pass 266/263/266 affected roots, without skips, and all 32 frozen captures. Ten
+new independent boundary cases pass. Every final target and production gate uses
+the same source fingerprint, including the new Go files. Three fresh 386/SSE2/CGO
+binaries pass ABI checks: 36 retired interfaces and the former fade global are
+absent; actual remaining callbacks and C dispatch fallbacks remain available.
+The full asset suite matches exactly all 1,553 known failures and 15 pass /3 fail
+/32 skip package results. Character creation/gameplay and explicit save/load pass
+against the drawable references, including successful continuation after reload.
+See client-game-state-native-qualification.json for commands/artifacts and hashes.
+
+Physical C is now **7,897 lines /37 files**, zero reference C, a reduction of 923.
+No original frozen expectation was changed to make the port pass. The next work
+is the progress/effects candidate audit above; do not stop after this checkpoint.
+
+Completed scenario asset copies were verified against originals before removing
+1,112,747,701 duplicate bytes. Their deduplicated-assets.json manifests and ignored
+deduplicate-client-state-assets.py restore command preserve recovery; generated
+saves, screenshots, logs and changed files remain. The cleanup is complete and its
+plan consumed. Original assets/archive are unchanged.

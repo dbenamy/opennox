@@ -61,7 +61,7 @@ func PortTestClientDrawParticle(op int, vp *noxrender.Viewport, dr *client.Drawa
 	case 11:
 		return int64(C.nox_thing_vortex_draw(view, drawable))
 	case 12:
-		got := unsafe.Pointer(C.nox_xxx_spriteChangeLightColor_484BE0((*C.uint32_t)(light), C.int(a[0]), C.int(a[1]), C.int(a[2])))
+		got := particleLightColor(light, int(a[0]), int(a[1]), int(a[2]))
 		if got == light {
 			return 1
 		}

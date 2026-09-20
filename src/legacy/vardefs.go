@@ -432,7 +432,6 @@ extern uint32_t dword_5d4594_3798824;
 extern uint32_t dword_5d4594_3798836;
 extern uint32_t dword_5d4594_3798840;
 extern unsigned int nox_xxx_waypointCounterMB_587000_154948;
-extern unsigned int nox_client_fadeObjects_80836;
 extern unsigned int dword_5d4594_811904;
 extern unsigned int nox_client_gui_flag_1556112;
 extern unsigned int nox_client_highResFloors_154952;
@@ -479,7 +478,6 @@ extern unsigned int gameex_flags;
 extern unsigned int nox_client_translucentFrontWalls_805844;
 extern unsigned int nox_client_highResFrontWalls_80820;
 extern unsigned int nox_client_highResFloors_154952;
-extern unsigned int nox_client_fadeObjects_80836;
 extern unsigned int nox_client_renderBubbles_80844;
 extern unsigned int dword_5d4594_2523804;
 extern unsigned int dword_5d4594_3799452;
@@ -580,7 +578,7 @@ func Get_nox_client_highResFloors_154952() int {
 	return int(C.nox_client_highResFloors_154952)
 }
 func Get_nox_client_fadeObjects_80836() int {
-	return int(C.nox_client_fadeObjects_80836)
+	return int(clientFadeObjects)
 }
 func Get_nox_client_renderBubbles_80844() int {
 	return int(C.nox_client_renderBubbles_80844)
@@ -1066,7 +1064,7 @@ func Set_nox_client_highResFloors_154952(v int) {
 	C.nox_client_highResFloors_154952 = C.uint(v)
 }
 func Set_nox_client_fadeObjects_80836(v int) {
-	C.nox_client_fadeObjects_80836 = C.uint(v)
+	clientFadeObjects = uint32(v)
 }
 func Set_nox_client_renderBubbles_80844(v int) {
 	C.nox_client_renderBubbles_80844 = C.uint(v)

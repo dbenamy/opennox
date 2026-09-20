@@ -50,5 +50,5 @@ func PortTestPresentationBubble(kind, x, y int, z int16, a, b, c, d, e byte, lif
 	presentationBubble(kind, image.Pt(x, y), z, a, b, c, d, e, lifetime)
 }
 func PortTestPresentationEquip(op byte, id, mask uint32, mods *[4]byte) {
-	C.nox_xxx_clientEquip_49A3D0(C.char(op), C.int(id), C.int(mask), C.int(uintptr(unsafe.Pointer(mods))))
+	presentationEquip(byte(op), uint32(id), uint32(mask), mods)
 }

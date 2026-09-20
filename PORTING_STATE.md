@@ -2,78 +2,70 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 8.8k lines** — **8,820 physical lines in 38
-production `.c` files**, zero reference C. The last conversion removed **447 lines**.
+**Qualified C remaining: about 7.9k lines** — **7,897 physical lines in 37
+production `.c` files**, zero reference C. The last conversion removed **923 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — world grid and map serialization Go conversion qualified
+## Current — client game-state messages and notices Go conversion qualified
 
-Original-C baseline **d4a6a628** is pushed. Twenty live behaviors move to or reuse
-qualified Go implementations; four unused/test-only C helpers retire. Grid, tile
-and secret-list owners move with their callers. Only the secret-wall lookup keeps
-a selected Go-backed export for its actual C decoder caller. GAME4_2.c is removed.
-
-Default/server/highres pass 294/293/294 roots, no skips, and all 347 frozen C
-captures. Final static checks pass; source fingerprints match throughout. Fresh
-three-target production builds and ABI audits pass. The full suite matches exactly
-all 1,553 known failures. Headless gameplay and explicit save/load pass against
-the drawable references. All drivers, including production 6845, are joined.
-See [WORLD_GRID.md](docs/porting/WORLD_GRID.md) and its native qualification JSON.
-
-Review notes: raw ABI address/list stores use uint32 to avoid Go write barriers
-inspecting former integer data. The first broad sweep exposed that issue; the
-corrected final sweeps pass without changing frozen expectations. Map saving now
-rejects paths shorter than four or at least 1024 bytes before opening files; these
-were outside the former fixed-buffer implementation's valid domain.
-
-Ignored numeric drafts, installers and applied cache/capture cleanup scripts are
-CONSUMED and stale. Every successful native capture set shares verified identical
-storage with C references; use fresh output paths. Original assets/archive,
-qualified binaries, captures and failure evidence remain. No question is pending.
-
-## Active — client-state and notice baseline qualification
-
-Production remains identical to qualified **0d5a03b2**: **8,820 C lines /38 files**.
-The next conversion covers **42 client-state cases /39 whole switch groups
-(576 C lines), plus the entire notice dispatcher (328 lines): 904 body lines**.
-Remaining effects, trade and server dispatch stay in the production C fallback
-for following batches. This reversible boundary decision is recorded in
+Original-C baseline **beb38b24** is pushed. Forty-two client cases and the full
+notice dispatcher now use Go; 36 last-consumer C interfaces retire. The fade-object
+setting is Go-owned, including its advanced-video pointer. Remaining client/server
+cases still use the production C fallback. See
 [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) and
-[client-game-state-selection.json](docs/porting/client-game-state-selection.json).
+[the native qualification](docs/porting/client-game-state-native-qualification.json).
 
-Reviewed original-C expectations are frozen: **52,894 cases /32 message roots**,
-plus **22 inherited roots**. The accumulated three-repeat pass completed all
-162 root runs, with 32 identical captures. Camera probe/repeat jobs 32727/93391
-are joined. No native source is installed. Default broad qualification passes
-all **265 selected roots**, no skips, all frozen captures and static checks.
-Server/highres pass **262/265 roots**, no skips, all captures and static checks.
-All jobs (8095/61792/89300) are joined; source fingerprints match throughout.
-See [client-game-state-c-qualification.json](docs/porting/client-game-state-c-qualification.json).
-All 1,334 tracked production files match 0d5a03b2; its production/ABI, full-suite
-and headless scenario evidence is reused for this test-only baseline.
+Final default/server/highres sweeps pass **266/263/266 roots**, no skips, all
+**32 frozen captures /52,894 captured cases**, plus ten independent native boundary
+cases. Static checks pass. Source fingerprints match across all final target and
+production runs. Fresh three-target production binaries pass ABI checks. The full
+asset suite matches all 1,553 known failures and the established package results.
+Headless gameplay and explicit save/load pass against the drawable references;
+continuation after loading the saved map is verified. All jobs are joined,
+including 13341/66000/92249 and production 43757. No question is pending.
 
-Next: commit/push the recoverable baseline, translate
-selected cases/notices, retire their last C-only bridges and move the fade-object
-owner. Keep existing runtime goldens unchanged. The notice implementation draft
-under build/port-game-messages is uninstalled and unqualified. Whole-repository
-helper-use audit is client-state-symbol-uses.json in that directory; check remaining
-case and Go C-selector uses before retiring each export.
+Review notes: unknown spell titles preserve C's "(null)" formatting, distinct from
+valid empty titles. The manual adapter review caught this after the first sweeps;
+a probe of the actual C formatter and ten extra contracts cover the corrected
+source. Original goldens stayed unchanged. Unterminated notice text now returns
+zero without effects; the former C walk had no defined result for that input.
+The earlier duplicate-position wall-row inconsistency remains recorded separately.
 
-Review notes: equip clears the identifier high bit; unequip preserves it.
-Health-change notifications queue while disconnected. Camera updates can occur
-when sprite creation fails. Wall tests use full owner Reset: duplicate-position
-DeleteAtGrid cleanup exposed an existing row-index inconsistency, recorded for
-separate review. No production behavior was changed to fix these tests.
+## Next — client progress, equipment/winner reports and effects
 
-Single-job focused builds use compiler GOMEMLIMIT=1536MiB and
-`-exec='env GOMEMLIMIT=768MiB'` for the actual 386 test, GOMAXPROCS=2.
-Five completed cache cleanups removed only verified superseded test archives
-(1,131,099,228; 1,130,553,318; 1,133,631,892; 3,262,857,596; and 2,155,476,020 bytes).
-Their scripts are consumed; original assets/archive, qualified binaries and evidence
-remain. Prior fixture installers are consumed; never replay over reviewed source.
-No question or approval is pending. Continue after each committed checkpoint.
+Provisional candidate: client kinds 72–164, **55 labels /41 whole groups /1,056 C
+case lines**, no incoming/outgoing goto edges. Audit the five remaining C helpers
+and their owners too: inventory-name forwarding, white-flash state, player/team
+winner adjustments, and map-generation progress drawing (also called by Go map
+population). Evidence is under build/port-game-messages/remaining-client-groups.json
+and remaining-progress-effects-helper-audit.json. This is not a frozen selection.
+Continue the audit and original-C fixtures after committing/pushing this conversion.
+Reuse this qualified production evidence when the next baseline only changes tests.
+
+## Recovery and storage
+
+Ignored install/retirement/fixture scripts are CONSUMED; never replay over reviewed
+source. All five cache cleanup plans are consumed. Completed capture deduplication
+plans original-state, first-native-state and final-native-state preserve all paths
+and bytes while sharing identical storage; use fresh run/output directories.
+Completed scenario copies also have verified asset restoration manifests (1,112,747,701
+duplicate bytes removed); use deduplicate-client-state-assets.py --restore NAME
+if those historical run copies need their unchanged assets restored. Original
+assets/archive, binaries, captures, saves and failure evidence remain available.
+Single-job focused builds use compiler GOMEMLIMIT=1536MiB and test runtime 768MiB,
+GOMAXPROCS=2. Final target runs overlapped with separate outputs and fixed source.
+Continue after each committed checkpoint; no approval is pending.
+
+## Previous — world grid and map serialization Go conversion qualified
+
+C baseline d4a6a628 and conversion 0d5a03b2 are pushed. Twenty live behaviors
+moved to or reused Go, and four unused/test-only helpers retired. Three targets
+passed 294/293/294 roots and 347 frozen captures, with fresh production/ABI,
+full-suite and gameplay/save-load checks. That checkpoint had 8,820 C lines /38
+files. See [WORLD_GRID.md](docs/porting/WORLD_GRID.md). Its final secret-wall lookup
+export now retires with the client message callers in the current conversion.
 
 ## Previous — client drawable state Go conversion qualified
 

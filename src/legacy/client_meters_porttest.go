@@ -28,19 +28,19 @@ func PortTestMeterCall(op int, w *gui.Window, a, b, c, d int) uint32 {
 	case 3:
 		return uint32(C.sub_470C40(C.int(a)))
 	case 4:
-		return uint32(C.nox_xxx_cliSetTotalHealth_470C80(C.int(a), C.int(b)))
+		return uint32(nox_xxx_cliSetTotalHealth_470C80(a, b))
 	case 5:
-		return uint32(C.sub_470CB0(C.int(a)))
+		return uint32(sub_470CB0(a))
 	case 6:
 		return uint32(C.sub_470CC0())
 	case 7:
 		return uint32(C.sub_470CD0())
 	case 8:
-		return uint32(C.nox_xxx_cliSetManaAndMax_470CE0(C.int(a), C.int(b)))
+		return uint32(nox_xxx_cliSetManaAndMax_470CE0(a, b))
 	case 9:
-		return uint32(C.nox_xxx_cliSetMana_470D10(C.int(a)))
+		return uint32(nox_xxx_cliSetMana_470D10(a))
 	case 10:
-		return uint32(C.sub_470D20(C.int(a), C.int(b)))
+		return uint32(sub_470D20(a, b))
 	case 11:
 		C.sub_470D70()
 		return 0

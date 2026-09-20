@@ -5,7 +5,6 @@ package legacy
 extern unsigned int nox_client_translucentFrontWalls_805844;
 extern unsigned int nox_client_highResFrontWalls_80820;
 extern unsigned int nox_client_highResFloors_154952;
-extern unsigned int nox_client_fadeObjects_80836;
 extern unsigned int nox_client_renderBubbles_80844;
 extern unsigned int dword_5d4594_1193156;
 extern unsigned int dword_5d4594_1301812;
@@ -40,7 +39,7 @@ func Set_dword_5d4594_1193156(v int) {
 }
 
 func Get_nox_client_fadeObjects_80836_ptr() *uint32 {
-	return (*uint32)(unsafe.Pointer(&C.nox_client_fadeObjects_80836))
+	return &clientFadeObjects
 }
 
 func Get_nox_client_translucentFrontWalls_805844_ptr() *uint32 {

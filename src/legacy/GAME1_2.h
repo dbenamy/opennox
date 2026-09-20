@@ -42,7 +42,6 @@ long long nox_xxx_initTime_435570();
 void nox_xxx_cliUpdateCameraPos_435600(int a1, int a2);
 void nox_xxx_getSomeCoods_435670(int2* a1);
 int nox_xxx_gameGetPlayState_4356B0();
-bool nox_client_drawable_testBuff_4356C0(nox_drawable* dr, char a2);
 void nox_xxx_spriteLoadError_4356E0();
 wchar2_t* sub_435700(wchar2_t* a1, int a2);
 void nox_client_setServerConnectAddr_435720(char* addr);

@@ -23,12 +23,6 @@ func nox_xxx_guiCreatureGetName_427240(id C.int) C.int {
 	return C.int(bookGuideCreatureName(int32(id)))
 }
 
-//export nox_xxx_abilGetSuccess_4FB960_ability
-func nox_xxx_abilGetSuccess_4FB960_ability(id C.int) { bookAwardClientMessage(int32(id), true) }
-
-//export nox_xxx_abilGetError_4FB0B0_magic_plyrspel
-func nox_xxx_abilGetError_4FB0B0_magic_plyrspel(id C.int) { bookAwardClientMessage(int32(id), false) }
-
 //export sub_53F930
 func sub_53F930(a, b C.int) C.int { return C.int(bookUseGuide(objectFromInt(a), objectFromInt(b))) }
 

@@ -150,7 +150,6 @@ func sub_40A1A0() int {
 	return Sub_40A1A0()
 }
 
-//export gameFPS
 func gameFPS() uint32 {
 	return GetServer().S().TickRate()
 }

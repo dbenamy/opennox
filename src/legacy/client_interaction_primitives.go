@@ -154,7 +154,6 @@ func nox_client_setMousePos_430B10(x, y C.int) {
 //export nox_xxx_initTime_435570
 func nox_xxx_initTime_435570() C.longlong { return C.longlong(interactionInitTime()) }
 
-//export nox_client_drawable_testBuff_4356C0
 func nox_client_drawable_testBuff_4356C0(dr *nox_drawable, bit C.char) C.bool {
 	return C.bool(interactionHasBuff(asDrawable(dr), uint8(bit)))
 }

@@ -236,6 +236,9 @@ func Sub_49BB80(a1 byte) {
 	presentationChantStart(a1)
 }
 func Nox_xxx_netOnPacketRecvCli_48EA70_switch(a1 ntype.PlayerInd, a2 netmsg.Op, data []byte) int {
+	if n, handled := clientGameState(a2, data); handled {
+		return n
+	}
 	return int(C.nox_xxx_netOnPacketRecvCli_48EA70_switch(C.int(a1), C.int(a2), (*C.uchar)(unsafe.Pointer(&data[0])), C.int(len(data))))
 }
 func Sub_4DDE10(a1 int, a2 *server.Player) {

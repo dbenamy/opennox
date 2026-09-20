@@ -145,6 +145,3 @@ func worldSecretClear() unsafe.Pointer {
 	worldSecretHead = nil
 	return nil
 }
-
-//export sub_410550
-func sub_410550(id C.short) C.int { return C.int(uintptr(worldSecretFind(int16(id)).C())) }

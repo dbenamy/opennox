@@ -102,12 +102,10 @@ func uiMeterSetTotal(index int, playerOffset uintptr, current, maximum int) int 
 	return current
 }
 
-//export nox_xxx_cliSetTotalHealth_470C80
 func nox_xxx_cliSetTotalHealth_470C80(current, maximum int) int {
 	return uiMeterSetTotal(0, 2247, current, maximum)
 }
 
-//export sub_470CB0
 func sub_470CB0(current int) int { uiMeters()[0].Current = uint32(current); return current }
 
 //export sub_470CC0
@@ -116,18 +114,15 @@ func sub_470CC0() int { return int(uiMeters()[0].Current) }
 //export sub_470CD0
 func sub_470CD0() int { return int(uiMeters()[0].Maximum) }
 
-//export nox_xxx_cliSetManaAndMax_470CE0
 func nox_xxx_cliSetManaAndMax_470CE0(current, maximum int) int {
 	return uiMeterSetTotal(1, 2243, current, maximum)
 }
 
-//export nox_xxx_cliSetMana_470D10
 func nox_xxx_cliSetMana_470D10(current int) int {
 	uiMeters()[1].Current = uint32(current)
 	return current
 }
 
-//export sub_470D20
 func sub_470D20(current, maximum int) int {
 	uiMeters()[4].Current, uiMeters()[4].Maximum = uint32(current), uint32(maximum)
 	if current != maximum {

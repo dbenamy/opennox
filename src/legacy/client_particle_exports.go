@@ -84,11 +84,6 @@ func nox_thing_vortex_draw(a1 *C.int, a2 *C.nox_drawable) C.int {
 	return C.int(particleVortexDraw(vp, dr))
 }
 
-//export nox_xxx_spriteChangeLightColor_484BE0
-func nox_xxx_spriteChangeLightColor_484BE0(p *C.uint32_t, r, g, b C.int) *C.uint32_t {
-	return (*C.uint32_t)(particleLightColor(unsafe.Pointer(p), int(r), int(g), int(b)))
-}
-
 //export sub_484C00
 func sub_484C00(p, angle C.int) C.longlong {
 	return C.longlong(particleLightAngle(unsafe.Pointer(uintptr(uint32(p))), int(angle), false))

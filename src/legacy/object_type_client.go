@@ -44,15 +44,6 @@ func nox_get_thing_name(i int) *C.char {
 	return (*C.char)(unsafe.Pointer(t.Name))
 }
 
-//export nox_get_thing
-func nox_get_thing(i int) *nox_thing {
-	t := GetClient().Cli().Things.TypeByInd(i)
-	if t == nil {
-		return nil
-	}
-	return (*nox_thing)(t.C())
-}
-
 //export nox_get_thing_pretty_name
 func nox_get_thing_pretty_name(i int) *wchar2_t {
 	t := GetClient().Cli().Things.TypeByInd(i)

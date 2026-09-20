@@ -27,19 +27,19 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 	case 4:
 		return uint32(C.sub_4673F0(C.int(a), C.int(b)))
 	case 5:
-		return uint32(C.sub_467410(C.int(a)))
+		return uint32(sub_467410(int(a)))
 	case 6:
-		return uint32(C.sub_467420(C.char(a)))
+		return uint32(sub_467420(C.char(a)))
 	case 7:
-		return uint32(C.sub_467430())
+		return uint32(sub_467430())
 	case 8:
 		return uint32(C.sub_467440(C.int(a)))
 	case 9:
-		return uint32(C.sub_467450(C.int(a)))
+		return uint32(sub_467450(int(a)))
 	case 10:
-		return uint32(C.sub_467470(C.int(a), C.float(math.Float32frombits(b))))
+		return uint32(sub_467470(int(a), math.Float32frombits(b)))
 	case 11:
-		return uint32(C.sub_467490(C.int(a)))
+		return uint32(sub_467490(int(a)))
 	case 12:
 		return uint32(C.sub_4674A0())
 	case 13:
@@ -55,7 +55,7 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 	case 17:
 		return uint32(uiInventoryMode())
 	case 18:
-		return uint32(C.sub_4675E0(C.int(a), C.short(b), C.short(c)))
+		return uint32(uiInventoryItemHealth(int(a), int16(b), int16(c)))
 	case 19:
 		C.sub_467680()
 		return 0
@@ -80,7 +80,7 @@ func PortTestUIInventoryCall(op int, a, b, c uint32) uint32 {
 	case 29:
 		return uint32(uintptr(unsafe.Pointer(uiInventorySelectedWeapon())))
 	case 30:
-		return uint32(uintptr(unsafe.Pointer(C.sub_467930(C.int(a), C.int(b), C.int(c)))))
+		return uint32(uintptr(unsafe.Pointer(sub_467930(int(a), int(b), int(c)))))
 	default:
 		panic("client inventory operation")
 	}

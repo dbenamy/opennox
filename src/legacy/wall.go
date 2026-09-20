@@ -31,24 +31,9 @@ func asWallP(p unsafe.Pointer) *server.Wall {
 	return (*server.Wall)(p)
 }
 
-//export nox_server_getWallAtGrid_410580
-func nox_server_getWallAtGrid_410580(x, y int) unsafe.Pointer {
-	return GetServer().S().Walls.GetWallAtGrid(image.Pt(x, y)).C()
-}
-
 //export nox_xxx_wall_4105E0
 func nox_xxx_wall_4105E0(x, y int) unsafe.Pointer {
 	return GetServer().S().Walls.GetWallAtGrid2(image.Pt(x, y)).C()
-}
-
-//export nox_xxx_wallCreateAt_410250
-func nox_xxx_wallCreateAt_410250(x, y int) unsafe.Pointer {
-	return GetServer().S().Walls.CreateAtGrid(image.Pt(x, y)).C()
-}
-
-//export nox_xxx_mapDelWallAtPt_410430
-func nox_xxx_mapDelWallAtPt_410430(x, y int) {
-	GetServer().S().Walls.DeleteAtGrid(image.Pt(x, y))
 }
 
 //export sub_4106A0

@@ -84,7 +84,7 @@ func PortTestBookAwardCall(name string, args ...uint32) uint32 {
 	case "nox_xxx_netAbilityReport_4D8060":
 		return bookReportAbility(u, int32(a[1]), int32(a[2]))
 	case "nox_xxx_abilGetSuccess_4FB960_ability":
-		C.nox_xxx_abilGetSuccess_4FB960_ability(C.int(a[0]))
+		bookAwardClientMessage(int32(a[0]), true)
 		return 0
 	case "nox_xxx_abilityRewardServ_4FB9C0_ability":
 		return uint32(bookAwardAbility(u, int32(a[1]), int32(a[2])))
@@ -95,7 +95,7 @@ func PortTestBookAwardCall(name string, args ...uint32) uint32 {
 	case "nox_xxx_netSendSpellAward_4D7F90":
 		return bookReportSpell(u, int32(a[1]), int32(a[2]), int32(a[3]))
 	case "nox_xxx_abilGetError_4FB0B0_magic_plyrspel":
-		C.nox_xxx_abilGetError_4FB0B0_magic_plyrspel(C.int(a[0]))
+		bookAwardClientMessage(int32(a[0]), false)
 		return 0
 	case "nox_xxx_spellGrantToPlayer_4FB550":
 		return uint32(bookAwardSpell(u, int32(a[1]), int32(a[2]), int32(a[3]), int32(a[4])))

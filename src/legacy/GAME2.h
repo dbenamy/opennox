@@ -4,7 +4,6 @@
 #include "defs.h"
 
 char* nox_get_thing_name(int i);
-nox_thing* nox_get_thing(int i);
 wchar2_t* nox_get_thing_pretty_name(int i);
 wchar2_t* nox_get_thing_desc(int i);
 int nox_get_thing_pretty_image(int i);
@@ -72,7 +71,6 @@ nox_drawable* sub_45A060();
 nox_drawable* nox_drawable_next_45A070(nox_drawable* a1);
 void nox_xxx_sprite_45A110_drawable(nox_drawable* a1);
 nox_drawable* nox_xxx_spriteLoadAdd_45A360_drawable(int thingInd, int a2, int a3);
-void nox_xxx_spriteDeleteStatic_45A4E0_drawable(nox_drawable* dr);
 void sub_45A670(unsigned int a1);
 nox_drawable* nox_xxx_netSpriteByCodeDynamic_45A6F0(int a1);
 nox_drawable* nox_xxx_netSpriteByCodeStatic_45A720(int a1);

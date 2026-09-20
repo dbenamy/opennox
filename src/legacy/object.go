@@ -181,11 +181,6 @@ func nox_new_npc(id int) unsafe.Pointer {
 	return GetServer().S().NPCs.New(id).C()
 }
 
-//export nox_npc_by_id
-func nox_npc_by_id(id int) unsafe.Pointer {
-	return GetServer().S().NPCs.ByID(id).C()
-}
-
 //export nox_init_npc
 func nox_init_npc(npc unsafe.Pointer, id int) {
 	GetServer().S().NPCs.Set((*server.NPC)(npc), id)

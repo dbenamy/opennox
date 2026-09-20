@@ -37,7 +37,6 @@ unsigned char sub_47DBC0();
 int sub_47FCE0(uint32_t* a1, int a2);
 uint8_t* sub_480220(uint8_t* a1, uint8_t* a2);
 uint16_t* sub_480250(uint8_t* a1, uint16_t* a2);
-uint32_t* nox_xxx_spriteChangeLightColor_484BE0(uint32_t* a1, int a2, int a3, int a4);
 long long sub_484C00(int a1, int a2);
 long long nox_xxx_spriteChangeLightSize_484C30(int a1, int a2);
 int sub_484C60(float a1);

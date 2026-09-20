@@ -14,20 +14,21 @@
 
 ## Current status
 
-The world grid, wall storage and map serialization conversion is qualified.
-Shared grid/tile/secret-list owners and the remaining numeric/table helpers now
-use Go. Default/server/highres pass 294/293/294 affected roots and 347 frozen
-captures, with fresh production/ABI, full-suite comparison and headless
-gameplay/save-load qualification. See [WORLD_GRID.md](docs/porting/WORLD_GRID.md).
+Client game-state messages and notices are now Go and fully qualified. The batch
+moves 42 client cases plus the notice dispatcher, retires 36 obsolete C interfaces,
+and moves the fade-object setting. Default/server/highres pass 266/263/266 affected
+roots, all 32 frozen captures and ten new boundary cases. Fresh production/ABI,
+exact full-suite comparison and headless gameplay/save-load checks pass. See
+[GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md).
 
-C remaining is **8,820 physical lines in 38 files**, zero reference C.
-This conversion removes 447 lines, including four unused or test-only helpers.
-See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
+C remaining is **7,897 physical lines in 37 files**, zero reference C.
+This conversion removes **923 lines**. Remaining client/server dispatch stays in
+the production C fallback for subsequent connected batches. The next candidate
+covers client progress, equipment/winner reports and effects; its helper and owner
+audit is in progress. See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
-The remaining client/server game-message dispatch and notice baseline is in
-progress: 52,894 cases across 32 message roots, with accumulated repeated checks
-and matching captures. Production is unchanged; see
-[GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) for remaining coverage.
+The preceding world-grid conversion is recorded in
+[WORLD_GRID.md](docs/porting/WORLD_GRID.md).
 
 Previous completed GUI batches include
 [client interaction](docs/porting/CLIENT_INTERACTION.md), the
@@ -114,6 +115,10 @@ may precede full qualification when their evidence and remaining gates are expli
    screens unchanged and repeat final qualification on the corrected source.
    Trace the existing C adapter when choosing a Go API: similar names can hide
    differences in coordinate space, return conventions or ownership.
+   Preserve failed lookups separately from valid empty strings. The notice review
+   caught a discarded spell-title lookup result: the C formatter prints NULL as
+   "(null)", while a valid empty title remains empty. Cover both before milestone
+   gates when replacing pointer-returning string adapters.
    For libc parsers, establish saturation, direct float32 rounding, incomplete
    tokens, ASCII keyword matching and NaN payloads before final target sweeps.
    Small ignored library probes can settle these cheaply; retain independent Go

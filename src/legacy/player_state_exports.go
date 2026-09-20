@@ -49,13 +49,3 @@ func nox_xxx_sendAllClientStatus_4175C0(to C.int) *C.char {
 func nox_xxx_cliPlayerRespawn_417680(pl C.int, mask C.char) {
 	playerStateRespawn((*server.Player)(unsafe.Pointer(uintptr(uint32(pl)))), byte(mask))
 }
-
-//export nox_xxx_clientEquipWeaponArmor_417AA0
-func nox_xxx_clientEquipWeaponArmor_417AA0(command C.char, code, mask, mods C.int) *C.char {
-	return (*C.char)(playerStateEquip(byte(command), uint32(code), uint32(mask), (*[4]byte)(unsafe.Pointer(uintptr(uint32(mods))))))
-}
-
-//export sub_417B80
-func sub_417B80(command C.char, code, mask C.int) *C.char {
-	return (*C.char)(playerStateUnequip(byte(command), uint32(code), uint32(mask)))
-}

@@ -24,29 +24,23 @@ func sub_4673F0(a, b int) int {
 	return a
 }
 
-//export sub_467410
 func sub_467410(v int) int { *memmap.PtrUint32(0x5D4594, 1062540) = uint32(v); return v }
 
-//export sub_467420
 func sub_467420(v C.char) C.char { *memmap.PtrUint8(0x5D4594, 1062536) = byte(v); return v }
 
-//export sub_467430
 func sub_467430() C.uchar { return C.uchar(memmap.Uint8(0x5D4594, 1062536)) }
 
 //export sub_467440
 func sub_467440(v int) int { *memmap.PtrUint32(0x5D4594, 1062544) = uint32(v); return v }
 
-//export sub_467450
 func sub_467450(v int) int { *memmap.PtrUint32(0x5D4594, 1062548) = uint32(v); return v }
 
-//export sub_467470
 func sub_467470(index int, v float32) int {
 	i := uint8(index)
 	*memmap.PtrFloat32(0x5D4594, 1063100+uintptr(i)*4) = v
 	return int(i)
 }
 
-//export sub_467490
 func sub_467490(v int) int { C.dword_5d4594_1062552 = C.uint32_t(v); return v }
 
 //export sub_4674A0
@@ -75,13 +69,12 @@ func sub_467590() int {
 }
 func uiInventoryMode() int { return int(C.dword_5d4594_1049864) }
 
-//export sub_4675E0
-func sub_4675E0(code int, current, maximum C.short) C.short {
+func uiInventoryItemHealth(code int, current, maximum int16) int16 {
 	if found := uiInventoryFindCode(uint32(code)); found != nil {
 		dr := found.Cell.Drawable
 		*(*uint16)(unsafe.Add(dr.C(), 292)) = uint16(current)
 		*(*uint16)(unsafe.Add(dr.C(), 294)) = uint16(maximum)
-		return C.short(uintptr(dr.C()))
+		return int16(uintptr(dr.C()))
 	}
 	dr := uiInventoryDragged()
 	if dr != nil && dr.NetCode32 == uint32(code) {
@@ -89,7 +82,7 @@ func sub_4675E0(code int, current, maximum C.short) C.short {
 		*(*uint16)(unsafe.Add(dr.C(), 294)) = uint16(maximum)
 		return maximum
 	}
-	return C.short(uintptr(unsafe.Pointer(dr)))
+	return int16(uintptr(unsafe.Pointer(dr)))
 }
 
 //export sub_467680
@@ -108,7 +101,6 @@ func sub_467740(v int) int { C.dword_5d4594_1062488 = C.uint32_t(v); return v }
 //export sub_4678C0
 func sub_4678C0() int { return int(C.dword_5d4594_1062488) }
 
-//export sub_467930
 func sub_467930(code, current, maximum int) *C.char {
 	if code == 0 {
 		return nil

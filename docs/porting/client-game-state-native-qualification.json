@@ -1,0 +1,218 @@
+{
+  "status": "qualified native client-state and notice conversion",
+  "c_baseline": "beb38b24",
+  "client_cases": 42,
+  "client_whole_groups": 39,
+  "selected_c_body_lines": 904,
+  "frozen_message_cases": 52894,
+  "frozen_message_captures": 32,
+  "additional_native_boundary_cases": 10,
+  "targets": {
+    "default": {
+      "roots": 266,
+      "selected_roots": 266,
+      "skips": 0,
+      "frozen_captures": 32,
+      "source_unchanged": true,
+      "artifact": "build/port-game-messages/native-state-final-default",
+      "wall_seconds": 211.36335136997513
+    },
+    "server": {
+      "roots": 263,
+      "selected_roots": 263,
+      "skips": 0,
+      "frozen_captures": 32,
+      "source_unchanged": true,
+      "artifact": "build/port-game-messages/native-state-final-server",
+      "wall_seconds": 198.98559550894424
+    },
+    "highres": {
+      "roots": 266,
+      "selected_roots": 266,
+      "skips": 0,
+      "frozen_captures": 32,
+      "source_unchanged": true,
+      "artifact": "build/port-game-messages/native-state-final-highres",
+      "wall_seconds": 123.35540188406594
+    }
+  },
+  "retired_interfaces": [
+    "gameFPS",
+    "nox_client_drawable_testBuff_4356C0",
+    "nox_client_handlePacketInform_4C9BF0",
+    "nox_get_thing",
+    "nox_npc_by_id",
+    "nox_server_getWallAtGrid_410580",
+    "nox_xxx_abilGetError_4FB0B0_magic_plyrspel",
+    "nox_xxx_abilGetSuccess_4FB960_ability",
+    "nox_xxx_cliAddHealthChange_49A650",
+    "nox_xxx_cliAddObjFriend_4959F0",
+    "nox_xxx_cliSetManaAndMax_470CE0",
+    "nox_xxx_cliSetMana_470D10",
+    "nox_xxx_cliSetTotalHealth_470C80",
+    "nox_xxx_clientEquipWeaponArmor_417AA0",
+    "nox_xxx_clientEquip_49A3D0",
+    "nox_xxx_mapDelWallAtPt_410430",
+    "nox_xxx_spriteChangeLightColor_484BE0",
+    "nox_xxx_spriteDeleteStatic_45A4E0_drawable",
+    "nox_xxx_wallCreateAt_410250",
+    "sub_410550",
+    "sub_417B80",
+    "sub_467410",
+    "sub_467420",
+    "sub_467430",
+    "sub_467450",
+    "sub_467470",
+    "sub_467490",
+    "sub_4675E0",
+    "sub_467930",
+    "sub_470CB0",
+    "sub_470D20",
+    "sub_495120",
+    "sub_495150",
+    "sub_495210",
+    "sub_4959B0",
+    "sub_495A20"
+  ],
+  "moved_owner": "nox_client_fadeObjects_80836 -> clientFadeObjects",
+  "remaining_c_fallback": "all unselected client cases and remaining server dispatcher",
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 75.27903923182748,
+        "sha256": "c12fd7f7156cd7db57f259633470c8cd292648afde8ce4128529e7b942905ff2",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.625848628114909,
+        "sha256": "6b7e9f0ab924dab6846cefa2507b44e789e26d1c589fddc5298dc0a6aa75790c",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 74.61424062284641,
+        "sha256": "702d5f86b0b5df1c7b051b13281be3227f23569527236b49ccc501af9c18edd9",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "client-game-state-native": {
+        "exit": 0,
+        "wall_seconds": 71.65532345301472,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 70.17938184388913,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+          "binary_sha256": "c12fd7f7156cd7db57f259633470c8cd292648afde8ce4128529e7b942905ff2",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-game-messages/native-state-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/client-game-state-native/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Go client game-state messages and notices, native fade-setting owner",
+          "isolated_network": false,
+          "removed_maps": 0
+        }
+      },
+      "client-game-state-native-save": {
+        "exit": 0,
+        "wall_seconds": 45.35074402089231,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.87284944392741,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "c12fd7f7156cd7db57f259633470c8cd292648afde8ce4128529e7b942905ff2",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-game-messages/native-state-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/client-game-state-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Go client game-state messages and notices, native fade-setting owner",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "43fa73085ee8e45575b30c23bae2ac03a276c5f4965945f24c2065fada39539d"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 60.62025688798167,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "production_artifact": "build/port-game-messages/native-state-production",
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 37,
+      "lines": 7897
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "removed_c_lines": 923,
+  "review_notes": [
+    "unknown spell titles preserve C NULL formatting as (null), distinct from valid empty titles; actual 386 noxstring.c probe confirms",
+    "unterminated notice text returns zero without side effects; former C string walk had no defined result outside a terminated message",
+    "remaining client/server cases retain the actual production C fallback; no C algorithm retained only for tests"
+  ],
+  "source_manifest_sha256": "1a5cf01c90c2ca289e476c953e874806f680ad78de9e81c83abf44ef3ee1d29f",
+  "storage_maintenance": {
+    "capture_deduplication_plans": [
+      "original-state",
+      "first-native-state",
+      "final-native-state"
+    ],
+    "capture_duplicate_bytes": 4281187324,
+    "completed_scenario_duplicate_asset_bytes": 1112747701,
+    "asset_restore_script": "build/port-game-messages/deduplicate-client-state-assets.py",
+    "plans_consumed": true,
+    "original_assets_unchanged": true
+  }
+}

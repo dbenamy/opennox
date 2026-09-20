@@ -2,18 +2,14 @@
 
 package legacy
 
-/*
-#include "client__network__inform.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"unsafe"
 )
 
-// PortTestGameNotice invokes the original notice dispatcher with fixture-owned data.
+// PortTestGameNotice invokes the production notice dispatcher with fixture-owned data.
 func PortTestGameNotice(data []byte) int {
-	return int(C.nox_client_handlePacketInform_4C9BF0(C.int(uintptr(unsafe.Pointer(&data[0])))))
+	return clientGameNotice(data)
 }
 
 // PortTestGameSecretWall owns the actual secret-list head for a borrowed wall.
