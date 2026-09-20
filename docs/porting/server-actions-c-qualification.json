@@ -1,0 +1,108 @@
+{
+  "status": "qualified original-C remaining server action dispatcher baseline",
+  "production_revision": "f8607de2",
+  "selected_top_level_cases": 16,
+  "selected_dispatcher_c_lines": 476,
+  "selected_private_helpers": 2,
+  "selected_helper_c_lines": 26,
+  "production_c_lines": 6641,
+  "production_c_files": 36,
+  "reference_c_lines": 0,
+  "frozen_captures": 75,
+  "new_captures": [
+    {
+      "file": "interaction-game-server-secondary-weapon.json",
+      "cases": 480,
+      "sha256": "f924ad7cd6bd403723f8abf5b2002d84da8a08a2191850ffc66934021f8bdf73"
+    },
+    {
+      "file": "interaction-game-server-inventory-failure.json",
+      "cases": 150,
+      "sha256": "15094f70fd4369de5d681a9c4047da39ef7657d0e408a35d8b0c7a9549927989"
+    },
+    {
+      "file": "interaction-game-server-book-request.json",
+      "cases": 320,
+      "sha256": "d349cf51f1b1e37f67854074a9f5de6cbe662352f402680b64efe05c213e78a9"
+    },
+    {
+      "file": "interaction-game-server-creature-command.json",
+      "cases": 320,
+      "sha256": "c5cb8dca7ac5a35ff7fdd271bad8c123bfbd7fbfe1cab219dd89d20d2e7429ab"
+    },
+    {
+      "file": "interaction-game-server-spell-request.json",
+      "cases": 720,
+      "sha256": "f68b6402c03719cfc97614afa7c5d7a83c3b9e218ee1fe13a327f01aab8986f6"
+    },
+    {
+      "file": "interaction-game-server-spell-friendly-target.json",
+      "cases": 32,
+      "sha256": "09b931b60ec37c7f7fd6725edbe6e5bf5f43d78a88160d9f0e8e25cc77023785"
+    },
+    {
+      "file": "interaction-game-server-collision.json",
+      "cases": 90,
+      "sha256": "55420664c3847cee3d2ca07efc756a85cc8828c32532ff0486498e76fdfa0c19"
+    },
+    {
+      "file": "interaction-game-server-gauntlet-respawn.json",
+      "cases": 36,
+      "sha256": "282b016aebebb4df0f780b6b570743e0f50b0c98e030c5b97c6b863862175c96"
+    },
+    {
+      "file": "interaction-game-server-trade-transactions.json",
+      "cases": 176,
+      "sha256": "6e06a319fc5ddcd753a30573a0cdb3e03697553aaf6eba7ac19fe662f9d46ef2"
+    },
+    {
+      "file": "interaction-game-server-trade-without-session.json",
+      "cases": 176,
+      "sha256": "03aebe40551aacf62501ff8bdb8eb625d3911a834b4b4af1ee529d873807728a"
+    },
+    {
+      "file": "interaction-game-server-trade-offers.json",
+      "cases": 36,
+      "sha256": "b369ba65a29ced1ed965fd86ff480f33f462c7c4c8554f9f5825c2ae4ab2e5a8"
+    },
+    {
+      "file": "interaction-game-server-trade-opening.json",
+      "cases": 180,
+      "sha256": "15d09f9876bf955ce28b428b0edf9ae522de5edb19840dd012da362635d5793e"
+    }
+  ],
+  "new_captured_cases": 2716,
+  "captured_cases": 124920,
+  "targets": {
+    "default": {
+      "artifact_directory": "build/port-game-messages/server-actions-c-final-default",
+      "roots": 518,
+      "no_skips": true,
+      "source_unchanged": true,
+      "wall_seconds": 232.14392566098832
+    },
+    "server": {
+      "artifact_directory": "build/port-game-messages/server-actions-c-final-server",
+      "roots": 514,
+      "no_skips": true,
+      "source_unchanged": true,
+      "wall_seconds": 341.8114459600765
+    },
+    "highres": {
+      "artifact_directory": "build/port-game-messages/server-actions-c-final-highres",
+      "roots": 518,
+      "no_skips": true,
+      "source_unchanged": true,
+      "wall_seconds": 258.80004732799716
+    }
+  },
+  "source_manifest_sha256": "ed7a5c33363352e1e738f1a27cc6608632426d89264babd21087ac9029458aa0",
+  "reused_production_qualification": "client-progress-effects-native-qualification.json",
+  "reuse_reason": "Only porttest fixtures and documentation changed; production source remains identical to f8607de2.",
+  "notes": [
+    "Valid action captures are unchanged across three build profiles.",
+    "Independent contracts cover lengths, unchanged input, callback identity, queue contents, lookup priority, vote withdrawal, gauntlet routing and trade admission.",
+    "The native conversion will additionally reject incomplete messages before accessing fields, with separate native-only contracts; the caller currently checks consumed size afterward.",
+    "Native draft and interface retirement are not installed at this baseline."
+  ]
+}

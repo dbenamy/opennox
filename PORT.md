@@ -24,6 +24,9 @@ checks pass. See [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md).
 C remaining is **6,641 physical lines in36 files**, zero reference C.
 This conversion removes **1,260 lines**. Next is the remaining server player-action
 dispatcher, followed by the remaining client settings/team/session messages.
+The complete server-action C baseline now passes518/514/518 test roots across
+default/server/highres, with75 frozen captures including2,716 new action cases.
+The Go conversion is next; see [its baseline](docs/porting/server-actions-c-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in

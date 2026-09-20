@@ -70,6 +70,26 @@ than an unrelated AI current-enemy setting. An omitted fixture import was fixed
 before the passing build. Failed probes remain recorded as failed, and no frozen
 expectation or production code changed.
 
+Second partial checkpoint **997762fa** is committed and pushed (push32026 joined).
+The remaining trade contracts now pass probe11: opening180, offers36 and
+without-session176; all nine prior captures match unchanged. There are now2,716
+new captured cases in12 files. The complete baseline manifest freezes75 files,
+including the63 prior client captures. Default/server/highres qualification passes518/514/518 roots, no skips, with
+identical source and all75 captures. See [the complete C baseline](docs/porting/server-actions-c-qualification.json). The related inventory,
+equipment, controls, creature, spell and shop suites are included.
+
+The ignored server_actions.go.draft is prepared but NOT INSTALLED; production
+still matches f8607de2. A recursive C and Go-call audit identifies38 candidate
+obsolete Go-backed C exports after this dispatcher is removed. Qualify and commit
+the full C baseline before installing the draft or retiring those interfaces.
+
+Review decision for the upcoming conversion: the caller validates consumed size
+only after dispatch. The Go draft adds preflight lengths so incomplete actions
+return-1 without accessing owners or mutating input. Complete-action behavior
+still must match the frozen C captures. A separate ignored native-only test draft
+covers every incomplete prefix of all selected action/subaction sizes. This is a
+small, reversible correction under the standing authorization; no question is pending.
+
 ## Recovery and storage
 
 Server capture consolidation server-actions-first and server-actions-creature is
@@ -88,6 +108,15 @@ Further completed capture consolidation is CONSUMED: server-actions-finished-sec
 (465,140,604 bytes), server-actions-second-probe (536,294,079), and
 server-actions-second-repeat-one and -two (642,308,264 each). All audit/apply jobs are joined;
 all paths, bytes, logs and pass/fail status are preserved.
+
+Eleventh cache cleanup is CONSUMED:12 superseded archives /810,104,118 bytes;
+cutoff is probe9's source manifest, preserving current fixture archives.
+Audit41476/apply32518 joined. Whole finished-run capture consolidation
+server-actions-all-finished is CONSUMED:911 paths /4,981,959,805 logical bytes
+(audit69350/apply10136 joined), preserving failed status and all evidence too.
+Server-actions-complete-probe (642,308,264 bytes) and server-actions-full-default
+(1,520,036,639 bytes) are CONSUMED; all jobs joined. Physical free space recovered
+above4 GB before starting the broader build matrix.
 
 Completed native gameplay/save asset deduplication is CONSUMED:1,112,747,701
 original-identical bytes removed (audit51461/apply98382 joined). Restoration uses
@@ -1972,3 +2001,8 @@ session conversion and push before beginning the next implementation.
 World-grid completed scenario cleanup reclaimed 1,112,747,701 bytes after verifying
 original asset hashes. Per-run restore manifests preserve recovery; original
 assets/archive and changed saves remain. The cleanup script is consumed.
+
+Complete server baseline capture deduplication server-actions-full-server and
+-highres is CONSUMED:2,025,980,850 and2,039,573,772 logical bytes. All audit/apply
+jobs joined, preserving every path and byte. All three baseline qualification
+jobs81046/1015/14986 are joined PASS.

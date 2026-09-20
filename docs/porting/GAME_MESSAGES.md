@@ -645,3 +645,25 @@ green-bolt correction remains the separately documented intentional behavior fix
 Next, finish the remaining server action dispatcher as one coherent batch, reusing
 existing C contracts and extending positive action coverage. The old fixture drafts
 and installation/retirement scripts referenced above are consumed.
+
+## Remaining server actions: original-C baseline
+
+The complete remaining server dispatcher has16 top-level cases /476 physical C
+lines, plus26 lines in two private pickup helpers. Its baseline passes
+**518/514/518 roots** across default/server/highres, no skips, with identical
+source fingerprints and all **75 frozen captures**. Twelve new captures cover
+**2,716 cases**, including creature commands, spell queues and friendly targets,
+collision callbacks, inventory failure, secondary weapons, book lookup priority,
+gauntlet respawn, shop admission and trade transactions. Separate contracts cover
+vote withdrawal and gauntlet leave routing.
+
+Production remains identical to **f8607de2**:6,641 physical C lines in36 files,
+zero reference C. Its production/ABI, full-suite and headless save/load evidence
+is reused because only porttest fixtures and documentation changed. See
+[the C qualification](server-actions-c-qualification.json) and
+[the batch manifest](server-actions-c-batch.json).
+
+Decision for review in the native conversion: reject incomplete actions before
+reading their fields. The current caller checks consumed size only afterward.
+Complete messages retain the frozen behavior; separate native-only contracts
+will check every incomplete prefix without accessing gameplay owners.

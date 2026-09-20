@@ -5,18 +5,39 @@ package legacy
 import (
 	"bytes"
 	"encoding/binary"
+	"unsafe"
 )
 
 type PortTestServerTradeSpec struct {
-	Dispatch bool
-	Subtype  byte
-	Code     uint16
-	Count    byte
+	Dispatch                         bool
+	NoSession, Found, Saving, Vendor bool
+	Flags                            uint32
+	Subtype                          byte
+	Code                             uint16
+	Count                            byte
 }
 
 func (p *portTestShopPools) portTestServerTrade(a PortTestShopAction, session *shopSession) uint32 {
 	sp := a.ServerMessage
 	u := session.Units[a.Side]
+	if sp.NoSession {
+		old := u.UpdateDataPlayer().Trade70
+		u.UpdateDataPlayer().Trade70 = nil
+		defer func() { u.UpdateDataPlayer().Trade70 = old }()
+	}
+	if sp.Subtype == 15 || sp.Subtype == 16 {
+		target := p.items[0].u
+		oldList, oldPending := p.proxy.core.Objs.List, p.proxy.core.Objs.Pending
+		oldNext, oldExtent := target.ObjNext, target.Extent
+		p.proxy.core.Objs.List, p.proxy.core.Objs.Pending = target, nil
+		target.ObjNext, target.Extent = nil, 23
+		restore := PortTestCreatureXferLookupOwner()
+		defer func() {
+			restore()
+			target.ObjNext, target.Extent = oldNext, oldExtent
+			p.proxy.core.Objs.List, p.proxy.core.Objs.Pending = oldList, oldPending
+		}()
+	}
 	gold := session.Gold
 	var stock []uint32
 	for n := session.Stock; n != nil; n = n.Next {
@@ -43,12 +64,20 @@ func (p *portTestShopPools) portTestServerTrade(a PortTestShopAction, session *s
 		if n := Nox_xxx_netOnPacketRecvServ_51BAD0_net_sdecode_switch(pl.PlayerIndex(), data, pl, u, u.UpdateData); n != length || !bytes.Equal(data, before) {
 			panic("trade message length/input")
 		}
-	} else {
+	} else if !sp.NoSession {
 		switch sp.Subtype {
 		case 14:
 			shopCancelTrade(session)
+		case 15:
+			if sp.Found && tradeAddOffer(session, u, p.items[a.Item].u) == 1 {
+				inventoryRemove(u, p.items[a.Item].u)
+			}
 		case 16:
-			shopWithdraw(session, uint32(sp.Code))
+			code := uint32(sp.Code)
+			if sp.Code == 0x8017 {
+				code = p.items[0].u.NetCode
+			}
+			shopWithdraw(session, code)
 		case 17:
 			shopAccept(session, u)
 		case 18:
@@ -86,6 +115,52 @@ func (p *portTestShopPools) portTestServerTrade(a PortTestShopAction, session *s
 			p.markFreed(v)
 		}
 		p.sessions[a.Session] = nil
+	}
+	return 0
+}
+
+func (p *portTestShopPools) portTestServerTradeOpening(a PortTestShopAction) uint32 {
+	sp := a.ServerMessage
+	u, target := &p.proxy.life.players[0], p.proxy.callbacks.shop.npc()
+	pl := u.UpdateDataPlayer().Player
+	oldFlags, oldSaving := pl.Field3680, Nox_xxx_gameGet_4DB1B0
+	pl.Field3680 = sp.Flags
+	Nox_xxx_gameGet_4DB1B0 = func() bool { return sp.Saving }
+	oldList, oldPending := p.proxy.core.Objs.List, p.proxy.core.Objs.Pending
+	oldNext, oldCode, oldExtent, oldSubclass := target.ObjNext, target.NetCode, target.Extent, target.ObjSubClass
+	p.proxy.core.Objs.List, p.proxy.core.Objs.Pending = target, nil
+	target.ObjNext, target.NetCode, target.Extent = nil, 7, 23
+	target.ObjSubClass &^= 8
+	if sp.Vendor {
+		target.ObjSubClass |= 8
+	}
+	restore := PortTestCreatureXferLookupOwner()
+	defer func() {
+		restore()
+		if pl.Field3680 != sp.Flags {
+			panic("trade opening changed admission flags")
+		}
+		pl.Field3680, Nox_xxx_gameGet_4DB1B0 = oldFlags, oldSaving
+		p.proxy.core.Objs.List, p.proxy.core.Objs.Pending = oldList, oldPending
+		target.ObjNext, target.NetCode, target.Extent, target.ObjSubClass = oldNext, oldCode, oldExtent, oldSubclass
+	}()
+	if sp.Dispatch {
+		data := []byte{201, 21, 0, 0}
+		binary.LittleEndian.PutUint16(data[2:], sp.Code)
+		before := bytes.Clone(data)
+		if n := Nox_xxx_netOnPacketRecvServ_51BAD0_net_sdecode_switch(pl.PlayerIndex(), data, pl, u, u.UpdateData); n != 4 || !bytes.Equal(data, before) {
+			panic("trade opening length/input")
+		}
+	} else if sp.Found && sp.Vendor && !sp.Saving && sp.Flags&3 == 0 {
+		tradeStart(u, target)
+	}
+	q := u.UpdateDataPlayer().Trade70
+	want := sp.Found && sp.Vendor && !sp.Saving && sp.Flags&3 == 0
+	if (q != nil) != want {
+		panic("trade opening admission differs from contract")
+	}
+	if q != nil {
+		p.engineAdopt(unsafe.Pointer(q))
 	}
 	return 0
 }

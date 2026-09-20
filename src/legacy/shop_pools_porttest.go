@@ -331,7 +331,7 @@ func (p *portTestShopPools) run() {
 	p.temporaryItems()
 	for _, a := range s.spec.Sequence {
 		var q unsafe.Pointer
-		if a.Op != PortTestShopCreate && a.Op != PortTestShopReset && a.Op != PortTestShopPlayerCleanup && a.Op != PortTestTradeCreatePlayer && a.Op != PortTestTradeStart && a.Op < 200 {
+		if a.Op != PortTestShopCreate && a.Op != PortTestShopReset && a.Op != PortTestShopPlayerCleanup && a.Op != PortTestTradeCreatePlayer && a.Op != PortTestTradeStart && a.Op != PortTestTradeOpeningMessage && a.Op < 200 {
 			q = p.sessions[a.Session]
 			if q == nil {
 				panic("shop fixture stale session")
