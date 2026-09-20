@@ -146,48 +146,6 @@ uint32_t nox_player_netCode_85319C = 0;
 
 // 458F5A: variable 'v34' is possibly undefined
 
-//----- (00459150) --------------------------------------------------------
-//----- (00459DB0) --------------------------------------------------------
-int sub_459DB0(nox_drawable* dr) {
-	int a1 = dr;
-	return *(uint32_t*)(a1 + 112) & 0x400000 && *(uint8_t*)(a1 + 116) & 8;
-}
-
-//----- (00459EC0) --------------------------------------------------------
-int nox_xxx_cliNextMinimapObj_459EC0(int a1) {
-	int next = *(uint32_t*)(a1 + 408);
-	if (a1 && a1 == next) {
-		printf("nox_xxx_cliNextMinimapObj_459EC0: infinite loop!\n");
-		abort();
-		return 0;
-	}
-	return next;
-}
-
-//----- (0045A010) --------------------------------------------------------
-nox_drawable* sub_45A010(nox_drawable* dr) { return dr->field_104; }
-
-//----- (0045A070) --------------------------------------------------------
-nox_drawable* nox_drawable_next_45A070(nox_drawable* a1) {
-	int result; // eax
-
-	if (a1) {
-		result = *(uint32_t*)((int)a1 + 368);
-	} else {
-		result = 0;
-	}
-	return result;
-}
-
-//----- (0045A990) --------------------------------------------------------
-int nox_xxx_spriteSetActiveMB_45A990_drawable(int a1) {
-	int result; // eax
-
-	result = a1;
-	*(uint32_t*)(a1 + 120) |= 4u;
-	return result;
-}
-
 //----- (0045A9B0) --------------------------------------------------------
 void sub_45A9B0(nox_drawable* a1p, nox_drawable* a2p) {
 	int a1 = a1p;
@@ -261,16 +219,4 @@ void sub_45A9B0(nox_drawable* a1p, nox_drawable* a2p) {
 			result = (int*)sub_4523D0(result);
 		}
 	}
-}
-
-//----- (0045AB80) --------------------------------------------------------
-int nox_xxx_spriteSetFrameMB_45AB80(int a1, int a2) {
-	int result; // eax
-
-	result = a1;
-	if (!(*(uint8_t*)(a1 + 112) & 2) || !(*(uint32_t*)(a1 + 116) & 0x40000) || *(uint32_t*)(a1 + 276) != 8) {
-		*(uint32_t*)(a1 + 312) = *(uint32_t*)(a1 + 308);
-		*(uint32_t*)(a1 + 308) = a2;
-	}
-	return result;
 }

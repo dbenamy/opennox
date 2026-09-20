@@ -117,7 +117,7 @@ func Sub_476080(a1 unsafe.Pointer) int {
 	return int(presentationWallY((*[8]byte)(a1)))
 }
 func Sub_459DB0(dr *client.Drawable) int {
-	return int(C.sub_459DB0((*nox_drawable)(dr.C())))
+	return drawableStatePredicate(dr)
 }
 func Sub_49A6A0(vp *noxrender.Viewport, dr *client.Drawable) {
 	combatHealthDraw(vp, dr)

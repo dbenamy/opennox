@@ -1,8 +1,8 @@
 # Client drawable state and update streams
 
 Qualified parent `ad78ea93` is pushed: 9,963 C lines /39 files /zero reference C.
-The original-C baseline is qualified; no selected production body has
-been changed or removed.
+Original-C baseline `8266e740` is pushed; the native conversion is fully qualified.
+Current C: **9,267 lines /39 files /zero reference C**, down 696 lines.
 
 The selection contains 16 C definitions /532 body lines: the two compact drawable
 update readers, drawable state/list accessors, two motion callbacks, summon/shield
@@ -65,3 +65,32 @@ will run fresh qualification. All three targets pass 88 selected roots without s
 are identical; all jobs are joined. Eight new hashes were enforced during the
 sweeps; inherited tests enforced their committed literals. The complete inventory
 was frozen after cross-target comparison for native checks. See the C batch manifest for the exact selected roots and capture checks.
+
+## Qualified native conversion
+
+C baseline `8266e740` is pushed. Native integration moves fifteen live bodies and
+two private owners to Go, retires the unused C minimap duplicate, and retains eleven
+Go-backed C interfaces for remaining callers/registrations. The existing animation
+frame/active methods are reused. Shared Blue/Violet caches remain in C for decoder
+consumers. Working-tree C is 9,267 lines /39 files /zero reference C (−696), qualified; the reduction includes obsolete address headings and blank lines.
+
+The first native compile identified two missing uint32-to-int conversions around
+the existing effectType helper. Both were corrected; frozen expectations are
+unchanged. The final focused run passes all drawable, alias and object-summon roots against
+frozen expectations. Static-native-final passes. All three native sweeps pass 88 roots /69 exact capture hashes without skips. The ignored native
+installer is consumed; its drafts no longer supersede reviewed source.
+
+All sweep and production fingerprints match the final source. Fresh default,
+highres and server binaries pass ABI/export audits. The full asset suite exactly
+matches 1,553 known failure entries and 15 pass /3 fail /32 skip packages. Both
+headless gameplay and explicit save/load pass against the spell-start references.
+All jobs are joined. Detailed evidence is in
+`client-drawable-state-native-qualification.json` and
+`build/port-client-drawable/native-*`.
+
+Completed verified cleanup reclaimed 509,147,276 bytes of obsolete legacy test
+archives and 1,106,323,366 bytes of obsolete root test archives. It excluded current
+drawable fixture archives and non-porttest artifacts. Identical completed captures
+share storage (316,265,478 bytes across C targets; 474,398,217 native bytes shared
+with C). Original inputs, qualified production binaries, logs and snapshots remain.
+The cleanup applications are consumed.

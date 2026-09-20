@@ -20,7 +20,6 @@ package legacy
 extern uint32_t nox_color_black_2650656;
 extern uint32_t nox_color_blue_2650684;
 extern uint32_t dword_8531A0_2572;
-extern uint32_t dword_5d4594_1313740;
 */
 import "C"
 
@@ -100,9 +99,9 @@ type PortTestObjectDrawEnvironment struct{ restore []func() }
 
 func PortTestNewObjectDrawEnvironment() *PortTestObjectDrawEnvironment {
 	e := new(PortTestObjectDrawEnvironment)
-	black, blue, text, summon := C.nox_color_black_2650656, C.nox_color_blue_2650684, C.dword_8531A0_2572, C.dword_5d4594_1313740
+	black, blue, text, summon := C.nox_color_black_2650656, C.nox_color_blue_2650684, C.dword_8531A0_2572, drawableSummonSpark
 	e.restore = append(e.restore, func() {
-		C.nox_color_black_2650656, C.nox_color_blue_2650684, C.dword_8531A0_2572, C.dword_5d4594_1313740 = black, blue, text, summon
+		C.nox_color_black_2650656, C.nox_color_blue_2650684, C.dword_8531A0_2572, drawableSummonSpark = black, blue, text, summon
 	})
 	for _, region := range [][3]uintptr{{0x587000, 177488, 64}, {0x5D4594, 1313720, 8}, {0x852978, 8, 4}} {
 		buf := unsafe.Slice((*byte)(memmap.PtrOff(region[0], region[1])), int(region[2]))
@@ -117,7 +116,7 @@ func (e *PortTestObjectDrawEnvironment) Reset() {
 	C.nox_color_black_2650656 = C.uint32_t(noxcolor.RGB5551Color(0, 0, 0).Color32())
 	C.nox_color_blue_2650684 = C.uint32_t(noxcolor.RGB5551Color(0, 0, 255).Color32())
 	C.dword_8531A0_2572 = C.uint32_t(noxcolor.RGB5551Color(220, 220, 60).Color32())
-	C.dword_5d4594_1313740 = 0
+	drawableSummonSpark = 0
 	*memmap.PtrUint32(0x5D4594, 1313720) = 0
 	*memmap.PtrUint32(0x5D4594, 1313724) = 0
 	*memmap.PtrUint32(0x852978, 8) = 0
@@ -132,5 +131,5 @@ func (e *PortTestObjectDrawEnvironment) Restore() {
 
 // PortTestObjectDrawNamedState observes the actual C globals, including lazy cache.
 func (e *PortTestObjectDrawEnvironment) NamedState() []uint32 {
-	return []uint32{uint32(C.nox_color_black_2650656), uint32(C.nox_color_blue_2650684), uint32(C.dword_8531A0_2572), uint32(C.dword_5d4594_1313740)}
+	return []uint32{uint32(C.nox_color_black_2650656), uint32(C.nox_color_blue_2650684), uint32(C.dword_8531A0_2572), uint32(drawableSummonSpark)}
 }

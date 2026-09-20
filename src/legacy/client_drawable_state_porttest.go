@@ -40,7 +40,7 @@ func PortTestDrawableState(op int, dr *client.Drawable, value int) uintptr {
 	p := (*C.nox_drawable)(dr.C())
 	switch op {
 	case 0:
-		return uintptr(C.sub_459DB0(p))
+		return uintptr(drawableStatePredicate(dr))
 	case 1:
 		return uintptr(C.nox_xxx_spriteSetActiveMB_45A990_drawable(C.int(uintptr(dr.C()))))
 	case 2:

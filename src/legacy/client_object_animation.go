@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_1313740;
 extern uint32_t dword_8531A0_2572;
 */
 import "C"
@@ -128,8 +127,8 @@ func objectShieldDraw(vp *noxrender.Viewport, dr *client.Drawable) int {
 func objectSummonDraw(vp *noxrender.Viewport, dr *client.Drawable) int {
 	pos, frame := dr.PosVec, dr.AnimFrameSlave
 	data := (*spriteAnimationData)(dr.DrawData)
-	if C.dword_5d4594_1313740 == 0 {
-		C.dword_5d4594_1313740 = C.uint32_t(effectType("BlueSpark"))
+	if drawableSummonSpark == 0 {
+		drawableSummonSpark = uint32(effectType("BlueSpark"))
 	}
 	age := gameFrame() - dr.AnimStart
 	duration := uint32(uint16(*effectWord(dr, 436)))
@@ -140,7 +139,7 @@ func objectSummonDraw(vp *noxrender.Viewport, dr *client.Drawable) int {
 		return 0
 	}
 	if age >= duration-1 {
-		effectCreatePointSparks(int(C.dword_5d4594_1313740), 50, 1000, 30, pos.X, pos.Y)
+		effectCreatePointSparks(int(drawableSummonSpark), 50, 1000, 30, pos.X, pos.Y)
 	}
 	spriteAnimateDraw(vp, dr)
 	var n uint32

@@ -1,0 +1,105 @@
+{
+  "status": "qualified native conversion",
+  "c_baseline": "8266e740",
+  "bodies": 16,
+  "body_lines": 532,
+  "live_bodies": 15,
+  "unused_c_duplicate": 1,
+  "moved_owners": [
+    "drawableSummonSpark",
+    "drawableShieldFound"
+  ],
+  "retained_callbacks": [
+    "sub_45A010",
+    "nox_drawable_next_45A070",
+    "nox_xxx_spriteSetActiveMB_45A990_drawable",
+    "nox_xxx_spriteSetFrameMB_45AB80",
+    "nox_xxx_netCliProcUpdateStream_494A60",
+    "nox_xxx_netCliUpdateStream2_494C30",
+    "nox_xxx_sprite_4CA540",
+    "sub_4CA650",
+    "nox_xxx_netHandleSummonPacket_4B7C40",
+    "sub_4B7EE0",
+    "nox_xxx_fxShield_4B8090"
+  ],
+  "retired_interfaces": [
+    "sub_459DB0",
+    "nox_xxx_cliNextMinimapObj_459EC0",
+    "sub_494F00",
+    "nox_xxx_spriteShieldLoad_4B7F90",
+    "nox_xxx_spriteScanForShield_4B81E0"
+  ],
+  "focused_capture_rows": 18414,
+  "additional_shield_scan_cases": 432,
+  "targets": {
+    "default": {
+      "roots": 88,
+      "manifest_hashes_enforced": 69,
+      "skips": [],
+      "evidence": "build/port-client-drawable/native-default"
+    },
+    "server": {
+      "roots": 88,
+      "manifest_hashes_enforced": 69,
+      "skips": [],
+      "evidence": "build/port-client-drawable/native-server"
+    },
+    "highres": {
+      "roots": 88,
+      "manifest_hashes_enforced": 69,
+      "skips": [],
+      "evidence": "build/port-client-drawable/native-highres"
+    }
+  },
+  "production": "build/port-client-drawable/native-production/production/production.json",
+  "builds": {
+    "opennox": {
+      "exit": 0,
+      "wall_seconds": 74.57939620595425,
+      "sha256": "ca2133b36ae265f1aad5788a0189a63980c610d3fb78e47f830a5ec783e961f5",
+      "abi_verified": true
+    },
+    "opennox-hd": {
+      "exit": 0,
+      "wall_seconds": 9.70405699685216,
+      "sha256": "79dd8aa6e3d6d117fea56b81e1d6393e4ec1754ac6ef56c51e530d76baeaec89",
+      "abi_verified": true
+    },
+    "opennox-server": {
+      "exit": 0,
+      "wall_seconds": 75.1820328719914,
+      "sha256": "124a13f852c8c29cd600291a727658f8bd4dc64b6c9d55c78145b6497dd544d8",
+      "abi_verified": true
+    }
+  },
+  "full_suite": {
+    "exit": 1,
+    "wall_seconds": 57.77967724879272,
+    "failure_entries": 1553,
+    "packages": {
+      "skip": 32,
+      "pass": 15,
+      "fail": 3
+    },
+    "exact_failure_multiset_match": true,
+    "exact_package_result_match": true
+  },
+  "scenarios": {
+    "client-drawable-native": {
+      "exit": 0,
+      "binary_sha256": "ca2133b36ae265f1aad5788a0189a63980c610d3fb78e47f830a5ec783e961f5"
+    },
+    "client-drawable-native-save": {
+      "exit": 0,
+      "binary_sha256": "ca2133b36ae265f1aad5788a0189a63980c610d3fb78e47f830a5ec783e961f5"
+    }
+  },
+  "static": "build/port-client-drawable/static-native-final.log",
+  "source_files": 2803,
+  "c_loc": {
+    "files": 39,
+    "lines": 9267,
+    "reference_lines": 0
+  },
+  "physical_c_reduction": 696
+}

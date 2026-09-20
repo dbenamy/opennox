@@ -2,37 +2,42 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 10k lines** — **9,963 physical lines in 39
-production `.c` files**, zero reference C. The last conversion removed **221 lines**.
+**Qualified C remaining: about 9.3k lines** — **9,267 physical lines in 39
+production `.c` files**, zero reference C. The last conversion removed **696 lines**.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Current — client drawable state C baseline in progress
+## Current — client drawable state Go conversion qualified
 
-Qualified parent **ad78ea93** is committed and pushed. New original-C fixtures
-are in the working tree; no selected production body has changed. Read
-[CLIENT_DRAWABLE_STATE.md](docs/porting/CLIENT_DRAWABLE_STATE.md).
+Original-C baseline **8266e740** is pushed. Native conversion is fully qualified:
+fifteen live bodies and two private owners move to Go; one unused C minimap
+duplicate retires. Eleven interfaces retain Go exports for actual C callers and
+registrations. Blue/Violet spark caches retain their C decoder ownership.
 
-Selection: 16 definitions /532 body lines, including one proven unused minimap
-C duplicate. Nine focused roots pass final and repeat runs; eight captures freeze
-18,414 result rows, supplemented by 432 shield-scan cases, terminators and links.
-All three targets pass 88 affected roots without skips and identical captures.
-Source fingerprints match the final checkout. All test jobs are joined. Static C
-checks pass. Ten source changes are porttest-only; parent production/integration
-are explicitly reused after binary rehash and raw-C symbol audits. See the C
-qualification JSON for exact evidence and capture-freeze timing.
+Nine focused roots preserve eight frozen captures containing 18,414 result rows,
+plus independent shield-scan, terminator and link checks. The broader default,
+server and highres sweeps each pass 88 roots /69 frozen captures, no skips. All
+source fingerprints match the final checkout. Static-native-final passes.
 
-Ignored native drafts and installer are NOT installed or qualified. Review them
-against the committed C baseline before integration. No production source has
-changed. The first shield-scan fixture omitted explicit initialization of an
-allocated key; fixed before freezing. No production correction was needed.
+Fresh three-target production binaries pass ABI/export audits. Full-suite results
+match exactly all 1,553 known failures and 15 pass /3 fail /32 skip packages.
+Headless gameplay and explicit save/load pass against spell-start references.
+All jobs, including production 65250, are joined. See
+[CLIENT_DRAWABLE_STATE.md](docs/porting/CLIENT_DRAWABLE_STATE.md) and its native
+qualification JSON. No frozen expectation changed. Initial missing integer casts
+were fixed before qualification; the earlier shield fixture correction preceded
+C baseline freezing.
 
-Next: commit/push this C baseline, then install and qualify the Go conversion.
-An obsolete test-cache audit (59495) is running; inspect its plan before applying.
+The native installer, applied cache cleanup and capture deduplication scripts are
+CONSUMED; ignored drafts are stale. Original assets, archive, qualified binaries,
+captures/results and asset restore manifests remain. Completed shared captures
+are immutable; use fresh output directories. No user question is pending.
 
-Spell-start scenario asset deduplication is consumed; original assets and all
-scenario results/restoration manifests remain. Current C is unchanged: 9,963.
+Next: finish auditing the world grid/wall and numeric-owner batch. Grid lookup
+already has a qualified native implementation; most former C callers have moved.
+Read GRID_LOOKUP.md, FLOAT_INT.md and the ignored next-scope-notes.md before retiring
+staged C duplicates. No next-batch source changes yet.
 
 ## Previous — spell start Go conversion qualified
 

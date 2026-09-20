@@ -22,7 +22,6 @@ char* sub_4947E0(int a1);
 int sub_4948B0(int a1);
 int nox_xxx_netCliProcUpdateStream_494A60(unsigned char* a1, int a2, uint32_t* a3);
 unsigned char* nox_xxx_netCliUpdateStream2_494C30(unsigned char* a1, int a2, int* a3);
-int sub_494F00();
 int sub_495060(int a1, short a2, short a3);
 int sub_4950C0(int a1);
 int sub_4950F0(int a1, char a2);

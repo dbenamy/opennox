@@ -377,7 +377,7 @@ func Nox_xxx_loadGuides_427070() int {
 	return int(bookLoadGuides())
 }
 func Sub_494F00() int {
-	return int(C.sub_494F00())
+	return drawableEffectTypes()
 }
 func Nox_xxx_loadReflSheild_499360() int {
 	return bool2int(presentationShieldInit())

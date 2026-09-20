@@ -112,147 +112,14 @@ void* nox_gui_itemAmount_dialog_1319228 = 0;
 
 // 487CA0: using guessed type void  nullsub_9(uint32_t);
 
-//----- (004BF010) --------------------------------------------------------
-
-
-//----- (004BF7E0) --------------------------------------------------------
-
-
 //----- (004BF9F0) --------------------------------------------------------
 
 // 4BFA4C: variable 'v10' is possibly undefined
 // 4BFA4C: variable 'v11' is possibly undefined
 
-//----- (004BFAD0) --------------------------------------------------------
-
-
-//----- (004BFB70) --------------------------------------------------------
-
-
-//----- (004BFBB0) --------------------------------------------------------
-
-
-//----- (004BFBF0) --------------------------------------------------------
-
-
-//----- (004BFC70) --------------------------------------------------------
-
-
-//----- (004BFC90) --------------------------------------------------------
-
-
-//----- (004BFCD0) --------------------------------------------------------
-
-
-//----- (004BFD10) --------------------------------------------------------
-
-
-//----- (004BFD30) --------------------------------------------------------
-
-
-//----- (004C3390) --------------------------------------------------------
-
-
-//----- (004C3410) --------------------------------------------------------
-
-
-//----- (004C3460) --------------------------------------------------------
-
-
-//----- (004C34A0) --------------------------------------------------------
-
-
-//----- (004CA540) --------------------------------------------------------
-int nox_xxx_sprite_4CA540(uint32_t* a1, int a2) {
-	uint32_t* v2; // esi
-	double v3;    // st7
-	double v4;    // st6
-	double v5;    // st5
-	double v6;    // st4
-	int v7;       // eax
-	int v8;       // edi
-	int v9;       // eax
-	float v11;    // [esp+0h] [ebp-14h]
-	float v12;    // [esp+0h] [ebp-14h]
-	float v13;    // [esp+10h] [ebp-4h]
-	float v14;    // [esp+1Ch] [ebp+8h]
-
-	v2 = (uint32_t*)a2;
-	v3 = 0.0;
-	v4 = *(float*)(a2 + 468);
-	v5 = *(float*)(a2 + 472);
-	v6 = 0.0;
-	v7 = gameFrame() - *(uint32_t*)(a2 + 316) + 1;
-	do {
-		--v7;
-		v13 = -(v5 * *(float*)(a2 + 476));
-		v4 = v4 - v4 * *(float*)(a2 + 476);
-		v5 = v5 + v13;
-		v3 = v3 + v4;
-		v6 = v6 + v5;
-	} while (v7);
-	v14 = v6;
-	v11 = (double)(int)v2[81] + v3;
-	v8 = nox_float2int(v11);
-	v12 = (double)(int)v2[82] + v14;
-	v9 = nox_float2int(v12);
-	if (v8 > 0 && v9 > 0 && v8 < 5888 && v9 < 5888) {
-		nox_xxx_updateSpritePosition_49AA90(v2, v8, v9);
-		if (sub_4992B0(*a1 + v2[3] - a1[4], v2[4] + a1[1] - a1[5])) {
-			return 1;
-		}
-	}
-	nox_xxx_spriteDeleteStatic_45A4E0_drawable((int)v2);
-	return 0;
-}
-
 //----- (004CA650) --------------------------------------------------------
-int sub_4CA650(int a1, int a2) {
-	int v2;             // esi
-	int v3;             // eax
-	int v4;             // ebx
-	int v5;             // edi
-	int v6;             // eax
-	int v7;             // ecx
-	int v8;             // eax
-	int v9;             // ebp
-	int v10;            // eax
-	int v11;            // edi
-	unsigned short v12; // dx
-	int v13;            // ebp
-	int v14;            // eax
-	int result;         // eax
-	int v16;            // [esp+10h] [ebp-10h]
-	int v17;            // [esp+28h] [ebp+8h]
 
-	v2 = a2;
-	v3 = *(uint32_t*)(a2 + 16);
-	v4 = *(unsigned short*)(a2 + 434) - v3;
-	v5 = *(unsigned short*)(a2 + 432) - *(uint32_t*)(a2 + 12);
-	v6 = sub_48C6B0(v5, v4);
-	v7 = v6;
-	v8 = *(unsigned char*)(a2 + 443);
-	v17 = v8;
-	++v7;
-	v9 = *(uint32_t*)(v2 + 12);
-	v10 = v5 * v8 / v7;
-	v11 = *(uint32_t*)(v2 + 16);
-	v16 = v9 + v10;
-	v12 = *(uint16_t*)(v2 + 432);
-	v13 = v9 - v12;
-	v14 = v11 + v4 * v17 / v7;
-	if (v7 <= 10 ||
-		v13 * (v16 - v12) + (v11 - *(unsigned short*)(v2 + 434)) * (v14 - *(unsigned short*)(v2 + 434)) < 0) {
-		nox_xxx_spriteDeleteStatic_45A4E0_drawable(v2);
-		result = 0;
-	} else {
-		nox_xxx_updateSpritePosition_49AA90((uint32_t*)v2, v16, v14);
-		result = 1;
-	}
-	return result;
-}
 // 4CA67E: variable 'v6' is possibly undefined
-
 
 nox_window* dword_5d4594_1321236 = 0;
 nox_window* dword_5d4594_1321240 = 0;

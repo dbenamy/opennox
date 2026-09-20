@@ -14,14 +14,14 @@
 
 ## Current status
 
-The spell creation/start conversion is qualified. Pixie creation, teleport start
-and private charm control now use Go. Default/server/highres each pass 139
-selected test roots and 433 exact captures; fresh production, ABI, full-suite
-comparison and headless gameplay/save-load checks pass.
-See [SPELL_START.md](docs/porting/SPELL_START.md).
+The client drawable state conversion is qualified: compact update streams,
+state accessors, motion callbacks and summon/shield effects now use Go. All three
+targets pass 88 affected roots and 69 exact captures, with fresh production/ABI,
+full-suite comparison and headless gameplay/save-load qualification.
+See [CLIENT_DRAWABLE_STATE.md](docs/porting/CLIENT_DRAWABLE_STATE.md).
 
-C remaining is **9,963 physical lines in 39 files**, zero reference C.
-This conversion removes 221 lines and three C files.
+C remaining is **9,267 physical lines in 39 files**, zero reference C.
+This conversion removes 696 lines, including one unused C duplicate.
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 Previous completed GUI batches include
