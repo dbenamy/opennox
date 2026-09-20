@@ -1,5 +1,5 @@
 {
-  "status": "selected connected candidate; helper/owner audit and C baseline coverage in progress",
+  "status": "complete original-C baseline qualified; ready for native translation",
   "production_parent": "f9268ef1",
   "file": "src/legacy/client__network__cdecode.c",
   "file_sha256": "5974c5f09a04424752606f61ef19b920a0dcb05513949578df61a604ec355489",
@@ -1031,5 +1031,6 @@
     "files": 37,
     "lines": 7897,
     "reference_lines": 0
-  }
+  },
+  "baseline_qualification": "client-progress-effects-c-qualification.json"
 }

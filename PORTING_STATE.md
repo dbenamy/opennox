@@ -38,42 +38,34 @@ Move three named owners with their last C callers: BlueSpark, VioletSpark and th
 map-frame gate1200804 (preserve its Go map-use/endgame callers). The compass-image
 initializer and map-progress renderer move together with their existing Go callers.
 
-Remaining new coverage: winner messages86–89, client-status UI106, creatures108/109,
-spell award111, sentry149, map progress155–157. The corrected baseline is
-not yet complete or frozen for that full scope. Existing32 frozen game-message
-captures remain unchanged.
+The complete original-C baseline is now frozen: **378/374/378 roots** pass
+for default/server/highres with no skips, matching source fingerprints, and all
+**63 captures /122,204 cases**. This scope contributes **69,310 cases**, including
+11,520 individual winner,19,440 team winner and432 wide-coordinate sentry cases.
+All qualification jobs are joined. Production remains byte-identical to qualified
+f37ec35a; its production/ABI/full-suite/gameplay/save-load evidence applies to this
+test-only checkpoint. See [the complete baseline](docs/porting/client-progress-effects-c-qualification.json).
 
-New ricochet/mana-bomb fixtures pass540 cases, update streams360,
-summon creation/cancellation720, and shields288: **1,908 new cases**, bringing
-this next scope to **24,290 cases**. Three repeats each pass eleven effect roots
-/9,830 cases with identical hashes and source, no skips. All jobs are joined,
-including45806. See [the partial checkpoint](docs/porting/client-effects-second-c-checkpoint.json).
-Fixture checkpoint **3bfc175e** is committed and pushed. Production is unchanged
-from qualified f37ec35a. Duration effects pass2,048 cases, spark explosion672,
-turn undead216 and vampirism1,512: **4,448 additional cases**, next-scope total
-**28,738 cases**. Three separate repeats pass all15 selected effect roots with
-identical captures (14,278 rows), source unchanged, no skips. Probes57949,91472,
-5354 and repeat19358 are joined PASS; static checks pass. See
-[the third fixture checkpoint](docs/porting/client-effects-third-c-checkpoint.json).
-Fixture checkpoint **3cc4b1e2** is committed and pushed. The full selected baseline
-remains incomplete. Sentry1,296, spell awards60, client status6,144, creatures144
-and map progress1,536 add **9,180 cases**: next-scope total **37,918 cases**.
-Three repeats each pass21 roots /24,994 captured rows with identical hashes,
-no skips and unchanged source; repeat13389 and map-progress14675 are joined PASS.
-The original extended-status fixture is unchanged and included in the final sweep.
-Fixture corrections and evidence:
-[the fourth checkpoint](docs/porting/client-progress-fourth-c-checkpoint.json).
-Remaining baseline: winner messages86–89 and score-adjustment helpers. An individual
-winner draft is prepared under build but NOT installed. No source jobs active.
-Installed sentry/client-status/map-progress drafts are CONSUMED.
-No question is pending.
-Other installer/draft scripts, including particle-bursts-draft.go,
-shield-message-draft.go and record-green-fix.py, are CONSUMED; do not replay them.
+Next: review/install the four ignored native drafts (client-game-progress,
+client-game-effects, client-game-winners, client-map-progress), migrate the three
+named owners and callers, and retire only interfaces proven unused across C, Go,
+C preambles and callbacks. The read-only prepare-progress-install.py creates a
+hash-guarded C preview; it does not install source. Native qualification must rerun
+all production gates. No native draft is yet installed or qualified.
+
+Earlier fixture checkpoints 11a9df13, c3659afb,3bfc175e,3cc4b1e2 and45f829e3 are
+pushed. Winner and wide-sentry fixture drafts are CONSUMED; do not replay them.
+The first individual-winner probe hung because fixture player indices were unset;
+that process was terminated and joined, the indices corrected, and all final
+checks passed. Wide sentry tests independently cover differing signed spark and
+unsigned audio distance arithmetic. No question is pending.
 
 ## Recovery and storage
 
 Ignored install/retirement/fixture scripts are CONSUMED; never replay over reviewed
-source. All seven cache cleanup plans are consumed; the seventh reclaimed 2,179,969,050 bytes
+source. All eight cache cleanup plans are consumed; the eighth reclaimed 2,175,941,830 bytes
+from28 superseded porttest archives (cutoff45f829e3; audit10847/apply50157 joined).
+Earlier plans remain consumed; the seventh reclaimed 2,179,969,050 bytes
 from30 superseded porttest archives (cutoff3cc4b1e2; audit78044/apply7540 joined).
 Earlier plans remain consumed; the sixth reclaimed 2,219,981,278 bytes
 from 32 verified superseded porttest archives (cutoff f9268ef1). Completed capture deduplication

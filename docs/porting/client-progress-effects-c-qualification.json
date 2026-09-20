@@ -1,0 +1,42 @@
+{
+  "status": "complete original-C baseline; native translation pending",
+  "production_revision": "f37ec35a",
+  "production_c_lines": 7901,
+  "production_c_files": 37,
+  "reference_c_lines": 0,
+  "selected_body_lines": 1240,
+  "next_scope_cases": 69310,
+  "frozen_capture_cases": 122204,
+  "targets": {
+    "default": {
+      "completed_roots": 378,
+      "captures": 63,
+      "skips": 0,
+      "artifact_directory": "build/port-game-messages/progress-effects-c-final-default",
+      "source_sha256": "9f8dc7a18839f0c6224b7fed3db072988143f5868fd995bfa181cac358246b22"
+    },
+    "server": {
+      "completed_roots": 374,
+      "captures": 63,
+      "skips": 0,
+      "artifact_directory": "build/port-game-messages/progress-effects-c-final-server",
+      "source_sha256": "9f8dc7a18839f0c6224b7fed3db072988143f5868fd995bfa181cac358246b22"
+    },
+    "highres": {
+      "completed_roots": 378,
+      "captures": 63,
+      "skips": 0,
+      "artifact_directory": "build/port-game-messages/progress-effects-c-final-highres",
+      "source_sha256": "9f8dc7a18839f0c6224b7fed3db072988143f5868fd995bfa181cac358246b22"
+    }
+  },
+  "production_gates": {
+    "reused_from": "docs/porting/green-bolt-correction-qualification.json",
+    "reason": "Production sources byte-identical to f37ec35a; this baseline adds tests and documentation only. Native conversion requires fresh production/ABI/full-suite/gameplay/save-load checks."
+  },
+  "fixture_notes": [
+    "Individual winner fixture assigns player roster indices to make iteration valid.",
+    "Wide sentry coordinates preserve unsigned audio distance and signed spark distance, including overflow.",
+    "Frozen expectations are in client-progress-effects-c-batch.json; do not regenerate to conceal native mismatches."
+  ]
+}
