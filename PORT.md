@@ -25,7 +25,8 @@ C remaining is **6,139 physical lines in35 files**, zero reference C.
 This conversion removes **502 lines**. A subsequent replay-buffer copy correction
 passes focused regressions on all three profiles. Next are the remaining client
 settings/team/session messages. Their original-C baseline currently covers
-40 of48 labels, with60,196 captured cases and two matching independent repeats.
+45 of48 labels, plus part of the gauntlet handler, with65,906 captured cases
+and two matching independent repeats.
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in

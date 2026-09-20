@@ -771,3 +771,19 @@ Settings tests use real spell definitions, timer, settings dialog and notificati
 See [checkpoint](client-session-ui-c-checkpoint.json). Production remains eb10a62b;
 C remains6,139 lines /35 files /zero reference C. Remaining labels are team,
 trade/session transitions, player death/respawn/forget and gauntlet.
+
+### Client lifecycle C checkpoint
+
+The [lifecycle checkpoint](client-session-lifecycle-c-checkpoint.json) adds death,
+respawn, forgetting, disconnect notices and partial gauntlet coverage.35 roots,
+65,906 captured cases,45 complete top-level labels plus partial240; two independent
+repeats pass without skips or source changes. All prior hashes remain unchanged.
+C remains6,139 physical lines /35 files /zero reference C. This is a baseline
+checkpoint, not a production conversion or completed qualification boundary.
+
+Review later: death weapon clearing starts four bytes into the first record,
+clearing the next record's mask while retaining the first. The full-player fixture
+confirms this C behavior and protects record tails. Preserve it in translation.
+Remaining: team/trade, other gauntlet branches and settings177 name/help coverage,
+then complete baseline and native qualification. Sole-caller audit confirms the
+39-line ball HUD helper belongs with the dispatcher.

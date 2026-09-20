@@ -105,8 +105,8 @@ Thirteenth fixture-cache cleanup is CONSUMED:14 verified superseded root test
 archives /1,111,570,010 bytes removed. Current music-fixture archives and all
 legacy/production archives were preserved; cleanup job6383 is joined.
 
-Owner checkpoint **784db95e** is committed and pushed. The next UI/settings
-checkpoint passes **28 roots /60,196 captured cases /40 labels**, plus256 no-op
+Owner checkpoint **784db95e** and UI/settings checkpoint **fe63cd81** are committed
+and pushed. The UI/settings checkpoint passes **28 roots /60,196 captured cases /40 labels**, plus256 no-op
 contracts. Probe23 and two independent repeats agree on all hashes. Both repeats
 have identical source fingerprints and no skips; all jobs are joined. No
 production source changed. See [checkpoint](docs/porting/client-session-ui-c-checkpoint.json).
@@ -120,10 +120,34 @@ char, RNG, shop-word and minimap fixture corrections remain recorded in previous
 checkpoints. Failed probe20 had an incorrect64-bit timestamp expectation; fixed
 before probes21–23 and repeats. No frozen hash was regenerated.
 
-All installed UI/settings/sequence/journal/briefing drafts are CONSUMED. Death and
-forget drafts are prepared but NOT INSTALLED. Next: qualify those plus respawn,
-then team changes, trade/session transitions and gauntlet. The sole-caller39-line
-client__gui__guifb.c helper should join the conversion after final caller audit.
+All installed UI/settings/sequence/journal/briefing drafts are CONSUMED. Death,
+forget and respawn drafts are now installed and CONSUMED: probe25 passes all three
+roots. Probe26 also passes the disconnect notification root (197/198), covering
+both pending notices and immediate dialog arguments, independent of connection
+state. These additions are not yet frozen in a repeated checkpoint. The new
+quest-player, quest-briefing and quest-selector drafts are installed/CONSUMED.
+Probes27/28 and combined probe29 are joined PASS:35 roots /65,906 captured cases;
+all prior28 captures match. Both independent lifecycle repeats are joined PASS:35 roots, no skips, all
+35 hashes, identical source fingerprints. See
+[checkpoint](docs/porting/client-session-lifecycle-c-checkpoint.json).
+Next: complete gauntlet, team and trade coverage, including settings177's remaining
+name/help branch, before final baseline qualification and translation.
+
+Review later: original C death clearing starts at player offset2328, four bytes
+into the first weapon record (Go Weapon begins2324). It clears modifiers and the
+following record's mask, preserving the first weapon mask and record tails. The
+final weapon clear also zeros the first armor mask. The passing full-player
+fixture records this behavior; preserve it during translation rather than silently
+changing gameplay. Local death releases real GUI capture; remote death preserves it.
+Probe24's missing GUI owner was a fixture setup error, corrected for probe25.
+
+Finished-capture consolidation consolidate-client-session-settings-probes.py is
+CONSUMED:106 identical files /1,124,621,618 logical bytes; every path and failed
+log retained. No active build source was edited during compilation.
+
+The next conversion remains the complete client dispatcher. Literal symbol search
+across all source confirms sub_456140 has exactly one production caller, in the
+dispatcher; include its39-line client__gui__guifb.c file.
 C remains6,139 lines /35 files /zero reference C. Full three-profile production,
 ABI, full-suite and gameplay qualification remains due at the completed boundary.
 Continue without pausing.
@@ -2100,3 +2124,10 @@ cleanup deduplicate-server-actions-native-assets.py --apply is CONSUMED:
 script's --restore NAME; originals, changed saves and screenshots are preserved.
 Native highres capture deduplication is CONSUMED:506 identical files share
 storage (2,039,573,772 logical bytes); all cleanup jobs are joined.
+
+Lifecycle probe consolidation is CONSUMED:3 files /25,445,636 logical bytes.
+Lifecycle combined-probe consolidation is CONSUMED:34 files /325,433,158 logical
+bytes. All paths, content and failed diagnostics preserved; active repeat excluded.
+Team-state draft is prepared under build/port-game-messages/team-state.draft,
+NOT installed. Team lookup uses the existing byte TeamID conversion, including
+wide wire IDs whose low byte matches a team; preserve that behavior.
