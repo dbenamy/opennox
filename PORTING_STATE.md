@@ -8,6 +8,27 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — client resources/lifecycle C baseline qualified
+
+Original-C default repeat/server/highres pass nine roots, no skips, eight captures
+/6,415 cases and static checks. The revised resource-only TLS free observer also
+passes 41 resource/map-theme/world-grid roots three times with GOGC=10.
+All jobs joined. Production is byte-identical to qualified a8fbf8a8; only tagged
+tests/instrumentation changed, so its production qualification is reused. C remains
+3,543 /28 files. See [CLIENT_RESOURCES.md](docs/porting/CLIENT_RESOURCES.md).
+
+Next install/review native drafts under build/port-final-runtime-helpers/native.
+The installer there is NOT yet run; finish-c.py and install-resource-observer.py
+are CONSUMED. Preserve raw-libc sprite allocation ownership, C.uint tick narrowing,
+menu sentinel/RNG order and shared globals. Failed probes and the intermittent
+Go-callback observer GC-stop stack are retained; the final observer makes no Go
+callbacks inside free. Fixture fixes and reachability evidence are in the report.
+
+Completed render-helper preflight assets were deduplicated (1,112,777,465 bytes).
+Restore with`python3 build/port-client-render-helpers/deduplicate-preflight-assets.py
+--restore RUN`, where RUN is client-render-helpers-native or client-render-helpers-native2.
+Original assets and changed run files remain. Its apply script is CONSUMED.
+
 ## Current — client render helpers and audio lifecycle qualified
 
 Default/server/highres pass 96/91/96 roots with no skips; all eight captures /6,129

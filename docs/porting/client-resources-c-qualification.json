@@ -1,0 +1,103 @@
+{
+  "status": "qualified original C client resources and lifecycle baseline",
+  "production_revision": "a8fbf8a8",
+  "production_qualification": "client-render-helpers-native-qualification.json",
+  "production_source_unchanged": true,
+  "added_test_files": [
+    "src/client_resource_colors_porttest_test.go",
+    "src/client_resource_free_porttest_test.go",
+    "src/client_resource_main_menu_porttest_test.go",
+    "src/client_resource_modal_porttest_test.go",
+    "src/client_resource_timing_porttest_test.go",
+    "src/legacy/client_resource_free_observer_porttest.go",
+    "src/legacy/client_resource_lifecycle_porttest.go"
+  ],
+  "changed_test_files": [
+    "src/legacy/map_theme_allocator_porttest.go"
+  ],
+  "targets": {
+    "c-default2": {
+      "roots": 9,
+      "skips": 0,
+      "captures": 8,
+      "wall_seconds": 133.9321310450323
+    },
+    "c-default3": {
+      "roots": 9,
+      "skips": 0,
+      "captures": 8,
+      "wall_seconds": 12.811606274917722
+    },
+    "c-server2": {
+      "roots": 9,
+      "skips": 0,
+      "captures": 8,
+      "wall_seconds": 131.75821922789328
+    },
+    "c-highres1": {
+      "roots": 9,
+      "skips": 0,
+      "captures": 8,
+      "wall_seconds": 44.3489370921161
+    }
+  },
+  "observer_stress": {
+    "roots": 41,
+    "repeats": 3,
+    "GOGC": 10,
+    "skips": 0,
+    "log_sha256": "25946ca734456a2c63137769a10630aaa4ace1597b1ae8b47c473c749d7c4e49"
+  },
+  "captures": [
+    {
+      "path": "{out}/interaction-client-resource-all-player-colors.json",
+      "sha256": "963506a32e23fe8827695bf785ccd1765448b4be1ccab3c2d244c08cf55600b2",
+      "cases": 5
+    },
+    {
+      "path": "{out}/interaction-client-resource-animation-cache.json",
+      "sha256": "b1a714838be72811edccdb3f9443811b99b4088c6ba3553f9a4f367e088dbdf4",
+      "cases": 16
+    },
+    {
+      "path": "{out}/interaction-client-resource-frame-average.json",
+      "sha256": "8f2d91eed565443ba9dddd4d50c0a0a1a67947fa1b9bfcfc5deb63c0e03d168f",
+      "cases": 60
+    },
+    {
+      "path": "{out}/interaction-client-resource-frame-samples.json",
+      "sha256": "6aa46859325df7d6749846d1970dbdccd5f96b1167baa82c380f9fb864a9be3e",
+      "cases": 1728
+    },
+    {
+      "path": "{out}/interaction-client-resource-free-graph.json",
+      "sha256": "9f68d2cd2ec4dffe44e66731089775f798f40b48e0757a1978c551946939973d",
+      "cases": 66
+    },
+    {
+      "path": "{out}/interaction-client-resource-main-menu-draw.json",
+      "sha256": "1f3c3aea8f9d6e6537956996ef77c1207675c25d662ef34a7b12e17386892aaf",
+      "cases": 3456
+    },
+    {
+      "path": "{out}/interaction-client-resource-modal-window.json",
+      "sha256": "7443b7c3e6d1206b32d8462ac5ddb607e563f18f74def48260d89254d588851b",
+      "cases": 60
+    },
+    {
+      "path": "{out}/interaction-client-resource-player-colors.json",
+      "sha256": "06cd601fd74ac6f1a8a492c98abf3a0cbe071beafde6057daa230c8306978c0b",
+      "cases": 1024
+    }
+  ],
+  "captured_cases": 6415,
+  "source_manifest_sha256": "aa8a6cbaf3937c714652e3c46b73187ec8c8fb99a4076e52e22588334697547f",
+  "production_c": {
+    "files": 28,
+    "lines": 3543
+  },
+  "reference_c": {
+    "files": 0,
+    "lines": 0
+  }
+}

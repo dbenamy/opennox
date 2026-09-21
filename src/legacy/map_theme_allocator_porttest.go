@@ -31,6 +31,16 @@ int worldGridAllocContains(void* p) {
  for (int i = 0; i < grid_count; i++) if (grid_ptr[i] == p && grid_live[i]) return 1;
  return 0;
 }
+// Resource teardown records raw addresses without calling Go inside free.
+static _Thread_local uintptr_t* resource_free_events;
+static _Thread_local int resource_free_capacity, resource_free_count;
+void resourceFreeObserve(uintptr_t* events, int capacity) {
+ resource_free_events = events; resource_free_capacity = capacity; resource_free_count = 0;
+}
+int resourceFreeStop(void) {
+ resource_free_events = NULL;
+ return resource_free_count;
+}
 static uint32_t theme_observe_time;
 void themeTestObserve(int active, uint32_t epoch) {
  theme_observe_time = epoch;
@@ -47,6 +57,10 @@ void* __wrap_calloc(size_t n, size_t size) {
  return p;
 }
 void __wrap_free(void* p) {
+ if (resource_free_events && p) {
+  if (resource_free_count < resource_free_capacity) resource_free_events[resource_free_count] = (uintptr_t)p;
+  resource_free_count++;
+ }
  if (grid_active && p) {
   int found = 0;
   for (int i = 0; i < grid_count; i++) if (grid_ptr[i] == p && grid_live[i]) {
