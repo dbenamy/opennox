@@ -1,0 +1,258 @@
+{
+  "batch": "server-text-c",
+  "env": {
+    "GOMAXPROCS": "2",
+    "GOMEMLIMIT": "768MiB",
+    "OPENNOX_CLIENT_INTERACTION_CAPTURE": "{out}/interaction"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/server-text-c-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-server-text-flag-index.json",
+            "sha256": "d0cda93d33de7435cd2cab679a05382e5b22f58739bd919737f8fa063e896016"
+          },
+          {
+            "path": "{out}/interaction-server-text-listing.json",
+            "sha256": "2ac70ca4122f2097deda1c00c7050bc8b7659041fe0d8e6b0b53e2fd0145e982"
+          },
+          {
+            "path": "{out}/interaction-server-text-player-names.json",
+            "sha256": "4b84ba6ca8123458a3492402c90ce91f8a9690ffdc0b5c61e9d672287b5fd99f"
+          },
+          {
+            "path": "{out}/interaction-server-text-trap-drop.json",
+            "sha256": "cd684350afaa9aa77ae7aeea0e6e7a3a08629e04094cd1cb3e67f9c01692700b"
+          },
+          {
+            "path": "{out}/interaction-server-text-weapon-roll.json",
+            "sha256": "c0b029326b55c67d9c349dd4aad3b961e2f36d1459747eccc8f9ec6fe21566f6"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "server": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest,server",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/server-text-c-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-server-text-flag-index.json",
+            "sha256": "d0cda93d33de7435cd2cab679a05382e5b22f58739bd919737f8fa063e896016"
+          },
+          {
+            "path": "{out}/interaction-server-text-listing.json",
+            "sha256": "2ac70ca4122f2097deda1c00c7050bc8b7659041fe0d8e6b0b53e2fd0145e982"
+          },
+          {
+            "path": "{out}/interaction-server-text-player-names.json",
+            "sha256": "4b84ba6ca8123458a3492402c90ce91f8a9690ffdc0b5c61e9d672287b5fd99f"
+          },
+          {
+            "path": "{out}/interaction-server-text-trap-drop.json",
+            "sha256": "cd684350afaa9aa77ae7aeea0e6e7a3a08629e04094cd1cb3e67f9c01692700b"
+          },
+          {
+            "path": "{out}/interaction-server-text-weapon-roll.json",
+            "sha256": "c0b029326b55c67d9c349dd4aad3b961e2f36d1459747eccc8f9ec6fe21566f6"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "highres": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest,highres",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/server-text-c-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-server-text-flag-index.json",
+            "sha256": "d0cda93d33de7435cd2cab679a05382e5b22f58739bd919737f8fa063e896016"
+          },
+          {
+            "path": "{out}/interaction-server-text-listing.json",
+            "sha256": "2ac70ca4122f2097deda1c00c7050bc8b7659041fe0d8e6b0b53e2fd0145e982"
+          },
+          {
+            "path": "{out}/interaction-server-text-player-names.json",
+            "sha256": "4b84ba6ca8123458a3492402c90ce91f8a9690ffdc0b5c61e9d672287b5fd99f"
+          },
+          {
+            "path": "{out}/interaction-server-text-trap-drop.json",
+            "sha256": "cd684350afaa9aa77ae7aeea0e6e7a3a08629e04094cd1cb3e67f9c01692700b"
+          },
+          {
+            "path": "{out}/interaction-server-text-weapon-roll.json",
+            "sha256": "c0b029326b55c67d9c349dd4aad3b961e2f36d1459747eccc8f9ec6fe21566f6"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "preflight": [
+      {
+        "name": "build",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "build",
+          "-p",
+          "2",
+          "-o",
+          "{out}/opennox",
+          "./cmd/opennox"
+        ]
+      },
+      {
+        "name": "scenario",
+        "command": [
+          "env",
+          "OPENNOX_DISPLAY_BINARY={out}/opennox",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Corrected C extension and listing baseline",
+          "OPENNOX_UI_SCENARIO={root}/docs/porting/character-creation.yaml",
+          "NOX_DEV=true",
+          "python3",
+          "{root}/tools/porting/run_scenario.py",
+          "server-text-c",
+          "compare",
+          "{root}/build/baseline/runs/client-drawable-native"
+        ]
+      }
+    ]
+  }
+}

@@ -2243,3 +2243,20 @@ The baseline and first native probe agree on all 55,986 captured cases. Default/
 affected tests; final production qualification
 is recorded in [SERVER_RUNTIME.md](SERVER_RUNTIME.md). No C converter or other
 algorithm remains solely for testing; x87 control-word instrumentation remains.
+
+
+## Extension/name and listing baseline corrections
+
+Before freezing this C baseline, replace the player-name parsers' one-byte local
+buffer with the actual 28-unit field capacity plus terminator; retain low-byte
+UTF-16 conversion and exact first-active matching. Missing team/output owners
+return failure without partial writes. Initialize the server-listing header,
+keep its eight-byte map payload plus terminator, and reject short slices at the
+Go boundary. These reversible behavior corrections follow the authorized process;
+review them as corrections, not claims of preserving undefined stack contents.
+
+Five groups /21,135 cases pass repeated default, server and highres captures and
+fresh headless C gameplay. Native production/ABI, known-suite and save/load are
+still pending. Inventory captures hash every complete normalized result per case
+because verbose fixtures otherwise repeat hundreds of MB of unchanged memory;
+independent behavior assertions remain. See [SERVER_TEXT.md](SERVER_TEXT.md).

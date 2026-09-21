@@ -1,0 +1,94 @@
+{
+  "status": "repeated corrected C baseline",
+  "preceding_qualified_revision": "eb01acc9",
+  "production_source_unchanged": false,
+  "intentional_corrections": "SERVER_TEXT.md",
+  "targets": {
+    "c-default1": {
+      "roots": 5,
+      "captures": 5,
+      "skips": 0,
+      "wall_seconds": 23.790529580088332
+    },
+    "c-default2": {
+      "roots": 5,
+      "captures": 5,
+      "skips": 0,
+      "wall_seconds": 23.705020409077406
+    },
+    "c-server1": {
+      "roots": 5,
+      "captures": 5,
+      "skips": 0,
+      "wall_seconds": 132.5984222611878
+    },
+    "c-highres1": {
+      "roots": 5,
+      "captures": 5,
+      "skips": 0,
+      "wall_seconds": 58.80423190514557
+    }
+  },
+  "captures": [
+    {
+      "path": "{out}/interaction-server-text-flag-index.json",
+      "sha256": "d0cda93d33de7435cd2cab679a05382e5b22f58739bd919737f8fa063e896016",
+      "cases": 63
+    },
+    {
+      "path": "{out}/interaction-server-text-listing.json",
+      "sha256": "2ac70ca4122f2097deda1c00c7050bc8b7659041fe0d8e6b0b53e2fd0145e982",
+      "cases": 12544
+    },
+    {
+      "path": "{out}/interaction-server-text-player-names.json",
+      "sha256": "4b84ba6ca8123458a3492402c90ce91f8a9690ffdc0b5c61e9d672287b5fd99f",
+      "cases": 1920
+    },
+    {
+      "path": "{out}/interaction-server-text-trap-drop.json",
+      "sha256": "cd684350afaa9aa77ae7aeea0e6e7a3a08629e04094cd1cb3e67f9c01692700b",
+      "cases": 2688
+    },
+    {
+      "path": "{out}/interaction-server-text-weapon-roll.json",
+      "sha256": "c0b029326b55c67d9c349dd4aad3b961e2f36d1459747eccc8f9ec6fe21566f6",
+      "cases": 3920
+    }
+  ],
+  "captured_cases": 21135,
+  "source_manifest_sha256": "5b8875281b6bb6f44b59d01ec36e75e720d7325cf277f6c3736e1c0f01696ea8",
+  "production_c": {
+    "files": 16,
+    "lines": 1760
+  },
+  "reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "headless_c_gameplay": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 77.07686673803255,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+    "binary_sha256": "b9897a9b0daf2a83182360f6c2486a917cd3b10e200183a8ab0afaf35cc602ca",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-final-text-helpers/c-preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/server-text-c/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Corrected C extension and listing baseline",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "pending": "Full three-profile production/ABI, known-suite comparison and explicit save/load are required after native conversion."
+}

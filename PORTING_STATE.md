@@ -8,6 +8,33 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — extension/listing C baseline recorded
+
+Runtime conversion `eb01acc9` is committed and pushed. The corrected C baseline
+passes five roots /21,135 cases in two default processes, server and highres,
+with no skips, all frozen hashes and static checks. A fresh production default
+build and headless gameplay pass. All source fingerprints agree; jobs41362 and
+55329 are joined. Full production/ABI, known-suite and save/load remain required
+after native conversion. See [SERVER_TEXT.md](docs/porting/SERVER_TEXT.md).
+
+Intentional corrections bound player names, reject absent lookup owners,
+initialize reserved listing bytes and bound its map field. The wrapper rejects
+short slices. Working corrected C is 1,760 /16 (+20); the preceding fully qualified
+conversion above is 1,740 /16. No conversion reduction is claimed yet.
+
+Baseline preparation/finalization scripts are CONSUMED. Native drafts and
+`install-native.py` under `build/port-final-text-helpers` are NOT installed/consumed.
+Scope: GameEx helpers, listing, eight orphan memory-file C readers and unchanged
+shared-storage consolidation. `prepare-native-manifest.py` is ready with 173
+affected roots; run after native installation. No source jobs remain active.
+
+Completed cleanup: runtime-save duplicate assets 556,358,986 bytes; eight obsolete
+root-test cache archives 652,232,214 bytes. Cleanup99706 and gzip archival98226 are
+joined and CONSUMED. Probe3's unfrozen large capture has a verified gzip archive.
+Original assets/current caches/evidence remain. Restore instructions are in the
+batch report. Following string-helper reference audit is local and not yet a
+qualified deletion plan.
+
 ## Current — runtime helpers qualified
 
 Default/server/highres pass 304/303/304 affected roots, zero skips, eleven frozen

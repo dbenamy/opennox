@@ -14,6 +14,12 @@
 
 ## Current status
 
+The extension/name and server-listing C baseline now has 21,135 cases, matching
+across repeated default, server and highres runs, plus fresh headless gameplay.
+Buffer/layout corrections precede the port and temporarily add 20 C lines. The
+Go conversion and full final qualification are next; see
+[SERVER_TEXT.md](docs/porting/SERVER_TEXT.md).
+
 The remaining runtime numeric and lookup helpers, pause lifecycle and saved-creature
 ownership are Go. This removes 965 C lines and 34 old interfaces. Default/server/highres pass 304/303/304 affected
 tests; 55,986 captured cases match C. Production/ABI, the

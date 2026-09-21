@@ -24,7 +24,19 @@
 
 unsigned int gameex_flags = 0x1E;
 
-int nox_CharToOemW(const wchar2_t* pSrc, char* pDst) { return nox_sprintf(pDst, "%S", pSrc); }
+enum { GAMEEX_PLAYER_NAME_UNITS = sizeof(((nox_playerInfo*)0)->name_final) / sizeof(wchar2_t) };
+
+// Player names have a fixed-width UTF-16 field. Preserve the old narrow-byte
+// conversion, with a terminator even when that entire field is occupied.
+int nox_CharToOemW(const wchar2_t* pSrc, char* pDst) {
+	int n = 0;
+	while (n < GAMEEX_PLAYER_NAME_UNITS && pSrc[n]) {
+		pDst[n] = (char)pSrc[n];
+		++n;
+	}
+	pDst[n] = 0;
+	return n;
+}
 
 //----- (10001C20) --------------------------------------------------------
 
@@ -32,22 +44,25 @@ int nox_CharToOemW(const wchar2_t* pSrc, char* pDst) { return nox_sprintf(pDst, 
 char playerInfoStructParser_0(void* a1p) {
 	char* a1 = a1p;
 	char* v1;  // esi
-	char pDst; // [esp+10h] [ebp-18h]
+	char pDst[GAMEEX_PLAYER_NAME_UNITS + 1];
 
-	if (a1 == (char*)-2)
+	if (!a1 || a1 == (char*)-2)
 		return 0;
 	v1 = nox_common_playerInfoGetFirst_416EA0();
 	if (!v1)
 		return 0;
 	while (1) {
-		nox_CharToOemW((const wchar2_t*)v1 + 2352, &pDst);
-		if (!strcmp(&pDst, a1 + 2))
+		nox_CharToOemW((const wchar2_t*)v1 + 2352, pDst);
+		if (!strcmp(pDst, a1 + 2))
 			break;
 		v1 = nox_common_playerInfoGetNext_416EE0((int)v1);
 		if (!v1)
 			return 0;
 	}
-	a1[1] = *((uint8_t*)nox_xxx_objGetTeamByNetCode_418C80(*((uint32_t*)v1 + 515)) + 4);
+	void* team = nox_xxx_objGetTeamByNetCode_418C80(*((uint32_t*)v1 + 515));
+	if (!team)
+		return 0;
+	a1[1] = *((uint8_t*)team + 4);
 	*a1 = v1[2251];
 	return 1;
 }
@@ -58,17 +73,17 @@ char playerInfoStructParser_1(void* a1p, int* a3) {
 	char* v3;     // eax
 	char* v4;     // eax
 	uint32_t* v6; // eax
-	char pDst;    // [esp+Ch] [ebp-18h]
+	char pDst[GAMEEX_PLAYER_NAME_UNITS + 1];
 
-	if (a1 == -2)
+	if (!a1 || a1 == -2 || !a3)
 		return 0;
 	v3 = nox_common_playerInfoGetFirst_416EA0();
 	int a2 = v3;
 	if (!v3)
 		return 0;
 	while (1) {
-		nox_CharToOemW((const wchar2_t*)(a2 + 4704), &pDst);
-		if (!strcmp(&pDst, (const char*)(a1 + 2)))
+		nox_CharToOemW((const wchar2_t*)(a2 + 4704), pDst);
+		if (!strcmp(pDst, (const char*)(a1 + 2)))
 			break;
 		v4 = nox_common_playerInfoGetNext_416EE0(a2);
 		a2 = v4;
@@ -76,6 +91,8 @@ char playerInfoStructParser_1(void* a1p, int* a3) {
 			return 0;
 	}
 	v6 = nox_xxx_objGetTeamByNetCode_418C80(*(uint32_t*)(a2 + 2060));
+	if (!v6)
+		return 0;
 	*a3 = (int)v6;
 	*(uint8_t*)(a1 + 1) = *((uint8_t*)v6 + 4);
 	*(uint8_t*)a1 = *(uint8_t*)(a2 + 2251);

@@ -104,6 +104,7 @@ import (
 )
 
 type PortTestPlayerControlsSpec struct {
+	Extension                *PortTestExtensionSpec
 	RuntimeHost              *PortTestRuntimeHostSpec
 	RuntimePause             *PortTestRuntimePauseSpec
 	GameMessagePickupCalls   *int
@@ -376,6 +377,9 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 		st.result = 0
 	} else if a.Op == 1462 {
 		st.transitions = append(st.transitions, p.unitOrderContract()...)
+		st.result = 0
+	} else if a.Op == 1497 {
+		st.transitions = append(st.transitions, p.extensionContract()...)
 		st.result = 0
 	} else if a.Op == 1499 {
 		st.transitions = append(st.transitions, p.runtimeHostContract()...)

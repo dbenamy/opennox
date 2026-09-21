@@ -145,9 +145,9 @@ func Nox_xxx_netSendLineMessage_4D9EB0(u *server.Object, s string) bool {
 }
 
 func Nox_server_makeServerInfoPacket_554040(src, dst []byte) int {
-	csrc, free := alloc.Make([]byte{}, len(src))
-	defer free()
-	copy(csrc, src)
+	if len(src) < 12 || len(dst) < 73+len(alloc.GoString(serverConfigNameGet())) {
+		return 0
+	}
 	return int(C.nox_server_makeServerInfoPacket_554040((*C.char)(unsafe.Pointer(&src[0])), C.int(len(src)), (*C.char)(unsafe.Pointer(&dst[0]))))
 }
 

@@ -41,7 +41,9 @@ extern uint32_t dword_8531A0_2576;
 
 //----- (00554040) --------------------------------------------------------
 unsigned int nox_server_makeServerInfoPacket_554040(const char* inBuf, int inSz, char* out) {
-	char buf[72];
+	char buf[72] = {0};
+	if (!inBuf || inSz < 12 || !out)
+		return 0;
 
 	char* v3 = sub_416640();
 	char* game = nox_xxx_cliGamedataGet_416590(0);
@@ -63,7 +65,8 @@ unsigned int nox_server_makeServerInfoPacket_554040(const char* inBuf, int inSz,
 	buf[5] = v3[101] & 0xF;
 	buf[6] = ((unsigned char)v3[101]) >> 4;
 	*(uint32_t*)&buf[7] = *((uint32_t*)game + 11);
-	strcpy(&buf[10], nox_xxx_mapGetMapName_409B40());
+	// The map field occupies nine bytes, including its terminator.
+	strncpy(&buf[10], nox_xxx_mapGetMapName_409B40(), 8);
 	buf[19] = v3[102] | sub_43BE50_get_video_mode_id();
 	buf[20] = v3[100];
 	buf[21] = v3[100] & 0x10;
