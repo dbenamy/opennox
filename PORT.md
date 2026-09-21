@@ -14,6 +14,10 @@
 
 ## Current status
 
+The next client presentation/lifecycle C baseline is qualified: nine roots and
+6,129 captured cases, repeated across applicable profiles with production unchanged.
+Native conversion is next; see [CLIENT_RENDER_HELPERS.md](docs/porting/CLIENT_RENDER_HELPERS.md).
+
 The ordered client message queue is now Go, removing another 145 C lines and
 four unused interfaces. Its 32 affected tests pass across all three profiles;
 four captures /1,699 cases match the C baseline, and fresh production/ABI,

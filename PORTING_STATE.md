@@ -8,6 +8,27 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — client presentation C baseline qualified; native conversion next
+
+Nine new roots /eight captures /6,129 cases pass original C. Default repeat and
+highres pass nine roots; server passes all six applicable roots; no skips, all
+capture hashes match and static checks pass. Production source is identical to
+qualified 2ce59fea except six tagged test files, so its production evidence is
+reused. C remains4,458 lines /33 files /zero reference C. See
+[CLIENT_RENDER_HELPERS.md](docs/porting/CLIENT_RENDER_HELPERS.md).
+
+All jobs joined. `build/port-client-render-helpers/finish-c.py` is CONSUMED.
+The palette Go draft is NOT installed. Other older test drafts are stale: tracked
+source is authoritative. `scope.md` records the inert focus/pixel-span audits and
+animation teardown deferral. Native conversion must preserve the live input-state
+reset, World.Max.X pan, signed arithmetic and context unlink-before-free.
+
+Fixture failures are resolved before freezing: transparent-white constant, missing
+startup name pointers, dynamic string-ID cast, pan-coordinate expectation, and
+manifest regex format. Earlier claim that loading already passed was incorrect;
+its original log records failure. No production changes were needed.
+
+
 ## Current — ordered client queue qualified
 
 Six live helpers are Go; one inert console walk and four Go-backed C exports are

@@ -1,0 +1,92 @@
+{
+  "status": "qualified original C client presentation and lifecycle baseline",
+  "production_revision": "2ce59fea",
+  "production_qualification": "client-sequence-native-qualification.json",
+  "production_source_unchanged": true,
+  "added_test_files": [
+    "src/client_drawable_loop_audio_porttest_test.go",
+    "src/client_palette_tables_porttest_test.go",
+    "src/client_presentation_lifecycle_porttest_test.go",
+    "src/client_random_names_porttest_test.go",
+    "src/client_status_overlays_porttest_test.go",
+    "src/common/memmap/nox/blobdata/client_overlays_porttest.go"
+  ],
+  "targets": {
+    "c-default2": {
+      "roots": 9,
+      "skips": 0,
+      "captures": 8,
+      "wall_seconds": 12.035670154029503
+    },
+    "c-default3": {
+      "roots": 9,
+      "skips": 0,
+      "captures": 8,
+      "wall_seconds": 11.812778323190287
+    },
+    "c-server2": {
+      "roots": 6,
+      "skips": 0,
+      "captures": 5,
+      "wall_seconds": 9.861750039970502
+    },
+    "c-highres": {
+      "roots": 9,
+      "skips": 0,
+      "captures": 8,
+      "wall_seconds": 44.89487169519998
+    }
+  },
+  "captures": [
+    {
+      "path": "{out}/interaction-client-audio-context-lifecycle.json",
+      "sha256": "0626b67128a12948570eabfdb07c5bf2e47654af917801988d7d069feac889c4",
+      "cases": 36
+    },
+    {
+      "path": "{out}/interaction-client-debug-overlay.json",
+      "sha256": "7f180d3795a47ac93af9f7c8dd1dddf23aa0513f527285581b505003bf7002ee",
+      "cases": 405
+    },
+    {
+      "path": "{out}/interaction-client-drawable-loop-audio.json",
+      "sha256": "26e8a1112ef6eed125c608f65229ba36d0fc773d9c5303711dc4d8175935fea1",
+      "cases": 2340
+    },
+    {
+      "path": "{out}/interaction-client-loading-overlay.json",
+      "sha256": "5bfba078ded2936c0dc4a9f67b82164d3b4d5dcd5bfd20992934383b26501753",
+      "cases": 16
+    },
+    {
+      "path": "{out}/interaction-client-palette-tables.json",
+      "sha256": "b867bbf658802bf9a8e98ef53b031c3e546230e360d931c814729bb6c6708228",
+      "cases": 20
+    },
+    {
+      "path": "{out}/interaction-client-random-names.json",
+      "sha256": "f313d92c272f5bec43a1404ff2b73a28cec7c5e785d696a496b48b193d279d3b",
+      "cases": 3200
+    },
+    {
+      "path": "{out}/interaction-client-server-address-copy.json",
+      "sha256": "47f4b39cbb2308193b486cbf08a1d679168c10e4ff955b7df186869d61fa7962",
+      "cases": 40
+    },
+    {
+      "path": "{out}/interaction-client-winner-overlay.json",
+      "sha256": "d6cf252650ee8b5c2bd01f2ab7d8e665b78736aca6a2d3e1bc89437437273f7b",
+      "cases": 72
+    }
+  ],
+  "captured_cases": 6129,
+  "source_manifest_sha256": "2aba40a4e6d25f1565ad85632c922803f016342f49a28391d4d59e772a2c5c87",
+  "production_c": {
+    "files": 33,
+    "lines": 4458
+  },
+  "reference_c": {
+    "files": 0,
+    "lines": 0
+  }
+}
