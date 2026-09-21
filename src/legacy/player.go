@@ -242,7 +242,7 @@ func Get_dword_5d4594_1046492() int {
 }
 
 func Nox_xxx_playerInitColors_461460(pl *server.Player) {
-	C.nox_xxx_playerInitColors_461460((*nox_playerInfo)(pl.C()))
+	clientPlayerColors(pl)
 }
 
 func Sub_425B30(a1 unsafe.Pointer, a2 ntype.PlayerInd) {

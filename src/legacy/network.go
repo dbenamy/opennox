@@ -16,10 +16,8 @@ extern unsigned int dword_5d4594_2660032;
 extern unsigned int dword_5d4594_2650652;
 extern unsigned int nox_player_netCode_85319C;
 extern uint32_t dword_5d4594_1200832;
-void nox_xxx_playerInitColors_461460(nox_playerInfo* pl);
 int sub_457140(int a1, wchar2_t* a2);
 int sub_456DF0(int a1);
-int sub_43C650();
 void* nox_xxx_spriteGetMB_476F80();
 static int nox_xxx_netSendLineMessage_go(nox_object_t* a1, wchar2_t* str) {
 	return nox_xxx_netSendLineMessage_4D9EB0(a1, str);
@@ -166,7 +164,7 @@ func Nox_xxx_countObserverPlayers_425BF0() int {
 }
 
 func Sub_43C650() {
-	C.sub_43C650()
+	clientFrameSample()
 }
 
 func Sub_41D6C0() {

@@ -126,7 +126,7 @@ func Sub_48D740() {
 	clientSequenceInit()
 }
 func Sub_473930() {
-	C.sub_473930()
+	clientAnimationCachesLoad()
 }
 func Sub_43DBA0() {
 	audioEventMusicLeave()
@@ -159,7 +159,7 @@ func Sub_4161E0() {
 	serverConfigRefresh()
 }
 func Sub_473960() {
-	C.sub_473960()
+	clientAnimationCachesClear()
 }
 func Sub_48D800() {
 	chatBubbleDestroy()
@@ -202,7 +202,7 @@ func Nox_xxx_gameSetMapPath_409D70(a1 string) {
 	sessionSetMapPath((*byte)(unsafe.Pointer(internCStr(a1))))
 }
 func Nox_xxx_gui_43E1A0(a1 int) {
-	C.nox_xxx_gui_43E1A0(C.int(a1))
+	clientModalWindow(a1)
 }
 func Nox_xxx_printCentered_445490(str string) {
 	wstr, free := CWString(str)

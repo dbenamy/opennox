@@ -5,8 +5,6 @@
 #include "defs.h"
 
 int sub_460EA0(int a1);
-void nox_xxx_playerInitColors_461460(nox_playerInfo* pl);
-char* sub_461520();
 int nox_xxx_clientSetAltWeapon_461550(int a1);
 int sub_4615C0();
 int sub_461600(int a1);
@@ -79,8 +77,6 @@ wchar2_t* sub_472280();
 unsigned char* sub_472310();
 char nox_client_toggleMap_473610();
 int sub_473670();
-char* sub_473930();
-int sub_473960();
 void sub_473970(int2* a1, int2* a2);
 
 #endif // NOX_PORT_GAME2_1

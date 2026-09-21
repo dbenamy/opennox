@@ -192,7 +192,7 @@ func Sub_470680() {
 }
 
 func Sub_461520() {
-	C.sub_461520()
+	clientAllPlayerColors()
 }
 
 func Nox_xxx_tile_486060() {

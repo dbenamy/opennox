@@ -104,7 +104,7 @@ func Nox_client_lockScreenBriefing_450160(a1 int, a2 int, a3 int) {
 	briefingShow(a1, a2, byte(a3))
 }
 func Sub_43E8C0(a1 int) {
-	C.sub_43E8C0(C.int(a1))
+	*memmap.PtrUint32(0x5D4594, 816408) = uint32(a1)
 }
 func Sub_4D6F80(a1 int) {
 	questRuntimeSetWord(1556164, uint32(a1))
@@ -124,7 +124,4 @@ func Get_winMainMenuAnimOutStartFnc() unsafe.Pointer {
 }
 func Get_winMainMenuAnimOutDoneFnc() unsafe.Pointer {
 	return C.winMainMenuAnimOutDoneFnc
-}
-func Get_sub_4A22A0() unsafe.Pointer {
-	return C.sub_4A22A0
 }

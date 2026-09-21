@@ -2209,3 +2209,17 @@ scratch buffer with a terminator and unchanged neighboring memory. Three indepen
 native contracts cover these reversible corrections. All 6,129 valid captured C
 cases remain unchanged, including World.Max.X pan and signed player levels.
 See [CLIENT_RENDER_HELPERS.md](CLIENT_RENDER_HELPERS.md).
+
+## Client resource lifecycle boundaries — review later
+
+Preserve raw-libc ownership for sprite parser data; the Go teardown uses a thin
+libc free boundary. The frame sampler retains unsigned 32-bit clock narrowing
+before 64-bit history arithmetic. Player color initialization reuses the existing
+Go color encoder while copying the mutable white word exactly.
+
+Remove the packed-color and video/material callback registrations after exact
+symbol and mapped-offset searches found no readers. Move the main-menu callback
+directly to Go, preserving timer underflow, sentinel gates and RNG call order.
+Repeated modal creation keeps the old GUI-owned window, matching current behavior.
+These are reversible ownership/implementation choices; captured C behavior remains
+the qualification contract. See [CLIENT_RESOURCES.md](CLIENT_RESOURCES.md).

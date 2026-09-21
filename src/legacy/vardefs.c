@@ -414,3 +414,16 @@ uint32_t dword_587000_122856 = 0x1;
 uint32_t dword_5d4594_831092 = 0;
 uint32_t nox_player_netCode_85319C = 0;
 nox_render_data_t* nox_draw_curDrawData_3799572 = 0;
+
+void* dword_5d4594_830236 = 0;
+void* dword_5d4594_830232 = 0;
+uint32_t dword_5d4594_816364 = 0;
+uint32_t dword_5d4594_816376 = 0;
+nox_window* nox_win_unk5 = 0;
+nox_window* dword_5d4594_1062452 = 0;
+nox_inventory_cell_t nox_client_inventory_grid_1050020[NOX_INVENTORY_CELLS_MAX] = {0};
+uint32_t dword_5d4594_1193156 = 0;
+uint8_t** nox_pixbuffer_rows_3798784 = 0;
+uint32_t nox_client_highResFloors_154952 = 1;
+void* nox_video_tileBuf_ptr_3798796 = 0;
+void* nox_video_tileBuf_end_3798844 = 0;

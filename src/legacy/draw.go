@@ -471,12 +471,6 @@ func Sub_499F60(p int, pos image.Point, a4 int, a5, a6, a7, a8, a9 int, a10 int)
 	presentationBubble(p, pos, int16(a4), byte(a5), byte(a6), byte(a7), byte(a8), byte(a9), a10)
 }
 
-func Get_sub_480250() unsafe.Pointer {
-	return C.sub_480250
-}
-func Get_sub_480220() unsafe.Pointer {
-	return C.sub_480220
-}
 func Sub_435120(a1 unsafe.Pointer, a2 unsafe.Pointer) {
 	clientPaletteExpand(a1, a2)
 }

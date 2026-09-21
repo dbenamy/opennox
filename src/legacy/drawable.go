@@ -3,7 +3,6 @@ package legacy
 /*
 #include "defs.h"
 extern int nox_drawable_count;
-void nox_xxx_draw_44C650_free_kind(void* lpMem, int kind);
 static int go_nox_drawable_call_draw_func(nox_draw_viewport_t* vp, nox_drawable* dr) {
 	return dr->draw_func(vp, dr);
 }
@@ -215,5 +214,5 @@ func Nox_xxx_unitSpriteCheckAlly_4951F0(id int) bool {
 	return combatAllyLookup(uint32(id)) != nil
 }
 func Nox_xxx_draw_44C650_free_kind(ptr unsafe.Pointer, kind int) {
-	C.nox_xxx_draw_44C650_free_kind(ptr, C.int(kind))
+	spriteDataFreeKind(ptr, kind)
 }

@@ -405,8 +405,6 @@ func (c *Client) noxTileUpdateLightXxx(p image.Point) {
 }
 
 func nox_xxx_setupSomeVideo_47FEF0() {
-	*memmap.PtrPtr(0x973F18, 7716) = legacy.Get_sub_480250()
-	*memmap.PtrPtr(0x973F18, 5248) = legacy.Get_sub_480220()
 	*memmap.PtrUint32(0x5D4594, 2598128) = 0
 	*memmap.PtrUint32(0x5D4594, 2598160) = 0
 	*memmap.PtrUint32(0x5D4594, 2598132) = 0

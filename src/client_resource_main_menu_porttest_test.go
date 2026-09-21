@@ -20,7 +20,7 @@ func TestClientResourceMainMenuDraw(t *testing.T) {
 	draw.SetImagePoint(image.Pt(3, 5))
 	draw.BgImageHnd = o.images[0].C()
 	draw.HlImageHnd = o.images[1].C()
-	call := gui.WrapDrawFuncC(legacy.Get_sub_4A22A0())
+	call := legacy.ClientMainMenuDraw
 	type row struct {
 		Records, Names, Advance, Style, Seed, Pattern, Step int
 		Random                                              uint32

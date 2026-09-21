@@ -14,6 +14,11 @@
 
 ## Current status
 
+Client resource teardown, timing, colors, caches and menu/modal lifecycle are Go,
+removing 838 C lines and 18 old interfaces. Default/server/highres pass 135/135/135
+affected roots and all 6,415 C cases; fresh production/ABI, known-suite comparison
+and headless gameplay/save-load pass. See [CLIENT_RESOURCES.md](docs/porting/CLIENT_RESOURCES.md).
+
 The remaining client render helpers and audio lifecycle are Go, removing 915 C lines
 and 15 unused exports. Default/server/highres pass 96/91/96 affected roots, no skips,
 and 6,129 captured cases match C. Fresh production/ABI, known-suite comparison and
@@ -31,7 +36,7 @@ unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skip
 and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
 comparison, headless gameplay and save/load checks pass.
 
-C remaining is **3,543 physical lines in 28 files**, zero reference C. See
+C remaining is **2,705 physical lines in 23 files**, zero reference C. See
 [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) and
 [the native qualification](docs/porting/client-session-native-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.

@@ -73,7 +73,7 @@ func browserCreateAt(x, y uint32) int {
 	*memmap.PtrUint16(0x5D4594, 814916) = uint16(x + uint32(memmap.Uint16(0x587000, 87528+off)) - 216)
 	*memmap.PtrUint16(0x5D4594, 814918) = uint16(y + uint32(memmap.Uint16(0x587000, 87530+off)) - 27)
 	browserChooseCharacter()
-	if C.sub_43BDB0()&2 != 0 {
+	if memmap.Uint32(0x5D4594, 815092)&2 != 0 {
 		questRuntimeSetWord(1556160, 1)
 	}
 	count := 0

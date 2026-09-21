@@ -28,10 +28,6 @@ void nox_client_drawImageAt_47D2C0(nox_video_bag_image_t* img, int x, int y);
 void sub_47D370(int a1);
 void sub_47D400(int a1, char a2);
 int nox_draw_imageMeta_47D5C0(nox_video_bag_image_t* a1, uint32_t* a2, uint32_t* a3, uint32_t* a4, uint32_t* a5);
-unsigned char sub_47DBC0();
-int sub_47FCE0(uint32_t* a1, int a2);
-uint8_t* sub_480220(uint8_t* a1, uint8_t* a2);
-uint16_t* sub_480250(uint8_t* a1, uint16_t* a2);
 long long sub_484C00(int a1, int a2);
 long long nox_xxx_spriteChangeLightSize_484C30(int a1, int a2);
 int sub_484C60(float a1);
@@ -52,6 +48,5 @@ int nox_xxx_wndEditProc_487D70(nox_window* a1, int a2, int a3, int a4);
 int nox_xxx_wndEditDrawNoImage_488160(int a1, int a2);
 int nox_xxx_wndStaticDrawNoImage_488D00(nox_window* a1p, nox_window_data* a2p);
 nox_window* nox_gui_newStaticText_489300(nox_window* a1, int a2, int a3, int a4, int a5, int a6, nox_window_data* a7p, nox_staticText_data* a8p);
-int nox_xxx_setSomeFunc_48A210(int a1);
 
 #endif // NOX_PORT_GAME2_2

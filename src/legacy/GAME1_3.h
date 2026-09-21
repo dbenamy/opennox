@@ -3,7 +3,6 @@
 
 #include "defs.h"
 
-int sub_43BDB0();
 void nox_game_decStateInd_43BDC0();
 void nox_game_addStateCode_43BDD0(int a1);
 int nox_game_getStateCode_43BE10();
@@ -16,9 +15,7 @@ int nox_game_switchStates_43C0A0();
 void nox_gui_freeAnimation_43C570(nox_gui_animation* p);
 nox_gui_animation* nox_gui_makeAnimation_43C5B0(nox_window* win, int x1, int y1, int x2, int y2, int in_dx, int in_dy,
 												int out_dx, int out_dy);
-int sub_43C650();
 int sub_43C6E0();
-void sub_43CEB0();
 void sub_43CF40();
 void sub_43CF70();
 void sub_43D6A0();
@@ -31,8 +28,6 @@ void sub_43DD10(void* a1);
 void sub_43DD70(int a1, int a2);
 void nox_game_SetCliDrawFunc(void* a1);
 int sub_43DE40(void* a1);
-uint32_t* nox_xxx_gui_43E1A0(int a1);
-int sub_43E8C0(int a1);
 int sub_43E940(void* a1);
 void sub_43E9F0();
 int sub_43EA20(void* a1);

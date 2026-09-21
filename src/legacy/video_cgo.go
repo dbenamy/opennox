@@ -14,7 +14,6 @@ package legacy
 import "C"
 import (
 	"image"
-	"unsafe"
 
 	"github.com/opennox/opennox/v1/client"
 )
@@ -117,9 +116,6 @@ func Sub_4611A0() int {
 func Sub_467CD0() {
 	uiInventoryCancelDrag()
 }
-func Nox_xxx_setSomeFunc_48A210(a1 unsafe.Pointer) {
-	C.nox_xxx_setSomeFunc_48A210(C.int(uintptr(a1)))
-}
 func Sub_49F6D0(a1 int) int {
 	return int(uiRenderFlag(uint32(a1)))
 }
@@ -128,8 +124,4 @@ func Sub_430B50(a1 int, a2 int, a3 int, a4 int) {
 }
 func Sub_495A80(a1 uint32) int {
 	return bool2int(combatFriendHas(a1))
-}
-
-func Get_sub_47FCE0() unsafe.Pointer {
-	return C.sub_47FCE0
 }

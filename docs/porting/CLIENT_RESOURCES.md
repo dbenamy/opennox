@@ -6,8 +6,8 @@ Port the remaining client resource teardown, frame timing, player colors, image
 caches, modal window and menu drawing helpers. The selected files contain 851 C
 lines before preserving their shared variable definitions: `GAME1_3.c`,
 `GAME2_1.c`, `GAME2_2.c`, `client__drawable__drawdb.c` and
-`client__shell__mainmenu.c`. Production remains unchanged while qualifying the C
-baseline. Current total: **3,543 physical C lines in 28 files**, zero reference C.
+`client__shell__mainmenu.c`. The original C baseline had **3,543 physical lines in 28 files**, zero reference C.
+The qualified conversion leaves **2,705 physical C lines in 23 files**.
 
 ## Contracts
 
@@ -82,4 +82,27 @@ production builds/ABI, exact known-suite comparison, gameplay and save/load evid
 See [the baseline manifest](client-resources-c-batch.json) and
 [qualification report](client-resources-c-qualification.json).
 
-Native conversion is next. No original C body has been removed by this baseline.
+The baseline commit changed only tests/docs; the subsequent native conversion is
+qualified below.
+
+
+## Qualified native implementation
+
+Fourteen live helper behaviors have moved to Go (including inlined scalar access),
+and four unreachable helpers are removed. All 18 old C interfaces are retired;
+Go callers use native helpers and the menu registers a Go callback directly.
+The five C files are deleted, with 12 shared variable definitions moved intact to
+vardefs.c. Net reduction: **838 lines**, leaving **2,705 /23 files /zero reference C**.
+Default/server/highres pass 135/135/135 affected roots with no skips and all eight
+captures /6,415 cases unchanged. Fresh production builds/ABI, exact known-suite
+comparison, headless gameplay and explicit save/load pass. Preflight and qualified
+default binaries match. See [native qualification](client-resources-native-qualification.json).
+
+The first native compile found one unused import left by callback removal; it was
+removed before rerunning. The installer stopped at its optional cgo cleanup guard
+because the browser file still has other C-typed adapters; its cgo import remains.
+No frozen expected output was changed for the conversion.
+
+The first broad run omitted OPENNOX_SPELLBOOK_ASSETS in its manifest, causing one
+resource fixture failure. Corrected the environment, then all selected tests passed;
+no production or fixture source change was needed.

@@ -10,7 +10,10 @@ extern uint32_t dword_5d4594_815748;
 extern uint32_t dword_5d4594_816412;
 */
 import "C"
-import "unsafe"
+import (
+	"github.com/opennox/opennox/v1/common/memmap"
+	"unsafe"
+)
 
 func PortTestClientResourceWords() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
@@ -27,6 +30,6 @@ func PortTestClientResourceWords() (map[string]*uint32, func()) {
 		}
 	}
 }
-func PortTestClientFrameAverage()      { C.sub_43CEB0() }
-func PortTestClientShellState() int32  { return int32(C.sub_43BDB0()) }
-func PortTestClientBindingCount() byte { return byte(C.sub_47DBC0()) }
+func PortTestClientFrameAverage()      { clientFrameAverage() }
+func PortTestClientShellState() int32  { return int32(memmap.Uint32(0x5D4594, 815092)) }
+func PortTestClientBindingCount() byte { return memmap.Uint8(0x5D4594, 1193128) }

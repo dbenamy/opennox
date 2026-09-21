@@ -2,27 +2,33 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 3.5k lines** — **3,543 physical lines in 28
-production `.c` files**, zero reference C. Latest conversion removes 915 lines.
+**Qualified C remaining: about 2.7k lines** — **2,705 physical lines in 23
+production `.c` files**, zero reference C. Latest conversion removes 838 lines.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Active — client resources/lifecycle C baseline qualified
+## Current — client resources/lifecycle qualified
 
-Original-C default repeat/server/highres pass nine roots, no skips, eight captures
-/6,415 cases and static checks. The revised resource-only TLS free observer also
-passes 41 resource/map-theme/world-grid roots three times with GOGC=10.
-All jobs joined. Production is byte-identical to qualified a8fbf8a8; only tagged
-tests/instrumentation changed, so its production qualification is reused. C remains
-3,543 /28 files. See [CLIENT_RESOURCES.md](docs/porting/CLIENT_RESOURCES.md).
+Default/server/highres pass 135/135/135 affected roots, no skips; all eight captures
+/6,415 cases match C. Fresh production/ABI, exact known-suite comparison, gameplay
+and save/load pass. Preflight and production default binaries match. All source
+fingerprints agree and all jobs are joined. C falls 838 to 2,705 /23 files.
+See [CLIENT_RESOURCES.md](docs/porting/CLIENT_RESOURCES.md). Baseline a7881ff9 is pushed.
 
-Next install/review native drafts under build/port-final-runtime-helpers/native.
-The installer there is NOT yet run; finish-c.py and install-resource-observer.py
-are CONSUMED. Preserve raw-libc sprite allocation ownership, C.uint tick narrowing,
-menu sentinel/RNG order and shared globals. Failed probes and the intermittent
-Go-callback observer GC-stop stack are retained; the final observer makes no Go
-callbacks inside free. Fixture fixes and reachability evidence are in the report.
+Fourteen live behaviors are Go, four unreachable helpers and 18 C interfaces removed;
+12 shared variable definitions moved intact. Preserve libc allocation ownership,
+32-bit clock narrowing and menu timer/RNG behavior. No C algorithm kept for tests.
+All installers/finalizers/native drafts under build/port-final-runtime-helpers are
+CONSUMED/STALE; tracked source is authoritative. The optional browser cgo cleanup
+assertion stopped the installer after installation; that cgo import remains needed.
+An unused import and missing test asset environment were fixed before final gates.
+
+Cleanup removed 14 obsolete root test archives /1,136,174,758 bytes and 556,358,986
+bytes of verified-identical completed save-run asset copies. All cleanup applies are
+CONSUMED. Restore that run using
+`python3 build/port-final-runtime-helpers/deduplicate-completed-save.py --restore client-render-helpers-native-save`. Current caches, original assets and evidence remain.
+Next: remaining server/session helpers and modifier lookups; audit reachability first.
 
 Completed render-helper preflight assets were deduplicated (1,112,777,465 bytes).
 Restore with`python3 build/port-client-render-helpers/deduplicate-preflight-assets.py

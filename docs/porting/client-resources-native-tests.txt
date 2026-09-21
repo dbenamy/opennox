@@ -1,0 +1,1 @@
+^Test(ClientResource.*|ClientSprite.*|ClientInteractionModalFrameGate|BindingEditor.*|ServerBrowser.*|PlayerFiles.*|CharacterCreation.*|MapTheme.*|WorldGrid.*)$

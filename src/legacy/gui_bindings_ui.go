@@ -116,7 +116,7 @@ func (e bindingEditor) construct() int {
 	if e {
 		Sub_4CBBF0()
 	}
-	for id, end := 971, 971+int(C.sub_47DBC0()); id < end; id++ {
+	for id, end := 971, 971+int(memmap.Uint8(0x5D4594, 1193128)); id < end; id++ {
 		uiWindowEnable(w.ChildByID(uint(id)), 1)
 	}
 	bindingSend(w.ChildByID(uint(971+Nox_client_mousePriKey_430AF0())), 16392, 1, 0)

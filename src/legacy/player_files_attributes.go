@@ -80,7 +80,7 @@ func playerFileAttributes(u *server.Object, info unsafe.Pointer) int {
 	}
 	if r.read() && u != nil {
 		if pl := GetServer().S().Players.ByID(int(u.NetCode)); pl != nil {
-			C.nox_xxx_playerInitColors_461460((*C.nox_playerInfo)(unsafe.Pointer(pl)))
+			clientPlayerColors(pl)
 		}
 	}
 	r.raw(unsafe.Add(info, 88), 1)

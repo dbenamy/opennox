@@ -7,8 +7,6 @@ package legacy
 #include "client__draw__canidraw.h"
 #include "client__draw__staticdraw.h"
 #include "client__draw__slavedraw.h"
-void nox_xxx_draw_44C650_free_kind(void*, int);
-void* nox_xxx_draw_44C780(int);
 */
 import "C"
 
@@ -63,9 +61,9 @@ func PortTestSpriteParse(op int, obj *client.ObjectType, mf *binfile.MemFile, at
 	panic("unknown sprite parser")
 }
 func PortTestSpriteFree(data unsafe.Pointer, kind int) {
-	C.nox_xxx_draw_44C650_free_kind(data, C.int(kind))
+	spriteDataFreeKind(data, kind)
 }
 
 func PortTestSpriteFreeVectorFrames(data unsafe.Pointer) {
-	C.nox_xxx_draw_44C780(C.int(uintptr(data) + 4))
+	spriteVectorFree(unsafe.Add(data, 4))
 }
