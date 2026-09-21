@@ -20,10 +20,10 @@ package legacy
 #include "client__gui__guimsg.h"
 #include "client__drawable__drawable.h"
 
-char* nox_xxx_getRandomName_4358A0();
 */
 import "C"
 import (
+	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/legacy/common/ccall"
@@ -117,7 +117,7 @@ func Sub_4137E0() {
 	C.sub_4137E0()
 }
 func Nox_xxx_getRandomName_4358A0() string {
-	return GoString(C.nox_xxx_getRandomName_4358A0())
+	return clientRandomName()
 }
 func Sub_4E4EF0() {
 	reliableResetRates()
@@ -132,7 +132,7 @@ func Sub_43DBA0() {
 	audioEventMusicLeave()
 }
 func Nox_xxx_getHostInfoPtr_431770() *server.PlayerInfo {
-	return (*server.PlayerInfo)(unsafe.Pointer(C.nox_xxx_getHostInfoPtr_431770()))
+	return (*server.PlayerInfo)(memmap.PtrOff(0x5D4594, 807172))
 }
 func Sub_41FA40() string {
 	return "" // The former account selector remains unset.
@@ -182,9 +182,7 @@ func Sub_499450() {
 func Sub_4959D0() {
 	combatFriendDestroy()
 }
-func Sub_49AEA0() {
-	C.sub_49AEA0()
-}
+
 func Nox_xxx_netSavePlayer_41CE00() {
 	playerFileSaveRequest()
 }
@@ -215,5 +213,5 @@ func Nox_xxx_mapValidateMB_4CF470(a1 string, a2 uint32) int {
 	return int(sessionMapValidate((*byte)(unsafe.Pointer(internCStr(a1))), a2))
 }
 func Nox_xxx_copyServerIPAndPort_431790(a1 string) {
-	C.nox_xxx_copyServerIPAndPort_431790(internCStr(a1))
+	clientServerAddressCopy(a1)
 }

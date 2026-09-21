@@ -2,11 +2,30 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 4.5k lines** — **4,458 physical lines in 33
-production `.c` files**, zero reference C. Latest conversion removes 145 lines.
+**Qualified C remaining: about 3.5k lines** — **3,543 physical lines in 28
+production `.c` files**, zero reference C. Latest conversion removes 915 lines.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
+
+## Current — client render helpers and audio lifecycle qualified
+
+Default/server/highres pass 96/91/96 roots with no skips; all eight captures /6,129
+cases match C. Three native safety roots cover long/invalid winner text, zero-width
+pan and bounded/terminated debug text. Fresh preflight gameplay and all production
+builds/ABI, exact known-suite comparison and explicit save/load pass. Preflight and
+qualified default binaries match; all source fingerprints are identical and jobs
+joined. C falls 915 lines to 3,543 /28 files. See
+[CLIENT_RENDER_HELPERS.md](docs/porting/CLIENT_RENDER_HELPERS.md).
+
+Baseline78bef3a6 is pushed. Sixteen live helpers are Go; six inert helpers and 15
+obsolete exports are removed. Preserve the input-state reset, World.Max.X pan and
+context unlink-before-free ownership. All installers/finalizers under
+`build/port-client-render-helpers` are CONSUMED; tracked source is authoritative.
+Cache cleanup removed 14 obsolete root porttest archives /1,131,927,356 bytes;
+current caches, original assets and archives are preserved.
+Next: remaining resource allocation/free graph and connected lifecycle helpers.
+
 
 ## Active — client presentation C baseline qualified; native conversion next
 

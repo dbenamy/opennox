@@ -478,13 +478,13 @@ func Get_sub_480220() unsafe.Pointer {
 	return C.sub_480220
 }
 func Sub_435120(a1 unsafe.Pointer, a2 unsafe.Pointer) {
-	C.sub_435120(a1, a2)
+	clientPaletteExpand(a1, a2)
 }
 func Sub_435040() {
-	C.sub_435040()
+	clientPaletteSort()
 }
 func Sub_435150(a1 unsafe.Pointer, a2 unsafe.Pointer) {
-	C.sub_435150((*C.uchar)(a1), (*C.char)(a2))
+	clientPaletteCompact(a1, a2)
 }
 func Nox_xxx_wndDraw_49F7F0() {
 	objectRenderSaveClip()

@@ -14,9 +14,10 @@
 
 ## Current status
 
-The next client presentation/lifecycle C baseline is qualified: nine roots and
-6,129 captured cases, repeated across applicable profiles with production unchanged.
-Native conversion is next; see [CLIENT_RENDER_HELPERS.md](docs/porting/CLIENT_RENDER_HELPERS.md).
+The remaining client render helpers and audio lifecycle are Go, removing 915 C lines
+and 15 unused exports. Default/server/highres pass 96/91/96 affected roots, no skips,
+and 6,129 captured cases match C. Fresh production/ABI, known-suite comparison and
+headless gameplay/save-load pass. See [CLIENT_RENDER_HELPERS.md](docs/porting/CLIENT_RENDER_HELPERS.md).
 
 The ordered client message queue is now Go, removing another 145 C lines and
 four unused interfaces. Its 32 affected tests pass across all three profiles;
@@ -30,7 +31,7 @@ unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skip
 and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
 comparison, headless gameplay and save/load checks pass.
 
-C remaining is **4,458 physical lines in 33 files**, zero reference C. See
+C remaining is **3,543 physical lines in 28 files**, zero reference C. See
 [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) and
 [the native qualification](docs/porting/client-session-native-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.

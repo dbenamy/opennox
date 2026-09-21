@@ -1,5 +1,9 @@
 # Client presentation and lifecycle
 
+These helpers are now Go and fully qualified: **3,543 C lines remain in 28 files**,
+915 fewer than the baseline. All 6,129 captured cases match C; three additional
+safety contracts and fresh production/ABI/gameplay/save-load checks pass.
+
 The original-C baseline covers nine test roots and eight captures /6,129 cases:
 
 | Behavior | Cases | Independent checks |
@@ -17,7 +21,7 @@ An additional scalar/host-info contract checks mapped state and stable host-info
 identity without normalizing or capturing addresses. Server builds select six
 roots/five captures; the three rendering roots are client-only.
 
-Production remains **4,458 physical C lines in 33 files**, zero reference C.
+The original baseline had **4,458 physical C lines in 33 files**, zero reference C.
 The baseline adds only tagged test fixtures. Production source is compared with
 qualified queue revision `2ce59fea`; its production/ABI, known-suite and headless
 scenario evidence can be reused. Native conversion will need fresh qualification.
@@ -70,3 +74,32 @@ The first manifest attempts compiled successfully but rejected a multiline test
 list; the runner requires a single regex. Corrected runs use identical source and
 compare every applicable capture hash. Failed probe logs remain under
 `build/port-client-render-helpers`.
+
+## Qualified native implementation
+
+The installed conversion removes five C translation units, moves their live global
+definitions to the existing shared owner, and reduces C by 915 physical lines to
+3,543 in 28 files. Sixteen live helpers (including the input-state initializer) move
+to Go; six inert helpers disappear. Fifteen obsolete Go-backed exports retire;
+[the symbol list](client-render-helpers-retired.json) records them. The original-C
+baseline is pushed as 78bef3a6. No C algorithms remain solely for tests.
+
+Initial native probe2 passes all 11 selected roots and matches all eight C capture
+hashes. Probe1 failed to compile because the flags package's declared name differs
+from its import path; an explicit import alias fixes it. Default/server/highres pass 96/91/96 affected roots with no skips and all applicable
+C captures unchanged. Fresh headless gameplay, all three production builds and ABI
+checks, the exact known-suite comparison and explicit save/load pass. The preflight
+and qualified default binaries have identical hashes. See
+[the native qualification](client-render-helpers-native-qualification.json).
+
+Additional reversible boundary behavior: winner messages can exceed the former
+127-unit stack buffer; invalid winner modes return without drawing; zero-width
+(or ±1-width) audio viewports use centered pan rather than dividing by zero. The
+debug overlay caps text to its 80-unit scratch allocation, always terminates it,
+and leaves neighboring memory untouched. Three independent native test roots
+cover these cases. Valid captured C behavior is unchanged; goldens are not updated
+to accept the implementation.
+
+The first preflight command built the root library package and therefore could not
+execute (exit 126). The corrected command targets `./cmd/opennox`; this was a runner
+setup error, with production source unchanged. Keep both logs for recovery.

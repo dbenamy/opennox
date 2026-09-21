@@ -2195,3 +2195,17 @@ This is an intentional, reversible correction under the standing policy, not
 preservation of undefined C behavior. Valid-object bits and higher-priority VM
 compatibility overrides are unchanged. See [SCRIPT_BINDINGS.md](SCRIPT_BINDINGS.md)
 for independent contracts, original evidence and qualification status.
+
+## Remaining client presentation boundaries — review later
+
+The render-helper conversion removes the focus registry after whole-source symbol
+and mapped-offset searches found no callback readers. Preserve the separate live
+input-state reset. The pixel-span cleanup had no allocator/population path and is
+also removed. Shared live globals keep their existing owners and initial values.
+
+Native winner text can exceed C's 127-unit local buffer; invalid modes do not draw.
+A zero-width audio viewport uses centered pan. Debug text is capped to its 80-unit
+scratch buffer with a terminator and unchanged neighboring memory. Three independent
+native contracts cover these reversible corrections. All 6,129 valid captured C
+cases remain unchanged, including World.Max.X pan and signed player levels.
+See [CLIENT_RENDER_HELPERS.md](CLIENT_RENDER_HELPERS.md).

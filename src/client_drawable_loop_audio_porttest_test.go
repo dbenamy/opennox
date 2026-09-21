@@ -108,3 +108,34 @@ func TestClientDrawableLoopAudio(t *testing.T) {
 	dr.Field_124 = nil
 	interactionCapture(t, "client-drawable-loop-audio", rows)
 }
+
+func TestClientDrawableLoopAudioZeroWidth(t *testing.T) {
+	drawing := newObjectDrawingOwner(t)
+	o := newAudioEventsOwner(t, 1)
+	*o.words["dword_5d4594_1045432"] = 1
+	dimensions := legacy.PortTestBindingDimensions()
+	old := *dimensions[0]
+	t.Cleanup(func() { *dimensions[0] = old })
+	dr, free := alloc.New(client.Drawable{})
+	t.Cleanup(free)
+	listener, free := alloc.New(client.Drawable{})
+	t.Cleanup(free)
+	meta := o.metadata(1, 0, 1)
+	audioStreamWords(meta, 50)[16] = 100
+	*drawing.c.Viewport() = noxrender.Viewport{World: image.Rect(10, 20, 30, 40)}
+	for _, width := range []int32{-1, 0, 1} {
+		o.eventCall("sub_4521F0")
+		*dr = client.Drawable{}
+		dr.AudioLoop = 1
+		dr.ObjFlags = 0x1000000
+		*dimensions[0] = width
+		legacy.Sub_45A9B0(dr, listener)
+		if dr.Field_124 == nil {
+			t.Fatal("zero-width event missing")
+		}
+		w := audioStreamWords(audioStreamPointer(dr.Field_124), 144)
+		if w[64] != uint32(8192)<<16 {
+			t.Fatal("zero-width pan", width, w[64])
+		}
+	}
+}

@@ -33,9 +33,9 @@ func PortTestClientAudioAssetsOwner() ([]byte, *uint32, *unsafe.Pointer, func())
 	}
 }
 func PortTestClientAudioSlot(id int32) unsafe.Pointer {
-	return unsafe.Pointer(C.nox_xxx_draw_452270(C.int(id)))
+	return audioAssetSlot(id)
 }
-func PortTestClientAudioDelay(p unsafe.Pointer) int32 { return int32(C.sub_4522A0(C.int(uintptr(p)))) }
+func PortTestClientAudioDelay(p unsafe.Pointer) int32 { return audioAssetDelay(p) }
 func PortTestClientAudioSample(p unsafe.Pointer, key *byte) int32 {
 	return audioAssetSample(p, key)
 }

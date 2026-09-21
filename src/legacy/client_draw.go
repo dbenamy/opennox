@@ -16,14 +16,12 @@ package legacy
 #include "client__draw__glowdraw.h"
 #include "client__gui__guiggovr.h"
 void  nox_xxx_cliLight16_469140(nox_drawable* dr, nox_draw_viewport_t* vp);
-void nox_xxx_clientDrawAll_436100_draw_A();
-void nox_xxx_clientDrawAll_436100_draw_B();
 void nox_xxx_drawAllMB_475810_draw_A(nox_draw_viewport_t* vp);
 void nox_xxx_drawAllMB_475810_draw_C(nox_draw_viewport_t* vp, int v36, int v7);
-int sub_436F50();
 */
 import "C"
 import (
+	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
 
 	"github.com/opennox/libs/types"
@@ -35,7 +33,7 @@ import (
 )
 
 func Nox_xxx_clientDrawAll_436100_draw_A() {
-	C.nox_xxx_clientDrawAll_436100_draw_A()
+	clientLoadingOverlay()
 }
 
 func Nox_xxx_drawMinimapAndLines_4738E0() {
@@ -43,11 +41,11 @@ func Nox_xxx_drawMinimapAndLines_4738E0() {
 }
 
 func Nox_xxx_clientDrawAll_436100_draw_B() {
-	C.nox_xxx_clientDrawAll_436100_draw_B()
+	clientWinnerOverlay()
 }
 
 func Sub_436F50() {
-	C.sub_436F50()
+	clientDebugOverlay()
 }
 
 func Sub_437100() {
@@ -83,7 +81,7 @@ func Nox_xxx_motd_4467F0() {
 }
 
 func Sub_42EBA0() int {
-	return int(C.sub_42EBA0())
+	return int(memmap.Int32(0x5D4594, 754052))
 }
 
 func Sub_49B6E0() {

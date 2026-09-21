@@ -150,27 +150,13 @@ char* sub_413890() {
 	return (char*)getMemAt(0x5D4594, 251636);
 }
 
-void sub_4138E0(int a1) {
-	*getMemU32Ptr(0x5D4594, 251740) = nox_xxx_checkGameFlagPause_413A50();
-	sub_413A00(1);
-}
 
-void sub_413900(int a1) {
-	if (!nox_video_inFadeTransition_44E0D0()) {
-		if (!*getMemU32Ptr(0x5D4594, 251740)) {
-			sub_413A00(0);
-		}
-	}
-}
 
-int sub_413920() {
-	sub_42EBB0(1u, sub_413900, 0, "Pause");
-	sub_42EBB0(2u, sub_4138E0, 0, "Pause");
-	dword_5d4594_251744 = 0;
-	return 1;
-}
 
-int sub_4139B0() { return dword_5d4594_251744 != 0; }
+
+
+
+
 
 int nox_xxx_checkGameFlagPause_413A50() { return nox_common_gameFlags_check_40A5C0(0x40000); }
 

@@ -1,0 +1,20 @@
+{
+  "go_backed_exports": [
+    "nox_xxx_draw_452300",
+    "sub_4523D0",
+    "sub_452E90",
+    "sub_452EB0",
+    "sub_452EE0",
+    "sub_452F50",
+    "sub_452F80",
+    "sub_452FE0",
+    "sub_487680",
+    "sub_487970",
+    "nox_xxx_draw_452270",
+    "sub_4522A0",
+    "sub_43E910",
+    "sub_43E8E0",
+    "nox_input_reset_430140"
+  ],
+  "note": "Exports with no remaining C callers; fixtures call native owners directly."
+}

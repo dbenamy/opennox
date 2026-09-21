@@ -33,8 +33,6 @@ void nox_game_SetCliDrawFunc(void* a1);
 int sub_43DE40(void* a1);
 uint32_t* nox_xxx_gui_43E1A0(int a1);
 int sub_43E8C0(int a1);
-void sub_43E8E0(int a1);
-void sub_43E910(int a1);
 int sub_43E940(void* a1);
 void sub_43E9F0();
 int sub_43EA20(void* a1);

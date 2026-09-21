@@ -1,0 +1,142 @@
+{
+  "status": "qualified native client render helpers and audio lifecycle",
+  "baseline_revision": "78bef3a6",
+  "baseline": "client-render-helpers-c-qualification.json",
+  "moved_live_helpers": 16,
+  "removed_inert_helpers": 6,
+  "retired_go_backed_exports": 15,
+  "captured_cases": 6129,
+  "captures": 8,
+  "additional_contract_roots": 3,
+  "targets": {
+    "native-default1": {
+      "roots": 96,
+      "skips": 0,
+      "captures": 8,
+      "wall_seconds": 152.13839751901105
+    },
+    "native-server1": {
+      "roots": 91,
+      "skips": 0,
+      "captures": 5,
+      "wall_seconds": 144.81249968591146
+    },
+    "native-highres1": {
+      "roots": 96,
+      "skips": 0,
+      "captures": 8,
+      "wall_seconds": 68.69970498001203
+    }
+  },
+  "source_manifest_sha256": "f28371130c816d00475ed2a05cf7162cd16745d4afa3fa1a2919f4f6fbae5933",
+  "production_c": {
+    "files": 28,
+    "lines": 3543,
+    "change": -915,
+    "test_reference_lines": 0
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.159557820064947,
+        "sha256": "da9240a619b4c12aab24721bcd5eabb0b0eabcd14ef1c2de27fed5545ca3e684",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.181365065975115,
+        "sha256": "8567e1601289b1c05780d2edee6ad342a6bacac8406285d70a1ee8c937bed4f7",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 73.41672913101502,
+        "sha256": "7db6cde2c18ccd72371516041bb49075930c8c8ca755316f519ba70c24496e5f",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "client-render-helpers-native-save": {
+        "exit": 0,
+        "wall_seconds": 45.99689766415395,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.44896862702444,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "da9240a619b4c12aab24721bcd5eabb0b0eabcd14ef1c2de27fed5545ca3e684",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-client-render-helpers/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/client-render-helpers-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native client render helpers, palette and audio lifecycle",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1392,
+                "sha256": "174bb129c86ad58f1d66ce4df2853206edd8942bd3f84d76b1d1c244000350f1"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 58.13438240089454,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    },
+    "preflight_gameplay": {
+      "exit": 0,
+      "process_exit": 0,
+      "elapsed": 67.60298957093619,
+      "capture": false,
+      "godebug": ",randautoseed=0",
+      "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+      "binary_sha256": "da9240a619b4c12aab24721bcd5eabb0b0eabcd14ef1c2de27fed5545ca3e684",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "-s",
+        "-screen 0 1280x960x24 -nolisten tcp",
+        "/root/src/opennox/build/port-client-render-helpers/native-preflight2/opennox",
+        "-data",
+        "/root/src/opennox/build/baseline/runs/client-render-helpers-native2/data",
+        "-window",
+        "-pprof",
+        "127.0.0.1:0"
+      ],
+      "display_implementation": "Native client render helpers, palette and audio lifecycle",
+      "isolated_network": false,
+      "removed_maps": 0
+    }
+  }
+}

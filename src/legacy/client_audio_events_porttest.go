@@ -13,16 +13,8 @@ int sub_43DB30(int a1);
 char* sub_43DB40(int a1);
 unsigned char sub_450750();
 char sub_450760(char a1);
-uint32_t* nox_xxx_draw_452300(uint32_t* a1);
-int sub_4523D0(void* a1p);
 int sub_4526D0(int a1);
 int sub_4526F0(int a1);
-int sub_452E90(uint32_t* a1, int a2);
-int sub_452EB0(int* a1);
-int sub_452EE0(int a1, int a2);
-int sub_452F50(int a1, int a2);
-uint32_t* sub_452F80(int a1, int a2);
-int sub_452FE0(int a1, int a2);
 int sub_452770(uint32_t* a1);
 extern uint32_t dword_587000_122848;
 extern uint32_t dword_587000_126996;
@@ -41,16 +33,8 @@ case 3: return (uint64_t)(int64_t)sub_43DB30((int)a0);
 case 4: return (uint64_t)(uintptr_t)sub_43DB40((int)a0);
 case 16: return (uint64_t)(int64_t)sub_450750();
 case 17: return (uint64_t)(int64_t)sub_450760((char)a0);
-case 34: return (uint64_t)(uintptr_t)nox_xxx_draw_452300((uint32_t*)a0);
-case 35: return (uint64_t)(int64_t)sub_4523D0((void*)a0);
 case 40: return (uint64_t)(int64_t)sub_4526D0((int)a0);
 case 41: return (uint64_t)(int64_t)sub_4526F0((int)a0);
-case 46: return (uint64_t)(int64_t)sub_452E90((uint32_t*)a0,(int)a1);
-case 47: return (uint64_t)(int64_t)sub_452EB0((int*)a0);
-case 48: return (uint64_t)(int64_t)sub_452EE0((int)a0,(int)a1);
-case 50: return (uint64_t)(int64_t)sub_452F50((int)a0,(int)a1);
-case 51: return (uint64_t)(uintptr_t)sub_452F80((int)a0,(int)a1);
-case 53: return (uint64_t)(int64_t)sub_452FE0((int)a0,(int)a1);
 case 61: return (uint64_t)(int64_t)sub_452770((uint32_t*)a0);
 }return 0;}
 static void* nox_porttest_audio_event_global(int op) {
@@ -162,6 +146,23 @@ func PortTestAudioEventCall(name string, args ...uint64) uint64 {
 	var a [4]uint64
 	copy(a[:], args)
 	switch name {
+	case "nox_xxx_draw_452300":
+		return uint64(uintptr(unsafe.Pointer(audioEventNew((*audioEventMetadata)(unsafe.Pointer(uintptr(uint32(a[0]))))))))
+	case "sub_4523D0":
+		return uint64(int64(int32(audioEventDelete((*audioEvent)(unsafe.Pointer(uintptr(uint32(a[0]))))))))
+	case "sub_452E90":
+		return uint64(int64(int32(audioEventHandleSet((*audioEventHandle)(unsafe.Pointer(uintptr(uint32(a[0])))), (*audioEvent)(unsafe.Pointer(uintptr(uint32(a[1]))))))))
+	case "sub_452EB0":
+		p := audioEventHandleGet((*audioEventHandle)(unsafe.Pointer(uintptr(uint32(a[0])))))
+		return uint64(int64(int32(uintptr(unsafe.Pointer(p)))))
+	case "sub_452EE0":
+		return uint64(int64(audioEventSetVolume((*audioEvent)(unsafe.Pointer(uintptr(uint32(a[0])))), int32(a[1]))))
+	case "sub_452F50":
+		return uint64(int64(int32(audioEventFadeVolume((*audioEvent)(unsafe.Pointer(uintptr(uint32(a[0])))), int32(a[1])))))
+	case "sub_452F80":
+		return uint64(uintptr(audioEventSetPan((*audioEvent)(unsafe.Pointer(uintptr(uint32(a[0])))), int32(a[1]))))
+	case "sub_452FE0":
+		return uint64(int64(int32(audioEventFadePan((*audioEvent)(unsafe.Pointer(uintptr(uint32(a[0])))), int32(a[1])))))
 	case "sub_43DA80":
 		return uint64(int64(int32(audioEventMusicSave())))
 	case "sub_43DAD0":

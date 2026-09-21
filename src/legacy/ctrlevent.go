@@ -22,6 +22,7 @@ int nox_ctrlevent_add_ticks_42E630();
 */
 import "C"
 import (
+	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
 
 	"github.com/opennox/libs/client/keybind"
@@ -172,7 +173,7 @@ func Nox_client_mousePriKey_430AF0() int {
 	return int(nox_client_mousePriKey_430AF0())
 }
 func Sub_42EB90(a1 int) {
-	C.sub_42EB90(C.int(a1))
+	*memmap.PtrUint32(0x5D4594, 754052) = uint32(a1)
 }
 func Nox_client_invokeSpellSlot_45DA50(a1 int) {
 	quickbarInvokeSlot(a1)

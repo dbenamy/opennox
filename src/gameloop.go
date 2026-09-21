@@ -828,7 +828,7 @@ func sub_435EB0() {
 	sub_473840()
 	c.Nox_things_free_44C580()
 	c.Objs.Free()
-	legacy.Sub_49AEA0()
+
 	c.Server.NPCs.Init()
 	legacy.Sub_4951C0()
 	gameSetPlayState(2)

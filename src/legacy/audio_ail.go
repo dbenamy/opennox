@@ -7,8 +7,6 @@ package legacy
 #include "client/audio/ail/compat_mss.h"
 #include "client__io__win95__focus.h"
 
-void sub_43E910(int a1);
-void sub_43E8E0(int a1);
 int sub_43F060(uint32_t* a1);
 char* sub_413890();
 
@@ -85,12 +83,6 @@ type AudioSample struct {
 	Data2  *byte          // 6, 24
 	Flag7  uint32         // 7, 28
 }
-
-//export sub_43E8E0
-func sub_43E8E0(a1 int) {}
-
-//export sub_43E910
-func sub_43E910(a1 int) {}
 
 //export sub_43F050
 func sub_43F050() int {
@@ -237,18 +229,6 @@ func sub_486550(a1 unsafe.Pointer) int {
 func sub_486520(a2 unsafe.Pointer) int {
 	(*timer.TimerGroup)(a2).Update()
 	return 0
-}
-
-func Sub_42EBB0(a1 int, a2 unsafe.Pointer, a3 int, a4 string) {
-	C.sub_42EBB0(C.uint(a1), (*[0]byte)(a2), C.int(a3), internCStr(a4))
-}
-
-func Get_sub_43E910() unsafe.Pointer {
-	return C.sub_43E910
-}
-
-func Get_sub_43E8E0() unsafe.Pointer {
-	return C.sub_43E8E0
 }
 
 func Get_dword_587000_127004() unsafe.Pointer {

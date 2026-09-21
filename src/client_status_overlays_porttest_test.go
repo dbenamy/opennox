@@ -246,3 +246,74 @@ func TestClientDebugOverlay(t *testing.T) {
 	}
 	interactionCapture(t, "client-debug-overlay", rows)
 }
+
+// This extends beyond C's 128-unit local buffer; it is a native safety contract,
+// deliberately excluded from the original-C capture manifest.
+func TestClientWinnerOverlayExtendedText(t *testing.T) {
+	o, _ := clientOverlayOwner(t)
+	text := serverConfigOwnBytes(t, 0x5D4594, 811376, 512)
+	cache := serverConfigOwnBytes(t, 0x5D4594, 811888, 8)
+	mode := serverConfigOwnBytes(t, 0x5D4594, 811060, 4)
+	old := legacy.Nox_xxx_gLoadImg
+	t.Cleanup(func() { legacy.Nox_xxx_gLoadImg = old })
+	calls := 0
+	legacy.Nox_xxx_gLoadImg = func(name string) *noxrender.Image {
+		calls++
+		if name != "GameVictory" {
+			t.Fatal(name)
+		}
+		return o.images[0]
+	}
+	clear(text)
+	clear(cache)
+	clear(mode)
+	alloc.StrCopy16(unsafe.Slice((*uint16)(unsafe.Pointer(&text[0])), 256), strings.Repeat("word ", 40))
+	before := bytes.Clone(text)
+	legacy.Nox_xxx_clientDrawAll_436100_draw_B()
+	if calls != 1 || !bytes.Equal(text, before) {
+		t.Fatal("extended winner text/cache")
+	}
+	clear(o.pix.Pix)
+	blank := effectsPixelHash(o.pix)
+	binary.LittleEndian.PutUint32(mode, 0xffffffff)
+	legacy.Nox_xxx_clientDrawAll_436100_draw_B()
+	if calls != 1 || effectsPixelHash(o.pix) != blank || !bytes.Equal(text, before) {
+		t.Fatal("invalid winner mode must leave owners untouched")
+	}
+}
+
+func TestClientDebugOverlayTextCapacity(t *testing.T) {
+	o, _ := clientOverlayOwner(t)
+	label := strings.Repeat("W", 100)
+	set, restore := o.c.srv.Server.PortTestMeterStrings(
+		strman.Entry{ID: "client.c:PlayerInfo", Vals: []strman.Variant{{Str: "Level %d %s"}}},
+		strman.Entry{ID: "client.c:Warrior", Vals: []strman.Variant{{Str: label}}},
+	)
+	t.Cleanup(restore)
+	set(0)
+	filename := serverConfigOwnBytes(t, 0x5D4594, 2598188, 80)
+	clear(filename)
+	scratch := serverConfigOwnBytes(t, 0x5D4594, 811120, 164)
+	for i := range scratch {
+		scratch[i] = 0x5a
+	}
+	players, freePlayers := o.c.srv.PortTestObjectRenderPlayers()
+	t.Cleanup(freePlayers)
+	old := legacy.Get_dword_8531A0_2576()
+	t.Cleanup(func() { legacy.Set_dword_8531A0_2576(old) })
+	legacy.Set_dword_8531A0_2576(&players[0])
+	players[0].Info().SetPlayerClass(player.Warrior)
+	players[0].Level = 1
+	dr, free := alloc.New(client.Drawable{})
+	t.Cleanup(free)
+	active := serverConfigOwnBytes(t, 0x852978, 8, 4)
+	binary.LittleEndian.PutUint32(active, uint32(uintptr(unsafe.Pointer(dr))))
+	legacy.Sub_436F50()
+	want := ("Level 1 " + label)[:79]
+	if got := alloc.GoString16((*uint16)(unsafe.Pointer(&scratch[0]))); got != want {
+		t.Fatal("bounded debug text", len(got), got)
+	}
+	if !bytes.Equal(scratch[160:], []byte{0x5a, 0x5a, 0x5a, 0x5a}) {
+		t.Fatal("debug text changed neighboring state")
+	}
+}

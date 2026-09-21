@@ -40,7 +40,6 @@ var (
 	Nox_xxx_bindevent_bindNameByTitle_42EA40 func(title string) *keybind.BindEvent
 	Sub_4C3B70                               func()
 	Sub_4CBBF0                               func()
-	Nox_input_reset_430140                   func(a1 int)
 )
 
 func nox_xxx_setKeybTimeout_4160D0(key int) int {
@@ -159,9 +158,6 @@ func sub_4C3B70() { Sub_4C3B70() }
 //export sub_4CBBF0
 func sub_4CBBF0() { Sub_4CBBF0() }
 
-//export nox_input_reset_430140
-func nox_input_reset_430140(a1 int) { Nox_input_reset_430140(a1) }
-
 //export nox_input_scanCodeToAlpha_47F950
 func nox_input_scanCodeToAlpha_47F950(r C.ushort) C.ushort {
 	return C.ushort(GetClient().Cli().Inp.KeyToWChar(keybind.Key(r)))
@@ -221,8 +217,4 @@ func Nox_xxx_clientPickup_46C140(a1 *client.Drawable) {
 }
 func Sub_46B630(a1 *gui.Window, a2 int, a3 int) *gui.Window {
 	return uiWindowChildAt(a1, a2, a3)
-}
-
-func Get_nox_input_reset_430140() unsafe.Pointer {
-	return C.nox_input_reset_430140
 }

@@ -77,7 +77,7 @@ func Sub_4134D0() {
 }
 
 func Sub_413920() {
-	C.sub_413920()
+	Set_dword_5d4594_251744(0)
 }
 
 func Sub_431380() {
@@ -86,10 +86,6 @@ func Sub_431380() {
 
 func Nox_xxx_tileFree_410FC0_free() {
 	worldGridFreeRows()
-}
-
-func Sub_42EDC0() {
-	C.sub_42EDC0()
 }
 
 func Sub_4D11D0() {
@@ -109,7 +105,7 @@ func Sub_451970() {
 }
 
 func Sub_431270() {
-	C.sub_431270()
+	clientAudioContextDestroy()
 }
 
 func Sub_4875F0() {
@@ -121,7 +117,7 @@ func Sub_4870A0() {
 }
 
 func Sub_431290() {
-	C.sub_431290()
+	clientAudioContextStop()
 }
 
 func Nox_xxx_servSetPlrLimit_409F80(v int) {

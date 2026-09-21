@@ -43,9 +43,7 @@ static void* nox_porttest_audio_callback_addr(int op) {
 static uint32_t nox_porttest_audio_stream_call(int op, uintptr_t a0, uintptr_t a1, uintptr_t a2, uintptr_t a3) {
  switch (op) {
 case 22: return (uint32_t)(uintptr_t)sub_4873C0((int)a0);
-case 27: sub_487680((void*)a0); return 0;
 case 33: return (uint32_t)(uintptr_t)sub_487810((int)a0, (int)a1);
-case 35: return (uint32_t)(uintptr_t)sub_487970((int)a0, (int)a1);
 case 42: return (uint32_t)(uintptr_t)sub_4BD280((int)a0, (int)a1);
 case 43: sub_4BD2D0((void*)a0); return 0;
 case 44: return (uint32_t)(uintptr_t)sub_4BD2E0((uint32_t**)a0);
@@ -151,6 +149,12 @@ func PortTestAudioStreamCall(name string, args ...uint32) uint32 {
 	var a [4]uint32
 	copy(a[:], args)
 	switch name {
+	case "sub_487680":
+		audioStreamContextDestroy((*audioStreamContext)(unsafe.Pointer(uintptr(a[0]))))
+		return 0
+	case "sub_487970":
+		return uint32(audioStreamVoiceStopKind((*audioStreamContext)(unsafe.Pointer(uintptr(a[0]))), int32(a[1])))
+
 	case "sub_486640":
 		return uint32(audioStreamScaleVolume(unsafe.Pointer(uintptr(a[0])), uint32(a[1])))
 	case "sub_4866D0":

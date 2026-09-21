@@ -225,7 +225,7 @@ func init() {
 	legacy.Nox_xxx_bindevent_bindNameByTitle_42EA40 = nox_xxx_bindevent_bindNameByTitle_42EA40
 	legacy.Sub_4C3B70 = sub_4C3B70
 	legacy.Sub_4CBBF0 = sub_4CBBF0
-	legacy.Nox_input_reset_430140 = nox_input_reset_430140
+
 	legacy.Nox_xxx_playerDisconnByPlrID_4DEB00 = func(id ntype.PlayerInd) {
 		noxServer.PlayerDisconnectByIndCode4(id)
 	}

@@ -1,4 +1,5 @@
 #include "client__system__parsecmd.h"
+#include "client__drawable__drawable.h"
 
 void nullsub_68();
 void* nox_xxx_aClosewoodengat_587000_133480 = 0;
@@ -48,7 +49,6 @@ uint32_t nox_xxx_lightningTarget_5d4594_2487908 = 0;
 uint32_t dword_5d4594_1107036 = 0;
 uint32_t dword_5d4594_3798836 = 0;
 uint32_t dword_5d4594_1565512 = 0;
-uint32_t dword_5d4594_1301848 = 0;
 uint32_t dword_5d4594_1321232 = 0;
 uint32_t nox_client_highResFrontWalls_80820 = 0x1;
 uint32_t dword_5d4594_1049520 = 0;
@@ -58,7 +58,6 @@ uint32_t dword_5d4594_1047520 = 0;
 uint32_t dword_5d4594_2487556 = 0;
 uint32_t dword_5d4594_2516344 = 0;
 uint32_t dword_5d4594_3798832 = 0;
-void* nox_alloc_pixelSpan_1301844 = 0;
 uint32_t dword_5d4594_3798808 = 0;
 uint32_t dword_5d4594_1062524 = 0;
 uint32_t dword_5d4594_1062528 = 0;
@@ -404,3 +403,14 @@ uint32_t dword_5d4594_1046852 = 0;
 uint32_t array_5D4594_1049872[9];
 uint32_t dword_8531A0_2576 = 0;
 uint32_t dword_8531A0_2572 = 0;
+
+int nox_win_width = 0;
+int nox_win_height = 0;
+nox_screenParticle* nox_screenParticles_head = 0;
+nox_screenParticle* dword_5d4594_806052 = 0;
+void* dword_5d4594_805984 = 0;
+nox_window* nox_win_unk1 = 0;
+uint32_t dword_587000_122856 = 0x1;
+uint32_t dword_5d4594_831092 = 0;
+uint32_t nox_player_netCode_85319C = 0;
+nox_render_data_t* nox_draw_curDrawData_3799572 = 0;

@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-#include "GAME1_2.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/opennox/v1/internal/cryptfile"
@@ -61,7 +55,7 @@ func quickbarSave() int {
 	if p := quickbarPlayer(); p != 0 {
 		class[0] = byte(bookClass(p))
 	} else {
-		class[0] = *(*byte)(unsafe.Add(unsafe.Pointer(C.nox_xxx_getHostInfoPtr_431770()), 66))
+		class[0] = *(*byte)(unsafe.Add(unsafe.Pointer(Nox_xxx_getHostInfoPtr_431770()), 66))
 	}
 	file.ReadWrite(class[:])
 	quickbarSaveRows(quickbarMain(), 5, 5, class[0])

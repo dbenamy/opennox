@@ -270,6 +270,7 @@ target build selection and linker evidence.
 | Server player actions, pickup helpers and C interface retirement | 35 | 6,139 | −502 | 0 |
 | Client settings/team/trade/quest dispatch and private ball HUD helper | 33 | 4,603 | −1,536 | 0 |
 | Ordered client message queue and private helper interfaces | 33 | 4,458 | −145 | 0 |
+| Client render helpers and audio lifecycle; inert focus/span cleanup | 28 | 3,543 | −915 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

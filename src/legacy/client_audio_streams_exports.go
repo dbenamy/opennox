@@ -14,19 +14,9 @@ func sub_4873C0(a0 C.int) C.int {
 	return C.int(audioStreamContextTick((*audioStreamContext)(unsafe.Pointer(uintptr(uint32(a0))))))
 }
 
-//export sub_487680
-func sub_487680(a0 unsafe.Pointer) {
-	audioStreamContextDestroy((*audioStreamContext)(unsafe.Pointer(a0)))
-}
-
 //export sub_487810
 func sub_487810(a0 C.int, a1 C.int) *C.int {
 	return (*C.int)(unsafe.Pointer(audioStreamVoiceSelect((*audioStreamContext)(unsafe.Pointer(uintptr(uint32(a0)))), int32(a1))))
-}
-
-//export sub_487970
-func sub_487970(a0 C.int, a1 C.int) *C.int {
-	return (*C.int)(unsafe.Pointer(audioStreamVoiceStopKind((*audioStreamContext)(unsafe.Pointer(uintptr(uint32(a0)))), int32(a1))))
 }
 
 //export sub_4BD280

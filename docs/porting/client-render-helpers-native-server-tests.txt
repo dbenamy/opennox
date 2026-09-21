@@ -1,0 +1,1 @@
+^(TestClient(RandomNames|PaletteTables|DrawableLoopAudio.*|LifecycleState|ServerAddressCopy|AudioContextLifecycle|AudioEvents.*|AudioStreams.*|AudioAssets.*)|TestClientInteractionModalFrameGate|TestCharacterCreation.*|TestQuickbar.*)$

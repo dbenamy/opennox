@@ -3,7 +3,6 @@
 
 #include "defs.h"
 
-void sub_48C580(pixel8888* a1, int num);
 unsigned int sub_48C6B0(int a1, int a2);
 int sub_48CAD0();
 nox_point sub_499290(int a1);
@@ -13,7 +12,6 @@ void nox_xxx_sprite_49AA00_drawable(nox_drawable* dr);
 void nox_xxx_updateSpritePosition_49AA90(nox_drawable* dr, int a2, int a3);
 void nox_xxx_forEachSprite_49AB00(int4*, void*, int);
 nox_drawable* nox_drawable_find_49ABF0(nox_point* pt, int r);
-int sub_49AEA0();
 void nox_xxx_spriteToSightDestroyList_49BAB0_drawable(nox_drawable* a1);
 void sub_49BCD0(nox_drawable* dr);
 void nox_client_drawBorderLines_49CC70(int xLeft, int yTop, int a3, int a4);

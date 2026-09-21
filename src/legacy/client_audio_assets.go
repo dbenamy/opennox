@@ -30,12 +30,6 @@ func audioAssetDelay(p unsafe.Pointer) int32 {
 	return *(*int32)(unsafe.Add(p, 64))
 }
 
-//export nox_xxx_draw_452270
-func nox_xxx_draw_452270(id C.int) *C.char { return (*C.char)(audioAssetSlot(int32(id))) }
-
-//export sub_4522A0
-func sub_4522A0(p C.int) C.int { return C.int(audioAssetDelay(unsafe.Pointer(uintptr(uint32(p))))) }
-
 func audioAssetSample(catalog unsafe.Pointer, key *byte) int32 {
 	base := *(*unsafe.Pointer)(catalog)
 	lo, hi := uint32(0), *(*uint32)(unsafe.Add(catalog, 4))

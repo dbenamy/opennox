@@ -3,8 +3,6 @@ package legacy
 /*
 #include "defs.h"
 extern int nox_drawable_count;
-int sub_4523D0(void* a1);
-void sub_45A9B0(nox_drawable* a1, nox_drawable* a2);
 void nox_xxx_draw_44C650_free_kind(void* lpMem, int kind);
 static int go_nox_drawable_call_draw_func(nox_draw_viewport_t* vp, nox_drawable* dr) {
 	return dr->draw_func(vp, dr);
@@ -202,7 +200,7 @@ func Sub_495B50(fx *client.DrawableFX) {
 	combatFXDetach((*combatFX)(fx.C()))
 }
 func Sub_4523D0(p unsafe.Pointer) {
-	C.sub_4523D0(p)
+	audioEventDelete((*audioEvent)(p))
 }
 func Sub_495FC0(p *client.DrawableFX, dr *client.Drawable) {
 	combatFXAttach((*combatFX)(p.C()), dr)
@@ -211,7 +209,7 @@ func Sub_49C520(dr *client.Drawable) int {
 	return bool2int(presentationRayContains(dr))
 }
 func Sub_45A9B0(a1, a2 *client.Drawable) {
-	C.sub_45A9B0((*nox_drawable)(a1.C()), (*nox_drawable)(a2.C()))
+	clientDrawableLoopAudio(a1, a2)
 }
 func Nox_xxx_unitSpriteCheckAlly_4951F0(id int) bool {
 	return combatAllyLookup(uint32(id)) != nil
