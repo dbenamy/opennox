@@ -149,6 +149,6 @@ func controlSetLevel(u *server.Object, level byte) {
 				}
 			}
 		}
-		C.sub_57AF30(inventoryInt(u), 0)
+		runtimePauseStart(u, 0)
 	}
 }

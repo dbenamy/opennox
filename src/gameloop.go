@@ -315,7 +315,6 @@ func (c *Client) nox_game_cdMaybeSwitchState_413800() {
 		return
 	}
 	initialStateSwitch = true
-	legacy.Sub_4137E0()
 	if !c.GameStateSwitch() {
 		nox_game_exit_xxx2()
 	}

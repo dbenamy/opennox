@@ -40,11 +40,11 @@ func nox_xxx_gameGetScreenBoundaries_43BEB0_get_video_mode(w, h, d *int) {
 func sub_4AA9C0() int { return Sub_4AA9C0() }
 
 func Nox_xxx_loadLook_415D50() {
-	C.nox_xxx_loadLook_415D50()
+	runtimeEquipmentLoad(true)
 }
 
 func Nox_xxx_loadModifyers_4158C0() {
-	C.nox_xxx_loadModifyers_4158C0()
+	runtimeEquipmentLoad(false)
 }
 
 func Sub_4D11A0() {
@@ -70,10 +70,6 @@ func Nox_xxx_loadMapCycle_4D0A30() {
 
 func Nox_xxx_mapSelectFirst_4D0E00() {
 	mapQuestBuild()
-}
-
-func Sub_4134D0() {
-	C.sub_4134D0()
 }
 
 func Sub_413920() {

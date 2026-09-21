@@ -86,73 +86,22 @@ unsigned int nox_server_makeServerInfoPacket_554040(const char* inBuf, int inSz,
 }
 
 //----- (0057ADF0) --------------------------------------------------------
-int* sub_57ADF0(int* a1) {
-	int* result; // eax
-	int* v2;     // esi
-	int* v3;     // edi
 
-	result = nox_common_list_getFirstSafe_425890(a1);
-	v2 = result;
-	if (result) {
-		do {
-			v3 = nox_common_list_getNextSafe_4258A0(v2);
-			nox_common_list_remove_425920((uint32_t**)v2);
-			free(v2);
-			v2 = v3;
-		} while (v3);
-	}
-	return result;
-}
 
 //----- (0057AF20) --------------------------------------------------------
-int nox_xxx_get_57AF20() { return dword_5d4594_2523804; }
+
 
 //----- (0057B0A0) --------------------------------------------------------
-void sub_57B0A0() {
-	int result;   // eax
-	uint32_t* v1; // ecx
 
-	result = dword_5d4594_2523804;
-	if (!result) {
-		return;
-	}
-	v1 = *(uint32_t**)&dword_5d4594_2523780;
-	if (dword_5d4594_2523780 && (!*getMemU32Ptr(0x5D4594, 2523772) || *getMemU32Ptr(0x5D4594, 2523772) == 1)) {
-		nox_xxx_netSendPointFx_522FF0(154, (float2*)(dword_5d4594_2523780 + 56));
-		v1 = *(uint32_t**)&dword_5d4594_2523780;
-	}
-	if (dword_5d4594_2523776) {
-		nox_xxx_delayedDeleteObject_4E5CC0(*(int*)&dword_5d4594_2523776);
-		v1 = *(uint32_t**)&dword_5d4594_2523780;
-	}
-	dword_5d4594_2523776 = 0;
-	if (v1) {
-		nox_xxx_playerSetState_4FA020(v1, 13);
-	}
-	dword_5d4594_2523780 = 0;
-	if (!sub_45D9B0()) {
-		sub_413A00(0);
-	}
-	dword_5d4594_2523804 = 0;
-}
 
 //----- (0057B180) --------------------------------------------------------
-long long nox_xxx___Getcvt_57B180() { return *getMemU64Ptr(0x5D4594, 2523788); }
+
 
 //----- (0057B3D0) --------------------------------------------------------
 int nox_cheat_allowall = 0;
 
 //----- (0057C090) --------------------------------------------------------
-int nox_server_getNextMapGroup_57C090(int a1) {
-	int result; // eax
 
-	if (a1) {
-		result = *(uint32_t*)(a1 + 88);
-	} else {
-		result = 0;
-	}
-	return result;
-}
 
 //----- (0057CDB0) --------------------------------------------------------
 

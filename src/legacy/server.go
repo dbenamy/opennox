@@ -288,7 +288,7 @@ func Sub_57B140() bool {
 	return orchestrationTimeout()
 }
 func Sub_57B0A0() {
-	C.sub_57B0A0()
+	runtimePauseStop()
 }
 func Sub_4DF120(a1 unsafe.Pointer) {
 	matchRosterWall((*server.Wall)(a1), 59)

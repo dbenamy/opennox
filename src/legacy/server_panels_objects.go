@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/strman"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -58,7 +54,7 @@ func serverPanelsObjectOpen(parent *gui.Window, kind int) int {
 		*serverPanelsWord(1045460) = 0
 		title = serverPanelsText("objlst.c", "Weapons")
 		for i := uint(2); i < 27; i++ {
-			p := uintptr(uint32(C.sub_4159F0(C.int(uint32(1) << i))))
+			p := uintptr(unsafe.Pointer(runtimeEquipmentLabel(false, uint32(1)<<i)))
 			if p != 0 {
 				teamUIEvent(list, 16397, p, ^uintptr(0))
 				count++
@@ -68,7 +64,7 @@ func serverPanelsObjectOpen(parent *gui.Window, kind int) int {
 		*serverPanelsWord(1045460) = 1
 		title = serverPanelsText("objlst.c", "servopts.wnd:Armor")
 		for i := uint(0); i < 26; i++ {
-			p := uintptr(uint32(C.sub_415E80(C.int(uint32(1) << i))))
+			p := uintptr(unsafe.Pointer(runtimeEquipmentLabel(true, uint32(1)<<i)))
 			if p != 0 {
 				teamUIEvent(list, 16397, p, ^uintptr(0))
 				count++
@@ -163,10 +159,10 @@ func serverPanelsObjectEvent(_ *gui.Window, event int, arg uintptr, _ int) int {
 		p := unsafe.Pointer(uintptr(teamUIEvent(list, 16406, uintptr(index), 0)))
 		on := bool2int(child.DrawData().Field0&4 == 0)
 		if *serverPanelsWord(1045460) != 0 {
-			mask := uint32(C.sub_415DA0((*C.wchar2_t)(p)))
+			mask := runtimeEquipmentMask(true, (*uint16)(p))
 			serverPanelsWordMask(serverPanelsWord(1045456), mask, on)
 		} else {
-			value := int32(C.sub_415960((*C.wchar2_t)(p)))
+			value := int32(runtimeEquipmentMask(false, (*uint16)(p)))
 			off := uintptr(0)
 			if value > 0 {
 				for {

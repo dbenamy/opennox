@@ -128,7 +128,7 @@ func inventoryOblivionPickup(u, it *server.Object, arg, equip int) int {
 				break
 			}
 		}
-		C.sub_57AF30(inventoryInt(u), 1)
+		runtimePauseStart(u, 1)
 		equipmentTryEquip(u, it)
 	}
 	return rv

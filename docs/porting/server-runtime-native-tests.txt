@@ -1,0 +1,1 @@
+^Test(ServerRuntime.*|FloatInt.*|AILifecycle.*|PlayerControls.*|UnitGameplay.*|ClientInventoryWindow.*|ClientInventoryEquipment.*|InventoryEquipment.*|Inventory.*|Spellbook.*|BookAwards.*|ClientMeters.*|Damage.*|WorldMotion.*|SpellLifecycle.*|Rules.*|ServerOptions.*|ServerBrowser.*|ConsoleCommandsInformation|ClientInteractionObserverAndToggle)$

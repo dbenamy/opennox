@@ -43,7 +43,7 @@ func uiInventoryDrawWindow(w *gui.Window) int {
 	extra := memmap.Uint8(0x5D4594, 1062536)
 	for i := 0; i < 6; i++ {
 		if extra&(1<<i) != 0 {
-			uiMeterImage(uint32(C.sub_413420(C.char(1<<i))), image.Pt(x, y))
+			uiMeterImage(runtimeModifierIcon(byte(1<<i)), image.Pt(x, y))
 			x += 35
 		}
 	}

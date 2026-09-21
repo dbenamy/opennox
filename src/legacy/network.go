@@ -160,7 +160,7 @@ func Sub_417DE0() int {
 }
 
 func Nox_xxx_countObserverPlayers_425BF0() int {
-	return int(C.nox_xxx_countObserverPlayers_425BF0())
+	return runtimeObserverCount()
 }
 
 func Sub_43C650() {

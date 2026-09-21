@@ -36,7 +36,7 @@ func motionTrace(u *server.Object, target *uint32, normal *types.Pointf) int8 {
 	if length2 <= 36 {
 		probe()
 	} else {
-		count := int32(C.nox_double2int(C.double(math.Sqrt(length2*.027777778)))) + 1
+		count := doubleToInt32(math.Sqrt(length2*.027777778)) + 1
 		*next = *previous
 		// The compiled C spills X to float32 before division, but retains Y wide.
 		sx, sy := float32(float64(float32(dx))/float64(count)), float32(dy/float64(count))

@@ -14,10 +14,11 @@
 
 ## Current status
 
-The remaining runtime-helper C baseline is qualified: 13 roots in each profile,
-55,986 captured cases and unchanged production source. Numeric conversions,
-modifier lookups, pause lifecycle and host ownership are ready for conversion.
-See [SERVER_RUNTIME.md](docs/porting/SERVER_RUNTIME.md).
+The remaining runtime numeric and lookup helpers, pause lifecycle and saved-creature
+ownership are Go. This removes 965 C lines and 34 old interfaces. Default/server/highres pass 304/303/304 affected
+tests; 55,986 captured cases match C. Production/ABI, the
+known full-suite comparison and headless gameplay/save-load pass. See
+[SERVER_RUNTIME.md](docs/porting/SERVER_RUNTIME.md).
 
 Client resource teardown, timing, colors, caches and menu/modal lifecycle are Go,
 removing 838 C lines and 18 old interfaces. Default/server/highres pass 135/135/135
@@ -41,7 +42,7 @@ unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skip
 and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
 comparison, headless gameplay and save/load checks pass.
 
-C remaining is **2,705 physical lines in 23 files**, zero reference C. See
+C remaining is **1,740 physical lines in 16 files**, zero reference C. See
 [GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) and
 [the native qualification](docs/porting/client-session-native-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.

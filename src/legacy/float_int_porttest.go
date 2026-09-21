@@ -4,22 +4,11 @@ package legacy
 
 /*
 #include <stdint.h>
-#include "GAME1_1.h"
 static unsigned short porttest_float_cw(void) {
  unsigned short cw; __asm__ volatile("fnstcw %0" : "=m"(cw)); return cw;
 }
 static void porttest_float_set_cw(unsigned short cw) {
  __asm__ volatile("fldcw %0" : : "m"(cw));
-}
-static uint32_t porttest_float_int_bench(unsigned n) {
- uint32_t sum = 0;
- for (unsigned i = 0; i < n; i++) sum += nox_float2int((float)(i & 1023) + 0.75f);
- return sum;
-}
-static void porttest_float_int_calls(uint32_t bits, int *out) {
- union { uint32_t bits; float value; } input;
- input.bits = bits;
- out[0] = nox_float2int(input.value);
 }
 */
 import "C"
@@ -27,16 +16,14 @@ import "C"
 import (
 	"math"
 	"runtime"
-	"unsafe"
 )
 
 type PortTestFloatIntResult struct {
-	Native              [3]int32
-	Values              [2]int32
-	GuardsOK, ControlOK bool
+	Native    [3]int32
+	ControlOK bool
 }
 
-// PortTestFloatInt checks the retained C int32 ABI and native int16 narrowing.
+// PortTestFloatInt checks native conversion and narrowing with hostile x87 controls.
 // cwMask selects PC/RC bits only; -1 preserves the original control word.
 func PortTestFloatInt(bits []uint32, cwMask int) (out []PortTestFloatIntResult) {
 	runtime.LockOSThread()
@@ -50,18 +37,20 @@ func PortTestFloatInt(bits []uint32, cwMask int) (out []PortTestFloatIntResult) 
 	C.porttest_float_set_cw(control)
 	out = make([]PortTestFloatIntResult, len(bits))
 	for i, b := range bits {
-		words := [4]C.int{0x12345678, 0x34567812, 0x45678123, 0x76543210}
-		C.porttest_float_int_calls(C.uint32_t(b), (*C.int)(unsafe.Pointer(&words[1])))
-		words[2] = C.int(int16(floatToInt32(math.Float32frombits(b))))
-		out[i] = PortTestFloatIntResult{Values: [2]int32{int32(words[1]), int32(words[2])}, Native: [3]int32{floatToInt32(math.Float32frombits(b)), int32(int16(floatToInt32(math.Float32frombits(b)))), int32(int16(floatToInt32(math.Float32frombits(b & 0x7fffffff))))}, GuardsOK: words[0] == 0x12345678 && words[3] == 0x76543210, ControlOK: C.porttest_float_cw() == control}
+		out[i] = PortTestFloatIntResult{Native: [3]int32{floatToInt32(math.Float32frombits(b)), int32(int16(floatToInt32(math.Float32frombits(b)))), int32(int16(floatToInt32(math.Float32frombits(b & 0x7fffffff))))}, ControlOK: C.porttest_float_cw() == control}
 	}
 	return out
 }
 
-func PortTestFloatIntBenchmark(n int) uint32 { return uint32(C.porttest_float_int_bench(C.uint(n))) }
+func PortTestFloatIntBenchmark(n int) uint32 {
+	var sum uint32
+	for i := 0; i < n; i++ {
+		sum += uint32(floatToInt32(float32(i&1023) + 0.75))
+	}
+	return sum
+}
 
-// PortTestDoubleInt exercises the remaining double-to-int C boundary under the
-// same precision/rounding controls as the existing float conversion contracts.
+// PortTestDoubleInt exercises native conversion under the frozen precision/rounding controls.
 func PortTestDoubleInt(bits []uint64, cwMask int) ([]int32, bool) {
 	runtime.LockOSThread()
 	defer runtime.UnlockOSThread()
@@ -74,7 +63,7 @@ func PortTestDoubleInt(bits []uint64, cwMask int) ([]int32, bool) {
 	C.porttest_float_set_cw(control)
 	out := make([]int32, len(bits))
 	for i, b := range bits {
-		out[i] = int32(C.nox_double2int(C.double(math.Float64frombits(b))))
+		out[i] = doubleToInt32(math.Float64frombits(b))
 	}
 	return out, C.porttest_float_cw() == control
 }

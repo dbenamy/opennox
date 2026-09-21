@@ -126,8 +126,8 @@ func lifecycleDeadStart(u *server.Object) {
 		ccall.CallVoidPtr(p, u.CObj())
 	}
 	if lifecycleIsZombie(u) {
-		lo := C.nox_float2int(C.float(GetServer().S().Balance.FloatInd("ZombieDeadDuration", 0)))
-		hi := C.nox_float2int(C.float(GetServer().S().Balance.FloatInd("ZombieDeadDuration", 1)))
+		lo := floatToInt32(float32(GetServer().S().Balance.FloatInd("ZombieDeadDuration", 0)))
+		hi := floatToInt32(float32(GetServer().S().Balance.FloatInd("ZombieDeadDuration", 1)))
 		ud.Field123 = uint32(nox_common_randomInt_415FA0(int(lo), int(hi)))
 		u.ObjFlags |= 0x10
 	} else {

@@ -3,8 +3,7 @@ package legacy
 import "math"
 
 // floatToInt32 preserves the masked x87 truncation result using integer bits.
-// C owners retain their cheap C converters until they move to Go; exporting
-// each tiny converter would add a callback at every remaining C call site.
+// All remaining callers are Go; no C converter is retained.
 func floatToInt32(value float32) int32 {
 	bits := math.Float32bits(value)
 	exponent := int((bits>>23)&255) - 127

@@ -427,3 +427,6 @@ uint8_t** nox_pixbuffer_rows_3798784 = 0;
 uint32_t nox_client_highResFloors_154952 = 1;
 void* nox_video_tileBuf_ptr_3798796 = 0;
 void* nox_video_tileBuf_end_3798844 = 0;
+
+int nox_server_gameSettingsUpdated; // ABI remains a four-byte int.
+nox_gui_animation* nox_wnd_xxx_1309740 = 0;

@@ -2,34 +2,46 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 2.7k lines** — **2,705 physical lines in 23
-production `.c` files**, zero reference C. Latest conversion removes 838 lines.
+**Qualified C remaining: about 1.7k lines** — **1,740 physical lines in 16
+production `.c` files**, zero reference C. Latest conversion removes 965 lines.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Active — runtime helpers C baseline qualified; native conversion next
+## Current — runtime helpers qualified
 
-Default, repeated default, server and highres each pass 13 roots with zero skips.
-All eleven captures /55,986 cases match and static checks pass. Production is
-identical to qualified `39d24e36`; only tagged tests/docs changed. All jobs joined.
-C remains 2,705 lines /23 files /zero reference C. See
-[SERVER_RUNTIME.md](docs/porting/SERVER_RUNTIME.md) for scope and probe findings.
+Default/server/highres pass 304/303/304 affected roots, zero skips, eleven frozen
+captures /55,986 cases and static checks. Three production builds/ABI pass; the
+full suite matches all 1,553 known failure entries and package results. Headless
+gameplay and explicit save/load pass. Preflight/final default binary SHA-256:
+`5d33b34623517d5ee9a104a5c3bb5bbd0719f5b28a6326322980efe83d4a42e3`.
+All source fingerprints match and all jobs are joined. C falls 965 to 1,740 /16 files.
+Baseline `401af00d` is pushed. See [SERVER_RUNTIME.md](docs/porting/SERVER_RUNTIME.md).
 
-The baseline commit freezes numeric, lookup, rejected-list disposal, pause-effect
-and host-ownership contracts. Existing float contracts are included. Native Go
-DRAFTS are in `build/port-final-server-helpers/native`; they are not installed or
-compiled. Review and integrate after the baseline commit. `finish-c.py` is CONSUMED.
-Remove proven orphaned helpers; retain the registered no-op modifier identities.
-Defer GameEx and server-listing text/layout to a following batch.
+Thirty-four C interfaces are removed. Numeric converters are entirely Go; only
+control-word instrumentation remains for tests. Registered no-op modifier
+identities remain. Two shared variable definitions moved intact. The initial
+installer stopped on an already-direct getter; its guarded resume completed the
+work before any build. The first native probe and all later gates passed.
+All installers/finalizers/native drafts in `build/port-final-server-helpers` are
+CONSUMED/STALE; tracked source is authoritative.
 
-Cleanup recovered 1,112,747,701 bytes of verified-identical completed scenario
-asset copies. Apply is CONSUMED; restore with
+Next: GameEx helpers and server-listing text/layout; then compatibility/formatting
+adapters. The extension-name paths are live via config/UI, so correct the local
+name buffer before freezing that C baseline. The local `following-batch-audit.json`
+records reachability notes. The `.c` metric excludes inline C; the advisory census
+is in `remaining-inline-c-inventory.json` (108 possible definitions /24 Go files).
+Audit those adapters as translation units close out.
+
+Cleanup removed 20 obsolete root test archives /1,625,390,640 bytes. Original assets,
+current production/library caches and evidence remain. Completed runtime captures
+use verified relative symlinks; preserve canonical probe files. Per-run audit JSON
+files are in the same build directory. The current native save-run assets remain.
+The completed preflight assets can be restored using
+`python3 build/port-final-server-helpers/deduplicate-runtime-preflight.py --restore server-runtime-native`.
+Older resource scenario copies can be restored using
 `python3 build/port-final-server-helpers/deduplicate-resource-assets.py --restore RUN`
-for `client-resources-native` or `client-resources-native-save`. Original assets,
-changed files and evidence remain. Verified relative symlinks consolidate 70
-identical completed captures, recovering 1,663,983,267 more bytes; their paths and
-hashes remain valid. See `deduplicated-captures.json` in the same build directory.
+for `client-resources-native` or `client-resources-native-save`. All applies consumed.
 
 ## Current — client resources/lifecycle qualified
 

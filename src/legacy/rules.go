@@ -5,7 +5,6 @@ package legacy
 #include <stdlib.h>
 #include "defs.h"
 #include "GAME1_1.h"
-int* sub_57ADF0(int* a1);
 */
 import "C"
 
@@ -302,7 +301,7 @@ func sub_57A1E0(a1 *C.int, a2 *C.char, a3 *C.int, a4 C.char, a5 C.short) C.char 
 
 func ruleLoad(st *server.Settings2, user string, list *C.nox_list_item_t, selection byte, flags uint16) byte {
 	if list != nil {
-		C.sub_57ADF0((*C.int)(unsafe.Pointer(list)))
+		runtimeRejectedClear(unsafe.Pointer(list))
 	}
 	for i := range st.Field24.Vals {
 		st.Field24.Vals[i] = ^uint32(0)

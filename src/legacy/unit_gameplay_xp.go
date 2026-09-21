@@ -35,7 +35,7 @@ func unitExperienceLevel(u *server.Object) {
 	addProtectionRecord(int32(*equipmentWord(unsafe.Pointer(pl), 4644)), 1)
 	controlReadStats(u, 1)
 	if noxflags.HasGame(noxflags.GameModeCoop) {
-		C.sub_57AF30(inventoryInt(u), 0)
+		runtimePauseStart(u, 0)
 	} else {
 		GetServer().S().Audio.EventObj(902, u, 2, u.NetCode)
 		unitExperienceNotice(u, "LevelUP", "C:\\NoxPost\\src\\Server\\GameMech\\explevel.c", 0)

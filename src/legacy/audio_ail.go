@@ -8,7 +8,6 @@ package legacy
 #include "client__io__win95__focus.h"
 
 int sub_43F060(uint32_t* a1);
-char* sub_413890();
 
 extern void* dword_587000_127004;
 extern uint32_t dword_5d4594_816376;
@@ -248,7 +247,7 @@ func Sub_43EDB0(v ail.Sample) {
 }
 
 func Sub_413890() string {
-	return GoString(C.sub_413890())
+	return ""
 }
 
 func Nox_xxx_parseSoundSetBin_424170(path string) int {

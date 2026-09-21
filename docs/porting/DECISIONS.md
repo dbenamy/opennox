@@ -2223,3 +2223,23 @@ directly to Go, preserving timer underflow, sentinel gates and RNG call order.
 Repeated modal creation keeps the old GUI-owned window, matching current behavior.
 These are reversible ownership/implementation choices; captured C behavior remains
 the qualification contract. See [CLIENT_RESOURCES.md](CLIENT_RESOURCES.md).
+
+## Runtime helpers and orphaned state — review later
+
+Remove the unreferenced bit encoder, modifier-next/material-draw/map-group helpers,
+and memory-accounting graph with no production population or output reader. Keep
+the console command route and remove its artificial accounting-list fixture.
+Remove two inert startup/game-loop calls whose four words have only zero writers.
+The old audio-path helper always returns an empty string; retain that public result.
+
+Preserve the material lookup before its class gate, including null-cache equality;
+ASCII-only equipment-name folding in the hosted C locale; signed modifier-key
+bytes; clock narrowing to 32 bits; and child traversal while ownership changes
+reverse the destination list. Keep registered no-op modifier callback identities:
+two are compared explicitly, so empty bodies do not imply dead registrations.
+Two shared definitions move unchanged, including the four-byte settings flag.
+
+The baseline and first native probe agree on all 55,986 captured cases. Default/server/highres pass 304/303/304
+affected tests; final production qualification
+is recorded in [SERVER_RUNTIME.md](SERVER_RUNTIME.md). No C converter or other
+algorithm remains solely for testing; x87 control-word instrumentation remains.

@@ -1,0 +1,139 @@
+{
+  "status": "qualified native runtime helpers",
+  "baseline_revision": "401af00d",
+  "baseline": "server-runtime-c-qualification.json",
+  "retired_c_interfaces": 34,
+  "captured_cases": 55986,
+  "captures": 11,
+  "targets": {
+    "native-default1": {
+      "roots": 304,
+      "skips": 0,
+      "captures": 11,
+      "wall_seconds": 146.20345072611235
+    },
+    "native-server1": {
+      "roots": 303,
+      "skips": 0,
+      "captures": 11,
+      "wall_seconds": 257.8137475659605
+    },
+    "native-highres1": {
+      "roots": 304,
+      "skips": 0,
+      "captures": 11,
+      "wall_seconds": 178.2420153140556
+    }
+  },
+  "source_manifest_sha256": "46a1eb5a3bbf96ff80a9f5d30284d2ae3681719d6089c367d63f900f4c32feaa",
+  "production_c": {
+    "files": 16,
+    "lines": 1740,
+    "change": -965,
+    "test_reference_lines": 0
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.519231179961935,
+        "sha256": "5d33b34623517d5ee9a104a5c3bb5bbd0719f5b28a6326322980efe83d4a42e3",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.874436544021592,
+        "sha256": "93f31b68fd3d556889de789229b8e75f0b235eeabe811a0c78cf7b55dc55b94b",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 72.11988408700563,
+        "sha256": "14088d4d7171ca9d463de712d0f7d4b152589edd4e35d07b52234e286530aa88",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "server-runtime-native-save": {
+        "exit": 0,
+        "wall_seconds": 47.83312307600863,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 47.164738232968375,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "5d33b34623517d5ee9a104a5c3bb5bbd0719f5b28a6326322980efe83d4a42e3",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-final-server-helpers/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/server-runtime-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native runtime numeric and lookup helpers, pause lifecycle and saved-creature ownership",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "f8b5365e82f0e6b88b603b43bda3bf6fe9181210ad96136b4b31be52f6fc9a3d"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 58.671516753034666,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    },
+    "preflight_gameplay": {
+      "exit": 0,
+      "process_exit": 0,
+      "elapsed": 67.58190080989152,
+      "capture": false,
+      "godebug": ",randautoseed=0",
+      "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+      "binary_sha256": "5d33b34623517d5ee9a104a5c3bb5bbd0719f5b28a6326322980efe83d4a42e3",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "-s",
+        "-screen 0 1280x960x24 -nolisten tcp",
+        "/root/src/opennox/build/port-final-server-helpers/native-preflight/opennox",
+        "-data",
+        "/root/src/opennox/build/baseline/runs/server-runtime-native/data",
+        "-window",
+        "-pprof",
+        "127.0.0.1:0"
+      ],
+      "display_implementation": "Native runtime helpers, pause lifecycle and ownership",
+      "isolated_network": false,
+      "removed_maps": 0
+    }
+  }
+}

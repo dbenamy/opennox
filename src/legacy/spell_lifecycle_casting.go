@@ -218,7 +218,7 @@ func spellLifeCollide(u, target *server.Object) {
 		GetServer().S().Audio.EventObj(135, u, 0, 0)
 		spellLifeBuffOff(u, 22)
 		damage := float32(C.nox_xxx_gamedataGetFloatTable_419D70(internCStr("ShockDamage"), C.int(power)))
-		target.CallDamage(u, u, int(C.nox_float2int(C.float(damage))), 9)
+		target.CallDamage(u, u, int(floatToInt32(float32(damage))), 9)
 	}
 	if target.ObjClass&0x20006 != 0 && target.ObjFlags&0x8020 == 0 && !itemOwnerSameTeam(target, u) {
 		spellLifeBuffOff(u, 0)

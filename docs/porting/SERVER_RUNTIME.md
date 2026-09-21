@@ -1,8 +1,10 @@
 # Remaining runtime helpers
 
-Status: **qualified original-C baseline**; native conversion is next. Production
-remains identical to `39d24e36`. See [qualification](server-runtime-c-qualification.json).
-C remaining: **2,705 physical lines in 23 production files**, zero reference C.
+Status: **qualified native conversion**. C falls by 965 physical lines to
+**1,740 lines in 16 production files**, zero reference C. See
+[native qualification](server-runtime-native-qualification.json).
+The [C baseline](server-runtime-c-qualification.json), commit `401af00d`, preserved
+production revision `39d24e36` and its 2,705 lines /23 files.
 
 ## Scope
 
@@ -96,3 +98,54 @@ restore with `python3 build/port-final-server-helpers/deduplicate-resource-asset
 Identical completed captures were consolidated with verified relative symlinks,
 recovering another 1,663,983,267 bytes while preserving their paths and hashes.
 The local audit is `build/port-final-server-helpers/deduplicated-captures.json`.
+
+## Qualified native conversion
+
+The first native probe passes all 13 roots and every frozen capture /55,986 cases.
+The conversion removes 965 physical C lines: **1,740 lines in 16 files** remain,
+zero reference C. Thirty-four C interfaces are retired; two shared definitions
+move intact to the existing variable file. Their ABI widths remain unchanged.
+
+Numeric conversions now run directly in Go. The float C benchmark/conversion
+probe is retired; native contracts retain the independent expectations and x87
+control-word instrumentation. Equipment comparisons preserve the hosted C locale's
+ASCII folding and null-versus-empty distinction. The modifier key remains signed.
+The wave uses the shared signed-64 truncation/low-word helper. Pause effects retain
+factory ownership, callback ordering and 32-bit clock narrowing. Creature transfer
+saves the next child before changing its owner. Rejected-list disposal uses the
+existing list operations and matching libc free boundary.
+
+The first installer stopped on an already-direct public getter; the guarded resume
+completed the remaining edits. No build ran during the partial installation. All
+installers/drafts are now consumed; tracked source is authoritative. The native
+probe needed no behavioral correction. Default/server/highres pass 304/303/304
+affected roots with no skips, all eleven frozen captures and static checks.
+Three fresh production builds/ABI checks pass. The full suite matches exactly
+1,553 known failure entries (15 passing, 3 failing, 32 skipped packages). Headless
+gameplay and explicit save/load pass; the preflight and final default binaries
+have the same SHA-256. All source fingerprints agree and all jobs are joined.
+The server build excludes the client-only `TestClientInventoryWindowWorldSelection`;
+all selected tests execute, with no runtime skips.
+
+## Following work
+
+Continue with game-extension helpers and server-listing text/layout, then the
+remaining compatibility/formatting adapters. The name-lookup paths are live: the
+EXTENSION_MESSAGES configuration and its settings button enable their flag, even
+though the default is off. Correct the undersized local name buffer before
+freezing that C baseline; preserve the existing narrow character conversion.
+
+An advisory census found 108 possible C helper definitions in 24 production Go
+preambles. Many are thin callback or varargs bridges. The historical `.c` physical
+line metric excludes these, so finishing that count is not a claim that CGO or all
+inline C has disappeared. Audit those helpers' reachability and ownership as the
+remaining translation units close out. Details are in the local
+`following-batch-audit.json` and `remaining-inline-c-inventory.json`.
+
+Cleanup also removed 20 obsolete root test archives /1,625,390,640 bytes, preserving
+current production/library caches. Completed capture duplicates use verified
+relative symlinks; keep their canonical files. The completed preflight's 556,388,715
+bytes of identical asset copies can be restored with
+`python3 build/port-final-server-helpers/deduplicate-runtime-preflight.py --restore server-runtime-native`.
+All cleanup applies and `finish-native.py` are consumed. The native save-run assets
+remain intact.

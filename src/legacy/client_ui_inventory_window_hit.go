@@ -91,7 +91,7 @@ func uiInventoryStatusTooltip(pos image.Point) int {
 			index--
 		}
 		if index < 0 {
-			uiCursorTooltip((*uint16)(unsafe.Pointer(C.sub_413480(C.char(1 << i)))))
+			uiCursorTooltip(runtimeModifierLabel(byte(1 << i)))
 			return 1
 		}
 	}

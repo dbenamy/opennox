@@ -172,14 +172,14 @@ func damageInventory(u, source, weapon *server.Object, amount int32, kindBits fl
 func damageConductivity(u *server.Object) float64 {
 	value := float32(1)
 	for it := u.InvFirstItem; it != nil; it = it.InvNextItem {
-		if it.ObjClass&0x2000000 == 0 || *(*byte)(unsafe.Add(it.CObj(), 24))&0x10 == 0 || it.ObjFlags&0x100 == 0 || C.sub_4133D0(asObjectC(it)) != 0 {
+		if it.ObjClass&0x2000000 == 0 || *(*byte)(unsafe.Add(it.CObj(), 24))&0x10 == 0 || it.ObjFlags&0x100 == 0 || runtimeMaterial(it) {
 			continue
 		}
 		var add float64
 		if it.ObjSubClass&0x2000000 != 0 {
 			add = float64(memmap.Float32(0x587000, 201108))
 		} else {
-			add = float64(C.sub_415BD0(inventoryInt(it)))
+			add = runtimeArmorConductivity(it)
 		}
 		value = float32(add + float64(value))
 	}

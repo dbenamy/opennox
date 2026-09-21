@@ -87,11 +87,11 @@ func (p *portTestShopPools) runtimePauseContract() []uint32 {
 		return []uint32{uint32(C.dword_5d4594_2523804), p.normalize(uint32(C.dword_5d4594_2523780)), p.normalize(uint32(C.dword_5d4594_2523776)), memmap.Uint32(0x5D4594, 2523772), memmap.Uint32(0x5D4594, 2523796), memmap.Uint32(0x5D4594, 2523800), uint32(*ticks), uint32(*ticks >> 32), uint32(bool2int(noxflags.HasGame(noxflags.GamePause))), uint32(*stateByte), uint32(len(events)), uint32(len(p.proxy.life.created))}
 	}
 	before := snapshot()
-	arg := C.int(0)
+	var arg *server.Object
 	if sp.Provided {
-		arg = C.int(uintptr(u.CObj()))
+		arg = u
 	}
-	C.sub_57AF30(arg, C.int(sp.Kind))
+	runtimePauseStart(arg, sp.Kind)
 	started := snapshot()
 	blocked := sp.Active == 1 || sp.Paused
 	if blocked {
@@ -126,11 +126,11 @@ func (p *portTestShopPools) runtimePauseContract() []uint32 {
 		}
 	}
 	// A second start while active/paused must preserve all state and callback counts.
-	C.sub_57AF30(arg, C.int(sp.Kind))
+	runtimePauseStart(arg, sp.Kind)
 	if !reflect.DeepEqual(started, snapshot()) {
 		panic("repeated pause start mutated state")
 	}
-	C.sub_57B0A0()
+	runtimePauseStop()
 	stopped := snapshot()
 	if started[0] != 0 {
 		if stopped[0] != 0 || stopped[1] != 0 || stopped[2] != 0 {
@@ -146,7 +146,7 @@ func (p *portTestShopPools) runtimePauseContract() []uint32 {
 	} else if !reflect.DeepEqual(started, stopped) {
 		panic("inactive pause stop mutated state")
 	}
-	C.sub_57B0A0()
+	runtimePauseStop()
 	if !reflect.DeepEqual(stopped, snapshot()) {
 		panic("repeated pause stop mutated state")
 	}

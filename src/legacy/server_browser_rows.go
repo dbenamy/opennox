@@ -209,7 +209,7 @@ func browserDetails(record unsafe.Pointer) {
 	count = 0
 	for i := uint(0); i < 27; i++ {
 		if rec.Field_38_3[i/8]&(1<<(i%8)) == 0 {
-			p := unsafe.Pointer(uintptr(uint32(C.sub_4159F0(C.int(uint32(1) << i)))))
+			p := unsafe.Pointer(runtimeEquipmentLabel(false, uint32(1)<<i))
 			if p != nil {
 				add(alloc.GoString16((*uint16)(p)), -1)
 				count++
@@ -224,7 +224,7 @@ func browserDetails(record unsafe.Pointer) {
 	count = 0
 	for i := uint(0); i < 26; i++ {
 		if rec.Field_39_3[i/8]&(1<<(i%8)) == 0 {
-			p := unsafe.Pointer(uintptr(uint32(C.sub_415E80(C.int(uint32(1) << i)))))
+			p := unsafe.Pointer(runtimeEquipmentLabel(true, uint32(1)<<i))
 			if p != nil {
 				add(alloc.GoString16((*uint16)(p)), -1)
 				count++

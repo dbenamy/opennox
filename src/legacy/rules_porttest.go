@@ -167,7 +167,7 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 			panic("fixture allocation failed")
 		}
 		listClear((*legacyListNode)(unsafe.Pointer(head)))
-		defer func() { C.sub_57ADF0((*C.int)(unsafe.Pointer(head))); C.free(unsafe.Pointer(head)) }()
+		defer func() { runtimeRejectedClear(unsafe.Pointer(head)); C.free(unsafe.Pointer(head)) }()
 		for _, line := range spec.SeedRejected {
 			text := utf16.Encode([]rune(line))
 			if len(text) > 255 {

@@ -105,7 +105,7 @@ func nox_xxx_cursorResetDraggedItem_4776A0() { Nox_xxx_cursorResetDraggedItem_47
 
 func sub_478000() int { return Sub_478000() }
 func Sub_4AEE30() {
-	C.sub_4AEE30()
+	runtimeMeterWave()
 }
 func Nox_xxx_guiSpell_460650() int {
 	return int(*quickbarWord(1047928))

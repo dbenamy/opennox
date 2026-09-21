@@ -87,7 +87,7 @@ func bookAdd(kind, id int) {
 	bookHideWindow(moving, false)
 	moving.ShowModal()
 	if noxflags.HasGame(noxflags.GameModeCoop) {
-		C.sub_57AF30(0, C.int(kind))
+		runtimePauseStart(nil, int32(kind))
 	}
 	*bookWord(1046648) = uint32(nox_xxx_bookGet_430B40_get_mouse_prev_seq())
 	if !noxflags.HasGame(noxflags.GameModeCoop) || sessionQuitShown() == 1 || nox_xxx_gameGet_4DB1B0() == 1 {

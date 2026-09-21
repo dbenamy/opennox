@@ -424,7 +424,6 @@ func runArgs(args []string, loopFunc func() error) (gerr error) {
 	noxServer.NetList.Init()
 	noxServer.NetXfer.Reset(common.MaxPlayers)
 	noxServer.NetXfer.OnReceive(xferDataCallback)
-	legacy.Sub_4134D0()
 	if v := noxClient.Strings().Lang(); v == 6 || v == 8 {
 		noxClient.r.SetBold(false)
 	}

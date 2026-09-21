@@ -3,7 +3,6 @@ package legacy
 /*
 #include <stdint.h>
 #include "defs.h"
-int sub_4133D0(nox_object_t* a1);
 */
 import "C"
 import (
@@ -21,7 +20,7 @@ func Nox_xxx_clientPlaySoundSpecial_452D80(a1 sound.ID, a2 int) {
 }
 
 func Sub_4133D0(a1 *server.Object) int {
-	return int(C.sub_4133D0(asObjectC(a1)))
+	return bool2int(runtimeMaterial(a1))
 }
 
 //export nox_xxx_soundPlayerDamageSound_5328B0

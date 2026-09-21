@@ -135,9 +135,9 @@ func serverOptionsClose(clearRules int) uintptr {
 		serverOptionsAdvancedControl = 0
 	}
 	if clearRules != 0 {
-		p := C.sub_57ADF0((*C.int)(serverOptionsListHead()))
+		p := runtimeRejectedClear(serverOptionsListHead())
 		serverOptionsFirstOpen = 1
-		return uintptr(unsafe.Pointer(p))
+		return p
 	}
 	return 0
 }

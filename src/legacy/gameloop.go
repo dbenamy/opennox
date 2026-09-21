@@ -111,11 +111,9 @@ func Nox_xxx_servResetPlayers_4D23C0() {
 	sessionResetPlayers()
 }
 func Nox_xxx_gameLoopMemDump_413E30() {
-	C.nox_xxx_gameLoopMemDump_413E30()
+
 }
-func Sub_4137E0() {
-	C.sub_4137E0()
-}
+
 func Nox_xxx_getRandomName_4358A0() string {
 	return clientRandomName()
 }

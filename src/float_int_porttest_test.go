@@ -36,7 +36,7 @@ func checkFloatInt(t *testing.T, bits []uint32, control int) {
 	for i, b := range bits {
 		full, abs := floatIntExpected(b), floatIntExpected(b&0x7fffffff)
 		want := [3]int32{full, int32(int16(full)), int32(int16(abs))}
-		if got[i].Values != [2]int32{want[0], want[1]} || got[i].Native != want || !got[i].GuardsOK || !got[i].ControlOK {
+		if got[i].Native != want || !got[i].ControlOK {
 			t.Fatalf("bits=%08x control=%x got=%+v want=%v", b, control, got[i], want)
 		}
 	}
@@ -65,7 +65,7 @@ func TestFloatIntBaseline(t *testing.T) {
 		bits = append(bits, state)
 	}
 	checkFloatInt(t, bits, -1)
-	t.Logf("%d float inputs, %d ABI conversions", len(bits), 2*len(bits))
+	t.Logf("%d float inputs, %d native conversion/narrowing checks", len(bits), 3*len(bits))
 }
 func TestFloatIntControlWord(t *testing.T) {
 	values := []uint32{0, 0x80000000, 1, 0x80000001, 0x3fc00000, 0xbfc00000, 0x46ffffff, 0x47000000, 0x47000001, 0xc7000001, 0x4effffff, 0x4f000000, 0xcf000000, 0xcf000001, 0x7f800000, 0xff800000, 0x7f800001, 0xffc12345, 0x7fffffff}
@@ -76,7 +76,7 @@ func TestFloatIntControlWord(t *testing.T) {
 	}
 }
 
-func BenchmarkFloatIntCABI(b *testing.B) {
+func BenchmarkFloatIntNative(b *testing.B) {
 	got := legacy.PortTestFloatIntBenchmark(b.N)
 	n := uint64(b.N)
 	tail := n % 1024

@@ -217,7 +217,7 @@ func bookOpen(force int) {
 	if sessionQuitShown() != 0 || optionsVisible() != 0 {
 		return
 	}
-	if force != 0 || C.nox_xxx_get_57AF20() == 0 {
+	if force != 0 || Nox_xxx_get_57AF20() == 0 {
 		*bookWord(1046864) = 1
 		*bookWord(1046868) = 0
 		if *bookWord(1046872) != 0 {
@@ -316,7 +316,7 @@ func bookStopAddition() {
 	*bookWord(1046648) = 0
 	quickbarSelectRow(int(*bookWord(1046612)))
 	if noxflags.HasGame(noxflags.GameModeCoop) {
-		C.sub_57B0A0()
+		runtimePauseStop()
 		C.sub_413A00(0)
 	}
 }
