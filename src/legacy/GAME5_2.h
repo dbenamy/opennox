@@ -11,7 +11,6 @@ void nullsub_35(uint32_t a1, uint32_t a2);
 void nullsub_24(uint32_t a1);
 void nullsub_29(void);
 void nullsub_30(uint32_t a1);
-unsigned int nox_server_makeServerInfoPacket_554040(const char* inBuf, int inSz, char* out);
 unsigned int nox_xxx_net_getIP_554200(int a1);
 char* sub_554230();
 int sub_554240(int a1);

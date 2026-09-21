@@ -2260,3 +2260,13 @@ fresh headless C gameplay. Native production/ABI, known-suite and save/load are
 still pending. Inventory captures hash every complete normalized result per case
 because verbose fixtures otherwise repeat hundreds of MB of unchanged memory;
 independent behavior assertions remain. See [SERVER_TEXT.md](SERVER_TEXT.md).
+
+
+The extension/listing native conversion is qualified: 173 affected roots in each
+profile and all 21,135 cases, production/ABI, known-suite comparison and headless
+gameplay/save-load. Remove the eight unreachable memory-file C methods while
+keeping their live ABI type; consolidate 22 shared definitions without changing
+storage types. Keep the seven registered no-op callback identities. Define flag
+indices outside 0..31 as zero (the UI uses 1..5; the old negative extreme domain
+could divide by zero). No C algorithm is retained for these tests. See
+[the qualification](server-text-native-qualification.json).

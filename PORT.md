@@ -14,11 +14,11 @@
 
 ## Current status
 
-The extension/name and server-listing C baseline now has 21,135 cases, matching
-across repeated default, server and highres runs, plus fresh headless gameplay.
-Buffer/layout corrections precede the port and temporarily add 20 C lines. The
-Go conversion and full final qualification are next; see
-[SERVER_TEXT.md](docs/porting/SERVER_TEXT.md).
+Extension player lookup, weapon cycling, trap drop, flag index and server listing
+are Go. All 173 affected tests pass in default/server/highres, and 21,135 cases
+match the corrected C baseline. Production/ABI, known-suite comparison, headless
+gameplay and save/load pass. This removes 541 C lines from the corrected baseline
+(521 net since the preceding conversion). See [SERVER_TEXT.md](docs/porting/SERVER_TEXT.md).
 
 The remaining runtime numeric and lookup helpers, pause lifecycle and saved-creature
 ownership are Go. This removes 965 C lines and 34 old interfaces. Default/server/highres pass 304/303/304 affected
@@ -48,9 +48,8 @@ unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skip
 and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
 comparison, headless gameplay and save/load checks pass.
 
-C remaining is **1,740 physical lines in 16 files**, zero reference C. See
-[GAME_MESSAGES.md](docs/porting/GAME_MESSAGES.md) and
-[the native qualification](docs/porting/client-session-native-qualification.json).
+C remaining is **1,219 physical lines in 12 files**, zero reference C. See
+[the native qualification](docs/porting/server-text-native-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in

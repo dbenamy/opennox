@@ -1,8 +1,33 @@
 # Extension and server-listing helpers
 
-Status: repeated corrected C baseline recorded; no Go conversion installed. Qualified checkpoint
-is `eb01acc9` (1,740 physical C lines /16 files). Working C is 1,760 /16 after
-pre-baseline corrections. This is not a conversion reduction.
+Status: native conversion qualified. C falls from the corrected baseline's 1,760
+lines /16 files to **1,219 /12**, removing 541 lines (521 net since `eb01acc9`).
+No reference C remains. Corrected C baseline: `d87a3e02`.
+
+## Native qualification
+
+The first native probe matched all five captures. Default/server/highres pass
+173/173/173 affected roots, no skips and all 21,135 frozen cases. The selection
+covers new helpers and accumulated equipment, inventory, controls, server config,
+browser, team, reliable reports, server messages and quest runtime contracts.
+Three production builds and ABI/retired-symbol checks pass; the full suite matches
+known failures, and fresh headless gameplay plus explicit save/load pass. Source
+fingerprints agree, and preflight/final default binaries have the same SHA-256.
+See [the native record](server-text-native-qualification.json).
+
+Names preserve exact low-byte UTF-16 matching and output write order. Weapon
+cycling uses the native equipment owner and stops at the first eligible candidate,
+including failure. Trap drop preserves first-match success independent of the
+drop service result. The listing assembles a temporary header before copying,
+keeping overlapping input/output tokens valid. Flag indices outside 0..31 now
+explicitly return zero; the UI only passes 1..5. Values below -31 had no defined
+C result; this deterministic extension is recorded for review.
+
+Fifteen C interfaces are removed. Twenty-two storage definitions retain their
+exact types/initializers in vardefs.c; seven remaining callback identities retain
+their signatures and bodies. The memory-file ABI struct remains; its eight dead
+C methods and prototypes are removed. No old algorithm remains solely for tests.
+All local installers/finalizers/native drafts are consumed or stale.
 
 ## Scope and reachability
 
@@ -79,8 +104,8 @@ The captures are frozen in `server-text-c-batch.json`; both default processes, s
 All five roots run without skips and every frozen hash matches. See
 [the baseline record](server-text-c-qualification.json). Three-profile production/
 ABI, exact full-suite comparison and explicit save/load remain required after
-conversion; this is a recoverable baseline, not completed native qualification. Native drafts exist only
-under the ignored build directory.
+conversion; this is a recoverable baseline, not completed native qualification. Native installation followed this committed baseline. The draft files are now
+stale; tracked source is authoritative.
 
 Local artifacts: `build/port-final-text-helpers`. Probe3's completed large capture
 is gzip archived with round-trip SHA-256 verification (`c-probe3/archive.json`).
@@ -92,3 +117,8 @@ The cleanup script's audit/apply are consumed; preserve original assets.
 Eight obsolete root-test archives without the new extension roots were removed
 after checking age, archive symbols, hashes and open files: 652,232,214 bytes.
 Production/library caches and all current extension-test archives were retained.
+
+Native-preflight asset copies were also verified/deduplicated, 556,388,715 bytes;
+restore with `python3 build/port-final-text-helpers/deduplicate-text-native.py --restore server-text-native`.
+C-preflight copies use `deduplicate-text-c.py --restore server-text-c` in that
+same directory. All cleanup jobs are joined and applies consumed.

@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-char playerDropATrap(int playerObj);
-*/
-import "C"
-
 import (
 	"fmt"
 	"math"
@@ -85,7 +80,7 @@ func (p *portTestShopPools) extensionContract() []uint32 {
 		if sp.Nil {
 			target = nil
 		}
-		got = int(C.playerDropATrap(C.int(uintptr(target.CObj()))))
+		got = extensionDropTrap(target)
 		want := 0
 		if sp.Want >= 0 {
 			want = 1

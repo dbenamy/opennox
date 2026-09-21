@@ -2,38 +2,45 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 1.7k lines** — **1,740 physical lines in 16
-production `.c` files**, zero reference C. Latest conversion removes 965 lines.
+**Qualified C remaining: about 1.2k lines** — **1,219 physical lines in 12
+production `.c` files**, zero reference C. Latest conversion removes 541 lines
+from its corrected C baseline (521 net since the preceding conversion).
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Active — extension/listing C baseline recorded
+## Current — extension/listing helpers qualified
 
-Runtime conversion `eb01acc9` is committed and pushed. The corrected C baseline
-passes five roots /21,135 cases in two default processes, server and highres,
-with no skips, all frozen hashes and static checks. A fresh production default
-build and headless gameplay pass. All source fingerprints agree; jobs41362 and
-55329 are joined. Full production/ABI, known-suite and save/load remain required
-after native conversion. See [SERVER_TEXT.md](docs/porting/SERVER_TEXT.md).
+Default/server/highres pass 173/173/173 affected roots, zero skips, all five
+frozen captures /21,135 cases and static checks. Three production builds/ABI pass;
+the full suite matches the known failures/package results. Fresh headless gameplay
+and explicit save/load pass. Preflight/final default binary SHA-256:
+`68d94c1ebebc0e8dbfda9734d2a6d762d2d087f5fd79866a63e8b8e210c5a609`.
+All source fingerprints agree and all jobs are joined. Corrected C baseline
+`d87a3e02` is pushed. See [SERVER_TEXT.md](docs/porting/SERVER_TEXT.md).
 
-Intentional corrections bound player names, reject absent lookup owners,
-initialize reserved listing bytes and bound its map field. The wrapper rejects
-short slices. Working corrected C is 1,760 /16 (+20); the preceding fully qualified
-conversion above is 1,740 /16. No conversion reduction is claimed yet.
+C falls 541 to 1,219 /12 files (net −521 from preceding native checkpoint).
+Six live behaviors are Go, eight orphan memory-file readers removed and fifteen
+C interfaces retired. Twenty-two shared storage definitions moved unchanged;
+seven callback stubs retain their identities. No C algorithm remains for these
+tests. The first native probe and all qualification gates passed. The preceding
+C baseline deliberately corrected name buffers, absent owners and listing fields.
+Indices outside 0..31 now return zero; the UI only uses 1..5.
 
-Baseline preparation/finalization scripts are CONSUMED. Native drafts and
-`install-native.py` under `build/port-final-text-helpers` are NOT installed/consumed.
-Scope: GameEx helpers, listing, eight orphan memory-file C readers and unchanged
-shared-storage consolidation. `prepare-native-manifest.py` is ready with 173
-affected roots; run after native installation. No source jobs remain active.
+All installers/finalizers/native drafts under `build/port-final-text-helpers` are
+CONSUMED/STALE; tracked source is authoritative. Next: remaining string/varargs
+adapters and actual audio-directory caller, then shared C storage/ABI glue.
+Preliminary local audits `next-formatting-review.md` and
+`next-string-references.txt` identify live callers and likely orphans; verify
+reachability before deletion. The `.c` count excludes inline C in Go preambles.
 
-Completed cleanup: runtime-save duplicate assets 556,358,986 bytes; eight obsolete
-root-test cache archives 652,232,214 bytes. Cleanup99706 and gzip archival98226 are
-joined and CONSUMED. Probe3's unfrozen large capture has a verified gzip archive.
-Original assets/current caches/evidence remain. Restore instructions are in the
-batch report. Following string-helper reference audit is local and not yet a
-qualified deletion plan.
+Cleanup is joined/CONSUMED: runtime-save duplicate assets 556,358,986 bytes;
+eight obsolete root-test archives 652,232,214 bytes; C and native text preflight
+assets 556,388,715 bytes each. Probe3's unfrozen large capture has a verified gzip
+archive. Original assets/current caches/evidence remain. Restore preflight assets
+with `python3 build/port-final-text-helpers/deduplicate-text-c.py --restore server-text-c`
+or `python3 build/port-final-text-helpers/deduplicate-text-native.py --restore server-text-native`.
+Current native save-run assets remain intact.
 
 ## Current — runtime helpers qualified
 

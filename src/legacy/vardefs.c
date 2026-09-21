@@ -430,3 +430,27 @@ void* nox_video_tileBuf_end_3798844 = 0;
 
 int nox_server_gameSettingsUpdated; // ABI remains a four-byte int.
 nox_gui_animation* nox_wnd_xxx_1309740 = 0;
+
+// Shared storage retained after extension/listing translation-unit removal.
+unsigned int gameex_flags = 0x1E;
+int nox_cheat_allowall = 0;
+nox_window* dword_5d4594_1522616 = 0;
+nox_window* dword_5d4594_1522620 = 0;
+nox_window* dword_5d4594_1522624 = 0;
+nox_window* dword_5d4594_1522628 = 0;
+nox_gui_animation* nox_wnd_xxx_1522608 = 0;
+void* nox_gui_itemAmount_item_1319256 = 0;
+void* nox_gui_itemAmount_dialog_1319228 = 0;
+nox_window* dword_5d4594_1321236 = 0;
+nox_window* dword_5d4594_1321240 = 0;
+nox_window* dword_5d4594_1321244 = 0;
+nox_window* dword_5d4594_1321248 = 0;
+uint32_t nox_color_white_2523948 = 0;
+uint32_t nox_color_red_2589776 = 0;
+uint32_t nox_color_blue_2650684 = 0;
+uint32_t nox_color_green_2614268 = 0;
+uint32_t nox_color_cyan_2649820 = 0;
+uint32_t nox_color_yellow_2589772 = 0;
+uint32_t nox_color_violet_2598268 = 0;
+uint32_t nox_color_black_2650656 = 0;
+uint32_t nox_color_orange_2614256 = 0;

@@ -1,0 +1,140 @@
+{
+  "status": "qualified native extension/listing helpers",
+  "baseline_revision": "d87a3e02",
+  "baseline": "server-text-c-qualification.json",
+  "retired_c_interfaces": 15,
+  "captured_cases": 21135,
+  "captures": 5,
+  "targets": {
+    "native-default1": {
+      "roots": 173,
+      "captures": 5,
+      "skips": 0,
+      "wall_seconds": 46.34736735094339
+    },
+    "native-server1": {
+      "roots": 173,
+      "captures": 5,
+      "skips": 0,
+      "wall_seconds": 155.61488520517014
+    },
+    "native-highres1": {
+      "roots": 173,
+      "captures": 5,
+      "skips": 0,
+      "wall_seconds": 81.31788170197979
+    }
+  },
+  "source_manifest_sha256": "3a95a41a96aa327ebe0fae637ce1ee2d7ebe923bf025e517f711faaeb14fa4ff",
+  "production_c": {
+    "files": 12,
+    "lines": 1219,
+    "change_from_corrected_c": -541,
+    "change_from_preceding_native": -521,
+    "test_reference_lines": 0
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 3.9137970679439604,
+        "sha256": "68d94c1ebebc0e8dbfda9734d2a6d762d2d087f5fd79866a63e8b8e210c5a609",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.526411085855216,
+        "sha256": "baa17eccf3ab8c979553c38efbef488ddd9cb4f69a3cc901e9d6d18decc28338",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 67.67043934995309,
+        "sha256": "6fa15db610e3afd82bb9ec8aa4d4e62c3984856d6e9eed9cd48e36053729d8f7",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "server-text-native-save": {
+        "exit": 0,
+        "wall_seconds": 46.48285113903694,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.95891556702554,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "68d94c1ebebc0e8dbfda9734d2a6d762d2d087f5fd79866a63e8b8e210c5a609",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-final-text-helpers/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/server-text-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native extension/name/listing helpers and unreachable memory-file removal",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "da4bf722a8ec0bb21fa43d7385fb56fce3dd95c3c02077d0fbda1d0bf95068d6"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 58.58537829294801,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    },
+    "preflight_gameplay": {
+      "exit": 0,
+      "process_exit": 0,
+      "elapsed": 65.45702401991002,
+      "capture": false,
+      "godebug": ",randautoseed=0",
+      "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+      "binary_sha256": "68d94c1ebebc0e8dbfda9734d2a6d762d2d087f5fd79866a63e8b8e210c5a609",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "-s",
+        "-screen 0 1280x960x24 -nolisten tcp",
+        "/root/src/opennox/build/port-final-text-helpers/native-preflight/opennox",
+        "-data",
+        "/root/src/opennox/build/baseline/runs/server-text-native/data",
+        "-window",
+        "-pprof",
+        "127.0.0.1:0"
+      ],
+      "display_implementation": "Native extension and server-listing helpers",
+      "isolated_network": false,
+      "removed_maps": 0
+    }
+  }
+}

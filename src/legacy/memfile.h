@@ -10,13 +10,5 @@ typedef struct {
 	char* end;  // 3, 0xC, 12
 } nox_memfile;
 
-int8_t nox_memfile_read_i8(nox_memfile* f);
-uint8_t nox_memfile_read_u8(nox_memfile* f);
-int16_t nox_memfile_read_i16(nox_memfile* f);
-uint16_t nox_memfile_read_u16(nox_memfile* f);
-int32_t nox_memfile_read_i32(nox_memfile* f);
-uint32_t nox_memfile_read_u32(nox_memfile* f);
-void nox_memfile_skip(nox_memfile* f, int n);
-unsigned int nox_memfile_read(void* dst, unsigned int sz, int cnt, nox_memfile* f);
 
 #endif // NOX_MEMFILE_H

@@ -1,0 +1,1 @@
+^Test(ServerText.*|Equipment.*|Inventory.*|PlayerControls.*|ServerConfig.*|ServerBrowser.*|TeamRuntime.*|ReliableReports.*|GameMessagesServer.*|QuestRuntime.*)$
