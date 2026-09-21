@@ -14,6 +14,11 @@
 
 ## Current status
 
+The remaining runtime-helper C baseline is qualified: 13 roots in each profile,
+55,986 captured cases and unchanged production source. Numeric conversions,
+modifier lookups, pause lifecycle and host ownership are ready for conversion.
+See [SERVER_RUNTIME.md](docs/porting/SERVER_RUNTIME.md).
+
 Client resource teardown, timing, colors, caches and menu/modal lifecycle are Go,
 removing 838 C lines and 18 old interfaces. Default/server/highres pass 135/135/135
 affected roots and all 6,415 C cases; fresh production/ABI, known-suite comparison

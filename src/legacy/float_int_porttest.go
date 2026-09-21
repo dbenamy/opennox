@@ -59,3 +59,22 @@ func PortTestFloatInt(bits []uint32, cwMask int) (out []PortTestFloatIntResult) 
 }
 
 func PortTestFloatIntBenchmark(n int) uint32 { return uint32(C.porttest_float_int_bench(C.uint(n))) }
+
+// PortTestDoubleInt exercises the remaining double-to-int C boundary under the
+// same precision/rounding controls as the existing float conversion contracts.
+func PortTestDoubleInt(bits []uint64, cwMask int) ([]int32, bool) {
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+	before := C.porttest_float_cw()
+	defer C.porttest_float_set_cw(before)
+	control := before
+	if cwMask >= 0 {
+		control = (before &^ 0x0f00) | C.ushort(cwMask&0x0f00)
+	}
+	C.porttest_float_set_cw(control)
+	out := make([]int32, len(bits))
+	for i, b := range bits {
+		out[i] = int32(C.nox_double2int(C.double(math.Float64frombits(b))))
+	}
+	return out, C.porttest_float_cw() == control
+}

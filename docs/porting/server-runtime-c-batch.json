@@ -1,0 +1,298 @@
+{
+  "batch": "server-runtime-c",
+  "env": {
+    "GOMAXPROCS": "2",
+    "GOMEMLIMIT": "768MiB",
+    "OPENNOX_CLIENT_INTERACTION_CAPTURE": "{out}/interaction"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/server-runtime-c-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-server-runtime-armor-conductivity.json",
+            "sha256": "410863bc2d531439b4c3dee7ec886ae3833bfe89a53bc726fc7ad0f84ff6c332"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-double-conversion.json",
+            "sha256": "9a90790196c8e6fe8b7a68dd7c9db9aecc9ff7ee98fcc2ca5fd2bcfe0eddc11f"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-equipment-load.json",
+            "sha256": "75933ee6d500930b5b238aab705c0b1cc0b40ecd71a102cd052b757ec75bed2d"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-equipment-lookup.json",
+            "sha256": "62892dee00fc7c676c9bbecd1de4450bc68bec8beac6219dafa631b727216e78"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-host.json",
+            "sha256": "eb7892038fa539b54aa55be829e25f743521939be6ab18df3e2cbf371bec8da0"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-material-cache.json",
+            "sha256": "dcf17679f55b7dca5dee5dee1bbccf543a4927cc8fce76a472c34b1c89030ba9"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-meter-wave.json",
+            "sha256": "238fa8a0b8a1d39b34795256b337cabe7bdbeb1be9fc8d98678f0c550f299c4f"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-modifier-icons.json",
+            "sha256": "682fce193c28a0c35edc67edae70b89722a96b12e44f1599d2bd5c55609cc5a9"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-observer-count.json",
+            "sha256": "8d108be491dfa40c39a7708b4b52c8e07565748d7150a5c058fb28c16a066914"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-pause.json",
+            "sha256": "fb4a86a448ec0ee7f4b9740b656ec1ce1c8f474360dae38da5d47e15fe5a5bf9"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-rejected-list-free.json",
+            "sha256": "9928e7587ea2f7cec94bb15a52f467b89090f856ca914359ee34a21c9caea5cd"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "server": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest,server",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/server-runtime-c-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-server-runtime-armor-conductivity.json",
+            "sha256": "410863bc2d531439b4c3dee7ec886ae3833bfe89a53bc726fc7ad0f84ff6c332"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-double-conversion.json",
+            "sha256": "9a90790196c8e6fe8b7a68dd7c9db9aecc9ff7ee98fcc2ca5fd2bcfe0eddc11f"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-equipment-load.json",
+            "sha256": "75933ee6d500930b5b238aab705c0b1cc0b40ecd71a102cd052b757ec75bed2d"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-equipment-lookup.json",
+            "sha256": "62892dee00fc7c676c9bbecd1de4450bc68bec8beac6219dafa631b727216e78"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-host.json",
+            "sha256": "eb7892038fa539b54aa55be829e25f743521939be6ab18df3e2cbf371bec8da0"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-material-cache.json",
+            "sha256": "dcf17679f55b7dca5dee5dee1bbccf543a4927cc8fce76a472c34b1c89030ba9"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-meter-wave.json",
+            "sha256": "238fa8a0b8a1d39b34795256b337cabe7bdbeb1be9fc8d98678f0c550f299c4f"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-modifier-icons.json",
+            "sha256": "682fce193c28a0c35edc67edae70b89722a96b12e44f1599d2bd5c55609cc5a9"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-observer-count.json",
+            "sha256": "8d108be491dfa40c39a7708b4b52c8e07565748d7150a5c058fb28c16a066914"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-pause.json",
+            "sha256": "fb4a86a448ec0ee7f4b9740b656ec1ce1c8f474360dae38da5d47e15fe5a5bf9"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-rejected-list-free.json",
+            "sha256": "9928e7587ea2f7cec94bb15a52f467b89090f856ca914359ee34a21c9caea5cd"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "highres": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest,highres",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/server-runtime-c-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-server-runtime-armor-conductivity.json",
+            "sha256": "410863bc2d531439b4c3dee7ec886ae3833bfe89a53bc726fc7ad0f84ff6c332"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-double-conversion.json",
+            "sha256": "9a90790196c8e6fe8b7a68dd7c9db9aecc9ff7ee98fcc2ca5fd2bcfe0eddc11f"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-equipment-load.json",
+            "sha256": "75933ee6d500930b5b238aab705c0b1cc0b40ecd71a102cd052b757ec75bed2d"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-equipment-lookup.json",
+            "sha256": "62892dee00fc7c676c9bbecd1de4450bc68bec8beac6219dafa631b727216e78"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-host.json",
+            "sha256": "eb7892038fa539b54aa55be829e25f743521939be6ab18df3e2cbf371bec8da0"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-material-cache.json",
+            "sha256": "dcf17679f55b7dca5dee5dee1bbccf543a4927cc8fce76a472c34b1c89030ba9"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-meter-wave.json",
+            "sha256": "238fa8a0b8a1d39b34795256b337cabe7bdbeb1be9fc8d98678f0c550f299c4f"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-modifier-icons.json",
+            "sha256": "682fce193c28a0c35edc67edae70b89722a96b12e44f1599d2bd5c55609cc5a9"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-observer-count.json",
+            "sha256": "8d108be491dfa40c39a7708b4b52c8e07565748d7150a5c058fb28c16a066914"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-pause.json",
+            "sha256": "fb4a86a448ec0ee7f4b9740b656ec1ce1c8f474360dae38da5d47e15fe5a5bf9"
+          },
+          {
+            "path": "{out}/interaction-server-runtime-rejected-list-free.json",
+            "sha256": "9928e7587ea2f7cec94bb15a52f467b89090f856ca914359ee34a21c9caea5cd"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ]
+  }
+}

@@ -8,6 +8,29 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — runtime helpers C baseline qualified; native conversion next
+
+Default, repeated default, server and highres each pass 13 roots with zero skips.
+All eleven captures /55,986 cases match and static checks pass. Production is
+identical to qualified `39d24e36`; only tagged tests/docs changed. All jobs joined.
+C remains 2,705 lines /23 files /zero reference C. See
+[SERVER_RUNTIME.md](docs/porting/SERVER_RUNTIME.md) for scope and probe findings.
+
+The baseline commit freezes numeric, lookup, rejected-list disposal, pause-effect
+and host-ownership contracts. Existing float contracts are included. Native Go
+DRAFTS are in `build/port-final-server-helpers/native`; they are not installed or
+compiled. Review and integrate after the baseline commit. `finish-c.py` is CONSUMED.
+Remove proven orphaned helpers; retain the registered no-op modifier identities.
+Defer GameEx and server-listing text/layout to a following batch.
+
+Cleanup recovered 1,112,747,701 bytes of verified-identical completed scenario
+asset copies. Apply is CONSUMED; restore with
+`python3 build/port-final-server-helpers/deduplicate-resource-assets.py --restore RUN`
+for `client-resources-native` or `client-resources-native-save`. Original assets,
+changed files and evidence remain. Verified relative symlinks consolidate 70
+identical completed captures, recovering 1,663,983,267 more bytes; their paths and
+hashes remain valid. See `deduplicated-captures.json` in the same build directory.
+
 ## Current — client resources/lifecycle qualified
 
 Default/server/highres pass 135/135/135 affected roots, no skips; all eight captures

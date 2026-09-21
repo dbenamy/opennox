@@ -104,6 +104,8 @@ import (
 )
 
 type PortTestPlayerControlsSpec struct {
+	RuntimeHost              *PortTestRuntimeHostSpec
+	RuntimePause             *PortTestRuntimePauseSpec
 	GameMessagePickupCalls   *int
 	GameMessageEquipped      *bool
 	GameMessageSecondary     *int // Expected temporaryRef identity at update-data byte108.
@@ -374,6 +376,12 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 		st.result = 0
 	} else if a.Op == 1462 {
 		st.transitions = append(st.transitions, p.unitOrderContract()...)
+		st.result = 0
+	} else if a.Op == 1499 {
+		st.transitions = append(st.transitions, p.runtimeHostContract()...)
+		st.result = 0
+	} else if a.Op == 1498 {
+		st.transitions = append(st.transitions, p.runtimePauseContract()...)
 		st.result = 0
 	} else if a.Op == 1461 {
 		st.transitions = append(st.transitions, p.unitExperienceContract()...)

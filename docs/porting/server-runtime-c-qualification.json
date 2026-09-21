@@ -1,0 +1,117 @@
+{
+  "status": "qualified original C runtime helper baseline",
+  "production_revision": "39d24e36",
+  "production_qualification": "client-resources-native-qualification.json",
+  "production_source_unchanged": true,
+  "added_test_files": [
+    "src/legacy/server_runtime_host_porttest.go",
+    "src/legacy/server_runtime_pause_porttest.go",
+    "src/legacy/server_runtime_porttest.go",
+    "src/server_runtime_free_porttest_test.go",
+    "src/server_runtime_host_porttest_test.go",
+    "src/server_runtime_icons_porttest_test.go",
+    "src/server_runtime_lookup_porttest_test.go",
+    "src/server_runtime_modifiers_porttest_test.go",
+    "src/server_runtime_numeric_porttest_test.go",
+    "src/server_runtime_observers_porttest_test.go",
+    "src/server_runtime_pause_porttest_test.go",
+    "src/server_runtime_wave_porttest_test.go"
+  ],
+  "changed_test_files": [
+    "src/legacy/float_int_porttest.go",
+    "src/legacy/player_controls_porttest.go"
+  ],
+  "targets": {
+    "c-default1": {
+      "roots": 13,
+      "skips": 0,
+      "captures": 11,
+      "wall_seconds": 20.514632869977504
+    },
+    "c-default2": {
+      "roots": 13,
+      "skips": 0,
+      "captures": 11,
+      "wall_seconds": 20.6456894678995
+    },
+    "c-server1": {
+      "roots": 13,
+      "skips": 0,
+      "captures": 11,
+      "wall_seconds": 134.9260605389718
+    },
+    "c-highres1": {
+      "roots": 13,
+      "skips": 0,
+      "captures": 11,
+      "wall_seconds": 52.33017624402419
+    }
+  },
+  "captures": [
+    {
+      "path": "{out}/interaction-server-runtime-armor-conductivity.json",
+      "sha256": "410863bc2d531439b4c3dee7ec886ae3833bfe89a53bc726fc7ad0f84ff6c332",
+      "cases": 480
+    },
+    {
+      "path": "{out}/interaction-server-runtime-double-conversion.json",
+      "sha256": "9a90790196c8e6fe8b7a68dd7c9db9aecc9ff7ee98fcc2ca5fd2bcfe0eddc11f",
+      "cases": 37059
+    },
+    {
+      "path": "{out}/interaction-server-runtime-equipment-load.json",
+      "sha256": "75933ee6d500930b5b238aab705c0b1cc0b40ecd71a102cd052b757ec75bed2d",
+      "cases": 72
+    },
+    {
+      "path": "{out}/interaction-server-runtime-equipment-lookup.json",
+      "sha256": "62892dee00fc7c676c9bbecd1de4450bc68bec8beac6219dafa631b727216e78",
+      "cases": 960
+    },
+    {
+      "path": "{out}/interaction-server-runtime-host.json",
+      "sha256": "eb7892038fa539b54aa55be829e25f743521939be6ab18df3e2cbf371bec8da0",
+      "cases": 768
+    },
+    {
+      "path": "{out}/interaction-server-runtime-material-cache.json",
+      "sha256": "dcf17679f55b7dca5dee5dee1bbccf543a4927cc8fce76a472c34b1c89030ba9",
+      "cases": 288
+    },
+    {
+      "path": "{out}/interaction-server-runtime-meter-wave.json",
+      "sha256": "238fa8a0b8a1d39b34795256b337cabe7bdbeb1be9fc8d98678f0c550f299c4f",
+      "cases": 18
+    },
+    {
+      "path": "{out}/interaction-server-runtime-modifier-icons.json",
+      "sha256": "682fce193c28a0c35edc67edae70b89722a96b12e44f1599d2bd5c55609cc5a9",
+      "cases": 9216
+    },
+    {
+      "path": "{out}/interaction-server-runtime-observer-count.json",
+      "sha256": "8d108be491dfa40c39a7708b4b52c8e07565748d7150a5c058fb28c16a066914",
+      "cases": 6144
+    },
+    {
+      "path": "{out}/interaction-server-runtime-pause.json",
+      "sha256": "fb4a86a448ec0ee7f4b9740b656ec1ce1c8f474360dae38da5d47e15fe5a5bf9",
+      "cases": 960
+    },
+    {
+      "path": "{out}/interaction-server-runtime-rejected-list-free.json",
+      "sha256": "9928e7587ea2f7cec94bb15a52f467b89090f856ca914359ee34a21c9caea5cd",
+      "cases": 21
+    }
+  ],
+  "captured_cases": 55986,
+  "source_manifest_sha256": "835ca204a3a1aaecc872aac5c6ffc7578f4a2054702eeec7312ca2a49566eec5",
+  "production_c": {
+    "files": 23,
+    "lines": 2705
+  },
+  "reference_c": {
+    "files": 0,
+    "lines": 0
+  }
+}
