@@ -12,11 +12,6 @@ extern uint32_t dword_5d4594_1062512, dword_5d4594_1063116, dword_5d4594_1063120
 extern uint32_t dword_5d4594_1063636;
 extern uint32_t dword_5d4594_1049796_inventory_click_column_index;
 extern uint32_t dword_5d4594_1049800_inventory_click_row_index;
-// ABI adapters to the existing production variadic formatter.
-static int inventoryFormatInts(wchar2_t* dst, wchar2_t* fmt, int a, int b) {return nox_swprintf(dst,fmt,a,b);}
-static int inventoryFormatFloat(wchar2_t* dst, wchar2_t* fmt, double a) {return nox_swprintf(dst,fmt,a);}
-static int inventoryFormatText(wchar2_t* dst, wchar2_t* fmt, wchar2_t* a, wchar2_t* b) {return nox_swprintf(dst,fmt,a,b);}
-static int inventoryFormatLiteral(wchar2_t* dst, wchar2_t* fmt) {return nox_swprintf(dst,fmt);}
 */
 import "C"
 
@@ -40,17 +35,17 @@ func uiInventoryText(id string) string {
 }
 func uiInventoryFormatInts(id string, a, b int) string {
 	var dst [256]uint16
-	C.inventoryFormatInts((*C.wchar2_t)(unsafe.Pointer(&dst[0])), (*C.wchar2_t)(unsafe.Pointer(internWStr(uiInventoryText(id)))), C.int(a), C.int(b))
+	textFormatBuffer(dst[:], (*uint16)(unsafe.Pointer(internWStr(uiInventoryText(id)))), textFormatWord(uint32(a)), textFormatWord(uint32(b)))
 	return alloc.GoString16(&dst[0])
 }
 func uiInventoryFormatFloat(id string, a float64) string {
 	var dst [256]uint16
-	C.inventoryFormatFloat((*C.wchar2_t)(unsafe.Pointer(&dst[0])), (*C.wchar2_t)(unsafe.Pointer(internWStr(uiInventoryText(id)))), C.double(a))
+	textFormatBuffer(dst[:], (*uint16)(unsafe.Pointer(internWStr(uiInventoryText(id)))), textFormatReal(a))
 	return alloc.GoString16(&dst[0])
 }
 func uiInventoryFormatLiteral(text string) string {
 	var dst [256]uint16
-	C.inventoryFormatLiteral((*C.wchar2_t)(unsafe.Pointer(&dst[0])), (*C.wchar2_t)(unsafe.Pointer(internWStr(text))))
+	textFormatBuffer(dst[:], (*uint16)(unsafe.Pointer(internWStr(text))))
 	return alloc.GoString16(&dst[0])
 }
 func uiInventorySmallFont() font.Face {
@@ -181,7 +176,7 @@ func sub_466E20(w *C.uint32_t) C.int {
 //export nox_xxx_inventoryNameSignInit_4671E0
 func nox_xxx_inventoryNameSignInit_4671E0() C.int {
 	dst := (*C.wchar2_t)(memmap.PtrOff(0x5D4594, 1062588))
-	C.nox_wcscpy(dst, (*C.wchar2_t)(memmap.PtrOff(0x5D4594, 1063676)))
+	textCopy((*uint16)(unsafe.Pointer(dst)), (*uint16)(memmap.PtrOff(0x5D4594, 1063676)))
 	p := uiMeterPlayer()
 	level := 0
 	if noxflags.HasGame(4096) || questRuntimeWord(1556160) != 0 || questRuntimeWord(1556164) != 0 {
@@ -195,7 +190,7 @@ func nox_xxx_inventoryNameSignInit_4671E0() C.int {
 	class := *(*byte)(unsafe.Add(p, 2251))
 	className := alloc.GoString((*byte)(*memmap.PtrPtr(0x587000, 29456+uintptr(class)*4)))
 	title := uiInventoryText(fmt.Sprintf("experience:%s%d", className, level))
-	return C.int(C.inventoryFormatText(dst, (*C.wchar2_t)(unsafe.Pointer(internWStr(uiInventoryText("ElaborateNameFormat")))), (*C.wchar2_t)(unsafe.Add(p, 4704)), (*C.wchar2_t)(unsafe.Pointer(internWStr(title)))))
+	return C.int(textFormatBuffer(unsafe.Slice((*uint16)(unsafe.Pointer(dst)), 256), (*uint16)(unsafe.Pointer(internWStr(uiInventoryText("ElaborateNameFormat")))), textFormatPointer(unsafe.Add(p, 4704)), textFormatPointer(unsafe.Pointer(internWStr(title)))))
 }
 
 func sub_467750(code C.int, status C.char) C.int {

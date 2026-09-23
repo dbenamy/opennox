@@ -2,36 +2,49 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: about 1.2k lines** — **1,219 physical lines in 12
-production `.c` files**, zero reference C. Latest conversion removes 541 lines
-from its corrected C baseline (521 net since the preceding conversion).
+**Qualified C remaining: 635 physical lines in 8 production `.c` files**, zero
+reference C. Latest conversion removes 584 lines and 28 C interfaces.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Active — formatting baseline frozen
+## Current — formatting/scalars/directory qualified
 
-Formatting/scalar/directory C baseline passes twice on default and once each on
-server/highres: eight roots, eight matching captures /668,876 cases, no skips,
-static checks and identical source manifests. Production is unchanged since
-2390c78d; only five tagged test files were added, so its production/ABI/gameplay/
-save-load evidence is reused. See [TEXT_FORMAT.md](docs/porting/TEXT_FORMAT.md).
-No build/test jobs remain active. C remains1,219 /12; no reference C.
+C baseline d443c297 is pushed. Native default/server/highres pass 375/373/375 affected roots, no skips, all 8 frozen captures /668,876 cases, two native consumer tests and
+static checks. Three production builds/ABI and exact known-suite comparison pass;
+fresh headless gameplay and explicit save/load pass. All final source fingerprints
+agree, all jobs joined. Preflight/final default binary SHA-256:
+`5ea5a14455b978f3b9afe7181222067ec7d22136cdf11fcee8a9a62d5d6249eb`.
+See [TEXT_FORMAT.md](docs/porting/TEXT_FORMAT.md).
 
-Next: install the reviewed formatter and scalar drafts, migrate callers, remove
-retired translation units, then run native contracts, affected roots and full
-production qualification. Nothing native is installed yet. Draft formatter's
-13,464 cases and Luna scalar's655,391 cases already match C in isolated386 tests.
-Ignored scripts/drafts are in build/port-final-formatting; production source is
-still authoritative. Scalar installer was corrected to retain the alloc import.
+C falls 584 to 635 /8 files; 28 interfaces retire. Custom formatter semantics, raw
+UTF16, scalar saturation/case folding and normalized audio directory checks are
+preserved. Mapped/UI formatted output is capacity-limited and terminated; temporary
+messages use Go storage. Console inline adapter and fixture pointer typing were
+caught in review/compile and corrected before final gates. No C algorithm remains
+for the migrated tests. Final outputs: native-default3, native-preflight2,
+native-server1, native-highres1, native-production under build/port-final-formatting.
+Earlier interrupted/failed attempts are not qualification evidence. Installers and
+cleanup scripts are CONSUMED; tracked source is authoritative.
 
-Cleanup consumed cleanup-audit/obsolete-cache.py --apply:10 obsolete root-test
-archives /817,011,134bytes removed, with fresh symbol/hash/mtime checks. Original
-assets and baseline evidence preserved. New baseline capture duplicates can be
-shared only after verifying hashes. The default is one bounded GPT-6 Luna helper;
-primary owns baseline, review, integration and qualification. Review delegation
-after two completed batches; cleanup audit required extra steering and scalar
-caller draft needed import corrections, recorded in TEXT_FORMAT.md.
+Cleanup: 10 root-test archives 817,011,134 bytes and 38 legacy-package archives
+1,622,664,172 bytes; verified duplicate baseline captures share canonical c-probe3
+files. Old capture-sharing audit lists additional canonical targets; preserve them.
+Completed preflight asset copies 556,388,715 bytes deduplicated; restore with
+`python3 build/port-final-formatting/deduplicate-format-preflight.py --restore text-format-native`.
+Original assets and evidence remain.
+
+Next: retire orphan memory-accessor and GUI bridges; move tagged durability getter
+to existing Go memory map. Read-only audit under remaining-c-audit confirms no
+production callers; verify exact references again. Uninstalled guarded draft in
+build/port-final-orphan-bridges is NOT applied or qualified. Then address shared
+storage/remaining callback and external-library glue. Physical .c count excludes
+inline/header/vendor code and does not mean CGO-free.
+
+One GPT-6 Luna helper at a time, primary review/integration/qualification. This is
+the first completed batch under standing guidelines; reflect after the next one.
+Delegation required corrections in import/reachability/cleanup reports, recorded
+in TEXT_FORMAT; bounded implementation remains promising, audits need verification.
 
 ## Current — extension/listing helpers qualified
 

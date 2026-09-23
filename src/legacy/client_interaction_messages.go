@@ -6,11 +6,6 @@ package legacy
 #include "common__strman.h"
 extern uint32_t nox_color_black_2650656, nox_color_white_2523948;
 extern int nox_win_width;
-// Retain the shared production formatter and its localized argument convention.
-static void interaction_console_message(wchar2_t* text) {
- wchar2_t* format=nox_strman_loadString_40F1D0("systemmsg",0,"C:\\NoxPost\\src\\Client\\Gui\\guimsg.c",69);
- nox_gui_console_Printf_450C00(NOX_CONSOLE_RED,format,text);
-}
 */
 import "C"
 
@@ -66,7 +61,8 @@ func interactionCentered(text *uint16) {
 	dst[i] = 0
 	*memmap.PtrUint32(0x5D4594, 824440+off) = gameFrame() + 5*gameFPS()
 	*memmap.PtrUint8(0x5D4594, 824444+off) = 0
-	C.interaction_console_message((*C.ushort)(unsafe.Pointer(text)))
+	format := alloc.InternCString16(GetServer().S().Strings().GetStringInFile("systemmsg", `C:\NoxPost\src\Client\Gui\guimsg.c`))
+	textFormatConsole(byte(C.NOX_CONSOLE_RED), format, textFormatPointer(unsafe.Pointer(text)))
 }
 func interactionMessagesDraw() int32 {
 	r := GetClient().R2()

@@ -85,8 +85,6 @@ int nox_xxx_netStatsMultiplier_4D9C20(nox_object_t* a1);
 int sub_4D9CF0(int a1);
 int sub_4D9D20(int a1, nox_object_t* a2);
 int nox_xxx_netGauntlet_4D9E70(int a1);
-int nox_xxx_netSendLineMessage_4D9EB0(int a1, wchar2_t* a2, ...);
-int nox_xxx_printToAll_4D9FD0(char a1, wchar2_t* a2, ...);
 int nox_xxx_netInformTextMsg_4DA0F0(int a1, int a2, int* a3);
 int nox_xxx_netInformTextMsg2_4DA180(int a1, uint8_t* a2);
 int nox_xxx_netPrintLineToAll_4DA390(const char* a1);

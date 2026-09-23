@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "GAME4_3.h"
-#include "noxstring.h"
 extern uint32_t dword_5d4594_251572;
 extern uint32_t dword_5d4594_2489436;
 extern uint32_t dword_5d4594_3835356;
@@ -38,7 +37,7 @@ func selectBorderName(name *C.char) bool {
 	C.dword_5d4594_2489436 = 0
 	// Only the sentinel is case-insensitive; preserve the shared C locale
 	// comparator rather than applying Unicode folding to border names.
-	if C.nox_strcmpi((*C.char)(unsafe.Pointer(alloc.InternCString("NONE"))), name) == 0 {
+	if textCompareNarrow((*byte)(unsafe.Pointer(alloc.InternCString("NONE"))), (*byte)(unsafe.Pointer(name))) == 0 {
 		C.dword_5d4594_3835356 = 255
 		return true
 	}

@@ -5,7 +5,6 @@ package legacy
 #include "GAME1_1.h"
 #include "noxstring.h"
 // Adapter to the live production variadic formatter.
-static int bookFormatRank(wchar2_t* dst, wchar2_t* fmt, int rank) { return nox_swprintf(dst, fmt, rank); }
 */
 import "C"
 import (
@@ -27,7 +26,7 @@ func bookRankText(rank uint32) string {
 }
 func bookFormatInt(format string, number int) string {
 	var dst [256]uint16
-	C.bookFormatRank((*C.wchar2_t)(unsafe.Pointer(&dst[0])), internWStr(format), C.int(number))
+	textFormatBuffer(dst[:], (*uint16)(unsafe.Pointer(internWStr(format))), textFormatWord(uint32(number)))
 	return alloc.GoString16(&dst[0])
 }
 func bookCreatureName(id int) string {

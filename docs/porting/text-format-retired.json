@@ -1,0 +1,35 @@
+{
+  "retired": [
+    "_nox_wcsicmp",
+    "compatFindClose",
+    "compatFindFirstFileA",
+    "compatFindNextFileA",
+    "nox_fs_fprintf",
+    "nox_gameplayTextAll",
+    "nox_gameplayTextLine",
+    "nox_itoa",
+    "nox_itow",
+    "nox_sprintf",
+    "nox_strcmpi",
+    "nox_swprintf",
+    "nox_vsnprintf",
+    "nox_vsnwprintf",
+    "nox_vsprintf",
+    "nox_vswprintf",
+    "nox_wcscat",
+    "nox_wcschr",
+    "nox_wcscmp",
+    "nox_wcscpy",
+    "nox_wcslen",
+    "nox_wcsncpy",
+    "nox_wcsspn",
+    "nox_wcstok",
+    "nox_wcstol",
+    "nox_xxx_netSendLineMessage_4D9EB0",
+    "nox_xxx_printToAll_4D9FD0",
+    "nox_gui_console_Printf_450C00"
+  ],
+  "relocated": [
+    "nox_list_item_t nox_common_maplist = {0};"
+  ]
+}

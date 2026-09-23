@@ -8,7 +8,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_2.h"
 #include "common__strman.h"
-static void populationPrint(wchar2_t* text) { nox_xxx_printToAll_4D9FD0(0,text); }
 */
 import "C"
 import (
@@ -131,7 +130,7 @@ func mapPopulationFinish(cfg uint32) {
 		defer freeFile()
 		for line := 848; line <= 850; line++ {
 			text := C.nox_strman_loadString_40F1D0((*C.char)(unsafe.Pointer(name)), nil, (*C.char)(unsafe.Pointer(file)), C.int(line))
-			C.populationPrint(text)
+			textFormatAll(0, (*uint16)(unsafe.Pointer(text)))
 		}
 	}
 	for p := mapPopulationStart(); p != 0; p = *populationWord(p, 64) {

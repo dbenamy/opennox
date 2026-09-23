@@ -5,9 +5,6 @@ package legacy
 #include "GAME1_1.h"
 #include "noxstring.h"
 // Adapt the existing variadic formatter; item selection and assembly live in Go.
-static void tooltipFormatMissing(wchar2_t* dst, wchar2_t* format, char* name) {
- nox_swprintf(dst, format, name);
-}
 */
 import "C"
 
@@ -112,7 +109,7 @@ func uiItemTooltip(dr *client.Drawable) *uint16 {
 		def = GetServer().S().Modif.Nox_xxx_equipClothFindDefByTT413270(int(dr.TypeIDVal))
 	}
 	if def == nil {
-		C.tooltipFormatMissing((*C.wchar2_t)(unsafe.Pointer(&dst[0])), (*C.wchar2_t)(unsafe.Pointer(tooltipString("NoArmsInfo"))), nox_get_thing_name(int(dr.TypeIDVal)))
+		textFormatBuffer(dst, tooltipString("NoArmsInfo"), textFormatPointer(unsafe.Pointer(nox_get_thing_name(int(dr.TypeIDVal)))))
 		return &dst[0]
 	}
 	var mods [4]*uint16

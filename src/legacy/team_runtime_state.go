@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME2.h"
-*/
-import "C"
-
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/server"
@@ -115,7 +109,7 @@ func teamRuntimeAvailable() *server.Team {
 func teamRuntimeFind(name *uint16) *server.Team {
 	s := GetServer().S()
 	for t := s.Teams.First(); t != nil; t = s.Teams.Next(t) {
-		if C._nox_wcsicmp((*C.wchar2_t)(t.C()), (*C.wchar2_t)(unsafe.Pointer(name))) == 0 {
+		if textCompareWide((*uint16)(t.C()), name) == 0 {
 			return t
 		}
 	}

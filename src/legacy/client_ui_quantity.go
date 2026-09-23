@@ -75,7 +75,7 @@ func uiAmountMouse(w *gui.Window, event int, a, b uintptr) int {
 }
 func uiAmountCount() uint32 {
 	w := uiInventoryWindowValue(uint32(C.dword_5d4594_1319232))
-	return uint32(C.nox_wcstol((*C.wchar2_t)(uiWindowText(w)), nil, 10))
+	return uint32(textDecimal((*uint16)(unsafe.Pointer(uiWindowText(w)))))
 }
 func uiAmountCallback(off uintptr) {
 	count := uiAmountCount()

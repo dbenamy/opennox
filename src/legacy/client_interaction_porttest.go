@@ -6,9 +6,6 @@ package legacy
 #include "defs.h"
 #include "client__gui__guicon.h"
 #include <stdint.h>
-static int port_test_interaction_console(wchar2_t* format, wchar2_t* wide, char* narrow, int number) {
-	return nox_gui_console_Printf_450C00(NOX_CONSOLE_RED, format, wide, narrow, number);
-}
 */
 import "C"
 import "unsafe"
@@ -354,5 +351,5 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 }
 
 func PortTestClientInteractionConsole(format, wide *uint16, narrow *byte, number int32) int {
-	return int(C.port_test_interaction_console((*C.wchar2_t)(unsafe.Pointer(format)), (*C.wchar2_t)(unsafe.Pointer(wide)), (*C.char)(unsafe.Pointer(narrow)), C.int(number)))
+	return textFormatConsole(byte(C.NOX_CONSOLE_RED), format, textFormatPointer(unsafe.Pointer(wide)), textFormatPointer(unsafe.Pointer(narrow)), textFormatWord(uint32(number)))
 }

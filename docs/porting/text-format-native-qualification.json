@@ -1,0 +1,145 @@
+{
+  "status": "qualified native formatting/scalars/audio directory",
+  "baseline_revision": "d443c297",
+  "baseline": "text-format-c-qualification.json",
+  "retired_c_interfaces": 28,
+  "captured_cases": 668876,
+  "captures": 8,
+  "targets": {
+    "native-default3": {
+      "roots": 375,
+      "contract_roots": 8,
+      "native_consumer_roots": 2,
+      "captures": 8,
+      "skips": 0,
+      "wall_seconds": 377.90863472712226
+    },
+    "native-server1": {
+      "roots": 373,
+      "contract_roots": 8,
+      "native_consumer_roots": 2,
+      "captures": 8,
+      "skips": 0,
+      "wall_seconds": 372.35598171083257
+    },
+    "native-highres1": {
+      "roots": 375,
+      "contract_roots": 8,
+      "native_consumer_roots": 2,
+      "captures": 8,
+      "skips": 0,
+      "wall_seconds": 195.10728982207365
+    }
+  },
+  "source_manifest_sha256": "3524ac987bd4ceaa7fa6806fc59bd3f8e888c360deb5f2f8b3caaf322e244238",
+  "production_c": {
+    "files": 8,
+    "lines": 635,
+    "change": -584,
+    "test_reference_lines": 0
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.404616074869409,
+        "sha256": "5ea5a14455b978f3b9afe7181222067ec7d22136cdf11fcee8a9a62d5d6249eb",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.052042410010472,
+        "sha256": "d0bc9e67e6edd05997848d725dda920fb95482566ed7924aef57a7fb10ac5b60",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 71.37881404696964,
+        "sha256": "990cbdc296419998cf27ee5f757b7fec362d6906b5776bb1d606ba61b37ba557",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "text-format-native-save": {
+        "exit": 0,
+        "wall_seconds": 46.16538124112412,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.64930556202307,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "5ea5a14455b978f3b9afe7181222067ec7d22136cdf11fcee8a9a62d5d6249eb",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-final-formatting/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/text-format-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native custom formatter, scalar strings and actual audio directory caller",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "81b5c318177c2c3e8cd537866e845be3e8179ff78e21813cc87ce57794de5ca6"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 59.27621419285424,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    },
+    "preflight_gameplay": {
+      "exit": 0,
+      "process_exit": 0,
+      "elapsed": 74.52874869992957,
+      "capture": false,
+      "godebug": ",randautoseed=0",
+      "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+      "binary_sha256": "5ea5a14455b978f3b9afe7181222067ec7d22136cdf11fcee8a9a62d5d6249eb",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "-s",
+        "-screen 0 1280x960x24 -nolisten tcp",
+        "/root/src/opennox/build/port-final-formatting/native-preflight2/opennox",
+        "-data",
+        "/root/src/opennox/build/baseline/runs/text-format-native/data",
+        "-window",
+        "-pprof",
+        "127.0.0.1:0"
+      ],
+      "display_implementation": "Native formatting, scalar strings and audio directory",
+      "isolated_network": false,
+      "removed_maps": 0
+    }
+  }
+}

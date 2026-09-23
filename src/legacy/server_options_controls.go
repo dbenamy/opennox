@@ -97,7 +97,7 @@ func serverOptionsRead(data []byte) uintptr {
 		if s == "" {
 			continue
 		}
-		n := int(C.nox_wcstol((*C.wchar2_t)(unsafe.Pointer(alloc.InternCString16(s))), nil, 10))
+		n := int(textDecimal((*uint16)(unsafe.Pointer(alloc.InternCString16(s)))))
 		if v.dst == 54 {
 			binary.LittleEndian.PutUint16(data[54:], uint16(n))
 		} else {

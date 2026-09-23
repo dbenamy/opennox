@@ -6,9 +6,6 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4_1.h"
 #include "server__object__health.h"
-static void resourceGoldLine(int unit, wchar2_t* text, int gold) {
- nox_xxx_netSendLineMessage_4D9EB0(unit, text, gold);
-}
 */
 import "C"
 
@@ -360,7 +357,7 @@ func resourceGoldPickup(u, item *server.Object, flags int) bool {
 		resourceAddGold(u, *gold)
 		GetServer().DelayedDelete(item)
 		text := GetServer().S().Strings().GetStringInFile(strman.ID("GoldPickup"), `C:\NoxPost\src\Server\Object\pickdrop\pickup.c`)
-		C.resourceGoldLine(C.int(uintptr(u.CObj())), (*C.wchar2_t)(unsafe.Pointer(internWStr(text))), C.int(*gold))
+		textFormatLine(u, (*uint16)(unsafe.Pointer(internWStr(text))), textFormatWord(uint32(*gold)))
 	} else if !Nox_xxx_pickupDefault_4F31E0(u, item, flags, 0) {
 		return false
 	}

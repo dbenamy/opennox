@@ -44,32 +44,6 @@ var (
 	Sub_43ECB0 func(a1 unsafe.Pointer) int
 )
 
-type _WIN32_FIND_DATAA = C.struct__WIN32_FIND_DATAA
-type WIN32_FIND_DATAA struct {
-	FileAttributes     uint32
-	ftCreationTime     C.FILETIME
-	ftLastAccessTime   C.FILETIME
-	ftLastWriteTime    C.FILETIME
-	nFileSizeHigh      uint32
-	nFileSizeLow       uint32
-	dwReserved0        uint32
-	dwReserved1        uint32
-	cFileName          [C.MAX_PATH]byte
-	cAlternateFileName [14]byte
-}
-
-func FindFirstFileA(a1 *byte, f *WIN32_FIND_DATAA) uintptr {
-	return uintptr(unsafe.Pointer(C.FindFirstFileA((*C.char)(unsafe.Pointer(a1)), (*_WIN32_FIND_DATAA)(unsafe.Pointer(f)))))
-}
-
-func FindNextFileA(h uintptr, f *WIN32_FIND_DATAA) int {
-	return int(C.FindNextFileA(C.HANDLE(unsafe.Pointer(h)), (*_WIN32_FIND_DATAA)(unsafe.Pointer(f))))
-}
-
-func FindClose(h uintptr) {
-	C.FindClose(C.HANDLE(unsafe.Pointer(h)))
-}
-
 var _ = [1]struct{}{}[32-unsafe.Sizeof(AudioSample{})]
 
 type AudioSample struct {

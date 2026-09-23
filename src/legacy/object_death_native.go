@@ -6,9 +6,6 @@ package legacy
 #include "GAME3_3.h"
 #include "server__object__objutil.h"
 extern uint32_t dword_5d4594_2491704;
-static void deathLineMessage(int u, wchar2_t* format, wchar2_t* name) {
- nox_xxx_netSendLineMessage_4D9EB0(u,format,name);
-}
 */
 import "C"
 import (
@@ -124,7 +121,7 @@ func objectDeathArmor(u *server.Object) {
 	}
 	format := internWStr(core.Strings().GetStringInFile(strman.ID(key), "Die.c"))
 	name := (*C.wchar2_t)(unsafe.Pointer(unitItemName(u)))
-	C.deathLineMessage(C.int(uintptr(unsafe.Pointer(holder))), format, name)
+	textFormatLine((*server.Object)(unsafe.Pointer(holder)), (*uint16)(unsafe.Pointer(format)), textFormatPointer(unsafe.Pointer(name)))
 	core.Audio.EventPos(id, *pos, 0, 0)
 	GetServer().DelayedDelete(u)
 }
@@ -151,7 +148,7 @@ func objectDeathWeapon(u *server.Object) {
 		name = internWStr(core.Armor.Sub_415B60(u))
 	}
 	format := internWStr(core.Strings().GetStringInFile(strman.ID(key), "Die.c"))
-	C.deathLineMessage(C.int(uintptr(unsafe.Pointer(holder))), format, name)
+	textFormatLine((*server.Object)(unsafe.Pointer(holder)), (*uint16)(unsafe.Pointer(format)), textFormatPointer(unsafe.Pointer(name)))
 	if id != 0 {
 		core.Audio.EventPos(id, *pos, 0, 0)
 	}

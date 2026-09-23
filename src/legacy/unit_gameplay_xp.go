@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "common__gamemech__pausefx.h"
-static void unit_xp_notice(nox_object_t* u, wchar2_t* text, unsigned int value) {
- nox_xxx_netSendLineMessage_4D9EB0((int)u,text,value);
-}
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/strman"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -19,7 +10,7 @@ import (
 
 func unitExperienceNotice(u *server.Object, key, file string, amount float32) {
 	text := GetServer().S().Strings().GetStringInFile(strman.ID(key), file)
-	C.unit_xp_notice(asObjectC(u), internWStr(text), C.uint32_t(uint32(int64(amount))))
+	textFormatLine(u, (*uint16)(unsafe.Pointer(internWStr(text))), textFormatWord(uint32(int64(amount))))
 }
 func unitExperienceLevel(u *server.Object) {
 	if Nox_xxx_gameGet_4DB1B0() && Sub_4DB1C0() != nil {

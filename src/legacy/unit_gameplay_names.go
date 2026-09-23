@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "noxstring.h"
-static void unit_name_missing(wchar2_t* dst, wchar2_t* format, char* name) {
- nox_swprintf(dst,format,name);
-}
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/strman"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -48,7 +39,7 @@ func unitItemName(u *server.Object) *uint16 {
 		base = core.Modif.Nox_xxx_equipClothFindDefByTT413270(int(u.TypeInd))
 	}
 	if base == nil {
-		C.unit_name_missing((*C.wchar2_t)(unsafe.Pointer(&dst[0])), (*C.wchar2_t)(unsafe.Pointer(lookup("NoInfo"))), internCStr(core.Types.ByInd(int(u.TypeInd)).ID()))
+		textFormatBuffer(dst, lookup("NoInfo"), textFormatPointer(unsafe.Pointer(internCStr(core.Types.ByInd(int(u.TypeInd)).ID()))))
 		return &dst[0]
 	}
 	var out []uint16

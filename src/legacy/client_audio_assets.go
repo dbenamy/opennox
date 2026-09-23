@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-#include "noxstring.h"
 extern uint32_t dword_5d4594_1045432;
 extern uint32_t dword_5d4594_1045420;
 */
@@ -36,7 +35,7 @@ func audioAssetSample(catalog unsafe.Pointer, key *byte) int32 {
 	for lo < hi {
 		mid := (lo + hi) / 2
 		p := unsafe.Add(base, 36*uintptr(mid))
-		cmp := int(C.nox_strcmpi((*C.char)(unsafe.Pointer(key)), (*C.char)(p)))
+		cmp := int(textCompareNarrow(key, (*byte)(p)))
 		if cmp < 0 {
 			hi = mid
 		} else if cmp > 0 {

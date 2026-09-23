@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "GAME4_1.h"
-#include "noxstring.h"
 extern uint32_t dword_5d4594_3835348;
 */
 import "C"
@@ -28,12 +27,12 @@ func selectTileName(name *C.char) bool {
 	tiles := tileDefinitionsAll()
 	for i := range tiles {
 		p := &tiles[i]
-		if C.nox_strcmpi((*C.char)(unsafe.Pointer(&p.NameBuf[0])), name) == 0 {
+		if textCompareNarrow((*byte)(unsafe.Pointer(&p.NameBuf[0])), (*byte)(unsafe.Pointer(name))) == 0 {
 			*selected = uint32(i)
 			found = true
 		}
 	}
-	if C.nox_strcmpi(name, (*C.char)(unsafe.Pointer(alloc.InternCString("NONE")))) == 0 {
+	if textCompareNarrow((*byte)(unsafe.Pointer(name)), (*byte)(unsafe.Pointer(alloc.InternCString("NONE")))) == 0 {
 		*selected = 255
 		return true
 	}

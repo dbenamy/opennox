@@ -14,6 +14,12 @@
 
 ## Current status
 
+Custom text formatting, scalar strings and the audio catalog directory check are
+Go. The 375/373/375 affected roots pass in default/server/highres, along with 668,876 frozen
+cases and native consumer contracts. Production/ABI, known-suite comparison,
+headless gameplay and save/load pass. This removes 584 C lines and 28 interfaces.
+See [TEXT_FORMAT.md](docs/porting/TEXT_FORMAT.md).
+
 Extension player lookup, weapon cycling, trap drop, flag index and server listing
 are Go. All 173 affected tests pass in default/server/highres, and 21,135 cases
 match the corrected C baseline. Production/ABI, known-suite comparison, headless
@@ -48,8 +54,8 @@ unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skip
 and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
 comparison, headless gameplay and save/load checks pass.
 
-C remaining is **1,219 physical lines in 12 files**, zero reference C. See
-[the native qualification](docs/porting/server-text-native-qualification.json).
+C remaining is **635 physical lines in 8 files**, zero reference C. See
+[the native qualification](docs/porting/text-format-native-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in

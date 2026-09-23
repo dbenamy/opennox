@@ -13,16 +13,6 @@ import (
 	"unsafe"
 )
 
-//export nox_gameplayTextLine
-func nox_gameplayTextLine(u C.int, text *C.ushort) C.int {
-	return C.int(gameplayTextLine((*server.Object)(unsafe.Pointer(uintptr(uint32(u)))), gameplayTextUnits((*uint16)(unsafe.Pointer(text)))))
-}
-
-//export nox_gameplayTextAll
-func nox_gameplayTextAll(flags C.char, text *C.ushort) C.int {
-	return C.int(gameplayTextAll(byte(flags), gameplayTextUnits((*uint16)(unsafe.Pointer(text)))))
-}
-
 //export nox_xxx_netInformTextMsg_4DA0F0
 func nox_xxx_netInformTextMsg_4DA0F0(to, kind C.int, data *C.int) C.int {
 	return C.int(gameplayTextInformation(int(to), int(kind), unsafe.Pointer(data)))

@@ -2270,3 +2270,13 @@ storage types. Keep the seven registered no-op callback identities. Define flag
 indices outside 0..31 as zero (the UI uses 1..5; the old negative extreme domain
 could divide by zero). No C algorithm is retained for these tests. See
 [the qualification](server-text-native-qualification.json).
+
+
+Formatting/scalar/audio-directory conversion is qualified: 375/373/375 affected roots across
+default/server/highres, 668,876 frozen cases, production/ABI, exact known-suite comparison and
+headless gameplay/save-load. Preserve the custom formatter and literal processing;
+use Go-owned temporary text and terminate fixed buffers at actual capacity rather
+than reproduce out-of-bounds C writes. Port only live base10 decimal semantics and
+exact normalized directory presence; retire unreachable glob/string APIs. Keep
+shared catalog storage unchanged. Tagged raw words become pointers only for string
+arguments. See [TEXT_FORMAT.md](TEXT_FORMAT.md) for evidence and delegation lessons.

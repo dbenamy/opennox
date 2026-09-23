@@ -34,7 +34,6 @@ FILE* nox_fs_create_text(char* path);
 FILE* nox_fs_open_rw(char* path);
 
 int nox_fs_fputs(FILE* f, char* str);
-int nox_fs_fprintf(FILE* f, const char* format, ...);
 
 int nox_fs_fseek(FILE* f, long off, int mode);
 long nox_fs_ftell(FILE* f);

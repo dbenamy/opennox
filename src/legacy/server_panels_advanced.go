@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_2.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	"fmt"
@@ -21,7 +16,7 @@ var serverPanelsRefreshCallbacks = [4]func() int{nil, serverPanelsSpellRefresh, 
 
 func serverPanelsSettings() []byte { return unsafe.Slice(memmap.PtrUint8(0x5D4594, 371516), 184) }
 func serverPanelsParseNumber(text string) int {
-	return int(C.nox_wcstol((*C.wchar2_t)(unsafe.Pointer(alloc.InternCString16(text))), nil, 10))
+	return int(textDecimal((*uint16)(unsafe.Pointer(alloc.InternCString16(text)))))
 }
 func serverPanelsAdvancedOpen(settings unsafe.Pointer) int {
 	w := Nox_new_window_from_file("advanced.wnd", serverPanelsAdvancedProc)

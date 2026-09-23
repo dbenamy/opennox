@@ -157,7 +157,7 @@ func bookCompare(a, b uint32) int {
 		return 0
 	}
 	// Keep the live locale/code-unit comparator; Go Unicode folding differs.
-	return int(C._nox_wcsicmp(x, y))
+	return int(textCompareWide((*uint16)(unsafe.Pointer(x)), (*uint16)(unsafe.Pointer(y))))
 }
 func bookSetColor() int {
 	*bookWord(1046880) = noxcolor.RGB5551Color(15, 15, 15).Color32()

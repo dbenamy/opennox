@@ -1,16 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-#include "defs.h"
-#include "GAME1.h"
-#include "GAME3_2.h"
-#include "GAME4_3.h"
-#include "server__script__file.h"
-#include "noxstring.h"
-
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -19,7 +8,7 @@ import (
 
 func prefabGlobal(i int) *uint32 { return &prefabState[i] }
 func prefabCompareNames(a, b uint32) int {
-	return int(C.nox_strcmpi((*C.char)(mapRoomPointer(a)), (*C.char)(mapRoomPointer(b))))
+	return textCompareNarrow((*byte)(mapRoomPointer(a)), (*byte)(mapRoomPointer(b)))
 }
 func prefabTileDefinitionCount() int    { return int(worldTileDefinitionCount) }
 func prefabSetBounds(bounds *[8]uint32) { prefabScriptBounds(bounds) }

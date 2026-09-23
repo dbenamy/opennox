@@ -12,12 +12,6 @@ extern uint32_t dword_5d4594_2386548;
 extern uint32_t dword_5d4594_2386552;
 extern uint32_t dword_5d4594_2386560;
 extern void* nox_alloc_tradeItems_2386496;
-static int tradeSendLine(int unit, wchar2_t* text) {
- return nox_xxx_netSendLineMessage_4D9EB0(unit, text);
-}
-static void tradeFormatName(wchar2_t* dst, wchar2_t* format, wchar2_t* name) {
- nox_swprintf(dst, format, name);
-}
 */
 import "C"
 
@@ -38,12 +32,12 @@ func tradeString(key string) *C.wchar2_t {
 	return (*C.wchar2_t)(unsafe.Pointer(internWStr(GetServer().S().Strings().GetStringInFile(strman.ID(key), tradeSource))))
 }
 func tradeLine(u *server.Object, key string) uint32 {
-	return uint32(C.tradeSendLine(C.int(uintptr(u.CObj())), tradeString(key)))
+	return uint32(textFormatLine(u, (*uint16)(unsafe.Pointer(tradeString(key)))))
 }
 func tradeNamedLine(u *server.Object, key string, name *uint16) {
 	var text [128]uint16
-	C.tradeFormatName((*C.wchar2_t)(unsafe.Pointer(&text[0])), tradeString(key), (*C.wchar2_t)(unsafe.Pointer(name)))
-	C.tradeSendLine(C.int(uintptr(u.CObj())), (*C.wchar2_t)(unsafe.Pointer(&text[0])))
+	textFormatBuffer(text[:], (*uint16)(unsafe.Pointer(tradeString(key))), textFormatPointer(unsafe.Pointer(name)))
+	textFormatLine(u, &text[0])
 }
 func tradeRemoveStock(s *shopSession, u *server.Object) uint32 {
 	for n := s.Stock; n != nil; n = n.Next {

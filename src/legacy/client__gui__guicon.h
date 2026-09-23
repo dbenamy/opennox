@@ -30,30 +30,4 @@ int nox_gui_console_flagXxx_451410();
 int nox_gui_console_Print_450B90(unsigned char cl, wchar2_t* str);
 void nox_gui_console_PrintOrError_450C30(unsigned char cl, wchar2_t* str);
 
-static int nox_gui_console_Printf_450C00(unsigned char cl, wchar2_t* fmt, ...) {
-	wchar2_t local[512];
-	wchar2_t* text = local;
-	va_list va, measure;
-	va_start(va, fmt);
-	va_copy(measure, va);
-	int length = nox_vsnwprintf(local, 512, fmt, measure);
-	va_end(measure);
-	if (length < 0 || (size_t)length > SIZE_MAX / sizeof(*text) - 1) {
-		va_end(va);
-		return 0;
-	}
-	if (length >= 512) {
-		text = malloc(((size_t)length + 1) * sizeof(*text));
-		if (!text) {
-			va_end(va);
-			return 0;
-		}
-		nox_vsnwprintf(text, (size_t)length + 1, fmt, va);
-	}
-	va_end(va);
-	int result = nox_gui_console_Print_450B90(cl, text);
-	if (text != local) free(text);
-	return result;
-}
-
 #endif // NOX_PORT_CLIENT_GUI_GUICON

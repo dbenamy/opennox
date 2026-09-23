@@ -15,9 +15,6 @@ package legacy
 extern unsigned int dword_5d4594_2650652;
 extern unsigned int nox_player_netCode_85319C;
 void nox_xxx_WideScreenDo_515240(bool enable);
-static void nox_xxx_printToAll_4D9FD0_go(int a1, wchar2_t* str) {
-	nox_xxx_printToAll_4D9FD0(a1, str);
-}
 
 */
 import "C"
@@ -174,7 +171,7 @@ func Nox_xxx_netMsgFadeBeginPlayer(ind int, dir int, a3 int) {
 func PrintToPlayers(text string) {
 	cstr, free := CWString(text)
 	defer free()
-	C.nox_xxx_printToAll_4D9FD0_go(0, cstr)
+	textFormatAll(0, (*uint16)(unsafe.Pointer(cstr)))
 }
 
 func ClientPlayerNetCode() int {

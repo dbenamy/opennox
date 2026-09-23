@@ -5,22 +5,11 @@ package legacy
 */
 import "C"
 import (
-	"strconv"
 	"time"
-	"unsafe"
 
 	"github.com/opennox/libs/env"
 	"github.com/opennox/libs/platform"
 )
-
-//export nox_itoa
-func nox_itoa(val C.int, s *C.char, radix int) *C.char {
-	str := strconv.FormatInt(int64(val), radix)
-	buf := unsafe.Slice((*byte)(unsafe.Pointer(s)), len(str)+1)
-	i := copy(buf, str)
-	buf[i] = 0
-	return s
-}
 
 //export noxGetLocalTime
 func noxGetLocalTime(p *C.noxSYSTEMTIME) {

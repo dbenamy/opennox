@@ -454,3 +454,6 @@ uint32_t nox_color_yellow_2589772 = 0;
 uint32_t nox_color_violet_2598268 = 0;
 uint32_t nox_color_black_2650656 = 0;
 uint32_t nox_color_orange_2614256 = 0;
+
+// Shared catalog head; catalog algorithms are native.
+nox_list_item_t nox_common_maplist = {0};

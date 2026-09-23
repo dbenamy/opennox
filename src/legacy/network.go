@@ -19,9 +19,6 @@ extern uint32_t dword_5d4594_1200832;
 int sub_457140(int a1, wchar2_t* a2);
 int sub_456DF0(int a1);
 void* nox_xxx_spriteGetMB_476F80();
-static int nox_xxx_netSendLineMessage_go(nox_object_t* a1, wchar2_t* str) {
-	return nox_xxx_netSendLineMessage_4D9EB0(a1, str);
-}
 
 
 */
@@ -141,7 +138,7 @@ func Nox_xxx_netSendLineMessage_4D9EB0(u *server.Object, s string) bool {
 	_ = netmsg.MSG_TEXT_MESSAGE
 	cstr, free := CWString(s)
 	defer free()
-	return C.nox_xxx_netSendLineMessage_go(asObjectC(u), cstr) != 0
+	return textFormatLine(u, (*uint16)(unsafe.Pointer(cstr))) != 0
 }
 
 func Nox_server_makeServerInfoPacket_554040(src, dst []byte) int {
