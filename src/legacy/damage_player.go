@@ -106,7 +106,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 			*equipmentWord(ud, flagOff) = 1
 			*equipmentWord(ud, kindOff) = uint32(actual.TypeInd)
 		}
-		front := C.nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&actual.PrevPos)))&1 != 0
+		front := nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&actual.PrevPos)))&1 != 0
 		if kind != 15 && eligible && front {
 			state := *(*byte)(unsafe.Add(ud, 88))
 			shield := (player && state == 16 || !player && monsterControlHead(u) == 21) && armor&0x3000000 != 0

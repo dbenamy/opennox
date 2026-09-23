@@ -84,7 +84,7 @@ func controlDropBall(u *server.Object) int32 {
 			continue
 		}
 		it.ObjFlags &^= 0x40
-		C.nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&u.PosVec)), (*C.nox_object_t)(it.CObj()), 100)
+		nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&u.PosVec)), (*C.nox_object_t)(it.CObj()), 100)
 		*controlPtr(it.CObj(), 520) = nil
 		GetServer().S().ObjSetOwner(nil, it)
 		C.nox_xxx_aud_501960(926, (*C.nox_object_t)(u.CObj()), 0, 0)
@@ -97,7 +97,7 @@ func controlNearStart(u *server.Object, out *types.Pointf) int32 {
 	*out = u.PosVec
 	var result C.int
 	for i := 0; i < 32; i++ {
-		C.sub_4ED970(60, (*C.float2)(unsafe.Pointer(&u.PosVec)), (*C.float2)(unsafe.Pointer(out)))
+		sub_4ED970(60, (*C.float2)(unsafe.Pointer(&u.PosVec)), (*C.float2)(unsafe.Pointer(out)))
 		result = C.int(bool2int(worldTileWater(*out)))
 		if result == 0 {
 			break
@@ -180,6 +180,6 @@ func controlFollowEnemy(u *server.Object) int32 {
 	if it.ObjFlags&0x20 != 0 || it.ObjClass&2 != 0 || it.ObjClass&4 != 0 && *controlByte(controlPlayer(it), 3680)&1 != 0 {
 		return 0
 	}
-	C.nox_xxx_playerCameraFollow_4E6060((*C.nox_object_t)(u.CObj()), (*C.nox_object_t)(it.CObj()))
+	nox_xxx_playerCameraFollow_4E6060((*C.nox_object_t)(u.CObj()), (*C.nox_object_t)(it.CObj()))
 	return 1
 }

@@ -168,7 +168,7 @@ func Nox_xxx_playerConfusedGetDirection_4F7A40(a1 *server.Object) server.Dir16 {
 	return server.Dir16(controlConfusedDirection(a1))
 }
 func Nox_xxx_playerAttack_538960(a1 *server.Object) int {
-	return int(C.nox_xxx_playerAttack_538960(asObjectC(a1)))
+	return int(nox_xxx_playerAttack_538960(asObjectC(a1)))
 }
 func Nox_xxx_playerRespawn_4F7EF0(a1 *server.Object) {
 	controlRespawn(a1)
@@ -204,7 +204,7 @@ func Nox_xxx_playerDoSchedSpellQueue_4FB1D0(a1 *server.Object, a2 *server.Object
 	controlScheduledSpell(a1, a2, true)
 }
 func Sub_4E7540(a1 *server.Object, a2 *server.Object) {
-	C.sub_4E7540(asObjectC(a1), asObjectC(a2))
+	sub_4E7540(asObjectC(a1), asObjectC(a2))
 }
 func Nox_xxx_playerCheckStrength_4F3180(a1 *server.Object, a2 *server.Object) bool {
 	return equipmentCheckStrength(a1, a2)

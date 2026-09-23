@@ -116,7 +116,7 @@ func combatChoose(u, t *server.Object) {
 		return
 	}
 	if monsterCanShoot(u) {
-		if monsterCanMelee(u) && float64(C.nox_xxx_calcDistance_4E6C00(asObjectC(u), asObjectC(t))) < float64(u.UpdateDataMonster().MonsterDef.MissileAttackRange212)*.5 {
+		if monsterCanMelee(u) && float64(nox_xxx_calcDistance_4E6C00(asObjectC(u), asObjectC(t))) < float64(u.UpdateDataMonster().MonsterDef.MissileAttackRange212)*.5 {
 			combatMeleeChain(u, t)
 		} else {
 			combatMissileChain(u, t)
@@ -264,11 +264,11 @@ func combatMelee(u *server.Object) {
 	d := ud.MonsterDef
 	if u.SubClass()&0x10 != 0 {
 		if ud.StatusFlags&0x20000 != 0 {
-			C.nox_xxx_mobMorphToPlayer_4FAAF0((*C.uint32_t)(u.CObj()))
+			nox_xxx_mobMorphToPlayer_4FAAF0((*C.uint32_t)(u.CObj()))
 		}
-		r := C.nox_xxx_playerAttack_538960(asObjectC(u))
+		r := nox_xxx_playerAttack_538960(asObjectC(u))
 		if ud.StatusFlags&0x20000 != 0 {
-			C.nox_xxx_mobMorphFromPlayer_4FAAC0((*C.uint32_t)(u.CObj()))
+			nox_xxx_mobMorphFromPlayer_4FAAC0((*C.uint32_t)(u.CObj()))
 		}
 		if r == 0 {
 			u.MonsterPopAction()
@@ -308,7 +308,7 @@ func combatMissileStart(u *server.Object) {
 func combatMissile(u *server.Object) {
 	ud := u.UpdateDataMonster()
 	if u.SubClass()&0x10 != 0 {
-		if C.nox_xxx_playerAttack_538960(asObjectC(u)) == 0 {
+		if nox_xxx_playerAttack_538960(asObjectC(u)) == 0 {
 			u.MonsterPopAction()
 		}
 		return

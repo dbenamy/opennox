@@ -146,7 +146,7 @@ func mapPopulationFinish(cfg uint32) {
 					name = "CrystalBlue"
 				}
 				str, free := alloc.CString(name)
-				C.nox_xxx_tileGetDefByName_51D4D0((*C.char)(unsafe.Pointer(str)))
+				nox_xxx_tileGetDefByName_51D4D0((*C.char)(unsafe.Pointer(str)))
 				free()
 				mapPaintRect(mapRoomPointer(cfg), &e.Min, int32(int64((float64(e.Max.X)-float64(e.Min.X)+0.5)*0.030743772)), int32(int64((float64(e.Max.Y)-float64(e.Min.Y)+0.5)*0.030743772)))
 			}

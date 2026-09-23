@@ -186,12 +186,12 @@ func monsterHealSomeone(u *server.Object) bool {
 func monsterCastSpell(id int, u *server.Object, args *[3]uint32) {
 	d := u.UpdateDataMonster()
 	if d.StatusFlags&0x20000 != 0 {
-		C.nox_xxx_mobMorphToPlayer_4FAAF0((*C.uint32_t)(u.CObj()))
+		nox_xxx_mobMorphToPlayer_4FAAF0((*C.uint32_t)(u.CObj()))
 	}
 	monsterCalcDir(u, (*float32)(unsafe.Pointer(&args[1])))
 	Nox_xxx_castSpellByUser_4FDD20(id, u, unsafe.Pointer(args))
 	if d.StatusFlags&0x20000 != 0 {
-		C.nox_xxx_mobMorphFromPlayer_4FAAC0((*C.uint32_t)(u.CObj()))
+		nox_xxx_mobMorphFromPlayer_4FAAC0((*C.uint32_t)(u.CObj()))
 	}
 }
 func monsterActionCast(u *server.Object, mode int) {

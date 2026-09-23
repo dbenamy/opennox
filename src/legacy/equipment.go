@@ -139,7 +139,7 @@ func equipmentNPCSync(u, it *server.Object, value int) unsafe.Pointer {
 		*p &^= bits
 	}
 	if u.ObjClass&0x20400004 == 0 {
-		return unsafe.Pointer(C.sub_4E4500(asObjectC(u), 0x4000000, 1024, 1))
+		return unsafe.Pointer(sub_4E4500(asObjectC(u), 0x4000000, 1024, 1))
 	}
 	for i := 0; i < 32; i++ {
 		v := equipmentWord(u.CObj(), 560+i*4)
@@ -163,7 +163,7 @@ func equipmentDuplicate(u, it *server.Object) int {
 		return 0
 	}
 	for p := u.InvFirstItem; p != nil; p = p.InvNextItem {
-		if C.sub_4E7DE0(inventoryInt(p), asObjectC(it)) != 0 {
+		if sub_4E7DE0(inventoryInt(p), asObjectC(it)) != 0 {
 			return 1
 		}
 	}
@@ -260,7 +260,7 @@ func equipmentSecondary(u, it *server.Object) {
 		return
 	}
 	if it != nil && (!Nox_xxx_playerClassCanUseItem_57B3D0(it, u.UpdateDataPlayer().Player.PlayerClass()) || !equipmentCheckStrength(u, it)) {
-		C.nox_xxx_netSendSecondaryWeapon_4D9670(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), nil, 1)
+		nox_xxx_netSendSecondaryWeapon_4D9670(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), nil, 1)
 	}
 	*equipmentWord(u.UpdateData, 108) = uint32(uintptr(it.CObj()))
 }

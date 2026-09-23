@@ -49,7 +49,7 @@ func resourceSetHP(u *server.Object, amount uint16) uint32 {
 }
 func resourceInformOwner(u *server.Object) {
 	if u != nil && u.ObjOwner != nil && u.ObjOwner.ObjClass&4 != 0 {
-		C.nox_xxx_netReportUnitCurrentHP_4D8620(C.int(uint8(u.ObjOwner.UpdateDataPlayer().Player.PlayerInd)), (*C.uint32_t)(u.CObj()))
+		nox_xxx_netReportUnitCurrentHP_4D8620(C.int(uint8(u.ObjOwner.UpdateDataPlayer().Player.PlayerInd)), (*C.uint32_t)(u.CObj()))
 	}
 }
 func resourceAdjustHP(u *server.Object, dv int32) {

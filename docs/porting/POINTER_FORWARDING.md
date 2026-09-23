@@ -1,6 +1,6 @@
 # Direct Go pointer forwarding
 
-Planned scope: 74 calls across 36 existing Go wrappers and 36 caller files.
+Qualified scope: 74 calls across 36 existing Go wrappers and 36 caller files.
 Remove only the C selector prefix; arguments, casts, result handling and evaluation
 order stay unchanged. No new export retirements are selected in this batch.
 Standalone production/reference C stays zero lines/files; production C preamble
@@ -13,7 +13,7 @@ qualified revision `06bd85b6`, normalizing explicit Go/C aliases only. See the
 [signature inventory](pointer-forwarding-signatures.json). No selected function
 name has a macro definition. Independent reconstruction of Luna's patch matches
 all 74 intended prefix removals byte for byte; every touched file still uses C.
-The draft is not applied until the baseline passes.
+The reviewed draft was applied after the baseline passed.
 
 Primary read all 36 wrapper bodies. Object arguments and returned references keep
 the existing server owners. State-sync return pointers refer to object storage.
@@ -37,11 +37,15 @@ actual discovery and execution must agree in all three profiles.
 The separately invoked TestMapPopulationPrerequisiteProbe intentionally skips
 without a diagnostic selector; exclude that root and retain the prerequisite
 regression test, which exercises all four probes. No fixture expectations change.
-After conversion, the full combined 686/685/686 roots must pass without skips,
-then safe/static, fresh production/ABI, exact known full-suite comparison and
-headless creation/save-load checks. This is affected-owner coverage, not proof of
-every caller branch. Verify all 36 redundant C-call bridges are absent from all
-four new binaries while retaining required exports.
+All 686/685/686 combined roots pass default/server/highres without skips or
+changed expectations. Discovered names exactly match the union of baseline sets;
+runtime and discovery memory settings match the new baseline. Safe/static, four
+fresh production binaries/ABI checks, exact known-suite comparison (304 existing
+failure events; 17 pass/2 fail/32 skipped packages), headless creation and save/load
+pass. All 36 redundant C-call bridges are absent from all four binaries; required
+exports remain Go-backed and no PortTest symbols enter production. See
+[qualification evidence](pointer-forwarding-qualification.json). This is
+affected-owner coverage, not proof of every caller branch.
 
 ## Delegation and recovery
 
@@ -52,11 +56,11 @@ additions for AI main, generators/resources/effects. Keep mechanical drafts with
 Luna and final scope/coverage/lifetime decisions with the primary. No measured
 model cost or build-speed saving is claimed.
 
-Artifacts: build/port-pointer-forwarding. direct-calls.patch is unapplied;
+Artifacts: build/port-pointer-forwarding. direct-calls.patch is applied/CONSUMED;
 primary-review.md and patch-review.json record source review. All 196 additional contracts pass in each profile with no skips. Exact discovered
 names, source/runtime-environment identity and retained binary hashes pass. See
-[baseline evidence](pointer-forwarding-c-qualification.json). Native conversion
-and production qualification remain pending.
+[baseline evidence](pointer-forwarding-c-qualification.json). Native conversion and production qualification pass. The remaining pipeline,
+finalizer and scenario deduplication scripts are CONSUMED.
 
 The selected-test runner now separates discovery/build memory (1536MiB default,
 configurable) from the unchanged execution budget (768MiB here). Nine Python
@@ -71,3 +75,8 @@ provenance/link checks and host open-file verification. 400,569,409 raw bytes be
 in capture-archive-record.json. Use archive-captures.py --restore before historical
 finalizers; archival is CONSUMED. Assets, fixtures and binaries are preserved.
 Cleanup briefly overlapped the additional baseline; timings are not benchmarks.
+
+Luna also reviewed the applied diff against the exact candidate list and found no
+extra changes. Primary independently reconstructed the expected formatted source:
+74 calls on 73 edited lines across 36 files, with pointer expressions, casts,
+results and ordering preserved. No behavior correction was needed in this draft.

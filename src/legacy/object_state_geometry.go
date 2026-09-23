@@ -84,7 +84,7 @@ func stateTeleport(u *server.Object, p *types.Pointf) {
 }
 func stateLoot(u *server.Object, p *types.Pointf) {
 	off := uintptr(203080)
-	if !strings.HasPrefix(alloc.GoString((*byte)(unsafe.Pointer(C.nox_xxx_getUnitName_4E39D0(asObjectC(u))))), "Barrel") {
+	if !strings.HasPrefix(alloc.GoString((*byte)(unsafe.Pointer(nox_xxx_getUnitName_4E39D0(asObjectC(u))))), "Barrel") {
 		off = 203240
 	}
 	roll := uint32(nox_common_randomInt_415FA0(0, 99))
@@ -99,7 +99,7 @@ func stateLoot(u *server.Object, p *types.Pointf) {
 	for i := int32(0); i < int32(memmap.Uint32(0x587000, off+4)); i++ {
 		name := alloc.GoString((*byte)(*memmap.PtrPtr(0x587000, off)))
 		if it := GetServer().S().NewObjectByTypeID(name); it != nil {
-			C.sub_4ED970(35, (*C.float2)(unsafe.Pointer(p)), (*C.float2)(unsafe.Pointer(pos)))
+			sub_4ED970(35, (*C.float2)(unsafe.Pointer(p)), (*C.float2)(unsafe.Pointer(pos)))
 			GetServer().CreateObjectAt(it, nil, *pos)
 		}
 	}

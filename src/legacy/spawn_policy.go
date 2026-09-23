@@ -13,7 +13,7 @@ import (
 )
 
 func spawnPolicyDistance(a, b *server.Object) float64 {
-	return float64(C.nox_xxx_calcDistance_4E6C00(asObjectC(a), asObjectC(b)))
+	return float64(nox_xxx_calcDistance_4E6C00(asObjectC(a), asObjectC(b)))
 }
 func spawnPolicyView(p *server.Object) types.Rectf {
 	info := p.UpdateDataPlayer().Player

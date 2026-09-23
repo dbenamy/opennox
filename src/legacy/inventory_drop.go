@@ -34,7 +34,7 @@ func inventoryMessage(kind int, u *server.Object, value uint32) {
 	var data [10]byte
 	binary.LittleEndian.PutUint32(data[2:], u.NetCode)
 	binary.LittleEndian.PutUint32(data[6:], value)
-	C.nox_xxx_netInformTextMsg2_4DA180(C.int(kind), (*C.uint8_t)(unsafe.Pointer(&data[0])))
+	nox_xxx_netInformTextMsg2_4DA180(C.int(kind), (*C.uint8_t)(unsafe.Pointer(&data[0])))
 }
 func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 	if it.InvHolder != u {

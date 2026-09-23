@@ -249,7 +249,7 @@ func Sub_4196D0(a1 unsafe.Pointer, a2 unsafe.Pointer, a3 int, a4 int) {
 }
 
 func Nox_xxx_netReportAcquireCreature_4D91A0(pli int, obj *server.Object) {
-	C.nox_xxx_netReportAcquireCreature_4D91A0(C.int(pli), asObjectC(obj))
+	nox_xxx_netReportAcquireCreature_4D91A0(C.int(pli), asObjectC(obj))
 }
 func Nox_xxx_netSendSimpleObject2_4DF360(pli int, obj *server.Object) {
 	matchRosterSimpleObject(int(pli), obj)

@@ -358,7 +358,7 @@ func Nox_server_getObjectFromNetCode_4ECCB0(a1 int) *server.Object {
 	return objectLookupByNetCode(uint32(a1))
 }
 func Nox_xxx_monsterRemoveMonitors_4E7B60(a1 *server.Object, a2 *server.Object) {
-	C.nox_xxx_monsterRemoveMonitors_4E7B60(asObjectC(a1), asObjectC(a2))
+	nox_xxx_monsterRemoveMonitors_4E7B60(asObjectC(a1), asObjectC(a2))
 }
 func Sub_4ED0C0(a1 *server.Object, a2 *server.Object) {
 	inventoryRemove(a1, a2)
@@ -385,7 +385,7 @@ func Nox_xxx_unit_511810(a1 *server.Object) {
 	motionDeactivate(a1)
 }
 func Nox_xxx_unitRemoveChild_4EC470(a1 *server.Object) {
-	C.nox_xxx_unitRemoveChild_4EC470(asObjectC(a1))
+	nox_xxx_unitRemoveChild_4EC470(asObjectC(a1))
 }
 func Sub_4ECFA0(a1 *server.Object) {
 	netCodeCacheInvalidate(a1)
@@ -409,7 +409,7 @@ func Nox_xxx_action_4DA9F0(a1 *server.Object) {
 	sessionShadowRemove(a1)
 }
 func Nox_xxx_unitPostCreateNotify_4E7F10(a1 *server.Object) {
-	C.nox_xxx_unitPostCreateNotify_4E7F10(asObjectC(a1))
+	nox_xxx_unitPostCreateNotify_4E7F10(asObjectC(a1))
 }
 func Nox_xxx_buffApplyTo_4FF380(a1 *server.Object, a2 server.EnchantID, dur int, power int) {
 	spellLifeApplyBuff(a1, int32(a2), int16(dur), int8(power))
@@ -418,13 +418,13 @@ func Nox_xxx_spellBuffOff_4FF5B0(a1 *server.Object, a2 server.EnchantID) {
 	spellLifeBuffOff(a1, int32(a2))
 }
 func Nox_xxx_unitRaise_4E46F0(a1 *server.Object, a2 float32) {
-	C.nox_xxx_unitRaise_4E46F0(asObjectC(a1), C.float(a2))
+	nox_xxx_unitRaise_4E46F0(asObjectC(a1), C.float(a2))
 }
 func Nox_xxx_objectSetOff_4E7600(a1 *server.Object) {
-	C.nox_xxx_objectSetOff_4E7600(asObjectC(a1))
+	nox_xxx_objectSetOff_4E7600(asObjectC(a1))
 }
 func Nox_xxx_objectSetOn_4E75B0(a1 *server.Object) {
-	C.nox_xxx_objectSetOn_4E75B0(asObjectC(a1))
+	nox_xxx_objectSetOn_4E75B0(asObjectC(a1))
 }
 func Nox_xxx_drop_4ED790(a1 *server.Object, a2 *server.Object, pos types.Pointf) int {
 	cpos, free := alloc.New(types.Pointf{})

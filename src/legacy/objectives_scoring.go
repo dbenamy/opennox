@@ -105,7 +105,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 		if math.Abs(float64(u.PosVec.X)-float64(*temporaryFloat(ud, 0))) > epsilon || math.Abs(float64(u.PosVec.Y)-float64(*temporaryFloat(ud, 4))) > epsilon {
 			Nox_xxx_unitMove_4E7010(u, *(*types.Pointf)(ud))
 			netcode := t.NetCode
-			C.nox_xxx_netInformTextMsg2_4DA180(4, (*C.uint8_t)(unsafe.Pointer(&netcode)))
+			nox_xxx_netInformTextMsg2_4DA180(4, (*C.uint8_t)(unsafe.Pointer(&netcode)))
 			*equipmentWord(ud, 8) = 0
 			matchRosterFlagState(byte(t.TeamVal.ID), 0, byte(color), 0)
 			return

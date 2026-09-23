@@ -117,7 +117,7 @@ func shopLoad(s *shopSession) {
 			if name == nil {
 				break
 			}
-			u := asObjectS(C.nox_xxx_newObjectByTypeID_4E3810((*C.char)(name)))
+			u := asObjectS(nox_xxx_newObjectByTypeID_4E3810((*C.char)(name)))
 			if u != nil {
 				shopAdd(s, u)
 			}

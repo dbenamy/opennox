@@ -47,10 +47,10 @@ func Nox_xxx_monsterLookAt_5125A0(a1 *server.Object, a2 int) {
 	monsterControlLook(a1, int32(a2))
 }
 func Nox_xxx_unitFreeze_4E79C0(a1 *server.Object, a2 int) {
-	C.nox_xxx_unitFreeze_4E79C0(asObjectC(a1), C.int(a2))
+	nox_xxx_unitFreeze_4E79C0(asObjectC(a1), C.int(a2))
 }
 func Nox_xxx_unitUnFreeze_4E7A60(a1 *server.Object, a2 int) {
-	C.nox_xxx_unitUnFreeze_4E7A60(asObjectC(a1), C.int(a2))
+	nox_xxx_unitUnFreeze_4E7A60(asObjectC(a1), C.int(a2))
 }
 func Nox_xxx_scriptMonsterRoam_512930(a1 *server.Object) {
 	scriptBindingRoam(a1)

@@ -182,7 +182,7 @@ func effectsStatus(m *server.ModifierEff, u, target *server.Object, stun bool) {
 		Nox_xxx_castConfuse_52C1E0(spell.ID(12), u, u, u, arg, int(int8(m.AttackPreHit52.Val)))
 	}
 	if target.ObjClass&4 != 0 {
-		C.nox_xxx_netInformTextMsg_4DA0F0(C.int(uint8(target.UpdateDataPlayer().Player.PlayerInd)), 13, (*C.int)(unsafe.Pointer(&code)))
+		nox_xxx_netInformTextMsg_4DA0F0(C.int(uint8(target.UpdateDataPlayer().Player.PlayerInd)), 13, (*C.int)(unsafe.Pointer(&code)))
 	}
 }
 func effectsRecoil(m *server.ModifierEff, it, target *server.Object) {
@@ -240,12 +240,12 @@ func effectsVampirism(m *server.ModifierEff, u, target *server.Object, damage in
 	resourceAdjustHP(u, v)
 }
 func effectsPoison(m *server.ModifierEff, u, target *server.Object) {
-	if target.ObjClass&4 != 0 && *(*byte)(unsafe.Add(target.UpdateData, 88)) == 16 && C.nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&target.PosVec)), C.int(int16(target.Direction1)), (*C.float2)(unsafe.Pointer(&u.PosVec)))&1 != 0 {
+	if target.ObjClass&4 != 0 && *(*byte)(unsafe.Add(target.UpdateData, 88)) == 16 && nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&target.PosVec)), C.int(int16(target.Direction1)), (*C.float2)(unsafe.Pointer(&u.PosVec)))&1 != 0 {
 		return
 	}
 	if target.ObjClass&6 != 0 && resourcePoison(target, 1, m.AttackPreDmg64.Val) && target.ObjClass&4 != 0 {
 		v := C.int(2)
-		C.nox_xxx_netInformTextMsg_4DA0F0(C.int(uint8(target.UpdateDataPlayer().Player.PlayerInd)), 13, &v)
+		nox_xxx_netInformTextMsg_4DA0F0(C.int(uint8(target.UpdateDataPlayer().Player.PlayerInd)), 13, &v)
 	}
 }
 func effectsSympathy(m *server.ModifierEff, u, target *server.Object, damage int32) {

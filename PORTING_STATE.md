@@ -7,32 +7,45 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — pointer-forwarding baseline qualified
+## Current — pointer forwarding qualified
 
-Qualified conversion `06bd85b6` is pushed. No production changes since. Next draft:
-74 calls/36 wrappers; independent reconstruction matches exact C-selector removal.
-Fresh cgo signatures/aliases match; no function-name macros; lifetimes reviewed.
-See [POINTER_FORWARDING.md](docs/porting/POINTER_FORWARDING.md).
+Baseline `7a6b2efb` is pushed. All 74 calls across 36 functions/files are qualified:
+686/685/686 roots pass default/server/highres, no skips or changed expectations.
+Discovered names match the exact baseline union; runtime/discovery env settings
+match. Safe/static, four fresh binaries/ABI, exact known suite (304 existing
+failure events; 17 pass/2 fail/32 skip packages), headless creation and save/load
+pass. All four binaries omit 36 redundant C-call bridges; required exports stay
+Go-backed. See [POINTER_FORWARDING.md](docs/porting/POINTER_FORWARDING.md).
 
-Baseline session86091 joined PASS:196 fresh roots per profile, no skips. Exact
-source/test/runtime environment and four retained binary identities verify reuse
-of preceding490/489/490 roots. Native combined selection must pass686/685/686.
-Baseline finalizer CONSUMED. Next commit/push baseline, apply reviewed draft,
-verify exact source changes and qualify. No production edits yet; no jobs active.
+Contract session22177 and remaining pipeline56813 joined PASS. Finalizer and scenario
+asset deduplication scripts CONSUMED. Fresh binaries in build/port-pointer-forwarding:
+safe/opennox-safe and production/production/bin/{opennox,opennox-hd,opennox-server}.
+Check Git log/remote for conversion commit/push status. No Go/build jobs active.
+Luna's patch and applied diff review accepted; primary exact reconstruction found
+only the 74 intended calls (73 edited lines). No behavioral correction required.
 
-Runner discovery/build uses1536MiB independently of unchanged runtime768MiB;
-nine Python tests and actual three-profile environment records pass. Explicit
-runtime overrides preserved. Luna drafted the small change; primary reviewed,
-added explanatory comment and cleaned formatting. No speed claim. Record this
-reversible compiler-GC choice for review; source remains frozen during runs.
+Next: build/port-mixed-forwarding contains an UNAPPLIED 92-call/40-function draft,
+with 37 primitive boundary adaptations. Primary read all 40 wrapper bodies and
+began lifetime review; exact conversion/signature/macro checks and additional
+owner-baseline selection remain. Luna excluded mismatches sub_50B510 (C int vs Go void return) and
+nox_xxx_castCounterSpell_52BBB0 (C integers vs Go pointers). Primary separate review
+found one internal call each, ignored return/identical386 pointer bits, and no other
+C references. Pending interfaces-and-imports.patch removes these two round trips,
+exports and prototypes while preserving Go bodies (94-call proposed next scope).
+See interface-review.md; original/new binary ABI proof still required.
+Two possible import-C cleanup files: effects_weapon_use.go/inventory_pickup.go;
+review preambles before retirement. Two export retirements are proposed above.
 
-Cleanup17080 joined PASS: six completed groups,400,569,409 raw bytes to8,579,873 gzip;
-107 hardlinks/six symlinks recorded. archive-captures.py is CONSUMED; --restore
-remains supported. Roughly1.6GiB free. Artifacts `build/port-pointer-forwarding`:
-direct-calls.patch unapplied, production-files.txt36 paths, qualify-remaining.sh/
-finish.py and dedup scripts are pending DRAFTS. Review before execution. Original
-assets/binaries preserved. Luna idle; next suitable task is read-only applied diff
-review during native qualification.
+Compiler/discovery memory separation is qualified: 1536MiB for listing/build,
+unchanged 768MiB for execution; nine Python tests and three-profile baseline/native
+environment checks pass. No measured speed claim. Cleanup17080 joined PASS:
+six completed capture groups, 400,569,409 raw bytes to 8,579,873 gzip; 107 hardlinks/six
+symlinks recorded. archive-captures.py is CONSUMED; --restore remains supported.
+Original assets/binaries preserved. Restore raw captures before historical finalizers.
+Free space ~711MiB after qualification. Luna is auditing older compiler archives;
+first pre-Sep23 scan found no obsolete-marker matches and removed nothing.
+Revised pre-16:00-today audit pending; primary must verify host FD/marker/hash
+checks before cleanup. No deletion authorized merely by age.
 
 ## Earlier — scalar/pointer forwarding qualified
 

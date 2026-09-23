@@ -60,9 +60,9 @@ func sustainedFront(a, b *server.Object) int32 {
 func sustainedInteract(a, b *server.Object) bool { return GetServer().S().CanInteract(a, b, 0) }
 func sustainedEnemy(a, b *server.Object) bool    { return GetServer().S().IsEnemyTo(a, b) }
 func sustainedNew(name string) *server.Object {
-	return asObjectS(C.nox_xxx_newObjectByTypeID_4E3810(internCStr(name)))
+	return asObjectS(nox_xxx_newObjectByTypeID_4E3810(internCStr(name)))
 }
-func sustainedDelete(u *server.Object)                      { C.nox_xxx_delayedDeleteObject_4E5CC0(asObjectC(u)) }
+func sustainedDelete(u *server.Object)                      { nox_xxx_delayedDeleteObject_4E5CC0(asObjectC(u)) }
 func sustainedStopRay(d *server.DurSpell, u *server.Object) { GetServer().S().NetStopRaySpell(d, u) }
 func sustainedScalarInt(name string) int32                  { return floatToInt32(float32(spellEffectScalar(name))) }
 func sustainedTableInt(name string, level uint32) int32 {

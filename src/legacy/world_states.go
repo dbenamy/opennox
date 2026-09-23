@@ -94,7 +94,7 @@ func worldDoor(u *server.Object) byte {
 	return byte(current)
 }
 func worldAnimate(u *server.Object, frame int) {
-	C.nox_xxx_servMarkObjAnimFrame_4E4880(C.int(uintptr(u.CObj())), C.int(frame))
+	nox_xxx_servMarkObjAnimFrame_4E4880(C.int(uintptr(u.CObj())), C.int(frame))
 }
 func worldScript(u *server.Object, offset int, caller *server.Object, event int) {
 	GetServer().NoxScriptC().ScriptCallback((*server.ScriptCallback)(unsafe.Add(u.UpdateData, offset)), caller, u, server.ScriptEventType(event))
@@ -243,7 +243,7 @@ func worldTrapDoor(u *server.Object) uint32 {
 	}
 	result := *stamp
 	if result != 0 && core.Frame() >= result {
-		C.nox_xxx_unitSetOnOff_4E4670(C.int(uintptr(u.CObj())), 1)
+		nox_xxx_unitSetOnOff_4E4670(C.int(uintptr(u.CObj())), 1)
 		u.UnsetXStatus(2)
 		u.SetXStatus(4)
 		*stamp += 5 * uint32(core.TickRate())

@@ -329,7 +329,7 @@ func Nox_server_testTwoPointsAndDirection_4E6E50(p1 types.Pointf, dir int16, p2 
 	cp2, free2 := alloc.New(types.Pointf{})
 	defer free2()
 	*cp1, *cp2 = p1, p2
-	return int(C.nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(cp1)), C.int(dir), (*C.float2)(unsafe.Pointer(cp2))))
+	return int(nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(cp1)), C.int(dir), (*C.float2)(unsafe.Pointer(cp2))))
 }
 
 func Nox_xxx_mapLoadOrSaveMB_4DCC70(v int) {
@@ -664,7 +664,7 @@ func Sub_4D71E0(a1 int) {
 	questRuntimeSetSoulFrame(uint32(a1))
 }
 func Nox_xxx_calcDistance_4E6C00(a1 *server.Object, a2 *server.Object) float32 {
-	return float32(C.nox_xxx_calcDistance_4E6C00(asObjectC(a1), asObjectC(a2)))
+	return float32(nox_xxx_calcDistance_4E6C00(asObjectC(a1), asObjectC(a2)))
 }
 func Get_nox_game_switchStates_43C0A0() unsafe.Pointer {
 	return C.nox_game_switchStates_43C0A0

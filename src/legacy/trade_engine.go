@@ -290,7 +290,7 @@ func tradeStart(left, right *server.Object) *shopSession {
 		}
 		tradeSendStock(player, s)
 		if noxflags.HasGame(2048) {
-			C.nox_xxx_unitFreeze_4E79C0(asObjectC(player), 0)
+			nox_xxx_unitFreeze_4E79C0(asObjectC(player), 0)
 		}
 	}
 	return s

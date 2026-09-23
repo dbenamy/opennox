@@ -76,7 +76,7 @@ func spellLifeReset(mode, imaginary int32) int32 {
 	return 1
 }
 func spellLifeInform(u *server.Object, code int32) {
-	C.nox_xxx_netInformTextMsg_4DA0F0(C.int(*controlByte(controlPlayer(u), 2064)), 0, (*C.int)(unsafe.Pointer(&code)))
+	nox_xxx_netInformTextMsg_4DA0F0(C.int(*controlByte(controlPlayer(u), 2064)), 0, (*C.int)(unsafe.Pointer(&code)))
 }
 func spellLifeBookError(u *server.Object, code int32, audio int) int32 {
 	spellLifeInform(u, code)

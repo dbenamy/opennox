@@ -157,7 +157,7 @@ func Sub_409A70(a1 int) int {
 	return int(sessionModeIndex(int16(a1)))
 }
 func Nox_xxx_netInformTextMsg2_4DA180(a1 int, a2 unsafe.Pointer) {
-	C.nox_xxx_netInformTextMsg2_4DA180(C.int(a1), (*C.uchar)(a2))
+	nox_xxx_netInformTextMsg2_4DA180(C.int(a1), (*C.uchar)(a2))
 }
 func Nox_xxx_netReportUnitHeight_4D9020(a1 ntype.PlayerInd, a2 *server.Object) {
 	nox_xxx_netReportUnitHeight_4D9020(C.int(a1), asObjectC(a2))

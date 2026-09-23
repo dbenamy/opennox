@@ -44,11 +44,11 @@ func spellEffectPosAudio(id, phase int32, pos types.Pointf) {
 func spellEffectInform(u *server.Object) {
 	if u.ObjClass&4 != 0 {
 		v := C.int(2)
-		C.nox_xxx_netInformTextMsg_4DA0F0(C.int(*controlByte(controlPlayer(u), 2064)), 0, &v)
+		nox_xxx_netInformTextMsg_4DA0F0(C.int(*controlByte(controlPlayer(u), 2064)), 0, &v)
 	}
 }
 func spellEffectAlert(source, target *server.Object) {
-	C.sub_4E7540(asObjectC(source), asObjectC(target))
+	sub_4E7540(asObjectC(source), asObjectC(target))
 }
 func spellEffectGlyphType() uint32 {
 	if dword_5d4594_2487712 == 0 {
@@ -57,7 +57,7 @@ func spellEffectGlyphType() uint32 {
 	return uint32(dword_5d4594_2487712)
 }
 func spellEffectCreate(u, owner *server.Object, pos types.Pointf) {
-	C.nox_xxx_createAt_4DAA50(asObjectC(u), asObjectC(owner), C.float(pos.X), C.float(pos.Y))
+	nox_xxx_createAt_4DAA50(asObjectC(u), asObjectC(owner), C.float(pos.X), C.float(pos.Y))
 }
 func spellEffectNew(id uint32) *server.Object {
 	return asObjectS(C.nox_xxx_newObjectWithTypeInd_4E3450(C.int(id)))
@@ -227,7 +227,7 @@ func spellEffectFumble(id int32, a, b, c *server.Object, record unsafe.Pointer, 
 		typ := stateType(2487728, "GameBall")
 		for it := u.Field129; it != nil; it = it.Field128 {
 			if uint32(it.TypeInd) == typ {
-				C.nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&u.PosVec)), asObjectC(it), 100)
+				nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&u.PosVec)), asObjectC(it), 100)
 				it.SetOwner(nil)
 				GetServer().S().Audio.EventObj(926, u, 0, 0)
 				break
@@ -235,7 +235,7 @@ func spellEffectFumble(id int32, a, b, c *server.Object, record unsafe.Pointer, 
 		}
 	} else if u.ObjClass&2 == 0 || u.ObjSubClass&0x2000 == 0 {
 		inventoryDropAll(u)
-		C.nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&c.PosVec)), asObjectC(u), 50)
+		nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&c.PosVec)), asObjectC(u), 50)
 	}
 	spellEffectAudio(id, 1, u)
 	return 1

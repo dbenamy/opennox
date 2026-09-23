@@ -168,7 +168,7 @@ func worldTeleportCandidate(t *server.Object, pos *types.Pointf, visible bool) {
 		monsterPointFX(t, 137)
 		inventorySound(147, t, 0, 0)
 	}
-	C.nox_xxx_teleportToMB_4E7190((*C.uchar)(t.CObj()), (*C.float)(unsafe.Pointer(pos)))
+	nox_xxx_teleportToMB_4E7190((*C.uchar)(t.CObj()), (*C.float)(unsafe.Pointer(pos)))
 	if visible {
 		monsterPointFX(t, 137)
 		inventorySound(147, t, 0, 0)

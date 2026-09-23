@@ -47,7 +47,7 @@ func objectiveFlagID(u *server.Object) int32 {
 }
 func objectiveRememberOwner(u, t *server.Object) *server.Object {
 	if t != nil {
-		t = (*server.Object)(unsafe.Pointer(C.nox_xxx_findParentChainPlayer_4EC580(asObjectC(t))))
+		t = (*server.Object)(unsafe.Pointer(nox_xxx_findParentChainPlayer_4EC580(asObjectC(t))))
 	}
 	ud := u.UpdateData
 	if t != nil && t.ObjClass&4 != 0 {
@@ -93,7 +93,7 @@ func objectiveFlagUpdate(u *server.Object) int32 {
 		*equipmentWord(ud, 8) = 0
 		matchRosterFlagState(byte(team), 0, byte(color), 0)
 		Nox_xxx_unitMove_4E7010(u, *(*types.Pointf)(ud))
-		out = int32(C.nox_xxx_netInformTextMsg2_4DA180(8, (*C.uint8_t)(unsafe.Pointer(&color))))
+		out = int32(nox_xxx_netInformTextMsg2_4DA180(8, (*C.uint8_t)(unsafe.Pointer(&color))))
 	}
 	return out
 }
@@ -172,7 +172,7 @@ func objectiveBallUpdate(u *server.Object) {
 	dir := (int32(int16(owner.Direction1)) + int32(nox_common_randomInt_415FA0(-32, 32))) & 255
 	dx, dy := movementDirectionVector(dir)
 	origin := types.Pointf{X: float32(float64(u.PosVec.X) - float64(dx)*20), Y: float32(float64(u.PosVec.Y) - float64(dy)*20)}
-	C.nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&origin)), asObjectC(u), 30)
+	nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&origin)), asObjectC(u), 30)
 	core.ObjClearOwner(u)
 	Sub_4E8290(1, 0)
 	inventorySound(926, u, 0, 0)
@@ -225,8 +225,8 @@ func objectiveBallReset(old *server.Object) int {
 	if old != nil {
 		for pl := core.Players.FirstUnit(); pl != nil; pl = core.Players.NextUnit(pl) {
 			if *temporaryRefWord(unsafe.Pointer(pl.UpdateDataPlayer().Player), 3628) == old {
-				C.nox_xxx_playerCameraUnlock_4E6040(asObjectC(pl))
-				C.nox_xxx_playerCameraFollow_4E6060(asObjectC(pl), asObjectC(ball))
+				nox_xxx_playerCameraUnlock_4E6040(asObjectC(pl))
+				nox_xxx_playerCameraFollow_4E6060(asObjectC(pl), asObjectC(ball))
 			}
 		}
 		GetServer().DelayedDelete(old)

@@ -35,7 +35,7 @@ func damageBall(source, u *server.Object, amount int32) {
 			continue
 		}
 		it.ObjFlags &^= 0x40
-		C.nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&u.PosVec)), asObjectC(it), 30)
+		nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&u.PosVec)), asObjectC(it), 30)
 		nox_xxx_unitClearOwner_4EC300(asObjectC(it))
 		objectiveRememberOwner(it, u)
 		ind := *(*byte)(unsafe.Add(source.CObj(), 52))
@@ -271,7 +271,7 @@ func damageSkeleton(u, source, weapon *server.Object, amount, kind int32) int32 
 		if actual == nil {
 			actual = source
 		}
-		if C.nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&actual.PrevPos)))&1 != 0 && monsterControlHead(u) == 21 && uint32(*(*byte)(unsafe.Add(u.UpdateData, 481))) > uint32(*(*byte)(unsafe.Add(u.UpdateData, 480))>>1) {
+		if nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&actual.PrevPos)))&1 != 0 && monsterControlHead(u) == 21 && uint32(*(*byte)(unsafe.Add(u.UpdateData, 481))) > uint32(*(*byte)(unsafe.Add(u.UpdateData, 480))>>1) {
 			inventorySound(878, u, 0, 0)
 			return 1
 		}

@@ -35,7 +35,7 @@ func generatorDeath(u *server.Object) {
 
 	if noxflags.HasGame(4096) && u.Obj130 != nil {
 		// The retained owner-chain service returns the terminal object.
-		p := C.nox_xxx_findParentChainPlayer_4EC580(asObjectC(u.Obj130))
+		p := nox_xxx_findParentChainPlayer_4EC580(asObjectC(u.Obj130))
 		if asObjectS(p).Class().Has(4) {
 			questRuntimeIncrement(asObjectS(p), 4668, 8)
 		}

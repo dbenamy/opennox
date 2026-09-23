@@ -110,7 +110,7 @@ func monsterShieldCandidate(t, u *server.Object) {
 		return
 	}
 	point := t.PrevPos
-	if C.nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&point)))&1 == 0 {
+	if nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&point)))&1 == 0 {
 		return
 	}
 	vx, vy := movementDirectionVector(int32(int16(u.Direction1)))
@@ -200,7 +200,7 @@ func monsterMainAI(u *server.Object) {
 	}
 	if !monsterAggressionRetreat(u) && monsterMoving(u) && !monsterCastBusy(u) && !u.HasEnchant(3) && !monsterMoveAttempt(u) {
 		if enemy := ud.CurrentEnemy; enemy != nil {
-			dist := float64(C.nox_xxx_calcDistance_4E6C00(asObjectC(u), asObjectC(enemy)))
+			dist := float64(nox_xxx_calcDistance_4E6C00(asObjectC(u), asObjectC(enemy)))
 			if dist < float64(ud.FleeRange) {
 				if ud.StatusFlags&0x20 != 0 && ud.Field376 != 0 && !u.HasEnchant(29) && core.Frame() >= ud.Field371 && float64(ud.FleeRange)*.5 > float64(float32(dist)) {
 					// The retained spell engine passes this buffer back through Go.
@@ -297,9 +297,9 @@ func monsterMainAI(u *server.Object) {
 		p := data.Player
 		if *(*byte)(unsafe.Add(unsafe.Pointer(p), 2251)) == 0 && *(*uint32)(unsafe.Add(unsafe.Pointer(p), 4)) == 0 && byte(core.Frame())&15 == 0 {
 			if t := lifecycleFoodSearch(u, 75, true); t != nil {
-				C.nox_xxx_mobMorphToPlayer_4FAAF0((*C.uint32_t)(u.CObj()))
+				nox_xxx_mobMorphToPlayer_4FAAF0((*C.uint32_t)(u.CObj()))
 				Nox_xxx_inventoryServPlace_4F36F0(u, t, 1, 1)
-				C.nox_xxx_mobMorphFromPlayer_4FAAC0((*C.uint32_t)(u.CObj()))
+				nox_xxx_mobMorphFromPlayer_4FAAC0((*C.uint32_t)(u.CObj()))
 			}
 		}
 	}

@@ -392,7 +392,7 @@ func sustainedTurnUndeadStart(p unsafe.Pointer) uint32 {
 func sustainedTurnUndeadTick() uint32 { return 0 }
 func sustainedTurnUndeadCancel(p unsafe.Pointer) uint32 {
 	id := stateType(2487928, "UndeadKiller")
-	for u := asObjectS(C.nox_server_getFirstObject_4DA790()); u != nil; u = asObjectS(C.nox_server_getNextObject_4DA7A0(asObjectC(u))) {
+	for u := asObjectS(nox_server_getFirstObject_4DA790()); u != nil; u = asObjectS(nox_server_getNextObject_4DA7A0(asObjectC(u))) {
 		if uint32(u.TypeInd) == id && *controlPtr(*controlPtr(u.CObj(), 700), 0) == p {
 			sustainedDelete(u)
 		}
