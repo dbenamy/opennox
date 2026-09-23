@@ -222,3 +222,11 @@ integration. Luna drafts stream primitives; primary owns fixture runner this tim
 so capture/test work can overlap. No active builds. C remains six lines/one file,
 reference zero. Disk around380MiB. Next: review helper, install Go/runner, qualify
 whole package and unchanged-production proof, commit/push then continue.
+
+Stream caller review expanded C baseline2756→2774 cases to cover the actual49152
+byte audio buffer. All previous fixture records remain byte-identical;18newrecords
+repeat3+UBSan (98821 joined PASS). Initial Go compile failed undefinedmp3 local;
+next run25275 failed overlystrictsave-positionguard. Both diagnosed/fixed before
+acceptance. Logs retained in go-first-build-failure and go (rename before rerun).
+No accepted Go stream qualification yet. C still six lines. Expanded baseline
+committed separately before rerunning Go acceptance.

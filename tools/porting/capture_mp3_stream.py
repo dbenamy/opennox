@@ -23,10 +23,10 @@ static void wr(const void*p,size_t n){if(fwrite(p,1,n,stdout)!=n)exit(3);}
 static void wu(uint32_t v){unsigned char b[4]={v,v>>8,v>>16,v>>24};wr(b,4);}
 static void pattern(unsigned char*p,size_t n,uint32_t seed){for(size_t i=0;i<n;i++)p[i]=(i*73+seed)^(i>>2);}
 int main(void){
- int op;unsigned char data[32768+64];mp3dec_t dec;mp3dec_scratch_t scratch;
+ int op;unsigned char data[49152+64];mp3dec_t dec;mp3dec_scratch_t scratch;
  while((op=getchar())!=EOF){
   if(op==1 || op==2){
-   uint32_t n=ru(),hint=ru();if(n>32768||hint>2304)return 4;
+   uint32_t n=ru(),hint=ru();if(n>49152||hint>2304)return 4;
    memset(data,0,sizeof(data));rd(data,n);
    int free_bytes=hint,frame_bytes=0x12345678;
    if(op==1){int offset=mp3d_find_frame(data,n,&free_bytes,&frame_bytes);wu(offset);wu(free_bytes);wu(frame_bytes);}
@@ -115,6 +115,18 @@ def requests():
         for pos in sorted(set(range(9))|{max(0,length*8-i) for i in range(9)}|{length*8+1,length*8+7,length*8+32}):
             if pos<=length*8+32:
                 for seed in (0,0xa5,255):yield 5,u(length,pos,seed),4+511+4
+
+
+    # Actual ail decoder buffer is 16*1024*3 bytes. Keep the preceding baseline
+    # records byte-identical and append coverage beyond the initial probe bound.
+    for n in (32769,49151,49152):
+        yield 1,u(n,0)+bytes(n),12
+    for h,size in headers:
+        for prefix in (0,49152-3*size):
+            packet=bytearray(49152)
+            for i in range(3):packet[prefix+i*size:prefix+i*size+4]=h
+            yield 1,u(len(packet),0)+packet,12
+            if prefix==0:yield 2,u(len(packet),0)+packet,4
 
 def main():
  ap=argparse.ArgumentParser(description=__doc__)

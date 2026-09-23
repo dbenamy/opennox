@@ -8,15 +8,15 @@ header and 81 C preamble bodies remain outside this source-size metric.
 ## Original-C baseline
 
 The self-contained `tools/porting/capture_mp3_stream.py` calls the real production
-header. Three native 386 runs and a UBSan run agree on 2,756 records. The independent
-preliminary capture also produced identical fixture bytes before the tool was
-made self-contained. [Capture provenance](mp3-stream-c-capture.json) records source,
+header. Three native 386 runs and a UBSan run agree on 2,774 records. The initial
+2,756-record capture also matched the independent preliminary fixture before
+the tool was made self-contained; the subsequent extension is described below. [Capture provenance](mp3-stream-c-capture.json) records source,
 compiler flags, hashes and per-operation counts.
 
-- 1,637 frame searches: short/empty packets, ordinary and free-format frames,
+- 1,650 frame searches: short/empty packets, ordinary and free-format frames,
   leading junk, exact/truncated lengths, padding, the free-format search limit,
   seeded arbitrary input and valid Layer I/II headers still used by this scanner.
-- 185 frame matches: follow-on header checks, incomplete frames and bounded
+- 190 frame matches: follow-on header checks, incomplete frames and bounded
   zero-progress free-format matching. The first header is structurally valid.
 - Five initialization patterns: only header byte zero changes; all remaining
   decoder bytes retain their initialized values, including overlap/filter state.
@@ -35,7 +35,15 @@ No raw pointers, struct padding, copied C algorithm or shipped asset bytes are
 retained in the fixture. Init uses a boolean comparison of initialized C bytes;
 Go independent checks must verify the corresponding complete typed state.
 
-All domains are bounded: packets at most 32,768 bytes, nonnegative frame hints
+All domains are bounded: packets at most 49,152 bytes, nonnegative frame hints
 up to 2,304, stored history/main-data-begin 0–511, current payload up to 2,304,
 and scratch bytes up to 2,815. The parser fixtures do not establish behavior for
 integer overflow, negative copy lengths or unsupported overlapping C memcpy inputs.
+
+The first baseline (`5a911bce`) had 2,756 records. Caller review then identified the
+actual audio reader's 49,152-byte buffer, exceeding the initial 32,768-byte capture
+bound. Eighteen appended cases cover that boundary; every earlier fixture byte is
+unchanged. The expanded capture repeats across three processes and UBSan. Initial
+Go qualification also exposed a redundant-variable cleanup compile error and an
+overrestrictive save-position guard. Both are implementation fixes, not changed
+C expectations. Capture bounds must not become arbitrary production limits.

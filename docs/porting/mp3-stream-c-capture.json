@@ -1,23 +1,23 @@
 {
   "counts": [
-    1637,
-    185,
+    1650,
+    190,
     5,
     425,
     504
   ],
   "result_sha256": [
-    "4096ba65360e17a79a7807d8f48895ae38d8a5aa662c723664da2dba09ec5510",
-    "4096ba65360e17a79a7807d8f48895ae38d8a5aa662c723664da2dba09ec5510",
-    "4096ba65360e17a79a7807d8f48895ae38d8a5aa662c723664da2dba09ec5510"
+    "1eb2796a9bce92cff7212f8b54d08baf87ff4a7daea248e121de42403bf2096c",
+    "1eb2796a9bce92cff7212f8b54d08baf87ff4a7daea248e121de42403bf2096c",
+    "1eb2796a9bce92cff7212f8b54d08baf87ff4a7daea248e121de42403bf2096c"
   ],
-  "ubsan_result_sha256": "4096ba65360e17a79a7807d8f48895ae38d8a5aa662c723664da2dba09ec5510",
-  "uncompressed_sha256": "d04261f4409c98077302a7adb8e0254114559dcf24d119022eac3c979328e467",
-  "fixture_sha256": "fa5a3f3e05335a2e23b1598b7a9f43bfb4ac2826c159cde98964aab42dbb956b",
-  "source_commit": "f4fe693d0079190308d1dc2417a4944eab121247",
+  "ubsan_result_sha256": "1eb2796a9bce92cff7212f8b54d08baf87ff4a7daea248e121de42403bf2096c",
+  "uncompressed_sha256": "893c6b12f0b8d2f5ea8cfc04eef864d92e7976cc3b92e216f6472f4590cfe515",
+  "fixture_sha256": "7f29775eb25ac991f55f61782e42067262c051ed90e24580a31c72219ecb2df1",
+  "source_commit": "5a911bceef7e95468968078e3af312234286d762",
   "header_sha256": "e03e87c847cbdfd79cd3bf74a3b1fe24bc8c590245e92ce8153e87b23e17507f",
-  "tool_sha256": "bae9179c8b915d3402c7f69088a188ab88b27e55396ead21bf63e6335052ccfb",
-  "shim_sha256": "271efbe98973c6111001b9ce03671742c34959974688797cdd3c83af6ab1e3d2",
+  "tool_sha256": "41abd556f13d1a5606942b2e1b4c15e923547ad74d4d42bba043257391a6cc41",
+  "shim_sha256": "8ddc0431701e35e89b0f60a7be86160b9586d3633e0bc9c6a23ea7e96d7c2cd2",
   "compiler": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
   "flags": [
     "gcc",
@@ -29,11 +29,18 @@
     "-mfpmath=sse",
     "-I",
     "/root/src/opennox/src/legacy/client/audio/mp3",
-    "/root/src/opennox/build/port-mp3-stream/capture/capture.c",
+    "/root/src/opennox/build/port-mp3-stream/capture-expanded/capture.c",
     "-lm"
   ],
   "ubsan_flags": [
     "-fsanitize=undefined",
     "-fno-sanitize-recover=all"
-  ]
+  ],
+  "coverage_extension": {
+    "prior_baseline": "5a911bce",
+    "old_records": 2756,
+    "new_records": 18,
+    "all_old_records_byte_identical": true,
+    "reason": "Actual ail decoder buffer is49152bytes; initial probe bound32768 was too small for caller coverage."
+  }
 }
