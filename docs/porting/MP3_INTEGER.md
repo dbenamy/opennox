@@ -45,3 +45,34 @@ these frozen bytes without a C compiler or copied C reference implementation.
 All 90 bitrate lookup entries were independently compared with the original C.
 These cases do not qualify full MP3 decoding, floating-point transforms, seeking,
 stereo output or malformed-stream behavior. Those remain subsequent work.
+
+## Go implementation qualified
+
+The baseline was committed/pushed as `91f520ae` before installing the Go helpers.
+All 819,207 records match in default/server/highres/safe and with `CGO_ENABLED=0`;
+`go vet` passes. Independent checks cover MSB-first reads, zero-width reads,
+position advancement after repeated overruns, borrowed-buffer aliasing, known
+MPEG-1/2 arithmetic, signed free-format fallback, padding and asymmetric comparison.
+The reader avoids the C implementation's unnecessary memory read for zero width;
+its value and position effects are identical in the supported domain.
+
+Luna drafted the helpers and runner. Primary reviewed arithmetic/partial reader
+state, compared all 90 table entries, captured C independently and ran acceptance.
+Luna's separate capture review found no blocker and correctly identified that
+comparison/reader vectors are directed coverage, not exhaustive input products.
+Primary reused five immutable test buffers to avoid per-vector allocation.
+No delegation cost/speed saving has been measured.
+
+[Qualification](mp3-integer-go-qualification.json) records the five successful
+runs, new source hashes and production-reuse proof. Every existing source file is
+identical to the qualified SSE snapshot. All four official production dependency
+lists exclude the new package, and all four retained binary hashes match.
+Thus production/ABI/scenario results are explicitly reused for this unwired
+preparation; this is not qualification of a live Go decoder. The full suite was
+not rerun. Its next run must include this new passing package in expected counts.
+No current stream PCM expectation changed. C remains six lines/one file, reference
+C zero and production C preamble bodies 81; no C decoder body is retired yet.
+
+Next: parse Layer III side information, freezing return values, final bit position,
+all output fields, partial updates on errors and scalefactor-band table contents.
+Full-decoder wiring, PCM/format/seek coverage and performance remain later gates.

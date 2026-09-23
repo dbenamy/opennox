@@ -1,0 +1,89 @@
+{
+  "status": "qualified unwired Go integer decoder helpers",
+  "baseline_revision": "91f520aea6fe2aa838d5df7d8ec50d296616a409",
+  "tests": {
+    "default": {
+      "log_sha256": "b7a63592f75aa0c02d1fe9a06c750e95efeabd17c57a61e4db943ab367028c01",
+      "tests": 1,
+      "vectors": 819207,
+      "pass": true
+    },
+    "server": {
+      "log_sha256": "26c2627e1c5b0c6f9f5c54a836c1e79e3da75ee86fefa43ad83490cd1903d20f",
+      "tests": 1,
+      "vectors": 819207,
+      "pass": true
+    },
+    "highres": {
+      "log_sha256": "766e3ac961ab5a48edc39b2ba6ad8ece2dafd43dc9d7d2fadcac11d4b2b4c2da",
+      "tests": 1,
+      "vectors": 819207,
+      "pass": true
+    },
+    "safe": {
+      "log_sha256": "8b3b13798c984053251a03452366aed024734528b62c0e3e1354ea574a3cf803",
+      "tests": 1,
+      "vectors": 819207,
+      "pass": true
+    },
+    "pure-go": {
+      "log_sha256": "9c72f6cb0969dd442d7d56cb220b60c0c791c2a852708655df0dd41914b634e2",
+      "tests": 1,
+      "vectors": 819207,
+      "pass": true
+    }
+  },
+  "go_vet": "pass",
+  "table_entries_compared": 90,
+  "production_reuse": {
+    "qualification": "docs/porting/mp3-sse-qualification.json",
+    "qualification_sha256": "8c1930e029c07d0412d808b70bb9f7d6e51651ef86c5de791b850267790fccba",
+    "old_source_files_unchanged": 2982,
+    "new_source": {
+      "src/legacy/client/audio/mp3/bits_headers.go": "b5bc58d9c5286c5c2d4df119ccc8e8674c59a63d2a6bac1f35b51a8307cfbd21",
+      "src/legacy/client/audio/mp3/bits_headers_test.go": "39cb82cc63a2c69e52b096edb5c0f2791afa7e8aef808a211cfc7f3ae1e14c67"
+    },
+    "dependency_checks": {
+      "default": {
+        "sha256": "6a9f2779822c98942c70cb5d41d225fc3c6a80f5ee77d30f3f0f1f903afd5b36",
+        "packages": 494,
+        "new_package_present": false
+      },
+      "server": {
+        "sha256": "280e5a1f2374fea1a2fde721794dabbda6afb48343760748c0b1c641deaeee1b",
+        "packages": 474,
+        "new_package_present": false
+      },
+      "highres": {
+        "sha256": "6a9f2779822c98942c70cb5d41d225fc3c6a80f5ee77d30f3f0f1f903afd5b36",
+        "packages": 494,
+        "new_package_present": false
+      },
+      "safe": {
+        "sha256": "6a9f2779822c98942c70cb5d41d225fc3c6a80f5ee77d30f3f0f1f903afd5b36",
+        "packages": 494,
+        "new_package_present": false
+      }
+    },
+    "binary_hashes_rechecked": {
+      "build/port-mp3-sse/production/production/bin/opennox": "f5614bd62f8e7df5ff11d6cb4eabe12b2a64d90c08a549e150ffdce30bc2ea7e",
+      "build/port-mp3-sse/production/production/bin/opennox-hd": "dc1839db87529a2a113d1bf7913f892a3abd6cc6fb91bf4885493f6c0aaa77c7",
+      "build/port-mp3-sse/production/production/bin/opennox-server": "7b6b605e5b63769e573e7fb4ad9bc575bf64b2708c61dfece444fd7352383916",
+      "build/port-mp3-sse/safe/opennox-safe": "929cd084b161bb80cc7a03fea351c20738b2a382b31acf5f89d99acd9980ba82"
+    },
+    "reason": "Only an unimported package was added; every previous source file is identical and all four production dependency selections exclude the new package. No live decoder conversion yet."
+  },
+  "production_c": {
+    "files": 1,
+    "lines": 6
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "limits": [
+    "Production and gameplay evidence reused, not rerun.",
+    "Full suite not rerun; its next run adds the new passing package to prior expected results.",
+    "No floating-point, stream or complete-decoder qualification claimed."
+  ]
+}

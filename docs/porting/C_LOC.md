@@ -287,6 +287,7 @@ target build selection and linker evidence.
 | Distinct empty callback exports from Go | 1 | 6 | −19 | 0 |
 | Direct callback addresses; five preamble bodies removed | 1 | 6 | 0 | 0 |
 | Restore historical MP3 PCM with package-local SSE2 arithmetic | 1 | 6 | 0 | 0 |
+| Go MP3 integer helpers (unwired preparation) | 1 | 6 | 0 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

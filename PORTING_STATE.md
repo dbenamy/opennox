@@ -167,3 +167,17 @@ Capture sessions71135 and92923 joined PASS; initial sandbox11583 failed SIGSYS.
 Standalone C remains six lines/one file, reference C zero. Next: install reviewed
 Go helpers and frozen runner, qualify the pure-Go package, prove no production
 dependency before reusing the SSE production qualification.
+
+## Current — Go MP3 integer helpers qualified, unwired
+
+C baseline `91f520ae` is committed/pushed. Go helpers and runner pass all819207
+vectors in default/server/highres/safe and CGO_ENABLED=0; vet passes (74167 joined).
+Four production dependency selections exclude this package. Finalizer verifies
+all previous source hashes and four retained SSE binary hashes, so production/
+ABI/gameplay evidence is explicitly reused. See mp3-integer-go-qualification.json.
+No source/build jobs remain active. C stays six lines/one file, reference zero;
+81 production preamble bodies unchanged. Next full suite needs one additional
+passing package; the304 unrelated failure events remain the existing baseline.
+Luna is drafting side-information parser in ignored build/port-mp3-sideinfo/drafts;
+primary must independently capture C behavior/partial writes before integration.
+Disk around480MiB free; recheck before broad builds. No raw assets changed.

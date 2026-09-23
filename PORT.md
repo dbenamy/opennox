@@ -14,6 +14,13 @@
 
 ## Current status
 
+The first Go MP3 internals (bit reader/header arithmetic) match 819,207 frozen
+actual-C cases in four profiles and with cgo disabled. They remain unimported by
+production while the complete decoder is assembled; existing production evidence
+is explicitly reused after source/dependency/binary checks. C stays six lines,
+with the third-party header still active. Next: Layer III side-information parsing.
+See [MP3_INTEGER.md](docs/porting/MP3_INTEGER.md).
+
 The audio package now uses SSE2 scalar arithmetic on 386. All 1,246 historical
 MP3 dialog PCM goldens pass unchanged; the full suite loses exactly 1,249 audio
 failure events and retains the 304 unrelated events. Client audio/stream tests,
@@ -139,8 +146,9 @@ unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skip
 and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
 comparison, headless gameplay and save/load checks pass.
 
-C remaining is **45 physical lines in 4 files**, zero reference C. See
-[the native qualification](docs/porting/orphan-inline-native-qualification.json).
+C remaining is **six physical lines in one file**, zero reference C; the active
+MP3 implementation header and C preambles are counted separately. See
+[C_LOC.md](docs/porting/C_LOC.md).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in
