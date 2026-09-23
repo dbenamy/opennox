@@ -47,3 +47,21 @@ the previously captured8kHz mixed-block extent. Scratch lookahead preserves the
 actual2,815-byte capacity. Production remains on C until whole-decoder asset and
 integration qualification. Standalone C remains six lines/one file, reference
 zero, plus the active header and81 preamble bodies.
+
+## Go qualification
+
+All ten decoder test roots pass in default/server/highres/safe and with cgo
+disabled; vet passes. The assembled Go decoder matches all2,682 generated frame
+calls on the first run. The Go runner independently repeats each sequence while
+poisoning the30 unused QMF slots, requiring identical PCM and observable state.
+No frozen expectation changed after installation.
+
+The new public Decoder/FrameInfo API preserves samples-per-channel return values,
+consumed input counts, nil-output metadata calls and lazy Init/reset. Go requires
+sufficient PCM output storage instead of allowing writes beyond a short slice.
+Layer I/II metadata remains available but decoding is unsupported as before.
+
+[Qualification](mp3-frame-go-qualification.json) verifies all previous source
+files and four production binary hashes. Production evidence is explicitly reused
+while this decoder remains unimported. Shipped-asset and production audio wiring
+qualification is the next chunk; this generated corpus is not a substitute for it.

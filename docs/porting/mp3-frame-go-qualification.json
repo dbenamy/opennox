@@ -1,0 +1,125 @@
+{
+  "status": "qualified unwired Go MP3 complete frame decoding with exact scalar-SSE2 results",
+  "baseline_revision": "6702100ba617a26cf952b2f8ba629a6f4256426e",
+  "tests": {
+    "default": {
+      "log_sha256": "838eb491c73057f4fafbbebf18815f0ff55751ead871d9be654501ebe5c0eaa9",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestFrameFrozenVectors",
+        "TestHuffmanFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "server": {
+      "log_sha256": "2f4421ebb7c1ff9bf80c02b6a15c370a2b36efc6f1576eb3b2ce4de535d3bc27",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestFrameFrozenVectors",
+        "TestHuffmanFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "highres": {
+      "log_sha256": "aed13c17a3603bbd3fea67318b145eb1bc5fc33c1999a29db529ef6bbfe4afdc",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestFrameFrozenVectors",
+        "TestHuffmanFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "safe": {
+      "log_sha256": "1da5f78926a5d7d5982965cd9dbdcb336ac047e5ba7a83d8cdcf3a9f43a68e95",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestFrameFrozenVectors",
+        "TestHuffmanFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "pure-go": {
+      "log_sha256": "a62559457e40de1f073e9be568b8e9ed25430ad802717b587d2fd242f4a45bda",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestFrameFrozenVectors",
+        "TestHuffmanFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "pass": true
+    }
+  },
+  "go_vet": "pass",
+  "frame_calls": 2682,
+  "frame_sequences": 544,
+  "normalized_unused_qmf_words": 30,
+  "c_ubsan_output_sha256": "af27306aae4773695989fae801f4ae0ec79d780e220db67e9e98de59eb824545",
+  "production_reuse": {
+    "prior_qualification": "docs/porting/mp3-huffman-go-qualification.json",
+    "prior_qualification_sha256": "cdb85b1a717455f52129bc9e2a284cc8dcec179694f89147105b522dd140a645",
+    "old_source_files_unchanged": 3002,
+    "new_source": {
+      "src/legacy/client/audio/mp3/decoder.go": "eca3544d37bcd3af3515ed33fb640a101e597e19461a97a889c6ff43a0cbd39b",
+      "src/legacy/client/audio/mp3/decoder_test.go": "8855ed901162e15e3715dae41086a37c130bb33d5912eab820704a4e2544bc69",
+      "src/legacy/client/audio/mp3/layer3.go": "c3289ca714c06442552a0aa68d9ecabbd001f37afd0308dc9f384f7f6b1839e4"
+    },
+    "binary_hashes_rechecked": {
+      "build/port-mp3-sse/production/production/bin/opennox": "f5614bd62f8e7df5ff11d6cb4eabe12b2a64d90c08a549e150ffdce30bc2ea7e",
+      "build/port-mp3-sse/production/production/bin/opennox-hd": "dc1839db87529a2a113d1bf7913f892a3abd6cc6fb91bf4885493f6c0aaa77c7",
+      "build/port-mp3-sse/production/production/bin/opennox-server": "7b6b605e5b63769e573e7fb4ad9bc575bf64b2708c61dfece444fd7352383916",
+      "build/port-mp3-sse/safe/opennox-safe": "929cd084b161bb80cc7a03fea351c20738b2a382b31acf5f89d99acd9980ba82"
+    },
+    "reason": "Only private code/tests added to the existing unimported package; all previous source files and production binary hashes unchanged. Previous dependency selections remain applicable."
+  },
+  "production_c": {
+    "files": 1,
+    "lines": 6
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "limits": [
+    "Production and gameplay evidence reused, not rerun.",
+    "Complete decoder generated-input PCM matches C; shipped assets and production wiring are not yet qualified. Thirty overwritten-before-read QMF words normalized in fixture serialization; nonzero private-bit original uninitialized-state behavior is documented separately."
+  ]
+}

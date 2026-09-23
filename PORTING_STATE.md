@@ -416,3 +416,15 @@ archivedexpandedHuffman5rawfiles272971021bytes;88541unmaskedframe4files93705981b
 18012privatebitsframe7files185711991bytes. Corresponding consumedarchive scripts
 and restorationrecords underbuild/port-artifact-cleanup. Currentframecapture plain.
 No active builds. C6lines/1file/ref0/81preambles.
+
+## Current — complete Go frame decoder qualified, unwired
+
+Baseline6702100b pushed. Acceptance79193 joinedPASS:10roots/fiveconfigs+vet;2682
+framecalls exact firstpass, GoQMFpoison repeated each sequence withoutobservable
+change. Source/fourbinaryhashreusechecksPASS; unchangedproduction. Next wireail
+audio_mp3.go toDecoder API and rununchanged asset/audio goldens, then retireC
+implementation/header and production/ABI/headlessqualification. Existingfull-suite
+non-audio304eventbaseline still applies; newmp3package addsapassingpackage.
+Luna read-onlyreviewing framewrapper andcleanup candidates forproductiondiskspace.
+No active builds. Currentrawframecaptureplain, olderarchives require restoration
+beforehistoricalfinalizers. C6lines/1file/reference0/81preambles.

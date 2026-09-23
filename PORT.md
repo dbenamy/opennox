@@ -14,6 +14,13 @@
 
 ## Current status
 
+The complete Go MP3 decoder matches2,682 generated C frame calls in544 sequences,
+including PCM, metadata and observable state. All ten test roots pass in four
+profiles and with cgo disabled; vet passes. Original unused-QMF and private-bit
+initialization findings are documented for review. Next: wire audio and qualify
+unchanged shipped-asset goldens and production builds. C remains six standalone
+lines plus the active header. See [MP3_FRAME.md](docs/porting/MP3_FRAME.md).
+
 Go MP3 Huffman/dequantization matches34,353 exact C cases, including every
 codebook leaf and directed escape extremes/signs. All nine helper roots pass
 in four profiles and with cgo disabled; vet passes. Next: complete-frame decoder
