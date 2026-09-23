@@ -8,6 +8,26 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — fixture storage C baseline qualified
+
+Production checkpoint `2a3eaec7` is pushed. The original-C contract extension is
+qualified:395 owners ×139 patterns (54,905 cases), two default processes and
+server/highres, matching captures/static;183 focused default consumers pass with
+no skips. Original343 observations exactly match the previous capture. All jobs
+joined (34016,65560). Only scalar_storage_porttest.go changed; production remains
+166 C lines /6 files. See [FIXTURE_STORAGE.md](docs/porting/FIXTURE_STORAGE.md).
+
+Next: commit baseline, then apply reviewed52-owner migration. Ignored draft
+build/port-map-storage/prepare_map_storage.py --check passes33 paths/322 selectors/
+241 extern declarators/21 accessor calls; two eligible cgo imports pruned. It is
+UNAPPLIED. Contract generator is CONSUMED. Frozen expected bits remain unchanged.
+Luna is doing a read-only remaining-storage audit; no implementation task active.
+
+Cleanup83025 joined: seven obsolete archives313,063,478 bytes and completed
+scalar-storage-native-save duplicate assets556,358,986 bytes removed after host
+process/FD/hash/size/mtime checks. Cleanup scripts are CONSUMED. Restore assets:
+python3 build/port-final-storage/deduplicate-save.py --restore scalar-storage-native-save.
+
 ## Current — numeric global owners qualified
 
 Original-C baseline `bc90690c` is pushed. Native default/server/highres pass

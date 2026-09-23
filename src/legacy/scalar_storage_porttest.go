@@ -4,6 +4,58 @@ package legacy
 
 /*
 #include <stdint.h>
+extern uint32_t dword_587000_122848;
+extern uint32_t dword_587000_126996;
+extern uint32_t dword_587000_93156;
+extern uint32_t dword_5d4594_1045420;
+extern uint32_t dword_5d4594_1045428;
+extern uint32_t dword_5d4594_1045432;
+extern uint32_t dword_5d4594_1549844;
+extern uint32_t dword_5d4594_1550912;
+extern uint32_t dword_5d4594_1550916;
+extern uint32_t dword_5d4594_2487248;
+extern uint32_t dword_5d4594_2487532;
+extern uint32_t dword_5d4594_2487536;
+extern uint32_t dword_5d4594_2487540;
+extern uint32_t dword_5d4594_2487556;
+extern uint32_t dword_5d4594_2487560;
+extern uint32_t dword_5d4594_2487564;
+extern uint32_t dword_5d4594_2487568;
+extern uint32_t dword_5d4594_2487576;
+extern uint32_t dword_5d4594_2487580;
+extern uint32_t dword_5d4594_2487584;
+extern uint32_t dword_5d4594_2487620;
+extern uint32_t dword_5d4594_2487624;
+extern uint32_t dword_5d4594_2487628;
+extern uint32_t dword_5d4594_2487632;
+extern uint32_t dword_5d4594_2487652;
+extern uint32_t dword_5d4594_2487656;
+extern uint32_t dword_5d4594_2487672;
+extern uint32_t dword_5d4594_2487676;
+extern uint32_t dword_5d4594_2487884;
+extern uint32_t dword_5d4594_2487932;
+extern uint32_t dword_5d4594_2489436;
+extern uint32_t dword_5d4594_2491616;
+extern uint32_t dword_5d4594_251572;
+extern uint32_t dword_5d4594_3835348;
+extern uint32_t dword_5d4594_3835352;
+extern uint32_t dword_5d4594_3835356;
+extern uint32_t dword_5d4594_3835360;
+extern uint32_t dword_5d4594_3835364;
+extern uint32_t dword_5d4594_3835368;
+extern uint32_t dword_5d4594_3835372;
+extern uint32_t dword_5d4594_3835388;
+extern uint32_t dword_5d4594_3835392;
+extern uint32_t dword_5d4594_588084;
+extern uint32_t dword_5d4594_816368;
+extern uint32_t dword_5d4594_816372;
+extern uint32_t dword_5d4594_816376;
+extern uint32_t dword_5d4594_831092;
+extern uint32_t nox_xxx_energyBoltTarget_5d4594_2487880;
+extern uint32_t nox_xxx_lightningClosestTargetDistance_5d4594_2487912;
+extern uint32_t nox_xxx_lightningOwner_5d4594_2487900;
+extern uint32_t nox_xxx_lightningTargetArrayIndex_5d4594_2487904;
+extern uint32_t nox_xxx_lightningTarget_5d4594_2487908;
 */
 import "C"
 
@@ -365,6 +417,58 @@ var scalarStorageContracts = []scalarStorageContract{
 	{name: "qword_581450_9544", size: unsafe.Sizeof(qword_581450_9544), wantSize: 8, signed: false, wantBits: 0x3fe0000000000000, ptr: unsafe.Pointer(&qword_581450_9544), get: func() uint64 { return uint64(qword_581450_9544) }, set: func(v uint64) { qword_581450_9544 = C.uint64_t(v) }},
 	{name: "qword_581450_9552", size: unsafe.Sizeof(qword_581450_9552), wantSize: 8, signed: false, wantBits: 0x40f0000000000000, ptr: unsafe.Pointer(&qword_581450_9552), get: func() uint64 { return uint64(qword_581450_9552) }, set: func(v uint64) { qword_581450_9552 = C.uint64_t(v) }},
 	{name: "qword_5d4594_1567940", size: unsafe.Sizeof(qword_5d4594_1567940), wantSize: 8, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&qword_5d4594_1567940), get: func() uint64 { return uint64(qword_5d4594_1567940) }, set: func(v uint64) { qword_5d4594_1567940 = C.uint64_t(v) }},
+	{name: "dword_587000_122848", size: unsafe.Sizeof(C.dword_587000_122848), wantSize: 4, signed: false, wantBits: 0x1, ptr: unsafe.Pointer(&C.dword_587000_122848), get: func() uint64 { return uint64(C.dword_587000_122848) }, set: func(v uint64) { C.dword_587000_122848 = C.uint32_t(v) }},
+	{name: "dword_587000_126996", size: unsafe.Sizeof(C.dword_587000_126996), wantSize: 4, signed: false, wantBits: 0x1, ptr: unsafe.Pointer(&C.dword_587000_126996), get: func() uint64 { return uint64(C.dword_587000_126996) }, set: func(v uint64) { C.dword_587000_126996 = C.uint32_t(v) }},
+	{name: "dword_587000_93156", size: unsafe.Sizeof(C.dword_587000_93156), wantSize: 4, signed: false, wantBits: 0x1, ptr: unsafe.Pointer(&C.dword_587000_93156), get: func() uint64 { return uint64(C.dword_587000_93156) }, set: func(v uint64) { C.dword_587000_93156 = C.uint32_t(v) }},
+	{name: "dword_5d4594_1045420", size: unsafe.Sizeof(C.dword_5d4594_1045420), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_1045420), get: func() uint64 { return uint64(C.dword_5d4594_1045420) }, set: func(v uint64) { C.dword_5d4594_1045420 = C.uint32_t(v) }},
+	{name: "dword_5d4594_1045428", size: unsafe.Sizeof(C.dword_5d4594_1045428), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_1045428), get: func() uint64 { return uint64(C.dword_5d4594_1045428) }, set: func(v uint64) { C.dword_5d4594_1045428 = C.uint32_t(v) }},
+	{name: "dword_5d4594_1045432", size: unsafe.Sizeof(C.dword_5d4594_1045432), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_1045432), get: func() uint64 { return uint64(C.dword_5d4594_1045432) }, set: func(v uint64) { C.dword_5d4594_1045432 = C.uint32_t(v) }},
+	{name: "dword_5d4594_1549844", size: unsafe.Sizeof(C.dword_5d4594_1549844), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_1549844), get: func() uint64 { return uint64(C.dword_5d4594_1549844) }, set: func(v uint64) { C.dword_5d4594_1549844 = C.uint32_t(v) }},
+	{name: "dword_5d4594_1550912", size: unsafe.Sizeof(C.dword_5d4594_1550912), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_1550912), get: func() uint64 { return uint64(C.dword_5d4594_1550912) }, set: func(v uint64) { C.dword_5d4594_1550912 = C.uint32_t(v) }},
+	{name: "dword_5d4594_1550916", size: unsafe.Sizeof(C.dword_5d4594_1550916), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_1550916), get: func() uint64 { return uint64(C.dword_5d4594_1550916) }, set: func(v uint64) { C.dword_5d4594_1550916 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487248", size: unsafe.Sizeof(C.dword_5d4594_2487248), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487248), get: func() uint64 { return uint64(C.dword_5d4594_2487248) }, set: func(v uint64) { C.dword_5d4594_2487248 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487532", size: unsafe.Sizeof(C.dword_5d4594_2487532), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487532), get: func() uint64 { return uint64(C.dword_5d4594_2487532) }, set: func(v uint64) { C.dword_5d4594_2487532 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487536", size: unsafe.Sizeof(C.dword_5d4594_2487536), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487536), get: func() uint64 { return uint64(C.dword_5d4594_2487536) }, set: func(v uint64) { C.dword_5d4594_2487536 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487540", size: unsafe.Sizeof(C.dword_5d4594_2487540), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487540), get: func() uint64 { return uint64(C.dword_5d4594_2487540) }, set: func(v uint64) { C.dword_5d4594_2487540 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487556", size: unsafe.Sizeof(C.dword_5d4594_2487556), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487556), get: func() uint64 { return uint64(C.dword_5d4594_2487556) }, set: func(v uint64) { C.dword_5d4594_2487556 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487560", size: unsafe.Sizeof(C.dword_5d4594_2487560), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487560), get: func() uint64 { return uint64(C.dword_5d4594_2487560) }, set: func(v uint64) { C.dword_5d4594_2487560 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487564", size: unsafe.Sizeof(C.dword_5d4594_2487564), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487564), get: func() uint64 { return uint64(C.dword_5d4594_2487564) }, set: func(v uint64) { C.dword_5d4594_2487564 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487568", size: unsafe.Sizeof(C.dword_5d4594_2487568), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487568), get: func() uint64 { return uint64(C.dword_5d4594_2487568) }, set: func(v uint64) { C.dword_5d4594_2487568 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487576", size: unsafe.Sizeof(C.dword_5d4594_2487576), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487576), get: func() uint64 { return uint64(C.dword_5d4594_2487576) }, set: func(v uint64) { C.dword_5d4594_2487576 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487580", size: unsafe.Sizeof(C.dword_5d4594_2487580), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487580), get: func() uint64 { return uint64(C.dword_5d4594_2487580) }, set: func(v uint64) { C.dword_5d4594_2487580 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487584", size: unsafe.Sizeof(C.dword_5d4594_2487584), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487584), get: func() uint64 { return uint64(C.dword_5d4594_2487584) }, set: func(v uint64) { C.dword_5d4594_2487584 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487620", size: unsafe.Sizeof(C.dword_5d4594_2487620), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487620), get: func() uint64 { return uint64(C.dword_5d4594_2487620) }, set: func(v uint64) { C.dword_5d4594_2487620 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487624", size: unsafe.Sizeof(C.dword_5d4594_2487624), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487624), get: func() uint64 { return uint64(C.dword_5d4594_2487624) }, set: func(v uint64) { C.dword_5d4594_2487624 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487628", size: unsafe.Sizeof(C.dword_5d4594_2487628), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487628), get: func() uint64 { return uint64(C.dword_5d4594_2487628) }, set: func(v uint64) { C.dword_5d4594_2487628 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487632", size: unsafe.Sizeof(C.dword_5d4594_2487632), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487632), get: func() uint64 { return uint64(C.dword_5d4594_2487632) }, set: func(v uint64) { C.dword_5d4594_2487632 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487652", size: unsafe.Sizeof(C.dword_5d4594_2487652), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487652), get: func() uint64 { return uint64(C.dword_5d4594_2487652) }, set: func(v uint64) { C.dword_5d4594_2487652 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487656", size: unsafe.Sizeof(C.dword_5d4594_2487656), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487656), get: func() uint64 { return uint64(C.dword_5d4594_2487656) }, set: func(v uint64) { C.dword_5d4594_2487656 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487672", size: unsafe.Sizeof(C.dword_5d4594_2487672), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487672), get: func() uint64 { return uint64(C.dword_5d4594_2487672) }, set: func(v uint64) { C.dword_5d4594_2487672 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487676", size: unsafe.Sizeof(C.dword_5d4594_2487676), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487676), get: func() uint64 { return uint64(C.dword_5d4594_2487676) }, set: func(v uint64) { C.dword_5d4594_2487676 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487884", size: unsafe.Sizeof(C.dword_5d4594_2487884), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487884), get: func() uint64 { return uint64(C.dword_5d4594_2487884) }, set: func(v uint64) { C.dword_5d4594_2487884 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2487932", size: unsafe.Sizeof(C.dword_5d4594_2487932), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2487932), get: func() uint64 { return uint64(C.dword_5d4594_2487932) }, set: func(v uint64) { C.dword_5d4594_2487932 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2489436", size: unsafe.Sizeof(C.dword_5d4594_2489436), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2489436), get: func() uint64 { return uint64(C.dword_5d4594_2489436) }, set: func(v uint64) { C.dword_5d4594_2489436 = C.uint32_t(v) }},
+	{name: "dword_5d4594_2491616", size: unsafe.Sizeof(C.dword_5d4594_2491616), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_2491616), get: func() uint64 { return uint64(C.dword_5d4594_2491616) }, set: func(v uint64) { C.dword_5d4594_2491616 = C.uint32_t(v) }},
+	{name: "dword_5d4594_251572", size: unsafe.Sizeof(C.dword_5d4594_251572), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_251572), get: func() uint64 { return uint64(C.dword_5d4594_251572) }, set: func(v uint64) { C.dword_5d4594_251572 = C.uint32_t(v) }},
+	{name: "dword_5d4594_3835348", size: unsafe.Sizeof(C.dword_5d4594_3835348), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_3835348), get: func() uint64 { return uint64(C.dword_5d4594_3835348) }, set: func(v uint64) { C.dword_5d4594_3835348 = C.uint32_t(v) }},
+	{name: "dword_5d4594_3835352", size: unsafe.Sizeof(C.dword_5d4594_3835352), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_3835352), get: func() uint64 { return uint64(C.dword_5d4594_3835352) }, set: func(v uint64) { C.dword_5d4594_3835352 = C.uint32_t(v) }},
+	{name: "dword_5d4594_3835356", size: unsafe.Sizeof(C.dword_5d4594_3835356), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_3835356), get: func() uint64 { return uint64(C.dword_5d4594_3835356) }, set: func(v uint64) { C.dword_5d4594_3835356 = C.uint32_t(v) }},
+	{name: "dword_5d4594_3835360", size: unsafe.Sizeof(C.dword_5d4594_3835360), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_3835360), get: func() uint64 { return uint64(C.dword_5d4594_3835360) }, set: func(v uint64) { C.dword_5d4594_3835360 = C.uint32_t(v) }},
+	{name: "dword_5d4594_3835364", size: unsafe.Sizeof(C.dword_5d4594_3835364), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_3835364), get: func() uint64 { return uint64(C.dword_5d4594_3835364) }, set: func(v uint64) { C.dword_5d4594_3835364 = C.uint32_t(v) }},
+	{name: "dword_5d4594_3835368", size: unsafe.Sizeof(C.dword_5d4594_3835368), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_3835368), get: func() uint64 { return uint64(C.dword_5d4594_3835368) }, set: func(v uint64) { C.dword_5d4594_3835368 = C.uint32_t(v) }},
+	{name: "dword_5d4594_3835372", size: unsafe.Sizeof(C.dword_5d4594_3835372), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_3835372), get: func() uint64 { return uint64(C.dword_5d4594_3835372) }, set: func(v uint64) { C.dword_5d4594_3835372 = C.uint32_t(v) }},
+	{name: "dword_5d4594_3835388", size: unsafe.Sizeof(C.dword_5d4594_3835388), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_3835388), get: func() uint64 { return uint64(C.dword_5d4594_3835388) }, set: func(v uint64) { C.dword_5d4594_3835388 = C.uint32_t(v) }},
+	{name: "dword_5d4594_3835392", size: unsafe.Sizeof(C.dword_5d4594_3835392), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_3835392), get: func() uint64 { return uint64(C.dword_5d4594_3835392) }, set: func(v uint64) { C.dword_5d4594_3835392 = C.uint32_t(v) }},
+	{name: "dword_5d4594_588084", size: unsafe.Sizeof(C.dword_5d4594_588084), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_588084), get: func() uint64 { return uint64(C.dword_5d4594_588084) }, set: func(v uint64) { C.dword_5d4594_588084 = C.uint32_t(v) }},
+	{name: "dword_5d4594_816368", size: unsafe.Sizeof(C.dword_5d4594_816368), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_816368), get: func() uint64 { return uint64(C.dword_5d4594_816368) }, set: func(v uint64) { C.dword_5d4594_816368 = C.uint32_t(v) }},
+	{name: "dword_5d4594_816372", size: unsafe.Sizeof(C.dword_5d4594_816372), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_816372), get: func() uint64 { return uint64(C.dword_5d4594_816372) }, set: func(v uint64) { C.dword_5d4594_816372 = C.uint32_t(v) }},
+	{name: "dword_5d4594_816376", size: unsafe.Sizeof(C.dword_5d4594_816376), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_816376), get: func() uint64 { return uint64(C.dword_5d4594_816376) }, set: func(v uint64) { C.dword_5d4594_816376 = C.uint32_t(v) }},
+	{name: "dword_5d4594_831092", size: unsafe.Sizeof(C.dword_5d4594_831092), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.dword_5d4594_831092), get: func() uint64 { return uint64(C.dword_5d4594_831092) }, set: func(v uint64) { C.dword_5d4594_831092 = C.uint32_t(v) }},
+	{name: "nox_xxx_energyBoltTarget_5d4594_2487880", size: unsafe.Sizeof(C.nox_xxx_energyBoltTarget_5d4594_2487880), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.nox_xxx_energyBoltTarget_5d4594_2487880), get: func() uint64 { return uint64(C.nox_xxx_energyBoltTarget_5d4594_2487880) }, set: func(v uint64) { C.nox_xxx_energyBoltTarget_5d4594_2487880 = C.uint32_t(v) }},
+	{name: "nox_xxx_lightningClosestTargetDistance_5d4594_2487912", size: unsafe.Sizeof(C.nox_xxx_lightningClosestTargetDistance_5d4594_2487912), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.nox_xxx_lightningClosestTargetDistance_5d4594_2487912), get: func() uint64 { return uint64(C.nox_xxx_lightningClosestTargetDistance_5d4594_2487912) }, set: func(v uint64) { C.nox_xxx_lightningClosestTargetDistance_5d4594_2487912 = C.uint32_t(v) }},
+	{name: "nox_xxx_lightningOwner_5d4594_2487900", size: unsafe.Sizeof(C.nox_xxx_lightningOwner_5d4594_2487900), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.nox_xxx_lightningOwner_5d4594_2487900), get: func() uint64 { return uint64(C.nox_xxx_lightningOwner_5d4594_2487900) }, set: func(v uint64) { C.nox_xxx_lightningOwner_5d4594_2487900 = C.uint32_t(v) }},
+	{name: "nox_xxx_lightningTargetArrayIndex_5d4594_2487904", size: unsafe.Sizeof(C.nox_xxx_lightningTargetArrayIndex_5d4594_2487904), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.nox_xxx_lightningTargetArrayIndex_5d4594_2487904), get: func() uint64 { return uint64(C.nox_xxx_lightningTargetArrayIndex_5d4594_2487904) }, set: func(v uint64) { C.nox_xxx_lightningTargetArrayIndex_5d4594_2487904 = C.uint32_t(v) }},
+	{name: "nox_xxx_lightningTarget_5d4594_2487908", size: unsafe.Sizeof(C.nox_xxx_lightningTarget_5d4594_2487908), wantSize: 4, signed: false, wantBits: 0x0, ptr: unsafe.Pointer(&C.nox_xxx_lightningTarget_5d4594_2487908), get: func() uint64 { return uint64(C.nox_xxx_lightningTarget_5d4594_2487908) }, set: func(v uint64) { C.nox_xxx_lightningTarget_5d4594_2487908 = C.uint32_t(v) }},
 }
 
 // Capture before package init functions can configure runtime state.

@@ -1,0 +1,53 @@
+{
+  "status": "qualified baseline for52 fixture-backed C numeric owners",
+  "production_baseline_revision": "2a3eaec7",
+  "production_evidence": "scalar-storage-native-qualification.json",
+  "production_source_identical": true,
+  "only_source_changes": [
+    "src/legacy/scalar_storage_porttest.go"
+  ],
+  "targets": {
+    "default": {
+      "contract_roots": 1,
+      "owners": 395,
+      "cases": 54905,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 229.70543643808924,
+      "consumer_roots": 183
+    },
+    "repeat": {
+      "contract_roots": 1,
+      "owners": 395,
+      "cases": 54905,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 5.873313192976639
+    },
+    "server": {
+      "contract_roots": 1,
+      "owners": 395,
+      "cases": 54905,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 89.85258044907823
+    },
+    "highres": {
+      "contract_roots": 1,
+      "owners": 395,
+      "cases": 54905,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 5.776052230037749
+    }
+  },
+  "previous343_observations_identical": true,
+  "capture_sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+  "source_manifest_sha256": "355296c451beab175a0fc13f1ba2b3ecc5b420677dd1d2e60f84844d56005b5c",
+  "production_c": {
+    "files": 6,
+    "lines": 166,
+    "test_reference_lines": 0
+  },
+  "proposed_owner_migrations": 52
+}
