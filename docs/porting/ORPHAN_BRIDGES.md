@@ -1,6 +1,7 @@
 # Unused memory and GUI bridges
 
-Status: baseline qualified; removal not yet applied.
+Status: qualified. C is 518 lines /6 files, down 117; no reference C.
+Baseline: `22ed2b8e`.
 
 The preceding formatting conversion is qualified and pushed as `59bf181d`.
 This batch removes unreachable C memory accessors and five GUI wrappers, together
@@ -67,3 +68,23 @@ Forty-eight identical completed native captures now share verified canonical
 `build/port-final-formatting/c-probe3` files, saving 362,014,506 logical bytes.
 The sharing manifest is `build/port-final-formatting/native-capture-sharing.json`.
 Preserve canonical targets; original assets and result logs are untouched.
+
+## Final qualification
+
+Four focused roots and static checks pass in default/server/highres with no skips.
+The safe build passes; its allocator bridges remain and all 24 retired interfaces
+are absent. Safe runtime behavior was not newly qualified. Three production
+builds/ABI, exact known-suite comparison, headless gameplay and save/load pass.
+All source snapshots agree and preflight/final default hashes match. See
+[orphan-bridges-qualification.json](orphan-bridges-qualification.json).
+Luna's installed removal needed no behavior corrections; the preexisting safe
+allocator compile error was repaired and committed before removal.
+
+The two-batch delegation review supports continuing one bounded Luna helper.
+Precise implementation and test shortlists have been useful; audit/import reports
+still need evidence and primary verification. No measured cost-saving claim.
+
+After all qualification jobs joined, removed 62 verified obsolete Go cache
+entries (2,707,209,080 bytes) containing the retired bridge symbols. Host-wide
+process/open-file checks, sizes, mtimes and hashes passed. The cleanup plan and
+application record are under `build/port-final-orphan-bridges`; CONSUMED.

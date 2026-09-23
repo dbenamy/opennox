@@ -26,7 +26,6 @@
 #define NOX_PLAYER_MAX_LEVEL 10
 
 #include "common/platform/platform.h"
-#include "memmap.h"
 
 #include "nox_wchar.h"
 #include "noxstring.h"

@@ -2280,3 +2280,13 @@ than reproduce out-of-bounds C writes. Port only live base10 decimal semantics a
 exact normalized directory presence; retire unreachable glob/string APIs. Keep
 shared catalog storage unchanged. Tagged raw words become pointers only for string
 arguments. See [TEXT_FORMAT.md](TEXT_FORMAT.md) for evidence and delegation lessons.
+
+
+Retire unused memory lookup and GUI C adapters after whole-source reachability
+review; reuse the existing Go registry for the sole tagged threshold getter.
+Keep offline symbol-name metadata and live native window APIs. Preserve safe-mode
+allocator/ASan behavior; repair its stale generic free call before the removal.
+This qualifies 117 fewer C lines and 24 fewer interfaces. The optional safe build
+passes; runtime qualification remains default/server/highres. Continue one bounded
+Luna helper after the two-batch review, with primary evidence checks and integration.
+See [ORPHAN_BRIDGES.md](ORPHAN_BRIDGES.md).

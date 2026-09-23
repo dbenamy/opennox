@@ -9,10 +9,6 @@ package legacy
 
 extern uint64_t qword_581450_9544;
 
-static double* portTestDurabilityQuarter(void) {
-	return getMemDoublePtr(0x581450, 9608);
-}
-
 // Keeping the loop in C makes the exhaustive boundary fixture one cgo call.
 static void portTestDurabilityBatch(const uint16_t* current, const uint16_t* maximum, int* out, size_t n) {
 	for (size_t i = 0; i < n; i++) {
@@ -22,7 +18,11 @@ static void portTestDurabilityBatch(const uint16_t* current, const uint16_t* max
 */
 import "C"
 
-import "unsafe"
+import (
+	"unsafe"
+
+	"github.com/opennox/opennox/v1/common/memmap"
+)
 
 type PortTestDurabilityCase struct {
 	Current uint16
@@ -44,7 +44,7 @@ func PortTestDurability(cases []PortTestDurabilityCase, halfBits, quarterBits ui
 		return snap
 	}
 	half := (*uint64)(unsafe.Pointer(&C.qword_581450_9544))
-	quarter := (*uint64)(unsafe.Pointer(C.portTestDurabilityQuarter()))
+	quarter := memmap.PtrUint64(0x581450, 9608)
 	oldHalf, oldQuarter := *half, *quarter
 	snap.BeforeHalf, snap.BeforeQuarter = oldHalf, oldQuarter
 	*half, *quarter = halfBits, quarterBits

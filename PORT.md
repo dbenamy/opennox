@@ -14,6 +14,12 @@
 
 ## Current status
 
+Unused C memory accessors and five GUI adapters are retired. The existing Go
+registry now supplies the durability fixture's threshold address. Four focused
+tests and static checks pass in default/server/highres; the optional safe build,
+production/ABI, known-suite comparison and headless gameplay/save-load also pass.
+This removes 117 C lines and 24 interfaces. See [ORPHAN_BRIDGES.md](docs/porting/ORPHAN_BRIDGES.md).
+
 Custom text formatting, scalar strings and the audio catalog directory check are
 Go. The 375/373/375 affected roots pass in default/server/highres, along with 668,876 frozen
 cases and native consumer contracts. Production/ABI, known-suite comparison,
@@ -54,8 +60,8 @@ unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skip
 and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
 comparison, headless gameplay and save/load checks pass.
 
-C remaining is **635 physical lines in 8 files**, zero reference C. See
-[the native qualification](docs/porting/text-format-native-qualification.json).
+C remaining is **518 physical lines in 6 files**, zero reference C. See
+[the native qualification](docs/porting/orphan-bridges-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in
@@ -205,7 +211,8 @@ Good default assignments:
 - **Disk-cleanup audits:** inventory obsolete builds, caches and duplicate assets;
   provide exact paths, sizes, retention reasons and proposed verification steps.
   The primary reviews and executes cleanup after checking active jobs, open files,
-  symlink targets and required recovery artifacts. Do not let the helper delete
+  symlink targets and required recovery artifacts. Process/open-file checks must
+  see the host process namespace, not only an isolated sandbox view. Do not let the helper delete
   files during an audit. Preserve original assets, current evidence and source;
   use verified deduplication or clearly reproducible obsolete outputs where possible.
 - **Documentation and mechanical checks:** draft batch reports, caller inventories,
@@ -243,6 +250,15 @@ readability cleanup. Earlier Terra trials also succeeded for
 [randomized insertion](docs/porting/PROTECTION_INSERT.md) and
 [integer/byte/word setters](docs/porting/PROTECTION_SET.md). These support bounded
 delegation, not blanket trust in every subsystem or measured cost savings.
+
+After the first two batches under these guidelines, retain one bounded Luna helper.
+The scalar implementation and orphan-removal draft passed qualification after
+primary review. Mechanical edits and exact test selection were useful. Import
+cleanup, reachability and disk audits required corrections; require executable
+preflight checks and machine-generated evidence for those tasks. Continue to own
+baseline acceptance, storage/ABI choices and final qualification in the primary.
+The scalar storage audit caught pointer-typed redeclarations worth separating
+from ordinary numeric owners. No subscription-cost reduction has been measured.
 
 ## Explaining the work and reporting diagnostics
 

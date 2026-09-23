@@ -54,11 +54,6 @@ func set_dword_5d4594_3799468(v int) {
 	GetClient().Cli().GUI.ValYYY = v
 }
 
-//export nox_window_new_go
-func nox_window_new_go(par *nox_window, flags, a3, a4, w, h C.int, fnc unsafe.Pointer) *nox_window {
-	return (*nox_window)(GetClient().Cli().GUI.NewWindowRaw(asWindow(par), gui.StatusFlags(flags), int(a3), int(a4), int(w), int(h), gui.WrapFuncC(fnc)).C())
-}
-
 //export nox_xxx_wndGetID_46B0A0
 func nox_xxx_wndGetID_46B0A0(win *nox_window) int {
 	if win == nil {
@@ -73,45 +68,6 @@ func nox_xxx_wndSetID_46B080(win *nox_window, id int) int {
 		return -2
 	}
 	asWindow(win).SetID(uint(id))
-	return 0
-}
-
-//export nox_window_set_all_funcs_go
-func nox_window_set_all_funcs_go(p *nox_window, a2 unsafe.Pointer, draw unsafe.Pointer, tooltip unsafe.Pointer) int {
-	if p == nil {
-		return -2
-	}
-	win := asWindow(p)
-	win.SetFunc93(gui.WrapFuncC(a2))
-	win.SetDraw(gui.WrapDrawFuncC(draw))
-	win.SetTooltipFunc(tooltip)
-	return 0
-}
-
-//export nox_xxx_wndSetWindowProc_46B300_go
-func nox_xxx_wndSetWindowProc_46B300_go(win *nox_window, fnc unsafe.Pointer) int {
-	if win == nil {
-		return -2
-	}
-	asWindow(win).SetFunc93(gui.WrapFuncC(fnc))
-	return 0
-}
-
-//export nox_xxx_wndSetProc_46B2C0_go
-func nox_xxx_wndSetProc_46B2C0_go(win *nox_window, fnc unsafe.Pointer) int {
-	if win == nil {
-		return -2
-	}
-	asWindow(win).SetFunc94(gui.WrapFuncC(fnc))
-	return 0
-}
-
-//export nox_xxx_wndSetDrawFn_46B340_go
-func nox_xxx_wndSetDrawFn_46B340_go(win *nox_window, fnc unsafe.Pointer) int {
-	if win == nil {
-		return -2
-	}
-	asWindow(win).SetDraw(gui.WrapDrawFuncC(fnc))
 	return 0
 }
 

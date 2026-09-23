@@ -276,6 +276,7 @@ target build selection and linker evidence.
 | Extension/listing corrected C baseline (not a conversion) | 16 | 1,760 | +20 | 0 |
 | Extension/listing helpers, orphan readers and shared declarations | 12 | 1,219 | −541 | 0 |
 | Text formatting, scalar strings and audio directory | 8 | 635 | −584 | 0 |
+| Unused memory and GUI bridges | 6 | 518 | −117 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

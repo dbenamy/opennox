@@ -1,0 +1,175 @@
+{
+  "status": "qualified unused bridge removal",
+  "baseline_revision": "22ed2b8e",
+  "baseline": "orphan-bridges-baseline.json",
+  "retired_c_interfaces": 24,
+  "retired": [
+    "mem_getDoublePtr",
+    "mem_getFloatPtr",
+    "mem_getI16Ptr",
+    "mem_getI32Ptr",
+    "mem_getI64Ptr",
+    "mem_getI8Ptr",
+    "mem_getPtr",
+    "mem_getPtrSize",
+    "mem_getPtrSize_go",
+    "mem_getPtr_go",
+    "mem_getU16Ptr",
+    "mem_getU32Ptr",
+    "mem_getU64Ptr",
+    "mem_getU8Ptr",
+    "nox_window_new",
+    "nox_window_new_go",
+    "nox_window_set_all_funcs",
+    "nox_window_set_all_funcs_go",
+    "nox_xxx_wndSetDrawFn_46B340",
+    "nox_xxx_wndSetDrawFn_46B340_go",
+    "nox_xxx_wndSetProc_46B2C0",
+    "nox_xxx_wndSetProc_46B2C0_go",
+    "nox_xxx_wndSetWindowProc_46B300",
+    "nox_xxx_wndSetWindowProc_46B300_go"
+  ],
+  "targets": {
+    "default": {
+      "roots": 4,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 165.65080714505166
+    },
+    "server": {
+      "roots": 4,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 159.9415631510783
+    },
+    "highres": {
+      "roots": 4,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 71.79479240090586
+    }
+  },
+  "safe": {
+    "build": true,
+    "retired_symbols_absent": true,
+    "retained": [
+      "nox_malloc",
+      "nox_free",
+      "nox_memset",
+      "nox_memcpy_go"
+    ],
+    "sha256": "838eef0060f33453559623d5a7dee5da724477c25c287ba448c551aac84b5b56",
+    "runtime_tested": false
+  },
+  "source_manifest_sha256": "abe973a32e845f4b7a6e9330ac3673a12717b8d9b66953e3827d5aba4d5fba3e",
+  "production_c": {
+    "files": 6,
+    "lines": 518,
+    "change": -117,
+    "test_reference_lines": 0
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.023365629138425,
+        "sha256": "b947fd00db24e31df06b3aad92fc7b20cabaa43ae94e89e44cc45511293e6a7b",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.337919489014894,
+        "sha256": "7cb0050024d9403867319d1a0a6211743bb02861d7303105f516e56c9ac267d0",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 70.26926506496966,
+        "sha256": "5b4205f4b24e809222ad8d12b06e31b6a2d2b264e72d5f3adab17af1ee84ab02",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "orphan-bridges-native-save": {
+        "exit": 0,
+        "wall_seconds": 46.3425904288888,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.77030910295434,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "b947fd00db24e31df06b3aad92fc7b20cabaa43ae94e89e44cc45511293e6a7b",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-final-orphan-bridges/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/orphan-bridges-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Retire unreachable memory accessor and GUI C bridges; use existing Go accessor in durability fixture.",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "91807cf47f433a6623ff572098de13b7c655b244b2a3dec147784b4aed8435f8"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 59.82020767708309,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    },
+    "preflight_gameplay": {
+      "exit": 0,
+      "process_exit": 0,
+      "elapsed": 64.38339471188374,
+      "capture": false,
+      "godebug": ",randautoseed=0",
+      "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+      "binary_sha256": "b947fd00db24e31df06b3aad92fc7b20cabaa43ae94e89e44cc45511293e6a7b",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "-s",
+        "-screen 0 1280x960x24 -nolisten tcp",
+        "/root/src/opennox/build/port-final-orphan-bridges/native-preflight/opennox",
+        "-data",
+        "/root/src/opennox/build/baseline/runs/orphan-bridges-native/data",
+        "-window",
+        "-pprof",
+        "127.0.0.1:0"
+      ],
+      "display_implementation": "Retired unused memory and GUI bridges",
+      "isolated_network": false,
+      "removed_maps": 0
+    }
+  }
+}

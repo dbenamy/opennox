@@ -2,26 +2,40 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: 635 physical lines in 8 production `.c` files**, zero
-reference C. Latest conversion removes 584 lines and 28 C interfaces.
+**Qualified C remaining: 518 physical lines in 6 production `.c` files**, zero
+reference C. Latest conversion removes 117 lines and 24 C interfaces.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Active — unused memory and GUI bridges
+## Current — unused memory and GUI bridges qualified
 
-Formatting conversion `59bf181d` is pushed and fully qualified. Next scope is
-removing orphan memmap/GUI adapters (24 C interfaces), with the one tagged
-quarter-threshold accessor moved to the existing Go registry. Production callers
-are absent; whole-source literal references are recorded in
-`build/port-final-orphan-bridges/before-references.json`. Four existing durability
-and GUI contracts are selected. Capture the focused baseline and test the existing
-`safe` build before editing source, then qualify default/server/highres, static,
-production/ABI, exact full-suite comparison and headless gameplay/save-load.
-Baseline four roots/static PASS; safe build now PASS after repairing its stale
-`alloc.Free` call to `alloc.FreePtr`. The guarded installer is UNAPPLIED. Luna supplied the installer and test shortlist;
-primary verified references and owns execution. No active helper edits source.
+Baseline `22ed2b8e` is pushed, including the preexisting safe allocator API repair.
+Four focused roots and static checks pass in default/server/highres, no skips.
+The optional safe build passes and preserves its allocator bridges while all 24
+retired symbols are absent. Three production builds/ABI, exact known-suite
+comparison, headless gameplay and explicit save/load pass. All source snapshots
+agree, all jobs joined. C is 518 lines /6 files (−117), no reference C.
+See [ORPHAN_BRIDGES.md](docs/porting/ORPHAN_BRIDGES.md).
 
+The installer under `build/port-final-orphan-bridges` is CONSUMED. Final artifacts
+are native-default/safe/preflight/server/highres/production. The literal-reference
+audit leaves only comments and offline source tools. Shared globals and callback
+identities remain unchanged. Duplicate preflight assets were verified/deduplicated;
+restore via `python3 build/port-final-orphan-bridges/deduplicate-preflight.py --restore orphan-bridges-native`.
+
+
+After all qualification jobs joined, removed 62 verified obsolete Go cache
+entries (2,707,209,080 bytes) containing the retired bridge symbols. Host-wide
+process/open-file checks, sizes, mtimes and hashes passed. The cleanup plan and
+application record are under `build/port-final-orphan-bridges`; CONSUMED.
+
+Next: scalar global storage. Luna's ignored inventory/draft under
+`build/port-final-storage` is UNINSTALLED and unqualified. Definitions and typed
+externs need independent review; preserve exact numeric bits and address lifetime.
+Separate pointer/array owners, pointer-typed redeclarations and C fixture users.
+Primary owns baseline contracts and final integration. One Luna helper remains the
+standing process after two completed batches; review lessons are recorded in PORT.
 
 ## Current — formatting/scalars/directory qualified
 
