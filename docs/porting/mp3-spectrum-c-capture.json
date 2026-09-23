@@ -1,0 +1,45 @@
+{
+  "counts": [
+    60,
+    126,
+    378,
+    3600,
+    144,
+    56
+  ],
+  "result_sha256": [
+    "aaf3aa971c13088deba96b7b99cf9a62f5676c327f1767eb009ff31a7e12cf84",
+    "aaf3aa971c13088deba96b7b99cf9a62f5676c327f1767eb009ff31a7e12cf84",
+    "aaf3aa971c13088deba96b7b99cf9a62f5676c327f1767eb009ff31a7e12cf84"
+  ],
+  "ubsan_result_sha256": "aaf3aa971c13088deba96b7b99cf9a62f5676c327f1767eb009ff31a7e12cf84",
+  "uncompressed_sha256": "29aff6bae8ad530905c01fc96adfafdcccd42cbcfb31ca8d25ae6c0e6cfff3f8",
+  "fixture_sha256": "126fed26f3998675658a17d03f6a7beb57f2fc2cded11c5cdbaac0a3e3691fef",
+  "source_commit": "53a1326d3a9c00cea8c4c676333bfb9b0785a1d0",
+  "header_sha256": "e03e87c847cbdfd79cd3bf74a3b1fe24bc8c590245e92ce8153e87b23e17507f",
+  "tool_sha256": "93e07a5c764654f8daeef499ec3406297ec9558d329c6f7c6953b94ce7ff9b4d",
+  "side_input_tool_sha256": "10f23a977db362e4ef56593b561505ed8cb50faf307ece165d6d2bb3a9a6eb09",
+  "shim_sha256": "66d2144d8e7d24001a3cf9b9ffe996d388ecd4dbd755d4d031035c42e5057f2f",
+  "compiler": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+  "flags": [
+    "gcc",
+    "-m32",
+    "-std=c11",
+    "-O2",
+    "-g",
+    "-msse2",
+    "-mfpmath=sse",
+    "-I",
+    "/root/src/opennox/src/legacy/client/audio/mp3",
+    "/root/src/opennox/build/port-mp3-spectrum/capture/capture.c",
+    "-lm"
+  ],
+  "workspace_layout": {
+    "compile_time_assertions_passed": true,
+    "check_source_sha256": "c048d766b903105fa4e170fceed42b3490aa25ecd0a2ccbe62c80f4ae91d69fc",
+    "assertions": [
+      "_Static_assert(offsetof(mp3dec_scratch_t,scf)==offsetof(mp3dec_scratch_t,grbuf)+1152*sizeof(float),\"spectral/scalefactor storage must be adjacent\");",
+      "_Static_assert(sizeof(((mp3dec_scratch_t*)0)->scf)==40*sizeof(float),\"expected40float scalefactors\");"
+    ]
+  }
+}

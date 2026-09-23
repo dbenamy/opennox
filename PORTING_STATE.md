@@ -282,3 +282,23 @@ nLongBands4 gives offset72, and remaining widths sum528 (end600). Verify source/
 reachability before asserting/fixing a bug; don't silently normalize behavior.
 No active primary builds. Disk~320MiB; compress older raw captures with verified
 round trips/restoration record before larger spectrum fixtures. Assets untouched.
+
+## Current — spectrum C baseline
+
+Scalefactor conversion53a1326d committed/pushed. Spectrumcapture46532 joined PASS:
+4364cases (60mid-side/126intensity-band/378top-band/3600fullintensity/144reorder/
+56antialias), three scalarSSE2runs+UBSan exact. Independent Luna review found no
+blockingdomain/coveragegap; all30floatconstantsmatch. Native386 staticassert proves
+1152grbuffloats immediately followedby40scffloats in C scratch. See MP3_SPECTRUM.md
+and mp3-spectrum-c-capture.json for confirmed8kHzmixedblock end600 extent and
+reversible plan to model adjacency explicitly at fullGo integration (notclamp).
+Go draft/primaryrunner ignored under build/port-mp3-spectrum, notinstalledyet.
+Next commitbaseline, install/review/qualify allroots and unchangedproductionproof.
+
+Disk cleanup56487 joined PASS:37raw MP3 capture files archived losslessly,172276481
+bytes reclaimed after159hostprocesschecks and per-file roundtrip/hash verification.
+Record build/port-artifact-cleanup/mp3-raw-archive-record.json; archive-mp3-raw.py
+is CONSUMED for archival. Use --restore <recorded-relative-path> before historical
+finalizers needing raw .bin files (especially results-ubsan.bin). Frozen committed
+fixtures/current binaries/assets are unchanged. Spectrumrawcaptures are newer and
+notarchived. Free disk~407MiB. No primary builds active. C sixlines/onefile/refzero.
