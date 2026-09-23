@@ -20,7 +20,8 @@ C probe1 joined PASS: three formatter roots /13,464 bounded-output cases.
 Added exhaustive UTF-16/byte comparisons, decimal/copy contracts and real catalog
 directory checks. Probe2 failed setup on a missing fixture brace; it is joined
 and the syntax is corrected. C probe3 joined PASS: all eight roots /668,876 captured cases. No build or
-test jobs remain active. Work is paused at the user’s request for a Codex upgrade.
+test jobs remain active. The upgrade is complete; the requested isolated GPT-6 Luna trial passed.
+See [LUNA_TRIAL.md](docs/porting/LUNA_TRIAL.md). The production batch has not resumed.
 No production source has changed since2390c78d;
 no new captures are frozen and no native formatting conversion is installed.
 Completed native-text save-run asset cleanup80333 joined/CONSUMED, recovering
@@ -30,10 +31,13 @@ Completed native-text save-run asset cleanup80333 joined/CONSUMED, recovering
 The scalar and directory contracts pass their first C probe; caller audit and
 baseline repeats remain pending. The native formatter draft in
 `build/port-final-formatting/drafts/text_format.go` is NOT installed or qualified.
-After upgrading, the user requests a bounded trial of the newly available Luna
-for implementation subagents, replacing Terra where useful. Keep baseline design,
-review and final qualification with the primary agent; verify the actual model
-identifier exposed by the upgraded session before delegation. Initial findings are in `initial-review.md`; do not
+The user requested GPT-6 Luna instead of Terra for bounded implementation work.
+The available `gpt-6-luna` helper drafted the four scalar helpers in
+`build/port-final-formatting/luna-trial/text_scalar.go`; all 655,391 adapted scalar
+cases and complete C capture comparisons pass on 386/SSE2. No behavior fixes were
+needed; primary requested unsafe.Add readability cleanup. This draft is NOT
+installed or production-qualified. Keep baseline design, review and qualification
+with the primary agent. No jobs remain active. Initial findings are in `initial-review.md`; do not
 replace the remaining formatter with standard fmt.Sprintf. C remains1,219 /12.
 
 

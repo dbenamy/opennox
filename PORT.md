@@ -173,8 +173,9 @@ Batch size is a guide, not a LOC quota or reason to weaken coverage.
 
 ## Subagent use
 
-The user supports bounded delegation to a cheaper model such as Terra when the
-primary agent is confident it will save total work without weakening the result.
+The user prefers GPT-6 Luna for bounded implementation delegation after a passing
+scalar-string trial, when the primary agent expects it to save total work without
+weakening the result.
 Use the primary agent plus at most one helper by default; avoid an agent fleet.
 Follow the active session's delegation rules and available model choices. This
 plan does not override restrictions on spawning agents.
@@ -186,7 +187,9 @@ integer/byte/word setter draft also passed review. See
 [the insertion report](docs/porting/PROTECTION_INSERT.md) and
 [the setter report](docs/porting/PROTECTION_SET.md). These are successful bounded
 trials, not evidence that every subsystem is equally easy to delegate or that
-subscription savings have been measured.
+subscription savings have been measured. The [Luna scalar trial](docs/porting/LUNA_TRIAL.md)
+passed 655,391 cases against C captures without behavior corrections; keep using
+one bounded helper with primary-owned review and qualification.
 
 - Delegate an independent, concrete task: a caller/ABI audit, a bounded helper
   translation against frozen expectations, or a focused review. Give the helper
