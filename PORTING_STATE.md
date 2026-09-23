@@ -7,56 +7,61 @@ standalone reference C. That file includes the MP3 decoder implementation; C
 preambles, headers, generated bridges and external libraries remain outside this
 metric. See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — distinct empty callbacks qualified
+## Current — direct callback addresses qualified
 
-Actual-C baseline `ae76f3c8` and conversion `dc9692f8` are committed/pushed. The conversion replaces
-ten distinct empty C bodies with Go exports, deleting GAME5_2.c and
-common__object__modifier.c. All 338 frozen cases match; 69/69/69 normal-profile
-consumer roots and 24 safe roots pass with no skips. Safe build/static, three
-production builds/ABI, exact known-suite comparison, headless creation and explicit
-save/load pass. All four binaries retain ten distinct Go-backed callback addresses.
-No golden changed. See [EMPTY_CALLBACKS.md](docs/porting/EMPTY_CALLBACKS.md) and
-empty-callbacks-native-qualification.json. Check Git log/remote for commit/push.
+Empty callbacks baseline `ae76f3c8` and conversion `dc9692f8` are committed/pushed.
+Address-getter baseline `229bf34a` is committed/pushed. The working getter conversion
+is fully qualified: five direct references replace five C preamble bodies across
+four files. All 38 consumer roots pass per normal profile; safe build/static,
+production/ABI, exact known-suite and headless creation/save/load pass. Generated
+cgo references confirm the exact four target symbols. All four binaries retain
+ten distinct Go-backed empty callback identities. No golden changed.
+See [ADDRESS_ADAPTERS.md](docs/porting/ADDRESS_ADAPTERS.md) and native qualification
+JSON. Check Git log/remote for the conversion's commit/push.
 
-Pipelines24759,27583 and finalizer75180 JOINED PASS; all jobs joined. apply-native.py,
-compare-dispatch.py, finish-native.py and both native scenario deduplication scripts
-are CONSUMED. Artifacts are build/port-empty-callbacks/native-{default,server,
-highres,safe,preflight,production} and paired-timing. Do not rerun completed phases.
-Paired timing shows 84–140 ns/call added median cost (1.57–2.27x). Primary accepted
-this reversible cost in performance-review.json; real game-frame impact remains
-unmeasured. Review profiling before any further no-op dispatch optimization.
+Pipelines3368,59256 (C baseline),20004 (native focused/safe),56013 (rest) and2544
+(finalizer) JOINED PASS; all build/test jobs joined. finish-c.py, applied.json,
+finish-native.py and both native scenario deduplication scripts are CONSUMED.
+Artifacts: build/port-address-adapters/{c-*,native-*,cgo-addresses,inline-inventory}.
+Do not rerun consumed phases. Standalone C stays six lines; heuristic production
+preamble count falls 86→81 (76 shared dispatchers and five remaining adapters).
 
-Baseline fixture limitations remain documented: the spell fixture's retired-state
-range was repaired without golden changes; an unrelated renderer fixture still
-blocks the expanded optional-safe suite. Failed runs remain recorded and are not
-qualification evidence. Original C benchmark/captures remain available.
+Luna's getter draft was correct but its initial coverage report overstated bot
+allocation-failure, bot-identity and actor callback-slot coverage. Primary traced
+setup/snapshots and corrected these claims. Exact source/cgo symbol mapping
+complements the actual behavioral coverage; no forced allocation-failure test is
+claimed. Optional-safe renderer fixture limitations remain documented separately.
 
-## Next — five pure address getters
+Callback timing from dc9692f8 remains a review item: 84–140 ns/call additional
+median cost (1.57–2.27x), accepted as reversible; actual frame impact is unmeasured.
+Current callback binaries/benchmarks and frozen captures remain available.
 
-Luna drafted build/port-address-adapters/{draft.patch.txt,README.md}. Primary
-reviewed the exact five substitutions across four files and prepared ignored
-replacements.json, tests.txt.draft, c-batch.json.draft and primary-plan.md. None of the source substitutions is
-applied. Pipeline3368 JOINED PASS for the installed C baseline manifest: 38 existing player-control/orchestration roots in three profiles
-with the original getters. Finalizer59256 also JOINED PASS after checking unchanged
-whole-source fingerprints and all four production binary hashes. C baseline is
-qualified; finish-c.py is consumed. Commit/push baseline docs, then apply
-and qualify the conversion. No duplicate C oracle or changed golden is needed.
+## Next — MP3 baseline before numerical decisions
 
-Luna's first coverage report overstated rare-branch and snapshot coverage. Primary
-traced setup and snapshots: bot allocation-failure fallback and observer bot-identity
-early return are not proven by current fixtures, and actor callback slot744 is not
-explicitly captured there. Preserve these limits in the accepted test plan; source
-mapping and generated cgo references must also prove the exact target symbols.
+Luna is drafting a tagged ail MP3 asset-baseline test only under
+build/port-mp3-audit/drafts/, not in src. Primary must review it before application,
+collect repeated actual-C captures and freeze expectations before accepting.
+The draft should observe input hashes, format, reported PCM/counts, Decode sequence,
+full buffer writes and outside-buffer guards for MP3-in-WAV Dialog assets.
+No old failing audio golden is a passing parity oracle; no decoder code changes
+or new actual-C PCM baseline are implemented yet.
 
-Luna's round7 obsolete-production-ELF audit found no eligible candidates under its
-exclusions. No files were deleted; no host-use check was needed. Helper is idle.
-Free disk was around 1GiB during final qualification; recheck before more builds.
+Read build/port-mp3-audit/{README,active-helper-plan,primary-scope-review}.md.
+Dialog assets contain 1,246 MP3-in-WAV files despite no .mp3 extension. Inspected
+retained C paths use x87, but the historical PCM mismatch cause is not established.
+The bit-reader mutates parser state; inactive LayerI/II widths are not active
+coverage. Avoid per-bit C→Go calls: a future Go decoder needs coherent internals
+and numerical/state qualification before the production switch. Primary owns
+that decision; the helper's source audit is planning, not implementation evidence.
 
-MP3 audit is under build/port-mp3-audit. Dialog assets contain 1,246 MP3-in-WAV
-files despite no .mp3 filenames; primary corrected that initial audit inference.
-Historical audio goldens are known failures on this target. Inspected retained
-C decoder paths use x87, but the cause of historical PCM mismatches is not proven.
-No decoder changes or new actual-C PCM baseline are implemented.
+Disk cleanup30220 JOINED PASS: ten verified obsolete entry executables removed,
+489,077,624 bytes reclaimed after 159 host-process checks. Record:
+build/port-artifact-cleanup/superseded-entry-removed.json; apply-superseded-entry.py
+is CONSUMED. Historical entry and dependent safe-baseline finalizers need rebuilt
+entry executables before reuse. All metadata/captures/current binaries remain.
+Disk dropped near 139MiB during scenario copies and recovered after their verified
+deduplication; recheck before further builds. Five safe-direct executables remain
+separately inventoried but NOT deleted. Round7 general audit found no candidates.
 
 ## Recent qualified milestones
 

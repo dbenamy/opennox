@@ -43,3 +43,34 @@ Luna drafted the five substitutions and traced callers. Primary review confirmed
 the substitutions but caught overstated allocation-failure, bot-identity and actor
 snapshot coverage; the helper corrected its report before acceptance. This was
 useful mechanical drafting, but branch coverage required direct source review.
+
+## Qualified direct addresses
+
+The five getter bodies are removed. Every use now takes the address of the same
+C function, preserving its unsafe.Pointer type and surrounding control flow.
+Generated cgo static imports/link names and all five translated use sites confirm
+that mapping. The first ad hoc inspection check assumed an older generated
+variable spelling; it was corrected after reading the Go 1.26 output. No code
+change was needed for that audit correction.
+
+All 38 selected roots pass in each normal profile with unchanged golden hashes.
+Safe build/static, three fresh production builds/ABI, exact known-suite comparison,
+headless character creation and explicit save/reload/resumption pass. The suite
+still has the established 1,553 failure entries; this does not claim a green suite.
+All four binaries retain ten distinct Go-backed empty callback addresses and the
+four target function symbols; the five old getter names and PortTest symbols are
+absent. Only the four intended source files changed from the qualified baseline.
+See [address-adapters-native-qualification.json](address-adapters-native-qualification.json).
+
+Standalone C remains **six lines/one file**, zero standalone reference C. The
+same heuristic scanner now finds 81 production preamble bodies, down five: 76
+shared dispatchers and five remaining adapters. This excludes generated cgo and
+is not an active preprocessed function count. Existing C interop remains.
+
+To maintain disk headroom, ten superseded entry-classifier executables were removed
+after hash/qualification checks and checking 159 host processes for references.
+This reclaimed 489,077,624 bytes. All source/manifest/log/capture/qualification
+records and current binaries remain. Historical entry and dependent safe-baseline
+finalizers require rebuilding those old executables before rerunning. The consumed
+record is build/port-artifact-cleanup/superseded-entry-removed.json. Successful new
+scenario asset copies were separately deduplicated with restoration manifests.

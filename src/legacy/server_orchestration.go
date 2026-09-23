@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "GAME3_3.h"
-static void* orchestrationChestInitAddress(void) { return nox_xxx_initChest_4F0400; }
 */
 import "C"
 
@@ -234,7 +233,7 @@ func orchestrationRewards() {
 	}
 	rewardPlaceAnkh()
 	rewardSelectMarkers()
-	chestInit := C.orchestrationChestInitAddress()
+	chestInit := unsafe.Pointer(C.nox_xxx_initChest_4F0400)
 	marker := func(u *server.Object) bool {
 		return uint32(u.TypeInd) == orchestrationRewardMarker || uint32(u.TypeInd) == memmap.Uint32(0x5D4594, 1568304)
 	}

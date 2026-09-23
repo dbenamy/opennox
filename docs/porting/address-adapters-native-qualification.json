@@ -1,0 +1,294 @@
+{
+  "status": "qualified direct callback addresses",
+  "preceding_revision": "229bf34a9c439eed5e7224d4721fb06b56007914",
+  "targets": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 38,
+      "selected_root_tests": 38,
+      "exit": 0,
+      "started_tests": 38,
+      "completed_tests": 38,
+      "started_root_tests": 38,
+      "completed_root_tests": 38,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 161.87543071596883
+    },
+    "server": {
+      "tags": "server,porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 38,
+      "selected_root_tests": 38,
+      "exit": 0,
+      "started_tests": 38,
+      "completed_tests": 38,
+      "started_root_tests": 38,
+      "completed_root_tests": 38,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 158.98315854393877
+    },
+    "highres": {
+      "tags": "highres,porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 38,
+      "selected_root_tests": 38,
+      "exit": 0,
+      "started_tests": 38,
+      "completed_tests": 38,
+      "started_root_tests": 38,
+      "completed_root_tests": 38,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 79.3689753850922
+    }
+  },
+  "changed_files": [
+    "src/legacy/player_controls_respawn.go",
+    "src/legacy/player_controls_bot.go",
+    "src/legacy/player_controls_messages.go",
+    "src/legacy/server_orchestration.go"
+  ],
+  "generated_address_check": {
+    "status": "all five uses reference the same four C function symbols",
+    "uses": {
+      "player_controls_respawn": [
+        "nox_xxx_updatePlayer_4F8100",
+        "nox_xxx_updatePlayerMonsterBot_4FAB20"
+      ],
+      "player_controls_bot": [
+        "nox_xxx_updatePlayer_4F8100"
+      ],
+      "player_controls_messages": [
+        "nox_xxx_inversionEffect_4E03D0"
+      ],
+      "server_orchestration": [
+        "nox_xxx_initChest_4F0400"
+      ]
+    },
+    "files": {
+      "build/port-address-adapters/cgo-addresses/player_controls_messages.cgo2.c": "75b2598176ca2ae7cb0cad7251b8f25c79b26d690ffe995bbd69a14172dca0ae",
+      "build/port-address-adapters/cgo-addresses/server_orchestration.cgo1.go": "de3b4b5788800366f627a100cbca5df105652a5c344fe5a5fb4942905ee995f9",
+      "build/port-address-adapters/cgo-addresses/player_controls_respawn.cgo2.c": "8e3a1bf8e751b51b05558ace0d4fe8c54853595b806fc5a8713612bb1ccfeba0",
+      "build/port-address-adapters/cgo-addresses/player_controls_bot.cgo1.go": "a01889747218ea0fe8ee4fd9a822e7cb6291213f965fb4496b8dd18dfb6b4cac",
+      "build/port-address-adapters/cgo-addresses/player_controls_messages.cgo1.go": "0df4b4729244e28d195d8d426f7ed32c5584d18ee9087da783b72fa293df9592",
+      "build/port-address-adapters/cgo-addresses/player_controls_respawn.cgo1.go": "96678af7f7865ea19f41733cd7813980e310fe6247691f85dd1ea175f8deb4fd",
+      "build/port-address-adapters/cgo-addresses/_cgo_export.c": "0a598fff3e70bd9f91e0bdd45610538d9d8293acdaa2be15b578772cd010c361",
+      "build/port-address-adapters/cgo-addresses/_cgo_export.h": "defb4a67a9db81dfa89e7bad25cc03d1c8fea3c7c2ad089a4d922a717940ff61",
+      "build/port-address-adapters/cgo-addresses/_cgo_gotypes.go": "b068a4e7364949fd211d6cb07e9cc7a87dd0b4fa2b5eef0744e4bdc91d61bc85",
+      "build/port-address-adapters/cgo-addresses/server_orchestration.cgo2.c": "631aea865456dbb7eef078354cceca295305829b249ea9e3b49b954ea2c5d680",
+      "build/port-address-adapters/cgo-addresses/player_controls_bot.cgo2.c": "ee304e00c423fffc9ae10052b8d7d2a27f578e46cb5713a6cf3e5ebc2ea5188e",
+      "build/port-address-adapters/cgo-addresses/_cgo_main.c": "a03d1428477a23970bf76b340398466c8275af11e078ad318baaf2fba169148c"
+    },
+    "audit_correction": "Initial ad hoc checker assumed an older cgo variable spelling and failed; inspected generated Go 1.26 static imports, then checked their exact link names and all five use sites."
+  },
+  "safe_binary_sha256": "637562fb2d4a3deedebe6d7dea4aedaab648c6d3ece4d5d2b7e15e7adb1af9ac",
+  "callback_identities": {
+    "safe": {
+      "nullsub_22": 150994166,
+      "nullsub_29": 150994496,
+      "nullsub_36": 150994826,
+      "nullsub_38": 150995156,
+      "nullsub_39": 150995486,
+      "nullsub_40": 150995816,
+      "nullsub_41": 150996146,
+      "nullsub_42": 150996476,
+      "nullsub_43": 150996806,
+      "nullsub_44": 150997136
+    },
+    "opennox": {
+      "nullsub_22": 150738448,
+      "nullsub_29": 150738560,
+      "nullsub_36": 150738672,
+      "nullsub_38": 150738784,
+      "nullsub_39": 150738896,
+      "nullsub_40": 150739008,
+      "nullsub_41": 150739120,
+      "nullsub_42": 150739232,
+      "nullsub_43": 150739344,
+      "nullsub_44": 150739456
+    },
+    "opennox-hd": {
+      "nullsub_22": 150738560,
+      "nullsub_29": 150738672,
+      "nullsub_36": 150738784,
+      "nullsub_38": 150738896,
+      "nullsub_39": 150739008,
+      "nullsub_40": 150739120,
+      "nullsub_41": 150739232,
+      "nullsub_42": 150739344,
+      "nullsub_43": 150739456,
+      "nullsub_44": 150739568
+    },
+    "opennox-server": {
+      "nullsub_22": 150086272,
+      "nullsub_29": 150086384,
+      "nullsub_36": 150086496,
+      "nullsub_38": 150086608,
+      "nullsub_39": 150086720,
+      "nullsub_40": 150086832,
+      "nullsub_41": 150086944,
+      "nullsub_42": 150087056,
+      "nullsub_43": 150087168,
+      "nullsub_44": 150087280
+    }
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.2560424860566854,
+        "sha256": "a748fc815368a63acba824a029efbb56c4df50f263f817fa79d43bb638448c21",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.818391346838325,
+        "sha256": "ff05913fc2ae3c3ba0500af67577e3a1d21793a24dcb44a74801037275059241",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 64.24738887907006,
+        "sha256": "0eda427904e253515a3013bb2d75db03763fe11ae8ae68ca82a37914013aa67f",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "address-adapters-native-save": {
+        "exit": 0,
+        "wall_seconds": 46.358489057049155,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.82881078007631,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "a748fc815368a63acba824a029efbb56c4df50f263f817fa79d43bb638448c21",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-address-adapters/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/address-adapters-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Direct callback addresses without C getter bodies",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "8dbd3bf33729060f81cb0e0b906cf233a9378efad60ba8e710ce5c0d9ae3fa9c"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 57.719228639034554,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "preflight": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 68.98987126909196,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c",
+    "binary_sha256": "a748fc815368a63acba824a029efbb56c4df50f263f817fa79d43bb638448c21",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-address-adapters/native-preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/address-adapters-native/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Direct callback addresses without C getter bodies",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "production_c": {
+    "files": 1,
+    "lines": 6
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "removed_production_preamble_bodies": 5,
+  "coverage_limits": [
+    "No forced bot allocation failure.",
+    "No explicit observer bot-identity early return.",
+    "Player actor callback slot is not explicitly serialized by these control fixtures.",
+    "Exact original-to-direct symbol mapping and generated cgo references complement behavioral captures; no copied C getter oracle."
+  ],
+  "source_manifest_sha256": "2e3daabeaad1934c735ac5b5a20ba667b7274ff5d183a47b7d85d4d66c9cc3b8"
+}

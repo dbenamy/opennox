@@ -6,7 +6,6 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4.h"
 #include "GAME4_3.h"
-static void* controlPlayerUpdateAddress(void) { return nox_xxx_updatePlayer_4F8100; }
 */
 import "C"
 import (
@@ -115,7 +114,7 @@ func controlBotUpdate(u *server.Object) uint32 {
 	}
 	b := *controlPtr(d, 292)
 	if b == nil {
-		*controlPtr(u.CObj(), 744) = C.controlPlayerUpdateAddress()
+		*controlPtr(u.CObj(), 744) = unsafe.Pointer(C.nox_xxx_updatePlayer_4F8100)
 		return 0
 	}
 	result := controlRespawnBot(u)

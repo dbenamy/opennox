@@ -8,7 +8,6 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4.h"
 #include "GAME4_1.h"
-static void* controlInversionAddress(void) { return nox_xxx_inversionEffect_4E03D0; }
 */
 import "C"
 import (
@@ -83,7 +82,7 @@ func controlInversion(u, target *server.Object) int32 {
 				continue
 			}
 			fn := *controlPtr(mod, 88)
-			if fn == nil || fn != C.controlInversionAddress() {
+			if fn == nil || fn != unsafe.Pointer(C.nox_xxx_inversionEffect_4E03D0) {
 				continue
 			}
 			var result int32

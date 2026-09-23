@@ -285,6 +285,7 @@ target build selection and linker evidence.
 | Entry classifiers: two preamble bodies removed | 4 | 45 | 0 | 0 |
 | Safe memory/string exports directly from Go | 3 | 25 | −20 | 0 |
 | Distinct empty callback exports from Go | 1 | 6 | −19 | 0 |
+| Direct callback addresses; five preamble bodies removed | 1 | 6 | 0 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

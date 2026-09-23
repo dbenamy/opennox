@@ -10,8 +10,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_2.h"
 #include "GAME4_3.h"
-static void* controlNormalUpdate(void) { return nox_xxx_updatePlayer_4F8100; }
-static void* controlBotUpdateAddress(void) { return nox_xxx_updatePlayerMonsterBot_4FAB20; }
 */
 import "C"
 import (
@@ -204,12 +202,12 @@ func controlLeaveObserver(pl unsafe.Pointer) {
 		return
 	}
 	u := controlObject(pl, 2056)
-	if u == nil || *controlPtr(u.CObj(), 744) == C.controlBotUpdateAddress() {
+	if u == nil || *controlPtr(u.CObj(), 744) == unsafe.Pointer(C.nox_xxx_updatePlayerMonsterBot_4FAB20) {
 		return
 	}
 	playerStateRemoveStatus((*server.Player)(pl), 289)
 	spellLifeBuffOff(u, int32(0))
-	*controlPtr(u.CObj(), 744) = C.controlNormalUpdate()
+	*controlPtr(u.CObj(), 744) = unsafe.Pointer(C.nox_xxx_updatePlayer_4F8100)
 	u.ObjFlags &^= 0x40
 	C.nox_xxx_monsterMarkUpdate_4E8020((*C.nox_object_t)(controlObject(pl, 2056).CObj()))
 	if controlFlags(16) && bool(C.nox_xxx_CheckGameplayFlags_417DA0(4)) {
