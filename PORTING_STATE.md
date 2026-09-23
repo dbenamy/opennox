@@ -388,3 +388,15 @@ Cleanup1458joinedPASS:10raw completed synthesis and initialHuffman files archive
 archive-synthesis-huffman-initial.py; synthesis-huffman-initial-raw-archive-record.json
 hasrestorepaths/hashes. Restore synthesisraw beforehistoricalfinalizer; current
 expandedHuffmanraw retainedplain. No active builds.
+
+## Current — Huffman/dequantization qualified, unwired
+
+Baselinebc7e478d pushed. Acceptance62265 joined PASS:nineroots/fiveconfigs+vet.
+34353newrecords exactfirstpass. Expectationsunchanged; source/fourbinarychecksPASS,
+productionevidencereused. C sixlines/onefile/refzero/81preambles. Luna reviewed
+primaryalgorithm/runner and expandedcodewordgenerator; no blockers. Next complete
+framewrapper and L3decode assembly. Primary plans contiguous1192float spectral/scf
+workspace to preserve documented8kHzmixedextent. Scratchwill be zeroinitialized in
+Go; original local C scratch uninitialized, so any dependence on undefined/retained
+stackbytes must be characterized ratherthan emulated. Luna read-only auditing
+existing ail PCM/seek/baseline harness and interface. No active builds.

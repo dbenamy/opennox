@@ -45,3 +45,17 @@ encoded prefix. The capture tool defines the full protocol.
 
 Production still uses C. Standalone C is six lines/one file, reference zero; the
 active decoder header and81 preamble bodies remain outside that source-size metric.
+
+## Go qualification
+
+All nine helper roots pass in default/server/highres/safe and cgo-disabled mode;
+vet passes. All34,353 new records match exact original-C float/state words on the
+first run, without changing expected results. Additional checks retain every
+spectral tail word, verify exact cube/fourth-power examples and require each
+C immutability/guard flag to match true.
+
+Luna independently reviewed both the primary's algorithm/runner and the added
+codeword generator. [Qualification](mp3-huffman-go-qualification.json) verifies
+all prior sources and four production binaries unchanged. Production/gameplay
+evidence remains explicitly reused for this unimported package. Next assemble
+the complete-frame decoder and qualify PCM/state before switching audio callers.

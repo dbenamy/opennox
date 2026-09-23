@@ -295,6 +295,7 @@ target build selection and linker evidence.
 | Go MP3 inverse transforms/overlap (unwired) | 1 | 6 | 0 | 0 |
 | Go MP3 synthesis DCT (unwired) | 1 | 6 | 0 | 0 |
 | Go MP3 PCM synthesis/filterbank (unwired) | 1 | 6 | 0 | 0 |
+| Go MP3 Huffman/dequantization (unwired) | 1 | 6 | 0 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

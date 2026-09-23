@@ -14,6 +14,13 @@
 
 ## Current status
 
+Go MP3 Huffman/dequantization matches34,353 exact C cases, including every
+codebook leaf and directed escape extremes/signs. All nine helper roots pass
+in four profiles and with cgo disabled; vet passes. Next: complete-frame decoder
+assembly and PCM/state qualification before switching production audio. C remains
+six standalone lines plus the active header. See
+[MP3_HUFFMAN.md](docs/porting/MP3_HUFFMAN.md).
+
 Go MP3 PCM synthesis/filterbank state matches197,774 C records, including
 196,616 rounding cases and576 stateful granule steps. All eight helper roots
 pass in four profiles and with cgo disabled; vet passes. C remains six standalone
