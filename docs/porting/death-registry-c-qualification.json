@@ -1,0 +1,319 @@
+{
+  "status": "qualified original registered object death callback baseline",
+  "revision": "5e8dd7782838157e4c46b8cedd5c203cd38e9956",
+  "phase": {
+    "batch": "death-registry",
+    "phase": "contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/death-registry-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-death-registry/baseline/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-death-registry/baseline/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 93.42265337682329
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/death-registry-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-death-registry/baseline/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-death-registry/baseline/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 164.98934973520227
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/death-registry-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-death-registry/baseline/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-death-registry/baseline/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 93.73916282108985
+      }
+    ],
+    "revision": "5e8dd7782838157e4c46b8cedd5c203cd38e9956",
+    "source_unchanged": true,
+    "wall_seconds": 352.75080097001046,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 117,
+      "selected_root_tests": 117,
+      "exit": 0,
+      "started_tests": 117,
+      "completed_tests": 117,
+      "started_root_tests": 117,
+      "completed_root_tests": 117,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 93.35008287895471
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 117,
+      "selected_root_tests": 117,
+      "exit": 0,
+      "started_tests": 117,
+      "completed_tests": 117,
+      "started_root_tests": 117,
+      "completed_root_tests": 117,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 164.90093069383875
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 117,
+      "selected_root_tests": 117,
+      "exit": 0,
+      "started_tests": 117,
+      "completed_tests": 117,
+      "started_root_tests": 117,
+      "completed_root_tests": 117,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 93.64646734809503
+    }
+  },
+  "captures": {
+    "death-registry-barrel": {
+      "cases": 360,
+      "sha256": "f653f0db4697ac6ab05ca5dd8faf122136cd78f4cb00628f7ddf25fdd595e4f6",
+      "path": "build/port-death-registry/original-v2-death-registry-barrel.json"
+    },
+    "death-registry-boulder": {
+      "cases": 384,
+      "sha256": "0bb0f6f1c8dac6a7f5a2eed700a7068bac8ed35696fd08bced2a7afd22de593c",
+      "path": "build/port-death-registry/original-v2-death-registry-boulder.json"
+    },
+    "death-registry-creation-callbacks": {
+      "cases": 108,
+      "sha256": "0b77c6bc0194e0333533bc8c21f90687f9aac9a9dc735798488e038cbba1a3ec",
+      "path": "build/port-death-registry/original-v2-death-registry-creation-callbacks.json"
+    },
+    "death-registry-creation": {
+      "cases": 200,
+      "sha256": "693075fcb3d25e890cea776bf42f59dc241ba78a295e914c0e28f8bf81cd6014",
+      "path": "build/port-death-registry/original-v2-death-registry-creation.json"
+    },
+    "death-registry-equipment": {
+      "cases": 720,
+      "sha256": "4e556710ad551b9f3b44e9047c128df0682493751438c802f2c29938291ac06c",
+      "path": "build/port-death-registry/original-v2-death-registry-equipment.json"
+    },
+    "death-registry-generator": {
+      "cases": 48,
+      "sha256": "6a6e9e50caf845500e46fc31e8ecf1a7affe3e6e80ba3ae54b8685d800838eb1",
+      "path": "build/port-death-registry/original-v2-death-registry-generator.json"
+    },
+    "death-registry-marker": {
+      "cases": 32,
+      "sha256": "ab259edb80430608b6c6548825c501b3b88a9b881edeb49f59f3ba55abc4c113",
+      "path": "build/port-death-registry/original-v2-death-registry-marker.json"
+    },
+    "death-registry-smoke": {
+      "cases": 8,
+      "sha256": "4548a2a4b345000ba344c24e7ad412df8fed192b8977589781acc6cb995ad385",
+      "path": "build/port-death-registry/original-v2-death-registry-smoke.json"
+    },
+    "player-death-lifecycle-registry": {
+      "cases": 4,
+      "sha256": "1b3e763016a6be377a0956f0b45a2ab8516dcd2951621b9ee9502267c05f829f",
+      "path": "build/port-death-registry/original-v2-player-death-lifecycle-registry.json"
+    }
+  },
+  "owner_capture_cases": 1864,
+  "raw_forwarding_gate_cases": 8,
+  "dynamic_glyph_invocations": 2,
+  "production_reuse": "Only seven named porttest files added/changed. All other source/dependency fingerprints and four preceding qualified binary hashes match. Runtime/discovery environments unchanged. Three fresh strict profiles repeat all nine frozen original-path captures.",
+  "reused_qualification": "damage-registry-qualification.json",
+  "binary_sha256": {
+    "safe": "d55bd114bf31c4b048747785c65e104c706d12d023ab11c7120ff016057231d0",
+    "opennox": "274de3f30d6e3e938b4940fb5e41df8fad4c54d0225629ce888d96a65ed9a613",
+    "opennox-hd": "e26317731ac4cb6e3bc2dcb6096df4e2861a5d0d12dc6fb573901d6b43a73acb",
+    "opennox-server": "795ac5cfcf03a458535589a65001c2a1ac1e4cb711a5bf79c8bbded3c53cba26"
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79,
+  "retained_callback_exports": [
+    "nox_xxx_diePlayer_54D2B0",
+    "nox_xxx_diePotion_54CBB0",
+    "nox_xxx_dieImpEgg_54CAE0",
+    "nox_xxx_dieGlyph_54DF30",
+    "nox_xxx_dieBarrel_54DFA0",
+    "nox_xxx_dieCreateObject_54E010",
+    "nox_xxx_dieSpawnObject_54E070",
+    "nox_xxx_diePolyp_54CB10",
+    "nox_xxx_dieMarker_54E460",
+    "nox_xxx_dieWeapon_54E370_obj_die",
+    "nox_xxx_dieArmor_54E170_obj_die",
+    "nox_xxx_dieBoulder_54E4B0",
+    "nox_xxx_dieGameBall_54E620",
+    "nox_xxx_dieMonsterGen_54E630"
+  ],
+  "fixture_correction": "Original capture failed positive assertions: alloc.New ignores its argument value. Explicit target class initialization fixed fixture before freezing; no production change. Failed capture preserved.",
+  "eligible_nil_owner_check": {
+    "cases": 24,
+    "capture": "build/port-death-registry/nil-owner-projectile-death.json",
+    "sha256": "ecaa58153a297c10373c5b2af0b69a8720b8b18a055011130bee79561ffaa7c8",
+    "eligible_nil_callback_cases": [
+      18,
+      19,
+      20
+    ],
+    "expected_trace_prefix": [
+      32,
+      70000
+    ],
+    "meaning": "DelayedDelete event32 for actor70000; target101, callbackfalse, three initial flag states. No deletion prefix for ineligible or callbacktrue cases. Same original frozen capture hash retained.",
+    "result": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 1,
+      "selected_root_tests": 1,
+      "exit": 0,
+      "started_tests": 1,
+      "completed_tests": 1,
+      "started_root_tests": 1,
+      "completed_root_tests": 1,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 6.921266880119219
+    }
+  }
+}

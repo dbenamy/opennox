@@ -7,29 +7,29 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — damage registry qualified
+## Current — death registry baseline qualified
 
-Baseline20b211e2 pushed. Conversion15863/full5214 joined PASS: all92roots/profile,
-16 frozen captures2080cases,3125raw forwarding cases and nil/order contracts.
-No skips/expectation changes. Safe/static, four fresh binaries/all11 retained
-Go-backed exports, exact known suite304events/17pass2fail32skip, headless creation
-and save/load PASS. See DAMAGE_REGISTRY.md/qualification JSON. Check Git for
-conversion commit/push. No builds/tests active. Application, finalizers and scenario
-dedup scripts CONSUMED. Current binaries under build/port-damage-registry safe/
-production/production/bin. Preflight display label corrected only after qualification;
-actual executed command evidence preserved and metadata correction recorded.
+Damage conversion5e8dd778 committed/pushed. Death baseline44588 PASS all117roots
+in default/server/highres,9frozen captures1864cases, raw8cases/glyph2invocations.
+No skips/oldgoldenchanges. Seven porttest files only; source/dependency identity
+and four damage binary hashes verified. All14Cexports present. Original37503 PASS;
+initial86830 fixturefailure retained (alloc.New ignores value; explicit target
+class initialization fixed). Extra10598 PASS confirms3eligible nil-slot deletion
+cases in unchanged24case projectile-death capture. See DEATH_REGISTRY.md/JSON.
+Check Git for baseline commit/push. No builds/tests active; finalizer CONSUMED.
 
-Original failed39792 retained: primary early callback-selection assumption wrong;
-original loads Damage after both SObj adapters. Initial Luna draft timing correct;
-correctedcapture73267 PASS before freezing. BlackPowder C-export early gate and
-raw fixture name collision corrected before baseline. Production needed no laterfix.
+Production build/port-death-registry/production.patch UNAPPLIED; primary corrected
+unused ccall imports in resources/world doors and named Flags-to-uint32 return.
+Luna review accepted real owner route, identity/size checks and normalization;
+its stale empty-hash note was updated. Shared server.CallDeath proposal retains
+four caller nil/else branches, all14Caddresses/data sizes, raw fallback, and dynamic
+GlyphDie closure. Ready to apply then full qualification.
 
-Next: build/port-death-registry/production.patch UNAPPLIED (14registrations/four
-CallVoidPtr callers). Luna mappings/applied damage review complete. Primary found
-unused ccall imports in two proposed files; helper correcting ignored patch and
-investigating stable actual-owner baseline route. All next baseline work pending;
-do not apply death production draft before baseline. No damage-sound Go field
-invocation identified. C remains0 standalone/79production preamble bodies.
+Death cleanup: originalnext80audit incorrect pre16cutoff rejected before deletion.
+strict16 record8files398794162bytes; then primary explicitly broadened cutoff18:00,
+fresh checks removed15additionalfiles648228414bytes. Separate records/erratum,
+source/binary marker proofs, stat/hash/header and hostFD/exe/maps retained. Both
+cleanup scripts CONSUMED. Free space approximately2GiB before conversion.
 
 Cleanup: next40 record19 obsolete archives839728258bytes; next80 record36 archives
 1648619188bytes. Independent source/binary marker, stat/hash/archive and host

@@ -39,6 +39,7 @@ import (
 var PortTestCallbackServer func(*server.Server) (Server, func())
 
 type PortTestAICallbackSpec struct {
+	DeathRegistry                                                          string
 	Shop                                                                   *PortTestShopSpec
 	Generator                                                              *PortTestGeneratorSpec
 	Death                                                                  *PortTestDeathSpec
@@ -191,12 +192,21 @@ func portTestAICallbackPrepare(proxy *portTestRoamOwnerServer, u *server.Object,
 	if sp.Penalty != nil {
 		portTestPenaltyPrepare(proxy, sp.Penalty)
 	}
+	if sp.DeathRegistry != "" {
+		ptr, id := portTestDeathRegistryPointer(sp.DeathRegistry)
+		u.Death = ptr
+		proxy.life.ids[uint32(uintptr(ptr))] = id
+	}
 	// Snapshot allowed target/extra writes only after all callback inputs are installed.
 	for i, b := range proxy.combat.extra {
 		proxy.combat.before[i] = bytes.Clone(b)
 	}
 }
 func portTestAICallbackCall(proxy *portTestRoamOwnerServer, u *server.Object, sp *PortTestAICallbackSpec) uint32 {
+	if sp.DeathRegistry != "" {
+		PortTestDeathRegisteredProjectile(u, sp.DeathRegistry)
+		return 0
+	}
 	if sp.Shop != nil {
 		return portTestShopCall(proxy)
 	}
