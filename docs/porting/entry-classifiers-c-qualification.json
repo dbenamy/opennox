@@ -1,0 +1,205 @@
+{
+  "status": "qualified actual-C entry classifiers",
+  "preceding_revision": "cd18015c87cb930f19af0d5fc7c041e003c42526",
+  "classifier_capture_sha256": "f5c39db5e866885891bbb1fe8d0b2244d9fbcea7d232cdd4b7e6f90dd03ff6e0",
+  "classifier_capture_bytes": 16384,
+  "fresh_capture_processes": 3,
+  "targets": {
+    "default": {
+      "legacy_contracts": 4,
+      "widget_roots": 12,
+      "skips": 0,
+      "classifier_cases": 131072,
+      "classifier_capture_sha256": "f5c39db5e866885891bbb1fe8d0b2244d9fbcea7d232cdd4b7e6f90dd03ff6e0",
+      "storage_captures_unchanged": true,
+      "static": true
+    },
+    "server": {
+      "legacy_contracts": 4,
+      "widget_roots": 12,
+      "skips": 0,
+      "classifier_cases": 131072,
+      "classifier_capture_sha256": "f5c39db5e866885891bbb1fe8d0b2244d9fbcea7d232cdd4b7e6f90dd03ff6e0",
+      "storage_captures_unchanged": true,
+      "static": true
+    },
+    "highres": {
+      "legacy_contracts": 4,
+      "widget_roots": 12,
+      "skips": 0,
+      "classifier_cases": 131072,
+      "classifier_capture_sha256": "f5c39db5e866885891bbb1fe8d0b2244d9fbcea7d232cdd4b7e6f90dd03ff6e0",
+      "storage_captures_unchanged": true,
+      "static": true
+    }
+  },
+  "production_c": {
+    "files": 4,
+    "lines": 45
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "custom_preamble_bodies_removed": 0,
+  "safe": {
+    "build": true,
+    "runtime_tested": false,
+    "sha256": "20bf63c3f3e50321d44ac96ec994dab2c7286405b3a9bbf88be84297d891a5f7"
+  },
+  "retained_callback_addresses": {
+    "safe": {
+      "nullsub_22": 151970684,
+      "nullsub_29": 151970353,
+      "nullsub_36": 151970700,
+      "nullsub_38": 151970716,
+      "nullsub_39": 151970732,
+      "nullsub_40": 151970748,
+      "nullsub_41": 151970764,
+      "nullsub_42": 151970780,
+      "nullsub_43": 151970796,
+      "nullsub_44": 151970812
+    },
+    "opennox": {
+      "nullsub_22": 150905200,
+      "nullsub_29": 150905184,
+      "nullsub_36": 150905216,
+      "nullsub_38": 150905232,
+      "nullsub_39": 150905248,
+      "nullsub_40": 150905264,
+      "nullsub_41": 150905280,
+      "nullsub_42": 150905296,
+      "nullsub_43": 150905312,
+      "nullsub_44": 150905328
+    },
+    "opennox-hd": {
+      "nullsub_22": 150905312,
+      "nullsub_29": 150905296,
+      "nullsub_36": 150905328,
+      "nullsub_38": 150905344,
+      "nullsub_39": 150905360,
+      "nullsub_40": 150905376,
+      "nullsub_41": 150905392,
+      "nullsub_42": 150905408,
+      "nullsub_43": 150905424,
+      "nullsub_44": 150905440
+    },
+    "opennox-server": {
+      "nullsub_22": 150253024,
+      "nullsub_29": 150253008,
+      "nullsub_36": 150253040,
+      "nullsub_38": 150253056,
+      "nullsub_39": 150253072,
+      "nullsub_40": 150253088,
+      "nullsub_41": 150253104,
+      "nullsub_42": 150253120,
+      "nullsub_43": 150253136,
+      "nullsub_44": 150253152
+    }
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 5.114620629930869,
+        "sha256": "54b125aca9f99dbf9eb4254dcfafcee78467f82191d3ef79bb0f8de1f5ae47bf",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.673446012893692,
+        "sha256": "94891301aaa73b444b13c5b55ac21b64fd5c109ec6bffb188083ce6eb8a7832e",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 64.19773695408367,
+        "sha256": "e8139cec9cee3d58a8434feba2a80aca8f1680d4cf4210fca688cc17e680c138",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "entry-classifiers-c-save": {
+        "exit": 0,
+        "wall_seconds": 48.12034692312591,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 46.584277387941256,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "54b125aca9f99dbf9eb4254dcfafcee78467f82191d3ef79bb0f8de1f5ae47bf",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-entry-direct/c-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Entry classifiers actual C baseline",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "11facc89b4b8c8a836b04285e445a3d6b212add2c832fa2d4e3f2083b831c41e"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 60.76775472401641,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "preflight": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 73.90876362007111,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+    "binary_sha256": "54b125aca9f99dbf9eb4254dcfafcee78467f82191d3ef79bb0f8de1f5ae47bf",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-entry-direct/c-preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/entry-classifiers-c/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Entry classifiers actual C baseline",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "source_manifest_sha256": "8dd89127170b49fbd330edfcf124d6f7bd367a1a0cc5dc4b26f67931f63185b8"
+}

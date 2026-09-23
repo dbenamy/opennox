@@ -14,6 +14,11 @@
 
 ## Current status
 
+The two entry-character predicates now have a qualified actual-C baseline covering
+all 131,072 boolean classifications plus twelve widget test roots per profile.
+Full native/ABI/gameplay/save-load gates pass; replacement with direct libc calls
+is next. C remains 45 lines/four files. See [ENTRY_CLASSIFIERS.md](docs/porting/ENTRY_CLASSIFIERS.md).
+
 Unused header/preamble helpers and unregistered empty callbacks are retired,
 along with two empty Obelisk calls. Synchronization and all ten live callback
 identities are preserved. Focused tests in all three profiles, storage/GC

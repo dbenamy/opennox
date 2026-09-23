@@ -18,6 +18,10 @@ import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 )
 
+// Preserve libc classification of legacy 16-bit text units, including its locale.
+func uiEntryDigit(v uint16) bool { return C.entryDigit(C.ushort(v)) != 0 }
+func uiEntryAlnum(v uint16) bool { return C.entryAlnum(C.ushort(v)) != 0 }
+
 var uiEntryContext bool
 var uiEntryActive *gui.Window
 var _ [1056 - unsafe.Sizeof(gui.EntryFieldData{})]byte
@@ -93,11 +97,11 @@ func uiEntryKey(w *gui.Window, key, state uintptr) gui.WindowEventResp {
 		return gui.RawEventResp(1)
 	}
 	if d.Field_1028 != 0 {
-		if C.entryDigit(C.ushort(v)) == 0 {
+		if !uiEntryDigit(v) {
 			return gui.RawEventResp(1)
 		}
 	} else if d.Field_1032 != 0 {
-		if C.entryAlnum(C.ushort(v)) == 0 {
+		if !uiEntryAlnum(v) {
 			return gui.RawEventResp(1)
 		}
 	}

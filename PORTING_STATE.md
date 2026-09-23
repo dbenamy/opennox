@@ -75,6 +75,31 @@ still requires primary review. Preserve libc locale semantics; no ASCII/Unicode
 substitution is authorized by this implementation choice. Live callback exports,
 safe adapters and third-party MP3 implementation remain later work.
 
+## Current — entry classifier C baseline qualified
+
+The actual-C baseline passes four legacy contracts and twelve widget roots in all
+three profiles, no skips/changed goldens, plus static, safe build, production/ABI,
+exact known-suite, gameplay and explicit save/load. Pipeline23563 JOINED PASS.
+Source fingerprints agree, preflight matches production, and ten callback
+identities remain distinct. Three fresh-process captures froze all 131,072
+classifications to SHA256
+`f5c39db5e866885891bbb1fe8d0b2244d9fbcea7d232cdd4b7e6f90dd03ff6e0`.
+No reference C was added; the test calls the actual production wrappers through
+small Go predicates. See ENTRY_CLASSIFIERS.md and the C qualification JSON.
+Check Git status/log/remote for this checkpoint's commit/push completion.
+
+Artifacts are build/port-entry-direct/c-{default,server,highres,safe,preflight,
+production}. Finalizers/cleanup are CONSUMED. All jobs joined. Restore scenario
+assets using deduplicate-c-{preflight,save}.py and per-run restore metadata.
+
+Next: replace only the two predicates' C.entry* calls with C.isw*(C.wint_t(v))
+and remove their two C preamble bodies; preserve the caller/branch and all frozen
+expectations. Install reviewed ignored native-batch.json, record native-guard.json
+with committed HEAD/12 consumer names, then run run.sh native. After all gates
+pass use finish.py native, native save deduplication and finish-docs.py native;
+commit/push and continue. All scripts require the baseline environment and native
+jobs require host execution. Standalone C remains 45; two preamble bodies retire.
+
 ## Other prepared evidence
 
 Read-only inline/header, safe-bridge and empty-callback audits are under
@@ -90,6 +115,18 @@ implementation drafts, caller inventories and finalizer scripts require primary
 review. Exact whole-source search commands/path evidence are now required.
 
 ## Disk and assets
+
+Safe/preflight cleanup round one is CONSUMED: six obsolete phase outputs,
+301,307,320 bytes, after 159 host process checks and fresh file/evidence checks.
+Five had observed current hashes rather than hashes in old phase results; one
+matched a retained qualified production binary. No qualification linkage was
+inferred for the others. Source, logs, manifests and captures remain.
+
+Cleanup rounds five/six are CONSUMED: three old render-helper executables
+(145,417,452 bytes, 162 host processes checked) and eight older highres/server
+executables (384,739,612 bytes, 164 processes). All evidence remains under
+build/port-artifact-cleanup. Current storage/orphan/entry/audio artifacts,
+assets, scenarios and caches were excluded.
 
 Cleanup round four is CONSUMED: 12 older qualified production executables,
 582,770,236 bytes, removed after verifying metadata/hashes/ABI and checking 158
