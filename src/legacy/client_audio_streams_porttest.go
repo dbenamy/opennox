@@ -236,7 +236,7 @@ func PortTestAudioStreamCall(name string, args ...uint32) uint32 {
 	case "sub_487D00":
 		return uint32(audioStreamByteRate((*audioStreamFormat)(unsafe.Pointer(uintptr(a[0])))))
 	case "sub_487D30":
-		return uint32(uintptr(unsafe.Pointer(audioStreamChunkInit((*audioStreamChunk)(unsafe.Pointer(uintptr(a[0]))), unsafe.Pointer(uintptr(a[1])), uint32(a[2])))))
+		return uint32(uintptr(unsafe.Pointer(audioStreamChunkInit((*audioStreamChunk)(unsafe.Pointer(uintptr(a[0]))), a[1], uint32(a[2])))))
 	case "sub_487D60":
 		return uint32(uintptr(unsafe.Pointer(audioStreamChunkClear((*audioStreamChunk)(unsafe.Pointer(uintptr(a[0])))))))
 	case "sub_4BD420":

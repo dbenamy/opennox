@@ -1,0 +1,52 @@
+{
+  "status": "qualified actual-C remaining-storage baseline after audio correction",
+  "qualification": "audio-address-native-qualification.json",
+  "production_evidence": "freshly qualified in the same source/commit; no production reuse",
+  "targets": {
+    "default": {
+      "contract_tests": 3,
+      "consumer_roots": 2291,
+      "raw_regions": 52,
+      "raw_patterns": 884,
+      "numeric_owners": 395,
+      "numeric_patterns": 54905,
+      "gc_regression": true,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 1137.357637225883
+    },
+    "server": {
+      "contract_tests": 3,
+      "consumer_roots": 2280,
+      "raw_regions": 52,
+      "raw_patterns": 884,
+      "numeric_owners": 395,
+      "numeric_patterns": 54905,
+      "gc_regression": true,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 1204.9721156470478
+    },
+    "highres": {
+      "contract_tests": 3,
+      "consumer_roots": 2291,
+      "raw_regions": 52,
+      "raw_patterns": 884,
+      "numeric_owners": 395,
+      "numeric_patterns": 54905,
+      "gc_regression": true,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 1060.4187406320125
+    }
+  },
+  "raw_capture_sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3",
+  "numeric_capture_sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+  "source_manifest_sha256": "d787a26165e79a52f3efef186160344b7771359ac6b64c7bf485ce37e28fcc74",
+  "C_owner_definitions_unchanged_from": "05182782",
+  "production_c": {
+    "files": 6,
+    "lines": 114
+  },
+  "note": "Earlier baseline default consumer failure reproduced and repaired in audio address representation before acceptance. Frozen storage captures unchanged."
+}

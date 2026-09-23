@@ -1,0 +1,402 @@
+{
+  "batch": "raw-storage-c",
+  "env": {
+    "GOMAXPROCS": "2",
+    "GOMEMLIMIT": "768MiB",
+    "OPENNOX_SCALAR_STORAGE_CAPTURE": "{out}/scalar-storage.json",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_BRIEFING_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_CLIENT_AUDIO_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MAP_CATALOG_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SHOP_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_SPELLBOOK_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_TRADE_UI_ASSETS": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_RAW_STORAGE_CAPTURE": "{out}/raw-storage.json"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/raw-storage-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./legacy",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/scalar-storage.json",
+            "sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b"
+          },
+          {
+            "path": "{out}/raw-storage.json",
+            "sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3"
+          }
+        ]
+      },
+      {
+        "name": "consumers-01",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-consumers/01.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/consumers-01.log",
+          "--result",
+          "{out}/consumers-01.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "consumers-02",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-consumers/02.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/consumers-02.log",
+          "--result",
+          "{out}/consumers-02.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "consumers-03",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-consumers/03.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/consumers-03.log",
+          "--result",
+          "{out}/consumers-03.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "consumers-04",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-consumers/04.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/consumers-04.log",
+          "--result",
+          "{out}/consumers-04.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "consumers-05",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-consumers/05.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/consumers-05.log",
+          "--result",
+          "{out}/consumers-05.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "consumers-06",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-consumers/06.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/consumers-06.log",
+          "--result",
+          "{out}/consumers-06.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "consumers-07",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-consumers/07.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/consumers-07.log",
+          "--result",
+          "{out}/consumers-07.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "consumers-08",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-consumers/08.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/consumers-08.log",
+          "--result",
+          "{out}/consumers-08.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "consumers-09",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-consumers/09.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/consumers-09.log",
+          "--result",
+          "{out}/consumers-09.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "consumers-10",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-consumers/10.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/consumers-10.log",
+          "--result",
+          "{out}/consumers-10.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "consumers-11",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-consumers/11.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/consumers-11.log",
+          "--result",
+          "{out}/consumers-11.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "consumers-12",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-consumers/12.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/consumers-12.log",
+          "--result",
+          "{out}/consumers-12.json",
+          "--require-no-skips"
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "server": [
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/raw-storage-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          "./legacy",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/scalar-storage.json",
+            "sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b"
+          },
+          {
+            "path": "{out}/raw-storage.json",
+            "sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "highres": [
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/raw-storage-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          "./legacy",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/scalar-storage.json",
+            "sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b"
+          },
+          {
+            "path": "{out}/raw-storage.json",
+            "sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "repeat": [
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/raw-storage-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./legacy",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/scalar-storage.json",
+            "sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b"
+          },
+          {
+            "path": "{out}/raw-storage.json",
+            "sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ]
+  }
+}

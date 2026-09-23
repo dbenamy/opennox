@@ -21,8 +21,11 @@ type audioStreamEntry struct {
 	Name                               [16]byte
 	Offset, Length, Rate, Flags, Extra uint32
 }
+
+// Data addresses are raw ABI words: copying or resetting them must not ask the
+// Go write barrier to interpret an opaque value as a managed pointer.
 type audioStreamBuffer struct {
-	Data    unsafe.Pointer
+	Data    uint32
 	Length  uint32
 	Chunks  legacyListNode
 	Format  *audioStreamFormat
@@ -30,7 +33,7 @@ type audioStreamBuffer struct {
 }
 type audioStreamChunk struct {
 	Node   legacyListNode
-	Data   unsafe.Pointer
+	Data   uint32
 	Length uint32
 	Owner  *audioStreamBuffer
 }
@@ -103,7 +106,7 @@ type audioStreamVoice struct {
 	DataCallback, LoopCallback, EndCallback unsafe.Pointer
 	Buffer                                  *audioStreamBuffer
 	Chunk                                   *audioStreamChunk
-	Data                                    unsafe.Pointer
+	Data                                    uint32
 	Remaining, Length                       uint32
 	Field308                                uint32
 }

@@ -71,7 +71,7 @@ func audioStreamVoiceData(p *audioStreamVoice) int32 {
 		if result != 0 {
 			p.Remaining = 0
 			p.Length = 0
-			p.Data = nil
+			p.Data = 0
 			return result
 		}
 	} else {
@@ -158,7 +158,7 @@ func audioStreamVoiceBind(p *audioStreamVoice, b *audioStreamBuffer) {
 		p.Data = p.Chunk.Data
 		p.Remaining = p.Chunk.Length
 		p.Length = p.Chunk.Length
-		b.Data = nil
+		b.Data = 0
 	} else {
 		p.Data = b.Data
 		p.Remaining = b.Length

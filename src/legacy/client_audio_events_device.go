@@ -31,7 +31,7 @@ func audioEventSampleRefill(p *AudioSample) int32 {
 		if index != 0 {
 			scratch = p.Data2
 		}
-		var data, first unsafe.Pointer
+		var data, first uint32
 		var total, firstLength int32
 		copied := false
 		if p.Field3 == 0 {
@@ -53,39 +53,39 @@ func audioEventSampleRefill(p *AudioSample) int32 {
 					data = v.Data
 				}
 				n := remaining
-				if total == 0 && remaining >= 16384 && first == nil {
+				if total == 0 && remaining >= 16384 && first == 0 {
 					// Large contiguous input is passed directly, even when larger than scratch.
 				} else {
 					if n+total > 16384 {
 						n = 16384 - total
 					}
 					if n != 0 {
-						if first != nil {
+						if first != 0 {
 							if firstLength != 0 {
-								copy(unsafe.Slice(scratch, int(firstLength)), unsafe.Slice((*byte)(first), int(firstLength)))
-								data = unsafe.Pointer(scratch)
-								first = nil
+								copy(unsafe.Slice(scratch, int(firstLength)), unsafe.Slice((*byte)(unsafe.Pointer(uintptr(first))), int(firstLength)))
+								data = uint32(uintptr(unsafe.Pointer(scratch)))
+								first = 0
 								copied = true
 							}
-							copy(unsafe.Slice((*byte)(unsafe.Add(unsafe.Pointer(scratch), uintptr(uint32(total)))), int(n)), unsafe.Slice((*byte)(v.Data), int(n)))
+							copy(unsafe.Slice((*byte)(unsafe.Add(unsafe.Pointer(scratch), uintptr(uint32(total)))), int(n)), unsafe.Slice((*byte)(unsafe.Pointer(uintptr(v.Data))), int(n)))
 						} else if !copied {
 							first = v.Data
 							firstLength = n
 						} else {
-							copy(unsafe.Slice((*byte)(unsafe.Add(unsafe.Pointer(scratch), uintptr(uint32(total)))), int(n)), unsafe.Slice((*byte)(v.Data), int(n)))
+							copy(unsafe.Slice((*byte)(unsafe.Add(unsafe.Pointer(scratch), uintptr(uint32(total)))), int(n)), unsafe.Slice((*byte)(unsafe.Pointer(uintptr(v.Data))), int(n)))
 						}
 					}
 				}
 				v.Length -= uint32(n)
 				v.Remaining -= uint32(n)
-				v.Data = unsafe.Add(v.Data, uintptr(uint32(n)))
+				v.Data += uint32(n)
 				total += n
 				if p.Field3 != 0 {
 					break
 				}
 			}
 		}
-		audioEventDeviceLoad(p.Smp, uint32(index), unsafe.Slice((*byte)(data), int(total)))
+		audioEventDeviceLoad(p.Smp, uint32(index), unsafe.Slice((*byte)(unsafe.Pointer(uintptr(data))), int(total)))
 	}
 	return -1
 }

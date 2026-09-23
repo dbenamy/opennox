@@ -44,7 +44,7 @@ func audioStreamPoolPush(p *unsafe.Pointer, item unsafe.Pointer) unsafe.Pointer 
 	return node
 }
 func audioStreamBufferInit(p *audioStreamBuffer) {
-	p.Data = nil
+	p.Data = 0
 	p.Length = 0
 	p.Format = nil
 	p.Field24 = 0
@@ -59,7 +59,7 @@ func audioStreamBufferAppend(p *audioStreamBuffer, c *audioStreamChunk) uint32 {
 func audioStreamBufferFirst(p *audioStreamBuffer) *audioStreamChunk {
 	return (*audioStreamChunk)(unsafe.Pointer(listNext(&p.Chunks)))
 }
-func audioStreamChunkInit(p *audioStreamChunk, data unsafe.Pointer, length uint32) *audioStreamChunk {
+func audioStreamChunkInit(p *audioStreamChunk, data uint32, length uint32) *audioStreamChunk {
 	p.Length = length
 	p.Data = data
 	listInit(&p.Node)
@@ -201,9 +201,9 @@ func audioStreamCacheLoad(p *audioStreamCache, index int32) *audioStreamCacheEnt
 			audioStreamCacheDrop(e)
 			return nil
 		}
-		audioStreamChunkInit(c, unsafe.Add(unsafe.Pointer(c), 24), uint32(n))
+		audioStreamChunkInit(c, uint32(uintptr(unsafe.Add(unsafe.Pointer(c), 24))), uint32(n))
 		audioStreamBufferAppend(&e.Buffer, c)
-		got := audioStreamRead(p.Catalog, c.Data, n)
+		got := audioStreamRead(p.Catalog, unsafe.Pointer(uintptr(c.Data)), n)
 		if got != n {
 			audioStreamCacheDrop(e)
 			return nil

@@ -8,6 +8,52 @@ fixture accessor/table bodies. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Current — audio address correction and storage baseline qualified
+
+The broad baseline sweep exposed an existing audio data-address write-barrier
+failure before remaining-storage migration. Red 20771 reproduced it; green 42162
+passed three children. Three audio Data slots and refill temporaries now remain
+uint32 words, with conversion at sample access; shared lists are unchanged.
+Full qualification 63650 JOINED PASS: 2,291/2,280/2,291 roots/no skips, all 3 isolated
+contracts, static/safe/production/ABI/known-suite/headless gameplay/save-load.
+Source fingerprints match; C remains 114 /6. See [AUDIO_ADDRESS_GC.md](docs/porting/AUDIO_ADDRESS_GC.md).
+
+The 44 remaining global owners +8 buffers have a qualified actual-C baseline,
+including 884 full-region patterns, typed/layout/registry/GC/neighbor/restoration
+contracts. Raw capture hash is d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3;
+numeric 395-owner capture remains 6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b.
+C definitions are unchanged from `05182782`. Fresh audio-correction production evidence
+supersedes the original reuse plan. See [RAW_STORAGE.md](docs/porting/RAW_STORAGE.md).
+The old build/port-remaining-storage/finish-c.py reuse finalizer is obsolete; do not run.
+Original baseline 82855 failed; final evidence lives in build/port-audio-address/native-*.
+
+Next: review/refresh Luna's guarded migration under build/port-remaining-storage,
+then apply after this baseline commit/push. It is UNAPPLIED and its guard is closed.
+Primary caught blob-size rewrite ordering, array bracket syntax and the AsWindowP
+getter conversion in review. Independent 44-field/8-blob source review now passes;
+refresh source hashes and verify the final patch. Use the existing
+foreign allocator for process-lifetime storage; libc/CGO remain explicit dependencies.
+A future Go-heap storage design is separate from this batch.
+No Go jobs are active. Luna's callback and safe-adapter audits are read-only under
+build/port-empty-callbacks and build/port-safe-bridge-audit; review findings before
+retirement. Macro-remapped libc callers matter under the safe build tag.
+
+Disk cleanup 75192 joined: seven identical completed preflight binaries hard-linked
+to matching qualified production binaries, reclaiming 345,059,144 bytes. Both paths,
+contents and executable modes remain; manifest is build/port-audio-address/deduplicated-binaries.json.
+Cleanup 9383 joined: 42 old qualified production executables removed, reclaiming
+2,046,866,252 bytes after hashes/metadata and 163 host-process reference checks.
+Reports, fingerprints, logs and scenario evidence remain. Record:
+build/port-artifact-cleanup/old-production-binaries-removed.json.
+Preflight asset cleanup reclaimed 556,388,715 bytes; restore with
+python3 build/port-audio-address/deduplicate-preflight.py --restore audio-address-native.
+Save-run cleanup 14124 joined, reclaiming 556,358,986 bytes; restore with
+python3 build/port-audio-address/deduplicate-save.py --restore audio-address-native-save.
+The audio finalizers and applied cleanup scripts are CONSUMED. Keep original assets/archive.
+The report finalizer now checks the legacy package's completed-tests counter and
+exact three passing names; the runner's root-tests counter refers only to the
+repository root package. No test or source rerun was needed for that report fix.
+
 ## Current — fixture-backed numeric owners qualified
 
 Original-C baseline `0bc827a1` is pushed. Native default/server/highres pass all
@@ -28,17 +74,6 @@ Cleanup86988 joined: ten reviewed obsolete cache archives464,275,530 bytes and
 completed fixture-storage-native-save duplicate assets556,358,986 bytes removed
 with host process/open-file and hash/metadata checks. Scripts are CONSUMED.
 Restore assets with python3 build/port-map-storage/deduplicate-save.py --restore fixture-storage-native-save.
-
-Next: remaining storage ownership. Luna's read-only inventory under
-build/port-remaining-storage covers44 remaining vardefs definitions and8 blobs.
-Primary's ignored design.md proposes Go initialization via the existing foreign
-allocator to preserve unmanaged raw storage, address retention and process lifetime.
-No remaining-storage conversion or new baseline fixture is applied yet. The eight
-blobs require the broad consumer sweep. Freeze actual-C contracts first and commit
-the baseline; retain explicit libc/CGO dependency reporting. Consumer mapping is
-reviewed; the new contracts cover the one identified direct-setter gap. Luna is
-drafting a guarded migration under build/port-remaining-storage, without source
-edit or build permission. No Go jobs are active after this qualification.
 
 The preceding343-owner conversion is pushed as `2a3eaec7`:47,677 cases and
 2,291/2,280/2,291 consumer roots plus all production gates passed. C fell352 to166.

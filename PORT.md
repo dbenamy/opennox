@@ -14,6 +14,15 @@
 
 ## Current status
 
+An audio stream GC regression is corrected: opaque sample addresses remain raw
+32-bit words through buffer/chunk/voice bookkeeping and convert to pointers at
+sample access. The regression failed before the fix and passes after it. The full
+2,291/2,280/2,291 consumer sweep and fresh production/gameplay/save-load qualification
+pass. The remaining 44 globals and 8 shared buffers now have a qualified actual-C
+storage baseline; their conversion is next. C remains 114 lines. See
+[AUDIO_ADDRESS_GC.md](docs/porting/AUDIO_ADDRESS_GC.md) and
+[RAW_STORAGE.md](docs/porting/RAW_STORAGE.md).
+
 Another 52 numeric globals (map generation, audio and sustained spells) now have
 Go owners; 11 C fixture accessor/table bodies are retired. All 54,905 storage
 cases match the frozen C capture. Each profile passes 183 focused consumer roots
@@ -75,7 +84,7 @@ and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-su
 comparison, headless gameplay and save/load checks pass.
 
 C remaining is **114 physical lines in 6 files**, zero reference C. See
-[the native qualification](docs/porting/fixture-storage-native-qualification.json).
+[the native qualification](docs/porting/audio-address-native-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in
@@ -277,6 +286,17 @@ preflight checks and machine-generated evidence for those tasks. Continue to own
 baseline acceptance, storage/ABI choices and final qualification in the primary.
 The scalar storage audit caught pointer-typed redeclarations worth separating
 from ordinary numeric owners. No subscription-cost reduction has been measured.
+
+Recent storage work reinforces that boundary. Luna's numeric-owner draft lost a
+sparse fixture index; independent comparison caught it before compilation. The
+remaining-storage draft needed fixes to blob-size rewrite ordering, array brackets
+and a pointer getter. Its generator checks did not prove Go syntax or types.
+Compare emitted output with the original definitions, then compile and qualify it.
+For reachability audits, require a concrete caller per symbol and distinguish
+production, test-only and macro-remapped calls; the safe-adapter audit initially
+generalized one live caller to all six wrappers. Cleanup inventories have been
+useful when each artifact includes its hash and retained qualification evidence;
+the primary still verifies host process references and performs deletion.
 
 ## Explaining the work and reporting diagnostics
 
