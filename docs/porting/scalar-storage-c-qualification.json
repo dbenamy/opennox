@@ -1,0 +1,54 @@
+{
+  "status": "qualified C scalar storage baseline",
+  "production_baseline_revision": "48b7f80b",
+  "production_evidence": "orphan-bridges-qualification.json",
+  "production_source_identical": true,
+  "only_source_changes": [
+    "src/legacy/scalar_storage_porttest.go",
+    "src/legacy/scalar_storage_porttest_test.go"
+  ],
+  "targets": {
+    "c-default1": {
+      "legacy_contract_roots": 1,
+      "owners": 343,
+      "patterns_per_owner": 139,
+      "cases": 47677,
+      "skips": 0,
+      "wall_seconds": 5.1008721510879695
+    },
+    "c-default2": {
+      "legacy_contract_roots": 1,
+      "owners": 343,
+      "patterns_per_owner": 139,
+      "cases": 47677,
+      "skips": 0,
+      "wall_seconds": 5.3330669910646975
+    },
+    "c-server": {
+      "legacy_contract_roots": 1,
+      "owners": 343,
+      "patterns_per_owner": 139,
+      "cases": 47677,
+      "skips": 0,
+      "wall_seconds": 98.34442003793083
+    },
+    "c-highres": {
+      "legacy_contract_roots": 1,
+      "owners": 343,
+      "patterns_per_owner": 139,
+      "cases": 47677,
+      "skips": 0,
+      "wall_seconds": 5.39070754009299
+    }
+  },
+  "capture_sha256": "74032534526a97d553c2e3f3267d5e05f9ae527321666d3e00e20351c909b81f",
+  "source_manifest_sha256": "97f4b46c11476ea918987d53453fdf578c19937b537bd26a5701e44efa0a554e",
+  "production_c": {
+    "files": 6,
+    "lines": 518,
+    "test_reference_lines": 0
+  },
+  "proposed_migrations": 343,
+  "proposed_unused_definitions": 9,
+  "pointer_typed_numeric_owners_deferred": 3
+}

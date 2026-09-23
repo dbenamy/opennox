@@ -8,6 +8,24 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — scalar storage baseline qualified
+
+Production baseline `48b7f80b` is pushed. The new original-C storage contract
+passes 343 owners ×139 patterns (47,677 cases) in two default processes and
+server/highres; hashes/static checks match, no skips. Only two tagged test files
+changed; production evidence is reused. All jobs joined. See
+[SCALAR_STORAGE.md](docs/porting/SCALAR_STORAGE.md).
+
+Luna's uninstalled draft in `build/port-final-storage/prepare_migration.py` passes
+`--check --include-go src/legacy/scalar_storage_porttest.go`. It proposes 343 Go
+numeric owners plus nine unused C definitions retired, 270 source paths; plan and
+source.patch are reviewable. No conversion is applied yet. Three pointer-typed
+numeric declarations and C fixture-body users are deferred, as are pointer/array
+owners. Keep expected fixture bits frozen. Primary owns final review/integration.
+Next: commit baseline, apply reviewed draft, run storage contracts and broad tagged
+consumer qualification. Luna is inventorying normal tagged roots and asset env
+requirements; it has no permission to edit source or run tests.
+
 ## Current — unused memory and GUI bridges qualified
 
 Baseline `22ed2b8e` is pushed, including the preexisting safe allocator API repair.

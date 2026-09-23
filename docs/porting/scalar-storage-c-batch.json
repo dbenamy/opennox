@@ -1,0 +1,124 @@
+{
+  "batch": "scalar-storage-c",
+  "env": {
+    "GOMAXPROCS": "2",
+    "GOMEMLIMIT": "768MiB",
+    "OPENNOX_SCALAR_STORAGE_CAPTURE": "{out}/scalar-storage.json"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          "./legacy",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/scalar-storage.json",
+            "sha256": "74032534526a97d553c2e3f3267d5e05f9ae527321666d3e00e20351c909b81f"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "server": [
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          "./legacy",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/scalar-storage.json",
+            "sha256": "74032534526a97d553c2e3f3267d5e05f9ae527321666d3e00e20351c909b81f"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "highres": [
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/scalar-storage-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          "./legacy",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/scalar-storage.json",
+            "sha256": "74032534526a97d553c2e3f3267d5e05f9ae527321666d3e00e20351c909b81f"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ]
+  }
+}
