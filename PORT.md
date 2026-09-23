@@ -14,15 +14,15 @@
 
 ## Current status
 
-Seventy-four more calls now reach their existing Go implementations directly,
-using matching pointer/scalar signatures and preserving arguments and lifetimes.
-All 686/685/686 affected roots pass default/server/highres, plus fresh safe/static,
-production/ABI, exact known-suite and headless creation/save-load checks. All four
-binaries omit the 36 redundant C-call bridges; required exports remain.
+Ninety-four more calls now reach their existing Go implementations directly.
+Explicit numeric adaptations preserve the 386 types, and two unused mismatched
+C interfaces are retired. All 692/691/692 affected roots pass default/server/highres,
+plus fresh safe/static, production/ABI, exact known-suite and headless creation/
+save-load checks. All four binaries omit 42 redundant call bridges and both retired
+exports; the other 40 selected exports remain Go-backed.
 **Standalone C remains zero; production C preamble bodies remain 79.**
-Next: apply 94 reviewed mixed-signature forwarding calls, preserving integer
-widths, and retire two separately reviewed mismatched C interfaces. The unchanged
-production baseline is qualified: 692/691/692 combined roots. See
+Next: route three reward-item callbacks through the existing Go registry while
+preserving C callback addresses and external fallback. See
 [MIXED_FORWARDING.md](docs/porting/MIXED_FORWARDING.md).
 
 ### Earlier checkpoints

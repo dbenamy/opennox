@@ -40,7 +40,7 @@ func controlRemoveGlyphs(u *server.Object) int32 {
 func controlRemoveCreatures(u *server.Object) {
 	for it := u.Field129; it != nil; {
 		next := it.Field128
-		if C.nox_xxx_creatureIsMonitored_500CC0((*C.nox_object_t)(u.CObj()), (*C.nox_object_t)(it.CObj())) != 0 {
+		if nox_xxx_creatureIsMonitored_500CC0((*C.nox_object_t)(u.CObj()), (*C.nox_object_t)(it.CObj())) != 0 {
 			for item := it.InvFirstItem; item != nil; {
 				n := item.InvNextItem
 				GetServer().DelayedDelete(item)
@@ -321,10 +321,10 @@ func controlActionState(u *server.Object) int32 {
 	case 0:
 		return 4
 	case 1, 14, 22:
-		if C.nox_common_playerIsAbilityActive_4FC250((*C.nox_object_t)(u.CObj()), 2) != 0 && C.nox_xxx_probablyWarcryCheck_4FC3E0((*C.nox_object_t)(u.CObj()), 2) != 0 {
+		if nox_common_playerIsAbilityActive_4FC250((*C.nox_object_t)(u.CObj()), 2) != 0 && nox_xxx_probablyWarcryCheck_4FC3E0((*C.nox_object_t)(u.CObj()), 2) != 0 {
 			return 46
 		}
-		if C.nox_common_playerIsAbilityActive_4FC250((*C.nox_object_t)(u.CObj()), 1) != 0 {
+		if nox_common_playerIsAbilityActive_4FC250((*C.nox_object_t)(u.CObj()), 1) != 0 {
 			return 45
 		}
 		if weapon&0x47f0000 != 0 {

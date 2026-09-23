@@ -97,7 +97,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 		n := floatToInt32(float32(nox_xxx_gamedataGetFloatTable_419D70(internCStr("ShockDamage"), 4)))
 		projectileDamage(source, u, nil, n, 9)
 		if source.ObjClass&4 != 0 {
-			C.nox_xxx_playerSetState_4FA020(asObjectC(source), 23)
+			nox_xxx_playerSetState_4FA020(asObjectC(source), 23)
 		}
 	}
 	if u.ObjClass&2 != 0 {
@@ -193,7 +193,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 			if fn != nil {
 				ccall.CallVoidPtr2(fn, u.CObj(), actual.CObj())
 			} else {
-				C.nox_xxx_soundDefaultDamageSound_532E20(asObjectC(u), asObjectC(actual))
+				nox_xxx_soundDefaultDamageSound_532E20(asObjectC(u), asObjectC(actual))
 			}
 		}
 	}
@@ -212,7 +212,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 	if u.ObjClass&4 != 0 && *value >= 20 {
 		state := *(*byte)(unsafe.Add(u.UpdateData, 88))
 		if state != 1 && state != 15 {
-			C.nox_xxx_playerSetState_4FA020(asObjectC(u), 30)
+			nox_xxx_playerSetState_4FA020(asObjectC(u), 30)
 		}
 	}
 	if bool(nox_common_gameFlags_check_40A5C0(6144)) {
@@ -299,19 +299,19 @@ func damageGenerator(u, source, weapon *server.Object, amount, kind int32) int32
 	old := u.HealthData.Cur
 	result := damageDefault(u, source, weapon, amount, kind)
 	if u.HealthData.Cur < old {
-		C.nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(ud, 48), source.CObj(), u.CObj(), 23)
+		nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(ud, 48), source.CObj(), u.CObj(), 23)
 	}
 	if u.ObjFlags&0x8020 == 0 {
 		hp := int32(u.HealthData.Cur)
 		if hp <= floatToInt32(float32(float64(u.HealthData.Max)*.333)) {
 			if *equipmentWord(u.CObj(), 20)&0x100 != 0 {
-				C.nox_xxx_unitUnsetXStatus_4E4780(asObjectC(u), 256)
+				nox_xxx_unitUnsetXStatus_4E4780(asObjectC(u), 256)
 			}
 			if *equipmentWord(u.CObj(), 20)&0x200 == 0 {
-				C.nox_xxx_unitSetXStatus_4E4800(asObjectC(u), 512)
+				nox_xxx_unitSetXStatus_4E4800(asObjectC(u), 512)
 			}
 		} else if hp <= floatToInt32(float32(float64(u.HealthData.Max)*.66600001)) && *equipmentWord(u.CObj(), 20)&0x100 == 0 {
-			C.nox_xxx_unitSetXStatus_4E4800(asObjectC(u), 256)
+			nox_xxx_unitSetXStatus_4E4800(asObjectC(u), 256)
 		}
 	}
 	return result

@@ -305,6 +305,7 @@ target build selection and linker evidence.
 | Remove 56 scalar C round trips and five unused exports; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 | Remove 69 scalar/pointer C round trips and ten unused exports; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 | Remove 74 pointer C round trips; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
+| Remove 94 mixed C round trips and two unused interfaces; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

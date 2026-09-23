@@ -62,7 +62,7 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 		*controlHalf(d, 12+2*i) = hp
 	}
 	u.ObjFlags &= 0xffeb3fe7
-	C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 13)
+	nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 13)
 	spellLifeClearBuffs(u)
 	*controlByte(d, 188) = 0
 	for _, off := range []int{216, 192, 196, 200, 204, 208, 136, 132, 268} {
@@ -85,14 +85,14 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 	} else {
 		for it := u.InvFirstItem; it != nil; {
 			next := it.InvNextItem
-			if sub_53E2D0(inventoryInt(it)) != 0 || it.ObjFlags&0x100 == 0 || it.ObjClass&0x2000000 != 0 && C.nox_xxx_unitArmorInventoryEquipFlags_415C70((*C.nox_object_t)(it.CObj()))&0x808 != 0 {
+			if sub_53E2D0(inventoryInt(it)) != 0 || it.ObjFlags&0x100 == 0 || it.ObjClass&0x2000000 != 0 && nox_xxx_unitArmorInventoryEquipFlags_415C70((*C.nox_object_t)(it.CObj()))&0x808 != 0 {
 				GetServer().DelayedDelete(it)
 			}
 			it = next
 		}
 		controlRespawnNotify(u, 1)
-		desc := func(id C.int) uint32 { return uint32(uintptr(C.nox_xxx_modifGetDescById_413330(id))) }
-		byName := func(name string) uint32 { return desc(C.nox_xxx_modifGetIdByName_413290(internCStr(name))) }
+		desc := func(id C.int) uint32 { return uint32(uintptr(nox_xxx_modifGetDescById_413330(int32(id)))) }
+		byName := func(name string) uint32 { return desc(C.int(nox_xxx_modifGetIdByName_413290(internCStr(name)))) }
 		base := byName("UserColor1")
 		baseID := *equipmentWord(unsafe.Pointer(uintptr(base)), 4)
 		color := func(off int) uint32 { return desc(C.int(baseID + uint32(*controlByte(pl, 2185+off)))) }
@@ -177,7 +177,7 @@ func controlResetPlayer(u *server.Object) int32 {
 	resourceRestoreHP(u)
 	*controlByte(u.CObj(), 541) = 0
 	u.ObjFlags &= 0xffeb3fe7
-	C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 13)
+	nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 13)
 	spellLifeClearBuffs(u)
 	spellLifeCancelPlayer(u)
 	resourceRemovePoison(u)
@@ -254,7 +254,7 @@ func controlRespawn(u *server.Object) int16 {
 	if controlFlags(4096) {
 		sound = 1006
 	}
-	C.nox_xxx_aud_501960(C.int(sound), (*C.nox_object_t)(u.CObj()), 0, 0)
+	nox_xxx_aud_501960(int32(C.int(sound)), (*C.nox_object_t)(u.CObj()), 0, 0)
 	controlMakeCorpse(u, settings)
 	pos := u.PosVec
 	if target := controlObject(d, 308); controlFlags(4096) && target != nil {
@@ -285,7 +285,7 @@ func controlRespawnBot(u *server.Object) int32 {
 		var pos types.Pointf
 		controlFindStart(&pos, u)
 		nox_xxx_unitMove_4E7010((*C.nox_object_t)(u.CObj()), (*C.float2)(unsafe.Pointer(&pos)))
-		C.nox_xxx_aud_501960(148, (*C.nox_object_t)(u.CObj()), 0, 0)
+		nox_xxx_aud_501960(148, (*C.nox_object_t)(u.CObj()), 0, 0)
 		if controlFlags(8192) {
 			spellLifeApplyBuff(u, 23, int16(5*uint16(GetServer().S().TickRate())), 5)
 		}

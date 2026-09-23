@@ -1,0 +1,803 @@
+{
+  "status": "qualified mixed direct Go calls",
+  "preceding_revision": "d27b12746cdd72f11dfc1f3363809806701b77ef",
+  "changed_source_sha256": {
+    "src/legacy/ai_callbacks.go": "863e04706bd5458e86469e614e1c887cb6a058e8391d7d69b10e0d7518128df6",
+    "src/legacy/client_ui_inventory_window_draw.go": "e5c2873697eebbd99d665f262f000b112490af405ffda05f3472c1c9af1e839d",
+    "src/legacy/damage_dispatch.go": "e2ecf0eefbd8df3e282edc4f1861fdb683e304d7ce24a743cc1998d961101653",
+    "src/legacy/damage_helpers.go": "f0cdc7a979dc4659fe87681c387c3336f9b60bf0c4cfb144c5c4fa47e74520c4",
+    "src/legacy/damage_player.go": "03b163ff77f55e67b5d34edc4cffc338ac702cb64f3a331fd8d53d42ef11badd",
+    "src/legacy/effects_weapon_use.go": "c0ef8ce02b794e4b92248c12b2c45953ffd6876b1c4f25d20b10408c41a972b7",
+    "src/legacy/generator_objects.go": "7f358abc5653f9dc5888eefa454607be6e8744dd7355332f78381826c33082f6",
+    "src/legacy/inventory.go": "41e4609891ba6bef267256975cc63e20e88161f13edea8d3403faf04749ce6c9",
+    "src/legacy/inventory_drop.go": "99f61d57f5950586ee22c11f47e8b295b3ff0443729e93d9fbfad68cd5bdcc7f",
+    "src/legacy/inventory_equipment.go": "2282ad378c778eb39b7e1e02fa55b2406f10d83cf8edd05dd2c95fbde4fbd1b6",
+    "src/legacy/inventory_pickup.go": "d1dfbb68cdc3a798129a95664bf0a6f2330558a247c65a4b75d3dadc7a0ac39e",
+    "src/legacy/map_population_finish.go": "48789c2f7dbfe4a8b0d2202b8ed29c7ca21fd251114b22a441a6c1d128f86c3d",
+    "src/legacy/object_collide.go": "ab942b65364d6f2f5c67b456531b5142cf90d61fadedb37389bbbf4242cd7be6",
+    "src/legacy/object_state_collision.go": "38bb085af6548a4e3258adcf5cde469cffbd043ba35978a32c83826e57c5a889",
+    "src/legacy/object_state_owner.go": "d7969b15dafd0ab5c9642e0f07a5b0dc1134a6669c38ffa35287ffac4a54596a",
+    "src/legacy/object_state_sync.go": "dd3225238c96ca8c096e23e79f5a696877154d327a877ce07ecabc3a41fefbed",
+    "src/legacy/objectives_update.go": "b16139bee4ef63933317ca94b61385c9fa77ab03189286ae1662e6e8a767c920",
+    "src/legacy/player_attack.go": "86a70e3c757f5773d8cf63b192b139cddc5e4ac8e4c15a17c241ef55c7b42023",
+    "src/legacy/player_attack_melee.go": "3a587e5e57bf8ba8638130e35c0d93af87dd0a9880a2dacc0f09087c179717cc",
+    "src/legacy/player_attack_ranged.go": "48a36cdf4528f1877bf85b6beca9bb5d0a101750123c8eecf5402f7f57f386f4",
+    "src/legacy/player_controls_helpers.go": "95e5c56de8bc5752a7c8b590ade306e503e6497ae205df81e9067634f4203303",
+    "src/legacy/player_controls_messages.go": "8c4a9d172ae8edf2fe7a58935d873dee88f514441ace947fa3acac47ff63011a",
+    "src/legacy/player_controls_movement.go": "5a6612ab17a735e511ab0994362a56a4e7f0d2d20f68890d2ccc32bec8f2f04e",
+    "src/legacy/player_controls_respawn.go": "15e4c656dfe76d8d4e1ea14c3e1626b88820970f98657b83a1ec2e1e0024be7a",
+    "src/legacy/projectile_collisions.go": "0da49ef42663a72354ef2676f03fa3e8937f8040eaabaab2d31319502383ac87",
+    "src/legacy/projectile_collisions_effects.go": "4445e807fe7d661e5e31f0733e3a32836bce31d667706b27d04a57144bb04608",
+    "src/legacy/shop_inventory.go": "22c7fbf743529d214017717c439de3d2c4100da89499c34e36003dd036174b1c",
+    "src/legacy/spell_effects.go": "a92e28699a2b91c1202be4169ae81ccfa1bcfebccc27c5e9170981c0f31e9aa1",
+    "src/legacy/spell_effects_summon.go": "1ce289f33e3677eb237770828856f7f679bd34022fbad55bfa6843cda3819122",
+    "src/legacy/spell_lifecycle_books.go": "d38ee7ab7e1a3d981b9762b7cd988eed63ffb9bcbfba584ad31a10495b1d70ff",
+    "src/legacy/spell_lifecycle_casting.go": "657fcd7ff22467a0750900605564c9dde9cd0d26d10eb60ef172a8f1e670bd7a",
+    "src/legacy/spell_lifecycle_mana.go": "6474801a3ee9d42ac91dff89683aa7437535dd6298fede8de79bc487863c03b0",
+    "src/legacy/sustained_projectiles.go": "e2f8be3a9bed6e7b5ccbbcf5e18862009da2971c69e9acd8d67f954937ee54ea",
+    "src/legacy/sustained_spells.go": "6c497e45a29dcc4352069432f76809b3246aeccb6d23d7320f2e77f86b146384",
+    "src/legacy/sustained_teleport.go": "5cb0eebf2033766714e3712320abdc5d88434211b5b2d1eeb575776db54f4a60",
+    "src/legacy/temporary_effects.go": "5edc14647a435e8b7316c60ab6073de20f1be2fad729b490f0cafba1f4af3b31",
+    "src/legacy/unit_ai.go": "c462ac213c8f9e2e390e527e6cdb77ef54ece1e75c334aa39418ff8ad10cf4fc",
+    "src/legacy/world_collisions_quest.go": "4b17883c34404ebdf4c4776e4ccff3b94f77f9edfc8fa80722c500d4928c1dfa"
+  },
+  "baseline": {
+    "status": "qualified mixed-forwarding baseline",
+    "revision": "9b548e8fd653707c24adc3c6977dd7cd9a392b85",
+    "profiles": {
+      "default": {
+        "reused": {
+          "tags": "porttest",
+          "success": true,
+          "timeout_seconds": 900,
+          "packages": [
+            "."
+          ],
+          "runtime_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "768MiB",
+            "GOGC": null
+          },
+          "discovery_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "1536MiB",
+            "GOGC": null
+          },
+          "discovery_exit": 0,
+          "selected_tests": 686,
+          "selected_root_tests": 686,
+          "exit": 0,
+          "started_tests": 686,
+          "completed_tests": 686,
+          "started_root_tests": 686,
+          "completed_root_tests": 686,
+          "skipped_tests": [],
+          "missing_started": [],
+          "missing_completed": [],
+          "reason": "all selected tests executed and finished",
+          "wall_seconds": 482.285791042028
+        },
+        "additional": {
+          "tags": "porttest",
+          "success": true,
+          "timeout_seconds": 900,
+          "packages": [
+            "."
+          ],
+          "runtime_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "768MiB",
+            "GOGC": null
+          },
+          "discovery_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "1536MiB",
+            "GOGC": null
+          },
+          "discovery_exit": 0,
+          "selected_tests": 6,
+          "selected_root_tests": 6,
+          "exit": 0,
+          "started_tests": 6,
+          "completed_tests": 6,
+          "started_root_tests": 6,
+          "completed_root_tests": 6,
+          "skipped_tests": [],
+          "missing_started": [],
+          "missing_completed": [],
+          "reason": "all selected tests executed and finished",
+          "wall_seconds": 8.523089983034879
+        },
+        "combined_root_tests": 692
+      },
+      "server": {
+        "reused": {
+          "tags": "porttest,server",
+          "success": true,
+          "timeout_seconds": 900,
+          "packages": [
+            "."
+          ],
+          "runtime_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "768MiB",
+            "GOGC": null
+          },
+          "discovery_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "1536MiB",
+            "GOGC": null
+          },
+          "discovery_exit": 0,
+          "selected_tests": 685,
+          "selected_root_tests": 685,
+          "exit": 0,
+          "started_tests": 685,
+          "completed_tests": 685,
+          "started_root_tests": 685,
+          "completed_root_tests": 685,
+          "skipped_tests": [],
+          "missing_started": [],
+          "missing_completed": [],
+          "reason": "all selected tests executed and finished",
+          "wall_seconds": 473.83502011979
+        },
+        "additional": {
+          "tags": "porttest,server",
+          "success": true,
+          "timeout_seconds": 900,
+          "packages": [
+            "."
+          ],
+          "runtime_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "768MiB",
+            "GOGC": null
+          },
+          "discovery_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "1536MiB",
+            "GOGC": null
+          },
+          "discovery_exit": 0,
+          "selected_tests": 6,
+          "selected_root_tests": 6,
+          "exit": 0,
+          "started_tests": 6,
+          "completed_tests": 6,
+          "started_root_tests": 6,
+          "completed_root_tests": 6,
+          "skipped_tests": [],
+          "missing_started": [],
+          "missing_completed": [],
+          "reason": "all selected tests executed and finished",
+          "wall_seconds": 8.869475824059919
+        },
+        "combined_root_tests": 691
+      },
+      "highres": {
+        "reused": {
+          "tags": "porttest,highres",
+          "success": true,
+          "timeout_seconds": 900,
+          "packages": [
+            "."
+          ],
+          "runtime_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "768MiB",
+            "GOGC": null
+          },
+          "discovery_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "1536MiB",
+            "GOGC": null
+          },
+          "discovery_exit": 0,
+          "selected_tests": 686,
+          "selected_root_tests": 686,
+          "exit": 0,
+          "started_tests": 686,
+          "completed_tests": 686,
+          "started_root_tests": 686,
+          "completed_root_tests": 686,
+          "skipped_tests": [],
+          "missing_started": [],
+          "missing_completed": [],
+          "reason": "all selected tests executed and finished",
+          "wall_seconds": 404.6993445351254
+        },
+        "additional": {
+          "tags": "porttest,highres",
+          "success": true,
+          "timeout_seconds": 900,
+          "packages": [
+            "."
+          ],
+          "runtime_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "768MiB",
+            "GOGC": null
+          },
+          "discovery_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "1536MiB",
+            "GOGC": null
+          },
+          "discovery_exit": 0,
+          "selected_tests": 6,
+          "selected_root_tests": 6,
+          "exit": 0,
+          "started_tests": 6,
+          "completed_tests": 6,
+          "started_root_tests": 6,
+          "completed_root_tests": 6,
+          "skipped_tests": [],
+          "missing_started": [],
+          "missing_completed": [],
+          "reason": "all selected tests executed and finished",
+          "wall_seconds": 8.970660566119477
+        },
+        "combined_root_tests": 692
+      }
+    },
+    "additional_phase": {
+      "batch": "mixed-forwarding",
+      "phase": "baseline-additional",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/mixed-forwarding-additional-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-mixed-forwarding/baseline-additional/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-mixed-forwarding/baseline-additional/default-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 8.613187038805336
+        },
+        {
+          "name": "server",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/mixed-forwarding-additional-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-mixed-forwarding/baseline-additional/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-mixed-forwarding/baseline-additional/server-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 8.965142254950479
+        },
+        {
+          "name": "highres",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/mixed-forwarding-additional-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-mixed-forwarding/baseline-additional/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-mixed-forwarding/baseline-additional/highres-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 9.064587252913043
+        }
+      ],
+      "revision": "9b548e8fd653707c24adc3c6977dd7cd9a392b85",
+      "source_unchanged": true,
+      "wall_seconds": 27.14746146509424,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "source_identity": "Production and tests identical to preceding pointer-forwarding conversion; all source fingerprints, runtime environments and reused production binary hashes match.",
+    "reused_qualification": "pointer-forwarding-qualification.json",
+    "reused_pattern": "(^Test(AICombat.*|AIMonsterState.*|Attack.*|BalanceGetter.*|ClientMeters.*|Damage.*|Equipment.*|GameplayReports.*|Inventory.*|ObjectDeath.*|ObjectState.*|Objectives.*|PlayerControls.*|PlayerDeath.*|ProjectileCollision.*|ServerBrowser.*|ServerOptions.*|SpawnPolicy.*|Spellbook.*|SpellClassEligibilityABI|SpellEffects.*|SpellLifecycle.*|WorldMotion.*|ClientInventoryWindow.*|ClientInventoryDisplay.*|MatchRoster.*|SustainedSpells.*|Temporary.*)$)|(^(TestAICallbackCloudContracts|TestAICallbackCorpus|TestAICallbackDebrisContracts|TestAICallbackLoaders|TestAICallbackLootContracts|TestAICallbackPoisonContracts|TestAICallbackPrecisionContracts|TestAICallbackSmoke|TestAICallbackStrikeContracts|TestAIMainContracts|TestAIMainCorpus|TestAISpellContracts|TestAISpellCorpus|TestClientTradeUIAcceptanceFlags|TestClientTradeUIAddAllocationFailure|TestClientTradeUIAddCapacity|TestClientTradeUIAddModifiers|TestClientTradeUIAssetWindows|TestClientTradeUIButtonsAndRequests|TestClientTradeUICPriceAndTooltip|TestClientTradeUICQuantityCallbackGC|TestClientTradeUICodeHelpers|TestClientTradeUIConstruction|TestClientTradeUIDragRelease|TestClientTradeUIEmptyAndOutsideHover|TestClientTradeUIFullStackSelection|TestClientTradeUIGridRegions|TestClientTradeUIMissingRemoval|TestClientTradeUIMissingResources|TestClientTradeUIMoneyText|TestClientTradeUIPopulatedDrawHover|TestClientTradeUIQuantityAllocationFailure|TestClientTradeUIQuantityCallbacks|TestClientTradeUIQuantityDestroyRecreate|TestClientTradeUIQuantityDrawButtons|TestClientTradeUIQuantityModifiers|TestClientTradeUIQuantityMouse|TestClientTradeUIQuantityPositions|TestClientTradeUIQuantityPriceBounds|TestClientTradeUIQuantityReopenOwnership|TestClientTradeUIRemoveItems|TestClientTradeUIResetDuringDrag|TestClientTradeUIResetOwnership|TestClientTradeUISelectedCell|TestClientTradeUIStartGatesAndNames|TestEffectsArithmetic|TestEffectsFireWand|TestEffectsFireballWall|TestEffectsFlags|TestEffectsGripAndInversion|TestEffectsInventoryLookup|TestEffectsNullGuards|TestEffectsProjectiles|TestEffectsProtection|TestEffectsReadinessRecharge|TestEffectsRechargePercent|TestEffectsRegeneration|TestEffectsReplenishment|TestEffectsResourceTransfers|TestEffectsSpeedRounding|TestEffectsStatusAndForce|TestEffectsTimingFireWand|TestEffectsTimingFireballWall|TestEffectsTimingPositiveRegeneration|TestEffectsTimingProjectiles|TestEffectsTimingRegeneration|TestEffectsTimingReplenishment|TestEffectsTimingWandAcceptance|TestEffectsTimingWandClasses|TestEffectsUseDispatch|TestEffectsWandAcceptance|TestEffectsWandClasses|TestGameplayTextChat|TestGameplayTextChatCodes|TestGameplayTextClassifier|TestGameplayTextFormats|TestGameplayTextFormatted|TestGameplayTextInformation|TestGameplayTextInformationAll|TestGameplayTextIterationAndGuards|TestGameplayTextLongChat|TestGameplayTextPrivate|TestGameplayTextSparsePlayers|TestGeneratorCopyContracts|TestGeneratorCopyInventory|TestGeneratorDeathContracts|TestGeneratorObjectsSmoke|TestGeneratorPickContracts|TestGeneratorPlacementContracts|TestGeneratorPlacementSmoke|TestGeneratorSpawnContracts|TestGeneratorSpawnDefinitionHealth|TestGeneratorTileFixture|TestGeneratorUpdateGates|TestGeneratorUpdateSpawn|TestGeneratorVacancyContracts|TestMapPopulationDecodedPlacement|TestMapPopulationDensity|TestMapPopulationDistanceOrdering|TestMapPopulationDistances|TestMapPopulationEnchantments|TestMapPopulationExitNames|TestMapPopulationExitPlacement|TestMapPopulationGlobals|TestMapPopulationHallwayWaypoints|TestMapPopulationInventories|TestMapPopulationMarkerRemoval|TestMapPopulationMetadataAllocation|TestMapPopulationMetadataLookup|TestMapPopulationModifierBoundaries|TestMapPopulationNearestCandidates|TestMapPopulationOrdering|TestMapPopulationPlainItems|TestMapPopulationPrefabCandidateProbe|TestMapPopulationPrefabConnections|TestMapPopulationPrefabCoordinates|TestMapPopulationPrefabFile|TestMapPopulationPrefabFit|TestMapPopulationPrefabMetadata|TestMapPopulationPrefabReplacement|TestMapPopulationPrefabRetries|TestMapPopulationPrefabRooms|TestMapPopulationPrefabSelection|TestMapPopulationPrerequisiteRegressions|TestMapPopulationProgress|TestMapPopulationRoomObjects|TestMapPopulationSpellNames|TestMapPopulationSpellbooks|TestMapPopulationWaypointConnections|TestObjectCreationAutoSpells|TestObjectCreationCloud|TestObjectCreationContracts|TestObjectCreationCorpus|TestObjectCreationEquipment|TestObjectCreationPrecision|TestObjectCreationSmoke|TestResourcesDamage|TestResourcesGold|TestResourcesGoldPickup|TestResourcesGuardedAccessors|TestResourcesHealingDisabled|TestResourcesHealth|TestResourcesMana|TestResourcesOwnedHealthSync|TestResourcesPickupFallback|TestResourcesPoisonActivation|TestResourcesPoisonMutation|TestShopCachedSessions|TestShopEngineCachedReopening|TestShopEngineCachesAndStockCounts|TestShopEngineOfferAdmission|TestShopEngineOfferMutation|TestShopEngineOpening|TestShopEngineOpeningRejections|TestShopEnginePackets|TestShopEnginePoolExhaustion|TestShopEnginePurchaseLimits|TestShopEnginePurchases|TestShopEngineSales|TestShopEngineStockRemoval|TestShopGoldBalance|TestShopItemPoolCapacity|TestShopOfferRemoval|TestShopPackets|TestShopPriceBase|TestShopPriceCharges|TestShopPriceModifiersHealth|TestShopPriceRewardsGems|TestShopPriceRounding|TestShopQuestLoading|TestShopQuestPriceRounding|TestShopRepairs|TestShopSales|TestShopSessionSequences|TestShopStockBoundaries|TestShopStockLoading|TestShopStockMatching|TestShopStockPriority|TestShopStockSequences|TestShopTradeCompletion|TestTileSelectionABI|TestWorldDoors|TestWorldElevatorMovement|TestWorldElevatorSound|TestWorldElevators|TestWorldFloatFilters|TestWorldForces|TestWorldOwnerIntegration|TestWorldPhantomAndAngleQueue|TestWorldPositiveEffects|TestWorldSwitches|TestWorldTeleportCallbacks|TestWorldTeleports|TestWorldTrapDoors|TestWorldTriggers|TestWorldTypeAndClockBoundaries)$)",
+    "additional_pattern": "^(TestWorldCollisionsQuestExit|TestWorldCollisionsQuestReadiness|TestWorldCollisionsAudioFrames|TestWorldCollisionsTrapAbility|TestWorldCollisionsScriptTriggers|TestProtectionSetABI)$",
+    "binary_sha256": {
+      "safe": "73c48f53cd81722359d4c02b8893e0c29899a0ce6a4896c66c0a5f6a328edfc1",
+      "opennox": "b58ca00f2e93ecc586f6d512172d14989f805d6ae0730f20cc2be43a1ba9bcd3",
+      "opennox-hd": "026337f8378baed1a4e8b9b67c4aa0c8df69cf941a5be091e4416a482cd4c2df",
+      "opennox-server": "6ef181a8c355cbba2ca4339119d17f5d01304757b2b8eb183da24e44ac0451ff"
+    },
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    },
+    "production_c_preamble_bodies": 79
+  },
+  "phases": {
+    "contracts": {
+      "batch": "mixed-forwarding",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/mixed-forwarding-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-mixed-forwarding/contracts/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-mixed-forwarding/contracts/default-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 476.82015071297064
+        },
+        {
+          "name": "server",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/mixed-forwarding-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-mixed-forwarding/contracts/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-mixed-forwarding/contracts/server-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 468.3938520310912
+        },
+        {
+          "name": "highres",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/mixed-forwarding-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-mixed-forwarding/contracts/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-mixed-forwarding/contracts/highres-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 399.6140632920433
+        }
+      ],
+      "revision": "d27b12746cdd72f11dfc1f3363809806701b77ef",
+      "source_unchanged": true,
+      "wall_seconds": 1345.4077346688136,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "safe": {
+      "batch": "mixed-forwarding",
+      "phase": "safe",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-tags",
+            "safe",
+            "-o",
+            "/root/src/opennox/build/port-mixed-forwarding/safe/opennox-safe",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 65.30094420397654
+        },
+        {
+          "name": "static",
+          "command": [
+            "go",
+            "test",
+            "./common/memmap/nox",
+            "-run",
+            "^TestCodeStatic$",
+            "-count=1"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.9036729200743139
+        }
+      ],
+      "revision": "d27b12746cdd72f11dfc1f3363809806701b77ef",
+      "source_unchanged": true,
+      "wall_seconds": 66.61459593102336,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "preflight": {
+      "batch": "mixed-forwarding",
+      "phase": "preflight",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-o",
+            "/root/src/opennox/build/port-mixed-forwarding/preflight/opennox",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 62.48293924401514
+        },
+        {
+          "name": "scenario",
+          "command": [
+            "env",
+            "OPENNOX_DISPLAY_BINARY=/root/src/opennox/build/port-mixed-forwarding/preflight/opennox",
+            "OPENNOX_DISPLAY_IMPLEMENTATION=Direct Go mixed forwarding",
+            "OPENNOX_UI_SCENARIO=/root/src/opennox/docs/porting/character-creation.yaml",
+            "NOX_DEV=true",
+            "python3",
+            "/root/src/opennox/tools/porting/run_scenario.py",
+            "mixed-forwarding",
+            "compare",
+            "/root/src/opennox/build/baseline/runs/entry-classifiers-c"
+          ],
+          "exit": 0,
+          "wall_seconds": 70.72941854805686
+        }
+      ],
+      "revision": "d27b12746cdd72f11dfc1f3363809806701b77ef",
+      "source_unchanged": true,
+      "wall_seconds": 133.60152482590638,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "production": {
+      "batch": "mixed-forwarding",
+      "phase": "production",
+      "success": true,
+      "steps": [
+        {
+          "name": "production",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/qualify_production.py",
+            "/root/src/opennox/docs/porting/mixed-forwarding-batch.json",
+            "--out",
+            "/root/src/opennox/build/port-mixed-forwarding/production/production"
+          ],
+          "exit": 0,
+          "wall_seconds": 168.291511046933
+        }
+      ],
+      "revision": "d27b12746cdd72f11dfc1f3363809806701b77ef",
+      "source_unchanged": true,
+      "wall_seconds": 168.5706230381038,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    }
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 692,
+      "selected_root_tests": 692,
+      "exit": 0,
+      "started_tests": 692,
+      "completed_tests": 692,
+      "started_root_tests": 692,
+      "completed_root_tests": 692,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 476.7470293371007
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 691,
+      "selected_root_tests": 691,
+      "exit": 0,
+      "started_tests": 691,
+      "completed_tests": 691,
+      "started_root_tests": 691,
+      "completed_root_tests": 691,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 468.2881376070436
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 692,
+      "selected_root_tests": 692,
+      "exit": 0,
+      "started_tests": 692,
+      "completed_tests": 692,
+      "started_root_tests": 692,
+      "completed_root_tests": 692,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 399.51750067202374
+    }
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.145664084935561,
+        "sha256": "cacf23aed4f825444da57b3933a617366f9fd5b1434f4292d1fe9caf04aa718e",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.975395831977949,
+        "sha256": "b4b91c01a5870ac827085a11617a1dd58959a64cd5b09b72f16744747d414d66",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 61.73928956105374,
+        "sha256": "0e8bc3e39ad0768ad9ead864b4d890800af6441f5a77d26150421ee5e71b5879",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "mixed-forwarding-save": {
+        "exit": 0,
+        "wall_seconds": 44.488980947993696,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 43.98402896616608,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "cacf23aed4f825444da57b3933a617366f9fd5b1434f4292d1fe9caf04aa718e",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-mixed-forwarding/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/mixed-forwarding-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Direct Go mixed forwarding",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "b598ef4ef42f0ddf86cab13c92ecc2378a09ca5613a7eb5e6b92f7c4bc44e18c"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 43.772828391054645,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 17,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "preflight": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 70.01925446791574,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c",
+    "binary_sha256": "cacf23aed4f825444da57b3933a617366f9fd5b1434f4292d1fe9caf04aa718e",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-mixed-forwarding/preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/mixed-forwarding/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Direct Go mixed forwarding",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "binary_sha256": {
+    "safe": "5b87ac77df38b554550f7cb75b88435965bbd7bdde7cc4032cfdcccbc138ba82",
+    "opennox": "cacf23aed4f825444da57b3933a617366f9fd5b1434f4292d1fe9caf04aa718e",
+    "opennox-hd": "b4b91c01a5870ac827085a11617a1dd58959a64cd5b09b72f16744747d414d66",
+    "opennox-server": "0e8bc3e39ad0768ad9ead864b4d890800af6441f5a77d26150421ee5e71b5879"
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79,
+  "limits": [
+    "Configured target is 386/SSE2; C int and Go int widths agree. No new 64-bit compatibility claim.",
+    "Affected gameplay/UI roots and direct numeric contracts pass per profile; existing frozen hashes and independent expected values are unchanged. Not every caller branch is independently covered."
+  ]
+}

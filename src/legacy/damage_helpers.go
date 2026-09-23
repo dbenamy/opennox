@@ -205,9 +205,9 @@ func damageBlockingItem(u, source, weapon *server.Object, mask int32, value floa
 		return 0
 	}
 	if u.ObjClass&4 != 0 {
-		C.nox_xxx_playerSetState_4FA020(asObjectC(u), 13)
+		nox_xxx_playerSetState_4FA020(asObjectC(u), 13)
 	} else {
-		C.nox_xxx_monsterPopAction_50A160(asObjectC(u))
+		nox_xxx_monsterPopAction_50A160(asObjectC(u))
 	}
 	return 1
 }

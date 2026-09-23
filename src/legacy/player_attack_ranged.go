@@ -37,7 +37,7 @@ func attackMuzzle(u *server.Object) types.Pointf {
 }
 func attackRay(a, b types.Pointf, flags byte) int {
 	r := [4]float32{a.X, a.Y, b.X, b.Y}
-	return int(C.nox_xxx_mapTraceRay_535250((*C.float4)(unsafe.Pointer(&r)), nil, nil, C.char(flags)))
+	return int(nox_xxx_mapTraceRay_535250((*C.float4)(unsafe.Pointer(&r)), nil, nil, C.char(flags)))
 }
 func attackProjectileVelocity(u, p *server.Object) {
 	d := attackDirection(u)

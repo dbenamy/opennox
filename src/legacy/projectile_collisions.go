@@ -107,7 +107,7 @@ func projectileBomb(u, t *server.Object) {
 	if noxflags.HasGame(2048) && GetServer().S().Players.FirstUnit().ObjFlags&2 != 0 {
 		return
 	}
-	C.nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(u.UpdateData, 1272), t.CObj(), u.CObj(), 21)
+	nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(u.UpdateData, 1272), t.CObj(), u.CObj(), 21)
 	if t != nil && t.ObjClass&6 != 0 && !Nox_xxx_unitsHaveSameTeam_4EC520(u, t) && t.ObjFlags&0x8000 == 0 {
 		*temporaryRefWord(u.UpdateData, 2176) = t
 		resourceDamage(u, 999)
@@ -139,7 +139,7 @@ func projectileTrapEligible(u, t *server.Object) bool {
 			}
 		}
 	}
-	if C.nox_common_playerIsAbilityActive_4FC250(asObjectC(t), 4) != 0 {
+	if nox_common_playerIsAbilityActive_4FC250(asObjectC(t), 4) != 0 {
 		ok = false
 	}
 	return ok

@@ -58,10 +58,10 @@ func inventoryWeaponPickup(u, it *server.Object, arg, equip int) int {
 	if u.ObjClass&4 != 0 {
 		ud := u.UpdateData
 		equipped := 0
-		if *(*uint32)(unsafe.Add(ud, 104)) == 0 && C.sub_419E60(asObjectC(u)) == 0 && C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)) != 2 {
+		if *(*uint32)(unsafe.Add(ud, 104)) == 0 && sub_419E60(asObjectC(u)) == 0 && nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)) != 2 {
 			equipped = equipmentEquipWeapon(u, it, equip, 0)
 		}
-		if C.sub_419E60(asObjectC(u)) == 0 && C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)) == 2 {
+		if sub_419E60(asObjectC(u)) == 0 && nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)) == 2 {
 			flags := *(*uint32)(unsafe.Add(unsafe.Pointer(u.UpdateDataPlayer().Player), 4))
 			if flags&0xC != 0 && flags&2 == 0 {
 				equipped = equipmentEquipWeapon(u, it, equip, 0)
@@ -88,12 +88,12 @@ func inventoryWeaponPickup(u, it *server.Object, arg, equip int) int {
 	return 1
 }
 func inventoryAmmoPickup(u, it *server.Object, arg, equip int) int {
-	bits := uint32(C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)))
+	bits := uint32(nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)))
 	if u.ObjClass&4 != 0 && bits&0x82 != 0 {
 		data := unsafe.Slice((*byte)(it.UseData.Ptr), 3)
 		mods := unsafe.Slice((*uint32)(it.InitData), 4)
 		for old := u.InvFirstItem; old != nil; old = old.InvNextItem {
-			if old.TypeInd != it.TypeInd || old.ObjClass&0x1000000 == 0 || uint32(C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(old)))&bits == 0 {
+			if old.TypeInd != it.TypeInd || old.ObjClass&0x1000000 == 0 || uint32(nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(old)))&bits == 0 {
 				continue
 			}
 			prev := unsafe.Slice((*byte)(old.UseData.Ptr), 3)
@@ -119,7 +119,7 @@ func inventoryAmmoPickup(u, it *server.Object, arg, equip int) int {
 }
 func inventoryOblivionPickup(u, it *server.Object, arg, equip int) int {
 	rv := inventoryWeaponPickup(u, it, arg, equip)
-	if rv == 1 && u.ObjClass&4 != 0 && C.sub_419E60(asObjectC(u)) == 0 {
+	if rv == 1 && u.ObjClass&4 != 0 && sub_419E60(asObjectC(u)) == 0 {
 		for i, key := range []string{"weapon.c:PickupHalberdOblivion", "weapon.c:PickupHeartOblivion", "weapon.c:PickupWierdlingOblivion", "weapon.c:PickupOrbOblivion"} {
 			if uint32(it.ObjSubClass)&(0x800000<<i) != 0 {
 				inventoryPriMessage(u, key)
@@ -162,7 +162,7 @@ func inventoryArmorPickup(u, it *server.Object, arg, equip int) int {
 	}
 	if u.ObjClass&4 != 0 {
 		old := equipmentSameArmor(u, it)
-		if C.sub_419E60(asObjectC(u)) == 0 {
+		if sub_419E60(asObjectC(u)) == 0 {
 			wood, steel := uint32(dword_5d4594_2488720), uint32(dword_5d4594_2488724)
 			sneakers, robe := *memmap.PtrUint32(0x5D4594, 2488712), *memmap.PtrUint32(0x5D4594, 2488716)
 			replace := false

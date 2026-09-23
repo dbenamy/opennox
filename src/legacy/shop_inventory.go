@@ -149,7 +149,7 @@ func shopLoad(s *shopSession) {
 	for i := 0; i < int(*(*byte)(data)); i++ {
 		e := (*shopStockEntry)(unsafe.Add(data, 4+28*i))
 		for j := 0; j < int(e.Count); j++ {
-			u := asObjectS(C.nox_xxx_newObjectWithTypeInd_4E3450(C.int(e.Type)))
+			u := asObjectS(nox_xxx_newObjectWithTypeInd_4E3450(int(C.int(e.Type))))
 			if u == nil {
 				continue
 			}
@@ -169,7 +169,7 @@ func shopLoad(s *shopSession) {
 				*(*byte)(u.UseData.Ptr) = byte(e.Reward)
 			}
 			if u.Xfer == C.nox_xxx_XFerFieldGuide_4F6390 {
-				C.strcpy((*C.char)(u.UseData.Ptr), (*C.char)(C.nox_xxx_getUnitNameByThingType_4E3A80(C.int(e.Reward))))
+				C.strcpy((*C.char)(u.UseData.Ptr), (*C.char)(nox_xxx_getUnitNameByThingType_4E3A80(int(C.int(e.Reward)))))
 			}
 			shopAdd(s, u)
 		}

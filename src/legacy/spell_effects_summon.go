@@ -278,6 +278,6 @@ func spellEffectBanish(u *server.Object) {
 		it = next
 	}
 	visibilityFXPoint(129, u.PosVec)
-	C.nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(u.UpdateData, 1264), nil, u.CObj(), 7)
+	nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(u.UpdateData, 1264), nil, u.CObj(), 7)
 	GetServer().DelayedDelete(u)
 }

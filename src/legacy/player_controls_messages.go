@@ -110,9 +110,9 @@ func controlScheduledSpell(u, target *server.Object, back bool) int32 {
 	args := [3]uint32{controlRaw(target), math.Float32bits(float32(int32(*equipmentWord(d, 220)))), math.Float32bits(float32(int32(*equipmentWord(d, 224))))}
 	if reason != 0 {
 		nox_xxx_netInformTextMsg_4DA0F0(C.int(*controlByte(controlPlayer(u), 2064)), 0, &reason)
-		C.nox_xxx_aud_501960(231, (*C.nox_object_t)(u.CObj()), 0, 0)
+		nox_xxx_aud_501960(231, (*C.nox_object_t)(u.CObj()), 0, 0)
 	} else {
-		C.nox_xxx_castSpellByUser_4FDD20(C.int(id), (*C.nox_object_t)(u.CObj()), unsafe.Pointer(&args[0]))
+		nox_xxx_castSpellByUser_4FDD20(int(C.int(id)), (*C.nox_object_t)(u.CObj()), unsafe.Pointer(&args[0]))
 	}
 	// Front removal shifts and clears; back removal only decrements the count.
 	if !back {

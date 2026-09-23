@@ -52,7 +52,7 @@ func stateBuffs(u *server.Object, flags uint32) unsafe.Pointer {
 	u.Buffs = flags
 	if u.ObjClass&4 != 0 {
 		pl := *(*unsafe.Pointer)(unsafe.Add(u.UpdateData, 276))
-		C.nox_xxx_playerResetProtectionCRC_56F7D0(C.int(*equipmentWord(pl, 4612)), C.int(flags))
+		nox_xxx_playerResetProtectionCRC_56F7D0(C.int(*equipmentWord(pl, 4612)), C.int(flags))
 	}
 	return stateSync(u, 0x800000, 128)
 }
@@ -83,7 +83,7 @@ func stateAttributes(u *server.Object, attrs unsafe.Pointer) unsafe.Pointer {
 }
 func stateOn(u *server.Object) int8 {
 	if u.ObjFlags&0x1000000 == 0 && u.ObjClass&0x4000 != 0 {
-		C.nox_xxx_aud_501960(235, asObjectC(u), 0, 0)
+		nox_xxx_aud_501960(235, asObjectC(u), 0, 0)
 	}
 	stateOnOff(u, true)
 	if u.ObjClass&0x10042000 != 0 {
@@ -96,7 +96,7 @@ func stateOn(u *server.Object) int8 {
 }
 func stateOff(u *server.Object) int32 {
 	if u.ObjFlags&0x1000000 != 0 && u.ObjClass&0x4000 != 0 {
-		C.nox_xxx_aud_501960(236, asObjectC(u), 0, 0)
+		nox_xxx_aud_501960(236, asObjectC(u), 0, 0)
 	}
 	stateOnOff(u, false)
 	if u.ObjClass&0x10042000 != 0 {

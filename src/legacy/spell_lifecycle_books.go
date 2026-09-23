@@ -80,7 +80,7 @@ func spellLifeInform(u *server.Object, code int32) {
 }
 func spellLifeBookError(u *server.Object, code int32, audio int) int32 {
 	spellLifeInform(u, code)
-	C.nox_xxx_aud_501960(C.int(audio), asObjectC(u), 0, 0)
+	nox_xxx_aud_501960(int32(C.int(audio)), asObjectC(u), 0, 0)
 	return 0
 }
 func spellLifeInsertBook(u *server.Object, list unsafe.Pointer, n, delay, self int32) int32 {
@@ -120,7 +120,7 @@ func spellLifeInsertBook(u *server.Object, list unsafe.Pointer, n, delay, self i
 			return spellLifeBookError(u, 12, 232)
 		}
 		if *controlByte(pl, 2251) == 2 {
-			if !bool(C.nox_xxx_checkSummonedCreaturesLimit_500D70(asObjectC(u), 5)) {
+			if !bool(nox_xxx_checkSummonedCreaturesLimit_500D70(asObjectC(u), 5)) {
 				return spellLifeBookError(u, 4, 231)
 			}
 			count := nox_xxx_unitCountSlaves_4E7CF0(C.int(uintptr(u.CObj())), 2, 0x2000)
@@ -200,7 +200,7 @@ func spellLifeCastBooks() {
 		id := int32(*spellLifeWord(unsafe.Pointer(p), 8+4*int(p.Index)))
 		if p.Phoneme == 0 {
 			msg := [2]byte{112, byte(id)}
-			C.nox_netlist_addToMsgListCli_40EBC0(C.int(*controlByte(*controlPtr(ud, 276), 2064)), 1, (*C.uchar)(unsafe.Pointer(&msg[0])), 2)
+			nox_netlist_addToMsgListCli_40EBC0(int(C.int(*controlByte(*controlPtr(ud, 276), 2064))), 1, (*C.uchar)(unsafe.Pointer(&msg[0])), 2)
 		}
 		if p.Tree.Ind != id {
 			settings := unsafe.Pointer((unsafe.Pointer)(unsafe.Pointer(serverConfigSettings())))
@@ -267,7 +267,7 @@ func spellLifeCounterBooks(u *server.Object, radius float32) {
 		same := owner.ObjClass&4 != 0 && u.TeamVal.SameAs(&owner.TeamVal)
 		dx := float64(owner.PosVec.X) - float64(u.PosVec.X)
 		dy := float64(owner.PosVec.Y) - float64(u.PosVec.Y)
-		if !same && math.Sqrt(dx*dx+dy*dy)+0.1 < float64(radius) && C.nox_xxx_mapCheck_537110(asObjectC(u), asObjectC(owner)) != 0 {
+		if !same && math.Sqrt(dx*dx+dy*dy)+0.1 < float64(radius) && nox_xxx_mapCheck_537110(asObjectC(u), asObjectC(owner)) != 0 {
 			if owner.ObjClass&4 != 0 {
 				*spellLifeWord(owner.UpdateData, 216) = 0
 				*controlByte(owner.UpdateData, 188) = 0

@@ -172,7 +172,7 @@ func sustainedFirewalk(p unsafe.Pointer) uint32 {
 			id := *memmap.PtrUint32(0x5d4594, 2487888+uintptr(GetServer().S().Rand.Logic.IntClamp(0, limit))*4)
 			if flame := spellEffectNew(id); flame != nil {
 				spellEffectCreate(flame, nil, pos)
-				C.nox_xxx_audCreate_501A30(46, (*C.float2)(unsafe.Pointer(&pos)), 0, 0)
+				nox_xxx_audCreate_501A30(46, (*C.float2)(unsafe.Pointer(&pos)), 0, 0)
 				Nox_xxx_unitSetDecayTime_511660(flame, int(25*sustainedFPS()))
 			}
 			x := pos.X - prev.X
@@ -334,7 +334,7 @@ func sustainedManaBombTick(p unsafe.Pointer) uint32 {
 		nox_xxx_gameSetWallsDamage_4E25A0(1)
 		inner := float32(spellEffectScalar("ManaBombInRadius"))
 		outer := float32(spellEffectScalar("ManaBombOutRadius"))
-		C.nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&pos)), C.float(outer), C.float(inner), C.int(d.Field72), 15, asObjectC(u), nil)
+		nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&pos)), C.float(outer), C.float(inner), int(C.int(d.Field72)), 15, asObjectC(u), nil)
 		gameplayReportEarthquake(&pos, int(sustainedScalarInt("ManaBombShakeMag")))
 		sustainedFX(129, pos)
 		sustainedFX(154, pos)

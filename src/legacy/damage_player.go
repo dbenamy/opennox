@@ -142,7 +142,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 					}
 					inventorySound(890, u, 0, 0)
 					if player {
-						C.nox_xxx_playerSetState_4FA020(asObjectC(u), C.int(nox_common_randomInt_415FA0(18, 20)))
+						nox_xxx_playerSetState_4FA020(asObjectC(u), int(C.int(nox_common_randomInt_415FA0(18, 20))))
 					} else {
 						monsterControlEnsure(u, 23)
 					}
@@ -157,7 +157,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 				if !skipGreat && weapons&0x7ff8000 != 0 && (kind == 0 || kind == 11) && actual.ObjClass&1 == 0 && canBlock {
 					inventorySound(894, u, 0, 0)
 					if player {
-						C.nox_xxx_playerSetState_4FA020(asObjectC(u), 21)
+						nox_xxx_playerSetState_4FA020(asObjectC(u), 21)
 					} else {
 						monsterControlEnsure(u, 23)
 					}
@@ -199,7 +199,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 	if amount > 0 && n == 0 {
 		n = 1
 	}
-	if bool(C.nox_common_getEngineFlag(C.NOX_ENGINE_FLAG_GODMODE)) && u.ObjClass&4 != 0 {
+	if bool(nox_common_getEngineFlag(C.NOX_ENGINE_FLAG_GODMODE)) && u.ObjClass&4 != 0 {
 		return 1
 	}
 	if bool(nox_common_gameFlags_check_40A5C0(4096)) {

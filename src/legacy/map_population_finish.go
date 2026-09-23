@@ -129,7 +129,7 @@ func mapPopulationFinish(cfg uint32) {
 		file, freeFile := alloc.CString("C:\\NoxPost\\src\\Server\\MapGen\\Generate\\populate.c")
 		defer freeFile()
 		for line := 848; line <= 850; line++ {
-			text := C.nox_strman_loadString_40F1D0((*C.char)(unsafe.Pointer(name)), nil, (*C.char)(unsafe.Pointer(file)), C.int(line))
+			text := nox_strman_loadString_40F1D0((*C.char)(unsafe.Pointer(name)), nil, (*C.char)(unsafe.Pointer(file)), int(C.int(line)))
 			textFormatAll(0, (*uint16)(unsafe.Pointer(text)))
 		}
 	}

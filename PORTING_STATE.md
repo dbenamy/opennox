@@ -7,23 +7,39 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — mixed forwarding baseline qualified
+## Current — mixed forwarding qualified
 
-Pointer forwarding conversion `9b548e8f` is pushed. Mixed baseline session54569
-joined PASS: six fresh owner roots per profile, plus exact reuse of preceding
-686/685/686 roots; combined692/691/692. Source/test fingerprints, runtime/discovery
-environments and four binary hashes match. See docs/porting/MIXED_FORWARDING.md.
-Baseline finalizer CONSUMED. No Go/build jobs active. Next commit/push baseline,
-then apply direct-calls.patch followed by interfaces-and-imports.patch under
-build/port-mixed-forwarding. Both UNAPPLIED. Primary fresh signature projection
-matches all40 mechanical candidates; original ABI proof records both separate
-mismatched exports in allfour binaries. Full qualification remains required.
+Baseline d27b1274 is pushed. All94 calls/38files and two unused interface
+retirements are qualified:692/691/692 roots, no skips or changed expectations.
+Safe/static, four fresh binaries/ABI, exact known suite304events/17pass2fail32skip,
+headless creation and save/load PASS. All42 selected C-call bridges and two exports
+absent; remaining40 selected exports Go-backed. See MIXED_FORWARDING.md and JSON.
+Check Git log/remote for conversion commit/push status. No Go/build jobs active.
+Finalizer, draft application and scenario dedup scripts CONSUMED.
 
-Cleanup removed five verified obsolete Go-cache archives,226475872bytes; record
-old-cache-today-removed.json. Primary checked retired markers absent from current
-source/four binaries, hashes/stat/archive headers and host PID1/open file inodes.
-Original assets/binaries preserved. Six completed logs are proposed for reversible
-gzip archival; not yet archived. Draft qualification/dedup scripts are UNCONSUMED.
+First discovery97457 failed before tests: respawn lookup int32 result passed to
+local desc(C.int). Primary explicit C.int result conversion fixed it; both Luna
+and independent text reconstruction missed the result context. Failure retained
+under contracts-build-failed. Corrected native77118 joined PASS. No expectations
+changed. Remaining full pipeline33875 joined PASS.
+
+Next: build/port-reward-use-registry/tests.patch and production.patch UNAPPLIED.
+Three RegisterObjectUseC entries use existing registry with same C addresses and
+data sizes. Test draft shares all576 existing item-use cases/frozen hash with new
+registry-route root, checks registration address/size. Primary reviewed draft;
+install/qualify test baseline on unchanged production, commit/push before conversion.
+Current mixed binaries under safe/opennox-safe and production/production/bin.
+
+Cleanup records in build/port-mixed-forwarding: five obsolete cache archives
+226475872bytes removed with marker/hash/host FD checks; six logs75474366->4236945
+archived; ten scalar/typed binaries488736004->230483100; nine older single-link
+binaries438720288->206129910. Archive scripts CONSUMED, --restore supported.
+Host FD/exe/mapped-inode and qualified hash/gzip roundtrip checks pass. Older logs/
+binaries require restore before historical finalizers. Assets and current pointer/
+mixed binaries retainedplain. Pointer preflight/production normal binaries now
+share an inode after exact qualified hash/metadata/host checks, reclaiming49077784
+bytes; pointer-binary-shared.json. Copy to a separate inode before intentionally
+mutating either path. Scenario duplicates removed only after qualification.
 
 ## Earlier — pointer forwarding qualified
 

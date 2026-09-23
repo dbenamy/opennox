@@ -52,7 +52,7 @@ func sustainedTeleportSound(d *server.DurSpell, phase int32, u *server.Object, h
 		code = C.int(*spellLifeWord(u.CObj(), 36))
 	}
 	id := C.int(nox_xxx_spellGetAud44_424800(int(C.int(d.Spell)), int(C.int(phase))))
-	C.nox_xxx_aud_501960(id, asObjectC(u), mode, code)
+	nox_xxx_aud_501960(int32(id), asObjectC(u), int(mode), int32(code))
 }
 func sustainedBlinkTick(p unsafe.Pointer) uint32 {
 	d := (*server.DurSpell)(p)

@@ -28,7 +28,7 @@ func inventoryCache(off uintptr, name string) uint32 {
 	return *p
 }
 func inventorySound(id int, u *server.Object, a, b int) {
-	C.nox_xxx_aud_501960(C.int(id), asObjectC(u), C.int(a), C.int(b))
+	nox_xxx_aud_501960(int32(C.int(id)), asObjectC(u), int(C.int(a)), int32(C.int(b)))
 }
 func inventoryMessage(kind int, u *server.Object, value uint32) {
 	var data [10]byte
@@ -49,9 +49,9 @@ func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 	}
 	inventoryRemove(u, it)
 	GetServer().CreateObjectAt(it, nil, *pos)
-	if it.ObjClass&0x1000000 != 0 && C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)) == 4 {
+	if it.ObjClass&0x1000000 != 0 && nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)) == 4 {
 		for ammo := u.InvFirstItem; ammo != nil; ammo = ammo.InvNextItem {
-			if ammo.ObjClass&0x1000000 != 0 && C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(ammo)) == 2 && ammo.ObjFlags&0x100 == 0 && *(*byte)(unsafe.Add(ammo.UseData.Ptr, 2)) != 0 {
+			if ammo.ObjClass&0x1000000 != 0 && nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(ammo)) == 2 && ammo.ObjFlags&0x100 == 0 && *(*byte)(unsafe.Add(ammo.UseData.Ptr, 2)) != 0 {
 				inventoryRemove(u, ammo)
 				GetServer().DelayedDelete(ammo)
 				break

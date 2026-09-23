@@ -60,7 +60,7 @@ func spellEffectCreate(u, owner *server.Object, pos types.Pointf) {
 	nox_xxx_createAt_4DAA50(asObjectC(u), asObjectC(owner), C.float(pos.X), C.float(pos.Y))
 }
 func spellEffectNew(id uint32) *server.Object {
-	return asObjectS(C.nox_xxx_newObjectWithTypeInd_4E3450(C.int(id)))
+	return asObjectS(nox_xxx_newObjectWithTypeInd_4E3450(int(C.int(id))))
 }
 func spellEffectTrace(from, to types.Pointf, flags int) bool {
 	return GetServer().S().MapTraceRayAt(from, to, nil, nil, server.MapTraceFlags(flags))

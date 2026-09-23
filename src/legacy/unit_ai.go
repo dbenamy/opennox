@@ -66,7 +66,6 @@ func sub_50B500() {
 	GetServer().S().AI.Paths.Sub_50B500()
 }
 
-//export sub_50B510
 func sub_50B510() {
 	GetServer().S().AI.Paths.Sub_50B510()
 }

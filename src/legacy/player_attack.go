@@ -7,7 +7,6 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4.h"
 #include "GAME4_3.h"
-void nox_xxx_castCounterSpell_52BBB0(int,int,int,int);
 */
 import "C"
 import (
@@ -67,7 +66,7 @@ func attackPlayer(u *server.Object) int {
 	frame := core.Frame()
 	var frames, delay C.int
 	var current byte
-	animation := func(id int) { C.nox_xxx_animPlayerGetFrameRange_4F9F90(C.int(id), &frames, &delay) }
+	animation := func(id int) { nox_xxx_animPlayerGetFrameRange_4F9F90(int(C.int(id)), &frames, &delay) }
 	elapsed := func() byte { return byte((frame - u.Field34) / uint32(delay+1)) }
 	start := func(readiness int, immediate bool) {
 		if player && *(*uint32)(ud) == 0 {
@@ -105,20 +104,20 @@ func attackPlayer(u *server.Object) int {
 			inventorySound(sound, u, 0, 0)
 		}
 	}
-	if C.nox_common_playerIsAbilityActive_4FC250(asObjectC(u), 2) != 0 && C.nox_xxx_probablyWarcryCheck_4FC3E0(asObjectC(u), 2) != 0 {
+	if nox_common_playerIsAbilityActive_4FC250(asObjectC(u), 2) != 0 && nox_xxx_probablyWarcryCheck_4FC3E0(asObjectC(u), 2) != 0 {
 		animation(46)
 		current = elapsed()
 		if uint16(current)<<8|uint16(prior) == 770 {
 			gameplayReportEarthquake(&u.PosVec, 15)
 			core.Map.EachObjInCircle(u.PosVec, 300, func(t *server.Object) bool { attackWarcry(t, u); return true })
-			C.nox_xxx_castCounterSpell_52BBB0(13, inventoryInt(u), inventoryInt(u), inventoryInt(u))
+			nox_xxx_castCounterSpell_52BBB0(13, asObjectC(u), asObjectC(u), asObjectC(u))
 		}
 		if int(current) >= int(frames) {
-			C.sub_4FC440(asObjectC(u), 2)
+			sub_4FC440(asObjectC(u), 2)
 		}
 		return finish()
 	}
-	if C.nox_common_playerIsAbilityActive_4FC250(asObjectC(u), 1) != 0 {
+	if nox_common_playerIsAbilityActive_4FC250(asObjectC(u), 1) != 0 {
 		if u.HasEnchant(25) || u.HasEnchant(5) {
 			return 0
 		}

@@ -29,7 +29,7 @@ func stateDoorNotify(u *server.Object) int32 {
 	return int32(questRuntimeCodeMessage(255, u))
 }
 func stateMonsterCollision(u, t *server.Object) unsafe.Pointer {
-	return C.nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(u.UpdateData, 1272), t.CObj(), u.CObj(), 22)
+	return nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(u.UpdateData, 1272), t.CObj(), u.CObj(), 22)
 }
 func stateMimicCollision(u, t *server.Object) unsafe.Pointer {
 	if t != nil && t.ObjFlags&0x8000 == 0 && t.ObjClass&6 != 0 && nox_xxx_unitIsEnemyTo_5330C0(asObjectC(u), asObjectC(t)) != 0 && !u.MonsterActionIsScheduled(15) {
@@ -67,7 +67,7 @@ func stateChargeStun(u *server.Object) {
 	spellLifeApplyBuff(u, 5, int16(duration), 5)
 }
 func stateCharge(u, t *server.Object) {
-	C.nox_xxx_playerSetState_4FA020(asObjectC(u), 13)
+	nox_xxx_playerSetState_4FA020(asObjectC(u), 13)
 	gameplayReportEarthquake(&u.PosVec, 10)
 	Sub_4FC300(u, 1)
 	if t != nil {
@@ -87,7 +87,7 @@ func stateCharge(u, t *server.Object) {
 			stateChargeMoveBack(u)
 			return
 		}
-		C.nox_xxx_aud_501960(171, asObjectC(u), 0, 0)
+		nox_xxx_aud_501960(171, asObjectC(u), 0, 0)
 		stateChargeStun(u)
 		x, y := projectileGrid(u.NewPos)
 		projectileWall(u, x, y, 100, 2)

@@ -21,7 +21,7 @@ import (
 )
 
 func temporaryAreaDamage(u *server.Object, outer, inner float32, damage, kind int) {
-	C.nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.float(outer), C.float(inner), C.int(damage), C.int(kind), asObjectC(u), nil)
+	nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.float(outer), C.float(inner), int(C.int(damage)), int(C.int(kind)), asObjectC(u), nil)
 }
 func temporaryPowderBarrel(u *server.Object) {
 	core := GetServer().S()
@@ -228,7 +228,7 @@ func temporaryMeteorExplode(u *server.Object) {
 		GetServer().CreateObjectAt(fx, nil, u.PosVec)
 	}
 	owner := u.FindOwnerChainPlayer()
-	C.nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), 80, 30, C.int(*damage), 7, asObjectC(owner), nil)
+	nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), 80, 30, int(C.int(*damage)), 7, asObjectC(owner), nil)
 	x1 := float32(float64(u.PosVec.X) - 80)
 	y1 := float32(float64(u.PosVec.Y) - 80)
 	x2 := float32(float64(u.PosVec.X) + 80)

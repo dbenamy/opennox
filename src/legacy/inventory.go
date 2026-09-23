@@ -85,7 +85,7 @@ func inventoryInsert(u, it *server.Object, report int) {
 		inventoryWeight(u)
 	}
 	if it.ObjClass&64 != 0 {
-		C.nox_xxx_aud_501960(820, asObjectC(u), 0, 0)
+		nox_xxx_aud_501960(820, asObjectC(u), 0, 0)
 	}
 }
 func inventoryDropEligible(u, it *server.Object) bool {

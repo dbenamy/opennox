@@ -49,7 +49,7 @@ func sustainedFX(code byte, pos types.Pointf) uint32 {
 	return uint32(visibilityFXPoint(byte(code), pos))
 }
 func sustainedState(u *server.Object, state int) {
-	C.nox_xxx_playerSetState_4FA020(asObjectC(u), C.int(state))
+	nox_xxx_playerSetState_4FA020(asObjectC(u), int(C.int(state)))
 }
 func sustainedHurtRecently(u *server.Object) bool {
 	return u.HealthData != nil && sustainedFrame()-u.Frame134 <= 1
@@ -99,7 +99,7 @@ func sustainedTagStart(p unsafe.Pointer) uint32 {
 		return 1
 	}
 	d.Frame68 = sustainedFrame() + d.Level*uint32(sustainedScalarInt("TagDurationPerLevel"))
-	C.nox_xxx_netMarkMinimapObject_417190(C.int(*controlByte(controlPlayer(u), 2064)), asObjectC(t), 1)
+	nox_xxx_netMarkMinimapObject_417190(int(C.int(*controlByte(controlPlayer(u), 2064))), asObjectC(t), 1)
 	sustainedTagPacket(u, t, 1)
 	return 0
 }
@@ -119,7 +119,7 @@ func sustainedTagCancel(p unsafe.Pointer) uint32 {
 		ret = controlRaw(t)
 		if t != nil {
 			if t.ObjClass&4 == 0 {
-				C.nox_xxx_netUnmarkMinimapObj_417300(C.int(*controlByte(controlPlayer(u), 2064)), asObjectC(t), 1)
+				nox_xxx_netUnmarkMinimapObj_417300(int(C.int(*controlByte(controlPlayer(u), 2064))), asObjectC(t), 1)
 			}
 			ret = sustainedTagPacket(u, t, 2)
 		}

@@ -65,7 +65,7 @@ func spellLifeCheckClass(u *server.Object, id int32) int32 {
 	if u.ObjClass&4 != 0 {
 		return int32(nox_xxx_playerCheckSpellClass_57AEA0(C.int(*controlByte(controlPlayer(u), 2251)), C.int(id)))
 	}
-	v := -int32(C.sub_57AEE0(C.int(id), asObjectC(parent)))
+	v := -int32(sub_57AEE0(int(C.int(id)), asObjectC(parent)))
 	v = int32(uint32(v)&0xffffff00 | uint32(byte(v)&0xf6))
 	return v + 10
 }

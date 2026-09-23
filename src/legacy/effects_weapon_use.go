@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME5.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/types"
@@ -162,7 +157,7 @@ func effectsUse(u, it *server.Object) int {
 	if it == nil || it.Use.Ptr == nil {
 		return 1
 	}
-	if result := int(C.sub_419E60(asObjectC(u))); result == 1 {
+	if result := int(sub_419E60(asObjectC(u))); result == 1 {
 		return result
 	}
 	return ccall.CallIntPtr2(it.Use.Ptr, u.CObj(), it.CObj())

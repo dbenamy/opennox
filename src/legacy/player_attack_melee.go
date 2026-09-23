@@ -163,7 +163,7 @@ func attackTrace(u *server.Object, r *attackRecord) int {
 	if it == nil {
 		it = u
 	}
-	C.nox_xxx_mapDamageToWalls_534FC0((*C.int4)(unsafe.Pointer(&bounds)), unsafe.Pointer(&r.Pos), C.float(float32(extra+float64(r.Radius))), C.int(effectsTruncWord(float64(r.Damage)+0.5)), C.int(r.Type), it.CObj())
+	nox_xxx_mapDamageToWalls_534FC0((*C.int4)(unsafe.Pointer(&bounds)), unsafe.Pointer(&r.Pos), C.float(float32(extra+float64(r.Radius))), int(C.int(effectsTruncWord(float64(r.Damage)+0.5))), int(C.int(r.Type)), it.CObj())
 	if r.Weapon != nil && dword_5d4594_2488656 != 0 {
 		damage := float32(float64(nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamagePercentage"))) * float64(r.Damage))
 		target := C.int(dword_5d4594_2488660)

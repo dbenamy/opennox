@@ -247,7 +247,7 @@ func objectiveObelisk(u *server.Object) int32 {
 		}
 		dx := float64(u.PosVec.X) - float64(pl.PosVec.X)
 		dy := float64(u.PosVec.Y) - float64(pl.PosVec.Y)
-		if dx*dx+dy*dy >= 2500 || C.nox_xxx_mapCheck_537110(asObjectC(u), asObjectC(pl)) == 0 {
+		if dx*dx+dy*dy >= 2500 || nox_xxx_mapCheck_537110(asObjectC(u), asObjectC(pl)) == 0 {
 			continue
 		}
 		idle = false

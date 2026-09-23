@@ -60,7 +60,7 @@ func spellLifeCantCast(u *server.Object, id, queued int32) int32 {
 		return 10
 	}
 	count := func(off uintptr) int32 {
-		return int32(C.nox_xxx_unitIsUnitTT_4E7C80(asObjectC(u), C.int(*memmap.PtrUint32(0x5d4594, off))))
+		return int32(nox_xxx_unitIsUnitTT_4E7C80(asObjectC(u), int(C.int(*memmap.PtrUint32(0x5d4594, off)))))
 	}
 	switch id {
 	case 29:
@@ -161,7 +161,7 @@ func spellLifeBroadcastPhoneme(u *server.Object, phon int8) int32 {
 	for p := s.Players.FirstUnit(); p != nil; p = s.Players.NextUnit(p) {
 		if p != u {
 			aud := spellLifePhoneme(int32(u.NetCode), phon)
-			C.nox_xxx_aud_501960(C.int(aud), asObjectC(u), 2, C.int(p.NetCode))
+			nox_xxx_aud_501960(int32(C.int(aud)), asObjectC(u), 2, int32(C.int(p.NetCode)))
 		}
 	}
 	return 0

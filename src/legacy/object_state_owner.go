@@ -5,7 +5,6 @@ package legacy
 #include "GAME3_2.h"
 #include "GAME3_3.h"
 #include "GAME4.h"
-int sub_50B510();
 */
 import "C"
 import (
@@ -85,9 +84,9 @@ func stateFreeze(u *server.Object, force int32) int8 {
 			*p = uint32(force)
 		}
 		gameplayReportPlayerStatus(u)
-		C.nox_xxx_playerSetState_4FA020(asObjectC(u), 13)
+		nox_xxx_playerSetState_4FA020(asObjectC(u), 13)
 		stateRaise(u, 0)
-		C.sub_50B510()
+		sub_50B510()
 		for it := u.Field129; it != nil; it = it.Field128 {
 			if it.ObjClass&2 != 0 && *equipmentWord(it.UpdateData, 1440)&0x80 != 0 {
 				stateFreeze(it, force)
@@ -144,7 +143,7 @@ func statePet(u, t *server.Object) {
 	pl := *(*unsafe.Pointer)(unsafe.Add(u.UpdateData, 276))
 	ind := C.int(*(*byte)(unsafe.Add(pl, 2064)))
 	nox_xxx_netMonitorCreature_4D9250(ind, inventoryInt(t))
-	C.nox_xxx_netMarkMinimapObject_417190(ind, asObjectC(t), 1)
+	nox_xxx_netMarkMinimapObject_417190(int(ind), asObjectC(t), 1)
 	nox_xxx_unitSetOwner_4EC290(asObjectC(u), asObjectC(t))
 }
 func stateRemoveMonitors(u, t *server.Object) {
@@ -156,7 +155,7 @@ func stateRemoveMonitors(u, t *server.Object) {
 	pl := *(*unsafe.Pointer)(unsafe.Add(ud, 276))
 	ind := C.int(*(*byte)(unsafe.Add(pl, 2064)))
 	gameplayReportUnmonitor(int(ind), t)
-	C.nox_xxx_netUnmarkMinimapObj_417300(ind, asObjectC(t), 1)
+	nox_xxx_netUnmarkMinimapObj_417300(int(ind), asObjectC(t), 1)
 	nox_xxx_unitClearOwner_4EC300(asObjectC(t))
 }
 func stateOwns(u *server.Object, off uintptr, name string) bool {
@@ -205,7 +204,7 @@ func statePostCreate(u *server.Object) {
 	u.Field36 = 0
 	players := &GetServer().S().Players
 	for pl := players.First(); pl != nil; pl = players.Next(pl) {
-		if pl.PlayerUnit != nil && C.nox_xxx_unitIsHostileMimic_4E7F90(asObjectC(pl.PlayerUnit), asObjectC(u)) == 1 {
+		if pl.PlayerUnit != nil && nox_xxx_unitIsHostileMimic_4E7F90(asObjectC(pl.PlayerUnit), asObjectC(u)) == 1 {
 			mask := uint32(1) << uint(pl.Index())
 			u.Field35 |= mask
 			u.Field36 |= mask
@@ -222,7 +221,7 @@ func statePlayerVisibility(ind int32) {
 		u.Field35 &^= mask
 		u.Field36 &^= mask
 		if u.ObjClass&6 != 0 && pl.PlayerUnit != nil {
-			enemy := C.nox_xxx_unitIsHostileMimic_4E7F90(asObjectC(pl.PlayerUnit), asObjectC(u)) == 1
+			enemy := nox_xxx_unitIsHostileMimic_4E7F90(asObjectC(pl.PlayerUnit), asObjectC(u)) == 1
 			if enemy {
 				if u.Field36&mask == 0 {
 					u.Field36 |= mask

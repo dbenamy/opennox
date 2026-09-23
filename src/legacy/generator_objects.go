@@ -115,7 +115,7 @@ func generatorSpawn(gen *server.Object, point *types.Pointf, src *server.Object)
 		*(*uint32)(unsafe.Add(child.UpdateData, 1504)) = 0
 	}
 	if spawnPolicyRegister(gen, child) == 0 {
-		return uint32(C.nox_xxx_objectFreeMem_4E38A0(asObjectC(child)))
+		return uint32(nox_xxx_objectFreeMem_4E38A0(asObjectC(child)))
 	}
 
 	GetServer().CreateObjectAt(child, nil, pos)

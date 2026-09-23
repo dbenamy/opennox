@@ -87,7 +87,7 @@ func controlDropBall(u *server.Object) int32 {
 		nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&u.PosVec)), (*C.nox_object_t)(it.CObj()), 100)
 		*controlPtr(it.CObj(), 520) = nil
 		GetServer().S().ObjSetOwner(nil, it)
-		C.nox_xxx_aud_501960(926, (*C.nox_object_t)(u.CObj()), 0, 0)
+		nox_xxx_aud_501960(926, (*C.nox_object_t)(u.CObj()), 0, 0)
 		sub_4E8290(1, 0)
 		return 1
 	}
@@ -139,7 +139,7 @@ func controlInputAttack(u *server.Object) {
 	setAttack := func() { *equipmentWord(u.CObj(), 136) = GetServer().S().Frame(); *controlByte(d, 236) = 0 }
 	if weapon == 0 {
 		if *controlByte(d, 88) != 1 {
-			C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1)
+			nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1)
 		}
 		return
 	}
@@ -148,25 +148,25 @@ func controlInputAttack(u *server.Object) {
 		data := it.UseData.Ptr
 		if *controlByte(data, 108) != 0 || *controlByte(data, 109) == 0 {
 			setAttack()
-			C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1)
+			nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1)
 			nox_xxx_useByNetCode_53F8E0(inventoryInt(u), inventoryInt(it))
 		} else if controlSubStamina(u, 45) != 0 {
 			*equipmentWord(data, 96) |= 2
 			setAttack()
-			C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1)
+			nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1)
 		}
 	} else if *controlByte(d, 88) != 1 {
 		cost := controlWeaponStamina(weapon)
 		if controlSubStamina(u, cost) != 0 {
 			setAttack()
-			if C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1) == 0 {
+			if nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1) == 0 {
 				controlAdjustStamina(u, -int8(cost))
 			}
 		}
 	}
 	spellLifeBuffOff(u, int32(0))
 	spellLifeBuffOff(u, int32(23))
-	C.nox_xxx_spellCancelDurSpell_4FEB10(67, (*C.nox_object_t)(u.CObj()))
+	nox_xxx_spellCancelDurSpell_4FEB10(67, (*C.nox_object_t)(u.CObj()))
 }
 func controlFollowEnemy(u *server.Object) int32 {
 	if u == nil {

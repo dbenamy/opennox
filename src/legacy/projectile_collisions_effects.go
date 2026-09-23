@@ -26,7 +26,7 @@ func projectileFriendly(u, t *server.Object) bool {
 	return owner != nil && t != nil && owner.ObjClass&4 != 0 && t.ObjClass&4 != 0 && !GetServer().S().IsEnemyTo(owner, t)
 }
 func projectileSplash(u, exclude *server.Object, radius, inner float32, damage, kind int32) {
-	C.nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.float(radius), C.float(inner), C.int(damage), C.int(kind), asObjectC(u), asObjectC(exclude))
+	nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.float(radius), C.float(inner), int(C.int(damage)), int(C.int(kind)), asObjectC(u), asObjectC(exclude))
 }
 func projectilePush(u *server.Object, radius, inner, force float32) {
 	spellEffectPushAround(u.PosVec, radius, inner, force, u, nil, 0)

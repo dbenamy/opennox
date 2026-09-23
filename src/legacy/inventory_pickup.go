@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_3.h"
-*/
-import "C"
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/legacy/common/ccall"
@@ -23,7 +14,7 @@ func inventoryFoodPickup(u, it *server.Object, arg int) int {
 	if u == nil || it == nil {
 		return 0
 	}
-	if C.sub_419E60(asObjectC(u)) == 0 && it.ObjSubClass&0x84 == 0 {
+	if sub_419E60(asObjectC(u)) == 0 && it.ObjSubClass&0x84 == 0 {
 		ccall.CallVoidPtr2(it.Use.Ptr, u.CObj(), it.CObj())
 	}
 	if it.ObjFlags&0x20 != 0 {
@@ -43,7 +34,7 @@ func inventoryUsePickup(u, it *server.Object, arg int) int {
 	return inventoryPickup(u, it, arg)
 }
 func inventoryTrapPickup(u, it *server.Object, arg int) int {
-	if C.nox_xxx_unitHasThatParent_4EC4F0(asObjectC(it), asObjectC(u)) != 0 {
+	if nox_xxx_unitHasThatParent_4EC4F0(asObjectC(it), asObjectC(u)) != 0 {
 		rv := inventoryPickup(u, it, arg)
 		if rv != 0 {
 			inventorySound(824, u, 0, 0)

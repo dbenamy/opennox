@@ -134,7 +134,7 @@ func worldCollideExit(a, b *server.Object) {
 		mapName = mapQuestChoose()
 		for ability := 1; ability < 6; ability++ {
 			if core.Abils.IsActive(b, server.Ability(ability)) {
-				C.sub_4FC300(asObjectC(b), C.int(ability))
+				sub_4FC300(asObjectC(b), int(C.int(ability)))
 			}
 		}
 		if a.ObjSubClass&1 != 0 {
