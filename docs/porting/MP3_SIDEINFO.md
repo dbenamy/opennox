@@ -37,6 +37,35 @@ overflow or invalid header table indices enter the original parser.
 
 Primary caught a representation defect in Luna's first draft: recording the table
 family alone discarded the selected sample-rate row, and could reinterpret retained
-state after errors using a later header. The draft is being corrected to borrow the
+state after errors using a later header. The accepted implementation borrows the
 specific static table slice, matching the original pointer's role. No faulty draft
 has been installed in production or accepted as qualified.
+
+## Go parser qualified
+
+Original-C baseline `d2411491` was committed/pushed before Go installation.
+Default/server/highres/safe and cgo-disabled runs each pass both frozen test roots:
+819,207 integer cases and 36,864 side-information cases. `go vet` passes. All 824
+band-table entries match C, including implicit zero padding. All 24 rows separately
+sum to 576 and retain zero terminators/tails.
+
+Independent constructed inputs verify parsing after a 16-bit CRC offset, untouched
+unused granules, retained subblock gains on long blocks, retained third region on
+switched blocks, big-values 289 and block-type zero partial updates, and a selected
+short-table row surviving a later error with a different header. Primary caught
+and corrected the draft test's missing CRC prefix before its acceptance run; the
+frozen expected data did not change. The parser's borrowed slices preserve exact
+static-row aliases. No row data is allocated/copied per granule.
+
+[Go qualification](mp3-sideinfo-go-qualification.json) records both successful
+roots per configuration, source hashes and unchanged production binary hashes.
+The only added source is private code/tests in the already-unimported Go decoder
+package. Every prior source file is unchanged, so the preceding four dependency
+selections and SSE production/ABI/gameplay results remain applicable and are
+explicitly reused. Full production and suite gates were not rerun for this
+unwired preparation. C remains six lines/one file, reference C zero; no active
+C decoder body is retired yet.
+
+Next coherent chunk: frame matching/finding and decoder initialization/byte reservoir.
+Primary has preliminary repeated C captures under `build/port-mp3-stream`; those
+remain draft evidence until reviewed, made reproducible and committed.

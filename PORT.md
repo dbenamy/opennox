@@ -14,6 +14,13 @@
 
 ## Current status
 
+Go Layer III side-information parsing now matches 36,864 frozen C state records,
+including partial writes on errors. Table-row alias and CRC-offset regressions
+pass alongside the integer helpers in four profiles and with cgo disabled.
+The Go decoder remains unwired; production evidence is reused with source and
+binary identity checks. C remains six standalone lines plus the active header.
+Next: frame scanning and reservoir state. See [MP3_SIDEINFO.md](docs/porting/MP3_SIDEINFO.md).
+
 The first Go MP3 internals (bit reader/header arithmetic) match 819,207 frozen
 actual-C cases in four profiles and with cgo disabled. They remain unimported by
 production while the complete decoder is assembled; existing production evidence

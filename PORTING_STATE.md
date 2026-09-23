@@ -193,3 +193,21 @@ integration. Draft runner/implementation are still ignored and unqualified.
 Baseline is committed before installing Go. Next: review corrected representation,
 compare all static tables, qualify frozen output/independent partial-state tests.
 C remains six lines/one file, reference zero; free disk roughly400MiB.
+
+## Current — Go side-information parser qualified, unwired
+
+Both test roots pass in default/server/highres/safe and CGO_ENABLED=0:819207 integer
+and36864 side-info vectors each. Vet passes;82406 joined PASS. All824 table entries
+match C. Primary corrected Luna's row representation and constructed-test CRC
+prefix before qualification; frozen outputs stayed unchanged. See
+mp3-sideinfo-go-qualification.json and MP3_SIDEINFO.md. All prior sources and four
+SSE binaries remain identical; production/ABI/gameplay evidence explicitly reused.
+C stays six lines/one file, reference zero;81 production preamble bodies unchanged.
+
+Next draft: build/port-mp3-stream/{primary-plan.md,capture_stream.py,generate.py,run.py}.
+Preliminary probe12577 joined PASS:1637find/185match/5init/425restore/504save cases,
+three native processes plus UBSan identical. Still ignored/unqualified; make capture
+reproducible in tools, review domains and commit baseline before Go installation.
+Luna is drafting Go stream primitives in build/port-mp3-stream/drafts; no source
+edits/builds authorized for helper. All primary build/test jobs joined. Disk about
+390MiB free; preserve source assets/archive and current binaries.

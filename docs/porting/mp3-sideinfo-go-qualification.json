@@ -1,0 +1,83 @@
+{
+  "status": "qualified unwired Go Layer III side-information parser",
+  "baseline_revision": "d2411491ec006a1a5ac421eeeaa5510693c15126",
+  "tests": {
+    "default": {
+      "log_sha256": "8829c6155c7123fb8fe215f72c3f0c89503339a46793124e419b8e5ad22a4c17",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "server": {
+      "log_sha256": "c5c644848ba8ead54eb02d8eba6c13a4b27af37616d7bd411890c050ed9d613f",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "highres": {
+      "log_sha256": "e336fe4797ebe62c344a54f47e4b99c969caadf2107d78cf4dc7fd7fe752025e",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "safe": {
+      "log_sha256": "5c9b07dc3c63a26a0989abc8a85960117f4612edcd5504a9e1be8348dcb04b26",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "pure-go": {
+      "log_sha256": "d515938947f7d29f25012d74f854a7083217e85dbd2f7bc83a5300910bc47408",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        null
+      ],
+      "pass": true
+    }
+  },
+  "go_vet": "pass",
+  "table_entries_compared": 824,
+  "c_ubsan_output_sha256": "80c6e3b4fff1e844f7b02047321630de8f019f47b7d87c6fbfe31a8cae9ee1f1",
+  "production_reuse": {
+    "prior_qualification": "docs/porting/mp3-integer-go-qualification.json",
+    "prior_qualification_sha256": "a7ca4e32d93ab212800462644d3f9d792b5a8ba6b96383b41df2dde5757a19a0",
+    "old_source_files_unchanged": 2984,
+    "new_source": {
+      "src/legacy/client/audio/mp3/sideinfo.go": "c8f63d028fa35b0185d2ed3d45feca03046b83ee616a17c803117cd8c4c1b472",
+      "src/legacy/client/audio/mp3/sideinfo_test.go": "b02522f609b8af4309b13d8eb2fbec4486438c9e5b4d0f087f8cdfc0bfe18e38"
+    },
+    "binary_hashes_rechecked": {
+      "build/port-mp3-sse/production/production/bin/opennox": "f5614bd62f8e7df5ff11d6cb4eabe12b2a64d90c08a549e150ffdce30bc2ea7e",
+      "build/port-mp3-sse/production/production/bin/opennox-hd": "dc1839db87529a2a113d1bf7913f892a3abd6cc6fb91bf4885493f6c0aaa77c7",
+      "build/port-mp3-sse/production/production/bin/opennox-server": "7b6b605e5b63769e573e7fb4ad9bc575bf64b2708c61dfece444fd7352383916",
+      "build/port-mp3-sse/safe/opennox-safe": "929cd084b161bb80cc7a03fea351c20738b2a382b31acf5f89d99acd9980ba82"
+    },
+    "reason": "Only private code/tests added to the existing unimported package; all previous source files and production binary hashes unchanged. Previous dependency selections remain applicable."
+  },
+  "production_c": {
+    "files": 1,
+    "lines": 6
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "limits": [
+    "Production and gameplay evidence reused, not rerun.",
+    "No complete Go decoder or new PCM claim.",
+    "Frozen table pointers normalized to sentinel-alias/content; separate Go tests check static-row alias retention."
+  ]
+}
