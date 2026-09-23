@@ -1,0 +1,65 @@
+{
+  "batch": "mp3-assets-current-c",
+  "env": {
+    "GOMAXPROCS": "2",
+    "GOMEMLIMIT": "768MiB",
+    "NOX_DATA": "{root}/build/assets/extracted/drive_c/Nox",
+    "OPENNOX_MP3_BASELINE_CAPTURE": "{out}/mp3-assets.json"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "capture",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-tags",
+          "porttest",
+          "./legacy/client/audio/ail",
+          "-run",
+          "^TestMP3AssetBaseline$",
+          "-count=1",
+          "-timeout",
+          "10m",
+          "-v"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/mp3-assets.json",
+            "sha256": "7dc3362576eb00660fd68a836d17af6012c4d1c0595d137958109d62228add0b"
+          }
+        ]
+      }
+    ],
+    "highres": [
+      {
+        "name": "capture",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-tags",
+          "highres,porttest",
+          "./legacy/client/audio/ail",
+          "-run",
+          "^TestMP3AssetBaseline$",
+          "-count=1",
+          "-timeout",
+          "10m",
+          "-v"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/mp3-assets.json",
+            "sha256": "7dc3362576eb00660fd68a836d17af6012c4d1c0595d137958109d62228add0b"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -10,8 +10,8 @@ metric. See [C_LOC.md](docs/porting/C_LOC.md).
 ## Current — direct callback addresses qualified
 
 Empty callbacks baseline `ae76f3c8` and conversion `dc9692f8` are committed/pushed.
-Address-getter baseline `229bf34a` is committed/pushed. The working getter conversion
-is fully qualified: five direct references replace five C preamble bodies across
+Address-getter baseline `229bf34a` is committed/pushed. Conversion `78a5a21c` is committed/pushed and
+fully qualified: five direct references replace five C preamble bodies across
 four files. All 38 consumer roots pass per normal profile; safe build/static,
 production/ABI, exact known-suite and headless creation/save/load pass. Generated
 cgo references confirm the exact four target symbols. All four binaries retain
@@ -36,23 +36,40 @@ Callback timing from dc9692f8 remains a review item: 84–140 ns/call additional
 median cost (1.57–2.27x), accepted as reversible; actual frame impact is unmeasured.
 Current callback binaries/benchmarks and frozen captures remain available.
 
-## Next — MP3 baseline before numerical decisions
+## Current — MP3 asset baseline qualified; SSE fix next
 
-Luna is drafting a tagged ail MP3 asset-baseline test only under
-build/port-mp3-audit/drafts/, not in src. Primary must review it before application,
-collect repeated actual-C captures and freeze expectations before accepting.
-The draft should observe input hashes, format, reported PCM/counts, Decode sequence,
-full buffer writes and outside-buffer guards for MP3-in-WAV Dialog assets.
-No old failing audio golden is a passing parity oracle; no decoder code changes
-or new actual-C PCM baseline are implemented yet.
+New tagged ail asset test is qualified against the unchanged C decoder. Three
+fresh captures match, followed by frozen default/highres passes. SHA256:
+7dc3362576eb00660fd68a836d17af6012c4d1c0595d137958109d62228add0b.
+All 1,246 input hashes were checked; all reported PCM hashes match retained current-C
+full-suite observations. Corpus is mono/22,050Hz only: 172,369,152 reported samples,
+300,498 decode calls. Guards and full-capacity output hashes pass. No seek, stereo,
+other-rate or malformed-frame coverage is claimed yet.
 
-Read build/port-mp3-audit/{README,active-helper-plan,primary-scope-review}.md.
-Dialog assets contain 1,246 MP3-in-WAV files despite no .mp3 extension. Inspected
-retained C paths use x87, but the historical PCM mismatch cause is not established.
-The bit-reader mutates parser state; inactive LayerI/II widths are not active
-coverage. Avoid per-bit C→Go calls: a future Go decoder needs coherent internals
-and numerical/state qualification before the production switch. Primary owns
-that decision; the helper's source audit is planning, not implementation evidence.
+Pipelines59699 (three probes),74909 (SSE diagnostic),77766 (frozen clients) and
+finish-c.py JOINED PASS. All jobs joined. finish-c.py is CONSUMED. Only the tagged
+test file is new; exact old source hashes, four official package selections and
+four qualified binary hashes justify production-evidence reuse. See
+[MP3_DECODER.md](docs/porting/MP3_DECODER.md), mp3-assets-c-qualification.json and
+build/port-mp3-baseline artifacts. Check Git log/remote for baseline commit/push.
+
+The isolated SSE2 diagnostic changes all PCM/write hashes but no inputs, metadata,
+sample counts or Decode sequences. All 1,246 PCM hashes now match the existing
+historical audio goldens. Diagnostic capture SHA256:
+e0688114198dc50b4acf9b5695ea4cd8bf6dbb9f91d53d1e9d550c02ff1e2763.
+No production flags or historical audio goldens changed yet. Primary decision:
+qualify package-local 386 SSE2 scalar arithmetic as a separate reversible fix,
+consistent with the CPU target. This restores independent historical expectations;
+record the deliberate change to the newer observation baseline explicitly.
+Preserve old captures and require exact unchanged non-audio failures in the suite.
+No speed claim is accepted from separate-run timings.
+
+Luna drafted the fixture and helper scope; primary corrected extension prefiltering,
+unfrozen-pass behavior, and hashing overhead, then accepted the observations.
+Helper is idle. For later decoder scope see build/port-mp3-audit/{active-helper-plan,
+primary-scope-review}.md: avoid per-bit C→Go calls, distinguish mutable bit-reader
+state and inactive LayerI/II widths, add missing format/state contracts before a
+coherent Go decoder switch. No decoder implementation has been ported yet.
 
 Disk cleanup30220 JOINED PASS: ten verified obsolete entry executables removed,
 489,077,624 bytes reclaimed after 159 host-process checks. Record:

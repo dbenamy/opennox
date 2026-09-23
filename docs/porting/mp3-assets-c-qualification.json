@@ -1,0 +1,160 @@
+{
+  "status": "qualified current-C MP3 asset baseline; separate SSE diagnostic only",
+  "revision": "78a5a21c5238a3464e0397d540d56a692f157283",
+  "capture_sha256": "7dc3362576eb00660fd68a836d17af6012c4d1c0595d137958109d62228add0b",
+  "repeated_captures": 3,
+  "phases": {
+    "default": {
+      "success": true,
+      "root": "TestMP3AssetBaseline",
+      "asset_cases": 1246,
+      "capture_sha256": "7dc3362576eb00660fd68a836d17af6012c4d1c0595d137958109d62228add0b",
+      "wall_seconds": 49.40004280814901
+    },
+    "highres": {
+      "success": true,
+      "root": "TestMP3AssetBaseline",
+      "asset_cases": 1246,
+      "capture_sha256": "7dc3362576eb00660fd68a836d17af6012c4d1c0595d137958109d62228add0b",
+      "wall_seconds": 46.296609168173745
+    }
+  },
+  "source_manifest_sha256": "a13eb37eea5f26fe6e0f905cdf6767ad92c0bbf839d28cd604c7a280ec7761ba",
+  "reported_samples": 172369152,
+  "decode_calls": 300498,
+  "corpus": "1246 mono 22050Hz MP3-in-WAV Dialog files; input hashes rechecked",
+  "current_c_pcm_crosscheck": {
+    "records": 1246,
+    "input_pcm_metadata": {
+      "(1, 22050)": 1246
+    },
+    "matches_retained_current_c_pcm": 1246,
+    "retained_log": "build/port-address-adapters/native-production/production/full-suite.log",
+    "retained_log_sha256": "2a5d75298899834a12f079344749901b90777a08b8729d62572f4fa7ab297d3b"
+  },
+  "sse_diagnostic": {
+    "sse_capture_sha256": "e0688114198dc50b4acf9b5695ea4cd8bf6dbb9f91d53d1e9d550c02ff1e2763",
+    "files": 1246,
+    "sse_matches_historical_pcm": 1246,
+    "changed_fields": {
+      "pcm_sha256": 1246,
+      "full_capacity_output_write_sha256": 1246
+    },
+    "default_seconds": [
+      59.04267387604341,
+      58.89191477000713,
+      59.890922578051686
+    ],
+    "diagnostic_seconds": 29.10693512391299,
+    "timing_limit": "Different runs with compilation effects, not an interleaved performance benchmark; no speed claim accepted."
+  },
+  "production_reuse": {
+    "qualification": "docs/porting/address-adapters-native-qualification.json",
+    "qualification_sha256": "95ce25f7c2eae2b1af06993543ecedfbc5a8190d94ec8bef300a92574cfafed1",
+    "proof": "All previous production source identical; sole new tagged _test.go file excluded from all four official package selections. All four preceding qualified binary hashes rechecked.",
+    "binaries": {
+      "build/port-address-adapters/native-production/production/bin/opennox": "a748fc815368a63acba824a029efbb56c4df50f263f817fa79d43bb638448c21",
+      "build/port-address-adapters/native-production/production/bin/opennox-hd": "ff05913fc2ae3c3ba0500af67577e3a1d21793a24dcb44a74801037275059241",
+      "build/port-address-adapters/native-production/production/bin/opennox-server": "0eda427904e253515a3013bb2d75db03763fe11ae8ae68ca82a37914013aa67f",
+      "build/port-address-adapters/native-safe/opennox-safe": "637562fb2d4a3deedebe6d7dea4aedaab648c6d3ece4d5d2b7e15e7adb1af9ac"
+    },
+    "selections": {
+      "default": {
+        "GoFiles": [
+          "audio_adpcm.go",
+          "audio_openal.go",
+          "audio_pcm.go",
+          "audio_wav.go",
+          "handles.go"
+        ],
+        "CgoFiles": [
+          "audio_mp3.go"
+        ],
+        "CFiles": [
+          "audio_openal.c"
+        ],
+        "HFiles": [
+          "compat_mss.h"
+        ],
+        "TestGoFiles": [
+          "audio_test.go",
+          "data_test.go"
+        ],
+        "XTestGoFiles": []
+      },
+      "server": {
+        "GoFiles": [
+          "audio_null.go",
+          "handles.go"
+        ],
+        "CgoFiles": [],
+        "CFiles": [],
+        "HFiles": [
+          "compat_mss.h"
+        ],
+        "TestGoFiles": [],
+        "XTestGoFiles": []
+      },
+      "highres": {
+        "GoFiles": [
+          "audio_adpcm.go",
+          "audio_openal.go",
+          "audio_pcm.go",
+          "audio_wav.go",
+          "handles.go"
+        ],
+        "CgoFiles": [
+          "audio_mp3.go"
+        ],
+        "CFiles": [
+          "audio_openal.c"
+        ],
+        "HFiles": [
+          "compat_mss.h"
+        ],
+        "TestGoFiles": [
+          "audio_test.go",
+          "data_test.go"
+        ],
+        "XTestGoFiles": []
+      },
+      "safe": {
+        "GoFiles": [
+          "audio_adpcm.go",
+          "audio_openal.go",
+          "audio_pcm.go",
+          "audio_wav.go",
+          "handles.go"
+        ],
+        "CgoFiles": [
+          "audio_mp3.go"
+        ],
+        "CFiles": [
+          "audio_openal.c"
+        ],
+        "HFiles": [
+          "compat_mss.h"
+        ],
+        "TestGoFiles": [
+          "audio_test.go",
+          "data_test.go"
+        ],
+        "XTestGoFiles": []
+      }
+    }
+  },
+  "production_c": {
+    "files": 1,
+    "lines": 6
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "limits": [
+    "No stereo or other sample rates in shipped Dialog corpus.",
+    "No malformed-frame, seek or streaming-boundary contract in this asset baseline yet.",
+    "Sentinels detect adjacent overwrites, not arbitrary C memory errors.",
+    "SSE diagnostic is not a production change or a controlled speed benchmark."
+  ]
+}
