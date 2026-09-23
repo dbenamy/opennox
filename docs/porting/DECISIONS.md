@@ -2326,6 +2326,6 @@ data sizes and parser order. Six mutable handlers remain looked up at invocation
 Original-owner sibling tests discard return values because CallUpdate is void;
 original direct-return tests remain intact. Coverage uses actual registrations
 and explicit execution counts, with the existing registered UndeadKiller owner
-covering the53rd name. Baseline281-root qualification is complete in three profiles; production unapplied.
+covering the53rd name. Baseline and conversion281-root qualification are complete in three profiles; fresh production and headless scenarios pass.
 See UPDATE_REGISTRY.md. This reversible API/process choice follows standing user
 authorization for larger coherent batches with independent contracts.

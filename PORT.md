@@ -14,15 +14,13 @@
 
 ## Current status
 
-Five raw damage callers now use exact integer Go dispatch for eleven canonical
-callbacks, preserving boolean APIs, raw fallback and full-word/low-byte results.
-All132 roots/profile,2071 frozen cases and independent raw/compatibility contracts
-pass, plus safe/static, production/ABI, exact known-suite and headless save/load.
-See [DAMAGE_VALUES.md](docs/porting/DAMAGE_VALUES.md).
-**Standalone C remains zero; production C preamble bodies remain79.**
-The next53-callback update baseline is qualified:281 roots/profile,8251 frozen
-cases and dynamic-handler contracts. Production conversion is pending. See
-[UPDATE_REGISTRY.md](docs/porting/UPDATE_REGISTRY.md).
+All 53 registered object updates now dispatch through Go while preserving callback
+addresses, raw fallback and six replaceable handlers. All 281 roots per profile,
+8,251 frozen owner cases, safe/static, production/ABI, exact known-suite comparison
+and headless creation/save-load pass. See [UPDATE_REGISTRY.md](docs/porting/UPDATE_REGISTRY.md).
+**Standalone C remains zero; production C preamble bodies remain 79.**
+Next: qualify the creation/initialization callback family, including actual creation
+and placement owners and the raw initialization callback's extra argument.
 
 ### Earlier checkpoints
 

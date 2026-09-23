@@ -7,33 +7,36 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — 53-update original baseline qualified
+## Current — 53 object updates qualified
 
-Damage-value conversion0a94c36f pushed, fully qualified. Current qualified binaries
-build/port-damage-values/{safe/opennox-safe,production/production/bin}, keep plain.
-Update production patch build/port-update-registry/direct-calls.patch UNAPPLIED;
-primary independently verified53 exact mappings and Go wrapper argument types.
+Baseline90f2a227 pushed; conversion14362 and remaining production pipeline PASS.
+Check Git for conversion commit/push. Three production files changed: all53
+registrations bind full existing Go wrappers; CallUpdate preserves nil/raw behavior.
+All281 roots/profile,36 frozen captures8251cases,12188 invocations across52names
+plus existing registered UndeadKiller, six twice-replaced handlers, exact mappings.
+Safe/static, four fresh386/SSE2/CGO binaries, retained Go-backed exports, exact
+knownsuite304events and package outcomes, headless creation/save-load PASS.
+Current binaries build/port-update-registry/{safe/opennox-safe,production/production/bin}.
+See UPDATE_REGISTRY.md and update-registry-qualification.json. C0/0, preambles79.
 
-New porttest actual-owner fixtures installed:42 common action routes, generator,
-three motion siblings,53 identity checks, nil/raw contracts and six mutable handler
-pairs. Original60903 failed only three zero-execution assertions (redundant new
-matrices); removed those and added invisible-teleport positive checks. Corrected
-77044 joinedPASS40 roots beforefreeze:36 captures8251cases,12188 calls across52names,
-plus existing registered UndeadKiller owner. Old goldens unchanged.
+Next: creation8/initialization12 registry family. Luna read-only inventory under
+build/port-update-registry/next-lifecycle-inventory.md; primary baseline design pending.
+Actual init owners use CallVoidPtr2(callback,obj,nil), whereas existing CallInit
+uses one argument. Preserve unknown callbacks' second argument; don't infer owner
+coverage from direct helper tests. MonsterInit/ShopkeeperInit share one C address.
+No next implementation installed. One Luna helper, no source edits during builds.
 
-Baseline93910 joinedPASS281 roots/profile, no skips,36 exact frozen hashes and
-execution counts. Finalizer7120 PASS verifies nine added/four changed porttest files
-only and all four previous production binaries. No Go jobs active. Commit/push
-baseline before applying production, then contracts/safe/preflight/production and
-finish.py. Reviewed production patch and finalizer drafts under build/port-update-registry.
-UPDATE_REGISTRY.md has scope/limits/decisions. One Luna helper.
-
-Cleanup93147 joinedPASS40 old repo compiler archives2168958680bytes, independent
-stat/hash/header/module and host FD/exe/map checks while no Go job active. Source,
-modules, assets, binaries, captures and qualification outputs preserved; record
+Cleanup:40 old reproducible repo compiler archives2168958680bytes removed after
+stat/hash/header/module and host FD/exe/map checks with no Go job active. Source,
+modules, assets, binaries, captures and qualification outputs retained. Record
 build/port-update-registry/old-repository-cache-removed.json. Cache script consumed.
+Completed scenario copies deduplicated only against exact original-asset hashes;
+per-run restore manifests and deduplicate-preflight/save.py --restore retained.
+Original60903 failed three redundant new zero-execution matrices; corrected77044
+passed before freezing expectations. Failed outputs retained; old goldens unchanged.
+Finalizers consumed after docs; do not rerun against later source states.
 
-## Current — exact damage values qualified
+## Earlier — exact damage values qualified
 
 Baseline97f055a5 pushed. Corrected conversion89247 and remaining pipeline47464
 joinedPASS. All132 roots/profile,15 frozen captures2071cases,1800 raw forwarding

@@ -115,6 +115,17 @@ func RegisterObjectUpdate(name string, fnc unsafe.Pointer, sz uintptr) {
 	updateFuncs[name] = objectDefFunc{Func: fnc, DataSize: sz}
 }
 
+type UpdateFunc func(obj *Object)
+
+var objUpdate = ccall.NewFuncs(func(cfnc unsafe.Pointer) UpdateFunc {
+	return func(obj *Object) { ccall.CallVoidPtr(cfnc, obj.CObj()) }
+})
+
+func RegisterObjectUpdateGo(name string, cfnc unsafe.Pointer, fnc UpdateFunc, sz uintptr) {
+	RegisterObjectUpdate(name, cfnc, sz)
+	objUpdate.Register(cfnc, fnc)
+}
+
 func RegisterObjectUpdateParse(name string, fnc ObjectParseFunc) {
 	if _, ok := updateParseFuncs[name]; ok {
 		panic("already registered")

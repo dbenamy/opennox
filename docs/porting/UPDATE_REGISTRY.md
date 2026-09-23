@@ -5,12 +5,12 @@
 Move all53 registered object-update callbacks through a typed Go registry while
 retaining their C addresses, data extents, parser ordering and raw fallback.
 Object.CallUpdate retains its nil-slot no-op and ignores callback return values.
-The proposed bindings call the existing Go-export wrapper directly, preserving
+The bindings call the existing Go-export wrapper directly, preserving
 its complete body and all argument conversions without crossing through C.
 Six replaceable handlers remain resolved when invoked. Damage sounds are deferred
 so this larger batch has one shared dispatch boundary.
 
-The production patch remains unapplied in build/port-update-registry. Independent
+The three-file production patch is applied after baseline90f2a227. Independent
 review verifies all53 names, addresses, sizes, ordering, wrapper identifiers and
 argument types against the actual source. C-int object words remain32-bit; no
 new64-bit support is claimed. Existing wrappers/exports/layout remain unchanged.
@@ -29,7 +29,7 @@ exact execution counts repeat unchanged. Nine new porttest files and four existi
 porttest adapters are the only source changes relative to0a94c36f. All other source
 and dependency fingerprints and four preceding binary hashes match; all53 exports
 remain. Production qualification is reused for this test-only baseline. See
-[baseline qualification](update-registry-c-qualification.json). Conversion is pending.
+[baseline qualification](update-registry-c-qualification.json). Conversion14362 passes all281 roots/profile with unchanged captures, execution counts and dynamic/raw contracts. Fresh safe/static, production/ABI, exact known-suite comparison and headless creation/save-load also pass. See [conversion qualification](update-registry-qualification.json).
 
 Shared temporary/world/objective adapters cover42 callback names. Generator gate
 and spawning matrices include12 independently asserted positive spawns. Dedicated
@@ -62,3 +62,22 @@ qualification/capture evidence remain. This is ordinary cache eviction; historic
 rebuilds may take longer. Exact plan/removal records are under build/port-update-registry.
 
 Standalone C remains zero physical files/lines; production C preamble bodies79.
+
+## Completed qualification and limits
+
+Only three production files changed. All four fresh binaries retain the selected
+Go-backed C exports and contain no porttest helpers. The known full-suite failure
+multiset remains exactly304 events, with17 passing,2 failing and32 skipped packages.
+Headless creation and explicit save/load/resume succeed. No conversion correction
+or golden changes were needed after the qualified baseline.
+
+This removes runtime C round trips for registered updates; C export identities
+and the generic fallback dispatchers remain. No measured speedup or64-bit support
+is claimed. Current configured target remains386/SSE2 with CGO.
+Luna's production and motion-fixture drafts passed primary mapping/body/contract
+review and qualification; the earlier inventory scope correction is recorded above.
+No measured subscription savings. Keep one bounded helper with primary acceptance.
+
+Completed preflight/save scenario assets were deduplicated against original hashes.
+Per-run restore manifests and ignored deduplicate-preflight/save.py --restore
+remain available; original assets, results, logs and binaries are retained.
