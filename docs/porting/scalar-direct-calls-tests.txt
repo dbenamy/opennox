@@ -1,0 +1,1 @@
+^Test(AICombat.*|AIMonsterState.*|Attack.*|BalanceGetter.*|ClientMeters.*|Damage.*|Equipment.*|GameplayReports.*|Inventory.*|ObjectDeath.*|ObjectState.*|Objectives.*|PlayerControls.*|PlayerDeath.*|ProjectileCollision.*|ServerBrowser.*|ServerOptions.*|SpawnPolicy.*|Spellbook.*|SpellClassEligibilityABI|SpellEffects.*|SpellLifecycle.*|WorldMotion.*)$

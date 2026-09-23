@@ -7,7 +7,31 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — balance direct calls qualified
+## Current — matching-signature baseline qualified
+
+Balance conversion `1bb4b78a` is pushed. Baseline74636 and supplement32379 are joined
+PASS: 379 affected gameplay/UI roots plus the direct spell-class contract per
+profile, all without skips. Source exactly matches the qualified balance checkpoint;
+all four retained binary hashes verified for reuse. Finalizer is CONSUMED.
+See [SCALAR_DIRECT_CALLS.md](docs/porting/SCALAR_DIRECT_CALLS.md) and the
+[baseline record](docs/porting/scalar-direct-calls-c-qualification.json).
+
+No jobs active. Next apply the reviewed Luna exact-list patch from
+`build/port-balance-direct/exact-scalar-draft.patch`, then the reviewed retirement
+script `build/port-scalar-direct/apply-retirement.py`. Preserve all 104 numeric
+cases while removing their baseline-only C route. Inspect diff and format only
+the expected 40 files listed in `production-files.txt`; update manifest retained/
+retired lists for the five exports. Main pattern now includes spell-class test.
+Then run contracts, remaining qualification script, docs/LOC, commit/push.
+
+Artifacts: `build/port-scalar-direct`. Scripts are drafts except the consumed
+baseline finalizer and cleanup scripts. Cleanup sessions16618/52861 joined PASS:
+167 logs, 1,823,895,814 raw bytes into 121,160,892 gzip bytes. Restore/hash records
+are `old-log-archive-record.json` and `old-log-round2-record.json`; free space2.3GiB.
+No original assets, fixtures or retained binaries removed.
+
+## Earlier — balance direct calls qualified
+
 
 Baseline `8409eff3` is pushed. All 27 production calls now use the existing Go
 getters directly. All 109 affected roots pass default/server/highres without skips

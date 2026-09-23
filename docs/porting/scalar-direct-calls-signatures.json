@@ -1,0 +1,590 @@
+{
+  "accepted": [
+    {
+      "name": "nox_common_gameFlags_check_40A5C0",
+      "path": "src/legacy/cgo_flags.go",
+      "args": "f C.uint",
+      "return": "C.bool",
+      "calls": [
+        {
+          "path": "src/legacy/damage_player.go",
+          "line": 31,
+          "text": "if bool(C.nox_common_gameFlags_check_40A5C0(2048)) && source.FindOwnerChainPlayer() == u && u.ObjClass&4 != 0 && kind != 15 {"
+        },
+        {
+          "path": "src/legacy/damage_player.go",
+          "line": 205,
+          "text": "if bool(C.nox_common_gameFlags_check_40A5C0(4096)) {"
+        },
+        {
+          "path": "src/legacy/damage_dispatch.go",
+          "line": 87,
+          "text": "if owner := source.FindOwnerChainPlayer(); owner != nil && owner.ObjClass&6 != 0 && !GetServer().S().IsEnemyTo(u, owner) && (u != owner || bool(C.nox_common_gameFlags_check_40A5C0(4096))) {"
+        },
+        {
+          "path": "src/legacy/damage_dispatch.go",
+          "line": 218,
+          "text": "if bool(C.nox_common_gameFlags_check_40A5C0(6144)) {"
+        },
+        {
+          "path": "src/legacy/object_state_owner.go",
+          "line": 38,
+          "text": "return !bool(C.nox_common_gameFlags_check_40A5C0(0x2000)) && u.ObjClass&2 != 0 && u.ObjSubClass&0x100 != 0"
+        },
+        {
+          "path": "src/legacy/object_state_owner.go",
+          "line": 42,
+          "text": "if u == nil || u.ObjClass&1 == 0 || !bool(C.nox_common_gameFlags_check_40A5C0(2048)) || uint32(u.TypeInd) != typ {"
+        },
+        {
+          "path": "src/legacy/player_controls_helpers.go",
+          "line": 28,
+          "text": "func controlFlags(mask uint32) bool                 { return bool(C.nox_common_gameFlags_check_40A5C0(C.uint(mask))) }"
+        },
+        {
+          "path": "src/legacy/object_state_geometry.go",
+          "line": 80,
+          "text": "(!bool(C.nox_common_gameFlags_check_40A5C0(4096)) || u.ObjClass&2 == 0 || u.ObjSubClass&8 == 0) &&"
+        },
+        {
+          "path": "src/legacy/object_state_geometry.go",
+          "line": 81,
+          "text": "(bool(C.nox_common_gameFlags_check_40A5C0(2048)) || u.ObjClass&6 != 0) {"
+        },
+        {
+          "path": "src/legacy/damage_helpers.go",
+          "line": 119,
+          "text": "if bool(C.nox_common_gameFlags_check_40A5C0(2048)) {"
+        },
+        {
+          "path": "src/legacy/object_state_collision.go",
+          "line": 22,
+          "text": "if bool(C.nox_common_gameFlags_check_40A5C0(4096)) {"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_uint) (r1 _Ctype__Bool) {"
+    },
+    {
+      "name": "nox_game_showGameSel_4379F0",
+      "path": "src/legacy/server_browser_window.go",
+      "args": "",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/server_browser_events.go",
+          "line": 175,
+          "text": "C.nox_game_showGameSel_4379F0()"
+        },
+        {
+          "path": "src/legacy/server_browser_events.go",
+          "line": 183,
+          "text": "C.nox_game_showGameSel_4379F0()"
+        },
+        {
+          "path": "src/legacy/game.go",
+          "line": 92,
+          "text": "return C.nox_game_showGameSel_4379F0() != 0"
+        },
+        {
+          "path": "src/legacy/game.go",
+          "line": 95,
+          "text": "return C.nox_game_showGameSel_4379F0() != 0"
+        }
+      ],
+      "generated_signature": "() (r1 _Ctype_int) {"
+    },
+    {
+      "name": "nox_xxx_unitGetStrength_4F9FD0",
+      "path": "src/legacy/equipment_exports.go",
+      "args": "u C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/projectile_collisions_weapons.go",
+          "line": 36,
+          "text": "strength = int32(C.nox_xxx_unitGetStrength_4F9FD0(inventoryInt(u.ObjOwner)))"
+        },
+        {
+          "path": "src/legacy/projectile_collisions_weapons.go",
+          "line": 51,
+          "text": "C.nox_xxx_unitGetStrength_4F9FD0(inventoryInt(u.ObjOwner))"
+        },
+        {
+          "path": "src/legacy/projectile_collisions_weapons.go",
+          "line": 215,
+          "text": "strength := int32(C.nox_xxx_unitGetStrength_4F9FD0(inventoryInt(owner)))"
+        },
+        {
+          "path": "src/legacy/player_attack.go",
+          "line": 65,
+          "text": "strength := C.nox_xxx_unitGetStrength_4F9FD0(inventoryInt(u))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "nox_xxx_playerCheckSpellClass_57AEA0",
+      "path": "src/legacy/spell_class.go",
+      "args": "class, ind C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/gui_book_rewards.go",
+          "line": 65,
+          "text": "if C.nox_xxx_playerCheckSpellClass_57AEA0(C.int(bookClass(p)), C.int(id)) == 9 {"
+        },
+        {
+          "path": "src/legacy/spell_lifecycle_mana.go",
+          "line": 66,
+          "text": "return int32(C.nox_xxx_playerCheckSpellClass_57AEA0(C.int(*controlByte(controlPlayer(u), 2251)), C.int(id)))"
+        },
+        {
+          "path": "src/legacy/gui_book_state.go",
+          "line": 216,
+          "text": "if id == 34 || C.nox_xxx_playerCheckSpellClass_57AEA0(C.int(class), C.int(id)) != 0 || (!all && *bookPlayerWord(p, 3696, id) == 0) {"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int, p1 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "nox_xxx_weaponGetStaminaByType_4F7E80",
+      "path": "src/legacy/player_controls_exports.go",
+      "args": "a C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/ai_combat.go",
+          "line": 217,
+          "text": "cost := int(C.nox_xxx_weaponGetStaminaByType_4F7E80(C.int(ud.Field514)))"
+        },
+        {
+          "path": "src/legacy/unit_ai.go",
+          "line": 81,
+          "text": "return int(C.nox_xxx_weaponGetStaminaByType_4F7E80(C.int(a1)))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "nox_xxx_checkInversionEffect_4FA4F0",
+      "path": "src/legacy/player_controls_exports.go",
+      "args": "a, b C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/projectile_collisions_effects.go",
+          "line": 55,
+          "text": "if C.nox_xxx_checkInversionEffect_4FA4F0(inventoryInt(t), inventoryInt(u)) != 0 {"
+        },
+        {
+          "path": "src/legacy/projectile_collisions_effects.go",
+          "line": 121,
+          "text": "if C.nox_xxx_checkInversionEffect_4FA4F0(inventoryInt(t), inventoryInt(u)) != 0 {"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int, p1 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "sub_57B190",
+      "path": "src/legacy/durability.go",
+      "args": "current, maximum C.ushort",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/damage_helpers.go",
+          "line": 122,
+          "text": "before := C.sub_57B190(C.ushort(old), C.ushort(it.HealthData.Max))"
+        },
+        {
+          "path": "src/legacy/damage_helpers.go",
+          "line": 123,
+          "text": "result = int32(C.sub_57B190(C.ushort(now), C.ushort(it.HealthData.Max)))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_ushort, p1 _Ctype_ushort) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "nox_xxx_changeScore_4D8E90",
+      "path": "src/legacy/gameplay_reports_exports.go",
+      "args": "a0 C.int, a1 C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/objectives_scoring.go",
+          "line": 24,
+          "text": "C.nox_xxx_changeScore_4D8E90(inventoryInt(u), 1)"
+        },
+        {
+          "path": "src/legacy/inventory_pickup.go",
+          "line": 117,
+          "text": "C.nox_xxx_changeScore_4D8E90(inventoryInt(u), 1)"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int, p1 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "nox_xxx_playerIncrementElimDeath_4D8D40",
+      "path": "src/legacy/gameplay_reports_exports.go",
+      "args": "a0 C.int",
+      "return": "",
+      "calls": [
+        {
+          "path": "src/legacy/inventory_pickup.go",
+          "line": 121,
+          "text": "C.nox_xxx_playerIncrementElimDeath_4D8D40(inventoryInt(other))"
+        },
+        {
+          "path": "src/legacy/spell_lifecycle_buffs.go",
+          "line": 117,
+          "text": "C.nox_xxx_playerIncrementElimDeath_4D8D40(C.int(uintptr(u.CObj())))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_void) {"
+    },
+    {
+      "name": "sub_534340",
+      "path": "src/legacy/ai_monster_state.go",
+      "args": "p C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/damage_player.go",
+          "line": 133,
+          "text": "canBlock = C.sub_534340(inventoryInt(u)) != 0"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "nox_xxx_netNotifyRate_4D7F10",
+      "path": "src/legacy/gameplay_reports_exports.go",
+      "args": "a0 C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/player.go",
+          "line": 288,
+          "text": "C.nox_xxx_netNotifyRate_4D7F10(C.int(v))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "sub_40A040_settings",
+      "path": "src/legacy/server.go",
+      "args": "a1 C.short, a2 C.uchar",
+      "return": "",
+      "calls": [
+        {
+          "path": "src/legacy/server_options_apply.go",
+          "line": 57,
+          "text": "C.sub_40A040_settings(C.short(mode), C.uchar(current[56]))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_short, p1 _Ctype_uchar) (r1 _Ctype_void) {"
+    },
+    {
+      "name": "sub_53E2D0",
+      "path": "src/legacy/equipment_exports.go",
+      "args": "it C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/player_controls_respawn.go",
+          "line": 88,
+          "text": "if C.sub_53E2D0(inventoryInt(it)) != 0 || it.ObjFlags&0x100 == 0 || it.ObjClass&0x2000000 != 0 && C.nox_xxx_unitArmorInventoryEquipFlags_415C70((*C.nox_object_t)(it.CObj()))&0x808 != 0 {"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "sub_4F3400",
+      "path": "src/legacy/inventory_exports.go",
+      "args": "u, it, arg C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/player_controls_respawn.go",
+          "line": 197,
+          "text": "C.sub_4F3400(inventoryInt(u), inventoryInt(flag), 1)"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int, p1 _Ctype_int, p2 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "nox_xxx_unitCountSlaves_4E7CF0",
+      "path": "src/legacy/object_state_exports.go",
+      "args": "a, b, c C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/spell_lifecycle_books.go",
+          "line": 126,
+          "text": "count := C.nox_xxx_unitCountSlaves_4E7CF0(C.int(uintptr(u.CObj())), 2, 0x2000)"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int, p1 _Ctype_int, p2 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "sub_4E5BF0",
+      "path": "src/legacy/object_state_exports.go",
+      "args": "a C.int",
+      "return": "",
+      "calls": [
+        {
+          "path": "src/legacy/server.go",
+          "line": 462,
+          "text": "C.sub_4E5BF0(C.int(bool2int(a1)))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_void) {"
+    },
+    {
+      "name": "nox_xxx_objectGetMass_4E4A70",
+      "path": "src/legacy/object_state_exports.go",
+      "args": "a C.int",
+      "return": "C.double",
+      "calls": [
+        {
+          "path": "src/legacy/world_movement.go",
+          "line": 336,
+          "text": "mass := float64(C.nox_xxx_objectGetMass_4E4A70(C.int(uintptr(t.CObj()))))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_double) {"
+    },
+    {
+      "name": "sub_465D50_draw",
+      "path": "src/legacy/client_ui_inventory_display_draw.go",
+      "args": "p C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/client_ui_meters_draw.go",
+          "line": 294,
+          "text": "C.sub_465D50_draw(C.int(uintptr(w.C())))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "nox_xxx_netMonitorCreature_4D9250",
+      "path": "src/legacy/gameplay_reports_exports.go",
+      "args": "a0 C.int, a1 C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/object_state_owner.go",
+          "line": 146,
+          "text": "C.nox_xxx_netMonitorCreature_4D9250(ind, inventoryInt(t))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int, p1 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "sub_4D81A0",
+      "path": "src/legacy/gameplay_reports_exports.go",
+      "args": "a0 C.int",
+      "return": "",
+      "calls": [
+        {
+          "path": "src/legacy/player_controls_stats.go",
+          "line": 140,
+          "text": "C.sub_4D81A0(inventoryInt(u))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_void) {"
+    },
+    {
+      "name": "sub_4E79B0",
+      "path": "src/legacy/object_state_exports.go",
+      "args": "a C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/game.go",
+          "line": 595,
+          "text": "C.sub_4E79B0(C.int(a1))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "nox_xxx_playerMakeDefItems_4EF7D0",
+      "path": "src/legacy/player_controls_exports.go",
+      "args": "a, b, c C.int",
+      "return": "C.char",
+      "calls": [
+        {
+          "path": "src/legacy/game.go",
+          "line": 598,
+          "text": "C.nox_xxx_playerMakeDefItems_4EF7D0(C.int(uintptr(a1.CObj())), C.int(a2), C.int(a3))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int, p1 _Ctype_int, p2 _Ctype_int) (r1 _Ctype_char) {"
+    },
+    {
+      "name": "nox_xxx_spawnSomeBarrel_4E7470",
+      "path": "src/legacy/object_state_exports.go",
+      "args": "a, b C.int",
+      "return": "",
+      "calls": [
+        {
+          "path": "src/legacy/object_death_native.go",
+          "line": 30,
+          "text": "C.nox_xxx_spawnSomeBarrel_4E7470(C.int(uintptr(u.CObj())), C.int(uintptr(unsafe.Pointer(&u.PosVec))))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int, p1 _Ctype_int) (r1 _Ctype_void) {"
+    },
+    {
+      "name": "nox_xxx_itemApplyDefendEffect_415C00",
+      "path": "src/legacy/equipment_exports.go",
+      "args": "it C.int",
+      "return": "C.double",
+      "calls": [
+        {
+          "path": "src/legacy/damage_helpers.go",
+          "line": 167,
+          "text": "value := float32(float64(C.nox_xxx_itemApplyDefendEffect_415C00(inventoryInt(it))) / float64(coeff) * float64(amount))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_double) {"
+    },
+    {
+      "name": "sub_478030",
+      "path": "src/legacy/client_ui_shop_exports.go",
+      "args": "",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/gui_book_pages.go",
+          "line": 23,
+          "text": "return p != 0 && C.sub_478030() == 0 && sub_47A260() == 0 && *(*byte)(unsafe.Pointer(uintptr(p) + 120))&2 != 0"
+        }
+      ],
+      "generated_signature": "() (r1 _Ctype_int) {"
+    },
+    {
+      "name": "sub_4D9CF0",
+      "path": "src/legacy/gameplay_reports_exports.go",
+      "args": "a0 C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/quest.go",
+          "line": 71,
+          "text": "C.sub_4D9CF0(C.int(a1))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "sub_4ECBD0",
+      "path": "src/legacy/objectives_exports.go",
+      "args": "a C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/inventory_drop.go",
+          "line": 63,
+          "text": "value := C.sub_4ECBD0(inventoryInt(it))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "sub_50E140",
+      "path": "src/legacy/spawn_policy_lifetime.go",
+      "args": "a C.int",
+      "return": "",
+      "calls": [
+        {
+          "path": "src/legacy/spell_effects_summon.go",
+          "line": 252,
+          "text": "C.sub_50E140(C.int(uintptr(u.CObj())))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_void) {"
+    },
+    {
+      "name": "nox_xxx_netFlagWinner_4D8C40_4D8C80",
+      "path": "src/legacy/gameplay_reports_exports.go",
+      "args": "a0 C.int, a1 C.char",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/objectives_scoring.go",
+          "line": 140,
+          "text": "C.nox_xxx_netFlagWinner_4D8C40_4D8C80(C.int(uintptr(tm.C())), 0)"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int, p1 _Ctype_char) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "nox_xxx_unitIsGameball_4E7C30",
+      "path": "src/legacy/object_state_exports.go",
+      "args": "a C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/objectives_scoring.go",
+          "line": 241,
+          "text": "out = int16(C.nox_xxx_unitIsGameball_4E7C30(inventoryInt(target)))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "nox_xxx_netFlagballWinner_4D8C40",
+      "path": "src/legacy/gameplay_reports_exports.go",
+      "args": "a0 C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/objectives_scoring.go",
+          "line": 288,
+          "text": "C.nox_xxx_netFlagballWinner_4D8C40(C.int(uintptr(tm.C())))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_int) {"
+    },
+    {
+      "name": "nox_xxx_unitHPsetOnMax_4EE6F0",
+      "path": "src/legacy/resources_exports.go",
+      "args": "u C.int",
+      "return": "",
+      "calls": [
+        {
+          "path": "src/legacy/objectives_scoring.go",
+          "line": 310,
+          "text": "C.nox_xxx_unitHPsetOnMax_4EE6F0(inventoryInt(ball))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_void) {"
+    },
+    {
+      "name": "sub_4FA280",
+      "path": "src/legacy/player_controls_exports.go",
+      "args": "a C.int",
+      "return": "C.int",
+      "calls": [
+        {
+          "path": "src/legacy/ai_monster_state.go",
+          "line": 143,
+          "text": "a = int(C.sub_4FA280(C.int(ud.Field514 &^ 3)))"
+        }
+      ],
+      "generated_signature": "(p0 _Ctype_int) (r1 _Ctype_int) {"
+    }
+  ],
+  "rejected": [
+    {
+      "name": "sub_50B510",
+      "actual": "() (r1 _Ctype_int) {",
+      "go_args": "",
+      "go_return": ""
+    }
+  ],
+  "macro_aliases": []
+}

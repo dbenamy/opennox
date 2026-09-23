@@ -1,0 +1,188 @@
+{
+  "status": "qualified pre-conversion C round trips for matching scalar signatures",
+  "revision": "1bb4b78acdaeb991cb028840cb89bf2adf283091",
+  "profiles": {
+    "baseline": {
+      "default": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 379,
+        "selected_root_tests": 379,
+        "exit": 0,
+        "started_tests": 379,
+        "completed_tests": 379,
+        "started_root_tests": 379,
+        "completed_root_tests": 379,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 180.8994283929933
+      },
+      "server": {
+        "tags": "porttest,server",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 379,
+        "selected_root_tests": 379,
+        "exit": 0,
+        "started_tests": 379,
+        "completed_tests": 379,
+        "started_root_tests": 379,
+        "completed_root_tests": 379,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 175.42037670011632
+      },
+      "highres": {
+        "tags": "porttest,highres",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 379,
+        "selected_root_tests": 379,
+        "exit": 0,
+        "started_tests": 379,
+        "completed_tests": 379,
+        "started_root_tests": 379,
+        "completed_root_tests": 379,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 181.37080894387327
+      }
+    },
+    "supplement": {
+      "default": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 1,
+        "selected_root_tests": 1,
+        "exit": 0,
+        "started_tests": 1,
+        "completed_tests": 1,
+        "started_root_tests": 1,
+        "completed_root_tests": 1,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 6.723520385101438
+      },
+      "server": {
+        "tags": "porttest,server",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 1,
+        "selected_root_tests": 1,
+        "exit": 0,
+        "started_tests": 1,
+        "completed_tests": 1,
+        "started_root_tests": 1,
+        "completed_root_tests": 1,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 6.082625545794144
+      },
+      "highres": {
+        "tags": "porttest,highres",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 1,
+        "selected_root_tests": 1,
+        "exit": 0,
+        "started_tests": 1,
+        "completed_tests": 1,
+        "started_root_tests": 1,
+        "completed_root_tests": 1,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 6.73230986087583
+      }
+    }
+  },
+  "baseline_pattern": "^Test(AICombat.*|AIMonsterState.*|Attack.*|BalanceGetter.*|ClientMeters.*|Damage.*|Equipment.*|GameplayReports.*|Inventory.*|ObjectDeath.*|ObjectState.*|Objectives.*|PlayerControls.*|PlayerDeath.*|ProjectileCollision.*|ServerBrowser.*|ServerOptions.*|SpawnPolicy.*|Spellbook.*|SpellEffects.*|SpellLifecycle.*|WorldMotion.*)$",
+  "supplement_pattern": "^TestSpellClassEligibilityABI$",
+  "production_reused_from": "balance-direct-calls-qualification.json",
+  "binary_sha256": {
+    "safe": "f85ffff62c7eaa523e56e11077d7ba6a89906a6c76f3e72af7ac05396664a41f",
+    "opennox": "1470e2507d7f80657997ab02b3b81b16e2c25ac40e6aba30f5f7b5d0c6d09b4b",
+    "opennox-hd": "42443066b3ccdaa6d6069f07cd018168e21ab710fde969d78d3714b67ade9cff",
+    "opennox-server": "9afb4e5e4afb797c7c0d6da6ea47498f985806cc2adb241dc9303a20655fca26"
+  },
+  "source_identity": "All production and test source identical to preceding qualified balance conversion.",
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79
+}
