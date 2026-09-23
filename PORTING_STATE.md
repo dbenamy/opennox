@@ -181,3 +181,15 @@ passing package; the304 unrelated failure events remain the existing baseline.
 Luna is drafting side-information parser in ignored build/port-mp3-sideinfo/drafts;
 primary must independently capture C behavior/partial writes before integration.
 Disk around480MiB free; recheck before broad builds. No raw assets changed.
+
+## Current — MP3 side-information C baseline
+
+Integer helpers `e55c8385` are committed/pushed. The next actual-C baseline contains
+36864 side-info records, identical in three native captures and a UBSan capture
+(11698/5915 joined PASS). See MP3_SIDEINFO.md and mp3-sideinfo-c-capture.json.
+Production remains unchanged. Luna's initial draft lost the selected band-table
+row; primary caught this and requested a borrowed-slice representation before
+integration. Draft runner/implementation are still ignored and unqualified.
+Baseline is committed before installing Go. Next: review corrected representation,
+compare all static tables, qualify frozen output/independent partial-state tests.
+C remains six lines/one file, reference zero; free disk roughly400MiB.
