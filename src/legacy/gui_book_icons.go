@@ -71,7 +71,7 @@ func bookIconEvents(w *gui.Window, event int, pos image.Point) int {
 	if mode == 1 && (class == 1 || class == 0 || (!noxflags.HasGame(noxflags.GameFlag(0x2000)) && !noxflags.HasGame(noxflags.GameModeQuest) && *bookPlayerWord(p, 4232, 0) == 0)) {
 		return 0
 	}
-	clear := func() { *bookWord(1047540) = 0; w.Capture(false); C.nox_xxx_bookSpellDnDclear_477660() }
+	clear := func() { *bookWord(1047540) = 0; w.Capture(false); Nox_xxx_bookSpellDnDclear_477660() }
 	switch event {
 	case 5:
 		if GetClient().Cli().GUI.Captured() != nil || *bookWord(1047540) != 0 {
@@ -88,7 +88,7 @@ func bookIconEvents(w *gui.Window, event int, pos image.Point) int {
 			*bookWord(1047540) = 0
 			return 1
 		}
-		C.nox_xxx_bookSaveSpellForDragDrop_477640(C.int(id), 1)
+		Nox_xxx_bookSaveSpellForDragDrop_477640(int(int32(id)), 1)
 		w.Capture(true)
 		bookSound(793)
 		return 1
@@ -117,7 +117,7 @@ func bookIconEvents(w *gui.Window, event int, pos image.Point) int {
 			}
 			if !bool(nox_xxx_spellHasFlags_424A50(int(*bookWord(1047540)), 0x600)) {
 				quickbarSpellCursor(*bookWord(1047540), 0)
-				C.nox_xxx_bookSpellDnDclear_477660()
+				Nox_xxx_bookSpellDnDclear_477660()
 				return 1
 			}
 			if quickbarSpellCursor(*bookWord(1047540), 1) != 0 {
@@ -135,7 +135,7 @@ func bookIconEvents(w *gui.Window, event int, pos image.Point) int {
 				return 1
 			}
 		}
-		C.nox_xxx_bookSpellDnDclear_477660()
+		Nox_xxx_bookSpellDnDclear_477660()
 		return 1
 	case 8:
 		return 1

@@ -300,6 +300,7 @@ target build selection and linker evidence.
 | Production Go MP3 integration; decoder C/header retired | 0 | 0 | −6 | 0 |
 | Consolidate typed draw/object callback adapters; preamble bodies 81→79 | 0 | 0 | 0 | 0 |
 | Optimize Go MP3 synthesis; preamble bodies unchanged at 79 | 0 | 0 | 0 | 0 |
+| Remove ten book callback C round trips; preamble bodies unchanged at 79 | 0 | 0 | 0 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

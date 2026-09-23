@@ -7,29 +7,41 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — direct book callback baseline qualified
+## Current — direct book callbacks qualified
 
-Ten book drag/drop C round trips are the next bounded conversion. The original
-path passed historical frozen spellbook captures in default/server/highres;
-the broader baseline selected 138/137/138 roots. New
-TestSpellbookDragHideContract passes against the original path and covers the
-previously missing type1-clear branch, other types and early-exit guards.
-All prior source is unchanged, so production evidence from the MP3 synthesis
-checkpoint is reused after source/binary identity verification. See
-[baseline qualification](docs/porting/book-direct-calls-c-qualification.json).
+Baseline `2afcb05a` is pushed. Ten direct Go calls replace the book drag/drop C
+round trips, preserving signed32 conversions and all three exported entry points.
+All 25 book roots and unchanged 24 captures pass default/server/highres without
+skips. The independent drag/hide contract passed before/after. Safe/static, fresh
+production/ABI, exact known suite (304 failures; 17 pass/2 fail/32 skip packages),
+headless character creation and save/load pass. All four binaries omit the three
+redundant C call bridges and retain the exported ABI.
+See [BOOK_DIRECT_CALLS.md](docs/porting/BOOK_DIRECT_CALLS.md) and
+[qualification](docs/porting/book-direct-calls-qualification.json).
 
-Sessions 61445 and 26048 are joined PASS. Artifacts: `build/port-book-direct`.
-Nine byte-identical immutable binary paths now share storage, recovering
-442,609,720 bytes after host process/open-file and hash checks; original paths and
-contents remain. Record: `duplicate-binaries-shared.json` in that directory.
-Before modifying a retained binary, separate its inode with copy-to-temp and
-replace. Do not overwrite a shared inode in place.
+Artifacts: `build/port-book-direct`. Sessions 61445,26048,16441,63805,58694 and
+cleanup28364/12344 are joined PASS. Finalizers and scenario deduplication scripts
+are CONSUMED. Fresh binaries: `safe/opennox-safe` and
+`production/production/bin/{opennox,opennox-hd,opennox-server}`.
+Check Git log/remote for conversion commit/push status.
 
-Next: replace the ten C selector calls with existing Go callback variables,
-retain explicit signed32 normalization and exports, run the 25 spellbook roots
-(including the new contract) and unchanged 24 frozen captures in three profiles,
-then fresh production qualification. Luna prepared the test and a separate,
-unapplied 27-call balance getter draft for the following batch.
+Storage: ten identical retained binary paths now share inodes (493,230,372 bytes
+recovered), preserving every path and byte. Separate with copy-to-temp/replace
+before deliberate mutation. Two historical captures and seven logs were losslessly
+archived after host checks and round-trip hashes. Restore canonical capture paths
+before following their historical symlink aliases. Records under the artifact
+directory: `duplicate-binaries-shared.json`, `duplicate-binaries-extra-shared.json`,
+`capture-archive-record.json`, `log-archive-record.json`. Assets/fixtures/current
+and historical retained binaries are intact. Prefer verified duplicate sharing
+and lossless old-log archival to cache eviction when possible.
+
+Next: 27 balance scalar/indexed getter C round trips in 14 files. Luna's unapplied
+patch, caller coverage audit and ignored numeric test draft are under this artifact
+directory. Primary reviewed signatures and local balance semantics; added exact
+near-one double precision, case-folding/empty-name and tag-over-global precedence
+cases to the draft. Integrate only after this conversion commit/push. Cover the
+identified gameplay owners and both C/direct getter routes before conversion;
+do not claim every caller branch is already proven by the older fixtures.
 
 ## Earlier — MP3 synthesis performance qualified
 

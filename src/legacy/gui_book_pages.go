@@ -157,7 +157,7 @@ func bookTab(w *gui.Window, event uint32) int {
 			bookHideWindow(bookWindow(*bookWord(1046952)), true)
 			bookHideWindow(bookWindow(*bookWord(1046948)), false)
 			bookRoot().Capture(false)
-			C.nox_xxx_bookSpellDnDclear_477660()
+			Nox_xxx_bookSpellDnDclear_477660()
 		}
 	case 1320:
 		if *bookWord(1046872) != 1 {
@@ -180,7 +180,7 @@ func bookTab(w *gui.Window, event uint32) int {
 		bookHideWindow(bookWindow(*bookWord(1046952)), true)
 		bookHideWindow(bookWindow(*bookWord(1046948)), false)
 		bookRoot().Capture(false)
-		C.nox_xxx_bookSpellDnDclear_477660()
+		Nox_xxx_bookSpellDnDclear_477660()
 	}
 	return 1
 }
@@ -240,7 +240,7 @@ func bookListEvents(w *gui.Window, event uint32, pos image.Point) int {
 			return 1
 		}
 		*bookWord(1047528) = id
-		C.nox_xxx_bookSaveSpellForDragDrop_477640(C.int(id), 1)
+		Nox_xxx_bookSaveSpellForDragDrop_477640(int(int32(id)), 1)
 		bookSound(793)
 		return 1
 	case 6, 7:
@@ -261,7 +261,7 @@ func bookListEvents(w *gui.Window, event uint32, pos image.Point) int {
 		if GetClient().Cli().GUI.Captured() != nil {
 			w.Capture(false)
 		}
-		C.nox_xxx_bookSpellDnDclear_477660()
+		Nox_xxx_bookSpellDnDclear_477660()
 		return 1
 	case 8:
 		return 1

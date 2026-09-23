@@ -14,6 +14,17 @@
 
 ## Current status
 
+Ten spellbook drag/drop calls now invoke their existing Go callbacks directly,
+removing unnecessary C round trips while preserving signed32 conversions and
+exported ABI. All 25 book contracts and 24 frozen captures pass in three profiles;
+fresh production/safe, ABI, exact known-suite and headless creation/save-load
+checks pass. **Standalone C remains zero; C preamble bodies remain 79.**
+Next: the reviewed 27-call balance-getter family, with independent numeric
+contracts and affected gameplay fixtures. See
+[BOOK_DIRECT_CALLS.md](docs/porting/BOOK_DIRECT_CALLS.md).
+
+### Earlier checkpoints
+
 Go MP3 synthesis now avoids overwritten mono outputs and accumulates each lane
 locally while preserving its exact float32 operation order. Controlled medians
 improved 34% on one shipped mono asset and 8% on a synthetic stereo stream;
@@ -23,8 +34,6 @@ production/ABI, known-suite and headless creation/save-load checks pass.
 Next: review a bounded group of redundant Go→C→Go book callbacks before broader
 callback architecture work. See
 [MP3_SYNTHESIS_PERFORMANCE.md](docs/porting/MP3_SYNTHESIS_PERFORMANCE.md).
-
-### Earlier checkpoints
 
 Two typed callback shims now reuse existing shared dispatchers, preserving both
 Go APIs. All 24 forwarding/return cases pass per profile; client consumer tests,

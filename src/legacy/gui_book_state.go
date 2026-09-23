@@ -163,8 +163,8 @@ func bookHide(reset int) int {
 		*bookWord(1046936) = 0
 		bookHideWindow(bookWindow(*bookWord(1046952)), true)
 	}
-	if C.nox_xxx_bookGetSpellDnDType_477670() == 1 {
-		C.nox_xxx_bookSpellDnDclear_477660()
+	if int32(Nox_xxx_bookGetSpellDnDType_477670()) == 1 {
+		Nox_xxx_bookSpellDnDclear_477660()
 	}
 	return 1
 }
