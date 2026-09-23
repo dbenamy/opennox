@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"image/color"
 	"math"
+	"runtime"
 	"strings"
 	"time"
 	"unsafe"
@@ -1462,10 +1463,18 @@ func (obj *Object) CallPickup(who *Object, a3, a4 int) bool {
 }
 
 func (obj *Object) CallDamage(who Obj, a3 Obj, dmg int, typ object.DamageType) bool {
-	if obj.Damage != nil {
-		return ccall.CallIntUPtr5(obj.Damage, uintptr(obj.CObj()), uintptr(toObjectC(who)), uintptr(toObjectC(a3)), uintptr(uint(dmg)), uintptr(typ)) != 0
+	if obj.Damage == nil {
+		return false
 	}
-	return false
+	// Preserve the original dispatch order: adapters may change the callback slot.
+	whoObj := ToObject(who)
+	a3Obj := ToObject(a3)
+	fn := objDamage.Get(obj.Damage)
+	ret := fn(obj, whoObj, a3Obj, int32(dmg), int32(typ))
+	runtime.KeepAlive(obj)
+	runtime.KeepAlive(whoObj)
+	runtime.KeepAlive(a3Obj)
+	return ret
 }
 
 func (obj *Object) CallDrop(it Obj, pos types.Pointf) bool {

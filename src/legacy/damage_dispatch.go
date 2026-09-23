@@ -241,6 +241,32 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 	resourceDamage(u, *value)
 	return 1
 }
+func damageMechGolem(u, source, weapon *server.Object, amount, kind int32) int32 {
+	if kind == 9 || kind == 17 {
+		amount *= 2
+	}
+	return damageDefault(u, source, weapon, amount, kind)
+}
+
+func damageFlammable(u, source, weapon *server.Object, amount, kind int32) int32 {
+	if kind == 1 || kind == 12 || kind == 7 {
+		amount = 9999999
+	}
+	return damageDefault(u, source, weapon, amount, kind)
+}
+
+func damageBlackPowderAllowed(kind int32) bool {
+	return kind == 0 || kind == 1 || kind == 2 || kind == 12
+}
+
+func damageBlackPowder(u, source, weapon *server.Object, amount, kind int32) int32 {
+	if !damageBlackPowderAllowed(kind) {
+		return 0
+	}
+	amount = 999999
+	return damageDefault(u, source, weapon, amount, kind)
+}
+
 func damageWeapon(u, source, weapon *server.Object, amount, kind int32) int32 {
 	if u != nil && u.ObjClass&0x1001000 != 0 && (u.InvHolder != nil || kind == 12) {
 		return damageDefault(u, source, weapon, amount, kind)

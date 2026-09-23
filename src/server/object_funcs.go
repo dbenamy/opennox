@@ -184,6 +184,19 @@ func RegisterObjectDamage(name string, fnc unsafe.Pointer) {
 	damageFuncs[name] = fnc
 }
 
+type DamageFunc func(obj, source, weapon *Object, amount, kind int32) bool
+
+var objDamage = ccall.NewFuncs(func(cfnc unsafe.Pointer) DamageFunc {
+	return func(obj, source, weapon *Object, amount, kind int32) bool {
+		return ccall.CallIntUPtr5(cfnc, uintptr(obj.CObj()), uintptr(toObjectC(source)), uintptr(toObjectC(weapon)), uintptr(uint(amount)), uintptr(uint(kind))) != 0
+	}
+})
+
+func RegisterObjectDamageGo(name string, cfnc unsafe.Pointer, fnc DamageFunc) {
+	RegisterObjectDamage(name, cfnc)
+	objDamage.Register(cfnc, fnc)
+}
+
 func RegisterObjectDamageSound(name string, fnc unsafe.Pointer) {
 	if _, ok := damageSoundFuncs[name]; ok {
 		panic("already registered")

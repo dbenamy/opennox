@@ -82,10 +82,22 @@ This batch removes registered Go→C→Go round trips, not those fallback dispat
 
 ## Qualification status
 
-All92 roots pass in default/server/highres, without skips. All16 frozen captures
-match in fresh processes; raw forwarding/order contracts pass. Production source/
-dependencies and four reward binary hashes match exactly; all11 callback exports
-exist. See [baseline qualification](damage-registry-c-qualification.json). Baseline
-79707 joined PASS. Manifest production ABI requirements now explicitly include the
-11 callback exports; contract commands and environment are unchanged. Production
-patch remains unapplied at this baseline checkpoint.
+Baseline20b211e2 is committed/pushed. Conversion15863 and full pipeline5214 joined
+PASS: all92 roots per profile,16 frozen captures2080cases and3125raw forwarding
+cases plus nil/order contracts; no skips, changed expectations or post-baseline
+source corrections. Safe/static, four fresh386/SSE2/CGO binaries, all11 retained
+Go-backed C exports, exact known-suite comparison (304 existing failure events;
+17pass/2fail/32skip packages), headless creation and save/load pass. Production
+contains no PortTest symbols. See [baseline](damage-registry-c-qualification.json)
+and [conversion qualification](damage-registry-qualification.json).
+
+The copied preflight display label still said reward-use during execution. Only
+that descriptive manifest label was corrected afterward; original commands and
+records remain unchanged and the correction is explicit in qualification JSON.
+Completed scenario asset copies were deduplicated with hash/host-use checks and
+restore manifests. Application/finalizers/dedup scripts are consumed.
+
+Next: review an unapplied object-death registry draft (14 names/four callers).
+It requires a stable actual-owner baseline before conversion; no field or address
+retirement is proposed. Damage-sound has no identified in-repository Go field
+invocation, so it is not the next optimization target.

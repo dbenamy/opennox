@@ -14,12 +14,12 @@
 
 ## Current status
 
-The eleven damage callbacks have a qualified original Object.CallDamage baseline:
-92 roots/profile,2080 frozen owner/rejection cases and3125 raw forwarding cases.
-Default/server/highres pass; production source and four preceding reward binaries
-match unchanged. Next: apply and qualify the typed damage registry, preserving
-callback addresses and the raw fallback. See [DAMAGE_REGISTRY.md](docs/porting/DAMAGE_REGISTRY.md).
+Eleven object damage callbacks now use typed Go dispatch while retaining their C
+addresses and raw fallback. All92 roots/profile,2080 frozen owner/rejection cases
+and3125 raw forwarding cases pass. Safe/static, fresh production/ABI, exact known
+suite and headless creation/save-load pass. See [DAMAGE_REGISTRY.md](docs/porting/DAMAGE_REGISTRY.md).
 **Standalone C remains zero; production C preamble bodies remain79.**
+Next: qualify an actual-owner baseline for the fourteen object-death registrations.
 
 ### Earlier checkpoints
 

@@ -1,0 +1,973 @@
+{
+  "status": "qualified typed Go object damage callback registry",
+  "preceding_revision": "20b211e2d422c1c5101a7a32173ec26d9e998ff6",
+  "changed_source_sha256": {
+    "src/legacy/damage_dispatch.go": "503a4528a2fd903c385f76072a8336fa7ea5bf8c78e05eb44e54c8e2ff1c3cd1",
+    "src/legacy/damage_exports.go": "21a6d9f442ebd1e1ba4c4e55bafb065bc99897b180757822a8b592f0c93415e2",
+    "src/legacy/object_damage.go": "d28cfb3a5aee080fd84f522d99604ad9621061e94da7a332add02d7db3894251",
+    "src/server/object.go": "ca88aee5a77e74e27810de931c1216e90cee24ca48cb9ed46846c49f5834886e",
+    "src/server/object_funcs.go": "34d709cf421f800deadfe379450d5a748f8cb4179cc2dcea487d7461fff7135e"
+  },
+  "baseline": {
+    "status": "qualified original CallDamage baseline",
+    "revision": "363b71366f25a3233872a694b39c77c6b83b8559",
+    "phase": {
+      "batch": "damage-registry",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/damage-registry-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-damage-registry/baseline/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-damage-registry/baseline/default-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 86.74940906697884
+        },
+        {
+          "name": "server",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/damage-registry-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-damage-registry/baseline/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-damage-registry/baseline/server-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 158.459529702086
+        },
+        {
+          "name": "highres",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/damage-registry-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-damage-registry/baseline/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-damage-registry/baseline/highres-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 86.76992250909097
+        }
+      ],
+      "revision": "363b71366f25a3233872a694b39c77c6b83b8559",
+      "source_unchanged": true,
+      "wall_seconds": 332.5194009600673,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "contracts": {
+      "default": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 92,
+        "selected_root_tests": 92,
+        "exit": 0,
+        "started_tests": 92,
+        "completed_tests": 92,
+        "started_root_tests": 92,
+        "completed_root_tests": 92,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 86.66657690098509
+      },
+      "server": {
+        "tags": "porttest,server",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 92,
+        "selected_root_tests": 92,
+        "exit": 0,
+        "started_tests": 92,
+        "completed_tests": 92,
+        "started_root_tests": 92,
+        "completed_root_tests": 92,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 158.3687097709626
+      },
+      "highres": {
+        "tags": "porttest,highres",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 92,
+        "selected_root_tests": 92,
+        "exit": 0,
+        "started_tests": 92,
+        "completed_tests": 92,
+        "started_root_tests": 92,
+        "completed_root_tests": 92,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 86.69833453395404
+      }
+    },
+    "captures": {
+      "damage-registry-basic-02": {
+        "cases": 180,
+        "sha256": "eeacfa3de8fe2f201d53411aa1a55edd5d63074cb5437ab4fb9e102d6580ec5e",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-basic-02.json"
+      },
+      "damage-registry-basic-08": {
+        "cases": 180,
+        "sha256": "26efe969ae70d0577d05fa016f628552b29e35b39076d4bbf2cc206b43af7ebc",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-basic-08.json"
+      },
+      "damage-registry-basic-09": {
+        "cases": 180,
+        "sha256": "574121289fb695aed20ffd6abf658fce9ba0fcb81fcc4dc39f72e9b3a9c1e372",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-basic-09.json"
+      },
+      "damage-registry-basic-10": {
+        "cases": 180,
+        "sha256": "209c91e4d1646ff8ec4d5bd8a60147bbedb298cf33712f6dd554b46a02ff8320",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-basic-10.json"
+      },
+      "damage-registry-basic-14": {
+        "cases": 180,
+        "sha256": "f3e47315b0cbb8c40f4cc1c1f8198726d334faca869c497548a55984105f8ace",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-basic-14.json"
+      },
+      "damage-registry-basic-20": {
+        "cases": 180,
+        "sha256": "3ee123dd759f97d9999539f72b4318d882a8438d159237b63eb7e5f1fa3710b2",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-basic-20.json"
+      },
+      "damage-registry-basic-21": {
+        "cases": 180,
+        "sha256": "629ed7080385c9a74309a9ec3f80d4c2ff398512c07a4f4ff9b594db1529a425",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-basic-21.json"
+      },
+      "damage-registry-basic-22": {
+        "cases": 180,
+        "sha256": "d40cacd0ea3cec927058b33a46bea9593edbd48abfd3067d1c541cfef0aae11f",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-basic-22.json"
+      },
+      "damage-registry-basic-23": {
+        "cases": 180,
+        "sha256": "b7d2cf5279331b8c6d0edab33a14fa76bcd1bfce5b994eeec5e9ffcc496391ab",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-basic-23.json"
+      },
+      "damage-registry-basic-24": {
+        "cases": 180,
+        "sha256": "39133581ded8ca8053ff79e63835f01603221b314203c226eb60722577ecc699",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-basic-24.json"
+      },
+      "damage-registry-generator": {
+        "cases": 144,
+        "sha256": "2f7d2020ce2fda68530c5c7db3f4f7b50590d5edac15d86f4a430944a9254d55",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-generator.json"
+      },
+      "damage-registry-golem-wrapping": {
+        "cases": 15,
+        "sha256": "dbec9d6105f0cf6b9a2f821e06e853f011734c3fba92d90e05fc95af3addc76d",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-golem-wrapping.json"
+      },
+      "damage-registry-positive": {
+        "cases": 4,
+        "sha256": "43e3a2d989735df453c56b103068c4c5d7000a8aa9096ae5a9ab6ce253703a56",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-positive.json"
+      },
+      "damage-registry-powder-reject-nil": {
+        "cases": 9,
+        "sha256": "4340c46d2160599f6b744c611fc4c806af8566feed1d40825d9341ef8178d0f6",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-powder-reject-nil.json"
+      },
+      "damage-registry-source-02": {
+        "cases": 54,
+        "sha256": "b29253349968badb08cae4b541129799bc1dfc52d866a1318f78f66a47eb20a3",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-source-02.json"
+      },
+      "damage-registry-source-14": {
+        "cases": 54,
+        "sha256": "9b0bdb7b170d4fa26f8312e09129f3571bfbf281553d47831ba2b096f00f7e6a",
+        "path": "build/port-damage-registry/capture-original-v2-damage-registry-source-14.json"
+      }
+    },
+    "registry_owner_cases": 2071,
+    "rejected_nil_cases": 9,
+    "raw_forwarding_cases": 3125,
+    "production_reuse": "Only five named porttest files added/changed. All other source/dependency fingerprints and four preceding qualified binary hashes match. Runtime/discovery environments unchanged. Three fresh strict profiles repeat all sixteen frozen original-path captures.",
+    "reused_qualification": "reward-use-registry-qualification.json",
+    "binary_sha256": {
+      "safe": "9b046f12062d2dbd4440cf91a9227c987606b82d25442e1985b9bd98bd55b696",
+      "opennox": "072ee72741151cfe92e431765fc7f97634524be3bc91a1ad40800d2da7ca75e7",
+      "opennox-hd": "e0cebea9c0a62390ed9bdf13dc9ef2a8ea1b7a9d11bf3a465ab416964f7b8754",
+      "opennox-server": "f7c2e90adf2b9b249b88c984e6a6fa5d8caa30225fb87d2e034a07c9272bbc36"
+    },
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    },
+    "production_c_preamble_bodies": 79,
+    "retained_callback_exports": [
+      "nox_xxx_damageDefaultProc_4E0B30",
+      "sub_4E23C0",
+      "nox_server_handler_PlayerDamage_4E17B0",
+      "sub_4E24B0",
+      "sub_4E24E0",
+      "nox_xxx_damageFlammable_4E2520",
+      "nox_xxx_damageBlackPowder_4E2560",
+      "nox_xxx_damageArmor_4E1500",
+      "sub_4E14B0",
+      "sub_4E14A0",
+      "nox_xxx_damageMonsterGen_4E27D0"
+    ],
+    "review_correction": "Original compiler reads callback slot after both SObj conversions. Primary early-capture assumption failed original test; corrected contract/source draft before freezing. Initial failed capture preserved."
+  },
+  "phases": {
+    "contracts": {
+      "batch": "damage-registry",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/damage-registry-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-damage-registry/contracts/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-damage-registry/contracts/default-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 162.92011044896208
+        },
+        {
+          "name": "server",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/damage-registry-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-damage-registry/contracts/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-damage-registry/contracts/server-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 158.0933354650624
+        },
+        {
+          "name": "highres",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/damage-registry-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-damage-registry/contracts/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-damage-registry/contracts/highres-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 86.41715525998734
+        }
+      ],
+      "revision": "20b211e2d422c1c5101a7a32173ec26d9e998ff6",
+      "source_unchanged": true,
+      "wall_seconds": 407.9744948539883,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "safe": {
+      "batch": "damage-registry",
+      "phase": "safe",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-tags",
+            "safe",
+            "-o",
+            "/root/src/opennox/build/port-damage-registry/safe/opennox-safe",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 68.46880216919817
+        },
+        {
+          "name": "static",
+          "command": [
+            "go",
+            "test",
+            "./common/memmap/nox",
+            "-run",
+            "^TestCodeStatic$",
+            "-count=1"
+          ],
+          "exit": 0,
+          "wall_seconds": 1.042780774179846
+        }
+      ],
+      "revision": "20b211e2d422c1c5101a7a32173ec26d9e998ff6",
+      "source_unchanged": true,
+      "wall_seconds": 69.93929037405178,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "preflight": {
+      "batch": "damage-registry",
+      "phase": "preflight",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-o",
+            "/root/src/opennox/build/port-damage-registry/preflight/opennox",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 62.37658234802075
+        },
+        {
+          "name": "scenario",
+          "command": [
+            "env",
+            "OPENNOX_DISPLAY_BINARY=/root/src/opennox/build/port-damage-registry/preflight/opennox",
+            "OPENNOX_DISPLAY_IMPLEMENTATION=Direct Go reward-use callbacks",
+            "OPENNOX_UI_SCENARIO=/root/src/opennox/docs/porting/character-creation.yaml",
+            "NOX_DEV=true",
+            "python3",
+            "/root/src/opennox/tools/porting/run_scenario.py",
+            "damage-registry",
+            "compare",
+            "/root/src/opennox/build/baseline/runs/entry-classifiers-c"
+          ],
+          "exit": 0,
+          "wall_seconds": 66.04057632107288
+        }
+      ],
+      "revision": "20b211e2d422c1c5101a7a32173ec26d9e998ff6",
+      "source_unchanged": true,
+      "wall_seconds": 128.856363507919,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "production": {
+      "batch": "damage-registry",
+      "phase": "production",
+      "success": true,
+      "steps": [
+        {
+          "name": "production",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/qualify_production.py",
+            "/root/src/opennox/docs/porting/damage-registry-batch.json",
+            "--out",
+            "/root/src/opennox/build/port-damage-registry/production/production"
+          ],
+          "exit": 0,
+          "wall_seconds": 172.05751183698885
+        }
+      ],
+      "revision": "20b211e2d422c1c5101a7a32173ec26d9e998ff6",
+      "source_unchanged": true,
+      "wall_seconds": 172.38669960107654,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    }
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 92,
+      "selected_root_tests": 92,
+      "exit": 0,
+      "started_tests": 92,
+      "completed_tests": 92,
+      "started_root_tests": 92,
+      "completed_root_tests": 92,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 162.8252051398158
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 92,
+      "selected_root_tests": 92,
+      "exit": 0,
+      "started_tests": 92,
+      "completed_tests": 92,
+      "started_root_tests": 92,
+      "completed_root_tests": 92,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 157.9929142689798
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 92,
+      "selected_root_tests": 92,
+      "exit": 0,
+      "started_tests": 92,
+      "completed_tests": 92,
+      "started_root_tests": 92,
+      "completed_root_tests": 92,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 86.31205421313643
+    }
+  },
+  "captures": {
+    "default": {
+      "damage-registry-basic-02": {
+        "cases": 180,
+        "sha256": "eeacfa3de8fe2f201d53411aa1a55edd5d63074cb5437ab4fb9e102d6580ec5e"
+      },
+      "damage-registry-basic-08": {
+        "cases": 180,
+        "sha256": "26efe969ae70d0577d05fa016f628552b29e35b39076d4bbf2cc206b43af7ebc"
+      },
+      "damage-registry-basic-09": {
+        "cases": 180,
+        "sha256": "574121289fb695aed20ffd6abf658fce9ba0fcb81fcc4dc39f72e9b3a9c1e372"
+      },
+      "damage-registry-basic-10": {
+        "cases": 180,
+        "sha256": "209c91e4d1646ff8ec4d5bd8a60147bbedb298cf33712f6dd554b46a02ff8320"
+      },
+      "damage-registry-basic-14": {
+        "cases": 180,
+        "sha256": "f3e47315b0cbb8c40f4cc1c1f8198726d334faca869c497548a55984105f8ace"
+      },
+      "damage-registry-basic-20": {
+        "cases": 180,
+        "sha256": "3ee123dd759f97d9999539f72b4318d882a8438d159237b63eb7e5f1fa3710b2"
+      },
+      "damage-registry-basic-21": {
+        "cases": 180,
+        "sha256": "629ed7080385c9a74309a9ec3f80d4c2ff398512c07a4f4ff9b594db1529a425"
+      },
+      "damage-registry-basic-22": {
+        "cases": 180,
+        "sha256": "d40cacd0ea3cec927058b33a46bea9593edbd48abfd3067d1c541cfef0aae11f"
+      },
+      "damage-registry-basic-23": {
+        "cases": 180,
+        "sha256": "b7d2cf5279331b8c6d0edab33a14fa76bcd1bfce5b994eeec5e9ffcc496391ab"
+      },
+      "damage-registry-basic-24": {
+        "cases": 180,
+        "sha256": "39133581ded8ca8053ff79e63835f01603221b314203c226eb60722577ecc699"
+      },
+      "damage-registry-generator": {
+        "cases": 144,
+        "sha256": "2f7d2020ce2fda68530c5c7db3f4f7b50590d5edac15d86f4a430944a9254d55"
+      },
+      "damage-registry-source-02": {
+        "cases": 54,
+        "sha256": "b29253349968badb08cae4b541129799bc1dfc52d866a1318f78f66a47eb20a3"
+      },
+      "damage-registry-source-14": {
+        "cases": 54,
+        "sha256": "9b0bdb7b170d4fa26f8312e09129f3571bfbf281553d47831ba2b096f00f7e6a"
+      },
+      "damage-registry-positive": {
+        "cases": 4,
+        "sha256": "43e3a2d989735df453c56b103068c4c5d7000a8aa9096ae5a9ab6ce253703a56"
+      },
+      "damage-registry-golem-wrapping": {
+        "cases": 15,
+        "sha256": "dbec9d6105f0cf6b9a2f821e06e853f011734c3fba92d90e05fc95af3addc76d"
+      },
+      "damage-registry-powder-reject-nil": {
+        "cases": 9,
+        "sha256": "4340c46d2160599f6b744c611fc4c806af8566feed1d40825d9341ef8178d0f6"
+      }
+    },
+    "server": {
+      "damage-registry-basic-02": {
+        "cases": 180,
+        "sha256": "eeacfa3de8fe2f201d53411aa1a55edd5d63074cb5437ab4fb9e102d6580ec5e"
+      },
+      "damage-registry-basic-08": {
+        "cases": 180,
+        "sha256": "26efe969ae70d0577d05fa016f628552b29e35b39076d4bbf2cc206b43af7ebc"
+      },
+      "damage-registry-basic-09": {
+        "cases": 180,
+        "sha256": "574121289fb695aed20ffd6abf658fce9ba0fcb81fcc4dc39f72e9b3a9c1e372"
+      },
+      "damage-registry-basic-10": {
+        "cases": 180,
+        "sha256": "209c91e4d1646ff8ec4d5bd8a60147bbedb298cf33712f6dd554b46a02ff8320"
+      },
+      "damage-registry-basic-14": {
+        "cases": 180,
+        "sha256": "f3e47315b0cbb8c40f4cc1c1f8198726d334faca869c497548a55984105f8ace"
+      },
+      "damage-registry-basic-20": {
+        "cases": 180,
+        "sha256": "3ee123dd759f97d9999539f72b4318d882a8438d159237b63eb7e5f1fa3710b2"
+      },
+      "damage-registry-basic-21": {
+        "cases": 180,
+        "sha256": "629ed7080385c9a74309a9ec3f80d4c2ff398512c07a4f4ff9b594db1529a425"
+      },
+      "damage-registry-basic-22": {
+        "cases": 180,
+        "sha256": "d40cacd0ea3cec927058b33a46bea9593edbd48abfd3067d1c541cfef0aae11f"
+      },
+      "damage-registry-basic-23": {
+        "cases": 180,
+        "sha256": "b7d2cf5279331b8c6d0edab33a14fa76bcd1bfce5b994eeec5e9ffcc496391ab"
+      },
+      "damage-registry-basic-24": {
+        "cases": 180,
+        "sha256": "39133581ded8ca8053ff79e63835f01603221b314203c226eb60722577ecc699"
+      },
+      "damage-registry-generator": {
+        "cases": 144,
+        "sha256": "2f7d2020ce2fda68530c5c7db3f4f7b50590d5edac15d86f4a430944a9254d55"
+      },
+      "damage-registry-source-02": {
+        "cases": 54,
+        "sha256": "b29253349968badb08cae4b541129799bc1dfc52d866a1318f78f66a47eb20a3"
+      },
+      "damage-registry-source-14": {
+        "cases": 54,
+        "sha256": "9b0bdb7b170d4fa26f8312e09129f3571bfbf281553d47831ba2b096f00f7e6a"
+      },
+      "damage-registry-positive": {
+        "cases": 4,
+        "sha256": "43e3a2d989735df453c56b103068c4c5d7000a8aa9096ae5a9ab6ce253703a56"
+      },
+      "damage-registry-golem-wrapping": {
+        "cases": 15,
+        "sha256": "dbec9d6105f0cf6b9a2f821e06e853f011734c3fba92d90e05fc95af3addc76d"
+      },
+      "damage-registry-powder-reject-nil": {
+        "cases": 9,
+        "sha256": "4340c46d2160599f6b744c611fc4c806af8566feed1d40825d9341ef8178d0f6"
+      }
+    },
+    "highres": {
+      "damage-registry-basic-02": {
+        "cases": 180,
+        "sha256": "eeacfa3de8fe2f201d53411aa1a55edd5d63074cb5437ab4fb9e102d6580ec5e"
+      },
+      "damage-registry-basic-08": {
+        "cases": 180,
+        "sha256": "26efe969ae70d0577d05fa016f628552b29e35b39076d4bbf2cc206b43af7ebc"
+      },
+      "damage-registry-basic-09": {
+        "cases": 180,
+        "sha256": "574121289fb695aed20ffd6abf658fce9ba0fcb81fcc4dc39f72e9b3a9c1e372"
+      },
+      "damage-registry-basic-10": {
+        "cases": 180,
+        "sha256": "209c91e4d1646ff8ec4d5bd8a60147bbedb298cf33712f6dd554b46a02ff8320"
+      },
+      "damage-registry-basic-14": {
+        "cases": 180,
+        "sha256": "f3e47315b0cbb8c40f4cc1c1f8198726d334faca869c497548a55984105f8ace"
+      },
+      "damage-registry-basic-20": {
+        "cases": 180,
+        "sha256": "3ee123dd759f97d9999539f72b4318d882a8438d159237b63eb7e5f1fa3710b2"
+      },
+      "damage-registry-basic-21": {
+        "cases": 180,
+        "sha256": "629ed7080385c9a74309a9ec3f80d4c2ff398512c07a4f4ff9b594db1529a425"
+      },
+      "damage-registry-basic-22": {
+        "cases": 180,
+        "sha256": "d40cacd0ea3cec927058b33a46bea9593edbd48abfd3067d1c541cfef0aae11f"
+      },
+      "damage-registry-basic-23": {
+        "cases": 180,
+        "sha256": "b7d2cf5279331b8c6d0edab33a14fa76bcd1bfce5b994eeec5e9ffcc496391ab"
+      },
+      "damage-registry-basic-24": {
+        "cases": 180,
+        "sha256": "39133581ded8ca8053ff79e63835f01603221b314203c226eb60722577ecc699"
+      },
+      "damage-registry-generator": {
+        "cases": 144,
+        "sha256": "2f7d2020ce2fda68530c5c7db3f4f7b50590d5edac15d86f4a430944a9254d55"
+      },
+      "damage-registry-source-02": {
+        "cases": 54,
+        "sha256": "b29253349968badb08cae4b541129799bc1dfc52d866a1318f78f66a47eb20a3"
+      },
+      "damage-registry-source-14": {
+        "cases": 54,
+        "sha256": "9b0bdb7b170d4fa26f8312e09129f3571bfbf281553d47831ba2b096f00f7e6a"
+      },
+      "damage-registry-positive": {
+        "cases": 4,
+        "sha256": "43e3a2d989735df453c56b103068c4c5d7000a8aa9096ae5a9ab6ce253703a56"
+      },
+      "damage-registry-golem-wrapping": {
+        "cases": 15,
+        "sha256": "dbec9d6105f0cf6b9a2f821e06e853f011734c3fba92d90e05fc95af3addc76d"
+      },
+      "damage-registry-powder-reject-nil": {
+        "cases": 9,
+        "sha256": "4340c46d2160599f6b744c611fc4c806af8566feed1d40825d9341ef8178d0f6"
+      }
+    }
+  },
+  "registry_owner_cases": 2071,
+  "rejected_nil_cases": 9,
+  "raw_forwarding_cases": 3125,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.205517136026174,
+        "sha256": "274de3f30d6e3e938b4940fb5e41df8fad4c54d0225629ce888d96a65ed9a613",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.123393306974322,
+        "sha256": "e26317731ac4cb6e3bc2dcb6096df4e2861a5d0d12dc6fb573901d6b43a73acb",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 61.61957997409627,
+        "sha256": "795ac5cfcf03a458535589a65001c2a1ac1e4cb711a5bf79c8bbded3c53cba26",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "damage-registry-save": {
+        "exit": 0,
+        "wall_seconds": 46.10386043600738,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.60989809106104,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "274de3f30d6e3e938b4940fb5e41df8fad4c54d0225629ce888d96a65ed9a613",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-damage-registry/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/damage-registry-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Typed Go object damage callback registry",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "55f0aea076715142029514fd88008a0de80dc395b5c313a4ac33ebdd43db421f"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 45.249802574981004,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 17,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "preflight": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 65.42881476599723,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c",
+    "binary_sha256": "274de3f30d6e3e938b4940fb5e41df8fad4c54d0225629ce888d96a65ed9a613",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-damage-registry/preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/damage-registry/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Direct Go reward-use callbacks",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "binary_sha256": {
+    "safe": "d55bd114bf31c4b048747785c65e104c706d12d023ab11c7120ff016057231d0",
+    "opennox": "274de3f30d6e3e938b4940fb5e41df8fad4c54d0225629ce888d96a65ed9a613",
+    "opennox-hd": "e26317731ac4cb6e3bc2dcb6096df4e2861a5d0d12dc6fb573901d6b43a73acb",
+    "opennox-server": "795ac5cfcf03a458535589a65001c2a1ac1e4cb711a5bf79c8bbded3c53cba26"
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79,
+  "limits": [
+    "Eleven registered callbacks now select typed Go functions; callback addresses/object layout and original raw fallback ABI are preserved.",
+    "Configured target is386/SSE2 with CGO; no64-bit compatibility or measured performance claim."
+  ],
+  "post_qualification_manifest_metadata_correction": {
+    "before": "OPENNOX_DISPLAY_IMPLEMENTATION=Direct Go reward-use callbacks",
+    "after": "OPENNOX_DISPLAY_IMPLEMENTATION=Typed Go object damage callback registry",
+    "reason": "Correct copied preflight display label only. Actual commands/evidence remain unmodified; no source, executable or test selection changes."
+  }
+}

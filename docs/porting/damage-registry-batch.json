@@ -129,7 +129,7 @@
         "command": [
           "env",
           "OPENNOX_DISPLAY_BINARY={out}/opennox",
-          "OPENNOX_DISPLAY_IMPLEMENTATION=Direct Go reward-use callbacks",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Typed Go object damage callback registry",
           "OPENNOX_UI_SCENARIO={root}/docs/porting/character-creation.yaml",
           "NOX_DEV=true",
           "python3",

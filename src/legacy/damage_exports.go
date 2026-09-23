@@ -115,27 +115,20 @@ func sub_4E24B0(a, b, c, d, e C.int) C.int {
 
 //export sub_4E24E0
 func sub_4E24E0(a, b, c, d, e C.int) C.int {
-	if e == 9 || e == 17 {
-		d *= 2
-	}
-	return C.int(damageDefault(objectFromInt(a), objectFromInt(b), objectFromInt(c), int32(d), int32(e)))
+	return C.int(damageMechGolem(objectFromInt(a), objectFromInt(b), objectFromInt(c), int32(d), int32(e)))
 }
 
 //export nox_xxx_damageFlammable_4E2520
 func nox_xxx_damageFlammable_4E2520(a, b, c, d, e C.int) C.int {
-	if e == 1 || e == 12 || e == 7 {
-		d = 9999999
-	}
-	return C.int(damageDefault(objectFromInt(a), objectFromInt(b), objectFromInt(c), int32(d), int32(e)))
+	return C.int(damageFlammable(objectFromInt(a), objectFromInt(b), objectFromInt(c), int32(d), int32(e)))
 }
 
 //export nox_xxx_damageBlackPowder_4E2560
 func nox_xxx_damageBlackPowder_4E2560(a, b, c, d, e C.int) C.int {
-	if e != 0 && e != 1 && e != 2 && e != 12 {
+	if !damageBlackPowderAllowed(int32(e)) {
 		return 0
 	}
-	d = 999999
-	return C.int(damageDefault(objectFromInt(a), objectFromInt(b), objectFromInt(c), int32(d), int32(e)))
+	return C.int(damageBlackPowder(objectFromInt(a), objectFromInt(b), objectFromInt(c), int32(d), int32(e)))
 }
 
 //export nox_xxx_damageMonsterGen_4E27D0
