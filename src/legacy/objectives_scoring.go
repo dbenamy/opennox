@@ -21,7 +21,7 @@ import (
 
 func objectiveTeamCount(t *server.Team) int { return teamRuntimeCount(t) }
 func objectiveScore(u *server.Object) {
-	C.nox_xxx_changeScore_4D8E90(inventoryInt(u), 1)
+	nox_xxx_changeScore_4D8E90(inventoryInt(u), 1)
 	C.nox_xxx_netReportLesson_4D8EF0(asObjectC(u))
 }
 func objectiveQuestScore(u *server.Object) {
@@ -137,7 +137,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 				for tm := core.Teams.First(); tm != nil; tm = core.Teams.Next(tm) {
 					if uint32(tm.Lessons) >= uint32(limit) {
 						noxflags.SetGame(8)
-						C.nox_xxx_netFlagWinner_4D8C40_4D8C80(C.int(uintptr(tm.C())), 0)
+						nox_xxx_netFlagWinner_4D8C40_4D8C80(C.int(uintptr(tm.C())), 0)
 						break
 					}
 				}
@@ -238,7 +238,7 @@ func objectiveFlagBallScore(flag, target *server.Object) int16 {
 	out := int16(*cache)
 	ball := target
 	if target.ObjClass&4 != 0 {
-		out = int16(C.nox_xxx_unitIsGameball_4E7C30(inventoryInt(target)))
+		out = int16(nox_xxx_unitIsGameball_4E7C30(inventoryInt(target)))
 		if out == 0 {
 			return out
 		}
@@ -285,7 +285,7 @@ func objectiveFlagBallScore(flag, target *server.Object) int16 {
 		for tm := core.Teams.First(); tm != nil; tm = core.Teams.Next(tm) {
 			if uint32(tm.Lessons) >= uint32(limit) {
 				noxflags.SetGame(8)
-				C.nox_xxx_netFlagballWinner_4D8C40(C.int(uintptr(tm.C())))
+				nox_xxx_netFlagballWinner_4D8C40(C.int(uintptr(tm.C())))
 				break
 			}
 		}
@@ -307,7 +307,7 @@ func objectiveFlagBallScore(flag, target *server.Object) int16 {
 				core.ObjClearOwner(ball)
 				objectiveRememberOwner(ball, nil)
 				teamRuntimeLeave(ball.TeamPtr(), int(ball.NetCode))
-				C.nox_xxx_unitHPsetOnMax_4EE6F0(inventoryInt(ball))
+				nox_xxx_unitHPsetOnMax_4EE6F0(inventoryInt(ball))
 				*(*uint64)(unsafe.Add(data, 8)) = uint64(uint32(PlatformTicks()))
 				Nox_xxx_unitMove_4E7010(ball, it.PosVec)
 				Sub_4E8290(0, 0)

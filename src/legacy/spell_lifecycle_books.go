@@ -123,7 +123,7 @@ func spellLifeInsertBook(u *server.Object, list unsafe.Pointer, n, delay, self i
 			if !bool(C.nox_xxx_checkSummonedCreaturesLimit_500D70(asObjectC(u), 5)) {
 				return spellLifeBookError(u, 4, 231)
 			}
-			count := C.nox_xxx_unitCountSlaves_4E7CF0(C.int(uintptr(u.CObj())), 2, 0x2000)
+			count := nox_xxx_unitCountSlaves_4E7CF0(C.int(uintptr(u.CObj())), 2, 0x2000)
 			if int32(count) >= int32(int64(nox_xxx_gamedataGetFloat_419D40(internCStr("MaxBomberCount")))) {
 				return spellLifeBookError(u, 5, 231)
 			}

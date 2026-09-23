@@ -291,7 +291,7 @@ func uiMeterWeaponDraw(w *gui.Window) int {
 		sub_4AE6F0(pos.X+width/2, pos.Y+height/2, width/2, sector, int(m.Alternate))
 		nox_client_drawEnableAlpha_434560(0)
 	}
-	C.sub_465D50_draw(C.int(uintptr(w.C())))
+	sub_465D50_draw(C.int(uintptr(w.C())))
 	return 1
 }
 

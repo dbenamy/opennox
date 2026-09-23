@@ -7,28 +7,43 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — matching-signature baseline qualified
+## Current — matching-signature direct calls qualified
 
-Balance conversion `1bb4b78a` is pushed. Baseline74636 and supplement32379 are joined
-PASS: 379 affected gameplay/UI roots plus the direct spell-class contract per
-profile, all without skips. Source exactly matches the qualified balance checkpoint;
-all four retained binary hashes verified for reuse. Finalizer is CONSUMED.
-See [SCALAR_DIRECT_CALLS.md](docs/porting/SCALAR_DIRECT_CALLS.md) and the
-[baseline record](docs/porting/scalar-direct-calls-c-qualification.json).
+Baseline `b1e502ef` is pushed. All 56 direct calls and five book/balance C export
+retirements are qualified. All 380 roots pass default/server/highres without skips
+or changed expectations; discovered test-name sets verified against baseline plus
+spell-class supplement, with only the documented balance rename. Safe/static,
+fresh production/ABI, exact known suite (304 events; 17 pass/2 fail/32 skip packages),
+headless creation and save/load pass. Four binaries omit five retired exports and
+33 redundant C-call bridges. See [SCALAR_DIRECT_CALLS.md](docs/porting/SCALAR_DIRECT_CALLS.md)
+and [qualification](docs/porting/scalar-direct-calls-qualification.json).
 
-No jobs active. Next apply the reviewed Luna exact-list patch from
-`build/port-balance-direct/exact-scalar-draft.patch`, then the reviewed retirement
-script `build/port-scalar-direct/apply-retirement.py`. Preserve all 104 numeric
-cases while removing their baseline-only C route. Inspect diff and format only
-the expected 40 files listed in `production-files.txt`; update manifest retained/
-retired lists for the five exports. Main pattern now includes spell-class test.
-Then run contracts, remaining qualification script, docs/LOC, commit/push.
+Sessions74636,32379,93259,65847 joined PASS. Finalizers, retirement and scenario
+deduplication scripts are CONSUMED. No jobs active. Check Git log/remote for
+conversion commit/push status. Fresh binaries in `build/port-scalar-direct`:
+`safe/opennox-safe`, `production/production/bin/{opennox,opennox-hd,opennox-server}`.
+Luna review found a stale balance-specific selector; fixed to retain the numeric
+contract on future focused runs. The current broader selection already matched.
 
-Artifacts: `build/port-scalar-direct`. Scripts are drafts except the consumed
-baseline finalizer and cleanup scripts. Cleanup sessions16618/52861 joined PASS:
-167 logs, 1,823,895,814 raw bytes into 121,160,892 gzip bytes. Restore/hash records
-are `old-log-archive-record.json` and `old-log-round2-record.json`; free space2.3GiB.
-No original assets, fixtures or retained binaries removed.
+Next drafts (not applied): `next-scalar-draft.patch` (18 symbols/29 calls) and
+`next-pointer-draft.patch` (23 symbols/40 calls) under the artifact directory.
+Primary read the patches; scalar conversions preserve the nine RNG call sites and
+C widths. Pointer signatures normalize explicit Go/C aliases only; primary read
+all23 wrappers and began lifetime review (movement copies points by value;
+mutable output pointers remain typed/synchronous). Complete caller/owner coverage
+and macro/ABI checks before applying. Existing sub_50B510 signature mismatch stays
+excluded. Inventory scripts are one-pass/bounded, taking about0.2seconds.
+
+`unused-scalar-export-candidates.json` lists ten C exports with only prototypes
+remaining in source C regions and no C selectors. Finish external/tool-reference
+review before retirement. Other scalar exports still have C calls/address uses
+inside porttest preambles or production callback registration; selector-only
+search is insufficient. Those require separate dependency cleanup.
+
+Additional cleanup sessions16618/52861 joined PASS:167 logs,1,823,895,814 raw bytes
+into121,160,892 gzip bytes. Restore/hash records in the artifact directory:
+`old-log-archive-record.json`, `old-log-round2-record.json`. Original assets,
+fixtures and retained binaries preserved; roughly1.4GiB free after qualification.
 
 ## Earlier — balance direct calls qualified
 

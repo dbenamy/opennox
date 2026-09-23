@@ -25,7 +25,7 @@ func controlObject(p unsafe.Pointer, n int) *server.Object {
 	return (*server.Object)(*controlPtr(p, n))
 }
 func controlPlayer(u *server.Object) unsafe.Pointer { return *controlPtr(u.UpdateData, 276) }
-func controlFlags(mask uint32) bool                 { return bool(C.nox_common_gameFlags_check_40A5C0(C.uint(mask))) }
+func controlFlags(mask uint32) bool                 { return bool(nox_common_gameFlags_check_40A5C0(C.uint(mask))) }
 func controlRaw(u *server.Object) uint32            { return uint32(uintptr(u.CObj())) }
 func controlRemoveGlyphs(u *server.Object) int32 {
 	typ := stateType(1565600, "Glyph")

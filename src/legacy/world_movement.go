@@ -333,7 +333,7 @@ func worldBlowCandidate(t, u *server.Object) {
 	}
 	d := 400 - float64(spilled)
 	strength := float32(d * d * d * .0000005)
-	mass := float64(C.nox_xxx_objectGetMass_4E4A70(C.int(uintptr(t.CObj()))))
+	mass := float64(nox_xxx_objectGetMass_4E4A70(C.int(uintptr(t.CObj()))))
 	force := float64(strength) / mass
 	vx, vy := movementDirectionVector(int32(int16(u.Direction1)))
 	t.ForceVec.X = float32(force*float64(vx) + float64(t.ForceVec.X))

@@ -172,7 +172,7 @@ func browserEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 			Sub_449EA0(0)
 		case 1:
 			browserConnectionReset()
-			C.nox_game_showGameSel_4379F0()
+			nox_game_showGameSel_4379F0()
 		default:
 			if browserUI.retry != 0 {
 				browserUI.refreshDeadline = C.uint64_t(uint32(PlatformTicks()) + 1000)
@@ -180,7 +180,7 @@ func browserEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 		}
 	case 4002:
 		browserConnectionReset()
-		C.nox_game_showGameSel_4379F0()
+		nox_game_showGameSel_4379F0()
 	case 10001:
 		if browserUI.transition != 0 {
 			return nil

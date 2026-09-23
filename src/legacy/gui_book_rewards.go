@@ -62,7 +62,7 @@ func bookSpellReward(id, rank, notify, auto int) {
 	if p == 0 {
 		return
 	}
-	if C.nox_xxx_playerCheckSpellClass_57AEA0(C.int(bookClass(p)), C.int(id)) == 9 {
+	if nox_xxx_playerCheckSpellClass_57AEA0(C.int(bookClass(p)), C.int(id)) == 9 {
 		return
 	}
 	*bookPlayerWord(p, 3696, id) = uint32(rank)

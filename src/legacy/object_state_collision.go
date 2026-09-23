@@ -19,7 +19,7 @@ import (
 func stateCloseDoor(u *server.Object, p unsafe.Pointer) {
 	if u.ObjClass&0x80 != 0 && *equipmentWord(u.UpdateData, 16) == *equipmentWord(p, 0) && *equipmentWord(u.UpdateData, 20) == *equipmentWord(p, 4) {
 		*(*byte)(unsafe.Add(u.UpdateData, 1)) = 0
-		if bool(C.nox_common_gameFlags_check_40A5C0(4096)) {
+		if bool(nox_common_gameFlags_check_40A5C0(4096)) {
 			stateDoorNotify(u)
 		}
 	}

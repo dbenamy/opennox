@@ -213,7 +213,7 @@ func bookSort(class int) int {
 		}
 	} else if class != 0 {
 		for id := nox_xxx_spellFirstValid_424AD0(); id != 0; id = nox_xxx_spellNextValid_424AF0(id) {
-			if id == 34 || C.nox_xxx_playerCheckSpellClass_57AEA0(C.int(class), C.int(id)) != 0 || (!all && *bookPlayerWord(p, 3696, id) == 0) {
+			if id == 34 || nox_xxx_playerCheckSpellClass_57AEA0(C.int(class), C.int(id)) != 0 || (!all && *bookPlayerWord(p, 3696, id) == 0) {
 				continue
 			}
 			if bool(nox_xxx_spellHasFlags_424A50(id, 0x15000)) {

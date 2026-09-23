@@ -459,7 +459,7 @@ func Sub_4F7950(u *server.Object) {
 	controlClearWaypoints(u)
 }
 func Sub_4E5BF0(a1 bool) {
-	C.sub_4E5BF0(C.int(bool2int(a1)))
+	sub_4E5BF0(C.int(bool2int(a1)))
 }
 func Nox_xxx_Fn_4FCAC0(a1 bool, a2 int) {
 	spellLifeReset(int32(bool2int(a1)), int32(a2))

@@ -28,7 +28,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 		}
 		return 1
 	}
-	if bool(C.nox_common_gameFlags_check_40A5C0(2048)) && source.FindOwnerChainPlayer() == u && u.ObjClass&4 != 0 && kind != 15 {
+	if bool(nox_common_gameFlags_check_40A5C0(2048)) && source.FindOwnerChainPlayer() == u && u.ObjClass&4 != 0 && kind != 15 {
 		return 0
 	}
 	actual := source
@@ -130,7 +130,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 			} else {
 				canBlock := state == 13 || state == 18 || state == 19 || state == 20
 				if !player {
-					canBlock = C.sub_534340(inventoryInt(u)) != 0
+					canBlock = sub_534340(inventoryInt(u)) != 0
 				}
 				if weapons&0x400 != 0 && (actual.ObjClass&1 != 0 || kind == 0 || kind == 11) && canBlock {
 					if actual.ObjClass&1 != 0 {
@@ -202,7 +202,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 	if bool(C.nox_common_getEngineFlag(C.NOX_ENGINE_FLAG_GODMODE)) && u.ObjClass&4 != 0 {
 		return 1
 	}
-	if bool(C.nox_common_gameFlags_check_40A5C0(4096)) {
+	if bool(nox_common_gameFlags_check_40A5C0(4096)) {
 		old := n
 		n = floatToInt32(float32(float64(questRuntimeFloat(202032)) * float64(n)))
 		if old > 0 && n < 1 {

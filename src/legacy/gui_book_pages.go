@@ -20,7 +20,7 @@ import (
 
 func bookInputBlocked() bool {
 	p := memmap.Uint32(0x852978, 8)
-	return p != 0 && C.sub_478030() == 0 && sub_47A260() == 0 && *(*byte)(unsafe.Pointer(uintptr(p) + 120))&2 != 0
+	return p != 0 && sub_478030() == 0 && sub_47A260() == 0 && *(*byte)(unsafe.Pointer(uintptr(p) + 120))&2 != 0
 }
 func bookPageComplete(guide bool) int {
 	v := uint32(0)

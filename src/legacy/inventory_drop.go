@@ -60,7 +60,7 @@ func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 	}
 	if it.ObjClass&0x10000000 != 0 {
 		team := it.TeamVal.ID
-		value := C.sub_4ECBD0(inventoryInt(it))
+		value := sub_4ECBD0(inventoryInt(it))
 		inventoryMessage(7, u, uint32(value))
 		playerStateMark(it, 1)
 		*(*uint32)(unsafe.Add(it.UpdateData, 8)) = GetServer().S().Frame()

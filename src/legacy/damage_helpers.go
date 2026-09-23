@@ -116,11 +116,11 @@ func damageItemReport(ind int32, it *server.Object, old, now uint16) int32 {
 	if it.HealthData == nil {
 		return result
 	}
-	if bool(C.nox_common_gameFlags_check_40A5C0(2048)) {
+	if bool(nox_common_gameFlags_check_40A5C0(2048)) {
 		return int32(gameplayReportItemHealth(int(ind), it))
 	}
-	before := C.sub_57B190(C.ushort(old), C.ushort(it.HealthData.Max))
-	result = int32(C.sub_57B190(C.ushort(now), C.ushort(it.HealthData.Max)))
+	before := sub_57B190(C.ushort(old), C.ushort(it.HealthData.Max))
+	result = int32(sub_57B190(C.ushort(now), C.ushort(it.HealthData.Max)))
 	if int32(before) != result {
 		result = int32(gameplayReportItemHealth(int(ind), it))
 	}
@@ -164,7 +164,7 @@ func damageInventory(u, source, weapon *server.Object, amount int32, kindBits fl
 	}
 	for it := u.InvFirstItem; it != nil; it = it.InvNextItem {
 		if it.ObjClass&0x2000000 != 0 && it.ObjFlags&0x100 != 0 {
-			value := float32(float64(C.nox_xxx_itemApplyDefendEffect_415C00(inventoryInt(it))) / float64(coeff) * float64(amount))
+			value := float32(float64(nox_xxx_itemApplyDefendEffect_415C00(inventoryInt(it))) / float64(coeff) * float64(amount))
 			damageDurability(it, u, source, weapon, value, int32(math.Float32bits(kindBits)), false)
 		}
 	}

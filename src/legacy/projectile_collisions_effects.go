@@ -52,7 +52,7 @@ func projectileBoom(u, t *server.Object, n *types.Pointf) {
 	}
 	if t != nil {
 		if t.ObjClass&4 != 0 {
-			if C.nox_xxx_checkInversionEffect_4FA4F0(inventoryInt(t), inventoryInt(u)) != 0 {
+			if nox_xxx_checkInversionEffect_4FA4F0(inventoryInt(t), inventoryInt(u)) != 0 {
 				Nox_xxx_changeOwner_52BE40(u, t)
 				return
 			}
@@ -118,7 +118,7 @@ func projectilePixie(u, t *server.Object, n *types.Pointf) {
 			return
 		}
 		if t.ObjClass&4 != 0 {
-			if C.nox_xxx_checkInversionEffect_4FA4F0(inventoryInt(t), inventoryInt(u)) != 0 {
+			if nox_xxx_checkInversionEffect_4FA4F0(inventoryInt(t), inventoryInt(u)) != 0 {
 				Nox_xxx_changeOwner_52BE40(u, t)
 				return
 			}

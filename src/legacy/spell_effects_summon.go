@@ -249,7 +249,7 @@ func spellEffectCharmFinish(record unsafe.Pointer) int32 {
 		s.Players.Nox_xxx_netMarkMinimapObject_417190(source.ControllingPlayer().PlayerIndex(), u, 1)
 		Nox_xxx_netSendSimpleObject2_4DF360(ind, u)
 		if controlFlags(4096) {
-			C.sub_50E140(C.int(uintptr(u.CObj())))
+			sub_50E140(C.int(uintptr(u.CObj())))
 		}
 	} else {
 		monsterOrder(source, u, 4)

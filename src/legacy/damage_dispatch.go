@@ -84,7 +84,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 		return 1
 	}
 	if !bool(C.nox_xxx_CheckGameplayFlags_417DA0(1)) {
-		if owner := source.FindOwnerChainPlayer(); owner != nil && owner.ObjClass&6 != 0 && !GetServer().S().IsEnemyTo(u, owner) && (u != owner || bool(C.nox_common_gameFlags_check_40A5C0(4096))) {
+		if owner := source.FindOwnerChainPlayer(); owner != nil && owner.ObjClass&6 != 0 && !GetServer().S().IsEnemyTo(u, owner) && (u != owner || bool(nox_common_gameFlags_check_40A5C0(4096))) {
 			return 1
 		}
 	}
@@ -215,7 +215,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 			C.nox_xxx_playerSetState_4FA020(asObjectC(u), 30)
 		}
 	}
-	if bool(C.nox_common_gameFlags_check_40A5C0(6144)) {
+	if bool(nox_common_gameFlags_check_40A5C0(6144)) {
 		C.sub_4FB050(inventoryInt(source), inventoryInt(u), (*C.int)(unsafe.Pointer(value)))
 	}
 	if source != nil {

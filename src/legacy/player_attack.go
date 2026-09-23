@@ -62,7 +62,7 @@ func attackPlayer(u *server.Object) int {
 			*(*byte)(unsafe.Add(ud, 2068)) = anim
 		}
 	}
-	strength := C.nox_xxx_unitGetStrength_4F9FD0(inventoryInt(u))
+	strength := nox_xxx_unitGetStrength_4F9FD0(inventoryInt(u))
 	core := GetServer().S()
 	frame := core.Frame()
 	var frames, delay C.int

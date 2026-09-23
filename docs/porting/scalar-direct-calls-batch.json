@@ -392,12 +392,7 @@
       "sub_51D0E0",
       "sub_530A30_spell_execdur",
       "sub_53F830",
-      "sub_53F930",
-      "nox_xxx_bookSaveSpellForDragDrop_477640",
-      "nox_xxx_bookSpellDnDclear_477660",
-      "nox_xxx_bookGetSpellDnDType_477670",
-      "nox_xxx_gamedataGetFloat_419D40",
-      "nox_xxx_gamedataGetFloatTable_419D70"
+      "sub_53F930"
     ],
     "retired": [
       "COERCE_FLOAT",
@@ -2795,7 +2790,12 @@
       "mp3d_DCT_II",
       "mp3d_synth",
       "go_nox_drawable_call_draw_func",
-      "nox_call_objectType_new_go"
+      "nox_call_objectType_new_go",
+      "nox_xxx_bookSaveSpellForDragDrop_477640",
+      "nox_xxx_bookSpellDnDclear_477660",
+      "nox_xxx_bookGetSpellDnDType_477670",
+      "nox_xxx_gamedataGetFloat_419D40",
+      "nox_xxx_gamedataGetFloatTable_419D70"
     ],
     "scenarios": [
       {

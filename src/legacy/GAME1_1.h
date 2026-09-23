@@ -12,8 +12,6 @@ int sub_4190F0(wchar2_t* a1);
 int nox_xxx_servObjectHasTeam_419130(int a1);
 int nox_xxx_servCompareTeams_419150(int a1, int a2);
 char sub_419960(int a1, int a2, short a3);
-double nox_xxx_gamedataGetFloat_419D40(char* a1);
-double nox_xxx_gamedataGetFloatTable_419D70(char* a1, int a2);
 void sub_419E10(nox_object_t* a1, int a2);
 int sub_419E60(nox_object_t* a1);
 int sub_419EA0();

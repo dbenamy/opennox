@@ -68,7 +68,7 @@ func Sub_4D7520(a1 int) {
 	questRuntimeGateSet(uint32(a1))
 }
 func Sub_4D9CF0(a1 int) {
-	C.sub_4D9CF0(C.int(a1))
+	sub_4D9CF0(C.int(a1))
 }
 func Sub_4D6000(a1 *server.Object) {
 	questRuntimeReset(a1)

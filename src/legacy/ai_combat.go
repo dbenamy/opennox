@@ -214,7 +214,7 @@ func combatMeleeStart(u *server.Object) {
 		return
 	}
 	if u.SubClass()&0x10 != 0 {
-		cost := int(C.nox_xxx_weaponGetStaminaByType_4F7E80(C.int(ud.Field514)))
+		cost := int(nox_xxx_weaponGetStaminaByType_4F7E80(C.int(ud.Field514)))
 		if cost > int(ud.Field282_0) {
 			ud.Field282_0 -= byte(cost)
 		} else {

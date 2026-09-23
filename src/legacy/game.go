@@ -89,10 +89,10 @@ func init() {
 		return characterShowColor() != 0
 	})
 	gui.RegisterState(client.StateServerList, "ServerList", func() bool {
-		return C.nox_game_showGameSel_4379F0() != 0
+		return nox_game_showGameSel_4379F0() != 0
 	})
 	gui.RegisterState(client.StateXxx, "StateXxx", func() bool {
-		return C.nox_game_showGameSel_4379F0() != 0
+		return nox_game_showGameSel_4379F0() != 0
 	})
 }
 
@@ -592,10 +592,10 @@ func Sub_465DE0(a1 int) {
 	uiInventorySetWindowLevel(a1)
 }
 func Sub_4E79B0(a1 int) {
-	C.sub_4E79B0(C.int(a1))
+	sub_4E79B0(C.int(a1))
 }
 func Nox_xxx_playerMakeDefItems_4EF7D0(a1 *server.Object, a2 int, a3 int) {
-	C.nox_xxx_playerMakeDefItems_4EF7D0(C.int(uintptr(a1.CObj())), C.int(a2), C.int(a3))
+	nox_xxx_playerMakeDefItems_4EF7D0(C.int(uintptr(a1.CObj())), C.int(a2), C.int(a3))
 }
 func Sub_4181F0(a1 int) {
 	teamRuntimeBalance(a1 != 0)

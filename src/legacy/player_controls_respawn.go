@@ -85,7 +85,7 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 	} else {
 		for it := u.InvFirstItem; it != nil; {
 			next := it.InvNextItem
-			if C.sub_53E2D0(inventoryInt(it)) != 0 || it.ObjFlags&0x100 == 0 || it.ObjClass&0x2000000 != 0 && C.nox_xxx_unitArmorInventoryEquipFlags_415C70((*C.nox_object_t)(it.CObj()))&0x808 != 0 {
+			if sub_53E2D0(inventoryInt(it)) != 0 || it.ObjFlags&0x100 == 0 || it.ObjClass&0x2000000 != 0 && C.nox_xxx_unitArmorInventoryEquipFlags_415C70((*C.nox_object_t)(it.CObj()))&0x808 != 0 {
 				GetServer().DelayedDelete(it)
 			}
 			it = next
@@ -194,7 +194,7 @@ func controlTeamFlag(pl unsafe.Pointer) {
 	team := unsafe.Pointer(nox_xxx_getTeamByID_418AB0(int(*controlByte(u.CObj(), 52))))
 	flag := controlObject(team, 76)
 	if flag != nil && flag.InvHolder == nil {
-		C.sub_4F3400(inventoryInt(u), inventoryInt(flag), 1)
+		sub_4F3400(inventoryInt(u), inventoryInt(flag), 1)
 	}
 }
 func controlLeaveObserver(pl unsafe.Pointer) {

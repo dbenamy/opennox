@@ -54,7 +54,7 @@ func serverOptionsApply() int8 {
 	mode := binary.LittleEndian.Uint16(current[52:])
 	if mode&0x1000 == 0 {
 		Sub_409FB0_settings(mode, binary.LittleEndian.Uint16(current[54:]))
-		C.sub_40A040_settings(C.short(mode), C.uchar(current[56]))
+		sub_40A040_settings(C.short(mode), C.uchar(current[56]))
 	}
 	if noxflags.HasGame(128) {
 		noxflags.UnsetGame(49152)

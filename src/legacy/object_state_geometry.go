@@ -77,8 +77,8 @@ func stateFront(a *types.Pointf, dir int32, b *types.Pointf) int32 {
 }
 func stateTeleport(u *server.Object, p *types.Pointf) {
 	if u.Buffs&(1<<14) == 0 && u.ObjFlags&2 == 0 &&
-		(!bool(C.nox_common_gameFlags_check_40A5C0(4096)) || u.ObjClass&2 == 0 || u.ObjSubClass&8 == 0) &&
-		(bool(C.nox_common_gameFlags_check_40A5C0(2048)) || u.ObjClass&6 != 0) {
+		(!bool(nox_common_gameFlags_check_40A5C0(4096)) || u.ObjClass&2 == 0 || u.ObjSubClass&8 == 0) &&
+		(bool(nox_common_gameFlags_check_40A5C0(2048)) || u.ObjClass&6 != 0) {
 		C.nox_xxx_unitMove_4E7010(asObjectC(u), (*C.float2)(unsafe.Pointer(p)))
 	}
 }

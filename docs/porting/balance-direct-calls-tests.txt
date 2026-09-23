@@ -1,1 +1,1 @@
-^Test(Attack.*|Damage.*|InventoryEquipmentPickup|ObjectStateCollide|PlayerControls.*|PlayerDeathQuestLives|ProjectileCollision.*|SpellEffects.*|SpellLifecycle.*|BalanceGetterCAndGoContracts)$
+^Test(Attack.*|Damage.*|InventoryEquipmentPickup|ObjectStateCollide|PlayerControls.*|PlayerDeathQuestLives|ProjectileCollision.*|SpellEffects.*|SpellLifecycle.*|BalanceGetterContracts)$

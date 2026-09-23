@@ -19,7 +19,7 @@ type balanceGetterServer struct {
 
 func (o *balanceGetterServer) S() *server.Server { return o.s }
 
-func TestBalanceGetterCAndGoContracts(t *testing.T) {
+func TestBalanceGetterContracts(t *testing.T) {
 	s := new(server.Server)
 	negativeZero := math.Copysign(0, -1)
 	preciseDouble := math.Nextafter(1, 2)
@@ -112,12 +112,10 @@ func TestBalanceGetterCAndGoContracts(t *testing.T) {
 					want = 0 // all these indices are outside each test table
 				}
 				got := legacy.PortTestBalanceGetters(tc.name, idx)
-				if math.Float64bits(got.ScalarC) != math.Float64bits(tc.wantScalar) ||
-					math.Float64bits(got.ScalarGo) != math.Float64bits(tc.wantScalar) ||
-					math.Float64bits(got.IndexC) != math.Float64bits(want) ||
+				if math.Float64bits(got.ScalarGo) != math.Float64bits(tc.wantScalar) ||
 					math.Float64bits(got.IndexGo) != math.Float64bits(want) {
-					t.Fatalf("mode=%s key=%q index=%d got C(%.17g,%.17g) Go(%.17g,%.17g), want scalar %.17g index %.17g",
-						mode.name, tc.name, idx, got.ScalarC, got.IndexC, got.ScalarGo, got.IndexGo, tc.wantScalar, want)
+					t.Fatalf("mode=%s key=%q index=%d got Go(%.17g,%.17g), want scalar %.17g index %.17g",
+						mode.name, tc.name, idx, got.ScalarGo, got.IndexGo, tc.wantScalar, want)
 				}
 			}
 		}

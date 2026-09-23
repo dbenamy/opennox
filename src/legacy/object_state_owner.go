@@ -35,11 +35,11 @@ func stateRemoveSpawned(u *server.Object) {
 	}
 }
 func stateIsUnit(u *server.Object) bool {
-	return !bool(C.nox_common_gameFlags_check_40A5C0(0x2000)) && u.ObjClass&2 != 0 && u.ObjSubClass&0x100 != 0
+	return !bool(nox_common_gameFlags_check_40A5C0(0x2000)) && u.ObjClass&2 != 0 && u.ObjSubClass&0x100 != 0
 }
 func stateIsPixie(u *server.Object) bool {
 	typ := stateType(1565592, "Pixie")
-	if u == nil || u.ObjClass&1 == 0 || !bool(C.nox_common_gameFlags_check_40A5C0(2048)) || uint32(u.TypeInd) != typ {
+	if u == nil || u.ObjClass&1 == 0 || !bool(nox_common_gameFlags_check_40A5C0(2048)) || uint32(u.TypeInd) != typ {
 		return false
 	}
 	owner := u.FindOwnerChainPlayer()
@@ -143,7 +143,7 @@ func statePet(u, t *server.Object) {
 	t.ObjSubClass |= 0x80
 	pl := *(*unsafe.Pointer)(unsafe.Add(u.UpdateData, 276))
 	ind := C.int(*(*byte)(unsafe.Add(pl, 2064)))
-	C.nox_xxx_netMonitorCreature_4D9250(ind, inventoryInt(t))
+	nox_xxx_netMonitorCreature_4D9250(ind, inventoryInt(t))
 	C.nox_xxx_netMarkMinimapObject_417190(ind, asObjectC(t), 1)
 	C.nox_xxx_unitSetOwner_4EC290(asObjectC(u), asObjectC(t))
 }

@@ -84,17 +84,6 @@ func nox_client_clearScreen_440900() { Nox_client_clearScreen_440900() }
 //export nox_draw_setCutSize_476700
 func nox_draw_setCutSize_476700(cutPerc C.int, a2 int) { Nox_draw_setCutSize_476700(int(cutPerc), a2) }
 
-//export nox_xxx_bookSaveSpellForDragDrop_477640
-func nox_xxx_bookSaveSpellForDragDrop_477640(a1, a2 int) {
-	Nox_xxx_bookSaveSpellForDragDrop_477640(a1, a2)
-}
-
-//export nox_xxx_bookSpellDnDclear_477660
-func nox_xxx_bookSpellDnDclear_477660() { Nox_xxx_bookSpellDnDclear_477660() }
-
-//export nox_xxx_bookGetSpellDnDType_477670
-func nox_xxx_bookGetSpellDnDType_477670() int { return Nox_xxx_bookGetSpellDnDType_477670() }
-
 //export nox_xxx_cursorSetDraggedItem_477690
 func nox_xxx_cursorSetDraggedItem_477690(a1 *nox_drawable) {
 	Nox_xxx_cursorSetDraggedItem_477690(asDrawable(a1))

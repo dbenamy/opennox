@@ -137,7 +137,7 @@ func controlSetLevel(u *server.Object, level byte) {
 	xp = nox_xxx_gamedataGetFloatTable_419D70(internCStr("XPTable"), int(int8(level)))
 	// XP protection stores a truncated numeric value, not its float bits.
 	updateProtectionFloat(int32(*equipmentWord(pl, 4604)), float32(xp), false)
-	C.sub_4D81A0(inventoryInt(u))
+	sub_4D81A0(inventoryInt(u))
 	*controlByte(pl, 3684) = level
 	setProtectionRecord(int32(*equipmentWord(pl, 4644)), uint32(level))
 	controlReadStats(u, 0)

@@ -27,7 +27,7 @@ func objectDeathBarrel(u *server.Object) {
 		GetServer().CreateObjectAt(t, nil, u.PosVec)
 	}
 	core.Audio.EventObj(286, u, 0, 0)
-	C.nox_xxx_spawnSomeBarrel_4E7470(C.int(uintptr(u.CObj())), C.int(uintptr(unsafe.Pointer(&u.PosVec))))
+	nox_xxx_spawnSomeBarrel_4E7470(C.int(uintptr(u.CObj())), C.int(uintptr(unsafe.Pointer(&u.PosVec))))
 	GetServer().DelayedDelete(u)
 }
 func objectDeathCreate(u *server.Object, spawn bool) int16 {

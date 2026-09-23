@@ -14,14 +14,14 @@
 
 ## Current status
 
-Twenty-seven balance getter calls now invoke their existing Go implementations
-directly, preserving integer narrowing, string ownership and floating-point
-operations. All 109 affected contracts pass in three profiles; fresh production,
-safe/static, ABI, exact known-suite and headless creation/save-load checks pass.
+Fifty-six more calls now reach their existing Go implementations directly, using
+matching generated scalar signatures. Five unused book/balance C exports and
+header declarations are retired; independent numeric/book contracts remain.
+All 380 affected roots pass in three profiles, along with fresh production/safe,
+static, ABI, exact known-suite and headless creation/save-load checks.
 **Standalone C remains zero; production C preamble bodies remain 79.**
-Next: a larger batch of 56 calls with matching generated C/Go signatures, plus
-retirement of unused book/balance exports. See
-[BALANCE_DIRECT_CALLS.md](docs/porting/BALANCE_DIRECT_CALLS.md).
+Next: review the drafted 29 scalar and 40 pointer forwarding calls and ten unused
+scalar exports. See [SCALAR_DIRECT_CALLS.md](docs/porting/SCALAR_DIRECT_CALLS.md).
 
 ### Earlier checkpoints
 
