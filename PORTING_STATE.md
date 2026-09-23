@@ -211,3 +211,14 @@ reproducible in tools, review domains and commit baseline before Go installation
 Luna is drafting Go stream primitives in build/port-mp3-stream/drafts; no source
 edits/builds authorized for helper. All primary build/test jobs joined. Disk about
 390MiB free; preserve source assets/archive and current binaries.
+
+## Current — MP3 stream C baseline
+
+Side-info conversion `f4fe693d` committed/pushed. Stream baseline now has a
+self-contained tools/porting/capture_mp3_stream.py and2756 frozen records. Three
+native runs plus UBSan match the preliminary probe exactly;28198 joined PASS.
+See MP3_STREAM.md and mp3-stream-c-capture.json. Baseline committed before Go
+integration. Luna drafts stream primitives; primary owns fixture runner this time
+so capture/test work can overlap. No active builds. C remains six lines/one file,
+reference zero. Disk around380MiB. Next: review helper, install Go/runner, qualify
+whole package and unchanged-production proof, commit/push then continue.
