@@ -14,6 +14,13 @@
 
 ## Current status
 
+Go MP3 frame scanning, initialization and reservoir helpers now match2,774 frozen
+C cases, including the real48KiB input-buffer boundary and retained state/tails.
+All previous MP3 helper tests still pass in four profiles and with cgo disabled.
+The decoder remains unwired; existing production evidence is explicitly reused.
+C remains six standalone lines plus the active decoder header. Next: scalefactors
+and exact floating-point results. See [MP3_STREAM.md](docs/porting/MP3_STREAM.md).
+
 Go Layer III side-information parsing now matches 36,864 frozen C state records,
 including partial writes on errors. Table-row alias and CRC-offset regressions
 pass alongside the integer helpers in four profiles and with cgo disabled.
@@ -387,6 +394,14 @@ headers rather than filename extensions, and distinguish a captured callback slo
 from proof that a particular branch executed. Existing bot-update cases do not
 establish allocation-failure coverage just because their snapshots include the
 fallback assignment's destination. Primary review caught both overstatements.
+
+Recent decoder work suggests keeping numerical/ownership contract design and C
+capture with the primary, while Luna drafts a bounded connected implementation
+and independently reviews capture inputs. Primary-owned fixture writing can overlap
+that work. Review representation and caller bounds explicitly: a table family is
+not a retained table-row alias, and a capture's size limit is not automatically a
+production limit. Recheck even small cleanup edits for remaining symbol uses.
+This is an observed workflow adjustment, not measured model cost/speed savings.
 
 ## Explaining the work and reporting diagnostics
 

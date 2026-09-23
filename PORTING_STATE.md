@@ -230,3 +230,20 @@ next run25275 failed overlystrictsave-positionguard. Both diagnosed/fixed before
 acceptance. Logs retained in go-first-build-failure and go (rename before rerun).
 No accepted Go stream qualification yet. C still six lines. Expanded baseline
 committed separately before rerunning Go acceptance.
+
+## Current — Go stream primitives qualified, unwired
+
+Expanded baseline `7bd7e5d6` committed/pushed. Corrected stream Go acceptance66403
+joined PASS: all3 roots (819207integer/36864side-info/2774stream) in default/server/
+highres/safe and CGO_ENABLED=0; vet passes. Finalizer verifies every previous source
+and four SSE binary hashes. See mp3-stream-go-qualification.json and MP3_STREAM.md.
+No active builds. C remains six lines/one file/referencezero;81 preamble bodies.
+
+Next connected group: L3_read_scalefactors, L3_ldexp_q2, L3_decode_scalefactors.
+Luna drafting ignored build/port-mp3-scalefactors/drafts (no builds/source edits).
+Primary must design/capture actual-C outputs including float bits, partial byte
+writes and reader state; freeze baseline before installation, then write runner.
+MAX_SCFI44; active gain exponent makes ldexp exponent>=3; scalefactor exponents
+nonnegative. Explicit float32 evaluation must follow scalar SSE2; no FMA/algebraic
+rewrite. Full PCM/format/performance gates remain later at complete decoder wiring.
+Disk around360MiB; check before new capture/builds; original assets preserved.

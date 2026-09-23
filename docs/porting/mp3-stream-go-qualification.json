@@ -1,0 +1,88 @@
+{
+  "status": "qualified unwired Go MP3 frame scanning and reservoir state",
+  "baseline_revision": "7bd7e5d6211124435b72ee2081263734aa1e95bb",
+  "tests": {
+    "default": {
+      "log_sha256": "8dc12512f7096cb2c8811d02e39fc67511778e1c3dec839151aac366910164fa",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "server": {
+      "log_sha256": "e082443a001d06c33bc3f5ede65b294e00980695338125a864152c257e7a0d9d",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "highres": {
+      "log_sha256": "7626681ac220f933e95f29868ed5582d2d631b3a62d9939cf1e3b2aa53ff13c7",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "safe": {
+      "log_sha256": "77c091c588078d0e9beb0245254b1cb67a8af6d2959c534cc28e4f0fa1212e80",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "pure-go": {
+      "log_sha256": "091d24e6a19c4373da7e3ac2156943d51bce1cc341bccaf8f32dd4a55a6b61c5",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    }
+  },
+  "go_vet": "pass",
+  "stream_cases": 2774,
+  "c_ubsan_output_sha256": "1eb2796a9bce92cff7212f8b54d08baf87ff4a7daea248e121de42403bf2096c",
+  "production_reuse": {
+    "prior_qualification": "docs/porting/mp3-sideinfo-go-qualification.json",
+    "prior_qualification_sha256": "9f8bd1a90ba7b0fdbb1401ed4965aa0d4e6db9876dbb7e3a3f72333575d2f1de",
+    "old_source_files_unchanged": 2986,
+    "new_source": {
+      "src/legacy/client/audio/mp3/stream.go": "8ce09e35fbdc636a0e7bf4867c7e90330b80a1852daa7528f01e8c1c67aab12f",
+      "src/legacy/client/audio/mp3/stream_test.go": "042d3d47c16666bda9cd66eadde3d5f1c5b46ea839894604e544185363bf56f7"
+    },
+    "binary_hashes_rechecked": {
+      "build/port-mp3-sse/production/production/bin/opennox": "f5614bd62f8e7df5ff11d6cb4eabe12b2a64d90c08a549e150ffdce30bc2ea7e",
+      "build/port-mp3-sse/production/production/bin/opennox-hd": "dc1839db87529a2a113d1bf7913f892a3abd6cc6fb91bf4885493f6c0aaa77c7",
+      "build/port-mp3-sse/production/production/bin/opennox-server": "7b6b605e5b63769e573e7fb4ad9bc575bf64b2708c61dfece444fd7352383916",
+      "build/port-mp3-sse/safe/opennox-safe": "929cd084b161bb80cc7a03fea351c20738b2a382b31acf5f89d99acd9980ba82"
+    },
+    "reason": "Only private code/tests added to the existing unimported package; all previous source files and production binary hashes unchanged. Previous dependency selections remain applicable."
+  },
+  "production_c": {
+    "files": 1,
+    "lines": 6
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "limits": [
+    "Production and gameplay evidence reused, not rerun.",
+    "No complete Go decoder or new PCM claim.",
+    "Capture domains exclude overflowing integers and negative restore lengths; save-only negative remainder is preserved."
+  ]
+}

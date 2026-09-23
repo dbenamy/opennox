@@ -47,3 +47,31 @@ unchanged. The expanded capture repeats across three processes and UBSan. Initia
 Go qualification also exposed a redundant-variable cleanup compile error and an
 overrestrictive save-position guard. Both are implementation fixes, not changed
 C expectations. Capture bounds must not become arbitrary production limits.
+
+## Go implementation qualified
+
+The initial C baseline is `5a911bce`; the caller-size extension is `7bd7e5d6`.
+Both were committed/pushed before accepting Go stream helpers. Default/server/
+highres/safe and CGO_ENABLED=0 each pass all three MP3 roots:819207 integer,
+36864 side-info and2774 stream cases. `go vet` passes. Independent checks cover
+no-header offsets and retained hints, exact single-frame acceptance versus sync
+matching, partial init including NaN payloads, reservoir concatenation and missing
+history behavior, retained tails, byte rounding,511-byte cap and negative remainder.
+
+Primary wrote/reviewed the runner; Luna supplied the implementation draft and
+reviewed capture bounds. Primary fixed two late draft edits (a deleted local still
+referenced and an overrestrictive save-position guard), and expanded captures after
+finding the actual48KiB caller buffer. Failed logs remain in
+`build/port-mp3-stream/go-{first-build,save-guard}-failure`; acceptance is in `go/`.
+No historical expectation was changed to accommodate an implementation mismatch.
+
+[Qualification](mp3-stream-go-qualification.json) verifies all previous source
+hashes and the four production binary hashes. Only private code/tests were added to
+the still-unimported package; prior production dependency selections remain valid.
+SSE production/ABI/gameplay evidence is explicitly reused. No production build,
+full-suite or complete-Go-decoder PCM success is claimed for this unwired chunk.
+C stays six lines/one file, reference zero,81 production C preamble bodies.
+
+Next: connected scalefactor byte parsing, quarter-power scaling and scalefactor
+float output. Capture float bits under the qualified SSE2 arithmetic and preserve
+uint8 wrapping, retained bytes and exact expression rounding before integration.
