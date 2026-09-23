@@ -1,0 +1,36 @@
+{
+  "header_sha256": "e03e87c847cbdfd79cd3bf74a3b1fe24bc8c590245e92ce8153e87b23e17507f",
+  "tool_sha256": "67ce406f3ef44eeb94618f18a7d947e9dbf5004e11b59cf644bde13c502d4d28",
+  "shim_sha256": "2403fb319a951772eb326802f9debdef76db3249b8505eccd1474074773abc18",
+  "compiler": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+  "flags": [
+    "gcc",
+    "-m32",
+    "-std=c11",
+    "-O2",
+    "-g",
+    "-msse2",
+    "-mfpmath=sse",
+    "-I",
+    "/root/src/opennox/src/legacy/client/audio/mp3",
+    "/root/src/opennox/build/port-mp3-integer/capture-host/capture.c",
+    "-lm",
+    "-o",
+    "/root/src/opennox/build/port-mp3-integer/capture-host/capture"
+  ],
+  "opcode_counts": [
+    196864,
+    524288,
+    30240,
+    67815
+  ],
+  "uncompressed_bytes": 11702383,
+  "uncompressed_sha256": "d247a1f9f026f1d9b39d57efa5bba5a3be014ee41a536b40e0252cc035285f37",
+  "fixture_sha256": "2eb2ad3612d7df96dccc7e8e724c7a4d6b984594c7a16f24d2cebfcef0a51bd9",
+  "repeated_result_sha256": [
+    "98fc2fbe673fa9cc41ffef5fb2f18a3809388b7964c6a7377bd5f1f82051d586",
+    "98fc2fbe673fa9cc41ffef5fb2f18a3809388b7964c6a7377bd5f1f82051d586",
+    "98fc2fbe673fa9cc41ffef5fb2f18a3809388b7964c6a7377bd5f1f82051d586"
+  ],
+  "source_commit": "08774225ac07cb354bd82ffdba0aed24eb004ded"
+}

@@ -38,7 +38,7 @@ Current callback binaries/benchmarks and frozen captures remain available.
 
 ## Current — MP3 scalar SSE2 correction qualified
 
-Original-C asset baseline `22627e7f` is committed/pushed. The working correction
+Original-C asset baseline `22627e7f` and SSE correction `08774225` are committed/pushed. The correction
 adds package-local `#cgo 386 CFLAGS: -msse2 -mfpmath=sse` in ail/audio_mp3.go.
 All 1,246 historical TestAudioDecode PCM goldens pass UNCHANGED in default/highres.
 The newer guarded observation expectation deliberately changes from the recorded
@@ -155,3 +155,15 @@ Entry scenarios use `build/port-entry-direct/deduplicate-{c,native}-{preflight,
 save}.py`; storage uses `build/port-remaining-storage/deduplicate-scoped.py` and
 `deduplicate-save.py`; orphan uses `build/port-orphan-inline/deduplicate-preflight.py`
 and `deduplicate-save.py`. Consult each run's deduplicated-assets.json before reuse.
+
+## Current — MP3 integer baseline
+
+819,207 actual-C helper records repeat identically across three native processes;
+a UBSan build also matches without diagnostics. Fixture and capture tool are
+committed before Go integration. See [MP3_INTEGER.md](docs/porting/MP3_INTEGER.md).
+Luna supplied ignored implementation/test drafts; primary reviewed the arithmetic,
+all 90 table entries and captured C independently. Production remains unchanged.
+Capture sessions71135 and92923 joined PASS; initial sandbox11583 failed SIGSYS.
+Standalone C remains six lines/one file, reference C zero. Next: install reviewed
+Go helpers and frozen runner, qualify the pure-Go package, prove no production
+dependency before reusing the SSE production qualification.
