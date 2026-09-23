@@ -20,7 +20,9 @@ All132 roots/profile,2071 frozen cases and independent raw/compatibility contrac
 pass, plus safe/static, production/ABI, exact known-suite and headless save/load.
 See [DAMAGE_VALUES.md](docs/porting/DAMAGE_VALUES.md).
 **Standalone C remains zero; production C preamble bodies remain79.**
-Next: a larger registered object-update batch, preserving mutable handler lookup.
+The next53-callback update baseline is qualified:281 roots/profile,8251 frozen
+cases and dynamic-handler contracts. Production conversion is pending. See
+[UPDATE_REGISTRY.md](docs/porting/UPDATE_REGISTRY.md).
 
 ### Earlier checkpoints
 

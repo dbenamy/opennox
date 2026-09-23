@@ -155,6 +155,7 @@ const (
 var PortTestTemporaryServer func(*server.Server) func()
 
 type PortTestTemporaryUpdatesSpec struct {
+	RegisteredUpdates      bool
 	World                  *PortTestWorldSpec
 	ItemWords, UpdateWords []map[int]uint32
 	ItemRefs, UpdateRefs   []map[int]int
@@ -333,6 +334,9 @@ func (p *portTestShopPools) temporaryItems() {
 	}
 }
 func (p *portTestShopPools) temporaryAction(a PortTestShopAction) uint32 {
+	if p.registeredUpdateAction(a) {
+		return p.temporary.result
+	}
 	sp := p.proxy.callbacks.shop.spec.TemporaryUpdates
 	p.temporary.result = uint32(C.tempCall(C.int(a.Op-600), asObjectC(p.items[a.Item].u), asObjectC(p.temporaryRef(sp.Target)), C.int(a.Value), C.int(a.Side)))
 	return p.temporary.result

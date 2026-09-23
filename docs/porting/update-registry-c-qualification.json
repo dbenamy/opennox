@@ -1,0 +1,563 @@
+{
+  "status": "qualified original registered object update baseline",
+  "revision": "0a94c36fa139e7c7bfde1ec04a27bf333f267dc3",
+  "phase": {
+    "batch": "update-registry",
+    "phase": "contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/update-registry-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-update-registry/baseline/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-update-registry/baseline/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 157.7329583200626
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/update-registry-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-update-registry/baseline/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-update-registry/baseline/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 227.69975983095355
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/update-registry-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-update-registry/baseline/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-update-registry/baseline/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 155.78088561515324
+      }
+    ],
+    "revision": "0a94c36fa139e7c7bfde1ec04a27bf333f267dc3",
+    "source_unchanged": true,
+    "wall_seconds": 541.7445012459066,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 281,
+      "selected_root_tests": 281,
+      "exit": 0,
+      "started_tests": 281,
+      "completed_tests": 281,
+      "started_root_tests": 281,
+      "completed_root_tests": 281,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 157.6274740139488
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 281,
+      "selected_root_tests": 281,
+      "exit": 0,
+      "started_tests": 281,
+      "completed_tests": 281,
+      "started_root_tests": 281,
+      "completed_root_tests": 281,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 227.60817985795438
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 281,
+      "selected_root_tests": 281,
+      "exit": 0,
+      "started_tests": 281,
+      "completed_tests": 281,
+      "started_root_tests": 281,
+      "completed_root_tests": 281,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 155.70497290208004
+    }
+  },
+  "captures": {
+    "update-registry-generator-update-gates": {
+      "path": "build/port-update-registry/original-v2-update-registry-generator-update-gates.json",
+      "cases": 600,
+      "sha256": "dc753db5ded7d537d80f66fc0595f4db5cff90a276aa4407a5ce581fe96cc6d1"
+    },
+    "update-registry-generator-update-spawn": {
+      "path": "build/port-update-registry/original-v2-update-registry-generator-update-spawn.json",
+      "cases": 192,
+      "sha256": "299330844c6096df687b2b20a47651027a57215d371f8391607afe37658a98fe"
+    },
+    "update-registry-motion-mover": {
+      "path": "build/port-update-registry/original-v2-update-registry-motion-mover.json",
+      "cases": 1627,
+      "sha256": "77cfed5e8d3e5e56b21b9d47c3d6138d18280dba1f5074bade9c9f059010fa6d"
+    },
+    "update-registry-motion-sentry": {
+      "path": "build/port-update-registry/original-v2-update-registry-motion-sentry.json",
+      "cases": 252,
+      "sha256": "323db817d302737613de329371e22f227fd1706c904f5223d116add67d573140"
+    },
+    "update-registry-motion-trap": {
+      "path": "build/port-update-registry/original-v2-update-registry-motion-trap.json",
+      "cases": 252,
+      "sha256": "123545df8a5e94b445e1f189cb290e5f16cb785f31cf35704ee1dee9683d70d2"
+    },
+    "update-registry-objectives-ball-clock": {
+      "path": "build/port-update-registry/original-v2-update-registry-objectives-ball-clock.json",
+      "cases": 150,
+      "sha256": "4df5e94496eae0e20a156cfab61f11e7c2ebce58cde5dbd6011ab95f7d83e0a9"
+    },
+    "update-registry-objectives-crown-dispatch": {
+      "path": "build/port-update-registry/original-v2-update-registry-objectives-crown-dispatch.json",
+      "cases": 48,
+      "sha256": "0c24d4eed559bb7729333f54123a728142509485e1a271e95b5cf693d4c4da13"
+    },
+    "update-registry-objectives-flag-deadline": {
+      "path": "build/port-update-registry/original-v2-update-registry-objectives-flag-deadline.json",
+      "cases": 72,
+      "sha256": "92435e14ce02529ec368bb880d29ecab16ee47c20ec799a0771ec16d987a2933"
+    },
+    "update-registry-objectives-obelisk-eligibility": {
+      "path": "build/port-update-registry/original-v2-update-registry-objectives-obelisk-eligibility.json",
+      "cases": 240,
+      "sha256": "7ceff3a1bdd066ceb085e712aef1e98976df8341ebd7267a8b38f920810d5ecf"
+    },
+    "update-registry-objectives-obelisk-idle": {
+      "path": "build/port-update-registry/original-v2-update-registry-objectives-obelisk-idle.json",
+      "cases": 224,
+      "sha256": "e402b16f9e6e8586e97b04f02d5f6247081a27c7da044eeb01f4104497381620"
+    },
+    "update-registry-objectives-obelisk-transfer": {
+      "path": "build/port-update-registry/original-v2-update-registry-objectives-obelisk-transfer.json",
+      "cases": 336,
+      "sha256": "b5c46594f05d2169d1908c348391093461b3735a45e48920b1faf2a96c2396b0"
+    },
+    "update-registry-objectives-obelisk-wands": {
+      "path": "build/port-update-registry/original-v2-update-registry-objectives-obelisk-wands.json",
+      "cases": 192,
+      "sha256": "b069bc7f664d71d6a41153f8ceb3cbf37c86be63c6036208030cc71981e01d37"
+    },
+    "update-registry-temporary-acquisition": {
+      "path": "build/port-update-registry/original-v2-update-registry-temporary-acquisition.json",
+      "cases": 96,
+      "sha256": "0e8a000ce16de999cc34356f2c3bf17164ef7a8010053759a422459046497a3e"
+    },
+    "update-registry-temporary-area-owners": {
+      "path": "build/port-update-registry/original-v2-update-registry-temporary-area-owners.json",
+      "cases": 210,
+      "sha256": "5fcd97779256069eb4a68e4b8dad4b0ffc61464127c882c39a395318790be90d"
+    },
+    "update-registry-temporary-break": {
+      "path": "build/port-update-registry/original-v2-update-registry-temporary-break.json",
+      "cases": 450,
+      "sha256": "de8371d8c52f0ab8e7f6900936990185a1f9de28df3cd0c531bc597d5cd6a0e2"
+    },
+    "update-registry-temporary-frame-wrap": {
+      "path": "build/port-update-registry/original-v2-update-registry-temporary-frame-wrap.json",
+      "cases": 216,
+      "sha256": "3c31aafcd7142fed084829a510e8c1cf4ba09dbcbc3a58bfd8974e0dada0ba04"
+    },
+    "update-registry-temporary-homing": {
+      "path": "build/port-update-registry/original-v2-update-registry-temporary-homing.json",
+      "cases": 288,
+      "sha256": "0dec953e506ba8dd9f5fb1b05a051cd09e9399683feda90a45d442eb8e2fff67"
+    },
+    "update-registry-temporary-lifetime": {
+      "path": "build/port-update-registry/original-v2-update-registry-temporary-lifetime.json",
+      "cases": 480,
+      "sha256": "f1050e32749cb74765493399f56ebfbfde939d07bafceefec60e0b8fe9e4f97a"
+    },
+    "update-registry-temporary-missing-owners": {
+      "path": "build/port-update-registry/original-v2-update-registry-temporary-missing-owners.json",
+      "cases": 15,
+      "sha256": "38bb8ad4d8aef15a62dafa008a591a85db32faba52ad90c814888bc9fc8a5fef"
+    },
+    "update-registry-temporary-owner-effects": {
+      "path": "build/port-update-registry/original-v2-update-registry-temporary-owner-effects.json",
+      "cases": 144,
+      "sha256": "b895bccccd6dc134cb30e984d3fa1822e4e09f7f00c4744db9ea377e83748761"
+    },
+    "update-registry-temporary-random-streams": {
+      "path": "build/port-update-registry/original-v2-update-registry-temporary-random-streams.json",
+      "cases": 35,
+      "sha256": "e54a9167c141e754c25246cc72122392235635034234612a3c7f236191947b90"
+    },
+    "update-registry-temporary-spawners": {
+      "path": "build/port-update-registry/original-v2-update-registry-temporary-spawners.json",
+      "cases": 144,
+      "sha256": "1a25e476641e8b8cc9576520a5f01262696a790940c7b1c7199e9233f8f65e81"
+    },
+    "update-registry-temporary-tick-rates": {
+      "path": "build/port-update-registry/original-v2-update-registry-temporary-tick-rates.json",
+      "cases": 160,
+      "sha256": "e208d2de7e7c5290603b25d7ca772a30d697bf51dc8eb1aa06c7f3063a3b7fcf"
+    },
+    "update-registry-temporary-trails": {
+      "path": "build/port-update-registry/original-v2-update-registry-temporary-trails.json",
+      "cases": 28,
+      "sha256": "e92e72b5d473c021ee05f216bd328e713a64b3bdd39856db7f43cc16a273badf"
+    },
+    "update-registry-world-doors": {
+      "path": "build/port-update-registry/original-v2-update-registry-world-doors.json",
+      "cases": 240,
+      "sha256": "4ab11c2923a1a1fa31346a1092705fc12a9dae948613a40db6f1f9ed3115fb81"
+    },
+    "update-registry-world-elevators": {
+      "path": "build/port-update-registry/original-v2-update-registry-world-elevators.json",
+      "cases": 210,
+      "sha256": "4eac9076eaf4b663ae9b06235c0cb6a86be6239774f9d31318ab246efe972d7a"
+    },
+    "update-registry-world-forces": {
+      "path": "build/port-update-registry/original-v2-update-registry-world-forces.json",
+      "cases": 216,
+      "sha256": "2c439ed43e78719e38493dd0215615aae78c5dd67e7f07373c8afad8331ebfad"
+    },
+    "update-registry-world-invisible-teleport": {
+      "path": "build/port-update-registry/original-v2-update-registry-world-invisible-teleport.json",
+      "cases": 12,
+      "sha256": "4693a945e6fa2e7885614c1b8431a2ace733c4a3fe64250deb01200b25ef8db8"
+    },
+    "update-registry-world-owner-integration": {
+      "path": "build/port-update-registry/original-v2-update-registry-world-owner-integration.json",
+      "cases": 4,
+      "sha256": "005d9ea7898022dbe5684d28f152aa2ca82680e75b220b93681d38a72a9705b9"
+    },
+    "update-registry-world-phantom-queue": {
+      "path": "build/port-update-registry/original-v2-update-registry-world-phantom-queue.json",
+      "cases": 81,
+      "sha256": "9c4199a101a109cc23d1092d3efc938d69aeb71743764aa365a0b5e119818b0a"
+    },
+    "update-registry-world-positive": {
+      "path": "build/port-update-registry/original-v2-update-registry-world-positive.json",
+      "cases": 5,
+      "sha256": "5206010f166eb46098b2d9e41dd7f07bf095ff969abf81c48e0e3d086ada47f8"
+    },
+    "update-registry-world-switches": {
+      "path": "build/port-update-registry/original-v2-update-registry-world-switches.json",
+      "cases": 42,
+      "sha256": "885a594c122f4e3082108d5d2fffc5cf88fc01dd1025abcdb6528de8ced8e0c5"
+    },
+    "update-registry-world-teleports": {
+      "path": "build/port-update-registry/original-v2-update-registry-world-teleports.json",
+      "cases": 160,
+      "sha256": "65cbd9ca486446f59e4fcbcbd3ae1bc7d80b194699420f36b40b17a4e60eab7b"
+    },
+    "update-registry-world-trap-doors": {
+      "path": "build/port-update-registry/original-v2-update-registry-world-trap-doors.json",
+      "cases": 70,
+      "sha256": "5d77f69f9234d64eeb78da5934d34b099f910221b1090e70f1ae2c26287de022"
+    },
+    "update-registry-world-triggers": {
+      "path": "build/port-update-registry/original-v2-update-registry-world-triggers.json",
+      "cases": 640,
+      "sha256": "227329d562aee47313b52dc2486c83ac850a2d01240503d0f0962c20a4484607"
+    },
+    "update-registry-world-type-clock": {
+      "path": "build/port-update-registry/original-v2-update-registry-world-type-clock.json",
+      "cases": 120,
+      "sha256": "c9c7c5010ace7b9fb092b01d216e31ff775bbf8035fd47bea15e01a8df09c2fc"
+    }
+  },
+  "owner_capture_cases": 8251,
+  "execution": {
+    "counts": {
+      "DeathBallUpdate": 2,
+      "HarpoonUpdate": 2,
+      "MonsterUpdate": 2,
+      "PixieUpdate": 2,
+      "PlayerUpdate": 2,
+      "ProjectileUpdate": 2,
+      "MonsterGeneratorUpdate": 792,
+      "MoverUpdate": 1627,
+      "SentryGlobeUpdate": 252,
+      "SkullUpdate": 252,
+      "FlagUpdate": 144,
+      "BallUpdate": 150,
+      "ObeliskUpdate": 1984,
+      "CrownUpdate": 24,
+      "ExpireUpdate": 219,
+      "LifetimeUpdate": 219,
+      "OneSecondDieUpdate": 235,
+      "SelfDestructUpdate": 219,
+      "SparkUpdate": 192,
+      "BreakAndRemoveUpdate": 300,
+      "BreakUpdate": 300,
+      "OpenUpdate": 300,
+      "ProjectileTrailUpdate": 36,
+      "AntiSpellProjectileUpdate": 264,
+      "ChakramInMotionUpdate": 166,
+      "MagicMissileUpdate": 160,
+      "SpellProjectileUpdate": 144,
+      "FistUpdate": 88,
+      "MoonglowUpdate": 94,
+      "TelekinesisUpdate": 88,
+      "ArachnaphobiaUpdate": 122,
+      "BlackPowderBarrelUpdate": 79,
+      "MeteorShowerUpdate": 79,
+      "MeteorUpdate": 72,
+      "BlackPowderBurnUpdate": 127,
+      "DeathBallFragmentUpdate": 127,
+      "SmallToxicCloudUpdate": 84,
+      "ToxicCloudUpdate": 111,
+      "WaterBarrelUpdate": 84,
+      "ToggleUpdate": 641,
+      "TriggerUpdate": 784,
+      "DoorUpdate": 496,
+      "LoopAndDamageUpdate": 42,
+      "SwitchUpdate": 42,
+      "ElevatorShaftUpdate": 61,
+      "ElevatorUpdate": 317,
+      "PentagramUpdate": 321,
+      "TrapDoorUpdate": 156,
+      "PhantomPlayerUpdate": 25,
+      "BlowUpdate": 73,
+      "PushUpdate": 72,
+      "InvisiblePentagramUpdate": 12
+    },
+    "separate_existing_registered_owner": "TestUnitGameplayUndeadUpdate",
+    "all_registration_names": [
+      "AntiSpellProjectileUpdate",
+      "ArachnaphobiaUpdate",
+      "BallUpdate",
+      "BlackPowderBarrelUpdate",
+      "BlackPowderBurnUpdate",
+      "BlowUpdate",
+      "BreakAndRemoveUpdate",
+      "BreakUpdate",
+      "ChakramInMotionUpdate",
+      "CrownUpdate",
+      "DeathBallFragmentUpdate",
+      "DeathBallUpdate",
+      "DoorUpdate",
+      "ElevatorShaftUpdate",
+      "ElevatorUpdate",
+      "ExpireUpdate",
+      "FistUpdate",
+      "FlagUpdate",
+      "HarpoonUpdate",
+      "InvisiblePentagramUpdate",
+      "LifetimeUpdate",
+      "LoopAndDamageUpdate",
+      "MagicMissileUpdate",
+      "MeteorShowerUpdate",
+      "MeteorUpdate",
+      "MonsterGeneratorUpdate",
+      "MonsterUpdate",
+      "MoonglowUpdate",
+      "MoverUpdate",
+      "ObeliskUpdate",
+      "OneSecondDieUpdate",
+      "OpenUpdate",
+      "PentagramUpdate",
+      "PhantomPlayerUpdate",
+      "PixieUpdate",
+      "PlayerUpdate",
+      "ProjectileTrailUpdate",
+      "ProjectileUpdate",
+      "PushUpdate",
+      "SelfDestructUpdate",
+      "SentryGlobeUpdate",
+      "SkullUpdate",
+      "SmallToxicCloudUpdate",
+      "SparkUpdate",
+      "SpellProjectileUpdate",
+      "SwitchUpdate",
+      "TelekinesisUpdate",
+      "ToggleUpdate",
+      "ToxicCloudUpdate",
+      "TrapDoorUpdate",
+      "TriggerUpdate",
+      "UndeadKillerUpdate",
+      "WaterBarrelUpdate"
+    ]
+  },
+  "raw_cases": [
+    "nil slot",
+    "raw callback argument/exactly once",
+    "cleared slot"
+  ],
+  "dynamic_handler_invocations": 12,
+  "production_reuse": "Nine new porttest files and four existing porttest adapters changed. All other source/dependency fingerprints and all four preceding binary hashes match. Three fresh strict profiles repeat36 frozen groups, exact callback execution counts and original registered UndeadKiller owner.",
+  "reused_qualification": "damage-values-qualification.json",
+  "binary_sha256": {
+    "safe": "30b1dbfc3bee4f13f230ad61121ce0bfd050b0f6357ba0b7f6108d2658c8bd68",
+    "opennox": "c2007787d430fee5c7a42c8303a6b3666f96b29c9f8684b02011b8209664b11a",
+    "opennox-hd": "6c100c40e274df9aa5d1e2829487f42386218ef4be969176969364e9dbd715eb",
+    "opennox-server": "81a7971fb1baf4810c54575a8e44b843714f576cb4bb5f6d281bb36ac764bc88"
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79,
+  "retained_callback_exports": [
+    "nox_xxx_updatePlayer_4F8100",
+    "nox_xxx_updateProjectile_53AC10",
+    "nox_xxx_spellFlyUpdate_53B940",
+    "nox_xxx_updateAntiSpellProj_53BB00",
+    "nox_xxx_updateDoor_53AC50",
+    "nox_xxx_updateSpark_53ADC0",
+    "nox_xxx_updateProjTrail_53AEC0",
+    "nox_xxx_updatePush_53B030",
+    "nox_xxx_updateTrigger_53B1B0",
+    "nox_xxx_updateToggle_53B060",
+    "nox_xxx_unitUpdateMonster_50A5C0",
+    "sub_53B300",
+    "nox_xxx_updateElevator_53B5D0",
+    "nox_xxx_updateElevatorShaft_53B380",
+    "nox_xxx_updatePhantomPlayer_53B860",
+    "nox_xxx_updateObelisk_53C580",
+    "nox_xxx_updateLifetime_53B8F0",
+    "nox_xxx_updateMagicMissile_53BDA0",
+    "nox_xxx_updatePixie_53CD20",
+    "nox_xxx_updateShootingTrap_54F9A0",
+    "nox_xxx_updateTeleportPentagram_53BEF0",
+    "nox_xxx_updateInvisiblePentagram_53C0C0",
+    "nox_xxx_updateSwitch_53B320",
+    "nox_xxx_updateBlow_53C160",
+    "nox_xxx_unitUpdateMover_54F740",
+    "nox_xxx_updateBlackPowderBarrel_53C9A0",
+    "nox_xxx_updateOneSecondDie_53CB60",
+    "nox_xxx_updateWaterBarrel_53CB90",
+    "nox_xxx_updateSelfDestruct_53CC90",
+    "nox_xxx_updateBlackPowderBurn_53CCB0",
+    "nox_xxx_updateDeathBall_53D080",
+    "nox_xxx_updateDeathBallFragment_53D220",
+    "nox_xxx_updateMoonglow_53D270",
+    "nox_xxx_updateSentryGlobe_510E60",
+    "nox_xxx_updateTelekinesis_53D330",
+    "nox_xxx_updateFist_53D400",
+    "nox_xxx_updateMeteorShower_53D5A0",
+    "nox_xxx_meteorExplode_53D6E0",
+    "nox_xxx_updateToxicCloud_53D850",
+    "nox_xxx_updateSmallToxicCloud_53D960",
+    "nox_xxx_updateArachnaphobia_53DA60",
+    "nox_xxx_updateExpire_53DB00",
+    "nox_xxx_updateBreak_53DB30",
+    "nox_xxx_updateOpen_53DBB0",
+    "nox_xxx_updateBreakAndRemove_53DC30",
+    "nox_xxx_updateChakramInMotion_53DCC0",
+    "nox_xxx_updateFlag_53DDF0",
+    "nox_xxx_updateTrapDoor_53DE80",
+    "nox_xxx_updateGameBall_53DF40",
+    "nox_xxx_updateCrown_53E1D0",
+    "nox_xxx_updateUndeadKiller_53E190",
+    "nox_xxx_updateHarpoon_54F380",
+    "nox_xxx_updateMonsterGenerator_54E930"
+  ],
+  "fixture_correction": "First original capture failed three zero-execution assertions in redundant new siblings. Removed those, added missing invisible-pentagram owner and positive contracts. Corrected original passed before freezing; no production changes."
+}

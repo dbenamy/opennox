@@ -2315,3 +2315,17 @@ This policy permits rebuilding older versions rather than retaining every compil
 cache entry; it does not delete source, module downloads, original assets, goldens,
 logs, binaries or qualification reports. No build was active during pruning.
 The bounded audit came from Luna; the primary reviewed and executed the cleanup.
+
+
+## Batch all registered object updates together
+
+The next registry batch covers all53 object updates through one CallUpdate boundary,
+rather than completing another tiny adjacent damage-sound batch. Bind existing Go
+export wrappers directly, preserving their complete bodies, names/C-addresses,
+data sizes and parser order. Six mutable handlers remain looked up at invocation.
+Original-owner sibling tests discard return values because CallUpdate is void;
+original direct-return tests remain intact. Coverage uses actual registrations
+and explicit execution counts, with the existing registered UndeadKiller owner
+covering the53rd name. Baseline281-root qualification is complete in three profiles; production unapplied.
+See UPDATE_REGISTRY.md. This reversible API/process choice follows standing user
+authorization for larger coherent batches with independent contracts.

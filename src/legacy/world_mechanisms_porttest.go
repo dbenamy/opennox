@@ -205,6 +205,9 @@ func (p *portTestShopPools) worldItems() {
 	p.objectivesItems()
 }
 func (p *portTestShopPools) worldAction(a PortTestShopAction) uint32 {
+	if p.registeredUpdateAction(a) {
+		return p.temporary.result
+	}
 	sp := p.proxy.callbacks.shop.spec.TemporaryUpdates
 	p.temporary.result = uint32(C.worldCall(C.int(a.Op-700), asObjectC(p.items[a.Item].u), asObjectC(p.temporaryRef(sp.Target)), C.int(a.Value)))
 	return p.temporary.result

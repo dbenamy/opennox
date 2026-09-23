@@ -17,6 +17,7 @@ import (
 )
 
 type PortTestGeneratorSpec struct {
+	RegisteredUpdate                                 bool
 	SpawnPolicy                                      *PortTestGeneratorSpawnPolicySpec
 	Inventory                                        *PortTestGeneratorInventorySpec
 	Frame                                            uint32
@@ -146,6 +147,12 @@ func portTestGeneratorPrepare(proxy *portTestRoamOwnerServer, u *server.Object, 
 func portTestGeneratorCall(proxy *portTestRoamOwnerServer, u *server.Object) uint32 {
 	st := proxy.callbacks.generation
 	sp := st.spec
+	if sp.RegisteredUpdate && (sp.Op == 3 || sp.Op == 8) {
+		ptr, id := portTestUpdateRegistryPointer("MonsterGeneratorUpdate")
+		proxy.life.ids[uint32(uintptr(ptr))] = id
+		PortTestRegisteredUpdate(u, "MonsterGeneratorUpdate")
+		return 0 // The actual update owner discards the callback return.
+	}
 	p := unsafe.Pointer(&st.point[2])
 	t := proxy.combat.target
 	if sp.Op >= 4 {

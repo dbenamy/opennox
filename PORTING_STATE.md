@@ -7,6 +7,32 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
+## Current — 53-update original baseline qualified
+
+Damage-value conversion0a94c36f pushed, fully qualified. Current qualified binaries
+build/port-damage-values/{safe/opennox-safe,production/production/bin}, keep plain.
+Update production patch build/port-update-registry/direct-calls.patch UNAPPLIED;
+primary independently verified53 exact mappings and Go wrapper argument types.
+
+New porttest actual-owner fixtures installed:42 common action routes, generator,
+three motion siblings,53 identity checks, nil/raw contracts and six mutable handler
+pairs. Original60903 failed only three zero-execution assertions (redundant new
+matrices); removed those and added invisible-teleport positive checks. Corrected
+77044 joinedPASS40 roots beforefreeze:36 captures8251cases,12188 calls across52names,
+plus existing registered UndeadKiller owner. Old goldens unchanged.
+
+Baseline93910 joinedPASS281 roots/profile, no skips,36 exact frozen hashes and
+execution counts. Finalizer7120 PASS verifies nine added/four changed porttest files
+only and all four previous production binaries. No Go jobs active. Commit/push
+baseline before applying production, then contracts/safe/preflight/production and
+finish.py. Reviewed production patch and finalizer drafts under build/port-update-registry.
+UPDATE_REGISTRY.md has scope/limits/decisions. One Luna helper.
+
+Cleanup93147 joinedPASS40 old repo compiler archives2168958680bytes, independent
+stat/hash/header/module and host FD/exe/map checks while no Go job active. Source,
+modules, assets, binaries, captures and qualification outputs preserved; record
+build/port-update-registry/old-repository-cache-removed.json. Cache script consumed.
+
 ## Current — exact damage values qualified
 
 Baseline97f055a5 pushed. Corrected conversion89247 and remaining pipeline47464
