@@ -4,8 +4,8 @@ package legacy
 
 /*
 #include "defs.h"
-extern nox_inventory_cell_t nox_client_inventory_grid_1050020[NOX_INVENTORY_CELLS_MAX];
-extern uint32_t array_5D4594_1049872[9];
+
+
 */
 import "C"
 
@@ -17,8 +17,8 @@ func PortTestMeterInventory() (grid []byte, equipment []uint32, restore func()) 
 	if C.sizeof_nox_inventory_cell_t != 148 || C.NOX_INVENTORY_CELLS_MAX != 84 {
 		panic("client inventory ABI")
 	}
-	grid = unsafe.Slice((*byte)(unsafe.Pointer(&C.nox_client_inventory_grid_1050020[0])), 148*84)
-	equipment = unsafe.Slice((*uint32)(unsafe.Pointer(&C.array_5D4594_1049872[0])), 9)
+	grid = unsafe.Slice((*byte)(unsafe.Pointer(&legacyGlobals.nox_client_inventory_grid_1050020[0])), 148*84)
+	equipment = unsafe.Slice((*uint32)(unsafe.Pointer(&legacyGlobals.array_5D4594_1049872[0])), 9)
 	oldGrid, oldEquipment := append([]byte(nil), grid...), append([]uint32(nil), equipment...)
 	clear(grid)
 	clear(equipment)

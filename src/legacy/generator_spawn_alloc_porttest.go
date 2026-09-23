@@ -6,8 +6,8 @@ package legacy
 #include <stdint.h>
 #include "GAME4_1.h"
 #include "common/alloc/classes/alloc_class.h"
-extern void* nox_alloc_spawn_2386216;
-extern void* nox_alloc_monsterList_2386220;
+
+
 */
 import "C"
 
@@ -35,27 +35,27 @@ type portTestGeneratorSpawnAllocatorSnapshot struct {
 // first release spawned child objects and clear their UpdateData links; C
 // 50D7E0 intentionally invalidates those SpawnClass records.
 func portTestGeneratorSpawnAllocator() (reset func(), snapshot func() portTestGeneratorSpawnAllocatorSnapshot, restore func()) {
-	oldSpawnClass, oldMonsterClass := C.nox_alloc_spawn_2386216, C.nox_alloc_monsterList_2386220
+	oldSpawnClass, oldMonsterClass := legacyGlobals.nox_alloc_spawn_2386216, legacyGlobals.nox_alloc_monsterList_2386220
 	oldSpawnHead, oldMonsterHead, oldMonsterCount := dword_5d4594_2386212, dword_5d4594_2386224, dword_5d4594_2386228
 
 	// Do not call C cleanup while the old classes are installed: they belong to
 	// the surrounding server. 50D780 initializes these exact five globals.
-	C.nox_alloc_spawn_2386216 = nil
-	C.nox_alloc_monsterList_2386220 = nil
+	legacyGlobals.nox_alloc_spawn_2386216 = nil
+	legacyGlobals.nox_alloc_monsterList_2386220 = nil
 	dword_5d4594_2386212 = 0
 	dword_5d4594_2386224 = 0
 	dword_5d4594_2386228 = 0
 	if spawnPolicyInit() == 0 {
 		// A partial 50D780 allocation, if any, is owned by this fixture.
 		spawnPolicyFree()
-		C.nox_alloc_spawn_2386216, C.nox_alloc_monsterList_2386220 = oldSpawnClass, oldMonsterClass
+		legacyGlobals.nox_alloc_spawn_2386216, legacyGlobals.nox_alloc_monsterList_2386220 = oldSpawnClass, oldMonsterClass
 		dword_5d4594_2386212, dword_5d4594_2386224, dword_5d4594_2386228 = oldSpawnHead, oldMonsterHead, oldMonsterCount
 		panic("generator SpawnClass allocation failed")
 	}
-	ownSpawnClass, ownMonsterClass := C.nox_alloc_spawn_2386216, C.nox_alloc_monsterList_2386220
+	ownSpawnClass, ownMonsterClass := legacyGlobals.nox_alloc_spawn_2386216, legacyGlobals.nox_alloc_monsterList_2386220
 
 	checkOwn := func() {
-		if C.nox_alloc_spawn_2386216 != ownSpawnClass || C.nox_alloc_monsterList_2386220 != ownMonsterClass {
+		if legacyGlobals.nox_alloc_spawn_2386216 != ownSpawnClass || legacyGlobals.nox_alloc_monsterList_2386220 != ownMonsterClass {
 			panic("generator spawn allocator ownership changed")
 		}
 	}
@@ -65,8 +65,8 @@ func portTestGeneratorSpawnAllocator() (reset func(), snapshot func() portTestGe
 	}
 	snapshot = func() (out portTestGeneratorSpawnAllocatorSnapshot) {
 		checkOwn()
-		out.SpawnClass = uintptr(C.nox_alloc_spawn_2386216)
-		out.MonsterListClass = uintptr(C.nox_alloc_monsterList_2386220)
+		out.SpawnClass = uintptr(legacyGlobals.nox_alloc_spawn_2386216)
+		out.MonsterListClass = uintptr(legacyGlobals.nox_alloc_monsterList_2386220)
 		out.SpawnHead = uintptr(dword_5d4594_2386212)
 		out.MonsterListHead = uintptr(dword_5d4594_2386224)
 		out.MonsterListCount = uint32(dword_5d4594_2386228)
@@ -111,7 +111,7 @@ func portTestGeneratorSpawnAllocator() (reset func(), snapshot func() portTestGe
 		checkOwn()
 		spawnPolicyReset()
 		spawnPolicyFree()
-		C.nox_alloc_spawn_2386216, C.nox_alloc_monsterList_2386220 = oldSpawnClass, oldMonsterClass
+		legacyGlobals.nox_alloc_spawn_2386216, legacyGlobals.nox_alloc_monsterList_2386220 = oldSpawnClass, oldMonsterClass
 		dword_5d4594_2386212, dword_5d4594_2386224, dword_5d4594_2386228 = oldSpawnHead, oldMonsterHead, oldMonsterCount
 	}
 	return reset, snapshot, restore

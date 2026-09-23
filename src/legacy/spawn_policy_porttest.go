@@ -5,8 +5,8 @@ package legacy
 /*
 #include <stdint.h>
 #include "GAME4_1.h"
-extern void* nox_alloc_spawn_2386216;
-extern void* nox_alloc_monsterList_2386220;
+
+
 */
 import "C"
 
@@ -190,7 +190,7 @@ func (f *portTestGeneratorSpawnPolicy) prepare(actor *server.Object, spec PortTe
 	}
 	f.resetSpawn()
 	for i := uint8(0); i < spec.ReserveMonster; i++ {
-		if alloc.AsClass(C.nox_alloc_monsterList_2386220).NewObject() == nil {
+		if alloc.AsClass(legacyGlobals.nox_alloc_monsterList_2386220).NewObject() == nil {
 			panic("invalid monster-list reserve")
 		}
 	}
@@ -202,8 +202,8 @@ func (f *portTestGeneratorSpawnPolicy) prepare(actor *server.Object, spec PortTe
 	*memmap.PtrUint32(0x5D4594, 2386360) = 0
 	// Allocator handles may be reached through raw state later; normalize them
 	// before any output is captured even though they are no longer result fields.
-	f.rememberID(unsafe.Pointer(C.nox_alloc_spawn_2386216), 9001)
-	f.rememberID(unsafe.Pointer(C.nox_alloc_monsterList_2386220), 9002)
+	f.rememberID(unsafe.Pointer(legacyGlobals.nox_alloc_spawn_2386216), 9001)
+	f.rememberID(unsafe.Pointer(legacyGlobals.nox_alloc_monsterList_2386220), 9002)
 	for i, rec := range spec.Records {
 		oi := i * f.objectStride
 		ui := i * (portTestSpawnPolicyUpdateSize + 2*portTestSpawnPolicyGuard)

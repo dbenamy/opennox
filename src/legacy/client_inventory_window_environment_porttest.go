@@ -6,10 +6,10 @@ package legacy
 #include "defs.h"
 #include "GAME2_1.h"
 #include "client__gui__guiinv.h"
-extern nox_window* dword_5d4594_1062452;
-extern void* nox_gui_itemAmount_dialog_1319228;
-extern void* nox_gui_itemAmount_item_1319256;
-extern nox_window* nox_win_unk5;
+
+
+
+
 */
 import "C"
 
@@ -17,8 +17,8 @@ import "unsafe"
 
 func PortTestInventoryWindowWords() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
-		"nox_gui_itemAmount_item_1319256":                   (*uint32)(unsafe.Pointer(&C.nox_gui_itemAmount_item_1319256)),
-		"nox_gui_itemAmount_dialog_1319228":                 (*uint32)(unsafe.Pointer(&C.nox_gui_itemAmount_dialog_1319228)),
+		"nox_gui_itemAmount_item_1319256":                   (*uint32)(unsafe.Pointer(&legacyGlobals.nox_gui_itemAmount_item_1319256)),
+		"nox_gui_itemAmount_dialog_1319228":                 (*uint32)(unsafe.Pointer(&legacyGlobals.nox_gui_itemAmount_dialog_1319228)),
 		"dword_587000_183460":                               (*uint32)(unsafe.Pointer(&dword_587000_183460)),
 		"dword_587000_183456":                               (*uint32)(unsafe.Pointer(&dword_587000_183456)),
 		"dword_5d4594_1320964":                              (*uint32)(unsafe.Pointer(&dword_5d4594_1320964)),
@@ -46,7 +46,7 @@ func PortTestInventoryWindowWords() (map[string]*uint32, func()) {
 		"dword_5d4594_1049992":                              (*uint32)(unsafe.Pointer(&dword_5d4594_1049992)),
 		"dword_5d4594_1049996":                              (*uint32)(unsafe.Pointer(&dword_5d4594_1049996)),
 		"dword_5d4594_1050008":                              (*uint32)(unsafe.Pointer(&dword_5d4594_1050008)),
-		"dword_5d4594_1062452":                              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1062452)),
+		"dword_5d4594_1062452":                              (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1062452)),
 		"dword_5d4594_1062456":                              (*uint32)(unsafe.Pointer(&dword_5d4594_1062456)),
 		"dword_5d4594_1062468":                              (*uint32)(unsafe.Pointer(&dword_5d4594_1062468)),
 		"dword_5d4594_1062476":                              (*uint32)(unsafe.Pointer(&dword_5d4594_1062476)),
@@ -70,7 +70,7 @@ func PortTestInventoryWindowWords() (map[string]*uint32, func()) {
 		"dword_5d4594_1098624":                              (*uint32)(unsafe.Pointer(&dword_5d4594_1098624)),
 		"dword_5d4594_1098628":                              (*uint32)(unsafe.Pointer(&dword_5d4594_1098628)),
 		"dword_5d4594_1107036":                              (*uint32)(unsafe.Pointer(&dword_5d4594_1107036)),
-		"nox_win_unk5":                                      (*uint32)(unsafe.Pointer(&C.nox_win_unk5)),
+		"nox_win_unk5":                                      (*uint32)(unsafe.Pointer(&legacyGlobals.nox_win_unk5)),
 	}
 	old := make(map[string]uint32, len(words))
 	for n, p := range words {

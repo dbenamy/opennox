@@ -2,7 +2,7 @@ package legacy
 
 /*
 #include "defs.h"
-extern nox_window *dword_5d4594_1090048, *dword_5d4594_1090100;
+
 */
 import "C"
 
@@ -47,8 +47,8 @@ var scoreboardData = struct {
 	(*uint32)(unsafe.Pointer(&dword_5d4594_1090044)),
 	(*uint32)(unsafe.Pointer(&dword_5d4594_1090120)),
 	(*uint32)(unsafe.Pointer(&nox_player_netCode_85319C)),
-	(**gui.Window)(unsafe.Pointer(&C.dword_5d4594_1090048)),
-	(**gui.Window)(unsafe.Pointer(&C.dword_5d4594_1090100)),
+	(**gui.Window)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1090048)),
+	(**gui.Window)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1090100)),
 	(**gui.Window)(unsafe.Pointer(&dword_5d4594_1090108)),
 	(**gui.Window)(unsafe.Pointer(&dword_5d4594_1090112)),
 }

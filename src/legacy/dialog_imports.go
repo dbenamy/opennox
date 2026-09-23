@@ -3,8 +3,8 @@ package legacy
 /*
 #include <stdint.h>
 
-extern void* dword_587000_81128;
-extern void* dword_587000_122852;
+
+
 */
 import "C"
 import (
@@ -38,8 +38,8 @@ func initDialog() {
 		},
 		memmap.PtrT[timer.TimerGroup](0x5D4594, 830876),
 		memmap.PtrT[timer.TimerGroup](0x5D4594, 830980),
-		(*timer.TimerGroup)(C.dword_587000_81128),
-		(*timer.TimerGroup)(C.dword_587000_122852),
+		(*timer.TimerGroup)(legacyGlobals.dword_587000_81128),
+		(*timer.TimerGroup)(legacyGlobals.dword_587000_122852),
 		Sub_413890,
 
 		func() ail.Driver {

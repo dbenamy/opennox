@@ -5,7 +5,7 @@ package legacy
 /*
 #include <stdlib.h>
 #include "GAME3_2.h"
-extern nox_list_item_t nox_common_maplist;
+
 */
 import "C"
 import (
@@ -45,8 +45,8 @@ func PortTestMapCatalogOpen(seed int) *PortTestMapCatalog {
 		f.restore = append(f.restore, func() { copy(raw, saved) })
 		clear(raw)
 	}
-	save(unsafe.Pointer(&C.nox_common_maplist), 12)
-	listClear((*legacyListNode)(unsafe.Pointer(&C.nox_common_maplist)))
+	save(unsafe.Pointer(&legacyGlobals.nox_common_maplist), 12)
+	listClear((*legacyListNode)(unsafe.Pointer(&legacyGlobals.nox_common_maplist)))
 	save(unsafe.Pointer(&dword_5d4594_1548476), 4)
 	save(unsafe.Pointer(&dword_5d4594_1548480), 4)
 	save(memmap.PtrOff(0x5D4594, 1524108), 1024)

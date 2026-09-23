@@ -6,7 +6,7 @@ package legacy
 #include "defs.h"
 #include "GAME2.h"
 #include "client__gui__guispell.h"
-extern void* nox_xxx_aClosewoodengat_587000_133480;
+
 */
 import "C"
 import "unsafe"
@@ -14,10 +14,10 @@ import "unsafe"
 // PortTestBookQuickbar binds the actual quickbar record used by the unchanged
 // slot owner. Its layout and storage come from the normal startup blob.
 func PortTestBookQuickbar(p unsafe.Pointer) func() {
-	old, oldGuard := C.nox_xxx_aClosewoodengat_587000_133480, dword_5d4594_1049496
-	C.nox_xxx_aClosewoodengat_587000_133480 = p
+	old, oldGuard := legacyGlobals.nox_xxx_aClosewoodengat_587000_133480, dword_5d4594_1049496
+	legacyGlobals.nox_xxx_aClosewoodengat_587000_133480 = p
 	dword_5d4594_1049496 = 0
-	return func() { C.nox_xxx_aClosewoodengat_587000_133480 = old; dword_5d4594_1049496 = oldGuard }
+	return func() { legacyGlobals.nox_xxx_aClosewoodengat_587000_133480 = old; dword_5d4594_1049496 = oldGuard }
 }
 
 func PortTestBookQuickbarInit(p unsafe.Pointer, x, y int) uint32 {

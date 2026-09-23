@@ -16,7 +16,7 @@ char sub_450760(char a1);
 int sub_4526D0(int a1);
 int sub_4526F0(int a1);
 int sub_452770(uint32_t* a1);
-extern void* dword_587000_127004;
+
 static uint64_t nox_porttest_audio_event_call(int op,uint64_t a0,uint64_t a1,uint64_t a2,uint64_t a3){switch(op){
 case 2: return (uint64_t)(int64_t)sub_43DB20();
 case 3: return (uint64_t)(int64_t)sub_43DB30((int)a0);
@@ -138,7 +138,7 @@ func portTestAudioEventGlobal(i int) *uint32 {
 	case 12:
 		return (*uint32)(unsafe.Pointer(&dword_5d4594_831092))
 	case 2:
-		return (*uint32)(unsafe.Pointer(&C.dword_587000_127004))
+		return (*uint32)(unsafe.Pointer(&legacyGlobals.dword_587000_127004))
 	case 5, 8:
 		return nil
 	default:

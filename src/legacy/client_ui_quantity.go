@@ -4,7 +4,7 @@ package legacy
 #include "defs.h"
 #include "noxstring.h"
 #include "GAME3_1.h"
-extern void *nox_gui_itemAmount_dialog_1319228, *nox_gui_itemAmount_item_1319256;
+
 */
 import "C"
 
@@ -21,8 +21,12 @@ import (
 	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
-func uiAmountWindow() *gui.Window       { return (*gui.Window)(C.nox_gui_itemAmount_dialog_1319228) }
-func uiAmountItem() *client.Drawable    { return (*client.Drawable)(C.nox_gui_itemAmount_item_1319256) }
+func uiAmountWindow() *gui.Window {
+	return (*gui.Window)(legacyGlobals.nox_gui_itemAmount_dialog_1319228)
+}
+func uiAmountItem() *client.Drawable {
+	return (*client.Drawable)(legacyGlobals.nox_gui_itemAmount_item_1319256)
+}
 func uiTradeTextAt(off uintptr) *uint16 { return (*uint16)(memmap.PtrOff(0x5D4594, off)) }
 func uiTradeStoreText(off uintptr, capacity int, text string) int {
 	return alloc.StrCopy16(unsafe.Slice(uiTradeTextAt(off), capacity), text)
@@ -47,7 +51,7 @@ func uiAmountToggle() {
 		if dr := uiAmountItem(); dr != nil {
 			GetClient().Nox_xxx_spriteDelete_45A4B0(dr)
 		}
-		C.nox_gui_itemAmount_item_1319256 = nil
+		legacyGlobals.nox_gui_itemAmount_item_1319256 = nil
 		dword_5d4594_1319268 = 0
 	} else {
 		uiWindowEnable(w, 1)
@@ -98,7 +102,7 @@ func uiAmountCancel() int {
 func uiAmountInit() int {
 	dword_5d4594_1319264 = 0
 	w := Nox_new_window_from_file("MultMove.wnd", uiInventoryWindowEvent(uiAmountPanel))
-	C.nox_gui_itemAmount_dialog_1319228 = w.C()
+	legacyGlobals.nox_gui_itemAmount_dialog_1319228 = w.C()
 	if w == nil {
 		return 0
 	}
@@ -173,9 +177,9 @@ func uiAmountFree() {
 	if dr := uiAmountItem(); dr != nil {
 		GetClient().Nox_xxx_spriteDelete_45A4B0(dr)
 	}
-	C.nox_gui_itemAmount_item_1319256 = nil
+	legacyGlobals.nox_gui_itemAmount_item_1319256 = nil
 	uiAmountWindow().Destroy()
-	C.nox_gui_itemAmount_dialog_1319228 = nil
+	legacyGlobals.nox_gui_itemAmount_dialog_1319228 = nil
 	dword_5d4594_1319232 = 0
 	dword_5d4594_1319236 = 0
 	dword_5d4594_1319264 = 0
@@ -189,7 +193,7 @@ func uiAmountShow(title *uint16, x, y int, code, typ uint32, mods unsafe.Pointer
 	if dword_5d4594_1319268 == 1 {
 		uiAmountToggle()
 	}
-	C.nox_gui_itemAmount_item_1319256 = dr.C()
+	legacyGlobals.nox_gui_itemAmount_item_1319256 = dr.C()
 	uiTradeSetText(uiAmountWindow().ChildByID(3606), title)
 	dr.ObjFlags |= 0x40000000
 	if mods != nil {

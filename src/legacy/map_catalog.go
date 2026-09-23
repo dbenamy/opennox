@@ -3,7 +3,7 @@ package legacy
 /*
 #include <stdlib.h>
 #include "defs.h"
-extern nox_list_item_t nox_common_maplist;
+
 */
 import "C"
 import (
@@ -19,7 +19,7 @@ import (
 )
 
 func mapCatalogFirst() *Nox_map_list_item {
-	return (*Nox_map_list_item)(unsafe.Pointer(listNext((*legacyListNode)(unsafe.Pointer(&C.nox_common_maplist)))))
+	return (*Nox_map_list_item)(unsafe.Pointer(listNext((*legacyListNode)(unsafe.Pointer(&legacyGlobals.nox_common_maplist)))))
 }
 func mapCatalogNext(p *Nox_map_list_item) *Nox_map_list_item {
 	if p == nil {
@@ -35,7 +35,7 @@ func mapCatalogAdd(p *Nox_map_list_item) {
 			return
 		}
 	}
-	listAppend((*legacyListNode)(unsafe.Pointer(&C.nox_common_maplist)), (*legacyListNode)(unsafe.Pointer(p)))
+	listAppend((*legacyListNode)(unsafe.Pointer(&legacyGlobals.nox_common_maplist)), (*legacyListNode)(unsafe.Pointer(p)))
 }
 func mapCatalogFree() {
 	for it := mapCatalogFirst(); it != nil; {

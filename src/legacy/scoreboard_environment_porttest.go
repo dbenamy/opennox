@@ -4,8 +4,8 @@ package legacy
 
 /*
 #include "defs.h"
-extern nox_window* dword_5d4594_1090048;
-extern nox_window* dword_5d4594_1090100;
+
+
 */
 import "C"
 import "unsafe"
@@ -18,8 +18,8 @@ func PortTestScoreboardWords() (map[string]*uint32, func()) {
 		"dword_587000_145672":       (*uint32)(unsafe.Pointer(&dword_587000_145672)),
 		"dword_5d4594_1090040":      (*uint32)(unsafe.Pointer(&dword_5d4594_1090040)),
 		"dword_5d4594_1090044":      (*uint32)(unsafe.Pointer(&dword_5d4594_1090044)),
-		"dword_5d4594_1090048":      (*uint32)(unsafe.Pointer(&C.dword_5d4594_1090048)),
-		"dword_5d4594_1090100":      (*uint32)(unsafe.Pointer(&C.dword_5d4594_1090100)),
+		"dword_5d4594_1090048":      (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1090048)),
+		"dword_5d4594_1090100":      (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1090100)),
 		"dword_5d4594_1090108":      (*uint32)(unsafe.Pointer(&dword_5d4594_1090108)),
 		"dword_5d4594_1090112":      (*uint32)(unsafe.Pointer(&dword_5d4594_1090112)),
 		"dword_5d4594_1090120":      (*uint32)(unsafe.Pointer(&dword_5d4594_1090120)),

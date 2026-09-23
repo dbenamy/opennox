@@ -4,7 +4,7 @@ package legacy
 #include <stdint.h>
 
 extern uint32_t dword_5d4594_816356;
-extern void* dword_587000_81128;
+
 */
 import "C"
 
@@ -30,7 +30,7 @@ func initMusic() {
 		dword_587000_93160       *uint32            = (*uint32)(&dword_587000_93160)
 		dword_5d4594_816340      *uint32            = (*uint32)(&dword_5d4594_816340)
 		counter_5d4594_816244    *timer.TimerGroup  = memmap.PtrT[timer.TimerGroup](0x5d4594, 816244)
-		ptr_counter_587000_81128 **timer.TimerGroup = (**timer.TimerGroup)(unsafe.Pointer(&C.dword_587000_81128))
+		ptr_counter_587000_81128 **timer.TimerGroup = (**timer.TimerGroup)(unsafe.Pointer(&legacyGlobals.dword_587000_81128))
 		dword_5d4594_816348      *uint32            = (*uint32)(&dword_5d4594_816348)
 	)
 	MusicModule = music.NewModule(

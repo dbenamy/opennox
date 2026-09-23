@@ -2,7 +2,7 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint8_t** nox_pixbuffer_rows_3798784;
+
 */
 import "C"
 import (
@@ -104,7 +104,7 @@ func wallEdgeDraw(handle noxrender.ImageHandle, pos image.Point, first, second *
 	if height == 0 {
 		return
 	}
-	rows := unsafe.Slice((*unsafe.Pointer)(unsafe.Pointer(C.nox_pixbuffer_rows_3798784)), pos.Y+1)
+	rows := unsafe.Slice((*unsafe.Pointer)(unsafe.Pointer(legacyGlobals.nox_pixbuffer_rows_3798784)), pos.Y+1)
 	dst := unsafe.Add(rows[pos.Y], 2*(pos.X+extra))
 	pitch := Nox_getBackbufferPitch()
 	parity := Sub_473970(image.Pt(0, pos.Y)).Y

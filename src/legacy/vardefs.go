@@ -3,24 +3,24 @@ package legacy
 /*
 #include "defs.h"
 #include "server__script__internal.h"
-extern void* nox_xxx_aClosewoodengat_587000_133480;
-extern uint32_t dword_5d4594_831236;
-extern uint32_t dword_5d4594_1309720;
-extern void* dword_587000_127004;
-extern void* nox_alloc_tradeItems_2386496;
-extern void* dword_587000_93164;
-extern void* nox_alloc_screenParticles_806044;
-extern void* dword_587000_122852;
-extern void* dword_587000_81128;
+
+
+
+
+
+
+
+
+
 
 extern uint32_t dword_5d4594_251720;
 extern uint32_t dword_5d4594_816356;
-extern void* nox_alloc_monsterList_2386220;
-extern void* nox_alloc_tradeSession_2386492;
+
+
 extern uint32_t dword_5d4594_251716;
 extern uint32_t dword_5d4594_251708;
-extern void* nox_alloc_spawn_2386216;
-extern void* nox_alloc_magicEnt_1569668;
+
+
 extern uint32_t dword_5d4594_3804684;
 extern uint32_t dword_5d4594_251712;
 extern uint32_t dword_5d4594_1200796;
@@ -28,31 +28,31 @@ extern uint32_t dword_587000_234176;
 extern uint32_t dword_5d4594_1563276;
 extern uint32_t dword_5d4594_1200776;
 extern uint32_t dword_5d4594_1599688;
-extern void* dword_5d4594_1548532;
+
 extern uint32_t dword_5d4594_1599708;
-extern uint32_t array_5D4594_1049872[9];
 
-extern nox_window* dword_5d4594_1321236;
-extern nox_window* dword_5d4594_1321240;
-extern nox_window* dword_5d4594_1321248;
-extern nox_window* dword_5d4594_1321244;
 
-extern nox_window* dword_5d4594_1522616;
-extern nox_window* dword_5d4594_1522620;
-extern nox_window* dword_5d4594_1522624;
-extern nox_window* dword_5d4594_1522628;
-extern nox_window* dword_5d4594_1062452;
 
-extern nox_window* dword_5d4594_1090048;
-extern nox_window* dword_5d4594_1090100;
+
+
+
+
+
+
+
+
+
+
+
+
 extern unsigned int dword_5d4594_811904;
-extern void* dword_5d4594_1548532;
 
-extern void* dword_5d4594_830232;
-extern void* dword_5d4594_830236;
-extern nox_screenParticle* dword_5d4594_806052;
-extern nox_screenParticle* nox_screenParticles_head;
-extern void* nox_alloc_screenParticles_806044;
+
+
+
+
+
+
 extern nox_window* dword_5d4594_1082856;
 extern void* dword_5d4594_1082864;
 extern void* dword_5d4594_1082868;
@@ -63,13 +63,13 @@ extern unsigned int dword_5d4594_1064868;
 
 
 
-extern void* nox_video_tileBuf_ptr_3798796;
-extern void* nox_video_tileBuf_end_3798844;
 
 
-extern uint8_t** nox_pixbuffer_rows_3798784;
 
-extern nox_render_data_t* nox_draw_curDrawData_3799572;
+
+
+
+
 */
 import "C"
 import (
@@ -126,10 +126,10 @@ func Get_dword_5d4594_528260() int {
 	return int(onlineRetryDeadline)
 }
 func Get_dword_587000_122852() unsafe.Pointer {
-	return C.dword_587000_122852
+	return legacyGlobals.dword_587000_122852
 }
 func Get_dword_587000_93164() unsafe.Pointer {
-	return C.dword_587000_93164
+	return legacyGlobals.dword_587000_93164
 }
 func Get_nox_client_translucentFrontWalls_805844() int {
 	return int(nox_client_translucentFrontWalls_805844)
@@ -201,13 +201,13 @@ func Get_dword_5d4594_2660032() int {
 	return int(dword_5d4594_2660032)
 }
 func Get_dword_5d4594_1090048() *gui.Window {
-	return asWindow(C.dword_5d4594_1090048)
+	return asWindow(legacyGlobals.dword_5d4594_1090048)
 }
 func Get_dword_5d4594_1090120() int {
 	return int(dword_5d4594_1090120)
 }
 func Get_dword_5d4594_1090100() *gui.Window {
-	return asWindow(C.dword_5d4594_1090100)
+	return AsWindowP(unsafe.Pointer(uintptr(legacyGlobals.dword_5d4594_1090100)))
 }
 func Get_dword_5d4594_814624() unsafe.Pointer {
 	return browserUI.selected
@@ -264,16 +264,16 @@ func Get_dword_5d4594_527988() int {
 	return int(onlineSessionStatus)
 }
 func Get_nox_alloc_screenParticles_806044() unsafe.Pointer {
-	return C.nox_alloc_screenParticles_806044
+	return legacyGlobals.nox_alloc_screenParticles_806044
 }
 func Get_dword_5d4594_251744() int {
 	return int(dword_5d4594_251744)
 }
 func Get_dword_5d4594_830236() *gui.Window {
-	return AsWindowP(C.dword_5d4594_830236)
+	return AsWindowP(legacyGlobals.dword_5d4594_830236)
 }
 func Get_dword_5d4594_830232() *gui.Window {
-	return AsWindowP(C.dword_5d4594_830232)
+	return AsWindowP(legacyGlobals.dword_5d4594_830232)
 }
 func Get_dword_5d4594_831260() int {
 	return int(dword_5d4594_831260)
@@ -339,7 +339,7 @@ func Get_dword_5d4594_823776() int {
 	return int(dword_5d4594_823776)
 }
 func Get_dword_5d4594_831236() *gui.Window {
-	return AsWindowP(unsafe.Pointer(uintptr(C.dword_5d4594_831236)))
+	return AsWindowP(unsafe.Pointer(uintptr(legacyGlobals.dword_5d4594_831236)))
 }
 func Get_dword_5d4594_1049844() int {
 	return int(dword_5d4594_1049844)
@@ -348,31 +348,31 @@ func Get_dword_5d4594_3799452() int {
 	return int(dword_5d4594_3799452)
 }
 func Get_dword_5d4594_1321236() *gui.Window {
-	return asWindow(C.dword_5d4594_1321236)
+	return asWindow(legacyGlobals.dword_5d4594_1321236)
 }
 func Get_dword_5d4594_1321240() *gui.Window {
-	return asWindow(C.dword_5d4594_1321240)
+	return asWindow(legacyGlobals.dword_5d4594_1321240)
 }
 func Get_dword_5d4594_1321244() *gui.Window {
-	return asWindow(C.dword_5d4594_1321244)
+	return asWindow(legacyGlobals.dword_5d4594_1321244)
 }
 func Get_dword_5d4594_1321248() *gui.Window {
-	return asWindow(C.dword_5d4594_1321248)
+	return asWindow(legacyGlobals.dword_5d4594_1321248)
 }
 func Get_dword_5d4594_1522616() *gui.Window {
-	return asWindow(C.dword_5d4594_1522616)
+	return asWindow(legacyGlobals.dword_5d4594_1522616)
 }
 func Get_dword_5d4594_1522620() *gui.Window {
-	return asWindow(C.dword_5d4594_1522620)
+	return asWindow(legacyGlobals.dword_5d4594_1522620)
 }
 func Get_dword_5d4594_1522624() *gui.Window {
-	return asWindow(C.dword_5d4594_1522624)
+	return asWindow(legacyGlobals.dword_5d4594_1522624)
 }
 func Get_dword_5d4594_1522628() *gui.Window {
-	return asWindow(C.dword_5d4594_1522628)
+	return asWindow(legacyGlobals.dword_5d4594_1522628)
 }
 func Get_dword_5d4594_1062452() *gui.Window {
-	return asWindow(C.dword_5d4594_1062452)
+	return asWindow(legacyGlobals.dword_5d4594_1062452)
 }
 func Get_dword_5d4594_2516356() int {
 	return int(dword_5d4594_2516356)
@@ -384,7 +384,7 @@ func Get_dword_587000_155144() unsafe.Pointer {
 	return unsafe.Pointer(audioStreamRoot())
 }
 func Get_nox_alloc_magicEnt_1569668() unsafe.Pointer {
-	return C.nox_alloc_magicEnt_1569668
+	return legacyGlobals.nox_alloc_magicEnt_1569668
 }
 func Get_nox_client_gui_flag_1556112() int {
 	return int(nox_client_gui_flag_1556112)
@@ -468,16 +468,16 @@ func Set_dword_5d4594_10984(v int) {
 	onlineConnectionFailed = uint32(v)
 }
 func Set_nox_alloc_screenParticles_806044(v unsafe.Pointer) {
-	C.nox_alloc_screenParticles_806044 = v
+	legacyGlobals.nox_alloc_screenParticles_806044 = v
 }
 func Set_nox_screenParticles_head(v unsafe.Pointer) {
-	C.nox_screenParticles_head = (*C.nox_screenParticle)(v)
+	legacyGlobals.nox_screenParticles_head = (*C.nox_screenParticle)(v)
 }
 func Set_dword_5d4594_806052(v unsafe.Pointer) {
-	C.dword_5d4594_806052 = (*C.nox_screenParticle)(v)
+	legacyGlobals.dword_5d4594_806052 = (*C.nox_screenParticle)(v)
 }
 func Set_dword_5d4594_830236(v unsafe.Pointer) {
-	C.dword_5d4594_830236 = v
+	legacyGlobals.dword_5d4594_830236 = v
 }
 func Set_nox_gameDisableMapDraw_5d4594_2650672(v int) {
 	nox_gameDisableMapDraw_5d4594_2650672 = C.uint(v)
@@ -498,7 +498,7 @@ func Set_dword_5d4594_823776(v int) {
 	dword_5d4594_823776 = C.uint(v)
 }
 func Set_nox_draw_curDrawData_3799572(v *noxrender.RenderData) {
-	C.nox_draw_curDrawData_3799572 = (*nox_render_data_t)(v.C())
+	legacyGlobals.nox_draw_curDrawData_3799572 = (*nox_render_data_t)(v.C())
 }
 func Set_nox_color_black_2650656(v uint32) {
 	nox_color_black_2650656 = C.uint(v)
@@ -531,7 +531,7 @@ func Set_dword_5d4594_1305748(v int) {
 	dword_5d4594_1305748 = C.uint(v)
 }
 func Set_nox_pixbuffer_rows_3798784(v unsafe.Pointer) {
-	C.nox_pixbuffer_rows_3798784 = (**C.uchar)(v)
+	legacyGlobals.nox_pixbuffer_rows_3798784 = (**C.uchar)(v)
 }
 func Set_dword_5d4594_1193188(v int) {
 	dword_5d4594_1193188 = C.uint(v)
@@ -579,10 +579,10 @@ func Set_dword_5d4594_3798840(v int) {
 	dword_5d4594_3798840 = C.uint(v)
 }
 func Set_nox_video_tileBuf_ptr_3798796(v unsafe.Pointer) {
-	C.nox_video_tileBuf_ptr_3798796 = v
+	legacyGlobals.nox_video_tileBuf_ptr_3798796 = v
 }
 func Set_nox_video_tileBuf_end_3798844(v unsafe.Pointer) {
-	C.nox_video_tileBuf_end_3798844 = v
+	legacyGlobals.nox_video_tileBuf_end_3798844 = v
 }
 func Set_dword_5d4594_3799452(v int) {
 	dword_5d4594_3799452 = C.uint(v)
@@ -612,7 +612,7 @@ func Set_dword_5d4594_2489460(v int) {
 	dword_5d4594_2489460 = C.uint(v)
 }
 func Set_dword_5d4594_1548532(v unsafe.Pointer) {
-	C.dword_5d4594_1548532 = v
+	legacyGlobals.dword_5d4594_1548532 = v
 }
 func Set_dword_5d4594_831260(v int) {
 	dword_5d4594_831260 = C.uint(v)
@@ -672,7 +672,7 @@ func Set_dword_5d4594_1200832(v int) {
 	dword_5d4594_1200832 = C.uint(v)
 }
 func Set_nox_alloc_magicEnt_1569668(v unsafe.Pointer) {
-	C.nox_alloc_magicEnt_1569668 = v
+	legacyGlobals.nox_alloc_magicEnt_1569668 = v
 }
 func Set_dword_5d4594_1569672(v int) {
 	dword_5d4594_1569672 = C.uint(v)

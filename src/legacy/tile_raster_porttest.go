@@ -4,8 +4,8 @@ package legacy
 
 /*
 #include "GAME2_2.h"
-extern void* nox_video_tileBuf_ptr_3798796;
-extern void* nox_video_tileBuf_end_3798844;
+
+
 */
 import "C"
 import (
@@ -37,14 +37,14 @@ func PortTestTileRasterOwner() (map[string]*uint32, []server.TileDef, func()) {
 	}
 	defs, _, _, _, _ := portTestTilePtrs()
 	savedDefs := append([]byte(nil), tileBytes(defs)...)
-	begin, end := C.nox_video_tileBuf_ptr_3798796, C.nox_video_tileBuf_end_3798844
+	begin, end := legacyGlobals.nox_video_tileBuf_ptr_3798796, legacyGlobals.nox_video_tileBuf_end_3798844
 	draw, edges := tileDrawCallback, tileEdgeCallback
 	return words, defs, func() {
 		for n, p := range words {
 			*p = old[n]
 		}
 		copy(tileBytes(defs), savedDefs)
-		C.nox_video_tileBuf_ptr_3798796, C.nox_video_tileBuf_end_3798844 = begin, end
+		legacyGlobals.nox_video_tileBuf_ptr_3798796, legacyGlobals.nox_video_tileBuf_end_3798844 = begin, end
 		tileDrawCallback, tileEdgeCallback = draw, edges
 	}
 }

@@ -4,7 +4,7 @@ package legacy
 #include "defs.h"
 #include "GAME2.h"
 #include "client__gui__guibook.h"
-extern nox_window* nox_win_unk1;
+
 int nox_xxx_bookClickSpell_45B1F0();
 int nox_xxx_book_45CF00(uint32_t*);
 */
@@ -50,7 +50,7 @@ func bookInit() int {
 	g := GetClient().Cli().GUI
 	drawOne := func(*gui.Window, *gui.WindowData) int { return 1 }
 	root := g.NewWindowRaw(nil, 1196, 5, int(nox_win_height)-323, 285, 168, nil)
-	C.nox_win_unk1 = (*C.nox_window)(root.C())
+	legacyGlobals.nox_win_unk1 = (*C.nox_window)(root.C())
 	root.SetAllFuncs(bookEvent(func(w *gui.Window, e, a uint32) int { return bookListEvents(w, e, bookPoint(a)) }), func(w *gui.Window, _ *gui.WindowData) int { return bookDrawList(w) }, nil)
 	bookHideWindow(root, true)
 	for _, tab := range []struct{ x, y, id int }{{257, 15, 1320}, {253, 61, 1310}} {

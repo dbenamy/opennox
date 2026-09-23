@@ -4,7 +4,7 @@ package legacy
 #include <stdint.h>
 #include "GAME2.h"
 #include "client__audio__audevent.h"
-extern void* dword_587000_127004;
+
 */
 import "C"
 import (
@@ -36,8 +36,10 @@ func audioEventPool() *unsafe.Pointer {
 func audioEventContext() *audioStreamContext {
 	return (*audioStreamContext)(unsafe.Pointer(uintptr(*audioEventContextWord)))
 }
-func audioEventGlobalTimers() *timer.TimerGroup { return (*timer.TimerGroup)(C.dword_587000_127004) }
-func audioEventRoot() *legacyListNode           { return (*legacyListNode)(memmap.PtrOff(0x5D4594, 840612)) }
+func audioEventGlobalTimers() *timer.TimerGroup {
+	return (*timer.TimerGroup)(legacyGlobals.dword_587000_127004)
+}
+func audioEventRoot() *legacyListNode { return (*legacyListNode)(memmap.PtrOff(0x5D4594, 840612)) }
 func audioEventContextTimers() *timer.TimerGroup {
 	return (*timer.TimerGroup)(memmap.PtrOff(0x5D4594, 1045228))
 }

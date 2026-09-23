@@ -6,7 +6,7 @@ package legacy
 #include "GAME1_2.h"
 #include "GAME2_3.h"
 #include "GAME3_1.h"
-extern nox_render_data_t* nox_draw_curDrawData_3799572;
+
 */
 import "C"
 import "unsafe"

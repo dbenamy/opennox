@@ -3,8 +3,8 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME2_1.h"
-extern nox_window* nox_win_unk5;
-extern nox_window* dword_5d4594_1062452;
+
+
 */
 import "C"
 
@@ -46,7 +46,7 @@ func sub_4674A0() int { return int(dword_5d4594_1062552) }
 
 //export nox_window_set_visible_unk5
 func nox_window_set_visible_unk5(v int) {
-	uiMeterHide((*gui.Window)(unsafe.Pointer(C.nox_win_unk5)), v == 0)
+	uiMeterHide((*gui.Window)(unsafe.Pointer(legacyGlobals.nox_win_unk5)), v == 0)
 }
 func uiInventoryUsePotion(typ uint32) {
 	if memmap.Uint32(0x5D4594, 1096672) == 1 || noxflags.HasGame(noxflags.GamePause) {
@@ -91,7 +91,7 @@ func sub_467680() {
 }
 
 //export nox_xxx_wndGetHandle_4676A0
-func nox_xxx_wndGetHandle_4676A0() *C.nox_window { return C.dword_5d4594_1062452 }
+func nox_xxx_wndGetHandle_4676A0() *C.nox_window { return legacyGlobals.dword_5d4594_1062452 }
 
 func sub_467740(v int) int { dword_5d4594_1062488 = C.uint32_t(v); return v }
 

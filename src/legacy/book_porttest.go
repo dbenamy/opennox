@@ -6,7 +6,7 @@ package legacy
 #include "defs.h"
 #include "GAME2.h"
 #include "client__gui__guibook.h"
-extern nox_window* nox_win_unk1;
+
 void nox_client_toggleSpellbook_45AC70();
 int nox_xxx_bookHideMB_45ACA0(int a1);
 int nox_xxx_bookClickSpell_45B1F0();
@@ -152,7 +152,7 @@ func PortTestBookCallbacks() map[string]unsafe.Pointer {
 }
 func PortTestBookWords() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
-		"nox_win_unk1":                     (*uint32)(unsafe.Pointer(&C.nox_win_unk1)),
+		"nox_win_unk1":                     (*uint32)(unsafe.Pointer(&legacyGlobals.nox_win_unk1)),
 		"nox_xxx_aNox_cfg_0_587000_132136": (*uint32)(unsafe.Pointer(&nox_xxx_aNox_cfg_0_587000_132136)),
 		"nox_player_netCode_85319C":        (*uint32)(unsafe.Pointer(&nox_player_netCode_85319C)),
 		"nox_win_width":                    (*uint32)(unsafe.Pointer(&nox_win_width)),

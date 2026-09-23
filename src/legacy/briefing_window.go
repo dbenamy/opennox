@@ -2,7 +2,7 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t dword_5d4594_831236;
+
 */
 import "C"
 
@@ -20,7 +20,7 @@ import (
 )
 
 func briefingParent() *gui.Window {
-	return (*gui.Window)(unsafe.Pointer(uintptr(C.dword_5d4594_831236)))
+	return (*gui.Window)(unsafe.Pointer(uintptr(legacyGlobals.dword_5d4594_831236)))
 }
 func briefingWindow() *gui.Window {
 	return (*gui.Window)(unsafe.Pointer(uintptr(nox_wnd_briefing_831232)))
@@ -53,7 +53,7 @@ func briefingCreateWindow() *gui.Window {
 	*memmap.PtrUint32(0x5D4594, 831284) = uint32(ox)
 	*memmap.PtrUint32(0x5D4594, 831288) = uint32(oy)
 	parent := GetClient().Cli().GUI.NewWindowRaw(nil, 56, 0, 0, int(nox_win_width), int(nox_win_height), briefingEvent(briefingBackgroundEvent))
-	C.dword_5d4594_831236 = C.uint32_t(uintptr(parent.C()))
+	legacyGlobals.dword_5d4594_831236 = C.uint32_t(uintptr(parent.C()))
 	if parent == nil {
 		return nil
 	}
@@ -250,7 +250,7 @@ func briefingShow(chapter, begin int, mode byte) int {
 func briefingDestroy() int {
 	if w := briefingParent(); w != nil {
 		w.Destroy()
-		C.dword_5d4594_831236 = 0
+		legacyGlobals.dword_5d4594_831236 = 0
 		nox_wnd_briefing_831232 = 0
 	}
 	dword_5d4594_831260 = 0

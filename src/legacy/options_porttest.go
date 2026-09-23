@@ -5,12 +5,12 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME3.h"
-extern nox_gui_animation* nox_wnd_xxx_1309740;
+
 int nox_porttest_options_done();
-extern void* dword_5d4594_1309720;
-extern void* dword_587000_127004;
-extern void* dword_587000_122852;
-extern void* dword_587000_93164;
+
+
+
+
 
 */
 import "C"
@@ -30,7 +30,7 @@ func PortTestOptionsEvent(menu bool, root *gui.Window, event int, child *gui.Win
 func PortTestOptionsWords() (map[int]*uint32, func()) {
 	words := map[int]*uint32{
 		172880:  (*uint32)(unsafe.Pointer(&nox_xxx_normalWndBits_587000_172880)),
-		1309720: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309720)),
+		1309720: (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1309720)),
 		1309728: (*uint32)(unsafe.Pointer(&dword_5d4594_1309728)),
 		1309732: (*uint32)(unsafe.Pointer(&dword_5d4594_1309732)),
 		1309736: (*uint32)(unsafe.Pointer(&dword_5d4594_1309736)),
@@ -57,7 +57,7 @@ func PortTestOptionsWords() (map[int]*uint32, func()) {
 	}
 }
 func PortTestOptionsTimers() ([3]*timer.Timer, func()) {
-	slots := [3]*unsafe.Pointer{&C.dword_587000_127004, &C.dword_587000_122852, &C.dword_587000_93164}
+	slots := [3]*unsafe.Pointer{&legacyGlobals.dword_587000_127004, &legacyGlobals.dword_587000_122852, &legacyGlobals.dword_587000_93164}
 	var old [3]unsafe.Pointer
 	var out [3]*timer.Timer
 	var frees [3]func()
@@ -98,7 +98,9 @@ func PortTestOptionsAction(op, arg int) int {
 	panic(op)
 }
 func PortTestOptionsDraw(w *gui.Window) int { return optionsOverlayDraw(w, w.DrawData()) }
-func PortTestOptionsAnimWord() *uint32      { return (*uint32)(unsafe.Pointer(&C.nox_wnd_xxx_1309740)) }
+func PortTestOptionsAnimWord() *uint32 {
+	return (*uint32)(unsafe.Pointer(&legacyGlobals.nox_wnd_xxx_1309740))
+}
 
 var portTestOptionsDoneCount int
 

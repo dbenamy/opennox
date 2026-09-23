@@ -6,7 +6,7 @@ package legacy
 #include <stdint.h>
 #include <string.h>
 #include "GAME4.h"
-extern void* nox_alloc_magicEnt_1569668;
+
 unsigned short sub_4FD030(int a1, short a2);
 void nox_xxx_collide_4FDF90(int a1, int a2);
 int nox_xxx_spellGetPhoneme_4FE1C0(int a1, char a2);
@@ -100,8 +100,8 @@ func (p *portTestShopPools) spellLifePrepare() func() {
 	}
 	st := &portTestSpellLifecycle{magicType: uint16(p.proxy.core.Types.IndByID("Magic")), record: p.objectiveRegion(160), pool: alloc.NewClass("portSpellBook", 60, 64)}
 	p.temporary.world.objectives.attack.controls.spellLifecycle = st
-	oldPool, oldHead := C.nox_alloc_magicEnt_1569668, dword_5d4594_1569672
-	C.nox_alloc_magicEnt_1569668 = st.pool.UPtr()
+	oldPool, oldHead := legacyGlobals.nox_alloc_magicEnt_1569668, dword_5d4594_1569672
+	legacyGlobals.nox_alloc_magicEnt_1569668 = st.pool.UPtr()
 	dword_5d4594_1569672 = 0
 	oldCaches := make([]uint32, 18)
 	for i := range oldCaches {
@@ -148,7 +148,7 @@ func (p *portTestShopPools) spellLifePrepare() func() {
 		GetClient = oldClient
 		restore()
 		st.pool.Free()
-		C.nox_alloc_magicEnt_1569668 = oldPool
+		legacyGlobals.nox_alloc_magicEnt_1569668 = oldPool
 		dword_5d4594_1569672 = oldHead
 		for i, v := range oldCaches {
 			*memmap.PtrUint32(0x5d4594, uintptr(1569676+4*i)) = v

@@ -4,12 +4,12 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t dword_5d4594_831236;
-extern void* dword_5d4594_805984;
-extern nox_window* nox_win_unk1;
-extern nox_screenParticle* nox_screenParticles_head;
-extern nox_screenParticle* dword_5d4594_806052;
-extern void* nox_alloc_screenParticles_806044;
+
+
+
+
+
+
 */
 import "C"
 import "unsafe"
@@ -18,11 +18,11 @@ func PortTestBriefingWords() (map[string]*uint32, func()) {
 	m := map[string]*uint32{
 		"dword_5d4594_826028":              (*uint32)(unsafe.Pointer(&sessionMOTDRoot)),
 		"dword_5d4594_826032":              (*uint32)(unsafe.Pointer(&sessionMOTDList)),
-		"dword_5d4594_805984":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_805984)),
-		"nox_win_unk1":                     (*uint32)(unsafe.Pointer(&C.nox_win_unk1)),
-		"nox_screenParticles_head":         (*uint32)(unsafe.Pointer(&C.nox_screenParticles_head)),
-		"dword_5d4594_806052":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_806052)),
-		"nox_alloc_screenParticles_806044": (*uint32)(unsafe.Pointer(&C.nox_alloc_screenParticles_806044)),
+		"dword_5d4594_805984":              (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_805984)),
+		"nox_win_unk1":                     (*uint32)(unsafe.Pointer(&legacyGlobals.nox_win_unk1)),
+		"nox_screenParticles_head":         (*uint32)(unsafe.Pointer(&legacyGlobals.nox_screenParticles_head)),
+		"dword_5d4594_806052":              (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_806052)),
+		"nox_alloc_screenParticles_806044": (*uint32)(unsafe.Pointer(&legacyGlobals.nox_alloc_screenParticles_806044)),
 		"dword_5d4594_1046864":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046864)),
 		"dword_5d4594_1046868":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046868)),
 		"dword_5d4594_1046872":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046872)),
@@ -48,7 +48,7 @@ func PortTestBriefingWords() (map[string]*uint32, func()) {
 		"nox_wnd_briefing_831232":               (*uint32)(&nox_wnd_briefing_831232),
 		"dword_5d4594_832476":                   (*uint32)(&dword_5d4594_832476),
 		"dword_5d4594_832484":                   (*uint32)(&dword_5d4594_832484),
-		"dword_5d4594_831236":                   (*uint32)(&C.dword_5d4594_831236),
+		"dword_5d4594_831236":                   (*uint32)(&legacyGlobals.dword_5d4594_831236),
 		"dword_5d4594_831220":                   (*uint32)(&dword_5d4594_831220),
 		"dword_5d4594_831224":                   (*uint32)(&dword_5d4594_831224),
 		"dword_5d4594_831240":                   (*uint32)(&dword_5d4594_831240),

@@ -3,8 +3,8 @@ package legacy
 /*
 #include "GAME3_3.h" // retained inventory insertion
 #include "GAME4_1.h"
-extern void* nox_alloc_spawn_2386216;
-extern void* nox_alloc_monsterList_2386220;
+
+
 */
 import "C"
 
@@ -38,10 +38,10 @@ var _ = [1]struct{}{}[12-unsafe.Sizeof(spawnPolicyNode{})]
 var _ = [1]struct{}{}[148-unsafe.Sizeof(spawnPolicyMonsterListNode{})]
 
 func spawnPolicySpawnClass() *alloc.Class {
-	return alloc.AsClass(unsafe.Pointer(C.nox_alloc_spawn_2386216))
+	return alloc.AsClass(unsafe.Pointer(legacyGlobals.nox_alloc_spawn_2386216))
 }
 func spawnPolicyMonsterListClass() *alloc.Class {
-	return alloc.AsClass(unsafe.Pointer(C.nox_alloc_monsterList_2386220))
+	return alloc.AsClass(unsafe.Pointer(legacyGlobals.nox_alloc_monsterList_2386220))
 }
 func spawnPolicyHead() *spawnPolicyNode {
 	return (*spawnPolicyNode)(unsafe.Pointer(uintptr(dword_5d4594_2386212)))
@@ -54,14 +54,14 @@ func spawnPolicySetHead(p *spawnPolicyNode) {
 // SpawnClass installed if allocation of MonsterListClass fails, matching C.
 func spawnPolicyInit() int {
 	spawn := alloc.NewClass("SpawnClass", unsafe.Sizeof(spawnPolicyNode{}), 96)
-	C.nox_alloc_spawn_2386216 = spawn.UPtr()
+	legacyGlobals.nox_alloc_spawn_2386216 = spawn.UPtr()
 	if spawn == nil {
 		return 0
 	}
 	dword_5d4594_2386212 = 0
 
 	list := alloc.NewClass("MonsterListClass", unsafe.Sizeof(spawnPolicyMonsterListNode{}), 96)
-	C.nox_alloc_monsterList_2386220 = list.UPtr()
+	legacyGlobals.nox_alloc_monsterList_2386220 = list.UPtr()
 	if list == nil {
 		return 0
 	}
@@ -83,10 +83,10 @@ func spawnPolicyReset() {
 // spawnPolicyFree releases both classes and clears their globals.
 func spawnPolicyFree() {
 	spawnPolicySpawnClass().Free()
-	C.nox_alloc_spawn_2386216 = nil
+	legacyGlobals.nox_alloc_spawn_2386216 = nil
 	dword_5d4594_2386212 = 0
 	spawnPolicyMonsterListClass().Free()
-	C.nox_alloc_monsterList_2386220 = nil
+	legacyGlobals.nox_alloc_monsterList_2386220 = nil
 	dword_5d4594_2386224 = 0
 	dword_5d4594_2386228 = 0
 }

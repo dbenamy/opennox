@@ -2,7 +2,7 @@ package legacy
 
 /*
 #include "defs.h"
-extern nox_list_item_t nox_common_maplist;
+
 void nox_common_scanAddMap(char* filename);
 */
 import "C"
@@ -22,7 +22,7 @@ type Nox_map_list_item struct {
 }
 
 func Get_nox_common_maplist() unsafe.Pointer {
-	return unsafe.Pointer(&C.nox_common_maplist)
+	return unsafe.Pointer(&legacyGlobals.nox_common_maplist)
 }
 
 func Nox_common_maplist_add_4D0760(p *Nox_map_list_item) {

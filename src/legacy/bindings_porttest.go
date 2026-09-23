@@ -4,18 +4,18 @@ package legacy
 
 /*
 #include "defs.h"
-extern nox_gui_animation* nox_wnd_xxx_1522608;
+
 #include "GAME3_1.h"
 #include "client__gui__guiinput.h"
 #include "client__shell__inputcfg__inputcfg.h"
-extern nox_window* dword_5d4594_1321236;
-extern nox_window* dword_5d4594_1321240;
-extern nox_window* dword_5d4594_1321244;
-extern nox_window* dword_5d4594_1321248;
-extern nox_window* dword_5d4594_1522616;
-extern nox_window* dword_5d4594_1522620;
-extern nox_window* dword_5d4594_1522624;
-extern nox_window* dword_5d4594_1522628;
+
+
+
+
+
+
+
+
 */
 import "C"
 import "unsafe"
@@ -27,17 +27,17 @@ func PortTestBindingWords() (map[int]*uint32, func()) {
 		1321224: (*uint32)(unsafe.Pointer(&dword_5d4594_1321224)),
 		1321228: (*uint32)(unsafe.Pointer(&dword_5d4594_1321228)),
 		1321232: (*uint32)(unsafe.Pointer(&dword_5d4594_1321232)),
-		1321236: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321236)),
-		1321240: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321240)),
-		1321244: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321244)),
-		1321248: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321248)),
+		1321236: (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1321236)),
+		1321240: (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1321240)),
+		1321244: (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1321244)),
+		1321248: (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1321248)),
 		1321252: (*uint32)(unsafe.Pointer(&dword_5d4594_1321252)),
 		1522604: (*uint32)(unsafe.Pointer(&dword_5d4594_1522604)),
 		1522612: (*uint32)(unsafe.Pointer(&dword_5d4594_1522612)),
-		1522616: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1522616)),
-		1522620: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1522620)),
-		1522624: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1522624)),
-		1522628: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1522628)),
+		1522616: (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1522616)),
+		1522620: (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1522620)),
+		1522624: (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1522624)),
+		1522628: (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1522628)),
 		1522632: (*uint32)(unsafe.Pointer(&dword_5d4594_1522632)),
 	}
 	old := make(map[int]uint32)
@@ -98,4 +98,6 @@ func PortTestBindingInvoke(op string, a [4]uint32) uint32 {
 	}
 }
 
-func PortTestBindingAnimationWord() *uint32 { return (*uint32)(unsafe.Pointer(&C.nox_wnd_xxx_1522608)) }
+func PortTestBindingAnimationWord() *uint32 {
+	return (*uint32)(unsafe.Pointer(&legacyGlobals.nox_wnd_xxx_1522608))
+}

@@ -1,9 +1,8 @@
 # Remaining global and mapped-buffer storage
 
-Status: actual-C storage baseline qualified together with the audio address
-correction. C remains 114 physical lines /6 files, zero reference C. No remaining
-storage migration is applied. Fresh production evidence comes from the corrected
-source, superseding the initial production-reuse plan.
+Status: native conversion qualified against pushed baseline `781901ef`. C is now
+51 physical lines in 4 files (−63), zero reference C. The underlying foreign
+allocator and libc/CGO dependencies remain.
 
 ## Scope and memory ownership
 
@@ -102,3 +101,46 @@ The existing 395-owner capture also remains unchanged. The successful acceptance
 manifest is [audio-address-native-batch.json](audio-address-native-batch.json),
 which includes all three independent contracts and the broad consumer sweep.
 See [raw-storage-c-qualification.json](raw-storage-c-qualification.json).
+
+## Native implementation and review
+
+One process-lifetime foreign record owns the 44 original field types and array
+dimensions. Eight foreign byte slices retain the original extents and registry
+addresses. The conversion removes vardefs.c and cgo_blobs.c, 52 C storage symbols,
+and 217 extern declarations. The canonical integer words used by pointer getters
+are converted explicitly at the getter boundary.
+
+Independent source review matches all field types, dimensions, zero initialization,
+buffer sizes and logical registrations to committed C. AST comparison verifies 59
+files differ only by owner selectors (ignoring C declarations); five Go files with
+larger changes receive separate review. No retired names remain in C preambles.
+Direct extent checks find the expected 84-cell and nine-word array views, with no
+direct owner adjacency dependency in the expressions inspected. Compilation and
+full native qualification pass; frozen captures are unchanged.
+
+## Qualified native result
+
+The first compiled probe passes all three legacy contracts. The final default,
+server and high-resolution profiles pass 2,291/2,280/2,291 consumer roots, no skips,
+and all 884 raw-region /54,905 numeric patterns with their original capture hashes.
+The audio GC regression passes in each profile. Static checks, safe build/symbol
+checks, three production binaries/ABI, exact known-suite comparison, fresh headless
+gameplay and explicit save/load also pass. Safe runtime was not exercised; the
+known-suite comparison preserves recorded failures rather than claiming a green
+full suite. Final source fingerprints match across every phase, and the gameplay
+preflight binary matches the final default production binary.
+
+The production storage patch needed no source correction after application.
+Qualification exposed a fixture identity-lifetime leak: per-case freed addresses
+remained in the shared normalization map. A deterministic boundary assertion failed
+on the second stats case before repair; restoring the original address set after each complete
+case, with updated persistent aliases, preserves all frozen captures. Failure-only callback captures now retain JSON
+if a mismatch recurs. See [FIXTURE_IDENTITIES.md](FIXTURE_IDENTITIES.md). Luna's ignored
+draft received the three review corrections described above before its first
+compile. The primary reviewed, integrated and qualified it; no measured subscription
+savings are claimed. See [raw-storage-native-qualification.json](raw-storage-native-qualification.json).
+
+Remaining standalone C files are the optional safe adapters (20 lines), modifier
+callback identities (15), other empty callbacks (10), and the MP3 implementation
+include (6). Headers, inline cgo bodies and third-party implementation size are
+outside that count and require their own inventory before any claim of C removal.

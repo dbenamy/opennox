@@ -3,8 +3,8 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME2_1.h"
-extern nox_inventory_cell_t nox_client_inventory_grid_1050020[NOX_INVENTORY_CELLS_MAX];
-extern uint32_t array_5D4594_1049872[9];
+
+
 */
 import "C"
 
@@ -28,10 +28,10 @@ type uiInventoryLookup struct {
 }
 
 func uiInventoryGrid() []uiInventoryCell {
-	return unsafe.Slice((*uiInventoryCell)(unsafe.Pointer(&C.nox_client_inventory_grid_1050020[0])), 84)
+	return unsafe.Slice((*uiInventoryCell)(unsafe.Pointer(&legacyGlobals.nox_client_inventory_grid_1050020[0])), 84)
 }
 func uiInventoryEquipment() []uint32 {
-	return unsafe.Slice((*uint32)(unsafe.Pointer(&C.array_5D4594_1049872[0])), 9)
+	return unsafe.Slice((*uint32)(unsafe.Pointer(&legacyGlobals.array_5D4594_1049872[0])), 9)
 }
 func uiInventoryDrawable(v uint32) *client.Drawable {
 	return (*client.Drawable)(unsafe.Pointer(uintptr(v)))

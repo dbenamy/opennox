@@ -3,9 +3,9 @@ package legacy
 /*
 #include "defs.h"
 #include "client__draw__partscrn.h"
-extern void* nox_alloc_screenParticles_806044;
-extern nox_screenParticle* nox_screenParticles_head;
-extern nox_screenParticle* dword_5d4594_806052;
+
+
+
 */
 import "C"
 import (
@@ -17,23 +17,23 @@ import (
 )
 
 func screenParticleHead() *Nox_screenParticle {
-	return (*Nox_screenParticle)(unsafe.Pointer(C.nox_screenParticles_head))
+	return (*Nox_screenParticle)(unsafe.Pointer(legacyGlobals.nox_screenParticles_head))
 }
 func screenParticleTail() *Nox_screenParticle {
-	return (*Nox_screenParticle)(unsafe.Pointer(C.dword_5d4594_806052))
+	return (*Nox_screenParticle)(unsafe.Pointer(legacyGlobals.dword_5d4594_806052))
 }
 func screenParticleAdd(p *Nox_screenParticle) {
 	p.Field_44, p.Field_48 = screenParticleHead(), nil
 	if p.Field_44 != nil {
 		p.Field_44.Field_48 = p
 	} else {
-		C.dword_5d4594_806052 = (*C.nox_screenParticle)(unsafe.Pointer(p))
+		legacyGlobals.dword_5d4594_806052 = (*C.nox_screenParticle)(unsafe.Pointer(p))
 	}
-	C.nox_screenParticles_head = (*C.nox_screenParticle)(unsafe.Pointer(p))
+	legacyGlobals.nox_screenParticles_head = (*C.nox_screenParticle)(unsafe.Pointer(p))
 }
 func screenParticleUnlink(p *Nox_screenParticle) {
 	if p == screenParticleTail() {
-		C.dword_5d4594_806052 = (*C.nox_screenParticle)(unsafe.Pointer(p.Field_48))
+		legacyGlobals.dword_5d4594_806052 = (*C.nox_screenParticle)(unsafe.Pointer(p.Field_48))
 	}
 	if p.Field_44 != nil {
 		p.Field_44.Field_48 = p.Field_48
@@ -41,20 +41,20 @@ func screenParticleUnlink(p *Nox_screenParticle) {
 	if p.Field_48 != nil {
 		p.Field_48.Field_44 = p.Field_44
 	} else {
-		C.nox_screenParticles_head = (*C.nox_screenParticle)(unsafe.Pointer(p.Field_44))
+		legacyGlobals.nox_screenParticles_head = (*C.nox_screenParticle)(unsafe.Pointer(p.Field_44))
 	}
 }
 func screenParticleDelete(p *Nox_screenParticle) {
 	screenParticleUnlink(p)
-	alloc.AsClassT[Nox_screenParticle](C.nox_alloc_screenParticles_806044).FreeObjectFirst(p)
+	alloc.AsClassT[Nox_screenParticle](legacyGlobals.nox_alloc_screenParticles_806044).FreeObjectFirst(p)
 }
 func screenParticleCreate(kind, x, y, vx, vy, gravity int, size, timer, phase, mode byte) *Nox_screenParticle {
-	if C.nox_alloc_screenParticles_806044 == nil || kind < 0 || kind > 4 {
+	if legacyGlobals.nox_alloc_screenParticles_806044 == nil || kind < 0 || kind > 4 {
 		return nil
 	}
 	colors := [5][2]uintptr{{806016, 806036}, {806028, 806004}, {806032, 806040}, {806020, 806012}, {806008, 806024}}
 	glow, core := *effectMapped(colors[kind][0]), *effectMapped(colors[kind][1])
-	p := alloc.AsClassT[Nox_screenParticle](C.nox_alloc_screenParticles_806044).NewObject()
+	p := alloc.AsClassT[Nox_screenParticle](legacyGlobals.nox_alloc_screenParticles_806044).NewObject()
 	if p == nil {
 		p = screenParticleTail()
 		if p == nil {

@@ -8,7 +8,7 @@ package legacy
 #include "GAME4_3.h"
 #include "server__dbase__objdb.h"
 #include "common__strman.h"
-extern void* nox_alloc_tradeItems_2386496;
+
 */
 import "C"
 
@@ -310,7 +310,7 @@ func tradeAddOffer(s *shopSession, u, item *server.Object) uint32 {
 	if !tradeOfferAllowed(s.Offers[side], item) {
 		return 0
 	}
-	n := (*shopItem)(alloc.AsClass(C.nox_alloc_tradeItems_2386496).NewObject())
+	n := (*shopItem)(alloc.AsClass(legacyGlobals.nox_alloc_tradeItems_2386496).NewObject())
 	if n == nil {
 		for _, u := range s.Units {
 			if u.ObjClass&4 != 0 {

@@ -4,7 +4,7 @@
 #include "defs.h"
 #include "common__system__team.h"
 
-extern int nox_server_gameSettingsUpdated;
+
 
 void nox_common_setEngineFlag(const nox_engine_flag flags);
 void nox_common_resetEngineFlag(const nox_engine_flag flags);

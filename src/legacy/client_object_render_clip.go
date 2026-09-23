@@ -2,7 +2,7 @@ package legacy
 
 /*
 #include "defs.h"
-extern nox_render_data_t* nox_draw_curDrawData_3799572;
+
 */
 import "C"
 import (
@@ -14,7 +14,7 @@ import (
 // These helpers intentionally use the current C render-data pointer: remaining
 // C UI callers save and restore that state, which can be switched independently.
 func objectRenderClipData() *noxrender.RenderData {
-	return (*noxrender.RenderData)(unsafe.Pointer(C.nox_draw_curDrawData_3799572))
+	return (*noxrender.RenderData)(unsafe.Pointer(legacyGlobals.nox_draw_curDrawData_3799572))
 }
 func objectRenderSaveClip() {
 	if dword_5d4594_1305748 != 0 {

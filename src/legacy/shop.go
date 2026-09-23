@@ -3,8 +3,8 @@ package legacy
 /*
 #include "GAME3_3.h"
 #include "GAME4.h"
-extern void* nox_alloc_tradeSession_2386492;
-extern void* nox_alloc_tradeItems_2386496;
+
+
 */
 import "C"
 
@@ -38,15 +38,15 @@ func shopCached() []*shopSession {
 }
 func shopGold(u *server.Object) *uint32 { return (*uint32)(u.InitData) }
 func shopFreeItem(n *shopItem) {
-	alloc.AsClass(C.nox_alloc_tradeItems_2386496).FreeObjectFirst(unsafe.Pointer(n))
+	alloc.AsClass(legacyGlobals.nox_alloc_tradeItems_2386496).FreeObjectFirst(unsafe.Pointer(n))
 }
 func shopInit() int {
-	C.nox_alloc_tradeSession_2386492 = alloc.NewClass("TradeSessions", 64, 64).UPtr()
-	if C.nox_alloc_tradeSession_2386492 == nil {
+	legacyGlobals.nox_alloc_tradeSession_2386492 = alloc.NewClass("TradeSessions", 64, 64).UPtr()
+	if legacyGlobals.nox_alloc_tradeSession_2386492 == nil {
 		return 0
 	}
-	C.nox_alloc_tradeItems_2386496 = alloc.NewClass("TradeItems", 16, 500).UPtr()
-	if C.nox_alloc_tradeItems_2386496 == nil {
+	legacyGlobals.nox_alloc_tradeItems_2386496 = alloc.NewClass("TradeItems", 16, 500).UPtr()
+	if legacyGlobals.nox_alloc_tradeItems_2386496 == nil {
 		shopFree()
 		return 0
 	}
@@ -55,14 +55,14 @@ func shopInit() int {
 	return 1
 }
 func shopFree() int {
-	if C.nox_alloc_tradeSession_2386492 != nil {
-		alloc.AsClass(C.nox_alloc_tradeSession_2386492).Free()
+	if legacyGlobals.nox_alloc_tradeSession_2386492 != nil {
+		alloc.AsClass(legacyGlobals.nox_alloc_tradeSession_2386492).Free()
 	}
-	C.nox_alloc_tradeSession_2386492 = nil
-	if C.nox_alloc_tradeItems_2386496 != nil {
-		alloc.AsClass(C.nox_alloc_tradeItems_2386496).Free()
+	legacyGlobals.nox_alloc_tradeSession_2386492 = nil
+	if legacyGlobals.nox_alloc_tradeItems_2386496 != nil {
+		alloc.AsClass(legacyGlobals.nox_alloc_tradeItems_2386496).Free()
 	}
-	C.nox_alloc_tradeItems_2386496 = nil
+	legacyGlobals.nox_alloc_tradeItems_2386496 = nil
 	clear(shopCached())
 	shopSetHead(nil)
 	return 0
@@ -78,14 +78,14 @@ func shopReset() int {
 	}
 	// Preserve the original reset's gold lifetime; ordinary destruction below
 	// releases gold objects, whereas this bulk reset only releases stock.
-	alloc.AsClass(C.nox_alloc_tradeSession_2386492).FreeAllObjects()
-	alloc.AsClass(C.nox_alloc_tradeItems_2386496).FreeAllObjects()
+	alloc.AsClass(legacyGlobals.nox_alloc_tradeSession_2386492).FreeAllObjects()
+	alloc.AsClass(legacyGlobals.nox_alloc_tradeItems_2386496).FreeAllObjects()
 	clear(shopCached())
 	shopSetHead(nil)
 	return 0
 }
 func shopCreate() *shopSession {
-	s := (*shopSession)(alloc.AsClass(C.nox_alloc_tradeSession_2386492).NewObject())
+	s := (*shopSession)(alloc.AsClass(legacyGlobals.nox_alloc_tradeSession_2386492).NewObject())
 	if s == nil {
 		return nil
 	}
@@ -99,7 +99,7 @@ func shopCreate() *shopSession {
 	return s
 }
 func shopAdd(s *shopSession, u *server.Object) *shopItem {
-	n := (*shopItem)(alloc.AsClass(C.nox_alloc_tradeItems_2386496).NewObject())
+	n := (*shopItem)(alloc.AsClass(legacyGlobals.nox_alloc_tradeItems_2386496).NewObject())
 	if n == nil {
 		return nil
 	}
@@ -127,7 +127,7 @@ func shopAdd(s *shopSession, u *server.Object) *shopItem {
 func shopFreeList(n *shopItem) uint32 {
 	for n != nil {
 		next := n.Next
-		alloc.AsClass(C.nox_alloc_tradeItems_2386496).FreeObjectFirst(unsafe.Pointer(n))
+		alloc.AsClass(legacyGlobals.nox_alloc_tradeItems_2386496).FreeObjectFirst(unsafe.Pointer(n))
 		n = next
 	}
 	return 0
@@ -144,7 +144,7 @@ func shopDestroy(s *shopSession) {
 	for n := s.Stock; n != nil; {
 		next := n.Next
 		GetServer().S().Objs.FreeObject(n.Object)
-		alloc.AsClass(C.nox_alloc_tradeItems_2386496).FreeObjectFirst(unsafe.Pointer(n))
+		alloc.AsClass(legacyGlobals.nox_alloc_tradeItems_2386496).FreeObjectFirst(unsafe.Pointer(n))
 		n = next
 	}
 	GetServer().S().Objs.FreeObject(s.Gold[0])
@@ -160,7 +160,7 @@ func shopDestroy(s *shopSession) {
 	if shopHead() == s {
 		shopSetHead(s.Next)
 	}
-	alloc.AsClass(C.nox_alloc_tradeSession_2386492).FreeObjectFirst(unsafe.Pointer(s))
+	alloc.AsClass(legacyGlobals.nox_alloc_tradeSession_2386492).FreeObjectFirst(unsafe.Pointer(s))
 }
 func shopDetach(s *shopSession, u *server.Object) uint32 {
 	s.Active = 0

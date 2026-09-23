@@ -5,8 +5,8 @@ package legacy
 #include "client__gui__window.h"
 #include "GAME2_1.h"
 #include "client__gui__guiinv.h"
-extern nox_window* dword_5d4594_1062452;
-extern nox_window* nox_win_unk5;
+
+
 */
 import "C"
 
@@ -101,7 +101,7 @@ func uiInventoryCreateWindow() int {
 	g := GetClient().Cli().GUI
 	drawOne := func(*gui.Window, *gui.WindowData) int { return 1 }
 	root := g.NewWindowRaw(nil, 552, 0, 0, 563, 264, nil)
-	C.dword_5d4594_1062452 = (*C.nox_window)(root.C())
+	legacyGlobals.dword_5d4594_1062452 = (*C.nox_window)(root.C())
 	root.SetAllFuncs(nil, drawOne, nil)
 	status := g.NewWindowRaw(root, 8, 0, 224, int(nox_win_width), 40, nil)
 	status.SetAllFuncs(func(*gui.Window, gui.WindowEvent) gui.WindowEventResp { return gui.RawEventResp(0) }, drawOne, C.nox_xxx_inventroryOnHovewerSub_4667E0)
@@ -120,7 +120,7 @@ func uiInventoryCreateWindow() int {
 		return 0
 	}
 	current := g.NewWindowRaw(nil, gui.StatusFlags(0x408|C.NOX_WIN_LAYER_BACK), -1, int(nox_win_height)-127, 111, 127, nil)
-	C.nox_win_unk5 = (*C.nox_window)(current.C())
+	legacyGlobals.nox_win_unk5 = (*C.nox_window)(current.C())
 	if current == nil {
 		return 0
 	}

@@ -4,7 +4,7 @@ package legacy
 #include "defs.h"
 #include "GAME3.h"
 #include "GAME3_1.h"
-extern nox_gui_animation* nox_wnd_xxx_1309740;
+
 */
 import "C"
 import (
@@ -106,7 +106,7 @@ func (e optionsEditor) construct() int {
 		})
 		optionsTabWidth()
 		anim := Nox_gui_makeAnimation_43C5B0(w, 0, 0, 0, -480, 0, 20, 0, -40)
-		C.nox_wnd_xxx_1309740 = (*C.nox_gui_animation)(unsafe.Pointer(anim))
+		legacyGlobals.nox_wnd_xxx_1309740 = (*C.nox_gui_animation)(unsafe.Pointer(anim))
 		if anim == nil {
 			return 0
 		}

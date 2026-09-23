@@ -4,7 +4,7 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint8_t** nox_pixbuffer_rows_3798784;
+
 */
 import "C"
 import "unsafe"
@@ -24,11 +24,11 @@ func PortTestWorldWallWords() (map[string]*uint32, func()) {
 	for n, p := range m {
 		old[n] = *p
 	}
-	rows := C.nox_pixbuffer_rows_3798784
+	rows := legacyGlobals.nox_pixbuffer_rows_3798784
 	return m, func() {
 		for n, p := range m {
 			*p = old[n]
 		}
-		C.nox_pixbuffer_rows_3798784 = rows
+		legacyGlobals.nox_pixbuffer_rows_3798784 = rows
 	}
 }

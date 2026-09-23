@@ -11,7 +11,7 @@ package legacy
 #include "GAME3.h"
 #include "GAME3_1.h"
 #include "GAME5.h"
-extern nox_window* dword_5d4594_1062452;
+
 */
 import "C"
 
@@ -174,7 +174,7 @@ func uiInventoryCancelDrag() int {
 		Nox_xxx_cursorSetDraggedItem_477690(nil)
 		ret = 1
 	}
-	parent := (*gui.Window)(unsafe.Pointer(C.dword_5d4594_1062452))
+	parent := (*gui.Window)(unsafe.Pointer(legacyGlobals.dword_5d4594_1062452))
 	captured := GetClient().Cli().GUI.Captured()
 	if nox_window_is_child((*nox_window)(parent.C()), (*nox_window)(captured.C())) == 1 {
 		captured.Capture(false)

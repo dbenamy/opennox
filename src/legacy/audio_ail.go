@@ -9,12 +9,12 @@ package legacy
 
 int sub_43F060(uint32_t* a1);
 
-extern void* dword_587000_127004;
 
-extern void* dword_587000_122852;
-extern void* dword_587000_81128;
-extern void* dword_587000_93164;
-extern void* dword_5d4594_805984;
+
+
+
+
+
 */
 import "C"
 import (
@@ -202,7 +202,7 @@ func sub_486520(a2 unsafe.Pointer) int {
 }
 
 func Get_dword_587000_127004() unsafe.Pointer {
-	return C.dword_587000_127004
+	return legacyGlobals.dword_587000_127004
 }
 
 func Sub_43F0E0(v unsafe.Pointer) int {
@@ -267,15 +267,15 @@ func Sub_486640(a1 unsafe.Pointer, a2 int) int {
 }
 
 func Get_dword_5d4594_805984() unsafe.Pointer {
-	return C.dword_5d4594_805984
+	return legacyGlobals.dword_5d4594_805984
 }
 
 func Set_dword_5d4594_805984(v unsafe.Pointer) {
-	C.dword_5d4594_805984 = v
+	legacyGlobals.dword_5d4594_805984 = v
 }
 
 func Set_dword_587000_81128(v unsafe.Pointer) {
-	C.dword_587000_81128 = v
+	legacyGlobals.dword_587000_81128 = v
 }
 
 //export sub_4864A0

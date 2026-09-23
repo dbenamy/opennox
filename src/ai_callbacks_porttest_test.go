@@ -49,6 +49,11 @@ func callbackHash(t *testing.T, label string, r []legacy.PortTestRoamResult, wan
 		want = callbackHashes[label]
 	}
 	if want != "" && got != want {
+		if path := os.Getenv("OPENNOX_CALLBACK_FAILURE_CAPTURE"); path != "" {
+			if err := os.WriteFile(path+"-"+label+".json", b, 0600); err != nil {
+				t.Errorf("save mismatched capture: %v", err)
+			}
+		}
 		t.Fatalf("hash %s want %s", got, want)
 	}
 }

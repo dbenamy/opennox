@@ -4,8 +4,8 @@ package legacy
 
 /*
 #include "defs.h"
-extern nox_window* nox_win_unk5;
-extern nox_window* dword_5d4594_1062452;
+
+
 */
 import "C"
 
@@ -18,8 +18,8 @@ func PortTestUIInventoryWords() ([]*uint32, func()) {
 		(*uint32)(unsafe.Pointer(&dword_5d4594_1049864)),
 		(*uint32)(unsafe.Pointer(&dword_5d4594_1062480)),
 		(*uint32)(unsafe.Pointer(&dword_5d4594_1062488)),
-		(*uint32)(unsafe.Pointer(&C.nox_win_unk5)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1062452)),
+		(*uint32)(unsafe.Pointer(&legacyGlobals.nox_win_unk5)),
+		(*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1062452)),
 	}
 	old := make([]uint32, len(words))
 	for i, p := range words {

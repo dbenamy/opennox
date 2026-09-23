@@ -2,8 +2,8 @@ package legacy
 
 /*
 #include "defs.h"
-extern void* nox_video_tileBuf_ptr_3798796;
-extern void* nox_video_tileBuf_end_3798844;
+
+
 */
 import "C"
 import (
@@ -46,8 +46,8 @@ func tileRasterFillPacked(dst unsafe.Pointer, color uint32) {
 	}
 }
 func tileRasterOffset(pos image.Point) (base unsafe.Pointer, offset, size, stride int) {
-	base = C.nox_video_tileBuf_ptr_3798796
-	size = int(uintptr(C.nox_video_tileBuf_end_3798844) - uintptr(base))
+	base = legacyGlobals.nox_video_tileBuf_ptr_3798796
+	size = int(uintptr(legacyGlobals.nox_video_tileBuf_end_3798844) - uintptr(base))
 	stride = int(dword_5d4594_3798804)
 	x := uint32(dword_5d4594_3798836) + uint32(pos.X) - uint32(dword_5d4594_3798820)
 	y := uint32(dword_5d4594_3798840) + uint32(pos.Y) - uint32(dword_5d4594_3798824)

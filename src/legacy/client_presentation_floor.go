@@ -2,8 +2,8 @@ package legacy
 
 /*
 #include "client__draw__staticdraw.h"
-extern void* nox_video_tileBuf_ptr_3798796;
-extern void* nox_video_tileBuf_end_3798844;
+
+
 */
 import "C"
 import (
@@ -94,8 +94,8 @@ func presentationBake(_ *noxrender.Viewport, dr *client.Drawable) {
 		dr.Field_86 = uint32(counter)
 		return
 	}
-	base := C.nox_video_tileBuf_ptr_3798796
-	size := int(uintptr(C.nox_video_tileBuf_end_3798844) - uintptr(base))
+	base := legacyGlobals.nox_video_tileBuf_ptr_3798796
+	size := int(uintptr(legacyGlobals.nox_video_tileBuf_end_3798844) - uintptr(base))
 	stride := int(dword_5d4594_3798804)
 	start := int(uint32(stride)*(uint32(y)+uint32(dword_5d4594_3798840)-uint32(originY)) + 2*(uint32(x)+uint32(dword_5d4594_3798836)-uint32(originX)))
 	if start >= size {

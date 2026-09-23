@@ -12,7 +12,7 @@ package legacy
 #include "server__magic__spell__execdur.h"
 void nox_xxx_spellCastByPlayer_4FEEF0();
 
-extern void* nox_alloc_magicEnt_1569668;
+
 
 int nox_xxx_spellWallCreate_4FFA90(void* a1);
 int nox_xxx_spellWallUpdate_500070(void* a1);

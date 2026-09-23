@@ -9,7 +9,7 @@ package legacy
 #include "GAME4.h"
 #include "GAME4_1.h"
 #include "GAME4_3.h"
-extern void* nox_alloc_magicEnt_1569668;
+
 */
 import "C"
 import (
@@ -35,7 +35,7 @@ type spellLifeBook struct {
 }
 
 func spellLifeBookPool() alloc.ClassT[spellLifeBook] {
-	return alloc.AsClassT[spellLifeBook](C.nox_alloc_magicEnt_1569668)
+	return alloc.AsClassT[spellLifeBook](legacyGlobals.nox_alloc_magicEnt_1569668)
 }
 func spellLifeBookHead() *spellLifeBook {
 	return (*spellLifeBook)(unsafe.Pointer(uintptr(dword_5d4594_1569672)))

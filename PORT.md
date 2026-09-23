@@ -14,12 +14,21 @@
 
 ## Current status
 
+The remaining 44 globals and eight mapped buffers now initialize from Go, using
+the existing foreign allocator for stable process-lifetime storage. Both frozen
+storage captures match C; all 2,291/2,280/2,291 consumer roots pass across the three
+profiles, alongside fresh production/ABI/gameplay/save-load qualification. This
+removes 63 C lines and two translation units. C is now **51 physical lines in four
+files**. C types, callbacks, inline preambles and libc/CGO dependencies remain
+explicit follow-up work. See [RAW_STORAGE.md](docs/porting/RAW_STORAGE.md).
+
 An audio stream GC regression is corrected: opaque sample addresses remain raw
 32-bit words through buffer/chunk/voice bookkeeping and convert to pointers at
 sample access. The regression failed before the fix and passes after it. The full
 2,291/2,280/2,291 consumer sweep and fresh production/gameplay/save-load qualification
 pass. The remaining 44 globals and 8 shared buffers now have a qualified actual-C
-storage baseline; their conversion is next. C remains 114 lines. See
+storage baseline, used by the subsequent conversion above. That repair left C at
+114 lines. See
 [AUDIO_ADDRESS_GC.md](docs/porting/AUDIO_ADDRESS_GC.md) and
 [RAW_STORAGE.md](docs/porting/RAW_STORAGE.md).
 
@@ -83,8 +92,8 @@ unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skip
 and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
 comparison, headless gameplay and save/load checks pass.
 
-C remaining is **114 physical lines in 6 files**, zero reference C. See
-[the native qualification](docs/porting/audio-address-native-qualification.json).
+C remaining is **51 physical lines in 4 files**, zero reference C. See
+[the native qualification](docs/porting/raw-storage-native-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in
@@ -297,6 +306,20 @@ production, test-only and macro-remapped calls; the safe-adapter audit initially
 generalized one live caller to all six wrappers. Cleanup inventories have been
 useful when each artifact includes its hash and retained qualification evidence;
 the primary still verifies host process references and performs deletion.
+Test-selection reports must trace the enclosing function and fixture dispatch
+chain, including numeric operation selectors. Searching only a guessed helper
+name missed existing obelisk coverage in a later cleanup draft.
+A bounded read-only lifetime review also identified stale per-case address IDs in
+the shared test fixture. The primary confirmed that defect with a deterministic
+red; broader captures then caught the need to retain aliases for persistent
+objects. Such reviews are useful hypothesis generation, while full qualification
+still decides whether the repair preserves the established behavior.
+Require reachability reports to include the exact whole-source search command
+and scope. The entry-classifier audit missed two production constructor callers
+outside `src/legacy`; the primary found them with a literal search across `src`.
+Do not accept “no in-repository callers” from a directory-local search.
+Generate path/line inventories directly from search output instead of manually
+transcribing them; verify each reported path and line before accepting the report.
 
 ## Explaining the work and reporting diagnostics
 

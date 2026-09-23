@@ -6,7 +6,7 @@ package legacy
 #include "defs.h"
 #include "GAME3_3.h"
 #include "GAME3_2.h"
-extern int nox_server_gameSettingsUpdated;
+
 */
 import "C"
 
@@ -87,7 +87,7 @@ func PortTestWorldCollisionGlobals() (map[string]*uint32, *uint64, func()) {
 	words := map[string]*uint32{"glyph": (*uint32)(unsafe.Pointer(&dword_5d4594_1567960)), "extensions": (*uint32)(unsafe.Pointer(&gameex_flags))}
 	words["soulFrame"] = (*uint32)(unsafe.Pointer(&dword_5d4594_1556136))
 	words["warpOpen"] = memmap.PtrUint32(0x5D4594, 1556120)
-	words["settingsUpdated"] = (*uint32)(unsafe.Pointer(&C.nox_server_gameSettingsUpdated))
+	words["settingsUpdated"] = (*uint32)(unsafe.Pointer(&legacyGlobals.nox_server_gameSettingsUpdated))
 	words["savePortal"] = &orchestrationRestoreCleanup
 	words["directionX"] = (*uint32)(unsafe.Pointer(&dword_5d4594_1565628))
 	words["directionY"] = (*uint32)(unsafe.Pointer(&dword_5d4594_1565632))

@@ -5,6 +5,8 @@ package legacy
 import (
 	"bytes"
 	"encoding/binary"
+	"fmt"
+	"maps"
 	"math"
 	"time"
 	"unsafe"
@@ -259,7 +261,11 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 		return true
 	}
 	out := make([]PortTestRoamResult, 0, len(specs))
-	for _, sp := range specs {
+	baseIDs := maps.Clone(ids)
+	for caseIndex, sp := range specs {
+		if !maps.Equal(ids, baseIDs) {
+			panic(fmt.Sprintf("roam fixture case %d inherited identities from an earlier case", caseIndex))
+		}
 		clear(ob[8:780])
 		clear(ub)
 		clear(wb)
@@ -535,6 +541,18 @@ func PortTestRoam(specs []PortTestRoamSpec) []PortTestRoamResult {
 			}
 		}
 		out = append(out, r)
+		// Keep aliases established for objects alive throughout the corpus.
+		// Only the original address set survives; transient addresses do not.
+		for ptr := range baseIDs {
+			if id, ok := ids[ptr]; ok {
+				baseIDs[ptr] = id
+			}
+		}
+		// All snapshots for transient fixture allocations are now complete.
+		// Keep this map's identity: normalize and proxy.life both alias it.
+		// A stale address must not rewrite a later case's ordinary scalar word.
+		clear(ids)
+		maps.Copy(ids, baseIDs)
 	}
 	return out
 }

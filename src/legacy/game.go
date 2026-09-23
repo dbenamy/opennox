@@ -316,7 +316,7 @@ func Nox_xxx_getSomeMapName_4D0CF0() string {
 }
 
 func Nox_server_gameSettingsUpdated_40A670() {
-	C.nox_server_gameSettingsUpdated = 1
+	legacyGlobals.nox_server_gameSettingsUpdated = 1
 }
 
 func Sub_43AF50() {

@@ -2,15 +2,15 @@ package legacy
 
 /*
 #include "defs.h"
-extern nox_window* dword_5d4594_1321236;
-extern nox_window* dword_5d4594_1321240;
-extern nox_window* dword_5d4594_1321244;
-extern nox_window* dword_5d4594_1321248;
-extern nox_window* dword_5d4594_1522616;
-extern nox_window* dword_5d4594_1522620;
-extern nox_window* dword_5d4594_1522624;
-extern nox_window* dword_5d4594_1522628;
-extern nox_gui_animation* nox_wnd_xxx_1522608;
+
+
+
+
+
+
+
+
+
 */
 import "C"
 import (
@@ -31,13 +31,13 @@ func bindingWord(off int) *uint32 {
 	case 1321232:
 		return (*uint32)(unsafe.Pointer(&dword_5d4594_1321232))
 	case 1321236:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321236))
+		return (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1321236))
 	case 1321240:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321240))
+		return (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1321240))
 	case 1321244:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321244))
+		return (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1321244))
 	case 1321248:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321248))
+		return (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1321248))
 	case 1321252:
 		return (*uint32)(unsafe.Pointer(&dword_5d4594_1321252))
 	case 1522604:
@@ -45,13 +45,13 @@ func bindingWord(off int) *uint32 {
 	case 1522612:
 		return (*uint32)(unsafe.Pointer(&dword_5d4594_1522612))
 	case 1522616:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1522616))
+		return (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1522616))
 	case 1522620:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1522620))
+		return (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1522620))
 	case 1522624:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1522624))
+		return (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1522624))
 	case 1522628:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1522628))
+		return (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1522628))
 	case 1522632:
 		return (*uint32)(unsafe.Pointer(&dword_5d4594_1522632))
 	}

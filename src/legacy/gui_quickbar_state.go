@@ -2,7 +2,7 @@ package legacy
 
 /*
 #include "defs.h"
-extern void* nox_xxx_aClosewoodengat_587000_133480;
+
 */
 import "C"
 import (
@@ -36,7 +36,7 @@ var _ [204 - int(unsafe.Offsetof(quickbarRecord{}.Current))]byte
 var _ [int(unsafe.Offsetof(quickbarRecord{}.Current)) - 204]byte
 
 func quickbarMain() *quickbarRecord {
-	return (*quickbarRecord)(C.nox_xxx_aClosewoodengat_587000_133480)
+	return (*quickbarRecord)(legacyGlobals.nox_xxx_aClosewoodengat_587000_133480)
 }
 func quickbarAt(off uintptr) *quickbarRecord { return (*quickbarRecord)(memmap.PtrOff(0x5D4594, off)) }
 func quickbarPlayer() uint32                 { return uint32(dword_8531A0_2576) }

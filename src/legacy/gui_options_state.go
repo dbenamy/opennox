@@ -4,7 +4,7 @@ package legacy
 #include "defs.h"
 #include "GAME1_3.h"
 #include "GAME2.h"
-extern void* dword_5d4594_1309720;
+
 */
 import "C"
 import (
@@ -28,7 +28,7 @@ const (
 func optionsWord(off int) *uint32 {
 	switch off {
 	case 1309720:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309720))
+		return (*uint32)(unsafe.Pointer(&legacyGlobals.dword_5d4594_1309720))
 	case 1309728:
 		return (*uint32)(unsafe.Pointer(&dword_5d4594_1309728))
 	case 1309732:

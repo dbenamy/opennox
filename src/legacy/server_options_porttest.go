@@ -6,7 +6,7 @@ package legacy
 #include "GAME2.h"
 #include "GAME1.h"
 #include "client__gui__servopts__guiserv.h"
-extern int nox_server_gameSettingsUpdated;
+
 */
 import "C"
 
@@ -61,7 +61,7 @@ func PortTestServerOptionsWords() (map[string]*uint32, func()) {
 		"panel-1316712": serverPanelsWord(1316712),
 		"panel-1316972": serverPanelsWord(1316972),
 
-		"settings-updated":      (*uint32)(unsafe.Pointer(&C.nox_server_gameSettingsUpdated)),
+		"settings-updated":      (*uint32)(unsafe.Pointer(&legacyGlobals.nox_server_gameSettingsUpdated)),
 		"settings-record-dirty": (*uint32)(unsafe.Pointer(&serverConfigRecordDirty)),
 		"root":                  serverOptionsWord(1046492),
 		"maps":                  serverOptionsWord(1046496),

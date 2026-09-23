@@ -5,8 +5,8 @@ package legacy
 /*
 #include <string.h>
 #include "GAME4_1.h"
-extern void* nox_alloc_tradeSession_2386492;
-extern void* nox_alloc_tradeItems_2386496;
+
+
 
 */
 import "C"
@@ -126,10 +126,10 @@ func portTestShopPoolsEnvironment(proxy *portTestRoamOwnerServer) *portTestShopP
 	p := &portTestShopPools{proxy: proxy}
 	prepareProtection, snapshotProtection, freeProtection := portTestPenaltyProtectionEnvironment()
 	p.prepareProtection, p.snapshotProtection = prepareProtection, snapshotProtection
-	oldSessions, oldItems, oldHead := C.nox_alloc_tradeSession_2386492, C.nox_alloc_tradeItems_2386496, dword_5d4594_2386500
+	oldSessions, oldItems, oldHead := legacyGlobals.nox_alloc_tradeSession_2386492, legacyGlobals.nox_alloc_tradeItems_2386496, dword_5d4594_2386500
 	table := unsafe.Slice(memmap.PtrUint32(0x5D4594, 2386364), 32)
 	oldTable := append([]uint32(nil), table...)
-	C.nox_alloc_tradeSession_2386492, C.nox_alloc_tradeItems_2386496, dword_5d4594_2386500 = nil, nil, 0
+	legacyGlobals.nox_alloc_tradeSession_2386492, legacyGlobals.nox_alloc_tradeItems_2386496, dword_5d4594_2386500 = nil, nil, 0
 	if shopInit() == 0 {
 		panic("shop fixture pools")
 	}
@@ -137,7 +137,7 @@ func portTestShopPoolsEnvironment(proxy *portTestRoamOwnerServer) *portTestShopP
 		p.cleanup()
 		freeProtection()
 		shopFree()
-		C.nox_alloc_tradeSession_2386492, C.nox_alloc_tradeItems_2386496, dword_5d4594_2386500 = oldSessions, oldItems, oldHead
+		legacyGlobals.nox_alloc_tradeSession_2386492, legacyGlobals.nox_alloc_tradeItems_2386496, dword_5d4594_2386500 = oldSessions, oldItems, oldHead
 		copy(table, oldTable)
 	}
 	return p
@@ -398,7 +398,7 @@ func (p *portTestShopPools) run() {
 			gold := (*server.Object)(shopTestPointer(words[12+a.Side]))
 			*(*uint32)(gold.InitData) = a.Value
 		case PortTestShopOffer:
-			n := alloc.AsClass(C.nox_alloc_tradeItems_2386496).NewObject()
+			n := alloc.AsClass(legacyGlobals.nox_alloc_tradeItems_2386496).NewObject()
 			if n == nil {
 				panic("shop fixture offer allocation")
 			}

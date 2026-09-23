@@ -13,7 +13,7 @@ package legacy
 #include "client__shell__noxworld.h"
 #include "client__shell__selchar.h"
 #include "client__shell__mainmenu.h"
-extern void* dword_5d4594_831236;
+
 int winMainMenuAnimOutStartFnc();
 int winMainMenuAnimOutDoneFnc();
 int nox_client_drawGeneralCallback_4A2200();

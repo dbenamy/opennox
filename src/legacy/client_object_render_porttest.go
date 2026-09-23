@@ -4,7 +4,7 @@ package legacy
 
 /*
 #include "defs.h"
-extern nox_render_data_t* nox_draw_curDrawData_3799572;
+
 void sub_4C5050();
 void nox_xxx_wndDraw_49F7F0();
 int sub_49F860();
@@ -25,13 +25,13 @@ type PortTestObjectRenderEnvironment struct{ restore []func() }
 func PortTestNewObjectRenderEnvironment(data *noxrender.RenderData) *PortTestObjectRenderEnvironment {
 	e := new(PortTestObjectRenderEnvironment)
 	ghost, count, saved, player, netcode := dword_5d4594_1321520, dword_5d4594_1321800, dword_5d4594_1305748, dword_8531A0_2576, nox_player_netCode_85319C
-	height, render := nox_win_height, C.nox_draw_curDrawData_3799572
+	height, render := nox_win_height, legacyGlobals.nox_draw_curDrawData_3799572
 	e.restore = append(e.restore, func() {
 		dword_5d4594_1321520, dword_5d4594_1321800, dword_5d4594_1305748, dword_8531A0_2576, nox_player_netCode_85319C = ghost, count, saved, player, netcode
-		nox_win_height, C.nox_draw_curDrawData_3799572 = height, render
+		nox_win_height, legacyGlobals.nox_draw_curDrawData_3799572 = height, render
 	})
 	nox_win_height = 96
-	C.nox_draw_curDrawData_3799572 = (*C.nox_render_data_t)(data.C())
+	legacyGlobals.nox_draw_curDrawData_3799572 = (*C.nox_render_data_t)(data.C())
 	for _, reg := range [][3]uintptr{{0x587000, 80808, 4}, {0x5D4594, 1305732, 44}, {0x5D4594, 1321512, 16}, {0x5D4594, 1321532, 268}, {0x85B3FC, 956, 4}} {
 		b := unsafe.Slice((*byte)(memmap.PtrOff(reg[0], reg[1])), reg[2])
 		old := append([]byte(nil), b...)

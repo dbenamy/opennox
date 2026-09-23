@@ -5,7 +5,7 @@ package legacy
 #include "defs.h"
 #include "GAME2.h"
 #include "client__gui__guibook.h"
-extern nox_window* nox_win_unk1;
+
 
 #include "GAME1.h"
 #include "GAME1_1.h"
@@ -98,7 +98,7 @@ func bookWord(off uintptr) *uint32 {
 	return memmap.PtrUint32(0x5D4594, off)
 }
 func bookWindow(word uint32) *gui.Window { return AsWindowP(unsafe.Pointer(uintptr(word))) }
-func bookRoot() *gui.Window              { return asWindow(C.nox_win_unk1) }
+func bookRoot() *gui.Window              { return asWindow(legacyGlobals.nox_win_unk1) }
 func bookClass(p uint32) int             { return int(*(*byte)(unsafe.Pointer(uintptr(p) + 2251))) }
 func bookPlayerWord(p uint32, off, id int) *uint32 {
 	return (*uint32)(unsafe.Pointer(uintptr(p) + uintptr(off+4*id)))

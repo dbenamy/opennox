@@ -2,7 +2,7 @@ package legacy
 
 /*
 #include <stdint.h>
-extern int nox_server_gameSettingsUpdated;
+
 */
 import "C"
 import (
@@ -142,9 +142,9 @@ func serverConfigPasswordSet(p *uint16) *uint16 {
 	return dst
 }
 func serverConfigPasswordGet() *uint16       { return memmap.PtrUint16(0x5D4594, 3540) }
-func serverConfigUpdatedSet()                { C.nox_server_gameSettingsUpdated = 1 }
-func serverConfigUpdatedGet() int32          { return int32(C.nox_server_gameSettingsUpdated) }
-func serverConfigUpdatedClear()              { C.nox_server_gameSettingsUpdated = 0 }
+func serverConfigUpdatedSet()                { legacyGlobals.nox_server_gameSettingsUpdated = 1 }
+func serverConfigUpdatedGet() int32          { return int32(legacyGlobals.nox_server_gameSettingsUpdated) }
+func serverConfigUpdatedClear()              { legacyGlobals.nox_server_gameSettingsUpdated = 0 }
 func serverConfigRateDirtySet(v int32) int32 { *memmap.PtrInt32(0x5D4594, 3588) = v; return v }
 func serverConfigRateDirtyGet() int32        { return memmap.Int32(0x5D4594, 3588) }
 func serverConfigRateGet() int32             { return memmap.Int32(0x587000, 4728) }

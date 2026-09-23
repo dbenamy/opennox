@@ -1,0 +1,260 @@
+{
+  "stats_investigation": {
+    "reviewed_for_acceptance": true,
+    "acceptance_condition": "All fresh lifetime-* qualification phases must pass unchanged frozen captures; this disposition alone does not qualify storage.",
+    "original_failure": {
+      "session": 99584,
+      "test": "TestPlayerControlsStats",
+      "capture": "controls-stats-12",
+      "cause_proven": false
+    },
+    "confirmed_defect": "Shared fixture identity map retained released per-case addresses.",
+    "repair": "Restore the original persistent address set in place after all case snapshots, retaining updated aliases for those addresses.",
+    "red": {
+      "session": 57922,
+      "case_index": 1,
+      "sha256": "9c5193f8aed23f0c7b4d92a5bf89c048626dc85a06851d0bf076fcfbd0ec77f6"
+    },
+    "green": {
+      "session": 24781,
+      "repetitions": 3,
+      "cases_per_capture": 54,
+      "captures_per_repetition": 4,
+      "sha256": "564b3de77146318ef998bafa5fd7f4e03a77dd822da51da4bee7b5a174ebf462"
+    },
+    "unchanged_source_diagnostics": {
+      "isolated_repetitions": 23,
+      "exact_asset_full_group_repetitions": 2,
+      "full_group_roots": 200
+    },
+    "limits": [
+      "No direct JSON capture of original mismatch; causal link remains unproven.",
+      "Whole-word normalization can still confuse scalar values with live pointer words."
+    ],
+    "failure_only_capture_enabled": true,
+    "goldens_changed": false,
+    "scope_correction": "Initial reset changed seven captures exclusively from persistent player ID54000 to200. Retain alias updates for original persistent addresses; affected-group probe6245 passes all200 roots/no skips with frozen hashes unchanged.",
+    "final_repair_probe": {
+      "session": 6245,
+      "result": {
+        "tags": "porttest,server",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 200,
+        "selected_root_tests": 200,
+        "exit": 0,
+        "started_tests": 200,
+        "completed_tests": 200,
+        "started_root_tests": 200,
+        "completed_root_tests": 200,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 205.10837205778807
+      },
+      "log_sha256": "ed5276347afef10139412b6dbf26393e67db56e53bad02d57ce1accf4894b943"
+    }
+  },
+  "status": "qualified remaining storage initialized from Go",
+  "preceding_revision": "781901ef585e72a80eec871bcfe9ced7f12bf35b",
+  "targets": {
+    "default": {
+      "contract_tests": 3,
+      "consumer_roots": 2291,
+      "raw_regions": 52,
+      "raw_patterns": 884,
+      "numeric_owners": 395,
+      "numeric_patterns": 54905,
+      "gc_regression": true,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 1061.3367627409752
+    },
+    "server": {
+      "contract_tests": 3,
+      "consumer_roots": 2280,
+      "raw_regions": 52,
+      "raw_patterns": 884,
+      "numeric_owners": 395,
+      "numeric_patterns": 54905,
+      "gc_regression": true,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 1068.7244644130114
+    },
+    "highres": {
+      "contract_tests": 3,
+      "consumer_roots": 2291,
+      "raw_regions": 52,
+      "raw_patterns": 884,
+      "numeric_owners": 395,
+      "numeric_patterns": 54905,
+      "gc_regression": true,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 1224.9607686090749
+    }
+  },
+  "raw_capture_sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3",
+  "numeric_capture_sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+  "source_manifest_sha256": "a72694d8cd4e3196a063ee15b7717e14242d5e1c7d71e2565c6ae6b20708e880",
+  "production_c": {
+    "files": 4,
+    "lines": 51,
+    "change": -63,
+    "test_reference_lines": 0
+  },
+  "storage": {
+    "globals": 44,
+    "buffers": 8,
+    "buffer_bytes": 4014405,
+    "lifetime": "process",
+    "allocator": "existing foreign calloc; unmanaged storage; libc/CGO retained"
+  },
+  "review": {
+    "owners": {
+      "status": "primary independent native owner review",
+      "fields": 44,
+      "types_dimensions_initializers_match_C": true,
+      "blobs": 8,
+      "blob_bytes": 4014405,
+      "blob_sizes_are_lengths_not_slice_header_sizes": true,
+      "logical_registrations_unchanged": true,
+      "allocator": "existing calloc-backed alloc.New/alloc.Make; no finalizer/free",
+      "allocation_count_tests": "only caller checks relative count; nine process-lifetime allocations do not alter its expected delta",
+      "c_translation_units_deleted": 2,
+      "owner_source_sha256": "875daf634ab7c4dfcaf15274e4b1f5c58f9639a4c3f9ec7619b222d8b3b6fdd7"
+    },
+    "selectors": {
+      "files": 59,
+      "mismatches": null,
+      "success": true
+    }
+  },
+  "safe": {
+    "build": true,
+    "retired_symbols_absent": true,
+    "retained": [
+      "nox_malloc",
+      "nox_free",
+      "nox_memset",
+      "nox_memcpy_go"
+    ],
+    "runtime_tested": false,
+    "sha256": "600ad4b99eb68d68ef1b958131b7d444658ae387613f58a72431e913ddaa9637"
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.485454972134903,
+        "sha256": "16133ff8314058be6d77b36d321fd041e89e5a14679860cbda1b5e55967237ad",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.735947852022946,
+        "sha256": "15f6bf376dd0f9aa44d247a6235592d9e38bd6df8d4422074993cd3145e54181",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 63.04308360395953,
+        "sha256": "972f9efa7f53d18961feb7328137233b27bc6b6ba6e46bc418d502a56c3df7a6",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "raw-storage-native-save": {
+        "exit": 0,
+        "wall_seconds": 45.403411228209734,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.879147429950535,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "16133ff8314058be6d77b36d321fd041e89e5a14679860cbda1b5e55967237ad",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-remaining-storage/lifetime-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/raw-storage-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Initialize remaining globals and mapped buffers in Go with process-lifetime foreign storage",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "1ac8c4f331a6441d14e570b4f6e2fff055ee7467f5c4c3515e38c12cd5e5105a"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 57.34429649217054,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    },
+    "preflight_gameplay": {
+      "exit": 0,
+      "process_exit": 0,
+      "elapsed": 68.769160854863,
+      "capture": false,
+      "godebug": ",randautoseed=0",
+      "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+      "binary_sha256": "16133ff8314058be6d77b36d321fd041e89e5a14679860cbda1b5e55967237ad",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "-s",
+        "-screen 0 1280x960x24 -nolisten tcp",
+        "/root/src/opennox/build/port-remaining-storage/lifetime-preflight/opennox",
+        "-data",
+        "/root/src/opennox/build/baseline/runs/raw-storage-scoped/data",
+        "-window",
+        "-pprof",
+        "127.0.0.1:0"
+      ],
+      "display_implementation": "Remaining storage initialized from Go using the foreign allocator",
+      "isolated_network": false,
+      "removed_maps": 0
+    }
+  }
+}

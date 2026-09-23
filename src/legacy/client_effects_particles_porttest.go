@@ -5,9 +5,9 @@ package legacy
 /*
 #include "defs.h"
 #include "client__draw__partscrn.h"
-extern void* nox_alloc_screenParticles_806044;
-extern nox_screenParticle* nox_screenParticles_head;
-extern nox_screenParticle* dword_5d4594_806052;
+
+
+
 extern void portTestEffectsParticleUpdate(uint32_t*);
 */
 import "C"
@@ -38,7 +38,7 @@ func PortTestEffectsParticleEnvironment() (unsafe.Pointer, *int, func()) {
 // PortTestEffectsScreenParticles uses the production allocation/list machinery
 // behind screen-particle creation. A small capacity also exercises tail reuse.
 func PortTestEffectsScreenParticles(capacity int) (func() [][]uint32, func()) {
-	oldPool, oldHead, oldTail := C.nox_alloc_screenParticles_806044, C.nox_screenParticles_head, C.dword_5d4594_806052
+	oldPool, oldHead, oldTail := legacyGlobals.nox_alloc_screenParticles_806044, legacyGlobals.nox_screenParticles_head, legacyGlobals.dword_5d4594_806052
 	colors := unsafe.Slice(memmap.PtrUint32(0x5D4594, 806004), 10)
 	oldColors := append([]uint32(nil), colors...)
 	for i := range colors {
@@ -47,17 +47,17 @@ func PortTestEffectsScreenParticles(capacity int) (func() [][]uint32, func()) {
 	var pool alloc.ClassT[C.nox_screenParticle]
 	if capacity > 0 {
 		pool = alloc.NewClassT("porttest screen particles", C.nox_screenParticle{}, capacity)
-		C.nox_alloc_screenParticles_806044 = pool.UPtr()
+		legacyGlobals.nox_alloc_screenParticles_806044 = pool.UPtr()
 	} else {
-		C.nox_alloc_screenParticles_806044 = nil
+		legacyGlobals.nox_alloc_screenParticles_806044 = nil
 	}
-	C.nox_screenParticles_head = nil
-	C.dword_5d4594_806052 = nil
+	legacyGlobals.nox_screenParticles_head = nil
+	legacyGlobals.dword_5d4594_806052 = nil
 	snapshot := func() [][]uint32 {
 		var nodes []*C.nox_screenParticle
 		ids := make(map[*C.nox_screenParticle]uint32)
 		var prev *C.nox_screenParticle
-		for p := C.nox_screenParticles_head; p != nil; p = p.field_44 {
+		for p := legacyGlobals.nox_screenParticles_head; p != nil; p = p.field_44 {
 			if len(nodes) >= capacity || ids[p] != 0 || p.field_48 != prev {
 				panic("invalid screen particle list")
 			}
@@ -65,7 +65,7 @@ func PortTestEffectsScreenParticles(capacity int) (func() [][]uint32, func()) {
 			ids[p] = uint32(len(nodes))
 			prev = p
 		}
-		if prev != C.dword_5d4594_806052 {
+		if prev != legacyGlobals.dword_5d4594_806052 {
 			panic("invalid screen particle tail")
 		}
 		var out [][]uint32
@@ -82,9 +82,9 @@ func PortTestEffectsScreenParticles(capacity int) (func() [][]uint32, func()) {
 		return out
 	}
 	return snapshot, func() {
-		C.nox_alloc_screenParticles_806044 = oldPool
-		C.nox_screenParticles_head = oldHead
-		C.dword_5d4594_806052 = oldTail
+		legacyGlobals.nox_alloc_screenParticles_806044 = oldPool
+		legacyGlobals.nox_screenParticles_head = oldHead
+		legacyGlobals.dword_5d4594_806052 = oldTail
 		copy(colors, oldColors)
 		if capacity > 0 {
 			pool.Free()
