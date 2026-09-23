@@ -1,0 +1,299 @@
+{
+  "status": "qualified original integer damage callback baseline",
+  "revision": "89c91e08478ccafacaa6b14484d25f0015b136d0",
+  "phase": {
+    "batch": "damage-values",
+    "phase": "contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/damage-values-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-damage-values/baseline/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-damage-values/baseline/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 104.52840273198672
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/damage-values-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-damage-values/baseline/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-damage-values/baseline/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 176.94344949396327
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/damage-values-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-damage-values/baseline/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-damage-values/baseline/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 103.30957914702594
+      }
+    ],
+    "revision": "89c91e08478ccafacaa6b14484d25f0015b136d0",
+    "source_unchanged": true,
+    "wall_seconds": 385.3173675360158,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 132,
+      "selected_root_tests": 132,
+      "exit": 0,
+      "started_tests": 132,
+      "completed_tests": 132,
+      "started_root_tests": 132,
+      "completed_root_tests": 132,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 104.46354346419685
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 132,
+      "selected_root_tests": 132,
+      "exit": 0,
+      "started_tests": 132,
+      "completed_tests": 132,
+      "started_root_tests": 132,
+      "completed_root_tests": 132,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 176.84124001907185
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 132,
+      "selected_root_tests": 132,
+      "exit": 0,
+      "started_tests": 132,
+      "completed_tests": 132,
+      "started_root_tests": 132,
+      "completed_root_tests": 132,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 103.24915075185709
+    }
+  },
+  "captures": {
+    "damage-value-basic-02": {
+      "path": "build/port-damage-values/original-damage-value-basic-02.json",
+      "cases": 180,
+      "sha256": "eeacfa3de8fe2f201d53411aa1a55edd5d63074cb5437ab4fb9e102d6580ec5e"
+    },
+    "damage-value-basic-08": {
+      "path": "build/port-damage-values/original-damage-value-basic-08.json",
+      "cases": 180,
+      "sha256": "26efe969ae70d0577d05fa016f628552b29e35b39076d4bbf2cc206b43af7ebc"
+    },
+    "damage-value-basic-09": {
+      "path": "build/port-damage-values/original-damage-value-basic-09.json",
+      "cases": 180,
+      "sha256": "574121289fb695aed20ffd6abf658fce9ba0fcb81fcc4dc39f72e9b3a9c1e372"
+    },
+    "damage-value-basic-10": {
+      "path": "build/port-damage-values/original-damage-value-basic-10.json",
+      "cases": 180,
+      "sha256": "209c91e4d1646ff8ec4d5bd8a60147bbedb298cf33712f6dd554b46a02ff8320"
+    },
+    "damage-value-basic-14": {
+      "path": "build/port-damage-values/original-damage-value-basic-14.json",
+      "cases": 180,
+      "sha256": "f3e47315b0cbb8c40f4cc1c1f8198726d334faca869c497548a55984105f8ace"
+    },
+    "damage-value-basic-20": {
+      "path": "build/port-damage-values/original-damage-value-basic-20.json",
+      "cases": 180,
+      "sha256": "3ee123dd759f97d9999539f72b4318d882a8438d159237b63eb7e5f1fa3710b2"
+    },
+    "damage-value-basic-21": {
+      "path": "build/port-damage-values/original-damage-value-basic-21.json",
+      "cases": 180,
+      "sha256": "629ed7080385c9a74309a9ec3f80d4c2ff398512c07a4f4ff9b594db1529a425"
+    },
+    "damage-value-basic-22": {
+      "path": "build/port-damage-values/original-damage-value-basic-22.json",
+      "cases": 180,
+      "sha256": "d40cacd0ea3cec927058b33a46bea9593edbd48abfd3067d1c541cfef0aae11f"
+    },
+    "damage-value-basic-23": {
+      "path": "build/port-damage-values/original-damage-value-basic-23.json",
+      "cases": 180,
+      "sha256": "b7d2cf5279331b8c6d0edab33a14fa76bcd1bfce5b994eeec5e9ffcc496391ab"
+    },
+    "damage-value-basic-24": {
+      "path": "build/port-damage-values/original-damage-value-basic-24.json",
+      "cases": 180,
+      "sha256": "39133581ded8ca8053ff79e63835f01603221b314203c226eb60722577ecc699"
+    },
+    "damage-value-generator": {
+      "path": "build/port-damage-values/original-damage-value-generator.json",
+      "cases": 144,
+      "sha256": "2f7d2020ce2fda68530c5c7db3f4f7b50590d5edac15d86f4a430944a9254d55"
+    },
+    "damage-value-golem-wrapping": {
+      "path": "build/port-damage-values/original-damage-value-golem-wrapping.json",
+      "cases": 15,
+      "sha256": "dbec9d6105f0cf6b9a2f821e06e853f011734c3fba92d90e05fc95af3addc76d"
+    },
+    "damage-value-positive": {
+      "path": "build/port-damage-values/original-damage-value-positive.json",
+      "cases": 4,
+      "sha256": "43e3a2d989735df453c56b103068c4c5d7000a8aa9096ae5a9ab6ce253703a56"
+    },
+    "damage-value-source-02": {
+      "path": "build/port-damage-values/original-damage-value-source-02.json",
+      "cases": 54,
+      "sha256": "b29253349968badb08cae4b541129799bc1dfc52d866a1318f78f66a47eb20a3"
+    },
+    "damage-value-source-14": {
+      "path": "build/port-damage-values/original-damage-value-source-14.json",
+      "cases": 54,
+      "sha256": "9b0bdb7b170d4fa26f8312e09129f3571bfbf281553d47831ba2b096f00f7e6a"
+    }
+  },
+  "owner_capture_cases": 2071,
+  "raw_forwarding_cases": 1800,
+  "bool_only_compatibility_cases": 2,
+  "production_reuse": "Only four named porttest files added and damage_dispatch_porttest.go changed. All other source/dependency fingerprints and four preceding qualified binary hashes match. Runtime/discovery environments unchanged. Three fresh strict profiles repeat all15 frozen original-path captures.",
+  "reused_qualification": "death-registry-qualification.json",
+  "binary_sha256": {
+    "safe": "862ac18720257c680a7fef0caa9df87589f9cbbd86c544c471fd4bbb30146268",
+    "opennox": "ca9e92456db583e2d1fdb46c1e28fff7049777b510085e7eba41a150d6bbbd52",
+    "opennox-hd": "d0ddd6b14e3e78343ea3414d66bb098684709f9c4d2c5a375e91caa31bf98ab2",
+    "opennox-server": "742c21d3a789bf5f73551c6237722a6e7b0e01b7a6c8f0643bec84c73b61e270"
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79,
+  "retained_callback_exports": [
+    "nox_xxx_damageDefaultProc_4E0B30",
+    "sub_4E23C0",
+    "nox_server_handler_PlayerDamage_4E17B0",
+    "sub_4E24B0",
+    "sub_4E24E0",
+    "nox_xxx_damageFlammable_4E2520",
+    "nox_xxx_damageBlackPowder_4E2560",
+    "nox_xxx_damageArmor_4E1500",
+    "sub_4E14B0",
+    "sub_4E14A0",
+    "nox_xxx_damageMonsterGen_4E27D0"
+  ]
+}

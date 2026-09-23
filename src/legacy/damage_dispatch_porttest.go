@@ -95,6 +95,7 @@ import (
 
 type PortTestDamageSpec struct {
 	Registry                  string
+	RegistryValue             bool
 	Source, Weapon, Other     int
 	Amount, Kind              int32
 	PlayerIndex               int
@@ -200,7 +201,11 @@ func (p *portTestShopPools) damageAction(a PortTestShopAction) uint32 {
 		if actor.Damage != C.damageFunction(C.int(a.Op-1100)) {
 			panic("damage registry name/address mismatch")
 		}
-		state.damage.result = uint64(bool2int(actor.CallDamage(p.temporaryRef(sp.Source), p.temporaryRef(sp.Weapon), int(sp.Amount), object.DamageType(sp.Kind))))
+		if sp.RegistryValue {
+			state.damage.result = uint64(projectileDamage(actor, p.temporaryRef(sp.Source), p.temporaryRef(sp.Weapon), sp.Amount, sp.Kind))
+		} else {
+			state.damage.result = uint64(bool2int(actor.CallDamage(p.temporaryRef(sp.Source), p.temporaryRef(sp.Weapon), int(sp.Amount), object.DamageType(sp.Kind))))
+		}
 	} else {
 		state.damage.result = uint64(C.damageCall(C.int(a.Op-1100), inventoryInt(p.temporaryRef(attack.Actor)), inventoryInt(p.temporaryRef(sp.Source)), inventoryInt(p.temporaryRef(sp.Weapon)), inventoryInt(p.temporaryRef(sp.Other)), C.int(sp.Amount), C.int(sp.Kind), C.uint32_t(sp.FloatBits), state.record, internCStr(sp.Name), C.int(sp.PlayerIndex)))
 	}

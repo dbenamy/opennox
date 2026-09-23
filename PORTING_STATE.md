@@ -7,34 +7,33 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — death registry qualified
+## Current — exact damage-value baseline qualified
 
-Baseline67679140 pushed. Conversion32720/full 89854 joined PASS: all117roots
-perprofile,9frozen captures1864cases, raw8cases and dynamic glyph2invocations.
-No skips or changed expectations. Safe/static, four fresh binaries/all14 retained
-Go-backed exports, exact knownsuite304events/17pass2fail32skip, headlesscreation and
-save/load PASS. See DEATH_REGISTRY.md/qualification JSON. Check Git for conversion
-commit/push. No build/test jobs active. Application/finalizers/scenariodedup CONSUMED.
-Current bins: build/port-death-registry/{safe/opennox-safe,production/production/bin}.
+Death conversion89c91e08 committed and pushed. All117 roots/profile,1864 frozen
+cases, safe/static, production/ABI, exact knownsuite and headless scenarios passed.
+Current qualified binaries remain build/port-death-registry/{safe/opennox-safe,
+production/production/bin}; keep them plain for baseline identity checks.
 
-Nineproductionfiles changed;14exact names/addresses/sizes/order/parser verified,
-four callers preserve nil/else branches. Primary corrected Luna unusedimports and
-named Flags-to-uint32 result beforebaseline/apply; no later source corrections.
-Baseline86830 primaryfixture error (alloc.New ignoresvalue) caught by positive
-assertions, explicit targetclass fixed;37503passed beforefreeze. Extra10598 verifies
-3eligible nil-slot deletion cases in existing24case projectilecapture.
+Next production patch build/port-damage-values/direct-calls.patch remains UNAPPLIED.
+It adds exact-int32 damage dispatch for11 canonical callbacks and five raw callers,
+without changing boolean APIs or using bool-only overrides for exact integer calls.
+Primary reviewed the corrected eight-file diff. First Luna draft missed all five
+promised body edits; preserved rejected patch and erratum. See DAMAGE_VALUES.md.
 
-Next: build/port-damage-values contains UNAPPLIED production draft (Luna) and
-primary raw-return/bool-registration compatibility test drafts, not installed.
-Proposed separate exactint32 registry preserves DamageFunc/RegisterObjectDamageGo/
-CallDamage bool APIs; canonical11callbacks register exacthelpers and derivedbool.
-Rawvalue calls for bool-only registrations must retain original C fallback. Five
-rawsites include projectileDamage's full/lowbyte consumers plus ignoredreturn sites.
-No nil-slot zero shortcut for unchecked callers. Original-owner baseline/design
-review pending before applying production. Initial Luna direct-calls.patch REJECTED:
-claimed five replacements absent while imports removed; helper regeneratingcombined
-patch. Original rejected patch must remain for audit. Also require *Object arguments
-for raw API instead of unnecessary Obj adapters. No nextpatch accepted/applied. Luna bounded helper; no nextsourceedits.
+Four new porttest files and legacy/damage_dispatch_porttest.go changes installed.
+Original49186 joinedPASS seven roots:2071 canonical owner cases (15 frozen captures),
+1800 raw forwarding cases,2 boolean-only registration compatibility cases.
+Baseline31825 joinedPASS132 roots/default/server/highres, no skips,15 frozen hashes.
+Finalizer52884 joinedPASS exact source/four-binary identity reuse; baseline qualified.
+No build jobs active. Commit/push baseline before applying corrected production patch,
+then run contracts/safe/preflight/production and finish.py. No old goldens changed.
+
+Luna reviewed additional consumers; primary added exact roots for spell/sustained,
+object collision, sentry, lightning modifiers and toxic-cloud owners/candidates.
+Only one helper active. Both pre20 cache pages found no candidates. Twelve older
+qualified binaries gzip-archived16578 PASS:582940300→274093337bytes, restore script
+build/port-damage-values/archive-old-binaries.py --restore. Current death bins plain.
+Historical capture/log archive audit pending; disk tight, preserve assets/evidence.
 
 Death cleanup: originalnext80audit incorrect pre16cutoff rejected before deletion.
 strict16 record8files398794162bytes; then primary explicitly broadened cutoff18:00,

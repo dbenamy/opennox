@@ -2290,3 +2290,16 @@ This qualifies 117 fewer C lines and 24 fewer interfaces. The optional safe buil
 passes; runtime qualification remains default/server/highres. Continue one bounded
 Luna helper after the two-batch review, with primary evidence checks and integration.
 See [ORPHAN_BRIDGES.md](ORPHAN_BRIDGES.md).
+
+
+## Exact integer damage dispatch
+
+Add a separate int32 registry alongside the established boolean damage API.
+Register canonical exact helpers in both maps, deriving bool only from the exact
+result. Boolean-only registrations leave the value map alone and retain original
+C fallback for raw callers. This preserves results such as256 for both full-word
+and low-byte consumers. Raw calls require a configured callback as before. Scope:
+five raw sites, eleven canonical registrations; no layout/C-address changes.
+Original132-root, three-profile baseline and2071 frozen owner cases are qualified;
+conversion pending. Reviewable/reversible API decision authorized by standing user
+instructions. See DAMAGE_VALUES.md.

@@ -19,7 +19,9 @@ with C addresses/data sizes and raw fallback preserved. All117 roots/profile and
 1864 frozen cases pass, along with safe/static, fresh production/ABI, exact known
 suite and headless creation/save-load. See [DEATH_REGISTRY.md](docs/porting/DEATH_REGISTRY.md).
 **Standalone C remains zero; production C preamble bodies remain79.**
-Next: review remaining raw damage-value callers without losing their integer results.
+The next exact damage-value baseline is qualified:132 roots/profile and2071 frozen
+canonical cases, plus raw integer/boolean-compatibility contracts. Production
+conversion remains pending. See [DAMAGE_VALUES.md](docs/porting/DAMAGE_VALUES.md).
 
 ### Earlier checkpoints
 
