@@ -302,3 +302,18 @@ is CONSUMED for archival. Use --restore <recorded-relative-path> before historic
 finalizers needing raw .bin files (especially results-ubsan.bin). Frozen committed
 fixtures/current binaries/assets are unchanged. Spectrumrawcaptures are newer and
 notarchived. Free disk~407MiB. No primary builds active. C sixlines/onefile/refzero.
+
+## Current — spectrum Go qualified, unwired
+
+Baseline178ea160 committed/pushed. Spectrumacceptance35528 joined PASS:5roots
+in default/server/highres/safe and CGO_ENABLED=0;4364newexactfloat/state cases plus
+all earlierhelpers. Vet passes. Finalizer checks alloldsource/fourSSE binaries;
+production/ABI/gameplay evidence explicitly reused. No acceptedfixturechanges.
+See mp3-spectrum-go-qualification.json. C sixlines/onefile/referencezero/81preambles.
+
+Next Luna draft build/port-mp3-imdct/drafts: scalar DCT3_9/IMDCT36/IDCT3/IMDCT12/
+short/gr wrapper/sign changes, no builds or tracked edits. Primary owns C captures
+and runner, including stateful block sequences. Explicitfloat32 operation order,
+in-place temp/overlap reads and retained tails require review. No active builds.
+Old MP3 raw captures remain archived (restore before oldfinalizers); current
+spectrumraw files remainplain. Free disk~400MiB. Assets/archive preserved.

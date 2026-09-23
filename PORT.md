@@ -14,6 +14,14 @@
 
 ## Current status
 
+Go MP3 stereo, spectral reordering and antialiasing match4,364 exact C state
+records in four profiles and with cgo disabled; all previous helper roots pass.
+A documented legacy8kHz mixed-block extent is preserved in bounded workspace
+slices for later integration review. The decoder remains unwired; existing
+production evidence is explicitly reused. C remains six standalone lines plus
+the active header. Next: inverse transforms/overlap state. See
+[MP3_SPECTRUM.md](docs/porting/MP3_SPECTRUM.md).
+
 Go MP3 scalefactor byte parsing and quarter-power scaling now match57,002 frozen
 scalar-SSE2 C cases, with exact float bits and every reuse mask. All four helper
 roots pass in four profiles and with cgo disabled. The complete decoder remains

@@ -46,3 +46,25 @@ not silently clamp it. At complete-decoder integration, represent the adjacent
 spectral/scalefactor workspace explicitly so these writes can be reproduced without
 unsafe access, or qualify a separate behavior correction. This is a documented,
 reversible compatibility decision for review, not a new decoder-format guarantee.
+
+## Go implementation qualified
+
+C baseline `178ea160` is committed/pushed. All4,364 spectrum records match bit for
+bit in default/server/highres/safe and CGO_ENABLED=0, alongside all earlier helper
+roots. Vet passes. Independent checks cover old-value mid/side and intensity
+ordering, negative-zero/subnormal top-band detection, short-window permutation,
+antialias coefficient orientation, raw MS-bit behavior and both channels of the
+legacy600-word reorder extent within an explicit1192-word workspace.
+
+Luna drafted the connected helpers and independently reviewed the C capture.
+Primary reviewed arithmetic/constant bits, wrote the runner and qualified the
+installed source. The first numerical comparison passed; no C expectation changed.
+[Qualification](mp3-spectrum-go-qualification.json) records all five roots per
+configuration and unchanged earlier source/four production binary hashes. The
+package remains unimported, so prior dependency checks and SSE production/ABI/
+gameplay evidence are explicitly reused. Production and full-suite checks were
+not rerun for this private preparation; full Go PCM/format/performance remain
+integration gates. C stays six lines/one file, reference zero,81 preamble bodies.
+
+Next connected group: inverse transforms, overlap state and subband sign changes.
+Stateful frame sequences must accompany individual helper float-bit comparisons.
