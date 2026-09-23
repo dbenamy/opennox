@@ -7,7 +7,23 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — mixed forwarding qualified
+## Current — reward-use registry baseline qualified
+
+Mixed conversion787f3a08 is pushed. New reward registry test baseline session32128
+joined PASS:20 roots/profile, both C-backed routes match all576 frozen cases/profile.
+Production unchanged; only src/book_awards_use_porttest_test.go changed, all other
+source fingerprints/runtime/discovery env and four binary hashes verified.
+See REWARD_USE_REGISTRY.md and reward-use-registry-c-qualification.json.
+Tests.patch APPLIED/CONSUMED; production.patch UNAPPLIED under
+build/port-reward-use-registry. Baseline finalizer CONSUMED. Next commit/push baseline,
+apply three registration changes, qualify native20roots and remaining full pipeline.
+No Go/build jobs active. Qualification/dedup/finish scripts prepared UNCONSUMED.
+
+Luna found no remaining undeduplicated completed scenario assets:577 recorded runs
+already have manifests. A distinct bounded next40 old-cache audit is pending for
+headroom; no cache deletion until primary marker/hash/host reference verification.
+
+## Earlier — mixed forwarding qualified
 
 Baseline d27b1274 is pushed. All94 calls/38files and two unused interface
 retirements are qualified:692/691/692 roots, no skips or changed expectations.

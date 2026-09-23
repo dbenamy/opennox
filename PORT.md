@@ -22,8 +22,9 @@ save-load checks. All four binaries omit 42 redundant call bridges and both reti
 exports; the other 40 selected exports remain Go-backed.
 **Standalone C remains zero; production C preamble bodies remain 79.**
 Next: route three reward-item callbacks through the existing Go registry while
-preserving C callback addresses and external fallback. See
-[MIXED_FORWARDING.md](docs/porting/MIXED_FORWARDING.md).
+preserving C callback addresses and external fallback. Its unchanged-production
+baseline passes 20 roots/profile and all 576 cases on both routes. See
+[REWARD_USE_REGISTRY.md](docs/porting/REWARD_USE_REGISTRY.md).
 
 ### Earlier checkpoints
 

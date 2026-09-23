@@ -16,6 +16,15 @@ import (
 )
 
 func TestBookAwardsItemUse(t *testing.T) {
+	bookAwardsItemUse(t, false)
+}
+
+func TestBookAwardsItemUseRegistry(t *testing.T) {
+	bookAwardsItemUse(t, true)
+}
+
+func bookAwardsItemUse(t *testing.T, registry bool) {
+	t.Helper()
 	o := newReliableReportsOwner(t)
 	t.Cleanup(flags.PortTestGameFlags(0))
 	bookAwardStrings(t, o.s)
@@ -41,7 +50,18 @@ func TestBookAwardsItemUse(t *testing.T) {
 	oldDeleted := o.s.Objs.DeletedList
 	t.Cleanup(func() { o.s.Objs.DeletedList = oldDeleted; o.s.PortTestCombatAudioReset() })
 	var rows []map[string]any
+	useNames := []string{"SpellRewardUse", "AbilityRewardUse", "FieldGuideUse"}
+	usePointers := []unsafe.Pointer{legacy.Get_nox_xxx_useSpellReward_53F9E0(), legacy.Get_nox_xxx_useAbilityReward_53FAE0(), legacy.Get_sub_53F930()}
+	useSizes := []uintptr{unsafe.Sizeof(server.SpellRewardUseData{}), unsafe.Sizeof(server.AbilityRewardUseData{}), unsafe.Sizeof(server.FieldGuideUseData{})}
 	for kind, op := range []string{"nox_xxx_useSpellReward_53F9E0", "nox_xxx_useAbilityReward_53FAE0", "sub_53F930"} {
+		var registered server.UseFuncPtr
+		if registry {
+			var size uintptr
+			registered, size = server.PortTestWorldUseRegistry(useNames[kind])
+			if registered.Ptr == nil || registered.Ptr != usePointers[kind] || size != useSizes[kind] {
+				t.Fatal("registered use callback", useNames[kind], registered.Ptr, usePointers[kind], size, useSizes[kind])
+			}
+		}
 		for _, gf := range []uint32{0, 2048, 4096, 6144} {
 			flags.ResetGame()
 			flags.SetGame(flags.GameFlag(gf))
@@ -64,6 +84,9 @@ func TestBookAwardsItemUse(t *testing.T) {
 							p.Info().SetPlayerClass(player.Class(class))
 						}
 						*it = server.Object{}
+						if registry {
+							it.Use = registered
+						}
 						clear(data[:])
 						it.UseData.Ptr = unsafe.Pointer(data)
 						if kind == 2 {
@@ -74,7 +97,18 @@ func TestBookAwardsItemUse(t *testing.T) {
 						} else {
 							data[0] = byte(id)
 						}
-						ret := bookAwardCall(op, uint32(uintptr(unsafe.Pointer(u))), uint32(uintptr(unsafe.Pointer(it))))
+						ret := uint32(0)
+						if registry {
+							fn := it.Use.Get()
+							if fn == nil {
+								t.Fatal("nil registered use callback", useNames[kind])
+							}
+							if fn(u, it) {
+								ret = 1
+							}
+						} else {
+							ret = bookAwardCall(op, uint32(uintptr(unsafe.Pointer(u))), uint32(uintptr(unsafe.Pointer(it))))
+						}
 						wantRet := uint32(0)
 						consumed := false
 						audio := 0
@@ -198,5 +232,9 @@ func TestBookAwardsItemUse(t *testing.T) {
 			}
 		}
 	}
-	spellbookCapture(t, "book-awards-item-use", rows, "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f")
+	if registry {
+		spellbookCapture(t, "book-awards-item-use-registry", rows, "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f")
+	} else {
+		spellbookCapture(t, "book-awards-item-use", rows, "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f")
+	}
 }

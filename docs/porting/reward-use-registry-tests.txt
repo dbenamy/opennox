@@ -1,0 +1,1 @@
+^Test(BookAwards.*|UnitGameplay(ReadUse|ReadMessageLimits|RewardOwners)|WorldCollisionsSpellAward)$
