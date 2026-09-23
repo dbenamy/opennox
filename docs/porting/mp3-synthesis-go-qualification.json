@@ -1,0 +1,119 @@
+{
+  "status": "qualified unwired Go MP3 PCM synthesis and filterbank state with exact scalar-SSE2 results",
+  "baseline_revision": "1f11ad436c5b1ed73e81905b485a725f47a58e9d",
+  "tests": {
+    "default": {
+      "log_sha256": "8fece891b46a3e5123808868985678a1a29c6ac89316fb9a6953ffef65d84c65",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "server": {
+      "log_sha256": "c3e9e6961ff7f2a8510d256bf4c84b4d137d5fc4f9d93ca0e65b7dc1a6e49962",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "highres": {
+      "log_sha256": "400f3c760cf133584f9ce8bc89e6a633f91ba219b26d1e02dc568e5d794a8ffe",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "safe": {
+      "log_sha256": "698cabe038d499f93e51e1032f35768579281856adf4f0aaa7cbe4b20726f414",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "pure-go": {
+      "log_sha256": "2e48c503c5b6792c8a6c0432b3a72d4851a18d46b1a13bbdec00a5d63bb7242b",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "pass": true
+    }
+  },
+  "go_vet": "pass",
+  "synthesis_cases": [
+    196616,
+    390,
+    408,
+    360
+  ],
+  "granule_steps": 576,
+  "float_table_entries_compared": 240,
+  "c_ubsan_output_sha256": "118f9528a7565948f50a4c64312f47c8467b0ceb4bec5c49bf8dca90c3c62901",
+  "production_reuse": {
+    "prior_qualification": "docs/porting/mp3-dct-go-qualification.json",
+    "prior_qualification_sha256": "0b3dc0c7b5009c499062b366473932cd064c27a4d408225a5f346093f68157d4",
+    "old_source_files_unchanged": 2996,
+    "new_source": {
+      "src/legacy/client/audio/mp3/synthesis.go": "268c798cf8bfddee2cacd8d893e8ca571bc2dcb3c315b5119f3f0ba1cce0c87f",
+      "src/legacy/client/audio/mp3/synthesis_test.go": "4886748d5f42c8e026964af1ef0e0026e68f8033ea75c791fb280f98feffc80e"
+    },
+    "binary_hashes_rechecked": {
+      "build/port-mp3-sse/production/production/bin/opennox": "f5614bd62f8e7df5ff11d6cb4eabe12b2a64d90c08a549e150ffdce30bc2ea7e",
+      "build/port-mp3-sse/production/production/bin/opennox-hd": "dc1839db87529a2a113d1bf7913f892a3abd6cc6fb91bf4885493f6c0aaa77c7",
+      "build/port-mp3-sse/production/production/bin/opennox-server": "7b6b605e5b63769e573e7fb4ad9bc575bf64b2708c61dfece444fd7352383916",
+      "build/port-mp3-sse/safe/opennox-safe": "929cd084b161bb80cc7a03fea351c20738b2a382b31acf5f89d99acd9980ba82"
+    },
+    "reason": "Only private code/tests added to the existing unimported package; all previous source files and production binary hashes unchanged. Previous dependency selections remain applicable."
+  },
+  "production_c": {
+    "files": 1,
+    "lines": 6
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "limits": [
+    "Production and gameplay evidence reused, not rerun.",
+    "No complete Go decoder or new PCM claim."
+  ]
+}

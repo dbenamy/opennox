@@ -35,3 +35,20 @@ in the frozen fixture. The capture tool defines the complete protocol.
 This remains private decoder preparation, unimported by production. Standalone
 C remains six lines/one file, reference C zero; the active header and81 preamble
 bodies are outside that source-size count. No new complete-decoder PCM claim.
+
+## Go qualification
+
+All eight helper roots pass in default/server/highres/safe and cgo-disabled
+configurations; vet passes. All197,774 new records match C exactly, including
+PCM sample bytes and intermediate float state. No expectations changed. Primary
+reviewed arithmetic/aliasing and wrote the runner; Luna independently reviewed
+its protocol and coverage. Primary corrected a draft buffer-size comment from
+1084 to1088 after the runs; this was a comment-only correction, not a bound or
+behavior change. The indexed final word is960+4*31+3=1087.
+
+Independent assertions cover the exact legacy negative rounding examples, silent
+mono/stereo synthesis, unchanged spectral input, retained odd mono QMF words,
+QMF tails and PCM tails. [Qualification](mp3-synthesis-go-qualification.json)
+checks all prior sources and four production binaries. Production/gameplay
+evidence is explicitly reused for the unimported package. Full-decoder PCM
+qualification still awaits Huffman decoding and wrapper integration.

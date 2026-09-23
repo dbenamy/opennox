@@ -14,6 +14,12 @@
 
 ## Current status
 
+Go MP3 PCM synthesis/filterbank state matches197,774 C records, including
+196,616 rounding cases and576 stateful granule steps. All eight helper roots
+pass in four profiles and with cgo disabled; vet passes. C remains six standalone
+lines plus the active header. Next: Huffman/dequantization and decoder wrappers.
+Production remains on C. See [MP3_SYNTHESIS.md](docs/porting/MP3_SYNTHESIS.md).
+
 Go MP3 synthesis DCT matches2,172 exact original-C cases in four profiles and
 with cgo disabled; all seven helper roots and vet pass. C remains six standalone
 lines plus the active header. Next: PCM synthesis and persistent filterbank state.

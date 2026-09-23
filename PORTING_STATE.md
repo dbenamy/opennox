@@ -364,3 +364,12 @@ roundtrip/hash verification and per-file open-fd checks;155500892rawbytesreclaim
 Consumed archive-transform-raw.py; transform-raw-archive-record.json has paths,
 hashes and restoration instructions. Restore rawUBSan files before rerunning
 thosehistoricalfinalizers. Current synthesisraw files remainplain. Assets unchanged.
+
+## Current — PCM synthesis qualified, unwired
+
+Baseline1f11ad43 pushed. Acceptance78688 joined PASS:eightroots/fiveconfigs+vet.
+197774newrecords exact,576granulesteps. No expectationchanges. Source/fourbinary
+hashes pass; production evidence reused. Onlyposttestedit corrects spancomments.
+C sixlines/onefile/refzero/81preambles. Next Huffman/pow43: Luna extracting tables
+and smallpowhelper under build/port-mp3-huffman/drafts; primary owns bitstream
+logic/capture. No active builds. Raw synthesiscaptures retainedplain.
