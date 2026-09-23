@@ -1,0 +1,826 @@
+{
+  "status": "qualified scalar synthesis scheduling and mono discarded-output elimination",
+  "preceding_revision": "81e5291ddff0ed7f9ca64186d206d8f3935485c8",
+  "changed_source_sha256": {
+    "src/legacy/client/audio/mp3/synthesis.go": "acd21a6a09a0f2dd2569e5863a6ee2680e87ef4f12f8b34cb60a2f9c24e35026"
+  },
+  "source_manifest_sha256": "6b288ff6a765f5873895d28690ce57a7e6f5bbb5a8c4def29c650c8af31560ef",
+  "phases": {
+    "decoder": {
+      "batch": "mp3-synthesis-performance",
+      "phase": "decoder",
+      "success": true,
+      "steps": [
+        {
+          "name": "server",
+          "command": [
+            "go",
+            "test",
+            "-json",
+            "-count=1",
+            "-tags",
+            "server",
+            "./legacy/client/audio/mp3"
+          ],
+          "exit": 0,
+          "wall_seconds": 9.799930965993553
+        },
+        {
+          "name": "highres",
+          "command": [
+            "go",
+            "test",
+            "-json",
+            "-count=1",
+            "-tags",
+            "highres",
+            "./legacy/client/audio/mp3"
+          ],
+          "exit": 0,
+          "wall_seconds": 10.563886085990816
+        },
+        {
+          "name": "safe",
+          "command": [
+            "go",
+            "test",
+            "-json",
+            "-count=1",
+            "-tags",
+            "safe",
+            "./legacy/client/audio/mp3"
+          ],
+          "exit": 0,
+          "wall_seconds": 10.269192551029846
+        },
+        {
+          "name": "purego",
+          "command": [
+            "env",
+            "CGO_ENABLED=0",
+            "go",
+            "test",
+            "-json",
+            "-count=1",
+            "./legacy/client/audio/mp3"
+          ],
+          "exit": 0,
+          "wall_seconds": 10.478579682996497
+        },
+        {
+          "name": "vet",
+          "command": [
+            "go",
+            "vet",
+            "./legacy/client/audio/mp3"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.27085049799643457
+        }
+      ],
+      "revision": "81e5291ddff0ed7f9ca64186d206d8f3935485c8",
+      "source_unchanged": true,
+      "wall_seconds": 42.30050404788926,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "audio-default": {
+      "batch": "mp3-synthesis-performance",
+      "phase": "audio-default",
+      "success": true,
+      "steps": [
+        {
+          "name": "audio",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/mp3-sse-audio-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            "./legacy/client/audio/ail",
+            "--log",
+            "/root/src/opennox/build/port-mp3-performance/audio-default/tests.log",
+            "--result",
+            "/root/src/opennox/build/port-mp3-performance/audio-default/tests.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 56.12241012090817
+        }
+      ],
+      "revision": "81e5291ddff0ed7f9ca64186d206d8f3935485c8",
+      "source_unchanged": true,
+      "wall_seconds": 56.384918480878696,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "audio-highres": {
+      "batch": "mp3-synthesis-performance",
+      "phase": "audio-highres",
+      "success": true,
+      "steps": [
+        {
+          "name": "audio",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/mp3-sse-audio-tests.txt",
+            "--tags",
+            "highres,porttest",
+            "--package",
+            "./legacy/client/audio/ail",
+            "--log",
+            "/root/src/opennox/build/port-mp3-performance/audio-highres/tests.log",
+            "--result",
+            "/root/src/opennox/build/port-mp3-performance/audio-highres/tests.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 56.318636633921415
+        }
+      ],
+      "revision": "81e5291ddff0ed7f9ca64186d206d8f3935485c8",
+      "source_unchanged": true,
+      "wall_seconds": 56.60112602310255,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "default": {
+      "batch": "mp3-synthesis-performance",
+      "phase": "default",
+      "success": true,
+      "steps": [
+        {
+          "name": "consumer",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/mp3-sse-consumer-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-mp3-performance/default/tests.log",
+            "--result",
+            "/root/src/opennox/build/port-mp3-performance/default/tests.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 3.7041818141005933
+        }
+      ],
+      "revision": "81e5291ddff0ed7f9ca64186d206d8f3935485c8",
+      "source_unchanged": true,
+      "wall_seconds": 4.013116837013513,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "highres": {
+      "batch": "mp3-synthesis-performance",
+      "phase": "highres",
+      "success": true,
+      "steps": [
+        {
+          "name": "consumer",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/mp3-sse-consumer-tests.txt",
+            "--tags",
+            "highres,porttest",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-mp3-performance/highres/tests.log",
+            "--result",
+            "/root/src/opennox/build/port-mp3-performance/highres/tests.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 3.593246666016057
+        }
+      ],
+      "revision": "81e5291ddff0ed7f9ca64186d206d8f3935485c8",
+      "source_unchanged": true,
+      "wall_seconds": 3.8339428089093417,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "safe": {
+      "batch": "mp3-synthesis-performance",
+      "phase": "safe",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-tags",
+            "safe",
+            "-o",
+            "/root/src/opennox/build/port-mp3-performance/safe/opennox-safe",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 4.70496140117757
+        },
+        {
+          "name": "static",
+          "command": [
+            "go",
+            "test",
+            "./common/memmap/nox",
+            "-run",
+            "^TestCodeStatic$",
+            "-count=1"
+          ],
+          "exit": 0,
+          "wall_seconds": 1.0442465168889612
+        }
+      ],
+      "revision": "81e5291ddff0ed7f9ca64186d206d8f3935485c8",
+      "source_unchanged": true,
+      "wall_seconds": 6.1931363919284195,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "preflight": {
+      "batch": "mp3-synthesis-performance",
+      "phase": "preflight",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-o",
+            "/root/src/opennox/build/port-mp3-performance/preflight/opennox",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 4.805320068029687
+        },
+        {
+          "name": "scenario",
+          "command": [
+            "env",
+            "OPENNOX_DISPLAY_BINARY=/root/src/opennox/build/port-mp3-performance/preflight/opennox",
+            "OPENNOX_DISPLAY_IMPLEMENTATION=Optimized Go MP3 scalar synthesis",
+            "OPENNOX_UI_SCENARIO=/root/src/opennox/docs/porting/character-creation.yaml",
+            "NOX_DEV=true",
+            "python3",
+            "/root/src/opennox/tools/porting/run_scenario.py",
+            "mp3-synthesis-performance",
+            "compare",
+            "/root/src/opennox/build/baseline/runs/entry-classifiers-c"
+          ],
+          "exit": 0,
+          "wall_seconds": 67.33636190998368
+        }
+      ],
+      "revision": "81e5291ddff0ed7f9ca64186d206d8f3935485c8",
+      "source_unchanged": true,
+      "wall_seconds": 72.55214461591095,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "production": {
+      "batch": "mp3-synthesis-performance",
+      "phase": "production",
+      "success": true,
+      "steps": [
+        {
+          "name": "production",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/qualify_production.py",
+            "/root/src/opennox/docs/porting/mp3-synthesis-performance-batch.json",
+            "--out",
+            "/root/src/opennox/build/port-mp3-performance/production/production"
+          ],
+          "exit": 0,
+          "wall_seconds": 106.59360486711375
+        }
+      ],
+      "revision": "81e5291ddff0ed7f9ca64186d206d8f3935485c8",
+      "source_unchanged": true,
+      "wall_seconds": 106.85775799606927,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    }
+  },
+  "decoder_profiles": {
+    "default": {
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestFrameFrozenVectors",
+        "TestHuffmanFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "log_sha256": "01d1dd3f5e6550b5c0e51cc7ffb7a1e0d16b2f1bf9c9831ee917ef537d86e147"
+    },
+    "server": {
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestFrameFrozenVectors",
+        "TestHuffmanFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "log_sha256": "28c70fd2313ce55a931ed4f71b055374314e69e09ae3277c7eb6e7f6c31f8b59"
+    },
+    "highres": {
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestFrameFrozenVectors",
+        "TestHuffmanFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "log_sha256": "e0dae480cc973ede314d7137e6c3cd001089587e1b384975b66e295ec907ce05"
+    },
+    "safe": {
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestFrameFrozenVectors",
+        "TestHuffmanFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "log_sha256": "a7ef4a72d316d045496516284894dbccb284e8704927126aa7a935e6e3982b09"
+    },
+    "purego": {
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestFrameFrozenVectors",
+        "TestHuffmanFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        "TestSynthesisFrozenVectors",
+        null
+      ],
+      "log_sha256": "5c8b1d8425a32e549d0a7d8ea43ab06c5d323c2ede78fcc53f49ee91a4e1b61b"
+    }
+  },
+  "vet": "pass",
+  "asset_cases": 1246,
+  "capture_sha256": "e0688114198dc50b4acf9b5695ea4cd8bf6dbb9f91d53d1e9d550c02ff1e2763",
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.31891021784395,
+        "sha256": "c4ea0549a9412188bf275c6678610eb0c28d85ec2b6a29ed8f0a5a99c9136662",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 4.548173295101151,
+        "sha256": "94b68a6a8feed3ae62457538d94710b44aec2ffbe3213db6c408f8f5de492adf",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 4.003714752849191,
+        "sha256": "e2b1003f2a328ba6fe6c5747537969525df3bc98b4e93b4951640fafa21be667",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "mp3-synthesis-performance-save": {
+        "exit": 0,
+        "wall_seconds": 46.15428449213505,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 45.60379381803796,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "c4ea0549a9412188bf275c6678610eb0c28d85ec2b6a29ed8f0a5a99c9136662",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-mp3-performance/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/mp3-synthesis-performance-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Optimized Go MP3 scalar synthesis",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "99936e229bc200cbe6744bca6a9fd9e39762f367722d068e468b3f7bd8b8c7b2"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 41.99964790698141,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 17,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "preflight": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 66.662162713008,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c",
+    "binary_sha256": "c4ea0549a9412188bf275c6678610eb0c28d85ec2b6a29ed8f0a5a99c9136662",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-mp3-performance/preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/mp3-synthesis-performance/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Optimized Go MP3 scalar synthesis",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "binary_sha256": {
+    "safe": "59591f0ae58ec1e1b5da892103a0f3947b920983689d0254c051996c5c1b6694",
+    "opennox": "c4ea0549a9412188bf275c6678610eb0c28d85ec2b6a29ed8f0a5a99c9136662",
+    "opennox-hd": "94b68a6a8feed3ae62457538d94710b44aec2ffbe3213db6c408f8f5de492adf",
+    "opennox-server": "e2b1003f2a328ba6fe6c5747537969525df3bc98b4e93b4951640fafa21be667"
+  },
+  "mono_benchmark": {
+    "cpu": 0,
+    "trials": [
+      {
+        "seconds": 0.905109919,
+        "frames": 81300,
+        "checksum": 5387298400,
+        "implementation": "c",
+        "trial": 0
+      },
+      {
+        "allocated_bytes": 0,
+        "checksum": 5387298400,
+        "frames": 81300,
+        "mallocs": 0,
+        "seconds": 2.6756608589999997,
+        "implementation": "baseline",
+        "trial": 0
+      },
+      {
+        "allocated_bytes": 0,
+        "checksum": 5387298400,
+        "frames": 81300,
+        "mallocs": 0,
+        "seconds": 1.769959843,
+        "implementation": "candidate",
+        "trial": 0
+      },
+      {
+        "allocated_bytes": 0,
+        "checksum": 5387298400,
+        "frames": 81300,
+        "mallocs": 0,
+        "seconds": 1.77163563,
+        "implementation": "candidate",
+        "trial": 1
+      },
+      {
+        "seconds": 0.875640155,
+        "frames": 81300,
+        "checksum": 5387298400,
+        "implementation": "c",
+        "trial": 1
+      },
+      {
+        "allocated_bytes": 0,
+        "checksum": 5387298400,
+        "frames": 81300,
+        "mallocs": 0,
+        "seconds": 2.670585546,
+        "implementation": "baseline",
+        "trial": 1
+      },
+      {
+        "allocated_bytes": 0,
+        "checksum": 5387298400,
+        "frames": 81300,
+        "mallocs": 0,
+        "seconds": 2.621584375,
+        "implementation": "baseline",
+        "trial": 2
+      },
+      {
+        "allocated_bytes": 0,
+        "checksum": 5387298400,
+        "frames": 81300,
+        "mallocs": 0,
+        "seconds": 1.7649543300000001,
+        "implementation": "candidate",
+        "trial": 2
+      },
+      {
+        "seconds": 0.902266927,
+        "frames": 81300,
+        "checksum": 5387298400,
+        "implementation": "c",
+        "trial": 2
+      }
+    ],
+    "seconds_per_frame_median": {
+      "c": 1.109799418204182e-05,
+      "baseline": 3.284853070110701e-05,
+      "candidate": 2.177072377613776e-05
+    },
+    "candidate_over_baseline": 0.6627609610375687,
+    "candidate_over_c": 1.961680950542034,
+    "binary_sha256": {
+      "c": "18ab09b3c6369dd1859722e6da18ba4188a376e5f588c80e1f52eae67223d7ce",
+      "baseline": "13a9a75b74f381def530a4f952037ddfbaebcc530e863176bea1098b86e9f211",
+      "candidate": "cb16f206dce638e0c808017bfc6d1f121d4e23b7b2d5289a740baa7949ebf6c4"
+    },
+    "input": {
+      "asset": "build/assets/extracted/drive_c/Nox/Dialog/C1CAP01E.WAV",
+      "asset_sha256": "52f517fb8f98a5ba4c83d1746d487c66f9bb4f386cc600e6487bb9a03413d667",
+      "payload_sha256": "0a884688307f42eef85a31f73c261264802d176e0c52550996d2d6f9fb044739",
+      "payload_bytes": 84552
+    },
+    "synthesis_candidate_sha256": "acd21a6a09a0f2dd2569e5863a6ee2680e87ef4f12f8b34cb60a2f9c24e35026",
+    "synthesis_baseline_sha256": "268c798cf8bfddee2cacd8d893e8ca571bc2dcb3c315b5119f3f0ba1cce0c87f",
+    "scope": "One mono22050Hz asset, memory resident, native386/SSE2, pinned CPU, rotated order, three trials per implementation. First/last sample checksum is a benchmark guard; exact PCM/state qualification is separate."
+  },
+  "synthetic_stereo_benchmark": {
+    "cpu": 0,
+    "trials": [
+      {
+        "seconds": 1.997012863,
+        "frames": 81300,
+        "checksum": 2660721000,
+        "implementation": "c",
+        "trial": 0
+      },
+      {
+        "allocated_bytes": 0,
+        "checksum": 2660721000,
+        "frames": 81300,
+        "mallocs": 0,
+        "seconds": 5.307390027,
+        "implementation": "baseline",
+        "trial": 0
+      },
+      {
+        "allocated_bytes": 0,
+        "checksum": 2660721000,
+        "frames": 81300,
+        "mallocs": 0,
+        "seconds": 4.871767093,
+        "implementation": "candidate",
+        "trial": 0
+      },
+      {
+        "allocated_bytes": 0,
+        "checksum": 2660721000,
+        "frames": 81300,
+        "mallocs": 0,
+        "seconds": 4.867255245,
+        "implementation": "candidate",
+        "trial": 1
+      },
+      {
+        "seconds": 1.868928086,
+        "frames": 81300,
+        "checksum": 2660721000,
+        "implementation": "c",
+        "trial": 1
+      },
+      {
+        "allocated_bytes": 0,
+        "checksum": 2660721000,
+        "frames": 81300,
+        "mallocs": 0,
+        "seconds": 5.261583656,
+        "implementation": "baseline",
+        "trial": 1
+      },
+      {
+        "allocated_bytes": 0,
+        "checksum": 2660721000,
+        "frames": 81300,
+        "mallocs": 0,
+        "seconds": 5.440711528,
+        "implementation": "baseline",
+        "trial": 2
+      },
+      {
+        "allocated_bytes": 0,
+        "checksum": 2660721000,
+        "frames": 81300,
+        "mallocs": 0,
+        "seconds": 4.997229669,
+        "implementation": "candidate",
+        "trial": 2
+      },
+      {
+        "seconds": 1.900174547,
+        "frames": 81300,
+        "checksum": 2660721000,
+        "implementation": "c",
+        "trial": 2
+      }
+    ],
+    "seconds_per_frame_median": {
+      "c": 2.337238065190652e-05,
+      "baseline": 6.528155014760148e-05,
+      "candidate": 5.992333447724477e-05
+    },
+    "candidate_over_baseline": 0.9179214393922664,
+    "candidate_over_c": 2.563852410659619,
+    "binary_sha256": {
+      "c": "18ab09b3c6369dd1859722e6da18ba4188a376e5f588c80e1f52eae67223d7ce",
+      "baseline": "13a9a75b74f381def530a4f952037ddfbaebcc530e863176bea1098b86e9f211",
+      "candidate": "cb16f206dce638e0c808017bfc6d1f121d4e23b7b2d5289a740baa7949ebf6c4"
+    },
+    "input": {
+      "scope": "synthetic benchmark input only; not a shipped asset or expected-audio fixture",
+      "generator": "/root/src/opennox/build/port-mp3-performance/make-stereo-input.py",
+      "generator_sha256": "d96a83b15506c2c83f4b31a3535ff34b00e6b13da3e120e0e43af678f260a6f9",
+      "frame_generator": "tools/porting/capture_mp3_frame.py:frame",
+      "header_hex": "fffb8000",
+      "mpeg_version": "MPEG-1",
+      "layer": 3,
+      "sample_rate_hz": 44100,
+      "channel_mode": "stereo",
+      "pattern": "coded then escape, alternating",
+      "frame_count": 813,
+      "frame_bytes": 365,
+      "bytes": 296745,
+      "sha256": "4738757ccd7d0e6644a8dc0e7746721ec539843f3ab599518a5c46e0ce1f09eb"
+    },
+    "synthesis_candidate_sha256": "acd21a6a09a0f2dd2569e5863a6ee2680e87ef4f12f8b34cb60a2f9c24e35026",
+    "synthesis_baseline_sha256": "268c798cf8bfddee2cacd8d893e8ca571bc2dcb3c315b5119f3f0ba1cce0c87f",
+    "scope": "Synthetic stereo44100Hz alternating coded/escape frames; not shipped audio, memory resident, native386/SSE2, pinned CPU, rotated order, three trials per implementation. First/last sample checksum is a benchmark guard; exact PCM/state qualification is separate."
+  },
+  "initial_profile": "File: profile-decoder\nBuild ID: e12d8bd3e75efd760626a98075584cc30b2a3f59\nType: cpu\nTime: 2026-09-23 16:07:23 UTC\nDuration: 27.08s, Total samples = 27.03s (99.82%)\nShowing nodes accounting for 26.33s, 97.41% of 27.03s total\nDropped 12 nodes (cum <= 0.14s)\n      flat  flat%   sum%        cum   cum%\n    14.61s 54.05% 54.05%     18.06s 66.81%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.synth\n     2.48s  9.17% 63.23%      2.92s 10.80%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.huffman\n     1.45s  5.36% 68.59%      1.95s  7.21%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.dctII\n     1.41s  5.22% 73.81%      2.55s  9.43%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.synth.func1 (inline)\n     1.33s  4.92% 78.73%      1.34s  4.96%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.scalePCM (inline)\n     0.86s  3.18% 81.91%      0.86s  3.18%  runtime.duffzero\n     0.77s  2.85% 84.76%      1.42s  5.25%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.imdct36\n     0.54s  2.00% 86.76%     20.58s 76.14%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.synthGranule\n     0.44s  1.63% 88.38%      0.66s  2.44%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.synthPair\n     0.41s  1.52% 89.90%      0.41s  1.52%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.dct3Nine\n     0.37s  1.37% 91.27%      0.37s  1.37%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.antialias\n     0.28s  1.04% 92.30%     27.01s 99.93%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.(*Decoder).DecodeFrame\n     0.27s     1% 93.30%      0.27s     1%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.huffman.func3 (inline)\n     0.20s  0.74% 94.04%      0.24s  0.89%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.imdct12\n     0.18s  0.67% 94.71%      0.18s  0.67%  runtime.duffcopy\n     0.17s  0.63% 95.34%      0.17s  0.63%  runtime.memmove\n     0.15s  0.55% 95.89%      0.15s  0.55%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.changeSign (inline)\n     0.15s  0.55% 96.45%      0.15s  0.55%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.huffman.func2 (inline)\n     0.08s   0.3% 96.74%      0.14s  0.52%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.readScalefactors\n     0.07s  0.26% 97.00%      0.33s  1.22%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.decodeScalefactors\n     0.06s  0.22% 97.23%      0.54s  2.00%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.imdctShort\n     0.03s  0.11% 97.34%      5.88s 21.75%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.decodeLayer3\n     0.02s 0.074% 97.41%     27.03s   100%  main.main\n         0     0% 97.41%      1.96s  7.25%  github.com/opennox/opennox/v1/legacy/client/audio/mp3.imdctGranule\n         0     0% 97.41%     27.03s   100%  runtime.main\n",
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79,
+  "limits": [
+    "Mono timing is one memory-resident shipped asset; stereo timing is deterministic generated audio, not a shipped stereo asset or whole-game result.",
+    "Mono optimization requires disjoint PCM and synthesis workspace, as in production and fixtures; floating-point exception flags are not part of the Go audio contract.",
+    "Default numerical qualification reuses the successful candidate gate whose source identity is pinned by its benchmark and unchanged-package checks.",
+    "Decoder-phase manifest predates a correction to an unused audio-default command; all executed phase commands and environments match the final manifest."
+  ]
+}

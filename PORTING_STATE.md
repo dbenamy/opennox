@@ -7,7 +7,34 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — typed callback adapters qualified
+## Current — MP3 synthesis performance qualified
+
+Only synthesis.go changes production behavior: lane-local accumulation preserves
+float32 order, and mono skips PCM calculations whose results were overwritten.
+All history stores remain. Relative to fresh unchanged Go builds, controlled
+median frame time fell 33.7% for one shipped mono asset and 8.2% for a synthetic
+stereo stream. Both benchmarks allocate zero; these are not whole-game timings.
+All ten decoder roots pass in five configurations; vet, both 1,246-asset profiles,
+consumer tests, safe/static, fresh production/ABI, exact known suite (304 failure
+events; 17 pass/2 fail/32 skip packages), creation and save/load pass.
+See [performance record](docs/porting/MP3_SYNTHESIS_PERFORMANCE.md) and
+[qualification](docs/porting/mp3-synthesis-performance-qualification.json).
+
+Artifacts: `build/port-mp3-performance`. Sessions 9950,54229,71708,82061,27229
+are joined; finalizer and both scenario deduplication scripts are CONSUMED.
+Fresh binaries are in `safe` and `production/production/bin` below that directory.
+Cleanup removed 21 old reproducible cache archives (509,121,918 bytes), with exact
+hash/stat and host process/open-file checks; see
+`build/port-artifact-cleanup/go-cache-pre-sep23-round2-removed.json`.
+Original assets, fixtures and retained binaries are preserved.
+
+Luna drafted both optimizations; primary reviewed arithmetic and mono write
+indices and ran qualification. Luna's next read-only candidate is ten direct C
+calls to three book drag/drop callbacks already implemented in Go. Review their
+argument/return normalization and existing contracts before implementation.
+Check Git log/remote for the performance commit/push.
+
+## Earlier — typed callback adapters qualified
 
 Baseline `bc9273d4` is committed/pushed. Conversion preserves `CallDrawFunc` and
 `Nox_call_objectType_new_go` while using shared ccall dispatchers. All 24 ABI

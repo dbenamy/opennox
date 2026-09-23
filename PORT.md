@@ -14,6 +14,18 @@
 
 ## Current status
 
+Go MP3 synthesis now avoids overwritten mono outputs and accumulates each lane
+locally while preserving its exact float32 operation order. Controlled medians
+improved 34% on one shipped mono asset and 8% on a synthetic stereo stream;
+both remain allocation-free. Frozen PCM/state, all 1,246 asset observations,
+production/ABI, known-suite and headless creation/save-load checks pass.
+**Standalone C remains zero; production C preamble bodies remain 79.**
+Next: review a bounded group of redundant Go→C→Go book callbacks before broader
+callback architecture work. See
+[MP3_SYNTHESIS_PERFORMANCE.md](docs/porting/MP3_SYNTHESIS_PERFORMANCE.md).
+
+### Earlier checkpoints
+
 Two typed callback shims now reuse existing shared dispatchers, preserving both
 Go APIs. All 24 forwarding/return cases pass per profile; client consumer tests,
 fresh production/ABI, known-suite and headless creation/save-load checks pass.
@@ -21,8 +33,6 @@ fresh production/ABI, known-suite and headless creation/save-load checks pass.
 bodies are callback invocation glue. Next: profile the documented MP3 performance
 gap before considering a broader callback representation redesign. See
 [TYPED_CALLBACK_ADAPTERS.md](docs/porting/TYPED_CALLBACK_ADAPTERS.md).
-
-### Earlier checkpoints
 
 Production audio now uses the fully qualified Go MP3 decoder. All 1,246 shipped
 asset observations and historical PCM goldens match unchanged; all decoder

@@ -81,8 +81,12 @@ func synth(xl []float32, dstl []int16, nch int, lins []float32) {
 	lins[zbase+4*31+2] = xl[1]
 	lins[zbase+4*31+3] = xl[xrOff+1]
 
-	synthPair(dstl[dstrOff:], nch, lins[4*15+1:])
-	synthPair(dstl[dstrOff+32*nch:], nch, lins[4*15+64+1:])
+	// For mono, the first two calls write [0,16] and [32,48], which the
+	// following pair calls overwrite. PCM output and lins workspace are disjoint.
+	if nch != 1 {
+		synthPair(dstl[dstrOff:], nch, lins[4*15+1:])
+		synthPair(dstl[dstrOff+32*nch:], nch, lins[4*15+64+1:])
+	}
 	synthPair(dstl, nch, lins[4*15:])
 	synthPair(dstl[32*nch:], nch, lins[4*15+64:])
 
@@ -99,38 +103,56 @@ func synth(xl []float32, dstl []int16, nch int, lins []float32) {
 		lins[z+4*(i-16)+3] = xl[xrOff+18*(1+i)]
 
 		var a, b [4]float32
-		for step, kind := range [...]int{0, 2, 1, 2, 1, 2, 1, 2} {
-			w0, w1 := synthWindow[wpos], synthWindow[wpos+1]
-			wpos += 2
-			k := step
-			vz := z + 4*i - k*64
-			vy := z + 4*i - (15-k)*64
-			for j := 0; j < 4; j++ {
+		windowBase := wpos
+		wpos += 16
+		laneStep := 1
+		if nch == 1 {
+			// Mono stores even lanes over odd lanes at the same PCM indices.
+			laneStep = 2
+		}
+		for j := 0; j < 4; j += laneStep {
+			vz := z + 4*i
+			vy := vz - 15*64
+			w0 := synthWindow[windowBase]
+			w1 := synthWindow[windowBase+1]
+			p0 := float32(lins[vz+j] * w1)
+			p1 := float32(lins[vy+j] * w0)
+			q0 := float32(lins[vz+j] * w0)
+			q1 := float32(lins[vy+j] * w1)
+			bv := float32(p0 + p1)
+			av := float32(q0 - q1)
+			for step := 1; step < 8; step++ {
+				windowPos := windowBase + 2*step
+				w0 := synthWindow[windowPos]
+				w1 := synthWindow[windowPos+1]
+				k := step
+				vz := z + 4*i - k*64
+				vy := z + 4*i - (15-k)*64
 				p0 := float32(lins[vz+j] * w1)
 				p1 := float32(lins[vy+j] * w0)
 				q0 := float32(lins[vz+j] * w0)
 				q1 := float32(lins[vy+j] * w1)
-				if step == 0 {
-					b[j] = float32(p0 + p1)
-					a[j] = float32(q0 - q1)
+				bv = float32(bv + float32(p0+p1))
+				if step&1 != 0 {
+					av = float32(av + float32(q1-q0))
 				} else {
-					b[j] = float32(b[j] + float32(p0+p1))
-					if kind == 2 {
-						a[j] = float32(a[j] + float32(q1-q0))
-					} else {
-						a[j] = float32(a[j] + float32(q0-q1))
-					}
+					av = float32(av + float32(q0-q1))
 				}
 			}
+			a[j], b[j] = av, bv
 		}
 
 		pcm := func(off int, v float32) { dstl[off] = scalePCM(v) }
-		pcm(dstrOff+(15-i)*nch, a[1])
-		pcm(dstrOff+(17+i)*nch, b[1])
+		if nch != 1 {
+			pcm(dstrOff+(15-i)*nch, a[1])
+			pcm(dstrOff+(17+i)*nch, b[1])
+		}
 		pcm((15-i)*nch, a[0])
 		pcm((17+i)*nch, b[0])
-		pcm(dstrOff+(47-i)*nch, a[3])
-		pcm(dstrOff+(49+i)*nch, b[3])
+		if nch != 1 {
+			pcm(dstrOff+(47-i)*nch, a[3])
+			pcm(dstrOff+(49+i)*nch, b[3])
+		}
 		pcm((47-i)*nch, a[2])
 		pcm((49+i)*nch, b[2])
 	}
