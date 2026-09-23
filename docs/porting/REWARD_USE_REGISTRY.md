@@ -2,8 +2,8 @@
 
 ## Scope
 
-Use the existing typed registry for SpellRewardUse, AbilityRewardUse and
-FieldGuideUse. Register the existing bookUseSpell/bookUseAbility/bookUseGuide
+The three callbacks now use the existing typed registry: SpellRewardUse, AbilityRewardUse and
+FieldGuideUse. They register the existing bookUseSpell/bookUseAbility/bookUseGuide
 functions, preserving their C callback addresses and per-object data sizes.
 Registration still occurs at package initialization with the same duplicate-name
 checks. Object layouts, exported C interfaces, the generic registry implementation
@@ -50,3 +50,23 @@ Primary owns qualification and acceptance. No model cost/speed savings measured.
 
 Standalone C remains zero physical lines/files; production C preamble bodies remain
 79. This removes three registered Go→C→Go routes, without changing those body counts.
+
+## Conversion acceptance
+
+All20 roots pass in default/server/highres, without skips. Both routes retain all
+576 frozen cases per profile; the registry route now selects the registered Go
+functions, while the original C-entrypoint test remains. Safe/static, four fresh
+binaries/ABI, exact known suite (304 existing failure events;17pass/2fail/32skip
+packages), headless character creation and save/load pass. All three callback
+exports remain Go-backed and production contains no PortTest symbols. See
+[qualification evidence](reward-use-registry-qualification.json). Native session43125
+and remaining pipeline93892 joined PASS. No expected value or production draft
+correction was needed in this chunk.
+
+A bounded next-page cache audit found22 old archives containing already-retired
+call bridges. Primary verified archive/hash/stat metadata, marker absence from
+current source/four qualified mixed binaries, and host FD/executable/mapped-file
+references, then removed1,058,685,796 reproducible cache bytes. The exact record is
+build/port-reward-use-registry/old-cache-next40-removed.json. Original assets and
+retained evidence remain; all577 older scenario directories already had asset
+restoration manifests, so that separate audit removed nothing.

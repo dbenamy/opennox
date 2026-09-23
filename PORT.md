@@ -14,16 +14,14 @@
 
 ## Current status
 
-Ninety-four more calls now reach their existing Go implementations directly.
-Explicit numeric adaptations preserve the 386 types, and two unused mismatched
-C interfaces are retired. All 692/691/692 affected roots pass default/server/highres,
-plus fresh safe/static, production/ABI, exact known-suite and headless creation/
-save-load checks. All four binaries omit 42 redundant call bridges and both retired
-exports; the other 40 selected exports remain Go-backed.
-**Standalone C remains zero; production C preamble bodies remain 79.**
-Next: route three reward-item callbacks through the existing Go registry while
-preserving C callback addresses and external fallback. Its unchanged-production
-baseline passes 20 roots/profile and all 576 cases on both routes. See
+Three reward-item callbacks now use the existing typed Go registry, preserving
+C callback addresses, data sizes and the fallback for external callbacks. All
+20 affected roots pass per profile; both C-entrypoint and registry routes match
+576 frozen cases each. Fresh safe/static, production/ABI, exact known-suite and
+headless creation/save-load checks pass.
+**Standalone C remains zero; production C preamble bodies remain79.**
+Next: qualify an actual Object.CallDamage baseline before extending the typed
+registry to its eleven callbacks. See
 [REWARD_USE_REGISTRY.md](docs/porting/REWARD_USE_REGISTRY.md).
 
 ### Earlier checkpoints

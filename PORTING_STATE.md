@@ -7,21 +7,28 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — reward-use registry baseline qualified
+## Current — reward-use registry qualified
 
-Mixed conversion787f3a08 is pushed. New reward registry test baseline session32128
-joined PASS:20 roots/profile, both C-backed routes match all576 frozen cases/profile.
-Production unchanged; only src/book_awards_use_porttest_test.go changed, all other
-source fingerprints/runtime/discovery env and four binary hashes verified.
-See REWARD_USE_REGISTRY.md and reward-use-registry-c-qualification.json.
-Tests.patch APPLIED/CONSUMED; production.patch UNAPPLIED under
-build/port-reward-use-registry. Baseline finalizer CONSUMED. Next commit/push baseline,
-apply three registration changes, qualify native20roots and remaining full pipeline.
-No Go/build jobs active. Qualification/dedup/finish scripts prepared UNCONSUMED.
+Baseline6918d113 is pushed. Three direct Go registrations qualified:20 roots/profile,
+both routes576 exact frozen cases/profile, no skips/expectation changes. Safe/static,
+four fresh binaries/ABI, exact known suite304events/17pass2fail32skip, headless creation
+and save/load PASS. All three callbacks remain Go-backed C exports. See
+REWARD_USE_REGISTRY.md and qualification JSON. Native43125/full93892 joined PASS.
+Check Git log/remote for conversion commit/push status. No Go/build jobs active.
+Draft applications, finalizers and scenario dedup scripts CONSUMED.
 
-Luna found no remaining undeduplicated completed scenario assets:577 recorded runs
-already have manifests. A distinct bounded next40 old-cache audit is pending for
-headroom; no cache deletion until primary marker/hash/host reference verification.
+Next: build/port-damage-registry production.patch UNAPPLIED; Luna drafts raw callback
+forwarding porttest files under drafts. Primary owns11 actual-owner registry capture
+baseline. Proposed additive DamageFunc/registry preserves raw API/layout and fallback;
+three special transforms move to shared int32 helpers. Primary review corrected
+callback selection timing (capture before SObj adapters can mutate Damage) and
+BlackPowder C-export early rejection before integer-address conversion. These need
+original-path baseline coverage before applying. No damage source edits installed.
+
+Cleanup old-cache-next40-removed.json records22 verified obsolete archives,
+1058685796bytes removed, hostFD/exe/mapping/hash/stat/marker checks. Source/assets/
+binaries unaffected. Separate audit found577 recorded scenario runs already deduped.
+Prior mixed archival records retain restore commands for older binaries/logs.
 
 ## Earlier — mixed forwarding qualified
 

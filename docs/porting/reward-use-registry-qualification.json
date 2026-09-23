@@ -1,0 +1,709 @@
+{
+  "status": "qualified direct Go reward-use registrations",
+  "preceding_revision": "6918d113c8ed017c34541861dd51c3cfef9b0a40",
+  "changed_source_sha256": {
+    "src/legacy/object_use.go": "deb97ecb93cc0517d60ec40bf6ee0ac8d1ae378a5c9af934c9d2ae94d1455168"
+  },
+  "baseline": {
+    "status": "qualified reward-use registry C-backed baseline",
+    "revision": "787f3a084b29fcdbf31c78719c98bfef4fe334f2",
+    "phase": {
+      "batch": "reward-use-registry",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "env",
+            "OPENNOX_SPELLBOOK_CAPTURE=/root/src/opennox/build/port-reward-use-registry/baseline/default",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/reward-use-registry-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-reward-use-registry/baseline/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-reward-use-registry/baseline/default-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 44.1285412539728
+        },
+        {
+          "name": "server",
+          "command": [
+            "env",
+            "OPENNOX_SPELLBOOK_CAPTURE=/root/src/opennox/build/port-reward-use-registry/baseline/server",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/reward-use-registry-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-reward-use-registry/baseline/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-reward-use-registry/baseline/server-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 42.66197473788634
+        },
+        {
+          "name": "highres",
+          "command": [
+            "env",
+            "OPENNOX_SPELLBOOK_CAPTURE=/root/src/opennox/build/port-reward-use-registry/baseline/highres",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/reward-use-registry-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-reward-use-registry/baseline/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-reward-use-registry/baseline/highres-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 43.33221135591157
+        }
+      ],
+      "revision": "787f3a084b29fcdbf31c78719c98bfef4fe334f2",
+      "source_unchanged": true,
+      "wall_seconds": 130.6524568758905,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "contracts": {
+      "default": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 20,
+        "selected_root_tests": 20,
+        "exit": 0,
+        "started_tests": 20,
+        "completed_tests": 20,
+        "started_root_tests": 20,
+        "completed_root_tests": 20,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 44.035795559873804
+      },
+      "server": {
+        "tags": "porttest,server",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 20,
+        "selected_root_tests": 20,
+        "exit": 0,
+        "started_tests": 20,
+        "completed_tests": 20,
+        "started_root_tests": 20,
+        "completed_root_tests": 20,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 42.560850067064166
+      },
+      "highres": {
+        "tags": "porttest,highres",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 20,
+        "selected_root_tests": 20,
+        "exit": 0,
+        "started_tests": 20,
+        "completed_tests": 20,
+        "started_root_tests": 20,
+        "completed_root_tests": 20,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 43.23785505699925
+      }
+    },
+    "captures": {
+      "default": {
+        "build/port-reward-use-registry/baseline/default-book-awards-item-use.json": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f",
+        "build/port-reward-use-registry/baseline/default-book-awards-item-use-registry.json": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f"
+      },
+      "server": {
+        "build/port-reward-use-registry/baseline/server-book-awards-item-use.json": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f",
+        "build/port-reward-use-registry/baseline/server-book-awards-item-use-registry.json": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f"
+      },
+      "highres": {
+        "build/port-reward-use-registry/baseline/highres-book-awards-item-use.json": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f",
+        "build/port-reward-use-registry/baseline/highres-book-awards-item-use-registry.json": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f"
+      }
+    },
+    "new_fixture_cases_per_route": 576,
+    "production_reuse": "Only the named porttest test file differs; every other source/test/dependency fingerprint and all four prior binary hashes match. Same runtime/discovery env. Per-profile capture output paths only affect ignored evidence files.",
+    "reused_qualification": "mixed-forwarding-qualification.json",
+    "binary_sha256": {
+      "safe": "5b87ac77df38b554550f7cb75b88435965bbd7bdde7cc4032cfdcccbc138ba82",
+      "opennox": "cacf23aed4f825444da57b3933a617366f9fd5b1434f4292d1fe9caf04aa718e",
+      "opennox-hd": "b4b91c01a5870ac827085a11617a1dd58959a64cd5b09b72f16744747d414d66",
+      "opennox-server": "0e8bc3e39ad0768ad9ead864b4d890800af6441f5a77d26150421ee5e71b5879"
+    },
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    },
+    "production_c_preamble_bodies": 79,
+    "retained_callback_exports": [
+      "nox_xxx_useSpellReward_53F9E0",
+      "nox_xxx_useAbilityReward_53FAE0",
+      "sub_53F930"
+    ]
+  },
+  "phases": {
+    "contracts": {
+      "batch": "reward-use-registry",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "env",
+            "OPENNOX_SPELLBOOK_CAPTURE=/root/src/opennox/build/port-reward-use-registry/contracts/default",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/reward-use-registry-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-reward-use-registry/contracts/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-reward-use-registry/contracts/default-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 116.25986866792664
+        },
+        {
+          "name": "server",
+          "command": [
+            "env",
+            "OPENNOX_SPELLBOOK_CAPTURE=/root/src/opennox/build/port-reward-use-registry/contracts/server",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/reward-use-registry-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-reward-use-registry/contracts/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-reward-use-registry/contracts/server-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 115.90065046795644
+        },
+        {
+          "name": "highres",
+          "command": [
+            "env",
+            "OPENNOX_SPELLBOOK_CAPTURE=/root/src/opennox/build/port-reward-use-registry/contracts/highres",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/reward-use-registry-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-reward-use-registry/contracts/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-reward-use-registry/contracts/highres-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 42.49419947806746
+        }
+      ],
+      "revision": "6918d113c8ed017c34541861dd51c3cfef9b0a40",
+      "source_unchanged": true,
+      "wall_seconds": 275.207085091155,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "safe": {
+      "batch": "reward-use-registry",
+      "phase": "safe",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-tags",
+            "safe",
+            "-o",
+            "/root/src/opennox/build/port-reward-use-registry/safe/opennox-safe",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 64.0010364339687
+        },
+        {
+          "name": "static",
+          "command": [
+            "go",
+            "test",
+            "./common/memmap/nox",
+            "-run",
+            "^TestCodeStatic$",
+            "-count=1"
+          ],
+          "exit": 0,
+          "wall_seconds": 1.1441640181001276
+        }
+      ],
+      "revision": "6918d113c8ed017c34541861dd51c3cfef9b0a40",
+      "source_unchanged": true,
+      "wall_seconds": 65.52663789317012,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "preflight": {
+      "batch": "reward-use-registry",
+      "phase": "preflight",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-o",
+            "/root/src/opennox/build/port-reward-use-registry/preflight/opennox",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 63.07575493096374
+        },
+        {
+          "name": "scenario",
+          "command": [
+            "env",
+            "OPENNOX_DISPLAY_BINARY=/root/src/opennox/build/port-reward-use-registry/preflight/opennox",
+            "OPENNOX_DISPLAY_IMPLEMENTATION=Direct Go reward-use callbacks",
+            "OPENNOX_UI_SCENARIO=/root/src/opennox/docs/porting/character-creation.yaml",
+            "NOX_DEV=true",
+            "python3",
+            "/root/src/opennox/tools/porting/run_scenario.py",
+            "reward-use-registry",
+            "compare",
+            "/root/src/opennox/build/baseline/runs/entry-classifiers-c"
+          ],
+          "exit": 0,
+          "wall_seconds": 71.69119007885456
+        }
+      ],
+      "revision": "6918d113c8ed017c34541861dd51c3cfef9b0a40",
+      "source_unchanged": true,
+      "wall_seconds": 135.16559790098108,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "production": {
+      "batch": "reward-use-registry",
+      "phase": "production",
+      "success": true,
+      "steps": [
+        {
+          "name": "production",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/qualify_production.py",
+            "/root/src/opennox/docs/porting/reward-use-registry-batch.json",
+            "--out",
+            "/root/src/opennox/build/port-reward-use-registry/production/production"
+          ],
+          "exit": 0,
+          "wall_seconds": 169.02741266600788
+        }
+      ],
+      "revision": "6918d113c8ed017c34541861dd51c3cfef9b0a40",
+      "source_unchanged": true,
+      "wall_seconds": 169.3048453668598,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    }
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 20,
+      "selected_root_tests": 20,
+      "exit": 0,
+      "started_tests": 20,
+      "completed_tests": 20,
+      "started_root_tests": 20,
+      "completed_root_tests": 20,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 116.16244624811225
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 20,
+      "selected_root_tests": 20,
+      "exit": 0,
+      "started_tests": 20,
+      "completed_tests": 20,
+      "started_root_tests": 20,
+      "completed_root_tests": 20,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 115.83399817394093
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 20,
+      "selected_root_tests": 20,
+      "exit": 0,
+      "started_tests": 20,
+      "completed_tests": 20,
+      "started_root_tests": 20,
+      "completed_root_tests": 20,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 42.42608872195706
+    }
+  },
+  "captures": {
+    "default": {
+      "build/port-reward-use-registry/contracts/default-book-awards-item-use.json": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f",
+      "build/port-reward-use-registry/contracts/default-book-awards-item-use-registry.json": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f"
+    },
+    "server": {
+      "build/port-reward-use-registry/contracts/server-book-awards-item-use.json": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f",
+      "build/port-reward-use-registry/contracts/server-book-awards-item-use-registry.json": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f"
+    },
+    "highres": {
+      "build/port-reward-use-registry/contracts/highres-book-awards-item-use.json": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f",
+      "build/port-reward-use-registry/contracts/highres-book-awards-item-use-registry.json": "ce8035fbce4dee00ac94d7250a5ea74c2cd5d70d148b08e760890bded0798a7f"
+    }
+  },
+  "cases_per_route_per_profile": 576,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 3.927308076992631,
+        "sha256": "072ee72741151cfe92e431765fc7f97634524be3bc91a1ad40800d2da7ca75e7",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.897931836079806,
+        "sha256": "e0cebea9c0a62390ed9bdf13dc9ef2a8ea1b7a9d11bf3a465ab416964f7b8754",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 61.599719485035166,
+        "sha256": "f7c2e90adf2b9b249b88c984e6a6fa5d8caa30225fb87d2e034a07c9272bbc36",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "reward-use-registry-save": {
+        "exit": 0,
+        "wall_seconds": 45.083880556048825,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.584945963928476,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "072ee72741151cfe92e431765fc7f97634524be3bc91a1ad40800d2da7ca75e7",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-reward-use-registry/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/reward-use-registry-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Direct Go reward-use callbacks",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "bab4902b7f016e2e51e5b1f9745d8979615f69bdcd8842fd910413f72892ef1f"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 44.06975945085287,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 17,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "preflight": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 70.99576101405546,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c",
+    "binary_sha256": "072ee72741151cfe92e431765fc7f97634524be3bc91a1ad40800d2da7ca75e7",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-reward-use-registry/preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/reward-use-registry/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Direct Go reward-use callbacks",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "binary_sha256": {
+    "safe": "9b046f12062d2dbd4440cf91a9227c987606b82d25442e1985b9bd98bd55b696",
+    "opennox": "072ee72741151cfe92e431765fc7f97634524be3bc91a1ad40800d2da7ca75e7",
+    "opennox-hd": "e0cebea9c0a62390ed9bdf13dc9ef2a8ea1b7a9d11bf3a465ab416964f7b8754",
+    "opennox-server": "f7c2e90adf2b9b249b88c984e6a6fa5d8caa30225fb87d2e034a07c9272bbc36"
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79,
+  "limits": [
+    "Three registered callbacks now select existing Go functions; callback addresses/data sizes and external C fallback implementation are unchanged.",
+    "Configured target is386/SSE2 with CGO; no64-bit compatibility or measured performance claim."
+  ]
+}

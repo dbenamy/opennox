@@ -45,9 +45,9 @@ func init() {
 	server.RegisterObjectUse("WarpReadUse", C.sub_53F830, func(u, it *server.Object) bool { return unitRead(u, it, true) }, 260)
 	server.RegisterObjectUse("WandUse", C.nox_xxx_useLesserFireballStaff_53F290, func(u, it *server.Object) bool { return effectsLesserFireball(u, it) != 0 }, 116)
 	server.RegisterObjectUse("WandCastUse", C.nox_xxx_useWandCastSpell_53F4F0, func(u, it *server.Object) bool { return effectsWandCast(u, it) != 0 }, 116)
-	server.RegisterObjectUseC("SpellRewardUse", C.nox_xxx_useSpellReward_53F9E0, unsafe.Sizeof(server.SpellRewardUseData{}))
-	server.RegisterObjectUseC("AbilityRewardUse", C.nox_xxx_useAbilityReward_53FAE0, unsafe.Sizeof(server.AbilityRewardUseData{}))
-	server.RegisterObjectUseC("FieldGuideUse", C.sub_53F930, unsafe.Sizeof(server.FieldGuideUseData{}))
+	server.RegisterObjectUse("SpellRewardUse", C.nox_xxx_useSpellReward_53F9E0, func(u, it *server.Object) bool { return bookUseSpell(u, it) != 0 }, unsafe.Sizeof(server.SpellRewardUseData{}))
+	server.RegisterObjectUse("AbilityRewardUse", C.nox_xxx_useAbilityReward_53FAE0, func(u, it *server.Object) bool { return bookUseAbility(u, it) != 0 }, unsafe.Sizeof(server.AbilityRewardUseData{}))
+	server.RegisterObjectUse("FieldGuideUse", C.sub_53F930, func(u, it *server.Object) bool { return bookUseGuide(u, it) != 0 }, unsafe.Sizeof(server.FieldGuideUseData{}))
 
 	server.RegisterObjectUseParse("WandUse", resourceObjectParser("use", "wand"))
 	server.RegisterObjectUseParse("WandCastUse", resourceObjectParser("use", "wandcast"))
