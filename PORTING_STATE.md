@@ -7,39 +7,41 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — lifecycle original baseline qualified
+## Current — lifecycle conversion qualified
 
-Update conversion5e725536 pushed; current qualified binaries remain plain under
-build/port-update-registry/{safe/opennox-safe,production/production/bin}.
-Creation8/init12 production draft UNAPPLIED under build/port-lifecycle-registry.
-Primary verified20 exact wrapper/argument/size mappings. Six production files plus
-one test bridge are expected during conversion. CallInit raw1/nil and three live
-raw2 owners remain distinct; Monster handlers stay late-bound, alias sizes intact.
+Eight creation/twelve initialization registrations now bind full existing Go
+wrappers. Six production files and one test-only new-API bridge changed; all
+addresses, data sizes, parsers and late-bound monster handlers retained. Both raw
+calling conventions preserved; pending activation/player arrival/item respawn use
+new two-argument API with original caller guards. Monster/Shopkeeper alias intact.
 
-Corrected baseline89145 PASS208roots/profile, no skips; finalizer verifies seven
-added/two changed porttest files only, all other source/dependencies and4prior
-binary hashes unchanged.13frozen groups352observations:8real allocator callbacks,
-300registered CallInit cases,36pending reward initializers and8Monster/Shopkeeper
-pending cases. Nil/raw,3explicit pointer cases and replaceable handlers pass.
-See LIFECYCLE_REGISTRY.md and lifecycle-registry-c-qualification.json.
+All 208 roots/profile, 13 frozen groups and 352 observations, exact recorded CallInit counts,
+nil/raw/argument and mutable-handler contracts PASS. Safe/static, four fresh
+386/SSE2/CGO binaries, retained Go-backed exports, exact known-suite 304 events with
+17 pass/2 fail/32 skip packages, headless creation and explicit save/load/resume PASS.
+Check Git for conversion commit/push. Current binaries remain plain under
+build/port-lifecycle-registry/{safe/opennox-safe,production/production/bin}.
+See LIFECYCLE_REGISTRY.md and lifecycle-registry-qualification.json. C: zero standalone files/lines; 79 preamble bodies.
 
-Original73701 failed the new player sibling's byte-return assertion on void route;
-corrected19589 and combined25059 passed before freeze. First broad80742 had no
-failures but selected an opt-in diagnostic skip; corrected explicit208-root list.
-Failed/rejected outputs retained. Luna creation fixture needed primary corrections
-before compilation; allocation-heavy fixture ownership now stays with primary.
+Original run 73701 failed only the primary new player sibling's inappropriate return
+assertion for a void owner; corrected run 19589 and combined run 25059 passed before freeze.
+First broad run 80742 had no failures but selected an opt-in diagnostic skip; explicit
+208-root selection passes. Rejected outputs retained. Luna creation fixture needed
+primary allocation/cleanup/global fixes before compilation; recorded in report.
+First conversion discovery 59981 failed on an unused ccall import in root
+object.go; import removal alone fixed it, with rejected output retained.
+No original algorithm golden changed. Completed finalizers consumed; don't rerun
+against later sources. No Go jobs active.
 
-Next: commit/push this baseline before production.patch. Switch only the test-only
-PortTestLifecycleInitWithArg bridge from raw2 to the new method at conversion.
-Then native3profiles and prepared qualify-remaining.sh for safe/static, production/
-ABI/knownsuite, headless creation/save-load, dedup and finish.py. Review scripts
-before use; no production qualification claimed yet. No active Go jobs.
-One Luna helper doing read-only collision inventory; no next implementation.
+Next: collision/damage-sound inventory under build/port-lifecycle-registry;
+primary argument/owner review and baseline design pending. No next implementation
+installed. One Luna helper; allocation-heavy fixture ownership stays with primary.
 
-Cleanup93638 PASS26old repo compiler archives1646054562bytes, hash/stat/header/module
-and host-use checks with no Go active. Source/modules/assets/binaries/evidence
-preserved. Record old-repository-cache-removed.json; script consumed by record.
-Standalone C0/0; production preamble bodies79.
+Cleanup 93638 removed 26 old reproducible repo compiler archives (1,646,054,562 bytes) after
+hash/stat/header/module and host-use checks with no Go active. Source/modules/
+assets/binaries/evidence retained. old-repository-cache-removed.json, script consumed.
+Completed scenario asset copies deduplicated by exact original hashes; per-run
+restore manifests and deduplicate-preflight/save.py --restore remain available.
 
 ## Earlier — 53 object updates qualified
 

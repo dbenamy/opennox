@@ -2329,3 +2329,17 @@ and explicit execution counts, with the existing registered UndeadKiller owner
 covering the53rd name. Baseline and conversion281-root qualification are complete in three profiles; fresh production and headless scenarios pass.
 See UPDATE_REGISTRY.md. This reversible API/process choice follows standing user
 authorization for larger coherent batches with independent contracts.
+
+
+## Preserve both initializer calling conventions
+
+Creation uses typed Go registry dispatch after normal object-template copying.
+Initialization uses a direct Go handler map with explicit raw fallbacks: existing
+CallInit keeps its one-argument/nil behavior, while CallInitWithArg preserves the
+two-argument call used by pending activation, player arrival and item respawning.
+The latter keeps the configured-slot precondition and original caller guards.
+The respawn call loads Init by offset 688; named-field searches alone missed it.
+Monster/Shopkeeper share a C callback address but retain distinct data sizes, and
+both replaceable monster handlers remain resolved at invocation. All 208 roots per
+profile and fresh production/scenarios pass. This reversible design follows the
+standing authorization; see LIFECYCLE_REGISTRY.md for evidence and fixture corrections.

@@ -1,0 +1,965 @@
+{
+  "status": "qualified typed Go object creation and initialization registries",
+  "preceding_revision": "35e8bcb3fb27fb06d395636de6c2acf8721c44f2",
+  "changed_source_sha256": {
+    "src/legacy/object_type.go": "4cf416b594d13fc99b90f4341608b676fdfb83cf3920485982b7f092a0ee7851",
+    "src/legacy/player_controls_respawn.go": "fca1e7d0478e2c38b9c7334a90de96fabbe17832cf17b3fe48b5ffed204588e9",
+    "src/legacy/session_entry_lifecycle.go": "8e7c8185ee23e69e80b5569d2f3a61fb482c1a91d080d1f1dd9aec6d38c8d6a1",
+    "src/object.go": "d19a669d0f8a215ecb9640eea276f44ff2ab3e8d8234ecc4ff874a54f7670153",
+    "src/server/lifecycle_registry_porttest.go": "2a6fc182d0e33c4e704b164873c9cba92a1cdfb19473b5e1ba93e9cecd1a7ced",
+    "src/server/object.go": "3e4cb3e984faed343c80a4d858f8edf498a64b03e17a4e0584296e44359582fa",
+    "src/server/object_funcs.go": "1c8c0dc4f81cd3347699171b61b24aaf316b965540d79a1d204d333cd203f476"
+  },
+  "baseline": {
+    "status": "qualified original object creation and initialization baseline",
+    "revision": "5e7255362827b7f9e302df80a746f8ed2d5fbea3",
+    "phase": {
+      "batch": "lifecycle-registry",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/lifecycle-registry-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-lifecycle-registry/baseline/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-lifecycle-registry/baseline/default-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 65.7646159089636
+        },
+        {
+          "name": "server",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/lifecycle-registry-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-lifecycle-registry/baseline/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-lifecycle-registry/baseline/server-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 172.76672574086115
+        },
+        {
+          "name": "highres",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/lifecycle-registry-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-lifecycle-registry/baseline/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-lifecycle-registry/baseline/highres-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 101.67398896696977
+        }
+      ],
+      "revision": "5e7255362827b7f9e302df80a746f8ed2d5fbea3",
+      "source_unchanged": true,
+      "wall_seconds": 340.7902991059236,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "contracts": {
+      "default": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 208,
+        "selected_root_tests": 208,
+        "exit": 0,
+        "started_tests": 208,
+        "completed_tests": 208,
+        "started_root_tests": 208,
+        "completed_root_tests": 208,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 65.68317461689003
+      },
+      "server": {
+        "tags": "porttest,server",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 208,
+        "selected_root_tests": 208,
+        "exit": 0,
+        "started_tests": 208,
+        "completed_tests": 208,
+        "started_root_tests": 208,
+        "completed_root_tests": 208,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 172.66738292505033
+      },
+      "highres": {
+        "tags": "porttest,highres",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 208,
+        "selected_root_tests": 208,
+        "exit": 0,
+        "started_tests": 208,
+        "completed_tests": 208,
+        "started_root_tests": 208,
+        "completed_root_tests": 208,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 101.57115003583021
+      }
+    },
+    "captures": {
+      "lifecycle-registry-monster-init": {
+        "cases": 8,
+        "sha256": "9825ff7f8d6a9f55b0a1efef7e1a0746eff6ccdf88f13a6b4bc29ae98fd7a075",
+        "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-monster-init.json"
+      },
+      "lifecycle-registry-pending-init": {
+        "cases": 36,
+        "sha256": "307b29ea5a06fde046f164199d154e6b77eb9dc206779b1324aef6e569265020",
+        "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-pending-init.json"
+      },
+      "lifecycle-registry-player-init": {
+        "cases": 12,
+        "sha256": "54e1c89cec57ae8ea1d664abd094585ada670cd3d853148026cd34a495b6cacc",
+        "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-player-init.json"
+      },
+      "lifecycle-registry-reward-init-00": {
+        "cases": 32,
+        "sha256": "71d4631b436690a7a594c397b7fe480641deb6db1e19ebe9ac82aeacd91d0b27",
+        "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-00.json"
+      },
+      "lifecycle-registry-reward-init-01": {
+        "cases": 32,
+        "sha256": "639d32f6f96572dfd227eb52ad0da52243d5c9679ddc70da29d8520fc825a922",
+        "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-01.json"
+      },
+      "lifecycle-registry-reward-init-02": {
+        "cases": 32,
+        "sha256": "b0fc5e3defd240404557b32025349145e4766ded7197e95064efb57d069b3574",
+        "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-02.json"
+      },
+      "lifecycle-registry-reward-init-03": {
+        "cases": 32,
+        "sha256": "ac3a0312e9819df56559ec11723cc036b8e0341db4a2f4d148c1a42dfff13a9a",
+        "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-03.json"
+      },
+      "lifecycle-registry-reward-init-04": {
+        "cases": 32,
+        "sha256": "c5217dba764ac7f4fb268d15ed519f6a75bb7f481b62d869dd093306a97cb3b1",
+        "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-04.json"
+      },
+      "lifecycle-registry-reward-init-05": {
+        "cases": 32,
+        "sha256": "ba0869eb1b20ee96ce9d9b1b94520c6d4ed4d55983ef4201afd4f8c3da1b76d3",
+        "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-05.json"
+      },
+      "lifecycle-registry-reward-init-06": {
+        "cases": 32,
+        "sha256": "8b54c7244308a65f3db9297808059ed427944cf6fc5919e7454f4fdc508d23f0",
+        "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-06.json"
+      },
+      "lifecycle-registry-reward-init-07": {
+        "cases": 32,
+        "sha256": "42921151496f20a2b1d28da1080f7d59350070b713902022d3efeb1f47daa591",
+        "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-07.json"
+      },
+      "lifecycle-registry-reward-init-08": {
+        "cases": 32,
+        "sha256": "96e7afa0bdbbbf6cb85b35e18dbc2685fd9df0f1c26e48ed6ecf5ff91a7d529c",
+        "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-08.json"
+      },
+      "object-create-registry": {
+        "cases": 8,
+        "sha256": "f5bd472acce1ea179a129cc4a2f035954afc653729426d3121f1d368f2d88097",
+        "path": "build/port-lifecycle-registry/original-v3-object-create-registry.json"
+      }
+    },
+    "owner_capture_cases": 352,
+    "init_execution_counts": {
+      "SparkInit": 32,
+      "FrogInit": 32,
+      "ChestInit": 32,
+      "BoulderInit": 32,
+      "SkullInit": 32,
+      "DirectionInit": 32,
+      "GoldInit": 32,
+      "BreakInit": 32,
+      "MonsterGeneratorInit": 32,
+      "PlayerInit": 12
+    },
+    "raw_contracts": [
+      "nil/create raw object identity and exactly once",
+      "nil/cleared single-argument init",
+      "raw single-argument init",
+      "raw two-argument pending init",
+      "new API raw original bridge nil/same/distinct argument"
+    ],
+    "dynamic_contracts": [
+      "two MonsterCreate replacements",
+      "two MonsterInit replacements via CallInit and actual pending owner",
+      "same two replacements via ShopkeeperInit alias"
+    ],
+    "production_reuse": "Seven new porttest files and two existing porttest adapters changed. All other source/dependency fingerprints and all four preceding binary hashes match. Three strict profiles repeat13 frozen capture groups, exact init execution counts and independent lifecycle contracts.",
+    "reused_qualification": "update-registry-qualification.json",
+    "binary_sha256": {
+      "safe": "15d840f1b32b9d8be32757f8a833c82709b03bcd980a0b19cfd1c7310baa5970",
+      "opennox": "3596e7eab6fa5c6fff7c292a8db00db87e7d13c5c5037fd37f6c00671076cb71",
+      "opennox-hd": "f0998b65de2ad541a12d0432a61169cd3e03e7d22811e579000e4b4840e2066f",
+      "opennox-server": "2dd435be2df97f5e59840c0d3ab233bff6ef50fa5282dab923850c39236cf67a"
+    },
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    },
+    "production_c_preamble_bodies": 79,
+    "retained_callback_exports": [
+      "nox_xxx_breakInit_4F0570",
+      "nox_xxx_createFnAnim_54CA50",
+      "nox_xxx_createFnObelisk_54CA10",
+      "nox_xxx_createMonsterGen_54CA90",
+      "nox_xxx_createRewardMarker_54CAC0",
+      "nox_xxx_createTrigger_54CA60",
+      "nox_xxx_createWeapon_54C710",
+      "nox_xxx_initChest_4F0400",
+      "nox_xxx_initFrog_4F03B0",
+      "nox_xxx_monsterCreateFn_54C480",
+      "nox_xxx_unitBoulderInit_4F0420",
+      "nox_xxx_unitInitGenerator_4F0590",
+      "nox_xxx_unitInitGold_4F04B0",
+      "nox_xxx_unitInitPlayer_4EFE80",
+      "nox_xxx_unitMonsterInit_4F0040",
+      "nox_xxx_unitSparkInit_4F0390",
+      "sub_4F0450",
+      "sub_4F0490",
+      "sub_54C950"
+    ],
+    "fixture_corrections": [
+      "First original capture failed primary player sibling byte-return assertion on void CallInit. New sibling clears that expectation; direct-helper tests unchanged.",
+      "Primary corrected Luna creation fixture allocation initialization, copied-buffer ownership and cache restoration before compilation. Preserved failed original logs and immutable goldens."
+    ],
+    "api_bridge": "PortTestLifecycleInitWithArg calls original raw2 in baseline; conversion will switch only this test bridge to new public API while retaining the exact tests."
+  },
+  "phases": {
+    "contracts": {
+      "batch": "lifecycle-registry",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/lifecycle-registry-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-lifecycle-registry/contracts/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-lifecycle-registry/contracts/default-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 99.3662018252071
+        },
+        {
+          "name": "server",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/lifecycle-registry-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-lifecycle-registry/contracts/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-lifecycle-registry/contracts/server-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 173.51270546391606
+        },
+        {
+          "name": "highres",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/lifecycle-registry-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-lifecycle-registry/contracts/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-lifecycle-registry/contracts/highres-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 101.2184374248609
+        }
+      ],
+      "revision": "35e8bcb3fb27fb06d395636de6c2acf8721c44f2",
+      "source_unchanged": true,
+      "wall_seconds": 374.65717210411094,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "safe": {
+      "batch": "lifecycle-registry",
+      "phase": "safe",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-tags",
+            "safe",
+            "-o",
+            "/root/src/opennox/build/port-lifecycle-registry/safe/opennox-safe",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 69.1889329131227
+        },
+        {
+          "name": "static",
+          "command": [
+            "go",
+            "test",
+            "./common/memmap/nox",
+            "-run",
+            "^TestCodeStatic$",
+            "-count=1"
+          ],
+          "exit": 0,
+          "wall_seconds": 1.117401960073039
+        }
+      ],
+      "revision": "35e8bcb3fb27fb06d395636de6c2acf8721c44f2",
+      "source_unchanged": true,
+      "wall_seconds": 70.71206053905189,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "preflight": {
+      "batch": "lifecycle-registry",
+      "phase": "preflight",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-o",
+            "/root/src/opennox/build/port-lifecycle-registry/preflight/opennox",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 63.21560281002894
+        },
+        {
+          "name": "scenario",
+          "command": [
+            "env",
+            "OPENNOX_DISPLAY_BINARY=/root/src/opennox/build/port-lifecycle-registry/preflight/opennox",
+            "OPENNOX_DISPLAY_IMPLEMENTATION=Typed Go object creation and initialization callbacks",
+            "OPENNOX_UI_SCENARIO=/root/src/opennox/docs/porting/character-creation.yaml",
+            "NOX_DEV=true",
+            "python3",
+            "/root/src/opennox/tools/porting/run_scenario.py",
+            "lifecycle-registry",
+            "compare",
+            "/root/src/opennox/build/baseline/runs/entry-classifiers-c"
+          ],
+          "exit": 0,
+          "wall_seconds": 63.376052174018696
+        }
+      ],
+      "revision": "35e8bcb3fb27fb06d395636de6c2acf8721c44f2",
+      "source_unchanged": true,
+      "wall_seconds": 126.97823793999851,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "production": {
+      "batch": "lifecycle-registry",
+      "phase": "production",
+      "success": true,
+      "steps": [
+        {
+          "name": "production",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/qualify_production.py",
+            "/root/src/opennox/docs/porting/lifecycle-registry-batch.json",
+            "--out",
+            "/root/src/opennox/build/port-lifecycle-registry/production/production"
+          ],
+          "exit": 0,
+          "wall_seconds": 172.43611401692033
+        }
+      ],
+      "revision": "35e8bcb3fb27fb06d395636de6c2acf8721c44f2",
+      "source_unchanged": true,
+      "wall_seconds": 172.73238620813936,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    }
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 208,
+      "selected_root_tests": 208,
+      "exit": 0,
+      "started_tests": 208,
+      "completed_tests": 208,
+      "started_root_tests": 208,
+      "completed_root_tests": 208,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 99.27646904089488
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 208,
+      "selected_root_tests": 208,
+      "exit": 0,
+      "started_tests": 208,
+      "completed_tests": 208,
+      "started_root_tests": 208,
+      "completed_root_tests": 208,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 173.4047286650166
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 208,
+      "selected_root_tests": 208,
+      "exit": 0,
+      "started_tests": 208,
+      "completed_tests": 208,
+      "started_root_tests": 208,
+      "completed_root_tests": 208,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 101.1200666280929
+    }
+  },
+  "captures": {
+    "default": {
+      "lifecycle-registry-pending-init": {
+        "cases": 36,
+        "sha256": "307b29ea5a06fde046f164199d154e6b77eb9dc206779b1324aef6e569265020"
+      },
+      "lifecycle-registry-reward-init-00": {
+        "cases": 32,
+        "sha256": "71d4631b436690a7a594c397b7fe480641deb6db1e19ebe9ac82aeacd91d0b27"
+      },
+      "lifecycle-registry-reward-init-01": {
+        "cases": 32,
+        "sha256": "639d32f6f96572dfd227eb52ad0da52243d5c9679ddc70da29d8520fc825a922"
+      },
+      "lifecycle-registry-reward-init-02": {
+        "cases": 32,
+        "sha256": "b0fc5e3defd240404557b32025349145e4766ded7197e95064efb57d069b3574"
+      },
+      "lifecycle-registry-reward-init-03": {
+        "cases": 32,
+        "sha256": "ac3a0312e9819df56559ec11723cc036b8e0341db4a2f4d148c1a42dfff13a9a"
+      },
+      "lifecycle-registry-reward-init-04": {
+        "cases": 32,
+        "sha256": "c5217dba764ac7f4fb268d15ed519f6a75bb7f481b62d869dd093306a97cb3b1"
+      },
+      "lifecycle-registry-reward-init-05": {
+        "cases": 32,
+        "sha256": "ba0869eb1b20ee96ce9d9b1b94520c6d4ed4d55983ef4201afd4f8c3da1b76d3"
+      },
+      "lifecycle-registry-reward-init-06": {
+        "cases": 32,
+        "sha256": "8b54c7244308a65f3db9297808059ed427944cf6fc5919e7454f4fdc508d23f0"
+      },
+      "lifecycle-registry-reward-init-07": {
+        "cases": 32,
+        "sha256": "42921151496f20a2b1d28da1080f7d59350070b713902022d3efeb1f47daa591"
+      },
+      "lifecycle-registry-reward-init-08": {
+        "cases": 32,
+        "sha256": "96e7afa0bdbbbf6cb85b35e18dbc2685fd9df0f1c26e48ed6ecf5ff91a7d529c"
+      },
+      "lifecycle-registry-player-init": {
+        "cases": 12,
+        "sha256": "54e1c89cec57ae8ea1d664abd094585ada670cd3d853148026cd34a495b6cacc"
+      },
+      "lifecycle-registry-monster-init": {
+        "cases": 8,
+        "sha256": "9825ff7f8d6a9f55b0a1efef7e1a0746eff6ccdf88f13a6b4bc29ae98fd7a075"
+      },
+      "object-create-registry": {
+        "cases": 8,
+        "sha256": "f5bd472acce1ea179a129cc4a2f035954afc653729426d3121f1d368f2d88097"
+      }
+    },
+    "server": {
+      "lifecycle-registry-pending-init": {
+        "cases": 36,
+        "sha256": "307b29ea5a06fde046f164199d154e6b77eb9dc206779b1324aef6e569265020"
+      },
+      "lifecycle-registry-reward-init-00": {
+        "cases": 32,
+        "sha256": "71d4631b436690a7a594c397b7fe480641deb6db1e19ebe9ac82aeacd91d0b27"
+      },
+      "lifecycle-registry-reward-init-01": {
+        "cases": 32,
+        "sha256": "639d32f6f96572dfd227eb52ad0da52243d5c9679ddc70da29d8520fc825a922"
+      },
+      "lifecycle-registry-reward-init-02": {
+        "cases": 32,
+        "sha256": "b0fc5e3defd240404557b32025349145e4766ded7197e95064efb57d069b3574"
+      },
+      "lifecycle-registry-reward-init-03": {
+        "cases": 32,
+        "sha256": "ac3a0312e9819df56559ec11723cc036b8e0341db4a2f4d148c1a42dfff13a9a"
+      },
+      "lifecycle-registry-reward-init-04": {
+        "cases": 32,
+        "sha256": "c5217dba764ac7f4fb268d15ed519f6a75bb7f481b62d869dd093306a97cb3b1"
+      },
+      "lifecycle-registry-reward-init-05": {
+        "cases": 32,
+        "sha256": "ba0869eb1b20ee96ce9d9b1b94520c6d4ed4d55983ef4201afd4f8c3da1b76d3"
+      },
+      "lifecycle-registry-reward-init-06": {
+        "cases": 32,
+        "sha256": "8b54c7244308a65f3db9297808059ed427944cf6fc5919e7454f4fdc508d23f0"
+      },
+      "lifecycle-registry-reward-init-07": {
+        "cases": 32,
+        "sha256": "42921151496f20a2b1d28da1080f7d59350070b713902022d3efeb1f47daa591"
+      },
+      "lifecycle-registry-reward-init-08": {
+        "cases": 32,
+        "sha256": "96e7afa0bdbbbf6cb85b35e18dbc2685fd9df0f1c26e48ed6ecf5ff91a7d529c"
+      },
+      "lifecycle-registry-player-init": {
+        "cases": 12,
+        "sha256": "54e1c89cec57ae8ea1d664abd094585ada670cd3d853148026cd34a495b6cacc"
+      },
+      "lifecycle-registry-monster-init": {
+        "cases": 8,
+        "sha256": "9825ff7f8d6a9f55b0a1efef7e1a0746eff6ccdf88f13a6b4bc29ae98fd7a075"
+      },
+      "object-create-registry": {
+        "cases": 8,
+        "sha256": "f5bd472acce1ea179a129cc4a2f035954afc653729426d3121f1d368f2d88097"
+      }
+    },
+    "highres": {
+      "lifecycle-registry-pending-init": {
+        "cases": 36,
+        "sha256": "307b29ea5a06fde046f164199d154e6b77eb9dc206779b1324aef6e569265020"
+      },
+      "lifecycle-registry-reward-init-00": {
+        "cases": 32,
+        "sha256": "71d4631b436690a7a594c397b7fe480641deb6db1e19ebe9ac82aeacd91d0b27"
+      },
+      "lifecycle-registry-reward-init-01": {
+        "cases": 32,
+        "sha256": "639d32f6f96572dfd227eb52ad0da52243d5c9679ddc70da29d8520fc825a922"
+      },
+      "lifecycle-registry-reward-init-02": {
+        "cases": 32,
+        "sha256": "b0fc5e3defd240404557b32025349145e4766ded7197e95064efb57d069b3574"
+      },
+      "lifecycle-registry-reward-init-03": {
+        "cases": 32,
+        "sha256": "ac3a0312e9819df56559ec11723cc036b8e0341db4a2f4d148c1a42dfff13a9a"
+      },
+      "lifecycle-registry-reward-init-04": {
+        "cases": 32,
+        "sha256": "c5217dba764ac7f4fb268d15ed519f6a75bb7f481b62d869dd093306a97cb3b1"
+      },
+      "lifecycle-registry-reward-init-05": {
+        "cases": 32,
+        "sha256": "ba0869eb1b20ee96ce9d9b1b94520c6d4ed4d55983ef4201afd4f8c3da1b76d3"
+      },
+      "lifecycle-registry-reward-init-06": {
+        "cases": 32,
+        "sha256": "8b54c7244308a65f3db9297808059ed427944cf6fc5919e7454f4fdc508d23f0"
+      },
+      "lifecycle-registry-reward-init-07": {
+        "cases": 32,
+        "sha256": "42921151496f20a2b1d28da1080f7d59350070b713902022d3efeb1f47daa591"
+      },
+      "lifecycle-registry-reward-init-08": {
+        "cases": 32,
+        "sha256": "96e7afa0bdbbbf6cb85b35e18dbc2685fd9df0f1c26e48ed6ecf5ff91a7d529c"
+      },
+      "lifecycle-registry-player-init": {
+        "cases": 12,
+        "sha256": "54e1c89cec57ae8ea1d664abd094585ada670cd3d853148026cd34a495b6cacc"
+      },
+      "lifecycle-registry-monster-init": {
+        "cases": 8,
+        "sha256": "9825ff7f8d6a9f55b0a1efef7e1a0746eff6ccdf88f13a6b4bc29ae98fd7a075"
+      },
+      "object-create-registry": {
+        "cases": 8,
+        "sha256": "f5bd472acce1ea179a129cc4a2f035954afc653729426d3121f1d368f2d88097"
+      }
+    }
+  },
+  "owner_capture_cases": 352,
+  "init_execution_counts": {
+    "SparkInit": 32,
+    "FrogInit": 32,
+    "ChestInit": 32,
+    "BoulderInit": 32,
+    "SkullInit": 32,
+    "DirectionInit": 32,
+    "GoldInit": 32,
+    "BreakInit": 32,
+    "MonsterGeneratorInit": 32,
+    "PlayerInit": 12
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.152228546794504,
+        "sha256": "96c799f3f3891ea2b9f41bc6833d390217b90588a95946e0120b04a5fd67c3a2",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.811274014180526,
+        "sha256": "bc2790d84bcbd8b166f73323ee69f17d34efb968eacb6ac1513829d04c0d5c4e",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 62.71800268488005,
+        "sha256": "7464bd09774491eac18a354a9b36c582c9ae85d579e3a774545d9d8defa2c60a",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "lifecycle-registry-save": {
+        "exit": 0,
+        "wall_seconds": 45.46205120999366,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.95778535096906,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "96c799f3f3891ea2b9f41bc6833d390217b90588a95946e0120b04a5fd67c3a2",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-lifecycle-registry/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/lifecycle-registry-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Typed Go object creation and initialization callbacks",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "e16bf7afe81f9ecf1a9458e1aec2e0c63a45b60c5f489fc684993ce0261d9cad"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 44.68367914692499,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 17,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "preflight": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 62.701819497859105,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c",
+    "binary_sha256": "96c799f3f3891ea2b9f41bc6833d390217b90588a95946e0120b04a5fd67c3a2",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-lifecycle-registry/preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/lifecycle-registry/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Typed Go object creation and initialization callbacks",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "binary_sha256": {
+    "safe": "cbec0b0bd64b90c2dfc7ac5aeb9c8882693ff8b5781ff2d06e9ccb3ae13efe89",
+    "opennox": "96c799f3f3891ea2b9f41bc6833d390217b90588a95946e0120b04a5fd67c3a2",
+    "opennox-hd": "bc2790d84bcbd8b166f73323ee69f17d34efb968eacb6ac1513829d04c0d5c4e",
+    "opennox-server": "7464bd09774491eac18a354a9b36c582c9ae85d579e3a774545d9d8defa2c60a"
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79,
+  "conversion_correction": "First discovery59981 failed on unused root object.go ccall import; removed import only, preserved contracts-v1-unused-import and unchanged expectations.",
+  "api_bridge": "Only the test-only PortTestLifecycleInitWithArg bridge switches from original raw2 to the new method; identical nil/same/distinct argument tests and other owner fixtures unchanged.",
+  "limits": [
+    "Eight create and twelve init registrations retain nineteen callback identities; two init aliases keep different sizes. Both late-bound monster handlers and three actual raw2 owners preserved.",
+    "Configured target is386/SSE2 with CGO; no64-bit compatibility or measured performance claim."
+  ]
+}

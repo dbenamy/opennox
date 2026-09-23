@@ -377,7 +377,8 @@ func (s *serverObjects) NewObject(t *ObjectType) *Object {
 		obj.Field189, _ = alloc.Malloc(2572)
 	}
 	if t.Create != nil {
-		ccall.CallVoidPtr(t.Create, obj.CObj())
+		objectCreateFuncs.Get(t.Create)(obj)
+		runtime.KeepAlive(obj)
 	}
 	if !noxflags.HasGame(noxflags.GameFlag22) {
 		obj.ScriptIDVal = int(s.NextObjectScriptID())
@@ -1433,9 +1434,27 @@ func (obj *Object) SetDialogPortrait(name string) {
 }
 
 func (obj *Object) CallInit() {
-	if obj.Init != nil {
+	if obj.Init == nil {
+		return
+	}
+	if fnc := objectInitGoFuncs[obj.Init]; fnc != nil {
+		fnc(obj)
+	} else {
 		ccall.CallVoidPtr(obj.Init, obj.CObj())
 	}
+	runtime.KeepAlive(obj)
+}
+
+// CallInitWithArg requires a configured initializer. Raw callbacks receive both
+// arguments; registered Go initializers use only the object.
+func (obj *Object) CallInitWithArg(arg unsafe.Pointer) {
+	if fnc := objectInitGoFuncs[obj.Init]; fnc != nil {
+		fnc(obj)
+	} else {
+		ccall.CallVoidPtr2(obj.Init, obj.CObj(), arg)
+	}
+	runtime.KeepAlive(obj)
+	runtime.KeepAlive(arg)
 }
 
 func (obj *Object) CallUpdate() {

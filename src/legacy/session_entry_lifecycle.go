@@ -10,7 +10,6 @@ import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/ntype"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
@@ -100,7 +99,7 @@ func sessionPlayerIncoming(index int32) uint32 {
 	pos := u.PosVec
 	matchRosterSendPlayers(int(index))
 	pl.Field4700 = 0
-	ccall.CallVoidPtr2(u.Init, u.CObj(), nil)
+	u.CallInitWithArg(nil)
 	pl.Field3676 = 3
 	if !noxflags.HasGame(512) {
 		pl.Pos3632Vec = pos

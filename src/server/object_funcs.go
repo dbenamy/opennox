@@ -94,11 +94,31 @@ type objectDefFunc struct {
 	DataSize uintptr
 }
 
+type ObjectCreateFunc func(obj *Object)
+
+var objectCreateFuncs = ccall.NewFuncs(func(cfnc unsafe.Pointer) ObjectCreateFunc {
+	return func(obj *Object) { ccall.CallVoidPtr(cfnc, obj.CObj()) }
+})
+
+func RegisterObjectCreateGo(name string, cfnc unsafe.Pointer, fnc ObjectCreateFunc) {
+	RegisterObjectCreate(name, cfnc)
+	objectCreateFuncs.Register(cfnc, fnc)
+}
+
 func RegisterObjectCreate(name string, fnc unsafe.Pointer) {
 	if _, ok := createFuncs[name]; ok {
 		panic("already registered")
 	}
 	createFuncs[name] = fnc
+}
+
+type ObjectInitFunc func(obj *Object)
+
+var objectInitGoFuncs = make(map[unsafe.Pointer]ObjectInitFunc)
+
+func RegisterObjectInitGo(name string, cfnc unsafe.Pointer, fnc ObjectInitFunc, sz uintptr) {
+	RegisterObjectInit(name, cfnc, sz)
+	objectInitGoFuncs[cfnc] = fnc
 }
 
 func RegisterObjectInit(name string, fnc unsafe.Pointer, sz uintptr) {

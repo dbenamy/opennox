@@ -15,7 +15,6 @@ import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
@@ -26,7 +25,7 @@ func controlRespawnItem(u *server.Object, name string, attrs unsafe.Pointer, a, 
 		return nil
 	}
 	if fn := *controlPtr(it.CObj(), 688); fn != nil {
-		ccall.CallVoidPtr2(fn, it.CObj(), nil)
+		it.CallInitWithArg(nil)
 	}
 	if attrs != nil {
 		stateAttributes(it, attrs)

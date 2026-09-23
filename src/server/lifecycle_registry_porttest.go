@@ -2,10 +2,7 @@
 
 package server
 
-import (
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
-	"unsafe"
-)
+import "unsafe"
 
 func PortTestLifecycleRegistry(name string, create bool) (unsafe.Pointer, uintptr) {
 	if create {
@@ -22,9 +19,8 @@ func PortTestLifecycleRegistry(name string, create bool) (unsafe.Pointer, uintpt
 	return d.Func, d.DataSize
 }
 
-// Baseline for the new two-argument API: the original raw call used by live
-// initialization owners. Switch this bridge to CallInitWithArg during conversion;
-// identical argument cases and expectations then qualify the new API itself.
+// The original baseline invoked the raw two-pointer call here. The same cases
+// now qualify the public typed API and its raw callback fallback.
 func PortTestLifecycleInitWithArg(u *Object, arg unsafe.Pointer) {
-	ccall.CallVoidPtr2(u.Init, u.CObj(), arg)
+	u.CallInitWithArg(arg)
 }

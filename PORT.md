@@ -14,14 +14,14 @@
 
 ## Current status
 
-All 53 registered object updates now dispatch through Go while preserving callback
-addresses, raw fallback and six replaceable handlers. All 281 roots per profile,
-8,251 frozen owner cases, safe/static, production/ABI, exact known-suite comparison
-and headless creation/save-load pass. See [UPDATE_REGISTRY.md](docs/porting/UPDATE_REGISTRY.md).
+Eight creation and twelve initialization registrations now dispatch through Go,
+preserving callback identities, data sizes, replaceable handlers and both raw
+calling conventions. All 208 roots/profile, 352 frozen owner observations, safe/static,
+production/ABI, exact known-suite comparison and headless creation/save-load pass.
+See [LIFECYCLE_REGISTRY.md](docs/porting/LIFECYCLE_REGISTRY.md).
 **Standalone C remains zero; production C preamble bodies remain 79.**
-The next creation/initialization baseline is qualified:208 roots/profile and352
-frozen owner observations, plus raw and dynamic-handler contracts. Production
-conversion is pending. See [LIFECYCLE_REGISTRY.md](docs/porting/LIFECYCLE_REGISTRY.md).
+Next: review collision and damage-sound callback owners, argument types and existing
+coverage before selecting the next coherent registry batch.
 
 ### Earlier checkpoints
 
