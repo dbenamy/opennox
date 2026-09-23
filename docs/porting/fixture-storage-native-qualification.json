@@ -1,0 +1,338 @@
+{
+  "status": "qualified fixture-backed numeric owner conversion",
+  "baseline_revision": "0bc827a1",
+  "baseline": "fixture-storage-c-qualification.json",
+  "migrated_owners": 52,
+  "C_fixture_helper_bodies_removed": 11,
+  "retired_C_storage_symbols": [
+    "dword_587000_122848",
+    "dword_587000_126996",
+    "dword_587000_93156",
+    "dword_5d4594_1045420",
+    "dword_5d4594_1045428",
+    "dword_5d4594_1045432",
+    "dword_5d4594_1549844",
+    "dword_5d4594_1550912",
+    "dword_5d4594_1550916",
+    "dword_5d4594_2487248",
+    "dword_5d4594_2487532",
+    "dword_5d4594_2487536",
+    "dword_5d4594_2487540",
+    "dword_5d4594_2487556",
+    "dword_5d4594_2487560",
+    "dword_5d4594_2487564",
+    "dword_5d4594_2487568",
+    "dword_5d4594_2487576",
+    "dword_5d4594_2487580",
+    "dword_5d4594_2487584",
+    "dword_5d4594_2487620",
+    "dword_5d4594_2487624",
+    "dword_5d4594_2487628",
+    "dword_5d4594_2487632",
+    "dword_5d4594_2487652",
+    "dword_5d4594_2487656",
+    "dword_5d4594_2487672",
+    "dword_5d4594_2487676",
+    "dword_5d4594_2487884",
+    "dword_5d4594_2487932",
+    "dword_5d4594_2489436",
+    "dword_5d4594_2491616",
+    "dword_5d4594_251572",
+    "dword_5d4594_3835348",
+    "dword_5d4594_3835352",
+    "dword_5d4594_3835356",
+    "dword_5d4594_3835360",
+    "dword_5d4594_3835364",
+    "dword_5d4594_3835368",
+    "dword_5d4594_3835372",
+    "dword_5d4594_3835388",
+    "dword_5d4594_3835392",
+    "dword_5d4594_588084",
+    "dword_5d4594_816368",
+    "dword_5d4594_816372",
+    "dword_5d4594_816376",
+    "dword_5d4594_831092",
+    "nox_xxx_energyBoltTarget_5d4594_2487880",
+    "nox_xxx_lightningClosestTargetDistance_5d4594_2487912",
+    "nox_xxx_lightningOwner_5d4594_2487900",
+    "nox_xxx_lightningTargetArrayIndex_5d4594_2487904",
+    "nox_xxx_lightningTarget_5d4594_2487908"
+  ],
+  "targets": {
+    "default": {
+      "contract_roots": 1,
+      "owners": 395,
+      "cases": 54905,
+      "consumer_roots": 183,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 311.5459601820912
+    },
+    "server": {
+      "contract_roots": 1,
+      "owners": 395,
+      "cases": 54905,
+      "consumer_roots": 183,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 304.78244761400856
+    },
+    "highres": {
+      "contract_roots": 1,
+      "owners": 395,
+      "cases": 54905,
+      "consumer_roots": 183,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 146.50204926286824
+    }
+  },
+  "capture_sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+  "primary_review": {
+    "ast": {
+      "files": 24,
+      "mismatches": null,
+      "success": true
+    },
+    "owners": {
+      "owners": 52,
+      "types_and_initializers_match": true,
+      "previous343_declarations_unchanged": true,
+      "only52_C_definitions_removed": true,
+      "pure_selector_files": 24,
+      "address_views_review": "Production aliases are single uint32 words or ail.Driver (uintptr, four bytes on qualified386); map pointer arithmetic uses the stored address values, not neighboring global storage. initMusic same-name local initializers remain before local scope."
+    },
+    "accessors": {
+      "success": true,
+      "helpers": [
+        {
+          "helper": "portTestGrowthGlobal",
+          "indices": {
+            "0": "dword_5d4594_1549844",
+            "1": "dword_5d4594_1550912",
+            "2": "dword_5d4594_1550916"
+          },
+          "unchanged": true
+        },
+        {
+          "helper": "portTestOrchestrationGlobal",
+          "indices": {
+            "0": "dword_5d4594_1549844",
+            "1": "dword_5d4594_1550912",
+            "2": "dword_5d4594_1550916"
+          },
+          "unchanged": true
+        },
+        {
+          "helper": "portTestPaintGlobal",
+          "indices": {
+            "0": "dword_5d4594_2487248",
+            "1": "dword_5d4594_3835348",
+            "2": "dword_5d4594_3835352",
+            "3": "dword_5d4594_3835356",
+            "4": "dword_5d4594_3835360",
+            "5": "dword_5d4594_3835364",
+            "6": "dword_5d4594_3835368",
+            "7": "dword_5d4594_3835372",
+            "8": "dword_5d4594_3835388",
+            "9": "dword_5d4594_3835392",
+            "10": "dword_5d4594_588084",
+            "11": "dword_5d4594_251572",
+            "12": "dword_5d4594_2489436"
+          },
+          "unchanged": true
+        },
+        {
+          "helper": "portTestPopulationGlobal",
+          "indices": {
+            "0": "dword_5d4594_1550916",
+            "1": "dword_5d4594_2487564",
+            "2": "dword_5d4594_2487568",
+            "3": "dword_5d4594_2487576",
+            "4": "dword_5d4594_2487580",
+            "5": "dword_5d4594_2487584",
+            "6": "dword_5d4594_2487620",
+            "7": "dword_5d4594_2487624",
+            "8": "dword_5d4594_2487628",
+            "9": "dword_5d4594_2487632",
+            "10": "dword_5d4594_2487652",
+            "11": "dword_5d4594_2487656",
+            "12": "dword_5d4594_2487672",
+            "13": "dword_5d4594_2487676",
+            "28": "dword_5d4594_2491616"
+          },
+          "unchanged": true
+        },
+        {
+          "helper": "portTestMapRoomGlobalOwner",
+          "indices": {
+            "0": "dword_5d4594_2487532",
+            "1": "dword_5d4594_2487536",
+            "2": "dword_5d4594_2487540",
+            "3": "dword_5d4594_2487556",
+            "4": "dword_5d4594_2487560"
+          },
+          "unchanged": true
+        },
+        {
+          "helper": "portTestAudioEventGlobal",
+          "indices": {
+            "0": "dword_587000_122848",
+            "1": "dword_587000_126996",
+            "3": "dword_587000_93156",
+            "4": "dword_5d4594_1045420",
+            "6": "dword_5d4594_1045428",
+            "7": "dword_5d4594_1045432",
+            "9": "dword_5d4594_816368",
+            "10": "dword_5d4594_816372",
+            "11": "dword_5d4594_816376",
+            "12": "dword_5d4594_831092",
+            "2": "dword_587000_127004"
+          },
+          "null_slots": [
+            5,
+            8
+          ],
+          "pointer_slot_2_retained": true,
+          "unchanged": true
+        },
+        {
+          "helper": "sustainedGlobal",
+          "indices": {
+            "0": "dword_5d4594_2487884",
+            "1": "dword_5d4594_2487932",
+            "2": "nox_xxx_lightningOwner_5d4594_2487900",
+            "3": "nox_xxx_lightningTargetArrayIndex_5d4594_2487904",
+            "4": "nox_xxx_lightningTarget_5d4594_2487908",
+            "5": "nox_xxx_lightningClosestTargetDistance_5d4594_2487912",
+            "6": "nox_xxx_energyBoltTarget_5d4594_2487880"
+          },
+          "unchanged": true
+        }
+      ]
+    }
+  },
+  "safe": {
+    "build": true,
+    "retired_symbols_absent": true,
+    "retained": [
+      "nox_malloc",
+      "nox_free",
+      "nox_memset",
+      "nox_memcpy_go"
+    ],
+    "sha256": "9fe599b58777896c83079d99919d3acc976630942113f3da7b9d8717f1b9aa00",
+    "runtime_tested": false
+  },
+  "source_manifest_sha256": "af6602123cf38b4e87cf0e7df3182120e4acfc6aeb08f10c5e71c35c5ab8513e",
+  "production_c": {
+    "files": 6,
+    "lines": 114,
+    "change": -52,
+    "test_reference_lines": 0
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.514410680858418,
+        "sha256": "23f53cf28df5cdad718a31f90132a6394ca530b52ea1a20a6c600f2525e522f6",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.840740464860573,
+        "sha256": "7e1aba4573806259d96056e671953ca0a62eb345e6583cf31df214948e2078fd",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 60.86322880699299,
+        "sha256": "0c79e36cfb417039023331e8e15fd7d17f55a2b1a72c41b8022b72e9cff079f5",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "fixture-storage-native-save": {
+        "exit": 0,
+        "wall_seconds": 47.000990530941635,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 46.41728876810521,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "23f53cf28df5cdad718a31f90132a6394ca530b52ea1a20a6c600f2525e522f6",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-map-storage/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/fixture-storage-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Move52 numeric owners into Go and replace11 C fixture accessor/table bodies, preserving frozen values and index mappings.",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "c9cb58e4b81a3873aa1ade1a84f86eca65c08ec1cb9ad628b4a5babba26537b2"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 59.16165414988063,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    },
+    "preflight_gameplay": {
+      "exit": 0,
+      "process_exit": 0,
+      "elapsed": 64.76210690499283,
+      "capture": false,
+      "godebug": ",randautoseed=0",
+      "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+      "binary_sha256": "23f53cf28df5cdad718a31f90132a6394ca530b52ea1a20a6c600f2525e522f6",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "-s",
+        "-screen 0 1280x960x24 -nolisten tcp",
+        "/root/src/opennox/build/port-map-storage/native-preflight/opennox",
+        "-data",
+        "/root/src/opennox/build/baseline/runs/fixture-storage-native/data",
+        "-window",
+        "-pprof",
+        "127.0.0.1:0"
+      ],
+      "display_implementation": "Shared numeric fixture owners moved to Go",
+      "isolated_network": false,
+      "removed_maps": 0
+    }
+  }
+}

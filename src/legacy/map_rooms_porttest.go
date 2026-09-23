@@ -110,10 +110,7 @@ case 57: return (uint32_t)(nox_xxx_mapGenRandFunc_526AC0((int)v[0],(signed int)v
 case 59: return mapRoomDouble(sub_526BC0(mapRoomFloat(v[0]),mapRoomFloat(v[1])));
 default:abort();}}
 
-extern uint32_t dword_5d4594_2487532,dword_5d4594_2487536,dword_5d4594_2487540,dword_5d4594_2487556,dword_5d4594_2487560;
-static uint32_t* mapRoomGlobals[]={&dword_5d4594_2487532,&dword_5d4594_2487536,&dword_5d4594_2487540,&dword_5d4594_2487556,&dword_5d4594_2487560};
-static uint32_t mapRoomGlobalGet(int i){return *mapRoomGlobals[i];}
-static void mapRoomGlobalSet(int i,uint32_t v){*mapRoomGlobals[i]=v;}
+
 static unsigned short mapRoomCW(void){unsigned short cw;__asm__ volatile("fnstcw %0":"=m"(cw));return cw;}
 static void mapRoomSetCW(unsigned short cw){__asm__ volatile("fldcw %0"::"m"(cw));}
 */
@@ -189,6 +186,25 @@ type mapRoomTestFixture struct {
 	grid, buffer bool
 	intact       bool
 }
+
+func portTestMapRoomGlobalOwner(i int) *uint32 {
+	switch i {
+	case 0:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487532))
+	case 1:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487536))
+	case 2:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487540))
+	case 3:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487556))
+	case 4:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487560))
+	default:
+		panic("map room global index")
+	}
+}
+func portTestMapRoomGlobalGet(i int) uint32    { return *portTestMapRoomGlobalOwner(i) }
+func portTestMapRoomGlobalSet(i int, v uint32) { *portTestMapRoomGlobalOwner(i) = v }
 
 func (f *mapRoomTestFixture) register(p unsafe.Pointer, n int, kind string, guarded bool) *mapRoomTestRegion {
 	if p == nil {
@@ -266,11 +282,11 @@ func (f *mapRoomTestFixture) guards() {
 	}
 }
 func (f *mapRoomTestFixture) registerGrid() {
-	n := int(C.mapRoomGlobalGet(2))
+	n := int(portTestMapRoomGlobalGet(2))
 	if n < 0 || n > 65 {
 		panic("map room fixture grid size")
 	}
-	p := unsafe.Pointer(uintptr(C.mapRoomGlobalGet(0)))
+	p := unsafe.Pointer(uintptr(portTestMapRoomGlobalGet(0)))
 	if p == nil {
 		return
 	}
@@ -311,14 +327,14 @@ func (f *mapRoomTestFixture) before(op int, args [4]uint32) {
 			panic("map room fixture: duplicate scratch allocation")
 		}
 	case 10:
-		if ptr := unsafe.Pointer(uintptr(C.mapRoomGlobalGet(3))); ptr != nil {
+		if ptr := unsafe.Pointer(uintptr(portTestMapRoomGlobalGet(3))); ptr != nil {
 			f.find(ptr).alive = false
 		}
 		f.buffer = false
 	case 23:
 		f.roomFreeMark(p)
 	case 24:
-		for node := unsafe.Pointer(uintptr(C.mapRoomGlobalGet(4))); node != nil; {
+		for node := unsafe.Pointer(uintptr(portTestMapRoomGlobalGet(4))); node != nil; {
 			next := *(*unsafe.Pointer)(unsafe.Add(node, 56))
 			f.roomFreeMark(node)
 			node = next
@@ -339,7 +355,7 @@ func (f *mapRoomTestFixture) after(op int, result uint64, assign int) {
 		f.registerGrid()
 	case 9:
 		if result != 0 {
-			r = f.register(unsafe.Pointer(uintptr(C.mapRoomGlobalGet(3))), 8192, "scratch", false)
+			r = f.register(unsafe.Pointer(uintptr(portTestMapRoomGlobalGet(3))), 8192, "scratch", false)
 			f.buffer = true
 		}
 	case 21, 22, 47, 48:
@@ -366,7 +382,7 @@ func (f *mapRoomTestFixture) snapshot(ret uint64, op int) PortTestMapRoomStep {
 		out.Return[0] = f.normalize(out.Return[0])
 	}
 	for i := range out.Globals {
-		out.Globals[i] = f.normalize(uint32(C.mapRoomGlobalGet(C.int(i))))
+		out.Globals[i] = f.normalize(uint32(portTestMapRoomGlobalGet(i)))
 	}
 	for _, r := range f.regions {
 		item := PortTestMapRoomRegion{ID: r.id, Kind: r.kind, Alive: r.alive}
@@ -416,11 +432,11 @@ func PortTestMapRooms(cases []PortTestMapRoomSpec) []PortTestMapRoomResult {
 	defer platform.Set(priorPlatform)
 	var saved [5]uint32
 	for i := range saved {
-		saved[i] = uint32(C.mapRoomGlobalGet(C.int(i)))
+		saved[i] = uint32(portTestMapRoomGlobalGet(i))
 	}
 	defer func() {
 		for i, v := range saved {
-			C.mapRoomGlobalSet(C.int(i), C.uint32_t(v))
+			portTestMapRoomGlobalSet(i, v)
 		}
 	}()
 	out := make([]PortTestMapRoomResult, 0, len(cases))
@@ -441,7 +457,7 @@ func portTestMapRoomCase(sp PortTestMapRoomSpec, cw C.ushort) (out PortTestMapRo
 		}
 	}()
 	for i := 0; i < 5; i++ {
-		C.mapRoomGlobalSet(C.int(i), 0)
+		portTestMapRoomGlobalSet(i, 0)
 	}
 	platform.RandSeed(int64(sp.Seed))
 	for i, spec := range sp.Records {
@@ -477,7 +493,7 @@ func portTestMapRoomCase(sp PortTestMapRoomSpec, cw C.ushort) (out PortTestMapRo
 		if C.nox_xxx_mapgenAllocBuffer_5213E0() == 0 {
 			panic("map room scratch allocation")
 		}
-		f.register(unsafe.Pointer(uintptr(C.mapRoomGlobalGet(3))), 8192, "scratch", false)
+		f.register(unsafe.Pointer(uintptr(portTestMapRoomGlobalGet(3))), 8192, "scratch", false)
 		f.buffer = true
 	}
 	for _, action := range sp.Actions {

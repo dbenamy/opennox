@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "GAME4_1.h"
-extern uint32_t dword_5d4594_3835348;
 */
 import "C"
 
@@ -57,10 +56,10 @@ func selectTileVariation(variation int32) bool {
 	// valid tile for this operation in the original C either.
 	p := &tileDefinitionsAll()[int32(memmap.Uint32(0x973F18, 35912))]
 	if variation <= int32(p.Field52)*int32(p.Field53)-1 {
-		C.dword_5d4594_3835348 = C.uint32_t(variation)
+		dword_5d4594_3835348 = C.uint32_t(variation)
 		return true
 	}
-	C.dword_5d4594_3835348 = 0
+	dword_5d4594_3835348 = 0
 	return false
 }
 

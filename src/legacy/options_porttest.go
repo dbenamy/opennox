@@ -8,11 +8,6 @@ package legacy
 extern nox_gui_animation* nox_wnd_xxx_1309740;
 int nox_porttest_options_done();
 extern void* dword_5d4594_1309720;
-extern uint32_t dword_587000_126996;
-extern uint32_t dword_587000_122848;
-extern uint32_t dword_587000_93156;
-extern uint32_t dword_5d4594_831092;
-extern uint32_t dword_5d4594_816376;
 extern void* dword_587000_127004;
 extern void* dword_587000_122852;
 extern void* dword_587000_93164;
@@ -44,11 +39,11 @@ func PortTestOptionsWords() (map[int]*uint32, func()) {
 		1309828: (*uint32)(unsafe.Pointer(&dword_5d4594_1309828)),
 		1309832: (*uint32)(unsafe.Pointer(&dword_5d4594_1309832)),
 		1309836: (*uint32)(unsafe.Pointer(&dword_5d4594_1309836)),
-		126996:  (*uint32)(unsafe.Pointer(&C.dword_587000_126996)),
-		122848:  (*uint32)(unsafe.Pointer(&C.dword_587000_122848)),
-		93156:   (*uint32)(unsafe.Pointer(&C.dword_587000_93156)),
-		831092:  (*uint32)(unsafe.Pointer(&C.dword_5d4594_831092)),
-		816376:  (*uint32)(unsafe.Pointer(&C.dword_5d4594_816376)),
+		126996:  (*uint32)(unsafe.Pointer(&dword_587000_126996)),
+		122848:  (*uint32)(unsafe.Pointer(&dword_587000_122848)),
+		93156:   (*uint32)(unsafe.Pointer(&dword_587000_93156)),
+		831092:  (*uint32)(unsafe.Pointer(&dword_5d4594_831092)),
+		816376:  (*uint32)(unsafe.Pointer(&dword_5d4594_816376)),
 	}
 	old := make(map[int]uint32)
 	for n, p := range words {

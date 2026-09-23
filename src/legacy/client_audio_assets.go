@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_1045432;
-extern uint32_t dword_5d4594_1045420;
 */
 import "C"
 import (
@@ -17,13 +15,13 @@ import (
 )
 
 func audioAssetSlot(id int32) unsafe.Pointer {
-	if C.dword_5d4594_1045432 == 0 || id < 0 || id >= 1023 {
+	if dword_5d4594_1045432 == 0 || id < 0 || id >= 1023 {
 		return nil
 	}
 	return memmap.PtrOff(0x5D4594, 840628+200*uintptr(id))
 }
 func audioAssetDelay(p unsafe.Pointer) int32 {
-	if C.dword_5d4594_1045432 == 0 {
+	if dword_5d4594_1045432 == 0 {
 		return 0
 	}
 	return *(*int32)(unsafe.Add(p, 64))
@@ -58,7 +56,7 @@ func audioAssetReadName(f *binfile.MemFile, scratch []byte, signed bool) string 
 func audioAssetStore(slot unsafe.Pointer, off uintptr, v uint32) {
 	*(*uint32)(unsafe.Add(slot, off)) = v
 }
-func audioAssetCatalog() unsafe.Pointer { return unsafe.Pointer(uintptr(C.dword_5d4594_1045420)) }
+func audioAssetCatalog() unsafe.Pointer { return unsafe.Pointer(uintptr(dword_5d4594_1045420)) }
 
 func audioAssetEvent(f *binfile.MemFile, scratch []byte) int {
 	name := audioAssetReadName(f, scratch, false)

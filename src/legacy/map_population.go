@@ -2,10 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_1550916,dword_5d4594_2487564,dword_5d4594_2487568;
-extern uint32_t dword_5d4594_2487576,dword_5d4594_2487580,dword_5d4594_2487584;
-extern uint32_t dword_5d4594_2487620,dword_5d4594_2487624,dword_5d4594_2487628,dword_5d4594_2487632;
-extern uint32_t dword_5d4594_2487652,dword_5d4594_2487656,dword_5d4594_2487672,dword_5d4594_2487676;
 */
 import "C"
 import (
@@ -30,33 +26,33 @@ func populationBlob(off uintptr) *uint32       { return memmap.PtrUint32(0x5D459
 func populationGlobal(i int) *uint32 {
 	switch i {
 	case 0:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1550916))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1550916))
 	case 1:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487564))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487564))
 	case 2:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487568))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487568))
 	case 3:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487576))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487576))
 	case 4:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487580))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487580))
 	case 5:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487584))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487584))
 	case 6:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487620))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487620))
 	case 7:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487624))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487624))
 	case 8:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487628))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487628))
 	case 9:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487632))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487632))
 	case 10:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487652))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487652))
 	case 11:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487656))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487656))
 	case 12:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487672))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487672))
 	case 13:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487676))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487676))
 	}
 	panic("population global")
 }

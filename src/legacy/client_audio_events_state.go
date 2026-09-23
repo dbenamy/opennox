@@ -4,17 +4,7 @@ package legacy
 #include <stdint.h>
 #include "GAME2.h"
 #include "client__audio__audevent.h"
-extern uint32_t dword_587000_122848;
-extern uint32_t dword_587000_126996;
 extern void* dword_587000_127004;
-extern uint32_t dword_587000_93156;
-extern uint32_t dword_5d4594_1045420;
-extern uint32_t dword_5d4594_1045428;
-extern uint32_t dword_5d4594_1045432;
-extern uint32_t dword_5d4594_816368;
-extern uint32_t dword_5d4594_816372;
-extern uint32_t dword_5d4594_816376;
-extern uint32_t dword_5d4594_831092;
 */
 import "C"
 import (
@@ -25,16 +15,16 @@ import (
 )
 
 var (
-	audioEventEnabled      = (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045432))
-	audioEventPlayback     = (*uint32)(unsafe.Pointer(&C.dword_587000_126996))
-	audioEventCatalogWord  = (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045420))
+	audioEventEnabled      = (*uint32)(unsafe.Pointer(&dword_5d4594_1045432))
+	audioEventPlayback     = (*uint32)(unsafe.Pointer(&dword_587000_126996))
+	audioEventCatalogWord  = (*uint32)(unsafe.Pointer(&dword_5d4594_1045420))
 	audioEventCacheStorage uint32
 	audioEventCacheWord    = &audioEventCacheStorage
-	audioEventContextWord  = (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045428))
+	audioEventContextWord  = (*uint32)(unsafe.Pointer(&dword_5d4594_1045428))
 	audioEventPoolStorage  uint32
 	audioEventPoolWord     = &audioEventPoolStorage
-	audioEventMusicCount   = (*uint32)(unsafe.Pointer(&C.dword_5d4594_816368))
-	audioEventMusicLevel   = (*uint32)(unsafe.Pointer(&C.dword_5d4594_816372))
+	audioEventMusicCount   = (*uint32)(unsafe.Pointer(&dword_5d4594_816368))
+	audioEventMusicLevel   = (*uint32)(unsafe.Pointer(&dword_5d4594_816372))
 )
 
 func audioEventCache() *audioStreamCache {
@@ -110,21 +100,21 @@ func audioEventCallbacks(v *audioStreamVoice) {
 	v.OnEnd = C.sub_4526F0
 	v.OnStop = C.sub_4526D0
 }
-func audioEventMusicDisable() { C.dword_587000_93156 = 0 }
+func audioEventMusicDisable() { dword_587000_93156 = 0 }
 func audioEventMusicEnable() int32 {
-	v := C.dword_5d4594_816376
+	v := dword_5d4594_816376
 	if v != 0 {
-		C.dword_587000_93156 = 1
+		dword_587000_93156 = 1
 	}
 	return int32(v)
 }
-func audioEventMusicEnabled() int32 { return int32(C.dword_587000_93156) }
-func audioEventDialogDisable()      { C.dword_587000_122848 = 0 }
+func audioEventMusicEnabled() int32 { return int32(dword_587000_93156) }
+func audioEventDialogDisable()      { dword_587000_122848 = 0 }
 func audioEventDialogEnable() int32 {
-	v := C.dword_5d4594_831092
+	v := dword_5d4594_831092
 	if v != 0 {
-		C.dword_587000_122848 = 1
+		dword_587000_122848 = 1
 	}
 	return int32(v)
 }
-func audioEventDialogEnabled() int32 { return int32(C.dword_587000_122848) }
+func audioEventDialogEnabled() int32 { return int32(dword_587000_122848) }

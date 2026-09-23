@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "GAME4_2.h"
-extern uint32_t dword_5d4594_2487248;
 */
 import "C"
 
@@ -32,7 +31,7 @@ func pushTileFill(x, y, flags, key int32) {
 	if flags&1 != 0 && y == 1 || flags&2 != 0 && x == 1 {
 		return
 	}
-	count := uint32(C.dword_5d4594_2487248)
+	count := uint32(dword_5d4594_2487248)
 	stack := tileFillStack()
 	// C scans using a signed count but tests capacity using the unsigned word.
 	for i := int32(0); i < int32(count); i++ {
@@ -45,23 +44,23 @@ func pushTileFill(x, y, flags, key int32) {
 		*memmap.PtrUint32(0x973F18, 22200) = 1
 		return
 	}
-	C.dword_5d4594_2487248 = C.uint32_t(count + 1)
+	dword_5d4594_2487248 = C.uint32_t(count + 1)
 	stack[count] = tileFillEntry{X: uint32(x), Y: uint32(y), Flags: uint32(flags)}
 }
 
 func popTileFill(x, y, flags *uint32) bool {
-	count := uint32(C.dword_5d4594_2487248)
+	count := uint32(dword_5d4594_2487248)
 	if int32(count) <= 0 {
 		return false
 	}
 	count--
-	C.dword_5d4594_2487248 = C.uint32_t(count)
+	dword_5d4594_2487248 = C.uint32_t(count)
 	stack := tileFillStack()
 	*x = stack[count].X
 	// Output pointers can alias the count or stack. Reload after each write,
 	// as C does, instead of snapshotting a triplet before writing outputs.
-	*y = stack[uint32(C.dword_5d4594_2487248)].Y
-	*flags = stack[uint32(C.dword_5d4594_2487248)].Flags
+	*y = stack[uint32(dword_5d4594_2487248)].Y
+	*flags = stack[uint32(dword_5d4594_2487248)].Flags
 	return true
 }
 

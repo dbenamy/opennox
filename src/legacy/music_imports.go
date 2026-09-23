@@ -4,10 +4,6 @@ package legacy
 #include <stdint.h>
 
 extern uint32_t dword_5d4594_816356;
-extern uint32_t dword_5d4594_816368;
-extern uint32_t dword_5d4594_816372;
-extern uint32_t dword_5d4594_816376;
-extern uint32_t dword_587000_93156;
 extern void* dword_587000_81128;
 */
 import "C"
@@ -27,10 +23,10 @@ var (
 
 func initMusic() {
 	var (
-		dword_5d4594_816368      *uint32            = (*uint32)(&C.dword_5d4594_816368)
-		dword_5d4594_816372      *uint32            = (*uint32)(&C.dword_5d4594_816372)
-		dword_5d4594_816376      *ail.Driver        = (*ail.Driver)(unsafe.Pointer(&C.dword_5d4594_816376))
-		dword_587000_93156       *uint32            = (*uint32)(&C.dword_587000_93156)
+		dword_5d4594_816368      *uint32            = (*uint32)(&dword_5d4594_816368)
+		dword_5d4594_816372      *uint32            = (*uint32)(&dword_5d4594_816372)
+		dword_5d4594_816376      *ail.Driver        = (*ail.Driver)(unsafe.Pointer(&dword_5d4594_816376))
+		dword_587000_93156       *uint32            = (*uint32)(&dword_587000_93156)
 		dword_587000_93160       *uint32            = (*uint32)(&dword_587000_93160)
 		dword_5d4594_816340      *uint32            = (*uint32)(&dword_5d4594_816340)
 		counter_5d4594_816244    *timer.TimerGroup  = memmap.PtrT[timer.TimerGroup](0x5d4594, 816244)

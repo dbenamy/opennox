@@ -4,82 +4,32 @@ package legacy
 #include "defs.h"
 #include "server__script__internal.h"
 extern void* nox_xxx_aClosewoodengat_587000_133480;
-extern uint32_t dword_5d4594_251572;
 extern uint32_t dword_5d4594_831236;
 extern uint32_t dword_5d4594_1309720;
-extern uint32_t nox_xxx_lightningTarget_5d4594_2487908;
-extern uint32_t dword_5d4594_2487556;
-extern uint32_t nox_xxx_lightningTargetArrayIndex_5d4594_2487904;
 extern void* dword_587000_127004;
-extern uint32_t dword_587000_93156;
-extern uint32_t dword_5d4594_1045432;
 extern void* nox_alloc_tradeItems_2386496;
-extern uint32_t dword_5d4594_816368;
 extern void* dword_587000_93164;
 extern void* nox_alloc_screenParticles_806044;
 extern void* dword_587000_122852;
-extern uint32_t dword_5d4594_1550916;
-extern uint32_t dword_5d4594_2487540;
 extern void* dword_587000_81128;
-extern uint32_t dword_5d4594_2487560;
-extern uint32_t dword_5d4594_2491616;
-extern uint32_t dword_5d4594_2487248;
 
-extern uint32_t dword_5d4594_2487532;
-extern uint32_t dword_5d4594_588084;
-extern uint32_t dword_5d4594_816372;
-extern uint32_t nox_xxx_energyBoltTarget_5d4594_2487880;
-extern uint32_t dword_5d4594_3835356;
 extern uint32_t dword_5d4594_251720;
-extern uint32_t dword_587000_122848;
 extern uint32_t dword_5d4594_816356;
 extern void* nox_alloc_monsterList_2386220;
-extern uint32_t nox_xxx_lightningClosestTargetDistance_5d4594_2487912;
-extern uint32_t dword_5d4594_1550912;
-extern uint32_t dword_5d4594_2487620;
 extern void* nox_alloc_tradeSession_2386492;
-extern uint32_t dword_5d4594_3835352;
-extern uint32_t dword_5d4594_2487624;
-extern uint32_t dword_5d4594_2487576;
-extern uint32_t dword_5d4594_3835348;
-extern uint32_t dword_5d4594_2487652;
-extern uint32_t dword_5d4594_3835388;
 extern uint32_t dword_5d4594_251716;
 extern uint32_t dword_5d4594_251708;
-extern uint32_t dword_5d4594_2487676;
 extern void* nox_alloc_spawn_2386216;
-extern uint32_t dword_5d4594_2487672;
 extern void* nox_alloc_magicEnt_1569668;
-extern uint32_t dword_5d4594_2487564;
 extern uint32_t dword_5d4594_3804684;
-extern uint32_t dword_5d4594_2487584;
 extern uint32_t dword_5d4594_251712;
-extern uint32_t nox_xxx_lightningOwner_5d4594_2487900;
 extern uint32_t dword_5d4594_1200796;
 extern uint32_t dword_587000_234176;
-extern uint32_t dword_5d4594_2487932;
-extern uint32_t dword_5d4594_2487628;
-extern uint32_t dword_5d4594_1045428;
-extern uint32_t dword_5d4594_2487536;
-extern uint32_t dword_587000_126996;
-extern uint32_t dword_5d4594_2487568;
-extern uint32_t dword_5d4594_2487580;
-extern uint32_t dword_5d4594_3835392;
 extern uint32_t dword_5d4594_1563276;
 extern uint32_t dword_5d4594_1200776;
 extern uint32_t dword_5d4594_1599688;
-extern uint32_t dword_5d4594_3835372;
-extern uint32_t dword_5d4594_2487884;
 extern void* dword_5d4594_1548532;
-extern uint32_t dword_5d4594_2489436;
 extern uint32_t dword_5d4594_1599708;
-extern uint32_t dword_5d4594_1045420;
-extern uint32_t dword_5d4594_3835364;
-extern uint32_t dword_5d4594_1549844;
-extern uint32_t dword_5d4594_2487632;
-extern uint32_t dword_5d4594_3835360;
-extern uint32_t dword_5d4594_3835368;
-extern uint32_t dword_5d4594_2487656;
 extern uint32_t array_5D4594_1049872[9];
 
 extern nox_window* dword_5d4594_1321236;
@@ -215,7 +165,7 @@ func Get_dword_5d4594_816340() int {
 	return int(dword_5d4594_816340)
 }
 func Get_dword_587000_93156() int {
-	return int(C.dword_587000_93156)
+	return int(dword_587000_93156)
 }
 func Get_dword_587000_93160() int {
 	return int(dword_587000_93160)

@@ -14,19 +14,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_2.h"
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_2487248;
-extern uint32_t dword_5d4594_3835348;
-extern uint32_t dword_5d4594_3835352;
-extern uint32_t dword_5d4594_3835356;
-extern uint32_t dword_5d4594_3835360;
-extern uint32_t dword_5d4594_3835364;
-extern uint32_t dword_5d4594_3835368;
-extern uint32_t dword_5d4594_3835372;
-extern uint32_t dword_5d4594_3835388;
-extern uint32_t dword_5d4594_3835392;
-extern uint32_t dword_5d4594_588084;
-extern uint32_t dword_5d4594_251572;
-extern uint32_t dword_5d4594_2489436;
 int* nox_xxx_tileListAddNewSubtile_422160(int a1, int a2, int a3, int a4);
 int nox_xxx_tileFreeTile_422200(int a1);
 unsigned char nox_xxx_wall_42A6C0(unsigned char a1, unsigned char a2);
@@ -59,21 +46,7 @@ case 41: return (uint32_t)nox_xxx_mapGenOrientObj_527C60((int)v[0],(int)v[1]);
 case 42: return (uint32_t)nox_xxx_mapGenFinishSpellbook_527DB0((int)v[0],(char)v[1]);
 case 47: return (uint32_t)nox_xxx_tileSubtile_544310((float2*)(uintptr_t)v[0]);
 default:abort();}}
-static uint32_t* paintGlobal(int i){switch(i){
-case 0:return &dword_5d4594_2487248;
-case 1:return &dword_5d4594_3835348;
-case 2:return &dword_5d4594_3835352;
-case 3:return &dword_5d4594_3835356;
-case 4:return &dword_5d4594_3835360;
-case 5:return &dword_5d4594_3835364;
-case 6:return &dword_5d4594_3835368;
-case 7:return &dword_5d4594_3835372;
-case 8:return &dword_5d4594_3835388;
-case 9:return &dword_5d4594_3835392;
-case 10:return &dword_5d4594_588084;
-case 11:return &dword_5d4594_251572;
-case 12:return &dword_5d4594_2489436;
-default:abort();}}
+
 static void* paintXfer(int i){return i ? (void*)nox_xxx_XFerSpellReward_4F5F30:(void*)nox_xxx_XFerDoor_4F4CB0;}
 static unsigned short paintCW(){unsigned short cw;__asm__ __volatile__("fnstcw %0":"=m"(cw));return cw;}
 static void paintSetCW(unsigned short cw){__asm__ __volatile__("fldcw %0"::"m"(cw));}
@@ -176,6 +149,14 @@ type paintTestFixture struct {
 	secret        map[*mapRoomTestRegion]bool
 }
 
+func portTestPaintGlobal(i int) *uint32 {
+	owners := [...]*uint32{(*uint32)(unsafe.Pointer(&dword_5d4594_2487248)), (*uint32)(unsafe.Pointer(&dword_5d4594_3835348)), (*uint32)(unsafe.Pointer(&dword_5d4594_3835352)), (*uint32)(unsafe.Pointer(&dword_5d4594_3835356)), (*uint32)(unsafe.Pointer(&dword_5d4594_3835360)), (*uint32)(unsafe.Pointer(&dword_5d4594_3835364)), (*uint32)(unsafe.Pointer(&dword_5d4594_3835368)), (*uint32)(unsafe.Pointer(&dword_5d4594_3835372)), (*uint32)(unsafe.Pointer(&dword_5d4594_3835388)), (*uint32)(unsafe.Pointer(&dword_5d4594_3835392)), (*uint32)(unsafe.Pointer(&dword_5d4594_588084)), (*uint32)(unsafe.Pointer(&dword_5d4594_251572)), (*uint32)(unsafe.Pointer(&dword_5d4594_2489436))}
+	if i < 0 || i >= len(owners) {
+		panic("map_painting global index")
+	}
+	return owners[i]
+}
+
 func paintGlobals() map[string]*uint32 {
 	names := []string{"dword_5d4594_2487248", "dword_5d4594_3835348", "dword_5d4594_3835352", "dword_5d4594_3835356", "dword_5d4594_3835360", "dword_5d4594_3835364", "dword_5d4594_3835368", "dword_5d4594_3835372", "dword_5d4594_3835388", "dword_5d4594_3835392", "dword_5d4594_588084", "dword_5d4594_251572", "dword_5d4594_2489436", "grid", "secretWalls", "tileCount"}
 	out := map[string]*uint32{}
@@ -188,7 +169,7 @@ func paintGlobals() map[string]*uint32 {
 		case 15:
 			out[n] = &worldTileDefinitionCount
 		default:
-			out[n] = (*uint32)(unsafe.Pointer(C.paintGlobal(C.int(i))))
+			out[n] = portTestPaintGlobal(i)
 		}
 	}
 	for n, off := range map[string]uintptr{"tile": 35912, "tileFlag": 35916, "wall": 35948, "wallDir": 35952, "wallVariation": 35956, "worklistError": 22200} {

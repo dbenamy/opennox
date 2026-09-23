@@ -10,8 +10,6 @@ package legacy
 int sub_43F060(uint32_t* a1);
 
 extern void* dword_587000_127004;
-extern uint32_t dword_5d4594_816376;
-extern uint32_t dword_5d4594_831092;
 
 extern void* dword_587000_122852;
 extern void* dword_587000_81128;
@@ -240,11 +238,11 @@ func Sub_453050() {
 }
 
 func Get_dword_5d4594_816376() ail.Driver {
-	return ail.Driver(C.dword_5d4594_816376)
+	return ail.Driver(dword_5d4594_816376)
 }
 
 func Set_dword_5d4594_816376(drv ail.Driver) {
-	C.dword_5d4594_816376 = C.uint(drv)
+	dword_5d4594_816376 = C.uint(drv)
 }
 
 //export sub_486320

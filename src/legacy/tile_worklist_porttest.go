@@ -7,7 +7,6 @@ package legacy
 #include <stdlib.h>
 #include <string.h>
 #include "GAME4_2.h"
-extern uint32_t dword_5d4594_2487248;
 
 static obj_5D4594_2650668_t** portTestWorklistGridNew(void) {
 	obj_5D4594_2650668_t** p = calloc(128, sizeof(*p));
@@ -115,7 +114,7 @@ func PortTestTileWorklist(initialCount, initialOverflow uint32, initialQueue []u
 	if len(initialQueue) != portTestWorklistWords {
 		panic("worklist initial queue must contain 1500 words")
 	}
-	count := (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487248))
+	count := (*uint32)(unsafe.Pointer(&dword_5d4594_2487248))
 	overflow := memmap.PtrUint32(0x973F18, 22200)
 	queue := portTestWorklistQueue()
 	left := unsafe.Slice(memmap.PtrUint8(0x973F18, 16192), 8)

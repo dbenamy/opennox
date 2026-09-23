@@ -10,8 +10,6 @@ package legacy
 #include "GAME4_2.h"
 #include "GAME4_3.h"
 #include "GAME5_2.h"
-extern uint32_t dword_5d4594_2487884,dword_5d4594_2487932,nox_xxx_energyBoltTarget_5d4594_2487880;
-extern uint32_t nox_xxx_lightningOwner_5d4594_2487900,nox_xxx_lightningTargetArrayIndex_5d4594_2487904,nox_xxx_lightningTarget_5d4594_2487908,nox_xxx_lightningClosestTargetDistance_5d4594_2487912;
 */
 import "C"
 import (
@@ -26,19 +24,19 @@ import (
 func sustainedGlobal(i int) *uint32 {
 	switch i {
 	case 0:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487884))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487884))
 	case 1:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487932))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487932))
 	case 2:
-		return (*uint32)(unsafe.Pointer(&C.nox_xxx_lightningOwner_5d4594_2487900))
+		return (*uint32)(unsafe.Pointer(&nox_xxx_lightningOwner_5d4594_2487900))
 	case 3:
-		return (*uint32)(unsafe.Pointer(&C.nox_xxx_lightningTargetArrayIndex_5d4594_2487904))
+		return (*uint32)(unsafe.Pointer(&nox_xxx_lightningTargetArrayIndex_5d4594_2487904))
 	case 4:
-		return (*uint32)(unsafe.Pointer(&C.nox_xxx_lightningTarget_5d4594_2487908))
+		return (*uint32)(unsafe.Pointer(&nox_xxx_lightningTarget_5d4594_2487908))
 	case 5:
-		return (*uint32)(unsafe.Pointer(&C.nox_xxx_lightningClosestTargetDistance_5d4594_2487912))
+		return (*uint32)(unsafe.Pointer(&nox_xxx_lightningClosestTargetDistance_5d4594_2487912))
 	case 6:
-		return (*uint32)(unsafe.Pointer(&C.nox_xxx_energyBoltTarget_5d4594_2487880))
+		return (*uint32)(unsafe.Pointer(&nox_xxx_energyBoltTarget_5d4594_2487880))
 	}
 	panic("sustained spell global")
 }

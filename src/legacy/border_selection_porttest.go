@@ -5,10 +5,6 @@ package legacy
 /*
 #include <stdint.h>
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_251572;
-extern uint32_t dword_5d4594_2489436;
-extern uint32_t dword_5d4594_3835356;
-extern uint32_t dword_5d4594_3835360;
 */
 import "C"
 
@@ -56,13 +52,13 @@ type PortTestBorderSnapshot struct {
 }
 
 func portTestBorderState() PortTestBorderState {
-	return PortTestBorderState{Count: uint32(C.dword_5d4594_251572), Flag: uint32(C.dword_5d4594_2489436), Primary: uint32(C.dword_5d4594_3835356), Secondary: uint32(C.dword_5d4594_3835360)}
+	return PortTestBorderState{Count: uint32(dword_5d4594_251572), Flag: uint32(dword_5d4594_2489436), Primary: uint32(dword_5d4594_3835356), Secondary: uint32(dword_5d4594_3835360)}
 }
 func portTestBorderSetState(v PortTestBorderState) {
-	C.dword_5d4594_251572 = C.uint32_t(v.Count)
-	C.dword_5d4594_2489436 = C.uint32_t(v.Flag)
-	C.dword_5d4594_3835356 = C.uint32_t(v.Primary)
-	C.dword_5d4594_3835360 = C.uint32_t(v.Secondary)
+	dword_5d4594_251572 = C.uint32_t(v.Count)
+	dword_5d4594_2489436 = C.uint32_t(v.Flag)
+	dword_5d4594_3835356 = C.uint32_t(v.Primary)
+	dword_5d4594_3835360 = C.uint32_t(v.Secondary)
 }
 func portTestBorderTable() []byte {
 	return unsafe.Slice(memmap.PtrUint8(0x85B3FC, portTestBorderBase), portTestBorderRows*portTestBorderRowSize)

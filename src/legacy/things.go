@@ -9,7 +9,6 @@ package legacy
 #include "GAME2_1.h"
 #include "GAME2_2.h"
 #include "GAME4.h"
-extern uint32_t dword_5d4594_251572;
 */
 import "C"
 import (
@@ -123,7 +122,7 @@ func Nox_thing_read_EDGE_411850(f *binfile.MemFile, buf []byte) int {
 
 func LoadAllBinFileSectionsResetCounters() {
 	worldTileDefinitionCount = 0
-	C.dword_5d4594_251572 = 0
+	dword_5d4594_251572 = 0
 }
 
 // The old C bridge accepted nonempty short slices backed by the checked capacity.

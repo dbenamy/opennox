@@ -278,6 +278,7 @@ target build selection and linker evidence.
 | Text formatting, scalar strings and audio directory | 8 | 635 | −584 | 0 |
 | Unused memory and GUI bridges | 6 | 518 | −117 | 0 |
 | Numeric global ownership | 6 | 166 | −352 | 0 |
+| Fixture-backed numeric global owners | 6 | 114 | −52 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

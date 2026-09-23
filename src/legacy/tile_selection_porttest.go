@@ -5,7 +5,6 @@ package legacy
 /*
 #include <stdint.h>
 #include "GAME4_1.h"
-extern uint32_t dword_5d4594_3835348;
 */
 import "C"
 
@@ -53,7 +52,7 @@ func portTestTilePtrs() ([]server.TileDef, *uint32, *uint32, *uint32, *uint32) {
 	count := (*uint32)(unsafe.Pointer(unsafe.Pointer(&worldTileDefinitionCount)))
 	selected := memmap.PtrUint32(0x973F18, 35912)
 	flag := memmap.PtrUint32(0x973F18, 35916)
-	variation := (*uint32)(unsafe.Pointer(&C.dword_5d4594_3835348))
+	variation := (*uint32)(unsafe.Pointer(&dword_5d4594_3835348))
 	return table, count, selected, variation, flag
 }
 func portTestTileGet(selected, variation, flag *uint32) portTestTileState {

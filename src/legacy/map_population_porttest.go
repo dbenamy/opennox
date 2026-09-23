@@ -7,38 +7,7 @@ package legacy
 #include <stdlib.h>
 #include <string.h>
 #include "GAME3_3.h"
-extern uint32_t dword_5d4594_1550916;
-extern uint32_t dword_5d4594_2487564;
-extern uint32_t dword_5d4594_2487568;
-extern uint32_t dword_5d4594_2487576;
-extern uint32_t dword_5d4594_2487580;
-extern uint32_t dword_5d4594_2487584;
-extern uint32_t dword_5d4594_2487620;
-extern uint32_t dword_5d4594_2487624;
-extern uint32_t dword_5d4594_2487628;
-extern uint32_t dword_5d4594_2487632;
-extern uint32_t dword_5d4594_2487652;
-extern uint32_t dword_5d4594_2487656;
-extern uint32_t dword_5d4594_2487672;
-extern uint32_t dword_5d4594_2487676;
-extern uint32_t dword_5d4594_2491616;
-static uint32_t* populationGlobal(int i){switch(i){
-case 0:return &dword_5d4594_1550916;
-case 1:return &dword_5d4594_2487564;
-case 2:return &dword_5d4594_2487568;
-case 3:return &dword_5d4594_2487576;
-case 4:return &dword_5d4594_2487580;
-case 5:return &dword_5d4594_2487584;
-case 6:return &dword_5d4594_2487620;
-case 7:return &dword_5d4594_2487624;
-case 8:return &dword_5d4594_2487628;
-case 9:return &dword_5d4594_2487632;
-case 10:return &dword_5d4594_2487652;
-case 11:return &dword_5d4594_2487656;
-case 12:return &dword_5d4594_2487672;
-case 13:return &dword_5d4594_2487676;
-case 28:return &dword_5d4594_2491616;
-default:abort();}}
+
 */
 import "C"
 import (
@@ -53,13 +22,50 @@ import (
 )
 
 // Dispatches the production implementation and snapshots shared engine owners.
+func portTestPopulationGlobal(i int) *uint32 {
+	switch i {
+	case 0:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1550916))
+	case 1:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487564))
+	case 2:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487568))
+	case 3:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487576))
+	case 4:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487580))
+	case 5:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487584))
+	case 6:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487620))
+	case 7:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487624))
+	case 8:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487628))
+	case 9:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487632))
+	case 10:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487652))
+	case 11:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487656))
+	case 12:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487672))
+	case 13:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487676))
+	case 28:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2491616))
+	default:
+		panic("map population global index")
+	}
+}
+
 func PortTestMapPopulation(cases []PortTestPaintSpec, owner func(*server.Server) (Server, func())) []PortTestPaintResult {
 	ext := &paintTestExtension{globals: map[string]*uint32{}}
 	for i, n := range []string{"dword_5d4594_1550916", "dword_5d4594_2487564", "dword_5d4594_2487568", "dword_5d4594_2487576", "dword_5d4594_2487580", "dword_5d4594_2487584", "dword_5d4594_2487620", "dword_5d4594_2487624", "dword_5d4594_2487628", "dword_5d4594_2487632", "dword_5d4594_2487652", "dword_5d4594_2487656", "dword_5d4594_2487672", "dword_5d4594_2487676", "dword_5d4594_1599576", "dword_5d4594_1599596", "dword_5d4594_1599480", "dword_5d4594_1599476", "dword_5d4594_1599540", "dword_5d4594_3835396", "dword_5d4594_2487244", "dword_5d4594_1599532", "dword_5d4594_1599556", "dword_5d4594_1599548", "dword_5d4594_1599644", "dword_5d4594_3835312", "dword_5d4594_1599588", "dword_5d4594_1599592", "dword_5d4594_2491616"} {
 		if index, ok := map[string]int{"dword_5d4594_1599576": prefabMetadata, "dword_5d4594_1599596": prefabCount, "dword_5d4594_1599480": prefabLoaded, "dword_5d4594_1599476": prefabPlaced, "dword_5d4594_3835396": prefabSelected, "dword_5d4594_1599540": prefabObjects, "dword_5d4594_1599532": prefabWalls, "dword_5d4594_1599556": prefabTiles, "dword_5d4594_1599548": prefabWaypoints, "dword_5d4594_1599588": prefabPath, "dword_5d4594_1599592": prefabAlternate, "dword_5d4594_1599616": prefabIntro, "dword_5d4594_1599644": prefabScript, "dword_5d4594_3835312": prefabInstance, "dword_5d4594_2487244": prefabLastWaypoint, "nox_file_8": prefabFile}[n]; ok {
 			ext.globals[n] = prefabGlobal(index)
 		} else {
-			ext.globals[n] = (*uint32)(unsafe.Pointer(C.populationGlobal(C.int(i))))
+			ext.globals[n] = portTestPopulationGlobal(i)
 		}
 	}
 	for i := 0; i < 5; i++ {

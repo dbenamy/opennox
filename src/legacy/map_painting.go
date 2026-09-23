@@ -2,9 +2,6 @@ package legacy
 
 /*
 #include "GAME4_2.h"
-extern uint32_t dword_5d4594_3835348, dword_5d4594_3835352, dword_5d4594_3835356, dword_5d4594_3835360;
-extern uint32_t dword_5d4594_3835364, dword_5d4594_3835368, dword_5d4594_3835372;
-extern uint32_t dword_5d4594_3835388, dword_5d4594_3835392, dword_5d4594_588084, dword_5d4594_2487248;
 */
 import "C"
 
@@ -31,27 +28,27 @@ const (
 func mapPaintGlobal(i int) *uint32 {
 	switch i {
 	case paintVariation:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_3835348))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_3835348))
 	case paintSubtileMode:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_3835352))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_3835352))
 	case paintBorder:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_3835356))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_3835356))
 	case paintBorderVariation:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_3835360))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_3835360))
 	case paintAfterWalls:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_3835364))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_3835364))
 	case paintWallMerge:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_3835368))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_3835368))
 	case paintWallCycle:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_3835372))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_3835372))
 	case paintObjectType:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_3835388))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_3835388))
 	case paintObjectCounter:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_3835392))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_3835392))
 	case paintFreeHead:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_588084))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_588084))
 	case paintWorkCount:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487248))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487248))
 	}
 	panic("map painting global")
 }

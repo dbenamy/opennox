@@ -14,6 +14,13 @@
 
 ## Current status
 
+Another 52 numeric globals (map generation, audio and sustained spells) now have
+Go owners; 11 C fixture accessor/table bodies are retired. All 54,905 storage
+cases match the frozen C capture. Each profile passes 183 focused consumer roots
+without skips. Safe build, production/ABI, exact known-suite comparison and fresh
+headless gameplay/save-load pass. This removes 52 C lines. See
+[FIXTURE_STORAGE.md](docs/porting/FIXTURE_STORAGE.md).
+
 343 numeric globals now have process-lifetime Go owners; nine unused C definitions
 are removed. The 47,677-case storage capture matches C in all three profiles.
 The full tagged consumer sweep passes 2,291/2,280/2,291 roots in default/server/highres,
@@ -67,8 +74,8 @@ unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skip
 and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
 comparison, headless gameplay and save/load checks pass.
 
-C remaining is **166 physical lines in 6 files**, zero reference C. See
-[the native qualification](docs/porting/scalar-storage-native-qualification.json).
+C remaining is **114 physical lines in 6 files**, zero reference C. See
+[the native qualification](docs/porting/fixture-storage-native-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in
@@ -169,6 +176,10 @@ may precede full qualification when their evidence and remaining gates are expli
    contracts for the results. Review file adapters' diagnostics and closure at the
    same time. The resource-definition batch found these details late and repeated
    qualification unnecessarily; complete this review before starting long gates.
+   When replacing indexed C accessors, extract actual numeric keys and returned
+   owners from the C source, including holes and special/null slots. Independently
+   compare every mapping before compiling; an owner list alone loses sparse keys.
+   The fixture-storage review caught index28 incorrectly compacted to14 in a draft.
    Check dispatch ownership when reusing an existing Go implementation: equal
    output under the default configuration can hide different hooks or queues.
    The team score port caught this through accumulated objective-scoring captures.

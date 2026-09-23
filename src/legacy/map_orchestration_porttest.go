@@ -2,16 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include <stdint.h>
-extern uint32_t dword_5d4594_1549844,dword_5d4594_1550912,dword_5d4594_1550916;
-static uint32_t* orchestrationGlobal(int i) {
- switch(i) {case 0:return &dword_5d4594_1549844;case 1:return &dword_5d4594_1550912;case 2:return &dword_5d4594_1550916;}
- return 0;
-}
-*/
-import "C"
 import (
 	"bytes"
 	"encoding/binary"
@@ -30,6 +20,14 @@ type PortTestMapOrchestrationServices struct {
 	Before   func(*server.Server)
 	After    func(*server.Server, int, uint32)
 	Save     func(string, int) int
+}
+
+func portTestOrchestrationGlobal(i int) *uint32 {
+	owners := [...]*uint32{(*uint32)(unsafe.Pointer(&dword_5d4594_1549844)), (*uint32)(unsafe.Pointer(&dword_5d4594_1550912)), (*uint32)(unsafe.Pointer(&dword_5d4594_1550916))}
+	if i < 0 || i >= len(owners) {
+		return nil
+	}
+	return owners[i]
 }
 
 func PortTestMapOrchestration(cases []PortTestPaintSpec, owner func(*server.Server) (Server, func()), services ...*PortTestMapOrchestrationServices) []PortTestPaintResult {
@@ -66,7 +64,7 @@ func PortTestMapOrchestration(cases []PortTestPaintSpec, owner func(*server.Serv
 	defer copy(unsafe.Slice((*byte)(name), 64), savedName)
 
 	for i, name := range []string{"growthMergeRate", "growthFrontier", "growthStart"} {
-		ext.globals[name] = (*uint32)(unsafe.Pointer(C.orchestrationGlobal(C.int(i))))
+		ext.globals[name] = portTestOrchestrationGlobal(i)
 	}
 	for i := 0; i < 14; i++ {
 		ext.globals[fmt.Sprintf("populationGlobal%d", i)] = populationGlobal(i)

@@ -15,7 +15,6 @@ package legacy
 #include "common__log.h"
 
 extern void* dword_587000_81128;
-extern unsigned int dword_587000_93156;
 
 extern nox_gui_animation* nox_wnd_xxx_1309740;
 */

@@ -3,7 +3,6 @@ package legacy
 /*
 #include <stdlib.h>
 #include <stdint.h>
-extern uint32_t dword_5d4594_2487532,dword_5d4594_2487536,dword_5d4594_2487540,dword_5d4594_2487556,dword_5d4594_2487560;
 */
 import "C"
 import (
@@ -47,15 +46,15 @@ type mapRoomCellData struct {
 func mapRoomGlobalWord(i int) *uint32 {
 	switch i {
 	case 0:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487532))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487532))
 	case 1:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487536))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487536))
 	case 2:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487540))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487540))
 	case 3:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487556))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487556))
 	case 4:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487560))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_2487560))
 	}
 	panic("map room global")
 }

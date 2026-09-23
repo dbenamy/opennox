@@ -2,10 +2,6 @@ package legacy
 
 /*
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_251572;
-extern uint32_t dword_5d4594_2489436;
-extern uint32_t dword_5d4594_3835356;
-extern uint32_t dword_5d4594_3835360;
 */
 import "C"
 
@@ -17,7 +13,7 @@ import (
 )
 
 func findBorderName(name *C.char) int32 {
-	count := int32(C.dword_5d4594_251572)
+	count := int32(dword_5d4594_251572)
 	if name == nil || count <= 0 {
 		return -1
 	}
@@ -34,38 +30,38 @@ func findBorderName(name *C.char) int32 {
 }
 
 func selectBorderName(name *C.char) bool {
-	C.dword_5d4594_2489436 = 0
+	dword_5d4594_2489436 = 0
 	// Only the sentinel is case-insensitive; preserve the shared C locale
 	// comparator rather than applying Unicode folding to border names.
 	if textCompareNarrow((*byte)(unsafe.Pointer(alloc.InternCString("NONE"))), (*byte)(unsafe.Pointer(name))) == 0 {
-		C.dword_5d4594_3835356 = 255
+		dword_5d4594_3835356 = 255
 		return true
 	}
 	return selectBorderPrimary(findBorderName(name))
 }
 
 func selectBorderPrimary(index int32) bool {
-	if index < 0 || index >= int32(C.dword_5d4594_251572) {
+	if index < 0 || index >= int32(dword_5d4594_251572) {
 		return false
 	}
-	C.dword_5d4594_3835356 = C.uint32_t(index)
-	C.dword_5d4594_2489436 = 1
+	dword_5d4594_3835356 = C.uint32_t(index)
+	dword_5d4594_2489436 = 1
 	return true
 }
 
 func selectBorderVariation(variation int32) bool {
-	if C.dword_5d4594_2489436 == 0 {
+	if dword_5d4594_2489436 == 0 {
 		return true
 	}
-	count := int32(C.dword_5d4594_251572)
-	selected := uint32(C.dword_5d4594_3835356)
+	count := int32(dword_5d4594_251572)
+	selected := uint32(dword_5d4594_3835356)
 	// Approved fix: validate the selected border's limit, not the unrelated
 	// row indexed by variation. Reject invalid selected rows before access.
 	if count <= 0 || selected >= uint32(count) || selected >= 64 || variation < 0 ||
 		variation >= int32(memmap.Uint16(0x85B3FC, 28688+60*uintptr(selected))) {
 		return false
 	}
-	C.dword_5d4594_3835360 = C.uint32_t(variation)
+	dword_5d4594_3835360 = C.uint32_t(variation)
 	return true
 }
 

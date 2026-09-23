@@ -6,9 +6,6 @@ package legacy
 #include <stdint.h>
 #include "GAME2.h"
 #include "GAME2_2.h"
-extern uint32_t dword_5d4594_1045420;
-extern uint32_t dword_5d4594_1045428;
-extern uint32_t dword_5d4594_1045432;
 */
 import "C"
 import (
@@ -20,16 +17,16 @@ import (
 func PortTestClientAudioAssetsOwner() ([]byte, *uint32, *unsafe.Pointer, func()) {
 	rows := unsafe.Slice(memmap.PtrUint8(0x5D4594, 840628), 200*1023)
 	saved := append([]byte(nil), rows...)
-	catalog, context, enabled := C.dword_5d4594_1045420, C.dword_5d4594_1045428, C.dword_5d4594_1045432
+	catalog, context, enabled := dword_5d4594_1045420, dword_5d4594_1045428, dword_5d4594_1045432
 	clear(rows)
-	C.dword_5d4594_1045420 = 0
-	C.dword_5d4594_1045428 = 0
-	C.dword_5d4594_1045432 = 0
-	return rows, (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045432)), (*unsafe.Pointer)(unsafe.Pointer(&C.dword_5d4594_1045420)), func() {
+	dword_5d4594_1045420 = 0
+	dword_5d4594_1045428 = 0
+	dword_5d4594_1045432 = 0
+	return rows, (*uint32)(unsafe.Pointer(&dword_5d4594_1045432)), (*unsafe.Pointer)(unsafe.Pointer(&dword_5d4594_1045420)), func() {
 		copy(rows, saved)
-		C.dword_5d4594_1045420 = catalog
-		C.dword_5d4594_1045428 = context
-		C.dword_5d4594_1045432 = enabled
+		dword_5d4594_1045420 = catalog
+		dword_5d4594_1045428 = context
+		dword_5d4594_1045432 = enabled
 	}
 }
 func PortTestClientAudioSlot(id int32) unsafe.Pointer {

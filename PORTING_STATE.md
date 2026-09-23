@@ -2,59 +2,51 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: 166 physical lines in 6 production `.c` files**, zero
-reference C. Latest conversion removes 352 lines:343 owners moved to Go, nine unused definitions.
-See [C_LOC.md](docs/porting/C_LOC.md).
+**Qualified C remaining: 114 physical lines in 6 production `.c` files**, zero
+reference C. Latest conversion removes 52 numeric owner definitions and 11 C
+fixture accessor/table bodies. See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Active — fixture storage C baseline qualified
+## Current — fixture-backed numeric owners qualified
 
-Production checkpoint `2a3eaec7` is pushed. The original-C contract extension is
-qualified:395 owners ×139 patterns (54,905 cases), two default processes and
-server/highres, matching captures/static;183 focused default consumers pass with
-no skips. Original343 observations exactly match the previous capture. All jobs
-joined (34016,65560). Only scalar_storage_porttest.go changed; production remains
-166 C lines /6 files. See [FIXTURE_STORAGE.md](docs/porting/FIXTURE_STORAGE.md).
+Original-C baseline `0bc827a1` is pushed. Native default/server/highres pass all
+54,905 cases /395 owners, 183 consumer roots each, static checks and no skips.
+Safe build/symbols, three production builds/ABI, exact known full-suite comparison,
+fresh headless gameplay and explicit save/load pass. All source fingerprints
+match; session43541 joined. C is114 /6 files (−52), no reference C.
+See [FIXTURE_STORAGE.md](docs/porting/FIXTURE_STORAGE.md).
 
-Next: commit baseline, then apply reviewed52-owner migration. Ignored draft
-build/port-map-storage/prepare_map_storage.py --check passes33 paths/322 selectors/
-241 extern declarators/21 accessor calls; two eligible cgo imports pruned. It is
-UNAPPLIED. Contract generator is CONSUMED. Frozen expected bits remain unchanged.
-Luna is doing a read-only remaining-storage audit; no implementation task active.
+All generators/installers under build/port-map-storage are CONSUMED. Tracked source
+supersedes drafts, particularly the primary correction of population index28.
+Primary reviews:24 selector-only AST files,52 type/initializer checks,7 exact
+accessor mappings. No expected captures changed. Preflight duplicate assets
+556,388,715 bytes removed after host/hash checks; restore with
+python3 build/port-map-storage/deduplicate-preflight.py --restore fixture-storage-native.
+Final artifacts: native-default/safe/preflight/server/highres/production.
+Cleanup86988 joined: ten reviewed obsolete cache archives464,275,530 bytes and
+completed fixture-storage-native-save duplicate assets556,358,986 bytes removed
+with host process/open-file and hash/metadata checks. Scripts are CONSUMED.
+Restore assets with python3 build/port-map-storage/deduplicate-save.py --restore fixture-storage-native-save.
 
-Cleanup83025 joined: seven obsolete archives313,063,478 bytes and completed
-scalar-storage-native-save duplicate assets556,358,986 bytes removed after host
-process/FD/hash/size/mtime checks. Cleanup scripts are CONSUMED. Restore assets:
+Next: remaining storage ownership. Luna's read-only inventory under
+build/port-remaining-storage covers44 remaining vardefs definitions and8 blobs.
+Primary's ignored design.md proposes Go initialization via the existing foreign
+allocator to preserve unmanaged raw storage, address retention and process lifetime.
+No remaining-storage conversion or new baseline fixture is applied yet. The eight
+blobs require the broad consumer sweep. Freeze actual-C contracts first and commit
+the baseline; retain explicit libc/CGO dependency reporting. Consumer mapping is
+reviewed; the new contracts cover the one identified direct-setter gap. Luna is
+drafting a guarded migration under build/port-remaining-storage, without source
+edit or build permission. No Go jobs are active after this qualification.
+
+The preceding343-owner conversion is pushed as `2a3eaec7`:47,677 cases and
+2,291/2,280/2,291 consumer roots plus all production gates passed. C fell352 to166.
+See [SCALAR_STORAGE.md](docs/porting/SCALAR_STORAGE.md).
+All build/port-final-storage migration and cleanup scripts are CONSUMED. Cleanup
+83025 removed seven obsolete cache archives313,063,478 bytes and matching original
+assets556,358,986 bytes from scalar-storage-native-save. Its restoration command is
 python3 build/port-final-storage/deduplicate-save.py --restore scalar-storage-native-save.
-
-## Current — numeric global owners qualified
-
-Original-C baseline `bc90690c` is pushed. Native default/server/highres pass
-2,291/2,280/2,291 consumer roots/no skips, all 47,677 storage cases/capture hashes
-and static checks. Safe build/symbols, three production builds/ABI, exact known
-full-suite comparison, fresh headless gameplay and explicit save/load pass.
-All final source fingerprints match; sessions12295,98671 and21073 joined. C is166 /6
-files (−352), no reference C. See [SCALAR_STORAGE.md](docs/porting/SCALAR_STORAGE.md).
-
-Migration and preflight asset cleanup scripts in `build/port-final-storage` are
-CONSUMED. Tracked source is authoritative. Preflight duplicate assets556,388,715
-bytes were removed after hash/process checks; deduplicate-preflight.py --restore
-scalar-storage-native restores them. Original assets and evidence are intact.
-Old orphan-bridges-native-save duplicate assets556,358,986 bytes were also removed
-after host/hash checks; deduplicate-old-save.py --restore orphan-bridges-native-save
-restores them. Cleanup54553 joined; CONSUMED.
-
-Next: the ignored, UNAPPLIED `build/port-map-storage` draft now covers
-all52 fixture-owned numeric globals (35 map,10 audio,7 sustained spells). Primary
-caught a helper-name collision; Luna corrected it with distinct portTest names.
-Review selected-symbols/plan/patch, extend the frozen owner contract first, commit
-baseline, then recheck/apply the guarded migration. Do not replay consumed current
-installers. The183-root focused pattern is `consumer-pattern.txt`; the similarly
-named map-owner-consumers.txt is a prose rationale, not a -run pattern. The
-395-owner contract draft has54,905 cases and matches current Go-facing uint32_t
-externs. Cache cleanup inventory is pending primary review; no deletion yet.
-Three pointer-typed scalars and pointer/array owners remain deferred.
 
 ## Current — unused memory and GUI bridges qualified
 

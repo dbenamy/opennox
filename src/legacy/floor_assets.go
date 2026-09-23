@@ -3,7 +3,6 @@ package legacy
 /*
 #include <stdlib.h>
 #include "defs.h"
-extern uint32_t dword_5d4594_251572;
 */
 import "C"
 import (
@@ -80,7 +79,7 @@ func floorAssetDefinition(f *binfile.MemFile, scratch []byte) int {
 	return 1
 }
 func edgeAssetDefinition(f *binfile.MemFile, scratch []byte) int {
-	index := uint32(C.dword_5d4594_251572)
+	index := uint32(dword_5d4594_251572)
 	if index >= 64 {
 		return 0
 	}
@@ -121,7 +120,7 @@ func edgeAssetDefinition(f *binfile.MemFile, scratch []byte) int {
 	if f.ReadU32() != 0x454e4420 {
 		return 0
 	}
-	C.dword_5d4594_251572++
+	dword_5d4594_251572++
 	return 1
 }
 func floorAssetSkipImages(f *binfile.MemFile, count int) {
@@ -205,7 +204,7 @@ func edgeAssetBind(f *binfile.MemFile, scratch []byte) int {
 	f.Skip(4)
 	name := floorAssetName(f)
 	index := -1
-	for i := 0; i < int(int32(C.dword_5d4594_251572)); i++ {
+	for i := 0; i < int(int32(dword_5d4594_251572)); i++ {
 		if alloc.GoString(memmap.PtrUint8(0x85B3FC, 28644+60*uintptr(i))) == name {
 			index = i
 			break
@@ -248,7 +247,7 @@ func floorAssetFree() {
 	}
 }
 func edgeAssetFree() {
-	for i := int32(0); i < int32(C.dword_5d4594_251572); i++ {
+	for i := int32(0); i < int32(dword_5d4594_251572); i++ {
 		p := memmap.PtrPtr(0x85B3FC, 28676+60*uintptr(i))
 		if *p != nil {
 			C.free(*p)

@@ -1,8 +1,8 @@
 # Numeric storage used by fixture accessors
 
-Status: original-C baseline qualified; native draft not yet installed. Production
-remains the qualified numeric-storage checkpoint `2a3eaec7`:166 C lines /6 files.
-Only the tagged owner contract changes before the baseline is frozen.
+Status: original-C baseline `0bc827a1` and native conversion qualified.
+C remaining is 114 physical lines in six production files (−52), zero reference C.
+All expectations remain frozen from the baseline.
 
 ## Scope
 
@@ -47,3 +47,36 @@ Baseline qualification passed: two independent default storage processes and
 server/highres match the frozen capture;183 default consumer roots and all static
 checks pass without skips. Source fingerprints agree; only the tagged fixture
 changed. See [fixture-storage-c-qualification.json](fixture-storage-c-qualification.json).
+
+## Native integration review
+
+Primary AST comparison passes24 files that should only redirect owner selectors.
+All52 owner types/initializer bits match C, prior343 declarations are unchanged,
+and vardefs.c loses exactly the52 selected definitions. Seven independent accessor
+mapping comparisons match the old C, including shared owners and audio null/pointer
+slots. Primary caught and corrected a draft error before compilation: the population
+helper's sparse index28 had been compacted to14. Preserve the original numeric
+keys, not just owner order. Test expectations were not changed.
+
+The installed conversion removes11 C fixture helper/table bodies, redirects21
+accessor calls and322 C owner selectors (including208 in the extended contract),
+and removes241 selected extern occurrences plus two unused cgo imports across33
+paths. Installer is consumed; tracked source is authoritative. Native contracts,
+183 consumers/static in each profile, safe build, fresh production/ABI/known-suite,
+and headless gameplay/save-load all pass against this source.
+
+## Qualified result
+
+Default/server/highres each pass all 54,905 cases (395 owners), 183 focused
+consumer roots and static checks, without skips. The raw capture hash remains
+`6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b`.
+The safe build retains allocator bridges and omits all 52 retired storage symbols;
+safe runtime behavior was not tested. Three production builds/ABI, exact known
+full-suite comparison, headless gameplay and explicit save/load pass. The known
+full-suite baseline still contains failures; this is equivalence, not a green suite.
+Source fingerprints match across all phases and preflight uses the final default
+production binary. See [fixture-storage-native-qualification.json](fixture-storage-native-qualification.json).
+
+Luna remains useful for bounded drafts and inventories, with independent primary
+review. The sparse index correction above was necessary; draft generation alone
+is not acceptance. No measured subscription-cost reduction is claimed.

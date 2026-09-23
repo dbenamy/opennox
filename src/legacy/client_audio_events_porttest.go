@@ -16,17 +16,7 @@ char sub_450760(char a1);
 int sub_4526D0(int a1);
 int sub_4526F0(int a1);
 int sub_452770(uint32_t* a1);
-extern uint32_t dword_587000_122848;
-extern uint32_t dword_587000_126996;
 extern void* dword_587000_127004;
-extern uint32_t dword_587000_93156;
-extern uint32_t dword_5d4594_1045420;
-extern uint32_t dword_5d4594_1045428;
-extern uint32_t dword_5d4594_1045432;
-extern uint32_t dword_5d4594_816368;
-extern uint32_t dword_5d4594_816372;
-extern uint32_t dword_5d4594_816376;
-extern uint32_t dword_5d4594_831092;
 static uint64_t nox_porttest_audio_event_call(int op,uint64_t a0,uint64_t a1,uint64_t a2,uint64_t a3){switch(op){
 case 2: return (uint64_t)(int64_t)sub_43DB20();
 case 3: return (uint64_t)(int64_t)sub_43DB30((int)a0);
@@ -37,21 +27,7 @@ case 40: return (uint64_t)(int64_t)sub_4526D0((int)a0);
 case 41: return (uint64_t)(int64_t)sub_4526F0((int)a0);
 case 61: return (uint64_t)(int64_t)sub_452770((uint32_t*)a0);
 }return 0;}
-static void* nox_porttest_audio_event_global(int op) {
-switch(op) {
-case 0: return &dword_587000_122848;
-case 1: return &dword_587000_126996;
-case 2: return &dword_587000_127004;
-case 3: return &dword_587000_93156;
-case 4: return &dword_5d4594_1045420;
-case 6: return &dword_5d4594_1045428;
-case 7: return &dword_5d4594_1045432;
-case 9: return &dword_5d4594_816368;
-case 10: return &dword_5d4594_816372;
-case 11: return &dword_5d4594_816376;
-case 12: return &dword_5d4594_831092;
-} return 0;
-}
+
 */
 import "C"
 import (
@@ -137,6 +113,37 @@ var portTestAudioEventGlobals = []string{
 	"dword_5d4594_816372",
 	"dword_5d4594_816376",
 	"dword_5d4594_831092",
+}
+
+func portTestAudioEventGlobal(i int) *uint32 {
+	switch i {
+	case 0:
+		return (*uint32)(unsafe.Pointer(&dword_587000_122848))
+	case 1:
+		return (*uint32)(unsafe.Pointer(&dword_587000_126996))
+	case 3:
+		return (*uint32)(unsafe.Pointer(&dword_587000_93156))
+	case 4:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1045420))
+	case 6:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1045428))
+	case 7:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1045432))
+	case 9:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_816368))
+	case 10:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_816372))
+	case 11:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_816376))
+	case 12:
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_831092))
+	case 2:
+		return (*uint32)(unsafe.Pointer(&C.dword_587000_127004))
+	case 5, 8:
+		return nil
+	default:
+		return nil
+	}
 }
 
 func PortTestAudioEventCall(name string, args ...uint64) uint64 {
@@ -282,7 +289,7 @@ func PortTestAudioEventGlobals() (map[string]*uint32, func()) {
 	words := make(map[string]*uint32)
 	saved := make(map[string]uint32)
 	for i, n := range portTestAudioEventGlobals {
-		p := (*uint32)(C.nox_porttest_audio_event_global(C.int(i)))
+		p := portTestAudioEventGlobal(i)
 		if n == "dword_5d4594_1045424" {
 			p = audioEventCacheWord
 		}
