@@ -1,0 +1,22 @@
+{
+  "hashes": {
+    "results-zero.bin": "af27306aae4773695989fae801f4ae0ec79d780e220db67e9e98de59eb824545",
+    "results-0.bin": "3d7ddbc553af29c6f423e6ab24846e4432e6cf3ed7d66197d0bd713365005221",
+    "results-1.bin": "3d7ddbc553af29c6f423e6ab24846e4432e6cf3ed7d66197d0bd713365005221",
+    "results-poison.bin": "3d7ddbc553af29c6f423e6ab24846e4432e6cf3ed7d66197d0bd713365005221",
+    "results-2.bin": "3d7ddbc553af29c6f423e6ab24846e4432e6cf3ed7d66197d0bd713365005221",
+    "results-ubsan.bin": "b94063e4cb8b4512c5d605cb3315e029c90c17ea7e5d1a6278dc2f9011e2703d"
+  },
+  "calls_differing_native_vs_ubsan": 30,
+  "calls_differing_native_vs_zero_init": 30,
+  "sequences": [
+    359,
+    373,
+    415,
+    429,
+    471,
+    485
+  ],
+  "qmf_poison_matches_native": true,
+  "cause": "Synthetic side-info builder sets private bits; MPEG1 parser shifts them into first-granule channel1 scfsi, reusing uninitialized intensity-position bytes."
+}

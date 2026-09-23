@@ -400,3 +400,19 @@ workspace to preserve documented8kHzmixedextent. Scratchwill be zeroinitialized 
 Go; original local C scratch uninitialized, so any dependence on undefined/retained
 stackbytes must be characterized ratherthan emulated. Luna read-only auditing
 existing ail PCM/seek/baseline harness and interface. No active builds.
+
+## Current — complete-frame C baseline
+
+Huffman8391c9b5 pushed. Frame80616 joinedPASS:544seq/2682calls,3native+UBSanfloatcast
++QMFpoison exact. Unmasked98194 failedrepeatability solely30unusedQMF slots;
+masked82109 failedUBSan only6syntheticMPEG1intensityescape seq (30calls) dueprivate
+bits feedingfirstgranuleSCFSIreuse ofuninitializedistPos. Diagnostic66077zeroauto
+init differedonlysame30calls; QMFpoison exactnative. Clearedprivatebits retaining
+actualSCFSI, newresults exactlymatch priorzero-auto-init hash. SeeMP3_FRAME.md.
+
+Go decoder/layer3/runner drafts underbuild/port-mp3-frame/drafts, next install and
+qualify10roots/fiveconfigs+vet. Luna reviewing. Productionunwired. Cleanup48317
+archivedexpandedHuffman5rawfiles272971021bytes;88541unmaskedframe4files93705981bytes;
+18012privatebitsframe7files185711991bytes. Corresponding consumedarchive scripts
+and restorationrecords underbuild/port-artifact-cleanup. Currentframecapture plain.
+No active builds. C6lines/1file/ref0/81preambles.
