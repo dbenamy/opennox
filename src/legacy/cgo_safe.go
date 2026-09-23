@@ -79,7 +79,7 @@ func nox_calloc(num, size C.uint) unsafe.Pointer {
 
 //export nox_free
 func nox_free(ptr unsafe.Pointer) {
-	alloc.Free(ptr)
+	alloc.FreePtr(ptr)
 }
 
 //export nox_memset

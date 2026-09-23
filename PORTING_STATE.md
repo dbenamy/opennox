@@ -8,6 +8,21 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — unused memory and GUI bridges
+
+Formatting conversion `59bf181d` is pushed and fully qualified. Next scope is
+removing orphan memmap/GUI adapters (24 C interfaces), with the one tagged
+quarter-threshold accessor moved to the existing Go registry. Production callers
+are absent; whole-source literal references are recorded in
+`build/port-final-orphan-bridges/before-references.json`. Four existing durability
+and GUI contracts are selected. Capture the focused baseline and test the existing
+`safe` build before editing source, then qualify default/server/highres, static,
+production/ABI, exact full-suite comparison and headless gameplay/save-load.
+Baseline four roots/static PASS; safe build now PASS after repairing its stale
+`alloc.Free` call to `alloc.FreePtr`. The guarded installer is UNAPPLIED. Luna supplied the installer and test shortlist;
+primary verified references and owns execution. No active helper edits source.
+
+
 ## Current — formatting/scalars/directory qualified
 
 C baseline d443c297 is pushed. Native default/server/highres pass 375/373/375 affected roots, no skips, all 8 frozen captures /668,876 cases, two native consumer tests and

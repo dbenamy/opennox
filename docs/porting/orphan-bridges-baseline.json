@@ -1,0 +1,17 @@
+{
+  "status": "baseline qualified for orphan removal",
+  "production_baseline": "59bf181d",
+  "production_evidence": "text-format-native-qualification.json",
+  "default_contract_roots": 4,
+  "default_skips": 0,
+  "static": true,
+  "safe_build": true,
+  "safe_runtime_tested": false,
+  "safe_baseline_repair": "alloc.FreePtr instead of stale generic alloc.Free call",
+  "only_source_change_after_default": [
+    "src/legacy/cgo_safe.go"
+  ],
+  "c_lines": 635,
+  "c_files": 8,
+  "source_manifest_sha256": "ec38a32bb59dfb0e3ad79f773fe45e50e16924046cda5532ebc2f2c8d54112bb"
+}

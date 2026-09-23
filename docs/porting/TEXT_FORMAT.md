@@ -108,4 +108,5 @@ not an observed test mismatch. Native-default3/preflight2 are the final attempt.
 
 Completed preflight asset copies were verified and deduplicated: 556,388,715 bytes.
 Restore via `build/port-final-formatting/deduplicate-format-preflight.py --restore
-text-format-native` with Python. Final save-run assets remain intact.
+text-format-native` with Python. After qualification, duplicate save-run assets were also deduplicated; see
+[ORPHAN_BRIDGES.md](ORPHAN_BRIDGES.md) for the restore command.
