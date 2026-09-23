@@ -7,6 +7,20 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 81 production C preamble bodies (76 generic
 callback dispatchers and five typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
+## Current work — typed callback adapter baseline qualified
+
+Production Go MP3 integration `83dc68ac` is committed/pushed. Luna's bounded
+adapter test draft was reviewed and extended with valid null data-pointer cases,
+server coverage and legacy-package placement. All 24 calls pass in each of
+four profiles against original C shims. Only two porttest-tagged source files
+are added; all production source and four retained binary hashes are unchanged.
+See [TYPED_CALLBACK_ADAPTERS.md](docs/porting/TYPED_CALLBACK_ADAPTERS.md).
+Sessions 37821 (initial draft) and 25710 (expanded four-profile baseline) joined
+PASS. `build/port-callback-adapters/finish-c.py` is CONSUMED. Next: replace the
+draw/object-create local shims with shared dispatchers, preserve APIs, run native
+contracts/consumers and fresh production qualification. Source C stays zero;
+production preamble bodies stay 81 until conversion qualifies.
+
 ## Current — production Go MP3 integration qualified
 
 The audio wrapper selects Go; the six-line implementation file and 1,890-line

@@ -1,0 +1,67 @@
+{
+  "status": "qualified original typed callback adapters",
+  "preceding_revision": "83dc68ac652cb0cb7286ff72c087f2ae198069b9",
+  "profiles": {
+    "default": {
+      "pass": true,
+      "sha256": "cc23336cb3ab11eed1d4e5cc7e4849aa2dc99eb7cdacb4dc6a1cdbfb990ab7c3",
+      "draw_calls": 20,
+      "object_calls": 4
+    },
+    "server": {
+      "pass": true,
+      "sha256": "2356b9e081b60c3da7b508480585456bbadef77f2f6b42661701180d9a61711b",
+      "draw_calls": 20,
+      "object_calls": 4
+    },
+    "highres": {
+      "pass": true,
+      "sha256": "5543d2c7cdb0700dc41d5c46af3ca40661e9ad588ffb5bc5885721db3dee0dec",
+      "draw_calls": 20,
+      "object_calls": 4
+    },
+    "safe": {
+      "pass": true,
+      "sha256": "24e415eda1dceca4d2e7bf4162b1ee28281cc384e704106b744d7533ec12ea2d",
+      "draw_calls": 20,
+      "object_calls": 4
+    }
+  },
+  "test_source_sha256": {
+    "src/legacy/callback_adapter_porttest.go": "7efe5dab048c734d36224a8d47ef77e1eaccc2209983870fa96e8f093ed8db1d",
+    "src/legacy/callback_adapter_porttest_test.go": "485341d84384690357bf84a315bd001fabc072a60a1a002dd64ca303c4e2ec15"
+  },
+  "unchanged_production_evidence": "docs/porting/mp3-go-qualification.json",
+  "production_source_files_unchanged": 3003,
+  "production_binaries_rechecked": {
+    "safe": {
+      "sha256": "5e151962fd03716a6c47b1d869a2b105b046b2076fd0b9ec7417753faad3f6f7",
+      "no_c_mp3_decoder": true,
+      "go_decoder_expected": true
+    },
+    "default": {
+      "sha256": "3e59d52a22971610e7bf37e908e91396d9cb7d452e183083eb7e89d1f0e1635c",
+      "no_c_mp3_decoder": true,
+      "go_decoder_expected": true
+    },
+    "highres": {
+      "sha256": "61f64d4c8be6e6823aa704cddc951d30108b9b2178a6272c4bfb9557188c59d6",
+      "no_c_mp3_decoder": true,
+      "go_decoder_expected": true
+    },
+    "server": {
+      "sha256": "a90e291f7b4e56901a52d7431769e6fc222db198dd3448af55f877418a042f2e",
+      "no_c_mp3_decoder": true,
+      "go_decoder_expected": false
+    }
+  },
+  "production_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "production_preamble_bodies": 81,
+  "limits": [
+    "Test-only C callbacks observe ABI forwarding; no renderer-pixel or object-initialization coverage claimed.",
+    "Valid null data pointers tested; invalid null callback and null drawable not invoked."
+  ]
+}
