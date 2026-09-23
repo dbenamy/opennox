@@ -87,3 +87,38 @@ The retained C benchmark binary and its source fingerprint are recorded. Compare
 it with a retained Go-export binary using interleaved fresh processes after other
 agent builds and archives finish. Do not label a measured increase performance
 neutral, or infer real game-frame costs from these boundary timings.
+
+## Qualified Go exports
+
+Ten distinct Go exports replace the C empty bodies without changing their names,
+no-argument C signatures, registrations or existing argument-passing dispatch.
+All 338 guarded cases match the frozen C hash. Default/server/highres pass all
+69 consumer roots each, and safe passes all 24 callback roots without skips.
+Safe build/static, three fresh production builds/ABI, headless character creation
+and explicit save/reload/resumption pass. The full suite matches the established
+1,553 failure entries and package outcomes exactly; it is not a green full suite.
+All four production binaries contain ten distinct callback addresses backed by
+Go exports, and production builds contain no PortTest symbols. No golden changed.
+See [empty-callbacks-native-qualification.json](empty-callbacks-native-qualification.json).
+
+Five fresh processes per version, in alternating order, compared retained C and
+Go benchmark binaries after unrelated builds/archives finished. Median per-call
+cost increased by 83.6–139.8 ns across the ten callbacks (1.57–2.27 times the C
+cost). Primary accepts this small, reversible compatibility cost; the conversion
+is not performance-neutral. Actual call frequency and game-frame impact remain
+unmeasured. If profiling identifies a material cost, consider bypassing known
+empty callbacks within Go while preserving compatibility addresses, or revert
+this small batch. Neither follow-up optimization is implemented.
+
+Removing GAME5_2.c and common__object__modifier.c reduces standalone production C
+from 25 lines/three files to **six lines/one file**, with zero standalone reference
+C. The remaining file includes minimp3; this is not a C-free build. A lexical
+inventory also finds 86 production C preamble bodies: 76 generic dispatchers and
+ten small adapters. Its 51 decoder-header bodies include inactive conditional
+branches and must not be interpreted as 51 compiled functions. Generated bridges,
+C types and external libraries remain outside the standalone LOC metric.
+
+The optional-safe renderer-fixture limitation above remains unchanged. The tagged
+spell-fixture repair stays covered in the normal profiles and selected safe roots.
+Scenario asset copies were deduplicated only after successful runs and matching
+original hashes; per-run restoration manifests remain under build/baseline/runs.

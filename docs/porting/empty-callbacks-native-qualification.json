@@ -1,0 +1,694 @@
+{
+  "status": "qualified distinct Go empty callback exports",
+  "preceding_revision": "ae76f3c8120a18c7364fb5912a3e2dbea37b7278",
+  "capture_sha256": "848b76f173284c29edddd5d637863061d643428004ed8f51098f51863ea44b77",
+  "cases": 338,
+  "targets": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 69,
+      "selected_root_tests": 69,
+      "exit": 0,
+      "started_tests": 69,
+      "completed_tests": 69,
+      "started_root_tests": 69,
+      "completed_root_tests": 69,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 196.8483199449256
+    },
+    "server": {
+      "tags": "server,porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 69,
+      "selected_root_tests": 69,
+      "exit": 0,
+      "started_tests": 69,
+      "completed_tests": 69,
+      "started_root_tests": 69,
+      "completed_root_tests": 69,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 193.98109994200058
+    },
+    "highres": {
+      "tags": "highres,porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 69,
+      "selected_root_tests": 69,
+      "exit": 0,
+      "started_tests": 69,
+      "completed_tests": 69,
+      "started_root_tests": 69,
+      "completed_root_tests": 69,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 116.22475222591311
+    },
+    "safe": {
+      "tags": "safe,porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 24,
+      "selected_root_tests": 24,
+      "exit": 0,
+      "started_tests": 24,
+      "completed_tests": 24,
+      "started_root_tests": 24,
+      "completed_root_tests": 24,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 164.21365595888346
+    }
+  },
+  "safe_binary_sha256": "5092a9407b4f3de7df666204e3a094da7af7493244e60cbcbd2524b3bcffe73a",
+  "distinct_go_callback_addresses": {
+    "safe": {
+      "nullsub_22": 150994630,
+      "nullsub_29": 150994960,
+      "nullsub_36": 150995290,
+      "nullsub_38": 150995620,
+      "nullsub_39": 150995950,
+      "nullsub_40": 150996280,
+      "nullsub_41": 150996610,
+      "nullsub_42": 150996940,
+      "nullsub_43": 150997270,
+      "nullsub_44": 150997600
+    },
+    "opennox": {
+      "nullsub_22": 150738912,
+      "nullsub_29": 150739024,
+      "nullsub_36": 150739136,
+      "nullsub_38": 150739248,
+      "nullsub_39": 150739360,
+      "nullsub_40": 150739472,
+      "nullsub_41": 150739584,
+      "nullsub_42": 150739696,
+      "nullsub_43": 150739808,
+      "nullsub_44": 150739920
+    },
+    "opennox-hd": {
+      "nullsub_22": 150739024,
+      "nullsub_29": 150739136,
+      "nullsub_36": 150739248,
+      "nullsub_38": 150739360,
+      "nullsub_39": 150739472,
+      "nullsub_40": 150739584,
+      "nullsub_41": 150739696,
+      "nullsub_42": 150739808,
+      "nullsub_43": 150739920,
+      "nullsub_44": 150740032
+    },
+    "opennox-server": {
+      "nullsub_22": 150086736,
+      "nullsub_29": 150086848,
+      "nullsub_36": 150086960,
+      "nullsub_38": 150087072,
+      "nullsub_39": 150087184,
+      "nullsub_40": 150087296,
+      "nullsub_41": 150087408,
+      "nullsub_42": 150087520,
+      "nullsub_43": 150087632,
+      "nullsub_44": 150087744
+    }
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.47065172996372,
+        "sha256": "3c41c5becdeb58b50d03c9d24028d6454079503624e57c4067a2a4ee4181e865",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.823819109005854,
+        "sha256": "34195bcec9d8f759c44ed0d477ddae05b2d7d454727f78d59909d9161044ae34",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 60.72687885211781,
+        "sha256": "53c4df9193214eae2a9246dd8d22bd48e698b656a019487647792f340e53f44e",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "empty-callbacks-native-save": {
+        "exit": 0,
+        "wall_seconds": 48.321805053856224,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 46.12831506319344,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "3c41c5becdeb58b50d03c9d24028d6454079503624e57c4067a2a4ee4181e865",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-empty-callbacks/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/empty-callbacks-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Distinct empty callbacks exported from Go",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "0848da8e96d823bb62f46130a9a0da9648d496e9da6eac54c20925fbb1711c5a"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 59.050416979938745,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "preflight": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 63.49308422696777,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c",
+    "binary_sha256": "3c41c5becdeb58b50d03c9d24028d6454079503624e57c4067a2a4ee4181e865",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-empty-callbacks/native-preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/empty-callbacks-native/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Distinct empty callbacks exported from Go",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "performance": {
+    "comparison": {
+      "description": "Interleaved retained C and Go-export binaries, same VM; no concurrent agent build/archive jobs. Dispatch boundary only, not frame time or call frequency.",
+      "binary_sha256": {
+        "c": "1127165f48d9462d1babd6542f651a07d784211ba42661a9378d4c48b2e7ddc2",
+        "native": "41b09ae956da58ffa32d8eb50fc618626781587ecce57221ee17779630bed6ee"
+      },
+      "runs": [
+        {
+          "mode": "c",
+          "round": 0,
+          "wall_seconds": 4.758283843053505,
+          "log_sha256": "63459362e0b1672824b0e17f1af600debdb1f9ee5200d11c28367ec25487085b",
+          "ns_per_op": {
+            "nullsub_22": 123.4,
+            "nullsub_36": 135.2,
+            "nullsub_38": 124.4,
+            "nullsub_39": 132.2,
+            "nullsub_40": 176.0,
+            "nullsub_41": 147.9,
+            "nullsub_42": 159.8,
+            "nullsub_43": 113.6,
+            "nullsub_44": 106.9,
+            "nullsub_29": 73.53
+          }
+        },
+        {
+          "mode": "native",
+          "round": 0,
+          "wall_seconds": 3.355105048045516,
+          "log_sha256": "1da4aede43252cc673bed16b3cff514db6de8951c3d22e17fc2b4d5b90adb971",
+          "ns_per_op": {
+            "nullsub_22": 235.3,
+            "nullsub_36": 265.4,
+            "nullsub_38": 267.5,
+            "nullsub_39": 217.1,
+            "nullsub_40": 253.4,
+            "nullsub_41": 279.8,
+            "nullsub_42": 241.1,
+            "nullsub_43": 193.4,
+            "nullsub_44": 193.0,
+            "nullsub_29": 156.0
+          }
+        },
+        {
+          "mode": "native",
+          "round": 1,
+          "wall_seconds": 3.4980962749104947,
+          "log_sha256": "9047d740d48db8c68017a754bf4c1febe8850647694c721a468bd6583fd3258e",
+          "ns_per_op": {
+            "nullsub_22": 219.1,
+            "nullsub_36": 218.8,
+            "nullsub_38": 284.5,
+            "nullsub_39": 243.5,
+            "nullsub_40": 241.9,
+            "nullsub_41": 278.6,
+            "nullsub_42": 276.8,
+            "nullsub_43": 231.9,
+            "nullsub_44": 203.4,
+            "nullsub_29": 162.7
+          }
+        },
+        {
+          "mode": "c",
+          "round": 1,
+          "wall_seconds": 4.58944146707654,
+          "log_sha256": "990f64ba6d612be60a01bd785e14d93f356d19881feb703e623971dbaf3c0ddb",
+          "ns_per_op": {
+            "nullsub_22": 131.8,
+            "nullsub_36": 138.8,
+            "nullsub_38": 145.2,
+            "nullsub_39": 142.8,
+            "nullsub_40": 161.2,
+            "nullsub_41": 148.0,
+            "nullsub_42": 156.7,
+            "nullsub_43": 132.9,
+            "nullsub_44": 105.3,
+            "nullsub_29": 74.09
+          }
+        },
+        {
+          "mode": "c",
+          "round": 2,
+          "wall_seconds": 4.034772031009197,
+          "log_sha256": "a894a301a72026cfb11250eaafaad6ea4162463dc57d300b33952aa18e0db09d",
+          "ns_per_op": {
+            "nullsub_22": 154.0,
+            "nullsub_36": 123.3,
+            "nullsub_38": 126.8,
+            "nullsub_39": 135.2,
+            "nullsub_40": 167.5,
+            "nullsub_41": 134.4,
+            "nullsub_42": 173.1,
+            "nullsub_43": 110.2,
+            "nullsub_44": 101.8,
+            "nullsub_29": 69.29
+          }
+        },
+        {
+          "mode": "native",
+          "round": 2,
+          "wall_seconds": 3.502630854025483,
+          "log_sha256": "74e7c525e758c238e69fcf529f2b43f02c12a969c2c126529a246758721d5b14",
+          "ns_per_op": {
+            "nullsub_22": 251.1,
+            "nullsub_36": 215.4,
+            "nullsub_38": 209.3,
+            "nullsub_39": 208.9,
+            "nullsub_40": 236.6,
+            "nullsub_41": 284.1,
+            "nullsub_42": 304.8,
+            "nullsub_43": 246.9,
+            "nullsub_44": 191.4,
+            "nullsub_29": 168.1
+          }
+        },
+        {
+          "mode": "native",
+          "round": 3,
+          "wall_seconds": 3.7782565569505095,
+          "log_sha256": "ae809c3f87ac5ce64467c5d849e079c3519553fbf0eceafa517f6fff55a0e6e2",
+          "ns_per_op": {
+            "nullsub_22": 233.6,
+            "nullsub_36": 269.2,
+            "nullsub_38": 236.4,
+            "nullsub_39": 281.4,
+            "nullsub_40": 267.1,
+            "nullsub_41": 279.7,
+            "nullsub_42": 262.3,
+            "nullsub_43": 225.1,
+            "nullsub_44": 197.7,
+            "nullsub_29": 173.1
+          }
+        },
+        {
+          "mode": "c",
+          "round": 3,
+          "wall_seconds": 4.104720111005008,
+          "log_sha256": "0e709807985b28d5f92d09a99808988d86db9aa5f4d94b60ab11c99ef4748345",
+          "ns_per_op": {
+            "nullsub_22": 143.9,
+            "nullsub_36": 146.2,
+            "nullsub_38": 124.7,
+            "nullsub_39": 145.1,
+            "nullsub_40": 155.8,
+            "nullsub_41": 195.8,
+            "nullsub_42": 141.8,
+            "nullsub_43": 101.4,
+            "nullsub_44": 106.4,
+            "nullsub_29": 92.57
+          }
+        },
+        {
+          "mode": "c",
+          "round": 4,
+          "wall_seconds": 4.666883658152074,
+          "log_sha256": "6e4f4ee5d6599d9239c68341b0fb30d635d0f63fe617a8b8bf0150022d8dc281",
+          "ns_per_op": {
+            "nullsub_22": 179.2,
+            "nullsub_36": 128.8,
+            "nullsub_38": 126.6,
+            "nullsub_39": 128.5,
+            "nullsub_40": 137.9,
+            "nullsub_41": 161.8,
+            "nullsub_42": 137.9,
+            "nullsub_43": 97.71,
+            "nullsub_44": 110.0,
+            "nullsub_29": 83.23
+          }
+        },
+        {
+          "mode": "native",
+          "round": 4,
+          "wall_seconds": 3.386358050862327,
+          "log_sha256": "95468e9e40f1febf18644cc598d6c623b10ffe2eee1dcb332276d09dbaf9fc07",
+          "ns_per_op": {
+            "nullsub_22": 236.4,
+            "nullsub_36": 218.2,
+            "nullsub_38": 266.4,
+            "nullsub_39": 263.0,
+            "nullsub_40": 289.8,
+            "nullsub_41": 291.6,
+            "nullsub_42": 244.2,
+            "nullsub_43": 198.5,
+            "nullsub_44": 196.0,
+            "nullsub_29": 175.7
+          }
+        }
+      ],
+      "comparisons": {
+        "nullsub_22": {
+          "c_samples_ns": [
+            123.4,
+            131.8,
+            154.0,
+            143.9,
+            179.2
+          ],
+          "go_samples_ns": [
+            235.3,
+            219.1,
+            251.1,
+            233.6,
+            236.4
+          ],
+          "c_median_ns": 143.9,
+          "go_median_ns": 235.3,
+          "delta_ns": 91.4,
+          "ratio": 1.6351633078526755
+        },
+        "nullsub_36": {
+          "c_samples_ns": [
+            135.2,
+            138.8,
+            123.3,
+            146.2,
+            128.8
+          ],
+          "go_samples_ns": [
+            265.4,
+            218.8,
+            215.4,
+            269.2,
+            218.2
+          ],
+          "c_median_ns": 135.2,
+          "go_median_ns": 218.8,
+          "delta_ns": 83.60000000000002,
+          "ratio": 1.6183431952662723
+        },
+        "nullsub_38": {
+          "c_samples_ns": [
+            124.4,
+            145.2,
+            126.8,
+            124.7,
+            126.6
+          ],
+          "go_samples_ns": [
+            267.5,
+            284.5,
+            209.3,
+            236.4,
+            266.4
+          ],
+          "c_median_ns": 126.6,
+          "go_median_ns": 266.4,
+          "delta_ns": 139.79999999999998,
+          "ratio": 2.104265402843602
+        },
+        "nullsub_39": {
+          "c_samples_ns": [
+            132.2,
+            142.8,
+            135.2,
+            145.1,
+            128.5
+          ],
+          "go_samples_ns": [
+            217.1,
+            243.5,
+            208.9,
+            281.4,
+            263.0
+          ],
+          "c_median_ns": 135.2,
+          "go_median_ns": 243.5,
+          "delta_ns": 108.30000000000001,
+          "ratio": 1.80103550295858
+        },
+        "nullsub_40": {
+          "c_samples_ns": [
+            176.0,
+            161.2,
+            167.5,
+            155.8,
+            137.9
+          ],
+          "go_samples_ns": [
+            253.4,
+            241.9,
+            236.6,
+            267.1,
+            289.8
+          ],
+          "c_median_ns": 161.2,
+          "go_median_ns": 253.4,
+          "delta_ns": 92.20000000000002,
+          "ratio": 1.5719602977667495
+        },
+        "nullsub_41": {
+          "c_samples_ns": [
+            147.9,
+            148.0,
+            134.4,
+            195.8,
+            161.8
+          ],
+          "go_samples_ns": [
+            279.8,
+            278.6,
+            284.1,
+            279.7,
+            291.6
+          ],
+          "c_median_ns": 148.0,
+          "go_median_ns": 279.8,
+          "delta_ns": 131.8,
+          "ratio": 1.8905405405405407
+        },
+        "nullsub_42": {
+          "c_samples_ns": [
+            159.8,
+            156.7,
+            173.1,
+            141.8,
+            137.9
+          ],
+          "go_samples_ns": [
+            241.1,
+            276.8,
+            304.8,
+            262.3,
+            244.2
+          ],
+          "c_median_ns": 156.7,
+          "go_median_ns": 262.3,
+          "delta_ns": 105.60000000000002,
+          "ratio": 1.6738991703892792
+        },
+        "nullsub_43": {
+          "c_samples_ns": [
+            113.6,
+            132.9,
+            110.2,
+            101.4,
+            97.71
+          ],
+          "go_samples_ns": [
+            193.4,
+            231.9,
+            246.9,
+            225.1,
+            198.5
+          ],
+          "c_median_ns": 110.2,
+          "go_median_ns": 225.1,
+          "delta_ns": 114.89999999999999,
+          "ratio": 2.042649727767695
+        },
+        "nullsub_44": {
+          "c_samples_ns": [
+            106.9,
+            105.3,
+            101.8,
+            106.4,
+            110.0
+          ],
+          "go_samples_ns": [
+            193.0,
+            203.4,
+            191.4,
+            197.7,
+            196.0
+          ],
+          "c_median_ns": 106.4,
+          "go_median_ns": 196.0,
+          "delta_ns": 89.6,
+          "ratio": 1.8421052631578947
+        },
+        "nullsub_29": {
+          "c_samples_ns": [
+            73.53,
+            74.09,
+            69.29,
+            92.57,
+            83.23
+          ],
+          "go_samples_ns": [
+            156.0,
+            162.7,
+            168.1,
+            173.1,
+            175.7
+          ],
+          "c_median_ns": 74.09,
+          "go_median_ns": 168.1,
+          "delta_ns": 94.00999999999999,
+          "ratio": 2.268862194628155
+        }
+      }
+    },
+    "review": {
+      "decision": "accept",
+      "timing_sha256": "7159ad40975a286475a4ffb325b4185cbd15429f5a70e1924b6af3733658af01",
+      "additional_median_ns_range": [
+        83.60000000000002,
+        139.79999999999998
+      ],
+      "ratio_range": [
+        1.5719602977667495,
+        2.268862194628155
+      ],
+      "reason": "All 69 default behavior roots and exact identities pass. The measured extra callback transition is below 0.15 microsecond per dispatch in this VM; accept this bounded reversible compatibility cost while completing broader qualification. Preserve public exports and distinct identities.",
+      "limitations": [
+        "Not performance-neutral: measured call cost increases.",
+        "Actual callback frequency and game-frame impact are not measured.",
+        "This VM/386 result is not a cross-platform performance claim."
+      ],
+      "review_later": "If gameplay profiling identifies these callbacks as material, bypass no-op dispatch within Go while retaining the compatibility identities, or revert the tiny exports batch. Do not claim that optimization is already implemented."
+    }
+  },
+  "production_c": {
+    "files": 1,
+    "lines": 6
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "source_manifest_sha256": "011e47d855495eade32f0850b84dace5f32852be1b6996d84cf8dd1aae637046",
+  "safe_fixture_limitation": {
+    "phase": "build/port-empty-callbacks/c-reviewed-safe",
+    "test": "TestClientPresentationChant",
+    "failure": "unrelated existing client_effects_environment_porttest.go:76 raw access to registered offset1313532",
+    "disposition": "not counted as qualified; broad 69 roots required for three normal profiles, all 24 callback consumers required under safe"
+  }
+}

@@ -14,12 +14,14 @@
 
 ## Current status
 
-The ten remaining empty callback identities have a qualified C baseline: 338
-argument/state cases, 69 consumer roots per normal profile, and 24 under safe.
-Safe checks exposed a spell-fixture cache/snapshot range crossing retired state;
-the fixture is repaired without changing production or goldens. An unrelated
-renderer fixture still blocks the broader safe suite and is documented. C remains
-25 lines/three files. See [EMPTY_CALLBACKS.md](docs/porting/EMPTY_CALLBACKS.md).
+The ten live empty callback identities now export from Go. All 338 frozen cases,
+69 consumer roots per normal profile and 24 under safe pass, alongside fresh
+production/ABI, exact known-suite comparison and headless creation/save/load.
+Standalone C is **six physical lines in one file**, down 19; that file includes
+the third-party MP3 decoder. Preambles, headers and generated bridges remain.
+The measured extra callback cost is 84–140 ns/call in this VM; accepted as a
+reversible compatibility cost, with game-frame impact still unmeasured. See
+[EMPTY_CALLBACKS.md](docs/porting/EMPTY_CALLBACKS.md).
 
 The six optional safe-profile forwarding shims now export directly from Go.
 All 142 frozen cases, the shop-loading consumer, safe build, production/ABI,
@@ -351,6 +353,11 @@ outside `src/legacy`; the primary found them with a literal search across `src`.
 Do not accept “no in-repository callers” from a directory-local search.
 Generate path/line inventories directly from search output instead of manually
 transcribing them; verify each reported path and line before accepting the report.
+Recent callback/decoder audits add two checks: identify media by container/codec
+headers rather than filename extensions, and distinguish a captured callback slot
+from proof that a particular branch executed. Existing bot-update cases do not
+establish allocation-failure coverage just because their snapshots include the
+fallback assignment's destination. Primary review caught both overstatements.
 
 ## Explaining the work and reporting diagnostics
 
