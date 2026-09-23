@@ -9,6 +9,34 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
+## Active — formatting C contracts
+
+Extension/listing conversion `2390c78d` is committed and pushed. The following
+batch is being scoped under `build/port-final-formatting`. Two new tagged files
+exercise the production C wide formatter through typed varargs, covering numeric
+padding/signedness, float rounding/truncation/special values, raw UTF-16 and narrow
+bytes, null/empty strings, mixed arguments, exact capacities/guards and nil output.
+C probe1 joined PASS: three formatter roots /13,464 bounded-output cases.
+Added exhaustive UTF-16/byte comparisons, decimal/copy contracts and real catalog
+directory checks. Probe2 failed setup on a missing fixture brace; it is joined
+and the syntax is corrected. C probe3 joined PASS: all eight roots /668,876 captured cases. No build or
+test jobs remain active. Work is paused at the user’s request for a Codex upgrade.
+No production source has changed since2390c78d;
+no new captures are frozen and no native formatting conversion is installed.
+Completed native-text save-run asset cleanup80333 joined/CONSUMED, recovering
+556,358,986 bytes. Restore with
+`python3 build/port-final-formatting/deduplicate-text-save.py --restore server-text-native-save`.
+
+The scalar and directory contracts pass their first C probe; caller audit and
+baseline repeats remain pending. The native formatter draft in
+`build/port-final-formatting/drafts/text_format.go` is NOT installed or qualified.
+After upgrading, the user requests a bounded trial of the newly available Luna
+for implementation subagents, replacing Terra where useful. Keep baseline design,
+review and final qualification with the primary agent; verify the actual model
+identifier exposed by the upgraded session before delegation. Initial findings are in `initial-review.md`; do not
+replace the remaining formatter with standard fmt.Sprintf. C remains1,219 /12.
+
+
 ## Current — extension/listing helpers qualified
 
 Default/server/highres pass 173/173/173 affected roots, zero skips, all five
