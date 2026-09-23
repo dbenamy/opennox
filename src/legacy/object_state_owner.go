@@ -28,7 +28,7 @@ func stateRemoveSpawned(u *server.Object) {
 	}
 	for it := u.Field129; it != nil; {
 		next := it.Field128
-		if it.ObjClass&1 != 0 || C.sub_4E3B80(C.int(it.TypeInd)) == 0 {
+		if it.ObjClass&1 != 0 || sub_4E3B80(int(C.int(it.TypeInd))) == 0 {
 			GetServer().DelayedDelete(it)
 		}
 		it = next
@@ -145,7 +145,7 @@ func statePet(u, t *server.Object) {
 	ind := C.int(*(*byte)(unsafe.Add(pl, 2064)))
 	nox_xxx_netMonitorCreature_4D9250(ind, inventoryInt(t))
 	C.nox_xxx_netMarkMinimapObject_417190(ind, asObjectC(t), 1)
-	C.nox_xxx_unitSetOwner_4EC290(asObjectC(u), asObjectC(t))
+	nox_xxx_unitSetOwner_4EC290(asObjectC(u), asObjectC(t))
 }
 func stateRemoveMonitors(u, t *server.Object) {
 	ud := u.UpdateData
@@ -157,7 +157,7 @@ func stateRemoveMonitors(u, t *server.Object) {
 	ind := C.int(*(*byte)(unsafe.Add(pl, 2064)))
 	gameplayReportUnmonitor(int(ind), t)
 	C.nox_xxx_netUnmarkMinimapObj_417300(ind, asObjectC(t), 1)
-	C.nox_xxx_unitClearOwner_4EC300(asObjectC(t))
+	nox_xxx_unitClearOwner_4EC300(asObjectC(t))
 }
 func stateOwns(u *server.Object, off uintptr, name string) bool {
 	typ := stateType(off, name)

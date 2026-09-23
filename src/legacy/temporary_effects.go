@@ -135,7 +135,7 @@ func temporaryMoonglow(u *server.Object) {
 		Nox_xxx_spellBuffOff_4FF5B0(u.ObjOwner, 1)
 	} else {
 		pos := temporaryCursor(owner)
-		if C.sub_517590(C.float(pos.X), C.float(pos.Y)) != 0 {
+		if sub_517590(float32(C.float(pos.X)), float32(C.float(pos.Y))) != 0 {
 			Nox_xxx_unitMove_4E7010(u, pos)
 		}
 	}

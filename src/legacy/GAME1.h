@@ -29,7 +29,6 @@ int nox_xxx_servGetPort_40A430();
 char* nox_xxx_gameSetServername_40A440(char* a1);
 char* nox_xxx_serverOptionsGetServername_40A4C0();
 unsigned int nox_common_gameFlags_getVal_40A5B0();
-bool nox_common_gameFlags_check_40A5C0(unsigned int f);
 wchar2_t* nox_xxx_sysopSetPass_40A610(wchar2_t* a1);
 void nox_server_gameSettingsUpdated_40A670();
 void nox_server_gameUnsetMapLoad_40A690();

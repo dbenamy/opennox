@@ -58,7 +58,7 @@ func controlReadStats(u *server.Object, notify int32) int32 {
 		put(2239, max.Strength)
 		*(*float32)(unsafe.Add(u.CObj(), 548)) = float32(float64(max.Speed) * 0.000099999997)
 		put(2235, max.Speed)
-		if class == 0 && !controlFlags(4096) && C.sub_4D6F30() == 0 {
+		if class == 0 && !controlFlags(4096) && sub_4D6F30() == 0 {
 			controlGiveAbilities(u, 10, 0)
 		}
 	} else {

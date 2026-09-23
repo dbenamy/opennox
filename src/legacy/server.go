@@ -102,7 +102,6 @@ func nox_xxx_servStartCountdown_40A2A0(a1 int, a2 *C.char) {
 	GetServer().ServStartCountdown(a1, strman.ID(GoString(a2)))
 }
 
-//export sub_40A040_settings
 func sub_40A040_settings(a1 C.short, a2 C.uchar) {
 	GetServer().Sub40A040settings(int(a1), int(a2))
 }
@@ -161,7 +160,7 @@ func Nox_xxx_netInformTextMsg2_4DA180(a1 int, a2 unsafe.Pointer) {
 	C.nox_xxx_netInformTextMsg2_4DA180(C.int(a1), (*C.uchar)(a2))
 }
 func Nox_xxx_netReportUnitHeight_4D9020(a1 ntype.PlayerInd, a2 *server.Object) {
-	C.nox_xxx_netReportUnitHeight_4D9020(C.int(a1), asObjectC(a2))
+	nox_xxx_netReportUnitHeight_4D9020(C.int(a1), asObjectC(a2))
 }
 func Sub_511100(a1 int) {
 	motionSentryReport(int32(a1))

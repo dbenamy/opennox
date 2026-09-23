@@ -224,7 +224,7 @@ func bookSort(class int) int {
 			}
 		}
 	} else {
-		for id := C.nox_xxx_bookFirstKnownAbil_425330(); id != 0; id = C.nox_xxx_bookNextKnownAbil_425350(id) {
+		for id := nox_xxx_bookFirstKnownAbil_425330(); id != 0; id = nox_xxx_bookNextKnownAbil_425350(id) {
 			if all || *bookPlayerWord(p, 3696, int(id)) != 0 {
 				add(int(id))
 			}
@@ -286,7 +286,7 @@ func bookStopAddition() {
 	quickbarSelectRow(int(*bookWord(1046612)))
 	if noxflags.HasGame(noxflags.GameModeCoop) {
 		runtimePauseStop()
-		C.sub_413A00(0)
+		sub_413A00(0)
 	}
 }
 

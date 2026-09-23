@@ -140,7 +140,7 @@ func bookDrawList(w *gui.Window) int {
 		hasDesc = raw != 0
 		desc = GoWStringP(unsafe.Pointer(uintptr(uint32(raw))))
 	} else if class == 0 {
-		C.sub_425450(C.int(id))
+		sub_425450(int(C.int(id)))
 		title(GoWString(nox_xxx_abilityGetName_0_425260(id)), pos.Y+53)
 		raw := sub_4252F0(id)
 		hasDesc = raw != nil

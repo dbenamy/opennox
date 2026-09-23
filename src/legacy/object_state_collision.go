@@ -60,7 +60,7 @@ func stateChargeImpact(u, t *server.Object) bool {
 	return t.ObjFlags&9 == 0 && class&1 == 0
 }
 func stateChargeMoveBack(u *server.Object) {
-	C.nox_xxx_unitMove_4E7010(asObjectC(u), (*C.float2)(unsafe.Pointer(&u.PrevPos)))
+	nox_xxx_unitMove_4E7010(asObjectC(u), (*C.float2)(unsafe.Pointer(&u.PrevPos)))
 }
 func stateChargeStun(u *server.Object) {
 	duration := floatToInt32(float32(nox_xxx_gamedataGetFloat_419D40(internCStr("BerserkerStunDuration"))))
@@ -83,7 +83,7 @@ func stateCharge(u, t *server.Object) {
 		stateChargeStun(u)
 	} else {
 		wall := *(*unsafe.Pointer)(unsafe.Add(u.UpdateData, 296))
-		if wall != nil && C.nox_xxx_wallFlags(C.int(*(*byte)(unsafe.Add(wall, 1))))&5 == 0 {
+		if wall != nil && nox_xxx_wallFlags(int(C.int(*(*byte)(unsafe.Add(wall, 1)))))&5 == 0 {
 			stateChargeMoveBack(u)
 			return
 		}

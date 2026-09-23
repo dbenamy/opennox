@@ -137,7 +137,7 @@ func projectileChakramSelect(u *server.Object) *server.Object {
 func projectileChakramFallback(u *server.Object) {
 	length := float32(math.Sqrt(float64(u.VelVec.X)*float64(u.VelVec.X) + float64(u.VelVec.Y)*float64(u.VelVec.Y)))
 	dir := int32(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&u.VelVec))))))
-	dir = (int32(C.nox_common_randomInt_415FA0(-64, 64)) + dir + 128) & 255
+	dir = (int32(nox_common_randomInt_415FA0(-64, 64)) + dir + 128) & 255
 	off := uintptr(194136 + 8*dir)
 	u.VelVec.X = float32(float64(length) * float64(memmap.Float32(0x587000, off)))
 	vy := float64(length) * float64(memmap.Float32(0x587000, off+4))

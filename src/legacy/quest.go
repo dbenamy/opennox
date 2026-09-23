@@ -74,13 +74,13 @@ func Sub_4D6000(a1 *server.Object) {
 	questRuntimeReset(a1)
 }
 func Sub_4D9D20(a1 int, a2 *server.Object) {
-	C.sub_4D9D20(C.int(a1), asObjectC(a2))
+	sub_4D9D20(C.int(a1), asObjectC(a2))
 }
 func Nox_xxx_unitInitPlayer_4EFE80(a1 *server.Object) {
-	C.nox_xxx_unitInitPlayer_4EFE80(asObjectC(a1))
+	nox_xxx_unitInitPlayer_4EFE80(asObjectC(a1))
 }
 func Nox_xxx_playerRespawnItem_4EF750(a1 *server.Object, a2 string, a3 unsafe.Pointer, a4 int, a5 int) *server.Object {
-	return asObjectS(C.nox_xxx_playerRespawnItem_4EF750(asObjectC(a1), internCStr(a2), (*C.int)(a3), C.int(a4), C.int(a5)))
+	return asObjectS(nox_xxx_playerRespawnItem_4EF750(asObjectC(a1), internCStr(a2), (*C.int)(a3), C.int(a4), C.int(a5)))
 }
 func Nox_xxx_modifSetItemAttrs_4E4990(a1 *server.Object, a2 unsafe.Pointer) {
 	stateAttributes(a1, a2)

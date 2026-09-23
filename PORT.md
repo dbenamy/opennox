@@ -14,14 +14,15 @@
 
 ## Current status
 
-Fifty-six more calls now reach their existing Go implementations directly, using
-matching generated scalar signatures. Five unused book/balance C exports and
-header declarations are retired; independent numeric/book contracts remain.
-All 380 affected roots pass in three profiles, along with fresh production/safe,
-static, ABI, exact known-suite and headless creation/save-load checks.
+Sixty-nine more calls now reach their existing Go implementations directly:
+29 scalar and 40 pointer calls, preserving C widths and object/buffer ownership.
+Ten unused C exports and header declarations are retired; their Go functions stay.
+All 490/489/490 affected roots pass default/server/highres, plus fresh safe/static,
+production/ABI, exact known-suite and headless creation/save-load checks.
 **Standalone C remains zero; production C preamble bodies remain 79.**
-Next: review the drafted 29 scalar and 40 pointer forwarding calls and ten unused
-scalar exports. See [SCALAR_DIRECT_CALLS.md](docs/porting/SCALAR_DIRECT_CALLS.md).
+Next: qualify the drafted 74 matching-signature pointer forwarding calls, adding
+baseline contracts for their additional owners before applying the draft. See
+[TYPED_DIRECT_CALLS.md](docs/porting/TYPED_DIRECT_CALLS.md).
 
 ### Earlier checkpoints
 

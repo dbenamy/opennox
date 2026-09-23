@@ -79,7 +79,7 @@ func stateTeleport(u *server.Object, p *types.Pointf) {
 	if u.Buffs&(1<<14) == 0 && u.ObjFlags&2 == 0 &&
 		(!bool(nox_common_gameFlags_check_40A5C0(4096)) || u.ObjClass&2 == 0 || u.ObjSubClass&8 == 0) &&
 		(bool(nox_common_gameFlags_check_40A5C0(2048)) || u.ObjClass&6 != 0) {
-		C.nox_xxx_unitMove_4E7010(asObjectC(u), (*C.float2)(unsafe.Pointer(p)))
+		nox_xxx_unitMove_4E7010(asObjectC(u), (*C.float2)(unsafe.Pointer(p)))
 	}
 }
 func stateLoot(u *server.Object, p *types.Pointf) {
@@ -87,7 +87,7 @@ func stateLoot(u *server.Object, p *types.Pointf) {
 	if !strings.HasPrefix(alloc.GoString((*byte)(unsafe.Pointer(C.nox_xxx_getUnitName_4E39D0(asObjectC(u))))), "Barrel") {
 		off = 203240
 	}
-	roll := uint32(C.nox_common_randomInt_415FA0(0, 99))
+	roll := uint32(nox_common_randomInt_415FA0(0, 99))
 	for *memmap.PtrPtr(0x587000, off) != nil && memmap.Uint32(0x587000, off+8) <= roll {
 		off += 12
 	}

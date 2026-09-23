@@ -122,7 +122,7 @@ func nox_xxx_guiDrawInventoryTray_4643B0(ax, ay C.int) C.int {
 	if uiInventoryMode() == 5 {
 		uiMeterImage(memmap.Uint32(0x5D4594, 1049932), image.Pt(x, top+50))
 	}
-	if C.sub_473670() != 0 {
+	if sub_473670() != 0 {
 		uiMeterImage(memmap.Uint32(0x5D4594, 1049936), image.Pt(x, top+100))
 	}
 	y := top - int(dword_5d4594_1062512)

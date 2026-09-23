@@ -2857,7 +2857,17 @@
       "nox_xxx_bookSpellDnDclear_477660",
       "nox_xxx_bookGetSpellDnDType_477670",
       "nox_xxx_gamedataGetFloat_419D40",
-      "nox_xxx_gamedataGetFloatTable_419D70"
+      "nox_xxx_gamedataGetFloatTable_419D70",
+      "nox_common_gameFlags_check_40A5C0",
+      "nox_xxx_changeScore_4D8E90",
+      "nox_xxx_netFlagWinner_4D8C40_4D8C80",
+      "nox_xxx_netFlagballWinner_4D8C40",
+      "nox_xxx_netMonitorCreature_4D9250",
+      "nox_xxx_netNotifyRate_4D7F10",
+      "nox_xxx_playerIncrementElimDeath_4D8D40",
+      "sub_40A040_settings",
+      "sub_4D81A0",
+      "sub_4D9CF0"
     ],
     "scenarios": [
       {

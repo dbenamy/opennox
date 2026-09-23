@@ -68,7 +68,7 @@ func serverOptionsApply() int8 {
 	}
 	if different {
 		suffix := alloc.GoString(memmap.PtrUint8(0x587000, 131668))
-		C.nox_xxx_mapLoad_4D2450(internCStr(selected + suffix))
+		nox_xxx_mapLoad_4D2450(internCStr(selected + suffix))
 
 		serverConfigSlotSelect(int32(1))
 	} else {

@@ -88,7 +88,7 @@ func controlDropBall(u *server.Object) int32 {
 		*controlPtr(it.CObj(), 520) = nil
 		GetServer().S().ObjSetOwner(nil, it)
 		C.nox_xxx_aud_501960(926, (*C.nox_object_t)(u.CObj()), 0, 0)
-		C.sub_4E8290(1, 0)
+		sub_4E8290(1, 0)
 		return 1
 	}
 	return 0

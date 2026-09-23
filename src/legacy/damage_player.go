@@ -66,8 +66,8 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 		if actual.ObjClass&1 != 0 && projectileFront(u, actual) {
 			damageReflect(actual, u)
 			if actual.ObjSubClass&0x40 == 0 {
-				C.nox_xxx_unitClearOwner_4EC300(asObjectC(actual))
-				C.nox_xxx_unitSetOwner_4EC290(asObjectC(u), asObjectC(actual))
+				nox_xxx_unitClearOwner_4EC300(asObjectC(actual))
+				nox_xxx_unitSetOwner_4EC290(asObjectC(u), asObjectC(actual))
 			}
 			if actual.ObjClass&1 != 0 && actual.ObjSubClass&2 != 0 {
 				Nox_xxx_changeOwner_52BE40(actual, u)
@@ -110,7 +110,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 		if kind != 15 && eligible && front {
 			state := *(*byte)(unsafe.Add(ud, 88))
 			shield := (player && state == 16 || !player && monsterControlHead(u) == 21) && armor&0x3000000 != 0
-			if !shield && weapons&0x400 == 0 && state == 1 && C.nox_common_mapPlrActionToStateId_4FA2B0(asObjectC(u)) == 45 && armor&0x3000000 != 0 && gameex_flags&0x10 != 0 {
+			if !shield && weapons&0x400 == 0 && state == 1 && nox_common_mapPlrActionToStateId_4FA2B0(asObjectC(u)) == 45 && armor&0x3000000 != 0 && gameex_flags&0x10 != 0 {
 				shield = true
 			}
 			if shield {
@@ -119,8 +119,8 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 					if actual.ObjClass&1 != 0 && actual.ObjSubClass&0x70 == 0 {
 						damageReflect(actual, u)
 						if actual.ObjClass&1 != 0 && actual.ObjSubClass&2 == 0 {
-							C.nox_xxx_unitClearOwner_4EC300(asObjectC(actual))
-							C.nox_xxx_unitSetOwner_4EC290(asObjectC(u), asObjectC(actual))
+							nox_xxx_unitClearOwner_4EC300(asObjectC(actual))
+							nox_xxx_unitSetOwner_4EC290(asObjectC(u), asObjectC(actual))
 						}
 					}
 					value := float32(float64(nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamageFromBlockPercentage"))) * float64(amount))
@@ -136,13 +136,13 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 					if actual.ObjClass&1 != 0 {
 						damageReflect(actual, u)
 						if actual.ObjClass&1 != 0 && actual.ObjSubClass&2 == 0 {
-							C.nox_xxx_unitClearOwner_4EC300(asObjectC(actual))
-							C.nox_xxx_unitSetOwner_4EC290(asObjectC(u), asObjectC(actual))
+							nox_xxx_unitClearOwner_4EC300(asObjectC(actual))
+							nox_xxx_unitSetOwner_4EC290(asObjectC(u), asObjectC(actual))
 						}
 					}
 					inventorySound(890, u, 0, 0)
 					if player {
-						C.nox_xxx_playerSetState_4FA020(asObjectC(u), C.nox_common_randomInt_415FA0(18, 20))
+						C.nox_xxx_playerSetState_4FA020(asObjectC(u), C.int(nox_common_randomInt_415FA0(18, 20)))
 					} else {
 						monsterControlEnsure(u, 23)
 					}

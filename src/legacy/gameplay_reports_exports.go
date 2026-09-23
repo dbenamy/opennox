@@ -19,10 +19,8 @@ func nox_xxx_netCreatureCmd_4D7EE0(a0 C.int, a1 C.char) C.int {
 	return C.int(gameplayReportCreature(int(a0), byte(a1)))
 }
 
-//export nox_xxx_netNotifyRate_4D7F10
 func nox_xxx_netNotifyRate_4D7F10(a0 C.int) C.int { return C.int(gameplayReportRate(int(a0))) }
 
-//export sub_4D81A0
 func sub_4D81A0(a0 C.int) {
 	gameplayReportExperience((*server.Object)(unsafe.Pointer(uintptr(uint32(a0)))))
 }
@@ -77,22 +75,18 @@ func nox_xxx_netSendDMTeamWinner_4D8BF0(a0 C.int, a1 C.char) C.int {
 	return C.int(gameplayReportDMTeamWinner((*server.Team)(unsafe.Pointer(uintptr(uint32(a0)))), byte(a1)))
 }
 
-//export nox_xxx_netFlagballWinner_4D8C40
 func nox_xxx_netFlagballWinner_4D8C40(a0 C.int) C.int {
 	return C.int(gameplayReportFlagballWinner((*server.Team)(unsafe.Pointer(uintptr(uint32(a0))))))
 }
 
-//export nox_xxx_netFlagWinner_4D8C40_4D8C80
 func nox_xxx_netFlagWinner_4D8C40_4D8C80(a0 C.int, a1 C.char) C.int {
 	return C.int(gameplayReportFlagWinner((*server.Team)(unsafe.Pointer(uintptr(uint32(a0)))), byte(a1)))
 }
 
-//export nox_xxx_playerIncrementElimDeath_4D8D40
 func nox_xxx_playerIncrementElimDeath_4D8D40(a0 C.int) {
 	gameplayReportEliminationDeath((*server.Object)(unsafe.Pointer(uintptr(uint32(a0)))))
 }
 
-//export nox_xxx_changeScore_4D8E90
 func nox_xxx_changeScore_4D8E90(a0 C.int, a1 C.int) C.int {
 	return C.int(gameplayReportChangeScore((*server.Object)(unsafe.Pointer(uintptr(uint32(a0)))), int(a1)))
 }
@@ -132,7 +126,6 @@ func nox_xxx_netReportAcquireCreature_4D91A0(a0 C.int, a1 *C.nox_object_t) C.int
 	return C.int(gameplayReportAcquireCreature(int(a0), (*server.Object)(unsafe.Pointer(a1))))
 }
 
-//export nox_xxx_netMonitorCreature_4D9250
 func nox_xxx_netMonitorCreature_4D9250(a0 C.int, a1 C.int) C.int {
 	return C.int(gameplayReportMonitor(int(a0), (*server.Object)(unsafe.Pointer(uintptr(uint32(a1))))))
 }
@@ -189,7 +182,6 @@ func nox_xxx_playerReportAnything_4D9900(a0 C.int) {
 	gameplayReportAnything((*server.Object)(unsafe.Pointer(uintptr(uint32(a0)))))
 }
 
-//export sub_4D9CF0
 func sub_4D9CF0(a0 C.int) C.int { return C.int(gameplayReportQuestStart(int(a0))) }
 
 //export sub_4D9D20

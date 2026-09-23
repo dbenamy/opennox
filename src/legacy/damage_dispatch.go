@@ -36,7 +36,7 @@ func damageBall(source, u *server.Object, amount int32) {
 		}
 		it.ObjFlags &^= 0x40
 		C.nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&u.PosVec)), asObjectC(it), 30)
-		C.nox_xxx_unitClearOwner_4EC300(asObjectC(it))
+		nox_xxx_unitClearOwner_4EC300(asObjectC(it))
 		objectiveRememberOwner(it, u)
 		ind := *(*byte)(unsafe.Add(source.CObj(), 52))
 		if it.TeamVal.Has() {
@@ -83,7 +83,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 		}
 		return 1
 	}
-	if !bool(C.nox_xxx_CheckGameplayFlags_417DA0(1)) {
+	if !bool(nox_xxx_CheckGameplayFlags_417DA0(1)) {
 		if owner := source.FindOwnerChainPlayer(); owner != nil && owner.ObjClass&6 != 0 && !GetServer().S().IsEnemyTo(u, owner) && (u != owner || bool(nox_common_gameFlags_check_40A5C0(4096))) {
 			return 1
 		}
@@ -183,7 +183,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 			set := resourceMonsterSound(source)
 			if set != nil {
 				sound := *(*C.int)(unsafe.Add(set, 32))
-				if sound != 0 && C.nox_xxx_getSevenDwords3_501940(sound) > 0 {
+				if sound != 0 && nox_xxx_getSevenDwords3_501940(int32(sound)) > 0 {
 					play = false
 				}
 			}
@@ -216,7 +216,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 		}
 	}
 	if bool(nox_common_gameFlags_check_40A5C0(6144)) {
-		C.sub_4FB050(inventoryInt(source), inventoryInt(u), (*C.int)(unsafe.Pointer(value)))
+		sub_4FB050(inventoryInt(source), inventoryInt(u), (*C.int)(unsafe.Pointer(value)))
 	}
 	if source != nil {
 		mob := source

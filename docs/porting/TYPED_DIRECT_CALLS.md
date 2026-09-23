@@ -1,6 +1,6 @@
 # Direct Go scalar and pointer forwarding
 
-Planned scope: 69 existing Go→C→Go calls (29 scalar calls and 40 pointer calls),
+Qualified scope: 69 existing Go→C→Go calls (29 scalar calls and 40 pointer calls),
 plus ten C exports with no remaining callers or address references. The existing
 Go implementations remain. The rejected `sub_50B510` prototype mismatch remains
 outside this batch.
@@ -43,17 +43,29 @@ its count check was corrected after inspecting that build constraint and the
 actual discovered-name difference. No tests or expectations were changed.
 See [baseline evidence](typed-direct-calls-c-qualification.json).
 
-The complete converted selection must pass 490/489/490 roots. Its discovered names
-must exactly equal the union of reused and freshly executed baseline selections.
-Retain existing frozen captures and independent expectations. This covers affected
-owners, not every possible call-site branch. Safe/static, fresh production/ABI,
-exact known full-suite comparison, headless character creation and save/load
-remain required after conversion.
+All 490/489/490 converted roots pass in default/server/highres, without skips.
+Discovered names exactly equal the union of reused and fresh baseline selections.
+Existing frozen captures and independent expectations are unchanged. This covers
+affected owners, not every possible call-site branch. Safe/static, four fresh
+binaries and ABI checks, the exact known full-suite comparison (304 existing
+failure events; unchanged package outcomes), headless creation and save/load pass.
+All four binaries omit the ten retired exports and 41 redundant C-call bridges;
+retained interfaces remain Go-backed and production binaries contain no PortTest
+symbols. See [qualification evidence](typed-direct-calls-qualification.json).
+
+The old retained-symbol manifest was a curated subset and did not list the ten
+original Go exports. An initial bookkeeping assertion stopped on that assumption.
+Primary verified all ten symbols in all four preceding binaries and added explicit
+absence requirements to the new manifest. No source or test failure was involved.
 
 ## Delegation and recovery
 
 Luna supplied both bounded call drafts; primary owns signature normalization,
-integer/ownership review, scope selection and qualification. The baseline reuse
+integer/ownership review, scope selection and qualification. Luna also reviewed
+the applied diff; primary independently reconstructed every changed source file
+from the reviewed substitutions and export removals. One redundant constant cast
+was simplified. The bounded drafts needed no behavioral correction; this supports
+continuing this assignment style, without a measured cost-saving claim. The baseline reuse
 avoids rerunning identical recently qualified tests; new owner contracts and all
 converted contracts still execute. No game-speed improvement is claimed.
 

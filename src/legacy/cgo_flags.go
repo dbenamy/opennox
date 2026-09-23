@@ -27,7 +27,6 @@ func nox_common_gameFlags_getVal_40A5B0() C.uint {
 	return C.uint(noxflags.GetGame())
 }
 
-//export nox_common_gameFlags_check_40A5C0
 func nox_common_gameFlags_check_40A5C0(f C.uint) C.bool {
 	return C.bool(noxflags.HasGame(noxflags.GameFlag(f)))
 }

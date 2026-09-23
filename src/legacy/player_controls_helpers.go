@@ -223,7 +223,7 @@ func controlSetWaypoint(u *server.Object, x, y uint32) {
 	ptr := controlPtr(data, 168+4*int(*controlByte(data, 180)))
 	pos := *(*types.Pointf)(unsafe.Pointer(&[2]uint32{x, y}))
 	if *ptr != nil {
-		C.nox_xxx_unitMove_4E7010((*C.nox_object_t)(*ptr), (*C.float2)(unsafe.Pointer(&pos)))
+		nox_xxx_unitMove_4E7010((*C.nox_object_t)(*ptr), (*C.float2)(unsafe.Pointer(&pos)))
 	} else {
 		it := GetServer().S().NewObjectByTypeID("PlayerWaypoint")
 		*ptr = it.CObj()

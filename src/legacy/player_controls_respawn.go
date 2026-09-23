@@ -148,10 +148,10 @@ func controlInitPlayer(u *server.Object) int8 {
 	resourceSubGold(u, resourceObjectGold(u))
 	controlLevelFromXP(u)
 	pl := controlPlayer(u)
-	C.nox_xxx_spellAwardAll1_4EFD80((*C.nox_playerInfo)(pl))
-	C.nox_xxx_spellAwardAll2_4EFC80((*C.nox_playerInfo)(pl))
+	nox_xxx_spellAwardAll1_4EFD80((*C.nox_playerInfo)(pl))
+	nox_xxx_spellAwardAll2_4EFC80((*C.nox_playerInfo)(pl))
 	controlReadStats(u, 0)
-	C.nox_xxx_spellAwardAll3_4EFE10((*C.nox_playerInfo)(pl))
+	nox_xxx_spellAwardAll3_4EFE10((*C.nox_playerInfo)(pl))
 	if controlFlags(4096) {
 		*equipmentWord(d, 320) = uint32(floatToInt32(float32(nox_xxx_gamedataGetFloat_419D40(internCStr("QuestGameStartingExtraLives")))))
 	}
@@ -160,12 +160,12 @@ func controlInitPlayer(u *server.Object) int8 {
 func controlResetPlayer(u *server.Object) int32 {
 	d := u.UpdateData
 	pl := controlPlayer(u)
-	C.nox_xxx_spellAwardAll1_4EFD80((*C.nox_playerInfo)(pl))
-	C.nox_xxx_spellAwardAll2_4EFC80((*C.nox_playerInfo)(pl))
+	nox_xxx_spellAwardAll1_4EFD80((*C.nox_playerInfo)(pl))
+	nox_xxx_spellAwardAll2_4EFC80((*C.nox_playerInfo)(pl))
 	*controlByte(pl, 3684) = 1
 	Nox_xxx_playerCancelAbils_4FC180(u)
 	controlReadStats(u, 0)
-	C.nox_xxx_spellAwardAll3_4EFE10((*C.nox_playerInfo)(pl))
+	nox_xxx_spellAwardAll3_4EFE10((*C.nox_playerInfo)(pl))
 	mana := *controlHalf(d, 8)
 	*controlHalf(d, 4) = mana
 	*controlHalf(d, 6) = mana
@@ -209,8 +209,8 @@ func controlLeaveObserver(pl unsafe.Pointer) {
 	spellLifeBuffOff(u, int32(0))
 	*controlPtr(u.CObj(), 744) = unsafe.Pointer(C.nox_xxx_updatePlayer_4F8100)
 	u.ObjFlags &^= 0x40
-	C.nox_xxx_monsterMarkUpdate_4E8020((*C.nox_object_t)(controlObject(pl, 2056).CObj()))
-	if controlFlags(16) && bool(C.nox_xxx_CheckGameplayFlags_417DA0(4)) {
+	nox_xxx_monsterMarkUpdate_4E8020((*C.nox_object_t)(controlObject(pl, 2056).CObj()))
+	if controlFlags(16) && bool(nox_xxx_CheckGameplayFlags_417DA0(4)) {
 		controlTeamFlag(pl)
 	}
 	if controlFlags(49152) && !matchRosterHasIdentity((*server.Player)(pl)) {
@@ -219,7 +219,7 @@ func controlLeaveObserver(pl unsafe.Pointer) {
 	if controlFlags(4096) {
 		for it := GetServer().S().Players.FirstUnit(); it != nil; it = GetServer().S().Players.NextUnit(it) {
 			if *equipmentWord(controlPlayer(it), 4792) == 1 {
-				C.nox_xxx_netReportEnchant_4D8F90(C.int(*controlByte(pl, 2064)), (*C.uint32_t)(it.CObj()))
+				nox_xxx_netReportEnchant_4D8F90(C.int(*controlByte(pl, 2064)), (*C.uint32_t)(it.CObj()))
 			}
 		}
 	}
@@ -262,8 +262,8 @@ func controlRespawn(u *server.Object) int16 {
 	} else {
 		controlFindStart(&pos, u)
 	}
-	C.nox_xxx_unitMove_4E7010((*C.nox_object_t)(u.CObj()), (*C.float2)(unsafe.Pointer(&pos)))
-	if controlFlags(16) && bool(C.nox_xxx_CheckGameplayFlags_417DA0(4)) {
+	nox_xxx_unitMove_4E7010((*C.nox_object_t)(u.CObj()), (*C.float2)(unsafe.Pointer(&pos)))
+	if controlFlags(16) && bool(nox_xxx_CheckGameplayFlags_417DA0(4)) {
 		controlTeamFlag(pl)
 	}
 	if controlFlags(8192) {
@@ -284,7 +284,7 @@ func controlRespawnBot(u *server.Object) int32 {
 		controlMakeCorpse(u, settings)
 		var pos types.Pointf
 		controlFindStart(&pos, u)
-		C.nox_xxx_unitMove_4E7010((*C.nox_object_t)(u.CObj()), (*C.float2)(unsafe.Pointer(&pos)))
+		nox_xxx_unitMove_4E7010((*C.nox_object_t)(u.CObj()), (*C.float2)(unsafe.Pointer(&pos)))
 		C.nox_xxx_aud_501960(148, (*C.nox_object_t)(u.CObj()), 0, 0)
 		if controlFlags(8192) {
 			spellLifeApplyBuff(u, 23, int16(5*uint16(GetServer().S().TickRate())), 5)

@@ -7,31 +7,43 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — typed forwarding baseline qualified
+## Current — scalar/pointer forwarding qualified
 
-Scalar conversion `a69e1da8` is pushed. Session61711 joined PASS:110/109/110
-additional roots, no skips; server excludes the `!server` world-selection test.
-The exact preceding380-root contracts are reused after full source/test/env and
-four-binary identity checks. Baseline finalizer is CONSUMED. Combined selection
-is490/489/490. Fresh cgo metadata verifies all41 selected signatures and explicit
-aliases; source-wide function-name macro check found none.
+Baseline `2ae1dc28` is pushed. All 69 forwarding calls and ten unused C export
+retirements are qualified. All 490/489/490 roots pass default/server/highres with
+no skips or changed expectations. Discovered names exactly match the union of
+preceding 380 roots and fresh 110/109/110 baseline roots. Safe/static, four fresh
+production/ABI checks, exact known suite (304 existing failure events; unchanged
+package outcomes), headless creation and save/load pass. All four binaries omit
+ten retired exports and 41 redundant C-call bridges. See
+[TYPED_DIRECT_CALLS.md](docs/porting/TYPED_DIRECT_CALLS.md) and its qualification JSON.
 
-See [TYPED_DIRECT_CALLS.md](docs/porting/TYPED_DIRECT_CALLS.md) and
-[baseline](docs/porting/typed-direct-calls-c-qualification.json).
-No jobs active. Next freeze/commit/push this baseline, then apply the29scalar and
-40pointer drafts under `build/port-scalar-direct`; retire the ten exported markers
-and prototypes from `unused-scalar-export-candidates.json`, preserving Go bodies.
-Primary has reviewed scalar conversions/RNG positions, pointer lifetimes and
-external/tool references. Then format/review, run combined contracts, production/
-ABI/known-suite/headless gates, docs/LOC, commit/push. Qualification scripts still
-need adapting to this batch; do not reuse consumed output directories.
+Artifacts `build/port-typed-direct`; fresh binaries in `safe/opennox-safe` and
+`production/production/bin/{opennox,opennox-hd,opennox-server}`. Contract session 65252 and
+remaining pipeline 13209 joined PASS. Qualification/finalizer and scenario deduplication scripts CONSUMED.
+Check Git log/remote for conversion commit/push status. No source/build jobs active.
 
-Cleanup4504 joined PASS: five old completed captures677,499,524 raw bytes became
-16,273,443 gzip bytes. All44 hardlink paths and five symlink aliases recorded in
-`build/port-typed-direct/capture-archive-record.json`. The consumed archive script
-supports `--restore`; restore before historical finalizers. No assets or retained
-binaries removed; roughly2GiB free. Luna drafted the two exact-list patches and
-provided the checked read-only cleanup inventory.
+Luna's bounded call drafts and diff review accepted after independent exact-text,
+signature/alias, lifetime and reference checks. Old curated ABI manifest omitted
+ten original exports; primary verified all four preceding binaries and added
+explicit retirement requirements. This was a bookkeeping assumption, not a
+source/test failure. No changed tests or expectations.
+
+Next: unapplied 74-call/36-function draft in `build/port-pointer-forwarding`.
+Primary read all 36 wrappers, checked copied/synchronous point and text buffers and
+no function-name macros; fresh generated signatures/aliases, complete owner-test
+selection and baseline still required. Luna's review notes needed old-batch names
+corrected and a fuller coverage pass; primary additionally identified AIMain,
+generator/resources/effects owners and excludes standalone diagnostic
+TestMapPopulationPrerequisiteProbe while retaining prerequisite regressions.
+`additional-test-candidates.json` is a static inventory, not a qualified selection.
+Do not apply draft until baseline complete. No new export retirements selected.
+
+Cleanup 4504 joined PASS: 677,499,524 raw bytes became 16,273,443 gzip bytes across
+five complete captures. All 44 hardlinks/five symlink aliases recorded; restore
+before historical finalizers via `archive-captures.py --restore`. Archival is
+CONSUMED. Original assets/binaries intact. Scenario duplicate assets removed only
+after qualification, with per-run restore manifests.
 
 ## Earlier — matching-signature direct calls qualified
 

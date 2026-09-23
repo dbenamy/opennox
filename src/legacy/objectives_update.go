@@ -169,7 +169,7 @@ func objectiveBallUpdate(u *server.Object) {
 	}
 	u.ObjFlags &^= 0x40
 	*equipmentWord(u.CObj(), 520) = 0
-	dir := (int32(int16(owner.Direction1)) + int32(C.nox_common_randomInt_415FA0(-32, 32))) & 255
+	dir := (int32(int16(owner.Direction1)) + int32(nox_common_randomInt_415FA0(-32, 32))) & 255
 	dx, dy := movementDirectionVector(dir)
 	origin := types.Pointf{X: float32(float64(u.PosVec.X) - float64(dx)*20), Y: float32(float64(u.PosVec.Y) - float64(dy)*20)}
 	C.nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&origin)), asObjectC(u), 30)
@@ -191,7 +191,7 @@ func objectiveBallReset(old *server.Object) int {
 	if n == 0 {
 		return 0
 	}
-	choice := int(C.nox_common_randomInt_415FA0(0, C.int(n-1)))
+	choice := int(int32(nox_common_randomInt_415FA0(0, int(C.int(n-1)))))
 	var start *server.Object
 	for it := core.Objs.First(); it != nil; it = it.Next() {
 		if uint32(it.TypeInd) == uint32(dword_5d4594_527656) {

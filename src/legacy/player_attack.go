@@ -51,10 +51,10 @@ func attackPlayer(u *server.Object) int {
 		it.PosVec = u.PosVec
 		it.PrevPos = u.PosVec
 	} else if anim == 0 {
-		anim = byte(C.nox_common_randomInt_415FA0(23, 24))
+		anim = byte(nox_common_randomInt_415FA0(23, 24))
 		if player {
 			pd := *(*unsafe.Pointer)(unsafe.Add(ud, 276))
-			if *(*byte)(unsafe.Add(pd, 2251)) == 0 && C.nox_common_randomInt_415FA0(0, 100) >= 75 {
+			if *(*byte)(unsafe.Add(pd, 2251)) == 0 && nox_common_randomInt_415FA0(0, 100) >= 75 {
 				anim = 25
 			}
 			*(*byte)(unsafe.Add(pd, 8)) = anim

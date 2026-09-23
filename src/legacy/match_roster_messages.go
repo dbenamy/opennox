@@ -97,7 +97,7 @@ func matchRosterSettings() int {
 	b[0] = 176
 	alloc.StrCopy(b[1:17], alloc.GoString(memmap.PtrUint8(0x5D4594, 1324)))
 	copy(b[17:45], unsafe.Slice((*byte)(unsafe.Add(settings, 24)), 28))
-	if C.int(serverConfigTimerGet()) != 0 && (C.sub_40A300() != 0 || a[19] != 0) {
+	if C.int(serverConfigTimerGet()) != 0 && (sub_40A300() != 0 || a[19] != 0) {
 		binary.LittleEndian.PutUint32(b[45:], memmap.Uint32(0x5D4594, 3468)-uint32(PlatformTicks()))
 	}
 	gameplayReportSend(159, a[:], true, 0)

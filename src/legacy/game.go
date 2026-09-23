@@ -613,7 +613,7 @@ func Sub_460EA0(a1 int) {
 	quickbarVisible(a1 != 0)
 }
 func Nox_window_set_visible_unk5(a1 int) {
-	C.nox_window_set_visible_unk5(C.int(a1))
+	nox_window_set_visible_unk5(int(C.int(a1)))
 }
 func Sub_45D500(a1 int) {
 	bookTemporaryShow(a1)
@@ -627,7 +627,7 @@ func Sub_455F10(a1 int) {
 func Nox_xxx_mapFindPlayerStart_4F7AB0(a2 *server.Object) types.Pointf {
 	cp, freeCp := alloc.New(C.float2{})
 	defer freeCp()
-	C.nox_xxx_mapFindPlayerStart_4F7AB0(cp, asObjectC(a2))
+	nox_xxx_mapFindPlayerStart_4F7AB0(cp, asObjectC(a2))
 	return types.Pointf{
 		X: float32(cp.field_0),
 		Y: float32(cp.field_4),
@@ -652,13 +652,13 @@ func Sub_4DBA30(a1 bool) {
 	orchestrationRestore(int32(bool2int(a1)))
 }
 func Nox_xxx_isUnit_4E5B50(a1 *server.Object) int {
-	return int(C.nox_xxx_isUnit_4E5B50(asObjectC(a1)))
+	return int(nox_xxx_isUnit_4E5B50(asObjectC(a1)))
 }
 func Sub_4E5B80(a1 *server.Object) int {
-	return int(C.sub_4E5B80(asObjectC(a1)))
+	return int(sub_4E5B80(asObjectC(a1)))
 }
 func Sub_4E81D0(a1 *server.Object) {
-	C.sub_4E81D0(asObjectC(a1))
+	sub_4E81D0(asObjectC(a1))
 }
 func Sub_4D71E0(a1 int) {
 	questRuntimeSetSoulFrame(uint32(a1))

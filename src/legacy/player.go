@@ -209,7 +209,7 @@ func Get_nox_xxx_updatePlayerObserver_4E62F0() unsafe.Pointer {
 }
 
 func Nox_xxx_playerRemoveSpawnedStuff_4E5AD0(u *server.Object) {
-	C.nox_xxx_playerRemoveSpawnedStuff_4E5AD0(asObjectC(u))
+	nox_xxx_playerRemoveSpawnedStuff_4E5AD0(asObjectC(u))
 }
 
 func Nox_xxx_playerObserverFindGoodSlave0_4E6280(p *server.Player) *server.Object {

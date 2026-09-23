@@ -3,6 +3,5 @@
 
 #include "defs.h"
 
-void sub_40A040_settings(short a1, unsigned char a2);
 
 #endif // NOX_PORT_COMMON_SETTINGS

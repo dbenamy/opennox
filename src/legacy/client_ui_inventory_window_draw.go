@@ -32,7 +32,7 @@ func uiInventoryDrawWindow(w *gui.Window) int {
 	mask := memmap.Uint32(0x5D4594, 1062540)
 	for i := 0; i < 30; i++ {
 		if mask&(uint32(1)<<i) != 0 {
-			spell := C.nox_xxx_getEnchantSpell_424920(C.int(i))
+			spell := C.int(nox_xxx_getEnchantSpell_424920(int(C.int(i))))
 			uiMeterImage(uint32(uintptr(C.nox_xxx_spellIcon_424A90(spell))), image.Pt(x, y))
 			x += 35
 		}

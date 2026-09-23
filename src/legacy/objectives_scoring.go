@@ -22,7 +22,7 @@ import (
 func objectiveTeamCount(t *server.Team) int { return teamRuntimeCount(t) }
 func objectiveScore(u *server.Object) {
 	nox_xxx_changeScore_4D8E90(inventoryInt(u), 1)
-	C.nox_xxx_netReportLesson_4D8EF0(asObjectC(u))
+	nox_xxx_netReportLesson_4D8EF0(asObjectC(u))
 }
 func objectiveQuestScore(u *server.Object) {
 	if dword_5d4594_2650652 != 0 && u != nil && u.UpdateData != nil {
@@ -161,11 +161,11 @@ func objectiveCTFPickup(u, t *server.Object) {
 			break
 		}
 	}
-	C.nox_xxx_servFinalizeDelObject_4DADE0(asObjectC(u))
+	nox_xxx_servFinalizeDelObject_4DADE0(asObjectC(u))
 	flagColor := objectiveFlagID(u)
 	inventoryInsert(t, u, 1)
 	*equipmentWord(unsafe.Pointer((*server.PlayerUpdateData)(playerUD).Player), 4) |= 1
-	C.sub_4D82F0(255, (*C.uint32_t)(u.CObj()))
+	sub_4D82F0(255, (*C.uint32_t)(u.CObj()))
 	inventoryMessage(6, t, uint32(flagColor))
 	playerStateUnmark(u, 1)
 	*equipmentWord(ud, 8) = 0
@@ -214,7 +214,7 @@ func objectiveHomeBase(base, ball *server.Object) int16 {
 			n++
 		}
 	}
-	choice := int(C.nox_common_randomInt_415FA0(0, C.int(n-1)))
+	choice := int(int32(nox_common_randomInt_415FA0(0, int(C.int(n-1)))))
 	for it := core.Objs.First(); it != nil; it = it.Next() {
 		if int(it.TypeInd) == startID {
 			if choice == 0 {
@@ -299,7 +299,7 @@ func objectiveFlagBallScore(flag, target *server.Object) int16 {
 			n++
 		}
 	}
-	choice := int(C.nox_common_randomInt_415FA0(0, C.int(n-1)))
+	choice := int(int32(nox_common_randomInt_415FA0(0, int(C.int(n-1)))))
 	for it := core.Objs.First(); it != nil; it = it.Next() {
 		if uint32(it.TypeInd) == uint32(dword_5d4594_1567988) {
 			if choice == 0 {
