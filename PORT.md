@@ -14,6 +14,19 @@
 
 ## Current status
 
+Production audio now uses the fully qualified Go MP3 decoder. All 1,246 shipped
+asset observations and historical PCM goldens match unchanged; all decoder
+profiles, production/safe builds, ABI checks, exact known-suite comparison and
+headless creation/save-load pass. **Standalone production C: zero files/lines.**
+The 1,890-line decoder header is retired too; 81 production C preamble bodies
+and external cgo dependencies remain. Go decode is allocation-free per frame,
+but measured 2.79× slower than C on one mono asset; retain this performance
+review item. Next: deduplicate two typed callback adapters through existing
+shared dispatchers while preserving their Go APIs. See
+[MP3_GO.md](docs/porting/MP3_GO.md).
+
+### Earlier checkpoints
+
 The complete Go MP3 decoder matches2,682 generated C frame calls in544 sequences,
 including PCM, metadata and observable state. All ten test roots pass in four
 profiles and with cgo disabled; vet passes. Original unused-QMF and private-bit

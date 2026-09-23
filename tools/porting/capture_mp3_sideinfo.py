@@ -5,6 +5,7 @@ import gzip
 import hashlib
 import json
 from pathlib import Path
+from mp3_source import original_header
 import random
 import struct
 import subprocess
@@ -115,7 +116,7 @@ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('output',type=Path);ap.add_argument('--ubsan',action='store_true');args=ap.parse_args()
     root=Path(__file__).resolve().parents[2];out=args.output.resolve();out.mkdir(parents=True,exist_ok=False)
-    header=root/'src/legacy/client/audio/mp3/minimp3.h';shim=out/'capture.c';shim.write_text(SHIM);exe=out/'capture'
+    header=original_header(root,out);shim=out/'capture.c';shim.write_text(SHIM);exe=out/'capture'
     flags=['gcc','-m32','-std=c11','-O2','-g','-msse2','-mfpmath=sse']
     if args.ubsan:flags+=['-fsanitize=undefined','-fno-sanitize-recover=all']
     flags+=['-I',str(header.parent),str(shim),'-lm','-o',str(exe)];subprocess.run(flags,check=True)

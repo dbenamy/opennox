@@ -2,6 +2,7 @@
 """Freeze actual scalar Layer III Huffman/dequantization state and power helper."""
 import argparse,gzip,hashlib,json,struct,subprocess,re
 from pathlib import Path
+from mp3_source import original_header, original_header_text
 import capture_mp3_imdct as common
 import capture_mp3_spectrum as spectrum
 SHIM=common.SHIM.split('int main(void)')[0]+r'''
@@ -50,7 +51,7 @@ def requests():
     for count1 in (0,1):yield 2,base+common.u(0,0,count1,pos,length,pat,3,0),2584
 
  # Enumerate codebook leaves to construct inputs, never expected decoded values.
- source=(Path(__file__).resolve().parents[2]/'src/legacy/client/audio/mp3/minimp3.h').read_text()
+ source=original_header_text(Path(__file__).resolve().parents[2])
  def table(name):
   text=source[source.index(name+'['):];text=text[text.index('{')+1:text.index('}')]
   return [int(v) for v in re.findall(r'-?\d+',text)]
@@ -79,7 +80,7 @@ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
  ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('output',type=Path);args=ap.parse_args()
  root=Path(__file__).resolve().parents[2];out=args.output.resolve();out.mkdir(parents=True,exist_ok=False)
- header=root/'src/legacy/client/audio/mp3/minimp3.h';shim=out/'capture.c';shim.write_text(SHIM)
+ header=original_header(root,out);shim=out/'capture.c';shim.write_text(SHIM)
  flags=['gcc','-m32','-std=c11','-O2','-g','-msse2','-mfpmath=sse','-I',str(header.parent),str(shim),'-lm']
  subprocess.run(flags+['-o',str(out/'capture')],check=True);counts=[0,0,0]
  with (out/'requests.bin').open('wb') as fo:

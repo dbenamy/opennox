@@ -1,0 +1,353 @@
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/client"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/client/gui"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/client/input"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/client/noxmovie"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/APA00001/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/APA00001/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/APA00001/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/APA00001/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/APA00001/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/APA00001/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/APA00001/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/APA00001/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/APA00001/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/APA00001"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/client/render"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/cmd/noxmovie"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Bsumon06/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Bsumon06/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Bsumon06/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Bsumon06/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Bsumon06/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Bsumon06/multiply"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/cmd/opennox"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Bsumon06/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Bsumon06/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Bsumon06/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Bsumon06"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/cmd/opennox-server"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/common/discover"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/common/flags"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/common/gsync"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/common/memmap"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EGS00001/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EGS00001/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EGS00001/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EGS00001/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EGS00001/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EGS00001/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EGS00001/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EGS00001/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EGS00001/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EGS00001"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPD00004/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPD00004/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPD00004/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPD00004/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPD00004/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPD00004/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPD00004/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPD00004/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPD00004/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPD00004"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPSN0005/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPSN0005/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPSN0005/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPSN0005/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPSN0005/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPSN0005/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPSN0005/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPSN0005/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPSN0005/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EPSN0005"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EXLAN003/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EXLAN003/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EXLAN003/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EXLAN003/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EXLAN003/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EXLAN003/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EXLAN003/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EXLAN003/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EXLAN003/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/EXLAN003"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/fsdie17/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/fsdie17/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/fsdie17/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/fsdie17/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/fsdie17/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/fsdie17/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/fsdie17/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/fsdie17/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/fsdie17/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/fsdie17"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/GHDIE003/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/GHDIE003/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/GHDIE003/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/GHDIE003/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/GHDIE003/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/GHDIE003/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/GHDIE003/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/GHDIE003/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/GHDIE003/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/GHDIE003"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/hdg000v1/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/hdg000v1/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/hdg000v1/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/hdg000v1/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/hdg000v1/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/hdg000v1/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/hdg000v1/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/hdg000v1/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/hdg000v1/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/hdg000v1"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Mgrdy31/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Mgrdy31/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Mgrdy31/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Mgrdy31/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Mgrdy31/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Mgrdy31/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Mgrdy31/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Mgrdy31/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Mgrdy31/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/Mgrdy31"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/MNLoadr1/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/MNLoadr1/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/MNLoadr1/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/MNLoadr1/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/MNLoadr1/colorize"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/common/memmap/nox"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/common/memmap/nox/blobdata"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/common/ntype"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/common/serial"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/common/sound"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/common/unit/ai"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/internal/binfile"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/MNLoadr1/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/MNLoadr1/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/MNLoadr1/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/MNLoadr1/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/MNLoadr1"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NFTK0181/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NFTK0181/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NFTK0181/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NFTK0181/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NFTK0181/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NFTK0181/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NFTK0181/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NFTK0181/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NFTK0181/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NFTK0181"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0013/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/internal/blobs", "Test": "TestReadBlobs"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0013/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0013/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0013/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0013/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0013/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0013/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0013/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0013/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0013"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0163/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0163/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0163/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0163/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0163/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0163/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0163/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0163/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0163/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/NHDT0163"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGMM0001/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGMM0001/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGMM0001/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGMM0001/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGMM0001/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGMM0001/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGMM0001/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGMM0001/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGMM0001/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGMM0001"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGWW0002/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGWW0002/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGWW0002/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGWW0002/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGWW0002/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGWW0002/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGWW0002/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGWW0002/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGWW0002/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OGWW0002"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OICS0001/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OICS0001/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OICS0001/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OICS0001/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OICS0001/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OICS0001/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OICS0001/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OICS0001/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OICS0001/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OICS0001"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OIX00002/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OIX00002/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OIX00002/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OIX00002/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OIX00002/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OIX00002/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OIX00002/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OIX00002/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OIX00002/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/OIX00002"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PGWBD001/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PGWBD001/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PGWBD001/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PGWBD001/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PGWBD001/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PGWBD001/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PGWBD001/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PGWBD001/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PGWBD001/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PGWBD001"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PKA00002/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PKA00002/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PKA00002/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PKA00002/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PKA00002/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PKA00002/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PKA00002/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PKA00002/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PKA00002/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PKA00002"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PQMMGBA0/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PQMMGBA0/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PQMMGBA0/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PQMMGBA0/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PQMMGBA0/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PQMMGBA0/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PQMMGBA0/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PQMMGBA0/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PQMMGBA0/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/PQMMGBA0"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/QFER0002/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/QFER0002/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/QFER0002/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/QFER0002/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/QFER0002/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/QFER0002/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/QFER0002/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/QFER0002/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/QFER0002/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/QFER0002"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UCU00000/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UCU00000/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UCU00000/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UCU00000/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UCU00000/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UCU00000/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UCU00000/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UCU00000/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UCU00000/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UCU00000"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPACM001/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPACM001/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPACM001/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPACM001/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPACM001/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPACM001/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPACM001/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPACM001/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPACM001/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPACM001"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPALA001/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPALA001/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPALA001/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPALA001/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPALA001/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPALA001/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPALA001/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPALA001/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPALA001/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPALA001"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPBH0001/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPBH0001/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPBH0001/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPBH0001/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPBH0001/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPBH0001/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPBH0001/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPBH0001/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPBH0001/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/UPBH0001"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/WAZWD002/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/WAZWD002/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/WAZWD002/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/WAZWD002/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/WAZWD002/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/WAZWD002/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/WAZWD002/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/WAZWD002/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/WAZWD002/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/WAZWD002"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XABALA55/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XABALA55/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XABALA55/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XABALA55/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XABALA55/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XABALA55/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XABALA55/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XABALA55/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XABALA55/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XABALA55"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XICWR050/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XICWR050/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XICWR050/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XICWR050/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XICWR050/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XICWR050/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XICWR050/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XICWR050/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XICWR050/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XICWR050"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XSTAFN93/default"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XSTAFN93/alpha_100"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XSTAFN93/alpha_50"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XSTAFN93/alpha_custom"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XSTAFN93/colorize"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XSTAFN93/multiply"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XSTAFN93/alpha_100_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XSTAFN93/alpha_50_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XSTAFN93/alpha_custom_mult"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage/XSTAFN93"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender", "Test": "TestDrawImage"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/client/noxrender"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/internal/callgraph"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/internal/cryptfile"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/internal/e2etest"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/internal/exportpkg"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/internal/netlist"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/internal/netstr"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/internal/noxbuild"}
+{"Action": "fail", "Package": "github.com/opennox/opennox/v1/internal/blobs"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/internal/noxfactor/c2gotok"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/internal/offalign"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/internal/protection"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/internal/vers"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/internal/vers/git"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/internal/version"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/legacy"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/internal/noxfactor"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/legacy/cnxz"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/legacy/common/alloc"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/legacy/common/alloc/handles"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/legacy/common/alloc/memguard"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/legacy/common/ccall"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/legacy/common/ccall/callgen"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/legacy/dialog"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/legacy/music"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/legacy/timer"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/server"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/server/netlib"}
+{"Action": "skip", "Package": "github.com/opennox/opennox/v1/server/noxscript"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/legacy/client/audio/ail"}
+{"Action": "pass", "Package": "github.com/opennox/opennox/v1/legacy/client/audio/mp3"}

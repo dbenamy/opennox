@@ -18,7 +18,10 @@ type FrameInfo struct {
 
 // Decoder holds persistent Layer III reservoir and synthesis state. Its zero
 // value is ready for use. A Decoder must not be used concurrently.
-type Decoder struct{ state decoderState }
+type Decoder struct {
+	state   decoderState
+	scratch decodeScratch
+}
 
 // Init marks the next frame for resynchronization. Other state is retained until
 // that next scan, matching the original reset/seek behavior.
@@ -73,10 +76,12 @@ func (d *Decoder) DecodeFrame(packet []byte, pcm []int16, info *FrameInfo) int {
 	if info.Layer != 3 {
 		return 0
 	}
+	// Reuse per-decoder storage to avoid a scratch allocation on every frame.
 	// Original C scratch is automatic storage. Go initializes it deterministically;
 	// valid decoding does not depend on prior stack contents. The unused QMF lanes
 	// are characterized separately in the complete-frame fixture.
-	var scratch decodeScratch
+	scratch := &d.scratch
+	*scratch = decodeScratch{}
 	begin := readSideInfo(&outer, &scratch.grInfo, hdr)
 	if begin < 0 || outer.pos > outer.limit {
 		decoderInit(dec)
@@ -90,7 +95,7 @@ func (d *Decoder) DecodeFrame(packet []byte, pcm []int16, info *FrameInfo) int {
 		}
 		for gr := 0; gr < granules; gr++ {
 			clear(scratch.spectral[:1152])
-			decodeLayer3(dec, &scratch, scratch.grInfo[gr*info.Channels:], info.Channels)
+			decodeLayer3(dec, scratch, scratch.grInfo[gr*info.Channels:], info.Channels)
 			synthGranule(dec.qmfState[:], scratch.spectral[:1152], 18, info.Channels, pcm[gr*576*info.Channels:], scratch.synthesis[:])
 		}
 	}

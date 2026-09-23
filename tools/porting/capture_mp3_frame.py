@@ -2,6 +2,7 @@
 """Capture complete original scalar MP3 frame calls, state and PCM capacity writes."""
 import argparse,gzip,hashlib,json,struct,subprocess,os
 from pathlib import Path
+from mp3_source import original_header
 import capture_mp3_imdct as common
 import capture_mp3_sideinfo as sideinfo
 SHIM=common.SHIM.split('int main(void)')[0]+r'''
@@ -81,7 +82,7 @@ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
  ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('output',type=Path);args=ap.parse_args()
  root=Path(__file__).resolve().parents[2];out=args.output.resolve();out.mkdir(parents=True,exist_ok=False)
- header=root/'src/legacy/client/audio/mp3/minimp3.h';shim=out/'capture.c';shim.write_text(SHIM)
+ header=original_header(root,out);shim=out/'capture.c';shim.write_text(SHIM)
  flags=['gcc','-m32','-std=c11','-O2','-g','-msse2','-mfpmath=sse','-I',str(header.parent),str(shim),'-lm']
  subprocess.run(flags+['-o',str(out/'capture')],check=True);rows=list(requests());steps=sum(map(len,rows));(out/'requests.bin').write_bytes(b''.join(map(wire,rows)))
  hashes=[]

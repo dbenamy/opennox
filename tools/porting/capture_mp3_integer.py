@@ -5,6 +5,7 @@ import gzip
 import hashlib
 import json
 from pathlib import Path
+from mp3_source import original_header
 import struct
 import subprocess
 
@@ -83,7 +84,7 @@ def main():
     args=ap.parse_args()
     root=Path(__file__).resolve().parents[2]
     out=args.output.resolve();out.mkdir(parents=True,exist_ok=False)
-    header=root/'src/legacy/client/audio/mp3/minimp3.h'
+    header=original_header(root,out)
     shim=out/'capture.c';shim.write_text(SHIM)
     exe=out/'capture'
     flags=['gcc','-m32','-std=c11','-O2','-g','-msse2','-mfpmath=sse','-I',str(header.parent),str(shim),'-lm','-o',str(exe)]

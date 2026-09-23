@@ -2,6 +2,7 @@
 """Capture actual scalar minimp3 stereo, reorder and antialias state."""
 import argparse,gzip,hashlib,json,struct,subprocess
 from pathlib import Path
+from mp3_source import original_header
 from capture_mp3_sideinfo import payload as side_payload
 
 SHIM=r'''
@@ -113,7 +114,7 @@ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('output',type=Path);args=ap.parse_args()
     root=Path(__file__).resolve().parents[2];out=args.output.resolve();out.mkdir(parents=True,exist_ok=False)
-    header=root/'src/legacy/client/audio/mp3/minimp3.h';shim=out/'capture.c';shim.write_text(SHIM)
+    header=original_header(root,out);shim=out/'capture.c';shim.write_text(SHIM)
     flags=['gcc','-m32','-std=c11','-O2','-g','-msse2','-mfpmath=sse','-I',str(header.parent),str(shim),'-lm']
     subprocess.run(flags+['-o',str(out/'capture')],check=True);counts=[0]*6
     with (out/'requests.bin').open('wb') as f:

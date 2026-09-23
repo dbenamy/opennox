@@ -2,12 +2,42 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: six physical lines in one production `.c` file**, zero
-standalone reference C. That file includes the MP3 decoder implementation; C
-preambles, headers, generated bridges and external libraries remain outside this
-metric. See [C_LOC.md](docs/porting/C_LOC.md).
+**Qualified standalone C remaining: zero physical lines/files**, including test
+references. Headers, C preambles, generated bridges and external libraries are
+outside this metric. There are still 81 production C preamble bodies (76 generic
+callback dispatchers and five typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — direct callback addresses qualified
+## Current — production Go MP3 integration qualified
+
+The audio wrapper selects Go; the six-line implementation file and 1,890-line
+minimp3 header are retired. Original capture tools recover the SHA-pinned header
+from Git history. Exact regenerated integer fixture matches the committed fixture.
+All ten MP3 roots pass default/server/highres/safe and CGO-disabled profiles;
+vet passes. All 1,246 shipped assets match the original C guarded observation and
+historical PCM goldens. Default/highres consumer tests, safe/static, fresh
+production/ABI, headless character creation and save/load pass. Full suite matches
+exactly: 304 known failure events; 17 pass/2 fail/32 skip packages.
+
+Artifacts: `build/port-mp3-go`. Qualification:
+[MP3_GO.md](docs/porting/MP3_GO.md),
+[mp3-go-qualification.json](docs/porting/mp3-go-qualification.json).
+Scratch is reused per decoder and cleared each Layer III frame; benchmark loops
+allocate zero bytes. One-asset median: Go 33.29 µs/frame, C 11.92 µs, ratio 2.79×.
+This remains a documented performance review item, not whole-game timing.
+
+Sessions 40608,28963,7084,36542,79460,20103,95735 are joined PASS; finalizer
+57988 is joined PASS and verifies final evidence. Preflight/save deduplication scripts are CONSUMED,
+with restore manifests. Old cache removal recovered 1.51 GiB; the cache process
+scan's sandbox-namespace limitation is recorded in MP3_GO.md. Scenario cleanup
+used host process checks. Original assets and retained binaries remain intact.
+
+Next bounded chunk: preserve both Go APIs while replacing local draw/object-create
+C shims with existing exact-signature ccall dispatchers. Luna independently
+reviewed MP3 integration and inventoried adapters; draft next-test work lives in
+`build/port-mp3-go/adapter-draft`. Do not apply until integration commit/push is
+complete. Check Git log/remote for commit/push status.
+
+## Earlier — direct callback addresses qualified
 
 Empty callbacks baseline `ae76f3c8` and conversion `dc9692f8` are committed/pushed.
 Address-getter baseline `229bf34a` is committed/pushed. Conversion `78a5a21c` is committed/pushed and
