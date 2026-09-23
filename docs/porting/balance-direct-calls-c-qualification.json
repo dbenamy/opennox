@@ -1,0 +1,197 @@
+{
+  "status": "qualified original C balance getter route plus independent C/direct numeric contracts",
+  "revision": "64376c9fa553a441f9721f5d01ce0e619320d129",
+  "baseline": {
+    "batch": "balance-direct-calls",
+    "phase": "contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/balance-direct-calls-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-balance-direct/baseline/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-balance-direct/baseline/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 209.47101358999498
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/balance-direct-calls-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-balance-direct/baseline/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-balance-direct/baseline/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 204.08707772404887
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/balance-direct-calls-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-balance-direct/baseline/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-balance-direct/baseline/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 119.50472388300113
+      }
+    ],
+    "revision": "64376c9fa553a441f9721f5d01ce0e619320d129",
+    "source_unchanged": true,
+    "wall_seconds": 533.5943992708344,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "profiles": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 109,
+      "selected_root_tests": 109,
+      "exit": 0,
+      "started_tests": 109,
+      "completed_tests": 109,
+      "started_root_tests": 109,
+      "completed_root_tests": 109,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 209.3948307589162
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 109,
+      "selected_root_tests": 109,
+      "exit": 0,
+      "started_tests": 109,
+      "completed_tests": 109,
+      "started_root_tests": 109,
+      "completed_root_tests": 109,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 203.98651733389124
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 109,
+      "selected_root_tests": 109,
+      "exit": 0,
+      "started_tests": 109,
+      "completed_tests": 109,
+      "started_root_tests": 109,
+      "completed_root_tests": 109,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 119.40623697289266
+    }
+  },
+  "test_sha256": {
+    "src/balance_getters_porttest_test.go": "190691c66a9fe6cd6aa1ad5ba8b2f86c266dbab08d9dcb32e5999fde6af50781",
+    "src/legacy/balance_getters_porttest.go": "64f486f94d40d89eaf4e48679be6b3c98decafc3c56eb0d0269661908881d9b4",
+    "src/server/balance_getters_porttest.go": "1ac89d0f0f2b3daf99917ce163e121ebd0490ee6c0146c8a5b2cfa5ac692baff"
+  },
+  "production_reused_from": "book-direct-calls-qualification.json",
+  "production_binary_sha256": {
+    "safe": "8621d5d6d976937d0e346c3680b4f70883f87da596b92fb1424c5a9e61d8dbf2",
+    "opennox": "51ea1c5ac1e11bbdf8b111fdae48f8a754287db49c776c71ed149147826a7fa2",
+    "opennox-hd": "5481e490f610f9d3909ccd4ab0d73cc13b3dd256d780e7d253e3a6d19440a7ef",
+    "opennox-server": "48796c857677f3f09e8621f4b6825ae5b3bc355ddb53f430c79b8cf2e0184c5b"
+  },
+  "source_identity": "All preexisting source identical to reused production evidence; only three new porttest files added.",
+  "numeric_contract": "104 mode/key/index cases, four exact float64 comparisons per case, through both C and direct Go getter routes.",
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79
+}

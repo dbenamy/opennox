@@ -7,7 +7,36 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — direct book callbacks qualified
+## Current — balance getter baseline qualified
+
+Book conversion `64376c9f` is pushed. Three new porttest files supply independent
+scalar/indexed balance contracts through both C and direct Go wrappers:104
+mode/key/index cases with four exact float64 comparisons each. Cases include
+precise doubles, signed zero, missing/empty keys, index extremes and tag precedence.
+All 109 affected gameplay/numeric roots pass default/server/highres without skips.
+All preexisting source matches the prior production checkpoint; its four retained
+binaries were hash-verified for reuse. See
+[baseline qualification](docs/porting/balance-direct-calls-c-qualification.json).
+Session27873 is joined PASS; baseline finalizer is CONSUMED. Production callers
+are still unchanged. Next: commit/push this baseline, apply reviewed 27-call
+patch, then run affected and fresh production qualification.
+
+Artifacts: `build/port-balance-direct`; reviewed patch and coverage/test drafts:
+`build/port-book-direct/balance-*`. Luna independently reviewed all 27 sites,
+wrappers, narrowing, float operations, interned strings and fixture cleanup;
+no material issue. All touched production files still require their C imports.
+
+
+Storage during this baseline: 33 old completed single-link test logs were
+losslessly archived after host open-file/stat/hash and round-trip checks;
+1,112,212,170 raw bytes became 67,649,331 gzip bytes. Session13360 joined PASS.
+The consumed script and full restore/hash metadata are in
+`build/port-balance-direct/archive-old-logs.py` and `old-log-archive-record.json`;
+Luna's read-only inventory is `old-log-archive-plan.json` (wrapped audit object;
+primary extracted its list to `old-log-archive-files.json`). Original assets,
+fixtures and retained binaries are unchanged. Rough free space after this:1.6GiB.
+
+## Earlier — direct book callbacks qualified
 
 Baseline `2afcb05a` is pushed. Ten direct Go calls replace the book drag/drop C
 round trips, preserving signed32 conversions and all three exported entry points.
