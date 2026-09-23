@@ -7,15 +7,6 @@ package legacy
 #include "GAME2_2.h"
 #include "client__gui__guishop.h"
 void sub_479680(void);
-extern uint32_t dword_5d4594_1098456;
-extern uint32_t dword_5d4594_1098576;
-extern uint32_t dword_5d4594_1098580;
-extern uint32_t dword_5d4594_1098592;
-extern uint32_t dword_5d4594_1098596;
-extern uint32_t dword_5d4594_1098600;
-extern uint32_t dword_5d4594_1098604;
-extern uint32_t dword_5d4594_1098616;
-extern uint32_t dword_5d4594_1098620;
 */
 import "C"
 import (
@@ -31,15 +22,15 @@ func PortTestShopUICells() []PortTestShopUICell {
 }
 func PortTestShopUIWords() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
-		"dword_5d4594_1098456": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1098456)),
-		"dword_5d4594_1098576": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1098576)),
-		"dword_5d4594_1098580": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1098580)),
-		"dword_5d4594_1098592": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1098592)),
-		"dword_5d4594_1098596": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1098596)),
-		"dword_5d4594_1098600": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1098600)),
-		"dword_5d4594_1098604": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1098604)),
-		"dword_5d4594_1098616": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1098616)),
-		"dword_5d4594_1098620": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1098620)),
+		"dword_5d4594_1098456": (*uint32)(unsafe.Pointer(&dword_5d4594_1098456)),
+		"dword_5d4594_1098576": (*uint32)(unsafe.Pointer(&dword_5d4594_1098576)),
+		"dword_5d4594_1098580": (*uint32)(unsafe.Pointer(&dword_5d4594_1098580)),
+		"dword_5d4594_1098592": (*uint32)(unsafe.Pointer(&dword_5d4594_1098592)),
+		"dword_5d4594_1098596": (*uint32)(unsafe.Pointer(&dword_5d4594_1098596)),
+		"dword_5d4594_1098600": (*uint32)(unsafe.Pointer(&dword_5d4594_1098600)),
+		"dword_5d4594_1098604": (*uint32)(unsafe.Pointer(&dword_5d4594_1098604)),
+		"dword_5d4594_1098616": (*uint32)(unsafe.Pointer(&dword_5d4594_1098616)),
+		"dword_5d4594_1098620": (*uint32)(unsafe.Pointer(&dword_5d4594_1098620)),
 	}
 	old := make(map[string]uint32, len(words))
 	for n, p := range words {

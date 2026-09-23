@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern unsigned int dword_5d4594_2650652;
 int sub_4DF9B0(void* a1, void* a2, void* a3, int a4);
 */
 import "C"

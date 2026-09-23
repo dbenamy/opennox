@@ -5,15 +5,6 @@ package legacy
 #include "GAME1_3.h"
 #include "GAME2.h"
 extern void* dword_5d4594_1309720;
-extern uint32_t dword_5d4594_1309728;
-extern uint32_t dword_5d4594_1309732;
-extern uint32_t dword_5d4594_1309736;
-extern uint32_t dword_5d4594_1309820;
-extern uint32_t dword_5d4594_1309824;
-extern uint32_t dword_5d4594_1309828;
-extern uint32_t dword_5d4594_1309832;
-extern uint32_t dword_5d4594_1309836;
-extern uint32_t nox_xxx_normalWndBits_587000_172880;
 */
 import "C"
 import (
@@ -39,23 +30,23 @@ func optionsWord(off int) *uint32 {
 	case 1309720:
 		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309720))
 	case 1309728:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309728))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1309728))
 	case 1309732:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309732))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1309732))
 	case 1309736:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309736))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1309736))
 	case 1309820:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309820))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1309820))
 	case 1309824:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309824))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1309824))
 	case 1309828:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309828))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1309828))
 	case 1309832:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309832))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1309832))
 	case 1309836:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309836))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1309836))
 	case 172880:
-		return (*uint32)(unsafe.Pointer(&C.nox_xxx_normalWndBits_587000_172880))
+		return (*uint32)(unsafe.Pointer(&nox_xxx_normalWndBits_587000_172880))
 	}
 	panic(off)
 }

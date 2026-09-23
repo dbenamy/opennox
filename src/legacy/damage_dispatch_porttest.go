@@ -6,7 +6,6 @@ package legacy
 #include <string.h>
 #include "GAME3_2.h"
 #include "GAME3_3.h"
-extern uint32_t dword_5d4594_1563320;
 static uint32_t damageEvents[2048];static int damageN,damageSet;static uint32_t damageOutput;
 static void damageReset(int set,uint32_t out){damageN=0;damageSet=set;damageOutput=out;}
 static void damageDefend(int m,int it,int u,int a,int w,int* data){
@@ -138,8 +137,8 @@ func (p *portTestShopPools) damagePrepare() func() {
 		old = append(old, *memmap.PtrUint32(0x5d4594, off))
 		*memmap.PtrUint32(0x5d4594, off) = 0
 	}
-	cached := C.dword_5d4594_1563320
-	C.dword_5d4594_1563320 = 0
+	cached := dword_5d4594_1563320
+	dword_5d4594_1563320 = 0
 	return func() {
 		for i, old := range oldNames {
 			*memmap.PtrPtr(0x587000, 200728+uintptr(i*4)) = old
@@ -147,7 +146,7 @@ func (p *portTestShopPools) damagePrepare() func() {
 		for i, off := range damageOffsets {
 			*memmap.PtrUint32(0x5d4594, off) = old[i]
 		}
-		C.dword_5d4594_1563320 = cached
+		dword_5d4594_1563320 = cached
 		copy(raw, oldRaw)
 	}
 }
@@ -205,5 +204,5 @@ func (p *portTestShopPools) damageSnapshot(out []uint32) []uint32 {
 	for _, off := range damageOffsets {
 		out = append(out, *memmap.PtrUint32(0x5d4594, off))
 	}
-	return append(out, uint32(C.dword_5d4594_1563320))
+	return append(out, uint32(dword_5d4594_1563320))
 }

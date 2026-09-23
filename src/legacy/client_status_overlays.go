@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-extern int nox_win_width;
-extern int nox_win_height;
-extern uint32_t nox_color_white_2523948;
-*/
-import "C"
 import (
 	"fmt"
 	noxcolor "github.com/opennox/libs/color"
@@ -41,12 +34,12 @@ func clientLoadingOverlay() {
 	uiMeterImage(*cache, image.Point{})
 	text := clientOverlayString("InProgress")
 	size := r.GetStringSizeWrapped(font, text, 0)
-	r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_white_2523948))
-	r.DrawString(font, text, image.Pt((int(C.nox_win_width)-size.X)/2, int(C.nox_win_height)/2))
+	r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_white_2523948))
+	r.DrawString(font, text, image.Pt((int(nox_win_width)-size.X)/2, int(nox_win_height)/2))
 }
 func clientWinnerOverlay() {
 	text := alloc.GoString16(memmap.PtrUint16(0x5D4594, 811376))
-	x, y := (int(C.nox_win_width)-310)/2, (int(C.nox_win_height)-200)/2
+	x, y := (int(nox_win_width)-310)/2, (int(nox_win_height)-200)/2
 	mode := memmap.Uint32(0x5D4594, 811060)
 	if mode > 1 {
 		return
@@ -60,7 +53,7 @@ func clientWinnerOverlay() {
 	r := GetClient().R2()
 	size := r.GetStringSizeWrapped(nil, text, 220)
 	lineY := y + (49-size.Y)/2 + 143
-	white := noxcolor.RGBA5551(C.nox_color_white_2523948)
+	white := noxcolor.RGBA5551(nox_color_white_2523948)
 	r.Data().SetColor2(white)
 	for _, line := range strings.FieldsFunc(text, func(c rune) bool { return c == '\n' || c == '\r' }) {
 		r.Data().SetTextColor(white)
@@ -73,7 +66,7 @@ func clientDebugOverlay() {
 	r := GetClient().R2()
 	height := r.FontHeight(nil)
 	origin := GetClient().Viewport().Screen.Min.Add(image.Pt(10, 90))
-	r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_white_2523948))
+	r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_white_2523948))
 	store := func(text string) string {
 		dst := unsafe.Slice(memmap.PtrUint16(0x5D4594, 811120), 80)
 		alloc.StrCopyZero16(dst, text)

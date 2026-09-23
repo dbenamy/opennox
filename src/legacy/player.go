@@ -12,8 +12,6 @@ package legacy
 #include "GAME4_1.h"
 #include "common__net_list.h"
 #include "defs.h"
-extern unsigned int dword_5d4594_2650652;
-extern unsigned int nox_player_netCode_85319C;
 void nox_xxx_WideScreenDo_515240(bool enable);
 
 */
@@ -175,11 +173,11 @@ func PrintToPlayers(text string) {
 }
 
 func ClientPlayerNetCode() int {
-	return int(C.nox_player_netCode_85319C)
+	return int(nox_player_netCode_85319C)
 }
 
 func ClientSetPlayerNetCode(id int) {
-	C.nox_player_netCode_85319C = C.uint(id)
+	nox_player_netCode_85319C = C.uint(id)
 }
 
 func Nox_xxx_playerForceDisconnect_4DE7C0(ind ntype.PlayerInd) {

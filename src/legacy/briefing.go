@@ -3,11 +3,6 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME2.h"
-extern uint32_t dword_5d4594_832476, dword_5d4594_832480, dword_5d4594_832484;
-extern uint32_t nox_wnd_briefing_831232;
-extern uint32_t dword_5d4594_832492, dword_5d4594_832496, dword_5d4594_832500, dword_5d4594_832504;
-extern uint32_t dword_5d4594_832508, dword_5d4594_832512, dword_5d4594_832516, dword_5d4594_832520;
-extern uint32_t dword_5d4594_832524, dword_5d4594_832528, dword_5d4594_832532, dword_5d4594_832536;
 */
 import "C"
 
@@ -96,23 +91,23 @@ func briefingLoadChapters() *uint16 {
 }
 func briefingSprites() []*uint32 {
 	return []*uint32{
-		(*uint32)(&C.dword_5d4594_832496),
-		(*uint32)(&C.dword_5d4594_832492),
-		(*uint32)(&C.dword_5d4594_832500),
-		(*uint32)(&C.dword_5d4594_832504),
-		(*uint32)(&C.dword_5d4594_832508),
-		(*uint32)(&C.dword_5d4594_832512),
-		(*uint32)(&C.dword_5d4594_832516),
-		(*uint32)(&C.dword_5d4594_832520),
-		(*uint32)(&C.dword_5d4594_832524),
-		(*uint32)(&C.dword_5d4594_832528),
-		(*uint32)(&C.dword_5d4594_832532),
-		(*uint32)(&C.dword_5d4594_832536),
+		(*uint32)(&dword_5d4594_832496),
+		(*uint32)(&dword_5d4594_832492),
+		(*uint32)(&dword_5d4594_832500),
+		(*uint32)(&dword_5d4594_832504),
+		(*uint32)(&dword_5d4594_832508),
+		(*uint32)(&dword_5d4594_832512),
+		(*uint32)(&dword_5d4594_832516),
+		(*uint32)(&dword_5d4594_832520),
+		(*uint32)(&dword_5d4594_832524),
+		(*uint32)(&dword_5d4594_832528),
+		(*uint32)(&dword_5d4594_832532),
+		(*uint32)(&dword_5d4594_832536),
 	}
 }
 func briefingInitSprites() *client.Drawable {
-	if C.dword_5d4594_832484 == 0 {
-		C.dword_5d4594_832484 = C.uint32_t(uintptr(GetClient().R2().GetFonts().FontPtrByName("default")))
+	if dword_5d4594_832484 == 0 {
+		dword_5d4594_832484 = C.uint32_t(uintptr(GetClient().R2().GetFonts().FontPtrByName("default")))
 	}
 	names := []string{"GauntletExitB", "BeholderGenerator", "Ankh", "SoulGate", "SilverKey", "GoldKey", "QuestGoldChest", "QuestGoldPile", "DunMirChest4", "WarHammer", "HastePotion", "ConjurerSpellBook"}
 	var dr *client.Drawable
@@ -164,8 +159,8 @@ func briefingWinReport(data unsafe.Pointer) int {
 	// The sender packs participating records. Sorting only the original count also
 	// preserves the captured bounded sparse-input behavior and stable equal scores.
 	sort.SliceStable(rows[:n], func(i, j int) bool { return briefingCompare(rows[i].Total, rows[j].Total) < 0 })
-	if C.dword_5d4594_832476 == 0 {
-		w := (*gui.Window)(unsafe.Pointer(uintptr(C.nox_wnd_briefing_831232))).ChildByID(1010)
+	if dword_5d4594_832476 == 0 {
+		w := (*gui.Window)(unsafe.Pointer(uintptr(nox_wnd_briefing_831232))).ChildByID(1010)
 		r := GetClient().R2()
 		font := r.GetFonts().AsFont(w.DrawData().FontPtr)
 		width := 0
@@ -177,12 +172,12 @@ func briefingWinReport(data unsafe.Pointer) int {
 		if width > 85 {
 			width = 85
 		}
-		C.dword_5d4594_832476 = C.uint32_t(width)
+		dword_5d4594_832476 = C.uint32_t(width)
 	}
 	return briefingShow(254, 1, 1)
 }
 func briefingSelection(data unsafe.Pointer, show int, instructions bool) int {
-	C.dword_5d4594_832480 = 0
+	dword_5d4594_832480 = 0
 	Nox_client_resetScreenParticles_431510()
 	Nox_xxx_bookHideMB_45ACA0(1)
 	Sub_446780()
@@ -202,7 +197,7 @@ func briefingSelection(data unsafe.Pointer, show int, instructions bool) int {
 	if instructions {
 		mode = 4
 	} else if b[4]&2 != 0 {
-		C.dword_5d4594_832480 = 1
+		dword_5d4594_832480 = 1
 	}
 	if show != 0 {
 		return briefingShow(254, 1, mode)

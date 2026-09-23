@@ -9,7 +9,6 @@ package legacy
 #include "GAME4_2.h"
 #include "GAME4_3.h"
 #include "GAME5.h"
-extern uint32_t dword_5d4594_2488652,dword_5d4594_2488656,dword_5d4594_2488660;
 */
 import "C"
 import (
@@ -71,7 +70,7 @@ func attackHit(t *server.Object, r *attackRecord) {
 		return
 	}
 	if t.Material != 0x4000 {
-		C.dword_5d4594_2488656 = 1
+		dword_5d4594_2488656 = 1
 	}
 	if attackRay(u.PosVec, t.PosVec, 5) == 0 {
 		return
@@ -102,7 +101,7 @@ func attackNearest(t, u *server.Object) {
 	if f&0x8049 != 0 || (t.ObjClass&6 == 0 && f&0x10 != 0 && f&0x80 == 0) || (t.ObjClass&6 != 0 && !GetServer().S().IsEnemyTo(u, t)) || !GetServer().S().CanInteract(u, t, 1) {
 		return
 	}
-	limit := math.Float32frombits(uint32(C.dword_5d4594_2488652))
+	limit := math.Float32frombits(uint32(dword_5d4594_2488652))
 	if !(limit > 0) {
 		return
 	}
@@ -130,28 +129,28 @@ func attackNearest(t, u *server.Object) {
 	if distance < 0 {
 		distance = 0
 	}
-	old := objectFromInt(C.int(C.dword_5d4594_2488660))
+	old := objectFromInt(C.int(dword_5d4594_2488660))
 	if (distance < float64(limit) || old != nil && old.ObjClass&2 == 0 && t.ObjClass&2 != 0) && (old == nil || old.ObjClass&2 == 0) {
-		C.dword_5d4594_2488652 = C.uint32_t(math.Float32bits(float32(distance)))
-		C.dword_5d4594_2488660 = C.uint32_t(uintptr(t.CObj()))
+		dword_5d4594_2488652 = C.uint32_t(math.Float32bits(float32(distance)))
+		dword_5d4594_2488660 = C.uint32_t(uintptr(t.CObj()))
 	}
 }
 func attackTrace(u *server.Object, r *attackRecord) int {
 	if u == nil || r == nil {
 		return 0
 	}
-	C.dword_5d4594_2488656 = 0
-	C.dword_5d4594_2488660 = 0
+	dword_5d4594_2488656 = 0
+	dword_5d4594_2488660 = 0
 	// This dependency includes shape extents; EachObjInCircle uses centers only.
 	extra := float64(0)
 	if r.Weapon != nil && r.Weapon.ObjSubClass&0x4000 != 0 {
 		motionRadial(&r.Pos, r.Radius, C.sub_538510, uint32(uintptr(unsafe.Pointer(r))))
 		extra = 25
 	} else {
-		C.dword_5d4594_2488652 = C.uint32_t(math.Float32bits(r.Radius))
+		dword_5d4594_2488652 = C.uint32_t(math.Float32bits(r.Radius))
 		motionRadial(&u.PosVec, r.Radius, C.sub_5386A0, motionAddress(u))
-		if C.dword_5d4594_2488660 != 0 {
-			attackHit(objectFromInt(C.int(C.dword_5d4594_2488660)), r)
+		if dword_5d4594_2488660 != 0 {
+			attackHit(objectFromInt(C.int(dword_5d4594_2488660)), r)
 		}
 	}
 	bounds := [4]int32{
@@ -165,12 +164,12 @@ func attackTrace(u *server.Object, r *attackRecord) int {
 		it = u
 	}
 	C.nox_xxx_mapDamageToWalls_534FC0((*C.int4)(unsafe.Pointer(&bounds)), unsafe.Pointer(&r.Pos), C.float(float32(extra+float64(r.Radius))), C.int(effectsTruncWord(float64(r.Damage)+0.5)), C.int(r.Type), it.CObj())
-	if r.Weapon != nil && C.dword_5d4594_2488656 != 0 {
+	if r.Weapon != nil && dword_5d4594_2488656 != 0 {
 		damage := float32(float64(C.nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamagePercentage"))) * float64(r.Damage))
-		target := C.int(C.dword_5d4594_2488660)
+		target := C.int(dword_5d4594_2488660)
 		damageDurability(r.Weapon, r.Owner, objectFromInt(target), objectFromInt(target), damage, int32(r.Type), true)
 	}
-	return int(C.dword_5d4594_2488656)
+	return int(dword_5d4594_2488656)
 }
 func attackWarcry(t, u *server.Object) int16 {
 	if u == nil {

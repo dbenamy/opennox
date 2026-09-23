@@ -3,8 +3,6 @@ package legacy
 /*
 #include "defs.h"
 int sub_4C1120(int,int,unsigned int);
-extern uint32_t dword_5d4594_1320940, dword_5d4594_1320944, dword_5d4594_1320948;
-extern uint32_t nox_color_white_2523948, nox_color_yellow_2589772;
 */
 import "C"
 import (
@@ -17,7 +15,7 @@ import (
 
 func uiTradeInit() int {
 	w := Nox_new_window_from_file("Trade.wnd", uiInventoryWindowEvent(uiTradePanel))
-	C.dword_5d4594_1320940 = C.uint32_t(uiInventoryPointer(w.C()))
+	dword_5d4594_1320940 = C.uint32_t(uiInventoryPointer(w.C()))
 	if w == nil {
 		return 0
 	}
@@ -59,12 +57,12 @@ func uiTradeDraw() int {
 	for _, off := range []uintptr{183696, 183704} {
 		draw(1320184, pos.Add(image.Pt(int(memmap.Int32(0x587000, off))-64, int(memmap.Int32(0x587000, off+4))-64)))
 	}
-	if C.dword_5d4594_1320944 != 0 {
+	if dword_5d4594_1320944 != 0 {
 		draw(1320172, pos)
 	} else if w.ChildByID(3708).DrawData().Field0&4 != 0 {
 		draw(1320168, pos)
 	}
-	if C.dword_5d4594_1320948 != 0 {
+	if dword_5d4594_1320948 != 0 {
 		draw(1320176, pos)
 	}
 	if memmap.Uint32(0x5D4594, 1320960) != 0 || w.ChildByID(3710).DrawData().Field0&4 != 0 {
@@ -82,9 +80,9 @@ func uiTradeDraw() int {
 			p := origin.Add(image.Pt((i/2)*50, (i%2)*50))
 			c.Drawable.PosVec = p.Add(image.Pt(25, 25))
 			c.Drawable.CallDraw((*noxrender.Viewport)(memmap.PtrOff(0x5D4594, 1320188)))
-			nox_xxx_drawSetTextColor_434390(int(C.nox_color_white_2523948))
+			nox_xxx_drawSetTextColor_434390(int(nox_color_white_2523948))
 			GetClient().R2().DrawString(GetClient().R2().GetFonts().AsFont(nil), fmt.Sprint(int32(c.Count)), p.Add(image.Pt(5, 5)))
-			nox_xxx_drawSetTextColor_434390(int(C.nox_color_yellow_2589772))
+			nox_xxx_drawSetTextColor_434390(int(nox_color_yellow_2589772))
 			GetClient().R2().DrawString(GetClient().R2().GetFonts().AsFont(nil), fmt.Sprint(int32(c.Value)), p.Add(image.Pt(5, 50-height-5)))
 		}
 	}

@@ -5,9 +5,6 @@ package legacy
 #include "GAME4_1.h"
 extern void* nox_alloc_spawn_2386216;
 extern void* nox_alloc_monsterList_2386220;
-extern uint32_t dword_5d4594_2386212;
-extern uint32_t dword_5d4594_2386224;
-extern uint32_t dword_5d4594_2386228;
 */
 import "C"
 
@@ -47,10 +44,10 @@ func spawnPolicyMonsterListClass() *alloc.Class {
 	return alloc.AsClass(unsafe.Pointer(C.nox_alloc_monsterList_2386220))
 }
 func spawnPolicyHead() *spawnPolicyNode {
-	return (*spawnPolicyNode)(unsafe.Pointer(uintptr(C.dword_5d4594_2386212)))
+	return (*spawnPolicyNode)(unsafe.Pointer(uintptr(dword_5d4594_2386212)))
 }
 func spawnPolicySetHead(p *spawnPolicyNode) {
-	C.dword_5d4594_2386212 = C.uint32_t(uintptr(unsafe.Pointer(p)))
+	dword_5d4594_2386212 = C.uint32_t(uintptr(unsafe.Pointer(p)))
 }
 
 // spawnPolicyInit is 50D780. It intentionally leaves an already-created
@@ -61,15 +58,15 @@ func spawnPolicyInit() int {
 	if spawn == nil {
 		return 0
 	}
-	C.dword_5d4594_2386212 = 0
+	dword_5d4594_2386212 = 0
 
 	list := alloc.NewClass("MonsterListClass", unsafe.Sizeof(spawnPolicyMonsterListNode{}), 96)
 	C.nox_alloc_monsterList_2386220 = list.UPtr()
 	if list == nil {
 		return 0
 	}
-	C.dword_5d4594_2386224 = 0
-	C.dword_5d4594_2386228 = 0
+	dword_5d4594_2386224 = 0
+	dword_5d4594_2386228 = 0
 	return 1
 }
 
@@ -77,21 +74,21 @@ func spawnPolicyInit() int {
 // and clears their heads/count, while retaining the classes themselves.
 func spawnPolicyReset() {
 	spawnPolicySpawnClass().FreeAllObjects()
-	C.dword_5d4594_2386212 = 0
+	dword_5d4594_2386212 = 0
 	spawnPolicyMonsterListClass().FreeAllObjects()
-	C.dword_5d4594_2386224 = 0
-	C.dword_5d4594_2386228 = 0
+	dword_5d4594_2386224 = 0
+	dword_5d4594_2386228 = 0
 }
 
 // spawnPolicyFree releases both classes and clears their globals.
 func spawnPolicyFree() {
 	spawnPolicySpawnClass().Free()
 	C.nox_alloc_spawn_2386216 = nil
-	C.dword_5d4594_2386212 = 0
+	dword_5d4594_2386212 = 0
 	spawnPolicyMonsterListClass().Free()
 	C.nox_alloc_monsterList_2386220 = nil
-	C.dword_5d4594_2386224 = 0
-	C.dword_5d4594_2386228 = 0
+	dword_5d4594_2386224 = 0
+	dword_5d4594_2386228 = 0
 }
 
 func spawnPolicyLink(n *spawnPolicyNode) {

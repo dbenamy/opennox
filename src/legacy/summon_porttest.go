@@ -6,17 +6,6 @@ package legacy
 #include "defs.h"
 #include "GAME3_1.h"
 #include "client__gui__guisumn.h"
-extern uint32_t dword_5d4594_1320988;
-extern uint32_t dword_5d4594_1320992;
-extern uint32_t dword_5d4594_1321024;
-extern uint32_t dword_5d4594_1321032;
-extern uint32_t dword_5d4594_1321036;
-extern uint32_t dword_5d4594_1321040;
-extern uint32_t dword_5d4594_1321044;
-extern uint32_t dword_5d4594_1321196;
-extern uint32_t dword_5d4594_1321204;
-extern uint32_t dword_5d4594_1321208;
-extern uint32_t nox_xxx_screenWidth_587000_184452;
 */
 import "C"
 import (
@@ -110,17 +99,17 @@ func PortTestSummonInvoke(op string, a [5]uint32) uint32 {
 
 func PortTestSummonWords() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
-		"dword_5d4594_1320988":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1320988)),
-		"dword_5d4594_1320992":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1320992)),
-		"dword_5d4594_1321024":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321024)),
-		"dword_5d4594_1321032":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321032)),
-		"dword_5d4594_1321036":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321036)),
-		"dword_5d4594_1321040":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321040)),
-		"dword_5d4594_1321044":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321044)),
-		"dword_5d4594_1321196":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321196)),
-		"dword_5d4594_1321204":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321204)),
-		"dword_5d4594_1321208":              (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321208)),
-		"nox_xxx_screenWidth_587000_184452": (*uint32)(unsafe.Pointer(&C.nox_xxx_screenWidth_587000_184452)),
+		"dword_5d4594_1320988":              (*uint32)(unsafe.Pointer(&dword_5d4594_1320988)),
+		"dword_5d4594_1320992":              (*uint32)(unsafe.Pointer(&dword_5d4594_1320992)),
+		"dword_5d4594_1321024":              (*uint32)(unsafe.Pointer(&dword_5d4594_1321024)),
+		"dword_5d4594_1321032":              (*uint32)(unsafe.Pointer(&dword_5d4594_1321032)),
+		"dword_5d4594_1321036":              (*uint32)(unsafe.Pointer(&dword_5d4594_1321036)),
+		"dword_5d4594_1321040":              (*uint32)(unsafe.Pointer(&dword_5d4594_1321040)),
+		"dword_5d4594_1321044":              (*uint32)(unsafe.Pointer(&dword_5d4594_1321044)),
+		"dword_5d4594_1321196":              (*uint32)(unsafe.Pointer(&dword_5d4594_1321196)),
+		"dword_5d4594_1321204":              (*uint32)(unsafe.Pointer(&dword_5d4594_1321204)),
+		"dword_5d4594_1321208":              (*uint32)(unsafe.Pointer(&dword_5d4594_1321208)),
+		"nox_xxx_screenWidth_587000_184452": (*uint32)(unsafe.Pointer(&nox_xxx_screenWidth_587000_184452)),
 	}
 	old := make(map[string]uint32, len(words))
 	for name, p := range words {

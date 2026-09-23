@@ -3,11 +3,6 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME1_1.h"
-extern uint32_t dword_5d4594_1321520;
-extern uint32_t dword_8531A0_2572;
-extern uint32_t nox_color_blue_2650684;
-extern uint32_t nox_color_white_2523948;
-extern int nox_win_width;
 */
 import "C"
 import (
@@ -67,8 +62,8 @@ func objectRenderTeam(id int) *server.ObjectTeam {
 	return teamRuntimeObject(id)
 }
 func objectRenderDraw(vp *noxrender.Viewport, dr *client.Drawable, img noxrender.ImageHandle) {
-	if C.dword_5d4594_1321520 == 0 {
-		C.dword_5d4594_1321520 = C.uint32_t(effectType("Ghost"))
+	if dword_5d4594_1321520 == 0 {
+		dword_5d4594_1321520 = C.uint32_t(effectType("Ghost"))
 	}
 	sameTeam, targetObserver := false, false
 	if dr.ObjClass&4 != 0 {
@@ -109,7 +104,7 @@ func objectRenderDraw(vp *noxrender.Viewport, dr *client.Drawable, img noxrender
 		}
 		// Preserve the original acceptance decision. Returned horizontal bounds were
 		// not applied by C, including accepted short paths with empty scanline spans.
-		minX, maxX := 0, int(C.nox_win_width)
+		minX, maxX := 0, int(nox_win_width)
 		if GetClient().Sub4C42A0(a, b, &minX, &maxX) == 0 {
 			return
 		}
@@ -132,12 +127,12 @@ func objectRenderDraw(vp *noxrender.Viewport, dr *client.Drawable, img noxrender
 	r := GetClient().R2()
 	d := r.Data()
 	if dr.HasEnchant(25) || dr.ObjClass&2 != 0 && dr.ObjFlags&0x40000000 != 0 && dr.ObjFlags&0x8020 == 0 {
-		objectRenderTint(uint32(C.nox_color_blue_2650684))
+		objectRenderTint(uint32(nox_color_blue_2650684))
 	} else {
 		d.SetMultiply14(1)
 		r.SetColorMultAndIntensityRGB(byte(light[0]), byte(light[1]), byte(light[2]))
 	}
-	ghost := dr.TypeIDVal == uint32(C.dword_5d4594_1321520)
+	ghost := dr.TypeIDVal == uint32(dword_5d4594_1321520)
 	alpha := func(v byte) { d.SetAlphaEnabled(true); d.SetAlpha(v) }
 	if dr.Field_120 != 0 {
 		factor := 1 - float64(gameFrame()-dr.Field_85)/float64(int32(gameFPS()))
@@ -185,7 +180,7 @@ func objectRenderDraw(vp *noxrender.Viewport, dr *client.Drawable, img noxrender
 				speed = int(math.Sqrt(float64(dx*dx+dy*dy))) / elapsed
 			}
 			if local != nil && !targetObserver && !sameTeam && see {
-				objectRenderTint(uint32(C.dword_8531A0_2572))
+				objectRenderTint(uint32(dword_8531A0_2572))
 				alpha(255)
 			} else {
 				value := byte(128)
@@ -196,7 +191,7 @@ func objectRenderDraw(vp *noxrender.Viewport, dr *client.Drawable, img noxrender
 					}
 				}
 				if sameTeam && value <= 1 && (dr.ObjClass&2 != 0 && dr.AnimInd == 8 || dr.ObjClass&4 != 0 && dr.AnimInd == 0) {
-					objectRenderTint(uint32(C.dword_8531A0_2572))
+					objectRenderTint(uint32(dword_8531A0_2572))
 					value = 128
 				}
 				alpha(value)
@@ -204,9 +199,9 @@ func objectRenderDraw(vp *noxrender.Viewport, dr *client.Drawable, img noxrender
 		}
 	}
 	if dr.ObjClass&4 == 0 && dr.HasEnchant(23) && !noxflags.HasGame(noxflags.GameFlag(2048)) {
-		color := uint32(C.nox_color_blue_2650684)
+		color := uint32(nox_color_blue_2650684)
 		if byte(gameFrame())&1 != 0 {
-			color = uint32(C.nox_color_white_2523948)
+			color = uint32(nox_color_white_2523948)
 		}
 		objectRenderTint(color)
 	}

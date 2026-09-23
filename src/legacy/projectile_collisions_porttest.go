@@ -5,7 +5,6 @@ package legacy
 /*
 #include "GAME3_3.h"
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_1567928, dword_5d4594_2488620;
 static void* projectileCollisionFunction(int id){switch(id){
 case 0: return (void*)nox_xxx_collideProjectileGeneric_4E87B0;
 case 1: return (void*)nox_xxx_collideProjectileSpark_4E8880;
@@ -100,17 +99,17 @@ func (p *portTestShopPools) projectileCollisionPrepare() func() {
 		old = append(old, *memmap.PtrUint32(0x5d4594, off))
 		*memmap.PtrUint32(0x5d4594, off) = 0
 	}
-	oldTarget, oldContact := C.dword_5d4594_1567928, C.dword_5d4594_2488620
-	C.dword_5d4594_1567928 = 0
-	C.dword_5d4594_2488620 = C.uint32_t(bool2int(sp.WallContact))
+	oldTarget, oldContact := dword_5d4594_1567928, dword_5d4594_2488620
+	dword_5d4594_1567928 = 0
+	dword_5d4594_2488620 = C.uint32_t(bool2int(sp.WallContact))
 	*memmap.PtrUint32(0x5d4594, 2488612) = uint32(sp.WallXY[0])
 	*memmap.PtrUint32(0x5d4594, 2488616) = uint32(sp.WallXY[1])
 	return func() {
 		for i, off := range projectileCollisionOffsets {
 			*memmap.PtrUint32(0x5d4594, off) = old[i]
 		}
-		C.dword_5d4594_1567928 = oldTarget
-		C.dword_5d4594_2488620 = oldContact
+		dword_5d4594_1567928 = oldTarget
+		dword_5d4594_2488620 = oldContact
 	}
 }
 
@@ -178,5 +177,5 @@ func (p *portTestShopPools) projectileCollisionSnapshot(out []uint32) []uint32 {
 	if n := p.temporary.world.objectives.attack.collisionNormal; n != nil {
 		out = append(out, unsafe.Slice((*uint32)(n), 2)...)
 	}
-	return append(out, p.normalize(uint32(C.dword_5d4594_1567928)), uint32(C.dword_5d4594_2488620))
+	return append(out, p.normalize(uint32(dword_5d4594_1567928)), uint32(dword_5d4594_2488620))
 }

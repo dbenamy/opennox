@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-extern uint64_t qword_5d4594_1567940;
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -17,7 +11,7 @@ import (
 
 // Preserve the legacy platform adapter's uint32 result before the uint64 clock math.
 func worldCollideTicks() uint64  { return uint64(uint32(PlatformTicks())) }
-func worldCollideClock() *uint64 { return (*uint64)(unsafe.Pointer(&C.qword_5d4594_1567940)) }
+func worldCollideClock() *uint64 { return (*uint64)(unsafe.Pointer(&qword_5d4594_1567940)) }
 func worldCollideDoor(a, b *server.Object) {
 	d := a.UpdateData
 	if b == nil || *equipmentWord(d, 12) != *equipmentWord(d, 4) {

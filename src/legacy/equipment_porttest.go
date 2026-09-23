@@ -10,10 +10,6 @@ package legacy
 #include "GAME4.h"
 #include "GAME4_3.h"
 #include "MixPatch.h"
-extern unsigned int gameex_flags;
-extern int nox_cheat_allowall;
-extern uint64_t qword_581450_9512;
-extern uint32_t dword_5d4594_2488728;
 static uint32_t eqTrace[4097],eqReturn[4],eqOutput[4];
 static uint32_t* eqTracePtr(void){return eqTrace;}
 static void eqReset(void){memset(eqTrace,0,sizeof(eqTrace));}
@@ -128,10 +124,10 @@ func (p *portTestShopPools) equipmentPrepare() func() {
 	p.identify(C.eqEngagePtr(), 65000)
 	p.identify(C.eqDisengagePtr(), 65001)
 	p.identify(C.eqDefendPtr(), 65002)
-	oldGameEx, oldCheat, oldThreshold := C.gameex_flags, C.nox_cheat_allowall, C.qword_581450_9512
-	C.gameex_flags = C.uint(sp.GameEx)
-	C.nox_cheat_allowall = C.int(bool2int(sp.Cheat))
-	C.qword_581450_9512 = C.uint64_t(sp.Threshold)
+	oldGameEx, oldCheat, oldThreshold := gameex_flags, nox_cheat_allowall, qword_581450_9512
+	gameex_flags = C.uint(sp.GameEx)
+	nox_cheat_allowall = C.int(bool2int(sp.Cheat))
+	qword_581450_9512 = C.uint64_t(sp.Threshold)
 	core := p.proxy.core
 	oldWeapon, oldArmor := core.Modif.Dword_5d4594_251600, core.Modif.Dword_5d4594_251608
 	core.Modif.Dword_5d4594_251600, core.Modif.Dword_5d4594_251608 = nil, nil
@@ -184,7 +180,7 @@ func (p *portTestShopPools) equipmentPrepare() func() {
 		panic("equipment drop table capacity")
 	}
 	if sp.ColdTable {
-		C.dword_5d4594_2488728 = 0
+		dword_5d4594_2488728 = 0
 	}
 	if sp.TableNames != nil {
 		table := unsafe.Slice(memmap.PtrUint32(0x587000, 279432), 48)
@@ -200,7 +196,7 @@ func (p *portTestShopPools) equipmentPrepare() func() {
 		}
 	}
 	return func() {
-		C.gameex_flags, C.nox_cheat_allowall, C.qword_581450_9512 = oldGameEx, oldCheat, oldThreshold
+		gameex_flags, nox_cheat_allowall, qword_581450_9512 = oldGameEx, oldCheat, oldThreshold
 		core.Modif.Dword_5d4594_251600, core.Modif.Dword_5d4594_251608 = oldWeapon, oldArmor
 		core.Abils.ByUnit = oldAbilities
 		for _, free := range p.equipment.frees {
@@ -283,7 +279,7 @@ func (p *portTestShopPools) equipmentSnapshot() []uint32 {
 		return nil
 	}
 	s := p.equipment
-	out := []uint32{p.normalize(uint32(s.result)), uint32(s.result >> 32), uint32(C.gameex_flags), uint32(C.nox_cheat_allowall), uint32(C.qword_581450_9512), uint32(C.qword_581450_9512 >> 32)}
+	out := []uint32{p.normalize(uint32(s.result)), uint32(s.result >> 32), uint32(gameex_flags), uint32(nox_cheat_allowall), uint32(qword_581450_9512), uint32(qword_581450_9512 >> 32)}
 	trace := unsafe.Slice((*uint32)(unsafe.Pointer(C.eqTracePtr())), 4097)
 	if trace[0] > 680 {
 		panic("equipment callback trace overflow")

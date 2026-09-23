@@ -1,0 +1,674 @@
+{
+  "status": "qualified numeric global ownership conversion",
+  "baseline_revision": "bc90690c",
+  "baseline": "scalar-storage-c-qualification.json",
+  "migrated_owners": 343,
+  "unused_definitions_removed": 9,
+  "retired_c_storage_symbols": [
+    "dword_587000_122856",
+    "dword_587000_122956",
+    "dword_587000_136184",
+    "dword_587000_145664",
+    "dword_587000_145668",
+    "dword_587000_145672",
+    "dword_587000_180476",
+    "dword_587000_180480",
+    "dword_587000_183456",
+    "dword_587000_183460",
+    "dword_587000_234176",
+    "dword_587000_261388",
+    "dword_587000_93160",
+    "dword_5d4594_1045636",
+    "dword_5d4594_1046636",
+    "dword_5d4594_1046640",
+    "dword_5d4594_1046648",
+    "dword_5d4594_1046652",
+    "dword_5d4594_1046656",
+    "dword_5d4594_1046852",
+    "dword_5d4594_1046864",
+    "dword_5d4594_1046868",
+    "dword_5d4594_1046872",
+    "dword_5d4594_1046924",
+    "dword_5d4594_1046928",
+    "dword_5d4594_1046932",
+    "dword_5d4594_1046936",
+    "dword_5d4594_1046944",
+    "dword_5d4594_1046948",
+    "dword_5d4594_1046952",
+    "dword_5d4594_1046956",
+    "dword_5d4594_1047512",
+    "dword_5d4594_1047516",
+    "dword_5d4594_1047520",
+    "dword_5d4594_1047524",
+    "dword_5d4594_1047528",
+    "dword_5d4594_1047532",
+    "dword_5d4594_1047536",
+    "dword_5d4594_1047540",
+    "dword_5d4594_1047548",
+    "dword_5d4594_1047552",
+    "dword_5d4594_1047932",
+    "dword_5d4594_1047936",
+    "dword_5d4594_1049484",
+    "dword_5d4594_1049496",
+    "dword_5d4594_1049500",
+    "dword_5d4594_1049504",
+    "dword_5d4594_1049508",
+    "dword_5d4594_1049512",
+    "dword_5d4594_1049516",
+    "dword_5d4594_1049520",
+    "dword_5d4594_1049524",
+    "dword_5d4594_1049532",
+    "dword_5d4594_1049536",
+    "dword_5d4594_1049692",
+    "dword_5d4594_1049696",
+    "dword_5d4594_1049796_inventory_click_column_index",
+    "dword_5d4594_1049800_inventory_click_row_index",
+    "dword_5d4594_1049804",
+    "dword_5d4594_1049808",
+    "dword_5d4594_1049844",
+    "dword_5d4594_1049856",
+    "dword_5d4594_1049864",
+    "dword_5d4594_1049976",
+    "dword_5d4594_1049992",
+    "dword_5d4594_1049996",
+    "dword_5d4594_1050008",
+    "dword_5d4594_1062456",
+    "dword_5d4594_1062468",
+    "dword_5d4594_1062476",
+    "dword_5d4594_1062480",
+    "dword_5d4594_1062484",
+    "dword_5d4594_1062488",
+    "dword_5d4594_1062492",
+    "dword_5d4594_1062496",
+    "dword_5d4594_1062508",
+    "dword_5d4594_1062512",
+    "dword_5d4594_1062516",
+    "dword_5d4594_1062520",
+    "dword_5d4594_1062524",
+    "dword_5d4594_1062528",
+    "dword_5d4594_1062552",
+    "dword_5d4594_1062556",
+    "dword_5d4594_1062560",
+    "dword_5d4594_1062564",
+    "dword_5d4594_1063116",
+    "dword_5d4594_1063120",
+    "dword_5d4594_1063636",
+    "dword_5d4594_1090040",
+    "dword_5d4594_1090044",
+    "dword_5d4594_1090108",
+    "dword_5d4594_1090112",
+    "dword_5d4594_1090120",
+    "dword_5d4594_1090276",
+    "dword_5d4594_1090280",
+    "dword_5d4594_1090284",
+    "dword_5d4594_1090292",
+    "dword_5d4594_1090828",
+    "dword_5d4594_1091364",
+    "dword_5d4594_1096252",
+    "dword_5d4594_1096256",
+    "dword_5d4594_1096260",
+    "dword_5d4594_1096264",
+    "dword_5d4594_1096272",
+    "dword_5d4594_1096276",
+    "dword_5d4594_1096280",
+    "dword_5d4594_1096284",
+    "dword_5d4594_1096288",
+    "dword_5d4594_1098456",
+    "dword_5d4594_1098576",
+    "dword_5d4594_1098580",
+    "dword_5d4594_1098592",
+    "dword_5d4594_1098596",
+    "dword_5d4594_1098600",
+    "dword_5d4594_1098604",
+    "dword_5d4594_1098616",
+    "dword_5d4594_1098620",
+    "dword_5d4594_1098624",
+    "dword_5d4594_1098628",
+    "dword_5d4594_1107036",
+    "dword_5d4594_1193156",
+    "dword_5d4594_1193188",
+    "dword_5d4594_1197352",
+    "dword_5d4594_1197356",
+    "dword_5d4594_1200768",
+    "dword_5d4594_1200832",
+    "dword_5d4594_1301796",
+    "dword_5d4594_1301808",
+    "dword_5d4594_1301812",
+    "dword_5d4594_1301816",
+    "dword_5d4594_1304328",
+    "dword_5d4594_1305748",
+    "dword_5d4594_1309728",
+    "dword_5d4594_1309732",
+    "dword_5d4594_1309736",
+    "dword_5d4594_1309820",
+    "dword_5d4594_1309824",
+    "dword_5d4594_1309828",
+    "dword_5d4594_1309832",
+    "dword_5d4594_1309836",
+    "dword_5d4594_1313532",
+    "dword_5d4594_1313536",
+    "dword_5d4594_1313540",
+    "dword_5d4594_1313564",
+    "dword_5d4594_1313692",
+    "dword_5d4594_1313804",
+    "dword_5d4594_1313816",
+    "dword_5d4594_1313880",
+    "dword_5d4594_1316408",
+    "dword_5d4594_1316412",
+    "dword_5d4594_1316436",
+    "dword_5d4594_1316448",
+    "dword_5d4594_1316452",
+    "dword_5d4594_1316456",
+    "dword_5d4594_1316472",
+    "dword_5d4594_1316476",
+    "dword_5d4594_1316484",
+    "dword_5d4594_1316492",
+    "dword_5d4594_1319232",
+    "dword_5d4594_1319236",
+    "dword_5d4594_1319248",
+    "dword_5d4594_1319260",
+    "dword_5d4594_1319264",
+    "dword_5d4594_1319268",
+    "dword_5d4594_1320932",
+    "dword_5d4594_1320936",
+    "dword_5d4594_1320940",
+    "dword_5d4594_1320944",
+    "dword_5d4594_1320948",
+    "dword_5d4594_1320964",
+    "dword_5d4594_1320968",
+    "dword_5d4594_1320972",
+    "dword_5d4594_1320988",
+    "dword_5d4594_1320992",
+    "dword_5d4594_1321024",
+    "dword_5d4594_1321032",
+    "dword_5d4594_1321036",
+    "dword_5d4594_1321040",
+    "dword_5d4594_1321044",
+    "dword_5d4594_1321196",
+    "dword_5d4594_1321204",
+    "dword_5d4594_1321208",
+    "dword_5d4594_1321224",
+    "dword_5d4594_1321228",
+    "dword_5d4594_1321232",
+    "dword_5d4594_1321252",
+    "dword_5d4594_1321520",
+    "dword_5d4594_1321800",
+    "dword_5d4594_1522604",
+    "dword_5d4594_1522612",
+    "dword_5d4594_1522632",
+    "dword_5d4594_1522956",
+    "dword_5d4594_1522968",
+    "dword_5d4594_1548476",
+    "dword_5d4594_1548480",
+    "dword_5d4594_1548524",
+    "dword_5d4594_1556128",
+    "dword_5d4594_1556136",
+    "dword_5d4594_1556144",
+    "dword_5d4594_1563320",
+    "dword_5d4594_1565512",
+    "dword_5d4594_1565516",
+    "dword_5d4594_1565520",
+    "dword_5d4594_1565616",
+    "dword_5d4594_1565628",
+    "dword_5d4594_1565632",
+    "dword_5d4594_1567928",
+    "dword_5d4594_1567960",
+    "dword_5d4594_1567988",
+    "dword_5d4594_1568280",
+    "dword_5d4594_1568288",
+    "dword_5d4594_1568308",
+    "dword_5d4594_1568868",
+    "dword_5d4594_1569672",
+    "dword_5d4594_1599708",
+    "dword_5d4594_2386212",
+    "dword_5d4594_2386224",
+    "dword_5d4594_2386228",
+    "dword_5d4594_2386500",
+    "dword_5d4594_2386548",
+    "dword_5d4594_2386552",
+    "dword_5d4594_2386560",
+    "dword_5d4594_2487524",
+    "dword_5d4594_2487708",
+    "dword_5d4594_2487712",
+    "dword_5d4594_2487804",
+    "dword_5d4594_2487948",
+    "dword_5d4594_2488620",
+    "dword_5d4594_2488652",
+    "dword_5d4594_2488656",
+    "dword_5d4594_2488660",
+    "dword_5d4594_2488720",
+    "dword_5d4594_2488724",
+    "dword_5d4594_2488728",
+    "dword_5d4594_2489160",
+    "dword_5d4594_2489460",
+    "dword_5d4594_2490504",
+    "dword_5d4594_2491580",
+    "dword_5d4594_2491588",
+    "dword_5d4594_2491676",
+    "dword_5d4594_2491704",
+    "dword_5d4594_2491716",
+    "dword_5d4594_2516328",
+    "dword_5d4594_2516344",
+    "dword_5d4594_2516348",
+    "dword_5d4594_2516352",
+    "dword_5d4594_2516356",
+    "dword_5d4594_251708",
+    "dword_5d4594_251712",
+    "dword_5d4594_251716",
+    "dword_5d4594_251720",
+    "dword_5d4594_251744",
+    "dword_5d4594_2523776",
+    "dword_5d4594_2523780",
+    "dword_5d4594_2523804",
+    "dword_5d4594_2649712",
+    "dword_5d4594_2650652",
+    "dword_5d4594_2650676",
+    "dword_5d4594_2650680",
+    "dword_5d4594_2660032",
+    "dword_5d4594_3484",
+    "dword_5d4594_3798800",
+    "dword_5d4594_3798804",
+    "dword_5d4594_3798808",
+    "dword_5d4594_3798812",
+    "dword_5d4594_3798816",
+    "dword_5d4594_3798820",
+    "dword_5d4594_3798824",
+    "dword_5d4594_3798828",
+    "dword_5d4594_3798832",
+    "dword_5d4594_3798836",
+    "dword_5d4594_3798840",
+    "dword_5d4594_3799452",
+    "dword_5d4594_3804684",
+    "dword_5d4594_3807116",
+    "dword_5d4594_3807136",
+    "dword_5d4594_3807140",
+    "dword_5d4594_3807152",
+    "dword_5d4594_527656",
+    "dword_5d4594_815748",
+    "dword_5d4594_816340",
+    "dword_5d4594_816348",
+    "dword_5d4594_816356",
+    "dword_5d4594_816364",
+    "dword_5d4594_816412",
+    "dword_5d4594_816444",
+    "dword_5d4594_823776",
+    "dword_5d4594_830272",
+    "dword_5d4594_830864",
+    "dword_5d4594_831076",
+    "dword_5d4594_831084",
+    "dword_5d4594_831220",
+    "dword_5d4594_831224",
+    "dword_5d4594_831240",
+    "dword_5d4594_831244",
+    "dword_5d4594_831256",
+    "dword_5d4594_831260",
+    "dword_5d4594_831276",
+    "dword_5d4594_832476",
+    "dword_5d4594_832480",
+    "dword_5d4594_832484",
+    "dword_5d4594_832492",
+    "dword_5d4594_832496",
+    "dword_5d4594_832500",
+    "dword_5d4594_832504",
+    "dword_5d4594_832508",
+    "dword_5d4594_832512",
+    "dword_5d4594_832516",
+    "dword_5d4594_832520",
+    "dword_5d4594_832524",
+    "dword_5d4594_832528",
+    "dword_5d4594_832532",
+    "dword_5d4594_832536",
+    "dword_8531A0_2572",
+    "dword_8531A0_2576",
+    "gameex_flags",
+    "nox_cheat_allowall",
+    "nox_client_gui_flag_1556112",
+    "nox_client_highResFloors_154952",
+    "nox_client_highResFrontWalls_80820",
+    "nox_client_renderBubbles_80844",
+    "nox_client_translucentFrontWalls_805844",
+    "nox_color_black_2650656",
+    "nox_color_blue_2650684",
+    "nox_color_cyan_2649820",
+    "nox_color_green_2614268",
+    "nox_color_orange_2614256",
+    "nox_color_red_2589776",
+    "nox_color_violet_2598268",
+    "nox_color_white_2523948",
+    "nox_color_yellow_2589772",
+    "nox_gameDisableMapDraw_5d4594_2650672",
+    "nox_player_netCode_85319C",
+    "nox_server_connectionType_3596",
+    "nox_server_sanctuaryHelp_54276",
+    "nox_server_sendMotd_108752",
+    "nox_win_height",
+    "nox_win_width",
+    "nox_wnd_briefing_831232",
+    "nox_xxx_aNox_cfg_0_587000_132132",
+    "nox_xxx_aNox_cfg_0_587000_132136",
+    "nox_xxx_aSpellphoneme_3_587000_123008",
+    "nox_xxx_lightningSteps_587000_178216",
+    "nox_xxx_normalWndBits_587000_172880",
+    "nox_xxx_screenWidth_587000_184452",
+    "nox_xxx_waypointCounterMB_587000_154948",
+    "qword_581450_10176",
+    "qword_581450_10256",
+    "qword_581450_9512",
+    "qword_581450_9544",
+    "qword_581450_9552",
+    "qword_5d4594_1567940"
+  ],
+  "targets": {
+    "default1": {
+      "roots": 2291,
+      "shards": [
+        {
+          "shard": "consumers-01",
+          "roots": 198
+        },
+        {
+          "shard": "consumers-02",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-03",
+          "roots": 199
+        },
+        {
+          "shard": "consumers-04",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-05",
+          "roots": 199
+        },
+        {
+          "shard": "consumers-06",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-07",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-08",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-09",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-10",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-11",
+          "roots": 199
+        },
+        {
+          "shard": "consumers-12",
+          "roots": 96
+        }
+      ],
+      "storage_contract_roots": 1,
+      "storage_cases": 47677,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 1170.546541782096
+    },
+    "server": {
+      "roots": 2280,
+      "shards": [
+        {
+          "shard": "consumers-01",
+          "roots": 198
+        },
+        {
+          "shard": "consumers-02",
+          "roots": 196
+        },
+        {
+          "shard": "consumers-03",
+          "roots": 194
+        },
+        {
+          "shard": "consumers-04",
+          "roots": 199
+        },
+        {
+          "shard": "consumers-05",
+          "roots": 199
+        },
+        {
+          "shard": "consumers-06",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-07",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-08",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-09",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-10",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-11",
+          "roots": 199
+        },
+        {
+          "shard": "consumers-12",
+          "roots": 95
+        }
+      ],
+      "storage_contract_roots": 1,
+      "storage_cases": 47677,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 1127.5807605709415
+    },
+    "highres": {
+      "roots": 2291,
+      "shards": [
+        {
+          "shard": "consumers-01",
+          "roots": 198
+        },
+        {
+          "shard": "consumers-02",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-03",
+          "roots": 199
+        },
+        {
+          "shard": "consumers-04",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-05",
+          "roots": 199
+        },
+        {
+          "shard": "consumers-06",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-07",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-08",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-09",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-10",
+          "roots": 200
+        },
+        {
+          "shard": "consumers-11",
+          "roots": 199
+        },
+        {
+          "shard": "consumers-12",
+          "roots": 96
+        }
+      ],
+      "storage_contract_roots": 1,
+      "storage_cases": 47677,
+      "skips": 0,
+      "static": true,
+      "wall_seconds": 1071.4720397940837
+    }
+  },
+  "capture_sha256": "74032534526a97d553c2e3f3267d5e05f9ae527321666d3e00e20351c909b81f",
+  "safe": {
+    "build": true,
+    "retired_symbols_absent": true,
+    "retained": [
+      "nox_malloc",
+      "nox_free",
+      "nox_memset",
+      "nox_memcpy_go"
+    ],
+    "sha256": "8a5e3434a72f0499ae0b15e2976ce4324e56aefc8313327fcf1932fd31d69334",
+    "runtime_tested": false
+  },
+  "source_manifest_sha256": "6346713f0a3eceffe3517f406f13ff78372d0d00155a13ac7be2c2834f357745",
+  "production_c": {
+    "files": 6,
+    "lines": 166,
+    "change": -352,
+    "test_reference_lines": 0
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.287367384880781,
+        "sha256": "a2d977067b96a7c1a5f6c9598f2c91d7700e28bf920dbe1f4d64243fffc11a9a",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.08642052183859,
+        "sha256": "9b3bd13e75765129413233fdbe70b036cb30ae37f0e64856ff46471f95157624",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 65.32996856397949,
+        "sha256": "fdf19c20629e8972e66189e5b7d511dcbabda17472b651e6e8769b82c6339f3a",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "scalar-storage-native-save": {
+        "exit": 0,
+        "wall_seconds": 44.609433317091316,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.073868963168934,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "a2d977067b96a7c1a5f6c9598f2c91d7700e28bf920dbe1f4d64243fffc11a9a",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-final-storage/native-production2/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/scalar-storage-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Move 343 numeric global owners into Go and retire nine unused definitions; preserve types and bits.",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "20a961bb9ab38d465627bdd64959709f9cf3aea2102c14695ea1af2c17667307"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 58.22396894101985,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    },
+    "preflight_gameplay": {
+      "exit": 0,
+      "process_exit": 0,
+      "elapsed": 62.09860845305957,
+      "capture": false,
+      "godebug": ",randautoseed=0",
+      "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+      "binary_sha256": "a2d977067b96a7c1a5f6c9598f2c91d7700e28bf920dbe1f4d64243fffc11a9a",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "-s",
+        "-screen 0 1280x960x24 -nolisten tcp",
+        "/root/src/opennox/build/port-final-storage/native-preflight/opennox",
+        "-data",
+        "/root/src/opennox/build/baseline/runs/scalar-storage-native/data",
+        "-window",
+        "-pprof",
+        "127.0.0.1:0"
+      ],
+      "display_implementation": "Numeric globals owned by Go",
+      "isolated_network": false,
+      "removed_maps": 0
+    }
+  },
+  "primary_review": {
+    "ast": {
+      "files": 268,
+      "mismatches": null,
+      "success": true
+    },
+    "owners": {
+      "count": 343,
+      "exact_types_and_initializers": true,
+      "file": "src/legacy/scalar_globals.go",
+      "primary_rename": "removed unsubstantiated aaa_ ordering precaution"
+    }
+  }
+}

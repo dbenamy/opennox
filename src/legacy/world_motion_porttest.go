@@ -7,7 +7,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_3.h"
 #include "GAME5.h"
-extern uint32_t dword_5d4594_2488620;
 static uint32_t motionRadialWords[65];
 static void motionRadialObserve(uint32_t* unit,uint32_t code) {uint32_t n=motionRadialWords[0];if(n>=32)abort();motionRadialWords[1+2*n]=(uintptr_t)unit;motionRadialWords[2+2*n]=code;motionRadialWords[0]=n+1;}
 static void* motionRadialCallback(void) { return motionRadialObserve; }
@@ -106,7 +105,7 @@ func PortTestWorldMotionTrace(u *server.Object, target *uint32, normal *types.Po
 }
 func PortTestWorldMotionDispatch(u *server.Object) { motionProjectileDispatch(u) }
 func PortTestWorldMotionGlobals() (map[string]*uint32, func()) {
-	out := map[string]*uint32{"trace": (*uint32)(unsafe.Pointer(&C.dword_5d4594_2488620))}
+	out := map[string]*uint32{"trace": (*uint32)(unsafe.Pointer(&dword_5d4594_2488620))}
 	for name, off := range map[string]uintptr{"grid-x": 2488612, "grid-y": 2488616, "fist-small": 2488624, "fist-medium": 2488628, "fist-large": 2488632, "scorch-ready": 2488636, "trap-reachable": 2491764, "trap-arrow": 2491768, "trap-one": 2491772, "trap-two": 2491776, "trap-fx-one": 2491780, "trap-fx-two": 2491784} {
 		out[name] = memmap.PtrUint32(0x5D4594, off)
 	}

@@ -8,8 +8,6 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4_2.h"
 #include "common__system__team.h"
-extern unsigned int dword_5d4594_2650652;
-extern uint32_t dword_5d4594_1567988;
 */
 import "C"
 import (
@@ -27,7 +25,7 @@ func objectiveScore(u *server.Object) {
 	C.nox_xxx_netReportLesson_4D8EF0(asObjectC(u))
 }
 func objectiveQuestScore(u *server.Object) {
-	if C.dword_5d4594_2650652 != 0 && u != nil && u.UpdateData != nil {
+	if dword_5d4594_2650652 != 0 && u != nil && u.UpdateData != nil {
 		statisticsEvent(unsafe.Pointer(u.UpdateDataPlayer().Player), nil)
 	}
 }
@@ -124,7 +122,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 			if t.TeamVal.Has() {
 				tm := core.Teams.ByID(t.TeamVal.ID)
 				teamRuntimeLessons(tm, tm.Lessons+1)
-				if C.dword_5d4594_2650652 != 0 && playerUD != nil {
+				if dword_5d4594_2650652 != 0 && playerUD != nil {
 					statisticsEvent(unsafe.Pointer((*server.PlayerUpdateData)(playerUD).Player), nil)
 				}
 			}
@@ -292,18 +290,18 @@ func objectiveFlagBallScore(flag, target *server.Object) int16 {
 			}
 		}
 	}
-	if C.dword_5d4594_1567988 == 0 {
-		C.dword_5d4594_1567988 = C.uint32_t(core.Types.IndByID("GameBallStart"))
+	if dword_5d4594_1567988 == 0 {
+		dword_5d4594_1567988 = C.uint32_t(core.Types.IndByID("GameBallStart"))
 	}
 	n := 0
 	for it := core.Objs.First(); it != nil; it = it.Next() {
-		if uint32(it.TypeInd) == uint32(C.dword_5d4594_1567988) {
+		if uint32(it.TypeInd) == uint32(dword_5d4594_1567988) {
 			n++
 		}
 	}
 	choice := int(C.nox_common_randomInt_415FA0(0, C.int(n-1)))
 	for it := core.Objs.First(); it != nil; it = it.Next() {
-		if uint32(it.TypeInd) == uint32(C.dword_5d4594_1567988) {
+		if uint32(it.TypeInd) == uint32(dword_5d4594_1567988) {
 			if choice == 0 {
 				data := ball.UpdateData
 				core.ObjClearOwner(ball)

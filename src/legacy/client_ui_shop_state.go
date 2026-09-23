@@ -2,9 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t dword_5d4594_1098456, dword_5d4594_1098576, dword_5d4594_1098580;
-extern uint32_t dword_5d4594_1098592, dword_5d4594_1098596, dword_5d4594_1098600, dword_5d4594_1098604;
-extern uint32_t dword_5d4594_1098616, dword_5d4594_1098620, dword_5d4594_1098624, dword_5d4594_1098628, dword_5d4594_1107036;
 void sub_478850(int,short,int,int);
 int sub_479690(int,short,short,int);
 int sub_479820(int,short);
@@ -25,29 +22,29 @@ type uiShopCell = uiTradeCell
 func uiShopWord(off uintptr) *uint32 {
 	switch off {
 	case 1098456:
-		return (*uint32)(&C.dword_5d4594_1098456)
+		return (*uint32)(&dword_5d4594_1098456)
 	case 1098576:
-		return (*uint32)(&C.dword_5d4594_1098576)
+		return (*uint32)(&dword_5d4594_1098576)
 	case 1098580:
-		return (*uint32)(&C.dword_5d4594_1098580)
+		return (*uint32)(&dword_5d4594_1098580)
 	case 1098592:
-		return (*uint32)(&C.dword_5d4594_1098592)
+		return (*uint32)(&dword_5d4594_1098592)
 	case 1098596:
-		return (*uint32)(&C.dword_5d4594_1098596)
+		return (*uint32)(&dword_5d4594_1098596)
 	case 1098600:
-		return (*uint32)(&C.dword_5d4594_1098600)
+		return (*uint32)(&dword_5d4594_1098600)
 	case 1098604:
-		return (*uint32)(&C.dword_5d4594_1098604)
+		return (*uint32)(&dword_5d4594_1098604)
 	case 1098616:
-		return (*uint32)(&C.dword_5d4594_1098616)
+		return (*uint32)(&dword_5d4594_1098616)
 	case 1098620:
-		return (*uint32)(&C.dword_5d4594_1098620)
+		return (*uint32)(&dword_5d4594_1098620)
 	case 1098624:
-		return (*uint32)(&C.dword_5d4594_1098624)
+		return (*uint32)(&dword_5d4594_1098624)
 	case 1098628:
-		return (*uint32)(&C.dword_5d4594_1098628)
+		return (*uint32)(&dword_5d4594_1098628)
 	case 1107036:
-		return (*uint32)(&C.dword_5d4594_1107036)
+		return (*uint32)(&dword_5d4594_1107036)
 	}
 	return memmap.PtrUint32(0x5D4594, off)
 }

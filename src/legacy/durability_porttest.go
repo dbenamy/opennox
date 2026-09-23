@@ -7,7 +7,6 @@ package legacy
 #include <stdint.h>
 #include "GAME5_2.h"
 
-extern uint64_t qword_581450_9544;
 
 // Keeping the loop in C makes the exhaustive boundary fixture one cgo call.
 static void portTestDurabilityBatch(const uint16_t* current, const uint16_t* maximum, int* out, size_t n) {
@@ -43,7 +42,7 @@ func PortTestDurability(cases []PortTestDurabilityCase, halfBits, quarterBits ui
 	if len(cases) == 0 {
 		return snap
 	}
-	half := (*uint64)(unsafe.Pointer(&C.qword_581450_9544))
+	half := (*uint64)(unsafe.Pointer(&qword_581450_9544))
 	quarter := memmap.PtrUint64(0x581450, 9608)
 	oldHalf, oldQuarter := *half, *quarter
 	snap.BeforeHalf, snap.BeforeQuarter = oldHalf, oldQuarter

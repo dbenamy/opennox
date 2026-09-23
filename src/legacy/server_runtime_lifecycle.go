@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776;
-extern uint64_t qword_581450_9552;
 */
 import "C"
 
@@ -46,24 +44,24 @@ func runtimeObserverCount() int {
 	return count
 }
 func runtimeMeterWave() {
-	scale := math.Float64frombits(uint64(C.qword_581450_9552))
+	scale := math.Float64frombits(uint64(qword_581450_9552))
 	for i := 0; i < 320; i++ {
 		angle := float64(i+192) * memmap.Float64(0x581450, 9768) * memmap.Float64(0x581450, 9760)
 		*memmap.PtrUint32(0x5D4594, 1309840+4*uintptr(i)) = uint32(effectsTruncWord(math.Sin(angle) * scale))
 	}
 }
 func runtimePauseActor() *server.Object {
-	return (*server.Object)(unsafe.Pointer(uintptr(C.dword_5d4594_2523780)))
+	return (*server.Object)(unsafe.Pointer(uintptr(dword_5d4594_2523780)))
 }
 func runtimePauseEffect() *server.Object {
-	return (*server.Object)(unsafe.Pointer(uintptr(C.dword_5d4594_2523776)))
+	return (*server.Object)(unsafe.Pointer(uintptr(dword_5d4594_2523776)))
 }
 func runtimePauseStart(actor *server.Object, kind int32) {
-	if C.dword_5d4594_2523804 == 1 || noxflags.HasGame(noxflags.GamePause) {
+	if dword_5d4594_2523804 == 1 || noxflags.HasGame(noxflags.GamePause) {
 		return
 	}
 	if actor != nil {
-		C.dword_5d4594_2523780 = C.uint32_t(uintptr(actor.CObj()))
+		dword_5d4594_2523780 = C.uint32_t(uintptr(actor.CObj()))
 	} else {
 		actor = runtimePauseActor()
 	}
@@ -75,14 +73,14 @@ func runtimePauseStart(actor *server.Object, kind int32) {
 		}
 		effect = GetServer().S().NewObjectByTypeID(name)
 		actor = runtimePauseActor()
-		C.dword_5d4594_2523776 = C.uint32_t(uintptr(effect.CObj()))
+		dword_5d4594_2523776 = C.uint32_t(uintptr(effect.CObj()))
 	}
 	if effect != nil {
 		if actor != nil {
 			GetServer().CreateObjectAt(effect, nil, actor.PosVec)
 		} else {
 			GetServer().S().Objs.FreeObject(effect)
-			C.dword_5d4594_2523776 = 0
+			dword_5d4594_2523776 = 0
 		}
 		actor = runtimePauseActor()
 	}
@@ -109,12 +107,12 @@ func runtimePauseStart(actor *server.Object, kind int32) {
 	*memmap.PtrUint32(0x5D4594, 2523796) = delay
 	*memmap.PtrUint32(0x5D4594, 2523800) = 0
 	*memmap.PtrUint32(0x5D4594, 2523772) = uint32(kind)
-	C.dword_5d4594_2523804 = 1
+	dword_5d4594_2523804 = 1
 	Sub_413A00(1)
 	*memmap.PtrUint64(0x5D4594, 2523788) = uint64(uint32(PlatformTicks()))
 }
 func runtimePauseStop() {
-	if C.dword_5d4594_2523804 == 0 {
+	if dword_5d4594_2523804 == 0 {
 		return
 	}
 	actor := runtimePauseActor()
@@ -127,15 +125,15 @@ func runtimePauseStop() {
 		GetServer().DelayedDelete(effect)
 		actor = runtimePauseActor()
 	}
-	C.dword_5d4594_2523776 = 0
+	dword_5d4594_2523776 = 0
 	if actor != nil {
 		Nox_xxx_playerSetState_4FA020(actor, 13)
 	}
-	C.dword_5d4594_2523780 = 0
+	dword_5d4594_2523780 = 0
 	if Sub_45D9B0() == 0 {
 		Sub_413A00(0)
 	}
-	C.dword_5d4594_2523804 = 0
+	dword_5d4594_2523804 = 0
 }
 func runtimeHostOwnership() {
 	s := GetServer().S()

@@ -4,7 +4,6 @@ package legacy
 #include "defs.h"
 #include "GAME3.h"
 #include "GAME3_1.h"
-extern int nox_win_width;
 extern nox_gui_animation* nox_wnd_xxx_1309740;
 */
 import "C"
@@ -162,7 +161,7 @@ func (e optionsEditor) construct() int {
 		c.SetDraw(optionsOverlayDraw)
 	}
 	// C converts the unsigned subtraction to signed before dividing.
-	pos := image.Pt(int(int32(uint32(C.nox_win_width)-uint32(w.SizeVal.X)))/2, 0)
+	pos := image.Pt(int(int32(uint32(nox_win_width)-uint32(w.SizeVal.X)))/2, 0)
 	w.SetPos(pos)
 	overlay.SetPos(pos)
 	w.ChildByID(371).SetHidden(false)

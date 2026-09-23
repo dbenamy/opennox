@@ -6,7 +6,6 @@ package legacy
 #include <stdlib.h>
 #include "GAME1.h"
 #include "GAME2_2.h"
-extern uint32_t nox_xxx_waypointCounterMB_587000_154948;
 */
 import "C"
 import (
@@ -19,7 +18,7 @@ import (
 // table to its caller. Restore the previous owner after freeing this test grid.
 func PortTestTileCompositionGrid() (*[128]*[128][11]uint32, *uint32, func()) {
 	old := worldTileGrid
-	counter := C.nox_xxx_waypointCounterMB_587000_154948
+	counter := nox_xxx_waypointCounterMB_587000_154948
 	if worldTileGridCapacity != 128 {
 		panic("unexpected tile grid capacity")
 	}
@@ -27,11 +26,11 @@ func PortTestTileCompositionGrid() (*[128]*[128][11]uint32, *uint32, func()) {
 		panic("tile grid allocation")
 	}
 	rows := (*[128]*[128][11]uint32)(unsafe.Pointer(worldTileGrid))
-	return rows, (*uint32)(unsafe.Pointer(&C.nox_xxx_waypointCounterMB_587000_154948)), func() {
+	return rows, (*uint32)(unsafe.Pointer(&nox_xxx_waypointCounterMB_587000_154948)), func() {
 		worldGridFreeRows()
 		C.free(unsafe.Pointer(worldTileGrid))
 		worldTileGrid = old
-		C.nox_xxx_waypointCounterMB_587000_154948 = counter
+		nox_xxx_waypointCounterMB_587000_154948 = counter
 	}
 }
 func PortTestTileCompositionEdges(pos image.Point, edge unsafe.Pointer) {

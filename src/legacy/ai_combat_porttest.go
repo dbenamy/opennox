@@ -5,9 +5,6 @@ package legacy
 /*
 #include <stdint.h>
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_2487948;
-extern uint32_t dword_587000_261388;
-extern uint32_t dword_5d4594_1565628, dword_5d4594_1565632;
 static int pt_combat_strikes, pt_combat_actor, pt_combat_result;
 static int pt_combat_strike(int obj) {
  pt_combat_strikes++; pt_combat_actor=obj; return pt_combat_result;
@@ -147,8 +144,8 @@ func portTestCombatEnvironment(proxy *portTestRoamOwnerServer) func() {
 		old[i] = *memmap.PtrUint32(0x5D4594, off)
 	}
 	freeProjectiles := proxy.core.PortTestCombatProjectileType("porttest-combat-projectile", 3)
-	oldDX, oldDY := C.dword_5d4594_1565628, C.dword_5d4594_1565632
-	oldPtr, oldRadius := C.dword_5d4594_2487948, C.dword_587000_261388
+	oldDX, oldDY := dword_5d4594_1565628, dword_5d4594_1565632
+	oldPtr, oldRadius := dword_5d4594_2487948, dword_587000_261388
 	oldTables := make(map[uintptr][]byte)
 	for off, b := range blobdata.PortTestCombatTables() {
 		dst := unsafe.Slice((*byte)(memmap.PtrOff(0x587000, off)), len(b))
@@ -170,8 +167,8 @@ func portTestCombatEnvironment(proxy *portTestRoamOwnerServer) func() {
 		for i, off := range offsets {
 			*memmap.PtrUint32(0x5D4594, off) = old[i]
 		}
-		C.dword_5d4594_2487948, C.dword_587000_261388 = oldPtr, oldRadius
-		C.dword_5d4594_1565628, C.dword_5d4594_1565632 = oldDX, oldDY
+		dword_5d4594_2487948, dword_587000_261388 = oldPtr, oldRadius
+		dword_5d4594_1565628, dword_5d4594_1565632 = oldDX, oldDY
 		for off, b := range oldTables {
 			copy(unsafe.Slice((*byte)(memmap.PtrOff(0x587000, off)), len(b)), b)
 		}
@@ -289,11 +286,11 @@ func portTestCombatPrepare(proxy *portTestRoamOwnerServer, u, target *server.Obj
 	for _, off := range []uintptr{2487684, 2487944, 2487952, 2487956, 2487988} {
 		*memmap.PtrUint32(0x5D4594, off) = 0x12345678
 	}
-	C.dword_5d4594_2487948 = 0
+	dword_5d4594_2487948 = 0
 	if sp.Op == 10 {
 		*memmap.PtrUint32(0x5D4594, 2487952) = math.Float32bits(51)
 	}
-	C.dword_587000_261388 = C.uint32_t(math.Float32bits(50))
+	dword_587000_261388 = C.uint32_t(math.Float32bits(50))
 	s.before = nil
 	for _, b := range s.extra {
 		s.before = append(s.before, bytes.Clone(b))
@@ -331,7 +328,7 @@ func portTestCombatCall(u *server.Object, sp *PortTestCombatSpec) {
 func portTestCombatTrace(proxy *portTestRoamOwnerServer, normalize func(uint32) uint32) *PortTestCombatResult {
 	// The shared fixture always allocates this layout, including non-monster creation cases.
 	ud := (*server.MonsterUpdateData)(proxy.combat.actor.UpdateData)
-	r := &PortTestCombatResult{Intact: true, Strikes: int(C.pt_combat_count()), Selected: normalize(uint32(C.dword_5d4594_2487948)), Nearest: *memmap.PtrUint32(0x5D4594, 2487952), Cooldown: ud.Field128, Status: uint32(ud.StatusFlags), Stamina: ud.Field282_0}
+	r := &PortTestCombatResult{Intact: true, Strikes: int(C.pt_combat_count()), Selected: normalize(uint32(dword_5d4594_2487948)), Nearest: *memmap.PtrUint32(0x5D4594, 2487952), Cooldown: ud.Field128, Status: uint32(ud.StatusFlags), Stamina: ud.Field282_0}
 	r.Actions = append([]server.AIStackItem(nil), ud.AIStack[:ud.AIStackInd+1]...)
 	for i := range r.Actions {
 		for j, v := range r.Actions[i].Args {
@@ -342,7 +339,7 @@ func portTestCombatTrace(proxy *portTestRoamOwnerServer, normalize func(uint32) 
 	for _, off := range []uintptr{2487684, 2487944, 2487952, 2487956, 2487988} {
 		proxy.trace = append(proxy.trace, uint32(off), normalize(*memmap.PtrUint32(0x5D4594, off)))
 	}
-	proxy.trace = append(proxy.trace, 2487948, normalize(uint32(C.dword_5d4594_2487948)))
+	proxy.trace = append(proxy.trace, 2487948, normalize(uint32(dword_5d4594_2487948)))
 	for _, ev := range proxy.core.PortTestCombatAudioSnapshot() {
 		r.Sounds = append(r.Sounds, normalize(uint32(ev.ID)))
 		proxy.trace = append(proxy.trace, 14, normalize(uint32(ev.ID)), uint32(bool2int(ev.Obj == proxy.combat.actor)), math.Float32bits(ev.Pos.X), math.Float32bits(ev.Pos.Y), uint32(ev.Kind), ev.Code, uint32(bool2int(ev.ByPos)))

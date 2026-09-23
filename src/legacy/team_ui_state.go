@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-extern uint32_t dword_5d4594_1045636;
-*/
-import "C"
 import (
 	"github.com/opennox/libs/strman"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -21,7 +16,7 @@ func teamUIWord(off uintptr) *uint32 {
 	case 1045604:
 		return &teamUICTFRoot
 	case 1045636:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045636))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1045636))
 	case 1045640:
 		return &teamUIBallVisible
 	case 1045684:

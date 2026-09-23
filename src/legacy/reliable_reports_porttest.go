@@ -5,11 +5,6 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME3_3.h"
-extern uint32_t dword_5d4594_1565512;
-extern uint32_t dword_5d4594_1565516;
-extern uint32_t dword_5d4594_1565520;
-extern uint32_t dword_5d4594_2649712;
-extern unsigned int dword_5d4594_2650652;
 */
 import "C"
 
@@ -27,7 +22,7 @@ func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related
 	if p == nil {
 		p = unsafe.Pointer(&empty)
 	}
-	node := uint32(C.dword_5d4594_1565512)
+	node := uint32(dword_5d4594_1565512)
 	if op == 7 || op == 15 {
 		for i := 0; i < index && node != 0; i++ {
 			node = *(*uint32)(unsafe.Pointer(uintptr(node) + 408))
@@ -90,7 +85,7 @@ func PortTestReliableReports(op, to, index int, arg uint32, data []byte, related
 }
 
 func PortTestReliableReportGlobals() (map[string]*uint32, func()) {
-	words := map[string]*uint32{"capacity": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1565520)), "mask": (*uint32)(unsafe.Pointer(&C.dword_5d4594_2649712)), "rateMode": (*uint32)(unsafe.Pointer(&C.dword_5d4594_2650652)), "rate": memmap.PtrUint32(0x587000, 4728)}
+	words := map[string]*uint32{"capacity": (*uint32)(unsafe.Pointer(&dword_5d4594_1565520)), "mask": (*uint32)(unsafe.Pointer(&dword_5d4594_2649712)), "rateMode": (*uint32)(unsafe.Pointer(&dword_5d4594_2650652)), "rate": memmap.PtrUint32(0x587000, 4728)}
 	saved := map[string]uint32{}
 	for k, p := range words {
 		saved[k] = *p
@@ -134,11 +129,11 @@ type PortTestReliableReportState struct {
 }
 
 func PortTestReliableReportSnapshot(objects map[unsafe.Pointer]uint32) PortTestReliableReportState {
-	r := PortTestReliableReportState{Pool: *memmap.PtrPtr(0x5D4594, 1565508) != nil, Capacity: uint32(C.dword_5d4594_1565520)}
+	r := PortTestReliableReportState{Pool: *memmap.PtrPtr(0x5D4594, 1565508) != nil, Capacity: uint32(dword_5d4594_1565520)}
 	r.Sequence = *(*[32]uint16)(memmap.PtrOff(0x5D4594, 1565524))
 	r.Rates = bytes.Clone(unsafe.Slice((*byte)(memmap.PtrOff(0x5D4594, 1565124)), 384))
 	previous := uint32(0)
-	for q := uint32(C.dword_5d4594_1565512); q != 0; {
+	for q := uint32(dword_5d4594_1565512); q != 0; {
 		p := unsafe.Pointer(uintptr(q))
 		word := func(off uintptr) uint32 { return *(*uint32)(unsafe.Add(p, off)) }
 		if word(412) != previous || len(r.Nodes) > 4096 {
@@ -160,7 +155,7 @@ func PortTestReliableReportSnapshot(objects map[unsafe.Pointer]uint32) PortTestR
 		previous = q
 		q = word(408)
 	}
-	if previous != uint32(C.dword_5d4594_1565516) {
+	if previous != uint32(dword_5d4594_1565516) {
 		panic("queue tail link")
 	}
 	return r

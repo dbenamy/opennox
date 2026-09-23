@@ -4,7 +4,6 @@ package legacy
 #include "defs.h"
 #include "GAME2_3.h"
 #include "GAME3_1.h"
-extern uint32_t dword_5d4594_1062488;
 */
 import "C"
 
@@ -143,7 +142,7 @@ func clientGameSession(ind int, op netmsg.Op, data []byte) int {
 		sub_467750(C.int(word(1)&0x7fff), C.char(data[3]))
 		return size
 	case 225:
-		C.dword_5d4594_1062488 = C.uint32_t(word(1) & 0x7fff)
+		dword_5d4594_1062488 = C.uint32_t(word(1) & 0x7fff)
 		return size
 	case 226:
 		code := word(1)

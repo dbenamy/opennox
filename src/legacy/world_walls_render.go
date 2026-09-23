@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "GAME2_2.h"
-extern unsigned int nox_client_highResFloors_154952;
-extern unsigned int nox_client_highResFrontWalls_80820;
-extern unsigned int nox_client_translucentFrontWalls_805844;
-extern uint32_t dword_5d4594_3799452;
-extern int nox_win_width, nox_win_height;
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -36,7 +27,7 @@ func worldWallImageInterval(a, b int) bool {
 	if lo != clip.Min.X || hi != clip.Max.X {
 		*memmap.PtrUint32(0x973F18, 52) = uint32(lo)
 		*memmap.PtrUint32(0x973F18, 12) = uint32(hi)
-		C.dword_5d4594_3799452 = 1
+		dword_5d4594_3799452 = 1
 	}
 	return true
 }
@@ -47,7 +38,7 @@ func worldWallDraw(vp *noxrender.Viewport, w *server.Wall) {
 	c := GetClient()
 	r := c.R2()
 	data := r.Data()
-	width, height := int(C.nox_win_width), int(C.nox_win_height)
+	width, height := int(nox_win_width), int(nox_win_height)
 	origin := vp.ToScreenPos(image.Pt(23*int(w.X5), 23*int(w.Y6)))
 	dir := int(memmap.Int32(0x587000, 149364+4*uintptr(w.Field3)))
 	if dir == -1 {
@@ -74,7 +65,7 @@ func worldWallDraw(vp *noxrender.Viewport, w *server.Wall) {
 	}
 	def := GetServer().S().Walls.DefByInd(int(w.Tile1))
 	front := w.Flags4&2 != 0
-	highFront, highFloors, translucent := C.nox_client_highResFrontWalls_80820 != 0, C.nox_client_highResFloors_154952 != 0, C.nox_client_translucentFrontWalls_805844 != 0
+	highFront, highFloors, translucent := nox_client_highResFrontWalls_80820 != 0, nox_client_highResFloors_154952 != 0, nox_client_translucentFrontWalls_805844 != 0
 	options := 0
 	layer := int((w.Flags4 >> 2) & 2)
 	if front {

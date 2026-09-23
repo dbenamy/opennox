@@ -6,7 +6,6 @@ package legacy
 #include <stdlib.h>
 #include "GAME1_1.h"
 #include "GAME5_2.h"
-extern unsigned int dword_5d4594_2650652;
 */
 import "C"
 
@@ -149,9 +148,9 @@ func PortTestRules(spec PortTestRulesSpec) (out PortTestRulesResult, err error) 
 	defer restoreTable()
 	table := unsafe.Slice((*byte)(memmap.PtrOff(0x587000, 312208)), 56)
 	tableBefore := append([]byte(nil), table...)
-	oldOnline, oldContext := C.dword_5d4594_2650652, ruleLoaderContext
-	C.dword_5d4594_2650652, ruleLoaderContext = C.uint32_t(spec.Online), spec.Context
-	defer func() { C.dword_5d4594_2650652, ruleLoaderContext = oldOnline, oldContext }()
+	oldOnline, oldContext := dword_5d4594_2650652, ruleLoaderContext
+	dword_5d4594_2650652, ruleLoaderContext = C.uint32_t(spec.Online), spec.Context
+	defer func() { dword_5d4594_2650652, ruleLoaderContext = oldOnline, oldContext }()
 
 	buf, freeBuf := alloc.Make([]byte{}, 76)
 	defer freeBuf()

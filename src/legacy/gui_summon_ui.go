@@ -4,7 +4,6 @@ package legacy
 #include "defs.h"
 #include "GAME3_1.h"
 #include "client__gui__guisumn.h"
-extern int nox_win_width, nox_win_height;
 */
 import "C"
 import (
@@ -26,10 +25,10 @@ func summonState() *byte { return (*byte)(unsafe.Pointer(summonWord(1321200))) }
 func summonCreate() int {
 	*summonWord(1321004) = 0
 	*summonWord(1321000) = ^uint32(144)
-	*summonWord(1320988) = uint32(C.nox_win_width) - 95
+	*summonWord(1320988) = uint32(nox_win_width) - 95
 	*summonWord(1320992) = *summonWord(1321000)
 	g := GetClient().Cli().GUI
-	root := g.NewWindowRaw(nil, 8, int(C.nox_win_width)-95, -145, 87, 115, nil)
+	root := g.NewWindowRaw(nil, 8, int(nox_win_width)-95, -145, 87, 115, nil)
 	*summonWord(1321032) = quickbarPointer(root.C())
 	root.SetAllFuncs(bookEvent(func(*gui.Window, uint32, uint32) int { return 0 }), func(*gui.Window, *gui.WindowData) int { return 1 }, nil)
 	box := g.NewWindowRaw(root, 136, 5, 38, 76, 76, nil)
@@ -172,7 +171,7 @@ func summonMenu(p image.Point) {
 			continue
 		}
 		text := summonText(GoStringP(*memmap.PtrPtr(0x587000, 184344+i*4)))
-		sz := r.GetStringSizeWrapped(font, text, int(C.nox_win_width))
+		sz := r.GetStringSizeWrapped(font, text, int(nox_win_width))
 		if *summonMenuWidth() < uint32(sz.X) {
 			*summonMenuWidth() = uint32(sz.X)
 		}
@@ -184,13 +183,13 @@ func summonMenu(p image.Point) {
 	x, y := p.X-width/2, p.Y-height/2
 	if x < 0 {
 		x = 0
-	} else if uint32(width+x) >= uint32(C.nox_win_width) {
-		x = int(C.nox_win_width) - width - 1
+	} else if uint32(width+x) >= uint32(nox_win_width) {
+		x = int(nox_win_width) - width - 1
 	}
 	if y < 0 {
 		y = 0
-	} else if height+y >= int(C.nox_win_height) {
-		y = int(C.nox_win_height) - height - 1
+	} else if height+y >= int(nox_win_height) {
+		y = int(nox_win_height) - height - 1
 	}
 	g := GetClient().Cli().GUI
 	menu := g.NewWindowRaw(nil, 40, x, y, width, height, nil)

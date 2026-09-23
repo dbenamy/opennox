@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-extern int nox_win_width, nox_win_height;
-extern uint32_t nox_color_white_2523948;
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"fmt"
@@ -37,7 +30,7 @@ func clientMapProgress(data []byte) int16 {
 	}
 	*effectMapped(1309668) = uint32(value)
 	audioEventPlay(897, 50, 0, 0)
-	width, height := int(C.nox_win_width), int(C.nox_win_height)
+	width, height := int(nox_win_width), int(nox_win_height)
 	uiRenderBounds(0, 0, width-1, height-1)
 	Nox_client_clearScreen_440900()
 	r := GetClient().R2()
@@ -64,7 +57,7 @@ func clientMapProgress(data []byte) int16 {
 	face := r.GetFonts().AsFont(nil)
 	size := r.GetStringSizeWrapped(face, text, 0)
 	x, y := (width-size.X)/2, height/2-(2*r.FontHeight(face)+70)
-	r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_white_2523948))
+	r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_white_2523948))
 	r.Data().SetColor(noxcolor.RGBA5551(memmap.Uint32(0x852978, 4)))
 	r.DrawStringHL(face, text, image.Pt(x, y))
 	*effectMapped(1309672)++

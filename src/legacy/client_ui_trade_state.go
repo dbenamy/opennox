@@ -3,9 +3,6 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME2.h"
-extern uint32_t dword_5d4594_1320932, dword_5d4594_1320936, dword_5d4594_1320940;
-extern uint32_t dword_5d4594_1320944, dword_5d4594_1320948, dword_5d4594_1320964;
-extern uint32_t dword_5d4594_1320968, dword_5d4594_1320972, dword_8531A0_2576;
 */
 import "C"
 
@@ -43,11 +40,11 @@ func uiTradeGrid(side int) []uiTradeCell {
 	}
 	return unsafe.Slice((*uiTradeCell)(memmap.PtrOff(0x5D4594, off)), 4)
 }
-func uiTradeWindow() *gui.Window       { return uiInventoryWindowValue(uint32(C.dword_5d4594_1320940)) }
-func uiTradeActive() uint32            { return uint32(C.dword_5d4594_1320964) }
-func uiTradeDragged() *client.Drawable { return uiInventoryDrawable(uint32(C.dword_5d4594_1320968)) }
+func uiTradeWindow() *gui.Window       { return uiInventoryWindowValue(uint32(dword_5d4594_1320940)) }
+func uiTradeActive() uint32            { return uint32(dword_5d4594_1320964) }
+func uiTradeDragged() *client.Drawable { return uiInventoryDrawable(uint32(dword_5d4594_1320968)) }
 func uiTradeSource() *uiTradeCell {
-	return (*uiTradeCell)(unsafe.Pointer(uintptr(C.dword_5d4594_1320972)))
+	return (*uiTradeCell)(unsafe.Pointer(uintptr(dword_5d4594_1320972)))
 }
 func uiTradeSound(id int) { audioEventPlay(int32(id), 100, 0, 0) }
 func uiTradeString(id string) string {
@@ -61,8 +58,8 @@ func uiTradeRemoveRequest(dr *client.Drawable) int {
 }
 func uiTradeDestroy() int {
 	uiTradeWindow().Destroy()
-	C.dword_5d4594_1320940 = 0
-	C.dword_5d4594_1320964 = 0
+	dword_5d4594_1320940 = 0
+	dword_5d4594_1320964 = 0
 	return 0
 }
 func uiTradeShow() int {
@@ -72,17 +69,17 @@ func uiTradeShow() int {
 	return 0
 }
 func uiTradeStart(data unsafe.Pointer) int {
-	if C.dword_8531A0_2576 == 0 || uiTradeActive() == 1 {
+	if dword_8531A0_2576 == 0 || uiTradeActive() == 1 {
 		return 0
 	}
-	C.dword_5d4594_1320964 = 1
+	dword_5d4594_1320964 = 1
 	uiTradeReset()
 	uiTradeStoreText(1319844, 64, alloc.GoString16((*uint16)(unsafe.Add(data, 2))))
 	w := uiTradeWindow()
 	uiWindowEnable(w, 1)
 	uiTradeShow()
 	w.SetPos(image.Pt(198, 193))
-	uiTradeSetText(w.ChildByID(3702), (*uint16)(unsafe.Pointer(uintptr(C.dword_8531A0_2576)+4704)))
+	uiTradeSetText(w.ChildByID(3702), (*uint16)(unsafe.Pointer(uintptr(dword_8531A0_2576)+4704)))
 	uiTradeSetText(w.ChildByID(3703), uiTradeTextAt(1319844))
 	uiInventoryOpenWindow()
 	return 1
@@ -127,12 +124,12 @@ func uiTradeReset() int {
 	for _, id := range []uint{3711, 3712, 3713} {
 		uiTradeSetText(w.ChildByID(id), text)
 	}
-	C.dword_5d4594_1320944 = 0
-	C.dword_5d4594_1320948 = 0
-	C.dword_5d4594_1320968 = 0
-	C.dword_5d4594_1320972 = 0
-	C.dword_5d4594_1320932 = 0
-	C.dword_5d4594_1320936 = 0
+	dword_5d4594_1320944 = 0
+	dword_5d4594_1320948 = 0
+	dword_5d4594_1320968 = 0
+	dword_5d4594_1320972 = 0
+	dword_5d4594_1320932 = 0
+	dword_5d4594_1320936 = 0
 	return 0
 }
 func uiTradeFinish() int {
@@ -143,15 +140,15 @@ func uiTradeFinish() int {
 	w := uiTradeWindow()
 	w.Hide()
 	uiWindowEnable(w, 0)
-	C.dword_5d4594_1320964 = 0
+	dword_5d4594_1320964 = 0
 	return uiInventoryCloseWindow()
 }
 func uiTradePrepare() int {
 	ret := int(int32(uiTradeActive()))
-	if ret != 0 && C.dword_8531A0_2576 != 0 {
+	if ret != 0 && dword_8531A0_2576 != 0 {
 		uiTradeReset()
 		w := uiTradeWindow()
-		uiTradeSetText(w.ChildByID(3702), (*uint16)(unsafe.Pointer(uintptr(C.dword_8531A0_2576)+4704)))
+		uiTradeSetText(w.ChildByID(3702), (*uint16)(unsafe.Pointer(uintptr(dword_8531A0_2576)+4704)))
 		ret = uiTradeSetText(w.ChildByID(3703), uiTradeTextAt(1319844))
 	}
 	return ret
@@ -211,13 +208,13 @@ func uiTradeAdd(data unsafe.Pointer) uint32 {
 		return 0
 	}
 	b := unsafe.Slice((*byte)(data), 15)
-	C.dword_5d4594_1320944 = 0
-	C.dword_5d4594_1320948 = 0
+	dword_5d4594_1320944 = 0
+	dword_5d4594_1320948 = 0
 	side := 1
-	selected := uint32(C.dword_5d4594_1320936)
+	selected := uint32(dword_5d4594_1320936)
 	if b[2] == 1 {
 		side = 0
-		selected = uint32(C.dword_5d4594_1320932)
+		selected = uint32(dword_5d4594_1320932)
 	}
 	typ := uint32(binary.LittleEndian.Uint16(b[3:]))
 	c := (*uiTradeCell)(unsafe.Pointer(uintptr(selected)))
@@ -244,8 +241,8 @@ func uiTradeAdd(data unsafe.Pointer) uint32 {
 	c.Codes[c.Count] = uint32(binary.LittleEndian.Uint16(b[5:]))
 	c.Count++
 	c.Value += binary.LittleEndian.Uint32(b[7:])
-	C.dword_5d4594_1320932 = 0
-	C.dword_5d4594_1320936 = 0
+	dword_5d4594_1320932 = 0
+	dword_5d4594_1320936 = 0
 	return c.Value
 }
 func uiTradeRemove(data unsafe.Pointer) uint32 {
@@ -293,7 +290,7 @@ func uiTradeAcceptance(data unsafe.Pointer) uint32 {
 		return 0
 	}
 	bits := *(*byte)(unsafe.Add(data, 2))
-	C.dword_5d4594_1320944 = C.uint32_t(bits & 1)
-	C.dword_5d4594_1320948 = C.uint32_t((bits >> 1) & 1)
+	dword_5d4594_1320944 = C.uint32_t(bits & 1)
+	dword_5d4594_1320948 = C.uint32_t((bits >> 1) & 1)
 	return uiInventoryPointer(data)
 }

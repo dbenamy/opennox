@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_2516348;
-extern uint32_t dword_5d4594_2516328;
 */
 import "C"
 
@@ -13,7 +11,7 @@ func updateProtectionFloat(id int32, value float32, add bool) uint32 {
 	if id < 657757279 {
 		return uint32(id)
 	}
-	key := uint32(C.dword_5d4594_2516348)
+	key := uint32(dword_5d4594_2516348)
 	r := protection.Find(protectionHead(), key, uint32(id))
 	if r == nil {
 		return 0
@@ -26,7 +24,7 @@ func updateProtectionFloat(id int32, value float32, add bool) uint32 {
 		next = protection.FloatValue(value)
 	}
 	r.Value = next ^ key
-	C.dword_5d4594_2516328 ^= C.uint32_t(old ^ r.Value)
+	dword_5d4594_2516328 ^= C.uint32_t(old ^ r.Value)
 	return uint32(nox_xxx_protectData_56F5C0())
 }
 

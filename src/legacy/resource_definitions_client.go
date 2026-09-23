@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-extern uint64_t qword_581450_9544;
-extern uint64_t qword_581450_9552;
-*/
-import "C"
 import (
 	"fmt"
 	"github.com/opennox/opennox/v1/client"
@@ -28,7 +22,7 @@ func resourceClientParser(kind string, typ *client.ObjectType, f *binfile.MemFil
 		if !ok || deg < 0 || deg >= limit {
 			return false
 		}
-		v := float64(deg)*memmap.Float64(0x581450, 9560)*math.Float64frombits(uint64(C.qword_581450_9552)) + math.Float64frombits(uint64(C.qword_581450_9544))
+		v := float64(deg)*memmap.Float64(0x581450, 9560)*math.Float64frombits(uint64(qword_581450_9552)) + math.Float64frombits(uint64(qword_581450_9544))
 		n := uint16(effectsTruncWord(v))
 		if kind == "direction" {
 			typ.LightDir = n

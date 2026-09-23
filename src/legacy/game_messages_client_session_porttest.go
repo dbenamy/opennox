@@ -6,8 +6,6 @@ package legacy
 #include "defs.h"
 #include "GAME1_1.h"
 #include "GAME2_3.h"
-extern uint32_t dword_5d4594_1200768, dword_5d4594_1200832;
-extern uint32_t dword_5d4594_1197352, dword_5d4594_1197356;
 */
 import "C"
 
@@ -19,7 +17,7 @@ import (
 )
 
 func PortTestClientSessionWords() (map[string]*uint32, func()) {
-	words := map[string]*uint32{"settingsChanged": (*uint32)(&C.dword_5d4594_1200768), "settingsNotice": (*uint32)(&C.dword_5d4594_1200832)}
+	words := map[string]*uint32{"settingsChanged": (*uint32)(&dword_5d4594_1200768), "settingsNotice": (*uint32)(&dword_5d4594_1200832)}
 	old := map[string]uint32{}
 	for n, p := range words {
 		old[n] = *p
@@ -46,7 +44,7 @@ type PortTestClientSequenceState struct {
 func PortTestClientSequenceOwner() (func(), func() PortTestClientSequenceState, func()) {
 	raw := unsafe.Slice(memmap.PtrUint8(0x5D4594, 1197340), 24)
 	saved := bytes.Clone(raw)
-	ready, pending := C.dword_5d4594_1197352, C.dword_5d4594_1197356
+	ready, pending := dword_5d4594_1197352, dword_5d4594_1197356
 	clientSequenceInit()
 	reset := func() { clientSequenceFree(); clientSequenceInit() }
 	snapshot := func() PortTestClientSequenceState {
@@ -60,17 +58,17 @@ func PortTestClientSequenceOwner() (func(), func() PortTestClientSequenceState, 
 			seq := binary.LittleEndian.Uint32(b[8:])
 			size := binary.LittleEndian.Uint16(b[24:])
 			r.Nodes = append(r.Nodes, PortTestClientSequenceNode{seq, binary.LittleEndian.Uint64(b[16:]), bytes.Clone(unsafe.Slice((*byte)(unsafe.Add(unsafe.Pointer(p), 32)), int(size)))})
-			if uint32(uintptr(unsafe.Pointer(p))) == uint32(C.dword_5d4594_1197352) {
+			if uint32(uintptr(unsafe.Pointer(p))) == uint32(dword_5d4594_1197352) {
 				r.Ready = seq + 1
 			}
-			if uint32(uintptr(unsafe.Pointer(p))) == uint32(C.dword_5d4594_1197356) {
+			if uint32(uintptr(unsafe.Pointer(p))) == uint32(dword_5d4594_1197356) {
 				r.Pending = seq + 1
 			}
 		}
-		if C.dword_5d4594_1197352 != 0 && r.Ready == 0 || C.dword_5d4594_1197356 != 0 && r.Pending == 0 {
+		if dword_5d4594_1197352 != 0 && r.Ready == 0 || dword_5d4594_1197356 != 0 && r.Pending == 0 {
 			panic("sequence cursor outside owned list")
 		}
 		return r
 	}
-	return reset, snapshot, func() { reset(); copy(raw, saved); C.dword_5d4594_1197352, C.dword_5d4594_1197356 = ready, pending }
+	return reset, snapshot, func() { reset(); copy(raw, saved); dword_5d4594_1197352, dword_5d4594_1197356 = ready, pending }
 }

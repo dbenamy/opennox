@@ -3,7 +3,6 @@ package legacy
 /*
 #include "GAME1_3.h"
 #include "GAME2_3.h"
-extern int nox_win_width, nox_win_height;
 */
 import "C"
 import (
@@ -46,7 +45,7 @@ func browserMapPolygonsClear() unsafe.Pointer {
 func browserSwitchChatMap() {
 	Nox_client_gui_set_flag_815132(0)
 	noxflags.SetGame(5)
-	GetClient().SetMouseBounds(image.Rect(0, 0, int(C.nox_win_width)-1, int(C.nox_win_height)-1))
+	GetClient().SetMouseBounds(image.Rect(0, 0, int(nox_win_width)-1, int(nox_win_height)-1))
 	name := Nox_client_getChatMap_49FF40()
 	if strings.Contains(name, ".") {
 		return

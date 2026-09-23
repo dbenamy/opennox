@@ -7,8 +7,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_3.h"
 #include "common__random.h"
-extern uint32_t dword_5d4594_1567928;
-extern uint64_t qword_581450_9544,qword_581450_10176;
 */
 import "C"
 import (
@@ -63,7 +61,7 @@ func projectileArrow(u, t *server.Object) {
 	if u.ObjOwner != t {
 		attackPreEffects(t, *temporaryRefWord(cd, 4), u, &r)
 	}
-	damage := effectsTruncWord(float64(r.Damage) + math.Float64frombits(uint64(C.qword_581450_9544)))
+	damage := effectsTruncWord(float64(r.Damage) + math.Float64frombits(uint64(qword_581450_9544)))
 	accepted := byte(projectileDamage(t, u.FindOwnerChainPlayer(), u, damage, int32(r.Type)))
 	if uint32(u.TypeInd) == *bolt {
 		if t.HealthData != nil && t.HealthData.Cur == 0 {
@@ -114,23 +112,23 @@ func projectileChakramCandidate(t *server.Object, pos *types.Pointf) {
 	best := memmap.PtrFloat32(0x5d4594, 1567836)
 	if d <= 160000 && d < float64(*best) {
 		*best = float32(d)
-		C.dword_5d4594_1567928 = C.uint32_t(uintptr(t.CObj()))
+		dword_5d4594_1567928 = C.uint32_t(uintptr(t.CObj()))
 	}
 }
 func projectileChakramSelect(u *server.Object) *server.Object {
-	C.dword_5d4594_1567928 = 0
+	dword_5d4594_1567928 = 0
 	*memmap.PtrUint32(0x5d4594, 1567932) = *equipmentWord(u.UpdateData, 12)
 	*memmap.PtrUint32(0x5d4594, 1567840) = uint32(uintptr(u.ObjOwner.CObj()))
 	*memmap.PtrUint32(0x5d4594, 1567924) = uint32(uintptr(u.CObj()))
 	*memmap.PtrUint32(0x5d4594, 1567836) = 1259902592
 	rect := types.Rectf{Min: types.Pointf{X: float32(float64(u.PosVec.X) - 400), Y: float32(float64(u.PosVec.Y) - 400)}, Max: types.Pointf{X: float32(float64(u.PosVec.X) + 400), Y: float32(float64(u.PosVec.Y) + 400)}}
 	GetServer().S().Map.EachObjInRect(rect, func(t *server.Object) bool { projectileChakramCandidate(t, &u.PosVec); return true })
-	t := objectFromInt(C.int(C.dword_5d4594_1567928))
+	t := objectFromInt(C.int(dword_5d4594_1567928))
 	if t != nil {
 		*(*byte)(unsafe.Add(u.UpdateData, 24)) = 2
 		dx, dy := float64(t.PosVec.X)-float64(u.PosVec.X), float64(t.PosVec.Y)-float64(u.PosVec.Y)
 		y := float32(dy)
-		length := float32(math.Sqrt(dy*float64(y)+dx*dx) + math.Float64frombits(uint64(C.qword_581450_10176)))
+		length := float32(math.Sqrt(dy*float64(y)+dx*dx) + math.Float64frombits(uint64(qword_581450_10176)))
 		u.VelVec.X = float32(dx * float64(u.SpeedCur) / float64(length))
 		u.VelVec.Y = float32(float64(y) * float64(u.SpeedCur) / float64(length))
 	}
@@ -218,7 +216,7 @@ func projectileChakram(u, t *server.Object, n *types.Pointf) {
 	r := attackRecord{Pos: u.PosVec, Weapon: u, Owner: owner, Damage: float32(projectileBoltDamage(strength, def)), Radius: float32(float64(u.Shape.Circle.R) + 30)}
 	attackItemEffects(u, owner, &r)
 	attackPreEffects(t, owner, u, &r)
-	projectileDamage(t, owner, u, effectsTruncWord(float64(r.Damage)+math.Float64frombits(uint64(C.qword_581450_9544))), 0)
+	projectileDamage(t, owner, u, effectsTruncWord(float64(r.Damage)+math.Float64frombits(uint64(qword_581450_9544))), 0)
 	if t.ObjFlags&0x8020 == 0 {
 		*temporaryRefWord(ud, 12) = t
 	}

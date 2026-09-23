@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern int nox_win_width,nox_win_height;
 int sub_479D00();
 */
 import "C"
@@ -96,7 +95,7 @@ func interactionConversationBlink(w *gui.Window, d *gui.WindowData) int {
 }
 func interactionConversationDraw(w *gui.Window, d *gui.WindowData) int {
 	r := GetClient().R2()
-	r.DrawImageAt(r.GetBag().AsImage(d.BgImageHnd), image.Pt(int(C.nox_win_width)-640, int(C.nox_win_height)-480))
+	r.DrawImageAt(r.GetBag().AsImage(d.BgImageHnd), image.Pt(int(nox_win_width)-640, int(nox_win_height)-480))
 	return 1
 }
 func interactionConversationDestroy() int {

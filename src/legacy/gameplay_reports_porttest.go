@@ -4,7 +4,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_2649712;
 */
 import "C"
 
@@ -54,9 +53,9 @@ func (p *portTestShopPools) gameplayReportsPrepare() func() {
 	}
 	p.reports = sp
 	restoreRules := p.gameplayReportRulesPrepare(sp.Rules)
-	oldMask := C.dword_5d4594_2649712
+	oldMask := dword_5d4594_2649712
 	if sp.RecipientMask != nil {
-		C.dword_5d4594_2649712 = C.uint32_t(*sp.RecipientMask)
+		dword_5d4594_2649712 = C.uint32_t(*sp.RecipientMask)
 	}
 	p.reportTexts = nil
 	for _, text := range sp.Texts {
@@ -111,7 +110,7 @@ func (p *portTestShopPools) gameplayReportsPrepare() func() {
 			restore()
 		}
 		p.reportTexts = nil
-		C.dword_5d4594_2649712 = oldMask
+		dword_5d4594_2649712 = oldMask
 		p.reports = nil
 		p.reportRecords = nil
 	}

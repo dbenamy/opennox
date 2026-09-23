@@ -9,7 +9,6 @@ package legacy
 #include "GAME4_2.h"
 #include "GAME4_3.h"
 #include "server__script__script.h"
-extern uint32_t dword_5d4594_2488620;
 */
 import "C"
 import (
@@ -28,9 +27,9 @@ func projectileDamage(t, owner, u *server.Object, damage, kind int32) int32 {
 func projectileWall(u *server.Object, x, y, damage, kind int32) {
 	GetServer().Nox_xxx_damageToMap_534BC0(int(x), int(y), int(damage), object.DamageType(kind), u)
 }
-func projectileHasContact() bool { return C.dword_5d4594_2488620 != 0 }
+func projectileHasContact() bool { return dword_5d4594_2488620 != 0 }
 func projectileContact(u *server.Object, damage, kind int32) {
-	if C.dword_5d4594_2488620 != 0 {
+	if dword_5d4594_2488620 != 0 {
 		projectileWall(u, int32(memmap.Uint32(0x5d4594, 2488612)), int32(memmap.Uint32(0x5d4594, 2488616)), damage, kind)
 	}
 }

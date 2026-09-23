@@ -4,13 +4,6 @@ package legacy
 #include "defs.h"
 #include "GAME1_2.h"
 #include "GAME2_1.h"
-extern uint32_t dword_5d4594_1090276;
-extern uint32_t dword_5d4594_1096256, dword_5d4594_1096260, dword_5d4594_1096264, dword_5d4594_1096288;
-extern uint32_t nox_client_renderBubbles_80844;
-extern uint32_t nox_color_black_2650656, nox_color_white_2523948, nox_color_yellow_2589772, nox_color_violet_2598268;
-extern unsigned int nox_gameDisableMapDraw_5d4594_2650672;
-extern int nox_win_width, nox_win_height;
-extern uint64_t qword_581450_9512, qword_581450_9544;
 */
 import "C"
 
@@ -27,7 +20,7 @@ import (
 )
 
 func uiMeterMainWindow() *gui.Window {
-	return (*gui.Window)(unsafe.Pointer(uintptr(C.dword_5d4594_1090276)))
+	return (*gui.Window)(unsafe.Pointer(uintptr(dword_5d4594_1090276)))
 }
 func uiMeterImage(handle uint32, pos image.Point) {
 	nox_client_drawImageAt_47D2C0((*nox_video_bag_image_t)(unsafe.Pointer(uintptr(handle))), pos.X, pos.Y)
@@ -47,8 +40,8 @@ func uiMeterCross(x, y int) int {
 func uiMeterLabel(w *gui.Window) int {
 	r := GetClient().R2()
 	text := strconv.FormatInt(int64(int32(uiMeters()[uintptr(w.WidgetData)].Current)), 10)
-	r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_white_2523948))
-	face := r.GetFonts().AsFont(unsafe.Pointer(uintptr(C.dword_5d4594_1096288)))
+	r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_white_2523948))
+	face := r.GetFonts().AsFont(unsafe.Pointer(uintptr(dword_5d4594_1096288)))
 	width := r.GetStringSizeWrapped(face, text, 0).X
 	pos := uiWindowPosition(w)
 	r.DrawString(face, text, image.Pt(pos.X-width/2+8, pos.Y+1))
@@ -61,28 +54,28 @@ func sub_471450(p *C.uint32_t) int { return uiMeterLabel((*gui.Window)(unsafe.Po
 func uiMeterMiniBar(w *gui.Window) int {
 	index := int(uintptr(w.WidgetData))
 	m := &uiMeters()[index]
-	if nox_xxx_clientIsObserver_4372E0() != 0 || C.nox_gameDisableMapDraw_5d4594_2650672 != 0 || noxflags.HasGame(9437184) {
+	if nox_xxx_clientIsObserver_4372E0() != 0 || nox_gameDisableMapDraw_5d4594_2650672 != 0 || noxflags.HasGame(9437184) {
 		return 1
 	}
-	x := int(C.nox_win_width)/2 + 15
+	x := int(nox_win_width)/2 + 15
 	if index != 0 {
 		x += 6
 	}
-	y := int(C.nox_win_height)/2 - 48
+	y := int(nox_win_height)/2 - 48
 	height := 0
 	if m.Maximum != 0 {
 		height = int(48 * int32(m.Current) / int32(m.Maximum))
 	}
-	uiMeterSetColor(uint32(C.nox_color_black_2650656))
+	uiMeterSetColor(uint32(nox_color_black_2650656))
 	nox_client_drawRectFilledOpaque_49CE30(x, y, 2, 48)
 	uiMeterSetColor(m.Color)
 	nox_client_drawRectFilledOpaque_49CE30(x, y-height+48, 2, height)
 	if index != 0 {
 		uiMeterSetColor(memmap.Uint32(0x85B3FC, 944))
-	} else if C.dword_5d4594_1096264 != 0 {
+	} else if dword_5d4594_1096264 != 0 {
 		uiMeterSetColor(memmap.Uint32(0x85B3FC, 984))
 	} else {
-		uiMeterSetColor(uint32(C.nox_color_violet_2598268))
+		uiMeterSetColor(uint32(nox_color_violet_2598268))
 	}
 	nox_client_drawBorderLines_49CC70(x-1, y-1, 4, 50)
 	return 1
@@ -98,13 +91,13 @@ type uiMeterBubble struct{ X, Y, Size, Speed, Active, Color int32 }
 func uiMeterTube(w *gui.Window) int {
 	index := int(uintptr(w.WidgetData))
 	m := &uiMeters()[index]
-	if index == 0 && C.dword_5d4594_1096264 != 0 {
+	if index == 0 && dword_5d4594_1096264 != 0 {
 		uiMeterImage(memmap.Uint32(0x5D4594, 1091900), uiWindowPosition(uiMeterMainWindow()))
 	}
 	pos := uiWindowPosition(w)
 	pos.X += 5
 	if get_dword_5d4594_3799468() != 0 {
-		uiMeterSetColor(uint32(C.nox_color_black_2650656))
+		uiMeterSetColor(uint32(nox_color_black_2650656))
 		nox_client_drawRectFilledOpaque_49CE30(pos.X, pos.Y, 15, 125)
 	}
 	if m.Maximum == 0 {
@@ -120,7 +113,7 @@ func uiMeterTube(w *gui.Window) int {
 	nox_client_drawAddPoint_49F500(pos.X, pos.Y-height+125)
 	nox_xxx_rasterPointRel_49F570(14, 0)
 	nox_client_drawLineFromPoints_49E4B0()
-	if index < 2 && C.nox_client_renderBubbles_80844 == 1 {
+	if index < 2 && nox_client_renderBubbles_80844 == 1 {
 		bubbles := unsafe.Slice((*uiMeterBubble)(memmap.PtrOff(0x5D4594, 1093180+uintptr(index)*1536)), 64)
 		for i := range bubbles {
 			b := &bubbles[i]
@@ -132,7 +125,7 @@ func uiMeterTube(w *gui.Window) int {
 				b.Active = 0
 				continue
 			}
-			if C.dword_5d4594_1096264 != 0 {
+			if dword_5d4594_1096264 != 0 {
 				uiMeterSetColor(m.Color)
 			} else {
 				uiMeterSetColor(uint32(b.Color))
@@ -176,14 +169,14 @@ func uiMeterTube(w *gui.Window) int {
 		}
 	}
 	if index == 0 {
-		frame := uint32(C.dword_5d4594_1096256)
-		if int32(C.dword_5d4594_1096260) > 0 {
-			frame += uint32(C.dword_5d4594_1096260)
-			C.dword_5d4594_1096256 = C.uint32_t(frame)
-			C.dword_5d4594_1096260--
+		frame := uint32(dword_5d4594_1096256)
+		if int32(dword_5d4594_1096260) > 0 {
+			frame += uint32(dword_5d4594_1096260)
+			dword_5d4594_1096256 = C.uint32_t(frame)
+			dword_5d4594_1096260--
 			if frame>>3 >= 10 {
 				frame = 0
-				C.dword_5d4594_1096256 = 0
+				dword_5d4594_1096256 = 0
 			}
 		}
 		uiMeterSetIcon(uiMeterMainWindow(), memmap.Uint32(0x5D4594, 1092996+4*uintptr(frame>>3)))
@@ -223,7 +216,7 @@ func uiMeterChargeRaster(w *gui.Window) int {
 	next := 61 - span
 	remainder := float32(float64(gap-count*((gap+61)/count)+61) / float64(count))
 	fraction := float32(0.001)
-	one := math.Float64frombits(uint64(C.qword_581450_9512))
+	one := math.Float64frombits(uint64(qword_581450_9512))
 	for i := 0; i < count; i++ {
 		if uint32(i) >= m.Current {
 			uiMeterSetColor(m.Alternate)
@@ -285,8 +278,8 @@ func uiMeterWeaponDraw(w *gui.Window) int {
 			maximum := float64(*(*uint16)(unsafe.Pointer(item + 294)))
 			if current < maximum*memmap.Float64(0x581450, 9608) {
 				m.Alternate = memmap.Uint32(0x85B3FC, 940)
-			} else if current < maximum*math.Float64frombits(uint64(C.qword_581450_9544)) {
-				m.Alternate = uint32(C.nox_color_yellow_2589772)
+			} else if current < maximum*math.Float64frombits(uint64(qword_581450_9544)) {
+				m.Alternate = uint32(nox_color_yellow_2589772)
 			} else {
 				draw = false
 			}

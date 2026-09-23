@@ -11,7 +11,6 @@ package legacy
 #include "GAME4_3.h"
 #include "GAME5.h"
 #include "GAME5_2.h"
-extern uint32_t dword_5d4594_2487712;
 */
 import "C"
 import (
@@ -52,10 +51,10 @@ func spellEffectAlert(source, target *server.Object) {
 	C.sub_4E7540(asObjectC(source), asObjectC(target))
 }
 func spellEffectGlyphType() uint32 {
-	if C.dword_5d4594_2487712 == 0 {
-		C.dword_5d4594_2487712 = C.uint32_t(GetServer().S().Types.IndByID("Glyph"))
+	if dword_5d4594_2487712 == 0 {
+		dword_5d4594_2487712 = C.uint32_t(GetServer().S().Types.IndByID("Glyph"))
 	}
-	return uint32(C.dword_5d4594_2487712)
+	return uint32(dword_5d4594_2487712)
 }
 func spellEffectCreate(u, owner *server.Object, pos types.Pointf) {
 	C.nox_xxx_createAt_4DAA50(asObjectC(u), asObjectC(owner), C.float(pos.X), C.float(pos.Y))

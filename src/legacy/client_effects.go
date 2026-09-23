@@ -8,12 +8,6 @@ package legacy
 #include "GAME2_3.h"
 #include "GAME4_1.h"
 #include "defs.h"
-extern uint32_t dword_5d4594_1313532;
-extern uint32_t dword_5d4594_1313536;
-extern uint32_t dword_5d4594_1313540;
-extern uint32_t dword_5d4594_1313564;
-extern uint32_t dword_5d4594_1313692;
-extern uint32_t nox_color_white_2523948;
 */
 import "C"
 
@@ -144,15 +138,15 @@ func effectMovingSpark(vp *noxrender.Viewport, dr *client.Drawable, core, glow u
 }
 func effectMagicSparkle(vp *noxrender.Viewport, dr *client.Drawable) int {
 	if effectRand(0, 10) >= 5 {
-		return effectSparkDraw(vp, dr, uint32(C.nox_color_white_2523948), uint32(C.dword_5d4594_1313540), true)
+		return effectSparkDraw(vp, dr, uint32(nox_color_white_2523948), uint32(dword_5d4594_1313540), true)
 	}
-	return effectSparkDraw(vp, dr, uint32(C.dword_5d4594_1313540), uint32(C.dword_5d4594_1313536), true)
+	return effectSparkDraw(vp, dr, uint32(dword_5d4594_1313540), uint32(dword_5d4594_1313536), true)
 }
 func effectPixieDust(vp *noxrender.Viewport, dr *client.Drawable) int {
 	if effectRand(0, 10) >= 5 {
-		return effectSparkDraw(vp, dr, uint32(C.nox_color_white_2523948), uint32(C.dword_5d4594_1313564), true)
+		return effectSparkDraw(vp, dr, uint32(nox_color_white_2523948), uint32(dword_5d4594_1313564), true)
 	}
-	return effectSparkDraw(vp, dr, uint32(C.dword_5d4594_1313564), *effectMapped(1313560), true)
+	return effectSparkDraw(vp, dr, uint32(dword_5d4594_1313564), *effectMapped(1313560), true)
 }
 func effectPixie(vp *noxrender.Viewport, dr *client.Drawable) int {
 	lower := effectRand(0, 100) < 50
@@ -174,7 +168,7 @@ func effectPixie(vp *noxrender.Viewport, dr *client.Drawable) int {
 			distance := int(math.Sqrt(float64(n)))
 			prev = image.Pt(p.X-20*dx/distance, p.Y-20*dy/distance)
 		}
-		effectColor(uint32(C.dword_5d4594_1313564))
+		effectColor(uint32(dword_5d4594_1313564))
 		effectLine(p, prev)
 	}
 	return 1
@@ -188,13 +182,13 @@ func effectOrb(vp *noxrender.Viewport, dr *client.Drawable, moving bool) int {
 	var core, glow uint32
 	switch dr.TypeIDVal {
 	case *effectMapped(1313660), *effectMapped(1313684):
-		core, glow = uint32(C.dword_5d4594_1313540), uint32(C.dword_5d4594_1313536)
+		core, glow = uint32(dword_5d4594_1313540), uint32(dword_5d4594_1313536)
 	case *effectMapped(1313668):
 		core, glow = *effectMapped(1313584), *effectMapped(1313580)
 	case *effectMapped(1313672), *effectMapped(1313676), *effectMapped(1313680):
 		core, glow = *effectMapped(1313592), *effectMapped(1313588)
 	default:
-		core, glow = uint32(C.dword_5d4594_1313532), *effectMapped(1313528)
+		core, glow = uint32(dword_5d4594_1313532), *effectMapped(1313528)
 	}
 	if moving {
 		dx, dy := int(*effectShort(dr, 432))-dr.PosVec.X, int(*effectShort(dr, 434))-dr.PosVec.Y
@@ -237,7 +231,7 @@ func effectOrb(vp *noxrender.Viewport, dr *client.Drawable, moving bool) int {
 }
 
 func effectBlueRainSpark(vp *noxrender.Viewport, dr *client.Drawable) int {
-	result := effectMovingSpark(vp, dr, uint32(C.nox_color_white_2523948), uint32(C.dword_5d4594_1313540))
+	result := effectMovingSpark(vp, dr, uint32(nox_color_white_2523948), uint32(dword_5d4594_1313540))
 	if result == 1 && byte(dr.VelZ) >= 5 {
 		if *effectMapped(1313688) == 0 {
 			*effectMapped(1313688) = effectType("WhiteSpark")
@@ -254,8 +248,8 @@ func effectBlueRainSpark(vp *noxrender.Viewport, dr *client.Drawable) int {
 	return result
 }
 func effectRainOrb(vp *noxrender.Viewport, dr *client.Drawable) int {
-	if C.dword_5d4594_1313692 == 0 {
-		C.dword_5d4594_1313692 = C.uint32_t(effectType("RainOrbWhite"))
+	if dword_5d4594_1313692 == 0 {
+		dword_5d4594_1313692 = C.uint32_t(effectType("RainOrbWhite"))
 		*effectMapped(1313696) = effectType("RainOrbBlue")
 	}
 	z := int16(dr.ZVal)
@@ -263,8 +257,8 @@ func effectRainOrb(vp *noxrender.Viewport, dr *client.Drawable) int {
 		p := vp.ToScreenPos(dr.PosVec)
 		p.Y -= int(z)
 		color := *effectMapped(1313588)
-		if dr.TypeIDVal != uint32(C.dword_5d4594_1313692) {
-			color = uint32(C.dword_5d4594_1313536)
+		if dr.TypeIDVal != uint32(dword_5d4594_1313692) {
+			color = uint32(dword_5d4594_1313536)
 		}
 		effectGlow(p, color, int(*effectByte(dr, 442)), 5)
 		delta := int(z) - int(int16(*effectShort(dr, 440)))
@@ -290,7 +284,7 @@ func effectRainOrb(vp *noxrender.Viewport, dr *client.Drawable) int {
 	y := effectFloatInt(float32(float64(*memmap.PtrFloat32(0x587000, 194140+8*angle))*150 + float64(int32(*effectWord(dr, 436)))))
 	coords := [4]uint16{uint16(x), uint16(y), uint16(dr.PosVec.X), uint16(dr.PosVec.Y + 20)}
 	typ := *effectMapped(1313700)
-	if dr.TypeIDVal != uint32(C.dword_5d4594_1313692) {
+	if dr.TypeIDVal != uint32(dword_5d4594_1313692) {
 		typ = *effectMapped(1313704)
 	}
 	speed := byte(effectRand(6, 8))
@@ -302,21 +296,21 @@ func effectColoredSpark(vp *noxrender.Viewport, dr *client.Drawable, kind int) i
 	var core, glow uint32
 	switch kind {
 	case 0:
-		core, glow = uint32(C.dword_5d4594_1313532), *effectMapped(1313528)
+		core, glow = uint32(dword_5d4594_1313532), *effectMapped(1313528)
 	case 1:
-		core, glow = uint32(C.dword_5d4594_1313540), uint32(C.dword_5d4594_1313536)
+		core, glow = uint32(dword_5d4594_1313540), uint32(dword_5d4594_1313536)
 	case 2:
 		core, glow = *effectMapped(1313548), *effectMapped(1313544)
 	case 3:
 		core, glow = *effectMapped(1313584), *effectMapped(1313580)
 	case 4:
-		core, glow = uint32(C.dword_5d4594_1313532), *effectMapped(1313576)
+		core, glow = uint32(dword_5d4594_1313532), *effectMapped(1313576)
 	case 5:
 		core, glow = *effectMapped(1313556), *effectMapped(1313552)
 	case 6:
 		core, glow = *effectMapped(1313572), *effectMapped(1313568)
 	case 7:
-		core, glow = uint32(C.nox_color_white_2523948), uint32(C.dword_5d4594_1313540)
+		core, glow = uint32(nox_color_white_2523948), uint32(dword_5d4594_1313540)
 	}
 	return effectMovingSpark(vp, dr, core, glow)
 }

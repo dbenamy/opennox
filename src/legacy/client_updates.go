@@ -4,8 +4,6 @@ package legacy
 #include "defs.h"
 #include "client__draw__glowdraw.h"
 int sub_4CE340(int,int);
-extern uint32_t dword_5d4594_1522956;
-extern uint32_t dword_5d4594_1522968;
 */
 import "C"
 
@@ -139,8 +137,8 @@ func updateFireballFrame(dr *client.Drawable, speed int) int {
 }
 func updateManaBomb(dr *client.Drawable) int {
 	radius := int(GetServer().S().Balance.Float("ManaBombOutRadius"))
-	if C.dword_5d4594_1522956 == 0 {
-		C.dword_5d4594_1522956 = C.uint32_t(effectType("ManaBombOrb"))
+	if dword_5d4594_1522956 == 0 {
+		dword_5d4594_1522956 = C.uint32_t(effectType("ManaBombOrb"))
 		*effectMapped(1522960) = effectType("VioletSpark")
 	}
 	for i := 0; i < 20; i++ {
@@ -166,8 +164,8 @@ func updateManaBomb(dr *client.Drawable) int {
 		for angle := int(gameFrame() % 51); angle < 256; angle += 51 {
 			coords[2] = coords[0] + int16(radius/16*int(*memmap.PtrInt16(0x587000, 192088+uintptr(8*angle))))
 			coords[3] = coords[1] + int16(radius/16*int(*memmap.PtrInt16(0x587000, 192092+uintptr(8*angle))))
-			effectCreateOrbit(int(C.dword_5d4594_1522956), &coords, int16(angle), 0, 0)
-			effectCreateOrbit(int(C.dword_5d4594_1522956), &coords, int16(angle), 1, 0)
+			effectCreateOrbit(int(dword_5d4594_1522956), &coords, int16(angle), 0, 0)
+			effectCreateOrbit(int(dword_5d4594_1522956), &coords, int16(angle), 1, 0)
 		}
 	}
 	return 1
@@ -354,11 +352,11 @@ func updateHealDrain(vp *noxrender.Viewport, dr *client.Drawable, heal bool) int
 	return 1
 }
 func updateCharm(vp *noxrender.Viewport, dr *client.Drawable) int {
-	if C.dword_5d4594_1522968 == 0 {
-		C.dword_5d4594_1522968 = C.uint32_t(effectType("CharmOrb"))
+	if dword_5d4594_1522968 == 0 {
+		dword_5d4594_1522968 = C.uint32_t(effectType("CharmOrb"))
 	}
-	updateTransfer(int(C.dword_5d4594_1522968), vp, dr, true, true)
-	updateTransfer(int(C.dword_5d4594_1522968), vp, dr, false, true)
+	updateTransfer(int(dword_5d4594_1522968), vp, dr, true, true)
+	updateTransfer(int(dword_5d4594_1522968), vp, dr, false, true)
 	return 1
 }
 func updateHeight(dr *client.Drawable, bounce bool) int {

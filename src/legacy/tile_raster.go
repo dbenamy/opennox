@@ -2,11 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t dword_5d4594_3798804;
-extern uint32_t dword_5d4594_3798820, dword_5d4594_3798824;
-extern uint32_t dword_5d4594_3798836, dword_5d4594_3798840;
-extern unsigned int dword_5d4594_1193156;
-extern uint32_t dword_5d4594_1193188;
 extern void* nox_video_tileBuf_ptr_3798796;
 extern void* nox_video_tileBuf_end_3798844;
 */
@@ -19,14 +14,14 @@ import (
 )
 
 func tileRasterWrapSetup() {
-	C.dword_5d4594_1193188 = 1
-	stride := uint32(C.dword_5d4594_3798804)
+	dword_5d4594_1193188 = 1
+	stride := uint32(dword_5d4594_3798804)
 	*memmap.PtrUint32(0x973CE0, 376) = 45*stride + (uint32(46) << memmap.Uint8(0x973F18, 7696))
 }
 
 // These two private fast paths always use the original 16-bit diamond layout.
 func tileRasterCopyPacked(dst, source unsafe.Pointer) {
-	stride := int(C.dword_5d4594_3798804)
+	stride := int(dword_5d4594_3798804)
 	offset := 0
 	for y := 0; y < 46; y++ {
 		radius := min(y, 45-y)
@@ -36,7 +31,7 @@ func tileRasterCopyPacked(dst, source unsafe.Pointer) {
 	}
 }
 func tileRasterFillPacked(dst unsafe.Pointer, color uint32) {
-	stride := int(C.dword_5d4594_3798804)
+	stride := int(dword_5d4594_3798804)
 	for y := 0; y < 46; y++ {
 		radius := min(y, 45-y)
 		left, width := 23-radius, 2*radius+1
@@ -53,9 +48,9 @@ func tileRasterFillPacked(dst unsafe.Pointer, color uint32) {
 func tileRasterOffset(pos image.Point) (base unsafe.Pointer, offset, size, stride int) {
 	base = C.nox_video_tileBuf_ptr_3798796
 	size = int(uintptr(C.nox_video_tileBuf_end_3798844) - uintptr(base))
-	stride = int(C.dword_5d4594_3798804)
-	x := uint32(C.dword_5d4594_3798836) + uint32(pos.X) - uint32(C.dword_5d4594_3798820)
-	y := uint32(C.dword_5d4594_3798840) + uint32(pos.Y) - uint32(C.dword_5d4594_3798824)
+	stride = int(dword_5d4594_3798804)
+	x := uint32(dword_5d4594_3798836) + uint32(pos.X) - uint32(dword_5d4594_3798820)
+	y := uint32(dword_5d4594_3798840) + uint32(pos.Y) - uint32(dword_5d4594_3798824)
 	offset = int(uint32(stride)*y + (x << memmap.Uint8(0x973F18, 7696)))
 	if offset >= size {
 		offset -= size
@@ -88,7 +83,7 @@ func tileRasterTexture(pos image.Point, handle noxrender.ImageHandle) {
 func tileRasterFill(pos image.Point, tile uint16) {
 	def := &tileDefinitionsAll()[tile]
 	if !Get_nox_client_texturedFloors_154956() && def.Field58&1 != 0 {
-		C.dword_5d4594_1193156 = 1
+		dword_5d4594_1193156 = 1
 	}
 	color := def.Color48
 	base, offset, size, stride := tileRasterOffset(pos)

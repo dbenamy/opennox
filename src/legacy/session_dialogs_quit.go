@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t nox_color_black_2650656,nox_color_orange_2614256;
-extern unsigned int nox_player_netCode_85319C;
-*/
-import "C"
 import (
 	"image"
 	"unsafe"
@@ -33,13 +27,13 @@ func sessionQuitHide() {
 }
 func sessionQuitColors() *gui.Window {
 	if sessionQuitRoot != nil {
-		sessionQuitRoot.DrawData().BgColorVal = uint32(C.nox_color_black_2650656)
+		sessionQuitRoot.DrawData().BgColorVal = uint32(nox_color_black_2650656)
 	}
 	var last *gui.Window
 	for id := uint(9001); id <= 9006; id++ {
 		last = sessionQuitRoot.ChildByID(id)
 		if last != nil {
-			last.DrawData().TextColorVal = uint32(C.nox_color_orange_2614256)
+			last.DrawData().TextColorVal = uint32(nox_color_orange_2614256)
 		}
 	}
 	return last
@@ -153,7 +147,7 @@ func SessionQuitEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 		sessionQuitToggle()
 	case 9007:
 		if noxflags.HasGame(noxflags.GameHost) {
-			consoleCommandRemote(GetServer().S().Players.ByID(int(C.nox_player_netCode_85319C)), 0, "")
+			consoleCommandRemote(GetServer().S().Players.ByID(int(nox_player_netCode_85319C)), 0, "")
 		} else {
 			Nox_xxx_netServerCmd_440950(0, "")
 		}

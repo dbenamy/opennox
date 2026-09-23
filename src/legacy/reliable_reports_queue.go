@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-extern uint32_t dword_5d4594_2649712;
-extern uint32_t dword_5d4594_1565512, dword_5d4594_1565516, dword_5d4594_1565520;
-*/
-import "C"
-
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -45,18 +38,18 @@ type reliableRateState struct {
 }
 
 func reliableHead() **reliableMessage {
-	return (**reliableMessage)(unsafe.Pointer(&C.dword_5d4594_1565512))
+	return (**reliableMessage)(unsafe.Pointer(&dword_5d4594_1565512))
 }
 func reliableTail() **reliableMessage {
-	return (**reliableMessage)(unsafe.Pointer(&C.dword_5d4594_1565516))
+	return (**reliableMessage)(unsafe.Pointer(&dword_5d4594_1565516))
 }
-func reliableCapacity() *uint32      { return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1565520)) }
+func reliableCapacity() *uint32      { return (*uint32)(unsafe.Pointer(&dword_5d4594_1565520)) }
 func reliablePool() *unsafe.Pointer  { return memmap.PtrPtr(0x5D4594, 1565508) }
 func reliableSequences() *[32]uint16 { return (*[32]uint16)(memmap.PtrOff(0x5D4594, 1565524)) }
 func reliableRates() *[32]reliableRateState {
 	return (*[32]reliableRateState)(memmap.PtrOff(0x5D4594, 1565124))
 }
-func reliableMask() uint32 { return uint32(C.dword_5d4594_2649712) }
+func reliableMask() uint32 { return uint32(dword_5d4594_2649712) }
 func reliableRate() uint32 { return *memmap.PtrUint32(0x587000, 4728) }
 
 func reliableRecalculate(to int) int {

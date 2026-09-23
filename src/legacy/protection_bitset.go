@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_2516348;
-extern uint32_t dword_5d4594_2516328;
 */
 import "C"
 import (
@@ -17,14 +15,14 @@ func nox_xxx_playerAwardSpellProtectionCRC_56FCE0(id, index, enabled C.int) C.in
 	if id < 657757279 {
 		return id
 	}
-	key := uint32(C.dword_5d4594_2516348)
+	key := uint32(dword_5d4594_2516348)
 	r := protection.Find(protectionHead(), key, uint32(id))
 	if r == nil {
 		return id
 	}
 	old := r.Value
 	r.Value = ((old ^ key) | protection.Bit(int32(index), int32(enabled))) ^ key
-	C.dword_5d4594_2516328 ^= C.uint32_t(old ^ r.Value)
+	dword_5d4594_2516328 ^= C.uint32_t(old ^ r.Value)
 	return C.int(r.Value)
 }
 
@@ -33,7 +31,7 @@ func nox_xxx_playerApplyProtectionCRC_56FD50(id C.int, data unsafe.Pointer, coun
 	if id < 657757279 {
 		return 0
 	}
-	key := uint32(C.dword_5d4594_2516348)
+	key := uint32(dword_5d4594_2516348)
 	r := protection.Find(protectionHead(), key, uint32(id))
 	if r == nil {
 		return 0

@@ -2,18 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME2.h"
-#include "GAME1_2.h"
-#include "client__gui__gui_ctf.h"
-#include "client__gui__servopts__playrlst.h"
-extern uint32_t dword_5d4594_527656;
-extern uint32_t dword_5d4594_1045636;
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -110,9 +98,9 @@ func PortTestTeamUISelectedName(index int) string { return teamUISelectedName(in
 // Extracted window pointers are independent of the old backing-blob slots.
 func PortTestTeamUIWords() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
-		"ball-start-type": (*uint32)(unsafe.Pointer(&C.dword_5d4594_527656)),
+		"ball-start-type": (*uint32)(unsafe.Pointer(&dword_5d4594_527656)),
 		"ctf":             teamUIWord(1045604),
-		"ball":            (*uint32)(unsafe.Pointer(&C.dword_5d4594_1045636)),
+		"ball":            (*uint32)(unsafe.Pointer(&dword_5d4594_1045636)),
 		"ball-visible":    teamUIWord(1045640),
 		"players":         teamUIWord(1045684),
 		"join":            teamUIWord(1045688),

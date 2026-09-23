@@ -6,8 +6,6 @@ package legacy
 #include "GAME1_3.h"
 #include "GAME3_2.h"
 #include "GAME4_1.h"
-extern unsigned int dword_5d4594_2650652;
-extern uint32_t dword_5d4594_830272;
 */
 import "C"
 import (
@@ -23,7 +21,7 @@ var (
 
 //export nox_xxx____setargv_4_44B000
 func nox_xxx____setargv_4_44B000() {
-	C.dword_5d4594_830272 = 1
+	dword_5d4594_830272 = 1
 }
 
 //export sub_446380
@@ -69,11 +67,11 @@ func Nox_xxx____setargv_4_44B000() {
 }
 
 func Get_dword_5d4594_2650652() int {
-	return int(C.dword_5d4594_2650652)
+	return int(dword_5d4594_2650652)
 }
 
 func Set_dword_5d4594_2650652(v int) {
-	C.dword_5d4594_2650652 = C.uint(v)
+	dword_5d4594_2650652 = C.uint(v)
 }
 
 func Sub_41CEE0(p unsafe.Pointer, a2 int) {

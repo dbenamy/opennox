@@ -1,9 +1,5 @@
 package legacy
 
-/*
-extern int nox_win_width;
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client"
 	"math"
@@ -32,7 +28,7 @@ func clientDrawableLoopAudio(source, listener *client.Drawable) {
 				if volume < 0 {
 					volume = 0
 				}
-				half := int32(C.nox_win_width) / 2
+				half := int32(nox_win_width) / 2
 				if half != 0 {
 					pan = 50 * int32(source.PosVec.X-vp.World.Max.X-vp.Screen.Min.X) / half
 				}

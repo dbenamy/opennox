@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern int nox_win_width, nox_win_height;
-extern uint32_t nox_color_white_2523948, nox_color_yellow_2589772;
 int sub_478E50(int,int,unsigned int);
 */
 import "C"
@@ -32,7 +30,7 @@ func uiShopInit() int {
 		uiShopGrid()[i].Drawable = nil
 	}
 	uiShopClear()
-	w.SetPos(image.Pt(int(C.nox_win_width)-w.SizeVal.X, int(C.nox_win_height)-w.SizeVal.Y))
+	w.SetPos(image.Pt(int(nox_win_width)-w.SizeVal.X, int(nox_win_height)-w.SizeVal.Y))
 	w.Hide()
 	uiWindowEnable(w, 0)
 	for _, v := range []struct {
@@ -147,7 +145,7 @@ func uiShopStart(name *uint16, greeting string, typ uint32) int {
 	return gui.EventRespInt(uiInventoryWindowValue(*uiShopWord(1098580)).Func94(gui.AsWindowEvent(16394, uintptr(*uiShopWord(1098592)), 0)))
 }
 func uiShopDraw() int {
-	p := image.Pt(int(C.nox_win_width)-640, int(C.nox_win_height)-480)
+	p := image.Pt(int(nox_win_width)-640, int(nox_win_height)-480)
 	uiMeterImage(*uiShopWord(1098400), p)
 	switch uiShopMode() {
 	case 2:
@@ -170,7 +168,7 @@ func uiShopDrawText(p image.Point, mode int) int {
 	pos := uiWindowPosition(w)
 	size := w.SizeVal
 	if mode != 3 {
-		nox_xxx_drawSetTextColor_434390(int(C.nox_color_white_2523948))
+		nox_xxx_drawSetTextColor_434390(int(nox_color_white_2523948))
 	}
 	uiMeterImage(*uiShopWord(1098456), p)
 	off := uintptr(1098604)
@@ -220,10 +218,10 @@ func uiShopDrawStock() int {
 					nox_client_drawRectFilledAlpha_49CF10(cx, y, 50, 50)
 				}
 				if c.Count > 1 {
-					nox_xxx_drawSetTextColor_434390(int(C.nox_color_white_2523948))
+					nox_xxx_drawSetTextColor_434390(int(nox_color_white_2523948))
 					drawText(c.Count, image.Pt(cx+5, y+5))
 				}
-				nox_xxx_drawSetTextColor_434390(int(C.nox_color_yellow_2589772))
+				nox_xxx_drawSetTextColor_434390(int(nox_color_yellow_2589772))
 				drawText(c.Value, image.Pt(cx+5, y-height+45))
 			}
 		}

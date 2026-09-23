@@ -7,37 +7,6 @@ package legacy
 #include "GAME2.h"
 #include "client__gui__guibook.h"
 extern nox_window* nox_win_unk1;
-extern uint32_t nox_xxx_aNox_cfg_0_587000_132132;
-extern uint32_t nox_xxx_aNox_cfg_0_587000_132136;
-extern unsigned int nox_player_netCode_85319C;
-extern int nox_win_width;
-extern int nox_win_height;
-extern uint32_t dword_5d4594_1046636;
-extern uint32_t dword_5d4594_1046640;
-extern uint32_t dword_5d4594_1046648;
-extern uint32_t dword_5d4594_1046652;
-extern uint32_t dword_5d4594_1046656;
-extern uint32_t dword_5d4594_1046852;
-extern uint32_t dword_5d4594_1046864;
-extern uint32_t dword_5d4594_1046868;
-extern uint32_t dword_5d4594_1046872;
-extern uint32_t dword_5d4594_1046924;
-extern uint32_t dword_5d4594_1046928;
-extern uint32_t dword_5d4594_1046932;
-extern uint32_t dword_5d4594_1046936;
-extern uint32_t dword_5d4594_1046944;
-extern uint32_t dword_5d4594_1046948;
-extern uint32_t dword_5d4594_1046952;
-extern uint32_t dword_5d4594_1046956;
-extern uint32_t dword_5d4594_1047512;
-extern uint32_t dword_5d4594_1047516;
-extern uint32_t dword_5d4594_1047520;
-extern uint32_t dword_5d4594_1047524;
-extern uint32_t dword_5d4594_1047528;
-extern uint32_t dword_5d4594_1047532;
-extern uint32_t dword_5d4594_1047536;
-extern uint32_t dword_5d4594_1047540;
-extern uint32_t dword_8531A0_2576;
 void nox_client_toggleSpellbook_45AC70();
 int nox_xxx_bookHideMB_45ACA0(int a1);
 int nox_xxx_bookClickSpell_45B1F0();
@@ -184,37 +153,37 @@ func PortTestBookCallbacks() map[string]unsafe.Pointer {
 func PortTestBookWords() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
 		"nox_win_unk1":                     (*uint32)(unsafe.Pointer(&C.nox_win_unk1)),
-		"nox_xxx_aNox_cfg_0_587000_132136": (*uint32)(unsafe.Pointer(&C.nox_xxx_aNox_cfg_0_587000_132136)),
-		"nox_player_netCode_85319C":        (*uint32)(unsafe.Pointer(&C.nox_player_netCode_85319C)),
-		"nox_win_width":                    (*uint32)(unsafe.Pointer(&C.nox_win_width)),
-		"nox_win_height":                   (*uint32)(unsafe.Pointer(&C.nox_win_height)),
-		"nox_xxx_aNox_cfg_0_587000_132132": (*uint32)(unsafe.Pointer(&C.nox_xxx_aNox_cfg_0_587000_132132)),
-		"dword_5d4594_1046636":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046636)),
-		"dword_5d4594_1046640":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046640)),
-		"dword_5d4594_1046648":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046648)),
-		"dword_5d4594_1046652":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046652)),
-		"dword_5d4594_1046656":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046656)),
-		"dword_5d4594_1046852":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046852)),
-		"dword_5d4594_1046864":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046864)),
-		"dword_5d4594_1046868":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046868)),
-		"dword_5d4594_1046872":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046872)),
-		"dword_5d4594_1046924":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046924)),
-		"dword_5d4594_1046928":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046928)),
-		"dword_5d4594_1046932":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046932)),
-		"dword_5d4594_1046936":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046936)),
-		"dword_5d4594_1046944":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046944)),
-		"dword_5d4594_1046948":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046948)),
-		"dword_5d4594_1046952":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046952)),
-		"dword_5d4594_1046956":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046956)),
-		"dword_5d4594_1047512":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047512)),
-		"dword_5d4594_1047516":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047516)),
-		"dword_5d4594_1047520":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047520)),
-		"dword_5d4594_1047524":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047524)),
-		"dword_5d4594_1047528":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047528)),
-		"dword_5d4594_1047532":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047532)),
-		"dword_5d4594_1047536":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047536)),
-		"dword_5d4594_1047540":             (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047540)),
-		"dword_8531A0_2576":                (*uint32)(unsafe.Pointer(&C.dword_8531A0_2576)),
+		"nox_xxx_aNox_cfg_0_587000_132136": (*uint32)(unsafe.Pointer(&nox_xxx_aNox_cfg_0_587000_132136)),
+		"nox_player_netCode_85319C":        (*uint32)(unsafe.Pointer(&nox_player_netCode_85319C)),
+		"nox_win_width":                    (*uint32)(unsafe.Pointer(&nox_win_width)),
+		"nox_win_height":                   (*uint32)(unsafe.Pointer(&nox_win_height)),
+		"nox_xxx_aNox_cfg_0_587000_132132": (*uint32)(unsafe.Pointer(&nox_xxx_aNox_cfg_0_587000_132132)),
+		"dword_5d4594_1046636":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046636)),
+		"dword_5d4594_1046640":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046640)),
+		"dword_5d4594_1046648":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046648)),
+		"dword_5d4594_1046652":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046652)),
+		"dword_5d4594_1046656":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046656)),
+		"dword_5d4594_1046852":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046852)),
+		"dword_5d4594_1046864":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046864)),
+		"dword_5d4594_1046868":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046868)),
+		"dword_5d4594_1046872":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046872)),
+		"dword_5d4594_1046924":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046924)),
+		"dword_5d4594_1046928":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046928)),
+		"dword_5d4594_1046932":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046932)),
+		"dword_5d4594_1046936":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046936)),
+		"dword_5d4594_1046944":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046944)),
+		"dword_5d4594_1046948":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046948)),
+		"dword_5d4594_1046952":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046952)),
+		"dword_5d4594_1046956":             (*uint32)(unsafe.Pointer(&dword_5d4594_1046956)),
+		"dword_5d4594_1047512":             (*uint32)(unsafe.Pointer(&dword_5d4594_1047512)),
+		"dword_5d4594_1047516":             (*uint32)(unsafe.Pointer(&dword_5d4594_1047516)),
+		"dword_5d4594_1047520":             (*uint32)(unsafe.Pointer(&dword_5d4594_1047520)),
+		"dword_5d4594_1047524":             (*uint32)(unsafe.Pointer(&dword_5d4594_1047524)),
+		"dword_5d4594_1047528":             (*uint32)(unsafe.Pointer(&dword_5d4594_1047528)),
+		"dword_5d4594_1047532":             (*uint32)(unsafe.Pointer(&dword_5d4594_1047532)),
+		"dword_5d4594_1047536":             (*uint32)(unsafe.Pointer(&dword_5d4594_1047536)),
+		"dword_5d4594_1047540":             (*uint32)(unsafe.Pointer(&dword_5d4594_1047540)),
+		"dword_8531A0_2576":                (*uint32)(unsafe.Pointer(&dword_8531A0_2576)),
 	}
 	saved := make(map[string]uint32, len(words))
 	for name, p := range words {

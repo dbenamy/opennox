@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_2516348;
-extern uint32_t dword_5d4594_2516328;
 */
 import "C"
 
@@ -13,14 +11,14 @@ func setProtectionRecord(id int32, value uint32) uint32 {
 	if id < 657757279 {
 		return uint32(id)
 	}
-	key := uint32(C.dword_5d4594_2516348)
+	key := uint32(dword_5d4594_2516348)
 	r := protection.Find(protectionHead(), key, uint32(id))
 	if r == nil {
 		return 0
 	}
 	old := r.Value
 	r.Value = value ^ key
-	C.dword_5d4594_2516328 ^= C.uint32_t(old ^ r.Value)
+	dword_5d4594_2516328 ^= C.uint32_t(old ^ r.Value)
 	return uint32(nox_xxx_protectData_56F5C0())
 }
 

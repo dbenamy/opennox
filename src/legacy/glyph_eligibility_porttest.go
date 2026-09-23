@@ -5,8 +5,6 @@ package legacy
 /*
 #include <stdint.h>
 #include "GAME5_2.h"
-extern uint32_t dword_8531A0_2576;
-extern int nox_cheat_allowall;
 */
 import "C"
 
@@ -70,11 +68,11 @@ func PortTestGlyphEligibility(clientCacheInit, itemCacheInit uint32, calls []Por
 	local := memmap.PtrUint32(0x852978, 8)
 	oldClientCache, oldItemCache, oldLocal := *clientCache, *itemCache, *local
 	*clientCache, *itemCache = clientCacheInit, itemCacheInit
-	oldPlayer, oldCheat := C.dword_8531A0_2576, C.nox_cheat_allowall
+	oldPlayer, oldCheat := dword_8531A0_2576, nox_cheat_allowall
 	oldGet, oldMask := GetClient, Sub_57B370
 	defer func() {
 		*clientCache, *itemCache, *local = oldClientCache, oldItemCache, oldLocal
-		C.dword_8531A0_2576, C.nox_cheat_allowall = oldPlayer, oldCheat
+		dword_8531A0_2576, nox_cheat_allowall = oldPlayer, oldCheat
 		GetClient, Sub_57B370 = oldGet, oldMask
 	}()
 
@@ -100,9 +98,9 @@ func PortTestGlyphEligibility(clientCacheInit, itemCacheInit uint32, calls []Por
 		lookupClient, freeLookup := client.PortTestGlyphClient(call.LookupType)
 		proxy.cli = lookupClient
 		mask = call.ClassMask
-		C.nox_cheat_allowall = C.int(0)
+		nox_cheat_allowall = C.int(0)
 		if call.Cheat {
-			C.nox_cheat_allowall = 1
+			nox_cheat_allowall = 1
 		}
 		var player unsafe.Pointer
 		var freePlayer func()
@@ -112,9 +110,9 @@ func PortTestGlyphEligibility(clientCacheInit, itemCacheInit uint32, calls []Por
 				*(*byte)(unsafe.Add(player, i)) = 0xa7
 			}
 			*(*byte)(unsafe.Add(player, portTestGlyphPlayerClassOff)) = call.PlayerClass
-			C.dword_8531A0_2576 = C.uint(uintptr(player))
+			dword_8531A0_2576 = C.uint(uintptr(player))
 		} else {
-			C.dword_8531A0_2576 = 0
+			dword_8531A0_2576 = 0
 		}
 		var drawable unsafe.Pointer
 		var freeDrawable func()

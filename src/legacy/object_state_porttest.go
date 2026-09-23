@@ -6,7 +6,6 @@ package legacy
 #include <string.h>
 #include "GAME3_2.h"
 #include "GAME3_3.h"
-extern uint32_t dword_5d4594_1565628,dword_5d4594_1565632;
 int nox_objectCollideDefault(int,int,float*);
 static void* stateFunction(int id){switch(id){
 case 0:return (void*)nox_xxx_unitNeedSync_4E44F0;
@@ -160,9 +159,9 @@ func (p *portTestShopPools) objectStatePrepare() func() {
 		}
 		*memmap.PtrUint32(0x5d4594, uintptr(off)) = v
 	}
-	oldX, oldY := C.dword_5d4594_1565628, C.dword_5d4594_1565632
-	C.dword_5d4594_1565628 = 0
-	C.dword_5d4594_1565632 = 0
+	oldX, oldY := dword_5d4594_1565628, dword_5d4594_1565632
+	dword_5d4594_1565628 = 0
+	dword_5d4594_1565632 = 0
 	raw := unsafe.Slice((*byte)(memmap.PtrOff(0x587000, 203080)), 644)
 	saved := bytes.Clone(raw)
 	copy(raw, blobdata.PortTestObjectStateLoot())
@@ -191,7 +190,7 @@ func (p *portTestShopPools) objectStatePrepare() func() {
 		for i, off := range objectStateOffsets {
 			*memmap.PtrUint32(0x5d4594, off) = old[i]
 		}
-		C.dword_5d4594_1565628, C.dword_5d4594_1565632 = oldX, oldY
+		dword_5d4594_1565628, dword_5d4594_1565632 = oldX, oldY
 		copy(raw, saved)
 	}
 }
@@ -278,7 +277,7 @@ func (p *portTestShopPools) objectStateSnapshot(out []uint32) []uint32 {
 	}
 	out = append(out, uint32(len(s.disabled)))
 	out = append(out, s.disabled...)
-	out = append(out, p.normalize(uint32(s.result)), uint32(s.result>>32), uint32(C.dword_5d4594_1565628), uint32(C.dword_5d4594_1565632))
+	out = append(out, p.normalize(uint32(s.result)), uint32(s.result>>32), uint32(dword_5d4594_1565628), uint32(dword_5d4594_1565632))
 	for _, off := range objectStateOffsets {
 		out = append(out, p.normalize(*memmap.PtrUint32(0x5d4594, off)))
 	}

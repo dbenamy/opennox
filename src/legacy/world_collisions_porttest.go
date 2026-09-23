@@ -7,12 +7,6 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME3_2.h"
 extern int nox_server_gameSettingsUpdated;
-extern uint32_t dword_5d4594_1567960;
-extern uint64_t qword_5d4594_1567940;
-extern unsigned int gameex_flags;
-extern uint32_t dword_5d4594_1556136;
-extern uint32_t dword_5d4594_1565628;
-extern uint32_t dword_5d4594_1565632;
 */
 import "C"
 
@@ -90,13 +84,13 @@ func PortTestWorldCollision(op int, a, b *server.Object, normal *types.Pointf) u
 	return rv
 }
 func PortTestWorldCollisionGlobals() (map[string]*uint32, *uint64, func()) {
-	words := map[string]*uint32{"glyph": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1567960)), "extensions": (*uint32)(unsafe.Pointer(&C.gameex_flags))}
-	words["soulFrame"] = (*uint32)(unsafe.Pointer(&C.dword_5d4594_1556136))
+	words := map[string]*uint32{"glyph": (*uint32)(unsafe.Pointer(&dword_5d4594_1567960)), "extensions": (*uint32)(unsafe.Pointer(&gameex_flags))}
+	words["soulFrame"] = (*uint32)(unsafe.Pointer(&dword_5d4594_1556136))
 	words["warpOpen"] = memmap.PtrUint32(0x5D4594, 1556120)
 	words["settingsUpdated"] = (*uint32)(unsafe.Pointer(&C.nox_server_gameSettingsUpdated))
 	words["savePortal"] = &orchestrationRestoreCleanup
-	words["directionX"] = (*uint32)(unsafe.Pointer(&C.dword_5d4594_1565628))
-	words["directionY"] = (*uint32)(unsafe.Pointer(&C.dword_5d4594_1565632))
+	words["directionX"] = (*uint32)(unsafe.Pointer(&dword_5d4594_1565628))
+	words["directionY"] = (*uint32)(unsafe.Pointer(&dword_5d4594_1565632))
 	for _, off := range []uintptr{1565652, 1565656, 1565636, 1567708, 1565640} {
 		words[fmt.Sprint(off)] = memmap.PtrUint32(0x5D4594, off)
 	}
@@ -105,7 +99,7 @@ func PortTestWorldCollisionGlobals() (map[string]*uint32, *uint64, func()) {
 		old[k] = *p
 		*p = 0
 	}
-	ticks := (*uint64)(unsafe.Pointer(&C.qword_5d4594_1567940))
+	ticks := (*uint64)(unsafe.Pointer(&qword_5d4594_1567940))
 	oldTicks := *ticks
 	*ticks = 0
 	buf := unsafe.Slice((*byte)(memmap.PtrOff(0x5D4594, 1567844)), 96)

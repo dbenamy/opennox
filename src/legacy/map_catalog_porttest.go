@@ -6,8 +6,6 @@ package legacy
 #include <stdlib.h>
 #include "GAME3_2.h"
 extern nox_list_item_t nox_common_maplist;
-extern uint32_t dword_5d4594_1548476;
-extern uint32_t dword_5d4594_1548480;
 */
 import "C"
 import (
@@ -49,8 +47,8 @@ func PortTestMapCatalogOpen(seed int) *PortTestMapCatalog {
 	}
 	save(unsafe.Pointer(&C.nox_common_maplist), 12)
 	listClear((*legacyListNode)(unsafe.Pointer(&C.nox_common_maplist)))
-	save(unsafe.Pointer(&C.dword_5d4594_1548476), 4)
-	save(unsafe.Pointer(&C.dword_5d4594_1548480), 4)
+	save(unsafe.Pointer(&dword_5d4594_1548476), 4)
+	save(unsafe.Pointer(&dword_5d4594_1548480), 4)
 	save(memmap.PtrOff(0x5D4594, 1524108), 1024)
 	save(memmap.PtrOff(0x5D4594, 1525132), 128*32)
 	save(memmap.PtrOff(0x5D4594, 1529228), 6*25*128)
@@ -110,8 +108,8 @@ func (f *PortTestMapCatalog) Played(name *string) {
 	}
 }
 func (f *PortTestMapCatalog) State() (s PortTestMapCatalogState) {
-	s.Count = uint32(C.dword_5d4594_1548476)
-	s.Clock = uint32(C.dword_5d4594_1548480)
+	s.Count = uint32(dword_5d4594_1548476)
+	s.Clock = uint32(dword_5d4594_1548480)
 	s.Last = *memmap.PtrUint32(0x587000, 191880)
 	s.Quest = bytes.Clone(unsafe.Slice(memmap.PtrUint8(0x5D4594, 1525132), 128*32))
 	s.Cycle = bytes.Clone(unsafe.Slice(memmap.PtrUint8(0x5D4594, 1529228), 6*25*128))
@@ -120,8 +118,8 @@ func (f *PortTestMapCatalog) State() (s PortTestMapCatalogState) {
 	return
 }
 func (f *PortTestMapCatalog) RestoreState(s PortTestMapCatalogState) {
-	C.dword_5d4594_1548476 = C.uint32_t(s.Count)
-	C.dword_5d4594_1548480 = C.uint32_t(s.Clock)
+	dword_5d4594_1548476 = C.uint32_t(s.Count)
+	dword_5d4594_1548480 = C.uint32_t(s.Clock)
 	*memmap.PtrUint32(0x587000, 191880) = s.Last
 	copy(unsafe.Slice(memmap.PtrUint8(0x5D4594, 1525132), 128*32), s.Quest)
 	copy(unsafe.Slice(memmap.PtrUint8(0x5D4594, 1529228), 6*25*128), s.Cycle)

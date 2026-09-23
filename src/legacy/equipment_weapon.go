@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME4.h"
-extern unsigned int gameex_flags;
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
@@ -84,7 +78,7 @@ func equipmentDequipWeapon(u, it *server.Object, report, broadcast int) int {
 	}
 	equipmentEffects(it, u, false)
 	// Keep the community shield-selection behavior controlled by gameex bit 2.
-	if C.gameex_flags&2 != 0 {
+	if gameex_flags&2 != 0 {
 		equipmentSaveShield(u)
 		secondary := *(**server.Object)(unsafe.Add(u.UpdateData, 108))
 		if secondary == nil || equipmentWeaponBits(secondary)&0x7ffe40c == 0 {

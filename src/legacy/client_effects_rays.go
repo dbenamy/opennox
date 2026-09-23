@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_1304328;
 */
 import "C"
 
@@ -29,7 +28,7 @@ func effectDispatchRay(packet *[9]byte) uint32 {
 		} {
 			*effectMapped(v.offset) = effectType(v.name)
 		}
-		C.dword_5d4594_1304328 = C.uint32_t(effectType("OrbRay"))
+		dword_5d4594_1304328 = C.uint32_t(effectType("OrbRay"))
 	}
 	var coords [4]uint16
 	for i := range coords {
@@ -48,7 +47,7 @@ func effectDispatchRay(packet *[9]byte) uint32 {
 		typ = *effectMapped(1304320)
 	case 0x8f, 0x90, 0x91:
 		speed := byte(effectRand(6, 12))
-		typ = uint32(C.dword_5d4594_1304328)
+		typ = uint32(dword_5d4594_1304328)
 		offset := uintptr(1304336)
 		if packet[0] == 0x90 {
 			offset = 1304344

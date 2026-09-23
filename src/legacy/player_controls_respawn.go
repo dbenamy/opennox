@@ -10,7 +10,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_2.h"
 #include "GAME4_3.h"
-extern unsigned int dword_5d4594_2650652;
 static void* controlNormalUpdate(void) { return nox_xxx_updatePlayer_4F8100; }
 static void* controlBotUpdateAddress(void) { return nox_xxx_updatePlayerMonsterBot_4FAB20; }
 */
@@ -228,7 +227,7 @@ func controlLeaveObserver(pl unsafe.Pointer) {
 	}
 }
 func controlMakeCorpse(u *server.Object, settings unsafe.Pointer) {
-	if C.dword_5d4594_2650652 == 0 || *equipmentWord(settings, 58) != 0 {
+	if dword_5d4594_2650652 == 0 || *equipmentWord(settings, 58) != 0 {
 		playerCorpseCreate(u.PosVec, int32(int16(u.Direction1)))
 	}
 }

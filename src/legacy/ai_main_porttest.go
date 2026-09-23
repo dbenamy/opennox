@@ -5,7 +5,6 @@ package legacy
 /*
 #include "GAME5.h"
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_2489460;
 */
 import "C"
 
@@ -60,7 +59,7 @@ func portTestMainEnvironment(proxy *portTestRoamOwnerServer) func() {
 	for i, o := range offsets {
 		old[i] = *memmap.PtrUint32(0x5D4594, o)
 	}
-	danger, cursorOwner := C.dword_5d4594_2489460, spatialCursorOwner
+	danger, cursorOwner := dword_5d4594_2489460, spatialCursorOwner
 	oldCast := Nox_xxx_castSpellByUser_4FDD20
 	Nox_xxx_castSpellByUser_4FDD20 = func(spell int, u *server.Object, args unsafe.Pointer) int {
 		words := unsafe.Slice((*uint32)(args), 3)
@@ -82,7 +81,7 @@ func portTestMainEnvironment(proxy *portTestRoamOwnerServer) func() {
 		for i, o := range offsets {
 			*memmap.PtrUint32(0x5D4594, o) = old[i]
 		}
-		C.dword_5d4594_2489460, spatialCursorOwner = danger, cursorOwner
+		dword_5d4594_2489460, spatialCursorOwner = danger, cursorOwner
 		freeGrid()
 		freeHost()
 		freeTypes()
@@ -117,7 +116,7 @@ func portTestMainPrepare(proxy *portTestRoamOwnerServer, u *server.Object, sp *P
 	for i, v := range []uint32{sp.CacheCloud, sp.CacheSmall, sp.Cursor, 0, 0, 0} {
 		*memmap.PtrUint32(0x5D4594, []uintptr{2489468, 2489472, 1096672, 2491596, 2491600, 2491604}[i]) = v
 	}
-	C.dword_5d4594_2489460 = C.uint32_t(sp.Danger)
+	dword_5d4594_2489460 = C.uint32_t(sp.Danger)
 	spatialCursorOwner = 0
 	p := &proxy.life.players[0]
 	pi := p.UpdateDataPlayer().Player
@@ -205,7 +204,7 @@ func portTestMainTrace(proxy *portTestRoamOwnerServer, rv uint32, normalize func
 	for _, o := range []uintptr{2489468, 2489472, 1096672, 2491596, 2491600, 2491604} {
 		r.Globals = append(r.Globals, normalize(*memmap.PtrUint32(0x5D4594, o)))
 	}
-	r.Globals = append(r.Globals, uint32(C.dword_5d4594_2489460), normalize(uint32(spatialCursorOwner)))
+	r.Globals = append(r.Globals, uint32(dword_5d4594_2489460), normalize(uint32(spatialCursorOwner)))
 	r.Globals = append(r.Globals, normalize(*memmap.PtrUint32(0x5D4594, 2487956)), *memmap.PtrUint32(0x5D4594, 2487988))
 	return r
 }

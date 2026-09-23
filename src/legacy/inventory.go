@@ -5,7 +5,6 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4.h"
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_2488728;
 */
 import "C"
 
@@ -96,7 +95,7 @@ func inventoryDroppable(it *server.Object) bool {
 	if it == nil {
 		return false
 	}
-	if C.dword_5d4594_2488728 == 0 {
+	if dword_5d4594_2488728 == 0 {
 		equipmentInitDropTable()
 	}
 	for off := uintptr(279432); *memmap.PtrUint32(0x587000, off) != 0; off += 12 {

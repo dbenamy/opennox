@@ -2,12 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint64_t qword_581450_9544;
-extern uint64_t qword_581450_9552;
-extern uint32_t dword_5d4594_1313532;
-extern uint32_t dword_5d4594_1313536;
-extern uint32_t dword_5d4594_1313540;
-extern uint32_t dword_5d4594_1313564;
 */
 import "C"
 
@@ -31,7 +25,7 @@ func particleLightColor(p unsafe.Pointer, r, g, b int) unsafe.Pointer {
 	return p
 }
 func particleLightAngle(p unsafe.Pointer, angle int, penumbra bool) int64 {
-	value := int64(float64(angle)*0.0027777778*math.Float64frombits(uint64(C.qword_581450_9552)) + math.Float64frombits(uint64(C.qword_581450_9544)))
+	value := int64(float64(angle)*0.0027777778*math.Float64frombits(uint64(qword_581450_9552)) + math.Float64frombits(uint64(qword_581450_9544)))
 	off := 28
 	if penumbra {
 		off = 30
@@ -47,7 +41,7 @@ func particleLightIntensity(p unsafe.Pointer, intensity float32, fixed bool) int
 	}
 	*(*float32)(unsafe.Add(p, 4)) = intensity
 	if fixed {
-		value := int64(float64(intensity)*math.Float64frombits(uint64(C.qword_581450_9552)) + math.Float64frombits(uint64(C.qword_581450_9544)))
+		value := int64(float64(intensity)*math.Float64frombits(uint64(qword_581450_9552)) + math.Float64frombits(uint64(qword_581450_9544)))
 		*particleLightWord(p, 12) = uint32(value)
 	}
 	radius := client.LightRadius(intensity)
@@ -82,10 +76,10 @@ func initParticleColors() int {
 	} {
 		*effectMapped(uintptr(v[0])) = particleRGB(v[1], v[2], v[3])
 	}
-	C.dword_5d4594_1313532 = C.uint32_t(particleRGB(255, 255, 0))
-	C.dword_5d4594_1313536 = C.uint32_t(particleRGB(0, 0, 255))
-	C.dword_5d4594_1313540 = C.uint32_t(particleRGB(0, 200, 255))
-	C.dword_5d4594_1313564 = C.uint32_t(particleRGB(255, 255, 100))
+	dword_5d4594_1313532 = C.uint32_t(particleRGB(255, 255, 0))
+	dword_5d4594_1313536 = C.uint32_t(particleRGB(0, 0, 255))
+	dword_5d4594_1313540 = C.uint32_t(particleRGB(0, 200, 255))
+	dword_5d4594_1313564 = C.uint32_t(particleRGB(255, 255, 100))
 	red, green, blue := 255, 255, 255
 	for i := 0; i < 16; i++ {
 		if i <= 3 {

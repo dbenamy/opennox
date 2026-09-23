@@ -3,7 +3,6 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME2_1.h"
-extern uint32_t dword_5d4594_1062552, dword_5d4594_1049864, dword_5d4594_1062488;
 extern nox_window* nox_win_unk5;
 extern nox_window* dword_5d4594_1062452;
 */
@@ -40,10 +39,10 @@ func sub_467470(index int, v float32) int {
 	return int(i)
 }
 
-func sub_467490(v int) int { C.dword_5d4594_1062552 = C.uint32_t(v); return v }
+func sub_467490(v int) int { dword_5d4594_1062552 = C.uint32_t(v); return v }
 
 //export sub_4674A0
-func sub_4674A0() int { return int(C.dword_5d4594_1062552) }
+func sub_4674A0() int { return int(dword_5d4594_1062552) }
 
 //export nox_window_set_visible_unk5
 func nox_window_set_visible_unk5(v int) {
@@ -66,7 +65,7 @@ func sub_467590() int {
 	}
 	return 1
 }
-func uiInventoryMode() int { return int(C.dword_5d4594_1049864) }
+func uiInventoryMode() int { return int(dword_5d4594_1049864) }
 
 func uiInventoryItemHealth(code int, current, maximum int16) int16 {
 	if found := uiInventoryFindCode(uint32(code)); found != nil {
@@ -86,18 +85,18 @@ func uiInventoryItemHealth(code int, current, maximum int16) int16 {
 
 //export sub_467680
 func sub_467680() {
-	if C.dword_5d4594_1049864 == 6 {
-		C.dword_5d4594_1049864 = 0
+	if dword_5d4594_1049864 == 6 {
+		dword_5d4594_1049864 = 0
 	}
 }
 
 //export nox_xxx_wndGetHandle_4676A0
 func nox_xxx_wndGetHandle_4676A0() *C.nox_window { return C.dword_5d4594_1062452 }
 
-func sub_467740(v int) int { C.dword_5d4594_1062488 = C.uint32_t(v); return v }
+func sub_467740(v int) int { dword_5d4594_1062488 = C.uint32_t(v); return v }
 
 //export sub_4678C0
-func sub_4678C0() int { return int(C.dword_5d4594_1062488) }
+func sub_4678C0() int { return int(dword_5d4594_1062488) }
 
 func sub_467930(code, current, maximum int) *C.char {
 	if code == 0 {

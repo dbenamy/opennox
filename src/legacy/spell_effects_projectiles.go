@@ -7,7 +7,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_2.h"
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_2487804;
 */
 import "C"
 import (
@@ -179,10 +178,10 @@ func spellEffectMeteorShower(id int32, a, b, c *server.Object, record unsafe.Poi
 	return 1
 }
 func spellEffectMeteor(id int32, a, b, c *server.Object, record unsafe.Pointer, level int32) int32 {
-	if C.dword_5d4594_2487804 == 0 {
-		C.dword_5d4594_2487804 = C.uint32_t(GetServer().S().Types.IndByID("Meteor"))
+	if dword_5d4594_2487804 == 0 {
+		dword_5d4594_2487804 = C.uint32_t(GetServer().S().Types.IndByID("Meteor"))
 	}
-	typ := uint32(C.dword_5d4594_2487804)
+	typ := uint32(dword_5d4594_2487804)
 	for it := b.Field129; it != nil; it = it.Field128 {
 		if uint32(it.TypeInd) == typ {
 			resourcePriority(b, "ExecSpel.c:TooManyMeteors")

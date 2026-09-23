@@ -11,12 +11,6 @@ package legacy
 #include "GAME3.h"
 #include "GAME3_1.h"
 #include "GAME5.h"
-extern uint32_t dword_5d4594_1063116, dword_5d4594_1063120;
-extern uint32_t dword_5d4594_1049864, dword_5d4594_1049844;
-extern uint32_t dword_5d4594_1062516, dword_5d4594_1062512;
-extern uint32_t dword_5d4594_1062508, dword_5d4594_1049856;
-extern uint32_t dword_5d4594_1049796_inventory_click_column_index;
-extern uint32_t dword_5d4594_1049800_inventory_click_row_index;
 extern nox_window* dword_5d4594_1062452;
 */
 import "C"
@@ -34,11 +28,11 @@ func uiInventoryCloseIdentify() int {
 		return 0
 	}
 	w.Hide()
-	C.dword_5d4594_1063116, C.dword_5d4594_1063120 = 0, 0
+	dword_5d4594_1063116, dword_5d4594_1063120 = 0, 0
 	alloc.StrCopyZero16(unsafe.Slice((*uint16)(memmap.PtrOff(0x5D4594, 1063124)), 256), uiInventoryText("thing.db:IdentifyDescription"))
 	w.ChildByID(9156).Func94(&gui.RawEvent{Event: 16399})
 	uiInventoryMainWindow().Capture(false)
-	C.dword_5d4594_1049864 = 0
+	dword_5d4594_1049864 = 0
 	nox_client_setCursorType_477610(0)
 	return 1
 }
@@ -48,7 +42,7 @@ func sub_462740() C.int { return C.int(uiInventoryCloseIdentify()) }
 
 func uiInventoryOpenIdentify() int {
 	uiInventoryIdentifyWindow().Show()
-	C.dword_5d4594_1049864 = 5
+	dword_5d4594_1049864 = 5
 	nox_client_setCursorType_477610(6)
 	if !uiInventoryMainWindow().Capture(true) {
 		return -4
@@ -84,8 +78,8 @@ func uiInventoryOpenWindow() int {
 		*state = 1
 		audioEventPlay(789, 100, 0, 0)
 	}
-	C.dword_5d4594_1062512 = C.dword_5d4594_1062516
-	return int(int32(C.dword_5d4594_1062516))
+	dword_5d4594_1062512 = dword_5d4594_1062516
+	return int(int32(dword_5d4594_1062516))
 }
 
 //export sub_467BB0
@@ -117,7 +111,7 @@ func uiInventoryToggleWindow() int {
 }
 func uiInventoryRepairMode() int {
 	uiInventoryCloseIdentify()
-	C.dword_5d4594_1049864 = 6
+	dword_5d4594_1049864 = 6
 	nox_client_setCursorType_477610(8)
 	if uiInventoryWindowOpenState() {
 		return 1
@@ -132,8 +126,8 @@ func uiInventoryResetClosedScroll() int {
 	if uiInventoryWindowOpenState() {
 		return 1
 	}
-	C.dword_5d4594_1062516 = 0
-	w := (*gui.Window)(unsafe.Pointer(uintptr(C.dword_5d4594_1062508)))
+	dword_5d4594_1062516 = 0
+	w := (*gui.Window)(unsafe.Pointer(uintptr(dword_5d4594_1062508)))
 	if w == nil {
 		return 0
 	}
@@ -141,7 +135,7 @@ func uiInventoryResetClosedScroll() int {
 	return gui.EventRespInt(w.Func94(&gui.RawEvent{Event: 16394, Arg1: uintptr(uint32(max))}))
 }
 func uiInventorySetWindowLevel(level int) int {
-	C.dword_5d4594_1049844 = C.uint32_t(level)
+	dword_5d4594_1049844 = C.uint32_t(level)
 	return int(nox_xxx_inventoryNameSignInit_4671E0())
 }
 
@@ -150,7 +144,7 @@ func sub_465DE0(level C.int) C.int { return C.int(uiInventorySetWindowLevel(int(
 func uiInventoryCancelDrag() int {
 	ret := 0
 	if dr := uiInventoryDragged(); dr != nil {
-		if C.dword_5d4594_1049856 == 0 && uiInventoryPlace(dr, int(int32(C.dword_5d4594_1049796_inventory_click_column_index)), int(int32(C.dword_5d4594_1049800_inventory_click_row_index))) == 0 {
+		if dword_5d4594_1049856 == 0 && uiInventoryPlace(dr, int(int32(dword_5d4594_1049796_inventory_click_column_index)), int(int32(dword_5d4594_1049800_inventory_click_row_index))) == 0 {
 			nox_xxx_spritePickup_461660(C.int(dr.NetCode32), C.int(dr.TypeIDVal), unsafe.Add(dr.C(), 432))
 			if found := uiInventoryFindCode(dr.NetCode32); found != nil {
 				restored := found.Cell
@@ -172,11 +166,11 @@ func uiInventoryCancelDrag() int {
 		}
 		// Inventory restoration copies the item into another drawable. Only an
 		// equipment drag borrows its drawable; inventory drags own this temporary.
-		if C.dword_5d4594_1049856 == 0 {
+		if dword_5d4594_1049856 == 0 {
 			GetClient().Nox_xxx_spriteDelete_45A4B0(dr)
 		}
 		uiInventorySetDragged(nil)
-		C.dword_5d4594_1049856 = 0
+		dword_5d4594_1049856 = 0
 		Nox_xxx_cursorSetDraggedItem_477690(nil)
 		ret = 1
 	}

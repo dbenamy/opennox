@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t nox_color_yellow_2589772;
-extern unsigned int nox_player_netCode_85319C;
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -16,8 +10,8 @@ import (
 
 func PortTestCombatOverlayGlobals() (map[string]*uint32, map[string]*unsafe.Pointer, func()) {
 	words := map[string]*uint32{
-		"yellow":    (*uint32)(unsafe.Pointer(&C.nox_color_yellow_2589772)),
-		"localCode": (*uint32)(unsafe.Pointer(&C.nox_player_netCode_85319C)),
+		"yellow":    (*uint32)(unsafe.Pointer(&nox_color_yellow_2589772)),
+		"localCode": (*uint32)(unsafe.Pointer(&nox_player_netCode_85319C)),
 		"friends":   (*uint32)(unsafe.Pointer(&combatFriendHead)),
 		"health":    (*uint32)(unsafe.Pointer(&combatHealthHead)),
 		"font":      (*uint32)(unsafe.Pointer(&combatHealthFont)),

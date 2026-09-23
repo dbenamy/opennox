@@ -4,7 +4,6 @@ package legacy
 
 /*
 #include "GAME5.h"
-extern uint32_t dword_5d4594_2491716;
 */
 import "C"
 import (
@@ -64,7 +63,7 @@ type portTestGeneratorState struct {
 func portTestGeneratorEnvironment(proxy *portTestRoamOwnerServer) func() {
 	configure, intact, freeTiles := portTestGeneratorTileEnvironment()
 	_, configureBalance, freeServer := proxy.core.PortTestGeneratorEnvironment()
-	oldHardcore := C.dword_5d4594_2491716
+	oldHardcore := dword_5d4594_2491716
 	offsets := []uintptr{2491712, 2491720, 2491724, 2491728, 2491732, 2491736, 2491740, 2491744, 2388660}
 	oldWords := make([]uint32, len(offsets))
 	for i, o := range offsets {
@@ -77,7 +76,7 @@ func portTestGeneratorEnvironment(proxy *portTestRoamOwnerServer) func() {
 	freeObjects := portTestGeneratorObjectsEnvironment(proxy)
 	return func() {
 		*memmap.PtrUint32(0x5D4594, 2491708) = oldOccupied
-		C.dword_5d4594_2491716 = oldHardcore
+		dword_5d4594_2491716 = oldHardcore
 		for i, o := range offsets {
 			*memmap.PtrUint32(0x5D4594, o) = oldWords[i]
 		}
@@ -127,7 +126,7 @@ func portTestGeneratorPrepare(proxy *portTestRoamOwnerServer, u *server.Object, 
 	}
 	proxy.life.ids[uint32(uintptr(unsafe.Pointer(&st.point[2])))] = 996
 	st.configureBalance(sp.Balance)
-	C.dword_5d4594_2491716 = C.uint32_t(sp.Cache[0])
+	dword_5d4594_2491716 = C.uint32_t(sp.Cache[0])
 	for i := 1; i < 8; i++ {
 		*memmap.PtrUint32(0x5D4594, 2491716+uintptr(i*4)) = sp.Cache[i]
 	}
@@ -179,7 +178,7 @@ func portTestGeneratorTrace(proxy *portTestRoamOwnerServer, normalize func(uint3
 	for off := uintptr(0); off < 164; off += 4 {
 		r.Data = append(r.Data, normalize(*(*uint32)(unsafe.Add(proxy.combat.actor.UpdateData, off))))
 	}
-	r.Cache = append(r.Cache, uint32(C.dword_5d4594_2491716))
+	r.Cache = append(r.Cache, uint32(dword_5d4594_2491716))
 	for i := 1; i < 8; i++ {
 		r.Cache = append(r.Cache, *memmap.PtrUint32(0x5D4594, 2491716+uintptr(i*4)))
 	}

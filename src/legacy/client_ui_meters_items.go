@@ -3,8 +3,6 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME2_1.h"
-extern uint32_t nox_color_white_2523948;
-extern uint32_t dword_5d4594_1096252, dword_5d4594_1096272, dword_5d4594_1096276, dword_5d4594_1096280, dword_5d4594_1096284, dword_5d4594_1096288;
 */
 import "C"
 
@@ -59,13 +57,13 @@ func uiMeterPotionDraw(w *gui.Window) int {
 	s := uiMeterSlot(int(uintptr(w.WidgetData)))
 	pos := uiWindowPosition(w)
 	r := GetClient().R2()
-	font := r.GetFonts().AsFont(unsafe.Pointer(uintptr(C.dword_5d4594_1096288)))
+	font := r.GetFonts().AsFont(unsafe.Pointer(uintptr(dword_5d4594_1096288)))
 	if s.Count != 0 {
 		if s.Image != nil {
 			s.Image.PosVec = pos.Add(image.Pt(14, 15))
 			s.Image.CallDraw((*noxrender.Viewport)(memmap.PtrOff(0x5D4594, 1091908)))
 		}
-		r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_white_2523948))
+		r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_white_2523948))
 		r.DrawString(font, strconv.Itoa(int(s.Count)), image.Pt(pos.X-2, pos.Y-r.FontHeight(font)+10))
 	}
 	r.DrawString(font, alloc.GoString16(&s.Binding[0]), image.Pt(pos.X-2, pos.Y-r.FontHeight(font)+33))
@@ -106,11 +104,11 @@ func nox_xxx_guiBottleSlotProc_471B90(window, event int) int {
 //export nox_xxx_guiHealthManaTubeProc_472100
 func nox_xxx_guiHealthManaTubeProc_472100(window, event int) int {
 	if event == 7 {
-		old := uint32(C.dword_5d4594_1096252)
-		C.dword_5d4594_1096252 = C.uint32_t(1 - old)
+		old := uint32(dword_5d4594_1096252)
+		dword_5d4594_1096252 = C.uint32_t(1 - old)
 		uiMeterHide(uiMeters()[2].Window, old == 1)
 		if memmap.Uint8(0x85B3FC, 12254) != 0 {
-			uiMeterHide(uiMeters()[3].Window, C.dword_5d4594_1096252 == 0)
+			uiMeterHide(uiMeters()[3].Window, dword_5d4594_1096252 == 0)
 		}
 		Nox_xxx_clientPlaySoundSpecial_452D80(901, 100)
 	}
@@ -149,9 +147,9 @@ func sub_472280() *C.wchar2_t { return (*C.wchar2_t)(uiMeterBindings()) }
 
 func uiMeterRefreshPotions() uintptr {
 	count := func(typ uint32) uint16 { return uint16(uiInventoryTypeCount(typ)) }
-	uiMeterSlot(2).Count = count(uint32(C.dword_5d4594_1096276))
-	uiMeterSlot(1).Count = count(uint32(C.dword_5d4594_1096272))
-	uiMeterSlot(2).Count = count(uint32(C.dword_5d4594_1096276))
+	uiMeterSlot(2).Count = count(uint32(dword_5d4594_1096276))
+	uiMeterSlot(1).Count = count(uint32(dword_5d4594_1096272))
+	uiMeterSlot(2).Count = count(uint32(dword_5d4594_1096276))
 	slot := uiMeterSlot(0)
 	red := memmap.Uint32(0x5D4594, 1096268)
 	slot.Count = count(red)
@@ -163,14 +161,14 @@ func uiMeterRefreshPotions() uintptr {
 		}
 		return 0
 	}
-	meat := uint32(C.dword_5d4594_1096284)
+	meat := uint32(dword_5d4594_1096284)
 	slot.Count = count(meat)
 	if slot.Count != 0 {
 		uiMeterLinkPotion(0, meat)
 		slot.Type = meat
 		return uintptr(meat)
 	}
-	apple := uint32(C.dword_5d4594_1096280)
+	apple := uint32(dword_5d4594_1096280)
 	slot.Count = count(apple)
 	if slot.Count != 0 {
 		linked := uiMeterLinkPotion(0, apple)

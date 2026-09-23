@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t dword_5d4594_1305748;
 extern nox_render_data_t* nox_draw_curDrawData_3799572;
 */
 import "C"
@@ -18,7 +17,7 @@ func objectRenderClipData() *noxrender.RenderData {
 	return (*noxrender.RenderData)(unsafe.Pointer(C.nox_draw_curDrawData_3799572))
 }
 func objectRenderSaveClip() {
-	if C.dword_5d4594_1305748 != 0 {
+	if dword_5d4594_1305748 != 0 {
 		return
 	}
 	d := objectRenderClipData()
@@ -30,10 +29,10 @@ func objectRenderSaveClip() {
 	for i, v := range []int{rect.Min.X, rect.Min.Y, rect.Max.X, rect.Max.Y} {
 		*effectMapped(1305732 + 4*uintptr(i)) = uint32(v)
 	}
-	C.dword_5d4594_1305748 = 1
+	dword_5d4594_1305748 = 1
 }
 func objectRenderRestoreClip() int {
-	if C.dword_5d4594_1305748 == 0 {
+	if dword_5d4594_1305748 == 0 {
 		return 0
 	}
 	d := objectRenderClipData()
@@ -43,6 +42,6 @@ func objectRenderRestoreClip() int {
 	}
 	d.SetClipRect(rect(1305756))
 	d.SetClipRect2(rect(1305732))
-	C.dword_5d4594_1305748 = 0
+	dword_5d4594_1305748 = 0
 	return int(*effectMapped(1305740))
 }

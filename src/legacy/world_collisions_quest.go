@@ -5,7 +5,6 @@ package legacy
 #include "GAME3_2.h"
 #include "GAME3_3.h"
 #include "GAME4.h"
-extern uint32_t dword_5d4594_1567960;
 */
 import "C"
 
@@ -92,8 +91,8 @@ func worldQuestExitReady() bool {
 }
 func worldCollideExit(a, b *server.Object) {
 	core := GetServer().S()
-	if C.dword_5d4594_1567960 == 0 {
-		C.dword_5d4594_1567960 = C.uint32_t(core.Types.IndByID("Glyph"))
+	if dword_5d4594_1567960 == 0 {
+		dword_5d4594_1567960 = C.uint32_t(core.Types.IndByID("Glyph"))
 	}
 	if b == nil || b.ObjClass&4 == 0 {
 		return
@@ -116,7 +115,7 @@ func worldCollideExit(a, b *server.Object) {
 	pl := b.UpdateDataPlayer().Player
 	if *controlByte(pl.C(), 2251) == 1 {
 		for it := b.Field129; it != nil; it = it.Field128 {
-			if uint32(it.TypeInd) == uint32(C.dword_5d4594_1567960) && it.InvHolder == nil {
+			if uint32(it.TypeInd) == uint32(dword_5d4594_1567960) && it.InvHolder == nil {
 				GetServer().DelayedDelete(it)
 				if count := controlByte(d, 244); *count != 0 {
 					*count -= 1

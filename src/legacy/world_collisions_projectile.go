@@ -1,10 +1,5 @@
 package legacy
 
-/*
-extern unsigned int gameex_flags;
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/types"
@@ -30,7 +25,7 @@ func worldCollideSpellProjectile(a, b *server.Object, normal *types.Pointf) {
 		if !shield && state == 1 && controlActionState(b) == 45 {
 			class := *controlByte(controlPlayer(b), 3)
 			if class == 1 || class == 2 {
-				if uint32(C.gameex_flags)&16 == 0 {
+				if uint32(gameex_flags)&16 == 0 {
 					skipSword = true
 				} else {
 					shield = true
@@ -43,7 +38,7 @@ func worldCollideSpellProjectile(a, b *server.Object, normal *types.Pointf) {
 			Nox_xxx_changeOwner_52BE40(a, b)
 			return
 		}
-		if !skipSword && (state == 13 || state == 0 && uint32(C.gameex_flags)&4 != 0) && *equipmentWord(controlPlayer(b), 4)&0x400 != 0 && stateFront(&b.PosVec, int32(int16(b.Direction1)), &a.PrevPos)&1 != 0 {
+		if !skipSword && (state == 13 || state == 0 && uint32(gameex_flags)&4 != 0) && *equipmentWord(controlPlayer(b), 4)&0x400 != 0 && stateFront(&b.PosVec, int32(int16(b.Direction1)), &a.PrevPos)&1 != 0 {
 			state := GetServer().S().Rand.Logic.IntClamp(18, 20)
 			worldCollideSound(890, b)
 			damageReflect(a, b)

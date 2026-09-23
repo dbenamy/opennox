@@ -2,9 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_1316412;
-extern uint32_t dword_5d4594_1316408;
-extern uint32_t dword_5d4594_1313880;
 */
 import "C"
 
@@ -22,12 +19,12 @@ func effectPlasmaSegment(from, to image.Point, slot int) int8 {
 	if *effectMapped(1316416) == 0 {
 		*effectMapped(1316416) = effectType("CyanSpark")
 	}
-	off := uintptr(28 * (int(C.dword_5d4594_1316412) + 30*slot))
+	off := uintptr(28 * (int(dword_5d4594_1316412) + 30*slot))
 	*effectMapped(1313884 + off) = uint32(from.X)
 	*effectMapped(1313888 + off) = uint32(from.Y)
 	*effectMapped(1313912 + off) = uint32(to.X)
 	*effectMapped(1313916 + off) = uint32(to.Y)
-	C.dword_5d4594_1316412++
+	dword_5d4594_1316412++
 	result := int8(byte(gameFrame()))
 	if gameFrame()&4 != 0 {
 		result = int8(effectRand(0, 10))
@@ -45,15 +42,15 @@ func effectPlasmaSetup(angle int, from, to image.Point) {
 	if distance/40+2 >= 30 {
 		segments = 28
 	}
-	C.dword_5d4594_1316408 = C.uint32_t(segments)
+	dword_5d4594_1316408 = C.uint32_t(segments)
 	cosine := float64(*memmap.PtrFloat32(0x587000, 194136+8*uintptr(angle)))
 	sine := float64(*memmap.PtrFloat32(0x587000, 194140+8*uintptr(angle)))
 	fy := float32(dy)
-	C.dword_5d4594_1313880 = C.uint32_t(math.Float32bits(fy))
+	dword_5d4594_1313880 = C.uint32_t(math.Float32bits(fy))
 	length := float32(math.Sqrt(float64(dy)*float64(fy)+float64(dx)*float64(dx)) + 0.0099999998)
 	*memmap.PtrFloat32(0x5D4594, 1313876) = float32(float64(dx) / float64(length))
 	normalizedY := float64(fy) / float64(length)
-	C.dword_5d4594_1313880 = C.uint32_t(math.Float32bits(float32(normalizedY)))
+	dword_5d4594_1313880 = C.uint32_t(math.Float32bits(float32(normalizedY)))
 	dot := normalizedY*sine + float64(*memmap.PtrFloat32(0x5D4594, 1313876))*cosine
 	if dot < 0 {
 		dot *= 0.2
@@ -81,7 +78,7 @@ func effectPlasmaSetup(angle int, from, to image.Point) {
 			*phase = 0
 			*effectMapped(1313908 + uintptr(840*slot)) = 0
 		}
-		C.dword_5d4594_1316412 = 0
+		dword_5d4594_1316412 = 0
 		effectCurveSegments(points, segments, *phase, func(a, b image.Point) { effectPlasmaSegment(a, b, slot) })
 	}
 }
@@ -108,7 +105,7 @@ func effectPlasma(angle int, from, to image.Point) int {
 		*effectMapped(1316404) = 1
 	}
 	effectPlasmaSetup(angle, from, to)
-	segments := int(int32(C.dword_5d4594_1316408))
+	segments := int(int32(dword_5d4594_1316408))
 	for slot := 0; slot < 3; slot++ {
 		for n := 0; n <= segments; n++ {
 			off := uintptr(28 * (30*slot + n))
@@ -171,7 +168,7 @@ func effectPlasma(angle int, from, to image.Point) int {
 			effectCurveRaster([4]image.Point{a, b, ta, tb}, 8, bool2int(slot == 1))
 		}
 	}
-	return int(int32(C.dword_5d4594_1316408))
+	return int(int32(dword_5d4594_1316408))
 }
 func effectPlasmaDraw(vp *noxrender.Viewport, dr *client.Drawable) int {
 	mouse := GetClient().GetMousePos()

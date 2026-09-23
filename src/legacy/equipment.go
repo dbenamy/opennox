@@ -5,10 +5,6 @@ package legacy
 #include "GAME3_2.h"
 #include "GAME3_3.h"
 #include "GAME4.h"
-extern unsigned int gameex_flags;
-extern int nox_cheat_allowall;
-extern uint64_t qword_581450_9512;
-extern uint32_t dword_5d4594_2488728;
 */
 import "C"
 import (
@@ -54,7 +50,7 @@ func equipmentStrength(u *server.Object) int32 {
 	return 30
 }
 func equipmentCheckStrength(u, it *server.Object) bool {
-	if C.nox_cheat_allowall != 0 {
+	if nox_cheat_allowall != 0 {
 		return true
 	}
 	if u.ObjClass&4 == 0 {
@@ -114,7 +110,7 @@ func equipmentRecalculate(u *server.Object) int {
 			value = float32(equipmentDefend(it) + float64(value))
 		}
 	}
-	if float64(value) > math.Float64frombits(uint64(C.qword_581450_9512)) {
+	if float64(value) > math.Float64frombits(uint64(qword_581450_9512)) {
 		value = 1
 	}
 	if u.ObjClass&4 != 0 {
@@ -276,13 +272,13 @@ func equipmentInitDropTable() {
 		}
 		*memmap.PtrUint32(0x587000, off+4) = uint32(GetServer().S().Types.IndByID(alloc.GoString((*byte)(name))))
 	}
-	C.dword_5d4594_2488728 = 1
+	dword_5d4594_2488728 = 1
 }
 func equipmentDropPolicy(it *server.Object, mask int) int {
 	if it == nil {
 		return 0
 	}
-	if C.dword_5d4594_2488728 == 0 {
+	if dword_5d4594_2488728 == 0 {
 		equipmentInitDropTable()
 	}
 	for off := uintptr(279432); *memmap.PtrUint32(0x587000, off) != 0; off += 12 {

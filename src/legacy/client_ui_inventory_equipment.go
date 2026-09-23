@@ -4,7 +4,6 @@ package legacy
 #include "defs.h"
 #include "GAME2_1.h"
 #include "client__gui__guiinv.h"
-extern uint32_t dword_5d4594_1062480, dword_5d4594_1062488, dword_5d4594_1062492, dword_5d4594_1062496;
 */
 import "C"
 
@@ -142,8 +141,8 @@ func sub_462040(code C.int) {
 	}
 	if uint32(dr.ObjClass)&0x1000000 != 0 && uint32(dr.ObjSubClass)&0xC != 0 {
 		var quiver *uiInventoryCell
-		if C.dword_5d4594_1062488 != 0 {
-			if q := uiInventoryFindCode(uint32(C.dword_5d4594_1062488)); q != nil {
+		if dword_5d4594_1062488 != 0 {
+			if q := uiInventoryFindCode(uint32(dword_5d4594_1062488)); q != nil {
 				quiver = q.Cell
 			}
 		}
@@ -165,17 +164,17 @@ func sub_462040(code C.int) {
 		}
 	}
 	if slot == 0 {
-		C.dword_5d4594_1062488 = C.uint32_t(dr.NetCode32)
+		dword_5d4594_1062488 = C.uint32_t(dr.NetCode32)
 	}
 	charge := int16(*(*uint16)(unsafe.Add(dr.C(), 448)))
 	if charge >= 0 {
 		sub_470D90(int(charge), int(*(*int16)(unsafe.Add(dr.C(), 450))))
 	}
-	if C.dword_5d4594_1062496 != 0 {
-		if next := uiInventoryFindCode(uint32(C.dword_5d4594_1062496)); next != nil {
+	if dword_5d4594_1062496 != 0 {
+		if next := uiInventoryFindCode(uint32(dword_5d4594_1062496)); next != nil {
 			next.Cell.Alternate = 1
 			uiInventorySetAlternate(next.Cell)
-			C.dword_5d4594_1062496 = 0
+			dword_5d4594_1062496 = 0
 		}
 	}
 }
@@ -190,16 +189,16 @@ func sub_4624D0(code C.int) C.int {
 		return C.int(GetClient().Nox_xxx_spriteDelete_45A4B0(dr))
 	}
 	found.Cell.Equipped = 0
-	alt := uiInventoryCellRef(uint32(C.dword_5d4594_1062480))
-	if uint32(C.dword_5d4594_1062492) != uiInventoryPointer(dr.C()) {
+	alt := uiInventoryCellRef(uint32(dword_5d4594_1062480))
+	if uint32(dword_5d4594_1062492) != uiInventoryPointer(dr.C()) {
 		if GetServer().S().Weapons.Nox_xxx_ammoCheck_415880(int(dr.TypeIDVal))&0xC != 0 && alt != nil && GetServer().S().Weapons.Nox_xxx_ammoCheck_415880(int(alt.Drawable.TypeIDVal)) == 2 {
 			alt.Alternate = 0
 			uiInventorySetAlternate(nil)
 		}
 	} else {
-		C.dword_5d4594_1062492 = 0
+		dword_5d4594_1062492 = 0
 		if alt != nil {
-			C.dword_5d4594_1062496 = C.uint32_t(dr.NetCode32)
+			dword_5d4594_1062496 = C.uint32_t(dr.NetCode32)
 			alt.Drawable.NetCode32 = alt.Codes[0]
 			uiInventoryEquipRequest(alt.Drawable)
 		} else {

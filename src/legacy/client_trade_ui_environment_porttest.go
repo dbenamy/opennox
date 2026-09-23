@@ -6,13 +6,6 @@ package legacy
 #include "defs.h"
 #include "GAME3_1.h"
 #include "client__gui__guitrade.h"
-extern uint32_t dword_5d4594_1320932;
-extern uint32_t dword_5d4594_1320936;
-extern uint32_t dword_5d4594_1320940;
-extern uint32_t dword_5d4594_1320944;
-extern uint32_t dword_5d4594_1320948;
-extern uint32_t dword_5d4594_1320968;
-extern uint32_t dword_5d4594_1320972;
 */
 import "C"
 
@@ -34,13 +27,13 @@ func PortTestTradeUICells() [2][]PortTestTradeUICell {
 }
 func PortTestTradeUIWords() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
-		"dword_5d4594_1320932": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1320932)),
-		"dword_5d4594_1320936": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1320936)),
-		"dword_5d4594_1320940": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1320940)),
-		"dword_5d4594_1320944": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1320944)),
-		"dword_5d4594_1320948": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1320948)),
-		"dword_5d4594_1320968": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1320968)),
-		"dword_5d4594_1320972": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1320972)),
+		"dword_5d4594_1320932": (*uint32)(unsafe.Pointer(&dword_5d4594_1320932)),
+		"dword_5d4594_1320936": (*uint32)(unsafe.Pointer(&dword_5d4594_1320936)),
+		"dword_5d4594_1320940": (*uint32)(unsafe.Pointer(&dword_5d4594_1320940)),
+		"dword_5d4594_1320944": (*uint32)(unsafe.Pointer(&dword_5d4594_1320944)),
+		"dword_5d4594_1320948": (*uint32)(unsafe.Pointer(&dword_5d4594_1320948)),
+		"dword_5d4594_1320968": (*uint32)(unsafe.Pointer(&dword_5d4594_1320968)),
+		"dword_5d4594_1320972": (*uint32)(unsafe.Pointer(&dword_5d4594_1320972)),
 	}
 	old := make(map[string]uint32, len(words))
 	for n, p := range words {

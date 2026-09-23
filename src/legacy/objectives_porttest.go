@@ -7,9 +7,6 @@ package legacy
 #include "GAME1_1.h"
 #include "GAME3_3.h"
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_527656;
-extern unsigned int dword_5d4594_2650652;
-extern uint32_t dword_5d4594_1567988;
 int sub_417F50(int a1);
 void nox_xxx_pickupFlagCtf_4EA490(int a1, int a2);
 int sub_4EB9B0(int a1, int a2);
@@ -169,11 +166,11 @@ func (p *portTestShopPools) objectivesPrepare() func() {
 	oldList := core.Objs.List
 	oldNetCache, oldNetInit := netCodeCacheState, netCodeCacheNeedInit
 	netCodeCacheInit()
-	oldStart, oldTeamBall := C.dword_5d4594_1567988, teamRuntimeBallType
+	oldStart, oldTeamBall := dword_5d4594_1567988, teamRuntimeBallType
 	teamRuntimeBallType = 0
-	C.dword_5d4594_1567988 = 0
-	oldCache, oldQuest := C.dword_5d4594_527656, C.dword_5d4594_2650652
-	C.dword_5d4594_527656, C.dword_5d4594_2650652 = 0, 0
+	dword_5d4594_1567988 = 0
+	oldCache, oldQuest := dword_5d4594_527656, dword_5d4594_2650652
+	dword_5d4594_527656, dword_5d4594_2650652 = 0, 0
 	offsets := []uintptr{1567992, 1567996, 1568008, 1567720}
 	old := make([]uint32, len(offsets))
 	for i, off := range offsets {
@@ -223,7 +220,7 @@ func (p *portTestShopPools) objectivesPrepare() func() {
 		restoreAttack()
 		core.Objs.List = oldList
 		netCodeCacheState, netCodeCacheNeedInit = oldNetCache, oldNetInit
-		C.dword_5d4594_1567988 = oldStart
+		dword_5d4594_1567988 = oldStart
 		teamRuntimeBallType = oldTeamBall
 		for i := range savedUnits {
 			u := &p.proxy.life.players[i]
@@ -241,7 +238,7 @@ func (p *portTestShopPools) objectivesPrepare() func() {
 		PlatformTicks = oldTicks
 		core.NetSendPacketXxx = oldSend
 		restoreSpells()
-		C.dword_5d4594_527656, C.dword_5d4594_2650652 = oldCache, oldQuest
+		dword_5d4594_527656, dword_5d4594_2650652 = oldCache, oldQuest
 		for i, off := range offsets {
 			*memmap.PtrUint32(0x5d4594, off) = old[i]
 		}
@@ -341,10 +338,10 @@ func (p *portTestShopPools) objectivesSnapshot(out []uint32) []uint32 {
 			out = append(out, p.normalize(v))
 		}
 	}
-	out = append(out, uint32(C.dword_5d4594_527656), p.normalize(uint32(uintptr(p.proxy.core.Objs.List.CObj()))))
+	out = append(out, uint32(dword_5d4594_527656), p.normalize(uint32(uintptr(p.proxy.core.Objs.List.CObj()))))
 	words(memmap.PtrOff(0x5d4594, 1567736), 208/4)
 	words(memmap.PtrOff(0x5d4594, 1567992), 2)
-	out = append(out, uint32(C.dword_5d4594_1567988), *memmap.PtrUint32(0x5d4594, 1568008))
+	out = append(out, uint32(dword_5d4594_1567988), *memmap.PtrUint32(0x5d4594, 1568008))
 	for i := range p.proxy.life.players {
 		u := &p.proxy.life.players[i]
 		words(u.CObj(), 193)

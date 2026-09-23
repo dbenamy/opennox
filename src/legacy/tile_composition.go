@@ -2,12 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t dword_5d4594_3798800, dword_5d4594_3798808;
-extern uint32_t dword_5d4594_3798812, dword_5d4594_3798816;
-extern uint32_t dword_5d4594_3798820, dword_5d4594_3798824;
-extern uint32_t dword_5d4594_3798828, dword_5d4594_3798832;
-extern uint32_t dword_5d4594_3798836, dword_5d4594_3798840;
-extern uint32_t nox_xxx_waypointCounterMB_587000_154948;
 */
 import "C"
 import (
@@ -29,7 +23,7 @@ func SetTileDrawCallbacks(textured bool) {
 		tileEdgeCallback = func(image.Point, *[5]uint32) {}
 	}
 }
-func tileCompositionReset() { C.nox_xxx_waypointCounterMB_587000_154948 = 0xffffffff }
+func tileCompositionReset() { nox_xxx_waypointCounterMB_587000_154948 = 0xffffffff }
 func tileCompositionEdges(pos image.Point, edge *[5]uint32) {
 	for edge != nil {
 		tileEdgeCallback(pos, edge)
@@ -60,7 +54,7 @@ func tileCompositionCell(x, y int32, pos image.Point) {
 func tileCompositionBounds(x, y int32) (lx, ly, hx, hy int32) {
 	lx = max(0, x)
 	ly = max(0, y)
-	cols, rows := int32(C.dword_5d4594_3798812), int32(C.dword_5d4594_3798816)
+	cols, rows := int32(dword_5d4594_3798812), int32(dword_5d4594_3798816)
 	hx = cols + lx - 1
 	if hx >= 128 {
 		hx = 127
@@ -91,17 +85,17 @@ func tileCompositionRedraw(vp *noxrender.Viewport) int {
 	return 0
 }
 func tileCompositionFull(vp *noxrender.Viewport) {
-	C.dword_5d4594_3798836 = 0
-	C.dword_5d4594_3798840 = 0
+	dword_5d4594_3798836 = 0
+	dword_5d4594_3798840 = 0
 	tileCompositionReset()
 	clear(unsafe.Slice(memmap.PtrUint32(0x85B3FC, 228), 176))
 	clear(unsafe.Slice(memmap.PtrUint32(0x5D4594, 2523980), 64))
 	dp := vp.ToWorldPos(image.Point{})
 	lx, ly, hx, hy := tileCompositionBounds(int32(dp.X-11)/46, int32(dp.Y-11)/46-1)
-	C.dword_5d4594_3798828 = C.uint32_t(lx)
-	C.dword_5d4594_3798832 = C.uint32_t(ly)
-	C.dword_5d4594_3798820 = C.uint32_t(46*lx - 11)
-	C.dword_5d4594_3798824 = C.uint32_t(46*ly - 11)
+	dword_5d4594_3798828 = C.uint32_t(lx)
+	dword_5d4594_3798832 = C.uint32_t(ly)
+	dword_5d4594_3798820 = C.uint32_t(46*lx - 11)
+	dword_5d4594_3798824 = C.uint32_t(46*ly - 11)
 	for y := ly; y < hy; y++ {
 		for x := lx; x < hx; x++ {
 			tileCompositionCell(x, y, image.Pt(int(46*x-11), int(46*y-11)))
@@ -109,12 +103,12 @@ func tileCompositionFull(vp *noxrender.Viewport) {
 	}
 }
 func tileCompositionHorizontal(vp *noxrender.Viewport, view int) {
-	ox := int32(C.dword_5d4594_3798820)
-	width := int32(C.dword_5d4594_3798800)
-	height := int32(C.dword_5d4594_3798808)
-	tx := int32(C.dword_5d4594_3798828)
-	cols := int32(C.dword_5d4594_3798812)
-	sx, sy := int32(C.dword_5d4594_3798836), int32(C.dword_5d4594_3798840)
+	ox := int32(dword_5d4594_3798820)
+	width := int32(dword_5d4594_3798800)
+	height := int32(dword_5d4594_3798808)
+	tx := int32(dword_5d4594_3798828)
+	cols := int32(dword_5d4594_3798812)
+	sx, sy := int32(dword_5d4594_3798836), int32(dword_5d4594_3798840)
 	var column, px int32
 	if int32(view) >= ox+23 {
 		right := int32(Nox_getBackbufWidth()) + int32(view)
@@ -158,25 +152,25 @@ func tileCompositionHorizontal(vp *noxrender.Viewport, view int) {
 			}
 		}
 	}
-	C.dword_5d4594_3798820 = C.uint32_t(ox)
-	C.dword_5d4594_3798828 = C.uint32_t(tx)
-	C.dword_5d4594_3798836 = C.uint32_t(sx)
-	C.dword_5d4594_3798840 = C.uint32_t(sy)
+	dword_5d4594_3798820 = C.uint32_t(ox)
+	dword_5d4594_3798828 = C.uint32_t(tx)
+	dword_5d4594_3798836 = C.uint32_t(sx)
+	dword_5d4594_3798840 = C.uint32_t(sy)
 	tileCompositionReset()
-	py := int32(C.dword_5d4594_3798824)
-	start := int32(C.dword_5d4594_3798832)
-	end := start + int32(C.dword_5d4594_3798816)
+	py := int32(dword_5d4594_3798824)
+	start := int32(dword_5d4594_3798832)
+	end := start + int32(dword_5d4594_3798816)
 	for y := start; y < end; y++ {
 		tileCompositionCell(column, y, image.Pt(int(px), int(py)))
 		py += 46
 	}
 }
 func tileCompositionVertical(vp *noxrender.Viewport, view int) {
-	oy := int32(C.dword_5d4594_3798824)
-	height := int32(C.dword_5d4594_3798808)
-	rows := int32(C.dword_5d4594_3798816)
-	ty := int32(C.dword_5d4594_3798832)
-	sy := int32(C.dword_5d4594_3798840)
+	oy := int32(dword_5d4594_3798824)
+	height := int32(dword_5d4594_3798808)
+	rows := int32(dword_5d4594_3798816)
+	ty := int32(dword_5d4594_3798832)
+	sy := int32(dword_5d4594_3798840)
 	var row, py int32
 	if int32(view) >= oy+23 {
 		bottom := int32(view) + int32(Nox_getBackbufHeight())
@@ -215,13 +209,13 @@ func tileCompositionVertical(vp *noxrender.Viewport, view int) {
 		}
 		py = oy
 	}
-	C.dword_5d4594_3798824 = C.uint32_t(oy)
-	C.dword_5d4594_3798832 = C.uint32_t(ty)
-	C.dword_5d4594_3798840 = C.uint32_t(sy)
+	dword_5d4594_3798824 = C.uint32_t(oy)
+	dword_5d4594_3798832 = C.uint32_t(ty)
+	dword_5d4594_3798840 = C.uint32_t(sy)
 	tileCompositionReset()
-	px := int32(C.dword_5d4594_3798820)
-	start := int32(C.dword_5d4594_3798828)
-	end := start + int32(C.dword_5d4594_3798812) - 1
+	px := int32(dword_5d4594_3798820)
+	start := int32(dword_5d4594_3798828)
+	end := start + int32(dword_5d4594_3798812) - 1
 	for x := start; x < end; x++ {
 		tileCompositionCell(x, row, image.Pt(int(px), int(py)))
 		px += 46

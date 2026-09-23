@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern int nox_win_width, nox_win_height;
 */
 import "C"
 
@@ -73,7 +72,7 @@ func interactionChatDraw(w *gui.Window, d *gui.WindowData) int {
 	} else if width > 320 {
 		width = 320
 	}
-	root.SetPos(image.Pt(int((int32(C.nox_win_width)-width)/2), root.Off.Y))
+	root.SetPos(image.Pt(int((int32(nox_win_width)-width)/2), root.Off.Y))
 	uiWindowResize(w, int(width), 20)
 	return uiEntryDraw(w, d, false)
 }
@@ -96,7 +95,7 @@ func interactionChatClose() int {
 	return 1
 }
 func interactionChatOpen() *gui.Window {
-	x, y := int32(C.nox_win_width)/2, 2*int32(C.nox_win_height)/3
+	x, y := int32(nox_win_width)/2, 2*int32(nox_win_height)/3
 	*memmap.PtrUint32(0x5D4594, 1064876) = uint32(x)
 	*memmap.PtrUint32(0x5D4594, 1064880) = uint32(y)
 	root := Nox_new_window_from_file("GuiChat.wnd", interactionChatEvent)

@@ -2,10 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_3807140;
-extern uint32_t dword_5d4594_3807136;
-extern uint32_t dword_5d4594_3807116;
-extern uint32_t dword_5d4594_3807152;
 */
 import "C"
 import (
@@ -60,10 +56,10 @@ func uiRenderNarrowClip(left, right int) int {
 	return uiRenderCopyRect(left, r.Min.Y, right-left, r.Dy())
 }
 func uiRenderBounds(x1, y1, x2, y2 int) int {
-	C.dword_5d4594_3807140 = C.uint32_t(x1)
-	C.dword_5d4594_3807136 = C.uint32_t(y1)
-	C.dword_5d4594_3807116 = C.uint32_t(x2)
-	C.dword_5d4594_3807152 = C.uint32_t(y2)
+	dword_5d4594_3807140 = C.uint32_t(x1)
+	dword_5d4594_3807136 = C.uint32_t(y1)
+	dword_5d4594_3807116 = C.uint32_t(x2)
+	dword_5d4594_3807152 = C.uint32_t(y2)
 	return y2
 }
 func uiRenderFill(p unsafe.Pointer, color uint32, size int32) {

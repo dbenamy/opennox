@@ -4,8 +4,6 @@ package legacy
 #include "defs.h"
 #include "client__gui__guicon.h"
 #include "common__strman.h"
-extern uint32_t nox_color_black_2650656, nox_color_white_2523948;
-extern int nox_win_width;
 */
 import "C"
 
@@ -76,15 +74,15 @@ func interactionMessagesDraw() int32 {
 		if memmap.Uint32(0x5D4594, 824440+off) < frame {
 			return int32(frame)
 		}
-		r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_black_2650656))
+		r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_black_2650656))
 		text := alloc.GoString16(memmap.PtrUint16(0x5D4594, 823804+off))
-		x := (int32(C.nox_win_width) - int32(r.GetStringSizeWrapped(face, text, 0).X)) / 2
+		x := (int32(nox_win_width) - int32(r.GetStringSizeWrapped(face, text, 0).X)) / 2
 		for i := uintptr(0); i < 4; i++ {
 			dx := memmap.Int32(0x587000, 107848+8*i)
 			dy := memmap.Int32(0x587000, 107852+8*i)
 			r.DrawString(face, text, image.Pt(int(x+dx), int(y+dy)))
 		}
-		color := uint32(C.nox_color_white_2523948)
+		color := uint32(nox_color_white_2523948)
 		if row != 0 {
 			color = memmap.Uint32(0x5D4594, 2597996)
 		}

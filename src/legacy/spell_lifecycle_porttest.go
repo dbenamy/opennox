@@ -7,7 +7,6 @@ package legacy
 #include <string.h>
 #include "GAME4.h"
 extern void* nox_alloc_magicEnt_1569668;
-extern uint32_t dword_5d4594_1569672;
 unsigned short sub_4FD030(int a1, short a2);
 void nox_xxx_collide_4FDF90(int a1, int a2);
 int nox_xxx_spellGetPhoneme_4FE1C0(int a1, char a2);
@@ -101,9 +100,9 @@ func (p *portTestShopPools) spellLifePrepare() func() {
 	}
 	st := &portTestSpellLifecycle{magicType: uint16(p.proxy.core.Types.IndByID("Magic")), record: p.objectiveRegion(160), pool: alloc.NewClass("portSpellBook", 60, 64)}
 	p.temporary.world.objectives.attack.controls.spellLifecycle = st
-	oldPool, oldHead := C.nox_alloc_magicEnt_1569668, C.dword_5d4594_1569672
+	oldPool, oldHead := C.nox_alloc_magicEnt_1569668, dword_5d4594_1569672
 	C.nox_alloc_magicEnt_1569668 = st.pool.UPtr()
-	C.dword_5d4594_1569672 = 0
+	dword_5d4594_1569672 = 0
 	oldCaches := make([]uint32, 18)
 	for i := range oldCaches {
 		off := uintptr(1569676 + 4*i)
@@ -150,7 +149,7 @@ func (p *portTestShopPools) spellLifePrepare() func() {
 		restore()
 		st.pool.Free()
 		C.nox_alloc_magicEnt_1569668 = oldPool
-		C.dword_5d4594_1569672 = oldHead
+		dword_5d4594_1569672 = oldHead
 		for i, v := range oldCaches {
 			*memmap.PtrUint32(0x5d4594, uintptr(1569676+4*i)) = v
 		}
@@ -214,7 +213,7 @@ func (p *portTestShopPools) spellLifeItems() {
 		}
 	}
 	if len(st.books) > 0 {
-		C.dword_5d4594_1569672 = C.uint32_t(uintptr(st.books[0]))
+		dword_5d4594_1569672 = C.uint32_t(uintptr(st.books[0]))
 	}
 	for i, r := range sp.Durations {
 		d := p.proxy.core.Spells.Dur.NewRaw()
@@ -308,7 +307,7 @@ func (p *portTestShopPools) spellLifeAction(a PortTestShopAction) uint32 {
 		}
 		result = p.normalize(controlRaw(u))
 	}
-	for ptr := unsafe.Pointer(uintptr(C.dword_5d4594_1569672)); ptr != nil; ptr = *controlPtr(ptr, 52) {
+	for ptr := unsafe.Pointer(uintptr(dword_5d4594_1569672)); ptr != nil; ptr = *controlPtr(ptr, 52) {
 		found := false
 		for _, old := range st.books {
 			if old == ptr {
@@ -329,7 +328,7 @@ func (p *portTestShopPools) spellLifeSnapshot(out []uint32) []uint32 {
 	if st == nil {
 		return out
 	}
-	out = append(out, p.normalize(uint32(C.dword_5d4594_1569672)), uint32(len(st.books)))
+	out = append(out, p.normalize(uint32(dword_5d4594_1569672)), uint32(len(st.books)))
 	for _, node := range st.books {
 		for _, v := range unsafe.Slice((*uint32)(node), 15) {
 			out = append(out, p.normalize(v))

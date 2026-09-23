@@ -2,15 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_1316452;
-extern uint32_t dword_5d4594_1316448;
-extern uint32_t dword_5d4594_1316456;
-extern uint32_t nox_xxx_lightningSteps_587000_178216;
-extern uint32_t dword_5d4594_1316484;
-extern uint32_t dword_5d4594_1316472;
-extern uint32_t dword_5d4594_1316436;
-extern uint32_t dword_5d4594_1316476;
-extern uint32_t dword_5d4594_1316492;
 */
 import "C"
 
@@ -41,16 +32,16 @@ func effectPrepareLightning() int {
 func effectPackedPoint(v uint32) image.Point { return image.Pt(int(int16(v)), int(int16(v>>16))) }
 func effectPackPoint(p image.Point) uint32   { return uint32(uint16(p.X)) | uint32(uint16(p.Y))<<16 }
 func effectLightningStep(from, to uint32) int {
-	C.dword_5d4594_1316492++
-	depth := int(int32(C.dword_5d4594_1316492))
+	dword_5d4594_1316492++
+	depth := int(int32(dword_5d4594_1316492))
 	a, b := effectPackedPoint(from), effectPackedPoint(to)
-	if C.dword_5d4594_1316492 != C.dword_5d4594_1316448 {
+	if dword_5d4594_1316492 != dword_5d4594_1316448 {
 		denominator, numerator := 1, 1
 		for i := 1; i < depth; i++ {
 			denominator *= int(*memmap.PtrUint32(0x587000, 178212)) + 9
 			numerator *= 10
 		}
-		jitter := int(int32(C.dword_5d4594_1316476))
+		jitter := int(int32(dword_5d4594_1316476))
 		mid := image.Pt(numerator*effectRand(-jitter, jitter)/denominator+((a.X+b.X)>>1), numerator*effectRand(-jitter, jitter)/denominator+((a.Y+b.Y)>>1))
 		packed := effectPackPoint(mid)
 		effectLightningStep(from, packed)
@@ -58,7 +49,7 @@ func effectLightningStep(from, to uint32) int {
 	} else {
 		glow := *effectMapped(1316508) != 0
 		radius := 32
-		color := uint32(C.dword_5d4594_1316472)
+		color := uint32(dword_5d4594_1316472)
 		size := 3
 		if glow {
 			radius = int(*memmap.PtrUint8(0x5D4594, 1316420)) + 48
@@ -71,7 +62,7 @@ func effectLightningStep(from, to uint32) int {
 		r.AddPoint(a)
 		r.AddPoint(b)
 		r.DrawParticles49ED80(radius)
-		effectColor(uint32(C.dword_5d4594_1316472))
+		effectColor(uint32(dword_5d4594_1316472))
 		effectLine(a, b)
 		if glow {
 			dx, dy := a.X-b.X, a.Y-b.Y
@@ -93,8 +84,8 @@ func effectLightningStep(from, to uint32) int {
 			}
 		}
 	}
-	C.dword_5d4594_1316492--
-	return int(int32(C.dword_5d4594_1316492))
+	dword_5d4594_1316492--
+	return int(int32(dword_5d4594_1316492))
 }
 func effectLightningPasses(a, b image.Point, mode int, coords *[4]int16, unused, outer, inner int) int {
 	dx, dy := a.X-b.X, a.Y-b.Y
@@ -105,13 +96,13 @@ func effectLightningPasses(a, b image.Point, mode int, coords *[4]int16, unused,
 		dy = -dy
 	}
 	length := int(int64(math.Sqrt(float64(dx*dx + dy*dy))))
-	steps := uint32(C.nox_xxx_lightningSteps_587000_178216)
+	steps := uint32(nox_xxx_lightningSteps_587000_178216)
 	if length >= 512 {
-		C.dword_5d4594_1316476 = C.uint32_t(*memmap.PtrUint32(0x587000, 178204))
-		C.dword_5d4594_1316448 = C.uint32_t(steps)
+		dword_5d4594_1316476 = C.uint32_t(*memmap.PtrUint32(0x587000, 178204))
+		dword_5d4594_1316448 = C.uint32_t(steps)
 	} else {
 		lo, hi := *memmap.PtrUint32(0x587000, 178208), *memmap.PtrUint32(0x587000, 178204)
-		C.dword_5d4594_1316476 = C.uint32_t(lo + uint32(length)*(hi-lo)/512)
+		dword_5d4594_1316476 = C.uint32_t(lo + uint32(length)*(hi-lo)/512)
 		var decrease uint32
 		switch {
 		case length < 64:
@@ -125,7 +116,7 @@ func effectLightningPasses(a, b image.Point, mode int, coords *[4]int16, unused,
 		if length < 256 && int32(depth) < 1 {
 			depth = 1
 		}
-		C.dword_5d4594_1316448 = C.uint32_t(depth)
+		dword_5d4594_1316448 = C.uint32_t(depth)
 	}
 	*effectMapped(1316532) = uint32(mode)
 	if mode == 1 || mode == 3 {
@@ -139,20 +130,20 @@ func effectLightningPasses(a, b image.Point, mode int, coords *[4]int16, unused,
 	}
 	from, to := effectPackPoint(a), effectPackPoint(b)
 	if outer != 0 {
-		C.dword_5d4594_1316492 = 1
-		C.dword_5d4594_1316472 = C.dword_5d4594_1316456
+		dword_5d4594_1316492 = 1
+		dword_5d4594_1316472 = dword_5d4594_1316456
 		*effectMapped(1316508) = 0
 		effectLightningStep(from, to)
-		C.dword_5d4594_1316492 = 1
-		C.dword_5d4594_1316472 = C.dword_5d4594_1316452
+		dword_5d4594_1316492 = 1
+		dword_5d4594_1316472 = dword_5d4594_1316452
 		effectLightningStep(from, to)
 	}
 	if inner == 0 {
 		return 0
 	}
-	C.dword_5d4594_1316492 = 1
-	C.dword_5d4594_1316472 = C.dword_5d4594_1316436
-	*effectMapped(1316440) = uint32(C.dword_5d4594_1316484)
+	dword_5d4594_1316492 = 1
+	dword_5d4594_1316472 = dword_5d4594_1316436
+	*effectMapped(1316440) = uint32(dword_5d4594_1316484)
 	*effectMapped(1316508) = 1
 	return effectLightningStep(from, to)
 }
@@ -199,22 +190,22 @@ func effectLightningDraw(vp *noxrender.Viewport, dr *client.Drawable, kind int) 
 	switch kind {
 	case 1:
 		*memmap.PtrUint8(0x5D4594, 1316420) = byte(2 * (int(int8(*effectByte(dr, 433))) + 127))
-		C.dword_5d4594_1316436 = C.uint32_t(*effectMapped(1316496))
-		C.dword_5d4594_1316484 = C.uint32_t(*effectMapped(1316468))
+		dword_5d4594_1316436 = C.uint32_t(*effectMapped(1316496))
+		dword_5d4594_1316484 = C.uint32_t(*effectMapped(1316468))
 		outer = 0
 		particle = 1316524
 	case 2:
-		C.dword_5d4594_1316452 = C.uint32_t(*effectMapped(1316444))
-		C.dword_5d4594_1316436 = C.uint32_t(*effectMapped(1316504))
-		C.dword_5d4594_1316456 = C.uint32_t(*effectMapped(1316460))
-		C.dword_5d4594_1316484 = C.uint32_t(*effectMapped(1316480))
+		dword_5d4594_1316452 = C.uint32_t(*effectMapped(1316444))
+		dword_5d4594_1316436 = C.uint32_t(*effectMapped(1316504))
+		dword_5d4594_1316456 = C.uint32_t(*effectMapped(1316460))
+		dword_5d4594_1316484 = C.uint32_t(*effectMapped(1316480))
 		*memmap.PtrUint8(0x5D4594, 1316420) = 1
 		particle = 1316528
 	default:
-		C.dword_5d4594_1316452 = C.uint32_t(*effectMapped(1316428))
-		C.dword_5d4594_1316436 = C.uint32_t(*effectMapped(1316464))
-		C.dword_5d4594_1316456 = C.uint32_t(*effectMapped(1316424))
-		C.dword_5d4594_1316484 = C.uint32_t(*effectMapped(1316488))
+		dword_5d4594_1316452 = C.uint32_t(*effectMapped(1316428))
+		dword_5d4594_1316436 = C.uint32_t(*effectMapped(1316464))
+		dword_5d4594_1316456 = C.uint32_t(*effectMapped(1316424))
+		dword_5d4594_1316484 = C.uint32_t(*effectMapped(1316488))
 		*memmap.PtrUint8(0x5D4594, 1316420) = 1
 	}
 	effectLightningPasses(sa, sb, 2, nil, outer, outer, 1)

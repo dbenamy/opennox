@@ -3,7 +3,6 @@ package legacy
 /*
 #include <stdlib.h>
 #include <stdint.h>
-extern uint32_t dword_5d4594_1197352, dword_5d4594_1197356;
 */
 import "C"
 
@@ -49,19 +48,19 @@ func clientSequenceEnqueue(data []byte) {
 	*(*uint64)(unsafe.Add(ptr, 16)) = uint64(uint32(PlatformTicks()))
 	copy(unsafe.Slice((*byte)(unsafe.Add(ptr, 32)), size), data[4:4+size])
 	if memmap.Uint16(0x5D4594, 1197360) == seq {
-		C.dword_5d4594_1197352 = C.uint32_t(uintptr(ptr))
+		dword_5d4594_1197352 = C.uint32_t(uintptr(ptr))
 	}
 	listAscending(clientSequenceHead(), node)
 }
 func clientSequencePoll() {
-	ready := (*legacyListNode)(unsafe.Pointer(uintptr(C.dword_5d4594_1197352)))
+	ready := (*legacyListNode)(unsafe.Pointer(uintptr(dword_5d4594_1197352)))
 	if ready == nil {
-		pending := (*legacyListNode)(unsafe.Pointer(uintptr(C.dword_5d4594_1197356)))
+		pending := (*legacyListNode)(unsafe.Pointer(uintptr(dword_5d4594_1197356)))
 		if pending != nil && uint64(uint32(PlatformTicks()))-*(*uint64)(unsafe.Add(unsafe.Pointer(pending), 16)) > 30000 {
 			*memmap.PtrUint16(0x5D4594, 1197360) = uint16(pending.tag)
 			ready = pending
-			C.dword_5d4594_1197352 = C.uint32_t(uintptr(unsafe.Pointer(pending)))
-			C.dword_5d4594_1197356 = C.uint32_t(uintptr(unsafe.Pointer(listNext(pending))))
+			dword_5d4594_1197352 = C.uint32_t(uintptr(unsafe.Pointer(pending)))
+			dword_5d4594_1197356 = C.uint32_t(uintptr(unsafe.Pointer(listNext(pending))))
 		}
 	}
 	p := ready
@@ -82,13 +81,13 @@ func clientSequencePoll() {
 	}
 	// Original polling drops the pending cursor when a gap is polled before its
 	// timeout. Preserve this observable behavior separately from queue membership.
-	C.dword_5d4594_1197356 = C.uint32_t(uintptr(unsafe.Pointer(p)))
-	C.dword_5d4594_1197352 = 0
+	dword_5d4594_1197356 = C.uint32_t(uintptr(unsafe.Pointer(p)))
+	dword_5d4594_1197352 = 0
 }
 func clientSequenceInit() {
 	listClear(clientSequenceHead())
-	C.dword_5d4594_1197352 = 0
-	C.dword_5d4594_1197356 = 0
+	dword_5d4594_1197352 = 0
+	dword_5d4594_1197356 = 0
 	*memmap.PtrUint16(0x5D4594, 1197360) = 0
 }
 func clientSequenceFree() {

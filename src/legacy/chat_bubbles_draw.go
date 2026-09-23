@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t nox_color_white_2523948;
-*/
-import "C"
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -28,7 +23,7 @@ func chatBubbleDraw(v *noxrender.Viewport) {
 		if b.Visible == 0 {
 			continue
 		}
-		color := noxcolor.RGBA5551(C.nox_color_white_2523948)
+		color := noxcolor.RGBA5551(nox_color_white_2523948)
 		var name *uint16
 		if dr := b.Drawable; dr != nil && dr.ObjClass&4 != 0 {
 			team := teamRuntimeObject(int(dr.NetCode32))
@@ -68,7 +63,7 @@ func chatBubbleDraw(v *noxrender.Viewport) {
 			line(x, bottom+half, x-half, bottom)
 			line(x-half, y, x-half, bottom)
 		}
-		r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_white_2523948))
+		r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_white_2523948))
 		r.Data().SetColor(noxcolor.RGBA5551(*memmap.PtrUint32(0x852978, 4)))
 		r.DrawStringWrappedHL(nil, alloc.GoString16(&b.Text[0]), image.Rect(x, y, x+128, y))
 		if name != nil {

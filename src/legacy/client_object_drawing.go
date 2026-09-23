@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t nox_color_black_2650656;
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -143,7 +137,7 @@ func objectPressureDraw(vp *noxrender.Viewport, dr *client.Drawable) int {
 	return 1
 }
 func objectTriggerDraw(vp *noxrender.Viewport, dr *client.Drawable) int {
-	effectColor(uint32(C.nox_color_black_2650656))
+	effectColor(uint32(nox_color_black_2650656))
 	d := GetClient().R2().Data()
 	d.SetAlphaEnabled(true)
 	p := objectShapeEdges(vp, dr)

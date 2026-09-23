@@ -4,9 +4,6 @@ package legacy
 
 /*
 #include "GAME5_2.h"
-extern uint32_t dword_5d4594_2516344;
-extern uint32_t dword_5d4594_2516348;
-extern uint32_t dword_5d4594_2516328;
 */
 import "C"
 import (
@@ -29,9 +26,9 @@ type PortTestBitsetResult struct {
 }
 
 func PortTestBitset(id int32, key, value, sum uint32, index, enabled int32, values []int32, count, mode int) PortTestBitsetResult {
-	oldHead, oldKey, oldSum := C.dword_5d4594_2516344, C.dword_5d4594_2516348, C.dword_5d4594_2516328
+	oldHead, oldKey, oldSum := dword_5d4594_2516344, dword_5d4594_2516348, dword_5d4594_2516328
 	defer func() {
-		C.dword_5d4594_2516344, C.dword_5d4594_2516348, C.dword_5d4594_2516328 = oldHead, oldKey, oldSum
+		dword_5d4594_2516344, dword_5d4594_2516348, dword_5d4594_2516328 = oldHead, oldKey, oldSum
 	}()
 	r, free := alloc.New([4]uint32{uint32(id) ^ key, value, 0, 0})
 	defer free()
@@ -43,7 +40,7 @@ func PortTestBitset(id int32, key, value, sum uint32, index, enabled int32, valu
 	if mode == 0 {
 		head = 0
 	}
-	C.dword_5d4594_2516344, C.dword_5d4594_2516348, C.dword_5d4594_2516328 = head, C.uint(key), C.uint(sum)
+	dword_5d4594_2516344, dword_5d4594_2516348, dword_5d4594_2516328 = head, C.uint(key), C.uint(sum)
 	var data []int32
 	if len(values) != 0 {
 		var release func()
@@ -54,11 +51,11 @@ func PortTestBitset(id int32, key, value, sum uint32, index, enabled int32, valu
 	out := PortTestBitsetResult{BeforeValid: int(C.nox_xxx_playerApplyProtectionCRC_56FD50(C.int(id), p, C.int(count)))}
 	out.Award = int32(C.nox_xxx_playerAwardSpellProtectionCRC_56FCE0(C.int(id), C.int(index), C.int(enabled)))
 	out.AfterValid = int(C.nox_xxx_playerApplyProtectionCRC_56FD50(C.int(id), p, C.int(count)))
-	out.Value, out.Checksum = r[1], uint32(C.dword_5d4594_2516328)
+	out.Value, out.Checksum = r[1], uint32(dword_5d4594_2516328)
 	wantID := uint32(id) ^ key
 	if mode == 2 {
 		wantID ^= 1
 	}
-	out.Unchanged = slices.Equal(data, values) && r[0] == wantID && r[2] == 0 && r[3] == 0 && C.dword_5d4594_2516344 == head && C.dword_5d4594_2516348 == C.uint(key)
+	out.Unchanged = slices.Equal(data, values) && r[0] == wantID && r[2] == 0 && r[3] == 0 && dword_5d4594_2516344 == head && dword_5d4594_2516348 == C.uint(key)
 	return out
 }

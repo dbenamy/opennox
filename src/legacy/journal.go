@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t dword_8531A0_2576, dword_8531A0_2572;
-extern uint32_t nox_color_white_2523948, nox_color_yellow_2589772, nox_color_black_2650656;
 */
 import "C"
 import (
@@ -150,7 +148,7 @@ func journalText(n *server.PlayerJournal) string {
 	return prefix + " " + sm.GetStringInFile(strman.ID("Journal:"+alloc.GoString(&n.EntryBuf[0])), "GUIJourn.c")
 }
 func journalLocalPlayer() *server.Player {
-	return (*server.Player)(unsafe.Pointer(uintptr(C.dword_8531A0_2576)))
+	return (*server.Player)(unsafe.Pointer(uintptr(dword_8531A0_2576)))
 }
 func journalMeasure() {
 	p := journalLocalPlayer()
@@ -174,7 +172,7 @@ func journalDraw(x, y, scroll int) {
 	if p == nil {
 		return
 	}
-	nox_client_drawSetColor_434460(int(C.nox_color_black_2650656))
+	nox_client_drawSetColor_434460(int(nox_color_black_2650656))
 	nox_client_drawRectFilledOpaque_49CE30(x, y, 260, 150)
 	n := p.Journal
 	if n == nil {
@@ -188,16 +186,16 @@ func journalDraw(x, y, scroll int) {
 	gap := r.FontHeight(font)
 	top := y - scroll
 	for ; n != nil; n = n.Prev {
-		color := uint32(C.dword_8531A0_2572)
+		color := uint32(dword_8531A0_2572)
 		switch n.Field3 {
 		case 1:
-			color = uint32(C.nox_color_white_2523948)
+			color = uint32(nox_color_white_2523948)
 		case 2:
 			color = memmap.Uint32(0x85B3FC, 940)
 		case 4:
 			color = memmap.Uint32(0x85B3FC, 956)
 		case 8:
-			color = uint32(C.nox_color_yellow_2589772)
+			color = uint32(nox_color_yellow_2589772)
 		}
 		text := journalText(n)
 		height := r.GetStringSizeWrapped(font, text, 240).Y

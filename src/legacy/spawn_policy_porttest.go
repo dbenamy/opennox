@@ -7,9 +7,6 @@ package legacy
 #include "GAME4_1.h"
 extern void* nox_alloc_spawn_2386216;
 extern void* nox_alloc_monsterList_2386220;
-extern uint32_t dword_5d4594_2386212;
-extern uint32_t dword_5d4594_2386224;
-extern uint32_t dword_5d4594_2386228;
 */
 import "C"
 
@@ -360,7 +357,7 @@ func (f *portTestGeneratorSpawnPolicy) registerListNodes() {
 		*next++
 		return id
 	}
-	for p, n := uintptr(C.dword_5d4594_2386212), 0; p != 0; n++ {
+	for p, n := uintptr(dword_5d4594_2386212), 0; p != 0; n++ {
 		if n == 96 {
 			panic("SpawnClass traversal exceeds capacity")
 		}
@@ -371,7 +368,7 @@ func (f *portTestGeneratorSpawnPolicy) registerListNodes() {
 		}
 		p = uintptr(*(*uint32)(unsafe.Add(unsafe.Pointer(p), 4)))
 	}
-	for p, n := uintptr(C.dword_5d4594_2386224), 0; p != 0; n++ {
+	for p, n := uintptr(dword_5d4594_2386224), 0; p != 0; n++ {
 		if n == 96 {
 			panic("MonsterList traversal exceeds capacity")
 		}
@@ -388,9 +385,9 @@ func (f *portTestGeneratorSpawnPolicy) snapshot(spec PortTestGeneratorSpawnPolic
 	out.Return = ret
 	out.GuardsOK = true
 	f.registerListNodes()
-	out.SpawnHead = f.normalize(uint32(C.dword_5d4594_2386212))
-	out.MonsterListHead = f.normalize(uint32(C.dword_5d4594_2386224))
-	out.MonsterListCount = uint32(C.dword_5d4594_2386228)
+	out.SpawnHead = f.normalize(uint32(dword_5d4594_2386212))
+	out.MonsterListHead = f.normalize(uint32(dword_5d4594_2386224))
+	out.MonsterListCount = uint32(dword_5d4594_2386228)
 	out.Occupied = *memmap.PtrUint32(0x5D4594, 2386208)
 	out.GlyphCache = *memmap.PtrUint32(0x5D4594, 2386360)
 	for i := range out.Counters {
@@ -400,7 +397,7 @@ func (f *portTestGeneratorSpawnPolicy) snapshot(spec PortTestGeneratorSpawnPolic
 	// Bounded list traversals make topology corruption a fixture failure rather
 	// than a test hang. Spawn: [object,next,prev]; monster: object/mask,
 	// distances[32], next@140, prev@144.
-	for p, n := uintptr(C.dword_5d4594_2386212), 0; p != 0; n++ {
+	for p, n := uintptr(dword_5d4594_2386212), 0; p != 0; n++ {
 		if n == 96 {
 			panic("SpawnClass traversal exceeds capacity")
 		}
@@ -408,7 +405,7 @@ func (f *portTestGeneratorSpawnPolicy) snapshot(spec PortTestGeneratorSpawnPolic
 		out.Spawn = append(out.Spawn, portTestGeneratorSpawnPolicyNode{f.normalize(w[0]), f.normalize(w[1]), f.normalize(w[2])})
 		p = uintptr(w[1])
 	}
-	for p, n := uintptr(C.dword_5d4594_2386224), 0; p != 0; n++ {
+	for p, n := uintptr(dword_5d4594_2386224), 0; p != 0; n++ {
 		if n == 96 {
 			panic("MonsterList traversal exceeds capacity")
 		}

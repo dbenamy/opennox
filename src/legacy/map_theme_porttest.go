@@ -2,13 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include <stdio.h>
-#include <stdint.h>
-extern uint32_t dword_5d4594_2487524;
-*/
-import "C"
 import (
 	"bytes"
 	"io"
@@ -28,7 +21,7 @@ const PortTestThemeToken = 0x60000002
 func PortTestMapTheme(cases []PortTestPaintSpec, owner func(*server.Server) (Server, func())) []PortTestPaintResult {
 	ext := &paintTestExtension{globals: map[string]*uint32{
 		"themeLine":     memmap.PtrUint32(0x5D4594, 2487520),
-		"themeTemplate": (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487524)),
+		"themeTemplate": (*uint32)(unsafe.Pointer(&dword_5d4594_2487524)),
 	}}
 	for _, name := range []string{"themeInputPath", "themeFile", "themeOffset", "themeError", "themeClock", "themePlayers", "themeOpenFiles", "themeClosedFiles"} {
 		p, free := alloc.New(uint32(0))

@@ -8,7 +8,6 @@ package legacy
 #include "GAME4_2.h"
 #include "GAME4_3.h"
 #include "GAME5.h"
-extern uint32_t dword_5d4594_2489460;
 */
 import "C"
 
@@ -50,17 +49,17 @@ func monsterDangerous(t, u *server.Object) int16 {
 	if t.Class()&0x2000 != 0 {
 		value = (uint32(u.SubClass()) >> 10) & 1
 		if value == 0 {
-			C.dword_5d4594_2489460 = 0
+			dword_5d4594_2489460 = 0
 		}
 	} else {
 		value = uint32(t.TypeInd)
 		if value == *cloud || value == *small {
 			value = uint32(u.SubClass())
 			if value&0x200 == 0 {
-				C.dword_5d4594_2489460 = 0
+				dword_5d4594_2489460 = 0
 			}
 		} else if t.Class()&0x10000 != 0 {
-			C.dword_5d4594_2489460 = 0
+			dword_5d4594_2489460 = 0
 		}
 	}
 	return int16(value)

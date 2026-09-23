@@ -5,7 +5,6 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4_2.h"
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_2491580, dword_5d4594_2491588;
 */
 import "C"
 
@@ -288,7 +287,7 @@ func monsterDeathChunks(u *server.Object) {
 	if noxflags.HasGame(2048) {
 		n = core.Rand.Logic.IntClamp(20, 30)
 	}
-	index := uint32(C.dword_5d4594_2491580)
+	index := uint32(dword_5d4594_2491580)
 	for i := 0; i < n; i++ {
 		name := *memmap.PtrPtr(0x587000, 288240+4*uintptr(index))
 		t := core.NewObjectByTypeID(alloc.GoString((*byte)(name)))
@@ -299,15 +298,15 @@ func monsterDeathChunks(u *server.Object) {
 		Nox_xxx_unitRaise_4E46F0(t, float32(core.Rand.Logic.FloatClamp(10, 70)))
 		t.Field27 = float32(core.Rand.Logic.FloatClamp(-2, 0))
 		t.ObjFlags |= 0x800000
-		t.Field29 = math.Float32bits(float32(*(*byte)(memmap.PtrOff(0x587000, 287332+uintptr(C.dword_5d4594_2491580)))))
+		t.Field29 = math.Float32bits(float32(*(*byte)(memmap.PtrOff(0x587000, 287332+uintptr(dword_5d4594_2491580)))))
 		GetServer().ApplyForce(t, u.PosVec, float64(float32(core.Rand.Logic.FloatClamp(5, 20))))
 		if noxflags.HasGame(2048) {
 			monsterDebrisDecay(t, 10, 20)
 		} else {
 			monsterDebrisDecay(t, 5, 10)
 		}
-		index = (uint32(C.dword_5d4594_2491580) + 1) % *memmap.PtrUint32(0x587000, 287344)
-		C.dword_5d4594_2491580 = C.uint32_t(index)
+		index = (uint32(dword_5d4594_2491580) + 1) % *memmap.PtrUint32(0x587000, 287344)
+		dword_5d4594_2491580 = C.uint32_t(index)
 	}
 }
 func monsterDeathTroll(u *server.Object) {
@@ -373,7 +372,7 @@ func monsterDeathSkull(u *server.Object) {
 		monsterDebrisDecay(skull, 2, 5)
 		n = core.Rand.Logic.IntClamp(5, 10)
 	}
-	index := uint32(C.dword_5d4594_2491588)
+	index := uint32(dword_5d4594_2491588)
 	for i := 0; i < n; i++ {
 		name := *memmap.PtrPtr(0x587000, 288868+4*uintptr(index))
 		t := core.NewObjectByTypeID(alloc.GoString((*byte)(name)))
@@ -388,8 +387,8 @@ func monsterDeathSkull(u *server.Object) {
 		} else {
 			monsterDebrisDecay(t, 2, 5)
 		}
-		index = (uint32(C.dword_5d4594_2491588) + 1) % *memmap.PtrUint32(0x587000, 287348)
-		C.dword_5d4594_2491588 = C.uint32_t(index)
+		index = (uint32(dword_5d4594_2491588) + 1) % *memmap.PtrUint32(0x587000, 287348)
+		dword_5d4594_2491588 = C.uint32_t(index)
 	}
 }
 func monsterDeathLoot(u *server.Object, kind int) {

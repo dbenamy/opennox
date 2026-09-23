@@ -12,10 +12,6 @@ package legacy
 #include "client__draw__udeddraw.h"
 #include "client__draw__playerdraw.h"
 #include "client__draw__partscrn.h"
-extern uint32_t dword_5d4594_3807140;
-extern uint32_t dword_5d4594_3807136;
-extern uint32_t dword_5d4594_3807116;
-extern uint32_t dword_5d4594_3807152;
 */
 import "C"
 import (
@@ -71,9 +67,9 @@ type PortTestScreenEnvironment struct{ restore []func() }
 
 func PortTestNewScreenEnvironment() *PortTestScreenEnvironment {
 	e := new(PortTestScreenEnvironment)
-	old := [4]C.uint32_t{C.dword_5d4594_3807140, C.dword_5d4594_3807136, C.dword_5d4594_3807116, C.dword_5d4594_3807152}
+	old := [4]C.uint32_t{dword_5d4594_3807140, dword_5d4594_3807136, dword_5d4594_3807116, dword_5d4594_3807152}
 	e.restore = append(e.restore, func() {
-		C.dword_5d4594_3807140, C.dword_5d4594_3807136, C.dword_5d4594_3807116, C.dword_5d4594_3807152 = old[0], old[1], old[2], old[3]
+		dword_5d4594_3807140, dword_5d4594_3807136, dword_5d4594_3807116, dword_5d4594_3807152 = old[0], old[1], old[2], old[3]
 	})
 	for _, reg := range [][3]uintptr{{0x5D4594, 1312492, 8}, {0x5D4594, 1313728, 12}, {0x5D4594, 1197368, 4}, {0x5D4594, 1200916, 512}, {0x85B3FC, 940, 4}} {
 		b := unsafe.Slice((*byte)(memmap.PtrOff(reg[0], reg[1])), reg[2])
@@ -85,14 +81,14 @@ func PortTestNewScreenEnvironment() *PortTestScreenEnvironment {
 	return e
 }
 func (e *PortTestScreenEnvironment) Reset() {
-	C.dword_5d4594_3807140, C.dword_5d4594_3807136, C.dword_5d4594_3807116, C.dword_5d4594_3807152 = 0, 0, 0, 0
+	dword_5d4594_3807140, dword_5d4594_3807136, dword_5d4594_3807116, dword_5d4594_3807152 = 0, 0, 0, 0
 	for _, reg := range [][2]uintptr{{1312492, 2}, {1313728, 3}} {
 		clear(unsafe.Slice(memmap.PtrUint32(0x5D4594, reg[0]), reg[1]))
 	}
 	*memmap.PtrUint32(0x85B3FC, 940) = uint32(noxcolor.RGB5551Color(80, 220, 250).Color32())
 }
 func (e *PortTestScreenEnvironment) State() []uint32 {
-	out := []uint32{uint32(C.dword_5d4594_3807140), uint32(C.dword_5d4594_3807136), uint32(C.dword_5d4594_3807116), uint32(C.dword_5d4594_3807152)}
+	out := []uint32{uint32(dword_5d4594_3807140), uint32(dword_5d4594_3807136), uint32(dword_5d4594_3807116), uint32(dword_5d4594_3807152)}
 	for _, reg := range [][2]uintptr{{1312492, 2}, {1313728, 3}} {
 		out = append(out, unsafe.Slice(memmap.PtrUint32(0x5D4594, reg[0]), reg[1])...)
 	}

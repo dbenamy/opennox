@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME1_3.h"
-extern uint32_t dword_8531A0_2572;
-extern uint32_t nox_client_gui_flag_1556112;
-extern uint32_t nox_color_black_2650656, nox_color_blue_2650684, nox_color_white_2523948;
-extern int nox_win_width, nox_win_height;
-*/
-import "C"
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/libs/object"
@@ -60,7 +51,7 @@ func minimapDrawSprite(dr *client.Drawable) {
 	GetClient().R2().SetRectFullScreen()
 }
 func minimapDrawAndMessages() int {
-	if C.nox_client_gui_flag_1556112 == 1 {
+	if nox_client_gui_flag_1556112 == 1 {
 		return 1
 	}
 	if memmap.Uint8(0x5D4594, 1096424)&1 != 0 {
@@ -78,7 +69,7 @@ func minimapDraw(_ *client.Drawable, level int) int {
 	}
 	d.SetAlphaEnabled(false)
 	objectRenderSaveClip()
-	width, height := int(C.nox_win_width), int(C.nox_win_height)
+	width, height := int(nox_win_width), int(nox_win_height)
 	size := width / 6
 	top := (height - size) / 2
 	uiRenderCopyRect(0, 0, width, height)
@@ -86,7 +77,7 @@ func minimapDraw(_ *client.Drawable, level int) int {
 	if left == 0 {
 		r.DrawRectFilledAlpha(0, top, size, size)
 	} else {
-		d.SetColor2(noxcolor.RGBA5551(C.nox_color_black_2650656))
+		d.SetColor2(noxcolor.RGBA5551(nox_color_black_2650656))
 		if left >= size {
 			r.DrawRectFilledOpaque(0, top, size, size, d.Color2())
 		} else {
@@ -95,7 +86,7 @@ func minimapDraw(_ *client.Drawable, level int) int {
 		}
 	}
 	d.SetAlphaEnabled(true)
-	d.SetColor2(noxcolor.RGBA5551(C.nox_color_black_2650656))
+	d.SetColor2(noxcolor.RGBA5551(nox_color_black_2650656))
 	for i, a := range []byte{90, 60, 40} {
 		n := i + 1
 		d.SetAlpha(a)
@@ -172,7 +163,7 @@ func minimapDraw(_ *client.Drawable, level int) int {
 	if noxflags.HasEngine(noxflags.EngineShowAI) {
 		points := s.AI.Paths.Points()
 		if len(points) >= 2 {
-			d.SetColor2(noxcolor.RGBA5551(C.dword_8531A0_2572))
+			d.SetColor2(noxcolor.RGBA5551(dword_8531A0_2572))
 			for i := 1; i < len(points); i++ {
 				a, b := points[i-1], points[i]
 				minimapLine(project(image.Pt(int(int64(a.X)), int(int64(a.Y)))), project(image.Pt(int(int64(b.X)), int(int64(b.Y)))))
@@ -211,7 +202,7 @@ func minimapDrawObjects(level int, project func(image.Point) image.Point) {
 		p := project(dr.PosVec)
 		color := memmap.Uint32(0x85B3FC, 940)
 		if dr.ObjClass&0x400000 != 0 && dr.ObjSubClass&8 != 0 {
-			color = uint32(C.nox_color_blue_2650684)
+			color = uint32(nox_color_blue_2650684)
 		}
 		d.SetColor2(noxcolor.RGBA5551(color))
 		if dr.TypeIDVal == memmap.Uint32(0x5D4594, 1096304) {
@@ -227,7 +218,7 @@ func minimapDrawObjects(level int, project func(image.Point) image.Point) {
 			if held {
 				continue
 			}
-			d.SetColor2(noxcolor.RGBA5551(C.dword_8531A0_2572))
+			d.SetColor2(noxcolor.RGBA5551(dword_8531A0_2572))
 			if team := objectRenderTeam(int(dr.NetCode32)); team != nil {
 				if t := s.Teams.ByID(team.ID); t != nil {
 					teamColor(t)
@@ -242,14 +233,14 @@ func minimapDrawObjects(level int, project func(image.Point) image.Point) {
 					teamColor(t)
 				}
 			} else {
-				d.SetColor2(noxcolor.RGBA5551(C.nox_color_white_2523948))
+				d.SetColor2(noxcolor.RGBA5551(nox_color_white_2523948))
 			}
 			minimapCircle(p)
 			continue
 		}
 		if dr.ObjClass&0x10000000 != 0 {
 			if dr.ObjFlags&0x1000000 != 0 {
-				d.SetColor2(noxcolor.RGBA5551(C.nox_color_white_2523948))
+				d.SetColor2(noxcolor.RGBA5551(nox_color_white_2523948))
 				if t := s.Teams.ByID(server.TeamID(objectDrawableTeamColor(dr))); t != nil {
 					teamColor(t)
 				}
@@ -260,7 +251,7 @@ func minimapDrawObjects(level int, project func(image.Point) image.Point) {
 		} else if !noxflags.HasGame(32) {
 			minimapPoint(p.X, p.Y, dr == local)
 		} else if pl := s.Players.ByID(int(dr.NetCode32)); pl != nil && pl.WeaponEquip&1 != 0 {
-			d.SetColor2(noxcolor.RGBA5551(C.nox_color_white_2523948))
+			d.SetColor2(noxcolor.RGBA5551(nox_color_white_2523948))
 			if team := objectRenderTeam(int(dr.NetCode32)); team != nil {
 				id := server.TeamID(1)
 				if team.ID == 1 {
@@ -288,7 +279,7 @@ func minimapDrawObjects(level int, project func(image.Point) image.Point) {
 		p := project(dr.PosVec)
 		color := memmap.Uint32(0x85B3FC, 940)
 		if dr == local || same {
-			color = uint32(C.dword_8531A0_2572)
+			color = uint32(dword_8531A0_2572)
 		}
 		d.SetColor2(noxcolor.RGBA5551(color))
 		if crown {

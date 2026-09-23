@@ -5,8 +5,6 @@ package legacy
 /*
 #include "GAME3_2.h"
 #include "GAME3_3.h"
-extern uint32_t dword_5d4594_1556128;
-extern uint32_t dword_5d4594_1556144;
 */
 import "C"
 
@@ -163,8 +161,8 @@ func PortTestQuestRuntimeString(op string) string {
 }
 func PortTestQuestRuntimeGlobals() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
-		"previousStage":    (*uint32)(unsafe.Pointer(&C.dword_5d4594_1556128)),
-		"observerDeadline": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1556144)),
+		"previousStage":    (*uint32)(unsafe.Pointer(&dword_5d4594_1556128)),
+		"observerDeadline": (*uint32)(unsafe.Pointer(&dword_5d4594_1556144)),
 	}
 	for _, off := range []uintptr{1556104, 1556108, 1556116, 1556120, 1556124, 1556132, 1556160, 1556164, 1556300, 1563928, 1563932, 1563912, 1563908, 1563916, 1563920, 1563924} {
 		words[fmt.Sprint(off)] = memmap.PtrUint32(0x5D4594, off)

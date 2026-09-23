@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "GAME1_1.h"
-extern uint32_t dword_5d4594_1568308;
 */
 import "C"
 
@@ -155,18 +154,18 @@ func questEligibilityQuality(u *server.Object) bool {
 }
 func questEligibilityEffects(u *server.Object) bool {
 	mods := questEligibilityMods(u)
-	if C.dword_5d4594_1568308 == 0 {
+	if dword_5d4594_1568308 == 0 {
 		core := GetServer().S()
 		for i, name := range []string{"Replenishment1", "Replenishment2", "Replenishment3", "Replenishment4"} {
 			m := core.Modif.Nox_xxx_modifGetDescById413330(core.Modif.Nox_xxx_modifGetIdByName413290(name))
 			if i == 0 {
-				C.dword_5d4594_1568308 = C.uint32_t(uintptr(m.C()))
+				dword_5d4594_1568308 = C.uint32_t(uintptr(m.C()))
 			} else {
 				*memmap.PtrPtr(0x5d4594, 1568308+uintptr(i*4)) = m.C()
 			}
 		}
 	}
-	special := [4]unsafe.Pointer{unsafe.Pointer(uintptr(uint32(C.dword_5d4594_1568308))), *memmap.PtrPtr(0x5d4594, 1568312), *memmap.PtrPtr(0x5d4594, 1568316), *memmap.PtrPtr(0x5d4594, 1568320)}
+	special := [4]unsafe.Pointer{unsafe.Pointer(uintptr(uint32(dword_5d4594_1568308))), *memmap.PtrPtr(0x5d4594, 1568312), *memmap.PtrPtr(0x5d4594, 1568316), *memmap.PtrPtr(0x5d4594, 1568320)}
 	mask, weapon := questEligibilityMask(u)
 	for slot := 2; slot < 4; slot++ {
 		m := mods[slot]

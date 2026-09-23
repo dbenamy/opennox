@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "GAME4_1.h"
-extern uint32_t dword_5d4594_2490504;
 */
 import "C"
 
@@ -31,8 +30,8 @@ func pathWaypointWords(ud *server.MonsterUpdateData) []uint32 { return unsafe.Sl
 func pathBuildGraph(start, end *server.Waypoint, output []uint32) int {
 	flag := memmap.PtrUint32(0x5D4594, 2490500)
 	if waypointEnabledMask(start, 128) && waypointEnabledMask(end, 128) {
-		C.dword_5d4594_2490504++
-		epoch := uint32(C.dword_5d4594_2490504)
+		dword_5d4594_2490504++
+		epoch := uint32(dword_5d4594_2490504)
 		start.Field15, start.Field16, start.Field14 = 0, 0, epoch
 		for frontier := start; frontier != nil; {
 			var next *server.Waypoint

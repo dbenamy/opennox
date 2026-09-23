@@ -8,7 +8,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_3.h"
 #include "common__gamemech__pausefx.h"
-extern uint32_t dword_5d4594_2488720, dword_5d4594_2488724;
 */
 import "C"
 import (
@@ -145,8 +144,8 @@ func inventoryArmorPickup(u, it *server.Object, arg, equip int) int {
 	if *memmap.PtrUint32(0x5D4594, 2488712) == 0 {
 		*memmap.PtrUint32(0x5D4594, 2488712) = uint32(GetServer().S().Types.IndByID("StreetSneakers"))
 		*memmap.PtrUint32(0x5D4594, 2488716) = uint32(GetServer().S().Types.IndByID("WizardRobe"))
-		C.dword_5d4594_2488720 = C.uint32_t(GetServer().S().Types.IndByID("WoodenShield"))
-		C.dword_5d4594_2488724 = C.uint32_t(GetServer().S().Types.IndByID("SteelShield"))
+		dword_5d4594_2488720 = C.uint32_t(GetServer().S().Types.IndByID("WoodenShield"))
+		dword_5d4594_2488724 = C.uint32_t(GetServer().S().Types.IndByID("SteelShield"))
 	}
 	if !noxflags.HasGame(2048|4096) && C.int(serverConfigFlagsQuery(int32(2))) != 0 && equipmentDuplicate(u, it) != 0 {
 		inventoryPriMessage(u, "armor.c:CannotPickupDuplicateArmor")
@@ -164,7 +163,7 @@ func inventoryArmorPickup(u, it *server.Object, arg, equip int) int {
 	if u.ObjClass&4 != 0 {
 		old := equipmentSameArmor(u, it)
 		if C.sub_419E60(asObjectC(u)) == 0 {
-			wood, steel := uint32(C.dword_5d4594_2488720), uint32(C.dword_5d4594_2488724)
+			wood, steel := uint32(dword_5d4594_2488720), uint32(dword_5d4594_2488724)
 			sneakers, robe := *memmap.PtrUint32(0x5D4594, 2488712), *memmap.PtrUint32(0x5D4594, 2488716)
 			replace := false
 			switch {

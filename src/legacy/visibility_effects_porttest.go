@@ -5,7 +5,6 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME4_2.h"
-extern uint32_t dword_5d4594_1565512, dword_5d4594_1565516, dword_5d4594_1565520, dword_5d4594_2649712;
 */
 import "C"
 
@@ -94,24 +93,24 @@ func PortTestVisibilityEffects(op int, a, b *server.Object, pos *types.Pointf, w
 func PortTestVisibilityReliableOwner() (reset func(), snapshot func() []PortTestShopPacketResult, free func()) {
 	pool := memmap.PtrPtr(0x5D4594, 1565508)
 	oldPool := *pool
-	head, tail, size, mask := C.dword_5d4594_1565512, C.dword_5d4594_1565516, C.dword_5d4594_1565520, C.dword_5d4594_2649712
+	head, tail, size, mask := dword_5d4594_1565512, dword_5d4594_1565516, dword_5d4594_1565520, dword_5d4594_2649712
 	seq := unsafe.Slice((*byte)(memmap.PtrOff(0x5D4594, 1565524)), 64)
 	oldSeq := bytes.Clone(seq)
 	*pool = nil
-	C.dword_5d4594_1565512 = 0
-	C.dword_5d4594_1565516 = 0
-	C.dword_5d4594_2649712 = 0x80000082
+	dword_5d4594_1565512 = 0
+	dword_5d4594_1565516 = 0
+	dword_5d4594_2649712 = 0x80000082
 	reset = func() {
 		if *pool != nil {
 			alloc.AsClass(*pool).Free()
 			*pool = nil
 		}
-		C.dword_5d4594_1565512 = 0
-		C.dword_5d4594_1565516 = 0
+		dword_5d4594_1565512 = 0
+		dword_5d4594_1565516 = 0
 		clear(seq)
 	}
 	snapshot = func() (out []PortTestShopPacketResult) {
-		for q := uint32(C.dword_5d4594_1565512); q != 0; {
+		for q := uint32(dword_5d4594_1565512); q != 0; {
 			b := unsafe.Slice((*byte)(unsafe.Pointer(uintptr(q))), 416)
 			p := PortTestShopPacketResult{Recipient: b[250], Ordered: b[184], A4: binary.LittleEndian.Uint32(b[404:]), A5: binary.LittleEndian.Uint32(b[180:]), Data: bytes.Clone(b[251 : 251+int(b[401])])}
 			for i := range p.Sequence {
@@ -125,7 +124,7 @@ func PortTestVisibilityReliableOwner() (reset func(), snapshot func() []PortTest
 	free = func() {
 		reset()
 		*pool = oldPool
-		C.dword_5d4594_1565512, C.dword_5d4594_1565516, C.dword_5d4594_1565520, C.dword_5d4594_2649712 = head, tail, size, mask
+		dword_5d4594_1565512, dword_5d4594_1565516, dword_5d4594_1565520, dword_5d4594_2649712 = head, tail, size, mask
 		copy(seq, oldSeq)
 	}
 	return

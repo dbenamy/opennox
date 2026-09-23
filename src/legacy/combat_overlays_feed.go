@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-extern int nox_win_width, nox_win_height;
-extern uint32_t dword_8531A0_2572;
-*/
-import "C"
 import (
 	"encoding/binary"
 	noxcolor "github.com/opennox/libs/color"
@@ -75,7 +69,7 @@ func combatFeedDraw() {
 	r.Data().SetAlphaEnabled(false)
 	r.Data().SetMultiply14(0)
 	r.Data().SetColorize17(0)
-	limit := int(C.nox_win_height) / 4 / 36
+	limit := int(nox_win_height) / 4 / 36
 	for index := combatFeedRead; index != combatFeedWrite; index = (index + 1) % 100 {
 		if int(combatFeedRows) > limit {
 			break
@@ -148,7 +142,7 @@ func combatFeedRow(row *[6]uint32) {
 		widths += size.X
 		height = size.Y
 	}
-	x := (int(C.nox_win_width) - (widths + sz.X + 10)) / 2
+	x := (int(nox_win_width) - (widths + sz.X + 10)) / 2
 	y := int(36 * combatFeedRows)
 	r.DrawRectFilledAlpha(x-5, y, widths+sz.X+20, 36)
 	textY := y + (36-height)/2
@@ -158,7 +152,7 @@ func combatFeedRow(row *[6]uint32) {
 		}
 		color := noxcolor.RGBA5551(memmap.Uint32(0x5D4594, 2597996))
 		if row[i] == uint32(ClientPlayerNetCode()) {
-			color = noxcolor.RGBA5551(C.dword_8531A0_2572)
+			color = noxcolor.RGBA5551(dword_8531A0_2572)
 		}
 		r.Data().SetTextColor(color)
 		x = r.DrawString(face, names[i], image.Pt(x, textY))

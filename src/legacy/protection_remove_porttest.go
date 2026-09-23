@@ -5,11 +5,6 @@ package legacy
 /*
 #include <stdlib.h>
 #include "GAME5_2.h"
-extern uint32_t dword_5d4594_2516344;
-extern uint32_t dword_5d4594_2516352;
-extern uint32_t dword_5d4594_2516348;
-extern uint32_t dword_5d4594_2516328;
-extern uint32_t dword_5d4594_2516356;
 */
 import "C"
 import (
@@ -29,16 +24,16 @@ type PortTestRemovalSnapshot struct {
 }
 
 func PortTestRemove(values [][2]uint32, key, sum uint32, count uint16, ids []uint32) []PortTestRemovalSnapshot {
-	oldHead, oldTail, oldKey, oldSum, oldSeq := C.dword_5d4594_2516344, C.dword_5d4594_2516352, C.dword_5d4594_2516348, C.dword_5d4594_2516328, C.dword_5d4594_2516356
+	oldHead, oldTail, oldKey, oldSum, oldSeq := dword_5d4594_2516344, dword_5d4594_2516352, dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356
 	counter := memmap.PtrUint16(0x587000, 311204)
 	oldCount := *counter
 	defer func() {
 		Sub_56F3B0()
-		C.dword_5d4594_2516344, C.dword_5d4594_2516352, C.dword_5d4594_2516348, C.dword_5d4594_2516328, C.dword_5d4594_2516356 = oldHead, oldTail, oldKey, oldSum, oldSeq
+		dword_5d4594_2516344, dword_5d4594_2516352, dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = oldHead, oldTail, oldKey, oldSum, oldSeq
 		*counter = oldCount
 	}()
-	C.dword_5d4594_2516344, C.dword_5d4594_2516352 = 0, 0
-	C.dword_5d4594_2516348, C.dword_5d4594_2516328, C.dword_5d4594_2516356 = C.uint(key), C.uint(sum), 0xdeadbeef
+	dword_5d4594_2516344, dword_5d4594_2516352 = 0, 0
+	dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = C.uint(key), C.uint(sum), 0xdeadbeef
 	*counter = count
 	records := make([]*[4]uint32, len(values))
 	for i, v := range values {
@@ -58,10 +53,10 @@ func PortTestRemove(values [][2]uint32, key, sum uint32, count uint16, ids []uin
 	for i, r := range records {
 		r[2], r[3] = ptr(i+1), ptr(i-1)
 	}
-	C.dword_5d4594_2516344, C.dword_5d4594_2516352 = C.uint(ptr(0)), C.uint(ptr(len(records)-1))
+	dword_5d4594_2516344, dword_5d4594_2516352 = C.uint(ptr(0)), C.uint(ptr(len(records)-1))
 	snapshot := func() PortTestRemovalSnapshot {
-		out := PortTestRemovalSnapshot{Sum: uint32(C.dword_5d4594_2516328), Key: uint32(C.dword_5d4594_2516348), Sequence: uint32(C.dword_5d4594_2516356), Count: *counter, LinksValid: true}
-		p := uint32(C.dword_5d4594_2516344)
+		out := PortTestRemovalSnapshot{Sum: uint32(dword_5d4594_2516328), Key: uint32(dword_5d4594_2516348), Sequence: uint32(dword_5d4594_2516356), Count: *counter, LinksValid: true}
+		p := uint32(dword_5d4594_2516344)
 		prev := uint32(0)
 		for p != 0 {
 			index := -1
@@ -81,7 +76,7 @@ func PortTestRemove(values [][2]uint32, key, sum uint32, count uint16, ids []uin
 			out.LinksValid = out.LinksValid && r[3] == prev
 			prev, p = p, r[2]
 		}
-		out.LinksValid = out.LinksValid && prev == uint32(C.dword_5d4594_2516352)
+		out.LinksValid = out.LinksValid && prev == uint32(dword_5d4594_2516352)
 		return out
 	}
 	var out []PortTestRemovalSnapshot

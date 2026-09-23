@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-extern int nox_win_width,nox_win_height;
-extern uint32_t nox_color_white_2523948, nox_color_orange_2614256, nox_color_green_2614268, nox_color_blue_2650684, nox_color_black_2650656;
-extern uint32_t dword_587000_122956, nox_xxx_aSpellphoneme_3_587000_123008;
-extern uint32_t dword_5d4594_832476, dword_5d4594_832484, dword_8531A0_2576;
-*/
-import "C"
-
 import (
 	"fmt"
 	"image"
@@ -39,14 +29,14 @@ func briefingBlink(flag *uint32, mid, y int, measure, draw font.Face) int {
 	r := GetClient().R2()
 	s := briefingString("GeneralPrint:QuestSplash12")
 	width := r.GetStringSizeWrapped(measure, s, 0).X
-	nox_xxx_drawSetTextColor_434390(int(C.nox_color_white_2523948))
+	nox_xxx_drawSetTextColor_434390(int(nox_color_white_2523948))
 	return r.DrawString(draw, s, image.Pt(mid-width/2, y))
 }
 func briefingDrawTitle(data *gui.WindowData) int {
 	r := GetClient().R2()
 	font := r.GetFonts().AsFont(data.FontPtr)
-	x, y := int(C.nox_win_width)/2, int(C.nox_win_height)/2
-	nox_xxx_drawSetTextColor_434390(int(C.nox_color_white_2523948))
+	x, y := int(nox_win_width)/2, int(nox_win_height)/2
+	nox_xxx_drawSetTextColor_434390(int(nox_color_white_2523948))
 	s := fmt.Sprintf("%s %d", briefingString("Noxworld.c:Stage"), int32(briefingStage()))
 	sz := r.GetStringSizeWrapped(font, s, 0)
 	r.DrawString(font, s, image.Pt(x-sz.X/2, y+3*(sz.Y-80)))
@@ -55,18 +45,18 @@ func briefingDrawTitle(data *gui.WindowData) int {
 		sz = r.GetStringSizeWrapped(font, s, 0)
 		r.DrawString(font, s, image.Pt(x-sz.X/2, y+3*(80-sz.Y)))
 	}
-	return briefingBlink((*uint32)(&C.nox_xxx_aSpellphoneme_3_587000_123008), (int(C.nox_win_width)-640)/2+320, (int(C.nox_win_height)-480)/2+462, font, font)
+	return briefingBlink((*uint32)(&nox_xxx_aSpellphoneme_3_587000_123008), (int(nox_win_width)-640)/2+320, (int(nox_win_height)-480)/2+462, font, font)
 }
 func briefingDrawStats(data *gui.WindowData) int {
 	r := GetClient().R2()
 	font := r.GetFonts().AsFont(data.FontPtr)
-	x, y := int(C.nox_win_width)/2, int(C.nox_win_height)/2
-	ox, oy := (int(C.nox_win_width)-640)/2, (int(C.nox_win_height)-480)/2
-	nox_xxx_drawSetTextColor_434390(int(C.nox_color_white_2523948))
+	x, y := int(nox_win_width)/2, int(nox_win_height)/2
+	ox, oy := (int(nox_win_width)-640)/2, (int(nox_win_height)-480)/2
+	nox_xxx_drawSetTextColor_434390(int(nox_color_white_2523948))
 	title := fmt.Sprintf("%s - %s XX1 %d", briefingString("GUIBrief.c:GauntletStatTitle"), briefingString("Noxworld.c:Stage"), int32(memmap.Uint32(0x5D4594, 831228)))
 	sz := r.GetStringSizeWrapped(font, title, 0)
 	height := sz.Y
-	nox_xxx_drawSetTextColor_434390(int(C.nox_color_white_2523948))
+	nox_xxx_drawSetTextColor_434390(int(nox_color_white_2523948))
 	r.DrawString(font, title, image.Pt(x-sz.X/2, height+y-240))
 	span := int(int32(memmap.Uint32(0x587000, 122968) - memmap.Uint32(0x587000, 122964)))
 	step := int(int32(float32(float64(height) * 1.5)))
@@ -77,14 +67,14 @@ func briefingDrawStats(data *gui.WindowData) int {
 			continue
 		}
 		count++
-		if uint32(uintptr(unsafe.Pointer(row.Player))) == uint32(C.dword_8531A0_2576) {
+		if uint32(uintptr(unsafe.Pointer(row.Player))) == uint32(dword_8531A0_2576) {
 			local = int(row.Found)
 		} else {
 			others += int(row.Found)
 		}
 		px := int(int32(memmap.Uint32(0x587000, 122960+uintptr(i*8)))) + x - 320
 		py := int(int32(memmap.Uint32(0x587000, 122964+uintptr(i*8)))) + y - 240
-		nox_xxx_drawSetTextColor_434390(int(C.nox_color_orange_2614256))
+		nox_xxx_drawSetTextColor_434390(int(nox_color_orange_2614256))
 		s := fmt.Sprintf("%d) %s", i+1, row.Player.Name())
 		units := utf16.Encode([]rune(s))
 		limit := int(int32(memmap.Uint32(0x587000, 122968)-memmap.Uint32(0x587000, 122960))) + px - 16
@@ -99,8 +89,8 @@ func briefingDrawStats(data *gui.WindowData) int {
 		r.DrawStringWrapped(font, s, image.Rect(px, py, px+span-8, py+height))
 		py += step + step/2
 		for j, id := range []string{"GUIBrief.c:GeneratorsDestroyed", "GUIBrief.c:numSecretsFound", "GUIBrief.c:Kills", "GUIBrief.c:TotalScore"} {
-			width := int(int32(C.dword_5d4594_832476))
-			nox_xxx_drawSetTextColor_434390(int(C.nox_color_white_2523948))
+			width := int(int32(dword_5d4594_832476))
+			nox_xxx_drawSetTextColor_434390(int(nox_color_white_2523948))
 			r.DrawStringWrapped(font, briefingString(id), image.Rect(px, py, px+width, py+height))
 			value := int(row.Generators)
 			if j == 1 {
@@ -110,9 +100,9 @@ func briefingDrawStats(data *gui.WindowData) int {
 			} else if j == 3 {
 				value = int(int32(row.Total))
 			}
-			color := int(C.nox_color_green_2614268)
+			color := int(nox_color_green_2614268)
 			if j == 3 {
-				color = int(C.nox_color_blue_2650684)
+				color = int(nox_color_blue_2650684)
 			}
 			nox_xxx_drawSetTextColor_434390(color)
 			r.DrawStringWrapped(font, fmt.Sprintf(" %d", value), image.Rect(px+width, py, px+span-8, py+height))
@@ -121,7 +111,7 @@ func briefingDrawStats(data *gui.WindowData) int {
 	}
 	s := briefingFormat("GeneralPrint:SecretsTotal", int32(memmap.Uint32(0x5D4594, 832356)))
 	sz = r.GetStringSizeWrapped(font, s, 0)
-	nox_xxx_drawSetTextColor_434390(int(C.nox_color_orange_2614256))
+	nox_xxx_drawSetTextColor_434390(int(nox_color_orange_2614256))
 	r.DrawString(font, s, image.Pt(ox-sz.X/2+320, oy+3*(150-sz.Y)))
 	if local != 0 {
 		s = briefingFormat("GeneralPrint:SecretsFound", local)
@@ -138,9 +128,9 @@ func briefingDrawStats(data *gui.WindowData) int {
 		s = fmt.Sprintf("%s - %s", s, other)
 	}
 	sz = r.GetStringSizeWrapped(font, s, 0)
-	nox_xxx_drawSetTextColor_434390(int(C.nox_color_orange_2614256))
+	nox_xxx_drawSetTextColor_434390(int(nox_color_orange_2614256))
 	r.DrawString(font, s, image.Pt(ox-sz.X/2+320, oy+2*(225-sz.Y)))
-	return briefingBlink((*uint32)(&C.dword_587000_122956), ox+320, oy+450, font, font)
+	return briefingBlink((*uint32)(&dword_587000_122956), ox+320, oy+450, font, font)
 }
 
 // briefingDrawInstructions preserves the original text/sprite order, including
@@ -153,12 +143,12 @@ func briefingDrawInstructions(data *gui.WindowData) int {
 	Sub_446780()
 	r := GetClient().R2()
 	titleFont := r.GetFonts().AsFont(data.FontPtr)
-	bodyFont := r.GetFonts().AsFont(unsafe.Pointer(uintptr(C.dword_5d4594_832484)))
-	ox, oy := (int(C.nox_win_width)-640)/2, (int(C.nox_win_height)-480)/2
-	orange, white := int(C.nox_color_orange_2614256), int(C.nox_color_white_2523948)
+	bodyFont := r.GetFonts().AsFont(unsafe.Pointer(uintptr(dword_5d4594_832484)))
+	ox, oy := (int(nox_win_width)-640)/2, (int(nox_win_height)-480)/2
+	orange, white := int(nox_color_orange_2614256), int(nox_color_white_2523948)
 	text := briefingString("GeneralPrint:QuestSplash1")
 	x := ox - r.GetStringSizeWrapped(titleFont, text, 0).X/2 + 320
-	nox_xxx_drawSetTextColor_434390(int(C.nox_color_black_2650656))
+	nox_xxx_drawSetTextColor_434390(int(nox_color_black_2650656))
 	for _, p := range []image.Point{image.Pt(x-1, oy+19), image.Pt(x+1, oy+19), image.Pt(x-1, oy+21), image.Pt(x+1, oy+21)} {
 		r.DrawString(titleFont, text, p)
 	}

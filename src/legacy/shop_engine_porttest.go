@@ -6,7 +6,6 @@ package legacy
 #include <string.h>
 #include "GAME4_1.h"
 #include "server__system__trade.h"
-extern uint32_t dword_5d4594_2488728;
 static uint32_t portTestTradePickupTrace[2049];
 static uint32_t* portTestTradePickupData(void) {return portTestTradePickupTrace;}
 static int portTestTradePickup(int unit, int item, int a3, int a4) {
@@ -16,9 +15,6 @@ static int portTestTradePickup(int unit, int item, int a3, int a4) {
  return 1;
 }
 static void* portTestTradePickupPtr(void) {return portTestTradePickup;}
-extern uint32_t dword_5d4594_2386548;
-extern uint32_t dword_5d4594_2386552;
-extern uint32_t dword_5d4594_2386560;
 
 */
 import "C"
@@ -68,14 +64,14 @@ func portTestTradeCache() [12]uint32 {
 	for i := range out {
 		out[i] = *memmap.PtrUint32(0x5D4594, 2386516+uintptr(4*i))
 	}
-	out[8], out[9], out[11] = uint32(C.dword_5d4594_2386548), uint32(C.dword_5d4594_2386552), uint32(C.dword_5d4594_2386560)
+	out[8], out[9], out[11] = uint32(dword_5d4594_2386548), uint32(dword_5d4594_2386552), uint32(dword_5d4594_2386560)
 	return out
 }
 func portTestTradeSetCache(in [12]uint32) {
 	for i, v := range in {
 		*memmap.PtrUint32(0x5D4594, 2386516+uintptr(4*i)) = v
 	}
-	C.dword_5d4594_2386548, C.dword_5d4594_2386552, C.dword_5d4594_2386560 = C.uint32_t(in[8]), C.uint32_t(in[9]), C.uint32_t(in[11])
+	dword_5d4594_2386548, dword_5d4594_2386552, dword_5d4594_2386560 = C.uint32_t(in[8]), C.uint32_t(in[9]), C.uint32_t(in[11])
 }
 func (p *portTestShopPools) enginePrepare() func() {
 	sp := p.proxy.callbacks.shop.spec.Engine
@@ -95,7 +91,7 @@ func (p *portTestShopPools) enginePrepare() func() {
 	oldFreeze := *freeze
 	*freeze = 0
 	old := portTestTradeCache()
-	oldDropFlag := C.dword_5d4594_2488728
+	oldDropFlag := dword_5d4594_2488728
 	drop := unsafe.Slice(memmap.PtrUint32(0x587000, 279432), 6)
 	oldDrop := append([]uint32(nil), drop...)
 	clear(drop)
@@ -103,7 +99,7 @@ func (p *portTestShopPools) enginePrepare() func() {
 		drop[0] = 1
 		drop[1] = sp.NoSellType
 	}
-	C.dword_5d4594_2488728 = 1
+	dword_5d4594_2488728 = 1
 	clear(unsafe.Slice((*uint32)(unsafe.Pointer(C.portTestTradePickupData())), 2049))
 	portTestTradeSetCache(sp.Cache)
 	for i, u := range p.proxy.life.players[:2] {
@@ -125,7 +121,7 @@ func (p *portTestShopPools) enginePrepare() func() {
 		copy(scratch, oldScratch)
 		portTestTradeSetCache(old)
 		copy(drop, oldDrop)
-		C.dword_5d4594_2488728 = oldDropFlag
+		dword_5d4594_2488728 = oldDropFlag
 	}
 }
 func (p *portTestShopPools) engineAdopt(q unsafe.Pointer) uint32 {

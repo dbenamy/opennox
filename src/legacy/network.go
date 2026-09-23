@@ -11,11 +11,6 @@ package legacy
 #include "GAME4_2.h"
 #include "GAME5.h"
 #include "GAME5_2.h"
-extern unsigned int dword_5d4594_2649712;
-extern unsigned int dword_5d4594_2660032;
-extern unsigned int dword_5d4594_2650652;
-extern unsigned int nox_player_netCode_85319C;
-extern uint32_t dword_5d4594_1200832;
 int sub_457140(int a1, wchar2_t* a2);
 int sub_456DF0(int a1);
 void* nox_xxx_spriteGetMB_476F80();

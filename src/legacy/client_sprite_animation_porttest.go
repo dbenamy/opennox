@@ -8,8 +8,6 @@ package legacy
 #include "client__draw__staticdraw.h"
 #include "client__draw__boulderdraw.h"
 #include "client__draw__slavedraw.h"
-extern uint32_t dword_5d4594_1321520;
-extern int nox_win_width;
 */
 import "C"
 
@@ -40,8 +38,8 @@ func PortTestSpriteAnimationCallback(op int) unsafe.Pointer {
 
 // Own only globals used by the non-player, fixed-lighting drawObject path.
 func PortTestSpriteAnimationEnvironment() func() {
-	ghost, width := C.dword_5d4594_1321520, C.nox_win_width
-	C.dword_5d4594_1321520, C.nox_win_width = 0x7fffffff, 96
+	ghost, width := dword_5d4594_1321520, nox_win_width
+	dword_5d4594_1321520, nox_win_width = 0x7fffffff, 96
 	var restores []func()
 	for _, region := range [][3]uintptr{{0x587000, 80808, 4}, {0x587000, 185472, 12}, {0x5D4594, 1321512, 8}, {0x973F18, 76, 4}, {0x973F18, 88, 4}} {
 		buf := unsafe.Slice((*byte)(memmap.PtrOff(region[0], region[1])), int(region[2]))
@@ -56,6 +54,6 @@ func PortTestSpriteAnimationEnvironment() func() {
 		for i := len(restores) - 1; i >= 0; i-- {
 			restores[i]()
 		}
-		C.dword_5d4594_1321520, C.nox_win_width = ghost, width
+		dword_5d4594_1321520, nox_win_width = ghost, width
 	}
 }

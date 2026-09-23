@@ -4,7 +4,6 @@ package legacy
 
 /*
 #include "GAME5.h"
-extern uint32_t dword_5d4594_2491580, dword_5d4594_2491588;
 static uint32_t pt_callback_damage[1024];
 static int pt_callback_damage_n;
 static int pt_callback_mutate;
@@ -100,7 +99,7 @@ func portTestAICallbackEnvironment(proxy *portTestRoamOwnerServer) func() {
 	for i, off := range portTestCallbackOffsets {
 		old[i] = *memmap.PtrUint32(0x5D4594, off)
 	}
-	rot, bones := C.dword_5d4594_2491580, C.dword_5d4594_2491588
+	rot, bones := dword_5d4594_2491580, dword_5d4594_2491588
 	regions := []struct {
 		off  uintptr
 		size int
@@ -126,7 +125,7 @@ func portTestAICallbackEnvironment(proxy *portTestRoamOwnerServer) func() {
 		for i, off := range portTestCallbackOffsets {
 			*memmap.PtrUint32(0x5D4594, off) = old[i]
 		}
-		C.dword_5d4594_2491580, C.dword_5d4594_2491588 = rot, bones
+		dword_5d4594_2491580, dword_5d4594_2491588 = rot, bones
 		freeB()
 		freeA()
 		freeLifetime()
@@ -155,8 +154,8 @@ func portTestAICallbackPrepare(proxy *portTestRoamOwnerServer, u *server.Object,
 	}
 	*memmap.PtrUint32(0x5D4594, 2491568) = sp.AllTargets
 	*memmap.PtrUint32(0x5D4594, 2491572) = sp.Nearest
-	C.dword_5d4594_2491580 = C.uint32_t(sp.DebrisIndex)
-	C.dword_5d4594_2491588 = C.uint32_t(sp.BoneIndex)
+	dword_5d4594_2491580 = C.uint32_t(sp.DebrisIndex)
+	dword_5d4594_2491588 = C.uint32_t(sp.BoneIndex)
 	*memmap.PtrFloat32(0x587000, 287328) = 10
 	d := u.UpdateDataMonster().MonsterDef
 	for i, p := range []unsafe.Pointer{d.MeleeStrikeFunc236, d.DieFunc228, d.DeadFunc232} {
@@ -279,7 +278,7 @@ func portTestAICallbackTrace(proxy *portTestRoamOwnerServer, rv uint32, normaliz
 	for _, off := range portTestCallbackOffsets {
 		r.Globals = append(r.Globals, normalize(*memmap.PtrUint32(0x5D4594, off)))
 	}
-	r.Globals = append(r.Globals, uint32(C.dword_5d4594_2491580), uint32(C.dword_5d4594_2491588))
+	r.Globals = append(r.Globals, uint32(dword_5d4594_2491580), uint32(dword_5d4594_2491588))
 	for i := 0; i < int(C.pt_callback_count()); i++ {
 		r.Damage = append(r.Damage, normalize(uint32(C.pt_callback_word(C.int(i)))))
 	}

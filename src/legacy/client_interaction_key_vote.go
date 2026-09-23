@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern int nox_win_width,nox_win_height;
 */
 import "C"
 
@@ -26,7 +25,7 @@ func interactionKeyShow() int {
 	if w := interactionKeyRoot(); w != nil {
 		w.Show()
 		uiWindowEnable(w, 1)
-		w.SetPos(image.Pt(int(C.nox_win_width)/2-w.SizeVal.X/2, int(C.nox_win_height)/2-w.SizeVal.Y/2))
+		w.SetPos(image.Pt(int(nox_win_width)/2-w.SizeVal.X/2, int(nox_win_height)/2-w.SizeVal.Y/2))
 		GetClient().Cli().GUI.Focus(nil)
 	}
 	return 0
@@ -82,7 +81,7 @@ func interactionKeyDestroy() {
 func interactionVoteOpen() int {
 	img := Nox_xxx_gLoadImg("VoteInProgress")
 	*memmap.PtrUint32(0x5D4594, 1321220) = uint32(uintptr(img.C()))
-	w := GetClient().Cli().GUI.NewWindowRaw(nil, 136, int(C.nox_win_width)-50, int(C.nox_win_height)/2-100, 50, 50, nil)
+	w := GetClient().Cli().GUI.NewWindowRaw(nil, 136, int(nox_win_width)-50, int(nox_win_height)/2-100, 50, 50, nil)
 	interactionVoteIcon = uint32(uintptr(w.C()))
 	w.DrawData().BgImageHnd = img.C()
 	w.SetAllFuncs(nil, interactionIconDraw, nil)

@@ -2,32 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t dword_587000_180476;
-extern uint32_t dword_587000_180480;
-extern uint32_t dword_5d4594_1304328;
-extern uint32_t dword_5d4594_1313532;
-extern uint32_t dword_5d4594_1313536;
-extern uint32_t dword_5d4594_1313540;
-extern uint32_t dword_5d4594_1313564;
-extern uint32_t dword_5d4594_1313692;
-extern uint32_t dword_5d4594_1313880;
-extern uint32_t dword_5d4594_1316408;
-extern uint32_t dword_5d4594_1316412;
-extern uint32_t dword_5d4594_1316436;
-extern uint32_t dword_5d4594_1316448;
-extern uint32_t dword_5d4594_1316452;
-extern uint32_t dword_5d4594_1316456;
-extern uint32_t dword_5d4594_1316472;
-extern uint32_t dword_5d4594_1316476;
-extern uint32_t dword_5d4594_1316484;
-extern uint32_t dword_5d4594_1316492;
-extern uint32_t nox_color_white_2523948;
-extern uint32_t nox_xxx_lightningSteps_587000_178216;
-*/
-import "C"
-
 import (
 	"bytes"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -50,27 +24,27 @@ type PortTestEffectsEnvironment struct {
 // historical addresses are saved separately because they are distinct storage.
 func PortTestNewEffectsEnvironment() *PortTestEffectsEnvironment {
 	e := &PortTestEffectsEnvironment{words: []*uint32{
-		(*uint32)(unsafe.Pointer(&C.dword_587000_180476)),
-		(*uint32)(unsafe.Pointer(&C.dword_587000_180480)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1304328)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1313532)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1313536)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1313540)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1313564)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1313692)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1313880)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1316408)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1316412)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1316436)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1316448)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1316452)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1316456)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1316472)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1316476)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1316484)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1316492)),
-		(*uint32)(unsafe.Pointer(&C.nox_color_white_2523948)),
-		(*uint32)(unsafe.Pointer(&C.nox_xxx_lightningSteps_587000_178216)),
+		(*uint32)(unsafe.Pointer(&dword_587000_180476)),
+		(*uint32)(unsafe.Pointer(&dword_587000_180480)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1304328)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1313532)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1313536)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1313540)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1313564)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1313692)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1313880)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1316408)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1316412)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1316436)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1316448)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1316452)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1316456)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1316472)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1316476)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1316484)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1316492)),
+		(*uint32)(unsafe.Pointer(&nox_color_white_2523948)),
+		(*uint32)(unsafe.Pointer(&nox_xxx_lightningSteps_587000_178216)),
 	}}
 	for _, p := range e.words {
 		e.old = append(e.old, *p)

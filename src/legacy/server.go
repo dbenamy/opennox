@@ -24,9 +24,6 @@ package legacy
 #include "common__crypt.h"
 #include "common__log.h"
 
-extern unsigned int dword_5d4594_2650652;
-extern unsigned int dword_5d4594_2649712;
-extern unsigned int dword_5d4594_1548524;
 
 
 void nox_xxx_netlist_4DEB50();

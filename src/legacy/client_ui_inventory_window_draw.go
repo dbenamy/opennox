@@ -10,9 +10,6 @@ package legacy
 #include "GAME3_1.h"
 #include "common__magic__speltree.h"
 #include "common__object__modifier.h"
-extern uint32_t dword_587000_136184, dword_5d4594_1050008;
-extern uint32_t dword_5d4594_1062512, dword_5d4594_1062516, dword_5d4594_1062520;
-extern uint32_t nox_color_white_2523948;
 */
 import "C"
 
@@ -28,7 +25,7 @@ import (
 
 func uiInventoryDrawWindow(w *gui.Window) int {
 	// Position uses the previous animation offset, before advancing this frame.
-	w.Parent().SetPos(image.Pt(0, int(int32(C.dword_587000_136184))))
+	w.Parent().SetPos(image.Pt(0, int(int32(dword_587000_136184))))
 	pos := uiWindowPosition(w)
 	nox_xxx_guiFontHeightMB_43F320(nil)
 	x, y := pos.X+10, pos.Y+234
@@ -47,10 +44,10 @@ func uiInventoryDrawWindow(w *gui.Window) int {
 			x += 35
 		}
 	}
-	if noxflags.HasGame(4096) && C.dword_5d4594_1050008 != 0 {
+	if noxflags.HasGame(4096) && dword_5d4594_1050008 != 0 {
 		x += 6
 		y += 5
-		ref := AsImageRefP(unsafe.Pointer(uintptr(C.dword_5d4594_1050008)))
+		ref := AsImageRefP(unsafe.Pointer(uintptr(dword_5d4594_1050008)))
 		anim := (*ImageRefAnim)(ref.Field_24)
 		frames := anim.Images()
 		uiMeterImage(uint32(uintptr(unsafe.Pointer(frames[GetServer().S().Frame()%uint32(len(frames))]))), image.Pt(x-58, y-53))
@@ -73,7 +70,7 @@ func uiInventoryDrawWindow(w *gui.Window) int {
 			case 0:
 				nox_xxx_guiDrawInventoryTray_4643B0(C.int(pos.X+254), C.int(pos.Y+13))
 			case 1:
-				journalDraw(pos.X+254, pos.Y+13, int(C.dword_5d4594_1062512))
+				journalDraw(pos.X+254, pos.Y+13, int(dword_5d4594_1062512))
 			}
 			objectRenderRestoreClip()
 		}
@@ -91,29 +88,29 @@ func uiInventoryDrawWindow(w *gui.Window) int {
 				uiMeterImage(memmap.Uint32(0x5D4594, 1049912), pos)
 			}
 			r := GetClient().R2()
-			r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_white_2523948))
+			r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_white_2523948))
 			r.DrawStringWrapped(r.GetFonts().AsFont(nil), uiInventoryWideAt(1062588), image.Rect(pos.X+13, pos.Y+17, pos.X+209, pos.Y+17))
 		}
 	}
 	switch *state {
 	case 1:
-		next := int32(C.dword_587000_136184) + 64
-		C.dword_587000_136184 = C.uint32_t(next)
+		next := int32(dword_587000_136184) + 64
+		dword_587000_136184 = C.uint32_t(next)
 		if next > 0 {
-			C.dword_587000_136184 = 0
+			dword_587000_136184 = 0
 			*state = 2
 		}
 	case 3:
-		next := int32(C.dword_587000_136184) - 32
-		C.dword_587000_136184 = C.uint32_t(next)
+		next := int32(dword_587000_136184) - 32
+		dword_587000_136184 = C.uint32_t(next)
 		if next <= -225 {
-			C.dword_587000_136184 = C.uint32_t(^uint32(224))
+			dword_587000_136184 = C.uint32_t(^uint32(224))
 			*state = 0
 			switch memmap.Uint8(0x5D4594, 1049869) {
 			case 0:
-				C.dword_5d4594_1062516 = C.dword_5d4594_1062512
+				dword_5d4594_1062516 = dword_5d4594_1062512
 			case 1:
-				C.dword_5d4594_1062520 = C.dword_5d4594_1062512
+				dword_5d4594_1062520 = dword_5d4594_1062512
 			}
 			uiInventoryResetPanelControls()
 		}

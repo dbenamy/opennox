@@ -2,35 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-extern int nox_win_width, nox_win_height;
-extern uint32_t dword_5d4594_1090276;
-extern uint32_t dword_5d4594_1090280;
-extern uint32_t dword_5d4594_1090284;
-extern uint32_t dword_5d4594_1090292;
-extern uint32_t dword_5d4594_1090828;
-extern uint32_t dword_5d4594_1091364;
-extern uint32_t dword_5d4594_1096252;
-extern uint32_t dword_5d4594_1096256;
-extern uint32_t dword_5d4594_1096260;
-extern uint32_t dword_5d4594_1096264;
-extern uint32_t dword_5d4594_1096272;
-extern uint32_t dword_5d4594_1096276;
-extern uint32_t dword_5d4594_1096280;
-extern uint32_t dword_5d4594_1096284;
-extern uint32_t dword_5d4594_1096288;
-extern uint32_t dword_8531A0_2576;
-extern uint32_t nox_client_renderBubbles_80844;
-extern uint32_t nox_color_black_2650656;
-extern uint32_t nox_color_violet_2598268;
-extern uint32_t nox_color_white_2523948;
-extern uint32_t nox_color_yellow_2589772;
-extern unsigned int nox_gameDisableMapDraw_5d4594_2650672;
-extern unsigned int nox_player_netCode_85319C;
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -52,31 +23,31 @@ type PortTestMeterEnvironment struct {
 
 func PortTestNewMeterEnvironment() *PortTestMeterEnvironment {
 	e := &PortTestMeterEnvironment{named: []*uint32{
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1090276)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1090280)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1090284)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1090292)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1090828)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1091364)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1096252)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1096256)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1096260)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1096264)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1096272)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1096276)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1096280)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1096284)),
-		(*uint32)(unsafe.Pointer(&C.dword_5d4594_1096288)),
-		(*uint32)(unsafe.Pointer(&C.dword_8531A0_2576)),
-		(*uint32)(unsafe.Pointer(&C.nox_client_renderBubbles_80844)),
-		(*uint32)(unsafe.Pointer(&C.nox_color_black_2650656)),
-		(*uint32)(unsafe.Pointer(&C.nox_color_violet_2598268)),
-		(*uint32)(unsafe.Pointer(&C.nox_color_white_2523948)),
-		(*uint32)(unsafe.Pointer(&C.nox_color_yellow_2589772)),
-		(*uint32)(unsafe.Pointer(&C.nox_gameDisableMapDraw_5d4594_2650672)),
-		(*uint32)(unsafe.Pointer(&C.nox_player_netCode_85319C)),
-		(*uint32)(unsafe.Pointer(&C.nox_win_width)),
-		(*uint32)(unsafe.Pointer(&C.nox_win_height)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1090276)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1090280)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1090284)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1090292)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1090828)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1091364)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1096252)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1096256)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1096260)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1096264)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1096272)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1096276)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1096280)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1096284)),
+		(*uint32)(unsafe.Pointer(&dword_5d4594_1096288)),
+		(*uint32)(unsafe.Pointer(&dword_8531A0_2576)),
+		(*uint32)(unsafe.Pointer(&nox_client_renderBubbles_80844)),
+		(*uint32)(unsafe.Pointer(&nox_color_black_2650656)),
+		(*uint32)(unsafe.Pointer(&nox_color_violet_2598268)),
+		(*uint32)(unsafe.Pointer(&nox_color_white_2523948)),
+		(*uint32)(unsafe.Pointer(&nox_color_yellow_2589772)),
+		(*uint32)(unsafe.Pointer(&nox_gameDisableMapDraw_5d4594_2650672)),
+		(*uint32)(unsafe.Pointer(&nox_player_netCode_85319C)),
+		(*uint32)(unsafe.Pointer(&nox_win_width)),
+		(*uint32)(unsafe.Pointer(&nox_win_height)),
 	}}
 	if unsafe.Sizeof(PortTestMeterRecord{}) != 20 {
 		panic("meter record ABI")

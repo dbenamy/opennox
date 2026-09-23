@@ -2,13 +2,7 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t nox_wnd_briefing_831232, dword_5d4594_831236;
-extern uint32_t dword_5d4594_831220, dword_5d4594_831224, dword_5d4594_831240, dword_5d4594_831244;
-extern uint32_t dword_5d4594_831256, dword_5d4594_831260, dword_5d4594_831276;
-extern uint32_t dword_5d4594_832480, dword_5d4594_832484, dword_8531A0_2576;
-extern uint32_t nox_color_black_2650656;
-extern unsigned int nox_gameDisableMapDraw_5d4594_2650672;
-extern int nox_win_width,nox_win_height;
+extern uint32_t dword_5d4594_831236;
 */
 import "C"
 
@@ -29,14 +23,14 @@ func briefingParent() *gui.Window {
 	return (*gui.Window)(unsafe.Pointer(uintptr(C.dword_5d4594_831236)))
 }
 func briefingWindow() *gui.Window {
-	return (*gui.Window)(unsafe.Pointer(uintptr(C.nox_wnd_briefing_831232)))
+	return (*gui.Window)(unsafe.Pointer(uintptr(nox_wnd_briefing_831232)))
 }
 func briefingPlayVoice() int {
-	result := int(C.dword_5d4594_831224)
+	result := int(dword_5d4594_831224)
 	*memmap.PtrUint32(0x5D4594, 831248) = 1
 	if result != 0 {
-		result = Dialogs.PlayFile(alloc.GoString((*byte)(unsafe.Pointer(uintptr(C.dword_5d4594_831240)))), 100)
-		C.dword_5d4594_831244 = 1
+		result = Dialogs.PlayFile(alloc.GoString((*byte)(unsafe.Pointer(uintptr(dword_5d4594_831240)))), 100)
+		dword_5d4594_831244 = 1
 	}
 	return result
 }
@@ -55,18 +49,18 @@ func briefingBackgroundEvent(_ *gui.Window, event int, _, _ uintptr) int {
 	return bool2int(event == 23)
 }
 func briefingCreateWindow() *gui.Window {
-	ox, oy := (int(C.nox_win_width)-640)/2, (int(C.nox_win_height)-480)/2
+	ox, oy := (int(nox_win_width)-640)/2, (int(nox_win_height)-480)/2
 	*memmap.PtrUint32(0x5D4594, 831284) = uint32(ox)
 	*memmap.PtrUint32(0x5D4594, 831288) = uint32(oy)
-	parent := GetClient().Cli().GUI.NewWindowRaw(nil, 56, 0, 0, int(C.nox_win_width), int(C.nox_win_height), briefingEvent(briefingBackgroundEvent))
+	parent := GetClient().Cli().GUI.NewWindowRaw(nil, 56, 0, 0, int(nox_win_width), int(nox_win_height), briefingEvent(briefingBackgroundEvent))
 	C.dword_5d4594_831236 = C.uint32_t(uintptr(parent.C()))
 	if parent == nil {
 		return nil
 	}
 	parent.SetFunc93(briefingEvent(briefingInput))
-	parent.DrawData().BgColorVal = uint32(C.nox_color_black_2650656)
+	parent.DrawData().BgColorVal = uint32(nox_color_black_2650656)
 	w := Nox_new_window_from_file("Briefing.wnd", nil)
-	C.nox_wnd_briefing_831232 = C.uint32_t(uintptr(w.C()))
+	nox_wnd_briefing_831232 = C.uint32_t(uintptr(w.C()))
 	if w == nil {
 		return nil
 	}
@@ -77,21 +71,21 @@ func briefingCreateWindow() *gui.Window {
 	return parent
 }
 func briefingFadeBack() {
-	C.nox_gameDisableMapDraw_5d4594_2650672 = 0
+	nox_gameDisableMapDraw_5d4594_2650672 = 0
 	GetClient().R2().FadeInScreen(Nox_client_getIntroScreenDuration_44E3B0(), true, Sub_44E320)
-	C.nox_gameDisableMapDraw_5d4594_2650672 = 1
+	nox_gameDisableMapDraw_5d4594_2650672 = 1
 }
 func briefingInput(_ *gui.Window, event int, _, _ uintptr) int {
 	if memmap.Uint32(0x5D4594, 831248) != 0 && event != 18 && event != 17 && memmap.Uint32(0x5D4594, 527720) != 1 {
 		Sub_450580()
-		if C.dword_5d4594_831220 != 0 {
-			if C.dword_5d4594_831220 == 255 {
+		if dword_5d4594_831220 != 0 {
+			if dword_5d4594_831220 == 255 {
 				briefingFadeBack()
 			}
 		} else {
 			briefingParent().Capture(false)
 			GetClient().Cli().GUI.Focus(nil)
-			C.dword_5d4594_831256 = 1
+			dword_5d4594_831256 = 1
 			Nox_savegame_sub_46D580()
 		}
 		briefingParent().SetFunc93(nil)
@@ -99,15 +93,15 @@ func briefingInput(_ *gui.Window, event int, _, _ uintptr) int {
 	return 1
 }
 func briefingScrollSpeed() float64 {
-	if C.dword_5d4594_831220 == 255 {
+	if dword_5d4594_831220 == 255 {
 		return 1
 	}
 	return 0
 }
 func briefingCompletedDraw(_ *gui.Window, _ *gui.WindowData) int { return 1 }
 func briefingDrawWindow(w *gui.Window, data *gui.WindowData) int {
-	scroll := float32(float64(math.Float32frombits(uint32(C.dword_5d4594_831276))) - briefingScrollSpeed())
-	C.dword_5d4594_831276 = C.uint32_t(math.Float32bits(scroll))
+	scroll := float32(float64(math.Float32frombits(uint32(dword_5d4594_831276))) - briefingScrollSpeed())
+	dword_5d4594_831276 = C.uint32_t(math.Float32bits(scroll))
 	w.SetPos(image.Pt(0, int(int32(scroll))))
 	uiRenderCopyRect(int(int32(memmap.Uint32(0x5D4594, 831284))), int(int32(memmap.Uint32(0x5D4594, 831288))), 640, 480)
 	mode := memmap.Uint8(0x5D4594, 832472)
@@ -123,18 +117,18 @@ func briefingDrawWindow(w *gui.Window, data *gui.WindowData) int {
 	rect := GetClient().Cli().Render().PixBufferRect()
 	uiRenderCopyRect(0, 0, rect.Dx(), rect.Dy())
 	// Read transition state after invoking the selected drawing owner.
-	scroll = math.Float32frombits(uint32(C.dword_5d4594_831276))
+	scroll = math.Float32frombits(uint32(dword_5d4594_831276))
 	mode = memmap.Uint8(0x5D4594, 832472)
-	if int64(scroll) <= int64(int32(memmap.Uint32(0x5D4594, 831280))) && C.dword_5d4594_831244 == 1 && !Dialogs.Sub_44D930() && PlatformTicks()-*memmap.PtrUint64(0x5D4594, 831292) > uint64(Nox_client_getBriefDuration()) && (memmap.Uint32(0x5D4594, 832488) == 1 || mode&5 == 0) {
-		if mode&2 != 0 && C.dword_5d4594_832480 != 0 {
+	if int64(scroll) <= int64(int32(memmap.Uint32(0x5D4594, 831280))) && dword_5d4594_831244 == 1 && !Dialogs.Sub_44D930() && PlatformTicks()-*memmap.PtrUint64(0x5D4594, 831292) > uint64(Nox_client_getBriefDuration()) && (memmap.Uint32(0x5D4594, 832488) == 1 || mode&5 == 0) {
+		if mode&2 != 0 && dword_5d4594_832480 != 0 {
 			Nox_xxx_clientPlaySoundSpecial_452D80(582, 100)
 		}
 		Sub_450580()
-		if C.dword_5d4594_831220 != 0 {
+		if dword_5d4594_831220 != 0 {
 			briefingFadeBack()
-		} else if C.dword_5d4594_831256 == 0 {
+		} else if dword_5d4594_831256 == 0 {
 			briefingParent().Capture(false)
-			C.dword_5d4594_831256 = 1
+			dword_5d4594_831256 = 1
 			Nox_savegame_sub_46D580()
 			briefingParent().SetFunc93(nil)
 		}
@@ -143,12 +137,12 @@ func briefingDrawWindow(w *gui.Window, data *gui.WindowData) int {
 	return 1
 }
 func briefingShow(chapter, begin int, mode byte) int {
-	C.dword_5d4594_831260 = 1
-	C.dword_5d4594_831244 = 1
-	p := (*server.Player)(unsafe.Pointer(uintptr(C.dword_8531A0_2576)))
+	dword_5d4594_831260 = 1
+	dword_5d4594_831244 = 1
+	p := (*server.Player)(unsafe.Pointer(uintptr(dword_8531A0_2576)))
 	*memmap.PtrUint32(0x5D4594, 832488) = 0
 	*memmap.PtrUint32(0x5D4594, 832472) = 0
-	C.dword_5d4594_831256 = 0
+	dword_5d4594_831256 = 0
 	*memmap.PtrUint8(0x5D4594, 831252) = byte(chapter + 1)
 	class := begin
 	if p != nil {
@@ -162,7 +156,7 @@ func briefingShow(chapter, begin int, mode byte) int {
 	w := briefingWindow()
 	child := w.ChildByID(1010)
 	child.SetDraw(briefingDrawWindow)
-	C.dword_5d4594_831220 = C.uint32_t(begin)
+	dword_5d4594_831220 = C.uint32_t(begin)
 	textData := (*gui.StaticTextData)(child.WidgetData)
 	setImage := func(v uint32) { w.DrawData().BgImageHnd = noxrender.ImageHandle(unsafe.Pointer(uintptr(v))) }
 	setText := func(p unsafe.Pointer) { child.Func94(gui.AsWindowEvent(16385, uintptr(p), 0)) }
@@ -175,9 +169,9 @@ func briefingShow(chapter, begin int, mode byte) int {
 		if s := Nox_xxx_GetEndgameDialog(); s != "" {
 			voice = alloc.InternCString(s)
 		}
-		C.dword_5d4594_831240 = C.uint32_t(uintptr(unsafe.Pointer(voice)))
+		dword_5d4594_831240 = C.uint32_t(uintptr(unsafe.Pointer(voice)))
 		music = 24
-		C.dword_5d4594_831220 = 255
+		dword_5d4594_831220 = 255
 	} else if chapter == 254 {
 		// The old unused map-filename getter has no side effects.
 		setImage(briefingLoadImage("GauntletStartMines"))
@@ -198,9 +192,9 @@ func briefingShow(chapter, begin int, mode byte) int {
 		Nox_client_resetScreenParticles_431510()
 		Nox_xxx_bookHideMB_45ACA0(1)
 		Sub_446780()
-		C.dword_5d4594_831240 = 0
-		C.dword_5d4594_831244 = 1
-		C.dword_5d4594_831224 = 0
+		dword_5d4594_831240 = 0
+		dword_5d4594_831244 = 1
+		dword_5d4594_831224 = 0
 	} else {
 		row := &(*[33]briefingChapter)(memmap.PtrOff(0x5D4594, 831300))[class*11+chapter]
 		slide := &row.Loss
@@ -210,7 +204,7 @@ func briefingShow(chapter, begin int, mode byte) int {
 		setImage(slide.Image)
 		setText(unsafe.Pointer(slide.Text))
 		music = slide.Duration
-		C.dword_5d4594_831240 = C.uint32_t(uintptr(unsafe.Pointer(slide.Voice)))
+		dword_5d4594_831240 = C.uint32_t(uintptr(unsafe.Pointer(slide.Voice)))
 	}
 	r := GetClient().R2()
 	font := r.GetFonts().AsFont(child.DrawData().FontPtr)
@@ -218,28 +212,28 @@ func briefingShow(chapter, begin int, mode byte) int {
 	*memmap.PtrUint32(0x5D4594, 831280) = uint32(height)
 	uiWindowResize(child, 640, height)
 	if chapter == 255 {
-		C.dword_5d4594_831276 = 1140457472
+		dword_5d4594_831276 = 1140457472
 		*memmap.PtrUint32(0x5D4594, 831280) = uint32(-20 - height)
 	} else {
 		height = (480 - r.FontHeight(font) - height) / 2
 		*memmap.PtrUint32(0x5D4594, 831280) = uint32(height)
-		C.dword_5d4594_831276 = C.uint32_t(math.Float32bits(float32(height)))
+		dword_5d4594_831276 = C.uint32_t(math.Float32bits(float32(height)))
 	}
 	Sub_431290()
-	C.dword_5d4594_831224 = 0
+	dword_5d4594_831224 = 0
 	if begin != 0 || chapter == 255 {
 		if chapter != 254 {
-			C.dword_5d4594_831224 = 1
+			dword_5d4594_831224 = 1
 		}
 	} else if chapter != 254 {
 		seen := (*uint32)(unsafe.Add(p.C(), 4408+4*chapter))
 		if *seen != 0 {
 			parent.Capture(false)
-			C.dword_5d4594_831256 = 1
+			dword_5d4594_831256 = 1
 			Nox_savegame_sub_46D580()
 			parent.SetFunc93(nil)
 		} else {
-			C.dword_5d4594_831224 = 1
+			dword_5d4594_831224 = 1
 			*seen = 1
 		}
 	}
@@ -247,9 +241,9 @@ func briefingShow(chapter, begin int, mode byte) int {
 	*memmap.PtrUint64(0x5D4594, 831292) = PlatformTicks()
 	*memmap.PtrUint32(0x5D4594, 831248) = 0
 	r.FadeOutScreen(Nox_client_getIntroScreenDuration_44E3B0(), true, func() { briefingPlayVoice() })
-	result := int(C.dword_5d4594_831224)
+	result := int(dword_5d4594_831224)
 	if result != 0 {
-		C.dword_5d4594_831244 = 0
+		dword_5d4594_831244 = 0
 	}
 	return result
 }
@@ -257,10 +251,10 @@ func briefingDestroy() int {
 	if w := briefingParent(); w != nil {
 		w.Destroy()
 		C.dword_5d4594_831236 = 0
-		C.nox_wnd_briefing_831232 = 0
+		nox_wnd_briefing_831232 = 0
 	}
-	C.dword_5d4594_831260 = 0
-	C.dword_5d4594_832484 = 0
+	dword_5d4594_831260 = 0
+	dword_5d4594_832484 = 0
 	sprites := briefingSprites()
 	result := 0
 	for _, i := range []int{3, 1, 2, 0, 4, 5, 6, 7, 8, 9, 10, 11} {

@@ -4,7 +4,6 @@ package legacy
 #include "defs.h"
 #include "GAME1.h"
 #include "GAME1_1.h"
-extern uint32_t dword_5d4594_3484;
 */
 import "C"
 
@@ -91,7 +90,7 @@ func matchRosterSettings() int {
 	// The legacy C flag is unconditional today, including default/server targets.
 	binary.LittleEndian.PutUint32(a[5:], uint32(C.NOX_CLIENT_VERS_CODE))
 	binary.LittleEndian.PutUint32(a[9:], uint32(noxflags.GetGame())&0x7fff0)
-	binary.LittleEndian.PutUint32(a[13:], uint32(C.dword_5d4594_3484))
+	binary.LittleEndian.PutUint32(a[13:], uint32(dword_5d4594_3484))
 	a[17] = byte(memmap.Uint32(0x5D4594, 3464))
 	a[18] = byte(C.short(serverConfigScore(int16(mode))))
 	a[19] = byte(C.uchar(serverConfigMinutes(int16(mode))))

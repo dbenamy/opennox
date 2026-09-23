@@ -12,7 +12,6 @@ package legacy
 #include "GAME4_2.h"
 #include "GAME5_2.h"
 #include "common__magic__speltree.h"
-extern uint32_t dword_5d4594_527656;
 */
 import "C"
 import (
@@ -180,12 +179,12 @@ func objectiveBallUpdate(u *server.Object) {
 }
 func objectiveBallReset(old *server.Object) int {
 	core := GetServer().S()
-	if C.dword_5d4594_527656 == 0 {
-		C.dword_5d4594_527656 = C.uint32_t(core.Types.IndByID("GameBallStart"))
+	if dword_5d4594_527656 == 0 {
+		dword_5d4594_527656 = C.uint32_t(core.Types.IndByID("GameBallStart"))
 	}
 	var n int
 	for it := core.Objs.First(); it != nil; it = it.Next() {
-		if uint32(it.TypeInd) == uint32(C.dword_5d4594_527656) {
+		if uint32(it.TypeInd) == uint32(dword_5d4594_527656) {
 			n++
 		}
 	}
@@ -195,7 +194,7 @@ func objectiveBallReset(old *server.Object) int {
 	choice := int(C.nox_common_randomInt_415FA0(0, C.int(n-1)))
 	var start *server.Object
 	for it := core.Objs.First(); it != nil; it = it.Next() {
-		if uint32(it.TypeInd) == uint32(C.dword_5d4594_527656) {
+		if uint32(it.TypeInd) == uint32(dword_5d4594_527656) {
 			if choice == 0 {
 				start = it
 				break

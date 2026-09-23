@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776;
-*/
-import "C"
-
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -18,8 +12,8 @@ func (p *portTestShopPools) unitExperiencePresentation(sp *PortTestUnitExperienc
 	if !sp.Presentation {
 		return func() {}, func() {}
 	}
-	a, b, c := C.dword_5d4594_2523804, C.dword_5d4594_2523780, C.dword_5d4594_2523776
-	C.dword_5d4594_2523804, C.dword_5d4594_2523780, C.dword_5d4594_2523776 = 0, 0, 0
+	a, b, c := dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776
+	dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776 = 0, 0, 0
 	offsets := []uintptr{2523772, 2523796, 2523800}
 	old := make([]uint32, len(offsets))
 	for i, off := range offsets {
@@ -45,10 +39,10 @@ func (p *portTestShopPools) unitExperiencePresentation(sp *PortTestUnitExperienc
 		if len(p.proxy.life.created)-before != want {
 			panic("XP presentation factory count")
 		}
-		if C.dword_5d4594_2523804 != 1 || uintptr(C.dword_5d4594_2523780) != uintptr(p.resources.unit.CObj()) || !noxflags.HasGame(noxflags.GamePause) || *ticks != 10000 || memmap.Uint32(0x5D4594, 2523796) != 5000 {
+		if dword_5d4594_2523804 != 1 || uintptr(dword_5d4594_2523780) != uintptr(p.resources.unit.CObj()) || !noxflags.HasGame(noxflags.GamePause) || *ticks != 10000 || memmap.Uint32(0x5D4594, 2523796) != 5000 {
 			panic("XP presentation state")
 		}
-		if want == 1 && uintptr(C.dword_5d4594_2523776) != uintptr(unsafe.Pointer(p.proxy.life.created[before])) {
+		if want == 1 && uintptr(dword_5d4594_2523776) != uintptr(unsafe.Pointer(p.proxy.life.created[before])) {
 			panic("XP presentation object")
 		}
 	}
@@ -56,7 +50,7 @@ func (p *portTestShopPools) unitExperiencePresentation(sp *PortTestUnitExperienc
 		restoreTypes()
 		noxflags.ResetGame()
 		noxflags.SetGame(game)
-		C.dword_5d4594_2523804, C.dword_5d4594_2523780, C.dword_5d4594_2523776 = a, b, c
+		dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776 = a, b, c
 		for i, off := range offsets {
 			*memmap.PtrUint32(0x5D4594, off) = old[i]
 		}

@@ -6,38 +6,7 @@ package legacy
 #include "GAME2.h"
 #include "client__gui__guibook.h"
 extern nox_window* nox_win_unk1;
-extern uint32_t nox_xxx_aNox_cfg_0_587000_132132;
 
-extern uint32_t nox_xxx_aNox_cfg_0_587000_132136;
-extern unsigned int nox_player_netCode_85319C;
-extern int nox_win_width;
-extern int nox_win_height;
-extern uint32_t dword_5d4594_1046636;
-extern uint32_t dword_5d4594_1046640;
-extern uint32_t dword_5d4594_1046648;
-extern uint32_t dword_5d4594_1046652;
-extern uint32_t dword_5d4594_1046656;
-extern uint32_t dword_5d4594_1046852;
-extern uint32_t dword_5d4594_1046864;
-extern uint32_t dword_5d4594_1046868;
-extern uint32_t dword_5d4594_1046872;
-extern uint32_t dword_5d4594_1046924;
-extern uint32_t dword_5d4594_1046928;
-extern uint32_t dword_5d4594_1046932;
-extern uint32_t dword_5d4594_1046936;
-extern uint32_t dword_5d4594_1046944;
-extern uint32_t dword_5d4594_1046948;
-extern uint32_t dword_5d4594_1046952;
-extern uint32_t dword_5d4594_1046956;
-extern uint32_t dword_5d4594_1047512;
-extern uint32_t dword_5d4594_1047516;
-extern uint32_t dword_5d4594_1047520;
-extern uint32_t dword_5d4594_1047524;
-extern uint32_t dword_5d4594_1047528;
-extern uint32_t dword_5d4594_1047532;
-extern uint32_t dword_5d4594_1047536;
-extern uint32_t dword_5d4594_1047540;
-extern uint32_t dword_8531A0_2576;
 #include "GAME1.h"
 #include "GAME1_1.h"
 #include "GAME1_2.h"
@@ -69,62 +38,62 @@ import (
 
 var bookVector [2]float32
 
-func bookContents() *uint32  { return (*uint32)(unsafe.Pointer(&C.nox_xxx_aNox_cfg_0_587000_132132)) }
-func bookSelection() *uint32 { return (*uint32)(unsafe.Pointer(&C.nox_xxx_aNox_cfg_0_587000_132136)) }
+func bookContents() *uint32  { return (*uint32)(unsafe.Pointer(&nox_xxx_aNox_cfg_0_587000_132132)) }
+func bookSelection() *uint32 { return (*uint32)(unsafe.Pointer(&nox_xxx_aNox_cfg_0_587000_132136)) }
 
 // Named words remain shared with the quickbar until that owner is ported.
 func bookWord(off uintptr) *uint32 {
 	switch off {
 	case 1046636:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046636))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046636))
 	case 1046640:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046640))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046640))
 	case 1046648:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046648))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046648))
 	case 1046652:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046652))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046652))
 	case 1046656:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046656))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046656))
 	case 1046852:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046852))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046852))
 	case 1046864:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046864))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046864))
 	case 1046868:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046868))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046868))
 	case 1046872:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046872))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046872))
 	case 1046924:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046924))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046924))
 	case 1046928:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046928))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046928))
 	case 1046932:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046932))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046932))
 	case 1046936:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046936))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046936))
 	case 1046944:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046944))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046944))
 	case 1046948:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046948))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046948))
 	case 1046952:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046952))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046952))
 	case 1046956:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1046956))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1046956))
 	case 1047512:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047512))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1047512))
 	case 1047516:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047516))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1047516))
 	case 1047520:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047520))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1047520))
 	case 1047524:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047524))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1047524))
 	case 1047528:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047528))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1047528))
 	case 1047532:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047532))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1047532))
 	case 1047536:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047536))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1047536))
 	case 1047540:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047540))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1047540))
 	}
 	return memmap.PtrUint32(0x5D4594, off)
 }
@@ -190,7 +159,7 @@ func bookHide(reset int) int {
 	bookHideWindow(w, true)
 	bookSound(787)
 	if reset != 0 {
-		C.nox_xxx_aNox_cfg_0_587000_132132 = 1
+		nox_xxx_aNox_cfg_0_587000_132132 = 1
 		*bookWord(1046936) = 0
 		bookHideWindow(bookWindow(*bookWord(1046952)), true)
 	}
@@ -206,7 +175,7 @@ func bookShow(force int) {
 	if Nox_xxx_playerAnimCheck_4372B0() != 0 && noxflags.HasGame(noxflags.GameModeCoop) {
 		return
 	}
-	if C.dword_8531A0_2576 == 0 || bookSort(bookClass(uint32(C.dword_8531A0_2576))) != 0 {
+	if dword_8531A0_2576 == 0 || bookSort(bookClass(uint32(dword_8531A0_2576))) != 0 {
 		bookOpen(force)
 		return
 	}

@@ -6,8 +6,6 @@ package legacy
 #include "GAME2_2.h"
 #include "GAME3.h"
 #include "GAME3_1.h"
-extern int nox_win_width;
-extern int nox_win_height;
 extern nox_gui_animation* nox_wnd_xxx_1522608;
 */
 import "C"
@@ -122,7 +120,7 @@ func (e bindingEditor) construct() int {
 	bindingSend(w.ChildByID(uint(971+Nox_client_mousePriKey_430AF0())), 16392, 1, 0)
 	// Preserve unsigned C centering, including endpoint normalization in SetPos.
 	if !e {
-		w.SetPos(image.Pt(int((uint32(C.nox_win_width)-uint32(w.SizeVal.X))/2), 0))
+		w.SetPos(image.Pt(int((uint32(nox_win_width)-uint32(w.SizeVal.X))/2), 0))
 	}
 	m := w.ChildByID(980)
 	bindingStore(modal, m)
@@ -131,7 +129,7 @@ func (e bindingEditor) construct() int {
 	m.SetFunc93(e.modalEvent)
 	m.SetHidden(true)
 	if !e {
-		m.SetPos(image.Pt(int((uint32(C.nox_win_width)-uint32(m.SizeVal.X))/2), m.Off.Y))
+		m.SetPos(image.Pt(int((uint32(nox_win_width)-uint32(m.SizeVal.X))/2), m.Off.Y))
 	}
 	bindingSend(m.ChildByID(981), 16385, uintptr(memmap.PtrOff(0x5D4594, uintptr(buffer))), 0)
 	if !e {
@@ -195,7 +193,7 @@ func bindingYesNo() uint32 {
 	w := Nox_new_window_from_file("yesno.wnd", nil)
 	bindingStore(1321224, w)
 	if w != nil {
-		w.SetPos(image.Pt((int(C.nox_win_width)-320)/2, (int(C.nox_win_height)-240)/2))
+		w.SetPos(image.Pt((int(nox_win_width)-320)/2, (int(nox_win_height)-240)/2))
 	}
 	w.SetHidden(true)
 	return *bindingWord(1321224)

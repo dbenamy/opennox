@@ -4,9 +4,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_2516344;
-extern uint32_t dword_5d4594_2516348;
-extern uint32_t dword_5d4594_2516328;
 */
 import "C"
 import (
@@ -19,22 +16,22 @@ import (
 // PortTestPlayerFileRecords owns the actual spell/guide bookkeeping list, so
 // section restoration exercises the real award functions and checksum updates.
 func PortTestPlayerFileRecords() (ids [2]uint32, reset func(), snapshot func() [3]uint32, release func()) {
-	oldHead, oldKey, oldSum := C.dword_5d4594_2516344, C.dword_5d4594_2516348, C.dword_5d4594_2516328
+	oldHead, oldKey, oldSum := dword_5d4594_2516344, dword_5d4594_2516348, dword_5d4594_2516328
 	records, free := alloc.Make([]protection.Record{}, 2)
 	ids = [2]uint32{0x30000001, 0x30000002}
 	const key = uint32(0x13579abc)
 	reset = func() {
 		records[0] = protection.Record{ID: ids[0] ^ key, Value: key, Next: &records[1]}
 		records[1] = protection.Record{ID: ids[1] ^ key, Value: key, Prev: &records[0]}
-		C.dword_5d4594_2516344 = C.uint32_t(uintptr(unsafe.Pointer(&records[0])))
-		C.dword_5d4594_2516348 = C.uint32_t(key)
-		C.dword_5d4594_2516328 = 0x2468ace0
+		dword_5d4594_2516344 = C.uint32_t(uintptr(unsafe.Pointer(&records[0])))
+		dword_5d4594_2516348 = C.uint32_t(key)
+		dword_5d4594_2516328 = 0x2468ace0
 	}
 	snapshot = func() [3]uint32 {
-		return [3]uint32{records[0].Value ^ key, records[1].Value ^ key, uint32(C.dword_5d4594_2516328)}
+		return [3]uint32{records[0].Value ^ key, records[1].Value ^ key, uint32(dword_5d4594_2516328)}
 	}
 	release = func() {
-		C.dword_5d4594_2516344, C.dword_5d4594_2516348, C.dword_5d4594_2516328 = oldHead, oldKey, oldSum
+		dword_5d4594_2516344, dword_5d4594_2516348, dword_5d4594_2516328 = oldHead, oldKey, oldSum
 		free()
 	}
 	reset()

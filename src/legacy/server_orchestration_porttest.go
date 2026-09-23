@@ -4,8 +4,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t dword_5d4594_2488728;
-extern uint32_t dword_5d4594_1568280, dword_5d4594_1568288;
 int nox_xxx_initChest_4F0400(int);
 static void* orchestrationChestInit(void) { return nox_xxx_initChest_4F0400; }
 */
@@ -40,7 +38,7 @@ func PortTestServerOrchestration(op string, u *server.Object, arg int32) uint32 
 }
 
 func PortTestServerOrchestrationGlobals() (map[string]*uint32, func()) {
-	words := map[string]*uint32{"ankh-marker": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1568280)), "selected-marker": (*uint32)(unsafe.Pointer(&C.dword_5d4594_1568288)), "drop-table": (*uint32)(unsafe.Pointer(&C.dword_5d4594_2488728)), "restore-cleanup": &orchestrationRestoreCleanup, "reward-marker": &orchestrationRewardMarker}
+	words := map[string]*uint32{"ankh-marker": (*uint32)(unsafe.Pointer(&dword_5d4594_1568280)), "selected-marker": (*uint32)(unsafe.Pointer(&dword_5d4594_1568288)), "drop-table": (*uint32)(unsafe.Pointer(&dword_5d4594_2488728)), "restore-cleanup": &orchestrationRestoreCleanup, "reward-marker": &orchestrationRewardMarker}
 	saved := map[string]uint32{}
 	for k, p := range words {
 		saved[k] = *p

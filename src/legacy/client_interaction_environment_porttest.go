@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t dword_8531A0_2576;
-*/
-import "C"
 import "unsafe"
 
 // PortTestClientInteractionWords snapshots the live owners, separately from mapped blobs.
@@ -30,7 +25,7 @@ func PortTestClientInteractionWords() (map[string]*uint32, func()) {
 		"dword_5d4594_811904":                     (*uint32)(unsafe.Pointer(&interactionDrawToggle)),
 		"dword_5d4594_825736":                     (*uint32)(unsafe.Pointer(&interactionMessageHead)),
 		"dword_5d4594_825744":                     (*uint32)(unsafe.Pointer(&interactionChatIcon)),
-		"dword_8531A0_2576":                       (*uint32)(unsafe.Pointer(&C.dword_8531A0_2576)),
+		"dword_8531A0_2576":                       (*uint32)(unsafe.Pointer(&dword_8531A0_2576)),
 		"nox_client_spriteUnderCursorXxx_1096644": (*uint32)(unsafe.Pointer(&interactionUsableCursorDrawable)),
 		"nox_xxx_useAudio_587000_80772":           (*uint32)(unsafe.Pointer(&interactionCursorMode)),
 	}

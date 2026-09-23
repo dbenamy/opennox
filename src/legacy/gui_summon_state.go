@@ -1,20 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-extern uint32_t dword_5d4594_1320988;
-extern uint32_t dword_5d4594_1320992;
-extern uint32_t dword_5d4594_1321024;
-extern uint32_t dword_5d4594_1321032;
-extern uint32_t dword_5d4594_1321036;
-extern uint32_t dword_5d4594_1321040;
-extern uint32_t dword_5d4594_1321044;
-extern uint32_t dword_5d4594_1321196;
-extern uint32_t dword_5d4594_1321204;
-extern uint32_t dword_5d4594_1321208;
-extern uint32_t nox_xxx_screenWidth_587000_184452;
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"unsafe"
@@ -38,30 +23,30 @@ var _ [int(unsafe.Offsetof(summonRecord{}.Index)) - 24]byte
 func summonWord(off uintptr) *uint32 {
 	switch off {
 	case 1320988:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1320988))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1320988))
 	case 1320992:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1320992))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1320992))
 	case 1321024:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321024))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1321024))
 	case 1321032:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321032))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1321032))
 	case 1321036:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321036))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1321036))
 	case 1321040:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321040))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1321040))
 	case 1321044:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321044))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1321044))
 	case 1321196:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321196))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1321196))
 	case 1321204:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321204))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1321204))
 	case 1321208:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1321208))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1321208))
 	}
 	return memmap.PtrUint32(0x5D4594, off)
 }
 func summonMenuWidth() *uint32 {
-	return (*uint32)(unsafe.Pointer(&C.nox_xxx_screenWidth_587000_184452))
+	return (*uint32)(unsafe.Pointer(&nox_xxx_screenWidth_587000_184452))
 }
 func summonAt(i int32) *summonRecord {
 	return (*summonRecord)(memmap.PtrOff(0x5D4594, 1321052+uintptr(i)*32))

@@ -8,12 +8,6 @@ package legacy
 #include "GAME2_2.h"
 #include "GAME2_3.h"
 #include "GAME3_1.h"
-extern uint32_t dword_5d4594_1049864, dword_5d4594_1062512, dword_5d4594_1063116;
-extern uint32_t dword_5d4594_1049856, dword_5d4594_1062492, dword_5d4594_1062480;
-extern uint32_t dword_5d4594_1049796_inventory_click_column_index, dword_5d4594_1049800_inventory_click_row_index;
-extern uint32_t dword_5d4594_1049804, dword_5d4594_1049808;
-extern uint32_t dword_5d4594_1062560, dword_5d4594_1062556, dword_5d4594_1062564;
-extern int nox_win_width,nox_win_height;
 */
 import "C"
 import (
@@ -24,24 +18,24 @@ import (
 )
 
 func uiInventorySourceCell() *uiInventoryCell {
-	return &uiInventoryGrid()[int(C.dword_5d4594_1049800_inventory_click_row_index)+21*int(C.dword_5d4594_1049796_inventory_click_column_index)]
+	return &uiInventoryGrid()[int(dword_5d4594_1049800_inventory_click_row_index)+21*int(dword_5d4594_1049796_inventory_click_column_index)]
 }
 func uiInventoryRestoreDrag() int {
-	return uiInventoryPlace(uiInventoryDragged(), int(int32(C.dword_5d4594_1049796_inventory_click_column_index)), int(int32(C.dword_5d4594_1049800_inventory_click_row_index)))
+	return uiInventoryPlace(uiInventoryDragged(), int(int32(dword_5d4594_1049796_inventory_click_column_index)), int(int32(dword_5d4594_1049800_inventory_click_row_index)))
 }
 func uiInventoryFinishDrag() {
 	Nox_xxx_cursorSetDraggedItem_477690(nil)
-	if C.dword_5d4594_1049856 == 0 {
+	if dword_5d4594_1049856 == 0 {
 		GetClient().Nox_xxx_spriteDelete_45A4B0(uiInventoryDragged())
 	}
 	uiInventorySetDragged(nil)
-	C.dword_5d4594_1049856 = 0
+	dword_5d4594_1049856 = 0
 }
 func uiInventoryTradeClick(pos image.Point) int {
 	if !uiInventoryHitRect(pos, 136352) {
 		return 0
 	}
-	col, row := (pos.X-314)/50, (pos.Y+int(int32(C.dword_5d4594_1062512))-13)/50
+	col, row := (pos.X-314)/50, (pos.Y+int(int32(dword_5d4594_1062512))-13)/50
 	cell := &uiInventoryGrid()[row+21*col]
 	if cell.Count == 0 {
 		return 0
@@ -54,16 +48,16 @@ func uiInventoryStartDrag(w *gui.Window, pos image.Point) {
 	}
 	if uiInventoryHitRect(pos, 136336) {
 		uiInventorySetDragged(uiInventoryDrawable(uiInventoryEquipment()[uiInventoryEquipmentAt(pos)]))
-		C.dword_5d4594_1049856 = 1
+		dword_5d4594_1049856 = 1
 		return
 	}
-	C.dword_5d4594_1049856 = 0
+	dword_5d4594_1049856 = 0
 	if uiInventoryHitRect(pos, 136368) {
 		if (pos.Y-13)/50 == 2 {
 			Nox_client_toggleMap_473610()
 		}
 	} else if uiInventoryHitRect(pos, 136352) {
-		col, row := (pos.X-314)/50, (pos.Y+int(int32(C.dword_5d4594_1062512))-13)/50
+		col, row := (pos.X-314)/50, (pos.Y+int(int32(dword_5d4594_1062512))-13)/50
 		uiInventorySetClick(col, row)
 		if uiInventoryValidCell(col, row) {
 			uiInventoryDragCopy()
@@ -113,28 +107,28 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 		switch uiInventoryMode() {
 		case 5:
 			if hit(136352) {
-				col, row := (pos.X-314)/50, (pos.Y+int(int32(C.dword_5d4594_1062512))-13)/50
+				col, row := (pos.X-314)/50, (pos.Y+int(int32(dword_5d4594_1062512))-13)/50
 				if !uiInventoryValidCell(col, row) {
 					return 1
 				}
 				cell := &uiInventoryGrid()[row+21*col]
 				if cell.Count != 0 {
-					C.dword_5d4594_1063116 = C.uint32_t(uiInventoryPointer(cell.Drawable.C()))
+					dword_5d4594_1063116 = C.uint32_t(uiInventoryPointer(cell.Drawable.C()))
 					cell.Drawable.NetCode32 = cell.Codes[0]
 				} else {
-					C.dword_5d4594_1063116 = 0
+					dword_5d4594_1063116 = 0
 				}
 				return 1
 			}
 			if uiShopActive() != 0 && uiShopMode() == 2 {
 				if uiShopInside(pos) {
-					C.dword_5d4594_1063116 = C.uint32_t(uiInventoryPointer(uiShopHit(pos).C()))
+					dword_5d4594_1063116 = C.uint32_t(uiInventoryPointer(uiShopHit(pos).C()))
 					return 1
 				}
 			}
 		case 6:
 			if hit(136352) {
-				col, row := (pos.X-314)/50, (pos.Y+int(int32(C.dword_5d4594_1062512))-13)/50
+				col, row := (pos.X-314)/50, (pos.Y+int(int32(dword_5d4594_1062512))-13)/50
 				if uiInventoryValidCell(col, row) {
 					cell := &uiInventoryGrid()[row+21*col]
 					if cell.Count != 0 {
@@ -199,17 +193,17 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 			world := Sub_473970(screen)
 			dr := GetClient().Nox_drawable_find(world, 20)
 			if dr != nil {
-				center := Sub_473970(image.Pt(int(C.nox_win_width)/2, int(C.nox_win_height)/2))
+				center := Sub_473970(image.Pt(int(nox_win_width)/2, int(nox_win_height)/2))
 				d := center.Sub(dr.Pos())
 				if d.X*d.X+d.Y*d.Y <= 5625 {
-					C.dword_5d4594_1049864 = 0
+					dword_5d4594_1049864 = 0
 					return 1
 				}
 				uiInventoryError("ObjectTooFar")
 			} else {
 				uiInventoryError("NoObject")
 			}
-			C.dword_5d4594_1049864 = 0
+			dword_5d4594_1049864 = 0
 			return 1
 		}
 		dr := uiInventoryDragged()
@@ -219,7 +213,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 		defer uiInventoryFinishDrag()
 		if !bool(nox_xxx_wndPointInWnd_46AAB0((*C.uint)(uiInventoryMainWindow().C()), C.int(screen.X), C.int(screen.Y))) || hit(136384) || hit(136400) {
 			world := Sub_473970(screen)
-			if C.dword_5d4594_1049856 == 1 {
+			if dword_5d4594_1049856 == 1 {
 				if uiTradeActive() == 0 {
 					uiInventoryDropAt(world)
 				}
@@ -237,7 +231,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 					uiInventoryDropAt(world)
 				}
 			}
-			if C.dword_5d4594_1049856 == 0 {
+			if dword_5d4594_1049856 == 0 {
 				uiInventoryRestoreDrag()
 			}
 			return 1
@@ -256,7 +250,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 					} else if cell.Equipped != 0 {
 						uiInventoryDequipRequest(dr)
 					} else {
-						nox_xxx_clientKeyEquip_465C30(C.int(C.dword_5d4594_1049796_inventory_click_column_index), C.int(C.dword_5d4594_1049800_inventory_click_row_index))
+						nox_xxx_clientKeyEquip_465C30(C.int(dword_5d4594_1049796_inventory_click_column_index), C.int(dword_5d4594_1049800_inventory_click_row_index))
 					}
 				} else {
 					uiInventoryUse(dr)
@@ -266,7 +260,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 			return 1
 		}
 		if hit(136336) && memmap.Uint8(0x5D4594, 1049870) == 0 {
-			if C.dword_5d4594_1049856 == 0 {
+			if dword_5d4594_1049856 == 0 {
 				uiInventoryEquipRequest(dr)
 				uiInventoryRestoreDrag()
 			}
@@ -277,17 +271,17 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 			return 1
 		}
 		typ := dr.TypeIDVal
-		if typ == uint32(C.dword_5d4594_1062560) || typ == memmap.Uint32(0x5D4594, 1049728) || typ == memmap.Uint32(0x5D4594, 1049724) || typ == uint32(C.dword_5d4594_1062556) || typ == uint32(C.dword_5d4594_1062564) {
+		if typ == uint32(dword_5d4594_1062560) || typ == memmap.Uint32(0x5D4594, 1049728) || typ == memmap.Uint32(0x5D4594, 1049724) || typ == uint32(dword_5d4594_1062556) || typ == uint32(dword_5d4594_1062564) {
 			uiInventoryRestoreDrag()
 			return 1
 		}
-		col, row := (pos.X-314)/50, (pos.Y+int(int32(C.dword_5d4594_1062512))-13)/50
-		C.dword_5d4594_1049804, C.dword_5d4594_1049808 = C.uint32_t(col), C.uint32_t(row)
+		col, row := (pos.X-314)/50, (pos.Y+int(int32(dword_5d4594_1062512))-13)/50
+		dword_5d4594_1049804, dword_5d4594_1049808 = C.uint32_t(col), C.uint32_t(row)
 		if !uiInventoryValidCell(col, row) {
 			return 1
 		}
 		target := &uiInventoryGrid()[row+21*col]
-		if C.dword_5d4594_1049856 != 0 {
+		if dword_5d4594_1049856 != 0 {
 			other := target.Drawable
 			compatible := false
 			if target.Count != 0 && other != nil {
@@ -316,7 +310,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 		if source.Alternate != 0 {
 			target.Alternate = source.Alternate
 			source.Alternate = 0
-			C.dword_5d4594_1062480 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(target)))
+			dword_5d4594_1062480 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(target)))
 		}
 		uiInventoryCompact()
 		return 1
@@ -359,12 +353,12 @@ func uiInventoryAlternateEvents(w *gui.Window, event int, a, b uintptr) int {
 			pos := uiInventoryPackedPoint(a)
 			inside := bool(nox_xxx_wndPointInWnd_46AAB0((*C.uint)(uiInventoryMainWindow().C()), C.int(pos.X), C.int(pos.Y)))
 			if inside {
-				if C.dword_5d4594_1049856 != 0 {
+				if dword_5d4594_1049856 != 0 {
 					if uint32(dr.Class())&0x1001000 != 0 {
 						if uiInventoryAlternate() != nil {
 							uiInventoryAlterWeapon()
 						} else {
-							C.dword_5d4594_1062492 = C.uint32_t(uiInventoryPointer(dr.C()))
+							dword_5d4594_1062492 = C.uint32_t(uiInventoryPointer(dr.C()))
 							uiInventoryDequipRequest(dr)
 						}
 					}

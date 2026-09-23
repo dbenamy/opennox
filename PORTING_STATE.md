@@ -2,29 +2,39 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: 518 physical lines in 6 production `.c` files**, zero
-reference C. Latest conversion removes 117 lines and 24 C interfaces.
+**Qualified C remaining: 166 physical lines in 6 production `.c` files**, zero
+reference C. Latest conversion removes 352 lines:343 owners moved to Go, nine unused definitions.
 See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Active — scalar storage baseline qualified
+## Current — numeric global owners qualified
 
-Production baseline `48b7f80b` is pushed. The new original-C storage contract
-passes 343 owners ×139 patterns (47,677 cases) in two default processes and
-server/highres; hashes/static checks match, no skips. Only two tagged test files
-changed; production evidence is reused. All jobs joined. See
-[SCALAR_STORAGE.md](docs/porting/SCALAR_STORAGE.md).
+Original-C baseline `bc90690c` is pushed. Native default/server/highres pass
+2,291/2,280/2,291 consumer roots/no skips, all 47,677 storage cases/capture hashes
+and static checks. Safe build/symbols, three production builds/ABI, exact known
+full-suite comparison, fresh headless gameplay and explicit save/load pass.
+All final source fingerprints match; sessions12295,98671 and21073 joined. C is166 /6
+files (−352), no reference C. See [SCALAR_STORAGE.md](docs/porting/SCALAR_STORAGE.md).
 
-Luna's uninstalled draft in `build/port-final-storage/prepare_migration.py` passes
-`--check --include-go src/legacy/scalar_storage_porttest.go`. It proposes 343 Go
-numeric owners plus nine unused C definitions retired, 270 source paths; plan and
-source.patch are reviewable. No conversion is applied yet. Three pointer-typed
-numeric declarations and C fixture-body users are deferred, as are pointer/array
-owners. Keep expected fixture bits frozen. Primary owns final review/integration.
-Next: commit baseline, apply reviewed draft, run storage contracts and broad tagged
-consumer qualification. Luna is inventorying normal tagged roots and asset env
-requirements; it has no permission to edit source or run tests.
+Migration and preflight asset cleanup scripts in `build/port-final-storage` are
+CONSUMED. Tracked source is authoritative. Preflight duplicate assets556,388,715
+bytes were removed after hash/process checks; deduplicate-preflight.py --restore
+scalar-storage-native restores them. Original assets and evidence are intact.
+Old orphan-bridges-native-save duplicate assets556,358,986 bytes were also removed
+after host/hash checks; deduplicate-old-save.py --restore orphan-bridges-native-save
+restores them. Cleanup54553 joined; CONSUMED.
+
+Next: the ignored, UNAPPLIED `build/port-map-storage` draft now covers
+all52 fixture-owned numeric globals (35 map,10 audio,7 sustained spells). Primary
+caught a helper-name collision; Luna corrected it with distinct portTest names.
+Review selected-symbols/plan/patch, extend the frozen owner contract first, commit
+baseline, then recheck/apply the guarded migration. Do not replay consumed current
+installers. The183-root focused pattern is `consumer-pattern.txt`; the similarly
+named map-owner-consumers.txt is a prose rationale, not a -run pattern. The
+395-owner contract draft has54,905 cases and matches current Go-facing uint32_t
+externs. Cache cleanup inventory is pending primary review; no deletion yet.
+Three pointer-typed scalars and pointer/array owners remain deferred.
 
 ## Current — unused memory and GUI bridges qualified
 
@@ -47,13 +57,6 @@ After all qualification jobs joined, removed 62 verified obsolete Go cache
 entries (2,707,209,080 bytes) containing the retired bridge symbols. Host-wide
 process/open-file checks, sizes, mtimes and hashes passed. The cleanup plan and
 application record are under `build/port-final-orphan-bridges`; CONSUMED.
-
-Next: scalar global storage. Luna's ignored inventory/draft under
-`build/port-final-storage` is UNINSTALLED and unqualified. Definitions and typed
-externs need independent review; preserve exact numeric bits and address lifetime.
-Separate pointer/array owners, pointer-typed redeclarations and C fixture users.
-Primary owns baseline contracts and final integration. One Luna helper remains the
-standing process after two completed batches; review lessons are recorded in PORT.
 
 ## Current — formatting/scalars/directory qualified
 

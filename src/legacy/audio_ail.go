@@ -11,7 +11,6 @@ int sub_43F060(uint32_t* a1);
 
 extern void* dword_587000_127004;
 extern uint32_t dword_5d4594_816376;
-extern uint32_t dword_5d4594_831084;
 extern uint32_t dword_5d4594_831092;
 
 extern void* dword_587000_122852;

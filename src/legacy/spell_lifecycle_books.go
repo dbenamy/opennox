@@ -10,8 +10,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_3.h"
 extern void* nox_alloc_magicEnt_1569668;
-extern uint32_t dword_5d4594_1569672;
-extern unsigned int dword_5d4594_2650652;
 */
 import "C"
 import (
@@ -40,10 +38,10 @@ func spellLifeBookPool() alloc.ClassT[spellLifeBook] {
 	return alloc.AsClassT[spellLifeBook](C.nox_alloc_magicEnt_1569668)
 }
 func spellLifeBookHead() *spellLifeBook {
-	return (*spellLifeBook)(unsafe.Pointer(uintptr(C.dword_5d4594_1569672)))
+	return (*spellLifeBook)(unsafe.Pointer(uintptr(dword_5d4594_1569672)))
 }
 func spellLifeSetBookHead(p *spellLifeBook) {
-	C.dword_5d4594_1569672 = C.uint32_t(uintptr(unsafe.Pointer(p)))
+	dword_5d4594_1569672 = C.uint32_t(uintptr(unsafe.Pointer(p)))
 }
 func spellLifeUnlinkBook(p *spellLifeBook) *spellLifeBook {
 	next := p.Next
@@ -207,7 +205,7 @@ func spellLifeCastBooks() {
 		if p.Tree.Ind != id {
 			settings := unsafe.Pointer((unsafe.Pointer)(unsafe.Pointer(serverConfigSettings())))
 			ph := s.Spells.Phoneme(spell.ID(id), int(p.Phoneme))
-			if C.dword_5d4594_2650652 == 0 || *spellLifeWord(settings, 62) != 0 {
+			if dword_5d4594_2650652 == 0 || *spellLifeWord(settings, 62) != 0 {
 				spellLifeBroadcastPhoneme(u, int8(ph))
 			}
 			p.Tree = p.Tree.Next(ph)

@@ -3,10 +3,6 @@ package legacy
 /*
 #include <stdint.h>
 #include <stdlib.h>
-extern uint32_t dword_5d4594_2516344;
-extern uint32_t dword_5d4594_2516352;
-extern uint32_t dword_5d4594_2516348;
-extern uint32_t dword_5d4594_2516328;
 */
 import "C"
 import (
@@ -18,15 +14,15 @@ import (
 
 func deleteProtectionRecord(id uint32) bool {
 	head := protectionHead()
-	r := protection.Find(head, uint32(C.dword_5d4594_2516348), id)
+	r := protection.Find(head, uint32(dword_5d4594_2516348), id)
 	if r == nil {
 		return false
 	}
-	tail := *(**protection.Record)(unsafe.Pointer(&C.dword_5d4594_2516352))
+	tail := *(**protection.Record)(unsafe.Pointer(&dword_5d4594_2516352))
 	head, tail = protection.Unlink(head, tail, r)
-	C.dword_5d4594_2516344 = C.uint32_t(uintptr(unsafe.Pointer(head)))
-	C.dword_5d4594_2516352 = C.uint32_t(uintptr(unsafe.Pointer(tail)))
-	C.dword_5d4594_2516328 ^= C.uint32_t(r.ID ^ r.Value)
+	dword_5d4594_2516344 = C.uint32_t(uintptr(unsafe.Pointer(head)))
+	dword_5d4594_2516352 = C.uint32_t(uintptr(unsafe.Pointer(tail)))
+	dword_5d4594_2516328 ^= C.uint32_t(r.ID ^ r.Value)
 	*memmap.PtrUint16(0x587000, 311204)--
 	C.free(unsafe.Pointer(r))
 	return true
@@ -47,9 +43,9 @@ func freeProtectionRecords() {
 		C.free(unsafe.Pointer(p))
 		p = next
 	}
-	C.dword_5d4594_2516328 = 0
+	dword_5d4594_2516328 = 0
 	*memmap.PtrUint16(0x587000, 311204) = 0
-	C.dword_5d4594_2516348 = 0
-	C.dword_5d4594_2516352 = 0
-	C.dword_5d4594_2516344 = 0
+	dword_5d4594_2516348 = 0
+	dword_5d4594_2516352 = 0
+	dword_5d4594_2516344 = 0
 }

@@ -1,10 +1,5 @@
 package legacy
 
-/*
-extern int nox_win_width;
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"image"
@@ -29,7 +24,7 @@ func voteGUIInit() int {
 	}
 	votePlayersWindow = voteWindow.ChildByID(4320)
 	voteTopicsWindow = voteWindow.ChildByID(4321)
-	voteWindow.SetPos(image.Pt((int(C.nox_win_width)-voteWindow.SizeVal.X)/2, voteWindow.Offs().Y))
+	voteWindow.SetPos(image.Pt((int(nox_win_width)-voteWindow.SizeVal.X)/2, voteWindow.Offs().Y))
 	voteWindow.SetHidden(true)
 	voteNameCount = 0
 	votePreviousNameCount = 0

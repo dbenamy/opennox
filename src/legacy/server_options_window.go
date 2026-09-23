@@ -7,7 +7,6 @@ package legacy
 #include "GAME3_1.h"
 #include "GAME5_2.h"
 #include "client__gui__servopts__guiserv.h"
-extern int nox_win_width;
 */
 import "C"
 import (
@@ -51,7 +50,7 @@ func serverOptionsConstruct() int {
 		return 0
 	}
 	r.SetTabWidth(100)
-	w.SetPos(image.Pt(int(C.nox_win_width)-w.SizeVal.X-10, 0))
+	w.SetPos(image.Pt(int(nox_win_width)-w.SizeVal.X-10, 0))
 	w.SetFunc93(func(w *gui.Window, e gui.WindowEvent) gui.WindowEventResp {
 		a, b := e.EventArgsC()
 		return gui.RawEventResp(serverOptionsKey(w, e.EventCode(), int(a), int(b)))

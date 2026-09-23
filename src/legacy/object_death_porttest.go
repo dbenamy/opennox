@@ -5,7 +5,6 @@ package legacy
 /*
 #include "GAME5.h"
 #include "server__object__die__die.h"
-extern uint32_t dword_5d4594_2491704, dword_5d4594_527656;
 */
 import "C"
 import (
@@ -67,13 +66,13 @@ func portTestDeathEnvironment(proxy *portTestRoamOwnerServer) func() {
 	*memmap.PtrUint32(0x587000, 290328) = 0x0000ff01
 	*memmap.PtrUint32(0x587000, 290340) = 2
 	oldCache := *memmap.PtrUint32(0x5D4594, 2491696)
-	oldRot, oldBall := C.dword_5d4594_2491704, C.dword_5d4594_527656
+	oldRot, oldBall := dword_5d4594_2491704, dword_5d4594_527656
 	return func() {
 		for i, r := range regions {
 			copy(unsafe.Slice((*byte)(memmap.PtrOff(0x587000, r.off)), r.size), before[i])
 		}
 		*memmap.PtrUint32(0x5D4594, 2491696) = oldCache
-		C.dword_5d4594_2491704, C.dword_5d4594_527656 = oldRot, oldBall
+		dword_5d4594_2491704, dword_5d4594_527656 = oldRot, oldBall
 		copy(nameBuf, oldName)
 		freeStrings()
 		freeInit()
@@ -118,8 +117,8 @@ func portTestDeathPrepare(proxy *portTestRoamOwnerServer, u *server.Object, sp *
 	}
 	proxy.life.ids[uint32(uintptr(u.DeathData))] = 992
 	*memmap.PtrUint32(0x5D4594, 2491696) = sp.Cache
-	C.dword_5d4594_2491704 = C.uint32_t(sp.Rotation)
-	C.dword_5d4594_527656 = 0
+	dword_5d4594_2491704 = C.uint32_t(sp.Rotation)
+	dword_5d4594_527656 = 0
 	for _, off := range []uintptr{203080, 203240} {
 		*memmap.PtrPtr(0x587000, off) = st.drop
 		*memmap.PtrUint32(0x587000, off+4) = sp.DropCount
@@ -170,7 +169,7 @@ func portTestDeathCall(u *server.Object, op int) uint32 {
 func portTestDeathTrace(proxy *portTestRoamOwnerServer, normalize func(uint32) uint32) *PortTestDeathResult {
 	st := proxy.callbacks.death
 	r := &PortTestDeathResult{Intact: true}
-	r.Globals = []uint32{*memmap.PtrUint32(0x5D4594, 2491696), uint32(C.dword_5d4594_2491704), uint32(C.dword_5d4594_527656)}
+	r.Globals = []uint32{*memmap.PtrUint32(0x5D4594, 2491696), uint32(dword_5d4594_2491704), uint32(dword_5d4594_527656)}
 	for i := 0; i < 8; i++ {
 		r.Intact = r.Intact && st.data[i] == 0xa5 && st.data[len(st.data)-8+i] == 0x5a && st.init[i] == 0xa5 && st.init[len(st.init)-8+i] == 0x5a
 	}

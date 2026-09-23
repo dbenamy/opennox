@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "GAME4.h"
-extern uint32_t dword_5d4594_2489160;
 */
 import "C"
 
@@ -151,7 +150,7 @@ func monsterCastRelated2(u, t *server.Object) bool {
 func monsterHealCandidate(t, u *server.Object) {
 	core := GetServer().S()
 	if t != u && !core.IsEnemyTo(u, t) && t.HealthData != nil && t.Flags()&0x8000 == 0 && core.CanInteract(u, t, 0) && t.HealthData.Cur < t.HealthData.Max>>1 {
-		C.dword_5d4594_2489160 = C.uint32_t(uintptr(t.CObj()))
+		dword_5d4594_2489160 = C.uint32_t(uintptr(t.CObj()))
 	}
 }
 func monsterHealSomeone(u *server.Object) bool {
@@ -172,16 +171,16 @@ func monsterHealSomeone(u *server.Object) bool {
 	if flags.HasGame(4096) {
 		radius = 640
 	}
-	C.dword_5d4594_2489160 = 0
+	dword_5d4594_2489160 = 0
 	rect := types.Rectf{
 		Min: types.Pointf{X: float32(float64(u.PosVec.X) - radius), Y: float32(float64(u.PosVec.Y) - radius)},
 		Max: types.Pointf{X: float32(float64(u.PosVec.X) + radius), Y: float32(float64(u.PosVec.Y) + radius)},
 	}
 	core.Map.EachObjInRect(rect, func(t *server.Object) bool { monsterHealCandidate(t, u); return true })
-	if C.dword_5d4594_2489160 == 0 {
+	if dword_5d4594_2489160 == 0 {
 		return false
 	}
-	u.MonsterCast(41, (*server.Object)(unsafe.Pointer(uintptr(C.dword_5d4594_2489160))))
+	u.MonsterCast(41, (*server.Object)(unsafe.Pointer(uintptr(dword_5d4594_2489160))))
 	return true
 }
 func monsterCastSpell(id int, u *server.Object, args *[3]uint32) {

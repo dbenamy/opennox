@@ -4,10 +4,6 @@ package legacy
 #include "defs.h"
 #include "GAME2_1.h"
 #include "client__gui__guimeter.h"
-extern uint32_t dword_5d4594_1090276, dword_5d4594_1090292, dword_5d4594_1090828, dword_5d4594_1091364;
-extern uint32_t dword_5d4594_1096252, dword_5d4594_1096256, dword_5d4594_1096260, dword_5d4594_1096264;
-extern uint32_t dword_5d4594_1096272, dword_5d4594_1096276, dword_5d4594_1096280, dword_5d4594_1096284, dword_5d4594_1096288;
-extern int nox_win_width, nox_win_height;
 */
 import "C"
 
@@ -59,11 +55,11 @@ func uiMeterInit() int {
 	if player == nil {
 		return 0
 	}
-	C.dword_5d4594_1096288 = C.uint32_t(uintptr(GetClient().R2().GetFonts().FontPtrByName("small")))
-	C.dword_5d4594_1096264 = 0
-	C.dword_5d4594_1096256 = 0
-	C.dword_5d4594_1096260 = 0
-	width, height := int(C.nox_win_width), int(C.nox_win_height)
+	dword_5d4594_1096288 = C.uint32_t(uintptr(GetClient().R2().GetFonts().FontPtrByName("small")))
+	dword_5d4594_1096264 = 0
+	dword_5d4594_1096256 = 0
+	dword_5d4594_1096260 = 0
+	width, height := int(nox_win_width), int(nox_win_height)
 	vp := (*noxrender.Viewport)(memmap.PtrOff(0x5D4594, 1091908))
 	vp.Screen = image.Rect(0, 0, width, height)
 	vp.Size = image.Pt(width, height)
@@ -74,23 +70,23 @@ func uiMeterInit() int {
 	if *memmap.PtrUint32(0x5D4594, 1096268) == 0 {
 		types := &GetClient().Cli().Things
 		*memmap.PtrUint32(0x5D4594, 1096268) = uint32(types.IndByID("RedPotion"))
-		C.dword_5d4594_1096272 = C.uint32_t(types.IndByID("BluePotion"))
-		C.dword_5d4594_1096276 = C.uint32_t(types.IndByID("CurePoisonPotion"))
-		C.dword_5d4594_1096280 = C.uint32_t(types.IndByID("RedApple"))
-		C.dword_5d4594_1096284 = C.uint32_t(types.IndByID("Meat"))
+		dword_5d4594_1096272 = C.uint32_t(types.IndByID("BluePotion"))
+		dword_5d4594_1096276 = C.uint32_t(types.IndByID("CurePoisonPotion"))
+		dword_5d4594_1096280 = C.uint32_t(types.IndByID("RedApple"))
+		dword_5d4594_1096284 = C.uint32_t(types.IndByID("Meat"))
 	}
 	g := GetClient().Cli().GUI
 	main := g.NewWindowRaw(nil, 136, width-91, height-201, 91, 201, nil)
-	C.dword_5d4594_1090276 = C.uint32_t(uintptr(main.C()))
+	dword_5d4594_1090276 = C.uint32_t(uintptr(main.C()))
 	uiMeterSetIcon(main, memmap.Uint32(0x5D4594, 1092996))
 	cure := uiMeterWindow(main, 8, 6, 166, 28, 30, 2, C.nox_xxx_guiBottleSlotProc_471B90, C.nox_xxx_guiBottleSlotDrawFn_471A80, nil)
-	C.dword_5d4594_1091364 = C.uint32_t(uintptr(cure.C()))
+	dword_5d4594_1091364 = C.uint32_t(uintptr(cure.C()))
 	uiMeterWindowTooltip(cure, "CurePoisonSlotTT")
 	uiMeterSlot(2).Count = 0
-	uiMeterLinkPotion(2, uint32(C.dword_5d4594_1096276))
-	uiMeterSlot(2).Type = uint32(C.dword_5d4594_1096276)
+	uiMeterLinkPotion(2, uint32(dword_5d4594_1096276))
+	uiMeterSlot(2).Type = uint32(dword_5d4594_1096276)
 	health := uiMeterWindow(main, 8, 34, 166, 28, 30, 0, C.nox_xxx_guiBottleSlotProc_471B90, C.nox_xxx_guiBottleSlotDrawFn_471A80, nil)
-	C.dword_5d4594_1090292 = C.uint32_t(uintptr(health.C()))
+	dword_5d4594_1090292 = C.uint32_t(uintptr(health.C()))
 	uiMeterWindowTooltip(health, "HealthSlotTT")
 	uiMeterSlot(0).Count = 0
 	uiMeterSlot(0).Image = nil
@@ -98,11 +94,11 @@ func uiMeterInit() int {
 	m := uiMeters()
 	if *(*byte)(unsafe.Add(player, 2251)) != 0 {
 		mana := uiMeterWindow(main, 8, 62, 166, 28, 30, 1, C.nox_xxx_guiBottleSlotProc_471B90, C.nox_xxx_guiBottleSlotDrawFn_471A80, nil)
-		C.dword_5d4594_1090828 = C.uint32_t(uintptr(mana.C()))
+		dword_5d4594_1090828 = C.uint32_t(uintptr(mana.C()))
 		uiMeterWindowTooltip(mana, "ManaSlotTT")
 		uiMeterSlot(1).Count = 0
-		uiMeterLinkPotion(1, uint32(C.dword_5d4594_1096272))
-		uiMeterSlot(1).Type = uint32(C.dword_5d4594_1096272)
+		uiMeterLinkPotion(1, uint32(dword_5d4594_1096272))
+		uiMeterSlot(1).Type = uint32(dword_5d4594_1096272)
 		*memmap.PtrUint32(0x5D4594, 1091900) = uiMeterLoadImage("PoisonTube")
 		tubes := g.NewWindowRaw(main, 136, 0, 0, 91, 159, nil)
 		uiMeterSetIcon(tubes, uiMeterLoadImage("HealthManaTubes"))
@@ -124,9 +120,9 @@ func uiMeterInit() int {
 	uiMeterBindings()
 	uiMeterInitColors()
 	if noxflags.HasGame(4096) {
-		C.dword_5d4594_1096252 = 1
+		dword_5d4594_1096252 = 1
 	} else {
-		C.dword_5d4594_1096252 = 0
+		dword_5d4594_1096252 = 0
 		uiMeterHide(m[2].Window, true)
 		uiMeterHide(m[3].Window, true)
 	}

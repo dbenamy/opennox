@@ -5,8 +5,6 @@ package legacy
 #include "GAME2.h"
 #include "client__gui__guibook.h"
 extern nox_window* nox_win_unk1;
-extern uint32_t dword_8531A0_2576;
-extern int nox_win_height;
 int nox_xxx_bookClickSpell_45B1F0();
 int nox_xxx_book_45CF00(uint32_t*);
 */
@@ -26,7 +24,7 @@ func bookEvent(fn func(*gui.Window, uint32, uint32) int) gui.WindowFunc {
 }
 func bookPoint(v uint32) image.Point { return image.Pt(int(uint16(v)), int(v>>16)) }
 func bookInit() int {
-	*bookWord(1047516) = uint32(C.dword_8531A0_2576)
+	*bookWord(1047516) = uint32(dword_8531A0_2576)
 	for _, r := range []struct {
 		name string
 		off  uintptr
@@ -51,7 +49,7 @@ func bookInit() int {
 	}
 	g := GetClient().Cli().GUI
 	drawOne := func(*gui.Window, *gui.WindowData) int { return 1 }
-	root := g.NewWindowRaw(nil, 1196, 5, int(C.nox_win_height)-323, 285, 168, nil)
+	root := g.NewWindowRaw(nil, 1196, 5, int(nox_win_height)-323, 285, 168, nil)
 	C.nox_win_unk1 = (*C.nox_window)(root.C())
 	root.SetAllFuncs(bookEvent(func(w *gui.Window, e, a uint32) int { return bookListEvents(w, e, bookPoint(a)) }), func(w *gui.Window, _ *gui.WindowData) int { return bookDrawList(w) }, nil)
 	bookHideWindow(root, true)

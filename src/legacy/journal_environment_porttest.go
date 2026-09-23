@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-extern uint32_t dword_5d4594_1565512,dword_5d4594_1565516,dword_5d4594_1565520,dword_5d4594_2649712;
-extern uint32_t dword_8531A0_2572;
-*/
-import "C"
 import (
 	"bytes"
 	"encoding/binary"
@@ -20,7 +14,7 @@ import (
 // PortTestJournalQueue owns the existing important-message allocator and queue.
 // It only observes queued game reports; no transport or replacement serializer.
 func PortTestJournalQueue() (reset, restore func()) {
-	words := []*uint32{(*uint32)(&C.dword_5d4594_1565512), (*uint32)(&C.dword_5d4594_1565516), (*uint32)(&C.dword_5d4594_1565520), (*uint32)(&C.dword_5d4594_2649712), memmap.PtrUint32(0x5D4594, 1565508), (*uint32)(&C.dword_8531A0_2572)}
+	words := []*uint32{(*uint32)(&dword_5d4594_1565512), (*uint32)(&dword_5d4594_1565516), (*uint32)(&dword_5d4594_1565520), (*uint32)(&dword_5d4594_2649712), memmap.PtrUint32(0x5D4594, 1565508), (*uint32)(&dword_8531A0_2572)}
 	old := make([]uint32, len(words))
 	for i, p := range words {
 		old[i] = *p
@@ -53,7 +47,7 @@ func PortTestJournalQueue() (reset, restore func()) {
 func PortTestJournalPackets() []PortTestShopPacketResult {
 	var out []PortTestShopPacketResult
 	seen := map[uint32]bool{}
-	for q := uint32(C.dword_5d4594_1565512); q != 0; {
+	for q := uint32(dword_5d4594_1565512); q != 0; {
 		if seen[q] {
 			panic("journal fixture queue cycle")
 		}

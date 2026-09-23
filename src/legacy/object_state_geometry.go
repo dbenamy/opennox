@@ -6,7 +6,6 @@ package legacy
 #include "common__random.h"
 #include "GAME3_3.h"
 #include "GAME4_1.h"
-extern uint32_t dword_5d4594_1565628, dword_5d4594_1565632;
 */
 import "C"
 import (
@@ -42,8 +41,8 @@ func stateDistance(u, t *server.Object) float64 {
 }
 func stateDirection(a, b *types.Pointf) int32 {
 	dx, dy := float32(b.X-a.X), float32(b.Y-a.Y)
-	C.dword_5d4594_1565628 = C.uint32_t(math.Float32bits(dx))
-	C.dword_5d4594_1565632 = C.uint32_t(math.Float32bits(dy))
+	dword_5d4594_1565628 = C.uint32_t(math.Float32bits(dx))
+	dword_5d4594_1565632 = C.uint32_t(math.Float32bits(dy))
 	p := float32(float64(dx)*.41304299 - float64(dy))
 	q := float64(dx)*2.4210529 - float64(dy)
 	r := float32(float64(dx)*-2.4210529 - float64(dy))

@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t dword_5d4594_1200768, dword_5d4594_1200832;
-extern uint32_t nox_server_sanctuaryHelp_54276;
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -20,7 +13,7 @@ func clientSessionSettings(op int, data []byte) {
 	dword := func(off int) uint32 { return binary.LittleEndian.Uint32(data[off:]) }
 	switch op {
 	case 175:
-		C.dword_5d4594_1200768 = 0
+		dword_5d4594_1200768 = 0
 		generation := dword(1)
 		if uint32(serverConfig3512Get()) >= generation {
 			return
@@ -37,7 +30,7 @@ func clientSessionSettings(op int, data []byte) {
 		serverConfigLimitSet(int32(data[17]))
 		slot := unsafe.Slice(serverConfigSlot(0), 58)
 		if slot[56] != data[19] || binary.LittleEndian.Uint16(slot[54:]) != uint16(data[18]) {
-			C.dword_5d4594_1200768 = 1
+			dword_5d4594_1200768 = 1
 		}
 		binary.LittleEndian.PutUint16(slot[54:], uint16(data[18]))
 		slot[56] = data[19]
@@ -77,7 +70,7 @@ func clientSessionSettings(op int, data []byte) {
 			clear(slot[9+zero : 24])
 		}
 		if !bytes.Equal(unsafe.Slice(memmap.PtrUint8(0x5D4594, 1200732), 20), data[17:37]) || memmap.Uint32(0x5D4594, 1200752) != dword(37) || memmap.Uint32(0x5D4594, 1200756) != dword(41) {
-			C.dword_5d4594_1200768 = 1
+			dword_5d4594_1200768 = 1
 		}
 		copy(slot[24:44], data[17:37])
 		serverPanelsSpellApply((*uint32)(unsafe.Pointer(&slot[24])))
@@ -89,7 +82,7 @@ func clientSessionSettings(op int, data []byte) {
 			serverConfigTimerSet(0)
 		}
 		copy(unsafe.Slice(memmap.PtrUint8(0x5D4594, 1200708), 58), slot)
-		if Nox_client_isConnected() && C.dword_5d4594_1200768 != 0 {
+		if Nox_client_isConnected() && dword_5d4594_1200768 != 0 {
 			Nox_xxx_printCentered_445490(clientGameProgressString("OptionsChanged"))
 			audioEventPlay(310, 100, 0, 0)
 		}
@@ -106,12 +99,12 @@ func clientSessionSettings(op int, data []byte) {
 					serverConfigSlotCopy(1, 0)
 				}
 				if noxflags.HasGame(128) {
-					if C.dword_5d4594_1200832 != 0 {
+					if dword_5d4594_1200832 != 0 {
 						p := Get_dword_8531A0_2576()
 						Nox_xxx_printCentered_445490(clientGameProgressText("NameChange", alloc.GoString16((*uint16)(unsafe.Add(p.C(), 4704)))))
-						C.dword_5d4594_1200832 = 0
+						dword_5d4594_1200832 = 0
 					}
-					if C.nox_server_sanctuaryHelp_54276 != 0 {
+					if nox_server_sanctuaryHelp_54276 != 0 {
 						interactionHelpOpen()
 					}
 				}

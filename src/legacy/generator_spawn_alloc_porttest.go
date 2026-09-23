@@ -8,9 +8,6 @@ package legacy
 #include "common/alloc/classes/alloc_class.h"
 extern void* nox_alloc_spawn_2386216;
 extern void* nox_alloc_monsterList_2386220;
-extern uint32_t dword_5d4594_2386212;
-extern uint32_t dword_5d4594_2386224;
-extern uint32_t dword_5d4594_2386228;
 */
 import "C"
 
@@ -39,20 +36,20 @@ type portTestGeneratorSpawnAllocatorSnapshot struct {
 // 50D7E0 intentionally invalidates those SpawnClass records.
 func portTestGeneratorSpawnAllocator() (reset func(), snapshot func() portTestGeneratorSpawnAllocatorSnapshot, restore func()) {
 	oldSpawnClass, oldMonsterClass := C.nox_alloc_spawn_2386216, C.nox_alloc_monsterList_2386220
-	oldSpawnHead, oldMonsterHead, oldMonsterCount := C.dword_5d4594_2386212, C.dword_5d4594_2386224, C.dword_5d4594_2386228
+	oldSpawnHead, oldMonsterHead, oldMonsterCount := dword_5d4594_2386212, dword_5d4594_2386224, dword_5d4594_2386228
 
 	// Do not call C cleanup while the old classes are installed: they belong to
 	// the surrounding server. 50D780 initializes these exact five globals.
 	C.nox_alloc_spawn_2386216 = nil
 	C.nox_alloc_monsterList_2386220 = nil
-	C.dword_5d4594_2386212 = 0
-	C.dword_5d4594_2386224 = 0
-	C.dword_5d4594_2386228 = 0
+	dword_5d4594_2386212 = 0
+	dword_5d4594_2386224 = 0
+	dword_5d4594_2386228 = 0
 	if spawnPolicyInit() == 0 {
 		// A partial 50D780 allocation, if any, is owned by this fixture.
 		spawnPolicyFree()
 		C.nox_alloc_spawn_2386216, C.nox_alloc_monsterList_2386220 = oldSpawnClass, oldMonsterClass
-		C.dword_5d4594_2386212, C.dword_5d4594_2386224, C.dword_5d4594_2386228 = oldSpawnHead, oldMonsterHead, oldMonsterCount
+		dword_5d4594_2386212, dword_5d4594_2386224, dword_5d4594_2386228 = oldSpawnHead, oldMonsterHead, oldMonsterCount
 		panic("generator SpawnClass allocation failed")
 	}
 	ownSpawnClass, ownMonsterClass := C.nox_alloc_spawn_2386216, C.nox_alloc_monsterList_2386220
@@ -70,12 +67,12 @@ func portTestGeneratorSpawnAllocator() (reset func(), snapshot func() portTestGe
 		checkOwn()
 		out.SpawnClass = uintptr(C.nox_alloc_spawn_2386216)
 		out.MonsterListClass = uintptr(C.nox_alloc_monsterList_2386220)
-		out.SpawnHead = uintptr(C.dword_5d4594_2386212)
-		out.MonsterListHead = uintptr(C.dword_5d4594_2386224)
-		out.MonsterListCount = uint32(C.dword_5d4594_2386228)
+		out.SpawnHead = uintptr(dword_5d4594_2386212)
+		out.MonsterListHead = uintptr(dword_5d4594_2386224)
+		out.MonsterListCount = uint32(dword_5d4594_2386228)
 
 		byAddr := make(map[uintptr]int)
-		for p := uintptr(C.dword_5d4594_2386212); p != 0; {
+		for p := uintptr(dword_5d4594_2386212); p != 0; {
 			if len(out.Spawn) == 96 { // SpawnClass capacity from 50D780.
 				panic("generator SpawnClass list exceeds capacity")
 			}
@@ -115,7 +112,7 @@ func portTestGeneratorSpawnAllocator() (reset func(), snapshot func() portTestGe
 		spawnPolicyReset()
 		spawnPolicyFree()
 		C.nox_alloc_spawn_2386216, C.nox_alloc_monsterList_2386220 = oldSpawnClass, oldMonsterClass
-		C.dword_5d4594_2386212, C.dword_5d4594_2386224, C.dword_5d4594_2386228 = oldSpawnHead, oldMonsterHead, oldMonsterCount
+		dword_5d4594_2386212, dword_5d4594_2386224, dword_5d4594_2386228 = oldSpawnHead, oldMonsterHead, oldMonsterCount
 	}
 	return reset, snapshot, restore
 }

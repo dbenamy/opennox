@@ -3,7 +3,6 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME4.h"
-extern unsigned int nox_player_netCode_85319C;
 */
 import "C"
 import (
@@ -44,7 +43,7 @@ func playerFileGUI() int {
 		}
 	}
 	if version >= 3 {
-		p := GetServer().S().Players.ByID(int(C.nox_player_netCode_85319C))
+		p := GetServer().S().Players.ByID(int(nox_player_netCode_85319C))
 		order := byte(4)
 		if p != nil {
 			order = *(*byte)(unsafe.Add(unsafe.Pointer(p), 3648))
@@ -177,7 +176,7 @@ func playerFileMetadata() int {
 	return 1
 }
 func playerFileSaveRequest() int {
-	code := uint32(C.nox_player_netCode_85319C)
+	code := uint32(nox_player_netCode_85319C)
 	data := [3]byte{0xc1, byte(code), byte(code >> 8)}
 	Nox_xxx_netClientSend2_4E53C0(31, unsafe.Pointer(&data[0]), 3, 0, 1)
 	return 1

@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_2516344;
-extern uint32_t dword_5d4594_2516348;
 */
 import "C"
 import (
@@ -29,12 +27,12 @@ var (
 )
 
 func protectionHead() *protection.Record {
-	return *(**protection.Record)(unsafe.Pointer(&C.dword_5d4594_2516344))
+	return *(**protection.Record)(unsafe.Pointer(&dword_5d4594_2516344))
 }
 
 //export sub_56F590
 func sub_56F590(id C.int) *C.uint32_t {
-	p := protection.Find(protectionHead(), uint32(C.dword_5d4594_2516348), uint32(id))
+	p := protection.Find(protectionHead(), uint32(dword_5d4594_2516348), uint32(id))
 	return (*C.uint32_t)(unsafe.Pointer(p))
 }
 

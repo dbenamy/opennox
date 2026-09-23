@@ -6,9 +6,6 @@ package legacy
 #include "GAME3_1.h"
 #include "client__gui__guiinv.h"
 #include "client__gui__guimsg.h"
-extern uint32_t dword_5d4594_1062480, dword_5d4594_1062484;
-extern uint32_t dword_5d4594_1062556, dword_5d4594_1062560, dword_5d4594_1062564;
-extern uint32_t dword_5d4594_1062516, dword_5d4594_1049856;
 */
 import "C"
 
@@ -51,12 +48,12 @@ func uiInventoryClearAlternateFlags() uintptr {
 	return uintptr(unsafe.Pointer(&grid[0])) + 15532
 }
 func uiInventorySetAlternate(cell *uiInventoryCell) int {
-	old := uiInventoryCellRef(uint32(C.dword_5d4594_1062480))
-	C.dword_5d4594_1062484 = 0
+	old := uiInventoryCellRef(uint32(dword_5d4594_1062480))
+	dword_5d4594_1062484 = 0
 	if old != nil {
-		C.dword_5d4594_1062484 = C.uint32_t(old.Codes[0])
+		dword_5d4594_1062484 = C.uint32_t(old.Codes[0])
 	}
-	C.dword_5d4594_1062480 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(cell)))
+	dword_5d4594_1062480 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(cell)))
 	uiInventoryClearAlternateFlags()
 	if cell == nil {
 		return int(nox_xxx_clientReportSecondaryWeapon_4BF010(0))
@@ -110,7 +107,7 @@ func uiInventoryNewStack(code, typ uint32, mods unsafe.Pointer, coords *[2]int32
 			if coords != nil {
 				*coords = [2]int32{int32(col), int32(row)}
 			}
-			if sub_461930() != 0 && C.dword_5d4594_1062480 == 0 {
+			if sub_461930() != 0 && dword_5d4594_1062480 == 0 {
 				class, sub := uint32(dr.ObjClass), uint32(dr.ObjSubClass)
 				if class&0x1000000 != 0 && sub&2 == 0 || class&0x1000 != 0 {
 					def := GetServer().S().Modif.Nox_xxx_getProjectileClassById413250(int(dr.TypeIDVal))
@@ -129,7 +126,7 @@ func uiInventoryNewStack(code, typ uint32, mods unsafe.Pointer, coords *[2]int32
 
 func nox_xxx_spritePickup_461660(code, typ C.int, mods unsafe.Pointer) C.int {
 	t := uint32(typ)
-	if t == uint32(C.dword_5d4594_1062560) || t == memmap.Uint32(0x5D4594, 1049728) || t == memmap.Uint32(0x5D4594, 1049724) || t == uint32(C.dword_5d4594_1062556) || t == uint32(C.dword_5d4594_1062564) {
+	if t == uint32(dword_5d4594_1062560) || t == memmap.Uint32(0x5D4594, 1049728) || t == memmap.Uint32(0x5D4594, 1049724) || t == uint32(dword_5d4594_1062556) || t == uint32(dword_5d4594_1062564) {
 		return 1
 	}
 	var coords [2]int32
@@ -150,9 +147,9 @@ func nox_xxx_spritePickup_461660(code, typ C.int, mods unsafe.Pointer) C.int {
 			uiMeterRefreshPotions()
 		}
 		if uint32(cell.Drawable.ObjClass)&0x3001000 != 0 {
-			C.dword_5d4594_1062516 = 0
+			dword_5d4594_1062516 = 0
 			if coords[1] >= 3 {
-				C.dword_5d4594_1062516 = C.uint32_t(10 * (5*coords[1] - 10))
+				dword_5d4594_1062516 = C.uint32_t(10 * (5*coords[1] - 10))
 			}
 		}
 	}
@@ -240,7 +237,7 @@ func uiInventoryCompact() uintptr {
 			}
 			*dst = *src
 			if dst.Alternate != 0 {
-				C.dword_5d4594_1062480 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(dst)))
+				dword_5d4594_1062480 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(dst)))
 			}
 			src.Count = 0
 			src.Drawable = nil
@@ -271,7 +268,7 @@ func sub_461A80(code C.int) {
 		}
 		GetClient().Nox_xxx_spriteDelete_45A4B0(dr)
 		*memmap.PtrUint32(0x5D4594, 1049848) = 0
-		C.dword_5d4594_1049856 = 0
+		dword_5d4594_1049856 = 0
 		Nox_xxx_cursorResetDraggedItem_4776A0()
 	} else {
 		uiInventoryError("DroppedNotFound")

@@ -5,11 +5,6 @@ package legacy
 #include "GAME2.h"
 #include "GAME2_1.h"
 #include "GAME2_2.h"
-extern uint32_t dword_5d4594_1062508, dword_5d4594_1062512;
-extern uint32_t dword_5d4594_1062516, dword_5d4594_1062520;
-extern uint32_t dword_5d4594_1062528, dword_5d4594_1062524;
-extern uint32_t dword_5d4594_1062468;
-extern uint32_t dword_5d4594_1049976, dword_5d4594_1049992, dword_5d4594_1049996;
 */
 import "C"
 
@@ -30,9 +25,9 @@ func uiInventorySliderValue(w *gui.Window, code int, a, b uint32) int {
 	return gui.EventRespInt(w.Func94(&gui.RawEvent{Event: code, Arg1: uintptr(a), Arg2: uintptr(b)}))
 }
 func uiInventoryPanelEvents(w *gui.Window, event int, a, b uintptr) int {
-	slider := uiInventoryWindowValue(uint32(C.dword_5d4594_1062508))
+	slider := uiInventoryWindowValue(uint32(dword_5d4594_1062508))
 	if event == 16393 {
-		C.dword_5d4594_1062512 = C.uint32_t((*gui.SliderData)(slider.WidgetData).Max - uint32(b))
+		dword_5d4594_1062512 = C.uint32_t((*gui.SliderData)(slider.WidgetData).Max - uint32(b))
 		return 0
 	}
 	if event != 16391 {
@@ -41,24 +36,24 @@ func uiInventoryPanelEvents(w *gui.Window, event int, a, b uintptr) int {
 	control := uiInventoryWindowValue(uint32(a))
 	switch control.ID() {
 	case 9102:
-		v := int32(C.dword_5d4594_1062512) - 25
+		v := int32(dword_5d4594_1062512) - 25
 		if v < 0 {
 			v = 0
 		} else {
 			v -= v % 50
 		}
-		C.dword_5d4594_1062512 = C.uint32_t(v)
+		dword_5d4594_1062512 = C.uint32_t(v)
 		uiInventorySliderValue(slider, 16394, (*gui.SliderData)(slider.WidgetData).Max-uint32(v), 0)
 		audioEventPlay(766, 100, 0, 0)
 	case 9103:
-		v := int32(C.dword_5d4594_1062512) + 50
+		v := int32(dword_5d4594_1062512) + 50
 		max := int32((*gui.SliderData)(slider.WidgetData).Max)
 		if v > max {
 			v = max
 		} else {
 			v -= v % 50
 		}
-		C.dword_5d4594_1062512 = C.uint32_t(v)
+		dword_5d4594_1062512 = C.uint32_t(v)
 		uiInventorySliderValue(slider, 16394, uint32(max-v), 0)
 		audioEventPlay(766, 100, 0, 0)
 	case 9105:
@@ -70,40 +65,40 @@ func uiInventoryPanelEvents(w *gui.Window, event int, a, b uintptr) int {
 			height = 0
 		}
 		*memmap.PtrUint8(0x5D4594, 1049869) = 1
-		C.dword_5d4594_1062516 = C.dword_5d4594_1062512
-		C.dword_5d4594_1062512 = C.dword_5d4594_1062520
+		dword_5d4594_1062516 = dword_5d4594_1062512
+		dword_5d4594_1062512 = dword_5d4594_1062520
 		uiInventorySliderValue(slider, 16395, 0, uint32(height))
-		uiInventorySliderValue(slider, 16394, (*gui.SliderData)(slider.WidgetData).Max-uint32(C.dword_5d4594_1062512), 0)
-		nox_xxx_wndSetIcon_46AE60(C.int(C.dword_5d4594_1062528), C.int(memmap.Uint32(0x5D4594, 1049980)))
-		sub_46AEC0(C.int(C.dword_5d4594_1062528), C.int(memmap.Uint32(0x5D4594, 1049984)))
-		uiInventoryWindowValue(uint32(C.dword_5d4594_1062528)).SetID(9106)
+		uiInventorySliderValue(slider, 16394, (*gui.SliderData)(slider.WidgetData).Max-uint32(dword_5d4594_1062512), 0)
+		nox_xxx_wndSetIcon_46AE60(C.int(dword_5d4594_1062528), C.int(memmap.Uint32(0x5D4594, 1049980)))
+		sub_46AEC0(C.int(dword_5d4594_1062528), C.int(memmap.Uint32(0x5D4594, 1049984)))
+		uiInventoryWindowValue(uint32(dword_5d4594_1062528)).SetID(9106)
 	case 9106:
 		*memmap.PtrUint8(0x5D4594, 1049869) = 0
-		C.dword_5d4594_1062520 = C.dword_5d4594_1062512
-		C.dword_5d4594_1062512 = C.dword_5d4594_1062516
+		dword_5d4594_1062520 = dword_5d4594_1062512
+		dword_5d4594_1062512 = dword_5d4594_1062516
 		uiInventorySliderValue(slider, 16395, 0, 850)
-		uiInventorySliderValue(slider, 16394, (*gui.SliderData)(slider.WidgetData).Max-uint32(C.dword_5d4594_1062512), 0)
-		nox_xxx_wndSetIcon_46AE60(C.int(C.dword_5d4594_1062528), 0)
-		sub_46AEC0(C.int(C.dword_5d4594_1062528), C.int(C.dword_5d4594_1049976))
-		uiInventoryWindowValue(uint32(C.dword_5d4594_1062528)).SetID(9105)
+		uiInventorySliderValue(slider, 16394, (*gui.SliderData)(slider.WidgetData).Max-uint32(dword_5d4594_1062512), 0)
+		nox_xxx_wndSetIcon_46AE60(C.int(dword_5d4594_1062528), 0)
+		sub_46AEC0(C.int(dword_5d4594_1062528), C.int(dword_5d4594_1049976))
+		uiInventoryWindowValue(uint32(dword_5d4594_1062528)).SetID(9105)
 	case 9107:
 		if uiInventoryMode() == 5 {
 			return 0
 		}
 		*memmap.PtrUint8(0x5D4594, 1049870) = 1
-		nox_xxx_wndSetIcon_46AE60(C.int(C.dword_5d4594_1062524), 0)
-		sub_46AEC0(C.int(C.dword_5d4594_1062524), C.int(memmap.Uint32(0x5D4594, 1049988)))
-		uiInventoryWindowValue(uint32(C.dword_5d4594_1062524)).SetID(9108)
-		uiInventoryWindowValue(uint32(C.dword_5d4594_1062468)).Hide()
+		nox_xxx_wndSetIcon_46AE60(C.int(dword_5d4594_1062524), 0)
+		sub_46AEC0(C.int(dword_5d4594_1062524), C.int(memmap.Uint32(0x5D4594, 1049988)))
+		uiInventoryWindowValue(uint32(dword_5d4594_1062524)).SetID(9108)
+		uiInventoryWindowValue(uint32(dword_5d4594_1062468)).Hide()
 	case 9108:
 		if uiInventoryMode() == 5 {
 			return 0
 		}
 		*memmap.PtrUint8(0x5D4594, 1049870) = 0
-		nox_xxx_wndSetIcon_46AE60(C.int(C.dword_5d4594_1062524), C.int(C.dword_5d4594_1049992))
-		sub_46AEC0(C.int(C.dword_5d4594_1062524), C.int(C.dword_5d4594_1049996))
-		uiInventoryWindowValue(uint32(C.dword_5d4594_1062524)).SetID(9107)
-		uiInventoryWindowValue(uint32(C.dword_5d4594_1062468)).Show()
+		nox_xxx_wndSetIcon_46AE60(C.int(dword_5d4594_1062524), C.int(dword_5d4594_1049992))
+		sub_46AEC0(C.int(dword_5d4594_1062524), C.int(dword_5d4594_1049996))
+		uiInventoryWindowValue(uint32(dword_5d4594_1062524)).SetID(9107)
+		uiInventoryWindowValue(uint32(dword_5d4594_1062468)).Show()
 	case 9111:
 		uiInventoryCloseWindow()
 	}

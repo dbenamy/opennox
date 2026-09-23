@@ -5,7 +5,6 @@ package legacy
 /*
 #include "common__gamemech__pausefx.h"
 #include "GAME5_2.h"
-extern uint32_t dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776;
 */
 import "C"
 
@@ -29,11 +28,11 @@ type PortTestRuntimePauseSpec struct {
 func (p *portTestShopPools) runtimePauseContract() []uint32 {
 	sp := p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack.Controls.RuntimePause
 	u := p.resources.unit
-	a, b, c := C.dword_5d4594_2523804, C.dword_5d4594_2523780, C.dword_5d4594_2523776
-	defer func() { C.dword_5d4594_2523804, C.dword_5d4594_2523780, C.dword_5d4594_2523776 = a, b, c }()
-	C.dword_5d4594_2523804, C.dword_5d4594_2523780, C.dword_5d4594_2523776 = C.uint32_t(sp.Active), 0, 0
+	a, b, c := dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776
+	defer func() { dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776 = a, b, c }()
+	dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776 = C.uint32_t(sp.Active), 0, 0
 	if sp.Cached {
-		C.dword_5d4594_2523780 = C.uint32_t(uintptr(u.CObj()))
+		dword_5d4594_2523780 = C.uint32_t(uintptr(u.CObj()))
 	}
 	offsets := []uintptr{2523772, 2523796, 2523800}
 	old := make([]uint32, len(offsets))
@@ -84,7 +83,7 @@ func (p *portTestShopPools) runtimePauseContract() []uint32 {
 	*stateByte = 73
 	defer func() { *stateByte = oldByte }()
 	snapshot := func() []uint32 {
-		return []uint32{uint32(C.dword_5d4594_2523804), p.normalize(uint32(C.dword_5d4594_2523780)), p.normalize(uint32(C.dword_5d4594_2523776)), memmap.Uint32(0x5D4594, 2523772), memmap.Uint32(0x5D4594, 2523796), memmap.Uint32(0x5D4594, 2523800), uint32(*ticks), uint32(*ticks >> 32), uint32(bool2int(noxflags.HasGame(noxflags.GamePause))), uint32(*stateByte), uint32(len(events)), uint32(len(p.proxy.life.created))}
+		return []uint32{uint32(dword_5d4594_2523804), p.normalize(uint32(dword_5d4594_2523780)), p.normalize(uint32(dword_5d4594_2523776)), memmap.Uint32(0x5D4594, 2523772), memmap.Uint32(0x5D4594, 2523796), memmap.Uint32(0x5D4594, 2523800), uint32(*ticks), uint32(*ticks >> 32), uint32(bool2int(noxflags.HasGame(noxflags.GamePause))), uint32(*stateByte), uint32(len(events)), uint32(len(p.proxy.life.created))}
 	}
 	before := snapshot()
 	var arg *server.Object

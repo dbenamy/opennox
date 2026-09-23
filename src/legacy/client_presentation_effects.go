@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include "GAME3_1.h"
-extern int nox_win_width, nox_win_height;
-extern unsigned int nox_player_netCode_85319C;
 */
 import "C"
 import (
@@ -37,7 +35,7 @@ func presentationPhonemeInit() *gui.Window {
 			return nil
 		}
 	}
-	w := GetClient().Cli().GUI.NewWindowRaw(nil, 64, (int(C.nox_win_width)-100)/2, (int(C.nox_win_height)-100)/2, 1, 1, nil)
+	w := GetClient().Cli().GUI.NewWindowRaw(nil, 64, (int(nox_win_width)-100)/2, (int(nox_win_height)-100)/2, 1, 1, nil)
 	w.SetDraw(func(*gui.Window, *gui.WindowData) int { return presentationPhonemeDraw() })
 	return w
 }
@@ -48,7 +46,7 @@ func presentationPhonemeDraw() int {
 			continue
 		}
 		img := GetClient().R2().GetBag().AsImage(noxrender.ImageHandle(*memmap.PtrPtr(0x5D4594, 1096564+4*uintptr(i))))
-		pos := image.Pt(int(C.nox_win_width)/2+int(memmap.Int32(0x587000, 151208+8*uintptr(i)))-16, int(C.nox_win_height)/2+int(memmap.Int32(0x587000, 151212+8*uintptr(i)))-41)
+		pos := image.Pt(int(nox_win_width)/2+int(memmap.Int32(0x587000, 151208+8*uintptr(i)))-16, int(nox_win_height)/2+int(memmap.Int32(0x587000, 151212+8*uintptr(i)))-41)
 		GetClient().R2().DrawImageAt(img, pos)
 		if GetServer().S().Frame()-*stamp > 3 {
 			*stamp = 0
@@ -72,7 +70,7 @@ func presentationChantTick() {
 	index := memmap.PtrUint8(0x5D4594, 1303512)
 	ph := s.Spells.Phoneme(spell.ID(id), int(*index))
 	if s.Frame() >= *effectMapped(1303516) {
-		audioID := spellLifePhoneme(int32(C.nox_player_netCode_85319C), int8(ph))
+		audioID := spellLifePhoneme(int32(nox_player_netCode_85319C), int8(ph))
 		Nox_xxx_clientPlaySoundSpecial_452D80(sound.ID(audioID), 100)
 		presentationPhonemeMark(int(memmap.Uint32(0x587000, 163576+4*uintptr(ph))))
 		*effectMapped(1303516) = s.Frame() + 3
@@ -204,7 +202,7 @@ func presentationBookReward(kind, id, auto int) {
 	} else if kind == 3 {
 		effect = 3
 	}
-	pos := image.Pt(5, int(C.nox_win_height)/3)
+	pos := image.Pt(5, int(nox_win_height)/3)
 	bookSetForward(uintptr(kind), id, pos)
 	for _, p := range [][6]int{{0, 0, 271, 166, 1, 1}, {0, 0, 135, 166, 2, 1}, {0, 166, 135, 166, 2, 1}, {271, 0, 271, 166, 1, 2}, {135, 0, 135, 166, 2, 2}, {135, 166, 135, 166, 2, 2}} {
 		effectScreenParticles(effect, pos.X+p[0], pos.Y+p[1], p[2], p[3], p[4], p[5])

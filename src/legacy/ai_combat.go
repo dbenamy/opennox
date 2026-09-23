@@ -8,8 +8,6 @@ package legacy
 #include "GAME4.h"
 #include "GAME4_2.h"
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_2487948;
-extern uint32_t dword_587000_261388;
 */
 import "C"
 
@@ -223,12 +221,12 @@ func combatMeleeStart(u *server.Object) {
 			ud.Field282_0 = 0
 		}
 	}
-	radius := math.Float32frombits(uint32(C.dword_587000_261388))
-	C.dword_5d4594_2487948 = 0
+	radius := math.Float32frombits(uint32(dword_587000_261388))
+	dword_5d4594_2487948 = 0
 	*memmap.PtrFloat32(0x5D4594, 2487952) = float32(float64(radius) + 1)
 	p := u.PosVec
 	s.Map.EachObjInRect(types.Rectf{Min: types.Pointf{X: p.X - radius, Y: p.Y - radius}, Max: types.Pointf{X: p.X + radius, Y: p.Y + radius}}, func(t *server.Object) bool { combatScan(t, u); return true })
-	t := (*server.Object)(unsafe.Pointer(uintptr(C.dword_5d4594_2487948)))
+	t := (*server.Object)(unsafe.Pointer(uintptr(dword_5d4594_2487948)))
 	if t != nil && !s.IsEnemyTo(u, t) && u.SubClass()&0x10 != 0 && ud.Field516 != 0 && (*server.Object)(unsafe.Pointer(uintptr(ud.Field516))).SubClass()&0x4000 != 0 {
 		combatDebug(u, "Tried to MELEE_ATTACK but friend in the way")
 		u.MonsterPopAction()
@@ -256,7 +254,7 @@ func combatScan(t, u *server.Object) {
 	if float64(length) < float64(*min) {
 		dir := unsafe.Slice(memmap.PtrFloat32(0x587000, uintptr(194136+8*int(int16(u.Direction1)))), 2)
 		if float64(dy32)/float64(length)*float64(dir[1])+dx/float64(length)*float64(dir[0]) > .5 {
-			C.dword_5d4594_2487948 = C.uint32_t(uintptr(t.CObj()))
+			dword_5d4594_2487948 = C.uint32_t(uintptr(t.CObj()))
 			*min = length
 		}
 	}

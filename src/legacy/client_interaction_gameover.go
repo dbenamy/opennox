@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern int nox_win_width,nox_win_height;
 */
 import "C"
 
@@ -79,7 +78,7 @@ func interactionGameOverShow(data *uint16) uint32 {
 	w.Show()
 	uiWindowEnable(w, 1)
 	Nox_xxx_clientPlaySoundSpecial_452D80(1007, 100)
-	w.SetPos(image.Pt(int(C.nox_win_width)/2-w.SizeVal.X/2, int(C.nox_win_height)/2-w.SizeVal.Y/2))
+	w.SetPos(image.Pt(int(nox_win_width)/2-w.SizeVal.X/2, int(nox_win_height)/2-w.SizeVal.Y/2))
 	values := unsafe.Slice(data, 4)
 	for i, row := range []struct {
 		off uintptr

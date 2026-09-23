@@ -6,8 +6,6 @@ package legacy
 #include <stdint.h>
 #include "GAME4_3.h"
 #include "GAME3_3.h"
-extern uint32_t dword_5d4594_1565512, dword_5d4594_1565516, dword_5d4594_1565520;
-extern uint32_t dword_5d4594_2649712;
 static uint32_t pt_life_calls[24];
 static int pt_life_count;
 static int pt_life_die(uint32_t* u) {pt_life_calls[pt_life_count++]=1;pt_life_calls[pt_life_count++]=u[20];return 1;}
@@ -96,11 +94,11 @@ func portTestLifecycleEnvironment(proxy *portTestRoamOwnerServer) func() {
 	for i, off := range scorch {
 		oldScorch[i] = *memmap.PtrUint32(0x587000, off)
 	}
-	oldDecay, oldHead, oldTail, oldSize, oldMask := motionDecayHead, C.dword_5d4594_1565512, C.dword_5d4594_1565516, C.dword_5d4594_1565520, C.dword_5d4594_2649712
+	oldDecay, oldHead, oldTail, oldSize, oldMask := motionDecayHead, dword_5d4594_1565512, dword_5d4594_1565516, dword_5d4594_1565520, dword_5d4594_2649712
 	*memmap.PtrUint32(0x5D4594, 1565508) = 0
-	C.dword_5d4594_1565512 = 0
-	C.dword_5d4594_1565516 = 0
-	C.dword_5d4594_2649712 = 2
+	dword_5d4594_1565512 = 0
+	dword_5d4594_1565516 = 0
+	dword_5d4594_2649712 = 2
 	oldEligible := Nox_xxx_playerClassCanUseItem_57B3D0
 	Nox_xxx_playerClassCanUseItem_57B3D0 = func(t *server.Object, cl player.Class) bool {
 		proxy.trace = append(proxy.trace, 33, uint32(cl))
@@ -130,7 +128,7 @@ func portTestLifecycleEnvironment(proxy *portTestRoamOwnerServer) func() {
 			*memmap.PtrUint32(0x587000, off) = oldScorch[i]
 		}
 		copy(seq, oldSeq)
-		motionDecayHead, C.dword_5d4594_1565512, C.dword_5d4594_1565516, C.dword_5d4594_1565520, C.dword_5d4594_2649712 = oldDecay, oldHead, oldTail, oldSize, oldMask
+		motionDecayHead, dword_5d4594_1565512, dword_5d4594_1565516, dword_5d4594_1565520, dword_5d4594_2649712 = oldDecay, oldHead, oldTail, oldSize, oldMask
 		proxy.core.NetList.Free()
 		proxy.core.NetList = oldNet
 		freePlayers()
@@ -151,8 +149,8 @@ func portTestLifecyclePrepare(proxy *portTestRoamOwnerServer, u, t *server.Objec
 	if p := *memmap.PtrPtr(0x5D4594, 1565508); p != nil {
 		alloc.AsClass(p).FreeAllObjects()
 	}
-	C.dword_5d4594_1565512 = 0
-	C.dword_5d4594_1565516 = 0
+	dword_5d4594_1565512 = 0
+	dword_5d4594_1565516 = 0
 	clear(unsafe.Slice((*byte)(memmap.PtrOff(0x5D4594, 1565524)), 64))
 	motionDecayHead = 0
 	*memmap.PtrUint32(0x5D4594, 2488532) = 0
@@ -333,7 +331,7 @@ func portTestLifecycleTrace(proxy *portTestRoamOwnerServer, h *server.HealthData
 			panic("effects fixture projectile leak")
 		}
 	}
-	for p := uint32(C.dword_5d4594_1565512); p != 0; {
+	for p := uint32(dword_5d4594_1565512); p != 0; {
 		b := unsafe.Slice((*byte)(unsafe.Pointer(uintptr(p))), 416)
 		packet := bytes.Clone(b[251 : 251+int(b[401])])
 		if proxy.callbacks != nil && proxy.callbacks.shop != nil && proxy.callbacks.shop.spec != nil && proxy.callbacks.shop.spec.Engine != nil {

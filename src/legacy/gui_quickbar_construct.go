@@ -4,7 +4,6 @@ package legacy
 #include "defs.h"
 #include "GAME3_2.h"
 #include "client__gui__guispell.h"
-extern int nox_win_width, nox_win_height;
 */
 import "C"
 import (
@@ -87,7 +86,7 @@ func quickbarAddTrap(animate int) uintptr {
 	w := quickbarWindow(1049500)
 	ret := uintptr(w.C())
 	if w.Flags&8 == 0 {
-		*quickbarWord(1049536) = uint32(C.nox_win_height + 1)
+		*quickbarWord(1049536) = uint32(nox_win_height + 1)
 		for i := 0; i < 50; i++ {
 			rng := GetServer().S().Rand.Other
 			timer := byte(rng.Int(4, 6))
@@ -129,10 +128,10 @@ func quickbarCreate() int {
 	*quickbarByte(1049488) = 0
 	r := GetClient().R2()
 	height := r.FontHeight(r.GetFonts().AsFont(nil))
-	x, y := (int(C.nox_win_width)-320)/2, int(C.nox_win_height)-74
+	x, y := (int(nox_win_width)-320)/2, int(nox_win_height)-74
 	*quickbarWord(1047548), *quickbarWord(1047552) = uint32(x), uint32(y)
 	*quickbarWord(1049684) = quickbarPointer(r.GetFonts().FontPtrByName("small"))
-	for i, value := range []int{x, y - 17, x + 320, int(C.nox_win_height)} {
+	for i, value := range []int{x, y - 17, x + 320, int(nox_win_height)} {
 		*memmap.PtrUint32(0x587000, 133656+uintptr(i*4)) = uint32(value)
 	}
 	p := quickbarPlayer()
@@ -157,7 +156,7 @@ func quickbarCreate() int {
 	}
 	right := quickbarNewNamed(1049504, nil, flags, x+260, y, 45, 66)
 	right.DrawData().ImgPtVal = image.Pt(-263, 0)
-	*quickbarWord(1049536) = uint32(C.nox_win_height - 74)
+	*quickbarWord(1049536) = uint32(nox_win_height - 74)
 	right.SetFunc93(bookEvent(quickbarGenericEvent))
 	if class != 0 {
 		button := quickbarNewNamed(1049520, right, 1032, 9, 33, 32, 32)

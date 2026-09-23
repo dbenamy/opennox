@@ -5,7 +5,6 @@ package legacy
 #include "GAME4.h"
 extern void* nox_alloc_tradeSession_2386492;
 extern void* nox_alloc_tradeItems_2386496;
-extern uint32_t dword_5d4594_2386500;
 */
 import "C"
 
@@ -32,8 +31,8 @@ var (
 	_ [unsafe.Sizeof(shopStockEntry{}) - 28]byte
 )
 
-func shopHead() *shopSession     { return (*shopSession)(unsafe.Pointer(uintptr(C.dword_5d4594_2386500))) }
-func shopSetHead(s *shopSession) { C.dword_5d4594_2386500 = C.uint32_t(uintptr(unsafe.Pointer(s))) }
+func shopHead() *shopSession     { return (*shopSession)(unsafe.Pointer(uintptr(dword_5d4594_2386500))) }
+func shopSetHead(s *shopSession) { dword_5d4594_2386500 = C.uint32_t(uintptr(unsafe.Pointer(s))) }
 func shopCached() []*shopSession {
 	return unsafe.Slice((**shopSession)(memmap.PtrOff(0x5D4594, 2386364)), 32)
 }

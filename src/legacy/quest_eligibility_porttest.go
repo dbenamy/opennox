@@ -4,7 +4,6 @@ package legacy
 
 /*
 #include "GAME3_3.h"
-extern uint32_t dword_5d4594_1568308;
 */
 import "C"
 
@@ -205,12 +204,12 @@ func (p *portTestShopPools) eligibilityEnsure() {
 			w[4], w[5] = row.ArmorExclude, row.WeaponExclude
 		}
 	}
-	oldSpecial := C.dword_5d4594_1568308
-	C.dword_5d4594_1568308 = 0
-	st.restores = append(st.restores, func() { C.dword_5d4594_1568308 = oldSpecial })
+	oldSpecial := dword_5d4594_1568308
+	dword_5d4594_1568308 = 0
+	st.restores = append(st.restores, func() { dword_5d4594_1568308 = oldSpecial })
 	globals := region(0x5d4594, 1568312, 96)
 	if sp.Warm {
-		C.dword_5d4594_1568308 = C.uint32_t(uintptr(modRef(1)))
+		dword_5d4594_1568308 = C.uint32_t(uintptr(modRef(1)))
 		for i := 0; i < 3; i++ {
 			*(*uint32)(unsafe.Pointer(&globals[i*4])) = uint32(uintptr(modRef(i + 2)))
 		}
@@ -291,7 +290,7 @@ func (p *portTestShopPools) eligibilitySnapshot() *PortTestQuestEligibilityResul
 		}
 		return out
 	}
-	out := &PortTestQuestEligibilityResult{Globals: []uint32{p.normalize(uint32(C.dword_5d4594_1568308))}}
+	out := &PortTestQuestEligibilityResult{Globals: []uint32{p.normalize(uint32(dword_5d4594_1568308))}}
 	out.Globals = append(out.Globals, norm(memmap.PtrOff(0x5d4594, 1568312), 24)...)
 	for _, u := range st.objects {
 		out.Objects = append(out.Objects, []uint32{uint32(u.TypeInd), uint32(u.ObjClass), uint32(u.ObjSubClass), uint32(u.ObjFlags)})

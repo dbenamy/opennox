@@ -17,8 +17,6 @@ package legacy
 #include "client__drawable__update__sparklup.h"
 #include "client__drawable__update__telwake.h"
 #include "client__drawable__update__vortexup.h"
-extern uint32_t dword_5d4594_1522956;
-extern uint32_t dword_5d4594_1522968;
 */
 import "C"
 
@@ -108,23 +106,23 @@ type PortTestClientUpdateEnvironment struct {
 }
 
 func PortTestNewClientUpdateEnvironment() *PortTestClientUpdateEnvironment {
-	p := &PortTestClientUpdateEnvironment{mapped: append([]uint32(nil), unsafe.Slice(memmap.PtrUint32(0x5D4594, 1522944), 20)...), named: [2]uint32{uint32(C.dword_5d4594_1522956), uint32(C.dword_5d4594_1522968)}, density: *memmap.PtrUint32(0x587000, 190108)}
+	p := &PortTestClientUpdateEnvironment{mapped: append([]uint32(nil), unsafe.Slice(memmap.PtrUint32(0x5D4594, 1522944), 20)...), named: [2]uint32{uint32(dword_5d4594_1522956), uint32(dword_5d4594_1522968)}, density: *memmap.PtrUint32(0x587000, 190108)}
 	p.Reset(0)
 	return p
 }
 func (p *PortTestClientUpdateEnvironment) Reset(density uint32) {
 	clear(unsafe.Slice(memmap.PtrUint32(0x5D4594, 1522944), 20))
-	C.dword_5d4594_1522956 = 0
-	C.dword_5d4594_1522968 = 0
+	dword_5d4594_1522956 = 0
+	dword_5d4594_1522968 = 0
 	*memmap.PtrUint32(0x587000, 190108) = density
 }
 func (p *PortTestClientUpdateEnvironment) Restore() {
 	copy(unsafe.Slice(memmap.PtrUint32(0x5D4594, 1522944), 20), p.mapped)
-	C.dword_5d4594_1522956 = C.uint32_t(p.named[0])
-	C.dword_5d4594_1522968 = C.uint32_t(p.named[1])
+	dword_5d4594_1522956 = C.uint32_t(p.named[0])
+	dword_5d4594_1522968 = C.uint32_t(p.named[1])
 	*memmap.PtrUint32(0x587000, 190108) = p.density
 }
 func (p *PortTestClientUpdateEnvironment) Snapshot() []uint32 {
-	out := []uint32{uint32(C.dword_5d4594_1522956), uint32(C.dword_5d4594_1522968), *memmap.PtrUint32(0x587000, 190108)}
+	out := []uint32{uint32(dword_5d4594_1522956), uint32(dword_5d4594_1522968), *memmap.PtrUint32(0x587000, 190108)}
 	return append(out, unsafe.Slice(memmap.PtrUint32(0x5D4594, 1522944), 20)...)
 }

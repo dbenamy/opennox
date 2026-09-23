@@ -6,7 +6,6 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4_1.h"
 #include "GAME5.h"
-extern uint32_t dword_5d4594_2491716;
 */
 import "C"
 import (
@@ -122,8 +121,8 @@ func generatorUpdate(u *server.Object) int8 {
 	stage := *memmap.PtrUint32(0x587000, 202028)
 	level := *memmap.PtrUint32(0x5D4594, 2388660)
 	cache := func(i uintptr) *uint32 { return memmap.PtrUint32(0x5D4594, 2491716+4*i) }
-	if C.dword_5d4594_2491716 == 0 {
-		C.dword_5d4594_2491716 = C.uint32_t(int32(float32(core.Balance.Float("QuestHardcoreStage"))))
+	if dword_5d4594_2491716 == 0 {
+		dword_5d4594_2491716 = C.uint32_t(int32(float32(core.Balance.Float("QuestHardcoreStage"))))
 		*cache(1) = uint32(int32(float32(core.Balance.Float("QuestHardcoreSpawnRateIncrease"))))
 		*cache(7) = math.Float32bits(float32(core.Balance.Float("QuestHardcoreSpawnCap")))
 		for i, key := range []string{"SpawnRateHighValue", "SpawnRateNormalValue", "SpawnRateLowValue", "SpawnRateVeryLowValue", "SpawnRateVeryVeryLowValue"} {
@@ -146,7 +145,7 @@ func generatorUpdate(u *server.Object) int8 {
 	if rate <= 4 {
 		result = *cache(uintptr(rate) + 2)
 	}
-	hardcore := uint32(C.dword_5d4594_2491716)
+	hardcore := uint32(dword_5d4594_2491716)
 	if stage >= hardcore {
 		reduction := *cache(1) * (stage - hardcore + 1)
 		adjusted := uint32(0)

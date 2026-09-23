@@ -3,7 +3,6 @@ package legacy
 /*
 #include "GAME3_3.h"
 #include "GAME4_1.h"
-extern uint32_t dword_5d4594_2491676;
 */
 import "C"
 import (
@@ -175,15 +174,15 @@ func questLoseWarriorAbility(u *server.Object) int8 {
 	return int8(result)
 }
 func questLoseGems(u *server.Object) {
-	if C.dword_5d4594_2491676 == 0 {
+	if dword_5d4594_2491676 == 0 {
 		core := GetServer().S()
-		C.dword_5d4594_2491676 = C.uint32_t(core.Types.IndByID("Diamond"))
+		dword_5d4594_2491676 = C.uint32_t(core.Types.IndByID("Diamond"))
 		*memmap.PtrUint32(0x5D4594, 2491680) = uint32(core.Types.IndByID("Emerald"))
 		*memmap.PtrUint32(0x5D4594, 2491684) = uint32(core.Types.IndByID("Ruby"))
 	}
 	kind := func(t *server.Object) int {
 		id := uint32(t.TypeInd)
-		if id == uint32(C.dword_5d4594_2491676) {
+		if id == uint32(dword_5d4594_2491676) {
 			return 0
 		}
 		if id == *memmap.PtrUint32(0x5D4594, 2491680) {

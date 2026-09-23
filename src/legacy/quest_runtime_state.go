@@ -2,9 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_1556128;
-extern uint32_t dword_5d4594_1556144;
-extern uint32_t dword_5d4594_1556136;
 */
 import "C"
 
@@ -16,12 +13,12 @@ import (
 	"unsafe"
 )
 
-func questRuntimeDeadlinePtr() *uint32  { return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1556144)) }
-func questRuntimeSoulFramePtr() *uint32 { return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1556136)) }
+func questRuntimeDeadlinePtr() *uint32  { return (*uint32)(unsafe.Pointer(&dword_5d4594_1556144)) }
+func questRuntimeSoulFramePtr() *uint32 { return (*uint32)(unsafe.Pointer(&dword_5d4594_1556136)) }
 func questRuntimePreviousStage(stage uint32) uint32 {
-	old := uint32(C.dword_5d4594_1556128)
+	old := uint32(dword_5d4594_1556128)
 	*memmap.PtrUint32(0x5D4594, 1556132) = old
-	C.dword_5d4594_1556128 = C.uint32_t(stage)
+	dword_5d4594_1556128 = C.uint32_t(stage)
 	return old
 }
 func questRuntimeWord(off uintptr) uint32 { return memmap.Uint32(0x5D4594, off) }

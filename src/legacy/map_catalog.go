@@ -4,8 +4,6 @@ package legacy
 #include <stdlib.h>
 #include "defs.h"
 extern nox_list_item_t nox_common_maplist;
-extern uint32_t dword_5d4594_1548476;
-extern uint32_t dword_5d4594_1548480;
 */
 import "C"
 import (
@@ -214,7 +212,7 @@ func mapQuestRows() []mapQuestRow {
 func mapQuestBuild() int {
 	rows := mapQuestRows()
 	count := 0
-	C.dword_5d4594_1548476 = 0
+	dword_5d4594_1548476 = 0
 	for p := mapCatalogFirst(); p != nil; p = mapCatalogNext(p) {
 		if p.Field_6 == 0 || Nox_mapToGameFlags(int(int32(p.Field_7)))&noxflags.GameModeQuest == 0 || count >= 128 {
 			continue
@@ -223,9 +221,9 @@ func mapQuestBuild() int {
 		alloc.StrCopyZero(row.Name[:], alloc.GoString(&p.Name[0])+".map")
 		row.Group = 0
 		count++
-		C.dword_5d4594_1548476 = C.uint32_t(count)
+		dword_5d4594_1548476 = C.uint32_t(count)
 	}
-	C.dword_5d4594_1548476 = C.uint32_t(count)
+	dword_5d4594_1548476 = C.uint32_t(count)
 	group := uint32(1)
 	for i := 0; i < count; i++ {
 		if rows[i].Group != 0 {
@@ -245,14 +243,14 @@ func mapQuestBuild() int {
 	return count
 }
 func mapQuestReset() {
-	C.dword_5d4594_1548480 = 1000
-	for i := 0; i < int(C.dword_5d4594_1548476); i++ {
+	dword_5d4594_1548480 = 1000
+	for i := 0; i < int(dword_5d4594_1548476); i++ {
 		mapQuestRows()[i].Used = 0
 		mapQuestRows()[i].Last = 0
 	}
 }
 func mapQuestChoose() *byte {
-	count := int(C.dword_5d4594_1548476)
+	count := int(dword_5d4594_1548476)
 	if count == 0 {
 		return nil
 	}
@@ -281,7 +279,7 @@ func mapQuestChoose() *byte {
 		maximum++
 	}
 	last := int(memmap.Uint32(0x587000, 191880))
-	clock := uint32(C.dword_5d4594_1548480)
+	clock := uint32(dword_5d4594_1548480)
 	eligible := func(i int) bool {
 		return rows[i].Used < maximum && i != last && rows[i].Group != rows[last].Group && clock-rows[i].Last > 4
 	}
@@ -312,20 +310,20 @@ func mapQuestPlayed(name *byte) {
 		return
 	}
 	rows := mapQuestRows()
-	count := int(C.dword_5d4594_1548476)
+	count := int(dword_5d4594_1548476)
 	for i := 0; i < count; i++ {
 		if !mapASCIIEqual(alloc.GoString(&rows[i].Name[0]), alloc.GoString(name)) {
 			continue
 		}
 		*memmap.PtrUint32(0x587000, 191880) = uint32(i)
-		clock := uint32(C.dword_5d4594_1548480)
+		clock := uint32(dword_5d4594_1548480)
 		for j := 0; j < count; j++ {
 			if rows[j].Group == rows[i].Group {
 				rows[j].Used++
 				rows[j].Last = clock
 			}
 		}
-		C.dword_5d4594_1548480 = C.uint32_t(clock + 1)
+		dword_5d4594_1548480 = C.uint32_t(clock + 1)
 		return
 	}
 }

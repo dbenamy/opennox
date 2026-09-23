@@ -2,12 +2,7 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t dword_587000_145664, dword_587000_145668, dword_587000_145672;
-extern uint32_t dword_5d4594_1090040, dword_5d4594_1090044, dword_5d4594_1090120;
 extern nox_window *dword_5d4594_1090048, *dword_5d4594_1090100;
-extern uint32_t dword_5d4594_1090108, dword_5d4594_1090112;
-extern unsigned int nox_player_netCode_85319C;
-extern int nox_win_width;
 */
 import "C"
 
@@ -45,17 +40,17 @@ var scoreboardData = struct {
 	dirty, requested, localRow, width, height, mode, localCode *uint32
 	parent, rank, time, limit                                  **gui.Window
 }{
-	(*uint32)(unsafe.Pointer(&C.dword_587000_145664)),
-	(*uint32)(unsafe.Pointer(&C.dword_587000_145668)),
-	(*uint32)(unsafe.Pointer(&C.dword_587000_145672)),
-	(*uint32)(unsafe.Pointer(&C.dword_5d4594_1090040)),
-	(*uint32)(unsafe.Pointer(&C.dword_5d4594_1090044)),
-	(*uint32)(unsafe.Pointer(&C.dword_5d4594_1090120)),
-	(*uint32)(unsafe.Pointer(&C.nox_player_netCode_85319C)),
+	(*uint32)(unsafe.Pointer(&dword_587000_145664)),
+	(*uint32)(unsafe.Pointer(&dword_587000_145668)),
+	(*uint32)(unsafe.Pointer(&dword_587000_145672)),
+	(*uint32)(unsafe.Pointer(&dword_5d4594_1090040)),
+	(*uint32)(unsafe.Pointer(&dword_5d4594_1090044)),
+	(*uint32)(unsafe.Pointer(&dword_5d4594_1090120)),
+	(*uint32)(unsafe.Pointer(&nox_player_netCode_85319C)),
 	(**gui.Window)(unsafe.Pointer(&C.dword_5d4594_1090048)),
 	(**gui.Window)(unsafe.Pointer(&C.dword_5d4594_1090100)),
-	(**gui.Window)(unsafe.Pointer(&C.dword_5d4594_1090108)),
-	(**gui.Window)(unsafe.Pointer(&C.dword_5d4594_1090112)),
+	(**gui.Window)(unsafe.Pointer(&dword_5d4594_1090108)),
+	(**gui.Window)(unsafe.Pointer(&dword_5d4594_1090112)),
 }
 
 func scoreboardPlayers() []scoreboardPlayer {
@@ -243,7 +238,7 @@ func scoreboardClipName(p *uint16) *uint16 {
 	return p
 }
 
-func scoreboardScreenWidth() int   { return int(C.nox_win_width) }
+func scoreboardScreenWidth() int   { return int(nox_win_width) }
 func scoreboardYellow() uint32     { return Get_nox_color_yellow_2589772() }
 func scoreboardWhite() uint32      { return Get_nox_color_white_2523948() }
 func scoreboardTitleColor() uint32 { return Get_dword_8531A0_2572() }

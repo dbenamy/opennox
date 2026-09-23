@@ -6,7 +6,6 @@ package legacy
 #include <string.h>
 #include <stdlib.h>
 #include <stdint.h>
-extern uint32_t dword_5d4594_1565616,dword_5d4594_1568868;
 #include "GAME3_3.h"
 #include "GAME4.h"
 static void* controlsPlayerUpdatePtr(void) { return nox_xxx_updatePlayer_4F8100; }
@@ -171,9 +170,9 @@ func (p *portTestShopPools) controlsPrepare() func() {
 		old[i] = *v
 		*v = 0
 	}
-	ball, start := C.dword_5d4594_1565616, C.dword_5d4594_1568868
-	C.dword_5d4594_1565616 = 0
-	C.dword_5d4594_1568868 = 0
+	ball, start := dword_5d4594_1565616, dword_5d4594_1568868
+	dword_5d4594_1565616 = 0
+	dword_5d4594_1568868 = 0
 	table := unsafe.Slice((*byte)(memmap.PtrOff(0x587000, 215824)), 108)
 	C.controlsInitReset()
 	restoreTypes, restoreMods := func() {}, func() {}
@@ -282,7 +281,7 @@ func (p *portTestShopPools) controlsPrepare() func() {
 		for i, off := range controlsOffsets {
 			*memmap.PtrUint32(0x5d4594, off) = old[i]
 		}
-		C.dword_5d4594_1565616, C.dword_5d4594_1568868 = ball, start
+		dword_5d4594_1565616, dword_5d4594_1568868 = ball, start
 		copy(table, saved)
 	}
 }
@@ -491,7 +490,7 @@ func (p *portTestShopPools) controlsSnapshot(out []uint32) []uint32 {
 	if st == nil {
 		return out
 	}
-	out = append(out, p.normalize(uint32(st.result)), uint32(st.result>>32), uint32(C.dword_5d4594_1565616), uint32(C.dword_5d4594_1568868))
+	out = append(out, p.normalize(uint32(st.result)), uint32(st.result>>32), uint32(dword_5d4594_1565616), uint32(dword_5d4594_1568868))
 	out = append(out, uint32(len(st.transitions)))
 	out = append(out, st.transitions...)
 	out = append(out, uint32(C.controlsInitCount()))

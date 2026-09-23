@@ -14,6 +14,13 @@
 
 ## Current status
 
+343 numeric globals now have process-lifetime Go owners; nine unused C definitions
+are removed. The 47,677-case storage capture matches C in all three profiles.
+The full tagged consumer sweep passes 2,291/2,280/2,291 roots in default/server/highres,
+with no skips. Safe build, production/ABI, known-suite comparison and fresh headless
+gameplay/save-load pass. This removes 352 C lines. See
+[SCALAR_STORAGE.md](docs/porting/SCALAR_STORAGE.md).
+
 Unused C memory accessors and five GUI adapters are retired. The existing Go
 registry now supplies the durability fixture's threshold address. Four focused
 tests and static checks pass in default/server/highres; the optional safe build,
@@ -60,8 +67,8 @@ unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skip
 and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
 comparison, headless gameplay and save/load checks pass.
 
-C remaining is **518 physical lines in 6 files**, zero reference C. See
-[the native qualification](docs/porting/orphan-bridges-qualification.json).
+C remaining is **166 physical lines in 6 files**, zero reference C. See
+[the native qualification](docs/porting/scalar-storage-native-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in

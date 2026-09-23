@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern int nox_win_width,nox_win_height;
 */
 import "C"
 
@@ -68,7 +67,7 @@ func interactionHelpOpen() uintptr {
 	w.ShowModal()
 	w.StackPush()
 	GetClient().Cli().GUI.Focus(w)
-	w.SetPos(image.Pt((int(C.nox_win_width)-w.SizeVal.X)/2, (int(C.nox_win_height)-w.SizeVal.Y)/2))
+	w.SetPos(image.Pt((int(nox_win_width)-w.SizeVal.X)/2, (int(nox_win_height)-w.SizeVal.Y)/2))
 	label := w.ChildByID(4102)
 	id := "Sanchlp.wnd:ClientHelp"
 	if noxflags.HasGame(1) {

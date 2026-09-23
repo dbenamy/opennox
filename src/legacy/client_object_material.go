@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t dword_8531A0_2572;
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client"
@@ -105,7 +99,7 @@ func objectFlagDraw(vp *noxrender.Viewport, dr *client.Drawable) int {
 	p := vp.ToScreenPos(dr.PosVec)
 	p.Y -= int(int16(dr.ZVal)) + int(int64(*(*float32)(unsafe.Add(dr.C(), 100))))
 	r := GetClient().R2()
-	r.Data().SetTextColor(noxcolor.RGBA5551(C.dword_8531A0_2572))
+	r.Data().SetTextColor(noxcolor.RGBA5551(dword_8531A0_2572))
 	name := team.Name()
 	size := r.GetStringSizeWrapped(nil, name, 0)
 	r.DrawString(nil, name, image.Pt(p.X-size.X/2, p.Y))

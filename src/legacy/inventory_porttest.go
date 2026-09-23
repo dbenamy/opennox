@@ -6,8 +6,6 @@ package legacy
 #include <string.h>
 #include "GAME3_3.h"
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_3484, dword_5d4594_2523804;
-extern uint32_t dword_5d4594_2488720, dword_5d4594_2488724, dword_5d4594_2488728;
 static uint32_t invTrace[4097], invUseDelete, invDropResult;
 static uint32_t* invTracePtr(void) {return invTrace;}
 static void invReset(int useDelete,int dropResult) {memset(invTrace,0,sizeof(invTrace));invUseDelete=useDelete;invDropResult=dropResult;}
@@ -193,8 +191,8 @@ func (p *portTestShopPools) inventoryPrepare() func() {
 		p.inventory.calls = append(p.inventory.calls, 4, p.normalize(uint32(uintptr(u.CObj()))), uint32(state))
 		return true
 	}
-	oldServerFlags, oldPause := C.dword_5d4594_3484, C.dword_5d4594_2523804
-	C.dword_5d4594_3484, C.dword_5d4594_2523804 = C.uint32_t(sp.ServerFlags), 1
+	oldServerFlags, oldPause := dword_5d4594_3484, dword_5d4594_2523804
+	dword_5d4594_3484, dword_5d4594_2523804 = C.uint32_t(sp.ServerFlags), 1
 	oldGameplay := noxflags.GetGamePlay()
 	noxflags.UnsetGamePlay(^noxflags.GameplayFlag(0))
 	noxflags.SetGamePlay(noxflags.GameplayFlag(sp.Gameplay))
@@ -255,8 +253,8 @@ func (p *portTestShopPools) inventoryPrepare() func() {
 		old[i] = *v
 		*v = 0
 	}
-	oldShield1, oldShield2, oldDrop := C.dword_5d4594_2488720, C.dword_5d4594_2488724, C.dword_5d4594_2488728
-	C.dword_5d4594_2488720, C.dword_5d4594_2488724, C.dword_5d4594_2488728 = 0, 0, 1
+	oldShield1, oldShield2, oldDrop := dword_5d4594_2488720, dword_5d4594_2488724, dword_5d4594_2488728
+	dword_5d4594_2488720, dword_5d4594_2488724, dword_5d4594_2488728 = 0, 0, 1
 	table := unsafe.Slice(memmap.PtrUint32(0x587000, 279432), 48)
 	oldTable := append([]uint32(nil), table...)
 	clear(table)
@@ -270,7 +268,7 @@ func (p *portTestShopPools) inventoryPrepare() func() {
 		restorePlayers()
 		Nox_xxx_pickupDefault_4F31E0 = oldPickup
 		Nox_xxx_playerSetState_4FA020 = oldState
-		C.dword_5d4594_3484, C.dword_5d4594_2523804 = oldServerFlags, oldPause
+		dword_5d4594_3484, dword_5d4594_2523804 = oldServerFlags, oldPause
 		noxflags.UnsetGamePlay(^noxflags.GameplayFlag(0))
 		noxflags.SetGamePlay(oldGameplay)
 		*memmap.PtrUint32(0x5D4594, 1548528) = oldTreasure
@@ -310,7 +308,7 @@ func (p *portTestShopPools) inventoryPrepare() func() {
 		for i, off := range offsets {
 			*memmap.PtrUint32(0x5D4594, off) = old[i]
 		}
-		C.dword_5d4594_2488720, C.dword_5d4594_2488724, C.dword_5d4594_2488728 = oldShield1, oldShield2, oldDrop
+		dword_5d4594_2488720, dword_5d4594_2488724, dword_5d4594_2488728 = oldShield1, oldShield2, oldDrop
 		copy(table, oldTable)
 		p.inventory = nil
 	}
@@ -484,7 +482,7 @@ func (p *portTestShopPools) inventorySnapshot() []uint32 {
 	for _, off := range []uintptr{1568244, 1568248, 1568252, 1568256, 2488712, 2488716} {
 		out = append(out, *memmap.PtrUint32(0x5D4594, off))
 	}
-	out = append(out, uint32(C.dword_5d4594_2488720), uint32(C.dword_5d4594_2488724), uint32(C.dword_5d4594_2488728))
+	out = append(out, uint32(dword_5d4594_2488720), uint32(dword_5d4594_2488724), uint32(dword_5d4594_2488728))
 	out = append(out, p.normalize(uint32(motionDecayHead)))
 	for _, b := range p.inventory.blocks {
 		for i := 0; i < 8; i++ {
@@ -496,7 +494,7 @@ func (p *portTestShopPools) inventorySnapshot() []uint32 {
 			out = append(out, p.normalize(*(*uint32)(unsafe.Pointer(&b[i]))))
 		}
 	}
-	out = append(out, uint32(noxflags.GetGame()), uint32(noxflags.GetEngine()), uint32(noxflags.GetGamePlay()), uint32(C.dword_5d4594_3484))
+	out = append(out, uint32(noxflags.GetGame()), uint32(noxflags.GetEngine()), uint32(noxflags.GetGamePlay()), uint32(dword_5d4594_3484))
 	for _, m := range minimap {
 		out = append(out, p.normalize(uint32(uintptr(unsafe.Pointer(m)))), m.Field0, p.normalize(uint32(uintptr(m.Field4.CObj()))), p.normalize(uint32(uintptr(unsafe.Pointer(m.Field8)))), p.normalize(uint32(uintptr(unsafe.Pointer(m.Field12)))))
 	}

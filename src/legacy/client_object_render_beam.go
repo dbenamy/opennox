@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_1321800;
 */
 import "C"
 import (
@@ -21,21 +20,21 @@ func objectRenderBeamColors() int {
 	return int(value)
 }
 func objectRenderBeamAppend(packet unsafe.Pointer) int {
-	count := int32(C.dword_5d4594_1321800)
+	count := int32(dword_5d4594_1321800)
 	if count < 32 {
 		count++
 		*effectMapped(1321532 + uintptr(count*8)) = *(*uint32)(unsafe.Add(packet, 1))
 		*effectMapped(1321536 + uintptr(count*8)) = *(*uint32)(unsafe.Add(packet, 5))
-		C.dword_5d4594_1321800 = C.uint32_t(count)
+		dword_5d4594_1321800 = C.uint32_t(count)
 	}
 	return int(count)
 }
-func objectRenderBeamReset() { C.dword_5d4594_1321800 = 0 }
+func objectRenderBeamReset() { dword_5d4594_1321800 = 0 }
 func objectRenderBeamDraw(vp *noxrender.Viewport) int {
 	if *memmap.PtrPtr(0x852978, 8) == nil {
 		return 0
 	}
-	if C.dword_5d4594_1321800 == 0 {
+	if dword_5d4594_1321800 == 0 {
 		return 0
 	}
 	sight := &GetClient().Cli().Sight
@@ -66,7 +65,7 @@ func objectRenderBeamDraw(vp *noxrender.Viewport) int {
 			objectRenderBeamLine(from, to)
 		}
 		i++
-		if i >= int32(C.dword_5d4594_1321800) {
+		if i >= int32(dword_5d4594_1321800) {
 			return int(i)
 		}
 	}

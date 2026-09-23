@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t nox_color_black_2650656, nox_color_yellow_2589772, dword_8531A0_2572;
-*/
-import "C"
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client"
@@ -74,7 +69,7 @@ func combatHealthRemove(p *combatHealth) {
 }
 func combatHealthDraw(v *noxrender.Viewport, dr *client.Drawable) {
 	seq := uint32(GetClient().GetInputSeq())
-	color := noxcolor.RGBA5551(C.nox_color_yellow_2589772)
+	color := noxcolor.RGBA5551(nox_color_yellow_2589772)
 	if dr.C() == *memmap.PtrPtr(0x852978, 8) {
 		color = noxcolor.RGBA5551(memmap.Uint32(0x85B3FC, 940))
 	}
@@ -93,13 +88,13 @@ func combatHealthDraw(v *noxrender.Viewport, dr *client.Drawable) {
 			pos := v.ToScreenPos(dr.PosVec)
 			pos.Y += int(2*(p.Stamp-seq)) - int(int16(dr.ZVal)) - int(int64(dr.ZSizeMax))
 			pos.X -= r.GetStringSizeWrapped(face, text, 0).X / 2
-			r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_black_2650656))
+			r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_black_2650656))
 			for _, off := range []image.Point{{-1, -1}, {-1, 1}, {1, -1}, {1, 1}} {
 				r.DrawString(face, text, pos.Add(off))
 			}
 			value := color
 			if p.Amount > 0 {
-				value = noxcolor.RGBA5551(C.dword_8531A0_2572)
+				value = noxcolor.RGBA5551(dword_8531A0_2572)
 			}
 			r.Data().SetTextColor(value)
 			r.DrawString(face, text, pos)

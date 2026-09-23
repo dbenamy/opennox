@@ -8,9 +8,6 @@ package legacy
 #include "GAME4_3.h"
 #include "server__dbase__objdb.h"
 #include "common__strman.h"
-extern uint32_t dword_5d4594_2386548;
-extern uint32_t dword_5d4594_2386552;
-extern uint32_t dword_5d4594_2386560;
 extern void* nox_alloc_tradeItems_2386496;
 */
 import "C"
@@ -360,8 +357,8 @@ func tradeReportGold(u *server.Object) {
 }
 func tradeBuy(u *server.Object, s *shopSession, code uint32) {
 	available := shopGetGold(u)
-	if C.dword_5d4594_2386548 == 0 {
-		C.dword_5d4594_2386548 = C.uint32_t(GetServer().S().Types.IndByID("AnkhTradable"))
+	if dword_5d4594_2386548 == 0 {
+		dword_5d4594_2386548 = C.uint32_t(GetServer().S().Types.IndByID("AnkhTradable"))
 	}
 	var item *server.Object
 	for n := s.Stock; n != nil; n = n.Next {
@@ -388,7 +385,7 @@ func tradeBuy(u *server.Object, s *shopSession, code uint32) {
 			return
 		}
 	}
-	if uint32(item.TypeInd) == uint32(C.dword_5d4594_2386548) && u.UpdateDataPlayer().Field80 >= tradeLimit("MaxExtraLives") {
+	if uint32(item.TypeInd) == uint32(dword_5d4594_2386548) && u.UpdateDataPlayer().Field80 >= tradeLimit("MaxExtraLives") {
 		tradePriority(u, "pickup.c:MaxTradableAnkhsReached")
 		GetServer().S().Audio.EventObj(925, u, 0, 0)
 		return
@@ -400,7 +397,7 @@ func tradeBuy(u *server.Object, s *shopSession, code uint32) {
 		return
 	}
 	delivered := item
-	if quest && (tradeIsGem(item) || uint32(item.TypeInd) == uint32(C.dword_5d4594_2386548)) {
+	if quest && (tradeIsGem(item) || uint32(item.TypeInd) == uint32(dword_5d4594_2386548)) {
 		delivered = GetServer().S().NewObjectByTypeInd(int(item.TypeInd))
 	}
 	if delivered.ObjClass&0x110 != 0 || delivered.Pickup.Ptr == nil {
@@ -418,8 +415,8 @@ func tradeBuy(u *server.Object, s *shopSession, code uint32) {
 }
 func tradeBuyMany(u *server.Object, s *shopSession, typ int32, count uint32) uint32 {
 	available := shopGetGold(u)
-	if C.dword_5d4594_2386552 == 0 {
-		C.dword_5d4594_2386552 = C.uint32_t(GetServer().S().Types.IndByID("AnkhTradable"))
+	if dword_5d4594_2386552 == 0 {
+		dword_5d4594_2386552 = C.uint32_t(GetServer().S().Types.IndByID("AnkhTradable"))
 	}
 	for bought := uint32(0); bought < count; {
 		n := s.Stock
@@ -446,7 +443,7 @@ func tradeBuyMany(u *server.Object, s *shopSession, typ int32, count uint32) uin
 				return tradeLine(u, "pickup.c:MaxSameItem")
 			}
 		}
-		if uint32(item.TypeInd) == uint32(C.dword_5d4594_2386552) && u.UpdateDataPlayer().Field80 >= tradeLimit("MaxExtraLives") {
+		if uint32(item.TypeInd) == uint32(dword_5d4594_2386552) && u.UpdateDataPlayer().Field80 >= tradeLimit("MaxExtraLives") {
 			tradePriority(u, "pickup.c:MaxTradableAnkhsReached")
 			GetServer().S().Audio.EventObj(925, u, 0, 0)
 			return uint32(uintptr(unsafe.Pointer(n)))
@@ -458,7 +455,7 @@ func tradeBuyMany(u *server.Object, s *shopSession, typ int32, count uint32) uin
 			return uint32(uintptr(unsafe.Pointer(n)))
 		}
 		delivered := item
-		if quest && (tradeIsGem(item) || uint32(item.TypeInd) == uint32(C.dword_5d4594_2386552)) {
+		if quest && (tradeIsGem(item) || uint32(item.TypeInd) == uint32(dword_5d4594_2386552)) {
 			delivered = GetServer().S().NewObjectByTypeInd(int(item.TypeInd))
 		}
 		if delivered.Pickup.Ptr != nil {
@@ -514,17 +511,17 @@ func tradeSaleQuote(u *server.Object, s *shopSession, code uint32) uint32 {
 }
 func tradeSell(u *server.Object, s *shopSession, code uint32) uint32 {
 	shopGetGold(u)
-	if C.dword_5d4594_2386560 == 0 {
-		C.dword_5d4594_2386560 = C.uint32_t(GetServer().S().Types.IndByID("Glyph"))
+	if dword_5d4594_2386560 == 0 {
+		dword_5d4594_2386560 = C.uint32_t(GetServer().S().Types.IndByID("Glyph"))
 	}
 	if u.InvFirstItem == nil {
-		return uint32(C.dword_5d4594_2386560)
+		return uint32(dword_5d4594_2386560)
 	}
 	for item := u.InvFirstItem; item != nil; item = item.InvNextItem {
 		if item.NetCode != code {
 			continue
 		}
-		if tradeSaleBlocked(u, item, uint32(C.dword_5d4594_2386560)) {
+		if tradeSaleBlocked(u, item, uint32(dword_5d4594_2386560)) {
 			return code
 		}
 		inventoryRemove(u, item)

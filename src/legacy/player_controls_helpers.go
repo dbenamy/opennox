@@ -9,7 +9,6 @@ package legacy
 #include "GAME4.h"
 #include "GAME4_1.h"
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_1565616,dword_5d4594_1568868;
 */
 import "C"
 import (
@@ -54,19 +53,19 @@ func controlRemoveCreatures(u *server.Object) {
 	}
 }
 func controlFindBall() *server.Object {
-	if C.dword_5d4594_1565616 == 0 {
-		C.dword_5d4594_1565616 = C.uint32_t(GetServer().S().Types.IndByID("GameBall"))
+	if dword_5d4594_1565616 == 0 {
+		dword_5d4594_1565616 = C.uint32_t(GetServer().S().Types.IndByID("GameBall"))
 	}
 	for u := GetServer().S().Objs.List; u != nil; u = u.ObjNext {
-		if uint32(u.TypeInd) == uint32(C.dword_5d4594_1565616) {
+		if uint32(u.TypeInd) == uint32(dword_5d4594_1565616) {
 			return u
 		}
 	}
 	return nil
 }
 func controlNextObserver(pl unsafe.Pointer) *server.Object {
-	if C.dword_5d4594_1565616 == 0 {
-		C.dword_5d4594_1565616 = C.uint32_t(GetServer().S().Types.IndByID("GameBall"))
+	if dword_5d4594_1565616 == 0 {
+		dword_5d4594_1565616 = C.uint32_t(GetServer().S().Types.IndByID("GameBall"))
 	}
 	players := &GetServer().S().Players
 	current := controlObject(pl, 3628)

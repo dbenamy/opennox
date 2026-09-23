@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t dword_8531A0_2572;
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client"
@@ -91,7 +85,7 @@ func objectGlyphDraw(vp *noxrender.Viewport, dr *client.Drawable) int {
 		player := (*client.Drawable)(unsafe.Pointer(uintptr(local)))
 		if player.HasEnchant(21) {
 			d.SetColorize17(1)
-			cl := noxcolor.RGBA5551(C.dword_8531A0_2572).ColorNRGBA()
+			cl := noxcolor.RGBA5551(dword_8531A0_2572).ColorNRGBA()
 			r.SetColorMultAndIntensityRGB(cl.R, cl.G, cl.B)
 		} else {
 			delta := dr.PosVec.Sub(player.PosVec)

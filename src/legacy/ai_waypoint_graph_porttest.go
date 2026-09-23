@@ -4,7 +4,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_2490504;
 */
 import "C"
 
@@ -79,13 +78,13 @@ func PortTestWaypointGraph(specs []PortTestWaypointGraphSpec) (out []PortTestWay
 	scratch := unsafe.Slice(memmap.PtrUint32(0x5D4594, portTestWaypointScratchOff), portTestWaypointScratchLen)
 	oneShot := memmap.PtrUint32(0x5D4594, portTestWaypointOneShotOff)
 	oldScratch := append([]uint32(nil), scratch...)
-	oldOneShot, oldEpoch := *oneShot, uint32(C.dword_5d4594_2490504)
+	oldOneShot, oldEpoch := *oneShot, uint32(dword_5d4594_2490504)
 	defer func() {
 		copy(scratch, oldScratch)
 		*oneShot = oldOneShot
-		C.dword_5d4594_2490504 = C.uint32_t(oldEpoch)
+		dword_5d4594_2490504 = C.uint32_t(oldEpoch)
 		restored = bytes.Equal(bytesOfU32(scratch), bytesOfU32(oldScratch)) &&
-			*oneShot == oldOneShot && uint32(C.dword_5d4594_2490504) == oldEpoch
+			*oneShot == oldOneShot && uint32(dword_5d4594_2490504) == oldEpoch
 	}()
 
 	for _, spec := range specs {
@@ -149,7 +148,7 @@ func portTestWaypointGraphOne(spec PortTestWaypointGraphSpec, scratch []uint32, 
 	}
 	copy(scratch, spec.Scratch)
 	*oneShot = spec.OneShot
-	C.dword_5d4594_2490504 = C.uint32_t(spec.Epoch)
+	dword_5d4594_2490504 = C.uint32_t(spec.Epoch)
 
 	// C writes entry Capacity before checking its capacity predicate. Keep it
 	// in-bounds and observable, surrounded by two word guards on each side.
@@ -181,7 +180,7 @@ func portTestWaypointGraphOne(spec PortTestWaypointGraphSpec, scratch []uint32, 
 	}
 	r := PortTestWaypointGraphResult{
 		Return:             int(ret),
-		Epoch:              uint32(C.dword_5d4594_2490504),
+		Epoch:              uint32(dword_5d4594_2490504),
 		OneShot:            *oneShot,
 		OnlyTraversalState: true,
 		GuardsOK:           true,

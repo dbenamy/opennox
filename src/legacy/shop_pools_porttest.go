@@ -7,8 +7,6 @@ package legacy
 #include "GAME4_1.h"
 extern void* nox_alloc_tradeSession_2386492;
 extern void* nox_alloc_tradeItems_2386496;
-extern uint32_t dword_5d4594_2386500;
-extern uint32_t dword_5d4594_1565512;
 
 */
 import "C"
@@ -128,10 +126,10 @@ func portTestShopPoolsEnvironment(proxy *portTestRoamOwnerServer) *portTestShopP
 	p := &portTestShopPools{proxy: proxy}
 	prepareProtection, snapshotProtection, freeProtection := portTestPenaltyProtectionEnvironment()
 	p.prepareProtection, p.snapshotProtection = prepareProtection, snapshotProtection
-	oldSessions, oldItems, oldHead := C.nox_alloc_tradeSession_2386492, C.nox_alloc_tradeItems_2386496, C.dword_5d4594_2386500
+	oldSessions, oldItems, oldHead := C.nox_alloc_tradeSession_2386492, C.nox_alloc_tradeItems_2386496, dword_5d4594_2386500
 	table := unsafe.Slice(memmap.PtrUint32(0x5D4594, 2386364), 32)
 	oldTable := append([]uint32(nil), table...)
-	C.nox_alloc_tradeSession_2386492, C.nox_alloc_tradeItems_2386496, C.dword_5d4594_2386500 = nil, nil, 0
+	C.nox_alloc_tradeSession_2386492, C.nox_alloc_tradeItems_2386496, dword_5d4594_2386500 = nil, nil, 0
 	if shopInit() == 0 {
 		panic("shop fixture pools")
 	}
@@ -139,7 +137,7 @@ func portTestShopPoolsEnvironment(proxy *portTestRoamOwnerServer) *portTestShopP
 		p.cleanup()
 		freeProtection()
 		shopFree()
-		C.nox_alloc_tradeSession_2386492, C.nox_alloc_tradeItems_2386496, C.dword_5d4594_2386500 = oldSessions, oldItems, oldHead
+		C.nox_alloc_tradeSession_2386492, C.nox_alloc_tradeItems_2386496, dword_5d4594_2386500 = oldSessions, oldItems, oldHead
 		copy(table, oldTable)
 	}
 	return p
@@ -214,7 +212,7 @@ func (p *portTestShopPools) markStockFreed(w []uint32) {
 	}
 }
 func (p *portTestShopPools) reset() {
-	for q := uint32(C.dword_5d4594_2386500); q != 0; {
+	for q := uint32(dword_5d4594_2386500); q != 0; {
 		w := shopTestWords(shopTestPointer(q), 16)
 		if w[4] != 0 {
 			p.markStockFreed(w)
@@ -494,7 +492,7 @@ func (p *portTestShopPools) run() {
 				C.nox_xxx_shopCancelSession_510DC0(q)
 			}
 			live := false
-			for n := uint32(C.dword_5d4594_2386500); n != 0; n = shopTestWords(shopTestPointer(n), 16)[14] {
+			for n := uint32(dword_5d4594_2386500); n != 0; n = shopTestWords(shopTestPointer(n), 16)[14] {
 				if n == uint32(uintptr(q)) {
 					live = true
 				}
@@ -577,7 +575,7 @@ func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 	r.TemporaryUpdatesData = p.temporarySnapshot()
 	var sessions, nodes []unsafe.Pointer
 	seen := make(map[unsafe.Pointer]bool)
-	for q := shopTestPointer(uint32(C.dword_5d4594_2386500)); q != nil; {
+	for q := shopTestPointer(uint32(dword_5d4594_2386500)); q != nil; {
 		if len(sessions) == 64 || seen[q] {
 			panic("shop fixture session cycle")
 		}
@@ -662,7 +660,7 @@ func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 			panic("shop protection fixture guards")
 		}
 	}
-	for q := uint32(C.dword_5d4594_1565512); q != 0; {
+	for q := uint32(dword_5d4594_1565512); q != 0; {
 		b := unsafe.Slice((*byte)(shopTestPointer(q)), 416)
 		packet := PortTestShopPacketResult{Recipient: b[250], Ordered: b[184], A4: binary.LittleEndian.Uint32(b[404:]), A5: binary.LittleEndian.Uint32(b[180:]), Data: bytes.Clone(b[251 : 251+int(b[401])])}
 		for i := range packet.Sequence {
@@ -685,7 +683,7 @@ func (p *portTestShopPools) snapshot(rv uint32) PortTestShopStep {
 		r.EngineState = append(r.EngineState, normalized(p.proxy.callbacks.shop.npc().InitData, 431)...)
 	}
 	r.GameplayReports = p.gameplayReportsSnapshot()
-	r.Return, r.Head = p.normalize(rv), p.normalize(uint32(C.dword_5d4594_2386500))
+	r.Return, r.Head = p.normalize(rv), p.normalize(uint32(dword_5d4594_2386500))
 	for i := range r.Cached {
 		r.Cached[i] = p.normalize(*memmap.PtrUint32(0x5D4594, 2386364+uintptr(4*i)))
 	}

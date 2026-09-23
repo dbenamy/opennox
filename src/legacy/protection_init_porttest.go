@@ -2,17 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include "GAME5_2.h"
-extern uint32_t dword_5d4594_2516344;
-extern uint32_t dword_5d4594_2516352;
-extern uint32_t dword_5d4594_2516348;
-extern uint32_t dword_5d4594_2516328;
-extern uint32_t dword_5d4594_2516356;
-*/
-import "C"
-
 import (
 	"time"
 	"unsafe"
@@ -55,8 +44,8 @@ func PortTestProtectionInit(frame uint32, seed int, swaps, rekeys uint32, wrappe
 	core.Rand.Logic, core.Rand.Other = prand.New(seed), prand.New(seed+1)
 	GetServer = func() Server { return &portTestRandomServer{core: core} }
 
-	head, tail := C.dword_5d4594_2516344, C.dword_5d4594_2516352
-	key, sum, sequence := C.dword_5d4594_2516348, C.dword_5d4594_2516328, C.dword_5d4594_2516356
+	head, tail := dword_5d4594_2516344, dword_5d4594_2516352
+	key, sum, sequence := dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356
 	count := memmap.PtrUint16(0x587000, 311204)
 	oldCount := *count
 	firstSlot, lastSlot := memmap.PtrUint32(0x5D4594, 2516340), memmap.PtrUint32(0x5D4594, 2516332)
@@ -66,16 +55,16 @@ func PortTestProtectionInit(frame uint32, seed int, swaps, rekeys uint32, wrappe
 	oldRandom := protectionRandom
 	defer func() {
 		Sub_56F3B0()
-		C.dword_5d4594_2516344, C.dword_5d4594_2516352 = head, tail
-		C.dword_5d4594_2516348, C.dword_5d4594_2516328, C.dword_5d4594_2516356 = key, sum, sequence
+		dword_5d4594_2516344, dword_5d4594_2516352 = head, tail
+		dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = key, sum, sequence
 		*count, *firstSlot, *lastSlot = oldCount, oldFirstSlot, oldLastSlot
 		*swapCounter, *rekeyCounter = oldSwaps, oldRekeys
 		protectionRandom = oldRandom
 		GetServer = oldGet
 	}()
 
-	C.dword_5d4594_2516344, C.dword_5d4594_2516352 = 0, 0
-	C.dword_5d4594_2516348, C.dword_5d4594_2516328, C.dword_5d4594_2516356 = 0xdeadbeef, 0x13579bdf, 0x2468ace0
+	dword_5d4594_2516344, dword_5d4594_2516352 = 0, 0
+	dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = 0xdeadbeef, 0x13579bdf, 0x2468ace0
 	*count, *firstSlot, *lastSlot = 0x4567, 0x89abcdef, 0x76543210
 	*swapCounter, *rekeyCounter = swaps, rekeys
 	protectionRandom = protection.Random{State: [5]float64{1, 2, 3, 4, 5}, Span: 0x10203040, Max: 0x50607080, Min: 0x90a0b0c0}
@@ -91,9 +80,9 @@ func PortTestProtectionInit(frame uint32, seed int, swaps, rekeys uint32, wrappe
 
 	out := PortTestProtectionInitSnapshot{
 		Result:     result,
-		Key:        uint32(C.dword_5d4594_2516348),
-		Sum:        uint32(C.dword_5d4594_2516328),
-		Sequence:   uint32(C.dword_5d4594_2516356),
+		Key:        uint32(dword_5d4594_2516348),
+		Sum:        uint32(dword_5d4594_2516328),
+		Sequence:   uint32(dword_5d4594_2516356),
 		Count:      *count,
 		FirstSlot:  *firstSlot,
 		LastSlot:   *lastSlot,
@@ -114,7 +103,7 @@ func PortTestProtectionInit(frame uint32, seed int, swaps, rekeys uint32, wrappe
 		out.Values = append(out.Values, [2]uint32{p.ID ^ out.Key, p.Value ^ out.Key})
 		prev = p
 	}
-	out.LinksValid = out.LinksValid && len(out.Values) == int(out.Count) && uint32(uintptr(unsafe.Pointer(prev))) == uint32(C.dword_5d4594_2516352)
+	out.LinksValid = out.LinksValid && len(out.Values) == int(out.Count) && uint32(uintptr(unsafe.Pointer(prev))) == uint32(dword_5d4594_2516352)
 
 	if after < before || after-before > 2 {
 		out.Retry = true

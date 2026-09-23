@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t dword_5d4594_1320968, dword_5d4594_1320972;
 */
 import "C"
 import (
@@ -57,7 +56,7 @@ func uiTradeMouse(w *gui.Window, event int, a, b uintptr) int {
 				InputSetKeyTimeoutLegacy(2)
 				*(*[2]int32)(memmap.PtrOff(0x5D4594, 1319276)) = [2]int32{int32(p.X), int32(p.Y)}
 				dr := c.Drawable
-				C.dword_5d4594_1320968 = C.uint32_t(uiInventoryPointer(dr.C()))
+				dword_5d4594_1320968 = C.uint32_t(uiInventoryPointer(dr.C()))
 				dr.NetCode32 = c.Codes[c.Count-1]
 				c.Codes[c.Count-1] = 0
 				Nox_xxx_cursorSetDraggedItem_477690(dr)
@@ -65,7 +64,7 @@ func uiTradeMouse(w *gui.Window, event int, a, b uintptr) int {
 				if c.Count == 0 {
 					c.Drawable = nil
 				}
-				C.dword_5d4594_1320972 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(c)))
+				dword_5d4594_1320972 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(c)))
 				*memmap.PtrUint32(0x5D4594, 1320304) = 0
 				uiTradeSound(791)
 			}
@@ -99,8 +98,8 @@ func uiTradeMouse(w *gui.Window, event int, a, b uintptr) int {
 		c.Drawable = dr
 	}
 	Nox_xxx_cursorResetDraggedItem_4776A0()
-	C.dword_5d4594_1320968 = 0
-	C.dword_5d4594_1320972 = 0
+	dword_5d4594_1320968 = 0
+	dword_5d4594_1320972 = 0
 	return 1
 }
 func uiTradePanel(w *gui.Window, event int, a, b uintptr) int {

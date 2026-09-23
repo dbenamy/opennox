@@ -2,12 +2,8 @@ package legacy
 
 /*
 #include "client__draw__staticdraw.h"
-extern uint32_t dword_5d4594_3798800, dword_5d4594_3798804, dword_5d4594_3798808;
-extern uint32_t dword_5d4594_3798820, dword_5d4594_3798824;
-extern uint32_t dword_5d4594_3798836, dword_5d4594_3798840;
 extern void* nox_video_tileBuf_ptr_3798796;
 extern void* nox_video_tileBuf_end_3798844;
-extern uint32_t nox_xxx_waypointCounterMB_587000_154948;
 */
 import "C"
 import (
@@ -85,12 +81,12 @@ func presentationBake(_ *noxrender.Viewport, dr *client.Drawable) {
 	width, height := int32(binary.LittleEndian.Uint32(data)), int32(binary.LittleEndian.Uint32(data[4:]))
 	x := int32(binary.LittleEndian.Uint32(data[8:])) + int32(dr.PosVec.X) - int32(byte(dr.Field_0))
 	y := int32(binary.LittleEndian.Uint32(data[12:])) + int32(dr.PosVec.Y) - int32(int16(dr.ZVal2)) - int32(int16(dr.ZVal)) - int32(byte(dr.Field_0>>8))
-	originX, originY := int32(C.dword_5d4594_3798820), int32(C.dword_5d4594_3798824)
-	if x < originX || x+width >= originX+int32(C.dword_5d4594_3798800) || y < originY || y+height >= originY+int32(C.dword_5d4594_3798808) {
+	originX, originY := int32(dword_5d4594_3798820), int32(dword_5d4594_3798824)
+	if x < originX || x+width >= originX+int32(dword_5d4594_3798800) || y < originY || y+height >= originY+int32(dword_5d4594_3798808) {
 		dr.Field_86 = 0
 		return
 	}
-	counter := int32(C.nox_xxx_waypointCounterMB_587000_154948)
+	counter := int32(nox_xxx_waypointCounterMB_587000_154948)
 	if counter <= 0 {
 		dr.Field_86 = 0
 	}
@@ -100,8 +96,8 @@ func presentationBake(_ *noxrender.Viewport, dr *client.Drawable) {
 	}
 	base := C.nox_video_tileBuf_ptr_3798796
 	size := int(uintptr(C.nox_video_tileBuf_end_3798844) - uintptr(base))
-	stride := int(C.dword_5d4594_3798804)
-	start := int(uint32(stride)*(uint32(y)+uint32(C.dword_5d4594_3798840)-uint32(originY)) + 2*(uint32(x)+uint32(C.dword_5d4594_3798836)-uint32(originX)))
+	stride := int(dword_5d4594_3798804)
+	start := int(uint32(stride)*(uint32(y)+uint32(dword_5d4594_3798840)-uint32(originY)) + 2*(uint32(x)+uint32(dword_5d4594_3798836)-uint32(originX)))
 	if start >= size {
 		start -= size
 	}

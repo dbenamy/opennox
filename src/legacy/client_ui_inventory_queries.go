@@ -5,7 +5,6 @@ package legacy
 #include "GAME2_1.h"
 extern nox_inventory_cell_t nox_client_inventory_grid_1050020[NOX_INVENTORY_CELLS_MAX];
 extern uint32_t array_5D4594_1049872[9];
-extern uint32_t dword_5d4594_1062480;
 */
 import "C"
 
@@ -186,7 +185,7 @@ func sub_467870(col, row int) *C.char {
 
 //export sub_4678B0
 func sub_4678B0() int {
-	if cell := (*uiInventoryCell)(unsafe.Pointer(uintptr(C.dword_5d4594_1062480))); cell != nil {
+	if cell := (*uiInventoryCell)(unsafe.Pointer(uintptr(dword_5d4594_1062480))); cell != nil {
 		return int(cell.Codes[0])
 	}
 	return 0

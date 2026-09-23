@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t dword_5d4594_2490504;
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/object"
 	"github.com/opennox/libs/types"
@@ -53,7 +47,7 @@ func portTestPathPrepare(proxy *portTestRoamOwnerServer, u *server.Object, sp *P
 	proxy.trace = append(proxy.trace, 5, uint32(bool2int(proxy.core.MapTraceRayAt(types.Pointf{X: 100, Y: 100}, types.Pointf{X: 200, Y: 100}, nil, nil, 132))))
 	proxy.pathEndpoints = [2]*server.Waypoint{roamWaypoint(raw(sp.Start)), roamWaypoint(raw(sp.End))}
 	proxy.endpointCall = 0
-	C.dword_5d4594_2490504 = 1
+	dword_5d4594_2490504 = 1
 	scratch := unsafe.Slice(memmap.PtrUint32(0x5D4594, 2489476), 256)
 	for i := range scratch {
 		scratch[i] = 0xab000000 + uint32(i)
@@ -91,13 +85,13 @@ func portTestPathEnvironment() func() {
 	oldEpsilon := *epsilon
 	// Runtime blob_581450.dat stores float32(0.01) promoted to double here.
 	*epsilon = float64(float32(.01))
-	oldEpoch := C.dword_5d4594_2490504
+	oldEpoch := dword_5d4594_2490504
 	scratch := unsafe.Slice(memmap.PtrUint32(0x5D4594, 2489476), 256)
 	old := append([]uint32(nil), scratch...)
 	return func() {
 		unchanged := *epsilon == float64(float32(.01))
 		*epsilon = oldEpsilon
-		C.dword_5d4594_2490504 = oldEpoch
+		dword_5d4594_2490504 = oldEpoch
 		copy(scratch, old)
 		if !unchanged {
 			panic("path execution changed read-only epsilon")
@@ -105,7 +99,7 @@ func portTestPathEnvironment() func() {
 	}
 }
 func portTestPathGraphState(norm func(uint32) uint32) []uint32 {
-	out := []uint32{uint32(C.dword_5d4594_2490504)}
+	out := []uint32{uint32(dword_5d4594_2490504)}
 	for i, v := range unsafe.Slice(memmap.PtrUint32(0x5D4594, 2489476), 256) {
 		if v != 0xab000000+uint32(i) {
 			out = append(out, uint32(i), norm(v))

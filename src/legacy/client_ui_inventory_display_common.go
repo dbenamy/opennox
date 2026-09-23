@@ -6,12 +6,6 @@ package legacy
 #include "GAME2_1.h"
 #include "GAME3_2.h"
 #include "noxstring.h"
-extern uint32_t dword_5d4594_1049844, dword_5d4594_1062456;
-extern uint32_t dword_5d4594_1062476, dword_5d4594_1062480, dword_5d4594_1062484;
-extern uint32_t dword_5d4594_1062512, dword_5d4594_1063116, dword_5d4594_1063120;
-extern uint32_t dword_5d4594_1063636;
-extern uint32_t dword_5d4594_1049796_inventory_click_column_index;
-extern uint32_t dword_5d4594_1049800_inventory_click_row_index;
 */
 import "C"
 
@@ -49,19 +43,19 @@ func uiInventoryFormatLiteral(text string) string {
 	return alloc.GoString16(&dst[0])
 }
 func uiInventorySmallFont() font.Face {
-	return GetClient().R2().GetFonts().AsFont(unsafe.Pointer(uintptr(C.dword_5d4594_1063636)))
+	return GetClient().R2().GetFonts().AsFont(unsafe.Pointer(uintptr(dword_5d4594_1063636)))
 }
 func uiInventoryMainWindow() *gui.Window {
-	return (*gui.Window)(unsafe.Pointer(uintptr(C.dword_5d4594_1062456)))
+	return (*gui.Window)(unsafe.Pointer(uintptr(dword_5d4594_1062456)))
 }
 func uiInventoryIdentifyWindow() *gui.Window {
-	return (*gui.Window)(unsafe.Pointer(uintptr(C.dword_5d4594_1062476)))
+	return (*gui.Window)(unsafe.Pointer(uintptr(dword_5d4594_1062476)))
 }
 func uiInventoryAlternate() *uiInventoryCell {
-	return (*uiInventoryCell)(unsafe.Pointer(uintptr(C.dword_5d4594_1062480)))
+	return (*uiInventoryCell)(unsafe.Pointer(uintptr(dword_5d4594_1062480)))
 }
 func uiInventorySelectedItem() *client.Drawable {
-	return uiInventoryDrawable(uint32(C.dword_5d4594_1063116))
+	return uiInventoryDrawable(uint32(dword_5d4594_1063116))
 }
 func uiInventoryItemModifier(dr *client.Drawable, index int) *server.ModifierEff {
 	return *(**server.ModifierEff)(unsafe.Add(dr.C(), 432+uintptr(index*4)))
@@ -131,12 +125,12 @@ func uiInventoryHoverText(p image.Point) *uint16 {
 		col, row = (p.Y-13)/50, 20
 	} else if uiInventoryHitRect(p, 136352) {
 		col = (p.X - 314) / 50
-		row = (p.Y + int(C.dword_5d4594_1062512) - 13) / 50
+		row = (p.Y + int(dword_5d4594_1062512) - 13) / 50
 	} else {
 		return nil
 	}
-	C.dword_5d4594_1049796_inventory_click_column_index = C.uint32_t(col)
-	C.dword_5d4594_1049800_inventory_click_row_index = C.uint32_t(row)
+	dword_5d4594_1049796_inventory_click_column_index = C.uint32_t(col)
+	dword_5d4594_1049800_inventory_click_row_index = C.uint32_t(row)
 	if col >= 0 && col < 4 && row >= 0 && row < 21 {
 		cell := &uiInventoryGrid()[col*21+row]
 		if cell.Count != 0 {
@@ -180,7 +174,7 @@ func nox_xxx_inventoryNameSignInit_4671E0() C.int {
 	p := uiMeterPlayer()
 	level := 0
 	if noxflags.HasGame(4096) || questRuntimeWord(1556160) != 0 || questRuntimeWord(1556164) != 0 {
-		level = int(min(uint32(C.dword_5d4594_1049844), 10))
+		level = int(min(uint32(dword_5d4594_1049844), 10))
 	} else if p != nil {
 		level = int(*(*int8)(unsafe.Add(p, 3684)))
 	}
@@ -199,27 +193,27 @@ func sub_467750(code C.int, status C.char) C.int {
 			if old := uiInventoryAlternate(); old != nil {
 				old.Alternate = 0
 			}
-			C.dword_5d4594_1062480 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(found.Cell)))
+			dword_5d4594_1062480 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(found.Cell)))
 			found.Cell.Alternate = 1
 			return 1
 		}
 	} else if old := uiInventoryAlternate(); old != nil {
 		old.Alternate = 0
-		C.dword_5d4594_1062480 = 0
+		dword_5d4594_1062480 = 0
 	}
 	if status != 0 {
 		if status != 1 {
 			return 0
 		}
 		Nox_xxx_printCentered_445490(uiInventoryText("Weapon2CantUse"))
-		if C.dword_5d4594_1062484 == 0 {
+		if dword_5d4594_1062484 == 0 {
 			return 0
 		}
-		if found := uiInventoryFindCode(uint32(C.dword_5d4594_1062484)); found != nil {
+		if found := uiInventoryFindCode(uint32(dword_5d4594_1062484)); found != nil {
 			uiInventorySetAlternate(found.Cell)
 			return 0
 		}
 	}
-	C.dword_5d4594_1062484 = 0
+	dword_5d4594_1062484 = 0
 	return 0
 }

@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_3484;
 extern int nox_server_gameSettingsUpdated;
 */
 import "C"
@@ -14,17 +13,17 @@ import (
 )
 
 func serverConfigFlagsSet(v int32) int32 {
-	if uint32(C.dword_5d4594_3484) != uint32(v) {
-		C.dword_5d4594_3484 = C.uint32_t(v)
+	if uint32(dword_5d4594_3484) != uint32(v) {
+		dword_5d4594_3484 = C.uint32_t(v)
 		serverConfigUpdatedSet()
 	}
 	return v
 }
-func serverConfigFlagsGet() int32 { return int32(C.dword_5d4594_3484) }
+func serverConfigFlagsGet() int32 { return int32(dword_5d4594_3484) }
 func serverConfigFlagsAdd(v int32) int32 {
 	result := v & serverConfigFlagsGet()
 	if result != v {
-		C.dword_5d4594_3484 |= C.uint32_t(v)
+		dword_5d4594_3484 |= C.uint32_t(v)
 		result = int32(bool2int(noxflags.HasGame(1)))
 		if result != 0 && v&0x2000 != 0 {
 			result = int32(gameplayReportResetAll())
@@ -37,13 +36,13 @@ func serverConfigFlagsRemove(v int32) int32 {
 	result := v
 	if serverConfigFlagsGet()&v != 0 {
 		result = ^v
-		C.dword_5d4594_3484 &= C.uint32_t(^v)
+		dword_5d4594_3484 &= C.uint32_t(^v)
 		serverConfigUpdatedSet()
 	}
 	return result
 }
 func serverConfigFlagsToggle(v int32) int32 {
-	C.dword_5d4594_3484 ^= C.uint32_t(v)
+	dword_5d4594_3484 ^= C.uint32_t(v)
 	result := int32(bool2int(noxflags.HasGame(1)))
 	if result != 0 && v&0x2000 != 0 {
 		result = serverConfigFlagsGet()

@@ -4,13 +4,7 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t dword_5d4594_1321520;
-extern uint32_t dword_5d4594_1321800;
-extern uint32_t dword_5d4594_1305748;
-extern uint32_t dword_8531A0_2576;
-extern unsigned int nox_player_netCode_85319C;
 extern nox_render_data_t* nox_draw_curDrawData_3799572;
-extern int nox_win_height;
 void sub_4C5050();
 void nox_xxx_wndDraw_49F7F0();
 int sub_49F860();
@@ -30,13 +24,13 @@ type PortTestObjectRenderEnvironment struct{ restore []func() }
 
 func PortTestNewObjectRenderEnvironment(data *noxrender.RenderData) *PortTestObjectRenderEnvironment {
 	e := new(PortTestObjectRenderEnvironment)
-	ghost, count, saved, player, netcode := C.dword_5d4594_1321520, C.dword_5d4594_1321800, C.dword_5d4594_1305748, C.dword_8531A0_2576, C.nox_player_netCode_85319C
-	height, render := C.nox_win_height, C.nox_draw_curDrawData_3799572
+	ghost, count, saved, player, netcode := dword_5d4594_1321520, dword_5d4594_1321800, dword_5d4594_1305748, dword_8531A0_2576, nox_player_netCode_85319C
+	height, render := nox_win_height, C.nox_draw_curDrawData_3799572
 	e.restore = append(e.restore, func() {
-		C.dword_5d4594_1321520, C.dword_5d4594_1321800, C.dword_5d4594_1305748, C.dword_8531A0_2576, C.nox_player_netCode_85319C = ghost, count, saved, player, netcode
-		C.nox_win_height, C.nox_draw_curDrawData_3799572 = height, render
+		dword_5d4594_1321520, dword_5d4594_1321800, dword_5d4594_1305748, dword_8531A0_2576, nox_player_netCode_85319C = ghost, count, saved, player, netcode
+		nox_win_height, C.nox_draw_curDrawData_3799572 = height, render
 	})
-	C.nox_win_height = 96
+	nox_win_height = 96
 	C.nox_draw_curDrawData_3799572 = (*C.nox_render_data_t)(data.C())
 	for _, reg := range [][3]uintptr{{0x587000, 80808, 4}, {0x5D4594, 1305732, 44}, {0x5D4594, 1321512, 16}, {0x5D4594, 1321532, 268}, {0x85B3FC, 956, 4}} {
 		b := unsafe.Slice((*byte)(memmap.PtrOff(reg[0], reg[1])), reg[2])
@@ -54,11 +48,11 @@ func PortTestNewObjectRenderEnvironment(data *noxrender.RenderData) *PortTestObj
 	return e
 }
 func (e *PortTestObjectRenderEnvironment) Reset() {
-	C.dword_5d4594_1321520 = 0x7fffffff
-	C.dword_5d4594_1321800 = 0
-	C.dword_5d4594_1305748 = 0
-	C.dword_8531A0_2576 = 0
-	C.nox_player_netCode_85319C = 7
+	dword_5d4594_1321520 = 0x7fffffff
+	dword_5d4594_1321800 = 0
+	dword_5d4594_1305748 = 0
+	dword_8531A0_2576 = 0
+	nox_player_netCode_85319C = 7
 	for _, reg := range [][3]uintptr{{0x587000, 80808, 4}, {0x5D4594, 1305732, 44}, {0x5D4594, 1321512, 16}, {0x5D4594, 1321532, 268}} {
 		clear(unsafe.Slice((*byte)(memmap.PtrOff(reg[0], reg[1])), reg[2]))
 	}
@@ -68,9 +62,9 @@ func (e *PortTestObjectRenderEnvironment) Restore() {
 		e.restore[i]()
 	}
 }
-func (e *PortTestObjectRenderEnvironment) GhostType(v uint32) { C.dword_5d4594_1321520 = C.uint32_t(v) }
+func (e *PortTestObjectRenderEnvironment) GhostType(v uint32) { dword_5d4594_1321520 = C.uint32_t(v) }
 func (e *PortTestObjectRenderEnvironment) State() []uint32 {
-	out := []uint32{uint32(C.dword_5d4594_1321520), uint32(C.dword_5d4594_1321800), uint32(C.dword_5d4594_1305748), uint32(C.nox_player_netCode_85319C), *memmap.PtrUint32(0x5D4594, 1321512)}
+	out := []uint32{uint32(dword_5d4594_1321520), uint32(dword_5d4594_1321800), uint32(dword_5d4594_1305748), uint32(nox_player_netCode_85319C), *memmap.PtrUint32(0x5D4594, 1321512)}
 	for _, reg := range [][2]uintptr{{1305732, 11}, {1321532, 67}} {
 		out = append(out, unsafe.Slice(memmap.PtrUint32(0x5D4594, reg[0]), reg[1])...)
 	}

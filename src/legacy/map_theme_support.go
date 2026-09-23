@@ -4,7 +4,6 @@ package legacy
 #include <stdlib.h>
 #include <stdint.h>
 #include <time.h>
-extern uint32_t dword_5d4594_2487524;
 */
 import "C"
 import (
@@ -18,7 +17,7 @@ import (
 // map generator consumes them. Numeric conversion and clock retain libc semantics.
 func mapThemeAlloc(n, size uint32) uint32 { return mapRoomRaw(C.calloc(C.size_t(n), C.size_t(size))) }
 func mapThemeFree(p uint32)               { C.free(mapRoomPointer(p)) }
-func mapThemeTemplate() *uint32           { return (*uint32)(unsafe.Pointer(&C.dword_5d4594_2487524)) }
+func mapThemeTemplate() *uint32           { return (*uint32)(unsafe.Pointer(&dword_5d4594_2487524)) }
 func mapThemeInt(s string) int32 {
 	b := append([]byte(s), 0)
 	return int32(C.atoi((*C.char)(unsafe.Pointer(&b[0]))))

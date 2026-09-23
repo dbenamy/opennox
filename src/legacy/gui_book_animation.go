@@ -1,17 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME3_1.h"
-#include "GAME3_2.h"
-#include "GAME4_1.h"
-#include "common__gamemech__pausefx.h"
-extern int nox_win_width;
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -25,9 +13,9 @@ func bookFloat(off uintptr) *float32 { return (*float32)(unsafe.Pointer(bookWord
 func bookNormalizeStep() {
 	geometryNormalize((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&bookVector))))
 	speed := float32(10)
-	if C.nox_win_width < 750 {
+	if nox_win_width < 750 {
 		speed = 6
-	} else if C.nox_win_width < 1000 {
+	} else if nox_win_width < 1000 {
 		speed = 8
 	}
 	bookVector[0] *= speed

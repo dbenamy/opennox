@@ -3,9 +3,6 @@ package legacy
 /*
 #include "defs.h"
 #include "GAME1_1.h"
-extern uint32_t nox_color_white_2523948, nox_color_yellow_2589772;
-extern uint32_t nox_color_black_2650656, nox_color_blue_2650684, nox_color_violet_2598268;
-extern uint32_t dword_8531A0_2572;
 */
 import "C"
 import (
@@ -67,7 +64,7 @@ func summonDraw(w *gui.Window) int {
 		x, y := pos.X+38*int(s.X)+2, pos.Y+38*int(s.Y)+2
 		width, height := 38*ww-4, 38*hh-4
 		if s.Flash != 0 {
-			r.Data().SetColor2(noxcolor.RGBA5551(C.nox_color_yellow_2589772))
+			r.Data().SetColor2(noxcolor.RGBA5551(nox_color_yellow_2589772))
 			s.Flash = 0
 			r.DrawRectFilledOpaque(x, y, width, height, r.Data().Color2())
 		} else if img := summonIcon(int(s.Type)); img != 0 {
@@ -83,9 +80,9 @@ func summonDraw(w *gui.Window) int {
 			if max != 0 {
 				filled = height * cur / max
 			}
-			bg, fg := uint32(C.nox_color_violet_2598268), memmap.Uint32(0x85B3FC, 940)
+			bg, fg := uint32(nox_color_violet_2598268), memmap.Uint32(0x85B3FC, 940)
 			if alt {
-				bg, fg = memmap.Uint32(0x85B3FC, 984), uint32(C.dword_8531A0_2572)
+				bg, fg = memmap.Uint32(0x85B3FC, 984), uint32(dword_8531A0_2572)
 			}
 			r.Data().SetColor2(noxcolor.RGBA5551(bg))
 			r.DrawRectFilledOpaque(width+x-2, y, 2, height, r.Data().Color2())
@@ -143,7 +140,7 @@ func summonDrawMenu(w *gui.Window) int {
 	x := int((*summonMenuWidth()-uint32(size.X))/2) + 1
 	pos = pos.Add(image.Pt(x, 3))
 	if summonPointIn(w, mouse) {
-		summonOutline(pos, uint32(C.nox_color_yellow_2589772), uint32(C.nox_color_black_2650656), text)
+		summonOutline(pos, uint32(nox_color_yellow_2589772), uint32(nox_color_black_2650656), text)
 		last := memmap.PtrUint32(0x587000, 184552)
 		if command != *last {
 			*last = command
@@ -154,18 +151,18 @@ func summonDrawMenu(w *gui.Window) int {
 	var fg uint32
 	if selected != 0 {
 		if summonMobile((*summonRecord)(unsafe.Pointer(uintptr(selected)))) != 0 || command != 4 && command != 5 {
-			fg = uint32(C.nox_color_white_2523948)
+			fg = uint32(nox_color_white_2523948)
 		} else {
 			fg = memmap.Uint32(0x85B3FC, 956)
 		}
 	} else {
 		if command != 4 && command != 5 || summonAnyMobile() != 0 {
-			fg = uint32(C.nox_color_blue_2650684)
+			fg = uint32(nox_color_blue_2650684)
 		} else {
 			fg = memmap.Uint32(0x85B3FC, 956)
 		}
 	}
-	summonOutline(pos, fg, uint32(C.nox_color_black_2650656), text)
+	summonOutline(pos, fg, uint32(nox_color_black_2650656), text)
 	return 1
 }
 

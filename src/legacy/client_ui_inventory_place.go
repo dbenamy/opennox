@@ -6,8 +6,6 @@ package legacy
 #include "GAME1_2.h"
 #include "GAME2.h"
 #include "client__gui__guiinv.h"
-extern uint32_t dword_5d4594_1049796_inventory_click_column_index, dword_5d4594_1049800_inventory_click_row_index;
-extern uint32_t dword_5d4594_1062480, dword_5d4594_1062492;
 */
 import "C"
 
@@ -67,11 +65,11 @@ func sub_4649B0(v, col, row C.int) C.int {
 	return C.int(uiInventoryPlace(uiInventoryDrawable(uint32(v)), int(col), int(row)))
 }
 func uiInventorySetClick(col, row int) {
-	C.dword_5d4594_1049796_inventory_click_column_index = C.uint32_t(col)
-	C.dword_5d4594_1049800_inventory_click_row_index = C.uint32_t(row)
+	dword_5d4594_1049796_inventory_click_column_index = C.uint32_t(col)
+	dword_5d4594_1049800_inventory_click_row_index = C.uint32_t(row)
 }
 func uiInventoryDragCopy() {
-	index := int(C.dword_5d4594_1049800_inventory_click_row_index) + 21*int(C.dword_5d4594_1049796_inventory_click_column_index)
+	index := int(dword_5d4594_1049800_inventory_click_row_index) + 21*int(dword_5d4594_1049796_inventory_click_column_index)
 	cell := &uiInventoryGrid()[index]
 	if cell.Count == 0 {
 		return
@@ -130,9 +128,9 @@ func uiInventoryAlterWeapon() {
 	if C.int(geometryRectInt((*[2]int32)(unsafe.Pointer(memmap.PtrOff(0x5D4594, 1062572))), (*[4]int32)(unsafe.Pointer(memmap.PtrOff(0x587000, 136336))))) == 1 {
 		Nox_xxx_cursorSetDraggedItem_477690(nil)
 	}
-	alt := uiInventoryCellRef(uint32(C.dword_5d4594_1062480))
+	alt := uiInventoryCellRef(uint32(dword_5d4594_1062480))
 	dequip := func(dr *client.Drawable) {
-		C.dword_5d4594_1062492 = C.uint32_t(uiInventoryPointer(dr.C()))
+		dword_5d4594_1062492 = C.uint32_t(uiInventoryPointer(dr.C()))
 		uiInventoryDequipRequest(dr)
 		audioEventPlay(895, 100, 0, 0)
 	}

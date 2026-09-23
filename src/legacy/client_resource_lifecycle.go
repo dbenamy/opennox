@@ -2,9 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_815748, dword_5d4594_816412;
-extern uint32_t nox_color_white_2523948, nox_color_black_2650656;
-extern int nox_win_width, nox_win_height;
 */
 import "C"
 
@@ -23,10 +20,10 @@ func clientFrameSample() {
 	*memmap.PtrUint64(0x5D4594, 815220+8*uintptr(uint32(*cursor))) = now - *last
 	*cursor = (*cursor + 1) % 60
 	*last = now
-	C.dword_5d4594_815748++
+	dword_5d4594_815748++
 }
 func clientFrameAverage() {
-	n := min(int32(C.dword_5d4594_815748), 60)
+	n := min(int32(dword_5d4594_815748), 60)
 	average := uint64(33)
 	if n > 10 {
 		var sum uint64
@@ -39,18 +36,18 @@ func clientFrameAverage() {
 }
 func clientModalWindow(command int) {
 	if command != 0 {
-		win := GetClient().Cli().GUI.NewWindowRaw(nil, 552, 0, 0, int(C.nox_win_width), int(C.nox_win_height), nil)
-		C.dword_5d4594_816412 = C.uint32_t(uintptr(unsafe.Pointer(win)))
-		win.DrawData().BgColorVal = uint32(C.nox_color_black_2650656)
-	} else if C.dword_5d4594_816412 != 0 {
-		win := (*gui.Window)(unsafe.Pointer(uintptr(C.dword_5d4594_816412)))
+		win := GetClient().Cli().GUI.NewWindowRaw(nil, 552, 0, 0, int(nox_win_width), int(nox_win_height), nil)
+		dword_5d4594_816412 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+		win.DrawData().BgColorVal = uint32(nox_color_black_2650656)
+	} else if dword_5d4594_816412 != 0 {
+		win := (*gui.Window)(unsafe.Pointer(uintptr(dword_5d4594_816412)))
 		win.Destroy()
-		C.dword_5d4594_816412 = 0
+		dword_5d4594_816412 = 0
 	}
 }
 func clientPlayerColors(pl *server.Player) {
 	pl.InitColors()
-	pl.Colors.UnkColor = uint32(C.nox_color_white_2523948)
+	pl.Colors.UnkColor = uint32(nox_color_white_2523948)
 }
 func clientAllPlayerColors() {
 	players := &GetServer().S().Players

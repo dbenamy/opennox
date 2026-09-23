@@ -1,13 +1,7 @@
 package legacy
 
-/*
-#include <stdint.h>
-extern int nox_win_width,nox_win_height;
-*/
-import "C"
-
 func chatBubblePlace(rect *[4]int32, arrow *uint32) {
-	w, h := int32(C.nox_win_width), int32(C.nox_win_height)
+	w, h := int32(nox_win_width), int32(nox_win_height)
 	if rect[0] < 0 || rect[1] < 0 || rect[2] > w || rect[3] > h {
 		*arrow = 0
 	}
@@ -37,7 +31,7 @@ func chatBubblePlace(rect *[4]int32, arrow *uint32) {
 	}
 }
 func chatBubbleRegion(x, y int32) int32 {
-	w, h := int32(C.nox_win_width), int32(C.nox_win_height)
+	w, h := int32(nox_win_width), int32(nox_win_height)
 	var region int32
 	if x < w/3 {
 		region = 16

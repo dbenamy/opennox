@@ -3,24 +3,6 @@ package legacy
 /*
 #include "defs.h"
 extern void* nox_xxx_aClosewoodengat_587000_133480;
-extern uint32_t dword_8531A0_2576;
-extern uint32_t dword_5d4594_1047548;
-extern uint32_t dword_5d4594_1047552;
-extern uint32_t dword_5d4594_1047932;
-extern uint32_t dword_5d4594_1047936;
-extern uint32_t dword_5d4594_1049484;
-extern uint32_t dword_5d4594_1049496;
-extern uint32_t dword_5d4594_1049500;
-extern uint32_t dword_5d4594_1049504;
-extern uint32_t dword_5d4594_1049508;
-extern uint32_t dword_5d4594_1049512;
-extern uint32_t dword_5d4594_1049516;
-extern uint32_t dword_5d4594_1049520;
-extern uint32_t dword_5d4594_1049524;
-extern uint32_t dword_5d4594_1049532;
-extern uint32_t dword_5d4594_1049536;
-extern uint32_t dword_5d4594_1049692;
-extern uint32_t dword_5d4594_1049696;
 */
 import "C"
 import (
@@ -57,43 +39,43 @@ func quickbarMain() *quickbarRecord {
 	return (*quickbarRecord)(C.nox_xxx_aClosewoodengat_587000_133480)
 }
 func quickbarAt(off uintptr) *quickbarRecord { return (*quickbarRecord)(memmap.PtrOff(0x5D4594, off)) }
-func quickbarPlayer() uint32                 { return uint32(C.dword_8531A0_2576) }
+func quickbarPlayer() uint32                 { return uint32(dword_8531A0_2576) }
 func quickbarWord(off uintptr) *uint32 {
 	switch off {
 	case 1047548:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047548))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1047548))
 	case 1047552:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047552))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1047552))
 	case 1047932:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047932))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1047932))
 	case 1047936:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1047936))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1047936))
 	case 1049484:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049484))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1049484))
 	case 1049496:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049496))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1049496))
 	case 1049500:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049500))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1049500))
 	case 1049504:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049504))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1049504))
 	case 1049508:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049508))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1049508))
 	case 1049512:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049512))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1049512))
 	case 1049516:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049516))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1049516))
 	case 1049520:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049520))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1049520))
 	case 1049524:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049524))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1049524))
 	case 1049532:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049532))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1049532))
 	case 1049536:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049536))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1049536))
 	case 1049692:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049692))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1049692))
 	case 1049696:
-		return (*uint32)(unsafe.Pointer(&C.dword_5d4594_1049696))
+		return (*uint32)(unsafe.Pointer(&dword_5d4594_1049696))
 	}
 	return memmap.PtrUint32(0x5D4594, off)
 }

@@ -2,9 +2,6 @@ package legacy
 
 /*
 #include <stdint.h>
-extern uint32_t dword_5d4594_1313804;
-extern uint32_t dword_5d4594_1313816;
-extern uint32_t nox_color_white_2523948;
 */
 import "C"
 
@@ -23,10 +20,10 @@ func particleRect(pos image.Point, size int) {
 	r.DrawRectFilledOpaque(pos.X, pos.Y, size, size, r.Data().Color2())
 }
 func particleMagicDraw(vp *noxrender.Viewport, dr *client.Drawable, missile bool) int {
-	if C.dword_5d4594_1313804 == 0 {
+	if dword_5d4594_1313804 == 0 {
 		*effectMapped(1313808) = particleRGB(0, 200, 255)
 		*effectMapped(1313812) = particleRGB(255, 255, 50)
-		C.dword_5d4594_1313804 = 1
+		dword_5d4594_1313804 = 1
 	}
 	pos := effectScreen(vp, dr)
 	if !effectInside(vp, pos, 10) {
@@ -38,7 +35,7 @@ func particleMagicDraw(vp *noxrender.Viewport, dr *client.Drawable, missile bool
 		color = *effectMapped(1313812)
 	}
 	effectGlow(pos, color, 2*size+1, (size>>1)+3)
-	effectColor(uint32(C.nox_color_white_2523948))
+	effectColor(uint32(nox_color_white_2523948))
 	particleRect(pos.Sub(image.Pt(size>>1, size>>1)), size)
 	light := unsafe.Add(dr.C(), 136)
 	if missile {
@@ -212,14 +209,14 @@ func particleSpiderSpit(vp *noxrender.Viewport, dr *client.Drawable) int {
 		effectLine(pos.Add(image.Pt(0, 1)), old.Sub(image.Pt(0, 1)))
 	}
 	particleRect(pos.Sub(image.Pt(1, 1)), 4)
-	effectColor(uint32(C.nox_color_white_2523948))
+	effectColor(uint32(nox_color_white_2523948))
 	effectLine(pos, old)
 	particleRect(pos, 2)
 	return 1
 }
 func particleVortexDraw(vp *noxrender.Viewport, dr *client.Drawable) int {
 	if *effectMapped(1313820) == 0 {
-		C.dword_5d4594_1313816 = C.uint32_t(particleRGB(170, 170, 170))
+		dword_5d4594_1313816 = C.uint32_t(particleRGB(170, 170, 170))
 		*effectMapped(1313820) = 1
 	}
 	center := image.Pt(int(*effectWord(dr, 440)), int(*effectWord(dr, 444)))
@@ -237,8 +234,8 @@ func particleVortexDraw(vp *noxrender.Viewport, dr *client.Drawable) int {
 		effectColor(*effectWord(dr, 436))
 		effectPoint(pos, 3)
 	} else {
-		effectGlow(pos, uint32(C.dword_5d4594_1313816), 2, 4)
-		effectColor(uint32(C.dword_5d4594_1313816))
+		effectGlow(pos, uint32(dword_5d4594_1313816), 2, 4)
+		effectColor(uint32(dword_5d4594_1313816))
 		effectPoint(pos, 2)
 	}
 	speed := int(int8(*effectByte(dr, 449)))
@@ -257,7 +254,7 @@ func particleVortexDraw(vp *noxrender.Viewport, dr *client.Drawable) int {
 	if oldWorld.Y >= center.Y {
 		effectColor(*effectWord(dr, 436))
 	} else {
-		effectColor(uint32(C.dword_5d4594_1313816))
+		effectColor(uint32(dword_5d4594_1313816))
 	}
 	effectLine(pos, old)
 	*effectByte(dr, 448) += *effectByte(dr, 449)

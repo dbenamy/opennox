@@ -6,7 +6,6 @@ package legacy
 #include <string.h>
 #include "GAME4_3.h"
 #include "GAME3_2.h"
-extern uint32_t dword_5d4594_2488652,dword_5d4594_2488656,dword_5d4594_2488660;
 static uint32_t attackTrace[8192];static int attackCount,attackSet;static uint32_t attackOutput;static uint32_t attackFrontMask;
 static void attackReset(int set,uint32_t output){attackFrontMask=255;attackCount=0;attackSet=set;attackOutput=output;}
 static int attackEffect(int m,int it,int target,int actor,int record){
@@ -137,12 +136,12 @@ func (p *portTestShopPools) attackPrepare() func() {
 	restoreState := p.objectStatePrepare()
 	restoreReward := p.rewardPrepare()
 	restoreControls := p.controlsPrepare()
-	oldRange, oldHit, oldTarget := C.dword_5d4594_2488652, C.dword_5d4594_2488656, C.dword_5d4594_2488660
-	C.dword_5d4594_2488652 = C.uint32_t(sp.NearestRange)
-	C.dword_5d4594_2488656 = 0
-	C.dword_5d4594_2488660 = 0
+	oldRange, oldHit, oldTarget := dword_5d4594_2488652, dword_5d4594_2488656, dword_5d4594_2488660
+	dword_5d4594_2488652 = C.uint32_t(sp.NearestRange)
+	dword_5d4594_2488656 = 0
+	dword_5d4594_2488660 = 0
 	return func() {
-		C.dword_5d4594_2488652, C.dword_5d4594_2488656, C.dword_5d4594_2488660 = oldRange, oldHit, oldTarget
+		dword_5d4594_2488652, dword_5d4594_2488656, dword_5d4594_2488660 = oldRange, oldHit, oldTarget
 		restoreControls()
 		restoreReward()
 		restoreState()
@@ -211,7 +210,7 @@ func (p *portTestShopPools) attackItems() {
 			m.AttackPreHit52.Fnc = C.attackEffectPtr()
 		}
 	}
-	C.dword_5d4594_2488660 = C.uint32_t(uintptr(p.temporaryRef(sp.NearestTarget).CObj()))
+	dword_5d4594_2488660 = C.uint32_t(uintptr(p.temporaryRef(sp.NearestTarget).CObj()))
 	p.projectileCollisionItems()
 	p.damageItems()
 	p.objectStateItems()
@@ -243,7 +242,7 @@ func (p *portTestShopPools) attackSnapshot(out []uint32) []uint32 {
 	if p.temporary.world.objectives.attack == nil {
 		return out
 	}
-	out = append(out, uint32(C.dword_5d4594_2488652), uint32(C.dword_5d4594_2488656), p.normalize(uint32(C.dword_5d4594_2488660)), uint32(C.attackN()))
+	out = append(out, uint32(dword_5d4594_2488652), uint32(dword_5d4594_2488656), p.normalize(uint32(dword_5d4594_2488660)), uint32(C.attackN()))
 	for i := 0; i < int(C.attackN()); i++ {
 		out = append(out, p.normalize(uint32(C.attackValue(C.int(i)))))
 	}

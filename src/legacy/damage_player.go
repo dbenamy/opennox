@@ -9,8 +9,6 @@ package legacy
 #include "GAME4.h"
 #include "GAME4_1.h"
 #include "GAME4_3.h"
-extern uint32_t dword_5d4594_1563320;
-extern unsigned int gameex_flags;
 */
 import "C"
 import (
@@ -88,13 +86,13 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 		}
 	}
 	if source != nil {
-		if C.dword_5d4594_1563320 == 0 {
-			C.dword_5d4594_1563320 = C.uint32_t(GetServer().S().Types.IndByID("SmallFist"))
+		if dword_5d4594_1563320 == 0 {
+			dword_5d4594_1563320 = C.uint32_t(GetServer().S().Types.IndByID("SmallFist"))
 			for i, name := range []string{"MediumFist", "LargeFist", "Meteor", "ToxicCloud", "SmallToxicCloud"} {
 				*memmap.PtrUint32(0x5d4594, 1563324+uintptr(i*4)) = uint32(GetServer().S().Types.IndByID(name))
 			}
 		}
-		eligible := uint32(actual.TypeInd) != uint32(C.dword_5d4594_1563320)
+		eligible := uint32(actual.TypeInd) != uint32(dword_5d4594_1563320)
 		end := 3
 		if weapon != nil {
 			end = 5
@@ -112,7 +110,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 		if kind != 15 && eligible && front {
 			state := *(*byte)(unsafe.Add(ud, 88))
 			shield := (player && state == 16 || !player && monsterControlHead(u) == 21) && armor&0x3000000 != 0
-			if !shield && weapons&0x400 == 0 && state == 1 && C.nox_common_mapPlrActionToStateId_4FA2B0(asObjectC(u)) == 45 && armor&0x3000000 != 0 && C.gameex_flags&0x10 != 0 {
+			if !shield && weapons&0x400 == 0 && state == 1 && C.nox_common_mapPlrActionToStateId_4FA2B0(asObjectC(u)) == 45 && armor&0x3000000 != 0 && gameex_flags&0x10 != 0 {
 				shield = true
 			}
 			if shield {
@@ -153,7 +151,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 					return 0
 				}
 				skipGreat := weapons&0x400 != 0 && (actual.ObjClass&1 != 0 || kind == 0 || kind == 11) && !canBlock
-				if player && state == 0 && C.gameex_flags&4 != 0 {
+				if player && state == 0 && gameex_flags&4 != 0 {
 					canBlock = true
 				}
 				if !skipGreat && weapons&0x7ff8000 != 0 && (kind == 0 || kind == 11) && actual.ObjClass&1 == 0 && canBlock {

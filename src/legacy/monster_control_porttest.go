@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-extern unsigned int nox_gameDisableMapDraw_5d4594_2650672;
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/server"
@@ -118,7 +113,7 @@ func PortTestMonsterPending(op string, a, b int32) uint32 {
 	return 0
 }
 func PortTestMonsterChapterOwner() (*uint32, func()) {
-	p := (*uint32)(unsafe.Pointer(&C.nox_gameDisableMapDraw_5d4594_2650672))
+	p := (*uint32)(unsafe.Pointer(&nox_gameDisableMapDraw_5d4594_2650672))
 	old := *p
 	return p, func() { *p = old }
 }

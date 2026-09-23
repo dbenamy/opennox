@@ -4,7 +4,6 @@ package legacy
 
 /*
 #include "GAME5.h"
-extern uint32_t dword_5d4594_1556136;
 */
 import "C"
 import (
@@ -55,7 +54,7 @@ func portTestGeneratorObjectsEnvironment(proxy *portTestRoamOwnerServer) func() 
 	reset, snapshot, freeSpawn := portTestGeneratorSpawnAllocator()
 	st.resetSpawn = reset
 	st.snapshotSpawn = snapshot
-	oldDeath := C.dword_5d4594_1556136
+	oldDeath := dword_5d4594_1556136
 	oldQuest := *memmap.PtrUint32(0x5D4594, 1556120)
 	oldScale := *memmap.PtrUint32(0x587000, 202036)
 	oldCount := *memmap.PtrUint32(0x5D4594, 2386208)
@@ -66,7 +65,7 @@ func portTestGeneratorObjectsEnvironment(proxy *portTestRoamOwnerServer) func() 
 		for i := len(frees) - 1; i >= 0; i-- {
 			frees[i]()
 		}
-		C.dword_5d4594_1556136 = oldDeath
+		dword_5d4594_1556136 = oldDeath
 		*memmap.PtrUint32(0x5D4594, 1556120) = oldQuest
 		*memmap.PtrUint32(0x587000, 202036) = oldScale
 		*memmap.PtrUint32(0x5D4594, 2386208) = oldCount
@@ -172,7 +171,7 @@ func portTestGeneratorObjectsPrepare(proxy *portTestRoamOwnerServer, u *server.O
 		}
 		st.inventory.prepare(st.source, st.destination, *sp.Inventory)
 	}
-	C.dword_5d4594_1556136 = 0x12345678
+	dword_5d4594_1556136 = 0x12345678
 	*memmap.PtrUint32(0x5D4594, 1556120) = sp.QuestState
 	*memmap.PtrUint32(0x587000, 202036) = sp.HealthScale
 	*memmap.PtrUint32(0x5D4594, 2386208) = 0
@@ -229,7 +228,7 @@ func portTestGeneratorObjectsTrace(proxy *portTestRoamOwnerServer, normalize fun
 		}
 		return v
 	}
-	r := &PortTestGeneratorObjectsResult{SpawnPolicy: st.policyResults, PolicyPlayers: st.policyPlayers, Inventory: inventory, Intact: inventory == nil || inventory.Intact, Source: words(st.source.CObj(), 772), Destination: words(st.destination.CObj(), 772), SourceData: words(st.source.UpdateData, 2200), DestinationData: words(st.destination.UpdateData, 2200), DeathFrame: uint32(C.dword_5d4594_1556136), QuestState: *memmap.PtrUint32(0x5D4594, 1556120)}
+	r := &PortTestGeneratorObjectsResult{SpawnPolicy: st.policyResults, PolicyPlayers: st.policyPlayers, Inventory: inventory, Intact: inventory == nil || inventory.Intact, Source: words(st.source.CObj(), 772), Destination: words(st.destination.CObj(), 772), SourceData: words(st.source.UpdateData, 2200), DestinationData: words(st.destination.UpdateData, 2200), DeathFrame: uint32(dword_5d4594_1556136), QuestState: *memmap.PtrUint32(0x5D4594, 1556120)}
 	for _, b := range st.raw {
 		for i := 0; i < 8; i++ {
 			r.Intact = r.Intact && b[i] == 0xa5 && b[len(b)-8+i] == 0x5a

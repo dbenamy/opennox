@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-extern uint32_t nox_color_white_2523948;
-extern int nox_win_height;
-*/
-import "C"
 import (
 	"image"
 	"unsafe"
@@ -17,7 +11,7 @@ import (
 )
 
 func quickbarWhite() {
-	GetClient().R2().Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_white_2523948))
+	GetClient().R2().Data().SetTextColor(noxcolor.RGBA5551(nox_color_white_2523948))
 }
 
 func quickbarKeyLabel(w *gui.Window, _ *gui.WindowData) int {
@@ -174,9 +168,9 @@ func quickbarDrawSlide(_ *gui.Window, _ *gui.WindowData) int {
 	} else if diff > 0 {
 		pos.Y--
 		w.SetPos(pos)
-	} else if *quickbarWord(1049536) > uint32(C.nox_win_height) {
+	} else if *quickbarWord(1049536) > uint32(nox_win_height) {
 		quickbarRevealTrap()
-		*quickbarWord(1049536) = uint32(C.nox_win_height - 74)
+		*quickbarWord(1049536) = uint32(nox_win_height - 74)
 	}
 	return 1
 }

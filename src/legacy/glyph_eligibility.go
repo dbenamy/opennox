@@ -1,8 +1,7 @@
 package legacy
 
 /*
-extern int nox_cheat_allowall;
-*/
+ */
 import "C"
 
 import (
@@ -40,7 +39,7 @@ func glyphItemAllowed(dr *client.Drawable) int {
 	if pl == nil || (dr.TypeIDVal == typ && pl.PlayerClass() != player.Wizard) {
 		return 0
 	}
-	if C.nox_cheat_allowall != 0 {
+	if nox_cheat_allowall != 0 {
 		return 1
 	}
 	// Preserve the observed 386 shift semantics and evaluate before the callback.

@@ -4,8 +4,6 @@ package legacy
 
 /*
 #include "GAME3_3.h"
-extern uint32_t dword_5d4594_1568280,dword_5d4594_1568288;
-extern uint64_t qword_581450_10256;
 static void* rewardFunction(int id){switch(id){
 case 0:return (void*)nox_xxx_unitSparkInit_4F0390;
 case 1:return (void*)nox_xxx_initFrog_4F03B0;
@@ -105,15 +103,15 @@ func (p *portTestShopPools) rewardPrepare() func() {
 	configureSpells, restoreSpells := p.proxy.core.PortTestAISpellDefs()
 	state.configureSpells = configureSpells
 	goldA, goldB := memmap.Uint64(0x581450, 10248), memmap.Uint64(0x581450, 10264)
-	goldC := C.qword_581450_10256
+	goldC := qword_581450_10256
 	constants := blobdata.PortTestRewardGoldConstants()
 	*memmap.PtrUint64(0x581450, 10248) = binary.LittleEndian.Uint64(constants)
-	C.qword_581450_10256 = C.uint64_t(binary.LittleEndian.Uint64(constants[8:]))
+	qword_581450_10256 = C.uint64_t(binary.LittleEndian.Uint64(constants[8:]))
 	*memmap.PtrUint64(0x581450, 10264) = binary.LittleEndian.Uint64(constants[16:])
 	*memmap.PtrUint32(0x5d4594, 2388660) = sp.GeneratorStage
-	oldA, oldB := C.dword_5d4594_1568280, C.dword_5d4594_1568288
-	C.dword_5d4594_1568280 = 0
-	C.dword_5d4594_1568288 = 0
+	oldA, oldB := dword_5d4594_1568280, dword_5d4594_1568288
+	dword_5d4594_1568280 = 0
+	dword_5d4594_1568288 = 0
 	oldStage := memmap.Uint32(0x587000, 202028)
 	*memmap.PtrUint32(0x587000, 202028) = sp.Stage
 	// Mutable reward tables are isolated from other fixture families. Their
@@ -136,13 +134,13 @@ func (p *portTestShopPools) rewardPrepare() func() {
 			*memmap.PtrUint32(0x5d4594, off) = old[i]
 		}
 		*memmap.PtrUint32(0x587000, 202028) = oldStage
-		C.dword_5d4594_1568280, C.dword_5d4594_1568288 = oldA, oldB
+		dword_5d4594_1568280, dword_5d4594_1568288 = oldA, oldB
 		if state.restoreModifier != nil {
 			state.restoreModifier()
 		}
 		*memmap.PtrUint64(0x581450, 10248) = goldA
 		*memmap.PtrUint64(0x581450, 10264) = goldB
-		C.qword_581450_10256 = goldC
+		qword_581450_10256 = goldC
 		restoreSpells()
 		restoreTypes()
 	}
@@ -342,7 +340,7 @@ func (p *portTestShopPools) rewardSnapshot(out []uint32) []uint32 {
 	if st == nil {
 		return out
 	}
-	out = append(out, p.normalize(st.result), uint32(C.dword_5d4594_1568280), uint32(C.dword_5d4594_1568288))
+	out = append(out, p.normalize(st.result), uint32(dword_5d4594_1568280), uint32(dword_5d4594_1568288))
 	for _, off := range rewardGlobalOffsets {
 		out = append(out, p.normalize(memmap.Uint32(0x5d4594, off)))
 	}

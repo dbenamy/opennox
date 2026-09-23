@@ -6,17 +6,8 @@ package legacy
 #include "defs.h"
 #include "GAME3.h"
 extern nox_gui_animation* nox_wnd_xxx_1309740;
-extern uint32_t nox_xxx_normalWndBits_587000_172880;
 int nox_porttest_options_done();
 extern void* dword_5d4594_1309720;
-extern uint32_t dword_5d4594_1309728;
-extern uint32_t dword_5d4594_1309732;
-extern uint32_t dword_5d4594_1309736;
-extern uint32_t dword_5d4594_1309820;
-extern uint32_t dword_5d4594_1309824;
-extern uint32_t dword_5d4594_1309828;
-extern uint32_t dword_5d4594_1309832;
-extern uint32_t dword_5d4594_1309836;
 extern uint32_t dword_587000_126996;
 extern uint32_t dword_587000_122848;
 extern uint32_t dword_587000_93156;
@@ -43,16 +34,16 @@ func PortTestOptionsEvent(menu bool, root *gui.Window, event int, child *gui.Win
 // PortTestOptionsWords isolates live UI/audio globals from their backing blobs.
 func PortTestOptionsWords() (map[int]*uint32, func()) {
 	words := map[int]*uint32{
-		172880:  (*uint32)(unsafe.Pointer(&C.nox_xxx_normalWndBits_587000_172880)),
+		172880:  (*uint32)(unsafe.Pointer(&nox_xxx_normalWndBits_587000_172880)),
 		1309720: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309720)),
-		1309728: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309728)),
-		1309732: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309732)),
-		1309736: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309736)),
-		1309820: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309820)),
-		1309824: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309824)),
-		1309828: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309828)),
-		1309832: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309832)),
-		1309836: (*uint32)(unsafe.Pointer(&C.dword_5d4594_1309836)),
+		1309728: (*uint32)(unsafe.Pointer(&dword_5d4594_1309728)),
+		1309732: (*uint32)(unsafe.Pointer(&dword_5d4594_1309732)),
+		1309736: (*uint32)(unsafe.Pointer(&dword_5d4594_1309736)),
+		1309820: (*uint32)(unsafe.Pointer(&dword_5d4594_1309820)),
+		1309824: (*uint32)(unsafe.Pointer(&dword_5d4594_1309824)),
+		1309828: (*uint32)(unsafe.Pointer(&dword_5d4594_1309828)),
+		1309832: (*uint32)(unsafe.Pointer(&dword_5d4594_1309832)),
+		1309836: (*uint32)(unsafe.Pointer(&dword_5d4594_1309836)),
 		126996:  (*uint32)(unsafe.Pointer(&C.dword_587000_126996)),
 		122848:  (*uint32)(unsafe.Pointer(&C.dword_587000_122848)),
 		93156:   (*uint32)(unsafe.Pointer(&C.dword_587000_93156)),

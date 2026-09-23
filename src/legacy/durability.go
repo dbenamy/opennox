@@ -3,7 +3,6 @@ package legacy
 /*
 #include <stdint.h>
 #include "GAME5_2.h"
-extern uint64_t qword_581450_9544;
 */
 import "C"
 
@@ -22,7 +21,7 @@ func durabilityBand(current, maximum uint16) int {
 	}
 	// The thresholds remain shared with C. Preserve their ordered comparisons,
 	// including equality at half/quarter and nonfinite threshold values.
-	if float64(current) >= float64(maximum)*math.Float64frombits(uint64(C.qword_581450_9544)) {
+	if float64(current) >= float64(maximum)*math.Float64frombits(uint64(qword_581450_9544)) {
 		return 1
 	}
 	if float64(current) < float64(maximum)*memmap.Float64(0x581450, 9608) {

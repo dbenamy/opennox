@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include "GAME3_3.h"
-extern uint32_t dword_5d4594_2386224;
-extern uint32_t dword_5d4594_2386228;
 */
 import "C"
 import (
@@ -75,10 +73,10 @@ func spawnPolicyAdmission(_ *server.Object, pos types.Pointf) int {
 	return 1
 }
 func spawnPolicyMonsterHead() *spawnPolicyMonsterListNode {
-	return (*spawnPolicyMonsterListNode)(unsafe.Pointer(uintptr(C.dword_5d4594_2386224)))
+	return (*spawnPolicyMonsterListNode)(unsafe.Pointer(uintptr(dword_5d4594_2386224)))
 }
 func spawnPolicySetMonsterHead(n *spawnPolicyMonsterListNode) {
-	C.dword_5d4594_2386224 = C.uint32_t(uintptr(unsafe.Pointer(n)))
+	dword_5d4594_2386224 = C.uint32_t(uintptr(unsafe.Pointer(n)))
 }
 func spawnPolicyFindMonster(u *server.Object) *spawnPolicyMonsterListNode {
 	for n := spawnPolicyMonsterHead(); n != nil; n = n.Next {
@@ -92,7 +90,7 @@ func spawnPolicyClearMonsterList() uint32 {
 	for n := spawnPolicyMonsterHead(); n != nil; {
 		next := n.Next
 		spawnPolicyMonsterListClass().FreeObjectFirst(unsafe.Pointer(n))
-		C.dword_5d4594_2386228--
+		dword_5d4594_2386228--
 		n = next
 	}
 	spawnPolicySetMonsterHead(nil)
@@ -127,7 +125,7 @@ func spawnPolicyVisibleCull() uint32 {
 					n.Next.Prev = n
 				}
 				spawnPolicySetMonsterHead(n)
-				C.dword_5d4594_2386228++
+				dword_5d4594_2386228++
 				n.Object = u
 			}
 			n.ClassMask |= uint32(1) << ind
@@ -203,7 +201,7 @@ func spawnPolicyVisibleCull() uint32 {
 						spawnPolicySetMonsterHead(n.Next)
 					}
 					spawnPolicyMonsterListClass().FreeObjectFirst(unsafe.Pointer(n))
-					C.dword_5d4594_2386228--
+					dword_5d4594_2386228--
 					if int32(counters[ind]) <= limit {
 						break
 					}

@@ -6,11 +6,6 @@ package legacy
 #include <stdint.h>
 #include <stdlib.h>
 #include "GAME5_2.h"
-extern uint32_t dword_5d4594_2516344;
-extern uint32_t dword_5d4594_2516352;
-extern uint32_t dword_5d4594_2516348;
-extern uint32_t dword_5d4594_2516328;
-extern uint32_t dword_5d4594_2516356;
 */
 import "C"
 import (
@@ -50,7 +45,7 @@ func portTestRekeyOperation(initial [][2]uint32, key, sum, sequence, swapCount, 
 	core.SetFrame(frame)
 	core.Rand.Logic, core.Rand.Other = prand.New(seed), prand.New(seed+1)
 	GetServer = func() Server { return &portTestRandomServer{core: core} }
-	head, tail, oldKey, oldSum, oldSequence := C.dword_5d4594_2516344, C.dword_5d4594_2516352, C.dword_5d4594_2516348, C.dword_5d4594_2516328, C.dword_5d4594_2516356
+	head, tail, oldKey, oldSum, oldSequence := dword_5d4594_2516344, dword_5d4594_2516352, dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356
 	count := memmap.PtrUint16(0x587000, 311204)
 	oldCount := *count
 	swaps, rekeys := memmap.PtrUint32(0x5D4594, 2516360), memmap.PtrUint32(0x5D4594, 2516364)
@@ -58,14 +53,14 @@ func portTestRekeyOperation(initial [][2]uint32, key, sum, sequence, swapCount, 
 	oldRandom := protectionRandom
 	defer func() {
 		Sub_56F3B0()
-		C.dword_5d4594_2516344, C.dword_5d4594_2516352 = head, tail
-		C.dword_5d4594_2516348, C.dword_5d4594_2516328, C.dword_5d4594_2516356 = oldKey, oldSum, oldSequence
+		dword_5d4594_2516344, dword_5d4594_2516352 = head, tail
+		dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = oldKey, oldSum, oldSequence
 		*count, *swaps, *rekeys = oldCount, oldSwaps, oldRekeys
 		protectionRandom = oldRandom
 		GetServer = oldGet
 	}()
-	C.dword_5d4594_2516344, C.dword_5d4594_2516352 = 0, 0
-	C.dword_5d4594_2516348, C.dword_5d4594_2516328, C.dword_5d4594_2516356 = C.uint(key), C.uint(sum), C.uint(sequence)
+	dword_5d4594_2516344, dword_5d4594_2516352 = 0, 0
+	dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = C.uint(key), C.uint(sum), C.uint(sequence)
 	*count, *swaps, *rekeys = uint16(len(initial)), swapCount, rekeyCount
 	var first, last *protection.Record
 	nodes := make([]*protection.Record, 0, len(initial))
@@ -83,8 +78,8 @@ func portTestRekeyOperation(initial [][2]uint32, key, sum, sequence, swapCount, 
 		last = r
 		nodes = append(nodes, r)
 	}
-	C.dword_5d4594_2516344 = C.uint(uintptr(unsafe.Pointer(first)))
-	C.dword_5d4594_2516352 = C.uint(uintptr(unsafe.Pointer(last)))
+	dword_5d4594_2516344 = C.uint(uintptr(unsafe.Pointer(first)))
+	dword_5d4594_2516352 = C.uint(uintptr(unsafe.Pointer(last)))
 	protectionRandom.Seed(floatSeed)
 	beforeRandom := protectionRandom
 	beforeFloat, beforeRange := portTestRandomState(protectionRandom)
@@ -95,9 +90,9 @@ func portTestRekeyOperation(initial [][2]uint32, key, sum, sequence, swapCount, 
 	out := PortTestRekeySnapshot{
 		Result:             result,
 		ExpectedRandom:     expectedRandom,
-		Sum:                uint32(C.dword_5d4594_2516328),
-		Key:                uint32(C.dword_5d4594_2516348),
-		Sequence:           uint32(C.dword_5d4594_2516356),
+		Sum:                uint32(dword_5d4594_2516328),
+		Key:                uint32(dword_5d4594_2516348),
+		Sequence:           uint32(dword_5d4594_2516356),
 		SwapCount:          *swaps,
 		RekeyCount:         *rekeys,
 		Count:              *count,
@@ -123,10 +118,10 @@ func portTestRekeyOperation(initial [][2]uint32, key, sum, sequence, swapCount, 
 			out.LinksValid = false
 			break
 		}
-		out.Values = append(out.Values, [2]uint32{p.ID ^ uint32(C.dword_5d4594_2516348), p.Value ^ uint32(C.dword_5d4594_2516348)})
+		out.Values = append(out.Values, [2]uint32{p.ID ^ uint32(dword_5d4594_2516348), p.Value ^ uint32(dword_5d4594_2516348)})
 		p = p.Next
 	}
-	out.LinksValid = out.LinksValid && p == nil && len(out.Values) == len(initial) && protectionHead() == first && uint32(uintptr(unsafe.Pointer(last))) == uint32(C.dword_5d4594_2516352)
+	out.LinksValid = out.LinksValid && p == nil && len(out.Values) == len(initial) && protectionHead() == first && uint32(uintptr(unsafe.Pointer(last))) == uint32(dword_5d4594_2516352)
 	out.NodesAndLinksStable = out.LinksValid
 	return out
 }

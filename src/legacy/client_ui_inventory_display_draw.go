@@ -4,10 +4,6 @@ package legacy
 #include "defs.h"
 #include "GAME2_1.h"
 #include "GAME2_2.h"
-extern uint32_t dword_5d4594_1062492, dword_5d4594_1062496, dword_5d4594_1062488;
-extern uint32_t dword_5d4594_1062512, dword_5d4594_1062552;
-extern uint32_t nox_color_white_2523948, nox_color_yellow_2589772, nox_color_blue_2650684;
-extern uint64_t qword_581450_9544;
 */
 import "C"
 
@@ -41,7 +37,7 @@ func sub_4625D0(p *C.uint32_t) C.int {
 	size := w.SizeVal
 	if pos.Y+size.Y > 0 {
 		r := GetClient().R2()
-		r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_white_2523948))
+		r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_white_2523948))
 		if cell := uiInventoryAlternate(); cell != nil && cell.Drawable != nil {
 			uiInventoryDrawItem(cell.Drawable, pos.Add(image.Pt(size.X/2, size.Y/2)))
 		}
@@ -57,7 +53,7 @@ func sub_465D50_draw(p C.int) C.int {
 	pos := uiWindowPosition(w.Parent())
 	if dr := uiInventoryCurrentWeapon(); dr != nil {
 		uiInventoryDrawItem(dr, pos.Add(image.Pt(51, 81)))
-	} else if C.dword_5d4594_1062496 == 0 && C.dword_5d4594_1062492 == 0 {
+	} else if dword_5d4594_1062496 == 0 && dword_5d4594_1062492 == 0 {
 		uiMeterImage(memmap.Uint32(0x5D4594, 1050000), pos.Add(image.Pt(21, 50)))
 	}
 	return 1
@@ -73,7 +69,7 @@ func nox_xxx_inventoryDrawProc_466580(p *C.uint32_t) C.int {
 	}
 	uiMeterImage(uint32(uintptr(img)), pos)
 	r := GetClient().R2()
-	r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_white_2523948))
+	r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_white_2523948))
 	text := GetClient().GetCtrlEvent().Sub_42E8E0_go(keybind.Event(35), 1)
 	r.DrawString(uiInventorySmallFont(), text, pos.Add(image.Pt(19, 102)))
 	return 1
@@ -119,8 +115,8 @@ func nox_xxx_guiDrawInventoryTray_4643B0(ax, ay C.int) C.int {
 	r := GetClient().R2()
 	small := uiInventorySmallFont()
 	uiMeterImage(memmap.Uint32(0x5D4594, 1049928), image.Pt(x, top))
-	text := strconv.FormatInt(int64(int32(C.dword_5d4594_1062552)), 10)
-	r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_yellow_2589772))
+	text := strconv.FormatInt(int64(int32(dword_5d4594_1062552)), 10)
+	r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_yellow_2589772))
 	width := r.GetStringSizeWrapped(small, text, 0).X
 	r.DrawString(small, text, image.Pt(x-width+43, top+36))
 	if uiInventoryMode() == 5 {
@@ -129,7 +125,7 @@ func nox_xxx_guiDrawInventoryTray_4643B0(ax, ay C.int) C.int {
 	if C.sub_473670() != 0 {
 		uiMeterImage(memmap.Uint32(0x5D4594, 1049936), image.Pt(x, top+100))
 	}
-	y := top - int(C.dword_5d4594_1062512)
+	y := top - int(dword_5d4594_1062512)
 	for row := 0; row < 20; row++ {
 		if y > top-50 {
 			uiMeterImage(memmap.Uint32(0x5D4594, 1049916+uintptr(row%3)*4), image.Pt(x+60, y))
@@ -149,8 +145,8 @@ func nox_xxx_guiDrawInventoryTray_4643B0(ax, ay C.int) C.int {
 				if float64(current) < float64(maximum)*memmap.Float64(0x581450, 9608) {
 					color = memmap.Uint32(0x85B3FC, 940)
 					shade = true
-				} else if float64(current) < float64(maximum)*math.Float64frombits(uint64(C.qword_581450_9544)) {
-					color = uint32(C.nox_color_yellow_2589772)
+				} else if float64(current) < float64(maximum)*math.Float64frombits(uint64(qword_581450_9544)) {
+					color = uint32(nox_color_yellow_2589772)
 					shade = true
 				}
 				if shade && color != 0x80000000 {
@@ -163,7 +159,7 @@ func nox_xxx_guiDrawInventoryTray_4643B0(ax, ay C.int) C.int {
 					decoration = 1049964
 				} else if cell.Alternate != 0 {
 					decoration = 1049968
-				} else if cell.Codes[0] == uint32(C.dword_5d4594_1062488) {
+				} else if cell.Codes[0] == uint32(dword_5d4594_1062488) {
 					if alt := uiInventoryAlternate(); alt != nil && alt.Drawable != nil && uint32(alt.Drawable.Class())&0x1000000 != 0 && uint32(alt.Drawable.SubClass())&12 != 0 {
 						decoration = 1049968
 					}
@@ -182,12 +178,12 @@ func nox_xxx_guiDrawInventoryTray_4643B0(ax, ay C.int) C.int {
 					}
 				}
 				if cell.Count > 1 {
-					r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_white_2523948))
+					r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_white_2523948))
 					r.DrawString(small, strconv.Itoa(int(cell.Count)), image.Pt(left+6, y+6))
 				}
 				if uint32(dr.Class())&0x13001000 != 0 && int16(charges) >= 0 {
 					text = strconv.Itoa(int(int16(charges)))
-					r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_blue_2650684))
+					r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_blue_2650684))
 					width = r.GetStringSizeWrapped(small, text, 0).X
 					r.DrawString(small, text, image.Pt(left-width+44, y+6))
 				}

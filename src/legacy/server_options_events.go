@@ -6,7 +6,6 @@ package legacy
 #include "GAME2.h"
 #include "GAME3.h"
 #include "GAME3_1.h"
-extern uint32_t nox_color_white_2523948;
 */
 import "C"
 import (
@@ -213,7 +212,7 @@ func serverOptionsEvent(_ *gui.Window, event int, arg uintptr, value int) int {
 	}
 	if uint16(arg) == 1 {
 		if value == 10101 {
-			child.DrawData().TextColorVal = uint32(C.nox_color_white_2523948)
+			child.DrawData().TextColorVal = uint32(nox_color_white_2523948)
 		}
 		return 1
 	}

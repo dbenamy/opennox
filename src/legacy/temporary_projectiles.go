@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-extern uint64_t qword_581450_10176;
-*/
-import "C"
 import (
 	"github.com/opennox/libs/object"
 	"github.com/opennox/libs/spell"
@@ -135,7 +130,7 @@ func temporarySpellFly(u *server.Object) {
 		*target = core.Nox_xxx_spellFlySearchTarget(nil, u, core.Spells.Flags(spell.ID(*equipmentWord(ud, 12))), 600, 0, *temporaryRefWord(ud, 0))
 		u.Field34 = core.Frame()
 	}
-	epsilon := math.Float64frombits(uint64(C.qword_581450_10176))
+	epsilon := math.Float64frombits(uint64(qword_581450_10176))
 	if t := *target; t != nil {
 		x := float32(float64(t.PosVec.X) - float64(u.PosVec.X))
 		yd := float64(t.PosVec.Y) - float64(u.PosVec.Y)
@@ -291,7 +286,7 @@ func temporaryChakram(u *server.Object) {
 				x := float64(*temporaryFloat(ud, 16)) - float64(u.PosVec.X)
 				yd := float64(*temporaryFloat(ud, 20)) - float64(u.PosVec.Y)
 				y := float32(yd)
-				length := float32(math.Sqrt(yd*float64(y)+x*x) + math.Float64frombits(uint64(C.qword_581450_10176)))
+				length := float32(math.Sqrt(yd*float64(y)+x*x) + math.Float64frombits(uint64(qword_581450_10176)))
 				u.VelVec.X = float32(x * float64(u.SpeedCur) / float64(length))
 				u.VelVec.Y = float32(float64(y) * float64(u.SpeedCur) / float64(length))
 			}

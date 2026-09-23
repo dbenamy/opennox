@@ -4,8 +4,6 @@ package legacy
 
 /*
 #include "GAME2_3.h"
-extern int nox_win_width, nox_win_height;
-extern uint32_t nox_color_white_2523948;
 */
 import "C"
 import (
@@ -54,7 +52,7 @@ func PortTestChatBubbleShift(mask byte, a, b unsafe.Pointer) [2]int32 {
 }
 
 func PortTestChatBubbleRenderGlobals() (map[string]*uint32, func()) {
-	words := map[string]*uint32{"width": (*uint32)(unsafe.Pointer(&C.nox_win_width)), "height": (*uint32)(unsafe.Pointer(&C.nox_win_height)), "white": (*uint32)(unsafe.Pointer(&C.nox_color_white_2523948))}
+	words := map[string]*uint32{"width": (*uint32)(unsafe.Pointer(&nox_win_width)), "height": (*uint32)(unsafe.Pointer(&nox_win_height)), "white": (*uint32)(unsafe.Pointer(&nox_color_white_2523948))}
 	old := make(map[string]uint32)
 	for k, p := range words {
 		old[k] = *p

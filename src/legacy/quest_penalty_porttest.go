@@ -4,8 +4,6 @@ package legacy
 
 /*
 #include "GAME5.h"
-extern uint32_t dword_5d4594_2491676;
-extern unsigned int gameex_flags;
 */
 import "C"
 import (
@@ -69,8 +67,8 @@ func portTestPenaltyEnvironment(proxy *portTestRoamOwnerServer) func() {
 	for i, o := range off {
 		saved[i] = *memmap.PtrUint32(0x5D4594, o)
 	}
-	diamond, gameex := C.dword_5d4594_2491676, C.gameex_flags
-	C.gameex_flags = 0
+	diamond, gameex := dword_5d4594_2491676, gameex_flags
+	gameex_flags = 0
 	// Controlled eligibility records fit well inside the shipped table regions.
 	regions := []struct {
 		off uintptr
@@ -95,8 +93,8 @@ func portTestPenaltyEnvironment(proxy *portTestRoamOwnerServer) func() {
 		for i, o := range off {
 			*memmap.PtrUint32(0x5D4594, o) = saved[i]
 		}
-		C.dword_5d4594_2491676 = diamond
-		C.gameex_flags = gameex
+		dword_5d4594_2491676 = diamond
+		gameex_flags = gameex
 		freeInit()
 		freeItems()
 		freeServer()
@@ -177,7 +175,7 @@ func portTestPenaltyPrepare(proxy *portTestRoamOwnerServer, sp *PortTestPenaltyS
 			words[j*3+1] = entry[1]
 		}
 	}
-	C.dword_5d4594_2491676 = C.uint32_t(sp.Cache[0])
+	dword_5d4594_2491676 = C.uint32_t(sp.Cache[0])
 	for i, o := range []uintptr{2491680, 2491684, 2386504, 2386508, 2386512} {
 		*memmap.PtrUint32(0x5D4594, o) = sp.Cache[i+1]
 	}
@@ -221,7 +219,7 @@ func portTestPenaltyTrace(proxy *portTestRoamOwnerServer, normalize func(uint32)
 	r.Owner = words(owner.CObj(), int(unsafe.Sizeof(*owner)))
 	r.Data = words(owner.UpdateData, int(unsafe.Sizeof(*data)))
 	r.Player = words(unsafe.Pointer(pl), int(unsafe.Sizeof(*pl)))
-	r.Globals = append(r.Globals, uint32(C.dword_5d4594_2491676))
+	r.Globals = append(r.Globals, uint32(dword_5d4594_2491676))
 	for _, o := range []uintptr{2491680, 2491684, 2386504, 2386508, 2386512} {
 		r.Globals = append(r.Globals, *memmap.PtrUint32(0x5D4594, o))
 	}

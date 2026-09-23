@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME4_3.h"
-extern uint32_t dword_5d4594_2489160;
-*/
-import "C"
-
 import (
 	"bytes"
 	"math"
@@ -79,7 +73,7 @@ func portTestAISpellEnvironment(proxy *portTestRoamOwnerServer) func() {
 	guards := func() bool { return db.Left == left && db.Right == right && hb.Left == left && hb.Right == right }
 	words, freeWords := alloc.Make([]uint32{}, 9)
 	oldList := proxy.core.Spells.Dur.List
-	oldMissile, oldHeal := *memmap.PtrUint32(0x5D4594, 2489156), C.dword_5d4594_2489160
+	oldMissile, oldHeal := *memmap.PtrUint32(0x5D4594, 2489156), dword_5d4594_2489160
 	oldSummon := Nox_xxx_checkSummonedCreaturesLimit_500D70
 	st := &portTestAISpellState{guards: guards, definitions: defs, inversion: inv, duration: duration, health: health, words: words}
 	proxy.spells = st
@@ -91,7 +85,7 @@ func portTestAISpellEnvironment(proxy *portTestRoamOwnerServer) func() {
 		Nox_xxx_checkSummonedCreaturesLimit_500D70 = oldSummon
 		proxy.core.Spells.Dur.List = oldList
 		*memmap.PtrUint32(0x5D4594, 2489156) = oldMissile
-		C.dword_5d4594_2489160 = oldHeal
+		dword_5d4594_2489160 = oldHeal
 		freeWords()
 		freeHealth()
 		freeDur()
@@ -134,7 +128,7 @@ func portTestAISpellPrepare(proxy *portTestRoamOwnerServer, u *server.Object, sp
 	}
 	st.beforeDur = bytes.Clone(unsafe.Slice((*byte)(unsafe.Pointer(&st.duration[0])), 2*int(unsafe.Sizeof(server.DurSpell{}))))
 	*memmap.PtrUint32(0x5D4594, 2489156) = 0x12345678
-	C.dword_5d4594_2489160 = 0
+	dword_5d4594_2489160 = 0
 	for i := range st.words {
 		st.words[i] = 0xa5a5a5a5
 	}
@@ -244,7 +238,7 @@ func portTestAISpellCall(proxy *portTestRoamOwnerServer, u *server.Object, sp *P
 }
 func portTestAISpellTrace(proxy *portTestRoamOwnerServer, u *server.Object, rv uint32, normalize func(uint32) uint32) *PortTestAISpellResult {
 	st := proxy.spells
-	r := &PortTestAISpellResult{Return: rv, Globals: [2]uint32{*memmap.PtrUint32(0x5D4594, 2489156), normalize(uint32(C.dword_5d4594_2489160))}, Output: [2]uint32{st.words[5], st.words[6]}, Intact: true}
+	r := &PortTestAISpellResult{Return: rv, Globals: [2]uint32{*memmap.PtrUint32(0x5D4594, 2489156), normalize(uint32(dword_5d4594_2489160))}, Output: [2]uint32{st.words[5], st.words[6]}, Intact: true}
 	r.Intact = st.guards() && bytes.Equal(st.beforeDur, unsafe.Slice((*byte)(unsafe.Pointer(&st.duration[0])), len(st.beforeDur))) && bytes.Equal(st.beforeHealth, unsafe.Slice((*byte)(unsafe.Pointer(&st.health[0])), len(st.beforeHealth)))
 	for _, i := range []int{0, 4, 7, 8} {
 		r.Intact = r.Intact && st.words[i] == 0xa5a5a5a5

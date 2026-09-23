@@ -5,8 +5,6 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4_1.h"
 #include "GAME1_1.h"
-extern uint64_t qword_581450_10256;
-extern uint32_t dword_5d4594_1568280,dword_5d4594_1568288;
 */
 import "C"
 import (
@@ -61,7 +59,7 @@ func rewardInitGold(u *server.Object) int32 {
 		count++
 	}
 	average := float32(float64(sum) / float64(count))
-	lo := effectsTruncWord(float64(average) * math.Float64frombits(uint64(C.qword_581450_10256)))
+	lo := effectsTruncWord(float64(average) * math.Float64frombits(uint64(qword_581450_10256)))
 	hi := effectsTruncWord(float64(average) * memmap.Float64(0x581450, 10264))
 	extra := rewardRoll(lo, hi) - effectsTruncWord(float64(average)*memmap.Float64(0x581450, 10248))
 	result := rewardRoll(15, 30)
@@ -87,12 +85,12 @@ func rewardInitGenerator(u *server.Object) int32 {
 	return result
 }
 func rewardPlaceAnkh() {
-	if C.dword_5d4594_1568280 == 0 {
-		C.dword_5d4594_1568280 = C.uint32_t(GetServer().S().Types.IndByID("RewardMarker"))
+	if dword_5d4594_1568280 == 0 {
+		dword_5d4594_1568280 = C.uint32_t(GetServer().S().Types.IndByID("RewardMarker"))
 		*memmap.PtrUint32(0x5d4594, 1568284) = uint32(GetServer().S().Types.IndByID("RewardMarkerPlus"))
 	}
 	eligible := func(u *server.Object) bool {
-		return (uint32(u.TypeInd) == uint32(C.dword_5d4594_1568280) || uint32(u.TypeInd) == memmap.Uint32(0x5d4594, 1568284)) && *(*byte)(u.InitData)&0x80 != 0
+		return (uint32(u.TypeInd) == uint32(dword_5d4594_1568280) || uint32(u.TypeInd) == memmap.Uint32(0x5d4594, 1568284)) && *(*byte)(u.InitData)&0x80 != 0
 	}
 	var count int32
 	for u := GetServer().S().Objs.List; u != nil; u = u.ObjNext {
@@ -119,8 +117,8 @@ func rewardPlaceAnkh() {
 func rewardSelectMarkers() {
 	stage := int32(rewardWord(202028))
 	players := int32(questRuntimeCount())
-	if C.dword_5d4594_1568288 == 0 {
-		C.dword_5d4594_1568288 = C.uint32_t(GetServer().S().Types.IndByID("RewardMarker"))
+	if dword_5d4594_1568288 == 0 {
+		dword_5d4594_1568288 = C.uint32_t(GetServer().S().Types.IndByID("RewardMarker"))
 		*memmap.PtrUint32(0x5d4594, 1568292) = uint32(GetServer().S().Types.IndByID("RewardMarkerPlus"))
 		*memmap.PtrUint32(0x5d4594, 1568296) = uint32(GetServer().S().Types.IndByID("RedPotion"))
 	}
@@ -139,7 +137,7 @@ func rewardSelectMarkers() {
 	}
 	var markers, potions []*server.Object
 	for u := GetServer().S().Objs.List; u != nil; u = u.ObjNext {
-		if uint32(u.TypeInd) == uint32(C.dword_5d4594_1568288) {
+		if uint32(u.TypeInd) == uint32(dword_5d4594_1568288) {
 			if *(*byte)(unsafe.Add(u.InitData, 216))&1 == 0 {
 				markers = append(markers, u)
 			}
@@ -151,7 +149,7 @@ func rewardSelectMarkers() {
 		return
 	}
 	for u := GetServer().S().Objs.List; u != nil; u = u.ObjNext {
-		if uint32(u.TypeInd) == uint32(C.dword_5d4594_1568288) {
+		if uint32(u.TypeInd) == uint32(dword_5d4594_1568288) {
 			flags := (*byte)(unsafe.Add(u.InitData, 216))
 			if *flags&1 != 0 {
 				*flags |= 0x80

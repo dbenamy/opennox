@@ -2,9 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t nox_color_white_2523948, nox_color_black_2650656, nox_color_violet_2598268;
-extern uint32_t nox_color_red_2589776, nox_color_blue_2650684, nox_color_cyan_2649820;
-extern uint32_t nox_color_orange_2614256, nox_color_yellow_2589772;
 */
 import "C"
 
@@ -43,10 +40,10 @@ func uiInventoryStats(pos image.Point) {
 		uiMeterSetColor(color)
 		nox_client_drawRectFilledOpaque_49CE30(x, y, width, h)
 	}
-	white := uint32(C.nox_color_white_2523948)
+	white := uint32(nox_color_white_2523948)
 	x, y := pos.X+13, pos.Y+15
 	textColor(white)
-	fill(uint32(C.nox_color_black_2650656), pos.X+11, y, 200, 200)
+	fill(uint32(nox_color_black_2650656), pos.X+11, y, 200, 200)
 	y += 2*height + 3
 	level := int(*(*int8)(unsafe.Add(p, 3684)))
 	text(normal, uiInventoryFormatInts("StatsLevel", level, 0), x, y, 200)
@@ -57,9 +54,9 @@ func uiInventoryStats(pos image.Point) {
 	}
 	y += 2*height + 2
 	text(normal, uiInventoryText("StatsHealth"), x, y, 200)
-	fill(uint32(C.nox_color_violet_2598268), x+60, y, 90, height)
+	fill(uint32(nox_color_violet_2598268), x+60, y, 90, height)
 	width := int(float32(float64(int32(90*attr(2247))) / float64(stats.Health)))
-	fill(uint32(C.nox_color_red_2589776), x+60, y, width, height)
+	fill(uint32(nox_color_red_2589776), x+60, y, width, height)
 	currentHealth := int32(uiMeters()[0].Current)
 	width = int(float32(float64(90*currentHealth) / float64(stats.Health)))
 	fill(memmap.Uint32(0x85B3FC, 940), x+60, y, width, height)
@@ -72,10 +69,10 @@ func uiInventoryStats(pos image.Point) {
 		fill(memmap.Uint32(0x85B3FC, 944), x+60, y, 90, height)
 		width = int(float32(float64(int32(90*attr(2243))) / float64(stats.Mana)))
 		text(normal, uiInventoryText("StatsMana"), x, y, 200)
-		fill(uint32(C.nox_color_blue_2650684), x+60, y, width, height)
+		fill(uint32(nox_color_blue_2650684), x+60, y, width, height)
 		mana := int32(uiMeters()[1].Current)
 		width = int(float32(float64(90*mana) / float64(stats.Mana)))
-		fill(uint32(C.nox_color_cyan_2649820), x+60, y, width, height)
+		fill(uint32(nox_color_cyan_2649820), x+60, y, width, height)
 		s = uiInventoryFormatInts("MinMaxFormat", int(int32(attr(2243))), int(stats.Mana))
 		width = r.GetStringSizeWrapped(small, s, 0).X
 		text(small, s, x-width+193, y+baseline, 200)
@@ -91,10 +88,10 @@ func uiInventoryStats(pos image.Point) {
 	text(small, s, x-width+193, y+baseline, 200)
 	text(small, strconv.Itoa(int(int32(attr(2239)))), x+45, y+baseline, 200)
 	y += height + 1
-	fill(uint32(C.nox_color_orange_2614256), x+60, y, 90, height)
+	fill(uint32(nox_color_orange_2614256), x+60, y, 90, height)
 	width = int(float32(float64(int32(90*attr(2235)))/float64(stats.Speed) + 0.5))
 	text(normal, uiInventoryText("StatsSpeed"), x, y, 200)
-	fill(uint32(C.nox_color_yellow_2589772), x+60, y, width, height)
+	fill(uint32(nox_color_yellow_2589772), x+60, y, width, height)
 	textColor(white)
 	speed := float32(float64(memmap.Float32(0x5D4594, 1063100)) / (float64(warrior.Speed) * 0.000001))
 	if memmap.Uint8(0x5D4594, 1062541)&2 != 0 {
@@ -110,8 +107,8 @@ func uiInventoryStats(pos image.Point) {
 		if width+extra > 90 {
 			extra = 90 - width
 		}
-		fill(uint32(C.nox_color_yellow_2589772), x+60+width, y, extra, height)
-		textColor(uint32(C.nox_color_blue_2650684))
+		fill(uint32(nox_color_yellow_2589772), x+60+width, y, extra, height)
+		textColor(uint32(nox_color_blue_2650684))
 	}
 	adjustment := float32(float64(speed) * 100.0 * 0.011111111)
 	maxPercent := int(float32(float64(stats.Speed) * 100.0 / float64(warrior.Speed)))

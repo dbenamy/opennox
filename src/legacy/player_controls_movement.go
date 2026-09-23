@@ -10,7 +10,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_3.h"
 #include "GAME5.h"
-extern uint32_t dword_5d4594_1568868;
 */
 import "C"
 import (
@@ -22,8 +21,8 @@ import (
 
 func controlFindStart(out *types.Pointf, u *server.Object) {
 	s := GetServer().S()
-	if C.dword_5d4594_1568868 == 0 {
-		C.dword_5d4594_1568868 = C.uint32_t(s.Types.IndByID("PlayerStart"))
+	if dword_5d4594_1568868 == 0 {
+		dword_5d4594_1568868 = C.uint32_t(s.Types.IndByID("PlayerStart"))
 	}
 	if u == nil {
 		return
@@ -36,7 +35,7 @@ func controlFindStart(out *types.Pointf, u *server.Object) {
 	var last, best *server.Object
 	var choices []*server.Object
 	for it := s.Objs.List; it != nil; it = it.ObjNext {
-		if uint32(it.TypeInd) == uint32(C.dword_5d4594_1568868) {
+		if uint32(it.TypeInd) == uint32(dword_5d4594_1568868) {
 			last = it
 			if controlStartEligible(it, team) {
 				choices = append(choices, it)

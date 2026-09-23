@@ -2,7 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-extern uint32_t nox_color_black_2650656;
 */
 import "C"
 
@@ -75,7 +74,7 @@ func interactionDollLayer(typ uint32, pos image.Point, table *uint32, index uint
 }
 func interactionDollDraw(origin image.Point) int16 {
 	pos := origin.Add(image.Pt(11, 15))
-	uiMeterSetColor(uint32(C.nox_color_black_2650656))
+	uiMeterSetColor(uint32(nox_color_black_2650656))
 	nox_client_drawRectFilledOpaque_49CE30(pos.X, pos.Y, 200, 200)
 	active := memmap.Uint32(0x852978, 8)
 	result := int16(active)

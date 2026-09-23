@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-extern uint32_t dword_5d4594_3484;
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/server"
@@ -79,7 +73,7 @@ func PortTestMatchRosterFlagPointers(index byte) (unsafe.Pointer, unsafe.Pointer
 	return matchRosterFlagBase(), matchRosterFlagRecord(index)
 }
 func PortTestMatchRosterGlobals() (map[string]*uint32, func()) {
-	words := map[string]*uint32{"flag-type": &matchRosterFlagType, "remembered-initialized": &matchRosterRememberedInit, "team-cap": &teamRuntimeFlagCount, "server-subflags": (*uint32)(unsafe.Pointer(&C.dword_5d4594_3484))}
+	words := map[string]*uint32{"flag-type": &matchRosterFlagType, "remembered-initialized": &matchRosterRememberedInit, "team-cap": &teamRuntimeFlagCount, "server-subflags": (*uint32)(unsafe.Pointer(&dword_5d4594_3484))}
 	old := map[string]uint32{}
 	for k, p := range words {
 		old[k] = *p

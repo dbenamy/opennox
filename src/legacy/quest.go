@@ -6,7 +6,6 @@ package legacy
 #include "GAME3_2.h"
 #include "GAME3_3.h"
 #include "GAME4_1.h"
-extern unsigned int nox_client_gui_flag_1556112;
 */
 import "C"
 import (

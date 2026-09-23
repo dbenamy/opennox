@@ -3,9 +3,6 @@ package legacy
 /*
 #include "defs.h"
 extern uint8_t** nox_pixbuffer_rows_3798784;
-extern uint32_t dword_5d4594_3807140, dword_5d4594_3807136;
-extern uint32_t dword_5d4594_3807116, dword_5d4594_3807152;
-extern unsigned int nox_client_highResFrontWalls_80820;
 */
 import "C"
 import (
@@ -37,8 +34,8 @@ func wallEdgeDraw(handle noxrender.ImageHandle, pos image.Point, first, second *
 	}
 	pos = pos.Add(image.Pt(int(int32(binary.LittleEndian.Uint32(data[8:]))), int(int32(binary.LittleEndian.Uint32(data[12:])))))
 	data = data[17:]
-	minX, minY := int(int32(C.dword_5d4594_3807140)), int(int32(C.dword_5d4594_3807136))
-	maxX, maxY := int(int32(C.dword_5d4594_3807116)), int(int32(C.dword_5d4594_3807152))
+	minX, minY := int(int32(dword_5d4594_3807140)), int(int32(dword_5d4594_3807136))
+	maxX, maxY := int(int32(dword_5d4594_3807116)), int(int32(dword_5d4594_3807152))
 	if pos.X > maxX || pos.Y > maxY {
 		return
 	}
@@ -111,7 +108,7 @@ func wallEdgeDraw(handle noxrender.ImageHandle, pos image.Point, first, second *
 	dst := unsafe.Add(rows[pos.Y], 2*(pos.X+extra))
 	pitch := Nox_getBackbufferPitch()
 	parity := Sub_473970(image.Pt(0, pos.Y)).Y
-	high := C.nox_client_highResFrontWalls_80820 != 0
+	high := nox_client_highResFrontWalls_80820 != 0
 	var previous unsafe.Pointer
 	copyPixels := 0
 	for y := 0; y < height; y++ {

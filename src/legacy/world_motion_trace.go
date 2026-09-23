@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME5.h"
-extern uint32_t dword_5d4594_2488620;
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -56,7 +50,7 @@ func motionTrace(u *server.Object, target *uint32, normal *types.Pointf) int8 {
 	if !GetServer().S().MapTraceRayAt(start, end, &wallPoint, &grid, 5) {
 		*memmap.PtrUint32(0x5D4594, 2488612) = uint32(grid.X)
 		*memmap.PtrUint32(0x5D4594, 2488616) = uint32(grid.Y)
-		C.dword_5d4594_2488620 = 1
+		dword_5d4594_2488620 = 1
 		ray := [4]float32{start.X, start.Y, wallPoint.X, wallPoint.Y}
 		wall = spatialNormal(&[2]int32{int32(grid.X), int32(grid.Y)}, &ray, &wallNormal) != 0
 		u.NewPos = u.PosVec
@@ -86,7 +80,7 @@ func motionProjectileDispatch(u *server.Object) {
 	if u.ObjFlags&0x60 != 0 {
 		return
 	}
-	C.dword_5d4594_2488620 = 0
+	dword_5d4594_2488620 = 0
 	var raw uint32
 	var normal types.Pointf
 	if motionTrace(u, &raw, &normal) == 0 {
@@ -101,7 +95,7 @@ func motionProjectileDispatch(u *server.Object) {
 		}
 	}
 	ccall.CallVoidPtr3(u.Collide, u.CObj(), unsafe.Pointer(t), unsafe.Pointer(&normal))
-	C.dword_5d4594_2488620 = 0
+	dword_5d4594_2488620 = 0
 	if t != nil {
 		normal.X = -normal.X
 		normal.Y = -normal.Y

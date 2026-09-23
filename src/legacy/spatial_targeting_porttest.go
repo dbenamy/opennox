@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-extern unsigned int nox_player_netCode_85319C;
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -39,7 +35,7 @@ func PortTestSpatialRay(ray *[4]float32) int32                         { return 
 func PortTestSpatialCursorCandidate(u *server.Object, p *types.Pointf) { spatialCursorCandidate(u, p) }
 func PortTestSpatialCursor(u *server.Object) uint32                    { return motionAddress(spatialCursor(u)) }
 func PortTestSpatialGlobals() (map[string]*uint32, func()) {
-	out := map[string]*uint32{"owner": &spatialCursorOwner, "local": (*uint32)(unsafe.Pointer(&C.nox_player_netCode_85319C))}
+	out := map[string]*uint32{"owner": &spatialCursorOwner, "local": (*uint32)(unsafe.Pointer(&nox_player_netCode_85319C))}
 	for name, off := range map[string]uintptr{"chosen": 2491596, "score": 2491600, "polyp": 2491604} {
 		out[name] = memmap.PtrUint32(0x5D4594, off)
 	}

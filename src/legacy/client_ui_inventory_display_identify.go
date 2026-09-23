@@ -4,8 +4,6 @@ package legacy
 #include "defs.h"
 #include "GAME2_2.h"
 #include "GAME3_2.h"
-extern uint32_t dword_5d4594_1063116, dword_5d4594_1063120;
-extern uint32_t nox_color_white_2523948, nox_color_black_2650656;
 */
 import "C"
 
@@ -31,8 +29,8 @@ func uiInventoryListText(w *gui.Window, text string) {
 func uiInventoryIdentify(pos image.Point) uint32 {
 	mouse := GetClient().GetMousePos()
 	r := GetClient().R2()
-	r.Data().SetTextColor(noxcolor.RGBA5551(C.nox_color_white_2523948))
-	uiMeterSetColor(uint32(C.nox_color_black_2650656))
+	r.Data().SetTextColor(noxcolor.RGBA5551(nox_color_white_2523948))
+	uiMeterSetColor(uint32(nox_color_black_2650656))
 	nox_client_drawRectFilledOpaque_49CE30(pos.X+11, pos.Y+15, 200, 200)
 	rel := mouse.Sub(uiWindowPosition(uiInventoryMainWindow()))
 	cursor := 7
@@ -52,24 +50,24 @@ func uiInventoryIdentify(pos image.Point) uint32 {
 	panel := uiInventoryIdentifyWindow()
 	header := unsafe.Slice((*uint16)(memmap.PtrOff(0x5D4594, 1063124)), 256)
 	if dr == nil {
-		if C.dword_5d4594_1063120 != 0 {
-			C.dword_5d4594_1063120 = 0
+		if dword_5d4594_1063120 != 0 {
+			dword_5d4594_1063120 = 0
 			alloc.StrCopyZero16(header, uiInventoryText("thing.db:IdentifyDescription"))
 			return uint32(gui.EventRespInt(panel.ChildByID(9156).Func94(&gui.RawEvent{Event: 16399})))
 		}
 		return 0
 	}
-	if C.dword_5d4594_1063120 == C.dword_5d4594_1063116 {
+	if dword_5d4594_1063120 == dword_5d4594_1063116 {
 		return uiInventoryPointer(dr.C())
 	}
-	C.dword_5d4594_1063120 = C.dword_5d4594_1063116
+	dword_5d4594_1063120 = dword_5d4594_1063116
 	// Localization entries can have random variants. Preserve the original
 	// lookup order and install the prefix before asking for the item name.
 	prefix := uiInventoryText("IdentifyItem") + " "
 	alloc.StrCopyZero16(header, prefix)
 	name := alloc.GoString16(uiItemTooltip(dr))
 	if name == uiInventoryWideAt(1063652) {
-		C.dword_5d4594_1063120 = 0
+		dword_5d4594_1063120 = 0
 	}
 	alloc.StrCopyZero16(header, prefix+name)
 	panel.ChildByID(9151).Func94(&gui.StaticTextSetText{Str: alloc.GoString16(&header[0])})

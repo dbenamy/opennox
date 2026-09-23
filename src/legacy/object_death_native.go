@@ -5,7 +5,6 @@ package legacy
 #include "GAME3_2.h"
 #include "GAME3_3.h"
 #include "server__object__objutil.h"
-extern uint32_t dword_5d4594_2491704;
 */
 import "C"
 import (
@@ -67,7 +66,7 @@ func objectDeathBoulder(u *server.Object) {
 	core.Audio.EventObj(757, u, 0, 0)
 	monsterPointFX(u, 138)
 	n := core.Rand.Logic.IntClamp(20, 30)
-	index := uint32(C.dword_5d4594_2491704)
+	index := uint32(dword_5d4594_2491704)
 	for i := 0; i < n; i++ {
 		name := *memmap.PtrPtr(0x587000, 291512+4*uintptr(index))
 		t := core.NewObjectByTypeID(alloc.GoString((*byte)(name)))
@@ -78,11 +77,11 @@ func objectDeathBoulder(u *server.Object) {
 		Nox_xxx_unitRaise_4E46F0(t, float32(core.Rand.Logic.FloatClamp(10, 70)))
 		t.Field27 = float32(core.Rand.Logic.FloatClamp(-2, 0))
 		t.ObjFlags |= 0x800000
-		t.Field29 = math.Float32bits(float32(*(*byte)(memmap.PtrOff(0x587000, 290328+uintptr(C.dword_5d4594_2491704)))))
+		t.Field29 = math.Float32bits(float32(*(*byte)(memmap.PtrOff(0x587000, 290328+uintptr(dword_5d4594_2491704)))))
 		GetServer().ApplyForce(t, u.PosVec, float64(float32(core.Rand.Logic.FloatClamp(5, 20))))
 		monsterDebrisDecay(t, 45, 75)
-		index = (uint32(C.dword_5d4594_2491704) + 1) % *memmap.PtrUint32(0x587000, 290340)
-		C.dword_5d4594_2491704 = C.uint32_t(index)
+		index = (uint32(dword_5d4594_2491704) + 1) % *memmap.PtrUint32(0x587000, 290340)
+		dword_5d4594_2491704 = C.uint32_t(index)
 	}
 	GetServer().DelayedDelete(u)
 }

@@ -1,9 +1,5 @@
 package legacy
 
-/*
-extern unsigned int nox_player_netCode_85319C;
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -39,7 +35,7 @@ func spatialCursorCandidate(u *server.Object, mouse *types.Pointf) {
 		return
 	}
 	if u.ObjClass&4 != 0 {
-		if u.NetCode == uint32(C.nox_player_netCode_85319C) && noxflags.HasEngine(noxflags.EngineNoRendering) {
+		if u.NetCode == uint32(nox_player_netCode_85319C) && noxflags.HasEngine(noxflags.EngineNoRendering) {
 			return
 		}
 		pl := s.Players.ByID(int(u.NetCode))
