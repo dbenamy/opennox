@@ -1,0 +1,280 @@
+{
+  "status": "qualified typed direct-call baseline",
+  "revision": "a69e1da8ae1905e80d79b2389f4676ace6bcd384",
+  "profiles": {
+    "default": {
+      "reused": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 380,
+        "selected_root_tests": 380,
+        "exit": 0,
+        "started_tests": 380,
+        "completed_tests": 380,
+        "started_root_tests": 380,
+        "completed_root_tests": 380,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 319.04185327887535
+      },
+      "additional": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 110,
+        "selected_root_tests": 110,
+        "exit": 0,
+        "started_tests": 110,
+        "completed_tests": 110,
+        "started_root_tests": 110,
+        "completed_root_tests": 110,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 73.09124603006057
+      },
+      "combined_root_tests": 490
+    },
+    "server": {
+      "reused": {
+        "tags": "porttest,server",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 380,
+        "selected_root_tests": 380,
+        "exit": 0,
+        "started_tests": 380,
+        "completed_tests": 380,
+        "started_root_tests": 380,
+        "completed_root_tests": 380,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 317.705855675973
+      },
+      "additional": {
+        "tags": "porttest,server",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 109,
+        "selected_root_tests": 109,
+        "exit": 0,
+        "started_tests": 109,
+        "completed_tests": 109,
+        "started_root_tests": 109,
+        "completed_root_tests": 109,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 72.00798254203983
+      },
+      "combined_root_tests": 489
+    },
+    "highres": {
+      "reused": {
+        "tags": "porttest,highres",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 380,
+        "selected_root_tests": 380,
+        "exit": 0,
+        "started_tests": 380,
+        "completed_tests": 380,
+        "started_root_tests": 380,
+        "completed_root_tests": 380,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 242.56525260093622
+      },
+      "additional": {
+        "tags": "porttest,highres",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 110,
+        "selected_root_tests": 110,
+        "exit": 0,
+        "started_tests": 110,
+        "completed_tests": 110,
+        "started_root_tests": 110,
+        "completed_root_tests": 110,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 72.59625212382525
+      },
+      "combined_root_tests": 490
+    }
+  },
+  "additional_phase": {
+    "batch": "typed-direct-calls",
+    "phase": "baseline-additional",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/typed-direct-calls-additional-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-typed-direct/baseline-additional/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-typed-direct/baseline-additional/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 73.19070927798748
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/typed-direct-calls-additional-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-typed-direct/baseline-additional/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-typed-direct/baseline-additional/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 72.10620423499495
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/typed-direct-calls-additional-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-typed-direct/baseline-additional/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-typed-direct/baseline-additional/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 72.69957809406333
+      }
+    ],
+    "revision": "a69e1da8ae1905e80d79b2389f4676ace6bcd384",
+    "source_unchanged": true,
+    "wall_seconds": 218.58446133998223,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "source_identity": "Production and tests identical to preceding scalar-direct conversion; all source fingerprints and reused production binary hashes match.",
+  "reused_qualification": "scalar-direct-calls-qualification.json",
+  "reused_pattern": "^Test(AICombat.*|AIMonsterState.*|Attack.*|BalanceGetter.*|ClientMeters.*|Damage.*|Equipment.*|GameplayReports.*|Inventory.*|ObjectDeath.*|ObjectState.*|Objectives.*|PlayerControls.*|PlayerDeath.*|ProjectileCollision.*|ServerBrowser.*|ServerOptions.*|SpawnPolicy.*|Spellbook.*|SpellClassEligibilityABI|SpellEffects.*|SpellLifecycle.*|WorldMotion.*)$",
+  "additional_pattern": "^Test(ClientInventoryWindow.*|ClientInventoryDisplay.*|MatchRoster.*|SustainedSpells.*|Temporary.*)$",
+  "binary_sha256": {
+    "safe": "918b30a98da5694aa557218ecb46845f7cd65963b57b79406ce4027f5b0d7d9d",
+    "opennox": "ea9a35d957a66faf04016f04af723bc69a27666e55634694021e6af64f6dc9bf",
+    "opennox-hd": "c170b800e498f330ac1780a7cef3515eaa0d7cb5333bb15b98dafe7dee1387d6",
+    "opennox-server": "bcf7065591245e100941322522259a27affe774a43a0111022e13c8778cfb6a3"
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79
+}

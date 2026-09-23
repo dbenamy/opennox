@@ -301,6 +301,11 @@ may precede full qualification when their evidence and remaining gates are expli
    Reuse the preceding qualified production baseline when the new baseline changes
    only tests/docs and production source is identical. Record that identity and the
    reused artifacts; always rerun production qualification after the conversion.
+   Reuse a just-qualified affected test selection only when all production/test
+   source fingerprints and relevant environment settings match exactly. Run new
+   owner selections separately, verify discovered-name sets, and require the full
+   combined selection after conversion. Record reused versus newly run evidence;
+   do not infer coverage from a passing package or a matching test count alone.
    Before freezing, audit numeric constants and lookup tables read by the selected
    C functions. Supply shipped data or explicitly controlled values, and check a
    nontrivial result so zero-filled fixture state cannot hide behavior. The quest

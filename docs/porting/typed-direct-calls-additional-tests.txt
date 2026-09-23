@@ -1,0 +1,1 @@
+^Test(ClientInventoryWindow.*|ClientInventoryDisplay.*|MatchRoster.*|SustainedSpells.*|Temporary.*)$
