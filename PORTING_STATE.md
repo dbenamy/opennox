@@ -9,7 +9,7 @@ metric. See [C_LOC.md](docs/porting/C_LOC.md).
 
 ## Current — distinct empty callbacks qualified
 
-Actual-C baseline `ae76f3c8` is committed/pushed. The working conversion replaces
+Actual-C baseline `ae76f3c8` and conversion `dc9692f8` are committed/pushed. The conversion replaces
 ten distinct empty C bodies with Go exports, deleting GAME5_2.c and
 common__object__modifier.c. All 338 frozen cases match; 69/69/69 normal-profile
 consumer roots and 24 safe roots pass with no skips. Safe build/static, three
@@ -35,9 +35,11 @@ qualification evidence. Original C benchmark/captures remain available.
 
 Luna drafted build/port-address-adapters/{draft.patch.txt,README.md}. Primary
 reviewed the exact five substitutions across four files and prepared ignored
-replacements.json, tests.txt.draft, c-batch.json.draft and primary-plan.md. None is
-applied. Run the 38 existing player-control/orchestration roots in three profiles
-with the original getters first, verify unchanged production evidence, then apply
+replacements.json, tests.txt.draft, c-batch.json.draft and primary-plan.md. None of the source substitutions is
+applied. Pipeline3368 JOINED PASS for the installed C baseline manifest: 38 existing player-control/orchestration roots in three profiles
+with the original getters. Finalizer59256 also JOINED PASS after checking unchanged
+whole-source fingerprints and all four production binary hashes. C baseline is
+qualified; finish-c.py is consumed. Commit/push baseline docs, then apply
 and qualify the conversion. No duplicate C oracle or changed golden is needed.
 
 Luna's first coverage report overstated rare-branch and snapshot coverage. Primary

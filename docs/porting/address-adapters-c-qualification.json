@@ -1,0 +1,102 @@
+{
+  "status": "qualified original C address-getter consumer baseline",
+  "revision": "dc9692f8283bd30000b170b5640083e109462c72",
+  "targets": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 38,
+      "selected_root_tests": 38,
+      "exit": 0,
+      "started_tests": 38,
+      "completed_tests": 38,
+      "started_root_tests": 38,
+      "completed_root_tests": 38,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 20.281928564887494
+    },
+    "server": {
+      "tags": "server,porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 38,
+      "selected_root_tests": 38,
+      "exit": 0,
+      "started_tests": 38,
+      "completed_tests": 38,
+      "started_root_tests": 38,
+      "completed_root_tests": 38,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 17.973919542972
+    },
+    "highres": {
+      "tags": "highres,porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 38,
+      "selected_root_tests": 38,
+      "exit": 0,
+      "started_tests": 38,
+      "completed_tests": 38,
+      "started_root_tests": 38,
+      "completed_root_tests": 38,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 17.332531549036503
+    }
+  },
+  "source_manifest_sha256": "011e47d855495eade32f0850b84dace5f32852be1b6996d84cf8dd1aae637046",
+  "production_reused_from": "docs/porting/empty-callbacks-native-qualification.json",
+  "production_qualification_sha256": "727adf4f9af0a4dd02f70b11f9c2a4217eacfd553d1ddbe4efe33d6fe686f616",
+  "reuse_proof": "Exact whole-source fingerprint equality and all four qualified binary hashes verified; no production or fixture source changed.",
+  "production_c": {
+    "files": 1,
+    "lines": 6
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "coverage_limits": [
+    "No forced bot allocation failure.",
+    "No explicit observer bot-identity early return.",
+    "Player actor callback slot is not explicitly serialized by these control fixtures.",
+    "Exact original-to-direct symbol mapping and generated cgo references complement behavioral captures; no copied C getter oracle."
+  ]
+}

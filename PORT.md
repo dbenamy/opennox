@@ -14,6 +14,11 @@
 
 ## Current status
 
+Five pure callback-address getters have a qualified original-C baseline: all
+38 player-control/orchestration roots pass per normal profile. Their replacement
+will reference the same C functions directly from Go; standalone C remains six
+lines. See [ADDRESS_ADAPTERS.md](docs/porting/ADDRESS_ADAPTERS.md).
+
 The ten live empty callback identities now export from Go. All 338 frozen cases,
 69 consumer roots per normal profile and 24 under safe pass, alongside fresh
 production/ABI, exact known-suite comparison and headless creation/save/load.
