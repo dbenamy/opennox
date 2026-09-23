@@ -11,6 +11,14 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 ## Active — formatting C contracts
 
+Standing process: proactively use one GPT-6 Luna helper for suitable bounded
+implementation, caller/audit, test-gap, cleanup-inventory or documentation work.
+The primary owns baseline acceptance, integration, cleanup execution, review and
+qualification. See [Subagent use](PORT.md#subagent-use). Review the process after
+the next two completed batches, then adjust at batch boundaries without a new
+user approval step. Next useful delegation: disk-cleanup inventory while the
+primary prepares the formatting baseline gates. This docs update launches no jobs.
+
 Extension/listing conversion `2390c78d` is committed and pushed. The following
 batch is being scoped under `build/port-final-formatting`. Two new tagged files
 exercise the production C wide formatter through typed varargs, covering numeric

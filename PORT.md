@@ -173,37 +173,70 @@ Batch size is a guide, not a LOC quota or reason to weaken coverage.
 
 ## Subagent use
 
-The user prefers GPT-6 Luna for bounded implementation delegation after a passing
-scalar-string trial, when the primary agent expects it to save total work without
-weakening the result.
-Use the primary agent plus at most one helper by default; avoid an agent fleet.
-Follow the active session's delegation rules and available model choices. This
-plan does not override restrictions on spawning agents.
+The user authorizes proactive delegation to **GPT-6 Luna (`gpt-6-luna`)** for
+suitable work throughout the remaining port. Treat this as the default process to
+try, and adjust it when evidence shows it is not helping. Use the primary agent
+plus **at most one helper** at a time; do not create a parallel agent fleet or
+silently substitute another model if Luna is unavailable.
 
-A useful split has been a small, well-specified Go implementation draft, with the
-primary agent owning the C baseline, tests, review and integration. The recorded
-Terra randomized-insertion trial was accepted without corrections, and the
-integer/byte/word setter draft also passed review. See
-[the insertion report](docs/porting/PROTECTION_INSERT.md) and
-[the setter report](docs/porting/PROTECTION_SET.md). These are successful bounded
-trials, not evidence that every subsystem is equally easy to delegate or that
-subscription savings have been measured. The [Luna scalar trial](docs/porting/LUNA_TRIAL.md)
-passed 655,391 cases against C captures without behavior corrections; keep using
-one bounded helper with primary-owned review and qualification.
+At each batch, identify a substantial, bounded task Luna can own. Delegate it when
+specifying and reviewing the result is likely cheaper than doing it locally.
+Prefer handing over a complete small task rather than dictating every edit or
+having both agents implement the same thing. Keep useful independent work for the
+primary while the helper runs. Do tiny edits locally; there is no delegation quota.
 
-- Delegate an independent, concrete task: a caller/ABI audit, a bounded helper
-  translation against frozen expectations, or a focused review. Give the helper
-  exact scope, ownership rules, relevant files, expected behavior and acceptance
-  checks. Keep useful independent work for the primary agent while it runs.
-- Keep baseline design, ambiguous behavior, shared-state ownership and final
-  qualification with the primary agent. Review the draft against C and the
-  independent contracts; a helper's report alone is not acceptance evidence.
-- Give helpers disjoint files or an ignored draft path. Coordinate all source
-  edits with the no-edits-during-builds rule; no concurrent source mutation while
-  another agent's tests are reading it. The primary agent integrates and commits.
-- Count context transfer, review, corrections and duplicate builds as delegation
-  costs. Stop delegating a task if these outweigh the saved work. Larger connected
-  batches and reused fixtures remain the main way to reduce qualification overhead.
+Good default assignments:
+
+- **Implementation and caller migration:** translate a bounded helper or move an
+  identified set of callers once the behavior, replacement API and acceptance
+  tests are established. Use frozen C expectations for integration.
+- **Reachability and ABI audits:** enumerate callers, callbacks, registrations,
+  preamble references and dependencies; propose removals with inspectable evidence.
+  The primary checks the evidence before retiring code or interfaces.
+- **Independent test-gap review:** inspect C and a proposed conversion for missing
+  boundary cases, ownership issues and signedness/rounding differences. Include
+  focused test drafts where useful. Keep final baseline design with the primary.
+- **Disk-cleanup audits:** inventory obsolete builds, caches and duplicate assets;
+  provide exact paths, sizes, retention reasons and proposed verification steps.
+  The primary reviews and executes cleanup after checking active jobs, open files,
+  symlink targets and required recovery artifacts. Do not let the helper delete
+  files during an audit. Preserve original assets, current evidence and source;
+  use verified deduplication or clearly reproducible obsolete outputs where possible.
+- **Documentation and mechanical checks:** draft batch reports, caller inventories,
+  LOC counts and qualification summaries from completed artifacts. The primary
+  verifies claims against the logs before committing.
+
+Keep ambiguous behavior, architecture/API choices, shared-state ownership,
+baseline acceptance, integration and final qualification with the primary agent.
+A helper's report alone is not acceptance evidence. The primary reviews the code
+against C and independent contracts, runs appropriate checks, and commits/pushes.
+Normal reversible choices remain authorized; delegation does not add a new user
+approval step.
+
+Give each assignment a compact handoff: objective, exact files and ownership,
+relevant baseline/context, required behavior, acceptance checks, prohibited
+mutations, and expected deliverables. Use disjoint files or an ignored draft path.
+Tell the helper which commands it may run; the primary schedules expensive builds
+and tests. Honor the no-source-edits-during-builds rule across both agents. Neither
+agent may alter source consumed by an active build/test; a separate uninstalled
+draft or read-only audit is suitable overlapping work.
+
+Record delegation outcomes briefly in the batch report: task/model, acceptance
+checks, meaningful corrections, missed issues, and whether handoff/review/rework
+appeared worthwhile. Record actual time or usage only when available; do not infer
+subscription savings from a successful test. Reflect after the next two completed
+batches, then at normal batch boundaries without pausing for user approval. If a
+task needs repeated steering, substantial rewrites or duplicate qualification,
+finish it locally and narrow future delegation of that task type. Expand the
+helper's scope gradually when results support it. Keep this section and the
+checkpoint current when changing the process.
+
+Evidence so far: the [Luna scalar trial](docs/porting/LUNA_TRIAL.md) passed all
+655,391 captured cases without behavior corrections; the primary requested one
+readability cleanup. Earlier Terra trials also succeeded for
+[randomized insertion](docs/porting/PROTECTION_INSERT.md) and
+[integer/byte/word setters](docs/porting/PROTECTION_SET.md). These support bounded
+delegation, not blanket trust in every subsystem or measured cost savings.
 
 ## Explaining the work and reporting diagnostics
 
