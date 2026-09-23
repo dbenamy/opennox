@@ -14,6 +14,16 @@
 
 ## Current status
 
+Two typed callback shims now reuse existing shared dispatchers, preserving both
+Go APIs. All 24 forwarding/return cases pass per profile; client consumer tests,
+fresh production/ABI, known-suite and headless creation/save-load checks pass.
+**Standalone C stays zero; production C preamble bodies fall 81→79.** The remaining
+bodies are callback invocation glue. Next: profile the documented MP3 performance
+gap before considering a broader callback representation redesign. See
+[TYPED_CALLBACK_ADAPTERS.md](docs/porting/TYPED_CALLBACK_ADAPTERS.md).
+
+### Earlier checkpoints
+
 Production audio now uses the fully qualified Go MP3 decoder. All 1,246 shipped
 asset observations and historical PCM goldens match unchanged; all decoder
 profiles, production/safe builds, ABI checks, exact known-suite comparison and
@@ -24,8 +34,6 @@ but measured 2.79× slower than C on one mono asset; retain this performance
 review item. Next: deduplicate two typed callback adapters through existing
 shared dispatchers while preserving their Go APIs. See
 [MP3_GO.md](docs/porting/MP3_GO.md).
-
-### Earlier checkpoints
 
 The complete Go MP3 decoder matches2,682 generated C frame calls in544 sequences,
 including PCM, metadata and observable state. All ten test roots pass in four

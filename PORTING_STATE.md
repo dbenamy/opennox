@@ -4,24 +4,46 @@ Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
 **Qualified standalone C remaining: zero physical lines/files**, including test
 references. Headers, C preambles, generated bridges and external libraries are
-outside this metric. There are still 81 production C preamble bodies (76 generic
-callback dispatchers and five typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
+outside this metric. There are still 79 production C preamble bodies (76 generic
+callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current work — typed callback adapter baseline qualified
+## Current — typed callback adapters qualified
 
-Production Go MP3 integration `83dc68ac` is committed/pushed. Luna's bounded
-adapter test draft was reviewed and extended with valid null data-pointer cases,
-server coverage and legacy-package placement. All 24 calls pass in each of
-four profiles against original C shims. Only two porttest-tagged source files
-are added; all production source and four retained binary hashes are unchanged.
-See [TYPED_CALLBACK_ADAPTERS.md](docs/porting/TYPED_CALLBACK_ADAPTERS.md).
-Sessions 37821 (initial draft) and 25710 (expanded four-profile baseline) joined
-PASS. `build/port-callback-adapters/finish-c.py` is CONSUMED. Next: replace the
-draw/object-create local shims with shared dispatchers, preserve APIs, run native
-contracts/consumers and fresh production qualification. Source C stays zero;
-production preamble bodies stay 81 until conversion qualifies.
+Baseline `bc9273d4` is committed/pushed. Conversion preserves `CallDrawFunc` and
+`Nox_call_objectType_new_go` while using shared ccall dispatchers. All 24 ABI
+contracts pass in default/server/highres/safe, including signed return boundaries,
+two draw callbacks and live/null data pointers. All 12 consumer roots pass in
+each client profile without skips. Safe/static, fresh production/ABI, exact full
+suite (304 existing failures; 17 pass/2 fail/32 skip packages), headless character
+creation and save/load pass. Both retired shim names are absent from all four
+binaries. Standalone C stays zero; production preamble bodies fall 81→79.
+See [TYPED_CALLBACK_ADAPTERS.md](docs/porting/TYPED_CALLBACK_ADAPTERS.md) and
+[qualification](docs/porting/typed-callback-adapters-native-qualification.json).
 
-## Current — production Go MP3 integration qualified
+Build sessions 37821,25710 (baseline),27826 (consumer-pattern configuration error),
+30144 (corrected focused checks),51936 (production/scenarios/finalizer) are joined.
+The first consumer pattern had two lines and was rejected before tests executed;
+the corrected final phases all pass. finish-c.py, finish-native.py and scenario
+deduplication scripts are CONSUMED. Artifacts: `build/port-callback-adapters`.
+Check Git log/remote for the conversion commit/push.
+
+The six successful raw frame captures are now losslessly archived (155,043,321
+raw bytes), with restore instructions in
+`build/port-artifact-cleanup/frame-capture-raw-archive-record.json`.
+Twenty old reproducible Go cache archives were removed after exact stat/hash and
+host-process checks (PID1 systemd), recovering 427,778,510 bytes; record:
+`build/port-artifact-cleanup/go-cache-sep20-round1-removed.json`.
+Assets, frozen fixtures and retained binaries remain preserved.
+
+Next: profile the remaining Go MP3 performance gap with the recorded one-asset
+benchmark, then make only evidence-backed, reversible optimizations and retain
+exact numerical/PCM qualification. Remaining C bodies are foreign callback
+invokers; replacing their representation is a separate architecture decision.
+Luna's reviewed tests passed; primary added null-data/server coverage and smaller
+package placement. Luna also reviewed the production diff and prepared cleanup
+inventories; primary caught/fixed an archive partial-progress accounting issue.
+
+## Earlier — production Go MP3 integration qualified
 
 The audio wrapper selects Go; the six-line implementation file and 1,890-line
 minimp3 header are retired. Original capture tools recover the SHA-pinned header

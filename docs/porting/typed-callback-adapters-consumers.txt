@@ -1,0 +1,1 @@
+^(TestClientPresentation(ShieldOwnership|ShieldDraw|DrawableOrder|TransientRays|TurnUndead)|TestObjectCreation(Smoke|AutoSpells|Equipment|Contracts|Cloud|Corpus|Precision))$

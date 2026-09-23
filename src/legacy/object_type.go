@@ -7,12 +7,12 @@ package legacy
 #include "GAME4_3.h"
 #include "GAME5.h"
 
-static void nox_call_objectType_new_go(void (*fnc)(nox_object_t*), nox_object_t* arg1) { fnc(arg1); }
 */
 import "C"
 import (
 	"unsafe"
 
+	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -141,5 +141,5 @@ func Get_nox_xxx_unitInitGold_4F04B0() unsafe.Pointer {
 	return unsafe.Pointer(C.nox_xxx_unitInitGold_4F04B0)
 }
 func Nox_call_objectType_new_go(a1 unsafe.Pointer, a2 *server.Object) {
-	C.nox_call_objectType_new_go((*[0]byte)(a1), asObjectC(a2))
+	ccall.CallVoidPtr(a1, a2.CObj())
 }

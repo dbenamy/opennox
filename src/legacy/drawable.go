@@ -3,9 +3,6 @@ package legacy
 /*
 #include "defs.h"
 extern int nox_drawable_count;
-static int go_nox_drawable_call_draw_func(nox_draw_viewport_t* vp, nox_drawable* dr) {
-	return dr->draw_func(vp, dr);
-}
 static void go_nox_drawable_call_sprite_func(void(* fnc)(nox_drawable*, int), nox_drawable* dr, int arg) {
 	fnc(dr, arg);
 }
@@ -18,6 +15,7 @@ import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/common/ntype"
+	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 func asDrawable(p *nox_drawable) *client.Drawable {
@@ -173,7 +171,7 @@ func nox_xxx_spriteLoadError_4356E0() {
 }
 
 func CallDrawFunc(s *client.Drawable, vp *noxrender.Viewport) int {
-	return int(C.go_nox_drawable_call_draw_func((*nox_draw_viewport_t)(vp.C()), (*nox_drawable)(s.C())))
+	return ccall.CallIntPtr2(s.DrawFuncPtr, vp.C(), s.C())
 }
 
 func Nox_xxx_spriteGetMB_476F80() *client.Drawable {
