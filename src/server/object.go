@@ -1462,6 +1462,15 @@ func (obj *Object) CallPickup(who *Object, a3, a4 int) bool {
 	return obj.Pickup.Get()(who, obj, a3, a4)
 }
 
+func (obj *Object) CallDeath() {
+	if obj.Death == nil {
+		return
+	}
+	fn := objDeath.Get(obj.Death)
+	fn(obj)
+	runtime.KeepAlive(obj)
+}
+
 func (obj *Object) CallDamage(who Obj, a3 Obj, dmg int, typ object.DamageType) bool {
 	if obj.Damage == nil {
 		return false

@@ -97,7 +97,7 @@ func temporaryLifetime(u *server.Object) {
 	if GetServer().S().Frame()-u.Field32 > *equipmentWord(u.UpdateData, 0) {
 		u.ObjFlags |= 0x8000
 		if u.Death != nil {
-			ccall.CallVoidPtr(u.Death, u.CObj())
+			u.CallDeath()
 		} else {
 			GetServer().DelayedDelete(u)
 		}

@@ -1,0 +1,902 @@
+{
+  "status": "qualified typed Go object death callback registry",
+  "preceding_revision": "67679140abee49a340df0067b325e9b9c6892246",
+  "changed_source_sha256": {
+    "src/legacy/object_creation.go": "a60390ee6fb690fec830abd1da5c3cdc6b04d6e4fe63e85d9d3b8e0490a494b1",
+    "src/legacy/object_death.go": "3b4b9987d40a361b82d78cd821502a5f261817673c9db2c3974faddd2b98ed6c",
+    "src/legacy/object_death_native.go": "03fbacf730b97482c3f4b32d426a9afd2d82e498f72b9f33844d92c2020d9f40",
+    "src/legacy/projectile_collisions.go": "cd6537067bac039f8025d52035ceff7033461c307ad014c70bfcbd769778a9a6",
+    "src/legacy/resources.go": "acd5e4eda5b481baf3f7a3cbb373a322b8ad3ee7bd15a5d899326bb39c3eda12",
+    "src/legacy/temporary_projectiles.go": "c6d2072a3857864493429f9561e856d122ff69b7a0a3db37a8ad2562589345e5",
+    "src/legacy/world_collisions_doors.go": "8aa2c8a249119badbe02345b3bb2ea2c8c658af30fd263f8825ce78bc7b58edd",
+    "src/server/object.go": "5ac546d31ae18200bcfb34e2ecc351e07fefa1909c932190499abb727fcee214",
+    "src/server/object_funcs.go": "e4e74e569aebf15029aa526d302adc6d5942be2f398d67d54aececafb7929f78"
+  },
+  "baseline": {
+    "status": "qualified original registered object death callback baseline",
+    "revision": "5e8dd7782838157e4c46b8cedd5c203cd38e9956",
+    "phase": {
+      "batch": "death-registry",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/death-registry-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-death-registry/baseline/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-death-registry/baseline/default-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 93.42265337682329
+        },
+        {
+          "name": "server",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/death-registry-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-death-registry/baseline/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-death-registry/baseline/server-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 164.98934973520227
+        },
+        {
+          "name": "highres",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/death-registry-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-death-registry/baseline/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-death-registry/baseline/highres-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 93.73916282108985
+        }
+      ],
+      "revision": "5e8dd7782838157e4c46b8cedd5c203cd38e9956",
+      "source_unchanged": true,
+      "wall_seconds": 352.75080097001046,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "contracts": {
+      "default": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 117,
+        "selected_root_tests": 117,
+        "exit": 0,
+        "started_tests": 117,
+        "completed_tests": 117,
+        "started_root_tests": 117,
+        "completed_root_tests": 117,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 93.35008287895471
+      },
+      "server": {
+        "tags": "porttest,server",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 117,
+        "selected_root_tests": 117,
+        "exit": 0,
+        "started_tests": 117,
+        "completed_tests": 117,
+        "started_root_tests": 117,
+        "completed_root_tests": 117,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 164.90093069383875
+      },
+      "highres": {
+        "tags": "porttest,highres",
+        "success": true,
+        "timeout_seconds": 900,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 117,
+        "selected_root_tests": 117,
+        "exit": 0,
+        "started_tests": 117,
+        "completed_tests": 117,
+        "started_root_tests": 117,
+        "completed_root_tests": 117,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 93.64646734809503
+      }
+    },
+    "captures": {
+      "death-registry-barrel": {
+        "cases": 360,
+        "sha256": "f653f0db4697ac6ab05ca5dd8faf122136cd78f4cb00628f7ddf25fdd595e4f6",
+        "path": "build/port-death-registry/original-v2-death-registry-barrel.json"
+      },
+      "death-registry-boulder": {
+        "cases": 384,
+        "sha256": "0bb0f6f1c8dac6a7f5a2eed700a7068bac8ed35696fd08bced2a7afd22de593c",
+        "path": "build/port-death-registry/original-v2-death-registry-boulder.json"
+      },
+      "death-registry-creation-callbacks": {
+        "cases": 108,
+        "sha256": "0b77c6bc0194e0333533bc8c21f90687f9aac9a9dc735798488e038cbba1a3ec",
+        "path": "build/port-death-registry/original-v2-death-registry-creation-callbacks.json"
+      },
+      "death-registry-creation": {
+        "cases": 200,
+        "sha256": "693075fcb3d25e890cea776bf42f59dc241ba78a295e914c0e28f8bf81cd6014",
+        "path": "build/port-death-registry/original-v2-death-registry-creation.json"
+      },
+      "death-registry-equipment": {
+        "cases": 720,
+        "sha256": "4e556710ad551b9f3b44e9047c128df0682493751438c802f2c29938291ac06c",
+        "path": "build/port-death-registry/original-v2-death-registry-equipment.json"
+      },
+      "death-registry-generator": {
+        "cases": 48,
+        "sha256": "6a6e9e50caf845500e46fc31e8ecf1a7affe3e6e80ba3ae54b8685d800838eb1",
+        "path": "build/port-death-registry/original-v2-death-registry-generator.json"
+      },
+      "death-registry-marker": {
+        "cases": 32,
+        "sha256": "ab259edb80430608b6c6548825c501b3b88a9b881edeb49f59f3ba55abc4c113",
+        "path": "build/port-death-registry/original-v2-death-registry-marker.json"
+      },
+      "death-registry-smoke": {
+        "cases": 8,
+        "sha256": "4548a2a4b345000ba344c24e7ad412df8fed192b8977589781acc6cb995ad385",
+        "path": "build/port-death-registry/original-v2-death-registry-smoke.json"
+      },
+      "player-death-lifecycle-registry": {
+        "cases": 4,
+        "sha256": "1b3e763016a6be377a0956f0b45a2ab8516dcd2951621b9ee9502267c05f829f",
+        "path": "build/port-death-registry/original-v2-player-death-lifecycle-registry.json"
+      }
+    },
+    "owner_capture_cases": 1864,
+    "raw_forwarding_gate_cases": 8,
+    "dynamic_glyph_invocations": 2,
+    "production_reuse": "Only seven named porttest files added/changed. All other source/dependency fingerprints and four preceding qualified binary hashes match. Runtime/discovery environments unchanged. Three fresh strict profiles repeat all nine frozen original-path captures.",
+    "reused_qualification": "damage-registry-qualification.json",
+    "binary_sha256": {
+      "safe": "d55bd114bf31c4b048747785c65e104c706d12d023ab11c7120ff016057231d0",
+      "opennox": "274de3f30d6e3e938b4940fb5e41df8fad4c54d0225629ce888d96a65ed9a613",
+      "opennox-hd": "e26317731ac4cb6e3bc2dcb6096df4e2861a5d0d12dc6fb573901d6b43a73acb",
+      "opennox-server": "795ac5cfcf03a458535589a65001c2a1ac1e4cb711a5bf79c8bbded3c53cba26"
+    },
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    },
+    "production_c_preamble_bodies": 79,
+    "retained_callback_exports": [
+      "nox_xxx_diePlayer_54D2B0",
+      "nox_xxx_diePotion_54CBB0",
+      "nox_xxx_dieImpEgg_54CAE0",
+      "nox_xxx_dieGlyph_54DF30",
+      "nox_xxx_dieBarrel_54DFA0",
+      "nox_xxx_dieCreateObject_54E010",
+      "nox_xxx_dieSpawnObject_54E070",
+      "nox_xxx_diePolyp_54CB10",
+      "nox_xxx_dieMarker_54E460",
+      "nox_xxx_dieWeapon_54E370_obj_die",
+      "nox_xxx_dieArmor_54E170_obj_die",
+      "nox_xxx_dieBoulder_54E4B0",
+      "nox_xxx_dieGameBall_54E620",
+      "nox_xxx_dieMonsterGen_54E630"
+    ],
+    "fixture_correction": "Original capture failed positive assertions: alloc.New ignores its argument value. Explicit target class initialization fixed fixture before freezing; no production change. Failed capture preserved.",
+    "eligible_nil_owner_check": {
+      "cases": 24,
+      "capture": "build/port-death-registry/nil-owner-projectile-death.json",
+      "sha256": "ecaa58153a297c10373c5b2af0b69a8720b8b18a055011130bee79561ffaa7c8",
+      "eligible_nil_callback_cases": [
+        18,
+        19,
+        20
+      ],
+      "expected_trace_prefix": [
+        32,
+        70000
+      ],
+      "meaning": "DelayedDelete event32 for actor70000; target101, callbackfalse, three initial flag states. No deletion prefix for ineligible or callbacktrue cases. Same original frozen capture hash retained.",
+      "result": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": null
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": null
+        },
+        "discovery_exit": 0,
+        "selected_tests": 1,
+        "selected_root_tests": 1,
+        "exit": 0,
+        "started_tests": 1,
+        "completed_tests": 1,
+        "started_root_tests": 1,
+        "completed_root_tests": 1,
+        "skipped_tests": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 6.921266880119219
+      }
+    }
+  },
+  "phases": {
+    "contracts": {
+      "batch": "death-registry",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/death-registry-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-death-registry/contracts/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-death-registry/contracts/default-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 170.26131969317794
+        },
+        {
+          "name": "server",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/death-registry-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-death-registry/contracts/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-death-registry/contracts/server-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 165.02415401209146
+        },
+        {
+          "name": "highres",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/death-registry-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            ".",
+            "--log",
+            "/root/src/opennox/build/port-death-registry/contracts/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-death-registry/contracts/highres-result.json",
+            "--timeout-seconds",
+            "900",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 93.74969238904305
+        }
+      ],
+      "revision": "67679140abee49a340df0067b325e9b9c6892246",
+      "source_unchanged": true,
+      "wall_seconds": 429.58754568593577,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "safe": {
+      "batch": "death-registry",
+      "phase": "safe",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-tags",
+            "safe",
+            "-o",
+            "/root/src/opennox/build/port-death-registry/safe/opennox-safe",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 69.17913996404968
+        },
+        {
+          "name": "static",
+          "command": [
+            "go",
+            "test",
+            "./common/memmap/nox",
+            "-run",
+            "^TestCodeStatic$",
+            "-count=1"
+          ],
+          "exit": 0,
+          "wall_seconds": 1.1832159659825265
+        }
+      ],
+      "revision": "67679140abee49a340df0067b325e9b9c6892246",
+      "source_unchanged": true,
+      "wall_seconds": 70.82402987591922,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "preflight": {
+      "batch": "death-registry",
+      "phase": "preflight",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-o",
+            "/root/src/opennox/build/port-death-registry/preflight/opennox",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 64.3363173820544
+        },
+        {
+          "name": "scenario",
+          "command": [
+            "env",
+            "OPENNOX_DISPLAY_BINARY=/root/src/opennox/build/port-death-registry/preflight/opennox",
+            "OPENNOX_DISPLAY_IMPLEMENTATION=Typed Go object death callback registry",
+            "OPENNOX_UI_SCENARIO=/root/src/opennox/docs/porting/character-creation.yaml",
+            "NOX_DEV=true",
+            "python3",
+            "/root/src/opennox/tools/porting/run_scenario.py",
+            "death-registry",
+            "compare",
+            "/root/src/opennox/build/baseline/runs/entry-classifiers-c"
+          ],
+          "exit": 0,
+          "wall_seconds": 66.65613740100525
+        }
+      ],
+      "revision": "67679140abee49a340df0067b325e9b9c6892246",
+      "source_unchanged": true,
+      "wall_seconds": 131.37985544581898,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "production": {
+      "batch": "death-registry",
+      "phase": "production",
+      "success": true,
+      "steps": [
+        {
+          "name": "production",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/qualify_production.py",
+            "/root/src/opennox/docs/porting/death-registry-batch.json",
+            "--out",
+            "/root/src/opennox/build/port-death-registry/production/production"
+          ],
+          "exit": 0,
+          "wall_seconds": 173.3144265532028
+        }
+      ],
+      "revision": "67679140abee49a340df0067b325e9b9c6892246",
+      "source_unchanged": true,
+      "wall_seconds": 173.59992042998783,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    }
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 117,
+      "selected_root_tests": 117,
+      "exit": 0,
+      "started_tests": 117,
+      "completed_tests": 117,
+      "started_root_tests": 117,
+      "completed_root_tests": 117,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 170.19184371992014
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 117,
+      "selected_root_tests": 117,
+      "exit": 0,
+      "started_tests": 117,
+      "completed_tests": 117,
+      "started_root_tests": 117,
+      "completed_root_tests": 117,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 164.919326239964
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 117,
+      "selected_root_tests": 117,
+      "exit": 0,
+      "started_tests": 117,
+      "completed_tests": 117,
+      "started_root_tests": 117,
+      "completed_root_tests": 117,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 93.6454143859446
+    }
+  },
+  "captures": {
+    "default": {
+      "death-registry-smoke": {
+        "cases": 8,
+        "sha256": "4548a2a4b345000ba344c24e7ad412df8fed192b8977589781acc6cb995ad385"
+      },
+      "death-registry-creation": {
+        "cases": 200,
+        "sha256": "693075fcb3d25e890cea776bf42f59dc241ba78a295e914c0e28f8bf81cd6014"
+      },
+      "death-registry-marker": {
+        "cases": 32,
+        "sha256": "ab259edb80430608b6c6548825c501b3b88a9b881edeb49f59f3ba55abc4c113"
+      },
+      "death-registry-barrel": {
+        "cases": 360,
+        "sha256": "f653f0db4697ac6ab05ca5dd8faf122136cd78f4cb00628f7ddf25fdd595e4f6"
+      },
+      "death-registry-boulder": {
+        "cases": 384,
+        "sha256": "0bb0f6f1c8dac6a7f5a2eed700a7068bac8ed35696fd08bced2a7afd22de593c"
+      },
+      "death-registry-equipment": {
+        "cases": 720,
+        "sha256": "4e556710ad551b9f3b44e9047c128df0682493751438c802f2c29938291ac06c"
+      },
+      "death-registry-creation-callbacks": {
+        "cases": 108,
+        "sha256": "0b77c6bc0194e0333533bc8c21f90687f9aac9a9dc735798488e038cbba1a3ec"
+      },
+      "death-registry-generator": {
+        "cases": 48,
+        "sha256": "6a6e9e50caf845500e46fc31e8ecf1a7affe3e6e80ba3ae54b8685d800838eb1"
+      },
+      "player-death-lifecycle-registry": {
+        "cases": 4,
+        "sha256": "1b3e763016a6be377a0956f0b45a2ab8516dcd2951621b9ee9502267c05f829f"
+      }
+    },
+    "server": {
+      "death-registry-smoke": {
+        "cases": 8,
+        "sha256": "4548a2a4b345000ba344c24e7ad412df8fed192b8977589781acc6cb995ad385"
+      },
+      "death-registry-creation": {
+        "cases": 200,
+        "sha256": "693075fcb3d25e890cea776bf42f59dc241ba78a295e914c0e28f8bf81cd6014"
+      },
+      "death-registry-marker": {
+        "cases": 32,
+        "sha256": "ab259edb80430608b6c6548825c501b3b88a9b881edeb49f59f3ba55abc4c113"
+      },
+      "death-registry-barrel": {
+        "cases": 360,
+        "sha256": "f653f0db4697ac6ab05ca5dd8faf122136cd78f4cb00628f7ddf25fdd595e4f6"
+      },
+      "death-registry-boulder": {
+        "cases": 384,
+        "sha256": "0bb0f6f1c8dac6a7f5a2eed700a7068bac8ed35696fd08bced2a7afd22de593c"
+      },
+      "death-registry-equipment": {
+        "cases": 720,
+        "sha256": "4e556710ad551b9f3b44e9047c128df0682493751438c802f2c29938291ac06c"
+      },
+      "death-registry-creation-callbacks": {
+        "cases": 108,
+        "sha256": "0b77c6bc0194e0333533bc8c21f90687f9aac9a9dc735798488e038cbba1a3ec"
+      },
+      "death-registry-generator": {
+        "cases": 48,
+        "sha256": "6a6e9e50caf845500e46fc31e8ecf1a7affe3e6e80ba3ae54b8685d800838eb1"
+      },
+      "player-death-lifecycle-registry": {
+        "cases": 4,
+        "sha256": "1b3e763016a6be377a0956f0b45a2ab8516dcd2951621b9ee9502267c05f829f"
+      }
+    },
+    "highres": {
+      "death-registry-smoke": {
+        "cases": 8,
+        "sha256": "4548a2a4b345000ba344c24e7ad412df8fed192b8977589781acc6cb995ad385"
+      },
+      "death-registry-creation": {
+        "cases": 200,
+        "sha256": "693075fcb3d25e890cea776bf42f59dc241ba78a295e914c0e28f8bf81cd6014"
+      },
+      "death-registry-marker": {
+        "cases": 32,
+        "sha256": "ab259edb80430608b6c6548825c501b3b88a9b881edeb49f59f3ba55abc4c113"
+      },
+      "death-registry-barrel": {
+        "cases": 360,
+        "sha256": "f653f0db4697ac6ab05ca5dd8faf122136cd78f4cb00628f7ddf25fdd595e4f6"
+      },
+      "death-registry-boulder": {
+        "cases": 384,
+        "sha256": "0bb0f6f1c8dac6a7f5a2eed700a7068bac8ed35696fd08bced2a7afd22de593c"
+      },
+      "death-registry-equipment": {
+        "cases": 720,
+        "sha256": "4e556710ad551b9f3b44e9047c128df0682493751438c802f2c29938291ac06c"
+      },
+      "death-registry-creation-callbacks": {
+        "cases": 108,
+        "sha256": "0b77c6bc0194e0333533bc8c21f90687f9aac9a9dc735798488e038cbba1a3ec"
+      },
+      "death-registry-generator": {
+        "cases": 48,
+        "sha256": "6a6e9e50caf845500e46fc31e8ecf1a7affe3e6e80ba3ae54b8685d800838eb1"
+      },
+      "player-death-lifecycle-registry": {
+        "cases": 4,
+        "sha256": "1b3e763016a6be377a0956f0b45a2ab8516dcd2951621b9ee9502267c05f829f"
+      }
+    }
+  },
+  "owner_capture_cases": 1864,
+  "raw_forwarding_gate_cases": 8,
+  "dynamic_glyph_invocations": 2,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.148821352049708,
+        "sha256": "ca9e92456db583e2d1fdb46c1e28fff7049777b510085e7eba41a150d6bbbd52",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.46395623893477,
+        "sha256": "d0ddd6b14e3e78343ea3414d66bb098684709f9c4d2c5a375e91caa31bf98ab2",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 63.0217604720965,
+        "sha256": "742c21d3a789bf5f73551c6237722a6e7b0e01b7a6c8f0643bec84c73b61e270",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "death-registry-save": {
+        "exit": 0,
+        "wall_seconds": 44.95213800878264,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.44269579695538,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "ca9e92456db583e2d1fdb46c1e28fff7049777b510085e7eba41a150d6bbbd52",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-death-registry/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/death-registry-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Typed Go object death callback registry",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "6cf04f48b447c82c4f3524cb4ec88d059492ef9416670d66b9569c38f9bfbe13"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 45.231476878980175,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 17,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "preflight": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 65.97107471805066,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c",
+    "binary_sha256": "ca9e92456db583e2d1fdb46c1e28fff7049777b510085e7eba41a150d6bbbd52",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-death-registry/preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/death-registry/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Typed Go object death callback registry",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "binary_sha256": {
+    "safe": "862ac18720257c680a7fef0caa9df87589f9cbbd86c544c471fd4bbb30146268",
+    "opennox": "ca9e92456db583e2d1fdb46c1e28fff7049777b510085e7eba41a150d6bbbd52",
+    "opennox-hd": "d0ddd6b14e3e78343ea3414d66bb098684709f9c4d2c5a375e91caa31bf98ab2",
+    "opennox-server": "742c21d3a789bf5f73551c6237722a6e7b0e01b7a6c8f0643bec84c73b61e270"
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79,
+  "limits": [
+    "Fourteen registered callbacks now select typed Go functions; callback addresses/object layout and original raw fallback ABI are preserved.",
+    "Configured target is386/SSE2 with CGO; no64-bit compatibility or measured performance claim."
+  ]
+}

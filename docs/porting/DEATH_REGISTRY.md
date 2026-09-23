@@ -2,12 +2,12 @@
 
 ## Scope
 
-Proposed typed dispatch covers14 resource registrations and four existing callers:
+Typed dispatch now covers14 resource registrations and four existing callers:
 projectile collisions, temporary projectile lifetime, chest collision and resource
 health depletion. Keep all names, C addresses, optional132-byte data sizes, parser
 entries and raw object layout. Existing registration API remains; unregistered
 callbacks retain the void-pointer C fallback. Each caller retains its original
-nil/else behavior. The new shared method would no-op on a nil slot.
+nil/else behavior. The shared method no-ops on a nil slot.
 
 Most registrations invoke existing Go helpers. Potion/ImpEgg wrappers extract tiny
 shared helpers with unchanged audio, flags and deletion effects; ImpEgg retains its
@@ -84,9 +84,21 @@ The cache cutoff was subsequently explicitly broadened to18:00 by primary review
 stat/hash/header and host-use checks and were removed. This is separately recorded,
 not acceptance of the erroneous earlier pre16 claim.
 
-Production patch remains unapplied at this checkpoint. After conversion require
-fresh contracts, safe/static, four production/ABI binaries, exact known-suite
-comparison, headless creation and save/load.
+Conversion32720 and remainingpipeline 89854 joined PASS: all117roots/profile,
+nine frozen captures1864cases, raw forwarding/eligibility and dynamic glyph contracts,
+with no skips or changed expectations. Safe/static, four fresh386/SSE2/CGO binaries,
+all14 retained Go-backed C exports, exact known-suite comparison (304existing failure
+events;17pass/2fail/32skip packages), headless creation and save/load pass. Production
+contains no PortTest symbols. See [conversion qualification](death-registry-qualification.json).
+No post-baseline source corrections were needed. Completed scenario copies were
+deduplicated with checks and restore manifests. Application/finalizers/dedup scripts
+are consumed. Check Git for conversion commit/push.
+
+Next: an unapplied damage-value draft under build/port-damage-values adds separate
+exact-int32 dispatch while preserving existing boolean APIs. Boolean-only registrations
+must retain original C fallback for integer callers; no inference from truth values.
+Primary raw-return/compatibility test drafts are uninstalled. Full original-owner
+baseline and independent draft review remain before applying production changes.
 
 Standalone C remains zero files/physical lines; production C preamble bodies remain79.
 This removes registered round trips while preserving external callback compatibility.

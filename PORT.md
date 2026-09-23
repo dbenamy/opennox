@@ -14,12 +14,12 @@
 
 ## Current status
 
-Fourteen object-death registrations have a qualified actual-owner baseline:
-117 roots/profile,1864 frozen cases, raw forwarding and dynamic glyph contracts.
-All three profiles pass; seven porttest-only files differ from damage conversion
-5e8dd778, with production source and four binary hashes unchanged. Next: apply and
-qualify typed death dispatch at four existing callers. See [DEATH_REGISTRY.md](docs/porting/DEATH_REGISTRY.md).
+Fourteen object-death callbacks now use typed Go dispatch at four existing callers,
+with C addresses/data sizes and raw fallback preserved. All117 roots/profile and
+1864 frozen cases pass, along with safe/static, fresh production/ABI, exact known
+suite and headless creation/save-load. See [DEATH_REGISTRY.md](docs/porting/DEATH_REGISTRY.md).
 **Standalone C remains zero; production C preamble bodies remain79.**
+Next: review remaining raw damage-value callers without losing their integer results.
 
 ### Earlier checkpoints
 

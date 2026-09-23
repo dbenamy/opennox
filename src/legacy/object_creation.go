@@ -256,10 +256,7 @@ func nox_xxx_createRewardMarker_54CAC0(a C.int) *C.uint32_t {
 
 //export nox_xxx_dieImpEgg_54CAE0
 func nox_xxx_dieImpEgg_54CAE0(a C.int) C.int {
-	u := objectFromInt(a)
-	GetServer().S().Audio.EventObj(764, u, 0, 0)
-	u.ObjFlags |= 0x40
-	return C.int(u.ObjFlags)
+	return C.int(objectDeathImpEgg(objectFromInt(a)))
 }
 
 //export nox_xxx_diePolyp_54CB10
@@ -267,7 +264,5 @@ func nox_xxx_diePolyp_54CB10(a C.int) { diePolyp(objectFromInt(a)) }
 
 //export nox_xxx_diePotion_54CBB0
 func nox_xxx_diePotion_54CBB0(a C.int) {
-	u := objectFromInt(a)
-	GetServer().S().Audio.EventObj(753, u, 0, 0)
-	GetServer().DelayedDelete(u)
+	objectDeathPotion(objectFromInt(a))
 }

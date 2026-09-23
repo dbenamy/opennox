@@ -12,7 +12,6 @@ import "C"
 import (
 	"github.com/opennox/libs/strman"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
@@ -92,7 +91,7 @@ func resourceDamage(u *server.Object, amount int32) {
 			if u.ObjClass&2 != 0 {
 				monsterControlDeath(u)
 			} else if u.Death != nil {
-				ccall.CallVoidPtr(u.Death, u.CObj())
+				u.CallDeath()
 			} else {
 				GetServer().DelayedDelete(u)
 			}

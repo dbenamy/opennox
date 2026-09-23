@@ -17,6 +17,17 @@ import (
 	"unsafe"
 )
 
+func objectDeathImpEgg(u *server.Object) uint32 {
+	GetServer().S().Audio.EventObj(764, u, 0, 0)
+	u.ObjFlags |= 0x40
+	return uint32(u.ObjFlags)
+}
+
+func objectDeathPotion(u *server.Object) {
+	GetServer().S().Audio.EventObj(753, u, 0, 0)
+	GetServer().DelayedDelete(u)
+}
+
 func objectDeathBarrel(u *server.Object) {
 	core := GetServer().S()
 	cache := memmap.PtrUint32(0x5D4594, 2491696)

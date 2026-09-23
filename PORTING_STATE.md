@@ -7,23 +7,34 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — death registry baseline qualified
+## Current — death registry qualified
 
-Damage conversion5e8dd778 committed/pushed. Death baseline44588 PASS all117roots
-in default/server/highres,9frozen captures1864cases, raw8cases/glyph2invocations.
-No skips/oldgoldenchanges. Seven porttest files only; source/dependency identity
-and four damage binary hashes verified. All14Cexports present. Original37503 PASS;
-initial86830 fixturefailure retained (alloc.New ignores value; explicit target
-class initialization fixed). Extra10598 PASS confirms3eligible nil-slot deletion
-cases in unchanged24case projectile-death capture. See DEATH_REGISTRY.md/JSON.
-Check Git for baseline commit/push. No builds/tests active; finalizer CONSUMED.
+Baseline67679140 pushed. Conversion32720/full 89854 joined PASS: all117roots
+perprofile,9frozen captures1864cases, raw8cases and dynamic glyph2invocations.
+No skips or changed expectations. Safe/static, four fresh binaries/all14 retained
+Go-backed exports, exact knownsuite304events/17pass2fail32skip, headlesscreation and
+save/load PASS. See DEATH_REGISTRY.md/qualification JSON. Check Git for conversion
+commit/push. No build/test jobs active. Application/finalizers/scenariodedup CONSUMED.
+Current bins: build/port-death-registry/{safe/opennox-safe,production/production/bin}.
 
-Production build/port-death-registry/production.patch UNAPPLIED; primary corrected
-unused ccall imports in resources/world doors and named Flags-to-uint32 return.
-Luna review accepted real owner route, identity/size checks and normalization;
-its stale empty-hash note was updated. Shared server.CallDeath proposal retains
-four caller nil/else branches, all14Caddresses/data sizes, raw fallback, and dynamic
-GlyphDie closure. Ready to apply then full qualification.
+Nineproductionfiles changed;14exact names/addresses/sizes/order/parser verified,
+four callers preserve nil/else branches. Primary corrected Luna unusedimports and
+named Flags-to-uint32 result beforebaseline/apply; no later source corrections.
+Baseline86830 primaryfixture error (alloc.New ignoresvalue) caught by positive
+assertions, explicit targetclass fixed;37503passed beforefreeze. Extra10598 verifies
+3eligible nil-slot deletion cases in existing24case projectilecapture.
+
+Next: build/port-damage-values contains UNAPPLIED production draft (Luna) and
+primary raw-return/bool-registration compatibility test drafts, not installed.
+Proposed separate exactint32 registry preserves DamageFunc/RegisterObjectDamageGo/
+CallDamage bool APIs; canonical11callbacks register exacthelpers and derivedbool.
+Rawvalue calls for bool-only registrations must retain original C fallback. Five
+rawsites include projectileDamage's full/lowbyte consumers plus ignoredreturn sites.
+No nil-slot zero shortcut for unchecked callers. Original-owner baseline/design
+review pending before applying production. Initial Luna direct-calls.patch REJECTED:
+claimed five replacements absent while imports removed; helper regeneratingcombined
+patch. Original rejected patch must remain for audit. Also require *Object arguments
+for raw API instead of unnecessary Obj adapters. No nextpatch accepted/applied. Luna bounded helper; no nextsourceedits.
 
 Death cleanup: originalnext80audit incorrect pre16cutoff rejected before deletion.
 strict16 record8files398794162bytes; then primary explicitly broadened cutoff18:00,

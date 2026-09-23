@@ -5,7 +5,6 @@ import (
 
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -115,7 +114,7 @@ func worldCollideChest(a, b *server.Object) {
 		}
 	}
 	if a.Death != nil {
-		ccall.CallVoidPtr(a.Death, a.CObj())
+		a.CallDeath()
 	}
 	inventoryChest(a, b)
 	inventoryDropAll(a)

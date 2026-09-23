@@ -119,7 +119,7 @@ func projectileDie(u, t *server.Object) {
 	}
 	u.ObjFlags |= 0x8000
 	if u.Death != nil {
-		ccall.CallVoidPtr(u.Death, u.CObj())
+		u.CallDeath()
 	} else {
 		GetServer().DelayedDelete(u)
 	}

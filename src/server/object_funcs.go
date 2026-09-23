@@ -211,6 +211,19 @@ func RegisterObjectDeath(name string, fnc unsafe.Pointer, sz uintptr) {
 	deathFuncs[name] = objectDefFunc{Func: fnc, DataSize: sz}
 }
 
+type DeathFunc func(obj *Object)
+
+var objDeath = ccall.NewFuncs(func(cfnc unsafe.Pointer) DeathFunc {
+	return func(obj *Object) {
+		ccall.CallVoidPtr(cfnc, obj.CObj())
+	}
+})
+
+func RegisterObjectDeathGo(name string, cfnc unsafe.Pointer, fnc DeathFunc, sz uintptr) {
+	RegisterObjectDeath(name, cfnc, sz)
+	objDeath.Register(cfnc, fnc)
+}
+
 func RegisterObjectDeathParse(name string, fnc ObjectParseFunc) {
 	if _, ok := deathParseFuncs[name]; ok {
 		panic("already registered")
