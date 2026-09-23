@@ -1,0 +1,305 @@
+{
+  "status": "qualified actual-C empty callbacks after fixture repair",
+  "fixture_repair": {
+    "old_safe_phase": "build/port-empty-callbacks/c-safe",
+    "failure": "spellLifePrepare broad cache range touched registered duration allocator/list slots",
+    "change": "save/clear/restore only fourteen type caches; retain four historical zero columns for retired duration-state gap; live duration list/records still captured",
+    "goldens_changed": false,
+    "expanded_safe_limitation": {
+      "phase": "build/port-empty-callbacks/c-reviewed-safe",
+      "test": "TestClientPresentationChant",
+      "failure": "unrelated existing client_effects_environment_porttest.go:76 raw access to registered offset1313532",
+      "disposition": "not counted as qualified; broad 69 roots required for three normal profiles, all 24 callback consumers required under safe"
+    }
+  },
+  "preceding_revision": "e663a971f7732b6240150491803f96511e713a00",
+  "capture_sha256": "848b76f173284c29edddd5d637863061d643428004ed8f51098f51863ea44b77",
+  "cases": 338,
+  "fresh_capture_processes": 3,
+  "targets": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 69,
+      "selected_root_tests": 69,
+      "exit": 0,
+      "started_tests": 69,
+      "completed_tests": 69,
+      "started_root_tests": 69,
+      "completed_root_tests": 69,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 203.26451415987685
+    },
+    "server": {
+      "tags": "server,porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 69,
+      "selected_root_tests": 69,
+      "exit": 0,
+      "started_tests": 69,
+      "completed_tests": 69,
+      "started_root_tests": 69,
+      "completed_root_tests": 69,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 197.28874675789848
+    },
+    "highres": {
+      "tags": "highres,porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 69,
+      "selected_root_tests": 69,
+      "exit": 0,
+      "started_tests": 69,
+      "completed_tests": 69,
+      "started_root_tests": 69,
+      "completed_root_tests": 69,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 120.07598079484887
+    },
+    "safe": {
+      "tags": "safe,porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 24,
+      "selected_root_tests": 24,
+      "exit": 0,
+      "started_tests": 24,
+      "completed_tests": 24,
+      "started_root_tests": 24,
+      "completed_root_tests": 24,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 24.45446603302844
+    }
+  },
+  "benchmark": {
+    "path": "production Go-to-ccall indirect dispatch; includes common closure overhead",
+    "binary_sha256": "1127165f48d9462d1babd6542f651a07d784211ba42661a9378d4c48b2e7ddc2",
+    "log_sha256": "27ffd63a2592443e753b528a676a90502539163fc05c63861ab39bb047fe5cce",
+    "samples": {
+      "nullsub_22": {
+        "samples_ns": [
+          153.7,
+          163.8,
+          180.3,
+          151.5,
+          128.3
+        ],
+        "median_ns": 153.7,
+        "min_ns": 128.3,
+        "max_ns": 180.3
+      },
+      "nullsub_36": {
+        "samples_ns": [
+          124.1,
+          151.2,
+          132.7,
+          174.3,
+          180.8
+        ],
+        "median_ns": 151.2,
+        "min_ns": 124.1,
+        "max_ns": 180.8
+      },
+      "nullsub_38": {
+        "samples_ns": [
+          164.2,
+          169.6,
+          140.9,
+          181.4,
+          160.2
+        ],
+        "median_ns": 164.2,
+        "min_ns": 140.9,
+        "max_ns": 181.4
+      },
+      "nullsub_39": {
+        "samples_ns": [
+          150.7,
+          183.6,
+          184.4,
+          182.6,
+          181.6
+        ],
+        "median_ns": 182.6,
+        "min_ns": 150.7,
+        "max_ns": 184.4
+      },
+      "nullsub_40": {
+        "samples_ns": [
+          173.1,
+          210.3,
+          204.4,
+          176.5,
+          157.0
+        ],
+        "median_ns": 176.5,
+        "min_ns": 157.0,
+        "max_ns": 210.3
+      },
+      "nullsub_41": {
+        "samples_ns": [
+          182.9,
+          184.0,
+          185.7,
+          139.0,
+          196.1
+        ],
+        "median_ns": 184.0,
+        "min_ns": 139.0,
+        "max_ns": 196.1
+      },
+      "nullsub_42": {
+        "samples_ns": [
+          189.8,
+          163.4,
+          150.5,
+          181.8,
+          157.7
+        ],
+        "median_ns": 163.4,
+        "min_ns": 150.5,
+        "max_ns": 189.8
+      },
+      "nullsub_43": {
+        "samples_ns": [
+          97.66,
+          96.48,
+          100.1,
+          124.3,
+          100.1
+        ],
+        "median_ns": 100.1,
+        "min_ns": 96.48,
+        "max_ns": 124.3
+      },
+      "nullsub_44": {
+        "samples_ns": [
+          99.74,
+          100.9,
+          120.8,
+          131.5,
+          156.0
+        ],
+        "median_ns": 120.8,
+        "min_ns": 99.74,
+        "max_ns": 156.0
+      },
+      "nullsub_29": {
+        "samples_ns": [
+          75.69,
+          73.13,
+          106.7,
+          71.5,
+          80.69
+        ],
+        "median_ns": 75.69,
+        "min_ns": 71.5,
+        "max_ns": 106.7
+      }
+    },
+    "not_a_frame_time_or_frequency_measurement": true
+  },
+  "production_reuse": {
+    "qualification": "safe-bridges-native-qualification.json",
+    "qualification_sha256": "a682d6abb3435b23ffd97cb4b34e84f5de664959b4d2d52f3e782490086359be",
+    "unchanged_old_source_files_verified": 2978,
+    "new_tagged_sources": [
+      "src/empty_callbacks_porttest_test.go",
+      "src/legacy/empty_callbacks_porttest.go",
+      "src/server/empty_callbacks_porttest.go"
+    ],
+    "modified_tagged_fixture_sources": [
+      "src/legacy/spell_lifecycle_porttest.go"
+    ],
+    "selection": {
+      "default": {
+        "packages": 494,
+        "new_fixtures_selected": false,
+        "selection_sha256": "a80ffde26d3cba6dca538c1b83e653b038b1b8120e346d925494644e6c15de71"
+      },
+      "server": {
+        "packages": 474,
+        "new_fixtures_selected": false,
+        "selection_sha256": "1c13a4e8e47ae66a2118847c93c4ec5a91f9797b2631978e69b2a36ec41ae9c4"
+      },
+      "highres": {
+        "packages": 494,
+        "new_fixtures_selected": false,
+        "selection_sha256": "9817ff482234c60ba41cc6dbfaa9544e9b8390e572a2205eb7b2626245c3e6e9"
+      },
+      "safe": {
+        "packages": 494,
+        "new_fixtures_selected": false,
+        "selection_sha256": "77c7ce1e2cebe20daa18266de572fbf2339cdbec5b9f5c236ba687e5db0d8851"
+      }
+    },
+    "binary_sha256": {
+      "safe": "6278c4c4102af49ff8f2564b5e0335b2977e629cd0b7f0ac4eda4e6ebb779f2c",
+      "opennox": "516ce0dea468313e1f12e756d6ef2fb8be861a27e2ec1326bc31a12663d9cb53",
+      "opennox-hd": "3c853cba228fac1b005d5772d968c1f7bcebb4e4b06de0bd594c3507c0cd2c59",
+      "opennox-server": "4e71ee706aea951239572992d3e6e578e05db418700acfb63ff2c625196efe3f"
+    },
+    "ten_callback_addresses_verified": true,
+    "scope": "unchanged production builds/ABI/known-suite/headless/save-load; fresh callback/consumer tests above"
+  },
+  "production_c": {
+    "files": 3,
+    "lines": 25
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "source_manifest_sha256": "3b841c8acf9f9aca3ccbaecafdc7c006b435c2efee83f56e5ea515eeb9e8b04b"
+}

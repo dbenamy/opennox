@@ -1,0 +1,135 @@
+{
+  "batch": "empty-callbacks-c",
+  "env": {
+    "GOMAXPROCS": "2",
+    "GOMEMLIMIT": "768MiB",
+    "OPENNOX_EMPTY_CALLBACKS_CAPTURE": "{out}/empty-callbacks.json"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "contracts-consumers",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/empty-callbacks-tests.txt",
+          "--tags",
+          "porttest",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/empty-callbacks.json",
+            "sha256": "848b76f173284c29edddd5d637863061d643428004ed8f51098f51863ea44b77"
+          }
+        ]
+      },
+      {
+        "name": "benchmark-build",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-tags",
+          "porttest",
+          "-c",
+          "-o",
+          "{out}/callbacks.test",
+          "."
+        ]
+      },
+      {
+        "name": "benchmark",
+        "cwd": "{root}/src",
+        "command": [
+          "{out}/callbacks.test",
+          "-test.run",
+          "^$",
+          "-test.bench",
+          "^BenchmarkEmptyCallbackDispatch$",
+          "-test.benchtime=100ms",
+          "-test.count=5"
+        ]
+      }
+    ],
+    "server": [
+      {
+        "name": "contracts-consumers",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/empty-callbacks-tests.txt",
+          "--tags",
+          "server,porttest",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/empty-callbacks.json",
+            "sha256": "848b76f173284c29edddd5d637863061d643428004ed8f51098f51863ea44b77"
+          }
+        ]
+      }
+    ],
+    "highres": [
+      {
+        "name": "contracts-consumers",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/empty-callbacks-tests.txt",
+          "--tags",
+          "highres,porttest",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/empty-callbacks.json",
+            "sha256": "848b76f173284c29edddd5d637863061d643428004ed8f51098f51863ea44b77"
+          }
+        ]
+      }
+    ],
+    "safe": [
+      {
+        "name": "contracts-consumers",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/empty-callbacks-tests.txt",
+          "--tags",
+          "safe,porttest",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/empty-callbacks.json",
+            "sha256": "848b76f173284c29edddd5d637863061d643428004ed8f51098f51863ea44b77"
+          }
+        ]
+      }
+    ]
+  }
+}

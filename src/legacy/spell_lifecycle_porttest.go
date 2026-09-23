@@ -103,14 +103,20 @@ func (p *portTestShopPools) spellLifePrepare() func() {
 	oldPool, oldHead := legacyGlobals.nox_alloc_magicEnt_1569668, dword_5d4594_1569672
 	legacyGlobals.nox_alloc_magicEnt_1569668 = st.pool.UPtr()
 	dword_5d4594_1569672 = 0
-	oldCaches := make([]uint32, 18)
-	for i := range oldCaches {
-		off := uintptr(1569676 + 4*i)
+	// Only type caches belong to this fixture. The gap before Hecubah and
+	// Necromancer contains retired duration allocator/list slots; accessing
+	// those slots through memmap is rejected by the safe runtime.
+	cacheOffsets := [...]uintptr{
+		1569676, 1569680, 1569684, 1569688, 1569692, 1569696, 1569700,
+		1569704, 1569708, 1569712, 1569716, 1569720, 1569740, 1569744,
+	}
+	var oldCaches [len(cacheOffsets)]uint32
+	for i, off := range cacheOffsets {
 		oldCaches[i] = *memmap.PtrUint32(0x5d4594, off)
 		*memmap.PtrUint32(0x5d4594, off) = 0
 	}
 	for i, name := range []string{"Pixie", "MagicMissile", "SmallFist", "MediumFist", "LargeFist", "DeathBall", "Meteor"} {
-		*memmap.PtrUint32(0x5d4594, uintptr(1569676+4*i)) = uint32(p.proxy.core.Types.IndByID(name))
+		*memmap.PtrUint32(0x5d4594, cacheOffsets[i]) = uint32(p.proxy.core.Types.IndByID(name))
 	}
 	treeIDs := sp.TreeIndices
 	if len(treeIDs) == 0 {
@@ -151,7 +157,7 @@ func (p *portTestShopPools) spellLifePrepare() func() {
 		legacyGlobals.nox_alloc_magicEnt_1569668 = oldPool
 		dword_5d4594_1569672 = oldHead
 		for i, v := range oldCaches {
-			*memmap.PtrUint32(0x5d4594, uintptr(1569676+4*i)) = v
+			*memmap.PtrUint32(0x5d4594, cacheOffsets[i]) = v
 		}
 	}
 }
@@ -341,7 +347,16 @@ func (p *portTestShopPools) spellLifeSnapshot(out []uint32) []uint32 {
 		}
 	}
 	for i := 0; i < 18; i++ {
-		out = append(out, *memmap.PtrUint32(0x5d4594, uintptr(1569676+4*i)))
+		off := uintptr(1569676 + 4*i)
+		switch off {
+		case 1569724, 1569728, 1569732, 1569736:
+			// Keep the historical zero columns for the retired duration-state
+			// gap. The old fixture cleared these words; production no longer
+			// uses them. Live duration list/record state is captured above.
+			out = append(out, 0)
+		default:
+			out = append(out, *memmap.PtrUint32(0x5d4594, off))
+		}
 	}
 	return p.spellEffectsSnapshot(out)
 }

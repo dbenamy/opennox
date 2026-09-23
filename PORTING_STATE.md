@@ -8,7 +8,8 @@ remain outside this metric. See [C_LOC.md](docs/porting/C_LOC.md).
 
 ## Current — safe-profile direct Go exports qualified
 
-Actual-C baseline `9d5b4589` is committed/pushed. The six safe memory/string
+Actual-C baseline `9d5b4589` and conversion `e663a971` are committed/pushed.
+The six safe memory/string
 functions now export directly from Go using const-qualified pointer typedefs;
 cgo_safe.c is removed. Allocator semantics, ASan and macro remapping are preserved.
 All 142 frozen cases and the 129-case shop consumer pass under safe,porttest.
@@ -23,21 +24,47 @@ Finalizer finish-native.py is consumed after success. Check Git log/remote for
 this checkpoint's commit/push. Artifacts are build/port-safe-direct/native-
 {safe,preflight,production}; baseline c-source.json/c-probe captures are retained.
 
-## Next — empty callback behavior and performance baseline
+## Current work — empty callback C baseline qualified
 
-Ten distinct empty C callbacks remain in common__object__modifier.c/GAME5_2.c.
-Read build/port-empty-callbacks/acceptance-plan.md. Readiness/Replenishment are
-both identity-sensitive and actually invoked; modifier paths pass 3/5/6 arguments,
-and Energy Bolt destruction passes one to a void(void) definition on this target.
-Preserve names/identities and measure the production Go→ccall dispatch path before
-accepting extra Go callback transitions. Do not port solely to lower the C count.
+The ten live empty callbacks are still C. Their 338-case capture is frozen at
+848b76f173284c29edddd5d637863061d643428004ed8f51098f51863ea44b77. Final baseline
+passes 69/69/69 roots in default/server/highres plus all 24 callback consumers
+under safe, no skips. Existing goldens are unchanged. Production evidence is
+explicitly reused after checking unchanged production source, four Go file
+selections, binary hashes and ten callback addresses per binary. See
+[EMPTY_CALLBACKS.md](docs/porting/EMPTY_CALLBACKS.md) and C qualification JSON.
 
-Luna drafted bounded declaration-only identity/registry helpers in ignored
-build/port-empty-callbacks/drafts; primary drafted guarded-state contracts and a
-representative benchmark there. None are installed or qualified yet. Root test
-must independently validate expected metadata, not blindly trust the helper table.
-Only one Luna helper; primary reviews source and acceptance. No source changes
-or concurrent Go/build jobs during active qualification.
+A tagged spell-fixture repair was necessary: setup now saves/clears/restores only
+fourteen type caches. Snapshot retains four historical zero columns for the
+retired duration-state gap; live duration list/records remain captured separately.
+The original safe run failed during setup, and the first repair failed in its
+snapshot loop (primary missed that loop initially). Both failures are preserved.
+A broadened safe run then failed in unrelated client-render fixture setup at
+client_effects_environment_porttest.go:76 / registered offset1313532. That broader
+safe suite is NOT qualified; its limitation is recorded for later renderer work.
+
+Pipelines75016,98136,7877 JOINED PASS. Pipelines3034,42857,78446 JOINED FAILURE with
+the dispositions above. All jobs joined. finish-c-reviewed.py is consumed after
+success; original finish-c.py is obsolete. Final artifacts are c-reviewed-
+{default,server,highres} and c-final-safe. Check Git log/remote for this baseline's
+commit/push. Source must remain frozen during any Go/build job.
+
+Next: after the baseline is committed/pushed, apply reviewed ignored
+build/port-empty-callbacks/apply-native.py, source baseline env and gofmt the new
+empty_callbacks.go. Run run-native-focused.sh, then run-native-rest.sh. Only then
+run compare-dispatch.py with no other build/archive jobs; inspect timings and
+write performance-review.json before finish-native.py can accept the conversion.
+Preserve every callback name/address identity; all ten must be distinct Go-backed
+C exports. Drafts/installers are not reusable after consumption. Do not change
+frozen captures to accommodate the conversion.
+
+Luna provided bounded identity/registry drafts and audits; primary reviewed and
+wrote contracts/benchmarks. MP3 audit is under build/port-mp3-audit: shipped Dialog
+assets include 1,246 MP3-in-WAV files, despite no .mp3 filenames. Primary caught
+and corrected the extension-based fixture inference. Existing audio goldens are
+known failures on this target, and retained decoder code uses x87 in inspected
+paths; the cause of historical PCM mismatches is not established. No decoder
+changes or new PCM baseline are implemented.
 
 ## Recent qualified milestones
 
@@ -69,6 +96,16 @@ consumed records are under `build/port-artifact-cleanup`:
   1,707,909,412 bytes. `old-capture-archive-record.json` maps original paths, hashes,
   modes/times and archives. Restore with `archive-old-captures.py --restore
   <original-relative-path>` before rerunning old scripts requiring plain JSON.
+
+Capture archive round two also completed: 42 files, 751,577,141 bytes reclaimed
+after metadata/hash/156 host-process checks and full decompression verification.
+Restore via build/port-artifact-cleanup/archive-old-captures-round2.py --restore
+<original-relative-path>; its round2 record maps every original/archive. It joined
+before callback benchmarking began. Round three also completed: 121 captures,
+1,510,131,029 bytes reclaimed after 158 host-process checks and full verified
+round trips; use archive-old-captures-round3.py --restore and its round3 record.
+It ran after the retained callback benchmark finished. Total free space after
+these archives was about 2.9GiB; recheck before long builds.
 
 Metadata, logs, source, assets and current storage/orphan/entry/audio evidence
 were preserved. Earlier cleanup rounds are also consumed; inspect records.

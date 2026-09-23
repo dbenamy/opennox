@@ -14,6 +14,13 @@
 
 ## Current status
 
+The ten remaining empty callback identities have a qualified C baseline: 338
+argument/state cases, 69 consumer roots per normal profile, and 24 under safe.
+Safe checks exposed a spell-fixture cache/snapshot range crossing retired state;
+the fixture is repaired without changing production or goldens. An unrelated
+renderer fixture still blocks the broader safe suite and is documented. C remains
+25 lines/three files. See [EMPTY_CALLBACKS.md](docs/porting/EMPTY_CALLBACKS.md).
+
 The six optional safe-profile forwarding shims now export directly from Go.
 All 142 frozen cases, the shop-loading consumer, safe build, production/ABI,
 known-suite and headless/save-load gates pass. Standalone C is **25 physical lines
