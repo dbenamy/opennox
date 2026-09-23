@@ -7,7 +7,34 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — scalar/pointer forwarding qualified
+## Current — pointer-forwarding baseline qualified
+
+Qualified conversion `06bd85b6` is pushed. No production changes since. Next draft:
+74 calls/36 wrappers; independent reconstruction matches exact C-selector removal.
+Fresh cgo signatures/aliases match; no function-name macros; lifetimes reviewed.
+See [POINTER_FORWARDING.md](docs/porting/POINTER_FORWARDING.md).
+
+Baseline session86091 joined PASS:196 fresh roots per profile, no skips. Exact
+source/test/runtime environment and four retained binary identities verify reuse
+of preceding490/489/490 roots. Native combined selection must pass686/685/686.
+Baseline finalizer CONSUMED. Next commit/push baseline, apply reviewed draft,
+verify exact source changes and qualify. No production edits yet; no jobs active.
+
+Runner discovery/build uses1536MiB independently of unchanged runtime768MiB;
+nine Python tests and actual three-profile environment records pass. Explicit
+runtime overrides preserved. Luna drafted the small change; primary reviewed,
+added explanatory comment and cleaned formatting. No speed claim. Record this
+reversible compiler-GC choice for review; source remains frozen during runs.
+
+Cleanup17080 joined PASS: six completed groups,400,569,409 raw bytes to8,579,873 gzip;
+107 hardlinks/six symlinks recorded. archive-captures.py is CONSUMED; --restore
+remains supported. Roughly1.6GiB free. Artifacts `build/port-pointer-forwarding`:
+direct-calls.patch unapplied, production-files.txt36 paths, qualify-remaining.sh/
+finish.py and dedup scripts are pending DRAFTS. Review before execution. Original
+assets/binaries preserved. Luna idle; next suitable task is read-only applied diff
+review during native qualification.
+
+## Earlier — scalar/pointer forwarding qualified
 
 Baseline `2ae1dc28` is pushed. All 69 forwarding calls and ten unused C export
 retirements are qualified. All 490/489/490 roots pass default/server/highres with

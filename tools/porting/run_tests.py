@@ -23,6 +23,8 @@ def main():
     parser.add_argument("--result", type=Path, required=True)
     parser.add_argument("--timeout-seconds", type=int, default=600,
                         help="per-package Go test timeout (default: 600)")
+    parser.add_argument("--build-memory-limit", default="1536MiB",
+                        help="GOMEMLIMIT for discovery/build (default: 1536MiB)")
     parser.add_argument("--package", action="append", dest="packages",
                         help="affected package (repeatable; default: .)")
     parser.add_argument("--require-no-skips", action="store_true")
@@ -50,10 +52,14 @@ def main():
     env = dict(os.environ, GOMAXPROCS=os.environ.get("GOMAXPROCS", "2"),
                GOMEMLIMIT=os.environ.get("GOMEMLIMIT", "768MiB"))
     result["runtime_env"] = {k: env.get(k) for k in ("GOMAXPROCS", "GOMEMLIMIT", "GOGC")}
+    # Discovery compiles before listing tests. Give the host compiler more room;
+    # actual test execution below keeps the 386 runtime budget unchanged.
+    discovery_env = dict(env, GOMEMLIMIT=args.build_memory_limit)
+    result["discovery_env"] = {k: discovery_env.get(k) for k in ("GOMAXPROCS", "GOMEMLIMIT", "GOGC")}
     discovery = args.log.with_suffix(args.log.suffix + ".discovery")
     with discovery.open("w") as log:
         proc = subprocess.run(common + ["-json", "-list", pattern] + packages, cwd=ROOT / "src",
-                              env=env, stdout=log, stderr=subprocess.STDOUT)
+                              env=discovery_env, stdout=log, stderr=subprocess.STDOUT)
     result["discovery_exit"] = proc.returncode
     if proc.returncode:
         return finish("test discovery failed")

@@ -638,6 +638,14 @@ ignored `build/`; retain relevant manifests for local reproducibility. Completed
 run copies may have verified deduplication/restoration manifests. Do not remove
 active run data or the original assets to reclaim space.
 
+The selected-test runner gives discovery/build a separate `1536MiB` GOMEMLIMIT,
+configurable with `--build-memory-limit`, while preserving the execution budget
+and explicit runtime overrides above. Discovery compiles and lists tests; the
+same-source execution reuses those build outputs. Both environments are recorded
+in the result JSON. This is a reversible attempt to reduce compiler GC pressure,
+not a measured speed improvement. Nine Python accounting/environment checks pass;
+actual baseline runs must still verify runtime settings and complete execution.
+
 ## Commits and recovery
 
 The working branch is `dev` in [dbenamy/opennox](https://github.com/dbenamy/opennox).
