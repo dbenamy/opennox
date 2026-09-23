@@ -1,0 +1,204 @@
+{
+  "status": "qualified direct Go safe exports",
+  "preceding_revision": "9d5b45896343db133610534bd2f46058cd5ae423",
+  "capture_sha256": "2b34e573e3b8f5b62ced16258ec2de832284fbe9d0cecc3a0c5120edf22eb59a",
+  "cases": 142,
+  "safe_runtime": {
+    "tags": "safe,porttest",
+    "success": true,
+    "timeout_seconds": 600,
+    "packages": [
+      "."
+    ],
+    "runtime_env": {
+      "GOMAXPROCS": "2",
+      "GOMEMLIMIT": "768MiB",
+      "GOGC": null
+    },
+    "discovery_exit": 0,
+    "selected_tests": 2,
+    "selected_root_tests": 2,
+    "exit": 0,
+    "started_tests": 2,
+    "completed_tests": 2,
+    "started_root_tests": 2,
+    "completed_root_tests": 2,
+    "skipped_tests": [],
+    "missing_started": [],
+    "missing_completed": [],
+    "reason": "all selected tests executed and finished",
+    "wall_seconds": 155.8811650951393
+  },
+  "safe_binary_sha256": "6278c4c4102af49ff8f2564b5e0335b2977e629cd0b7f0ac4eda4e6ebb779f2c",
+  "safe_go_exports": {
+    "nox_memcpy": 150734385,
+    "nox_memcmp": 150734993,
+    "nox_strlen": 150735601,
+    "nox_strcpy": 150736058,
+    "nox_strcat": 150736675,
+    "nox_strcmp": 150737292
+  },
+  "retained_callback_addresses": {
+    "safe": {
+      "nullsub_22": 151970300,
+      "nullsub_29": 151970251,
+      "nullsub_36": 151970316,
+      "nullsub_38": 151970332,
+      "nullsub_39": 151970348,
+      "nullsub_40": 151970364,
+      "nullsub_41": 151970380,
+      "nullsub_42": 151970396,
+      "nullsub_43": 151970412,
+      "nullsub_44": 151970428
+    },
+    "opennox": {
+      "nullsub_22": 150905200,
+      "nullsub_29": 150905184,
+      "nullsub_36": 150905216,
+      "nullsub_38": 150905232,
+      "nullsub_39": 150905248,
+      "nullsub_40": 150905264,
+      "nullsub_41": 150905280,
+      "nullsub_42": 150905296,
+      "nullsub_43": 150905312,
+      "nullsub_44": 150905328
+    },
+    "opennox-hd": {
+      "nullsub_22": 150905312,
+      "nullsub_29": 150905296,
+      "nullsub_36": 150905328,
+      "nullsub_38": 150905344,
+      "nullsub_39": 150905360,
+      "nullsub_40": 150905376,
+      "nullsub_41": 150905392,
+      "nullsub_42": 150905408,
+      "nullsub_43": 150905424,
+      "nullsub_44": 150905440
+    },
+    "opennox-server": {
+      "nullsub_22": 150253024,
+      "nullsub_29": 150253008,
+      "nullsub_36": 150253040,
+      "nullsub_38": 150253056,
+      "nullsub_39": 150253072,
+      "nullsub_40": 150253088,
+      "nullsub_41": 150253104,
+      "nullsub_42": 150253120,
+      "nullsub_43": 150253136,
+      "nullsub_44": 150253152
+    }
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 3.9463205779902637,
+        "sha256": "516ce0dea468313e1f12e756d6ef2fb8be861a27e2ec1326bc31a12663d9cb53",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 4.328883745940402,
+        "sha256": "3c853cba228fac1b005d5772d968c1f7bcebb4e4b06de0bd594c3507c0cd2c59",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 4.069200749043375,
+        "sha256": "4e71ee706aea951239572992d3e6e578e05db418700acfb63ff2c625196efe3f",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "safe-bridges-native-save": {
+        "exit": 0,
+        "wall_seconds": 45.39413328189403,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.85539083997719,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "516ce0dea468313e1f12e756d6ef2fb8be861a27e2ec1326bc31a12663d9cb53",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-safe-direct/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/safe-bridges-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Safe memory bridges exported directly from Go",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "d7c4883a119af5c596c7e2c98e0f8bce5cd4e74ee99353328ba9ffc16cbd7b15"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 55.4524133480154,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "preflight": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 74.3376308940351,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c",
+    "binary_sha256": "516ce0dea468313e1f12e756d6ef2fb8be861a27e2ec1326bc31a12663d9cb53",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-safe-direct/native-preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/safe-bridges-native/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Safe memory bridges exported directly from Go",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "production_c": {
+    "files": 3,
+    "lines": 25
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "source_manifest_sha256": "135d9b8542eb4a0a9cdd53d65ea1f383a3d6bf04e940ede6d6aaf5e7ea2d449c"
+}

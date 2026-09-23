@@ -2,59 +2,42 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: 45 physical lines in four production `.c` files**, zero
-reference C. The latest change removes two cgo-preamble bodies, outside that
-metric. C types, other preambles, generated bridges, libc and third-party C remain.
-See [C_LOC.md](docs/porting/C_LOC.md).
+**Qualified C remaining: 25 physical lines in three production `.c` files**, zero
+reference C. C types, preambles, generated bridges, libc and third-party MP3 C
+remain outside this metric. See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — entry classifiers call libc directly
+## Current — safe-profile direct Go exports qualified
 
-The actual-C baseline is committed/pushed as `cbf62bc1`. The subsequent direct-libc
-change is fully qualified and this checkpoint accompanies its commit. Check Git
-status/log/remote for the final commit/push; no self-referential hash is inferred.
+Actual-C baseline `9d5b4589` is committed/pushed. The six safe memory/string
+functions now export directly from Go using const-qualified pointer typedefs;
+cgo_safe.c is removed. Allocator semantics, ASan and macro remapping are preserved.
+All 142 frozen cases and the 129-case shop consumer pass under safe,porttest.
+Safe build/static, fresh three production builds/ABI, exact known-suite comparison,
+headless character creation and explicit save/load pass. Six old `_go` symbols
+are absent; ten live callback identities remain distinct. Only the safe Go source
+and deleted C file differ from the baseline fingerprint; no golden changed.
+See [SAFE_BRIDGES.md](docs/porting/SAFE_BRIDGES.md) and qualification JSON.
 
-`uiEntryDigit`/`uiEntryAlnum` now call the same libc classifiers with explicit
-`C.wint_t` widening. All 131,072 boolean classifications match three fresh C
-captures: SHA256 `f5c39db5e866885891bbb1fe8d0b2244d9fbcea7d232cdd4b7e6f90dd03ff6e0`.
-No locale substitution, reference C copy, or UI golden change was introduced.
-Four legacy contracts and twelve widget roots pass in each profile, no skips.
-Static, safe build, three production binaries/ABI, exact known-suite comparison,
-headless gameplay and explicit save/load pass. Source fingerprints agree;
-preflight matches production; all ten retained callback addresses stay distinct.
-Safe runtime was not tested; known full-suite failures remain unchanged.
+Pipelines52607 and25811 JOINED PASS; scenario assets were safely deduplicated.
+Finalizer finish-native.py is consumed after success. Check Git log/remote for
+this checkpoint's commit/push. Artifacts are build/port-safe-direct/native-
+{safe,preflight,production}; baseline c-source.json/c-probe captures are retained.
 
-Native pipeline91437 JOINED PASS; its finalizer29700 JOINED PASS. All build/test/
-scenario jobs are joined. Artifacts are `build/port-entry-direct/{c,native}-
-{default,server,highres,safe,preflight,production}`. The migration/finalizers and
-scenario cleanup scripts are CONSUMED. Tracked source supersedes ignored drafts.
-See [ENTRY_CLASSIFIERS.md](docs/porting/ENTRY_CLASSIFIERS.md) and both qualification
-JSON files. Do not regenerate captures or rerun consumed installers/finalizers.
+## Next — empty callback behavior and performance baseline
 
-## Active — safe-profile actual-C baseline
+Ten distinct empty C callbacks remain in common__object__modifier.c/GAME5_2.c.
+Read build/port-empty-callbacks/acceptance-plan.md. Readiness/Replenishment are
+both identity-sensitive and actually invoked; modifier paths pass 3/5/6 arguments,
+and Energy Bolt destruction passes one to a void(void) definition on this target.
+Preserve names/identities and measure the production Go→ccall dispatch path before
+accepting extra Go callback transitions. Do not port solely to lower the C count.
 
-Entry conversion `e007a425` is pushed. The six optional safe-profile C wrappers
-now have 142 bounded memory/string cases, three identical actual-C captures,
-and a frozen hash. Both the frozen contract and 129-case shop-loading consumer
-pass under safe,porttest without skips. Pipeline10340 and frozen pipeline29539
-are JOINED PASS. Production wrappers are unchanged; C remains 45 lines/four files.
-
-The baseline reuses entry production qualification only after checking every
-preceding source hash, all four production Go file selections, all four binary
-hashes and ten distinct callback addresses per binary. The two new files are
-safe&&porttest-only. See [SAFE_BRIDGES.md](docs/porting/SAFE_BRIDGES.md) and its
-qualification JSON. Artifacts are under build/port-safe-direct; c-source.json is
-the frozen source manifest. Do not regenerate the capture hash.
-
-Next: directly export the six Go implementations with const-pointer C typedefs;
-remove cgo_safe.c while retaining macros, AddressSanitizer, allocator semantics
-and public symbols. The isolated 386 cgo prototype probe already passes.
-Run fresh safe runtime/build/symbol checks and production/ABI/known-suite/
-headless/save-load gates after conversion. Only one bounded Luna helper drafts;
-primary reviews and accepts. Never edit source during a Go/build job.
-
-Later candidates: ten distinct empty callback exports and third-party MP3 C.
-Read build/port-empty-callbacks/go-entrypoint-design.md before callback work;
-ABI, identity and callback-loop overhead require evidence.
+Luna drafted bounded declaration-only identity/registry helpers in ignored
+build/port-empty-callbacks/drafts; primary drafted guarded-state contracts and a
+representative benchmark there. None are installed or qualified yet. Root test
+must independently validate expected metadata, not blindly trust the helper table.
+Only one Luna helper; primary reviews source and acceptance. No source changes
+or concurrent Go/build jobs during active qualification.
 
 ## Recent qualified milestones
 

@@ -17,6 +17,10 @@ package legacy
 #cgo CFLAGS: -Dstrcpy=nox_strcpy
 #cgo CFLAGS: -Dstrcat=nox_strcat
 #cgo CFLAGS: -Dstrcmp=nox_strcmp
+
+// Preserve const-qualified C arguments in the generated export declarations.
+typedef const void * nox_safe_const_void_ptr;
+typedef const char * nox_safe_const_char_ptr;
 */
 import "C"
 import (
@@ -59,32 +63,32 @@ func nox_memset(ptr unsafe.Pointer, v C.int, size C.uint) unsafe.Pointer {
 	return alloc.Memset(ptr, byte(v), uintptr(size))
 }
 
-//export nox_memcpy_go
-func nox_memcpy_go(dst, src unsafe.Pointer, size C.uint) unsafe.Pointer {
-	return alloc.Memcpy(dst, src, uintptr(size))
+//export nox_memcpy
+func nox_memcpy(dst unsafe.Pointer, src C.nox_safe_const_void_ptr, size C.uint) unsafe.Pointer {
+	return alloc.Memcpy(dst, unsafe.Pointer(src), uintptr(size))
 }
 
-//export nox_memcmp_go
-func nox_memcmp_go(ptr1, ptr2 unsafe.Pointer, size C.uint) int {
-	return int(alloc.Memcmp(ptr1, ptr2, uintptr(size)))
+//export nox_memcmp
+func nox_memcmp(ptr1, ptr2 C.nox_safe_const_void_ptr, size C.uint) C.int {
+	return C.int(alloc.Memcmp(unsafe.Pointer(ptr1), unsafe.Pointer(ptr2), uintptr(size)))
 }
 
-//export nox_strlen_go
-func nox_strlen_go(ptr *C.char) C.uint {
+//export nox_strlen
+func nox_strlen(ptr C.nox_safe_const_char_ptr) C.uint {
 	return C.uint(alloc.Strlen(unsafe.Pointer(ptr)))
 }
 
-//export nox_strcpy_go
-func nox_strcpy_go(dst, src *C.char) *C.char {
+//export nox_strcpy
+func nox_strcpy(dst *C.char, src C.nox_safe_const_char_ptr) *C.char {
 	return (*C.char)(alloc.Strcpy(unsafe.Pointer(dst), unsafe.Pointer(src)))
 }
 
-//export nox_strcat_go
-func nox_strcat_go(dst, src *C.char) *C.char {
+//export nox_strcat
+func nox_strcat(dst *C.char, src C.nox_safe_const_char_ptr) *C.char {
 	return (*C.char)(alloc.Strcat(unsafe.Pointer(dst), unsafe.Pointer(src)))
 }
 
-//export nox_strcmp_go
-func nox_strcmp_go(str1, str2 *C.char) int {
-	return int(alloc.Strcmp(unsafe.Pointer(str1), unsafe.Pointer(str2)))
+//export nox_strcmp
+func nox_strcmp(str1, str2 C.nox_safe_const_char_ptr) C.int {
+	return C.int(alloc.Strcmp(unsafe.Pointer(str1), unsafe.Pointer(str2)))
 }

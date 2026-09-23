@@ -283,6 +283,7 @@ target build selection and linker evidence.
 | Remaining global and mapped-buffer storage | 4 | 51 | −63 | 0 |
 | Orphan inline helpers and empty Obelisk calls | 4 | 45 | −6 | 0 |
 | Entry classifiers: two preamble bodies removed | 4 | 45 | 0 | 0 |
+| Safe memory/string exports directly from Go | 3 | 25 | −20 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

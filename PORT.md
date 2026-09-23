@@ -14,11 +14,11 @@
 
 ## Current status
 
-The six optional safe-profile forwarding shims have a frozen actual-C baseline:
-142 memory/string cases across three matching runs plus the 129-case shop-loading
-consumer pass under safe,porttest. Unchanged production qualification is reused
-only after source, file-selection and binary identity checks. C remains 45 lines
-in four files. See [SAFE_BRIDGES.md](docs/porting/SAFE_BRIDGES.md).
+The six optional safe-profile forwarding shims now export directly from Go.
+All 142 frozen cases, the shop-loading consumer, safe build, production/ABI,
+known-suite and headless/save-load gates pass. Standalone C is **25 physical lines
+in three files**, down 20; C headers, generated bridges and third-party decoder
+implementation remain. See [SAFE_BRIDGES.md](docs/porting/SAFE_BRIDGES.md).
 
 Entry-character predicates now call the same libc classifiers directly, removing
 two custom cgo-preamble bodies. All 131,072 classifications and twelve widget roots

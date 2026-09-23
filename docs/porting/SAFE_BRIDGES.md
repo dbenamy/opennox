@@ -1,7 +1,20 @@
 # Optional safe-profile forwarding shims
 
-Status: actual-C runtime baseline passes against pushed entry conversion
-`e007a425`. Production wrappers are unchanged; standalone C remains 45 lines/four
+Status: direct Go exports qualified against the actual-C runtime baseline.
+Standalone C is now **25 physical lines in three files**, down 20 lines and one
+translation unit; zero reference C. The six public functions are Go exports with
+const-qualified pointer typedefs and explicit C comparison return types. Macro
+redirection, sanitizer flags, foreign allocation and function semantics remain.
+
+All 142 frozen cases and the 129-case shop consumer pass under safe,porttest.
+The safe production build and static check pass. Three fresh production binaries
+pass ABI checks; the known-suite failure/package sets match exactly; headless
+character creation and explicit save/load pass. The six old `_go` names are absent
+and all ten live callback addresses stay distinct. See
+[safe-bridges-native-qualification.json](safe-bridges-native-qualification.json).
+
+The actual-C runtime baseline was captured against pushed entry conversion
+`e007a425`. That baseline kept production wrappers unchanged at 45 C lines/four
 files. Three fresh processes produce the same 142-case capture, frozen as
 `2b34e573e3b8f5b62ced16258ec2de832284fbe9d0cecc3a0c5120edf22eb59a`.
 The frozen contract and 129-case shop consumer pass under `safe,porttest`, with
@@ -10,8 +23,8 @@ both discovered roots completed and no skips. See
 
 The optional `safe` build routes legacy C allocation and memory/string calls
 through Go allocator exports and enables AddressSanitizer plus mapped-memory
-checks. Six C wrappers currently adapt const-qualified pointers to `_go` exports.
-The proposed change exports those Go implementations directly using named C
+checks. Six C wrappers previously adapted const-qualified pointers to `_go` exports.
+The conversion exports those Go implementations directly using named C
 const-pointer typedefs, retaining the public names, libc/allocator behavior,
 macro redirection and sanitizer settings. A compiled isolated 386 cgo probe
 confirms that generated C prototypes preserve the typedefs' const qualification.
@@ -39,8 +52,9 @@ bounded-comparison and exact-capacity cases before execution. Primary wrote the
 actual-C bridge and owns acceptance. Source reports also required regex escaping
 corrections. No net subscription savings have been measured.
 
-The intended baseline reuse is limited to unchanged production builds: new files
-are tagged `safe && porttest` and must be shown excluded from production file
-selection. Verify every previous source hash and reused binary hash before
-acceptance. The new safe runtime contracts/captures must run fresh. After the
-conversion, rerun safe runtime/build checks and fresh production qualification.
+Baseline reuse was limited to unchanged production builds: official Go file
+selection excluded both new `safe && porttest` fixtures from all four production
+variants. Every preceding source hash and reused binary hash was verified, along
+with the ten callback identities. Safe runtime checks ran fresh. After conversion,
+all production/gameplay gates ran fresh; only cgo_safe.go and deletion of
+cgo_safe.c differ from the baseline source fingerprint. No test/golden changed.
