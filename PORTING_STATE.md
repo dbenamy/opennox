@@ -317,3 +317,11 @@ and runner, including stateful block sequences. Explicitfloat32 operation order,
 in-place temp/overlap reads and retained tails require review. No active builds.
 Old MP3 raw captures remain archived (restore before oldfinalizers); current
 spectrumraw files remainplain. Free disk~400MiB. Assets/archive preserved.
+
+## Current — IMDCT C baseline frozen
+
+Spectrum6def3e8f pushed. IMDCT capture63245 joined PASS:2380records/1258granule
+steps, three native386scalarSSE2 runs and UBSan exact. All60constants match; Luna
+independently reviewed draft/capture. Primary runner drafted in ignored build dir.
+Next install reviewed Go draft and qualify sixroots in fiveconfigurations plus vet.
+C sixlines/onefile/referencezero/81preambles; no production behavior change.
