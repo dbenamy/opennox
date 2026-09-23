@@ -9,11 +9,11 @@ zero; the third-party implementation header and 81 preamble bodies remain separa
 
 `tools/porting/capture_mp3_scalefactors.py` calls the real production header under
 `-m32 -msse2 -mfpmath=sse`. Three native processes and an additional UBSan process
-produce identical results for 36,842 records. The preceding SSE correction supplies
+produce identical results for 57,002 records. The preceding SSE correction supplies
 the arithmetic baseline; x87 outputs are intentionally not used. Provenance is in
 [mp3-scalefactors-c-capture.json](mp3-scalefactors-c-capture.json).
 
-- 14,112 byte-reader cases: actual partition shapes plus early termination,
+- 34,272 byte-reader cases: actual partition shapes plus early termination,
 widths 0–5, reuse masks and negative intensity mode, logical truncation, several
 bit offsets and input patterns. Capture both complete 40-byte output buffers,
 reader state and surrounding canaries, exposing retained tails and coded sentinels.
@@ -36,3 +36,10 @@ The active gain path uses MAX_SCFI 44 and nonnegative quarter exponents; integer
 shifts stay within the original defined domain. Decoder-output acceptance still
 requires complete PCM/stream tests later; these helper results do not establish
 end-to-end Go audio playback or a performance result.
+
+Luna's independent capture review identified missing compound MPEG-1 reuse masks.
+The initial36,842-case baseline (`a0b53493`) already passed Go comparisons in all
+five configurations. Before acceptance,20,160 appended cases extend the direct
+reader to every mask0–15 plus the negative intensity mode. Every earlier fixture
+byte is unchanged; three expanded captures and UBSan match. The review improved
+coverage rather than changing an expectation to hide a Go mismatch.

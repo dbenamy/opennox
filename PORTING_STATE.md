@@ -259,3 +259,10 @@ Luna independently reviews capture domains, no builds/edits. No active jobs.
 Next: install reviewed source and runner, exactfloat-bit qualification plus existing
 MP3 roots, source/binary reuse proof, commit/push then next decoder stage.
 C stays six lines/one file/referencezero. Checkdisk before larger work.
+
+Scalefactor initial Go run12523 joined PASS in all5configs, including exactfloatbits.
+Luna's read-only review found missingcompoundreusemasks. ExpandedC capture22739
+joined PASS:57002totalcases,3+UBSan identical; all36842oldrecords byte-identical.
+Expandedbaseline committed before finalGoacceptance. Initial push37598 failed
+publickey once; SSHtest authenticateddbenamytravis and retry88757 pushed a0b53493.
+No key changes needed. Next: rerun expandedfixture, finalize/commitGo scalefactors.

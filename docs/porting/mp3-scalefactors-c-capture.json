@@ -1,20 +1,20 @@
 {
   "counts": [
-    14112,
+    34272,
     10250,
     12480
   ],
   "result_sha256": [
-    "d9243bbf265e39f42391f6362d98602e55764b071c14c51b8180a1cfc9d47d58",
-    "d9243bbf265e39f42391f6362d98602e55764b071c14c51b8180a1cfc9d47d58",
-    "d9243bbf265e39f42391f6362d98602e55764b071c14c51b8180a1cfc9d47d58"
+    "4816971f71824d26b084bbaa3b2664e639d0ab8bf169ba07a1a26f22c01e17e2",
+    "4816971f71824d26b084bbaa3b2664e639d0ab8bf169ba07a1a26f22c01e17e2",
+    "4816971f71824d26b084bbaa3b2664e639d0ab8bf169ba07a1a26f22c01e17e2"
   ],
-  "ubsan_result_sha256": "d9243bbf265e39f42391f6362d98602e55764b071c14c51b8180a1cfc9d47d58",
-  "uncompressed_sha256": "67695331679d79372425b2fd56a162fed3c849cac633e214762a63bc169a8a45",
-  "fixture_sha256": "eeeebc559fa61b5a6c997311adde79e99c5edfedeb4c783f0f2c107f38fd5a3e",
-  "source_commit": "1407413fe32781e70ca38890c51a07a7c50b9c3f",
+  "ubsan_result_sha256": "4816971f71824d26b084bbaa3b2664e639d0ab8bf169ba07a1a26f22c01e17e2",
+  "uncompressed_sha256": "44d7df50676a00eb2379474ab61bdd2dcffd0ec7fac2905b7f8f335d27063707",
+  "fixture_sha256": "0c9a911e29df746899ba14db952ad4bb5dfb11c3231b067d4ab4bb71664e2c82",
+  "source_commit": "a0b534932f74cdcdb5514b7c7303836241d1ff00",
   "header_sha256": "e03e87c847cbdfd79cd3bf74a3b1fe24bc8c590245e92ce8153e87b23e17507f",
-  "tool_sha256": "ff404349824a3f37e1e9fd2e954a2ffeadeb0ea31a8f2194145797d2d012e42c",
+  "tool_sha256": "e29083de3fb1e3c3a47b5eaf726b3a5ae16e3664177d11f293a53c2d5542622b",
   "shim_sha256": "806e501ce0731db51e1c6475bd56b86dc0cd1c89a057c21a3a9cd364c5cb26da",
   "compiler": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
   "flags": [
@@ -27,7 +27,14 @@
     "-mfpmath=sse",
     "-I",
     "/root/src/opennox/src/legacy/client/audio/mp3",
-    "/root/src/opennox/build/port-mp3-scalefactors/capture/capture.c",
+    "/root/src/opennox/build/port-mp3-scalefactors/capture-expanded/capture.c",
     "-lm"
-  ]
+  ],
+  "coverage_extension": {
+    "prior_baseline": "a0b53493",
+    "old_records": 36842,
+    "new_records": 20160,
+    "all_old_records_byte_identical": true,
+    "reason": "Luna independent review identified missing compound MPEG1reuse masks; append every remaining mask."
+  }
 }

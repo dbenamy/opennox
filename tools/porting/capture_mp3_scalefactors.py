@@ -82,6 +82,16 @@ def requests():
                     flags=pre|(scale<<1)|(scfsi<<8)
                     yield 3,h+u(length,start,pat,compress,gain,layout,sub,flags,ch),216
 
+
+    # Append every missing MPEG-1 reuse mask without changing any preceding
+    # frozen record. Single-bit masks alone do not cover interacting groups.
+    for count in counts:
+        for size in sizes:
+            for scfsi in (3,5,6,7,9,10,11,12,13,14):
+                for length in (0,1,8,64):
+                    for start in (0,3,16):
+                        for pat in (0,1,4):yield 1,bytes(size+count)+u(scfsi,length,start,pat),92
+
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('output',type=Path);args=ap.parse_args()
