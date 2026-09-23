@@ -334,3 +334,11 @@ changes. Finalizer source/fourbinary hashes PASS; production evidence reused.
 C sixlines/onefile/refzero/81preambles. Luna source and independent runner review
 found no blockingissue; primary owns acceptance. Next scalar synthesis DCT draft
 and capture in build/port-mp3-dct/drafts. No builds active.
+
+## Current — synthesis DCT C baseline
+
+IMDCT07d4b572 pushed. DCT capture25879 joined PASS:2172records, three native
+386scalarSSE2 processes and UBSan exact. All24tableconstantsmatch. Primaryreview
+corrected Luna callerdescription:18 is active for all LayerIII versions;12 is
+inactiveLayerI/II extent. Runnerdraft build/port-mp3-dct/drafts/dct_test.go.
+Next install reviewed draft and qualify sevenroots/fiveconfigs+vet.

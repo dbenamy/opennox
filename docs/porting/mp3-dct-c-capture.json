@@ -1,0 +1,30 @@
+{
+  "cases": 2172,
+  "result_sha256": [
+    "c42e791a0ad22257f68a063d81a98779dd43c0fbf51e6604b7017ef60ae10615",
+    "c42e791a0ad22257f68a063d81a98779dd43c0fbf51e6604b7017ef60ae10615",
+    "c42e791a0ad22257f68a063d81a98779dd43c0fbf51e6604b7017ef60ae10615"
+  ],
+  "ubsan_result_sha256": "c42e791a0ad22257f68a063d81a98779dd43c0fbf51e6604b7017ef60ae10615",
+  "uncompressed_sha256": "94e0c6fc6283b89b0846dee8a44a40eca979374861b877b8e3241a354af482d6",
+  "fixture_sha256": "17d8deacef7047763f5629130db0af17d65e7b86ebb2fbd2fb58636aa6ca768c",
+  "source_commit": "07d4b57200a7362dbae77ee21211562b0a5ed714",
+  "header_sha256": "e03e87c847cbdfd79cd3bf74a3b1fe24bc8c590245e92ce8153e87b23e17507f",
+  "tool_sha256": "9e6659350895fbd6f288c183beaaaa83f823f92970d04db0f41fb3c74dda322c",
+  "pattern_tool_sha256": "8d0d23366cd3e0f587cdab78af9d332d8d8e7842d78f15e607b3e35045ed2936",
+  "shim_sha256": "427c9a513dd60492639d7168e3d77d980449c7ba87fa3bfaca6b74b29e0c3e19",
+  "compiler": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+  "flags": [
+    "gcc",
+    "-m32",
+    "-std=c11",
+    "-O2",
+    "-g",
+    "-msse2",
+    "-mfpmath=sse",
+    "-I",
+    "/root/src/opennox/src/legacy/client/audio/mp3",
+    "/root/src/opennox/build/port-mp3-dct/capture/capture.c",
+    "-lm"
+  ]
+}
