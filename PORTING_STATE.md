@@ -266,3 +266,19 @@ joined PASS:57002totalcases,3+UBSan identical; all36842oldrecords byte-identical
 Expandedbaseline committed before finalGoacceptance. Initial push37598 failed
 publickey once; SSHtest authenticateddbenamytravis and retry88757 pushed a0b53493.
 No key changes needed. Next: rerun expandedfixture, finalize/commitGo scalefactors.
+
+## Current — Go scalefactors qualified, unwired
+
+Mask baseline dc2ff6a8 committed/pushed. FinalGo run29666 joined PASS in all5configs:
+4roots/819207integer/36864side-info/2774stream/57002scalefactor vectors, exactfloat
+bits; vet passes. Source and allfourSSE binary hashes verified by finalizer.
+See mp3-scalefactors-go-qualification.json. Current source unimported by production;
+prior production/ABI/gameplay evidence explicitly reused. C sixlines/onefile/refzero.
+
+Next Luna draft: build/port-mp3-spectrum/drafts, scalar stereo/top-band/intensity/
+reorder/antialias helpers. Primary investigates a caller-extent concern before
+capture: MPEG2.5 rateindex2 mixed table row1 has first6widths sum48, but caller
+nLongBands4 gives offset72, and remaining widths sum528 (end600). Verify source/
+reachability before asserting/fixing a bug; don't silently normalize behavior.
+No active primary builds. Disk~320MiB; compress older raw captures with verified
+round trips/restoration record before larger spectrum fixtures. Assets untouched.

@@ -1,0 +1,94 @@
+{
+  "status": "qualified unwired Go MP3 scalefactor bytes and exact scalar-SSE2 float results",
+  "baseline_revision": "dc2ff6a8948ce154007c75cb381e6df318bc96a9",
+  "tests": {
+    "default": {
+      "log_sha256": "84a6119cd217df6b9ee6f9f015c4b5c9cc8890d60ec55376e71cc040b3c8cd02",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "server": {
+      "log_sha256": "dd4e7fbcfc02d7680588426ad208ebf1525c79345c80d6e143a6bb362e51923f",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "highres": {
+      "log_sha256": "21bb9c9e5558c1660b1a3038c82da4ac3c814b5756b86bfc05f031418d3467c1",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "safe": {
+      "log_sha256": "7217aeaf460be81665481043babec98e263ddf43393a473d78460ce35fdfdb17",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "pure-go": {
+      "log_sha256": "fee91745d4f797cf5a9521813727fc2d55608712bbda2077717c15298049d8cc",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    }
+  },
+  "go_vet": "pass",
+  "scalefactor_cases": 57002,
+  "integer_table_entries_compared": 134,
+  "c_ubsan_output_sha256": "4816971f71824d26b084bbaa3b2664e639d0ab8bf169ba07a1a26f22c01e17e2",
+  "production_reuse": {
+    "prior_qualification": "docs/porting/mp3-stream-go-qualification.json",
+    "prior_qualification_sha256": "1b00fbf75e0045844950c48981fca509a1cee92d94fab0bbbe5f3fcc2251a3df",
+    "old_source_files_unchanged": 2988,
+    "new_source": {
+      "src/legacy/client/audio/mp3/scalefactors.go": "38f0098e79d52add18df03e01aeffb5591db7fc6a6db776ae4e2a3ca27063537",
+      "src/legacy/client/audio/mp3/scalefactors_test.go": "6157ee44d4eb2b1fe9125bd1e28f26d6dbbfadb3bcf2fabdc034823466020202"
+    },
+    "binary_hashes_rechecked": {
+      "build/port-mp3-sse/production/production/bin/opennox": "f5614bd62f8e7df5ff11d6cb4eabe12b2a64d90c08a549e150ffdce30bc2ea7e",
+      "build/port-mp3-sse/production/production/bin/opennox-hd": "dc1839db87529a2a113d1bf7913f892a3abd6cc6fb91bf4885493f6c0aaa77c7",
+      "build/port-mp3-sse/production/production/bin/opennox-server": "7b6b605e5b63769e573e7fb4ad9bc575bf64b2708c61dfece444fd7352383916",
+      "build/port-mp3-sse/safe/opennox-safe": "929cd084b161bb80cc7a03fea351c20738b2a382b31acf5f89d99acd9980ba82"
+    },
+    "reason": "Only private code/tests added to the existing unimported package; all previous source files and production binary hashes unchanged. Previous dependency selections remain applicable."
+  },
+  "production_c": {
+    "files": 1,
+    "lines": 6
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "limits": [
+    "Production and gameplay evidence reused, not rerun.",
+    "No complete Go decoder or new PCM claim.",
+    "Exact float-bit helper results do not yet establish full-decoder PCM or performance."
+  ]
+}

@@ -14,6 +14,13 @@
 
 ## Current status
 
+Go MP3 scalefactor byte parsing and quarter-power scaling now match57,002 frozen
+scalar-SSE2 C cases, with exact float bits and every reuse mask. All four helper
+roots pass in four profiles and with cgo disabled. The complete decoder remains
+unwired; production evidence is explicitly reused after source/binary checks.
+C remains six standalone lines plus the active header. Next: stereo/reordering/
+antialiasing. See [MP3_SCALEFACTORS.md](docs/porting/MP3_SCALEFACTORS.md).
+
 Go MP3 frame scanning, initialization and reservoir helpers now match2,774 frozen
 C cases, including the real48KiB input-buffer boundary and retained state/tails.
 All previous MP3 helper tests still pass in four profiles and with cgo disabled.
