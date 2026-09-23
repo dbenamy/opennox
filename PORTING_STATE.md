@@ -7,7 +7,31 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — MP3 synthesis performance qualified
+## Current — direct book callback baseline qualified
+
+Ten book drag/drop C round trips are the next bounded conversion. The original
+path passed historical frozen spellbook captures in default/server/highres;
+the broader baseline selected 138/137/138 roots. New
+TestSpellbookDragHideContract passes against the original path and covers the
+previously missing type1-clear branch, other types and early-exit guards.
+All prior source is unchanged, so production evidence from the MP3 synthesis
+checkpoint is reused after source/binary identity verification. See
+[baseline qualification](docs/porting/book-direct-calls-c-qualification.json).
+
+Sessions 61445 and 26048 are joined PASS. Artifacts: `build/port-book-direct`.
+Nine byte-identical immutable binary paths now share storage, recovering
+442,609,720 bytes after host process/open-file and hash checks; original paths and
+contents remain. Record: `duplicate-binaries-shared.json` in that directory.
+Before modifying a retained binary, separate its inode with copy-to-temp and
+replace. Do not overwrite a shared inode in place.
+
+Next: replace the ten C selector calls with existing Go callback variables,
+retain explicit signed32 normalization and exports, run the 25 spellbook roots
+(including the new contract) and unchanged 24 frozen captures in three profiles,
+then fresh production qualification. Luna prepared the test and a separate,
+unapplied 27-call balance getter draft for the following batch.
+
+## Earlier — MP3 synthesis performance qualified
 
 Only synthesis.go changes production behavior: lane-local accumulation preserves
 float32 order, and mono skips PCM calculations whose results were overwritten.

@@ -1,0 +1,257 @@
+{
+  "status": "qualified unchanged C round-trip baseline plus drag/hide state contract",
+  "revision": "4ccf62fbf34bfcce7cb44ecdc9e619cdd3701e52",
+  "baseline": {
+    "batch": "book-direct-calls",
+    "phase": "contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/spellbook-affected-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-book-direct/baseline/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-book-direct/baseline/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 114.38202167814597
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/spellbook-affected-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-book-direct/baseline/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-book-direct/baseline/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 260.35676804184914
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/spellbook-affected-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-book-direct/baseline/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-book-direct/baseline/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 113.85631713317707
+      }
+    ],
+    "revision": "4ccf62fbf34bfcce7cb44ecdc9e619cdd3701e52",
+    "source_unchanged": true,
+    "wall_seconds": 489.29158442188054,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "profiles": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 138,
+      "selected_root_tests": 138,
+      "exit": 0,
+      "started_tests": 138,
+      "completed_tests": 138,
+      "started_root_tests": 138,
+      "completed_root_tests": 138,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 114.307048371993
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 137,
+      "selected_root_tests": 137,
+      "exit": 0,
+      "started_tests": 137,
+      "completed_tests": 137,
+      "started_root_tests": 137,
+      "completed_root_tests": 137,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 260.2831683130935
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 138,
+      "selected_root_tests": 138,
+      "exit": 0,
+      "started_tests": 138,
+      "completed_tests": 138,
+      "started_root_tests": 138,
+      "completed_root_tests": 138,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 113.78533804393373
+    }
+  },
+  "supplement": {
+    "batch": "book-direct-calls",
+    "phase": "supplement",
+    "success": true,
+    "steps": [
+      {
+        "name": "drag-hide",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/book-direct-calls-supplement-tests.txt",
+          "--tags",
+          "porttest",
+          "--log",
+          "/root/src/opennox/build/port-book-direct/supplement-baseline/tests.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-book-direct/supplement-baseline/tests.json",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 70.96625355491415
+      }
+    ],
+    "revision": "4ccf62fbf34bfcce7cb44ecdc9e619cdd3701e52",
+    "source_unchanged": true,
+    "wall_seconds": 71.22704532300122,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "supplement_tests": {
+    "tags": "porttest",
+    "success": true,
+    "timeout_seconds": 600,
+    "packages": [
+      "."
+    ],
+    "runtime_env": {
+      "GOMAXPROCS": "2",
+      "GOMEMLIMIT": "768MiB",
+      "GOGC": null
+    },
+    "discovery_exit": 0,
+    "selected_tests": 1,
+    "selected_root_tests": 1,
+    "exit": 0,
+    "started_tests": 1,
+    "completed_tests": 1,
+    "started_root_tests": 1,
+    "completed_root_tests": 1,
+    "skipped_tests": [],
+    "missing_started": [],
+    "missing_completed": [],
+    "reason": "all selected tests executed and finished",
+    "wall_seconds": 70.86099107796326
+  },
+  "test_sha256": "b9dd2e99aeb5afc735fef42770e4ccb1bfadb9ce1359a16b7b66121068439431",
+  "production_reused_from": "mp3-synthesis-performance-qualification.json",
+  "production_binary_sha256": {
+    "safe": "59591f0ae58ec1e1b5da892103a0f3947b920983689d0254c051996c5c1b6694",
+    "opennox": "c4ea0549a9412188bf275c6678610eb0c28d85ec2b6a29ed8f0a5a99c9136662",
+    "opennox-hd": "94b68a6a8feed3ae62457538d94710b44aec2ffbe3213db6c408f8f5de492adf",
+    "opennox-server": "e2b1003f2a328ba6fe6c5747537969525df3bc98b4e93b4951640fafa21be667"
+  },
+  "source_identity": "All preexisting source identical to reused production evidence; only new porttest file added.",
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79
+}
