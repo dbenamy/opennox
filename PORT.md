@@ -14,6 +14,12 @@
 
 ## Current status
 
+The six optional safe-profile forwarding shims have a frozen actual-C baseline:
+142 memory/string cases across three matching runs plus the 129-case shop-loading
+consumer pass under safe,porttest. Unchanged production qualification is reused
+only after source, file-selection and binary identity checks. C remains 45 lines
+in four files. See [SAFE_BRIDGES.md](docs/porting/SAFE_BRIDGES.md).
+
 Entry-character predicates now call the same libc classifiers directly, removing
 two custom cgo-preamble bodies. All 131,072 classifications and twelve widget roots
 per profile match the C baseline; production/ABI/gameplay/save-load gates pass.

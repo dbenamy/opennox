@@ -1,0 +1,81 @@
+{
+  "status": "qualified actual-C safe forwarding baseline",
+  "preceding_revision": "e007a42573f9cb69257ba49d3ec3f1567a632a15",
+  "capture_sha256": "2b34e573e3b8f5b62ced16258ec2de832284fbe9d0cecc3a0c5120edf22eb59a",
+  "cases": 142,
+  "fresh_capture_processes": 3,
+  "safe_runtime": {
+    "tags": "safe,porttest",
+    "success": true,
+    "timeout_seconds": 600,
+    "packages": [
+      "."
+    ],
+    "runtime_env": {
+      "GOMAXPROCS": "2",
+      "GOMEMLIMIT": "768MiB",
+      "GOGC": null
+    },
+    "discovery_exit": 0,
+    "selected_tests": 2,
+    "selected_root_tests": 2,
+    "exit": 0,
+    "started_tests": 2,
+    "completed_tests": 2,
+    "started_root_tests": 2,
+    "completed_root_tests": 2,
+    "skipped_tests": [],
+    "missing_started": [],
+    "missing_completed": [],
+    "reason": "all selected tests executed and finished",
+    "wall_seconds": 64.72587994695641
+  },
+  "production_reuse": {
+    "qualification": "entry-classifiers-native-qualification.json",
+    "qualification_sha256": "e80c8a2a2a3043b9fa3bfce38a169b3cfd8ea5e034a8d713329914fe9c2a7c7a",
+    "old_source_files_verified": 2978,
+    "only_new_sources": [
+      "src/legacy/safe_memory_porttest.go",
+      "src/safe_memory_contract_porttest_test.go"
+    ],
+    "selection": {
+      "default": {
+        "packages": 494,
+        "new_fixtures_selected": false,
+        "selection_sha256": "6e9271d3b29c60e14684a2364cd4d6e66e4beaf1d3b1801ab1e056c31d13d8dd"
+      },
+      "server": {
+        "packages": 474,
+        "new_fixtures_selected": false,
+        "selection_sha256": "601cbed916cb02d3e662fa181f8faba64512120683203e70197279f2bb16f791"
+      },
+      "highres": {
+        "packages": 494,
+        "new_fixtures_selected": false,
+        "selection_sha256": "a3cd43c38e5e62328a3dbe89c4b3c47229dd9a75f498e6b415c4fe05f95074aa"
+      },
+      "safe": {
+        "packages": 494,
+        "new_fixtures_selected": false,
+        "selection_sha256": "29f8f859bd3b5e3d081e2c456e2760a35a1e0d9c935c9cba3933f639abc421ce"
+      }
+    },
+    "binary_sha256": {
+      "opennox": "7d2351c544a44076ead5298bd51f0796ab8837cb511a45646711c54762a86cf0",
+      "opennox-hd": "83a8c1e90e9b81001351333293097de83aa5797f203a36e38cbb71fa1ce3b4f2",
+      "opennox-server": "86fc62d41ad92e237e0366edb7d575b144dfb21cc6df564c8fab29a2c1c2c6ef",
+      "safe": "5faef70bde23e204b6797a83968f581f4f62d6852f9095abbe24214660a9c94f"
+    },
+    "ten_callback_addresses_verified": true,
+    "scope": "unchanged production builds, ABI, known-suite, gameplay and save/load; fresh safe runtime tests above"
+  },
+  "production_c": {
+    "files": 4,
+    "lines": 45
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "source_manifest_sha256": "d161f09ac00fb222ecd138fe5e10ba47e7cb054a460227f3d775e5918976c78e"
+}

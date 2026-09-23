@@ -30,33 +30,31 @@ scenario cleanup scripts are CONSUMED. Tracked source supersedes ignored drafts.
 See [ENTRY_CLASSIFIERS.md](docs/porting/ENTRY_CLASSIFIERS.md) and both qualification
 JSON files. Do not regenerate captures or rerun consumed installers/finalizers.
 
-## Next — optional safe-profile forwarding shims
+## Active — safe-profile actual-C baseline
 
-After the current commit/push, inspect/run the isolated const-pointer export probe
-under `build/port-safe-direct/probe`, sourcing `build/baseline/env.sh` first. It has
-not been compiled. Its declarations require the generated Go export prototypes
-to remain const-qualified. Only proceed with direct Go exports if that succeeds.
-The production safe shims are still unchanged (20 C lines); ASan, macro remapping,
-allocator behavior and compatibility symbol names must be preserved.
+Entry conversion `e007a425` is pushed. The six optional safe-profile C wrappers
+now have 142 bounded memory/string cases, three identical actual-C captures,
+and a frozen hash. Both the frozen contract and 129-case shop-loading consumer
+pass under safe,porttest without skips. Pipeline10340 and frozen pipeline29539
+are JOINED PASS. Production wrappers are unchanged; C remains 45 lines/four files.
 
-Read ignored `build/port-safe-direct/PLAN.md` and `contract-cases.md`. Luna drafted
-the edge matrix; primary reviewed it and corrected report escaping/return-value
-scope. Runtime support under safe,porttest still needs establishing. New fixtures
-should use the existing root-package/Go-bridge pattern where practical to share
-consumer builds. Captures should call the actual six C shims before conversion;
-independent compare assertions use sign, while target-specific raw returns may be
-recorded separately. Avoid undefined overlap, capacity and pointer inputs.
+The baseline reuses entry production qualification only after checking every
+preceding source hash, all four production Go file selections, all four binary
+hashes and ten distinct callback addresses per binary. The two new files are
+safe&&porttest-only. See [SAFE_BRIDGES.md](docs/porting/SAFE_BRIDGES.md) and its
+qualification JSON. Artifacts are under build/port-safe-direct; c-source.json is
+the frozen source manifest. Do not regenerate the capture hash.
 
-A read-only helper is tracing whether existing TestShopStockLoading actually
-reaches FieldGuideXfer/strcpy; do not infer branch coverage from type29 alone.
-Its prospective report is `build/port-safe-direct/shop-fieldguide-trace.md`.
-Only one bounded GPT-6 Luna helper is used; implementation and acceptance remain
-primary-owned. No safe-shim production/test source changes are applied yet.
+Next: directly export the six Go implementations with const-pointer C typedefs;
+remove cgo_safe.c while retaining macros, AddressSanitizer, allocator semantics
+and public symbols. The isolated 386 cgo prototype probe already passes.
+Run fresh safe runtime/build/symbol checks and production/ABI/known-suite/
+headless/save-load gates after conversion. Only one bounded Luna helper drafts;
+primary reviews and accepts. Never edit source during a Go/build job.
 
 Later candidates: ten distinct empty callback exports and third-party MP3 C.
-Read `build/port-empty-callbacks/go-entrypoint-design.md` before callback work;
-ABI, identity and callback-loop overhead require evidence. Other read-only audits
-are under `build/port-inline-c-audit` and `build/port-safe-bridge-audit`.
+Read build/port-empty-callbacks/go-entrypoint-design.md before callback work;
+ABI, identity and callback-loop overhead require evidence.
 
 ## Recent qualified milestones
 
