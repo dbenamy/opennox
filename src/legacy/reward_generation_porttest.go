@@ -65,6 +65,7 @@ import (
 )
 
 type PortTestRewardSpec struct {
+	RegisteredInit         bool
 	InitByRef              map[int]map[int]uint32
 	UpdateName             string
 	Stage                  uint32
@@ -148,7 +149,13 @@ func (p *portTestShopPools) rewardPrepare() func() {
 func (p *portTestShopPools) rewardAction(a PortTestShopAction) uint32 {
 	attack := p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack
 	state := p.temporary.world.objectives.attack.reward
-	state.result = uint32(C.rewardCall(C.int(a.Op-1300), asObjectC(p.temporaryRef(attack.Actor)), C.uint32_t(attack.Reward.Stage)))
+	if attack.Reward.RegisteredInit && a.Op >= 1300 && a.Op <= 1308 {
+		names := []string{"SparkInit", "FrogInit", "ChestInit", "BoulderInit", "SkullInit", "DirectionInit", "GoldInit", "BreakInit", "MonsterGeneratorInit"}
+		PortTestRegisteredInit(p.temporaryRef(attack.Actor), names[a.Op-1300])
+		state.result = 0
+	} else {
+		state.result = uint32(C.rewardCall(C.int(a.Op-1300), asObjectC(p.temporaryRef(attack.Actor)), C.uint32_t(attack.Reward.Stage)))
+	}
 
 	// These factories return newly allocated objects without placing them. Adopt
 	// their returned allocation for capture and teardown; do not synthesize a

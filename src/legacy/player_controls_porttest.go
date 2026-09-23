@@ -103,6 +103,7 @@ import (
 )
 
 type PortTestPlayerControlsSpec struct {
+	RegisteredInit           bool
 	Extension                *PortTestExtensionSpec
 	RuntimeHost              *PortTestRuntimeHostSpec
 	RuntimePause             *PortTestRuntimePauseSpec
@@ -358,6 +359,9 @@ func (p *portTestShopPools) controlsAction(a PortTestShopAction) uint32 {
 		}
 		// The direct comparison operation is void. Validate dispatch length above,
 		// then compare its complete gameplay state with that qualified operation.
+		st.result = 0
+	} else if sp.RegisteredInit && a.Op == 1420 {
+		PortTestRegisteredInit(p.temporaryRef(spec.Actor), "PlayerInit")
 		st.result = 0
 	} else if a.Op == 1477 {
 		p.portTestServerSpellDirect()

@@ -7,7 +7,41 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — 53 object updates qualified
+## Current — lifecycle original baseline qualified
+
+Update conversion5e725536 pushed; current qualified binaries remain plain under
+build/port-update-registry/{safe/opennox-safe,production/production/bin}.
+Creation8/init12 production draft UNAPPLIED under build/port-lifecycle-registry.
+Primary verified20 exact wrapper/argument/size mappings. Six production files plus
+one test bridge are expected during conversion. CallInit raw1/nil and three live
+raw2 owners remain distinct; Monster handlers stay late-bound, alias sizes intact.
+
+Corrected baseline89145 PASS208roots/profile, no skips; finalizer verifies seven
+added/two changed porttest files only, all other source/dependencies and4prior
+binary hashes unchanged.13frozen groups352observations:8real allocator callbacks,
+300registered CallInit cases,36pending reward initializers and8Monster/Shopkeeper
+pending cases. Nil/raw,3explicit pointer cases and replaceable handlers pass.
+See LIFECYCLE_REGISTRY.md and lifecycle-registry-c-qualification.json.
+
+Original73701 failed the new player sibling's byte-return assertion on void route;
+corrected19589 and combined25059 passed before freeze. First broad80742 had no
+failures but selected an opt-in diagnostic skip; corrected explicit208-root list.
+Failed/rejected outputs retained. Luna creation fixture needed primary corrections
+before compilation; allocation-heavy fixture ownership now stays with primary.
+
+Next: commit/push this baseline before production.patch. Switch only the test-only
+PortTestLifecycleInitWithArg bridge from raw2 to the new method at conversion.
+Then native3profiles and prepared qualify-remaining.sh for safe/static, production/
+ABI/knownsuite, headless creation/save-load, dedup and finish.py. Review scripts
+before use; no production qualification claimed yet. No active Go jobs.
+One Luna helper doing read-only collision inventory; no next implementation.
+
+Cleanup93638 PASS26old repo compiler archives1646054562bytes, hash/stat/header/module
+and host-use checks with no Go active. Source/modules/assets/binaries/evidence
+preserved. Record old-repository-cache-removed.json; script consumed by record.
+Standalone C0/0; production preamble bodies79.
+
+## Earlier — 53 object updates qualified
 
 Baseline90f2a227 pushed; conversion14362 and remaining production pipeline PASS.
 Check Git for conversion commit/push. Three production files changed: all53

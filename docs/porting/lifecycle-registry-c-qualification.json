@@ -1,0 +1,324 @@
+{
+  "status": "qualified original object creation and initialization baseline",
+  "revision": "5e7255362827b7f9e302df80a746f8ed2d5fbea3",
+  "phase": {
+    "batch": "lifecycle-registry",
+    "phase": "contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/lifecycle-registry-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-lifecycle-registry/baseline/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-lifecycle-registry/baseline/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 65.7646159089636
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/lifecycle-registry-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-lifecycle-registry/baseline/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-lifecycle-registry/baseline/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 172.76672574086115
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/lifecycle-registry-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-lifecycle-registry/baseline/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-lifecycle-registry/baseline/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 101.67398896696977
+      }
+    ],
+    "revision": "5e7255362827b7f9e302df80a746f8ed2d5fbea3",
+    "source_unchanged": true,
+    "wall_seconds": 340.7902991059236,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 208,
+      "selected_root_tests": 208,
+      "exit": 0,
+      "started_tests": 208,
+      "completed_tests": 208,
+      "started_root_tests": 208,
+      "completed_root_tests": 208,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 65.68317461689003
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 208,
+      "selected_root_tests": 208,
+      "exit": 0,
+      "started_tests": 208,
+      "completed_tests": 208,
+      "started_root_tests": 208,
+      "completed_root_tests": 208,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 172.66738292505033
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 900,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 208,
+      "selected_root_tests": 208,
+      "exit": 0,
+      "started_tests": 208,
+      "completed_tests": 208,
+      "started_root_tests": 208,
+      "completed_root_tests": 208,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 101.57115003583021
+    }
+  },
+  "captures": {
+    "lifecycle-registry-monster-init": {
+      "cases": 8,
+      "sha256": "9825ff7f8d6a9f55b0a1efef7e1a0746eff6ccdf88f13a6b4bc29ae98fd7a075",
+      "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-monster-init.json"
+    },
+    "lifecycle-registry-pending-init": {
+      "cases": 36,
+      "sha256": "307b29ea5a06fde046f164199d154e6b77eb9dc206779b1324aef6e569265020",
+      "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-pending-init.json"
+    },
+    "lifecycle-registry-player-init": {
+      "cases": 12,
+      "sha256": "54e1c89cec57ae8ea1d664abd094585ada670cd3d853148026cd34a495b6cacc",
+      "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-player-init.json"
+    },
+    "lifecycle-registry-reward-init-00": {
+      "cases": 32,
+      "sha256": "71d4631b436690a7a594c397b7fe480641deb6db1e19ebe9ac82aeacd91d0b27",
+      "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-00.json"
+    },
+    "lifecycle-registry-reward-init-01": {
+      "cases": 32,
+      "sha256": "639d32f6f96572dfd227eb52ad0da52243d5c9679ddc70da29d8520fc825a922",
+      "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-01.json"
+    },
+    "lifecycle-registry-reward-init-02": {
+      "cases": 32,
+      "sha256": "b0fc5e3defd240404557b32025349145e4766ded7197e95064efb57d069b3574",
+      "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-02.json"
+    },
+    "lifecycle-registry-reward-init-03": {
+      "cases": 32,
+      "sha256": "ac3a0312e9819df56559ec11723cc036b8e0341db4a2f4d148c1a42dfff13a9a",
+      "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-03.json"
+    },
+    "lifecycle-registry-reward-init-04": {
+      "cases": 32,
+      "sha256": "c5217dba764ac7f4fb268d15ed519f6a75bb7f481b62d869dd093306a97cb3b1",
+      "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-04.json"
+    },
+    "lifecycle-registry-reward-init-05": {
+      "cases": 32,
+      "sha256": "ba0869eb1b20ee96ce9d9b1b94520c6d4ed4d55983ef4201afd4f8c3da1b76d3",
+      "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-05.json"
+    },
+    "lifecycle-registry-reward-init-06": {
+      "cases": 32,
+      "sha256": "8b54c7244308a65f3db9297808059ed427944cf6fc5919e7454f4fdc508d23f0",
+      "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-06.json"
+    },
+    "lifecycle-registry-reward-init-07": {
+      "cases": 32,
+      "sha256": "42921151496f20a2b1d28da1080f7d59350070b713902022d3efeb1f47daa591",
+      "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-07.json"
+    },
+    "lifecycle-registry-reward-init-08": {
+      "cases": 32,
+      "sha256": "96e7afa0bdbbbf6cb85b35e18dbc2685fd9df0f1c26e48ed6ecf5ff91a7d529c",
+      "path": "build/port-lifecycle-registry/original-v3-lifecycle-registry-reward-init-08.json"
+    },
+    "object-create-registry": {
+      "cases": 8,
+      "sha256": "f5bd472acce1ea179a129cc4a2f035954afc653729426d3121f1d368f2d88097",
+      "path": "build/port-lifecycle-registry/original-v3-object-create-registry.json"
+    }
+  },
+  "owner_capture_cases": 352,
+  "init_execution_counts": {
+    "SparkInit": 32,
+    "FrogInit": 32,
+    "ChestInit": 32,
+    "BoulderInit": 32,
+    "SkullInit": 32,
+    "DirectionInit": 32,
+    "GoldInit": 32,
+    "BreakInit": 32,
+    "MonsterGeneratorInit": 32,
+    "PlayerInit": 12
+  },
+  "raw_contracts": [
+    "nil/create raw object identity and exactly once",
+    "nil/cleared single-argument init",
+    "raw single-argument init",
+    "raw two-argument pending init",
+    "new API raw original bridge nil/same/distinct argument"
+  ],
+  "dynamic_contracts": [
+    "two MonsterCreate replacements",
+    "two MonsterInit replacements via CallInit and actual pending owner",
+    "same two replacements via ShopkeeperInit alias"
+  ],
+  "production_reuse": "Seven new porttest files and two existing porttest adapters changed. All other source/dependency fingerprints and all four preceding binary hashes match. Three strict profiles repeat13 frozen capture groups, exact init execution counts and independent lifecycle contracts.",
+  "reused_qualification": "update-registry-qualification.json",
+  "binary_sha256": {
+    "safe": "15d840f1b32b9d8be32757f8a833c82709b03bcd980a0b19cfd1c7310baa5970",
+    "opennox": "3596e7eab6fa5c6fff7c292a8db00db87e7d13c5c5037fd37f6c00671076cb71",
+    "opennox-hd": "f0998b65de2ad541a12d0432a61169cd3e03e7d22811e579000e4b4840e2066f",
+    "opennox-server": "2dd435be2df97f5e59840c0d3ab233bff6ef50fa5282dab923850c39236cf67a"
+  },
+  "c_loc": {
+    "revision": "working tree (tracked files)",
+    "production": {
+      "files": 0,
+      "lines": 0
+    },
+    "test_reference": {
+      "files": 0,
+      "lines": 0
+    }
+  },
+  "production_c_preamble_bodies": 79,
+  "retained_callback_exports": [
+    "nox_xxx_breakInit_4F0570",
+    "nox_xxx_createFnAnim_54CA50",
+    "nox_xxx_createFnObelisk_54CA10",
+    "nox_xxx_createMonsterGen_54CA90",
+    "nox_xxx_createRewardMarker_54CAC0",
+    "nox_xxx_createTrigger_54CA60",
+    "nox_xxx_createWeapon_54C710",
+    "nox_xxx_initChest_4F0400",
+    "nox_xxx_initFrog_4F03B0",
+    "nox_xxx_monsterCreateFn_54C480",
+    "nox_xxx_unitBoulderInit_4F0420",
+    "nox_xxx_unitInitGenerator_4F0590",
+    "nox_xxx_unitInitGold_4F04B0",
+    "nox_xxx_unitInitPlayer_4EFE80",
+    "nox_xxx_unitMonsterInit_4F0040",
+    "nox_xxx_unitSparkInit_4F0390",
+    "sub_4F0450",
+    "sub_4F0490",
+    "sub_54C950"
+  ],
+  "fixture_corrections": [
+    "First original capture failed primary player sibling byte-return assertion on void CallInit. New sibling clears that expectation; direct-helper tests unchanged.",
+    "Primary corrected Luna creation fixture allocation initialization, copied-buffer ownership and cache restoration before compilation. Preserved failed original logs and immutable goldens."
+  ],
+  "api_bridge": "PortTestLifecycleInitWithArg calls original raw2 in baseline; conversion will switch only this test bridge to new public API while retaining the exact tests."
+}

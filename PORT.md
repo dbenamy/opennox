@@ -19,8 +19,9 @@ addresses, raw fallback and six replaceable handlers. All 281 roots per profile,
 8,251 frozen owner cases, safe/static, production/ABI, exact known-suite comparison
 and headless creation/save-load pass. See [UPDATE_REGISTRY.md](docs/porting/UPDATE_REGISTRY.md).
 **Standalone C remains zero; production C preamble bodies remain 79.**
-Next: qualify the creation/initialization callback family, including actual creation
-and placement owners and the raw initialization callback's extra argument.
+The next creation/initialization baseline is qualified:208 roots/profile and352
+frozen owner observations, plus raw and dynamic-handler contracts. Production
+conversion is pending. See [LIFECYCLE_REGISTRY.md](docs/porting/LIFECYCLE_REGISTRY.md).
 
 ### Earlier checkpoints
 
@@ -518,6 +519,16 @@ primary's requested early selection did not. An original-path mutation test expo
 that before production changes or frozen expectations. Keep the original failure
 and record who corrected what. Publish helper audit artifacts atomically so a
 partially written candidate list cannot be mistaken for a finished result.
+
+Lifecycle-registry work exposed a limit for allocation-heavy fixture delegation.
+Luna's callback bindings passed independent mapping review, but its creation-test
+draft needed explicit initialization after `alloc.New`, fuller ownership cleanup,
+and restoration of additional shared cache words. The primary corrected those
+before compilation. Keep such fixture ownership with the primary for now; prefer
+bounded bindings, exact-list siblings and read-only reviews for Luna. Publish a
+stable artifact at handoff and stop modifying it while the primary integrates it.
+No measured cost savings are available; narrow a task type when review/rework
+outweighs the useful draft.
 
 ## Explaining the work and reporting diagnostics
 
