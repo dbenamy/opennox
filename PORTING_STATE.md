@@ -325,3 +325,12 @@ steps, three native386scalarSSE2 runs and UBSan exact. All60constants match; Lun
 independently reviewed draft/capture. Primary runner drafted in ignored build dir.
 Next install reviewed Go draft and qualify sixroots in fiveconfigurations plus vet.
 C sixlines/onefile/referencezero/81preambles; no production behavior change.
+
+## Current — IMDCT Go qualified, unwired
+
+Baseline8a4f139b pushed. Acceptance42659(default)/48594(otherprofiles+CGO0+vet)
+joined PASS. Sixroots pass;2380newrecords/1258wrappersteps exact. No expectation
+changes. Finalizer source/fourbinary hashes PASS; production evidence reused.
+C sixlines/onefile/refzero/81preambles. Luna source and independent runner review
+found no blockingissue; primary owns acceptance. Next scalar synthesis DCT draft
+and capture in build/port-mp3-dct/drafts. No builds active.

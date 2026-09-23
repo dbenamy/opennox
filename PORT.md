@@ -14,6 +14,12 @@
 
 ## Current status
 
+Go MP3 inverse transforms and overlap state match2,380 exact original-C records,
+including1,258 granule steps. All six helper roots pass in four profiles and with
+cgo disabled; vet passes. Production evidence is explicitly reused for the
+unimported package. C remains six standalone lines plus the active header.
+Next: synthesis transforms. See [MP3_IMDCT.md](docs/porting/MP3_IMDCT.md).
+
 Go MP3 stereo, spectral reordering and antialiasing match4,364 exact C state
 records in four profiles and with cgo disabled; all previous helper roots pass.
 A documented legacy8kHz mixed-block extent is preserved in bounded workspace

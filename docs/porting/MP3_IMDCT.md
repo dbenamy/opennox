@@ -26,3 +26,18 @@ The package is still private and unimported. Production continues using C; this
 baseline does not retire any implementation. Standalone C remains six lines in one
 file, reference C zero, with the active decoder header and 81 production preamble
 bodies outside the standalone source count.
+
+## Go qualification
+
+All six helper test roots pass in default, server, highres, safe and cgo-disabled
+configurations; vet passes. All 2,380 new records match exact C float bits without
+changing expectations. Additional independent checks cover sign-flip locations
+and involution, zero-band no-ops, the prior overlap prefix emitted by a short
+block, retained later bands and the three-output DC butterfly. The primary wrote
+the runner; Luna separately reviewed its protocol and invariants.
+
+[Qualification](mp3-imdct-go-qualification.json) verifies all earlier source files
+and four production binaries are unchanged. Existing production/gameplay evidence
+is reused because the new private package remains absent from production imports.
+No complete Go decoder, new PCM or performance claim is made. The next connected
+group is synthesis DCT, followed by PCM synthesis and complete decoder integration.
