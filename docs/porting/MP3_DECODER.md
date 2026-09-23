@@ -74,3 +74,39 @@ owned repeated captures, independent PCM comparison and the arithmetic diagnosti
 No subscription savings are inferred from these results. The helper's initial
 filename-only inference about missing MP3 assets was corrected: Dialog contains
 MP3-in-WAV files despite having no `.mp3` filenames.
+
+## Qualified SSE2 correction
+
+The audio package now adds `#cgo 386 CFLAGS: -msse2 -mfpmath=sse`. This is scoped
+to that package on the supported 386/SSE2 target; it does not set global C flags.
+The retained client transform disassembly contains XMM instructions. All 1,246
+historical dialog PCM goldens pass unchanged in default and highres, alongside
+the new guarded observation capture. The latter intentionally moves from the
+recorded x87 hash to the SSE hash above because this step corrects arithmetic
+behavior; no historical TestAudioDecode expectation changes.
+
+Audio stream lifetime checks pass in both client profiles. The first invocation
+mistakenly selected the root package, found zero tests and failed discovery; it
+is preserved and is not qualification. The reviewed manifest selects `./legacy`.
+Safe build/static, three fresh production builds/ABI, headless character creation
+and explicit save/reload/resumption pass. The full suite removes exactly 1,249
+audio failure events, while all 304 non-audio failure events remain unchanged.
+Package outcomes are 16 pass, two fail and 32 skip. Actual failures are compared
+without filtering against a stricter expectation derived from the prior log:
+the audio package must pass and every non-audio failure must remain identical.
+See [mp3-sse-qualification.json](mp3-sse-qualification.json).
+
+Only the audio compiler directive and the explicit new observation expectation
+change from the prior source fingerprint. Standalone C stays **six lines/one file**,
+zero standalone reference C; production preamble bodies remain 81. This is a
+correctness prerequisite for the decoder port, not a decoder algorithm conversion.
+No controlled performance result is claimed.
+
+Ten superseded safe/callback executables were removed after hash/qualification
+checks and checking 163 host processes, recovering 489,093,068 bytes. Current
+address-adapter binaries and both callback benchmark binaries were hash-checked
+and retained. Source, manifests, logs, captures and original assets remain.
+Historical safe/callback/address-getter C-baseline finalizers require rebuilding
+their old executables before replay; the consumed record is
+build/port-artifact-cleanup/superseded-safe-callback-removed.json. Successful new
+scenario asset copies have separate verified deduplication/restoration records.

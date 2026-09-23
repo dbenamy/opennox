@@ -14,11 +14,13 @@
 
 ## Current status
 
-The MP3 decoder now has a repeated current-C baseline over all 1,246 shipped
-MP3 dialog assets. An isolated SSE2 scalar build reproduces every historical PCM
-golden while preserving sample counts and Decode sequences; production flags are
-unchanged so far. Next is a separately qualified arithmetic correction before the
-Go decoder work. See [MP3_DECODER.md](docs/porting/MP3_DECODER.md).
+The audio package now uses SSE2 scalar arithmetic on 386. All 1,246 historical
+MP3 dialog PCM goldens pass unchanged; the full suite loses exactly 1,249 audio
+failure events and retains the 304 unrelated events. Client audio/stream tests,
+safe build/static, fresh production/ABI and headless creation/save-load pass.
+The old and corrected guarded decoder captures are preserved. Standalone C stays
+six lines; next is coherent Go decoder internals with additional format/state
+contracts. See [MP3_DECODER.md](docs/porting/MP3_DECODER.md).
 
 Five callback-address getters now reference the same C functions directly from
 Go. All 38 consumer roots pass per normal profile, with safe build/static, fresh

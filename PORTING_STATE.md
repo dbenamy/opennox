@@ -36,40 +36,67 @@ Callback timing from dc9692f8 remains a review item: 84–140 ns/call additional
 median cost (1.57–2.27x), accepted as reversible; actual frame impact is unmeasured.
 Current callback binaries/benchmarks and frozen captures remain available.
 
-## Current — MP3 asset baseline qualified; SSE fix next
+## Current — MP3 scalar SSE2 correction qualified
 
-New tagged ail asset test is qualified against the unchanged C decoder. Three
-fresh captures match, followed by frozen default/highres passes. SHA256:
-7dc3362576eb00660fd68a836d17af6012c4d1c0595d137958109d62228add0b.
-All 1,246 input hashes were checked; all reported PCM hashes match retained current-C
-full-suite observations. Corpus is mono/22,050Hz only: 172,369,152 reported samples,
-300,498 decode calls. Guards and full-capacity output hashes pass. No seek, stereo,
-other-rate or malformed-frame coverage is claimed yet.
+Original-C asset baseline `22627e7f` is committed/pushed. The working correction
+adds package-local `#cgo 386 CFLAGS: -msse2 -mfpmath=sse` in ail/audio_mp3.go.
+All 1,246 historical TestAudioDecode PCM goldens pass UNCHANGED in default/highres.
+The newer guarded observation expectation deliberately changes from the recorded
+x87 hash to the SSE hash, restoring independently established historical behavior:
+old 7dc3362576eb00660fd68a836d17af6012c4d1c0595d137958109d62228add0b;
+new e0688114198dc50b4acf9b5695ea4cd8bf6dbb9f91d53d1e9d550c02ff1e2763.
+Inputs, formats, sample counts and Decode sequences are unchanged. Old captures
+remain. This is a separately qualified correctness fix, not a Go decoder port or
+controlled speed claim. See [MP3_DECODER.md](docs/porting/MP3_DECODER.md) and
+mp3-sse-qualification.json. Check Git log/remote for correction commit/push.
 
-Pipelines59699 (three probes),74909 (SSE diagnostic),77766 (frozen clients) and
-finish-c.py JOINED PASS. All jobs joined. finish-c.py is CONSUMED. Only the tagged
-test file is new; exact old source hashes, four official package selections and
-four qualified binary hashes justify production-evidence reuse. See
-[MP3_DECODER.md](docs/porting/MP3_DECODER.md), mp3-assets-c-qualification.json and
-build/port-mp3-baseline artifacts. Check Git log/remote for baseline commit/push.
+Pipelines45585 (audio clients),56838 (reviewed GC consumers/safe/production/scenarios)
+and3009 (finalizer) JOINED PASS. All jobs joined; finish.py and scenario deduplication
+scripts are CONSUMED. Pipeline61175 JOINED FAILURE only because primary omitted
+--package ./legacy and selected zero tests; preserve default/ failure. Reviewed
+runs supply qualification. Artifacts: build/port-mp3-sse/{audio-default,
+audio-highres,reviewed-default,reviewed-highres,safe,preflight,production}.
+All four binaries retain distinct empty callbacks and expected ABI identities;
+fresh decoder disassembly confirms XMM instructions. Source changes are exactly
+the compiler directive and new observation hash/comment.
 
-The isolated SSE2 diagnostic changes all PCM/write hashes but no inputs, metadata,
-sample counts or Decode sequences. All 1,246 PCM hashes now match the existing
-historical audio goldens. Diagnostic capture SHA256:
-e0688114198dc50b4acf9b5695ea4cd8bf6dbb9f91d53d1e9d550c02ff1e2763.
-No production flags or historical audio goldens changed yet. Primary decision:
-qualify package-local 386 SSE2 scalar arithmetic as a separate reversible fix,
-consistent with the CPU target. This restores independent historical expectations;
-record the deliberate change to the newer observation baseline explicitly.
-Preserve old captures and require exact unchanged non-audio failures in the suite.
-No speed claim is accepted from separate-run timings.
+Full suite now has exactly 304 non-audio failure events, 16 pass/2 fail/32 skip
+packages. The 1,249 audio failure events are gone. No actual result is filtered:
+mp3-sse-expected-suite.jsonl requires audio pass and all old non-audio failures
+unchanged. expected-suite-review.json records the preceding log/hash and rule.
+Standalone C remains six lines/one file; preamble bodies remain 81.
 
-Luna drafted the fixture and helper scope; primary corrected extension prefiltering,
-unfrozen-pass behavior, and hashing overhead, then accepted the observations.
-Helper is idle. For later decoder scope see build/port-mp3-audit/{active-helper-plan,
-primary-scope-review}.md: avoid per-bit C→Go calls, distinguish mutable bit-reader
-state and inactive LayerI/II widths, add missing format/state contracts before a
-coherent Go decoder switch. No decoder implementation has been ported yet.
+## Next — coherent Go MP3 integer helpers
+
+Luna drafted build/port-mp3-integer/drafts/{bits_headers.go,README.md}; nothing is
+installed. Primary must review against minimp3.h and build independent frozen
+actual-C vectors before acceptance. Scope: bs_init/get_bits plus seven header
+helpers. Preserve table entries, hdr_compare asymmetry, position advance on overrun,
+uint32 reads, int32 free-format fallback; widths0..32 within defined padded input
+bounds. LayerI/II headers still participate in frame detection even though their
+decode routines are excluded. No per-bit C→Go callbacks: build coherent Go decoder
+internals while existing C remains production until the full path qualifies.
+
+Potential baseline approach (not implemented): a temporary ignored probe includes
+the actual production minimp3 header with matching macros/SSE2 flags, calls its
+static integer helpers, and emits frozen vectors. Do not copy algorithm bodies or
+retain an alternate C decoder solely as a test oracle. Keep source/input hashes
+and provenance; test the Go draft against those immutable outputs plus independent
+bit/order/state invariants. C LOC will not fall until production decoder switches.
+Primary owns test design, numerical behavior and final integration; helper is idle.
+
+The shipped MP3 corpus only covers mono/22,050Hz. Stereo/other rates, seek, short
+streams and frame/state boundaries still need contracts before a Go replacement.
+Current guards detect adjacent overwrites only. See build/port-mp3-audit planning
+notes and MP3_DECODER.md. Preserve public-domain attribution.
+
+Superseded-safe/callback cleanup32904 JOINED PASS: ten verified executables removed,
+489,093,068 bytes reclaimed after 163 host-process checks. Consumed record:
+build/port-artifact-cleanup/superseded-safe-callback-removed.json. Current address
+binaries and both callback benchmark binaries remain, alongside source/captures/
+metadata/assets/cache. Historical safe/callback/address-C finalizers require
+rebuilt old binaries before replay. Free disk after qualification about 522MiB;
+check before more broad builds. Small integer-package probes should be bounded.
 
 Disk cleanup30220 JOINED PASS: ten verified obsolete entry executables removed,
 489,077,624 bytes reclaimed after 159 host-process checks. Record:

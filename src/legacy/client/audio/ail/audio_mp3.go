@@ -3,6 +3,7 @@
 package ail
 
 /*
+#cgo 386 CFLAGS: -msse2 -mfpmath=sse
 #include <stdint.h>
 #define MINIMP3_ONLY_MP3
 #define MINIMP3_NO_SIMD

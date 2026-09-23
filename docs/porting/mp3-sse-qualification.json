@@ -1,0 +1,314 @@
+{
+  "status": "qualified package-local 386 SSE2 scalar arithmetic; historical audio goldens pass",
+  "preceding_revision": "22627e7f389eaa51775df0a8e0b0f66a88651e28",
+  "environment": {
+    "CGO_CFLAGS": "-O2 -g",
+    "CGO_ENABLED": "1",
+    "GO386": "sse2",
+    "GOARCH": "386",
+    "GOOS": "linux",
+    "GOVERSION": "go1.26.0"
+  },
+  "capture_sha256": "e0688114198dc50b4acf9b5695ea4cd8bf6dbb9f91d53d1e9d550c02ff1e2763",
+  "asset_cases": 1246,
+  "targets": {
+    "audio-default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "./legacy/client/audio/ail"
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 2,
+      "selected_root_tests": 0,
+      "exit": 0,
+      "started_tests": 2,
+      "completed_tests": 2,
+      "started_root_tests": 0,
+      "completed_root_tests": 0,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 53.69122000783682
+    },
+    "audio-highres": {
+      "tags": "highres,porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "./legacy/client/audio/ail"
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 2,
+      "selected_root_tests": 0,
+      "exit": 0,
+      "started_tests": 2,
+      "completed_tests": 2,
+      "started_root_tests": 0,
+      "completed_root_tests": 0,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 51.525746944127604
+    },
+    "reviewed-default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "./legacy"
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 1,
+      "selected_root_tests": 0,
+      "exit": 0,
+      "started_tests": 1,
+      "completed_tests": 1,
+      "started_root_tests": 0,
+      "completed_root_tests": 0,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 84.79881003405899
+    },
+    "reviewed-highres": {
+      "tags": "highres,porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "./legacy"
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 1,
+      "selected_root_tests": 0,
+      "exit": 0,
+      "started_tests": 1,
+      "completed_tests": 1,
+      "started_root_tests": 0,
+      "completed_root_tests": 0,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 3.350015499861911
+    }
+  },
+  "source_manifest_sha256": "020b4563a8ee591093a31a4789a0eb049376d99200b98aa57fee9341017f1c44",
+  "intentional_observation_change": {
+    "old": "7dc3362576eb00660fd68a836d17af6012c4d1c0595d137958109d62228add0b",
+    "new": "e0688114198dc50b4acf9b5695ea4cd8bf6dbb9f91d53d1e9d550c02ff1e2763",
+    "reason": "Restore independent historical TestAudioDecode goldens with scalar SSE2; input/metadata/count/Decode-sequence fields unchanged.",
+    "historical_goldens_changed": false
+  },
+  "expected_suite_change": {
+    "source": "build/port-address-adapters/native-production/production/full-suite.log",
+    "source_sha256": "2a5d75298899834a12f079344749901b90777a08b8729d62572f4fa7ab297d3b",
+    "rule": "Require all previous non-audio failures unchanged; audio package must pass with no failing tests.",
+    "removed_audio_failure_events": 1249,
+    "remaining_failure_events": 304,
+    "expected_packages": {
+      "skip": 32,
+      "pass": 16,
+      "fail": 2
+    },
+    "expected_log_sha256": "1da3aedbfcafd86a092e7bb53e7b0ca2e41fa73847f48b73ac141abc4308e07a"
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.342342745978385,
+        "sha256": "f5614bd62f8e7df5ff11d6cb4eabe12b2a64d90c08a549e150ffdce30bc2ea7e",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.652146973880008,
+        "sha256": "dc1839db87529a2a113d1bf7913f892a3abd6cc6fb91bf4885493f6c0aaa77c7",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 4.202611765125766,
+        "sha256": "7b6b605e5b63769e573e7fb4ad9bc575bf64b2708c61dfece444fd7352383916",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "mp3-sse-save": {
+        "exit": 0,
+        "wall_seconds": 46.29396192380227,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.83932196209207,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "f5614bd62f8e7df5ff11d6cb4eabe12b2a64d90c08a549e150ffdce30bc2ea7e",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-mp3-sse/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/mp3-sse-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Audio scalar SSE2 matches historical PCM",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1368,
+                "sha256": "86315d64f458f77a9e79ac48ebdb2f5abab1970039ca51712c985a88eb1a3d8d"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 45.21522403601557,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 16,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "preflight": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 69.65113380807452,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c",
+    "binary_sha256": "f5614bd62f8e7df5ff11d6cb4eabe12b2a64d90c08a549e150ffdce30bc2ea7e",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-mp3-sse/preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/mp3-sse/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Audio scalar SSE2 matches historical PCM",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "safe_binary_sha256": "929cd084b161bb80cc7a03fea351c20738b2a382b31acf5f89d99acd9980ba82",
+  "callback_addresses": {
+    "safe": {
+      "nullsub_22": 150994166,
+      "nullsub_29": 150994496,
+      "nullsub_36": 150994826,
+      "nullsub_38": 150995156,
+      "nullsub_39": 150995486,
+      "nullsub_40": 150995816,
+      "nullsub_41": 150996146,
+      "nullsub_42": 150996476,
+      "nullsub_43": 150996806,
+      "nullsub_44": 150997136
+    },
+    "opennox": {
+      "nullsub_22": 150738448,
+      "nullsub_29": 150738560,
+      "nullsub_36": 150738672,
+      "nullsub_38": 150738784,
+      "nullsub_39": 150738896,
+      "nullsub_40": 150739008,
+      "nullsub_41": 150739120,
+      "nullsub_42": 150739232,
+      "nullsub_43": 150739344,
+      "nullsub_44": 150739456
+    },
+    "opennox-hd": {
+      "nullsub_22": 150738560,
+      "nullsub_29": 150738672,
+      "nullsub_36": 150738784,
+      "nullsub_38": 150738896,
+      "nullsub_39": 150739008,
+      "nullsub_40": 150739120,
+      "nullsub_41": 150739232,
+      "nullsub_42": 150739344,
+      "nullsub_43": 150739456,
+      "nullsub_44": 150739568
+    },
+    "opennox-server": {
+      "nullsub_22": 150086272,
+      "nullsub_29": 150086384,
+      "nullsub_36": 150086496,
+      "nullsub_38": 150086608,
+      "nullsub_39": 150086720,
+      "nullsub_40": 150086832,
+      "nullsub_41": 150086944,
+      "nullsub_42": 150087056,
+      "nullsub_43": 150087168,
+      "nullsub_44": 150087280
+    }
+  },
+  "scalar_instruction_evidence": {
+    "function": "L3_imdct36",
+    "binary_sha256": "f5614bd62f8e7df5ff11d6cb4eabe12b2a64d90c08a549e150ffdce30bc2ea7e",
+    "disassembly_sha256": "465487e1f23c74e10d4b6f53f187ae7f12d573c58d5f1bdb883424944f653b13",
+    "xmm_instructions_observed": true
+  },
+  "production_c": {
+    "files": 1,
+    "lines": 6
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "selection_failure": "Original default consumer invocation omitted --package ./legacy and selected zero tests. Preserved failure; corrected reviewed runs supply qualification.",
+  "limits": [
+    "No controlled speed measurement.",
+    "Shipped MP3 corpus is mono/22050Hz; additional stream/format/state contracts required before Go decoder replacement."
+  ]
+}

@@ -16,8 +16,9 @@ import (
 	"github.com/opennox/libs/datapath"
 )
 
-// Freeze only after repeated captures from the unchanged C decoder.
-const mp3AssetBaselineSHA256 = "7dc3362576eb00660fd68a836d17af6012c4d1c0595d137958109d62228add0b"
+// SSE2 scalar arithmetic reproduces the independent historical audio goldens.
+// The preceding x87 observation remains recorded in docs/porting/MP3_DECODER.md.
+const mp3AssetBaselineSHA256 = "e0688114198dc50b4acf9b5695ea4cd8bf6dbb9f91d53d1e9d550c02ff1e2763"
 
 const mp3BaselineMaxPCM = 1152 * 2 // MINIMP3_MAX_SAMPLES_PER_FRAME: maximum stereo frame.
 
