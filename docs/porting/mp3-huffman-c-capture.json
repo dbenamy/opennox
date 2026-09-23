@@ -1,0 +1,39 @@
+{
+  "counts": [
+    8223,
+    13224,
+    12906
+  ],
+  "result_sha256": [
+    "ad0a487cc809a85fe7aa86d59cb12f2299257ffd397bf93dfc2a508116e85944",
+    "ad0a487cc809a85fe7aa86d59cb12f2299257ffd397bf93dfc2a508116e85944",
+    "ad0a487cc809a85fe7aa86d59cb12f2299257ffd397bf93dfc2a508116e85944"
+  ],
+  "ubsan_result_sha256": "ad0a487cc809a85fe7aa86d59cb12f2299257ffd397bf93dfc2a508116e85944",
+  "uncompressed_sha256": "307f6e6d42de8f0bf0f7a94a95603dc1d4b3772681bc96c13195c4456653bc28",
+  "fixture_sha256": "b623a7f3abe2348a49185c9529d40ccbf253f2881d73b4015ace20b311007639",
+  "source_commit": "567d56a1a00ca19fec099f36f24f1f58f0ddf235",
+  "header_sha256": "e03e87c847cbdfd79cd3bf74a3b1fe24bc8c590245e92ce8153e87b23e17507f",
+  "tool_sha256": "7cdfcad763791ff84c491af49c887dee71232b9bc875a93984604e8af17a7b32",
+  "pattern_tool_sha256": "8d0d23366cd3e0f587cdab78af9d332d8d8e7842d78f15e607b3e35045ed2936",
+  "side_setup_tool_sha256": "93e07a5c764654f8daeef499ec3406297ec9558d329c6f7c6953b94ce7ff9b4d",
+  "side_payload_tool_sha256": "10f23a977db362e4ef56593b561505ed8cb50faf307ece165d6d2bb3a9a6eb09",
+  "shim_sha256": "65a5ce779786b3a32bf8b4ec5f35bf32c21b3163d233a2fcb89161a73272f162",
+  "compiler": "gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+  "flags": [
+    "gcc",
+    "-m32",
+    "-std=c11",
+    "-O2",
+    "-g",
+    "-msse2",
+    "-mfpmath=sse",
+    "-I",
+    "/root/src/opennox/src/legacy/client/audio/mp3",
+    "/root/src/opennox/build/port-mp3-huffman/capture/capture.c",
+    "-lm"
+  ],
+  "guard_and_immutability_records_checked": 26130,
+  "initial_results_preserved_bytes": 34203708,
+  "initial_results_sha256": "6446067d7f462e53b329db2c5d9121d562977f980ef9fe23e76504d39bc8ff48"
+}

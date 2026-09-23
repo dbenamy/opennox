@@ -373,3 +373,18 @@ hashes pass; production evidence reused. Onlyposttestedit corrects spancomments.
 C sixlines/onefile/refzero/81preambles. Next Huffman/pow43: Luna extracting tables
 and smallpowhelper under build/port-mp3-huffman/drafts; primary owns bitstream
 logic/capture. No active builds. Raw synthesiscaptures retainedplain.
+
+## Current — Huffman original-C baseline
+
+Synthesis567d56a1 pushed. Huffmaninitial9573 and expanded30530 joined PASS:three
+native386SSE2runs/UBSan;8223power+13224patterned+12906directed cases. Original
+resultprefix unchanged;26130guard/immutabilityrecords explicitlytrue. All2417table
+entriesmatch. Primary algorithm/runner drafts in build/port-mp3-huffman/drafts.
+Luna suppliedtables/powhelper and reviewedalgorithm; suggested directedescape
+coverage now added beforetesting. Next install/qualify nine roots/fiveconfigs+vet.
+
+Cleanup1458joinedPASS:10raw completed synthesis and initialHuffman files archived,
+211648209rawbytesreclaimed, gziproundtrip/hash/open-fd checks. Consumedscript
+archive-synthesis-huffman-initial.py; synthesis-huffman-initial-raw-archive-record.json
+hasrestorepaths/hashes. Restore synthesisraw beforehistoricalfinalizer; current
+expandedHuffmanraw retainedplain. No active builds.
