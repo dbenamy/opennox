@@ -342,3 +342,12 @@ IMDCT07d4b572 pushed. DCT capture25879 joined PASS:2172records, three native
 corrected Luna callerdescription:18 is active for all LayerIII versions;12 is
 inactiveLayerI/II extent. Runnerdraft build/port-mp3-dct/drafts/dct_test.go.
 Next install reviewed draft and qualify sevenroots/fiveconfigs+vet.
+
+## Current — synthesis DCT qualified, unwired
+
+Baseline0f0810b4 pushed. Acceptance32927 joined PASS:sevenroots/fiveconfigs+vet.
+2172new exact C records; expectations unchanged. Source/fourproductionbinary
+hashes checked; production evidence reused. C sixlines/onefile/refzero/81preambles.
+Luna drafting scalar PCM/synthesis group in build/port-mp3-synthesis/drafts; primary
+capture draft there too. Next review/capture PCM rounding and persistent state.
+No active Go builds.

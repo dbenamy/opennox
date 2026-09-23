@@ -14,6 +14,12 @@
 
 ## Current status
 
+Go MP3 synthesis DCT matches2,172 exact original-C cases in four profiles and
+with cgo disabled; all seven helper roots and vet pass. C remains six standalone
+lines plus the active header. Next: PCM synthesis and persistent filterbank state.
+Production evidence is reused for this unimported package. See
+[MP3_DCT.md](docs/porting/MP3_DCT.md).
+
 Go MP3 inverse transforms and overlap state match2,380 exact original-C records,
 including1,258 granule steps. All six helper roots pass in four profiles and with
 cgo disabled; vet passes. Production evidence is explicitly reused for the

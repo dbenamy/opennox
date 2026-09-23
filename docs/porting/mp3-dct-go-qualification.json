@@ -1,0 +1,108 @@
+{
+  "status": "qualified unwired Go MP3 synthesis DCT with exact scalar-SSE2 results",
+  "baseline_revision": "0f0810b4d617425cbf3c747b9f143769def2f4dd",
+  "tests": {
+    "default": {
+      "log_sha256": "a09940628c7f56f408e15f5953e344218411b6703a268bd547b1f8d14b3cbf2c",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "server": {
+      "log_sha256": "63350e83ccea04f06510fbf9266c9f694250d0e53a67ebe99c872cf0458cfef6",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "highres": {
+      "log_sha256": "5a1783be0f99a267feaf46d1ddeced85423c9774bea77a144b60dff287ff8c81",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "safe": {
+      "log_sha256": "72887d84de519406f012389d79d33ccc2afc57d59b12246b49e03ed4cdbe9f2f",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    },
+    "pure-go": {
+      "log_sha256": "5e7c395cb17a04d74eb2dcf907b55f2843805211ff1fe4ac0ac9a58bf96b5173",
+      "passed": [
+        "TestBitHeaderFrozenVectors",
+        "TestDCTFrozenVectors",
+        "TestIMDCTFrozenVectors",
+        "TestScalefactorFrozenVectors",
+        "TestSideInfoFrozenVectors",
+        "TestSpectrumFrozenVectors",
+        "TestStreamFrozenVectors",
+        null
+      ],
+      "pass": true
+    }
+  },
+  "go_vet": "pass",
+  "dct_cases": 2172,
+  "float_table_entries_compared": 24,
+  "c_ubsan_output_sha256": "c42e791a0ad22257f68a063d81a98779dd43c0fbf51e6604b7017ef60ae10615",
+  "production_reuse": {
+    "prior_qualification": "docs/porting/mp3-imdct-go-qualification.json",
+    "prior_qualification_sha256": "97d25f7d582edbb22502a6bc59aff4e61d48db0cbb031361375d8ec5644697fa",
+    "old_source_files_unchanged": 2994,
+    "new_source": {
+      "src/legacy/client/audio/mp3/dct.go": "9e662e5c28b5be59958f5e66029d42c0d64e110b195d356953c0ba661cf26bdd",
+      "src/legacy/client/audio/mp3/dct_test.go": "996355dad643e107c0442aa69039f2e32379c0a490a4edadd11942d9e64bbdef"
+    },
+    "binary_hashes_rechecked": {
+      "build/port-mp3-sse/production/production/bin/opennox": "f5614bd62f8e7df5ff11d6cb4eabe12b2a64d90c08a549e150ffdce30bc2ea7e",
+      "build/port-mp3-sse/production/production/bin/opennox-hd": "dc1839db87529a2a113d1bf7913f892a3abd6cc6fb91bf4885493f6c0aaa77c7",
+      "build/port-mp3-sse/production/production/bin/opennox-server": "7b6b605e5b63769e573e7fb4ad9bc575bf64b2708c61dfece444fd7352383916",
+      "build/port-mp3-sse/safe/opennox-safe": "929cd084b161bb80cc7a03fea351c20738b2a382b31acf5f89d99acd9980ba82"
+    },
+    "reason": "Only private code/tests added to the existing unimported package; all previous source files and production binary hashes unchanged. Previous dependency selections remain applicable."
+  },
+  "production_c": {
+    "files": 1,
+    "lines": 6
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "limits": [
+    "Production and gameplay evidence reused, not rerun.",
+    "No complete Go decoder or new PCM claim."
+  ]
+}

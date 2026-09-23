@@ -19,3 +19,17 @@ result bytes. Expectations are frozen before testing the Go implementation.
 
 The package remains unimported. Production still uses C; standalone C is six
 lines/one file, reference C zero, plus the active header and81 preamble bodies.
+
+## Go qualification
+
+All seven helper roots pass in default/server/highres/safe and with cgo disabled;
+vet passes. Every new output word matches frozen C without expectation changes.
+The runner independently verifies untouched columns/channels and tails for every
+record, and checks that a constant input column yields only the DC coefficient.
+During review, both primary and Luna caught an initially incorrect impulse/DC
+invariant before any Go run; it was corrected to a constant input. This changed
+no frozen result. Primary also corrected the draft's caller documentation.
+
+[Qualification](mp3-dct-go-qualification.json) checks unchanged earlier sources
+and four production binaries. Production/gameplay evidence is explicitly reused
+while the package remains unimported; no complete-decoder or PCM claim yet.
