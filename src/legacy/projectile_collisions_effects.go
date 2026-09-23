@@ -34,13 +34,13 @@ func projectilePush(u *server.Object, radius, inner, force float32) {
 func projectileBoom(u, t *server.Object, n *types.Pointf) {
 	init := memmap.PtrUint32(0x5d4594, 1567964)
 	if *init == 0 {
-		*memmap.PtrUint32(0x5d4594, 1567968) = uint32(floatToInt32(float32(C.nox_xxx_gamedataGetFloat_419D40(internCStr("MagicMissileDamage")))))
-		*memmap.PtrUint32(0x5d4594, 1567972) = uint32(floatToInt32(float32(C.nox_xxx_gamedataGetFloat_419D40(internCStr("MagicMissileSplashDamage")))))
+		*memmap.PtrUint32(0x5d4594, 1567968) = uint32(floatToInt32(float32(nox_xxx_gamedataGetFloat_419D40(internCStr("MagicMissileDamage")))))
+		*memmap.PtrUint32(0x5d4594, 1567972) = uint32(floatToInt32(float32(nox_xxx_gamedataGetFloat_419D40(internCStr("MagicMissileSplashDamage")))))
 		for _, v := range []struct {
 			off  uintptr
 			name string
 		}{{1567976, "MagicMissileRange"}, {1567980, "MagicMissilePushRange"}, {1567984, "MagicMissileForce"}} {
-			*memmap.PtrFloat32(0x5d4594, v.off) = float32(C.nox_xxx_gamedataGetFloat_419D40(internCStr(v.name)))
+			*memmap.PtrFloat32(0x5d4594, v.off) = float32(nox_xxx_gamedataGetFloat_419D40(internCStr(v.name)))
 		}
 		*init = 1
 	}

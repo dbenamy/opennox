@@ -94,7 +94,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 	if source != nil && u.Buffs&(1<<22) != 0 && source.ObjClass&6 != 0 && weapon != nil && damageMelee(source, weapon) {
 		inventorySound(135, source, 0, 0)
 		spellLifeBuffOff(u, int32(22))
-		n := floatToInt32(float32(C.nox_xxx_gamedataGetFloatTable_419D70(internCStr("ShockDamage"), 4)))
+		n := floatToInt32(float32(nox_xxx_gamedataGetFloatTable_419D70(internCStr("ShockDamage"), 4)))
 		projectileDamage(source, u, nil, n, 9)
 		if source.ObjClass&4 != 0 {
 			C.nox_xxx_playerSetState_4FA020(asObjectC(source), 23)
@@ -199,7 +199,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 	}
 	if source != nil && u.ObjClass&6 != 0 && source.Buffs&(1<<13) != 0 {
 		inventorySound(163, weapon, 0, 0)
-		coefficient := float64(C.nox_xxx_gamedataGetFloatTable_419D70(internCStr("VampirismCoeff"), C.int(uint32(source.BuffsPower[13])-1)))
+		coefficient := float64(nox_xxx_gamedataGetFloatTable_419D70(internCStr("VampirismCoeff"), int(int32(uint32(source.BuffsPower[13])-1))))
 		heal := uint16(floatToInt32(float32(coefficient * float64(*value))))
 		if heal < 1 {
 			heal = 1

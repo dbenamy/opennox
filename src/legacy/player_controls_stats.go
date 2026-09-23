@@ -117,7 +117,7 @@ func controlLevelFromXP(u *server.Object) int32 {
 	if !controlFlags(8192) {
 		i := 0
 		for ; i <= 10; i++ {
-			if float64(C.nox_xxx_gamedataGetFloatTable_419D70(internCStr("XPTable"), C.int(i))) > float64(*(*float32)(unsafe.Add(u.CObj(), 28))) {
+			if float64(nox_xxx_gamedataGetFloatTable_419D70(internCStr("XPTable"), int(int32(i)))) > float64(*(*float32)(unsafe.Add(u.CObj(), 28))) {
 				break
 			}
 		}
@@ -132,9 +132,9 @@ func controlSetLevel(u *server.Object, level byte) {
 	if int8(level) > 10 {
 		level = 10
 	}
-	xp := C.nox_xxx_gamedataGetFloatTable_419D70(internCStr("XPTable"), C.int(int8(level)))
+	xp := nox_xxx_gamedataGetFloatTable_419D70(internCStr("XPTable"), int(int8(level)))
 	*(*float32)(unsafe.Add(u.CObj(), 28)) = float32(xp)
-	xp = C.nox_xxx_gamedataGetFloatTable_419D70(internCStr("XPTable"), C.int(int8(level)))
+	xp = nox_xxx_gamedataGetFloatTable_419D70(internCStr("XPTable"), int(int8(level)))
 	// XP protection stores a truncated numeric value, not its float bits.
 	updateProtectionFloat(int32(*equipmentWord(pl, 4604)), float32(xp), false)
 	C.sub_4D81A0(inventoryInt(u))

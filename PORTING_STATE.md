@@ -7,34 +7,40 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — balance getter baseline qualified
+## Current — balance direct calls qualified
 
-Book conversion `64376c9f` is pushed. Three new porttest files supply independent
-scalar/indexed balance contracts through both C and direct Go wrappers:104
-mode/key/index cases with four exact float64 comparisons each. Cases include
-precise doubles, signed zero, missing/empty keys, index extremes and tag precedence.
-All 109 affected gameplay/numeric roots pass default/server/highres without skips.
-All preexisting source matches the prior production checkpoint; its four retained
-binaries were hash-verified for reuse. See
-[baseline qualification](docs/porting/balance-direct-calls-c-qualification.json).
-Session27873 is joined PASS; baseline finalizer is CONSUMED. Production callers
-are still unchanged. Next: commit/push this baseline, apply reviewed 27-call
-patch, then run affected and fresh production qualification.
+Baseline `8409eff3` is pushed. All 27 production calls now use the existing Go
+getters directly. All 109 affected roots pass default/server/highres without skips
+or changed hashes. Safe/static, fresh production/ABI, exact known suite (304
+failure events; 17 pass/2 fail/32 skip packages), creation and save/load pass.
+All four binaries retain both exports and omit the redundant C call bridges.
+See [BALANCE_DIRECT_CALLS.md](docs/porting/BALANCE_DIRECT_CALLS.md) and
+[qualification](docs/porting/balance-direct-calls-qualification.json).
 
-Artifacts: `build/port-balance-direct`; reviewed patch and coverage/test drafts:
-`build/port-book-direct/balance-*`. Luna independently reviewed all 27 sites,
-wrappers, narrowing, float operations, interned strings and fixture cleanup;
-no material issue. All touched production files still require their C imports.
+Artifacts: `build/port-balance-direct`. Sessions27873,12284,21863 and cleanup13360
+are joined PASS. Finalizers and scenario deduplication scripts are CONSUMED.
+Fresh binaries: `safe/opennox-safe` and
+`production/production/bin/{opennox,opennox-hd,opennox-server}`. No jobs active.
+Check Git log/remote for conversion commit/push status.
 
+Next: primary generated-signature comparison accepts 33 exports / 56 calls across
+34 files; `exact-scalar-signatures.json` and Luna's unapplied
+`exact-scalar-draft.patch` are under the artifact directory. Exclude sub_50B510:
+its local C prototype returns int while the Go function returns void. Review the
+patch and owner tests before applying. Also retire five unused book/balance C
+exports after the in-tree reachability audit, retaining independent Go numeric
+contracts. No production API or algorithm replacement is intended.
 
-Storage during this baseline: 33 old completed single-link test logs were
-losslessly archived after host open-file/stat/hash and round-trip checks;
-1,112,212,170 raw bytes became 67,649,331 gzip bytes. Session13360 joined PASS.
-The consumed script and full restore/hash metadata are in
-`build/port-balance-direct/archive-old-logs.py` and `old-log-archive-record.json`;
-Luna's read-only inventory is `old-log-archive-plan.json` (wrapped audit object;
-primary extracted its list to `old-log-archive-files.json`). Original assets,
-fixtures and retained binaries are unchanged. Rough free space after this:1.6GiB.
+Luna's bounded drafts/reviews remain useful. A broad inventory launched redundant
+slow searches and lost session ownership; primary stopped the remaining scan and
+verified host processes. PORT.md records tighter timeout/single-pass/session
+rules. Default test timing was contended and is not a benchmark.
+
+Storage: 33 old completed logs were losslessly archived: 1,112,212,170 raw bytes
+became 67,649,331 gzip bytes. Restore metadata: `old-log-archive-record.json`.
+Original assets, fixtures and retained binaries are unchanged. Rough free space
+is 648MiB; recover more before the next large build/scenario phase, preferably
+through verified archival rather than blanket cache eviction.
 
 ## Earlier — direct book callbacks qualified
 

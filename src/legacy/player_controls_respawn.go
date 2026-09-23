@@ -153,7 +153,7 @@ func controlInitPlayer(u *server.Object) int8 {
 	controlReadStats(u, 0)
 	C.nox_xxx_spellAwardAll3_4EFE10((*C.nox_playerInfo)(pl))
 	if controlFlags(4096) {
-		*equipmentWord(d, 320) = uint32(floatToInt32(float32(C.nox_xxx_gamedataGetFloat_419D40(internCStr("QuestGameStartingExtraLives")))))
+		*equipmentWord(d, 320) = uint32(floatToInt32(float32(nox_xxx_gamedataGetFloat_419D40(internCStr("QuestGameStartingExtraLives")))))
 	}
 	return controlDefaultItems(u, 1, 0)
 }

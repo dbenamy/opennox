@@ -124,10 +124,10 @@ func spellLifeInsertBook(u *server.Object, list unsafe.Pointer, n, delay, self i
 				return spellLifeBookError(u, 4, 231)
 			}
 			count := C.nox_xxx_unitCountSlaves_4E7CF0(C.int(uintptr(u.CObj())), 2, 0x2000)
-			if int32(count) >= int32(int64(C.nox_xxx_gamedataGetFloat_419D40(internCStr("MaxBomberCount")))) {
+			if int32(count) >= int32(int64(nox_xxx_gamedataGetFloat_419D40(internCStr("MaxBomberCount")))) {
 				return spellLifeBookError(u, 5, 231)
 			}
-		} else if int32(*controlByte(ud, 244)) >= int32(int64(C.nox_xxx_gamedataGetFloat_419D40(internCStr("MaxTrapCount")))) {
+		} else if int32(*controlByte(ud, 244)) >= int32(int64(nox_xxx_gamedataGetFloat_419D40(internCStr("MaxTrapCount")))) {
 			return spellLifeBookError(u, 5, 231)
 		}
 		for i := int32(0); i < n; i++ {

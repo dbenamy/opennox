@@ -28,10 +28,10 @@ func spellEffectPos(p unsafe.Pointer, off int) types.Pointf {
 	return *(*types.Pointf)(unsafe.Add(p, off))
 }
 func spellEffectScalar(name string) float64 {
-	return float64(C.nox_xxx_gamedataGetFloat_419D40(internCStr(name)))
+	return float64(nox_xxx_gamedataGetFloat_419D40(internCStr(name)))
 }
 func spellEffectTable(name string, i int32) float64 {
-	return float64(C.nox_xxx_gamedataGetFloatTable_419D70(internCStr(name), C.int(i)))
+	return float64(nox_xxx_gamedataGetFloatTable_419D70(internCStr(name), int(i)))
 }
 func spellEffectAudio(id, phase int32, u *server.Object) {
 	s := GetServer().S()

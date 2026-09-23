@@ -56,7 +56,7 @@ func projectileGeneric(u, t *server.Object) {
 		name = "ImpShotDamage"
 	}
 	if name != "" {
-		damage = floatToInt32(float32(C.nox_xxx_gamedataGetFloat_419D40(internCStr(name))))
+		damage = floatToInt32(float32(nox_xxx_gamedataGetFloat_419D40(internCStr(name))))
 	} else {
 		damage = int32(*equipmentWord(u.CollideData, 0))
 	}
@@ -267,7 +267,7 @@ func projectileTrap(u, t *server.Object, gas bool) {
 	}
 	GetServer().CreateObjectAt(p, owner, u.PosVec)
 	if gas {
-		*equipmentWord(p.UpdateData, 0) = uint32(floatToInt32(float32(float64(C.nox_xxx_gamedataGetFloat_419D40(internCStr("ToxicCloudLifetime"))) * float64(int32(GetServer().S().TickRate())))))
+		*equipmentWord(p.UpdateData, 0) = uint32(floatToInt32(float32(float64(nox_xxx_gamedataGetFloat_419D40(internCStr("ToxicCloudLifetime"))) * float64(int32(GetServer().S().TickRate())))))
 		inventorySound(847, u, 0, 0)
 		GetServer().DelayedDelete(u)
 	} else {

@@ -166,7 +166,7 @@ func controlBoltDamage(level int32, def unsafe.Pointer) float64 {
 	typ := stateType(1568264, "ArcherBolt")
 	base := float64(*controlHalf(def, 72))
 	if controlFlags(2048) && *equipmentWord(def, 4) == typ {
-		base = float64(C.nox_xxx_gamedataGetFloat_419D40(internCStr("BoltSoloDamageMin")))
+		base = float64(nox_xxx_gamedataGetFloat_419D40(internCStr("BoltSoloDamageMin")))
 	}
 	return float64(level-int32(*controlHalf(def, 60)))*float64(*(*float32)(unsafe.Add(def, 64))) + base
 }

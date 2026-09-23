@@ -14,14 +14,14 @@
 
 ## Current status
 
-Ten spellbook drag/drop calls now invoke their existing Go callbacks directly,
-removing unnecessary C round trips while preserving signed32 conversions and
-exported ABI. All 25 book contracts and 24 frozen captures pass in three profiles;
-fresh production/safe, ABI, exact known-suite and headless creation/save-load
-checks pass. **Standalone C remains zero; C preamble bodies remain 79.**
-Next: the reviewed 27-call balance-getter family, with independent numeric
-contracts and affected gameplay fixtures. See
-[BOOK_DIRECT_CALLS.md](docs/porting/BOOK_DIRECT_CALLS.md).
+Twenty-seven balance getter calls now invoke their existing Go implementations
+directly, preserving integer narrowing, string ownership and floating-point
+operations. All 109 affected contracts pass in three profiles; fresh production,
+safe/static, ABI, exact known-suite and headless creation/save-load checks pass.
+**Standalone C remains zero; production C preamble bodies remain 79.**
+Next: a larger batch of 56 calls with matching generated C/Go signatures, plus
+retirement of unused book/balance exports. See
+[BALANCE_DIRECT_CALLS.md](docs/porting/BALANCE_DIRECT_CALLS.md).
 
 ### Earlier checkpoints
 
@@ -425,6 +425,24 @@ Tell the helper which commands it may run; the primary schedules expensive build
 and tests. Honor the no-source-edits-during-builds rule across both agents. Neither
 agent may alter source consumed by an active build/test; a separate uninstalled
 draft or read-only audit is suitable overlapping work.
+
+Keep source inventories bounded too. Collect selector names once per file and
+look them up in a dictionary; do not scan every source line once per exported
+symbol. Use an explicit short timeout (normally 20 seconds) for an inventory
+script, and stop/report if it exceeds that bound. Preserve the complete tool
+result, including any running session ID. Join or terminate that session before
+launching a replacement scan; blank output is not completion. Primary owns host
+process checks. A sandbox `ps` cannot establish that host jobs have exited.
+
+The balance-getter audit exposed this failure mode: multiple repeated Python
+scans ran for minutes and competed with qualification. Primary verified the
+parent scripts in the host namespace, stopped the remaining scan and confirmed
+all had exited. A replacement single-pass inventory took about 0.2 seconds. This
+was an audit-efficiency failure, not a source/test mismatch; no build timing
+comparison from the contended run should be treated as a performance benchmark.
+Keep broad inventory algorithm design with the primary until bounded execution
+is demonstrated; Luna remains useful for exact-list drafts, fixture drafts,
+coverage review and storage inventories with primary verification.
 
 Record delegation outcomes briefly in the batch report: task/model, acceptance
 checks, meaningful corrections, missed issues, and whether handoff/review/rework

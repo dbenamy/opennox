@@ -22,7 +22,7 @@ func inventoryPriMessage(u *server.Object, key string) {
 }
 func inventoryWeaponPickup(u, it *server.Object, arg, equip int) int {
 	if u.ObjClass&4 != 0 && noxflags.HasGame(4096) && it.ObjSubClass&0x200000 != 0 {
-		limit := float32(C.nox_xxx_gamedataGetFloat_419D40(internCStr("ForceOfNatureStaffLimit")))
+		limit := float32(nox_xxx_gamedataGetFloat_419D40(internCStr("ForceOfNatureStaffLimit")))
 		if int32(equipmentCount(u, int(it.ObjFlags))) >= floatToInt32(limit) {
 			inventoryPriMessage(u, "pickup.c:MaxSameItem")
 			inventorySound(925, u, 0, 0)

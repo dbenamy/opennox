@@ -67,7 +67,7 @@ func controlGuideDamage(u, target *server.Object, damage *int32) int32 {
 	if level == 0 {
 		return 0
 	}
-	v := float32(float64(C.nox_xxx_gamedataGetFloat_419D40(internCStr("FieldGuideDamageBonus")))*float64(*damage) + 0.5)
+	v := float32(float64(nox_xxx_gamedataGetFloat_419D40(internCStr("FieldGuideDamageBonus")))*float64(*damage) + 0.5)
 	*damage = floatToInt32(v)
 	return *damage
 }

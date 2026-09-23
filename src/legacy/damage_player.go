@@ -123,7 +123,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 							C.nox_xxx_unitSetOwner_4EC290(asObjectC(u), asObjectC(actual))
 						}
 					}
-					value := float32(float64(C.nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamageFromBlockPercentage"))) * float64(amount))
+					value := float32(float64(nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamageFromBlockPercentage"))) * float64(amount))
 					damageBlockingItem(u, source, weapon, 2, value, kind, false)
 					return 0
 				}
@@ -146,7 +146,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 					} else {
 						monsterControlEnsure(u, 23)
 					}
-					value := float32(float64(C.nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamageFromBlockPercentage"))) * float64(amount))
+					value := float32(float64(nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamageFromBlockPercentage"))) * float64(amount))
 					damageBlockingItem(u, source, weapon, 1024, value, kind, true)
 					return 0
 				}
@@ -161,7 +161,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 					} else {
 						monsterControlEnsure(u, 23)
 					}
-					value := float32(float64(C.nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamageFromBlockPercentage"))) * float64(amount))
+					value := float32(float64(nox_xxx_gamedataGetFloat_419D40(internCStr("ItemDamageFromBlockPercentage"))) * float64(amount))
 					damageBlockingItem(u, source, weapon, 134184960, value, kind, true)
 					return 0
 				}

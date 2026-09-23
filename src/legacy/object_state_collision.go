@@ -63,7 +63,7 @@ func stateChargeMoveBack(u *server.Object) {
 	C.nox_xxx_unitMove_4E7010(asObjectC(u), (*C.float2)(unsafe.Pointer(&u.PrevPos)))
 }
 func stateChargeStun(u *server.Object) {
-	duration := floatToInt32(float32(C.nox_xxx_gamedataGetFloat_419D40(internCStr("BerserkerStunDuration"))))
+	duration := floatToInt32(float32(nox_xxx_gamedataGetFloat_419D40(internCStr("BerserkerStunDuration"))))
 	spellLifeApplyBuff(u, 5, int16(duration), 5)
 }
 func stateCharge(u, t *server.Object) {
@@ -71,7 +71,7 @@ func stateCharge(u, t *server.Object) {
 	gameplayReportEarthquake(&u.PosVec, 10)
 	Sub_4FC300(u, 1)
 	if t != nil {
-		damage := floatToInt32(float32(C.nox_xxx_gamedataGetFloat_419D40(internCStr("BerserkerDamage"))))
+		damage := floatToInt32(float32(nox_xxx_gamedataGetFloat_419D40(internCStr("BerserkerDamage"))))
 		if t.ObjClass&0x400000 == 0 {
 			worldCollideMass(u, t)
 		}
@@ -92,7 +92,7 @@ func stateCharge(u, t *server.Object) {
 		x, y := projectileGrid(u.NewPos)
 		projectileWall(u, x, y, 100, 2)
 	}
-	pain := floatToInt32(float32(float64(C.nox_xxx_gamedataGetFloat_419D40(internCStr("BerserkerPainRatio"))) * float64(u.HealthData.Cur)))
+	pain := floatToInt32(float32(float64(nox_xxx_gamedataGetFloat_419D40(internCStr("BerserkerPainRatio"))) * float64(u.HealthData.Cur)))
 	if pain < 1 {
 		pain = 1
 	}
