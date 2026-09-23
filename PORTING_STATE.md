@@ -351,3 +351,16 @@ hashes checked; production evidence reused. C sixlines/onefile/refzero/81preambl
 Luna drafting scalar PCM/synthesis group in build/port-mp3-synthesis/drafts; primary
 capture draft there too. Next review/capture PCM rounding and persistent state.
 No active Go builds.
+
+## Current — PCM synthesis C baseline
+
+DCT2a906e14 pushed. Synthesis capture52589 joined PASS with three native386SSE2
+runs and UBSan+float-cast-overflow:196616scale/390pair/408synth/360sequences,576steps.
+All240windowconstantsmatch. Primary reviewed scalar arithmetic and mono retained
+oddQMF words. Next Go runner/qualification; no active builds.
+
+Disk cleanup10925 joined PASS:15raw spectrum/IMDCT/DCT files archived with complete
+roundtrip/hash verification and per-file open-fd checks;155500892rawbytesreclaimed.
+Consumed archive-transform-raw.py; transform-raw-archive-record.json has paths,
+hashes and restoration instructions. Restore rawUBSan files before rerunning
+thosehistoricalfinalizers. Current synthesisraw files remainplain. Assets unchanged.
