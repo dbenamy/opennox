@@ -1,0 +1,963 @@
+{
+  "target": "386/SSE2; int/int32 match C int, uint32 matches C uint; explicit argument adaptations preserve original narrowing.",
+  "mixed": [
+    {
+      "name": "nox_common_getEngineFlag",
+      "go_signature": "func nox_common_getEngineFlag(flags C.nox_engine_flag) C.bool {",
+      "cgo_signature": "func _Cfunc_nox_common_getEngineFlag(p0 _Ctype_nox_engine_flag) (r1 _Ctype__Bool) {",
+      "normalized_args": [
+        "_Ctype_nox_engine_flag"
+      ],
+      "normalized_return": "_Ctype__Bool",
+      "calls": [
+        {
+          "path": "src/legacy/damage_player.go",
+          "line": 202,
+          "text": "if bool(C.nox_common_getEngineFlag(C.NOX_ENGINE_FLAG_GODMODE)) && u.ObjClass&4 != 0 {"
+        }
+      ]
+    },
+    {
+      "name": "nox_common_playerIsAbilityActive_4FC250",
+      "go_signature": "func nox_common_playerIsAbilityActive_4FC250(a1 *nox_object_t, a2 int) int {",
+      "cgo_signature": "func _Cfunc_nox_common_playerIsAbilityActive_4FC250(p0 *_Ctype_struct_nox_object_t, p1 _Ctype_int) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "_Ctype_int"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/projectile_collisions.go",
+          "line": 142,
+          "text": "if C.nox_common_playerIsAbilityActive_4FC250(asObjectC(t), 4) != 0 {"
+        },
+        {
+          "path": "src/legacy/player_controls_helpers.go",
+          "line": 324,
+          "text": "if C.nox_common_playerIsAbilityActive_4FC250((*C.nox_object_t)(u.CObj()), 2) != 0 && C.nox_xxx_probablyWarcryCheck_4FC3E0((*C.nox_object_t)(u.CObj()), 2) != 0 {"
+        },
+        {
+          "path": "src/legacy/player_controls_helpers.go",
+          "line": 327,
+          "text": "if C.nox_common_playerIsAbilityActive_4FC250((*C.nox_object_t)(u.CObj()), 1) != 0 {"
+        },
+        {
+          "path": "src/legacy/player_attack.go",
+          "line": 108,
+          "text": "if C.nox_common_playerIsAbilityActive_4FC250(asObjectC(u), 2) != 0 && C.nox_xxx_probablyWarcryCheck_4FC3E0(asObjectC(u), 2) != 0 {"
+        },
+        {
+          "path": "src/legacy/player_attack.go",
+          "line": 121,
+          "text": "if C.nox_common_playerIsAbilityActive_4FC250(asObjectC(u), 1) != 0 {"
+        }
+      ]
+    },
+    {
+      "name": "nox_netlist_addToMsgListCli_40EBC0",
+      "go_signature": "func nox_netlist_addToMsgListCli_40EBC0(ind1, ind2 int, buf *C.uchar, sz int) int {",
+      "cgo_signature": "func _Cfunc_nox_netlist_addToMsgListCli_40EBC0(p0 _Ctype_int, p1 _Ctype_int, p2 *_Ctype_uchar, p3 _Ctype_int) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "_Ctype_int",
+        "_Ctype_int",
+        "*_Ctype_uchar",
+        "_Ctype_int"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/spell_lifecycle_books.go",
+          "line": 203,
+          "text": "C.nox_netlist_addToMsgListCli_40EBC0(C.int(*controlByte(*controlPtr(ud, 276), 2064)), 1, (*C.uchar)(unsafe.Pointer(&msg[0])), 2)"
+        }
+      ]
+    },
+    {
+      "name": "nox_strman_loadString_40F1D0",
+      "go_signature": "func nox_strman_loadString_40F1D0(name *C.char, strOut **C.char, srcFile *C.char, srcLine int) *wchar2_t {",
+      "cgo_signature": "func _Cfunc_nox_strman_loadString_40F1D0(p0 *_Ctype_char, p1 **_Ctype_char, p2 *_Ctype_char, p3 _Ctype_int) (r1 *_Ctype_wchar2_t) {",
+      "normalized_args": [
+        "*_Ctype_char",
+        "**_Ctype_char",
+        "*_Ctype_char",
+        "_Ctype_int"
+      ],
+      "normalized_return": "*_Ctype_ushort",
+      "calls": [
+        {
+          "path": "src/legacy/map_population_finish.go",
+          "line": 132,
+          "text": "text := C.nox_strman_loadString_40F1D0((*C.char)(unsafe.Pointer(name)), nil, (*C.char)(unsafe.Pointer(file)), C.int(line))"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_animPlayerGetFrameRange_4F9F90",
+      "go_signature": "func nox_xxx_animPlayerGetFrameRange_4F9F90(a1 int, a2, a3 *C.int) {",
+      "cgo_signature": "func _Cfunc_nox_xxx_animPlayerGetFrameRange_4F9F90(p0 _Ctype_int, p1 *_Ctype_int, p2 *_Ctype_int) (r1 _Ctype_void) {",
+      "normalized_args": [
+        "_Ctype_int",
+        "*_Ctype_int",
+        "*_Ctype_int"
+      ],
+      "normalized_return": "_Ctype_void",
+      "calls": [
+        {
+          "path": "src/legacy/player_attack.go",
+          "line": 70,
+          "text": "animation := func(id int) { C.nox_xxx_animPlayerGetFrameRange_4F9F90(C.int(id), &frames, &delay) }"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_audCreate_501A30",
+      "go_signature": "func nox_xxx_audCreate_501A30(a1 int32, cpos *C.float2, a3 int, a4 int32) {",
+      "cgo_signature": "func _Cfunc_nox_xxx_audCreate_501A30(p0 _Ctype_int, p1 *_Ctype_struct_float2, p2 _Ctype_int, p3 _Ctype_int) (r1 _Ctype_void) {",
+      "normalized_args": [
+        "_Ctype_int",
+        "*_Ctype_struct_float2",
+        "_Ctype_int",
+        "_Ctype_int"
+      ],
+      "normalized_return": "_Ctype_void",
+      "calls": [
+        {
+          "path": "src/legacy/sustained_projectiles.go",
+          "line": 175,
+          "text": "C.nox_xxx_audCreate_501A30(46, (*C.float2)(unsafe.Pointer(&pos)), 0, 0)"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_aud_501960",
+      "go_signature": "func nox_xxx_aud_501960(a1 int32, a2p *nox_object_t, a3 int, a4 int32) {",
+      "cgo_signature": "func _Cfunc_nox_xxx_aud_501960(p0 _Ctype_int, p1 *_Ctype_struct_nox_object_t, p2 _Ctype_int, p3 _Ctype_int) (r1 _Ctype_void) {",
+      "normalized_args": [
+        "_Ctype_int",
+        "*_Ctype_struct_nox_object_t",
+        "_Ctype_int",
+        "_Ctype_int"
+      ],
+      "normalized_return": "_Ctype_void",
+      "calls": [
+        {
+          "path": "src/legacy/object_state_sync.go",
+          "line": 86,
+          "text": "C.nox_xxx_aud_501960(235, asObjectC(u), 0, 0)"
+        },
+        {
+          "path": "src/legacy/object_state_sync.go",
+          "line": 99,
+          "text": "C.nox_xxx_aud_501960(236, asObjectC(u), 0, 0)"
+        },
+        {
+          "path": "src/legacy/spell_lifecycle_casting.go",
+          "line": 164,
+          "text": "C.nox_xxx_aud_501960(C.int(aud), asObjectC(u), 2, C.int(p.NetCode))"
+        },
+        {
+          "path": "src/legacy/player_controls_respawn.go",
+          "line": 257,
+          "text": "C.nox_xxx_aud_501960(C.int(sound), (*C.nox_object_t)(u.CObj()), 0, 0)"
+        },
+        {
+          "path": "src/legacy/player_controls_respawn.go",
+          "line": 288,
+          "text": "C.nox_xxx_aud_501960(148, (*C.nox_object_t)(u.CObj()), 0, 0)"
+        },
+        {
+          "path": "src/legacy/spell_lifecycle_books.go",
+          "line": 83,
+          "text": "C.nox_xxx_aud_501960(C.int(audio), asObjectC(u), 0, 0)"
+        },
+        {
+          "path": "src/legacy/sustained_teleport.go",
+          "line": 55,
+          "text": "C.nox_xxx_aud_501960(id, asObjectC(u), mode, code)"
+        },
+        {
+          "path": "src/legacy/player_controls_movement.go",
+          "line": 90,
+          "text": "C.nox_xxx_aud_501960(926, (*C.nox_object_t)(u.CObj()), 0, 0)"
+        },
+        {
+          "path": "src/legacy/inventory_drop.go",
+          "line": 31,
+          "text": "C.nox_xxx_aud_501960(C.int(id), asObjectC(u), C.int(a), C.int(b))"
+        },
+        {
+          "path": "src/legacy/inventory.go",
+          "line": 88,
+          "text": "C.nox_xxx_aud_501960(820, asObjectC(u), 0, 0)"
+        },
+        {
+          "path": "src/legacy/player_controls_messages.go",
+          "line": 113,
+          "text": "C.nox_xxx_aud_501960(231, (*C.nox_object_t)(u.CObj()), 0, 0)"
+        },
+        {
+          "path": "src/legacy/object_state_collision.go",
+          "line": 90,
+          "text": "C.nox_xxx_aud_501960(171, asObjectC(u), 0, 0)"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_castSpellByUser_4FDD20",
+      "go_signature": "func nox_xxx_castSpellByUser_4FDD20(a1 int, a2 *nox_object_t, a3 unsafe.Pointer) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_castSpellByUser_4FDD20(p0 _Ctype_int, p1 *_Ctype_struct_nox_object_t, p2 unsafe.Pointer) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "_Ctype_int",
+        "*_Ctype_struct_nox_object_t",
+        "unsafe.Pointer"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/player_controls_messages.go",
+          "line": 115,
+          "text": "C.nox_xxx_castSpellByUser_4FDD20(C.int(id), (*C.nox_object_t)(u.CObj()), unsafe.Pointer(&args[0]))"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_checkSummonedCreaturesLimit_500D70",
+      "go_signature": "func nox_xxx_checkSummonedCreaturesLimit_500D70(obj *nox_object_t, ind int) C.bool {",
+      "cgo_signature": "func _Cfunc_nox_xxx_checkSummonedCreaturesLimit_500D70(p0 *_Ctype_struct_nox_object_t, p1 _Ctype_int) (r1 _Ctype__Bool) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "_Ctype_int"
+      ],
+      "normalized_return": "_Ctype__Bool",
+      "calls": [
+        {
+          "path": "src/legacy/spell_lifecycle_books.go",
+          "line": 123,
+          "text": "if !bool(C.nox_xxx_checkSummonedCreaturesLimit_500D70(asObjectC(u), 5)) {"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_creatureIsMonitored_500CC0",
+      "go_signature": "func nox_xxx_creatureIsMonitored_500CC0(obj1, obj2 *nox_object_t) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_creatureIsMonitored_500CC0(p0 *_Ctype_struct_nox_object_t, p1 *_Ctype_struct_nox_object_t) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "*_Ctype_struct_nox_object_t"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/player_controls_helpers.go",
+          "line": 43,
+          "text": "if C.nox_xxx_creatureIsMonitored_500CC0((*C.nox_object_t)(u.CObj()), (*C.nox_object_t)(it.CObj())) != 0 {"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_getUnitNameByThingType_4E3A80",
+      "go_signature": "func nox_xxx_getUnitNameByThingType_4E3A80(ind int) *C.char {",
+      "cgo_signature": "func _Cfunc_nox_xxx_getUnitNameByThingType_4E3A80(p0 _Ctype_int) (r1 *_Ctype_char) {",
+      "normalized_args": [
+        "_Ctype_int"
+      ],
+      "normalized_return": "*_Ctype_char",
+      "calls": [
+        {
+          "path": "src/legacy/shop_inventory.go",
+          "line": 172,
+          "text": "C.strcpy((*C.char)(u.UseData.Ptr), (*C.char)(C.nox_xxx_getUnitNameByThingType_4E3A80(C.int(e.Reward))))"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_mapCheck_537110",
+      "go_signature": "func nox_xxx_mapCheck_537110(a1, a2 *nox_object_t) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_mapCheck_537110(p0 *_Ctype_struct_nox_object_t, p1 *_Ctype_struct_nox_object_t) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "*_Ctype_struct_nox_object_t"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/spell_lifecycle_books.go",
+          "line": 270,
+          "text": "if !same && math.Sqrt(dx*dx+dy*dy)+0.1 < float64(radius) && C.nox_xxx_mapCheck_537110(asObjectC(u), asObjectC(owner)) != 0 {"
+        },
+        {
+          "path": "src/legacy/objectives_update.go",
+          "line": 250,
+          "text": "if dx*dx+dy*dy >= 2500 || C.nox_xxx_mapCheck_537110(asObjectC(u), asObjectC(pl)) == 0 {"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_mapDamageToWalls_534FC0",
+      "go_signature": "func nox_xxx_mapDamageToWalls_534FC0(a1 *C.int4, a2 unsafe.Pointer, a3 C.float, a4, a5 int, a6 unsafe.Pointer) C.bool {",
+      "cgo_signature": "func _Cfunc_nox_xxx_mapDamageToWalls_534FC0(p0 *_Ctype_struct_int4, p1 unsafe.Pointer, p2 _Ctype_float, p3 _Ctype_int, p4 _Ctype_int, p5 unsafe.Pointer) (r1 _Ctype__Bool) {",
+      "normalized_args": [
+        "*_Ctype_struct_int4",
+        "unsafe.Pointer",
+        "_Ctype_float",
+        "_Ctype_int",
+        "_Ctype_int",
+        "unsafe.Pointer"
+      ],
+      "normalized_return": "_Ctype__Bool",
+      "calls": [
+        {
+          "path": "src/legacy/player_attack_melee.go",
+          "line": 166,
+          "text": "C.nox_xxx_mapDamageToWalls_534FC0((*C.int4)(unsafe.Pointer(&bounds)), unsafe.Pointer(&r.Pos), C.float(float32(extra+float64(r.Radius))), C.int(effectsTruncWord(float64(r.Damage)+0.5)), C.int(r.Type), it.CObj())"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_mapDamageUnitsAround_4E25B0",
+      "go_signature": "func nox_xxx_mapDamageUnitsAround_4E25B0(a1 *C.float, a2, a3 C.float, a4, a5 int, a6, a7 *nox_object_t) {",
+      "cgo_signature": "func _Cfunc_nox_xxx_mapDamageUnitsAround_4E25B0(p0 *_Ctype_float, p1 _Ctype_float, p2 _Ctype_float, p3 _Ctype_int, p4 _Ctype_int, p5 *_Ctype_struct_nox_object_t, p6 *_Ctype_struct_nox_object_t) (r1 _Ctype_void) {",
+      "normalized_args": [
+        "*_Ctype_float",
+        "_Ctype_float",
+        "_Ctype_float",
+        "_Ctype_int",
+        "_Ctype_int",
+        "*_Ctype_struct_nox_object_t",
+        "*_Ctype_struct_nox_object_t"
+      ],
+      "normalized_return": "_Ctype_void",
+      "calls": [
+        {
+          "path": "src/legacy/sustained_projectiles.go",
+          "line": 337,
+          "text": "C.nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&pos)), C.float(outer), C.float(inner), C.int(d.Field72), 15, asObjectC(u), nil)"
+        },
+        {
+          "path": "src/legacy/projectile_collisions_effects.go",
+          "line": 29,
+          "text": "C.nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.float(radius), C.float(inner), C.int(damage), C.int(kind), asObjectC(u), asObjectC(exclude))"
+        },
+        {
+          "path": "src/legacy/ai_callbacks.go",
+          "line": 241,
+          "text": "C.nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.float(radius), 10, C.int(damage), 7, asObjectC(u), nil)"
+        },
+        {
+          "path": "src/legacy/temporary_effects.go",
+          "line": 24,
+          "text": "C.nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.float(outer), C.float(inner), C.int(damage), C.int(kind), asObjectC(u), nil)"
+        },
+        {
+          "path": "src/legacy/temporary_effects.go",
+          "line": 231,
+          "text": "C.nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), 80, 30, C.int(*damage), 7, asObjectC(owner), nil)"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_mapTraceRay_535250",
+      "go_signature": "func nox_xxx_mapTraceRay_535250(a1 *C.float4, a2 *C.float2, a3 *C.int2, a4 C.char) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_mapTraceRay_535250(p0 *_Ctype_struct_float4, p1 *_Ctype_struct_float2, p2 *_Ctype_struct_int2, p3 _Ctype_char) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_float4",
+        "*_Ctype_struct_float2",
+        "*_Ctype_struct_int2",
+        "_Ctype_char"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/player_attack_ranged.go",
+          "line": 40,
+          "text": "return int(C.nox_xxx_mapTraceRay_535250((*C.float4)(unsafe.Pointer(&r)), nil, nil, C.char(flags)))"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_modifGetDescById_413330",
+      "go_signature": "func nox_xxx_modifGetDescById_413330(a1 int32) unsafe.Pointer {",
+      "cgo_signature": "func _Cfunc_nox_xxx_modifGetDescById_413330(p0 _Ctype_int) (r1 unsafe.Pointer) {",
+      "normalized_args": [
+        "_Ctype_int"
+      ],
+      "normalized_return": "unsafe.Pointer",
+      "calls": [
+        {
+          "path": "src/legacy/player_controls_respawn.go",
+          "line": 94,
+          "text": "desc := func(id C.int) uint32 { return uint32(uintptr(C.nox_xxx_modifGetDescById_413330(id))) }"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_modifGetIdByName_413290",
+      "go_signature": "func nox_xxx_modifGetIdByName_413290(name *C.char) int32 {",
+      "cgo_signature": "func _Cfunc_nox_xxx_modifGetIdByName_413290(p0 *_Ctype_char) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_char"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/player_controls_respawn.go",
+          "line": 95,
+          "text": "byName := func(name string) uint32 { return desc(C.nox_xxx_modifGetIdByName_413290(internCStr(name))) }"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_monsterPopAction_50A160",
+      "go_signature": "func nox_xxx_monsterPopAction_50A160(a1 *nox_object_t) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_monsterPopAction_50A160(p0 *_Ctype_struct_nox_object_t) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/damage_helpers.go",
+          "line": 210,
+          "text": "C.nox_xxx_monsterPopAction_50A160(asObjectC(u))"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_netMarkMinimapObject_417190",
+      "go_signature": "func nox_xxx_netMarkMinimapObject_417190(a1 int, obj *nox_object_t, a3 uint32) {",
+      "cgo_signature": "func _Cfunc_nox_xxx_netMarkMinimapObject_417190(p0 _Ctype_int, p1 *_Ctype_struct_nox_object_t, p2 _Ctype_uint) (r1 _Ctype_void) {",
+      "normalized_args": [
+        "_Ctype_int",
+        "*_Ctype_struct_nox_object_t",
+        "_Ctype_uint"
+      ],
+      "normalized_return": "_Ctype_void",
+      "calls": [
+        {
+          "path": "src/legacy/object_state_owner.go",
+          "line": 147,
+          "text": "C.nox_xxx_netMarkMinimapObject_417190(ind, asObjectC(t), 1)"
+        },
+        {
+          "path": "src/legacy/sustained_spells.go",
+          "line": 102,
+          "text": "C.nox_xxx_netMarkMinimapObject_417190(C.int(*controlByte(controlPlayer(u), 2064)), asObjectC(t), 1)"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_netUnmarkMinimapObj_417300",
+      "go_signature": "func nox_xxx_netUnmarkMinimapObj_417300(a1 int, obj *nox_object_t, a3 uint32) {",
+      "cgo_signature": "func _Cfunc_nox_xxx_netUnmarkMinimapObj_417300(p0 _Ctype_int, p1 *_Ctype_struct_nox_object_t, p2 _Ctype_uint) (r1 _Ctype_void) {",
+      "normalized_args": [
+        "_Ctype_int",
+        "*_Ctype_struct_nox_object_t",
+        "_Ctype_uint"
+      ],
+      "normalized_return": "_Ctype_void",
+      "calls": [
+        {
+          "path": "src/legacy/object_state_owner.go",
+          "line": 159,
+          "text": "C.nox_xxx_netUnmarkMinimapObj_417300(ind, asObjectC(t), 1)"
+        },
+        {
+          "path": "src/legacy/sustained_spells.go",
+          "line": 122,
+          "text": "C.nox_xxx_netUnmarkMinimapObj_417300(C.int(*controlByte(controlPlayer(u), 2064)), asObjectC(t), 1)"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_newObjectWithTypeInd_4E3450",
+      "go_signature": "func nox_xxx_newObjectWithTypeInd_4E3450(ind int) *nox_object_t {",
+      "cgo_signature": "func _Cfunc_nox_xxx_newObjectWithTypeInd_4E3450(p0 _Ctype_int) (r1 *_Ctype_struct_nox_object_t) {",
+      "normalized_args": [
+        "_Ctype_int"
+      ],
+      "normalized_return": "*_Ctype_struct_nox_object_t",
+      "calls": [
+        {
+          "path": "src/legacy/shop_inventory.go",
+          "line": 152,
+          "text": "u := asObjectS(C.nox_xxx_newObjectWithTypeInd_4E3450(C.int(e.Type)))"
+        },
+        {
+          "path": "src/legacy/spell_effects.go",
+          "line": 63,
+          "text": "return asObjectS(C.nox_xxx_newObjectWithTypeInd_4E3450(C.int(id)))"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_objectFreeMem_4E38A0",
+      "go_signature": "func nox_xxx_objectFreeMem_4E38A0(a1p *nox_object_t) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_objectFreeMem_4E38A0(p0 *_Ctype_struct_nox_object_t) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/generator_objects.go",
+          "line": 118,
+          "text": "return uint32(C.nox_xxx_objectFreeMem_4E38A0(asObjectC(child)))"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_playerResetProtectionCRC_56F7D0",
+      "go_signature": "func nox_xxx_playerResetProtectionCRC_56F7D0(id, value C.int) C.uint32_t {",
+      "cgo_signature": "func _Cfunc_nox_xxx_playerResetProtectionCRC_56F7D0(p0 _Ctype_int, p1 _Ctype_int) (r1 _Ctype_uint32_t) {",
+      "normalized_args": [
+        "_Ctype_int",
+        "_Ctype_int"
+      ],
+      "normalized_return": "_Ctype_uint",
+      "calls": [
+        {
+          "path": "src/legacy/object_state_sync.go",
+          "line": 55,
+          "text": "C.nox_xxx_playerResetProtectionCRC_56F7D0(C.int(*equipmentWord(pl, 4612)), C.int(flags))"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_playerSetState_4FA020",
+      "go_signature": "func nox_xxx_playerSetState_4FA020(a1 *nox_object_t, a2 int) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_playerSetState_4FA020(p0 *_Ctype_struct_nox_object_t, p1 _Ctype_int) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "_Ctype_int"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/damage_player.go",
+          "line": 145,
+          "text": "C.nox_xxx_playerSetState_4FA020(asObjectC(u), C.int(nox_common_randomInt_415FA0(18, 20)))"
+        },
+        {
+          "path": "src/legacy/damage_player.go",
+          "line": 160,
+          "text": "C.nox_xxx_playerSetState_4FA020(asObjectC(u), 21)"
+        },
+        {
+          "path": "src/legacy/damage_dispatch.go",
+          "line": 100,
+          "text": "C.nox_xxx_playerSetState_4FA020(asObjectC(source), 23)"
+        },
+        {
+          "path": "src/legacy/damage_dispatch.go",
+          "line": 215,
+          "text": "C.nox_xxx_playerSetState_4FA020(asObjectC(u), 30)"
+        },
+        {
+          "path": "src/legacy/player_controls_respawn.go",
+          "line": 65,
+          "text": "C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 13)"
+        },
+        {
+          "path": "src/legacy/player_controls_respawn.go",
+          "line": 180,
+          "text": "C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 13)"
+        },
+        {
+          "path": "src/legacy/player_controls_movement.go",
+          "line": 142,
+          "text": "C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1)"
+        },
+        {
+          "path": "src/legacy/player_controls_movement.go",
+          "line": 151,
+          "text": "C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1)"
+        },
+        {
+          "path": "src/legacy/player_controls_movement.go",
+          "line": 156,
+          "text": "C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1)"
+        },
+        {
+          "path": "src/legacy/player_controls_movement.go",
+          "line": 162,
+          "text": "if C.nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1) == 0 {"
+        },
+        {
+          "path": "src/legacy/object_state_owner.go",
+          "line": 88,
+          "text": "C.nox_xxx_playerSetState_4FA020(asObjectC(u), 13)"
+        },
+        {
+          "path": "src/legacy/damage_helpers.go",
+          "line": 208,
+          "text": "C.nox_xxx_playerSetState_4FA020(asObjectC(u), 13)"
+        },
+        {
+          "path": "src/legacy/sustained_spells.go",
+          "line": 52,
+          "text": "C.nox_xxx_playerSetState_4FA020(asObjectC(u), C.int(state))"
+        },
+        {
+          "path": "src/legacy/object_state_collision.go",
+          "line": 70,
+          "text": "C.nox_xxx_playerSetState_4FA020(asObjectC(u), 13)"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_probablyWarcryCheck_4FC3E0",
+      "go_signature": "func nox_xxx_probablyWarcryCheck_4FC3E0(a1 *nox_object_t, a2 int) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_probablyWarcryCheck_4FC3E0(p0 *_Ctype_struct_nox_object_t, p1 _Ctype_int) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "_Ctype_int"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/player_controls_helpers.go",
+          "line": 324,
+          "text": "if C.nox_common_playerIsAbilityActive_4FC250((*C.nox_object_t)(u.CObj()), 2) != 0 && C.nox_xxx_probablyWarcryCheck_4FC3E0((*C.nox_object_t)(u.CObj()), 2) != 0 {"
+        },
+        {
+          "path": "src/legacy/player_attack.go",
+          "line": 108,
+          "text": "if C.nox_common_playerIsAbilityActive_4FC250(asObjectC(u), 2) != 0 && C.nox_xxx_probablyWarcryCheck_4FC3E0(asObjectC(u), 2) != 0 {"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_scriptCallByEventBlock_502490",
+      "go_signature": "func nox_xxx_scriptCallByEventBlock_502490(a1 unsafe.Pointer, a2, a3 unsafe.Pointer, eventCode int32) unsafe.Pointer {",
+      "cgo_signature": "func _Cfunc_nox_xxx_scriptCallByEventBlock_502490(p0 unsafe.Pointer, p1 unsafe.Pointer, p2 unsafe.Pointer, p3 _Ctype_int) (r1 unsafe.Pointer) {",
+      "normalized_args": [
+        "unsafe.Pointer",
+        "unsafe.Pointer",
+        "unsafe.Pointer",
+        "_Ctype_int"
+      ],
+      "normalized_return": "unsafe.Pointer",
+      "calls": [
+        {
+          "path": "src/legacy/damage_dispatch.go",
+          "line": 302,
+          "text": "C.nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(ud, 48), source.CObj(), u.CObj(), 23)"
+        },
+        {
+          "path": "src/legacy/projectile_collisions.go",
+          "line": 110,
+          "text": "C.nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(u.UpdateData, 1272), t.CObj(), u.CObj(), 21)"
+        },
+        {
+          "path": "src/legacy/spell_effects_summon.go",
+          "line": 281,
+          "text": "C.nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(u.UpdateData, 1264), nil, u.CObj(), 7)"
+        },
+        {
+          "path": "src/legacy/object_state_collision.go",
+          "line": 32,
+          "text": "return C.nox_xxx_scriptCallByEventBlock_502490(unsafe.Add(u.UpdateData, 1272), t.CObj(), u.CObj(), 22)"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_soundDefaultDamageSound_532E20",
+      "go_signature": "func nox_xxx_soundDefaultDamageSound_532E20(a1, a2 *nox_object_t) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_soundDefaultDamageSound_532E20(p0 *_Ctype_struct_nox_object_t, p1 *_Ctype_struct_nox_object_t) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "*_Ctype_struct_nox_object_t"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/damage_dispatch.go",
+          "line": 196,
+          "text": "C.nox_xxx_soundDefaultDamageSound_532E20(asObjectC(u), asObjectC(actual))"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_spellCancelDurSpell_4FEB10",
+      "go_signature": "func nox_xxx_spellCancelDurSpell_4FEB10(a1 int, a2 *nox_object_t) {",
+      "cgo_signature": "func _Cfunc_nox_xxx_spellCancelDurSpell_4FEB10(p0 _Ctype_int, p1 *_Ctype_struct_nox_object_t) (r1 _Ctype_void) {",
+      "normalized_args": [
+        "_Ctype_int",
+        "*_Ctype_struct_nox_object_t"
+      ],
+      "normalized_return": "_Ctype_void",
+      "calls": [
+        {
+          "path": "src/legacy/player_controls_movement.go",
+          "line": 169,
+          "text": "C.nox_xxx_spellCancelDurSpell_4FEB10(67, (*C.nox_object_t)(u.CObj()))"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_spellIcon_424A90",
+      "go_signature": "func nox_xxx_spellIcon_424A90(ind int) unsafe.Pointer {",
+      "cgo_signature": "func _Cfunc_nox_xxx_spellIcon_424A90(p0 _Ctype_int) (r1 unsafe.Pointer) {",
+      "normalized_args": [
+        "_Ctype_int"
+      ],
+      "normalized_return": "unsafe.Pointer",
+      "calls": [
+        {
+          "path": "src/legacy/client_ui_inventory_window_draw.go",
+          "line": 36,
+          "text": "uiMeterImage(uint32(uintptr(C.nox_xxx_spellIcon_424A90(spell))), image.Pt(x, y))"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_unitArmorInventoryEquipFlags_415C70",
+      "go_signature": "func nox_xxx_unitArmorInventoryEquipFlags_415C70(obj *nox_object_t) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_unitArmorInventoryEquipFlags_415C70(p0 *_Ctype_struct_nox_object_t) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/player_controls_respawn.go",
+          "line": 88,
+          "text": "if sub_53E2D0(inventoryInt(it)) != 0 || it.ObjFlags&0x100 == 0 || it.ObjClass&0x2000000 != 0 && C.nox_xxx_unitArmorInventoryEquipFlags_415C70((*C.nox_object_t)(it.CObj()))&0x808 != 0 {"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_unitHasThatParent_4EC4F0",
+      "go_signature": "func nox_xxx_unitHasThatParent_4EC4F0(obj, owner *nox_object_t) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_unitHasThatParent_4EC4F0(p0 *_Ctype_struct_nox_object_t, p1 *_Ctype_struct_nox_object_t) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "*_Ctype_struct_nox_object_t"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/inventory_pickup.go",
+          "line": 46,
+          "text": "if C.nox_xxx_unitHasThatParent_4EC4F0(asObjectC(it), asObjectC(u)) != 0 {"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_unitIsHostileMimic_4E7F90",
+      "go_signature": "func nox_xxx_unitIsHostileMimic_4E7F90(obj1, obj2 *nox_object_t) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_unitIsHostileMimic_4E7F90(p0 *_Ctype_struct_nox_object_t, p1 *_Ctype_struct_nox_object_t) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "*_Ctype_struct_nox_object_t"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/object_state_owner.go",
+          "line": 208,
+          "text": "if pl.PlayerUnit != nil && C.nox_xxx_unitIsHostileMimic_4E7F90(asObjectC(pl.PlayerUnit), asObjectC(u)) == 1 {"
+        },
+        {
+          "path": "src/legacy/object_state_owner.go",
+          "line": 225,
+          "text": "enemy := C.nox_xxx_unitIsHostileMimic_4E7F90(asObjectC(pl.PlayerUnit), asObjectC(u)) == 1"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_unitIsUnitTT_4E7C80",
+      "go_signature": "func nox_xxx_unitIsUnitTT_4E7C80(a1 *nox_object_t, a2 int) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_unitIsUnitTT_4E7C80(p0 *_Ctype_struct_nox_object_t, p1 _Ctype_int) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "_Ctype_int"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/spell_lifecycle_casting.go",
+          "line": 63,
+          "text": "return int32(C.nox_xxx_unitIsUnitTT_4E7C80(asObjectC(u), C.int(*memmap.PtrUint32(0x5d4594, off))))"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_unitSetXStatus_4E4800",
+      "go_signature": "func nox_xxx_unitSetXStatus_4E4800(a1 *nox_object_t, a2 uint32) {",
+      "cgo_signature": "func _Cfunc_nox_xxx_unitSetXStatus_4E4800(p0 *_Ctype_struct_nox_object_t, p1 _Ctype_uint) (r1 _Ctype_void) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "_Ctype_uint"
+      ],
+      "normalized_return": "_Ctype_void",
+      "calls": [
+        {
+          "path": "src/legacy/damage_dispatch.go",
+          "line": 311,
+          "text": "C.nox_xxx_unitSetXStatus_4E4800(asObjectC(u), 512)"
+        },
+        {
+          "path": "src/legacy/damage_dispatch.go",
+          "line": 314,
+          "text": "C.nox_xxx_unitSetXStatus_4E4800(asObjectC(u), 256)"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_unitUnsetXStatus_4E4780",
+      "go_signature": "func nox_xxx_unitUnsetXStatus_4E4780(a1 *nox_object_t, a2 uint32) {",
+      "cgo_signature": "func _Cfunc_nox_xxx_unitUnsetXStatus_4E4780(p0 *_Ctype_struct_nox_object_t, p1 _Ctype_uint) (r1 _Ctype_void) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "_Ctype_uint"
+      ],
+      "normalized_return": "_Ctype_void",
+      "calls": [
+        {
+          "path": "src/legacy/damage_dispatch.go",
+          "line": 308,
+          "text": "C.nox_xxx_unitUnsetXStatus_4E4780(asObjectC(u), 256)"
+        }
+      ]
+    },
+    {
+      "name": "nox_xxx_weaponInventoryEquipFlags_415820",
+      "go_signature": "func nox_xxx_weaponInventoryEquipFlags_415820(obj *nox_object_t) int {",
+      "cgo_signature": "func _Cfunc_nox_xxx_weaponInventoryEquipFlags_415820(p0 *_Ctype_struct_nox_object_t) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/inventory_drop.go",
+          "line": 52,
+          "text": "if it.ObjClass&0x1000000 != 0 && C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)) == 4 {"
+        },
+        {
+          "path": "src/legacy/inventory_drop.go",
+          "line": 54,
+          "text": "if ammo.ObjClass&0x1000000 != 0 && C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(ammo)) == 2 && ammo.ObjFlags&0x100 == 0 && *(*byte)(unsafe.Add(ammo.UseData.Ptr, 2)) != 0 {"
+        },
+        {
+          "path": "src/legacy/inventory_equipment.go",
+          "line": 61,
+          "text": "if *(*uint32)(unsafe.Add(ud, 104)) == 0 && C.sub_419E60(asObjectC(u)) == 0 && C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)) != 2 {"
+        },
+        {
+          "path": "src/legacy/inventory_equipment.go",
+          "line": 64,
+          "text": "if C.sub_419E60(asObjectC(u)) == 0 && C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)) == 2 {"
+        },
+        {
+          "path": "src/legacy/inventory_equipment.go",
+          "line": 91,
+          "text": "bits := uint32(C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)))"
+        },
+        {
+          "path": "src/legacy/inventory_equipment.go",
+          "line": 96,
+          "text": "if old.TypeInd != it.TypeInd || old.ObjClass&0x1000000 == 0 || uint32(C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(old)))&bits == 0 {"
+        }
+      ]
+    },
+    {
+      "name": "sub_419E60",
+      "go_signature": "func sub_419E60(u *nox_object_t) int {",
+      "cgo_signature": "func _Cfunc_sub_419E60(p0 *_Ctype_struct_nox_object_t) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/effects_weapon_use.go",
+          "line": 165,
+          "text": "if result := int(C.sub_419E60(asObjectC(u))); result == 1 {"
+        },
+        {
+          "path": "src/legacy/inventory_equipment.go",
+          "line": 61,
+          "text": "if *(*uint32)(unsafe.Add(ud, 104)) == 0 && C.sub_419E60(asObjectC(u)) == 0 && C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)) != 2 {"
+        },
+        {
+          "path": "src/legacy/inventory_equipment.go",
+          "line": 64,
+          "text": "if C.sub_419E60(asObjectC(u)) == 0 && C.nox_xxx_weaponInventoryEquipFlags_415820(asObjectC(it)) == 2 {"
+        },
+        {
+          "path": "src/legacy/inventory_equipment.go",
+          "line": 122,
+          "text": "if rv == 1 && u.ObjClass&4 != 0 && C.sub_419E60(asObjectC(u)) == 0 {"
+        },
+        {
+          "path": "src/legacy/inventory_equipment.go",
+          "line": 165,
+          "text": "if C.sub_419E60(asObjectC(u)) == 0 {"
+        },
+        {
+          "path": "src/legacy/inventory_pickup.go",
+          "line": 26,
+          "text": "if C.sub_419E60(asObjectC(u)) == 0 && it.ObjSubClass&0x84 == 0 {"
+        }
+      ]
+    },
+    {
+      "name": "sub_4FC300",
+      "go_signature": "func sub_4FC300(cu *nox_object_t, a2 int) {",
+      "cgo_signature": "func _Cfunc_sub_4FC300(p0 *_Ctype_struct_nox_object_t, p1 _Ctype_int) (r1 _Ctype_void) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "_Ctype_int"
+      ],
+      "normalized_return": "_Ctype_void",
+      "calls": [
+        {
+          "path": "src/legacy/world_collisions_quest.go",
+          "line": 137,
+          "text": "C.sub_4FC300(asObjectC(b), C.int(ability))"
+        }
+      ]
+    },
+    {
+      "name": "sub_4FC440",
+      "go_signature": "func sub_4FC440(a1 *nox_object_t, a2 int) {",
+      "cgo_signature": "func _Cfunc_sub_4FC440(p0 *_Ctype_struct_nox_object_t, p1 _Ctype_int) (r1 _Ctype_void) {",
+      "normalized_args": [
+        "*_Ctype_struct_nox_object_t",
+        "_Ctype_int"
+      ],
+      "normalized_return": "_Ctype_void",
+      "calls": [
+        {
+          "path": "src/legacy/player_attack.go",
+          "line": 117,
+          "text": "C.sub_4FC440(asObjectC(u), 2)"
+        }
+      ]
+    },
+    {
+      "name": "sub_57AEE0",
+      "go_signature": "func sub_57AEE0(sp int, u *nox_object_t) int {",
+      "cgo_signature": "func _Cfunc_sub_57AEE0(p0 _Ctype_int, p1 *_Ctype_struct_nox_object_t) (r1 _Ctype_int) {",
+      "normalized_args": [
+        "_Ctype_int",
+        "*_Ctype_struct_nox_object_t"
+      ],
+      "normalized_return": "_Ctype_int",
+      "calls": [
+        {
+          "path": "src/legacy/spell_lifecycle_mana.go",
+          "line": 68,
+          "text": "v := -int32(C.sub_57AEE0(C.int(id), asObjectC(parent)))"
+        }
+      ]
+    }
+  ],
+  "separately_reviewed_retirements": [
+    "sub_50B510",
+    "nox_xxx_castCounterSpell_52BBB0"
+  ]
+}

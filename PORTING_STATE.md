@@ -7,7 +7,25 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — pointer forwarding qualified
+## Current — mixed forwarding baseline qualified
+
+Pointer forwarding conversion `9b548e8f` is pushed. Mixed baseline session54569
+joined PASS: six fresh owner roots per profile, plus exact reuse of preceding
+686/685/686 roots; combined692/691/692. Source/test fingerprints, runtime/discovery
+environments and four binary hashes match. See docs/porting/MIXED_FORWARDING.md.
+Baseline finalizer CONSUMED. No Go/build jobs active. Next commit/push baseline,
+then apply direct-calls.patch followed by interfaces-and-imports.patch under
+build/port-mixed-forwarding. Both UNAPPLIED. Primary fresh signature projection
+matches all40 mechanical candidates; original ABI proof records both separate
+mismatched exports in allfour binaries. Full qualification remains required.
+
+Cleanup removed five verified obsolete Go-cache archives,226475872bytes; record
+old-cache-today-removed.json. Primary checked retired markers absent from current
+source/four binaries, hashes/stat/archive headers and host PID1/open file inodes.
+Original assets/binaries preserved. Six completed logs are proposed for reversible
+gzip archival; not yet archived. Draft qualification/dedup scripts are UNCONSUMED.
+
+## Earlier — pointer forwarding qualified
 
 Baseline `7a6b2efb` is pushed. All 74 calls across 36 functions/files are qualified:
 686/685/686 roots pass default/server/highres, no skips or changed expectations.

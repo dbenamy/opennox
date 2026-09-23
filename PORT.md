@@ -20,9 +20,10 @@ All 686/685/686 affected roots pass default/server/highres, plus fresh safe/stat
 production/ABI, exact known-suite and headless creation/save-load checks. All four
 binaries omit the 36 redundant C-call bridges; required exports remain.
 **Standalone C remains zero; production C preamble bodies remain 79.**
-Next: review the drafted 92 mixed-signature forwarding calls, preserving integer
-widths. Two existing prototype mismatches are excluded for separate review. See
-[POINTER_FORWARDING.md](docs/porting/POINTER_FORWARDING.md).
+Next: apply 94 reviewed mixed-signature forwarding calls, preserving integer
+widths, and retire two separately reviewed mismatched C interfaces. The unchanged
+production baseline is qualified: 692/691/692 combined roots. See
+[MIXED_FORWARDING.md](docs/porting/MIXED_FORWARDING.md).
 
 ### Earlier checkpoints
 
