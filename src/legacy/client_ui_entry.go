@@ -2,8 +2,6 @@ package legacy
 
 /*
 #include "defs.h"
-static int entryDigit(unsigned short v) { return iswdigit(v); }
-static int entryAlnum(unsigned short v) { return iswalnum(v); }
 */
 import "C"
 import (
@@ -19,8 +17,8 @@ import (
 )
 
 // Preserve libc classification of legacy 16-bit text units, including its locale.
-func uiEntryDigit(v uint16) bool { return C.entryDigit(C.ushort(v)) != 0 }
-func uiEntryAlnum(v uint16) bool { return C.entryAlnum(C.ushort(v)) != 0 }
+func uiEntryDigit(v uint16) bool { return C.iswdigit(C.wint_t(v)) != 0 }
+func uiEntryAlnum(v uint16) bool { return C.iswalnum(C.wint_t(v)) != 0 }
 
 var uiEntryContext bool
 var uiEntryActive *gui.Window

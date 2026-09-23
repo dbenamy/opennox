@@ -1,12 +1,11 @@
 # Entry character classifiers
 
-Status: actual-C baseline qualified against pushed orphan cleanup `cd18015c`.
-Direct-libc conversion is next. Standalone C remains 45 lines in four
-files, zero reference C.
+Status: direct-libc conversion qualified against committed actual-C baseline
+`cbf62bc1`. Standalone C remains 45 lines in four files, zero reference C.
 
-The two forwarding bodies `entryDigit` and `entryAlnum` accept unsigned 16-bit
-text units and call libc `iswdigit` and `iswalnum`. The UI only observes zero or
-nonzero. The intended change calls those same libc functions directly from Go,
+The former forwarding bodies `entryDigit` and `entryAlnum` accepted unsigned
+16-bit text units and called libc `iswdigit` and `iswalnum`. The UI only observes zero or
+nonzero. The predicates now call those same libc functions directly from Go,
 using explicit `C.wint_t` widening. Locale behavior is retained; this is not an
 ASCII-only or Unicode-category rewrite and does not remove libc/CGO.
 
@@ -42,7 +41,7 @@ Three fresh processes agree on all 131,072 classifications; capture SHA256 is
 `f5c39db5e866885891bbb1fe8d0b2244d9fbcea7d232cdd4b7e6f90dd03ff6e0`.
 The 16,384 bytes contain an 8,192-byte digit bitset followed by an alphanumeric
 bitset, ascending code-unit index, low bit first. The new widget precedence
-contract passes. Full baseline qualification passes; no direct-libc result is claimed yet.
+contract passes. Both baseline and direct-libc qualifications pass.
 
 ## Baseline qualification
 
@@ -52,3 +51,18 @@ production/ABI, exact known-suite comparison, headless gameplay and explicit
 save/load pass. Source fingerprints agree, preflight matches production, and all
 ten callback identities remain distinct. See [C qualification](entry-classifiers-c-qualification.json).
 Safe runtime was not tested; known full-suite failures remain unchanged.
+
+## Direct-libc qualification
+
+The predicates now call `C.iswdigit(C.wint_t(v))` and
+`C.iswalnum(C.wint_t(v))` directly. Both custom C forwarding bodies are removed.
+The complete 131,072-case capture is unchanged in default/server/highres, alongside
+all four contracts and twelve widget roots with no skips. Fresh static, safe build,
+production/ABI, exact known-suite, gameplay and explicit save/load gates pass;
+source fingerprints agree and all ten callback addresses remain distinct.
+See [native qualification](entry-classifiers-native-qualification.json).
+
+Standalone C remains **45 lines in four files** (zero reference C): this removes
+two cgo-preamble C bodies, which that physical `.c` metric never counted. libc,
+its locale semantics, generated cgo wrappers and other inline/third-party C remain.
+No production correction or golden update was needed after conversion.

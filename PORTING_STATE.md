@@ -2,146 +2,97 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: 45 physical lines in 4 production `.c` files**, zero
-reference C. Latest cleanup removes six standalone C lines plus eight unused
-header/preamble helpers. The preceding storage conversion removed 44 global
-definitions, eight mapped buffers and two translation units (−63 lines). libc/CGO
-remains. See
-[C_LOC.md](docs/porting/C_LOC.md).
+**Qualified C remaining: 45 physical lines in four production `.c` files**, zero
+reference C. The latest change removes two cgo-preamble bodies, outside that
+metric. C types, other preambles, generated bridges, libc and third-party C remain.
+See [C_LOC.md](docs/porting/C_LOC.md).
 
-<!-- current-checkpoint -->
+## Current — entry classifiers call libc directly
 
-## Current — remaining storage qualified
+The actual-C baseline is committed/pushed as `cbf62bc1`. The subsequent direct-libc
+change is fully qualified and this checkpoint accompanies its commit. Check Git
+status/log/remote for the final commit/push; no self-referential hash is inferred.
 
-The remaining-storage conversion and fixture identity repair pass full
-qualification against pushed baseline `781901ef`: 2,291/2,280/2,291 consumer roots
-across default/server/highres without skips, three legacy contracts per profile,
-static checks, safe build/symbol checks, three production binaries/ABI, exact
-known-suite comparison, headless gameplay and save/load. Both frozen storage
-captures remain unchanged: 884 raw patterns and 54,905 numeric patterns.
-Safe runtime was not tested; the known full-suite failures remain unchanged.
+`uiEntryDigit`/`uiEntryAlnum` now call the same libc classifiers with explicit
+`C.wint_t` widening. All 131,072 boolean classifications match three fresh C
+captures: SHA256 `f5c39db5e866885891bbb1fe8d0b2244d9fbcea7d232cdd4b7e6f90dd03ff6e0`.
+No locale substitution, reference C copy, or UI golden change was introduced.
+Four legacy contracts and twelve widget roots pass in each profile, no skips.
+Static, safe build, three production binaries/ABI, exact known-suite comparison,
+headless gameplay and explicit save/load pass. Source fingerprints agree;
+preflight matches production; all ten retained callback addresses stay distinct.
+Safe runtime was not tested; known full-suite failures remain unchanged.
 
-Pipeline 37056 JOINED PASS. Final artifacts are
-`build/port-remaining-storage/lifetime-{default,server,highres,safe,preflight,production}`.
-Source fingerprints match across all phases and the preflight binary matches
-production. See [RAW_STORAGE.md](docs/porting/RAW_STORAGE.md) and its committed
-qualification JSON. The allocator retains foreign storage for process lifetime;
-this does not remove libc, C types, callback boundaries or third-party C.
+Native pipeline91437 JOINED PASS; its finalizer29700 JOINED PASS. All build/test/
+scenario jobs are joined. Artifacts are `build/port-entry-direct/{c,native}-
+{default,server,highres,safe,preflight,production}`. The migration/finalizers and
+scenario cleanup scripts are CONSUMED. Tracked source supersedes ignored drafts.
+See [ENTRY_CLASSIFIERS.md](docs/porting/ENTRY_CLASSIFIERS.md) and both qualification
+JSON files. Do not regenerate captures or rerun consumed installers/finalizers.
 
-The fixture repair has deterministic red/green evidence. Per-case identity-map
-entries outlived freed allocations; cleanup now removes transient keys after all
-snapshots while retaining aliases for persistent objects. The initial repair
-reset a persistent player alias; complete JSON diffs caught that and the final
-repair preserves every frozen capture. Failure-only callback capture is enabled
-for future diagnostics. The original intermittent stats digest is not proven to
-have that cause. See [FIXTURE_IDENTITIES.md](docs/porting/FIXTURE_IDENTITIES.md).
+## Next — optional safe-profile forwarding shims
 
-Earlier native-* and scoped-* failures and the deliberately interrupted observed-*
-run remain local evidence. Diagnostic captures are losslessly compressed with
-SHA/round-trip records. All Go/build/scenario jobs are joined at this checkpoint.
-The remaining-storage migration generators and successful finalizers are CONSUMED;
-tracked source supersedes ignored drafts. Do not rerun them.
+After the current commit/push, inspect/run the isolated const-pointer export probe
+under `build/port-safe-direct/probe`, sourcing `build/baseline/env.sh` first. It has
+not been compiled. Its declarations require the generated Go export prototypes
+to remain const-qualified. Only proceed with direct Go exports if that succeeds.
+The production safe shims are still unchanged (20 C lines); ASan, macro remapping,
+allocator behavior and compatibility symbol names must be preserved.
 
-This checkpoint is included in the qualified storage commit. On resume, check
-Git status/log/remote to establish whether its push completed; no commit hash
-is inferred from this checkpoint alone. Preserve the untracked asset archive.
+Read ignored `build/port-safe-direct/PLAN.md` and `contract-cases.md`. Luna drafted
+the edge matrix; primary reviewed it and corrected report escaping/return-value
+scope. Runtime support under safe,porttest still needs establishing. New fixtures
+should use the existing root-package/Go-bridge pattern where practical to share
+consumer builds. Captures should call the actual six C shims before conversion;
+independent compare assertions use sign, while target-specific raw returns may be
+recorded separately. Avoid undefined overlap, capacity and pointer inputs.
 
-## Current follow-up — orphan cleanup qualified
+A read-only helper is tracing whether existing TestShopStockLoading actually
+reaches FieldGuideXfer/strcpy; do not infer branch coverage from type29 alone.
+Its prospective report is `build/port-safe-direct/shop-fieldguide-trace.md`.
+Only one bounded GPT-6 Luna helper is used; implementation and acceptance remain
+primary-owned. No safe-shim production/test source changes are applied yet.
 
-Storage commit `f5970121` is pushed. Its six-file follow-up removes eight unused
-header/preamble helpers, five unused callbacks and the empty nullsub_35 function
-plus its two Obelisk calls. Both NeedSync calls and all ten live C callback
-identities remain. C is 45 lines /4 files (−6). See
-[ORPHAN_INLINE.md](docs/porting/ORPHAN_INLINE.md) and its native qualification JSON.
+Later candidates: ten distinct empty callback exports and third-party MP3 C.
+Read `build/port-empty-callbacks/go-entrypoint-design.md` before callback work;
+ABI, identity and callback-loop overhead require evidence. Other read-only audits
+are under `build/port-inline-c-audit` and `build/port-safe-bridge-audit`.
 
-Pipeline 18151 JOINED PASS. All three contracts and four Obelisk roots pass in
-all three profiles without skips or changed storage hashes. Static, safe build,
-three production binaries/ABI, exact known-suite comparison, gameplay and explicit
-save/load pass. Source fingerprints match, preflight matches production, and all
-ten callback addresses remain distinct in baseline/current/safe binaries. The
-AST comparison shows only two removed calls; its line-position printing artifact
-was corrected in the audit. All jobs are joined. Migration and finalizers are
-CONSUMED. Check Git log/status/remote for this checkpoint's commit/push status.
+## Recent qualified milestones
 
-Artifacts are build/port-orphan-inline/native-{default,server,highres,safe,
-preflight,production}. Scenario asset restoration uses that directory's
-`deduplicate-preflight.py --restore orphan-inline-native` and
-`deduplicate-save.py --restore orphan-inline-native-save`; inspect per-run records.
-
-Next: consider direct libc calls for the two entry-character forwarding helpers,
-with exhaustive uint16 boolean parity and existing UI entry gating tests. Luna's
-read-only plan is under build/port-entry-classifier-audit/direct-libc-plan.md and
-still requires primary review. Preserve libc locale semantics; no ASCII/Unicode
-substitution is authorized by this implementation choice. Live callback exports,
-safe adapters and third-party MP3 implementation remain later work.
-
-## Current — entry classifier C baseline qualified
-
-The actual-C baseline passes four legacy contracts and twelve widget roots in all
-three profiles, no skips/changed goldens, plus static, safe build, production/ABI,
-exact known-suite, gameplay and explicit save/load. Pipeline23563 JOINED PASS.
-Source fingerprints agree, preflight matches production, and ten callback
-identities remain distinct. Three fresh-process captures froze all 131,072
-classifications to SHA256
-`f5c39db5e866885891bbb1fe8d0b2244d9fbcea7d232cdd4b7e6f90dd03ff6e0`.
-No reference C was added; the test calls the actual production wrappers through
-small Go predicates. See ENTRY_CLASSIFIERS.md and the C qualification JSON.
-Check Git status/log/remote for this checkpoint's commit/push completion.
-
-Artifacts are build/port-entry-direct/c-{default,server,highres,safe,preflight,
-production}. Finalizers/cleanup are CONSUMED. All jobs joined. Restore scenario
-assets using deduplicate-c-{preflight,save}.py and per-run restore metadata.
-
-Next: replace only the two predicates' C.entry* calls with C.isw*(C.wint_t(v))
-and remove their two C preamble bodies; preserve the caller/branch and all frozen
-expectations. Install reviewed ignored native-batch.json, record native-guard.json
-with committed HEAD/12 consumer names, then run run.sh native. After all gates
-pass use finish.py native, native save deduplication and finish-docs.py native;
-commit/push and continue. All scripts require the baseline environment and native
-jobs require host execution. Standalone C remains 45; two preamble bodies retire.
-
-## Other prepared evidence
-
-Read-only inline/header, safe-bridge and empty-callback audits are under
-build/port-inline-c-audit, port-safe-bridge-audit and port-empty-callbacks.
-The entry-classifier audit under port-entry-classifier-audit was corrected by the
-primary: live constructor callers include src/gui_console.go and src/gui_widgets.go.
-No locale mutation was found in repository/module source, but linked-library
-locale behavior is not established. Preserve C classification semantics.
-Unimplemented follow-up ideas are in port-empty-callbacks/go-entrypoint-design.md.
-
-One bounded GPT-6 Luna helper remains the default. Current helper is idle;
-implementation drafts, caller inventories and finalizer scripts require primary
-review. Exact whole-source search commands/path evidence are now required.
+- `f5970121` (pushed): remaining 44 globals/eight mapped buffers initialize from
+  Go via the foreign allocator; 114→51 C lines. Full 2,291/2,280/2,291 roots pass.
+  Fixture identity cleanup retains persistent aliases and removes stale transient
+  addresses. Original intermittent stats mismatch cause remains unproven. See
+  [RAW_STORAGE.md](docs/porting/RAW_STORAGE.md) and
+  [FIXTURE_IDENTITIES.md](docs/porting/FIXTURE_IDENTITIES.md).
+- `cd18015c` (pushed): orphan inline/empty-call cleanup, 51→45 C lines; eight
+  additional header/preamble helpers retired. See [ORPHAN_INLINE.md](docs/porting/ORPHAN_INLINE.md).
+- Prior `781901ef` (pushed): opaque audio addresses kept outside Go pointer
+  scanning. Deterministic regression and full qualification passed. See
+  [AUDIO_ADDRESS_GC.md](docs/porting/AUDIO_ADDRESS_GC.md).
 
 ## Disk and assets
 
-Safe/preflight cleanup round one is CONSUMED: six obsolete phase outputs,
-301,307,320 bytes, after 159 host process checks and fresh file/evidence checks.
-Five had observed current hashes rather than hashes in old phase results; one
-matched a retained qualified production binary. No qualification linkage was
-inferred for the others. Source, logs, manifests and captures remain.
+Preserve `build/assets/extracted/drive_c/Nox` and untracked
+`nox-iso-from-archive-org.7z`; never stage the archive. Recent cleanup plans and
+consumed records are under `build/port-artifact-cleanup`:
 
-Cleanup rounds five/six are CONSUMED: three old render-helper executables
-(145,417,452 bytes, 162 host processes checked) and eight older highres/server
-executables (384,739,612 bytes, 164 processes). All evidence remains under
-build/port-artifact-cleanup. Current storage/orphan/entry/audio artifacts,
-assets, scenarios and caches were excluded.
+- Old production executable rounds four/five/six removed 12/3/8 files,
+  582,770,236 /145,417,452 /384,739,612 bytes after hash/evidence/host-use checks.
+- Safe/preflight round one removed six obsolete outputs (301,307,320 bytes).
+  Five hashes were observed, not inferred from qualification records.
+- Old test ELF round one removed only five large outputs (288,789,800 bytes);
+  the seven small diagnostic probes were kept. No production qualification claimed.
+- Old capture archival preserved 78 captures in verified gzip files and reclaimed
+  1,707,909,412 bytes. `old-capture-archive-record.json` maps original paths, hashes,
+  modes/times and archives. Restore with `archive-old-captures.py --restore
+  <original-relative-path>` before rerunning old scripts requiring plain JSON.
 
-Cleanup round four is CONSUMED: 12 older qualified production executables,
-582,770,236 bytes, removed after verifying metadata/hashes/ABI and checking 158
-host processes. Luna prepared the inventory; the primary revalidated and applied
-it. Evidence remains in build/port-artifact-cleanup/older-binaries-round4*.json.
-
-Old executable cleanup rounds two/three are CONSUMED: 33 files /1,609,335,708 bytes
-and 18 files /876,580,664 bytes, respectively, after host process/open-file checks.
-All qualification metadata, logs, scenarios, original assets and caches remain.
-Plans/consumed records are under build/port-artifact-cleanup.
-
-The completed latest preflight and save/load runs released 556,388,715 and
-556,358,986 bytes of verified duplicate assets; restoration records remain with
-their runs. For the
-latest preflight use `build/port-remaining-storage/deduplicate-scoped.py --restore
-raw-storage-scoped`; for save/load use `deduplicate-save.py --restore
-raw-storage-native-save`. Inspect each run's deduplicated-assets.json before reuse.
-Preserve build/assets/extracted/drive_c/Nox and nox-iso-from-archive-org.7z.
+Metadata, logs, source, assets and current storage/orphan/entry/audio evidence
+were preserved. Earlier cleanup rounds are also consumed; inspect records.
+Completed scenario assets are deduplicated with per-run restoration manifests.
+Entry scenarios use `build/port-entry-direct/deduplicate-{c,native}-{preflight,
+save}.py`; storage uses `build/port-remaining-storage/deduplicate-scoped.py` and
+`deduplicate-save.py`; orphan uses `build/port-orphan-inline/deduplicate-preflight.py`
+and `deduplicate-save.py`. Consult each run's deduplicated-assets.json before reuse.

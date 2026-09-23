@@ -14,10 +14,16 @@
 
 ## Current status
 
+Entry-character predicates now call the same libc classifiers directly, removing
+two custom cgo-preamble bodies. All 131,072 classifications and twelve widget roots
+per profile match the C baseline; production/ABI/gameplay/save-load gates pass.
+Standalone C stays 45 lines/four files because preamble bodies are outside that
+metric. See [ENTRY_CLASSIFIERS.md](docs/porting/ENTRY_CLASSIFIERS.md).
+
 The two entry-character predicates now have a qualified actual-C baseline covering
 all 131,072 boolean classifications plus twelve widget test roots per profile.
-Full native/ABI/gameplay/save-load gates pass; replacement with direct libc calls
-is next. C remains 45 lines/four files. See [ENTRY_CLASSIFIERS.md](docs/porting/ENTRY_CLASSIFIERS.md).
+Full native/ABI/gameplay/save-load gates pass; that baseline supports the
+subsequent direct-libc conversion above. C remains 45 lines/four files. See [ENTRY_CLASSIFIERS.md](docs/porting/ENTRY_CLASSIFIERS.md).
 
 Unused header/preamble helpers and unregistered empty callbacks are retired,
 along with two empty Obelisk calls. Synchronization and all ten live callback
@@ -361,6 +367,14 @@ Do not promise wording that prevents interruptions or weaken port quality to try
 to avoid them.
 
 ## Testing strategy
+
+For new focused bridge fixtures, prefer the existing pattern of a `porttest` Go
+bridge in `legacy` with assertions in the root test package when it exposes the
+actual function cleanly. Consumer checks can then share that root test build.
+Keep private invariant tests where their access is needed. Measure build time
+separately before relocating established tests: the entry-classifier batch spent
+about 87 seconds on a legacy gate whose tests took 1.9 seconds, and 149 seconds on
+a root gate whose tests took about four seconds after a cgo source edit.
 
 When retiring C callbacks, preserve names used to assign stable capture IDs:
 replace their addresses with nil instead of deleting sorted-table entries. Keep
