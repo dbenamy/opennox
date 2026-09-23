@@ -62,12 +62,6 @@
 
 void nox_exit(int exitCode);
 
-static void memset32(uint32_t* x, uint32_t y, size_t z) {
-	while (z--)
-		*x++ = y;
-}
-
-static float COERCE_FLOAT(uint32_t x) { return *(float*)&x; }
 
 /* 293 */
 typedef struct nox_player_polygon_check_data {
@@ -134,17 +128,6 @@ typedef struct {
 	int max_y;
 } nox_rect;
 
-static inline int noxCopyRect(nox_rect* lprcDst, const nox_rect* lprcSrc) {
-	*lprcDst = *lprcSrc;
-	return true;
-}
-static inline int noxSetRect(nox_rect* lprc, int xLeft, int yTop, int xRight, int yBottom) {
-	lprc->min_x = xLeft;
-	lprc->min_y = yTop;
-	lprc->max_x = xRight;
-	lprc->max_y = yBottom;
-	return true;
-}
 
 typedef struct nox_video_bag_image_t nox_video_bag_image_t;
 int nox_video_bag_image_type(nox_video_bag_image_t* img);

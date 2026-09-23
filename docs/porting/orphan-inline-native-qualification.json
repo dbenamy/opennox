@@ -1,0 +1,297 @@
+{
+  "status": "qualified orphan inline and empty callback cleanup",
+  "baseline": "committed remaining-storage native qualification",
+  "preceding_revision": "f5970121a858a6040df79c35d3794b8ca68b1181",
+  "targets": {
+    "default": {
+      "contracts": [
+        "TestAudioStreamRawAddressGC",
+        "TestRawStorageOwners",
+        "TestScalarStorageOwners"
+      ],
+      "contract_count": 3,
+      "obelisk_roots": [
+        "TestObjectivesObeliskEligibility",
+        "TestObjectivesObeliskIdle",
+        "TestObjectivesObeliskTransfer",
+        "TestObjectivesObeliskWands"
+      ],
+      "obelisk_root_count": 4,
+      "raw_storage_sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3",
+      "numeric_storage_sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+      "skipped_tests": 0,
+      "static": true
+    },
+    "server": {
+      "contracts": [
+        "TestAudioStreamRawAddressGC",
+        "TestRawStorageOwners",
+        "TestScalarStorageOwners"
+      ],
+      "contract_count": 3,
+      "obelisk_roots": [
+        "TestObjectivesObeliskEligibility",
+        "TestObjectivesObeliskIdle",
+        "TestObjectivesObeliskTransfer",
+        "TestObjectivesObeliskWands"
+      ],
+      "obelisk_root_count": 4,
+      "raw_storage_sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3",
+      "numeric_storage_sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+      "skipped_tests": 0,
+      "static": true
+    },
+    "highres": {
+      "contracts": [
+        "TestAudioStreamRawAddressGC",
+        "TestRawStorageOwners",
+        "TestScalarStorageOwners"
+      ],
+      "contract_count": 3,
+      "obelisk_roots": [
+        "TestObjectivesObeliskEligibility",
+        "TestObjectivesObeliskIdle",
+        "TestObjectivesObeliskTransfer",
+        "TestObjectivesObeliskWands"
+      ],
+      "obelisk_root_count": 4,
+      "raw_storage_sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3",
+      "numeric_storage_sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+      "skipped_tests": 0,
+      "static": true
+    }
+  },
+  "production_c": {
+    "files": 4,
+    "lines": 45
+  },
+  "test_reference_c": {
+    "files": 0,
+    "lines": 0
+  },
+  "ast": {
+    "enclosing_function": "objectiveObelisk",
+    "files": 3,
+    "only_removed_calls": 2,
+    "success": true
+  },
+  "symbols": {
+    "cumulative_retired_count": 2379,
+    "retired_absent_from": [
+      "opennox",
+      "opennox-hd",
+      "opennox-server",
+      "safe"
+    ],
+    "retained_c_callbacks": [
+      "nullsub_22",
+      "nullsub_29",
+      "nullsub_36",
+      "nullsub_38",
+      "nullsub_39",
+      "nullsub_40",
+      "nullsub_41",
+      "nullsub_42",
+      "nullsub_43",
+      "nullsub_44"
+    ],
+    "retained_callback_addresses": {
+      "safe": {
+        "nullsub_22": "090ee37c",
+        "nullsub_29": "090ee231",
+        "nullsub_36": "090ee38c",
+        "nullsub_38": "090ee39c",
+        "nullsub_39": "090ee3ac",
+        "nullsub_40": "090ee3bc",
+        "nullsub_41": "090ee3cc",
+        "nullsub_42": "090ee3dc",
+        "nullsub_43": "090ee3ec",
+        "nullsub_44": "090ee3fc"
+      },
+      "opennox": {
+        "nullsub_22": "08fea170",
+        "nullsub_29": "08fea160",
+        "nullsub_36": "08fea180",
+        "nullsub_38": "08fea190",
+        "nullsub_39": "08fea1a0",
+        "nullsub_40": "08fea1b0",
+        "nullsub_41": "08fea1c0",
+        "nullsub_42": "08fea1d0",
+        "nullsub_43": "08fea1e0",
+        "nullsub_44": "08fea1f0"
+      },
+      "opennox-hd": {
+        "nullsub_22": "08fea1e0",
+        "nullsub_29": "08fea1d0",
+        "nullsub_36": "08fea1f0",
+        "nullsub_38": "08fea200",
+        "nullsub_39": "08fea210",
+        "nullsub_40": "08fea220",
+        "nullsub_41": "08fea230",
+        "nullsub_42": "08fea240",
+        "nullsub_43": "08fea250",
+        "nullsub_44": "08fea260"
+      },
+      "opennox-server": {
+        "nullsub_22": "08f4ade0",
+        "nullsub_29": "08f4add0",
+        "nullsub_36": "08f4adf0",
+        "nullsub_38": "08f4ae00",
+        "nullsub_39": "08f4ae10",
+        "nullsub_40": "08f4ae20",
+        "nullsub_41": "08f4ae30",
+        "nullsub_42": "08f4ae40",
+        "nullsub_43": "08f4ae50",
+        "nullsub_44": "08f4ae60"
+      }
+    },
+    "qualified_storage_callback_addresses": {
+      "opennox": {
+        "nullsub_22": "08fea2f0",
+        "nullsub_29": "08fea2a0",
+        "nullsub_36": "08fea300",
+        "nullsub_38": "08fea310",
+        "nullsub_39": "08fea320",
+        "nullsub_40": "08fea330",
+        "nullsub_41": "08fea340",
+        "nullsub_42": "08fea350",
+        "nullsub_43": "08fea360",
+        "nullsub_44": "08fea370"
+      },
+      "opennox-hd": {
+        "nullsub_22": "08fea360",
+        "nullsub_29": "08fea310",
+        "nullsub_36": "08fea370",
+        "nullsub_38": "08fea380",
+        "nullsub_39": "08fea390",
+        "nullsub_40": "08fea3a0",
+        "nullsub_41": "08fea3b0",
+        "nullsub_42": "08fea3c0",
+        "nullsub_43": "08fea3d0",
+        "nullsub_44": "08fea3e0"
+      },
+      "opennox-server": {
+        "nullsub_22": "08f4af60",
+        "nullsub_29": "08f4af10",
+        "nullsub_36": "08f4af70",
+        "nullsub_38": "08f4af80",
+        "nullsub_39": "08f4af90",
+        "nullsub_40": "08f4afa0",
+        "nullsub_41": "08f4afb0",
+        "nullsub_42": "08f4afc0",
+        "nullsub_43": "08f4afd0",
+        "nullsub_44": "08f4afe0"
+      }
+    },
+    "prior_identity_baseline_distinct": true
+  },
+  "contracts": {
+    "raw_storage_sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3",
+    "numeric_storage_sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b"
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 4.12096880399622,
+        "sha256": "1837c1913f1e1e6b0371f2b13780f7b1ba61d6c40afb808fbb2064c000155d39",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 9.642447914928198,
+        "sha256": "17de7b2f32eb632051fafe8024174a28cd1a01e4eb35c05cdb33a7039418718f",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 64.26713418401778,
+        "sha256": "f8ebe799a0f1b91c900929fa6f3a5434a1f08f21869f3c59bc5621f33d4bcab0",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "orphan-inline-native-save": {
+        "exit": 0,
+        "wall_seconds": 45.06035766005516,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.55040818103589,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native-save",
+          "binary_sha256": "1837c1913f1e1e6b0371f2b13780f7b1ba61d6c40afb808fbb2064c000155d39",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-orphan-inline/native-production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/orphan-inline-native-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Retire unused inline C helpers and empty obelisk calls",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "a19b6d74a8e63b4e996f754025b5efe97e3777d0bf6feffbaf51aa4373757a16"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 57.99213525885716,
+      "failure_entries": 1553,
+      "packages": {
+        "skip": 32,
+        "pass": 15,
+        "fail": 3
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "preflight": {
+    "exit": 0,
+    "process_exit": 0,
+    "elapsed": 62.79449619096704,
+    "capture": false,
+    "godebug": ",randautoseed=0",
+    "reference": "/root/src/opennox/build/baseline/runs/client-drawable-native",
+    "binary_sha256": "1837c1913f1e1e6b0371f2b13780f7b1ba61d6c40afb808fbb2064c000155d39",
+    "command": [
+      "xvfb-run",
+      "-a",
+      "-s",
+      "-screen 0 1280x960x24 -nolisten tcp",
+      "/root/src/opennox/build/port-orphan-inline/native-preflight/opennox",
+      "-data",
+      "/root/src/opennox/build/baseline/runs/orphan-inline-native/data",
+      "-window",
+      "-pprof",
+      "127.0.0.1:0"
+    ],
+    "display_implementation": "Remaining storage initialized from Go using the foreign allocator",
+    "isolated_network": false,
+    "removed_maps": 0
+  },
+  "source_manifest_sha256": "f6884158ddd959df650e4f5d39c5b7a8920ab264f5cb600038ea4b117b7eef88"
+}

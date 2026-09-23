@@ -1,0 +1,1 @@
+^(TestObjectivesObeliskIdle|TestObjectivesObeliskTransfer|TestObjectivesObeliskWands|TestObjectivesObeliskEligibility)$

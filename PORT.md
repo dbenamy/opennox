@@ -14,6 +14,13 @@
 
 ## Current status
 
+Unused header/preamble helpers and unregistered empty callbacks are retired,
+along with two empty Obelisk calls. Synchronization and all ten live callback
+identities are preserved. Focused tests in all three profiles, storage/GC
+contracts, production/ABI and gameplay/save-load qualification pass. Standalone
+production C is now **45 lines in four files** (−6); headers, preambles and
+third-party C remain outside that count. See [ORPHAN_INLINE.md](docs/porting/ORPHAN_INLINE.md).
+
 The remaining 44 globals and eight mapped buffers now initialize from Go, using
 the existing foreign allocator for stable process-lifetime storage. Both frozen
 storage captures match C; all 2,291/2,280/2,291 consumer roots pass across the three
@@ -92,8 +99,8 @@ unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skip
 and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
 comparison, headless gameplay and save/load checks pass.
 
-C remaining is **51 physical lines in 4 files**, zero reference C. See
-[the native qualification](docs/porting/raw-storage-native-qualification.json).
+C remaining is **45 physical lines in 4 files**, zero reference C. See
+[the native qualification](docs/porting/orphan-inline-native-qualification.json).
 See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
 
 The preceding world-grid conversion is recorded in

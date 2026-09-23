@@ -2,9 +2,11 @@
 
 Read [PORT.md](PORT.md) for the working plan. This is the resume checkpoint.
 
-**Qualified C remaining: 51 physical lines in 4 production `.c` files**, zero
-reference C. Latest conversion removes 44 global definitions, eight mapped buffers
-and two translation units (−63 lines). libc/CGO remains. See
+**Qualified C remaining: 45 physical lines in 4 production `.c` files**, zero
+reference C. Latest cleanup removes six standalone C lines plus eight unused
+header/preamble helpers. The preceding storage conversion removed 44 global
+definitions, eight mapped buffers and two translation units (−63 lines). libc/CGO
+remains. See
 [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
@@ -44,26 +46,34 @@ This checkpoint is included in the qualified storage commit. On resume, check
 Git status/log/remote to establish whether its push completed; no commit hash
 is inferred from this checkpoint alone. Preserve the untracked asset archive.
 
-## Next — reviewed orphan cleanup, still unapplied
+## Current follow-up — orphan cleanup qualified
 
-`build/port-orphan-inline` contains a reviewed six-file patch for eight unused
-inline/header helpers, five unused callbacks and two empty nullsub_35 calls/body.
-Preserve both NeedSync calls/control flow and all ten live callback identities.
-Expected next C count: 45 lines /4 files. The four existing Obelisk tests reach
-objectiveObelisk via op808; an earlier draft named the wrong enclosing function.
+Storage commit `f5970121` is pushed. Its six-file follow-up removes eight unused
+header/preamble helpers, five unused callbacks and the empty nullsub_35 function
+plus its two Obelisk calls. Both NeedSync calls and all ten live C callback
+identities remain. C is 45 lines /4 files (−6). See
+[ORPHAN_INLINE.md](docs/porting/ORPHAN_INLINE.md) and its native qualification JSON.
 
-After the storage commit/push, verify all six source hashes before refreshing the
-orphan HEAD guard. The draft installer intentionally refuses --apply. Apply only
-the reviewed guarded patch; no other source changes are needed. The AST input
-preparer/checker must show exactly two removed calls and no other Go AST changes.
-If formatting positions cause a false difference, fix the audit, not game code.
+Pipeline 18151 JOINED PASS. All three contracts and four Obelisk roots pass in
+all three profiles without skips or changed storage hashes. Static, safe build,
+three production binaries/ABI, exact known-suite comparison, gameplay and explicit
+save/load pass. Source fingerprints match, preflight matches production, and all
+ten callback addresses remain distinct in baseline/current/safe binaries. The
+AST comparison shows only two removed calls; its line-position printing artifact
+was corrected in the audit. All jobs are joined. Migration and finalizers are
+CONSUMED. Check Git log/status/remote for this checkpoint's commit/push status.
 
-The ignored native manifest uses a one-line four-test regex, its own scenario,
-2,379 cumulative retired symbols and ten retained callbacks. run-native.sh,
-deduplicate-preflight/save.py and finish-native.py are prepared but NOT RUN.
-The finalizer checks the qualified storage baseline, all gates, source/manifest
-identity, explicit save/load and distinct callback addresses in baseline/current/
-safe binaries. Primary reviewed and strengthened Luna's draft. Inspect before use.
+Artifacts are build/port-orphan-inline/native-{default,server,highres,safe,
+preflight,production}. Scenario asset restoration uses that directory's
+`deduplicate-preflight.py --restore orphan-inline-native` and
+`deduplicate-save.py --restore orphan-inline-native-save`; inspect per-run records.
+
+Next: consider direct libc calls for the two entry-character forwarding helpers,
+with exhaustive uint16 boolean parity and existing UI entry gating tests. Luna's
+read-only plan is under build/port-entry-classifier-audit/direct-libc-plan.md and
+still requires primary review. Preserve libc locale semantics; no ASCII/Unicode
+substitution is authorized by this implementation choice. Live callback exports,
+safe adapters and third-party MP3 implementation remain later work.
 
 ## Other prepared evidence
 
@@ -80,6 +90,11 @@ implementation drafts, caller inventories and finalizer scripts require primary
 review. Exact whole-source search commands/path evidence are now required.
 
 ## Disk and assets
+
+Cleanup round four is CONSUMED: 12 older qualified production executables,
+582,770,236 bytes, removed after verifying metadata/hashes/ABI and checking 158
+host processes. Luna prepared the inventory; the primary revalidated and applied
+it. Evidence remains in build/port-artifact-cleanup/older-binaries-round4*.json.
 
 Old executable cleanup rounds two/three are CONSUMED: 33 files /1,609,335,708 bytes
 and 18 files /876,580,664 bytes, respectively, after host process/open-file checks.

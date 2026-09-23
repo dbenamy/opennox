@@ -281,6 +281,7 @@ target build selection and linker evidence.
 | Fixture-backed numeric global owners | 6 | 114 | −52 | 0 |
 | Audio raw-address GC correction and remaining-storage C baseline | 6 | 114 | 0 | 0 |
 | Remaining global and mapped-buffer storage | 4 | 51 | −63 | 0 |
+| Orphan inline helpers and empty Obelisk calls | 4 | 45 | −6 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

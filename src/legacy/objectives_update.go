@@ -306,7 +306,6 @@ func objectiveObelisk(u *server.Object) int32 {
 		}
 		if spent {
 			if *energy%8 == 0 {
-				C.nullsub_35(C.uint32_t(uintptr(u.CObj())), C.uint32_t(math.Float32bits(float32(80**energy/50))))
 				u.NeedSync()
 			}
 			if core.Frame()-u.Field34 > uint32(int32(core.TickRate())>>1) {
@@ -324,7 +323,6 @@ func objectiveObelisk(u *server.Object) int32 {
 		out = *energy
 		if out < 50 {
 			if out%8 == 0 {
-				C.nullsub_35(C.uint32_t(uintptr(u.CObj())), C.uint32_t(math.Float32bits(float32(80*out/50))))
 				u.NeedSync()
 			}
 			*energy++

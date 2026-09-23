@@ -17,7 +17,6 @@ package legacy
 #include "client__gui__gamewin__gamewin.h"
 
 void sub_45D870();
-static bool iswalpha_go(wchar2_t r) { return iswalpha(r); }
 */
 import "C"
 import (

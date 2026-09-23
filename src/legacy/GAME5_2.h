@@ -3,14 +3,9 @@
 
 #include "defs.h"
 
-void nullsub_9(uint32_t a1);
-void nullsub_10(uint32_t a1);
 void nullsub_22();
 void nullsub_36();
-void nullsub_35(uint32_t a1, uint32_t a2);
-void nullsub_24(uint32_t a1);
 void nullsub_29(void);
-void nullsub_30(uint32_t a1);
 unsigned int nox_xxx_net_getIP_554200(int a1);
 char* sub_554230();
 int sub_554240(int a1);
@@ -18,7 +13,6 @@ short sub_5545A0();
 int nox_xxx_createSocketLocal_554B40(uint16_t hostshort);
 int sub_554D10();
 int sub_5550D0(int a1, uint16_t hostshort, char* buf);
-void nullsub_31(uint32_t a1);
 int sub_56F250();
 int nox_xxx_protectionCreateInt_56F400(int a1);
 int sub_56F4F0(int* a1);
