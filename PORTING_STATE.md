@@ -9,45 +9,29 @@ See [C_LOC.md](docs/porting/C_LOC.md).
 
 <!-- current-checkpoint -->
 
-## Active — formatting C contracts
+## Active — formatting baseline frozen
 
-Standing process: proactively use one GPT-6 Luna helper for suitable bounded
-implementation, caller/audit, test-gap, cleanup-inventory or documentation work.
-The primary owns baseline acceptance, integration, cleanup execution, review and
-qualification. See [Subagent use](PORT.md#subagent-use). Review the process after
-the next two completed batches, then adjust at batch boundaries without a new
-user approval step. Next useful delegation: disk-cleanup inventory while the
-primary prepares the formatting baseline gates. This docs update launches no jobs.
+Formatting/scalar/directory C baseline passes twice on default and once each on
+server/highres: eight roots, eight matching captures /668,876 cases, no skips,
+static checks and identical source manifests. Production is unchanged since
+2390c78d; only five tagged test files were added, so its production/ABI/gameplay/
+save-load evidence is reused. See [TEXT_FORMAT.md](docs/porting/TEXT_FORMAT.md).
+No build/test jobs remain active. C remains1,219 /12; no reference C.
 
-Extension/listing conversion `2390c78d` is committed and pushed. The following
-batch is being scoped under `build/port-final-formatting`. Two new tagged files
-exercise the production C wide formatter through typed varargs, covering numeric
-padding/signedness, float rounding/truncation/special values, raw UTF-16 and narrow
-bytes, null/empty strings, mixed arguments, exact capacities/guards and nil output.
-C probe1 joined PASS: three formatter roots /13,464 bounded-output cases.
-Added exhaustive UTF-16/byte comparisons, decimal/copy contracts and real catalog
-directory checks. Probe2 failed setup on a missing fixture brace; it is joined
-and the syntax is corrected. C probe3 joined PASS: all eight roots /668,876 captured cases. No build or
-test jobs remain active. The upgrade is complete; the requested isolated GPT-6 Luna trial passed.
-See [LUNA_TRIAL.md](docs/porting/LUNA_TRIAL.md). The production batch has not resumed.
-No production source has changed since2390c78d;
-no new captures are frozen and no native formatting conversion is installed.
-Completed native-text save-run asset cleanup80333 joined/CONSUMED, recovering
-556,358,986 bytes. Restore with
-`python3 build/port-final-formatting/deduplicate-text-save.py --restore server-text-native-save`.
+Next: install the reviewed formatter and scalar drafts, migrate callers, remove
+retired translation units, then run native contracts, affected roots and full
+production qualification. Nothing native is installed yet. Draft formatter's
+13,464 cases and Luna scalar's655,391 cases already match C in isolated386 tests.
+Ignored scripts/drafts are in build/port-final-formatting; production source is
+still authoritative. Scalar installer was corrected to retain the alloc import.
 
-The scalar and directory contracts pass their first C probe; caller audit and
-baseline repeats remain pending. The native formatter draft in
-`build/port-final-formatting/drafts/text_format.go` is NOT installed or qualified.
-The user requested GPT-6 Luna instead of Terra for bounded implementation work.
-The available `gpt-6-luna` helper drafted the four scalar helpers in
-`build/port-final-formatting/luna-trial/text_scalar.go`; all 655,391 adapted scalar
-cases and complete C capture comparisons pass on 386/SSE2. No behavior fixes were
-needed; primary requested unsafe.Add readability cleanup. This draft is NOT
-installed or production-qualified. Keep baseline design, review and qualification
-with the primary agent. No jobs remain active. Initial findings are in `initial-review.md`; do not
-replace the remaining formatter with standard fmt.Sprintf. C remains1,219 /12.
-
+Cleanup consumed cleanup-audit/obsolete-cache.py --apply:10 obsolete root-test
+archives /817,011,134bytes removed, with fresh symbol/hash/mtime checks. Original
+assets and baseline evidence preserved. New baseline capture duplicates can be
+shared only after verifying hashes. The default is one bounded GPT-6 Luna helper;
+primary owns baseline, review, integration and qualification. Review delegation
+after two completed batches; cleanup audit required extra steering and scalar
+caller draft needed import corrections, recorded in TEXT_FORMAT.md.
 
 ## Current — extension/listing helpers qualified
 

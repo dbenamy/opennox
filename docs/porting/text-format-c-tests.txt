@@ -1,0 +1,1 @@
+^TestText(Format|Scalars|AudioDirectory).*

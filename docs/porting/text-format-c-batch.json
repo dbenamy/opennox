@@ -1,0 +1,262 @@
+{
+  "batch": "text-format-c",
+  "env": {
+    "GOMAXPROCS": "2",
+    "GOMEMLIMIT": "768MiB",
+    "OPENNOX_CLIENT_INTERACTION_CAPTURE": "{out}/interaction"
+  },
+  "phases": {
+    "default": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/text-format-c-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-text-audio-directory.json",
+            "sha256": "1ddfb5d95b91a926574edfae8a68f598da5ddb6bd5efcb0e5baba58dfb6fee61"
+          },
+          {
+            "path": "{out}/interaction-text-format-float.json",
+            "sha256": "6172c43738a67076fe19f373dfa5b540b97ad4e3d147212860fc8c10639d6e75"
+          },
+          {
+            "path": "{out}/interaction-text-format-integer.json",
+            "sha256": "a951361f0f856a5274408be85fc6422fe4b12ac77a12b65c21d63292d5b61a6e"
+          },
+          {
+            "path": "{out}/interaction-text-format-strings.json",
+            "sha256": "792c33887477aab441ab20bd67c4ea339cc39a9a8b53c999d856433c98dbb987"
+          },
+          {
+            "path": "{out}/interaction-text-scalars-copy.json",
+            "sha256": "fcf90f42dda6cd6235b92a30785b4b91d715771c284dc423555974844581135c"
+          },
+          {
+            "path": "{out}/interaction-text-scalars-decimal.json",
+            "sha256": "23b1dbdf7ec66d8d5164fecd7b530869a31baeb16054eee2c72a142aed3c0b0c"
+          },
+          {
+            "path": "{out}/interaction-text-scalars-narrow.json",
+            "sha256": "385b91f1b7427c30d8f3323e28b73aaf0bc9fdd41c1525b303b0a18bb92faeb6"
+          },
+          {
+            "path": "{out}/interaction-text-scalars-wide.json",
+            "sha256": "7c2027e2181ed53ed04e7b97e1eae45da06ee0208076dbcdba5c52176eb922d8"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "server": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest,server",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/text-format-c-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-text-audio-directory.json",
+            "sha256": "1ddfb5d95b91a926574edfae8a68f598da5ddb6bd5efcb0e5baba58dfb6fee61"
+          },
+          {
+            "path": "{out}/interaction-text-format-float.json",
+            "sha256": "6172c43738a67076fe19f373dfa5b540b97ad4e3d147212860fc8c10639d6e75"
+          },
+          {
+            "path": "{out}/interaction-text-format-integer.json",
+            "sha256": "a951361f0f856a5274408be85fc6422fe4b12ac77a12b65c21d63292d5b61a6e"
+          },
+          {
+            "path": "{out}/interaction-text-format-strings.json",
+            "sha256": "792c33887477aab441ab20bd67c4ea339cc39a9a8b53c999d856433c98dbb987"
+          },
+          {
+            "path": "{out}/interaction-text-scalars-copy.json",
+            "sha256": "fcf90f42dda6cd6235b92a30785b4b91d715771c284dc423555974844581135c"
+          },
+          {
+            "path": "{out}/interaction-text-scalars-decimal.json",
+            "sha256": "23b1dbdf7ec66d8d5164fecd7b530869a31baeb16054eee2c72a142aed3c0b0c"
+          },
+          {
+            "path": "{out}/interaction-text-scalars-narrow.json",
+            "sha256": "385b91f1b7427c30d8f3323e28b73aaf0bc9fdd41c1525b303b0a18bb92faeb6"
+          },
+          {
+            "path": "{out}/interaction-text-scalars-wide.json",
+            "sha256": "7c2027e2181ed53ed04e7b97e1eae45da06ee0208076dbcdba5c52176eb922d8"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ],
+    "highres": [
+      {
+        "name": "compile",
+        "cwd": "{root}/src",
+        "command": [
+          "env",
+          "GOMEMLIMIT=1536MiB",
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-exec=env GOMEMLIMIT=768MiB",
+          "-tags",
+          "porttest,highres",
+          "-run",
+          "^$",
+          "."
+        ]
+      },
+      {
+        "name": "contracts",
+        "command": [
+          "python3",
+          "{root}/tools/porting/run_tests.py",
+          "--pattern-file",
+          "{root}/docs/porting/text-format-c-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "{out}/tests.log",
+          "--result",
+          "{out}/tests.json",
+          "--require-no-skips"
+        ],
+        "hashes": [
+          {
+            "path": "{out}/interaction-text-audio-directory.json",
+            "sha256": "1ddfb5d95b91a926574edfae8a68f598da5ddb6bd5efcb0e5baba58dfb6fee61"
+          },
+          {
+            "path": "{out}/interaction-text-format-float.json",
+            "sha256": "6172c43738a67076fe19f373dfa5b540b97ad4e3d147212860fc8c10639d6e75"
+          },
+          {
+            "path": "{out}/interaction-text-format-integer.json",
+            "sha256": "a951361f0f856a5274408be85fc6422fe4b12ac77a12b65c21d63292d5b61a6e"
+          },
+          {
+            "path": "{out}/interaction-text-format-strings.json",
+            "sha256": "792c33887477aab441ab20bd67c4ea339cc39a9a8b53c999d856433c98dbb987"
+          },
+          {
+            "path": "{out}/interaction-text-scalars-copy.json",
+            "sha256": "fcf90f42dda6cd6235b92a30785b4b91d715771c284dc423555974844581135c"
+          },
+          {
+            "path": "{out}/interaction-text-scalars-decimal.json",
+            "sha256": "23b1dbdf7ec66d8d5164fecd7b530869a31baeb16054eee2c72a142aed3c0b0c"
+          },
+          {
+            "path": "{out}/interaction-text-scalars-narrow.json",
+            "sha256": "385b91f1b7427c30d8f3323e28b73aaf0bc9fdd41c1525b303b0a18bb92faeb6"
+          },
+          {
+            "path": "{out}/interaction-text-scalars-wide.json",
+            "sha256": "7c2027e2181ed53ed04e7b97e1eae45da06ee0208076dbcdba5c52176eb922d8"
+          }
+        ]
+      },
+      {
+        "name": "static",
+        "cwd": "{root}/src",
+        "command": [
+          "go",
+          "test",
+          "./common/memmap/nox",
+          "-run",
+          "^TestCodeStatic$",
+          "-count=1"
+        ]
+      }
+    ]
+  }
+}
