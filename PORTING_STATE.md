@@ -247,3 +247,15 @@ MAX_SCFI44; active gain exponent makes ldexp exponent>=3; scalefactor exponents
 nonnegative. Explicit float32 evaluation must follow scalar SSE2; no FMA/algebraic
 rewrite. Full PCM/format/performance gates remain later at complete decoder wiring.
 Disk around360MiB; check before new capture/builds; original assets preserved.
+
+## Current — scalefactor C baseline
+
+Stream conversion1407413f committed/pushed. Scalefactor capture40630 joined PASS:
+14112byte-reader/10250quarter-power/12480decode records (36842total), three scalar
+SSE2 C runs plus UBSan bit-identical. All134 integer tables match Luna draft.
+Baseline tool/fixture/provenance committed before Go installation. See
+MP3_SCALEFACTORS.md and mp3-scalefactors-c-capture.json. Primary owns runner;
+Luna independently reviews capture domains, no builds/edits. No active jobs.
+Next: install reviewed source and runner, exactfloat-bit qualification plus existing
+MP3 roots, source/binary reuse proof, commit/push then next decoder stage.
+C stays six lines/one file/referencezero. Checkdisk before larger work.
