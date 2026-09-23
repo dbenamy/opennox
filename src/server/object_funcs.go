@@ -186,15 +186,31 @@ func RegisterObjectDamage(name string, fnc unsafe.Pointer) {
 
 type DamageFunc func(obj, source, weapon *Object, amount, kind int32) bool
 
+type DamageValueFunc func(obj, source, weapon *Object, amount, kind int32) int32
+
 var objDamage = ccall.NewFuncs(func(cfnc unsafe.Pointer) DamageFunc {
 	return func(obj, source, weapon *Object, amount, kind int32) bool {
 		return ccall.CallIntUPtr5(cfnc, uintptr(obj.CObj()), uintptr(toObjectC(source)), uintptr(toObjectC(weapon)), uintptr(uint(amount)), uintptr(uint(kind))) != 0
 	}
 })
 
+var objDamageValue = ccall.NewFuncs(func(cfnc unsafe.Pointer) DamageValueFunc {
+	return func(obj, source, weapon *Object, amount, kind int32) int32 {
+		return int32(ccall.CallIntUPtr5(cfnc, uintptr(obj.CObj()), uintptr(unsafe.Pointer(source)), uintptr(unsafe.Pointer(weapon)), uintptr(uint32(amount)), uintptr(uint32(kind))))
+	}
+})
+
 func RegisterObjectDamageGo(name string, cfnc unsafe.Pointer, fnc DamageFunc) {
 	RegisterObjectDamage(name, cfnc)
 	objDamage.Register(cfnc, fnc)
+}
+
+func RegisterObjectDamageValueGo(name string, cfnc unsafe.Pointer, fnc DamageValueFunc) {
+	RegisterObjectDamage(name, cfnc)
+	objDamageValue.Register(cfnc, fnc)
+	objDamage.Register(cfnc, func(obj, source, weapon *Object, amount, kind int32) bool {
+		return fnc(obj, source, weapon, amount, kind) != 0
+	})
 }
 
 func RegisterObjectDamageSound(name string, fnc unsafe.Pointer) {

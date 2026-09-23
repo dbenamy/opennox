@@ -14,7 +14,6 @@ import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"math"
 	"unsafe"
@@ -203,7 +202,7 @@ func effectsLightning(m *server.ModifierEff, it, u, target *server.Object) {
 	if target == nil {
 		return
 	}
-	ccall.CallIntUPtr5(target.Damage, uintptr(target.CObj()), uintptr(u.CObj()), uintptr(it.CObj()), uintptr(uint32(effectsTruncWord(float64(m.AttackPreHit52.Valf)))), 9)
+	_ = target.CallDamageValue(u, it, effectsTruncWord(float64(m.AttackPreHit52.Valf)), 9)
 	pos := target.PosVec
 	visibilityFXPoint(129, pos)
 	inventorySound(225, target, 0, 0)

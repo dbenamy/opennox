@@ -1486,6 +1486,17 @@ func (obj *Object) CallDamage(who Obj, a3 Obj, dmg int, typ object.DamageType) b
 	return ret
 }
 
+// CallDamageValue preserves the callback's full signed C int result. Unlike
+// CallDamage, callers must provide a configured callback.
+func (obj *Object) CallDamageValue(source, weapon *Object, amount, kind int32) int32 {
+	fn := objDamageValue.Get(obj.Damage)
+	ret := fn(obj, source, weapon, amount, kind)
+	runtime.KeepAlive(obj)
+	runtime.KeepAlive(source)
+	runtime.KeepAlive(weapon)
+	return ret
+}
+
 func (obj *Object) CallDrop(it Obj, pos types.Pointf) bool {
 	fnc := obj.Drop.Get()
 	if fnc == nil {

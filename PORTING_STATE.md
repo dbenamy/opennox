@@ -7,33 +7,40 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — exact damage-value baseline qualified
+## Current — exact damage values qualified
 
-Death conversion89c91e08 committed and pushed. All117 roots/profile,1864 frozen
-cases, safe/static, production/ABI, exact knownsuite and headless scenarios passed.
-Current qualified binaries remain build/port-death-registry/{safe/opennox-safe,
-production/production/bin}; keep them plain for baseline identity checks.
+Baseline97f055a5 pushed. Corrected conversion89247 and remaining pipeline47464
+joinedPASS. All132 roots/profile,15 frozen captures2071cases,1800 raw forwarding
+cases and2 boolean-only compatibility cases. Safe/static, four fresh binaries,
+retained Go-backed exports, exact knownsuite304events/17pass2fail32skip, headless
+creation/save-load PASS. Check Git for conversion commit/push. No Go jobs active.
+Current binaries build/port-damage-values/{safe/opennox-safe,production/production/bin}.
 
-Next production patch build/port-damage-values/direct-calls.patch remains UNAPPLIED.
-It adds exact-int32 damage dispatch for11 canonical callbacks and five raw callers,
-without changing boolean APIs or using bool-only overrides for exact integer calls.
-Primary reviewed the corrected eight-file diff. First Luna draft missed all five
-promised body edits; preserved rejected patch and erratum. See DAMAGE_VALUES.md.
+Eight production files changed;11 canonical registrations and five raw callsites.
+Separate exactint32 and boolean dispatch preserves256 versus lowbyte0 semantics.
+Original boolean APIs/nil behavior remain, raw API still requires configured slot.
+First Luna patch omitted5claimed edits: rejected and preserved. Corrected patch
+applied after original baseline. Discovery88073 failed on unused unsafe import;
+primary fixed it, failed logs remain contracts-v1-failed. No changed goldens.
 
-Four new porttest files and legacy/damage_dispatch_porttest.go changes installed.
-Original49186 joinedPASS seven roots:2071 canonical owner cases (15 frozen captures),
-1800 raw forwarding cases,2 boolean-only registration compatibility cases.
-Baseline31825 joinedPASS132 roots/default/server/highres, no skips,15 frozen hashes.
-Finalizer52884 joinedPASS exact source/four-binary identity reuse; baseline qualified.
-No build jobs active. Commit/push baseline before applying corrected production patch,
-then run contracts/safe/preflight/production and finish.py. No old goldens changed.
+Next: Luna inventory next-update-inventory.json/md under build/port-damage-values
+covers53 update registrations and2 damage-sound callbacks. Primary considering
+larger coherent update batch; no next implementation applied. Six mutable handlers
+assigned in root legacy_exports.go must remain dynamically resolved. First helper
+search missed assignments outside legacy; corrected evidence required. Existing
+algorithm coverage is not proof of actual registered CallUpdate routing. Need
+owner baseline and raw/dynamic contracts before conversion. One Luna helper only.
 
-Luna reviewed additional consumers; primary added exact roots for spell/sustained,
-object collision, sentry, lightning modifiers and toxic-cloud owners/candidates.
-Only one helper active. Both pre20 cache pages found no candidates. Twelve older
-qualified binaries gzip-archived16578 PASS:582940300→274093337bytes, restore script
-build/port-damage-values/archive-old-binaries.py --restore. Current death bins plain.
-Historical capture/log archive audit pending; disk tight, preserve assets/evidence.
+Cleanup:12 older safe/hd/server binaries from reward-use-registry,damage-registry,
+mixed-forwarding,pointer-forwarding gzip-archived582940300→274093337bytes. Restore
+with build/port-damage-values/archive-old-binaries.py --restore before historical
+finalizers. Current death and damage-value binaries remain plain. Two marker-specific
+cache pages and capture audit found no candidates. Primary then explicitly pruned
+40 reproducible repository compiler archives beforeSep23 20UTC,1882456060bytes,
+after independent stat/hash/header/module and host FD/exe/map checks. This is cache
+eviction, not retired-symbol proof. Source/modules/assets/evidence preserved.
+Record old-repository-cache-removed.json; script consumed. Finalizers/scenario dedup
+consumed too; per-run restoration manifests retained. See DAMAGE_VALUES.md.
 
 Death cleanup: originalnext80audit incorrect pre16cutoff rejected before deletion.
 strict16 record8files398794162bytes; then primary explicitly broadened cutoff18:00,

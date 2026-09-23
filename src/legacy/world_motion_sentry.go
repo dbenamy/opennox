@@ -10,10 +10,8 @@ import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/ntype"
 	"github.com/opennox/opennox/v1/internal/netlist"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"math"
-	"unsafe"
 )
 
 func motionSentryUpdate(u *server.Object) uint32 {
@@ -68,7 +66,7 @@ func motionSentryContact(target, sentry *server.Object, ray *[4]float32) {
 	dx, dy := float64(target.PosVec.X)-float64(p.X), float64(target.PosVec.Y)-float64(p.Y)
 	radius := float64(target.Shape.Circle.R)
 	if radius*radius > dy*dy+dx*dx {
-		ccall.CallVoidUPtr5(target.Damage, uintptr(unsafe.Pointer(target)), uintptr(unsafe.Pointer(sentry.FindOwnerChainPlayer())), uintptr(unsafe.Pointer(sentry)), 500, 16)
+		_ = target.CallDamageValue(sentry.FindOwnerChainPlayer(), sentry, 500, 16)
 		GetServer().S().Audio.EventObj(298, target, 0, 0)
 	}
 }

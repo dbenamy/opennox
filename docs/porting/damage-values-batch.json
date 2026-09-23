@@ -129,7 +129,7 @@
         "command": [
           "env",
           "OPENNOX_DISPLAY_BINARY={out}/opennox",
-          "OPENNOX_DISPLAY_IMPLEMENTATION=Typed Go object death callback registry",
+          "OPENNOX_DISPLAY_IMPLEMENTATION=Exact integer Go damage callback dispatch",
           "OPENNOX_UI_SCENARIO={root}/docs/porting/character-creation.yaml",
           "NOX_DEV=true",
           "python3",
@@ -154,7 +154,7 @@
     ]
   },
   "production": {
-    "description": "Typed Go object death callback registry",
+    "description": "Exact integer Go damage callback dispatch",
     "assets": "build/assets/extracted/drive_c/Nox",
     "known_suite": "docs/porting/mp3-go-expected-suite.jsonl",
     "scenario_runner": "tools/porting/run_scenario.py",

@@ -16,13 +16,12 @@ import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
 
 func projectileDamage(t, owner, u *server.Object, damage, kind int32) int32 {
-	return int32(ccall.CallIntUPtr5(t.Damage, uintptr(t.CObj()), uintptr(owner.CObj()), uintptr(u.CObj()), uintptr(uint32(damage)), uintptr(uint32(kind))))
+	return t.CallDamageValue(owner, u, damage, kind)
 }
 func projectileWall(u *server.Object, x, y, damage, kind int32) {
 	GetServer().Nox_xxx_damageToMap_534BC0(int(x), int(y), int(damage), object.DamageType(kind), u)

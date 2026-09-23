@@ -14,14 +14,13 @@
 
 ## Current status
 
-Fourteen object-death callbacks now use typed Go dispatch at four existing callers,
-with C addresses/data sizes and raw fallback preserved. All117 roots/profile and
-1864 frozen cases pass, along with safe/static, fresh production/ABI, exact known
-suite and headless creation/save-load. See [DEATH_REGISTRY.md](docs/porting/DEATH_REGISTRY.md).
+Five raw damage callers now use exact integer Go dispatch for eleven canonical
+callbacks, preserving boolean APIs, raw fallback and full-word/low-byte results.
+All132 roots/profile,2071 frozen cases and independent raw/compatibility contracts
+pass, plus safe/static, production/ABI, exact known-suite and headless save/load.
+See [DAMAGE_VALUES.md](docs/porting/DAMAGE_VALUES.md).
 **Standalone C remains zero; production C preamble bodies remain79.**
-The next exact damage-value baseline is qualified:132 roots/profile and2071 frozen
-canonical cases, plus raw integer/boolean-compatibility contracts. Production
-conversion remains pending. See [DAMAGE_VALUES.md](docs/porting/DAMAGE_VALUES.md).
+Next: a larger registered object-update batch, preserving mutable handler lookup.
 
 ### Earlier checkpoints
 

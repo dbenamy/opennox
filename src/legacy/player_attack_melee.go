@@ -76,7 +76,7 @@ func attackHit(t *server.Object, r *attackRecord) {
 		return
 	}
 	attackPreEffects(t, u, r.Weapon, r)
-	ccall.CallIntUPtr5(t.Damage, uintptr(t.CObj()), uintptr(r.Owner.CObj()), uintptr(r.Weapon.CObj()), uintptr(uint32(effectsTruncWord(float64(r.Damage)+0.5))), uintptr(r.Type))
+	_ = t.CallDamageValue(r.Owner, r.Weapon, effectsTruncWord(float64(r.Damage)+0.5), int32(r.Type))
 	if noxflags.HasGame(2048) && r.Owner.ObjClass&4 != 0 && t.ObjClass&2 == 0 && t.HealthData != nil && t.HealthData.Max != 0 && t.ObjFlags&0x8020 == 0 {
 		visibilityFXPoint(139, t.PosVec)
 	}

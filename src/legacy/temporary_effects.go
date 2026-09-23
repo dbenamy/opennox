@@ -13,7 +13,6 @@ import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"image"
 	"math"
@@ -246,7 +245,7 @@ func temporaryCloudCandidate(t, u *server.Object, small bool) {
 		damage = GetServer().S().Rand.Logic.IntClamp(3, 10)
 	}
 	owner := u.FindOwnerChainPlayer()
-	ccall.CallIntUPtr5(t.Damage, uintptr(t.CObj()), uintptr(owner.CObj()), uintptr(u.CObj()), uintptr(uint32(damage)), 5)
+	_ = t.CallDamageValue(owner, u, int32(damage), 5)
 	owner = u.FindOwnerChainPlayer()
 	if GetServer().S().IsEnemyTo(owner, t) {
 		resourcePoison(t, 1, 1)

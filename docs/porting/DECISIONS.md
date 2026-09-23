@@ -2300,6 +2300,18 @@ result. Boolean-only registrations leave the value map alone and retain original
 C fallback for raw callers. This preserves results such as256 for both full-word
 and low-byte consumers. Raw calls require a configured callback as before. Scope:
 five raw sites, eleven canonical registrations; no layout/C-address changes.
-Original132-root, three-profile baseline and2071 frozen owner cases are qualified;
-conversion pending. Reviewable/reversible API decision authorized by standing user
+Original132-root, three-profile baseline and2071 frozen owner cases and conversion
+are fully qualified, including fresh production and scenarios. Reviewable/reversible API decision authorized by standing user
 instructions. See DAMAGE_VALUES.md.
+
+
+## Old reproducible compiler-cache eviction
+
+During exact damage-value qualification, disk space remained tight after archiving
+older qualified binaries. Marker-specific cache audits found no more candidates.
+Pruned40 older repository Go compiler archives (1,882,456,060 bytes), using a
+reviewed pre20:00 cutoff and independent hash/stat/archive/module/host-use checks.
+This policy permits rebuilding older versions rather than retaining every compiler
+cache entry; it does not delete source, module downloads, original assets, goldens,
+logs, binaries or qualification reports. No build was active during pruning.
+The bounded audit came from Luna; the primary reviewed and executed the cleanup.

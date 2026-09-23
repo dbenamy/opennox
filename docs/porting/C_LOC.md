@@ -307,6 +307,9 @@ target build selection and linker evidence.
 | Remove 74 pointer C round trips; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 | Remove 94 mixed C round trips and two unused interfaces; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 | Route three reward-use callbacks through Go registry; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
+| Route eleven boolean damage callbacks through Go registry; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
+| Route fourteen death callbacks through Go registry; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
+| Route five raw damage sites through exact integer Go dispatch; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

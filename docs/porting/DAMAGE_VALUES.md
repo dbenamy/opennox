@@ -9,10 +9,11 @@ Boolean-only registrations do not imply an exact integer implementation: their
 raw callers retain the original C callback. Projectile consumers include both
 full-word and low-byte conditions; a result of256 must not become1.
 
-The proposed typed method takes object pointers, preserves signed32 argument
+The typed method takes object pointers, preserves signed32 argument
 words and return values, and keeps all three objects alive across dispatch. Raw
 callers retain their configured-callback precondition. Existing boolean nil-slot
-behavior remains unchanged. No production patch has been applied yet.
+behavior remains unchanged. The reviewed eight-file production patch is applied after baseline97f055a5;
+conversion qualification is complete.
 
 ## Qualified original baseline
 
@@ -60,3 +61,39 @@ batches were gzip-archived after qualification-hash and host-use checks. Raw
 `python3 build/port-damage-values/archive-old-binaries.py --restore` before rerunning
 historical finalizers. All current death binaries remain plain. Two bounded cache
 pages found no retired-marker candidates and removed nothing.
+
+
+The marker-specific cache scans reclaimed nothing. Primary then explicitly chose
+ordinary reproducible-cache eviction:40 repository compiler archives older than
+2026-09-23T20:00Z,1882456060bytes, removed after independent stat/hash/archive/package
+and host FD/executable/mapping checks. This is not a claim that retired C symbols
+prove those archives obsolete. Git history, module cache, outputs and current
+binaries are preserved; historical rebuilds may take longer. Exact records are in
+build/port-damage-values/old-repository-cache-removed.json. Pruning ran while no
+Go/build jobs were active, before conversion qualification.
+
+First conversion discovery88073 failed before tests: an unused unsafe import in
+world_motion_sentry.go remained after call replacement. Primary and helper static
+review missed it. Removed only that import; failed logs retained under
+contracts-v1-failed. No golden or production behavior correction was needed.
+
+Corrected conversion89247 passes all132 roots in each of default/server/highres,
+with all15 original capture hashes unchanged and no skips. Remaining pipeline47464 joined PASS: safe/static, four fresh386/SSE2/CGO binaries,
+retained Go-backed exports, exact known-suite comparison (304 existing failure
+events;17 pass/2 fail/32 skip packages), headless creation and save/load. Production
+contains no PortTest symbols. See [conversion qualification](damage-values-qualification.json).
+Scenario asset duplicates were removed with hash checks and restore manifests;
+original assets remain unchanged. All finalizers/cleanup scripts are consumed.
+Check Git for conversion commit/push.
+
+Next: assess a larger object-update callback batch using the53-entry inventory.
+Six mutable handlers must be resolved at invocation time. Existing algorithm
+fixtures need actual registered-owner siblings before production conversion.
+Standalone C remains zero files/lines; production C preamble bodies remain79.
+
+The copied preflight display label and production description said object death
+registry during execution. Only those descriptive labels were corrected after
+qualification; runner snapshots preserve exactly what ran. Selection, source,
+binaries and results were unaffected. The documentation script first stopped
+because it expected one label occurrence; the two-field metadata correction was
+then completed explicitly, without rerunning or duplicating its earlier updates.
