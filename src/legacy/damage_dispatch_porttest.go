@@ -86,6 +86,7 @@ default:return 0;}}
 import "C"
 import (
 	"bytes"
+	"github.com/opennox/libs/object"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/memmap/nox/blobdata"
 	"github.com/opennox/opennox/v1/server"
@@ -93,6 +94,7 @@ import (
 )
 
 type PortTestDamageSpec struct {
+	Registry                  string
 	Source, Weapon, Other     int
 	Amount, Kind              int32
 	PlayerIndex               int
@@ -168,6 +170,13 @@ func (p *portTestShopPools) damageItems() {
 			u.Damage = p.proxy.combat.target.Damage
 		}
 	}
+	if sp.Registry != "" {
+		actor := p.temporaryRef(p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack.Actor)
+		if actor == nil {
+			panic("damage registry fixture requires an actor")
+		}
+		actor.Damage = server.PortTestDamageRegistry(sp.Registry)
+	}
 	for i := 0; i < 4; i++ {
 		m := (*server.ModifierEff)(unsafe.Add(p.proxy.callbacks.shop.ptr(8), i*144))
 		if sp.DefendMask&(1<<i) != 0 {
@@ -186,7 +195,15 @@ func (p *portTestShopPools) damageAction(a PortTestShopAction) uint32 {
 	attack := p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack
 	sp := attack.Damage
 	state := p.temporary.world.objectives.attack
-	state.damage.result = uint64(C.damageCall(C.int(a.Op-1100), inventoryInt(p.temporaryRef(attack.Actor)), inventoryInt(p.temporaryRef(sp.Source)), inventoryInt(p.temporaryRef(sp.Weapon)), inventoryInt(p.temporaryRef(sp.Other)), C.int(sp.Amount), C.int(sp.Kind), C.uint32_t(sp.FloatBits), state.record, internCStr(sp.Name), C.int(sp.PlayerIndex)))
+	if sp.Registry != "" {
+		actor := p.temporaryRef(attack.Actor)
+		if actor.Damage != C.damageFunction(C.int(a.Op-1100)) {
+			panic("damage registry name/address mismatch")
+		}
+		state.damage.result = uint64(bool2int(actor.CallDamage(p.temporaryRef(sp.Source), p.temporaryRef(sp.Weapon), int(sp.Amount), object.DamageType(sp.Kind))))
+	} else {
+		state.damage.result = uint64(C.damageCall(C.int(a.Op-1100), inventoryInt(p.temporaryRef(attack.Actor)), inventoryInt(p.temporaryRef(sp.Source)), inventoryInt(p.temporaryRef(sp.Weapon)), inventoryInt(p.temporaryRef(sp.Other)), C.int(sp.Amount), C.int(sp.Kind), C.uint32_t(sp.FloatBits), state.record, internCStr(sp.Name), C.int(sp.PlayerIndex)))
+	}
 	p.temporary.result = uint32(state.damage.result)
 	return p.temporary.result
 }

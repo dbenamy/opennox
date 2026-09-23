@@ -7,28 +7,27 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — reward-use registry qualified
+## Current — damage registry baseline qualified
 
-Baseline6918d113 is pushed. Three direct Go registrations qualified:20 roots/profile,
-both routes576 exact frozen cases/profile, no skips/expectation changes. Safe/static,
-four fresh binaries/ABI, exact known suite304events/17pass2fail32skip, headless creation
-and save/load PASS. All three callbacks remain Go-backed C exports. See
-REWARD_USE_REGISTRY.md and qualification JSON. Native43125/full93892 joined PASS.
-Check Git log/remote for conversion commit/push status. No Go/build jobs active.
-Draft applications, finalizers and scenario dedup scripts CONSUMED.
+Reward conversion363b7136 pushed. Damage original-path baseline79707 joined PASS:
+92roots in default/server/highres,16 frozen captures2080cases,3125raw forwarding
+cases plus nil/order contracts; no skips or changed old goldens. Five porttest
+files added/extended only; production/dependency fingerprints and four reward
+binary hashes unchanged. All11 callback exports verified. See DAMAGE_REGISTRY.md
+and damage-registry-c-qualification.json. Check Git for baseline commit/push.
 
-Next: build/port-damage-registry production.patch UNAPPLIED; Luna drafts raw callback
-forwarding porttest files under drafts. Primary owns11 actual-owner registry capture
-baseline. Proposed additive DamageFunc/registry preserves raw API/layout and fallback;
-three special transforms move to shared int32 helpers. Primary review corrected
-callback selection timing (capture before SObj adapters can mutate Damage) and
-BlackPowder C-export early rejection before integer-address conversion. These need
-original-path baseline coverage before applying. No damage source edits installed.
+Production build/port-damage-registry/production.patch UNAPPLIED. Preserve initial
+nil gate, source then weapon SObj conversion, THEN callback selection. Original
+capture39792 disproved primary early-selection assumption; initial Luna draft was
+correct. Failed log preserved; correctedcapture73267 PASS. BlackPowder C-export
+retains early rejection before pointer conversion. No builds/tests currentlyactive.
+Baseline finalizer CONSUMED; production manifest explicitly includes11 exports.
 
-Cleanup old-cache-next40-removed.json records22 verified obsolete archives,
-1058685796bytes removed, hostFD/exe/mapping/hash/stat/marker checks. Source/assets/
-binaries unaffected. Separate audit found577 recorded scenario runs already deduped.
-Prior mixed archival records retain restore commands for older binaries/logs.
+Cleanup: next40 record19 obsolete archives839728258bytes; next80 record36 archives
+1648619188bytes. Independent source/binary marker, stat/hash/archive and host
+FD/exe/map checks completed. No source/assets/current binaries removed. Scripts
+per-page records prevent repeats. Older artifact restore rules remain in prior
+checkpoints. Free space approximately2.5GiB before conversion builds.
 
 ## Earlier — mixed forwarding qualified
 

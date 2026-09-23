@@ -14,15 +14,12 @@
 
 ## Current status
 
-Three reward-item callbacks now use the existing typed Go registry, preserving
-C callback addresses, data sizes and the fallback for external callbacks. All
-20 affected roots pass per profile; both C-entrypoint and registry routes match
-576 frozen cases each. Fresh safe/static, production/ABI, exact known-suite and
-headless creation/save-load checks pass.
+The eleven damage callbacks have a qualified original Object.CallDamage baseline:
+92 roots/profile,2080 frozen owner/rejection cases and3125 raw forwarding cases.
+Default/server/highres pass; production source and four preceding reward binaries
+match unchanged. Next: apply and qualify the typed damage registry, preserving
+callback addresses and the raw fallback. See [DAMAGE_REGISTRY.md](docs/porting/DAMAGE_REGISTRY.md).
 **Standalone C remains zero; production C preamble bodies remain79.**
-Next: qualify an actual Object.CallDamage baseline before extending the typed
-registry to its eleven callbacks. See
-[REWARD_USE_REGISTRY.md](docs/porting/REWARD_USE_REGISTRY.md).
 
 ### Earlier checkpoints
 
@@ -513,6 +510,13 @@ that work. Review representation and caller bounds explicitly: a table family is
 not a retained table-row alias, and a capture's size limit is not automatically a
 production limit. Recheck even small cleanup edits for remaining symbol uses.
 This is an observed workflow adjustment, not measured model cost/speed savings.
+
+Damage-registry work reinforces the need to test primary review assumptions too:
+Luna's initial late callback selection matched the original compiled behavior;
+primary's requested early selection did not. An original-path mutation test exposed
+that before production changes or frozen expectations. Keep the original failure
+and record who corrected what. Publish helper audit artifacts atomically so a
+partially written candidate list cannot be mistaken for a finished result.
 
 ## Explaining the work and reporting diagnostics
 
