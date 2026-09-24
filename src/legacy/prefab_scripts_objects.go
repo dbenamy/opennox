@@ -117,7 +117,7 @@ func prefabScriptObjectNames(instance, x, y int32) {
 		}
 		if u.IDPtr != nil {
 			name := prefabScriptName(u.ID(), instance, 0, 0, true)
-			p := C.realloc(u.IDPtr, C.size_t(len(name)+1))
+			p := legacyRealloc(u.IDPtr, uintptr(len(name)+1))
 			if p != nil {
 				u.IDPtr = p
 				dst := unsafe.Slice((*byte)(p), len(name)+1)

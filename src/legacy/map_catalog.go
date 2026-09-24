@@ -41,7 +41,7 @@ func mapCatalogFree() {
 	for it := mapCatalogFirst(); it != nil; {
 		next := mapCatalogNext(it)
 		listRemove((*legacyListNode)(unsafe.Pointer(it)))
-		C.free(unsafe.Pointer(it))
+		legacyFree(unsafe.Pointer(it))
 		it = next
 	}
 }

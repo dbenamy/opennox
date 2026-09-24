@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-*/
-import "C"
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -66,7 +62,7 @@ func mapPolygonGet(i uint32) *mapPolygon {
 }
 func mapPolygonIDs(p *mapPolygon) []uint32 { return unsafe.Slice(p.Vertices, int(p.Count)) }
 func mapPolygonRemapAdd(index, old uint32) *mapPolygonRemap {
-	p := (*mapPolygonRemap)(C.calloc(1, 12))
+	p := (*mapPolygonRemap)(legacyCalloc(1, 12))
 	if p != nil {
 		p.Index = index
 		p.Old = old
@@ -78,7 +74,7 @@ func mapPolygonRemapAdd(index, old uint32) *mapPolygonRemap {
 func mapPolygonRemapClear() unsafe.Pointer {
 	for p := mapPolygonRemapHead; p != nil; {
 		next := p.Next
-		C.free(unsafe.Pointer(p))
+		legacyFree(unsafe.Pointer(p))
 		p = next
 	}
 	mapPolygonRemapHead = nil
@@ -154,14 +150,14 @@ func mapPolygonResetRecords() unsafe.Pointer {
 		p := mapPolygonAt(i)
 		if p.Metadata != nil {
 			if memmap.Uint32(0x5D4594, 588076) != 0 {
-				C.free(p.Metadata)
+				legacyFree(p.Metadata)
 			}
 			p.Metadata = nil
 		}
 		result = unsafe.Pointer(p.Vertices)
 		if p.Vertices != nil {
 			if memmap.Uint32(0x5D4594, 588076) != 0 {
-				C.free(unsafe.Pointer(p.Vertices))
+				legacyFree(unsafe.Pointer(p.Vertices))
 			}
 			p.Vertices = nil
 		}
@@ -214,7 +210,7 @@ func mapPolygonNew() *mapPolygon {
 	p := mapPolygonAt(i)
 	p.Metadata = nil
 	if noxflags.HasGame(0x200000) {
-		p.Metadata = C.calloc(1, 256)
+		p.Metadata = legacyCalloc(1, 256)
 		if p.Metadata == nil {
 			return nil
 		}
@@ -253,7 +249,7 @@ func mapPolygonConstruct() {
 	if p == nil {
 		return
 	}
-	p.Vertices = (*uint32)(C.calloc(C.size_t(count), 4))
+	p.Vertices = (*uint32)(legacyCalloc(uintptr(count), 4))
 	p.Count = count
 	copy(mapPolygonIDs(p), unsafe.Slice(memmap.PtrUint32(0x5D4594, 534820), int(count)))
 	mapPolygonBounds(p)

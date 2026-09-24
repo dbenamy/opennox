@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -45,14 +41,14 @@ func serverConfigBlockedNext(p *serverConfigBlocked) *serverConfigBlocked {
 	return (*serverConfigBlocked)(unsafe.Pointer(listNext((*legacyListNode)(unsafe.Pointer(p)))))
 }
 func serverConfigAllowedAdd(name *uint16) unsafe.Pointer {
-	p := (*serverConfigAllowed)(C.calloc(1, 64))
+	p := (*serverConfigAllowed)(legacyCalloc(1, 64))
 	listInit(&p.list)
 	alloc.StrCopyZero16P(p.name[:], name)
 	listAppend(serverConfigAllowedHead(), &p.list)
 	return unsafe.Pointer(serverPanelsAccessRefresh())
 }
 func serverConfigBlockedAdd(duration int32, name *uint16, address *byte) unsafe.Pointer {
-	p := (*serverConfigBlocked)(C.calloc(1, 96))
+	p := (*serverConfigBlocked)(legacyCalloc(1, 96))
 	listInit(&p.list)
 	alloc.StrCopyZero16P(p.name[:], name)
 	if address != nil {
@@ -72,7 +68,7 @@ func serverConfigAllowedRemove(index int32) unsafe.Pointer {
 	}
 	if p != nil {
 		listRemove(&p.list)
-		C.free(unsafe.Pointer(p))
+		legacyFree(unsafe.Pointer(p))
 	}
 	return unsafe.Pointer(p)
 }
@@ -84,7 +80,7 @@ func serverConfigBlockedRemove(index int32) {
 	}
 	if p != nil {
 		listRemove(&p.list)
-		C.free(unsafe.Pointer(p))
+		legacyFree(unsafe.Pointer(p))
 	}
 }
 func serverConfigExpire() {
@@ -109,14 +105,14 @@ func serverConfigAdmissionClose() unsafe.Pointer {
 	for p := serverConfigAllowedFirst(); p != nil; {
 		next := serverConfigAllowedNext(p)
 		listRemove(&p.list)
-		C.free(unsafe.Pointer(p))
+		legacyFree(unsafe.Pointer(p))
 		p = next
 	}
 	result := serverConfigBlockedFirst()
 	for p := result; p != nil; {
 		next := serverConfigBlockedNext(p)
 		listRemove(&p.list)
-		C.free(unsafe.Pointer(p))
+		legacyFree(unsafe.Pointer(p))
 		p = next
 	}
 	return unsafe.Pointer(result)

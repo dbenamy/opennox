@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/internal/cryptfile"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -54,7 +50,7 @@ func mapPolygonSection(bypass int) int {
 			}
 			p.Level = r.byte(p.Level)
 			p.Count = r.short(p.Count)
-			p.Vertices = (*uint32)(C.calloc(C.size_t(p.Count), 4))
+			p.Vertices = (*uint32)(legacyCalloc(uintptr(p.Count), 4))
 			if p.Vertices == nil {
 				return 0
 			}

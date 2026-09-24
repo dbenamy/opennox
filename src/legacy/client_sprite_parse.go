@@ -18,10 +18,10 @@ import (
 	"unsafe"
 )
 
-// These buffers remain owned by the production C draw-data cleanup. Preserve
-// calloc's zero-count behavior until that ownership boundary moves together.
+// Draw-data buffers share the legacy allocator domain with spriteDataFree.
+// Preserve the existing zero-count allocation behavior.
 func spriteDataAlloc(count int, size uintptr) unsafe.Pointer {
-	return C.calloc(C.size_t(count), C.size_t(size))
+	return legacyCalloc(uintptr(count), uintptr(size))
 }
 func spriteReadKind(f *binfile.MemFile, scratch []byte) client.AnimKind {
 	n := int(f.ReadU8())

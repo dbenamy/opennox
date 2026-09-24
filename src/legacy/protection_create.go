@@ -12,7 +12,7 @@ import (
 )
 
 func createProtectionRecord(id, value uint32) C.int {
-	r := (*protection.Record)(C.calloc(1, C.size_t(unsafe.Sizeof(protection.Record{}))))
+	r := (*protection.Record)(legacyCalloc(1, uintptr(unsafe.Sizeof(protection.Record{}))))
 	if !protection.Initialize(r, id, value, uint32(dword_5d4594_2516348), (*uint32)(unsafe.Pointer(&dword_5d4594_2516328))) {
 		return 0
 	}

@@ -7,7 +7,7 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 34/463 cgo files eliminated on net (429 remain).**
+internal glue: 44/463 cgo files eliminated on net (419 remain).**
 
 The glue count uses the selected project files in each Linux 386 production
 profile, measured from this phase's baseline. Directly cgo-dependent project
@@ -15,32 +15,29 @@ packages are down from six to three; 79 embedded C callback bodies remain. These
 are dependency counts, not equivalent units of work or an effort percentage.
 Production and test-reference standalone `.c` files both remain at zero.
 
-Latest qualified implementation: **`4e1e86a6` — Go memory/string helpers**,
-following original baselines `5cc27785` and `58f37c6c`.
-See [GO_MEMORY.md](docs/porting/GO_MEMORY.md). Six libc helper calls are replaced;
-allocation/free ownership and external native bindings are unchanged.
+Latest qualified implementation: **centralized allocation glue**, following original
+baseline `ec46be36`. See [RAW_ALLOCATION.md](docs/porting/RAW_ALLOCATION.md).
+The batch centralizes 49 legacy allocation calls and four tracked-allocator
+backend calls, preserving normal/raw versus safe/tracked ownership. Ten legacy
+files no longer use cgo; libc still supplies the underlying storage.
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Stop at the milestone or for a substantial question.
-The requested C_LOC cleanup is complete. The active batch centralizes 49 legacy
-allocation calls and four tracked-allocator backend calls without changing their
-ownership domains. Original-path contracts are qualified: repeated normal/safe captures match,
-111 owner roots pass in every profile, and six safe roots pass without skips.
-Baseline evidence is under `build/port-raw-allocation/` and
-[RAW_ALLOCATION.md](docs/porting/RAW_ALLOCATION.md). The implementation draft remains ignored and
-uninstalled under `build/port-go-memory/raw-centralization-draft/`.
-Progress counts above exclude this unqualified batch.
+The requested C_LOC cleanup and quantified status line are complete.
+Next: review remaining string-helper ownership and unused export reachability
+before choosing the next removal batch. Luna's read-only draft is at
+`build/port-raw-allocation/next-string-audit.md`; it is not accepted evidence.
 
 ## What remains
 
-Counts below describe the qualified Go memory-helper conversion. Zero `.c` lines is
+Counts below describe the qualified allocation-glue centralization. Zero `.c` lines is
 not a count of all C dependencies or a measure of remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 79 production function bodies in Go preambles: 76 generic function-pointer dispatchers and three specialized adapters. |
 | Callback routes | Some Go implementations still call each other through C-compatible addresses. More direct Go dispatch is possible; shared raw fallbacks remain until their users and compatibility requirements are resolved. |
-| Declarations and C types | 157 tracked headers / 4,548 physical lines; each production profile selects 429 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 4,548 physical lines; each production profile selects 419 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Removing them requires ownership/layout changes beyond function translation. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies and their cgo bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual release checks. |
@@ -52,17 +49,20 @@ not reduce the 79-body count because they retain the shared fallback machinery.
 
 ## Latest qualification and evidence
 
-- Direct memory/string and allocator-class contracts pass in all three profiles.
-- Safe memory bridges and shop loading pass without skips.
-- Accumulated roots: 1,280 default, 1,276 server and 1,280 highres complete, with
-  no failures and only the allowed map-population diagnostic skip in each.
+- Direct allocator/memory-helper contracts pass in all three profiles.
+- Affected-owner selection: 111 roots per profile, no skips; exact root-name sets
+  match the original baseline. Six safe-profile roots also match and pass.
+- Frozen allocation captures and CString ownership contracts pass unchanged.
 - Safe build/static checks and three fresh production binaries/ABI checks pass.
 - Headless character creation and explicit save/load/resume pass.
 - Full-suite results match the known baseline exactly: 304 failure events,
   with 17 passing, two failing and 32 skipped packages.
+- The preceding memory-helper milestone ran the full accumulated corpus:
+  1,280 default, 1,276 server and 1,280 highres roots, with no failures and only
+  the allowed map-population diagnostic skip. This batch uses affected owners.
 
-Report: [GO_MEMORY.md](docs/porting/GO_MEMORY.md).
-Evidence: [qualification](docs/porting/go-memory-qualification.json).
+Report: [RAW_ALLOCATION.md](docs/porting/RAW_ALLOCATION.md).
+Evidence: [qualification](docs/porting/raw-allocation-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -95,14 +95,11 @@ its return cannot be replaced with a void-dispatch result. See
 [collision compatibility decisions](docs/porting/COLLISION_REGISTRY.md).
 Other behavior/compatibility findings are recorded in [DECISIONS.md](docs/porting/DECISIONS.md).
 
-Luna drafted the six helpers and reviewed primary contracts. Primary corrected
-nonportable libc comparison expectations by restoring and recapturing the original
-path, and replaced the slow fill loop after measurement. See the batch report.
-The next allocation draft centralizes 49 calls across 21 files, preserving profile
-semantics. Primary caught unused imports before integration; the draft is corrected
-but unqualified. The qualified baseline covers 111 owner roots, including 13 existing roots
-missing from the earlier accumulated selection and two new ownership contracts.
-All 15 are now included in the accumulated pattern. See `build/port-go-memory/raw-*`.
+Luna drafted the allocation migration and reviewed primary contracts. Primary
+caught three unused imports, checked all 21 owner bodies against the original,
+and preserved build-tag selection rather than using the runtime `NOX_SAFE` flag.
+The selection audit found 13 existing roots missing from the accumulated pattern;
+those and the two new domain contracts are now included. See the batch report.
 
 ## Resume and artifact recovery
 
@@ -114,7 +111,7 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-go-memory/`:
+Latest local artifacts are under `build/port-raw-allocation/`:
 `helpers/`, `safe-contracts/`, `contracts/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local

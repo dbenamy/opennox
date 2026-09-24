@@ -1,10 +1,8 @@
 package legacy
 
-/*
-#include <stdlib.h>
-*/
-import "C"
-import "unsafe"
+import (
+	"unsafe"
+)
 
 func runtimeRejectedClear(head unsafe.Pointer) uintptr {
 	first := listNext((*legacyListNode)(head))
@@ -12,7 +10,7 @@ func runtimeRejectedClear(head unsafe.Pointer) uintptr {
 	for p := first; p != nil; {
 		next := listNext(p)
 		listRemove(p)
-		C.free(unsafe.Pointer(p))
+		legacyFree(unsafe.Pointer(p))
 		p = next
 	}
 	return result

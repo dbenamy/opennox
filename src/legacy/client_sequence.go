@@ -38,7 +38,7 @@ func clientSequenceEnqueue(data []byte) {
 	}
 	size := int(data[3])
 	// Retain the foreign queue allocation/layout while shared globals remain ABI words.
-	ptr := C.calloc(C.size_t(32+size), 1)
+	ptr := legacyCalloc(uintptr(32+size), 1)
 	if ptr == nil {
 		return
 	}
@@ -76,7 +76,7 @@ func clientSequencePoll() {
 		Nox_xxx_netOnPacketRecvCli_48EA70(31, (*byte)(unsafe.Add(unsafe.Pointer(p), 32)), size)
 		*memmap.PtrUint16(0x5D4594, 1197360)++
 		listRemove(p)
-		C.free(unsafe.Pointer(p))
+		legacyFree(unsafe.Pointer(p))
 		p = next
 	}
 	// Original polling drops the pending cursor when a gap is polled before its
@@ -94,7 +94,7 @@ func clientSequenceFree() {
 	for p := listNext(clientSequenceHead()); p != nil; {
 		next := listNext(p)
 		listRemove(p)
-		C.free(unsafe.Pointer(p))
+		legacyFree(unsafe.Pointer(p))
 		p = next
 	}
 	listClear(clientSequenceHead())

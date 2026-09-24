@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-#include "defs.h"
-#include "GAME4_1.h"
-#include "server__script__script.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	"unsafe"
@@ -42,7 +35,7 @@ func objectXferScript(p, name unsafe.Pointer) int {
 func (r objectXferStream) name(u *server.Object) bool {
 	n := r.byte(byte(len(alloc.GoString((*byte)(u.IDPtr)))))
 	if r.read() && n != 0 {
-		u.IDPtr = C.calloc(1, C.size_t(n)+1)
+		u.IDPtr = legacyCalloc(1, uintptr(n)+1)
 		if u.IDPtr == nil {
 			return false
 		}

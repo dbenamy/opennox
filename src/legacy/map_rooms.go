@@ -1,17 +1,12 @@
 package legacy
 
-/*
-#include <stdlib.h>
-#include <stdint.h>
-*/
-import "C"
 import (
 	"github.com/opennox/libs/platform"
 	"github.com/opennox/libs/types"
 	"unsafe"
 )
 
-// These records are shared with the remaining C map-generation callers.
+// These records retain the 32-bit map-generation layout and address links.
 type mapRoom struct {
 	Kind                int32
 	Grid                [2]int32
@@ -67,11 +62,11 @@ func mapRoomRef(p unsafe.Pointer, off int) *unsafe.Pointer {
 }
 func mapRoomByte(p unsafe.Pointer, off int) *byte { return (*byte)(unsafe.Add(p, off)) }
 
-// Keep the same allocator while unconverted C callers can free these records.
+// Keep allocation and release in the same legacy profile-specific domain.
 func mapRoomCalloc(count uint32, size uintptr) unsafe.Pointer {
-	return C.calloc(C.size_t(count), C.size_t(size))
+	return legacyCalloc(uintptr(count), uintptr(size))
 }
-func mapRoomRelease(p unsafe.Pointer) { mapRoomBeforeRelease(p); C.free(p) }
+func mapRoomRelease(p unsafe.Pointer) { mapRoomBeforeRelease(p); legacyFree(p) }
 func mapRoomScratchAlloc() uint32 {
 	p := mapRoomCalloc(1, 8192)
 	*mapRoomGlobalWord(3) = mapRoomRaw(p)

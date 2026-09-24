@@ -1,15 +1,13 @@
 package legacy
 
-/*
-#include <stdlib.h>
-*/
-import "C"
-import "unsafe"
+import (
+	"unsafe"
+)
 
 // Matching allocator boundary for spriteDataAlloc's raw libc calloc allocations.
 func spriteDataFree(p unsafe.Pointer) {
 	if p != nil {
-		C.free(p)
+		legacyFree(p)
 	}
 }
 

@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/strman"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -17,7 +13,7 @@ import (
 // Journal entries remain C allocated for the shared player/save layout. Direct
 // calloc preserves the original nil-on-failure behavior. List logic is Go.
 func journalAdd(p *server.Player, name string, flags uint16) *server.PlayerJournal {
-	n := (*server.PlayerJournal)(C.calloc(1, C.size_t(unsafe.Sizeof(server.PlayerJournal{}))))
+	n := (*server.PlayerJournal)(legacyCalloc(1, uintptr(unsafe.Sizeof(server.PlayerJournal{}))))
 	if n == nil {
 		return nil
 	}
@@ -54,7 +50,7 @@ func journalUnlink(p *server.Player, n *server.PlayerJournal) {
 	if p.Journal == n {
 		p.Journal = n.Next
 	}
-	C.free(unsafe.Pointer(n))
+	legacyFree(unsafe.Pointer(n))
 }
 func journalRemove(p *server.Player, name string) int {
 	n := journalFind(p, name)

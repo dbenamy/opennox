@@ -25,13 +25,13 @@ var worldTileDefinitionCount uint32
 var worldSecretHead unsafe.Pointer
 
 func worldGridAllocate() int {
-	worldTileGrid = (**C.obj_5D4594_2650668_t)(C.calloc(worldTileGridCapacity, 4))
+	worldTileGrid = (**C.obj_5D4594_2650668_t)(legacyCalloc(worldTileGridCapacity, 4))
 	if worldTileGrid == nil {
 		return 0
 	}
 	rows := unsafe.Slice(worldTileGrid, worldTileGridCapacity)
 	for i := range rows {
-		rows[i] = (*C.obj_5D4594_2650668_t)(C.calloc(worldTileGridCapacity, 44))
+		rows[i] = (*C.obj_5D4594_2650668_t)(legacyCalloc(worldTileGridCapacity, 44))
 		if rows[i] == nil {
 			return 0
 		}
@@ -41,7 +41,7 @@ func worldGridAllocate() int {
 func worldGridFreeRows() {
 	for _, row := range unsafe.Slice(worldTileGrid, worldTileGridCapacity) {
 		if row != nil {
-			C.free(unsafe.Pointer(row))
+			legacyFree(unsafe.Pointer(row))
 		}
 	}
 	// The caller owns the outer pointer table; preserve that allocation and value.
@@ -129,7 +129,7 @@ func worldSecretRemove(p unsafe.Pointer) unsafe.Pointer {
 			} else {
 				*(*uint32)(prev) = uint32(uintptr(next))
 			}
-			C.free(p)
+			legacyFree(p)
 			return cur
 		}
 		prev = cur
@@ -139,7 +139,7 @@ func worldSecretRemove(p unsafe.Pointer) unsafe.Pointer {
 func worldSecretClear() unsafe.Pointer {
 	for p := worldSecretHead; p != nil; {
 		next := worldSecretNext(p)
-		C.free(p)
+		legacyFree(p)
 		p = next
 	}
 	worldSecretHead = nil

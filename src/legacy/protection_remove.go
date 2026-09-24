@@ -24,7 +24,7 @@ func deleteProtectionRecord(id uint32) bool {
 	dword_5d4594_2516352 = C.uint32_t(uintptr(unsafe.Pointer(tail)))
 	dword_5d4594_2516328 ^= C.uint32_t(r.ID ^ r.Value)
 	*memmap.PtrUint16(0x587000, 311204)--
-	C.free(unsafe.Pointer(r))
+	legacyFree(unsafe.Pointer(r))
 	return true
 }
 
@@ -40,7 +40,7 @@ func sub_56F4F0(id *C.int) C.int {
 func freeProtectionRecords() {
 	for p := protectionHead(); p != nil; {
 		next := p.Next
-		C.free(unsafe.Pointer(p))
+		legacyFree(unsafe.Pointer(p))
 		p = next
 	}
 	dword_5d4594_2516328 = 0

@@ -20,7 +20,7 @@ func controlBotCreate(u *server.Object) uint32 {
 	ptr := controlPtr(d, 292)
 	result := controlRaw(u)
 	if *ptr == nil {
-		*ptr = C.calloc(1, 2200)
+		*ptr = legacyCalloc(1, 2200)
 		result = uint32(uintptr(*ptr))
 	}
 	b := *ptr

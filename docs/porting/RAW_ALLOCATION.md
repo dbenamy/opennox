@@ -1,7 +1,6 @@
 # Centralized libc allocation
 
-Status: original allocation-domain and owner baseline qualified; implementation
-draft is not installed yet.
+Status: conversion qualified against the original baseline in `ec46be36`.
 
 Move 49 allocation/free calls across 21 legacy owner files behind profile-specific
 Go helpers. Move the tracked allocator's four libc calls behind the same raw
@@ -60,3 +59,28 @@ file to that package. No delegation time/cost saving is claimed.
 
 Artifacts: `build/port-raw-allocation/`; reviewed draft and audit history:
 `build/port-go-memory/raw-*`. See [original qualification](raw-allocation-c-qualification.json).
+
+## Converted result
+
+All 111 affected-owner roots pass without skips in default/server/highres; their
+actual started root-name sets exactly match the baseline. All six safe roots also
+match and pass. Frozen allocation hashes and CString assertions are unchanged.
+Direct allocator/memory-helper package tests, safe build/static checks and three
+fresh production builds/ABI checks pass. The full suite matches the known 304
+failure events and package outcomes (17 pass, two fail, 32 skip) exactly.
+Headless character creation, explicit save, saved-map reload and resume pass.
+Every qualification phase records the same unchanged source fingerprints.
+A separate converted normal-profile run with `NOX_SAFE=true` passes both domain
+contracts and retains the original normal capture hash.
+
+Selected production cgo files fall from **429 to 419** in all three profiles:
+ten legacy preambles are removed; the allocator's one cgo file moves from
+`alloc.go` to `raw.go`. Three project packages still use cgo; the 79 embedded
+callback bodies and external binding selections are unchanged. Standalone
+production and test-reference C remain zero. The raw backend remains libc;
+this batch establishes a common replacement boundary, not a new allocator.
+
+See [converted qualification](raw-allocation-qualification.json) and
+[dependency inventory](raw-allocation-inventory-after.json). The preceding full
+accumulated sweep is retained in GO_MEMORY.md; this mechanical routing batch runs
+the audited affected-owner selection rather than repeating that full sweep.

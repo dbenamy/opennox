@@ -17,7 +17,7 @@ import (
 type wchar2_t = C.wchar2_t
 
 func StrFree[T comparable](s *T) {
-	C.free(unsafe.Pointer(s))
+	legacyFree(unsafe.Pointer(s))
 }
 
 func CStringArray(arr []string) []*C.char {

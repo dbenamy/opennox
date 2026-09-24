@@ -85,7 +85,7 @@ func ruleAppendRejected(list *C.nox_list_item_t, line []uint16) {
 	if list == nil {
 		return
 	}
-	p := C.calloc(1, 0x20c)
+	p := legacyCalloc(1, 0x20c)
 	if p == nil {
 		return
 	}

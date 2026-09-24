@@ -1,9 +1,5 @@
 package alloc
 
-/*
-#include <stdlib.h>
-*/
-import "C"
 import (
 	"sync"
 	"unsafe"
@@ -18,7 +14,7 @@ func Malloc(size uintptr) (unsafe.Pointer, func()) {
 	if size == 0 {
 		panic("zero alloc")
 	}
-	ptr := C.calloc(1, C.size_t(size))
+	ptr := RawCalloc(1, size)
 	if ptr == nil {
 		panic("cannot allocate")
 	}
@@ -67,7 +63,7 @@ func Realloc(ptr unsafe.Pointer, size uintptr) unsafe.Pointer {
 		panic("zero alloc")
 	}
 	old := ptr
-	ptr = C.realloc(ptr, C.size_t(size))
+	ptr = RawRealloc(ptr, size)
 	allocMu.Lock()
 	if ptr != old {
 		delete(allocs, old)
@@ -81,7 +77,7 @@ func Calloc(num int, size uintptr) (unsafe.Pointer, func()) {
 	if uintptr(num)*size == 0 {
 		panic("zero alloc")
 	}
-	ptr := C.calloc(C.size_t(num), C.size_t(size))
+	ptr := RawCalloc(uintptr(num), size)
 	allocMu.Lock()
 	allocs[ptr] = uintptr(num) * size
 	allocMu.Unlock()
@@ -98,7 +94,7 @@ func FreePtr(ptr unsafe.Pointer) {
 	if !ok {
 		panic("incorrect free")
 	}
-	C.free(ptr)
+	RawFree(ptr)
 }
 
 func Free[T comparable](ptr *T) {

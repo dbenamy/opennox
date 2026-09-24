@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-#include "defs.h"
-*/
-import "C"
 import (
 	"bytes"
 	noxcolor "github.com/opennox/libs/color"
@@ -191,7 +186,7 @@ func floorAssetBind(f *binfile.MemFile, scratch []byte) int {
 	a, b, c := f.ReadU8(), f.ReadU8(), f.ReadU8()
 	f.Skip(1)
 	count := int(a) * int(b) * int(c)
-	ptr := C.calloc(C.size_t(count), 4)
+	ptr := legacyCalloc(uintptr(count), 4)
 	tileDefinitionsAll()[index].Data32 = ptr
 	words := unsafe.Slice((*unsafe.Pointer)(ptr), count)
 	typ := a
@@ -222,7 +217,7 @@ func edgeAssetBind(f *binfile.MemFile, scratch []byte) int {
 	b, c := f.ReadU8(), f.ReadU8()
 	count := 2 * int(a) * (int(b) + int(c))
 	// Keep the original allocation extent: handles use four bytes of each five.
-	ptr := C.calloc(C.size_t(count), 5)
+	ptr := legacyCalloc(uintptr(count), 5)
 	*memmap.PtrPtr(0x85B3FC, 28676+60*uintptr(index)) = ptr
 	if ptr == nil {
 		return 0
@@ -241,7 +236,7 @@ func floorAssetFree() {
 	for i := 0; i < int(worldTileDefinitionCount); i++ {
 		p := &tileDefinitionsAll()[i].Data32
 		if *p != nil {
-			C.free(*p)
+			legacyFree(*p)
 			*p = nil
 		}
 	}
@@ -250,7 +245,7 @@ func edgeAssetFree() {
 	for i := int32(0); i < int32(dword_5d4594_251572); i++ {
 		p := memmap.PtrPtr(0x85B3FC, 28676+60*uintptr(i))
 		if *p != nil {
-			C.free(*p)
+			legacyFree(*p)
 			*p = nil
 		}
 	}

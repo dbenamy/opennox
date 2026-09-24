@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -161,7 +157,7 @@ func playerGroupAdd(id uint32, name *uint16) *playerGroup {
 	if playerGroupFind(id) != nil {
 		return nil
 	}
-	p := (*playerGroup)(C.calloc(1, 52))
+	p := (*playerGroup)(legacyCalloc(1, 52))
 	if p == nil {
 		panic("player group allocation")
 	}
@@ -173,7 +169,7 @@ func playerGroupAdd(id uint32, name *uint16) *playerGroup {
 	return p
 }
 func playerGroupAddMember(p *playerGroup, index int32) {
-	member := (*playerGroupMember)(C.calloc(1, 16))
+	member := (*playerGroupMember)(legacyCalloc(1, 16))
 	if member == nil {
 		panic("player group member allocation")
 	}
@@ -188,13 +184,13 @@ func playerGroupRemoveMember(p *playerGroup, index int32) unsafe.Pointer {
 			continue
 		}
 		listRemove(node)
-		C.free(unsafe.Pointer(member))
+		legacyFree(unsafe.Pointer(member))
 		break
 	}
 	result := unsafe.Pointer(&p.members)
 	if p.members.prev == &p.members {
 		listRemove(&p.list)
-		C.free(unsafe.Pointer(p))
+		legacyFree(unsafe.Pointer(p))
 	}
 	return result
 }
@@ -204,11 +200,11 @@ func playerGroupsFree() {
 		for member := listNext(&p.members); member != nil; {
 			after := listNext(member)
 			listRemove(member)
-			C.free(unsafe.Pointer(member))
+			legacyFree(unsafe.Pointer(member))
 			member = after
 		}
 		listRemove(&p.list)
-		C.free(unsafe.Pointer(p))
+		legacyFree(unsafe.Pointer(p))
 		p = next
 	}
 }

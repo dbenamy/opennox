@@ -2,25 +2,21 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-*/
-import "C"
 import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 )
 
-// This bridge starts on the original profile-specific libc path. Conversion
-// changes only the three calls below to the centralized legacy helpers.
+// Exercise the centralized production allocation routes, including the safe
+// profile's tracked ownership domain.
 func portAllocationCalloc(n, size uintptr) unsafe.Pointer {
-	return C.calloc(C.size_t(n), C.size_t(size))
+	return legacyCalloc(n, size)
 }
 func portAllocationRealloc(p unsafe.Pointer, size uintptr) unsafe.Pointer {
-	return C.realloc(p, C.size_t(size))
+	return legacyRealloc(p, size)
 }
-func portAllocationFree(p unsafe.Pointer) { C.free(p) }
+func portAllocationFree(p unsafe.Pointer) { legacyFree(p) }
 
 type PortAllocationStep struct {
 	Size        int

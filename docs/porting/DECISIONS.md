@@ -2403,3 +2403,14 @@ use 60-byte copies and 32-byte zero fills, both faster in the measured VM; large
 Go copies regress in the bounded 386 microbenchmarks. No current large production
 consumer was found. Record the limitation and revisit if a real workload warrants
 a specialized implementation; do not claim a whole-game speedup. See GO_MEMORY.md.
+
+## Preserve allocation domains during centralization
+
+Use build-tag-specific legacy allocation helpers: normal calls remain raw libc,
+while `safe` calls use the existing tracked allocator. The runtime `NOX_SAFE`
+setting does not select the old C macros, so it must not select this route either.
+Centralize tracked backend calls in the same raw libc file without changing
+failure bookkeeping, pointer layouts or ownership. Defer known string-lifetime
+issues and failed-realloc bookkeeping to explicit owner changes; this batch
+preserves their behavior. The allocator remains native storage until a separate
+qualified backend replacement. See RAW_ALLOCATION.md.
