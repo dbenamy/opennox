@@ -21,9 +21,10 @@ All 22 changed files qualify with frozen expectations unchanged.
 See [OBJECT_STATE_OWNERS.md](docs/porting/OBJECT_STATE_OWNERS.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next: audit the connected equipment/inventory/
-resource owners and test-only exports under `build/port-inventory-owner-audit/`.
-That audit is a candidate, not an accepted conversion. Stop at the milestone or
+recorded reversible decisions. Current batch: equipment/inventory/resource owners; the original 263-root
+baseline passes in all three profiles. The reviewed 18-file conversion retires
+61 exports and is awaiting installation/qualification. See
+[INVENTORY_RESOURCE_OWNERS.md](docs/porting/INVENTORY_RESOURCE_OWNERS.md). Stop at the milestone or
 for a substantial question.
 
 Latest artifacts: `build/port-object-state-owners/`.
@@ -125,6 +126,7 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
+| Completed native-owner/object-state scenario assets | Removed 3,308 verified original-asset duplicates; 1,119,727,616 allocated bytes reclaimed. Saves/results remain. Restore each with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/SCENARIO/deduplicated-assets.json`, using `go-native-owner-constants-save` or `object-state-owners-save`. Plan/result: `build/port-post-object-state-cleanup/`. |
 | Old owner/constants project cache | 65 hash/stat-verified, unused root/legacy archives removed; 4,718,157,824 allocated bytes reclaimed. Rebuild normally. Plan/journal: `build/port-go-native-owner-constants/cache-cleanup-{approved.json,deleted.jsonl}`. |
 | Native-record full-corpus logs | Losslessly compressed; restore with `gzip -dk`. Hashes: `build/port-go-native-record-storage/contract-log-archive.json`; 306,063,181 bytes reclaimed. |
 | Completed native-record scenario assets | Removed 1,654 verified original-asset duplicates; 559,874,048 allocated bytes reclaimed. Saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/go-native-record-storage-save/deduplicated-assets.json`. |

@@ -1,0 +1,1 @@
+^Test(?:Equipment|Inventory|Resources|PlayerControls|Shop|Trade|Damage|Attack|Effects|Reward|LifecycleRegistry|CollisionRegistry|ObjectState)
