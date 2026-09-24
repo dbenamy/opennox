@@ -1,0 +1,32 @@
+{
+  "source_commit": "ac1ce272fb7887eb204dea0934758916e7286cab",
+  "complete_corpus_evidence": "docs/porting/complete-port-corpus-qualification.json",
+  "all_source_fingerprints_match_complete_corpus": true,
+  "production_evidence": "docs/porting/unused-exports-qualification.json",
+  "production_source_commit": "9adcf3d3",
+  "sole_source_difference_from_production": [
+    "src/server_orchestration_player_porttest_test.go"
+  ],
+  "new_production_baseline_build": false,
+  "post_conversion_requires_fresh_production": true,
+  "draft_ast_review": {
+    "all_function_end_offsets_match_ast": true,
+    "all_remaining_nonimport_declarations_unchanged": true,
+    "cgo_import_cleanup_candidates": [
+      "src/legacy/game_statistics.go",
+      "src/legacy/map_growth_exports.go"
+    ],
+    "no_remaining_nonimport_declarations": [],
+    "reviewed_files": 75,
+    "reviewed_functions": 378
+  },
+  "supplemental_source_audit": {
+    "files_scanned": 30,
+    "bytes_scanned": 11843023,
+    "matches": []
+  },
+  "build_surface_audit": {
+    "files_scanned": 60,
+    "matches": []
+  }
+}
