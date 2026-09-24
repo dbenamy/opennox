@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "common__random.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -62,7 +52,7 @@ func attackPlayer(u *server.Object) int {
 			*(*byte)(unsafe.Add(ud, 2068)) = anim
 		}
 	}
-	strength := nox_xxx_unitGetStrength_4F9FD0(C.int(inventoryInt(u)))
+	strength := equipmentStrength(u)
 	core := GetServer().S()
 	frame := core.Frame()
 	var frames, delay int32

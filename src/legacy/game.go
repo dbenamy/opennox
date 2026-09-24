@@ -135,7 +135,11 @@ func nox_xxx_gameSetWallsDamage_4E25A0(v int) {
 func nox_xxx_mapDamageUnitsAround_4E25B0(a1 *C.float, a2, a3 C.float, a4, a5 int, a6, a7 *nox_object_t) {
 	cpos := unsafe.Slice(a1, 2)
 	pos := types.Pointf{X: float32(cpos[0]), Y: float32(cpos[1])}
-	GetServer().Nox_xxx_mapDamageUnitsAround(pos, float32(a2), float32(a3), int(a4), object.DamageType(a5), asObjectS(a6), ToObjS(a7), GetDoDamageWalls())
+	mapDamageUnitsAround(pos, float32(a2), float32(a3), int32(a4), int32(a5), asObjectS(a6), asObjectS(a7))
+}
+
+func mapDamageUnitsAround(pos types.Pointf, outer, inner float32, damage, kind int32, who, exclude *server.Object) {
+	GetServer().Nox_xxx_mapDamageUnitsAround(pos, outer, inner, int(damage), object.DamageType(kind), who, objectAsInterface(exclude), GetDoDamageWalls())
 }
 
 //export nox_game_addStateCode_43BDD0

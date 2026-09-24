@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "noxstring.h"
-#include "GAME3_1.h"
-
-*/
-import "C"
-
 import (
 	"fmt"
 	"image"
@@ -64,7 +56,7 @@ func uiAmountMouse(w *gui.Window, event int, a, b uintptr) int {
 	switch event {
 	case 5, 9, 13:
 		p := uiInventoryPackedPoint(a)
-		if !bool(nox_xxx_wndPointInWnd_46AAB0((*C.uint)((*uint32)(w.C())), C.int(int32(p.X)), C.int(int32(p.Y)))) {
+		if !uiWindowPointIn(w, int32(p.X), int32(p.Y)) {
 			uiAmountCancel()
 		}
 		return 1

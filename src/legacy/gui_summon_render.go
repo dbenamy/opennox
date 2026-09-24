@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -169,5 +163,5 @@ func summonDrawMenu(w *gui.Window) int {
 
 // The legacy hit test uses global coordinates; Window.PointIn uses local ones.
 func summonPointIn(w *gui.Window, p image.Point) bool {
-	return bool(nox_xxx_wndPointInWnd_46AAB0((*C.uint)((*uint32)(w.C())), C.int(int32(p.X)), C.int(int32(p.Y))))
+	return uiWindowPointIn(w, int32(p.X), int32(p.Y))
 }

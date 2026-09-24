@@ -1,16 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "common__random.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4_2.h"
-#include "common__system__team.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -22,7 +11,7 @@ import (
 
 func objectiveTeamCount(t *server.Team) int { return teamRuntimeCount(t) }
 func objectiveScore(u *server.Object) {
-	nox_xxx_changeScore_4D8E90(C.int(inventoryInt(u)), 1)
+	gameplayReportChangeScore(u, 1)
 	nox_xxx_netReportLesson_4D8EF0(asObjectC(u))
 }
 func objectiveQuestScore(u *server.Object) {
@@ -39,7 +28,7 @@ func objectiveBallCollide(u, t *server.Object) {
 		if *temporaryRefWord(ud, 0) == t && team != nil && objectiveTeamCount(team) > 1 {
 			last := memmap.PtrUint32(0x5d4594, 1568008)
 			if core.Frame()-*last > 45 {
-				nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), (*C.char)(internCStr("objcoll.c:CantPickupBall")), 0)
+				gameplayTextPrivate(t, (*byte)(unsafe.Pointer(internCStr("objcoll.c:CantPickupBall"))), 0)
 				*last = core.Frame()
 			}
 			inventorySound(928, u, 0, 0)
@@ -106,7 +95,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 		if math.Abs(float64(u.PosVec.X)-float64(*temporaryFloat(ud, 0))) > epsilon || math.Abs(float64(u.PosVec.Y)-float64(*temporaryFloat(ud, 4))) > epsilon {
 			Nox_xxx_unitMove_4E7010(u, *(*types.Pointf)(ud))
 			netcode := t.NetCode
-			nox_xxx_netInformTextMsg2_4DA180(4, (*C.uint8_t)((*uint8)(unsafe.Pointer(&netcode))))
+			gameplayTextInformationAll(4, unsafe.Pointer(&netcode))
 			*equipmentWord(ud, 8) = 0
 			matchRosterFlagState(byte(t.TeamVal.ID), 0, byte(color), 0)
 			return
@@ -138,7 +127,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 				for tm := core.Teams.First(); tm != nil; tm = core.Teams.Next(tm) {
 					if uint32(tm.Lessons) >= uint32(limit) {
 						noxflags.SetGame(8)
-						nox_xxx_netFlagWinner_4D8C40_4D8C80(C.int(int32(uintptr(tm.C()))), 0)
+						gameplayReportFlagWinner(tm, 0)
 						break
 					}
 				}
@@ -153,7 +142,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 	}
 	tm := core.Teams.ByID(u.TeamVal.ID)
 	if tm == nil || objectiveTeamCount(tm) == 0 {
-		nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(t), (*C.char)(internCStr("objcoll.c:FlagNoTeam")), 0)
+		gameplayTextPrivate(t, (*byte)(unsafe.Pointer(internCStr("objcoll.c:FlagNoTeam"))), 0)
 		return
 	}
 	for flag := t.InvFirstItem; flag != nil; flag = flag.InvNextItem {
@@ -166,7 +155,7 @@ func objectiveCTFPickup(u, t *server.Object) {
 	flagColor := objectiveFlagID(u)
 	inventoryInsert(t, u, 1)
 	*equipmentWord(unsafe.Pointer((*server.PlayerUpdateData)(playerUD).Player), 4) |= 1
-	sub_4D82F0(255, (*C.uint32_t)((*uint32)(u.CObj())))
+	gameplayReportEquipment(255, u)
 	inventoryMessage(6, t, uint32(flagColor))
 	playerStateUnmark(u, 1)
 	*equipmentWord(ud, 8) = 0
@@ -239,7 +228,7 @@ func objectiveFlagBallScore(flag, target *server.Object) int16 {
 	out := int16(*cache)
 	ball := target
 	if target.ObjClass&4 != 0 {
-		out = int16(nox_xxx_unitIsGameball_4E7C30(C.int(inventoryInt(target))))
+		out = int16(bool2int(stateOwns(target, 1567720, "GameBall")))
 		if out == 0 {
 			return out
 		}
@@ -286,7 +275,7 @@ func objectiveFlagBallScore(flag, target *server.Object) int16 {
 		for tm := core.Teams.First(); tm != nil; tm = core.Teams.Next(tm) {
 			if uint32(tm.Lessons) >= uint32(limit) {
 				noxflags.SetGame(8)
-				nox_xxx_netFlagballWinner_4D8C40(C.int(int32(uintptr(tm.C()))))
+				gameplayReportFlagballWinner(tm)
 				break
 			}
 		}
@@ -308,7 +297,7 @@ func objectiveFlagBallScore(flag, target *server.Object) int16 {
 				core.ObjClearOwner(ball)
 				objectiveRememberOwner(ball, nil)
 				teamRuntimeLeave(ball.TeamPtr(), int(ball.NetCode))
-				nox_xxx_unitHPsetOnMax_4EE6F0(C.int(inventoryInt(ball)))
+				resourceRestoreHP(ball)
 				*(*uint64)(unsafe.Add(data, 8)) = uint64(uint32(PlatformTicks()))
 				Nox_xxx_unitMove_4E7010(ball, it.PosVec)
 				Sub_4E8290(0, 0)

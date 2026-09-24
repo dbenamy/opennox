@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME4.h"
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -186,12 +181,12 @@ func monsterHealSomeone(u *server.Object) bool {
 func monsterCastSpell(id int, u *server.Object, args *[3]uint32) {
 	d := u.UpdateDataMonster()
 	if d.StatusFlags&0x20000 != 0 {
-		nox_xxx_mobMorphToPlayer_4FAAF0((*C.uint32_t)((*uint32)(u.CObj())))
+		controlMorphToPlayer((*server.Object)(unsafe.Pointer(u.CObj())))
 	}
 	monsterCalcDir(u, (*float32)(unsafe.Pointer(&args[1])))
 	Nox_xxx_castSpellByUser_4FDD20(id, u, unsafe.Pointer(args))
 	if d.StatusFlags&0x20000 != 0 {
-		nox_xxx_mobMorphFromPlayer_4FAAC0((*C.uint32_t)((*uint32)(u.CObj())))
+		controlMorphFromPlayer((*server.Object)(unsafe.Pointer(u.CObj())))
 	}
 }
 func monsterActionCast(u *server.Object, mode int) {

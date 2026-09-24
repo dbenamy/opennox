@@ -57,10 +57,14 @@ func asObjectS(p *nox_object_t) *server.Object {
 }
 
 func ToObjS(p *nox_object_t) server.Obj {
+	return objectAsInterface(asObjectS(p))
+}
+
+func objectAsInterface(p *server.Object) server.Obj {
 	if p == nil {
 		return nil
 	}
-	return asObjectS(p)
+	return p
 }
 
 func nox_server_getFirstObject_4DA790() *nox_object_t {

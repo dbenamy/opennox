@@ -124,7 +124,7 @@ func uiInventoryNewStack(code, typ uint32, mods unsafe.Pointer, coords *[2]int32
 	return 0
 }
 
-func nox_xxx_spritePickup_461660(code, typ C.int, mods unsafe.Pointer) C.int {
+func nox_xxx_spritePickup_461660(code, typ int32, mods unsafe.Pointer) int32 {
 	t := uint32(typ)
 	if t == uint32(dword_5d4594_1062560) || t == memmap.Uint32(0x5D4594, 1049728) || t == memmap.Uint32(0x5D4594, 1049724) || t == uint32(dword_5d4594_1062556) || t == uint32(dword_5d4594_1062564) {
 		return 1
@@ -250,7 +250,7 @@ func uiInventoryCompact() uintptr {
 //export sub_461B50
 func sub_461B50() *C.uchar { return (*C.uchar)(unsafe.Pointer(uiInventoryCompact())) }
 
-func sub_461A80(code C.int) {
+func sub_461A80(code int32) {
 	if found := uiInventoryFindCode(uint32(code)); found != nil {
 		potion := uint32(found.Cell.Drawable.ObjClass)&0x10 != 0
 		uiInventoryRemoveStack(found)

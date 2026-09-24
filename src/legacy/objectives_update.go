@@ -1,20 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "common__random.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-#include "GAME4.h"
-#include "GAME4_2.h"
-#include "GAME5_2.h"
-#include "common__magic__speltree.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -94,7 +79,7 @@ func objectiveFlagUpdate(u *server.Object) int32 {
 		*equipmentWord(ud, 8) = 0
 		matchRosterFlagState(byte(team), 0, byte(color), 0)
 		Nox_xxx_unitMove_4E7010(u, *(*types.Pointf)(ud))
-		out = int32(nox_xxx_netInformTextMsg2_4DA180(8, (*C.uint8_t)((*uint8)(unsafe.Pointer(&color)))))
+		out = int32(gameplayTextInformationAll(8, unsafe.Pointer(&color)))
 	}
 	return out
 }
@@ -173,7 +158,7 @@ func objectiveBallUpdate(u *server.Object) {
 	dir := (int32(int16(owner.Direction1)) + int32(nox_common_randomInt_415FA0(-32, 32))) & 255
 	dx, dy := movementDirectionVector(dir)
 	origin := types.Pointf{X: float32(float64(u.PosVec.X) - float64(dx)*20), Y: float32(float64(u.PosVec.Y) - float64(dy)*20)}
-	nox_xxx_objectApplyForce_52DF80((*C.float)((*float32)(unsafe.Pointer(&origin))), asObjectC(u), 30)
+	GetServer().ApplyForce(u, AsPointf(unsafe.Pointer(&origin)), float64(float32(30)))
 	core.ObjClearOwner(u)
 	Sub_4E8290(1, 0)
 	inventorySound(926, u, 0, 0)

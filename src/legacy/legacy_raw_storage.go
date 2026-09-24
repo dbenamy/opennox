@@ -11,11 +11,11 @@ import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 )
 
-// legacyGlobalStorage keeps the original C field types and dimensions in unmanaged C-heap memory.
+// legacyGlobalStorage keeps the original field widths and dimensions in unmanaged C-heap memory.
 // alloc.New uses calloc; this package-lifetime allocation is intentionally never freed.
 type legacyGlobalStorage struct {
 	nox_xxx_aClosewoodengat_587000_133480 unsafe.Pointer
-	dword_5d4594_831236                   C.uint32_t
+	dword_5d4594_831236                   uint32
 	dword_5d4594_1309720                  C.uint32_t
 	dword_587000_127004                   unsafe.Pointer
 	nox_alloc_tradeItems_2386496          unsafe.Pointer

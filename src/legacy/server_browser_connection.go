@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_2.h"
-#include "client__shell__noxworld.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -37,7 +30,7 @@ func browserTick() int {
 		browserUI.connectionState = 3
 		Sub_449E30(browserString("TestCon"))
 		// The original unsigned-int addition wraps before widening to the deadline.
-		browserUI.connectionDeadline = C.uint64_t(uint64(uint32(PlatformTicks()) + 20000))
+		browserUI.connectionDeadline = uint64(uint32(PlatformTicks()) + 20000)
 	case 5:
 		Sub_449E00(browserString("Password"))
 		Sub_449E30(browserString("PasswordRequired"))

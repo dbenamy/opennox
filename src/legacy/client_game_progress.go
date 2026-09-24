@@ -1,7 +1,5 @@
 package legacy
 
-import "C"
-
 import (
 	"encoding/binary"
 	"github.com/opennox/libs/noxnet/netmsg"
@@ -82,11 +80,11 @@ func clientGameProgress(op netmsg.Op, data []byte) (int, bool) {
 				mods[i] = uint32(uintptr(nox_xxx_modifGetDescById_413330(int32(data[5+i]))))
 			}
 		}
-		if nox_xxx_spritePickup_461660(C.int(int32(code)), C.int(int32(word(3))), unsafe.Pointer(&mods[0])) == 0 {
-			nox_xxx_send2ServInvenFail_461630(C.short(int16(code)))
+		if nox_xxx_spritePickup_461660(int32(code), int32(word(3)), unsafe.Pointer(&mods[0])) == 0 {
+			nox_xxx_send2ServInvenFail_461630(int16(code))
 		}
 	case 77:
-		sub_461A80(C.int(int32(code)))
+		sub_461A80(int32(code))
 	case 78:
 		if p := GetServer().S().Players.ByID(int(code)); p != nil {
 			if !noxflags.HasGame(noxflags.GameHost) {

@@ -126,7 +126,7 @@ func browserShow() int {
 	browserUI.transition = 0
 	browserUI.hosting = 0
 	browserUI.connectionState = 0
-	browserUI.refreshDeadline = C.uint64_t(uint32(PlatformTicks()) + 1000)
+	browserUI.refreshDeadline = uint64(uint32(PlatformTicks()) + 1000)
 	if browserUI.listMode == 1 {
 		browserShowList()
 	}

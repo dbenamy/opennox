@@ -12,7 +12,11 @@ import (
 )
 
 func shopSessionFromInt(v C.int) *shopSession {
-	return (*shopSession)(unsafe.Pointer(uintptr(uint32(v))))
+	return shopSessionFromWord(uint32(v))
+}
+
+func shopSessionFromWord(v uint32) *shopSession {
+	return (*shopSession)(unsafe.Pointer(uintptr(v)))
 }
 
 //export nox_xxx_shopGetItemCost_50E3D0

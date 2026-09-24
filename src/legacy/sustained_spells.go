@@ -1,18 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"github.com/opennox/libs/types"
@@ -61,7 +48,8 @@ func sustainedFront(a, b *server.Object) int32 {
 func sustainedInteract(a, b *server.Object) bool { return GetServer().S().CanInteract(a, b, 0) }
 func sustainedEnemy(a, b *server.Object) bool    { return GetServer().S().IsEnemyTo(a, b) }
 func sustainedNew(name string) *server.Object {
-	return asObjectS(nox_xxx_newObjectByTypeID_4E3810((*C.char)(internCStr(name))))
+	namePtr := internCStr(name)
+	return GetServer().S().NewObjectByTypeID(GoStringP(unsafe.Pointer(namePtr)))
 }
 func sustainedDelete(u *server.Object)                      { nox_xxx_delayedDeleteObject_4E5CC0(asObjectC(u)) }
 func sustainedStopRay(d *server.DurSpell, u *server.Object) { GetServer().S().NetStopRaySpell(d, u) }

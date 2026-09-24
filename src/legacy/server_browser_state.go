@@ -10,9 +10,9 @@ import "unsafe"
 // callers and fixture word views while their C global symbols retire.
 var browserUI = struct {
 	listMode           C.uint32_t
-	region             C.int
+	region             int32
 	polygonsReady      C.uint32_t
-	popup              C.uint32_t
+	popup              uint32
 	popupCount         C.uint32_t
 	connectionState    C.uint
 	selected           unsafe.Pointer
@@ -40,7 +40,7 @@ var browserUI = struct {
 	sort               C.uint32_t
 	gameList           C.uint32_t
 	world              *C.nox_window
-	connectionDeadline C.uint64_t
-	refreshDeadline    C.uint64_t
+	connectionDeadline uint64
+	refreshDeadline    uint64
 	servers            *legacyListNode
 }{listMode: 1, region: -1, sort: 6}

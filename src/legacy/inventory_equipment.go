@@ -1,16 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-#include "common__gamemech__pausefx.h"
-*/
-import "C"
-
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -19,7 +8,7 @@ import (
 )
 
 func inventoryPriMessage(u *server.Object, key string) {
-	nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), (*C.char)(internCStr(key)), 0)
+	gameplayTextPrivate(u, (*byte)(unsafe.Pointer(internCStr(key))), 0)
 }
 func inventoryWeaponPickup(u, it *server.Object, arg, equip int) int {
 	if u.ObjClass&4 != 0 && noxflags.HasGame(4096) && it.ObjSubClass&0x200000 != 0 {

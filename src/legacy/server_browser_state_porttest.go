@@ -96,7 +96,7 @@ func PortTestServerBrowserStateGet(which int) uint32 {
 	}
 	panic(which)
 }
-func PortTestServerBrowserSortClick(id int) { nox_wol_servers_sortBtnHandler_4A0290(C.int(id)) }
+func PortTestServerBrowserSortClick(id int) { nox_wol_servers_sortBtnHandler_4A0290(int32(id)) }
 func PortTestServerBrowserFormat(addr string, port uint16, out unsafe.Pointer) int {
 	p := CString(addr)
 	defer StrFree(p)

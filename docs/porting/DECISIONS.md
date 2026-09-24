@@ -2506,3 +2506,17 @@ profiles and run the scalar contract alone under safe. The latter passes the
 existing frozen capture. This is an explicit fixture/profile boundary, not a
 conversion regression or a claim of complete safe runtime qualification. See
 GO_SCALAR_STORAGE.md and go-scalar-storage-baseline.json.
+
+## Native internal calls and replaceable server hooks
+
+Use existing native Go owners or exact extracted bodies for the 31 remaining
+primitive-adapter caller files. Preserve exported C entrypoints while other
+callers still need them. All 50 source edits qualified without fixture or golden
+changes; selected production cgo files fall from 302 to 271. See
+[GO_NATIVE_CALL_BOUNDARIES.md](GO_NATIVE_CALL_BOUNDARIES.md).
+
+Preserve evaluation order when replacing a wrapper with a method call. The
+replaceable `GetServer` hook can run before argument reads in a direct method
+expression. Keep an exact native helper or an explicit temporary where needed;
+string interning and subsequent reading must retain their original order too.
+This is a compatibility constraint, not a new game behavior.

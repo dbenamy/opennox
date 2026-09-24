@@ -376,7 +376,11 @@ func nox_xxx_monsterIsMoveing_534320(p C.int) C.int {
 }
 
 func objectFromInt(p C.int) *server.Object {
-	return asObjectS((*nox_object_t)(unsafe.Pointer(uintptr(p))))
+	return objectFromWord(uint32(p))
+}
+
+func objectFromWord(p uint32) *server.Object {
+	return (*server.Object)(unsafe.Pointer(uintptr(p)))
 }
 
 //export sub_534340

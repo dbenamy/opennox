@@ -1,18 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "client__gui__guijourn.h"
-#include "GAME2_1.h"
-#include "GAME3_1.h"
-#include "common__magic__speltree.h"
-#include "common__object__modifier.h"
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -68,7 +55,7 @@ func uiInventoryDrawWindow(w *gui.Window) int {
 			uiRenderCopyRect(pos.X+254, pos.Y+13, 260, 150)
 			switch memmap.Uint8(0x5D4594, 1049869) {
 			case 0:
-				nox_xxx_guiDrawInventoryTray_4643B0(C.int(int32(pos.X+254)), C.int(int32(pos.Y+13)))
+				uiInventoryDrawTray(int32(pos.X+254), int32(pos.Y+13))
 			case 1:
 				journalDraw(pos.X+254, pos.Y+13, int(dword_5d4594_1062512))
 			}

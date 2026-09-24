@@ -450,7 +450,7 @@ func Set_nox_wol_server_result_cnt_815088(v int) {
 	browserUI.resultCount = C.uint(v)
 }
 func Set_qword_5d4594_815068(v uint64) {
-	browserUI.refreshDeadline = C.ulonglong(v)
+	browserUI.refreshDeadline = uint64(v)
 }
 func Set_nox_client_connError_814552(v int) {
 	browserUI.connectionError = C.uint(v)
@@ -663,7 +663,7 @@ func Set_dword_5d4594_2650680(v int) {
 	dword_5d4594_2650680 = uint32(v)
 }
 func Set_qword_5d4594_814956(v uint64) {
-	browserUI.connectionDeadline = C.ulonglong(v)
+	browserUI.connectionDeadline = uint64(v)
 }
 func Set_dword_5d4594_1200804(v uint32) {
 	clientGameMapFrame = v

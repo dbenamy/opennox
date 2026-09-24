@@ -1,16 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -21,7 +10,7 @@ import (
 )
 
 func temporaryAreaDamage(u *server.Object, outer, inner float32, damage, kind int) {
-	nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)((*float32)(unsafe.Pointer(&u.PosVec))), C.float(float32(outer)), C.float(float32(inner)), int(int32(damage)), int(int32(kind)), asObjectC(u), nil)
+	mapDamageUnitsAround(u.PosVec, float32(outer), float32(inner), int32(damage), int32(kind), u, nil)
 }
 func temporaryPowderBarrel(u *server.Object) {
 	core := GetServer().S()
@@ -228,7 +217,7 @@ func temporaryMeteorExplode(u *server.Object) {
 		GetServer().CreateObjectAt(fx, nil, u.PosVec)
 	}
 	owner := u.FindOwnerChainPlayer()
-	nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)((*float32)(unsafe.Pointer(&u.PosVec))), 80, 30, int(int32(*damage)), 7, asObjectC(owner), nil)
+	mapDamageUnitsAround(u.PosVec, 80, 30, int32(*damage), 7, owner, nil)
 	x1 := float32(float64(u.PosVec.X) - 80)
 	y1 := float32(float64(u.PosVec.Y) - 80)
 	x2 := float32(float64(u.PosVec.X) + 80)

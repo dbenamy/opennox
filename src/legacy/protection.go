@@ -21,13 +21,17 @@ func Nox_xxx_protectionCreateStructForFloat_56F480(a1 int, a2 float32) int {
 
 //export nox_xxx_protectionStringCRCLen_56FAE0
 func nox_xxx_protectionStringCRCLen_56FAE0(data *C.int, size C.uint) C.int {
+	return C.int(protectionStringChecksum(unsafe.Pointer(data), uint32(size)))
+}
+
+func protectionStringChecksum(data unsafe.Pointer, size uint32) int32 {
 	if data == nil {
 		return 0
 	}
 	// Process complete words only. Chunking avoids converting an unsigned C
 	// byte count greater than MaxInt into a negative Go slice length on 386.
-	remaining := uint32(size) &^ 3
-	p := unsafe.Pointer(data)
+	remaining := size &^ 3
+	p := data
 	var sum uint32
 	for remaining != 0 {
 		n := remaining
@@ -40,5 +44,5 @@ func nox_xxx_protectionStringCRCLen_56FAE0(data *C.int, size C.uint) C.int {
 			p = unsafe.Add(p, n)
 		}
 	}
-	return C.int(sum)
+	return int32(sum)
 }

@@ -1,9 +1,30 @@
 # Native Go calls at internal adapter boundaries
 
-Status: original baseline accepted from fully qualified `78ff20f9`; implementation
-is being drafted and is not installed. See the
-[baseline](go-native-call-boundaries-baseline.json) and
-[qualification manifest](go-native-call-boundaries-batch.json).
+Status: qualified on Linux 386/SSE2. **31 production C imports removed;
+selected project cgo files fall from 302 to 271.** All 50 changed source files
+match the independently reconstructed draft. C exports remain 1,179; embedded
+callback bodies remain 79; standalone production/test C remains zero.
+External native-library bindings are unchanged.
+
+Baseline: fully qualified `78ff20f9`, frozen at `3e892775`. See the
+[baseline](go-native-call-boundaries-baseline.json),
+[qualification](go-native-call-boundaries-qualification.json),
+[manifest](go-native-call-boundaries-batch.json), and
+[dependency inventory](go-native-call-boundaries-inventory-after.json).
+
+## Final qualification
+
+- All seven frozen storage captures match: raw/scalar in default, server and
+  highres; scalar separately in safe. Exact test sets pass without skips.
+- Complete root suites: default/highres each 2,426 pass; server 2,415 pass.
+  Each has only the expected prerequisite-probe skip; discovered, started and
+  completed name sets match the qualified baseline, including the identity regression.
+- Safe build/static checks and three fresh production builds/ABI checks pass.
+- Headless character creation, save/load and resume pass against the frozen reference.
+- Full-suite outcomes exactly match the known baseline: 304 failure events,
+  17 passing, two failing and 32 skipped packages.
+- Identical source fingerprints throughout; all 1,654 original asset hashes match.
+  No root assertion, frozen expectation or production behavior correction was needed.
 
 ## Scope and baseline
 
@@ -14,9 +35,10 @@ moves those callers to native Go helpers and normalizes the necessary private
 signatures/fields. Include connected definitions and callers outside those files.
 Keep actual C exports, their signatures and external native-library bindings.
 
-All four preceding qualification phases have exactly the current source hashes:
-reuse their frozen owner captures, complete root suites, safe build and production
-results as the original baseline. No expected values are regenerated. Existing
+Before conversion, all four preceding qualification phases matched the accepted
+baseline source hashes. Their frozen owner captures, complete root suites, safe
+build and production results supplied the original baseline. No expected values
+were regenerated. Existing
 C export contracts continue to exercise wrappers where native cores are extracted.
 The recently proven inventory identity regression remains in every root profile.
 
@@ -39,23 +61,61 @@ The recently proven inventory identity regression remains in every root profile.
   widths/alignment. Deadline addition wraps in uint32 before widening to uint64.
   Keep unmanaged storage and all raw/typed aliases; migrate every field writer.
 
-Five proposed private signature changes have only identified Go callers, including
-test bridges. Primary review checks the complete source references, not just the
+The five private signature changes have only identified Go callers, including
+test bridges. Primary review checked the complete source references, not just the
 initial candidate set. The original C exports are retained around exact extracted
 native bodies, so export removal is not a goal of this batch.
 
 ## Work and qualification
 
-Luna owns an uninstalled 17-caller draft; primary owns the remaining callers,
+Luna supplied a 17-caller draft; primary handled the remaining callers,
 helper/field changes, integration and acceptance. Exact original hashes and old/new
-edit manifests permit independent reconstruction. Keep source frozen during tests.
+edit manifests permit independent reconstruction. Source stayed frozen during tests.
 
-After integration, repeat all seven storage captures, the three complete root
+Qualification repeated all seven storage captures, the three complete root
 suites with exact names/skips, safe build/static checks, three fresh production/ABI
-checks, the exact known full-suite comparison and headless save/load/resume. Verify
-original assets and measure selected production cgo files rather than assuming all
-31 imports disappear. Standalone C remains zero.
+checks, the exact known full-suite comparison and headless save/load/resume.
+Original assets and selected production cgo counts were independently verified.
+Standalone C remains zero.
 
 Local drafts, source fingerprints and review evidence live under
 `build/port-go-native-call-boundaries/`. Candidate planning and five-helper caller
 references are retained under `build/port-go-primitive-interfaces/next-*`.
+
+## Integration review
+
+Primary reconstructed all 50 changed files byte-for-byte from the two reviewed
+manifests. The 31 candidate C imports disappear, with no C export signature
+changes. Five private signatures and all identified callers change together;
+four browser fields and one raw-storage field retain width, alignment and aliases.
+
+Review preserved evaluation order around the replaceable `GetServer` hook:
+area-damage callers use an exact native helper so argument reads precede that
+hook; string interning occurs before the receiver lookup and string reading
+remains after it. Both nil creation arguments and projectile exclusions keep nil
+interfaces. Two shortened helper names in Luna's caller draft were corrected to
+the existing names during integration; definitions were never renamed.
+
+The existing checksum contracts cover every short length/alignment, seeded data,
+chunk boundaries, huge null lengths and rejected IDs with unreadable storage.
+The window matrix retains nil windows and boundary coordinates. No new expected
+values or root fixtures were needed for these exact extractions. The first 386
+compiler preflight passed without fixes. All qualification gates
+passed on the installed source. Draft reconstruction supplements compilation and
+owner contracts.
+
+## Delegation and follow-on review
+
+The bounded Luna caller draft was useful after primary review of every conversion
+and exact reconstruction. Primary corrected two helper names and preserved the
+replaceable server-hook evaluation order before installation. No subscription
+savings estimate is claimed. A follow-on field audit found 26 C scalar fields in
+two Go-owned aggregates; field-only normalization would remove no C imports, so
+combine it with a connected dependency-removal batch if selected.
+
+Seven obsolete scalar-storage executables were removed after independent source,
+replacement, hash and host-use checks, reclaiming 395,452,416 allocated bytes.
+Recovery uses `e64ff24e`; replacement source matches `78ff20f9`. The helper initially
+compared replacement maps with the old revision; primary caught the mismatch and
+required the corrected proof before cleanup. Retain the final proposal and
+`cleanup-scalar-{approved.json,deleted.jsonl}` under this batch directory.

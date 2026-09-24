@@ -1,16 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -27,7 +16,7 @@ func projectileFriendly(u, t *server.Object) bool {
 	return owner != nil && t != nil && owner.ObjClass&4 != 0 && t.ObjClass&4 != 0 && !GetServer().S().IsEnemyTo(owner, t)
 }
 func projectileSplash(u, exclude *server.Object, radius, inner float32, damage, kind int32) {
-	nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)((*float32)(unsafe.Pointer(&u.PosVec))), C.float(float32(radius)), C.float(float32(inner)), int(int32(damage)), int(int32(kind)), asObjectC(u), asObjectC(exclude))
+	mapDamageUnitsAround(u.PosVec, float32(radius), float32(inner), int32(damage), int32(kind), u, exclude)
 }
 func projectilePush(u *server.Object, radius, inner, force float32) {
 	spellEffectPushAround(u.PosVec, radius, inner, force, u, nil, 0)
@@ -53,7 +42,7 @@ func projectileBoom(u, t *server.Object, n *types.Pointf) {
 	}
 	if t != nil {
 		if t.ObjClass&4 != 0 {
-			if nox_xxx_checkInversionEffect_4FA4F0(C.int(inventoryInt(t)), C.int(inventoryInt(u))) != 0 {
+			if controlInversion(t, u) != 0 {
 				Nox_xxx_changeOwner_52BE40(u, t)
 				return
 			}
@@ -119,7 +108,7 @@ func projectilePixie(u, t *server.Object, n *types.Pointf) {
 			return
 		}
 		if t.ObjClass&4 != 0 {
-			if nox_xxx_checkInversionEffect_4FA4F0(C.int(inventoryInt(t)), C.int(inventoryInt(u))) != 0 {
+			if controlInversion(t, u) != 0 {
 				Nox_xxx_changeOwner_52BE40(u, t)
 				return
 			}

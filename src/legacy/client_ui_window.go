@@ -118,13 +118,17 @@ func nox_window_get_size(w *nox_window, x, y *C.int) C.int {
 
 //export nox_xxx_wndPointInWnd_46AAB0
 func nox_xxx_wndPointInWnd_46AAB0(w *C.uint, x, y C.int) C.bool {
+	return C.bool(uiWindowPointIn((*gui.Window)(unsafe.Pointer(w)), int32(x), int32(y)))
+}
+
+func uiWindowPointIn(w *gui.Window, x, y int32) bool {
 	p, size := image.Point{}, image.Point{}
 	if w != nil {
-		win := (*gui.Window)(unsafe.Pointer(w))
+		win := w
 		p = uiWindowPosition(win)
 		size = win.SizeVal
 	}
-	return C.bool(int(x) >= p.X && int(x) <= p.X+size.X && int(y) >= p.Y && int(y) <= p.Y+size.Y)
+	return int(x) >= p.X && int(x) <= p.X+size.X && int(y) >= p.Y && int(y) <= p.Y+size.Y
 }
 
 //export sub_46AB20

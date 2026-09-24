@@ -107,6 +107,9 @@ may precede full qualification when their evidence and remaining gates are expli
    token again: a 32-bit image handle can happen to equal that token. Prove such
    fixture corrections against pre-conversion source with a forced collision;
    preserve frozen captures and rerun qualification on the corrected source.
+   Preserve evaluation order around replaceable function hooks such as GetServer.
+   Replacing a wrapper with a method call can move argument reads after receiver
+   lookup; retain a small native helper or explicit temporary when order matters.
    Before the first compile, format new files, check the whitespace diff, and compare
    new export signatures with every existing header declaration. When removing a
    cgo import, check for `//export` directives too: those still need cgo even when

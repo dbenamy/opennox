@@ -1,16 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-#include "GAME2_3.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/object"
 	"github.com/opennox/libs/types"
@@ -214,7 +203,7 @@ func combatMeleeStart(u *server.Object) {
 		return
 	}
 	if u.SubClass()&0x10 != 0 {
-		cost := int(nox_xxx_weaponGetStaminaByType_4F7E80(C.int(int32(ud.Field514))))
+		cost := int(controlWeaponStamina(uint32(int32(ud.Field514))))
 		if cost > int(ud.Field282_0) {
 			ud.Field282_0 -= byte(cost)
 		} else {
@@ -264,11 +253,11 @@ func combatMelee(u *server.Object) {
 	d := ud.MonsterDef
 	if u.SubClass()&0x10 != 0 {
 		if ud.StatusFlags&0x20000 != 0 {
-			nox_xxx_mobMorphToPlayer_4FAAF0((*C.uint32_t)((*uint32)(u.CObj())))
+			controlMorphToPlayer((*server.Object)(unsafe.Pointer(u.CObj())))
 		}
 		r := nox_xxx_playerAttack_538960(asObjectC(u))
 		if ud.StatusFlags&0x20000 != 0 {
-			nox_xxx_mobMorphFromPlayer_4FAAC0((*C.uint32_t)((*uint32)(u.CObj())))
+			controlMorphFromPlayer((*server.Object)(unsafe.Pointer(u.CObj())))
 		}
 		if r == 0 {
 			u.MonsterPopAction()

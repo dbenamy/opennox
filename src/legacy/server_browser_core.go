@@ -120,7 +120,7 @@ func sub_4A2830(x, y C.int, out *C.uint32_t) *C.uint32_t {
 
 func sub_437860(x, y C.int) C.int { return C.int(browserRegion(int32(x), int32(y))) }
 
-func sub_438DD0(x, y C.uint) C.int {
+func sub_438DD0(x, y uint32) int32 {
 	if browserUI.region == -1 {
 		if x > 216 && x < 600 && y > 27 && y < 451 {
 			return 1
@@ -179,7 +179,7 @@ func nox_sprintAddrPort_43BC80(addr *C.char, port C.ushort, dst *C.char) C.int {
 
 func sub_4A7EF0() *C.char { return (*C.char)(memmap.PtrOff(0x5D4594, 1308732)) }
 
-func nox_wol_servers_sortBtnHandler_4A0290(id C.int) {
+func nox_wol_servers_sortBtnHandler_4A0290(id int32) {
 	if id < 10047 || id > 10051 {
 		return
 	}

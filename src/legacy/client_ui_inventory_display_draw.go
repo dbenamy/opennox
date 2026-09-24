@@ -111,6 +111,10 @@ func sub_466F50(p *C.uint32_t, draw *C.int) C.int {
 
 //export nox_xxx_guiDrawInventoryTray_4643B0
 func nox_xxx_guiDrawInventoryTray_4643B0(ax, ay C.int) C.int {
+	return C.int(uiInventoryDrawTray(int32(ax), int32(ay)))
+}
+
+func uiInventoryDrawTray(ax, ay int32) int32 {
 	x, top := int(ax), int(ay)
 	r := GetClient().R2()
 	small := uiInventorySmallFont()
@@ -194,5 +198,5 @@ func nox_xxx_guiDrawInventoryTray_4643B0(ax, ay C.int) C.int {
 			break
 		}
 	}
-	return C.int(top + 150)
+	return int32(top + 150)
 }

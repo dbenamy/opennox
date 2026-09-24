@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-#include "common__random.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -34,7 +24,7 @@ func projectileArrow(u, t *server.Object) {
 	}
 	strength := int32(30)
 	if u.ObjOwner != nil {
-		strength = int32(nox_xxx_unitGetStrength_4F9FD0(C.int(inventoryInt(u.ObjOwner))))
+		strength = int32(equipmentStrength(u.ObjOwner))
 	}
 	if noxflags.HasGame(4096) {
 		owner := u.FindOwnerChainPlayer()
@@ -49,7 +39,7 @@ func projectileArrow(u, t *server.Object) {
 		GetServer().DelayedDelete(u)
 		return
 	}
-	nox_xxx_unitGetStrength_4F9FD0(C.int(inventoryInt(u.ObjOwner)))
+	equipmentStrength(u.ObjOwner)
 	bolt := memmap.PtrUint32(0x5d4594, 1568000)
 	if *bolt == 0 {
 		*bolt = uint32(core.Types.IndByID("ArcherBolt"))
@@ -104,7 +94,7 @@ func projectileChakramCandidate(t *server.Object, pos *types.Pointf) {
 	if uintptr(t.CObj()) == uintptr(memmap.Uint32(0x5d4594, 1567840)) || uintptr(t.CObj()) == uintptr(memmap.Uint32(0x5d4594, 1567932)) {
 		return
 	}
-	u := objectFromInt(C.int(int32(memmap.Uint32(0x5d4594, 1567924))))
+	u := objectFromWord(uint32(int32(memmap.Uint32(0x5d4594, 1567924))))
 	if !GetServer().S().MapTraceVision(t, u) {
 		return
 	}
@@ -124,7 +114,7 @@ func projectileChakramSelect(u *server.Object) *server.Object {
 	*memmap.PtrUint32(0x5d4594, 1567836) = 1259902592
 	rect := types.Rectf{Min: types.Pointf{X: float32(float64(u.PosVec.X) - 400), Y: float32(float64(u.PosVec.Y) - 400)}, Max: types.Pointf{X: float32(float64(u.PosVec.X) + 400), Y: float32(float64(u.PosVec.Y) + 400)}}
 	GetServer().S().Map.EachObjInRect(rect, func(t *server.Object) bool { projectileChakramCandidate(t, &u.PosVec); return true })
-	t := objectFromInt(C.int(int32(dword_5d4594_1567928)))
+	t := objectFromWord(uint32(int32(dword_5d4594_1567928)))
 	if t != nil {
 		*(*byte)(unsafe.Add(u.UpdateData, 24)) = 2
 		dx, dy := float64(t.PosVec.X)-float64(u.PosVec.X), float64(t.PosVec.Y)-float64(u.PosVec.Y)
@@ -213,7 +203,7 @@ func projectileChakram(u, t *server.Object, n *types.Pointf) {
 	if t.ObjFlags&0x8000 != 0 || def == nil {
 		return
 	}
-	strength := int32(nox_xxx_unitGetStrength_4F9FD0(C.int(inventoryInt(owner))))
+	strength := int32(equipmentStrength(owner))
 	r := attackRecord{Pos: u.PosVec, Weapon: u, Owner: owner, Damage: float32(projectileBoltDamage(strength, def)), Radius: float32(float64(u.Shape.Circle.R) + 30)}
 	attackItemEffects(u, owner, &r)
 	attackPreEffects(t, owner, u, &r)

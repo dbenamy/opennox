@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_2.h"
-#include "GAME1_3.h"
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -35,7 +29,7 @@ func browserMouseDraw(_ *gui.Window, _ *gui.WindowData) int {
 		browserPopupClose()
 		GetClient().Cli().GUI.Focus(asWindow(browserUI.world))
 	}
-	if browserUI.creating != 0 && sub_438DD0(C.uint(uint32(p.X)), C.uint(uint32(p.Y))) != 0 {
+	if browserUI.creating != 0 && sub_438DD0(uint32(p.X), uint32(p.Y)) != 0 {
 		nox_client_setCursorType_477610(9)
 	} else if Sub_44A4A0() == 0 {
 		nox_client_setCursorType_477610(0)
@@ -66,7 +60,7 @@ func browserMapInput(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 	return nil
 }
 func browserCreateAt(x, y uint32) int {
-	hit := int(sub_438DD0(C.uint(uint32(x)), C.uint(uint32(y))))
+	hit := int(sub_438DD0(uint32(x), uint32(y)))
 	if hit == 0 {
 		return 0
 	}

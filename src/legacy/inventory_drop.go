@@ -1,15 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"github.com/opennox/libs/types"
@@ -35,7 +25,7 @@ func inventoryMessage(kind int, u *server.Object, value uint32) {
 	var data [10]byte
 	binary.LittleEndian.PutUint32(data[2:], u.NetCode)
 	binary.LittleEndian.PutUint32(data[6:], value)
-	nox_xxx_netInformTextMsg2_4DA180(C.int(int32(kind)), (*C.uint8_t)((*uint8)(unsafe.Pointer(&data[0]))))
+	gameplayTextInformationAll(int(int32(kind)), unsafe.Pointer(&data[0]))
 }
 func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 	if it.InvHolder != u {
@@ -43,7 +33,7 @@ func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 	}
 	if u.ObjClass&4 != 0 && inventoryDroppable(it) && equipmentDropPolicy(it, 1) != 0 {
 		if u.ObjFlags&0x8020 == 0 {
-			nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), (*C.char)(internCStr("drop.c:CantDropThat")), 0)
+			gameplayTextPrivate(u, (*byte)(unsafe.Pointer(internCStr("drop.c:CantDropThat"))), 0)
 			inventorySound(925, u, 2, int(u.NetCode))
 		}
 		return 0
@@ -61,7 +51,7 @@ func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 	}
 	if it.ObjClass&0x10000000 != 0 {
 		team := it.TeamVal.ID
-		value := sub_4ECBD0(C.int(inventoryInt(it)))
+		value := objectiveFlagID(it)
 		inventoryMessage(7, u, uint32(value))
 		playerStateMark(it, 1)
 		*(*uint32)(unsafe.Add(it.UpdateData, 8)) = GetServer().S().Frame()

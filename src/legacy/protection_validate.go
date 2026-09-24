@@ -5,10 +5,17 @@ package legacy
 */
 import "C"
 
-import "github.com/opennox/opennox/v1/internal/protection"
+import (
+	"github.com/opennox/opennox/v1/internal/protection"
+	"unsafe"
+)
 
 //export sub_56FB00
 func sub_56FB00(data *C.int, size C.uint, id C.int) C.int {
+	return C.int(protectionValidateString(unsafe.Pointer(data), uint32(size), int32(id)))
+}
+
+func protectionValidateString(data unsafe.Pointer, size uint32, id int32) int32 {
 	if id < 657757279 {
 		return 0
 	}
@@ -17,7 +24,7 @@ func sub_56FB00(data *C.int, size C.uint, id C.int) C.int {
 	if r == nil {
 		return 0
 	}
-	if C.uint32_t(key)^C.uint32_t(nox_xxx_protectionStringCRCLen_56FAE0(data, size)) != C.uint32_t(r.Value) {
+	if uint32(key)^uint32(protectionStringChecksum(data, size)) != uint32(r.Value) {
 		return 0
 	}
 	return 1

@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_3.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"
@@ -95,7 +89,7 @@ func worldDoor(u *server.Object) byte {
 	return byte(current)
 }
 func worldAnimate(u *server.Object, frame int) {
-	nox_xxx_servMarkObjAnimFrame_4E4880(C.int(int32(uintptr(u.CObj()))), C.int(int32(frame)))
+	stateAnimation(u, uint32(int32(frame)))
 }
 func worldScript(u *server.Object, offset int, caller *server.Object, event int) {
 	GetServer().NoxScriptC().ScriptCallback((*server.ScriptCallback)(unsafe.Add(u.UpdateData, offset)), caller, u, server.ScriptEventType(event))
@@ -244,7 +238,7 @@ func worldTrapDoor(u *server.Object) uint32 {
 	}
 	result := *stamp
 	if result != 0 && core.Frame() >= result {
-		nox_xxx_unitSetOnOff_4E4670(C.int(int32(uintptr(u.CObj()))), 1)
+		stateOnOff(u, true)
 		u.UnsetXStatus(2)
 		u.SetXStatus(4)
 		*stamp += 5 * uint32(core.TickRate())

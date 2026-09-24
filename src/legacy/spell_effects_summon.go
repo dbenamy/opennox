@@ -1,18 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-#include "server__script__script.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/types"
@@ -250,7 +237,7 @@ func spellEffectCharmFinish(record unsafe.Pointer) int32 {
 		s.Players.Nox_xxx_netMarkMinimapObject_417190(source.ControllingPlayer().PlayerIndex(), u, 1)
 		Nox_xxx_netSendSimpleObject2_4DF360(ind, u)
 		if controlFlags(4096) {
-			sub_50E140(C.int(int32(uintptr(u.CObj()))))
+			spawnPolicyRelease(u)
 		}
 	} else {
 		monsterOrder(source, u, 4)

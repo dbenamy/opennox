@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME3.h"
-*/
-import "C"
-
 import (
 	"fmt"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -29,7 +24,7 @@ func browserPopup(parent *gui.Window, point *[2]uint32, head *legacyListNode) *g
 	// Preserve the original raw callback slot passed to the resource parser.
 	fn := gui.WrapFuncC(*(*unsafe.Pointer)(unsafe.Add(parent.C(), 376)))
 	w := Nox_new_window_from_file("proxlist.wnd", fn)
-	browserUI.popup = C.uint32_t(uint32(uintptr(w.C())))
+	browserUI.popup = uint32(uintptr(w.C()))
 	var pos [2]uint32
 	browserPopupClamp(int32(point[0]+216), int32(point[1]+27), &pos)
 	w.SetPos(image.Pt(int(int32(pos[0])), int(int32(pos[1]))))

@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -164,7 +156,7 @@ func equipmentDuplicate(u, it *server.Object) int {
 		return 0
 	}
 	for p := u.InvFirstItem; p != nil; p = p.InvNextItem {
-		if sub_4E7DE0(C.int(inventoryInt(p)), asObjectC(it)) != 0 {
+		if bool2int(stateEqual(p, it)) != 0 {
 			return 1
 		}
 	}

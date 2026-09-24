@@ -1,18 +1,5 @@
 package legacy
 
-/*
-#include "server__ability__ability.h"
-#include "common__gamemech__pausefx.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME2.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/player"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -108,7 +95,7 @@ func controlReadStats(u *server.Object, notify int32) int32 {
 	for *controlHalf(name, n) != 0 {
 		n += 2
 	}
-	result := sub_56FB00((*C.int)((*int32)(name)), C.uint(uint32(n)), C.int(int32(*equipmentWord(pl, 4628))))
+	result := protectionValidateString(name, uint32(n), int32(*equipmentWord(pl, 4628)))
 	*controlByte(pl, 2184) = 1
 	return int32(result)
 }
@@ -138,7 +125,7 @@ func controlSetLevel(u *server.Object, level byte) {
 	xp = nox_xxx_gamedataGetFloatTable_419D70(internCStr("XPTable"), int(int8(level)))
 	// XP protection stores a truncated numeric value, not its float bits.
 	updateProtectionFloat(int32(*equipmentWord(pl, 4604)), float32(xp), false)
-	sub_4D81A0(C.int(inventoryInt(u)))
+	gameplayReportExperience(u)
 	*controlByte(pl, 3684) = level
 	setProtectionRecord(int32(*equipmentWord(pl, 4644)), uint32(level))
 	controlReadStats(u, 0)

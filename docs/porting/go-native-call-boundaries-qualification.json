@@ -1,0 +1,1077 @@
+{
+  "baseline": {
+    "source_revision": "78ff20f904f4db947e9b182c5d7be3a87e7e5d1a",
+    "original_qualification": "docs/porting/go-primitive-interfaces-qualification.json",
+    "source_identity_verified_for": [
+      "storage",
+      "contracts",
+      "safe",
+      "production"
+    ],
+    "source_fingerprint_sha256": "f7a5705b09c55892729f278c6fb4f3c991be297faf3d2d7fbeba13ea0319c940",
+    "candidate_file_count": 31,
+    "candidate_selectors": 99,
+    "private_signature_candidates": [
+      "nox_xxx_spritePickup_461660",
+      "sub_461A80",
+      "nox_xxx_send2ServInvenFail_461630",
+      "nox_wol_servers_sortBtnHandler_4A0290",
+      "sub_438DD0"
+    ],
+    "status": "Original baseline accepted; implementation not installed",
+    "acceptance": "Reuse just-qualified exact source with frozen owner captures and complete profiles; review each adapter conversion and connected callers. Keep C exports and external bindings unchanged."
+  },
+  "phases": {
+    "storage": {
+      "batch": "go-native-call-boundaries",
+      "phase": "storage",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-native-call-boundaries/storage/default-scalar.json",
+            "OPENNOX_RAW_STORAGE_CAPTURE=/root/src/opennox/build/port-go-native-call-boundaries/storage/default-raw.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/raw-storage-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-native-call-boundaries/storage/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-native-call-boundaries/storage/default-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 64.29401092487387
+        },
+        {
+          "name": "server",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-native-call-boundaries/storage/server-scalar.json",
+            "OPENNOX_RAW_STORAGE_CAPTURE=/root/src/opennox/build/port-go-native-call-boundaries/storage/server-raw.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/raw-storage-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-native-call-boundaries/storage/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-native-call-boundaries/storage/server-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 64.72109674313106
+        },
+        {
+          "name": "highres",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-native-call-boundaries/storage/highres-scalar.json",
+            "OPENNOX_RAW_STORAGE_CAPTURE=/root/src/opennox/build/port-go-native-call-boundaries/storage/highres-raw.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/raw-storage-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-native-call-boundaries/storage/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-native-call-boundaries/storage/highres-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 5.094577732030302
+        },
+        {
+          "name": "safe-scalars",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-native-call-boundaries/storage/safe-scalar.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/scalar-storage-tests.txt",
+            "--tags",
+            "porttest,safe",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-native-call-boundaries/storage/safe.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-native-call-boundaries/storage/safe-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 65.63534290785901
+        }
+      ],
+      "revision": "3e892775d1c8423d47cfb46cd093cfae70fbd9fa",
+      "source_unchanged": true,
+      "wall_seconds": 200.48099147202447,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "contracts": {
+      "batch": "go-native-call-boundaries",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "profiles",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_profiles.py",
+            "--out",
+            "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+            "--jobs",
+            "2",
+            "--timeout-seconds",
+            "3600"
+          ],
+          "exit": 0,
+          "wall_seconds": 2026.1434646579437
+        }
+      ],
+      "revision": "3e892775d1c8423d47cfb46cd093cfae70fbd9fa",
+      "source_unchanged": true,
+      "wall_seconds": 2026.451673537027,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "safe": {
+      "batch": "go-native-call-boundaries",
+      "phase": "safe",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-tags",
+            "safe",
+            "-o",
+            "/root/src/opennox/build/port-go-native-call-boundaries/safe/opennox-safe",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 47.823834432987496
+        },
+        {
+          "name": "static",
+          "command": [
+            "go",
+            "test",
+            "./common/memmap/nox",
+            "-run",
+            "^TestCodeStatic$",
+            "-count=1"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.9748625140637159
+        }
+      ],
+      "revision": "3e892775d1c8423d47cfb46cd093cfae70fbd9fa",
+      "source_unchanged": true,
+      "wall_seconds": 49.27051114384085,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "production": {
+      "batch": "go-native-call-boundaries",
+      "phase": "production",
+      "success": true,
+      "steps": [
+        {
+          "name": "production",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/qualify_production.py",
+            "/root/src/opennox/docs/porting/go-native-call-boundaries-batch.json",
+            "--out",
+            "/root/src/opennox/build/port-go-native-call-boundaries/production/production"
+          ],
+          "exit": 0,
+          "wall_seconds": 196.08558967988938
+        }
+      ],
+      "revision": "3e892775d1c8423d47cfb46cd093cfae70fbd9fa",
+      "source_unchanged": true,
+      "wall_seconds": 196.37117538391612,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    }
+  },
+  "profile_controller": {
+    "success": true,
+    "jobs": 2,
+    "builds": [
+      {
+        "profile": "server",
+        "exit": 0,
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-c",
+          "-tags",
+          "porttest,server",
+          "-o",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/server.test",
+          "."
+        ],
+        "wall_seconds": 96.34402114385739
+      },
+      {
+        "profile": "highres",
+        "exit": 0,
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-c",
+          "-tags",
+          "porttest,highres",
+          "-o",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/highres.test",
+          "."
+        ],
+        "wall_seconds": 38.26464251312427
+      },
+      {
+        "profile": "default",
+        "exit": 0,
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-c",
+          "-tags",
+          "porttest",
+          "-o",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/default.test",
+          "."
+        ],
+        "wall_seconds": 5.587436639005318
+      }
+    ],
+    "profiles": [
+      {
+        "profile": "server",
+        "exit": 0,
+        "success": true,
+        "wall_seconds": 940.0649450218771,
+        "command": [
+          "/usr/bin/python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,server",
+          "--test-binary",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/server.test",
+          "--binary-record",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/server-binary.json",
+          "--log",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/server-result.json",
+          "--timeout-seconds",
+          "3600"
+        ]
+      },
+      {
+        "profile": "highres",
+        "exit": 0,
+        "success": true,
+        "wall_seconds": 955.191054009134,
+        "command": [
+          "/usr/bin/python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,highres",
+          "--test-binary",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/highres.test",
+          "--binary-record",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/highres-binary.json",
+          "--log",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/highres-result.json",
+          "--timeout-seconds",
+          "3600"
+        ]
+      },
+      {
+        "profile": "default",
+        "exit": 0,
+        "success": true,
+        "wall_seconds": 944.0305916410871,
+        "command": [
+          "/usr/bin/python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest",
+          "--test-binary",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/default.test",
+          "--binary-record",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/default-binary.json",
+          "--log",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/default-result.json",
+          "--timeout-seconds",
+          "3600"
+        ]
+      }
+    ],
+    "source_unchanged": true,
+    "wall_seconds": 2025.7390039060265
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 3600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "binary_verification": {
+        "path": "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/default.test",
+        "sha256": "a8490aeead749ee1b4e2f287b297eeefb1fbdfc4382d3e345d9d4eb4242ce29a",
+        "source_matches": true,
+        "record_matches": true,
+        "build_metadata": {
+          "path": "github.com/opennox/opennox/v1.test",
+          "-buildmode": "exe",
+          "-compiler": "gc",
+          "tags": "porttest",
+          "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+          "CGO_ENABLED": "1",
+          "CGO_CFLAGS": "",
+          "CGO_CPPFLAGS": "",
+          "CGO_CXXFLAGS": "",
+          "CGO_LDFLAGS": "",
+          "GOARCH": "386",
+          "GOOS": "linux",
+          "GO386": "sse2"
+        },
+        "verified": true
+      },
+      "discovery_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/default.test",
+        "-test.list=^Test"
+      ],
+      "discovery_exit": 0,
+      "selected_tests": 2427,
+      "selected_root_tests": 2427,
+      "execution_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/default.test",
+        "-test.v=test2json",
+        "-test.count=1",
+        "-test.timeout=3600s",
+        "-test.run=^Test"
+      ],
+      "exit": 0,
+      "started_tests": 2427,
+      "completed_tests": 2427,
+      "started_root_tests": 2427,
+      "completed_root_tests": 2427,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 943.9563444969244,
+      "exact_baseline_plus_regression_names_match": true,
+      "all_skips": [
+        "TestMapPopulationPrerequisiteProbe"
+      ],
+      "log_sha256": "054869909ac44efebb78ebdd95f64a3a1f11dbdd0483d3250986df09c60163d0"
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 3600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "binary_verification": {
+        "path": "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/server.test",
+        "sha256": "386ee0ce10274bb5d683e83600bc1887d229a845b420a73284ad3bd2c4ca689b",
+        "source_matches": true,
+        "record_matches": true,
+        "build_metadata": {
+          "path": "github.com/opennox/opennox/v1.test",
+          "-buildmode": "exe",
+          "-compiler": "gc",
+          "tags": "porttest,server",
+          "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+          "CGO_ENABLED": "1",
+          "CGO_CFLAGS": "",
+          "CGO_CPPFLAGS": "",
+          "CGO_CXXFLAGS": "",
+          "CGO_LDFLAGS": "",
+          "GOARCH": "386",
+          "GOOS": "linux",
+          "GO386": "sse2"
+        },
+        "verified": true
+      },
+      "discovery_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/server.test",
+        "-test.list=^Test"
+      ],
+      "discovery_exit": 0,
+      "selected_tests": 2416,
+      "selected_root_tests": 2416,
+      "execution_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/server.test",
+        "-test.v=test2json",
+        "-test.count=1",
+        "-test.timeout=3600s",
+        "-test.run=^Test"
+      ],
+      "exit": 0,
+      "started_tests": 2416,
+      "completed_tests": 2416,
+      "started_root_tests": 2416,
+      "completed_root_tests": 2416,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 939.9879926899448,
+      "exact_baseline_plus_regression_names_match": true,
+      "all_skips": [
+        "TestMapPopulationPrerequisiteProbe"
+      ],
+      "log_sha256": "6830fddbebeb083089d6a9bedfa860b567901af85d5624caa4bc81f95d9f4d85"
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 3600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "binary_verification": {
+        "path": "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/highres.test",
+        "sha256": "a600d82b0c25a5d6a21538de0a8e3915459f2ef268e3b6586c8911a4704795f2",
+        "source_matches": true,
+        "record_matches": true,
+        "build_metadata": {
+          "path": "github.com/opennox/opennox/v1.test",
+          "-buildmode": "exe",
+          "-compiler": "gc",
+          "tags": "porttest,highres",
+          "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+          "CGO_ENABLED": "1",
+          "CGO_CFLAGS": "",
+          "CGO_CPPFLAGS": "",
+          "CGO_CXXFLAGS": "",
+          "CGO_LDFLAGS": "",
+          "GOARCH": "386",
+          "GOOS": "linux",
+          "GO386": "sse2"
+        },
+        "verified": true
+      },
+      "discovery_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/highres.test",
+        "-test.list=^Test"
+      ],
+      "discovery_exit": 0,
+      "selected_tests": 2427,
+      "selected_root_tests": 2427,
+      "execution_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-go-native-call-boundaries/contracts/profiles/highres.test",
+        "-test.v=test2json",
+        "-test.count=1",
+        "-test.timeout=3600s",
+        "-test.run=^Test"
+      ],
+      "exit": 0,
+      "started_tests": 2427,
+      "completed_tests": 2427,
+      "started_root_tests": 2427,
+      "completed_root_tests": 2427,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 955.1252632772084,
+      "exact_baseline_plus_regression_names_match": true,
+      "all_skips": [
+        "TestMapPopulationPrerequisiteProbe"
+      ],
+      "log_sha256": "e726293f178e78277b855602b80593fdb419e422995408c7b765546f35ff35dc"
+    }
+  },
+  "storage": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "./legacy"
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 2,
+      "selected_root_tests": 0,
+      "execution_command": [
+        "go",
+        "test",
+        "-p",
+        "2",
+        "-tags",
+        "porttest",
+        "-count=1",
+        "-timeout",
+        "600s",
+        "-json",
+        "-run",
+        "^(TestRawStorageOwners|TestScalarStorageOwners)$",
+        "./legacy"
+      ],
+      "exit": 0,
+      "started_tests": 2,
+      "completed_tests": 2,
+      "started_root_tests": 0,
+      "completed_root_tests": 0,
+      "skipped_tests": [],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 64.20580033794977,
+      "exact_test_names_match": true
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "./legacy"
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 2,
+      "selected_root_tests": 0,
+      "execution_command": [
+        "go",
+        "test",
+        "-p",
+        "2",
+        "-tags",
+        "porttest,server",
+        "-count=1",
+        "-timeout",
+        "600s",
+        "-json",
+        "-run",
+        "^(TestRawStorageOwners|TestScalarStorageOwners)$",
+        "./legacy"
+      ],
+      "exit": 0,
+      "started_tests": 2,
+      "completed_tests": 2,
+      "started_root_tests": 0,
+      "completed_root_tests": 0,
+      "skipped_tests": [],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 64.64786373707466,
+      "exact_test_names_match": true
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "./legacy"
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 2,
+      "selected_root_tests": 0,
+      "execution_command": [
+        "go",
+        "test",
+        "-p",
+        "2",
+        "-tags",
+        "porttest,highres",
+        "-count=1",
+        "-timeout",
+        "600s",
+        "-json",
+        "-run",
+        "^(TestRawStorageOwners|TestScalarStorageOwners)$",
+        "./legacy"
+      ],
+      "exit": 0,
+      "started_tests": 2,
+      "completed_tests": 2,
+      "started_root_tests": 0,
+      "completed_root_tests": 0,
+      "skipped_tests": [],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 4.99299789685756,
+      "exact_test_names_match": true
+    },
+    "safe": {
+      "tags": "porttest,safe",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "./legacy"
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 1,
+      "selected_root_tests": 0,
+      "execution_command": [
+        "go",
+        "test",
+        "-p",
+        "2",
+        "-tags",
+        "porttest,safe",
+        "-count=1",
+        "-timeout",
+        "600s",
+        "-json",
+        "-run",
+        "^TestScalarStorageOwners$",
+        "./legacy"
+      ],
+      "exit": 0,
+      "started_tests": 1,
+      "completed_tests": 1,
+      "started_root_tests": 0,
+      "completed_root_tests": 0,
+      "skipped_tests": [],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 65.53021213505417,
+      "exact_test_names_match": true
+    }
+  },
+  "storage_captures": [
+    {
+      "path": "build/port-go-native-call-boundaries/storage/default-scalar.json",
+      "sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+      "frozen_match": true
+    },
+    {
+      "path": "build/port-go-native-call-boundaries/storage/default-raw.json",
+      "sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3",
+      "frozen_match": true
+    },
+    {
+      "path": "build/port-go-native-call-boundaries/storage/server-scalar.json",
+      "sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+      "frozen_match": true
+    },
+    {
+      "path": "build/port-go-native-call-boundaries/storage/server-raw.json",
+      "sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3",
+      "frozen_match": true
+    },
+    {
+      "path": "build/port-go-native-call-boundaries/storage/highres-scalar.json",
+      "sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+      "frozen_match": true
+    },
+    {
+      "path": "build/port-go-native-call-boundaries/storage/highres-raw.json",
+      "sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3",
+      "frozen_match": true
+    },
+    {
+      "path": "build/port-go-native-call-boundaries/storage/safe-scalar.json",
+      "sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+      "frozen_match": true
+    }
+  ],
+  "storage_frozen_hashes_verified_by_runner": true,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 46.15391959506087,
+        "sha256": "85b87e95d977c8763c2dd231c9326accf088edc6aa2b75b125936cfe71c710ef",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.405204065144062,
+        "sha256": "3c90fa0c945b546370dcfb831af5f18c03ccd34b9c8efdae7651ac2e35efe901",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 45.5284148901701,
+        "sha256": "02d546c604b80a7fb5572af58f3fa81215a19c78fe3fe56731e59f05916972d1",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "go-native-call-boundaries-save": {
+        "exit": 0,
+        "wall_seconds": 44.314432768849656,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 43.771829155040905,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "85b87e95d977c8763c2dd231c9326accf088edc6aa2b75b125936cfe71c710ef",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-go-native-call-boundaries/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/go-native-call-boundaries-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Native Go calls at internal primitive adapter boundaries; unchanged C export interfaces",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "b46d0975e9b56b271780807ecfc4b935eeba1625a6e63abfea3128480c8dfdff"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 44.941695681074634,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 17,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "source_review": {
+    "files": {
+      "src/legacy/ai_combat.go": "490ee1995efcf2872736fb283d3e20397afd844137a7a2c3a7d86bf37431ca7f",
+      "src/legacy/ai_monster_state.go": "bbd4587c0cc1455540325dddde01bc9cb4041ba5bacb4f4c0f7dfc334a1b6079",
+      "src/legacy/ai_spells.go": "c56d480f6ac4b9273924089d9a7a9e929b364dd31ee0ac7b17c171ec82ea3a83",
+      "src/legacy/briefing_window.go": "c2d3f5df12d7591dff53a7cff7e5da4a04f9b4b01c892a0f4f7a12bcc14f3874",
+      "src/legacy/client_game_progress.go": "ff7326a97502d6d70a8643ed8a5a0039e22e76f900720c471f963d2c0a46068e",
+      "src/legacy/client_inventory_transactions_porttest.go": "38705fd80461cb8642c999b4e1266e9be45836bdc66265770875069cb07c12d0",
+      "src/legacy/client_ui_inventory_display_draw.go": "76d622e823bb026e6ec9ecfda47403ed7a5594cf368badc0ddf55c82bea1e812",
+      "src/legacy/client_ui_inventory_requests.go": "60f6642179e73ae0089dfdd3d52f12452642a38def1baaffe10566dd79df76a1",
+      "src/legacy/client_ui_inventory_stack.go": "df2469f4002aa4cfec1039632a7f6aed76d5a1c4429d9a503e41a62f89f3a7a5",
+      "src/legacy/client_ui_inventory_window_draw.go": "f44dc6f2903c320d041a699c05c10613790fac0a44226c0f4738a0d5471979f0",
+      "src/legacy/client_ui_inventory_window_state.go": "f1a11fc1630e57ac164b8b95936a49ef76271e16d87a1746cd27a4e03251b44a",
+      "src/legacy/client_ui_quantity.go": "f4a7a09e53616cc1f949358314083e7f0396d9c4135f05e638e29581ff47add6",
+      "src/legacy/client_ui_window.go": "a111f67afbaeb9436475e4ee14c027ecdcfe8fc726a716f253296bf98fd2968d",
+      "src/legacy/damage_helpers.go": "bee158682d593b6f9427f1bab772cd64367a8af4c4136452777ba1a0e8d88761",
+      "src/legacy/equipment.go": "ae4cab85c330696827b4c207046cac5e8fef7ffc735b4ed48ee057b04baa3239",
+      "src/legacy/game.go": "f39166249ee688ca863e8e99f26e17863a8daa75c58588cc37117e05e4823810",
+      "src/legacy/gui_summon_render.go": "6af931a64853b3def2f18338f89d802521476b7655fa072374075447020c0d9e",
+      "src/legacy/inventory_drop.go": "de2a079be68a60caec5cf90a0185873136c4283610b1a4358aa013c3f97241d6",
+      "src/legacy/inventory_equipment.go": "2b2d0529ec82bccc9e120e3432e8909cd8c2b5e63396979f3327d30d63a92109",
+      "src/legacy/legacy_raw_storage.go": "28b1fc57d10d7b018cb6793e3051eb902eb0fc1a67c9e5024f5e8c2d12e54cfa",
+      "src/legacy/object.go": "cf014e6049a6d56788091486821e43ac47620c2f20644052deab493fcccc6601",
+      "src/legacy/objectives_scoring.go": "511cf91462f9fb02811011d726356fce69bd5b2af122792190d5b87e7e189ec6",
+      "src/legacy/objectives_update.go": "4380121b98352d2673c1392e9d356e11414c475d17e3b941925fce85cadfe769",
+      "src/legacy/player_attack.go": "6cfd90750d3872ac7148e1cc9522390e004e0a7be53afb744d1f4d983b0b8158",
+      "src/legacy/player_controls_stats.go": "e7cb9d2e6d72132f3045eef27a48159e21b020d95772a4464121d9517d8d8536",
+      "src/legacy/player_files_attributes.go": "3dc32362f1ec7163e77514175d9136252b576e9e819464c101375c4492d9cf48",
+      "src/legacy/projectile_collisions_effects.go": "6632e880e841a0bf9f37385828c4476d0740754f10c838ca40fa97a5ab43a039",
+      "src/legacy/projectile_collisions_weapons.go": "e8c89704ce6dcd4dea68bd94e8e09e77d57bb222b6f72caf31d38c86d68072d0",
+      "src/legacy/protection.go": "9194a825556388392f9928ccb3770b93bc65086725b0521bc454e9543d1c7c1b",
+      "src/legacy/protection_validate.go": "6e6fdd71b177e703efa5c4c7e059768db7857e12be81d55daefa29de773eb787",
+      "src/legacy/quest.go": "aa36dd382d3581f3c72c6a17c9a63bda321726c33a3008ab6ea9600f0bde1b92",
+      "src/legacy/raw_storage_porttest.go": "85e62eab6ea56fbebffd941070c92d82630e1a3c391bbc9e1044485c38d8f6b4",
+      "src/legacy/server_browser_connection.go": "210f3cecd8ebf6db722876db7f76d9ccc8c2b9fbb5562ed9435e89e06f78060b",
+      "src/legacy/server_browser_core.go": "ac9223c3a5d7602d773008ec590cdaf52704dbac8c28213aa12b0031c6765fbe",
+      "src/legacy/server_browser_events.go": "0db32dea44f968352025ed429ca17a2b13eed8d4d66471bc6acd0529ac5fe2af",
+      "src/legacy/server_browser_input.go": "a9bfb990b89f44167d8dfedb8f08bad7992cf1b73b7258250fc46d256d8da4ab",
+      "src/legacy/server_browser_popup.go": "195b0bd254e210baa82f6dab2d7accf861421185429df2e492f005edb4b08e5b",
+      "src/legacy/server_browser_state.go": "6f44d1bfc8ff7c5827e34f7c8bc91bd4011e2ae83cfc072715a465f69e7509a8",
+      "src/legacy/server_browser_state_porttest.go": "b00aca81281ae72c5ef53d8fd669467dc886de839f211b0fea5ee1d30a45dc8b",
+      "src/legacy/server_browser_window.go": "7de0d685b09022c38e18718e9a5afb0d4a935889a1906e0b175e7f406e95f598",
+      "src/legacy/shop_exports.go": "e757bddd1a9269cc4a9b352edebd63cf2c4b5912e203f18dd59cd59402132a77",
+      "src/legacy/spell_effects.go": "c1848d53f1407953f9bfca1168841e1b0364498f2292d6a3fc31840a6656c464",
+      "src/legacy/spell_effects_summon.go": "36e8bc826771518f9dd5850ce1c76c0ea25935425a95056b3ac6c3db9c28b64b",
+      "src/legacy/spell_lifecycle_books.go": "8fbd2100fbf38d850ef5d832aefc316da0f1355132be5c8c8c6a702bbcf55942",
+      "src/legacy/spell_lifecycle_buffs.go": "fca6dbf1120f00ef1ee3e10776bb2b6ae3f9a48b62fdc80b5e7e694fdd24edd9",
+      "src/legacy/sustained_spells.go": "61378dc0cfffd8247421db5e4d262a9909ddb2499d87540a75071daa7be52775",
+      "src/legacy/temporary_effects.go": "a166349730066844e5ad9e2b63af91b654430dc7ad26dfd54d9ebe4b2df955c3",
+      "src/legacy/trade_exports.go": "925cfbf62ae684e56f2d4e68b41a745d49afd445665cef0ec052d1e8339adde4",
+      "src/legacy/vardefs.go": "3f306fbb5ed0e2f5fceacd5d55e06ba72e1b30f8f7c4b43627da52b158824031",
+      "src/legacy/world_states.go": "81fd8433b5722b18e1ee521a7ea6aae1c9f96f405d66bce91b2e6e8d0f908b43"
+    },
+    "count": 50,
+    "matches_reviewed_draft_plus_boundary_and_native_fixes": true,
+    "primary_and_luna_exact_reconstruction": true,
+    "root_assertions_and_golden_files_changed": false,
+    "all_C_export_signatures_unchanged": true,
+    "integration_corrections": [
+      {
+        "file": "src/legacy/client_game_progress.go",
+        "old": "spritePickup(int32(code),",
+        "new": "nox_xxx_spritePickup_461660(int32(code),",
+        "reason": "Keep agreed existing private helper name"
+      },
+      {
+        "file": "src/legacy/client_game_progress.go",
+        "old": "send2ServInvenFail(int16(code))",
+        "new": "nox_xxx_send2ServInvenFail_461630(int16(code))",
+        "reason": "Keep agreed existing private helper name"
+      }
+    ]
+  },
+  "existing_root_inventory_addition": "TestClientInventoryDisplaySnapshotIdentityCollision",
+  "selected_cgo_files": 271,
+  "direct_project_cgo_packages": 3,
+  "retired_c_exports": 0,
+  "removed_local_cgo_imports": 31,
+  "removed_test_cgo_imports": 0,
+  "standalone_production_c_lines": 0,
+  "standalone_test_c_lines": 0,
+  "unchanged_test_fixture_inputs": 1735,
+  "changed_fixture_files_reviewed": [
+    "src/legacy/client_inventory_transactions_porttest.go",
+    "src/legacy/raw_storage_porttest.go",
+    "src/legacy/server_browser_state_porttest.go"
+  ],
+  "selected_legacy_exports": 1179,
+  "phase_cgo_files_removed": 192,
+  "phase_baseline_cgo_files": 463,
+  "phase_exports_retired": 711,
+  "phase_baseline_exports": 1890,
+  "embedded_callback_bodies_unchanged": 79,
+  "tracked_header_files": 157,
+  "tracked_header_lines": 3902,
+  "asset_integrity": {
+    "success": true,
+    "files": 1654,
+    "reference": "build/baseline/runs/unused-exports-save/deduplicated-assets.json",
+    "scope": "Original asset sizes and SHA256 unchanged; checked after production qualification"
+  }
+}

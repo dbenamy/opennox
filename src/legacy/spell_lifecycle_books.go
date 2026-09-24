@@ -1,18 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "common__net_list.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -77,7 +64,7 @@ func spellLifeReset(mode, imaginary int32) int32 {
 	return 1
 }
 func spellLifeInform(u *server.Object, code int32) {
-	nox_xxx_netInformTextMsg_4DA0F0(C.int(int32(*controlByte(controlPlayer(u), 2064))), 0, (*C.int)((*int32)(unsafe.Pointer(&code))))
+	gameplayTextInformation(int(int32(*controlByte(controlPlayer(u), 2064))), 0, unsafe.Pointer(&code))
 }
 func spellLifeBookError(u *server.Object, code int32, audio int) int32 {
 	spellLifeInform(u, code)
@@ -124,7 +111,7 @@ func spellLifeInsertBook(u *server.Object, list unsafe.Pointer, n, delay, self i
 			if !bool(nox_xxx_checkSummonedCreaturesLimit_500D70(asObjectC(u), 5)) {
 				return spellLifeBookError(u, 4, 231)
 			}
-			count := nox_xxx_unitCountSlaves_4E7CF0(C.int(int32(uintptr(u.CObj()))), 2, 0x2000)
+			count := stateCount(u, 2, 0x2000)
 			if int32(count) >= int32(int64(nox_xxx_gamedataGetFloat_419D40(internCStr("MaxBomberCount")))) {
 				return spellLifeBookError(u, 5, 231)
 			}

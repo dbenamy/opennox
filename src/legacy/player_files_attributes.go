@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME2_1.h"
-*/
-import "C"
-
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -55,7 +50,7 @@ func playerFileAttributes(u *server.Object, info unsafe.Pointer) int {
 		copy(unsafe.Slice((*byte)(unsafe.Add(unsafe.Pointer(p), 4704)), bytes), unsafe.Slice((*byte)(info), bytes))
 	}
 	if r.read() && data != nil {
-		crc := nox_xxx_protectionStringCRCLen_56FAE0((*C.int)((*int32)(info)), C.uint(uint32(2*playerFileWideLen(info))))
+		crc := protectionStringChecksum(info, uint32(2*playerFileWideLen(info)))
 		setProtectionRecord(int32(*equipmentWord(unsafe.Pointer(p), 4628)), uint32(crc))
 	}
 	r.raw(unsafe.Add(info, 50), 4)
