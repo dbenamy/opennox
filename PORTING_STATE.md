@@ -20,11 +20,14 @@ nine production dispatch sites and six blob aliases with their consumers.
 See [MODIFIER_IDENTITIES.md](docs/porting/MODIFIER_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next candidate: 81 fixture-only server C bridges
-across 23 owners. Primary matched all 446 reference rows in Luna's audit; review the
-focused selection and freeze source-identical original results before conversion.
-No next-batch conversion is installed. Read-only audit and selection drafts:
-`build/port-after-modifier-identities/`. Stop at the milestone or a substantial question.
+recorded reversible decisions. Current batch: 81 fixture-only server C bridges
+across 23 owners. Original baseline accepted: 288 client / 287 server roots,
+reusing source-identical modifier results and running the remaining selections
+against verified existing binaries. The server excludes its client-only FOV test.
+Luna is drafting an ignored overlay; no conversion is installed yet.
+See [SERVER_FIXTURE_BRIDGES.md](docs/porting/SERVER_FIXTURE_BRIDGES.md).
+Local work: `build/port-server-fixture-bridges/`.
+Stop at the milestone or a substantial question.
 
 Latest qualified artifacts: `build/port-modifier-identities/`.
 
