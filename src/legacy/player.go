@@ -19,7 +19,6 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/opennox/libs/player"
 	"github.com/opennox/libs/spell"
 
 	"github.com/opennox/opennox/v1/common/ntype"
@@ -49,83 +48,13 @@ func AsPlayerP(p unsafe.Pointer) *server.Player {
 
 var _ = [1]struct{}{}[16-unsafe.Sizeof(server.ClassStats{})]
 
-//export get_nox_xxx_warriorMaxHealth_587000_312784
-func get_nox_xxx_warriorMaxHealth_587000_312784() C.float {
-	return C.float(GetServer().S().Players.Mult.Warrior.Health)
-}
-
-//export get_nox_xxx_wizardMaxHealth_587000_312816
-func get_nox_xxx_wizardMaxHealth_587000_312816() C.float {
-	return C.float(GetServer().S().Players.Mult.Wizard.Health)
-}
-
-//export get_nox_xxx_conjurerMaxHealth_587000_312800
-func get_nox_xxx_conjurerMaxHealth_587000_312800() C.float {
-	return C.float(GetServer().S().Players.Mult.Conjurer.Health)
-}
-
-//export get_nox_xxx_warriorMaxMana_587000_312788
-func get_nox_xxx_warriorMaxMana_587000_312788() C.float {
-	return C.float(GetServer().S().Players.Mult.Warrior.Mana)
-}
-
-//export get_nox_xxx_wizardMaximumMana_587000_312820
-func get_nox_xxx_wizardMaximumMana_587000_312820() C.float {
-	return C.float(GetServer().S().Players.Mult.Wizard.Mana)
-}
-
-//export get_nox_xxx_conjurerMaxMana_587000_312804
-func get_nox_xxx_conjurerMaxMana_587000_312804() C.float {
-	return C.float(GetServer().S().Players.Mult.Conjurer.Mana)
-}
-
-//export sub_57B350
-func sub_57B350() C.float4 {
-	return *(*C.float4)(unsafe.Pointer(GetServer().S().Players.BaseStats()))
-}
-
-//export nox_xxx_plrGetMaxVarsPtr_57B360
-func nox_xxx_plrGetMaxVarsPtr_57B360(cl int) C.float4 {
-	return *(*C.float4)(unsafe.Pointer(GetServer().S().Players.ClassStats(player.Class(cl))))
-}
-
-//export nox_xxx_playerSpell_4FB2A0_magic_plyrspel
-func nox_xxx_playerSpell_4FB2A0_magic_plyrspel(up *nox_object_t) {
-	GetServer().PlayerSpell(asObjectS(up))
-}
-
 //export nox_xxx_updateSpellRelated_424830
 func nox_xxx_updateSpellRelated_424830(p unsafe.Pointer, ph int) unsafe.Pointer {
 	return ((*server.PhonemeLeaf)(p)).Next(spell.Phoneme(ph)).C()
 }
 
-//export nox_common_playerInfoGetFirst_416EA0
-func nox_common_playerInfoGetFirst_416EA0() *nox_playerInfo {
-	return (*nox_playerInfo)(GetServer().S().Players.First().C())
-}
-
-//export nox_common_playerInfoGetNext_416EE0
-func nox_common_playerInfoGetNext_416EE0(it *nox_playerInfo) *nox_playerInfo {
-	return (*nox_playerInfo)(GetServer().S().Players.Next(asPlayerS(it)).C())
-}
-
-//export nox_common_playerInfoCount_416F40
-func nox_common_playerInfoCount_416F40() int {
-	return GetServer().S().Players.Count()
-}
-
 func nox_common_playerInfoGetByID_417040(id int) *nox_playerInfo {
 	return (*nox_playerInfo)(GetServer().S().Players.ByID(id).C())
-}
-
-//export nox_common_playerInfoFromNum_417090
-func nox_common_playerInfoFromNum_417090(ind int) *nox_playerInfo {
-	return (*nox_playerInfo)(GetServer().S().Players.ByInd(ntype.PlayerInd(ind)).C())
-}
-
-//export nox_common_playerInfoFromNumRaw
-func nox_common_playerInfoFromNumRaw(ind int) *nox_playerInfo {
-	return (*nox_playerInfo)(GetServer().S().Players.ByIndRaw(ntype.PlayerInd(ind)).C())
 }
 
 //export nox_xxx_playerDisconnByPlrID_4DEB00

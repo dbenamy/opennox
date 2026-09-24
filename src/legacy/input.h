@@ -3,13 +3,9 @@
 
 #include "defs.h" // for nox_point
 
-void nox_input_setSensitivity(float v);
 
 int nox_input_pollEvents_4453A0();
 
-void nox_input_enableTextEdit_5700CA();
-void nox_input_disableTextEdit_5700F6();
 
-unsigned short nox_input_scanCodeToAlpha_47F950(unsigned short a1);
 
 #endif // NOX_INPUT_H

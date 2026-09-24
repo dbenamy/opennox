@@ -30,13 +30,3 @@ func nox_common_randomInt_415FA0(min, max int) int {
 func nox_common_randomIntMinMax_415FF0(min, max int, file *C.char, line int) int {
 	return GetServer().S().Rand.Other.Int(min, max)
 }
-
-//export nox_common_randomFloat_416030
-func nox_common_randomFloat_416030(min, max C.float) C.double {
-	return C.double(GetServer().S().Rand.Logic.FloatClamp(float64(min), float64(max)))
-}
-
-//export nox_common_randomFloatXxx_416090
-func nox_common_randomFloatXxx_416090(min, max C.float) C.double {
-	return C.double(GetServer().S().Rand.Other.Float(float64(min), float64(max)))
-}

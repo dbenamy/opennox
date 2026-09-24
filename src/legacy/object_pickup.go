@@ -68,19 +68,9 @@ func sub_57B370(cl, sub, typ int32) byte {
 	return Sub_57B370(object.Class(cl), object.SubClass(sub), int(typ))
 }
 
-//export sub_419E10
-func sub_419E10(u *nox_object_t, a2 int32) {
-	GetServer().S().Players.SetXxx(asObjectS(u), a2)
-}
-
 //export sub_419E60
 func sub_419E60(u *nox_object_t) int {
 	return bool2int(GetServer().S().Players.CheckXxx(asObjectS(u)))
-}
-
-//export sub_419EA0
-func sub_419EA0() int {
-	return bool2int(GetServer().S().Players.AnyXxx())
 }
 
 //export nox_xxx_playerClassCanUseItem_57B3D0

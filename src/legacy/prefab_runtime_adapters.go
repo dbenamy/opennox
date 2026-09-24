@@ -20,14 +20,6 @@ func sub_5029A0(a0 *C.char) C.int { return C.int(prefabFindName(mapRoomRaw(unsaf
 func sub_5029F0(a0 C.int) C.int   { return C.int(prefabMetadataAt(int32(uint32(a0)))) }
 func sub_502A20() C.int           { return C.int(*prefabGlobal(prefabCount)) }
 
-//export sub_502A50
-func sub_502A50(a0 *C.char) C.int { return C.int(prefabSetPath(mapRoomRaw(unsafe.Pointer(a0)), false)) }
-
-//export sub_502AB0
-func sub_502AB0(a0 *C.char) C.int { return C.int(prefabSetPath(mapRoomRaw(unsafe.Pointer(a0)), true)) }
-
-//export sub_502B10
-func sub_502B10() C.int                           { return C.int(prefabLibrary()) }
 func sub_502D70(a0 C.int) C.int                   { return C.int(populationLoadPrefab(int32(a0))) }
 func sub_502DF0() uint32                          { return prefabClose() }
 func sub_502E70(a0 C.int) C.double                { return C.double(prefabDimension(int32(uint32(a0)), 64)) }
@@ -53,10 +45,6 @@ func sub_504290(a0 C.char, a1 C.char) *C.uint32_t {
 	return (*C.uint32_t)(mapRoomPointer(prefabWallNew(byte(uint32(a0)), byte(uint32(a1)))))
 }
 
-//export nox_xxx_cliWallGet_5042F0
-func nox_xxx_cliWallGet_5042F0(a0 C.int, a1 C.int) *C.uint32_t {
-	return (*C.uint32_t)(mapRoomPointer(prefabWallFind(int32(uint32(a0)), int32(uint32(a1)))))
-}
 func sub_504330(a0 C.int, a1 C.int) C.int {
 	return C.int(prefabPlaceWalls(int32(uint32(a0)), int32(uint32(a1))))
 }
@@ -75,11 +63,6 @@ func sub_504910(a0 C.int, a1 C.int) C.int {
 func sub_504980() C.int         { return C.int(prefabObjectHead()) }
 func sub_5049C0(a0 C.int) C.int { return C.int(prefabObjectNext(uint32(a0))) }
 
-//export sub_5049D0
-func sub_5049D0() unsafe.Pointer { return mapRoomPointer(*prefabGlobal(prefabObjects)) }
-
-//export sub_5049E0
-func sub_5049E0(a0 C.int) C.int { return C.int(prefabNodeNext(uint32(a0))) }
 func sub_504A10(a0 C.int) C.int { return C.int(prefabObjectRemove(uint32(a0))) }
 
 //export sub_51D0E0

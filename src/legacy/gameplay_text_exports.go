@@ -31,18 +31,3 @@ func nox_xxx_netPriMsgToPlayer_4DA2C0(u *C.nox_object_t, text *C.char, flag C.ch
 func nox_xxx_netPrintLineToAll_4DA390(text *C.gameplay_text_const_char) C.int {
 	return C.int(gameplayTextPrivateAll((*byte)(unsafe.Pointer(text))))
 }
-
-//export nox_xxx_getFirstPlayerUnit_4DA7C0
-func nox_xxx_getFirstPlayerUnit_4DA7C0() *C.nox_object_t {
-	return (*C.nox_object_t)(GetServer().S().Players.FirstUnit().CObj())
-}
-
-//export nox_xxx_getNextPlayerUnit_4DA7F0
-func nox_xxx_getNextPlayerUnit_4DA7F0(u *C.gameplay_text_const_object) *C.nox_object_t {
-	return (*C.nox_object_t)(GetServer().S().Players.NextUnit((*server.Object)(unsafe.Pointer(u))).CObj())
-}
-
-//export nox_xxx_cliCanTalkMB_4100F0
-func nox_xxx_cliCanTalkMB_4100F0(text *C.short) C.int {
-	return C.int(bool2int(gameplayTextByteEncoding(gameplayTextUnits((*uint16)(unsafe.Pointer(text))))))
-}

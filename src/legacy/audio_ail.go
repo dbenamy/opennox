@@ -21,7 +21,6 @@ import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/legacy/client/audio/ail"
-	"github.com/opennox/opennox/v1/legacy/timer"
 )
 
 var (
@@ -77,11 +76,6 @@ func AIL_set_stream_volume(s C.HSTREAM, volume C.int32_t) {
 //export AIL_stream_position
 func AIL_stream_position(s C.HSTREAM) C.int32_t {
 	return C.int32_t(ail.Stream(unsafe.Pointer(s)).Position())
-}
-
-//export AIL_stream_status
-func AIL_stream_status(s C.HSTREAM) C.int32_t {
-	return C.int32_t(ail.Stream(unsafe.Pointer(s)).Status())
 }
 
 //export AIL_load_sample_buffer
@@ -145,11 +139,6 @@ func sub_43ED00(a1p *C.uint32_t) int {
 	return Sub_43ED00(unsafe.Pointer(a1p))
 }
 
-//export sub_43D6A0
-func sub_43D6A0() {
-	Sub_43D6A0()
-}
-
 //export sub_44D640
 func sub_44D640() {
 	Sub_44D640()
@@ -158,11 +147,6 @@ func sub_44D640() {
 //export sub_44D7E0
 func sub_44D7E0(a1 int) int {
 	return Sub_44D7E0(a1)
-}
-
-//export sub_44D660
-func sub_44D660(a1 *C.char) int {
-	return bool2int(Sub_44D660(GoString(a1)))
 }
 
 //export sub_43F060
@@ -178,27 +162,6 @@ func sub_43EC30(a1p unsafe.Pointer) int {
 //export sub_43ECB0
 func sub_43ECB0(a1p unsafe.Pointer) int {
 	return Sub_43ECB0(unsafe.Pointer(a1p))
-}
-
-//export sub_486620
-func sub_486620(v unsafe.Pointer) {
-	(*timer.TimerGroup)(v).ClearUpdated()
-}
-
-//export sub_486570
-func sub_486570(a1 unsafe.Pointer, a2 unsafe.Pointer) {
-	(*timer.TimerGroup)(a1).Mix((*timer.TimerGroup)(a2))
-}
-
-//export sub_486550
-func sub_486550(a1 unsafe.Pointer) int {
-	return bool2int((*timer.TimerGroup)(a1).IsUpdated())
-}
-
-//export sub_486520
-func sub_486520(a2 unsafe.Pointer) int {
-	(*timer.TimerGroup)(a2).Update()
-	return 0
 }
 
 func Get_dword_587000_127004() unsafe.Pointer {
@@ -245,23 +208,6 @@ func Set_dword_5d4594_816376(drv ail.Driver) {
 	dword_5d4594_816376 = C.uint(drv)
 }
 
-//export sub_486320
-func sub_486320(a1 unsafe.Pointer, a2 int) unsafe.Pointer {
-	(*timer.Timer)(a1).SetRaw(uint32(a2))
-	return nil
-}
-
-//export sub_486350
-func sub_486350(p unsafe.Pointer, a2 int) int {
-	(*timer.Timer)(p).SetInterp(uint32(a2))
-	return 0
-}
-
-//export sub_4863B0
-func sub_4863B0(p unsafe.Pointer) int {
-	return bool2int((*timer.Timer)(p).Update())
-}
-
 func Sub_486640(a1 unsafe.Pointer, a2 int) int {
 	return int(int32(audioStreamScaleVolume(a1, uint32(a2))))
 }
@@ -276,23 +222,6 @@ func Set_dword_5d4594_805984(v unsafe.Pointer) {
 
 func Set_dword_587000_81128(v unsafe.Pointer) {
 	legacyGlobals.dword_587000_81128 = v
-}
-
-//export sub_4864A0
-func sub_4864A0(a3 unsafe.Pointer) unsafe.Pointer {
-	(*timer.TimerGroup)(a3).Init()
-	return nil
-}
-
-//export sub_486380
-func sub_486380(a1 unsafe.Pointer, a2 uint32, a3 int32, a4 uint32) int {
-	(*timer.Timer)(a1).SetParams(a2, a4)
-	return 0
-}
-
-//export sub_4862E0
-func sub_4862E0(a1 unsafe.Pointer, a2 int32) int {
-	return bool2int((*timer.Timer)(a1).Init(a2))
 }
 
 func Sub_451850(a1 unsafe.Pointer, a2 unsafe.Pointer) {
@@ -313,12 +242,4 @@ func Sub_487150(a1 int, a2 unsafe.Pointer) unsafe.Pointer {
 
 func Sub_487790(a1 unsafe.Pointer, a2 int) int {
 	return int(audioStreamVoiceCreateMany((*audioStreamContext)(a1), int32(a2)))
-}
-
-//export sub_44D8F0
-func sub_44D8F0() { Dialogs.Sub_44D8F0() }
-
-//export sub_44D5C0
-func sub_44D5C0(a1 int, a2 int) {
-	Dialogs.Sub_44D5C0(ail.Stream(a1), a2)
 }

@@ -46,11 +46,6 @@ func nox_xxx_setKeybTimeout_4160D0(key int) int {
 	return key
 }
 
-//export nox_xxx_checkKeybTimeout_4160F0
-func nox_xxx_checkKeybTimeout_4160F0(key C.uchar, dt C.uint) C.bool {
-	return C.bool(InputKeyCheckTimeoutLegacy(byte(key), uint32(dt)))
-}
-
 func sub_416120(key C.uchar) C.bool { return C.bool(Sub_416120(byte(key))) }
 
 //export sub_416170
@@ -72,11 +67,6 @@ func nox_xxx_bookGet_430B40_get_mouse_prev_seq() int {
 	return int(GetClient().GetInputSeq())
 }
 
-//export nox_client_changeMousePos_430A00
-func nox_client_changeMousePos_430A00(x, y int, isAbs C.bool) {
-	GetClient().ChangeMousePos(image.Pt(x, y), bool(isAbs))
-}
-
 //export nox_xxx_setMouseBounds_430A70
 func nox_xxx_setMouseBounds_430A70(xmin, xmax, ymin, ymax int) {
 	GetClient().SetMouseBounds(image.Rect(xmin, ymin, xmax, ymax))
@@ -89,21 +79,6 @@ func nox_input_pollEvents_4453A0() int {
 	return 0
 }
 
-//export nox_input_setSensitivity
-func nox_input_setSensitivity(v C.float) {
-	GetClient().SetSensitivity(float32(v))
-}
-
-//export nox_input_enableTextEdit_5700CA
-func nox_input_enableTextEdit_5700CA() {
-	GetClient().SetTextInput(true)
-}
-
-//export nox_input_disableTextEdit_5700F6
-func nox_input_disableTextEdit_5700F6() {
-	GetClient().SetTextInput(false)
-}
-
 //export nox_xxx_keybind_nameByTitle_42E960
 func nox_xxx_keybind_nameByTitle_42E960(title *wchar2_t) *C.char {
 	k := Nox_xxx_keybind_nameByTitle_42E960(GoWString(title))
@@ -111,24 +86,6 @@ func nox_xxx_keybind_nameByTitle_42E960(title *wchar2_t) *C.char {
 		return nil
 	}
 	return internCStr(k.String())
-}
-
-//export nox_xxx_keybind_titleByKey_42EA00
-func nox_xxx_keybind_titleByKey_42EA00(key C.uint) *wchar2_t {
-	k := keybind.Key(key)
-	if !k.IsValid() {
-		return internWStr("")
-	}
-	return internWStr(k.Title(GetClient().Strings()))
-}
-
-//export nox_xxx_keybind_titleByKeyZero_42EA00
-func nox_xxx_keybind_titleByKeyZero_42EA00(key C.uint) *wchar2_t {
-	k := keybind.Key(key)
-	if !k.IsValid() {
-		return nil
-	}
-	return internWStr(k.Title(GetClient().Strings()))
 }
 
 //export nox_xxx_bindevent_bindNameByTitle_42EA40
@@ -145,11 +102,6 @@ func sub_4C3B70() { Sub_4C3B70() }
 
 //export sub_4CBBF0
 func sub_4CBBF0() { Sub_4CBBF0() }
-
-//export nox_input_scanCodeToAlpha_47F950
-func nox_input_scanCodeToAlpha_47F950(r C.ushort) C.ushort {
-	return C.ushort(GetClient().Cli().Inp.KeyToWChar(keybind.Key(r)))
-}
 
 func NoxInputOnChar(c uint16) {
 	uiEntryChar(c)

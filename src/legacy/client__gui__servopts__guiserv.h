@@ -3,7 +3,6 @@
 
 #include "defs.h"
 
-int nox_xxx_guiServerOptsLoad_457500();
 int nox_xxx_options_457AA0(int a1, uint8_t* a2);
 int nox_xxx_options_457B00(int a1, uint8_t* a2);
 

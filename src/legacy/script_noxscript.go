@@ -26,11 +26,6 @@ type NoxScript interface {
 	ScriptCallback(b *server.ScriptCallback, caller, trigger *server.Object, eventCode server.ScriptEventType) unsafe.Pointer
 }
 
-//export nox_script_activatorResolveObjs_51B0C0
-func nox_script_activatorResolveObjs_51B0C0() {
-	GetServer().NoxScriptC().ActResolveObjs()
-}
-
 func nox_xxx_netGetUnitCodeServ_578AC0(cobj *nox_object_t) C.uint {
 	return C.uint(GetServer().S().GetUnitNetCode(asObjectS(cobj)))
 }
@@ -46,22 +41,6 @@ func nox_script_readWriteZzz_541670(cpath, cpath2, cdst *C.char) int {
 //export nox_xxx_scriptCallByEventBlock_502490
 func nox_xxx_scriptCallByEventBlock_502490(a1 unsafe.Pointer, a2, a3 unsafe.Pointer, eventCode int32) unsafe.Pointer {
 	return GetServer().NoxScriptC().ScriptCallback((*server.ScriptCallback)(a1), AsObjectP(a2), AsObjectP(a3), server.ScriptEventType(eventCode))
-}
-
-//export nox_script_callByIndex_507310
-func nox_script_callByIndex_507310(index int, a2 unsafe.Pointer, a3 unsafe.Pointer) {
-	if err := GetServer().S().NoxScriptVM.CallByIndex(index, AsObjectP(a2), AsObjectP(a3)); err != nil {
-		scriptLog.Println(err)
-	}
-}
-
-//export nox_script_objCallbackName_508CB0
-func nox_script_objCallbackName_508CB0(obj *nox_object_t, event int) *C.char {
-	s, ok := GetServer().S().NoxScriptVM.Nox_script_objCallbackName_508CB0(asObjectS(obj), event)
-	if !ok {
-		return nil
-	}
-	return internCStr(s)
 }
 
 func Sub_516570() {

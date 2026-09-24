@@ -76,3 +76,6 @@ Initial default/server raw logs were losslessly gzip-archived after host-use and
 hash checks. Restore using `build/port-complete-corpus/initial-log-archive.json`
 before tools that require their original `.jsonl` paths. The recorded failure
 evidence and SHA256 values are unchanged.
+
+The completed corrected full-sweep logs are also losslessly archived; restore
+commands and hashes are in `build/port-complete-corpus/qualified-log-archive.json`.

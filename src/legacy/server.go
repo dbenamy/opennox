@@ -106,26 +106,6 @@ func sub_40A040_settings(a1 C.short, a2 C.uchar) {
 	GetServer().Sub40A040settings(int(a1), int(a2))
 }
 
-//export nox_server_SetLastObjectScriptID
-func nox_server_SetLastObjectScriptID(id C.uint) {
-	GetServer().S().Objs.SetLastObjectScriptID(server.ObjectScriptID(id))
-}
-
-//export nox_server_LastObjectScriptID
-func nox_server_LastObjectScriptID() C.uint {
-	return C.uint(GetServer().S().Objs.LastObjectScriptID())
-}
-
-//export nox_server_NextObjectScriptID
-func nox_server_NextObjectScriptID() C.uint {
-	return C.uint(GetServer().S().Objs.NextObjectScriptID())
-}
-
-//export nox_xxx_servGetPort_40A430
-func nox_xxx_servGetPort_40A430() int {
-	return GetServer().ServerPort()
-}
-
 //export sub_40A300
 func sub_40A300() int {
 	return bool2int(GetServer().GetFlag3592())
@@ -134,11 +114,6 @@ func sub_40A300() int {
 //export nox_xxx_mapLoad_4D2450
 func nox_xxx_mapLoad_4D2450(a1 *C.char) {
 	GetServer().SwitchMap(GoString(a1))
-}
-
-//export nox_mapToGameFlags_4CFF50
-func nox_mapToGameFlags_4CFF50(v int) int {
-	return int(Nox_mapToGameFlags(v))
 }
 
 //export sub_40A1A0

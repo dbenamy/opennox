@@ -46,3 +46,7 @@ Reproducible selection and environment:
 [prebuilt-profile-pilot-batch.json](prebuilt-profile-pilot-batch.json).
 Run with `run_batch.py ... --phase pilot --out <fresh-directory>` after sourcing
 the port environment. Original local artifacts: `build/port-complete-corpus/prebuilt-pilot/`.
+
+Completed fixture/pilot binaries were removed after host-use checks to reclaim
+disk; rebuild from source `4a0ab0dc` with the manifests. Logs and binary records
+remain. Cleanup inventory is in `build/port-artifact-cleanup/completed-corpus-binaries-plan.json`.

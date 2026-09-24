@@ -124,16 +124,6 @@ func nox_xxx_modifGetIdByName_413290(name *C.char) int32 {
 	return int32(GetServer().S().Modif.Nox_xxx_modifGetIdByName413290(GoString(name)))
 }
 
-//export nox_xxx_getProjectileClassById_413250
-func nox_xxx_getProjectileClassById_413250(a1 int32) unsafe.Pointer {
-	return GetServer().S().Modif.Nox_xxx_getProjectileClassById413250(int(a1)).C()
-}
-
-//export nox_xxx_equipClothFindDefByTT_413270
-func nox_xxx_equipClothFindDefByTT_413270(a1 int32) unsafe.Pointer {
-	return GetServer().S().Modif.Nox_xxx_equipClothFindDefByTT413270(int(a1)).C()
-}
-
 //export nox_xxx_fireEffect_4E0550
 func nox_xxx_fireEffect_4E0550(a1 unsafe.Pointer, a2p, a3p, a4p *nox_object_t) {
 	GetServer().S().Nox_xxx_fireEffect_4E0550(a1, asObjectS(a2p), asObjectS(a3p), asObjectS(a4p))

@@ -14,11 +14,6 @@ func nox_xxx_xfer_4F3E30(version C.ushort, u *C.nox_object_t, count C.int) C.int
 	return C.int(objectXferInventory(uint16(version), asObjectS(u), int32(count)))
 }
 
-//export nox_xxx_servMapLoadPlaceObj_4F3F50
-func nox_xxx_servMapLoadPlaceObj_4F3F50(u *C.nox_object_t, owner C.int, offset unsafe.Pointer) C.int {
-	return C.int(objectXferPlace(asObjectS(u), unsafe.Pointer(uintptr(uint32(owner))), offset))
-}
-
 //export nox_xxx_mapReadWriteObjData_4F4530
 func nox_xxx_mapReadWriteObjData_4F4530(u *C.nox_object_t, version C.int) C.int {
 	return C.int(objectXferCommon(asObjectS(u), int(version)))
@@ -61,11 +56,6 @@ func nox_xxx_XFerElevator_4F53D0(u C.int) C.int { return C.int(objectXferElevato
 
 //export nox_xxx_XFerElevatorShaft_4F54A0
 func nox_xxx_XFerElevatorShaft_4F54A0(u C.int) C.int { return C.int(objectXferShaft(objectFromInt(u))) }
-
-//export sub_4F5540
-func sub_4F5540(p C.int) C.int {
-	return C.int(objectXferLegacyScript(unsafe.Pointer(uintptr(uint32(p)))))
-}
 
 //export nox_xxx_XFerMover_4F5730
 func nox_xxx_XFerMover_4F5730(u C.int) C.int { return C.int(objectXferMover(objectFromInt(u))) }

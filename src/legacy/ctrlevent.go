@@ -40,11 +40,6 @@ var (
 	Nox_client_parseConfigHotkeysLine_42CF50 func(s string) int
 )
 
-//export nox_xxx_playerResetControlBuffer_51AC30
-func nox_xxx_playerResetControlBuffer_51AC30(pi int) {
-	GetServer().S().Players.Control.Player(pi).Reset()
-}
-
 //export sub_42E8E0
 func sub_42E8E0(key, a2 int) *wchar2_t {
 	s := GetClient().GetCtrlEvent().Sub_42E8E0_go(keybind.Event(key), a2)

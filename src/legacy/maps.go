@@ -30,7 +30,6 @@ import (
 
 	"github.com/opennox/opennox/v1/common/ntype"
 	"github.com/opennox/opennox/v1/internal/cryptfile"
-	"github.com/opennox/opennox/v1/legacy/cnxz"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -41,15 +40,6 @@ var (
 	Nox_xxx_mapWriteSectionsMB_426E20 func(a1 unsafe.Pointer) int
 	Nox_xxx_mapReadSection            func(*cryptfile.CryptFile, unsafe.Pointer, string) (bool, error)
 )
-
-//export nox_common_checkMapFile_4CFE10
-func nox_common_checkMapFile_4CFE10(name *C.char) int {
-	if err := Nox_common_checkMapFile(GoString(name)); err != nil {
-		gameLog.Println("check map file:", err)
-		return 0
-	}
-	return 1
-}
 
 //export nox_xxx_mapReadSection_426EA0
 func nox_xxx_mapReadSection_426EA0(a1 unsafe.Pointer, cname *C.char, cerr *C.uint) int {
@@ -64,30 +54,6 @@ func nox_xxx_mapReadSection_426EA0(a1 unsafe.Pointer, cname *C.char, cerr *C.uin
 //export nox_xxx_mapWriteSectionsMB_426E20
 func nox_xxx_mapWriteSectionsMB_426E20(a1 unsafe.Pointer) int {
 	return Nox_xxx_mapWriteSectionsMB_426E20(a1)
-}
-
-//export nox_xxx_nxzCompressFile_57BDD0
-func nox_xxx_nxzCompressFile_57BDD0(a1, a2 *C.char) int {
-	if err := cnxz.CompressFile(GoString(a1), GoString(a2)); err != nil {
-		mapLog.Println(err)
-		return 0
-	}
-	return 1
-}
-
-//export nox_xxx_mapReset_5028E0
-func nox_xxx_mapReset_5028E0() {
-	GetServer().Nox_xxx_mapReset5028E0()
-}
-
-//export nox_xxx_free_503F40
-func nox_xxx_free_503F40() {
-	GetServer().Nox_xxx_free503F40()
-}
-
-//export sub_51A100
-func sub_51A100() {
-	GetServer().S().MapSend.Sub_51A100()
 }
 
 func Nox_server_mapRWMapInfo_42A6E0(_ *cryptfile.CryptFile, a1 unsafe.Pointer) error {

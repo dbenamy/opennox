@@ -3,6 +3,5 @@
 
 #include "defs.h"
 
-void sub_48CB10(int a1);
 
 #endif // NOX_PORT_CLIENT_GUI_GUIVOTE

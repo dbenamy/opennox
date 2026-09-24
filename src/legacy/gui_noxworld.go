@@ -187,14 +187,6 @@ func nox_client_refreshServerList_4378B0() { Nox_client_refreshServerList_4378B0
 //export sub_438770_waitList
 func sub_438770_waitList() { Sub_438770_waitList() }
 
-//export nox_xxx_createSocketLocal_554B40
-func nox_xxx_createSocketLocal_554B40(port uint16) int {
-	if err := Nox_xxx_createSocketLocal(int(port)); err != nil {
-		return -1
-	}
-	return 0
-}
-
 //export sub_554D10
 func sub_554D10() int { return Sub_554D10() }
 

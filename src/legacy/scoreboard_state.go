@@ -255,9 +255,6 @@ func sub_470650(action C.char, code C.short) C.char {
 	return C.char(scoreboardSetBall(byte(action), uint16(code)))
 }
 
-//export sub_4706A0
-func sub_4706A0() int { return bool2int(scoreboardEnabled()) }
-
 // Compile-time layout checks for the tables shared with legacy storage.
 var (
 	_ [4]byte  = [unsafe.Alignof(scoreboardPlayer{})]byte{}

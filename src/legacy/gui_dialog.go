@@ -46,17 +46,8 @@ func nox_xxx_dialogMsgBoxCreate_449A10(win *nox_window, title, text *wchar2_t, a
 	return nil
 }
 
-//export sub_449E00
-func sub_449E00(a1 *wchar2_t) int { return Sub_449E00(GoWString(a1)) }
-
-//export sub_449E30
-func sub_449E30(a1 *wchar2_t) int { return Sub_449E30(GoWString(a1)) }
-
 //export sub_449E60
 func sub_449E60(a1 C.char) int { return Sub_449E60(int8(a1)) }
-
-//export sub_449EA0
-func sub_449EA0(a1 int) { Sub_449EA0(gui.DialogFlags(a1)) }
 
 //export sub_44A4E0
 func sub_44A4E0() int { return Sub_44A4E0() }

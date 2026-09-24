@@ -26,7 +26,6 @@ import (
 
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/things"
-	"github.com/opennox/libs/types"
 
 	"github.com/opennox/opennox/v1/server"
 )
@@ -45,37 +44,9 @@ var (
 	Nox_xxx_spellWallDestroy_500080   func(sp *server.DurSpell)
 )
 
-//export nox_xxx_spellGetDefArrayPtr_424820
-func nox_xxx_spellGetDefArrayPtr_424820() unsafe.Pointer {
-	return GetServer().S().Spells.PhonemeTree().C()
-}
-
 //export nox_xxx_getEnchantSpell_424920
 func nox_xxx_getEnchantSpell_424920(enc int) int {
 	return int(server.EnchantID(enc).Spell())
-}
-
-//export nox_xxx_getEnchantName_4248F0
-func nox_xxx_getEnchantName_4248F0(enc int) *C.char {
-	return internCStr(server.EnchantID(enc).String())
-}
-
-//export nox_xxx_enchantByName_424880
-func nox_xxx_enchantByName_424880(cname *C.char) int {
-	id, ok := server.ParseEnchant(GoString(cname))
-	if !ok {
-		return -1
-	}
-	return int(id)
-}
-
-//export nox_xxx_spellNameByN_424870
-func nox_xxx_spellNameByN_424870(ind int) *C.char {
-	s := spell.ID(ind).String()
-	if s == "" {
-		return nil
-	}
-	return internCStr(s)
 }
 
 //export nox_xxx_spellNameToN_4243F0
@@ -96,15 +67,6 @@ func nox_xxx_spellAwardAll2_4EFC80(p *C.nox_playerInfo) { Nox_xxx_spellAwardAll2
 
 //export nox_xxx_spellAwardAll3_4EFE10
 func nox_xxx_spellAwardAll3_4EFE10(p *C.nox_playerInfo) { Nox_xxx_spellAwardAll3_4EFE10(asPlayerS(p)) }
-
-//export nox_xxx_spellFlySearchTarget_540610
-func nox_xxx_spellFlySearchTarget_540610(cpos *C.float2, msl *nox_object_t, sflags C.int, dist C.float, a5 C.int, self *nox_object_t) *nox_object_t {
-	var pos *types.Pointf
-	if cpos != nil {
-		pos = &types.Pointf{X: float32(cpos.field_0), Y: float32(cpos.field_4)}
-	}
-	return asObjectC(GetServer().S().Nox_xxx_spellFlySearchTarget(pos, ToObjS(msl), things.SpellFlags(sflags), float32(dist), int(a5), asObjectS(self)))
-}
 
 //export nox_xxx_spellGetAud44_424800
 func nox_xxx_spellGetAud44_424800(ind, a2 int) int {
@@ -128,19 +90,9 @@ func nox_xxx_spellDescription_424A30(ind int) *wchar2_t {
 	return internWStr(s)
 }
 
-//export nox_xxx_spellByTitle_424960
-func nox_xxx_spellByTitle_424960(ctitle *wchar2_t) int {
-	return int(GetServer().S().Spells.ByTitle((GoWString(ctitle))))
-}
-
 //export nox_xxx_spellManaCost_4249A0
 func nox_xxx_spellManaCost_4249A0(ind, a2 int) int {
 	return GetServer().S().Spells.ManaCost(spell.ID(ind), a2)
-}
-
-//export nox_xxx_spellPhonemes_424A20
-func nox_xxx_spellPhonemes_424A20(ind, ind2 int) C.char {
-	return C.char(GetServer().S().Spells.Phoneme(spell.ID(ind), ind2))
 }
 
 func nox_xxx_spellHasFlags_424A50(ind, flags int) C.bool {
@@ -178,35 +130,6 @@ func nox_xxx_spellIsEnabled_424B70(ind int) C.bool {
 	return C.bool(GetServer().S().Spells.DefByInd(spell.ID(ind)).IsEnabled())
 }
 
-//export nox_xxx_spellEnable_424B90
-func nox_xxx_spellEnable_424B90(ind int) C.bool {
-	return C.bool(GetServer().S().Spells.Enable(spell.ID(ind), true))
-}
-
-//export nox_xxx_spellDisable_424BB0
-func nox_xxx_spellDisable_424BB0(ind int) C.bool {
-	return C.bool(GetServer().S().Spells.Enable(spell.ID(ind), false))
-}
-
-//export nox_xxx_spellCanUseInTrap_424BF0
-func nox_xxx_spellCanUseInTrap_424BF0(ind int) C.bool {
-	return C.bool(GetServer().S().Spells.CanUseInTraps(spell.ID(ind)))
-}
-
-//export nox_xxx_spellPrice_424C40
-func nox_xxx_spellPrice_424C40(ind int) int { return GetServer().S().Spells.Price(spell.ID(ind)) }
-
-//export nox_xxx_spellEnableAll_424BD0
-func nox_xxx_spellEnableAll_424BD0() { GetServer().S().Spells.EnableAll() }
-
-//export nox_xxx_spellAccept_4FD400
-func nox_xxx_spellAccept_4FD400(ispellID int, a2, a3p, a4p *nox_object_t, a5p unsafe.Pointer, lvli int) int {
-	if GetServer().Nox_xxx_spellAccept4FD400(spell.ID(ispellID), asObjectS(a2), asObjectS(a3p), asObjectS(a4p), (*server.SpellAcceptArg)(a5p), lvli) {
-		return 1
-	}
-	return 0
-}
-
 //export nox_xxx_castSpellByUser_4FDD20
 func nox_xxx_castSpellByUser_4FDD20(a1 int, a2 *nox_object_t, a3 unsafe.Pointer) int {
 	return Nox_xxx_castSpellByUser_4FDD20(a1, asObjectS(a2), a3)
@@ -225,16 +148,6 @@ func nox_xxx_spellWallUpdate_500070(p unsafe.Pointer) int {
 //export nox_xxx_spellWallDestroy_500080
 func nox_xxx_spellWallDestroy_500080(p unsafe.Pointer) {
 	Nox_xxx_spellWallDestroy_500080((*server.DurSpell)(p))
-}
-
-//export nox_xxx_spellCancelSpellDo_4FE9D0
-func nox_xxx_spellCancelSpellDo_4FE9D0(p unsafe.Pointer) {
-	GetServer().S().Spells.Dur.CancelSpell((*server.DurSpell)(p))
-}
-
-//export nox_xxx_netStopRaySpell_4FEF90
-func nox_xxx_netStopRaySpell_4FEF90(p unsafe.Pointer, obj *nox_object_t) {
-	GetServer().S().NetStopRaySpell((*server.DurSpell)(p), asObjectS(obj))
 }
 
 func Nox_xxx_spellCastByBook_4FCB80() {

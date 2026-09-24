@@ -88,16 +88,6 @@ func nox_xxx_getNextUpdatable2Object_4DA850(cobj *nox_object_t) *nox_object_t {
 	return asObjectC(asObjectS(cobj).Next())
 }
 
-//export nox_xxx_unitAddToUpdatable_4DA8D0
-func nox_xxx_unitAddToUpdatable_4DA8D0(cobj *nox_object_t) {
-	GetServer().S().Objs.AddToUpdatable(asObjectS(cobj))
-}
-
-//export nox_xxx_unitRemoveFromUpdatable_4DA920
-func nox_xxx_unitRemoveFromUpdatable_4DA920(cobj *nox_object_t) {
-	GetServer().S().Objs.RemoveFromUpdatable(asObjectS(cobj))
-}
-
 //export nox_xxx_servFinalizeDelObject_4DADE0
 func nox_xxx_servFinalizeDelObject_4DADE0(cobj *nox_object_t) {
 	GetServer().ObjectDeleteLast(asObjectS(cobj))
@@ -111,29 +101,6 @@ func nox_xxx_getFirstUpdatable2Object_4DA840() *nox_object_t {
 //export nox_xxx_unitsNewAddToList_4DAC00
 func nox_xxx_unitsNewAddToList_4DAC00() {
 	GetServer().ObjectsAddPending()
-}
-
-//export nox_xxx_unitClearPendingMB_4DB030
-func nox_xxx_unitClearPendingMB_4DB030() {
-	GetServer().S().Objs.ObjectsClearPending()
-}
-
-//export nox_xxx_getFirstUpdatableObject_4DA8A0
-func nox_xxx_getFirstUpdatableObject_4DA8A0() *nox_object_t {
-	return asObjectC(GetServer().S().Objs.UpdatableList)
-}
-
-//export nox_xxx_getNextUpdatableObject_4DA8B0
-func nox_xxx_getNextUpdatableObject_4DA8B0(obj *nox_object_t) *nox_object_t {
-	if obj == nil {
-		return nil
-	}
-	return obj.updatable_next
-}
-
-//export sub_548600
-func sub_548600(a1 *nox_object_t, a2, a3 C.float) {
-	asObjectS(a1).Sub548600(types.Pointf{X: float32(a2), Y: float32(a3)})
 }
 
 //export nox_xxx_delayedDeleteObject_4E5CC0
@@ -248,11 +215,6 @@ func nox_xxx_unitMonsterInit_4F0040(obj *nox_object_t) {
 	Nox_xxx_unitMonsterInit_4F0040(asObjectS(obj))
 }
 
-//export nox_xxx_setNPCColor_4E4A90
-func nox_xxx_setNPCColor_4E4A90(obj *nox_object_t, a2 byte, p unsafe.Pointer) {
-	asObjectS(obj).Nox_xxx_setNPCColor_4E4A90(a2, (*server.Color3)(p))
-}
-
 //export nox_xxx_checkSummonedCreaturesLimit_500D70
 func nox_xxx_checkSummonedCreaturesLimit_500D70(obj *nox_object_t, ind int) C.bool {
 	return C.bool(Nox_xxx_checkSummonedCreaturesLimit_500D70(asObjectS(obj), ind))
@@ -289,11 +251,6 @@ func nox_xxx_collideGlyph_4E9A00(a1, a2 *nox_object_t) {
 	Nox_xxx_collideGlyph_4E9A00(asObjectS(a1), asObjectS(a2))
 }
 
-//export nox_xxx_doorGetSomeKey_4E8910
-func nox_xxx_doorGetSomeKey_4E8910(u, door *nox_object_t) *nox_object_t {
-	return asObjectC(GetServer().S().DoorCheckKey(asObjectS(u), asObjectS(door)))
-}
-
 //export nox_xxx_unitSetXStatus_4E4800
 func nox_xxx_unitSetXStatus_4E4800(a1 *nox_object_t, a2 uint32) {
 	asObjectS(a1).SetXStatus(a2)
@@ -324,34 +281,9 @@ func nox_xxx_ammoCheck_415880(a1 int) int {
 	return int(GetServer().S().Weapons.Nox_xxx_ammoCheck_415880(a1))
 }
 
-//export sub_415D10
-func sub_415D10(a1 int) int {
-	return int(GetServer().S().Armor.Sub_415D10(a1))
-}
-
-//export sub_415CD0
-func sub_415CD0(a1 int) int {
-	return int(GetServer().S().Armor.Sub_415CD0(uint32(a1)))
-}
-
 //export sub_415840
 func sub_415840(a1 int) int {
 	return int(GetServer().S().Weapons.Sub_415840(uint32(a1)))
-}
-
-//export sub_4159B0
-func sub_4159B0(a1 int) *C.char {
-	return internCStr(GetServer().S().Weapons.Sub_4159B0(uint32(a1)))
-}
-
-//export sub_415E40
-func sub_415E40(a1 int) *C.char {
-	return internCStr(GetServer().S().Armor.Sub_415E40(uint32(a1)))
-}
-
-//export sub_415B60
-func sub_415B60(obj *nox_object_t) *wchar2_t {
-	return internWStr(GetServer().S().Armor.Sub_415B60(asObjectS(obj)))
 }
 
 func Nox_server_getObjectFromNetCode_4ECCB0(a1 int) *server.Object {

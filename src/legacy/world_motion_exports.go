@@ -11,14 +11,6 @@ func nox_xxx_updateSentryGlobe_510E60(a C.int) C.int {
 	return C.int(motionSentryUpdate(objectFromInt(a)))
 }
 
-//export nox_xxx_unitSetDecayTime_511660
-func nox_xxx_unitSetDecayTime_511660(a *C.nox_object_t, delay C.int) C.int {
-	return C.int(motionDecaySet(asObjectS(a), int32(delay)))
-}
-
-//export sub_51B860
-func sub_51B860(a C.int) C.char { return C.char(collisionActivate(objectFromInt(a))) }
-
 //export nox_xxx_unitUpdateMover_54F740
 func nox_xxx_unitUpdateMover_54F740(a C.int) { motionMover(objectFromInt(a)) }
 

@@ -5,9 +5,6 @@
 
 void sub_51DD50(int a1, int a2, int a3, int a4);
 int sub_51DE30(uint32_t* a1, uint32_t* a2, uint32_t* a3);
-int nox_xxx_xfer_saveObj_51DF90(nox_object_t* a1);
-int nox_xxx_mapGenReadTheme_51E260(int* a1, int a2);
-uint32_t* sub_520D50(uint32_t* a1);
 long long nox_xxx_mapGenRoundFloatToPtr_520DF0(float2* a1, uint32_t* a2);
 int sub_520EA0(int a1);
 void sub_520F80();
@@ -72,7 +69,6 @@ int nox_xxx_XFerMonster_528DB0(nox_object_t* a1);
 void nox_xxx_XFer_WriteShopItem_52A5F0(void* a1);
 void nox_xxx_XFer_ReadShopItem_52A840(void* a1, int a2);
 int nox_xxx_XFerNPC_52ADE0(nox_object_t* a1);
-int sub_52BAF0(int a1);
 void nox_xxx_changeOwner_52BE40(nox_object_t* a1, nox_object_t* a2);
 void nox_xxx_objectApplyForce_52DF80(float* vec, nox_object_t* obj, float force);
 int nox_xxx_spellDrainMana_52E210(float a1);

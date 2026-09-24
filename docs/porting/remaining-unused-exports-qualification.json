@@ -1,0 +1,807 @@
+{
+  "baseline": {
+    "source_commit": "ac1ce272fb7887eb204dea0934758916e7286cab",
+    "complete_corpus_evidence": "docs/porting/complete-port-corpus-qualification.json",
+    "all_source_fingerprints_match_complete_corpus": true,
+    "production_evidence": "docs/porting/unused-exports-qualification.json",
+    "production_source_commit": "9adcf3d3",
+    "sole_source_difference_from_production": [
+      "src/server_orchestration_player_porttest_test.go"
+    ],
+    "new_production_baseline_build": false,
+    "post_conversion_requires_fresh_production": true,
+    "draft_ast_review": {
+      "all_function_end_offsets_match_ast": true,
+      "all_remaining_nonimport_declarations_unchanged": true,
+      "cgo_import_cleanup_candidates": [
+        "src/legacy/game_statistics.go",
+        "src/legacy/map_growth_exports.go"
+      ],
+      "no_remaining_nonimport_declarations": [],
+      "reviewed_files": 75,
+      "reviewed_functions": 378
+    },
+    "supplemental_source_audit": {
+      "files_scanned": 30,
+      "bytes_scanned": 11843023,
+      "matches": []
+    },
+    "build_surface_audit": {
+      "files_scanned": 60,
+      "matches": []
+    }
+  },
+  "phases": {
+    "contracts": {
+      "batch": "remaining-unused-exports",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "profiles",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_profiles.py",
+            "--out",
+            "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+            "--jobs",
+            "2",
+            "--timeout-seconds",
+            "3600"
+          ],
+          "exit": 0,
+          "wall_seconds": 2194.6254306940828
+        }
+      ],
+      "revision": "b1aadddd94b0de838abce282d51701b4b9c35c6c",
+      "source_unchanged": true,
+      "wall_seconds": 2194.8962443540804,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "safe": {
+      "batch": "remaining-unused-exports",
+      "phase": "safe",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-tags",
+            "safe",
+            "-o",
+            "/root/src/opennox/build/port-remaining-unused-exports/safe/opennox-safe",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 59.58636793401092
+        },
+        {
+          "name": "static",
+          "command": [
+            "go",
+            "test",
+            "./common/memmap/nox",
+            "-run",
+            "^TestCodeStatic$",
+            "-count=1"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.9750892410520464
+        }
+      ],
+      "revision": "b1aadddd94b0de838abce282d51701b4b9c35c6c",
+      "source_unchanged": true,
+      "wall_seconds": 60.96222807094455,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "production": {
+      "batch": "remaining-unused-exports",
+      "phase": "production",
+      "success": true,
+      "steps": [
+        {
+          "name": "production",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/qualify_production.py",
+            "/root/src/opennox/docs/porting/remaining-unused-exports-batch.json",
+            "--out",
+            "/root/src/opennox/build/port-remaining-unused-exports/production/production"
+          ],
+          "exit": 0,
+          "wall_seconds": 221.36042344593443
+        }
+      ],
+      "revision": "b1aadddd94b0de838abce282d51701b4b9c35c6c",
+      "source_unchanged": true,
+      "wall_seconds": 221.62428757594898,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    }
+  },
+  "profile_controller": {
+    "success": true,
+    "jobs": 2,
+    "builds": [
+      {
+        "profile": "server",
+        "exit": 0,
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-c",
+          "-tags",
+          "porttest,server",
+          "-o",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/server.test",
+          "."
+        ],
+        "wall_seconds": 110.58461132599041
+      },
+      {
+        "profile": "highres",
+        "exit": 0,
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-c",
+          "-tags",
+          "porttest,highres",
+          "-o",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/highres.test",
+          "."
+        ],
+        "wall_seconds": 112.0268717019353
+      },
+      {
+        "profile": "default",
+        "exit": 0,
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-c",
+          "-tags",
+          "porttest",
+          "-o",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/default.test",
+          "."
+        ],
+        "wall_seconds": 42.13470773003064
+      }
+    ],
+    "profiles": [
+      {
+        "profile": "server",
+        "exit": 0,
+        "success": true,
+        "wall_seconds": 965.6640600420069,
+        "command": [
+          "/usr/bin/python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,server",
+          "--test-binary",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/server.test",
+          "--binary-record",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/server-binary.json",
+          "--log",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/server-result.json",
+          "--timeout-seconds",
+          "3600"
+        ]
+      },
+      {
+        "profile": "highres",
+        "exit": 0,
+        "success": true,
+        "wall_seconds": 972.1037314929999,
+        "command": [
+          "/usr/bin/python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,highres",
+          "--test-binary",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/highres.test",
+          "--binary-record",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/highres-binary.json",
+          "--log",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/highres-result.json",
+          "--timeout-seconds",
+          "3600"
+        ]
+      },
+      {
+        "profile": "default",
+        "exit": 0,
+        "success": true,
+        "wall_seconds": 962.3699094818439,
+        "command": [
+          "/usr/bin/python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest",
+          "--test-binary",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/default.test",
+          "--binary-record",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/default-binary.json",
+          "--log",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/default-result.json",
+          "--timeout-seconds",
+          "3600"
+        ]
+      }
+    ],
+    "source_unchanged": true,
+    "wall_seconds": 2194.2321912050247
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 3600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "binary_verification": {
+        "path": "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/default.test",
+        "sha256": "c1149d7de6be0d4e494f603035cd4f52c6b563eeed342fe2779ee9841fffc059",
+        "source_matches": true,
+        "record_matches": true,
+        "build_metadata": {
+          "path": "github.com/opennox/opennox/v1.test",
+          "-buildmode": "exe",
+          "-compiler": "gc",
+          "tags": "porttest",
+          "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+          "CGO_ENABLED": "1",
+          "CGO_CFLAGS": "",
+          "CGO_CPPFLAGS": "",
+          "CGO_CXXFLAGS": "",
+          "CGO_LDFLAGS": "",
+          "GOARCH": "386",
+          "GOOS": "linux",
+          "GO386": "sse2"
+        },
+        "verified": true
+      },
+      "discovery_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/default.test",
+        "-test.list=^Test"
+      ],
+      "discovery_exit": 0,
+      "selected_tests": 2426,
+      "selected_root_tests": 2426,
+      "execution_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/default.test",
+        "-test.v=test2json",
+        "-test.count=1",
+        "-test.timeout=3600s",
+        "-test.run=^Test"
+      ],
+      "exit": 0,
+      "started_tests": 2426,
+      "completed_tests": 2426,
+      "started_root_tests": 2426,
+      "completed_root_tests": 2426,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 962.2849375670776,
+      "exact_baseline_names_match": true,
+      "all_skips": [
+        "TestMapPopulationPrerequisiteProbe"
+      ],
+      "log_sha256": "148d4f62002434b8796c64f69d0d55ddbd4639bddfc874183fc99bd01032fa60"
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 3600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "binary_verification": {
+        "path": "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/server.test",
+        "sha256": "9784b64d2565662d56ce7e8b9c3c640ca6eaa7929b9bee465eb5ad95065c0c34",
+        "source_matches": true,
+        "record_matches": true,
+        "build_metadata": {
+          "path": "github.com/opennox/opennox/v1.test",
+          "-buildmode": "exe",
+          "-compiler": "gc",
+          "tags": "porttest,server",
+          "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+          "CGO_ENABLED": "1",
+          "CGO_CFLAGS": "",
+          "CGO_CPPFLAGS": "",
+          "CGO_CXXFLAGS": "",
+          "CGO_LDFLAGS": "",
+          "GOARCH": "386",
+          "GOOS": "linux",
+          "GO386": "sse2"
+        },
+        "verified": true
+      },
+      "discovery_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/server.test",
+        "-test.list=^Test"
+      ],
+      "discovery_exit": 0,
+      "selected_tests": 2415,
+      "selected_root_tests": 2415,
+      "execution_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/server.test",
+        "-test.v=test2json",
+        "-test.count=1",
+        "-test.timeout=3600s",
+        "-test.run=^Test"
+      ],
+      "exit": 0,
+      "started_tests": 2415,
+      "completed_tests": 2415,
+      "started_root_tests": 2415,
+      "completed_root_tests": 2415,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 965.5947581247892,
+      "exact_baseline_names_match": true,
+      "all_skips": [
+        "TestMapPopulationPrerequisiteProbe"
+      ],
+      "log_sha256": "2b9414d6aa2cd3da93c3d74b3ee6d3c40a7842cd5d34d3b99a87c4f26c8e35e3"
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 3600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "binary_verification": {
+        "path": "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/highres.test",
+        "sha256": "73ded5b40e641790a2796d63c42819308357c7d88ba474a5511d887b017ab2f5",
+        "source_matches": true,
+        "record_matches": true,
+        "build_metadata": {
+          "path": "github.com/opennox/opennox/v1.test",
+          "-buildmode": "exe",
+          "-compiler": "gc",
+          "tags": "porttest,highres",
+          "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+          "CGO_ENABLED": "1",
+          "CGO_CFLAGS": "",
+          "CGO_CPPFLAGS": "",
+          "CGO_CXXFLAGS": "",
+          "CGO_LDFLAGS": "",
+          "GOARCH": "386",
+          "GOOS": "linux",
+          "GO386": "sse2"
+        },
+        "verified": true
+      },
+      "discovery_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/highres.test",
+        "-test.list=^Test"
+      ],
+      "discovery_exit": 0,
+      "selected_tests": 2426,
+      "selected_root_tests": 2426,
+      "execution_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-remaining-unused-exports/contracts/profiles/highres.test",
+        "-test.v=test2json",
+        "-test.count=1",
+        "-test.timeout=3600s",
+        "-test.run=^Test"
+      ],
+      "exit": 0,
+      "started_tests": 2426,
+      "completed_tests": 2426,
+      "started_root_tests": 2426,
+      "completed_root_tests": 2426,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 971.9951973839197,
+      "exact_baseline_names_match": true,
+      "all_skips": [
+        "TestMapPopulationPrerequisiteProbe"
+      ],
+      "log_sha256": "9d1716796bd581fa3539af4d89e1da448e74e816f59c6f2de597e7d24e8af96c"
+    }
+  },
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 57.4044475031551,
+        "sha256": "db920987ff0e3c7a1f95e80328293d449897a3b41349601ab5ce78c8b67df273",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.140224578091875,
+        "sha256": "b3ec0ca55f7e8639528ea3e04c377fd0d9239bfe4a596337db1e92239633d1de",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 56.549178722081706,
+        "sha256": "d4fb93cfb50b54d2641714b69fce421660be1c803e0855a8aff5680a3bdf55ea",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "remaining-unused-exports-save": {
+        "exit": 0,
+        "wall_seconds": 44.696962166111916,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 43.2253851860296,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "db920987ff0e3c7a1f95e80328293d449897a3b41349601ab5ce78c8b67df273",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-remaining-unused-exports/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/remaining-unused-exports-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Retire 378 unused internal C export bridges in mixed files; preserve remaining declarations and live owners",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1384,
+                "sha256": "71a569a46fb0a9493c5aa0b76f6175d777588cfc2cb486fa8e2a845696ddb225"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 46.74462518887594,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 17,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "source_review": {
+    "baseline_commit": "b1aadddd",
+    "changed_files": [
+      "src/legacy/GAME1.h",
+      "src/legacy/GAME1_1.h",
+      "src/legacy/GAME1_2.h",
+      "src/legacy/GAME1_3.h",
+      "src/legacy/GAME2.h",
+      "src/legacy/GAME2_1.h",
+      "src/legacy/GAME2_2.h",
+      "src/legacy/GAME2_3.h",
+      "src/legacy/GAME3.h",
+      "src/legacy/GAME3_1.h",
+      "src/legacy/GAME3_2.h",
+      "src/legacy/GAME3_3.h",
+      "src/legacy/GAME4.h",
+      "src/legacy/GAME4_1.h",
+      "src/legacy/GAME4_2.h",
+      "src/legacy/GAME4_3.h",
+      "src/legacy/GAME5.h",
+      "src/legacy/GAME5_2.h",
+      "src/legacy/audio_ail.go",
+      "src/legacy/audio_event.go",
+      "src/legacy/cgo_flags.go",
+      "src/legacy/cgo_fs.go",
+      "src/legacy/character_creation_exports.go",
+      "src/legacy/client/audio/ail/compat_mss.h",
+      "src/legacy/client__drawable__drawable.h",
+      "src/legacy/client__gui__guicon.h",
+      "src/legacy/client__gui__guiquit.h",
+      "src/legacy/client__gui__guivote.h",
+      "src/legacy/client__gui__servopts__general.h",
+      "src/legacy/client__gui__servopts__guiserv.h",
+      "src/legacy/client__gui__servopts__playrlst.h",
+      "src/legacy/client__gui__window.h",
+      "src/legacy/client__shell__optsback.h",
+      "src/legacy/client__system__ctrlevnt.h",
+      "src/legacy/client__video__draw_common.h",
+      "src/legacy/client_ui_sliders_exports.go",
+      "src/legacy/common.go",
+      "src/legacy/common/fs/nox_fs.h",
+      "src/legacy/common/platform/platform.h",
+      "src/legacy/common__crypt.h",
+      "src/legacy/common__magic__speltree.h",
+      "src/legacy/common__net_list.h",
+      "src/legacy/common__random.h",
+      "src/legacy/common__system__team.h",
+      "src/legacy/creature_xfer_exports.go",
+      "src/legacy/cryptfile.go",
+      "src/legacy/ctrlevent.go",
+      "src/legacy/defs.h",
+      "src/legacy/dialog_imports.go",
+      "src/legacy/draw.go",
+      "src/legacy/drawable.go",
+      "src/legacy/game.go",
+      "src/legacy/game_statistics.go",
+      "src/legacy/gameloop.go",
+      "src/legacy/gameplay_reports_exports.go",
+      "src/legacy/gameplay_text_exports.go",
+      "src/legacy/groups.go",
+      "src/legacy/gui.go",
+      "src/legacy/gui_anim.go",
+      "src/legacy/gui_console.go",
+      "src/legacy/gui_cursor.go",
+      "src/legacy/gui_dialog.go",
+      "src/legacy/gui_noxworld.go",
+      "src/legacy/gui_options.go",
+      "src/legacy/gui_options_exports.go",
+      "src/legacy/gui_quit.go",
+      "src/legacy/gui_video_adv.go",
+      "src/legacy/gui_widgets.go",
+      "src/legacy/gui_window.go",
+      "src/legacy/input.h",
+      "src/legacy/input_c.go",
+      "src/legacy/input_common.h",
+      "src/legacy/journal_exports.go",
+      "src/legacy/map_growth_exports.go",
+      "src/legacy/map_theme_support.go",
+      "src/legacy/maps.go",
+      "src/legacy/modifiers.go",
+      "src/legacy/music_imports.go",
+      "src/legacy/network.go",
+      "src/legacy/network_lists.go",
+      "src/legacy/object.go",
+      "src/legacy/object_lookup_exports.go",
+      "src/legacy/object_pickup.go",
+      "src/legacy/object_type.go",
+      "src/legacy/object_type_client.go",
+      "src/legacy/object_update.go",
+      "src/legacy/object_xfer_exports.go",
+      "src/legacy/platform.go",
+      "src/legacy/player.go",
+      "src/legacy/player_state_exports.go",
+      "src/legacy/prefab_runtime_adapters.go",
+      "src/legacy/save.go",
+      "src/legacy/scoreboard_state.go",
+      "src/legacy/script_noxscript.go",
+      "src/legacy/server.go",
+      "src/legacy/server__magic__plyrspel.h",
+      "src/legacy/server__script__activator.h",
+      "src/legacy/server__script__script.h",
+      "src/legacy/server__system__server.h",
+      "src/legacy/server_config_exports.go",
+      "src/legacy/server_options_exports.go",
+      "src/legacy/server_panels_exports.go",
+      "src/legacy/session_entry_exports.go",
+      "src/legacy/spells.go",
+      "src/legacy/spells_abil.go",
+      "src/legacy/spells_dur.go",
+      "src/legacy/team_runtime_exports.go",
+      "src/legacy/team_ui_exports.go",
+      "src/legacy/teams.go",
+      "src/legacy/things.go",
+      "src/legacy/unit_ai.go",
+      "src/legacy/unit_monster.go",
+      "src/legacy/video_bag.go",
+      "src/legacy/video_cgo.go",
+      "src/legacy/votes_exports.go",
+      "src/legacy/wall.go",
+      "src/legacy/waypoint.go",
+      "src/legacy/world_motion_exports.go",
+      "src/legacy/xfer.go"
+    ],
+    "changed_go_files": 75,
+    "changed_headers": 44,
+    "unchanged_test_fixture_files": 1735,
+    "unchanged_other_source_files": 2943,
+    "retired_exports": 378,
+    "removed_header_prototypes": 333,
+    "ast_review": {
+      "all_function_end_offsets_match_ast": true,
+      "all_remaining_nonimport_declarations_unchanged": true,
+      "cgo_import_cleanup_candidates": [
+        "src/legacy/game_statistics.go",
+        "src/legacy/map_growth_exports.go"
+      ],
+      "no_remaining_nonimport_declarations": [],
+      "reviewed_files": 75,
+      "reviewed_functions": 378
+    },
+    "import_cleanup": {
+      "files": [
+        "src/legacy/game_statistics.go",
+        "src/legacy/map_growth_exports.go"
+      ],
+      "reason": "AST confirms no C selectors or export directives; no cgo build directives; only standard/declaration headers; all Go declarations retained"
+    }
+  },
+  "selected_cgo_files": 397,
+  "direct_project_cgo_packages": 3,
+  "retired_c_exports": 378,
+  "removed_local_cgo_imports": 2,
+  "standalone_production_c_lines": 0,
+  "standalone_test_c_lines": 0,
+  "selected_legacy_exports": 1444,
+  "phase_cgo_files_removed": 66,
+  "phase_baseline_cgo_files": 463,
+  "phase_exports_retired": 446,
+  "phase_baseline_exports": 1890,
+  "tracked_header_files": 157,
+  "tracked_header_lines": 4146,
+  "embedded_callback_bodies_unchanged": 79,
+  "asset_integrity": {
+    "success": true,
+    "files": 1654,
+    "bytes": 556358986,
+    "reference": "build/baseline/runs/unused-exports-save/deduplicated-assets.json",
+    "scope": "All1654 original asset files recorded in the preceding qualified scenario deduplication manifest; hashes unchanged"
+  }
+}

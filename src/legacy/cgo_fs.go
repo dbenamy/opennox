@@ -6,13 +6,11 @@ package legacy
 */
 import "C"
 import (
-	"errors"
 	"io"
 	"os"
 	"sync"
 	"unsafe"
 
-	"github.com/opennox/libs/datapath"
 	"github.com/opennox/libs/ifs"
 
 	"github.com/opennox/opennox/v1/internal/binfile"
@@ -26,34 +24,9 @@ var files struct {
 
 type FILE = C.FILE
 
-//export nox_fs_root
-func nox_fs_root() *C.char {
-	return internCStr(datapath.Data())
-}
-
-//export nox_fs_remove
-func nox_fs_remove(path *C.char) C.bool {
-	return ifs.Remove(GoString(path)) == nil
-}
-
-//export nox_fs_mkdir
-func nox_fs_mkdir(path *C.char) C.bool {
-	return ifs.Mkdir(GoString(path)) == nil
-}
-
 //export nox_fs_set_workdir
 func nox_fs_set_workdir(path *C.char) C.bool {
 	return ifs.Chdir(GoString(path)) == nil
-}
-
-//export nox_fs_copy
-func nox_fs_copy(src, dst *C.char) C.bool {
-	return ifs.Copy(GoString(src), GoString(dst)) == nil
-}
-
-//export nox_fs_move
-func nox_fs_move(src, dst *C.char) C.bool {
-	return ifs.Rename(GoString(src), GoString(dst)) == nil
 }
 
 func convWhence(mode int) int {
@@ -81,67 +54,11 @@ func nox_fs_fseek(f *FILE, off C.long, mode int) int {
 	return 0
 }
 
-//export nox_fs_ftell
-func nox_fs_ftell(f *FILE) C.long {
-	fp := fileByHandle(f)
-	off, err := fp.Seek(0, io.SeekCurrent)
-	if err != nil {
-		e := int64(-1)
-		return C.long(e)
-	}
-	return C.long(off)
-}
-
-//export nox_fs_fsize
-func nox_fs_fsize(f *FILE) C.long {
-	fp := fileByHandle(f)
-	size, err := fp.Size()
-	if err != nil {
-		e := int64(-1)
-		return C.long(e)
-	}
-	return C.long(size)
-}
-
 //export nox_fs_fread
 func nox_fs_fread(f *FILE, dst unsafe.Pointer, sz int) int {
 	fp := fileByHandle(f)
 	n, _ := fp.Read(unsafe.Slice((*byte)(dst), sz))
 	return n
-}
-
-//export nox_fs_fwrite
-func nox_fs_fwrite(f *FILE, dst unsafe.Pointer, sz int) int {
-	fp := fileByHandle(f)
-	n, _ := fp.Write(unsafe.Slice((*byte)(dst), sz))
-	return n
-}
-
-//export nox_fs_fgets
-func nox_fs_fgets(f *FILE, dst *C.char, sz int) C.bool {
-	fp := fileByHandle(f)
-	out, err := fp.ReadString()
-	if err != nil && !errors.Is(err, io.EOF) {
-		return false
-	}
-	StrCopy(dst, sz, string(out))
-	return C.bool(!errors.Is(err, io.EOF))
-}
-
-//export nox_fs_fputs
-func nox_fs_fputs(f *FILE, str *C.char) int {
-	fp := fileByHandle(f)
-	n, err := fp.WriteString(GoString(str))
-	if err != nil {
-		return -1
-	}
-	return n
-}
-
-//export nox_fs_feof
-func nox_fs_feof(f *FILE) C.bool {
-	fp := fileByHandle(f)
-	return fp.Err == io.EOF
 }
 
 func fileByHandle(f *FILE) *binfile.File {
@@ -185,17 +102,6 @@ func NewFileHandle(f *binfile.File) *FILE {
 	}
 	files.byHandle[f.Handle] = f
 	return (*FILE)(f.Handle)
-}
-
-//export nox_fs_access
-func nox_fs_access(path *C.char, mode int) int {
-	_, err := ifs.Stat(GoString(path))
-	if os.IsNotExist(err) {
-		return -1
-	} else if err != nil {
-		return -2
-	}
-	return 0
 }
 
 //export nox_fs_open

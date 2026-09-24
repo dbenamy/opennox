@@ -27,9 +27,6 @@ func nox_xxx____setargv_4_44B000() {
 //export sub_446380
 func sub_446380() { Sub_446380() }
 
-//export sub_445B40
-func sub_445B40() int { return Sub_445B40() }
-
 func Sub_4D70B0() {
 	questRuntimeSettings()
 }

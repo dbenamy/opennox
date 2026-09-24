@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME1_1.h"
-*/
-import "C"
-
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -43,10 +37,6 @@ func statisticsFree(p unsafe.Pointer) {
 	}
 }
 
-//export sub_425CA0
-func sub_425CA0(a, b C.int) *C.char {
-	return (*C.char)(unsafe.Pointer(uintptr(statisticsEvent(unsafe.Pointer(uintptr(uint32(a))), unsafe.Pointer(uintptr(uint32(b)))))))
-}
 func statisticsRow(pl unsafe.Pointer) uint32 {
 	index := statisticsI32(pl, 4648)
 	if *index != -1 {

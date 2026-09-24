@@ -13,16 +13,6 @@ import (
 	"github.com/opennox/opennox/v1/internal/cryptfile"
 )
 
-//export nox_crypt_IsReadOnly
-func nox_crypt_IsReadOnly() int {
-	return bool2int(cryptfile.Global().ReadOnly())
-}
-
-//export nox_xxx_cryptSetTypeMB_426A50
-func nox_xxx_cryptSetTypeMB_426A50(a1 int) {
-	cryptfile.Global().SetXOR(a1 != 0)
-}
-
 //export nox_xxx_cryptOpen_426910
 func nox_xxx_cryptOpen_426910(a1 *C.char, cmode, key int) int32 {
 	if err := cryptfile.OpenGlobal(GoString(a1), cryptfile.Mode(cmode), key); err != nil {
@@ -32,11 +22,6 @@ func nox_xxx_cryptOpen_426910(a1 *C.char, cmode, key int) int32 {
 		return 0
 	}
 	return 1
-}
-
-//export nox_xxx_cryptFlush_4268E0
-func nox_xxx_cryptFlush_4268E0() int {
-	return cryptfile.Global().Flush()
 }
 
 //export nox_xxx_cryptClose_4269F0
@@ -71,24 +56,4 @@ func nox_xxx_fileReadWrite_426AC0_file3_fread_impl(a1 *C.uchar, a2 C.size_t, cfn
 func nox_xxx_fileCryptReadCrcMB_426C20(a1 *C.uchar, a2 C.size_t) {
 	buf := unsafe.Slice((*byte)(unsafe.Pointer(a1)), int(a2))
 	cryptfile.Global().ReadMaybeAlign(buf)
-}
-
-//export nox_xxx_crypt_426C90
-func nox_xxx_crypt_426C90() {
-	cryptfile.Global().SectionStart()
-}
-
-//export sub_4268F0
-func sub_4268F0(off int) {
-	cryptfile.Global().WriteChecksumAt(int64(off))
-}
-
-//export nox_xxx_crypt_426D40
-func nox_xxx_crypt_426D40() {
-	cryptfile.Global().SectionEnd()
-}
-
-//export sub_41C200
-func sub_41C200(a1 unsafe.Pointer, a2 int) int {
-	return cryptfile.Global().ReadWriteAlign()
 }

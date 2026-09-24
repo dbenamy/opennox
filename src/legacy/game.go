@@ -53,7 +53,6 @@ import (
 	"github.com/opennox/opennox/v1/client"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/ntype"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -100,27 +99,9 @@ func nox_xxx_gameGetPlayState_4356B0() int {
 	return GameGetPlayState()
 }
 
-//export nox_xxx_GetEndgameDialog_578D80
-func nox_xxx_GetEndgameDialog_578D80() *C.char {
-	if s := Nox_xxx_GetEndgameDialog(); s != "" {
-		return internCStr(s)
-	}
-	return nil
-}
-
-//export nox_xxx_set_god_4EF500
-func nox_xxx_set_god_4EF500(v int) {
-	ServerCheatGod(v != 0)
-}
-
 //export nox_xxx_serverHost_43B4D0
 func nox_xxx_serverHost_43B4D0() {
 	Nox_xxx_serverHost_43B4D0()
-}
-
-//export nox_xxx_netServerCmd_440950_empty
-func nox_xxx_netServerCmd_440950_empty() {
-	Nox_xxx_netServerCmd_440950(0, "")
 }
 
 //export nox_server_parseCmdText_443C80
@@ -160,74 +141,9 @@ func nox_xxx_mapTraceRay_535250(a1 *C.float4, a2 *C.float2, a3 *C.int2, a4 C.cha
 	return 0
 }
 
-//export nox_xxx_mapTraceObstacles_50B580
-func nox_xxx_mapTraceObstacles_50B580(from *nox_object_t, a2 *C.float4) int {
-	if GetServer().S().MapTraceObstacles(asObjectS(from), types.Pointf{
-		X: float32(a2.field_0),
-		Y: float32(a2.field_4),
-	}, types.Pointf{
-		X: float32(a2.field_8),
-		Y: float32(a2.field_C),
-	}) {
-		return 1
-	}
-	return 0
-}
-
-//export sub_517B70
-func sub_517B70(pos *C.float2, fnc unsafe.Pointer, data unsafe.Pointer) {
-	if fnc == nil {
-		return
-	}
-	GetServer().S().Map.Sub517B70(*(*types.Pointf)(unsafe.Pointer(pos)), func(it *server.Object) {
-		ccall.CallVoidPtr2(fnc, it.CObj(), data)
-	})
-}
-
 //export sub_517590
 func sub_517590(x float32, y float32) int {
 	return bool2int(GetServer().S().Map.ValidIndexPos(types.Ptf(x, y)))
-}
-
-//export sub_518740
-func sub_518740(a1 *C.float2, a2 uint8) *nox_waypoint_t {
-	return (*nox_waypoint_t)(GetServer().S().Sub_518460(*(*types.Pointf)(unsafe.Pointer(a1)), a2, true).C())
-}
-
-//export nox_xxx_getMissilesInCircle_518170
-func nox_xxx_getMissilesInCircle_518170(pos *C.float2, r float32, fnc unsafe.Pointer, a4 *nox_object_t) {
-	p := *(*types.Pointf)(unsafe.Pointer(pos))
-	GetServer().S().Map.EachMissileInCircle(p, r, func(it *server.Object) bool {
-		ccall.CallVoidPtr2(fnc, it.CObj(), unsafe.Pointer(a4))
-		return true
-	})
-}
-
-//export nox_xxx_getUnitsInRectAdv_517ED0
-func nox_xxx_getUnitsInRectAdv_517ED0(rect *C.float4, fnc unsafe.Pointer, data unsafe.Pointer) {
-	r := *(*types.Rectf)(unsafe.Pointer(rect))
-	GetServer().S().Map.EachObjAndMissileInRect(r, func(it *server.Object) bool {
-		ccall.CallVoidPtr2(fnc, it.CObj(), data)
-		return true
-	})
-}
-
-//export nox_xxx_getUnitsInRect_517C10
-func nox_xxx_getUnitsInRect_517C10(rect *C.float4, fnc unsafe.Pointer, data unsafe.Pointer) {
-	r := *(*types.Rectf)(unsafe.Pointer(rect))
-	GetServer().S().Map.EachObjInRect(r, func(it *server.Object) bool {
-		ccall.CallVoidPtr2(fnc, it.CObj(), data)
-		return true
-	})
-}
-
-//export nox_xxx_unitsGetInCircle_517F90
-func nox_xxx_unitsGetInCircle_517F90(pos *C.float2, r C.float, fnc unsafe.Pointer, data unsafe.Pointer) {
-	p := *(*types.Pointf)(unsafe.Pointer(pos))
-	GetServer().S().Map.EachObjInCircle(p, float32(r), func(it *server.Object) bool {
-		ccall.CallVoidPtr2(fnc, it.CObj(), data)
-		return true
-	})
 }
 
 //export nox_xxx_gameSetWallsDamage_4E25A0
@@ -276,27 +192,9 @@ func nox_xxx_playerSendMOTD_4DD140(a1 int) {
 	Nox_xxx_playerSendMOTD_4DD140(ntype.PlayerInd(a1))
 }
 
-//export nox_xxx_unitCanSee_536FB0
-func nox_xxx_unitCanSee_536FB0(a1, a2 *nox_object_t, a3 int) int {
-	return bool2int(GetServer().S().CanSee(asObjectS(a1), asObjectS(a2), a3))
-}
-
 //export nox_xxx_mapCheck_537110
 func nox_xxx_mapCheck_537110(a1, a2 *nox_object_t) int {
 	return bool2int(GetServer().S().MapTraceVision(asObjectS(a1), asObjectS(a2)))
-}
-
-//export sub_497180
-func sub_497180(r1, r2 *C.float4, outp *C.float2) int {
-	out := (*types.Pointf)(unsafe.Pointer(outp))
-	p, ok := server.IntersectLines(*(*types.Rectf)(unsafe.Pointer(r1)), *(*types.Rectf)(unsafe.Pointer(r2)))
-	*out = p
-	return bool2int(ok)
-}
-
-//export sub_427980
-func sub_427980(r1, r2 *C.float4) int {
-	return bool2int(server.LineTraceXxx(*(*types.Rectf)(unsafe.Pointer(r1)), *(*types.Rectf)(unsafe.Pointer(r2))))
 }
 
 //export nox_client_getChatMap_49FF40

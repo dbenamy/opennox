@@ -16,11 +16,6 @@ func nox_xxx_journalEntryAdd_427490(p *C.nox_playerInfo, name *C.char, flags C.s
 	return (*C.nox_playerInfo_journal)(unsafe.Pointer(journalAdd((*server.Player)(unsafe.Pointer(p)), alloc.GoString((*byte)(unsafe.Pointer(name))), uint16(flags))))
 }
 
-//export nox_xxx_comJournalEntryAdd_427500
-func nox_xxx_comJournalEntryAdd_427500(u *C.nox_object_t, name *C.char, flags C.short) {
-	journalUnitAdd((*server.Object)(unsafe.Pointer(u)), alloc.GoString((*byte)(unsafe.Pointer(name))), uint16(flags))
-}
-
 func nox_xxx_journalEntryRemove_427590(p *C.nox_playerInfo, name *C.journal_const_char) C.int {
 	return C.int(journalRemove((*server.Player)(unsafe.Pointer(p)), alloc.GoString((*byte)(unsafe.Pointer(name)))))
 }

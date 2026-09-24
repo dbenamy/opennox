@@ -109,14 +109,3 @@ func mapThemeFile(cfg, name uint32) uint32 {
 	}
 	return 1
 }
-
-//export nox_xxx_mapGenReadTheme_51E260
-func nox_xxx_mapGenReadTheme_51E260(cfg *C.int, name C.int) C.int {
-	return C.int(mapThemeFile(mapRoomRaw(unsafe.Pointer(cfg)), uint32(name)))
-}
-
-//export sub_520D50
-func sub_520D50(cfg *C.uint32_t) *C.uint32_t {
-	mapThemeCleanup(mapRoomRaw(unsafe.Pointer(cfg)))
-	return nil
-}

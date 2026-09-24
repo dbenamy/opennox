@@ -114,16 +114,6 @@ func nox_xxx_objectApplyForce_52DF80(vec *C.float, obj *nox_object_t, force C.fl
 //export nox_xxx_updatePixie_53CD20
 func nox_xxx_updatePixie_53CD20(cobj *nox_object_t) { Nox_xxx_updatePixie_53CD20(asObjectS(cobj)) }
 
-//export nox_xxx_enemyAggro_5335D0
-func nox_xxx_enemyAggro_5335D0(cobj *nox_object_t, r float32) *nox_object_t {
-	return asObjectC(GetServer().S().EnemyAggroYyy(asObjectS(cobj), r))
-}
-
-//export sub_5336D0
-func sub_5336D0(cobj *nox_object_t) C.double {
-	return C.double(GetServer().S().Sub5336D0(asObjectS(cobj)))
-}
-
 //export nox_xxx_updatePlayerObserver_4E62F0
 func nox_xxx_updatePlayerObserver_4E62F0(a1p *nox_object_t) {
 	Nox_xxx_updatePlayerObserver_4E62F0(asObjectS(a1p))

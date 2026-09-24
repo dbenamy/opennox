@@ -1,6 +1,6 @@
 # Remaining unused C export bridges
 
-Status: original baseline qualified and frozen; conversion not yet installed.
+Status: original baseline frozen at `b1aadddd`; conversion fully qualified.
 Complete-corpus evidence is reused by exact source identity from `4a0ab0dc`;
 production evidence is reused from `9adcf3d3` with the sole qualified test-fixture
 difference explicitly recorded. See remaining-unused-exports-baseline.json.
@@ -62,3 +62,31 @@ inventory algorithm design, cohort acceptance, import cleanup, integration and
 qualification. No cost-saving claim is made from a successful draft alone.
 
 Local review artifacts: `build/port-next-exports/`.
+
+## Completed qualification
+
+All gates pass on identical source fingerprints. Full root porttest inventories,
+started and completed sets match exactly: default/highres each 2,425 passes and
+one expected map-population diagnostic skip; server 2,414 passes and that skip.
+No failed events or unexpected skips occurred. The prebuilt controller compiled
+sequentially then ran at most two test processes; complete controller time was
+2,194 seconds including compilation. Individual profile times were 962–972
+seconds, consistent with the preceding sequential sweeps. This establishes this
+corpus's bounded concurrent qualification, not a general game speedup.
+
+Safe build/static checks pass. Three fresh production binaries pass ABI checks,
+including absence of all 378 retired names. The broader suite exactly matches
+304 known failure events and 17 passing/two failing/32 skipped packages. Headless
+character creation and explicit save/load/resume pass. All 1,654 original asset
+hashes (556,358,986 bytes) match the preceding saved asset manifest. All test and
+fixture inputs are unchanged.
+
+Selected project cgo files fell 399→397 and selected legacy exports 1,822→1,444
+in each production profile. The phase total is 66/463 cgo files eliminated on
+net and 446/1,890 exports retired. Headers: 157 files / 4,146 physical lines.
+Three project packages still directly use cgo; 79 embedded callback bodies and
+external native bindings are unchanged. Standalone production/reference C: zero.
+
+Evidence: [qualification](remaining-unused-exports-qualification.json) and
+[selected inventory](remaining-unused-exports-inventory-after.json).
+Local completed outputs: `build/port-remaining-unused-exports/`.

@@ -84,3 +84,14 @@ See [converted qualification](raw-allocation-qualification.json) and
 [dependency inventory](raw-allocation-inventory-after.json). The preceding full
 accumulated sweep is retained in GO_MEMORY.md; this mechanical routing batch runs
 the audited affected-owner selection rather than repeating that full sweep.
+
+## Before replacing the backend
+
+Migrate fixture/engine ownership pairs with the backend. For example, the world-grid
+fixture releases the production-allocated outer table through `C.free`, and the
+secret-wall fixture supplies `C.calloc` nodes that production releases through
+`legacyFree`. Such pairs currently agree on libc (and profile macros), but cannot
+remain split when the backend changes. Client resource graphs, floor assets and
+prefab payload cleanup have similar crossings. Audit object-transfer IDPtr origins
+separately: some fixture names use tracked `alloc.CString`, while shared cleanup
+uses raw C free. This is follow-up work, not an allocator change in the export batches.

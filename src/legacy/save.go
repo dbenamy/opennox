@@ -36,20 +36,6 @@ var (
 	Nox_setSaveFileName_4DB130           func(s string)
 )
 
-//export nox_setSaveFileName_4DB130
-func nox_setSaveFileName_4DB130(s *C.char) {
-	Nox_setSaveFileName_4DB130(GoString(s))
-}
-
-//export nox_savegame_rm_4DBE10
-func nox_savegame_rm_4DBE10(cname *C.char, rmDir int) {
-	if cname == nil {
-		return
-	}
-	saveName := GoString(cname)
-	Nox_savegame_rm(saveName, rmDir != 0)
-}
-
 //export nox_client_countPlayerFiles04_4DC7D0
 func nox_client_countPlayerFiles04_4DC7D0() int { return Nox_client_countPlayerFiles04_4DC7D0() }
 

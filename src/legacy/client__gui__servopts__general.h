@@ -3,6 +3,5 @@
 
 #include "defs.h"
 
-int sub_4AD840();
 
 #endif // NOX_PORT_CLIENT_GUI_SERVOPTS_GENERAL

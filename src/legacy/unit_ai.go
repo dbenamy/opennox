@@ -15,8 +15,6 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/opennox/libs/types"
-
 	"github.com/opennox/opennox/v1/common/unit/ai"
 	"github.com/opennox/opennox/v1/server"
 )
@@ -29,9 +27,6 @@ var (
 type Nox_player_polygon_check_data struct {
 	Field_0 [35]uint32
 }
-
-//export sub_545E60
-func sub_545E60(a1c *nox_object_t) int { return asObjectS(a1c).Sub_545E60() }
 
 //export nox_xxx_gameSetAudioFadeoutMb_501AC0
 func nox_xxx_gameSetAudioFadeoutMb_501AC0(v int) { Nox_xxx_gameSetAudioFadeoutMb_501AC0(v) }
@@ -54,16 +49,6 @@ func nox_xxx_unitUpdateMonster_50A5C0(a1 *nox_object_t) {
 //export nox_xxx_monsterClearActionStack_50A3A0
 func nox_xxx_monsterClearActionStack_50A3A0(a1 *nox_object_t) {
 	asObjectS(a1).ClearActionStack()
-}
-
-//export sub_50B810
-func sub_50B810(obj *nox_object_t, p *C.float2) int {
-	return bool2int(GetServer().Sub_50B810(asObjectS(obj), (*types.Pointf)(unsafe.Pointer(p))))
-}
-
-//export sub_50B500
-func sub_50B500() {
-	GetServer().S().AI.Paths.Sub_50B500()
 }
 
 func sub_50B510() {

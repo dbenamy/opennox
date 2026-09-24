@@ -2,8 +2,6 @@ package legacy
 
 import "C"
 import (
-	"unsafe"
-
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/server"
 )
@@ -43,34 +41,9 @@ func nox_xxx_playerCancelAbils_4FC180(cu *nox_object_t) {
 //export sub_4FC300
 func sub_4FC300(cu *nox_object_t, a2 int) { Sub_4FC300(asObjectS(cu), a2) }
 
-//export sub_4FC070
-func sub_4FC070(a1 *nox_object_t, a2, dt int) {
-	GetServer().S().Abils.Sub4FC070(asObjectS(a1), server.Ability(a2), dt)
-}
-
-//export sub_4FC030
-func sub_4FC030(a1 *nox_object_t, a2 int) int {
-	return GetServer().S().Abils.Sub4FC030(asObjectS(a1), server.Ability(a2))
-}
-
 //export sub_4FC440
 func sub_4FC440(a1 *nox_object_t, a2 int) {
 	GetServer().S().Abils.Sub4FC440(asObjectS(a1), server.Ability(a2))
-}
-
-//export nox_xxx_abilityGetName_425250
-func nox_xxx_abilityGetName_425250(a1 int) *C.char {
-	return internCStr(server.Ability(a1).String())
-}
-
-//export sub_4FBE60
-func sub_4FBE60(a1 unsafe.Pointer, abil int) int {
-	return GetServer().S().Abils.GetCooldown(a1, server.Ability(abil))
-}
-
-//export sub_4FBEA0
-func sub_4FBEA0(a1 unsafe.Pointer, abil, cd int) {
-	GetServer().S().Abils.SetCooldown(a1, server.Ability(abil), cd)
 }
 
 func nox_xxx_abilityGetName_0_425260(ca int) *wchar2_t {

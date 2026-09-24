@@ -51,16 +51,6 @@ func initMusic() {
 	)
 }
 
-//export sub_43D9E0
-func sub_43D9E0(a1p unsafe.Pointer) {
-	MusicModule.SetNextMusic(*(*music.MusicState)(a1p))
-}
-
-//export sub_43DD10
-func sub_43DD10(ret unsafe.Pointer) {
-	*(*music.MusicState)(ret) = MusicModule.GetCurrentBlock()
-}
-
 // Stop playing music
 func Sub_43D990() {
 	MusicModule.SetNextMusic(music.MusicState{})
@@ -86,9 +76,4 @@ func Sub_43D9B0(a1, a2 uint32) {
 
 func sub_43D9B0(a1, a2 int) {
 	Sub_43D9B0(uint32(a1), uint32(a2))
-}
-
-//export sub_43DD70
-func sub_43DD70(a1, a2 int) {
-	MusicModule.Sub_43DD70(uint32(a1), uint32(a2))
 }

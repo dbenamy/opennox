@@ -33,9 +33,4 @@ func nox_xxx_utilFindSound_40AF50(name *C.char) int {
 	return int(sound.ByName(GoString(name)))
 }
 
-//export nox_xxx_getSndName_40AF80
-func nox_xxx_getSndName_40AF80(id int) *C.char {
-	return internCStr(sound.ID(id).String())
-}
-
 func Sub_501C00(p types.Pointf, obj *server.Object) int { return objectReportSoundLevel(p, obj) }

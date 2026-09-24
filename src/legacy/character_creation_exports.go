@@ -31,9 +31,6 @@ func sub_4A6890() C.int { return C.int(characterColorStart()) }
 //export sub_4A6C90
 func sub_4A6C90() C.int { return C.int(characterColorDone()) }
 
-//export sub_4A7A70
-func sub_4A7A70(v C.int) C.int { Sub_4A7A70(int(v)); return v }
-
 func characterClassNextColor() { characterUI.classAnim.Func13Ptr = C.nox_game_showSelColor_4A5D00 }
 func characterMenuEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 	a, b := ev.EventArgsC()

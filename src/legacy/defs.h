@@ -130,7 +130,6 @@ typedef struct {
 
 
 typedef struct nox_video_bag_image_t nox_video_bag_image_t;
-int nox_video_bag_image_type(nox_video_bag_image_t* img);
 
 typedef struct {
 	char name[32]; // 0, 0

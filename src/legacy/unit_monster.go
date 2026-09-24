@@ -8,19 +8,12 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/opennox/libs/spell"
-
 	"github.com/opennox/opennox/v1/server"
 )
 
 var (
 	Nox_xxx_monsterCreateFn_54C480 func(u *server.Object)
 )
-
-//export nox_xxx_monsterCast_540A30
-func nox_xxx_monsterCast_540A30(cu *nox_object_t, spellInd C.int, a3p *nox_object_t) {
-	asObjectS(cu).MonsterCast(spell.ID(spellInd), asObjectS(a3p))
-}
 
 //export nox_xxx_monsterCreateFn_54C480
 func nox_xxx_monsterCreateFn_54C480(u *nox_object_t) {

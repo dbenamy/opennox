@@ -10,8 +10,6 @@ import "C"
 import (
 	"unsafe"
 
-	noxcolor "github.com/opennox/libs/color"
-
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -56,17 +54,6 @@ func nox_server_teamTitle_418C20(a1 int) *wchar2_t {
 
 func nox_xxx_teamCreate_4186D0(a1 C.char) *nox_team_t {
 	return (*nox_team_t)(GetServer().S().Teams.Create(server.TeamID(a1)).C())
-}
-
-//export nox_xxx_materialGetTeamColor_418D50
-func nox_xxx_materialGetTeamColor_418D50(t *nox_team_t) C.uint {
-	c := GetServer().S().Teams.GetTeamColor(asTeam(t))
-	return C.uint(noxcolor.ToRGBA5551Color(c).Color32())
-}
-
-//export nox_xxx_getTeamCounter_417DD0
-func nox_xxx_getTeamCounter_417DD0() C.uchar {
-	return C.uchar(GetServer().S().Teams.Count())
 }
 
 func nox_server_teamsResetYyy_417D00() int {

@@ -77,30 +77,23 @@ int nox_window_get_size(nox_window* win, int* outW, int* outH);
 int nox_xxx_wnd_46ABB0(nox_window* win, int a2);
 int nox_window_set_hidden(nox_window* win, int visible);
 int wndIsShown_nox_xxx_wndIsShown_46ACC0(nox_window* win);
-int nox_xxx_wndSetRectColor2MB_46AFE0(nox_window* win, int a2); // TODO: callers probably private
 void nox_gui_winSetFunc96_46B070(nox_window* win, void* fnc);
-int nox_xxx_wndSetID_46B080(nox_window* win, int id);
 int nox_xxx_wndGetID_46B0A0(nox_window* win);
 nox_window* nox_xxx_wndGetChildByID_46B0C0(nox_window* root, int id);
-int sub_46B120(nox_window* win, nox_window* a2);
-void nox_gui_draw();
 int nox_window_call_field_94_fnc(nox_window* win, int a2, int a3, int a4, char* file, int line);
 #define nox_window_call_field_94(win, a2, a3, a4) nox_window_call_field_94_fnc(win, a2, a3, a4, __FILE__, __LINE__)
 int nox_window_call_field_93(nox_window* win, int a2, int a3, int a4);
-nox_window* nox_xxx_wndGetFocus_46B4F0();
 int nox_xxx_windowFocus_46B500(nox_window* win);
 int nox_xxx_wndClearFlag_46AD80(int a1, int a2);
 int nox_xxx_wndGetFlags_46ADA0(int a1);
 int nox_xxx_wndSetCaptureMain_46ADC0(nox_window* a1);
 int nox_xxx_wndClearCaptureMain_46ADE0(nox_window* a1);
 nox_window* nox_xxx_wndGetCaptureMain_46AE00();
-int sub_46C690(nox_window* a1);
 int nox_xxx_wnd_46C6E0(nox_window* a1);
 int nox_window_is_child(nox_window* a1, nox_window* a2);
 int nox_xxx_wnd_46B280(int a1, int a2);
 int nox_client_getRenderGUI();
 void nox_client_setRenderGUI(int v);
-void set_dword_5d4594_3799468(int v);
 
 int nox_xxx_wnd_46AD60(int a1, int a2);
 

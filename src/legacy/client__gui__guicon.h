@@ -27,7 +27,5 @@ enum {
 int nox_gui_console_Hide_4512B0();
 int nox_gui_console_flagXxx_451410();
 
-int nox_gui_console_Print_450B90(unsigned char cl, wchar2_t* str);
-void nox_gui_console_PrintOrError_450C30(unsigned char cl, wchar2_t* str);
 
 #endif // NOX_PORT_CLIENT_GUI_GUICON

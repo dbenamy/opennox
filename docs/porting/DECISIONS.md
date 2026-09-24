@@ -2452,3 +2452,19 @@ capture/diagnostic paths, and joined jobs before source changes. The bounded
 96-root/profile trial passes; it does not establish full-corpus isolation or a
 measured general speedup. Keep production/headless qualification sequential and
 fall back to one process if resource/isolation failures arise. See PREBUILT_PROFILES.md.
+
+## Remaining unused exports and complete concurrent corpus
+
+Retire 378 additional wrappers and 333 simple header declarations after exact
+whole-repository reachability review and independent deletion/AST checks. Preserve
+four ambiguous candidates for separate review rather than expand this batch.
+Remove only the two newly unnecessary C imports and ordinary unused imports;
+all live Go declarations, fixtures and callback identities remain unchanged.
+See REMAINING_UNUSED_EXPORTS.md for full qualification and counts.
+
+The first complete root corpus passes with two prebuilt processes and sequential
+compilation. Retain that bounded setting for this audited corpus, with exact test
+name sets and source/binary/profile verification. Individual runtimes stayed near
+the preceding sequential sweeps; the overlap reduces elapsed sweep time without
+establishing a general engine performance improvement. Keep production and
+headless qualification sequential.

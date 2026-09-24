@@ -68,13 +68,6 @@ func nox_video_setFullScreen(v int) { Nox_video_setFullScreen(v) }
 //export sub_430C30_set_video_max
 func sub_430C30_set_video_max(w, h int) { Sub_430C30_set_video_max(w, h) }
 
-//export nox_xxx_screenGetSize_430C50_get_video_max
-func nox_xxx_screenGetSize_430C50_get_video_max(pw, ph *C.int) {
-	sz := VideoGetMaxSize()
-	*pw = C.int(sz.X)
-	*ph = C.int(sz.Y)
-}
-
 //export nox_video_callCopyBackBuffer_4AD170
 func nox_video_callCopyBackBuffer_4AD170() { Nox_video_callCopyBackBuffer_4AD170() }
 

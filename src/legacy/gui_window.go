@@ -12,8 +12,6 @@ import (
 	"runtime/debug"
 	"unsafe"
 
-	noxcolor "github.com/opennox/libs/color"
-
 	"github.com/opennox/opennox/v1/client/gui"
 )
 
@@ -38,11 +36,6 @@ func get_dword_5d4594_3799468() int {
 	return GetClient().Cli().GUI.ValXXX
 }
 
-//export set_dword_5d4594_3799468
-func set_dword_5d4594_3799468(v int) {
-	GetClient().Cli().GUI.ValYYY = v
-}
-
 //export nox_xxx_wndGetID_46B0A0
 func nox_xxx_wndGetID_46B0A0(win *nox_window) int {
 	if win == nil {
@@ -51,28 +44,9 @@ func nox_xxx_wndGetID_46B0A0(win *nox_window) int {
 	return int(asWindow(win).ID())
 }
 
-//export nox_xxx_wndSetID_46B080
-func nox_xxx_wndSetID_46B080(win *nox_window, id int) int {
-	if win == nil {
-		return -2
-	}
-	asWindow(win).SetID(uint(id))
-	return 0
-}
-
 //export nox_gui_winSetFunc96_46B070
 func nox_gui_winSetFunc96_46B070(win *nox_window, fnc unsafe.Pointer) {
 	asWindow(win).SetTooltipFunc(fnc)
-}
-
-//export nox_xxx_wndSetRectColor2MB_46AFE0
-func nox_xxx_wndSetRectColor2MB_46AFE0(win *nox_window, a2 int) int {
-	if win == nil {
-		return -2
-	}
-	// TODO: not sure if the color format is correct
-	asWindow(win).DrawData().SetBackgroundColor(noxcolor.RGBA5551(a2))
-	return 0
 }
 
 //export nox_window_call_field_94_fnc
@@ -159,11 +133,6 @@ func wndIsShown_nox_xxx_wndIsShown_46ACC0(p *nox_window) int {
 //export nox_xxx_wnd_46C6E0
 func nox_xxx_wnd_46C6E0(p *nox_window) int {
 	return asWindow(p).StackPop()
-}
-
-//export sub_46C690
-func sub_46C690(p *nox_window) int {
-	return asWindow(p).StackPush()
 }
 
 func Nox_xxx_wnd_46ABB0(p *gui.Window, v int) int {

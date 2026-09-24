@@ -25,9 +25,6 @@ var (
 	Sub_4E3AD0             func(ind int) int
 )
 
-//export nox_xxx_objectTOCgetTT_42C2B0
-func nox_xxx_objectTOCgetTT_42C2B0(a1 C.ushort) int { return Nox_xxx_objectTOCgetTT(uint16(a1)) }
-
 //export sub_4E3AD0
 func sub_4E3AD0(ind int) int { return Sub_4E3AD0(ind) }
 func Sub_4F0640() {

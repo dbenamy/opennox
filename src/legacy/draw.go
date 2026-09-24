@@ -26,7 +26,6 @@ import (
 
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 var (
@@ -49,28 +48,6 @@ func asViewport(p *nox_draw_viewport_t) *noxrender.Viewport {
 	return asViewportP(unsafe.Pointer(p))
 }
 
-//export sub_4C42A0
-func sub_4C42A0(a1 *C.int2, a2 *C.int2, a3 *int, a4 *int) int32 {
-	return GetClient().Sub4C42A0(AsPoint(unsafe.Pointer(a1)), AsPoint(unsafe.Pointer(a2)), a3, a4)
-}
-
-//export sub_4C5630
-func sub_4C5630(a1 int, a2 int, a3 int) int {
-	return GetClient().Sub4C5630(a1, a2, a3)
-}
-
-//export nox_draw_getViewport_437250
-func nox_draw_getViewport_437250() *nox_draw_viewport_t {
-	return (*nox_draw_viewport_t)(GetClient().Viewport().C())
-}
-
-//export nox_xxx_getSomeCoods_435670
-func nox_xxx_getSomeCoods_435670(a1 *C.int2) {
-	p := GetClient().Viewport().World.Max
-	a1.field_0 = C.int(p.X)
-	a1.field_4 = C.int(p.Y)
-}
-
 func nox_xxx_cliUpdateCameraPos_435600(x, y int) {
 	Nox_xxx_cliUpdateCameraPos_435600(x, y)
 }
@@ -80,22 +57,9 @@ func sub_437260() {
 	Sub_437260()
 }
 
-//export nox_draw_splitColor_435280
-func nox_draw_splitColor_435280(cl C.short, pr, pg, pb *C.uchar) {
-	c := noxrender.SplitColor(noxcolor.RGBA5551(cl))
-	*pr = C.uchar(c.R)
-	*pg = C.uchar(c.G)
-	*pb = C.uchar(c.B)
-}
-
 //export nox_draw_setMaterial_4340A0
 func nox_draw_setMaterial_4340A0(ind, r, g, b int) {
 	GetClient().R2().Data().SetMaterialRGB(ind, r, g, b)
-}
-
-//export nox_draw_setMaterial_4341D0
-func nox_draw_setMaterial_4341D0(ind, cl int) {
-	GetClient().R2().Data().SetMaterial(ind, noxcolor.RGBA5551(cl))
 }
 
 //export sub_434080
@@ -133,43 +97,14 @@ func nox_xxx_draw_434600(a1 int) {
 	GetClient().R2().Data().SetColorize17(a1)
 }
 
-//export sub_434990
-func sub_434990(r, g, b int) {
-	GetClient().R2().Data().SetLightColor(noxrender.RGB{
-		R: r,
-		G: g,
-		B: b,
-	})
-}
-
 //export sub_47D370
 func sub_47D370(a1 int) {
 	GetClient().R2().Set_dword_5d4594_3799484(a1)
 }
 
-//export sub_47D400
-func sub_47D400(a1 int, a2 C.char) {
-	GetClient().R2().SetInterlacing(a1 != 0, int(a2))
-}
-
-//export sub_49F7C0_def
-func sub_49F7C0_def() {
-	GetClient().R2().Sub_49F7C0_def_go()
-}
-
 //export nox_client_drawSetAlpha_434580
 func nox_client_drawSetAlpha_434580(a C.uchar) {
 	GetClient().R2().Data().SetAlpha(byte(a))
-}
-
-//export nox_draw_enableTextSmoothing_43F670
-func nox_draw_enableTextSmoothing_43F670(v int) {
-	GetClient().R2().SetTextSmooting(v != 0)
-}
-
-//export nox_client_drawResetPoints_49F5A0
-func nox_client_drawResetPoints_49F5A0() {
-	GetClient().R2().ClearPoints()
 }
 
 //export nox_client_drawAddPoint_49F500
@@ -188,16 +123,6 @@ func nox_client_drawLineFromPoints_49E4B0() int {
 	return bool2int(r.DrawLineFromPoints(r.Data().Color2()))
 }
 
-//export sub_49E4F0
-func sub_49E4F0(a1 int) int {
-	return bool2int(GetClient().R2().DrawParticles49ED80(a1))
-}
-
-//export nox_draw_setColorMultAndIntensityRGB_433CD0
-func nox_draw_setColorMultAndIntensityRGB_433CD0(r, g, b C.uchar) int {
-	return int(GetClient().R2().SetColorMultAndIntensityRGB(byte(r), byte(g), byte(b)))
-}
-
 //export nox_draw_set54RGB32_434040
 func nox_draw_set54RGB32_434040(cl int) {
 	c := noxrender.SplitColor(noxcolor.RGBA5551(cl))
@@ -206,12 +131,6 @@ func nox_draw_set54RGB32_434040(cl int) {
 		G: int(c.G),
 		B: int(c.B),
 	})
-}
-
-//export nox_draw_setColorMultAndIntensity_433E40
-func nox_draw_setColorMultAndIntensity_433E40(cl int) int {
-	c := noxcolor.RGBA5551(cl).ColorNRGBA()
-	return int(GetClient().R2().SetColorMultAndIntensityRGB(c.R, c.G, c.B))
 }
 
 //export sub_437290
@@ -242,12 +161,6 @@ func nox_client_drawPixel_49EFA0(a1, a2 int) {
 	r.DrawPixel(image.Pt(a1, a2), r.Data().Color2())
 }
 
-//export nox_client_drawPoint_4B0BC0
-func nox_client_drawPoint_4B0BC0(a1, a2, a3 int) {
-	r := GetClient().R2()
-	r.DrawPointRad(image.Pt(a1, a2), a3, r.Data().Color2())
-}
-
 //export nox_xxx_drawPointMB_499B70
 func nox_xxx_drawPointMB_499B70(a1, a2, a3 int) {
 	r := GetClient().R2()
@@ -258,13 +171,6 @@ func nox_xxx_drawPointMB_499B70(a1, a2, a3 int) {
 func nox_xxx_guiFontHeightMB_43F320(fnt unsafe.Pointer) int {
 	r := GetClient().R2()
 	return r.FontHeight(r.GetFonts().AsFont(fnt))
-}
-
-//export nox_draw_setTabWidth_43FE20
-func nox_draw_setTabWidth_43FE20(v int) int {
-	old := GetClient().R2().TabWidth()
-	GetClient().R2().SetTabWidth(v)
-	return old
 }
 
 //export nox_xxx_drawGetStringSize_43F840
@@ -329,65 +235,14 @@ func nox_xxx_drawStringStyle_43F7B0(font unsafe.Pointer, sp *wchar2_t, x, y int)
 	return r.DrawStringStyle(r.GetFonts().AsFont(font), GoWString(sp), image.Point{X: x, Y: y})
 }
 
-//export nox_video_drawAnimatedImageOrCursorAt_4BE6D0
-func nox_video_drawAnimatedImageOrCursorAt_4BE6D0(a1, a2, a3 int) {
-	GetClient().Nox_video_drawAnimatedImageOrCursorAt(AsImageRefP(unsafe.Pointer(uintptr(a1))), image.Point{X: a2, Y: a3})
-}
-
-//export sub_484C60
-func sub_484C60(a1 C.float) int {
-	return client.LightRadius(float32(a1))
-}
-
-//export sub_469920
-func sub_469920(p *C.nox_point) *C.char {
-	dst := GetClient().Sub469920(AsPoint(unsafe.Pointer(p)))
-	return (*C.char)(unsafe.Pointer(&dst[0]))
-}
-
 //export nox_video_drawCircleColored_4C3270
 func nox_video_drawCircleColored_4C3270(a1, a2, a3, a4 int) {
 	GetClient().R2().DrawCircle(a1, a2, a3, noxcolor.RGBA5551(a4))
 }
 
-//export nox_video_drawCircle_4B0B90
-func nox_video_drawCircle_4B0B90(a1, a2, a3 int) {
-	GetClient().R2().DrawCircle(a1, a2, a3, GetClient().R2().Data().Color2())
-}
-
 //export nox_client_drawImageAt_47D2C0
 func nox_client_drawImageAt_47D2C0(img *nox_video_bag_image_t, x, y int) {
 	GetClient().R2().DrawImageAt(asImage(img), image.Point{X: x, Y: y})
-}
-
-//export nox_draw_imageMeta_47D5C0
-func nox_draw_imageMeta_47D5C0(img *nox_video_bag_image_t, px, py, pw, ph *C.uint) int {
-	if img == nil {
-		return 0
-	}
-	if pw != nil {
-		*pw = 0
-	}
-	if ph != nil {
-		*ph = 0
-	}
-	off, sz, ok := asImage(img).Meta()
-	if !ok {
-		return 0
-	}
-	if px != nil {
-		*px += C.uint(off.X)
-	}
-	if py != nil {
-		*py += C.uint(off.Y)
-	}
-	if pw != nil {
-		*pw = C.uint(sz.X)
-	}
-	if ph != nil {
-		*ph = C.uint(sz.Y)
-	}
-	return 1
 }
 
 //export nox_video_getImagePixdata_42FB30
@@ -415,28 +270,9 @@ func nox_client_isConnected_43C700() int {
 	return bool2int(Nox_client_isConnected())
 }
 
-//export nox_video_stopAllFades_44E040
-func nox_video_stopAllFades_44E040() {
-	GetClient().Nox_video_stopAllFades44E040()
-}
-
 //export nox_video_inFadeTransition_44E0D0
 func nox_video_inFadeTransition_44E0D0() int {
 	return Nox_video_inFadeTransition_44E0D0()
-}
-
-//export nox_video_fadeInScreen_44DAB0
-func nox_video_fadeInScreen_44DAB0(a1, a2 C.int, fnc unsafe.Pointer) {
-	GetClient().R2().FadeInScreen(int(a1), a2 != 0, func() {
-		ccall.CallVoidVoid(fnc)
-	})
-}
-
-//export nox_video_fadeOutScreen_44DB30
-func nox_video_fadeOutScreen_44DB30(a1, a2 C.int, fnc unsafe.Pointer) {
-	GetClient().R2().FadeOutScreen(int(a1), a2 != 0, func() {
-		ccall.CallVoidVoid(fnc)
-	})
 }
 
 //export sub_4B6720

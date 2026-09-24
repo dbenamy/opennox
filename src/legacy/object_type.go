@@ -48,24 +48,10 @@ func init() {
 	server.RegisterObjectInitGo("GoldInit", C.nox_xxx_unitInitGold_4F04B0, func(u *server.Object) { nox_xxx_unitInitGold_4F04B0(C.int(uintptr(u.CObj()))) }, unsafe.Sizeof(server.GoldInitData{}))
 }
 
-//export nox_xxx_unitDefGetCount_4E3AC0
-func nox_xxx_unitDefGetCount_4E3AC0() int { return GetServer().S().Types.Count() }
-
 //export nox_xxx_newObjectWithTypeInd_4E3450
 func nox_xxx_newObjectWithTypeInd_4E3450(ind int) *nox_object_t {
 	s := GetServer().S()
 	return asObjectC(s.NewObjectByTypeInd(ind))
-}
-
-//export sub_4F40A0
-func sub_4F40A0(a1 *nox_object_t) C.char { return C.char(GetServer().S().Sub_4F40A0(asObjectS(a1))) }
-
-//export sub_4E4C90
-func sub_4E4C90(a1 *nox_object_t, a2 uint) int { return bool2int(asObjectS(a1).Sub_4E4C90(a2)) }
-
-//export nox_xxx_getUnitDefDd10_4E3BA0
-func nox_xxx_getUnitDefDd10_4E3BA0(ind int) int {
-	return bool2int(GetServer().S().Types.ByInd(ind).Allowed())
 }
 
 //export nox_xxx_getUnitName_4E39D0
@@ -84,24 +70,6 @@ func nox_xxx_getUnitNameByThingType_4E3A80(ind int) *C.char {
 	return internCStr(GetServer().S().Types.ByInd(ind).ID())
 }
 
-//export nox_objectTypeGetXfer
-func nox_objectTypeGetXfer(cstr *C.char) unsafe.Pointer {
-	t := GetServer().S().Types.ByID(GoString(cstr))
-	if t == nil {
-		return nil
-	}
-	return t.Xfer
-}
-
-//export nox_objectTypeGetWorth
-func nox_objectTypeGetWorth(cstr *C.char) int {
-	t := GetServer().S().Types.ByID(GoString(cstr))
-	if t == nil {
-		return -1
-	}
-	return t.Worth
-}
-
 //export nox_xxx_newObjectByTypeID_4E3810
 func nox_xxx_newObjectByTypeID_4E3810(cstr *C.char) *nox_object_t {
 	obj := GetServer().S().NewObjectByTypeID(GoString(cstr))
@@ -109,29 +77,6 @@ func nox_xxx_newObjectByTypeID_4E3810(cstr *C.char) *nox_object_t {
 		return nil
 	}
 	return asObjectC(obj)
-}
-
-//export nox_xxx_getNameId_4E3AA0
-func nox_xxx_getNameId_4E3AA0(cstr *C.char) int {
-	return GetServer().S().Types.IndByID(GoString(cstr))
-}
-
-//export sub_415A30
-func sub_415A30(a1 *C.char) int {
-	t := GetServer().S().Sub415A30(GoString(a1))
-	if t == nil {
-		return -1
-	}
-	return t.Ind()
-}
-
-//export sub_415EC0
-func sub_415EC0(a1 *C.char) int {
-	t := GetServer().S().Sub415EC0(GoString(a1))
-	if t == nil {
-		return -1
-	}
-	return t.Ind()
 }
 
 func Get_nox_xxx_XFerInvLight_4F5AA0() unsafe.Pointer {

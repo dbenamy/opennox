@@ -3,8 +3,6 @@
 
 #include "defs.h"
 
-int sub_545E60(nox_object_t* a1);
-void sub_548600(nox_object_t* a1, float a2, float a3);
 void sub_548830(int a1);
 void sub_548860(int a1, short a2);
 int nox_xxx_strikeOgre_549220(float a1);

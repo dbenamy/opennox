@@ -25,7 +25,5 @@ _Static_assert(sizeof(nox_team_t) == 80, "wrong size of nox_team_t structure!");
 nox_team_t* nox_server_teamByXxx_418AE0(int a1);
 nox_team_t* nox_server_teamFirst_418B10();
 nox_team_t* nox_server_teamNext_418B60(nox_team_t* a1);
-unsigned char nox_xxx_getTeamCounter_417DD0();
-uint32_t nox_xxx_materialGetTeamColor_418D50(nox_team_t* a1);
 
 #endif // NOX_PORT_COMMON_TEAM

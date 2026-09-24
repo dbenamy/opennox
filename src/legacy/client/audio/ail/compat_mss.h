@@ -104,7 +104,6 @@ int32_t AIL_startup(void);
 void AIL_stop_sample(HSAMPLE S);
 void AIL_stop_timer(HTIMER timer);
 int32_t AIL_stream_position(HSTREAM stream);
-int32_t AIL_stream_status(HSTREAM stream);
 void AIL_waveOutClose(HDIGDRIVER drvr);
 int32_t AIL_waveOutOpen(HDIGDRIVER* drvr, int32_t wDeviceID, NOX_WAVEFORMAT lpFormat);
 

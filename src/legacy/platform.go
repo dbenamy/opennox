@@ -18,9 +18,6 @@ func nox_platform_rand() int {
 	return platform.RandInt() & 0x7fff
 }
 
-//export nox_platform_srand
-func nox_platform_srand(seed C.uint) { platform.RandSeed(int64(seed)) }
-
 //export nox_platform_get_ticks
 func nox_platform_get_ticks() C.uint { return C.uint(PlatformTicks()) }
 
