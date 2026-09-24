@@ -28,3 +28,24 @@ Required converted gates: exact root-name sets in three profiles, safe/static,
 three production builds/ABI checks, exact known-suite comparison, fresh headless
 character creation/save/load/resume and unchanged original asset hashes. Record
 actual cgo/export/header counts after qualification.
+
+
+## Original address-use evidence
+
+Two fresh default processes passed all 51 roots. Each recorded 202 outer results,
+34 distinct registered addresses, every reward operation 1300–1320 and every
+spell-lifecycle operation 1500–1528, and 189,482,055 normalization observations.
+No registered function address was consumed by the snapshots. The nine retained
+reward callbacks remain required by production regardless of that fixture result.
+
+Address-use results, operation coverage and generated-ID counts agree between
+processes. Raw map sizes differ in three records; these are diagnostics rather
+than golden outputs. Preserve per-run cardinality accounting by reserving the
+13 removed spell entries (existing reservation 1→14) and 12 removed reward entries
+only when that fixture initializes. All frozen expectations remain unchanged.
+
+Temporary instrumentation is restored. See [probe report](spell-reward-identity-probe.json)
+and [reproducible patch](spell-reward-identity-probe.patch), applied to `279e7867`
+with `git apply --unidiff-zero`. Probe generation initially rejected overlapping
+edit context before installation; grouped-context replay resolved it, and both
+runs used the same reviewed instrumentation. Conversion qualification is pending.

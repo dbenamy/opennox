@@ -1,0 +1,182 @@
+--- a/src/legacy/ai_main_porttest.go
++++ b/src/legacy/ai_main_porttest.go
+@@ -62,0 +63,3 @@
++				if proxy.identityProbe != nil {
++					proxy.identityProbe.normalizeHit("ai_main_life_ids", v, id)
++				}
+@@ -63,0 +67,2 @@
++			} else if proxy.identityProbe != nil {
++				proxy.identityProbe.normalizeMiss(v)
+--- a/src/legacy/ai_roam_owner_porttest.go
++++ b/src/legacy/ai_roam_owner_porttest.go
+@@ -36,0 +37 @@
++	identityProbe    *portTestSpellRewardIdentityProbe
+--- a/src/legacy/ai_roam_porttest.go
++++ b/src/legacy/ai_roam_porttest.go
+@@ -242,0 +243,3 @@
++			if proxy.identityProbe != nil {
++				proxy.identityProbe.normalizeHit("roam_ids", v, id)
++			}
+@@ -243,0 +247,3 @@
++		}
++		if proxy.identityProbe != nil {
++			proxy.identityProbe.normalizeMiss(v)
+@@ -509,0 +516,3 @@
++				if proxy.identityProbe != nil {
++					proxy.identityProbe.normalizeHit("roam_field2_life_ids", r.Field2, id)
++				}
+@@ -556,0 +566,3 @@
++	if proxy.identityProbe != nil {
++		proxy.identityProbe.flush()
++	}
+--- a/src/legacy/spawn_players_porttest.go
++++ b/src/legacy/spawn_players_porttest.go
+@@ -56,0 +57,3 @@
++			if proxy.identityProbe != nil {
++				proxy.identityProbe.normalizeHit("spawn_players_life_ids", v, id)
++			}
+@@ -57,0 +61,3 @@
++		}
++		if proxy.identityProbe != nil {
++			proxy.identityProbe.normalizeMiss(v)
+--- a/src/legacy/shop_pools_porttest.go
++++ b/src/legacy/shop_pools_porttest.go
+@@ -111,0 +112 @@
++	identityProbe       *portTestSpellRewardIdentityProbe
+@@ -141,0 +143,3 @@
++		if p.identityProbe != nil {
++			p.identityProbe.normalizeHit("shop_ids", v, id)
++		}
+@@ -144,0 +149,3 @@
++		if p.identityProbe != nil {
++			p.identityProbe.normalizeHit("life_ids", v, id)
++		}
+@@ -145,0 +153,3 @@
++	}
++	if p.identityProbe != nil {
++		p.identityProbe.normalizeMiss(v)
+@@ -151,0 +162,3 @@
++	if p.identityProbe != nil {
++		p.identityProbe.register(ptr, id)
++	}
+@@ -266,0 +280,4 @@
++	if p.identityProbe == nil {
++		p.identityProbe = newPortTestSpellRewardIdentityProbe()
++	}
++	p.proxy.identityProbe = p.identityProbe
+@@ -680,0 +698,3 @@
++	if p.identityProbe != nil {
++		p.identityProbe.observeShopMaps(len(p.ids), len(p.proxy.life.ids), p.reservedFunctionIDs)
++	}
+--- a/src/legacy/spell_lifecycle_porttest.go
++++ b/src/legacy/spell_lifecycle_porttest.go
+@@ -188,0 +189,3 @@
++			if p.identityProbe != nil {
++				p.identityProbe.function(f, 92000+uint32(i))
++			}
+@@ -238,0 +242,3 @@
++	if p.identityProbe != nil {
++		p.identityProbe.ops[uint32(a.Op)]++
++	}
+--- a/src/legacy/reward_generation_porttest.go
++++ b/src/legacy/reward_generation_porttest.go
+@@ -149,0 +150,3 @@
++	if p.identityProbe != nil {
++		p.identityProbe.ops[uint32(a.Op)]++
++	}
+@@ -262,0 +266,3 @@
++		if p.identityProbe != nil {
++			p.identityProbe.function(C.rewardFunction(C.int(i)), 90000+uint32(i))
++		}
+--- /dev/null
++++ b/src/legacy/spell_reward_identity_probe_porttest.go
+@@ -0,0 +1,89 @@
++//go:build porttest
++
++package legacy
++
++import (
++	"encoding/json"
++	"os"
++	"unsafe"
++)
++
++type portTestSpellRewardIdentityProbe struct {
++	path          string
++	addresses     map[uint32]uint32
++	registrations map[uint32]uint32
++	generated     map[uint32]uint64
++	hits          map[string]map[uint32]uint64
++	ops           map[uint32]uint64
++	lookups       uint64
++	flushes       uint64
++	maps          [][3]int
++}
++
++func newPortTestSpellRewardIdentityProbe() *portTestSpellRewardIdentityProbe {
++	path := os.Getenv("OPENNOX_SPELL_REWARD_IDENTITY_PROBE")
++	if path == "" {
++		return nil
++	}
++	return &portTestSpellRewardIdentityProbe{path: path, addresses: make(map[uint32]uint32), registrations: make(map[uint32]uint32), generated: make(map[uint32]uint64), hits: make(map[string]map[uint32]uint64), ops: make(map[uint32]uint64)}
++}
++func (p *portTestSpellRewardIdentityProbe) function(ptr unsafe.Pointer, id uint32) {
++	raw := uint32(uintptr(ptr))
++	if raw == 0 {
++		panic("nil function address")
++	}
++	if old, ok := p.addresses[raw]; ok && old != id {
++		panic("function address alias")
++	}
++	p.addresses[raw] = id
++	p.registrations[id] = raw
++}
++func (p *portTestSpellRewardIdentityProbe) register(ptr unsafe.Pointer, id uint32) {
++	if id >= 90000 {
++		p.generated[id]++
++	}
++}
++func (p *portTestSpellRewardIdentityProbe) normalizeHit(table string, key, id uint32) {
++	p.lookups++
++	target, ok := p.addresses[key]
++	if !ok {
++		return
++	}
++	if p.hits[table] == nil {
++		p.hits[table] = make(map[uint32]uint64)
++	}
++	p.hits[table][target]++
++}
++func (p *portTestSpellRewardIdentityProbe) normalizeMiss(key uint32) { p.lookups++ }
++func (p *portTestSpellRewardIdentityProbe) observeShopMaps(shop, life, reserved int) {
++	p.maps = append(p.maps, [3]int{shop, life, reserved})
++}
++func (p *portTestSpellRewardIdentityProbe) flush() {
++	if p == nil {
++		return
++	}
++	p.flushes++
++	row := struct {
++		Flush         uint64
++		Registrations map[uint32]uint32
++		Hits          map[string]map[uint32]uint64
++		Operations    map[uint32]uint64
++		Generated     map[uint32]uint64
++		Lookups       uint64
++		MapSizes      [][3]int
++	}{p.flushes, p.registrations, p.hits, p.ops, p.generated, p.lookups, p.maps}
++	data, err := json.Marshal(row)
++	if err != nil {
++		panic(err)
++	}
++	f, err := os.OpenFile(p.path, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0600)
++	if err != nil {
++		panic(err)
++	}
++	if _, err = f.Write(append(data, '\n')); err != nil {
++		panic(err)
++	}
++	if err = f.Close(); err != nil {
++		panic(err)
++	}
++}
