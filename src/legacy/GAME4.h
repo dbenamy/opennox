@@ -14,12 +14,6 @@ int nox_xxx_netSendRewardNotify_4FAD50(int a1, int a2, int a3, char a4);
 void sub_4FADD0(int a1, char* a2, char a3);
 int sub_4FB050(int a1, int a2, int* a3);
 void nox_xxx_teleportAllPixies_4FD090(nox_object_t* a1);
-int nox_xxx_summonStart_500DA0(int a1);
-int nox_xxx_summonFinish_5010D0(int a1);
-void nox_xxx_summonCancel_5011C0(int a1);
-int nox_xxx_charmCreature1_5011F0(int* a1);
-int nox_xxx_charmCreatureFinish_5013E0(int* a1);
-int nox_xxx_charmCreature2_501690(int a1);
 uint32_t* nox_xxx_tileAllocTileInCoordList_5040A0(int a1, int a2, float a3);
 uint32_t* sub_504290(char a1, char a2);
 

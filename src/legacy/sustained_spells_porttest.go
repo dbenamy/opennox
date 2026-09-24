@@ -2,146 +2,6 @@
 
 package legacy
 
-/*
-#include <stdlib.h>
-#include <stdint.h>
-
-#include <stdint.h>
-#include <string.h>
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-int nox_xxx_spellDrainMana_52E210(float a1);
-int nox_xxx_spellEnergyBoltStop_52E820(int a1);
-int nox_xxx_spellEnergyBoltTick_52E850(float a1);
-int nox_xxx_firewalkTick_52ED40(float* a1);
-int sub_52EF30(int a1);
-int sub_52EFD0(int a1);
-int sub_52F1D0(int a1);
-int sub_52F220(int* a1);
-int sub_52F2E0(float a1);
-int sub_52F460(float a1);
-int nox_xxx_castShield1_52F5A0(uint32_t* a1);
-int sub_52F650(int a1);
-int sub_52F670(int a1);
-int nox_xxx_onStartLightning_52F820(int a1);
-int nox_xxx_onFrameLightning_52F8A0(float a1);
-char sub_530100(uint32_t* a1);
-int nox_xxx_spellTagCreature_530160(uint32_t* a1);
-unsigned int sub_530250(int a1);
-int sub_530270(int a1);
-int nox_xxx_spellBlink2_530310(uint32_t* a1);
-int nox_xxx_spellBlink1_530380(int* a1);
-int sub_5305D0(uint32_t* a1);
-int sub_530650(int* a1);
-int nox_xxx_castTele_530820(int a1);
-int sub_530880(int* a1);
-int nox_xxx_castTTT_530B70(int* a1);
-int sub_530CA0(int a1);
-int sub_530D30(int* a1);
-int nox_xxx_manaBomb_530F90(uint32_t* a1);
-int nox_xxx_manaBombBoom_5310C0(int* a1);
-int sub_531290(int a1);
-int nox_xxx_spellTurnUndeadCreate_531310(uint32_t* a1);
-int nox_xxx_spellTurnUndeadUpdate_531410();
-int nox_xxx_spellTurnUndeadDelete_531420(int a1);
-int sub_531490(uint32_t* a1);
-int sub_5314F0(int a1);
-int sub_531560(int a1);
-int nox_xxx_plasmaSmth_531580(int a1);
-int nox_xxx_plasmaShot_531600(int a1);
-int sub_5319E0(int a1);
-int nox_xxx_spellCreateMoonglow_531A00(uint32_t* a1);
-int sub_531AF0(int a1);
-static uint32_t sustainedInvoke(int op,int u,int a,void* record,void* output,int q){float fp;memcpy(&fp,&record,4);switch(op){
-case 0: return (uint32_t)(nox_xxx_spellDrainMana_52E210(fp));
-case 5: return (uint32_t)(nox_xxx_spellEnergyBoltStop_52E820((int)record));
-case 6: return (uint32_t)(nox_xxx_spellEnergyBoltTick_52E850(fp));
-case 8: return (uint32_t)(nox_xxx_firewalkTick_52ED40((float*)record));
-case 9: return (uint32_t)(sub_52EF30((int)record));
-case 10: return (uint32_t)(sub_52EFD0((int)record));
-case 11: return (uint32_t)(sub_52F1D0((int)record));
-case 12: return (uint32_t)(sub_52F220((int*)record));
-case 13: return (uint32_t)(sub_52F2E0(fp));
-case 14: return (uint32_t)(sub_52F460(fp));
-case 15: return (uint32_t)(nox_xxx_castShield1_52F5A0((uint32_t*)record));
-case 16: return (uint32_t)(sub_52F650((int)record));
-case 17: return (uint32_t)(sub_52F670((int)record));
-case 20: return (uint32_t)(nox_xxx_onStartLightning_52F820((int)record));
-case 21: return (uint32_t)(nox_xxx_onFrameLightning_52F8A0(fp));
-case 24: return (uint32_t)(sub_530100((uint32_t*)record));
-case 25: return (uint32_t)(nox_xxx_spellTagCreature_530160((uint32_t*)record));
-case 26: return (uint32_t)(sub_530250((int)record));
-case 27: return (uint32_t)(sub_530270((int)record));
-case 28: return (uint32_t)(nox_xxx_spellBlink2_530310((uint32_t*)record));
-case 29: return (uint32_t)(nox_xxx_spellBlink1_530380((int*)record));
-case 31: return (uint32_t)(sub_5305D0((uint32_t*)record));
-case 32: return (uint32_t)(sub_530650((int*)record));
-case 33: return (uint32_t)(nox_xxx_castTele_530820((int)record));
-case 34: return (uint32_t)(sub_530880((int*)record));
-case 35: return (uint32_t)(nox_xxx_castTTT_530B70((int*)record));
-case 36: return (uint32_t)(sub_530CA0((int)record));
-case 37: return (uint32_t)(sub_530D30((int*)record));
-case 38: return (uint32_t)(nox_xxx_manaBomb_530F90((uint32_t*)record));
-case 39: return (uint32_t)(nox_xxx_manaBombBoom_5310C0((int*)record));
-case 40: return (uint32_t)(sub_531290((int)record));
-case 41: return (uint32_t)(nox_xxx_spellTurnUndeadCreate_531310((uint32_t*)record));
-case 42: return (uint32_t)(nox_xxx_spellTurnUndeadUpdate_531410());
-case 43: return (uint32_t)(nox_xxx_spellTurnUndeadDelete_531420((int)record));
-case 44: return (uint32_t)(sub_531490((uint32_t*)record));
-case 45: return (uint32_t)(sub_5314F0((int)record));
-case 46: return (uint32_t)(sub_531560((int)record));
-case 47: return (uint32_t)(nox_xxx_plasmaSmth_531580((int)record));
-case 48: return (uint32_t)(nox_xxx_plasmaShot_531600((int)record));
-case 50: return (uint32_t)(sub_5319E0((int)record));
-case 51: return (uint32_t)(nox_xxx_spellCreateMoonglow_531A00((uint32_t*)record));
-case 52: return (uint32_t)(sub_531AF0((int)record));
-default:abort();}}
-static void* sustainedFunction(int op){switch(op){
-case 0:return nox_xxx_spellDrainMana_52E210;
-case 5:return nox_xxx_spellEnergyBoltStop_52E820;
-case 6:return nox_xxx_spellEnergyBoltTick_52E850;
-case 8:return nox_xxx_firewalkTick_52ED40;
-case 9:return sub_52EF30;
-case 10:return sub_52EFD0;
-case 11:return sub_52F1D0;
-case 12:return sub_52F220;
-case 13:return sub_52F2E0;
-case 14:return sub_52F460;
-case 15:return nox_xxx_castShield1_52F5A0;
-case 16:return sub_52F650;
-case 17:return sub_52F670;
-case 20:return nox_xxx_onStartLightning_52F820;
-case 21:return nox_xxx_onFrameLightning_52F8A0;
-case 24:return sub_530100;
-case 25:return nox_xxx_spellTagCreature_530160;
-case 26:return sub_530250;
-case 27:return sub_530270;
-case 28:return nox_xxx_spellBlink2_530310;
-case 29:return nox_xxx_spellBlink1_530380;
-case 31:return sub_5305D0;
-case 32:return sub_530650;
-case 33:return nox_xxx_castTele_530820;
-case 34:return sub_530880;
-case 35:return nox_xxx_castTTT_530B70;
-case 36:return sub_530CA0;
-case 37:return sub_530D30;
-case 38:return nox_xxx_manaBomb_530F90;
-case 39:return nox_xxx_manaBombBoom_5310C0;
-case 40:return sub_531290;
-case 41:return nox_xxx_spellTurnUndeadCreate_531310;
-case 42:return nox_xxx_spellTurnUndeadUpdate_531410;
-case 43:return nox_xxx_spellTurnUndeadDelete_531420;
-case 44:return sub_531490;
-case 45:return sub_5314F0;
-case 46:return sub_531560;
-case 47:return nox_xxx_plasmaSmth_531580;
-case 48:return nox_xxx_plasmaShot_531600;
-case 50:return sub_5319E0;
-case 51:return nox_xxx_spellCreateMoonglow_531A00;
-case 52:return sub_531AF0;
-default:return 0;}}
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -226,7 +86,7 @@ func (p *portTestShopPools) sustainedItems() {
 		p.temporaryRef(ref).Damage = p.proxy.combat.target.Damage
 	}
 	for i := 0; i < 53; i++ {
-		if fn := C.sustainedFunction(C.int(i)); fn != nil {
+		if fn := sustainedDurationKey(i); fn != nil {
 			p.identify(fn, 97000+uint32(i))
 		}
 	}
@@ -284,7 +144,7 @@ func (p *portTestShopPools) sustainedAction(a PortTestShopAction) uint32 {
 	case 49:
 		sustainedPlasmaCandidate(u, t)
 	default:
-		out = uint32(C.sustainedInvoke(C.int(a.Op-1700), C.int(uintptr(u.CObj())), C.int(uintptr(t.CObj())), record, output, C.int(q)))
+		out = sustainedDurationInvoke(a.Op-1700, record)
 	}
 	p.sustainedChildren(true)
 	ctrlState := p.temporary.world.objectives.attack.controls
@@ -367,4 +227,190 @@ func (p *portTestShopPools) sustainedDetails() *PortTestSustainedSpellsResult {
 		out.Globals = append(out.Globals, p.normalize(uint32(*sustainedGlobal(i))))
 	}
 	return out
+}
+
+// sustainedDurationKey keeps the original sparse operation IDs used by the
+// fixture snapshots while naming the replacement process-lifetime keys.
+func sustainedDurationKey(op int) unsafe.Pointer {
+	switch op {
+	case 0:
+		return Get_nox_xxx_spellDrainMana_52E210()
+	case 5:
+		return Get_nox_xxx_spellEnergyBoltStop_52E820()
+	case 6:
+		return Get_nox_xxx_spellEnergyBoltTick_52E850()
+	case 8:
+		return Get_nox_xxx_firewalkTick_52ED40()
+	case 9:
+		return Get_sub_52EF30()
+	case 10:
+		return Get_sub_52EFD0()
+	case 11:
+		return Get_sub_52F1D0()
+	case 12:
+		return Get_sub_52F220()
+	case 13:
+		return Get_sub_52F2E0()
+	case 14:
+		return Get_sub_52F460()
+	case 15:
+		return Get_nox_xxx_castShield1_52F5A0()
+	case 16:
+		return Get_sub_52F650()
+	case 17:
+		return Get_sub_52F670()
+	case 20:
+		return Get_nox_xxx_onStartLightning_52F820()
+	case 21:
+		return Get_nox_xxx_onFrameLightning_52F8A0()
+	case 24:
+		return Get_sub_530100()
+	case 25:
+		return Get_nox_xxx_spellTagCreature_530160()
+	case 26:
+		return Get_sub_530250()
+	case 27:
+		return Get_sub_530270()
+	case 28:
+		return Get_nox_xxx_spellBlink2_530310()
+	case 29:
+		return Get_nox_xxx_spellBlink1_530380()
+	case 31:
+		return Get_sub_5305D0()
+	case 32:
+		return Get_sub_530650()
+	case 33:
+		return Get_nox_xxx_castTele_530820()
+	case 34:
+		return Get_sub_530880()
+	case 35:
+		return Get_nox_xxx_castTTT_530B70()
+	case 36:
+		return Get_sub_530CA0()
+	case 37:
+		return Get_sub_530D30()
+	case 38:
+		return Get_nox_xxx_manaBomb_530F90()
+	case 39:
+		return Get_nox_xxx_manaBombBoom_5310C0()
+	case 40:
+		return Get_sub_531290()
+	case 41:
+		return Get_nox_xxx_spellTurnUndeadCreate_531310()
+	case 42:
+		return Get_nox_xxx_spellTurnUndeadUpdate_531410()
+	case 43:
+		return Get_nox_xxx_spellTurnUndeadDelete_531420()
+	case 44:
+		return Get_sub_531490()
+	case 45:
+		return Get_sub_5314F0()
+	case 46:
+		return Get_sub_531560()
+	case 47:
+		return Get_nox_xxx_plasmaSmth_531580()
+	case 48:
+		return Get_nox_xxx_plasmaShot_531600()
+	case 50:
+		return Get_sub_5319E0()
+	case 51:
+		return Get_nox_xxx_spellCreateMoonglow_531A00()
+	case 52:
+		return Get_sub_531AF0()
+	default:
+		return nil
+	}
+}
+
+// sustainedDurationInvoke follows the old C dispatcher operation map. Its
+// pointer/float/int adapters all transported the same 32-bit record word.
+func sustainedDurationInvoke(op int, record unsafe.Pointer) uint32 {
+	switch op {
+	case 0:
+		return uint32(sustainedDrainMana(record))
+	case 5:
+		return uint32(sustainedEnergyStart(record))
+	case 6:
+		return uint32(sustainedEnergyTick(record))
+	case 8:
+		return uint32(sustainedFirewalk(record))
+	case 9:
+		return uint32(sustainedForceStart(record))
+	case 10:
+		return uint32(sustainedForceTick(record))
+	case 11:
+		return uint32(sustainedForceCancel(record))
+	case 12:
+		return uint32(sustainedGreaterHealStart(record))
+	case 13:
+		return uint32(sustainedGreaterHealTick(record))
+	case 14:
+		return uint32(sustainedChannelLife(record))
+	case 15:
+		return uint32(sustainedShieldStart(record))
+	case 16:
+		return uint32(sustainedShieldTick(record))
+	case 17:
+		return uint32(sustainedShieldCancel(record))
+	case 20:
+		return uint32(sustainedLightningStart(record))
+	case 21:
+		return uint32(sustainedLightningTick(record))
+	case 24:
+		return uint32(int32(int8(sustainedLightningCancel(record))))
+	case 25:
+		return uint32(sustainedTagStart(record))
+	case 26:
+		return uint32(sustainedTagTick(record))
+	case 27:
+		return uint32(sustainedTagCancel(record))
+	case 28:
+		return uint32(sustainedBlinkStart(record))
+	case 29:
+		return uint32(sustainedBlinkTick(record))
+	case 31:
+		return uint32(sustainedGlyphStart(record))
+	case 32:
+		return uint32(sustainedGlyphTick(record))
+	case 33:
+		return uint32(sustainedTeleportStart(record))
+	case 34:
+		return uint32(sustainedRandomGlyphTick(record))
+	case 35:
+		return uint32(sustainedTeleportToPointTick(record))
+	case 36:
+		return uint32(sustainedSwapStart(record))
+	case 37:
+		return uint32(sustainedSwapTick(record))
+	case 38:
+		return uint32(sustainedManaBombStart(record))
+	case 39:
+		return uint32(sustainedManaBombTick(record))
+	case 40:
+		return uint32(sustainedManaBombCancel(record))
+	case 41:
+		return uint32(sustainedTurnUndeadStart(record))
+	case 42:
+		return uint32(sustainedTurnUndeadTick())
+	case 43:
+		return uint32(sustainedTurnUndeadCancel(record))
+	case 44:
+		return uint32(sustainedOvalShieldStart(record))
+	case 45:
+		return uint32(sustainedOvalShieldTick(record))
+	case 46:
+		return uint32(sustainedOvalShieldCancel(record))
+	case 47:
+		return uint32(sustainedPlasmaStart(record))
+	case 48:
+		return uint32(sustainedPlasmaTick(record))
+	case 50:
+		return uint32(sustainedPlasmaCancel(record))
+	case 51:
+		return uint32(sustainedMoonglowStart(record))
+	case 52:
+		return uint32(sustainedMoonglowCancel(record))
+	default:
+		panic("unsupported sustained callback operation")
+	}
 }

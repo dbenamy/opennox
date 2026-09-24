@@ -18,6 +18,9 @@ import (
 )
 
 func emptyCallbackCall(c legacy.PortTestEmptyCallback, args [6]unsafe.Pointer) func() {
+	if c.Kind == "duration" {
+		return func() { server.CallDurSpellDiscard(c.Pointer, (*server.DurSpell)(args[0])) }
+	}
 	switch c.Arity {
 	case 1:
 		return func() { ccall.CallVoidPtr(c.Pointer, args[0]) }
@@ -121,8 +124,8 @@ func TestEmptyCallbackContracts(t *testing.T) {
 	}
 }
 
-// BenchmarkEmptyCallbackDispatch includes the production Go -> ccall -> C
-// indirect-call path. The same closure/loop overhead is present in both versions.
+// BenchmarkEmptyCallbackDispatch includes each selected callback boundary: retained
+// C callbacks use ccall, while the duration no-op uses the native registry path.
 // It measures a callback boundary, not a game-frame time or call frequency.
 func BenchmarkEmptyCallbackDispatch(b *testing.B) {
 	for _, c := range legacy.PortTestEmptyCallbacks() {

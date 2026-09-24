@@ -15,24 +15,6 @@ static void spellEffectsForceReset(void){spellEffectsForceN=0;}
 static int spellEffectsForceCount(void){return spellEffectsForceN;}
 static uint32_t spellEffectsForceValue(int i){return spellEffectsForceLog[i];}
 #include <string.h>
-#include "GAME4.h"
-#include "GAME1_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-int nox_xxx_summonStart_500DA0(int a1);
-int nox_xxx_summonFinish_5010D0(int a1);
-void nox_xxx_summonCancel_5011C0(int a1);
-int nox_xxx_charmCreature1_5011F0(int* a1);
-int nox_xxx_charmCreatureFinish_5013E0(int* a1);
-int nox_xxx_charmCreature2_501690(int a1);
-static void* spellEffectsFunction(int op){switch(op){
-case 1:return nox_xxx_summonStart_500DA0;
-case 3:return nox_xxx_summonFinish_5010D0;
-case 4:return nox_xxx_summonCancel_5011C0;
-case 5:return nox_xxx_charmCreature1_5011F0;
-case 6:return nox_xxx_charmCreatureFinish_5013E0;
-case 7:return nox_xxx_charmCreature2_501690;
-default:return 0;}}
 
 */
 import "C"
@@ -192,7 +174,7 @@ func (p *portTestShopPools) spellEffectsItems() {
 		*memmap.PtrPtr(0x587000, 70500+uintptr(4*g.Index)) = p.objectiveString(name)
 	}
 	for i := 0; i < 42; i++ {
-		if f := C.spellEffectsFunction(C.int(i)); f != nil {
+		if f := spellEffectsDurationKey(i); f != nil {
 			p.identify(f, 95000+uint32(i))
 		}
 	}
@@ -269,25 +251,44 @@ func (p *portTestShopPools) spellEffectsActive() bool {
 // PortTestSpellEffectsSummonLimit binds the actual root capacity owner in this fixture.
 var PortTestSpellEffectsSummonLimit func(*server.Object, int) bool
 
+func spellEffectsDurationKey(op int) unsafe.Pointer {
+	switch op {
+	case 1:
+		return Get_nox_xxx_summonStart_500DA0()
+	case 3:
+		return Get_nox_xxx_summonFinish_5010D0()
+	case 4:
+		return Get_nox_xxx_summonCancel_5011C0()
+	case 5:
+		return Get_nox_xxx_charmCreature1_5011F0()
+	case 6:
+		return Get_nox_xxx_charmCreatureFinish_5013E0()
+	case 7:
+		return Get_nox_xxx_charmCreature2_501690()
+	default:
+		return nil
+	}
+}
+
 func spellEffectsInvoke(op, id int32, u, a, b, c *server.Object, record, output unsafe.Pointer, level int32, x, y, z float32, q, r int32) uint32 {
 	switch op {
 	case 0:
 		return uint32(spellEffectSummonCost(id, u))
 	case 1:
-		return uint32(C.nox_xxx_summonStart_500DA0(C.int(uintptr(record))))
+		return uint32(spellEffectSummonStart(record))
 	case 2:
 		return uint32(spellEffectSummonPosition(record, output))
 	case 3:
-		return uint32(C.nox_xxx_summonFinish_5010D0(C.int(uintptr(record))))
+		return uint32(spellEffectSummonFinish(record))
 	case 4:
-		C.nox_xxx_summonCancel_5011C0(C.int(uintptr(record)))
+		spellEffectSummonCancel(record)
 		return 0
 	case 5:
-		return uint32(C.nox_xxx_charmCreature1_5011F0((*C.int)(record)))
+		return uint32(spellEffectCharmStart(record))
 	case 6:
-		return uint32(C.nox_xxx_charmCreatureFinish_5013E0((*C.int)(record)))
+		return uint32(spellEffectCharmFinish(record))
 	case 7:
-		return uint32(C.nox_xxx_charmCreature2_501690(C.int(uintptr(record))))
+		return uint32(spellEffectCharmCancel(record))
 	case 8:
 		spellEffectBanish(u)
 		return 0

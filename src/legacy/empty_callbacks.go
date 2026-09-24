@@ -3,14 +3,11 @@ package legacy
 import "C"
 
 // These no-op callbacks remain distinct C-callable identities. Legacy modifier
-// and duration dispatch passes arguments that the callbacks intentionally ignore.
-// Keep one export per identity: registration and effect lookups compare addresses.
+// dispatch passes arguments that the callbacks intentionally ignore. Registration
+// and effect lookups compare their addresses.
 
 //export nullsub_22
 func nullsub_22() {}
-
-//export nullsub_29
-func nullsub_29() {}
 
 //export nullsub_36
 func nullsub_36() {}

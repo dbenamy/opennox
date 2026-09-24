@@ -5,7 +5,6 @@
 
 void nullsub_22();
 void nullsub_36();
-void nullsub_29(void);
 int sub_56F250();
 int nox_xxx_protectionCreateInt_56F400(int a1);
 int sub_56F4F0(int* a1);

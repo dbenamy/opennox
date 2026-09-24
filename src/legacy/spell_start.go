@@ -1,18 +1,11 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "server__magic__spell__execdur.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/strman"
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"
-	"unsafe"
 )
 
 func spellStartTeleport(d *server.DurSpell) uint32 {
@@ -31,11 +24,6 @@ func spellStartTeleport(d *server.DurSpell) uint32 {
 		return 1
 	}
 	return sustainedTeleportStart(d.C())
-}
-
-//export sub_530A30_spell_execdur
-func sub_530A30_spell_execdur(p C.int) C.int {
-	return C.int(spellStartTeleport((*server.DurSpell)(unsafe.Pointer(uintptr(uint32(p))))))
 }
 
 func spellStartPixies(id spell.ID, owner, origin *server.Object, level int) int {

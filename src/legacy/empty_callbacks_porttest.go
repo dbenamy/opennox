@@ -4,7 +4,6 @@ package legacy
 
 /*
 void nullsub_22(void);
-void nullsub_29(void);
 void nullsub_36(void);
 void nullsub_38(void);
 void nullsub_39(void);
@@ -38,6 +37,6 @@ func PortTestEmptyCallbacks() []PortTestEmptyCallback {
 		{Symbol: "nullsub_42", Effect: "PunctureProneEffect", Kind: "defend", Arity: 6, Pointer: C.nullsub_42},
 		{Symbol: "nullsub_43", Effect: "ParasiteUpdate", Kind: "update", Arity: 3, Pointer: C.nullsub_43},
 		{Symbol: "nullsub_44", Effect: "AttractionUpdate", Kind: "update", Arity: 3, Pointer: C.nullsub_44},
-		{Symbol: "nullsub_29", Effect: "EnergyBoltDestroy", Kind: "duration", Arity: 1, Pointer: C.nullsub_29},
+		{Symbol: "nullsub_29", Effect: "EnergyBoltDestroy", Kind: "duration", Arity: 1, Pointer: Get_nullsub_29()},
 	}
 }

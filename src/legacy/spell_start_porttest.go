@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "server__magic__spell__execdur.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"fmt"
@@ -70,7 +64,7 @@ func (p *portTestShopPools) spellStartTeleportContract(record unsafe.Pointer) ui
 	} else {
 		delay = frame + 1
 	}
-	got := uint32(C.sub_530A30_spell_execdur(C.int(uintptr(record))))
+	got := uint32(server.CallDurSpellResult(Get_sub_530A30_spell_execdur(), (*server.DurSpell)(record)))
 	if got != want || *equipmentWord(record, 68) != delay || *(**server.Object)(unsafe.Add(record, 48)) != recipient {
 		panic(fmt.Sprintf("teleport-start return/deadline/recipient: got %d/%d want %d/%d", got, *equipmentWord(record, 68), want, delay))
 	}

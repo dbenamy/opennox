@@ -3,34 +3,6 @@
 
 #include "defs.h"
 
-int nox_xxx_onFrameLightning_52F8A0(float a1);
-char sub_530100(uint32_t* a1);
-int nox_xxx_spellTagCreature_530160(uint32_t* a1);
-unsigned int sub_530250(int a1);
-int sub_530270(int a1);
-int nox_xxx_spellBlink2_530310(uint32_t* a1);
-int nox_xxx_spellBlink1_530380(int* a1);
-int sub_5305D0(uint32_t* a1);
-int sub_530650(int* a1);
-int nox_xxx_castTele_530820(int a1);
-int sub_530880(int* a1);
-int nox_xxx_castTTT_530B70(int* a1);
-int sub_530CA0(int a1);
-int sub_530D30(int* a1);
-int nox_xxx_manaBomb_530F90(uint32_t* a1);
-int nox_xxx_manaBombBoom_5310C0(int* a1);
-int sub_531290(int a1);
-int nox_xxx_spellTurnUndeadCreate_531310(uint32_t* a1);
-int nox_xxx_spellTurnUndeadUpdate_531410();
-int nox_xxx_spellTurnUndeadDelete_531420(int a1);
-int sub_531490(uint32_t* a1);
-int sub_5314F0(int a1);
-int sub_531560(int a1);
-int nox_xxx_plasmaSmth_531580(int a1);
-int nox_xxx_plasmaShot_531600(int a1);
-int sub_5319E0(int a1);
-int nox_xxx_spellCreateMoonglow_531A00(uint32_t* a1);
-int sub_531AF0(int a1);
 void sub_532930(int a1, unsigned short a2, unsigned short a3);
 int nox_xxx_mobActionToAnimation_533790(int a1);
 void nox_xxx_mobCalcDir_533CC0(int a1, float* a2);

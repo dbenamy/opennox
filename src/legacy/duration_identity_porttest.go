@@ -38,7 +38,6 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -47,8 +46,8 @@ type PortTestDurationCallbackKey struct {
 	Key  unsafe.Pointer
 }
 
-// PortTestDurationCallbackKeys reports the original C function addresses used
-// by duration callback slots, in the audited stable order.
+// PortTestDurationCallbackKeys reports every duration callback key in the
+// audited stable order.
 func PortTestDurationCallbackKeys() []PortTestDurationCallbackKey {
 	return []PortTestDurationCallbackKey{
 		{Name: "nox_xxx_spellBlink2_530310", Key: Get_nox_xxx_spellBlink2_530310()},
@@ -130,13 +129,13 @@ func PortTestDurationObserverSnapshot() PortTestDurationObserverState {
 	}
 }
 
-// PortTestDurationCallResult enters the original raw C-call path and preserves
-// the C int return as its exact 32-bit word.
+// PortTestDurationCallResult enters the duration API. Unregistered observer keys
+// use its original raw C-call fallback and preserve the C int word.
 func PortTestDurationCallResult(key unsafe.Pointer, p *server.DurSpell) int32 {
-	return int32(ccall.CallIntPtr(key, p.C()))
+	return server.CallDurSpellResult(key, p)
 }
 
-// PortTestDurationCallDiscard enters the original raw void C-call path.
+// PortTestDurationCallDiscard uses native dispatch or the original raw void fallback.
 func PortTestDurationCallDiscard(key unsafe.Pointer, p *server.DurSpell) {
-	ccall.CallVoidPtr(key, p.C())
+	server.CallDurSpellDiscard(key, p)
 }
