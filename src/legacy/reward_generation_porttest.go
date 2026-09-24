@@ -2,32 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME3_3.h"
-static void* rewardFunction(int id){switch(id){
-case 0:return (void*)nox_xxx_unitSparkInit_4F0390;
-case 1:return (void*)nox_xxx_initFrog_4F03B0;
-case 2:return (void*)nox_xxx_initChest_4F0400;
-case 3:return (void*)nox_xxx_unitBoulderInit_4F0420;
-case 4:return (void*)sub_4F0450;
-case 5:return (void*)sub_4F0490;
-case 6:return (void*)nox_xxx_unitInitGold_4F04B0;
-case 7:return (void*)nox_xxx_breakInit_4F0570;
-case 8:return (void*)nox_xxx_unitInitGenerator_4F0590;
-default:return 0;}}
-static uint32_t rewardCall(int id,nox_object_t* u,uint32_t stage){switch(id){
-case 0:return (uint32_t)nox_xxx_unitSparkInit_4F0390((int)u);
-case 1:return (uint32_t)nox_xxx_initFrog_4F03B0((int)u);
-case 2:return (uint32_t)nox_xxx_initChest_4F0400((int)u);
-case 3:return (uint32_t)nox_xxx_unitBoulderInit_4F0420((uint32_t*)u);
-case 4:return (uint32_t)sub_4F0450((int)u);
-case 5:return (uint32_t)sub_4F0490((int)u);
-case 6:return (uint32_t)nox_xxx_unitInitGold_4F04B0((int)u);
-case 7:return (uint32_t)nox_xxx_breakInit_4F0570((int)u);
-case 8:return (uint32_t)nox_xxx_unitInitGenerator_4F0590((int)u);
-default:return 0;}}
-*/
-import "C"
 import (
 	"bytes"
 	"encoding/binary"
@@ -159,7 +133,7 @@ func (p *portTestShopPools) rewardAction(a PortTestShopAction) uint32 {
 			rewardSelectMarkers()
 			state.result = 0
 		default:
-			state.result = uint32(C.rewardCall(C.int(op), asObjectC(u), C.uint32_t(stage)))
+			state.result = portTestRewardInitCall(op, u)
 		}
 	}
 
@@ -267,7 +241,7 @@ func (p *portTestShopPools) rewardItems() {
 	// Keep normalized pointer IDs stable after removing callback keys 9..20.
 	p.reservedFunctionIDs += 12
 	for i := 0; i < 9; i++ {
-		p.identify(C.rewardFunction(C.int(i)), 90000+uint32(i))
+		p.identify(portTestRewardInitKey(i), 90000+uint32(i))
 	}
 	for i := 0; i < 41; i++ {
 		*memmap.PtrPtr(0x587000, 70500+uintptr(i*4)) = p.objectiveString(fmt.Sprintf("PortTestGuide%02d", i))
@@ -380,4 +354,53 @@ func (p *portTestShopPools) rewardSnapshot(out []uint32) []uint32 {
 		}
 	}
 	return out
+}
+
+func portTestRewardInitKey(id int) unsafe.Pointer {
+	switch id {
+	case 0:
+		return lifecycleInitKey(initIDSpark)
+	case 1:
+		return lifecycleInitKey(initIDFrog)
+	case 2:
+		return lifecycleInitKey(initIDChest)
+	case 3:
+		return lifecycleInitKey(initIDBoulder)
+	case 4:
+		return lifecycleInitKey(initIDSkull)
+	case 5:
+		return lifecycleInitKey(initIDDirection)
+	case 6:
+		return lifecycleInitKey(initIDGold)
+	case 7:
+		return lifecycleInitKey(initIDBreak)
+	case 8:
+		return lifecycleInitKey(initIDMonsterGenerator)
+	default:
+		return nil
+	}
+}
+
+func portTestRewardInitCall(id int, u *server.Object) uint32 {
+	switch id {
+	case 0:
+		return uint32(uintptr(rewardInitSpark(u)))
+	case 1:
+		return uint32(rewardInitFrog(u))
+	case 2, 7:
+		rewardInitBreakable(u)
+		return uint32(uintptr(u.CObj()))
+	case 3:
+		return uint32(uintptr(unsafe.Pointer(rewardInitBoulder(u))))
+	case 4:
+		return uint32(rewardInitDirection(u, true))
+	case 5:
+		return uint32(rewardInitDirection(u, false))
+	case 6:
+		return uint32(rewardInitGold(u))
+	case 8:
+		return uint32(rewardInitGenerator(u))
+	default:
+		return 0
+	}
 }

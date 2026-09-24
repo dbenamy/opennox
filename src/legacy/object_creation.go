@@ -179,6 +179,9 @@ func createWeapon(u *server.Object) int32 {
 	}
 	return result
 }
+
+// This legacy return mixes a definition address and integer conversion bits.
+// Keep it an integer across the Go stack, where small values are not pointers.
 func createArmor(u *server.Object) uintptr {
 	d := GetServer().S().Modif.Nox_xxx_equipClothFindDefByTT413270(int(u.TypeInd))
 	if d == nil || u.HealthData == nil {
@@ -204,52 +207,32 @@ func nox_xxx_monsterAutoSpells_54C0C0(u *nox_object_t) C.short {
 	return C.short(monsterAutoSpells(asObjectS(u)))
 }
 
-//export nox_xxx_createWeapon_54C710
-func nox_xxx_createWeapon_54C710(a C.int) C.int { return C.int(createWeapon(objectFromInt(a))) }
-
-// This legacy return mixes a definition address and integer conversion bits.
-// Keep it an integer across the Go stack, where small values are not pointers.
-//
-//export sub_54C950
-func sub_54C950(a C.int) C.uintptr_t {
-	return C.uintptr_t(createArmor(objectFromInt(a)))
-}
-
-//export nox_xxx_createFnObelisk_54CA10
-func nox_xxx_createFnObelisk_54CA10(a C.int) C.int {
-	u := objectFromInt(a)
+func createObelisk(u *server.Object) int32 {
 	*(*uint32)(u.UpdateData) = 50
 	u.NeedSync()
 	return 0
 }
 
-//export nox_xxx_createFnAnim_54CA50
-func nox_xxx_createFnAnim_54CA50(a C.int) { objectFromInt(a).SetXStatus(2) }
+func createAnim(u *server.Object) { u.SetXStatus(2) }
 
-//export nox_xxx_createTrigger_54CA60
-func nox_xxx_createTrigger_54CA60(a C.int) *C.uint8_t {
-	u := objectFromInt(a)
+func createTrigger(u *server.Object) *byte {
 	data := unsafe.Slice((*byte)(u.UpdateData), 60)
 	copy(data[54:], []byte{90, 90, 90, 10, 10, 10})
-	return (*C.uint8_t)(u.UpdateData)
+	return (*byte)(u.UpdateData)
 }
 
-//export nox_xxx_createMonsterGen_54CA90
-func nox_xxx_createMonsterGen_54CA90(a C.int) *C.uint32_t {
-	u := objectFromInt(a)
+func createMonsterGenerator(u *server.Object) *uint32 {
 	data := unsafe.Slice((*uint32)(u.UpdateData), 24)
 	data[23] = 2
 	for _, i := range []int{13, 15, 19, 17} {
 		data[i] = 0xffffffff
 	}
-	return (*C.uint32_t)(u.UpdateData)
+	return (*uint32)(u.UpdateData)
 }
 
-//export nox_xxx_createRewardMarker_54CAC0
-func nox_xxx_createRewardMarker_54CAC0(a C.int) *C.uint32_t {
-	u := objectFromInt(a)
+func createRewardMarker(u *server.Object) *uint32 {
 	data := unsafe.Slice((*uint32)(u.InitData), 54)
 	data[0] = 255
 	data[53] = 0
-	return (*C.uint32_t)(u.InitData)
+	return (*uint32)(u.InitData)
 }

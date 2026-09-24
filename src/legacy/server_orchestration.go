@@ -233,7 +233,7 @@ func orchestrationRewards() {
 	}
 	rewardPlaceAnkh()
 	rewardSelectMarkers()
-	chestInit := unsafe.Pointer(C.nox_xxx_initChest_4F0400)
+	chestInit := lifecycleInitKey(initIDChest)
 	marker := func(u *server.Object) bool {
 		return uint32(u.TypeInd) == orchestrationRewardMarker || uint32(u.TypeInd) == memmap.Uint32(0x5D4594, 1568304)
 	}

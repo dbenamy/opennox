@@ -2,14 +2,6 @@
 
 package legacy
 
-/*
-#include "common/alloc/classes/alloc_class.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
@@ -24,26 +16,26 @@ type portTestLifecycleEntry struct {
 
 func portTestLifecycleEntries() []portTestLifecycleEntry {
 	return []portTestLifecycleEntry{
-		{"MonsterCreate", C.nox_xxx_monsterCreateFn_54C480, 0, true},
-		{"ArmorCreate", C.sub_54C950, 0, true},
-		{"WeaponCreate", C.nox_xxx_createWeapon_54C710, 0, true},
-		{"ObeliskCreate", C.nox_xxx_createFnObelisk_54CA10, 0, true},
-		{"AnimCreate", C.nox_xxx_createFnAnim_54CA50, 0, true},
-		{"TriggerCreate", C.nox_xxx_createTrigger_54CA60, 0, true},
-		{"MonsterGeneratorCreate", C.nox_xxx_createMonsterGen_54CA90, 0, true},
-		{"RewardMarkerCreate", C.nox_xxx_createRewardMarker_54CAC0, 0, true},
-		{"MonsterInit", C.nox_xxx_unitMonsterInit_4F0040, 0, false},
-		{"PlayerInit", C.nox_xxx_unitInitPlayer_4EFE80, 0, false},
-		{"SparkInit", C.nox_xxx_unitSparkInit_4F0390, 0, false},
-		{"FrogInit", C.nox_xxx_initFrog_4F03B0, 0, false},
-		{"ChestInit", C.nox_xxx_initChest_4F0400, 0, false},
-		{"BoulderInit", C.nox_xxx_unitBoulderInit_4F0420, 0, false},
-		{"BreakInit", C.nox_xxx_breakInit_4F0570, 0, false},
-		{"MonsterGeneratorInit", C.nox_xxx_unitInitGenerator_4F0590, 0, false},
-		{"ShopkeeperInit", C.nox_xxx_unitMonsterInit_4F0040, unsafe.Sizeof(server.ShopkeeperInitData{}), false},
-		{"SkullInit", C.sub_4F0450, 8, false},
-		{"DirectionInit", C.sub_4F0490, 8, false},
-		{"GoldInit", C.nox_xxx_unitInitGold_4F04B0, unsafe.Sizeof(server.GoldInitData{}), false},
+		{"MonsterCreate", lifecycleCreateKey(createIDMonster), 0, true},
+		{"ArmorCreate", lifecycleCreateKey(createIDArmor), 0, true},
+		{"WeaponCreate", lifecycleCreateKey(createIDWeapon), 0, true},
+		{"ObeliskCreate", lifecycleCreateKey(createIDObelisk), 0, true},
+		{"AnimCreate", lifecycleCreateKey(createIDAnim), 0, true},
+		{"TriggerCreate", lifecycleCreateKey(createIDTrigger), 0, true},
+		{"MonsterGeneratorCreate", lifecycleCreateKey(createIDMonsterGenerator), 0, true},
+		{"RewardMarkerCreate", lifecycleCreateKey(createIDRewardMarker), 0, true},
+		{"MonsterInit", lifecycleInitKey(initIDMonster), 0, false},
+		{"PlayerInit", lifecycleInitKey(initIDPlayer), 0, false},
+		{"SparkInit", lifecycleInitKey(initIDSpark), 0, false},
+		{"FrogInit", lifecycleInitKey(initIDFrog), 0, false},
+		{"ChestInit", lifecycleInitKey(initIDChest), 0, false},
+		{"BoulderInit", lifecycleInitKey(initIDBoulder), 0, false},
+		{"BreakInit", lifecycleInitKey(initIDBreak), 0, false},
+		{"MonsterGeneratorInit", lifecycleInitKey(initIDMonsterGenerator), 0, false},
+		{"ShopkeeperInit", lifecycleInitKey(initIDMonster), unsafe.Sizeof(server.ShopkeeperInitData{}), false},
+		{"SkullInit", lifecycleInitKey(initIDSkull), 8, false},
+		{"DirectionInit", lifecycleInitKey(initIDDirection), 8, false},
+		{"GoldInit", lifecycleInitKey(initIDGold), unsafe.Sizeof(server.GoldInitData{}), false},
 	}
 }
 func PortTestLifecycleRegistryNames(create bool) []string {

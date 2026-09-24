@@ -7,38 +7,35 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 245/463 cgo files eliminated on net (218 remain).**
-Selected legacy C export bridges: **977/1,890 retired (913 remain)**.
+internal glue: 247/463 cgo files eliminated on net (216 remain).**
+Selected legacy C export bridges: **996/1,890 retired (894 remain)**.
 
 These are selected project files in each Linux 386 production profile, not equal
 units of effort. Three project packages directly use cgo; 77 embedded C callback
 bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk replaces fourteen death C callback addresses with stable
-Go-owned identities, removes their exports and uses native UTF-16 pointers in
-equipment death messages. Three production cgo files and one test cgo import
-disappear. See [DEATH_IDENTITIES.md](docs/porting/DEATH_IDENTITIES.md).
+Latest qualified chunk replaces nineteen creation/init C callback identities across
+twenty names, preserving the shared monster/shopkeeper identity and existing typed
+dispatch. Two production cgo files and three test cgo imports disappear. See
+[CREATE_INIT_IDENTITIES.md](docs/porting/CREATE_INIT_IDENTITIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Active batch: nineteen creation/init identities
-across twenty names under `build/port-create-init-identities/`. The original
-163-root baseline passes in all three profiles, including new lifetime and gold
-classification/arithmetic contracts. Conversion is drafted, not installed.
-See [CREATE_INIT_IDENTITIES.md](docs/porting/CREATE_INIT_IDENTITIES.md).
-Stop at the milestone or a substantial question.
+recorded reversible decisions. Next candidate: connected damage and damage-sound
+identities, including defaults and fixture consumers. Audit artifacts are under
+`build/port-after-create-init-identities/`. Stop at the milestone or a substantial question.
 
-Latest artifacts: `build/port-death-identities/`.
+Latest artifacts: `build/port-create-init-identities/`.
 
 ## What remains
 
-Counts below describe the qualified death identity conversion. Zero `.c` lines is
+Counts below describe the qualified creation/init identity conversion. Zero `.c` lines is
 not a count of all C dependencies or a measure of remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 77 production function bodies in Go preambles: 76 generic function-pointer dispatchers and one specialized adapter. |
 | Callback routes | Some Go implementations still call each other through C-compatible addresses. More direct Go dispatch is possible; shared raw fallbacks remain until their users and compatibility requirements are resolved. |
-| Declarations and C types | 157 tracked headers / 3,638 physical lines; each production profile selects 218 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 3,619 physical lines; each production profile selects 216 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Removing them requires ownership/layout changes beyond function translation. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies and their cgo bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual release checks. |
@@ -50,20 +47,20 @@ machinery remains until its live callers are migrated.
 
 ## Latest qualification and evidence
 
-- Exact focused root-name sets pass: 140 in each default/server/highres profile, no skips.
-- Safe/static and three fresh production/ABI checks pass; all fourteen retired C
+- Exact focused root-name sets pass: 163 in each default/server/highres profile, no skips.
+- Safe/static and three fresh production/ABI checks pass; all nineteen retired C
   exports are absent and retained export signatures/bodies are unchanged.
 - Headless character creation and explicit save/load/resume pass.
 - Full asset suite matches known results exactly: 304 failure events,
   with 17 passing, two failing and 32 skipped packages.
-- All accepted phases have identical source fingerprints. All nineteen changed/new/
+- All accepted phases have identical source fingerprints. All seventeen changed/new/
   deleted files match review; existing assertions, captures and 1,654 asset hashes are unchanged.
 - The preceding collision milestone passed the full default port corpus:
   2,430 roots plus one established diagnostic skip. Its initial fixture cross-family
   issue and corrected typed route are recorded in COLLISION_IDENTITIES.md.
 
-Report: [DEATH_IDENTITIES.md](docs/porting/DEATH_IDENTITIES.md).
-Evidence: [qualification](docs/porting/death-identities-qualification.json).
+Report: [CREATE_INIT_IDENTITIES.md](docs/porting/CREATE_INIT_IDENTITIES.md).
+Evidence: [qualification](docs/porting/create-init-identities-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -76,7 +73,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [death-identities-inventory-after.json](docs/porting/death-identities-inventory-after.json).
+qualified inventory is [create-init-identities-inventory-after.json](docs/porting/create-init-identities-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -110,8 +107,8 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-death-identities/`:
-`contracts-fixed/`, `safe/opennox-safe`, and
+Latest local artifacts are under `build/port-create-init-identities/`:
+`contracts/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
 binaries/logs/drafts are not backed up by pushing Git. Completed finalizers are
@@ -142,10 +139,13 @@ do not rerun them or infer deletion safety from age alone.
 | Completed layout-boundary scenario assets | Removed only 1,654 verified original-asset duplicates, reclaiming 559,890,432 allocated bytes. Saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/go-layout-boundaries-save/deduplicated-assets.json`. |
 | Completed native-boundary scenario assets | Removed only 1,654 verified original-asset duplicates, reclaiming 559,943,680 allocated bytes. Saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/go-native-call-boundaries-save/deduplicated-assets.json`. |
 | Superseded native-boundary binaries | Seven executables removed after committed-source/replacement/hash and host-use checks; 395,464,704 allocated bytes reclaimed. Old phase fingerprints match `4214ea8f`, replacements match `fe44bab3`; recorded build HEADs are earlier baseline commits. Rebuild those qualified revisions. Plan/journal: `build/port-go-native-record-storage/cleanup-native-{approved.json,deleted.jsonl}`. |
-| Superseded six-batch profile test binaries | Removed 18 regular executables after exact committed-source, SHA256/stat and host fd/maps checks; 1,219,395,584 allocated bytes reclaimed. Rebuild qualified revisions `6274a6f3`, `b505e0ab`, `fe44bab3`, `f2088976`, `5bfa54b5`, `200d459b` using retained profile commands/source maps. Current collision contracts, original baseline and first-failure binaries retained. Plan/journal: `build/port-collision-identities/cleanup-next-{approved.json,deleted.jsonl}`. |
+| Superseded six-batch profile test binaries | Removed 18 regular executables after exact committed-source, SHA256/stat and host fd/maps checks; 1,219,395,584 allocated bytes reclaimed. Rebuild qualified revisions `6274a6f3`, `b505e0ab`, `fe44bab3`, `f2088976`, `5bfa54b5`, `200d459b` using retained profile commands/source maps. Collision corrected contracts and original baseline retained; first-failure executables were subsequently removed as recorded below. Plan/journal: `build/port-collision-identities/cleanup-next-{approved.json,deleted.jsonl}`. |
 | Completed collision scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks, reclaiming 559,841,280 allocated bytes; saves/results and originals remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/collision-identities-save/deduplicated-assets.json`. |
 | Superseded six-batch safe/production binaries | Removed 24 executables after exact committed-source/replacement SHA256 and host fd/maps checks; 1,149,173,760 allocated bytes reclaimed. Rebuild revisions `6274a6f3`, `b505e0ab`, `fe44bab3`, `f2088976`, `5bfa54b5`, `200d459b` using retained phase commands. Qualified collision replacements and active death outputs retained. Plan/journal: `build/port-death-identities/cleanup-production-{approved.json,deleted.jsonl}`. |
-| Current qualified production/safe binaries | Retained under `build/port-death-identities/`; preceding collision production binaries also remain. |
+| Superseded collision/death first-failure test binaries | Removed six executables after recorded SHA256, committed qualification/replacement and host-use checks; 405,254,144 allocated bytes reclaimed. Failed logs/source maps and corrected qualified binaries remain. Plan/journal: `build/port-create-init-identities/cleanup-failed-{approved.json,deleted.jsonl}`. |
+| Completed death scenario assets | Removed 1,654 SHA256-identical original-asset duplicates after host-use checks; 559,845,376 allocated bytes reclaimed. Originals, saves and results retained. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/death-identities-save/deduplicated-assets.json`. Plan/result: `build/port-post-death-cleanup/`. |
+| Obsolete pre-death-baseline Go cache | Removed 71 hash/stat-verified, unused root/legacy archives older than 2026-09-24T18:29:06Z; 2,416,160,768 allocated bytes reclaimed. Newer death/create-init caches, all binaries/source/assets retained. Rebuild normally. Plan/journal: `build/port-create-init-identities/cache-cleanup-{proposal.json,approved.json,deleted.jsonl}`. |
+| Current qualified production/safe binaries | Retained under `build/port-create-init-identities/`; preceding death and collision binaries also remain. |
 | Superseded primitive-interface binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,362,304 allocated bytes reclaimed. All 3,062 source fingerprints match `78ff20f9`; current qualified replacements match `4214ea8f`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-layout-boundaries/cleanup-primitive-{approved.json,deleted.jsonl}`. |
 | Superseded scalar-storage binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,452,416 allocated bytes reclaimed. All 3,062 source fingerprints match `e64ff24e`; qualified replacements match `78ff20f9`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-native-call-boundaries/cleanup-scalar-{approved.json,deleted.jsonl}`. |
 | Completed scenario data: `go-memory-save`, `raw-allocation-save`, `string-boundary-save`, `unused-exports-save`, `remaining-unused-exports-save`, `go-only-exports-save` | Only SHA256-identical original-asset copies were removed. Saves/comparisons remain. Follow each run's `deduplicated-assets.json`; shared restore tool: `build/port-artifact-cleanup/restore-recent-scenario.py`. |

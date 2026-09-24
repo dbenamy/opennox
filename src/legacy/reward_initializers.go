@@ -22,6 +22,11 @@ func rewardInitFrog(u *server.Object) int32 {
 	u.Direction2 = server.Dir16(uint16(dir))
 	return dir
 }
+func rewardInitBoulder(u *server.Object) *server.Object {
+	u.Pos39 = u.PosVec
+	return u
+}
+
 func rewardInitBreakable(u *server.Object) {
 	if u.Field5&14 == 0 {
 		u.SetXStatus(2)

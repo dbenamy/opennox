@@ -18,7 +18,6 @@ void sub_4EF410(int a1, unsigned char a2);
 int sub_4EF6F0(int a1);
 nox_object_t* nox_xxx_playerRespawnItem_4EF750(nox_object_t* a1p, char* a2, int* a3, int a4, int a5);
 char nox_xxx_playerMakeDefItems_4EF7D0(int a1, int a2, int a3);
-char nox_xxx_unitInitPlayer_4EFE80(nox_object_t* a1p);
 int sub_4EFF10(int a1);
 void nox_xxx_mapFindPlayerStart_4F7AB0(float2* a1, nox_object_t* a2p);
 int nox_xxx_weaponGetStaminaByType_4F7E80(int a1);
@@ -47,7 +46,6 @@ case 14:return (void*)sub_4EF410;
 case 16:return (void*)sub_4EF6F0;
 case 17:return (void*)nox_xxx_playerRespawnItem_4EF750;
 case 18:return (void*)nox_xxx_playerMakeDefItems_4EF7D0;
-case 20:return (void*)nox_xxx_unitInitPlayer_4EFE80;
 case 21:return (void*)sub_4EFF10;
 case 26:return (void*)nox_xxx_mapFindPlayerStart_4F7AB0;
 case 31:return (void*)nox_xxx_weaponGetStaminaByType_4F7E80;
@@ -72,7 +70,6 @@ case 14:{sub_4EF410((int)u,(unsigned char)x);return 0;}
 case 16:{return (uint32_t)sub_4EF6F0((int)u);}
 case 17:{return (uint32_t)nox_xxx_playerRespawnItem_4EF750(u,name,(int*)record,x,y);}
 case 18:{return (uint32_t)nox_xxx_playerMakeDefItems_4EF7D0((int)u,x,y);}
-case 20:{return (uint32_t)nox_xxx_unitInitPlayer_4EFE80(u);}
 case 21:{return (uint32_t)sub_4EFF10((int)u);}
 case 26:{nox_xxx_mapFindPlayerStart_4F7AB0((float2*)record,u);return 0;}
 case 31:{return (uint32_t)nox_xxx_weaponGetStaminaByType_4F7E80(x);}
@@ -296,7 +293,7 @@ func (p *portTestShopPools) controlsItems() {
 	p.identify(C.controlsInitPtr(), 91600)
 	p.identify(C.controlsPlayerUpdatePtr(), 91601)
 	for i := 0; i < 56; i++ {
-		if fn := C.controlsFunction(C.int(i)); fn != nil {
+		if fn := portTestControlsFunction(i); fn != nil {
 			p.identify(fn, 91000+uint32(i))
 		}
 	}
@@ -625,6 +622,8 @@ func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe
 		return uint64(uint32(int32(controlRespawnFlags())))
 	case 19:
 		return uint64(uint32(controlRespawnNotify(u, byte(x))))
+	case 20:
+		return uint64(uint32(int32(controlInitPlayer(u))))
 	case 23:
 		controlClearWaypoints(u)
 		return 0
@@ -684,4 +683,11 @@ func PortTestSessionEntryInitCallback() (unsafe.Pointer, func() [][2]uintptr) {
 		}
 		return out
 	}
+}
+
+func portTestControlsFunction(id int) unsafe.Pointer {
+	if id == 20 {
+		return lifecycleInitKey(initIDPlayer)
+	}
+	return C.controlsFunction(C.int(id))
 }

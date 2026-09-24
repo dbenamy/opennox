@@ -49,3 +49,30 @@ reading the factory; it did not describe an implementation change.
 [Original evidence](create-init-identities-baseline.json),
 [commands](create-init-identities-batch.json), [selection](create-init-identities-tests.txt).
 Local artifacts: `build/port-create-init-identities/`.
+
+## Qualified conversion
+
+All 163 focused roots pass in each default/server/high-resolution profile without
+skips. Safe/static checks, three production/ABI builds, headless character creation
+and explicit save/load/resume pass. The ordinary full asset suite matches its
+known results exactly: 304 failure events, 17 passing, two failing and 32 skipped
+packages. No assertion or golden was changed. The full port corpus was not
+repeated; the preceding collision milestone remains the shared identity check.
+
+All accepted phases have identical source fingerprints. Seventeen changed, new
+or deleted source files match review. All retained export signatures/bodies and
+1,654 original asset hashes are unchanged. The nineteen exports and prototypes
+are gone. Selected production cgo files fall 218→216 (247/463 eliminated); legacy
+exports fall 913→894 (996/1,890 retired). Three test cgo imports also disappear.
+Embedded production C bodies remain 77; headers remain 157 files, now 3,619
+physical lines. Standalone production and test-reference C remain zero. External
+SDL2/OpenGL/OpenAL bindings remain unchanged.
+
+Luna supplied the bounded production draft; primary verified the twenty original
+registration mappings, nineteen unique keys, native owner extraction semantics,
+header removals and fixture operation widths/IDs before installation. Primary
+owned the five connected fixture migrations and original contracts. This is
+useful delegation evidence, not a measured subscription-cost saving.
+
+[Qualification](create-init-identities-qualification.json),
+[inventory](create-init-identities-inventory-after.json).

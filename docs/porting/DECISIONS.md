@@ -2668,3 +2668,16 @@ underlying string-interning helper remove the equipment death owner's remaining
 C type dependency without changing formatting or allocation behavior. Existing
 Glyph override coverage is reused; the new contract covers object/type storage
 and dispatch after GC. See [DEATH_IDENTITIES.md](DEATH_IDENTITIES.md).
+
+
+## Native creation/init identities
+
+Retire nineteen C callback addresses across twenty names, retaining the intentional
+MonsterInit/Shopkeeper alias and distinct per-name sizes. Creation identity remains
+on ObjectType; Init is copied to Object. Reuse existing typed caches and raw fallback.
+Keep mutable hooks inside per-call closures. Extract five creation owners and
+Boulder initialization without changing write order or return semantics. Direct
+fixtures preserve sparse IDs, pointer/integer result bits and PlayerInit's signed
+byte extension. Gold accessor classification now follows the native registered
+key and has explicit signed/wraparound contracts. See
+[CREATE_INIT_IDENTITIES.md](CREATE_INIT_IDENTITIES.md).

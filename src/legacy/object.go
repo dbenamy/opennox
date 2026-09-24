@@ -187,11 +187,6 @@ func nox_set_server_objects_4DA3E0(list *nox_object_t) {
 	GetServer().S().Objs.SetObjects(asObjectS(list))
 }
 
-//export nox_xxx_unitMonsterInit_4F0040
-func nox_xxx_unitMonsterInit_4F0040(obj *nox_object_t) {
-	Nox_xxx_unitMonsterInit_4F0040(asObjectS(obj))
-}
-
 func nox_xxx_checkSummonedCreaturesLimit_500D70(obj *nox_object_t, ind int) C.bool {
 	return C.bool(Nox_xxx_checkSummonedCreaturesLimit_500D70(asObjectS(obj), ind))
 }

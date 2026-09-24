@@ -105,24 +105,23 @@ func portTestCreationPrepare(proxy *portTestRoamOwnerServer, u *server.Object, s
 	}
 }
 func portTestCreationCall(u *server.Object, op int) uint32 {
-	p := combatPtr(u)
 	switch op {
 	case 0:
 		return uint32(int32(C.nox_xxx_monsterAutoSpells_54C0C0(asObjectC(u))))
 	case 1:
-		return uint32(C.nox_xxx_createWeapon_54C710(C.int(p)))
+		return uint32(createWeapon(u))
 	case 2:
-		return uint32(C.sub_54C950(C.int(p)))
+		return uint32(createArmor(u))
 	case 3:
-		return uint32(C.nox_xxx_createFnObelisk_54CA10(C.int(p)))
+		return uint32(createObelisk(u))
 	case 4:
-		C.nox_xxx_createFnAnim_54CA50(C.int(p))
+		createAnim(u)
 	case 5:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_createTrigger_54CA60(C.int(p)))))
+		return uint32(uintptr(unsafe.Pointer(createTrigger(u))))
 	case 6:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_createMonsterGen_54CA90(C.int(p)))))
+		return uint32(uintptr(unsafe.Pointer(createMonsterGenerator(u))))
 	case 7:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_createRewardMarker_54CAC0(C.int(p)))))
+		return uint32(uintptr(unsafe.Pointer(createRewardMarker(u))))
 	case 8:
 		return objectDeathImpEgg(u)
 	case 9:

@@ -47,11 +47,6 @@ func nox_xxx_playerMakeDefItems_4EF7D0(a, b, c C.int) C.char {
 	return C.char(controlDefaultItems(objectFromInt(a), int32(b), int32(c)))
 }
 
-//export nox_xxx_unitInitPlayer_4EFE80
-func nox_xxx_unitInitPlayer_4EFE80(a *C.nox_object_t) C.char {
-	return C.char(controlInitPlayer(asObjectS(a)))
-}
-
 //export sub_4EFF10
 func sub_4EFF10(a C.int) C.int { return C.int(controlResetPlayer(objectFromInt(a))) }
 

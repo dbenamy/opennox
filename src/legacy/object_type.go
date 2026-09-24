@@ -25,27 +25,27 @@ func init() {
 	server.DefaultDamageSound = C.nox_xxx_soundDefaultDamageSound_532E20
 	server.DefaultXfer = C.nox_xxx_XFerDefault_4F49A0
 
-	server.RegisterObjectCreateGo("MonsterCreate", C.nox_xxx_monsterCreateFn_54C480, func(u *server.Object) { nox_xxx_monsterCreateFn_54C480(asObjectC(u)) })
-	server.RegisterObjectCreateGo("ArmorCreate", C.sub_54C950, func(u *server.Object) { sub_54C950(C.int(uintptr(u.CObj()))) })
-	server.RegisterObjectCreateGo("WeaponCreate", C.nox_xxx_createWeapon_54C710, func(u *server.Object) { nox_xxx_createWeapon_54C710(C.int(uintptr(u.CObj()))) })
-	server.RegisterObjectCreateGo("ObeliskCreate", C.nox_xxx_createFnObelisk_54CA10, func(u *server.Object) { nox_xxx_createFnObelisk_54CA10(C.int(uintptr(u.CObj()))) })
-	server.RegisterObjectCreateGo("AnimCreate", C.nox_xxx_createFnAnim_54CA50, func(u *server.Object) { nox_xxx_createFnAnim_54CA50(C.int(uintptr(u.CObj()))) })
-	server.RegisterObjectCreateGo("TriggerCreate", C.nox_xxx_createTrigger_54CA60, func(u *server.Object) { nox_xxx_createTrigger_54CA60(C.int(uintptr(u.CObj()))) })
-	server.RegisterObjectCreateGo("MonsterGeneratorCreate", C.nox_xxx_createMonsterGen_54CA90, func(u *server.Object) { nox_xxx_createMonsterGen_54CA90(C.int(uintptr(u.CObj()))) })
-	server.RegisterObjectCreateGo("RewardMarkerCreate", C.nox_xxx_createRewardMarker_54CAC0, func(u *server.Object) { nox_xxx_createRewardMarker_54CAC0(C.int(uintptr(u.CObj()))) })
+	server.RegisterObjectCreateGo("MonsterCreate", lifecycleCreateKey(createIDMonster), func(u *server.Object) { Nox_xxx_monsterCreateFn_54C480(u) })
+	server.RegisterObjectCreateGo("ArmorCreate", lifecycleCreateKey(createIDArmor), func(u *server.Object) { createArmor(u) })
+	server.RegisterObjectCreateGo("WeaponCreate", lifecycleCreateKey(createIDWeapon), func(u *server.Object) { createWeapon(u) })
+	server.RegisterObjectCreateGo("ObeliskCreate", lifecycleCreateKey(createIDObelisk), func(u *server.Object) { createObelisk(u) })
+	server.RegisterObjectCreateGo("AnimCreate", lifecycleCreateKey(createIDAnim), func(u *server.Object) { createAnim(u) })
+	server.RegisterObjectCreateGo("TriggerCreate", lifecycleCreateKey(createIDTrigger), func(u *server.Object) { createTrigger(u) })
+	server.RegisterObjectCreateGo("MonsterGeneratorCreate", lifecycleCreateKey(createIDMonsterGenerator), func(u *server.Object) { createMonsterGenerator(u) })
+	server.RegisterObjectCreateGo("RewardMarkerCreate", lifecycleCreateKey(createIDRewardMarker), func(u *server.Object) { createRewardMarker(u) })
 
-	server.RegisterObjectInitGo("MonsterInit", C.nox_xxx_unitMonsterInit_4F0040, func(u *server.Object) { nox_xxx_unitMonsterInit_4F0040(asObjectC(u)) }, 0)
-	server.RegisterObjectInitGo("PlayerInit", C.nox_xxx_unitInitPlayer_4EFE80, func(u *server.Object) { nox_xxx_unitInitPlayer_4EFE80(asObjectC(u)) }, 0)
-	server.RegisterObjectInitGo("SparkInit", C.nox_xxx_unitSparkInit_4F0390, func(u *server.Object) { nox_xxx_unitSparkInit_4F0390(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectInitGo("FrogInit", C.nox_xxx_initFrog_4F03B0, func(u *server.Object) { nox_xxx_initFrog_4F03B0(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectInitGo("ChestInit", C.nox_xxx_initChest_4F0400, func(u *server.Object) { nox_xxx_initChest_4F0400(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectInitGo("BoulderInit", C.nox_xxx_unitBoulderInit_4F0420, func(u *server.Object) { nox_xxx_unitBoulderInit_4F0420((*C.uint32_t)(u.CObj())) }, 0)
-	server.RegisterObjectInitGo("BreakInit", C.nox_xxx_breakInit_4F0570, func(u *server.Object) { nox_xxx_breakInit_4F0570(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectInitGo("MonsterGeneratorInit", C.nox_xxx_unitInitGenerator_4F0590, func(u *server.Object) { nox_xxx_unitInitGenerator_4F0590(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectInitGo("ShopkeeperInit", C.nox_xxx_unitMonsterInit_4F0040, func(u *server.Object) { nox_xxx_unitMonsterInit_4F0040(asObjectC(u)) }, unsafe.Sizeof(server.ShopkeeperInitData{}))
-	server.RegisterObjectInitGo("SkullInit", C.sub_4F0450, func(u *server.Object) { sub_4F0450(C.int(uintptr(u.CObj()))) }, 8)
-	server.RegisterObjectInitGo("DirectionInit", C.sub_4F0490, func(u *server.Object) { sub_4F0490(C.int(uintptr(u.CObj()))) }, 8)
-	server.RegisterObjectInitGo("GoldInit", C.nox_xxx_unitInitGold_4F04B0, func(u *server.Object) { nox_xxx_unitInitGold_4F04B0(C.int(uintptr(u.CObj()))) }, unsafe.Sizeof(server.GoldInitData{}))
+	server.RegisterObjectInitGo("MonsterInit", lifecycleInitKey(initIDMonster), func(u *server.Object) { Nox_xxx_unitMonsterInit_4F0040(u) }, 0)
+	server.RegisterObjectInitGo("PlayerInit", lifecycleInitKey(initIDPlayer), func(u *server.Object) { controlInitPlayer(u) }, 0)
+	server.RegisterObjectInitGo("SparkInit", lifecycleInitKey(initIDSpark), func(u *server.Object) { rewardInitSpark(u) }, 0)
+	server.RegisterObjectInitGo("FrogInit", lifecycleInitKey(initIDFrog), func(u *server.Object) { rewardInitFrog(u) }, 0)
+	server.RegisterObjectInitGo("ChestInit", lifecycleInitKey(initIDChest), func(u *server.Object) { rewardInitBreakable(u) }, 0)
+	server.RegisterObjectInitGo("BoulderInit", lifecycleInitKey(initIDBoulder), func(u *server.Object) { rewardInitBoulder(u) }, 0)
+	server.RegisterObjectInitGo("BreakInit", lifecycleInitKey(initIDBreak), func(u *server.Object) { rewardInitBreakable(u) }, 0)
+	server.RegisterObjectInitGo("MonsterGeneratorInit", lifecycleInitKey(initIDMonsterGenerator), func(u *server.Object) { rewardInitGenerator(u) }, 0)
+	server.RegisterObjectInitGo("ShopkeeperInit", lifecycleInitKey(initIDMonster), func(u *server.Object) { Nox_xxx_unitMonsterInit_4F0040(u) }, unsafe.Sizeof(server.ShopkeeperInitData{}))
+	server.RegisterObjectInitGo("SkullInit", lifecycleInitKey(initIDSkull), func(u *server.Object) { rewardInitDirection(u, true) }, 8)
+	server.RegisterObjectInitGo("DirectionInit", lifecycleInitKey(initIDDirection), func(u *server.Object) { rewardInitDirection(u, false) }, 8)
+	server.RegisterObjectInitGo("GoldInit", lifecycleInitKey(initIDGold), func(u *server.Object) { rewardInitGold(u) }, unsafe.Sizeof(server.GoldInitData{}))
 }
 
 func nox_xxx_newObjectWithTypeInd_4E3450(ind int) *nox_object_t {
@@ -78,7 +78,7 @@ func Get_nox_xxx_XFerInvLight_4F5AA0() unsafe.Pointer {
 	return unsafe.Pointer(C.nox_xxx_XFerInvLight_4F5AA0)
 }
 func Get_nox_xxx_unitInitGold_4F04B0() unsafe.Pointer {
-	return unsafe.Pointer(C.nox_xxx_unitInitGold_4F04B0)
+	return lifecycleInitKey(initIDGold)
 }
 func Nox_call_objectType_new_go(a1 unsafe.Pointer, a2 *server.Object) {
 	ccall.CallVoidPtr(a1, a2.CObj())

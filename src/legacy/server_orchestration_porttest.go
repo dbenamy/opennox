@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-int nox_xxx_initChest_4F0400(int);
-static void* orchestrationChestInit(void) { return nox_xxx_initChest_4F0400; }
-*/
-import "C"
 import "github.com/opennox/opennox/v1/server"
 import "unsafe"
 
@@ -51,4 +45,4 @@ func PortTestServerOrchestrationGlobals() (map[string]*uint32, func()) {
 	}
 }
 
-func PortTestServerOrchestrationChestInit() unsafe.Pointer { return C.orchestrationChestInit() }
+func PortTestServerOrchestrationChestInit() unsafe.Pointer { return lifecycleInitKey(initIDChest) }
