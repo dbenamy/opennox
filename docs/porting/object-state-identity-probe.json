@@ -1,0 +1,403 @@
+{
+  "status": "qualified original identity probe",
+  "source_revision": "6274a6f3",
+  "runs": {
+    "1": {
+      "result": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 3600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": "100"
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": "100"
+        },
+        "binary_verification": {
+          "path": "/root/src/opennox/build/port-object-state-owners/identity-original/default.test",
+          "sha256": "9590ea63b18275affffead4bea47be0259d44e2b078da5dc5f01cbc6eedef5d6",
+          "source_matches": true,
+          "record_matches": true,
+          "build_metadata": {
+            "path": "github.com/opennox/opennox/v1.test",
+            "-buildmode": "exe",
+            "-compiler": "gc",
+            "tags": "porttest",
+            "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+            "CGO_ENABLED": "1",
+            "CGO_CFLAGS": "",
+            "CGO_CPPFLAGS": "",
+            "CGO_CXXFLAGS": "",
+            "CGO_LDFLAGS": "",
+            "GOARCH": "386",
+            "GOOS": "linux",
+            "GO386": "sse2"
+          },
+          "verified": true
+        },
+        "discovery_command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "/root/src/opennox/build/port-object-state-owners/identity-original/default.test",
+          "-test.list=^Test(?:ObjectState|CollisionRegistryObjectState|CollisionRegistryDefaultAliases)"
+        ],
+        "discovery_exit": 0,
+        "selected_tests": 20,
+        "selected_root_tests": 20,
+        "execution_command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "/root/src/opennox/build/port-object-state-owners/identity-original/default.test",
+          "-test.v=test2json",
+          "-test.count=1",
+          "-test.timeout=3600s",
+          "-test.run=^Test(?:ObjectState|CollisionRegistryObjectState|CollisionRegistryDefaultAliases)"
+        ],
+        "exit": 0,
+        "started_tests": 20,
+        "completed_tests": 20,
+        "started_root_tests": 20,
+        "completed_root_tests": 20,
+        "skipped_tests": [],
+        "failed_tests": [],
+        "failure_events": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 10.54458489199169
+      },
+      "records": 56,
+      "object_state_setups": 2811,
+      "actions": 3352,
+      "normalization_lookups": 48699471,
+      "action_ops": {
+        "1240": 36,
+        "1241": 36,
+        "1242": 36,
+        "1200": 72,
+        "1201": 264,
+        "1202": 265,
+        "1203": 72,
+        "1204": 265,
+        "1205": 264,
+        "1207": 72,
+        "1217": 72,
+        "1220": 72,
+        "1221": 72,
+        "1222": 168,
+        "1213": 306,
+        "1214": 267,
+        "1215": 162,
+        "1206": 30,
+        "1208": 12,
+        "1209": 12,
+        "1210": 13,
+        "1223": 12,
+        "1224": 13,
+        "1230": 13,
+        "1231": 12,
+        "1232": 12,
+        "1233": 13,
+        "1234": 13,
+        "1235": 12,
+        "1237": 13,
+        "1243": 13,
+        "1212": 50,
+        "1225": 96,
+        "1226": 96,
+        "1227": 96,
+        "1219": 13,
+        "1228": 13,
+        "1229": 12,
+        "1236": 12,
+        "1211": 18,
+        "1216": 36,
+        "1218": 200,
+        "1238": 8,
+        "1239": 8
+      },
+      "consumed_ids": {},
+      "all_41_addresses_distinct": true,
+      "log_sha256": "0a98a5d6ee9d3770c33c9029b3c9234f765499b6780e1a16ef31ab3ed7a1530b"
+    },
+    "2": {
+      "result": {
+        "tags": "porttest",
+        "success": true,
+        "timeout_seconds": 3600,
+        "packages": [
+          "."
+        ],
+        "runtime_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "768MiB",
+          "GOGC": "100"
+        },
+        "discovery_env": {
+          "GOMAXPROCS": "2",
+          "GOMEMLIMIT": "1536MiB",
+          "GOGC": "100"
+        },
+        "binary_verification": {
+          "path": "/root/src/opennox/build/port-object-state-owners/identity-original/default.test",
+          "sha256": "9590ea63b18275affffead4bea47be0259d44e2b078da5dc5f01cbc6eedef5d6",
+          "source_matches": true,
+          "record_matches": true,
+          "build_metadata": {
+            "path": "github.com/opennox/opennox/v1.test",
+            "-buildmode": "exe",
+            "-compiler": "gc",
+            "tags": "porttest",
+            "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+            "CGO_ENABLED": "1",
+            "CGO_CFLAGS": "",
+            "CGO_CPPFLAGS": "",
+            "CGO_CXXFLAGS": "",
+            "CGO_LDFLAGS": "",
+            "GOARCH": "386",
+            "GOOS": "linux",
+            "GO386": "sse2"
+          },
+          "verified": true
+        },
+        "discovery_command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "/root/src/opennox/build/port-object-state-owners/identity-original/default.test",
+          "-test.list=^Test(?:ObjectState|CollisionRegistryObjectState|CollisionRegistryDefaultAliases)"
+        ],
+        "discovery_exit": 0,
+        "selected_tests": 20,
+        "selected_root_tests": 20,
+        "execution_command": [
+          "go",
+          "tool",
+          "test2json",
+          "-t",
+          "-p",
+          "github.com/opennox/opennox/v1",
+          "/root/src/opennox/build/port-object-state-owners/identity-original/default.test",
+          "-test.v=test2json",
+          "-test.count=1",
+          "-test.timeout=3600s",
+          "-test.run=^Test(?:ObjectState|CollisionRegistryObjectState|CollisionRegistryDefaultAliases)"
+        ],
+        "exit": 0,
+        "started_tests": 20,
+        "completed_tests": 20,
+        "started_root_tests": 20,
+        "completed_root_tests": 20,
+        "skipped_tests": [],
+        "failed_tests": [],
+        "failure_events": [],
+        "missing_started": [],
+        "missing_completed": [],
+        "reason": "all selected tests executed and finished",
+        "wall_seconds": 9.81771855801344
+      },
+      "records": 56,
+      "object_state_setups": 2811,
+      "actions": 3352,
+      "normalization_lookups": 48699471,
+      "action_ops": {
+        "1240": 36,
+        "1241": 36,
+        "1242": 36,
+        "1200": 72,
+        "1201": 264,
+        "1202": 265,
+        "1203": 72,
+        "1204": 265,
+        "1205": 264,
+        "1207": 72,
+        "1217": 72,
+        "1220": 72,
+        "1221": 72,
+        "1222": 168,
+        "1213": 306,
+        "1214": 267,
+        "1215": 162,
+        "1206": 30,
+        "1208": 12,
+        "1209": 12,
+        "1210": 13,
+        "1223": 12,
+        "1224": 13,
+        "1230": 13,
+        "1231": 12,
+        "1232": 12,
+        "1233": 13,
+        "1234": 13,
+        "1235": 12,
+        "1237": 13,
+        "1243": 13,
+        "1212": 50,
+        "1225": 96,
+        "1226": 96,
+        "1227": 96,
+        "1219": 13,
+        "1228": 13,
+        "1229": 12,
+        "1236": 12,
+        "1211": 18,
+        "1216": 36,
+        "1218": 200,
+        "1238": 8,
+        "1239": 8
+      },
+      "consumed_ids": {},
+      "all_41_addresses_distinct": true,
+      "log_sha256": "191cac3a1f08b2e836d72629bb079511a48388ddca09d8d248038b1fd8fad310"
+    }
+  },
+  "selection": {
+    "source_revision": "6274a6f3a87d36ea0545f9affd73a73c601eeb07",
+    "pattern": "^Test(?:ObjectState|CollisionRegistryObjectState|CollisionRegistryDefaultAliases)",
+    "profiles": {
+      "default": [
+        "TestCollisionRegistryDefaultAliases",
+        "TestCollisionRegistryObjectState",
+        "TestObjectStateAttributes",
+        "TestObjectStateChecksumInputs",
+        "TestObjectStateCleanup",
+        "TestObjectStateCollide",
+        "TestObjectStateDirectionEdges",
+        "TestObjectStateDistanceEdges",
+        "TestObjectStateDoors",
+        "TestObjectStateFreeze",
+        "TestObjectStateGeometry",
+        "TestObjectStateIndividualBits",
+        "TestObjectStateLoot",
+        "TestObjectStateNil",
+        "TestObjectStateOwnership",
+        "TestObjectStatePlayers",
+        "TestObjectStatePositive",
+        "TestObjectStateRecent",
+        "TestObjectStateSync",
+        "TestObjectStateTeleport"
+      ],
+      "server": [
+        "TestCollisionRegistryDefaultAliases",
+        "TestCollisionRegistryObjectState",
+        "TestObjectStateAttributes",
+        "TestObjectStateChecksumInputs",
+        "TestObjectStateCleanup",
+        "TestObjectStateCollide",
+        "TestObjectStateDirectionEdges",
+        "TestObjectStateDistanceEdges",
+        "TestObjectStateDoors",
+        "TestObjectStateFreeze",
+        "TestObjectStateGeometry",
+        "TestObjectStateIndividualBits",
+        "TestObjectStateLoot",
+        "TestObjectStateNil",
+        "TestObjectStateOwnership",
+        "TestObjectStatePlayers",
+        "TestObjectStatePositive",
+        "TestObjectStateRecent",
+        "TestObjectStateSync",
+        "TestObjectStateTeleport"
+      ],
+      "highres": [
+        "TestCollisionRegistryDefaultAliases",
+        "TestCollisionRegistryObjectState",
+        "TestObjectStateAttributes",
+        "TestObjectStateChecksumInputs",
+        "TestObjectStateCleanup",
+        "TestObjectStateCollide",
+        "TestObjectStateDirectionEdges",
+        "TestObjectStateDistanceEdges",
+        "TestObjectStateDoors",
+        "TestObjectStateFreeze",
+        "TestObjectStateGeometry",
+        "TestObjectStateIndividualBits",
+        "TestObjectStateLoot",
+        "TestObjectStateNil",
+        "TestObjectStateOwnership",
+        "TestObjectStatePlayers",
+        "TestObjectStatePositive",
+        "TestObjectStateRecent",
+        "TestObjectStateSync",
+        "TestObjectStateTeleport"
+      ]
+    },
+    "qualification_basis": "All object-state roots passed in preceding qualified chunk; two collision roots independently passed preceding shared-record milestone. Instrumented runs must preserve all existing assertions and hashes.",
+    "production_changes": false
+  },
+  "scope": "Two fresh default-profile processes; production unchanged; existing frozen assertions unchanged; removal still requires converted qualification.",
+  "identity_use_and_coverage_agree": true,
+  "raw_map_cardinality_differences": [
+    {
+      "record": 41,
+      "snapshot": 34,
+      "action_ops": {
+        "1218": 200
+      },
+      "first": {
+        "shop_ids": 294,
+        "life_ids": 388,
+        "reserved_function_ids": 3
+      },
+      "second": {
+        "shop_ids": 295,
+        "life_ids": 389,
+        "reserved_function_ids": 3
+      }
+    },
+    {
+      "record": 41,
+      "snapshot": 88,
+      "action_ops": {
+        "1218": 200
+      },
+      "first": {
+        "shop_ids": 294,
+        "life_ids": 388,
+        "reserved_function_ids": 3
+      },
+      "second": {
+        "shop_ids": 295,
+        "life_ids": 389,
+        "reserved_function_ids": 3
+      }
+    },
+    {
+      "record": 41,
+      "snapshot": 180,
+      "action_ops": {
+        "1218": 200
+      },
+      "first": {
+        "shop_ids": 297,
+        "life_ids": 397,
+        "reserved_function_ids": 3
+      },
+      "second": {
+        "shop_ids": 294,
+        "life_ids": 394,
+        "reserved_function_ids": 3
+      }
+    }
+  ],
+  "diagnostic_limit": "Raw address-map sizes differ at three loot snapshots in the original runs. These are additional diagnostics, not frozen outputs; all frozen hashes, generated ID counters, identity-use counts and coverage match. Do not require raw map-size equality across processes. Reserve 37 removed function entries to preserve each run's existing cardinality formula; compare actual frozen outputs after conversion.",
+  "reservation_decision": "Retire 37 unused registrations; reservedFunctionIDs 2 to39 preserves len(p.ids)+reservedFunctionIDs. Four live collision registrations stay."
+}

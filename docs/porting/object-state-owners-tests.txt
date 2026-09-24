@@ -1,0 +1,1 @@
+^Test(?:ObjectState|CollisionRegistry|AICombat|AICallback|AIMain|AIMonsterState|Damage|Equipment|Attack|PlayerDeath|Projectile|ObjectDeath|SpawnPolicy|Generator|SpellEffects|Effects|Shop|Trade)

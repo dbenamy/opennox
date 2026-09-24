@@ -1,0 +1,259 @@
+--- a/src/legacy/ai_main_porttest.go
++++ b/src/legacy/ai_main_porttest.go
+@@ -62,0 +63,3 @@
++				if proxy.identityProbe != nil {
++					proxy.identityProbe.normalizeHit("ai_main_life_ids", v, id)
++				}
+@@ -63,0 +67,2 @@
++			} else if proxy.identityProbe != nil {
++				proxy.identityProbe.normalizeMiss(v)
+--- a/src/legacy/ai_roam_owner_porttest.go
++++ b/src/legacy/ai_roam_owner_porttest.go
+@@ -36,0 +37 @@
++	identityProbe    *portTestObjectStateIdentityProbe
+--- a/src/legacy/ai_roam_porttest.go
++++ b/src/legacy/ai_roam_porttest.go
+@@ -242,0 +243,3 @@
++			if proxy.identityProbe != nil {
++				proxy.identityProbe.normalizeHit("roam_ids", v, id)
++			}
+@@ -243,0 +247,3 @@
++		}
++		if proxy.identityProbe != nil {
++			proxy.identityProbe.normalizeMiss(v)
+@@ -509,0 +516,3 @@
++				if proxy.identityProbe != nil {
++					proxy.identityProbe.normalizeHit("roam_field2_life_ids", r.Field2, id)
++				}
+@@ -556,0 +566,3 @@
++	if proxy.identityProbe != nil {
++		proxy.identityProbe.flush()
++	}
+--- /dev/null
++++ b/src/legacy/object_state_identity_probe_porttest.go
+@@ -0,0 +1,162 @@
++//go:build porttest
++
++package legacy
++
++import (
++	"encoding/json"
++	"os"
++	"strconv"
++	"unsafe"
++)
++
++// Enabled only when OPENNOX_OBJECT_STATE_IDENTITY_PROBE names an output path.
++// One JSON record is appended after each complete outer PortTestRoam result. Shop-map cardinalities are recorded for every shop snapshot within it.
++type portTestObjectStateIdentityProbe struct {
++	path                       string
++	label                      string
++	objectStateItems           uint64
++	objectStateActions         uint64
++	objectStateSnapshots       uint64
++	objectStateSnapshotWords   uint64
++	actionOps                  map[uint32]uint64
++	registered                 map[string]string
++	pendingNormalizeCalls      uint64
++	pendingMisses              uint64
++	pendingShopIDs             map[string]uint64
++	pendingLifeIDs             map[string]uint64
++	flushes                    uint64
++	shopIDsAtObjectStateStart  int
++	lifeIDsAtObjectStateStart  int
++	reservedAtObjectStateStart int
++	shopIDsAfterFunctionTable  int
++	lifeIDsAfterFunctionTable  int
++	shopMapStats               []portTestObjectStateIdentityMapStats
++	generatedShopIDs           map[string]uint64
++}
++
++type portTestObjectStateIdentityMapStats struct {
++	ShopIDs             int `json:"shop_ids"`
++	LifeIDs             int `json:"life_ids"`
++	ReservedFunctionIDs int `json:"reserved_function_ids"`
++}
++
++func newPortTestObjectStateIdentityProbe() *portTestObjectStateIdentityProbe {
++	path := os.Getenv("OPENNOX_OBJECT_STATE_IDENTITY_PROBE")
++	if path == "" {
++		return nil
++	}
++	return &portTestObjectStateIdentityProbe{
++		path:             path,
++		label:            os.Getenv("OPENNOX_OBJECT_STATE_IDENTITY_LABEL"),
++		actionOps:        make(map[uint32]uint64),
++		registered:       make(map[string]string),
++		generatedShopIDs: make(map[string]uint64),
++		pendingShopIDs:   make(map[string]uint64),
++		pendingLifeIDs:   make(map[string]uint64),
++	}
++}
++
++func (p *portTestObjectStateIdentityProbe) register(ptr unsafe.Pointer, id uint32) {
++	key := strconv.FormatUint(uint64(id), 10)
++	if id >= 89000 && id <= 89043 {
++		p.registered[key] = strconv.FormatUint(uint64(uint32(uintptr(ptr))), 16)
++	}
++	if id >= 90000 {
++		p.generatedShopIDs[key]++
++	}
++}
++func (p *portTestObjectStateIdentityProbe) objectStateStart(shopIDs, lifeIDs, reserved int) {
++	p.shopIDsAtObjectStateStart = shopIDs
++	p.lifeIDsAtObjectStateStart = lifeIDs
++	p.reservedAtObjectStateStart = reserved
++}
++func (p *portTestObjectStateIdentityProbe) functionTableEnd(shopIDs, lifeIDs int) {
++	p.shopIDsAfterFunctionTable = shopIDs
++	p.lifeIDsAfterFunctionTable = lifeIDs
++}
++func (p *portTestObjectStateIdentityProbe) observeShopMaps(shopIDs, lifeIDs, reserved int) {
++	p.shopMapStats = append(p.shopMapStats, portTestObjectStateIdentityMapStats{shopIDs, lifeIDs, reserved})
++}
++func (p *portTestObjectStateIdentityProbe) normalizeHit(table string, key, id uint32) {
++	p.pendingNormalizeCalls++
++	if id < 89000 || id > 89043 {
++		return
++	}
++	ids := p.pendingShopIDs
++	switch table {
++	case "life_ids", "roam_ids", "roam_field2_life_ids", "ai_main_life_ids", "spawn_players_life_ids":
++		ids = p.pendingLifeIDs
++	}
++	k := strconv.FormatUint(uint64(id), 10)
++	ids[k]++
++}
++func (p *portTestObjectStateIdentityProbe) normalizeMiss(uint32) {
++	p.pendingNormalizeCalls++
++	p.pendingMisses++
++}
++func (p *portTestObjectStateIdentityProbe) flush() {
++	if p == nil {
++		return
++	}
++	p.flushes++
++	row := struct {
++		Label                      string                                `json:"label,omitempty"`
++		Flush                      uint64                                `json:"flush"`
++		ObjectStateItems           uint64                                `json:"object_state_items"`
++		ObjectStateActions         uint64                                `json:"object_state_actions"`
++		ActionOps                  map[uint32]uint64                     `json:"action_ops"`
++		ObjectStateSnapshots       uint64                                `json:"object_state_snapshots"`
++		ObjectStateSnapshotWords   uint64                                `json:"object_state_snapshot_words"`
++		RegisteredStateFunctionIDs map[string]string                     `json:"registered_state_function_ids"`
++		GeneratedShopIDs           map[string]uint64                     `json:"generated_shop_ids_ge_90000_counts"`
++		ShopIDsAtObjectStateStart  int                                   `json:"shop_ids_at_object_state_start"`
++		LifeIDsAtObjectStateStart  int                                   `json:"life_ids_at_object_state_start"`
++		ReservedAtObjectStateStart int                                   `json:"reserved_function_ids_at_object_state_start"`
++		ShopIDsAfterFunctionTable  int                                   `json:"shop_ids_after_function_table"`
++		LifeIDsAfterFunctionTable  int                                   `json:"life_ids_after_function_table"`
++		ShopMapStats               []portTestObjectStateIdentityMapStats `json:"shop_map_cardinality_at_snapshots"`
++		NormalizeCalls             uint64                                `json:"normalize_calls_since_previous_flush"`
++		NormalizeMisses            uint64                                `json:"normalize_misses_since_previous_flush"`
++		ShopIDsConsumed            map[string]uint64                     `json:"state_function_ids_consumed_via_shop_ids"`
++		LifeIDsConsumed            map[string]uint64                     `json:"state_function_ids_consumed_via_life_ids"`
++	}{p.label, p.flushes, p.objectStateItems, p.objectStateActions, clonePortTestIdentityCounts32(p.actionOps), p.objectStateSnapshots, p.objectStateSnapshotWords, clonePortTestIdentityStrings(p.registered), clonePortTestIdentityCounts(p.generatedShopIDs), p.shopIDsAtObjectStateStart, p.lifeIDsAtObjectStateStart, p.reservedAtObjectStateStart, p.shopIDsAfterFunctionTable, p.lifeIDsAfterFunctionTable, append([]portTestObjectStateIdentityMapStats(nil), p.shopMapStats...), p.pendingNormalizeCalls, p.pendingMisses, clonePortTestIdentityCounts(p.pendingShopIDs), clonePortTestIdentityCounts(p.pendingLifeIDs)}
++	b, err := json.Marshal(row)
++	if err != nil {
++		panic(err)
++	}
++	f, err := os.OpenFile(p.path, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0600)
++	if err != nil {
++		panic(err)
++	}
++	if _, err = f.Write(append(b, '\n')); err != nil {
++		_ = f.Close()
++		panic(err)
++	}
++	if err = f.Close(); err != nil {
++		panic(err)
++	}
++	p.pendingNormalizeCalls, p.pendingMisses = 0, 0
++	clear(p.pendingShopIDs)
++	clear(p.pendingLifeIDs)
++}
++func clonePortTestIdentityCounts(in map[string]uint64) map[string]uint64 {
++	out := make(map[string]uint64, len(in))
++	for k, v := range in {
++		out[k] = v
++	}
++	return out
++}
++func clonePortTestIdentityStrings(in map[string]string) map[string]string {
++	out := make(map[string]string, len(in))
++	for k, v := range in {
++		out[k] = v
++	}
++	return out
++}
++func clonePortTestIdentityCounts32(in map[uint32]uint64) map[uint32]uint64 {
++	out := make(map[uint32]uint64, len(in))
++	for k, v := range in {
++		out[k] = v
++	}
++	return out
++}
+--- a/src/legacy/object_state_porttest.go
++++ b/src/legacy/object_state_porttest.go
+@@ -202,0 +203,8 @@
++	if p.identityProbe == nil {
++		p.identityProbe = newPortTestObjectStateIdentityProbe()
++	}
++	if p.identityProbe != nil {
++		p.identityProbe.objectStateItems++
++		p.proxy.identityProbe = p.identityProbe
++		p.identityProbe.objectStateStart(len(p.ids), len(p.proxy.life.ids), p.reservedFunctionIDs)
++	}
+@@ -229,0 +238,3 @@
++	if p.identityProbe != nil {
++		p.identityProbe.functionTableEnd(len(p.ids), len(p.proxy.life.ids))
++	}
+@@ -243,0 +255,4 @@
++	if p.identityProbe != nil {
++		p.identityProbe.objectStateActions++
++		p.identityProbe.actionOps[uint32(a.Op)]++
++	}
+@@ -278,0 +294,4 @@
++	if p.identityProbe != nil {
++		p.identityProbe.objectStateSnapshots++
++	}
++	before := len(out)
+@@ -288,0 +308,3 @@
++	if p.identityProbe != nil {
++		p.identityProbe.objectStateSnapshotWords += uint64(len(out) - before)
++	}
+--- a/src/legacy/shop_pools_porttest.go
++++ b/src/legacy/shop_pools_porttest.go
+@@ -120,0 +121 @@
++	identityProbe       *portTestObjectStateIdentityProbe
+@@ -150,0 +152,3 @@
++		if p.identityProbe != nil {
++			p.identityProbe.normalizeHit("shop_ids", v, id)
++		}
+@@ -153,0 +158,3 @@
++		if p.identityProbe != nil {
++			p.identityProbe.normalizeHit("life_ids", v, id)
++		}
+@@ -154,0 +162,3 @@
++	}
++	if p.identityProbe != nil {
++		p.identityProbe.normalizeMiss(v)
+@@ -160,0 +171,3 @@
++	if p.identityProbe != nil {
++		p.identityProbe.register(ptr, id)
++	}
+@@ -689,0 +703,3 @@
++	if p.identityProbe != nil {
++		p.identityProbe.observeShopMaps(len(p.ids), len(p.proxy.life.ids), p.reservedFunctionIDs)
++	}
+--- a/src/legacy/spawn_players_porttest.go
++++ b/src/legacy/spawn_players_porttest.go
+@@ -56,0 +57,3 @@
++			if proxy.identityProbe != nil {
++				proxy.identityProbe.normalizeHit("spawn_players_life_ids", v, id)
++			}
+@@ -57,0 +61,3 @@
++		}
++		if proxy.identityProbe != nil {
++			proxy.identityProbe.normalizeMiss(v)

@@ -21,10 +21,13 @@ passes with frozen expectations unchanged.
 See [GO_NATIVE_OWNER_CONSTANTS.md](docs/porting/GO_NATIVE_OWNER_CONSTANTS.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next: audit object-state fixture address identities,
-then migrate its callers and retire exports proven test-only. The audit is under
-`build/port-go-native-owner-constants/next-selection/`; no export retirement is
-accepted until that identity check passes. Stop at the milestone or a substantial question.
+recorded reversible decisions. Next: object-state native callers and 37 fixture-only
+export retirements. The original identity probe passes twice without consumed
+state-function addresses; preserve map-size-based IDs using the existing reservation
+counter. Fresh original baselines pass all 283 selected roots in every profile.
+See [OBJECT_STATE_OWNERS.md](docs/porting/OBJECT_STATE_OWNERS.md).
+Drafts remain uninstalled under `build/port-object-state-owners/`.
+Stop at the milestone or a substantial question.
 
 Latest artifacts: `build/port-go-native-owner-constants/`.
 
