@@ -1544,11 +1544,32 @@ func (obj *Object) CallDrop(it Obj, pos types.Pointf) bool {
 	return fnc(obj, ToObject(it), pos)
 }
 
+// CallXfer requires a configured callback and preserves the legacy nonzero-success result.
 func (obj *Object) CallXfer(a2 unsafe.Pointer) error {
-	if ccall.CallIntPtr2(obj.Xfer, obj.CObj(), a2) == 0 {
+	var result int
+	if fnc := objectXferGoFuncs[obj.Xfer]; fnc != nil {
+		result = fnc(obj, a2)
+	} else {
+		result = ccall.CallIntPtr2(obj.Xfer, obj.CObj(), a2)
+	}
+	runtime.KeepAlive(obj)
+	runtime.KeepAlive(a2)
+	if result == 0 {
 		return fmt.Errorf("xfer for %s failed", obj.String())
 	}
 	return nil
+}
+
+// CallDamageSound requires a configured callback. The damage owner handles its
+// separate nil-slot default; sound callback return values are intentionally ignored.
+func (obj *Object) CallDamageSound(other *Object) {
+	if fnc := objectDamageSoundGoFuncs[obj.DamageSound]; fnc != nil {
+		fnc(obj, other)
+	} else {
+		ccall.CallVoidPtr2(obj.DamageSound, obj.CObj(), other.CObj())
+	}
+	runtime.KeepAlive(obj)
+	runtime.KeepAlive(other)
 }
 
 func (obj *Object) SetOwner(owner *Object) {

@@ -2,22 +2,22 @@
 
 ## Scope
 
-Candidate: bind 28 object-transfer registrations and two damage-sound registrations
-to their complete existing Go export wrappers. Preserve C callback identities,
+All 28 object-transfer registrations and two damage-sound registrations now bind
+their complete existing Go export wrappers. The conversion preserves callback identities,
 object layout, unknown-callback calling conventions and late handler replacement.
-Production conversion is not installed. The preceding qualified collision
-checkpoint is `d44f33d7`.
+The original baseline preceded conversion and reused qualified collision
+checkpoint `d44f33d7`.
 
 `server.Object.CallXfer` treats every nonzero integer as success and converts zero
 to its existing generic error. Its callback must be configured. The outer
 `opennox.Object.CallXfer` has a separate DefaultXfer shortcut: it calls the local
-implementation and returns its detailed error. Keep that shortcut unchanged; it
+implementation and returns its detailed error. That shortcut is unchanged; it
 does not consult the replaceable legacy handler.
 
 The damage owner chooses weapon over source and ignores the callback return.
 A nil sound slot calls the fixed default wrapper, even if the registry's default
-pointer changes. Keep that branch and the owner's admission, ordering and sound
-suppression conditions unchanged. The two wrappers resolve their Go handlers at
+pointer changes. That branch and the owner's admission, ordering and sound
+suppression conditions are unchanged. The two wrappers resolve their Go handlers at
 invocation, as does the server DefaultXfer wrapper.
 
 ## Baseline and qualification plan
@@ -46,7 +46,9 @@ character creation plus explicit save/load/resume. Standalone C remains zero;
 
 One GPT-6 Luna helper produced the 30 registration bindings and reviewed existing
 fixture coverage. Primary independently checked every name, C address and Go
-wrapper signature/call. Primary owns the API, fixtures, integration and acceptance.
+wrapper signature/call. Primary owns the API, fixtures, integration and acceptance. The reviewed binding
+draft was integrated and all three profiles passed without a production correction.
+No measured cost or wall-time saving is claimed.
 The first inventory blurred the outer default shortcut with the mutable legacy
 handler; that was corrected before implementation. The final review found all
 27 nondefault callbacks covered; its version-gate wording was clarified because
@@ -54,8 +56,8 @@ rejected records enter the callback and return at its version check.
 
 Current artifacts are in `build/port-xfer-sound-registry`; initial ignored drafts
 and audits remain in `build/port-collision-registry/next-xfer-sound-*`. Production
-and tests must remain fixed while a Go job runs. New production conversion must
-wait for a qualified, committed original baseline.
+and tests must remain fixed while a Go job runs. The original baseline was qualified, committed and pushed as `003d6fab` before
+production conversion.
 
 ## Original-path progress
 
@@ -86,4 +88,24 @@ checkpoint. All other source/dependency fingerprints and four binary hashes are
 identical; all 30 callback exports remain in those binaries. Production evidence
 is reused only at this test-only checkpoint. See
 [original qualification](xfer-sound-registry-c-qualification.json).
-The production patch is still unapplied; conversion qualification follows.
+At this baseline checkpoint the production patch was unapplied; completed
+conversion qualification is recorded below.
+
+## Completed conversion qualification
+
+The five-file production conversion binds all 30 complete Go wrappers and routes
+CallXfer plus the configured damage-sound owner through typed dispatch. Unknown
+callbacks keep their original pointer calling conventions. Pointer arguments
+remain live through dispatch. No callback addresses, object layouts, nil/default
+branches or serialized formats changed; no test or frozen expectation changed.
+
+All 228 roots pass in default/server/highres without skips; all 220 original
+capture groups match exactly. Safe/static, four fresh 386/SSE2/CGO binaries with
+retained Go-backed exports and no test-only symbols, exact known-suite comparison,
+headless creation and explicit save/load/resume pass. Known-suite results remain
+304 failure events and 17 pass/2 fail/32 skip package outcomes. See
+[conversion qualification](xfer-sound-registry-qualification.json).
+
+Standalone C remains zero files/physical lines; 79 production C preamble bodies
+remain. The batch removes redundant callback round trips while retaining raw ABI
+fallbacks. No performance or 64-bit compatibility claim is made.

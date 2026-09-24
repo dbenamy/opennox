@@ -313,6 +313,7 @@ target build selection and linker evidence.
 | Route 53 object-update callbacks through Go registry; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 | Route eight creation/twelve initialization registrations through Go; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 | Route 53 collision registrations and four pointer-call owners through Go; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
+| Route 28 transfer and two damage-sound registrations through Go; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 
 The checksum removes two C function definitions from GAME5_2.c; C ABI entry
 points remain as generated bridges into Go. Translation-unit counts do not fall

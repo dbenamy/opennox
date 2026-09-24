@@ -17,7 +17,6 @@ import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
@@ -191,7 +190,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 		if play {
 			fn := *(*unsafe.Pointer)(unsafe.Add(u.CObj(), 720))
 			if fn != nil {
-				ccall.CallVoidPtr2(fn, u.CObj(), actual.CObj())
+				u.CallDamageSound(actual)
 			} else {
 				nox_xxx_soundDefaultDamageSound_532E20(asObjectC(u), asObjectC(actual))
 			}

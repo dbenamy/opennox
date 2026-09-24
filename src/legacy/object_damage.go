@@ -22,6 +22,6 @@ func init() {
 	server.RegisterObjectDamageValueGo("BallDamage", C.sub_4E14A0, func(_, _, _ *server.Object, _, _ int32) int32 { return 0 })
 	server.RegisterObjectDamageValueGo("MonsterGeneratorDamage", C.nox_xxx_damageMonsterGen_4E27D0, damageGenerator)
 
-	server.RegisterObjectDamageSound("DefaultDamageSound", C.nox_xxx_soundDefaultDamageSound_532E20)
-	server.RegisterObjectDamageSound("PlayerDamageSound", C.nox_xxx_soundPlayerDamageSound_5328B0)
+	server.RegisterObjectDamageSoundGo("DefaultDamageSound", C.nox_xxx_soundDefaultDamageSound_532E20, func(u, other *server.Object) { nox_xxx_soundDefaultDamageSound_532E20(asObjectC(u), asObjectC(other)) })
+	server.RegisterObjectDamageSoundGo("PlayerDamageSound", C.nox_xxx_soundPlayerDamageSound_5328B0, func(u, other *server.Object) { nox_xxx_soundPlayerDamageSound_5328B0(asObjectC(u), asObjectC(other)) })
 }

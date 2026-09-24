@@ -14,14 +14,15 @@
 
 ## Current status
 
-All 53 collision registrations now dispatch through Go, preserving callback
-identities, aliases, data sizes, raw calling conventions and replaceable handlers.
-All 257 affected roots/profile, 4,116 frozen observations, pointer escape/lifetime
-checks, safe/static, fresh production/ABI, exact known-suite comparison and headless
-creation/save-load pass. See [COLLISION_REGISTRY.md](docs/porting/COLLISION_REGISTRY.md).
+All 28 object-transfer and two damage-sound registrations now dispatch through Go,
+preserving callback identities, raw fallbacks, return conventions and replaceable
+handlers. All 228 affected roots/profile and 220 frozen capture groups pass, with
+safe/static, four fresh production binaries/ABI, exact known-suite comparison and
+headless creation/save-load qualification. See
+[XFER_SOUND_REGISTRY.md](docs/porting/XFER_SOUND_REGISTRY.md).
 **Standalone C remains zero; production C preamble bodies remain 79.**
-The original transfer/damage-sound baseline is now qualified: 228 roots/profile
-and 220 unchanged frozen capture groups. Next: install and qualify the 30 bindings. See [XFER_SOUND_REGISTRY.md](docs/porting/XFER_SOUND_REGISTRY.md).
+Paused at the user's request after this qualified checkpoint. Remaining callback
+owners have a bounded candidate inventory; no next conversion is installed.
 The integer-returning collision caller remains raw.
 
 ### Earlier checkpoints

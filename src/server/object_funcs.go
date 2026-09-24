@@ -253,6 +253,15 @@ func RegisterObjectDamageValueGo(name string, cfnc unsafe.Pointer, fnc DamageVal
 	})
 }
 
+type DamageSoundFunc func(obj, other *Object)
+
+var objectDamageSoundGoFuncs = make(map[unsafe.Pointer]DamageSoundFunc)
+
+func RegisterObjectDamageSoundGo(name string, cfnc unsafe.Pointer, fnc DamageSoundFunc) {
+	RegisterObjectDamageSound(name, cfnc)
+	objectDamageSoundGoFuncs[cfnc] = fnc
+}
+
 func RegisterObjectDamageSound(name string, fnc unsafe.Pointer) {
 	if _, ok := damageSoundFuncs[name]; ok {
 		panic("already registered")
@@ -357,6 +366,15 @@ func RegisterObjectPickup(name string, cfnc unsafe.Pointer, fnc PickupFunc) {
 	}
 	pickupFuncs[name] = cfnc
 	objPickup.Register(cfnc, fnc)
+}
+
+type XferFunc func(obj *Object, arg unsafe.Pointer) int
+
+var objectXferGoFuncs = make(map[unsafe.Pointer]XferFunc)
+
+func RegisterObjectXferGo(name string, cfnc unsafe.Pointer, fnc XferFunc) {
+	RegisterObjectXfer(name, cfnc)
+	objectXferGoFuncs[cfnc] = fnc
 }
 
 func RegisterObjectXfer(name string, fnc unsafe.Pointer) {

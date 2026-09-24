@@ -7,32 +7,47 @@ references. Headers, C preambles, generated bridges and external libraries are
 outside this metric. There are still 79 production C preamble bodies (76 generic
 callback dispatchers and three typed adapters). See [C_LOC.md](docs/porting/C_LOC.md).
 
-## Current — transfer/sound original baseline qualified
+## Current — transfer/sound conversion qualified
 
-All 228 affected roots pass without skips in default/server/highres; all 220 frozen
-capture groups match across profiles. Eight new contract roots passed before this
-combined selection. Five new porttest files are the only source changes; all other
-source/dependency hashes and four collision production binaries match d44f33d7.
-Original baseline production evidence is explicitly reused from collision.
-See XFER_SOUND_REGISTRY.md and xfer-sound-registry-c-qualification.json.
+All 28 transfer and two damage-sound registrations now bind complete existing
+Go wrappers. Five production files changed; tests and expectations are unchanged
+from the qualified original baseline `003d6fab`. CallXfer retains zero-only failure and its
+generic error; the outer default shortcut keeps local detailed errors. The damage
+owner retains source/weapon selection, timing, ignored returns and the fixed
+nil-slot default wrapper. Three mutable handlers remain late-bound. Unknown raw
+callbacks and configured-slot preconditions remain intact.
 
-Next: commit/push this baseline, then apply build/port-xfer-sound-registry/production.patch
-and qualify the five-file production conversion. Preserve the outer default
-transfer's local detailed errors and the damage sound owner's fixed nil-slot
-default. No production conversion installed; no Go job active at this checkpoint.
-Current production binaries remain build/port-collision-registry/{safe/opennox-safe,production/production/bin}.
+All 228 roots/profile and 220 frozen capture groups pass. Safe/static, four fresh
+386/SSE2/CGO binaries, retained exports, exact known-suite 304 events with unchanged
+17 pass/2 fail/32 skip packages, headless creation and save/load/resume pass.
+Converted contracts completed in job 20603; remaining qualification in 94956.
+See XFER_SOUND_REGISTRY.md and xfer-sound-registry-qualification.json. Check Git for
+conversion commit/push. C remains zero standalone files/lines and 79 preambles.
+Current binaries: build/port-xfer-sound-registry/{safe/opennox-safe,production/production/bin}.
 
-One Luna helper supplied 30 bindings, fixture/caller reviews and a cache plan;
-primary independently verified mappings and owns contracts/API/integration.
-Initial job 8647 stopped during compilation due to primary's missing GAME4_3 header
-in the test bridge; corrected include only, then 35130 passed all eight new roots.
-No runtime expectations changed. Combined original profiles ran in job 59130.
+User requested a pause after this chunk is qualified, committed and pushed.
+Pause after the commit/push; no next conversion or baseline is authorized to start
+until resumed. Monster-callback inventory and drafts remain ignored and unapplied
+under build/port-xfer-sound-registry/next-*. Preliminary next candidate: 26 named
+monster callbacks (11 strike, 5 die, 10 dead), loaded from blob tables 287096,
+287280 and 287192 at base 0x587000. Production owners are combatMelee,
+lifecycleDyingStart and lifecycleDeadStart. Existing matrices reach 25 table
+entries; BomberDead and built-in identities through actual AI owners need targeted
+review. No next scope accepted or qualified. Luna's completed inventory records
+that gap and preserves an erratum for its overbroad Use-wrapper file claim.
+One Luna helper is stopped; no Go job active at this checkpoint. Finalizers
+consumed after completion.
+
+The original baseline added five test-only files and eight contract roots. First
+job 8647 stopped at compilation because primary omitted the GAME4_3 header in the
+test bridge; include corrected, then job 35130 passed all eight roots. Combined
+original profiles passed in 59130. No runtime expectations changed.
 
 Cleanup 39789 reclaimed 1,442,158,216 bytes from 30 old repository compiler archives
-with no Go jobs active. Strict pre-2026-09-23 22:00 UTC cutoff, stat/hash/archive/
-module and host inode-use checks passed. Source/modules/assets/binaries/evidence
-retained. Exact plan/removal record: build/port-xfer-sound-registry.
-Standalone C remains zero files/lines; production C preamble bodies remain 79.
+with no Go jobs active. Cutoff/stat/hash/archive/module and host-use checks passed.
+Source/modules/assets/binaries/evidence retained. Plan/removal record is under
+build/port-xfer-sound-registry. Completed run assets were deduplicated by matching
+original hashes; deduplicate-preflight/save.py --restore and manifests remain.
 
 ## Earlier — collision conversion qualified
 

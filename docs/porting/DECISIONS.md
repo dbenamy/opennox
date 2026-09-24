@@ -2359,3 +2359,18 @@ The temporaryMagicMissile owner consumes an integer return and stays raw rather
 than receiving an invented result from a void API. Two damage-sound callbacks are
 also deferred for their own nil-default contract. These reversible scope decisions
 follow standing authorization. See COLLISION_REGISTRY.md for all qualification.
+
+
+## Preserve distinct transfer and sound default contracts
+
+Transfer registration dispatch calls the complete existing wrappers. The server
+API keeps exact nonzero success and generic failure text; the outer DefaultXfer
+shortcut continues calling its local implementation with detailed errors. It does
+not gain the legacy wrapper's replaceable-handler semantics. The damage owner
+keeps its fixed nil-slot default wrapper rather than resolving the mutable
+DefaultDamageSound registry pointer. Registered sound returns remain ignored.
+
+Explicit Go maps retain raw pointer-call fallbacks and configured-slot
+preconditions. Callback identities and layouts are unchanged. These reversible
+choices preserve the original dispatch contracts; qualification is recorded in
+XFER_SOUND_REGISTRY.md.
