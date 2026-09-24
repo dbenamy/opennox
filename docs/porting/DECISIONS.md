@@ -2604,3 +2604,14 @@ arithmetic or dereferencing; native pointers and raw uint32 values preserve the
 public cancel API and independent trade-pickup observer remain. The same frozen
 33-root profile selection and all production gates pass. See
 [SHOP_TRADE_OWNERS.md](SHOP_TRADE_OWNERS.md).
+
+
+## Spell/reward fixture addresses
+
+Use raw addresses when probing function-map use: reward's normalized IDs overlap
+the generated-ID range, so an ID-only filter can misattribute hits. Two original
+processes show no consumed candidate function addresses; preserve their cardinality
+with 13 spell and 12 reward reservations, keep nine live reward callbacks and their C test
+routes. Original raw map sizes vary in three records while frozen outputs and
+generated-ID counts agree. All converted gates pass without expectation changes.
+See [SPELL_REWARD_OWNERS.md](SPELL_REWARD_OWNERS.md).

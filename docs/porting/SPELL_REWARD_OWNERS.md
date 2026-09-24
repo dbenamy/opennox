@@ -22,7 +22,7 @@ address nondeterminism. Reserve removed registration slots only after this revie
 GPT-6 Luna owns the isolated conversion draft. The primary owns probe design,
 source review, baseline acceptance and qualification. Original source stays frozen
 while any test/build runs; restore probe-only changes before accepting conversion.
-No conversion is installed yet. Local artifacts: `build/port-spell-reward-owners/`.
+The conversion is installed and fully qualified. Local artifacts: `build/port-spell-reward-owners/`.
 
 Required converted gates: exact root-name sets in three profiles, safe/static,
 three production builds/ABI checks, exact known-suite comparison, fresh headless
@@ -48,4 +48,29 @@ Temporary instrumentation is restored. See [probe report](spell-reward-identity-
 and [reproducible patch](spell-reward-identity-probe.patch), applied to `279e7867`
 with `git apply --unidiff-zero`. Probe generation initially rejected overlapping
 edit context before installation; grouped-context replay resolved it, and both
-runs used the same reviewed instrumentation. Conversion qualification is pending.
+runs used the same reviewed instrumentation. Conversion qualification passes.
+
+
+## Converted qualification
+
+All 51 roots pass without skips in default/server/highres. Safe/static checks,
+three fresh production builds/ABI checks, exact known-suite comparison and
+headless character creation/save/load/resume pass. The known suite retains 304
+failure events (17 passing, two failing and 32 skipped packages). Source fingerprints are
+identical throughout; all six changed/deleted files match reviewed hashes, and
+all 1,654 original asset hashes and frozen expectations remain unchanged.
+
+Selected production cgo files fall 228→227 (236/463 eliminated), with one fixture
+cgo import also removed. C exports fall 1,078→1,053 (837/1,890 retired). Production
+callback bodies remain 78. Headers remain 157 files, now 3,776 physical lines;
+standalone production/test-reference C lines remain zero. External bindings stay.
+See [qualification](spell-reward-owners-qualification.json) and
+[inventory](spell-reward-owners-inventory-after.json).
+
+Luna drafted the six-file conversion. Primary review retained original C reward
+initialization cases 0–8 and their export bodies byte-for-byte instead of migrating
+those live callback test routes. Only cases 9–20 dispatch directly to native owners.
+Spell-lifecycle calls were already native; this batch removes their obsolete
+address table. Primary moved the reward reservation to the original registration
+site. Reconstructed edits, signed-width review and original probes preceded
+installation. No expected values or normalizers changed.

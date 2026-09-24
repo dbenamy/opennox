@@ -14,18 +14,6 @@ case 5:return (void*)sub_4F0490;
 case 6:return (void*)nox_xxx_unitInitGold_4F04B0;
 case 7:return (void*)nox_xxx_breakInit_4F0570;
 case 8:return (void*)nox_xxx_unitInitGenerator_4F0590;
-case 9:return (void*)nox_server_rewardgen_activateMarker_4F0720;
-case 10:return (void*)nox_xxx_rewardSpellBook_4F09F0;
-case 11:return (void*)nox_server_rewardGen_pickRandomSlots_4F0B60;
-case 12:return (void*)nox_xxx_rewardAbilityBook_4F0C70;
-case 13:return (void*)nox_xxx_rewardFieldGuide_4F0D20;
-case 14:return (void*)nox_xxx_rewardMakeArmor_4F0E80;
-case 15:return (void*)nox_xxx_rewardMakeWeapon_4F14E0;
-case 16:return (void*)nox_xxx_rewardMakePotion_4F1C40;
-case 17:return (void*)nox_xxx_createGem_4F1D30;
-case 18:return (void*)nox_xxx_createGem2_4F1F00;
-case 19:return (void*)sub_4F2110;
-case 20:return (void*)sub_4F2210;
 default:return 0;}}
 static uint32_t rewardCall(int id,nox_object_t* u,uint32_t stage){switch(id){
 case 0:return (uint32_t)nox_xxx_unitSparkInit_4F0390((int)u);
@@ -37,18 +25,6 @@ case 5:return (uint32_t)sub_4F0490((int)u);
 case 6:return (uint32_t)nox_xxx_unitInitGold_4F04B0((int)u);
 case 7:return (uint32_t)nox_xxx_breakInit_4F0570((int)u);
 case 8:return (uint32_t)nox_xxx_unitInitGenerator_4F0590((int)u);
-case 9:return (uint32_t)nox_server_rewardgen_activateMarker_4F0720((int)u,stage);
-case 10:return (uint32_t)nox_xxx_rewardSpellBook_4F09F0((int)u,stage);
-case 11:return (uint32_t)nox_server_rewardGen_pickRandomSlots_4F0B60(stage);
-case 12:return (uint32_t)nox_xxx_rewardAbilityBook_4F0C70((int)u);
-case 13:return (uint32_t)nox_xxx_rewardFieldGuide_4F0D20((int)u,stage);
-case 14:return (uint32_t)nox_xxx_rewardMakeArmor_4F0E80((int)u,stage);
-case 15:return (uint32_t)nox_xxx_rewardMakeWeapon_4F14E0((int)u,stage);
-case 16:return (uint32_t)nox_xxx_rewardMakePotion_4F1C40((int)u,stage);
-case 17:return (uint32_t)nox_xxx_createGem_4F1D30((int)u,stage);
-case 18:return (uint32_t)nox_xxx_createGem2_4F1F00((int)u,stage);
-case 19:sub_4F2110();return 0;
-case 20:return (uint32_t)sub_4F2210();
 default:return 0;}}
 */
 import "C"
@@ -154,7 +130,37 @@ func (p *portTestShopPools) rewardAction(a PortTestShopAction) uint32 {
 		PortTestRegisteredInit(p.temporaryRef(attack.Actor), names[a.Op-1300])
 		state.result = 0
 	} else {
-		state.result = uint32(C.rewardCall(C.int(a.Op-1300), asObjectC(p.temporaryRef(attack.Actor)), C.uint32_t(attack.Reward.Stage)))
+		op := a.Op - 1300
+		u := p.temporaryRef(attack.Actor)
+		stage := attack.Reward.Stage
+		switch op {
+		case 9:
+			state.result = uint32(uintptr(rewardMarker(u, stage).CObj()))
+		case 10:
+			state.result = uint32(uintptr(rewardBook(u, stage, 0).CObj()))
+		case 11:
+			state.result = rewardTier(stage)
+		case 12:
+			state.result = uint32(uintptr(rewardBook(u, 0, 1).CObj()))
+		case 13:
+			state.result = uint32(uintptr(rewardBook(u, stage, 2).CObj()))
+		case 14:
+			state.result = uint32(uintptr(rewardEquipment(stage, true).CObj()))
+		case 15:
+			state.result = uint32(inventoryInt(rewardEquipment(stage, false)))
+		case 16:
+			state.result = uint32(uintptr(rewardPotion(stage).CObj()))
+		case 17, 18:
+			state.result = uint32(uintptr(rewardGem(stage).CObj()))
+		case 19:
+			rewardPlaceAnkh()
+			state.result = 0
+		case 20:
+			rewardSelectMarkers()
+			state.result = 0
+		default:
+			state.result = uint32(C.rewardCall(C.int(op), asObjectC(u), C.uint32_t(stage)))
+		}
 	}
 
 	// These factories return newly allocated objects without placing them. Adopt
@@ -258,7 +264,9 @@ func (p *portTestShopPools) rewardItems() {
 	})
 	repl := (*server.ModifierEff)(p.objectiveRegion(144))
 	st.restoreModifier = p.proxy.core.PortTestRewardModifier(repl, (*byte)(p.objectiveString("Replenishment1")))
-	for i := 0; i < 21; i++ {
+	// Keep normalized pointer IDs stable after removing callback keys 9..20.
+	p.reservedFunctionIDs += 12
+	for i := 0; i < 9; i++ {
 		p.identify(C.rewardFunction(C.int(i)), 90000+uint32(i))
 	}
 	for i := 0; i < 41; i++ {

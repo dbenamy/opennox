@@ -2,41 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-#include <string.h>
-#include "GAME4.h"
-
-unsigned short sub_4FD030(int a1, short a2);
-void nox_xxx_collide_4FDF90(int a1, int a2);
-int nox_xxx_spellGetPhoneme_4FE1C0(int a1, char a2);
-int sub_4FEA70(int a1, float2* a2);
-int nox_xxx_playerCancelSpells_4FEAE0(nox_object_t* a1p);
-char* nox_xxx_netStartDurationRaySpell_4FF130(int a1);
-int sub_4FF2D0(int a1, int a2);
-int nox_xxx_testUnitBuffs_4FF350(nox_object_t* unit, char buff);
-void nox_xxx_buffApplyTo_4FF380(nox_object_t* unit, int buff, short dur, char power);
-int nox_xxx_unitGetBuffTimer_4FF550(nox_object_t* unit, int buff);
-char nox_xxx_buffGetPower_4FF570(nox_object_t* unit, int buff);
-void nox_xxx_unitClearBuffs_4FF580(nox_object_t* unit);
-int nox_xxx_spellBuffOff_4FF5B0(nox_object_t* a1p, int a2);
-static void* spellLifeFunction(int id){switch(id){
-case 6:return sub_4FD030;
-case 11:return nox_xxx_collide_4FDF90;
-case 12:return nox_xxx_spellGetPhoneme_4FE1C0;
-case 16:return sub_4FEA70;
-case 17:return nox_xxx_playerCancelSpells_4FEAE0;
-case 20:return nox_xxx_netStartDurationRaySpell_4FF130;
-case 21:return sub_4FF2D0;
-case 22:return nox_xxx_testUnitBuffs_4FF350;
-case 23:return nox_xxx_buffApplyTo_4FF380;
-case 24:return nox_xxx_unitGetBuffTimer_4FF550;
-case 25:return nox_xxx_buffGetPower_4FF570;
-case 26:return nox_xxx_unitClearBuffs_4FF580;
-case 27:return nox_xxx_spellBuffOff_4FF5B0;
-default:return 0;}}
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/client"
@@ -180,14 +145,10 @@ func (p *portTestShopPools) spellLifeItems() {
 	if sp == nil {
 		return
 	}
-	p.reservedFunctionIDs += 1
+	// Keep the 13 normalized callback-ID slots formerly registered from C.
+	p.reservedFunctionIDs += 14
 	st := p.spellLifeState()
 	u := p.temporaryRef(p.proxy.callbacks.shop.spec.TemporaryUpdates.World.Objectives.Attack.Actor)
-	for i := 0; i < 29; i++ {
-		if f := C.spellLifeFunction(C.int(i)); f != nil {
-			p.identify(f, 92000+uint32(i))
-		}
-	}
 	if sp.ActorType != "" {
 		u.TypeInd = uint16(p.proxy.core.Types.IndByID(sp.ActorType))
 	}
