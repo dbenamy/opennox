@@ -366,6 +366,14 @@ ignored `build/`; retain relevant manifests for local reproducibility. Completed
 run copies may have verified deduplication/restoration manifests. Do not remove
 active run data or the original assets to reclaim space.
 
+Do not retain every historical log or intermediate run indefinitely. Keep committed
+expectations/reports, current qualification artifacts and useful original-behavior
+references. Old raw captures can be compressed with byte-for-byte verification;
+superseded text logs and reproducible outputs can be discarded after checking
+references and active use. Record removals and any restoration steps in the
+checkpoint. Retained capture bytes help diagnose hash mismatches even when tests
+use committed hashes rather than reading the historical capture files.
+
 The selected-test runner gives discovery/build a separate `1536MiB` GOMEMLIMIT,
 configurable with `--build-memory-limit`, while preserving the execution budget
 and explicit runtime overrides above. Discovery compiles and lists tests; the

@@ -120,6 +120,14 @@ before modifying either path. Cleanup records also live in
 need rebuilding; original assets and current qualified binaries were retained.
 Do not repeat consumed cleanup scripts or infer deletion safety from age alone.
 
+The large historical captures/results in `port-game-messages`, `port-map-sections`,
+`port-client-interaction` and `port-session-dialogs` were losslessly gzip-archived;
+116 superseded text logs were discarded. This reclaimed 4.44 GiB. The journal and
+restore instructions are in `build/port-artifact-cleanup/large-historical-20260924/`.
+For a retained capture, `gzip -dk <original-path>.gz` restores the raw file; verify
+its SHA256 against the journal. Discarded text logs cannot be restored this way.
+Current qualified binaries, original assets and qualification summaries remain.
+
 Historical batch details belong in `docs/porting/` and Git history. The complete
 older checkpoint, including individual archive/restore notes, is recoverable with
 `git show b034c43e:PORTING_STATE.md`; its old “current/next” instructions are
