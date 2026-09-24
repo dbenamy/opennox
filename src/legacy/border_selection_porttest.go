@@ -109,7 +109,7 @@ func PortTestBorderSelection(initial PortTestBorderState, rows []PortTestBorderR
 			if s.NilName {
 				ret = C.int(findBorderName(nil))
 			} else {
-				ret = C.int(findBorderName((*C.char)(unsafe.Pointer(unsafe.SliceData(input)))))
+				ret = C.int(findBorderName(unsafe.SliceData(input)))
 			}
 		case 1:
 			if s.NilName {

@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_3.h"
-#include "GAME2.h"
-#include "GAME3_2.h"
-
-*/
-import "C"
 import "unsafe"
 
 func Sub_453070() int {
@@ -20,7 +12,7 @@ func Sub_43DC30() int {
 	return int(audioEventMusicEnabled())
 }
 func Nox_xxx_sysopGetPass_40A630() string {
-	return GoWString((*C.wchar2_t)(unsafe.Pointer(serverConfigPasswordGet())))
+	return GoWStringP(unsafe.Pointer(serverConfigPasswordGet()))
 }
 func Sub_4D0D70() int {
 	return mapCycleEnabled()

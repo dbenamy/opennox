@@ -6,10 +6,6 @@
 
 #define NOX_FILEPATH_MAX 1024
 
-#ifndef _WIN32
-char* nox_fs_normalize(char* path);
-#endif
-
 char* nox_fs_root();
 
 // nox_fs_set_workdir sets current work directory.

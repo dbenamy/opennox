@@ -1,6 +1,7 @@
 # Internal string boundaries
 
-Status: original baseline qualified at `6ff98033`; conversion not installed yet.
+Status: qualified against the original baseline at `6ff98033`, frozen in
+`da37002b`.
 
 Remove six local C imports by using Go pointer types at internal boundaries for
 configuration, browser hosting, server options, map painting and object transfer.
@@ -36,7 +37,8 @@ Two broader **original-source** safe selections fail in existing fixture setup:
 `TestServerConfigScalarStorage` rejects mapped access at 0x715090, and
 `TestTileSelectionABI` rejects its state observer's mapped access at 0x97cb68.
 They pass in every normal production profile. Preserve these diagnostic logs;
-do not claim the whole owner selection passes with safe runtime checks. Full
+do not claim the whole owner selection passes with safe runtime checks. Both
+failures were reproduced separately after conversion with identical panic messages. Full
 safe-build/static qualification remains required after conversion.
 
 The selector audit found 129 existing owner roots missing from the accumulated
@@ -56,3 +58,20 @@ delegation savings are claimed.
 Artifacts: `build/port-string-boundary/`; original qualification:
 [string-boundary-c-qualification.json](string-boundary-c-qualification.json).
 Draft/audit paths are ignored and are not acceptance evidence by themselves.
+
+## Qualified result
+
+All 178 owner roots pass in each production profile with no skips; actual started
+root-name sets exactly equal the baseline union. All seven safe roots also match
+and pass. Safe build/static checks, three fresh production builds/ABI checks,
+exact known-suite comparison (304 failure events; 17 pass/two fail/32 skip packages)
+and headless character creation/save/load/resume pass. All phases have identical
+unchanged source fingerprints. All 1,314 existing `_test.go` files are unchanged.
+
+Selected project cgo files fall **419→413** in default, server and highres.
+Direct project cgo packages remain three; embedded production C bodies remain 79.
+The 157 tracked headers now have 4,542 physical lines. Standalone production and
+test-reference C stay at zero. External native bindings are unchanged.
+
+See [converted qualification](string-boundary-qualification.json) and
+[selected dependency inventory](string-boundary-inventory-after.json).

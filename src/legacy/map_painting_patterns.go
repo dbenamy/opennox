@@ -1,17 +1,12 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	"unsafe"
 )
 
 func mapPaintRoomFloor(config unsafe.Pointer, r *mapRoom, layout unsafe.Pointer) uint32 {
-	selectTileName((*C.char)(unsafe.Add(layout, 60)))
+	selectTileName((*byte)(unsafe.Add(layout, 60)))
 	mapPaintRect(config, &r.Pos, r.Width, r.Height)
 	size := [2]int32{}
 	var p types.Pointf
@@ -108,17 +103,17 @@ func mapPaintRoomFloor(config unsafe.Pointer, r *mapRoom, layout unsafe.Pointer)
 	return uint32(size[0])
 }
 func mapPaintPatternCenter(pat unsafe.Pointer, pos *types.Pointf, size *[2]int32) uint32 {
-	selectBorderName((*C.char)(unsafe.Add(pat, 4)))
+	selectBorderName((*byte)(unsafe.Add(pat, 4)))
 	p := types.Pointf{X: float32(float64(size[0])*16.263456 + float64(pos.X)), Y: float32(float64(size[1])*16.263456 + float64(pos.Y))}
 	return mapPaintBorderPoint(&p)
 }
 func mapPaintPatternFill(config, pat unsafe.Pointer, pos *types.Pointf, size *[2]int32) uint32 {
-	selectTileName((*C.char)(unsafe.Add(pat, 64)))
+	selectTileName((*byte)(unsafe.Add(pat, 64)))
 	mapPaintRect(config, pos, size[0], size[1])
 	return mapPaintPatternCenter(pat, pos, size)
 }
 func mapPaintPatternDiamond(config, pat unsafe.Pointer, pos *types.Pointf, size *[2]int32) uint32 {
-	selectTileName((*C.char)(unsafe.Add(pat, 64)))
+	selectTileName((*byte)(unsafe.Add(pat, 64)))
 	third := size[0] / 3
 	offset := float64(third) * 32.526913
 	span := size[0] - 2*third
@@ -152,7 +147,7 @@ func mapPaintPatternRandom(config, pat unsafe.Pointer, pos *types.Pointf, size *
 	if size[0] < 3 || size[1] < 3 {
 		return
 	}
-	selectTileName((*C.char)(unsafe.Add(pat, 64)))
+	selectTileName((*byte)(unsafe.Add(pat, 64)))
 	p := types.Pointf{X: float32(float64(pos.X) + 32.526913), Y: float32(float64(pos.Y) + 32.526913)}
 	mapPaintRect(config, &p, max(size[0]-2, 1), max(size[1]-2, 1))
 	if size[0] < 4 {

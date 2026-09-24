@@ -317,6 +317,7 @@ target build selection and linker evidence.
 | Remove 34 leaf cgo dependencies; direct project packages 6→3, selected cgo files 463→429; preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 | Six libc memory/string helpers to Go; allocator ownership unchanged; selected cgo files remain 429 and preamble bodies 79 | 0 | 0 | 0 | 0 |
 | Centralize 49 legacy and four tracked allocation calls; selected cgo files 429→419, preamble bodies remain 79 | 0 | 0 | 0 | 0 |
+| Remove internal string pointer adapters and unused exports; selected cgo files 419→413, preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

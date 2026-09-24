@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_2.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -55,4 +51,4 @@ func browserHostDescription() *byte {
 	return slot
 }
 
-func sub_43AA70() *C.char { return (*C.char)(unsafe.Pointer(browserHostDescription())) }
+func sub_43AA70() *byte { return browserHostDescription() }

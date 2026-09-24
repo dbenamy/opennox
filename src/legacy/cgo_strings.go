@@ -20,15 +20,6 @@ func StrFree[T comparable](s *T) {
 	legacyFree(unsafe.Pointer(s))
 }
 
-func CStringArray(arr []string) []*C.char {
-	out := make([]*C.char, 0, len(arr)+1)
-	for _, arg := range arr {
-		out = append(out, CString(arg))
-	}
-	out = append(out, nil)
-	return out[:len(arr):len(arr)]
-}
-
 func StrLenBytes(s []byte) int {
 	i := bytes.IndexByte(s, 0)
 	if i < 0 {
@@ -135,10 +126,6 @@ func CString(s string) *C.char {
 	return C.CString(s)
 }
 
-func CBytes(s []byte) unsafe.Pointer {
-	return C.CBytes(s)
-}
-
 func GoWStringP(s unsafe.Pointer) string {
 	return GoWString((*wchar2_t)(s))
 }
@@ -209,18 +196,4 @@ func GoWStrSliceN(arr **C.wchar2_t, n int) []string {
 		out = append(out, GoWString(c))
 	}
 	return out
-}
-
-func CWStrSlice(arr []string) ([]*wchar2_t, func()) {
-	out, freeList := alloc.Make([]*wchar2_t{}, len(arr)+1)
-	out = out[:len(out)-1]
-	for i, s := range arr {
-		out[i], _ = CWString(s)
-	}
-	return out, func() {
-		for _, p := range out {
-			StrFree(p)
-		}
-		freeList()
-	}
 }

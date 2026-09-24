@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1.h"
-#include "GAME1_2.h"
-#include "GAME4.h"
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -125,7 +118,7 @@ func objectXferLegacyScript(p unsafe.Pointer) int {
 	if !cryptfile.Global().ReadOnly() {
 		return 0
 	}
-	nox_xxx_mapgenMakeScript_502790(nox_xxx_mapgenGetSomeFile_426A60(), (*C.char)(p))
+	prefabScriptScan(mapRoomRaw(unsafe.Pointer(nox_xxx_mapgenGetSomeFile_426A60())), mapRoomRaw(p))
 	if noxflags.HasGame(0x400000) {
 		return 1
 	}

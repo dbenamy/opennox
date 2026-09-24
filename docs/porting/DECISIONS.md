@@ -2414,3 +2414,13 @@ failure bookkeeping, pointer layouts or ownership. Defer known string-lifetime
 issues and failed-realloc bookkeeping to explicit owner changes; this batch
 preserves their behavior. The allocator remains native storage until a separate
 qualified backend replacement. See RAW_ALLOCATION.md.
+
+## Retire unused internal string interfaces
+
+Remove the unreferenced input string-buffer get/free pair, filesystem normalization
+export, CStringArray, CBytes wrapper and CWStrSlice. Repository-wide source/header,
+registration and build/documentation review found no runtime consumers or supported
+external library API. Preserve live string allocation and callback entrypoints.
+Retaining dead wrappers solely to fix/test their ownership quirks would obstruct
+internal glue removal. This reversible internal API cleanup is recorded in
+STRING_BOUNDARY.md, including the limits of external-consumer discovery.

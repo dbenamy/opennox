@@ -16,9 +16,6 @@ import (
 func nox_server_scriptExecuteFnForEachGroupObj_502670(group *C.uchar, expected C.int, callback unsafe.Pointer, data C.int) {
 	prefabGroupEach((*server.MapGroup)(unsafe.Pointer(group)), int32(expected), callback, uint32(data))
 }
-func nox_xxx_mapgenMakeScript_502790(a0 *C.FILE, a1 *C.char) C.int {
-	return C.int(prefabScriptScan(mapRoomRaw(unsafe.Pointer(a0)), mapRoomRaw(unsafe.Pointer(a1))))
-}
 func sub_5029A0(a0 *C.char) C.int { return C.int(prefabFindName(mapRoomRaw(unsafe.Pointer(a0)))) }
 func sub_5029F0(a0 C.int) C.int   { return C.int(prefabMetadataAt(int32(uint32(a0)))) }
 func sub_502A20() C.int           { return C.int(*prefabGlobal(prefabCount)) }

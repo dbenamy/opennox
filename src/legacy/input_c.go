@@ -104,17 +104,6 @@ func nox_input_disableTextEdit_5700F6() {
 	GetClient().SetTextInput(false)
 }
 
-//export nox_input_getStringBuffer_57011C
-func nox_input_getStringBuffer_57011C() *wchar2_t {
-	p, _ := CWString(GetClient().GetTextEditBuf())
-	return p
-}
-
-//export nox_input_freeStringBuffer_57011C
-func nox_input_freeStringBuffer_57011C(p *wchar2_t) {
-	StrFree(p)
-}
-
 //export nox_xxx_keybind_nameByTitle_42E960
 func nox_xxx_keybind_nameByTitle_42E960(title *wchar2_t) *C.char {
 	k := Nox_xxx_keybind_nameByTitle_42E960(GoWString(title))

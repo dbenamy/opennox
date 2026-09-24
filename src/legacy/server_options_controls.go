@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-#include "GAME1.h"
-#include "GAME2.h"
-#include "GAME3_1.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -122,7 +115,7 @@ func serverOptionsMapToken(text string) string {
 	return v
 }
 func serverOptionsRefresh() int {
-	data := serverOptionsRecord(unsafe.Pointer((*C.char)(unsafe.Pointer(serverConfigSlot(int32(1))))))
+	data := serverOptionsRecord(unsafe.Pointer(serverConfigSlot(int32(1))))
 	serverPanelsSpellStore((*uint32)(unsafe.Pointer(&data[24])))
 	serverPanelsWeaponStore((*uint32)(unsafe.Pointer(&data[44])))
 	serverPanelsArmorStore(binary.LittleEndian.Uint32(data[48:]))

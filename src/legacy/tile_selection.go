@@ -17,7 +17,7 @@ func tileDefinitionsAll() *[176]server.TileDef {
 	return (*[176]server.TileDef)(unsafe.Pointer(&worldTileDefinitions[0]))
 }
 
-func selectTileName(name *C.char) bool {
+func selectTileName(name *byte) bool {
 	selected := memmap.PtrUint32(0x973F18, 35912)
 	found := false
 	// Scan physical storage, including entries beyond nox_tile_def_cnt. Keep
@@ -73,7 +73,7 @@ func setTileFlag(value int32) bool {
 
 //export nox_xxx_tileGetDefByName_51D4D0
 func nox_xxx_tileGetDefByName_51D4D0(name *C.char) C.int {
-	return C.int(bool2int(selectTileName(name)))
+	return C.int(bool2int(selectTileName((*byte)(unsafe.Pointer(name)))))
 }
 
 //export nox_xxx_tileCheckImage_51D540

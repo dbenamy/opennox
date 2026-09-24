@@ -31,12 +31,6 @@ func nox_fs_root() *C.char {
 	return internCStr(datapath.Data())
 }
 
-//export nox_fs_normalize
-func nox_fs_normalize(path *C.char) *C.char {
-	out := ifs.Normalize(GoString(path))
-	return CString(out)
-}
-
 //export nox_fs_remove
 func nox_fs_remove(path *C.char) C.bool {
 	return ifs.Remove(GoString(path)) == nil

@@ -12,24 +12,24 @@ import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 )
 
-func findBorderName(name *C.char) int32 {
+func findBorderName(name *byte) int32 {
 	count := int32(dword_5d4594_251572)
 	if name == nil || count <= 0 {
 		return -1
 	}
-	want := C.GoString(name)
+	want := GoStringP(unsafe.Pointer(name))
 	// The loader caps active count at the physical 64 rows. Unlike tile
 	// lookup, this scan is exact, case-sensitive and stops at the first match.
 	for i := int32(0); i < count; i++ {
-		p := (*C.char)(memmap.PtrOff(0x85B3FC, 28644+60*uintptr(i)))
-		if C.GoString(p) == want {
+		p := (*byte)(memmap.PtrOff(0x85B3FC, 28644+60*uintptr(i)))
+		if GoStringP(unsafe.Pointer(p)) == want {
 			return i
 		}
 	}
 	return -1
 }
 
-func selectBorderName(name *C.char) bool {
+func selectBorderName(name *byte) bool {
 	dword_5d4594_2489436 = 0
 	// Only the sentinel is case-insensitive; preserve the shared C locale
 	// comparator rather than applying Unicode folding to border names.
@@ -67,7 +67,7 @@ func selectBorderVariation(variation int32) bool {
 
 //export sub_544020
 func sub_544020(name *C.char) C.int {
-	return C.int(bool2int(selectBorderName(name)))
+	return C.int(bool2int(selectBorderName((*byte)(unsafe.Pointer(name)))))
 }
 
 //export nox_xxx_tileCheckByte3_544070
