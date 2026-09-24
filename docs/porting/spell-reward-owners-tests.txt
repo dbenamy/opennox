@@ -1,0 +1,1 @@
+^Test(?:SpellLifecycle|SpellEffects|Reward|ServerOrchestrationRewards)

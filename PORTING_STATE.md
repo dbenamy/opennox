@@ -20,8 +20,10 @@ with frozen expectations unchanged; the independent trade-pickup callback stays.
 See [SHOP_TRADE_OWNERS.md](docs/porting/SHOP_TRADE_OWNERS.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Select the next connected internal-glue batch;
-stop at the milestone or for a substantial question.
+recorded reversible decisions. Current batch: spell-lifecycle/reward fixture
+owners; 51 original roots pass in each profile. Address-map use/cardinality probe
+and conversion review are pending. See [SPELL_REWARD_OWNERS.md](docs/porting/SPELL_REWARD_OWNERS.md).
+Stop at the milestone or for a substantial question.
 
 Latest artifacts: `build/port-shop-trade-owners/`.
 
