@@ -95,10 +95,6 @@ func init() {
 	})
 }
 
-func nox_xxx_gameGetPlayState_4356B0() int {
-	return GameGetPlayState()
-}
-
 func nox_server_parseCmdText_443C80(cstr *wchar2_t, _ int) int {
 	cmd := GoWString(cstr)
 	if cmd == "" {

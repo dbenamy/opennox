@@ -20,11 +20,11 @@ func sub_5029A0(a0 *C.char) C.int { return C.int(prefabFindName(mapRoomRaw(unsaf
 func sub_5029F0(a0 C.int) C.int   { return C.int(prefabMetadataAt(int32(uint32(a0)))) }
 func sub_502A20() C.int           { return C.int(*prefabGlobal(prefabCount)) }
 
-func sub_502D70(a0 C.int) C.int                   { return C.int(populationLoadPrefab(int32(a0))) }
-func sub_502DF0() uint32                          { return prefabClose() }
-func sub_502E70(a0 C.int) C.double                { return C.double(prefabDimension(int32(uint32(a0)), 64)) }
-func sub_502EA0(a0 C.int) C.double                { return C.double(prefabDimension(int32(uint32(a0)), 68)) }
-func nox_xxx_mapgenSaveMap_503830(a0 C.int) C.int { return C.int(prefabLoad(int32(uint32(a0)))) }
+func sub_502D70(a0 C.int) C.int    { return C.int(populationLoadPrefab(int32(a0))) }
+func sub_502DF0() uint32           { return prefabClose() }
+func sub_502E70(a0 C.int) C.double { return C.double(prefabDimension(int32(uint32(a0)), 64)) }
+func sub_502EA0(a0 C.int) C.double { return C.double(prefabDimension(int32(uint32(a0)), 68)) }
+
 func sub_503B30(a0 *C.float2) C.int {
 	return C.int(prefabInstantiate(prefabPoint(mapRoomRaw(unsafe.Pointer(a0)))))
 }
@@ -36,30 +36,20 @@ func sub_503EC0(a0 C.int, a1 *C.float) C.int {
 func nox_xxx_tileAllocTileInCoordList_5040A0(a0 C.int, a1 C.int, a2 C.float) *C.uint32_t {
 	return (*C.uint32_t)(mapRoomPointer(prefabTileNew(int32(uint32(a0)), int32(uint32(a1)), math.Float32bits(float32(a2)))))
 }
-func nox_xxx_tileInit_504150(a0 C.int, a1 C.int) C.int {
-	return C.int(prefabPlaceTiles(int32(uint32(a0)), int32(uint32(a1))))
-}
 
 //export sub_504290
 func sub_504290(a0 C.char, a1 C.char) *C.uint32_t {
 	return (*C.uint32_t)(mapRoomPointer(prefabWallNew(byte(uint32(a0)), byte(uint32(a1)))))
 }
 
-func sub_504330(a0 C.int, a1 C.int) C.int {
-	return C.int(prefabPlaceWalls(int32(uint32(a0)), int32(uint32(a1))))
-}
 func sub_5044B0(a0 C.int, a1 C.float, a2 C.float) *C.uint32_t {
 	return (*C.uint32_t)(mapRoomPointer(prefabWaypointNew(uint32(a0), math.Float32frombits(math.Float32bits(float32(a1))), math.Float32frombits(math.Float32bits(float32(a2))))))
 }
-func sub_504560(a0 C.int, a1 C.int) C.int {
-	return C.int(prefabPlaceWaypoints(int32(uint32(a0)), int32(uint32(a1))))
-}
+
 func nox_xxx_unitAddToList_5048A0(a0 C.int) *C.uint32_t {
 	return (*C.uint32_t)(mapRoomPointer(prefabObjectNew(uint32(a0))))
 }
-func sub_504910(a0 C.int, a1 C.int) C.int {
-	return C.int(prefabPlaceObjects(int32(uint32(a0)), int32(uint32(a1))))
-}
+
 func sub_504980() C.int         { return C.int(prefabObjectHead()) }
 func sub_5049C0(a0 C.int) C.int { return C.int(prefabObjectNext(uint32(a0))) }
 

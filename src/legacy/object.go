@@ -146,10 +146,6 @@ func nox_init_npc(npc unsafe.Pointer, id int) {
 	GetServer().S().NPCs.Set((*server.NPC)(npc), id)
 }
 
-func nox_npc_set_328(id, val int) {
-	GetServer().S().NPCs.Set328(id, val)
-}
-
 func AsPointf(p unsafe.Pointer) types.Pointf {
 	cp := (*C.float2)(p)
 	return types.Pointf{
@@ -163,14 +159,6 @@ func AsPoint(p unsafe.Pointer) image.Point {
 		X: int(cp.x),
 		Y: int(cp.y),
 	}
-}
-
-func nox_xxx_createAt_4DAA50(cobj *nox_object_t, cowner *nox_object_t, x C.float, y C.float) {
-	var owner server.Obj
-	if cowner != nil {
-		owner = asObjectS(cowner)
-	}
-	GetServer().CreateObjectAt(ToObjS(cobj), owner, types.Pointf{X: float32(x), Y: float32(y)})
 }
 
 func nox_xxx_objectFreeMem_4E38A0(a1p *nox_object_t) int {

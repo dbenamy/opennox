@@ -96,10 +96,4 @@ func browserNotice(timeout bool) {
 
 func sub_438770() int32 { return int32(browserTick()) }
 
-func sub_438BD0() int32 { return int32(browserConnectionError()) }
-
 func sub_43B630() *uint32 { browserAttemptConnect(); return nil }
-
-func sub_43B6E0() { browserNotice(false) }
-
-func sub_43B750() { browserNotice(true) }

@@ -23,10 +23,6 @@ func nox_xxx_spellGetPhoneme_4FE1C0(a C.int, b C.char) C.int {
 	return C.int(spellLifePhoneme(int32(a), int8(b)))
 }
 
-func nox_xxx_spellByBookInsert_4FE340(a C.int, b *C.int, c, d, e C.int) C.int {
-	return C.int(spellLifeInsertBook(objectFromInt(a), unsafe.Pointer(b), int32(c), int32(d), int32(e)))
-}
-
 //export sub_4FEA70
 func sub_4FEA70(a C.int, b *C.float2) C.int {
 	return C.int(spellLifeMoved(objectFromInt(a), (*types.Pointf)(unsafe.Pointer(b))))

@@ -119,13 +119,7 @@ func sub_438330() C.int { return C.int(browserAnimationFinish()) }
 //export sub_438370
 func sub_438370() C.int { return C.int(browserAnimationOut()) }
 
-func sub_43A920() C.int { return C.int(browserConnectionReset()) }
-
 func nox_client_guiXxx_43A9D0() C.int { return C.int(browserClose()) }
-
-func sub_43B460() C.int { return C.int(browserChooseCharacter()) }
 
 //export sub_43B490
 func sub_43B490() C.int { return C.int(browserHideAfterChoice()) }
-
-func sub_4383A0() C.int { return C.int(browserShowList()) }

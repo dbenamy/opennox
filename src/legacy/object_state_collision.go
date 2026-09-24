@@ -1,17 +1,7 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_3.h"
-#include "server__script__script.h"
-uint32_t nox_xxx_wallFlags(int i);
-*/
-import "C"
 import (
+	"github.com/opennox/opennox/v1/common/sound"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
@@ -60,14 +50,14 @@ func stateChargeImpact(u, t *server.Object) bool {
 	return t.ObjFlags&9 == 0 && class&1 == 0
 }
 func stateChargeMoveBack(u *server.Object) {
-	nox_xxx_unitMove_4E7010(asObjectC(u), (*C.float2)(unsafe.Pointer(&u.PrevPos)))
+	Nox_xxx_unitMove_4E7010(u, u.PrevPos)
 }
 func stateChargeStun(u *server.Object) {
 	duration := floatToInt32(float32(nox_xxx_gamedataGetFloat_419D40(internCStr("BerserkerStunDuration"))))
 	spellLifeApplyBuff(u, 5, int16(duration), 5)
 }
 func stateCharge(u, t *server.Object) {
-	nox_xxx_playerSetState_4FA020(asObjectC(u), 13)
+	Nox_xxx_playerSetState_4FA020(u, 13)
 	gameplayReportEarthquake(&u.PosVec, 10)
 	Sub_4FC300(u, 1)
 	if t != nil {
@@ -83,11 +73,11 @@ func stateCharge(u, t *server.Object) {
 		stateChargeStun(u)
 	} else {
 		wall := *(*unsafe.Pointer)(unsafe.Add(u.UpdateData, 296))
-		if wall != nil && nox_xxx_wallFlags(int(C.int(*(*byte)(unsafe.Add(wall, 1)))))&5 == 0 {
+		if wall != nil && nox_xxx_wallFlags(int(*(*byte)(unsafe.Add(wall, 1))))&5 == 0 {
 			stateChargeMoveBack(u)
 			return
 		}
-		nox_xxx_aud_501960(171, asObjectC(u), 0, 0)
+		GetServer().S().Audio.EventObj(sound.ID(171), u, 0, 0)
 		stateChargeStun(u)
 		x, y := projectileGrid(u.NewPos)
 		projectileWall(u, x, y, 100, 2)

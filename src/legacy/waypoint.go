@@ -17,10 +17,6 @@ var (
 
 type nox_waypoint_t = C.nox_waypoint_t
 
-func asWaypointS(p *nox_waypoint_t) *server.Waypoint {
-	return (*server.Waypoint)(unsafe.Pointer(p))
-}
-
 func asWaypointC(p *server.Waypoint) *nox_waypoint_t {
 	return (*nox_waypoint_t)(p.C())
 }

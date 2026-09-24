@@ -16,7 +16,7 @@ import (
 type legacyGlobalStorage struct {
 	nox_xxx_aClosewoodengat_587000_133480 unsafe.Pointer
 	dword_5d4594_831236                   uint32
-	dword_5d4594_1309720                  C.uint32_t
+	dword_5d4594_1309720                  uint32
 	dword_587000_127004                   unsafe.Pointer
 	nox_alloc_tradeItems_2386496          unsafe.Pointer
 	dword_587000_93164                    unsafe.Pointer
@@ -24,13 +24,13 @@ type legacyGlobalStorage struct {
 	dword_587000_122852                   unsafe.Pointer
 	dword_587000_81128                    unsafe.Pointer
 	dword_5d4594_1090048                  *C.nox_window
-	dword_5d4594_1090100                  C.uint32_t
+	dword_5d4594_1090100                  uint32
 	nox_alloc_monsterList_2386220         unsafe.Pointer
 	nox_alloc_tradeSession_2386492        unsafe.Pointer
 	nox_alloc_spawn_2386216               unsafe.Pointer
 	nox_alloc_magicEnt_1569668            unsafe.Pointer
 	dword_5d4594_1548532                  unsafe.Pointer
-	array_5D4594_1049872                  [9]C.uint32_t
+	array_5D4594_1049872                  [9]uint32
 	nox_screenParticles_head              *C.nox_screenParticle
 	dword_5d4594_806052                   *C.nox_screenParticle
 	dword_5d4594_805984                   unsafe.Pointer
@@ -44,7 +44,7 @@ type legacyGlobalStorage struct {
 	nox_pixbuffer_rows_3798784            **C.uint8_t
 	nox_video_tileBuf_ptr_3798796         unsafe.Pointer
 	nox_video_tileBuf_end_3798844         unsafe.Pointer
-	nox_server_gameSettingsUpdated        C.int
+	nox_server_gameSettingsUpdated        int32
 	nox_wnd_xxx_1309740                   *C.nox_gui_animation
 	dword_5d4594_1522616                  *C.nox_window
 	dword_5d4594_1522620                  *C.nox_window

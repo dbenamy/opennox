@@ -55,7 +55,3 @@ func checkDialogs() bool {
 func Sub_43D9B0(a1, a2 uint32) {
 	MusicModule.SetNextMusic(music.MusicState{MusicIdx: a1, Volume: a2, Position: 0, D: 0})
 }
-
-func sub_43D9B0(a1, a2 int) {
-	Sub_43D9B0(uint32(a1), uint32(a2))
-}

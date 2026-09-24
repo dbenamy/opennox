@@ -1,18 +1,8 @@
 package legacy
 
-/*
-#include "GAME4_2.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
+	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
@@ -25,7 +15,7 @@ func controlObject(p unsafe.Pointer, n int) *server.Object {
 	return (*server.Object)(*controlPtr(p, n))
 }
 func controlPlayer(u *server.Object) unsafe.Pointer { return *controlPtr(u.UpdateData, 276) }
-func controlFlags(mask uint32) bool                 { return bool(nox_common_gameFlags_check_40A5C0(C.uint(mask))) }
+func controlFlags(mask uint32) bool                 { return noxflags.HasGame(noxflags.GameFlag(mask)) }
 func controlRaw(u *server.Object) uint32            { return uint32(uintptr(u.CObj())) }
 func controlRemoveGlyphs(u *server.Object) int32 {
 	typ := stateType(1565600, "Glyph")
@@ -40,7 +30,7 @@ func controlRemoveGlyphs(u *server.Object) int32 {
 func controlRemoveCreatures(u *server.Object) {
 	for it := u.Field129; it != nil; {
 		next := it.Field128
-		if nox_xxx_creatureIsMonitored_500CC0((*C.nox_object_t)(u.CObj()), (*C.nox_object_t)(it.CObj())) != 0 {
+		if server.Nox_xxx_creatureIsMonitored_500CC0(u, it) {
 			for item := it.InvFirstItem; item != nil; {
 				n := item.InvNextItem
 				GetServer().DelayedDelete(item)
@@ -223,7 +213,7 @@ func controlSetWaypoint(u *server.Object, x, y uint32) {
 	ptr := controlPtr(data, 168+4*int(*controlByte(data, 180)))
 	pos := *(*types.Pointf)(unsafe.Pointer(&[2]uint32{x, y}))
 	if *ptr != nil {
-		nox_xxx_unitMove_4E7010((*C.nox_object_t)(*ptr), (*C.float2)(unsafe.Pointer(&pos)))
+		Nox_xxx_unitMove_4E7010((*server.Object)(*ptr), pos)
 	} else {
 		it := GetServer().S().NewObjectByTypeID("PlayerWaypoint")
 		*ptr = it.CObj()
@@ -321,10 +311,10 @@ func controlActionState(u *server.Object) int32 {
 	case 0:
 		return 4
 	case 1, 14, 22:
-		if nox_common_playerIsAbilityActive_4FC250((*C.nox_object_t)(u.CObj()), 2) != 0 && nox_xxx_probablyWarcryCheck_4FC3E0((*C.nox_object_t)(u.CObj()), 2) != 0 {
+		if GetServer().S().Abils.IsActive(u, server.Ability(2)) && GetServer().S().Abils.IsActiveVal(u, server.Ability(2)) {
 			return 46
 		}
-		if nox_common_playerIsAbilityActive_4FC250((*C.nox_object_t)(u.CObj()), 1) != 0 {
+		if GetServer().S().Abils.IsActive(u, server.Ability(1)) {
 			return 45
 		}
 		if weapon&0x47f0000 != 0 {

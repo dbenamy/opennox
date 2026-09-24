@@ -10,7 +10,10 @@ package legacy
 #include "client__shell__noxworld.h"
 */
 import "C"
-import "unsafe"
+import (
+	"github.com/opennox/opennox/v1/client/gui"
+	"unsafe"
+)
 
 func PortTestServerBrowserWords() (map[string]*uint32, func()) {
 	words := map[string]*uint32{
@@ -126,9 +129,9 @@ func PortTestServerBrowserHostDescription() uintptr { return uintptr(unsafe.Poin
 
 func PortTestServerBrowserColumnEvent(w unsafe.Pointer, code int, a, b uint32, input bool) int {
 	if input {
-		return int(sub_438EF0((*C.uint32_t)(w), C.int(code), C.uint(a), C.int(b)))
+		return int(sub_438EF0((*gui.Window)(w), int32(code), uint32(a), int32(b)))
 	}
-	return int(sub_439050(C.int(uintptr(w)), C.uint(code), (*C.int)(unsafe.Pointer(uintptr(a))), C.uint(b)))
+	return int(sub_439050(uint32(uintptr(w)), uint32(code), unsafe.Pointer(uintptr(a)), uint32(b)))
 }
 func PortTestServerBrowserInfoPosition(x, y int32, out *[2]uint32) {
 	browserInfoPosition(x, y, out)

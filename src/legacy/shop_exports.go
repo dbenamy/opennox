@@ -25,10 +25,6 @@ func nox_xxx_shopGetItemCost_50E3D0(mode, session C.int, bits C.float) C.int {
 	return C.int(shopPrice(int(mode), shopSessionFromInt(session), u))
 }
 
-func sub_50F3A0(s *C.uint32_t) { shopCancelTrade((*shopSession)(unsafe.Pointer(s))) }
-
-func nox_xxx_shopExit_50F4C0(s *C.uint32_t) { shopExit((*shopSession)(unsafe.Pointer(s))) }
-
 func nox_xxx_tradeAccept_50F5A0(s, u C.int) { shopAccept(shopSessionFromInt(s), objectFromInt(u)) }
 
 func nox_xxx_tradeP2PAddOfferMB_50FE20(s C.int, code C.int) C.int {

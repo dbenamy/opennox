@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-#include "noxstring.h"
-// Adapter to the live production variadic formatter.
-*/
-import "C"
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/libs/strman"
@@ -140,7 +133,7 @@ func bookDrawList(w *gui.Window) int {
 		hasDesc = raw != 0
 		desc = GoWStringP(unsafe.Pointer(uintptr(uint32(raw))))
 	} else if class == 0 {
-		sub_425450(int(C.int(id)))
+		Sub_425450(id)
 		title(GoWString(nox_xxx_abilityGetName_0_425260(id)), pos.Y+53)
 		raw := sub_4252F0(id)
 		hasDesc = raw != nil

@@ -6,7 +6,6 @@ import (
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/common/memmap"
-	"github.com/opennox/opennox/v1/legacy/common/alloc"
 )
 
 func prefabReadRaw(handle uint32, dst []byte) int {
@@ -142,5 +141,3 @@ func prefabScriptScan(handle, output uint32) uint32 {
 	}
 	return count
 }
-
-func prefabCString(p uint32) string { return alloc.GoString((*byte)(mapRoomPointer(p))) }

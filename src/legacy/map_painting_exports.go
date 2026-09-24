@@ -56,7 +56,7 @@ func sub_527030(a1 *C.float2) C.int {
 
 //export nox_xxx_mapGenGetObjID_527940
 func nox_xxx_mapGenGetObjID_527940(a1 *C.char) C.int {
-	return C.int(mapPaintSelectObject((*C.char)(mapRoomPointer(uint32(uintptr(unsafe.Pointer(a1)))))))
+	return C.int(mapPaintSelectObject((*byte)(mapRoomPointer(uint32(uintptr(unsafe.Pointer(a1)))))))
 }
 
 //export nox_xxx_mapGenPlaceObj_5279B0

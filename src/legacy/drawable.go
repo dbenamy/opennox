@@ -9,7 +9,6 @@ static void go_nox_drawable_call_sprite_func(void(* fnc)(nox_drawable*, int), no
 */
 import "C"
 import (
-	"image"
 	"unsafe"
 
 	"github.com/opennox/opennox/v1/client"
@@ -26,46 +25,6 @@ func AsDrawableP(p unsafe.Pointer) *client.Drawable {
 }
 
 type nox_drawable = C.nox_drawable
-
-func nox_xxx_spriteLoadAdd_45A360_drawable(id, x, y int) *nox_drawable {
-	return (*nox_drawable)(GetClient().Nox_xxx_spriteLoadAdd_45A360_drawable(id, image.Pt(x, y)).C())
-}
-
-func nox_xxx_sprite_45A110_drawable(dr *nox_drawable) {
-	GetClient().Cli().Objs.List34Add(asDrawable(dr))
-}
-
-func nox_xxx_netSpriteByCodeStatic_45A720(id int) *nox_drawable {
-	return (*nox_drawable)(GetClient().Cli().Objs.ByNetCodeStatic(id).C())
-}
-
-func nox_xxx_netSpriteByCodeDynamic_45A6F0(id int) *nox_drawable {
-	return (*nox_drawable)(GetClient().Cli().Objs.ByNetCodeDynamic(id).C())
-}
-
-func nox_xxx_cliRemoveHealthbar_459E30(dr *nox_drawable, v uint8) {
-	GetClient().Cli().Objs.RemoveHealthBar(asDrawable(dr), v)
-}
-
-func sub_45A670(a1 uint32) {
-	GetClient().Sub_45A670(a1)
-}
-
-func nox_xxx_spriteTransparentDecay_49B950(dr *nox_drawable, a2 int) {
-	GetClient().Cli().Objs.TransparentDecay(asDrawable(dr), a2)
-}
-
-func sub_459DD0(dr *nox_drawable, a2 uint8) {
-	GetClient().Cli().Objs.MinimapAdd(asDrawable(dr), a2)
-}
-
-func nox_xxx_spriteToList_49BC80_drawable(dr *nox_drawable) {
-	GetClient().Cli().Objs.List5Add(asDrawable(dr))
-}
-
-func nox_xxx_spriteCreate_48E970(typeID int, code uint16, x, y int) *nox_drawable {
-	return (*nox_drawable)(GetClient().Nox_xxx_spriteCreate_48E970(typeID, code, x, y).C())
-}
 
 func CallDrawFunc(s *client.Drawable, vp *noxrender.Viewport) int {
 	return ccall.CallIntPtr2(s.DrawFuncPtr, vp.C(), s.C())

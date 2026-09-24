@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME5.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -27,7 +19,7 @@ func mapPopulationMetadataIndex(name uint32) uint32 {
 func mapPopulationMetadataAt(index uint32) uint32 { return *populationGlobal(12) + index*64 }
 func mapPopulationMetadataFree()                  { mapRoomRelease(mapRoomPointer(*populationGlobal(12))) }
 func mapPopulationMetadataInit() uint32 {
-	n := uint32(sub_502A20())
+	n := *prefabGlobal(prefabCount)
 	*populationGlobal(13) = n
 	p := mapRoomRaw(mapRoomCalloc(n, 64))
 	*populationGlobal(12) = p
@@ -37,7 +29,7 @@ func mapPopulationMetadataInit() uint32 {
 	}
 	ret := p
 	for i := int32(0); i < int32(n); i++ {
-		name := populationString(uint32(sub_5029F0(C.int(i))))
+		name := populationString(prefabMetadataAt(i))
 		row := p + uint32(i)*64
 		copy(unsafe.Slice((*byte)(mapRoomPointer(row)), len(name)+1), append([]byte(name), 0))
 		fields := strings.FieldsFunc(name, func(r rune) bool { return r == '-' })
@@ -63,7 +55,7 @@ func populationMarkerType(dir int) uint32 {
 	return *populationBlob(uintptr(2487656 + dir*4))
 }
 func mapPopulationFillCachedObjects(cfg, mapping uint32) uint32 {
-	for u := uint32(sub_504980()); u != 0; u = uint32(sub_5049C0(C.int(u))) {
+	for u := prefabObjectHead(); u != 0; u = prefabObjectNext(u) {
 		for m := mapping; m != 0; m = *populationWord(m, 8) {
 			if uint32(populationObject(u).TypeInd) == *populationWord(m, 0) {
 				mapPopulationInventory(cfg, u, *populationWord(m, 4))
@@ -78,8 +70,8 @@ func mapPopulationPlacePrefabInRoom(cfg, room, row, index uint32) uint32 {
 	if e == nil {
 		return 0
 	}
-	width := float32(sub_502E70(C.int(index)))
-	height := float32(sub_502EA0(C.int(index)))
+	width := float32(prefabDimension(int32(index), 64))
+	height := float32(prefabDimension(int32(index), 68))
 	w, h := int32(int64(float64(width)*0.030743772)), int32(int64(float64(height)*0.030743772))
 	r := populationRoom(room)
 	dx, dy := r.Width-w, r.Height-h
@@ -105,9 +97,9 @@ func mapPopulationPlacePrefabInRoom(cfg, room, row, index uint32) uint32 {
 		e.Max = types.Pointf{X: pos.X + width, Y: pos.Y + height}
 		e.Prefab = index
 		if mapRoomContainsRect(r, e) != 0 && mapRoomFindExclusionOverlap(r, e) == nil {
-			sub_502D70(C.int(index))
+			populationLoadPrefab(int32(index))
 			mapPopulationFillCachedObjects(cfg, *populationWord(row, 84))
-			sub_503B30((*C.float2)(unsafe.Pointer(&pos)))
+			prefabInstantiate(&pos)
 			e.Next = r.Exclusions
 			r.Exclusions = e
 			return 1
@@ -117,17 +109,17 @@ func mapPopulationPlacePrefabInRoom(cfg, room, row, index uint32) uint32 {
 	return 0
 }
 func mapPopulationPrefabInfo(cfg, prefab uint32) uint32 {
-	index := uint32(sub_5029A0((*C.char)(mapRoomPointer(prefab))))
+	index := prefabFindName(prefab)
 	*populationWord(prefab, 68) = index
 	if int32(index) == -1 {
 		return 0
 	}
-	sub_502D70(C.int(index))
-	*populationFloat(prefab, 60) = float32(sub_502E70(C.int(index)))
-	*populationFloat(prefab, 64) = float32(sub_502EA0(C.int(index)))
-	for u := uint32(sub_504980()); u != 0; u = uint32(sub_5049C0(C.int(u))) {
+	populationLoadPrefab(int32(index))
+	*populationFloat(prefab, 60) = float32(prefabDimension(int32(index), 64))
+	*populationFloat(prefab, 64) = float32(prefabDimension(int32(index), 68))
+	for u := prefabObjectHead(); u != 0; u = prefabObjectNext(u) {
 		var pos types.Pointf
-		sub_503EC0(C.int(u), (*C.float)(unsafe.Pointer(&pos)))
+		prefabRelativePosition(u, &pos)
 		pos.X -= 1
 		pos.Y -= 1
 		var grid [2]int32
@@ -325,13 +317,13 @@ func mapPopulationApplyPrefabs(cfg uint32) uint32 {
 		if *populationWord(p, 76) == 0 {
 			continue
 		}
-		sub_502D70(C.int(*populationWord(p, 68)))
-		for u := uint32(sub_504980()); u != 0; {
-			next := uint32(sub_5049C0(C.int(u)))
+		populationLoadPrefab(int32(*populationWord(p, 68)))
+		for u := prefabObjectHead(); u != 0; {
+			next := prefabObjectNext(u)
 			typ := uint32(populationObject(u).TypeInd)
 			for dir := 0; dir < 4; dir++ {
 				if typ == populationMarkerType(dir) {
-					sub_504A10(C.int(u))
+					prefabObjectRemove(u)
 					break
 				}
 			}
@@ -339,7 +331,7 @@ func mapPopulationApplyPrefabs(cfg uint32) uint32 {
 		}
 		mapPopulationFillCachedObjects(cfg, *populationWord(p, 152))
 		r := populationRoom(*populationWord(p, 148))
-		sub_503B30((*C.float2)(unsafe.Pointer(&r.Pos)))
+		prefabInstantiate(&r.Pos)
 	}
 	return 1
 }

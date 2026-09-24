@@ -1,17 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_3.h"
-#include "server__dbase__objdb.h"
-#include "common__strman.h"
-
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"unsafe"
@@ -25,8 +13,8 @@ import (
 
 const tradeSource = `C:\NoxPost\src\Server\System\Trade.c`
 
-func tradeString(key string) *C.wchar2_t {
-	return (*C.wchar2_t)(unsafe.Pointer(internWStr(GetServer().S().Strings().GetStringInFile(strman.ID(key), tradeSource))))
+func tradeString(key string) *uint16 {
+	return (*uint16)(unsafe.Pointer(internWStr(GetServer().S().Strings().GetStringInFile(strman.ID(key), tradeSource))))
 }
 func tradeLine(u *server.Object, key string) uint32 {
 	return uint32(textFormatLine(u, (*uint16)(unsafe.Pointer(tradeString(key)))))
@@ -350,7 +338,7 @@ func tradeLimit(key string) uint32 {
 	return uint32(floatToInt32(float32(GetServer().S().Balance.Float(key))))
 }
 func tradePriority(u *server.Object, key string) {
-	nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), (*C.char)(internCStr(key)), 0)
+	gameplayTextPrivate(u, (*byte)(unsafe.Pointer(internCStr(key))), 0)
 }
 func tradeReportGold(u *server.Object) {
 	gameplayReportPlayerStat(int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), u)

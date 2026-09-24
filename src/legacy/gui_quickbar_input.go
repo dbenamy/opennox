@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_2.h"
-#include "GAME3.h"
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -76,8 +70,8 @@ func quickbarSlotEvent(w *gui.Window, event, arg uint32) int {
 		if j < 0 {
 			old := quickbarDrop(s.ID, byte(s.Flags), pos, b)
 			if old>>16 == 137 {
-				point := C.int2{field_0: C.int(pos.X), field_4: C.int(pos.Y)}
-				inside := C.int(geometryRectInt((*[2]int32)(unsafe.Pointer(&point)), (*[4]int32)(unsafe.Pointer(memmap.PtrOff(0x587000, 133656))))) != 0
+				point := [2]int32{int32(pos.X), int32(pos.Y)}
+				inside := geometryRectInt(&point, (*[4]int32)(unsafe.Pointer(memmap.PtrOff(0x587000, 133656)))) != 0
 				previous := *quickbarWord(1049696)
 				if inside || previous != 0 && previous != quickbarPointer(unsafe.Pointer(b.Current)) {
 					return 1
@@ -214,7 +208,7 @@ func quickbarTrapButtonEvent(w *gui.Window, event, arg uint32) int {
 	}
 	if *quickbarWord(1047928) != 0 {
 		p := bookPoint(arg)
-		if !bool(nox_xxx_wndPointInWnd_46AAB0((*C.uint)(w.C()), C.int(p.X), C.int(p.Y))) {
+		if !uiWindowPointIn(w, int32(p.X), int32(p.Y)) {
 			quickbarBuildTrap()
 		}
 		w.Capture(false)

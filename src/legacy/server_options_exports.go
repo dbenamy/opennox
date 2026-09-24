@@ -4,15 +4,6 @@ package legacy
 #include "defs.h"
 */
 import "C"
-import "unsafe"
-
-func nox_xxx_guiServerOptionsHide_4597E0(value C.int) *C.int {
-	return (*C.int)(unsafe.Pointer(serverOptionsClose(int(value))))
-}
-
-func sub_459C30() C.int { return C.int(serverOptionsRefresh()) }
-
-func sub_459DA0() C.int { return C.int(bool2int(serverOptionsRoot != 0)) }
 
 // Tooltip callbacks are stored by the GUI through its existing C function-pointer ABI.
 //

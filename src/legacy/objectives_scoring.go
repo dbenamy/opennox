@@ -12,7 +12,7 @@ import (
 func objectiveTeamCount(t *server.Team) int { return teamRuntimeCount(t) }
 func objectiveScore(u *server.Object) {
 	gameplayReportChangeScore(u, 1)
-	nox_xxx_netReportLesson_4D8EF0(asObjectC(u))
+	gameplayReportLesson(u)
 }
 func objectiveQuestScore(u *server.Object) {
 	if dword_5d4594_2650652 != 0 && u != nil && u.UpdateData != nil {

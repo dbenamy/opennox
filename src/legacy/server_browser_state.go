@@ -9,36 +9,36 @@ import "unsafe"
 // Go owns the browser state. Fixed-width ABI types preserve the existing legacy
 // callers and fixture word views while their C global symbols retire.
 var browserUI = struct {
-	listMode           C.uint32_t
+	listMode           uint32
 	region             int32
-	polygonsReady      C.uint32_t
+	polygonsReady      uint32
 	popup              uint32
-	popupCount         C.uint32_t
-	connectionState    C.uint
+	popupCount         uint32
+	connectionState    uint32
 	selected           unsafe.Pointer
 	mapWindow          unsafe.Pointer
-	overview           C.uint32_t
-	filter             C.uint32_t
+	overview           uint32
+	filter             uint32
 	label              unsafe.Pointer
 	detailPanel        unsafe.Pointer
 	detailList         *C.nox_window
-	playersColumn      C.uint32_t
-	modeColumn         C.uint32_t
-	mapColumn          C.uint32_t
-	pingColumn         C.uint32_t
-	statusColumn       C.uint32_t
-	transition         C.uint32_t
-	hosting            C.uint32_t
-	hasSelection       C.uint32_t
-	pendingKicked      C.uint32_t
-	pendingTimeout     C.uint32_t
-	retry              C.int
-	connectionError    C.uint32_t
-	creating           C.uint32_t
+	playersColumn      uint32
+	modeColumn         uint32
+	mapColumn          uint32
+	pingColumn         uint32
+	statusColumn       uint32
+	transition         uint32
+	hosting            uint32
+	hasSelection       uint32
+	pendingKicked      uint32
+	pendingTimeout     uint32
+	retry              int32
+	connectionError    uint32
+	creating           uint32
 	animation          *C.nox_gui_animation
-	resultCount        C.uint32_t
-	sort               C.uint32_t
-	gameList           C.uint32_t
+	resultCount        uint32
+	sort               uint32
+	gameList           uint32
 	world              *C.nox_window
 	connectionDeadline uint64
 	refreshDeadline    uint64

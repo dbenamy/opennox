@@ -15,11 +15,11 @@ import (
 	"unsafe"
 )
 
-func mapPaintSelectObject(name *C.char) uint32 {
+func mapPaintSelectObject(name *byte) uint32 {
 	if name == nil {
 		return 0
 	}
-	id := GoString(name)
+	id := GoStringP(unsafe.Pointer(name))
 	if strings.EqualFold(id, "NONE") {
 		*mapPaintGlobal(paintObjectType) = 0
 	} else {
@@ -129,7 +129,7 @@ func mapPaintDoor(r *mapRoom, pos *types.Pointf, span int32, vertical, double bo
 		delta = 48.790367
 	}
 	*axis = float32(float64(*axis) - delta)
-	mapPaintSelectObject((*C.char)(name))
+	mapPaintSelectObject((*byte)(name))
 	dir := int32(5)
 	if vertical {
 		dir = 7

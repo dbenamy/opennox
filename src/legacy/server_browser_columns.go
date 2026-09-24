@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_2.h"
-#include "client__shell__noxworld.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -122,21 +117,10 @@ func browserInfoPopup(point *[2]uint32, record unsafe.Pointer) {
 	}
 }
 
-func sub_438480() C.int { return C.int(browserColumnsInit()) }
-
-func sub_438EF0(w *C.uint32_t, code C.int, a C.uint, b C.int) C.int {
-	return C.int(gui.EventRespInt(browserListInput((*gui.Window)(unsafe.Pointer(w)), &gui.RawEvent{Event: int(code), Arg1: uintptr(a), Arg2: uintptr(uint32(b))})))
+func sub_438EF0(w *gui.Window, code int32, a uint32, b int32) int32 {
+	return int32(gui.EventRespInt(browserListInput(w, &gui.RawEvent{Event: int(code), Arg1: uintptr(a), Arg2: uintptr(uint32(b))})))
 }
 
-func sub_439050(w C.int, code C.uint, a *C.int, b C.uint) C.int {
-	return C.int(gui.EventRespInt(browserListEvent(browserWindow(uint32(w)), &gui.RawEvent{Event: int(code), Arg1: uintptr(unsafe.Pointer(a)), Arg2: uintptr(b)})))
-}
-
-func sub_439450(x, y C.int, out *C.uint32_t) *C.uint32_t {
-	browserInfoPosition(int32(x), int32(y), (*[2]uint32)(unsafe.Pointer(out)))
-	return out
-}
-
-func nox_client_gui_serverInfoBlockCheckExp_439370(point *C.int2, record C.int) {
-	browserInfoPopup((*[2]uint32)(unsafe.Pointer(point)), unsafe.Pointer(uintptr(uint32(record))))
+func sub_439050(w uint32, code uint32, a unsafe.Pointer, b uint32) int32 {
+	return int32(gui.EventRespInt(browserListEvent(browserWindow(w), &gui.RawEvent{Event: int(code), Arg1: uintptr(a), Arg2: uintptr(b)})))
 }

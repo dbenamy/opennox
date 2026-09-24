@@ -204,8 +204,6 @@ func browserListMissing(addr string, port int16) int {
 
 func sub_49FFA0(windows C.int) *C.int { return (*C.int)(browserListClear(windows != 0)) }
 
-func sub_4A0020() *C.char { return (*C.char)(unsafe.Pointer(browserListHead())) }
-
 func nox_wol_servers_addResult_4A0030(record *C.nox_gui_server_ent_t) C.int {
 	return C.int(browserListAdd(unsafe.Pointer(record)))
 }

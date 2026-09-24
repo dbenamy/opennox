@@ -202,8 +202,6 @@ func browserEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 	return nil
 }
 
-func sub_43A810() { browserShowRegion() }
-
 func nox_xxx_windowMultiplayerSub_439E70(w int32, code uint32, a *int32, b int32) int32 {
 	return int32(gui.EventRespInt(browserEvent(browserWindow(uint32(w)), &gui.RawEvent{Event: int(code), Arg1: uintptr(unsafe.Pointer(a)), Arg2: uintptr(uint32(b))})))
 }

@@ -245,17 +245,6 @@ func sub_4B6720(a1 *C.int2, a2, a3 C.int, a4 C.char) {
 	GetClient().R2().DrawGlow(AsPoint(unsafe.Pointer(a1)), noxcolor.RGBA5551(a2), int(a3), int(a4))
 }
 
-func toRect(cr *C.nox_rect) image.Rectangle {
-	return image.Rect(int(cr.min_x), int(cr.min_y), int(cr.max_x), int(cr.max_y))
-}
-
-func setRect(cr *C.nox_rect, r image.Rectangle) {
-	cr.min_x = C.int(r.Min.X)
-	cr.min_y = C.int(r.Min.Y)
-	cr.max_x = C.int(r.Max.X)
-	cr.max_y = C.int(r.Max.Y)
-}
-
 func Sub_437180() {
 	chatBubbleDraw(GetClient().Viewport())
 }

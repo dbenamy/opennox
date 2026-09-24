@@ -128,7 +128,7 @@ func Nox_xxx_netInformTextMsg2_4DA180(a1 int, a2 unsafe.Pointer) {
 	nox_xxx_netInformTextMsg2_4DA180(C.int(a1), (*C.uchar)(a2))
 }
 func Nox_xxx_netReportUnitHeight_4D9020(a1 ntype.PlayerInd, a2 *server.Object) {
-	nox_xxx_netReportUnitHeight_4D9020(C.int(a1), asObjectC(a2))
+	gameplayReportHeight(int(int32(a1)), a2)
 }
 func Sub_511100(a1 int) {
 	motionSentryReport(int32(a1))

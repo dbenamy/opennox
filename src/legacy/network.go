@@ -1,23 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "common__net_list.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME2_3.h"
-#include "GAME3.h"
-#include "GAME3_2.h"
-#include "GAME4_2.h"
-#include "GAME5.h"
-#include "GAME5_2.h"
-int sub_457140(int a1, wchar2_t* a2);
-int sub_456DF0(int a1);
-void* nox_xxx_spriteGetMB_476F80();
-
-
-*/
-import "C"
 import (
 	"net"
 	"net/netip"
@@ -79,7 +61,7 @@ func ClientGetServerPort() int {
 }
 
 func Sub_43AF90(v int) {
-	browserUI.connectionState = C.uint(v)
+	browserUI.connectionState = uint32(v)
 }
 
 func Nox_xxx_netSendPacket_4E5030(a1 int, buf []byte, a4, a5, a6 int) int {
@@ -102,7 +84,7 @@ func Nox_server_makeServerInfoPacket_554040(src, dst []byte) int {
 }
 
 func Sub_40A740() int {
-	return int(C.int(serverConfigSpecialMode()))
+	return int(int32(serverConfigSpecialMode()))
 }
 
 func Sub_417DE0() int {
@@ -131,7 +113,7 @@ func Sub_48D660() {
 	clientSequencePoll()
 }
 func Sub_40A220() int {
-	return int(C.int(serverConfigTimerGet()))
+	return int(int32(serverConfigTimerGet()))
 }
 func Sub_40A230() uint32 {
 	return uint32(serverConfigTimerLeft())
@@ -210,7 +192,7 @@ func Sub_4196D0(a1 unsafe.Pointer, a2 unsafe.Pointer, a3 int, a4 int) {
 }
 
 func Nox_xxx_netReportAcquireCreature_4D91A0(pli int, obj *server.Object) {
-	nox_xxx_netReportAcquireCreature_4D91A0(C.int(pli), asObjectC(obj))
+	gameplayReportAcquireCreature(int(int32(pli)), obj)
 }
 func Nox_xxx_netSendSimpleObject2_4DF360(pli int, obj *server.Object) {
 	matchRosterSimpleObject(int(pli), obj)

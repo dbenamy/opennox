@@ -80,21 +80,21 @@ func browserShow() int {
 	anim.FncDoneOutPtr = C.sub_438330
 	mapWin, overview := root.ChildByID(10020), root.ChildByID(10021)
 	browserUI.mapWindow = mapWin.C()
-	browserUI.overview = C.uint32_t(uintptr(overview.C()))
+	browserUI.overview = uint32(uintptr(overview.C()))
 	mapWin.SetFunc93(browserMapInput)
 	overview.SetFunc93(browserMapInput)
 	overview.SetFunc94(browserEvent)
 	browserUI.label = root.ChildByID(10011).C()
 	main := root.ChildByID(10037)
-	browserUI.gameList = C.uint32_t(uintptr(main.C()))
+	browserUI.gameList = uint32(uintptr(main.C()))
 	details := root.ChildByID(10034)
 	browserUI.detailList = (*C.nox_window)(details.C())
 	panel := root.ChildByID(10033)
 	browserUI.detailPanel = panel.C()
-	browserUI.filter = C.uint32_t(uintptr(sessionFilterOpen(root).C()))
+	browserUI.filter = uint32(uintptr(sessionFilterOpen(root).C()))
 	*memmap.PtrUint32(0x5D4594, 815008) = uint32(uintptr(root.ChildByID(10001).C()))
-	for i, p := range []*C.uint32_t{&browserUI.playersColumn, &browserUI.modeColumn, &browserUI.mapColumn, &browserUI.pingColumn, &browserUI.statusColumn} {
-		*p = C.uint32_t(uintptr(root.ChildByID(uint(10038 + i)).C()))
+	for i, p := range []*uint32{&browserUI.playersColumn, &browserUI.modeColumn, &browserUI.mapColumn, &browserUI.pingColumn, &browserUI.statusColumn} {
+		*p = uint32(uintptr(root.ChildByID(uint(10038 + i)).C()))
 	}
 	if noxflags.HasGame(0x1000000) {
 		uiWindowEnable(root.ChildByID(10002), 0)

@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "common__random.h"
-#include "GAME3_3.h"
-#include "GAME4_1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -77,9 +69,9 @@ func stateFront(a *types.Pointf, dir int32, b *types.Pointf) int32 {
 }
 func stateTeleport(u *server.Object, p *types.Pointf) {
 	if u.Buffs&(1<<14) == 0 && u.ObjFlags&2 == 0 &&
-		(!bool(nox_common_gameFlags_check_40A5C0(4096)) || u.ObjClass&2 == 0 || u.ObjSubClass&8 == 0) &&
-		(bool(nox_common_gameFlags_check_40A5C0(2048)) || u.ObjClass&6 != 0) {
-		nox_xxx_unitMove_4E7010(asObjectC(u), (*C.float2)(unsafe.Pointer(p)))
+		(!controlFlags(4096) || u.ObjClass&2 == 0 || u.ObjSubClass&8 == 0) &&
+		(controlFlags(2048) || u.ObjClass&6 != 0) {
+		Nox_xxx_unitMove_4E7010(u, *p)
 	}
 }
 func stateLoot(u *server.Object, p *types.Pointf) {
@@ -99,7 +91,7 @@ func stateLoot(u *server.Object, p *types.Pointf) {
 	for i := int32(0); i < int32(memmap.Uint32(0x587000, off+4)); i++ {
 		name := alloc.GoString((*byte)(*memmap.PtrPtr(0x587000, off)))
 		if it := GetServer().S().NewObjectByTypeID(name); it != nil {
-			sub_4ED970(35, (*C.float2)(unsafe.Pointer(p)), (*C.float2)(unsafe.Pointer(pos)))
+			inventoryRandomPlacement(35, p, pos)
 			GetServer().CreateObjectAt(it, nil, *pos)
 		}
 	}

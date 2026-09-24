@@ -109,7 +109,7 @@ func spellLifeUpdateBuffs(u *server.Object) {
 			GetServer().S().Audio.EventObj(779, u, 0, 0)
 			if u.ObjClass&4 != 0 {
 				gameplayReportEliminationDeath(u)
-				nox_xxx_netReportLesson_4D8EF0(asObjectC(u))
+				gameplayReportLesson(u)
 			}
 		}
 		spellLifeBuffOff(u, i)

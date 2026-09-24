@@ -1,20 +1,10 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-#include "GAME5_2.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
+	"github.com/opennox/opennox/v1/common/sound"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
@@ -60,7 +50,7 @@ func spellLifeCantCast(u *server.Object, id, queued int32) int32 {
 		return 10
 	}
 	count := func(off uintptr) int32 {
-		return int32(nox_xxx_unitIsUnitTT_4E7C80(asObjectC(u), int(C.int(*memmap.PtrUint32(0x5d4594, off)))))
+		return int32(Nox_xxx_unitIsUnitTT_4E7C80(u, int(int32(*memmap.PtrUint32(0x5d4594, off)))))
 	}
 	switch id {
 	case 29:
@@ -161,7 +151,8 @@ func spellLifeBroadcastPhoneme(u *server.Object, phon int8) int32 {
 	for p := s.Players.FirstUnit(); p != nil; p = s.Players.NextUnit(p) {
 		if p != u {
 			aud := spellLifePhoneme(int32(u.NetCode), phon)
-			nox_xxx_aud_501960(int32(C.int(aud)), asObjectC(u), 2, int32(C.int(p.NetCode)))
+			netCode := uint32(p.NetCode)
+			GetServer().S().Audio.EventObj(sound.ID(aud), u, 2, netCode)
 		}
 	}
 	return 0
@@ -200,8 +191,8 @@ func spellLifeCreateFly(u, target *server.Object, id int32) *server.Object {
 	*controlPtr(out.UpdateData, 8) = u.CObj()
 	*spellLifeWord(out.UpdateData, 12) = uint32(id)
 	// Preserve the direction helper's side effects before velocity stores.
-	var indexed C.int2
-	geometryIndexedDirection(int32(u.Direction1), (*[2]int32)(unsafe.Pointer(&indexed)))
+	var indexed [2]int32
+	geometryIndexedDirection(int32(u.Direction1), &indexed)
 	out.VelVec.X = float32(float64(dx) * float64(*(*float32)(unsafe.Add(out.CObj(), 544))))
 	out.VelVec.Y = float32(float64(dy) * float64(*(*float32)(unsafe.Add(out.CObj(), 544))))
 	out.VelVec.X = float32(float64(out.VelVec.X) + float64(u.VelVec.X))
@@ -213,7 +204,7 @@ func spellLifeCreateFly(u, target *server.Object, id int32) *server.Object {
 	return out
 }
 func spellLifeCollide(u, target *server.Object) {
-	if spellLifeHasBuff(u, 22) && target.ObjFlags&0x8008 == 0 && target.ObjClass&6 != 0 && nox_xxx_unitIsEnemyTo_5330C0(asObjectC(u), asObjectC(target)) != 0 {
+	if spellLifeHasBuff(u, 22) && target.ObjFlags&0x8008 == 0 && target.ObjClass&6 != 0 && GetServer().S().IsEnemyTo(u, target) {
 		power := int32(u.BuffsPower[22]) - 1
 		GetServer().S().Audio.EventObj(135, u, 0, 0)
 		spellLifeBuffOff(u, 22)

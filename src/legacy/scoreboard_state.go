@@ -57,9 +57,7 @@ func scoreboardCount(off uintptr) *byte { return memmap.PtrUint8(0x5D4594, off) 
 func scoreboardColumn(side, column int) *gui.Window {
 	return (*gui.Window)(*memmap.PtrPtr(0x5D4594, 1090060+uintptr(column*8+side*4)))
 }
-func scoreboardGroup(side int) *gui.Window {
-	return (*gui.Window)(*memmap.PtrPtr(0x5D4594, 1090052+uintptr(side*4)))
-}
+
 func scoreboardHidden(w *gui.Window) bool { return w == nil || w.GetFlags().IsHidden() }
 func scoreboardVisible() bool {
 	return *scoreboardData.mode != 0 && !scoreboardHidden(*scoreboardData.parent)
@@ -236,18 +234,6 @@ func scoreboardScreenWidth() int   { return int(nox_win_width) }
 func scoreboardYellow() uint32     { return Get_nox_color_yellow_2589772() }
 func scoreboardWhite() uint32      { return Get_nox_color_white_2523948() }
 func scoreboardTitleColor() uint32 { return Get_dword_8531A0_2572() }
-
-func sub_470580() int { return bool2int(scoreboardVisible()) }
-
-func sub_4705B0() { scoreboardOpen() }
-
-func sub_4705F0(action, team int8, code int16) int8 {
-	return int8(scoreboardSetFlag(byte(action), byte(team), uint16(code)))
-}
-
-func sub_470650(action int8, code int16) int8 {
-	return int8(scoreboardSetBall(byte(action), uint16(code)))
-}
 
 // Compile-time layout checks for the tables shared with legacy storage.
 var (

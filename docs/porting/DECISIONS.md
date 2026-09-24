@@ -2520,3 +2520,19 @@ replaceable `GetServer` hook can run before argument reads in a direct method
 expression. Keep an exact native helper or an explicit temporary where needed;
 string interning and subsequent reading must retain their original order too.
 This is a compatibility constraint, not a new game behavior.
+
+
+## Native geometry/state boundaries and private wrappers
+
+Retire unused private Go wrappers when complete source/reference review proves
+no runtime caller or registration, even if their bodies contain pointer/layout
+operations. Keep historical translation-rule strings and same-named owners in
+other packages distinct from runtime legacy calls. Migrate all callers before
+retiring a live adapter. This connected batch retires 145 wrappers and 24 C
+imports without changing any actual C export or callback identity.
+
+Use target layout probes and complete field reader/writer audits for C scalar
+and point conversions; preserve raw word aliases and original ownership. Primary
+caught stale field selectors in a Luna scratch-array conversion before install.
+All frozen storage, complete root, production and gameplay qualification passes.
+See [GO_LAYOUT_BOUNDARIES.md](GO_LAYOUT_BOUNDARIES.md).

@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-#include "GAME3_3.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/server"
@@ -168,7 +160,7 @@ func worldTeleportCandidate(t *server.Object, pos *types.Pointf, visible bool) {
 		monsterPointFX(t, 137)
 		inventorySound(147, t, 0, 0)
 	}
-	nox_xxx_teleportToMB_4E7190((*C.uchar)(t.CObj()), (*C.float)(unsafe.Pointer(pos)))
+	stateTeleport(t, pos)
 	if visible {
 		monsterPointFX(t, 137)
 		inventorySound(147, t, 0, 0)
@@ -269,9 +261,9 @@ func worldPush(u *server.Object) {
 	spellEffectPushAround(u.PosVec, *temporaryFloat(u.UpdateData, 0), 0, *temporaryFloat(u.UpdateData, 8), nil, nil, 0)
 }
 func worldIndexedDirection(u *server.Object) (int32, int32) {
-	var out C.int2
-	geometryIndexedDirection(int32(int16(u.Direction1)), (*[2]int32)(unsafe.Pointer(&out)))
-	return int32(out.field_0), int32(out.field_4)
+	var out [2]int32
+	geometryIndexedDirection(int32(int16(u.Direction1)), &out)
+	return int32(out[0]), int32(out[1])
 }
 func worldBlowCandidate(t, u *server.Object) {
 	if byte(effectsTruncWord(float64(*temporaryFloat(t.CObj(), 16))))&0x20 != 0 || uint32(effectsTruncWord(float64(*temporaryFloat(t.CObj(), 8))))&0x400000 != 0 {
@@ -333,7 +325,7 @@ func worldBlowCandidate(t, u *server.Object) {
 	}
 	d := 400 - float64(spilled)
 	strength := float32(d * d * d * .0000005)
-	mass := float64(nox_xxx_objectGetMass_4E4A70(C.int(uintptr(t.CObj()))))
+	mass := float64(t.Mass)
 	force := float64(strength) / mass
 	vx, vy := movementDirectionVector(int32(int16(u.Direction1)))
 	t.ForceVec.X = float32(force*float64(vx) + float64(t.ForceVec.X))

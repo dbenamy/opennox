@@ -77,7 +77,7 @@ func mapPopulationRoomExit(room, definition uint32) uint32 {
 		pos.X = float32(float64(r.Min.X) + 10)
 		pos.Y = float32(float64(r.Size.Y)*0.5 + float64(r.Min.Y) + 1)
 	}
-	mapPaintSelectObject((*C.char)(mapRoomPointer(definition)))
+	mapPaintSelectObject((*byte)(mapRoomPointer(definition)))
 	u := mapPaintPlaceObject(&pos)
 	if u != nil {
 		var grid [2]int32
@@ -155,7 +155,7 @@ func mapPopulationFinish(cfg uint32) {
 	r := populationRoom(mapPopulationStart())
 	pos := types.Pointf{X: float32((float64(r.Max.X) + float64(r.Min.X)) * 0.5), Y: float32((float64(r.Max.Y) + float64(r.Min.Y)) * 0.5)}
 	name, free := alloc.CString("PlayerStart")
-	mapPaintSelectObject((*C.char)(unsafe.Pointer(name)))
+	mapPaintSelectObject((*byte)(unsafe.Pointer(name)))
 	free()
 	mapPaintPlaceObject(&pos)
 	mapMetadataSetAmbient(*(*[3]uint32)(mapRoomPointer(cfg + 536)))

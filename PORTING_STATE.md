@@ -7,40 +7,37 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 192/463 cgo files eliminated on net (271 remain).**
+internal glue: 216/463 cgo files eliminated on net (247 remain).**
 Selected legacy C export bridges: **711/1,890 retired (1,179 remain)**.
 
 These are selected project files in each Linux 386 production profile, not equal
 units of effort. Three project packages directly use cgo; 79 embedded C callback
 bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified chunk moves Go callers across internal adapter boundaries,
-extracting native helper bodies and preserving C entrypoints, scalar widths,
-raw aliases, nil interfaces and server-hook evaluation order. It removes 31
-production C imports across 50 reviewed source files. All qualification passes;
-no root fixture or frozen expectation changed. See
-[GO_NATIVE_CALL_BOUNDARIES.md](docs/porting/GO_NATIVE_CALL_BOUNDARIES.md).
+Latest qualified chunk converts geometry/state boundaries to native Go, including
+26 scalar fields and their aliases/callers, and retires 145 private wrappers.
+It removes 24 production C imports across 74 reviewed source files; ten files
+became empty and were deleted. All qualification passes with frozen expectations
+unchanged. See [GO_LAYOUT_BOUNDARIES.md](docs/porting/GO_LAYOUT_BOUNDARIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Active: the native geometry/shared-state batch
-has an accepted original baseline from `4214ea8f`, including target layout probes.
-No conversion is installed yet. Review the full caller set around the initial
-23 files, 26 remaining state scalar fields and 132 orphan-wrapper candidates.
-See [GO_LAYOUT_BOUNDARIES.md](docs/porting/GO_LAYOUT_BOUNDARIES.md).
-Stop at the milestone or for a substantial question.
+recorded reversible decisions. Next: baseline and qualify the reviewed native-record storage candidate under
+`build/port-go-native-record-storage/`: 40 files covering shared record pointers,
+world-grid cells, timestamps and connected callers. Layout probes pass; the
+candidate is not installed or runtime-qualified. Stop at the milestone or for a substantial question.
 
-Latest artifacts: `build/port-go-native-call-boundaries/`.
+Latest artifacts: `build/port-go-layout-boundaries/`.
 
 ## What remains
 
-Counts below describe the qualified native-boundary conversion. Zero `.c` lines is
+Counts below describe the qualified geometry/state conversion. Zero `.c` lines is
 not a count of all C dependencies or a measure of remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 79 production function bodies in Go preambles: 76 generic function-pointer dispatchers and three specialized adapters. |
 | Callback routes | Some Go implementations still call each other through C-compatible addresses. More direct Go dispatch is possible; shared raw fallbacks remain until their users and compatibility requirements are resolved. |
-| Declarations and C types | 157 tracked headers / 3,902 physical lines; each production profile selects 271 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 3,902 physical lines; each production profile selects 247 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Removing them requires ownership/layout changes beyond function translation. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies and their cgo bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual release checks. |
@@ -66,11 +63,11 @@ not reduce the 79-body count because they retain the shared fallback machinery.
 - Full-suite results exactly match the known baseline: 304 failure events,
   with 17 passing, two failing and 32 skipped packages.
 - Every phase uses identical source fingerprints. Reconstruction verifies all
-  50 changed source files; no root fixture correction was needed. All frozen
+  74 changed source files; no root fixture correction was needed. All frozen
   expectations and all 1,654 original asset hashes remain unchanged.
 
-Report: [GO_NATIVE_CALL_BOUNDARIES.md](docs/porting/GO_NATIVE_CALL_BOUNDARIES.md).
-Evidence: [qualification](docs/porting/go-native-call-boundaries-qualification.json).
+Report: [GO_LAYOUT_BOUNDARIES.md](docs/porting/GO_LAYOUT_BOUNDARIES.md).
+Evidence: [qualification](docs/porting/go-layout-boundaries-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -83,7 +80,7 @@ removal order and completion criteria. Client rendering/audio backend replacemen
 is outside this phase.
 
 The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
-qualified inventory is [go-native-call-boundaries-inventory-after.json](docs/porting/go-native-call-boundaries-inventory-after.json).
+qualified inventory is [go-layout-boundaries-inventory-after.json](docs/porting/go-layout-boundaries-inventory-after.json).
 The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
@@ -117,7 +114,7 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-go-native-call-boundaries/`:
+Latest local artifacts are under `build/port-go-layout-boundaries/`:
 `contracts/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
@@ -135,13 +132,15 @@ do not rerun them or infer deletion safety from age alone.
 | Superseded 378-export root test binaries | Three executables removed after host-use, inode and hash checks; 204,169,216 allocated bytes reclaimed. All 3,090 recorded source fingerprints match `f6f5ee4c`; rebuild that revision with the retained profile commands. Plan/journal: `build/port-go-primitive-interfaces/cleanup-binaries-{approved-plan.json,deleted.jsonl}`. |
 | Native-boundary full-corpus logs | Losslessly compressed; restore with `gzip -dk`. Hashes and commands: `build/port-go-native-call-boundaries/contract-log-archive.json`; 306,065,119 bytes reclaimed. |
 | Completed native-boundary scenario assets | Removed only 1,654 verified original-asset duplicates, reclaiming 559,943,680 allocated bytes. Saves/results remain. Restore with `python3 build/port-artifact-cleanup/restore-recent-scenario.py build/baseline/runs/go-native-call-boundaries-save/deduplicated-assets.json`. |
-| Current qualified production/safe binaries | Retained under `build/port-go-native-call-boundaries/`; preceding qualified primitive-interface binaries also remain. |
+| Current qualified production/safe binaries | Retained under `build/port-go-layout-boundaries/`; preceding native-boundary binaries also remain. |
+| Superseded primitive-interface binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,362,304 allocated bytes reclaimed. All 3,062 source fingerprints match `78ff20f9`; current qualified replacements match `4214ea8f`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-layout-boundaries/cleanup-primitive-{approved.json,deleted.jsonl}`. |
 | Superseded scalar-storage binaries | Seven executables removed after source/replacement/hash and host-use checks; 395,452,416 allocated bytes reclaimed. All 3,062 source fingerprints match `e64ff24e`; qualified replacements match `78ff20f9`. Rebuild the old revision using retained phase commands. Plan/journal: `build/port-go-native-call-boundaries/cleanup-scalar-{approved.json,deleted.jsonl}`. |
 | Completed scenario data: `go-memory-save`, `raw-allocation-save`, `string-boundary-save`, `unused-exports-save`, `remaining-unused-exports-save`, `go-only-exports-save` | Only SHA256-identical original-asset copies were removed. Saves/comparisons remain. Follow each run's `deduplicated-assets.json`; shared restore tool: `build/port-artifact-cleanup/restore-recent-scenario.py`. |
 | Large historical captures in `port-game-messages`, `port-map-sections`, `port-client-interaction`, `port-session-dialogs` | Restore with `gzip -dk` and verify hashes against `build/port-artifact-cleanup/large-historical-20260924/`. Its 116 discarded text logs are not recoverable from these archives. |
 | Initial complete-corpus default/server logs | Losslessly compressed; restore commands and hashes in `build/port-complete-corpus/initial-log-archive.json`. Keep the server failure evidence. |
 | Latest scalar full-corpus logs | Losslessly compressed after qualification/commit; restore commands and SHA256s: `build/port-go-scalar-storage/contract-log-archive.json`. |
 | Prior 265-export full-corpus logs | Losslessly compressed after qualification/commit; restore commands and SHA256s: `build/port-go-only-exports/contract-log-archive.json`. |
+| Obsolete project cache archives removed before layout qualification | 26 verified old archives removed after host fd/maps checks, reclaiming 2,116,055,040 allocated bytes; rebuild with the documented Go environment. Plan/journal: `build/port-go-layout-boundaries/cache-cleanup-{approved,deleted}.json`. Current binaries, assets and source retained. |
 | Remaining old project cache archives | 26 verified old root/legacy archives removed after host checks, reclaiming 1,614,089,922 bytes; rebuild normally. Plan/journal: `build/port-artifact-cleanup/go-scalar-storage-cache-{plan,removed}.json`. |
 | 378-export full-corpus logs | Losslessly compressed after qualification/commit; restore commands and SHA256s: `build/port-remaining-unused-exports/contract-log-archive.json`. |
 | Additional obsolete project cache archives | 31 old root/legacy archives removed after host checks, reclaiming 2,017,688,956 bytes; rebuild normally. Plan/journal: `build/port-artifact-cleanup/go-only-exports-cache-{plan,removed}.json`. |

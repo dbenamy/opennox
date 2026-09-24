@@ -138,10 +138,10 @@ func sub_43AF40() C.int { return C.int(browserUI.creating) }
 
 func sub_43AF80() C.int { return C.int(browserUI.connectionState) }
 
-func sub_43AF90(v C.int) C.int { browserUI.connectionState = C.uint(v); return v }
+func sub_43AF90(v C.int) C.int { browserUI.connectionState = uint32(v); return v }
 
 func nox_client_setConnError_43AFA0(v C.int) {
-	browserUI.connectionError = C.uint32_t(v)
+	browserUI.connectionError = uint32(v)
 	browserUI.connectionState = 2
 }
 
@@ -177,8 +177,6 @@ func nox_sprintAddrPort_43BC80(addr *C.char, port C.ushort, dst *C.char) C.int {
 	return C.int(browserFormatEndpoint(GoString(addr), uint16(port), (*byte)(unsafe.Pointer(dst))))
 }
 
-func sub_4A7EF0() *C.char { return (*C.char)(memmap.PtrOff(0x5D4594, 1308732)) }
-
 func nox_wol_servers_sortBtnHandler_4A0290(id int32) {
 	if id < 10047 || id > 10051 {
 		return
@@ -187,5 +185,5 @@ func nox_wol_servers_sortBtnHandler_4A0290(id int32) {
 	if uint32(browserUI.sort) == v {
 		v++
 	}
-	browserUI.sort = C.uint32_t(v)
+	browserUI.sort = uint32(v)
 }

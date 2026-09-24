@@ -70,5 +70,3 @@ func onlineSessionListCleanup() uint32 {
 	}
 	return onlineSessionStatus
 }
-
-func sub_41D1A0(v int32) int32 { return int32(onlineSessionBriefing(uint32(v))) }

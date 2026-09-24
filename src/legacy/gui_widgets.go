@@ -30,10 +30,6 @@ func nox_xxx_wndStaticDrawNoImage_488D00(win *nox_window, draw *C.nox_window_dat
 	return gui.StaticTextDrawNoImage(asWindow(win), asWindowData(draw))
 }
 
-func nox_xxx_wndButtonProc_4A7F50(win *nox_window, a1, a2, a3 C.int) C.int {
-	return C.int(gui.EventRespInt(gui.ButtonProc2(asWindow(win), gui.AsWindowEvent(int(a1), uintptr(a2), uintptr(a3)))))
-}
-
 func Nox_gui_newScrollListBox_4A4310(par *gui.Window, status gui.StatusFlags, px, py, w, h int, draw *gui.WindowData, tdata *gui.ScrollListBoxData) *gui.Window {
 	return uiListNew(par, status, px, py, w, h, draw, tdata)
 }

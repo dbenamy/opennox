@@ -106,14 +106,6 @@ func browserMapDraw(w *gui.Window, _ *gui.WindowData) int {
 	return 1
 }
 
-func sub_438C80(w, draw int32) int32 { return int32(browserMouseDraw(browserWindow(uint32(w)), nil)) }
-
 func sub_439D00(w *int32, code int32, a uint32, b int32) int32 {
 	return int32(gui.EventRespInt(browserMapInput((*gui.Window)(unsafe.Pointer(w)), &gui.RawEvent{Event: int(code), Arg1: uintptr(a), Arg2: uintptr(uint32(b))})))
-}
-
-func sub_439D90(x, y uint32) int32 { return int32(browserCreateAt(uint32(x), uint32(y))) }
-
-func sub_438E30(w *uint32, draw int32) int32 {
-	return int32(browserMapDraw((*gui.Window)(unsafe.Pointer(w)), nil))
 }

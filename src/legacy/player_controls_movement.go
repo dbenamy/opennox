@@ -1,20 +1,10 @@
 package legacy
 
-/*
-#include "GAME4_2.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-*/
-import "C"
 import (
+	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
+	"github.com/opennox/opennox/v1/common/sound"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
@@ -84,10 +74,10 @@ func controlDropBall(u *server.Object) int32 {
 			continue
 		}
 		it.ObjFlags &^= 0x40
-		nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&u.PosVec)), (*C.nox_object_t)(it.CObj()), 100)
+		GetServer().ApplyForce(it, u.PosVec, float64(float32(100)))
 		*controlPtr(it.CObj(), 520) = nil
 		GetServer().S().ObjSetOwner(nil, it)
-		nox_xxx_aud_501960(926, (*C.nox_object_t)(u.CObj()), 0, 0)
+		GetServer().S().Audio.EventObj(sound.ID(926), u, 0, 0)
 		sub_4E8290(int8(1), int16(0))
 		return 1
 	}
@@ -95,10 +85,10 @@ func controlDropBall(u *server.Object) int32 {
 }
 func controlNearStart(u *server.Object, out *types.Pointf) int32 {
 	*out = u.PosVec
-	var result C.int
+	var result int32
 	for i := 0; i < 32; i++ {
-		sub_4ED970(60, (*C.float2)(unsafe.Pointer(&u.PosVec)), (*C.float2)(unsafe.Pointer(out)))
-		result = C.int(bool2int(worldTileWater(*out)))
+		inventoryRandomPlacement(60, &u.PosVec, out)
+		result = int32(bool2int(worldTileWater(*out)))
 		if result == 0 {
 			break
 		}
@@ -119,7 +109,7 @@ func controlWalkWaypoint(u *server.Object) int32 {
 		*ptr = nil
 		return 0
 	}
-	u.Direction2 = server.Dir16(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&pos))))))
+	u.Direction2 = server.Dir16(geometryVectorAngle(&pos))
 	if u.Buffs&(1<<3) != 0 {
 		u.Direction2 = server.Dir16(controlConfusedDirection(u))
 	}
@@ -139,7 +129,7 @@ func controlInputAttack(u *server.Object) {
 	setAttack := func() { *equipmentWord(u.CObj(), 136) = GetServer().S().Frame(); *controlByte(d, 236) = 0 }
 	if weapon == 0 {
 		if *controlByte(d, 88) != 1 {
-			nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1)
+			Nox_xxx_playerSetState_4FA020(u, 1)
 		}
 		return
 	}
@@ -148,25 +138,25 @@ func controlInputAttack(u *server.Object) {
 		data := it.UseData.Ptr
 		if *controlByte(data, 108) != 0 || *controlByte(data, 109) == 0 {
 			setAttack()
-			nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1)
-			nox_xxx_useByNetCode_53F8E0(C.int(inventoryInt(u)), C.int(inventoryInt(it)))
+			Nox_xxx_playerSetState_4FA020(u, 1)
+			effectsUse(u, it)
 		} else if controlSubStamina(u, 45) != 0 {
 			*equipmentWord(data, 96) |= 2
 			setAttack()
-			nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1)
+			Nox_xxx_playerSetState_4FA020(u, 1)
 		}
 	} else if *controlByte(d, 88) != 1 {
 		cost := controlWeaponStamina(weapon)
 		if controlSubStamina(u, cost) != 0 {
 			setAttack()
-			if nox_xxx_playerSetState_4FA020((*C.nox_object_t)(u.CObj()), 1) == 0 {
+			if !Nox_xxx_playerSetState_4FA020(u, 1) {
 				controlAdjustStamina(u, -int8(cost))
 			}
 		}
 	}
 	spellLifeBuffOff(u, int32(0))
 	spellLifeBuffOff(u, int32(23))
-	nox_xxx_spellCancelDurSpell_4FEB10(67, (*C.nox_object_t)(u.CObj()))
+	GetServer().S().Spells.Dur.CancelFor(spell.ID(67), u)
 }
 func controlFollowEnemy(u *server.Object) int32 {
 	if u == nil {
@@ -180,6 +170,6 @@ func controlFollowEnemy(u *server.Object) int32 {
 	if it.ObjFlags&0x20 != 0 || it.ObjClass&2 != 0 || it.ObjClass&4 != 0 && *controlByte(controlPlayer(it), 3680)&1 != 0 {
 		return 0
 	}
-	nox_xxx_playerCameraFollow_4E6060((*C.nox_object_t)(u.CObj()), (*C.nox_object_t)(it.CObj()))
+	Nox_xxx_playerCameraFollow_4E6060(u, it)
 	return 1
 }

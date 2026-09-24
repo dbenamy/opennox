@@ -444,22 +444,22 @@ func Set_dword_5d4594_2386852(v int) {
 	scriptInventoryNotice = uint32(v)
 }
 func Set_dword_5d4594_815104(v int) {
-	browserUI.retry = C.int(v)
+	browserUI.retry = int32(v)
 }
 func Set_nox_wol_server_result_cnt_815088(v int) {
-	browserUI.resultCount = C.uint(v)
+	browserUI.resultCount = uint32(v)
 }
 func Set_qword_5d4594_815068(v uint64) {
 	browserUI.refreshDeadline = uint64(v)
 }
 func Set_nox_client_connError_814552(v int) {
-	browserUI.connectionError = C.uint(v)
+	browserUI.connectionError = uint32(v)
 }
 func Set_dword_5d4594_815056(v int) {
-	browserUI.hasSelection = C.uint(v)
+	browserUI.hasSelection = uint32(v)
 }
 func Set_nox_game_createOrJoin_815048(v int) {
-	browserUI.creating = C.uint(v)
+	browserUI.creating = uint32(v)
 }
 func Set_dword_5d4594_527988(v int) {
 	onlineSessionStatus = uint32(v)

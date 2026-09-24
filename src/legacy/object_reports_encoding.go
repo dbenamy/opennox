@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME4_1.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"unsafe"
@@ -16,9 +10,9 @@ import (
 )
 
 func objectReportDirection(u *server.Object) byte {
-	var dir C.int2
-	geometryIndexedDirection(int32(int16(u.Direction1)), (*[2]int32)(unsafe.Pointer(&dir)))
-	index := byte(dir.field_0) + 3*byte(dir.field_4) + 4
+	var dir [2]int32
+	geometryIndexedDirection(int32(int16(u.Direction1)), &dir)
+	index := byte(dir[0]) + 3*byte(dir[1]) + 4
 	if index > 3 {
 		index--
 	}

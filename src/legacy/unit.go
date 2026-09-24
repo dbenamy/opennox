@@ -1,17 +1,6 @@
 package legacy
 
-/*
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-#include "GAME5_2.h"
-#include "server__script__builtin.h"
-*/
-import "C"
 import (
-	"unsafe"
-
 	"github.com/opennox/libs/types"
 
 	"github.com/opennox/opennox/v1/server"
@@ -22,13 +11,6 @@ var (
 	Nox_xxx_unitMove_4E7010     func(a1 *server.Object, pos types.Pointf)
 )
 
-func nox_xxx_unitIsUnitTT_4E7C80(a1 *nox_object_t, a2 int) int {
-	return Nox_xxx_unitIsUnitTT_4E7C80(asObjectS(a1), a2)
-}
-
-func nox_xxx_unitMove_4E7010(a1 *nox_object_t, pos *C.float2) {
-	Nox_xxx_unitMove_4E7010(asObjectS(a1), AsPointf(unsafe.Pointer(pos)))
-}
 func Nox_xxx_unitSetHP_4E4560(a1 *server.Object, a2 uint16) {
 	resourceSetHP(a1, a2)
 }
@@ -36,7 +18,7 @@ func Nox_xxx_mobInformOwnerHP_4EE4C0(a1 *server.Object) {
 	resourceInformOwner(a1)
 }
 func Nox_xxx_protectMana_56F9E0(a1 int, a2 int16) {
-	nox_xxx_protectMana_56F9E0(C.int(a1), C.short(a2))
+	addProtectionRecord(int32(a1), uint32(int32(a2)))
 }
 func Nox_xxx_monsterWalkTo_514110(a1 *server.Object, a2 float32, a3 float32) {
 	monsterControlWalk(a1, types.Pointf{X: a2, Y: a3})
@@ -45,10 +27,10 @@ func Nox_xxx_monsterLookAt_5125A0(a1 *server.Object, a2 int) {
 	monsterControlLook(a1, int32(a2))
 }
 func Nox_xxx_unitFreeze_4E79C0(a1 *server.Object, a2 int) {
-	nox_xxx_unitFreeze_4E79C0(asObjectC(a1), C.int(a2))
+	stateFreeze(a1, int32(a2))
 }
 func Nox_xxx_unitUnFreeze_4E7A60(a1 *server.Object, a2 int) {
-	nox_xxx_unitUnFreeze_4E7A60(asObjectC(a1), C.int(a2))
+	stateUnfreeze(a1, int32(a2))
 }
 func Nox_xxx_scriptMonsterRoam_512930(a1 *server.Object) {
 	scriptBindingRoam(a1)

@@ -48,10 +48,6 @@ func AsImageRefP(p unsafe.Pointer) *ImageRef {
 	return (*ImageRef)(p)
 }
 
-func asImageRef(p *nox_things_imageRef_t) *ImageRef {
-	return AsImageRefP(unsafe.Pointer(p))
-}
-
 type nox_things_imageRef_t = C.nox_things_imageRef_t
 type ImageRef struct {
 	NameBuf    [32]byte       // 0, 0

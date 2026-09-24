@@ -220,7 +220,7 @@ func controlLeaveObserver(pl unsafe.Pointer) {
 	if controlFlags(4096) {
 		for it := GetServer().S().Players.FirstUnit(); it != nil; it = GetServer().S().Players.NextUnit(it) {
 			if *equipmentWord(controlPlayer(it), 4792) == 1 {
-				nox_xxx_netReportEnchant_4D8F90(C.int(*controlByte(pl, 2064)), (*C.uint32_t)(it.CObj()))
+				gameplayReportEnchant(int(int32(*controlByte(pl, 2064))), it)
 			}
 		}
 	}
@@ -263,7 +263,7 @@ func controlRespawn(u *server.Object) int16 {
 	} else {
 		controlFindStart(&pos, u)
 	}
-	nox_xxx_unitMove_4E7010((*C.nox_object_t)(u.CObj()), (*C.float2)(unsafe.Pointer(&pos)))
+	Nox_xxx_unitMove_4E7010(u, pos)
 	if controlFlags(16) && bool(nox_xxx_CheckGameplayFlags_417DA0(4)) {
 		controlTeamFlag(pl)
 	}
@@ -285,7 +285,7 @@ func controlRespawnBot(u *server.Object) int32 {
 		controlMakeCorpse(u, settings)
 		var pos types.Pointf
 		controlFindStart(&pos, u)
-		nox_xxx_unitMove_4E7010((*C.nox_object_t)(u.CObj()), (*C.float2)(unsafe.Pointer(&pos)))
+		Nox_xxx_unitMove_4E7010(u, pos)
 		nox_xxx_aud_501960(148, (*C.nox_object_t)(u.CObj()), 0, 0)
 		if controlFlags(8192) {
 			spellLifeApplyBuff(u, 23, int16(5*uint16(GetServer().S().TickRate())), 5)

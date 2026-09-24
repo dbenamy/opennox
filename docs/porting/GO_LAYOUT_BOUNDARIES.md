@@ -1,34 +1,47 @@
 # Native geometry and shared-state boundaries
 
-Status: original baseline accepted from fully qualified `4214ea8f`; no conversion
-is installed. See the [baseline](go-layout-boundaries-baseline.json) and
-[qualification manifest](go-layout-boundaries-batch.json).
+Status: qualified on Linux 386/SSE2. **24 production C imports removed;
+selected project cgo files fall from 271 to 247.** The 74-file batch converts
+26 scalar fields, retires 145 private wrappers and deletes ten empty files.
+Actual C exports remain 1,179; embedded callback bodies remain 79; standalone
+production/test C remains zero. External native-library bindings are unchanged.
+
+Baseline: fully qualified `4214ea8f`, recorded at `80af9879`. See the
+[baseline](go-layout-boundaries-baseline.json),
+[qualification](go-layout-boundaries-qualification.json),
+[manifest](go-layout-boundaries-batch.json) and
+[dependency inventory](go-layout-boundaries-inventory-after.json).
+
+## Final qualification
+
+- All seven frozen storage captures match: raw/scalar in default/server/highres,
+  scalar separately in safe. Exact test sets pass without skips.
+- Complete roots: default/highres each 2,426 pass; server 2,415 pass. Each has
+  only the expected prerequisite-probe skip; exact root-name sets match baseline.
+- Safe build/static checks and three fresh production/ABI checks pass.
+- Headless character creation, save/load and resume match the frozen reference.
+- Known-suite outcomes match exactly: 304 failure events, 17 passing, two failing
+  and 32 skipped packages.
+- Identical 3,052 source fingerprints throughout; all 1,654 original assets match.
+  No root assertion or frozen expectation changed. Two existing fixture bridges
+  received native parameter types; raw-storage writes retain the same word bits.
 
 ## Connected scope
 
-The initial inventory identifies 23 files with 224 C type selectors and no C
-export or build directives. Twenty contain active owners; three contain only
-unused private wrappers. Include the remaining 26 C scalar fields in `browserUI`
-and `legacyGlobalStorage`, their readers/writers, and callers of changed private
-interfaces. The initial file count is not the integration scope or a promised
-C-import reduction: shared adapters have callers outside those files.
+The initial inventory contained 23 files with 224 C type selectors and no C
+export or build directives. Integration included their connected callers, all
+26 remaining scalar fields in `browserUI` and `legacyGlobalStorage`, and private
+wrapper retirement. The final scope is 74 files.
 
-Retire 132 private orphan helpers where complete reference and body review prove
-they are unused. The primary source scan and Luna's independent scan of 4,216
-tracked text files find only their definitions in runtime/build source; additional
-references are historical documentation. None has a C export or linkname
-directive. Preserve all other declarations and native owners. Inspect affected
-preambles and imports before deleting candidate-only files.
+Whole-source reference and body review proved 137 wrappers unused. The primary
+scan and Luna's independent scan covered 4,216 tracked text files, distinguishing
+historical documentation and translation-rule strings from runtime references.
+Eight further wrappers retired after their active callers moved together.
+None of the retired functions was an initializer, C export or linkname target.
 
-The nine helpers Luna flagged for pointer/layout operations are ordinary unused
-function bodies, not initialization or registration. Primary review found no
-reason to preserve those dead wrappers solely because their bodies use pointers.
-Recheck every deletion against the frozen source before integration.
-
-Keep actual C exports, callback identities, shared raw fallbacks, external native
-bindings and existing memory ownership. Do not introduce C-name aliases merely
-to reduce the import count. Prefer exact native owners and meaningful private
-Go signatures, updating all callers at the remaining C boundary.
+Actual C exports, callback identities, shared raw fallbacks, external native
+bindings and memory ownership remain unchanged. Native owners and private Go
+signatures replace the adapters without introducing C-name aliases.
 
 ## Compatibility and baseline
 
@@ -53,24 +66,54 @@ column writes, typed aliases and fixture bridges. Keep unmanaged backing storage
 
 ## Implementation and qualification
 
-Use one Luna helper for a bounded caller draft; primary owns shared signatures,
-state fields, orphan retirement, integration and acceptance. Require original
-hashes and exact edit manifests, then independently reconstruct the installation.
-Keep source frozen during builds/tests and preserve every frozen expectation.
-
-Run focused owner checks during implementation. The completed connected batch
-changes widely shared interfaces and state, so repeat all seven storage captures,
-all three complete root suites, safe build/static checks, three production/ABI
-checks, the exact known-suite comparison and headless save/load/resume. Check
-exact test-name sets and skips, source identity, assets and dependency counts.
-Standalone C remains zero; measure other counts after qualification.
+One Luna helper supplied a bounded caller draft; primary owned shared signatures,
+state fields, orphan retirement, integration and acceptance. Original hashes and
+exact edit manifests allowed independent reconstruction of every installed file.
+Source remained frozen during all builds and tests.
 
 Luna's planning report needed corrections to point-value arguments, raw waypoint
 returns and the distinction between initial candidates and complete caller scope.
-Named tests exist, but operation-selector coverage still needs primary review;
-an adjacent test name does not establish coverage of a changed path. These are
-planning corrections, not changes to engine behavior.
+Primary traced fixture operations to the changed owners before acceptance.
+These were planning corrections, not changes to engine behavior.
 
-Local planning evidence is under `build/port-go-native-call-boundaries/next-*`;
-the new batch's baseline, drafts and runs belong under
+Local baseline, drafts and qualification artifacts are under
 `build/port-go-layout-boundaries/`.
+
+Integration review reconstructed all 74 changed files exactly, including ten
+files left empty by wrapper retirement. The connected batch removes 24 C imports
+and 145 private helpers: the initial 132, five additional orphans, and eight
+wrappers whose active callers were migrated together. All actual C export
+signatures remain unchanged. The 24 removed preambles contain only declarations
+and includes; their 32-header local closure has no initialization/registration
+body. Existing scalar storage and root expectations remain unchanged.
+
+Primary review caught and corrected two stale struct-field accesses after Luna
+converted a direction scratch value to an array. This was a draft correction
+before installation, not a fixture or behavior change.
+
+Storage and full root/production qualification all pass on the same frozen source.
+
+## Compatibility decisions and review
+
+The five additional orphan functions have only historical comment or translation
+rule references; those strings are not runtime calls. Eight additional live
+wrappers retired only after their complete legacy caller set moved to the native
+owners. Same-named root-package owners and public function variables remain.
+No remaining legacy source identifier references any of the 145 retired functions.
+
+The target layout probe, full reader/writer audit and storage captures establish
+same-width fields and aliases. Pointer-like words remain words; unmanaged storage
+and existing memory ownership are unchanged. Mana deltas retain signed int16
+extension; event codes retain signed int32 while raw arguments retain uint32 bits.
+Strings keep the original NUL reader and interned lifetime. Point values retain
+their copy timing relative to replaceable server hooks.
+
+One Luna helper supplied 13 caller files and an independent review of the primary
+mappings. Primary supplied the shared state/interfaces and wrapper retirements,
+reviewed each owner mapping, reconstructed both drafts and performed acceptance.
+The array-field draft error was corrected before installation. Reusable test
+routes were checked explicitly; no claim of universal branch coverage is made.
+
+Local reconstruction, preamble closure and owner coverage records are under
+`build/port-go-layout-boundaries/`. Current source and qualification metadata are
+committed; local binaries/drafts/logs are rebuildable and not backed up by Git.

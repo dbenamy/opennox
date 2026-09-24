@@ -1,16 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-*/
-import "C"
-
 import (
 	"math"
 	"unsafe"
@@ -110,7 +99,7 @@ func monsterShieldCandidate(t, u *server.Object) {
 		return
 	}
 	point := t.PrevPos
-	if nox_server_testTwoPointsAndDirection_4E6E50((*C.float2)(unsafe.Pointer(&u.PosVec)), C.int(int16(u.Direction1)), (*C.float2)(unsafe.Pointer(&point)))&1 == 0 {
+	if stateFront(&u.PosVec, int32(int16(u.Direction1)), &point)&1 == 0 {
 		return
 	}
 	vx, vy := movementDirectionVector(int32(int16(u.Direction1)))
@@ -297,9 +286,9 @@ func monsterMainAI(u *server.Object) {
 		p := data.Player
 		if *(*byte)(unsafe.Add(unsafe.Pointer(p), 2251)) == 0 && *(*uint32)(unsafe.Add(unsafe.Pointer(p), 4)) == 0 && byte(core.Frame())&15 == 0 {
 			if t := lifecycleFoodSearch(u, 75, true); t != nil {
-				nox_xxx_mobMorphToPlayer_4FAAF0((*C.uint32_t)(u.CObj()))
+				controlMorphToPlayer(u)
 				Nox_xxx_inventoryServPlace_4F36F0(u, t, 1, 1)
-				nox_xxx_mobMorphFromPlayer_4FAAC0((*C.uint32_t)(u.CObj()))
+				controlMorphFromPlayer(u)
 			}
 		}
 	}

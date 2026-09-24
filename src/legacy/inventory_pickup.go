@@ -106,11 +106,11 @@ func inventoryTreasurePickup(u, it *server.Object, arg int) int {
 		if pl.Field2152 == uint32(sessionScavengerMaximum()) {
 			noxflags.SetGame(8)
 			gameplayReportChangeScore(u, 1)
-			nox_xxx_netReportLesson_4D8EF0(asObjectC(u))
+			gameplayReportLesson(u)
 			for other := core.Players.FirstUnit(); other != nil; other = core.Players.NextUnit(other) {
 				if other != u {
 					gameplayReportEliminationDeath(other)
-					nox_xxx_netReportLesson_4D8EF0(asObjectC(other))
+					gameplayReportLesson(other)
 				}
 			}
 		}

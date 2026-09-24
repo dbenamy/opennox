@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME4_1.h"
-#include "GAME4_2.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"math"
@@ -135,13 +129,13 @@ func mapPopulationMonster(room, name uint32) uint32 {
 	if mapRoomRandomPoint(r, float32(0.94999999), &pos) == 0 {
 		return 0
 	}
-	mapPaintSelectObject((*C.char)(mapRoomPointer(name)))
+	mapPaintSelectObject((*byte)(mapRoomPointer(name)))
 	u := mapPaintPlaceObject(&pos)
 	// The original expression converts the class word interpreted as a float.
 	if u != nil && byte(math.Float32frombits(uint32(u.ObjClass)))&2 != 0 {
 		delta := types.Pointf{X: center.X - pos.X, Y: center.Y - pos.Y}
-		angle := C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&delta)))))
-		mapPaintOrientObject(u, int32(C.int(geometryDirection4Index(int32(angle)))))
+		angle := geometryVectorAngle(&delta)
+		mapPaintOrientObject(u, geometryDirection4Index(angle))
 	}
 	return mapRoomRaw(unsafe.Pointer(u))
 }
@@ -149,17 +143,17 @@ func mapPopulationWaypoint(point uint32) uint32 {
 	return populationEnsureWaypoint(populationPoint(point))
 }
 func populationEnsureWaypoint(p *types.Pointf) uint32 {
-	r := sub_51D1A0((*C.float2)(unsafe.Pointer(p)))
-	if r != nil {
-		return mapRoomRaw(unsafe.Pointer(r))
+	r := prefabFindWaypoint(p)
+	if r != 0 {
+		return r
 	}
-	return mapRoomRaw(unsafe.Pointer(sub_51D120((*C.float)(unsafe.Pointer(p)))))
+	return prefabCreateWaypoint(p)
 }
 func populationWaypointConnect(a, b *types.Pointf) {
-	sub_51D3F0((*C.float2)(unsafe.Pointer(a)), (*C.float2)(unsafe.Pointer(b)))
+	prefabConnectWaypoint(a, b)
 }
 func mapPopulationHallwayWaypoints(cfg uint32) uint32 {
-	sub_51D0F0(-128)
+	prefabSetWaypointKind(128)
 	for r := mapRoomHead(); r != nil; r = r.Next {
 		mapPopulationProgress(156)
 		if r.Kind == 1 {
