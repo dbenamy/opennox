@@ -3,7 +3,6 @@ package legacy
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"math"
 	"unsafe"
@@ -46,7 +45,7 @@ func damageDefend(u, source, weapon *server.Object, damage *int32, kind int32) i
 			if m != nil && m.Defend76.Fnc != nil {
 				data, free := alloc.New([2]int32{})
 				*data = [2]int32{*damage, kind}
-				ccall.CallVoidPtr6(m.Defend76.Fnc, unsafe.Pointer(m), it.CObj(), u.CObj(), weapon.CObj(), source.CObj(), unsafe.Pointer(data))
+				server.CallModifierEffect6(m.Defend76.Fnc, m, it, u, weapon, source, unsafe.Pointer(data))
 				*damage = data[0]
 				free()
 			}
@@ -58,7 +57,7 @@ func damageDefend(u, source, weapon *server.Object, damage *int32, kind int32) i
 func damagePre(u, source, weapon *server.Object, damage *int32) int32 {
 	for _, m := range unsafe.Slice((**server.ModifierEff)(weapon.InitData), 4) {
 		if m != nil && m.AttackPreDmg64.Fnc != nil {
-			ccall.CallVoidPtr5(m.AttackPreDmg64.Fnc, unsafe.Pointer(m), weapon.CObj(), source.CObj(), u.CObj(), unsafe.Pointer(damage))
+			server.CallModifierEffect5(m.AttackPreDmg64.Fnc, m, weapon, source, u, unsafe.Pointer(damage))
 		}
 	}
 	return 0
@@ -124,7 +123,7 @@ func damageDurability(it, holder, source, weapon *server.Object, value float32, 
 	if m := unsafe.Slice((**server.ModifierEff)(it.InitData), 4)[1]; m != nil && m.Defend76.Fnc != nil {
 		data, free := alloc.New(float32(0))
 		*data = value
-		ccall.CallVoidPtr6(m.Defend76.Fnc, unsafe.Pointer(m), it.CObj(), holder.CObj(), weapon.CObj(), source.CObj(), unsafe.Pointer(data))
+		server.CallModifierEffect6(m.Defend76.Fnc, m, it, holder, weapon, source, unsafe.Pointer(data))
 		value = *data
 		free()
 	}

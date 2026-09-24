@@ -18,7 +18,7 @@ import (
 // PortTestInventoryDisplayModifierFunctions exposes identities of existing
 // production callbacks; tests never execute a substitute modifier algorithm.
 func PortTestInventoryDisplayModifierFunctions() [5]unsafe.Pointer {
-	return [5]unsafe.Pointer{C.nox_xxx_lightngEffect_4E06F0, C.nox_xxx_fireEffect_4E0550, C.sub_4E0380, C.sub_4E0370, C.nox_xxx_effectDamageMultiplier_4E04C0}
+	return [5]unsafe.Pointer{modifierKey(modifierIDLightningEffect), modifierKey(modifierIDFireEffect), modifierKey(modifierIDDurabilityMultiplierEffect), modifierKey(modifierIDArmorMultiplierEffect), modifierKey(modifierIDDamageMultiplierEffect)}
 }
 
 // PortTestInventoryDisplay invokes the actual inventory display routines.

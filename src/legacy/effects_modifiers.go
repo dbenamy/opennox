@@ -5,9 +5,6 @@ package legacy
 #include "GAME3_3.h"
 #include "GAME4.h"
 #include "GAME4_2.h"
-void nullsub_22(void);
-void nullsub_36(void);
-int nox_xxx_gripEffect_4E0480(int,int,int,int,int,int*);
 */
 import "C"
 import (
@@ -156,7 +153,7 @@ func effectsGripSearch(a, b, it, target *server.Object) int {
 		return 0
 	}
 	for _, m := range unsafe.Slice((**server.ModifierEff)(it.InitData), 4)[2:] {
-		if m != nil && m.DefendCollide88.Fnc == C.nox_xxx_gripEffect_4E0480 {
+		if m != nil && m.DefendCollide88.Fnc == modifierKey(modifierIDGripEffect) {
 			var v int32
 			effectsGrip(m, &v, false)
 			if v == 0 {
@@ -262,7 +259,7 @@ func effectsReadiness(it *server.Object) int32 {
 		return 0
 	}
 	for _, m := range unsafe.Slice((**server.ModifierEff)(it.InitData), 4)[2:] {
-		if m != nil && m.Attack40.Fnc == C.nullsub_22 {
+		if m != nil && m.Attack40.Fnc == modifierKey(modifierIDReadinessEffect) {
 			return m.Attack40.Val
 		}
 	}
@@ -276,7 +273,7 @@ func effectsRechargeRate(it *server.Object) int32 {
 		return floatToInt32(float32(GetServer().S().Balance.Float("OblivionStaffRechargeRate")))
 	}
 	for _, m := range unsafe.Slice((**server.ModifierEff)(it.InitData), 4)[2:] {
-		if m != nil && m.Attack40.Fnc == C.nullsub_36 {
+		if m != nil && m.Attack40.Fnc == modifierKey(modifierIDReplenishmentEffect) {
 			return m.Attack40.Val
 		}
 	}

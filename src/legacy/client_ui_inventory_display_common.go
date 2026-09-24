@@ -64,9 +64,9 @@ func uiInventoryElementValue(dr *client.Drawable, fire bool) float64 {
 	if dr == nil || uint32(dr.Class())&0x13001000 == 0 {
 		return 0
 	}
-	var fn unsafe.Pointer = C.nox_xxx_lightngEffect_4E06F0
+	var fn unsafe.Pointer = modifierKey(modifierIDLightningEffect)
 	if fire {
-		fn = C.nox_xxx_fireEffect_4E0550
+		fn = modifierKey(modifierIDFireEffect)
 	}
 	for i := 2; i < 4; i++ {
 		if m := uiInventoryItemModifier(dr, i); m != nil && m.AttackPreHit52.Fnc == fn {
@@ -80,7 +80,7 @@ func uiInventoryScaledDurability(dr *client.Drawable, current, maximum *float32)
 	*maximum = float32(*(*uint16)(unsafe.Add(dr.C(), 294)))
 	ret := uiInventoryPointer(dr.C())
 	if uint32(dr.Class())&0x13001000 != 0 {
-		if m := uiInventoryItemModifier(dr, 1); m != nil && m.Defend76.Fnc == C.sub_4E0380 {
+		if m := uiInventoryItemModifier(dr, 1); m != nil && m.Defend76.Fnc == modifierKey(modifierIDDurabilityMultiplierEffect) {
 			*current = float32(int32(*current * m.Defend76.Valf))
 			*maximum = float32(int32(*maximum * m.Defend76.Valf))
 			ret = uint32(int32(*maximum))

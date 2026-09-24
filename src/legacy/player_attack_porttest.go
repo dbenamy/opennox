@@ -204,7 +204,7 @@ func (p *portTestShopPools) attackItems() {
 			m.Attack40.Fnc = C.attackEffectPtr()
 		}
 		if sp.RecoilMask&(1<<i) != 0 {
-			m.AttackPreHit52.Fnc = C.nox_xxx_recoilEffect_4E0640
+			m.AttackPreHit52.Fnc = modifierKey(modifierIDRecoilEffect)
 		}
 		if sp.PreMask&(1<<i) != 0 {
 			m.AttackPreHit52.Fnc = C.attackEffectPtr()

@@ -45,7 +45,6 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -61,14 +60,14 @@ func PortTestModifierObserverSnapshot() ([6]uintptr, int, int) {
 	return args, int(C.portModifierCount()), int(C.portModifierLastKind())
 }
 func PortTestModifierCall3Result(key unsafe.Pointer, m *server.ModifierEff, a, b *server.Object) int32 {
-	return int32(ccall.CallIntPtr3(key, m.C(), a.CObj(), b.CObj()))
+	return server.CallModifierEffect3Result(key, m, a, b)
 }
 func PortTestModifierCall3Discard(key unsafe.Pointer, m *server.ModifierEff, a, b *server.Object) {
-	ccall.CallVoidPtr3(key, m.C(), a.CObj(), b.CObj())
+	server.CallModifierEffect3Discard(key, m, a, b)
 }
 func PortTestModifierCall5(key unsafe.Pointer, m *server.ModifierEff, a, b, c *server.Object, data unsafe.Pointer) {
-	ccall.CallVoidPtr5(key, m.C(), a.CObj(), b.CObj(), c.CObj(), data)
+	server.CallModifierEffect5(key, m, a, b, c, data)
 }
 func PortTestModifierCall6(key unsafe.Pointer, m *server.ModifierEff, a, b, c, d *server.Object, data unsafe.Pointer) {
-	ccall.CallVoidPtr6(key, m.C(), a.CObj(), b.CObj(), c.CObj(), d.CObj(), data)
+	server.CallModifierEffect6(key, m, a, b, c, d, data)
 }

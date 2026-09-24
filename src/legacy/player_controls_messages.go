@@ -12,7 +12,6 @@ package legacy
 import "C"
 import (
 	"encoding/binary"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"math"
 	"unsafe"
@@ -82,12 +81,12 @@ func controlInversion(u, target *server.Object) int32 {
 				continue
 			}
 			fn := *controlPtr(mod, 88)
-			if fn == nil || fn != unsafe.Pointer(C.nox_xxx_inversionEffect_4E03D0) {
+			if fn == nil || fn != modifierKey(modifierIDInversionEffect) {
 				continue
 			}
 			var result int32
 			owner := target.FindOwnerChainPlayer()
-			ccall.CallVoidPtr6(fn, mod, it.CObj(), u.CObj(), target.CObj(), owner.CObj(), unsafe.Pointer(&result))
+			server.CallModifierEffect6(fn, (*server.ModifierEff)(mod), it, u, target, owner, unsafe.Pointer(&result))
 			if result == 1 {
 				return 1
 			}

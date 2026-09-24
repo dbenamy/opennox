@@ -2,114 +2,10 @@
 
 package legacy
 
-/*
-#include <string.h>
-#include "GAME3_2.h"
-#include "GAME4_3.h"
-void nullsub_22(void);
-void nullsub_36(void);
-void sub_4DFB80(int a1, int a2);
-void nox_xxx_effectSpeedDisengage_4DFCA0(int a1, int a2);
-void nox_xxx_modifFireProtection_4DFD40(int a1, int a2, int a3);
-void sub_4DFDB0(int a1, int a2);
-void sub_4DFE10(int a1, int a2);
-void nox_xxx_effectRegeneration_4E01D0(int a1, int a2);
-void nox_xxx_attribContinualReplen_4E02C0(int a1, uint32_t* a2);
-int nox_xxx_unusedCheckGripEffect_4E03F0(int a1, int a2, int a3, int a4);
-void nox_xxx_stunEffect_4E04D0(int a1, int a2, int a3, int a4);
-void nox_xxx_confuseEffect_4E0670(int a1, int a2, int a3, int a4);
-void nox_xxx_drainMEffect_4E0740(int a1, int a2, int a3, int a4, int* a5);
-void nox_xxx_vampirismEffect_4E07C0(int a1, int a2, int a3, int a4, int* a5);
-void nox_xxx_poisonEffect_4E0850(int a1, int a2, int a3, int a4);
-void nox_xxx_sympathyEffect_4E08E0(int a1, int a2, int a3, int a4, int* a5);
-static void* effectsFunction(int id){switch(id){
-case 1:return (void*)sub_4DFB50;
-case 2:return (void*)sub_4DFB80;
-case 3:return (void*)nox_xxx_enchantItemTestInventory_4DFBB0;
-case 4:return (void*)nox_xxx_effectSpeedEngage_4DFC30;
-case 5:return (void*)nox_xxx_effectSpeedDisengage_4DFCA0;
-case 6:return (void*)sub_4DFD10;
-case 7:return (void*)nox_xxx_modifFireProtection_4DFD40;
-case 8:return (void*)nox_xxx_buff_4DFD80;
-case 9:return (void*)sub_4DFDB0;
-case 10:return (void*)nox_xxx_checkPoisonProtectEnch_4DFDE0;
-case 11:return (void*)sub_4DFE10;
-case 12:return (void*)nox_xxx_checkFireProtect_4DFE40;
-case 13:return (void*)nox_xxx_checkElectrProtect_4DFF40;
-case 14:return (void*)nox_xxx_getPoisonDmg_4E0040;
-case 15:return (void*)sub_4E0140;
-case 16:return (void*)sub_4E0170;
-case 17:return (void*)nox_xxx_effectRegeneration_4E01D0;
-case 18:return (void*)nox_xxx_attribContinualReplen_4E02C0;
-case 19:return (void*)sub_4E0370;
-case 20:return (void*)sub_4E0380;
-case 21:return (void*)nox_xxx_inversionEffect_4E03D0;
-case 22:return (void*)nox_xxx_unusedCheckGripEffect_4E03F0;
-case 23:return (void*)nox_xxx_gripEffect_4E0480;
-case 24:return (void*)nox_xxx_effectDamageMultiplier_4E04C0;
-case 25:return (void*)nox_xxx_stunEffect_4E04D0;
-case 26:return (void*)nox_xxx_recoilEffect_4E0640;
-case 27:return (void*)nox_xxx_confuseEffect_4E0670;
-case 28:return (void*)nox_xxx_lightngEffect_4E06F0;
-case 29:return (void*)nox_xxx_drainMEffect_4E0740;
-case 30:return (void*)nox_xxx_vampirismEffect_4E07C0;
-case 31:return (void*)nox_xxx_poisonEffect_4E0850;
-case 32:return (void*)nox_xxx_sympathyEffect_4E08E0;
-case 33:return (void*)nox_xxx_itemCheckReadinessEffect_4E0960;
-case 34:return (void*)nox_xxx_effectProjectileSpeed_4E09B0;
-case 35:return (void*)nox_xxx_rechargeItem_53C520;
-case 36:return (void*)nox_xxx_getRechargeRate_53C940;
-case 38:return (void*)nox_xxx_wandShot_53F480;
-case 42:return (void*)nullsub_22;case 43:return (void*)nullsub_36;default:return 0;}}
-static uint64_t effectsCall(int op,nox_object_t* u,nox_object_t* it,nox_object_t* target,void* mod,uint32_t* scalar,int value,int side,float2* pos){
- int up=(int)u,ip=(int)it,tp=(int)target,mp=(int)mod;
- switch(op){
-case 0:sub_4DFB50(mp,up);return 0;
-case 1:sub_4DFB80(mp,up);return 0;
-case 2:return (uint32_t)nox_xxx_enchantItemTestInventory_4DFBB0(up,(char)value);
-case 3:nox_xxx_effectSpeedEngage_4DFC30(mp,up);return 0;
-case 4:nox_xxx_effectSpeedDisengage_4DFCA0(mp,up);return 0;
-case 5:sub_4DFD10(mp,up);return 0;
-case 6:nox_xxx_modifFireProtection_4DFD40(mp,up,ip);return 0;
-case 7:nox_xxx_buff_4DFD80(mp,up);return 0;
-case 8:sub_4DFDB0(mp,up);return 0;
-case 9:nox_xxx_checkPoisonProtectEnch_4DFDE0(mp,up);return 0;
-case 10:sub_4DFE10(mp,up);return 0;
-case 11:{double d=nox_xxx_checkFireProtect_4DFE40((uint32_t*)u);uint64_t b;memcpy(&b,&d,8);return b;}
-case 12:{double d=nox_xxx_checkElectrProtect_4DFF40((uint32_t*)u);uint64_t b;memcpy(&b,&d,8);return b;}
-case 13:{double d=nox_xxx_getPoisonDmg_4E0040((uint32_t*)u);uint64_t b;memcpy(&b,&d,8);return b;}
-case 14:sub_4E0140(mp,up);return 0;
-case 15:sub_4E0170(mp,up);return 0;
-case 16:nox_xxx_effectRegeneration_4E01D0(mp,ip);return 0;
-case 17:nox_xxx_attribContinualReplen_4E02C0(mp,(uint32_t*)it);return 0;
-case 18:return (uint32_t)sub_4E0370(mp,ip,up,tp,up,(float*)scalar);
-case 19:return (uint32_t)sub_4E0380(mp,ip,up,tp,up,(float*)scalar);
-case 20:return (uint32_t)nox_xxx_inversionEffect_4E03D0(mp,ip,up,tp,up,(int*)scalar);
-case 21:return (uint32_t)nox_xxx_unusedCheckGripEffect_4E03F0(up,up,ip,tp);
-case 22:return (uint32_t)nox_xxx_gripEffect_4E0480(mp,ip,up,tp,up,(int*)scalar);
-case 23:return (uint32_t)nox_xxx_effectDamageMultiplier_4E04C0(mp,ip,up,tp,(float*)scalar);
-case 24:nox_xxx_stunEffect_4E04D0(mp,ip,up,tp);return 0;
-case 25:nox_xxx_recoilEffect_4E0640(mp,ip,up,tp);return 0;
-case 26:nox_xxx_confuseEffect_4E0670(mp,ip,up,tp);return 0;
-case 27:nox_xxx_lightngEffect_4E06F0(mp,ip,up,tp);return 0;
-case 28:nox_xxx_drainMEffect_4E0740(mp,ip,up,tp,(int*)scalar);return 0;
-case 29:nox_xxx_vampirismEffect_4E07C0(mp,ip,up,tp,(int*)scalar);return 0;
-case 30:nox_xxx_poisonEffect_4E0850(mp,ip,up,tp);return 0;
-case 31:nox_xxx_sympathyEffect_4E08E0(mp,ip,up,tp,(int*)scalar);return 0;
-case 32:return (uint32_t)nox_xxx_itemCheckReadinessEffect_4E0960(ip);
-case 33:return (uint32_t)nox_xxx_effectProjectileSpeed_4E09B0(mp,ip,up,tp,tp);
-case 34:return (uint32_t)nox_xxx_rechargeItem_53C520(ip,value);
-case 35:return (uint32_t)nox_xxx_getRechargeRate_53C940((uint32_t*)it);
-case 37:return (uint32_t)nox_xxx_wandShot_53F480(up,value,(int*)pos,(uint32_t*)side);
-}
-return 0;
-}
-*/
-import "C"
-
 import (
 	"bytes"
 	"github.com/opennox/libs/spell"
+	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/memmap/nox/blobdata"
 	"github.com/opennox/opennox/v1/server"
@@ -159,7 +55,7 @@ func (p *portTestShopPools) effectsUsePrepare() func() {
 	oldTable := bytes.Clone(table)
 	copy(table, blobdata.PortTestEffectsInventoryTable())
 	for i, id := range []int{PortTestEffects4DFB50, PortTestEffects4DFC30, PortTestEffects4DFD10, PortTestEffects4DFD80, PortTestEffects4DFDE0, PortTestEffects4E0140} {
-		*memmap.PtrPtr(0x587000, 200160+uintptr(20*i)) = portTestEffectsFunction(C.int(id - 499))
+		*memmap.PtrPtr(0x587000, 200160+uintptr(20*i)) = portTestEffectsFunction(id - 499)
 	}
 	offsets := []uintptr{2488732, 1569740, 1569744}
 	old := make([]uint32, len(offsets))
@@ -199,7 +95,7 @@ func (p *portTestShopPools) effectsUseItems() {
 	}
 
 	for i := 1; i <= 43; i++ {
-		if fn := portTestEffectsFunction(C.int(i)); fn != nil {
+		if fn := portTestEffectsFunction(i); fn != nil {
 			p.identify(fn, 66100+uint32(i))
 		}
 	}
@@ -211,11 +107,11 @@ func (p *portTestShopPools) effectsUseItems() {
 			}
 			*(*uint32)(unsafe.Add(unsafe.Pointer(m), off)) = v
 		}
-		m.Engage112 = portTestEffectsFunction(C.int(s.Engage))
-		m.Disengage116 = portTestEffectsFunction(C.int(s.Disengage))
-		m.Attack40.Fnc = portTestEffectsFunction(C.int(s.Attack))
-		m.Defend76.Fnc = portTestEffectsFunction(C.int(s.Defend))
-		m.DefendCollide88.Fnc = portTestEffectsFunction(C.int(s.Collide))
+		m.Engage112 = portTestEffectsFunction(s.Engage)
+		m.Disengage116 = portTestEffectsFunction(s.Disengage)
+		m.Attack40.Fnc = portTestEffectsFunction(s.Attack)
+		m.Defend76.Fnc = portTestEffectsFunction(s.Defend)
+		m.DefendCollide88.Fnc = portTestEffectsFunction(s.Collide)
 	}
 	write := func(u *server.Object, words map[int]uint32) {
 		for off, v := range words {
@@ -307,7 +203,7 @@ func (p *portTestShopPools) effectsUseAction(a PortTestShopAction) uint32 {
 	} else if a.Op == PortTestEffects53F670 {
 		p.effectsUse.result = uint64(uint32(effectsFireWand(u, it)))
 	} else {
-		p.effectsUse.result = uint64(C.effectsCall(C.int(a.Op-500), asObjectC(u), asObjectC(it), asObjectC(p.effectsUseTarget(sp.Target)), mod, (*C.uint32_t)(unsafe.Pointer(p.effectsUse.scalar)), C.int(a.Value), C.int(a.Side), (*C.float2)(unsafe.Pointer(p.inventory.pos))))
+		p.effectsUse.result = portTestEffectsCall(a.Op-500, u, it, p.effectsUseTarget(sp.Target), (*server.ModifierEff)(mod), p.effectsUse.scalar, int(int32(a.Value)), a.Side, p.inventory.pos)
 	}
 	return uint32(p.effectsUse.result)
 }
@@ -423,7 +319,7 @@ const PortTestEffects53F4F0 = 538
 const PortTestEffects53F670 = 539
 const PortTestEffects53F8E0 = 540
 
-func portTestEffectsFunction(id C.int) unsafe.Pointer {
+func portTestEffectsFunction(id int) unsafe.Pointer {
 	switch id {
 	case 37:
 		return itemIdentityKey(itemIDWandUse)
@@ -432,5 +328,185 @@ func portTestEffectsFunction(id C.int) unsafe.Pointer {
 	case 40:
 		return itemIdentityKey(itemIDFireWandUse)
 	}
-	return C.effectsFunction(id)
+	return modifierFunctionKey(id)
+}
+
+func modifierFunctionKey(id int) unsafe.Pointer {
+	switch id {
+	case 1:
+		return modifierKey(modifierIDBrillianceEngage)
+	case 2:
+		return modifierKey(modifierIDBrillianceDisengage)
+	case 3:
+		return modifierTestKey(2)
+	case 4:
+		return modifierKey(modifierIDSpeedEngage)
+	case 5:
+		return modifierKey(modifierIDSpeedDisengage)
+	case 6:
+		return modifierKey(modifierIDFireProtectEngage)
+	case 7:
+		return modifierKey(modifierIDFireProtectDisengage)
+	case 8:
+		return modifierKey(modifierIDLightningProtectEngage)
+	case 9:
+		return modifierKey(modifierIDLightningProtectDisengage)
+	case 10:
+		return modifierKey(modifierIDPoisonProtectEngage)
+	case 11:
+		return modifierKey(modifierIDPoisonProtectDisengage)
+	case 12:
+		return modifierTestKey(1)
+	case 13:
+		return modifierTestKey(0)
+	case 14:
+		return modifierTestKey(3)
+	case 15:
+		return modifierKey(modifierIDRegenerationEngage)
+	case 16:
+		return modifierKey(modifierIDRegenerationDisengage)
+	case 17:
+		return modifierKey(modifierIDRegenerationUpdate)
+	case 18:
+		return modifierKey(modifierIDContinualReplenishmentUpdate)
+	case 19:
+		return modifierKey(modifierIDArmorMultiplierEffect)
+	case 20:
+		return modifierKey(modifierIDDurabilityMultiplierEffect)
+	case 21:
+		return modifierKey(modifierIDInversionEffect)
+	case 22:
+		return modifierTestKey(7)
+	case 23:
+		return modifierKey(modifierIDGripEffect)
+	case 24:
+		return modifierKey(modifierIDDamageMultiplierEffect)
+	case 25:
+		return modifierKey(modifierIDStunEffect)
+	case 26:
+		return modifierKey(modifierIDRecoilEffect)
+	case 27:
+		return modifierKey(modifierIDConfuseEffect)
+	case 28:
+		return modifierKey(modifierIDLightningEffect)
+	case 29:
+		return modifierKey(modifierIDDrainManaEffect)
+	case 30:
+		return modifierKey(modifierIDVampirismEffect)
+	case 31:
+		return modifierKey(modifierIDPoisonEffect)
+	case 32:
+		return modifierKey(modifierIDSympathyEffect)
+	case 33:
+		return modifierTestKey(5)
+	case 34:
+		return modifierKey(modifierIDProjectileSpeedEffect)
+	case 35:
+		return modifierTestKey(6)
+	case 36:
+		return modifierTestKey(4)
+	case 38:
+		return modifierTestKey(8)
+	case 42:
+		return modifierKey(modifierIDReadinessEffect)
+	case 43:
+		return modifierKey(modifierIDReplenishmentEffect)
+	default:
+		return nil
+	}
+}
+
+func portTestEffectsCall(op int, u, it, target *server.Object, m *server.ModifierEff, scalar *uint32, value, side int, pos *types.Pointf) uint64 {
+	var data unsafe.Pointer
+	if scalar != nil {
+		data = unsafe.Pointer(scalar)
+	}
+	switch op {
+	case 0:
+		effectsEngageFlag(u, 8, 75)
+	case 1:
+		effectsDisengageFlag(u, 8, 76)
+	case 2:
+		return uint64(uint32(effectsInventory(u, byte(value))))
+	case 3:
+		effectsSpeed(m, u, true)
+	case 4:
+		effectsSpeed(m, u, false)
+	case 5:
+		effectsEngageFlag(u, 1, 102)
+	case 6:
+		if u != nil && it != nil {
+			effectsDisengageFlag(u, 1, 103)
+		}
+	case 7:
+		effectsEngageFlag(u, 4, 106)
+	case 8:
+		effectsDisengageFlag(u, 4, 107)
+	case 9:
+		effectsEngageFlag(u, 2, 110)
+	case 10:
+		effectsDisengageFlag(u, 2, 111)
+	case 11:
+		return math.Float64bits(effectsProtection(u, modifierKey(modifierIDFireProtectEngage), 17, "FireSpellProtection", .5, .60000002))
+	case 12:
+		return math.Float64bits(effectsProtection(u, modifierKey(modifierIDLightningProtectEngage), 20, "ElectricitySpellProtection", .5, .60000002))
+	case 13:
+		return math.Float64bits(effectsProtection(u, modifierKey(modifierIDPoisonProtectEngage), 18, "PoisonSpellProtection", .69999999, .89999998))
+	case 14:
+		effectsEngageFlag(u, 32, 123)
+	case 15:
+		if u != nil && u.ObjClass&4 != 0 {
+			effectsDisengageFlag(u, 32, 124)
+		}
+	case 16:
+		effectsRegeneration(m, it)
+	case 17:
+		effectsReplenish(m, it)
+	case 18, 19:
+		v := (*float32)(data)
+		if op == 18 {
+			*v = float32(float64(m.Defend76.Valf) * float64(*v))
+		} else {
+			*v = float32((1 - float64(m.Defend76.Valf) + 1) * float64(*v))
+		}
+		return uint64(uint32(uintptr(data)))
+	case 20:
+		return uint64(uint32(effectsGrip(m, (*int32)(data), true)))
+	case 21:
+		return uint64(uint32(effectsGripSearch(u, u, it, target)))
+	case 22:
+		return uint64(uint32(effectsGrip(m, (*int32)(data), false)))
+	case 23:
+		v := (*float32)(data)
+		*v = float32(float64(m.Attack40.Valf) * float64(*v))
+		return uint64(uint32(uintptr(data)))
+	case 24:
+		effectsStatus(m, u, target, true)
+	case 25:
+		effectsRecoil(m, it, target)
+	case 26:
+		effectsStatus(m, u, target, false)
+	case 27:
+		effectsLightning(m, it, u, target)
+	case 28:
+		modifierDrainNative(m, u, target, data)
+	case 29:
+		modifierVampirismNative(m, u, target, data)
+	case 30:
+		effectsPoison(m, u, target)
+	case 31:
+		modifierSympathyNative(m, u, target, data)
+	case 32:
+		return uint64(uint32(effectsReadiness(it)))
+	case 33:
+		target.SpeedCur = float32(float64(m.Attack40.Valf) * float64(target.SpeedCur))
+		return uint64(uint32(uintptr(unsafe.Pointer(target))))
+	case 34:
+		return uint64(uint32(effectsRecharge(it, int32(value))))
+	case 35:
+		return uint64(uint32(effectsRechargeRate(it)))
+	case 37:
+		return uint64(effectsWandShot(u, value, *pos, uint32(side)))
+	}
+	return 0
 }

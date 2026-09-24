@@ -50,9 +50,9 @@ func attackShotEffects(u, it, p *server.Object) int {
 		if m == nil {
 			continue
 		}
-		if m.AttackPreHit52.Fnc == C.nox_xxx_recoilEffect_4E0640 {
+		if m.AttackPreHit52.Fnc == modifierKey(modifierIDRecoilEffect) {
 			*(*unsafe.Pointer)(unsafe.Add(p.InitData, 12)) = unsafe.Pointer(m)
-		} else if m.Attack40.Fnc == C.nox_xxx_effectProjectileSpeed_4E09B0 {
+		} else if m.Attack40.Fnc == modifierKey(modifierIDProjectileSpeedEffect) {
 			p.SpeedCur = float32(float64(m.Attack40.Valf) * float64(p.SpeedCur))
 		}
 	}

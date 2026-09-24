@@ -16,7 +16,6 @@ import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/sound"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 )
 
 func init() {
@@ -230,7 +229,7 @@ func (p *ModifierEff) Next() *ModifierEff {
 
 func (p *ModifierEff) CallUpdateNil(obj *Object) {
 	if p.Update100.Fnc != nil {
-		ccall.CallVoidPtr3(p.Update100.Fnc, p.C(), obj.CObj(), nil)
+		CallModifierEffect3Discard(p.Update100.Fnc, p, obj, nil)
 	}
 }
 

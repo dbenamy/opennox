@@ -14,7 +14,6 @@ import "C"
 import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"math"
 	"unsafe"
@@ -45,7 +44,7 @@ func attackPreEffects(t, u, it *server.Object, r *attackRecord) int {
 	}
 	for _, m := range unsafe.Slice((**server.ModifierEff)(it.InitData), 4)[2:] {
 		if m != nil && m.AttackPreHit52.Fnc != nil {
-			ccall.CallVoidPtr5(m.AttackPreHit52.Fnc, unsafe.Pointer(m), it.CObj(), u.CObj(), t.CObj(), unsafe.Pointer(r))
+			server.CallModifierEffect5(m.AttackPreHit52.Fnc, m, it, u, t, unsafe.Pointer(r))
 		}
 	}
 	return 0
@@ -53,7 +52,7 @@ func attackPreEffects(t, u, it *server.Object, r *attackRecord) int {
 func attackItemEffects(it, u *server.Object, r *attackRecord) int {
 	for _, m := range unsafe.Slice((**server.ModifierEff)(it.InitData), 4) {
 		if m != nil && m.Attack40.Fnc != nil {
-			ccall.CallVoidPtr5(m.Attack40.Fnc, unsafe.Pointer(m), it.CObj(), u.CObj(), nil, unsafe.Pointer(r))
+			server.CallModifierEffect5(m.Attack40.Fnc, m, it, u, nil, unsafe.Pointer(r))
 		}
 	}
 	return 0

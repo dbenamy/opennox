@@ -116,7 +116,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 		}
 	}
 	if kind == 1 || kind == 12 || kind == 7 {
-		protect := effectsProtection(u, C.sub_4DFD10, 17, "FireSpellProtection", .5, .60000002)
+		protect := effectsProtection(u, modifierKey(modifierIDFireProtectEngage), 17, "FireSpellProtection", .5, .60000002)
 		if protect != 0 && GetServer().S().Frame()&3 == 0 {
 			inventorySound(104, u, 0, 0)
 		}
@@ -126,7 +126,7 @@ func damageDefault(u, source, weapon *server.Object, amount, kind int32) int32 {
 		}
 	}
 	if kind == 9 || kind == 17 {
-		protect := effectsProtection(u, C.nox_xxx_buff_4DFD80, 20, "ElectricitySpellProtection", .5, .60000002)
+		protect := effectsProtection(u, modifierKey(modifierIDLightningProtectEngage), 20, "ElectricitySpellProtection", .5, .60000002)
 		if protect != 0 && GetServer().S().Frame()&3 == 0 {
 			inventorySound(108, u, 0, 0)
 		}

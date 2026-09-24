@@ -13,7 +13,6 @@ import (
 
 	"github.com/opennox/opennox/v1/legacy"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 )
 
@@ -22,14 +21,18 @@ func emptyCallbackCall(c legacy.PortTestEmptyCallback, args [6]unsafe.Pointer) f
 		return func() { server.CallDurSpellDiscard(c.Pointer, (*server.DurSpell)(args[0])) }
 	}
 	switch c.Arity {
-	case 1:
-		return func() { ccall.CallVoidPtr(c.Pointer, args[0]) }
 	case 3:
-		return func() { ccall.CallVoidPtr3(c.Pointer, args[0], args[1], args[2]) }
+		return func() {
+			server.CallModifierEffect3Discard(c.Pointer, (*server.ModifierEff)(args[0]), (*server.Object)(args[1]), (*server.Object)(args[2]))
+		}
 	case 5:
-		return func() { ccall.CallVoidPtr5(c.Pointer, args[0], args[1], args[2], args[3], args[4]) }
+		return func() {
+			server.CallModifierEffect5(c.Pointer, (*server.ModifierEff)(args[0]), (*server.Object)(args[1]), (*server.Object)(args[2]), (*server.Object)(args[3]), args[4])
+		}
 	case 6:
-		return func() { ccall.CallVoidPtr6(c.Pointer, args[0], args[1], args[2], args[3], args[4], args[5]) }
+		return func() {
+			server.CallModifierEffect6(c.Pointer, (*server.ModifierEff)(args[0]), (*server.Object)(args[1]), (*server.Object)(args[2]), (*server.Object)(args[3]), (*server.Object)(args[4]), args[5])
+		}
 	default:
 		panic("unsupported empty callback arity")
 	}
@@ -124,9 +127,8 @@ func TestEmptyCallbackContracts(t *testing.T) {
 	}
 }
 
-// BenchmarkEmptyCallbackDispatch includes each selected callback boundary: retained
-// C callbacks use ccall, while the duration no-op uses the native registry path.
-// It measures a callback boundary, not a game-frame time or call frequency.
+// BenchmarkEmptyCallbackDispatch includes each selected native callback registry
+// boundary. It measures a callback boundary, not a game-frame time or call frequency.
 func BenchmarkEmptyCallbackDispatch(b *testing.B) {
 	for _, c := range legacy.PortTestEmptyCallbacks() {
 		b.Run(c.Symbol, func(b *testing.B) {

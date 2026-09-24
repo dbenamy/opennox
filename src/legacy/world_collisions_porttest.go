@@ -113,4 +113,4 @@ func PortTestWorldCollisionGlobals() (map[string]*uint32, *uint64, func()) {
 	}
 }
 
-func PortTestWorldInversionCallback() unsafe.Pointer { return C.nox_xxx_inversionEffect_4E03D0 }
+func PortTestWorldInversionCallback() unsafe.Pointer { return modifierKey(modifierIDInversionEffect) }

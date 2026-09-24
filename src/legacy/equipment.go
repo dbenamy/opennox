@@ -3,7 +3,6 @@ package legacy
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"math"
 	"unsafe"
@@ -73,7 +72,7 @@ func equipmentEffects(it, u *server.Object, engage bool) int {
 				fn = m.Engage112
 			}
 			if fn != nil {
-				result = ccall.CallIntPtr3(fn, unsafe.Pointer(m), u.CObj(), it.CObj())
+				result = int(server.CallModifierEffect3Result(fn, m, u, it))
 			}
 		}
 	}
@@ -93,7 +92,7 @@ func equipmentDefend(it *server.Object) float64 {
 		p, free := alloc.New(float32(0))
 		defer free()
 		*p = value
-		ccall.CallVoidPtr6(effect.Defend76.Fnc, unsafe.Pointer(effect), it.CObj(), nil, it.CObj(), nil, unsafe.Pointer(p))
+		server.CallModifierEffect6(effect.Defend76.Fnc, effect, it, nil, it, nil, unsafe.Pointer(p))
 		value = *p
 	}
 	return float64(value)

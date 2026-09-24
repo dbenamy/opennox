@@ -97,7 +97,7 @@ func uiInventoryIdentify(pos image.Point) uint32 {
 	if class&0x2000000 != 0 {
 		def := modifiers.Nox_xxx_equipClothFindDefByTT413270(int(dr.TypeIDVal))
 		scale := float64(1)
-		if m := uiInventoryItemModifier(dr, 0); m != nil && m.Defend76.Fnc == C.sub_4E0370 {
+		if m := uiInventoryItemModifier(dr, 0); m != nil && m.Defend76.Fnc == modifierKey(modifierIDArmorMultiplierEffect) {
 			scale = float64(m.Defend76.Valf)
 		}
 		value := int(float32(scale*float64(def.DamageCoeffOrArmor64)*1000.0 + 0.5))
@@ -133,7 +133,7 @@ func uiInventoryIdentify(pos image.Point) uint32 {
 		}
 		electric, fire := float32(uiInventoryElementValue(dr, false)), float32(uiInventoryElementValue(dr, true))
 		scale := float32(1)
-		if m := uiInventoryItemModifier(dr, 0); m != nil && m.Attack40.Fnc == C.nox_xxx_effectDamageMultiplier_4E04C0 {
+		if m := uiInventoryItemModifier(dr, 0); m != nil && m.Attack40.Fnc == modifierKey(modifierIDDamageMultiplierEffect) {
 			scale = m.Attack40.Valf
 		}
 		baseDamage := controlBoltDamage(*(*int32)(unsafe.Add(p, 2239)), def.C())

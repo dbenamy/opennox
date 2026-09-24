@@ -36,26 +36,5 @@ void nox_xxx_unitsNewAddToList_4DAC00();
 int nox_xxx_gameIsSwitchToSolo_4DB240();
 char* nox_xxx_playerCallDisconnect_4DEAB0(int a1, char a2);
 void nox_xxx_playerDisconnByPlrID_4DEB00(int a1);
-void sub_4DFB50(int a1, int a2);
-int nox_xxx_enchantItemTestInventory_4DFBB0(int a1, char a2);
-void nox_xxx_effectSpeedEngage_4DFC30(int a1, int a2);
-void sub_4DFD10(int a1, int a2);
-void nox_xxx_buff_4DFD80(int a1, int a2);
-void nox_xxx_checkPoisonProtectEnch_4DFDE0(int a1, int a2);
-double nox_xxx_checkFireProtect_4DFE40(uint32_t* a1);
-double nox_xxx_checkElectrProtect_4DFF40(uint32_t* a1);
-double nox_xxx_getPoisonDmg_4E0040(uint32_t* a1);
-void sub_4E0140(int a1, int a2);
-void sub_4E0170(int a1, int a2);
-float* sub_4E0370(int a1, int a2, int a3, int a4, int a5, float* a6);
-float* sub_4E0380(int a1, int a2, int a3, int a4, int a5, float* a6);
-int nox_xxx_inversionEffect_4E03D0(int a1, int a2, int a3, int a4, int a5, int* a6);
-int nox_xxx_gripEffect_4E0480(int a1, int a2, int a3, int a4, int a5, int* a6);
-float* nox_xxx_effectDamageMultiplier_4E04C0(int a1, int a2, int a3, int a4, float* a5);
-void nox_xxx_fireEffect_4E0550(void* a1, nox_object_t* a2, nox_object_t* a3, nox_object_t* a4);
-void nox_xxx_recoilEffect_4E0640(int a1, int a2, int a3, int a4);
-void nox_xxx_lightngEffect_4E06F0(int a1, int a2, int a3, int a4);
-int nox_xxx_itemCheckReadinessEffect_4E0960(int a1);
-int nox_xxx_effectProjectileSpeed_4E09B0(int a1, int a2, int a3, int a4, int a5);
 
 #endif // NOX_PORT_GAME3_2
