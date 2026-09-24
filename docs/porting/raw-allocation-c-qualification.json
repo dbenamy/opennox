@@ -1,0 +1,319 @@
+{
+  "qualified_production_reused": "4e1e86a6",
+  "added_to_accumulated_selection": [
+    "TestClientResourceFreeGraph",
+    "TestClientSequenceDelivery",
+    "TestClientSequenceDeliveryLengths",
+    "TestClientSequenceTickWrap",
+    "TestLegacyAllocationDomains",
+    "TestLegacyCStringOwnership",
+    "TestMapPolygonsRecordDefaults",
+    "TestMapPolygonsResetAndStorage",
+    "TestMapPolygonsSectionVersions",
+    "TestPrefabScriptsObjectNames",
+    "TestServerConfigAdmissionFileEncoding",
+    "TestServerConfigAdmissionFileRead",
+    "TestServerConfigAdmissionFileWrite",
+    "TestServerRuntimeRejectedListFree",
+    "TestWorldGridAllocationOwnership"
+  ],
+  "original_capture_hashes": {
+    "normal": "e0b7a4b9ab7fff0890a9ab38b3274c1ffe4749cbd7125f29c273b25553dc8525",
+    "safe": "a868e1790dd29a7291feb4e97d834084734117b244741cdb6981efcc8e56e077"
+  },
+  "repeat_processes_per_profile": 3,
+  "NOX_SAFE_true_normal_domain_verified": true,
+  "baseline-contracts": {
+    "batch": "raw-allocation",
+    "phase": "contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/raw-allocation-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-raw-allocation/baseline-contracts/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-raw-allocation/baseline-contracts/default-result.json",
+          "--timeout-seconds",
+          "1800",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 65.64664622489363
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/raw-allocation-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-raw-allocation/baseline-contracts/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-raw-allocation/baseline-contracts/server-result.json",
+          "--timeout-seconds",
+          "1800",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 137.96225708397105
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/raw-allocation-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-raw-allocation/baseline-contracts/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-raw-allocation/baseline-contracts/highres-result.json",
+          "--timeout-seconds",
+          "1800",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 65.43880206998438
+      }
+    ],
+    "revision": "65e37912791be6c4e1b405306f00bb938fee4bd3",
+    "source_unchanged": true,
+    "wall_seconds": 269.6611489218194,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "baseline-safe": {
+    "batch": "raw-allocation",
+    "phase": "safe-contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "safe-contracts",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/raw-allocation-safe-tests.txt",
+          "--tags",
+          "safe,porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-raw-allocation/baseline-safe/safe.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-raw-allocation/baseline-safe/safe-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 42.876944029005244
+      }
+    ],
+    "revision": "bb439c0f71bdcd5c6b9596ea151a5e6b80803686",
+    "source_unchanged": true,
+    "wall_seconds": 43.15878592710942,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "baseline-helpers": {
+    "batch": "raw-allocation",
+    "phase": "helpers",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-v",
+          "./legacy/common/alloc"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.0317195088136941
+      },
+      {
+        "name": "server",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-v",
+          "-tags",
+          "server",
+          "./legacy/common/alloc"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.030193782877177
+      },
+      {
+        "name": "highres",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-v",
+          "-tags",
+          "highres",
+          "./legacy/common/alloc"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.0717196378391236
+      }
+    ],
+    "revision": "bb439c0f71bdcd5c6b9596ea151a5e6b80803686",
+    "source_unchanged": true,
+    "wall_seconds": 3.624716481892392,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "owner_selections": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 1800,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 111,
+      "selected_root_tests": 111,
+      "exit": 0,
+      "started_tests": 111,
+      "completed_tests": 111,
+      "started_root_tests": 111,
+      "completed_root_tests": 111,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 65.54196142405272
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 1800,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 111,
+      "selected_root_tests": 111,
+      "exit": 0,
+      "started_tests": 111,
+      "completed_tests": 111,
+      "started_root_tests": 111,
+      "completed_root_tests": 111,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 137.85406212206
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 1800,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 111,
+      "selected_root_tests": 111,
+      "exit": 0,
+      "started_tests": 111,
+      "completed_tests": 111,
+      "started_root_tests": 111,
+      "completed_root_tests": 111,
+      "skipped_tests": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 65.373548632022
+    }
+  },
+  "production_source_identical_to_reused_baseline": true
+}

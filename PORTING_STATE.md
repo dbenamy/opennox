@@ -24,9 +24,10 @@ Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Stop at the milestone or for a substantial question.
 The requested C_LOC cleanup is complete. The active batch centralizes 49 legacy
 allocation calls and four tracked-allocator backend calls without changing their
-ownership domains. New original-path contracts are installed and repeated captures
-match in normal and safe profiles; baseline owner qualification is running under
-`build/port-raw-allocation/`. The implementation draft remains ignored and
+ownership domains. Original-path contracts are qualified: repeated normal/safe captures match,
+111 owner roots pass in every profile, and six safe roots pass without skips.
+Baseline evidence is under `build/port-raw-allocation/` and
+[RAW_ALLOCATION.md](docs/porting/RAW_ALLOCATION.md). The implementation draft remains ignored and
 uninstalled under `build/port-go-memory/raw-centralization-draft/`.
 Progress counts above exclude this unqualified batch.
 
@@ -99,9 +100,9 @@ nonportable libc comparison expectations by restoring and recapturing the origin
 path, and replaced the slow fill loop after measurement. See the batch report.
 The next allocation draft centralizes 49 calls across 21 files, preserving profile
 semantics. Primary caught unused imports before integration; the draft is corrected
-but unqualified. New domain/string ownership contracts and a 96-existing-root owner
-selection are undergoing baseline qualification, including two additional existing
-free-owner tests absent from prior selectors. See `build/port-go-memory/raw-*`.
+but unqualified. The qualified baseline covers 111 owner roots, including 13 existing roots
+missing from the earlier accumulated selection and two new ownership contracts.
+All 15 are now included in the accumulated pattern. See `build/port-go-memory/raw-*`.
 
 ## Resume and artifact recovery
 
