@@ -21,10 +21,11 @@ became empty and were deleted. All qualification passes with frozen expectations
 unchanged. See [GO_LAYOUT_BOUNDARIES.md](docs/porting/GO_LAYOUT_BOUNDARIES.md).
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Next: baseline and qualify the reviewed native-record storage candidate under
-`build/port-go-native-record-storage/`: 40 files covering shared record pointers,
-world-grid cells, timestamps and connected callers. Layout probes pass; the
-candidate is not installed or runtime-qualified. Stop at the milestone or for a substantial question.
+recorded reversible decisions. Active: native-record storage has an accepted
+original baseline at `fe44bab3` and a reviewed 40-file candidate. Layout probes
+pass; installation and runtime qualification remain. See
+[GO_NATIVE_RECORD_STORAGE.md](docs/porting/GO_NATIVE_RECORD_STORAGE.md).
+Stop at the milestone or for a substantial question.
 
 Latest artifacts: `build/port-go-layout-boundaries/`.
 
