@@ -41,8 +41,8 @@ func stateDistance(u, t *server.Object) float64 {
 }
 func stateDirection(a, b *types.Pointf) int32 {
 	dx, dy := float32(b.X-a.X), float32(b.Y-a.Y)
-	dword_5d4594_1565628 = C.uint32_t(math.Float32bits(dx))
-	dword_5d4594_1565632 = C.uint32_t(math.Float32bits(dy))
+	dword_5d4594_1565628 = uint32(math.Float32bits(dx))
+	dword_5d4594_1565632 = uint32(math.Float32bits(dy))
 	p := float32(float64(dx)*.41304299 - float64(dy))
 	q := float64(dx)*2.4210529 - float64(dy)
 	r := float32(float64(dx)*-2.4210529 - float64(dy))

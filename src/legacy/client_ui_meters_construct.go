@@ -55,7 +55,7 @@ func uiMeterInit() int {
 	if player == nil {
 		return 0
 	}
-	dword_5d4594_1096288 = C.uint32_t(uintptr(GetClient().R2().GetFonts().FontPtrByName("small")))
+	dword_5d4594_1096288 = uint32(uintptr(GetClient().R2().GetFonts().FontPtrByName("small")))
 	dword_5d4594_1096264 = 0
 	dword_5d4594_1096256 = 0
 	dword_5d4594_1096260 = 0
@@ -70,23 +70,23 @@ func uiMeterInit() int {
 	if *memmap.PtrUint32(0x5D4594, 1096268) == 0 {
 		types := &GetClient().Cli().Things
 		*memmap.PtrUint32(0x5D4594, 1096268) = uint32(types.IndByID("RedPotion"))
-		dword_5d4594_1096272 = C.uint32_t(types.IndByID("BluePotion"))
-		dword_5d4594_1096276 = C.uint32_t(types.IndByID("CurePoisonPotion"))
-		dword_5d4594_1096280 = C.uint32_t(types.IndByID("RedApple"))
-		dword_5d4594_1096284 = C.uint32_t(types.IndByID("Meat"))
+		dword_5d4594_1096272 = uint32(types.IndByID("BluePotion"))
+		dword_5d4594_1096276 = uint32(types.IndByID("CurePoisonPotion"))
+		dword_5d4594_1096280 = uint32(types.IndByID("RedApple"))
+		dword_5d4594_1096284 = uint32(types.IndByID("Meat"))
 	}
 	g := GetClient().Cli().GUI
 	main := g.NewWindowRaw(nil, 136, width-91, height-201, 91, 201, nil)
-	dword_5d4594_1090276 = C.uint32_t(uintptr(main.C()))
+	dword_5d4594_1090276 = uint32(uintptr(main.C()))
 	uiMeterSetIcon(main, memmap.Uint32(0x5D4594, 1092996))
 	cure := uiMeterWindow(main, 8, 6, 166, 28, 30, 2, C.nox_xxx_guiBottleSlotProc_471B90, C.nox_xxx_guiBottleSlotDrawFn_471A80, nil)
-	dword_5d4594_1091364 = C.uint32_t(uintptr(cure.C()))
+	dword_5d4594_1091364 = uint32(uintptr(cure.C()))
 	uiMeterWindowTooltip(cure, "CurePoisonSlotTT")
 	uiMeterSlot(2).Count = 0
 	uiMeterLinkPotion(2, uint32(dword_5d4594_1096276))
 	uiMeterSlot(2).Type = uint32(dword_5d4594_1096276)
 	health := uiMeterWindow(main, 8, 34, 166, 28, 30, 0, C.nox_xxx_guiBottleSlotProc_471B90, C.nox_xxx_guiBottleSlotDrawFn_471A80, nil)
-	dword_5d4594_1090292 = C.uint32_t(uintptr(health.C()))
+	dword_5d4594_1090292 = uint32(uintptr(health.C()))
 	uiMeterWindowTooltip(health, "HealthSlotTT")
 	uiMeterSlot(0).Count = 0
 	uiMeterSlot(0).Image = nil
@@ -94,7 +94,7 @@ func uiMeterInit() int {
 	m := uiMeters()
 	if *(*byte)(unsafe.Add(player, 2251)) != 0 {
 		mana := uiMeterWindow(main, 8, 62, 166, 28, 30, 1, C.nox_xxx_guiBottleSlotProc_471B90, C.nox_xxx_guiBottleSlotDrawFn_471A80, nil)
-		dword_5d4594_1090828 = C.uint32_t(uintptr(mana.C()))
+		dword_5d4594_1090828 = uint32(uintptr(mana.C()))
 		uiMeterWindowTooltip(mana, "ManaSlotTT")
 		uiMeterSlot(1).Count = 0
 		uiMeterLinkPotion(1, uint32(dword_5d4594_1096272))

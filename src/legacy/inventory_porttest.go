@@ -192,7 +192,7 @@ func (p *portTestShopPools) inventoryPrepare() func() {
 		return true
 	}
 	oldServerFlags, oldPause := dword_5d4594_3484, dword_5d4594_2523804
-	dword_5d4594_3484, dword_5d4594_2523804 = C.uint32_t(sp.ServerFlags), 1
+	dword_5d4594_3484, dword_5d4594_2523804 = uint32(sp.ServerFlags), 1
 	oldGameplay := noxflags.GetGamePlay()
 	noxflags.UnsetGamePlay(^noxflags.GameplayFlag(0))
 	noxflags.SetGamePlay(noxflags.GameplayFlag(sp.Gameplay))

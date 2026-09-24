@@ -65,8 +65,8 @@ func sub_4649B0(v, col, row C.int) C.int {
 	return C.int(uiInventoryPlace(uiInventoryDrawable(uint32(v)), int(col), int(row)))
 }
 func uiInventorySetClick(col, row int) {
-	dword_5d4594_1049796_inventory_click_column_index = C.uint32_t(col)
-	dword_5d4594_1049800_inventory_click_row_index = C.uint32_t(row)
+	dword_5d4594_1049796_inventory_click_column_index = uint32(col)
+	dword_5d4594_1049800_inventory_click_row_index = uint32(row)
 }
 func uiInventoryDragCopy() {
 	index := int(dword_5d4594_1049800_inventory_click_row_index) + 21*int(dword_5d4594_1049796_inventory_click_column_index)
@@ -130,7 +130,7 @@ func uiInventoryAlterWeapon() {
 	}
 	alt := uiInventoryCellRef(uint32(dword_5d4594_1062480))
 	dequip := func(dr *client.Drawable) {
-		dword_5d4594_1062492 = C.uint32_t(uiInventoryPointer(dr.C()))
+		dword_5d4594_1062492 = uint32(uiInventoryPointer(dr.C()))
 		uiInventoryDequipRequest(dr)
 		audioEventPlay(895, 100, 0, 0)
 	}

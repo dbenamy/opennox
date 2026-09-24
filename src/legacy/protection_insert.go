@@ -15,8 +15,8 @@ func insertProtectionRecord(r *protection.Record) C.int {
 	count := memmap.PtrUint16(0x587000, 311204)
 	if *count == 0 {
 		(*count)++
-		dword_5d4594_2516352 = C.uint32_t(uintptr(unsafe.Pointer(r)))
-		dword_5d4594_2516344 = C.uint32_t(uintptr(unsafe.Pointer(r)))
+		dword_5d4594_2516352 = uint32(uintptr(unsafe.Pointer(r)))
+		dword_5d4594_2516344 = uint32(uintptr(unsafe.Pointer(r)))
 		return 1
 	}
 
@@ -26,7 +26,7 @@ func insertProtectionRecord(r *protection.Record) C.int {
 		before = before.Next
 	}
 	head := protection.InsertBefore(protectionHead(), before, r)
-	dword_5d4594_2516344 = C.uint32_t(uintptr(unsafe.Pointer(head)))
+	dword_5d4594_2516344 = uint32(uintptr(unsafe.Pointer(head)))
 	(*count)++
 	return 1
 }

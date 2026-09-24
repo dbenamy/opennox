@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-*/
-import "C"
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client"
@@ -63,7 +58,7 @@ func objectRenderTeam(id int) *server.ObjectTeam {
 }
 func objectRenderDraw(vp *noxrender.Viewport, dr *client.Drawable, img noxrender.ImageHandle) {
 	if dword_5d4594_1321520 == 0 {
-		dword_5d4594_1321520 = C.uint32_t(effectType("Ghost"))
+		dword_5d4594_1321520 = uint32(effectType("Ghost"))
 	}
 	sameTeam, targetObserver := false, false
 	if dr.ObjClass&4 != 0 {

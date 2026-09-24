@@ -125,9 +125,9 @@ func (p *portTestShopPools) equipmentPrepare() func() {
 	p.identify(C.eqDisengagePtr(), 65001)
 	p.identify(C.eqDefendPtr(), 65002)
 	oldGameEx, oldCheat, oldThreshold := gameex_flags, nox_cheat_allowall, qword_581450_9512
-	gameex_flags = C.uint(sp.GameEx)
-	nox_cheat_allowall = C.int(bool2int(sp.Cheat))
-	qword_581450_9512 = C.uint64_t(sp.Threshold)
+	gameex_flags = uint32(sp.GameEx)
+	nox_cheat_allowall = int32(bool2int(sp.Cheat))
+	qword_581450_9512 = uint64(sp.Threshold)
 	core := p.proxy.core
 	oldWeapon, oldArmor := core.Modif.Dword_5d4594_251600, core.Modif.Dword_5d4594_251608
 	core.Modif.Dword_5d4594_251600, core.Modif.Dword_5d4594_251608 = nil, nil

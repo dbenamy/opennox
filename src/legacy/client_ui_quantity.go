@@ -107,8 +107,8 @@ func uiAmountInit() int {
 		return 0
 	}
 	w.SetAllFuncs(uiInventoryWindowEvent(uiAmountMouse), func(w *gui.Window, _ *gui.WindowData) int { return uiAmountDraw(w) }, nil)
-	dword_5d4594_1319232 = C.uint32_t(uiInventoryPointer(w.ChildByID(3601).C()))
-	dword_5d4594_1319236 = C.uint32_t(uiInventoryPointer(w.ChildByID(3607).C()))
+	dword_5d4594_1319232 = uint32(uiInventoryPointer(w.ChildByID(3601).C()))
+	dword_5d4594_1319236 = uint32(uiInventoryPointer(w.ChildByID(3607).C()))
 	w.Hide()
 	uiWindowEnable(w, 0)
 	uiTradeViewportInit(1319108)
@@ -203,7 +203,7 @@ func uiAmountShow(title *uint16, x, y int, code, typ uint32, mods unsafe.Pointer
 	*memmap.PtrPtr(0x5D4594, 1319100) = cancel
 	*memmap.PtrUint32(0x5D4594, 1319240) = typ
 	*memmap.PtrUint32(0x5D4594, 1319244) = code
-	dword_5d4594_1319248 = C.uint32_t(maximum)
+	dword_5d4594_1319248 = uint32(maximum)
 	*memmap.PtrUint32(0x5D4594, 1319252) = extra
 	uiAmountToggle()
 	uiAmountPosition(x, y)
@@ -236,7 +236,7 @@ func uiAmountPosition(x, y int) int {
 	return 0
 }
 func uiAmountPrice(enabled, unit uint32) uint32 {
-	dword_5d4594_1319264 = C.uint32_t(enabled)
-	dword_5d4594_1319260 = C.uint32_t(unit)
+	dword_5d4594_1319264 = uint32(enabled)
+	dword_5d4594_1319260 = uint32(unit)
 	return enabled
 }

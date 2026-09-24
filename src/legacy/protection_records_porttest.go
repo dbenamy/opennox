@@ -47,8 +47,8 @@ func PortTestRecords(values [][2]uint32, key uint32, id, index, a, b int, counte
 		records[i] = [4]uint32{v[0], v[1], uint32(uintptr(unsafe.Pointer(ptr(i + 1)))), uint32(uintptr(unsafe.Pointer(ptr(i - 1))))}
 	}
 	before := append([][4]uint32(nil), records...)
-	dword_5d4594_2516344 = C.uint(uintptr(unsafe.Pointer(ptr(0))))
-	dword_5d4594_2516348 = C.uint(key)
+	dword_5d4594_2516344 = uint32(uintptr(unsafe.Pointer(ptr(0))))
+	dword_5d4594_2516348 = uint32(key)
 	*count = counter
 	findIndex := func(p unsafe.Pointer) int {
 		if p == nil {
@@ -67,7 +67,7 @@ func PortTestRecords(values [][2]uint32, key uint32, id, index, a, b int, counte
 	}
 	swapProtectionRecords((*protection.Record)(unsafe.Pointer(ptr(a))), (*protection.Record)(unsafe.Pointer(ptr(b))))
 	out.Counter = *count
-	out.LinksUnchanged = dword_5d4594_2516344 == C.uint(uintptr(unsafe.Pointer(ptr(0)))) && dword_5d4594_2516348 == C.uint(key)
+	out.LinksUnchanged = dword_5d4594_2516344 == uint32(uintptr(unsafe.Pointer(ptr(0)))) && dword_5d4594_2516348 == uint32(key)
 	for i, r := range records {
 		out.Values = append(out.Values, [2]uint32{r[0], r[1]})
 		out.LinksUnchanged = out.LinksUnchanged && r[2] == before[i][2] && r[3] == before[i][3]

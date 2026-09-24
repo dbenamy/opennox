@@ -71,7 +71,7 @@ func portTestTradeSetCache(in [12]uint32) {
 	for i, v := range in {
 		*memmap.PtrUint32(0x5D4594, 2386516+uintptr(4*i)) = v
 	}
-	dword_5d4594_2386548, dword_5d4594_2386552, dword_5d4594_2386560 = C.uint32_t(in[8]), C.uint32_t(in[9]), C.uint32_t(in[11])
+	dword_5d4594_2386548, dword_5d4594_2386552, dword_5d4594_2386560 = uint32(in[8]), uint32(in[9]), uint32(in[11])
 }
 func (p *portTestShopPools) enginePrepare() func() {
 	sp := p.proxy.callbacks.shop.spec.Engine

@@ -122,7 +122,7 @@ func generatorUpdate(u *server.Object) int8 {
 	level := *memmap.PtrUint32(0x5D4594, 2388660)
 	cache := func(i uintptr) *uint32 { return memmap.PtrUint32(0x5D4594, 2491716+4*i) }
 	if dword_5d4594_2491716 == 0 {
-		dword_5d4594_2491716 = C.uint32_t(int32(float32(core.Balance.Float("QuestHardcoreStage"))))
+		dword_5d4594_2491716 = uint32(int32(float32(core.Balance.Float("QuestHardcoreStage"))))
 		*cache(1) = uint32(int32(float32(core.Balance.Float("QuestHardcoreSpawnRateIncrease"))))
 		*cache(7) = math.Float32bits(float32(core.Balance.Float("QuestHardcoreSpawnCap")))
 		for i, key := range []string{"SpawnRateHighValue", "SpawnRateNormalValue", "SpawnRateLowValue", "SpawnRateVeryLowValue", "SpawnRateVeryVeryLowValue"} {

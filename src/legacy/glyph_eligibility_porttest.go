@@ -98,7 +98,7 @@ func PortTestGlyphEligibility(clientCacheInit, itemCacheInit uint32, calls []Por
 		lookupClient, freeLookup := client.PortTestGlyphClient(call.LookupType)
 		proxy.cli = lookupClient
 		mask = call.ClassMask
-		nox_cheat_allowall = C.int(0)
+		nox_cheat_allowall = int32(0)
 		if call.Cheat {
 			nox_cheat_allowall = 1
 		}
@@ -110,7 +110,7 @@ func PortTestGlyphEligibility(clientCacheInit, itemCacheInit uint32, calls []Por
 				*(*byte)(unsafe.Add(player, i)) = 0xa7
 			}
 			*(*byte)(unsafe.Add(player, portTestGlyphPlayerClassOff)) = call.PlayerClass
-			dword_8531A0_2576 = C.uint(uintptr(player))
+			dword_8531A0_2576 = uint32(uintptr(player))
 		} else {
 			dword_8531A0_2576 = 0
 		}

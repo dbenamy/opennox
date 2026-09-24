@@ -60,7 +60,7 @@ func briefingCreateWindow() *gui.Window {
 	parent.SetFunc93(briefingEvent(briefingInput))
 	parent.DrawData().BgColorVal = uint32(nox_color_black_2650656)
 	w := Nox_new_window_from_file("Briefing.wnd", nil)
-	nox_wnd_briefing_831232 = C.uint32_t(uintptr(w.C()))
+	nox_wnd_briefing_831232 = uint32(uintptr(w.C()))
 	if w == nil {
 		return nil
 	}
@@ -101,7 +101,7 @@ func briefingScrollSpeed() float64 {
 func briefingCompletedDraw(_ *gui.Window, _ *gui.WindowData) int { return 1 }
 func briefingDrawWindow(w *gui.Window, data *gui.WindowData) int {
 	scroll := float32(float64(math.Float32frombits(uint32(dword_5d4594_831276))) - briefingScrollSpeed())
-	dword_5d4594_831276 = C.uint32_t(math.Float32bits(scroll))
+	dword_5d4594_831276 = uint32(math.Float32bits(scroll))
 	w.SetPos(image.Pt(0, int(int32(scroll))))
 	uiRenderCopyRect(int(int32(memmap.Uint32(0x5D4594, 831284))), int(int32(memmap.Uint32(0x5D4594, 831288))), 640, 480)
 	mode := memmap.Uint8(0x5D4594, 832472)
@@ -156,7 +156,7 @@ func briefingShow(chapter, begin int, mode byte) int {
 	w := briefingWindow()
 	child := w.ChildByID(1010)
 	child.SetDraw(briefingDrawWindow)
-	dword_5d4594_831220 = C.uint32_t(begin)
+	dword_5d4594_831220 = uint32(begin)
 	textData := (*gui.StaticTextData)(child.WidgetData)
 	setImage := func(v uint32) { w.DrawData().BgImageHnd = noxrender.ImageHandle(unsafe.Pointer(uintptr(v))) }
 	setText := func(p unsafe.Pointer) { child.Func94(gui.AsWindowEvent(16385, uintptr(p), 0)) }
@@ -169,7 +169,7 @@ func briefingShow(chapter, begin int, mode byte) int {
 		if s := Nox_xxx_GetEndgameDialog(); s != "" {
 			voice = alloc.InternCString(s)
 		}
-		dword_5d4594_831240 = C.uint32_t(uintptr(unsafe.Pointer(voice)))
+		dword_5d4594_831240 = uint32(uintptr(unsafe.Pointer(voice)))
 		music = 24
 		dword_5d4594_831220 = 255
 	} else if chapter == 254 {
@@ -204,7 +204,7 @@ func briefingShow(chapter, begin int, mode byte) int {
 		setImage(slide.Image)
 		setText(unsafe.Pointer(slide.Text))
 		music = slide.Duration
-		dword_5d4594_831240 = C.uint32_t(uintptr(unsafe.Pointer(slide.Voice)))
+		dword_5d4594_831240 = uint32(uintptr(unsafe.Pointer(slide.Voice)))
 	}
 	r := GetClient().R2()
 	font := r.GetFonts().AsFont(child.DrawData().FontPtr)
@@ -217,7 +217,7 @@ func briefingShow(chapter, begin int, mode byte) int {
 	} else {
 		height = (480 - r.FontHeight(font) - height) / 2
 		*memmap.PtrUint32(0x5D4594, 831280) = uint32(height)
-		dword_5d4594_831276 = C.uint32_t(math.Float32bits(float32(height)))
+		dword_5d4594_831276 = uint32(math.Float32bits(float32(height)))
 	}
 	Sub_431290()
 	dword_5d4594_831224 = 0

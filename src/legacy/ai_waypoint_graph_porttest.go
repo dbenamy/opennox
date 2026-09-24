@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"bytes"
 	"encoding/binary"
@@ -82,7 +77,7 @@ func PortTestWaypointGraph(specs []PortTestWaypointGraphSpec) (out []PortTestWay
 	defer func() {
 		copy(scratch, oldScratch)
 		*oneShot = oldOneShot
-		dword_5d4594_2490504 = C.uint32_t(oldEpoch)
+		dword_5d4594_2490504 = uint32(oldEpoch)
 		restored = bytes.Equal(bytesOfU32(scratch), bytesOfU32(oldScratch)) &&
 			*oneShot == oldOneShot && uint32(dword_5d4594_2490504) == oldEpoch
 	}()
@@ -148,7 +143,7 @@ func portTestWaypointGraphOne(spec PortTestWaypointGraphSpec, scratch []uint32, 
 	}
 	copy(scratch, spec.Scratch)
 	*oneShot = spec.OneShot
-	dword_5d4594_2490504 = C.uint32_t(spec.Epoch)
+	dword_5d4594_2490504 = uint32(spec.Epoch)
 
 	// C writes entry Capacity before checking its capacity predicate. Keep it
 	// in-bounds and observable, surrounded by two word guards on each side.

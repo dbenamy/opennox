@@ -86,7 +86,7 @@ func rewardInitGenerator(u *server.Object) int32 {
 }
 func rewardPlaceAnkh() {
 	if dword_5d4594_1568280 == 0 {
-		dword_5d4594_1568280 = C.uint32_t(GetServer().S().Types.IndByID("RewardMarker"))
+		dword_5d4594_1568280 = uint32(GetServer().S().Types.IndByID("RewardMarker"))
 		*memmap.PtrUint32(0x5d4594, 1568284) = uint32(GetServer().S().Types.IndByID("RewardMarkerPlus"))
 	}
 	eligible := func(u *server.Object) bool {
@@ -118,7 +118,7 @@ func rewardSelectMarkers() {
 	stage := int32(rewardWord(202028))
 	players := int32(questRuntimeCount())
 	if dword_5d4594_1568288 == 0 {
-		dword_5d4594_1568288 = C.uint32_t(GetServer().S().Types.IndByID("RewardMarker"))
+		dword_5d4594_1568288 = uint32(GetServer().S().Types.IndByID("RewardMarker"))
 		*memmap.PtrUint32(0x5d4594, 1568292) = uint32(GetServer().S().Types.IndByID("RewardMarkerPlus"))
 		*memmap.PtrUint32(0x5d4594, 1568296) = uint32(GetServer().S().Types.IndByID("RedPotion"))
 	}

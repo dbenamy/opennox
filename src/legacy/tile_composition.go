@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -92,10 +88,10 @@ func tileCompositionFull(vp *noxrender.Viewport) {
 	clear(unsafe.Slice(memmap.PtrUint32(0x5D4594, 2523980), 64))
 	dp := vp.ToWorldPos(image.Point{})
 	lx, ly, hx, hy := tileCompositionBounds(int32(dp.X-11)/46, int32(dp.Y-11)/46-1)
-	dword_5d4594_3798828 = C.uint32_t(lx)
-	dword_5d4594_3798832 = C.uint32_t(ly)
-	dword_5d4594_3798820 = C.uint32_t(46*lx - 11)
-	dword_5d4594_3798824 = C.uint32_t(46*ly - 11)
+	dword_5d4594_3798828 = uint32(lx)
+	dword_5d4594_3798832 = uint32(ly)
+	dword_5d4594_3798820 = uint32(46*lx - 11)
+	dword_5d4594_3798824 = uint32(46*ly - 11)
 	for y := ly; y < hy; y++ {
 		for x := lx; x < hx; x++ {
 			tileCompositionCell(x, y, image.Pt(int(46*x-11), int(46*y-11)))
@@ -152,10 +148,10 @@ func tileCompositionHorizontal(vp *noxrender.Viewport, view int) {
 			}
 		}
 	}
-	dword_5d4594_3798820 = C.uint32_t(ox)
-	dword_5d4594_3798828 = C.uint32_t(tx)
-	dword_5d4594_3798836 = C.uint32_t(sx)
-	dword_5d4594_3798840 = C.uint32_t(sy)
+	dword_5d4594_3798820 = uint32(ox)
+	dword_5d4594_3798828 = uint32(tx)
+	dword_5d4594_3798836 = uint32(sx)
+	dword_5d4594_3798840 = uint32(sy)
 	tileCompositionReset()
 	py := int32(dword_5d4594_3798824)
 	start := int32(dword_5d4594_3798832)
@@ -209,9 +205,9 @@ func tileCompositionVertical(vp *noxrender.Viewport, view int) {
 		}
 		py = oy
 	}
-	dword_5d4594_3798824 = C.uint32_t(oy)
-	dword_5d4594_3798832 = C.uint32_t(ty)
-	dword_5d4594_3798840 = C.uint32_t(sy)
+	dword_5d4594_3798824 = uint32(oy)
+	dword_5d4594_3798832 = uint32(ty)
+	dword_5d4594_3798840 = uint32(sy)
 	tileCompositionReset()
 	px := int32(dword_5d4594_3798820)
 	start := int32(dword_5d4594_3798828)

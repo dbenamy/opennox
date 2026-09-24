@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/internal/protection"
@@ -23,8 +19,8 @@ func PortTestPlayerFileRecords() (ids [2]uint32, reset func(), snapshot func() [
 	reset = func() {
 		records[0] = protection.Record{ID: ids[0] ^ key, Value: key, Next: &records[1]}
 		records[1] = protection.Record{ID: ids[1] ^ key, Value: key, Prev: &records[0]}
-		dword_5d4594_2516344 = C.uint32_t(uintptr(unsafe.Pointer(&records[0])))
-		dword_5d4594_2516348 = C.uint32_t(key)
+		dword_5d4594_2516344 = uint32(uintptr(unsafe.Pointer(&records[0])))
+		dword_5d4594_2516348 = uint32(key)
 		dword_5d4594_2516328 = 0x2468ace0
 	}
 	snapshot = func() [3]uint32 {

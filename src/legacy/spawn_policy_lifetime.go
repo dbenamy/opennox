@@ -47,7 +47,7 @@ func spawnPolicyHead() *spawnPolicyNode {
 	return (*spawnPolicyNode)(unsafe.Pointer(uintptr(dword_5d4594_2386212)))
 }
 func spawnPolicySetHead(p *spawnPolicyNode) {
-	dword_5d4594_2386212 = C.uint32_t(uintptr(unsafe.Pointer(p)))
+	dword_5d4594_2386212 = uint32(uintptr(unsafe.Pointer(p)))
 }
 
 // spawnPolicyInit is 50D780. It intentionally leaves an already-created

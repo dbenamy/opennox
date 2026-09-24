@@ -14,7 +14,7 @@ func nox_xxx_protectData_56F5C0() C.int {
 	frame := GetServer().S().Frame()
 	oldKey := uint32(dword_5d4594_2516348)
 	newKey := protectionRandom.Draw() ^ frame
-	dword_5d4594_2516328 = C.uint32_t(^newKey)
+	dword_5d4594_2516328 = uint32(^newKey)
 	count := int(*memmap.PtrUint16(0x587000, 311204))
 	head := protectionHead()
 	for i := 0; i < count/4; i++ {
@@ -25,8 +25,8 @@ func nox_xxx_protectData_56F5C0() C.int {
 		}
 	}
 	dword_5d4594_2516348 = 0
-	dword_5d4594_2516328 = C.uint32_t(protection.Rekey(head, oldKey, newKey))
+	dword_5d4594_2516328 = uint32(protection.Rekey(head, oldKey, newKey))
 	*memmap.PtrUint32(0x5D4594, 2516364)++
-	dword_5d4594_2516348 = C.uint32_t(newKey)
+	dword_5d4594_2516348 = uint32(newKey)
 	return C.int(newKey)
 }

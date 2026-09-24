@@ -52,7 +52,7 @@ func spellEffectAlert(source, target *server.Object) {
 }
 func spellEffectGlyphType() uint32 {
 	if dword_5d4594_2487712 == 0 {
-		dword_5d4594_2487712 = C.uint32_t(GetServer().S().Types.IndByID("Glyph"))
+		dword_5d4594_2487712 = uint32(GetServer().S().Types.IndByID("Glyph"))
 	}
 	return uint32(dword_5d4594_2487712)
 }

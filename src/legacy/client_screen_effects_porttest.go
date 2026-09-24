@@ -67,7 +67,7 @@ type PortTestScreenEnvironment struct{ restore []func() }
 
 func PortTestNewScreenEnvironment() *PortTestScreenEnvironment {
 	e := new(PortTestScreenEnvironment)
-	old := [4]C.uint32_t{dword_5d4594_3807140, dword_5d4594_3807136, dword_5d4594_3807116, dword_5d4594_3807152}
+	old := [4]uint32{dword_5d4594_3807140, dword_5d4594_3807136, dword_5d4594_3807116, dword_5d4594_3807152}
 	e.restore = append(e.restore, func() {
 		dword_5d4594_3807140, dword_5d4594_3807136, dword_5d4594_3807116, dword_5d4594_3807152 = old[0], old[1], old[2], old[3]
 	})

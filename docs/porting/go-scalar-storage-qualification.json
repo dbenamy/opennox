@@ -1,0 +1,2423 @@
+{
+  "baseline": {
+    "success": true,
+    "source_commit": "12bc387d1044324a845ebaa545d7909d1d654f96",
+    "all_source_fingerprints_identical": true,
+    "reused_root_and_production_evidence": "docs/porting/go-only-exports-qualification.json",
+    "scalar_owners": 395,
+    "patterns_per_owner": 139,
+    "scalar_cases": 54905,
+    "profiles": {
+      "default": {
+        "result": {
+          "tags": "porttest",
+          "success": true,
+          "timeout_seconds": 600,
+          "packages": [
+            "./legacy"
+          ],
+          "runtime_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "768MiB",
+            "GOGC": null
+          },
+          "discovery_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "1536MiB",
+            "GOGC": null
+          },
+          "discovery_exit": 0,
+          "selected_tests": 2,
+          "selected_root_tests": 0,
+          "execution_command": [
+            "go",
+            "test",
+            "-p",
+            "2",
+            "-tags",
+            "porttest",
+            "-count=1",
+            "-timeout",
+            "600s",
+            "-json",
+            "-run",
+            "^(TestRawStorageOwners|TestScalarStorageOwners)$",
+            "./legacy"
+          ],
+          "exit": 0,
+          "started_tests": 2,
+          "completed_tests": 2,
+          "started_root_tests": 0,
+          "completed_root_tests": 0,
+          "skipped_tests": [],
+          "failed_tests": [],
+          "failure_events": [],
+          "missing_started": [],
+          "missing_completed": [],
+          "reason": "all selected tests executed and finished",
+          "wall_seconds": 75.16351364506409
+        },
+        "exact_test_names": [
+          "TestRawStorageOwners",
+          "TestScalarStorageOwners"
+        ],
+        "captures": {
+          "scalar": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+          "raw": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3"
+        }
+      },
+      "default-repeat": {
+        "result": {
+          "tags": "porttest",
+          "success": true,
+          "timeout_seconds": 600,
+          "packages": [
+            "./legacy"
+          ],
+          "runtime_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "768MiB",
+            "GOGC": null
+          },
+          "discovery_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "1536MiB",
+            "GOGC": null
+          },
+          "discovery_exit": 0,
+          "selected_tests": 2,
+          "selected_root_tests": 0,
+          "execution_command": [
+            "go",
+            "test",
+            "-p",
+            "2",
+            "-tags",
+            "porttest",
+            "-count=1",
+            "-timeout",
+            "600s",
+            "-json",
+            "-run",
+            "^(TestRawStorageOwners|TestScalarStorageOwners)$",
+            "./legacy"
+          ],
+          "exit": 0,
+          "started_tests": 2,
+          "completed_tests": 2,
+          "started_root_tests": 0,
+          "completed_root_tests": 0,
+          "skipped_tests": [],
+          "failed_tests": [],
+          "failure_events": [],
+          "missing_started": [],
+          "missing_completed": [],
+          "reason": "all selected tests executed and finished",
+          "wall_seconds": 4.512340285815299
+        },
+        "exact_test_names": [
+          "TestRawStorageOwners",
+          "TestScalarStorageOwners"
+        ],
+        "captures": {
+          "scalar": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+          "raw": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3"
+        }
+      },
+      "server": {
+        "result": {
+          "tags": "porttest,server",
+          "success": true,
+          "timeout_seconds": 600,
+          "packages": [
+            "./legacy"
+          ],
+          "runtime_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "768MiB",
+            "GOGC": null
+          },
+          "discovery_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "1536MiB",
+            "GOGC": null
+          },
+          "discovery_exit": 0,
+          "selected_tests": 2,
+          "selected_root_tests": 0,
+          "execution_command": [
+            "go",
+            "test",
+            "-p",
+            "2",
+            "-tags",
+            "porttest,server",
+            "-count=1",
+            "-timeout",
+            "600s",
+            "-json",
+            "-run",
+            "^(TestRawStorageOwners|TestScalarStorageOwners)$",
+            "./legacy"
+          ],
+          "exit": 0,
+          "started_tests": 2,
+          "completed_tests": 2,
+          "started_root_tests": 0,
+          "completed_root_tests": 0,
+          "skipped_tests": [],
+          "failed_tests": [],
+          "failure_events": [],
+          "missing_started": [],
+          "missing_completed": [],
+          "reason": "all selected tests executed and finished",
+          "wall_seconds": 74.37449076818302
+        },
+        "exact_test_names": [
+          "TestRawStorageOwners",
+          "TestScalarStorageOwners"
+        ],
+        "captures": {
+          "scalar": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+          "raw": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3"
+        }
+      },
+      "highres": {
+        "result": {
+          "tags": "porttest,highres",
+          "success": true,
+          "timeout_seconds": 600,
+          "packages": [
+            "./legacy"
+          ],
+          "runtime_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "768MiB",
+            "GOGC": null
+          },
+          "discovery_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "1536MiB",
+            "GOGC": null
+          },
+          "discovery_exit": 0,
+          "selected_tests": 2,
+          "selected_root_tests": 0,
+          "execution_command": [
+            "go",
+            "test",
+            "-p",
+            "2",
+            "-tags",
+            "porttest,highres",
+            "-count=1",
+            "-timeout",
+            "600s",
+            "-json",
+            "-run",
+            "^(TestRawStorageOwners|TestScalarStorageOwners)$",
+            "./legacy"
+          ],
+          "exit": 0,
+          "started_tests": 2,
+          "completed_tests": 2,
+          "started_root_tests": 0,
+          "completed_root_tests": 0,
+          "skipped_tests": [],
+          "failed_tests": [],
+          "failure_events": [],
+          "missing_started": [],
+          "missing_completed": [],
+          "reason": "all selected tests executed and finished",
+          "wall_seconds": 4.987852931022644
+        },
+        "exact_test_names": [
+          "TestRawStorageOwners",
+          "TestScalarStorageOwners"
+        ],
+        "captures": {
+          "scalar": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+          "raw": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3"
+        }
+      },
+      "safe": {
+        "result": {
+          "tags": "porttest,safe",
+          "success": true,
+          "timeout_seconds": 600,
+          "packages": [
+            "./legacy"
+          ],
+          "runtime_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "768MiB",
+            "GOGC": null
+          },
+          "discovery_env": {
+            "GOMAXPROCS": "2",
+            "GOMEMLIMIT": "1536MiB",
+            "GOGC": null
+          },
+          "discovery_exit": 0,
+          "selected_tests": 1,
+          "selected_root_tests": 0,
+          "execution_command": [
+            "go",
+            "test",
+            "-p",
+            "2",
+            "-tags",
+            "porttest,safe",
+            "-count=1",
+            "-timeout",
+            "600s",
+            "-json",
+            "-run",
+            "^TestScalarStorageOwners$",
+            "./legacy"
+          ],
+          "exit": 0,
+          "started_tests": 1,
+          "completed_tests": 1,
+          "started_root_tests": 0,
+          "completed_root_tests": 0,
+          "skipped_tests": [],
+          "failed_tests": [],
+          "failure_events": [],
+          "missing_started": [],
+          "missing_completed": [],
+          "reason": "all selected tests executed and finished",
+          "wall_seconds": 4.111612122040242
+        },
+        "exact_test_names": [
+          "TestScalarStorageOwners"
+        ],
+        "captures": {
+          "scalar": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b"
+        }
+      }
+    },
+    "original_full_safe_attempt": {
+      "batch": "go-scalar-storage",
+      "phase": "storage-baseline",
+      "success": false,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage-baseline/default-scalar.json",
+            "OPENNOX_RAW_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage-baseline/default-raw.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/raw-storage-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-scalar-storage/storage-baseline/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-scalar-storage/storage-baseline/default-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 75.25856591109186
+        },
+        {
+          "name": "default-repeat",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage-baseline/default-repeat-scalar.json",
+            "OPENNOX_RAW_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage-baseline/default-repeat-raw.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/raw-storage-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-scalar-storage/storage-baseline/default-repeat.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-scalar-storage/storage-baseline/default-repeat-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 4.5842517470009625
+        },
+        {
+          "name": "server",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage-baseline/server-scalar.json",
+            "OPENNOX_RAW_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage-baseline/server-raw.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/raw-storage-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-scalar-storage/storage-baseline/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-scalar-storage/storage-baseline/server-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 74.45602791104466
+        },
+        {
+          "name": "highres",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage-baseline/highres-scalar.json",
+            "OPENNOX_RAW_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage-baseline/highres-raw.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/raw-storage-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-scalar-storage/storage-baseline/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-scalar-storage/storage-baseline/highres-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 5.0614836709573865
+        },
+        {
+          "name": "safe",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage-baseline/safe-scalar.json",
+            "OPENNOX_RAW_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage-baseline/safe-raw.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/raw-storage-tests.txt",
+            "--tags",
+            "porttest,safe",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-scalar-storage/storage-baseline/safe.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-scalar-storage/storage-baseline/safe-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 1,
+          "wall_seconds": 76.38940335507505
+        }
+      ],
+      "revision": "12bc387d1044324a845ebaa545d7909d1d654f96",
+      "error": "safe failed; see /root/src/opennox/build/port-go-scalar-storage/storage-baseline/safe.log",
+      "source_unchanged": true,
+      "wall_seconds": 236.42169788200408,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "safe_raw_fixture_limitation": {
+      "test": "TestRawStorageOwners",
+      "site": "src/legacy/raw_storage_porttest_test.go:67",
+      "guard": "src/common/memmap/checks.go:19",
+      "reason": "Fixture deliberately probes registered/extracted mapped-variable offsets. Safe enables runtime checks and correctly rejects the first such address before the scalar test starts.",
+      "observed": "intersection with byte_581450_1416 (+0) at (0x581450, 1416)",
+      "decision": "Preserve fixture/guard/expectations; qualify raw contract in normal profiles and scalar contract separately in safe.",
+      "failed_log": "build/port-go-scalar-storage/storage-baseline/safe.jsonl"
+    },
+    "safe_scalar_retry": {
+      "batch": "go-scalar-storage",
+      "phase": "storage-baseline-safe",
+      "success": true,
+      "steps": [
+        {
+          "name": "safe-scalars",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage-baseline-safe/safe-scalar.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/scalar-storage-tests.txt",
+            "--tags",
+            "porttest,safe",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-scalar-storage/storage-baseline-safe/safe.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-scalar-storage/storage-baseline-safe/safe-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 4.227060184115544
+        }
+      ],
+      "revision": "12bc387d1044324a845ebaa545d7909d1d654f96",
+      "source_unchanged": true,
+      "wall_seconds": 4.503687666030601,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "ast_review": {
+      "command": "go run build/port-go-scalar-storage/review_ast.go",
+      "exit": 0,
+      "checked_type_contexts": 1172,
+      "files": 122,
+      "unshadowed_package_global_assignments": true,
+      "draft_syntax_parses": true,
+      "script_sha256": "ec4ee496ba55f3ba29c63643f2ab02c8e005638f36d68f0300f36b69e824c6e4",
+      "installed": false
+    },
+    "proposed_cgo_import_removals": {
+      "files": [
+        {
+          "file": "src/legacy/ai_main_porttest.go",
+          "profile": "porttest",
+          "removed_text": "/*\n#include \"GAME5.h\"\n#include \"GAME4_3.h\"\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/ai_waypoint_graph_porttest.go",
+          "profile": "porttest",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/briefing.go",
+          "profile": "production",
+          "removed_text": "/*\n#include \"defs.h\"\n#include \"GAME2.h\"\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/client_effects_curve.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/client_effects_lightning.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/client_effects_plasma.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/client_effects_rays.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/client_object_render.go",
+          "profile": "production",
+          "removed_text": "/*\n#include \"defs.h\"\n#include \"GAME1_1.h\"\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/client_object_render_beam.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/client_particle_drawing.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/client_particle_light.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/client_resource_lifecycle.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/client_sequence.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdlib.h>\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/client_ui_render.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/client_ui_trade_input.go",
+          "profile": "production",
+          "removed_text": "/*\n#include \"defs.h\"\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/gameplay_reports_porttest.go",
+          "profile": "porttest",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/gui_quit.go",
+          "profile": "production",
+          "removed_text": "/*\n#include \"client__gui__guiquit.h\"\n#include \"GAME1_1.h\"\n#include \"GAME1_3.h\"\n#include \"GAME3_2.h\"\n#include \"GAME4_1.h\"\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/gui_video_adv.go",
+          "profile": "production",
+          "removed_text": "/*\n#include \"client__gui__window.h\"\nint nox_xxx_tileSetDrawFn_481420();\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/map_catalog.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdlib.h>\n#include \"defs.h\"\n\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/parsecmd.go",
+          "profile": "production",
+          "removed_text": "/*\n */\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/player_files_records_porttest.go",
+          "profile": "porttest",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/protection_init.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/quest_eligibility.go",
+          "profile": "production",
+          "removed_text": "/*\n#include \"GAME1_1.h\"\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/quest_penalty_protection_porttest.go",
+          "profile": "porttest",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/quest_runtime_state.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/resources_protection_porttest.go",
+          "profile": "porttest",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/scalar_globals.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/scalar_storage_porttest.go",
+          "profile": "porttest",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/server_config_scalar.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/server_runtime_lifecycle.go",
+          "profile": "production",
+          "removed_text": "/*\n#include <stdint.h>\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/server_runtime_pause_porttest.go",
+          "profile": "porttest",
+          "removed_text": "/*\n#include \"common__gamemech__pausefx.h\"\n#include \"GAME5_2.h\"\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/shop.go",
+          "profile": "production",
+          "removed_text": "/*\n#include \"GAME3_3.h\"\n#include \"GAME4.h\"\n\n\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/spawn_policy.go",
+          "profile": "production",
+          "removed_text": "/*\n#include \"GAME3_3.h\"\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/spell_effects_spatial.go",
+          "profile": "production",
+          "removed_text": "/*\n#include \"GAME3_3.h\"\n#include \"GAME3_1.h\"\n#include \"GAME3_2.h\"\n#include \"GAME4_2.h\"\n#include \"GAME4_3.h\"\n*/\nimport \"C\"\n"
+        },
+        {
+          "file": "src/legacy/tile_composition.go",
+          "profile": "production",
+          "removed_text": "/*\n#include \"defs.h\"\n*/\nimport \"C\"\n"
+        }
+      ],
+      "production": 27,
+      "porttest": 8,
+      "local_header_closure": "header-closure-review.json",
+      "init_review": "No init functions. Constant conversions, compile-time size assertions, function values unchanged. scalarStorageInitial IS eagerly invoked at variable initialization; retain exact existing initial-value contracts."
+    },
+    "header_review": {
+      "paths": [
+        "src/legacy/GAME1_1.h",
+        "src/legacy/GAME1_3.h",
+        "src/legacy/GAME2.h",
+        "src/legacy/GAME3_1.h",
+        "src/legacy/GAME3_2.h",
+        "src/legacy/GAME3_3.h",
+        "src/legacy/GAME4.h",
+        "src/legacy/GAME4_1.h",
+        "src/legacy/GAME4_2.h",
+        "src/legacy/GAME4_3.h",
+        "src/legacy/GAME5.h",
+        "src/legacy/GAME5_2.h",
+        "src/legacy/client__gui__guiquit.h",
+        "src/legacy/client__gui__window.h",
+        "src/legacy/common/alloc/classes/alloc_class.h",
+        "src/legacy/common/platform/platform.h",
+        "src/legacy/common__gamemech__pausefx.h",
+        "src/legacy/common__savegame.h",
+        "src/legacy/common__system__team.h",
+        "src/legacy/defs.h",
+        "src/legacy/memfile.h",
+        "src/legacy/nox_wchar.h",
+        "src/legacy/noxstring.h",
+        "src/legacy/static_assert.h"
+      ],
+      "no_constructor_or_build_directive_markers": true,
+      "source": "current qualified header surface; scalar draft changes no headers"
+    },
+    "scope": "Uninstalled draft; actual compiler/boundary fixes and all post-conversion gates remain."
+  },
+  "phases": {
+    "storage": {
+      "batch": "go-scalar-storage",
+      "phase": "storage",
+      "success": true,
+      "steps": [
+        {
+          "name": "default",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage/default-scalar.json",
+            "OPENNOX_RAW_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage/default-raw.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/raw-storage-tests.txt",
+            "--tags",
+            "porttest",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-scalar-storage/storage/default.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-scalar-storage/storage/default-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 70.96512188389897
+        },
+        {
+          "name": "server",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage/server-scalar.json",
+            "OPENNOX_RAW_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage/server-raw.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/raw-storage-tests.txt",
+            "--tags",
+            "porttest,server",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-scalar-storage/storage/server.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-scalar-storage/storage/server-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 70.30000876798294
+        },
+        {
+          "name": "highres",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage/highres-scalar.json",
+            "OPENNOX_RAW_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage/highres-raw.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/raw-storage-tests.txt",
+            "--tags",
+            "porttest,highres",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-scalar-storage/storage/highres.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-scalar-storage/storage/highres-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 4.972336861072108
+        },
+        {
+          "name": "safe-scalars",
+          "command": [
+            "env",
+            "OPENNOX_SCALAR_STORAGE_CAPTURE=/root/src/opennox/build/port-go-scalar-storage/storage/safe-scalar.json",
+            "python3",
+            "/root/src/opennox/tools/porting/run_tests.py",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/scalar-storage-tests.txt",
+            "--tags",
+            "porttest,safe",
+            "--package",
+            "./legacy",
+            "--log",
+            "/root/src/opennox/build/port-go-scalar-storage/storage/safe.jsonl",
+            "--result",
+            "/root/src/opennox/build/port-go-scalar-storage/storage/safe-result.json",
+            "--require-no-skips"
+          ],
+          "exit": 0,
+          "wall_seconds": 73.30401027901098
+        }
+      ],
+      "revision": "a50614803e6964e4e802d5d746a5358f0f28652d",
+      "source_unchanged": true,
+      "wall_seconds": 220.28621314186603,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "contracts": {
+      "batch": "go-scalar-storage",
+      "phase": "contracts",
+      "success": true,
+      "steps": [
+        {
+          "name": "profiles",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/run_profiles.py",
+            "--out",
+            "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles",
+            "--pattern-file",
+            "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+            "--jobs",
+            "2",
+            "--timeout-seconds",
+            "3600"
+          ],
+          "exit": 0,
+          "wall_seconds": 2101.3196332789958
+        }
+      ],
+      "revision": "a50614803e6964e4e802d5d746a5358f0f28652d",
+      "source_unchanged": true,
+      "wall_seconds": 2101.5960238741245,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "safe": {
+      "batch": "go-scalar-storage",
+      "phase": "safe",
+      "success": true,
+      "steps": [
+        {
+          "name": "build",
+          "command": [
+            "env",
+            "GOMEMLIMIT=1536MiB",
+            "go",
+            "build",
+            "-p",
+            "2",
+            "-tags",
+            "safe",
+            "-o",
+            "/root/src/opennox/build/port-go-scalar-storage/safe/opennox-safe",
+            "./cmd/opennox"
+          ],
+          "exit": 0,
+          "wall_seconds": 54.828490901971236
+        },
+        {
+          "name": "static",
+          "command": [
+            "go",
+            "test",
+            "./common/memmap/nox",
+            "-run",
+            "^TestCodeStatic$",
+            "-count=1"
+          ],
+          "exit": 0,
+          "wall_seconds": 1.0887357590254396
+        }
+      ],
+      "revision": "a50614803e6964e4e802d5d746a5358f0f28652d",
+      "source_unchanged": true,
+      "wall_seconds": 56.34944816213101,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    },
+    "production": {
+      "batch": "go-scalar-storage",
+      "phase": "production",
+      "success": true,
+      "steps": [
+        {
+          "name": "production",
+          "command": [
+            "python3",
+            "/root/src/opennox/tools/porting/qualify_production.py",
+            "/root/src/opennox/docs/porting/go-scalar-storage-batch.json",
+            "--out",
+            "/root/src/opennox/build/port-go-scalar-storage/production/production"
+          ],
+          "exit": 0,
+          "wall_seconds": 210.51702272705734
+        }
+      ],
+      "revision": "a50614803e6964e4e802d5d746a5358f0f28652d",
+      "source_unchanged": true,
+      "wall_seconds": 210.79245666204952,
+      "c_loc": {
+        "revision": "working tree (tracked files)",
+        "production": {
+          "files": 0,
+          "lines": 0
+        },
+        "test_reference": {
+          "files": 0,
+          "lines": 0
+        }
+      }
+    }
+  },
+  "profile_controller": {
+    "success": true,
+    "jobs": 2,
+    "builds": [
+      {
+        "profile": "server",
+        "exit": 0,
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-c",
+          "-tags",
+          "porttest,server",
+          "-o",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/server.test",
+          "."
+        ],
+        "wall_seconds": 101.49405738408677
+      },
+      {
+        "profile": "highres",
+        "exit": 0,
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-c",
+          "-tags",
+          "porttest,highres",
+          "-o",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/highres.test",
+          "."
+        ],
+        "wall_seconds": 102.09657195513137
+      },
+      {
+        "profile": "default",
+        "exit": 0,
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-c",
+          "-tags",
+          "porttest",
+          "-o",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/default.test",
+          "."
+        ],
+        "wall_seconds": 37.91945869708434
+      }
+    ],
+    "profiles": [
+      {
+        "profile": "server",
+        "exit": 0,
+        "success": true,
+        "wall_seconds": 921.6831877280492,
+        "command": [
+          "/usr/bin/python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,server",
+          "--test-binary",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/server.test",
+          "--binary-record",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/server-binary.json",
+          "--log",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/server-result.json",
+          "--timeout-seconds",
+          "3600"
+        ]
+      },
+      {
+        "profile": "highres",
+        "exit": 0,
+        "success": true,
+        "wall_seconds": 932.7356742599513,
+        "command": [
+          "/usr/bin/python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest,highres",
+          "--test-binary",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/highres.test",
+          "--binary-record",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/highres-binary.json",
+          "--log",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/highres-result.json",
+          "--timeout-seconds",
+          "3600"
+        ]
+      },
+      {
+        "profile": "default",
+        "exit": 0,
+        "success": true,
+        "wall_seconds": 936.3268695629667,
+        "command": [
+          "/usr/bin/python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/accumulated-test-pattern.txt",
+          "--tags",
+          "porttest",
+          "--test-binary",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/default.test",
+          "--binary-record",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/default-binary.json",
+          "--log",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/default-result.json",
+          "--timeout-seconds",
+          "3600"
+        ]
+      }
+    ],
+    "source_unchanged": true,
+    "wall_seconds": 2100.911401883932
+  },
+  "contracts": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 3600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "binary_verification": {
+        "path": "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/default.test",
+        "sha256": "99cb1325da8602df86341aab825c45c1993a49e964d80de918a61b356b68b535",
+        "source_matches": true,
+        "record_matches": true,
+        "build_metadata": {
+          "path": "github.com/opennox/opennox/v1.test",
+          "-buildmode": "exe",
+          "-compiler": "gc",
+          "tags": "porttest",
+          "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+          "CGO_ENABLED": "1",
+          "CGO_CFLAGS": "",
+          "CGO_CPPFLAGS": "",
+          "CGO_CXXFLAGS": "",
+          "CGO_LDFLAGS": "",
+          "GOARCH": "386",
+          "GOOS": "linux",
+          "GO386": "sse2"
+        },
+        "verified": true
+      },
+      "discovery_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/default.test",
+        "-test.list=^Test"
+      ],
+      "discovery_exit": 0,
+      "selected_tests": 2426,
+      "selected_root_tests": 2426,
+      "execution_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/default.test",
+        "-test.v=test2json",
+        "-test.count=1",
+        "-test.timeout=3600s",
+        "-test.run=^Test"
+      ],
+      "exit": 0,
+      "started_tests": 2426,
+      "completed_tests": 2426,
+      "started_root_tests": 2426,
+      "completed_root_tests": 2426,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 936.2619271501899,
+      "exact_baseline_names_match": true,
+      "all_skips": [
+        "TestMapPopulationPrerequisiteProbe"
+      ],
+      "log_sha256": "a103267f021904ee1c3aa51440b9e83a74664a4f21b6b72f50f328a067c52312"
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 3600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "binary_verification": {
+        "path": "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/server.test",
+        "sha256": "195fdc3f63ccb9e5ab1ed33d03855e2f7be69300616afa44c9373d63131f6130",
+        "source_matches": true,
+        "record_matches": true,
+        "build_metadata": {
+          "path": "github.com/opennox/opennox/v1.test",
+          "-buildmode": "exe",
+          "-compiler": "gc",
+          "tags": "porttest,server",
+          "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+          "CGO_ENABLED": "1",
+          "CGO_CFLAGS": "",
+          "CGO_CPPFLAGS": "",
+          "CGO_CXXFLAGS": "",
+          "CGO_LDFLAGS": "",
+          "GOARCH": "386",
+          "GOOS": "linux",
+          "GO386": "sse2"
+        },
+        "verified": true
+      },
+      "discovery_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/server.test",
+        "-test.list=^Test"
+      ],
+      "discovery_exit": 0,
+      "selected_tests": 2415,
+      "selected_root_tests": 2415,
+      "execution_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/server.test",
+        "-test.v=test2json",
+        "-test.count=1",
+        "-test.timeout=3600s",
+        "-test.run=^Test"
+      ],
+      "exit": 0,
+      "started_tests": 2415,
+      "completed_tests": 2415,
+      "started_root_tests": 2415,
+      "completed_root_tests": 2415,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 921.5926188158337,
+      "exact_baseline_names_match": true,
+      "all_skips": [
+        "TestMapPopulationPrerequisiteProbe"
+      ],
+      "log_sha256": "27d9eae0b5a8f0a6c4f23008393c49d86b7637584c2d15cff9f5f20252149b8f"
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 3600,
+      "packages": [
+        "."
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "binary_verification": {
+        "path": "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/highres.test",
+        "sha256": "c10a6b3f51efa93d97019e7079edf426f0f0adbce0893abb763c82cb194f4790",
+        "source_matches": true,
+        "record_matches": true,
+        "build_metadata": {
+          "path": "github.com/opennox/opennox/v1.test",
+          "-buildmode": "exe",
+          "-compiler": "gc",
+          "tags": "porttest,highres",
+          "DefaultGODEBUG": "cryptocustomrand=1,tlssecpmlkem=0,urlstrictcolons=0",
+          "CGO_ENABLED": "1",
+          "CGO_CFLAGS": "",
+          "CGO_CPPFLAGS": "",
+          "CGO_CXXFLAGS": "",
+          "CGO_LDFLAGS": "",
+          "GOARCH": "386",
+          "GOOS": "linux",
+          "GO386": "sse2"
+        },
+        "verified": true
+      },
+      "discovery_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/highres.test",
+        "-test.list=^Test"
+      ],
+      "discovery_exit": 0,
+      "selected_tests": 2426,
+      "selected_root_tests": 2426,
+      "execution_command": [
+        "go",
+        "tool",
+        "test2json",
+        "-t",
+        "-p",
+        "github.com/opennox/opennox/v1",
+        "/root/src/opennox/build/port-go-scalar-storage/contracts/profiles/highres.test",
+        "-test.v=test2json",
+        "-test.count=1",
+        "-test.timeout=3600s",
+        "-test.run=^Test"
+      ],
+      "exit": 0,
+      "started_tests": 2426,
+      "completed_tests": 2426,
+      "started_root_tests": 2426,
+      "completed_root_tests": 2426,
+      "skipped_tests": [
+        [
+          "github.com/opennox/opennox/v1",
+          "TestMapPopulationPrerequisiteProbe"
+        ]
+      ],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 932.6697648370173,
+      "exact_baseline_names_match": true,
+      "all_skips": [
+        "TestMapPopulationPrerequisiteProbe"
+      ],
+      "log_sha256": "7bfcbeac5378e29f17fdb286822a3dc69eb25446ac3a6ff141b0241b5470e7e3"
+    }
+  },
+  "storage": {
+    "default": {
+      "tags": "porttest",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "./legacy"
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 2,
+      "selected_root_tests": 0,
+      "execution_command": [
+        "go",
+        "test",
+        "-p",
+        "2",
+        "-tags",
+        "porttest",
+        "-count=1",
+        "-timeout",
+        "600s",
+        "-json",
+        "-run",
+        "^(TestRawStorageOwners|TestScalarStorageOwners)$",
+        "./legacy"
+      ],
+      "exit": 0,
+      "started_tests": 2,
+      "completed_tests": 2,
+      "started_root_tests": 0,
+      "completed_root_tests": 0,
+      "skipped_tests": [],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 70.85632685897872,
+      "exact_test_names_match": true
+    },
+    "server": {
+      "tags": "porttest,server",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "./legacy"
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 2,
+      "selected_root_tests": 0,
+      "execution_command": [
+        "go",
+        "test",
+        "-p",
+        "2",
+        "-tags",
+        "porttest,server",
+        "-count=1",
+        "-timeout",
+        "600s",
+        "-json",
+        "-run",
+        "^(TestRawStorageOwners|TestScalarStorageOwners)$",
+        "./legacy"
+      ],
+      "exit": 0,
+      "started_tests": 2,
+      "completed_tests": 2,
+      "started_root_tests": 0,
+      "completed_root_tests": 0,
+      "skipped_tests": [],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 70.22206834796816,
+      "exact_test_names_match": true
+    },
+    "highres": {
+      "tags": "porttest,highres",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "./legacy"
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 2,
+      "selected_root_tests": 0,
+      "execution_command": [
+        "go",
+        "test",
+        "-p",
+        "2",
+        "-tags",
+        "porttest,highres",
+        "-count=1",
+        "-timeout",
+        "600s",
+        "-json",
+        "-run",
+        "^(TestRawStorageOwners|TestScalarStorageOwners)$",
+        "./legacy"
+      ],
+      "exit": 0,
+      "started_tests": 2,
+      "completed_tests": 2,
+      "started_root_tests": 0,
+      "completed_root_tests": 0,
+      "skipped_tests": [],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 4.866464659105986,
+      "exact_test_names_match": true
+    },
+    "safe": {
+      "tags": "porttest,safe",
+      "success": true,
+      "timeout_seconds": 600,
+      "packages": [
+        "./legacy"
+      ],
+      "runtime_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "768MiB",
+        "GOGC": null
+      },
+      "discovery_env": {
+        "GOMAXPROCS": "2",
+        "GOMEMLIMIT": "1536MiB",
+        "GOGC": null
+      },
+      "discovery_exit": 0,
+      "selected_tests": 1,
+      "selected_root_tests": 0,
+      "execution_command": [
+        "go",
+        "test",
+        "-p",
+        "2",
+        "-tags",
+        "porttest,safe",
+        "-count=1",
+        "-timeout",
+        "600s",
+        "-json",
+        "-run",
+        "^TestScalarStorageOwners$",
+        "./legacy"
+      ],
+      "exit": 0,
+      "started_tests": 1,
+      "completed_tests": 1,
+      "started_root_tests": 0,
+      "completed_root_tests": 0,
+      "skipped_tests": [],
+      "failed_tests": [],
+      "failure_events": [],
+      "missing_started": [],
+      "missing_completed": [],
+      "reason": "all selected tests executed and finished",
+      "wall_seconds": 73.2032645540312,
+      "exact_test_names_match": true
+    }
+  },
+  "storage_captures": [
+    {
+      "path": "build/port-go-scalar-storage/storage/default-scalar.json",
+      "sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+      "frozen_match": true
+    },
+    {
+      "path": "build/port-go-scalar-storage/storage/default-raw.json",
+      "sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3",
+      "frozen_match": true
+    },
+    {
+      "path": "build/port-go-scalar-storage/storage/server-scalar.json",
+      "sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+      "frozen_match": true
+    },
+    {
+      "path": "build/port-go-scalar-storage/storage/server-raw.json",
+      "sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3",
+      "frozen_match": true
+    },
+    {
+      "path": "build/port-go-scalar-storage/storage/highres-scalar.json",
+      "sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+      "frozen_match": true
+    },
+    {
+      "path": "build/port-go-scalar-storage/storage/highres-raw.json",
+      "sha256": "d83791277fd3c4d8cbc1744a3058abe27732e796e0cb165f7daac9e25dac0fd3",
+      "frozen_match": true
+    },
+    {
+      "path": "build/port-go-scalar-storage/storage/safe-scalar.json",
+      "sha256": "6de9fccecf723a0f1e0693560cc57abcf5eac137eebbaac634b771dfd7aa6b2b",
+      "frozen_match": true
+    }
+  ],
+  "storage_frozen_hashes_verified_by_runner": true,
+  "production": {
+    "success": true,
+    "builds": {
+      "opennox": {
+        "exit": 0,
+        "wall_seconds": 52.97940704901703,
+        "sha256": "e4accc047e6a171800ed4d0091f49ac66d4aa9701ee2fc6dd4bfeee08c6af338",
+        "abi_verified": true
+      },
+      "opennox-hd": {
+        "exit": 0,
+        "wall_seconds": 10.059020151151344,
+        "sha256": "933c66eb4ad16daaee3d3d5f93680a75de022a1cb5c100ef533538696ea4c907",
+        "abi_verified": true
+      },
+      "opennox-server": {
+        "exit": 0,
+        "wall_seconds": 52.16878374898806,
+        "sha256": "5f404cd8c10f7ab23d59f9cc7100a82b295abf5d849861e6bb51ff95eef00cd8",
+        "abi_verified": true
+      }
+    },
+    "scenarios": {
+      "go-scalar-storage-save": {
+        "exit": 0,
+        "wall_seconds": 45.15832254406996,
+        "capture": {
+          "exit": 0,
+          "process_exit": 0,
+          "elapsed": 44.61046012211591,
+          "capture": false,
+          "godebug": ",randautoseed=0",
+          "reference": "/root/src/opennox/build/baseline/runs/entry-classifiers-c-save",
+          "binary_sha256": "e4accc047e6a171800ed4d0091f49ac66d4aa9701ee2fc6dd4bfeee08c6af338",
+          "command": [
+            "xvfb-run",
+            "-a",
+            "-s",
+            "-screen 0 1280x960x24 -nolisten tcp",
+            "/root/src/opennox/build/port-go-scalar-storage/production/production/bin/opennox",
+            "-data",
+            "/root/src/opennox/build/baseline/runs/go-scalar-storage-save/data",
+            "-window",
+            "-pprof",
+            "127.0.0.1:0"
+          ],
+          "display_implementation": "Use Go fixed-width types for 395 existing scalar globals and preserve C interface conversions",
+          "isolated_network": false,
+          "removed_maps": 0,
+          "save_load": {
+            "explicit_save": true,
+            "saved_map_loaded": true,
+            "resumed_after_reload": true,
+            "artifacts": {
+              "Player.plr": {
+                "bytes": 1376,
+                "sha256": "7ddd16f4c62799b0659a998c2b3c04f3436e975155970b0fc9844f88798b554b"
+              },
+              "war01a/war01a.map": {
+                "bytes": 358744,
+                "sha256": "38b315649d29bbd32263389cc41d4fba4d7f8cce3bcbeb8392897c1e329e3d29"
+              }
+            }
+          }
+        }
+      }
+    },
+    "full_suite": {
+      "exit": 1,
+      "wall_seconds": 44.28063067002222,
+      "failure_entries": 304,
+      "packages": {
+        "skip": 32,
+        "pass": 17,
+        "fail": 2
+      },
+      "exact_failure_multiset_match": true,
+      "exact_package_result_match": true
+    }
+  },
+  "source_review": {
+    "baseline": "a5061480",
+    "changed_files": [
+      {
+        "file": "src/legacy/ai_callbacks.go",
+        "before": "863e04706bd5458e86469e614e1c887cb6a058e8391d7d69b10e0d7518128df6",
+        "after": "a7323df1ebbbf888623845ea5c8d4a8c577b1ac5f033ef8ff1ee04a7908d9fe1"
+      },
+      {
+        "file": "src/legacy/ai_callbacks_porttest.go",
+        "before": "9a9bc2816864ef2dbf72e603d959d6e1f1cd96b827ed214ffcb2c7b961dc41d9",
+        "after": "9a2f5f906ea3f5b056cfeb9ad6d6fe672298fb6543fac4e7ef8966e55b3c3ac3"
+      },
+      {
+        "file": "src/legacy/ai_combat.go",
+        "before": "1a36435dd332f437e7763becd0d47e40f87c7cb77a76d773f306d409005cfda5",
+        "after": "c5023c1ad5bc469fc8adde78403fbc723a00da326d75c06990959d30503a8b69"
+      },
+      {
+        "file": "src/legacy/ai_combat_porttest.go",
+        "before": "58979c71006289caf5b2e114e07baf23f8e8215d8d533ed9b8b4dc881ce4e8b9",
+        "after": "60714d993bdd46b2a2abdca06e5c176a06b5754e4f10bf2f69d73646758dde4c"
+      },
+      {
+        "file": "src/legacy/ai_main_porttest.go",
+        "before": "e1478b0315e9e0745c2723bcf3262827d20115ad8fee95a8803a40093c1922cc",
+        "after": "690286b327166a53ae158f0bb864a509ebff50e03f492162497095de6ad41c72"
+      },
+      {
+        "file": "src/legacy/ai_spells.go",
+        "before": "cceba054c000cabb76270766b566792ceb5e735172842208820d39005dfc08df",
+        "after": "ad05d2d0a168ec0d3bbf526965365a0e371a3caa04ce808aee0758ba8ed79f80"
+      },
+      {
+        "file": "src/legacy/ai_waypoint_graph_porttest.go",
+        "before": "2eca57b34909086a7fc23afa3d81feee4cf734f41e42890493d0f0887a6a3c74",
+        "after": "a3d344fa781dca4d5237efa6ea3ca8d0fc89fdf2c3a59a467d0277826a578841"
+      },
+      {
+        "file": "src/legacy/audio_ail.go",
+        "before": "0cd62483581edc5539dacb8c45e0fedc40c85900a87979e8fdd123b8c5adafa0",
+        "after": "1f6475945c6398740bb31c234f3a8be8147e6ff004be0d429d0a6331ddffa304"
+      },
+      {
+        "file": "src/legacy/border_selection.go",
+        "before": "94f1bb0255356d192d360b5a33ede8473bd0be990692df06bccbaacdf5eb8902",
+        "after": "b6522cdc0efd938038a558774052fa52da26e62e335a54cbcf35bff3c4a9d71e"
+      },
+      {
+        "file": "src/legacy/border_selection_porttest.go",
+        "before": "b9c28104a8077f495e4442dc05366fa8ff6c8df78d4544006718113e9c6006a9",
+        "after": "92540c4844dd84e7e96d08fbd3470f2640a0cf8615236627d4ea13afe056ce16"
+      },
+      {
+        "file": "src/legacy/briefing.go",
+        "before": "bddae689dccebcc6b27dcb9100a02fb92fa252b25694581692c8fb934e9b0d2a",
+        "after": "4a2b52dca22136bc300a55330bd8a48377427de5cabac8c948613ec89eca89b5"
+      },
+      {
+        "file": "src/legacy/briefing_window.go",
+        "before": "177da64f8b61a70f09207218ff309d946138c2d760be49b3db37c85c9c966c89",
+        "after": "5fba1e54682faab10b8db3677ac769e2a864f9943979eb35b93627fb96ba3347"
+      },
+      {
+        "file": "src/legacy/client_draw_particles_porttest.go",
+        "before": "81d2c51f23e5b02bbf035cd644418a97ec6ccf7057684e2e264fe4f3002f9096",
+        "after": "333346d5216cce69838d494fe82a4d8783bba11df7f4f84bbbbf5fdf8e0276c1"
+      },
+      {
+        "file": "src/legacy/client_effects.go",
+        "before": "7bdd12a5e49e03c9a0cbf23304d5cb6a6df61caff30855665cae5da73d71da9f",
+        "after": "ed842bdb0fec5e987fdd0da745e159fd9ef29708fa41702b2a3c82b76e5c2c10"
+      },
+      {
+        "file": "src/legacy/client_effects_curve.go",
+        "before": "afaa827f2791f0b1dba6840d8842b2272f8bdec2c12aa04435868acad18b5879",
+        "after": "d6735ac05f1a14f4a25371b9505b61f120968bbf83a8c174433c15a7f455846d"
+      },
+      {
+        "file": "src/legacy/client_effects_lightning.go",
+        "before": "3b741f4e1f3f8a96aff6b9d6fb0afdb6926d1256895908ca9f5d4dd720161c30",
+        "after": "b9087cf8ef52d4631cb92049f341980e8e3181ea2408da78cd0a88c2eadc4020"
+      },
+      {
+        "file": "src/legacy/client_effects_plasma.go",
+        "before": "838044e63679bef0a747ab0c8ad716ad53aeca0d4675e6f0c2d0ed6a5d666a58",
+        "after": "aa975e6a323eebe38730a93c9edfdd43187405a525e22176731e211c37e98279"
+      },
+      {
+        "file": "src/legacy/client_effects_rays.go",
+        "before": "24a19b36db2bc2c2c58ae3eb45c3252310f1074b8fed66dba4aa975d6b32b3e7",
+        "after": "c8e2a89686d5bf75cf046f86772bc3c164938b2ed8936e39d2870cbc0431af9e"
+      },
+      {
+        "file": "src/legacy/client_object_drawing_porttest.go",
+        "before": "bb544fc83251bbaf1a5ca44c2a21ebda33e713b55b9195325290fed6f3965100",
+        "after": "df72dccda0eb9e93e3f6d20cf2bcd43a51e15d5a2e628a4bb390763e9e6b9b1a"
+      },
+      {
+        "file": "src/legacy/client_object_render.go",
+        "before": "6ee166aceb5803d37a12036d8105e91c7088c399495b8077a64fa40f2b7698cf",
+        "after": "ad5f9a6c7655c3ad24bbfc191ec9b1e488c795b38d99f8774df918905e2859ff"
+      },
+      {
+        "file": "src/legacy/client_object_render_beam.go",
+        "before": "fc1ced8bf615e475d2173da461e827f69a578e21a5f17ebfe895630df85657f3",
+        "after": "6f470b8fa9a67a158b9f06b72e515e57094c7159ea537d07b4b161aa2e75f24a"
+      },
+      {
+        "file": "src/legacy/client_object_render_porttest.go",
+        "before": "2c417ed99d1f79d85f4f02e8f5789059a984527faab689de9337c85bdf25095e",
+        "after": "f97c8293805f9cb6dbfd29e381b2afd15f01000131b2e181aa50e3be0339f2a0"
+      },
+      {
+        "file": "src/legacy/client_particle_drawing.go",
+        "before": "63e44fe0583cd6bfc9bcabfb95d4af21676f780b2fad3118699e0e039e50b2cf",
+        "after": "91f184d6d1689d4e154ab8513c122c3bbab3943869d02222fa3cc8ac00afa209"
+      },
+      {
+        "file": "src/legacy/client_particle_light.go",
+        "before": "68ba4d2d0cefe430b8542fb423e43210a3e781b0e26d4803b737ba028f555bb9",
+        "after": "847896bb1d4cefbae9827463897ed08e1296fc27750115ebbc414fc20b0aa1f1"
+      },
+      {
+        "file": "src/legacy/client_resource_lifecycle.go",
+        "before": "cef9812f97c9b4d336f70bebacdb00144483f9a251cc7d8e8a5b939de05fd3bb",
+        "after": "20de6925746da8498921f168f80bbf9b25c62bd7092eb31b067b66267f042496"
+      },
+      {
+        "file": "src/legacy/client_screen_effects_porttest.go",
+        "before": "05b68279c3fb2e2e010735c1ade15b6809e69f752ff61660ef8df5d37db839e1",
+        "after": "5fbdff14474ce79b28217a5f14d758d04e4d4e1c920c799b285ccc3464e74d75"
+      },
+      {
+        "file": "src/legacy/client_sequence.go",
+        "before": "6982e1e5cbbef0cf728949e819760bcb952f538bff4684acfcdb4f9315c6d025",
+        "after": "ec5c2671e7ff00709b7d69bc32dae63571cba7301ea0100cdc025d01e4bba5d7"
+      },
+      {
+        "file": "src/legacy/client_session.go",
+        "before": "5873f29cb4c0e835802fa177041c1e723c1f8ec7d129ee2d6766b26e14b42cd4",
+        "after": "223aba546fd8804b0e9b82a59c5fb15deab34e313b6b19ae9ebe5391a57351f2"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_display_common.go",
+        "before": "36845a568ae0be008c682c721e1d67408e9f5577a8477ec9fc3b4903a1d825bb",
+        "after": "54b67c1b71a21b70c4b4d15e7109f07becddf8a4d82fbfa84bc19612b959556d"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_equipment.go",
+        "before": "2a4fb639c44f7e7ae06d4cfc32d12fca3d89d7f88c4e4850df8603861fbbd0e0",
+        "after": "62c7b288a3b2ed663cdb7e62e281d668cfb09817a998a96ea9104ff487523334"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_place.go",
+        "before": "6e9ca00761d177e167c0a32d4ceae4578ff8b402423a83d78f859634c4fb9b88",
+        "after": "6969632520edeec7afbfc3c32099199735c19b509a2b2d11b6f52071809b56b7"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_stack.go",
+        "before": "34d6677d50213372597424c957e7684d32366ce1482087381dd02c6eaeee9262",
+        "after": "91f2fa07fc451a85d5d5473da59afbacdd40cac4786b66a07da1343764db6804"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_state.go",
+        "before": "f19090670f65ff3d3774b7719d340ec5331d2d9409ec9b278db9bae1a84115bb",
+        "after": "2bde0bb74169caea619822c3459279398d23bdca7f553cf31c19fe16fc50477a"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_window_construct.go",
+        "before": "e76d987fe32101263ca6a13b423d58dafcfc5b25c8ed1e0b63fc79b3f289b05c",
+        "after": "6bf3d6437d3d75da07ce770d62c1ef487707e179610937c2466fc4d9dd1ac9f6"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_window_draw.go",
+        "before": "e5c2873697eebbd99d665f262f000b112490af405ffda05f3472c1c9af1e839d",
+        "after": "28c0680caf4d451d01b96c9d75c28c0698245fcbb76bf3cacfbff4474381454c"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_window_events.go",
+        "before": "533d5e504c751382c800dbdefdeab1600bd7a1631e519983c7823c0be6cb5855",
+        "after": "057a23fc41e075a7bd1f7e0b8bd8f02eed6ccd68eea4a7f0671dca63875ffb77"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_window_input.go",
+        "before": "1d38ae844780443f63ff43a3c263a321e267f79b770b5011d8f2c9a36f27f78d",
+        "after": "1043e34f79611fa3e87d3567433b1260e9298f111e486b9ce3f60ae1a411fec4"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_window_reset.go",
+        "before": "f820d1da5e8ff7e3d82da83cb687b1c4c6ef75c3d39c93e15ec8d64e34692185",
+        "after": "694664ad5a8fbf7d6e59d6b1856d4cb0f2e430a67203e7d2e18c59f5ac26f298"
+      },
+      {
+        "file": "src/legacy/client_ui_inventory_window_state.go",
+        "before": "5c5a671e561daa678c9ce48c213c3029d298af5e81b63fc3f07f970323c7210e",
+        "after": "0cc05b3ce2388cedafe6362ca505e5f413ec458da7250443cdfe11b26dc11f74"
+      },
+      {
+        "file": "src/legacy/client_ui_meters_construct.go",
+        "before": "9b6a9ae8a45c52c7697d401ba40e5aaef425afa23076e38cbbd9ca835ff67d49",
+        "after": "f10fe38562fd70bb26d4cf74337dfbf3bbeeb31a8968124a5f76a928a151927d"
+      },
+      {
+        "file": "src/legacy/client_ui_meters_draw.go",
+        "before": "2f738ecc54901dc69a864657745fe41a461ce0bd7ecd396d22bc8de44e29e387",
+        "after": "f5d87eb1418a9dc2a14a3a55b8b0335d068d8c3ec251f66fc9c6b864a8f53205"
+      },
+      {
+        "file": "src/legacy/client_ui_meters_items.go",
+        "before": "dea239740c2eb00b5fca6b17f44e8cbe6a3b93df749a434c30d52a6eea411219",
+        "after": "c1b9700a8148f9aebb8f1c53302db33eb6cd043a765537f29afdeb384e0d9f74"
+      },
+      {
+        "file": "src/legacy/client_ui_meters_state.go",
+        "before": "c079deeaa08874ecadad9cf0f7c937b9253479b996672b9ac7ef33c8a9e310ca",
+        "after": "5d75b4b342cc68042b1a58e5fe6dfc29e0ed9cf209bf4db6c92eb1c88a549ddc"
+      },
+      {
+        "file": "src/legacy/client_ui_quantity.go",
+        "before": "a36de514435f2cca5786b9c269bd53c1298852d953a927665521b2eef563d183",
+        "after": "89dfde97ece3a511e6deccc375e4b5b598f54fcf8499cbbf330445ec351e1254"
+      },
+      {
+        "file": "src/legacy/client_ui_render.go",
+        "before": "2c375000a5dd5f6a420b0a75b72b5a1adaa724ed27742cb135c629adb21ffa5c",
+        "after": "8c0887f5b8df72a020dedb391adcc5294dacd92c9e4f39ec37595c1db8db8231"
+      },
+      {
+        "file": "src/legacy/client_ui_trade_draw.go",
+        "before": "f81f6352fe971f15fea491b0ee8022802b254bcfcf1641ae35e31830ced496de",
+        "after": "e0314d4aa356eed213fbabab4bf54cc8baecb5c4dc2416cc975a1320b3e1fa5f"
+      },
+      {
+        "file": "src/legacy/client_ui_trade_input.go",
+        "before": "5dd664e8a84a99a24d00e24ab2e6e9c77e05c977be4a78c2d11066c2a9e49237",
+        "after": "b4d361551fe94c1a79e1d9cff604bd4e365d8829994c29952d8e64c3b577d9d5"
+      },
+      {
+        "file": "src/legacy/client_ui_trade_state.go",
+        "before": "daed35273b2c3bac3cabcbcb6898b8b4cb0fb995d873944c8c0743e431d90673",
+        "after": "dae117a1fbb29e7d282a746d55f7c89b5cca1005abfc91b551599a2e79145d22"
+      },
+      {
+        "file": "src/legacy/client_updates.go",
+        "before": "2aebece8d58d2da9d4f1d731a4c7eb874ab41411d5f8789cb2d907eb5b83bbf2",
+        "after": "2ce0316338ffc40369475039e51e9f60313479ee84920149711d59625a75d8b7"
+      },
+      {
+        "file": "src/legacy/client_updates_porttest.go",
+        "before": "6e4e5e1d29f8ca4ac70153b8bde2252663c33b138449c9e070f42896aa3fefd8",
+        "after": "eb2ec339ff42761478d49eeed2d17cf5cb194d84ca7621984b1ba4566e871ca3"
+      },
+      {
+        "file": "src/legacy/damage_player.go",
+        "before": "03b163ff77f55e67b5d34edc4cffc338ac702cb64f3a331fd8d53d42ef11badd",
+        "after": "269cf0ec1a198bceca098a7083aa6444f78f239d6f4deeb5b2a1fc503cf4dda0"
+      },
+      {
+        "file": "src/legacy/equipment_porttest.go",
+        "before": "e2a36c1f9f37b0731be64cf6ee29c027ae7b83a8bcb3ab288e02f2678886c701",
+        "after": "df2202cf01bb8b747896ba07c560c8363c0d6b2a978fafc3bf28bffaee41921f"
+      },
+      {
+        "file": "src/legacy/gameplay_reports_porttest.go",
+        "before": "5a8b5c21b8c556229cc61b4e4c52de125f96223330b38f940f4dd9a957b34ed7",
+        "after": "60c0e43892a0443c92c531a51480e70933c3718b95588fa85bd5b975ee1b8051"
+      },
+      {
+        "file": "src/legacy/generator.go",
+        "before": "819d669d689f2b88e3d92a3a0c5e127d343e390d9006099fc88f6543f9946c77",
+        "after": "85865d9caa9a17754bde376203e1f58a771f3d985c0b1be5f096b1191ccb3e89"
+      },
+      {
+        "file": "src/legacy/generator_porttest.go",
+        "before": "e2f54dc6725c60331e48031ecaac06fb6b7ff484b491361d75d29a48214d07a4",
+        "after": "c2f11980391b565323b52e2b53d2647df0fe5b58c4702f39a21e4e54b5951e1d"
+      },
+      {
+        "file": "src/legacy/glyph_eligibility_porttest.go",
+        "before": "1d150fbd024170ad91aab996d458a54ec37e8aa3780a7cbd619c5dd2793e3dd2",
+        "after": "3f432d7ed3b799120b4630454c9cd875ffc165647163e2443c4c2606270e2566"
+      },
+      {
+        "file": "src/legacy/gui_fonts.go",
+        "before": "2868473443da3e3bfff09be470a2a5e78ca755e613846b680bdc66688fdf34cf",
+        "after": "f0bab9def7950b06208c834a85af116a33d7af4e663a5364a514e2df458301ed"
+      },
+      {
+        "file": "src/legacy/gui_quit.go",
+        "before": "81fa716eee6bb834861a3dd41db75f9feda17602d696f85f19c2fb3b67ad3cb2",
+        "after": "eefcf873ef68b160d6f46e08aa9b2290908fc2394439afeca4535ea720e045ca"
+      },
+      {
+        "file": "src/legacy/gui_video_adv.go",
+        "before": "695559cc0a2e764ed8baddcfcebeecf7fa8a881ff5e62fc91afe452c33dbc69b",
+        "after": "95dccbacc5dcbe9bfaf15ea9d28ab5aa7fc84e22392e7bc6c95ce096a4add79e"
+      },
+      {
+        "file": "src/legacy/inventory_equipment.go",
+        "before": "2282ad378c778eb39b7e1e02fa55b2406f10d83cf8edd05dd2c95fbde4fbd1b6",
+        "after": "0c40363006452fc3c3a6bc9e286eb4d7c0986b501fd216eea1e86f0e756f8412"
+      },
+      {
+        "file": "src/legacy/inventory_porttest.go",
+        "before": "1325728af5914d6c3cacfe409e35afdc115442808d2d1b6474cda2d1db735711",
+        "after": "1745af873c07cfbe6c7e169a095fae02e9bc07e471148962ab3e40ad8326941f"
+      },
+      {
+        "file": "src/legacy/map_catalog.go",
+        "before": "cf33f94ef916f7a4cb9b0bf68205440944d72edf424a1675d8f7eddc992db7ca",
+        "after": "8e1a1914db9a8b9fc162b9d94b472a55330c37a4398f1cacf9ef57a63d83f40c"
+      },
+      {
+        "file": "src/legacy/map_catalog_porttest.go",
+        "before": "c68e5be31dee98d598898e845674331fdd201c830039a5606a7d553212632f6e",
+        "after": "c99e77e56494af61590070be00c9cf0c10af426b2ef533b8b6226f4c50160c1d"
+      },
+      {
+        "file": "src/legacy/object_death_native.go",
+        "before": "03fbacf730b97482c3f4b32d426a9afd2d82e498f72b9f33844d92c2020d9f40",
+        "after": "acd774c0a0d9f22ab54df00836e5eac9757ba9e52bcbe8625df44669a1b24723"
+      },
+      {
+        "file": "src/legacy/object_death_porttest.go",
+        "before": "ea3465f6ec0f964e3f352c50f35b626ebee3b2adc244ebf9dc30b89c74ac32ff",
+        "after": "832fb85f2ed6c6d3bf765dcba1aedc711cbd591b93edd1b932c60bf97e260ea4"
+      },
+      {
+        "file": "src/legacy/object_state_geometry.go",
+        "before": "8b1f90a1160f8659561ccf59d2d2ad9ffa04183a224756173d1c5a9f87b91fe5",
+        "after": "a83d3eb2a3b86880eadf1f5b6eddd643241190a35ed2a86c656c918c31bad985"
+      },
+      {
+        "file": "src/legacy/objectives_scoring.go",
+        "before": "64e8f022d6b68c10c469242701df4315184032060eb682d4ffd9e18fdff32164",
+        "after": "5c41299821b0c798c8a85bb0165555b321718b61f3386cd807ca6c703b6e2074"
+      },
+      {
+        "file": "src/legacy/objectives_update.go",
+        "before": "b16139bee4ef63933317ca94b61385c9fa77ab03189286ae1662e6e8a767c920",
+        "after": "df51ea9412e4f0eb929af6d1253f687dee0aea6ddfac837d2994b0731b13d807"
+      },
+      {
+        "file": "src/legacy/parsecmd.go",
+        "before": "978fe9ba26c4f5b3769de003724ead99e98d278210c35995a1933b7c2ecfd4b9",
+        "after": "89cf385dcef6fc3dcb91afca20f34ae3c30396f855be5bbd39a8facc56521677"
+      },
+      {
+        "file": "src/legacy/player.go",
+        "before": "abe36c255466201eb784b3aa7c2fd479c57971c82068b9b67175e17ac708a986",
+        "after": "767ca0d940876624c8001c7c7cf232216d822966a2062325d94dea7ffefa517b"
+      },
+      {
+        "file": "src/legacy/player_attack_melee.go",
+        "before": "519a9dfdd298f1c27339efef53ac60661d8bb96b30bf4e2bb32db4edb7361e05",
+        "after": "0f125cd9249e82920daa01f7cff1b41dca0c4d19ddf49b7e2c4ca484a7c35b11"
+      },
+      {
+        "file": "src/legacy/player_attack_porttest.go",
+        "before": "b92a67fd355b5176d01e96a2cc3d87b02d36ae36b6bfe9cb9beab65978eb5598",
+        "after": "b9acce39e391d4b7d1faf0e4e1a25299b0f233bdbc8cef667aef731dafe7e3e1"
+      },
+      {
+        "file": "src/legacy/player_controls_helpers.go",
+        "before": "95e5c56de8bc5752a7c8b590ade306e503e6497ae205df81e9067634f4203303",
+        "after": "c0e0b78c5c013279f8a713d6a01156510f913bee8407cf761c0a18e90a7c75f7"
+      },
+      {
+        "file": "src/legacy/player_controls_movement.go",
+        "before": "5a6612ab17a735e511ab0994362a56a4e7f0d2d20f68890d2ccc32bec8f2f04e",
+        "after": "d6c7ad80f2a7a8beab77b50dea0eb3782810317289f6cb711a25b29053741167"
+      },
+      {
+        "file": "src/legacy/player_files_records_porttest.go",
+        "before": "b2191d7d1264a70e1d4e077d684e46856143c03fba5596d7571370dd9861f889",
+        "after": "b8ee4473824e8834178a69c0601c2d3b4376d2ddc695095f6ac8edfb1e31cab4"
+      },
+      {
+        "file": "src/legacy/projectile_collisions_porttest.go",
+        "before": "9100191b026146b801ff72050234a7ee89c8d7b9f9c179c122cc75b6e0689b9c",
+        "after": "8a6b0435e51ba276ce2deae3884936f48edc979d5c9a876d1b79cea22dce1273"
+      },
+      {
+        "file": "src/legacy/projectile_collisions_weapons.go",
+        "before": "1a9a3cf95958f7a827ead5cfcaa6f02dee7e410682a44fe6710876ff409a2d32",
+        "after": "e2ee0bb181d572f74fa71b6dcc8169ed2c92055b16c1b1d22bd6bc982cfedb73"
+      },
+      {
+        "file": "src/legacy/protection_add.go",
+        "before": "601bbd6fe4027cdd7466d61ea1a21384586250d1176d812c4d2e8f65c603c9a0",
+        "after": "8ee332f3bbce5a46d4814f3dcdad5e13228593bd4c861285e968955f6047ceb2"
+      },
+      {
+        "file": "src/legacy/protection_bitset.go",
+        "before": "d6d293cfee380f15b68c584ab093f8387ee4a47c8dfd51989889194edee9c1a2",
+        "after": "179a1eaea97a00d4dc39fdee786d57d39a6051bbf2de2ae17a558dd6245ab49b"
+      },
+      {
+        "file": "src/legacy/protection_bitset_porttest.go",
+        "before": "691e026b4f540bfd169b4d1512588c5460949a24b16c53f5540f11c2bfa6a58d",
+        "after": "629168594411090eefdb3b37f9b5425f2f9e583242371826d1a60d212c0b4e77"
+      },
+      {
+        "file": "src/legacy/protection_create_porttest.go",
+        "before": "7ee4b087e38e31ccdd1ceb7824c28e621a08a32097b3a24f54384b94e01d3c5c",
+        "after": "38aa81f26dc4d457035a53d5fa05c10940562ba9e6c264f496088ae33a57e715"
+      },
+      {
+        "file": "src/legacy/protection_float.go",
+        "before": "3edb53b8ba4d0ed437d30c48e937777038218c6b8ebdc893774819da1f0b111c",
+        "after": "3bc7a04423a2a9d0c9fee0732ae0b204bbf247e1900f30e5613ef0a4e2a00daa"
+      },
+      {
+        "file": "src/legacy/protection_handles_porttest.go",
+        "before": "44eb0ae157beb0e1c70721d94265ceb72f3edc13f4ffdab7fc189a6f5dfad5e9",
+        "after": "7a74db2258f12732e23fbf4e2f956f6fc21e54bfeb34454f8cce985f33131138"
+      },
+      {
+        "file": "src/legacy/protection_init.go",
+        "before": "97d21fc75b1431182e2f691d6146e76def58f450cbe8b41f8208b38a6b04343d",
+        "after": "dd7b821ef892052f8e0ecaf0c2adcfeb3b834d9600a3971d5247c261fe38b429"
+      },
+      {
+        "file": "src/legacy/protection_insert.go",
+        "before": "43b124e58a18a5f2f8e68713e5578dc25c51a896410e6130246ffa7b6932c186",
+        "after": "e09072d0c19223b8b458608e8d0799196850f1cb681dd5c2abbce918bd392f2b"
+      },
+      {
+        "file": "src/legacy/protection_insert_porttest.go",
+        "before": "1867528601631adce3bf9d32b7f58fd1fa38c124febd47a259bc6cff5a97d063",
+        "after": "11b53945d475757e3fd20a08eddef8013aafc9e6a80a399eecdb89aeae5fad32"
+      },
+      {
+        "file": "src/legacy/protection_object.go",
+        "before": "1e999245e9a1e45a5e915cc1691b84e5242ed2073097882effa1c9b0ce23dbba",
+        "after": "c3d3ed8522243b388f33f48c1e0ebb9bed801c82a21b3c3dac64153dbb3035eb"
+      },
+      {
+        "file": "src/legacy/protection_records_porttest.go",
+        "before": "3c31b89cd11ecd138d4abc89b32481a4951655b9cbdd8ac40655c6d709f0c6dd",
+        "after": "589954e82c59e730eee3d5a721b386dbd7e03aa05903199676e423a0302bb974"
+      },
+      {
+        "file": "src/legacy/protection_rekey.go",
+        "before": "f2eb979592a21aa844bd2af1d57bbe0c58cfcaee26d1bb3321133d315cd2d8de",
+        "after": "e949f743c6b3174e57410c66de8adfb0ae885b4abdf83e568093631182a761e2"
+      },
+      {
+        "file": "src/legacy/protection_rekey_porttest.go",
+        "before": "c8bc75658b845679f06f6df1bddbe241d7fffb86037ba6dff577ca06408ea364",
+        "after": "3c52ecebc46242125cfa25b8b715dc3df0b44f08679751fc006e0cb75134d2ed"
+      },
+      {
+        "file": "src/legacy/protection_remove.go",
+        "before": "82d058a89c397afe9ebd0e0e27fccb67a561cd8d04c39697c83533268c8ba2af",
+        "after": "74d0f4adcd14f99f8adf596af70e01938a154d5c26bd797aabfaa0f422ea1724"
+      },
+      {
+        "file": "src/legacy/protection_remove_porttest.go",
+        "before": "9ee2e3a2c10ba68c1346f6395667d9047af39ebb8ba14494cdd653db8865a439",
+        "after": "f7a381a5c8b649bc70b3a4cbda142702ecfb417e8b353e137bee1c75d1b852db"
+      },
+      {
+        "file": "src/legacy/protection_set.go",
+        "before": "23b578224b7d5d590eb12e3ed3c5a0e2ffd316a5d6fa19e221d95fd61154db0c",
+        "after": "a5f1b7fb6f43487f106f6f8c72029dd67528763de6310ad6a2549a5120d6c1f7"
+      },
+      {
+        "file": "src/legacy/quest_eligibility.go",
+        "before": "836bf11dee4546a59f9e08c6752481599c69ded60183b0f50a605546b3478936",
+        "after": "addb13052083acbaa98a5d1d55e164f3353342a5f851743dbbdbd66bfe88ef9c"
+      },
+      {
+        "file": "src/legacy/quest_eligibility_porttest.go",
+        "before": "bdeace56deb8c220b2a6b202ff385c7d7ac020249f2d01ca8a15baaaff1649b7",
+        "after": "21f44b80258117452287732917002c62abd07a7c3c2477cba4c7c59125e89cd0"
+      },
+      {
+        "file": "src/legacy/quest_penalty.go",
+        "before": "91f07cafd3890f4655885ef10060f658cba649fc6b796aec1c44df9551250be2",
+        "after": "afe1cb0c37b651a62ddec8bb1860fb58bd78650e86543c685ba3569602dc5de2"
+      },
+      {
+        "file": "src/legacy/quest_penalty_porttest.go",
+        "before": "dd937db5f38d5edf7d7101208e9e20831cc9c28742c0da215bc2f676c8be3197",
+        "after": "d0305174fae431b2ee913ab55fa472f7f95577e110dceeab160409a8f39d062b"
+      },
+      {
+        "file": "src/legacy/quest_penalty_protection_porttest.go",
+        "before": "d6de5dd590ec6d0b62e17f7b2085407fccc121fca2a83fc0c6bce3f9bba48a34",
+        "after": "368d00e80e59172583ac1e9ab56126074ba4def32bbf676ade4b982f9fd42ca7"
+      },
+      {
+        "file": "src/legacy/quest_runtime_state.go",
+        "before": "faa805a3eef37449d38ae27fb9f01c9061d54aaa3cef9b2e9b79cab7353cfe39",
+        "after": "8cc0c376505fa883f390d332ddba4e2444fd6609784e0ff313146b64edee8d09"
+      },
+      {
+        "file": "src/legacy/resources_protection_porttest.go",
+        "before": "c7979bce3913f54e0b13fd3d037a2428b2e9180c3aa06a8418ff4adb139e4261",
+        "after": "776694787ff372e0a99fbeb916c635a0dc24c501ffae897775c7d1c050dd9ce3"
+      },
+      {
+        "file": "src/legacy/reward_generation_porttest.go",
+        "before": "187289ae1d961a44ab9e2ee441173cd90e5754dc2de53439ae441711d911f7fe",
+        "after": "75b2438c27188c4aecf4ad73e13c6c5274c8763a5d1795d3aa73de13399da302"
+      },
+      {
+        "file": "src/legacy/reward_initializers.go",
+        "before": "473df8aa45dd03fe14e1e6938dee5802044c3bf115cc966209def5f5134313ac",
+        "after": "d4f1656e5c6e729c72c0a0bb370e23438728f9c7e6de8eea7a2c719f7ef19ce1"
+      },
+      {
+        "file": "src/legacy/rules_porttest.go",
+        "before": "85e5270dab9c85e947c85fb2c782c8670be6eea2a9b60de3f757e7a425ad0bcf",
+        "after": "737d804ce67367a29dc8484e28b60c251e551d520ed0fb7ca4ae583e338b07ea"
+      },
+      {
+        "file": "src/legacy/scalar_globals.go",
+        "before": "c0534d1686adf8380f2406a0d8ff4260a9c31442bdaddceb2a1cd78c87cc744a",
+        "after": "e4d27072a6554d8ab2d150edac0ac9e8aaeb3699c8bf40f753a0ebe28fbe093e"
+      },
+      {
+        "file": "src/legacy/scalar_storage_porttest.go",
+        "before": "2160075b410258443e96a5943dc9387ce9f32d10c2f2d544c991d56b9ecf3e41",
+        "after": "f7fc97aa92ee4577387cdb3e339fb3e813b9e7e39987d0f8d96e611079d739bb"
+      },
+      {
+        "file": "src/legacy/server_config_scalar.go",
+        "before": "e1b1b8303644f5e621622ba01dceeef3afc68eb5dbf0201691db389ce2ca498e",
+        "after": "30fab33800cf24ec163575a5f2a99311c5b4ac348742a0166cdac0345cdca266"
+      },
+      {
+        "file": "src/legacy/server_runtime_lifecycle.go",
+        "before": "bfd386b0b66e0745efae365ed625fc94e675729ae8ca315cc6ec85860476c8a5",
+        "after": "ba96d3202bc27b2cdf18f700ec3d1ef520d77ecc65f9994b9e2bc891dc6aafbd"
+      },
+      {
+        "file": "src/legacy/server_runtime_pause_porttest.go",
+        "before": "134a50734075eef7dbc43081b64387aeb830324e2ff47a455ed152a7f934f393",
+        "after": "b607f354a019f1cf3e53bf7c8c7554ce7a4b4e03ecbba7dbd919b71a7a69882e"
+      },
+      {
+        "file": "src/legacy/session_entry_exports.go",
+        "before": "d49b9dc125d9b34193f7a3f2afb3d722956e6d50b811d1d4e33b66795aaf0611",
+        "after": "3e113659ecd43cadf9eba68bcd283174de4f16785aec24b56b99783b6699ab06"
+      },
+      {
+        "file": "src/legacy/session_entry_lifecycle.go",
+        "before": "8e7c8185ee23e69e80b5569d2f3a61fb482c1a91d080d1f1dd9aec6d38c8d6a1",
+        "after": "58a955c8310c32bd9d87ab29b3aa10e1a7b80ad1011eb01b1a4e895e5ebbf746"
+      },
+      {
+        "file": "src/legacy/shop.go",
+        "before": "e258bd85848f4b1c7be854254bfcdc247b0dbd164081d3757355611d745479c7",
+        "after": "f42072cd981614eee35c9b695f1cc5f15f0bd70d149f733457f461e0fb9187cd"
+      },
+      {
+        "file": "src/legacy/shop_engine_porttest.go",
+        "before": "459d15f37038c9225a4acc3ccf90d98cba75ddaba6e260bacc8439f8b57143df",
+        "after": "bc47e1e305524b3afef4bc0bb263a3e8d1e2f549e56e8072c3710435e913f8ed"
+      },
+      {
+        "file": "src/legacy/spawn_policy.go",
+        "before": "f170542fb3f70ada841553a95b520058bce2d6991077fea8d141aa92614f4d35",
+        "after": "d358ab9caf09718b70185a47e9a42eb7990b2f9e1537ae30c421db64399c8d01"
+      },
+      {
+        "file": "src/legacy/spawn_policy_lifetime.go",
+        "before": "a1013d4f48d00c0ccca2cad5e034b3be19db32122a058c8842a1ef2a8dbdfb4c",
+        "after": "7727d1941f3367ccfe6be3a1e7af61b8a575c6944b004ae7305526a86a4dde7a"
+      },
+      {
+        "file": "src/legacy/spell_effects.go",
+        "before": "a92e28699a2b91c1202be4169ae81ccfa1bcfebccc27c5e9170981c0f31e9aa1",
+        "after": "6d61264b0167c087e7cd09eac8017cfb95e231bc54016ba4c126cbbd27b0b45e"
+      },
+      {
+        "file": "src/legacy/spell_effects_projectiles.go",
+        "before": "b1f5e482f12b0d8ebaf5228d15ecd8f1277c7350aef1aa4b1a8507e5c621aafc",
+        "after": "2a809cfa2e97eddd0078283ea6639d556c5b555b48d21c06ab9331361947823d"
+      },
+      {
+        "file": "src/legacy/spell_effects_spatial.go",
+        "before": "d8c737182afd721ab17dec637b76e8fc6e312f8f326c4dd80077016eaa6414a5",
+        "after": "11a80bd03c8e6655d1923d88a1052f43b164cf8cd72d56d23eb9305fdf6567fd"
+      },
+      {
+        "file": "src/legacy/spell_lifecycle_books.go",
+        "before": "d38ee7ab7e1a3d981b9762b7cd988eed63ffb9bcbfba584ad31a10495b1d70ff",
+        "after": "e58b1aa2254b33204fe3b43d8d536ce37470023aa09568f686d658e21d41747e"
+      },
+      {
+        "file": "src/legacy/spell_lifecycle_porttest.go",
+        "before": "c88bd4e358f4651d15d3bbf51a543a33a4a9552d434bd440834b538b0b477856",
+        "after": "87638132385ca50c2fb4a760d9c985fec83cd34e80deeff6ef034961ed3972ca"
+      },
+      {
+        "file": "src/legacy/tile_composition.go",
+        "before": "23452370105971d79e5119de8dba242968a31082832fab01d9432d2891cee461",
+        "after": "c03f931c71c6efeded4405d26f09be716dd4ab40e5e679a15cb385de6ab9ad41"
+      },
+      {
+        "file": "src/legacy/tile_selection.go",
+        "before": "c5b13ab490c145328d12bfb495ff7a60af9d497d6c7f5592a58e545cbacdf51d",
+        "after": "b63def036e29277c57cf7d49f273f8365406fb6284536780f94543e265d21fda"
+      },
+      {
+        "file": "src/legacy/tile_worklist.go",
+        "before": "bb289485b817f6efe8851102d0fe74e016f5fd910b4aba7e606c9c2bc68fd003",
+        "after": "cf1044d5c666b4333250f462019ddb06be678fb7d91d35526202d016b0b1b6a6"
+      },
+      {
+        "file": "src/legacy/trade_engine.go",
+        "before": "9f6f4ff311c072d387c7789adda30f256b19a96fbd7d393ac9b6bdfab0275585",
+        "after": "b79d12298f0ad5355b3f98efdbb1c78966c7e42f6a0795b9b4e774b43b35bb31"
+      },
+      {
+        "file": "src/legacy/vardefs.go",
+        "before": "7cfa0619d06bf977942d78b7b06adf85be4aa73e3c76033fa2f5bba682e7119a",
+        "after": "0673e7f93710dd77a514aa7e00e862f97fab9a956d8bad46e7f109099c5eb16b"
+      },
+      {
+        "file": "src/legacy/world_collisions_quest.go",
+        "before": "4b17883c34404ebdf4c4776e4ccff3b94f77f9edfc8fa80722c500d4928c1dfa",
+        "after": "8cade73494e862390a0e66ca2a8e07fb614f446badc6196ad755786c396272a3"
+      }
+    ],
+    "exact_reviewed_draft_plus_compiler_fixes": true,
+    "initial_type_contexts": 1172,
+    "owners": 395,
+    "production_cgo_imports_removed": 28,
+    "test_cgo_imports_removed": 8,
+    "expectations_unchanged": true,
+    "compiler_review": {
+      "fixes": {
+        "client_screen_effects_porttest.go": [
+          [
+            "[4]C.uint32_t{",
+            "[4]uint32{"
+          ]
+        ],
+        "protection_bitset_porttest.go": [
+          [
+            "C.uint(uintptr(unsafe.Pointer(r)))",
+            "uint32(uintptr(unsafe.Pointer(r)))"
+          ],
+          [
+            "C.uint(key)",
+            "uint32(key)"
+          ],
+          [
+            "C.uint(sum)",
+            "uint32(sum)"
+          ]
+        ],
+        "protection_create_porttest.go": [
+          [
+            "C.uint(key)",
+            "uint32(key)"
+          ]
+        ],
+        "protection_records_porttest.go": [
+          [
+            "C.uint(uintptr(unsafe.Pointer(ptr(0))))",
+            "uint32(uintptr(unsafe.Pointer(ptr(0))))"
+          ],
+          [
+            "C.uint(key)",
+            "uint32(key)"
+          ]
+        ],
+        "rules_porttest.go": [
+          [
+            "C.uint32_t(spec.Online)",
+            "uint32(spec.Online)"
+          ]
+        ],
+        "session_entry_lifecycle.go": [
+          [
+            "C.uint32_t(uint32(1) << uint32(pl.PlayerInd&31))",
+            "uint32(uint32(1) << uint32(pl.PlayerInd&31))"
+          ]
+        ]
+      },
+      "extra_import_removed": "src/legacy/session_entry_lifecycle.go",
+      "extra_header": "src/legacy/client__gui__chathelp.h",
+      "extra_header_effects": "only include guard and defs.h include; closure already reviewed",
+      "typecheck_1": "failed with 18 diagnostics in six files",
+      "typecheck_2": "passed",
+      "frozen_expectations_changed": false,
+      "helper_review": "compiler-fix-review.md",
+      "helper_record_question_resolved": "sessionPlayerIncoming |= cast is primary-span-review.json owner_assignment_cast at original line 98; already covered by independent AST review. compiler-fixes.json records subsequent edits only."
+    }
+  },
+  "selected_cgo_files": 354,
+  "direct_project_cgo_packages": 3,
+  "retired_c_exports": 0,
+  "removed_local_cgo_imports": 28,
+  "removed_test_cgo_imports": 8,
+  "standalone_production_c_lines": 0,
+  "standalone_test_c_lines": 0,
+  "unchanged_test_fixture_inputs": 1701,
+  "changed_fixture_type_casts_reviewed": [
+    "src/legacy/ai_callbacks_porttest.go",
+    "src/legacy/ai_combat_porttest.go",
+    "src/legacy/ai_main_porttest.go",
+    "src/legacy/ai_waypoint_graph_porttest.go",
+    "src/legacy/border_selection_porttest.go",
+    "src/legacy/client_draw_particles_porttest.go",
+    "src/legacy/client_object_drawing_porttest.go",
+    "src/legacy/client_object_render_porttest.go",
+    "src/legacy/client_screen_effects_porttest.go",
+    "src/legacy/client_updates_porttest.go",
+    "src/legacy/equipment_porttest.go",
+    "src/legacy/gameplay_reports_porttest.go",
+    "src/legacy/generator_porttest.go",
+    "src/legacy/glyph_eligibility_porttest.go",
+    "src/legacy/inventory_porttest.go",
+    "src/legacy/map_catalog_porttest.go",
+    "src/legacy/object_death_porttest.go",
+    "src/legacy/player_attack_porttest.go",
+    "src/legacy/player_files_records_porttest.go",
+    "src/legacy/projectile_collisions_porttest.go",
+    "src/legacy/protection_bitset_porttest.go",
+    "src/legacy/protection_create_porttest.go",
+    "src/legacy/protection_handles_porttest.go",
+    "src/legacy/protection_insert_porttest.go",
+    "src/legacy/protection_records_porttest.go",
+    "src/legacy/protection_rekey_porttest.go",
+    "src/legacy/protection_remove_porttest.go",
+    "src/legacy/quest_eligibility_porttest.go",
+    "src/legacy/quest_penalty_porttest.go",
+    "src/legacy/quest_penalty_protection_porttest.go",
+    "src/legacy/resources_protection_porttest.go",
+    "src/legacy/reward_generation_porttest.go",
+    "src/legacy/rules_porttest.go",
+    "src/legacy/scalar_storage_porttest.go",
+    "src/legacy/server_runtime_pause_porttest.go",
+    "src/legacy/shop_engine_porttest.go",
+    "src/legacy/spell_lifecycle_porttest.go"
+  ],
+  "selected_legacy_exports": 1179,
+  "phase_cgo_files_removed": 109,
+  "phase_baseline_cgo_files": 463,
+  "phase_exports_retired": 711,
+  "phase_baseline_exports": 1890,
+  "embedded_callback_bodies_unchanged": 79,
+  "tracked_header_files": 157,
+  "tracked_header_lines": 3902,
+  "asset_integrity": {
+    "success": true,
+    "files": 1654,
+    "reference": "build/baseline/runs/unused-exports-save/deduplicated-assets.json",
+    "scope": "Original asset sizes and SHA256 unchanged; checked after production qualification"
+  }
+}

@@ -107,7 +107,7 @@ func (p *portTestShopPools) rewardPrepare() func() {
 	goldC := qword_581450_10256
 	constants := blobdata.PortTestRewardGoldConstants()
 	*memmap.PtrUint64(0x581450, 10248) = binary.LittleEndian.Uint64(constants)
-	qword_581450_10256 = C.uint64_t(binary.LittleEndian.Uint64(constants[8:]))
+	qword_581450_10256 = uint64(binary.LittleEndian.Uint64(constants[8:]))
 	*memmap.PtrUint64(0x581450, 10264) = binary.LittleEndian.Uint64(constants[16:])
 	*memmap.PtrUint32(0x5d4594, 2388660) = sp.GeneratorStage
 	oldA, oldB := dword_5d4594_1568280, dword_5d4594_1568288

@@ -51,9 +51,9 @@ func uiInventorySetAlternate(cell *uiInventoryCell) int {
 	old := uiInventoryCellRef(uint32(dword_5d4594_1062480))
 	dword_5d4594_1062484 = 0
 	if old != nil {
-		dword_5d4594_1062484 = C.uint32_t(old.Codes[0])
+		dword_5d4594_1062484 = uint32(old.Codes[0])
 	}
-	dword_5d4594_1062480 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(cell)))
+	dword_5d4594_1062480 = uint32(uiInventoryPointer(unsafe.Pointer(cell)))
 	uiInventoryClearAlternateFlags()
 	if cell == nil {
 		return int(nox_xxx_clientReportSecondaryWeapon_4BF010(0))
@@ -149,7 +149,7 @@ func nox_xxx_spritePickup_461660(code, typ C.int, mods unsafe.Pointer) C.int {
 		if uint32(cell.Drawable.ObjClass)&0x3001000 != 0 {
 			dword_5d4594_1062516 = 0
 			if coords[1] >= 3 {
-				dword_5d4594_1062516 = C.uint32_t(10 * (5*coords[1] - 10))
+				dword_5d4594_1062516 = uint32(10 * (5*coords[1] - 10))
 			}
 		}
 	}
@@ -237,7 +237,7 @@ func uiInventoryCompact() uintptr {
 			}
 			*dst = *src
 			if dst.Alternate != 0 {
-				dword_5d4594_1062480 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(dst)))
+				dword_5d4594_1062480 = uint32(uiInventoryPointer(unsafe.Pointer(dst)))
 			}
 			src.Count = 0
 			src.Drawable = nil

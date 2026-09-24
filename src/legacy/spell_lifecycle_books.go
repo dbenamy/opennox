@@ -41,7 +41,7 @@ func spellLifeBookHead() *spellLifeBook {
 	return (*spellLifeBook)(unsafe.Pointer(uintptr(dword_5d4594_1569672)))
 }
 func spellLifeSetBookHead(p *spellLifeBook) {
-	dword_5d4594_1569672 = C.uint32_t(uintptr(unsafe.Pointer(p)))
+	dword_5d4594_1569672 = uint32(uintptr(unsafe.Pointer(p)))
 }
 func spellLifeUnlinkBook(p *spellLifeBook) *spellLifeBook {
 	next := p.Next

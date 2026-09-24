@@ -36,11 +36,11 @@ func PortTestBitset(id int32, key, value, sum uint32, index, enabled int32, valu
 	if mode == 2 {
 		r[0] ^= 1
 	} // populated list, missing ID
-	head := C.uint(uintptr(unsafe.Pointer(r)))
+	head := uint32(uintptr(unsafe.Pointer(r)))
 	if mode == 0 {
 		head = 0
 	}
-	dword_5d4594_2516344, dword_5d4594_2516348, dword_5d4594_2516328 = head, C.uint(key), C.uint(sum)
+	dword_5d4594_2516344, dword_5d4594_2516348, dword_5d4594_2516328 = head, uint32(key), uint32(sum)
 	var data []int32
 	if len(values) != 0 {
 		var release func()
@@ -56,6 +56,6 @@ func PortTestBitset(id int32, key, value, sum uint32, index, enabled int32, valu
 	if mode == 2 {
 		wantID ^= 1
 	}
-	out.Unchanged = slices.Equal(data, values) && r[0] == wantID && r[2] == 0 && r[3] == 0 && dword_5d4594_2516344 == head && dword_5d4594_2516348 == C.uint(key)
+	out.Unchanged = slices.Equal(data, values) && r[0] == wantID && r[2] == 0 && r[3] == 0 && dword_5d4594_2516344 == head && dword_5d4594_2516348 == uint32(key)
 	return out
 }

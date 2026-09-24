@@ -33,7 +33,7 @@ func PortTestRemove(values [][2]uint32, key, sum uint32, count uint16, ids []uin
 		*counter = oldCount
 	}()
 	dword_5d4594_2516344, dword_5d4594_2516352 = 0, 0
-	dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = C.uint(key), C.uint(sum), 0xdeadbeef
+	dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = uint32(key), uint32(sum), 0xdeadbeef
 	*counter = count
 	records := make([]*[4]uint32, len(values))
 	for i, v := range values {
@@ -53,7 +53,7 @@ func PortTestRemove(values [][2]uint32, key, sum uint32, count uint16, ids []uin
 	for i, r := range records {
 		r[2], r[3] = ptr(i+1), ptr(i-1)
 	}
-	dword_5d4594_2516344, dword_5d4594_2516352 = C.uint(ptr(0)), C.uint(ptr(len(records)-1))
+	dword_5d4594_2516344, dword_5d4594_2516352 = uint32(ptr(0)), uint32(ptr(len(records)-1))
 	snapshot := func() PortTestRemovalSnapshot {
 		out := PortTestRemovalSnapshot{Sum: uint32(dword_5d4594_2516328), Key: uint32(dword_5d4594_2516348), Sequence: uint32(dword_5d4594_2516356), Count: *counter, LinksValid: true}
 		p := uint32(dword_5d4594_2516344)

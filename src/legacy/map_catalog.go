@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-#include "defs.h"
-
-*/
-import "C"
 import (
 	"strings"
 	"unsafe"
@@ -221,9 +215,9 @@ func mapQuestBuild() int {
 		alloc.StrCopyZero(row.Name[:], alloc.GoString(&p.Name[0])+".map")
 		row.Group = 0
 		count++
-		dword_5d4594_1548476 = C.uint32_t(count)
+		dword_5d4594_1548476 = uint32(count)
 	}
-	dword_5d4594_1548476 = C.uint32_t(count)
+	dword_5d4594_1548476 = uint32(count)
 	group := uint32(1)
 	for i := 0; i < count; i++ {
 		if rows[i].Group != 0 {
@@ -323,7 +317,7 @@ func mapQuestPlayed(name *byte) {
 				rows[j].Last = clock
 			}
 		}
-		dword_5d4594_1548480 = C.uint32_t(clock + 1)
+		dword_5d4594_1548480 = uint32(clock + 1)
 		return
 	}
 }

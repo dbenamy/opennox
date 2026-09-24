@@ -109,23 +109,23 @@ func (e *PortTestClientParticleEnvironment) Reset() {
 	}
 	dword_5d4594_1313804 = 0
 	dword_5d4594_1313816 = 0
-	qword_581450_9544 = C.uint64_t(math.Float64bits(0.5))
-	qword_581450_9552 = C.uint64_t(math.Float64bits(65536))
+	qword_581450_9544 = uint64(math.Float64bits(0.5))
+	qword_581450_9552 = uint64(math.Float64bits(65536))
 	*memmap.PtrUint32(0x85B3FC, 956) = noxcolor.RGB5551Color(0, 0, 0).Color32()
 	initParticlePalettes()
 }
 func (e *PortTestClientParticleEnvironment) Constants(half, scale float64) {
-	qword_581450_9544 = C.uint64_t(math.Float64bits(half))
-	qword_581450_9552 = C.uint64_t(math.Float64bits(scale))
+	qword_581450_9544 = uint64(math.Float64bits(half))
+	qword_581450_9552 = uint64(math.Float64bits(scale))
 }
 func (e *PortTestClientParticleEnvironment) Restore() {
 	for _, r := range e.mapped {
 		copy(r.data, r.old)
 	}
-	dword_5d4594_1313804 = C.uint32_t(e.named[0])
-	dword_5d4594_1313816 = C.uint32_t(e.named[1])
-	qword_581450_9544 = C.uint64_t(e.constants[0])
-	qword_581450_9552 = C.uint64_t(e.constants[1])
+	dword_5d4594_1313804 = uint32(e.named[0])
+	dword_5d4594_1313816 = uint32(e.named[1])
+	qword_581450_9544 = uint64(e.constants[0])
+	qword_581450_9552 = uint64(e.constants[1])
 }
 func (e *PortTestClientParticleEnvironment) Snapshot() []uint32 {
 	out := []uint32{uint32(dword_5d4594_1313804), uint32(dword_5d4594_1313816), uint32(qword_581450_9544), uint32(qword_581450_9544 >> 32), uint32(qword_581450_9552), uint32(qword_581450_9552 >> 32)}

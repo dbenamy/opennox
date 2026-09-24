@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client"
@@ -98,11 +93,11 @@ func effectLightningPasses(a, b image.Point, mode int, coords *[4]int16, unused,
 	length := int(int64(math.Sqrt(float64(dx*dx + dy*dy))))
 	steps := uint32(nox_xxx_lightningSteps_587000_178216)
 	if length >= 512 {
-		dword_5d4594_1316476 = C.uint32_t(*memmap.PtrUint32(0x587000, 178204))
-		dword_5d4594_1316448 = C.uint32_t(steps)
+		dword_5d4594_1316476 = uint32(*memmap.PtrUint32(0x587000, 178204))
+		dword_5d4594_1316448 = uint32(steps)
 	} else {
 		lo, hi := *memmap.PtrUint32(0x587000, 178208), *memmap.PtrUint32(0x587000, 178204)
-		dword_5d4594_1316476 = C.uint32_t(lo + uint32(length)*(hi-lo)/512)
+		dword_5d4594_1316476 = uint32(lo + uint32(length)*(hi-lo)/512)
 		var decrease uint32
 		switch {
 		case length < 64:
@@ -116,7 +111,7 @@ func effectLightningPasses(a, b image.Point, mode int, coords *[4]int16, unused,
 		if length < 256 && int32(depth) < 1 {
 			depth = 1
 		}
-		dword_5d4594_1316448 = C.uint32_t(depth)
+		dword_5d4594_1316448 = uint32(depth)
 	}
 	*effectMapped(1316532) = uint32(mode)
 	if mode == 1 || mode == 3 {
@@ -190,22 +185,22 @@ func effectLightningDraw(vp *noxrender.Viewport, dr *client.Drawable, kind int) 
 	switch kind {
 	case 1:
 		*memmap.PtrUint8(0x5D4594, 1316420) = byte(2 * (int(int8(*effectByte(dr, 433))) + 127))
-		dword_5d4594_1316436 = C.uint32_t(*effectMapped(1316496))
-		dword_5d4594_1316484 = C.uint32_t(*effectMapped(1316468))
+		dword_5d4594_1316436 = uint32(*effectMapped(1316496))
+		dword_5d4594_1316484 = uint32(*effectMapped(1316468))
 		outer = 0
 		particle = 1316524
 	case 2:
-		dword_5d4594_1316452 = C.uint32_t(*effectMapped(1316444))
-		dword_5d4594_1316436 = C.uint32_t(*effectMapped(1316504))
-		dword_5d4594_1316456 = C.uint32_t(*effectMapped(1316460))
-		dword_5d4594_1316484 = C.uint32_t(*effectMapped(1316480))
+		dword_5d4594_1316452 = uint32(*effectMapped(1316444))
+		dword_5d4594_1316436 = uint32(*effectMapped(1316504))
+		dword_5d4594_1316456 = uint32(*effectMapped(1316460))
+		dword_5d4594_1316484 = uint32(*effectMapped(1316480))
 		*memmap.PtrUint8(0x5D4594, 1316420) = 1
 		particle = 1316528
 	default:
-		dword_5d4594_1316452 = C.uint32_t(*effectMapped(1316428))
-		dword_5d4594_1316436 = C.uint32_t(*effectMapped(1316464))
-		dword_5d4594_1316456 = C.uint32_t(*effectMapped(1316424))
-		dword_5d4594_1316484 = C.uint32_t(*effectMapped(1316488))
+		dword_5d4594_1316452 = uint32(*effectMapped(1316428))
+		dword_5d4594_1316436 = uint32(*effectMapped(1316464))
+		dword_5d4594_1316456 = uint32(*effectMapped(1316424))
+		dword_5d4594_1316484 = uint32(*effectMapped(1316488))
 		*memmap.PtrUint8(0x5D4594, 1316420) = 1
 	}
 	effectLightningPasses(sa, sb, 2, nil, outer, outer, 1)

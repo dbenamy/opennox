@@ -321,6 +321,7 @@ target build selection and linker evidence.
 | Retire 65 unused C exports and 63 prototypes; selected cgo files 413→399, preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 | Retire 378 unused C exports and 333 prototypes; selected cgo files 399→397, preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 | Retire 265 C exports and 244 prototypes; selected cgo files 397→382, preamble bodies remain 79 | 0 | 0 | 0 | 0 |
+| Use Go integer types for 395 scalar globals; selected cgo files 382→354, preamble bodies remain 79 | 0 | 0 | 0 | 0 |
 
 The 33 checksum test-reference lines were retired after differential validation;
 their original source remains recoverable at `66fa7bd4`.

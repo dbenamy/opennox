@@ -190,7 +190,7 @@ func Get_dword_5d4594_816376() ail.Driver {
 }
 
 func Set_dword_5d4594_816376(drv ail.Driver) {
-	dword_5d4594_816376 = C.uint(drv)
+	dword_5d4594_816376 = uint32(drv)
 }
 
 func Sub_486640(a1 unsafe.Pointer, a2 int) int {

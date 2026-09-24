@@ -179,7 +179,7 @@ func spellEffectMeteorShower(id int32, a, b, c *server.Object, record unsafe.Poi
 }
 func spellEffectMeteor(id int32, a, b, c *server.Object, record unsafe.Pointer, level int32) int32 {
 	if dword_5d4594_2487804 == 0 {
-		dword_5d4594_2487804 = C.uint32_t(GetServer().S().Types.IndByID("Meteor"))
+		dword_5d4594_2487804 = uint32(GetServer().S().Types.IndByID("Meteor"))
 	}
 	typ := uint32(dword_5d4594_2487804)
 	for it := b.Field129; it != nil; it = it.Field128 {

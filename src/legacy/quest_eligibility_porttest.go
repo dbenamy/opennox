@@ -209,7 +209,7 @@ func (p *portTestShopPools) eligibilityEnsure() {
 	st.restores = append(st.restores, func() { dword_5d4594_1568308 = oldSpecial })
 	globals := region(0x5d4594, 1568312, 96)
 	if sp.Warm {
-		dword_5d4594_1568308 = C.uint32_t(uintptr(modRef(1)))
+		dword_5d4594_1568308 = uint32(uintptr(modRef(1)))
 		for i := 0; i < 3; i++ {
 			*(*uint32)(unsafe.Pointer(&globals[i*4])) = uint32(uintptr(modRef(i + 2)))
 		}

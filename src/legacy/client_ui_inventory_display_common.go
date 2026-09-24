@@ -129,8 +129,8 @@ func uiInventoryHoverText(p image.Point) *uint16 {
 	} else {
 		return nil
 	}
-	dword_5d4594_1049796_inventory_click_column_index = C.uint32_t(col)
-	dword_5d4594_1049800_inventory_click_row_index = C.uint32_t(row)
+	dword_5d4594_1049796_inventory_click_column_index = uint32(col)
+	dword_5d4594_1049800_inventory_click_row_index = uint32(row)
 	if col >= 0 && col < 4 && row >= 0 && row < 21 {
 		cell := &uiInventoryGrid()[col*21+row]
 		if cell.Count != 0 {
@@ -193,7 +193,7 @@ func sub_467750(code C.int, status C.char) C.int {
 			if old := uiInventoryAlternate(); old != nil {
 				old.Alternate = 0
 			}
-			dword_5d4594_1062480 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(found.Cell)))
+			dword_5d4594_1062480 = uint32(uiInventoryPointer(unsafe.Pointer(found.Cell)))
 			found.Cell.Alternate = 1
 			return 1
 		}

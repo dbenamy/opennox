@@ -92,7 +92,7 @@ func worldQuestExitReady() bool {
 func worldCollideExit(a, b *server.Object) {
 	core := GetServer().S()
 	if dword_5d4594_1567960 == 0 {
-		dword_5d4594_1567960 = C.uint32_t(core.Types.IndByID("Glyph"))
+		dword_5d4594_1567960 = uint32(core.Types.IndByID("Glyph"))
 	}
 	if b == nil || b.ObjClass&4 == 0 {
 		return

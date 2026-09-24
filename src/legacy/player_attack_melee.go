@@ -131,8 +131,8 @@ func attackNearest(t, u *server.Object) {
 	}
 	old := objectFromInt(C.int(dword_5d4594_2488660))
 	if (distance < float64(limit) || old != nil && old.ObjClass&2 == 0 && t.ObjClass&2 != 0) && (old == nil || old.ObjClass&2 == 0) {
-		dword_5d4594_2488652 = C.uint32_t(math.Float32bits(float32(distance)))
-		dword_5d4594_2488660 = C.uint32_t(uintptr(t.CObj()))
+		dword_5d4594_2488652 = uint32(math.Float32bits(float32(distance)))
+		dword_5d4594_2488660 = uint32(uintptr(t.CObj()))
 	}
 }
 func attackTrace(u *server.Object, r *attackRecord) int {
@@ -147,7 +147,7 @@ func attackTrace(u *server.Object, r *attackRecord) int {
 		motionRadial(&r.Pos, r.Radius, C.sub_538510, uint32(uintptr(unsafe.Pointer(r))))
 		extra = 25
 	} else {
-		dword_5d4594_2488652 = C.uint32_t(math.Float32bits(r.Radius))
+		dword_5d4594_2488652 = uint32(math.Float32bits(r.Radius))
 		motionRadial(&u.PosVec, r.Radius, C.sub_5386A0, motionAddress(u))
 		if dword_5d4594_2488660 != 0 {
 			attackHit(objectFromInt(C.int(dword_5d4594_2488660)), r)

@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-
-*/
-import "C"
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -14,7 +9,7 @@ import (
 
 func serverConfigFlagsSet(v int32) int32 {
 	if uint32(dword_5d4594_3484) != uint32(v) {
-		dword_5d4594_3484 = C.uint32_t(v)
+		dword_5d4594_3484 = uint32(v)
 		serverConfigUpdatedSet()
 	}
 	return v
@@ -23,7 +18,7 @@ func serverConfigFlagsGet() int32 { return int32(dword_5d4594_3484) }
 func serverConfigFlagsAdd(v int32) int32 {
 	result := v & serverConfigFlagsGet()
 	if result != v {
-		dword_5d4594_3484 |= C.uint32_t(v)
+		dword_5d4594_3484 |= uint32(v)
 		result = int32(bool2int(noxflags.HasGame(1)))
 		if result != 0 && v&0x2000 != 0 {
 			result = int32(gameplayReportResetAll())
@@ -36,13 +31,13 @@ func serverConfigFlagsRemove(v int32) int32 {
 	result := v
 	if serverConfigFlagsGet()&v != 0 {
 		result = ^v
-		dword_5d4594_3484 &= C.uint32_t(^v)
+		dword_5d4594_3484 &= uint32(^v)
 		serverConfigUpdatedSet()
 	}
 	return result
 }
 func serverConfigFlagsToggle(v int32) int32 {
-	dword_5d4594_3484 ^= C.uint32_t(v)
+	dword_5d4594_3484 ^= uint32(v)
 	result := int32(bool2int(noxflags.HasGame(1)))
 	if result != 0 && v&0x2000 != 0 {
 		result = serverConfigFlagsGet()

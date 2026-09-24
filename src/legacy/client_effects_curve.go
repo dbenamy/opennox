@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"image"
@@ -38,8 +33,8 @@ func effectCurveRaster(points [4]image.Point, steps, thick int) {
 	h := 1 / float64(steps)
 	*memmap.PtrFloat32(0x587000, 180484) = float32(h)
 	h2, h3 := float32(h*h), float32(h*h*h)
-	dword_587000_180480 = C.uint32_t(math.Float32bits(h2))
-	dword_587000_180476 = C.uint32_t(math.Float32bits(h3))
+	dword_587000_180480 = uint32(math.Float32bits(h2))
+	dword_587000_180476 = uint32(math.Float32bits(h3))
 	*memmap.PtrFloat32(0x587000, 180496) = h2 + h2
 	*memmap.PtrFloat32(0x587000, 180492) = float32(float64(h3) * 6)
 	*memmap.PtrFloat32(0x587000, 180508) = float32(float64(h3) * 6)

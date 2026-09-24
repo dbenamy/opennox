@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "client__gui__window.h"
-int nox_xxx_tileSetDrawFn_481420();
-*/
-import "C"
 import "unsafe"
 
 func Sub_49B3C0() {
@@ -15,7 +10,7 @@ func Sub_49B3C0() {
 }
 
 func Set_dword_5d4594_1193156(v int) {
-	dword_5d4594_1193156 = C.uint(v)
+	dword_5d4594_1193156 = uint32(v)
 }
 
 func Get_nox_client_fadeObjects_80836_ptr() *uint32 {

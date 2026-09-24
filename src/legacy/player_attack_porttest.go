@@ -137,7 +137,7 @@ func (p *portTestShopPools) attackPrepare() func() {
 	restoreReward := p.rewardPrepare()
 	restoreControls := p.controlsPrepare()
 	oldRange, oldHit, oldTarget := dword_5d4594_2488652, dword_5d4594_2488656, dword_5d4594_2488660
-	dword_5d4594_2488652 = C.uint32_t(sp.NearestRange)
+	dword_5d4594_2488652 = uint32(sp.NearestRange)
 	dword_5d4594_2488656 = 0
 	dword_5d4594_2488660 = 0
 	return func() {
@@ -210,7 +210,7 @@ func (p *portTestShopPools) attackItems() {
 			m.AttackPreHit52.Fnc = C.attackEffectPtr()
 		}
 	}
-	dword_5d4594_2488660 = C.uint32_t(uintptr(p.temporaryRef(sp.NearestTarget).CObj()))
+	dword_5d4594_2488660 = uint32(uintptr(p.temporaryRef(sp.NearestTarget).CObj()))
 	p.projectileCollisionItems()
 	p.damageItems()
 	p.objectStateItems()

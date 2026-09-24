@@ -50,7 +50,7 @@ func uiInventoryResetWindow() int {
 	}
 	dword_5d4594_1062552 = 0
 	uiMeterRefreshPotions()
-	dword_587000_136184 = C.uint32_t(^uint32(224))
+	dword_587000_136184 = uint32(^uint32(224))
 	*memmap.PtrUint8(0x5D4594, 1049868) = 0
 	dword_5d4594_1062516, dword_5d4594_1062520, dword_5d4594_1062512 = 0, 0, 0
 	return uiInventoryResetPanelControls()

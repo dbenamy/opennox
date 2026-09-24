@@ -306,7 +306,7 @@ func monsterDeathChunks(u *server.Object) {
 			monsterDebrisDecay(t, 5, 10)
 		}
 		index = (uint32(dword_5d4594_2491580) + 1) % *memmap.PtrUint32(0x587000, 287344)
-		dword_5d4594_2491580 = C.uint32_t(index)
+		dword_5d4594_2491580 = uint32(index)
 	}
 }
 func monsterDeathTroll(u *server.Object) {
@@ -388,7 +388,7 @@ func monsterDeathSkull(u *server.Object) {
 			monsterDebrisDecay(t, 2, 5)
 		}
 		index = (uint32(dword_5d4594_2491588) + 1) % *memmap.PtrUint32(0x587000, 287348)
-		dword_5d4594_2491588 = C.uint32_t(index)
+		dword_5d4594_2491588 = uint32(index)
 	}
 }
 func monsterDeathLoot(u *server.Object, kind int) {

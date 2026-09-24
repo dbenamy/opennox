@@ -142,7 +142,7 @@ func clientGameSession(ind int, op netmsg.Op, data []byte) int {
 		sub_467750(C.int(word(1)&0x7fff), C.char(data[3]))
 		return size
 	case 225:
-		dword_5d4594_1062488 = C.uint32_t(word(1) & 0x7fff)
+		dword_5d4594_1062488 = uint32(word(1) & 0x7fff)
 		return size
 	case 226:
 		code := word(1)

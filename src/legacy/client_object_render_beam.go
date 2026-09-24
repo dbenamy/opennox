@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -25,7 +21,7 @@ func objectRenderBeamAppend(packet unsafe.Pointer) int {
 		count++
 		*effectMapped(1321532 + uintptr(count*8)) = *(*uint32)(unsafe.Add(packet, 1))
 		*effectMapped(1321536 + uintptr(count*8)) = *(*uint32)(unsafe.Add(packet, 5))
-		dword_5d4594_1321800 = C.uint32_t(count)
+		dword_5d4594_1321800 = uint32(count)
 	}
 	return int(count)
 }

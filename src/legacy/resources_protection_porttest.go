@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"unsafe"
@@ -65,9 +60,9 @@ func portTestResourceProtection(p *portTestShopPools, sp *PortTestResourceSpec) 
 			*dst = id
 		}
 	}
-	dword_5d4594_2516344 = C.uint32_t(uintptr(unsafe.Pointer(&records[0].Record)))
-	dword_5d4594_2516352 = C.uint32_t(uintptr(unsafe.Pointer(&records[len(records)-1].Record)))
-	dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = C.uint32_t(encode), C.uint32_t(total), 0
+	dword_5d4594_2516344 = uint32(uintptr(unsafe.Pointer(&records[0].Record)))
+	dword_5d4594_2516352 = uint32(uintptr(unsafe.Pointer(&records[len(records)-1].Record)))
+	dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = uint32(encode), uint32(total), 0
 	*count, *swaps, *rekeys = uint16(len(records)), 0, 0
 	protectionRandom.Seed(1)
 	snapshot := func() []uint32 {

@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include <stdlib.h>
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"unsafe"
@@ -48,7 +42,7 @@ func clientSequenceEnqueue(data []byte) {
 	*(*uint64)(unsafe.Add(ptr, 16)) = uint64(uint32(PlatformTicks()))
 	copy(unsafe.Slice((*byte)(unsafe.Add(ptr, 32)), size), data[4:4+size])
 	if memmap.Uint16(0x5D4594, 1197360) == seq {
-		dword_5d4594_1197352 = C.uint32_t(uintptr(ptr))
+		dword_5d4594_1197352 = uint32(uintptr(ptr))
 	}
 	listAscending(clientSequenceHead(), node)
 }
@@ -59,8 +53,8 @@ func clientSequencePoll() {
 		if pending != nil && uint64(uint32(PlatformTicks()))-*(*uint64)(unsafe.Add(unsafe.Pointer(pending), 16)) > 30000 {
 			*memmap.PtrUint16(0x5D4594, 1197360) = uint16(pending.tag)
 			ready = pending
-			dword_5d4594_1197352 = C.uint32_t(uintptr(unsafe.Pointer(pending)))
-			dword_5d4594_1197356 = C.uint32_t(uintptr(unsafe.Pointer(listNext(pending))))
+			dword_5d4594_1197352 = uint32(uintptr(unsafe.Pointer(pending)))
+			dword_5d4594_1197356 = uint32(uintptr(unsafe.Pointer(listNext(pending))))
 		}
 	}
 	p := ready
@@ -81,7 +75,7 @@ func clientSequencePoll() {
 	}
 	// Original polling drops the pending cursor when a gap is polled before its
 	// timeout. Preserve this observable behavior separately from queue membership.
-	dword_5d4594_1197356 = C.uint32_t(uintptr(unsafe.Pointer(p)))
+	dword_5d4594_1197356 = uint32(uintptr(unsafe.Pointer(p)))
 	dword_5d4594_1197352 = 0
 }
 func clientSequenceInit() {

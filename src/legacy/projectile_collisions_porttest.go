@@ -113,7 +113,7 @@ func (p *portTestShopPools) projectileCollisionPrepare() func() {
 	}
 	oldTarget, oldContact := dword_5d4594_1567928, dword_5d4594_2488620
 	dword_5d4594_1567928 = 0
-	dword_5d4594_2488620 = C.uint32_t(bool2int(sp.WallContact))
+	dword_5d4594_2488620 = uint32(bool2int(sp.WallContact))
 	*memmap.PtrUint32(0x5d4594, 2488612) = uint32(sp.WallXY[0])
 	*memmap.PtrUint32(0x5d4594, 2488616) = uint32(sp.WallXY[1])
 	return func() {

@@ -48,7 +48,7 @@ func PortTestInsert(initial, values [][2]uint32, key, sum uint32, seed int) []Po
 		GetServer = oldGet
 	}()
 	dword_5d4594_2516344, dword_5d4594_2516352 = 0, 0
-	dword_5d4594_2516348, dword_5d4594_2516328 = C.uint(key), C.uint(sum)
+	dword_5d4594_2516348, dword_5d4594_2516328 = uint32(key), uint32(sum)
 	*count = uint16(len(initial))
 	var first, last *protection.Record
 	for _, v := range initial {
@@ -64,8 +64,8 @@ func PortTestInsert(initial, values [][2]uint32, key, sum uint32, seed int) []Po
 		}
 		last = r
 	}
-	dword_5d4594_2516344 = C.uint(uintptr(unsafe.Pointer(first)))
-	dword_5d4594_2516352 = C.uint(uintptr(unsafe.Pointer(last)))
+	dword_5d4594_2516344 = uint32(uintptr(unsafe.Pointer(first)))
+	dword_5d4594_2516352 = uint32(uintptr(unsafe.Pointer(last)))
 	var out []PortTestInsertSnapshot
 	for i, v := range values {
 		var result int

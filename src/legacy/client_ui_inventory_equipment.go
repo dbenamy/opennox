@@ -164,7 +164,7 @@ func sub_462040(code C.int) {
 		}
 	}
 	if slot == 0 {
-		dword_5d4594_1062488 = C.uint32_t(dr.NetCode32)
+		dword_5d4594_1062488 = uint32(dr.NetCode32)
 	}
 	charge := int16(*(*uint16)(unsafe.Add(dr.C(), 448)))
 	if charge >= 0 {
@@ -198,7 +198,7 @@ func sub_4624D0(code C.int) C.int {
 	} else {
 		dword_5d4594_1062492 = 0
 		if alt != nil {
-			dword_5d4594_1062496 = C.uint32_t(dr.NetCode32)
+			dword_5d4594_1062496 = uint32(dr.NetCode32)
 			alt.Drawable.NetCode32 = alt.Codes[0]
 			uiInventoryEquipRequest(alt.Drawable)
 		} else {

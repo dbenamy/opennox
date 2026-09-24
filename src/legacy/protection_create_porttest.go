@@ -32,7 +32,7 @@ func PortTestCreate(id, bits, key, sum uint32, mode int) PortTestCreateResult {
 		*count = oldCount
 	}()
 	dword_5d4594_2516344, dword_5d4594_2516352 = 0, 0
-	dword_5d4594_2516348, dword_5d4594_2516328 = C.uint(key), C.uint(sum)
+	dword_5d4594_2516348, dword_5d4594_2516328 = uint32(key), uint32(sum)
 	*count = 0
 	var result int
 	switch mode {
@@ -47,7 +47,7 @@ func PortTestCreate(id, bits, key, sum uint32, mode int) PortTestCreateResult {
 	if p := dword_5d4594_2516344; p != 0 {
 		r := (*[4]uint32)(unsafe.Pointer(uintptr(p)))
 		out.ID, out.Value = r[0], r[1]
-		out.LinksValid = p == dword_5d4594_2516352 && r[2] == 0 && r[3] == 0 && dword_5d4594_2516348 == C.uint(key)
+		out.LinksValid = p == dword_5d4594_2516352 && r[2] == 0 && r[3] == 0 && dword_5d4594_2516348 == uint32(key)
 	}
 	return out
 }

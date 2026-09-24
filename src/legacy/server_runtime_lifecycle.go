@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/object"
 	"github.com/opennox/libs/strman"
@@ -61,7 +56,7 @@ func runtimePauseStart(actor *server.Object, kind int32) {
 		return
 	}
 	if actor != nil {
-		dword_5d4594_2523780 = C.uint32_t(uintptr(actor.CObj()))
+		dword_5d4594_2523780 = uint32(uintptr(actor.CObj()))
 	} else {
 		actor = runtimePauseActor()
 	}
@@ -73,7 +68,7 @@ func runtimePauseStart(actor *server.Object, kind int32) {
 		}
 		effect = GetServer().S().NewObjectByTypeID(name)
 		actor = runtimePauseActor()
-		dword_5d4594_2523776 = C.uint32_t(uintptr(effect.CObj()))
+		dword_5d4594_2523776 = uint32(uintptr(effect.CObj()))
 	}
 	if effect != nil {
 		if actor != nil {

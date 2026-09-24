@@ -135,7 +135,7 @@ func uiInventoryResetClosedScroll() int {
 	return gui.EventRespInt(w.Func94(&gui.RawEvent{Event: 16394, Arg1: uintptr(uint32(max))}))
 }
 func uiInventorySetWindowLevel(level int) int {
-	dword_5d4594_1049844 = C.uint32_t(level)
+	dword_5d4594_1049844 = uint32(level)
 	return int(nox_xxx_inventoryNameSignInit_4671E0())
 }
 

@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/client"
@@ -28,7 +23,7 @@ func effectDispatchRay(packet *[9]byte) uint32 {
 		} {
 			*effectMapped(v.offset) = effectType(v.name)
 		}
-		dword_5d4594_1304328 = C.uint32_t(effectType("OrbRay"))
+		dword_5d4594_1304328 = uint32(effectType("OrbRay"))
 	}
 	var coords [4]uint16
 	for i := range coords {

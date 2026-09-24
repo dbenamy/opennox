@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"fmt"
@@ -107,7 +101,7 @@ func briefingSprites() []*uint32 {
 }
 func briefingInitSprites() *client.Drawable {
 	if dword_5d4594_832484 == 0 {
-		dword_5d4594_832484 = C.uint32_t(uintptr(GetClient().R2().GetFonts().FontPtrByName("default")))
+		dword_5d4594_832484 = uint32(uintptr(GetClient().R2().GetFonts().FontPtrByName("default")))
 	}
 	names := []string{"GauntletExitB", "BeholderGenerator", "Ankh", "SoulGate", "SilverKey", "GoldKey", "QuestGoldChest", "QuestGoldPile", "DunMirChest4", "WarHammer", "HastePotion", "ConjurerSpellBook"}
 	var dr *client.Drawable
@@ -172,7 +166,7 @@ func briefingWinReport(data unsafe.Pointer) int {
 		if width > 85 {
 			width = 85
 		}
-		dword_5d4594_832476 = C.uint32_t(width)
+		dword_5d4594_832476 = uint32(width)
 	}
 	return briefingShow(254, 1, 1)
 }

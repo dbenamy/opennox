@@ -15,7 +15,7 @@ import (
 
 func uiTradeInit() int {
 	w := Nox_new_window_from_file("Trade.wnd", uiInventoryWindowEvent(uiTradePanel))
-	dword_5d4594_1320940 = C.uint32_t(uiInventoryPointer(w.C()))
+	dword_5d4594_1320940 = uint32(uiInventoryPointer(w.C()))
 	if w == nil {
 		return 0
 	}

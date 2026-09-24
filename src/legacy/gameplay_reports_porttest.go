@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/server"
@@ -55,7 +50,7 @@ func (p *portTestShopPools) gameplayReportsPrepare() func() {
 	restoreRules := p.gameplayReportRulesPrepare(sp.Rules)
 	oldMask := dword_5d4594_2649712
 	if sp.RecipientMask != nil {
-		dword_5d4594_2649712 = C.uint32_t(*sp.RecipientMask)
+		dword_5d4594_2649712 = uint32(*sp.RecipientMask)
 	}
 	p.reportTexts = nil
 	for _, text := range sp.Texts {

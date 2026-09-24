@@ -290,7 +290,7 @@ func uiTradeAcceptance(data unsafe.Pointer) uint32 {
 		return 0
 	}
 	bits := *(*byte)(unsafe.Add(data, 2))
-	dword_5d4594_1320944 = C.uint32_t(bits & 1)
-	dword_5d4594_1320948 = C.uint32_t((bits >> 1) & 1)
+	dword_5d4594_1320944 = uint32(bits & 1)
+	dword_5d4594_1320948 = uint32((bits >> 1) & 1)
 	return uiInventoryPointer(data)
 }

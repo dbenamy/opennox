@@ -117,7 +117,7 @@ func portTestDeathPrepare(proxy *portTestRoamOwnerServer, u *server.Object, sp *
 	}
 	proxy.life.ids[uint32(uintptr(u.DeathData))] = 992
 	*memmap.PtrUint32(0x5D4594, 2491696) = sp.Cache
-	dword_5d4594_2491704 = C.uint32_t(sp.Rotation)
+	dword_5d4594_2491704 = uint32(sp.Rotation)
 	dword_5d4594_527656 = 0
 	for _, off := range []uintptr{203080, 203240} {
 		*memmap.PtrPtr(0x587000, off) = st.drop

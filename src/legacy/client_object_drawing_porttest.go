@@ -110,9 +110,9 @@ func PortTestNewObjectDrawEnvironment() *PortTestObjectDrawEnvironment {
 	return e
 }
 func (e *PortTestObjectDrawEnvironment) Reset() {
-	nox_color_black_2650656 = C.uint32_t(noxcolor.RGB5551Color(0, 0, 0).Color32())
-	nox_color_blue_2650684 = C.uint32_t(noxcolor.RGB5551Color(0, 0, 255).Color32())
-	dword_8531A0_2572 = C.uint32_t(noxcolor.RGB5551Color(220, 220, 60).Color32())
+	nox_color_black_2650656 = uint32(noxcolor.RGB5551Color(0, 0, 0).Color32())
+	nox_color_blue_2650684 = uint32(noxcolor.RGB5551Color(0, 0, 255).Color32())
+	dword_8531A0_2572 = uint32(noxcolor.RGB5551Color(220, 220, 60).Color32())
 	drawableSummonSpark = 0
 	*memmap.PtrUint32(0x5D4594, 1313720) = 0
 	*memmap.PtrUint32(0x5D4594, 1313724) = 0

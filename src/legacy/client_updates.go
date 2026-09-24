@@ -138,7 +138,7 @@ func updateFireballFrame(dr *client.Drawable, speed int) int {
 func updateManaBomb(dr *client.Drawable) int {
 	radius := int(GetServer().S().Balance.Float("ManaBombOutRadius"))
 	if dword_5d4594_1522956 == 0 {
-		dword_5d4594_1522956 = C.uint32_t(effectType("ManaBombOrb"))
+		dword_5d4594_1522956 = uint32(effectType("ManaBombOrb"))
 		*effectMapped(1522960) = effectType("VioletSpark")
 	}
 	for i := 0; i < 20; i++ {
@@ -353,7 +353,7 @@ func updateHealDrain(vp *noxrender.Viewport, dr *client.Drawable, heal bool) int
 }
 func updateCharm(vp *noxrender.Viewport, dr *client.Drawable) int {
 	if dword_5d4594_1522968 == 0 {
-		dword_5d4594_1522968 = C.uint32_t(effectType("CharmOrb"))
+		dword_5d4594_1522968 = uint32(effectType("CharmOrb"))
 	}
 	updateTransfer(int(dword_5d4594_1522968), vp, dr, true, true)
 	updateTransfer(int(dword_5d4594_1522968), vp, dr, false, true)

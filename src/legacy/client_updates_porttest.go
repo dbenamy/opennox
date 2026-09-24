@@ -118,8 +118,8 @@ func (p *PortTestClientUpdateEnvironment) Reset(density uint32) {
 }
 func (p *PortTestClientUpdateEnvironment) Restore() {
 	copy(unsafe.Slice(memmap.PtrUint32(0x5D4594, 1522944), 20), p.mapped)
-	dword_5d4594_1522956 = C.uint32_t(p.named[0])
-	dword_5d4594_1522968 = C.uint32_t(p.named[1])
+	dword_5d4594_1522956 = uint32(p.named[0])
+	dword_5d4594_1522968 = uint32(p.named[1])
 	*memmap.PtrUint32(0x587000, 190108) = p.density
 }
 func (p *PortTestClientUpdateEnvironment) Snapshot() []uint32 {

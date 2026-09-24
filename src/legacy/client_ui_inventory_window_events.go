@@ -27,7 +27,7 @@ func uiInventorySliderValue(w *gui.Window, code int, a, b uint32) int {
 func uiInventoryPanelEvents(w *gui.Window, event int, a, b uintptr) int {
 	slider := uiInventoryWindowValue(uint32(dword_5d4594_1062508))
 	if event == 16393 {
-		dword_5d4594_1062512 = C.uint32_t((*gui.SliderData)(slider.WidgetData).Max - uint32(b))
+		dword_5d4594_1062512 = uint32((*gui.SliderData)(slider.WidgetData).Max - uint32(b))
 		return 0
 	}
 	if event != 16391 {
@@ -42,7 +42,7 @@ func uiInventoryPanelEvents(w *gui.Window, event int, a, b uintptr) int {
 		} else {
 			v -= v % 50
 		}
-		dword_5d4594_1062512 = C.uint32_t(v)
+		dword_5d4594_1062512 = uint32(v)
 		uiInventorySliderValue(slider, 16394, (*gui.SliderData)(slider.WidgetData).Max-uint32(v), 0)
 		audioEventPlay(766, 100, 0, 0)
 	case 9103:
@@ -53,7 +53,7 @@ func uiInventoryPanelEvents(w *gui.Window, event int, a, b uintptr) int {
 		} else {
 			v -= v % 50
 		}
-		dword_5d4594_1062512 = C.uint32_t(v)
+		dword_5d4594_1062512 = uint32(v)
 		uiInventorySliderValue(slider, 16394, uint32(max-v), 0)
 		audioEventPlay(766, 100, 0, 0)
 	case 9105:

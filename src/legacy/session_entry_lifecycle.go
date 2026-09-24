@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "client__gui__chathelp.h"
-*/
-import "C"
 import (
 	"bytes"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -18,7 +14,7 @@ func sessionResetPlayers() {
 	s := GetServer().S()
 	for pl := s.Players.First(); pl != nil; pl = s.Players.Next(pl) {
 		if u := pl.PlayerUnit; u != nil {
-			dword_5d4594_2649712 &^= C.uint32_t(uint32(1) << uint32(pl.PlayerInd&31))
+			dword_5d4594_2649712 &^= uint32(uint32(1) << uint32(pl.PlayerInd&31))
 			pl.Field3676 = 2
 			controlDefaultItems(u, 1, 0)
 			pl.Field2140 = 0
@@ -95,7 +91,7 @@ func sessionPlayerIncoming(index int32) uint32 {
 	}
 	resetNetworkAliases((*[255]server.PlayerNetData)(unsafe.Add(pl.C(), 16)))
 	u := pl.PlayerUnit
-	dword_5d4594_2649712 |= C.uint32_t(uint32(1) << uint32(index&31))
+	dword_5d4594_2649712 |= uint32(uint32(1) << uint32(index&31))
 	pos := u.PosVec
 	matchRosterSendPlayers(int(index))
 	pl.Field4700 = 0

@@ -150,7 +150,7 @@ func monsterCastRelated2(u, t *server.Object) bool {
 func monsterHealCandidate(t, u *server.Object) {
 	core := GetServer().S()
 	if t != u && !core.IsEnemyTo(u, t) && t.HealthData != nil && t.Flags()&0x8000 == 0 && core.CanInteract(u, t, 0) && t.HealthData.Cur < t.HealthData.Max>>1 {
-		dword_5d4594_2489160 = C.uint32_t(uintptr(t.CObj()))
+		dword_5d4594_2489160 = uint32(uintptr(t.CObj()))
 	}
 }
 func monsterHealSomeone(u *server.Object) bool {

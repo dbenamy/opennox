@@ -176,7 +176,7 @@ func questLoseWarriorAbility(u *server.Object) int8 {
 func questLoseGems(u *server.Object) {
 	if dword_5d4594_2491676 == 0 {
 		core := GetServer().S()
-		dword_5d4594_2491676 = C.uint32_t(core.Types.IndByID("Diamond"))
+		dword_5d4594_2491676 = uint32(core.Types.IndByID("Diamond"))
 		*memmap.PtrUint32(0x5D4594, 2491680) = uint32(core.Types.IndByID("Emerald"))
 		*memmap.PtrUint32(0x5D4594, 2491684) = uint32(core.Types.IndByID("Ruby"))
 	}

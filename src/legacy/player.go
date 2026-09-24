@@ -95,7 +95,7 @@ func ClientPlayerNetCode() int {
 }
 
 func ClientSetPlayerNetCode(id int) {
-	nox_player_netCode_85319C = C.uint(id)
+	nox_player_netCode_85319C = uint32(id)
 }
 
 func Nox_xxx_playerForceDisconnect_4DE7C0(ind ntype.PlayerInd) {

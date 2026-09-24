@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -76,7 +72,7 @@ func spawnPolicyMonsterHead() *spawnPolicyMonsterListNode {
 	return (*spawnPolicyMonsterListNode)(unsafe.Pointer(uintptr(dword_5d4594_2386224)))
 }
 func spawnPolicySetMonsterHead(n *spawnPolicyMonsterListNode) {
-	dword_5d4594_2386224 = C.uint32_t(uintptr(unsafe.Pointer(n)))
+	dword_5d4594_2386224 = uint32(uintptr(unsafe.Pointer(n)))
 }
 func spawnPolicyFindMonster(u *server.Object) *spawnPolicyMonsterListNode {
 	for n := spawnPolicyMonsterHead(); n != nil; n = n.Next {

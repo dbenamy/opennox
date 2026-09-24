@@ -172,7 +172,7 @@ func uiMeterTube(w *gui.Window) int {
 		frame := uint32(dword_5d4594_1096256)
 		if int32(dword_5d4594_1096260) > 0 {
 			frame += uint32(dword_5d4594_1096260)
-			dword_5d4594_1096256 = C.uint32_t(frame)
+			dword_5d4594_1096256 = uint32(frame)
 			dword_5d4594_1096260--
 			if frame>>3 >= 10 {
 				frame = 0

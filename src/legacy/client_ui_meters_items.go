@@ -105,7 +105,7 @@ func nox_xxx_guiBottleSlotProc_471B90(window, event int) int {
 func nox_xxx_guiHealthManaTubeProc_472100(window, event int) int {
 	if event == 7 {
 		old := uint32(dword_5d4594_1096252)
-		dword_5d4594_1096252 = C.uint32_t(1 - old)
+		dword_5d4594_1096252 = uint32(1 - old)
 		uiMeterHide(uiMeters()[2].Window, old == 1)
 		if memmap.Uint8(0x85B3FC, 12254) != 0 {
 			uiMeterHide(uiMeters()[3].Window, dword_5d4594_1096252 == 0)

@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"math"
 	"unsafe"
@@ -76,10 +71,10 @@ func initParticleColors() int {
 	} {
 		*effectMapped(uintptr(v[0])) = particleRGB(v[1], v[2], v[3])
 	}
-	dword_5d4594_1313532 = C.uint32_t(particleRGB(255, 255, 0))
-	dword_5d4594_1313536 = C.uint32_t(particleRGB(0, 0, 255))
-	dword_5d4594_1313540 = C.uint32_t(particleRGB(0, 200, 255))
-	dword_5d4594_1313564 = C.uint32_t(particleRGB(255, 255, 100))
+	dword_5d4594_1313532 = uint32(particleRGB(255, 255, 0))
+	dword_5d4594_1313536 = uint32(particleRGB(0, 0, 255))
+	dword_5d4594_1313540 = uint32(particleRGB(0, 200, 255))
+	dword_5d4594_1313564 = uint32(particleRGB(255, 255, 100))
 	red, green, blue := 255, 255, 255
 	for i := 0; i < 16; i++ {
 		if i <= 3 {

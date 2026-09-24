@@ -95,16 +95,16 @@ func uiInventoryDrawWindow(w *gui.Window) int {
 	switch *state {
 	case 1:
 		next := int32(dword_587000_136184) + 64
-		dword_587000_136184 = C.uint32_t(next)
+		dword_587000_136184 = uint32(next)
 		if next > 0 {
 			dword_587000_136184 = 0
 			*state = 2
 		}
 	case 3:
 		next := int32(dword_587000_136184) - 32
-		dword_587000_136184 = C.uint32_t(next)
+		dword_587000_136184 = uint32(next)
 		if next <= -225 {
-			dword_587000_136184 = C.uint32_t(^uint32(224))
+			dword_587000_136184 = uint32(^uint32(224))
 			*state = 0
 			switch memmap.Uint8(0x5D4594, 1049869) {
 			case 0:

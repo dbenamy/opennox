@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_1.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -159,7 +154,7 @@ func questEligibilityEffects(u *server.Object) bool {
 		for i, name := range []string{"Replenishment1", "Replenishment2", "Replenishment3", "Replenishment4"} {
 			m := core.Modif.Nox_xxx_modifGetDescById413330(core.Modif.Nox_xxx_modifGetIdByName413290(name))
 			if i == 0 {
-				dword_5d4594_1568308 = C.uint32_t(uintptr(m.C()))
+				dword_5d4594_1568308 = uint32(uintptr(m.C()))
 			} else {
 				*memmap.PtrPtr(0x5d4594, 1568308+uintptr(i*4)) = m.C()
 			}

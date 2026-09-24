@@ -144,8 +144,8 @@ func inventoryArmorPickup(u, it *server.Object, arg, equip int) int {
 	if *memmap.PtrUint32(0x5D4594, 2488712) == 0 {
 		*memmap.PtrUint32(0x5D4594, 2488712) = uint32(GetServer().S().Types.IndByID("StreetSneakers"))
 		*memmap.PtrUint32(0x5D4594, 2488716) = uint32(GetServer().S().Types.IndByID("WizardRobe"))
-		dword_5d4594_2488720 = C.uint32_t(GetServer().S().Types.IndByID("WoodenShield"))
-		dword_5d4594_2488724 = C.uint32_t(GetServer().S().Types.IndByID("SteelShield"))
+		dword_5d4594_2488720 = uint32(GetServer().S().Types.IndByID("WoodenShield"))
+		dword_5d4594_2488724 = uint32(GetServer().S().Types.IndByID("SteelShield"))
 	}
 	if !noxflags.HasGame(2048|4096) && C.int(serverConfigFlagsQuery(int32(2))) != 0 && equipmentDuplicate(u, it) != 0 {
 		inventoryPriMessage(u, "armor.c:CannotPickupDuplicateArmor")

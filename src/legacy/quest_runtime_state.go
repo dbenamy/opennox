@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/common/flags"
@@ -18,7 +13,7 @@ func questRuntimeSoulFramePtr() *uint32 { return (*uint32)(unsafe.Pointer(&dword
 func questRuntimePreviousStage(stage uint32) uint32 {
 	old := uint32(dword_5d4594_1556128)
 	*memmap.PtrUint32(0x5D4594, 1556132) = old
-	dword_5d4594_1556128 = C.uint32_t(stage)
+	dword_5d4594_1556128 = uint32(stage)
 	return old
 }
 func questRuntimeWord(off uintptr) uint32 { return memmap.Uint32(0x5D4594, off) }

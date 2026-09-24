@@ -54,7 +54,7 @@ func controlRemoveCreatures(u *server.Object) {
 }
 func controlFindBall() *server.Object {
 	if dword_5d4594_1565616 == 0 {
-		dword_5d4594_1565616 = C.uint32_t(GetServer().S().Types.IndByID("GameBall"))
+		dword_5d4594_1565616 = uint32(GetServer().S().Types.IndByID("GameBall"))
 	}
 	for u := GetServer().S().Objs.List; u != nil; u = u.ObjNext {
 		if uint32(u.TypeInd) == uint32(dword_5d4594_1565616) {
@@ -65,7 +65,7 @@ func controlFindBall() *server.Object {
 }
 func controlNextObserver(pl unsafe.Pointer) *server.Object {
 	if dword_5d4594_1565616 == 0 {
-		dword_5d4594_1565616 = C.uint32_t(GetServer().S().Types.IndByID("GameBall"))
+		dword_5d4594_1565616 = uint32(GetServer().S().Types.IndByID("GameBall"))
 	}
 	players := &GetServer().S().Players
 	current := controlObject(pl, 3628)

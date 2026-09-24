@@ -36,7 +36,7 @@ func uiInventoryNewScrollControls(parent *gui.Window) int {
 	d := gui.WindowData{Style: 8, Window: parent, BgColorVal: 0x80000000, EnColorVal: 0x80000000, HlColorVal: 0x80000000, DisColorVal: 0x80000000, SelColorVal: 0x80000000}
 	data := gui.SliderData{Max: 850}
 	w := uiSliderNew(parent, 1033, 524, 42, 16, 91, &d, &data)
-	dword_5d4594_1062508 = C.uint32_t(uiInventoryPointer(w.C()))
+	dword_5d4594_1062508 = uint32(uiInventoryPointer(w.C()))
 	if w == nil {
 		return 0
 	}
@@ -62,9 +62,9 @@ func uiInventoryNewModeControls(parent *gui.Window) int {
 		w := NewButtonOrCheckbox(parent, 1161, c.x, c.y, c.w, c.h, &d)
 		switch i {
 		case 0:
-			dword_5d4594_1062528 = C.uint32_t(uiInventoryPointer(w.C()))
+			dword_5d4594_1062528 = uint32(uiInventoryPointer(w.C()))
 		case 1:
-			dword_5d4594_1062524 = C.uint32_t(uiInventoryPointer(w.C()))
+			dword_5d4594_1062524 = uint32(uiInventoryPointer(w.C()))
 		case 2:
 			*memmap.PtrUint32(0x5D4594, 1062532) = uiInventoryPointer(w.C())
 		}
@@ -78,7 +78,7 @@ func uiInventoryNewModeControls(parent *gui.Window) int {
 }
 func uiInventoryNewIdentifyWindow(parent *gui.Window) int {
 	w := Nox_new_window_from_file("identify.wnd", nil)
-	dword_5d4594_1062476 = C.uint32_t(uiInventoryPointer(w.C()))
+	dword_5d4594_1062476 = uint32(uiInventoryPointer(w.C()))
 	if w == nil {
 		return 0
 	}
@@ -93,7 +93,7 @@ func uiInventoryNewIdentifyWindow(parent *gui.Window) int {
 func uiInventoryCreateWindow() int {
 	uiInventoryLoadImages()
 	nox_xxx_inventoryNameSignInit_4671E0()
-	dword_5d4594_1063636 = C.uint32_t(uintptr(GetClient().R2().GetFonts().FontPtrByName("small")))
+	dword_5d4594_1063636 = uint32(uintptr(GetClient().R2().GetFonts().FontPtrByName("small")))
 	vp := (*noxrender.Viewport)(memmap.PtrOff(0x5D4594, 1049732))
 	vp.Screen = image.Rect(0, 0, int(nox_win_width), int(nox_win_height))
 	vp.Size = image.Pt(int(nox_win_width), int(nox_win_height))
@@ -106,14 +106,14 @@ func uiInventoryCreateWindow() int {
 	status := g.NewWindowRaw(root, 8, 0, 224, int(nox_win_width), 40, nil)
 	status.SetAllFuncs(func(*gui.Window, gui.WindowEvent) gui.WindowEventResp { return gui.RawEventResp(0) }, drawOne, C.nox_xxx_inventroryOnHovewerSub_4667E0)
 	main := g.NewWindowRaw(root, 40, 0, 0, 563, 224, uiInventoryWindowEvent(uiInventoryPanelEvents))
-	dword_5d4594_1062456 = C.uint32_t(uiInventoryPointer(main.C()))
+	dword_5d4594_1062456 = uint32(uiInventoryPointer(main.C()))
 	main.SetAllFuncs(uiInventoryWindowEvent(uiInventoryMainEvents), func(w *gui.Window, _ *gui.WindowData) int { return uiInventoryDrawWindow(w) }, C.sub_466620)
 	main.DrawData().Style |= 0x100
 	catcher := g.NewWindowRaw(root, 40, 0, 0, 1, 1, nil)
 	*memmap.PtrUint32(0x5D4594, 1062472) = uiInventoryPointer(catcher.C())
 	catcher.SetAllFuncs(uiInventoryWindowEvent(uiInventoryMainEvents), drawOne, nil)
 	alt := g.NewWindowRaw(main, 40, 173, 174, 50, 50, nil)
-	dword_5d4594_1062468 = C.uint32_t(uiInventoryPointer(alt.C()))
+	dword_5d4594_1062468 = uint32(uiInventoryPointer(alt.C()))
 	alt.SetAllFuncs(uiInventoryWindowEvent(uiInventoryAlternateEvents), func(w *gui.Window, _ *gui.WindowData) int { return int(sub_4625D0((*C.uint32_t)(w.C()))) }, C.sub_4661D0)
 	alt.DrawData().Style |= 0x100
 	if uiInventoryNewScrollControls(main) == 0 || uiInventoryNewModeControls(main) == 0 || uiInventoryNewIdentifyWindow(main) == 0 {
@@ -138,7 +138,7 @@ func uiInventoryCreateWindow() int {
 	grid := uiInventoryGrid()
 	clear(grid[:])
 	if dword_5d4594_1062560 == 0 {
-		dword_5d4594_1062560 = C.uint32_t(GetClient().Cli().Things.IndByID("Gold"))
+		dword_5d4594_1062560 = uint32(GetClient().Cli().Things.IndByID("Gold"))
 		*memmap.PtrUint32(0x5D4594, 1049728) = uint32(GetClient().Cli().Things.IndByID("QuestGoldPile"))
 		*memmap.PtrUint32(0x5D4594, 1049724) = uint32(GetClient().Cli().Things.IndByID("QuestGoldChest"))
 	}
@@ -151,11 +151,11 @@ func uiInventoryCreateWindow() int {
 	}
 	create(20, uint32(dword_5d4594_1062560))
 	if dword_5d4594_1062564 == 0 {
-		dword_5d4594_1062564 = C.uint32_t(GetClient().Cli().Things.IndByID("Identify"))
+		dword_5d4594_1062564 = uint32(GetClient().Cli().Things.IndByID("Identify"))
 	}
 	create(41, uint32(dword_5d4594_1062564))
 	if dword_5d4594_1062556 == 0 {
-		dword_5d4594_1062556 = C.uint32_t(GetClient().Cli().Things.IndByID("AutoMap"))
+		dword_5d4594_1062556 = uint32(GetClient().Cli().Things.IndByID("AutoMap"))
 	}
 	create(62, uint32(dword_5d4594_1062556))
 	return int(uiInventoryPointer(main.C()))
@@ -179,15 +179,15 @@ func uiInventoryLoadImages() uintptr {
 	*memmap.PtrUint32(0x5D4594, 1049964) = uiMeterLoadImage("InventoryEquipRing")
 	*memmap.PtrUint32(0x5D4594, 1049968) = uiMeterLoadImage("InventoryQuickItemRing")
 	*memmap.PtrUint32(0x5D4594, 1049972) = uiMeterLoadImage("InventoryCloseButtonLit")
-	dword_5d4594_1049976 = C.uint32_t(uiMeterLoadImage("InventoryJournalButtonLit"))
+	dword_5d4594_1049976 = uint32(uiMeterLoadImage("InventoryJournalButtonLit"))
 	*memmap.PtrUint32(0x5D4594, 1049980) = uiMeterLoadImage("InventoryInventoryButton")
 	*memmap.PtrUint32(0x5D4594, 1049984) = uiMeterLoadImage("InventoryInventoryButtonLit")
 	*memmap.PtrUint32(0x5D4594, 1049988) = uiMeterLoadImage("InventoryDollButtonLit")
-	dword_5d4594_1049992 = C.uint32_t(uiMeterLoadImage("InventoryStatsButton"))
-	dword_5d4594_1049996 = C.uint32_t(uiMeterLoadImage("InventoryStatsButtonLit"))
+	dword_5d4594_1049992 = uint32(uiMeterLoadImage("InventoryStatsButton"))
+	dword_5d4594_1049996 = uint32(uiMeterLoadImage("InventoryStatsButtonLit"))
 	*memmap.PtrUint32(0x5D4594, 1050000) = uiMeterLoadImage("GUIFist")
 	*memmap.PtrUint32(0x5D4594, 1050004) = uiMeterLoadImage("SharedKeyMode")
 	ref := Nox_xxx_gLoadAnim("ExtraLives")
-	dword_5d4594_1050008 = C.uint32_t(uiInventoryPointer(ref.C()))
+	dword_5d4594_1050008 = uint32(uiInventoryPointer(ref.C()))
 	return uintptr(ref.C())
 }

@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_3.h"
-#include "GAME3_1.h"
-#include "GAME3_2.h"
-#include "GAME4_2.h"
-#include "GAME4_3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -135,7 +127,7 @@ func spellEffectDoorCandidate(u, source *server.Object) {
 	dir := *spellLifeWord(u.UpdateData, 12)
 	pos := types.Ptf(float32(float64(*memmap.PtrInt32(0x587000, 196184+uintptr(dir)*8))*0.5+float64(u.PosVec.X)), float32(float64(*memmap.PtrInt32(0x587000, 196188+uintptr(dir)*8))*0.5+float64(u.PosVec.Y)))
 	if spellEffectTrace(source.PosVec, pos, 0) {
-		dword_5d4594_2487708 = C.uint32_t(uintptr(u.CObj()))
+		dword_5d4594_2487708 = uint32(uintptr(u.CObj()))
 		*memmap.PtrFloat32(0x5d4594, 2487704) = float32(dy*dy + dx*dx)
 	}
 }

@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -56,7 +52,7 @@ func uiTradeMouse(w *gui.Window, event int, a, b uintptr) int {
 				InputSetKeyTimeoutLegacy(2)
 				*(*[2]int32)(memmap.PtrOff(0x5D4594, 1319276)) = [2]int32{int32(p.X), int32(p.Y)}
 				dr := c.Drawable
-				dword_5d4594_1320968 = C.uint32_t(uiInventoryPointer(dr.C()))
+				dword_5d4594_1320968 = uint32(uiInventoryPointer(dr.C()))
 				dr.NetCode32 = c.Codes[c.Count-1]
 				c.Codes[c.Count-1] = 0
 				Nox_xxx_cursorSetDraggedItem_477690(dr)
@@ -64,7 +60,7 @@ func uiTradeMouse(w *gui.Window, event int, a, b uintptr) int {
 				if c.Count == 0 {
 					c.Drawable = nil
 				}
-				dword_5d4594_1320972 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(c)))
+				dword_5d4594_1320972 = uint32(uiInventoryPointer(unsafe.Pointer(c)))
 				*memmap.PtrUint32(0x5D4594, 1320304) = 0
 				uiTradeSound(791)
 			}

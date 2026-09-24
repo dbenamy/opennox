@@ -44,7 +44,7 @@ func pushTileFill(x, y, flags, key int32) {
 		*memmap.PtrUint32(0x973F18, 22200) = 1
 		return
 	}
-	dword_5d4594_2487248 = C.uint32_t(count + 1)
+	dword_5d4594_2487248 = uint32(count + 1)
 	stack[count] = tileFillEntry{X: uint32(x), Y: uint32(y), Flags: uint32(flags)}
 }
 
@@ -54,7 +54,7 @@ func popTileFill(x, y, flags *uint32) bool {
 		return false
 	}
 	count--
-	dword_5d4594_2487248 = C.uint32_t(count)
+	dword_5d4594_2487248 = uint32(count)
 	stack := tileFillStack()
 	*x = stack[count].X
 	// Output pointers can alias the count or stack. Reload after each write,

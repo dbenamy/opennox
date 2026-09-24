@@ -31,7 +31,7 @@ func uiMeterColor(r, g, b int) uint32 { return uint32(nox_color_rgb_4344A0(r, g,
 func uiMeterMode() uint32             { return uint32(dword_5d4594_1096252) }
 
 func nox_xxx_cliShowHideTubes_470AA0(v int) {
-	dword_5d4594_1096252 = C.uint32_t(v)
+	dword_5d4594_1096252 = uint32(v)
 	if memmap.Uint32(0x5D4594, 1093176) != 0 {
 		uiMeterHide(uiMeters()[2].Window, v == 0)
 		uiMeterHide(uiMeters()[3].Window, v == 0)
@@ -39,8 +39,8 @@ func nox_xxx_cliShowHideTubes_470AA0(v int) {
 }
 func uiMeterInitColors() unsafe.Pointer {
 	m := uiMeters()
-	dword_5d4594_1090284 = C.uint32_t(uiMeterColor(255, 0, 0))
-	dword_5d4594_1090280 = C.uint32_t(uiMeterColor(100, 0, 0))
+	dword_5d4594_1090284 = uint32(uiMeterColor(255, 0, 0))
+	dword_5d4594_1090280 = uint32(uiMeterColor(100, 0, 0))
 	*memmap.PtrUint32(0x5D4594, 1091964) = uiMeterColor(0, 255, 0)
 	*memmap.PtrUint32(0x5D4594, 1092992) = uiMeterColor(0, 100, 0)
 	m[0].Color, m[0].Alternate = uint32(dword_5d4594_1090284), uint32(dword_5d4594_1090280)
@@ -56,7 +56,7 @@ func uiMeterInitColors() unsafe.Pointer {
 }
 
 func sub_470C40(v int) int {
-	dword_5d4594_1096264 = C.uint32_t(v)
+	dword_5d4594_1096264 = uint32(v)
 	m := &uiMeters()[0]
 	if v != 0 {
 		m.Color = memmap.Uint32(0x5D4594, 1091964)

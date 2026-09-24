@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_3.h"
-#include "GAME4.h"
-
-
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -32,7 +24,7 @@ var (
 )
 
 func shopHead() *shopSession     { return (*shopSession)(unsafe.Pointer(uintptr(dword_5d4594_2386500))) }
-func shopSetHead(s *shopSession) { dword_5d4594_2386500 = C.uint32_t(uintptr(unsafe.Pointer(s))) }
+func shopSetHead(s *shopSession) { dword_5d4594_2386500 = uint32(uintptr(unsafe.Pointer(s))) }
 func shopCached() []*shopSession {
 	return unsafe.Slice((**shopSession)(memmap.PtrOff(0x5D4594, 2386364)), 32)
 }

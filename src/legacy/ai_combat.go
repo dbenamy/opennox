@@ -254,7 +254,7 @@ func combatScan(t, u *server.Object) {
 	if float64(length) < float64(*min) {
 		dir := unsafe.Slice(memmap.PtrFloat32(0x587000, uintptr(194136+8*int(int16(u.Direction1)))), 2)
 		if float64(dy32)/float64(length)*float64(dir[1])+dx/float64(length)*float64(dir[0]) > .5 {
-			dword_5d4594_2487948 = C.uint32_t(uintptr(t.CObj()))
+			dword_5d4594_2487948 = uint32(uintptr(t.CObj()))
 			*min = length
 		}
 	}

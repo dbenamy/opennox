@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "client__gui__guiquit.h"
-#include "GAME1_1.h"
-#include "GAME1_3.h"
-#include "GAME3_2.h"
-#include "GAME4_1.h"
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -64,7 +56,7 @@ func Get_dword_5d4594_2650652() int {
 }
 
 func Set_dword_5d4594_2650652(v int) {
-	dword_5d4594_2650652 = C.uint(v)
+	dword_5d4594_2650652 = uint32(v)
 }
 
 func Sub_41CEE0(p unsafe.Pointer, a2 int) {

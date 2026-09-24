@@ -219,7 +219,7 @@ func (p *portTestShopPools) spellLifeItems() {
 		}
 	}
 	if len(st.books) > 0 {
-		dword_5d4594_1569672 = C.uint32_t(uintptr(st.books[0]))
+		dword_5d4594_1569672 = uint32(uintptr(st.books[0]))
 	}
 	for i, r := range sp.Durations {
 		d := p.proxy.core.Spells.Dur.NewRaw()

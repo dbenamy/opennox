@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -37,7 +32,7 @@ func clientFrameAverage() {
 func clientModalWindow(command int) {
 	if command != 0 {
 		win := GetClient().Cli().GUI.NewWindowRaw(nil, 552, 0, 0, int(nox_win_width), int(nox_win_height), nil)
-		dword_5d4594_816412 = C.uint32_t(uintptr(unsafe.Pointer(win)))
+		dword_5d4594_816412 = uint32(uintptr(unsafe.Pointer(win)))
 		win.DrawData().BgColorVal = uint32(nox_color_black_2650656)
 	} else if dword_5d4594_816412 != 0 {
 		win := (*gui.Window)(unsafe.Pointer(uintptr(dword_5d4594_816412)))

@@ -60,7 +60,7 @@ func portTestRekeyOperation(initial [][2]uint32, key, sum, sequence, swapCount, 
 		GetServer = oldGet
 	}()
 	dword_5d4594_2516344, dword_5d4594_2516352 = 0, 0
-	dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = C.uint(key), C.uint(sum), C.uint(sequence)
+	dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = uint32(key), uint32(sum), uint32(sequence)
 	*count, *swaps, *rekeys = uint16(len(initial)), swapCount, rekeyCount
 	var first, last *protection.Record
 	nodes := make([]*protection.Record, 0, len(initial))
@@ -78,8 +78,8 @@ func portTestRekeyOperation(initial [][2]uint32, key, sum, sequence, swapCount, 
 		last = r
 		nodes = append(nodes, r)
 	}
-	dword_5d4594_2516344 = C.uint(uintptr(unsafe.Pointer(first)))
-	dword_5d4594_2516352 = C.uint(uintptr(unsafe.Pointer(last)))
+	dword_5d4594_2516344 = uint32(uintptr(unsafe.Pointer(first)))
+	dword_5d4594_2516352 = uint32(uintptr(unsafe.Pointer(last)))
 	protectionRandom.Seed(floatSeed)
 	beforeRandom := protectionRandom
 	beforeFloat, beforeRange := portTestRandomState(protectionRandom)

@@ -39,7 +39,7 @@ func sub_467470(index int, v float32) int {
 	return int(i)
 }
 
-func sub_467490(v int) int { dword_5d4594_1062552 = C.uint32_t(v); return v }
+func sub_467490(v int) int { dword_5d4594_1062552 = uint32(v); return v }
 
 //export sub_4674A0
 func sub_4674A0() int { return int(dword_5d4594_1062552) }
@@ -93,7 +93,7 @@ func sub_467680() {
 //export nox_xxx_wndGetHandle_4676A0
 func nox_xxx_wndGetHandle_4676A0() *C.nox_window { return legacyGlobals.dword_5d4594_1062452 }
 
-func sub_467740(v int) int { dword_5d4594_1062488 = C.uint32_t(v); return v }
+func sub_467740(v int) int { dword_5d4594_1062488 = uint32(v); return v }
 
 //export sub_4678C0
 func sub_4678C0() int { return int(dword_5d4594_1062488) }

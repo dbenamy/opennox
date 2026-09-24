@@ -155,8 +155,8 @@ func portTestAICallbackPrepare(proxy *portTestRoamOwnerServer, u *server.Object,
 	}
 	*memmap.PtrUint32(0x5D4594, 2491568) = sp.AllTargets
 	*memmap.PtrUint32(0x5D4594, 2491572) = sp.Nearest
-	dword_5d4594_2491580 = C.uint32_t(sp.DebrisIndex)
-	dword_5d4594_2491588 = C.uint32_t(sp.BoneIndex)
+	dword_5d4594_2491580 = uint32(sp.DebrisIndex)
+	dword_5d4594_2491588 = uint32(sp.BoneIndex)
 	*memmap.PtrFloat32(0x587000, 287328) = 10
 	d := u.UpdateDataMonster().MonsterDef
 	for i, p := range []unsafe.Pointer{d.MeleeStrikeFunc236, d.DieFunc228, d.DeadFunc232} {

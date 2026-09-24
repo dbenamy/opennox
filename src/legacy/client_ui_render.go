@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
 import (
 	"image"
 	"unsafe"
@@ -56,10 +52,10 @@ func uiRenderNarrowClip(left, right int) int {
 	return uiRenderCopyRect(left, r.Min.Y, right-left, r.Dy())
 }
 func uiRenderBounds(x1, y1, x2, y2 int) int {
-	dword_5d4594_3807140 = C.uint32_t(x1)
-	dword_5d4594_3807136 = C.uint32_t(y1)
-	dword_5d4594_3807116 = C.uint32_t(x2)
-	dword_5d4594_3807152 = C.uint32_t(y2)
+	dword_5d4594_3807140 = uint32(x1)
+	dword_5d4594_3807136 = uint32(y1)
+	dword_5d4594_3807116 = uint32(x2)
+	dword_5d4594_3807152 = uint32(y2)
 	return y2
 }
 func uiRenderFill(p unsafe.Pointer, color uint32, size int32) {

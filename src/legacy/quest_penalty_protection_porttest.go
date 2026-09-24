@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -32,10 +28,10 @@ func portTestPenaltyProtectionEnvironment() (prepare func(uint32), snapshot func
 	prepare = func(gold uint32) {
 		const key = uint32(0x12345678)
 		b.Record = protection.Record{ID: 0x40000001 ^ key, Value: gold ^ key}
-		dword_5d4594_2516344 = C.uint32_t(uintptr(unsafe.Pointer(&b.Record)))
+		dword_5d4594_2516344 = uint32(uintptr(unsafe.Pointer(&b.Record)))
 		dword_5d4594_2516352 = dword_5d4594_2516344
-		dword_5d4594_2516348 = C.uint32_t(key)
-		dword_5d4594_2516328 = C.uint32_t(gold ^ key)
+		dword_5d4594_2516348 = uint32(key)
+		dword_5d4594_2516328 = uint32(gold ^ key)
 		dword_5d4594_2516356 = 0
 		*count, *swaps, *rekeys = 1, 0, 0
 		protectionRandom.Seed(1)

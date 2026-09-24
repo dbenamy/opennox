@@ -113,7 +113,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 				}
 				cell := &uiInventoryGrid()[row+21*col]
 				if cell.Count != 0 {
-					dword_5d4594_1063116 = C.uint32_t(uiInventoryPointer(cell.Drawable.C()))
+					dword_5d4594_1063116 = uint32(uiInventoryPointer(cell.Drawable.C()))
 					cell.Drawable.NetCode32 = cell.Codes[0]
 				} else {
 					dword_5d4594_1063116 = 0
@@ -122,7 +122,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 			}
 			if uiShopActive() != 0 && uiShopMode() == 2 {
 				if uiShopInside(pos) {
-					dword_5d4594_1063116 = C.uint32_t(uiInventoryPointer(uiShopHit(pos).C()))
+					dword_5d4594_1063116 = uint32(uiInventoryPointer(uiShopHit(pos).C()))
 					return 1
 				}
 			}
@@ -276,7 +276,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 			return 1
 		}
 		col, row := (pos.X-314)/50, (pos.Y+int(int32(dword_5d4594_1062512))-13)/50
-		dword_5d4594_1049804, dword_5d4594_1049808 = C.uint32_t(col), C.uint32_t(row)
+		dword_5d4594_1049804, dword_5d4594_1049808 = uint32(col), uint32(row)
 		if !uiInventoryValidCell(col, row) {
 			return 1
 		}
@@ -310,7 +310,7 @@ func uiInventoryMainEvents(w *gui.Window, event int, a, b uintptr) int {
 		if source.Alternate != 0 {
 			target.Alternate = source.Alternate
 			source.Alternate = 0
-			dword_5d4594_1062480 = C.uint32_t(uiInventoryPointer(unsafe.Pointer(target)))
+			dword_5d4594_1062480 = uint32(uiInventoryPointer(unsafe.Pointer(target)))
 		}
 		uiInventoryCompact()
 		return 1
@@ -358,7 +358,7 @@ func uiInventoryAlternateEvents(w *gui.Window, event int, a, b uintptr) int {
 						if uiInventoryAlternate() != nil {
 							uiInventoryAlterWeapon()
 						} else {
-							dword_5d4594_1062492 = C.uint32_t(uiInventoryPointer(dr.C()))
+							dword_5d4594_1062492 = uint32(uiInventoryPointer(dr.C()))
 							uiInventoryDequipRequest(dr)
 						}
 					}

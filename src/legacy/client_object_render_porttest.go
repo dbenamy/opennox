@@ -62,7 +62,7 @@ func (e *PortTestObjectRenderEnvironment) Restore() {
 		e.restore[i]()
 	}
 }
-func (e *PortTestObjectRenderEnvironment) GhostType(v uint32) { dword_5d4594_1321520 = C.uint32_t(v) }
+func (e *PortTestObjectRenderEnvironment) GhostType(v uint32) { dword_5d4594_1321520 = uint32(v) }
 func (e *PortTestObjectRenderEnvironment) State() []uint32 {
 	out := []uint32{uint32(dword_5d4594_1321520), uint32(dword_5d4594_1321800), uint32(dword_5d4594_1305748), uint32(nox_player_netCode_85319C), *memmap.PtrUint32(0x5D4594, 1321512)}
 	for _, reg := range [][2]uintptr{{1305732, 11}, {1321532, 67}} {

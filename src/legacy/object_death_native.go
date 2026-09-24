@@ -92,7 +92,7 @@ func objectDeathBoulder(u *server.Object) {
 		GetServer().ApplyForce(t, u.PosVec, float64(float32(core.Rand.Logic.FloatClamp(5, 20))))
 		monsterDebrisDecay(t, 45, 75)
 		index = (uint32(dword_5d4594_2491704) + 1) % *memmap.PtrUint32(0x587000, 290340)
-		dword_5d4594_2491704 = C.uint32_t(index)
+		dword_5d4594_2491704 = uint32(index)
 	}
 	GetServer().DelayedDelete(u)
 }

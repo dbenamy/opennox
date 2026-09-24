@@ -22,7 +22,7 @@ import (
 func controlFindStart(out *types.Pointf, u *server.Object) {
 	s := GetServer().S()
 	if dword_5d4594_1568868 == 0 {
-		dword_5d4594_1568868 = C.uint32_t(s.Types.IndByID("PlayerStart"))
+		dword_5d4594_1568868 = uint32(s.Types.IndByID("PlayerStart"))
 	}
 	if u == nil {
 		return

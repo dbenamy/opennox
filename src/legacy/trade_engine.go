@@ -358,7 +358,7 @@ func tradeReportGold(u *server.Object) {
 func tradeBuy(u *server.Object, s *shopSession, code uint32) {
 	available := shopGetGold(u)
 	if dword_5d4594_2386548 == 0 {
-		dword_5d4594_2386548 = C.uint32_t(GetServer().S().Types.IndByID("AnkhTradable"))
+		dword_5d4594_2386548 = uint32(GetServer().S().Types.IndByID("AnkhTradable"))
 	}
 	var item *server.Object
 	for n := s.Stock; n != nil; n = n.Next {
@@ -416,7 +416,7 @@ func tradeBuy(u *server.Object, s *shopSession, code uint32) {
 func tradeBuyMany(u *server.Object, s *shopSession, typ int32, count uint32) uint32 {
 	available := shopGetGold(u)
 	if dword_5d4594_2386552 == 0 {
-		dword_5d4594_2386552 = C.uint32_t(GetServer().S().Types.IndByID("AnkhTradable"))
+		dword_5d4594_2386552 = uint32(GetServer().S().Types.IndByID("AnkhTradable"))
 	}
 	for bought := uint32(0); bought < count; {
 		n := s.Stock
@@ -512,7 +512,7 @@ func tradeSaleQuote(u *server.Object, s *shopSession, code uint32) uint32 {
 func tradeSell(u *server.Object, s *shopSession, code uint32) uint32 {
 	shopGetGold(u)
 	if dword_5d4594_2386560 == 0 {
-		dword_5d4594_2386560 = C.uint32_t(GetServer().S().Types.IndByID("Glyph"))
+		dword_5d4594_2386560 = uint32(GetServer().S().Types.IndByID("Glyph"))
 	}
 	if u.InvFirstItem == nil {
 		return uint32(dword_5d4594_2386560)

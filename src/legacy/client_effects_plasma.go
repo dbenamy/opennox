@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client"
@@ -42,15 +37,15 @@ func effectPlasmaSetup(angle int, from, to image.Point) {
 	if distance/40+2 >= 30 {
 		segments = 28
 	}
-	dword_5d4594_1316408 = C.uint32_t(segments)
+	dword_5d4594_1316408 = uint32(segments)
 	cosine := float64(*memmap.PtrFloat32(0x587000, 194136+8*uintptr(angle)))
 	sine := float64(*memmap.PtrFloat32(0x587000, 194140+8*uintptr(angle)))
 	fy := float32(dy)
-	dword_5d4594_1313880 = C.uint32_t(math.Float32bits(fy))
+	dword_5d4594_1313880 = uint32(math.Float32bits(fy))
 	length := float32(math.Sqrt(float64(dy)*float64(fy)+float64(dx)*float64(dx)) + 0.0099999998)
 	*memmap.PtrFloat32(0x5D4594, 1313876) = float32(float64(dx) / float64(length))
 	normalizedY := float64(fy) / float64(length)
-	dword_5d4594_1313880 = C.uint32_t(math.Float32bits(float32(normalizedY)))
+	dword_5d4594_1313880 = uint32(math.Float32bits(float32(normalizedY)))
 	dot := normalizedY*sine + float64(*memmap.PtrFloat32(0x5D4594, 1313876))*cosine
 	if dot < 0 {
 		dot *= 0.2

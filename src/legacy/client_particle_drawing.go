@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"image"
 	"unsafe"
@@ -216,7 +211,7 @@ func particleSpiderSpit(vp *noxrender.Viewport, dr *client.Drawable) int {
 }
 func particleVortexDraw(vp *noxrender.Viewport, dr *client.Drawable) int {
 	if *effectMapped(1313820) == 0 {
-		dword_5d4594_1313816 = C.uint32_t(particleRGB(170, 170, 170))
+		dword_5d4594_1313816 = uint32(particleRGB(170, 170, 170))
 		*effectMapped(1313820) = 1
 	}
 	center := image.Pt(int(*effectWord(dr, 440)), int(*effectWord(dr, 444)))

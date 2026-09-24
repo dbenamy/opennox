@@ -249,7 +249,7 @@ func effectBlueRainSpark(vp *noxrender.Viewport, dr *client.Drawable) int {
 }
 func effectRainOrb(vp *noxrender.Viewport, dr *client.Drawable) int {
 	if dword_5d4594_1313692 == 0 {
-		dword_5d4594_1313692 = C.uint32_t(effectType("RainOrbWhite"))
+		dword_5d4594_1313692 = uint32(effectType("RainOrbWhite"))
 		*effectMapped(1313696) = effectType("RainOrbBlue")
 	}
 	z := int16(dr.ZVal)

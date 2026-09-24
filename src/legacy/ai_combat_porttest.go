@@ -290,7 +290,7 @@ func portTestCombatPrepare(proxy *portTestRoamOwnerServer, u, target *server.Obj
 	if sp.Op == 10 {
 		*memmap.PtrUint32(0x5D4594, 2487952) = math.Float32bits(51)
 	}
-	dword_587000_261388 = C.uint32_t(math.Float32bits(50))
+	dword_587000_261388 = uint32(math.Float32bits(50))
 	s.before = nil
 	for _, b := range s.extra {
 		s.before = append(s.before, bytes.Clone(b))

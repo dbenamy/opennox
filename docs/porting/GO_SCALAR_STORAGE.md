@@ -1,9 +1,11 @@
 # Go integer types for existing scalar storage
 
-Status: original storage baseline qualified on source `12bc387d`; conversion
-is uninstalled. See [baseline evidence](go-scalar-storage-baseline.json). Production/root baseline evidence is reused by exact source
-identity from [the preceding export batch](go-only-exports-qualification.json).
-See [batch manifest](go-scalar-storage-batch.json).
+Status: **qualified** against frozen baseline `a5061480` (original source
+`12bc387d`). See [qualification](go-scalar-storage-qualification.json),
+[baseline evidence](go-scalar-storage-baseline.json), [selected dependency inventory](go-scalar-storage-inventory-after.json)
+and [batch manifest](go-scalar-storage-batch.json). Original production/root
+baseline evidence was reused by exact source identity from
+[the preceding export batch](go-only-exports-qualification.json).
 
 ## Scope
 
@@ -16,9 +18,10 @@ The supported target remains Linux 386/SSE2.
 
 Migrate only necessary scalar conversions and preserve casts at remaining
 C-typed function/field boundaries. Keep allocation domains, callbacks, export
-signatures and external native bindings unchanged. The reviewed draft proposes
-removing 27 production and eight test C imports/preambles; measure the final
-selected counts after compilation and qualification. Standalone C stays zero.
+signatures and external native bindings unchanged. The qualified conversion removes 28 production and eight test C imports/preambles.
+Selected production cgo files fall from 382 to 354 in every profile. The three
+direct project cgo packages, 1,179 legacy exports, 79 callback bodies and 157
+headers / 3,902 lines remain unchanged. Standalone C stays zero.
 
 ## Original contracts and acceptance
 
@@ -51,11 +54,11 @@ copy replaces whole selectors. Primary also handled 11 multi-assignments with
 
 An independent Go AST check verifies all 1,172 initial edit contexts across 122
 files: package declarations/initializers or direct assignments to unshadowed
-package globals. The uninstalled draft parses; actual compiler/boundary fixes
-remain. Exact reconstruction preserves all other bytes before import cleanup.
-Future boundary edits must be reviewed separately, not inferred from that check.
+package globals. The original draft parses. Subsequent compiler-boundary fixes were reviewed
+separately, including an independent Luna review. Exact reconstruction verifies
+all 125 installed source files against the reviewed draft plus those fixes.
 
-The 35 proposed C-import removals have no remaining selectors, exports or build
+The 35 initial C-import removals have no remaining selectors, exports or build
 flags. Primary reviewed their full preambles and 24-header closure. Payloads are
 includes plus one prototype, without executable definitions. No candidate has an
 `init` function. Preserve all other Go initialization. In particular,
@@ -91,3 +94,47 @@ fresh process. No complete safe runtime suite or safe raw-fixture pass is claime
 
 Also remove the empty import block left in `session_entry_exports.go` by the
 preceding wrapper retirement; the file has no remaining declarations or effects.
+
+## Compiler boundary review
+
+The first compile found 18 diagnostics in six files: a four-word snapshot still
+used C element types, protection fixtures retained C numeric casts in assignments
+and comparisons, a rules fixture had a mixed multi-assignment, and player-reset
+mask clearing retained a C cast. Convert those values to the same-width Go types;
+preserve operands, assertions and actual C call/field conversions. The reset file
+then has no C selectors, exports or build directives. Its preamble included only
+`client__gui__chathelp.h`, an empty guarded header including the already-reviewed
+`defs.h` closure, so remove that import too. Final removals are 28 production
+and eight test C imports. The failed compile log is retained; the second compile passes. Post-conversion storage contracts pass in default/server/highres and scalar-only
+safe, with exact frozen hashes and no skips. All three complete consumer sweeps, safe/static and fresh production
+qualification pass. Exact reconstruction
+checks all 125 installed source files against the reviewed draft plus compiler
+fixes. All 1,654 original asset hashes remain unchanged.
+
+## Local artifact cleanup
+
+After the consumer controller completed, host process/descriptor/mapping checks
+and fresh source/copy hashes allowed removal of 3,242 identical asset copies from
+the completed 378-export and 265-export scenarios: 1,112,511,348 logical bytes
+(1,119,281,152 allocated bytes). Original assets, configurations, saves and records
+remain. Recovery manifests were written before deletion. No hard links were made;
+the helper's hard-link suggestion was not used. See each scenario's
+`deduplicated-assets.json` and local `cleanup-completed.json`.
+
+## Qualified outcome
+
+Default/highres each pass 2,425 root tests; server passes 2,414. Each has only the
+expected `TestMapPopulationPrerequisiteProbe` skip, with exact root-name sets and
+no failure events. Safe build/static and three fresh production/ABI checks pass.
+The full-suite comparison exactly matches the existing 304 failure events and
+17-pass/two-fail/32-skip package baseline. Headless character creation, save, load
+and resume pass. All phase source fingerprints match. Original assets were
+rechecked after production qualification and all 1,654 hashes are unchanged.
+
+Phase progress is now 109/463 selected cgo files eliminated on net (354 remain);
+711/1,890 export bridges retired (1,179 remain). No new export was retired here.
+The C-type changes preserve storage ownership and x86/32-bit assumptions.
+
+Luna also supplied a bounded read-only follow-on inventory and disk-copy audit.
+These helped preparation; the primary verified all accepted changes, qualification
+and deletion conditions. No measured subscription or cost-saving claim is made.

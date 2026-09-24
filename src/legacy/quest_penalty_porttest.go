@@ -175,7 +175,7 @@ func portTestPenaltyPrepare(proxy *portTestRoamOwnerServer, sp *PortTestPenaltyS
 			words[j*3+1] = entry[1]
 		}
 	}
-	dword_5d4594_2491676 = C.uint32_t(sp.Cache[0])
+	dword_5d4594_2491676 = uint32(sp.Cache[0])
 	for i, o := range []uintptr{2491680, 2491684, 2386504, 2386508, 2386512} {
 		*memmap.PtrUint32(0x5D4594, o) = sp.Cache[i+1]
 	}

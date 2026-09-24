@@ -44,7 +44,7 @@ func selectBorderPrimary(index int32) bool {
 	if index < 0 || index >= int32(dword_5d4594_251572) {
 		return false
 	}
-	dword_5d4594_3835356 = C.uint32_t(index)
+	dword_5d4594_3835356 = uint32(index)
 	dword_5d4594_2489436 = 1
 	return true
 }
@@ -61,7 +61,7 @@ func selectBorderVariation(variation int32) bool {
 		variation >= int32(memmap.Uint16(0x85B3FC, 28688+60*uintptr(selected))) {
 		return false
 	}
-	dword_5d4594_3835360 = C.uint32_t(variation)
+	dword_5d4594_3835360 = uint32(variation)
 	return true
 }
 

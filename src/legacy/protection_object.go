@@ -51,7 +51,7 @@ func toggleProtectionObject(id int32, obj *server.Object) uint32 {
 	}
 	digest := objectProtectionChecksum(obj)
 	r.Value ^= digest
-	dword_5d4594_2516328 ^= C.uint32_t(digest)
+	dword_5d4594_2516328 ^= uint32(digest)
 	return uint32(dword_5d4594_2516328)
 }
 

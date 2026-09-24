@@ -47,7 +47,7 @@ func PortTestHandles(initial [][2]uint32, key, sum, sequence uint32, seed int, o
 		GetServer = oldGet
 	}()
 	dword_5d4594_2516344, dword_5d4594_2516352 = 0, 0
-	dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = C.uint(key), C.uint(sum), C.uint(sequence)
+	dword_5d4594_2516348, dword_5d4594_2516328, dword_5d4594_2516356 = uint32(key), uint32(sum), uint32(sequence)
 	*count = uint16(len(initial))
 	var first, last *protection.Record
 	for _, value := range initial {
@@ -63,8 +63,8 @@ func PortTestHandles(initial [][2]uint32, key, sum, sequence uint32, seed int, o
 		}
 		last = r
 	}
-	dword_5d4594_2516344 = C.uint(uintptr(unsafe.Pointer(first)))
-	dword_5d4594_2516352 = C.uint(uintptr(unsafe.Pointer(last)))
+	dword_5d4594_2516344 = uint32(uintptr(unsafe.Pointer(first)))
+	dword_5d4594_2516352 = uint32(uintptr(unsafe.Pointer(last)))
 	snapshot := func(result C.int) PortTestHandleSnapshot {
 		out := PortTestHandleSnapshot{
 			Result:     uint32(result),

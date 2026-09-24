@@ -291,7 +291,7 @@ func objectiveFlagBallScore(flag, target *server.Object) int16 {
 		}
 	}
 	if dword_5d4594_1567988 == 0 {
-		dword_5d4594_1567988 = C.uint32_t(core.Types.IndByID("GameBallStart"))
+		dword_5d4594_1567988 = uint32(core.Types.IndByID("GameBallStart"))
 	}
 	n := 0
 	for it := core.Objs.First(); it != nil; it = it.Next() {

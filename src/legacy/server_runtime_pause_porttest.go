@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "common__gamemech__pausefx.h"
-#include "GAME5_2.h"
-*/
-import "C"
-
 import (
 	"fmt"
 	"reflect"
@@ -30,9 +24,9 @@ func (p *portTestShopPools) runtimePauseContract() []uint32 {
 	u := p.resources.unit
 	a, b, c := dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776
 	defer func() { dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776 = a, b, c }()
-	dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776 = C.uint32_t(sp.Active), 0, 0
+	dword_5d4594_2523804, dword_5d4594_2523780, dword_5d4594_2523776 = uint32(sp.Active), 0, 0
 	if sp.Cached {
-		dword_5d4594_2523780 = C.uint32_t(uintptr(u.CObj()))
+		dword_5d4594_2523780 = uint32(uintptr(u.CObj()))
 	}
 	offsets := []uintptr{2523772, 2523796, 2523800}
 	old := make([]uint32, len(offsets))

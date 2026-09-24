@@ -87,7 +87,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 	}
 	if source != nil {
 		if dword_5d4594_1563320 == 0 {
-			dword_5d4594_1563320 = C.uint32_t(GetServer().S().Types.IndByID("SmallFist"))
+			dword_5d4594_1563320 = uint32(GetServer().S().Types.IndByID("SmallFist"))
 			for i, name := range []string{"MediumFist", "LargeFist", "Meteor", "ToxicCloud", "SmallToxicCloud"} {
 				*memmap.PtrUint32(0x5d4594, 1563324+uintptr(i*4)) = uint32(GetServer().S().Types.IndByID(name))
 			}

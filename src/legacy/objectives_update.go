@@ -180,7 +180,7 @@ func objectiveBallUpdate(u *server.Object) {
 func objectiveBallReset(old *server.Object) int {
 	core := GetServer().S()
 	if dword_5d4594_527656 == 0 {
-		dword_5d4594_527656 = C.uint32_t(core.Types.IndByID("GameBallStart"))
+		dword_5d4594_527656 = uint32(core.Types.IndByID("GameBallStart"))
 	}
 	var n int
 	for it := core.Objs.First(); it != nil; it = it.Next() {

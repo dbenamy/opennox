@@ -2,12 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"bytes"
 	"math"
@@ -116,7 +110,7 @@ func portTestMainPrepare(proxy *portTestRoamOwnerServer, u *server.Object, sp *P
 	for i, v := range []uint32{sp.CacheCloud, sp.CacheSmall, sp.Cursor, 0, 0, 0} {
 		*memmap.PtrUint32(0x5D4594, []uintptr{2489468, 2489472, 1096672, 2491596, 2491600, 2491604}[i]) = v
 	}
-	dword_5d4594_2489460 = C.uint32_t(sp.Danger)
+	dword_5d4594_2489460 = uint32(sp.Danger)
 	spatialCursorOwner = 0
 	p := &proxy.life.players[0]
 	pi := p.UpdateDataPlayer().Player

@@ -127,7 +127,7 @@ func portTestGeneratorPrepare(proxy *portTestRoamOwnerServer, u *server.Object, 
 	}
 	proxy.life.ids[uint32(uintptr(unsafe.Pointer(&st.point[2])))] = 996
 	st.configureBalance(sp.Balance)
-	dword_5d4594_2491716 = C.uint32_t(sp.Cache[0])
+	dword_5d4594_2491716 = uint32(sp.Cache[0])
 	for i := 1; i < 8; i++ {
 		*memmap.PtrUint32(0x5D4594, 2491716+uintptr(i*4)) = sp.Cache[i]
 	}

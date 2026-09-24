@@ -118,8 +118,8 @@ func (f *PortTestMapCatalog) State() (s PortTestMapCatalogState) {
 	return
 }
 func (f *PortTestMapCatalog) RestoreState(s PortTestMapCatalogState) {
-	dword_5d4594_1548476 = C.uint32_t(s.Count)
-	dword_5d4594_1548480 = C.uint32_t(s.Clock)
+	dword_5d4594_1548476 = uint32(s.Count)
+	dword_5d4594_1548480 = uint32(s.Clock)
 	*memmap.PtrUint32(0x587000, 191880) = s.Last
 	copy(unsafe.Slice(memmap.PtrUint8(0x5D4594, 1525132), 128*32), s.Quest)
 	copy(unsafe.Slice(memmap.PtrUint8(0x5D4594, 1529228), 6*25*128), s.Cycle)
