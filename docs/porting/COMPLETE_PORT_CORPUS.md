@@ -1,7 +1,7 @@
 # Complete port-test corpus
 
-Status: selector and fixture repaired; focused checks pass; full qualification pending.
-Engine source is unchanged; the player-reset fixture correction below is pending qualification.
+Status: qualified. The complete corpus passes in all three production profiles.
+Engine source and frozen expectations are unchanged; the corrected fixture is qualified.
 
 The old accumulated pattern selected 1,527 of 2,426 default/highres roots and
 1,523 of 2,415 server roots. Independent compiled-name and source audits establish
@@ -21,7 +21,8 @@ using the complete regex, correcting the initial helper literal-alternative coun
 Existing manifest asset variables cover the newly included tests; no ambient
 capture-output variables are set. Broader inventory algorithm design stays with
 the primary. No additional production rebuild is needed for a selector-only change;
-reuse `9adcf3d3` evidence only while all source fingerprints match.
+reuse `9adcf3d3` production evidence after verifying that the corrected test fixture
+is the sole source difference.
 
 Inventory: [complete-port-corpus-inventory.json](complete-port-corpus-inventory.json).
 Manifest: [complete-port-corpus-batch.json](complete-port-corpus-batch.json).
@@ -64,4 +65,14 @@ each profile at `GOGC=1`, with no skips/failures and the unchanged frozen hash.
 Static checks pass. Source fingerprints differ from qualified production only in
 `server_orchestration_player_porttest_test.go`. Evidence:
 [player-reset-fixture-qualification.json](player-reset-fixture-qualification.json).
-This is a recovery checkpoint, not a completed full-corpus qualification.
+The fresh complete sweep also passes: 2,425 pass plus one diagnostic skip in each
+of default/highres; 2,414 pass plus that skip in server. All discovered, executed
+and completed root-name sets exactly match the inventory. There are no failed
+events or other skips. Only the fixture differs from qualified production source,
+so production evidence from `9adcf3d3` is reused; no fresh production build is claimed.
+See [complete-port-corpus-qualification.json](complete-port-corpus-qualification.json).
+
+Initial default/server raw logs were losslessly gzip-archived after host-use and
+hash checks. Restore using `build/port-complete-corpus/initial-log-archive.json`
+before tools that require their original `.jsonl` paths. The recorded failure
+evidence and SHA256 values are unchanged.

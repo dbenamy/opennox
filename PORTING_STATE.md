@@ -24,18 +24,16 @@ prototypes were removed. External native bindings are unchanged.
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Stop at the milestone or for a substantial question.
-Active: accumulated selector repaired to `^Test`; qualify the complete compiled
-porttest corpus before further glue removal. The old selector includes only
-1,527/2,426 default/highres roots and 1,523/2,415 server roots. All omitted roots
-are porttest-tagged; this is a selection-maintenance gap, not evidence their earlier
-focused qualifications never ran. Run all three profiles and record every executed/finished root. See
-[COMPLETE_PORT_CORPUS.md](docs/porting/COMPLETE_PORT_CORPUS.md). The first full default run passed
-all 2,426 roots (one diagnostic skip). Server stopped at player reset: the fixture
-seeded an integer into an object-pointer field, causing a GC write-barrier crash.
-The fixture now uses live object pointers, including its other pointer fields;
-engine code and frozen expectations are unchanged. All three profiles pass 20 focused
-GC-stress repetitions (800 subcases each), and static checks pass. A fresh full
-three-profile sweep is pending. The 378-export draft remains uninstalled.
+The accumulated selector is repaired to `^Test`, and the complete corpus is now
+qualified: default/highres each pass 2,425 roots plus one diagnostic skip; server
+passes 2,414 plus that skip. Exact discovered/executed/completed sets match.
+The old selector omitted 899 default/highres and 892 server roots. The broader run
+exposed invalid pointer seeds in the player-reset fixture; these now use live
+pointers. Engine source and frozen expectations are unchanged. All three profiles
+also pass 20 focused GC-stress repetitions (800 subcases each), and static checks
+pass. See [COMPLETE_PORT_CORPUS.md](docs/porting/COMPLETE_PORT_CORPUS.md).
+Next: trial the optional prebuilt profile runner, then install and qualify the
+reviewed 378-export removal. The export draft remains uninstalled.
 
 
 ## What remains
@@ -62,7 +60,8 @@ not reduce the 79-body count because they retain the shared fallback machinery.
 - All 164 affected owner roots pass in default/server/highres, no skips; exact
   root-name sets match the original baseline. Allocator/server package checks pass
   in all profiles; binfile compiles but has no direct package tests.
-- All test/fixture files and frozen expectations remain unchanged.
+- The export removal left all fixtures unchanged. The subsequent player-reset
+  fixture correction is separately qualified; frozen expectations remain unchanged.
 - Safe build/static checks and three fresh production binaries/ABI checks pass;
   all 65 retired symbols are absent. No safe owner-contract run is claimed here.
 - Headless character creation and explicit save/load/resume pass.
@@ -70,7 +69,8 @@ not reduce the 79-body count because they retain the shared fallback machinery.
   with 17 passing, two failing and 32 skipped packages.
 - All phases used identical source fingerprints. The prior memory-helper sweep
   covered the then-current accumulated selector (1,280/1,276/1,280 roots), not
-  the newly inventoried complete corpus. The broader sweep is still pending.
+  the newly inventoried complete corpus. The new full sweep now qualifies all
+  2,426/2,415/2,426 roots, including the documented diagnostic skips.
 
 Report: [UNUSED_EXPORTS.md](docs/porting/UNUSED_EXPORTS.md).
 Evidence: [qualification](docs/porting/unused-exports-qualification.json).
@@ -129,52 +129,21 @@ Source, tests, reports and qualification metadata are committed; ignored local
 binaries/logs/drafts are not backed up by pushing Git. Completed finalizers are
 consumed and must not be rerun against later sources.
 
-Check free disk before large runs. Older artifacts may be gzip-archived, hardlinked
-or have duplicate scenario assets removed. Consult each artifact directory's
-archive/removal records and each scenario's `deduplicated-assets.json`; use the
-recorded restore script before historical replay. Separate shared binary inodes
-before modifying either path. Cleanup records also live in
-`build/port-artifact-cleanup/`. Some old binaries/cache entries were removed and
-need rebuilding; original assets and current qualified binaries were retained.
-Do not repeat consumed cleanup scripts or infer deletion safety from age alone.
+Check free disk before large runs. Older artifacts may be gzip-archived,
+hardlinked or deduplicated. Restore scenario data before replay and separate
+shared binary inodes before modifying either path. Cleanup scripts are consumed;
+do not rerun them or infer deletion safety from age alone.
 
-The large historical captures/results in `port-game-messages`, `port-map-sections`,
-`port-client-interaction` and `port-session-dialogs` were losslessly gzip-archived;
-116 superseded text logs were discarded. This reclaimed 4.44 GiB. The journal and
-restore instructions are in `build/port-artifact-cleanup/large-historical-20260924/`.
-For a retained capture, `gzip -dk <original-path>.gz` restores the raw file; verify
-its SHA256 against the journal. Discarded text logs cannot be restored this way.
-Current qualified binaries, original assets and qualification summaries remain.
+| Artifact | Recovery or current location |
+| --- | --- |
+| Current qualified production/safe binaries | Retained under `build/port-unused-exports/`; full-corpus test work is under `build/port-complete-corpus/`. |
+| Completed scenario data: `go-memory-save`, `raw-allocation-save`, `string-boundary-save`, `unused-exports-save` | Only SHA256-identical original-asset copies were removed. Saves/comparisons remain. Follow each run's `deduplicated-assets.json`; shared restore tool: `build/port-artifact-cleanup/restore-recent-scenario.py`. |
+| Large historical captures in `port-game-messages`, `port-map-sections`, `port-client-interaction`, `port-session-dialogs` | Restore with `gzip -dk` and verify hashes against `build/port-artifact-cleanup/large-historical-20260924/`. Its 116 discarded text logs are not recoverable from these archives. |
+| Initial complete-corpus default/server logs | Losslessly compressed; restore commands and hashes in `build/port-complete-corpus/initial-log-archive.json`. Keep the server failure evidence. |
+| Superseded Go-memory/raw-allocation/string-boundary binaries | Rebuild from `4e1e86a6`, `6ff98033`, `92029ddd` respectively. Exact inventory/removal journal: `build/port-artifact-cleanup/superseded-glue-binaries-{plan.json,removed.jsonl}`. |
+| Older leaf/transfer binaries and cache entries | Rebuild from recorded revisions as needed; cleanup records are in `build/port-artifact-cleanup/`, including `superseded-leaves-xfer-binaries-20260924/` and `string-boundary-cache-removed.jsonl`. |
 
-Historical batch details belong in `docs/porting/` and Git history. The complete
-older checkpoint, including individual archive/restore notes, is recoverable with
-`git show b034c43e:PORTING_STATE.md`; its old “current/next” instructions are
-historical and must not be followed as the current plan.
-
-Nine superseded binaries from the leaf-glue and transfer/sound batches were
-removed after host process/file-use checks, reclaiming 419 MiB. Their reports
-remain; rebuild older binaries from recorded revisions if needed. Those binaries were later superseded as well; see the cleanup below. Journal:
-`build/port-artifact-cleanup/superseded-leaves-xfer-binaries-20260924/`.
-
-Before string-boundary qualification, 25 unopened old Go-cache archives were
-removed after host process checks, reclaiming 1.43 GiB. They are rebuildable;
-source, assets, production binaries and reports are retained. Journal:
-`build/port-artifact-cleanup/string-boundary-cache-removed.jsonl`.
-
-Original-asset duplicates in the completed `go-memory-save`, `raw-allocation-save`
-and `string-boundary-save` scenario data trees were removed after host-use and
-SHA256 checks, reclaiming 1.55 GiB. Saves and comparison outputs remain. Restore
-data before replay using the command in each run's `deduplicated-assets.json`;
-the shared script is `build/port-artifact-cleanup/restore-recent-scenario.py`.
-
-Twelve superseded production/safe binaries from `port-go-memory`,
-`port-raw-allocation` and `port-string-boundary` were removed after host-use and
-current-binary hash checks, reclaiming 558 MiB. Rebuild from `4e1e86a6`, `6ff98033`
-and `92029ddd` respectively. Current `port-unused-exports` binaries, original
-assets and all reports remain. Plan and removal journal:
-`build/port-artifact-cleanup/superseded-glue-binaries-{plan.json,removed.jsonl}`.
-
-The completed `unused-exports-save` scenario was likewise deduplicated after
-host-use and SHA256 checks, reclaiming 531 MiB. Preserve its saves and comparison
-outputs; restore original data with the command in its `deduplicated-assets.json`
-before replay. Current qualified binaries and original assets are retained.
+Historical batch details belong in `docs/porting/` and Git history. Earlier
+checkpoint/archive details are recoverable at `b034c43e` and `69669bcb`; their
+old current/next instructions are historical, not the active plan. Local logs,
+archives and rebuildable binaries are not backed up by pushing Git.
