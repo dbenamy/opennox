@@ -8,7 +8,6 @@ package legacy
 #include <stdint.h>
 #include "GAME3_3.h"
 #include "GAME4.h"
-static void* controlsPlayerUpdatePtr(void) { return nox_xxx_updatePlayer_4F8100; }
 void nox_xxx_playerLeaveObserver_0_4E6AA0(nox_playerInfo* pl);
 void nox_xxx_unitRemoveChild_4EC470(nox_object_t* a1);
 int nox_xxx_plrReadVals_4EEDC0(nox_object_t* a1p, int a2);
@@ -26,7 +25,6 @@ int nox_common_mapPlrActionToStateId_4FA2B0(nox_object_t* a1p);
 int nox_xxx_checkInversionEffect_4FA4F0(int a1, int a2);
 char nox_xxx_mobMorphFromPlayer_4FAAC0(uint32_t* a1);
 char nox_xxx_mobMorphToPlayer_4FAAF0(uint32_t* a1);
-int nox_xxx_updatePlayerMonsterBot_4FAB20(uint32_t* a1);
 int nox_xxx_netSendRewardNotify_4FAD50(int a1, int a2, int a3, char a4);
 void sub_4FADD0(int a1, char* a2, char a3);
 int sub_4FB050(int a1, int a2, int* a3);
@@ -54,7 +52,7 @@ case 42:return (void*)nox_common_mapPlrActionToStateId_4FA2B0;
 case 43:return (void*)nox_xxx_checkInversionEffect_4FA4F0;
 case 45:return (void*)nox_xxx_mobMorphFromPlayer_4FAAC0;
 case 46:return (void*)nox_xxx_mobMorphToPlayer_4FAAF0;
-case 47:return (void*)nox_xxx_updatePlayerMonsterBot_4FAB20;
+case 47:return 0;
 case 50:return (void*)nox_xxx_netSendRewardNotify_4FAD50;
 case 51:return (void*)sub_4FADD0;
 case 53:return (void*)sub_4FB050;
@@ -78,7 +76,7 @@ case 42:{return (uint32_t)nox_common_mapPlrActionToStateId_4FA2B0(u);}
 case 43:{return (uint32_t)nox_xxx_checkInversionEffect_4FA4F0((int)u,(int)t);}
 case 45:{return (uint32_t)nox_xxx_mobMorphFromPlayer_4FAAC0((uint32_t*)u);}
 case 46:{return (uint32_t)nox_xxx_mobMorphToPlayer_4FAAF0((uint32_t*)u);}
-case 47:{return (uint32_t)nox_xxx_updatePlayerMonsterBot_4FAB20((uint32_t*)u);}
+case 47:{return 0;}
 case 50:{return (uint32_t)nox_xxx_netSendRewardNotify_4FAD50((int)u,x,(int)t,(char)y);}
 case 51:{sub_4FADD0((int)u,name,(char)x);return 0;}
 case 53:{return (uint32_t)sub_4FB050((int)u,(int)t,(int*)record);}
@@ -292,7 +290,7 @@ func (p *portTestShopPools) controlsItems() {
 	p.reservedFunctionIDs += 3
 	st := p.temporary.world.objectives.attack.controls
 	p.identify(C.controlsInitPtr(), 91600)
-	p.identify(C.controlsPlayerUpdatePtr(), 91601)
+	p.identify(updateIdentityKey(updateIDPlayer), 91601)
 	for i := 0; i < 56; i++ {
 		if fn := portTestControlsFunction(i); fn != nil {
 			p.identify(fn, 91000+uint32(i))
@@ -680,6 +678,8 @@ func controlsInvoke(op int, u, t *server.Object, x, y int32, record, name unsafe
 		return uint64(uint32(controlScheduledSpell(u, t, false)))
 	case 55:
 		return uint64(uint32(controlScheduledSpell(u, t, true)))
+	case 47:
+		return uint64(controlBotUpdate(u))
 	default:
 		return uint64(C.controlsCall(C.int(op), asObjectC(u), asObjectC(t), C.int(x), C.int(y), record, (*C.char)(name)))
 	}
@@ -699,6 +699,9 @@ func PortTestSessionEntryInitCallback() (unsafe.Pointer, func() [][2]uintptr) {
 }
 
 func portTestControlsFunction(id int) unsafe.Pointer {
+	if id == 47 {
+		return updateIdentityKey(updateIDPlayerMonsterBot)
+	}
 	if id == 20 {
 		return lifecycleInitKey(initIDPlayer)
 	}

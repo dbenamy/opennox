@@ -12,10 +12,6 @@ void nox_xxx_pickupFlagCtf_4EA490(int a1, int a2);
 int sub_4EB9B0(int a1, int a2);
 int sub_4ECBD0(int a1);
 int sub_4ECC00(char** a1);
-signed int nox_xxx_updateObelisk_53C580(int a1);
-int nox_xxx_updateFlag_53DDF0(int a1);
-void nox_xxx_updateGameBall_53DF40(int a3);
-void nox_xxx_updateCrown_53E1D0(int a1);
 int sub_4EA7A0(int a1);
 short sub_4EA800(int a1, int a2);
 static void* objectiveFunction(int id){switch(id){
@@ -27,10 +23,6 @@ case 2:return (void*)sub_4EB9B0;
 
 case 6:return (void*)sub_4ECBD0;
 case 7:return (void*)sub_4ECC00;
-case 8:return (void*)nox_xxx_updateObelisk_53C580;
-case 9:return (void*)nox_xxx_updateFlag_53DDF0;
-case 10:return (void*)nox_xxx_updateGameBall_53DF40;
-case 11:return (void*)nox_xxx_updateCrown_53E1D0;
 
 case 13:return (void*)sub_4EA7A0;
 case 14:return (void*)sub_4EA800;
@@ -44,10 +36,6 @@ case 2: return (uint32_t)sub_4EB9B0((int)u,(int)target);
 
 case 6: return (uint32_t)sub_4ECBD0((int)u);
 case 7: return (uint32_t)sub_4ECC00(*(char***)(*(char**)((char*)u+692)+4));
-case 8: return (uint32_t)nox_xxx_updateObelisk_53C580((int)u);
-case 9: return (uint32_t)nox_xxx_updateFlag_53DDF0((int)u);
-case 10: nox_xxx_updateGameBall_53DF40((int)u);return 0;
-case 11: nox_xxx_updateCrown_53E1D0((int)u);return 0;
 
 case 13: return (uint32_t)sub_4EA7A0((int)target);
 case 14: return (uint32_t)sub_4EA800((int)u,(int)target);
@@ -375,6 +363,14 @@ func (p *portTestShopPools) objectivesSnapshot(out []uint32) []uint32 {
 
 func portTestObjectiveFunction(id int) unsafe.Pointer {
 	switch id {
+	case 8:
+		return updateIdentityKey(updateIDObelisk)
+	case 9:
+		return updateIdentityKey(updateIDFlag)
+	case 10:
+		return updateIdentityKey(updateIDBall)
+	case 11:
+		return updateIdentityKey(updateIDCrown)
 	case 3:
 		return collisionKey(collisionIdentityBall)
 	case 4:
@@ -390,6 +386,16 @@ func portTestObjectiveFunction(id int) unsafe.Pointer {
 
 func portTestObjectiveCall(id int, u, target *server.Object, normal *types.Pointf, value int) uint32 {
 	switch id {
+	case 8:
+		return uint32(int32(objectiveObelisk(u)))
+	case 9:
+		return uint32(int32(objectiveFlagUpdate(u)))
+	case 10:
+		objectiveBallUpdate(u)
+		return 0
+	case 11:
+		objectiveCrownUpdate(u)
+		return 0
 	case 3:
 		return server.PortTestCollisionResult(collisionKey(collisionIdentityBall), u, target, normal)
 	case 4:

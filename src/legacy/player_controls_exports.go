@@ -95,11 +95,6 @@ func nox_xxx_mobMorphToPlayer_4FAAF0(a *C.uint32_t) C.char {
 	return C.char(controlMorphToPlayer((*server.Object)(unsafe.Pointer(a))))
 }
 
-//export nox_xxx_updatePlayerMonsterBot_4FAB20
-func nox_xxx_updatePlayerMonsterBot_4FAB20(a *C.uint32_t) C.int {
-	return C.int(controlBotUpdate((*server.Object)(unsafe.Pointer(a))))
-}
-
 //export nox_xxx_netSendRewardNotify_4FAD50
 func nox_xxx_netSendRewardNotify_4FAD50(a, b, c C.int, d C.char) C.int {
 	return C.int(controlRewardNotify(objectFromInt(a), int32(b), objectFromInt(c), byte(d)))

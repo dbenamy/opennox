@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/object"
 	"github.com/opennox/libs/types"
@@ -170,7 +166,7 @@ func portTestGeneratorCall(proxy *portTestRoamOwnerServer, u *server.Object) uin
 		}
 		return uint32(generatorPlace(u, (*types.Pointf)(p), player, t))
 	case 3:
-		return uint32(int32(C.nox_xxx_updateMonsterGenerator_54E930((*C.uint32_t)(u.CObj()))))
+		return uint32(int32(generatorUpdate(u)))
 	default:
 		panic("generator operation")
 	}

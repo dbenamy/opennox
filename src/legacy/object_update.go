@@ -11,11 +11,6 @@ package legacy
 #include "GAME4_3.h"
 #include "GAME5.h"
 #include "server__magic__plyrspel.h"
-
-
-void nox_xxx_updateProjectile_53AC10(nox_object_t* a1);
-void nox_xxx_updateDeathBall_53D080(nox_object_t* a1);
-void nox_xxx___mkgmtime_538280(nox_object_t* a1);
 */
 import "C"
 import (
@@ -39,61 +34,63 @@ var _ = [1]struct{}{}[2200-unsafe.Sizeof(server.MonsterUpdateData{})]
 var _ = [1]struct{}{}[556-unsafe.Sizeof(server.PlayerUpdateData{})]
 
 func init() {
-	_ = nox_xxx_updatePlayer_4F8100
-	server.RegisterObjectUpdateGo("PlayerUpdate", C.nox_xxx_updatePlayer_4F8100, func(u *server.Object) { nox_xxx_updatePlayer_4F8100(asObjectC(u)) }, unsafe.Sizeof(server.PlayerUpdateData{}))
-	_ = nox_xxx_updateProjectile_53AC10
-	server.RegisterObjectUpdateGo("ProjectileUpdate", C.nox_xxx_updateProjectile_53AC10, func(u *server.Object) { nox_xxx_updateProjectile_53AC10(asObjectC(u)) }, 0)
-	server.RegisterObjectUpdateGo("SpellProjectileUpdate", C.nox_xxx_spellFlyUpdate_53B940, func(u *server.Object) { nox_xxx_spellFlyUpdate_53B940(C.int(uintptr(u.CObj()))) }, unsafe.Sizeof(server.SpellProjectileUpdateData{}))
-	server.RegisterObjectUpdateGo("AntiSpellProjectileUpdate", C.nox_xxx_updateAntiSpellProj_53BB00, func(u *server.Object) { nox_xxx_updateAntiSpellProj_53BB00(C.int(uintptr(u.CObj()))) }, 28)
-	server.RegisterObjectUpdateGo("DoorUpdate", C.nox_xxx_updateDoor_53AC50, func(u *server.Object) { nox_xxx_updateDoor_53AC50(C.int(uintptr(u.CObj()))) }, 52)
-	server.RegisterObjectUpdateGo("SparkUpdate", C.nox_xxx_updateSpark_53ADC0, func(u *server.Object) { nox_xxx_updateSpark_53ADC0(C.int(uintptr(u.CObj()))) }, 16)
-	server.RegisterObjectUpdateGo("ProjectileTrailUpdate", C.nox_xxx_updateProjTrail_53AEC0, func(u *server.Object) { nox_xxx_updateProjTrail_53AEC0(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectUpdateGo("PushUpdate", C.nox_xxx_updatePush_53B030, func(u *server.Object) { nox_xxx_updatePush_53B030(C.int(uintptr(u.CObj()))) }, 12)
-	server.RegisterObjectUpdateGo("TriggerUpdate", C.nox_xxx_updateTrigger_53B1B0, func(u *server.Object) { nox_xxx_updateTrigger_53B1B0(C.int(uintptr(u.CObj()))) }, 60)
-	server.RegisterObjectUpdateGo("ToggleUpdate", C.nox_xxx_updateToggle_53B060, func(u *server.Object) { nox_xxx_updateToggle_53B060((*C.uint32_t)(u.CObj())) }, 60)
-	server.RegisterObjectUpdateGo("MonsterUpdate", C.nox_xxx_unitUpdateMonster_50A5C0, func(u *server.Object) { nox_xxx_unitUpdateMonster_50A5C0(asObjectC(u)) }, unsafe.Sizeof(server.MonsterUpdateData{}))
-	server.RegisterObjectUpdateGo("LoopAndDamageUpdate", C.sub_53B300, func(u *server.Object) { sub_53B300(C.int(uintptr(u.CObj()))) }, 16)
-	server.RegisterObjectUpdateGo("ElevatorUpdate", C.nox_xxx_updateElevator_53B5D0, func(u *server.Object) { nox_xxx_updateElevator_53B5D0((*C.uint32_t)(u.CObj())) }, 20)
-	server.RegisterObjectUpdateGo("ElevatorShaftUpdate", C.nox_xxx_updateElevatorShaft_53B380, func(u *server.Object) { nox_xxx_updateElevatorShaft_53B380(C.int(uintptr(u.CObj()))) }, 16)
-	server.RegisterObjectUpdateGo("PhantomPlayerUpdate", C.nox_xxx_updatePhantomPlayer_53B860, func(u *server.Object) { nox_xxx_updatePhantomPlayer_53B860(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectUpdateGo("ObeliskUpdate", C.nox_xxx_updateObelisk_53C580, func(u *server.Object) { nox_xxx_updateObelisk_53C580(C.int(uintptr(u.CObj()))) }, unsafe.Sizeof(server.ObeliskUpdateData{}))
-	server.RegisterObjectUpdateGo("LifetimeUpdate", C.nox_xxx_updateLifetime_53B8F0, func(u *server.Object) { nox_xxx_updateLifetime_53B8F0(C.int(uintptr(u.CObj()))) }, 4)
-	server.RegisterObjectUpdateGo("MagicMissileUpdate", C.nox_xxx_updateMagicMissile_53BDA0, func(u *server.Object) { nox_xxx_updateMagicMissile_53BDA0(C.int(uintptr(u.CObj()))) }, 28)
-	server.RegisterObjectUpdateGo("PixieUpdate", C.nox_xxx_updatePixie_53CD20, func(u *server.Object) { nox_xxx_updatePixie_53CD20(asObjectC(u)) }, 28)
-	server.RegisterObjectUpdateGo("SkullUpdate", C.nox_xxx_updateShootingTrap_54F9A0, func(u *server.Object) { nox_xxx_updateShootingTrap_54F9A0(C.int(uintptr(u.CObj()))) }, 52)
-	server.RegisterObjectUpdateGo("PentagramUpdate", C.nox_xxx_updateTeleportPentagram_53BEF0, func(u *server.Object) { nox_xxx_updateTeleportPentagram_53BEF0(C.int(uintptr(u.CObj()))) }, 24)
-	server.RegisterObjectUpdateGo("InvisiblePentagramUpdate", C.nox_xxx_updateInvisiblePentagram_53C0C0, func(u *server.Object) { nox_xxx_updateInvisiblePentagram_53C0C0(C.int(uintptr(u.CObj()))) }, 24)
-	server.RegisterObjectUpdateGo("SwitchUpdate", C.nox_xxx_updateSwitch_53B320, func(u *server.Object) { nox_xxx_updateSwitch_53B320((*C.uint32_t)(u.CObj())) }, 0)
-	server.RegisterObjectUpdateGo("BlowUpdate", C.nox_xxx_updateBlow_53C160, func(u *server.Object) { nox_xxx_updateBlow_53C160(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectUpdateGo("MoverUpdate", C.nox_xxx_unitUpdateMover_54F740, func(u *server.Object) { nox_xxx_unitUpdateMover_54F740(C.int(uintptr(u.CObj()))) }, 36)
-	server.RegisterObjectUpdateGo("BlackPowderBarrelUpdate", C.nox_xxx_updateBlackPowderBarrel_53C9A0, func(u *server.Object) { nox_xxx_updateBlackPowderBarrel_53C9A0((*C.float)(u.CObj())) }, 0)
-	server.RegisterObjectUpdateGo("OneSecondDieUpdate", C.nox_xxx_updateOneSecondDie_53CB60, func(u *server.Object) { nox_xxx_updateOneSecondDie_53CB60(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectUpdateGo("WaterBarrelUpdate", C.nox_xxx_updateWaterBarrel_53CB90, func(u *server.Object) { nox_xxx_updateWaterBarrel_53CB90(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectUpdateGo("SelfDestructUpdate", C.nox_xxx_updateSelfDestruct_53CC90, func(u *server.Object) { nox_xxx_updateSelfDestruct_53CC90(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectUpdateGo("BlackPowderBurnUpdate", C.nox_xxx_updateBlackPowderBurn_53CCB0, func(u *server.Object) { nox_xxx_updateBlackPowderBurn_53CCB0(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectUpdateGo("DeathBallUpdate", C.nox_xxx_updateDeathBall_53D080, func(u *server.Object) { nox_xxx_updateDeathBall_53D080(asObjectC(u)) }, 0)
-	server.RegisterObjectUpdateGo("DeathBallFragmentUpdate", C.nox_xxx_updateDeathBallFragment_53D220, func(u *server.Object) { nox_xxx_updateDeathBallFragment_53D220(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectUpdateGo("MoonglowUpdate", C.nox_xxx_updateMoonglow_53D270, func(u *server.Object) { nox_xxx_updateMoonglow_53D270(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectUpdateGo("SentryGlobeUpdate", C.nox_xxx_updateSentryGlobe_510E60, func(u *server.Object) { nox_xxx_updateSentryGlobe_510E60(C.int(uintptr(u.CObj()))) }, 12)
-	server.RegisterObjectUpdateGo("TelekinesisUpdate", C.nox_xxx_updateTelekinesis_53D330, func(u *server.Object) { nox_xxx_updateTelekinesis_53D330(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectUpdateGo("FistUpdate", C.nox_xxx_updateFist_53D400, func(u *server.Object) { nox_xxx_updateFist_53D400(C.int(uintptr(u.CObj()))) }, 4)
-	server.RegisterObjectUpdateGo("MeteorShowerUpdate", C.nox_xxx_updateMeteorShower_53D5A0, func(u *server.Object) { nox_xxx_updateMeteorShower_53D5A0((*C.float)(u.CObj())) }, 4)
-	server.RegisterObjectUpdateGo("MeteorUpdate", C.nox_xxx_meteorExplode_53D6E0, func(u *server.Object) { nox_xxx_meteorExplode_53D6E0(C.int(uintptr(u.CObj()))) }, 4)
-	server.RegisterObjectUpdateGo("ToxicCloudUpdate", C.nox_xxx_updateToxicCloud_53D850, func(u *server.Object) { nox_xxx_updateToxicCloud_53D850(C.int(uintptr(u.CObj()))) }, 4)
-	server.RegisterObjectUpdateGo("SmallToxicCloudUpdate", C.nox_xxx_updateSmallToxicCloud_53D960, func(u *server.Object) { nox_xxx_updateSmallToxicCloud_53D960(C.int(uintptr(u.CObj()))) }, 4)
-	server.RegisterObjectUpdateGo("ArachnaphobiaUpdate", C.nox_xxx_updateArachnaphobia_53DA60, func(u *server.Object) { nox_xxx_updateArachnaphobia_53DA60((*C.int)(u.CObj())) }, 0)
-	server.RegisterObjectUpdateGo("ExpireUpdate", C.nox_xxx_updateExpire_53DB00, func(u *server.Object) { nox_xxx_updateExpire_53DB00(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectUpdateGo("BreakUpdate", C.nox_xxx_updateBreak_53DB30, func(u *server.Object) { nox_xxx_updateBreak_53DB30((*C.uint32_t)(u.CObj())) }, 0)
-	server.RegisterObjectUpdateGo("OpenUpdate", C.nox_xxx_updateOpen_53DBB0, func(u *server.Object) { nox_xxx_updateOpen_53DBB0((*C.uint32_t)(u.CObj())) }, 0)
-	server.RegisterObjectUpdateGo("BreakAndRemoveUpdate", C.nox_xxx_updateBreakAndRemove_53DC30, func(u *server.Object) { nox_xxx_updateBreakAndRemove_53DC30((*C.uint32_t)(u.CObj())) }, 0)
-	server.RegisterObjectUpdateGo("ChakramInMotionUpdate", C.nox_xxx_updateChakramInMotion_53DCC0, func(u *server.Object) { nox_xxx_updateChakramInMotion_53DCC0(C.int(uintptr(u.CObj()))) }, 28)
-	server.RegisterObjectUpdateGo("FlagUpdate", C.nox_xxx_updateFlag_53DDF0, func(u *server.Object) { nox_xxx_updateFlag_53DDF0(C.int(uintptr(u.CObj()))) }, 12)
-	server.RegisterObjectUpdateGo("TrapDoorUpdate", C.nox_xxx_updateTrapDoor_53DE80, func(u *server.Object) { nox_xxx_updateTrapDoor_53DE80((*C.uint32_t)(u.CObj())) }, 0)
-	server.RegisterObjectUpdateGo("BallUpdate", C.nox_xxx_updateGameBall_53DF40, func(u *server.Object) { nox_xxx_updateGameBall_53DF40(C.int(uintptr(u.CObj()))) }, 32)
-	server.RegisterObjectUpdateGo("CrownUpdate", C.nox_xxx_updateCrown_53E1D0, func(u *server.Object) { nox_xxx_updateCrown_53E1D0(C.int(uintptr(u.CObj()))) }, 12)
-	server.RegisterObjectUpdateGo("UndeadKillerUpdate", C.nox_xxx_updateUndeadKiller_53E190, func(u *server.Object) { nox_xxx_updateUndeadKiller_53E190(C.int(uintptr(u.CObj()))) }, 0)
-	server.RegisterObjectUpdateGo("HarpoonUpdate", C.nox_xxx_updateHarpoon_54F380, func(u *server.Object) { nox_xxx_updateHarpoon_54F380(asObjectC(u)) }, 4)
-	server.RegisterObjectUpdateGo("MonsterGeneratorUpdate", C.nox_xxx_updateMonsterGenerator_54E930, func(u *server.Object) { nox_xxx_updateMonsterGenerator_54E930((*C.uint32_t)(u.CObj())) }, 164)
+	server.RegisterObjectUpdateGo("PlayerUpdate", updateIdentityKey(updateIDPlayer), func(u *server.Object) { Nox_xxx_updatePlayer_4F8100(u) }, unsafe.Sizeof(server.PlayerUpdateData{}))
+	server.RegisterObjectUpdateGo("ProjectileUpdate", updateIdentityKey(updateIDProjectile), func(u *server.Object) { Nox_xxx_updateProjectile_53AC10(u) }, 0)
+	server.RegisterObjectUpdateGo("SpellProjectileUpdate", updateIdentityKey(updateIDSpellProjectile), func(u *server.Object) { temporarySpellFly(u) }, unsafe.Sizeof(server.SpellProjectileUpdateData{}))
+	server.RegisterObjectUpdateGo("AntiSpellProjectileUpdate", updateIdentityKey(updateIDAntiSpellProjectile), func(u *server.Object) { temporaryAntiSpell(u) }, 28)
+	server.RegisterObjectUpdateGo("DoorUpdate", updateIdentityKey(updateIDDoor), func(u *server.Object) { worldDoor(u) }, 52)
+	server.RegisterObjectUpdateGo("SparkUpdate", updateIdentityKey(updateIDSpark), func(u *server.Object) { temporarySparkUpdate(u) }, 16)
+	server.RegisterObjectUpdateGo("ProjectileTrailUpdate", updateIdentityKey(updateIDProjectileTrail), func(u *server.Object) { temporaryTrail(u) }, 0)
+	server.RegisterObjectUpdateGo("PushUpdate", updateIdentityKey(updateIDPush), func(u *server.Object) { worldPush(u) }, 12)
+	server.RegisterObjectUpdateGo("TriggerUpdate", updateIdentityKey(updateIDTrigger), func(u *server.Object) { worldTrigger(u) }, 60)
+	server.RegisterObjectUpdateGo("ToggleUpdate", updateIdentityKey(updateIDToggle), func(u *server.Object) { worldToggle(u) }, 60)
+	server.RegisterObjectUpdateGo("MonsterUpdate", updateIdentityKey(updateIDMonster), func(u *server.Object) { Nox_xxx_unitUpdateMonster_50A5C0(u) }, unsafe.Sizeof(server.MonsterUpdateData{}))
+	server.RegisterObjectUpdateGo("LoopAndDamageUpdate", updateIdentityKey(updateIDLoopAndDamage), func(u *server.Object) { worldEnabledCollision(u) }, 16)
+	server.RegisterObjectUpdateGo("ElevatorUpdate", updateIdentityKey(updateIDElevator), func(u *server.Object) { worldElevator(u) }, 20)
+	server.RegisterObjectUpdateGo("ElevatorShaftUpdate", updateIdentityKey(updateIDElevatorShaft), func(u *server.Object) { worldShaft(u) }, 16)
+	server.RegisterObjectUpdateGo("PhantomPlayerUpdate", updateIdentityKey(updateIDPhantomPlayer), func(u *server.Object) { worldPhantom(u) }, 0)
+	server.RegisterObjectUpdateGo("ObeliskUpdate", updateIdentityKey(updateIDObelisk), func(u *server.Object) { objectiveObelisk(u) }, unsafe.Sizeof(server.ObeliskUpdateData{}))
+	server.RegisterObjectUpdateGo("LifetimeUpdate", updateIdentityKey(updateIDLifetime), func(u *server.Object) { temporaryLifetime(u) }, 4)
+	server.RegisterObjectUpdateGo("MagicMissileUpdate", updateIdentityKey(updateIDMagicMissile), func(u *server.Object) { temporaryMagicMissile(u) }, 28)
+	server.RegisterObjectUpdateGo("PixieUpdate", updateIdentityKey(updateIDPixie), func(u *server.Object) { Nox_xxx_updatePixie_53CD20(u) }, 28)
+	server.RegisterObjectUpdateGo("SkullUpdate", updateIdentityKey(updateIDSkull), func(u *server.Object) { motionTrapUpdate(u) }, 52)
+	server.RegisterObjectUpdateGo("PentagramUpdate", updateIdentityKey(updateIDPentagram), func(u *server.Object) { worldTeleport(u) }, 24)
+	server.RegisterObjectUpdateGo("InvisiblePentagramUpdate", updateIdentityKey(updateIDInvisiblePentagram), func(u *server.Object) { worldInvisibleTeleport(u) }, 24)
+	server.RegisterObjectUpdateGo("SwitchUpdate", updateIdentityKey(updateIDSwitch), func(u *server.Object) { worldSwitch(u) }, 0)
+	server.RegisterObjectUpdateGo("BlowUpdate", updateIdentityKey(updateIDBlow), func(u *server.Object) { worldBlow(u) }, 0)
+	server.RegisterObjectUpdateGo("MoverUpdate", updateIdentityKey(updateIDMover), func(u *server.Object) { motionMover(u) }, 36)
+	server.RegisterObjectUpdateGo("BlackPowderBarrelUpdate", updateIdentityKey(updateIDBlackPowderBarrel), func(u *server.Object) { temporaryPowderBarrel(u) }, 0)
+	server.RegisterObjectUpdateGo("OneSecondDieUpdate", updateIdentityKey(updateIDOneSecondDie), func(u *server.Object) { temporaryOneSecond(u) }, 0)
+	server.RegisterObjectUpdateGo("WaterBarrelUpdate", updateIdentityKey(updateIDWaterBarrel), func(u *server.Object) { temporaryWaterBarrel(u) }, 0)
+	server.RegisterObjectUpdateGo("SelfDestructUpdate", updateIdentityKey(updateIDSelfDestruct), func(u *server.Object) { temporarySelfDestruct(u) }, 0)
+	server.RegisterObjectUpdateGo("BlackPowderBurnUpdate", updateIdentityKey(updateIDBlackPowderBurn), func(u *server.Object) { temporaryPowderBurn(u) }, 0)
+	server.RegisterObjectUpdateGo("DeathBallUpdate", updateIdentityKey(updateIDDeathBall), func(u *server.Object) { Nox_xxx_updateDeathBall_53D080(u) }, 0)
+	server.RegisterObjectUpdateGo("DeathBallFragmentUpdate", updateIdentityKey(updateIDDeathBallFragment), func(u *server.Object) { temporaryDeathFragment(u) }, 0)
+	server.RegisterObjectUpdateGo("MoonglowUpdate", updateIdentityKey(updateIDMoonglow), func(u *server.Object) { temporaryMoonglow(u) }, 0)
+	server.RegisterObjectUpdateGo("SentryGlobeUpdate", updateIdentityKey(updateIDSentryGlobe), func(u *server.Object) { motionSentryUpdate(u) }, 12)
+	server.RegisterObjectUpdateGo("TelekinesisUpdate", updateIdentityKey(updateIDTelekinesis), func(u *server.Object) { temporaryTelekinesis(u) }, 0)
+	server.RegisterObjectUpdateGo("FistUpdate", updateIdentityKey(updateIDFist), func(u *server.Object) { temporaryFist(u) }, 4)
+	server.RegisterObjectUpdateGo("MeteorShowerUpdate", updateIdentityKey(updateIDMeteorShower), func(u *server.Object) { temporaryMeteorShower(u) }, 4)
+	server.RegisterObjectUpdateGo("MeteorUpdate", updateIdentityKey(updateIDMeteor), func(u *server.Object) { temporaryMeteorExplode(u) }, 4)
+	server.RegisterObjectUpdateGo("ToxicCloudUpdate", updateIdentityKey(updateIDToxicCloud), func(u *server.Object) { temporaryCloud(u, false) }, 4)
+	server.RegisterObjectUpdateGo("SmallToxicCloudUpdate", updateIdentityKey(updateIDSmallToxicCloud), func(u *server.Object) { temporaryCloud(u, true) }, 4)
+	server.RegisterObjectUpdateGo("ArachnaphobiaUpdate", updateIdentityKey(updateIDArachnaphobia), func(u *server.Object) { temporaryArachnaphobia(u) }, 0)
+	server.RegisterObjectUpdateGo("ExpireUpdate", updateIdentityKey(updateIDExpire), func(u *server.Object) { temporaryExpire(u) }, 0)
+	server.RegisterObjectUpdateGo("BreakUpdate", updateIdentityKey(updateIDBreak), func(u *server.Object) { temporaryBreak(u, false) }, 0)
+	server.RegisterObjectUpdateGo("OpenUpdate", updateIdentityKey(updateIDOpen), func(u *server.Object) { temporaryBreak(u, true) }, 0)
+	server.RegisterObjectUpdateGo("BreakAndRemoveUpdate", updateIdentityKey(updateIDBreakAndRemove), func(u *server.Object) { temporaryBreakRemove(u) }, 0)
+	server.RegisterObjectUpdateGo("ChakramInMotionUpdate", updateIdentityKey(updateIDChakramInMotion), func(u *server.Object) { temporaryChakram(u) }, 28)
+	server.RegisterObjectUpdateGo("FlagUpdate", updateIdentityKey(updateIDFlag), func(u *server.Object) { objectiveFlagUpdate(u) }, 12)
+	server.RegisterObjectUpdateGo("TrapDoorUpdate", updateIdentityKey(updateIDTrapDoor), func(u *server.Object) { worldTrapDoor(u) }, 0)
+	server.RegisterObjectUpdateGo("BallUpdate", updateIdentityKey(updateIDBall), func(u *server.Object) { objectiveBallUpdate(u) }, 32)
+	server.RegisterObjectUpdateGo("CrownUpdate", updateIdentityKey(updateIDCrown), func(u *server.Object) { objectiveCrownUpdate(u) }, 12)
+	server.RegisterObjectUpdateGo("UndeadKillerUpdate", updateIdentityKey(updateIDUndeadKiller), func(u *server.Object) { unitUndeadUpdate(u) }, 0)
+	server.RegisterObjectUpdateGo("HarpoonUpdate", updateIdentityKey(updateIDHarpoon), func(u *server.Object) { Nox_xxx_updateHarpoon_54F380(u) }, 4)
+	server.RegisterObjectUpdateGo("MonsterGeneratorUpdate", updateIdentityKey(updateIDMonsterGenerator), func(u *server.Object) { generatorUpdate(u) }, 164)
+
+	server.RegisterObjectUpdateCallbackGo(updateIdentityKey(updateIDPlayerObserver), func(u *server.Object) { Nox_xxx_updatePlayerObserver_4E62F0(u) })
+	server.RegisterObjectUpdateCallbackGo(updateIdentityKey(updateIDMkgmtime), func(u *server.Object) { Nox_xxx___mkgmtime_538280(u) })
+	server.RegisterObjectUpdateCallbackGo(updateIdentityKey(updateIDPlayerMonsterBot), func(u *server.Object) { controlBotUpdate(u) })
 
 	server.RegisterObjectUpdateParse("PushUpdate", resourceObjectParser("update", "push"))
 	server.RegisterObjectUpdateParse("TriggerUpdate", resourceObjectParser("update", "trigger"))
@@ -103,38 +100,12 @@ func init() {
 	server.RegisterObjectUpdateParse("SkullUpdate", resourceObjectParser("update", "skull"))
 }
 
-//export nox_xxx_updatePlayer_4F8100
-func nox_xxx_updatePlayer_4F8100(up *nox_object_t) { Nox_xxx_updatePlayer_4F8100(asObjectS(up)) }
-
 func nox_xxx_objectApplyForce_52DF80(vec *C.float, obj *nox_object_t, force C.float) {
 	GetServer().ApplyForce(asObjectS(obj), AsPointf(unsafe.Pointer(vec)), float64(force))
 }
 
-//export nox_xxx_updatePixie_53CD20
-func nox_xxx_updatePixie_53CD20(cobj *nox_object_t) { Nox_xxx_updatePixie_53CD20(asObjectS(cobj)) }
-
-//export nox_xxx_updatePlayerObserver_4E62F0
-func nox_xxx_updatePlayerObserver_4E62F0(a1p *nox_object_t) {
-	Nox_xxx_updatePlayerObserver_4E62F0(asObjectS(a1p))
-}
-
-//export nox_xxx_updateProjectile_53AC10
-func nox_xxx_updateProjectile_53AC10(a1 *nox_object_t) {
-	Nox_xxx_updateProjectile_53AC10(asObjectS(a1))
-}
-
-//export nox_xxx_updateDeathBall_53D080
-func nox_xxx_updateDeathBall_53D080(a1 *nox_object_t) {
-	Nox_xxx_updateDeathBall_53D080(asObjectS(a1))
-}
-
-//export nox_xxx___mkgmtime_538280
-func nox_xxx___mkgmtime_538280(a1 *nox_object_t) {
-	Nox_xxx___mkgmtime_538280(asObjectS(a1))
-}
-
 func Get_nox_xxx___mkgmtime_538280() unsafe.Pointer {
-	return C.nox_xxx___mkgmtime_538280
+	return updateIdentityKey(updateIDMkgmtime)
 }
 
 func Nox_server_doPlayersAutoRespawn_40A5F0() int {

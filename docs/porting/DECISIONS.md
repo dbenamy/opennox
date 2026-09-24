@@ -2716,3 +2716,16 @@ semantics, actual serialization owners and all comparison/getter consumers. Add
 real invisible-light script-storage allocation and lifetime contracts. Remove the
 map-painting consumer's redundant C.int cast because its owner already returns
 int32; no width or arithmetic change. See [XFER_IDENTITIES.md](XFER_IDENTITIES.md).
+
+
+## Object update callback identities
+
+Keep the existing update registry/cache and dispatcher. Bind 53 named native
+identities through the unchanged API, and three anonymous keys through a thin
+cache-registration entrypoint; do not invent resource names for player observer,
+scheduled spell or monster bot callbacks. Keep hooks late-bound and direct-test
+returns at their original signed-byte/integer/pointer widths. Stable key slots,
+getter consumers, lifetime, raw fallback and actual bot state are covered. The
+first new original bot contract omitted its AI fixture setup; use the established
+controlsRun owner environment without changing production or frozen captures.
+See [UPDATE_IDENTITIES.md](UPDATE_IDENTITIES.md).

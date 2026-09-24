@@ -58,3 +58,39 @@ Before baseline compilation, verified unused create/init and damage executables
 were removed (14 files, 786,116,608 allocated bytes). The completed transfer run's
 1,654 duplicate asset files were also removed (559,902,720 bytes), with originals
 preserved and a restoration manifest. See PORTING_STATE.md for recovery paths.
+
+## Qualified conversion
+
+All 279 focused roots pass in each default/server/high-resolution profile with
+no skips. Safe/static checks, all three production/ABI builds, exact known asset
+suite comparison and fresh headless character creation/save/load/resume pass.
+The known suite remains 304 failure events, 17 passing/two failing/32 skipped
+packages. All 1,654 original asset hashes are unchanged.
+
+All accepted phases share identical source fingerprints. All 29 changed/new/
+deleted files match the reviewed overlay; all 56 selected C exports are absent,
+and retained exported signatures/bodies are unchanged. No root assertions or
+frozen captures changed. Primary independently checked all 56 owner calls, all
+53 registry rows and all 43 sparse direct-operation identities. Signed-byte,
+integer and pointer-word returns preserve their original fixture semantics.
+
+Production cgo files fall 202→198 (265/463 eliminated); legacy C exports fall
+795→739 (1,151/1,890 retired). Four additional fixture files drop cgo. Headers
+remain 157 files with 3,471 physical lines; embedded production callback bodies
+remain 77. Standalone production/test-reference C remain zero. External native
+library bindings are unchanged.
+
+The existing named registration and dispatch/cache algorithms remain unchanged.
+The three anonymous callback keys use a thin registration entrypoint into that
+same cache. Root fast paths, mutable hooks and unknown raw-C fallback remain.
+The preceding item full default corpus passed 2,441 roots plus one diagnostic
+skip. This batch uses focused owner/raw-fallback/lifetime/hook contracts and
+production qualification; it does not introduce a shared dispatch algorithm.
+
+Luna prepared the bounded overlay; primary reviewed the owner/consumer/fixture
+mapping and requested the thin anonymous API without an additional nil policy.
+The baseline setup correction is described above. Conversion qualification
+required no behavior or capture changes.
+
+[Qualification](update-identities-qualification.json),
+[inventory](update-identities-inventory-after.json).

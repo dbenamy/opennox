@@ -25,18 +25,6 @@ func sub_4ECBD0(a C.int) C.int { return C.int(objectiveFlagID(objectFromInt(a)))
 //export sub_4ECC00
 func sub_4ECC00(a **C.char) C.int { return C.int(objectiveColor(unsafe.Pointer(a))) }
 
-//export nox_xxx_updateObelisk_53C580
-func nox_xxx_updateObelisk_53C580(a C.int) C.int { return C.int(objectiveObelisk(objectFromInt(a))) }
-
-//export nox_xxx_updateFlag_53DDF0
-func nox_xxx_updateFlag_53DDF0(a C.int) C.int { return C.int(objectiveFlagUpdate(objectFromInt(a))) }
-
-//export nox_xxx_updateGameBall_53DF40
-func nox_xxx_updateGameBall_53DF40(a C.int) { objectiveBallUpdate(objectFromInt(a)) }
-
-//export nox_xxx_updateCrown_53E1D0
-func nox_xxx_updateCrown_53E1D0(a C.int) { objectiveCrownUpdate(objectFromInt(a)) }
-
 //export sub_4EA7A0
 func sub_4EA7A0(a C.int) C.int { return C.int(objectivePickupBuffs(objectFromInt(a))) }
 

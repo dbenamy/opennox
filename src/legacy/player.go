@@ -103,7 +103,7 @@ func Nox_xxx_playerForceDisconnect_4DE7C0(ind ntype.PlayerInd) {
 }
 
 func Get_nox_xxx_updatePlayerMonsterBot_4FAB20() unsafe.Pointer {
-	return unsafe.Pointer(C.nox_xxx_updatePlayerMonsterBot_4FAB20)
+	return updateIdentityKey(updateIDPlayerMonsterBot)
 }
 
 func Nox_xxx_netNeedTimestampStatus_4174F0(pl *server.Player, v int) {
@@ -123,7 +123,7 @@ func Nox_xxx_playerForceSendLessons_416E50(v int) {
 }
 
 func Get_nox_xxx_updatePlayerObserver_4E62F0() unsafe.Pointer {
-	return C.nox_xxx_updatePlayerObserver_4E62F0
+	return updateIdentityKey(updateIDPlayerObserver)
 }
 
 func Nox_xxx_playerRemoveSpawnedStuff_4E5AD0(u *server.Object) {
@@ -139,7 +139,7 @@ func Sub_4E6150(p *server.Player) *server.Object {
 }
 
 func Get_nox_xxx_updatePlayer_4F8100() unsafe.Pointer {
-	return C.nox_xxx_updatePlayer_4F8100
+	return updateIdentityKey(updateIDPlayer)
 }
 
 func Nox_xxx_playerUnsetStatus_417530(p *server.Player, a2 int) {

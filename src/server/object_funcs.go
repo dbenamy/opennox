@@ -147,6 +147,11 @@ func RegisterObjectUpdateGo(name string, cfnc unsafe.Pointer, fnc UpdateFunc, sz
 	objUpdate.Register(cfnc, fnc)
 }
 
+// RegisterObjectUpdateCallbackGo registers an update callback under a native Go identity.
+func RegisterObjectUpdateCallbackGo(key unsafe.Pointer, fnc UpdateFunc) {
+	objUpdate.Register(key, fnc)
+}
+
 func RegisterObjectUpdateParse(name string, fnc ObjectParseFunc) {
 	if _, ok := updateParseFuncs[name]; ok {
 		panic("already registered")

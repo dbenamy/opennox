@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
 	"github.com/opennox/opennox/v1/server"
@@ -39,9 +34,4 @@ func unitRead(u, it *server.Object, warp bool) bool {
 	}
 	*stamp = core.Frame()
 	return true
-}
-
-//export nox_xxx_updateUndeadKiller_53E190
-func nox_xxx_updateUndeadKiller_53E190(a C.int) {
-	unitUndeadUpdate((*server.Object)(unsafe.Pointer(uintptr(uint32(a)))))
 }

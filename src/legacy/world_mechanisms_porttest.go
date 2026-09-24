@@ -5,25 +5,12 @@ package legacy
 /*
 #include "GAME4_3.h"
 #include "GAME5.h"
-char nox_xxx_updateDoor_53AC50(int a1);
-void nox_xxx_updatePush_53B030(int a1);
-char nox_xxx_updateToggle_53B060(uint32_t* a1);
-char nox_xxx_updateTrigger_53B1B0(int a1);
-char sub_53B300(int a1);
-char nox_xxx_updateSwitch_53B320(uint32_t* a1);
-char nox_xxx_updateElevatorShaft_53B380(int a1);
 void nox_xxx_fnElevatorShaft_53B410(int a1, int a2);
 void nox_xxx_elevatorAud_53B490(int a1, int a2);
-void nox_xxx_updateElevator_53B5D0(uint32_t* a1);
 void nox_xxx_elevatorFn_53B750(int a1, int a2);
-void nox_xxx_updatePhantomPlayer_53B860(int a1);
-int nox_xxx_updateTeleportPentagram_53BEF0(int a1);
 void nox_xxx_fnPentagramTeleport_53C060(float* a1, int a2);
-int nox_xxx_updateInvisiblePentagram_53C0C0(int a1);
 void sub_53C140(float* a1, int a2);
-void nox_xxx_updateBlow_53C160(int a3);
 void sub_53C240(float* a1, int arg4);
-int* nox_xxx_updateTrapDoor_53DE80(uint32_t* a1);
 void sub_548830(int a1);
 void sub_548860(int a1, short a2);
 // A retained char return can contain the low byte of the collision callback
@@ -37,48 +24,22 @@ static void worldReset(void){worldCount=0;}
 static int worldN(void){return worldCount;}
 static uint32_t worldValue(int i){return worldCalls[i];}
 static void* worldFunction(int id) {switch(id){
-case 0: return (void*)nox_xxx_updateDoor_53AC50;
-case 1: return (void*)nox_xxx_updatePush_53B030;
-case 2: return (void*)nox_xxx_updateToggle_53B060;
-case 3: return (void*)nox_xxx_updateTrigger_53B1B0;
-case 4: return (void*)sub_53B300;
-case 5: return (void*)nox_xxx_updateSwitch_53B320;
-case 6: return (void*)nox_xxx_updateElevatorShaft_53B380;
 case 7: return (void*)nox_xxx_fnElevatorShaft_53B410;
 case 8: return (void*)nox_xxx_elevatorAud_53B490;
-case 9: return (void*)nox_xxx_updateElevator_53B5D0;
 case 10: return (void*)nox_xxx_elevatorFn_53B750;
-case 11: return (void*)nox_xxx_updatePhantomPlayer_53B860;
-case 12: return (void*)nox_xxx_updateTeleportPentagram_53BEF0;
 case 13: return (void*)nox_xxx_fnPentagramTeleport_53C060;
-case 14: return (void*)nox_xxx_updateInvisiblePentagram_53C0C0;
 case 15: return (void*)sub_53C140;
-case 16: return (void*)nox_xxx_updateBlow_53C160;
 case 17: return (void*)sub_53C240;
-case 18: return (void*)nox_xxx_updateTrapDoor_53DE80;
 case 19: return (void*)sub_548830;
 case 20: return (void*)sub_548860;
 default:return 0;}}
 static uint32_t worldCall(int id,nox_object_t* u,nox_object_t* target,int value){switch(id){
-case 0: return (uint32_t)nox_xxx_updateDoor_53AC50((int)u);
-case 1: nox_xxx_updatePush_53B030((int)u);return 0;
-case 2: return (uint32_t)nox_xxx_updateToggle_53B060((uint32_t*)u);
-case 3: return (uint32_t)nox_xxx_updateTrigger_53B1B0((int)u);
-case 4: return (uint32_t)sub_53B300((int)u);
-case 5: return (uint32_t)nox_xxx_updateSwitch_53B320((uint32_t*)u);
-case 6: return (uint32_t)nox_xxx_updateElevatorShaft_53B380((int)u);
 case 7: nox_xxx_fnElevatorShaft_53B410((int)target,(int)u);return 0;
 case 8: nox_xxx_elevatorAud_53B490((int)u,value);return 0;
-case 9: nox_xxx_updateElevator_53B5D0((uint32_t*)u);return 0;
 case 10: nox_xxx_elevatorFn_53B750((int)target,(int)u);return 0;
-case 11: nox_xxx_updatePhantomPlayer_53B860((int)u);return 0;
-case 12: return (uint32_t)nox_xxx_updateTeleportPentagram_53BEF0((int)u);
 case 13: nox_xxx_fnPentagramTeleport_53C060((float*)target,(int)((char*)u+56));return 0;
-case 14: return (uint32_t)nox_xxx_updateInvisiblePentagram_53C0C0((int)u);
 case 15: sub_53C140((float*)target,(int)((char*)u+56));return 0;
-case 16: nox_xxx_updateBlow_53C160((int)u);return 0;
 case 17: sub_53C240((float*)target,(int)u);return 0;
-case 18: return (uint32_t)nox_xxx_updateTrapDoor_53DE80((uint32_t*)u);
 case 19: sub_548830((int)*(uint32_t*)((char*)u+748));return 0;
 case 20: sub_548860((int)u,(short)value);return 0;
 default:return 0;}}
@@ -172,7 +133,7 @@ func (p *portTestShopPools) worldItems() {
 	C.worldReset()
 	p.identify(C.worldCollidePtr(), 71300)
 	for i := 0; i < 21; i++ {
-		p.identify(C.worldFunction(C.int(i)), 71000+uint32(i))
+		p.identify(portTestWorldFunction(i), 71000+uint32(i))
 	}
 	for i, it := range p.items {
 		it.u.Collide = C.worldCollidePtr()
@@ -204,12 +165,83 @@ func (p *portTestShopPools) worldItems() {
 	}
 	p.objectivesItems()
 }
+
+func portTestWorldFunction(id int) unsafe.Pointer {
+	switch id {
+	case 0:
+		return updateIdentityKey(updateIDDoor)
+	case 1:
+		return updateIdentityKey(updateIDPush)
+	case 2:
+		return updateIdentityKey(updateIDToggle)
+	case 3:
+		return updateIdentityKey(updateIDTrigger)
+	case 4:
+		return updateIdentityKey(updateIDLoopAndDamage)
+	case 5:
+		return updateIdentityKey(updateIDSwitch)
+	case 6:
+		return updateIdentityKey(updateIDElevatorShaft)
+	case 9:
+		return updateIdentityKey(updateIDElevator)
+	case 11:
+		return updateIdentityKey(updateIDPhantomPlayer)
+	case 12:
+		return updateIdentityKey(updateIDPentagram)
+	case 14:
+		return updateIdentityKey(updateIDInvisiblePentagram)
+	case 16:
+		return updateIdentityKey(updateIDBlow)
+	case 18:
+		return updateIdentityKey(updateIDTrapDoor)
+	default:
+		return C.worldFunction(C.int(id))
+	}
+}
+
+func portTestWorldCall(id int, u, target *server.Object, value int) uint32 {
+	switch id {
+	case 0:
+		return uint32(int32(int8(worldDoor(u))))
+	case 1:
+		worldPush(u)
+		return 0
+	case 2:
+		return uint32(int32(int8(worldToggle(u))))
+	case 3:
+		return uint32(int32(int8(worldTrigger(u))))
+	case 4:
+		return uint32(int32(int8(worldEnabledCollision(u))))
+	case 5:
+		return uint32(int32(int8(worldSwitch(u))))
+	case 6:
+		return uint32(int32(int8(worldShaft(u))))
+	case 9:
+		worldElevator(u)
+		return 0
+	case 11:
+		worldPhantom(u)
+		return 0
+	case 12:
+		return uint32(int32(worldTeleport(u)))
+	case 14:
+		return uint32(int32(worldInvisibleTeleport(u)))
+	case 16:
+		worldBlow(u)
+		return 0
+	case 18:
+		return worldTrapDoor(u)
+	default:
+		return uint32(C.worldCall(C.int(id), asObjectC(u), asObjectC(target), C.int(value)))
+	}
+}
+
 func (p *portTestShopPools) worldAction(a PortTestShopAction) uint32 {
 	if p.registeredUpdateAction(a) {
 		return p.temporary.result
 	}
 	sp := p.proxy.callbacks.shop.spec.TemporaryUpdates
-	p.temporary.result = uint32(C.worldCall(C.int(a.Op-700), asObjectC(p.items[a.Item].u), asObjectC(p.temporaryRef(sp.Target)), C.int(a.Value)))
+	p.temporary.result = portTestWorldCall(a.Op-700, p.items[a.Item].u, p.temporaryRef(sp.Target), int(a.Value))
 	return p.temporary.result
 }
 func portTestWorldCollisionCheck(actor, target *server.Object, called bool) {

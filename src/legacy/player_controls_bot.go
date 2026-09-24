@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME4_1.h"
-#include <stdlib.h>
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
@@ -114,7 +106,7 @@ func controlBotUpdate(u *server.Object) uint32 {
 	}
 	b := *controlPtr(d, 292)
 	if b == nil {
-		*controlPtr(u.CObj(), 744) = unsafe.Pointer(C.nox_xxx_updatePlayer_4F8100)
+		*controlPtr(u.CObj(), 744) = updateIdentityKey(updateIDPlayer)
 		return 0
 	}
 	result := controlRespawnBot(u)

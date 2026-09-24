@@ -9,7 +9,6 @@ package legacy
 #include "GAME4_1.h"
 #include "GAME4_2.h"
 #include "GAME4_3.h"
-void nox_xxx_updateHarpoon_54F380(nox_object_t* a1);
 */
 import "C"
 import (
@@ -317,10 +316,10 @@ func Get_nox_xxx_XFerDefault_4F49A0() unsafe.Pointer {
 	return xferIdentityKey(xferIDDefault)
 }
 func Get_nox_xxx_updateHarpoon_54F380() unsafe.Pointer {
-	return C.nox_xxx_updateHarpoon_54F380
+	return updateIdentityKey(updateIDHarpoon)
 }
 func Get_nox_xxx_updatePixie_53CD20() unsafe.Pointer {
-	return C.nox_xxx_updatePixie_53CD20
+	return updateIdentityKey(updateIDPixie)
 }
 func Nox_object_getGold_4FA6D0(obj *server.Object) int {
 	return int(int32(resourceObjectGold(obj)))

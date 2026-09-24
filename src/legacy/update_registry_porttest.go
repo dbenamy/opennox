@@ -2,25 +2,6 @@
 
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-#include "GAME5.h"
-#include "server__magic__plyrspel.h"
-
-
-void nox_xxx_updateProjectile_53AC10(nox_object_t* a1);
-void nox_xxx_updateDeathBall_53D080(nox_object_t* a1);
-void nox_xxx___mkgmtime_538280(nox_object_t* a1);
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
@@ -34,59 +15,59 @@ type portTestUpdateRegistration struct {
 
 func portTestUpdateRegistrations() []portTestUpdateRegistration {
 	return []portTestUpdateRegistration{
-		{"PlayerUpdate", C.nox_xxx_updatePlayer_4F8100, unsafe.Sizeof(server.PlayerUpdateData{})},
-		{"ProjectileUpdate", C.nox_xxx_updateProjectile_53AC10, 0},
-		{"SpellProjectileUpdate", C.nox_xxx_spellFlyUpdate_53B940, unsafe.Sizeof(server.SpellProjectileUpdateData{})},
-		{"AntiSpellProjectileUpdate", C.nox_xxx_updateAntiSpellProj_53BB00, 28},
-		{"DoorUpdate", C.nox_xxx_updateDoor_53AC50, 52},
-		{"SparkUpdate", C.nox_xxx_updateSpark_53ADC0, 16},
-		{"ProjectileTrailUpdate", C.nox_xxx_updateProjTrail_53AEC0, 0},
-		{"PushUpdate", C.nox_xxx_updatePush_53B030, 12},
-		{"TriggerUpdate", C.nox_xxx_updateTrigger_53B1B0, 60},
-		{"ToggleUpdate", C.nox_xxx_updateToggle_53B060, 60},
-		{"MonsterUpdate", C.nox_xxx_unitUpdateMonster_50A5C0, unsafe.Sizeof(server.MonsterUpdateData{})},
-		{"LoopAndDamageUpdate", C.sub_53B300, 16},
-		{"ElevatorUpdate", C.nox_xxx_updateElevator_53B5D0, 20},
-		{"ElevatorShaftUpdate", C.nox_xxx_updateElevatorShaft_53B380, 16},
-		{"PhantomPlayerUpdate", C.nox_xxx_updatePhantomPlayer_53B860, 0},
-		{"ObeliskUpdate", C.nox_xxx_updateObelisk_53C580, unsafe.Sizeof(server.ObeliskUpdateData{})},
-		{"LifetimeUpdate", C.nox_xxx_updateLifetime_53B8F0, 4},
-		{"MagicMissileUpdate", C.nox_xxx_updateMagicMissile_53BDA0, 28},
-		{"PixieUpdate", C.nox_xxx_updatePixie_53CD20, 28},
-		{"SkullUpdate", C.nox_xxx_updateShootingTrap_54F9A0, 52},
-		{"PentagramUpdate", C.nox_xxx_updateTeleportPentagram_53BEF0, 24},
-		{"InvisiblePentagramUpdate", C.nox_xxx_updateInvisiblePentagram_53C0C0, 24},
-		{"SwitchUpdate", C.nox_xxx_updateSwitch_53B320, 0},
-		{"BlowUpdate", C.nox_xxx_updateBlow_53C160, 0},
-		{"MoverUpdate", C.nox_xxx_unitUpdateMover_54F740, 36},
-		{"BlackPowderBarrelUpdate", C.nox_xxx_updateBlackPowderBarrel_53C9A0, 0},
-		{"OneSecondDieUpdate", C.nox_xxx_updateOneSecondDie_53CB60, 0},
-		{"WaterBarrelUpdate", C.nox_xxx_updateWaterBarrel_53CB90, 0},
-		{"SelfDestructUpdate", C.nox_xxx_updateSelfDestruct_53CC90, 0},
-		{"BlackPowderBurnUpdate", C.nox_xxx_updateBlackPowderBurn_53CCB0, 0},
-		{"DeathBallUpdate", C.nox_xxx_updateDeathBall_53D080, 0},
-		{"DeathBallFragmentUpdate", C.nox_xxx_updateDeathBallFragment_53D220, 0},
-		{"MoonglowUpdate", C.nox_xxx_updateMoonglow_53D270, 0},
-		{"SentryGlobeUpdate", C.nox_xxx_updateSentryGlobe_510E60, 12},
-		{"TelekinesisUpdate", C.nox_xxx_updateTelekinesis_53D330, 0},
-		{"FistUpdate", C.nox_xxx_updateFist_53D400, 4},
-		{"MeteorShowerUpdate", C.nox_xxx_updateMeteorShower_53D5A0, 4},
-		{"MeteorUpdate", C.nox_xxx_meteorExplode_53D6E0, 4},
-		{"ToxicCloudUpdate", C.nox_xxx_updateToxicCloud_53D850, 4},
-		{"SmallToxicCloudUpdate", C.nox_xxx_updateSmallToxicCloud_53D960, 4},
-		{"ArachnaphobiaUpdate", C.nox_xxx_updateArachnaphobia_53DA60, 0},
-		{"ExpireUpdate", C.nox_xxx_updateExpire_53DB00, 0},
-		{"BreakUpdate", C.nox_xxx_updateBreak_53DB30, 0},
-		{"OpenUpdate", C.nox_xxx_updateOpen_53DBB0, 0},
-		{"BreakAndRemoveUpdate", C.nox_xxx_updateBreakAndRemove_53DC30, 0},
-		{"ChakramInMotionUpdate", C.nox_xxx_updateChakramInMotion_53DCC0, 28},
-		{"FlagUpdate", C.nox_xxx_updateFlag_53DDF0, 12},
-		{"TrapDoorUpdate", C.nox_xxx_updateTrapDoor_53DE80, 0},
-		{"BallUpdate", C.nox_xxx_updateGameBall_53DF40, 32},
-		{"CrownUpdate", C.nox_xxx_updateCrown_53E1D0, 12},
-		{"UndeadKillerUpdate", C.nox_xxx_updateUndeadKiller_53E190, 0},
-		{"HarpoonUpdate", C.nox_xxx_updateHarpoon_54F380, 4},
-		{"MonsterGeneratorUpdate", C.nox_xxx_updateMonsterGenerator_54E930, 164},
+		{"PlayerUpdate", updateIdentityKey(updateIDPlayer), unsafe.Sizeof(server.PlayerUpdateData{})},
+		{"ProjectileUpdate", updateIdentityKey(updateIDProjectile), 0},
+		{"SpellProjectileUpdate", updateIdentityKey(updateIDSpellProjectile), unsafe.Sizeof(server.SpellProjectileUpdateData{})},
+		{"AntiSpellProjectileUpdate", updateIdentityKey(updateIDAntiSpellProjectile), 28},
+		{"DoorUpdate", updateIdentityKey(updateIDDoor), 52},
+		{"SparkUpdate", updateIdentityKey(updateIDSpark), 16},
+		{"ProjectileTrailUpdate", updateIdentityKey(updateIDProjectileTrail), 0},
+		{"PushUpdate", updateIdentityKey(updateIDPush), 12},
+		{"TriggerUpdate", updateIdentityKey(updateIDTrigger), 60},
+		{"ToggleUpdate", updateIdentityKey(updateIDToggle), 60},
+		{"MonsterUpdate", updateIdentityKey(updateIDMonster), unsafe.Sizeof(server.MonsterUpdateData{})},
+		{"LoopAndDamageUpdate", updateIdentityKey(updateIDLoopAndDamage), 16},
+		{"ElevatorUpdate", updateIdentityKey(updateIDElevator), 20},
+		{"ElevatorShaftUpdate", updateIdentityKey(updateIDElevatorShaft), 16},
+		{"PhantomPlayerUpdate", updateIdentityKey(updateIDPhantomPlayer), 0},
+		{"ObeliskUpdate", updateIdentityKey(updateIDObelisk), unsafe.Sizeof(server.ObeliskUpdateData{})},
+		{"LifetimeUpdate", updateIdentityKey(updateIDLifetime), 4},
+		{"MagicMissileUpdate", updateIdentityKey(updateIDMagicMissile), 28},
+		{"PixieUpdate", updateIdentityKey(updateIDPixie), 28},
+		{"SkullUpdate", updateIdentityKey(updateIDSkull), 52},
+		{"PentagramUpdate", updateIdentityKey(updateIDPentagram), 24},
+		{"InvisiblePentagramUpdate", updateIdentityKey(updateIDInvisiblePentagram), 24},
+		{"SwitchUpdate", updateIdentityKey(updateIDSwitch), 0},
+		{"BlowUpdate", updateIdentityKey(updateIDBlow), 0},
+		{"MoverUpdate", updateIdentityKey(updateIDMover), 36},
+		{"BlackPowderBarrelUpdate", updateIdentityKey(updateIDBlackPowderBarrel), 0},
+		{"OneSecondDieUpdate", updateIdentityKey(updateIDOneSecondDie), 0},
+		{"WaterBarrelUpdate", updateIdentityKey(updateIDWaterBarrel), 0},
+		{"SelfDestructUpdate", updateIdentityKey(updateIDSelfDestruct), 0},
+		{"BlackPowderBurnUpdate", updateIdentityKey(updateIDBlackPowderBurn), 0},
+		{"DeathBallUpdate", updateIdentityKey(updateIDDeathBall), 0},
+		{"DeathBallFragmentUpdate", updateIdentityKey(updateIDDeathBallFragment), 0},
+		{"MoonglowUpdate", updateIdentityKey(updateIDMoonglow), 0},
+		{"SentryGlobeUpdate", updateIdentityKey(updateIDSentryGlobe), 12},
+		{"TelekinesisUpdate", updateIdentityKey(updateIDTelekinesis), 0},
+		{"FistUpdate", updateIdentityKey(updateIDFist), 4},
+		{"MeteorShowerUpdate", updateIdentityKey(updateIDMeteorShower), 4},
+		{"MeteorUpdate", updateIdentityKey(updateIDMeteor), 4},
+		{"ToxicCloudUpdate", updateIdentityKey(updateIDToxicCloud), 4},
+		{"SmallToxicCloudUpdate", updateIdentityKey(updateIDSmallToxicCloud), 4},
+		{"ArachnaphobiaUpdate", updateIdentityKey(updateIDArachnaphobia), 0},
+		{"ExpireUpdate", updateIdentityKey(updateIDExpire), 0},
+		{"BreakUpdate", updateIdentityKey(updateIDBreak), 0},
+		{"OpenUpdate", updateIdentityKey(updateIDOpen), 0},
+		{"BreakAndRemoveUpdate", updateIdentityKey(updateIDBreakAndRemove), 0},
+		{"ChakramInMotionUpdate", updateIdentityKey(updateIDChakramInMotion), 28},
+		{"FlagUpdate", updateIdentityKey(updateIDFlag), 12},
+		{"TrapDoorUpdate", updateIdentityKey(updateIDTrapDoor), 0},
+		{"BallUpdate", updateIdentityKey(updateIDBall), 32},
+		{"CrownUpdate", updateIdentityKey(updateIDCrown), 12},
+		{"UndeadKillerUpdate", updateIdentityKey(updateIDUndeadKiller), 0},
+		{"HarpoonUpdate", updateIdentityKey(updateIDHarpoon), 4},
+		{"MonsterGeneratorUpdate", updateIdentityKey(updateIDMonsterGenerator), 164},
 	}
 }
 func portTestUpdateRegistryPointer(name string) (unsafe.Pointer, uint32) {

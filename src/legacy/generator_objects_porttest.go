@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME5.h"
-*/
-import "C"
 import (
 	"bytes"
 	"encoding/binary"
@@ -195,7 +191,7 @@ func portTestGeneratorObjectsCall(proxy *portTestRoamOwnerServer, u *server.Obje
 	case 6:
 		return generatorSpawn(u, (*types.Pointf)(p), o.source)
 	case 8:
-		rv := int8(C.nox_xxx_updateMonsterGenerator_54E930((*C.uint32_t)(u.CObj())))
+		rv := generatorUpdate(u)
 		// The update ABI returns only the low byte of a newly allocated pointer.
 		// Verify that transport before normalizing the allocator-dependent byte.
 		if len(proxy.life.created) == 1 {

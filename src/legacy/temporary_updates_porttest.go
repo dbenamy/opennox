@@ -5,36 +5,11 @@ package legacy
 /*
 #include "GAME4_3.h"
 #include "GAME5.h"
-void nox_xxx_updateSpark_53ADC0(int a1);
-float* nox_xxx_updateProjTrail_53AEC0(int a1);
-void nox_xxx_updateLifetime_53B8F0(int unit);
-void nox_xxx_spellFlyUpdate_53B940(int a1);
-void nox_xxx_updateAntiSpellProj_53BB00(int a1);
 void sub_53BD10(int a1, int a2);
-int nox_xxx_updateMagicMissile_53BDA0(int a1);
-void nox_xxx_updateBlackPowderBarrel_53C9A0(float* a1);
-void nox_xxx_updateOneSecondDie_53CB60(int a1);
-void nox_xxx_updateWaterBarrel_53CB90(int a1);
 void nox_xxx_waterBarrel_53CC30(float* a1, int a2);
-void nox_xxx_updateSelfDestruct_53CC90(int a1);
-void nox_xxx_updateBlackPowderBurn_53CCB0(int a1);
-void nox_xxx_updateDeathBallFragment_53D220(int a1);
-void nox_xxx_updateMoonglow_53D270(int a1);
-void nox_xxx_updateTelekinesis_53D330(int a1);
-void nox_xxx_updateFist_53D400(int a1);
 void nox_xxx_updateFlameCleanse_53D510(int a1);
-void nox_xxx_updateMeteorShower_53D5A0(float* a2);
-void nox_xxx_meteorExplode_53D6E0(int a6);
-void nox_xxx_updateToxicCloud_53D850(int a1);
 void sub_53D8C0(int a1, int a2);
-void nox_xxx_updateSmallToxicCloud_53D960(int a1);
 void nox_xxx_toxicCloudPoison_53D9D0(int a1, int a2);
-void nox_xxx_updateArachnaphobia_53DA60(int* a1);
-void nox_xxx_updateExpire_53DB00(int a1);
-int* nox_xxx_updateBreak_53DB30(uint32_t* a1);
-int* nox_xxx_updateOpen_53DBB0(uint32_t* a1);
-void nox_xxx_updateBreakAndRemove_53DC30(uint32_t* a1);
-void nox_xxx_updateChakramInMotion_53DCC0(int a1);
 float* nox_xxx_createSpark_54FD80(float a1, float a2, int a3, int a4, float a5, float a6, float a7, int a8);
 static uint32_t tempCalls[8192]; static int tempCount; static int tempReturn;
 static void tempReset(int ret) { tempCount=0; tempReturn=ret; }
@@ -43,69 +18,19 @@ static int tempCollide(int u,int a,int b) { tempCalls[tempCount++]=2;tempCalls[t
 static void* tempDiePtr(void){return tempDie;} static void* tempCollidePtr(void){return tempCollide;}
 static int tempN(void){return tempCount;} static uint32_t tempValue(int i){return tempCalls[i];}
 static void* tempFunction(int id) {switch(id){
-case 0:return (void*)nox_xxx_updateSpark_53ADC0;
-case 1:return (void*)nox_xxx_updateProjTrail_53AEC0;
-case 2:return (void*)nox_xxx_updateLifetime_53B8F0;
-case 3:return (void*)nox_xxx_spellFlyUpdate_53B940;
-case 4:return (void*)nox_xxx_updateAntiSpellProj_53BB00;
 case 5:return (void*)sub_53BD10;
-case 6:return (void*)nox_xxx_updateMagicMissile_53BDA0;
-case 7:return (void*)nox_xxx_updateBlackPowderBarrel_53C9A0;
-case 8:return (void*)nox_xxx_updateOneSecondDie_53CB60;
-case 9:return (void*)nox_xxx_updateWaterBarrel_53CB90;
 case 10:return (void*)nox_xxx_waterBarrel_53CC30;
-case 11:return (void*)nox_xxx_updateSelfDestruct_53CC90;
-case 12:return (void*)nox_xxx_updateBlackPowderBurn_53CCB0;
-case 13:return (void*)nox_xxx_updateDeathBallFragment_53D220;
-case 14:return (void*)nox_xxx_updateMoonglow_53D270;
-case 15:return (void*)nox_xxx_updateTelekinesis_53D330;
-case 16:return (void*)nox_xxx_updateFist_53D400;
 case 17:return (void*)nox_xxx_updateFlameCleanse_53D510;
-case 18:return (void*)nox_xxx_updateMeteorShower_53D5A0;
-case 19:return (void*)nox_xxx_meteorExplode_53D6E0;
-case 20:return (void*)nox_xxx_updateToxicCloud_53D850;
 case 21:return (void*)sub_53D8C0;
-case 22:return (void*)nox_xxx_updateSmallToxicCloud_53D960;
 case 23:return (void*)nox_xxx_toxicCloudPoison_53D9D0;
-case 24:return (void*)nox_xxx_updateArachnaphobia_53DA60;
-case 25:return (void*)nox_xxx_updateExpire_53DB00;
-case 26:return (void*)nox_xxx_updateBreak_53DB30;
-case 27:return (void*)nox_xxx_updateOpen_53DBB0;
-case 28:return (void*)nox_xxx_updateBreakAndRemove_53DC30;
-case 29:return (void*)nox_xxx_updateChakramInMotion_53DCC0;
 case 30:return (void*)nox_xxx_createSpark_54FD80;
 default:return 0;}}
 static uint32_t tempCall(int id, nox_object_t* u, nox_object_t* target, int value,int side){switch(id){
-case 0: nox_xxx_updateSpark_53ADC0((int)u);return 0;
-case 1: return (uint32_t)nox_xxx_updateProjTrail_53AEC0((int)u);
-case 2: nox_xxx_updateLifetime_53B8F0((int)u);return 0;
-case 3: nox_xxx_spellFlyUpdate_53B940((int)u);return 0;
-case 4: nox_xxx_updateAntiSpellProj_53BB00((int)u);return 0;
 case 5: sub_53BD10((int)target,(int)u);return 0;
-case 6: return (uint32_t)nox_xxx_updateMagicMissile_53BDA0((int)u);
-case 7: nox_xxx_updateBlackPowderBarrel_53C9A0((float*)u);return 0;
-case 8: nox_xxx_updateOneSecondDie_53CB60((int)u);return 0;
-case 9: nox_xxx_updateWaterBarrel_53CB90((int)u);return 0;
 case 10: nox_xxx_waterBarrel_53CC30((float*)target,(int)((float*)u+14));return 0;
-case 11: nox_xxx_updateSelfDestruct_53CC90((int)u);return 0;
-case 12: nox_xxx_updateBlackPowderBurn_53CCB0((int)u);return 0;
-case 13: nox_xxx_updateDeathBallFragment_53D220((int)u);return 0;
-case 14: nox_xxx_updateMoonglow_53D270((int)u);return 0;
-case 15: nox_xxx_updateTelekinesis_53D330((int)u);return 0;
-case 16: nox_xxx_updateFist_53D400((int)u);return 0;
 case 17: nox_xxx_updateFlameCleanse_53D510((int)u);return 0;
-case 18: nox_xxx_updateMeteorShower_53D5A0((float*)u);return 0;
-case 19: nox_xxx_meteorExplode_53D6E0((int)u);return 0;
-case 20: nox_xxx_updateToxicCloud_53D850((int)u);return 0;
 case 21: sub_53D8C0((int)target,(int)u);return 0;
-case 22: nox_xxx_updateSmallToxicCloud_53D960((int)u);return 0;
 case 23: nox_xxx_toxicCloudPoison_53D9D0((int)target,(int)u);return 0;
-case 24: nox_xxx_updateArachnaphobia_53DA60((int*)u);return 0;
-case 25: nox_xxx_updateExpire_53DB00((int)u);return 0;
-case 26: return (uint32_t)nox_xxx_updateBreak_53DB30((uint32_t*)u);
-case 27: return (uint32_t)nox_xxx_updateOpen_53DBB0((uint32_t*)u);
-case 28: nox_xxx_updateBreakAndRemove_53DC30((uint32_t*)u);return 0;
-case 29: nox_xxx_updateChakramInMotion_53DCC0((int)u);return 0;
 case 30: return (uint32_t)nox_xxx_createSpark_54FD80(*((float*)u+14),*((float*)u+15),value,side,*((float*)u+20),*((float*)u+21),*((float*)u+27),((uint32_t*)u)[127]);
 default:return 0;}}
 */
@@ -258,7 +183,7 @@ func (p *portTestShopPools) temporaryItems() {
 		return
 	}
 	for i := 0; i < 31; i++ {
-		p.identify(C.tempFunction(C.int(i)), 68000+uint32(i))
+		p.identify(portTestTempFunction(i), 68000+uint32(i))
 	}
 	p.identify(C.tempDiePtr(), 68100)
 	p.identify(C.tempCollidePtr(), 68101)
@@ -333,12 +258,148 @@ func (p *portTestShopPools) temporaryItems() {
 		p.temporary.indexed = append(p.temporary.indexed, u)
 	}
 }
+
+func portTestTempFunction(id int) unsafe.Pointer {
+	switch id {
+	case 0:
+		return updateIdentityKey(updateIDSpark)
+	case 1:
+		return updateIdentityKey(updateIDProjectileTrail)
+	case 2:
+		return updateIdentityKey(updateIDLifetime)
+	case 3:
+		return updateIdentityKey(updateIDSpellProjectile)
+	case 4:
+		return updateIdentityKey(updateIDAntiSpellProjectile)
+	case 6:
+		return updateIdentityKey(updateIDMagicMissile)
+	case 7:
+		return updateIdentityKey(updateIDBlackPowderBarrel)
+	case 8:
+		return updateIdentityKey(updateIDOneSecondDie)
+	case 9:
+		return updateIdentityKey(updateIDWaterBarrel)
+	case 11:
+		return updateIdentityKey(updateIDSelfDestruct)
+	case 12:
+		return updateIdentityKey(updateIDBlackPowderBurn)
+	case 13:
+		return updateIdentityKey(updateIDDeathBallFragment)
+	case 14:
+		return updateIdentityKey(updateIDMoonglow)
+	case 15:
+		return updateIdentityKey(updateIDTelekinesis)
+	case 16:
+		return updateIdentityKey(updateIDFist)
+	case 18:
+		return updateIdentityKey(updateIDMeteorShower)
+	case 19:
+		return updateIdentityKey(updateIDMeteor)
+	case 20:
+		return updateIdentityKey(updateIDToxicCloud)
+	case 22:
+		return updateIdentityKey(updateIDSmallToxicCloud)
+	case 24:
+		return updateIdentityKey(updateIDArachnaphobia)
+	case 25:
+		return updateIdentityKey(updateIDExpire)
+	case 26:
+		return updateIdentityKey(updateIDBreak)
+	case 27:
+		return updateIdentityKey(updateIDOpen)
+	case 28:
+		return updateIdentityKey(updateIDBreakAndRemove)
+	case 29:
+		return updateIdentityKey(updateIDChakramInMotion)
+	default:
+		return C.tempFunction(C.int(id))
+	}
+}
+
+func portTestTempCall(id int, u, target *server.Object, value, side int) uint32 {
+	switch id {
+	case 0:
+		temporarySparkUpdate(u)
+		return 0
+	case 1:
+		return uint32(uintptr(unsafe.Pointer(temporaryTrail(u).CObj())))
+	case 2:
+		temporaryLifetime(u)
+		return 0
+	case 3:
+		temporarySpellFly(u)
+		return 0
+	case 4:
+		temporaryAntiSpell(u)
+		return 0
+	case 6:
+		return temporaryMagicMissile(u)
+	case 7:
+		temporaryPowderBarrel(u)
+		return 0
+	case 8:
+		temporaryOneSecond(u)
+		return 0
+	case 9:
+		temporaryWaterBarrel(u)
+		return 0
+	case 11:
+		temporarySelfDestruct(u)
+		return 0
+	case 12:
+		temporaryPowderBurn(u)
+		return 0
+	case 13:
+		temporaryDeathFragment(u)
+		return 0
+	case 14:
+		temporaryMoonglow(u)
+		return 0
+	case 15:
+		temporaryTelekinesis(u)
+		return 0
+	case 16:
+		temporaryFist(u)
+		return 0
+	case 18:
+		temporaryMeteorShower(u)
+		return 0
+	case 19:
+		temporaryMeteorExplode(u)
+		return 0
+	case 20:
+		temporaryCloud(u, false)
+		return 0
+	case 22:
+		temporaryCloud(u, true)
+		return 0
+	case 24:
+		temporaryArachnaphobia(u)
+		return 0
+	case 25:
+		temporaryExpire(u)
+		return 0
+	case 26:
+		return temporaryBreak(u, false)
+	case 27:
+		return temporaryBreak(u, true)
+	case 28:
+		temporaryBreakRemove(u)
+		return 0
+	case 29:
+		temporaryChakram(u)
+		return 0
+	default:
+		return uint32(C.tempCall(C.int(id), asObjectC(u), asObjectC(target), C.int(value), C.int(side)))
+	}
+}
+
 func (p *portTestShopPools) temporaryAction(a PortTestShopAction) uint32 {
 	if p.registeredUpdateAction(a) {
 		return p.temporary.result
 	}
 	sp := p.proxy.callbacks.shop.spec.TemporaryUpdates
-	p.temporary.result = uint32(C.tempCall(C.int(a.Op-600), asObjectC(p.items[a.Item].u), asObjectC(p.temporaryRef(sp.Target)), C.int(a.Value), C.int(a.Side)))
+	p.temporary.result = portTestTempCall(a.Op-600, p.items[a.Item].u, p.temporaryRef(sp.Target), int(a.Value), int(a.Side))
 	return p.temporary.result
 }
 func (p *portTestShopPools) temporarySnapshot() []uint32 {

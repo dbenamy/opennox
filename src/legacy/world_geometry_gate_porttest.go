@@ -2,15 +2,9 @@
 
 package legacy
 
-/*
-#include <stdint.h>
-char nox_xxx_updateDoor_53AC50(int a1);
-static void* geometryDoorUpdate(void){return (void*)nox_xxx_updateDoor_53AC50;}
-*/
-import "C"
 import "unsafe"
 
-func PortTestGeometryDoorUpdate() unsafe.Pointer { return C.geometryDoorUpdate() }
+func PortTestGeometryDoorUpdate() unsafe.Pointer { return updateIdentityKey(updateIDDoor) }
 func PortTestGeometryQueues() (reset func(), snapshot func(map[unsafe.Pointer]uint32) [3]uint32, restore func()) {
 	old := [3]uint32{collisionAngleHead, collisionActiveHead, collisionActiveTail}
 	reset = func() { collisionAngleHead = 0; collisionActiveHead = 0; collisionActiveTail = 0 }

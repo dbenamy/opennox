@@ -180,8 +180,3 @@ func generatorUpdate(u *server.Object) int8 {
 	}
 	return int8(result)
 }
-
-//export nox_xxx_updateMonsterGenerator_54E930
-func nox_xxx_updateMonsterGenerator_54E930(a *C.uint32_t) C.char {
-	return C.char(generatorUpdate((*server.Object)(unsafe.Pointer(a))))
-}

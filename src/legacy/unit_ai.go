@@ -37,11 +37,6 @@ func nox_xxx_monsterPushAction_50A260_impl(u *nox_object_t, act int, file *C.cha
 	return asObjectS(u).MonsterPushActionImpl(ai.ActionType(act), GoString(file), line).C()
 }
 
-//export nox_xxx_unitUpdateMonster_50A5C0
-func nox_xxx_unitUpdateMonster_50A5C0(a1 *nox_object_t) {
-	Nox_xxx_unitUpdateMonster_50A5C0(asObjectS(a1))
-}
-
 //export nox_xxx_monsterClearActionStack_50A3A0
 func nox_xxx_monsterClearActionStack_50A3A0(a1 *nox_object_t) {
 	asObjectS(a1).ClearActionStack()

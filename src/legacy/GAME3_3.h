@@ -13,7 +13,6 @@ int sub_4E4F30(int a1);
 int nox_xxx_playerResetImportantCtr_4E4F40(int a1);
 int nox_xxx_netSendPacket1_4E5390(int a1, int a2, int a3, int a4, int a5);
 int sub_4E55F0(unsigned char a1);
-void nox_xxx_updatePlayerObserver_4E62F0(nox_object_t* a1);
 void nox_xxx_playerLeaveObserver_0_4E6AA0(nox_playerInfo* pl);
 unsigned char* sub_4E8E50();
 int sub_4E8E60();

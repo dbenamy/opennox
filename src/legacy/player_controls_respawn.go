@@ -203,12 +203,12 @@ func controlLeaveObserver(pl unsafe.Pointer) {
 		return
 	}
 	u := controlObject(pl, 2056)
-	if u == nil || *controlPtr(u.CObj(), 744) == unsafe.Pointer(C.nox_xxx_updatePlayerMonsterBot_4FAB20) {
+	if u == nil || *controlPtr(u.CObj(), 744) == updateIdentityKey(updateIDPlayerMonsterBot) {
 		return
 	}
 	playerStateRemoveStatus((*server.Player)(pl), 289)
 	spellLifeBuffOff(u, int32(0))
-	*controlPtr(u.CObj(), 744) = unsafe.Pointer(C.nox_xxx_updatePlayer_4F8100)
+	*controlPtr(u.CObj(), 744) = updateIdentityKey(updateIDPlayer)
 	u.ObjFlags &^= 0x40
 	nox_xxx_monsterMarkUpdate_4E8020((*C.nox_object_t)(controlObject(pl, 2056).CObj()))
 	if controlFlags(16) && bool(nox_xxx_CheckGameplayFlags_417DA0(4)) {
