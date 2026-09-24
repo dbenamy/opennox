@@ -195,7 +195,7 @@ func controlTeamFlag(pl unsafe.Pointer) {
 	team := unsafe.Pointer(nox_xxx_getTeamByID_418AB0(int(*controlByte(u.CObj(), 52))))
 	flag := controlObject(team, 76)
 	if flag != nil && flag.InvHolder == nil {
-		sub_4F3400(C.int(inventoryInt(u)), C.int(inventoryInt(flag)), 1)
+		inventoryCrownPickup(u, flag, 1)
 	}
 }
 func controlLeaveObserver(pl unsafe.Pointer) {

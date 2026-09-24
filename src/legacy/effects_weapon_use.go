@@ -5,7 +5,6 @@ import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
@@ -160,5 +159,5 @@ func effectsUse(u, it *server.Object) int {
 	if result := int(sub_419E60(asObjectC(u))); result == 1 {
 		return result
 	}
-	return ccall.CallIntPtr2(it.Use.Ptr, u.CObj(), it.CObj())
+	return int(it.Use.CallResult(u, it))
 }

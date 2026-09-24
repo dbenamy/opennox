@@ -2693,3 +2693,15 @@ operation widths and first-NUL semantics. Reserve fifteen retired address entrie
 because map cardinality affects subsequent capture IDs; skip nil entries rather
 than identifying them. Independent C observers remain. See
 [DAMAGE_IDENTITIES.md](DAMAGE_IDENTITIES.md).
+
+
+## Item callback identities and full Use results
+
+Preserve the existing boolean Use.Get API while adding native int32 result and
+explicit discard dispatch. effectsUse needs the full result; food pickup discards
+it using its original void convention. Unknown callback addresses retain those
+separate raw fallbacks. Keep all 41 names distinct, data sizes/layout unchanged,
+and mutable hooks late-bound. Direct fixture operations preserve sparse IDs and
+integer widths. Also migrate the team-flag return caller found during review.
+This reversible shared API change was qualified with the full default port corpus.
+See [ITEM_IDENTITIES.md](ITEM_IDENTITIES.md).

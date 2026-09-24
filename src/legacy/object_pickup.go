@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME3_3.h"
-#include "GAME4_3.h"
-int nox_xxx_pickupGold_4F3A60_obj_pickup(int a1, int a2, int a3);
-int nox_objectPickupAudEvent_4F3D50(nox_object_t* a1, nox_object_t* a2, int a3);
-*/
-import "C"
 import (
 	"github.com/opennox/libs/object"
 	"github.com/opennox/libs/player"
@@ -24,43 +16,28 @@ var (
 )
 
 func init() {
-	server.RegisterObjectPickup("DefaultPickup", C.nox_xxx_pickupDefault_4F31E0, func(who, it *server.Object, a3, a4 int) bool {
+	server.RegisterObjectPickup("DefaultPickup", itemIdentityKey(itemIDDefaultPickup), func(who, it *server.Object, a3, a4 int) bool {
 		return Nox_xxx_pickupDefault_4F31E0(who, it, a3, a4)
 	})
-	server.RegisterObjectPickup("FoodPickup", C.nox_xxx_pickupFood_4F3350, func(who, it *server.Object, a3, a4 int) bool { return inventoryFoodPickup(who, it, a3) != 0 })
-	server.RegisterObjectPickup("UsePickup", C.nox_xxx_pickupUse_4F34D0, func(who, it *server.Object, a3, a4 int) bool { return inventoryUsePickup(who, it, a3) != 0 })
-	server.RegisterObjectPickup("ArmorPickup", C.nox_xxx_pickupArmor_53E7F0, func(who, it *server.Object, a3, a4 int) bool { return inventoryArmorPickup(who, it, a3, a4) != 0 })
-	server.RegisterObjectPickup("WeaponPickup", C.sub_53A720, func(who, it *server.Object, a3, a4 int) bool { return inventoryWeaponPickup(who, it, a3, a4) != 0 })
-	server.RegisterObjectPickup("OblivionPickup", C.nox_xxx_sendMsgOblivionPickup_53A9C0, func(who, it *server.Object, a3, a4 int) bool { return inventoryOblivionPickup(who, it, a3, a4) != 0 })
-	server.RegisterObjectPickup("TreasurePickup", C.nox_xxx_pickupTreasure_4F3580, func(who, it *server.Object, a3, a4 int) bool { return inventoryTreasurePickup(who, it, a3) != 0 })
-	server.RegisterObjectPickup("TrapPickup", C.nox_xxx_pickupTrap_4F3510, func(who, it *server.Object, a3, a4 int) bool { return inventoryTrapPickup(who, it, a3) != 0 })
-	server.RegisterObjectPickup("PotionPickup", C.nox_xxx_pickupPotion_4F37D0, func(who, it *server.Object, a3, a4 int) bool {
+	server.RegisterObjectPickup("FoodPickup", itemIdentityKey(itemIDFoodPickup), func(who, it *server.Object, a3, a4 int) bool { return inventoryFoodPickup(who, it, a3) != 0 })
+	server.RegisterObjectPickup("UsePickup", itemIdentityKey(itemIDUsePickup), func(who, it *server.Object, a3, a4 int) bool { return inventoryUsePickup(who, it, a3) != 0 })
+	server.RegisterObjectPickup("ArmorPickup", itemIdentityKey(itemIDArmorPickup), func(who, it *server.Object, a3, a4 int) bool { return inventoryArmorPickup(who, it, a3, a4) != 0 })
+	server.RegisterObjectPickup("WeaponPickup", itemIdentityKey(itemIDWeaponPickup), func(who, it *server.Object, a3, a4 int) bool { return inventoryWeaponPickup(who, it, a3, a4) != 0 })
+	server.RegisterObjectPickup("OblivionPickup", itemIdentityKey(itemIDOblivionPickup), func(who, it *server.Object, a3, a4 int) bool { return inventoryOblivionPickup(who, it, a3, a4) != 0 })
+	server.RegisterObjectPickup("TreasurePickup", itemIdentityKey(itemIDTreasurePickup), func(who, it *server.Object, a3, a4 int) bool { return inventoryTreasurePickup(who, it, a3) != 0 })
+	server.RegisterObjectPickup("TrapPickup", itemIdentityKey(itemIDTrapPickup), func(who, it *server.Object, a3, a4 int) bool { return inventoryTrapPickup(who, it, a3) != 0 })
+	server.RegisterObjectPickup("PotionPickup", itemIdentityKey(itemIDPotionPickup), func(who, it *server.Object, a3, a4 int) bool {
 		return Nox_xxx_pickupPotion_4F37D0(who, it, a3, a4)
 	})
-	server.RegisterObjectPickup("GoldPickup", C.nox_xxx_pickupGold_4F3A60_obj_pickup, func(who, it *server.Object, a3, a4 int) bool { return resourceGoldPickup(who, it, a3) })
-	server.RegisterObjectPickup("AmmoPickup", C.nox_xxx_pickupAmmo_4F3B00, func(who, it *server.Object, a3, a4 int) bool { return inventoryAmmoPickup(who, it, a3, a4) != 0 })
-	server.RegisterObjectPickup("SpellBookPickup", C.nox_xxx_pickupSpellbook_4F3C60, func(who, it *server.Object, a3, a4 int) bool { return inventoryBookPickup(who, it, a3, false) != 0 })
-	server.RegisterObjectPickup("AbilityBookPickup", C.nox_xxx_pickupAbilitybook_4F3CE0, func(who, it *server.Object, a3, a4 int) bool { return inventoryBookPickup(who, it, a3, true) != 0 })
-	server.RegisterObjectPickup("CrownPickup", C.sub_4F3400, func(who, it *server.Object, a3, a4 int) bool { return inventoryCrownPickup(who, it, a3) != 0 })
-	server.RegisterObjectPickup("AudEventPickup", C.nox_objectPickupAudEvent_4F3D50, func(who, it *server.Object, a3, a4 int) bool {
+	server.RegisterObjectPickup("GoldPickup", itemIdentityKey(itemIDGoldPickup), func(who, it *server.Object, a3, a4 int) bool { return resourceGoldPickup(who, it, a3) })
+	server.RegisterObjectPickup("AmmoPickup", itemIdentityKey(itemIDAmmoPickup), func(who, it *server.Object, a3, a4 int) bool { return inventoryAmmoPickup(who, it, a3, a4) != 0 })
+	server.RegisterObjectPickup("SpellBookPickup", itemIdentityKey(itemIDSpellBookPickup), func(who, it *server.Object, a3, a4 int) bool { return inventoryBookPickup(who, it, a3, false) != 0 })
+	server.RegisterObjectPickup("AbilityBookPickup", itemIdentityKey(itemIDAbilityBookPickup), func(who, it *server.Object, a3, a4 int) bool { return inventoryBookPickup(who, it, a3, true) != 0 })
+	server.RegisterObjectPickup("CrownPickup", itemIdentityKey(itemIDCrownPickup), func(who, it *server.Object, a3, a4 int) bool { return inventoryCrownPickup(who, it, a3) != 0 })
+	server.RegisterObjectPickup("AudEventPickup", itemIdentityKey(itemIDAudEventPickup), func(who, it *server.Object, a3, a4 int) bool {
 		return Nox_objectPickupAudEvent_4F3D50(who, it, a3, a4)
 	})
-	server.RegisterObjectPickup("AnkhTradablePickup", C.sub_4F3DD0, func(who, it *server.Object, a3, a4 int) bool { return inventoryAnkhPickup(who, it) != 0 })
-}
-
-//export nox_xxx_pickupDefault_4F31E0
-func nox_xxx_pickupDefault_4F31E0(cobj1 *nox_object_t, cobj2 *nox_object_t, a3 int) int {
-	return bool2int(Nox_xxx_pickupDefault_4F31E0(asObjectS(cobj1), asObjectS(cobj2), a3, 0))
-}
-
-//export nox_objectPickupAudEvent_4F3D50
-func nox_objectPickupAudEvent_4F3D50(cobj1 *nox_object_t, cobj2 *nox_object_t, a3 int) int {
-	return bool2int(Nox_objectPickupAudEvent_4F3D50(asObjectS(cobj1), asObjectS(cobj2), a3, 0))
-}
-
-//export nox_xxx_pickupPotion_4F37D0
-func nox_xxx_pickupPotion_4F37D0(cobj1 *nox_object_t, cobj2 *nox_object_t, a3 int) int {
-	return bool2int(Nox_xxx_pickupPotion_4F37D0(asObjectS(cobj1), asObjectS(cobj2), a3, 0))
+	server.RegisterObjectPickup("AnkhTradablePickup", itemIdentityKey(itemIDAnkhTradablePickup), func(who, it *server.Object, a3, a4 int) bool { return inventoryAnkhPickup(who, it) != 0 })
 }
 
 func sub_419E60(u *nox_object_t) int {

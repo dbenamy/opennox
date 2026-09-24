@@ -45,13 +45,3 @@ func unitRead(u, it *server.Object, warp bool) bool {
 func nox_xxx_updateUndeadKiller_53E190(a C.int) {
 	unitUndeadUpdate((*server.Object)(unsafe.Pointer(uintptr(uint32(a)))))
 }
-
-//export nox_xxx_useRead_53F7C0
-func nox_xxx_useRead_53F7C0(a, b C.int) C.int {
-	return C.int(bool2int(unitRead((*server.Object)(unsafe.Pointer(uintptr(uint32(a)))), (*server.Object)(unsafe.Pointer(uintptr(uint32(b)))), false)))
-}
-
-//export sub_53F830
-func sub_53F830(a, b C.int) C.int {
-	return C.int(bool2int(unitRead((*server.Object)(unsafe.Pointer(uintptr(uint32(a)))), (*server.Object)(unsafe.Pointer(uintptr(uint32(b)))), true)))
-}

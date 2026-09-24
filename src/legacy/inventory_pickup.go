@@ -2,7 +2,6 @@ package legacy
 
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
-	"github.com/opennox/opennox/v1/legacy/common/ccall"
 	"github.com/opennox/opennox/v1/server"
 	"unsafe"
 )
@@ -15,7 +14,7 @@ func inventoryFoodPickup(u, it *server.Object, arg int) int {
 		return 0
 	}
 	if sub_419E60(asObjectC(u)) == 0 && it.ObjSubClass&0x84 == 0 {
-		ccall.CallVoidPtr2(it.Use.Ptr, u.CObj(), it.CObj())
+		it.Use.CallDiscard(u, it)
 	}
 	if it.ObjFlags&0x20 != 0 {
 		return 1

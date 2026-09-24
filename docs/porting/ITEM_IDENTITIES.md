@@ -43,3 +43,33 @@ fingerprints and original-asset hashes before accepting the conversion.
 [Original evidence](item-identities-baseline.json),
 [commands](item-identities-batch.json), [selection](item-identities-tests.txt).
 Local artifacts: `build/port-item-identities/`.
+
+
+## Qualified conversion
+
+All 205 focused roots pass in each default/server/high-resolution profile without
+skips: the 203 frozen original roots plus two independent native/raw Use contracts.
+The complete default port corpus passes 2441 roots, with only the established
+TestMapPopulationPrerequisiteProbe diagnostic skip (2442 selected roots total).
+Safe/static checks, three production/ABI builds and headless character creation,
+save/load/resume pass. The ordinary asset suite matches the exact known results:
+304 failure events, 17 passing/two failing/32 skipped packages. Existing assertions
+and frozen captures remain unchanged; original 1,654 asset hashes match.
+
+All accepted phases have identical source fingerprints; all 22 changed/new/deleted
+source files match review. All 41 exports are absent; retained exported function
+signatures and bodies are unchanged. Cgo files fall 213→208 (255/463 eliminated);
+selected legacy exports fall 866→825 (1,065/1,890 retired). Embedded production
+callback bodies remain 77; headers remain 157 files with 3,554 physical lines.
+Standalone production/test-reference C remain zero. External bindings are unchanged.
+
+Luna supplied the bounded production overlay and reviewed primary fixtures/API.
+Primary corrected GoldPickup's bool handling, removed an unused import and the
+now-empty resource export file, and found the additional player-control caller.
+That caller's original tests were added before installation. The first compile
+caught primary fixture cleanup removing a local used by an existing pointer-return
+check; it was restored without changing expectations. Accepted qualification uses
+contracts-fixed. Review remains necessary; no measured cost savings are claimed.
+
+[Qualification](item-identities-qualification.json),
+[inventory](item-identities-inventory-after.json).

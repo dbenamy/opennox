@@ -59,10 +59,7 @@ case 33:return (void*)nox_xxx_itemCheckReadinessEffect_4E0960;
 case 34:return (void*)nox_xxx_effectProjectileSpeed_4E09B0;
 case 35:return (void*)nox_xxx_rechargeItem_53C520;
 case 36:return (void*)nox_xxx_getRechargeRate_53C940;
-case 37:return (void*)nox_xxx_useLesserFireballStaff_53F290;
 case 38:return (void*)nox_xxx_wandShot_53F480;
-case 39:return (void*)nox_xxx_useWandCastSpell_53F4F0;
-case 40:return (void*)nox_xxx_useFireWand_53F670;
 case 42:return (void*)nullsub_22;case 43:return (void*)nullsub_36;default:return 0;}}
 static uint64_t effectsCall(int op,nox_object_t* u,nox_object_t* it,nox_object_t* target,void* mod,uint32_t* scalar,int value,int side,float2* pos){
  int up=(int)u,ip=(int)it,tp=(int)target,mp=(int)mod;
@@ -103,10 +100,7 @@ case 32:return (uint32_t)nox_xxx_itemCheckReadinessEffect_4E0960(ip);
 case 33:return (uint32_t)nox_xxx_effectProjectileSpeed_4E09B0(mp,ip,up,tp,tp);
 case 34:return (uint32_t)nox_xxx_rechargeItem_53C520(ip,value);
 case 35:return (uint32_t)nox_xxx_getRechargeRate_53C940((uint32_t*)it);
-case 36:return (uint32_t)nox_xxx_useLesserFireballStaff_53F290(up,(uint32_t*)it);
 case 37:return (uint32_t)nox_xxx_wandShot_53F480(up,value,(int*)pos,(uint32_t*)side);
-case 38:return (uint32_t)nox_xxx_useWandCastSpell_53F4F0(up,(uint32_t*)it);
-case 39:return (uint32_t)nox_xxx_useFireWand_53F670(up,ip);
 }
 return 0;
 }
@@ -165,7 +159,7 @@ func (p *portTestShopPools) effectsUsePrepare() func() {
 	oldTable := bytes.Clone(table)
 	copy(table, blobdata.PortTestEffectsInventoryTable())
 	for i, id := range []int{PortTestEffects4DFB50, PortTestEffects4DFC30, PortTestEffects4DFD10, PortTestEffects4DFD80, PortTestEffects4DFDE0, PortTestEffects4E0140} {
-		*memmap.PtrPtr(0x587000, 200160+uintptr(20*i)) = C.effectsFunction(C.int(id - 499))
+		*memmap.PtrPtr(0x587000, 200160+uintptr(20*i)) = portTestEffectsFunction(C.int(id - 499))
 	}
 	offsets := []uintptr{2488732, 1569740, 1569744}
 	old := make([]uint32, len(offsets))
@@ -205,7 +199,7 @@ func (p *portTestShopPools) effectsUseItems() {
 	}
 
 	for i := 1; i <= 43; i++ {
-		if fn := C.effectsFunction(C.int(i)); fn != nil {
+		if fn := portTestEffectsFunction(C.int(i)); fn != nil {
 			p.identify(fn, 66100+uint32(i))
 		}
 	}
@@ -217,11 +211,11 @@ func (p *portTestShopPools) effectsUseItems() {
 			}
 			*(*uint32)(unsafe.Add(unsafe.Pointer(m), off)) = v
 		}
-		m.Engage112 = C.effectsFunction(C.int(s.Engage))
-		m.Disengage116 = C.effectsFunction(C.int(s.Disengage))
-		m.Attack40.Fnc = C.effectsFunction(C.int(s.Attack))
-		m.Defend76.Fnc = C.effectsFunction(C.int(s.Defend))
-		m.DefendCollide88.Fnc = C.effectsFunction(C.int(s.Collide))
+		m.Engage112 = portTestEffectsFunction(C.int(s.Engage))
+		m.Disengage116 = portTestEffectsFunction(C.int(s.Disengage))
+		m.Attack40.Fnc = portTestEffectsFunction(C.int(s.Attack))
+		m.Defend76.Fnc = portTestEffectsFunction(C.int(s.Defend))
+		m.DefendCollide88.Fnc = portTestEffectsFunction(C.int(s.Collide))
 	}
 	write := func(u *server.Object, words map[int]uint32) {
 		for off, v := range words {
@@ -306,6 +300,12 @@ func (p *portTestShopPools) effectsUseAction(a PortTestShopAction) uint32 {
 	}
 	if a.Op == PortTestEffects53F8E0 {
 		p.effectsUse.result = uint64(uint32(effectsUse(u, it)))
+	} else if a.Op == PortTestEffects53F290 {
+		p.effectsUse.result = uint64(uint32(effectsLesserFireball(u, it)))
+	} else if a.Op == PortTestEffects53F4F0 {
+		p.effectsUse.result = uint64(uint32(effectsWandCast(u, it)))
+	} else if a.Op == PortTestEffects53F670 {
+		p.effectsUse.result = uint64(uint32(effectsFireWand(u, it)))
 	} else {
 		p.effectsUse.result = uint64(C.effectsCall(C.int(a.Op-500), asObjectC(u), asObjectC(it), asObjectC(p.effectsUseTarget(sp.Target)), mod, (*C.uint32_t)(unsafe.Pointer(p.effectsUse.scalar)), C.int(a.Value), C.int(a.Side), (*C.float2)(unsafe.Pointer(p.inventory.pos))))
 	}
@@ -422,3 +422,15 @@ const PortTestEffects53F480 = 537
 const PortTestEffects53F4F0 = 538
 const PortTestEffects53F670 = 539
 const PortTestEffects53F8E0 = 540
+
+func portTestEffectsFunction(id C.int) unsafe.Pointer {
+	switch id {
+	case 37:
+		return itemIdentityKey(itemIDWandUse)
+	case 39:
+		return itemIdentityKey(itemIDWandCastUse)
+	case 40:
+		return itemIdentityKey(itemIDFireWandUse)
+	}
+	return C.effectsFunction(id)
+}

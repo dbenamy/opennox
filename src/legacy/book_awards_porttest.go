@@ -100,11 +100,11 @@ func PortTestBookAwardCall(name string, args ...uint32) uint32 {
 	case "nox_xxx_spellGrantToPlayer_4FB550":
 		return uint32(bookAwardSpell(u, int32(a[1]), int32(a[2]), int32(a[3]), int32(a[4])))
 	case "sub_53F930":
-		return uint32(C.sub_53F930(C.int(a[0]), C.int(a[1])))
+		return uint32(bookUseGuide(u, (*server.Object)(unsafe.Pointer(uintptr(a[1])))))
 	case "nox_xxx_useSpellReward_53F9E0":
-		return uint32(C.nox_xxx_useSpellReward_53F9E0(C.int(a[0]), C.int(a[1])))
+		return uint32(bookUseSpell(u, (*server.Object)(unsafe.Pointer(uintptr(a[1])))))
 	case "nox_xxx_useAbilityReward_53FAE0":
-		return uint32(C.nox_xxx_useAbilityReward_53FAE0(C.int(a[0]), C.int(a[1])))
+		return uint32(bookUseAbility(u, (*server.Object)(unsafe.Pointer(uintptr(a[1])))))
 	}
 	panic("unknown book award operation: " + name)
 }

@@ -10,7 +10,6 @@ package legacy
 #include "GAME4_2.h"
 #include "GAME4_3.h"
 void nox_xxx_updateHarpoon_54F380(nox_object_t* a1);
-int nox_objectDropAudEvent_4EE2F0(nox_object_t* a1, nox_object_t* a2, float2* a3);
 */
 import "C"
 import (
@@ -312,7 +311,7 @@ func Nox_xxx_dropAllItems_4EDA40(a1 *server.Object) {
 }
 
 func Get_nox_objectDropAudEvent_4EE2F0() unsafe.Pointer {
-	return C.nox_objectDropAudEvent_4EE2F0
+	return itemIdentityKey(itemIDAudEventDrop)
 }
 func Get_nox_xxx_XFerDefault_4F49A0() unsafe.Pointer {
 	return C.nox_xxx_XFerDefault_4F49A0

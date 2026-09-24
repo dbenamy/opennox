@@ -205,24 +205,9 @@ func nox_xxx_getRechargeRate_53C940(a1 *C.uint32_t) C.int {
 	return C.int(effectsRechargeRate(equipmentObject(unsafe.Pointer(a1))))
 }
 
-//export nox_xxx_useLesserFireballStaff_53F290
-func nox_xxx_useLesserFireballStaff_53F290(a1 C.int, a2 *C.uint32_t) C.int {
-	return C.int(effectsLesserFireball(objectFromInt(a1), equipmentObject(unsafe.Pointer(a2))))
-}
-
 //export nox_xxx_wandShot_53F480
 func nox_xxx_wandShot_53F480(a1 C.int, a2 C.int, a3 *C.int, a4 *C.uint32_t) *C.uint32_t {
 	return (*C.uint32_t)(unsafe.Pointer(uintptr(effectsWandShot(objectFromInt(a1), int(a2), *(*types.Pointf)(unsafe.Pointer(a3)), uint32(uintptr(unsafe.Pointer(a4)))))))
-}
-
-//export nox_xxx_useWandCastSpell_53F4F0
-func nox_xxx_useWandCastSpell_53F4F0(a1 C.int, a2 *C.uint32_t) C.int {
-	return C.int(effectsWandCast(objectFromInt(a1), equipmentObject(unsafe.Pointer(a2))))
-}
-
-//export nox_xxx_useFireWand_53F670
-func nox_xxx_useFireWand_53F670(a1 C.int, a2 C.int) C.int {
-	return C.int(effectsFireWand(objectFromInt(a1), objectFromInt(a2)))
 }
 
 func nox_xxx_useByNetCode_53F8E0(a1 C.int, a2 C.int) C.int {

@@ -1,6 +1,7 @@
 package server
 
 import (
+	"runtime"
 	"unsafe"
 
 	"github.com/opennox/libs/types"
@@ -210,6 +211,47 @@ func (p UseFuncPtr) Get() UseFunc {
 }
 
 type UseFunc func(obj, obj2 *Object) bool
+
+// UseResultFunc preserves the full signed C-int result for result-aware callers.
+type UseResultFunc func(obj, obj2 *Object) int32
+
+var objectUseNativeFuncs = make(map[unsafe.Pointer]UseResultFunc)
+
+// CallResult requires a configured callback. Unknown addresses retain their
+// original raw integer call; native identities never enter the C dispatcher.
+func (p UseFuncPtr) CallResult(obj, obj2 *Object) int32 {
+	var result int32
+	if fn := objectUseNativeFuncs[p.Ptr]; fn != nil {
+		result = fn(obj, obj2)
+	} else {
+		result = int32(ccall.CallIntPtr2(p.Ptr, obj.CObj(), obj2.CObj()))
+	}
+	runtime.KeepAlive(obj)
+	runtime.KeepAlive(obj2)
+	return result
+}
+
+// CallDiscard requires a configured callback and preserves the raw void calling
+// convention for unknown addresses used by the food-pickup path.
+func (p UseFuncPtr) CallDiscard(obj, obj2 *Object) {
+	if fn := objectUseNativeFuncs[p.Ptr]; fn != nil {
+		fn(obj, obj2)
+	} else {
+		ccall.CallVoidPtr2(p.Ptr, obj.CObj(), obj2.CObj())
+	}
+	runtime.KeepAlive(obj)
+	runtime.KeepAlive(obj2)
+}
+
+// RegisterObjectUseNative binds a stable identity to both exact-result and
+// nonzero/boolean dispatch. The caller owns the identity and its stored copies.
+func RegisterObjectUseNative(name string, key unsafe.Pointer, fn UseResultFunc, sz uintptr) {
+	if key == nil || fn == nil {
+		panic("nil native use identity or function")
+	}
+	RegisterObjectUse(name, key, func(obj, obj2 *Object) bool { return fn(obj, obj2) != 0 }, sz)
+	objectUseNativeFuncs[key] = fn
+}
 
 var objUse = ccall.NewFuncs(func(cfnc unsafe.Pointer) UseFunc {
 	return func(obj, obj2 *Object) bool {

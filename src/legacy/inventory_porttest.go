@@ -23,34 +23,7 @@ static int invDrop(nox_object_t* u,nox_object_t* it,float2* pos) {
 }
 static void* invUsePtr(void){return invUse;}
 static void* invDropPtr(void){return invDrop;}
-static uint64_t invCall(int op,nox_object_t* u,nox_object_t* it,int value,int arg,float radius,float2* pos) {
- int up=(int)(uintptr_t)u, ip=(int)(uintptr_t)it;
- switch(op) {
- case 1: return (uint32_t)(uintptr_t)nox_xxx_dropDefault_4ED290(u,it,pos);
- case 2: return (uint32_t)(uintptr_t)nox_GlyphDrop_4ED500(up,ip,pos);
- case 3: return (uint32_t)(uintptr_t)nox_xxx_dropTrap_4ED580(up,ip,pos);
- case 4: return (uint32_t)(uintptr_t)nox_xxx_dropCrown_4ED5E0(up,ip,(int*)pos);
- case 5: return (uint32_t)(uintptr_t)nox_xxx_dropTreasure_4ED710(up,ip,(int*)pos);
- case 12: return (uint32_t)(uintptr_t)sub_4EDDE0(up,(uint32_t*)it,(int*)pos);
- case 13: return (uint32_t)(uintptr_t)nox_xxx_dropFood_4EDE50(up,ip,(int*)pos);
- case 16: return (uint32_t)(uintptr_t)nox_xxx_dropAnkhTradable_4EE370(up,ip,(int*)pos);
- case 18: return (uint32_t)(uintptr_t)nox_xxx_pickupFood_4F3350(up,ip,value);
- case 19: return (uint32_t)(uintptr_t)sub_4F3400(up,ip,value);
- case 20: return (uint32_t)(uintptr_t)nox_xxx_pickupUse_4F34D0(up,ip,value);
- case 21: return (uint32_t)(uintptr_t)nox_xxx_pickupTrap_4F3510(up,ip,value);
- case 22: return (uint32_t)(uintptr_t)nox_xxx_pickupTreasure_4F3580(up,ip,value);
- case 23: return (uint32_t)(uintptr_t)nox_xxx_pickupAmmo_4F3B00(up,it,value,arg);
- case 24: return (uint32_t)(uintptr_t)nox_xxx_pickupSpellbook_4F3C60(up,ip,value);
- case 25: return (uint32_t)(uintptr_t)nox_xxx_pickupAbilitybook_4F3CE0(up,ip,value);
- case 26: return (uint32_t)(uintptr_t)sub_4F3DD0(up,ip);
- case 27: return (uint32_t)(uintptr_t)sub_53A720(up,it,value,arg);
- case 28: return (uint32_t)(uintptr_t)nox_xxx_sendMsgOblivionPickup_53A9C0(up,it,value,arg);
- case 29: return (uint32_t)(uintptr_t)nox_xxx_dropWeapon_53AB10(up,(uint32_t*)it,(int*)pos);
- case 30: return (uint32_t)(uintptr_t)nox_xxx_pickupArmor_53E7F0(up,ip,value,arg);
- case 31: return (uint32_t)(uintptr_t)nox_xxx_dropArmor_53EB70(up,(uint32_t*)it,(int*)pos);
- }
- return 0;
-}
+
 */
 import "C"
 import (
@@ -182,7 +155,7 @@ func (p *portTestShopPools) inventoryPrepare() func() {
 		useResult = *sp.UseResult
 	}
 	C.invReset(C.int(bool2int(sp.UseDelete)), C.int(bool2int(sp.DropResult)), C.int32_t(useResult))
-	p.identify(C.nox_xxx_dropDefault_4ED290, 55000)
+	p.identify(itemIdentityKey(itemIDDefaultDrop), 55000)
 	p.identify(C.invUsePtr(), 55001)
 	p.identify(C.invDropPtr(), 55002)
 	oldState := Nox_xxx_playerSetState_4FA020
@@ -380,7 +353,7 @@ func (p *portTestShopPools) inventoryItems() {
 		u.Use.Ptr = C.invUsePtr()
 		u.Drop.Ptr = C.invDropPtr()
 		if sp.DefaultDrop {
-			u.Drop.Ptr = C.nox_xxx_dropDefault_4ED290
+			u.Drop.Ptr = itemIdentityKey(itemIDDefaultDrop)
 		}
 		if sp.NilDrop {
 			u.Drop.Ptr = nil
@@ -427,16 +400,16 @@ func (p *portTestShopPools) inventoryAction(a PortTestShopAction) uint32 {
 	if !sp.NilItem && a.Item >= 0 {
 		it = p.items[a.Item].u
 	}
-	pos := (*C.float2)(unsafe.Pointer(p.inventory.pos))
+	pos := p.inventory.pos
 	if sp.NilPos {
 		pos = nil
 	}
 	var out uint64
 	switch a.Op {
 	case PortTestInventory4ED0C0:
-		sub_4ED0C0(asObjectC(u), asObjectC(it))
+		inventoryRemove(u, it)
 	case PortTestInventory4ED790:
-		out = uint64(uint32(nox_xxx_drop_4ED790(asObjectC(u), asObjectC(it), pos)))
+		out = uint64(uint32(inventoryDrop(u, it, pos)))
 	case PortTestInventory4EDCD0:
 		out = uint64(bool2int(inventoryDropEligible(u, it)))
 	case PortTestInventory4EE2A0:
@@ -460,7 +433,7 @@ func (p *portTestShopPools) inventoryAction(a PortTestShopAction) uint32 {
 		case 32:
 			out = uint64(bool2int(inventoryDroppable(it)))
 		default:
-			out = uint64(C.invCall(C.int(a.Op-300), asObjectC(u), asObjectC(it), C.int(a.Value), C.int(a.Side), C.float(sp.Radius), pos))
+			out = uint64(uint32(portTestInventoryNativeCall(a.Op-300, u, it, int(int32(a.Value)), int(int32(a.Side)), pos)))
 		}
 	}
 	p.inventory.result = out
@@ -540,4 +513,55 @@ func portTestInventoryDropCalls() []uint32 {
 		panic("inventory callback trace overflow")
 	}
 	return append([]uint32(nil), b[1:1+6*b[0]]...)
+}
+
+// Preserve sparse fixture operation IDs and C-int argument/result widths.
+func portTestInventoryNativeCall(op int, u, it *server.Object, value, arg int, pos *types.Pointf) int {
+	switch op {
+	case 1:
+		return inventoryDefaultDrop(u, it, pos)
+	case 2:
+		return inventoryGlyphDrop(u, it, pos)
+	case 3:
+		return inventoryTrapDrop(u, it, pos)
+	case 4:
+		return inventoryCrownDrop(u, it, pos)
+	case 5:
+		return inventoryTreasureDrop(u, it, pos)
+	case 12:
+		return inventoryPotionDrop(u, it, pos)
+	case 13:
+		return inventoryFoodDrop(u, it, pos)
+	case 16:
+		return inventoryDefaultDrop(u, it, pos)
+	case 18:
+		return inventoryFoodPickup(u, it, value)
+	case 19:
+		return inventoryCrownPickup(u, it, value)
+	case 20:
+		return inventoryUsePickup(u, it, value)
+	case 21:
+		return inventoryTrapPickup(u, it, value)
+	case 22:
+		return inventoryTreasurePickup(u, it, value)
+	case 23:
+		return inventoryAmmoPickup(u, it, value, arg)
+	case 24:
+		return inventoryBookPickup(u, it, value, false)
+	case 25:
+		return inventoryBookPickup(u, it, value, true)
+	case 26:
+		return inventoryAnkhPickup(u, it)
+	case 27:
+		return inventoryWeaponPickup(u, it, value, arg)
+	case 28:
+		return inventoryOblivionPickup(u, it, value, arg)
+	case 29:
+		return inventoryEquipmentDrop(u, it, pos, false)
+	case 30:
+		return inventoryArmorPickup(u, it, value, arg)
+	case 31:
+		return inventoryEquipmentDrop(u, it, pos, true)
+	}
+	return 0
 }

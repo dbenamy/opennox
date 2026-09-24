@@ -5,7 +5,6 @@ package legacy
 /*
 #include "GAME3_3.h"
 #include "GAME4.h"
-int nox_xxx_pickupGold_4F3A60_obj_pickup(int unit, int item, int flags);
 static uint32_t resourceDieCount, resourceDieUnit;
 static void resourceDie(void* unit) {resourceDieCount++;resourceDieUnit=(uint32_t)unit;}
 static void* resourceDiePtr(void) {return resourceDie;}
@@ -222,7 +221,6 @@ func (p *portTestShopPools) resourceAction(a PortTestShopAction) uint32 {
 	if u != nil {
 		ptr = u.CObj()
 	}
-	unit := C.int(uintptr(ptr))
 	value := C.int(a.Value)
 	switch a.Op {
 	case PortTestResourceSetHP:
@@ -284,7 +282,7 @@ func (p *portTestShopPools) resourceAction(a PortTestShopAction) uint32 {
 	case PortTestResourceGoldPickup:
 		item := p.items[a.Item].u
 		*(*uint32)(item.InitData) = p.proxy.callbacks.shop.spec.Resources.GoldItem
-		return uint32(C.nox_xxx_pickupGold_4F3A60_obj_pickup(unit, C.int(uintptr(item.CObj())), value))
+		return uint32(bool2int(resourceGoldPickup(u, item, int(int32(value)))))
 	default:
 		panic("resource fixture operation")
 	}
