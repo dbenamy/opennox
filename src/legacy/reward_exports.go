@@ -78,7 +78,7 @@ func nox_xxx_rewardMakeArmor_4F0E80(a C.int, b C.uint) *C.uint32_t {
 
 //export nox_xxx_rewardMakeWeapon_4F14E0
 func nox_xxx_rewardMakeWeapon_4F14E0(a C.int, b C.uint) C.int {
-	return inventoryInt(rewardEquipment(uint32(b), false))
+	return C.int(inventoryInt(rewardEquipment(uint32(b), false)))
 }
 
 //export nox_xxx_rewardMakePotion_4F1C40

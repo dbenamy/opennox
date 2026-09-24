@@ -2,11 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME2_3.h"
-#include "GAME3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -19,14 +14,14 @@ func PortTestDrawableEffect(op int, dr *client.Drawable, a [5]uint32) uintptr {
 	case 0:
 		xy, free := alloc.Make([]uint16{uint16(a[0]), uint16(a[1])}, 2)
 		defer free()
-		return uintptr(unsafe.Pointer(nox_xxx_netHandleSummonPacket_4B7C40(C.short(a[2]), (*C.ushort)(unsafe.Pointer(&xy[0])), C.ushort(a[3]), C.uchar(a[4]), C.short(a[2]>>16))))
+		return uintptr(unsafe.Pointer(nox_xxx_netHandleSummonPacket_4B7C40(int16(a[2]), (*uint16)(unsafe.Pointer(&xy[0])), uint16(a[3]), uint8(a[4]), int16(a[2]>>16))))
 	case 1:
-		sub_4B7EE0(C.short(a[0]))
+		sub_4B7EE0(int16(a[0]))
 		return 0
 	case 2:
 		return uintptr(drawableShieldLoad())
 	case 3:
-		return uintptr(unsafe.Pointer(nox_xxx_fxShield_4B8090(C.uint(a[0]), C.int(a[1]))))
+		return uintptr(unsafe.Pointer(nox_xxx_fxShield_4B8090(uint32(a[0]), int32(a[1]))))
 	case 4:
 		key, free := alloc.New(uint32(0))
 		*key = a[0]

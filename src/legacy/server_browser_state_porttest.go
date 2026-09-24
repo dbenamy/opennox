@@ -117,9 +117,9 @@ func PortTestServerBrowserDetails(record unsafe.Pointer) {
 func PortTestServerBrowserTick() int { return int(sub_438770()) }
 func PortTestServerBrowserNotification(which int, window unsafe.Pointer, id uint32) int {
 	if which == 0 {
-		return int(nox_xxx_windowMultiplayerSub_439E70(C.int(uintptr(window)), 22, (*C.int)(unsafe.Pointer(uintptr(id))), 0))
+		return int(nox_xxx_windowMultiplayerSub_439E70(int32(uintptr(window)), uint32(22), (*int32)(unsafe.Pointer(uintptr(id))), int32(0)))
 	}
-	return int(sub_439D00((*C.int)(window), 22, C.uint(id), 0))
+	return int(sub_439D00((*int32)(window), int32(22), uint32(id), int32(0)))
 }
 
 func PortTestServerBrowserHostDescription() uintptr { return uintptr(unsafe.Pointer(sub_43AA70())) }
@@ -135,5 +135,5 @@ func PortTestServerBrowserInfoPosition(x, y int32, out *[2]uint32) {
 }
 
 func PortTestServerBrowserEvent(w unsafe.Pointer, code int, a, b uint32) int {
-	return int(nox_xxx_windowMultiplayerSub_439E70(C.int(uintptr(w)), C.uint(code), (*C.int)(unsafe.Pointer(uintptr(a))), C.int(b)))
+	return int(nox_xxx_windowMultiplayerSub_439E70(int32(uintptr(w)), uint32(code), (*int32)(unsafe.Pointer(uintptr(a))), int32(b)))
 }

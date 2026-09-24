@@ -9,6 +9,7 @@ package legacy
 #include "GAME4_3.h"
 */
 import "C"
+
 import (
 	"encoding/binary"
 	"github.com/opennox/libs/types"
@@ -28,13 +29,13 @@ func inventoryCache(off uintptr, name string) uint32 {
 	return *p
 }
 func inventorySound(id int, u *server.Object, a, b int) {
-	nox_xxx_aud_501960(int32(C.int(id)), asObjectC(u), int(C.int(a)), int32(C.int(b)))
+	nox_xxx_aud_501960(int32(int32(id)), asObjectC(u), int(int32(a)), int32(int32(b)))
 }
 func inventoryMessage(kind int, u *server.Object, value uint32) {
 	var data [10]byte
 	binary.LittleEndian.PutUint32(data[2:], u.NetCode)
 	binary.LittleEndian.PutUint32(data[6:], value)
-	nox_xxx_netInformTextMsg2_4DA180(C.int(kind), (*C.uint8_t)(unsafe.Pointer(&data[0])))
+	nox_xxx_netInformTextMsg2_4DA180(C.int(int32(kind)), (*C.uint8_t)((*uint8)(unsafe.Pointer(&data[0]))))
 }
 func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 	if it.InvHolder != u {
@@ -42,7 +43,7 @@ func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 	}
 	if u.ObjClass&4 != 0 && inventoryDroppable(it) && equipmentDropPolicy(it, 1) != 0 {
 		if u.ObjFlags&0x8020 == 0 {
-			nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr("drop.c:CantDropThat"), 0)
+			nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), (*C.char)(internCStr("drop.c:CantDropThat")), 0)
 			inventorySound(925, u, 2, int(u.NetCode))
 		}
 		return 0
@@ -60,7 +61,7 @@ func inventoryDefaultDrop(u, it *server.Object, pos *types.Pointf) int {
 	}
 	if it.ObjClass&0x10000000 != 0 {
 		team := it.TeamVal.ID
-		value := sub_4ECBD0(inventoryInt(it))
+		value := sub_4ECBD0(C.int(inventoryInt(it)))
 		inventoryMessage(7, u, uint32(value))
 		playerStateMark(it, 1)
 		*(*uint32)(unsafe.Add(it.UpdateData, 8)) = GetServer().S().Frame()
@@ -104,7 +105,7 @@ func inventoryGlyphDrop(u, it *server.Object, pos *types.Pointf) int {
 	}
 	*(*types.Pointf)(unsafe.Add(it.InitData, 28)) = *pos
 	dir := types.Pointf{X: u.PosVec.X - pos.X, Y: u.PosVec.Y - pos.Y}
-	angle := uint16(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&dir))))))
+	angle := uint16(int32(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&dir))))))
 	it.Direction1, it.Direction2 = server.Dir16(angle), server.Dir16(angle)
 	inventorySound(825, it, 0, 0)
 	return 1
@@ -165,7 +166,7 @@ func inventoryEquipmentDrop(u, it *server.Object, pos *types.Pointf, armor bool)
 	} else {
 		equipmentDropSound(it)
 	}
-	if !noxflags.HasGame(2048|4096) && C.int(serverConfigFlagsQuery(int32(2))) != 0 {
+	if !noxflags.HasGame(2048|4096) && int32(serverConfigFlagsQuery(int32(2))) != 0 {
 		Nox_xxx_unitSetDecayTime_511660(it, int(25*GetServer().S().TickRate()))
 	}
 	return 1

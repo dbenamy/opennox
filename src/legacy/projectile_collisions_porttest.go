@@ -184,7 +184,7 @@ func (p *portTestShopPools) projectileCollisionAction(a PortTestShopAction) uint
 			return p.temporary.result
 		}
 	}
-	p.temporary.result = uint32(C.projectileCollisionCall(C.int(a.Op-1000), inventoryInt(p.temporaryRef(sp.Actor)), inventoryInt(p.temporaryRef(tmp.Target)), normal))
+	p.temporary.result = uint32(C.projectileCollisionCall(C.int(a.Op-1000), C.int(inventoryInt(p.temporaryRef(sp.Actor))), C.int(inventoryInt(p.temporaryRef(tmp.Target))), normal))
 	return p.temporary.result
 }
 

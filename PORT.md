@@ -102,6 +102,11 @@ may precede full qualification when their evidence and remaining gates are expli
    Even native-backed records can pass their old values through Go's write barrier.
    The player-reset full sweep exposed such an invalid fixture seed; keep typed
    production assignments and correct the fixture without changing its goldens.
+   Keep raw addresses separate from canonical snapshot identities. Nested fixtures
+   must normalize the original value independently, not normalize an identity
+   token again: a 32-bit image handle can happen to equal that token. Prove such
+   fixture corrections against pre-conversion source with a forced collision;
+   preserve frozen captures and rerun qualification on the corrected source.
    Before the first compile, format new files, check the whitespace diff, and compare
    new export signatures with every existing header declaration. When removing a
    cgo import, check for `//export` directives too: those still need cgo even when
@@ -230,7 +235,10 @@ Apply these review rules learned from earlier batches:
   restoration of shared state explicitly.
 - For generated edits, compare every emitted mapping with the original, including
   sparse keys, array sizes and pointer types. Generator checks do not establish
-  valid Go syntax or types; format, compile and qualify the output.
+  valid Go syntax or types; format, compile and qualify the output. When caller
+  migration extends beyond the initial selector-edit files, verify casts in those
+  callers explicitly too; a matched-reference count does not prove they were
+  rewritten.
 - Require reachability reports to show whole-source search commands and a concrete
   caller per symbol, distinguishing production, test-only and macro-remapped uses.
   Generate path/line references from search output and verify them. Treat the comment
@@ -393,8 +401,10 @@ Do not retain every historical log or intermediate run indefinitely. Keep commit
 expectations/reports, current qualification artifacts and useful original-behavior
 references. Old raw captures can be compressed with byte-for-byte verification;
 superseded text logs and reproducible outputs can be discarded after checking
-references and active use. Record removals and any restoration steps in the
-checkpoint. Retained capture bytes help diagnose hash mismatches even when tests
+references and active use. For recovery, match recorded source fingerprints to
+the final commit: a build's Git HEAD may name the earlier baseline while its
+working tree already contains the conversion. Record removals and any restoration
+steps in the checkpoint. Retained capture bytes help diagnose hash mismatches even when tests
 use committed hashes rather than reading the historical capture files.
 
 The selected-test runner gives discovery/build a separate `1536MiB` GOMEMLIMIT,

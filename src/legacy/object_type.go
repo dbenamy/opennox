@@ -54,7 +54,7 @@ func nox_xxx_newObjectWithTypeInd_4E3450(ind int) *nox_object_t {
 }
 
 func nox_xxx_getUnitName_4E39D0(cobj *nox_object_t) *C.char {
-	return internCStr(GetServer().S().Types.ByInd(int(asObjectS(cobj).TypeInd)).ID())
+	return (*C.char)(internCStr(GetServer().S().Types.ByInd(int(asObjectS(cobj).TypeInd)).ID()))
 }
 
 func sub_4E3B80(ind int) int { return bool2int(Sub_4E3B80(ind)) }
@@ -63,7 +63,7 @@ func nox_xxx_getUnitNameByThingType_4E3A80(ind int) *C.char {
 	if ind == 0 {
 		return nil
 	}
-	return internCStr(GetServer().S().Types.ByInd(ind).ID())
+	return (*C.char)(internCStr(GetServer().S().Types.ByInd(ind).ID()))
 }
 
 func nox_xxx_newObjectByTypeID_4E3810(cstr *C.char) *nox_object_t {

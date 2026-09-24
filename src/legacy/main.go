@@ -111,5 +111,5 @@ func Nox_xxx_servSetPlrLimit_409F80(v int) {
 }
 
 func Nox_xxx_guiChatShowHide_445730(v bool) {
-	nox_xxx_guiChatShowHide_445730(C.int(bool2int(v)))
+	nox_xxx_guiChatShowHide_445730(int32(bool2int(v)))
 }

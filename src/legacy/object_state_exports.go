@@ -107,14 +107,14 @@ func nox_xxx_objectSetOn_4E75B0(a *C.nox_object_t) C.char { return C.char(stateO
 func nox_xxx_objectSetOff_4E7600(a *C.nox_object_t) C.int { return C.int(stateOff(asObjectS(a))) }
 
 func nox_xxx_inventoryGetFirst_4E7980(a C.int) C.int {
-	return inventoryInt(objectFromInt(a).InvFirstItem)
+	return C.int(inventoryInt(objectFromInt(a).InvFirstItem))
 }
 
 func nox_xxx_inventoryGetNext_4E7990(a C.int) C.int {
 	if a == 0 {
 		return 0
 	}
-	return inventoryInt(objectFromInt(a).InvNextItem)
+	return C.int(inventoryInt(objectFromInt(a).InvNextItem))
 }
 
 //export sub_4E79B0

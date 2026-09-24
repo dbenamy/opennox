@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME2_3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/noxrender"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -25,7 +21,7 @@ func PortTestChatBubbleCreate(data unsafe.Pointer, text *uint16) {
 func PortTestChatBubbleLookup(code uint32) unsafe.Pointer {
 	return unsafe.Pointer(chatBubbleLookup(code))
 }
-func PortTestChatBubbleRemove(code uint32) { sub_48E8E0(C.int(code)) }
+func PortTestChatBubbleRemove(code uint32) { sub_48E8E0(int32(code)) }
 func PortTestChatBubbleClear()             { sub_48E940() }
 func PortTestChatBubbleDestroy()           { chatBubbleDestroy() }
 

@@ -64,7 +64,7 @@ func uiAmountMouse(w *gui.Window, event int, a, b uintptr) int {
 	switch event {
 	case 5, 9, 13:
 		p := uiInventoryPackedPoint(a)
-		if !bool(nox_xxx_wndPointInWnd_46AAB0((*C.uint)(w.C()), C.int(p.X), C.int(p.Y))) {
+		if !bool(nox_xxx_wndPointInWnd_46AAB0((*C.uint)((*uint32)(w.C())), C.int(int32(p.X)), C.int(int32(p.Y)))) {
 			uiAmountCancel()
 		}
 		return 1

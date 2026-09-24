@@ -13,6 +13,7 @@ package legacy
 #include "GAME5_2.h"
 */
 import "C"
+
 import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/types"
@@ -43,8 +44,8 @@ func spellEffectPosAudio(id, phase int32, pos types.Pointf) {
 }
 func spellEffectInform(u *server.Object) {
 	if u.ObjClass&4 != 0 {
-		v := C.int(2)
-		nox_xxx_netInformTextMsg_4DA0F0(C.int(*controlByte(controlPlayer(u), 2064)), 0, &v)
+		v := int32(2)
+		nox_xxx_netInformTextMsg_4DA0F0(C.int(int32(*controlByte(controlPlayer(u), 2064))), 0, (*C.int)(&v))
 	}
 }
 func spellEffectAlert(source, target *server.Object) {
@@ -57,10 +58,10 @@ func spellEffectGlyphType() uint32 {
 	return uint32(dword_5d4594_2487712)
 }
 func spellEffectCreate(u, owner *server.Object, pos types.Pointf) {
-	nox_xxx_createAt_4DAA50(asObjectC(u), asObjectC(owner), C.float(pos.X), C.float(pos.Y))
+	nox_xxx_createAt_4DAA50(asObjectC(u), asObjectC(owner), C.float(float32(pos.X)), C.float(float32(pos.Y)))
 }
 func spellEffectNew(id uint32) *server.Object {
-	return asObjectS(nox_xxx_newObjectWithTypeInd_4E3450(int(C.int(id))))
+	return asObjectS(nox_xxx_newObjectWithTypeInd_4E3450(int(int32(id))))
 }
 func spellEffectTrace(from, to types.Pointf, flags int) bool {
 	return GetServer().S().MapTraceRayAt(from, to, nil, nil, server.MapTraceFlags(flags))
@@ -227,7 +228,7 @@ func spellEffectFumble(id int32, a, b, c *server.Object, record unsafe.Pointer, 
 		typ := stateType(2487728, "GameBall")
 		for it := u.Field129; it != nil; it = it.Field128 {
 			if uint32(it.TypeInd) == typ {
-				nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&u.PosVec)), asObjectC(it), 100)
+				nox_xxx_objectApplyForce_52DF80((*C.float)((*float32)(unsafe.Pointer(&u.PosVec))), asObjectC(it), 100)
 				it.SetOwner(nil)
 				GetServer().S().Audio.EventObj(926, u, 0, 0)
 				break
@@ -235,7 +236,7 @@ func spellEffectFumble(id int32, a, b, c *server.Object, record unsafe.Pointer, 
 		}
 	} else if u.ObjClass&2 == 0 || u.ObjSubClass&0x2000 == 0 {
 		inventoryDropAll(u)
-		nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&c.PosVec)), asObjectC(u), 50)
+		nox_xxx_objectApplyForce_52DF80((*C.float)((*float32)(unsafe.Pointer(&c.PosVec))), asObjectC(u), 50)
 	}
 	spellEffectAudio(id, 1, u)
 	return 1

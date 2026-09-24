@@ -256,7 +256,7 @@
     ]
   },
   "production": {
-    "description": "Use Go fixed-width types for 395 existing scalar globals and preserve C interface conversions",
+    "description": "Use Go fixed-width primitive interfaces and native callers while preserving surviving C boundaries",
     "assets": "build/assets/extracted/drive_c/Nox",
     "known_suite": "docs/porting/mp3-go-expected-suite.jsonl",
     "scenario_runner": "tools/porting/run_scenario.py",

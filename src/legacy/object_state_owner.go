@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/common/ntype"
@@ -27,7 +20,7 @@ func stateRemoveSpawned(u *server.Object) {
 	}
 	for it := u.Field129; it != nil; {
 		next := it.Field128
-		if it.ObjClass&1 != 0 || sub_4E3B80(int(C.int(it.TypeInd))) == 0 {
+		if it.ObjClass&1 != 0 || sub_4E3B80(int(int32(it.TypeInd))) == 0 {
 			GetServer().DelayedDelete(it)
 		}
 		it = next
@@ -141,8 +134,8 @@ func statePet(u, t *server.Object) {
 	}
 	t.ObjSubClass |= 0x80
 	pl := *(*unsafe.Pointer)(unsafe.Add(u.UpdateData, 276))
-	ind := C.int(*(*byte)(unsafe.Add(pl, 2064)))
-	nox_xxx_netMonitorCreature_4D9250(ind, inventoryInt(t))
+	ind := int32(*(*byte)(unsafe.Add(pl, 2064)))
+	gameplayReportMonitor(int(ind), t)
 	nox_xxx_netMarkMinimapObject_417190(int(ind), asObjectC(t), 1)
 	nox_xxx_unitSetOwner_4EC290(asObjectC(u), asObjectC(t))
 }
@@ -153,7 +146,7 @@ func stateRemoveMonitors(u, t *server.Object) {
 	}
 	t.ObjSubClass &^= 0x80
 	pl := *(*unsafe.Pointer)(unsafe.Add(ud, 276))
-	ind := C.int(*(*byte)(unsafe.Add(pl, 2064)))
+	ind := int32(*(*byte)(unsafe.Add(pl, 2064)))
 	gameplayReportUnmonitor(int(ind), t)
 	nox_xxx_netUnmarkMinimapObj_417300(int(ind), asObjectC(t), 1)
 	nox_xxx_unitClearOwner_4EC300(asObjectC(t))

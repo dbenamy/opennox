@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -97,30 +92,30 @@ func interactionVoteDestroy() int {
 	return result
 }
 
-func sub_4BFB70(v C.int) { interactionSetKeyState(uint32(v)) }
+func sub_4BFB70(v int32) { interactionSetKeyState(uint32(v)) }
 
-func sub_4BFBB0(v C.uint32_t) { interactionKeyUpdate(uintptr(v)) }
+func sub_4BFBB0(v uint32) { interactionKeyUpdate(uintptr(v)) }
 
-func sub_4BFBF0() C.int { return C.int(interactionKeyShow()) }
+func sub_4BFBF0() int32 { return int32(interactionKeyShow()) }
 
-func sub_4BFC70() C.int { return C.int(interactionKeyHide()) }
+func sub_4BFC70() int32 { return int32(interactionKeyHide()) }
 
-func sub_4BFC90() C.int { return C.int(interactionKeyOpen()) }
+func sub_4BFC90() int32 { return int32(interactionKeyOpen()) }
 
-func sub_4BFCD0(w, code C.int, a *C.int, b C.int) C.int {
-	return C.int(gui.EventRespInt(interactionKeyEvent((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), gui.AsWindowEvent(int(code), uintptr(unsafe.Pointer(a)), uintptr(uint32(b))))))
+func sub_4BFCD0(w, code int32, a *int32, b int32) int32 {
+	return int32(gui.EventRespInt(interactionKeyEvent((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), gui.AsWindowEvent(int(code), uintptr(unsafe.Pointer(a)), uintptr(uint32(b))))))
 }
 
 func sub_4BFD10() { interactionKeyDestroy() }
 
-func sub_4BFD30() C.int { return C.int(interactionKeyState) }
+func sub_4BFD30() int32 { return int32(interactionKeyState) }
 
-func sub_4C3390() C.int { return C.int(interactionVoteOpen()) }
+func sub_4C3390() int32 { return int32(interactionVoteOpen()) }
 
-func sub_4C3410(w *C.int) C.int {
-	return C.int(interactionIconDraw((*gui.Window)(unsafe.Pointer(w)), nil))
+func sub_4C3410(w *int32) int32 {
+	return int32(interactionIconDraw((*gui.Window)(unsafe.Pointer(w)), nil))
 }
 
-func sub_4C3460(v C.int) C.int { return C.int(interactionVoteHide(int(v))) }
+func sub_4C3460(v int32) int32 { return int32(interactionVoteHide(int(v))) }
 
-func sub_4C34A0() C.int { return C.int(interactionVoteDestroy()) }
+func sub_4C34A0() int32 { return int32(interactionVoteDestroy()) }

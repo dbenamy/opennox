@@ -5,6 +5,7 @@ package legacy
 #include "GAME1_3.h"
 */
 import "C"
+
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -34,7 +35,7 @@ func browserMouseDraw(_ *gui.Window, _ *gui.WindowData) int {
 		browserPopupClose()
 		GetClient().Cli().GUI.Focus(asWindow(browserUI.world))
 	}
-	if browserUI.creating != 0 && sub_438DD0(C.uint(p.X), C.uint(p.Y)) != 0 {
+	if browserUI.creating != 0 && sub_438DD0(C.uint(uint32(p.X)), C.uint(uint32(p.Y))) != 0 {
 		nox_client_setCursorType_477610(9)
 	} else if Sub_44A4A0() == 0 {
 		nox_client_setCursorType_477610(0)
@@ -65,7 +66,7 @@ func browserMapInput(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 	return nil
 }
 func browserCreateAt(x, y uint32) int {
-	hit := int(sub_438DD0(C.uint(x), C.uint(y)))
+	hit := int(sub_438DD0(C.uint(uint32(x)), C.uint(uint32(y))))
 	if hit == 0 {
 		return 0
 	}
@@ -111,14 +112,14 @@ func browserMapDraw(w *gui.Window, _ *gui.WindowData) int {
 	return 1
 }
 
-func sub_438C80(w, draw C.int) C.int { return C.int(browserMouseDraw(browserWindow(uint32(w)), nil)) }
+func sub_438C80(w, draw int32) int32 { return int32(browserMouseDraw(browserWindow(uint32(w)), nil)) }
 
-func sub_439D00(w *C.int, code C.int, a C.uint, b C.int) C.int {
-	return C.int(gui.EventRespInt(browserMapInput((*gui.Window)(unsafe.Pointer(w)), &gui.RawEvent{Event: int(code), Arg1: uintptr(a), Arg2: uintptr(uint32(b))})))
+func sub_439D00(w *int32, code int32, a uint32, b int32) int32 {
+	return int32(gui.EventRespInt(browserMapInput((*gui.Window)(unsafe.Pointer(w)), &gui.RawEvent{Event: int(code), Arg1: uintptr(a), Arg2: uintptr(uint32(b))})))
 }
 
-func sub_439D90(x, y C.uint) C.int { return C.int(browserCreateAt(uint32(x), uint32(y))) }
+func sub_439D90(x, y uint32) int32 { return int32(browserCreateAt(uint32(x), uint32(y))) }
 
-func sub_438E30(w *C.uint32_t, draw C.int) C.int {
-	return C.int(browserMapDraw((*gui.Window)(unsafe.Pointer(w)), nil))
+func sub_438E30(w *uint32, draw int32) int32 {
+	return int32(browserMapDraw((*gui.Window)(unsafe.Pointer(w)), nil))
 }

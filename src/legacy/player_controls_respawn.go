@@ -84,14 +84,16 @@ func controlDefaultItems(u *server.Object, refresh, keep int32) int8 {
 	} else {
 		for it := u.InvFirstItem; it != nil; {
 			next := it.InvNextItem
-			if sub_53E2D0(inventoryInt(it)) != 0 || it.ObjFlags&0x100 == 0 || it.ObjClass&0x2000000 != 0 && nox_xxx_unitArmorInventoryEquipFlags_415C70((*C.nox_object_t)(it.CObj()))&0x808 != 0 {
+			if sub_53E2D0(C.int(inventoryInt(it))) != 0 || it.ObjFlags&0x100 == 0 || it.ObjClass&0x2000000 != 0 && nox_xxx_unitArmorInventoryEquipFlags_415C70((*C.nox_object_t)(it.CObj()))&0x808 != 0 {
 				GetServer().DelayedDelete(it)
 			}
 			it = next
 		}
 		controlRespawnNotify(u, 1)
 		desc := func(id C.int) uint32 { return uint32(uintptr(nox_xxx_modifGetDescById_413330(int32(id)))) }
-		byName := func(name string) uint32 { return desc(C.int(nox_xxx_modifGetIdByName_413290(internCStr(name)))) }
+		byName := func(name string) uint32 {
+			return desc(C.int(nox_xxx_modifGetIdByName_413290((*C.char)(internCStr(name)))))
+		}
 		base := byName("UserColor1")
 		baseID := *equipmentWord(unsafe.Pointer(uintptr(base)), 4)
 		color := func(off int) uint32 { return desc(C.int(baseID + uint32(*controlByte(pl, 2185+off)))) }
@@ -193,7 +195,7 @@ func controlTeamFlag(pl unsafe.Pointer) {
 	team := unsafe.Pointer(nox_xxx_getTeamByID_418AB0(int(*controlByte(u.CObj(), 52))))
 	flag := controlObject(team, 76)
 	if flag != nil && flag.InvHolder == nil {
-		sub_4F3400(inventoryInt(u), inventoryInt(flag), 1)
+		sub_4F3400(C.int(inventoryInt(u)), C.int(inventoryInt(flag)), 1)
 	}
 }
 func controlLeaveObserver(pl unsafe.Pointer) {
@@ -245,7 +247,7 @@ func controlRespawn(u *server.Object) int16 {
 	if controlFlags(4096) {
 		controlDefaultItems(u, 1, 1)
 		*controlByte(d, 452+int(*controlByte(controlPlayer(u), 2064))) = 250
-		nox_xxx_netPriMsgToPlayer_4DA2C0((*C.nox_object_t)(u.CObj()), internCStr("GeneralPrint:Respawn"), 0)
+		nox_xxx_netPriMsgToPlayer_4DA2C0((*C.nox_object_t)(u.CObj()), (*C.char)(internCStr("GeneralPrint:Respawn")), 0)
 	} else {
 		controlDefaultItems(u, 1, 0)
 	}

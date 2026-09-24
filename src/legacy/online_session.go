@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
-
 import (
 	"fmt"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -76,4 +71,4 @@ func onlineSessionListCleanup() uint32 {
 	return onlineSessionStatus
 }
 
-func sub_41D1A0(v C.int) C.int { return C.int(onlineSessionBriefing(uint32(v))) }
+func sub_41D1A0(v int32) int32 { return int32(onlineSessionBriefing(uint32(v))) }

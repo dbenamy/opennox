@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -15,12 +11,12 @@ func uiInventoryResetPanelControls() int {
 	slider := uiInventoryWindowValue(uint32(dword_5d4594_1062508))
 	uiInventorySliderValue(slider, 16395, 0, 850)
 	uiInventorySliderValue(slider, 16394, (*gui.SliderData)(slider.WidgetData).Max-uint32(dword_5d4594_1062512), 0)
-	nox_xxx_wndSetIcon_46AE60(C.int(dword_5d4594_1062528), 0)
-	sub_46AEC0(C.int(dword_5d4594_1062528), C.int(dword_5d4594_1049976))
+	uiWindowSetBackgroundImage(uint32(dword_5d4594_1062528), 0)
+	uiWindowSetSelectedImage(uint32(dword_5d4594_1062528), uint32(dword_5d4594_1049976))
 	uiInventoryWindowValue(uint32(dword_5d4594_1062528)).SetID(9105)
 	*memmap.PtrUint8(0x5D4594, 1049870) = 0
-	nox_xxx_wndSetIcon_46AE60(C.int(dword_5d4594_1062524), C.int(dword_5d4594_1049992))
-	sub_46AEC0(C.int(dword_5d4594_1062524), C.int(dword_5d4594_1049996))
+	uiWindowSetBackgroundImage(uint32(dword_5d4594_1062524), uint32(dword_5d4594_1049992))
+	uiWindowSetSelectedImage(uint32(dword_5d4594_1062524), uint32(dword_5d4594_1049996))
 	uiInventoryWindowValue(uint32(dword_5d4594_1062524)).SetID(9107)
 	return nox_window_set_hidden((*nox_window)(uiInventoryWindowValue(uint32(dword_5d4594_1062468)).C()), 0)
 }

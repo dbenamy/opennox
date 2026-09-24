@@ -9,6 +9,7 @@ package legacy
 #include "GAME4_3.h"
 */
 import "C"
+
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -61,12 +62,12 @@ func attackPlayer(u *server.Object) int {
 			*(*byte)(unsafe.Add(ud, 2068)) = anim
 		}
 	}
-	strength := nox_xxx_unitGetStrength_4F9FD0(inventoryInt(u))
+	strength := nox_xxx_unitGetStrength_4F9FD0(C.int(inventoryInt(u)))
 	core := GetServer().S()
 	frame := core.Frame()
-	var frames, delay C.int
+	var frames, delay int32
 	var current byte
-	animation := func(id int) { nox_xxx_animPlayerGetFrameRange_4F9F90(int(C.int(id)), &frames, &delay) }
+	animation := func(id int) { nox_xxx_animPlayerGetFrameRange_4F9F90(int(int32(id)), &frames, &delay) }
 	elapsed := func() byte { return byte((frame - u.Field34) / uint32(delay+1)) }
 	start := func(readiness int, immediate bool) {
 		if player && *(*uint32)(ud) == 0 {

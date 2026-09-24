@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client/gui"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -69,8 +61,8 @@ func uiInventoryPanelEvents(w *gui.Window, event int, a, b uintptr) int {
 		dword_5d4594_1062512 = dword_5d4594_1062520
 		uiInventorySliderValue(slider, 16395, 0, uint32(height))
 		uiInventorySliderValue(slider, 16394, (*gui.SliderData)(slider.WidgetData).Max-uint32(dword_5d4594_1062512), 0)
-		nox_xxx_wndSetIcon_46AE60(C.int(dword_5d4594_1062528), C.int(memmap.Uint32(0x5D4594, 1049980)))
-		sub_46AEC0(C.int(dword_5d4594_1062528), C.int(memmap.Uint32(0x5D4594, 1049984)))
+		uiWindowSetBackgroundImage(uint32(dword_5d4594_1062528), uint32(memmap.Uint32(0x5D4594, 1049980)))
+		uiWindowSetSelectedImage(uint32(dword_5d4594_1062528), uint32(memmap.Uint32(0x5D4594, 1049984)))
 		uiInventoryWindowValue(uint32(dword_5d4594_1062528)).SetID(9106)
 	case 9106:
 		*memmap.PtrUint8(0x5D4594, 1049869) = 0
@@ -78,16 +70,16 @@ func uiInventoryPanelEvents(w *gui.Window, event int, a, b uintptr) int {
 		dword_5d4594_1062512 = dword_5d4594_1062516
 		uiInventorySliderValue(slider, 16395, 0, 850)
 		uiInventorySliderValue(slider, 16394, (*gui.SliderData)(slider.WidgetData).Max-uint32(dword_5d4594_1062512), 0)
-		nox_xxx_wndSetIcon_46AE60(C.int(dword_5d4594_1062528), 0)
-		sub_46AEC0(C.int(dword_5d4594_1062528), C.int(dword_5d4594_1049976))
+		uiWindowSetBackgroundImage(uint32(dword_5d4594_1062528), 0)
+		uiWindowSetSelectedImage(uint32(dword_5d4594_1062528), uint32(dword_5d4594_1049976))
 		uiInventoryWindowValue(uint32(dword_5d4594_1062528)).SetID(9105)
 	case 9107:
 		if uiInventoryMode() == 5 {
 			return 0
 		}
 		*memmap.PtrUint8(0x5D4594, 1049870) = 1
-		nox_xxx_wndSetIcon_46AE60(C.int(dword_5d4594_1062524), 0)
-		sub_46AEC0(C.int(dword_5d4594_1062524), C.int(memmap.Uint32(0x5D4594, 1049988)))
+		uiWindowSetBackgroundImage(uint32(dword_5d4594_1062524), 0)
+		uiWindowSetSelectedImage(uint32(dword_5d4594_1062524), uint32(memmap.Uint32(0x5D4594, 1049988)))
 		uiInventoryWindowValue(uint32(dword_5d4594_1062524)).SetID(9108)
 		uiInventoryWindowValue(uint32(dword_5d4594_1062468)).Hide()
 	case 9108:
@@ -95,8 +87,8 @@ func uiInventoryPanelEvents(w *gui.Window, event int, a, b uintptr) int {
 			return 0
 		}
 		*memmap.PtrUint8(0x5D4594, 1049870) = 0
-		nox_xxx_wndSetIcon_46AE60(C.int(dword_5d4594_1062524), C.int(dword_5d4594_1049992))
-		sub_46AEC0(C.int(dword_5d4594_1062524), C.int(dword_5d4594_1049996))
+		uiWindowSetBackgroundImage(uint32(dword_5d4594_1062524), uint32(dword_5d4594_1049992))
+		uiWindowSetSelectedImage(uint32(dword_5d4594_1062524), uint32(dword_5d4594_1049996))
 		uiInventoryWindowValue(uint32(dword_5d4594_1062524)).SetID(9107)
 		uiInventoryWindowValue(uint32(dword_5d4594_1062468)).Show()
 	case 9111:
@@ -118,13 +110,13 @@ func uiInventoryThumbEvents(w *gui.Window, event int, a, b uintptr) int {
 	if uiInventoryDragged() != nil {
 		return uiInventoryMainEvents(w, event, a, b)
 	}
-	return int(nox_xxx_wndButtonProc_4A7F50((*nox_window)(w.C()), C.int(event), C.int(a), C.int(b)))
+	return int(int32(gui.EventRespInt(gui.ButtonProc2(w, gui.AsWindowEvent(int(int32(event)), uintptr(uint32(int32(a))), uintptr(uint32(int32(b))))))))
 }
 func uiInventoryTrackEvents(w *gui.Window, event int, a, b uintptr) int {
 	if uiInventoryDragged() != nil {
 		return uiInventoryMainEvents(w, event, a, b)
 	}
-	return int(nox_xxx_wndScrollBoxDraw_4B4BA0(C.int(uiInventoryPointer(w.C())), C.int(event), C.uint(a), C.int(b)))
+	return int(int32(gui.EventRespInt(uiSliderInput(w, &gui.RawEvent{Event: int(int32(event)), Arg1: uintptr(uint32(a)), Arg2: uintptr(uint32(int32(b)))}, false))))
 }
 func uiInventoryWindowAdmission(w *gui.Window, event int, a, b uintptr) int {
 	return bool2int(event != 8 && event != 12 && event != 16)

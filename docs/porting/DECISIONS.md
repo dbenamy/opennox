@@ -8,6 +8,16 @@ for later review. Continue without asking for confirmation. Record behavior
 changes explicitly, with evidence and validation; do not label them exact
 compatibility. Ask when confidence is insufficient or reversal would be costly.
 
+## Inventory display fixture identity normalization
+
+Pass the original return separately to each snapshot so a canonical drawable
+identity is normalized only once. The old nested snapshot could reinterpret it as
+an image handle, causing an address-dependent capture mismatch. A deterministic
+collision test fails on pre-conversion `e64ff24e` and passes with this fixture-only
+fix, as do all existing display captures. Goldens remain unchanged. This small
+reversible fixture correction is covered by the standing policy; final batch
+qualification passes in all three profiles, safe build and production gates. See [GO_PRIMITIVE_INTERFACES.md](GO_PRIMITIVE_INTERFACES.md).
+
 ## Green-bolt effect record — correction qualified
 
 Original client message 152 adds 432 to a `nox_drawable*`. Since that type is

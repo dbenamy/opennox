@@ -10,6 +10,7 @@ package legacy
 #include "common__gamemech__pausefx.h"
 */
 import "C"
+
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -18,7 +19,7 @@ import (
 )
 
 func inventoryPriMessage(u *server.Object, key string) {
-	nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr(key), 0)
+	nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), (*C.char)(internCStr(key)), 0)
 }
 func inventoryWeaponPickup(u, it *server.Object, arg, equip int) int {
 	if u.ObjClass&4 != 0 && noxflags.HasGame(4096) && it.ObjSubClass&0x200000 != 0 {
@@ -29,7 +30,7 @@ func inventoryWeaponPickup(u, it *server.Object, arg, equip int) int {
 			return 0
 		}
 	}
-	if !noxflags.HasGame(2048|4096) && C.int(serverConfigFlagsQuery(int32(2))) != 0 {
+	if !noxflags.HasGame(2048|4096) && serverConfigFlagsQuery(int32(2)) != 0 {
 		duplicate := it.ObjSubClass&0x82 == 0 && equipmentDuplicate(u, it) != 0
 		if it.ObjSubClass&0x40 != 0 {
 			for owned := u.Field129; owned != nil; owned = owned.Field128 {
@@ -147,7 +148,7 @@ func inventoryArmorPickup(u, it *server.Object, arg, equip int) int {
 		dword_5d4594_2488720 = uint32(GetServer().S().Types.IndByID("WoodenShield"))
 		dword_5d4594_2488724 = uint32(GetServer().S().Types.IndByID("SteelShield"))
 	}
-	if !noxflags.HasGame(2048|4096) && C.int(serverConfigFlagsQuery(int32(2))) != 0 && equipmentDuplicate(u, it) != 0 {
+	if !noxflags.HasGame(2048|4096) && serverConfigFlagsQuery(int32(2)) != 0 && equipmentDuplicate(u, it) != 0 {
 		inventoryPriMessage(u, "armor.c:CannotPickupDuplicateArmor")
 		inventorySound(925, u, 2, int(u.NetCode))
 		return 0

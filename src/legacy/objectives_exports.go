@@ -16,7 +16,7 @@ func nox_xxx_pickupFlagCtf_4EA490(a, b C.int) { objectiveCTFPickup(objectFromInt
 
 //export sub_4EB9B0
 func sub_4EB9B0(a, b C.int) C.int {
-	return inventoryInt(objectiveRememberOwner(objectFromInt(a), objectFromInt(b)))
+	return C.int(inventoryInt(objectiveRememberOwner(objectFromInt(a), objectFromInt(b))))
 }
 
 //export nox_xxx_collideBall_4EBA00

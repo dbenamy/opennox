@@ -10,6 +10,7 @@ package legacy
 #include "GAME4_3.h"
 */
 import "C"
+
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -20,7 +21,7 @@ import (
 )
 
 func temporaryAreaDamage(u *server.Object, outer, inner float32, damage, kind int) {
-	nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.float(outer), C.float(inner), int(C.int(damage)), int(C.int(kind)), asObjectC(u), nil)
+	nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)((*float32)(unsafe.Pointer(&u.PosVec))), C.float(float32(outer)), C.float(float32(inner)), int(int32(damage)), int(int32(kind)), asObjectC(u), nil)
 }
 func temporaryPowderBarrel(u *server.Object) {
 	core := GetServer().S()
@@ -134,7 +135,7 @@ func temporaryMoonglow(u *server.Object) {
 		Nox_xxx_spellBuffOff_4FF5B0(u.ObjOwner, 1)
 	} else {
 		pos := temporaryCursor(owner)
-		if sub_517590(float32(C.float(pos.X)), float32(C.float(pos.Y))) != 0 {
+		if sub_517590(float32(float32(pos.X)), float32(float32(pos.Y))) != 0 {
 			Nox_xxx_unitMove_4E7010(u, pos)
 		}
 	}
@@ -227,7 +228,7 @@ func temporaryMeteorExplode(u *server.Object) {
 		GetServer().CreateObjectAt(fx, nil, u.PosVec)
 	}
 	owner := u.FindOwnerChainPlayer()
-	nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), 80, 30, int(C.int(*damage)), 7, asObjectC(owner), nil)
+	nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)((*float32)(unsafe.Pointer(&u.PosVec))), 80, 30, int(int32(*damage)), 7, asObjectC(owner), nil)
 	x1 := float32(float64(u.PosVec.X) - 80)
 	y1 := float32(float64(u.PosVec.Y) - 80)
 	x2 := float32(float64(u.PosVec.X) + 80)

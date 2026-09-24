@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME4_1.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -109,7 +102,7 @@ func creatureXferHeader(r objectXferStream, u *server.Object, v int, npc bool, s
 		}
 	}
 	if r.read() {
-		d := server.Dir16(C.int(geometryDirectionAngle((*[2]uint32)(unsafe.Pointer(unsafe.Pointer(&direction[0]))))))
+		d := server.Dir16(int32(geometryDirectionAngle((*[2]uint32)(unsafe.Pointer(unsafe.Pointer(&direction[0]))))))
 		u.Direction1 = d
 		u.Direction2 = d
 	}

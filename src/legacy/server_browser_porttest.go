@@ -43,10 +43,10 @@ func PortTestServerBrowserList(items []unsafe.Pointer) (unsafe.Pointer, func()) 
 }
 
 func PortTestServerBrowserPopup(parent, point, head unsafe.Pointer) unsafe.Pointer {
-	return unsafe.Pointer(uintptr(uint32(sub_4A2610(C.int(uintptr(parent)), (*C.uint32_t)(point), (*C.int)(head)))))
+	return unsafe.Pointer(uintptr(uint32(sub_4A2610(int32(uintptr(parent)), (*uint32)(point), (*int32)(head)))))
 }
 func PortTestServerBrowserPopupShown() bool { return sub_4A28B0() != 0 }
 func PortTestServerBrowserPopupAt(i int) unsafe.Pointer {
-	return unsafe.Pointer(uintptr(uint32(sub_4A28C0(C.int(i)))))
+	return unsafe.Pointer(uintptr(uint32(sub_4A28C0(int32(i)))))
 }
 func PortTestServerBrowserPopupClose() { sub_4A2890() }

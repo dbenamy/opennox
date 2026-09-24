@@ -14,6 +14,7 @@ package legacy
 #include "common__magic__speltree.h"
 */
 import "C"
+
 import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -93,7 +94,7 @@ func objectiveFlagUpdate(u *server.Object) int32 {
 		*equipmentWord(ud, 8) = 0
 		matchRosterFlagState(byte(team), 0, byte(color), 0)
 		Nox_xxx_unitMove_4E7010(u, *(*types.Pointf)(ud))
-		out = int32(nox_xxx_netInformTextMsg2_4DA180(8, (*C.uint8_t)(unsafe.Pointer(&color))))
+		out = int32(nox_xxx_netInformTextMsg2_4DA180(8, (*C.uint8_t)((*uint8)(unsafe.Pointer(&color)))))
 	}
 	return out
 }
@@ -172,7 +173,7 @@ func objectiveBallUpdate(u *server.Object) {
 	dir := (int32(int16(owner.Direction1)) + int32(nox_common_randomInt_415FA0(-32, 32))) & 255
 	dx, dy := movementDirectionVector(dir)
 	origin := types.Pointf{X: float32(float64(u.PosVec.X) - float64(dx)*20), Y: float32(float64(u.PosVec.Y) - float64(dy)*20)}
-	nox_xxx_objectApplyForce_52DF80((*C.float)(unsafe.Pointer(&origin)), asObjectC(u), 30)
+	nox_xxx_objectApplyForce_52DF80((*C.float)((*float32)(unsafe.Pointer(&origin))), asObjectC(u), 30)
 	core.ObjClearOwner(u)
 	Sub_4E8290(1, 0)
 	inventorySound(926, u, 0, 0)
@@ -191,7 +192,7 @@ func objectiveBallReset(old *server.Object) int {
 	if n == 0 {
 		return 0
 	}
-	choice := int(int32(nox_common_randomInt_415FA0(0, int(C.int(n-1)))))
+	choice := int(int32(nox_common_randomInt_415FA0(0, int(int32(n-1)))))
 	var start *server.Object
 	for it := core.Objs.First(); it != nil; it = it.Next() {
 		if uint32(it.TypeInd) == uint32(dword_5d4594_527656) {

@@ -27,9 +27,9 @@ func PortTestDrawableStream(stream int, input []byte, pos [2]int32) (int32, [2]i
 	defer freeCoords()
 	var ret int32
 	if stream == 1 {
-		ret = int32(nox_xxx_netCliProcUpdateStream_494A60((*C.uchar)(unsafe.Pointer(&packet[0])), 31, (*C.uint32_t)(unsafe.Pointer(&coords[0]))))
+		ret = int32(nox_xxx_netCliProcUpdateStream_494A60((*uint8)(unsafe.Pointer(&packet[0])), int32(31), (*uint32)(unsafe.Pointer(&coords[0]))))
 	} else {
-		ret = int32(uintptr(unsafe.Pointer(nox_xxx_netCliUpdateStream2_494C30((*C.uchar)(unsafe.Pointer(&packet[0])), 31, (*C.int)(unsafe.Pointer(&coords[0]))))))
+		ret = int32(uintptr(unsafe.Pointer(nox_xxx_netCliUpdateStream2_494C30((*uint8)(unsafe.Pointer(&packet[0])), int32(31), (*int32)(unsafe.Pointer(&coords[0]))))))
 	}
 	if coords[2] != 0x12345678 {
 		panic("stream wrote beyond coordinate pair")

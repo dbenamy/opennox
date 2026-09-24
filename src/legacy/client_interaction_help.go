@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-
 import (
 	"fmt"
 	"github.com/opennox/libs/strman"
@@ -91,23 +86,23 @@ func interactionHelpOpen() uintptr {
 	return 0
 }
 
-func nox_xxx_cliShowHelpGui_49C560() *C.uint32_t {
-	return (*C.uint32_t)(unsafe.Pointer(interactionHelpOpen()))
+func nox_xxx_cliShowHelpGui_49C560() *uint32 {
+	return (*uint32)(unsafe.Pointer(interactionHelpOpen()))
 }
 
-func nox_xxx_wnd_49C760(w, code C.int, a *C.int, b C.int) C.int {
-	return C.int(gui.EventRespInt(interactionHelpEvent((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), &gui.RawEvent{Event: int(code), Arg1: uintptr(unsafe.Pointer(a)), Arg2: uintptr(uint32(b))})))
+func nox_xxx_wnd_49C760(w, code int32, a *int32, b int32) int32 {
+	return int32(gui.EventRespInt(interactionHelpEvent((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), &gui.RawEvent{Event: int(code), Arg1: uintptr(unsafe.Pointer(a)), Arg2: uintptr(uint32(b))})))
 }
 
-func sub_49C7A0() C.int { return C.int(interactionHelpClose()) }
+func sub_49C7A0() int32 { return int32(interactionHelpClose()) }
 
-func sub_49C810() C.int { return C.int(bool2int(interactionHelpRootWord != 0)) }
+func sub_49C810() int32 { return int32(bool2int(interactionHelpRootWord != 0)) }
 
-func sub_48D4B0(v C.int) C.int {
+func sub_48D4B0(v int32) int32 {
 	*memmap.PtrUint32(0x5D4594, 1197304) = uint32(v)
 	hidden := 1
 	if v == 1 {
 		hidden = 0
 	}
-	return C.int(interactionVoteHide(hidden))
+	return int32(interactionVoteHide(hidden))
 }

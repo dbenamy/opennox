@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-
-*/
-import "C"
-
 import (
 	"github.com/opennox/libs/strman"
 	"unsafe"
@@ -247,12 +241,12 @@ func sub_470580() int { return bool2int(scoreboardVisible()) }
 
 func sub_4705B0() { scoreboardOpen() }
 
-func sub_4705F0(action, team C.char, code C.short) C.char {
-	return C.char(scoreboardSetFlag(byte(action), byte(team), uint16(code)))
+func sub_4705F0(action, team int8, code int16) int8 {
+	return int8(scoreboardSetFlag(byte(action), byte(team), uint16(code)))
 }
 
-func sub_470650(action C.char, code C.short) C.char {
-	return C.char(scoreboardSetBall(byte(action), uint16(code)))
+func sub_470650(action int8, code int16) int8 {
+	return int8(scoreboardSetBall(byte(action), uint16(code)))
 }
 
 // Compile-time layout checks for the tables shared with legacy storage.

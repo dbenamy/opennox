@@ -218,30 +218,30 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 	case 17:
 		return uint64(nox_xxx_drawMessageLines_445530())
 	case 18:
-		return uint64(nox_xxx_guiChatMode_4456E0((*C.int)(unsafe.Pointer(a[0]))))
+		return uint64(nox_xxx_guiChatMode_4456E0((*int32)(unsafe.Pointer(a[0]))))
 	case 19:
-		return uint64(nox_xxx_guiChatShowHide_445730(C.int(a[0])))
+		return uint64(nox_xxx_guiChatShowHide_445730(int32(a[0])))
 	case 20:
 		return uint64(sub_445770())
 	case 21:
 		return uint64(sub_469FA0())
 	case 22:
-		nox_client_chatStart_46A430(C.int(a[0]))
+		nox_client_chatStart_46A430(int32(a[0]))
 		return 0
 	case 23:
 		return uint64(sub_46A4A0())
 	case 24:
-		return uint64(nox_xxx_cmdSayDo_46A4B0((*C.ushort)(unsafe.Pointer(a[0])), C.int(a[1])))
+		return uint64(nox_xxx_cmdSayDo_46A4B0((*uint16)(unsafe.Pointer(a[0])), int32(a[1])))
 	case 25:
-		return uint64(sub_46A5D0((*C.uint32_t)(unsafe.Pointer(a[0])), C.int(a[1])))
+		return uint64(sub_46A5D0((*uint32)(unsafe.Pointer(a[0])), int32(a[1])))
 	case 26:
 		return uint64(sub_46A6A0())
 	case 27:
 		return uint64(uintptr(unsafe.Pointer(sub_46A730())))
 	case 28:
-		return uint64(sub_46A7E0((*C.uint32_t)(unsafe.Pointer(a[0])), C.int(a[1]), C.int(a[2]), C.int(a[3])))
+		return uint64(sub_46A7E0((*uint32)(unsafe.Pointer(a[0])), int32(a[1]), int32(a[2]), int32(a[3])))
 	case 29:
-		return uint64(sub_46A820(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3])))
+		return uint64(sub_46A820(int32(a[0]), int32(a[1]), int32(a[2]), int32(a[3])))
 	case 30:
 		return uint64(sub_46A860())
 	case 31:
@@ -250,7 +250,7 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 		nox_xxx_clientEnumHover_476FA0()
 		return 0
 	case 33:
-		nox_xxx_clientOnCursorHover_477050(C.int(a[0]), C.int(a[1]))
+		nox_xxx_clientOnCursorHover_477050(int32(a[0]), int32(a[1]))
 		return 0
 	case 34:
 		return uint64(nox_xxx_guiCursor_477600())
@@ -273,13 +273,13 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 	case 43:
 		return uint64(sub_47A260())
 	case 44:
-		return uint64(nox_xxx_showObserverWindow_48CA70(C.int(a[0])))
+		return uint64(nox_xxx_showObserverWindow_48CA70(int32(a[0])))
 	case 45:
-		return uint64(sub_48D4B0(C.int(a[0])))
+		return uint64(sub_48D4B0(int32(a[0])))
 	case 46:
 		return uint64(sub_49B3E0())
 	case 47:
-		return uint64(sub_49B420(C.int(a[0]), C.int(a[1]), (*C.int)(unsafe.Pointer(a[2])), C.int(a[3])))
+		return uint64(sub_49B420(int32(a[0]), int32(a[1]), (*int32)(unsafe.Pointer(a[2])), int32(a[3])))
 	case 48:
 		return uint64(sub_49B490())
 	case 49:
@@ -288,24 +288,24 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 		nox_xxx_consoleEsc_49B7A0()
 		return 0
 	case 51:
-		return uint64(nox_xxx_wnd_49C760(C.int(a[0]), C.int(a[1]), (*C.int)(unsafe.Pointer(a[2])), C.int(a[3])))
+		return uint64(nox_xxx_wnd_49C760(int32(a[0]), int32(a[1]), (*int32)(unsafe.Pointer(a[2])), int32(a[3])))
 	case 52:
 		return uint64(sub_49C7A0())
 	case 53:
 		return uint64(sub_49C810())
 	case 55:
-		return uint64(nox_xxx_clientReportSecondaryWeapon_4BF010(C.int(a[0])))
+		return uint64(nox_xxx_clientReportSecondaryWeapon_4BF010(int32(a[0])))
 	case 56:
-		return uint64(sub_4BF7E0((*C.uint32_t)(unsafe.Pointer(a[0]))))
+		return uint64(sub_4BF7E0((*uint32)(unsafe.Pointer(a[0]))))
 	case 57:
-		return uint64(sub_4BF9F0(C.int(a[0]), C.int(a[1]), C.int(a[2]), C.int(a[3]), C.int(a[4]), C.int(a[5]), C.int(a[6])))
+		return uint64(sub_4BF9F0(int32(a[0]), int32(a[1]), int32(a[2]), int32(a[3]), int32(a[4]), int32(a[5]), int32(a[6])))
 	case 58:
 		return uint64(sub_4BFAD0())
 	case 59:
-		sub_4BFB70(C.int(a[0]))
+		sub_4BFB70(int32(a[0]))
 		return 0
 	case 60:
-		sub_4BFBB0(C.uint(a[0]))
+		sub_4BFBB0(uint32(a[0]))
 		return 0
 	case 61:
 		return uint64(sub_4BFBF0())
@@ -314,7 +314,7 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 	case 63:
 		return uint64(sub_4BFC90())
 	case 64:
-		return uint64(sub_4BFCD0(C.int(a[0]), C.int(a[1]), (*C.int)(unsafe.Pointer(a[2])), C.int(a[3])))
+		return uint64(sub_4BFCD0(int32(a[0]), int32(a[1]), (*int32)(unsafe.Pointer(a[2])), int32(a[3])))
 	case 65:
 		sub_4BFD10()
 		return 0
@@ -323,9 +323,9 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 	case 67:
 		return uint64(sub_4C3390())
 	case 68:
-		return uint64(sub_4C3410((*C.int)(unsafe.Pointer(a[0]))))
+		return uint64(sub_4C3410((*int32)(unsafe.Pointer(a[0]))))
 	case 69:
-		return uint64(sub_4C3460(C.int(a[0])))
+		return uint64(sub_4C3460(int32(a[0])))
 	case 70:
 		return uint64(sub_4C34A0())
 	case 71:
@@ -337,13 +337,13 @@ func PortTestClientInteractionCall(op string, args ...uintptr) uint64 {
 		nox_xxx_printCentered_445490((*C.ushort)(unsafe.Pointer(a[0])))
 		return 0
 	case 74:
-		return uint64(sub_49B4B0((*C.ushort)(unsafe.Pointer(a[0]))))
+		return uint64(sub_49B4B0((*uint16)(unsafe.Pointer(a[0]))))
 	case 75:
 		return uint64(sub_49B6E0())
 	case 76:
 		return uint64(nox_xxx_guiChatIconLoad_445650())
 	case 77:
-		return uint64(sub_48C9F0((*C.int)(unsafe.Pointer(a[0]))))
+		return uint64(sub_48C9F0((*int32)(unsafe.Pointer(a[0]))))
 	case 78:
 		return uint64(sub_48C980())
 	}

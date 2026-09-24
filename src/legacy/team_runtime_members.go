@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME2.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"unsafe"
@@ -110,7 +103,7 @@ func teamRuntimeLeave(m *server.ObjectTeam, code int) {
 	}
 	teamRuntimeUnlink(t, m)
 	*teamRuntimeWord(t, 48)--
-	if (C.int(serverConfigSpecialMode()) != 0 || noxflags.HasGame(0x8000)) && teamRuntimeCount(t) == 0 {
+	if (serverConfigSpecialMode() != 0 || noxflags.HasGame(0x8000)) && teamRuntimeCount(t) == 0 {
 		if noxflags.HasGame(96) || (noxflags.HasGame(16) && noxflags.HasGamePlay(4)) {
 			teamRuntimeSetGroup(t, 0)
 			teamRuntimeSetName(t, (*uint16)(memmap.PtrOff(0x5D4594, 527664)), 0)

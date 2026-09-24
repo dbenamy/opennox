@@ -87,7 +87,7 @@ func interactionObserverToggle() int {
 	if p != nil && p.Field3680&1 != 0 {
 		show = 0
 	}
-	return int(nox_xxx_showObserverWindow_48CA70(C.int(show)))
+	return int(nox_xxx_showObserverWindow_48CA70(int32(show)))
 }
 func interactionToggleDrawing() uint32 {
 	v := 1 - uint32(interactionDrawToggle)

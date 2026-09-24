@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_3.h"
-#include "GAME4_3.h"
-#include "GAME4.h"
-#include "GAME5_2.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"
@@ -52,7 +44,7 @@ func stateBuffs(u *server.Object, flags uint32) unsafe.Pointer {
 	u.Buffs = flags
 	if u.ObjClass&4 != 0 {
 		pl := *(*unsafe.Pointer)(unsafe.Add(u.UpdateData, 276))
-		nox_xxx_playerResetProtectionCRC_56F7D0(C.int(*equipmentWord(pl, 4612)), C.int(flags))
+		setProtectionRecord(int32(*equipmentWord(pl, 4612)), flags)
 	}
 	return stateSync(u, 0x800000, 128)
 }

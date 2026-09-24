@@ -10,6 +10,7 @@ package legacy
 #include "GAME4_3.h"
 */
 import "C"
+
 import (
 	"github.com/opennox/libs/types"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -26,7 +27,7 @@ func projectileFriendly(u, t *server.Object) bool {
 	return owner != nil && t != nil && owner.ObjClass&4 != 0 && t.ObjClass&4 != 0 && !GetServer().S().IsEnemyTo(owner, t)
 }
 func projectileSplash(u, exclude *server.Object, radius, inner float32, damage, kind int32) {
-	nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)(unsafe.Pointer(&u.PosVec)), C.float(radius), C.float(inner), int(C.int(damage)), int(C.int(kind)), asObjectC(u), asObjectC(exclude))
+	nox_xxx_mapDamageUnitsAround_4E25B0((*C.float)((*float32)(unsafe.Pointer(&u.PosVec))), C.float(float32(radius)), C.float(float32(inner)), int(int32(damage)), int(int32(kind)), asObjectC(u), asObjectC(exclude))
 }
 func projectilePush(u *server.Object, radius, inner, force float32) {
 	spellEffectPushAround(u.PosVec, radius, inner, force, u, nil, 0)
@@ -52,7 +53,7 @@ func projectileBoom(u, t *server.Object, n *types.Pointf) {
 	}
 	if t != nil {
 		if t.ObjClass&4 != 0 {
-			if nox_xxx_checkInversionEffect_4FA4F0(inventoryInt(t), inventoryInt(u)) != 0 {
+			if nox_xxx_checkInversionEffect_4FA4F0(C.int(inventoryInt(t)), C.int(inventoryInt(u))) != 0 {
 				Nox_xxx_changeOwner_52BE40(u, t)
 				return
 			}
@@ -66,7 +67,7 @@ func projectileBoom(u, t *server.Object, n *types.Pointf) {
 		motionScorch(&t.PosVec, 0)
 	} else if n != nil {
 		collisionReflect(n, &u.VelVec)
-		u.Direction2 = server.Dir16(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&u.VelVec))))))
+		u.Direction2 = server.Dir16(int32(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&u.VelVec))))))
 		u.VelVec.X = float32(float64(u.VelVec.X) * 0.5)
 		u.VelVec.Y = float32(float64(u.VelVec.Y) * 0.5)
 		projectileContact(u, int32(memmap.Uint32(0x5d4594, 1567968)), 7)
@@ -118,7 +119,7 @@ func projectilePixie(u, t *server.Object, n *types.Pointf) {
 			return
 		}
 		if t.ObjClass&4 != 0 {
-			if nox_xxx_checkInversionEffect_4FA4F0(inventoryInt(t), inventoryInt(u)) != 0 {
+			if nox_xxx_checkInversionEffect_4FA4F0(C.int(inventoryInt(t)), C.int(inventoryInt(u))) != 0 {
 				Nox_xxx_changeOwner_52BE40(u, t)
 				return
 			}
@@ -133,7 +134,7 @@ func projectilePixie(u, t *server.Object, n *types.Pointf) {
 		GetServer().DelayedDelete(u)
 	} else if n != nil {
 		collisionReflect(n, &u.VelVec)
-		u.Direction2 = server.Dir16(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&u.VelVec))))))
+		u.Direction2 = server.Dir16(int32(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&u.VelVec))))))
 		u.NewPos.X = float32(float64(u.VelVec.X) + float64(u.NewPos.X))
 		y := float64(u.VelVec.Y) + float64(u.NewPos.Y)
 		u.NewPos.Y = float32(y)

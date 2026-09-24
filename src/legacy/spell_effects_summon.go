@@ -12,6 +12,7 @@ package legacy
 #include "server__script__script.h"
 */
 import "C"
+
 import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/types"
@@ -249,7 +250,7 @@ func spellEffectCharmFinish(record unsafe.Pointer) int32 {
 		s.Players.Nox_xxx_netMarkMinimapObject_417190(source.ControllingPlayer().PlayerIndex(), u, 1)
 		Nox_xxx_netSendSimpleObject2_4DF360(ind, u)
 		if controlFlags(4096) {
-			sub_50E140(C.int(uintptr(u.CObj())))
+			sub_50E140(C.int(int32(uintptr(u.CObj()))))
 		}
 	} else {
 		monsterOrder(source, u, 4)

@@ -204,6 +204,8 @@ func (o *inventoryDisplayOwner) displaySnapshot(t *testing.T, id, op int, ret ui
 		// Record its content and non-null status, not its allocation address.
 		ret = 1
 	}
+	// snapshot applies its own normalization; keep its input unnormalized.
+	snapshotRet := uint32(ret)
 	if op != 1 && op != 2 {
 		ret = uint64(o.norm(uint32(ret)))
 	}
@@ -211,7 +213,7 @@ func (o *inventoryDisplayOwner) displaySnapshot(t *testing.T, id, op int, ret ui
 	r.CursorText = alloc.GoString16(&o.cursorText[0])
 	r.ReturnedText = returnedText
 	if op == 3 || op == 11 || op == 15 {
-		state := o.snapshot(t, id, op, uint32(ret))
+		state := o.snapshot(t, id, op, snapshotRet)
 		// These broad transaction scratch regions overlap display pointers.
 		// Display state is captured by its declared fields below instead.
 		state.Regions = nil
@@ -285,5 +287,47 @@ func inventoryDisplayCapture(t *testing.T, label string, rows []inventoryDisplay
 			}
 		}
 		t.Fatalf("%s hash %s want frozen C %s", label, h, want)
+	}
+}
+
+// Identity tokens are comparison values, not raw addresses. An image handle can
+// happen to have the same word value in a 32-bit handle arena.
+func TestClientInventoryDisplaySnapshotIdentityCollision(t *testing.T) {
+	o := newInventoryDisplayOwner(t)
+	o.reset(t)
+	dr := o.item(t, "RedApple", 123)
+	raw := uint32(uintptr(dr.C()))
+	want := o.norm(raw)
+	if want != 0xec000001 {
+		t.Fatalf("first drawable identity %#x", want)
+	}
+	// Reproduce the observed collision without depending on mmap placement.
+	o.c.imageRefs[want] = 0xe8000000
+	if got := o.norm(want); got != 0xe8000000 {
+		t.Fatalf("identity collision not established: %#x", got)
+	}
+	for _, op := range []int{3, 15} {
+		r := o.displaySnapshot(t, op, op, uint64(raw))
+		if r.Inventory == nil {
+			t.Fatal("missing inventory snapshot")
+		}
+		if r.Return != uint64(want) || r.Inventory.Return != want {
+			t.Fatalf("op %d: display return %#x, inventory return %#x; want identity %#x in both", op, r.Return, r.Inventory.Return, want)
+		}
+	}
+	text, free := alloc.CString16("description")
+	defer free()
+	for _, v := range []uintptr{0, uintptr(unsafe.Pointer(text))} {
+		r := o.displaySnapshot(t, 11, 11, uint64(v))
+		if r.Inventory == nil {
+			t.Fatal("missing text inventory snapshot")
+		}
+		wantReturn, wantText := uint32(0), ""
+		if v != 0 {
+			wantReturn, wantText = 1, "description"
+		}
+		if r.Return != uint64(wantReturn) || r.Inventory.Return != wantReturn || r.ReturnedText != wantText {
+			t.Fatalf("text return normalization: display %#x inventory return %#x text %q", r.Return, r.Inventory.Return, r.ReturnedText)
+		}
 	}
 }

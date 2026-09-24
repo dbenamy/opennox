@@ -82,11 +82,11 @@ func clientGameProgress(op netmsg.Op, data []byte) (int, bool) {
 				mods[i] = uint32(uintptr(nox_xxx_modifGetDescById_413330(int32(data[5+i]))))
 			}
 		}
-		if nox_xxx_spritePickup_461660(C.int(code), C.int(word(3)), unsafe.Pointer(&mods[0])) == 0 {
-			nox_xxx_send2ServInvenFail_461630(C.short(code))
+		if nox_xxx_spritePickup_461660(C.int(int32(code)), C.int(int32(word(3))), unsafe.Pointer(&mods[0])) == 0 {
+			nox_xxx_send2ServInvenFail_461630(C.short(int16(code)))
 		}
 	case 77:
-		sub_461A80(C.int(code))
+		sub_461A80(C.int(int32(code)))
 	case 78:
 		if p := GetServer().S().Players.ByID(int(code)); p != nil {
 			if !noxflags.HasGame(noxflags.GameHost) {
@@ -110,9 +110,9 @@ func clientGameProgress(op netmsg.Op, data []byte) (int, bool) {
 			}
 		}
 	case 96:
-		sub_462040(C.int(code))
+		sub_462040(int32(code))
 	case 97:
-		sub_4624D0(C.int(code))
+		sub_4624D0(int32(code))
 	case 101:
 		if dr := GetClient().Cli().Objs.ByNetCode(word(1)); dr != nil {
 			old := *effectWord(dr, 280)

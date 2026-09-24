@@ -1,30 +1,5 @@
 package legacy
 
-/*
-
-#include "defs.h"
-#include "GAME2.h"
-#include "client__gui__guibook.h"
-
-
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME1_2.h"
-#include "GAME1_3.h"
-#include "GAME2_1.h"
-#include "GAME2_2.h"
-#include "GAME2_3.h"
-#include "GAME3_1.h"
-#include "GAME3.h"
-#include "GAME3_2.h"
-#include "GAME5_2.h"
-#include "GAME4_1.h"
-#include "client__gui__window.h"
-#include "common__strman.h"
-#include "input_common.h"
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -213,7 +188,7 @@ func bookSort(class int) int {
 		}
 	} else if class != 0 {
 		for id := nox_xxx_spellFirstValid_424AD0(); id != 0; id = nox_xxx_spellNextValid_424AF0(id) {
-			if id == 34 || nox_xxx_playerCheckSpellClass_57AEA0(C.int(class), C.int(id)) != 0 || (!all && *bookPlayerWord(p, 3696, id) == 0) {
+			if id == 34 || playerSpellClassCheck(int32(class), int32(id)) != 0 || (!all && *bookPlayerWord(p, 3696, id) == 0) {
 				continue
 			}
 			if bool(nox_xxx_spellHasFlags_424A50(id, 0x15000)) {

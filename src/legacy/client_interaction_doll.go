@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -124,13 +119,13 @@ func interactionDollDraw(origin image.Point) int16 {
 	return result
 }
 
-func sub_4BF7E0(point *C.uint32_t) C.short {
+func sub_4BF7E0(point *uint32) int16 {
 	p := (*[2]int32)(unsafe.Pointer(point))
-	return C.short(interactionDollDraw(image.Pt(int(p[0]), int(p[1]))))
+	return int16(interactionDollDraw(image.Pt(int(p[0]), int(p[1]))))
 }
 
-func sub_4BF9F0(mask, typ, x, y, table, index, overlay C.int) C.short {
-	return C.short(interactionDollLayer(uint32(typ), image.Pt(int(x), int(y)), (*uint32)(unsafe.Pointer(uintptr(uint32(table)))), uint32(index), overlay != 0))
+func sub_4BF9F0(mask, typ, x, y, table, index, overlay int32) int16 {
+	return int16(interactionDollLayer(uint32(typ), image.Pt(int(x), int(y)), (*uint32)(unsafe.Pointer(uintptr(uint32(table)))), uint32(index), overlay != 0))
 }
 
-func sub_4BFAD0() C.int { return C.int(interactionDollLoad()) }
+func sub_4BFAD0() int32 { return int32(interactionDollLoad()) }

@@ -91,7 +91,7 @@ func Sub_4C01C0(a1, a2 int, a3 unsafe.Pointer, a4 int) {
 }
 
 func Nox_client_chatStart_46A430(v int) {
-	nox_client_chatStart_46A430(C.int(v))
+	nox_client_chatStart_46A430(int32(v))
 }
 
 func Nox_client_toggleSpellbook_45AC70() {

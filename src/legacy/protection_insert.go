@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include <stdint.h>
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -11,7 +7,7 @@ import (
 	"github.com/opennox/opennox/v1/internal/protection"
 )
 
-func insertProtectionRecord(r *protection.Record) C.int {
+func insertProtectionRecord(r *protection.Record) int32 {
 	count := memmap.PtrUint16(0x587000, 311204)
 	if *count == 0 {
 		(*count)++

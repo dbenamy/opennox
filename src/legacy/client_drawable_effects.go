@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "GAME3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -138,13 +134,13 @@ func drawableEffectTypes() int {
 	return bool2int(clientGameVioletSpark != 0)
 }
 
-func nox_xxx_netHandleSummonPacket_4B7C40(owner C.short, p *C.ushort, typ C.ushort, dir C.uchar, value C.short) *C.uint32_t {
+func nox_xxx_netHandleSummonPacket_4B7C40(owner int16, p *uint16, typ uint16, dir uint8, value int16) *uint32 {
 	n := drawableSummonStart(int16(owner), *(*[2]uint16)(unsafe.Pointer(p)), uint16(typ), byte(dir), int16(value))
-	return (*C.uint32_t)(unsafe.Pointer(uintptr(n)))
+	return (*uint32)(unsafe.Pointer(uintptr(n)))
 }
 
-func sub_4B7EE0(owner C.short) { drawableSummonStop(int16(owner)) }
+func sub_4B7EE0(owner int16) { drawableSummonStop(int16(owner)) }
 
-func nox_xxx_fxShield_4B8090(code C.uint, dir C.int) *C.uint32_t {
-	return (*C.uint32_t)(unsafe.Pointer(drawableShield(uint32(code), int(dir))))
+func nox_xxx_fxShield_4B8090(code uint32, dir int32) *uint32 {
+	return (*uint32)(unsafe.Pointer(drawableShield(uint32(code), int(dir))))
 }

@@ -130,7 +130,7 @@ func damagePlayer(u, source, weapon *server.Object, amount, kind int32) int32 {
 			} else {
 				canBlock := state == 13 || state == 18 || state == 19 || state == 20
 				if !player {
-					canBlock = sub_534340(inventoryInt(u)) != 0
+					canBlock = sub_534340(C.int(inventoryInt(u))) != 0
 				}
 				if weapons&0x400 != 0 && (actual.ObjClass&1 != 0 || kind == 0 || kind == 11) && canBlock {
 					if actual.ObjClass&1 != 0 {

@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"fmt"
@@ -54,7 +48,7 @@ func uiTradeRequest(op byte) int {
 	return bool2int(GetServer().S().NetList.AddToMsgListCli(31, netlist.Kind0, []byte{201, op}))
 }
 func uiTradeRemoveRequest(dr *client.Drawable) int {
-	return uiInventoryTrade(16, uint16(nox_xxx_netGetUnitCodeCli_578B00(C.int(uiInventoryPointer(dr.C())))))
+	return uiInventoryTrade(16, uint16(drawableUnitCode(dr)))
 }
 func uiTradeDestroy() int {
 	uiTradeWindow().Destroy()

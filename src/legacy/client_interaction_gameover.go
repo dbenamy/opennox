@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-
 import (
 	"fmt"
 	"github.com/opennox/libs/strman"
@@ -118,18 +113,18 @@ func interactionGameOverTick() int {
 	return interactionWindowText(w.ChildByID(10712), memmap.PtrUint16(0x5D4594, 1301852))
 }
 
-func sub_49B3E0() C.int { return C.int(interactionGameOverOpen()) }
+func sub_49B3E0() int32 { return int32(interactionGameOverOpen()) }
 
-func sub_49B420(w, code C.int, a *C.int, b C.int) C.int {
-	return C.int(gui.EventRespInt(interactionGameOverEvent((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), &gui.RawEvent{Event: int(code), Arg1: uintptr(unsafe.Pointer(a)), Arg2: uintptr(uint32(b))})))
+func sub_49B420(w, code int32, a *int32, b int32) int32 {
+	return int32(gui.EventRespInt(interactionGameOverEvent((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), &gui.RawEvent{Event: int(code), Arg1: uintptr(unsafe.Pointer(a)), Arg2: uintptr(uint32(b))})))
 }
 
-func sub_49B490() C.int { return C.int(interactionGameOverDestroy()) }
+func sub_49B490() int32 { return int32(interactionGameOverDestroy()) }
 
-func sub_49B6B0() C.int { return C.int(interactionGameOverHide()) }
+func sub_49B6B0() int32 { return int32(interactionGameOverHide()) }
 
-func sub_49B4B0(data *C.ushort) C.int {
-	return C.int(interactionGameOverShow((*uint16)(unsafe.Pointer(data))))
+func sub_49B4B0(data *uint16) int32 {
+	return int32(interactionGameOverShow((*uint16)(unsafe.Pointer(data))))
 }
 
-func sub_49B6E0() C.int { return C.int(interactionGameOverTick()) }
+func sub_49B6E0() int32 { return int32(interactionGameOverTick()) }

@@ -12,6 +12,7 @@ package legacy
 
 */
 import "C"
+
 import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -76,11 +77,11 @@ func spellLifeReset(mode, imaginary int32) int32 {
 	return 1
 }
 func spellLifeInform(u *server.Object, code int32) {
-	nox_xxx_netInformTextMsg_4DA0F0(C.int(*controlByte(controlPlayer(u), 2064)), 0, (*C.int)(unsafe.Pointer(&code)))
+	nox_xxx_netInformTextMsg_4DA0F0(C.int(int32(*controlByte(controlPlayer(u), 2064))), 0, (*C.int)((*int32)(unsafe.Pointer(&code))))
 }
 func spellLifeBookError(u *server.Object, code int32, audio int) int32 {
 	spellLifeInform(u, code)
-	nox_xxx_aud_501960(int32(C.int(audio)), asObjectC(u), 0, 0)
+	nox_xxx_aud_501960(int32(int32(audio)), asObjectC(u), 0, 0)
 	return 0
 }
 func spellLifeInsertBook(u *server.Object, list unsafe.Pointer, n, delay, self int32) int32 {
@@ -123,7 +124,7 @@ func spellLifeInsertBook(u *server.Object, list unsafe.Pointer, n, delay, self i
 			if !bool(nox_xxx_checkSummonedCreaturesLimit_500D70(asObjectC(u), 5)) {
 				return spellLifeBookError(u, 4, 231)
 			}
-			count := nox_xxx_unitCountSlaves_4E7CF0(C.int(uintptr(u.CObj())), 2, 0x2000)
+			count := nox_xxx_unitCountSlaves_4E7CF0(C.int(int32(uintptr(u.CObj()))), 2, 0x2000)
 			if int32(count) >= int32(int64(nox_xxx_gamedataGetFloat_419D40(internCStr("MaxBomberCount")))) {
 				return spellLifeBookError(u, 5, 231)
 			}
@@ -200,7 +201,7 @@ func spellLifeCastBooks() {
 		id := int32(*spellLifeWord(unsafe.Pointer(p), 8+4*int(p.Index)))
 		if p.Phoneme == 0 {
 			msg := [2]byte{112, byte(id)}
-			nox_netlist_addToMsgListCli_40EBC0(int(C.int(*controlByte(*controlPtr(ud, 276), 2064))), 1, (*C.uchar)(unsafe.Pointer(&msg[0])), 2)
+			nox_netlist_addToMsgListCli_40EBC0(int(int32(*controlByte(*controlPtr(ud, 276), 2064))), 1, (*uint8)(unsafe.Pointer(&msg[0])), 2)
 		}
 		if p.Tree.Ind != id {
 			settings := unsafe.Pointer((unsafe.Pointer)(unsafe.Pointer(serverConfigSettings())))

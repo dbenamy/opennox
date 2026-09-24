@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_3.h"
-*/
-import "C"
-
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -15,7 +7,7 @@ import (
 	"unsafe"
 )
 
-func inventoryInt(u *server.Object) C.int { return C.int(uintptr(u.CObj())) }
+func inventoryInt(u *server.Object) int32 { return int32(uintptr(u.CObj())) }
 func inventoryWeight(u *server.Object) {
 	var weight uint32
 	for it := u.InvFirstItem; it != nil; it = it.InvNextItem {
@@ -27,7 +19,7 @@ func inventoryRemove(u, it *server.Object) {
 	if u == nil || it == nil {
 		return
 	}
-	report := C.int(1)
+	report := int32(1)
 	if u.ObjClass&4 != 0 {
 		pl := u.UpdateDataPlayer().Player
 		if !noxflags.HasGame(4096) && u.ObjFlags&0x8000 != 0 && it.ObjClass&0x13001000 != 0 {

@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "GAME4.h"
-#include "GAME5_2.h"
-#include "GAME3_3.h"
-int sub_57AEE0(int a1, nox_object_t* a2);
-*/
-import "C"
 import (
 	"github.com/opennox/libs/spell"
 	"github.com/opennox/libs/types"
@@ -63,9 +56,9 @@ func spellLifeCheckClass(u *server.Object, id int32) int32 {
 		return 10
 	}
 	if u.ObjClass&4 != 0 {
-		return int32(nox_xxx_playerCheckSpellClass_57AEA0(C.int(*controlByte(controlPlayer(u), 2251)), C.int(id)))
+		return playerSpellClassCheck(int32(*controlByte(controlPlayer(u), 2251)), int32(id))
 	}
-	v := -int32(sub_57AEE0(int(C.int(id)), asObjectC(parent)))
+	v := -int32(bool2int(server.Sub_57AEE0(spell.ID(int(int32(id))), parent)))
 	v = int32(uint32(v)&0xffffff00 | uint32(byte(v)&0xf6))
 	return v + 10
 }

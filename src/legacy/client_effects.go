@@ -1,16 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME1_2.h"
-#include "GAME2.h"
-#include "GAME2_3.h"
-#include "GAME4_1.h"
-#include "defs.h"
-*/
-import "C"
-
 import (
 	noxcolor "github.com/opennox/libs/color"
 	"github.com/opennox/libs/types"
@@ -45,7 +34,7 @@ func effectType(name string) uint32  { return uint32(GetClient().Cli().Things.In
 func effectDistance(x, y int) int    { return int(screenDistance(int32(x), int32(y))) }
 func effectAngle(x, y float32) int {
 	p := [2]float32{x, y}
-	return int(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&p))))))
+	return int(int32(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&p))))))
 }
 func effectFloatInt(v float32) int { return int(floatToInt32(v)) }
 func effectGlow(p image.Point, color uint32, radius, size int) {

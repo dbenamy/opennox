@@ -186,7 +186,7 @@ func (p *portTestShopPools) engineAction(a PortTestShopAction, q unsafe.Pointer)
 		if a.Side != 0 {
 			left, right = right, left
 		}
-		return p.engineAdopt(unsafe.Pointer(nox_xxx_servShopStart_50EF10_trade(C.int(uintptr(left.CObj())), C.int(uintptr(right.CObj())))))
+		return p.engineAdopt(unsafe.Pointer(nox_xxx_servShopStart_50EF10_trade(int32(uintptr(left.CObj())), int32(uintptr(right.CObj())))))
 	case PortTestTradeIntro:
 		return tradeIntro((*shopSession)(q))
 	case PortTestTradePeerIntro:
@@ -210,13 +210,13 @@ func (p *portTestShopPools) engineAction(a PortTestShopAction, q unsafe.Pointer)
 	case PortTestTradeAddOffer:
 		return tradeAddOffer((*shopSession)(q), u, item)
 	case PortTestTradeBuy:
-		sub_5100C0_trade(unit, (*C.uint32_t)(q), C.int(a.Value))
+		sub_5100C0_trade(int32(unit), (*uint32)(q), int32(a.Value))
 	case PortTestTradeBuyMany:
-		return uint32(uintptr(unsafe.Pointer(sub_510640_trade(unit, session, C.int(item.TypeInd), (*C.float)(shopTestPointer(a.Value))))))
+		return uint32(uintptr(unsafe.Pointer(sub_510640_trade(int32(unit), int32(session), int32(item.TypeInd), (*float32)(shopTestPointer(a.Value))))))
 	case PortTestTradeSellQuote:
-		return uint32(uintptr(unsafe.Pointer(sub_5109C0_trade((*C.int)(u.CObj()), session, (*C.uint32_t)(shopTestPointer(a.Value))))))
+		return uint32(uintptr(unsafe.Pointer(sub_5109C0_trade((*int32)(u.CObj()), int32(session), (*uint32)(shopTestPointer(a.Value))))))
 	case PortTestTradeSell:
-		return uint32(uintptr(unsafe.Pointer(sub_510BE0_trade((*C.int)(u.CObj()), session, (*C.uint32_t)(shopTestPointer(a.Value))))))
+		return uint32(uintptr(unsafe.Pointer(sub_510BE0_trade((*int32)(u.CObj()), int32(session), (*uint32)(shopTestPointer(a.Value))))))
 	default:
 		panic("trade fixture operation")
 	}

@@ -7,6 +7,7 @@ package legacy
 #include "client__shell__noxworld.h"
 */
 import "C"
+
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -34,7 +35,7 @@ func browserShowRegion() {
 		key = "CreateMsg"
 	}
 	browserLabel(key)
-	sub_49FDB0(C.int(browserUI.region))
+	sub_49FDB0(int32(browserUI.region))
 }
 func browserEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 	code := ev.EventCode()
@@ -91,10 +92,10 @@ func browserEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 		Sub_4373A0()
 	case 10047, 10048, 10049, 10050, 10051:
 		browserListReset()
-		nox_wol_servers_sortBtnHandler_4A0290(C.int(id))
+		nox_wol_servers_sortBtnHandler_4A0290(C.int(int32(id)))
 		browserListResort()
 	case 10054, 10055, 10056, 10057:
-		browserUI.region = C.int(id - 10054)
+		browserUI.region = C.int(int32(id - 10054))
 		browserShowRegion()
 		Nox_client_refreshServerList_4378B0()
 		x, y := uint32(408), uint32(239)
@@ -163,7 +164,7 @@ func browserEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 			}
 			SendXXX_5550D0(netip.AddrPortFrom(int2ip(uint32(nox_client_getServerAddr_43B300())), uint16(nox_client_getServerPort_43B320())), buf[:])
 			browserUI.connectionState = 3
-			browserUI.connectionDeadline = C.uint64_t(uint32(PlatformTicks()) + 20000)
+			browserUI.connectionDeadline = C.uint64_t(uint64(uint32(PlatformTicks()) + 20000))
 			Sub_449EA0(0)
 		case 10:
 			Sub_449E60(4)
@@ -175,7 +176,7 @@ func browserEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 			nox_game_showGameSel_4379F0()
 		default:
 			if browserUI.retry != 0 {
-				browserUI.refreshDeadline = C.uint64_t(uint32(PlatformTicks()) + 1000)
+				browserUI.refreshDeadline = C.uint64_t(uint64(uint32(PlatformTicks()) + 1000))
 			}
 		}
 	case 4002:
@@ -211,6 +212,6 @@ func browserEvent(w *gui.Window, ev gui.WindowEvent) gui.WindowEventResp {
 
 func sub_43A810() { browserShowRegion() }
 
-func nox_xxx_windowMultiplayerSub_439E70(w C.int, code C.uint, a *C.int, b C.int) C.int {
-	return C.int(gui.EventRespInt(browserEvent(browserWindow(uint32(w)), &gui.RawEvent{Event: int(code), Arg1: uintptr(unsafe.Pointer(a)), Arg2: uintptr(uint32(b))})))
+func nox_xxx_windowMultiplayerSub_439E70(w int32, code uint32, a *int32, b int32) int32 {
+	return int32(gui.EventRespInt(browserEvent(browserWindow(uint32(w)), &gui.RawEvent{Event: int(code), Arg1: uintptr(unsafe.Pointer(a)), Arg2: uintptr(uint32(b))})))
 }

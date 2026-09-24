@@ -184,7 +184,7 @@ func portTestPenaltyCall(proxy *portTestRoamOwnerServer, op int) uint32 {
 	u := &proxy.life.players[0]
 	switch op {
 	case 0:
-		C.sub_54CBD0(combatPtr(u))
+		C.sub_54CBD0(C.int(combatPtr(u)))
 	case 1:
 		questLoseWeapon(u)
 	case 2:

@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "common__system__team.h"
-*/
-import "C"
-
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -19,7 +12,7 @@ func matchRosterAssignTeam(pl *server.Player) {
 		return
 	}
 	s := GetServer().S()
-	if C.int(serverConfigSpecialMode()) == 0 && !noxflags.HasGame(0x8000) {
+	if serverConfigSpecialMode() == 0 && !noxflags.HasGame(0x8000) {
 		if byte(s.Teams.Count()) != 0 {
 			tm := teamRuntimeLeast()
 			if tm != nil && !u.TeamVal.Has() {

@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -58,22 +53,22 @@ func interactionObserverIconHidden(hidden int) int {
 	return nox_window_set_hidden((*nox_window)(unsafe.Pointer(uintptr(interactionObserverIcon))), hidden)
 }
 
-func nox_xxx_guiChatMode_4456E0(w *C.int) C.int {
-	return C.int(interactionIconDraw((*gui.Window)(unsafe.Pointer(w)), nil))
+func nox_xxx_guiChatMode_4456E0(w *int32) int32 {
+	return int32(interactionIconDraw((*gui.Window)(unsafe.Pointer(w)), nil))
 }
 
-func nox_xxx_guiChatShowHide_445730(v C.int) C.int { return C.int(interactionChatIconHidden(int(v))) }
+func nox_xxx_guiChatShowHide_445730(v int32) int32 { return int32(interactionChatIconHidden(int(v))) }
 
-func sub_445770() C.int { return C.int(interactionChatIconDestroy()) }
+func sub_445770() int32 { return int32(interactionChatIconDestroy()) }
 
-func nox_xxx_guiChatIconLoad_445650() C.int { return C.int(interactionChatIconOpen()) }
+func nox_xxx_guiChatIconLoad_445650() int32 { return int32(interactionChatIconOpen()) }
 
-func sub_48C9F0(w *C.int) C.int {
-	return C.int(interactionObserverIconDraw((*gui.Window)(unsafe.Pointer(w)), nil))
+func sub_48C9F0(w *int32) int32 {
+	return int32(interactionObserverIconDraw((*gui.Window)(unsafe.Pointer(w)), nil))
 }
 
-func sub_48C980() C.int { return C.int(interactionObserverIconOpen()) }
+func sub_48C980() int32 { return int32(interactionObserverIconOpen()) }
 
-func nox_xxx_showObserverWindow_48CA70(v C.int) C.int {
-	return C.int(interactionObserverIconHidden(int(v)))
+func nox_xxx_showObserverWindow_48CA70(v int32) int32 {
+	return int32(interactionObserverIconHidden(int(v)))
 }

@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-#include "GAME3_3.h"
-*/
-import "C"
-
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -52,7 +45,7 @@ func teamRuntimeBalance(reset bool) {
 		}
 	}
 	for _, u := range units {
-		if C.int(serverConfigSpecialMode()) != 0 {
+		if serverConfigSpecialMode() != 0 {
 			group := u.UpdateDataPlayer().Player.Field2068
 			if group != 0 {
 				if t := s.Teams.ByXxx(int(group)); t != nil {

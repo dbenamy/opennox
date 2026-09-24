@@ -9,7 +9,7 @@ import "C"
 func sub_56F250() C.int {
 	var result C.int
 	for i := 0; i < 7; i++ {
-		result = createProtectionRecord(uint32(dword_5d4594_2516356), 0)
+		result = C.int(createProtectionRecord(uint32(dword_5d4594_2516356), 0))
 		// Reserved slots consume an ID even if record allocation fails.
 		dword_5d4594_2516356++
 	}

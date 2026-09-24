@@ -7,50 +7,44 @@ superseded status when updating it. The workflow and delegation rules live in
 ## Status: resumed; internal C-glue removal
 
 **Progress: 142,665/142,665 original standalone C lines ported or retired;
-internal glue: 109/463 cgo files eliminated on net (354 remain).**
+internal glue: 161/463 cgo files eliminated on net (302 remain).**
 Selected legacy C export bridges: **711/1,890 retired (1,179 remain)**.
 
-The glue count uses selected project files in each Linux 386 production profile.
-Directly cgo-dependent project packages are down from six to three; 79 embedded
-C callback bodies remain. These are dependency counts, not equivalent units of
-work or an effort percentage. Production and test-reference standalone `.c`
-files both remain at zero.
+These are selected project files in each Linux 386 production profile, not equal
+units of effort. Three project packages directly use cgo; 79 embedded C callback
+bodies remain. Production and test-reference standalone `.c` files both remain zero.
 
-Latest qualified implementation: **395 existing scalar globals now use Go
-integer types**, preserving widths, initial bits, signedness, storage and aliases.
-Twenty-eight production files and eight test files no longer need cgo. Export
-bridges, callback bodies and external native bindings are unchanged. Baseline:
-`a5061480`; see [GO_SCALAR_STORAGE.md](docs/porting/GO_SCALAR_STORAGE.md).
+Latest qualified chunk uses native Go primitive types in 103 private interfaces
+and their callers, preserving widths, storage, aliases and narrowing. It removes
+52 production C imports and three test imports. C exports, callback bodies and
+external native bindings are unchanged. See
+[GO_PRIMITIVE_INTERFACES.md](docs/porting/GO_PRIMITIVE_INTERFACES.md).
+
+One full-sweep mismatch exposed a pre-existing fixture bug: a nested inventory
+snapshot normalized a canonical identity twice. A forced-collision regression
+reproduces it on pre-conversion source; the fixture correction and all original
+captures pass unchanged. Final qualification includes that regression in all
+profiles. No engine behavior or golden expectation changed for this repair.
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
-recorded reversible decisions. Stop at the milestone or for a substantial question.
-Active: original baseline accepted for 102 Go-only primitive interfaces and
-255 direct Go calls, from unchanged qualified source `e64ff24e`. Candidate scope:
-83 production files / 465 numeric C selectors. Repeated target probes verify all
-12 primitive mappings. Conversion is not installed; primary owns boundary review,
-with one Luna helper tracing native call replacements. Preserve pointer ownership,
-widths and narrowing; keep casts at surviving C boundaries and measure actual
-import removals after integration. See [GO_PRIMITIVE_INTERFACES.md](docs/porting/GO_PRIMITIVE_INTERFACES.md).
+recorded reversible decisions. Next candidate: the 31 files whose imports still
+serve C-typed Go adapters or scalar fields, with connected helper/caller changes.
+Primary review notes and Luna's exact caller plans are under
+`build/port-go-primitive-interfaces/next-*`; they are planning, not installed edits.
+Stop at the milestone or for a substantial question.
 
-All storage captures match the frozen baseline across normal profiles, with the
-scalar contract also passing safe. The raw fixture intentionally crosses addresses
-rejected by safe; its coverage stays in normal profiles. All three complete root
-sweeps, safe/static, fresh production/ABI, exact known-suite comparison and headless
-save/load/resume pass. Keep at most two prebuilt root processes and production/
-headless work sequential. See [COMPLETE_PORT_CORPUS.md](docs/porting/COMPLETE_PORT_CORPUS.md)
-and [PREBUILT_PROFILES.md](docs/porting/PREBUILT_PROFILES.md).
-Latest artifacts: `build/port-go-scalar-storage/`.
+Latest artifacts: `build/port-go-primitive-interfaces/`.
 
 ## What remains
 
-Counts below describe the qualified scalar-type conversion. Zero `.c` lines is
+Counts below describe the qualified primitive-interface conversion. Zero `.c` lines is
 not a count of all C dependencies or a measure of remaining engineering effort.
 
 | Area | Remaining work or dependency |
 | --- | --- |
 | Embedded C callback glue | 79 production function bodies in Go preambles: 76 generic function-pointer dispatchers and three specialized adapters. |
 | Callback routes | Some Go implementations still call each other through C-compatible addresses. More direct Go dispatch is possible; shared raw fallbacks remain until their users and compatibility requirements are resolved. |
-| Declarations and C types | 157 tracked headers / 3,902 physical lines; each production profile selects 354 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
+| Declarations and C types | 157 tracked headers / 3,902 physical lines; each production profile selects 302 cgo files in three project packages (alloc, ccall, legacy). Selected-build counts replace the earlier whole-tree text count. These are mostly interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Removing them requires ownership/layout changes beyond function translation. |
 | External libraries | SDL2, OpenGL, OpenAL and similar native dependencies and their cgo bindings stay for this phase; their future is a subsequent discussion. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual release checks. |
@@ -62,25 +56,25 @@ not reduce the 79-body count because they retain the shared fallback machinery.
 
 ## Latest qualification and evidence
 
-- Both storage owner contracts pass in default/server/highres; safe passes the
-  scalar contract separately. All seven captures equal existing frozen hashes;
-  exact test-name sets match with no skips. Scalar coverage is 395 owners × 139
-  patterns (54,905 cases), including raw/typed aliases, neighbors and GC.
-- Complete porttest roots: default/highres each 2,425 pass plus one expected
-  diagnostic skip; server 2,414 pass plus that skip. Exact discovered, started and
-  completed root-name sets match; no failure events or unexpected skips.
+- Both storage contracts pass in default/server/highres; safe passes the scalar
+  contract separately. All seven captures equal frozen hashes with exact test
+  sets and no skips. Raw safe remains intentionally excluded because that fixture
+  crosses an address rejected by safe; no guard was weakened.
+- Complete root suites: default/highres each 2,426 pass; server 2,415 pass. Each
+  has only the expected `TestMapPopulationPrerequisiteProbe` skip. Discovered,
+  started and completed root names match the historical inventory plus the new
+  collision regression, with no failure events.
 - Safe build/static checks and three fresh production binaries/ABI checks pass.
-  No complete safe runtime suite or safe raw-storage fixture pass is claimed.
+  No complete safe runtime suite or safe raw-storage pass is claimed.
 - Headless character creation and explicit save/load/resume pass.
-- Full-suite results match the known baseline exactly: 304 failure events,
+- Full-suite results exactly match the known baseline: 304 failure events,
   with 17 passing, two failing and 32 skipped packages.
-- All phases used identical source fingerprints. Exact reconstruction verifies
-  125 changed files against the reviewed scalar draft plus six bounded compiler
-  fixes. Fixture assertions and frozen expectations are unchanged; all 1,654
-  original asset hashes remain unchanged after production qualification.
+- Every phase uses identical source fingerprints. Reconstruction verifies all
+  129 changed source files, including the proven fixture correction. All frozen
+  expectations and all 1,654 original asset hashes remain unchanged.
 
-Report: [GO_SCALAR_STORAGE.md](docs/porting/GO_SCALAR_STORAGE.md).
-Evidence: [qualification](docs/porting/go-scalar-storage-qualification.json).
+Report: [GO_PRIMITIVE_INTERFACES.md](docs/porting/GO_PRIMITIVE_INTERFACES.md).
+Evidence: [qualification](docs/porting/go-primitive-interfaces-qualification.json).
 Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expected-suite.jsonl).
 
 ## Goal, next work and open review items
@@ -92,8 +86,9 @@ Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md) for the dependency
 removal order and completion criteria. Client rendering/audio backend replacement
 is outside this phase.
 
-The dependency inventory tool is `tools/porting/cgo_inventory.py`; the refreshed
-baseline is under `build/port-cgo-leaves/inventory-before/`.
+The dependency inventory tool is `tools/porting/cgo_inventory.py`; the current
+qualified inventory is [go-primitive-interfaces-inventory-after.json](docs/porting/go-primitive-interfaces-inventory-after.json).
+The original phase baseline is under `build/port-cgo-leaves/inventory-before/`.
 The completed leaf cleanup leaves three project packages directly using cgo in
 all profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
 is not compilation or qualification. The helper's external-review draft is not
@@ -126,8 +121,8 @@ The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
 [build environment instructions](PORT.md#build-and-test-environment), including
 sourcing `build/baseline/env.sh` in every Go shell.
 
-Latest local artifacts are under `build/port-go-scalar-storage/`:
-`contracts/`, `safe/opennox-safe`, and
+Latest local artifacts are under `build/port-go-primitive-interfaces/`:
+`contracts-final/`, `safe/opennox-safe`, and
 `production/production/bin/{opennox,opennox-hd,opennox-server}`.
 Source, tests, reports and qualification metadata are committed; ignored local
 binaries/logs/drafts are not backed up by pushing Git. Completed finalizers are
@@ -140,7 +135,9 @@ do not rerun them or infer deletion safety from age alone.
 
 | Artifact | Recovery or current location |
 | --- | --- |
-| Current qualified production/safe binaries | Retained under `build/port-go-scalar-storage/`; preceding original full-corpus evidence is under `build/port-complete-corpus/`. |
+| Superseded Go-only-export binaries | Seven test/safe/production executables removed after primary source/replacement/hash and host-use checks; 395,526,144 allocated bytes reclaimed. Five source maps (3,062 unique files) match `12bc387d`; retain phase commands and rebuild that revision. Plan/journal: `build/port-go-primitive-interfaces/cleanup-go-only-{approved.json,deleted.jsonl}`. |
+| Superseded 378-export root test binaries | Three executables removed after host-use, inode and hash checks; 204,169,216 allocated bytes reclaimed. All 3,090 recorded source fingerprints match `f6f5ee4c`; rebuild that revision with the retained profile commands. Plan/journal: `build/port-go-primitive-interfaces/cleanup-binaries-{approved-plan.json,deleted.jsonl}`. |
+| Current qualified production/safe binaries | Retained under `build/port-go-primitive-interfaces/`; the preceding qualified scalar binaries are under `build/port-go-scalar-storage/`. |
 | Completed scenario data: `go-memory-save`, `raw-allocation-save`, `string-boundary-save`, `unused-exports-save`, `remaining-unused-exports-save`, `go-only-exports-save` | Only SHA256-identical original-asset copies were removed. Saves/comparisons remain. Follow each run's `deduplicated-assets.json`; shared restore tool: `build/port-artifact-cleanup/restore-recent-scenario.py`. |
 | Large historical captures in `port-game-messages`, `port-map-sections`, `port-client-interaction`, `port-session-dialogs` | Restore with `gzip -dk` and verify hashes against `build/port-artifact-cleanup/large-historical-20260924/`. Its 116 discarded text logs are not recoverable from these archives. |
 | Initial complete-corpus default/server logs | Losslessly compressed; restore commands and hashes in `build/port-complete-corpus/initial-log-archive.json`. Keep the server failure evidence. |
@@ -159,3 +156,9 @@ Historical batch details belong in `docs/porting/` and Git history. Earlier
 checkpoint/archive details are recoverable at `b034c43e` and `69669bcb`; their
 old current/next instructions are historical, not the active plan. Local logs,
 archives and rebuildable binaries are not backed up by pushing Git.
+
+Initial primitive-interface root logs are losslessly archived under
+`build/port-go-primitive-interfaces/contracts/profiles/*.jsonl.gz`; restore with
+`gzip -dk FILE.jsonl.gz`. The hash/size manifest is
+`build/port-go-primitive-interfaces/contract-log-archive.json` (306,057,005 bytes
+reclaimed). Failure captures and result metadata remain directly readable.

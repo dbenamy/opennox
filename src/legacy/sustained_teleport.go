@@ -1,14 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "common__magic__speltree.h"
-#include "GAME1_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-#include "GAME4_2.h"
-*/
-import "C"
 import (
 	"github.com/opennox/libs/types"
 	"github.com/opennox/opennox/v1/server"
@@ -43,15 +34,15 @@ func sustainedTeleportWake(u *server.Object, from, to *types.Pointf) uint32 {
 	return ret
 }
 func sustainedTeleportSound(d *server.DurSpell, phase int32, u *server.Object, hidden bool) {
-	mode, code := C.int(0), C.int(0)
+	mode, code := int32(0), int32(0)
 	if hidden {
 		if u.ObjClass&4 == 0 {
 			return
 		}
 		mode = 2
-		code = C.int(*spellLifeWord(u.CObj(), 36))
+		code = int32(*spellLifeWord(u.CObj(), 36))
 	}
-	id := C.int(nox_xxx_spellGetAud44_424800(int(C.int(d.Spell)), int(C.int(phase))))
+	id := int32(nox_xxx_spellGetAud44_424800(int(int32(d.Spell)), int(int32(phase))))
 	nox_xxx_aud_501960(int32(id), asObjectC(u), int(mode), int32(code))
 }
 func sustainedBlinkTick(p unsafe.Pointer) uint32 {
@@ -250,7 +241,7 @@ func sustainedSwapTick(p unsafe.Pointer) uint32 {
 			pl := controlPlayer(u)
 			x, y := float64(*controlHalf(pl, 10)), float64(*controlHalf(pl, 12))
 			rect := [4]float32{float32(float64(u.PosVec.X) - x), float32(float64(u.PosVec.Y) - y), float32(x + float64(u.PosVec.X)), float32(y + float64(u.PosVec.Y))}
-			if C.int(geometryRectFloat((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&t.PosVec))), (*[4]float32)(unsafe.Pointer(unsafe.Pointer(&rect))))) == 0 {
+			if int32(geometryRectFloat((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&t.PosVec))), (*[4]float32)(unsafe.Pointer(unsafe.Pointer(&rect))))) == 0 {
 				resourcePriority(u, "ExecDur.c:NeedClearLOSForSwap")
 				return 1
 			}

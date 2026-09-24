@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-
 import (
 	"image"
 	"unsafe"
@@ -147,30 +142,30 @@ func interactionChatDestroy() int {
 	return result
 }
 
-func sub_469FA0() C.int { return C.int(memmap.Uint32(0x5D4594, 1064848)) }
+func sub_469FA0() int32 { return int32(memmap.Uint32(0x5D4594, 1064848)) }
 
-func nox_client_chatStart_46A430(v C.int) { interactionChatStart(uint32(v)) }
+func nox_client_chatStart_46A430(v int32) { interactionChatStart(uint32(v)) }
 
-func sub_46A4A0() C.int { return C.int(interactionChatActive) }
+func sub_46A4A0() int32 { return int32(interactionChatActive) }
 
-func nox_xxx_cmdSayDo_46A4B0(text *C.ushort, v C.int) C.size_t {
-	return C.size_t(interactionSay((*uint16)(unsafe.Pointer(text)), int(v)))
+func nox_xxx_cmdSayDo_46A4B0(text *uint16, v int32) uint32 {
+	return uint32(interactionSay((*uint16)(unsafe.Pointer(text)), int(v)))
 }
 
-func sub_46A5D0(w *C.uint32_t, d C.int) C.int {
-	return C.int(interactionChatDraw((*gui.Window)(unsafe.Pointer(w)), (*gui.WindowData)(unsafe.Pointer(uintptr(uint32(d))))))
+func sub_46A5D0(w *uint32, d int32) int32 {
+	return int32(interactionChatDraw((*gui.Window)(unsafe.Pointer(w)), (*gui.WindowData)(unsafe.Pointer(uintptr(uint32(d))))))
 }
 
-func sub_46A6A0() C.int { return C.int(interactionChatClose()) }
+func sub_46A6A0() int32 { return int32(interactionChatClose()) }
 
-func sub_46A730() *C.uint32_t { return (*C.uint32_t)(interactionChatOpen().C()) }
+func sub_46A730() *uint32 { return (*uint32)(interactionChatOpen().C()) }
 
-func sub_46A7E0(w *C.uint32_t, code, a, b C.int) C.int {
-	return C.int(gui.EventRespInt(interactionChatKey((*gui.Window)(unsafe.Pointer(w)), &gui.RawEvent{Event: int(code), Arg1: uintptr(uint32(a)), Arg2: uintptr(uint32(b))})))
+func sub_46A7E0(w *uint32, code, a, b int32) int32 {
+	return int32(gui.EventRespInt(interactionChatKey((*gui.Window)(unsafe.Pointer(w)), &gui.RawEvent{Event: int(code), Arg1: uintptr(uint32(a)), Arg2: uintptr(uint32(b))})))
 }
 
-func sub_46A820(w, code, a, b C.int) C.int {
-	return C.int(gui.EventRespInt(interactionChatEvent((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), &gui.RawEvent{Event: int(code), Arg1: uintptr(uint32(a)), Arg2: uintptr(uint32(b))})))
+func sub_46A820(w, code, a, b int32) int32 {
+	return int32(gui.EventRespInt(interactionChatEvent((*gui.Window)(unsafe.Pointer(uintptr(uint32(w)))), &gui.RawEvent{Event: int(code), Arg1: uintptr(uint32(a)), Arg2: uintptr(uint32(b))})))
 }
 
-func sub_46A860() C.int { return C.int(interactionChatDestroy()) }
+func sub_46A860() int32 { return int32(interactionChatDestroy()) }

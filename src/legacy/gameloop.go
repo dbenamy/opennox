@@ -147,7 +147,7 @@ func Sub_4D39F0(a1 string) {
 	prefabScriptGeneration(a1)
 }
 func Sub_48D4B0(a1 int) {
-	sub_48D4B0(C.int(a1))
+	sub_48D4B0(int32(a1))
 }
 func Nox_xxx_set3512_40A340(a1 int) {
 	serverConfig3512Set(int32(a1))

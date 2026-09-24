@@ -32,7 +32,7 @@ func uiInventoryDrawWindow(w *gui.Window) int {
 	mask := memmap.Uint32(0x5D4594, 1062540)
 	for i := 0; i < 30; i++ {
 		if mask&(uint32(1)<<i) != 0 {
-			spell := C.int(nox_xxx_getEnchantSpell_424920(int(C.int(i))))
+			spell := int32(nox_xxx_getEnchantSpell_424920(int(int32(i))))
 			uiMeterImage(uint32(uintptr(nox_xxx_spellIcon_424A90(int(spell)))), image.Pt(x, y))
 			x += 35
 		}
@@ -68,7 +68,7 @@ func uiInventoryDrawWindow(w *gui.Window) int {
 			uiRenderCopyRect(pos.X+254, pos.Y+13, 260, 150)
 			switch memmap.Uint8(0x5D4594, 1049869) {
 			case 0:
-				nox_xxx_guiDrawInventoryTray_4643B0(C.int(pos.X+254), C.int(pos.Y+13))
+				nox_xxx_guiDrawInventoryTray_4643B0(C.int(int32(pos.X+254)), C.int(int32(pos.Y+13)))
 			case 1:
 				journalDraw(pos.X+254, pos.Y+13, int(dword_5d4594_1062512))
 			}
@@ -81,7 +81,7 @@ func uiInventoryDrawWindow(w *gui.Window) int {
 			switch memmap.Uint8(0x5D4594, 1049870) {
 			case 0:
 				point := [2]int32{int32(pos.X), int32(pos.Y)}
-				sub_4BF7E0((*C.uint32_t)(unsafe.Pointer(&point[0])))
+				sub_4BF7E0((*uint32)(unsafe.Pointer(&point[0])))
 				uiMeterImage(memmap.Uint32(0x5D4594, 1049908), pos)
 			case 1:
 				uiInventoryStats(pos)

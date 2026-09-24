@@ -110,25 +110,25 @@ func portTestCreationCall(u *server.Object, op int) uint32 {
 	case 0:
 		return uint32(int32(C.nox_xxx_monsterAutoSpells_54C0C0(asObjectC(u))))
 	case 1:
-		return uint32(C.nox_xxx_createWeapon_54C710(p))
+		return uint32(C.nox_xxx_createWeapon_54C710(C.int(p)))
 	case 2:
-		return uint32(C.sub_54C950(p))
+		return uint32(C.sub_54C950(C.int(p)))
 	case 3:
-		return uint32(C.nox_xxx_createFnObelisk_54CA10(p))
+		return uint32(C.nox_xxx_createFnObelisk_54CA10(C.int(p)))
 	case 4:
-		C.nox_xxx_createFnAnim_54CA50(p)
+		C.nox_xxx_createFnAnim_54CA50(C.int(p))
 	case 5:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_createTrigger_54CA60(p))))
+		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_createTrigger_54CA60(C.int(p)))))
 	case 6:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_createMonsterGen_54CA90(p))))
+		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_createMonsterGen_54CA90(C.int(p)))))
 	case 7:
-		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_createRewardMarker_54CAC0(p))))
+		return uint32(uintptr(unsafe.Pointer(C.nox_xxx_createRewardMarker_54CAC0(C.int(p)))))
 	case 8:
-		return uint32(C.nox_xxx_dieImpEgg_54CAE0(p))
+		return uint32(C.nox_xxx_dieImpEgg_54CAE0(C.int(p)))
 	case 9:
-		C.nox_xxx_diePolyp_54CB10(p)
+		C.nox_xxx_diePolyp_54CB10(C.int(p))
 	case 10:
-		C.nox_xxx_diePotion_54CBB0(p)
+		C.nox_xxx_diePotion_54CBB0(C.int(p))
 	default:
 		panic("invalid creation operation")
 	}

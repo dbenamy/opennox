@@ -130,7 +130,7 @@ func PortTestAliasCallers(initial []byte, calls []PortTestAliasCallerCall) []Por
 			packet, freePacket := alloc.Make([]byte{0xFF, byte(call.Key1), byte(call.Key1 >> 8), byte(call.Key2), byte(call.Key2 >> 8), 321 & 0xff, 321 >> 8, 654 & 0xff, 654 >> 8, 0, 7}, 11)
 			coords, freeCoords := alloc.Make([]uint32{}, 2)
 			s.ReturnRaw = uint32(nox_xxx_netCliProcUpdateStream_494A60(
-				(*C.uchar)(unsafe.Pointer(&packet[0])), C.int(server.HostPlayerIndex), (*C.uint)(unsafe.Pointer(&coords[0]))))
+				(*uint8)(unsafe.Pointer(&packet[0])), int32(server.HostPlayerIndex), (*uint32)(unsafe.Pointer(&coords[0]))))
 			s.Position = [2]int32{int32(coords[0]), int32(coords[1])}
 			freeCoords()
 			freePacket()
@@ -144,7 +144,7 @@ func PortTestAliasCallers(initial []byte, calls []PortTestAliasCallerCall) []Por
 			}
 			coords, freeCoords := alloc.Make([]int32{start[0], start[1]}, 2)
 			ret := nox_xxx_netCliUpdateStream2_494C30(
-				(*C.uchar)(unsafe.Pointer(&packet[0])), C.int(server.HostPlayerIndex), (*C.int)(unsafe.Pointer(&coords[0])))
+				(*uint8)(unsafe.Pointer(&packet[0])), int32(server.HostPlayerIndex), (*int32)(unsafe.Pointer(&coords[0])))
 			s.ReturnRaw = uint32(uintptr(unsafe.Pointer(ret)))
 			s.Position = [2]int32{coords[0], coords[1]}
 			freeCoords()

@@ -6,6 +6,7 @@ package legacy
 #include "GAME4.h"
 */
 import "C"
+
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/server"
@@ -114,7 +115,7 @@ func spellLifeUpdateBuffs(u *server.Object) {
 			resourceDamage(u, 9999999)
 			GetServer().S().Audio.EventObj(779, u, 0, 0)
 			if u.ObjClass&4 != 0 {
-				nox_xxx_playerIncrementElimDeath_4D8D40(C.int(uintptr(u.CObj())))
+				nox_xxx_playerIncrementElimDeath_4D8D40(C.int(int32(uintptr(u.CObj()))))
 				nox_xxx_netReportLesson_4D8EF0(asObjectC(u))
 			}
 		}

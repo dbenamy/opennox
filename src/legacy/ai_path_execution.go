@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME4_1.h"
-*/
-import "C"
-
 import (
 	"math"
 	"unsafe"
@@ -170,7 +165,7 @@ func pathActuallyMove(u *server.Object) bool {
 	} else {
 		direction = ud.Path[chosen].Sub(ud.Path[chosen-1])
 	}
-	angle := C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&direction)))))
+	angle := int32(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&direction)))))
 	u.Direction1, u.Direction2 = server.Dir16(angle), server.Dir16(angle)
 	speed := float64(u.SpeedCur)
 	if ud.StatusFlags&0x4000 != 0 {

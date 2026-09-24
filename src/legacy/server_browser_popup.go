@@ -4,6 +4,7 @@ package legacy
 #include "GAME3.h"
 */
 import "C"
+
 import (
 	"fmt"
 	"github.com/opennox/opennox/v1/client/gui"
@@ -28,7 +29,7 @@ func browserPopup(parent *gui.Window, point *[2]uint32, head *legacyListNode) *g
 	// Preserve the original raw callback slot passed to the resource parser.
 	fn := gui.WrapFuncC(*(*unsafe.Pointer)(unsafe.Add(parent.C(), 376)))
 	w := Nox_new_window_from_file("proxlist.wnd", fn)
-	browserUI.popup = C.uint32_t(uintptr(w.C()))
+	browserUI.popup = C.uint32_t(uint32(uintptr(w.C())))
 	var pos [2]uint32
 	browserPopupClamp(int32(point[0]+216), int32(point[1]+27), &pos)
 	w.SetPos(image.Pt(int(int32(pos[0])), int(int32(pos[1]))))
@@ -71,17 +72,17 @@ func browserPopupAt(index int32) unsafe.Pointer {
 	return unsafe.Pointer(uintptr(memmap.Uint32(0x5D4594, uintptr(uint32(1307316+4*index)))))
 }
 
-func sub_4A2610(parent C.int, point *C.uint32_t, head *C.int) C.int {
-	return C.int(uintptr(browserPopup(browserWindow(uint32(parent)), (*[2]uint32)(unsafe.Pointer(point)), (*legacyListNode)(unsafe.Pointer(head))).C()))
+func sub_4A2610(parent int32, point *uint32, head *int32) int32 {
+	return int32(uintptr(browserPopup(browserWindow(uint32(parent)), (*[2]uint32)(unsafe.Pointer(point)), (*legacyListNode)(unsafe.Pointer(head))).C()))
 }
 
-func sub_4A2890() C.int { return C.int(browserPopupClose()) }
+func sub_4A2890() int32 { return int32(browserPopupClose()) }
 
-func sub_4A28B0() C.int {
+func sub_4A28B0() int32 {
 	if browserUI.popup != 0 {
 		return 1
 	}
 	return 0
 }
 
-func sub_4A28C0(index C.int) C.int { return C.int(uintptr(browserPopupAt(int32(index)))) }
+func sub_4A28C0(index int32) int32 { return int32(uintptr(browserPopupAt(int32(index)))) }

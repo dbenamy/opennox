@@ -69,7 +69,7 @@ func init() {
 		server.RegisterAIAction(combatAIAction{a})
 	}
 }
-func combatPtr(u *server.Object) C.int { return C.int(uintptr(u.CObj())) }
+func combatPtr(u *server.Object) int32 { return int32(uintptr(u.CObj())) }
 func combatSound(u *server.Object, index int) {
 	if p := Nox_xxx_monsterGetSoundSet_424300(u); p != nil {
 		id := *(*uint32)(unsafe.Add(p, 4*index))
@@ -214,7 +214,7 @@ func combatMeleeStart(u *server.Object) {
 		return
 	}
 	if u.SubClass()&0x10 != 0 {
-		cost := int(nox_xxx_weaponGetStaminaByType_4F7E80(C.int(ud.Field514)))
+		cost := int(nox_xxx_weaponGetStaminaByType_4F7E80(C.int(int32(ud.Field514))))
 		if cost > int(ud.Field282_0) {
 			ud.Field282_0 -= byte(cost)
 		} else {
@@ -264,11 +264,11 @@ func combatMelee(u *server.Object) {
 	d := ud.MonsterDef
 	if u.SubClass()&0x10 != 0 {
 		if ud.StatusFlags&0x20000 != 0 {
-			nox_xxx_mobMorphToPlayer_4FAAF0((*C.uint32_t)(u.CObj()))
+			nox_xxx_mobMorphToPlayer_4FAAF0((*C.uint32_t)((*uint32)(u.CObj())))
 		}
 		r := nox_xxx_playerAttack_538960(asObjectC(u))
 		if ud.StatusFlags&0x20000 != 0 {
-			nox_xxx_mobMorphFromPlayer_4FAAC0((*C.uint32_t)(u.CObj()))
+			nox_xxx_mobMorphFromPlayer_4FAAC0((*C.uint32_t)((*uint32)(u.CObj())))
 		}
 		if r == 0 {
 			u.MonsterPopAction()

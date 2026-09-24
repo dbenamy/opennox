@@ -1,9 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -126,8 +122,8 @@ func rewardBook(u *server.Object, stage uint32, kind int) *server.Object {
 	}
 	name := "AbilityBook"
 	if kind == 0 {
-		wizard := nox_xxx_playerCheckSpellClass_57AEA0(1, C.int(id)) == 0
-		conjurer := nox_xxx_playerCheckSpellClass_57AEA0(2, C.int(id)) == 0
+		wizard := playerSpellClassCheck(1, int32(id)) == 0
+		conjurer := playerSpellClassCheck(2, int32(id)) == 0
 		switch {
 		case wizard && conjurer:
 			name = "CommonSpellBook"

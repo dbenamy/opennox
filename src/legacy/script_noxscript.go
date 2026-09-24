@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "server__script__script.h"
-#include "server__script__internal.h"
-int nox_xxx_gameIsSwitchToSolo_4DB240();
-*/
-import "C"
 import (
 	"unsafe"
 
@@ -26,8 +20,8 @@ type NoxScript interface {
 	ScriptCallback(b *server.ScriptCallback, caller, trigger *server.Object, eventCode server.ScriptEventType) unsafe.Pointer
 }
 
-func nox_xxx_netGetUnitCodeServ_578AC0(cobj *nox_object_t) C.uint {
-	return C.uint(GetServer().S().GetUnitNetCode(asObjectS(cobj)))
+func nox_xxx_netGetUnitCodeServ_578AC0(cobj *nox_object_t) uint32 {
+	return uint32(GetServer().S().GetUnitNetCode(asObjectS(cobj)))
 }
 
 func nox_xxx_scriptCallByEventBlock_502490(a1 unsafe.Pointer, a2, a3 unsafe.Pointer, eventCode int32) unsafe.Pointer {

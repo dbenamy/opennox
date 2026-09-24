@@ -146,21 +146,21 @@ func portTestDeathCall(u *server.Object, op int) uint32 {
 	p := combatPtr(u)
 	switch op {
 	case 0:
-		C.nox_xxx_dieBarrel_54DFA0(p)
+		C.nox_xxx_dieBarrel_54DFA0(C.int(p))
 	case 1:
-		C.nox_xxx_dieCreateObject_54E010(p)
+		C.nox_xxx_dieCreateObject_54E010(C.int(p))
 	case 2:
-		return uint32(int32(C.nox_xxx_dieSpawnObject_54E070(p)))
+		return uint32(int32(C.nox_xxx_dieSpawnObject_54E070(C.int(p))))
 	case 3:
-		C.nox_xxx_dieMarker_54E460(p)
+		C.nox_xxx_dieMarker_54E460(C.int(p))
 	case 4:
-		C.nox_xxx_dieBoulder_54E4B0(p)
+		C.nox_xxx_dieBoulder_54E4B0(C.int(p))
 	case 5:
-		return uint32(C.nox_xxx_dieGameBall_54E620(p))
+		return uint32(C.nox_xxx_dieGameBall_54E620(C.int(p)))
 	case 6:
-		C.nox_xxx_dieArmor_54E170_obj_die(p)
+		C.nox_xxx_dieArmor_54E170_obj_die(C.int(p))
 	case 7:
-		C.nox_xxx_dieWeapon_54E370_obj_die(p)
+		C.nox_xxx_dieWeapon_54E370_obj_die(C.int(p))
 	default:
 		panic("death operation")
 	}

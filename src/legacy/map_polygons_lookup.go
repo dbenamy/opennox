@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1_1.h"
-#include "GAME1_2.h"
-*/
-import "C"
 import (
 	noxflags "github.com/opennox/opennox/v1/common/flags"
 	"github.com/opennox/opennox/v1/common/memmap"
@@ -90,7 +84,7 @@ func mapPolygonContains(p *mapPolygon, point *[2]int32) bool {
 	var crossings uint8
 	for i := uint16(1); i <= p.Count; i++ {
 		mapPolygonSegmentNext(p, &segment, uint32(i))
-		if C.int(geometrySegments((*[4]int32)(unsafe.Pointer(unsafe.Pointer(&ray))), (*[4]int32)(unsafe.Pointer(unsafe.Pointer(&segment))))) != 0 {
+		if int32(geometrySegments((*[4]int32)(unsafe.Pointer(unsafe.Pointer(&ray))), (*[4]int32)(unsafe.Pointer(unsafe.Pointer(&segment))))) != 0 {
 			crossings++
 		}
 	}
@@ -100,7 +94,7 @@ func mapPolygonAdmits(p *mapPolygon, point *[2]int32, scripts bool) bool {
 	if p.Active == 0 || scripts && p.Enter.Func == -1 && p.Leave.Func == -1 {
 		return false
 	}
-	return C.int(geometryRectInt((*[2]int32)(unsafe.Pointer(unsafe.Pointer(point))), (*[4]int32)(unsafe.Pointer(unsafe.Pointer(&p.Bounds))))) != 0 && mapPolygonContains(p, point)
+	return int32(geometryRectInt((*[2]int32)(unsafe.Pointer(unsafe.Pointer(point))), (*[4]int32)(unsafe.Pointer(unsafe.Pointer(&p.Bounds))))) != 0 && mapPolygonContains(p, point)
 }
 func mapPolygonFind(point *[2]int32, cached uint32, scripts bool) *mapPolygon {
 	if cached != 0 && cached != mapPolygonUnset {
@@ -127,7 +121,7 @@ func mapPolygonEdge(p *mapPolygon, point *[2]int32, distance float32) bool {
 	segment := mapPolygonSegmentStart(p)
 	for i := uint32(1); i <= uint32(p.Count); i++ {
 		mapPolygonSegmentNext(p, &segment, i)
-		if C.int(geometryProjectEdge((*[2]int32)(unsafe.Pointer(point)), (*[4]int32)(unsafe.Pointer(unsafe.Pointer(&segment))), float32(distance))) != 0 {
+		if int32(geometryProjectEdge((*[2]int32)(unsafe.Pointer(point)), (*[4]int32)(unsafe.Pointer(unsafe.Pointer(&segment))), float32(distance))) != 0 {
 			return true
 		}
 	}

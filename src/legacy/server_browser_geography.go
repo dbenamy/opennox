@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "GAME1_3.h"
-#include "GAME2_3.h"
-*/
-import "C"
 import (
 	"encoding/binary"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -66,8 +61,8 @@ func browserSwitchChatMap() {
 	binary.LittleEndian.PutUint16(slot[52:], binary.LittleEndian.Uint16(slot[52:])&0x280f|0x80)
 }
 
-func sub_49FDB0(_ C.int) { browserMapPolygons() }
+func sub_49FDB0(_ int32) { browserMapPolygons() }
 
-func sub_49FF20() *C.uint32_t { return (*C.uint32_t)(browserMapPolygonsClear()) }
+func sub_49FF20() *uint32 { return (*uint32)(browserMapPolygonsClear()) }
 
 func nox_client_xxx_switchChatMap_43B510() { browserSwitchChatMap() }

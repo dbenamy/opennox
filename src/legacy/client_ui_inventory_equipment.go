@@ -1,12 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME2_1.h"
-#include "client__gui__guiinv.h"
-*/
-import "C"
-
 import (
 	"github.com/opennox/opennox/v1/client"
 	"unsafe"
@@ -106,7 +99,7 @@ func uiInventoryUnlink(code uint32) *client.Drawable {
 	return nil
 }
 
-func sub_462040(code C.int) {
+func sub_462040(code int32) {
 	found := uiInventoryFindCode(uint32(code))
 	var src *client.Drawable
 	if found != nil {
@@ -179,14 +172,14 @@ func sub_462040(code C.int) {
 	}
 }
 
-func sub_4624D0(code C.int) C.int {
+func sub_4624D0(code int32) int32 {
 	dr := uiInventoryUnlink(uint32(code))
 	if dr == nil {
 		return 0
 	}
 	found := uiInventoryFindCode(uint32(code))
 	if found == nil {
-		return C.int(GetClient().Nox_xxx_spriteDelete_45A4B0(dr))
+		return int32(GetClient().Nox_xxx_spriteDelete_45A4B0(dr))
 	}
 	found.Cell.Equipped = 0
 	alt := uiInventoryCellRef(uint32(dword_5d4594_1062480))
@@ -206,5 +199,5 @@ func sub_4624D0(code C.int) C.int {
 			found.Cell.Alternate = 1
 		}
 	}
-	return C.int(GetClient().Nox_xxx_spriteDelete_45A4B0(dr))
+	return int32(GetClient().Nox_xxx_spriteDelete_45A4B0(dr))
 }

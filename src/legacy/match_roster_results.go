@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME1_1.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	noxflags "github.com/opennox/opennox/v1/common/flags"
@@ -207,5 +201,5 @@ func matchRosterCheckLimit() int {
 			s.Audio.EventObj(sound.ID(582), u, 2, u.NetCode)
 		}
 	}
-	return int(C.int(serverConfigTimerSet(int32(0))))
+	return int(serverConfigTimerSet(int32(0)))
 }

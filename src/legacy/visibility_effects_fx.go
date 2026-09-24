@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME4_1.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"unsafe"
@@ -72,11 +66,11 @@ func visibilityFXShield(u *server.Object, pos *types.Pointf) int {
 	direction := int32(int16(u.Direction1))
 	if pos != nil {
 		delta := types.Pointf{X: float32(float64(u.PosVec.X) - float64(pos.X)), Y: float32(float64(u.PosVec.Y) - float64(pos.Y))}
-		direction = int32(C.int(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&delta))))))
+		direction = int32(int32(geometryVectorAngle((*types.Pointf)(unsafe.Pointer(unsafe.Pointer(&delta))))))
 	}
 	b := []byte{128}
 	b = binary.LittleEndian.AppendUint16(b, gameplayReportCode(u))
-	b = append(b, byte(C.int(geometryDirection4Index(int32(direction)))))
+	b = append(b, byte(int32(geometryDirection4Index(int32(direction)))))
 	return visibilityFXSend(u.PosVec, b)
 }
 func visibilityFXSummonStart(id uint16, pos types.Pointf, extra byte, a, b uint16) int {

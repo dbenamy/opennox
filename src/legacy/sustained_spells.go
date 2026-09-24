@@ -12,6 +12,7 @@ package legacy
 #include "GAME5_2.h"
 */
 import "C"
+
 import (
 	"encoding/binary"
 	"github.com/opennox/libs/types"
@@ -49,7 +50,7 @@ func sustainedFX(code byte, pos types.Pointf) uint32 {
 	return uint32(visibilityFXPoint(byte(code), pos))
 }
 func sustainedState(u *server.Object, state int) {
-	nox_xxx_playerSetState_4FA020(asObjectC(u), int(C.int(state)))
+	Nox_xxx_playerSetState_4FA020(u, server.PlayerState(int(int32(state))))
 }
 func sustainedHurtRecently(u *server.Object) bool {
 	return u.HealthData != nil && sustainedFrame()-u.Frame134 <= 1
@@ -60,7 +61,7 @@ func sustainedFront(a, b *server.Object) int32 {
 func sustainedInteract(a, b *server.Object) bool { return GetServer().S().CanInteract(a, b, 0) }
 func sustainedEnemy(a, b *server.Object) bool    { return GetServer().S().IsEnemyTo(a, b) }
 func sustainedNew(name string) *server.Object {
-	return asObjectS(nox_xxx_newObjectByTypeID_4E3810(internCStr(name)))
+	return asObjectS(nox_xxx_newObjectByTypeID_4E3810((*C.char)(internCStr(name))))
 }
 func sustainedDelete(u *server.Object)                      { nox_xxx_delayedDeleteObject_4E5CC0(asObjectC(u)) }
 func sustainedStopRay(d *server.DurSpell, u *server.Object) { GetServer().S().NetStopRaySpell(d, u) }
@@ -99,7 +100,7 @@ func sustainedTagStart(p unsafe.Pointer) uint32 {
 		return 1
 	}
 	d.Frame68 = sustainedFrame() + d.Level*uint32(sustainedScalarInt("TagDurationPerLevel"))
-	nox_xxx_netMarkMinimapObject_417190(int(C.int(*controlByte(controlPlayer(u), 2064))), asObjectC(t), 1)
+	nox_xxx_netMarkMinimapObject_417190(int(int32(*controlByte(controlPlayer(u), 2064))), asObjectC(t), 1)
 	sustainedTagPacket(u, t, 1)
 	return 0
 }
@@ -119,7 +120,7 @@ func sustainedTagCancel(p unsafe.Pointer) uint32 {
 		ret = controlRaw(t)
 		if t != nil {
 			if t.ObjClass&4 == 0 {
-				nox_xxx_netUnmarkMinimapObj_417300(int(C.int(*controlByte(controlPlayer(u), 2064))), asObjectC(t), 1)
+				nox_xxx_netUnmarkMinimapObj_417300(int(int32(*controlByte(controlPlayer(u), 2064))), asObjectC(t), 1)
 			}
 			ret = sustainedTagPacket(u, t, 2)
 		}

@@ -174,7 +174,7 @@ func resourcePoison(u *server.Object, amount, max int32) bool {
 	return true
 }
 func resourcePriority(u *server.Object, key string) {
-	nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), internCStr(key), 0)
+	nox_xxx_netPriMsgToPlayer_4DA2C0(asObjectC(u), (*C.char)(internCStr(key)), 0)
 }
 func resourcePoisonReport(u *server.Object, active bool) {
 	if u.ObjClass&2 == 0 {

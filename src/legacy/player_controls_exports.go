@@ -56,7 +56,7 @@ func nox_xxx_unitInitPlayer_4EFE80(a *C.nox_object_t) C.char {
 func sub_4EFF10(a C.int) C.int { return C.int(controlResetPlayer(objectFromInt(a))) }
 
 func nox_xxx_equipedItemByCode_4F7920(a, b C.int) C.int {
-	return inventoryInt(controlEquippedByCode(objectFromInt(a), uint32(b)))
+	return C.int(inventoryInt(controlEquippedByCode(objectFromInt(a), uint32(b))))
 }
 
 func nox_xxx_playerSetCustomWP_4F79A0(a, b, c C.int) {
@@ -111,7 +111,9 @@ func nox_xxx_netSendRewardNotify_4FAD50(a, b, c C.int, d C.char) C.int {
 }
 
 //export sub_4FADD0
-func sub_4FADD0(a C.int, b *C.char, c C.char) { controlLockedDoor(objectFromInt(a), b, byte(c)) }
+func sub_4FADD0(a C.int, b *C.char, c C.char) {
+	controlLockedDoor(objectFromInt(a), (*int8)(b), byte(c))
+}
 
 //export sub_4FB050
 func sub_4FB050(a, b C.int, c *C.int) C.int {

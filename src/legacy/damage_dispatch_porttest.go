@@ -207,7 +207,7 @@ func (p *portTestShopPools) damageAction(a PortTestShopAction) uint32 {
 			state.damage.result = uint64(bool2int(actor.CallDamage(p.temporaryRef(sp.Source), p.temporaryRef(sp.Weapon), int(sp.Amount), object.DamageType(sp.Kind))))
 		}
 	} else {
-		state.damage.result = uint64(C.damageCall(C.int(a.Op-1100), inventoryInt(p.temporaryRef(attack.Actor)), inventoryInt(p.temporaryRef(sp.Source)), inventoryInt(p.temporaryRef(sp.Weapon)), inventoryInt(p.temporaryRef(sp.Other)), C.int(sp.Amount), C.int(sp.Kind), C.uint32_t(sp.FloatBits), state.record, internCStr(sp.Name), C.int(sp.PlayerIndex)))
+		state.damage.result = uint64(C.damageCall(C.int(a.Op-1100), C.int(inventoryInt(p.temporaryRef(attack.Actor))), C.int(inventoryInt(p.temporaryRef(sp.Source))), C.int(inventoryInt(p.temporaryRef(sp.Weapon))), C.int(inventoryInt(p.temporaryRef(sp.Other))), C.int(sp.Amount), C.int(sp.Kind), C.uint32_t(sp.FloatBits), state.record, (*C.char)(internCStr(sp.Name)), C.int(sp.PlayerIndex)))
 	}
 	p.temporary.result = uint32(state.damage.result)
 	return p.temporary.result

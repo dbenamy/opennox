@@ -101,7 +101,7 @@ func nox_xxx_collideChakram_4EAF00(a, b C.int, n *C.float) {
 }
 
 //export sub_4EB250
-func sub_4EB250(a C.int) C.int { return inventoryInt(projectileChakramSelect(objectFromInt(a))) }
+func sub_4EB250(a C.int) C.int { return C.int(inventoryInt(projectileChakramSelect(objectFromInt(a)))) }
 
 //export sub_4EB340
 func sub_4EB340(a *C.float, b C.int) {

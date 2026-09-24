@@ -29,11 +29,11 @@ func controlRewardNotify(u *server.Object, kind int32, target *server.Object, se
 	binary.LittleEndian.PutUint16(msg[3:], uint16(target.NetCode))
 	return int32(reliableEnqueue(int(*controlByte(controlPlayer(u), 2064)), msg[:], nil, 1, 0))
 }
-func controlLockedDoor(u *server.Object, key *C.char, selector byte) {
+func controlLockedDoor(u *server.Object, key *int8, selector byte) {
 	if u == nil || u.ObjClass&4 == 0 || key == nil {
 		return
 	}
-	s := C.GoString(key)
+	s := C.GoString((*C.char)(key))
 	if len(s) == 0 || len(s) > 48 {
 		return
 	}

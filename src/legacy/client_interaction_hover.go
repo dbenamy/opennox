@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-
 import (
 	"image"
 	"unsafe"
@@ -16,7 +11,7 @@ import (
 )
 
 func interactionHoverCode() uint32 {
-	return uint32(nox_xxx_netGetUnitCodeCli_578B00(C.int(uintptr(interactionHoverDrawable))))
+	return drawableUnitCode((*client.Drawable)(interactionHoverDrawable))
 }
 func interactionHoverEnumerate() {
 	if memmap.Uint32(0x5D4594, 1096632) == 0 {
@@ -136,13 +131,13 @@ func interactionHover(dr *client.Drawable, point image.Point) {
 	}
 }
 
-func nox_xxx_packetGetMarshall_476F40() C.uint { return C.uint(interactionHoverCode()) }
+func nox_xxx_packetGetMarshall_476F40() uint32 { return uint32(interactionHoverCode()) }
 
 func nox_xxx_clientEnumHover_476FA0() { interactionHoverEnumerate() }
 
-func nox_xxx_clientOnCursorHover_477050(dr, p C.int) {
+func nox_xxx_clientOnCursorHover_477050(dr, p int32) {
 	point := (*[2]int32)(unsafe.Pointer(uintptr(uint32(p))))
 	interactionHover((*client.Drawable)(unsafe.Pointer(uintptr(uint32(dr)))), image.Pt(int(point[0]), int(point[1])))
 }
 
-func nox_xxx_guiCursor_477600() C.int { return C.int(memmap.Uint32(0x5D4594, 1096672)) }
+func nox_xxx_guiCursor_477600() int32 { return int32(memmap.Uint32(0x5D4594, 1096672)) }

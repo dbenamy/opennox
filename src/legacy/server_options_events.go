@@ -220,7 +220,7 @@ func serverOptionsEvent(_ *gui.Window, event int, arg uintptr, value int) int {
 	if text == "" {
 		return 1
 	}
-	n := int(C.atoi(internCStr(text)))
+	n := int(C.atoi((*C.char)(internCStr(text))))
 	if n < 0 {
 		n = 0
 	}

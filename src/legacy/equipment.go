@@ -7,6 +7,7 @@ package legacy
 #include "GAME4.h"
 */
 import "C"
+
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"github.com/opennox/opennox/v1/legacy/common/alloc"
@@ -163,7 +164,7 @@ func equipmentDuplicate(u, it *server.Object) int {
 		return 0
 	}
 	for p := u.InvFirstItem; p != nil; p = p.InvNextItem {
-		if sub_4E7DE0(inventoryInt(p), asObjectC(it)) != 0 {
+		if sub_4E7DE0(C.int(inventoryInt(p)), asObjectC(it)) != 0 {
 			return 1
 		}
 	}
@@ -260,7 +261,7 @@ func equipmentSecondary(u, it *server.Object) {
 		return
 	}
 	if it != nil && (!Nox_xxx_playerClassCanUseItem_57B3D0(it, u.UpdateDataPlayer().Player.PlayerClass()) || !equipmentCheckStrength(u, it)) {
-		nox_xxx_netSendSecondaryWeapon_4D9670(C.int(uint8(u.UpdateDataPlayer().Player.PlayerInd)), nil, 1)
+		gameplayReportSecondary(int(int32(uint8(u.UpdateDataPlayer().Player.PlayerInd))), nil, byte(1))
 	}
 	*equipmentWord(u.UpdateData, 108) = uint32(uintptr(it.CObj()))
 }

@@ -1,18 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-#include "GAME1.h"
-#include "GAME1_2.h"
-#include "GAME2.h"
-#include "GAME2_1.h"
-#include "GAME2_3.h"
-#include "GAME5_2.h"
-#include "client__gui__guispell.h"
-#include "GAME2_2.h"
-#include "GAME3_1.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/common/memmap"
 	"image"
@@ -62,7 +49,7 @@ func bookSpellReward(id, rank, notify, auto int) {
 	if p == 0 {
 		return
 	}
-	if nox_xxx_playerCheckSpellClass_57AEA0(C.int(bookClass(p)), C.int(id)) == 9 {
+	if playerSpellClassCheck(int32(bookClass(p)), int32(id)) == 9 {
 		return
 	}
 	*bookPlayerWord(p, 3696, id) = uint32(rank)

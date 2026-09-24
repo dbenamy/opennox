@@ -1,11 +1,5 @@
 package legacy
 
-/*
-#include "GAME2.h"
-#include "GAME2_3.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"github.com/opennox/opennox/v1/client"
@@ -130,11 +124,11 @@ func drawableStreamNext(p unsafe.Pointer, player int, pos *[2]int32) int32 {
 	return int32(n)
 }
 
-func nox_xxx_netCliProcUpdateStream_494A60(p *C.uchar, player C.int, pos *C.uint32_t) C.int {
-	return C.int(drawableStreamFirst(unsafe.Pointer(p), int(player), (*[2]int32)(unsafe.Pointer(pos))))
+func nox_xxx_netCliProcUpdateStream_494A60(p *uint8, player int32, pos *uint32) int32 {
+	return int32(drawableStreamFirst(unsafe.Pointer(p), int(player), (*[2]int32)(unsafe.Pointer(pos))))
 }
 
-func nox_xxx_netCliUpdateStream2_494C30(p *C.uchar, player C.int, pos *C.int) *C.uchar {
+func nox_xxx_netCliUpdateStream2_494C30(p *uint8, player int32, pos *int32) *uint8 {
 	n := drawableStreamNext(unsafe.Pointer(p), int(player), (*[2]int32)(unsafe.Pointer(pos)))
-	return (*C.uchar)(unsafe.Pointer(uintptr(uint32(n))))
+	return (*uint8)(unsafe.Pointer(uintptr(uint32(n))))
 }

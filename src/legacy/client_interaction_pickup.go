@@ -1,10 +1,5 @@
 package legacy
 
-/*
-#include "defs.h"
-*/
-import "C"
-
 import (
 	"encoding/binary"
 	"unsafe"
@@ -36,12 +31,12 @@ func interactionPickup(dr *client.Drawable) {
 func interactionReportSecondary(dr *client.Drawable) int {
 	var msg [3]byte
 	msg[0] = 224
-	binary.LittleEndian.PutUint16(msg[1:], uint16(nox_xxx_netGetUnitCodeCli_578B00(C.int(uintptr(dr.C())))))
+	binary.LittleEndian.PutUint16(msg[1:], uint16(drawableUnitCode(dr)))
 	return reliableClientSend(31, msg[:], nil, 1)
 }
 
 func nox_xxx_clientPickup_46C140(dr *nox_drawable) { interactionPickup(asDrawable(dr)) }
 
-func nox_xxx_clientReportSecondaryWeapon_4BF010(dr C.int) C.int {
-	return C.int(interactionReportSecondary((*client.Drawable)(unsafe.Pointer(uintptr(uint32(dr))))))
+func nox_xxx_clientReportSecondaryWeapon_4BF010(dr int32) int32 {
+	return int32(interactionReportSecondary((*client.Drawable)(unsafe.Pointer(uintptr(uint32(dr))))))
 }

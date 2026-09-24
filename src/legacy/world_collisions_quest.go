@@ -1,13 +1,5 @@
 package legacy
 
-/*
-#include "GAME1.h"
-#include "GAME3_2.h"
-#include "GAME3_3.h"
-#include "GAME4.h"
-*/
-import "C"
-
 import (
 	"unsafe"
 
@@ -134,7 +126,7 @@ func worldCollideExit(a, b *server.Object) {
 		mapName = mapQuestChoose()
 		for ability := 1; ability < 6; ability++ {
 			if core.Abils.IsActive(b, server.Ability(ability)) {
-				sub_4FC300(asObjectC(b), int(C.int(ability)))
+				Sub_4FC300(b, int(int32(ability)))
 			}
 		}
 		if a.ObjSubClass&1 != 0 {

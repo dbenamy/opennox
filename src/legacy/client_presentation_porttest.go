@@ -2,10 +2,6 @@
 
 package legacy
 
-/*
-#include "GAME2_3.h"
-*/
-import "C"
 import (
 	"github.com/opennox/opennox/v1/client"
 	"github.com/opennox/opennox/v1/client/noxrender"
@@ -26,7 +22,7 @@ func PortTestPresentationShieldDraw(v *noxrender.Viewport, dr *client.Drawable) 
 	presentationShieldDraw(v, dr)
 }
 func PortTestPresentationTurnUndead(pos *[2]int16) {
-	nox_xxx_fxDrawTurnUndead_499880((*C.short)(unsafe.Pointer(pos)))
+	nox_xxx_fxDrawTurnUndead_499880((*int16)(unsafe.Pointer(pos)))
 }
 func PortTestPresentationChantStart(id byte) { presentationChantStart(id) }
 func PortTestPresentationChantClear()        { presentationChantClear() }
@@ -37,10 +33,10 @@ func PortTestPresentationChantOwner() (*uint32, func()) {
 	return (*uint32)(unsafe.Pointer(&presentationChantTree)), func() { presentationChantTree = old }
 }
 func PortTestPresentationRayAdd(p *[7]byte) {
-	nox_xxx_clientAddRayEffect_49C160(C.int(uintptr(unsafe.Pointer(p))))
+	nox_xxx_clientAddRayEffect_49C160(int32(uintptr(unsafe.Pointer(p))))
 }
 func PortTestPresentationRayRemove(p *[7]byte) {
-	nox_xxx_clientRemoveRayEffect_49C450(C.int(uintptr(unsafe.Pointer(p))))
+	nox_xxx_clientRemoveRayEffect_49C450(int32(uintptr(unsafe.Pointer(p))))
 }
 func PortTestPresentationSpareClear()                          { presentationTransientClear() }
 func PortTestPresentationRayClear()                            { presentationRayClear() }
