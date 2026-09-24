@@ -6,11 +6,14 @@ superseded status when updating it. The workflow and delegation rules live in
 
 ## Status: resumed; internal C-glue removal
 
-The original **142,665 physical lines of standalone C have been ported or
-retired**. Production and test-reference `.c` files now both count zero.
-The Go MP3 decoder is integrated and its C implementation header is retired.
-The legacy algorithm-port milestone is complete; the engine still requires cgo.
-Current work removes libc helpers and redundant **Go → C → Go** callback routes.
+**Progress: 142,665/142,665 original standalone C lines ported or retired;
+internal glue: 34/463 cgo files eliminated on net (429 remain).**
+
+The glue count uses the selected project files in each Linux 386 production
+profile, measured from this phase's baseline. Directly cgo-dependent project
+packages are down from six to three; 79 embedded C callback bodies remain. These
+are dependency counts, not equivalent units of work or an effort percentage.
+Production and test-reference standalone `.c` files both remain at zero.
 
 Latest qualified implementation: **`4e1e86a6` — Go memory/string helpers**,
 following original baselines `5cc27785` and `58f37c6c`.
@@ -19,10 +22,13 @@ allocation/free ownership and external native bindings are unchanged.
 
 Continue chunk-by-chunk with one Luna helper, qualification, commit/push and
 recorded reversible decisions. Stop at the milestone or for a substantial question.
-The requested C_LOC cleanup is complete: its historical table is continuous and
-stale tail status notes are removed. Next: qualify and integrate allocation-call
-centralization. Reviewed ignored drafts and original-path contract drafts are under
-`build/port-go-memory/`; they are not installed or qualified.
+The requested C_LOC cleanup is complete. The active batch centralizes 49 legacy
+allocation calls and four tracked-allocator backend calls without changing their
+ownership domains. New original-path contracts are installed and repeated captures
+match in normal and safe profiles; baseline owner qualification is running under
+`build/port-raw-allocation/`. The implementation draft remains ignored and
+uninstalled under `build/port-go-memory/raw-centralization-draft/`.
+Progress counts above exclude this unqualified batch.
 
 ## What remains
 
@@ -86,9 +92,6 @@ unapplied and unqualified. This is a candidate, not an instruction to start.
 The integer-returning collision owner in `temporaryMagicMissile` remains raw;
 its return cannot be replaced with a void-dispatch result. See
 [collision compatibility decisions](docs/porting/COLLISION_REGISTRY.md).
-The Go MP3 decoder remains slower than C in the recorded bounded benchmarks
-(1.96× on one mono input, 2.56× on a synthetic stereo input); whole-game impact
-has not been established. See [the performance report](docs/porting/MP3_SYNTHESIS_PERFORMANCE.md).
 Other behavior/compatibility findings are recorded in [DECISIONS.md](docs/porting/DECISIONS.md).
 
 Luna drafted the six helpers and reviewed primary contracts. Primary corrected
@@ -97,8 +100,8 @@ path, and replaced the slow fill loop after measurement. See the batch report.
 The next allocation draft centralizes 49 calls across 21 files, preserving profile
 semantics. Primary caught unused imports before integration; the draft is corrected
 but unqualified. New domain/string ownership contracts and a 96-existing-root owner
-selection await baseline qualification, including two additional existing free-owner
-tests absent from prior selectors. See `build/port-go-memory/raw-*`.
+selection are undergoing baseline qualification, including two additional existing
+free-owner tests absent from prior selectors. See `build/port-go-memory/raw-*`.
 
 ## Resume and artifact recovery
 
@@ -138,3 +141,9 @@ Historical batch details belong in `docs/porting/` and Git history. The complete
 older checkpoint, including individual archive/restore notes, is recoverable with
 `git show b034c43e:PORTING_STATE.md`; its old “current/next” instructions are
 historical and must not be followed as the current plan.
+
+Nine superseded binaries from the leaf-glue and transfer/sound batches were
+removed after host process/file-use checks, reclaiming 419 MiB. Their reports
+remain; rebuild older binaries from recorded revisions if needed. The current
+Go-memory binaries are retained. Journal:
+`build/port-artifact-cleanup/superseded-leaves-xfer-binaries-20260924/`.
