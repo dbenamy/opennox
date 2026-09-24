@@ -1,0 +1,411 @@
+{
+  "original_qualified_production": "2db93f68",
+  "new_test_files": [
+    "src/legacy/common/alloc/memory_contract_test.go",
+    "src/legacy/common/alloc/memory_benchmark_test.go"
+  ],
+  "exact_compare_captures": [
+    [
+      "memcmp",
+      "87961",
+      "726060941531ab5027a37ac1ea3ede14b70065f32080696ab1f14b96ca956704"
+    ],
+    [
+      "strcmp",
+      "107161",
+      "b24df884c86670613fdc9e4828ffc8d04083d885032e4086ae0cffdf4f8e72d5"
+    ]
+  ],
+  "baseline-helpers": {
+    "batch": "go-memory",
+    "phase": "helpers",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-v",
+          "./legacy/common/alloc"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.1253379159606993
+      },
+      {
+        "name": "server",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-v",
+          "-tags",
+          "server",
+          "./legacy/common/alloc"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.178937513846904
+      },
+      {
+        "name": "highres",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=1",
+          "-v",
+          "-tags",
+          "highres",
+          "./legacy/common/alloc"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.0466551079880446
+      }
+    ],
+    "revision": "2db93f683097070d8f786bb0aa88b7c122857f57",
+    "source_unchanged": true,
+    "wall_seconds": 3.8793355310335755,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "baseline-safe": {
+    "batch": "go-memory",
+    "phase": "safe-contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "safe-contracts",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/safe-bridges-tests.txt",
+          "--tags",
+          "safe,porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-go-memory/baseline-safe/safe.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-go-memory/baseline-safe/safe-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 121.77368752099574
+      }
+    ],
+    "revision": "2db93f683097070d8f786bb0aa88b7c122857f57",
+    "source_unchanged": true,
+    "wall_seconds": 122.07089737290516,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "original_benchmarks": {
+    "BenchmarkMemoryFill/bytes32/value0-2": [
+      {
+        "ns_op": 102.3,
+        "mb_s": 312.77,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 82.92,
+        "mb_s": 385.93,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 85.84,
+        "mb_s": 372.78,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ],
+    "BenchmarkMemoryFill/bytes32/value172-2": [
+      {
+        "ns_op": 87.55,
+        "mb_s": 365.49,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 114.1,
+        "mb_s": 280.45,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 123.6,
+        "mb_s": 258.85,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ],
+    "BenchmarkMemoryFill/bytes256/value0-2": [
+      {
+        "ns_op": 111.8,
+        "mb_s": 2289.83,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 93.54,
+        "mb_s": 2736.81,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 103.4,
+        "mb_s": 2475.81,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ],
+    "BenchmarkMemoryFill/bytes256/value172-2": [
+      {
+        "ns_op": 122.3,
+        "mb_s": 2093.34,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 88.65,
+        "mb_s": 2887.65,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 90.0,
+        "mb_s": 2844.33,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ],
+    "BenchmarkMemoryFill/bytes1024/value0-2": [
+      {
+        "ns_op": 92.65,
+        "mb_s": 11052.48,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 123.1,
+        "mb_s": 8318.65,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 122.0,
+        "mb_s": 8390.97,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ],
+    "BenchmarkMemoryFill/bytes1024/value172-2": [
+      {
+        "ns_op": 92.07,
+        "mb_s": 11121.92,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 90.61,
+        "mb_s": 11301.62,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 98.2,
+        "mb_s": 10427.91,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ],
+    "BenchmarkMemoryFill/bytes4096/value0-2": [
+      {
+        "ns_op": 159.9,
+        "mb_s": 25611.85,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 204.2,
+        "mb_s": 20054.7,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 158.9,
+        "mb_s": 25770.43,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ],
+    "BenchmarkMemoryFill/bytes4096/value172-2": [
+      {
+        "ns_op": 165.9,
+        "mb_s": 24684.23,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 151.6,
+        "mb_s": 27027.35,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 211.3,
+        "mb_s": 19381.69,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ],
+    "BenchmarkMemoryFill/bytes65536/value0-2": [
+      {
+        "ns_op": 1515.0,
+        "mb_s": 43266.77,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 1598.0,
+        "mb_s": 41004.37,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 2211.0,
+        "mb_s": 29639.62,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ],
+    "BenchmarkMemoryFill/bytes65536/value172-2": [
+      {
+        "ns_op": 2934.0,
+        "mb_s": 22340.05,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 1842.0,
+        "mb_s": 35578.58,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 1685.0,
+        "mb_s": 38891.48,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ],
+    "BenchmarkMemoryCopy/bytes60-2": [
+      {
+        "ns_op": 119.9,
+        "mb_s": 500.37,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 108.0,
+        "mb_s": 555.31,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 110.3,
+        "mb_s": 543.76,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ],
+    "BenchmarkMemoryCopy/bytes256-2": [
+      {
+        "ns_op": 144.6,
+        "mb_s": 1770.04,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 158.5,
+        "mb_s": 1614.64,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 130.5,
+        "mb_s": 1962.3,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ],
+    "BenchmarkMemoryCopy/bytes4096-2": [
+      {
+        "ns_op": 182.3,
+        "mb_s": 22466.52,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 248.9,
+        "mb_s": 16457.91,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 172.0,
+        "mb_s": 23810.51,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ],
+    "BenchmarkMemoryCopy/bytes65536-2": [
+      {
+        "ns_op": 2656.0,
+        "mb_s": 24677.24,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 3619.0,
+        "mb_s": 18110.35,
+        "bytes_op": 0,
+        "allocs_op": 0
+      },
+      {
+        "ns_op": 2709.0,
+        "mb_s": 24190.24,
+        "bytes_op": 0,
+        "allocs_op": 0
+      }
+    ]
+  }
+}

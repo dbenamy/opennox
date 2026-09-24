@@ -12,7 +12,7 @@ The Go MP3 decoder is integrated and its C implementation header is retired.
 The legacy algorithm-port milestone is complete; the engine still requires cgo.
 Recent chunks remove redundant **Go → C → Go** callback routes.
 
-Latest qualified implementation: **leaf engine C-glue cleanup**, following
+Latest qualified implementation: **`2db93f68` — leaf engine C-glue cleanup**, following
 original baseline `a28bdba7`. See [CGO_LEAVES.md](docs/porting/CGO_LEAVES.md).
 It removes 33 unused C imports/preambles and the Linux socket constant's C-header
 dependency, with production and integration qualification complete.
@@ -20,8 +20,10 @@ dependency, with production and integration qualification complete.
 The user resumed chunk-by-chunk work, with one Luna helper, qualification,
 commit/push and recorded reversible decisions. Stop at the milestone or for a
 substantial question. Next: qualify and replace six libc memory/string helpers;
-allocator ownership remains a separate batch. Uninstalled drafts are under
-`build/port-cgo-leaves/next-memory-draft/`.
+allocator ownership remains a separate batch. Original memory-helper contracts and safe bridges are qualified, with exact
+comparison hashes frozen from three runs; production helper code is unchanged.
+See [GO_MEMORY.md](docs/porting/GO_MEMORY.md) and `build/port-go-memory/`.
+The implementation draft remains under `build/port-cgo-leaves/next-memory-draft/`.
 
 ## What remains
 
