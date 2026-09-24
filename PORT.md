@@ -1,8 +1,12 @@
 # OpenNox C-to-Go port
 
+This file holds durable goals and working rules. Read
+[PORTING_STATE.md](PORTING_STATE.md) for the current checkpoint, remaining work,
+pause status and local artifact recovery. Keep batch history in `docs/porting/`
+and Git, not in this guide.
+
 ## Contents
 
-- [Current status](#current-status)
 - [Goal and target](#goal-and-target)
 - [Batch workflow](#batch-workflow)
 - [Subagent use](#subagent-use)
@@ -11,256 +15,6 @@
 - [Build and test environment](#build-and-test-environment)
 - [Commits and recovery](#commits-and-recovery)
 - [Progress and decisions](#progress-and-decisions)
-
-## Current status
-
-All 28 object-transfer and two damage-sound registrations now dispatch through Go,
-preserving callback identities, raw fallbacks, return conventions and replaceable
-handlers. All 228 affected roots/profile and 220 frozen capture groups pass, with
-safe/static, four fresh production binaries/ABI, exact known-suite comparison and
-headless creation/save-load qualification. See
-[XFER_SOUND_REGISTRY.md](docs/porting/XFER_SOUND_REGISTRY.md).
-**Standalone C remains zero; production C preamble bodies remain 79.**
-Paused at the user's request after this qualified checkpoint. Remaining callback
-owners have a bounded candidate inventory; no next conversion is installed.
-The integer-returning collision caller remains raw.
-
-### Earlier checkpoints
-
-Go MP3 synthesis now avoids overwritten mono outputs and accumulates each lane
-locally while preserving its exact float32 operation order. Controlled medians
-improved 34% on one shipped mono asset and 8% on a synthetic stereo stream;
-both remain allocation-free. Frozen PCM/state, all 1,246 asset observations,
-production/ABI, known-suite and headless creation/save-load checks pass.
-**Standalone C remains zero; production C preamble bodies remain 79.**
-Next: review a bounded group of redundant Go→C→Go book callbacks before broader
-callback architecture work. See
-[MP3_SYNTHESIS_PERFORMANCE.md](docs/porting/MP3_SYNTHESIS_PERFORMANCE.md).
-
-Two typed callback shims now reuse existing shared dispatchers, preserving both
-Go APIs. All 24 forwarding/return cases pass per profile; client consumer tests,
-fresh production/ABI, known-suite and headless creation/save-load checks pass.
-**Standalone C stays zero; production C preamble bodies fall 81→79.** The remaining
-bodies are callback invocation glue. Next: profile the documented MP3 performance
-gap before considering a broader callback representation redesign. See
-[TYPED_CALLBACK_ADAPTERS.md](docs/porting/TYPED_CALLBACK_ADAPTERS.md).
-
-Production audio now uses the fully qualified Go MP3 decoder. All 1,246 shipped
-asset observations and historical PCM goldens match unchanged; all decoder
-profiles, production/safe builds, ABI checks, exact known-suite comparison and
-headless creation/save-load pass. **Standalone production C: zero files/lines.**
-The 1,890-line decoder header is retired too; 81 production C preamble bodies
-and external cgo dependencies remain. Go decode is allocation-free per frame,
-but measured 2.79× slower than C on one mono asset; retain this performance
-review item. Next: deduplicate two typed callback adapters through existing
-shared dispatchers while preserving their Go APIs. See
-[MP3_GO.md](docs/porting/MP3_GO.md).
-
-The complete Go MP3 decoder matches2,682 generated C frame calls in544 sequences,
-including PCM, metadata and observable state. All ten test roots pass in four
-profiles and with cgo disabled; vet passes. Original unused-QMF and private-bit
-initialization findings are documented for review. Next: wire audio and qualify
-unchanged shipped-asset goldens and production builds. C remains six standalone
-lines plus the active header. See [MP3_FRAME.md](docs/porting/MP3_FRAME.md).
-
-Go MP3 Huffman/dequantization matches34,353 exact C cases, including every
-codebook leaf and directed escape extremes/signs. All nine helper roots pass
-in four profiles and with cgo disabled; vet passes. Next: complete-frame decoder
-assembly and PCM/state qualification before switching production audio. C remains
-six standalone lines plus the active header. See
-[MP3_HUFFMAN.md](docs/porting/MP3_HUFFMAN.md).
-
-Go MP3 PCM synthesis/filterbank state matches197,774 C records, including
-196,616 rounding cases and576 stateful granule steps. All eight helper roots
-pass in four profiles and with cgo disabled; vet passes. C remains six standalone
-lines plus the active header. Next: Huffman/dequantization and decoder wrappers.
-Production remains on C. See [MP3_SYNTHESIS.md](docs/porting/MP3_SYNTHESIS.md).
-
-Go MP3 synthesis DCT matches2,172 exact original-C cases in four profiles and
-with cgo disabled; all seven helper roots and vet pass. C remains six standalone
-lines plus the active header. Next: PCM synthesis and persistent filterbank state.
-Production evidence is reused for this unimported package. See
-[MP3_DCT.md](docs/porting/MP3_DCT.md).
-
-Go MP3 inverse transforms and overlap state match2,380 exact original-C records,
-including1,258 granule steps. All six helper roots pass in four profiles and with
-cgo disabled; vet passes. Production evidence is explicitly reused for the
-unimported package. C remains six standalone lines plus the active header.
-Next: synthesis transforms. See [MP3_IMDCT.md](docs/porting/MP3_IMDCT.md).
-
-Go MP3 stereo, spectral reordering and antialiasing match4,364 exact C state
-records in four profiles and with cgo disabled; all previous helper roots pass.
-A documented legacy8kHz mixed-block extent is preserved in bounded workspace
-slices for later integration review. The decoder remains unwired; existing
-production evidence is explicitly reused. C remains six standalone lines plus
-the active header. Next: inverse transforms/overlap state. See
-[MP3_SPECTRUM.md](docs/porting/MP3_SPECTRUM.md).
-
-Go MP3 scalefactor byte parsing and quarter-power scaling now match57,002 frozen
-scalar-SSE2 C cases, with exact float bits and every reuse mask. All four helper
-roots pass in four profiles and with cgo disabled. The complete decoder remains
-unwired; production evidence is explicitly reused after source/binary checks.
-C remains six standalone lines plus the active header. Next: stereo/reordering/
-antialiasing. See [MP3_SCALEFACTORS.md](docs/porting/MP3_SCALEFACTORS.md).
-
-Go MP3 frame scanning, initialization and reservoir helpers now match2,774 frozen
-C cases, including the real48KiB input-buffer boundary and retained state/tails.
-All previous MP3 helper tests still pass in four profiles and with cgo disabled.
-The decoder remains unwired; existing production evidence is explicitly reused.
-C remains six standalone lines plus the active decoder header. Next: scalefactors
-and exact floating-point results. See [MP3_STREAM.md](docs/porting/MP3_STREAM.md).
-
-Go Layer III side-information parsing now matches 36,864 frozen C state records,
-including partial writes on errors. Table-row alias and CRC-offset regressions
-pass alongside the integer helpers in four profiles and with cgo disabled.
-The Go decoder remains unwired; production evidence is reused with source and
-binary identity checks. C remains six standalone lines plus the active header.
-Next: frame scanning and reservoir state. See [MP3_SIDEINFO.md](docs/porting/MP3_SIDEINFO.md).
-
-The first Go MP3 internals (bit reader/header arithmetic) match 819,207 frozen
-actual-C cases in four profiles and with cgo disabled. They remain unimported by
-production while the complete decoder is assembled; existing production evidence
-is explicitly reused after source/dependency/binary checks. C stays six lines,
-with the third-party header still active. Next: Layer III side-information parsing.
-See [MP3_INTEGER.md](docs/porting/MP3_INTEGER.md).
-
-The audio package now uses SSE2 scalar arithmetic on 386. All 1,246 historical
-MP3 dialog PCM goldens pass unchanged; the full suite loses exactly 1,249 audio
-failure events and retains the 304 unrelated events. Client audio/stream tests,
-safe build/static, fresh production/ABI and headless creation/save-load pass.
-The old and corrected guarded decoder captures are preserved. Standalone C stays
-six lines; next is coherent Go decoder internals with additional format/state
-contracts. See [MP3_DECODER.md](docs/porting/MP3_DECODER.md).
-
-Five callback-address getters now reference the same C functions directly from
-Go. All 38 consumer roots pass per normal profile, with safe build/static, fresh
-production/ABI, exact known-suite and headless creation/save-load qualification.
-Standalone C stays **six lines/one file**; production C preamble bodies fall from
-86 to 81. See [ADDRESS_ADAPTERS.md](docs/porting/ADDRESS_ADAPTERS.md).
-
-The ten live empty callback identities now export from Go. All 338 frozen cases,
-69 consumer roots per normal profile and 24 under safe pass, alongside fresh
-production/ABI, exact known-suite comparison and headless creation/save/load.
-Standalone C is **six physical lines in one file**, down 19; that file includes
-the third-party MP3 decoder. Preambles, headers and generated bridges remain.
-The measured extra callback cost is 84–140 ns/call in this VM; accepted as a
-reversible compatibility cost, with game-frame impact still unmeasured. See
-[EMPTY_CALLBACKS.md](docs/porting/EMPTY_CALLBACKS.md).
-
-The six optional safe-profile forwarding shims now export directly from Go.
-All 142 frozen cases, the shop-loading consumer, safe build, production/ABI,
-known-suite and headless/save-load gates pass. Standalone C is **25 physical lines
-in three files**, down 20; C headers, generated bridges and third-party decoder
-implementation remain. See [SAFE_BRIDGES.md](docs/porting/SAFE_BRIDGES.md).
-
-Entry-character predicates now call the same libc classifiers directly, removing
-two custom cgo-preamble bodies. All 131,072 classifications and twelve widget roots
-per profile match the C baseline; production/ABI/gameplay/save-load gates pass.
-Standalone C stays 45 lines/four files because preamble bodies are outside that
-metric. See [ENTRY_CLASSIFIERS.md](docs/porting/ENTRY_CLASSIFIERS.md).
-
-The two entry-character predicates now have a qualified actual-C baseline covering
-all 131,072 boolean classifications plus twelve widget test roots per profile.
-Full native/ABI/gameplay/save-load gates pass; that baseline supports the
-subsequent direct-libc conversion above. C remains 45 lines/four files. See [ENTRY_CLASSIFIERS.md](docs/porting/ENTRY_CLASSIFIERS.md).
-
-Unused header/preamble helpers and unregistered empty callbacks are retired,
-along with two empty Obelisk calls. Synchronization and all ten live callback
-identities are preserved. Focused tests in all three profiles, storage/GC
-contracts, production/ABI and gameplay/save-load qualification pass. Standalone
-production C is now **45 lines in four files** (−6); headers, preambles and
-third-party C remain outside that count. See [ORPHAN_INLINE.md](docs/porting/ORPHAN_INLINE.md).
-
-The remaining 44 globals and eight mapped buffers now initialize from Go, using
-the existing foreign allocator for stable process-lifetime storage. Both frozen
-storage captures match C; all 2,291/2,280/2,291 consumer roots pass across the three
-profiles, alongside fresh production/ABI/gameplay/save-load qualification. This
-removes 63 C lines and two translation units. C is now **51 physical lines in four
-files**. C types, callbacks, inline preambles and libc/CGO dependencies remain
-explicit follow-up work. See [RAW_STORAGE.md](docs/porting/RAW_STORAGE.md).
-
-An audio stream GC regression is corrected: opaque sample addresses remain raw
-32-bit words through buffer/chunk/voice bookkeeping and convert to pointers at
-sample access. The regression failed before the fix and passes after it. The full
-2,291/2,280/2,291 consumer sweep and fresh production/gameplay/save-load qualification
-pass. The remaining 44 globals and 8 shared buffers now have a qualified actual-C
-storage baseline, used by the subsequent conversion above. That repair left C at
-114 lines. See
-[AUDIO_ADDRESS_GC.md](docs/porting/AUDIO_ADDRESS_GC.md) and
-[RAW_STORAGE.md](docs/porting/RAW_STORAGE.md).
-
-Another 52 numeric globals (map generation, audio and sustained spells) now have
-Go owners; 11 C fixture accessor/table bodies are retired. All 54,905 storage
-cases match the frozen C capture. Each profile passes 183 focused consumer roots
-without skips. Safe build, production/ABI, exact known-suite comparison and fresh
-headless gameplay/save-load pass. This removes 52 C lines. See
-[FIXTURE_STORAGE.md](docs/porting/FIXTURE_STORAGE.md).
-
-343 numeric globals now have process-lifetime Go owners; nine unused C definitions
-are removed. The 47,677-case storage capture matches C in all three profiles.
-The full tagged consumer sweep passes 2,291/2,280/2,291 roots in default/server/highres,
-with no skips. Safe build, production/ABI, known-suite comparison and fresh headless
-gameplay/save-load pass. This removes 352 C lines. See
-[SCALAR_STORAGE.md](docs/porting/SCALAR_STORAGE.md).
-
-Unused C memory accessors and five GUI adapters are retired. The existing Go
-registry now supplies the durability fixture's threshold address. Four focused
-tests and static checks pass in default/server/highres; the optional safe build,
-production/ABI, known-suite comparison and headless gameplay/save-load also pass.
-This removes 117 C lines and 24 interfaces. See [ORPHAN_BRIDGES.md](docs/porting/ORPHAN_BRIDGES.md).
-
-Custom text formatting, scalar strings and the audio catalog directory check are
-Go. The 375/373/375 affected roots pass in default/server/highres, along with 668,876 frozen
-cases and native consumer contracts. Production/ABI, known-suite comparison,
-headless gameplay and save/load pass. This removes 584 C lines and 28 interfaces.
-See [TEXT_FORMAT.md](docs/porting/TEXT_FORMAT.md).
-
-Extension player lookup, weapon cycling, trap drop, flag index and server listing
-are Go. All 173 affected tests pass in default/server/highres, and 21,135 cases
-match the corrected C baseline. Production/ABI, known-suite comparison, headless
-gameplay and save/load pass. This removes 541 C lines from the corrected baseline
-(521 net since the preceding conversion). See [SERVER_TEXT.md](docs/porting/SERVER_TEXT.md).
-
-The remaining runtime numeric and lookup helpers, pause lifecycle and saved-creature
-ownership are Go. This removes 965 C lines and 34 old interfaces. Default/server/highres pass 304/303/304 affected
-tests; 55,986 captured cases match C. Production/ABI, the
-known full-suite comparison and headless gameplay/save-load pass. See
-[SERVER_RUNTIME.md](docs/porting/SERVER_RUNTIME.md).
-
-Client resource teardown, timing, colors, caches and menu/modal lifecycle are Go,
-removing 838 C lines and 18 old interfaces. Default/server/highres pass 135/135/135
-affected roots and all 6,415 C cases; fresh production/ABI, known-suite comparison
-and headless gameplay/save-load pass. See [CLIENT_RESOURCES.md](docs/porting/CLIENT_RESOURCES.md).
-
-The remaining client render helpers and audio lifecycle are Go, removing 915 C lines
-and 15 unused exports. Default/server/highres pass 96/91/96 affected roots, no skips,
-and 6,129 captured cases match C. Fresh production/ABI, known-suite comparison and
-headless gameplay/save-load pass. See [CLIENT_RENDER_HELPERS.md](docs/porting/CLIENT_RENDER_HELPERS.md).
-
-The ordered client message queue is now Go, removing another 145 C lines and
-four unused interfaces. Its 32 affected tests pass across all three profiles;
-four captures /1,699 cases match the C baseline, and fresh production/ABI,
-known-suite comparison and headless gameplay/save-load pass. See
-[CLIENT_SEQUENCE.md](docs/porting/CLIENT_SEQUENCE.md).
-
-The client settings, team, trade and quest dispatcher and its private ball HUD
-helper are now Go and fully qualified. The conversion removes 1,536 C lines and 146
-unused C interfaces. Default/server/highres pass 632/628/632 test roots, no skips,
-and all 134 frozen captures (202,586 cases). Fresh production/ABI, exact full-suite
-comparison, headless gameplay and save/load checks pass.
-
-C remaining is **six physical lines in one file**, zero reference C; the active
-MP3 implementation header and C preambles are counted separately. See
-[C_LOC.md](docs/porting/C_LOC.md).
-See [PORTING_STATE.md](PORTING_STATE.md) for recovery details.
-
-The preceding world-grid conversion is recorded in
-[WORLD_GRID.md](docs/porting/WORLD_GRID.md).
-
-Previous completed GUI batches include
-[client interaction](docs/porting/CLIENT_INTERACTION.md), the
-[server browser](docs/porting/SERVER_BROWSER.md) and
-[session dialogs](docs/porting/SESSION_DIALOGS.md).
 
 ## Goal and target
 
@@ -287,9 +41,9 @@ process: use focused package checks inside each coherent batch and full
 qualification at meaningful boundaries. Recovery commits
 may precede full qualification when their evidence and remaining gates are explicit.
 
-1. Select a connected behavior batch, aiming for roughly
-   1,000–3,000 C lines where dependencies permit. Identify callers, callbacks, shared state,
-   ownership and observable effects. Move callers with private helpers when useful.
+1. Select a connected behavior or dependency-removal batch. Size it by ownership
+   boundaries and qualification cost, not a standalone C-line quota. Identify
+   callers, callbacks, shared state, ownership and observable effects. Move callers with private helpers when useful.
    Check whole-repository reachability before building fixtures: a function with no
    external callers may be a live private helper or completely orphaned. Audit
    callbacks, registrations and C preambles too. A prototype filter must never
@@ -300,7 +54,8 @@ may precede full qualification when their evidence and remaining gates are expli
    conditions: a textual reference inside a constant-false branch is not a live
    entrypoint. Follow the reachable private-helper graph from actual roots. Remove proven unreachable code
    with documented evidence instead of translating it solely to keep tests alive.
-2. Build a recoverable C baseline using real owners and reusable fixtures. Cover
+2. Build a recoverable original-behavior baseline using real owners and reusable
+   fixtures (C captures where the original path still uses C). Cover
    boundaries, return values, mutations, signedness/overflow, layout, serialization,
    RNG consumption, timing and pixels as relevant. Repeat original-C captures in
    separate processes; normalize only identified nondeterministic fields.
@@ -384,7 +139,7 @@ way that is hard to undo; honor explicit user pauses.
 Do not retain C algorithms solely for tests. A committed C baseline and frozen
 expectations provide recovery after conversion. Reuse fixtures across related
 functions; avoid building a broad framework before there is a demonstrated need.
-Batch size is a guide, not a LOC quota or reason to weaken coverage.
+Batch size must not weaken coverage.
 
 ## Subagent use
 
@@ -445,96 +200,40 @@ result, including any running session ID. Join or terminate that session before
 launching a replacement scan; blank output is not completion. Primary owns host
 process checks. A sandbox `ps` cannot establish that host jobs have exited.
 
-The balance-getter audit exposed this failure mode: multiple repeated Python
-scans ran for minutes and competed with qualification. Primary verified the
-parent scripts in the host namespace, stopped the remaining scan and confirmed
-all had exited. A replacement single-pass inventory took about 0.2 seconds. This
-was an audit-efficiency failure, not a source/test mismatch; no build timing
-comparison from the contended run should be treated as a performance benchmark.
-Keep broad inventory algorithm design with the primary until bounded execution
-is demonstrated; Luna remains useful for exact-list drafts, fixture drafts,
-coverage review and storage inventories with primary verification.
-
 Record delegation outcomes briefly in the batch report: task/model, acceptance
 checks, meaningful corrections, missed issues, and whether handoff/review/rework
 appeared worthwhile. Record actual time or usage only when available; do not infer
-subscription savings from a successful test. Reflect after the next two completed
-batches, then at normal batch boundaries without pausing for user approval. If a
-task needs repeated steering, substantial rewrites or duplicate qualification,
+subscription savings from a successful test. Reflect at normal batch boundaries
+without pausing for user approval. If a task needs repeated steering, substantial
+rewrites or duplicate qualification,
 finish it locally and narrow future delegation of that task type. Expand the
 helper's scope gradually when results support it. Keep this section and the
 checkpoint current when changing the process.
 
-Evidence so far: the [Luna scalar trial](docs/porting/LUNA_TRIAL.md) passed all
-655,391 captured cases without behavior corrections; the primary requested one
-readability cleanup. Earlier Terra trials also succeeded for
-[randomized insertion](docs/porting/PROTECTION_INSERT.md) and
-[integer/byte/word setters](docs/porting/PROTECTION_SET.md). These support bounded
-delegation, not blanket trust in every subsystem or measured cost savings.
+Apply these review rules learned from earlier batches:
 
-After the first two batches under these guidelines, retain one bounded Luna helper.
-The scalar implementation and orphan-removal draft passed qualification after
-primary review. Mechanical edits and exact test selection were useful. Import
-cleanup, reachability and disk audits required corrections; require executable
-preflight checks and machine-generated evidence for those tasks. Continue to own
-baseline acceptance, storage/ABI choices and final qualification in the primary.
-The scalar storage audit caught pointer-typed redeclarations worth separating
-from ordinary numeric owners. No subscription-cost reduction has been measured.
+- Keep numerical/ownership contract design, original-path capture and
+  allocation-heavy fixtures with the primary. Review initialization, cleanup and
+  restoration of shared state explicitly.
+- For generated edits, compare every emitted mapping with the original, including
+  sparse keys, array sizes and pointer types. Generator checks do not establish
+  valid Go syntax or types; format, compile and qualify the output.
+- Require reachability reports to show whole-source search commands and a concrete
+  caller per symbol, distinguishing production, test-only and macro-remapped uses.
+  Generate path/line references from search output and verify them.
+- Trace test selection through enclosing functions and fixture operation selectors.
+  A captured callback slot does not prove a branch ran. Identify media by actual
+  container/codec headers rather than filename extensions.
+- Test primary review assumptions against the original path too. Do not overrule
+  a helper's behavior choice solely on intuition or regenerate frozen expectations
+  to accommodate a review mistake.
+- Publish helper artifacts atomically, hand off a stable draft and stop editing it
+  while the primary integrates. Keep broad inventory algorithm design with the
+  primary until bounded execution is demonstrated.
 
-Recent storage work reinforces that boundary. Luna's numeric-owner draft lost a
-sparse fixture index; independent comparison caught it before compilation. The
-remaining-storage draft needed fixes to blob-size rewrite ordering, array brackets
-and a pointer getter. Its generator checks did not prove Go syntax or types.
-Compare emitted output with the original definitions, then compile and qualify it.
-For reachability audits, require a concrete caller per symbol and distinguish
-production, test-only and macro-remapped calls; the safe-adapter audit initially
-generalized one live caller to all six wrappers. Cleanup inventories have been
-useful when each artifact includes its hash and retained qualification evidence;
-the primary still verifies host process references and performs deletion.
-Test-selection reports must trace the enclosing function and fixture dispatch
-chain, including numeric operation selectors. Searching only a guessed helper
-name missed existing obelisk coverage in a later cleanup draft.
-A bounded read-only lifetime review also identified stale per-case address IDs in
-the shared test fixture. The primary confirmed that defect with a deterministic
-red; broader captures then caught the need to retain aliases for persistent
-objects. Such reviews are useful hypothesis generation, while full qualification
-still decides whether the repair preserves the established behavior.
-Require reachability reports to include the exact whole-source search command
-and scope. The entry-classifier audit missed two production constructor callers
-outside `src/legacy`; the primary found them with a literal search across `src`.
-Do not accept “no in-repository callers” from a directory-local search.
-Generate path/line inventories directly from search output instead of manually
-transcribing them; verify each reported path and line before accepting the report.
-Recent callback/decoder audits add two checks: identify media by container/codec
-headers rather than filename extensions, and distinguish a captured callback slot
-from proof that a particular branch executed. Existing bot-update cases do not
-establish allocation-failure coverage just because their snapshots include the
-fallback assignment's destination. Primary review caught both overstatements.
-
-Recent decoder work suggests keeping numerical/ownership contract design and C
-capture with the primary, while Luna drafts a bounded connected implementation
-and independently reviews capture inputs. Primary-owned fixture writing can overlap
-that work. Review representation and caller bounds explicitly: a table family is
-not a retained table-row alias, and a capture's size limit is not automatically a
-production limit. Recheck even small cleanup edits for remaining symbol uses.
-This is an observed workflow adjustment, not measured model cost/speed savings.
-
-Damage-registry work reinforces the need to test primary review assumptions too:
-Luna's initial late callback selection matched the original compiled behavior;
-primary's requested early selection did not. An original-path mutation test exposed
-that before production changes or frozen expectations. Keep the original failure
-and record who corrected what. Publish helper audit artifacts atomically so a
-partially written candidate list cannot be mistaken for a finished result.
-
-Lifecycle-registry work exposed a limit for allocation-heavy fixture delegation.
-Luna's callback bindings passed independent mapping review, but its creation-test
-draft needed explicit initialization after `alloc.New`, fuller ownership cleanup,
-and restoration of additional shared cache words. The primary corrected those
-before compilation. Keep such fixture ownership with the primary for now; prefer
-bounded bindings, exact-list siblings and read-only reviews for Luna. Publish a
-stable artifact at handoff and stop modifying it while the primary integrates it.
-No measured cost savings are available; narrow a task type when review/rework
-outweighs the useful draft.
+Historical evidence includes the [Luna trial](docs/porting/LUNA_TRIAL.md);
+subsequent outcomes belong in their batch reports. Successful bounded drafts do
+not establish blanket trust or measured cost savings.
 
 ## Explaining the work and reporting diagnostics
 
@@ -569,9 +268,8 @@ For new focused bridge fixtures, prefer the existing pattern of a `porttest` Go
 bridge in `legacy` with assertions in the root test package when it exposes the
 actual function cleanly. Consumer checks can then share that root test build.
 Keep private invariant tests where their access is needed. Measure build time
-separately before relocating established tests: the entry-classifier batch spent
-about 87 seconds on a legacy gate whose tests took 1.9 seconds, and 149 seconds on
-a root gate whose tests took about four seconds after a cgo source edit.
+separately before relocating established tests; compilation can dominate execution
+after a cgo source edit.
 
 When retiring C callbacks, preserve names used to assign stable capture IDs:
 replace their addresses with nil instead of deleting sorted-table entries. Keep
@@ -614,7 +312,7 @@ Reconsider the tests as the behavior and failure modes become clearer.
   them. Check tool support before choosing race, sanitizer or checkptr runs on 386.
 
 A completely green legacy suite is not a prerequisite for porting. Known failures
-in blob tooling, renderer goldens and audio goldens are recorded and remain visible.
+are recorded in the expectation file linked from PORTING_STATE.md and remain visible.
 New failures or changes to the established failure set require investigation.
 Keep environmental failures separate from source or fixture failures.
 
@@ -665,8 +363,8 @@ configurable with `--build-memory-limit`, while preserving the execution budget
 and explicit runtime overrides above. Discovery compiles and lists tests; the
 same-source execution reuses those build outputs. Both environments are recorded
 in the result JSON. This is a reversible attempt to reduce compiler GC pressure,
-not a measured speed improvement. Nine Python accounting/environment checks pass;
-actual baseline runs must still verify runtime settings and complete execution.
+not a measured speed improvement. Baseline runs must still verify runtime settings
+and complete execution.
 
 ## Commits and recovery
 
@@ -700,8 +398,7 @@ blanks/comments, in tracked `src/**/*.c`, with test-reference C reported separat
 It excludes headers, C in Go preambles, dependencies and generated build outputs.
 It measures source size, not active-code coverage or remaining effort.
 
-The initial count was 142,665 production C lines. See PORTING_STATE.md for the
-current rough and exact counts. Use [C_INVENTORY.md](docs/porting/C_INVENTORY.md)
-for historical build/linker evidence and [DECISIONS.md](docs/porting/DECISIONS.md)
+See [PORTING_STATE.md](PORTING_STATE.md) for current counts and remaining work.
+Use [C_INVENTORY.md](docs/porting/C_INVENTORY.md) for historical build/linker evidence and [DECISIONS.md](docs/porting/DECISIONS.md)
 for corrections and tradeoffs to review. Keep the current checkpoint concise;
 put detailed qualification and limitations in the corresponding batch report.

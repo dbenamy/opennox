@@ -31,7 +31,7 @@ not a count of all C dependencies or a measure of remaining engineering effort.
 | Callback routes | Some Go implementations still call each other through C-compatible addresses. More direct Go dispatch is possible; shared raw fallbacks remain until their users and compatibility requirements are resolved. |
 | Declarations and C types | 157 tracked headers / 4,548 physical lines; 469 non-porttest Go files import C across build profiles. These counts mostly reflect interface/layout machinery, not unported algorithms. |
 | Memory and layout | C-heap allocation, raw pointers, fixed offsets and 32-bit address assumptions remain. Removing them requires ownership/layout changes beyond function translation. |
-| External libraries | Native dependencies such as SDL and OpenAL remain. Backend replacement is a separate platform decision. |
+| External libraries | Native dependencies such as SDL and OpenAL remain; their cgo bindings must be replaced or removed for the agreed build goal. |
 | Portability and release validation | Qualified target is Linux 386/SSE2 with cgo. The complete engine is not qualified as cgo-free, 64-bit, native macOS or browser/WebAssembly. Physical display and audible playback remain manual release checks. |
 
 See [C_LOC.md](docs/porting/C_LOC.md) for the exact standalone-line metric and
@@ -59,15 +59,9 @@ Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expec
 
 ## Goal, next work and open review items
 
-The agreed endpoint is a **cgo-free build of the client, high-resolution client
-and server**, qualified with `CGO_ENABLED=0`. Keeping x86/32-bit-specific behavior,
-layouts and assumptions is acceptable; 64-bit, macOS and browser support are not
-requirements for this milestone. Current qualified builds still require cgo.
-
-Remaining work must remove internal C calls/types and address native dependencies
-that require cgo, while preserving behavior. Memory/layout changes are needed only
-where required for a correct cgo-free build; a general portability redesign is
-out of scope. Direct callback dispatch is an intermediate step, not the endpoint.
+The [agreed goal and scope](PORT.md#goal-and-target) are cgo-free client/server
+builds with x86/32-bit assumptions allowed. Current qualified builds still require
+cgo; direct callback dispatch is an intermediate step.
 When implementation resumes, inventory the complete build's cgo dependencies and
 sequence their removal, including client rendering/audio backends. Implementation
 remains paused for the user's review.
@@ -88,11 +82,8 @@ The Go MP3 decoder remains slower than C in the recorded bounded benchmarks
 has not been established. See [the performance report](docs/porting/MP3_SYNTHESIS_PERFORMANCE.md).
 Other behavior/compatibility findings are recorded in [DECISIONS.md](docs/porting/DECISIONS.md).
 
-The working delegation policy remains one GPT-6 Luna helper for bounded drafts
-and inventories, with primary ownership of architecture, allocation-heavy fixtures,
-review and qualification. The latest 30-binding draft passed independent review
-and qualification. No measured cost/time saving is claimed; full guidelines and
-lessons are in [PORT.md](PORT.md#subagent-use).
+The latest Luna 30-binding draft passed independent review and qualification.
+No measured cost/time saving is claimed. See [delegation rules](PORT.md#subagent-use).
 
 ## Resume and artifact recovery
 
@@ -100,10 +91,9 @@ Read this checkpoint and PORT.md, then inspect Git status before editing. The
 untracked `nox-iso-from-archive-org.7z` is an asset archive, not unfinished code;
 never stage it. Preserve it and `build/assets/extracted/drive_c/Nox`.
 
-Source `build/baseline/env.sh` before Go commands and use the Go toolchain at
-`/usr/lib/go-1.26/bin`. The configured target is `GOARCH=386`, `GO386=sse2`,
-`CGO_ENABLED=1`. Serialize Go jobs and source edits. See PORT.md for runtime versus
-compiler memory limits, native execution and qualification commands.
+The current Go toolchain is `/usr/lib/go-1.26/bin`. Follow the
+[build environment instructions](PORT.md#build-and-test-environment), including
+sourcing `build/baseline/env.sh` in every Go shell.
 
 Latest local artifacts are under `build/port-xfer-sound-registry/`:
 `baseline/`, `contracts/`, `safe/opennox-safe`, and
