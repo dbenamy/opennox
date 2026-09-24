@@ -4,7 +4,7 @@ This file is the current resume checkpoint, not a chronological log. Replace
 superseded status when updating it. The workflow and delegation rules live in
 [PORT.md](PORT.md); detailed evidence belongs in the linked batch reports.
 
-## Status: paused after a qualified, pushed checkpoint
+## Status: resumed; internal C-glue removal
 
 The original **142,665 physical lines of standalone C have been ported or
 retired**. Production and test-reference `.c` files now both count zero.
@@ -16,9 +16,11 @@ Latest qualified implementation: **`b034c43e`**, committed and pushed to `dev`.
 It routes 28 object-transfer and two damage-sound registrations through Go.
 Its original-behavior baseline was committed first as `003d6fab`.
 
-The user requested a pause to review progress and ask questions. No build/test
-jobs or helper tasks remain active, and no next-batch changes are installed.
-Documentation updates do not resume implementation work.
+The user resumed chunk-by-chunk work, with one Luna helper, qualification,
+commit/push and recorded reversible decisions. Stop at the milestone or for a
+substantial question. The first new chunk removes three leaf cgo imports; its
+original-behavior tests and baseline are being prepared under
+`build/port-cgo-leaves/`. No new production change is qualified yet.
 
 ## What remains
 
@@ -62,12 +64,12 @@ Known-suite expectation: [mp3-go-expected-suite.jsonl](docs/porting/mp3-go-expec
 The [immediate goal](PORT.md#goal-and-target) is removal of the engine's internal
 C glue, retaining external native-library bindings and x86/32-bit assumptions.
 Whole-build `CGO_ENABLED=0` is deferred for subsequent discussion.
-When implementation resumes, finish the internal-dependency removal order;
-client rendering/audio backend replacement is outside this phase. Implementation
-remains paused.
+Follow [INTERNAL_C_GLUE.md](docs/porting/INTERNAL_C_GLUE.md) for the dependency
+removal order and completion criteria. Client rendering/audio backend replacement
+is outside this phase.
 
-The interrupted dependency audit left an untracked draft at
-`tools/porting/cgo_inventory.py` and local metadata under `build/port-cgo-audit/`.
+The dependency inventory tool is `tools/porting/cgo_inventory.py`; the refreshed
+baseline is under `build/port-cgo-leaves/inventory-before/`.
 Production metadata identifies six project packages directly using cgo in all
 three profiles, plus OpenGL/SDL2/OpenAL bindings in the clients. Metadata discovery
 is not compilation or qualification. The helper's external-review draft is not

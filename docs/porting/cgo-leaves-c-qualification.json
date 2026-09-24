@@ -1,0 +1,128 @@
+{
+  "socket": {
+    "batch": "cgo-leaves",
+    "phase": "socket-baseline",
+    "success": true,
+    "steps": [
+      {
+        "name": "socket",
+        "command": [
+          "go",
+          "test",
+          "-p",
+          "2",
+          "-count=3",
+          "-timeout",
+          "60s",
+          "-json",
+          "./internal/netstr"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.2819710988551378
+      }
+    ],
+    "revision": "a797e79ae7d836c0eb7773278fb28eca28fd8d12",
+    "source_unchanged": true,
+    "wall_seconds": 1.5480363708920777,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "consumers": {
+    "batch": "cgo-leaves",
+    "phase": "contracts",
+    "success": true,
+    "steps": [
+      {
+        "name": "default",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/cgo-leaves-tests.txt",
+          "--tags",
+          "porttest",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-cgo-leaves/baseline/default.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-cgo-leaves/baseline/default-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 32.327159696025774
+      },
+      {
+        "name": "server",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/cgo-leaves-tests.txt",
+          "--tags",
+          "porttest,server",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-cgo-leaves/baseline/server.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-cgo-leaves/baseline/server-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 32.125247741816565
+      },
+      {
+        "name": "highres",
+        "command": [
+          "python3",
+          "/root/src/opennox/tools/porting/run_tests.py",
+          "--pattern-file",
+          "/root/src/opennox/docs/porting/cgo-leaves-tests.txt",
+          "--tags",
+          "porttest,highres",
+          "--package",
+          ".",
+          "--log",
+          "/root/src/opennox/build/port-cgo-leaves/baseline/highres.jsonl",
+          "--result",
+          "/root/src/opennox/build/port-cgo-leaves/baseline/highres-result.json",
+          "--timeout-seconds",
+          "900",
+          "--require-no-skips"
+        ],
+        "exit": 0,
+        "wall_seconds": 31.721621409989893
+      }
+    ],
+    "revision": "a797e79ae7d836c0eb7773278fb28eca28fd8d12",
+    "source_unchanged": true,
+    "wall_seconds": 96.78444189298898,
+    "c_loc": {
+      "revision": "working tree (tracked files)",
+      "production": {
+        "files": 0,
+        "lines": 0
+      },
+      "test_reference": {
+        "files": 0,
+        "lines": 0
+      }
+    }
+  },
+  "production_baseline": "b034c43e",
+  "production_identity_exception": "src/internal/netstr/socket_linux_test.go only; new test file, production unchanged"
+}
